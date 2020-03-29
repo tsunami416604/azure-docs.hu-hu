@@ -1,6 +1,6 @@
 ---
-title: Hálózat az Azure monitorban figyelésével kapcsolatos naplók |} A Microsoft Docs
-description: Hálózatfigyelési megoldásokkal, mint az NPM segítségével kezeli a felhőbeli, helyszíni és hibrid környezetekben hálózatok áttekintése.
+title: A hálózatfigyelés az Azure Monitor naplóiban | Microsoft dokumentumok
+description: A hálózati figyelési megoldások áttekintése, beleértve az NPM-et is, a hálózatok felhőbeli, helyszíni és hibrid környezetekben való kezeléséhez.
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
@@ -16,42 +16,42 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67672178"
 ---
-# <a name="network-monitoring-solutions"></a>Hálózati megoldások monitorozása 
+# <a name="network-monitoring-solutions"></a>Hálózatfigyelési megoldások 
 
-Az Azure-megoldások egy gazdagépet a hálózati eszközök figyelése kínál. Az Azure rendelkezik a megoldásokat és segédprogramok használatával a hálózati kapcsolat ExpressRoute-Kapcsolatcsoportok állapotának figyelheti és elemezheti a felhőbeli hálózati forgalmat.
+Az Azure számos megoldást kínál a hálózati eszközök figyelésére. Az Azure-nak vannak megoldásai és segédprogramjai a hálózati kapcsolatok, az ExpressRoute-áramkörök állapotának figyelésére és a felhőbeli hálózati forgalom elemzésére.
 
-## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
+## <a name="network-performance-monitor-npm"></a>Hálózati teljesítményfigyelő (NPM)
 
-Network Performance monitort (NPM) olyan képességeit, amelyek mindegyike részesíti előnyben a hálózaton, a hálózati kapcsolat és az alkalmazások állapotának figyelése és a hálózat teljesítményét elemezheti. Az NPM felhőalapú és a egy hibrid Hálózatfigyelő megoldás, amely figyeli a közötti kapcsolatot biztosít:
+A Hálózati teljesítményfigyelő (Network Performance Monitor) egy olyan képességcsomag, amely a hálózat állapotának, az alkalmazásokhoz való hálózati kapcsolatnak a figyelésére, valamint a hálózat teljesítményébe való betekintést nyújt. Az NPM felhőalapú, és hibrid hálózati figyelési megoldást kínál, amely figyeli a következők közötti kapcsolatot:
  
-* Felhőbeli központi telepítések és a helyszíni helyek
-* Az adatközpontok és a fiókirodák
-* Mission kritikus Többrétegű alkalmazások/mikroszolgáltatások
-* Felhasználó tartózkodási helye és webes alkalmazásokat (HTTP/HTTPs) 
+* Felhőalapú telepítések és helyszíni helyek
+* Több adatközpont és fiókiroda
+* Kritikus fontosságú többszintű alkalmazások/mikroszolgáltatások
+* Felhasználói helyek és webalapú alkalmazások (HTTP/HTTPs) 
 
-Teljesítményfigyelő, az ExpressRoute-figyelő és a szolgáltatás Kapcsolatfigyelő NPM képességeire figyeli, és az alábbiakban tekintheti át.
+A Teljesítményfigyelő, az ExpressRoute-figyelő és a Szolgáltatáskapcsolat-figyelő az NPM-en belül figyeli a funkciókat, és az alábbiakban ismertetjük őket.
 
 ## <a name="performance-monitor"></a>Teljesítménymonitorozás
 
-A Teljesítményfigyelő az NPM részét képezi, és hálózati felhőalapú, hibrid és helyszíni környezetek figyelése. Fiókirodai és kirendeltségekben, tárolási helyek, az adatközpontok és felhők közötti hálózati kapcsolat követheti nyomon. Hálózati problémák képes észlelni, mielőtt felhasználói panaszok. A fő előnyei a következők:
+A Teljesítményfigyelő az NPM része, és a felhő-, hibrid és helyszíni környezetek hálózati figyelése. A hálózati kapcsolatokat figyelheti a távoli fiók- és területi irodákban, az üzlethelyeken, az adatközpontokban és a felhőkben. A hálózati problémákat még a felhasználók panasza előtt észlelheti. A legfontosabb előnyök a következők:
 
-* Különböző alhálózatokban és beállított riasztásokkal kimaradások és késések figyelése
-* A hálózaton (beleértve a redundáns elérési utak) összes útvonalának figyelése
-* Átmeneti és időponthoz – hálózati problémák, amelyeket nehéz replikálni
-* A hálózat, teljesítménycsökkenésért felelős konkrét szegmensét meghatározása
-* Az SNMP protokollt kellene nélkül, a hálózat állapotának figyelése
+* A veszteség és a késés figyelése a különböző alhálózatok között, és riasztások beállítása
+* A hálózat összes útvonalának figyelése (beleértve a redundáns elérési utakat is)
+* A nehezen replikálható átmeneti és időponthoz elegendő hálózati problémák elhárítása
+* A hálózat azon szegmensének meghatározása, amely a leromlott teljesítményért felelős
+* A hálózat állapotának figyelése SNMP nélkül
 
-![Az NPM-topológia térkép](./media/network-monitoring-overview/npm-topology-map.png) 
+![NPM topológia térkép](./media/network-monitoring-overview/npm-topology-map.png) 
 
-További információkért tekintse meg a következő cikkeket:
+További információt az alábbi cikkekben talál:
 
-* [A Network Performance Monitor megoldás konfigurálása az Azure Monitor naplóira](../azure-monitor/insights/network-performance-monitor.md) 
+* [Hálózati teljesítményfigyelő megoldás konfigurálása az Azure Figyelő naplóiban](../azure-monitor/insights/network-performance-monitor.md) 
 * [Használati esetek](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * Termékfrissítések:
   * [2017. február](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
@@ -59,69 +59,69 @@ További információkért tekintse meg a következő cikkeket:
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
-Az expressroute-hoz az NPM kínál átfogó ExpressRoute-monitorozás az Azure privát társviszony-létesítés és Microsoft társviszony-kapcsolatokat. Figyelheti E2E kapcsolatait és teljesítményét a fiókirodák és az Azure között expressroute-on keresztül. A főbb funkciók a következők:
+Az ExpressRoute-hoz az NPM átfogó ExpressRoute-figyelést biztosít az Azure Private társviszony-létesítési és microsoftos társviszony-létesítési kapcsolatokhoz. Figyelheti az E2E-kapcsolatot és a teljesítményt a fiókirodák és az Azure között az ExpressRoute-on keresztül. A legfontosabb képességek a következők:
 
-* Az előfizetéséhez tartozó ER-Kapcsolatcsoportok automatikus felismerése
-* Hálózati topológia a helyszíni, felhőalapú alkalmazások észlelése
-* Kapacitás megtervezése, sávszélesség-kihasználtságának elemzése
-* Monitorozási és riasztási az elsődleges és másodlagos elérési utak
-* Kapcsolat az Azure figyelési szolgáltatások például az Office 365, Dynamics 365, expressroute-on keresztül
-* Virtuális hálózatok kapcsolatának teljesítménycsökkenése észlelése
+* Az előfizetéshez társított ER-áramkörök automatikus észlelése
+* Hálózati topoológia észlelése a helyszíni alkalmazásoktól a felhőalapú alkalmazásokig
+* Kapacitástervezés, sávszélesség-kihasználtsági elemzés
+* Figyelés és riasztás mind az elsődleges, mind a másodlagos útvonalakon
+* Az Azure-szolgáltatásokkal, például az Office 365-tel, a Dynamics 365-tel, a ... expressroute-on keresztül
+* A virtuális hálózatokkal való kapcsolat romlásának észlelése
 
-![Földrajzitérkép megjelenítő forgalom régióban](./media/network-monitoring-overview/expressroute-topology-map.png) 
+![Régiók közötti forgalmat megjelenítő földrajzi térkép](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 További információkért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
-* [Blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
+* [Blogbejegyzést](https://aka.ms/NPMExRmonitorGA)
 
 ## <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
-Figyelési szolgáltatás kapcsolata, most tesztelheti az alkalmazások lemezekről és a teljesítmény szűk észleléséhez a helyszíni, a szolgáltató hálózatok és a felhő/titkos adatközpontok.
+A Szolgáltatáskapcsolat figyelésével most tesztelheti az alkalmazások elérhetőségét, és észlelheti a teljesítménybeli szűk keresztmetszeteket a helyszíni, a szolgáltatói hálózatokon és a felhő-/magánadatközpontokban.
 
-* Végpontok közötti hálózati alkalmazások hálózati kapcsolatának figyelése
-* Hálózati teljesítmény az alkalmazásszolgáltatást összekapcsolását, pontos helyét a felhasználó és az alkalmazás között az elérési úton elhelyezkedő teljesítménycsökkenés észlelését
-* Teszt alkalmazás elérhetőség világszerte több felhasználó helyről
-* Határozza meg a hálózati késés és a csomag adatveszteség a sor üzleti és SaaS-alkalmazásokhoz
-* A hálózaton, a gyenge alkalmazásteljesítményt okozó hotspotok meghatározása
-* Elérhetőség beépített tesztek a Microsoft Office 365, Dynamics 365, a Skype és egyéb Microsoft-szolgáltatásokat használó, Office 365-alkalmazások figyelése
+* Az alkalmazások végpontok közötti hálózati kapcsolatának figyelése
+* Az alkalmazások kézbesítésének és a hálózati teljesítménynek a korrelálása, a lebomlás pontos helyének észlelése a felhasználó és az alkalmazás közötti útvonal mentén
+* Az alkalmazások elérhetőségének tesztelése a világ több felhasználói helyéről
+* Határozza meg a hálózati késést és a csomagvesztést az üzletághoz és az SaaS-alkalmazásokhoz
+* Határozza meg a hálózati forró pontokat, amelyek az alkalmazás gyenge teljesítményét okozhatják
+* Az Office 365-alkalmazások elérhetőségének figyelése a Microsoft Office 365, a Dynamics 365, a Skype Vállalati verzió és más Microsoft-szolgáltatások beépített tesztjeinek használatával
 
 További információkért tekintse át a következő cikkeket:
 
-* [A Network Performance Monitor konfigurálása Szolgáltatásvégpontok figyeléshez](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
-* [Blogbejegyzés](https://aka.ms/svcendptmonitor)
+* [A Hálózati teljesítményfigyelő konfigurálása a szolgáltatásvégpontok figyelésére](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
+* [Blogbejegyzést](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>Forgalmi elemzések
-A TRAFFIC Analytics egy felhőalapú megoldás, amely a felhőbeli hálózatok felhasználói és alkalmazástevékenységekbe betekintést nyújt. Hálózati biztonsági csoportok naplóinak elemzése, amelyek betekintést nyújtanak:
+A Traffic Analytics egy felhőalapú megoldás, amely betekintést nyújt a felhőhálózatok felhasználói és alkalmazási tevékenységébe. Az NSG flow-naplók elemzése a következőkbe való betekintést nyújt:
 
-* A hálózatok között az Azure és az Internet, nyilvános felhő-régiók, virtuális hálózatok és alhálózatok közötti forgalom
-* Alkalmazások és a hálózaton, szimatolók vagy dedikált folyamat gyűjtő berendezéseket kellene protokollok
-* Fő kapcsolattartók, a forgalmas alkalmazások, a virtuális gép beszélgetések a felhőben, a legaktívabb
-* Forrásaként és céljaként a forgalom virtuális hálózataiban, kritikus fontosságú üzleti szolgáltatásokat és alkalmazásokat között helyek közötti kapcsolatok
-* Biztonság – rosszindulatú forgalom, a portokat nyissa meg az internethez, alkalmazások és virtuális gépek Internet-hozzáférés kísérlet...
-* Kapacitás kihasználtsága - megakadályozhatja, hogy túlzott kiosztása vagy alulkihasználtságának problémák figyelésével VPN-átjárók és más szolgáltatások kihasználtsági trendek
+* Forgalom áramlik a hálózatok között az Azure és az internet, a nyilvános felhő régiók, VNETs, és alhálózatok
+* Alkalmazások és protokollok a hálózaton, anélkül, hogy a szippantás vagy dedikált áramlásgyűjtő készülékek
+* Top talkers, beszédes alkalmazások, VM beszélgetések a felhőben, a közlekedési hotspotok
+* A VNET-k közötti forgalom forrásai és célállomásai, a kritikus üzleti szolgáltatások és az alkalmazások közötti kapcsolatok
+* Biztonság – rosszindulatú forgalom, az internetre nyitott portok, alkalmazások vagy virtuális gépek, amelyek internet-hozzáférést próbálnak elérni...
+* Kapacitáskihasználás – segít kiküszöbölni a túl-kiépítés vagy az alulkihasználtság problémáit a VPN-átjárók és egyéb szolgáltatások kihasználtsági tendenciáinak figyelésével
 
-A TRAFFIC Analytics programcsomagok döntéstámogató információkat, hogy segítséget nyújt a szervezet hálózati tevékenység, biztonságos alkalmazások és adatok naplózása, számítási feladatok teljesítményének optimalizálásához, és megfelelnek.
+A Traffic Analytics olyan használható információkkal látja el Önt, amelyek segítségével ellenőrizheti a szervezet hálózati tevékenységét, biztonságos alkalmazásokat és adatokat biztosíthat, optimalizálhatja a számítási feladatok teljesítményét és megfelelőséget biztosít.
 
-![Földrajzitérkép megjelenítő forgalom régióban](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![Régiók közötti forgalmat megjelenítő földrajzi térkép](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
-Kapcsolódó hivatkozások:
-* [Blogbejegyzés](https://aka.ms/trafficanalytics), [dokumentáció](https://aka.ms/trafficanalyticsdocs), [– gyakori kérdések](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+Kapcsolódó linkek:
+* [Blogbejegyzés](https://aka.ms/trafficanalytics), [Dokumentáció](https://aka.ms/trafficanalyticsdocs), [GYIK](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
 
 ## <a name="dns-analytics"></a>DNS-elemzés
-DNS-rendszergazdák számára készült, ez a megoldás gyűjti, elemzi és hátterében a DNS-naplókat biztonsági, a műveletek és a teljesítménnyel kapcsolatos információkat.  Funkciói a következők:
+A DNS-rendszergazdák számára készült megoldás a DNS-naplókat gyűjti, elemzi és korrelálja a biztonság, a műveletek és a teljesítményhez kapcsolódó elemzések biztosítása érdekében.  Néhány képesség a következő:
 
-* Azok az ügyfelek feloldják rosszindulatú tartományokat, azonosítása
+* A rosszindulatú tartományokra feloldani próbáló ügyfelek azonosítása
 * Elavult erőforrásrekordok azonosítása
-* Gyakran lekérdezett tartománynevek és beszédes DNS-ügyfelek
-* A kérelmek által generált terhelést a DNS-kiszolgálókon láthatósága
+* A gyakran lekérdezett tartománynevek és a beszédes DNS-ügyfelek láthatósága
+* A DNS-kiszolgálók kérelemterhelésének láthatósága
 * Dinamikus DNS-regisztrációs hibák figyelése
 
-![DNS Analytics Dashboard](./media/network-monitoring-overview/dns-analytics-overview.png) 
+![DNS-elemzés irányítópultja](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
-Kapcsolódó hivatkozások:
-* [Blogbejegyzés](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentációja](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+Kapcsolódó linkek:
+* [Blogbejegyzés](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentáció](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>Egyéb rendelkezések
+## <a name="miscellaneous"></a>Egyéb
 
-* [Új díjszabás](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [Új árak](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

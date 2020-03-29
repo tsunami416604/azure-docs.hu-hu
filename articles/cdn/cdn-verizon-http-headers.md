@@ -1,6 +1,6 @@
 ---
-title: Verizon-specifikus HTTP-fejléceket az Azure CDN szabálymotorral |} A Microsoft Docs
-description: Ez a cikk ismerteti az Azure CDN szabálymotorral Verizon-specifikus HTTP-fejlécek használata.
+title: Verizon-specifikus HTTP-fejlécek az Azure CDN-szabálymotorhoz | Microsoft dokumentumok
+description: Ez a cikk ismerteti, hogyan használhatja a Verizon-specifikus HTTP-fejlécek az Azure CDN-szabálymotor.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,69 +15,69 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
 ms.openlocfilehash: a5881bea578f2791f8dc0d6e760fd15c6f47e435
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593249"
 ---
-# <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral verizon-specifikus HTTP-fejlécek
+# <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-specifikus HTTP-fejlécek az Azure CDN-szabálymotorhoz
 
-A **verizon Azure CDN Premium** termékek, amikor HTTP-kérést küld a forráskiszolgáló a jelenléti pontok (POP) kiszolgáló adhat hozzá egy vagy több fenntartott fejlécek (vagy a proxy speciális fejlécek) az ügyfél kérésében a jelenléti pontra irányíthatja. Ezek a fejlécek vannak a standard kapott fejlécek továbbítás mellett. Standard kérelemfejlécek kapcsolatos információkért lásd: [mezők kérelem](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
+A **Verizon-termékekből származó Azure CDN Premium** esetén, amikor egy HTTP-kérelmet küld a forráskiszolgálónak, a POP-kiszolgáló hozzáadhat egy vagy több fenntartott fejlécet (vagy proxy speciális fejléceket) az ügyfélkérelemben a POP-hoz. Ezek a fejlécek a kapott szabványos továbbítási fejléceken kívül találhatók. A szabványos kérelemfejlécekről a [Kérelem mezők című témakörben](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)talál.
 
-Ha azt szeretné, hogy fenntartott fejléc ezek közül az Azure CDN (Content Delivery Network) POP kérelem hozzá lehet adni a forráskiszolgáló, létre kell hoznia egy szabályt az a [Proxy speciális fejlécek funkció](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) a szabályok motorban. Ez a szabály a kizárása a el kívánja távolítani az alapértelmezett listát a fejlécek mezőben fejlécek fejléc. Ha engedélyezte a [gyorsítótár válaszfejlécek hibakeresési funkció](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers), adja hozzá a szükséges `X-EC-Debug` fejlécek. 
+Ha meg szeretné akadályozni, hogy az azure-cdn (content delivery network) POP-kérelemben az egyik ilyen fenntartott fejléc et hozzáadja az eredeti kiszolgálóhoz, létre kell hoznia egy szabályt a [Proxy speciális fejlécek szolgáltatással](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) a szabálymotorban. Ebben a szabályban zárja ki az eltávolítani kívánt fejlécet a fejlécmező fejléceinek alapértelmezett listájából. Ha engedélyezte a [Hibakeresési gyorsítótár válaszfejlécek szolgáltatását,](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)győződjön meg aszükséges `X-EC-Debug` fejlécek hozzáadásáról. 
 
-Például távolítsa el a `Via` fejléc, a szabály a fejlécek mezőt tartalmaznia kell az alábbi lista a fejlécek: *X-továbbított-, X-továbbított-protokoll, X-gazdagép, X-Midgress, X-átjáró-List, X-EK-neve, a gazdagép*. 
+A `Via` fejléc eltávolításához például a szabály fejlécmezőjének a következő fejléclistát kell tartalmaznia: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
 
-![A fejlécek speciális szabály](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
+![Proxy speciális fejlécek szabály](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
-A következő táblázat ismerteti a fejlécek, a Verizon CDN összes jelenléti Pontjára, a kérelem által hozzáadott:
+Az alábbi táblázat a Verizon CDN POP által a kérelemben hozzáadható fejléceket ismerteti:
 
 Kérelem fejléce | Leírás | Példa
 ---------------|-------------|--------
-[Via](#via-request-header) | Azonosítja a POP-kiszolgálót, amely használ proxyt az eredeti kiszolgálóra irányuló kérelem. | HTTP/1.1 ECS (dca/1A2B)
-X-továbbított-számára | Azt jelzi, hogy a kérelmező IP-címet.| 10.10.10.10
-X-Forwarded-Proto | Azt jelzi, hogy a kérelem protokoll. | http
-X-Host | Azt jelzi, hogy a kérésben szereplő állomásnév. | cdn.mydomain.com
-X-Midgress | Jelzi, hogy a kérés küldése a proxyn keresztül további CDN kiszolgálón keresztül volt-e. Például a POP-kiszolgáló – forrás pajzs kiszolgáló vagy a jelenléti pontra Irányíthatja kiszolgáló ADN átjáró kiszolgálón. <br />Csak akkor, ha a forgalom midgress kerül sor a fejléc szerepel a kérelemben. Ebben az esetben a fejléc értéke 1 jelzi, hogy a kérés küldése a proxyn keresztül további CDN kiszolgálón keresztül volt-e.| 1
-[Gazdagép](#host-request-header) | Azonosítja a gazdagép és a portot, előfordulhat, hogy hol található a kért tartalmat. | marketing.mydomain.com:80
-[X-átjáró-List](#x-gateway-list-request-header) | ADN: Egy ügyfél kezdőpontja rendelt ADN átjárókiszolgálók feladatátvételi listája azonosítja. <br />Forrás pajzs: Azt jelzi, hogy egy ügyfél kezdőpontja rendelt pajzs szerverek készletét. | `icn1,hhp1,hnd1`
-X-EC- _&lt;name&gt;_ | Kérelemfejlécek kezdődő *X-EK* (például X-EK-címke, [X-EK-Debug](cdn-http-debug-headers.md)) a CDN által használatra fenntartva.| waf-production
+[Via](#via-request-header) | Azonosítja azt a POP-kiszolgálót, amely a kérelmet egy forráskiszolgálóra kérte. | HTTP/1.1 ECS (dca/1A2B)
+X-Forwarded-For | A kérelmező IP-címét jelzi.| 10.10.10.10
+X-Forwarded-Proto | A kérelem protokollját jelzi. | http
+X-host | A kérelem állomásnevét jelzi. | cdn.mydomain.com
+X-Midgress között | Azt jelzi, hogy a kérés egy további CDN-kiszolgálón keresztül lett-e proxied. Például egy POP-kiszolgáló-származási pajzs kiszolgáló vagy egy POP-kiszolgáló-ADN átjárókiszolgáló. <br />Ez a fejléc csak akkor kerül a kérelembe, ha midgress forgalom történik. Ebben az esetben a fejléc 1-re van állítva, jelezve, hogy a kérelem egy további CDN-kiszolgálón keresztül lett proxied.| 1
+[Állomás](#host-request-header) | Azonosítja azt a portot és a portot, ahol a kért tartalom megtalálható. | marketing.mydomain.com:80
+[X-Gateway-lista](#x-gateway-list-request-header) | ADN: Az ügyfél eredetéhez rendelt ADN-átjárókiszolgálók feladatátvételi listáját azonosítja. <br />Eredetvédő: Az ügyfél eredetéhez rendelt eredeti pajzskiszolgálók készletét jelzi. | `icn1,hhp1,hnd1`
+X-EK-_&lt;név&gt;_ | Az *X-EC-vel* kezdődő kérelmek fejlécei (például X-EC-Tag, [X-EC-Debug)](cdn-http-debug-headers.md)a CDN számára vannak fenntartva.| waf-termelés
 
-## <a name="via-request-header"></a>Kérelem fejléce keresztül
-A formátumot, amelyen keresztül a `Via` kérelem fejléce POP kiszolgálót azonosít, nulláról indulva a következő szintaxist:
+## <a name="via-request-header"></a>Kérésfejlécen keresztül
+A `Via` kérelemfejléc POP-kiszolgálót azonosító formátumát a következő szintaxis határozza meg:
 
 `Via: Protocol from Platform (POP/ID)` 
 
-A kifejezések szintaxisát a következőképpen vannak definiálva:
-- Protokoll: Azt jelzi, hogy a protokollt (például HTTP/1.1) verzióját használja a proxy a kérelmet. 
+A szintaxisban használt kifejezések a következők:
+- Protokoll: A protokoll (például HTTP/1.1) verzióját jelzi, amely a kérelem proxyja. 
 
-- Platform: Azt jelzi, hogy a platformot, amelyre a tartalmat kért. Ez a mező a következő kód érvényesek: 
+- Platform: Azt a platformot jelzi, amelyen a tartalmat kérték. A következő kódok érvényesek erre a mezőre: 
 
     Kód | Platform
     -----|---------
-    ECAcc | Nagy HTTP
-    ECS   | HTTP kicsi
-    ECD   | Alkalmazásszolgáltatási hálózat (ADN)
+    ECAcc | HTTP Nagy
+    Ecs   | HTTP Kicsi
+    Ecd   | Alkalmazáskézbesítési hálózat (ADN)
 
-- POP: Azt jelzi, hogy a [POP](cdn-pop-abbreviations.md) , amely kezeli a kérelmet. 
+- POP: Azt a [POP-ot](cdn-pop-abbreviations.md) jelzi, amely a kérést kezelte. 
 
-- AZONOSÍTÓ: Csak belső használatra.
+- Azonosító: Csak belső használatra.
 
-### <a name="example-via-request-header"></a>A példában-n keresztül a kérelem fejléce
+### <a name="example-via-request-header"></a>Példa a kérelem fejlécén keresztül
 
 `Via: HTTP/1.1 ECD (dca/1A2B)`
 
-## <a name="host-request-header"></a>Gazdagép-kérelem fejléce
-A POP-kiszolgálókat a rendszer felülírja a `Host` fejléc mindkét alábbi feltétel teljesülése esetén:
-- A kért tartalmat a forrása egy ügyfél eredeti kiszolgálóra.
-- A megfelelő ügyfél kezdőpontja HTTP-állomásfejlécet beállítás nem üres.
+## <a name="host-request-header"></a>Állomáskérelem fejléce
+A POP-kiszolgálók `Host` felülírják a fejlécet, ha mindkét alábbi feltétel teljesül:
+- A kért tartalom forrása egy ügyfél eredetű kiszolgálója.
+- A megfelelő ügyféleredet a HTTP-állomásfejléc beállítás nem üres.
 
-A `Host` kérelem fejléce felül lesznek írva, hogy a HTTP-állomásfejlécet beállításban megadott értéket.
-Ha az ügyfél kezdőpontja HTTP-állomásfejlécet beállítás üres, majd a `Host` a kérelmező által küldött kérelem fejléce a rendszer az ügyfél eredeti kiszolgálóra továbbítja.
+A `Host` kérelemfejléc felülleszírva, hogy tükrözze a HTTP-állomásfejléc beállításban megadott értéket.
+Ha az ügyfél forrásának HTTP-állomásfejléc-beállítása üres, akkor a `Host` kérelmező által elküldött kérelemfejléc továbbításra kerül az ügyfél származási kiszolgálójára.
 
-## <a name="x-gateway-list-request-header"></a>X-átjáró-List-kérelem fejléce
-A POP-kiszolgáló hozzáadása/felülírja az "X-átjáró-List-kérelem fejléce a következő feltételek bármelyikének teljesülésekor:
-- A kérelem a ADN platform mutat.
-- Van egy, a forrás pajzs szolgáltatás által védett ügyfél forrás kiszolgálóra továbbítja a kérést.
+## <a name="x-gateway-list-request-header"></a>X-Gateway-lista kérelem fejléce
+A POP-kiszolgáló az alábbi feltételek bármelyike teljesülése esetén hozzáadja/felülírja az "X-Gateway-list" kérelemfejlécet:
+- A kérelem az ADN platformra mutat.
+- A kérést a rendszer továbbítja egy ügyfél származási kiszolgálójára, amelyet az Origin Shield szolgáltatás véd.
 

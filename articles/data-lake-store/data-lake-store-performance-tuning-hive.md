@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Storage Gen1 Hive teljesítmény-finomhangolási útmutató |} A Microsoft Docs
-description: Az Azure Data Lake Storage Gen1 Hive teljesítmény-finomhangolási útmutató
+title: Az Azure Data Lake Storage Gen1 Hive teljesítményhangolási irányelvei | Microsoft dokumentumok
+description: Az Azure Data Lake Storage Gen1 Hive teljesítményhangolási irányelvei
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -13,61 +13,61 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 433c6b7d70cea9406b67d65e23cc357939cb5aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61437276"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Hive a HDInsight és az Azure Data Lake Storage Gen1
+# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítményhangolási útmutató a Hive-hoz a HDInsight és az Azure Data Lake Storage Gen1 szolgáltatáshoz
 
-Az alapértelmezett beállításokat, adja meg a megfelelő teljesítmény számos különböző használati helyzetekhez különböző állítani.  I/o-igényes lekérdezéseket, a Hive hangolásával jobb teljesítmény érdekében az Azure Data Lake Storage Gen1 beolvasásához.  
+Az alapértelmezett beállítások úgy vannak beállítva, hogy jó teljesítményt nyújtsanak számos különböző használati esetben.  I/O-igényes lekérdezések esetén a Hive behangolható, hogy jobb teljesítményt nyújtson az Azure Data Lake Storage Gen1 használatával.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **A Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen1 fiókot. Lásd: [egy HDInsight-fürt létrehozása a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
-* **HDInsight Hive futó**.  A HDInsight Hive-feladatok futtatásával kapcsolatos tudnivalókért lásd: [a HDInsight Hive használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Teljesítmény-finomhangolási útmutató a Data Lake Storage Gen1**.  Az általános teljesítmény fogalmak, lásd: [Data Lake Storage Gen1 teljesítményének hangolása útmutatója](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **A Data Lake Storage Gen1 fiók**. Az azure [Data Lake Storage gen1](data-lake-store-get-started-portal.md) című témakörben talál útmutatást a létrehozásról.
+* **Azure HDInsight-fürt,** amely hozzáférést biztosít a Data Lake Storage Gen1 fiókhoz. Lásd: [HDInsight-fürt létrehozása a Data Lake Storage Gen1 szolgáltatással című témakört.](data-lake-store-hdinsight-hadoop-use-portal.md) Győződjön meg arról, hogy engedélyezi a Távoli asztal szolgáltatást a fürtszámára.
+* **A Hive futtatása a HDInsighton.**  A Hive-feladatok HDInsight-on való futtatásáról a [Hive használata a HDInsightban](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **Teljesítményhangolási irányelvek a Data Lake Storage Gen1 szolgáltatáshoz.**  Az általános teljesítménykoncepciókról a [Data Lake Storage Gen1 teljesítményhangolási útmutatója című témakörben talál.](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Paraméterek
 
-Az alábbiakban a Data Lake Storage Gen1 jobb teljesítmény hangolására legfontosabb beállítások:
+Az alábbiakban a Data Lake Storage Gen1 teljesítményének javítása érdekében az alábbiak legfontosabb beállításait kell behangolni:
 
-* **Hive.tez.Container.size** – az egyes feladatok által használt memória mennyisége
+* **hive.tez.container.size** – az egyes feladatok által használt memória mennyisége
 
-* **tez.Grouping.min méretű** – minimális méretét minden leképezője
+* **tez.grouping.min-méret** – az egyes leképezők minimális mérete
 
-* **tez.Grouping.max méretű** – maximális méretét minden leképezője
+* **tez.grouping.max méretű** – az egyes leképezők maximális mérete
 
-* **Hive.Exec.reducer.bytes.per.reducer** – minden nyomáscsökkentő méretét
+* **hive.exec.reducer.bytes.per.reducer** – az egyes szűkítők mérete
 
-**Hive.tez.Container.size** -tároló mérete határozza meg, mennyi memória érhető el minden egyes feladathoz.  Ez a fő bemeneti az egyidejűséget, a Hive szabályozása.  
+**hive.tez.container.size** – A tároló mérete határozza meg, hogy mennyi memória áll rendelkezésre az egyes feladatokhoz.  Ez a fő bemeneti az egyidejűség a Hive-ban.  
 
-**tez.Grouping.min méretű** – Ez a paraméter lehetővé teszi, hogy minden egyes eseményleképező minimális méretének beállítása.  Ha úgy dönt, Tez, leképező száma kisebb, mint ez a paraméter értékét, majd Tez az itt beállított értéket fogja használni.
+**tez.grouping.min-size** – Ez a paraméter lehetővé teszi az egyes leképezők minimális méretének beállítását.  Ha a Tez által választott leképezők száma kisebb, mint ennek a paraméternek az értéke, akkor Tez az itt megadott értéket fogja használni.
 
-**tez.Grouping.max méretű** – a paraméter lehetővé teszi, hogy minden egyes eseményleképező maximális méretének beállítása.  Ha leképező Tez úgy dönt, hogy a szám nagyobb, mint ez a paraméter értékét, majd Tez fogja használni az itt beállított érték.
+**tez.grouping.max-size** – A paraméter lehetővé teszi az egyes leképezők maximális méretének beállítását.  Ha a Tez által választott leképezők száma nagyobb, mint ennek a paraméternek az értéke, akkor Tez az itt beállított értéket fogja használni.
 
-**Hive.Exec.reducer.bytes.per.reducer** – Ez a paraméter beállítja az egyes nyomáscsökkentő méretét.  Alapértelmezés szerint minden nyomáscsökkentő érték 256MB.  
+**hive.exec.reducer.bytes.per.reducer** – Ez a paraméter az egyes szűkítők méretét állítja be.  Alapértelmezés szerint minden szűkítő 256 MB.  
 
 ## <a name="guidance"></a>Útmutatás
 
-**Állítsa be a hive.exec.reducer.bytes.per.reducer** – az alapértelmezett érték jól működik, ha az adatok tömörítetlen.  Tömörített adatok akkor csökkentse a nyomáscsökkentő méretét.  
+**A hive.exec.reducer.bytes.per.reducer** beállítása – Az alapértelmezett érték jól működik, ha az adatok tömörítetlenek.  A tömörített adatok esetében csökkenteni e-k nélkűl kell csökkenteni a szűkítő méretét.  
 
-**Állítsa be a hive.tez.container.size** – az egyes csomópontok memória yarn.nodemanager.resource.memory-mb-tal van megadva, és helyesen meg kell a HDI-fürt alapértelmezés szerint.  A YARN-ban a megfelelő memóriával kapcsolatos további információkért lásd: Ez [közzététele](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Állítsa be a hive.tez.container.size** – Minden csomópontban a memóriát a yarn.nodemanager.resource.memory-mb adja meg, és alapértelmezés szerint megfelelően kell beállítani a HDI-fürtön.  A megfelelő memória YARN-ban való beállításáról további információt ebben a [bejegyzésben](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom)talál.
 
-I/o-igényű számítási feladatokhoz a Tez-tároló méretének csökkentésével további párhuzamosság is kihasználhatják. Ez lehetővé teszi a felhasználó több tároló, amely növeli a párhuzamosság.  Azonban bizonyos Hive-lekérdezések szükséges rendszer jelentős mennyiségű memóriát (pl. MapJoin).  Ha a feladat nem rendelkezik elegendő memóriával, futtatás közben memóriából fakadó kivétel kívüli kap.  Ha ki memória kivételeket kap, majd növelje a memória.   
+Az I/O-igényes munkaterhelések nagyobb párhuzamosságelőnyeit élvezhetik a Tez-tároló méretének csökkentésével. Ez több tárolót ad a felhasználónak, ami növeli az egyidejűséget.  Egyes Hive-lekérdezések azonban jelentős mennyiségű memóriát igényelnek (pl. MapJoin).  Ha a feladat nem rendelkezik elegendő memóriával, futásközben memóriakiesést kap.  Ha kevés memóriával kell kivételét kapnia, akkor növelnie kell a memóriát.   
 
-A futó feladatok vagy párhuzamosság egyidejű számát, amelyet fog lehet a teljes YARN memória.  YARN-tárolók száma fogja diktálni hány egyidejű feladat futtatható.  A YARN-csomópontonkénti memória megkereséséhez nyissa meg az Ambari.  Keresse meg a YARN és a konfigurációkat lapon.  A YARN memória ebben az ablakban jelenik meg.  
+A futó feladatok vagy párhuzamosságok egyidejű számát a teljes YARN memória korlátozza.  A YARN-tárolók száma határozza meg, hogy hány egyidejű feladat futtatható.  A YARN memória csomópontonkénti megkereséséhez lépjen az Ambari térre.  Nyissa meg a YARN lapot, és tekintse meg a Configs lapot.  Ebben az ablakban megjelenik a YARN memória.  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-A kulcs használatával a Data Lake Storage Gen1 teljesítmény javításához, hogy a lehető legnagyobb mértékben egyidejűség mértékének növelése.  Tez automatikusan kiszámolja a feladatokat, amelyek kell létrehozni, így nem kell azt a számát.   
+A Data Lake Storage Gen1 használatával a teljesítmény javítása kulcsa az egyidejűség lehető legnagyobb mértékű növelése.  A Tez automatikusan kiszámítja a létrehozandó feladatok számát, így nem kell beállítania.   
 
-## <a name="example-calculation"></a>Példa kiszámítása
+## <a name="example-calculation"></a>Példa számítása
 
-Tegyük fel, hogy egy 8 D14 fürtcsomópont-e meg.  
+Tegyük fel, hogy van egy 8 csomós D14-es fürtje.  
 
     Total YARN memory = nodes * YARN memory per node
     Total YARN memory = 8 nodes * 96GB = 768GB
@@ -75,19 +75,19 @@ Tegyük fel, hogy egy 8 D14 fürtcsomópont-e meg.
 
 ## <a name="limitations"></a>Korlátozások
 
-**Data Lake Storage Gen1 szabályozása** 
+**Data Lake Storage Gen1 szabályozás** 
 
-Ha eléri a Data Lake Storage Gen1 által nyújtott sávszélesség korlátai, el tevékenységhibák megtekintéséhez. Ez a feladat naplókban szabályozási hibákat észlelt problémát azonosíthatók.  A párhuzamosság Tez tároló méretének növelésével csökkenthető.  Ha a feladat több egyidejűséget van szüksége, lépjen kapcsolatba velünk a következő címen.
+Ha eléri a Data Lake Storage Gen1 által biztosított sávszélesség-korlátokat, akkor a feladathibákat láthatja. Ez a feladatnaplókban lévő szabályozási hibák megfigyelésével azonosítható.  Csökkentheti a párhuzamosság növelésével Tez tároló méretét.  Ha több egyidejűségre van szüksége a munkájához, kérjük, vegye fel velünk a kapcsolatot.
 
-Annak ellenőrzéséhez, hogy ha Ön első szabályozott, akkor engedélyeznie kell a hibakeresési naplózás az ügyféloldalon. Itt látható, hogyan teheti, hogy:
+Annak ellenőrzéséhez, hogy szabályozás alá kerül-e, engedélyeznie kell a hibakeresési naplózást az ügyféloldalon. Ezt a következőképpen teheti meg:
 
-1. Helyezze el a következő tulajdonság a Hive-config log4j tulajdonságait. Ezt megteheti az Ambari nézetből: log4j.logger.com.microsoft.azure.datalake.store=DEBUG indítsa újra az összes a csomópontok/szolgáltatást a konfiguráció érvénybe léptetéséhez.
+1. Helyezze a következő tulajdonságot a Hive config log4j tulajdonságaiba. Ez az Ambari nézetből végezhető el: log4j.logger.com.microsoft.azure.datalake.store=DEBUG A konfiguráció érvénybe lépéséhez az összes csomópont/szolgáltatás újraindítása.
 
-2. Ha, első szabályozott, látni fogja a hive naplófájlban HTTP 429-es hibakód. A hive-naplófájl nem a /tmp/&lt;felhasználói&gt;/hive.log
+2. Ha szabályozás alatt áll, a HTTP 429 hibakód jelenik meg a struktúra naplófájljában. A struktúranaplófájl a&lt;/tmp/&gt;user /hive.log könyvtárban található.
 
-## <a name="further-information-on-hive-tuning"></a>További információ a Hive-finomhangolás
+## <a name="further-information-on-hive-tuning"></a>További információ a Hive hangolásáról
 
-Az alábbiakban néhány blogok, amelyek segítenek a Hive-Lekérdezések finomhangolása:
-* [A HDInsight hadoop Hive-lekérdezések optimalizálása](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Hive a lekérdezési teljesítmény hibaelhárítása](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
-* [Az ignite-előadás Hive a HDInsight a optimalizálása](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)
+Íme néhány blog, amely segít behangolni a Hive lekérdezések:
+* [Hive-lekérdezések optimalizálása a Hadoop számára a HDInsightban](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [Hive-lekérdezés teljesítményének hibaelhárítása](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [A HDInsight-on a Hive optimalizálása](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

@@ -1,6 +1,6 @@
 ---
-title: Media Services és az Apple FairPlay-licenc-támogatás – Azure |} A Microsoft Docs
-description: Ez a témakör áttekintést nyújt az Apple FairPlay-licenc követelményeit és konfigurációját.
+title: Media Services és Apple FairPlay licenctámogatás - Azure | Microsoft dokumentumok
+description: Ez a témakör áttekintést nyújt az Apple FairPlay licenckövetelményeiről és konfigurációjáról.
 author: juliako
 manager: femila
 editor: ''
@@ -15,73 +15,73 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60733572"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licenc követelményeit és konfigurációját 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása 
 
-Az Azure Media Services lehetővé teszi, hogy a HLS-tartalmak **Apple fairplay által** (AES-128 CBC). Media Services modult FairPlay-licenc is biztosít. Ha a lejátszó próbál FairPlay által védett tartalom lejátszása, licencet beszereznie kérelmet küldött a licenctovábbítási szolgáltatása. Ha a szolgáltatás jóváhagyja a kérést, a licenc van elküldhetők az ügyfélprogramnak, és a megadott tartalom lejátszása és visszafejtésére szolgál kapcsolatos problémák.
+Az Azure Media Services lehetővé teszi a HLS-tartalom titkosítását az **Apple FairPlay** (AES-128 CBC) segítségével. A Media Services a FairPlay licencek kézbesítésével is szolgál. Amikor egy játékos megpróbálja lejátszani a FairPlay által védett tartalmat, a rendszer kérelmet küld a licenckézbesítési szolgáltatásnak, hogy szerezzen licencet. Ha a licencszolgáltatás jóváhagyja a kérelmet, kiadja az ügyfélnek küldött licencet, amely a megadott tartalom visszafejtésére és lejátszására szolgál.
 
-A Media Services Ezenfelül API-k, amelyek segítségével konfigurálhatja a FairPlay-licenc. Ez a témakör ismerteti a FairPlay licenckövetelmények vonatkoznak, és bemutatja, hogyan konfigurálhat egy **FairPlay** licencet a Media Services API-k használatával. 
+A Media Services olyan API-kat is biztosít, amelyekkel konfigurálhatja a FairPlay-licenceket. Ez a témakör a FairPlay licenckövetelményeit ismerteti, és bemutatja, hogyan konfigurálhatja a **FairPlay-licencet** a Media Services API-k használatával. 
 
 ## <a name="requirements"></a>Követelmények
 
-A következők szükségesek, Media Services használata közben, a HLS-tartalmak **Apple fairplay által** és a FairPlay-licencek Media Services használatával:
+A következőkre van szükség, ha a Media Services segítségével titkosítja a HLS-tartalmat az **Apple FairPlay** segítségével, és a Media Services segítségével FairPlay licenceket biztosít:
 
-* Regisztrálás a következővel [Apple fejlesztői programjában](https://developer.apple.com/).
-* Apple szükséges a tartalom tulajdonosa beszerzése a [központi telepítési csomag](https://developer.apple.com/contact/fps/). Adja meg, hogy már megvalósította a kulcs biztonsági modul (KSM) a Media Services használatával, és, hogy a kért a végső FPS csomag. Nincsenek a végső FPS csomag létrehozása a hitelesítésszolgáltató, és szerezze be a titkos kulcs (?) témakör utasításait. Kérje meg a FairPlay konfigurálása használhatja.
-* Media Services kulcs kézbesítési oldalon be kell állítani a az alábbiakat:
+* Regisztráljon az [Apple Fejlesztési Programmal.](https://developer.apple.com/)
+* Az Apple megköveteli a tartalom tulajdonosát, hogy szerezze be a [telepítési csomagot](https://developer.apple.com/contact/fps/). Adja meg, hogy már megvalósította a Key Security Module (KSM) szolgáltatást a Media Services szolgáltatással, és hogy a végső FPS-csomagot kéri. Vannak utasítások a végső FPS csomagot generálni tanúsítás és megszerezni az application secret key (ASK). Az ASK segítségével konfigurálhatja a FairPlay-t.
+* A Media Services kulcs-/licenckézbesítési oldalán a következő dolgokat kell beállítani:
 
-    * **Alkalmazás-tanúsítvány (AC)** : Ez az egy .pfx-fájlt, amely tartalmazza a titkos kulcsot. A fájl létrehozásához és a titkosítás, a jelszó. A .pfx-fájlt Base64 formátumban kell lennie.
+    * **App Cert (AC)**: Ez egy .pfx fájl, amely tartalmazza a személyes kulcsot. Ezt a fájlt létrehozza, és jelszóval titkosítja. A .pfx fájlnak Base64 formátumúnak kell lennie.
 
-        Az alábbi lépések bemutatják, hogyan hozhat létre egy .pfx formátumú tanúsítványfájlt a fairplay rendszerhez:
+        Az alábbi lépések bemutatják, hogyan hozhat létre .pfx tanúsítványfájlt a FairPlay számára:
 
-        1. Telepítse az OpenSSL https://slproweb.com/products/Win32OpenSSL.html.
+        1. Telepítse az OpenSSL-t a programból. https://slproweb.com/products/Win32OpenSSL.html
 
-            Lépjen abba a mappába, amelyeknél a FairPlay tanúsítvány és az Apple által biztosított egyéb fájlokat.
-        2. Futtassa az alábbi parancsot a parancssorból. A .cer fájl konvertál egy .pem fájlra.
+            Nyissa meg azt a mappát, ahol a FairPlay tanúsítvány és az Apple által szállított egyéb fájlok találhatók.
+        2. Futtassa az alábbi parancsot a parancssorból. Ezzel a .cer fájlt .pem fájllá alakítja.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" x509-tájékoztatja der-a FairPlay.cer-FairPlay-out.pem ki
-        3. Futtassa az alábbi parancsot a parancssorból. A titkos kulccsal is egy .pfx fájlba alakítja a .pem-fájlt. OpenSSL majd felkéri, a jelszót a .pfx fájl számára.
+            "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in FairPlay.cer -out FairPlay-out.pem
+        3. Futtassa az alábbi parancsot a parancssorból. Ezzel a .pem fájlt .pfx fájllá alakítja a személyes kulccsal. A .pfx fájl jelszavát ezután az OpenSSL kéri.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-exportálás - FairPlay-out.pfx ki-inkey privatekey.pem – a FairPlay-out.pem - passin file:privatekey-pem-pass.txt
+            "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin fájl:privatekey-pem-pass.txt
             
-    * **Alkalmazás tanúsítvány jelszava**: A jelszót a .pfx-fájl létrehozásához.
-    * **KÉRJE MEG**: Ezt a kulcsot érkezik, amikor tanúsítványt generál az Apple fejlesztői portál használatával. Minden egyes fejlesztési csapat kap egy egyedi kérje meg. Másolat készítése a kérje meg a, és tárolja biztonságos helyen. Kérje meg a Media Services FairPlayAsk konfigurálni kell.
+    * **Alkalmazástanúsítvány-jelszó**: A .pfx fájl létrehozásának jelszava.
+    * **ASK**: Ez a kulcs akkor érkezik, amikor az Apple Developer portál on keresztül létrehozza a tanúsítványt. Minden fejlesztőcsapat egyedi ASK-ot kap. Mentse el az ASK egy példányát, és tárolja biztonságos helyen. Az ASK-ot FairPlayAsk-ként kell konfigurálnia a Media Services szolgáltatással.
     
-* A következőkre FPS ügyféloldali be kell állítania:
+* Az FPS ügyféloldalnak a következő dolgokat kell beállítania:
 
-  * **Alkalmazás-tanúsítvány (AC)** : Ez az egy.cer/.der fájlt, amely tartalmazza a nyilvános kulcsot, amely az operációs rendszer néhány hasznos adat titkosítására használja. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
+  * **Alkalmazás-tanúsítvány (AC)**: Ez egy .cer/.der fájl, amely tartalmazza a nyilvános kulcsot, amelyet az operációs rendszer használ bizonyos hasznos adatok titkosítására. A Media Services-nek tudnia kell róla, mert a lejátszónak szüksége van rá. A kulcskézbesítési szolgáltatás visszafejti azt a megfelelő személyes kulccsal.
 
-* A FairPlay titkosított stream lejátszás, első beolvasása egy valódi kérje meg, és ezután hozza létre a tanúsítványnak valódi. A folyamat hoz létre minden három részből áll:
+* FairPlay titkosított adatfolyam lejátszásához először szerezzen be egy valódi ASK-ot, majd hozzon létre egy valódi tanúsítványt. Ez a folyamat mindhárom részt létrehozza:
 
   * .der fájl
-  * .pfx file
-  * a .pfx jelszava
+  * .pfx fájl
+  * jelszót a .pfx
 
-## <a name="fairplay-and-player-apps"></a>FairPlay és lejátszó alkalmazások
+## <a name="fairplay-and-player-apps"></a>FairPlay és player alkalmazások
 
-Ha a tartalom titkosított a **Apple fairplay által**, az egyes video- és minták segítségével lettek titkosítva a **AES-128 CBC** mód. **FairPlay Streaming** (FPS) integrálva van az eszköz operációs rendszerének támogatást biztosít az iOS és az Apple TV. OS x-en a Safari FPS az Encrypted Media Extensions (EME) felületen támogatási segítségével teszi lehetővé.
+Ha a tartalom az **Apple FairPlay**segítségével van titkosítva, az egyes video- és hangminták az **AES-128 CBC** mód használatával lesznek titkosítva. **A FairPlay Streaming** (FPS) integrálva van az eszköz operációs rendszereibe, natív támogatással az iOS és az Apple TV rendszeren. A Safari on OS X lehetővé teszi az FPS használatát a Titkosított adathordozó-bővítmények (EME) felület támogatásával.
 
-Az Azure Media Player támogatja a FairPlay lejátszási is. További információkért lásd: [dokumentáció az Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html).
+Az Azure Media Player támogatja a FairPlay lejátszást is. További információt az [Azure Media Player dokumentációjában](https://amp.azure.net/libs/amp/latest/docs/index.html)talál.
 
-Az iOS SDK használatával is fejleszthet saját player alkalmazásokat. Hogy a FairPlay lejátszani, kell megvalósítani a licenc az exchange-protokollt. Ez a protokoll nem adott meg az Apple. Esetén a minden alkalmazás kulcskézbesítési kérelem küldése. A Media Services FairPlay kulcstovábbítást vár a SPC lesz, mint egy www-form-url kódolt üzenet közzététele, a következő formátumban:
+Az iOS SDK használatával saját játékosalkalmazásokat fejleszthet. A FairPlay-tartalom lejátszásához végre kell hajtania a licenccsere protokollt. Ezt a protokollt az Apple nem adja meg. Az egyes alkalmazásoktól megkell tudni, hogyan küldhetnek kulcskézbesítési kérelmeket. A Media Services FairPlay kulcskézbesítési szolgáltatás a következő formában várja, hogy az Alkalmazási előírás www-form-url kódolású üzenetként érkezzen:
 
 ```
 spc=<Base64 encoded SPC>
 ```
 
-## <a name="fairplay-configuration-net-example"></a>FairPlay-konfiguráció .NET-példa
+## <a name="fairplay-configuration-net-example"></a>Példa a FairPlay konfigurációra .NET
 
-Media Services API segítségével konfigurálhatja a FairPlay-licenc. FairPlay által védett tartalom lejátszása a Media player próbál, amikor kérelem érkezik a licenctovábbítási szolgáltatása a licenc beszerzéséhez. A szolgáltatás jóváhagyja a kérést, ha a szolgáltatásproblémák a licencet. Ez van az ügyfélnek küldött, és a megadott tartalom lejátszása és visszafejtésére szolgál.
+A Media Services API segítségével konfigurálhatja a FairPlay-licenceket. Amikor a játékos megpróbálja lejátszani a FairPlay által védett tartalmat, a rendszer kérést küld a licenckézbesítési szolgáltatásnak a licenc megszerzéséhez. Ha a licencszolgáltatás jóváhagyja a kérelmet, a szolgáltatás kiadja a licencet. A rendszer elküldi az ügyfélnek, és a megadott tartalom visszafejtésére és lejátszására szolgál.
 
 > [!NOTE]
-> Általában érdemes FairPlay házirend beállításainak konfigurálása csak egyszer, mert csak van egy tanúsítási és a egy kérje meg egy készletét.
+> Általában csak egyszer szeretné beállítani a FairPlay házirend-beállításait, mert csak egy minősítési és egy ASK készlete lesz.
 
-Az alábbi példában [Media Services .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) konfigurálása a licencet.
+A következő példa [a Media Services .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) segítségével konfigurálja a licencet.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()
@@ -117,4 +117,4 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg, hogy miként [DRM védelme](protect-with-drm.md)
+Nézze meg, hogyan [védhet a DRM-mel](protect-with-drm.md)

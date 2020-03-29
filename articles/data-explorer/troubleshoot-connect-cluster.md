@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer fürt csatlakozási hibák elhárítása
-description: Ez a cikk ismerteti a hibaelhárítási lépések az Azure Data Explorer fürthöz csatlakozik.
+title: Az Azure Data Explorer fürtkapcsolati hibáinak elhárítása
+description: Ez a cikk ismerteti a fürthöz való csatlakozás hibaelhárítási lépéseit az Azure Data Explorerben.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,26 +8,26 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: c71af799f614e9cd28221d79634666cbc3b2c987
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60827036"
 ---
-# <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>Hibaelhárítás: Nem sikerült kapcsolódni az Azure Data Explorer egy fürt
+# <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>Hibaelhárítás: Nem sikerült csatlakozni egy fürthöz az Azure Data Explorerben
 
-Ha Ön nem tud csatlakozni az Azure Data Explorer egy fürt, kövesse az alábbi lépéseket.
+Ha nem tud csatlakozni egy fürthöz az Azure Data Explorerben, kövesse az alábbi lépéseket.
 
-1. Győződjön meg arról, a kapcsolati karakterlánc helyességéről. Alakúnak kell lennie: `https://<ClusterName>.<Region>.kusto.windows.net`, például az alábbi példa: `https://docscluster.westus.kusto.windows.net`.
+1. Ellenőrizze a kapcsolati sztring helyességét. Ennek a következő formában `https://<ClusterName>.<Region>.kusto.windows.net`kell lennie: , `https://docscluster.westus.kusto.windows.net`például a következő példa: .
 
-1. Győződjön meg arról, hogy a megfelelő engedélyekkel. Ha nem kap választ *jogosulatlan*.
+1. Győződjön meg arról, hogy rendelkezik a szükséges jogosultságokkal. Ha nem, akkor a *Jogosulatlan* választ kapja.
 
-    Engedélyekkel kapcsolatos további információkért lásd: [adatbázis-engedélyek kezeléséhez](manage-database-permissions.md). Ha szükséges, ahol a fürt rendszergazdája így azokat is hozzáadhatja a megfelelő szerepkört.
+    További információk a jogosultságokról: [Adatbázis-engedélyek kezelése](manage-database-permissions.md). Ha szükséges, forduljon a fürt rendszergazdájához, aki hozzáadhatja Önt a megfelelő szerepkörhöz.
 
-1. Győződjön meg arról, hogy a fürt még nem lett törölve: áttekintheti a tevékenységnaplót az előfizetésében.
+1. Ellenőrizze, hogy a fürt nem lett-e törölve: tekintse át az előfizetése tevékenységnaplóját.
 
-1. Ellenőrizze a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/). Keresse meg az Azure Data Explorer a régióban, ahol próbál csatlakozni a fürthöz állapotát.
+1. Ellenőrizze az [Azure Service Health irányítópultját](https://azure.microsoft.com/status/). Keresse meg az Azure Data Explorer állapotát abban a régióban, ahol csatlakozni próbál a fürthöz.
 
-    Ha az állapot nem **jó** (zöld pipa), próbálja meg a fürthöz való csatlakozás után az állapot javítja.
+    Ha az állapot nem **jó** (zöld pipa), próbáljon meg csatlakozni a fürthöz, miután az állapot javult.
 
-1. Ha továbbra is a probléma megoldásához segítségre van szüksége, nyisson egy támogatási kérelmét a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+1. Ha továbbra is segítségre van szüksége a probléma megoldásához, nyisson meg egy támogatási kérelmet az [Azure Portalon.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)

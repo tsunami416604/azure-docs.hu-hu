@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs használatával gyakori felhasználási helyzetek
-description: Ez a cikk az elsődleges forgatókönyvek az Azure DevTest Labs szolgáltatásban és a két általános elérési segítségével megkezdheti a szolgáltatás használatát a szervezetben.
+title: Az Azure DevTest Labs használatának népszerű forgatókönyvei
+description: Ez a cikk az Azure DevTest Labs használatának elsődleges forgatókönyveit és két általános elérési utat tartalmaz a szolgáltatás szervezetben való használatának megkezdéséhez.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,72 +14,72 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60773808"
 ---
-# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Az Azure DevTest Labs használatával gyakori felhasználási helyzetek
-A vállalat igényeitől függően DevTest Labs konfigurálható különböző követelményeinek.  Ez a cikk ismerteti a gyakori felhasználási helyzetek. Egyes forgatókönyvek előnyeit, illetve a forgatókönyvek megvalósításához használja a DevTest Labs és erőforrások használatával indított ismerteti.  
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Az Azure DevTest Labs használatának népszerű forgatókönyvei
+A vállalat igényeitől függően a DevTest Labs konfigurálható különböző követelményeknek.  Ez a cikk ismerteti a népszerű forgatókönyvek. Minden forgatókönyv a DevTest Labs és a forgatókönyvek megvalósításához használt erőforrások használatával járó előnyöket tartalmazza.  
 
 - Fejlesztői asztalok
-- Tesztelési környezetek
-- Képzési előadások, laborgyakorlatok és ötletbörzékhez
-- Elkülönített vizsgálatokhoz
+- Tesztkörnyezetek
+- Képzések, gyakorlati laborok és hackathons
+- Sandboxed vizsgálatok
 - Osztályterem-tesztkörnyezetek
 
 ## <a name="developer-desktops"></a>Fejlesztői asztalok
-A fejlesztők gyakran rendelkeznek fejlesztői gépek különböző projektek különböző követelmények vonatkoznak. A DevTest Labs szolgáltatással a fejlesztők hozzáférhet a leggyakoribb forgatókönyvek igényeinek megfelelően konfigurált igény szerinti virtuális gépekhez. DevTest Labs a következő előnyöket nyújtja:
+A fejlesztők gyakran különböző követelményeknek támasztják be a különböző projektek fejlesztői gépeit. A DevTest Labs segítségével a fejlesztők hozzáférhetnek az igény szerinti virtuális gépekhez, amelyek a leggyakoribb forgatókönyvekhez vannak konfigurálva. A DevTest Labs a következő előnyöket nyújtja:
 
-- Szervezetek számára biztosíthat a közös fejlesztési gépek különböző csapatokkal konzisztencia biztosítása.
-- A fejlesztők gyorsan üzembe helyezhet igény szerinti fejlesztési gépeik vagy [előre konfigurált meglévő gépek jogcím](devtest-lab-add-claimable-vm.md).
-- A fejlesztők helyezhet üzembe erőforrásokat önkiszolgáló módon anélkül, hogy előfizetés-szintű engedélyeit.
-- Informatikai vagy rendszergazdák is [előre adja meg a hálózati topológia](devtest-lab-configure-vnet.md) és a fejlesztők közvetlenül használható egyszerű és intuitív módon semmilyen különleges hozzáférés nélkül.
-- A fejlesztők könnyedén [testreszabása](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) fejlődésük gépek szükség szerint.
-- A rendszergazdák biztosításával, hogy szabályozhatja költségeit:
-    - A fejlesztők [nem olvasható be a további virtuális gépeket](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user) fejlesztéshez szükséges, mint
-    - [Virtuális gépek leállnak,](devtest-lab-set-lab-policy.md#set-auto-shutdown) amikor nincs használatban
-    - Csak [lehetővé teszi egy Virtuálisgép-példányméretek részét](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) az adott laborral kapcsolatos
-    - [Költség célozza meg, és értesítéseket kezelése](devtest-lab-configure-cost-management.md) egyes laborban.
+- A szervezetek közös fejlesztői gépeket biztosíthatnak a csapatok közötti konzisztenciát biztosítóan.
+- A fejlesztők gyorsan kiépíthetik fejlesztői gépeiket igény szerint, vagy [igényelhetnek egy már előre konfigurált gépet.](devtest-lab-add-claimable-vm.md)
+- A fejlesztők önkiszolgáló módon is kiépíthetnek erőforrásokat előfizetési szintű engedélyek nélkül.
+- Az informatikai vagy rendszergazdák [előre meghatározhatják a hálózati topológiát,](devtest-lab-configure-vnet.md) és a fejlesztők közvetlenül használhatják azt egyszerű és intuitív módon anélkül, hogy speciális hozzáférést igényelne.
+- A fejlesztők egyszerűen [testreszabhatják](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) fejlesztőgépeiket, ha szükséges.
+- A rendszergazdák a következők biztosításával szabályozhatják a költségeket:
+    - A fejlesztők [nem kaphatnak több virtuális gépet,](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user) mint amennyi a fejlesztéshez szükséges
+    - [A virtuális gépek leállnak,](devtest-lab-set-lab-policy.md#set-auto-shutdown) ha nincs használatban
+    - Csak [a virtuálisgép-példányok méretének egy részhalmazának engedélyezése](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) az adott laborokhoz
+    - Az egyes [tesztkörnyezetek költségcéljainak és értesítéseinek kezelése.](devtest-lab-configure-cost-management.md)
 
-További információ, lásd: [használata az Azure DevTest Labs-fejlesztőknek](devtest-lab-developer-lab.md). 
+További olvasmány: [Azure DevTest Labs használata fejlesztőknek.](devtest-lab-developer-lab.md) 
 
-## <a name="test-environments"></a>Tesztelési környezetek
-Létrehozása és tesztelési környezetek kezelése a vállalaton belül akkor is egy jelentős erőfeszítésekre van szükség. A DevTest Labs szolgáltatással tesztelési környezetek könnyen létrehozhatják, frissítése, vagy ismétlődik. Lehetővé teszi a csapatok egy teljes körűen konfigurált környezet eléréséhez szükséges. Ebben a forgatókönyvben a DevTest Labs a következő előnyöket nyújtja:
+## <a name="test-environments"></a>Tesztkörnyezetek
+A tesztkörnyezetek létrehozása és kezelése a vállalaton belül jelentős erőfeszítést igényelhet. A DevTest Labs segítségével a tesztkörnyezetek könnyen létrehozhatók, frissíthetők vagy duplikálhatók. Lehetővé teszi a csapatok számára, hogy szükség esetén hozzáférjenek egy teljesen konfigurált környezethez. Ebben a forgatókönyvben a DevTest Labs a következő előnyöket biztosítja:
 
-- Szervezet konzisztencia biztosítása csapatok közös tesztelési környezetek is nyújt.
-- Tesztelőknek újrahasznosítható sablonokkal Windows és Linux-környezetek gyors létrehozásával tesztelheti a legfrissebb verziójának alkalmazását.
-- Rendszergazdák kapcsolódhatnak a labor létrehozása az Azure DevOps, DevOps-forgatókönyvekre engedélyezése
-- Labortulajdonosok biztosításával, hogy szabályozhatja költségeit:
-    - [Virtuális gépek környezetekben állítsa le az](devtest-lab-set-lab-policy.md#set-auto-shutdown) amikor nincs használatban
-    - Csak [lehetővé teszi egy részét a Virtuálisgép-példányméretek](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) az adott labs
-    - [Költség célozza meg, és értesítéseket kezelése](devtest-lab-configure-cost-management.md) egyes laborban.
+- A szervezetek közös tesztelési környezeteket biztosíthatnak a csapatok közötti konzisztenciát biztosító anonzidmát.
+- A tesztelők tesztelhetik alkalmazásuk legújabb verzióját a Windows és Linux környezetek gyors kiépítésével az újrafelhasználható sablonok használatával.
+- A rendszergazdák a labort az Azure DevOps-hoz csatlakoztathatják a DevOps-forgatókönyvek engedélyezéséhez
+- A labortulajdonosok a következők biztosításával szabályozhatják a költségeket:
+    - [A környezetekben lévő virtuális gépek leállnak,](devtest-lab-set-lab-policy.md#set-auto-shutdown) ha nincsenek használatban
+    - Csak [a virtuálisgép-példányok méretének egy részhalmazának engedélyezése](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) az adott laborokhoz
+    - Az egyes [tesztkörnyezetek költségcéljainak és értesítéseinek kezelése.](devtest-lab-configure-cost-management.md)
 
-További információkért lásd: [használata az Azure DevTest Labs virtuális gépek és PaaS-tesztelési környezetek](devtest-lab-test-env.md).
+További információ: [Azure DevTest Labs használata virtuális géphez és PaaS-tesztkörnyezetek.](devtest-lab-test-env.md)
 
-## <a name="sandboxed-investigations"></a>Elkülönített vizsgálatokhoz
-A fejlesztők gyakran vizsgálja meg a különböző technológiák vagy infrastruktúra-kialakítási. Alapértelmezés szerint a DevTest Labs szolgáltatással létrehozott összes környezetet jönnek létre a saját erőforráscsoport. A DevTest Labs-felhasználó lekérdezi ezeket az erőforrásokat csak olvasási hozzáférést. Azonban fejlesztőknek szól, akik nagyobb felügyeletet, a labor kiterjedő beállítás frissítheti biztosíthat [közreműködői jogokkal](https://azure.microsoft.com/updates/azure-devtest-labs-view-and-set-access-rights-to-an-environment-rg/) a származó DevTest Labs-felhasználó számára az összes környezetben hoznak létre.  A DevTest Labs szolgáltatással a fejlesztők kaphatnak automatikusan hoznak létre a tesztkörnyezetben környezetek közreműködői engedélyt.  Ebben a forgatókönyvben lehetővé teszi a fejlesztők számára, hogy adjon hozzá és/vagy módosítani Azure-erőforrások, mert a fejlesztési-tesztelési környezetek szükséges. A [költségek erőforrás szerint](devtest-lab-configure-cost-management.md#view-cost-by-resource) lap lehetővé teszi, hogy a vizsgálatok során használt környezeteket költségeinek nyomon Labortulajdonosok.
+## <a name="sandboxed-investigations"></a>Sandboxed vizsgálatok
+A fejlesztők gyakran vizsgálják a különböző technológiákat vagy infrastruktúra-tervezést. Alapértelmezés szerint a DevTest Labs-sel létrehozott összes környezet a saját erőforráscsoportban jön létre. A DevTest Labs-felhasználó csak olvasási hozzáférést kap ezekhez az erőforrásokhoz. Azonban a fejlesztők számára, akiknek több ellenőrzésre van szükségük, egy labor szintű beállítás frissíthető, hogy [közreműködői jogokat](https://azure.microsoft.com/updates/azure-devtest-labs-view-and-set-access-rights-to-an-environment-rg/) adjon a fejlesztő DevTest Labs felhasználónak minden általuk létrehozott környezetben.  A DevTest Labs segítségével a fejlesztők automatikusan közreműködői engedélyt kaphatnak a laborban létrehozott környezetekben.  Ez a forgatókönyv lehetővé teszi a fejlesztők számára, hogy a fejlesztési vagy tesztelési környezetükhöz szükséges adatoknak köszönhetően azure-erőforrásokat adjanak hozzá és/vagy módosítsanak. A [költség erőforrás on-val](devtest-lab-configure-cost-management.md#view-cost-by-resource) lehetővé teszi a Labor-tulajdonosok nyomon követheti a vizsgálatokhoz használt egyes környezetek költségét.
 
-További információkért lásd: [hozzáférési jogosultságok beállítása egy környezet erőforráscsoportot](https://aka.ms/dtl-sandbox).
+További információt a [Hozzáférési jogok beállítása környezeterőforrás-csoporthoz](https://aka.ms/dtl-sandbox)című témakörben talál.
 
-## <a name="trainings-hands-on-labs-and-hackathons"></a>Betanítások, laborgyakorlatokkal és ötletbörzékhez 
-Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet átmeneti tevékenységeket, például workshopokat, gyakorlati labormodulok, betanítások vagy ötletbörzékhez nagyszerű tárolójaként szolgál.  A szolgáltatás lehetővé teszi, hogy egy tesztkörnyezet, ahol megadhatja, hogy minden tanuló segítségével képzéshez azonosak, és elkülönített környezeteket hozhat létre egyéni sablonok létrehozása. Ebben a forgatókönyvben a DevTest Labs a következő előnyöket nyújtja:
+## <a name="trainings-hands-on-labs-and-hackathons"></a>Tréningek, gyakorlati laborok és hackathonok 
+Az Azure DevTest Labs laborja nagyszerű tárolóként működik az olyan átmeneti tevékenységekhez, mint a műhelyek, gyakorlati laborok, tréningek vagy hackathonok.  A szolgáltatás lehetővé teszi, hogy hozzon létre egy labor, ahol egyéni sablonokat, hogy minden gyakornok használhatja, hogy azonos és elszigetelt környezetek képzés. Ebben a forgatókönyvben a DevTest Labs a következő előnyöket biztosítja:
 
-- [Házirendek](devtest-lab-set-lab-policy.md) biztosítása a résztvevők csak a get-erőforrások, például a virtuális gépek számát.
-- Előre konfigurált, és létrehozott gépek [igényelt](devtest-lab-add-claimable-vm.md) egyetlen művelettel a tanuló.
-- Laborok megosztott résztvevők elérésével [URL-címet a tesztkörnyezethez](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab).
-- [Lejárati dátum](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) a virtuális gépek győződjön meg arról, hogy gépek törlése után már nem szükséges.
-- Könnyen [tesztkörnyezet törlése](devtest-lab-delete-lab-vm.md#delete-a-lab) és az összes [kapcsolódó erőforrások](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) mikor a képzés felett van.
+- [A szabályzatok](devtest-lab-set-lab-policy.md) biztosítják, hogy a gyakornokok csak annyi erőforrást kaphassanak, mint például a virtuális gépek, amelyekre szükségük van.
+- Az előre konfigurált és létrehozott gépeket a gyakornok egyetlen műveletével [igénylik.](devtest-lab-add-claimable-vm.md)
+- A laborokat a tesztkörnyezet [URL-címének](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab)elérésével osztják meg a gyakornokokkal.
+- A virtuális gépek [lejárati dátumai](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) biztosítják, hogy a gépek törlése után már nincs rájuk szükség.
+- A labor és az összes [kapcsolódó erőforrás](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) [törlése,](devtest-lab-delete-lab-vm.md#delete-a-lab) ha a képzés véget ért.
 
-További információkért lásd: [használata az Azure DevTest Labs képzéshez](devtest-lab-training-lab.md).  
+További információ: [Azure DevTest Labs oktatáshoz.](devtest-lab-training-lab.md)  
 
-## <a name="proof-of-concept-vs-scaled-deployment"></a>A koncepció igazolása és a méretezett üzembe helyezés
-Ha úgy dönt, hogy ismerje meg a DevTest Labs, nincsenek két általános elérési utak előre: Koncepció vs méretezett telepítési megvalósíthatósági.  
+## <a name="proof-of-concept-vs-scaled-deployment"></a>A koncepció igazolása és a méretezett telepítés
+Miután úgy döntött, hogy vizsgálja meg a DevTest Labs, két általános utak előre: Proof of Concept vs skálázott központi telepítés.  
 
-A **üzembe helyezési horizontálisan** hét/hónap áttekintése és üzembe helyezése a DevTest Labs a teljes vállalat, amely rendelkezik, több száz vagy ezer főig megjelölésű tervezési áll.
+A **méretezett üzembe helyezés** hetek/hónapok felülvizsgálatából és tervezéséből áll, azzal a szándékkal, hogy a DevTest Labs-t a több száz vagy több ezer fejlesztővel rendelkező teljes vállalatra telepítse.
 
-A **megvalósíthatósági példa** telepítési szervezeti érték egy csoportot a koncentrált erőfeszítés összpontosít. Úgy gondolja, hogy méretezett központi telepítés csábító lehet, amíg a megközelítést általában többször a koncepció igazolása fogalom beállítás sikertelen. Ezért azt javasoljuk, hogy kezdhetik, ismerje meg az első csapat, ismételje meg a sémának két-három további csapatok számára, és majd szerzett ismeretek alapján vertikálisan telepítés megtervezését. Sikeres a koncepció igazolása javasoljuk, hogy válasszon ki egy vagy két csapat, és a saját forgatókönyveinek (a fejlesztési környezet és tesztelési környezetek), dokumentálni az aktuális használati esetek, és üzembe helyezése a DevTest Labs.
+A koncepció üzembe **helyezésének igazolása** egyetlen csapat koncentrált erőfeszítésére összpontosít a szervezeti érték létrehozása érdekében. Bár lehet csábító, hogy egy méretezett üzembe helyezés, a megközelítés általában nem gyakrabban, mint a koncepció igazolása opció. Ezért azt javasoljuk, hogy indítsa el a kicsi, tanulni az első csapat, ismételje meg ugyanazt a megközelítést két-három további csapat, majd tervezze meg a kibővített üzembe helyezés a megszerzett ismeretek alapján. A koncepció sikeres igazolása érdekében azt javasoljuk, hogy válasszon ki egy vagy két csapatot, és azonosítsa azok forgatókönyveit (fejlesztési környezet vs tesztkörnyezetek), dokumentálja az aktuális használati eseteiket, és telepítse a DevTest Labs-t.
 
 ## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket:

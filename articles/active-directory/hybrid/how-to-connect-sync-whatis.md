@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás |} A Microsoft Docs'
-description: Ismerteti az Azure AD Connect szinkronizálása működik, és hogyan szabhatja testre.
+title: 'Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása | Microsoft dokumentumok'
+description: Bemutatja, hogyan működik az Azure AD Connect szinkronizálása, és hogyan szabható testre.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,54 +17,54 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348739"
 ---
-# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás
-Az Azure Active Directory Connect szinkronizálási szolgáltatások (Azure AD Connect szinkronizálási) Azure AD Connect egyik fő összetevője. Ez gondoskodik a azonosító adatok a helyszíni környezet és az Azure AD között szinkronizálja kapcsolatos műveletek. Az Azure AD Connect szinkronizálása a DirSync, Azure AD Sync és az Azure Active Directory-összekötő konfigurálva a Forefront Identity Manager utódja.
+# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása
+Az Azure Active Directory Connect szinkronizálási szolgáltatások (Azure AD Connect sync) az Azure AD Connect egyik fő összetevője. Gondoskodik a helyszíni környezet és az Azure AD közötti identitásadatok szinkronizálásához kapcsolódó összes műveletről. Az Azure AD Connect sync a DirSync, az Azure AD Sync és a Forefront Identity Manager utódja az Azure Active Directory-összekötő konfigurálásával.
 
-Ez a témakör a szóló **Azure AD Connect szinkronizálási** (más néven **szinkronizálási motor**), és felsorolja az összes többi kapcsolódó témakörökre mutató hivatkozásokat. Az Azure AD Connect hivatkozások: [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).
+Ez a témakör az **Azure AD Connect szinkronizálási** (más néven **szinkronizálási motor)** otthona, és felsorolja az összes hozzá kapcsolódó témakörre mutató hivatkozásokat. Az Azure AD Connect re mutató hivatkozásokról a [Helyszíni identitások integrálása az Azure Active Directoryval.](whatis-hybrid-identity.md)
 
-A helyszíni két összetevőből áll: a szinkronizálási szolgáltatás **Azure AD Connect szinkronizálási** összetevő és az Azure AD-ben Szolgáltatásoldali nevű **az Azure AD Connect szinkronizálási szolgáltatás**.
+A szinkronizálási szolgáltatás két összetevőből áll, a helyszíni **Azure AD Connect szinkronizálási** összetevőből és az Azure AD Azure AD nevű szolgáltatási oldalából, az **Azure AD Connect szinkronizálási szolgáltatásból.**
 
-## <a name="azure-ad-connect-sync-topics"></a>Az Azure AD Connect szinkronizálási kapcsolatos témakörök
-| Témakör | Azt ismerteti, és mikor olvasása |
+## <a name="azure-ad-connect-sync-topics"></a>Az Azure AD Connect szinkronizálási témakörei
+| Témakör | Mit fed le, és mikor kell olvasni |
 | --- | --- |
-| **Az Azure AD Connect-szinkronizálás – alapok** | |
-| [Az architektúra ismertetése](concept-azure-ad-connect-sync-architecture.md) |Azoknak, akik nem ismeri a szinkronizálási motoron, és ismerje meg az architektúra és a használt feltételeket szeretne. |
-| [Műszaki fogalmak](how-to-connect-sync-technical-concepts.md) |Egy rövid verzió, röviden és az architektúra a témakör a használt kifejezések magyarázatát tartalmazza. |
-| [Azure AD Connect-topológiák](plan-connect-topologies.md) |Ismerteti a különböző topológiák és forgatókönyvek a szinkronizálási motor támogatja. |
+| **Az Azure AD Connect szinkronizálásának alapjai** | |
+| [Az architektúra ismertetése](concept-azure-ad-connect-sync-architecture.md) |Azoknak, akik újak a szinkronizálási motor, és szeretné megismerni az architektúra és a használt kifejezéseket. |
+| [Technikai kulcsfogalmak](how-to-connect-sync-technical-concepts.md) |Az architektúra témakörének rövid verziója, és röviden ismerteti a használt kifejezéseket. |
+| [Azure AD Connect-topológiák](plan-connect-topologies.md) |A szinkronizálási motor által támogatott különböző topológiákat és forgatókönyveket ismerteti. |
 | **Egyéni konfiguráció** | |
-| [A telepítővarázsló újra futtatni](how-to-connect-installation-wizard.md) |Azt ismerteti, milyen beállításokat kell érhető el, ha újra futtatja az Azure AD Connect telepítővarázsló. |
-| [Deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md) |A deklaratív kiépítés nevű konfigurációs modellt ismerteti. |
-| [Deklaratív kiépítés kifejezéseinek ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |Kifejezés nyelve deklaratív kiépítés szintaxisának ismerteti. |
-| [Az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md) |Az out-of-box szabályok és az alapértelmezett konfiguráció ismertetése. Azt is leírja, hogy a szabályok együttműködni a beépített forgatókönyvek esetén működik. |
-| [Understanding felhasználók és a kapcsolattartók](concept-azure-ad-connect-sync-user-and-contacts.md) |Az előző témakörben tárgyaló, és ismerteti a felhasználók és a kapcsolattartók konfigurációjának működése együtt, különösen egy Többerdős környezetben. |
-| [Hogyan lehet módosítani az alapértelmezett konfiguráció](how-to-connect-sync-change-the-configuration.md) |Bemutatja, hogyan, hogy az egyik gyakran alkalmazott konfiguráció attribútumfolyamok módosítsa. |
-| [Az alapértelmezett konfiguráció módosításának ajánlott eljárásai](how-to-connect-sync-best-practices-changing-default-configuration.md) |Támogatás korlátai és a módosítások elvégzése az out-of-box-konfigurációhoz. |
-| [A szűrés konfigurálása](how-to-connect-sync-configure-filtering.md) |A különböző lehetőségeket a mely objektumok éppen szinkronizált Azure ad-hez, és részletes ezek a beállítások konfigurálása, hogy hogyan korlátozza ismerteti. |
-| **Funkciók és alkalmazási helyzetek** | |
-| [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) |Ismerteti a *véletlen törlések megakadályozása* szolgáltatásról és konfigurálja azt. |
-| [Scheduler](how-to-connect-sync-feature-scheduler.md) |A beépített ütemezési, amely importálása, szinkronizálását, és az adatok exportálása ismerteti. |
-| [Jelszókivonat-szinkronizálás megvalósítása](how-to-connect-password-hash-synchronization.md) |Ismerteti a jelszó-szinkronizálás használata, megvalósításához és működtetéséhez és hibaelhárításához. |
-| [Eszközvisszaírás](how-to-connect-device-writeback.md) |Az Azure AD Connectben eszközvisszaírás működését ismerteti. |
-| [Címtárbővítmények](how-to-connect-sync-feature-directory-extensions.md) |Ismerteti, hogyan lehet a saját egyéni attribútumokkal az Azure AD-séma kiterjesztése. |
-| [Az Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Ismerteti, hogyan lehet a felhasználó Office 365 erőforrásokat helyezze a felhasználó ugyanabban a régióban. |
-| **Sync Service** | |
-| [Az Azure AD Connect szinkronizálási szolgáltatás funkciók](how-to-connect-syncservice-features.md) |A szinkronizálási szolgáltatás oldalon és a szinkronizálási beállítások módosítása az Azure ad-ben írja le. |
-| [Ismétlődő attribútumok rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Ismerteti, hogyan engedélyezheti és használja **userPrincipalName** és **proxyAddresses** ismétlődő értékek tűrés. |
-| **Műveletek és a felhasználói felület** | |
-| [Szinkronizálási szolgáltatáskezelő](how-to-connect-sync-service-manager-ui.md) |Ismerteti a Synchronization Service Manager felhasználói felületén, beleértve a [műveletek](how-to-connect-sync-service-manager-ui-operations.md), [összekötők](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverzumtervező](how-to-connect-sync-service-manager-ui-mvdesigner.md), és [keresés a Metaverzumban](how-to-connect-sync-service-manager-ui-mvsearch.md) lapokon. |
-| [Üzemeltetési feladatok és szempontok](how-to-connect-sync-operations.md) |Fontos információk, például a vész-helyreállítási ismerteti. |
+| [A telepítővarázsló ismételt futtatása](how-to-connect-installation-wizard.md) |Az Azure AD Connect telepítővarázsló ismételt futtatásakor ismerteti, hogy milyen lehetőségei vannak. |
+| [A deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md) |A deklaratív kiépítésnek nevezett konfigurációs modell ismert. |
+| [A deklaratív üzembe helyezési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |A deklaratív kiépítéshez használt kifejezésnyelv szintaxisát ismerteti. |
+| [Az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md) |A beépített szabályok és az alapértelmezett konfiguráció ismertetése. Azt is ismerteti, hogyan működnek együtt a szabályok a beépített forgatókönyvek működéséhez. |
+| [A felhasználók és kapcsolattartók ismertetése](concept-azure-ad-connect-sync-user-and-contacts.md) |Folytatja az előző témakört, és leírja, hogyan működik együtt a felhasználók és a kapcsolattartók konfigurációja, különösen többerdős környezetben. |
+| [Az alapértelmezett konfiguráció módosítása](how-to-connect-sync-change-the-configuration.md) |Végigvezeti, hogyan lehet egy közös konfigurációs módosítás attribútum folyamatok. |
+| [Az alapértelmezett konfiguráció módosításának ajánlott eljárásai](how-to-connect-sync-best-practices-changing-default-configuration.md) |Támogatási korlátozások és a beépített konfiguráció módosítása. |
+| [A szűrés konfigurálása](how-to-connect-sync-configure-filtering.md) |Ismerteti a különböző lehetőségeket, hogyan korlátozhatja, hogy mely objektumok szinkronizálása az Azure AD-vel, és lépésről-lépésre, hogyan konfigurálhatja ezeket a beállításokat. |
+| **Jellemzők és forgatókönyvek** | |
+| [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) |A *véletlen törlés megakadályozása* szolgáltatás és konfigurálása. |
+| [Scheduler](how-to-connect-sync-feature-scheduler.md) |A beépített ütemező ismertetése, amely adatokat importál, szinkronizál és exportál. |
+| [Jelszókivonat-szinkronizálás megvalósítása](how-to-connect-password-hash-synchronization.md) |A jelszó-szinkronizálás működésének, megvalósításának, valamint a működésnek és a hibaelhárításnak a ismertetése. |
+| [Eszközvisszaíró](how-to-connect-device-writeback.md) |Az eszközvisszaírás működése az Azure AD Connectben. |
+| [Címtárbővítmények](how-to-connect-sync-feature-directory-extensions.md) |Bemutatja, hogyan bővítheti ki az Azure AD sémát a saját egyéni attribútumokkal. |
+| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Ez a témakör azt ismerteti, hogy miként helyezheti el a felhasználó Office 365-erőforrásait a felhasználóval azonos régióban. |
+| **Szinkronizálási szolgáltatás** | |
+| [Az Azure AD Connect szinkronizálási szolgáltatás jellemzői](how-to-connect-syncservice-features.md) |A szinkronizálási szolgáltatásoldal ismertetése, valamint az Azure AD szinkronizálási beállításainak módosítása. |
+| [Duplikált attribútumrugalmasság](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |A **felhasználóPrincipalName** és **proxyAddresses** duplikált attribútumértékek rugalmasságának engedélyezését és használatát ismerteti. |
+| **Műveletek és felhasználói felület** | |
+| [Szinkronizálási szolgáltatáskezelő](how-to-connect-sync-service-manager-ui.md) |A szinkronizálási szolgáltatáskezelő felhasználói felületének ismertetése, beleértve [az Operations](how-to-connect-sync-service-manager-ui-operations.md), [Connectors](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md)és [Metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md) lapokat. |
+| [Működési feladatok és szempontok](how-to-connect-sync-operations.md) |Működési problémák, például a vészhelyreállítás ismertetése. |
 | **kézikönyv...** | |
-| [Az Azure AD-fiók alaphelyzetbe állítása](how-to-connect-azureadaccount.md) |Tudnivalók az Azure AD segítségével kapcsolódhat az Azure AD Connect szinkronizálási szolgáltatásfiók hitelesítő adatainak alaphelyzetbe állítása. |
+| [Az Azure AD-fiók alaphelyzetbe állítása](how-to-connect-azureadaccount.md) |Az Azure AD Connect-szinkronizálásés az Azure AD-hez való csatlakozáshoz használt szolgáltatásfiók hitelesítő adatainak alaphelyzetbe állítása. |
 | **További információk és hivatkozások** | |
-| [Portok](reference-connect-ports.md) |Meg kell nyitnia a szinkronizálási motor és a helyszíni címtárak és az Azure AD között milyen portokat sorolja fel. |
-| [Az Azure Active Directoryval szinkronizált attribútumok](reference-connect-sync-attributes-synchronized.md) |Felsorolja az összes attribútum szinkronizálása között a helyszíni AD és az Azure ad-ben. |
-| [Függvényreferencia](reference-connect-sync-functions-reference.md) |Deklaratív kiépítés elérhető összes funkciók listája. |
+| [Portok](reference-connect-ports.md) |Felsorolja, hogy mely portokat kell megnyitnia a szinkronizálási motor és a helyszíni könyvtárak és az Azure AD között. |
+| [Az Azure Active Directoryval szinkronizált attribútumok](reference-connect-sync-attributes-synchronized.md) |A helyszíni AD és az Azure AD között szinkronizált összes attribútumot felsorolja. |
+| [Függvényreferencia](reference-connect-sync-functions-reference.md) |A deklaratív kiépítésben elérhető összes függvény felsorolása. |
 
 ## <a name="additional-resources"></a>További források
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

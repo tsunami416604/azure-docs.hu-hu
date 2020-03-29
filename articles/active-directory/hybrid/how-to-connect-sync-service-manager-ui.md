@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Synchronization Service Manager felhasználói felületén |} A Microsoft Docs'
-description: Megismerheti a Synchronization Service Managert, az Azure AD Connect.
+title: 'Azure AD Connect szinkronizálása: Szinkronizálási szolgáltatáskezelő felhasználói felülete | Microsoft dokumentumok'
+description: Ismerje meg az Azure AD Connect szinkronizálási szolgáltatáskezelőjét.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,25 +18,25 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3a03b2320caa7facc04f589993907ab9b3a7703
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381535"
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Bevezetés az Azure ad Connect szinkronizálási szolgáltatáskezelő felhasználói felület
+# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Bevezetés az Azure AD Connect szinkronizálási szolgáltatáskezelő felhasználói felületének bemutatása
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
+![Szolgáltatáskezelő szinkronizálása](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
 
-A **Synchronization Service Managert** konfigurálja a szinkronizálási motor további beállításait és a szolgáltatás üzemeltetési szempontokat lásd: felhasználói Felületet használja.
+A **Szinkronizálási szolgáltatáskezelő** felhasználói felülete a szinkronizálási motor fejlettebb szempontjainak konfigurálására és a szolgáltatás működési szempontjainak megtekintésére szolgál.
 
-Kezdés a **Synchronization Service Managert** felhasználói felület a start menüből. Alkalmazás neve **szinkronizálási szolgáltatás** és tekintheti meg a **az Azure AD Connect** csoport.  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
+A **Szinkronizálási szolgáltatáskezelő** felhasználói felületét a start menüből indíthatja el. Ez a neve **Szinkronizálási szolgáltatás,** és megtalálható az **Azure AD Connect** csoportban található.  
+![Szolgáltatáskezelő szinkronizálása](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Synchronization Service Manager felhasználói felületén, beleértve a [műveletek](how-to-connect-sync-service-manager-ui-operations.md), [összekötők](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverzumtervező](how-to-connect-sync-service-manager-ui-mvdesigner.md), és [keresés a Metaverzumban](how-to-connect-sync-service-manager-ui-mvsearch.md) lapokon.
+További információ a Szinkronizálási szolgáltatáskezelő felhasználói felületéről, beleértve az [Operations,](how-to-connect-sync-service-manager-ui-operations.md) [Az Összekötők,](how-to-connect-sync-service-manager-ui-connectors.md) [a Metaverzum tervező](how-to-connect-sync-service-manager-ui-mvdesigner.md)és a [Metaverzum-keresés](how-to-connect-sync-service-manager-ui-mvsearch.md) lapot.
 
-Tudjon meg többet a [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációja.
+További információ az [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációjáról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

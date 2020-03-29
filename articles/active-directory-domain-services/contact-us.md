@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Lépjen kapcsolatba velünk |} A Microsoft Docs'
-description: Lépjen kapcsolatba az Azure AD tartományi szolgáltatások termékért felelős csoport
+title: 'Azure Active Directory tartományi szolgáltatások: Kapcsolatfelvétel | Microsoft dokumentumok'
+description: Kapcsolatfelvétel az Azure AD tartományszolgáltatások termékcsapatával
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -16,29 +16,29 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: iainfou
 ms.openlocfilehash: 83d1011d28eb13ed2e45587df8d385ebf19abbd1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67483327"
 ---
-# <a name="azure-ad-domain-services---contact-us"></a>Az Azure AD Domain Services - kapcsolat
+# <a name="azure-ad-domain-services---contact-us"></a>Azure AD tartományi szolgáltatások – Kapcsolatfelvétel
 
 ## <a name="feedback"></a>Visszajelzés
-A szolgáltatás vagy a nem technikai jellegű kérdések visszajelzést szeretne küldeni, ha e-mailben küldeni, amelyet megoszthat a kérést az Azure AD tartományi szolgáltatások termékcsoport: [Az Azure AD Domain Services visszajelzési](mailto:aaddsfb@microsoft.com). Erre a címre e-mailek nyilvánosan lektorálhatók. A csoport tagjai **előfordulhat, hogy** reagálás a további információkat kérhet. Az e-mail-cím, a technikai támogatási kéréseket nem fog válaszolni.
+Ha visszajelzést kap a szolgáltatásunkhoz, vagy nem technikai jellegű kérdése van, megoszthatja kérését az Azure AD Tartományi szolgáltatás termékcsoportgal, ha e-mailt küld nekünk a következő címen: [Azure AD Domain Services Feedback](mailto:aaddsfb@microsoft.com). Az erre a címre küldött e-maileket a következők ben ellenőrizzük. A termékcsoport tagjai **válaszolhatnak** a további információk kérésére. Az e-mail címre vonatkozó technikai támogatásra vonatkozó kérésekre nem válaszolunk.
 
-## <a name="technical-assistance"></a>Technikai támogatás
-Ha problémákba ütközik a felügyelt tartomány, ellenőrizze, hogy ha a lépéseket leírt a [hibaelhárítási útmutatója](troubleshoot.md) megoldani a problémát. Ha továbbra is problémába ütközik, jelentkezzen be az Azure Portalon. Nyissa meg a **Azure AD tartományi szolgáltatások** kezdőlapjára, és válassza ki **új támogatási kérelem** alatt műveleti ablaktáblájából **támogatás + hibaelhárítás**.
+## <a name="technical-assistance"></a>Technikai segítségnyújtás
+Ha problémái vannak a felügyelt tartománnyal, ellenőrizze, hogy a [hibaelhárítási útmutatóban](troubleshoot.md) ismertetett lépések megoldják-e a problémát. Ha továbbra is problémái vannak, jelentkezzen be az Azure Portalra. Nyissa meg az **Azure AD Tartományi szolgáltatások** kezdőlapját, és válassza az Új támogatási **kérelem** lehetőséget a Művelet panelen a Támogatás **+ hibaelhárítás**területen.
 
-![Új támogatási kérelem](./media/contact-us/supportRequest.png) 
+![új támogatási kérelem](./media/contact-us/supportRequest.png) 
 
-Adja meg a támogatási kérelem minden szakasza a lehető legpontosabb legyen. Ha egy szolgáltatás, jelölje **Azure Active Directory Domain Services (VM - tartományvezérlőket)** irányíthatja a kérést a megfelelő szakemberhez.
+Töltse ki a támogatási kérelem minden egyes szakaszát a lehető legpontosabban. Amikor kiválaszt egy szolgáltatást, győződjön meg róla, hogy az **Azure Active Directory tartományi szolgáltatások (VM – tartományvezérlők)** lehetőséget választva a kérést a megfelelő támogatási szakemberhez irányítja.
 
 > [!IMPORTANT]
-> Válassza ki **Azure Active Directory-címtár, tartományok és objektumok** ellenőrizni a tartományt az Azure Active Directoryval segítség szolgáltatások listájából.
+> Válassza ki **az Azure Active Directory-könyvtárak, tartományok és objektumok** a szolgáltatási listák segítséget a tartomány érvényesítése az Azure Active Directory használatával.
 >
 > 
 
 ## <a name="feature-requests"></a>Funkciókérések
-Van egy ötlete, hogyan fejleszthetnénk tovább az Azure Active Directory Domain Services a? Szeretnénk hallani azt. Nyissa meg az Azure visszajelzési fórumon, keresse meg a [Domain Services](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593) kategóriát, és ossza meg velünk ötletét. A csoport tagjai tekintse át ezeket a kérelmeket.
+Van ötlete, hogyan fejleszthetjük az Azure Active Directory tartományi szolgáltatásokat? Szeretnénk hallani róla. Nyissa meg az Azure-visszajelzési fórumokat, keresse meg a [Domain Services](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593) kategóriát, és ossza meg ötleteit. A termékcsoport tagjai áttekintik ezeket a kéréseket.
 

@@ -1,6 +1,6 @@
 ---
-title: Frissítés a DirSync és az Azure AD Sync |} A Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure AD Connect a DirSync és az Azure AD-Szinkronizáló frissítése.
+title: Frissítés a DirSync és az Azure AD Sync szolgáltatásról | Microsoft dokumentumok
+description: Ez a témakör azt ismerteti, hogy miként frissíthet a DirSync és az Azure AD Sync szolgáltatásról az Azure AD Connect szolgáltatásra.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,55 +18,55 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381178"
 ---
-# <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Sync és Azure Active Directory Sync frissítése
-Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Ez az ideje, mivel ezek elavultak, és 2017. április 13, már nem támogatott a Windows Azure Active Directory Sync (DirSync) vagy Azure AD Sync szolgáltatásról az Azure AD Connect frissítése.
+# <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>A Microsoft Azure Active Directory Sync és az Azure Active Directory Sync frissítése
+Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Ez egy nagyszerű alkalom az Azure AD Connect re való frissítéshez a Windows Azure Active Directory Sync (DirSync) vagy az Azure AD Sync szolgáltatásból, mivel ezek az eszközök már elavultak, és 2017.
 
-Elavult két identitás szinkronizálási eszközöket is (DirSync) egyerdős ügyfelek számára érhető el, és több erdőhöz és más speciális ügyfelek (Azure AD Sync). Ezeket a régebbi eszközöket vette egy egyetlen megoldás, amely minden esetben érhető el: Azure AD Connect. Új funkciók, fejlesztések és új forgatókönyvek támogatása kínál. A továbbra is a helyszíni identitás adatok az Azure AD szinkronizálása és az Office 365-höz, javasoljuk, hogy az Azure AD Connect szolgáltatásra frissít. A Microsoft nem garantálja a 2017. December 31. után ezen régebbi verziói.
+Az elavult két identitás-szinkronizálási eszköz egyetlen erdőbeli ügyfél (DirSync) és többerdős és más speciális ügyfelek (Azure AD Sync) számára került felkínálva. Ezeket a régebbi eszközöket egyetlen megoldás váltotta fel, amely minden forgatókönyvben elérhető: az Azure AD Connect. Új funkciókat, funkciófejlesztéseket és új forgatókönyvek támogatását kínálja. A helyszíni identitásadatok Azure AD-vel és az Office 365-tel való további szinkronizálásához javasoljuk, hogy frissítsen az Azure AD Connectre. A Microsoft nem garantálja, hogy ezek a régebbi verziók 2017.
 
-A DirSync utolsó kiadásában 2014. július jelent meg, és 2015 május jelent meg az Azure AD Sync utolsó kiadásában.
+A DirSync utolsó kiadása 2014 júliusában jelent meg, az Azure AD Sync utolsó kiadása pedig 2015 májusában jelent meg.
 
 ## <a name="what-is-azure-ad-connect"></a>Mi az az Azure AD Connect?
-Az Azure AD Connect a DirSync és az Azure AD Sync utódja. Amely ötvözi az minden esetben ez a két támogatott. További információ a [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).
+Az Azure AD Connect a DirSync és az Azure AD Sync utódja. Egyesíti az összes forgatókönyvet a két támogatott. Erről bővebben [a helyszíni identitások integrálása az Azure Active Directoryval.](whatis-hybrid-identity.md)
 
-## <a name="deprecation-schedule"></a>Elavulási ütemezésnek
+## <a name="deprecation-schedule"></a>Eprekation ütemezése
 | Dátum | Megjegyzés |
 | --- | --- |
-| 2016\. április 13. |Windows Azure Active Directory Sync ("DirSync") és a Microsoft Azure Active Directory Sync ("Azure AD Sync") jelentette be, mert elavult. |
-| 2017\. április 13. |Támogatás véget. Ügyfelek már nem tudja megnyitni egy támogatási esetet először az Azure AD Connect frissítése nélkül. |
-|2017\. december 31-ig.|Azure ad-ben, hogy már nem fogad el a kommunikáció a Windows Azure Active Directory Sync ("DirSync") és a Microsoft Azure Active Directory Sync ("Azure AD Sync").
+| 2016. április 13. |A Windows Azure Active Directory-szinkronizálás ("DirSync") és a Microsoft Azure Active Directory-szinkronizálás ("Azure AD Sync") elavultként van bejelentve. |
+| 2017. április 13.April 13, 2017 |A támogatás véget ér. Az ügyfelek a továbbiakban nem nyithatnak meg támogatási esetet anélkül, hogy először az Azure AD Connectre kellene frissíteniük. |
+|2017. december 31., sidlai|Előfordulhat, hogy az Azure AD a továbbiakban nem fogad el kommunikációt a Windows Azure Active Directory Sync ("DirSync") és a Microsoft Azure Active Directory Sync ("Azure AD Sync") rendszerből.
 
-## <a name="how-to-transition-to-azure-ad-connect"></a>Az Azure AD Connect szolgáltatásra való áttéréssel
-Ha a DirSync futtatja, kétféleképpen frissítheti: A helyben frissítés és a párhuzamos üzembe helyezés. Helyszíni frissítés a legtöbb ügyfél számára javasolt, és ha rendelkezik egy újabb operációs rendszer és a kisebb, mint 50 000 objektummal. Más esetekben ajánlott ehhez párhuzamos üzembe helyezést, ahol a DirSync-konfigurációt egy új, Azure AD Connectet futtató kiszolgálóra kerül.
+## <a name="how-to-transition-to-azure-ad-connect"></a>Váltás az Azure AD Connectre való áttérés
+Ha a DirSync-et futtatja, kétféleképpen frissíthet: helybeni frissítés és párhuzamos telepítés. A legtöbb ügyfél számára ajánlott a helyben történő frissítés, és ha friss operációs rendszerrel és 50 000 objektumnál kisebb objektumokkal rendelkezik. Más esetekben ajánlott egy párhuzamos központi telepítést, ahol a DirSync-konfiguráció egy Azure AD Connect et futtató új kiszolgálóra kerül.
 
 | Megoldás | Forgatókönyv |
 | --- | --- |
-| [Frissítés a DirSync szolgáltatásról](how-to-dirsync-upgrade-get-started.md) |<li>Ha már fut a meglévő DirSync kiszolgáló.</li> |
-| [Frissítés az Azure AD-Szinkronizálóról](how-to-upgrade-previous-version.md) |<li>Az Azure AD-Szinkronizálóról áthelyezéséhez.</li> |
+| [Frissítés a DirSync szolgáltatásról](how-to-dirsync-upgrade-get-started.md) |<li>Ha már fut egy dirSync-kiszolgáló.</li> |
+| [Frissítés az Azure AD Sync-ről](how-to-upgrade-previous-version.md) |<li>Ha az Azure AD Sync-ről költözik.</li> |
 
-Ha azt szeretné, hogyan hajtsa végre egy helyszíni frissítését az Azure AD Connect a Dirsync szolgáltatásról, tekintse meg a Channel 9-videók:
+Ha szeretné látni, hogyan lehet egy helyben i upgrade-et végezni a DirSync-ről az Azure AD Connectre, akkor tekintse meg ezt a Channel 9 videót:
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools/player]
 >
 >
 
 ## <a name="faq"></a>GYIK
-**K: E-mailben értesítést kaptam az Azure csapata és/vagy az Office 365 üzenetközpontjában üzenetét, de a Connect használok.**  
-Az Azure AD Connect használatával a buildszám 1.0 ügyfelek is küldött az értesítést. \*.0 (kiadás előtti-1.1 használatával). Microsoft azt javasolja, hogy az ügyfelek számára az Azure AD Connect-kiadások és legyen naprakész. A [automatikus frissítés](how-to-connect-install-automatic-upgrade.md) 1.1 bevezetett szolgáltatás megkönnyíti mindig van telepítve az Azure AD Connect legújabb verzióját.
+**K: E-mailértesítést kaptam az Azure Teamtől és/vagy üzenetet az Office 365 üzenetközpontjából, de a Connectet használom.**  
+Az értesítést az Azure AD Connect használatával is elküldték az 1.0-s számú buildszámmal. \*0-val (az 1.1 előtti kiadással). A Microsoft azt javasolja az ügyfeleknek, hogy maradjanak naprakészek az Azure AD Connect-kiadásokkal. Az 1.1-ben bevezetett [automatikus frissítési](how-to-connect-install-automatic-upgrade.md) funkció megkönnyíti az Azure AD Connect legújabb verziójának telepítését.
 
-**K: A DirSync vagy az Azure AD Sync működése leáll a 2017. április 13?**  
-A DirSync vagy az Azure AD Sync fog folytatja a munkát a 2017. április 13.  Azonban az Azure AD, hogy már nem fogad el a DirSync vagy az Azure AD-Szinkronizáló által kezdeményezett kommunikáció a 2017. December 31. után.
+**K: A DirSync/Azure AD Sync 2017.**  
+2017. április 13-án a DirSync/Azure AD Sync továbbra is működni fog.  2017. december 31-e után azonban előfordulhat, hogy az Azure AD már nem fogadja el a DirSync/Azure AD Sync kommunikációját.
 
-**K: A DirSync verzióinak frissíthetem a?**  
-Bármely jelenleg használt DirSync-kiadás frissítése támogatott. 
+**K: Mely DirSync verziókról frissíthetek?**  
+A jelenleg használt DirSync-kiadásokról való frissítés támogatott. 
 
-**K: Mi a teendő az Azure AD-összekötő FIM vagy MIM?**  
-Az Azure AD-összekötő az FIM vagy MIM **nem** már bejelentett elavult. Ugyanakkor **funkció lefagyását tapasztaló**; új funkció sem kerül, és nem kapja, hogy nincs hibajavításokat tartalmaz. A Microsoft javasolja ügyfelek tervezése áthelyezése az Azure AD Connect használatával. Erősen ajánlott, használja az új környezeteknek indul el. Ez az összekötő elavult később lesz bejelentve.
+**K: Mi a helyzet az Azure AD-összekötő FIM/MIM?**  
+Az Azure AD-összekötő fim/MIM-hez **nem** lett elavultként bejelentve. Ez a **funkció befagyasztása;** nincs új funkció hozzáadva, és nem kap hibajavításokat. A Microsoft azt javasolja az ügyfeleknek, hogy azt használják az Azure AD Connect-re való áttérés megtervezéséhez. Erősen ajánlott, hogy ne indítson el új központi telepítéseket. Ez a csatlakozó a jövőben elavultlesz.
 
 ## <a name="additional-resources"></a>További források
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

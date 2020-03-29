@@ -1,6 +1,6 @@
 ---
-title: HB sorozatú virtuális gépek áttekintése – Azure Virtual Machines |} A Microsoft Docs
-description: Ismerje meg az előzetes verziós támogatást az Azure-ban HB-sorozatú virtuális gépek méretét.
+title: HB sorozatú virtuális gépek áttekintése - Azure virtuális gépek | Microsoft dokumentumok
+description: Ismerje meg a HB sorozatú virtuális gépek azure-beli méretének előzetes támogatását.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,58 +13,58 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
 ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707775"
 ---
-# <a name="hb-series-virtual-machines-overview"></a>HB-sorozatú virtual machines – áttekintés
+# <a name="hb-series-virtual-machines-overview"></a>HB sorozatú virtuális gépek áttekintése
 
-Nagy teljesítményű számítási (HPC-) alkalmazás teljesítményének AMD EPYC a lehető legnagyobb átgondolt megközelítést memória helye és a folyamat elhelyezési van szükség. Az alábbiakban azt szerkezeti AMD EPYC architektúráját és az implementáció, az Azure-ban a HPC-alkalmazások. Az előfizetési időszak "pNUMA" használjuk egy fizikai NUMA-tartomány és a "vNUMA" hivatkozik egy virtuális NUMA-tartomány meg.
+Az AMD EPYC nagy teljesítményű számítási (HPC) alkalmazásteljesítményének maximalizálásához átgondolt megközelítési memória-helységre és folyamatelhelyezésre van szükség. Az alábbiakban ismertetjük az AMD EPYC architektúrát és annak megvalósítását az Azure For HPC alkalmazásokban. A "pNUMA" kifejezést egy fizikai NUMA tartományra, a "vNUMA" szót pedig egy virtualizált NUMA tartományra fogjuk használni.
 
-Fizikailag, a HB-sorozat következő 2 * 32 magos EPYC 7551 processzorok 64 fizikai magok száma összesen. Ezek 64 magos 16 pNUMA tartományok (8 száma), amelyek mindegyike négy magot osztva, és a "Processzor összetett" (vagy a "CCX") néven ismert. Minden egyes CCX rendelkezik a saját L3-gyorsítótárat, amely hogyan fogják látni az operációs rendszer pNUMA/vNUMA határ. Szomszédos CCXs párjai közös fizikai DRAM-(DRAM HB sorozat kiszolgálók 32 GB) két csatornákon való hozzáférést.
+Fizikailag a HB sorozat 2 * 32 magos EPYC 7551 CPU-k, összesen 64 fizikai maggal. Ezek a 64 magok vannak osztva 16 pNUMA domain (8 foglalatonként), amelyek mindegyike négy mag, és az úgynevezett "CPU Complex" (vagy "CCX"). Minden CCX saját L3 gyorsítótárral rendelkezik, így az operációs rendszer egy pNUMA/vNUMA határt fog látni. Egy pár szomszédos CCX-ek megosztják a hozzáférést két fizikai DRAM csatornához (32 GB DRAM a HB-sorozatú szerverekben).
 
-Ahhoz, hogy a hely számára az Azure hipervizor nem avatkozik bele a virtuális gép működéséhez, fenntartjuk fizikai pNUMA tartomány 0 (az első CCX). Ezután hozzárendeljük pNUMA tartomány 1 – 15 (a többi CCX egység) a virtuális gép számára. A virtuális gép jelenik meg:
+Annak érdekében, hogy az Azure hipervizor a virtuális gép beavatkozása nélkül működjön, fizikai pNUMA domain 0-t (az első CCX-et) foglalunk fenn. Ezután hozzárendeljük a pNUMA tartományokat 1-15 -hez (a fennmaradó CCX egységekhez) a virtuális géphez. A virtuális gép a következőket fogja látni:
 
-`(15 vNUMA domains) * (4 cores/vNUMA) = 60` magok száma a virtuális gép
+`(15 vNUMA domains) * (4 cores/vNUMA) = 60`magok virtuális gépenként
 
-A virtuális gép, magát, nem ismert, hogy pNUMA 0 nem lett megadva hozzá. A virtuális gép, a 0. és 8 vSocket vNUMA vSocket 1 a 7 vNUMA a 0 – 14., vNUMA pNUMA 1 – 15 értelmezése. Bár ez aszimmetrikus, az operációs rendszer kell rendszerindító és megfelelően működik. Az útmutató későbbi részében hogy hogyan érdemes MPI-alkalmazások futtathatók az aszimmetrikus NUMA elrendezés utasíthatja.
+A VM maga nem tudja, hogy pNUMA 0 nem kapott rá. A VM a pNUMA 1-15-öt vNUMA 0-14-ként, 7 vNUMA-val a vSocket 0-n és 8 vNUMA-n a vSocket 1-en. Bár ez aszimmetrikus, az operációs rendszernek el kell indulnia és normálisan kell működnie. Az útmutató későbbi részében azt tanítjuk, hogyan lehet a legjobban mpi alkalmazásokat futtatni ezen az aszimmetrikus NUMA elrendezésen.
 
-Folyamat rögzítés működnek a HB-sorozat virtuális gépei, mert elérhetővé tesszük az alapul szolgáló, szilícium-, hogy a Vendég virtuális Gépen. Javasoljuk, hogy az optimális teljesítmény és a konzisztencia rögzítés folyamat.
+A folyamatrögzítés működni fog a HB-sorozatú virtuális gépeken, mert az alapul szolgáló szilíciumot a vendég virtuális gépnek tesszük elérhetővé. Az optimális teljesítmény és konzisztencia érdekében javasoljuk a folyamatrögzítést.
 
-A részletek [AMD EPYC architektúra](https://bit.ly/2Epv3kC) és [több lapka architektúrák](https://bit.ly/2GpQIMb) a Linkedinen. Részletesebb információkért lásd: a [HPC teljesítményhangolási útmutatóból AMD EPYC processzor](https://bit.ly/2T3AWZ9).
+További információk az [AMD EPYC architektúráról](https://bit.ly/2Epv3kC) és a [többcsipes architektúrákról](https://bit.ly/2GpQIMb) a LinkedIn-en. További információt az [AMD EPYC processzorok HPC hangolási útmutatójában talál.](https://bit.ly/2T3AWZ9)
 
-Az alábbi ábrán látható a feladatkörök magok fenntartott Azure-Hipervizorra, illetve a HB-sorozatú virtuális gépek számára.
+Az alábbi ábrán az Azure Hypervisor és a HB sorozatú virtuális gép számára fenntartott magok elkülönítése látható.
 
-![Az Azure-Hipervizorra, illetve HB-sorozatú virtuális gépek számára lefoglalt magok elkülönítése](./media/hb-series-overview/segregation-cores.png)
+![Az Azure Hypervisor és a HB sorozatú virtuális gép számára fenntartott magok elkülönítése](./media/hb-series-overview/segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Hardverspecifikációk
 
-| Hardver specifikációk                | HB-sorozatú virtuális gépek                     |
+| HW műszaki adatok                | HB sorozatú vm                     |
 |----------------------------------|----------------------------------|
-| Processzormagok                            | 60 (SMT le van tiltva)                |
-| CPU                              | AMD EPYC 7551 *                   |
-| CPU gyakorisága (nem AVX)          | ~2.55 GHz-es (egyetlen + összes mag)   |
-| Memory (Memória)                           | 4 GB és mag (összesen 240)            |
+| Cores                            | 60 (SMT letiltva)                |
+| CPU                              | AMD EPYC 7551*                   |
+| CPU-frekvencia (nem AVX)          | ~2.55 GHz (egyetlen + minden mag)   |
+| Memory (Memória)                           | 4 GB/mag (összesen 240)            |
 | Helyi lemez                       | 700 GB NVMe                      |
-| Infiniband                       | 100 GB-os EDR Mellanox ConnectX-5 ** |
-| Network (Hálózat)                          | 50 GB-os Ethernet (40 Gb használható) Azure második általános SmartNIC x |
+| Infiniband                       | 100 Gb-os EDR Mellanox ConnectX-5** |
+| Network (Hálózat)                          | 50 Gb-os Ethernet (40 Gb használható) Azure második Generációs SmartNIC*** |
 
-## <a name="software-specifications"></a>Szoftverfrissítési leírások
+## <a name="software-specifications"></a>Szoftverspecifikációk
 
-| Szoftveres specifikációk           |HB-sorozatú virtuális gépek           |
+| SW műszaki adatok           |HB sorozatú vm           |
 |-----------------------------|-----------------------|
-| Maximális MPI feladatok mérete            | 6000 mag (100 virtuálisgép-méretezési csoportok) 12000 mag (200 virtuálisgép-méretezési csoportok)  |
-| MPI-támogatás                 | MVAPICH2, OpenMPI, MPICH, MPI, az Intel MPI Platform  |
-| További keretrendszerek       | Unified Communication X, libfabric, PGAS |
-| Az Azure Storage-támogatás       | Standard és prémium (max. 4 lemez) |
-| PORTPROFIL rdma-t az operációs rendszer támogatása   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
-| Az Azure CycleCloud-támogatás    | Igen                         |
-| Az Azure Batch-támogatás         | Igen                         |
+| Mpi-feladat maximális mérete            | 6000 mag (100 virtuálisgép-mérlegcsoport) 12000 mag (200 virtuálisgép-méretezési csoport)  |
+| MPI-támogatás                 | MVAPICH2, OpenMPI, MPICH, Platform MPI, Intel MPI  |
+| További keretrendszerek       | Egységes kommunikáció X, libfabric, PGAS |
+| Azure Storage-támogatás       | STD + Premium (max. 4 lemez) |
+| Os támogatás SRIOV RDMA-hoz   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+  |
+| Azure CycleCloud támogatás    | Igen                         |
+| Azure batch támogatás         | Igen                         |
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók a HPC virtuális gépek méretei [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) és [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) az Azure-ban.
+* További információ a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) [és](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) Windows HPC virtuálisgép-méreteiről az Azure-ban.
 
-* Tudjon meg többet [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) az Azure-ban.
+* További információ a [HPC-ről](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) az Azure-ban.

@@ -1,7 +1,7 @@
 ---
-title: A webes API-kat meghívó webes API-k jogkivonatának beolvasása | Azure
+title: Get egy token egy webes API-k, amely meghívja a webes API-k | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre olyan webes API-t, amely meghívja az alkalmazás jogkivonatának beszerzését igénylő webes API-kat.
+description: Ismerje meg, hogyan hozhat létre egy webes API-t, amely meghívja a webes API-kat, amelyek megkövetelik az alkalmazás jogkivonatának beszerzését.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,21 +16,21 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2721837459af24f39bb15ee17d394345cbb37eb1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834110"
 ---
-# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívja: Jogkivonat beszerzése az alkalmazáshoz
 
-Miután létrehozott egy ügyfélalkalmazás-objektumot, használja azt egy olyan jogkivonat beszerzéséhez, amely a webes API-k meghívására használható.
+Miután elkészítette az ügyfélalkalmazás-objektumot, használja azt egy olyan jogkivonat beszerzésére, amely segítségével meghívhat egy webes API-t.
 
 ## <a name="code-in-the-controller"></a>Kód a vezérlőben
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Íme egy példa az API-vezérlők műveleteiben meghívott kódra. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg.
+Íme egy példa az API-vezérlők műveletek ben megnevezett kódra. Meghívja a todolista nevű alsóbb rétegbeli *API-t.*
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -51,9 +51,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` a webes API- [kat meghívó webes API](scenario-web-api-call-api-app-configuration.md)-hoz hasonló forgatókönyvhöz hasonlít: az alkalmazás konfigurációja. `BuildConfidentialClient()` olyan gyorsítótárat hoz létre `IConfidentialClientApplication`, amely csak egy fiókra vonatkozó információt tartalmaz. A fiókot a `GetAccountIdentifier` metódus biztosít.
+`BuildConfidentialClient()`hasonló a forgatókönyv [egy webes API-k, amely meghívja a webes API-k: App konfiguráció](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`olyan gyorsítótárral `IConfidentialClientApplication` rendelkezik, amely csak egy fiók adatait tartalmazza. A fiókot a `GetAccountIdentifier` metódus biztosítja.
 
-A `GetAccountIdentifier` metódus a felhasználó identitásához társított jogcímeket használja, akik számára a webes API a JSON Web Tokent (JWT) kapta:
+A `GetAccountIdentifier` metódus a json-webtoken (JWT) azonosítójával társított jogcímeket használja:
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -71,8 +71,8 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
-Íme egy példa az API-vezérlők műveleteiben meghívott kódra. Meghívja az alsóbb rétegbeli API-Microsoft Graph.
+# <a name="java"></a>[Java](#tab/java)
+Íme egy példa az API-vezérlők műveletek ben megnevezett kódra. Meghívja az alsóbb rétegbeli API-t - a Microsoft Graph.
 
 ```java
 @RestController
@@ -92,13 +92,13 @@ public class ApiController {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Egy Python webes API-nak bizonyos middleware-t kell használnia az ügyféltől kapott tulajdonosi jogkivonat ellenőrzéséhez. A webes API ezután a MSAL Python Library használatával szerezheti be az alsóbb rétegbeli API hozzáférési tokenjét a [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metódus meghívásával. A folyamatot bemutató minta a MSAL Python szolgáltatással még nem érhető el.
+A Python webes API-t kell használninéhány köztes az ügyféltől kapott tulajdonosi jogkivonat érvényesítéséhez. A webes API ezután beszerezheti a hozzáférési jogkivonatot [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) az alsóbb rétegbeli API-hoz az MSAL Python-kódtár használatával a metódus hívásával. A folyamatot az MSAL Python-nal bemutató minta még nem érhető el.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Webes API-kat meghívó webes API: az API meghívása](scenario-web-api-call-api-call-api.md)
+> [Webes API-kat meghívó webes API:API hívása](scenario-web-api-call-api-call-api.md)

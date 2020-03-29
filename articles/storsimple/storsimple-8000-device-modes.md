@@ -1,6 +1,6 @@
 ---
-title: A StorSimple-eszköz üzemmódjának módosítása |} A Microsoft Docs
-description: A StorSimple eszköz módok és ismerteti a storsimple-höz készült Windows PowerShell használata az eszköz üzemmódjának módosítása.
+title: StorSimple eszközmód módosítása | Microsoft dokumentumok
+description: A StorSimple eszközmódok ismertetése, és bemutatja, hogyan használhatja a Windows PowerShell for StorSimple eszközmód módosítása.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,75 +15,75 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: e55964beff48df6ce24d99c01975d39b662f1612
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60576089"
 ---
-# <a name="change-the-device-mode-on-your-storsimple-device"></a>A StorSimple-eszköz az eszköz üzemmódjának módosítása
+# <a name="change-the-device-mode-on-your-storsimple-device"></a>Az eszköz mód módosítása a StorSimple eszközön
 
-A cikk ismerteti a különböző módokat, amely a StorSimple-eszköz működhet rövid leírását. A StorSimple-eszköz működhet a három mód: normal, a karbantartással és a helyreállítás.
+Ez a cikk röviden ismerteti a Különböző módok, amelyben a StorSimple-eszköz működhet. A StorSimple eszköz három üzemmódban is működhet: normál, karbantartás és helyreállítás.
 
-Ez a cikk elolvasása után tudni fogja:
+Elolvasása után ezt a cikket, akkor tudni fogja:
 
-* Milyen a StorSimple eszköz módok
-* Hogyan döntse el, melyik módban a StorSimple-eszköz szerepel.
-* A normál és a karbantartási mód módosítása és *fordítva*
+* Mi a StorSimple eszköz mód
+* Hogyan lehet kitalálni, hogy melyik módban van a StorSimple eszköz
+* Hogyan változtassunk normál ról karbantartási módra, és *fordítva*
 
-A fenti felügyeleti feladatokat csak a Windows PowerShell felületét a StorSimple eszköz használatával hajtható végre.
+A fenti felügyeleti feladatok csak a StorSimple-eszköz Windows PowerShell felületén keresztül hajthatók végre.
 
-## <a name="about-storsimple-device-modes"></a>A StorSimple eszköz módokkal kapcsolatos
+## <a name="about-storsimple-device-modes"></a>A StorSimple eszközmódokról
 
-A StorSimple-eszköz működhet, normál, karbantartási vagy helyreállítási módban. Az egyes módokban röviden alább ismertetjük.
+A StorSimple eszköz normál, karbantartási vagy helyreállítási módban is működhet. Az alábbiakban röviden ismertetjük ezeket a módokat.
 
-### <a name="normal-mode"></a>Normál módra
+### <a name="normal-mode"></a>Normál mód
 
-Ez a rendes működési módja egy teljes körűen konfigurált StorSimple-eszköz definiálható. Alapértelmezés szerint az eszköz normál üzemmódban kell lennie.
+Ez a teljesen konfigurált StorSimple-eszköz normál működési módja. Alapértelmezés szerint az eszköznek normál módban kell lennie.
 
 ### <a name="maintenance-mode"></a>Karbantartási mód
 
-A StorSimple-eszköz egyes esetekben szükség lehet karbantartási módba helyezni. Ebben a módban lehetővé teszi, hogy az eszköz karbantartásával, és telepítse a zavart okozó frissítések, például a lemezfirmware kapcsolatos.
+Előfordulhat, hogy a StorSimple eszközt karbantartási módba kell helyezni. Ez a mód lehetővé teszi az eszközön a karbantartást, és zavaró frissítések telepítését, például a lemez belső vezérlőprogramjához kapcsolódó frissítéseket.
 
-A rendszer csak a Windows Powershellen keresztül karbantartási módba helyezheti a storsimple-höz készült. Ebben a módban az összes i/o-kérések fel van függesztve. Nem felejtő közvetlen elérésű memória (NVRAM) például szolgáltatások vagy a fürtözési szolgáltatás is le lesz állítva. Mindkét vezérlő újra lesz indítva, adja meg, vagy lépjen ki az ebben a módban. Miután kilépett a karbantartási módot, az összes szolgáltatás folytatódik, és kifogástalan állapotban kell lennie. Ez eltarthat néhány percig.
-
-> [!NOTE]
-> **Karbantartási mód csak egy megfelelően működő eszközön támogatott. Nem támogatott egy eszközön, amely az egyik vagy mindkét vezérlő nem működnek.**
-
-
-### <a name="recovery-mode"></a>A helyreállítási mód
-
-Helyreállítási módban, a "Windows hálózati támogatást csökkentett módban" írható le. Helyreállítási módban megkezdi a Microsoft Support csoporthoz, és lehetővé teszi, hogy a rendszer a diagnosztikai végezhetnek el. Helyreállítási módban elsődleges célja, hogy a rendszer naplók begyűjtéséről.
-
-Ha a rendszer helyreállítási módba lép, forduljon a Microsoft Support a következő lépéseket. További információért ugorjon [forduljon a Microsoft támogatási](storsimple-8000-contact-microsoft-support.md).
+A rendszert csak a StorSimple-hez használható Windows PowerShell en keresztül helyezheti karbantartási módba. Ebben a módban minden I/O-kérés szünetel. Az olyan szolgáltatások, mint a nem felejtő véletlen hozzáférésű memória (NVRAM) vagy a fürtözési szolgáltatás is leállnak. Mindkét vezérlő újraindul, amikor belép vagy kilép ebből a módból. Amikor kilép a karbantartási módból, az összes szolgáltatás folytatódik, és kifogástalan állapotúnak kell lennie. Ez eltarthat néhány percig.
 
 > [!NOTE]
-> **Az eszköz nem helyezhető el a következő helyreállítási módban. Ha az eszköz rossz állapotban van, a helyreállítási mód próbál, amelyben Microsoft Support megvizsgálhatja, hogy az eszköz előállhat.**
+> **A karbantartási mód csak megfelelően működő eszközön támogatott. Nem támogatott olyan eszközön, amelyben az egyik vagy mindkét vezérlő nem működik.**
 
-## <a name="determine-storsimple-device-mode"></a>StorSimple-eszköz üzemmódjának meghatározása
 
-#### <a name="to-determine-the-current-device-mode"></a>A jelenlegi eszköz mód meghatározására.
+### <a name="recovery-mode"></a>Helyreállítási mód
 
-1. Jelentkezzen be a lépéseket követve az eszköz soros konzoljához [a PuTTY használata az eszköz soros konzoljához való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Tekintse meg az eszköz a soros konzol menüjének címsorában látható. Ez az üzenet explicit módon azt jelzi, hogy az eszköz karbantartási vagy helyreállítási módban. Ha az üzenet nem tartalmaz minden olyan konkrét információkat a rendszer módot, az eszköz normál üzemmódban van.
+A helyreállítási mód "Hálózati támogatással rendelkező Windows csökkentett mód". A helyreállítási mód bevonja a Microsoft támogatási csapatát, és lehetővé teszi számukra a rendszer diagnosztikaelvégzését. A helyreállítási mód elsődleges célja a rendszernaplók beolvasása.
 
-## <a name="change-the-storsimple-device-mode"></a>A StorSimple-eszköz üzemmódjának módosítása
+Ha a rendszer helyreállítási módba lép, a következő lépésekért forduljon a Microsoft támogatási szolgálatához. További információt a [Microsoft támogatási szolgálatának felkeresve talál.](storsimple-8000-contact-microsoft-support.md)
 
-A StorSimple-eszköz (a normál módú) karbantartási módba helyezheti karbantartásával, vagy a karbantartási módú frissítések telepítése. Hajtsa végre az alábbi eljárásokat adja meg, vagy kilépett a karbantartási módból.
+> [!NOTE]
+> **Az eszköz nem helyezhető helyreállítási módba. Ha az eszköz rossz állapotban van, a helyreállítási mód megpróbálja az eszközt olyan állapotba hozni, amelyben a Microsoft támogatási személyzete megvizsgálhatja azt.**
+
+## <a name="determine-storsimple-device-mode"></a>StorSimple-eszköz üzemmódjának megállapítása
+
+#### <a name="to-determine-the-current-device-mode"></a>Az aktuális eszközmód meghatározása
+
+1. Jelentkezzen be az eszköz soros konzoljára a [PuTTY használata az eszköz soros konzoljához való csatlakozáslépései](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)vel.
+2. Nézze meg a szalagcím üzenetet a készülék soros konzolmenüjében. Ez az üzenet egyértelműen jelzi, hogy az eszköz karbantartási vagy helyreállítási módban van-e. Ha az üzenet nem tartalmaz a rendszermódra vonatkozó konkrét információkat, az eszköz normál módban van.
+
+## <a name="change-the-storsimple-device-mode"></a>A StorSimple eszközmód módosítása
+
+A StorSimple eszközt karbantartási módba helyezheti (normál módból) a karbantartási vagy karbantartási módfrissítések telepítéséhez. A karbantartási módba való belépéshez vagy kilépéshez hajtsa végre az alábbi eljárásokat.
 
 > [!IMPORTANT]
-> Mielőtt karbantartási üzemmódba, győződjön meg arról, hogy mindkét eszközvezérlő kifogástalan állapotú elérésével a **eszközbeállítások > hardverállapot** az eszköz az Azure Portalon. Ha egyik vagy mindkét vezérlő nem kifogástalan, forduljon a Microsoft Support a következő lépésekhez. További információért ugorjon [forduljon a Microsoft támogatási](storsimple-8000-contact-microsoft-support.md).
+> A karbantartási módba való belépés előtt ellenőrizze, hogy mindkét eszközvezérlő kifogástalan állapotú-e az **Eszköz hardverállapotának > elérésével** az Azure Portalon. Ha az egyik vagy mindkét vezérlő nem kifogástalan, a következő lépésekért forduljon a Microsoft támogatási szolgálatához. További információt a [Microsoft támogatási szolgálatának felkeresve talál.](storsimple-8000-contact-microsoft-support.md)
  
 
-#### <a name="to-enter-maintenance-mode"></a>Az adja meg a karbantartási mód
+#### <a name="to-enter-maintenance-mode"></a>A karbantartási módba való belépéshez
 
-1. Jelentkezzen be a lépéseket követve az eszköz soros konzoljához [a PuTTY használata az eszköz soros konzoljához való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Amikor a rendszer kéri, adja meg a **eszköz rendszergazdai jelszava**. Az alapértelmezett jelszava: `Password1`.
-3. Írja be a parancssorba 
+1. Jelentkezzen be az eszköz soros konzoljára a [PuTTY használata az eszköz soros konzoljához való csatlakozáslépései](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)vel.
+2. A soros konzol menüjében **Log in with full access**válassza az 1. Amikor a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát.** Az alapértelmezett jelszó: `Password1`.
+3. A parancssorba írja be a következőt: 
    
     `Enter-HcsMaintenanceMode`
-4. Látni fogja, hogy karbantartási módba fog megszakítja az összes i/o-kérelmek és a kapcsolatot az Azure portal-kiszolgálóhoz, és megerősítést fog kérni, amely közli, figyelmeztető üzenetet. Típus **Y** , adja meg a karbantartási módot.
-5. Mindkét vezérlő újraindul. Az újraindítás befejeződése után a soros konzol szalagcím jelzi, hogy az eszköz karbantartási módban van. Az alábbiakban egy példa látható a kimenetre.
+4. Megjelenik egy figyelmeztető üzenet, amely arról szól, hogy a karbantartási mód megszakítja az összes I/O-kérést, és megszakítja a kapcsolatot az Azure Portalon, és a rendszer megerősítést kér. A karbantartási módba való belépéshez írja be az **Y** parancsot.
+5. Mindkét vezérlő újraindul. Amikor az újraindítás befejeződött, a soros konzol szalagasztere jelzi, hogy az eszköz karbantartási üzemmódban van. Az alábbiakban egy példa látható a kimenetre.
 
 ```
     ---------------------------------------------------------------
@@ -119,14 +119,14 @@ A StorSimple-eszköz (a normál módú) karbantartási módba helyezheti karbant
 
 ```
 
-#### <a name="to-exit-maintenance-mode"></a>Karbantartási módból való kilépéshez
+#### <a name="to-exit-maintenance-mode"></a>A karbantartási módból való kilépés
 
-1. Jelentkezzen be az eszköz soros konzoljához. Győződjön meg arról, hogy az eszköz karbantartási módban van címsorában látható a.
+1. Jelentkezzen be az eszköz soros konzoljára. Ellenőrizze a szalagcímüzenetből, hogy az eszköz karbantartási üzemmódban van.Verify from the banner message that your device is in maintenance mode.
 2. A parancssorba írja be a következőt:
    
     `Exit-HcsMaintenanceMode`
-3. Megjelenik egy figyelmeztető üzenet és a egy megerősítő üzenetet. Típus **Y** karbantartási módból való kilépéshez.
-4. Mindkét vezérlő újraindul. Az újraindítás befejeződése után a soros konzol szalagcím azt jelzi, hogy az eszköz normál üzemmódban. Az alábbiakban egy példa látható a kimenetre.
+3. Egy figyelmeztető üzenet és egy megerősítő üzenet jelenik meg. Írja be az **Y** parancsot a karbantartási módból való kilépéshez.
+4. Mindkét vezérlő újraindul. Amikor az újraindítás befejeződött, a soros konzol szalagasztere jelzi, hogy az eszköz normál módban van. Az alábbiakban egy példa látható a kimenetre.
 
 ```
     -----------------------MAINTENANCE MODE------------------------
@@ -163,5 +163,5 @@ A StorSimple-eszköz (a normál módú) karbantartási módba helyezheti karbant
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [normál és a karbantartási módú frissítések alkalmazása](storsimple-update-device.md) a StorSimple eszközön.
+Ismerje meg, hogyan [alkalmazhat normál és karbantartási módfrissítéseket](storsimple-update-device.md) a StorSimple eszközön.
 

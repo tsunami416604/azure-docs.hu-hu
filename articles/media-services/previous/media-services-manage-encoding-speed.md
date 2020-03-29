@@ -1,6 +1,6 @@
 ---
-title: Sebességének és egyidejűségének az Azure Media Services encoding kezelése |} A Microsoft Docs
-description: Ez a cikk röviden bemutatja, hogyan kezelheti sebességének és egyidejűségének a kódolási feladatok és tevékenységek az Azure Media Services biztosítja.
+title: A kódolás gyorsaságának és egyidejűssének kezelése az Azure Media Services szolgáltatással | Microsoft dokumentumok
+description: Ez a cikk rövid áttekintést nyújt arról, hogyan kezelheti a kódolási feladatok/feladatok sebességét és egyidejűségét az Azure Media Services szolgáltatással.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463752"
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>A kódolás sebességének és egyidejűségének kezelése  
 
-Ez a cikk röviden bemutatja, hogyan kezelheti sebességének és egyidejűségének a kódolási feladatok feladatokat biztosít.
+Ez a cikk rövid áttekintést nyújt arról, hogyan kezelheti a kódolási feladatok/feladatok sebességét és egyidejűségét.
 
 ## <a name="overview"></a>Áttekintés
 
-A Media Services szolgáltatásban egy **fenntartott egység típussal** meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**, vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. A [kódolási egységek méretezése](media-services-scale-media-processing-overview.md) témakör, amely segítséget nyújt a különböző kódolási sebességű közötti kiválasztásakor döntéseket táblázatát jeleníti meg.
+A Media Services szolgáltatásban **a fenntartott egységtípus** határozza meg a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egységtípusok közül választhat: **S1,** **S2**vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. A [skálázási kódolási egységek](media-services-scale-media-processing-overview.md) témakör egy táblázatot jelenít meg, amely segít a döntésmeghozatalában a különböző kódolási sebességek közötti választáskor.
 
-A szolgáltatás számára fenntartott egység típusának meghatározása, mellett is megadhat a fiók kiépítése **szolgáltatás számára fenntartott egységek**. A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát. Például ha a fiókja rendelkezik öt fenntartott egységet, majd öt feldolgozható médiafeladatok fog futni, amíg egy időben, amennyi a feldolgozandó feladatok. A hátralévő feladatok a várólistában várakozik, és feldolgozására egymás után futtatott feladat végeztével lesznek első mértékének. Ha a fiók nem rendelkezik minden üzembe helyezett szolgáltatás számára fenntartott egységeket, majd feladatok fog felvenni, egymás után. Ebben az esetben egy feladat befejeződik, és a következő egy kezdő között a várakozási idő függ az erőforrások rendelkezésre állása a rendszerben.
+A fenntartott egység típusának megadása mellett megadhatja, hogy a fiók a Fenntartott egységek segítségével is **kiépítse a fiókot.** A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát. Ha például a fiók öt fenntartott egységgel rendelkezik, akkor öt médiafeladat fog egyidejűleg futni, amíg vannak feldolgozandó feladatok. A fennmaradó feladatok a várólistában várnak, és a futó feladat befejezésekor egymás után kerülnek feldolgozásra. Ha egy fióknem rendelkezik kiépített fenntartott egységekkel, akkor a feladatok at egymás után veszi késve. Ebben az esetben az egyik tevékenység befejezése és a következő indítás közötti várakozási idő a rendszerben lévő erőforrások rendelkezésre állásától függ.
 
-Részletes információk és példák azt mutatják be, hogyan skálázható kódolási egységek: [ez](media-services-scale-media-processing-overview.md) témakör.
+A kódolási egységek méretezését bemutató részletes információkat és példákat [ebben a](media-services-scale-media-processing-overview.md) témakörben talál.
 
 ## <a name="next-step"></a>Következő lépés
 
 [Kódolási egységek méretezése](media-services-scale-media-processing-overview.md)
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

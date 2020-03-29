@@ -1,6 +1,6 @@
 ---
-title: Távoli figyelés hozzáférés-vezérlés – Azure |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan konfigurálhatja a távoli figyelési megoldásgyorsító szerepköralapú hozzáférés-vezérlést (RBAC)
+title: Távfigyelés hozzáférés-vezérlése - Azure | Microsoft dokumentumok
+description: Ez a cikk arról nyújt tájékoztatást, hogyan konfigurálható a szerepköralapú hozzáférés-vezérlés (RBAC) a Távoli figyelési megoldás gyorsítójában
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,95 +9,95 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67203157"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
+# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a Távfigyelés i.
 
-Ez a cikk ismerteti a szerepköralapú hozzáférés-vezérlés konfigurálása a távoli figyelési megoldásgyorsító. Szerepköralapú hozzáférés-vezérlés lehetővé teszik a megoldásban a funkciók korlátozza a hozzáférést az egyéni felhasználók számára.
+Ez a cikk a szerepköralapú hozzáférés-vezérlők konfigurálásáról nyújt tájékoztatást a távfigyelési megoldás gyorsítójában. A szerepköralapú hozzáférés-vezérléssel korlátozhatja az egyes felhasználók hozzáférését a megoldás bizonyos szolgáltatásaira.
 
 ## <a name="default-settings"></a>Alapértelmezett beállítások
 
-Ha először telepíti a távoli figyelési megoldás, olyan két szerepkör is létezik: **Rendszergazdai** és **csak olvasható**.
+A távfigyelési megoldás első telepítésekor két szerepkör van: **rendszergazda** és **írásvédett.**
 
-A felhasználói a **rendszergazdai** szerepkör a megoldáshoz, többek között a következő engedélyeket az alábbi teljes hozzáféréssel rendelkezik. A felhasználó a **csak olvasható** szerepkör csak lesz hozzáférése a megoldás megtekintéséhez.
+A **Rendszergazda** szerepkörbármely felhasználója teljes hozzáféréssel rendelkezik a megoldáshoz, beleértve az alábbi engedélyeket is. Az **Írásvédett szerepkörben** szereplő felhasználók csak a megoldás megtekintéséhez férhetnek hozzá.
 
-| Engedély            | rendszergazda | Csak olvasási engedély |
+| Engedély            | Rendszergazda | Csak olvasási engedély |
 |----------------       |-------|-----------|
 | Megoldás megtekintése         | Igen   | Igen       |
-| Riasztás frissítése         | Igen   | Nem        |
-| Riasztás törlése         | Igen   | Nem        |
+| Riasztások frissítése         | Igen   | Nem        |
+| Riasztások törlése         | Igen   | Nem        |
 | Eszközök létrehozása        | Igen   | Nem        |
 | Eszközök frissítése        | Igen   | Nem        |
 | Eszközök törlése        | Igen   | Nem        |
 | Eszközcsoportok létrehozása  | Igen   | Nem        |
-| Az eszközcsoportok frissítése  | Igen   | Nem        |
-| Az eszközcsoportok törlése  | Igen   | Nem        |
+| Eszközcsoportok frissítése  | Igen   | Nem        |
+| Eszközcsoportok törlése  | Igen   | Nem        |
 | Szabályok létrehozása          | Igen   | Nem        |
-| Frissítési szabályok          | Igen   | Nem        |
+| Szabályok frissítése          | Igen   | Nem        |
 | Szabályok törlése          | Igen   | Nem        |
 | Feladatok létrehozása           | Igen   | Nem        |
-| A frissítéskezelés SIM | Igen   | Nem        |
+| A SIM-kezelés frissítése | Igen   | Nem        |
 
-Alapértelmezés szerint a rendszer automatikusan hozzárendel a felhasználó, aki üzembe helyezte a megoldást a **rendszergazdai** szerepkör és a egy Azure Active Directory-alkalmazás tulajdonosa. Alkalmazás tulajdonosként, szerepköröket rendelhetnek más felhasználók az Azure Portalon keresztül. Ha azt szeretné, ha a megoldás a szerepköröket egy másik felhasználó, akkor is meg kell application tulajdonosként az Azure Portalon.
+Alapértelmezés szerint a felhasználó, aki a megoldást telepítette, automatikusan hozzávan rendelve a **rendszergazdai** szerepkörhöz, és az Azure Active Directory-alkalmazás tulajdonosa. Alkalmazástulajdonosként szerepköröket rendelhet más felhasználókhoz az Azure Portalon keresztül. Ha azt szeretné, hogy egy másik felhasználó szerepköröket rendeljen hozzá a megoldáshoz, azokkal az Azure Portalon is be kell állítani őket alkalmazástulajdonosként.
 
 > [!NOTE]
-> A felhasználó, aki üzembe helyezte a megoldást, a **csak személy** ki láthatja után azonnal annak lett létrehozva. Megadását mások eléréséhez egy csak olvasható, rendszergazda vagy egy egyéni szerepkört, tekintse meg a következő útmutatások alatt a felhasználók hozzáadásához és eltávolításához, az alkalmazás megtekintéséhez.
+> A felhasználó, aki telepítette a megoldást az **egyetlen személy,** aki megtekintheti azt közvetlenül a létrehozása után. Ha hozzáférést szeretne adni másoknak az alkalmazás írásvédettként, rendszergazdaként vagy egyéni szerepkörként való megtekintéséhez, olvassa el az alábbi utasításokat a felhasználók hozzáadásáról vagy eltávolításáról.
 
-## <a name="add-or-remove-users"></a>Felhasználók hozzáadása vagy eltávolítása
+## <a name="add-or-remove-users"></a>Felhasználók hozzáadása és eltávolítása
 
-Egy Azure Active Directory-alkalmazás tulajdonosa, mint az Azure portal használatával adja hozzá, vagy távolítsa el a felhasználó egy szerepkörhöz a távoli figyelési megoldás. Az alábbi lépések az a [Azure Active Directory vállalati alkalmazás](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) , amely a távoli figyelési megoldás üzembe helyezésekor létrejött.
+Az Azure Active Directory-alkalmazás tulajdonosaként az Azure Portalon hozzáadhat vagy eltávolíthat egy felhasználót egy szerepkörhöz a távoli figyelési megoldásból. A következő lépések az [Azure Active Directory vállalati alkalmazást](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) használják, amely a távoli figyelési megoldás telepítésekor jött létre.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-1. Ellenőrizze a [felhasználó szerepel a könyvtár](../active-directory/fundamentals/add-users-azure-active-directory.md) használ. Döntött, hogy bejelentkezett a könyvtárat a [a Microsoft Azure IoT-Megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators) hely. A könyvtár neve jelenik meg a jobb felső sarkában a [oldal](https://www.azureiotsolutions.com/Accelerators).
+1. Ellenőrizze, hogy a felhasználó a használt [könyvtárban](../active-directory/fundamentals/add-users-azure-active-directory.md) van-e. A [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators) webhelyére való bejelentkezéskor használt könyvtárat választotta. A könyvtárnév a [lap](https://www.azureiotsolutions.com/Accelerators)jobb felső sarkában látható.
 
-1. Keresse meg a **vállalati alkalmazás** a megoldás az Azure Portalon. Egyszer, a lista szűréséhez beállításával **alkalmazástípus** való **minden alkalmazás**. Keresse meg az alkalmazás által alkalmazás nevére. Az alkalmazás nevét a távoli figyelési megoldás neve. Az alábbi képernyőképen a megoldást és az alkalmazás megjelenített nevek a következők **contoso-rm4**.
+1. Keresse meg a **megoldás enterprise-alkalmazását** az Azure Portalon. Miután ott, szűrje a listát beállításával **Alkalmazás típusa** **minden alkalmazás**. Keresse meg az alkalmazást az alkalmazás neve alapján. Az alkalmazás neve a távoli figyelési megoldás neve. A következő képernyőképen a megoldás és az alkalmazás megjelenítési **nevei contoso-rm4**.
 
-    ![A vállalati alkalmazás](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
+    ![Vállalati alkalmazás](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 
-1. Ellenőrizze, hogy az alkalmazás ezután parancsra kattintva Ön az alkalmazás tulajdonosának **tulajdonosok**. Az alábbi képernyőképen **Contoso rendszergazdai** tulajdonosa a **contoso-rm4** alkalmazás:
+1. Az alkalmazás tulajdonosának ellenőrzéséhez kattintson az alkalmazásra, majd a **Tulajdonosok**parancsra. A következő képernyőképen a **Contoso-rendszergazda** a **contoso-rm4** alkalmazás tulajdonosa:
 
     ![Tulajdonosok](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
-    Ha nem egy olyan tulajdonost, kérje meg egy meglévő tulajdonosát hozzáadása a listához szeretné. Csak a tulajdonosok például alkalmazás-szerepkörök is hozzárendelhet **rendszergazdai** vagy **csak olvasható** más felhasználók számára.
+    Ha ön nem tulajdonos, meg kell kérnie egy meglévő tulajdonost, hogy vegye fel önt a listára. Csak a tulajdonosok rendelhetnek hozzá alkalmazásszerepköröket, például **a rendszergazda** vagy **az írásvédett** más felhasználókhoz.
 
-1. Az alkalmazás-szerepkörökhöz rendelt felhasználók listájának megtekintéséhez kattintson **felhasználók és csoportok**.
+1. Az alkalmazásban szerepkörökhöz rendelt felhasználók listájának megtekintéséhez kattintson a **Felhasználók és csoportok**elemre.
 
-1. A felhasználó hozzáadásához kattintson **+ Hozzáadás felhasználó**, és kattintson a **felhasználókat és csoportokat, nincs kiválasztott** , válasszon ki egy felhasználót a címtárból.
+1. Felhasználó hozzáadásához kattintson **a + Felhasználó hozzáadása**gombra , majd a Felhasználók és csoportok **gombra,** majd a Nincs lehetőség parancsra a felhasználó nak a könyvtárból való kiválasztásához.
 
-1. A felhasználói szerepkörhöz rendeléséhez kattintson **, nincs kiválasztott szerepkör kiválasztása** , és válassza a **rendszergazdai** vagy **csak olvasható** szerepkört a felhasználóhoz. Kattintson a **kiválasztása**, és kattintson a **hozzárendelése**.
+1. Ha a felhasználót szerepkörhöz szeretné rendelni, kattintson a **Szerepkör kiválasztása, Nincs kijelölt elemre,** és válassza a **felhasználó Rendszergazda** vagy **Csak olvasható** szerepkörét. Kattintson **a Kijelölés**gombra, majd a **Hozzárendelés gombra.**
 
     ![Szerepkör kiválasztása](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
-1. A felhasználó most már elérhető a távoli figyelési megoldás a szerepkör által meghatározott engedélyekkel.
+1. A felhasználó most már hozzáférhet a távoli figyelési megoldáshoz a szerepkör által meghatározott engedélyekkel.
 
-1. Az alkalmazás a felhasználó törölheti az a **felhasználók és csoportok** lapot a portálon.
+1. A felhasználók at törölheti az alkalmazásból a **portál Felhasználók és csoportok** lapján.
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
-A távoli figyelési megoldás magában foglalja a **rendszergazdai** és **csak olvasható** szerepkörök első telepítésekor. Egyéni szerepkörök az engedélyek eltérő halmazát adhat hozzá. Egyéni szerepkör definiálásához kell tennie:
+A távoli figyelési megoldás tartalmazza a **rendszergazdai** és **csak olvasható** szerepköröket, amikor először telepíti. Különböző engedélykészletekkel rendelkező egyéni szerepköröket adhat hozzá. Egyéni szerepkör definiálásához a következőket kell megadnia:
 
-- Új szerepkör hozzáadása az alkalmazáshoz az Azure Portalon.
-- Adja meg az új szerepkör-házirend a hitelesítési és engedélyezési mikroszolgáltatás.
-- A megoldás webes felhasználói felület frissítéséhez.
+- Adjon hozzá egy új szerepkört az alkalmazáshoz az Azure Portalon.
+- A hitelesítési és engedélyezési mikroszolgáltatás új szerepkörének házirendjének definiálása.
+- Frissítse a megoldás webes felhasználói felületét.
 
-### <a name="define-a-custom-role-in-the-azure-portal"></a>Adjon meg egy egyéni biztonsági szerepkört a az Azure Portalon
+### <a name="define-a-custom-role-in-the-azure-portal"></a>Egyéni szerepkör definiálása az Azure Portalon
 
-A következő lépések bemutatják, hogyan szerepkör hozzáadása az Azure Active Directory-alkalmazás. Ebben a példában hozzon létre egy új szerepkör, amely lehetővé teszi a tagok létrehozása, frissítése és törlése a távoli figyelési megoldásban az eszközök számára.
+Az alábbi lépések ismertetik, hogyan adhat hozzá egy szerepkört egy alkalmazáshoz az Azure Active Directoryban. Ebben a példában egy új szerepkört hoz létre, amely lehetővé teszi a tagok számára, hogy eszközöket hozzanak létre, frissítsenek és töröljenek a Távoli figyelési megoldásban.
 
-1. Keresse meg a **alkalmazásregisztráció** a megoldás az Azure Portalon. Az alkalmazás nevét a távoli figyelési megoldás neve. Az alábbi képernyőképen a megoldást és az alkalmazás megjelenített nevek a következők **contoso-rm4**.
+1. Keresse meg a megoldás **alkalmazásregisztrációját** az Azure Portalon. Az alkalmazás neve a távoli figyelési megoldás neve. A következő képernyőképen a megoldás és az alkalmazás megjelenítési **nevei contoso-rm4**.
 
     ![Alkalmazásregisztráció](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
-1. Válassza ki az alkalmazását, és kattintson a **Manifest**. Láthatja, hogy a két meglévő [alkalmazás-szerepkörök](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) az alkalmazáshoz meghatározott:
+1. Jelölje ki az alkalmazást, majd kattintson **a Jegyzékfájl gombra.** Az alkalmazáshoz definiált két meglévő [alkalmazásszerepkör](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) látható:
 
-    ![Jegyzék megtekintése](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
+    ![Jegyzékfájl megtekintése](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
-1. Egy nevű szerepkör hozzáadása a jegyzékfájl szerkesztése **ManageDevices** az alábbi kódrészletben látható módon. Szüksége lesz egy egyedi karakterlánccá, például egy GUID Azonosítót az új szerepkör-azonosítót. Létrehozhat egy új GUID-szolgáltatást használ, mint például a [Online GUID-generátor](https://www.guidgenerator.com/):
+1. A jegyzékfájl szerkesztésével adjon hozzá egy **ManageDevices** nevű szerepkört, ahogy az a következő kódrészletben látható. Szüksége van egy egyedi karakterláncra, például egy GUID azonosítóra az új szerepkörazonosítóhoz. Új GUID-t hozhat létre egy olyan szolgáltatás használatával, mint például az [online GUID generátor:](https://www.guidgenerator.com/)
 
     ```json
     "appRoles": [
@@ -136,13 +136,13 @@ A következő lépések bemutatják, hogyan szerepkör hozzáadása az Azure Act
 
     Mentse a módosításokat.
 
-### <a name="define-a-policy-for-the-new-role"></a>Meghatározhat egy olyan szabályzatot, az új szerepkör
+### <a name="define-a-policy-for-the-new-role"></a>Házirend definiálása az új szerepkörhöz
 
-Miután a szerepkör hozzáadása az alkalmazáshoz az Azure Portalon, meg kell határoznia egy szabályzatot a [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) a szerepkör, amely hozzárendeli az eszközök kezeléséhez szükséges engedélyekkel.
+Miután hozzá adja a szerepkört az alkalmazáshoz az Azure Portalon, meg kell határoznia egy [szabályzatot roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) a szerepkörhöz, amely hozzárendeli az eszközök kezeléséhez szükséges engedélyeket.
 
-1. Klónozás a [távoli figyelés Mikroszolgáltatások](https://github.com/Azure/remote-monitoring-services-dotnet) GitHub-adattár helyi számítógépre.
+1. Klónozza a [távoli figyelési mikroszolgáltatások](https://github.com/Azure/remote-monitoring-services-dotnet) tárháza a GitHubról a helyi számítógépre.
 
-1. Szerkessze a **auth/Services/data/policies/roles.json** fájlját, hogy a szabályzat a **ManageDevices** szerepkör az alábbi kódrészletben látható módon. A **azonosító** és **szerepkör** értékeknek egyezniük kell a szerepkör-definíció az előző szakaszban az alkalmazásjegyzékben. Engedélyezett műveletek listája lehetővé teszi, hogy valaki van a **ManageDevices** szerepkör létrehozása, frissítése és törlése a megoldáshoz csatlakoztatott eszközökre:
+1. Az **auth/Services/data/policies/roles.json** fájl szerkesztésével adja hozzá a **ManageDevices** szerepkör házirendjének házirendjeit a következő kódrészletben látható módon. Az **azonosító** és **a szerepkör** értékek egyeznie kell a szerepkör-definíció az alkalmazásjegyzékben az előző szakaszból. Az engedélyezett műveletek listája lehetővé teszi, hogy a **ManageDevices** szerepkörben valaki a megoldáshoz csatlakoztatott eszközöket hozzon létre, frissítsen és töröljön:
 
     ```json
     {
@@ -184,11 +184,11 @@ Miután a szerepkör hozzáadása az alkalmazáshoz az Azure Portalon, meg kell 
     }
     ```
 
-1. Miután végzett, szerkesztését a **Services/data/policies/roles.json** fájlt, újraépítése és ismételt üzembe helyezése a hitelesítési és engedélyezési mikroszolgáltatást a megoldásgyorsító.
+1. Miután befejezte a **Szolgáltatások/adatok/szabályzatok/roles.json** fájl szerkesztését, építse újra és telepítse újra a hitelesítési és engedélyezési mikroszolgáltatást a megoldásgyorsítóhoz.
 
-### <a name="how-the-web-ui-enforces-permissions"></a>Hogyan érvénybe lépteti a webes felhasználói felületen az engedélyek
+### <a name="how-the-web-ui-enforces-permissions"></a>Hogyan érvényesíti a webes felhasználói felület az engedélyeket?
 
-A webes felhasználói Felületet használja a [hitelesítési és engedélyezési mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) együttműködve meghatározza milyen műveleteket egy felhasználó számára engedélyezett időt vesz igénybe, és milyen vezérlők láthatók-e a felhasználói felületen. Például, ha a megoldás neve **contoso-rm4**, a webes felhasználói felületen kéri le az aktuális felhasználó számára engedélyezett műveletek listáját az alábbi kérelem küldésével:
+A webes felhasználói felület a [hitelesítési és engedélyezési mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) segítségével határozza meg, hogy a felhasználó milyen műveleteket hajthet el, és milyen vezérlők láthatók a felhasználói felületen. Ha például a megoldást **contoso-rm4-nek**nevezik, a webes felhasználói felület a következő kérés elküldésével lekéri az aktuális felhasználó számára engedélyezett műveletek listáját:
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -197,7 +197,7 @@ X-Source: true
 Authorization: Bearer <JWT Token from ADAL>
 ```
 
-A felhasználó nevű **Eszközkezelő** a a **ManageDevices** szerepkör, a válasz törzsében is tartalmaz a következő JSON:
+A **ManageDevices** szerepkörben az **Eszközkezelő** nevű felhasználó esetében a válasz a következő JSON-t tartalmazza a szervezetben:
 
 ```json
 {
@@ -212,7 +212,7 @@ A felhasználó nevű **Eszközkezelő** a a **ManageDevices** szerepkör, a vá
 }
 ```
 
-Az alábbi kódrészletet a [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) a a [webes felhasználói Felületét](https://github.com/Azure/pcs-remote-monitoring-webui/) bemutatja, hogyan az engedélyek kényszerített deklaratív:
+A következő kódrészlet az [eszköztörlés.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) eszközről a [webes felhasználói felületen](https://github.com/Azure/pcs-remote-monitoring-webui/) bemutatja, hogyan kényszerítik ki deklaratív módon az engedélyeket:
 
 ```json
 <FlyoutContent>
@@ -224,13 +224,13 @@ Az alábbi kódrészletet a [deviceDelete.js](https://github.com/Azure/pcs-remot
 </FlyoutContent>
 ```
 
-További információkért lásd: [védett összetevők](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md). Megadhatja, hogy a további engedélyeket a [authModel.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) fájlt.
+További információt a Védett összetevők című [témakörben talál.](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md) Az [authModel.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) fájlban további engedélyeket is megadhat.
 
-### <a name="how-the-microservices-enforce-permissions"></a>Hogyan a mikroszolgáltatások kényszerítése a engedélyek
+### <a name="how-the-microservices-enforce-permissions"></a>Hogyan kényszerítik ki a mikroszolgáltatások az engedélyeket?
 
-A mikroszolgáltatások engedélyek jogosulatlan API-kérelmek ellen is ellenőrizheti. Amikor egy mikroszolgáltatás-API-kérést kap, dekódol, és érvényesíti a JWT jogkivonatot beolvasni a felhasználói Azonosítót és a felhasználói szerephez tartozó engedélyeket.
+A mikroszolgáltatások is ellenőrzik az engedélyeket a jogosulatlan API-kérelmek elleni védelem érdekében. Amikor egy mikroszolgáltatás API-kérelmet kap, dekódolja és érvényesíti a JWT-jogkivonatot a felhasználói azonosító és a felhasználó szerepköréhez társított engedélyek lekéréséhez.
 
-A következő kódrészlet a a [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) fájlt a [IoTHub Manager mikroszolgáltatás](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager), bemutatja, hogyan tartatja be az engedélyeket:
+Az [ioTHub-kezelő mikroszolgáltatásának](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) fájljából a következő kódrészlet bemutatja az engedélyek érvényesítésének módját:
 
 ```csharp
 [HttpDelete("{id}")]
@@ -243,11 +243,11 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan szerepköralapú hozzáférés-vezérlők a távoli figyelési megoldásgyorsító találhatók meg.
+Ebben a cikkben megtanulta, hogyan szerepköralapú hozzáférés-vezérlések vannak megvalósítva a távoli figyelési megoldás gyorsítójában.
 
-Lásd: [hozzáférés-vezérlés konfigurálása a Time Series Insights Explorer](iot-accelerators-remote-monitoring-rbac-tsi.md) a Time Series Insights explorer, a távoli figyelési megoldásgyorsító való hozzáférés kezeléséről további információt.
+A [Time Series Insights-kezelő hozzáférés-vezérléskonfigurálása](iot-accelerators-remote-monitoring-rbac-tsi.md) című témakörben talál információt a Time Series Insights-kezelő höz való hozzáférés kezeléséről a Távfigyelési megoldás gyorsítójában.
 
-További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+A távfigyelési megoldásgyorsítóval kapcsolatos további információkért lásd: [Távoli figyelési architektúra](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
-A távoli figyelési megoldás testreszabásával kapcsolatos további információkért lásd: [testreszabása és ismételt mikroszolgáltatások üzembe helyezése](iot-accelerators-microservices-example.md)
+A távfigyelési megoldás testreszabásáról a [Mikroszolgáltatás testreszabása és újratelepítése](iot-accelerators-microservices-example.md) című témakörben talál további információt.
 <!-- Next tutorials in the sequence -->

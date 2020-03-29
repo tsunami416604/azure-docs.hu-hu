@@ -1,6 +1,6 @@
 ---
-title: Távoli figyelési C – az Azure Linux rendszerű eszközök kiépítése |} A Microsoft Docs
-description: Ismerteti, hogyan lehet egy eszköz csatlakoztatása a távoli figyelési megoldásgyorsító a linuxon futó C nyelven írt alkalmazás használatával.
+title: Linux-eszközök kiépítése a távfigyelő szolgáltatásba C - Azure | Microsoft dokumentumok
+description: Ez a témakör azt ismerteti, hogy miként csatlakoztatható egy eszköz a távfigyelési megoldás gyorsítóhoz a Linux on futó C-ben írt alkalmazás használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
 ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61454494"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Csatlakoztassa az eszközt a távfelügyeleti megoldásgyorsítóhoz (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan lehet csatlakozni a távoli figyelési megoldásgyorsító valós eszköz.
+Ez az oktatóanyag bemutatja, hogyan csatlakoztathat egy valódi eszközt a távoli figyelési megoldás gyorsítóhoz.
 
-Csakúgy, mint legnagyobb beágyazott korlátozott eszközökön futó alkalmazásokhoz, az Ügyfélkód az eszköz alkalmazás írt c-hez Ebben az oktatóanyagban hozza létre az alkalmazást egy Ubuntu (Linux) rendszert futtató gépen.
+A legtöbb korlátozott eszközön futó beágyazott alkalmazáshoz ugyanúgy, mint az eszközalkalmazás ügyfélkódja C-ben íródik. Ebben az oktatóanyagban az alkalmazást egy Ubuntu (Linux) rendszert futtató gépen építi fel.
 
-Ha egy eszköz szimulálása szeretne használni, tekintse meg [létrehozása és a egy új szimulált eszköz teszt](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Ha egy eszközt szeretne szimulálni, olvassa el az [Új szimulált eszköz létrehozása és tesztelése című témakört.](iot-accelerators-remote-monitoring-create-simulated-device.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató a lépések végrehajtásához szüksége 15.04 vagy újabb verzió Ubuntu-es eszközök. A folytatás előtt [a Linux fejlesztési környezet beállítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux).
+Az útmutató lépéseinek végrehajtásához egy Ubuntu 15.04-es vagy újabb verzióját futtató eszközre van szükség. Mielőtt folytatná, [állítsa be a Linux fejlesztői környezetet.](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)
 
-## <a name="view-the-code"></a>A kód megtekintéséhez
+## <a name="view-the-code"></a>A kód megtekintése
 
-A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
+Az ebben az útmutatóban használt [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) az Azure IoT C SDKs GitHub-tárházban érhető el.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>Letöltheti a forráskódot, és készítse elő a projekt
+### <a name="download-the-source-code-and-prepare-the-project"></a>A forráskód letöltése és a projekt előkészítése
 
-A projekt elkészítéséhez Klónozás vagy letöltés a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) a Githubról.
+A projekt előkészítése, klónozza vagy töltse le az [Azure IoT C SDKs tárház](https://github.com/Azure/azure-iot-sdk-c) a GitHubról.
 
-A mintában található a **samples/megoldások/remote_monitoring_client** mappát.
+A minta a **minták/megoldások/remote_monitoring_client** mappában található.
 
-Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring_client** mappát egy szövegszerkesztőben.
+Nyissa meg a **remote_monitoring.c** fájlt a **minta/megoldások/remote_monitoring_client** mappában egy szövegszerkesztőben.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmazás hozhat létre. A távoli figyelési ügyfélalkalmazás az SDK-val készült a buildelési folyamat részeként.
+Az alábbi lépések azt ismertetik, hogyan használható a *CMake* az ügyfélalkalmazás létrehozásához. A távoli figyelési ügyfélalkalmazás az SDK létrehozási folyamatának részeként épül fel.
 
-1. Szerkessze a **remote_monitoring.c** fájlban cserélje le `<connectionstring>` az eszköz kapcsolati karakterlánccal feljegyzett elején. Ez az útmutató egy eszközt a megoldásgyorsító való felvételekor.
+1. Az útmutató elején észlelt eszközkapcsolati karakterláncra cserélheti `<connectionstring>` a **remote_monitoring.c** fájlt, amikor eszközt adott a megoldásgyorsítóhoz.
 
-1. Klónozott másolatának gyökérkönyvtárában nyissa meg a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) tárházat, és futtassa a következő parancsokat az ügyfél-alkalmazás létrehozásához:
+1. Keresse meg az [Azure IoT C SDKs tárház](https://github.com/Azure/azure-iot-sdk-c) klónozott példányának gyökerét, és futtassa a következő parancsokat az ügyfélalkalmazás létrehozásához:
 
     ```sh
     mkdir cmake
@@ -58,15 +58,15 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmaz�
     make
     ```
 
-1. Futtassa az ügyfélalkalmazást és telemetriát küldjön az IoT hubnak:
+1. Futtassa az ügyfélalkalmazást, és küldje el a telemetriai adatokat az IoT Hubnak:
 
     ```sh
     ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
-    A konzolon, üzeneteket jelenít meg:
+    A konzol az üzeneteket a következőképpen jeleníti meg:
 
-    - Az alkalmazás minta telemetriai adatokat küld a megoldásgyorsító.
-    - A megoldás irányítópultjáról indított metódusokra válaszol.
+    - Az alkalmazás minta telemetriát küld a megoldásgyorsító.
+    - A megoldás irányítópultjáról meghívott metódusokra válaszol.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

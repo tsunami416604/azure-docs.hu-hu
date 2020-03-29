@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub és az Azure Event Hubs összehasonlítása |} A Microsoft Docs
-description: Az IoT Hub és az Event Hubs Azure szolgáltatások funkcionális eltérések és a használati esetek menüpont kiemelve összehasonlítása. Összehasonlítását tartalmazza a támogatott protokollok, kezelés, figyelés, és feltölti a fájlt.
+title: Az Azure IoT Hub és az Azure Event Hubs összehasonlítása | Microsoft dokumentumok
+description: Az IoT Hub és az Event Hubs Azure-szolgáltatások összehasonlítása, amely kiemeli a funkcionális különbségeket és a használati eseteket. Az összehasonlítás tartalmazza a támogatott protokollokat, az eszközkezelést, a figyelést és a fájlfeltöltéseket.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60735516"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-eszközök csatlakoztatása az Azure-bA: Az IoT Hub és az Event Hubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-eszközök csatlakoztatása az Azure-hoz: IoT Hub és Event Hubs
 
-Az Azure kifejezetten fejlesztette ki kapcsolatot és a kommunikáció segítségével csatlakoztatta az adatait a felhő képességeit a különböző típusú szolgáltatásokat biztosít. Azure IoT Hub és az Azure Event Hubs olyan felhőszolgáltatás, amely képes feldolgozni az adatokat és dolgozhat fel nagy mennyiségű vagy üzleti elemzések készítése adatok tárolására. A két szolgáltatás hasonlóak, hogy mindkét támogatják-e az adatok feldolgozási, alacsony késéssel és magas megbízhatósággal, de azokat különböző felhasználási célokra tervezték. Az IoT Hub IoT-eszközök csatlakoztatása és az Azure felhőbe big Data típusú adatok streamelési készült Event Hubs egyedi követelményeinek célja. A Microsoft azt javasolja, Azure IoT Hub IoT-eszközök csatlakoztatása az Azure-ba való használatával
+Az Azure kifejezetten a különböző típusú kapcsolatokhoz és kommunikációhoz kifejlesztett szolgáltatásokat nyújt, amelyek segítségével adatokat csatlakoztathat a felhő erejéhez. Az Azure IoT Hub és az Azure Event Hubs egyaránt olyan felhőalapú szolgáltatások, amelyek nagy mennyiségű adatot tudnak bedolgozni, és ezeket az adatokat üzleti elemzési célokra feldolgozni vagy tárolni. A két szolgáltatás hasonló, mivel mindkettő támogatja az adatok alacsony késésű és magas megbízhatóságú betöltését, de különböző célokra vannak tervezve. Az IoT Hubot úgy fejlesztették ki, hogy megfeleljen az IoT-eszközök Azure-felhőhöz való csatlakoztatásának egyedi követelményeinek, miközben az Event Hubs-t big data-adatfolyam-továbbításra tervezték. A Microsoft azt javasolja, hogy az Azure IoT Hub használatával csatlakoztassa az IoT-eszközöket az Azure-hoz
 
-Az Azure IoT Hub, amely csatlakozik az IoT-eszközök gyűjtsön adatokat és az üzleti elemzések és az automation, a felhőátjárónak. Ezenkívül az IoT Hub szolgáltatásai bővítését az eszközök és a háttérrendszerrel közötti kapcsolatot. Kétirányú kommunikációs lehetőségeket jelenti azt, hogy közben adatokat fogad az eszközökről is küldhet parancsokat, és eszközök biztonsági szabályzatokat. Például használatával felhőből az eszközre irányuló üzenetküldés tulajdonságainak frissítése vagy az eszköz felügyeleti tevékenységeket. Felhő és eszköz közötti kommunikációt lehetővé teszi a peremhálózati eszközökre az Azure IoT Edge felhőbeli intelligens technológiák küldeni. Az eszközszintű egyedi azonosítóval az IoT Hub segít jobban biztonságos által biztosított az IoT-megoldás lehetséges támadások ellen. 
+Az Azure IoT Hub egy felhőátjáró, amely összeköti az IoT-eszközöket az adatok gyűjtéséhez és az üzleti elemzések és automatizálás ösztönzéséhez. Emellett az IoT Hub olyan funkciókat is tartalmaz, amelyek gazdagítják az eszközök és a háttérrendszerek közötti kapcsolatot. A kétirányú kommunikációs képességek azt jelentik, hogy miközben adatokat fogad az eszközökről, parancsokat és házirendeket is küldhet vissza az eszközökre. Például a felhőből az eszközre irányuló üzenetküldés segítségével frissítse a tulajdonságokat, vagy hívja meg az eszközkezelési műveleteket. A felhőből az eszközre irányuló kommunikáció lehetővé teszi, hogy az Azure IoT Edge segítségével felhőalapú intelligenciát küldjön a peremhálózati eszközökre. Az IoT Hub által biztosított egyedi eszközszintű identitás segít jobban megvédeni az IoT-megoldást a lehetséges támadásoktól. 
 
-[Az Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) a big Data típusú adatok az Azure service folyamatos. Nagy átviteli sebességű adatok streamelési forgatókönyvek ahol ügyfelek küldhet kéréseket naponta több milliárd lett tervezve. Az Event Hubs egy particionált felhasználói modell használ a stream horizontális, és a big data- és elemzési szolgáltatások az Azure Databricks, a Stream Analytics, az ADLS és a HDInsight integrálva van. Olyan funkciókkal, mint az Event Hubs Capture és az automatikus feltöltési ezt a szolgáltatást úgy tervezték, a big data-alkalmazások és megoldások támogatása. Ezenkívül az IoT Hub az Event Hubs segítségével a telemetriát a folyamat elérési útvonalát, így az IoT-megoldás is számos előnyt biztosít az Event Hubs áttekintse hatékonyságát.
+[Az Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) az Azure big data streamelési szolgáltatása. Nagy átviteli sebességű adatstreamelési helyzetekhez tervezték, ahol az ügyfelek több milliárd lekérdezést küldhetnek naponta. Az Event Hubs particionált felhasználói modellt használ a stream horizontális skálázásához, és integrálódik az Azure olyan big data- és elemzési szolgáltatásaival, mint a Databricks, a Stream Analytics, az ADLS és a HDInsight. Az olyan funkciókkal, mint az Event Hubs Capture és az Auto-Inflate, ez a szolgáltatás támogatja a big data-alkalmazásokat és -megoldásokat. Emellett az IoT Hub az Event Hubs telemetriai folyamatútvonalát használja, így az IoT-megoldás is kihasználja az Event Hubs hatalmas erejét.
 
-Összefoglalva, a két megoldás nagy méretű, adatbetöltés lettek kialakítva. Csak az IoT Hub a gazdag IoT-specifikus funkciókat biztosít, amelyek célja az IoT-eszközök csatlakoztatása az Azure-felhő üzleti értékének maximalizálását.  Ha csak most ismerkedik az IoT-feladatok, kezdve az IoT hubot, hogy az adatok betöltési helyzetek feltételeinek megteremtésére biztosítaná a, hogy azonnal hozzáférhet a teljes körű IoT-képességeik után az üzleti és technikai kell hitelesíteni.
+Összefoglalva, mindkét megoldás nagy méretű adatbetöltésre van tervezve. Csak az IoT Hub biztosítja a gazdag IoT-specifikus képességeket, amelyek et úgy tervezte, hogy maximalizálja az IoT-eszközök azure-felhőhöz való csatlakoztatásának üzleti értékét.  Ha az IoT-utazás csak most kezdődik, kezdve az IoT Hub az adatok betöltési forgatókönyvek támogatása biztosítja, hogy azonnali hozzáférést biztosít a teljes funkcionalitású IoT-képességek, ha az üzleti és műszaki igények et.
 
-Az alábbi táblázat ismerteti, hogyan a két réteg IoT-központ összehasonlítása az Event hubs szolgáltatásba, amikor a mérlegeli őket az IoT-képességeik részleteit. A standard és alapszintű csomag, az IoT Hub kapcsolatos további információkért lásd: [a megfelelő IoT Hub-csomag kiválasztása](iot-hub-scaling.md).
+Az alábbi táblázat bemutatja, hogyan viszonyulaz IoT Hub két szintje az Event Hubs-hoz, amikor kiértékeli őket az IoT-képességek szempontjából. Az IoT Hub alap- és alapszintjeiről a [Megfelelő IoT Hub-szint kiválasztása](iot-hub-scaling.md)című témakörben talál további információt.
 
-| IoT-képesség | Az IoT Hub standard szintű csomag | Alapszintű IoT Hub-csomag | Event Hubs |
+| IoT-képesség | Az IoT Hub standard szintje | Az IoT Hub alapszintje | Event Hubs |
 | --- | --- | --- | --- |
-| Eszközről-a-felhőbe üzenetkezelés | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |
-| Protokoll: A websockets protokoll keresztül HTTPS, AMQP és AMQP | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |
-| Protokoll: Mqtt-ről, a websockets protokoll keresztüli mqtt-ről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
+| Eszközről felhőbe irányuló üzenetküldés | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |
+| Protokollok: HTTPS, AMQP, AMQP webSockets felett | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |
+| Protokollok: MQTT, MQTT webSockets felett | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Eszközönkénti identitás | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
-| Fájlfeltöltés az eszközökről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
-| Eszközök kiépítési szolgáltatáshoz | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
-| Üzenetküldés a felhőből eszközökre | ![Jelölőnégyzet][checkmark] |  |  |
-| Ikereszköz- és eszközkezelés | ![Jelölőnégyzet][checkmark] |  |  |
-| Eszköz adatfolyamok (előzetes verzió) | ![Jelölőnégyzet][checkmark] |  |  |
+| Fájlfeltöltés eszközökről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
+| Eszközkiépítési szolgáltatás | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
+| Felhőből az eszközre irányuló üzenetküldés | ![Jelölőnégyzet][checkmark] |  |  |
+| Az ikereszköz és az eszközkezelés | ![Jelölőnégyzet][checkmark] |  |  |
+| Eszközadatfolyamok (előzetes verzió) | ![Jelölőnégyzet][checkmark] |  |  |
 | IoT Edge | ![Jelölőnégyzet][checkmark] |  |  |
 
-Akkor is, ha csak a használati eset eszközről a felhőbe – az adatbetöltés, erősen ajánlott egy szolgáltatás, amely lehetővé teszi az IoT-eszköz csatlakoztatása az IoT Hub használatával. 
+Még akkor is, ha az egyetlen használati eset az eszközről a felhőbe történő adatbetöltés, javasoljuk az IoT Hub használatát, mivel olyan szolgáltatást biztosít, amely et IoT-eszközkapcsolathoz terveztek. 
 
 ### <a name="next-steps"></a>További lépések
 
-Részletesebb megismerése az IoT Hub képességeit, tekintse meg a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide.md).
+Az IoT Hub képességeinek további megismeréséhez tekintse meg az [IoT Hub fejlesztői útmutatóját.](iot-hub-devguide.md)
 
 <!-- This one reference link is used over and over. --robinsh -->
 [checkmark]: ./media/iot-hub-compare-event-hubs/ic195031.png

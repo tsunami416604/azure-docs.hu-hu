@@ -1,6 +1,6 @@
 ---
-title: Megismerheti az Azure IoT Hub üzenetküldés |} A Microsoft Docs
-description: Fejlesztői útmutató – eszközről a felhőbe és a felhőből az eszközre irányuló, az IoT Hub üzenetküldési. Üzenet-formátumok és a támogatott kommunikációs protokollok kapcsolatos információkat tartalmaz.
+title: Az Azure IoT Hub üzenetküldése | Microsoft dokumentumok
+description: Fejlesztői útmutató – eszközről felhőbe és felhőből az eszközre irányuló üzenetküldés az IoT Hubbal. Az üzenetformátumokról és a támogatott kommunikációs protokollokról tartalmaz információkat.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,40 +9,40 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: f56332fa7f53c729ffaa28ea375f043d1b4a3678
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60626247"
 ---
-# <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Az IoT Hub eszköz-felhő és a felhőből az eszközre irányuló üzenetek küldése
+# <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Eszközről felhőbe és felhőbe irányuló üzenetek küldése az IoT Hubbal
 
-Az IoT Hub lehetővé teszi, hogy kétirányú kommunikációt, az eszközökkel. Használja az IoT Hub üzenetküldési és az eszközök közötti kommunikációt az üzenetek küldését az eszközök által vissza megoldásaiban befejezése, és a parancsok küldését az IoT megoldások háttér-eszközökre. Tudjon meg többet a [az IoT Hub üzenet formátuma](iot-hub-devguide-messages-construct.md).
+Az IoT Hub lehetővé teszi a kétirányú kommunikációt az eszközökkel. Az IoT Hub-üzenetküldés segítségével kommunikálhat az eszközökkel azáltal, hogy üzeneteket küld az eszközökről a megoldások háttér-kezelőszámára, és parancsokat küld az IoT-megoldások háttér-kezelőjéből az eszközökre. További információ az [IoT Hub üzenetformátumáról.](iot-hub-devguide-messages-construct.md)
 
-## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>Eszköz a felhőbe irányuló üzenetek küldése az IoT Hub
+## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>Eszközről felhőbe irányuló üzenetek küldése az IoT Hubba
 
-Az IoT Hub rendelkezik egy beépített szolgáltatás végpontjának telemetriai üzeneteket beolvasni az eszközök háttér-szolgáltatások által használható. Ez a végpont kompatibilis [az Event Hubs](https://docs.microsoft.com/azure/event-hubs/) és használhatja a szokásos IoT Hub SDK-k az [olvassa el a beépített végpontról](iot-hub-devguide-messages-read-builtin.md).
+Az IoT Hub rendelkezik egy beépített szolgáltatás-végpont, amely a háttér-szolgáltatások segítségével telemetriai üzeneteket az eszközökről olvasni. Ez a végpont kompatibilis az [Event Hubs-szal,](https://docs.microsoft.com/azure/event-hubs/) és szabványos IoT Hub SDK-k használatával [olvashat erről a beépített végpontról.](iot-hub-devguide-messages-read-builtin.md)
 
-Az IoT Hub is támogatja a [egyéni végpontok](iot-hub-devguide-endpoints.md#custom-endpoints) , amely a felhasználók eszköz telemetriai adatokat és eseményeket küldhet az Azure-szolgáltatások használatával definiálható [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md).
+Az IoT Hub támogatja [azokat az egyéni végpontokat](iot-hub-devguide-endpoints.md#custom-endpoints) is, amelyeket a felhasználók meghatározhatnak az eszköz telemetriai adatainak és eseményeinek az Azure-szolgáltatásokba [üzenettovábbítás](iot-hub-devguide-messages-d2c.md)használatával történő küldéséhez.
 
-## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>Felhőből az eszközre irányuló üzenetek küldése az IoT hubról
+## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>Felhőből eszközre irányuló üzenetek küldése az IoT Hubról
 
-Küldhet [felhőből az eszközre](iot-hub-devguide-messages-c2d.md) üzenetek a megoldás a háttéralkalmazás az eszközökön.
+Felhőből [az eszközre](iot-hub-devguide-messages-c2d.md) irányuló üzeneteket küldhet a megoldás háttértartalékából az eszközökre.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Az IoT Hub üzenetküldési funkció alapvető tulajdonságok akkor, a megbízhatóság és a tartós üzeneteket. Ezek a tulajdonságok engedélyezése nem állandó hálózati kapcsolat az eszközoldalon, és a felhő oldalon Eseményfeldolgozási kiugrások betöltése hibatűrést. Az IoT Hub valósít meg *legalább egyszer* kézbesítési garantálja az eszközről a felhőbe és a felhőből az eszközre irányuló üzenetek.
+Az IoT Hub üzenetkezelési funkcióinak alapvető tulajdonságai az üzenetek megbízhatósága és tartóssága. Ezek a tulajdonságok lehetővé teszik az eszköz oldalán lévő időszakos kapcsolat rugalmasságát, és a felhőbeli oldalon lévő eseményfeldolgozási csúcsok betöltését. Az IoT Hub *legalább egyszer* megvalósítja a kézbesítési garanciákat mind az eszközről a felhőbe, mind a felhőből az eszközre irányuló üzenetküldéshez.
 
-## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>A megfelelő IoT Hub üzenetküldési-típus kiválasztása
+## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>Az IoT Hub-üzenetek megfelelő típusának kiválasztása
 
-A time series telemetriai adatokhoz és riasztásokhoz küldését az eszközalkalmazás eszköz – felhő üzeneteket, és a felhőből az eszközre irányuló üzenetek használata egyirányú értesítések az eszközalkalmazáshoz.
+Az eszközről a felhőbe irányuló üzeneteksegítségével idősorozat-telemetriai adatokat és riasztásokat küldhet az eszközalkalmazásból, valamint felhőből az eszközre irányuló üzeneteket az eszközalkalmazásba.
 
-* Tekintse meg [eszközről a felhőbe való kommunikáció útmutatást](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance) választhat eszköz – felhő üzeneteket, jelentett tulajdonságok, vagy a fájl feltöltése.
+* Tekintse meg [az eszközről a felhőbe irányuló kommunikációra vonatkozó útmutatást](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance) az eszközről a felhőbe irányuló üzenetek, a jelentett tulajdonságok vagy a fájlfeltöltés között.
 
-* Tekintse meg [felhőből az eszközre irányuló kommunikáció útmutatást](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance) a felhőből az eszközre irányuló üzenetek, kívánt tulajdonságok vagy közvetlen metódusok közül választhat.
+* Tekintse meg a felhőből az [eszközre irányuló kommunikációra vonatkozó útmutatást](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance) a felhőből az eszközre irányuló üzenetek, a kívánt tulajdonságok vagy a közvetlen módszerek közül.
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók az IoT Hub [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md).
+* További információ az IoT Hub [üzenet-útválasztásáról.](iot-hub-devguide-messages-d2c.md)
 
-* További tudnivalók az IoT Hub [felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-messages-c2d.md).
+* További információ az IoT Hub [felhőből az eszközökre történő üzenetküldéséről.](iot-hub-devguide-messages-c2d.md)

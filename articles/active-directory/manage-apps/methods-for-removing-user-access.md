@@ -1,6 +1,6 @@
 ---
-title: A felhasználó hozzáférést egy alkalmazáshoz eltávolítása |} A Microsoft Docs
-description: Megtudhatja, hogyan távolítsa el a felhasználó hozzáférést egy alkalmazáshoz
+title: A felhasználó alkalmazáshoz való hozzáférésének eltávolítása | Microsoft dokumentumok
+description: A felhasználó alkalmazáshoz való hozzáférésének eltávolítása
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,59 +16,59 @@ ms.date: 10/17/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b69502995eff88df53af3671a8e611809f83e59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65826102"
 ---
-# <a name="how-to-remove-a-users-access-to-an-application"></a>Alkalmazásokhoz való hozzáférés egy felhasználó eltávolítása
+# <a name="how-to-remove-a-users-access-to-an-application"></a>A felhasználó alkalmazáshoz való hozzáférésének eltávolítása
 
-Ez a cikk segít megismerni, hogyan távolíthat el egy felhasználó hozzáférést egy alkalmazáshoz.
+Ez a cikk segít megérteni, hogyan távolíthatja el a felhasználó hozzáférést egy alkalmazáshoz.
 
-## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Egy alkalmazás egy adott felhasználó vagy csoport-hozzárendelés eltávolítása
+## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>El szeretném távolítani egy adott felhasználó vagy csoport hozzárendelését egy alkalmazáshoz
 
-Egy felhasználó vagy csoport-hozzárendelés alkalmazáshoz való eltávolításához kövesse a felsorolt lépéseket a [egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) cikk.
+Ha el szeretne távolítani egy felhasználó- vagy csoporthozzárendelést egy alkalmazáshoz, kövesse a [Felhasználó vagy csoport hozzárendeléseltávolítása vállalati alkalmazásból](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) az Azure Active Directory cikkben szereplő lépéseket.
 
-## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Letiltani a minden felhasználó számára az összes alkalmazás elérése
+## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Azt akarom, hogy tiltsa le az összes hozzáférést egy alkalmazás minden felhasználó számára
 
-Összes felhasználói bejelentkezés egy alkalmazás letiltásához kövesse a felsorolt lépéseket a [letiltása a felhasználók bejelentkezési folyamatába egy vállalati alkalmazás az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) cikk.
+Az alkalmazásba való összes felhasználói bejelentkezés letiltásához kövesse a [vállalati alkalmazások felhasználói bejelentkezéseinek letiltása az Azure Active Directory-cikkben](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) szereplő lépéseket.
 
-## <a name="i-want-to-delete-an-application-entirely"></a>Egy alkalmazás teljesen törölni
+## <a name="i-want-to-delete-an-application-entirely"></a>Teljesen törölni szeretnék egy alkalmazást
 
-A **törölhető az alkalmazás**, kövesse az alábbi utasításokat:
+**Egy alkalmazás törléséhez**kövesse az alábbi utasításokat:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként** vagy **társrendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Kattintson az Azure Active Directory bal oldali navigációs **menüjében** található Vállalati alkalmazások parancsra.
 
-5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Kattintson **a Minden alkalmazás** elemre az összes alkalmazás listájának megtekintéséhez.
 
-   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   * Ha nem látja a kívánt alkalmazást, használja a **Szűrő** vezérlőt a **Minden alkalmazás lista** tetején, és állítsa a **Megjelenítés** beállítást **minden alkalmazásra.**
 
-6. Válassza ki a törölni kívánt alkalmazást.
+6. Jelölje ki a törölni kívánt alkalmazást.
 
-7. Ha az alkalmazás betöltött, kattintson a **törlése** ikonra a felső alkalmazás **áttekintése** ablaktáblán.
+7. Miután az alkalmazás betöltődik, kattintson a **Törlés** ikonra a felső alkalmazás **áttekintő** ablaktábláján.
 
-## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Szeretném tiltani minden jövőbeli felhasználói jóváhagyási művelet bármely alkalmazás
+## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Azt akarom, hogy tiltsa le az összes jövőbeli felhasználói hozzájárulási műveletek bármely alkalmazás
 
-Felhasználói beleegyezés letiltása, a teljes címtárban megakadályozza, hogy a végfelhasználók hozzájárul ahhoz, hogy minden olyan alkalmazás esetében. A rendszergazdák továbbra is hagyhatja jóvá a felhasználó nevében. Az alkalmazással kapcsolatban további információkat hozzájárulás megadása, és ezért előfordulhat, hogy, vagy előfordulhat, hogy ehhez nem szeretne, olvassa el a [ismertetése felhasználói és rendszergazdai jóváhagyás](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Lásd még a [engedélyek és jóváhagyás](../develop/v2-permissions-and-consent.md).
+A teljes címtár felhasználói hozzájárulásának letiltása megakadályozza, hogy a végfelhasználók bármely alkalmazáshoz hozzájáruljanak. A rendszergazdák továbbra is beleegyezhetnek a felhasználó nevében. Az alkalmazás beleegyezésével, valamint azzal kapcsolatban, hogy miért kívánja ezt megtenni, olvassa el [a Felhasználói és rendszergazdai jóváhagyás ismertetése című témakört.](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent) Lásd még: [Engedélyek és hozzájárulás](../develop/v2-permissions-and-consent.md).
 
-A **tiltsa le az összes jövőbeli felhasználói jóváhagyási művelet a teljes címtárban**, kövesse az alábbi utasításokat:
+A **teljes címtárban a felhasználó hozzájárulási műveleteinek letiltásához**kövesse az alábbi utasításokat:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként.**
 
-2.  Nyissa meg a **az Azure Active Directory-bővítményt** 
+2.  Az **Azure Active Directory-bővítmény megnyitása** 
 
-3.  Kattintson a **vállalati alkalmazások** a navigációs menü.
+3.  Kattintson a navigációs menü **Vállalati alkalmazások parancsára.**
 
-5.  Kattintson a **felhasználói beállítások**.
+5.  Kattintson **a Felhasználói beállítások gombra.**
 
-6.  Állítsa be a **felhasználók engedélyezhetik alkalmazások számára a céges adatok saját nevükben való elérését** kapcsolót **nem** , majd kattintson a Mentés gombra.
+6.  Állítsa be a **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a vállalati adatokhoz a nevükben,** és ne-re **kapcsoljanak,** és kattintson a Mentés gombra.
 
 
 ## <a name="next-steps"></a>További lépések

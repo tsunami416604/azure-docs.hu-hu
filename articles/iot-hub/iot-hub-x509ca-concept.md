@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub X.509 security fogalmait |} A Microsoft Docs
-description: Koncepció - ismertetése értéke X.509 tanúsítvány az IoT device gyártási és hitelesítési tanúsítványait.
+title: Az Azure IoT Hub X.509 biztonságának fogalmai | Microsoft dokumentumok
+description: Koncepció – az IoT-eszközgyártásxofok X.509 hitelesítésszolgáltatói tanúsítványainak és a hitelesítésnek a megértése.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -9,124 +9,124 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61320230"
 ---
-# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Az IoT-iparág x.509-es Hitelesítésszolgáltatói tanúsítványok fogalmi ismertetése
+# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Az X.509 hitelesítésszolgáltatói tanúsítványok fogalmi ismerete az IoT-iparágban
 
-Ez a cikk ismerteti a hitelesítésszolgáltató (CA) tanúsítvány X.509 az IoT device gyártási és az IoT hub-hitelesítés használatával értékét. Információkkal szolgál az ellátási lánc telepítő, és jelölje ki a előnyeit.
+Ez a cikk az X.509 hitelesítésszolgáltató (CA) tanúsítványok használatának értékét ismerteti az IoT-eszközgyártásban és az IoT Hub hitelesítésében. Információkat tartalmaz az ellátási lánc beállításáról és az előnyök kiemeléséről.
 
-Ez a cikk ismerteti:
+Ez a cikk a következőket ismerteti:
 
-* Mik azok a x.509-es Hitelesítésszolgáltatói tanúsítványok és, azok
+* Mik az X.509 hitelesítésszolgáltatói tanúsítványok, és hogyan szerezhetők be
 
-* Az IoT Hub X.509 Hitelesítésszolgáltatói tanúsítvány regisztrálása
+* Az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálása az IoT Hubba
 
-* Hogyan állítható be a gyártási ellátási lánc Hitelesítésszolgáltatói X.509-alapú hitelesítés
+* Gyártási ellátási lánc beállítása az X.509 hitelesítésszolgáltatói alapú hitelesítéshez
 
-* Hogyan aláírt x.509-es Hitelesítésszolgáltatói eszközök csatlakoztatása az IoT hubhoz
+* Az X.509 hitelesítés- és hitelesítéscsatlakoztast aláíró eszközök csatlakozása az IoT Hubhoz
 
 ## <a name="overview"></a>Áttekintés
 
-X.509-hitelesítésszolgáltató (CA) hitelesítés egy olyan megközelítés egy metódust, amely jelentősen leegyszerűsíti az identitás létrehozását és életciklus-kezelés az ellátási lánc az IoT Hub-eszközök hitelesítése.
+Az X.509 hitelesítésszolgáltató (CA) hitelesítése az eszközök IoT Hubba való hitelesítésének olyan módszerrel történő hitelesítése, amely jelentősen leegyszerűsíti az eszközidentitás létrehozását és az életciklus-kezelést az ellátási láncban.
 
-Egy x.509-es Hitelesítésszolgáltatói hitelesítése megkülönböztető attribútuma egy Hitelesítésszolgáltatói tanúsítványt az alárendelt eszközökkel rendelkezik egy-a-többhöz kapcsolat. A kapcsolat lehetővé teszi tetszőleges számú eszközök regisztrációja az IoT Hub X.509 Hitelesítésszolgáltatói tanúsítvány egyszer regisztrálja, ellenkező esetben eszköz egyedi tanúsítványt kell lennie minden eszközhöz előre regisztrált eszköz csak akkor csatlakozhatnak. Ez egy-a-többhöz kapcsolat is egyszerűsíti a tanúsítványok életciklusra vonatkozó eszközfelügyeleti műveleteknek.
+Az X.509 hitelesítésszolgáltatói hitelesítésszolgáltató imát megkülönböztető tulajdonsága a hitelesítésszolgáltatói tanúsítvány és az alsóbb rétegbeli eszközök közötti egy-a-többhöz kapcsolat. Ez a kapcsolat lehetővé teszi tetszőleges számú eszköz regisztrációját az IoT Hubba egy X.509 hitelesítésszolgáltatói tanúsítvány egyszeri regisztrálásával, ellenkező esetben az eszköz egyedi tanúsítványait minden eszközhez előzetesen regisztrálni kell, mielőtt egy eszköz csatlakozhatna. Ez az egy-a-többhöz kapcsolat leegyszerűsíti az eszköztanúsítványok életciklus-kezelési műveleteit is.
 
-Az x.509-es Hitelesítésszolgáltatói hitelesítés egy másik fontos attribútuma ellátási lánc logisztikai egyszerűsítését. Az eszközök biztonságos hitelesítése szükséges, hogy rendelkezik-e minden eszközhöz egyedi titkos kulcs hasonlóan a megbízhatósági kapcsolat alapjaként. Tanúsítvány alapú hitelesítést a titkos kód a titkos kulcs. Egy tipikus eszközgyártási folyamat magában foglalja a több lépéseket és jegyektől. Biztonságos eszköz titkos kulcsok kezelése több jegyektől között, és a megbízhatóság fenntartása a bonyolult és költséges. Hitelesítésszolgáltatók használatával erre a kérdésre, egy titkosítási megbízhatósági lánc minden gondviselője aláírási igazgatástechnikai őket az eszköz titkos kulcsok helyett. Minden egyes gondviselője viszont eszközök a gyártási folyamat a megfelelő folyamat lépésnél jelentkezik. Általános eredménye egy optimális ellátási lánc a beépített accountability a titkosítási megbízhatósági lánc használatán keresztül. Fontos megjegyezni, hogy ez a folyamat a lehető legnagyobb biztonságot eredményez, ha az eszközök egyedi titkos kulcsaikat védi. Ennek érdekében nyomatékosan a Hardver biztonságos modul (HSM) képesek belsőleg titkos kulcsok számára soha nem látható a világos nap használatát.
+Az X.509 hitelesítésszolgáltatói hitelesítés másik fontos tulajdonsága az ellátási lánc logisztikájának egyszerűsítése. Az eszközök biztonságos hitelesítéséhez minden eszköznek egyedi titkos kulcsot kell biztosítania, például kulcsot a megbízhatóság alapjaként. A tanúsítványalapú hitelesítésben ez a titkos kulcs egy titkos kulcs. Egy tipikus eszköz gyártási folyamat magában foglalja a több lépést, és letétkezelők. Az eszköz személyes kulcsainak biztonságos kezelése több felügyeleti hatóság között, valamint a bizalom fenntartása nehéz és költséges. A hitelesítésszolgáltatók használata úgy oldja meg a problémát, hogy minden egyes letétkezelőt egy kriptográfiai megbízhatósági láncba ír alá, és nem az eszköz személyes kulcsaival bízza meg őket. Minden letétkezelő viszont aláírja az eszközöket a gyártási folyamat megfelelő folyamatlépésénél. A teljes eredmény egy optimális ellátási lánc beépített elszámoltathatóság segítségével a kriptográfiai bizalmi lánc. Érdemes megjegyezni, hogy ez a folyamat a legnagyobb biztonságot adja, amikor az eszközök védik egyedi személyes kulcsaikat. Ebből a célból sürgetjük a hardveres biztonságos modulok (HSM) használatát, amelyek képesek belsőleg olyan személyes kulcsok at generálni, amelyek soha nem fogják látni a napvilágot.
 
-Ez a cikk az x.509-es Hitelesítésszolgáltatói hitelesítéssel, az eszközkapcsolat, az ellátási lánc telepítés teljes körű képet nyújt előállítása során használja a való világból bármit például megszilárdulni ismertetése.
+Ez a cikk az X.509 hitelesítésszolgáltató imázsának végponttól végpontig tartó nézetét kínálja az ellátási lánc beállításától az eszközkapcsolatig, miközben valós példát használ a megértés megszilárdításához.
 
 ## <a name="introduction"></a>Bevezetés
 
-Az x.509-es Hitelesítésszolgáltatói tanúsítvány egy digitális tanúsítványt, amelynek tulajdonosa is alá más tanúsítványokat. A digitális tanúsítvány X.509 azért, mert az IETF RFC 5280 standard által előírt standard formázás tanúsítvány megfelel, és a egy hitelesítésszolgáltató (CA) azért, mert a tulajdonos is alá más tanúsítványokat.
+Az X.509 hitelesítésszolgáltatói tanúsítvány olyan digitális tanúsítvány, amelynek birtokosa más tanúsítványokat is aláírhat. Ez a digitális tanúsítvány X.509, mert megfelel az IETF RFC 5280 szabványa által előírt tanúsítványformázási szabványnak, és hitelesítésszolgáltató, mivel birtokosa más tanúsítványokat is aláírhat.
 
-X.509-es Hitelesítésszolgáltatói használatát legjobban értendő egy konkrét példa viszonyítva. Fontolja meg a vállalati-X, egy készítő intelligenskártya-X-widgetek szakmai telepítési tervezve. Az X vállalathoz outsources gyártási és a telepítés. Az intelligenskártya-X-Widgetek, és a technikus a-Z szolgáltató telepítéséhez az előállító-Y gyártó szerződések azt. Az X vállalathoz kívánja, hogy intelligenskártya-X-Widget közvetlenül mobilplatform az előállító-Y technikus a-Z, a telepítéshez és, hogy kapcsolódik közvetlenül a vállalati-x-EK az IoT Hub-példány X vállalat további beavatkozása nélkül a telepítés után. Ahhoz, hogy ez akkor fordulhat elő, az X vállalathoz kell előkészíteni az intelligenskártya-X-Widget automatikus kapcsolat néhány egyszeri beállítás műveletek végrehajtásához. A végpontok közötti forgatókönyv szem előtt ez a cikk további részének szerkezete a következő:
+Az X.509 Hitelesítésnél való felhasználást egy konkrét példával kapcsolatban lehet a legjobban megérteni. Tekintsük Company-X, a gyártó a Smart-X-Widgets tervezett professzionális telepítés. A Company-X kiszervezi mind a gyártást, mind a telepítést. Ez szerződések gyártó Factory-Y gyártására a Smart-X-Widgets, és a szolgáltató Technikus-Z telepíteni. A Company-X azt szeretné, hogy a Smart-X-Widget közvetlenül szállítson a Factory-Y-ról a Technician-Z-re telepítéscéljából, és hogy közvetlenül csatlakozzon az IoT Hub Vállalat IoT Hub példányához a telepítés után, a Vállalat-X további beavatkozása nélkül. Ahhoz, hogy ez megtörténjen, a Company-X-nek el kell végeznie néhány egyszeri beállítási műveletet az automatikus kapcsolathoz szükséges Smart-X-Widget elsődleges működéséhez. A végpontok utáni forgatókönyvet szem előtt tartva a cikk többi része a következőképpen épül fel:
 
-* Az x.509-es Hitelesítésszolgáltatói tanúsítvány beszerzése
+* Az X.509 hitelesítésszolgáltatói tanúsítvány megszerzése
 
-* Az IoT Hub X.509 Hitelesítésszolgáltatói tanúsítvány regisztrálása
+* X.509 hitelesítésszolgáltatói tanúsítvány regisztrálása az IoT Hubba
 
-* A tanúsítvány megbízhatósági láncában bejelentkezési eszközöket
+* Eszközök aláírása tanúsítványláncba
 
-* Eszköz kapcsolat
+* Eszközkapcsolat
 
-## <a name="acquire-the-x509-ca-certificate"></a>Az x.509-es Hitelesítésszolgáltatói tanúsítvány beszerzése
+## <a name="acquire-the-x509-ca-certificate"></a>Az X.509 hitelesítésszolgáltatói tanúsítvány megszerzése
 
-Az X vállalathoz X.509 Hitelesítésszolgáltatói tanúsítvány nyilvános legfelső szintű hitelesítésszolgáltatótól vagy hozzon létre egyet egy önaláírt folyamat során lehetősége van. Az egyik lehetőség az alkalmazás forgatókönyvtől függően történő optimális lenne. A beállítást, függetlenül a folyamat vonja maga után két alapvető lépéseit, egy nyilvános/titkos kulcspár létrehozása és a nyilvános kulcs jelentkezik be egy tanúsítványt.
+Az X vállalatnak lehetősége van x.509 hitelesítésszolgáltatói tanúsítványt vásárolni egy nyilvános legfelső szintű hitelesítésszolgáltatótól, vagy önaláírt folyamaton keresztül létrehozni egyet. Az egyik lehetőség optimális lenne a másikkal szemben az alkalmazás forgatókönyvétől függően. A beállítástól függetlenül a folyamat két alapvető lépést foglal magában: létrehoz egy nyilvános/titkos kulcspárt, és aláírja a nyilvános kulcsot egy tanúsítványba.
 
-![A folyamat egy X509CA tanúsítványok létrehozásához](./media/iot-hub-x509ca-concept/csr-flow.png)
+![Folyamat X509CA tanúsítványok létrehozásához](./media/iot-hub-x509ca-concept/csr-flow.png)
 
-Hogyan végezheti el ezeket a lépéseket a részletek eltérőek a különböző szolgáltatókkal.
+A lépések elvégzésének részletei a különböző szolgáltatóktól eltérőek.
 
-### <a name="purchasing-an-x509-ca-certificate"></a>X.509 Hitelesítésszolgáltatói tanúsítvány vásárlása
+### <a name="purchasing-an-x509-ca-certificate"></a>X.509 hitelesítésszolgáltatói tanúsítvány vásárlása
 
-A Hitelesítésszolgáltatói tanúsítvány vásárlása rendelkezik előnye, hogy egy jól ismert legfelső szintű hitelesítésszolgáltató act az IoT-eszközök valódiságának s ők felelnek az eszközök megbízható harmadik félként. X vállalat akkor válassza ezt a lehetőséget, ha, amelyeket az intelligenskártya-X-Widget külső gyártótól származó termékek vagy szolgáltatások kommunikáljon az IoT hubhoz a kezdeti kapcsolódást követően.
+Hitelesítésszolgáltatói tanúsítvány vásárlása azzal az előnnyel jár, hogy egy jól ismert legfelső szintű hitelesítésszolgáltató megbízható harmadik félként szolgál, hogy az eszközök csatlakoztatásakor tanúsítsa az IoT-eszközök legitimitását. Az X vállalat akkor választaná ezt a lehetőséget, ha a Smart-X-Widget az IoT Hubhoz való első kapcsolódásután harmadik fél termékeivel vagy szolgáltatásaival kíván együttműködni.
 
-Egy x.509-es Hitelesítésszolgáltatói tanúsítvány megvásárlása az X vállalathoz válassza a legfelső szintű tanúsítványok services-szolgáltató. Jó érdeklődők előállításához egy internetes keresés a a "Legfelső szintű hitelesítésszolgáltató" kifejezés helyett szerepel. A legfelső szintű hitelesítésszolgáltató X vállalat végigvezeti a nyilvános/titkos kulcspár létrehozása és a egy tanúsítvány-aláírási kérelem (CSR) szolgáltatásaik létrehozása. CSR formális zajlik le egy tanúsítvány egy hitelesítésszolgáltatótól alkalmazása. Ez a vásárlás eredménye egy tanúsítvány használható tanúsítvány. Adja meg a áthatóságának X.509 tanúsítványok, a tanúsítvány valószínű, hogy az IETF RFC 5280 standard a megfelelő formátumú.
+Az X.509 hitelesítésszolgáltatói tanúsítvány megvásárlásához az X vállalat főtanúsítvány-szolgáltatót választana. A "Root CA" kifejezés internetes keresése jó vezet. A legfelső szintű hitelesítésszolgáltató ismerteti az X vállalatot a nyilvános/titkos kulcspár létrehozásában, valamint a tanúsítvány-aláírási kérelem (CSR) létrehozásához a szolgáltatásaikhoz. A CSR a hitelesítésszolgáltatótól származó tanúsítvány kérelmezésének hivatalos folyamata. A vásárlás eredménye egy tanúsítvány, amelyet hatósági tanúsítványként használhat. Tekintettel az X.509 tanúsítványok elterjedtségére, a tanúsítvány valószínűleg megfelelően lett formázva az IETF RFC 5280 szabványára.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Önaláírt X.509 Hitelesítésszolgáltatói tanúsítvány létrehozása
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Önaláírt X.509 hitelesítésszolgáltatói tanúsítvány létrehozása
 
-Önaláírt X.509 Hitelesítésszolgáltatói tanúsítvány létrehozása a folyamat hasonlít vásárlására is érintő egy harmadik féltől származó aláíró legfelső szintű hitelesítésszolgáltató például kivételével. Ebben a példában az X vállalathoz alá fogja írni a helyett a legfelső szintű hitelesítésszolgáltató tanúsítványának. Az X vállalathoz előfordulhat, hogy ezt a lehetőséget, amíg el nem készen áll egy tanúsítvány megvásárlása a teszteléshez. Az X vállalathoz is előfordulhat, hogy használható önaláírt x.509-es Hitelesítésszolgáltatói tanúsítványok éles környezetben, ha intelligens-X-Widget nem célja, hogy csatlakozik az IoT Hub-en kívül bármely harmadik féltől származó szolgáltatások.
+Az Önaláírt X.509 hitelesítésszolgáltatói tanúsítvány létrehozásának folyamata hasonló a vásárláshoz, kivéve egy harmadik fél aláíróját, például a legfelső szintű hitelesítésszolgáltatót. A példában a Company-X a legfelső szintű hitelesítésszolgáltató helyett a hatósági tanúsítványt írja alá. Az X vállalat ezt a lehetőséget választhatja a teszteléshez, amíg készen nem állnak a hatósági tanúsítvány megvásárlására. A Company-X egy önaláírt X.509 hitelesítésszolgáltatói tanúsítványt is használhat éles környezetben, ha a Smart-X-Widget nem kíván csatlakozni az IoT Hubon kívüli harmadik fél szolgáltatásaihoz.
 
-## <a name="register-the-x509-certificate-to-iot-hub"></a>Az IoT hub X.509-tanúsítvány regisztrálása
+## <a name="register-the-x509-certificate-to-iot-hub"></a>Az X.509-es tanúsítvány regisztrálása az IoT Hubba
 
-X vállalat kell regisztrálni az x.509-es Hitelesítésszolgáltatói az IoT hubhoz, ahol fog szolgálni intelligenskártya-X-Widgetek hitelesítés, mert csatlakoznak. Ez a egy egyszeri folyamat, amely lehetővé teszi a hitelesítést, és tetszőleges számú intelligenskártya-X-Widget eszközök kezelése. Ez a folyamat egyszeri tanúsítvány és az eszközök közötti egy-a-többhöz kapcsolat miatt, amely egyik fő előnye az x.509-es Hitelesítésszolgáltatói hitelesítési módszerrel is képezi. A tulajdonos alternatív, hogy ezáltal a működési költségek ad hozzá minden intelligenskártya-X-Widget eszközhöz egyedi tanúsítvány ujjlenyomatok feltöltése.
+A Vállalat-X-nek regisztrálnia kell az X.509 hitelesítésszolgáltatót az IoT Hubhoz, ahol a Smart-X-Widgetek hitelesítésére szolgál, amikor csatlakoznak. Ez egy egyszeri folyamat, amely lehetővé teszi a képességét, hogy hitelesítse és kezelje tetszőleges számú Smart-X-Widget eszközök. Ez a folyamat egyszeri alkalom a hatósági tanúsítvány és az eszközök közötti egy-a-többhöz kapcsolat miatt, és az X.509 hitelesítésszolgáltató hitelesítési módszerének egyik fő előnye is. A másik lehetőség, hogy feltölt egyéni tanúsítvány ujjlenyomatok minden egyes Smart-X-Widget eszköz ezáltal növelve a működési költségeket.
 
-Az x.509-es Hitelesítésszolgáltatói tanúsítvány regisztrálása egy kétlépéses folyamat, a tanúsítvány feltöltése és a tanúsítvány koncepció-az-ekre.
+Az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálása kétlépésből áll, a tanúsítvány feltöltése és a tanúsítvány birtoklásigazolása.
 
-![Egy X509CA tanúsítvány regisztrálása](./media/iot-hub-x509ca-concept/pop-flow.png)
+![X509CA tanúsítvány regisztrálása](./media/iot-hub-x509ca-concept/pop-flow.png)
 
-### <a name="x509-ca-certificate-upload"></a>X.509 Hitelesítésszolgáltatói tanúsítvány feltöltése
+### <a name="x509-ca-certificate-upload"></a>X.509 hitelesítésszolgáltatói tanúsítvány feltöltése
 
-Az x.509-es Hitelesítésszolgáltatói tanúsítvány feltöltése folyamatban van, amely csak, és töltse fel a hitelesítésszolgáltató tanúsítványát az IoT hubnak. Az IoT Hub vár a tanúsítvány-fájlban. X vállalathoz egyszerűen a tanúsítvány fájlt tölt fel. A tanúsítvány fájl nem kell semmilyen körülmények tartalmaz bármely titkos kulcshoz. Ajánlott eljárások a szabványokat fogalmaz meg a nyilvános kulcsok infrastruktúrája (PKI) előírásoknak, a vállalati Tudásbázis-x-EK privát ebben az esetben kizárólag az X vállalathoz belül található.
+Az X.509 hitelesítésszolgáltatói tanúsítvány feltöltési folyamata csak azt, hogy töltse fel a hitelesítésszolgáltatói tanúsítványt az IoT Hubra. Az IoT Hub a tanúsítványt egy fájlban várja. A Company-X egyszerűen feltölti a tanúsítványfájlt. A tanúsítványfájl semmilyen körülmények között nem tartalmazhat személyes kulcsokat. A nyilvános kulcsú infrastruktúrára (PKI) vonatkozó szabványok bevált gyakorlatai előírják, hogy a Vállalat-X magánjellegű ismeretei ebben az esetben kizárólag az X vállalaton belül találhatók.
 
-### <a name="proof-of-possession-of-the-certificate"></a>A koncepció-az-birtokában a tanúsítvány
+### <a name="proof-of-possession-of-the-certificate"></a>A tanúsítvány birtoklásának igazolása
 
-Az X.509 Hitelesítésszolgáltatói tanúsítvány, csakúgy, mint bármely digitális tanúsítványt nyilvános információkat, amelyek ki vannak téve a lehallgatás. Mint ilyen lehallgató előfordulhat, hogy intercept egy tanúsítványt, és megpróbálja feltölteni, a saját. Ebben a példában az IoT Hub, győződjön meg arról, hogy a Hitelesítésszolgáltatói tanúsítvány X vállalat van feltöltésével valóban az X vállalathoz, ha. Így kihívást jelentő munkahelyi-x igazolják, hogy valójában rendelkeznek a tanúsítvány keresztül végez el egy [koncepció birtokában (PoP) folyamat](https://tools.ietf.org/html/rfc5280#section-3.1). A koncepció-az-birtokában folyamat maga után vonja az IoT Hub létrehozása egy véletlenszerű szám csak az aláírt vállalati x a titkos kulccsal. Ha X vállalat nyilvános kulcsokra épülő infrastruktúra ajánlott eljárásokat követni, és a titkos kulccsal védett majd csak lennének helyzetben, hogy a koncepció-az-birtokában kihívás megfelelően válaszolnak. Az IoT Hub sikeres válasz, a koncepció-az-birtokában kérdés esetén az X.509 Hitelesítésszolgáltatói tanúsítvány regisztrálása folytatódik.
+Az X.509 hitelesítésszolgáltatói tanúsítvány, csakúgy, mint bármely digitális tanúsítvány, nyilvános információ, amely alkalmas a lehallgatásra. Mint ilyen, egy hallgatózás elkaphat egy tanúsítványt, és megpróbálhatja feltölteni, mint a saját. A példában az IoT Hub győződjön meg arról, hogy a CA tanúsítvány Company-X feltöltése valóban tartozik a Vállalat-X. Ezt úgy éri el, hogy kihívást jelent a Company-X-nek annak bizonyítására, hogy valójában rendelkeznek a bizonyítvánnyal a [birtoklás igazolása (PoP) áramlásán](https://tools.ietf.org/html/rfc5280#section-3.1)keresztül. A proof-of-possession flow magában foglalja az IoT Hub generál egy véletlen számot kell aláírni a Company-X a személyes kulcs használatával. Ha a Vállalat-X követte a PKI bevált módszereit, és megvédte a személyes kulcsát, akkor csak ők lennének abban a helyzetben, hogy helyesen reagáljanak a birtoklásigazolási kihívásra. Az IoT Hub folytatja az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálását a birtoklásigazolási kihívás sikeres válasza után.
 
-A koncepció-az-birtokában kihívás, az IoT Hub sikeres válasz befejezi az x.509-es Hitelesítésszolgáltatói regisztrációját.
+Az IoT Hub birtoklásigazolási kihívására adott sikeres válasz befejezi az X.509 hitelesítés- és hitelesítés- és hitelesítésregisztrációs műveletet.
 
-## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>A tanúsítvány megbízhatósági láncában bejelentkezési eszközöket
+## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>Eszközök aláírása megbízhatósági tanúsítványláncba
 
-IoT minden eszközhöz egyedi azonosítóval rendelkezik a szükséges. Ezeket az identitásokat a tanúsítványalapú hitelesítési sémákat űrlap tanúsítványok találhatók. Ebben a példában ez azt jelenti, hogy minden intelligenskártya-X-Widget rendelkeznie kell egy eszköz egyedi tanúsítványt. X vállalat hogyan nem beállítása ehhez az ellátási lánc?
+Az IoT-nek minden eszköznek egyedi identitással kell rendelkeznie. Ezek az identitások a tanúsítványalapú hitelesítési sémák tanúsítványainak formájában találhatók. A példánkban ez azt jelenti, hogy minden Smart-X-Widgetnek egyedi eszköztanúsítvánnyal kell rendelkeznie. Hogyan áll be ehhez a Company-X az ellátási láncában?
 
-Egy go erről módja előre a megfelelő eszköz egyedi titkos kulcsok ellátási lánc partnerekkel intelligenskártya-X-Widgetek és igazgatástechnikai ismerete tanúsítványainak előállításához. Az X vállalathoz Ez azt jelenti, gyári-I és a technikus a-Z igazgatástechnikai. Bár ez platnou metodu, azt, amely kell meg lehet oldani annak biztosítása érdekében a következő adatvédelmi kihívások tartalma:
+Az egyik módja ennek az, hogy előre létrehoz tanúsítványok Smart-X-Widgets és bízza ismerete megfelelő egyedi eszköz személyes kulcsok ellátási lánc partnerekkel. A Company-X esetében ez azt jelenti, hogy a Factory-Y-t és a Technician-Z-t bízza meg. Bár ez egy érvényes módszer, jön a kihívásokat, hogy le kell küzdeni, hogy biztosítsák a bizalmat az alábbiak szerint:
 
-1. Nem kell az eszköz titkos kulcsok megoszthatja az ellátási lánc partnerek, figyelmen kívül hagyja a nyilvános kulcsokra épülő infrastruktúra mellett ajánlott eljárásokat megosztási soha nem a titkos kulcsok, megkönnyíti a költséges ellátási lánc bizalmi kapcsolat létrehozásához. Azt jelenti, hogy az adott eszköz titkos kulcsok biztonságos termek befektetési rendszerek és folyamatok, mint a rendszeres biztonsági naplózás kell telepíteni. Az ellátási lánc költség is hozzá.
+1. Az eszközszemélyes kulcsok megosztása az ellátásilánc-partnerekkel, amellett, hogy figyelmen kívül hagyja a PKI bevált módszereit a személyes kulcsok megosztásának sohanem történő megosztására, költségessé teszi az ellátási láncmegbízhatóság kiépítését. Ez azt jelenti, hogy olyan tőkerendszereket kell telepíteni, mint például a biztonságos szobák az eszköz személyes kulcsainak elhelyezésére, és olyan folyamatokat kell telepíteni, mint az időszakos biztonsági auditok. Mindkettő növeli az ellátási lánc költségeit.
 
-2. Biztonságosan elszámolása az ellátási lánc eszközöket, és később kezelnie azokat a központi telepítésben lévő válik minden kulcs az eszközre irányuló eszköz egyedi tanúsítványt (így a titkos kulcsot) generációs pontról eszközkivonás párhoz egy-az-egyhez feladatot. Ez kizárja csoport az eszközök kezelését, kivéve, ha a csoportok fogalmát explicit módon be van építve a folyamat valamilyen módon. Biztonságos számlázás és az eszköz életciklus-kezelés, ezért nehéz műveletek terhet válik. Ebben a példában az X vállalathoz ezt a terhet kellene szerepelnie.
+2. Az ellátási láncban lévő eszközök biztonságos számlázása és későbbi kezelése az üzembe helyezéssorán egy-az-egyhez feladatlesz minden kulcs-eszköz pár számára az eszköz egyedi tanúsítványának (így a személyes kulcs) létrehozásától az eszköz-kivonásig. Ez kizárja az eszközök csoportkezelését, kivéve, ha a csoportok fogalma valamilyen módon kifejezetten be van építve a folyamatba. A biztonságos könyvelés és az eszköz életciklus-kezelése ezért súlyos működési teherré válik. A mi példánkban az X vállalat viselné ezt a terhet.
 
-X.509-es Hitelesítésszolgáltatói tanúsítvány alapú hitelesítést, elegáns megoldásokat kínál, bekövetkeznie attól felsorolt ügyféladatoknak tanúsítványláncok kihívásokat. Egy hitelesítésszolgáltató, viszont a közbenső hitelesítésszolgáltató egy másik aláíró, és így kerül, amíg a végső közbenső hitelesítésszolgáltató regisztrál egy eszközt a közbenső Hitelesítésszolgáltatókat aláíró tanúsítványlánc eredménye. Ebben a példában az X vállalathoz viszont aláírja a végül aláírja az intelligenskártya-X-Widget technikus Z gyári-Y aláírja.
+Az X.509 hitelesítésszolgáltatói tanúsítvány hitelesítése elegáns megoldásokat kínál a fent felsorolt kihívásokra a tanúsítványláncok használatával. A tanúsítványlánc egy köztes hitelesítésszolgáltatót aláíró hitelesítésszolgáltatóból származik, amely viszont aláír egy másik köztes hitelesítésszolgáltatót, és így addig folytatódik, amíg egy végső köztes hitelesítésszolgáltató alá nem írja az eszközt. A mi példánkban a Company-X aláírja a Factory-Y-t, ami viszont aláírja a Technikus-Z-t, amely végül aláírja a Smart-X-Widget-t.
 
-![Lánc tanúsítványhierarchiához](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
+![Tanúsítványlánc-hierarchia](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
 
-Lépcsőzetes elrendezés tanúsítványok a lánc fent megadja a logikai aktuális indító hatóság. Számos ellátási láncokat. hajtsa végre a logikai aktuális indító amellyel minden közbenső hitelesítésszolgáltató lekérdezi be van jelentkezve a lánc minden felsőbb szintű CA-tanúsítványok fogadása közben, és az utolsó közbenső hitelesítésszolgáltató végül aláírja az egyes eszközök és a láncból hatóság tanúsítványok beszúrása az eszközbe. Ez a gyakori, ha a szerződés gyártócég előállítók hierarchia megrendeli a gyártási tennie egy adott előállító. Bár lehet, hogy a hierarchia több szinten mély (például földrajzi hely/termék típusa/gyártási sor szerint), csak az előállító végén lekérdezi az eszköz kommunikáljon, de a láncban, kezelik a hierarchia tetején.
+A láncban lévő tanúsítványok kaszkádja a hatóság logikus átadását mutatja be. Számos ellátási lánc követi ezt a logikus átadást, amelynek során minden köztes hitelesítésszolgáltató belesz jelentkezve a láncba, miközben megkapja az összes upstream hitelesítésszolgáltatói tanúsítványt, és az utolsó köztes hitelesítésszolgáltató végül aláírja az egyes eszközöket, és beadja az összes hatósági tanúsítványt a láncból a készülékbe. Ez gyakori, ha a szerződéses gyártó cég a hierarchia gyárak jutalékok egy adott gyár, hogy nem a gyártás. Bár a hierarchia több szint mély lehet (például földrajzi/terméktípus/gyártási vonal szerint), csak a végén lévő gyár lép kölcsönhatásba az eszközzel, de a lánc a hierarchia tetejéről marad fenn.
 
-Előfordulhat, hogy az alternatív láncok használja, amelyben a hitelesítésszolgáltató használata az eszköz eset kódtárba tanúsítvány láncot tartalom ezen a ponton az eszközt különböző közbenső hitelesítésszolgáltató. A hibrid modellek is is ahol csak néhány, a hitelesítésszolgáltató fizikai interakció az eszközzel rendelkezik.
+Az alternatív láncok különböző köztes hitelesítésszolgáltatóval rendelkezhetnek, amelyek akkor lépnek kapcsolatba az eszközzel, amely esetben az eszközzel interakcióba lépő hitelesítésszolgáltató ezen a ponton tanúsítványlánc-tartalmat injektál. Hibrid modellek akkor is lehetségesek, ha a hitelesítéstechnikai együttműködésnek csak egy része rendelkezik fizikai interakcióval az eszközzel.
 
-Ebben a példában gyári-I és a technikus a-Z dolgozhat az intelligenskártya-X-Widget. X vállalat tulajdonában lévő intelligenskártya-X-Widget, amíg azt ténylegesen nem fizikailag működik együtt, a teljes ellátási lánc. A tanúsítványlánc intelligenskártya-X-widget megbízhatósági ezért foglalja X vállalat aláírási gyári-Y, amelyek viszont a végső aláírás majd nyújtson az intelligenskártya-X-Widget technikus Z jelentkezik. A gyártás és intelligenskártya-X-Widget telepítésének gyári-Y és azok megfelelő köztes Hitelesítésszolgáltatói tanúsítványok használatával történő bejelentkeztetési a intelligenskártya-X-Widgetek minden technikus Z áll. A végeredmény a teljes folyamat során az eszköz egyedi tanúsítványokat és eredményezi az X vállalathoz Hitelesítésszolgáltatói tanúsítvány megbízhatósági láncában tanúsítvány intelligenskártya-X-Widgetek.
+A mi példánkban, mind a Factory-Y és technikus-Z kölcsönhatásba lépnek a Smart-X-Widget. Míg a Company-X tulajdonosa Smart-X-Widget, ez valójában nem fizikailag kölcsönhatásba lépnek vele a teljes ellátási láncban. A tanúsítvány lánc bizalom Smart-X-Widget ezért magában Company-X aláírása Factory-Y ami viszont jelek Technikus-Z, hogy majd a végső aláírást Smart-X-Widget. A Gyártás és bevezetés -ból Smart-X-Widget áll Factory-Y és Technikus-Z használ -uk megfelelő közbülső CA igazolások -hoz jel mindegyik és mind Szúró-X-Fütyülőréce. A teljes folyamat végeredménye a Smart-X-Widgets, amely egyedi eszköztanúsítványokkal és megbízhatósági lánccal rendelkezik, és felmegy a Company-X hitelesítésszolgáltatói tanúsítványra.
 
-![Egy vállalati tanúsítványok, a tanúsítványokat egy másik vállalat megbízhatósági lánc](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
+![Az egyik vállalat tanúsítványaitól egy másik vállalat tanúsítványaiig tartó bizalmi lánc](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
 
-Ez a jó pont, tekintse át az x.509-es Hitelesítésszolgáltatói metódus az értékét. X vállalat helyett előre elkészítése és beadása tanúsítványok minden intelligenskártya-X-widget az ellátási lánc be, csak rendelkezett gyári-Y egyszer jelentkezzen. Nem minden eszköz alatt az eszköz életciklus-nyomon követésére, az X vállalathoz előfordulhat, hogy nyomon követheti és kezelheti a csoportokat, amelyek a természetes módon vet fel az ellátási lánc folyamatába, például telepítette a technikus a-Z júliusban egy év után eszközök eszközét.
+Ez egy jó pont, hogy vizsgálja felül az értéke az X.509 hitelesítésnél módszer. Ahelyett, hogy előre generálna és átadná a tanúsítványokat minden Smart-X-Widget-hez az ellátási láncba, a Company-X-nek csak egyszer kellett aláírnia a Factory-Y-t. Ahelyett, hogy minden eszközt nyomon kellene követnie az eszköz életciklusa során, a Company-X most már nyomon követheti és kezelheti az eszközöket olyan csoportokon keresztül, amelyek természetesen kiemelkednek az ellátási lánc folyamatából, például a Technikus-Z által néhány év júliusa után telepített eszközök.
 
-Utolsó, de nem a hitelesítésszolgáltató a hitelesítési módszer infuses biztonságos accountability az eszközgyártási ellátási lánc be. A lánc folyamat, mert a műveleteket a lánc minden tag a titkosítási szempontból rögzített, és ellenőrizhető.
+Végül, de nem utolsósorban, a hitelesítésszolgáltató hitelesítési módszere biztonságos elszámoltathatóságot biztosít az eszközgyártási ellátási láncban. A tanúsítványlánc-folyamat miatt a lánc minden tagjának tevékenysége kriptográfiailag rögzítésre kerül és ellenőrizhető.
 
-Ez a folyamat támaszkodik bizonyos Előfeltételek, amely a teljesség kell jelennek meg. Független eszköz egyedi nyilvános/titkos kulcspár létrehozása és a titkos kulccsal védeni az eszközön belül van szükség. Szerencsére létezik biztonságos szilícium lapkák formájában a Hardver biztonságos modulok (HSM) képes a belső generálása kulcsok és titkos kulcsok védelme. X vállalat csak hozzá kell adnia egy ilyen lapkák intelligenskártya-X-Widget a összetevő anyagjegyzék be.
+Ez a folyamat bizonyos feltételezéseken alapul, amelyeket a teljesség hez fel kell bukkanni. Az eszköz egyedi nyilvános/titkos kulcspárjának független létrehozását igényli, és a személyes kulcsot az eszközön belül védeni kell. Szerencsére, biztonságos szilícium chipek formájában Hardver Secure Modules (HSM) képes belsőleg generáló kulcsok és védelme titkos kulcsok léteznek. A Company-X-nek csak egy ilyen chipet kell hozzáadnia a Smart-X-Widget komponensanyag-számlájához.
 
-## <a name="device-connection"></a>Eszköz kapcsolat
+## <a name="device-connection"></a>Eszközkapcsolat
 
-A fenti korábbi szakaszokban rendelkezik lett halmoz fel a eszköz kapcsolat. Egyszerűen regisztrálja az IoT Hub-x.509-es Hitelesítésszolgáltatói tanúsítványok egy időben, hogyan potenciálisan több millió eszköz csatlakoztatása és első hitelesítést hajtottak végre az első alkalommal?  Egyszerű; az azonos tanúsítvány feltöltése és a koncepció-az-birtokában folyamat azt korábban észlelt az x.509-es Hitelesítésszolgáltatói tanúsítvány regisztrálása.
+A fenti korábbi szakaszok az eszközkapcsolatra épülnek. Ha egyszer egyszerűen regisztrál egy X.509-es hitelesítésszolgáltatói tanúsítványt az IoT Hubra, hogyan csatlakozhat potenciálisan több millió eszköz, és hogyan lehet hitelesíteni őket az első alkalommal?  Egyszerű; ugyanazon a tanúsítványfeltöltési és -igazolási folyamaton keresztül, amellyel korábban találkoztunk az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálásával.
 
-Az x.509-es Hitelesítésszolgáltatói hitelesítési egérporttal rendelkeznek, az eszköz egyedi tanúsítványt és egy tanúsítványláncra, valamint saját eszközöket ellátási lánc gyártási. Eszköz kapcsolat, még ha első alkalommal történik, egy kétlépéses folyamat: tanúsítvány láncot feltöltése és a koncepció-az-birtokában.
+Az X.509 hitelesítésszolgáltatói hitelesítéshez gyártott eszközök egyedi tanúsítvánnyal és a megfelelő gyártási ellátási láncból származó tanúsítványlánccal vannak felszerelve. Eszköz kapcsolat, még a legelső alkalommal, történik egy kétlépéses folyamat: tanúsítvány lánc feltöltése és proof-of-birtoklás.
 
-A tanúsítvány láncot feltöltésekor az eszköz feltölti az eszköz egyedi tanúsítványt a tanúsítványlánc telepítve vannak, az IoT hub együtt. Az előre regisztrált x.509-es Hitelesítésszolgáltatói tanúsítványt használ, az IoT Hub titkosítási szempontból ellenőrizheti néhány dolgot, a feltöltött tanúsítványlánc belsőleg összhangban, és hogy a lánc érkezett az x.509-es Hitelesítésszolgáltatói tanúsítvány érvényes tulajdonosa. Csak az x.509-es Hitelesítésszolgáltatói regisztrációs folyamat segítségével történt, az IoT Hub lenne elindította a koncepció-az-birtokában kérdés-válasz megállapítani, hogy a lánc, és ezért eszköztanúsítványokat ténylegesen tartozik, az eszköz feltölteni. Így létrehoz egy véletlenszerű vonatkozó kérdést állít be az eszközt az IoT Hub által érvényesítési annak titkos kulcsát használatával írja alá hajtja végre. A sikeres válasz IoT hubot, hogy fogadja el az eszköz hiteles, és adja meg azt kapcsolati aktivál.
+A tanúsítványlánc feltöltése során az eszköz feltölti az eszköz egyedi tanúsítványát a tanúsítványláncban az IoT Hubra telepített tanúsítványlánccal együtt. Az előre regisztrált X.509 hitelesítésszolgáltatói tanúsítvány használatával az IoT Hub kriptográfiailag ellenőrizhet néhány dolgot, hogy a feltöltött tanúsítványlánc belsőleg konzisztens-e, és hogy a láncot az X.509 hitelesítésszolgáltatói tanúsítvány érvényes tulajdonosa hozta-e meg. Csak volt az X.509 hitelesítésszolgáltató regisztrációs folyamat, IoT Hub kezdeményezne egy proof-of-birtokában kihívás-válasz folyamat annak megállapítására, hogy a lánc és így az eszköz tanúsítvány ténylegesen tartozik az eszköz feltöltése. Ezt úgy éri el, hogy létrehoz egy véletlenszerű kihívást, amelyet az eszköz a személyes kulcsával ír alá az IoT Hub általi érvényesítéshez. A sikeres válasz elindítja az IoT Hub ot, hogy fogadja el az eszközt hitelesként, és adja meg a kapcsolatot.
 
-Ebben a példában minden intelligenskártya-X-Widget gyári-I és a technikus a-Z x.509-es Hitelesítésszolgáltatói tanúsítványok és az eszköz egyedi tanúsítvány feltöltése és megválaszolására a koncepció-az-birtokában kihívás az IoT hubról.
+A példánkban minden Smart-X-Widget feltölti az eszköz egyedi tanúsítványát a Factory-Y és a Technician-Z X.509 hitelesítésszolgáltatói tanúsítványokkal együtt, majd válaszol az IoT Hub által a birtoklás igazolása kihívásra.
 
-![Áramlását, egy tanúsítvány egy másik, a pop challenge-központból](./media/iot-hub-x509ca-concept/device-pop-flow.png)
+![Flow egyik cert a másikra, pop kihívás hub](./media/iot-hub-x509ca-concept/device-pop-flow.png)
 
-Figyelje meg, hogy alapját a megbízhatósági kapcsolat alapja, többek között az eszköz titkos kulcsok, titkos kulcsok védelmében. Hogy ezért nem kifejezetten egy gyári igazgatástechnikai egy másik, elegendő az eszköz titkos kulcsok és a teljes ajánlott soha nem megosztása minden titkos kulcsok védelme érdekében a hardveres biztonsági modulok (HSM) formájában chipeken biztonságos szilícium fontosságát, például a titkos kulcs.
+Figyelje meg, hogy a megbízhatóság alapja a személyes kulcsok, köztük az eszköz személyes kulcsainak védelme. Ezért nem tudjuk eléggé hangsúlyozni a hardveres biztonságos modulok (HSM) formájában található biztonságos szilíciumchipek fontosságát az eszköz személyes kulcsainak védelmében, és azt az általános legjobb gyakorlatot, hogy soha ne osszunk meg személyes kulcsokat, mint például az egyik gyár, amely egy másikat bíz meg a személyes kulcsot.

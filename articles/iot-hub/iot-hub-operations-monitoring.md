@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub-műveletek (elavult) figyelése |} A Microsoft Docs
-description: Hogyan használható az Azure IoT Hub-műveletek állapotát és működését az IoT hub valós idejű figyelésére.
+title: Az Azure IoT Hub-műveletek figyelése (elavult) | Microsoft dokumentumok
+description: Az Azure IoT Hub-műveletek figyelésének használata az IoT-központ műveleteinek állapotát valós időben figyelheti.
 author: nberdy
 manager: briz
 ms.service: iot-hub
@@ -9,53 +9,53 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345720"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-műveletek figyelése (elavult)
 
-Az IoT Hub-műveletek figyelése lehetővé teszi az IoT hub valós idejű műveleti állapotának figyelése. Az IoT Hub események nyomon követi a műveletek számos kategóriájában. Mekkorák egy vagy több kategóriához eseményeket küldeni egy végpontot az IoT hub feldolgozás céljából. Adatok minták alapján összetettebb feldolgozási beállítása, illetve figyelheti az adatait a hibákat.
+Az IoT Hub-műveletek figyelése lehetővé teszi, hogy valós időben figyelje az IoT hub on operations állapotát. Az IoT Hub a műveletek több kategóriája között követi nyomon az eseményeket. Választhatja az események küldését egy vagy több kategóriából az IoT hub feldolgozásra szolgáló végpontjára. Figyelheti az adatokat a hibákat, vagy összetettebb feldolgozást állíthat be az adatminták alapján.
 
 >[!NOTE]
->Az IoT Hub **műveletek figyelése elavult, és el lett távolítva a 2019. március 10 IoT-központból**. Az operatív és az IoT Hub állapotának figyelése, lásd: [Azure IoT Hub állapotának Monitorozásához és a problémák gyorsan diagnosztizálása](iot-hub-monitor-resource-health.md). Az elavulással kapcsolatos ütemterv kapcsolatos további információkért lásd: [monitorozása az Azure IoT-megoldások az Azure monitorral és az Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
+>**2019. március 10-én az IoT Hub-műveletek figyelése elavult, és az IoT Hubból eltávolították.** Az IoT Hub műveleteinek és állapotának figyelése: [Az Azure IoT Hub állapotának figyelése és a problémák gyors diagnosztizálása](iot-hub-monitor-resource-health.md)című témakörben található. Az eprecációs ütemtervről az [Azure IoT-megoldások figyelése az Azure Monitor és](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)az Azure Resource Health segítségével című témakörben talál további információt.
 
-Az IoT Hub hat azokat a eseményeket figyeli:
+Az IoT Hub hat eseménykategóriát figyel:
 
-* Eszközművelet identitás
+* Eszközidentitás-műveletek
 * Eszköztelemetria
-* Felhőből az eszközre irányuló üzenetek
+* Felhőből eszközre irányuló üzenetek
 * Kapcsolatok
 * Fájlfeltöltések
-* Üzenet-útválasztása
+* Üzenetek útválasztása
 
 > [!IMPORTANT]
-> IoT Hub-műveletek monitorozása nem garantálja a megbízható és rendezett kézbesíti az eseményeket. Az IoT Hub alapul szolgáló infrastruktúrát, attól függően néhány esemény előfordulhat, hogy elvész, vagy -i sorrendben. Például a sikertelen csatlakozási kísérletek, illetve az egyes eszközöktől nagy gyakoriságú szétkapcsolások hiba jelek alapján riasztásokat generálni figyelési műveletek használata. Műveletek figyelése az eseményeket az eszköz állapotát a konzisztens tároló létrehozása nem támaszkodhat, például nyomon követése áruházbeli csatlakoztatott vagy le van választva egy eszköz állapotát. 
+> Az IoT Hub-műveletek figyelése nem garantálja az események megbízható vagy rendezett kézbesítését. Az IoT Hub alapjául szolgáló infrastruktúrától függően előfordulhat, hogy egyes események elvesznek vagy nem sorrendben kézbesítenek. A műveletek figyelésével hibajelzéseken, például sikertelen csatlakozási kísérleteken vagy bizonyos eszközök nagyfrekvenciás kapcsolatbontáson alapuló riasztásokat hozhat létre. Ne hagyatkozzon a műveletek figyelésére szolgáló eseményekre, hogy egységes tárolót hozzon létre az eszköz állapotához, például egy eszköz csatlakoztatott vagy leválasztott állapotát. 
 
-## <a name="how-to-enable-operations-monitoring"></a>Műveletek figyelése engedélyezése
+## <a name="how-to-enable-operations-monitoring"></a>A műveletek figyelésének engedélyezése
 
-1. Hozzon létre egy IoT hubot. Az IoT hub létrehozása a talál útmutatást a [Ismerkedés](quickstart-send-telemetry-dotnet.md) útmutató.
+1. Hozzon létre egy IoT hubot. Az IT-központ létrehozásáról az Első [lépések](quickstart-send-telemetry-dotnet.md) útmutatóban talál útmutatást.
 
-2. Az IoT hub panel megnyitásához. Itt kattintson **műveletek figyelése**.
+2. Nyissa meg az IoT hub paneljét. Itt kattintson **a Műveletek figyelése gombra.**
 
-    ![Hozzáférési műveletek konfigurációját a portálon figyelése](./media/iot-hub-operations-monitoring/enable-OM-1.png)
+    ![Hozzáférési műveletek figyelési konfigurációja a portálon](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Válassza ki a figyelése, és kattintson a kívánt figyelési kategóriák **mentése**. Az események állnak rendelkezésre a felsorolt Event Hub-kompatibilis végpontról való olvasáshoz **figyelési beállítások**. Az IoT Hub-végponton nevezzük `messages/operationsmonitoringevents`.
+3. Jelölje ki a figyelni kívánt figyelési kategóriákat, majd kattintson a **Mentés gombra.** Az események a **Figyelési beállításokban**felsorolt Event Hub-kompatibilis végpontról érhetők el. Az IoT Hub végpont `messages/operationsmonitoringevents`neve.
 
-    ![Műveletek figyelése az IoT hub konfigurálása](./media/iot-hub-operations-monitoring/enable-OM-2.png)
+    ![Műveletek figyelésének konfigurálása az IoT hubon](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
-> Kiválasztásával **részletes** figyelését a **kapcsolatok** kategória hatására az IoT Hub létrehozásához további diagnosztikai üzeneteket. Minden más kategóriák a **részletes** beállítása a módosításokat az IoT Hub információ mennyisége minden hibaüzenet tartalmazza.
+> Ha **részletes figyelést** választ a **Kapcsolatok** kategóriában, az IoT Hub további diagnosztikai üzeneteket hoz létre. Az összes többi kategória esetében a részletes beállítás **módosítja** az IoT Hub által az egyes hibaüzenetekben szereplő információk mennyiségét.
 
-## <a name="event-categories-and-how-to-use-them"></a>Eseménykategóriák és azok használatát
+## <a name="event-categories-and-how-to-use-them"></a>Eseménykategóriák és használatuk
 
-Egyes műveletek figyelése kategória nyomon követi az IoT Hub és az egyes figyelési kategóriák való interakció más típusú rendelkezik egy sémát, amely meghatározza, milyen események, amelynek felépítése.
+Minden művelet figyelési kategória nyomon követi a különböző típusú interakció az IoT Hub, és minden figyelési kategória rendelkezik egy séma, amely meghatározza, hogyan események az adott kategóriában épülnek.
 
-### <a name="device-identity-operations"></a>Eszközművelet identitás
+### <a name="device-identity-operations"></a>Eszközidentitás-műveletek
 
-Eszközkategória identitás műveletek nyomon követi, létrehozásához, frissítéséhez vagy törléséhez egy bejegyzés az IoT hub eszközidentitás-jegyzékben lévő megkísérlésekor előforduló hibákat. Ebbe a kategóriába követési hasznos forgatókönyvek kiépítéshez.
+Az eszközidentitás-műveletek kategóriában nyomon követi azokat a hibákat, amelyek akkor fordulnak elő, amikor megpróbál létrehozni, frissíteni vagy törölni egy bejegyzést az IoT hub identitás-beállításjegyzékében. Ez a kategória nyomon követése hasznos a kiépítési forgatókönyvek.
 
 ```json
 {
@@ -74,7 +74,7 @@ Eszközkategória identitás műveletek nyomon követi, létrehozásához, friss
 
 ### <a name="device-telemetry"></a>Eszköztelemetria
 
-Az eszközkategória telemetriai előforduló hibák az IoT hubra kapcsolódnak, a telemetriai adatok folyamatot követi nyomon. Ez a kategória tartalmazza (például a szabályozás) telemetriai események küldése során előforduló hibákat, valamint telemetrikus eseményeket (például illetéktelen olvasó) fogadását. Ez a kategória nem tényleges magán az eszközön futó által okozott hibákat.
+Az eszköz telemetriai kategóriában nyomon követi az IoT hubon előforduló és a telemetriai folyamathoz kapcsolódó hibákat. Ez a kategória tartalmazza a telemetriai események (például a szabályozás) és a telemetriai események (például a jogosulatlan olvasó) küldésekor előforduló hibákat. Ez a kategória nem tudja észlelni az eszközön futó kód által okozott hibákat.
 
 ```json
 {
@@ -96,9 +96,9 @@ Az eszközkategória telemetriai előforduló hibák az IoT hubra kapcsolódnak,
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Felhőből az eszközre irányuló parancsok
+### <a name="cloud-to-device-commands"></a>Felhőből az eszközre parancsok
 
-A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a hibák fordulhatnak elő, amikor a felhőből az eszközre irányuló üzenetküldés (például illetéktelen küldő), (például a szállítási darabszám túllépve) a felhőből az eszközre irányuló üzenetek fogadása és visszajelzés a felhőből az eszközre irányuló üzenetek fogadása (mint például a visszajelzések lejárt). Ez a kategória nem dolgozza hibák az eszközről, amely nem megfelelően kezeli a felhőből az eszközre irányuló üzenet, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve.
+A felhőből az eszközre irányuló parancsok kategória nyomon követi az IoT hubon előforduló és a felhőből az eszközre irányuló üzenetfolyamathoz kapcsolódó hibákat. Ebbe a kategóriába tartoznak a felhőből az eszközre irányuló üzenetek küldésekor (például a jogosulatlan feladó), a felhőből az eszközre irányuló üzenetek fogadása (például a kézbesítési szám túllépése), valamint a felhőből az eszközre irányuló üzenetek visszajelzésének (például a lejáró visszajelzések) fogadásakor előforduló hibák. Ez a kategória nem észleli a hibákat egy olyan eszközről, amely nem megfelelően kezeli a felhőből az eszközre irányuló üzenetet, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve lett.
 
 ```json
 {
@@ -122,7 +122,7 @@ A felhőből az eszközre irányuló parancsok kategória előforduló hibák az
 
 ### <a name="connections"></a>Kapcsolatok
 
-A kapcsolatok kategória hibák fordulhatnak elő, amikor az eszközök csatlakoztatása, vagy válassza le az IoT hub követi nyomon. Ebbe a kategóriába követési akkor hasznos, jogosulatlan kapcsolódási kísérletek azonosításához és nyomon követésére, ha a kapcsolat azért területein gyenge hálózati eszközökhöz.
+A kapcsolatok kategória nyomon követi azokat a hibákat, amelyek akkor fordulnak elő, amikor az eszközök csatlakoznak vagy leválasztják az IoT-elosztót. A kategória nyomon követése akkor hasznos, ha azonosítani tudja a jogosulatlan csatlakozási kísérleteket, és nyomon követheti, ha megszakad a kapcsolat a gyenge kapcsolati területeken lévő eszközök számára.
 
 ```json
 {
@@ -142,15 +142,15 @@ A kapcsolatok kategória hibák fordulhatnak elő, amikor az eszközök csatlako
 
 ### <a name="file-uploads"></a>Fájlfeltöltések
 
-A fájl feltöltése kategória nyomon követi az IoT hubra és a fájlfeltöltési funkciókhoz kapcsolódó hibák. Ez a kategória tartalmazza:
+A fájlfeltöltési kategória nyomon követi az IoT hubon előforduló és a fájlfeltöltési funkcióval kapcsolatos hibákat. Ez a kategória a következőket tartalmazza:
 
-* Az SAS URI-t, például amikor egy eszköz értesíti a hub egy befejezett feltöltésről, mielőtt lejár az előforduló hibákat.
+* Hibák, amelyek a SAS URI-val, például amikor lejár, mielőtt egy eszköz értesíti a hub egy befejezett feltöltés.
 
-* Nem sikerült az eszköz által jelentett feltöltések.
+* Az eszköz által jelentett sikertelen feltöltések.
 
-* Ha egy fájl nem található a tároló az IoT Hub értesítési üzenet létrehozása során előforduló hibákat.
+* Hibák, amelyek akkor fordulnak elő, ha egy fájl nem található a tárolóban az IoT Hub értesítési üzenetek létrehozása során.
 
-Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy fájlt tölt Storage.
+Ez a kategória nem tudja észlelni azolyan hibákat, amelyek közvetlenül akkor fordulnak elő, amikor az eszköz feltölt egy fájlt a tárolóba.
 
 ```json
 {
@@ -169,9 +169,9 @@ Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy f
 }
 ```
 
-### <a name="message-routing"></a>Üzenet-útválasztása
+### <a name="message-routing"></a>Üzenetek útválasztása
 
-Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végpont-állapotot az IoT Hub által érzékelt során felmerülő hibák nyomon követi. Ez a kategória tartalmazza az eseményeket, mint például amikor egy szabály eredménye "nem definiált", amikor az IoT Hub jelöli meg a végpont kézbesítetlen, valamint a végpont kapott más hibák. Ebbe a kategóriába nem tartalmazza a konkrét hibákat maguk az üzenetek (például a szabályozási hibák eszköz), amely az "eszköz telemetriai" kategóriában szerepelnek.
+Az üzenetút-küldési kategória nyomon követi az üzenetútvonal-kiértékelés és a végpont állapota során az IoT Hub által érzékelt hibákat. Ez a kategória olyan eseményeket tartalmaz, mint például amikor egy szabály kiértékeli a "nem definiált", amikor az IoT Hub egy végpontot halottként jelöl meg, és a végpontról kapott egyéb hibákat. Ez a kategória nem tartalmazza az üzenetekkel kapcsolatos konkrét hibákat (például az eszköz szabályozási hibáit), amelyek az "eszköz telemetriai adatok" kategóriában vannak jelentve.
 
 ```json
 {
@@ -188,31 +188,31 @@ Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végp
 }
 ```
 
-## <a name="connect-to-the-monitoring-endpoint"></a>A felügyeleti végponthoz való csatlakozás
+## <a name="connect-to-the-monitoring-endpoint"></a>Csatlakozás a figyelési végponthoz
 
-A figyelési végponthoz az IoT hub Event Hub-kompatibilis végpont. Minden olyan mechanizmus, amely együttműködik a erről a végpontról figyelési üzenetek olvasásához az Event Hubs is használhatja. Az alábbi minta létrehoz egy alapszintű olvasót, amely nem alkalmas a nagy átviteli sebességű üzemelő. Event hubs szolgáltatástól érkező üzenetek feldolgozásával kapcsolatos további információkért lásd: a [Event Hubs használatának első lépései](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) oktatóanyag.
+Az IoT hub figyelési végpontja egy Event Hub-kompatibilis végpont. Bármilyen mechanizmust, amely együttműködik az Event Hubs a figyelési üzenetek olvasása ebből a végpontból. A következő minta létrehoz egy alapszintű olvasót, amely nem alkalmas a nagy átviteli sebességű telepítéshez. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) ismertető oktatóanyagot.
 
-A felügyeleti végponthoz csatlakozik, szüksége van egy kapcsolati karakterláncot, és a végpont neve. A következő lépések bemutatják, hogyan találhatja meg a szükséges értékek a portálon:
+A figyelési végponthoz való csatlakozáshoz kapcsolati karakterláncra és a végpont nevére van szükség. A következő lépések bemutatják, hogyan találhatja meg a szükséges értékeket a portálon:
 
-1. A portálon lépjen az IoT Hub-erőforrás paneljének.
+1. A portálon keresse meg az IoT Hub erőforrás panel.
 
-2. Válassza ki **műveletek figyelése**, és jegyezze fel a **Event Hub-kompatibilis nevet** és **Event Hub-kompatibilis végponthoz** értékek:
+2. Válassza **az Operations monitoring**lehetőséget, és jegyezze fel az Event **Hub-kompatibilis nevet** és az Event **Hub-kompatibilis** végpontértékeket:
 
-    ![Event Hub-compatible endpoint values](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
+    ![Az Event Hub-kompatibilis végpontértékek](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Válasszon **megosztott elérési házirendek**, majd válassza a **szolgáltatás**. Jegyezze fel a **elsődleges kulcs** érték:
+3. Válassza **a Megosztott hozzáférési házirendek**lehetőséget, majd a **szolgáltatás**lehetőséget. Jegyezze fel az **Elsődleges kulcs** értékét:
 
-    ![Megosztott hozzáférési szabályzat elsődleges kulcsot](./media/iot-hub-operations-monitoring/service-key.png)
+    ![Szolgáltatás megosztott hozzáférési házirend elsődleges kulcsa](./media/iot-hub-operations-monitoring/service-key.png)
 
-Az alábbi C# kódminta egy Visual Studio nézetéből **Windows klasszikus Asztalialkalmazás** C# konzolalkalmazást. A projekt már a **WindowsAzure.ServiceBus** NuGet-csomag telepítve van.
+A következő C# kódminta a Visual Studio **Windows Classic Desktop** C# konzolalkalmazásból származik. A projekten telepítve van a **WindowsAzure.ServiceBus** NuGet csomag.
 
-* A kapcsolati karakterlánc helyőrzőjét cserélje le a kapcsolati karakterlánccal, amely a **Event Hub-kompatibilis végpont** és a szolgáltatás **elsődleges kulcs** az alábbi példában látható módon korábban feljegyzett értékekre:
+* Cserélje le a kapcsolati karakterlánc helyőrzője egy kapcsolati karakterláncot, amely az **Event Hub-kompatibilis végpont** ot és a szolgáltatás **elsődleges kulcsértékeit** használja, amelyeket korábban a következő példában láthatómódon ismert:
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* Cserélje le a felügyeleti végpont neve helyőrzőjét az **Event Hub-kompatibilis nevet** korábban feljegyzett értéket.
+* Cserélje le a figyelési végpont névhelyőrzőt a korábban említett **Event Hub-kompatibilis** névértékre.
 
 ```csharp
 class Program
@@ -266,8 +266,8 @@ class Program
 
 ## <a name="next-steps"></a>További lépések
 
-Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
+Az IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [Az IoT Hub fejlesztői útmutatója](iot-hub-devguide.md)
 
-* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure igény szerinti folyamatos átvitel műveletek a Postman-gyűjtemény importálása
-description: Ez a cikk ismerteti az Azure Media Services REST-hívások a Postman-gyűjtemény meghatározását.
+title: A Postman-gyűjtemény importálása az Igény szerinti Azure streamelési műveletekkel
+description: Ez a cikk az Azure Media Services REST-hívások postás gyűjteményének definícióját tartalmazza.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37fd131e570fa9f50df2479503b35407d67410cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60637535"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Az igény szerinti folyamatos átvitel műveletek Postman-gyűjtemény importálása 
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Postásgyűjtemény importálása igény szerinti streamelési műveletekkel 
 
-Ez a cikk a definíciót tartalmaz a **Postman** tartalmazó gyűjteményt, amely csoportosítva, amely az Azure Media Services REST API-k meghívása HTTP-kérelmekre. Konfigurálásával kapcsolatos információkat **Postman** így is használható a Media Services REST API-k meghívása, lásd: [Postman konfigurálása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyag.
+Ez a cikk tartalmazza a **Postman** gyűjtemény, amely tartalmazza a csoportosított HTTP-kérelmek, amelyek az Azure Media Services REST API-k. A Rról, hogy miként konfigurálhatja a **Postmant** a Media Services REST API-k hívásához, olvassa el a [Postman konfigurálása a Media Services REST API-hívásokhoz című](media-rest-apis-with-postman.md) oktatóanyagcímű témakört.
 
 ```json
 {

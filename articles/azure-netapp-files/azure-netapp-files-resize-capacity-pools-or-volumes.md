@@ -1,6 +1,6 @@
 ---
-title: A kapacitás-készlet vagy kötet átméretezése NetApp Azure-fájlok |} A Microsoft Docs
-description: Ismerteti, hogyan lehet kapacitást készlet vagy kötet méretének módosítása.
+title: Az Azure NetApp-fájlok kapacitáskészletének vagy kötetének átméretezése | Microsoft dokumentumok
+description: Ez a témakör a kapacitáskészlet vagy kötet méretének módosítását ismerteti.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,28 +15,28 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: b-juche
 ms.openlocfilehash: c58ceef57b984f46b86bb2a8577c53b75082b78b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65794617"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>A kapacitáskészlet vagy kötet átméretezése
-Módosíthatja a kapacitást készlet vagy szükség szerint kötet méretét. 
+Szükség esetén módosíthatja a kapacitáskészlet vagy a kötet méretét. 
 
-## <a name="resize-the-capacity-pool"></a>A kapacitás a készlet átméretezése 
+## <a name="resize-the-capacity-pool"></a>A kapacitáskészlet átméretezése 
 
-Módosíthatja a kapacitást készlet mérete 1-Tib-ra kerekítve vagy csökkentésére. A kapacitás a készlet méretét azonban nem lehet kisebb, mint 4 Tib-ra. A kapacitás a készlet átméretezése módosítja a megvásárolt Azure NetApp fájlok kapacitást.
+A kapacitáskészlet méretét 1-TiB lépésekben vagy kisebb lépésekben módosíthatja. A kapacitáskészlet mérete azonban nem lehet kisebb 4 TiB-nél. A kapacitáskészlet átméretezése megváltoztatja a megvásárolt Azure NetApp Files kapacitását.
 
-1. A NetApp fiók kezelése panelen kattintson a kapacitás a készlet átméretezése kívánt. 
-2. Kattintson a jobb gombbal a kapacitás-készlet neve, vagy kattintson a "..." ikonra a helyi menü megjelenítése a kapacitás a készlet sor végén található. 
-3. A környezet menüpontok segítségével méretezze át, vagy a kapacitás-készlet törlése.
+1. A NetApp-fiók kezelése panelen kattintson az átméretezni kívánt kapacitáskészletre. 
+2. Kattintson a jobb gombbal a kapacitáskészlet nevére, vagy kattintson a "..." ikont a kapacitáskészlet sorának végén a helyi menü megjelenítéséhez. 
+3. A helyi menü beállításaival átméretezheti vagy törölheti a kapacitáskészletet.
 
-## <a name="resize-a-volume"></a>A kötet átméretezése
+## <a name="resize-a-volume"></a>Kötet átméretezése
 
-Egy kötet szükség szerint módosíthatja. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
+Szükség szerint módosíthatja a kötet méretét. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
 
-1. A NetApp fiók kezelése panelen kattintson az **kötetek**. 
-2. Kattintson a jobb gombbal a kötet átméretezése, vagy kattintson a "..." ikonra a helyi menü megjelenítése a kötet sor végén található kívánt nevét.
-3. A környezet menüpontok segítségével méretezze át vagy törölje a kötetet.
+1. A NetApp-fiók kezelése panelen kattintson a **Kötetek gombra.** 
+2. Kattintson a jobb gombbal az átméretezni kívánt kötet nevére, vagy kattintson a "..." ikont a hangerő sorának végén a helyi menü megjelenítéséhez.
+3. A helyi menü beállításaival átméretezheti vagy törölheti a kötetet.
 

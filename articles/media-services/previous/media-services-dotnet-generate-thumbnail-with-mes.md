@@ -1,6 +1,6 @@
 ---
 title: Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával
-description: Ez a témakör bemutatja, hogyan használható a .NET kódolása és miniatűrök létrehozása a Media Encoder Standard használatával egy időben.
+description: Ez a témakör bemutatja, hogyan lehet a .NET használatával kódolni egy eszközt, és hogyan hozhat létre miniatűröket egyidejűleg a Media Encoder Standard használatával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61244229"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával 
 
-Használhatja a Media Encoder Standard használatával hozzon létre egy vagy több miniatűrök a bemeneti videóhoz a [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), vagy [BMP](https://en.wikipedia.org/wiki/BMP_file_format) fájlformátumok kép. Elküldheti a feladatokat, amelyek csak képeket, vagy kombinálhatja miniatűrkészítés kódolással. Ez a cikk néhány minta XML és JSON miniatűr készletek ilyen esetekben. A cikk végén, van egy [mintakód](#code_sample) , amely bemutatja, hogyan használja a Media Services .NET SDK a kódolási feladatok.
+A Media Encoder Standard segítségével egy vagy több miniatűrt hozhat létre a bemeneti videóból [JPEG,](https://en.wikipedia.org/wiki/JPEG) [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)vagy [BMP](https://en.wikipedia.org/wiki/BMP_file_format) képfájlformátumban. Elküldheti azokat a feladatokat, amelyek csak képeket hoznak létre, vagy kombinálhatja a miniatűrök létrehozását a kódolással. Ez a cikk néhány minta XML- és JSON-miniatűrkészletet tartalmaz az ilyen forgatókönyvekhez. A cikk végén található egy [mintakód,](#code_sample) amely bemutatja, hogyan használható a Media Services .NET SDK a kódolási feladat végrehajtásához.
 
-A minta készletek használt elemek a további részletekért tekintse át [Media Encoder Standard-séma](media-services-mes-schema.md).
+A mintakészletekben használt elemekkel kapcsolatos további részletekért tekintse át [a Media Encoder Standard sémáját.](media-services-mes-schema.md)
 
-Mindenképpen tekintse át a [szempontok](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) szakaszban.
+Győződjön meg arról, hogy áttekinti a [Szempontok szakaszt.](media-services-dotnet-generate-thumbnail-with-mes.md#considerations)
     
-## <a name="example-of-a-single-png-file-preset"></a>Példa egy "egyetlen PNG-fájl" beállításkészletet.
+## <a name="example-of-a-single-png-file-preset"></a>Példa "egyetlen PNG-fájl" készletre
 
-A következő JSON- és XML-készlet létrehozásához egy egyetlen kimeneti PNG-fájl a bemeneti videóhoz, az első néhány másodpercet, ahol a kódoló lehetővé teszi egy kísérlet a legjobb keresése egy "érdekes" keret használható. Vegye figyelembe, hogy a kimeneti kép mérete 100 %-ra, ami azt jelenti, ezek a bemeneti videó méretéhez van állítva. Is vegye figyelembe, hogyan "Formátum" beállítás a "Kimenetek" szükséges "PngLayers" a "Kodekek" szakaszban használatának megfelelően. 
+A következő JSON és XML-készlet segítségével egyetlen kimeneti PNG-fájlt hozhat létre a bemeneti videó első néhány másodpercéből, ahol a kódoló a legjobb kísérletet teszi egy "érdekes" képkocka megtalálására. Vegye figyelembe, hogy a kimeneti kép méretei 100%-ra vannak állítva, ami azt jelenti, hogy ezek megegyeznek a bemeneti videó méretével. Vegye figyelembe azt is, hogy a "Kimenetek" "Formátum" beállítása hogyan szükséges ahhoz, hogy megfeleljen a "PngLayers" használatának a "Kodekek" részben. 
 
-### <a name="json-preset"></a>JSON-előbeállítás
+### <a name="json-preset"></a>JSON készlet
 
 ```json
     {
@@ -62,7 +62,7 @@ A következő JSON- és XML-készlet létrehozásához egy egyetlen kimeneti PNG
     }
 ```
     
-### <a name="xml-preset"></a>XML-készletet
+### <a name="xml-preset"></a>XML-készlet
 
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
@@ -85,11 +85,11 @@ A következő JSON- és XML-készlet létrehozásához egy egyetlen kimeneti PNG
     </Preset>
 ```
 
-## <a name="example-of-a-series-of-jpeg-images-preset"></a>Példa egy "JPEG-képek series" beállításkészletet.
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>Példa "JPEG-képek sorozata" készletre
 
-A következő JSON- és XML-készlet képkészlet 10, 5 időbélyegeket létrehozásához használható % 15 %,..., 95 %-a bemeneti ütemtervét, ahol a képméret egyik van megadva, a bemeneti videó negyedév.
+A következő JSON- és XML-készlet segítségével 10 képkészletet hozhat létre a bemeneti idővonal 5%-os, 15%-os, ..., 95%-os időbélyegein, ahol a képméret a bemeneti videó egynegyedének egynegyede.
 
-### <a name="json-preset"></a>JSON-előbeállítás
+### <a name="json-preset"></a>JSON készlet
 
 ```json
     {
@@ -121,7 +121,7 @@ A következő JSON- és XML-készlet képkészlet 10, 5 időbélyegeket létreho
     }
 ```
 
-### <a name="xml-preset"></a>XML-készletet
+### <a name="xml-preset"></a>XML-készlet
     
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
@@ -145,11 +145,11 @@ A következő JSON- és XML-készlet képkészlet 10, 5 időbélyegeket létreho
     </Preset>
 ```
 
-## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Példa egy "egy lemezkép egy adott időbélyegző," beállításkészletet.
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Példa "egy kép egy adott időbélyegen" készletre
 
-A következő JSON- és XML-készletet a bemeneti videó 30 másodperces befejeződnie egyetlen JPEG-képek létrehozására használható. Ezt a beállítást a bemeneti videó időtartama a több mint 30 másodpercre vár (ellenkező esetben a feladat sikertelen).
+A következő JSON- és XML-készlet segítségével egyetlen JPEG-kép készíthető a bemeneti videó 30 másodperces jelén. Ez az előre beállított érték arra számít, hogy a bemeneti videó időtartama meghaladja a 30 másodpercet (különben a feladat sikertelen).
 
-### <a name="json-preset"></a>JSON-előbeállítás
+### <a name="json-preset"></a>JSON készlet
 
 ```json
     {
@@ -181,7 +181,7 @@ A következő JSON- és XML-készletet a bemeneti videó 30 másodperces befejez
     }
 ```
 
-### <a name="xml-preset"></a>XML-készletet
+### <a name="xml-preset"></a>XML-készlet
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -204,13 +204,13 @@ A következő JSON- és XML-készletet a bemeneti videó 30 másodperces befejez
     </Preset>
 ```
 
-## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>A "miniatűrök, a különböző" készlet – példa
+## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Példa a "miniatűrök különböző felbontásoknál" készletre
 
-Az alábbi előre definiált, a különböző miniatűrök létrehozása a feladatban egy használható. A példában pozíciók 5 %-os 15 %,..., 95 %-át a bemeneti ütemterv a kódoló létrehoz két lemezképet – egyenként 100 %-a bemeneti videó felbontása és a másik 50 %-ában.
+A következő készlet segítségével egy feladatban különböző felbontásban hozhat létre miniatűröket. A példában a bemeneti idővonal 5%-os, 15%-os, ...-i 95%-ában a kódoló két képet hoz létre – az egyik a bemeneti videó felbontásának 100%-át, a másik pedig 50%-os.
 
-Figyeljük meg a fájlnév; {feloldási} makra azt jelzi, a szélességét és magasságát, hogy a készlet létrehozásakor a fájlnevet, a kimeneti rendszerképek kódolás szakaszában megadott használata a kódoló. Ez segít is egyszerűen megkülönböztetni a különböző rendszerképek
+Figyelje meg a(z) {Resolution} makró használatát a Fájlnév ben; azt jelzi a kódolónak, hogy a készlet Kódolás szakaszában megadott szélességet és magasságot használja a kimeneti lemezképek fájlnevének létrehozása közben. Ez abban is segít, hogy könnyen megkülönböztesse a különböző
 
-### <a name="json-preset"></a>JSON-előbeállítás
+### <a name="json-preset"></a>JSON készlet
 
 ```json
     {
@@ -249,7 +249,7 @@ Figyeljük meg a fájlnév; {feloldási} makra azt jelzi, a szélességét és m
     }
 ```
 
-### <a name="xml-preset"></a>XML-készletet
+### <a name="xml-preset"></a>XML-készlet
 ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -277,12 +277,12 @@ Figyeljük meg a fájlnév; {feloldási} makra azt jelzi, a szélességét és m
     </Preset>
 ```
 
-## <a name="example-of-generating-a-thumbnail-while-encoding"></a>A miniatűr létrehozása közben kódolás – példa
+## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Példa bélyegkép generálására kódolás közben
 
-Amíg a fenti példák mindegyike rendelkezik tárgyalt, hogyan küldhet egy kódolási feladatot, amely csak képeket, kombinálhatja is a videó vagy hang kódolás miniatűrkészítés. A következő JSON- és XML-készlet mondja el **Media Encoder Standard** , miniatűrkép generálása során kódolást.
+Bár a fenti példák mindegyike megvitatta, hogyan küldhet be olyan kódolási feladatot, amely csak képeket állít elő, a video- és hangkódolást a miniatűrök generálásával is kombinálhatja. A következő JSON- és XML-készlet a **Media Encoder Standard** számára jellel jelöli meg, hogy a kódolás során miniatűrt hozzon létre.
 
-### <a id="json"></a>JSON-előbeállítás
-Sémával kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/library/mt269962.aspx) cikk.
+### <a name="json-preset"></a><a id="json"></a>JSON készlet
+A sémáról ebben [a](https://msdn.microsoft.com/library/mt269962.aspx) cikkben olvashat.
 
 ```json
     {
@@ -346,8 +346,8 @@ Sémával kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/l
     }
 ```
 
-### <a id="xml"></a>XML-készletet
-Sémával kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/library/mt269962.aspx) cikk.
+### <a name="xml-preset"></a><a id="xml"></a>XML-készlet
+A sémáról ebben [a](https://msdn.microsoft.com/library/mt269962.aspx) cikkben olvashat.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -401,23 +401,23 @@ Sémával kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/l
     </Preset>   
 ```
 
-## <a id="code_sample"></a>A videó kódolása és .NET-tel miniatűr létrehozása
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>Videó kódolása és miniatűr létrehozása a .NET segítségével
 
-Az alábbi példakód a Media Services .NET SDK-t használja a következő feladatokat:
+A következő kódpélda a Media Services .NET SDK segítségével hajtja végre a következő feladatokat:
 
 * Hozzon létre egy kódolási feladatot.
-* A Media Encoder Standard kódolóval mutató hivatkozás beolvasása.
-* A készlet betöltéséhez [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) tartalmaznak, a kódolási előbeállítást miniatűrök létrehozása a szükséges információkat és. Ez mentheti [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) a fájl- és használja a következő kód betölteni a fájlt.
+* Hivatkozás a Media Encoder Standard kódolóra.
+* Töltse be a kódolási készletet tartalmazó előre beállított [XML-t](media-services-dotnet-generate-thumbnail-with-mes.md#xml) vagy [JSON-t,](media-services-dotnet-generate-thumbnail-with-mes.md#json) valamint a miniatűrök létrehozásához szükséges információkat. Ezt az [XML-t](media-services-dotnet-generate-thumbnail-with-mes.md#xml) vagy [JSON-t](media-services-dotnet-generate-thumbnail-with-mes.md#json) fájlba mentheti, és a következő kóddal töltheti be a fájlt.
   
         // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(fileName);  
 * Egyetlen kódolási feladat hozzáadása a feladathoz. 
-* Adja meg a kódolni kívánt bemeneti objektuma.
-* A kódolt objektumhoz tartalmazó kimeneti adategység létrehozása.
-* Adjon hozzá egy eseménykezelőt a feladat állapotának ellenőrzése.
-* A feladat elküldéséhez.
+* Adja meg a kódolandó bemeneti eszközt.
+* Hozzon létre egy kimeneti eszközt, amely tartalmazza a kódolt eszközt.
+* Adjon hozzá egy eseménykezelőt a feladat előrehaladásának ellenőrzéséhez.
+* Küldje el a feladatot.
 
-Tekintse meg a [.NET-keretrendszerrel történő Media Services-fejlesztés](media-services-dotnet-how-to-use.md) cikk tartalmazza a fejlesztési környezet beállítása a.
+A fejlesztői környezet beállításával kapcsolatos útmutatást a [Media Services-fejlesztés és](media-services-dotnet-how-to-use.md) a .NET cikk ismerteti.
 
 ```csharp
 using System;
@@ -548,29 +548,29 @@ namespace EncodeAndGenerateThumbnails
 ## <a name="considerations"></a>Megfontolandó szempontok
 A következő szempontokat kell figyelembe venni:
 
-* Kezdő/lépés/tartomány explicit időbélyegeket használatát feltételezi, hogy a bemeneti forrás legalább 1 percnek hosszú.
-* JPG vagy Png/BmpImage elemek elindítani, a lépésben és karakterlánc-attribútumok tartomány – ezeket úgy:
+* Explicit időbélyegek használata a Start/Step/Range feltételezi, hogy a bemeneti forrás legalább 1 perc hosszú.
+* Jpg /Png/BmpImage elemek Start, Step és Range karakterlánc attribútumokkal rendelkeznek – ezek a következőképpen értelmezhetők:
   
-  * Keret száma, ha azok nem negatív egész szám, például "a Start": "120",
-  * Ha forrásidőtartamhoz %-a forrás időtartama, például "Start" relatív: "15 %", VAGY
-  * Időbélyeg, ha óó kifejezett... formátum. Például "kezdő": "00:01:00"
+  * Keretszám, ha nem negatív egész számok, például "Start": "120",
+  * A forrás időtartamához viszonyítva, ha %utótagban van kifejezve, például "Start": "15%", VAGY
+  * Időbélyeg, ha hh:PP:SS- ben van kifejezve... Formátum. Például "Start" : "00:01:00"
     
-    Ön szabadon kombinálhatók, jelölések meg.
+    Keverheti és párosíthatja a jelöléseket, ahogy tetszik.
     
-    Ezenkívül kezdő is támogatja a speciális makró: {ajánlott}, amely kísérli meg meghatározni a tartalom Megjegyzés: az első "érdekes" kép: (A lépés, és a tartomány nem veszi figyelembe kezdő {legjobb} értékre van állítva)
-  * Alapértelmezés szerint: Indítsa el: {ajánlott}
-* Minden egyes képformátum explicit módon megadott kimeneti formátum van szüksége: Jpg/Png/BmpFormat. Jelenléte esetén MES felel meg JpgVideo JpgFormat, és így tovább. OutputFormat vezet be az új lemezkép-kodek adott makró: {Index}, mely kell lennie a jelen (egyszer és csak egyszer) rendszerkép kimeneti formátum.
+    Ezenkívül a Start egy speciális makrót is támogat:{Best}, amely megpróbálja meghatározni a tartalom első "érdekes" keretét MEGJEGYZÉS: (A lépés és a tartomány figyelmen kívül lesz hagyva, ha a Start értéke {Best})
+  * Alapértelmezések: Start:{Best}
+* A kimeneti formátumot minden képformátumhoz kifejezetten meg kell adni: Jpg/Png/BmpFormat. Ha jelen van, a MES a JpgVideo-t jpgformat-ra és így tovább egyezik. A OutputFormat egy új képkokod-specifikus makrót vezet be: {Index}, amelynek jelen kell lennie (egyszer és csak egyszer) a képkimeneti formátumokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Ellenőrizheti a [feladat-végrehajtási](media-services-check-job-progress.md) közben a kódolási feladat függőben.
+Ellenőrizheti a [feladat előrehaladását,](media-services-check-job-progress.md) amíg a kódolási feladat függőben van.
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[A Media Services kódolási áttekintése](media-services-encode-asset.md)
+[Media Services kódolás – áttekintés](media-services-encode-asset.md)
 

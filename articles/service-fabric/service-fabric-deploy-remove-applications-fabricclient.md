@@ -1,19 +1,19 @@
 ---
-title: Azure Service Fabric üzembe helyezés a FabricClient
-description: A FabricClient API-kkal alkalmazásokat telepíthet és távolíthat el Service Fabricban.
+title: Az Azure Service Fabric üzembe helyezése a FabricClient alkalmazással
+description: A FabricClient API-k használatával alkalmazásokat telepíthet és távolíthat el a Service Fabric ben.
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75376970"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Alkalmazások telepítése és eltávolítása a FabricClient használatával
 > [!div class="op_single_selector"]
 > * [Resource Manager](service-fabric-application-arm-resource.md)
-> * [PowerShell](service-fabric-deploy-remove-applications.md)
+> * [Powershell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric parancssori felület](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API-k](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
@@ -21,90 +21,90 @@ ms.locfileid: "75376970"
 
 <br/>
 
-Miután [becsomagolta az alkalmazás típusát][10], készen áll az üzembe helyezésre egy Azure Service Fabric-fürtön. Az üzembe helyezés a következő három lépésből áll:
+Egy [alkalmazástípus csomagolása][10]után készen áll az Azure Service Fabric-fürtbe való üzembe helyezésre. A telepítés a következő három lépést foglalja magában:
 
-1. Alkalmazáscsomag feltöltése a rendszerkép-tárolóba
-2. Az alkalmazás típusának regisztrálása
-3. Az alkalmazáscsomag eltávolítása a rendszerkép-tárolóból
-4. Az alkalmazás példányának létrehozása
+1. Töltse fel az alkalmazáscsomagot a képtárba
+2. Az alkalmazástípus regisztrálása
+3. Az alkalmazáscsomag eltávolítása a képtárból
+4. Az alkalmazáspéldány létrehozása
 
-Miután telepített egy alkalmazást, és futtatott egy példányt a fürtben, törölheti az alkalmazás példányát és az alkalmazás típusát. Az alábbi lépéseket követve teljesen eltávolíthat egy alkalmazást a fürtből:
+Miután üzembe helyezett egy alkalmazást, és futtatott egy példányt a fürtben, törölheti az alkalmazáspéldányt és annak alkalmazástípusát. Az alábbi lépésekkel teljesen eltávolíthatja az alkalmazásokat a fürtből:
 
-1. A futó alkalmazás példányának eltávolítása (vagy törlése)
-2. Az alkalmazás típusának regisztrációjának törlése, ha már nincs rá szükség
+1. A futó alkalmazáspéldány eltávolítása (vagy törlése)
+2. Az alkalmazástípus regisztrációjának megszüntetése, ha már nincs rá szüksége
 
-Ha a Visual studiót használja az alkalmazások helyi fejlesztési fürtön való üzembe helyezéséhez és hibakereséséhez, a rendszer az összes korábbi lépést automatikusan egy PowerShell-parancsfájl segítségével kezeli.  Ez a szkript az alkalmazás projekt *szkriptek* mappájában található. Ez a cikk a szkript működésének hátterét ismerteti, így ugyanazokat a műveleteket végezheti el a Visual studión kívül. 
+Ha a Visual Studio segítségével telepíti és hibakeresés alkalmazások a helyi fejlesztési fürtön, az összes előző lépés automatikusan kezeli egy PowerShell-parancsfájlon keresztül.  Ez a parancsfájl az alkalmazásprojekt *Parancsfájlok* mappájában található. Ez a cikk háttérképet nyújt arról, hogy mit csinál a parancsfájl, így ugyanazokat a műveleteket a Visual Studio-n kívül is el tudja végezni. 
  
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
-Kapcsolódjon a fürthöz egy [FabricClient](/dotnet/api/system.fabric.fabricclient) -példány létrehozásával, mielőtt futtatja a jelen cikkben szereplő programkódot. A helyi fejlesztési fürthöz való csatlakozásra, illetve a Azure Active Directory, X509 tanúsítványok vagy a Windows Active Directory használatával biztonságossá tett távoli fürthöz vagy fürthöz való kapcsolódásra vonatkozó Példákért lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). A helyi fejlesztési fürthöz való kapcsolódáshoz futtassa a következő példát:
+Csatlakozzon a fürthöz egy [FabricClient-példány](/dotnet/api/system.fabric.fabricclient) létrehozásával, mielőtt futtatja a cikkben szereplő kódpéldákat. Példák a helyi fejlesztési fürthöz vagy az Azure Active Directory, x509-tanúsítványok vagy Windows Active Directory használatával védett távoli fürthöz vagy fürthöz való csatlakozásra: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)című témakörben. A helyi fejlesztési fürthöz való csatlakozáshoz futtassa a következő példát:
 
 ```csharp
 // Connect to the local cluster.
 FabricClient fabricClient = new FabricClient();
 ```
 
-## <a name="upload-the-application-package"></a>Alkalmazáscsomag feltöltése
-Tegyük fel, hogy létrehoz és becsomagol egy *MyApplication* nevű alkalmazást a Visual Studióban. Alapértelmezés szerint az ApplicationManifest. xml fájlban szereplő alkalmazás-típus neve "MyApplicationType".  Az alkalmazás-jegyzékfájlt, a szolgáltatási jegyzékfájlokat és a Code/config/adatcsomagokat tartalmazó alkalmazáscsomag a *C:\Users\&lt; username&gt;\Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*mappában található.
+## <a name="upload-the-application-package"></a>Az alkalmazáscsomag feltöltése
+Tegyük fel, hogy létrehoz és csomagol egy *MyApplication* nevű alkalmazást a Visual Studióban. Alapértelmezés szerint az ApplicationManifest.xml fájlban felsorolt alkalmazástípus neve "MyApplicationType".  A szükséges alkalmazásjegyzéket, szolgáltatásjegyzékeket és kód/konfigurációs/adatcsomagokat tartalmazó alkalmazáscsomag a *C:\Users\&&gt;lt;username \Documents\Visual Studio 2019\Projects\MyApplication\MyApplication\pkg\Debug mappában*található.
 
-Az alkalmazáscsomag feltöltése a belső Service Fabric-összetevők által elérhető helyre helyezi azt. Service Fabric ellenőrzi az alkalmazáscsomag regisztrálását az alkalmazáscsomag regisztrálása során. Ha azonban helyileg szeretné ellenőrizni az alkalmazáscsomag használatát (azaz a feltöltés előtt), használja a [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) parancsmagot.
+Az alkalmazáscsomag feltöltése olyan helyre helyezi, amely elérhető a belső Service Fabric-összetevők által elérhető. A Service Fabric ellenőrzi az alkalmazáscsomagot az alkalmazáscsomag regisztrálása során. Ha azonban helyileg (azaz feltöltés előtt) ellenőrizni szeretné az alkalmazáscsomagot, használja a [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) parancsmagját.
 
-A [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API feltölti az alkalmazáscsomag a fürt rendszerkép-tárolójába. 
+A [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API feltölti az alkalmazáscsomagot a fürtlemezkép-tárolóba. 
 
-Ha az alkalmazáscsomag nagyméretű és/vagy sok fájllal rendelkezik, [tömörítheti azt](service-fabric-package-apps.md#compress-a-package) , és átmásolhatja a rendszerkép-tárolóba a PowerShell használatával. A tömörítés csökkenti a méretet és a fájlok számát.
+Ha az alkalmazáscsomag nagy és/vagy sok fájlt tartalmaz, [tömörítheti,](service-fabric-package-apps.md#compress-a-package) és átmásolhatja a powershell használatával a lemezképtárolóba. A tömörítés csökkenti a fájlok méretét és számát.
 
-A rendszerkép-tároló és a rendszerkép-tároló közötti kapcsolatok karakterláncával kapcsolatos további információkért lásd: [a rendszerkép-tárolási kapcsolatok karakterláncának megismerése](service-fabric-image-store-connection-string.md) .
+[A lemezkép-tároló kapcsolati karakterláncának ismertetése](service-fabric-image-store-connection-string.md) című témakörben talál további információt a lemezkép-tároló és a lemezképtároló kapcsolati karakterláncáról.
 
-## <a name="register-the-application-package"></a>Alkalmazáscsomag regisztrálása
-Az alkalmazás jegyzékfájljában deklarált alkalmazás típusa és verziója elérhetővé válik az alkalmazáscsomag regisztrálása során. A rendszer beolvassa az előző lépésben feltöltött csomagot, ellenőrzi a csomagot, feldolgozza a csomag tartalmát, és átmásolja a feldolgozott csomagot egy belső rendszer helyére.  
+## <a name="register-the-application-package"></a>A kérelemcsomag regisztrálása
+Az alkalmazásjegyzékben deklarált alkalmazástípus és verzió elérhetővé válik az alkalmazáscsomag regisztrálásakor. A rendszer beolvassa az előző lépésben feltöltött csomagot, ellenőrzi a csomagot, feldolgozza a csomag tartalmát, és átmásolja a feldolgozott csomagot egy belső rendszerhelyre.  
 
-A [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API regisztrálja az alkalmazás típusát a fürtben, és elérhetővé teszi az üzembe helyezéshez.
+A [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API regisztrálja az alkalmazás típusát a fürtben, és elérhetővé teszi a központi telepítéshez.
 
-A [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) API információt nyújt az összes sikeresen regisztrált alkalmazás típusáról. Ezzel az API-val meghatározhatja, hogy mikor történik a regisztráció.
+A [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) API az összes sikeresen regisztrált alkalmazástípusról nyújt tájékoztatást. Ezzel az API-val meghatározhatja, hogy mikor történik a regisztráció.
 
-## <a name="remove-an-application-package-from-the-image-store"></a>Alkalmazáscsomag eltávolítása a rendszerkép-tárolóból
-Javasoljuk, hogy az alkalmazás sikeres regisztrálása után távolítsa el az alkalmazáscsomag-csomagot.  A rendszerkép-tárolóban lévő alkalmazáscsomag törlése a rendszererőforrásokat felszabadítja.  A nem használt alkalmazáscsomag megőrzése a lemezes tárolást és az alkalmazások teljesítményével kapcsolatos problémákat eredményez. Törölje az alkalmazáscsomag a rendszerkép-áruházból a [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API használatával.
+## <a name="remove-an-application-package-from-the-image-store"></a>Alkalmazáscsomag eltávolítása a lemezképtárolóból
+Javasoljuk, hogy távolítsa el az alkalmazáscsomagot, miután az alkalmazás sikeresen regisztrált.  Az alkalmazáscsomagok lemezképtárolóból történő törlése rendszererőforrásokat szabadít fel.  A nem használt alkalmazáscsomagok megtartása lemezes tárolást eredményez, és az alkalmazás teljesítményével kapcsolatos problémákhoz vezet. Törölje az alkalmazáscsomagot a lemezképtárolóból az [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API használatával.
 
-## <a name="create-an-application-instance"></a>Alkalmazás-példány létrehozása
-A [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API használatával bármely olyan alkalmazásból létrehozhat egy alkalmazást, amely sikeresen regisztrálva van. Az egyes alkalmazások nevének a *"Fabric:"* sémával kell kezdődnie, és egyedinek kell lennie minden egyes alkalmazás-példánynál (egy fürtön belül). A rendszer az alkalmazás jegyzékfájljában definiált alapértelmezett szolgáltatásokat is létrehozza.
+## <a name="create-an-application-instance"></a>Alkalmazáspéldány létrehozása
+A [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API használatával bármely sikeresen regisztrált alkalmazástípusból létrehozhat egy alkalmazást. Az egyes alkalmazások nevének a *"fabric:"* sémával kell kezdődnie, és minden egyes alkalmazáspéldányhoz (fürtön belül) egyedinek kell lennie. Az alkalmazásjegyzékben a célalkalmazás típusának definiált alapértelmezett szolgáltatások is létrejönnek.
 
-Több alkalmazás-példány is létrehozható egy regisztrált alkalmazás típusának bármely adott verziójához. Minden egyes alkalmazás-példány elkülönítve fut a saját munkakönyvtárával és folyamatainak készletével.
+A regisztrált alkalmazástípus bármely verziójához több alkalmazáspéldány is létrehozható. Minden alkalmazáspéldány elszigetelten fut, saját munkakönyvtárral és folyamatok készletével.
 
-Ha szeretné megtudni, hogy mely megnevezett alkalmazások és szolgáltatások futnak a fürtben, futtassa a [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) és a [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) API-t.
+A [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) és a [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) API-k futtatásához futtassa a fürtben futó elnevezett alkalmazásokat és szolgáltatásokat.
 
-## <a name="create-a-service-instance"></a>Szolgáltatás példányának létrehozása
-A [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API használatával létrehozhat egy szolgáltatást a szolgáltatás típusától.  Ha a szolgáltatás az alkalmazás jegyzékfájljában alapértelmezett szolgáltatásként van deklarálva, akkor a szolgáltatás példánya az alkalmazás példányainak létrehozásakor jön létre.  Az [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API meghívása egy már példányban létrehozott szolgáltatáshoz FabricException típusú kivételt ad vissza. A kivétel a FabricErrorCode. ServiceAlreadyExists értékkel rendelkező hibakódot fogja tartalmazni.
+## <a name="create-a-service-instance"></a>Szolgáltatáspéldány létrehozása
+A [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API használatával egy szolgáltatástípusból hozhat létre egy szolgáltatást.  Ha a szolgáltatás alapértelmezett szolgáltatásként deklarálva van az alkalmazásjegyzékben, a szolgáltatás példányosodik az alkalmazás példányospéldányakor.  A [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API hívása egy már példányosított szolgáltatáshoz egy FabricException típusú kivételt ad vissza. A kivétel egy FabricErrorCode.ServiceAlreadyExists értékű hibakódot fog tartalmazni.
 
-## <a name="remove-a-service-instance"></a>Szolgáltatás példányának eltávolítása
-Ha már nincs szükség szolgáltatási példányra, a [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) API meghívásával eltávolíthatja azt a futó alkalmazás-példányból.  
+## <a name="remove-a-service-instance"></a>Szolgáltatáspéldány eltávolítása
+Ha egy szolgáltatáspéldányra már nincs szükség, eltávolíthatja azt a futó alkalmazáspéldányból a [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) API meghívásával.  
 
 > [!WARNING]
-> Ez a művelet nem vonható vissza, és a szolgáltatási állapot nem állítható helyre.
+> Ez a művelet nem vonható vissza, és a szolgáltatás állapota nem állítható helyre.
 
-## <a name="remove-an-application-instance"></a>Alkalmazás példányának eltávolítása
-Ha egy alkalmazás-példányra már nincs szükség, véglegesen eltávolíthatja azt név alapján a [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) API használatával. A [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) automatikusan eltávolítja az alkalmazáshoz tartozó összes szolgáltatást is, véglegesen eltávolítja az összes szolgáltatási állapotot.
+## <a name="remove-an-application-instance"></a>Alkalmazáspéldány eltávolítása
+Ha egy alkalmazáspéldányra már nincs szükség, a [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) API-val véglegesen eltávolíthatja azt név szerint. [A DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) automatikusan eltávolítja az alkalmazáshoz tartozó összes szolgáltatást is, véglegesen eltávolítva az összes szolgáltatásállapotot.
 
 > [!WARNING]
 > Ez a művelet nem vonható vissza, és az alkalmazás állapota nem állítható helyre.
 
-## <a name="unregister-an-application-type"></a>Alkalmazás típusának törlése
-Ha már nincs szükség az alkalmazás egy adott verziójára, akkor a regisztráció megszüntetésével az [ServiceFabricApplicationType API-](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) val törölni kell az adott verziót. A nem használt alkalmazások regisztrációjának törlése felszabadítja a rendszerkép-tároló által használt tárolóhelyet. Az alkalmazás típusának egy verziója törölhető, feltéve, hogy egyetlen alkalmazás sem lett létrehozva az alkalmazás típusának adott verziójára. Emellett az alkalmazás típusa nem lehet függőben lévő alkalmazás-frissítés, amely az alkalmazás típusának adott verziójára hivatkozik.
+## <a name="unregister-an-application-type"></a>Alkalmazástípus regisztrációjának megszüntetése
+Ha egy alkalmazástípus egy adott verziójára már nincs szükség, törölje az alkalmazástípus adott verziójának regisztrációját a [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API használatával. Az alkalmazástípusok nem használt verzióinak regisztrációjának megszüntetése felszabadítja a lemezképtár által használt tárhelyet. Az alkalmazástípus verziói mindaddig nem regisztrálhatók, amíg az alkalmazástípus adott verziójához egyetlen alkalmazás sem van példányosítva. Emellett az alkalmazástípusnak nem lehet függőben lévő alkalmazásfrissítése, amely az alkalmazástípus adott verziójára hivatkozik.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>A copy-ServiceFabricApplicationPackage ImageStoreConnectionString kér
-A Service Fabric SDK-környezetnek már meg kell határoznia a megfelelő alapértelmezett beállításokat. Ha azonban szükség van rá, az összes parancs ImageStoreConnectionString meg kell egyeznie a Service Fabric-fürt által használt értékkel. A ImageStoreConnectionString megkeresheti a fürt jegyzékfájljában, a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) és a Get-ImageStoreConnectionStringFromClusterManifest parancs használatával:
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage kér egy ImageStoreConnectionString
+A Service Fabric SDK-környezetben már be kell állítani a megfelelő alapértelmezett beállításokat. De ha szükséges, az ImageStoreConnectionString az összes parancs meg kell egyeznie az értéket, amely a Service Fabric-fürt használ. Az ImageStoreConnectionString a fürtjegyzékben található, a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) és a Get-ImageStoreConnectionStringFromClusterManifest parancsokkal beolvasva:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
 ```
 
-A Service Fabric SDK PowerShell-modul részét képező **Get-ImageStoreConnectionStringFromClusterManifest** parancsmag a rendszerkép-tároló kapcsolati karakterláncának beolvasására szolgál.  Az SDK-modul importálásához futtassa a következőt:
+A **Get-ImageStoreConnectionStringFromClusterManifest** parancsmag, amely a Service Fabric SDK PowerShell modul része, a rendszer a lemezképtároló kapcsolati karakterláncának leválasztására szolgál.  Az SDK-modul importálásához futtassa a következőt:
 
 ```powershell
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 ```
 
 
-A ImageStoreConnectionString a fürt jegyzékfájljában található:
+Az ImageStoreConnectionString a fürtjegyzékben található:
 
 ```xml
 <ClusterManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -118,29 +118,29 @@ A ImageStoreConnectionString a fürt jegyzékfájljában található:
     [...]
 ```
 
-A rendszerkép-tároló és a rendszerkép-tároló közötti kapcsolatok karakterláncával kapcsolatos további információkért lásd: [a rendszerkép-tárolási kapcsolatok karakterláncának megismerése](service-fabric-image-store-connection-string.md) .
+[A lemezkép-tároló kapcsolati karakterláncának ismertetése](service-fabric-image-store-connection-string.md) című témakörben talál további információt a lemezkép-tároló és a lemezképtároló kapcsolati karakterláncáról.
 
-### <a name="deploy-large-application-package"></a>Nagyméretű alkalmazáscsomag üzembe helyezése
-Probléma: a [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API időtúllépést jelent egy nagyméretű alkalmazáscsomag esetében (GB-os sorrend).
-Próbálja
-- A [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metódus nagyobb időtúllépést ad meg `timeout` paraméterrel. Alapértelmezés szerint az időtúllépés 30 percet vesz igénybe.
-- Keresse meg a számítógép és a fürt közötti hálózati kapcsolatot. Ha a kapcsolatok lassúak, érdemes lehet olyan gépet használni, amelynek jobb hálózati kapcsolatai vannak.
-Ha az ügyfélszámítógép más régióban található, mint a fürt, érdemes lehet egy ügyfélszámítógépet használni a fürttel megegyező vagy azonos régióban.
-- Ellenőrizze, hogy van-e külső szabályozás. Ha például a rendszerkép-tároló az Azure Storage használatára van konfigurálva, akkor a feltöltés szabályozható.
+### <a name="deploy-large-application-package"></a>Nagy alkalmazáscsomag telepítése
+Probléma: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API idővel kiegy nagy alkalmazáscsomag (gb sorrendben).
+Próbálja:
+- Adjon meg egy nagyobb időmeghosszabbítást `timeout` a [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metódushoz paraméterrel. Alapértelmezés szerint az időhosszabbítás 30 perc.
+- Ellenőrizze a hálózati kapcsolatot a forrásgép és a fürt között. Ha a kapcsolat lassú, fontolja meg egy jobb hálózati kapcsolattal rendelkező gép használatát.
+Ha az ügyfélgép a fürttől eltérő régióban található, fontolja meg egy ügyfélgép használatát a fürttel egy közelebbi vagy azonos régióban.
+- Ellenőrizze, hogy külső fojtás. Ha például a lemezképtároló azure storage használatára van konfigurálva, a feltöltés szabályozható.
 
-Probléma: a feltöltési csomag sikeresen befejeződött, de [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API-időtúllépés történt. Próbálja
-- [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt.
-A tömörítés csökkenti a méretet és a fájlok számát, ami viszont csökkenti a forgalom mennyiségét és a Service Fabric által végrehajtandó munkát. A feltöltési művelet lassabb lehet (különösen akkor, ha belefoglalja a tömörítési időt), de az alkalmazás típusának regisztrálása és törlése gyorsabb.
-- Nagyobb időtúllépést ad meg a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API számára `timeout` paraméterrel.
+Probléma: A csomag feltöltése sikeresen befejeződött, de [a ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API-t idővel elévül. Próbálja:
+- [A csomag tömörítése](service-fabric-package-apps.md#compress-a-package) a képtárolóba való másolás előtt.
+A tömörítés csökkenti a fájlok méretét és számát, ami viszont csökkenti a szolgáltatásháló által végrehajtandó forgalom és munka mennyiségét. A feltöltési művelet lehet lassabb (különösen, ha tartalmazza a tömörítési idő), de regisztrálja és törölje az alkalmazás típusát gyorsabb.
+- Adjon meg egy nagyobb időmeghosszabbítást `timeout` a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API paraméterrel.
 
-### <a name="deploy-application-package-with-many-files"></a>Alkalmazáscsomag központi telepítése sok fájllal
-Probléma: a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) időtúllépést jelent a sok fájlt tartalmazó alkalmazáscsomag esetében (több ezer).
-Próbálja
-- [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt. A tömörítés csökkenti a fájlok számát.
-- A `timeout` paraméterrel rendelkező [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) nagyobb időtúllépést ad meg.
+### <a name="deploy-application-package-with-many-files"></a>Alkalmazáscsomag telepítése sok fájllal
+Probléma: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) idővel ki egy alkalmazáscsomag sok fájlt (több ezer.
+Próbálja:
+- [A csomag tömörítése](service-fabric-package-apps.md#compress-a-package) a képtárolóba való másolás előtt. A tömörítés csökkenti a fájlok számát.
+- Adjon meg egy nagyobb időmeghosszabbítást a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) paraméterrel. `timeout`
 
 ## <a name="code-example"></a>Mintakód
-Az alábbi példa egy alkalmazáscsomag átmásolása a rendszerkép-tárolóba, és az alkalmazás típusának kiosztása. Ezután a példa létrehoz egy alkalmazás-példányt, és létrehoz egy szolgáltatási példányt. Végül a példa eltávolítja az alkalmazás példányát, leállítja az alkalmazás típusát, és törli az alkalmazáscsomagt a rendszerkép-tárolóból.
+A következő példa egy alkalmazáscsomagot másol a lemezképtárolóba, és az alkalmazás típusát tárolja. Ezután a példa létrehoz egy alkalmazáspéldányt, és létrehoz egy szolgáltatáspéldányt. Végül a példa eltávolítja az alkalmazáspéldányt, megszünteti az alkalmazás típusát, és törli az alkalmazáscsomagot a lemezképtárolóból.
 
 ```csharp
 using System;
@@ -320,14 +320,14 @@ static void Main(string[] args)
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
-[Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
+## <a name="next-steps"></a>További lépések
+[A Service Fabric alkalmazásfrissítése](service-fabric-application-upgrade.md)
 
-[Service Fabric állapot bemutatása](service-fabric-health-introduction.md)
+[A Service Fabric egészségügyi bevezetése](service-fabric-health-introduction.md)
 
-[Service Fabric szolgáltatás diagnosztizálása és megoldása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Service Fabric-szolgáltatás diagnosztizálása és hibaelhárítása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Alkalmazás modellezése Service Fabric](service-fabric-application-model.md)
+[Alkalmazás modellezése a Service Fabricben](service-fabric-application-model.md)
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-package-apps.md

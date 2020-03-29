@@ -1,7 +1,7 @@
 ---
 title: Speciális R-függvények írása
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Ismerje meg, hogyan írhat egy speciális statisztikai törölje a számításhoz R függvényt az Azure SQL Database, Machine Learning-Szolgáltatásokoz (előzetes verzió) használatával.
+description: Ismerje meg, hogyan írhat R-függvényt a fejlett statisztikai számításhoz az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,37 +14,37 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60702452"
 ---
-# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Az Azure SQL Database, Machine Learning-Szolgáltatásokoz (előzetes verzió) használatával speciális R-függvények írása
+# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Speciális R-függvények írása az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan ágyazhat be matematikai R és a segédprogram-funkciók egy SQL-ben tárolt eljárást. A T-SQL megvalósításához a bonyolult speciális statisztikai függvények csak egyetlen sor kód az R végezhető.
+Ez a cikk azt ismerteti, hogy miként ágyazható be az R matematikai és segédprogram-függvények sql-tárolt eljárásba. A T-SQL-ben megvalósítandó speciális statisztikai függvények r-ben csak egyetlen kódsorgal hajthatók végre.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+- Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
-- Példakód futtatható a témaköröket, először szüksége van egy Azure SQL database, a Machine Learning-szolgáltatások (az r nyelv) engedélyezve van. A nyilvános előzetes verzió ideje alatt a Microsoft is megjelenik majd, és engedélyezze a gépi tanulás a meglévő vagy új adatbázis számára. Kövesse a [regisztrálni az előzetes verzióra](sql-database-machine-learning-services-overview.md#signup).
+- A példakód futtatásához ezekben a gyakorlatokban először rendelkeznie kell egy Azure SQL-adatbázis machine learning-szolgáltatások (R) engedélyezve van. A nyilvános előzetes verzió során a Microsoft befogja önt, és engedélyezi a gépi tanulást a meglévő vagy az új adatbázishoz. Kövesse a [Regisztráció az előnézetre](sql-database-machine-learning-services-overview.md#signup)című részben található lépéseket.
 
-- Győződjön meg arról, hogy telepítette a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Más adatbázis-kezelő vagy a lekérdezési eszközökkel R-szkriptek futtatása, de ez a rövid útmutató az ssms-t fogja használni.
+- Ellenőrizze, hogy telepítette-e a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) rendszert. Az R-parancsfájlokat más adatbázis-kezelő vagy lekérdezési eszközökkel is futtathatja, de ebben a rövid útmutatóban az SSMS-t fogja használni.
 
-## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Véletlenszerű számok létrehozására a tárolt eljárás létrehozása
+## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Tárolt eljárás létrehozása véletlenszerű számok létrehozásához
 
-Az egyszerűség kedvéért használja az R `stats` csomagot, amely telepítve van, és alapértelmezés szerint az Azure SQL Database, Machine Learning-Szolgáltatásokoz (előzetes verzió) használatával betöltve. A csomag tartalmazza a Funkciók, többek között statisztikai általános feladatokhoz több száz a `rnorm` függvény. Ez a függvény a megadott számú véletlenszerű számok megadott egy szórás és az azt jelenti, hogy a normális eloszlás használatával hoz létre.
+Az egyszerűség kedvéért használjuk `stats` az R-csomagot, amely alapértelmezés szerint telepítve van és betöltve az Azure SQL Database-lel a Machine Learning Services használatával (előzetes verzió). A csomag több száz funkciót tartalmaz a `rnorm` gyakori statisztikai feladatokhoz, köztük a funkciót. Ez a funkció meghatározott számú véletlen számot hoz létre a normál eloszlás használatával, szórással és értékkel.
 
-Például a következő R-kód az 50., 3 szórása megadott középérték 100 számot adja vissza.
+Például a következő R kód 100 számot ad vissza átlagosan 50-en, 3-as szórással.
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-Futtassa ezt a sort az R hívása a T-SQL, `sp_execute_external_script` , és adja hozzá a R függvényt az R parancsfájl paraméterben, ehhez hasonló:
+Ha ezt az R-vonalat t-SQL-ből szeretné hívni, futtassa `sp_execute_external_script` és adja hozzá az R függvényt az R parancsfájl paraméterhez, a következőkhöz:
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -55,9 +55,9 @@ OutputDataSet <- as.data.frame(rnorm(100, mean = 50, sd =3));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-Mi történik, ha szeretné létrehozni véletlenszerű számok külön készletét könnyebb?
+Mi a teendő, ha szeretné, hogy könnyebb létrehozni egy másik sor véletlenszerű számok?
 
-Ez nem probléma, amikor az SQL. Megadhat egy tárolt eljárást, amely az argumentumok olvas be a felhasználó, majd az R-szkript változókként argumentumot átadandó.
+Ez egyszerű, ha együtt SQL. Meg kell adnia egy tárolt eljárást, amely leveszi az argumentumokat a felhasználótól, majd ezeket az argumentumokat változóként továbbítja az R parancsfájlba.
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -78,13 +78,13 @@ OutputDataSet <- as.data.frame(rnorm(mynumbers, mymean, mysd));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-- Az első sora határozza meg az SQL bemeneti paraméterek, amelyek szükségesek a tárolt eljárás végrehajtásakor.
+- Az első sor határozza meg az sql bemeneti paramétereket, amelyek szükségesek a tárolt eljárás végrehajtásakor.
 
-- A sor elején `@params` R-kód és a megfelelő SQL-adattípusok által használt összes változó határozza meg.
+- Az R-kód által használt összes változót és a megfelelő SQL-adattípusokat `@params` definiáló sor határozza meg.
 
-- A sorokat, azonnal kövesse az SQL-paraméterek nevei rendelje hozzá a megfelelő R változó nevét.
+- Az azonnal követett sorok lerendelik az SQL paraméterneveket a megfelelő R-változónevekhez.
 
-Most, hogy az R függvény a tárolt beburkolását már egyszerűen meghívja a függvényt és adja át a különböző értékeket, ehhez hasonló:
+Most, hogy az R függvényt egy tárolt eljárásba csomagolta, egyszerűen meghívhatja a függvényt, és különböző értékekben adhatja át a funkciót, például:
 
 ```sql
 EXECUTE MyRNorm @param1 = 100
@@ -92,11 +92,11 @@ EXECUTE MyRNorm @param1 = 100
     , @param3 = 3
 ```
 
-## <a name="use-r-utility-functions-for-troubleshooting"></a>R-segédprogram funkciók használata a hibaelhárításhoz
+## <a name="use-r-utility-functions-for-troubleshooting"></a>Hibaelhárításhoz használja az R segédprogram-funkciókat
 
-A `utils` alapértelmezés szerint telepítve, a csomag biztosít számos segédprogram történő kivizsgálását az aktuális R-környezetben. Ezek a függvények akkor lehet hasznos, ha van megkeresni a eltérések az R-kód elvégzi, SQL és a külső környezetekben a. Például előfordulhat, hogy használja az R `memory.limit()` függvény az aktuális R-környezetben a memória.
+Az `utils` alapértelmezés szerint telepített csomag számos közüzemi funkciót biztosít az aktuális R-környezet vizsgálatához. Ezek a függvények akkor lehetnek hasznosak, ha eltéréseket talál az R-kód SQL-ben és külső környezetekben történő teljesítményében. Előfordulhat például, hogy `memory.limit()` az R függvénnyel memóriát kap az aktuális R környezethez.
 
-Mivel a `utils` csomag telepítve van, de alapértelmezés szerint nincs betöltve, kell használnia a `library()` függvény betölti azt.
+Mivel `utils` a csomag telepítve van, de alapértelmezés `library()` szerint nincs betöltve, először a függvényt kell használnia a betöltéséhez.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -110,4 +110,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> Hány felhasználó, például az R, a rendszer időzítési függvények használhatók például `system.time` és `proc.time`, hogy az R-folyamatok által használt az idő rögzítése és teljesítménnyel kapcsolatos problémák elemzéséhez.
+> Sok felhasználó szeretné használni a rendszer időzítési `system.time` `proc.time`funkcióit az R-ben, például és a , az R folyamatok által használt idő rögzítéséhez és a teljesítményproblémák elemzéséhez.

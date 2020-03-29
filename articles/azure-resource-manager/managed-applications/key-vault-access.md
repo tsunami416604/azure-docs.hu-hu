@@ -1,58 +1,58 @@
 ---
-title: Key Vault használata felügyelt alkalmazás telepítésekor
-description: Bemutatja, hogyan használhatók a hozzáférési Titkok a Azure Key Vault a felügyelt alkalmazások telepítésekor
+title: A Key Vault használata felügyelt alkalmazás telepítésekor
+description: Bemutatja, hogyan használhatja a hozzáférési titkokat az Azure Key Vaultban a felügyelt alkalmazások telepítésekor
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248436"
 ---
-# <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Key Vault titok elérése Azure Managed Applications telepítésekor
+# <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Access Key Vault titkos elérése az Azure felügyelt alkalmazások telepítésekor
 
-Ha biztonságos értéket (például jelszót) kell átadnia paraméterként az üzembe helyezés során, lekérheti az értéket egy [Azure Key Vault](../../key-vault/key-vault-overview.md). Ha a felügyelt alkalmazások telepítésekor szeretné elérni a Key Vault, hozzáférést kell biztosítania a **készülék erőforrás-szolgáltatói** egyszerű szolgáltatásához. A felügyelt alkalmazások szolgáltatás ezt az identitást használja a műveletek futtatásához. Ha az üzembe helyezés során sikeresen beolvas egy Key Vault értéket, az egyszerű szolgáltatásnak el kell tudnia érni a Key Vault.
+Ha a központi telepítés során paraméterként egy biztonságos értéket (például egy jelszót) kell átadnia, lekérheti az értéket egy [Azure Key Vaultból.](../../key-vault/key-vault-overview.md) A Key Vault eléréséhez felügyelt alkalmazások telepítésekor hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű hozzáférést kell biztosítania. A Felügyelt alkalmazások szolgáltatás ezt az identitást használja a műveletek futtatásához. Ahhoz, hogy az üzembe helyezés során sikeresen lekérje az értéket egy Key Vaultból, a szolgáltatásnévnek képesnek kell lennie a Key Vault elérésére.
 
-Ez a cikk azt ismerteti, hogyan konfigurálható a Key Vault a felügyelt alkalmazásokkal való együttműködéshez.
+Ez a cikk azt ismerteti, hogyan konfigurálhatja a Key Vault ot a felügyelt alkalmazásokkal való együttműködésre.
 
-## <a name="enable-template-deployment"></a>Sablon központi telepítésének engedélyezése
+## <a name="enable-template-deployment"></a>Sablon telepítésének engedélyezése
 
 1. A portálon válassza ki a Key Vault.
 
 1. Válassza a **Hozzáférési szabályzatok** lehetőséget.   
 
-   ![Hozzáférési szabályzatok kiválasztása](./media/key-vault-access/select-access-policies.png)
+   ![Hozzáférési házirendek kiválasztása](./media/key-vault-access/select-access-policies.png)
 
 1. Válassza a **Kattintson a speciális hozzáférési szabályzatok megtekintéséhez** lehetőséget.
 
-   ![Speciális hozzáférési szabályzatok megjelenítése](./media/key-vault-access/advanced.png)
+   ![Speciális hozzáférési házirendek megjelenítése](./media/key-vault-access/advanced.png)
 
-1. Jelölje be **a Azure Resource Manager hozzáférésének engedélyezése a sablonok üzembe helyezéséhez**lehetőséget. Ezt követően válassza a **Mentés** lehetőséget.
+1. Válassza **a Hozzáférés engedélyezése az Azure Resource Manager hez a sablon telepítéséhez**lehetőséget. Ezután válassza a **Mentés gombot.**
 
-   ![Sablon központi telepítésének engedélyezése](./media/key-vault-access/enable-template.png)
+   ![Sablon telepítésének engedélyezése](./media/key-vault-access/enable-template.png)
 
 ## <a name="add-service-as-contributor"></a>Szolgáltatás hozzáadása közreműködőként
 
-1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
+1. Válassza **a Hozzáférés-vezérlés (IAM) lehetőséget.**
 
    ![Hozzáférés-vezérlés kiválasztása](./media/key-vault-access/access-control.png)
 
-1. Válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
+1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
    ![Hozzáadás kiválasztása](./media/key-vault-access/add-access-control.png)
 
-1. Válassza a szerepkör **közreműködői** lehetőséget. Keresse meg a **készülék erőforrás-szolgáltatóját** , és válassza ki az elérhető lehetőségek közül.
+1. Válassza **a Közreműködő** lehetőséget a szerepkörhöz. Keresse meg **a készülékerőforrás-szolgáltatót,** és válassza ki a rendelkezésre álló lehetőségek közül.
 
    ![Szolgáltató keresése](./media/key-vault-access/search-provider.png)
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="reference-key-vault-secret"></a>Key Vault titok hivatkozása
+## <a name="reference-key-vault-secret"></a>Referencia kulcstároló titkos kulcsa
 
-Ha át szeretne adni egy titkos kulcsot egy Key Vault a felügyelt alkalmazásban található sablonhoz, egy [csatolt vagy beágyazott sablont](../templates/linked-templates.md) kell használnia, és hivatkoznia kell a Key Vaultra a csatolt vagy beágyazott sablon paraméterei között. Adja meg a Key Vault erőforrás-AZONOSÍTÓját és a titok nevét.
+Ha egy key vaultból egy titkos kulcsot szeretne átadni egy sablonnak a felügyelt alkalmazásban, egy csatolt vagy beágyazott sablont kell [használnia,](../templates/linked-templates.md) és hivatkoznia kell a Key Vaultra a csatolt vagy beágyazott sablon paramétereiben. Adja meg a Key Vault erőforrás-azonosítóját és a titkos kulcs nevét.
 
 ```json
 {
@@ -162,10 +162,10 @@ Ha át szeretne adni egy titkos kulcsot egy Key Vault a felügyelt alkalmazásba
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Úgy konfigurálta a Key Vault, hogy elérhető legyen egy felügyelt alkalmazás telepítése során.
+Úgy állította be a Key Vaultot, hogy elérhető legyen a felügyelt alkalmazások üzembe helyezése során.
 
-* A Key Vault sablon paraméterként való átadásával kapcsolatos információkért lásd: a [Azure Key Vault használata a biztonságos paraméterek értékének](../templates/key-vault-parameter.md)átadására a telepítés során.
-* A felügyelt alkalmazások példáit lásd: [Sample projects for Azure Managed Applications](sample-projects.md).
+* A Key Vault ból sablonparaméterként megadott értékről az [Azure Key Vault használata a biztonságos paraméter értékének a telepítés során történő átadása című](../templates/key-vault-parameter.md)témakörben olvashat.
+* Felügyelt alkalmazáspéldákért olvassa el [a Mintaprojektek az Azure által felügyelt alkalmazásokhoz.](sample-projects.md)
 * Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.

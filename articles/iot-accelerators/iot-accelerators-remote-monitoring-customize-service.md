@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatás hozzáadása a távoli figyelési megoldás felhasználói felület – Azure |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan adhat hozzá egy új szolgáltatás a távoli figyelési megoldás gyorsító webes felhasználói felületen.
+title: Szolgáltatás hozzáadása a távfigyelési megoldás felhasználói felületéhez – Azure | Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan vehet fel egy új szolgáltatást a távfigyelési megoldás gyorsító webes felhasználói felületére.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,81 +9,81 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447046"
 ---
-# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egy egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen
+# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni szolgáltatás hozzáadása a távfigyelési megoldás gyorsító webes felhasználói felületéhez
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy új szolgáltatás a távoli figyelési megoldás gyorsító webes felhasználói felületen. A cikk ismerteti:
+Ez a cikk bemutatja, hogyan vehet fel egy új szolgáltatást a távfigyelési megoldás gyorsító webes felhasználói felületére. A cikk a következőket írja le:
 
-- Hogyan készítheti elő a helyi fejlesztési környezetet.
-- Hogyan adhat hozzá egy új szolgáltatás a webes felhasználói felületen.
+- Hogyan készítsünk egy helyi fejlesztési környezetben.
+- Új szolgáltatás hozzáadása a webes felhasználói felülethez?
 
-A példa service ebben a cikkben biztosít az adatok egy rácsot, amely a [adjon hozzá egy egyéni rács a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-grid.md) útmutató a cikk bemutatja, hogyan adhat hozzá.
+A cikkben szereplő példaszolgáltatás egy olyan rács adatait tartalmazza, amelyet az [Egyéni rács hozzáadása a Távoli figyelési megoldás gyorsító webfelhasználói felületéhez](iot-accelerators-remote-monitoring-customize-grid.md) bemutató útmutató cikk bemutatja, hogyan kell hozzáadni.
 
-A React alkalmazások esetén a szolgáltatás általában kommunikál egy háttér-szolgáltatás. A távoli figyelési megoldásgyorsító közé, hogy az IoT hub-kezelőből és a konfiguráció mikroszolgáltatások együttműködő szolgáltatásokat.
+A React alkalmazásban a szolgáltatás általában egy háttérszolgáltatással kommunikál. Példák a távoli figyelési megoldás gyorsító közé tartoznak az IoT hub-kezelő vel és a konfigurációs mikroszolgáltatásokkal kommunikáló szolgáltatások.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató a lépések végrehajtásához szüksége van a következő szoftvereknek telepítve a helyi fejlesztői gépen:
+Az útmutató lépéseinek végrehajtásához a következő szoftverre van szükség a helyi fejlesztői gépen:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Hajtsa végre a lépéseket a [egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-page.md) útmutató a cikk a folytatás előtt.
+A folytatás előtt hajtsa végre az [Egyéni lap hozzáadása a távoli figyelési megoldásgyorsító webes felhasználói felületútmutatójának](iot-accelerators-remote-monitoring-customize-page.md) lépéseit.
 
 ## <a name="add-a-service"></a>Szolgáltatás hozzáadása
 
-Szolgáltatás hozzáadása a webes felhasználói felületen, szüksége adhat hozzá a forrásfájlokat, amelyek meghatározzák a szolgáltatást, néhány fájlt, hogy ismeri az új szolgáltatás a webes felhasználói felületen.
+Ha hozzá szeretne adni egy szolgáltatást a webes felhasználói felülethez, hozzá kell adnia a szolgáltatást meghatározó forrásfájlokat, és módosítania kell néhány meglévő fájlt, hogy a webes felhasználói felület tisztában legyen az új szolgáltatással.
 
-### <a name="add-the-new-files-that-define-the-service"></a>Adja hozzá az új fájlokat, amelyek meghatározzák a szolgáltatás
+### <a name="add-the-new-files-that-define-the-service"></a>A szolgáltatást meghatározó új fájlok hozzáadása
 
-Az első lépésekhez, a **src/forgatókönyv/szolgáltatások** mappa a fájlokat, amelyek meghatározzák egy egyszerű szolgáltatást tartalmazza:
+A kezdéshez az **src/walkthrough/services** mappa tartalmazza az egyszerű szolgáltatást meghatározó fájlokat:
 
 **exampleService.js**
 
 [!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
-Szolgáltatások bevezetése hogyan kapcsolatos további információkért lásd: [a reaktív programozási bemutatása, hogy hiányzó](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
+A szolgáltatások megvalósításának módjáról a Hiányzó [reaktív programozás bemutatása című témakörben olvashat bővebben.](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 
-**model/exampleModels.js**
+**modell/példaModellek.js**
 
 [!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
-Másolás **exampleService.js** , a **src/szolgáltatások** mappát, és átmásolja **exampleModels.js** , a **src-services-modellekhez** mappát.
+Másolja **az exampleService.js fájlt** az **src/services mappába,** és másolja az **exampleModels.js fájlt** az **src/services/models** mappába.
 
-Frissítés a **index.js** fájlt a **src/szolgáltatások** mappát, amelybe exportálni az új szolgáltatást:
+Frissítse az **index.js** fájlt az **src/services** mappában az új szolgáltatás exportálásához:
 
 ```js
 export * from './exampleService';
 ```
 
-Frissítés a **index.js** fájlt a **src-services-modellekhez** mappát, amelybe exportálni az új modell:
+Frissítse az **index.js** fájlt az **src/services/models** mappában az új modell exportálásához:
 
 ```js
 export * from './exampleModels';
 ```
 
-### <a name="set-up-the-calls-to-the-service-from-the-store"></a>Az áruházból a szolgáltatás felé irányuló beállítása
+### <a name="set-up-the-calls-to-the-service-from-the-store"></a>A szolgáltatás hívásainak beállítása az üzletből
 
-Az első lépésekhez, a **csökkentő src/forgatókönyv/tároló** mappa tartalmaz egy minta nyomáscsökkentő:
+A kezdéshez az **src/walkthrough/store/reducers** mappa mintaszűkítőt tartalmaz:
 
 **exampleReducer.js**
 
 [!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
-Másolás **exampleReducer.js** , a **src/tároló/csökkentő** mappát.
+Másolja **a exampleReducer.js fájlt** az **src/store/reducers** mappába.
 
-További információ a nyomáscsökkentő és **Epics**, lásd: [redux rendszernek megfigyelhetőnek](https://redux-observable.js.org/).
+Ha többet szeretne megtudni a szűkítő és **epics**, lásd [redux-megfigyelhető](https://redux-observable.js.org/).
 
-### <a name="configure-the-middleware"></a>A közbenső szoftver konfigurálása
+### <a name="configure-the-middleware"></a>A köztes szoftver konfigurálása
 
-Konfigurálja a közbenső szoftverek, adja hozzá a nyomáscsökkentő, hogy a **rootReducer.js** fájlt a **src/tároló** mappa:
+A köztes szoftver konfigurálásához adja hozzá a szűkítőt az **src/store** mappában lévő **rootReducer.js** fájlhoz:
 
 ```js
 import { reducer as exampleReducer } from './reducers/exampleReducer';
@@ -97,7 +97,7 @@ const rootReducer = combineReducers({
 });
 ```
 
-Adja hozzá a epics, hogy a **rootEpics.js** fájlt a **src/tároló** mappa:
+Add hozzá az eposz a **rootEpics.js** fájlt a **src / store mappában:**
 
 ```js
 import { epics as exampleEpics } from './reducers/exampleReducer';
@@ -114,8 +114,8 @@ const epics = [
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedett az erőforrások segíteni fog hozzáadni, vagy testre szabhatja a szolgáltatások a távoli figyelési megoldásgyorsító a webes felhasználói felületen.
+Ebben a cikkben megismerkedett a távoli figyelési megoldásgyorsító webes felhasználói felületén szolgáltatások hozzáadásához vagy testreszabásához rendelkezésre álló erőforrásokról.
 
-Most már beállított egy szolgáltatás, a következő lépés az, hogy [adjon hozzá egy egyéni rács a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-grid.md) , amely a szolgáltatás által visszaadott adatokat jeleníti meg.
+Most már definiált egy szolgáltatást, a következő lépés az, hogy [egyéni rácshozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületéhez,](iot-accelerators-remote-monitoring-customize-grid.md) amely a szolgáltatás által visszaadott adatokat jeleníti meg.
 
-További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+A távfigyelési megoldásgyorsítóról a [Távoli figyelési architektúra című témakörben](iot-accelerators-remote-monitoring-sample-walkthrough.md)talál további általános tudnivalókat.

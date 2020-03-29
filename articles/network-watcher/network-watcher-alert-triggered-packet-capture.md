@@ -1,7 +1,7 @@
 ---
-title: A csomagok rögzítésével proaktív hálózati figyelést végezhet a riasztások használatával – Azure Functions
+title: A csomagrögzítés használata proaktív hálózati figyelésriasztásokhoz - Azure Functions
 titleSuffix: Azure Network Watcher
-description: Ez a cikk azt ismerteti, hogyan hozható létre riasztás által aktivált csomagok rögzítése az Azure Network Watcher
+description: Ez a cikk azt ismerteti, hogyan hozhat létre riasztást aktivált csomagrögzítés az Azure Network Watcher rel
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,103 +14,103 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842937"
 ---
-# <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Az előjelzéses hálózati figyeléshez használja a csomagok rögzítését riasztásokkal és Azure Functionsokkal
+# <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Csomagrögzítés használata a riasztások és az Azure Functions proaktív hálózati figyeléséhez
 
-Network Watcher a csomagok rögzítése rögzítési munkameneteket hoz létre a virtuális gépeken belüli és kívüli forgalom nyomon követésére. A rögzítési fájl tartalmazhat olyan szűrőt, amely csak a figyelni kívánt forgalom nyomon követésére van meghatározva. Ezeket az adattárakat tároló blobokban vagy helyileg, a vendég gépen tárolja a rendszer.
+A Network Watcher csomagrögzítésrögzítési munkameneteket hoz létre a virtuális gépeken és a virtuális gépeken való forgalom nyomon követésére. A rögzítési fájl rendelkezhet egy szűrővel, amely úgy van definiálva, hogy csak a figyelni kívánt forgalmat kövesse nyomon. Ezeket az adatokat ezután egy tárolási blobban vagy helyileg a vendéggépen tárolja.
 
-Ez a funkció távolról is elindítható más automatizálási forgatókönyvek, például a Azure Functions használatával. A csomagok rögzítése lehetőséget biztosít az előjelzéses rögzítések futtatására a meghatározott hálózati rendellenességek alapján. Más felhasználások közé tartozik a hálózati statisztika összegyűjtése, a hálózati behatolásokkal kapcsolatos információk beszerzése, az ügyfél-kiszolgáló kommunikáció hibakeresése és egyebek.
+Ez a képesség távolról is elindítható más automatizálási forgatókönyvekből, például az Azure Functionsből. A csomagrögzítés lehetővé teszi a proaktív rögzítések futtatását meghatározott hálózati anomáliák alapján. Más felhasználások közé tartozik a hálózati statisztikák gyűjtése, a hálózati behatolásokkal kapcsolatos információk beszerzése, az ügyfél-kiszolgáló kommunikáció hibakeresése stb.
 
-Az Azure-ban üzembe helyezett erőforrások 24/7. Ön és a munkatársai nem tudják aktívan figyelni az összes erőforrás állapotát, 24/7. Például mi történik, ha egy probléma 2 ÓRAKOR jelentkezik?
+Az Azure-ban üzembe helyezett erőforrások a hét minden nap 24 órájában futnak. Ön és munkatársai nem tudják aktívan nyomon követni az összes erőforrás állapotát a hét minden évórájában. Például mi történik, ha hajnali 2 órakor probléma lép fel?
 
-Az Azure-ökoszisztémán belüli Network Watcher, riasztás és függvények használatával proaktív módon reagálhat az adatokra és az eszközökre a hálózatban felmerülő problémák megoldásához.
+A Network Watcher, a riasztások és az Azure-ökoszisztémán belüli függvények használatával proaktív módon válaszolhat az adatokkal és az eszközökkel a hálózat problémáinak megoldásához.
 
-![Alkalmazási helyzet][scenario]
+![Forgatókönyv][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Azure PowerShell](/powershell/azure/install-Az-ps)legújabb verziója.
-* Network Watcher meglévő példánya. Ha még nem rendelkezik ilyennel, [hozzon létre Network Watcher egy példányát](network-watcher-create.md).
-* Egy meglévő virtuális gép ugyanabban a régióban, mint Network Watcher a [Windows-bővítmény](../virtual-machines/windows/extensions-nwa.md) vagy a [linuxos virtuálisgép-bővítmény](../virtual-machines/linux/extensions-nwa.md).
+* Az Azure [PowerShell](/powershell/azure/install-Az-ps)legújabb verziója.
+* A Network Watcher egy meglévő példánya. Ha még nem rendelkezik ilyen, [hozzon létre egy példányt a Network Watcher](network-watcher-create.md).
+* Egy meglévő virtuális gép ugyanabban a régióban, mint a Network Watcher a [Windows-bővítmény](../virtual-machines/windows/extensions-nwa.md) vagy a [Linux virtuálisgép-bővítmény](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="scenario"></a>Alkalmazási helyzet
+## <a name="scenario"></a>Forgatókönyv
 
-Ebben a példában a virtuális gép a szokásosnál több TCP-szegmenst küld, és riasztást szeretne kapni. A TCP-szegmensek példaként használhatók, de bármilyen riasztási feltételt használhat.
+Ebben a példában a virtuális gép a szokásosnál több TCP-szegmenst küld, és figyelmeztetést szeretne kapni. A TCP-szegmensek példaként szolgálnak itt, de bármilyen riasztási feltételt használhat.
 
-Ha a rendszer riasztást küld, a csomagok szintjének megismerése érdekében meg kell kapnia a kommunikációt. Ezután elvégezheti a virtuális gép normál kommunikációra történő visszaküldésének lépéseit.
+Amikor értesítést kap, csomagszintű adatokat szeretne kapni, hogy megértse, miért nőtt a kommunikáció. Ezután lépéseket tehet a virtuális gép rendszeres kommunikációba való visszatéréséhez.
 
-Ez a forgatókönyv feltételezi, hogy rendelkezik egy meglévő Network Watcher-példánnyal és egy érvényes virtuális géppel rendelkező erőforráscsoporthoz.
+Ebben a forgatókönyvben azt feltételezi, hogy rendelkezik egy meglévő példányát a Network Watcher és egy erőforráscsoport egy érvényes virtuális gép.
 
-A következő lista áttekintést nyújt a munkafolyamatról:
+Az alábbi lista áttekintést nyújt a munkafolyamatról:
 
-1. A rendszer riasztást indít a virtuális gépen.
+1. Riasztás aktiválódik a virtuális gép.
 1. A riasztás egy webhookon keresztül hívja meg az Azure-függvényt.
-1. Az Azure-függvény feldolgozza a riasztást, és elindítja Network Watcher csomag rögzítési munkamenetét.
-1. A csomag rögzítése a virtuális gépen fut, és összegyűjti a forgalmat.
-1. A csomag rögzítési fájlját a rendszer a Storage-fiókba feltölti felülvizsgálat és diagnosztika céljából.
+1. Az Azure-függvény feldolgozza a riasztást, és elindítja a Network Watcher csomagrögzítési munkamenetét.
+1. A csomagrögzítés a virtuális számítógépen fut, és forgalmat gyűjt.
+1. A csomagrögzítő fájl feltöltésre kerül egy tárfiókba véleményezésre és diagnózisra.
 
-A folyamat automatizálásához hozzon létre egy riasztást a virtuális gépen, és kapcsolja össze az incidens bekövetkeztekor. Létrehozunk egy függvényt is, amelyet a rendszer a Network Watcherba hív.
+A folyamat automatizálásához hozzon létre és csatlakoztasson egy riasztást a virtuális gép, amely az incidens bekövetkezésekor aktiválódik. Mi is létrehozhat egy funkciót, hogy hívja be Network Watcher.
 
-Ez a forgatókönyv a következő műveleteket végzi el:
+Ez a forgatókönyv a következőket teszi:
 
-* Létrehoz egy Azure-függvényt, amely elindítja a csomagok rögzítését.
-* Riasztási szabályt hoz létre egy virtuális gépen, és konfigurálja a riasztási szabályt az Azure-függvény meghívásához.
+* Létrehoz egy Azure-függvényt, amely elindítja a csomagrögzítést.
+* Riasztási szabályt hoz létre egy virtuális gépen, és konfigurálja a riasztási szabályt az Azure függvény hívására.
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgozásához és a csomagok rögzítésének létrehozásához.
+Az első lépés egy Azure-függvény létrehozása a riasztás feldolgozásához és egy csomagrögzítés létrehozásához.
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása** > **számítási** > **függvényalkalmazás**lehetőséget.
+1. Az [Azure portalon](https://portal.azure.com)válassza az **Erőforrás** > **számítási** > **függvény alkalmazás**létrehozása lehetőséget.
 
-    ![Function-alkalmazás létrehozása][1-1]
+    ![Függvényalkalmazás létrehozása][1-1]
 
-2. A **függvényalkalmazás** panelen adja meg a következő értékeket, majd kattintson az **OK** gombra az alkalmazás létrehozásához:
+2. A **Function App** panelen adja meg a következő értékeket, majd az ALKALMAZÁS létrehozásához kattintson az **OK gombra:**
 
     |**Beállítás** | **Érték** | **Részletek** |
     |---|---|---|
-    |**Alkalmazás neve**|PacketCaptureExample|A Function alkalmazás neve.|
-    |**Előfizetés**|[Az Ön előfizetése] Az előfizetés, amelyhez létre kívánja hozni a Function alkalmazást.||
-    |**Erőforráscsoport**|PacketCaptureRG|A Function alkalmazást tartalmazó erőforráscsoport.|
-    |**Szolgáltatási csomag**|Használatalapú csomag| A Function app által használt terv típusa. A lehetőségek a következők: felhasználás vagy Azure App Service terv. |
-    |**Hely**|USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
-    |**Tárfiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
+    |**Alkalmazás neve**|PacketCaptureExample|A függvényalkalmazás neve.|
+    |**Előfizetés**|[Az előfizetés] Az az előfizetés, amelyhez létre kell hoznia a függvényalkalmazást.||
+    |**Erőforráscsoport**|PacketCaptureRG|A függvényalkalmazást tartalmazó erőforráscsoport.|
+    |**Szolgáltatási csomag**|Használatalapú csomag| A függvényalkalmazás által használt terv típusa. A lehetőségek a felhasználás vagy az Azure App Service-csomag. |
+    |**Helyen**|USA középső régiója| Az a régió, amelyben a függvényalkalmazást létre lehet hozni.|
+    |**Tárfiók**|{automatikusan létrehozva}| Az Azure Functions által az általános célú tároláshoz szükséges tárfiók.|
 
-3. A **PacketCaptureExample Function apps** panelen válassza a **functions** > **Egyéni függvény** > **+** lehetőséget.
+3. A **PacketCaptureExample függvényalkalmazások** panelen válassza a **Functions** > **Custom függvény lehetőséget.** >**+**
 
-4. Válassza a **HttpTrigger-PowerShell**lehetőséget, majd adja meg a többi adatot. Végül a függvény létrehozásához válassza a **Létrehozás**lehetőséget.
+4. Válassza a **HttpTrigger-Powershell**lehetőséget, majd adja meg a fennmaradó adatokat. Végül a függvény létrehozásához válassza a **Létrehozás gombot.**
 
     |**Beállítás** | **Érték** | **Részletek** |
     |---|---|---|
     |**Forgatókönyv**|Kísérleti|Forgatókönyv típusa|
     |**A függvény neve**|AlertPacketCapturePowerShell|A függvény neve|
-    |**Engedélyszint**|Függvény|A függvény engedélyezési szintje|
+    |**Authorization level (Engedélyszint)**|Függvény|A függvény engedélyezési szintje|
 
-![Függvények – példa][functions1]
+![Példa függvényekre][functions1]
 
 > [!NOTE]
-> A PowerShell-sablon kísérleti jellegű, és nem rendelkezik teljes körű támogatással.
+> A PowerShell-sablon kísérleti, és nem rendelkezik teljes körű támogatással.
 
-Ehhez a példához testreszabásokra van szükség, és az alábbi lépésekben ismertetjük őket.
+Ehhez a példához testreszabásra van szükség, és a következő lépések ismertetik.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb PowerShell-modult a Function alkalmazásba.
+A Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb PowerShell-modult a függvényalkalmazásba.
 
-1. Futtassa a következő PowerShell-parancsot a helyi gépen, amelyen telepítve vannak a legújabb Azure PowerShell modulok:
+1. A helyi számítógépen a legújabb Azure PowerShell-modulok telepítve, futtassa a következő PowerShell-parancsot:
 
     ```powershell
     (Get-Module Az.Network).Path
     ```
 
-    Ez a példa a Azure PowerShell modulok helyi elérési útját adja meg. Ezek a mappák egy későbbi lépésben használatosak. Az ebben a forgatókönyvben használt modulok a következők:
+    Ebben a példában az Azure PowerShell-modulok helyi elérési útját adja meg. Ezek a mappák egy későbbi lépésben használatosak. Az ebben a forgatókönyvben használt modulok a következők:
 
    * Az.Network
 
@@ -120,11 +120,11 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 
      ![PowerShell-mappák][functions5]
 
-1. Válassza a **Function app settings** > **Ugrás a**következőre: app Service Editor.
+1. Válassza a **Függvényalkalmazás beállításai** > **lehetőséget, nyissa meg az App Service Editor t.**
 
     ![A függvényalkalmazás beállításai][functions2]
 
-1. Kattintson a jobb gombbal a **AlertPacketCapturePowershell** mappára, majd hozzon létre egy **azuremodules**nevű mappát. 
+1. Kattintson a jobb gombbal az **AlertPacketCapturePowershell** mappára, majd hozzon létre egy **azuremodules nevű mappát.** 
 
 4. Hozzon létre egy almappát minden szükséges modulhoz.
 
@@ -136,28 +136,28 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 
     * Az.Resources
 
-1. Kattintson a jobb gombbal az az **. Network** almappába, majd válassza a **fájlok feltöltése**lehetőséget. 
+1. Kattintson a jobb gombbal az **Az.Network** almappára, és válassza **a Fájlok feltöltése parancsot.** 
 
-6. Nyissa meg az Azure-modulokat. A helyi az **. Network** mappában válassza ki a mappában található összes fájlt. Ezután kattintson az **OK** gombra. 
+6. Nyissa meg az Azure-modulokat. A helyi **Az.Network** mappában jelölje ki a mappában lévő összes fájlt. Ezután kattintson az **OK** gombra. 
 
-7. Ismételje meg ezeket a lépéseket az **az. accounts** és **az. Resources**esetében.
+7. Ismételje meg ezeket a lépéseket az **Az.Accounts** és **az Az.Resources esetében.**
 
     ![Fájlok feltöltése][functions6]
 
-1. Miután végzett, minden mappának rendelkeznie kell a PowerShell-modul fájljaival a helyi gépről.
+1. Miután befejezte, minden mappában rendelkeznie kell a PowerShell-modul fájlokat a helyi számítógépről.
 
     ![PowerShell-fájlok][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
-A PowerShell-parancsmagok használatához hitelesítenie kell magát. A hitelesítést a Function alkalmazásban konfigurálhatja. A hitelesítés konfigurálásához konfigurálnia kell a környezeti változókat, és fel kell töltenie egy titkosított kulcsot a Function alkalmazásba.
+A PowerShell-parancsmagok használatához hitelesítenie kell magát. A hitelesítést a függvényalkalmazásban konfigurálhatja. A hitelesítés konfigurálásához konfigurálnia kell a környezeti változókat, és fel kell töltenie egy titkosított kulcsfájlt a függvényalkalmazásba.
 
 > [!NOTE]
-> Ez a forgatókönyv csak egy példát mutat be a Azure Functions használatával történő hitelesítés megvalósítására. Ezt többféleképpen is megteheti.
+> Ez a forgatókönyv csak egy példa arra, hogyan valósítható meg a hitelesítés az Azure Functions. Van más módja is ennek.
 
 #### <a name="encrypted-credentials"></a>Titkosított hitelesítő adatok
 
-A következő PowerShell-parancsfájl létrehoz egy **PassEncryptKey. Key**nevű kulcsfájl-fájlt. Emellett a megadott jelszó titkosított verzióját is tartalmazza. Ez a jelszó megegyezik a hitelesítéshez használt Azure Active Directory alkalmazáshoz megadott jelszóval.
+A következő PowerShell-parancsfájl létrehoz egy **PassEncryptKey.key**nevű kulcsfájlt. A megadott jelszó titkosított verzióját is biztosítja. Ez a jelszó ugyanaz a jelszó, amely a hitelesítéshez használt Azure Active Directory-alkalmazáshoz definiált.
 
 ```powershell
 #Variables
@@ -176,13 +176,13 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-A Function alkalmazás App Service Editor hozzon létre egy **kulcsok** nevű mappát a **AlertPacketCapturePowerShell**területen. Ezután töltse fel az előző PowerShell-mintában létrehozott **PassEncryptKey. Key** fájlt.
+A függvényalkalmazás App Service-szerkesztőjében hozzon létre egy **kulcsoknak** nevezett mappát az **AlertPacketCapturePowerShell**csoportban. Ezután töltse fel az előző PowerShell-mintában létrehozott **PassEncryptKey.key.key** fájlt.
 
-![Functions-kulcs][functions8]
+![Funkciók kulcs][functions8]
 
 ### <a name="retrieve-values-for-environment-variables"></a>Környezeti változók értékeinek beolvasása
 
-A végső követelmény a hitelesítési értékek eléréséhez szükséges környezeti változók beállítása. Az alábbi listában a létrehozott környezeti változók láthatók:
+A végső követelmény a hitelesítési értékek eléréséhez szükséges környezeti változók beállítása. Az alábbi lista a létrehozott környezeti változókat tartalmazza:
 
 * AzureClientID
 
@@ -193,9 +193,9 @@ A végső követelmény a hitelesítési értékek eléréséhez szükséges kö
 
 #### <a name="azureclientid"></a>AzureClientID
 
-Az ügyfél-azonosító a Azure Active Directory alkalmazás alkalmazás-azonosítója.
+Az ügyfélazonosító az Azure Active Directoryban lévő alkalmazások alkalmazásazonosítója.
 
-1. Ha még nem rendelkezik a használni kívánt alkalmazással, futtassa az alábbi példát egy alkalmazás létrehozásához.
+1. Ha még nem rendelkezik egy alkalmazást használni, futtassa a következő példát egy alkalmazás létrehozásához.
 
     ```powershell
     $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
@@ -205,19 +205,19 @@ Az ügyfél-azonosító a Azure Active Directory alkalmazás alkalmazás-azonos�
     ```
 
    > [!NOTE]
-   > Az alkalmazás létrehozásakor használt jelszónak ugyanazt a jelszót kell megadnia, amelyet korábban a kulcsfájl mentésekor hozott létre.
+   > Az alkalmazás létrehozásakor használt jelszónak meg kell egyeznie a kulcsfájl mentésekor korábban létrehozott jelszóval.
 
-1. A Azure Portal válassza az **előfizetések**lehetőséget. Válassza ki a használni kívánt előfizetést, majd válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+1. Az Azure Portalon válassza az **Előfizetések**lehetőséget. Jelölje ki a használni kívánt előfizetést, majd válassza **a Hozzáférés-vezérlés (IAM)** lehetőséget.
 
-    ![A függvények IAM][functions9]
+    ![Funkciók IAM][functions9]
 
-1. Válassza ki a használni kívánt fiókot, majd válassza a **Tulajdonságok**lehetőséget. Másolja ki az alkalmazás AZONOSÍTÓját.
+1. Válassza ki a használni kívánt fiókot, majd válassza a **Tulajdonságok lehetőséget.** Másolja az alkalmazásazonosítót.
 
-    ![Functions-alkalmazás azonosítója][functions10]
+    ![Funkciók alkalmazásazonosítója][functions10]
 
 #### <a name="azuretenant"></a>AzureTenant
 
-Szerezze be a bérlő AZONOSÍTÓját a következő PowerShell-minta futtatásával:
+Szerezze be a bérlői azonosítót a következő PowerShell-minta futtatásával:
 
 ```powershell
 (Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
@@ -225,7 +225,7 @@ Szerezze be a bérlő AZONOSÍTÓját a következő PowerShell-minta futtatásá
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-A AzureCredPassword környezeti változó értéke az az érték, amelyet a következő PowerShell-minta futtatásával érhet el. Ez a példa az előző **titkosított hitelesítő adatok** szakaszban látható. A szükséges érték a `$Encryptedpassword` változó kimenete.  Ez az egyszerű szolgáltatás jelszava, amelyet a PowerShell-parancsfájl használatával titkosított.
+Az AzureCredPassword környezeti változó értéke az az érték, amely et a következő PowerShell-minta futtatásából kap. Ez a példa megegyezik az előző titkosított hitelesítő adatok szakaszban **láthatóval.** A szükséges érték a `$Encryptedpassword` változó kimenete.  Ez a szolgáltatás egyszerű jelszó, amely a PowerShell-parancsfájl használatával titkosított.
 
 ```powershell
 #Variables
@@ -246,25 +246,25 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>A környezeti változók tárolása
 
-1. Nyissa meg a Function alkalmazást. Ezután válassza a **Function app settings** > az **Alkalmazásbeállítások konfigurálása**lehetőséget.
+1. Nyissa meg a függvényalkalmazást. Ezután válassza **a Funkcióalkalmazás beállításai** > **Az alkalmazásbeállítások konfigurálása**lehetőséget.
 
     ![Alkalmazásbeállítások konfigurálása][functions11]
 
-1. Adja hozzá a környezeti változókat és azok értékeit az alkalmazás beállításaihoz, majd válassza a **Mentés**lehetőséget.
+1. Adja hozzá a környezeti változókat és azok értékeit az alkalmazás beállításokhoz, majd válassza a **Mentés gombot.**
 
     ![Alkalmazásbeállítások][functions12]
 
 ### <a name="add-powershell-to-the-function"></a>PowerShell hozzáadása a függvényhez
 
-Itt az ideje, hogy a hívások Network Watcher Az Azure-függvényből legyenek. A követelményektől függően ennek a funkciónak a megvalósítása eltérő lehet. A kód általános folyamata azonban a következő:
+Itt az ideje, hogy hívásokat kezdeményezzen a Network Watcher-be az Azure-függvényen belül. A követelményektől függően a funkció megvalósítása változhat. A kód általános áramlása azonban a következő:
 
-1. Bemeneti paraméterek feldolgozása
-2. Meglévő csomagok rögzítésének lekérdezése a korlátok ellenőrzéséhez és a névfeloldási ütközések feloldásához.
-3. Hozzon létre egy csomagot a megfelelő paraméterekkel.
-4. A lekérdezési csomagok rögzítése rendszeresen, amíg be nem fejeződik.
-5. A felhasználó értesítése arról, hogy a csomag rögzítési munkamenete befejeződött.
+1. A bemeneti paraméterek feldolgozása.
+2. A meglévő csomagrögzítések lekérdezése a korlátok ellenőrzéséhez és a névütközések feloldásához.
+3. Hozzon létre egy csomagrögzítést a megfelelő paraméterekkel.
+4. Rendszeres időközönként lekell adni a csomagrögzítést, amíg be nem fejeződik.
+5. Értesítse a felhasználót, hogy a csomagrögzítési munkamenet befejeződött.
 
-A következő példában a függvényben használható PowerShell-kód látható. A **subscriptionId**, a **ResourceGroupName**és a **storageAccountName**helyett értékeket kell cserélni.
+A következő példa a PowerShell-kód, amely használható a függvényben. Vannak olyan értékek, amelyeket le kell cserélni az **subscriptionId**, **resourceGroupName**és **storageAccountName .**
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
@@ -324,55 +324,55 @@ A következő példában a függvényben használható PowerShell-kód látható
             } 
  ``` 
 #### <a name="retrieve-the-function-url"></a>A függvény URL-címének beolvasása 
-1. A függvény létrehozása után konfigurálja a riasztást úgy, hogy meghívja a függvényhez társított URL-címet. Az érték beszerzéséhez másolja a függvény URL-címét a Function alkalmazásból.
+1. Miután létrehozta a funkciót, konfigurálja a riasztást, hogy meghívja a függvényhez társított URL-címet. Ennek az értéknek a befiókjához másolja a függvény URL-címét a függvényalkalmazásból.
 
     ![A függvény URL-címének megkeresése][functions13]
 
-2. Másolja a Function alkalmazáshoz tartozó függvény URL-címét.
+2. Másolja a függvényalkalmazás függvényÉNEK URL-címét.
 
     ![A függvény URL-címének másolása][2]
 
-Ha egyéni tulajdonságokat kell megadnia a webhook POST-kérelem hasznos adataiban, tekintse meg a [webhook konfigurálása Azure metrikai riasztásra](../azure-monitor/platform/alerts-webhooks.md)című témakört.
+Ha egyéni tulajdonságokra van szüksége a webhook POST-kérelem hasznos adatában, olvassa el [a Webhook konfigurálása egy Azure metrikariasztáson című webhelyet.](../azure-monitor/platform/alerts-webhooks.md)
 
-## <a name="configure-an-alert-on-a-vm"></a>Riasztás konfigurálása virtuális gépen
+## <a name="configure-an-alert-on-a-vm"></a>Riasztás konfigurálása virtuális számítógépen
 
-A riasztások úgy konfigurálhatók, hogy a felhasználók értesítése, ha egy adott metrika átlép egy hozzá rendelt küszöbértéket. Ebben a példában a riasztás az elküldett TCP-szegmenseken található, de a riasztás számos más metrika esetén aktiválható. Ebben a példában egy riasztás úgy van konfigurálva, hogy meghívjon egy webhookot a függvény meghívására.
+Riasztások konfigurálható, hogy értesítse az egyéneket, ha egy adott metrika átlépi a küszöbértéket, amely hozzá van rendelve. Ebben a példában a riasztás az elküldött TCP-szegmensek, de a riasztás térhet el sok más metrikák. Ebben a példában egy riasztás van beállítva, hogy hívja meg a webhook a függvény hívására.
 
 ### <a name="create-the-alert-rule"></a>A riasztási szabály létrehozása
 
-Nyissa meg a meglévő virtuális gépet, majd adjon hozzá egy riasztási szabályt. A riasztások konfigurálásával kapcsolatos részletesebb dokumentációt a [riasztások létrehozása Azure monitor az Azure-szolgáltatások – Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)című témakörben talál. Adja meg a következő értékeket a **riasztási szabály** panelen, majd kattintson az **OK gombra**.
+Lépjen egy meglévő virtuális gépre, majd adjon hozzá egy riasztási szabályt. A riasztások konfigurálásáról szóló részletesebb dokumentáció az Azure-szolgáltatásokhoz való riasztások létrehozása az [Azure-szolgáltatásokhoz – Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)című témakörben található. Írja be a következő értékeket a **Riasztási szabály** panelen, majd kattintson az **OK gombra.**
 
   |**Beállítás** | **Érték** | **Részletek** |
   |---|---|---|
-  |**Name (Név)**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
-  |**Leírás**|A TCP-szegmensek elküldése túllépte a küszöbértéket|A riasztási szabály leírása.|
-  |**Metrika**|Eljuttatott TCP-szegmensek| A riasztás elindításához használandó metrika. |
-  |**Feltétel**|Nagyobb mint| A metrika kiértékeléséhez használandó feltétel.|
-  |**Küszöb**|100| A riasztást kiváltó metrika értéke. Ezt az értéket a környezet érvényes értékére kell beállítani.|
-  |**Időszak**|Az utóbbi öt percben| Meghatározza azt az időszakot, amelyben a küszöbértéket meg kell keresni a metrikában.|
-  |**Webhook**|[webhook URL-címe a Function alkalmazásból]| Az előző lépésekben létrehozott Function alkalmazás webhook URL-címe.|
+  |**Név**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
+  |**Leírás**|Az elküldött TCP-szegmensek túllépték a küszöbértéket|A riasztási szabály leírása.|
+  |**Metrika**|Elküldött TCP-szegmensek| A riasztás aktiválásához használandó metrika. |
+  |**Állapot**|Nagyobb, mint| A metrika kiértékelésekor használandó feltétel.|
+  |**Küszöb**|100| A riasztást kiváltó metrika értéke. Ezt az értéket érvényes értékre kell állítani a környezetben.|
+  |**Időszak**|Az elmúlt öt percben| Azt az időszakot határozza meg, amelyben meg kell keresni a küszöbértéket a metrika.|
+  |**Webhook (webhook)**|[webhook URL-címe a függvényalkalmazásból]| A webhook URL-címe a függvényalkalmazásból, amely az előző lépésekben jött létre.|
 
 > [!NOTE]
-> A TCP-szegmensek metrikája alapértelmezés szerint nincs engedélyezve. További információ a további mérőszámok engedélyezéséről: a [monitorozás és a diagnosztika engedélyezése](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
+> A TCP-szegmensek metrikája alapértelmezés szerint nincs engedélyezve. További információ arról, hogyan engedélyezhetők további mérőszámok a [Figyelés és diagnosztika engedélyezése](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)című oldalon.
 
 ## <a name="review-the-results"></a>Az eredmények áttekintése
 
-A riasztási eseményindítók feltételeinek meghatározása után létrejön egy csomag rögzítése. Lépjen Network Watcher, majd válassza a **csomagok rögzítése**lehetőséget. Ezen az oldalon kiválaszthatja a csomag rögzítési fájljának hivatkozását a csomag rögzítésének letöltéséhez.
+A riasztási eseményindítók feltételei után létrejön egy csomagrögzítés. Nyissa meg a Hálózatfigyelő t, és válassza **a Csomagrögzítés**lehetőséget. Ezen az oldalon kiválaszthatja a csomagrögzítő fájl hivatkozását a csomagrögzítés letöltéséhez.
 
-![Csomagok rögzítésének megtekintése][functions14]
+![Csomagrögzítés megtekintése][functions14]
 
-Ha a rögzítési fájl helyileg van tárolva, a virtuális gépre való bejelentkezéssel kérheti le.
+Ha a rögzítési fájl helyileg van tárolva, a virtuális gépre való bejelentkezéssel lekérheti azt.
 
-A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért lásd: [Az Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz, amelyet használhat, [Storage Explorer](https://storageexplorer.com/).
+A fájlok Azure storage-fiókokból való letöltéséről az Azure Blob storage használatával [– első lépések a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz, amelyet használhat, a [Tárolókezelő](https://storageexplorer.com/).
 
-A rögzítés letöltését követően megtekintheti azt bármely olyan eszközzel, amely képes a **. Cap** fájl olvasására. A következő két eszközre mutató hivatkozásokat talál:
+A rögzítés letöltése után bármely **.cap** fájl olvasására használható eszközzel megtekintheti azt. Az alábbiakban az alábbi két eszközre mutató hivatkozások találhatók:
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
-- [WireShark](https://www.wireshark.org/)
+- [Microsoft üzenetelemző](https://technet.microsoft.com/library/jj649776.aspx)
+- [Wireshark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan tekintheti meg a csomagokat, ha a Wireshark használatával meglátogatja a [csomagok rögzítése elemzését](network-watcher-deep-packet-inspection.md).
+Ismerje meg, hogyan tekintheti meg a csomagrögzítéseket a [Packet capture analízis ellátogatva a Wireshark](network-watcher-deep-packet-inspection.md)segítségével.
 
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png

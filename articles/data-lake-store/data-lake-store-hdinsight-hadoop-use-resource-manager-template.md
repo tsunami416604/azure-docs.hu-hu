@@ -1,6 +1,6 @@
 ---
-title: Az Azure-sablonok használata a HDInsight létrehozása az Azure Data Lake Storage Gen1 |} A Microsoft Docs
-description: Használja az Azure Resource Manager-sablonok létrehozása és használata HDInsight-fürtök az Azure Data Lake Storage Gen1
+title: Azure-sablonok használatával hdinsightot hozhat létre az Azure Data Lake Storage Gen1 szolgáltatással | Microsoft dokumentumok
+description: HDInsight-fürtök létrehozása és használata az Azure Data Lake Storage Gen1 használatával Azure Resource Manager-sablonok használatával
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: twooley
@@ -13,34 +13,34 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66161373"
 ---
-# <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Hozzon létre egy HDInsight-fürtöt az Azure Data Lake Storage Gen1 Azure Resource Manager-sablon használatával
+# <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>HDInsight-fürt létrehozása az Azure Data Lake Storage Gen1 használatával az Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector"]
-> * [A Portal használata](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [(Az alapértelmezett tároló) a PowerShell használatával](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-> * [(A további tárhely) PowerShell-lel](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [Resource Manager használatával](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [A portál használata](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [A PowerShell használata (alapértelmezett tárhelyhez)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [A PowerShell használata (további tárhelyhez)](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [Az Erőforrás-kezelő használata](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
-Azure PowerShell használata egy HDInsight-fürt konfigurálása az Azure Data Lake Storage Gen1 **kiegészítő tárolóként**.
+Megtudhatja, hogy az Azure PowerShell használatával miként konfigurálhat hdinsight-fürtöt az Azure Data Lake Storage Gen1 szolgáltatással **további tárhelyként.**
 
-Támogatott fürttípusok Data Lake Storage Gen1, egy alapértelmezett tároló további tárfiókot is használható. Data Lake Storage Gen1 használata kiegészítő tárolóként, az alapértelmezett tárfiókot, a fürt továbbra is az Azure Storage Blobs (WASB) és az alapértelmezett tárolóba, míg az adatok kívánt továbbra is írja a fürttel kapcsolatos fájlok (például naplók, stb.) folyamatot a Data Lake Storage Gen1 fiókban tárolhatók. Data Lake Storage Gen1 használja, mint egy tárfiókot funkciója nem érinti a teljesítmény vagy a az olvasási/írási a tárolóhoz a fürtből.
+Támogatott fürttípusok esetén a Data Lake Storage Gen1 alapértelmezett tárolóként vagy további tárfiókként használható. Ha a Data Lake Storage Gen1-et további tárolóként használja, a fürtök alapértelmezett tárfiókja továbbra is az Azure Storage Blobs (WASB) lesz, és a fürthöz kapcsolódó fájlok (például naplók stb.) továbbra is az alapértelmezett tárolóba kerülnek, míg a kívánt adatok folyamat tárolható a Data Lake Storage Gen1 fiókban. A Data Lake Storage Gen1 használata további tárfiókként nem befolyásolja a teljesítményt, és nem képes írni/olvasni a fürtből a tárolóba.
 
-## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>HDInsight-fürt Storage használatával a Data Lake Storage Gen1
+## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>A Data Lake Storage Gen1 használata a HDInsight-fürttároláshoz
 
-Az alábbiakban néhány HDInsight használata a Data Lake Storage Gen1 fontos szempontjai:
+Az alábbiakban a HDInsight data lake storage gen1 szolgáltatással való használatának néhány fontos szempontját olvashatja:
 
-* Lehetőség a HDInsight-fürtök létrehozása a Data Lake Storage Gen1 hozzáféréssel rendelkező, a HDInsight 3.5-ös és 3.6-os verzió érhető el az alapértelmezett tároló.
+* A HDInsight-fürtök létrehozása a Data Lake Storage Gen1 alapértelmezett tárolóként a HDInsight 3.5-ös és 3.6-os verziójához érhető el.
 
-* HDInsight-fürtök létrehozása a Data Lake Storage Gen1 hozzáférést, ha további tárhely elérhető HDInsight-verziók 3.2-es, 3.4-es, 3.5-ös és 3.6-os lehetőség.
+* HdInsight-fürtök et hozhat létre a Data Lake Storage Gen1 szolgáltatáshoz való hozzáféréssel, mivel további tárhely érhető el a HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os verziójához.
 
-Ez a cikk a Data Lake Storage Gen1 Hadoop-fürt kiegészítő tárolóként kiépítve. A Hadoop-fürt létrehozása a Data Lake Storage Gen1 alapértelmezett tárolóként útmutatásért lásd: [egy HDInsight-fürt létrehozása a Data Lake Storage Gen1 az Azure Portal használatával](data-lake-store-hdinsight-hadoop-use-portal.md).
+Ebben a cikkben egy Hadoop-fürtöt létesítünk a Data Lake Storage Gen1 további tárolóként. Ha a Data Lake Storage Gen1 alapértelmezett tárolóként való létrehozásáról a [HDInsight-fürt létrehozása a Data Lake Storage Gen1 szolgáltatással az Azure Portal használatával című](data-lake-store-hdinsight-hadoop-use-portal.md)témakörben olvashat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,14 +50,14 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
-* **Az Azure Active Directory egyszerű szolgáltatás**. Ebben az oktatóanyagban lépések nyújtanak segítséget az egyszerű szolgáltatás létrehozása az Azure ad-ben. Azonban az Azure AD-rendszergazda létrehozhat egy egyszerű szolgáltatást kell lennie. Ha egy Azure AD-rendszergazdát, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyagot.
+* **Az Azure Active Directory szolgáltatásnév .** Ebben az oktatóanyagban az egyszerű szolgáltatás létrehozása az Azure AD-ben. Azonban egy Azure AD-rendszergazdai kell lennie, hogy hozzon létre egy egyszerű szolgáltatás. Ha Ön Az Azure AD-rendszergazda, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyag.
 
-    **Ha nem Azure AD-rendszergazda**, nem fogjuk tudni elvégezni az egyszerű szolgáltatás létrehozásához szükséges lépéseket. Ebben az esetben az Azure AD-rendszergazda először létre kell hoznia egy egyszerű szolgáltatást a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Emellett az egyszerű szolgáltatás segítségével kell létrehozni egy tanúsítványt, ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
+    **Ha nem Azure AD-rendszergazda,** nem fogja tudni végrehajtani az egyszerű szolgáltatás létrehozásához szükséges lépéseket. Ebben az esetben az Azure AD-rendszergazdának először létre kell hoznia egy egyszerű szolgáltatásszolgáltatást, mielőtt hdinsight-fürtöt hozhat létre a Data Lake Storage Gen1 használatával. Emellett a szolgáltatásnév kell létrehozni egy tanúsítvány, ahogy azt a [Szolgáltatásnév létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)című részen leírtak szerint.
 
-## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>Egy HDInsight-fürt létrehozása a Data Lake Storage Gen1
-A Resource Manager-sablont, és a sablonok használatára vonatkozó Előfeltételek a githubon érhető el [az új Data Lake Storage Gen1 HDInsight Linux-fürt üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage). Kövesse az utasításokat, adja meg ezt a hivatkozást egy HDInsight-fürt létrehozása a Data Lake Storage Gen1 további tárolóként.
+## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>HDInsight-fürt létrehozása a Data Lake Storage Gen1 szolgáltatással
+Az Erőforrás-kezelő sablon és a sablon használatának előfeltételei a GitHubon érhetők el [a HDInsight Linux-fürt telepítése kor az új Data Lake Storage Gen1 szolgáltatással.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage) Kövesse az ezen a hivatkozáson található utasításokat egy HDInsight-fürt létrehozásához a Data Lake Storage Gen1 további tárolóként.
 
-A fent említett hivatkozás webhelyen található utasításokat a PowerShell szükséges. Ezeket az utasításokat a Kezdés előtt győződjön meg arról, az Azure-fiókjába való bejelentkezést. Az asztalon nyissa meg egy új Azure PowerShell-ablakot, és adja meg az alábbi kódrészletek. Amikor a rendszer kéri, jelentkezzen be, győződjön meg arról, hogy a rendszergazdák/tulajdonossal egyik jelentkezzen be:
+A fent említett hivatkozáson található utasítások hoz a PowerShell. Mielőtt elkezdené ezeket az utasításokat, győződjön meg róla, hogy jelentkezzen be az Azure-fiókjába. Az asztalról nyisson meg egy új Azure PowerShell-ablakot, és írja be a következő kódrészleteket. Amikor a rendszer kéri a bejelentkezést, jelentkezzen be az előfizetés egyik rendszergazdájaként/tulajdonosaként:
 
 ```
 # Log in to your Azure account
@@ -70,34 +70,34 @@ Get-AzSubscription
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-A sablon üzembe helyezi ezeket erőforrástípusok:
+A sablon a következő erőforrástípusokat telepíti:
 
-* [Microsoft.DataLakeStore/accounts](/azure/templates/microsoft.datalakestore/accounts)
+* [Microsoft.DataLakeStore/fiókok](/azure/templates/microsoft.datalakestore/accounts)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters)
+* [Microsoft.HDInsight/fürtök](/azure/templates/microsoft.hdinsight/clusters)
 
-## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>Mintaadatok feltöltése a Data Lake Storage Gen1
-A Resource Manager-sablon egy új Data Lake Storage Gen1 fiókot hoz létre, és hozzárendeli a HDInsight-fürt. A Data Lake Storage Gen1 most tölthet fel néhány adatot. Ezeket az adatokat egy HDInsight-fürtöt, amely a Data Lake Storage Gen1 fiókban lévő adatok eléréséhez a feladatok végrehajtásához az oktatóanyag későbbi részében lesz szüksége. Adatok feltöltése az utasításokért lásd: [fájl feltöltése a Data Lake Storage Gen1 fiók](data-lake-store-get-started-portal.md#uploaddata). Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát.
+## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>Mintaadatok feltöltése a Data Lake Storage Gen1 szolgáltatásba
+Az Erőforrás-kezelő sablon létrehoz egy új Data Lake Storage Gen1 fiókot, és társítja azt a HDInsight-fürthöz. Most fel kell töltenie néhány mintaadatot a Data Lake Storage Gen1-be. Ezekre az adatokra később az oktatóanyag ban kell futtatni a feladatokat egy HDInsight-fürtből, amely a Data Lake Storage Gen1 fiók adataihoz fér hozzá. Az adatok feltöltésével kapcsolatos tudnivalókért olvassa el [a Fájl feltöltése a Data Lake Storage Gen1 fiókba .for](data-lake-store-get-started-portal.md#uploaddata) Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát.
 
-## <a name="set-relevant-acls-on-the-sample-data"></a>A mintaadatokat a megfelelő ACL-ek beállítása
-Ahhoz, hogy a HDInsight-fürtön elérhető-e a mintaadatok feltöltése, biztosítania kell, hogy az Azure AD-alkalmazást, amely segítségével hozhat létre az identitás a HDInsight-fürt és a Data Lake Storage Gen1 közötti férhet hozzá a kívánt fájl vagy mappa a hozzáférés. Ehhez hajtsa végre az alábbi lépéseket.
+## <a name="set-relevant-acls-on-the-sample-data"></a>A megfelelő ACL-ek beállítása a mintaadatokon
+Győződjön meg arról, hogy a minta adatok feltöltött elérhető a HDInsight-fürt, győződjön meg arról, hogy az Azure AD-alkalmazás, amely a HDInsight-fürt és a Data Lake Storage Gen1 közötti identitás létrehozásához használt hozzáférést biztosít a fájl/mappa próbál hozzáférni. Ehhez hajtsa végre az alábbi lépéseket.
 
-1. Keresse meg az Azure AD-alkalmazást, amely a HDInsight-fürt és a Data Lake Storage Gen1 fiók van hozzárendelve. Kattintson az egyik módja a nevét, hogy nyissa meg a HDInsight-fürt panelén, a Resource Manager-sablon használatával létrehozott keressen a **fürt AAD-identitásával** lapra, és nézze meg a **egyszerű szolgáltatás megjelenített neve**.
-2. Most adja meg az Azure AD-alkalmazáshoz való hozzáférést, amely a HDInsight-fürtből származó elérni kívánt fájl vagy mappa a. Tekintse meg a megfelelő hozzáférés-vezérlési listák beállítása a fájl vagy mappa a Data Lake Storage Gen1, [az adatok védelme az Data Lake Storage Gen1](data-lake-store-secure-data.md#filepermissions).
+1. Keresse meg a HDInsight-fürthöz társított Azure AD-alkalmazás nevét és a Data Lake Storage Gen1-fiókot. A név megkeresésének egyik módja az Erőforrás-kezelő sablon nal létrehozott HDInsight-fürtpanel megnyitása, a **Fürt AAD-identitás** fülre kattintva, és megkeresheti az **egyszerű szolgáltatás megjelenítési nevének**értékét.
+2. Most hozzáférést biztosít az Azure AD-alkalmazás a fájl/mappa, amely a HDInsight-fürtről elérni kívánt. A Data Lake Storage Gen1 fájljában/mappájában a megfelelő ACL-ek beállításához olvassa el [az Adatok védelme a Data Lake Storage Gen1 alkalmazásban című témakört.](data-lake-store-secure-data.md#filepermissions)
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>A HDInsight-fürt használata a Data Lake Storage Gen1 tesztelési feladatok futtatása
-Miután konfigurálta egy HDInsight-fürtöt, a fürtön, hogy a HDInsight-fürt hozzáférhet-e a Data Lake Storage Gen1 teszteléséhez tesztelési feladatok futtatásához. Ehhez egy minta Hive-feladatot, amely létrehoz egy táblát a mintaadatokkal, amelyek korábban a Data Lake Storage Gen1 fiókjába feltöltött fog Futtatás.
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Tesztelési feladatok futtatása a HDInsight-fürtön a Data Lake Storage Gen1 használatához
+Miután konfigurált egy HDInsight-fürtöt, futtathat tesztfeladatokat a fürtön annak teszteléséhez, hogy a HDInsight-fürt hozzáférhet-e a Data Lake Storage Gen1 szolgáltatáshoz. Ehhez egy minta Hive-feladatot futtatunk, amely létrehoz egy táblát a Data Lake Storage Gen1-fiókjába korábban feltöltött mintaadatok használatával.
 
-Ez a szakasz tartalma SSH be egy HDInsight Linux-fürt, és futtassa a mintát Hive-lekérdezést. Ha egy Windows-ügyfelet használ, javasoljuk **PuTTY**, amely letölthető a [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+Ebben a szakaszban lesz SSH egy HDInsight Linux-fürt, és futtassa a minta Hive-lekérdezést. Ha Windows-ügyfelet használ, javasoljuk a **PuTTY**használatát, [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)amely letölthető a alkalmazásból.
 
-A PuTTY használatával kapcsolatos további információkért lásd: [az SSH használata a Linux-alapú Hadooppal a HDInsight, a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+A PuTTY használatával kapcsolatos további tudnivalókért olvassa el [az SSH használata Linux alapú Hadoop használatával a WINDOWS HDInsight szolgáltatásában című témakört.](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)
 
-1. Ha csatlakoztatva van, indítsa el a Hive-CLI az alábbi paranccsal:
+1. A csatlakozás után indítsa el a Hive CLI-t a következő paranccsal:
 
    ```
    hive
    ```
-2. A parancssori felületről, adja meg az alábbi utasításokat, hozzon létre egy új táblát nevű **járművek** a mintaadatok használatával a Data Lake Storage Gen1:
+2. A CLI használatával adja meg a következő állításokat egy **járművek** nevű új tábla létrehozásához a Data Lake Storage Gen1 mintaadatainak használatával:
 
    ```
    DROP TABLE vehicles;
@@ -121,20 +121,20 @@ A PuTTY használatával kapcsolatos további információkért lásd: [az SSH ha
    ```
 
 
-## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Data Lake Storage Gen1 eléréséhez HDFS-parancsok használatával
-Miután konfigurálta a HDInsight-fürt használata a Data Lake Storage Gen1, a HDFS-rendszerhéjparancsokat használhatja az áruház.
+## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Hozzáférés a Data Lake Storage Gen1 szolgáltatáshoz HDFS-parancsokkal
+Miután konfigurálta a HDInsight-fürtet a Data Lake Storage Gen1 használatára, a HDFS rendszerhéj-parancsokkal elérheti az áruházat.
 
-Ez a szakasz tartalma SSH be egy HDInsight Linux-fürt, és futtassa a HDFS-parancsokat. Ha egy Windows-ügyfelet használ, javasoljuk **PuTTY**, amely letölthető a [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+Ebben a szakaszban lesz SSH egy HDInsight Linux-fürt, és futtassa a HDFS-parancsokat. Ha Windows-ügyfelet használ, javasoljuk a **PuTTY**használatát, [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)amely letölthető a alkalmazásból.
 
-A PuTTY használatával kapcsolatos további információkért lásd: [az SSH használata a Linux-alapú Hadooppal a HDInsight, a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+A PuTTY használatával kapcsolatos további tudnivalókért olvassa el [az SSH használata Linux alapú Hadoop használatával a WINDOWS HDInsight szolgáltatásában című témakört.](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)
 
-A csatlakozás után a következő HDFS-fájlrendszer parancs segítségével listázza a Data Lake Storage Gen1 fiókban lévő fájlokat.
+A csatlakozás után a következő HDFS fájlrendszer paranccsal sorolja fel a fájlokat a Data Lake Storage Gen1 fiókban.
 
 ```
 hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
 ```
 
-Megjelenik a Data Lake Storage Gen1 korábban feltöltött fájl.
+Ez tartalmazza a Data Lake Storage Gen1-nek korábban feltöltött fájlt.
 
 ```
 15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
@@ -142,9 +142,9 @@ Found 1 items
 -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 ```
 
-Is használhatja a `hdfs dfs -put` parancsot néhány fájlok feltöltése a Data Lake Storage Gen1, és hogyan `hdfs dfs -ls` ellenőrizze, hogy a fájl sikeresen feltöltve.
+A paranccsal `hdfs dfs -put` is feltölthet néhány fájlt a Data `hdfs dfs -ls` Lake Storage Gen1 szolgáltatásba, majd ellenőrizheti, hogy a fájlok feltöltése sikeresen megtörtént-e.
 
 
 ## <a name="next-steps"></a>További lépések
-* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1](data-lake-store-copy-data-wasb-distcp.md)
-* [Az Azure HDInsight-fürtök használata a Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Adatok másolása az Azure Storage Blobs szolgáltatásból a Data Lake Storage Gen1 szolgáltatásba](data-lake-store-copy-data-wasb-distcp.md)
+* [A Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

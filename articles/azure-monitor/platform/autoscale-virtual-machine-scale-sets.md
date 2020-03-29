@@ -1,64 +1,64 @@
 ---
-title: Speciális autoskálázás az Azure Virtual Machines
-description: A Resource Managert és VM Scale Sets több szabályt és profilt használ, amelyek e-maileket küldenek, és a méretezési műveletekkel meghívják a webhook URL-
+title: Speciális automatikus skálázás azure-beli virtuális gépek használatával
+description: Erőforrás-kezelő és virtuálisgép-méretezési készletek több szabályok és profilok, amelyek e-mail küldése és hívás webhook URL-címeket méretezési műveleteket.
 ms.topic: conceptual
 ms.date: 02/22/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75364220"
 ---
-# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets
-A Virtual Machine Scale Sets méretezési és kibővíthető teljesítmény-metrikai küszöbértékek, ismétlődő ütemterv vagy egy adott dátum alapján. A méretezési műveletekhez e-mail-és webhook-értesítéseket is konfigurálhat. Ez a forgatókönyv egy virtuálisgép-méretezési csoport Resource Manager-sablonnal történő konfigurálásának példáját mutatja be.
+# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus skálázási konfiguráció a Virtuálisgép-méretezési csoportok Erőforrás-kezelő sablonjaival
+A virtuálisgép-méretezési csoportokban teljesítménymetrikális küszöbértékek, ismétlődő ütemezés vagy egy adott dátum alapján skálázható és kibővített. A levelezési és webhook-értesítések méretezési műveletekhez is konfigurálhatók. Ez a forgatókönyv egy példát mutat be az összes objektum konfigurálása egy Erőforrás-kezelő sablon használatával egy virtuális gép méretezési csoport.
 
 > [!NOTE]
-> Habár ez a bemutató ismerteti a VM Scale Sets lépéseit, ugyanazok az adatok vonatkoznak az automatikus skálázási [Cloud Servicesra](https://azure.microsoft.com/services/cloud-services/), a [app Service-web Appsra](https://azure.microsoft.com/services/app-service/web/)és a [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) a virtuálisgép-méretezési csoport egyszerű teljesítmény mérőszáma, például a CPU alapján, a [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) -és [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) -dokumentumokban.
+> Bár ez a forgatókönyv ismerteti a virtuális gép méretezési készleteinek lépéseit, ugyanazok az információk vonatkoznak az automatikus [skálázásfelhő-szolgáltatásokra,](https://azure.microsoft.com/services/cloud-services/) [az App Services - Web Apps](https://azure.microsoft.com/services/app-service/web/)és az API Management [szolgáltatásokra:](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) A virtuális gép méretezési készletén egy egyszerű teljesítménymérő-készleten, például a CPU-n alapuló egyszerű méretezési/kitöltési beállításért tekintse meg a [Linux-](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) és [Windows-dokumentumokat.](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)
 >
 >
 
 ## <a name="walkthrough"></a>Útmutatás
-Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforrás-kezelő](https://resources.azure.com/) használatával konfigurálhatja és frissítheti az autoskálázási beállítást. A Azure Erőforrás-kezelő használatával egyszerűen kezelheti az Azure-erőforrásokat Resource Manager-sablonokkal. Ha még nem Azure Erőforrás-kezelő eszközt, olvassa el [ezt a bevezetést](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
+Ebben a forgatókönyvben az [Azure Resource Explorer](https://resources.azure.com/) használatával konfiguráljuk és frissítjük a méretezési csoport automatikus méretezési beállítását. Az Azure Resource Explorer segítségével egyszerűen kezelheti az Azure-erőforrásokat a Resource Manager-sablonokon keresztül. Ha most jön az Azure Resource Explorer eszköz, olvassa el [ezt a bevezetést](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
 
-1. Helyezzen üzembe egy új méretezési készletet egy alapszintű autoskálázási beállítással. Ez a cikk az Azure gyors üzembe helyezési galériájának egyikét használja, amely egy alapszintű autoskálázási sablonnal rendelkező Windows-méretezési csoporttal rendelkezik. A Linux-méretezési csoportok ugyanúgy működnek.
-2. A méretezési csoport létrehozása után navigáljon a méretezési csoport erőforrásához Azure Erőforrás-kezelő. A következőt látja a Microsoft. bepillantások csomópont alatt.
+1. Telepítsen egy új méretezési készletet egy alapszintű automatikus skálázási beállítással. Ez a cikk az Azure QuickStart Gallery, amely egy Windows-méretezési készlet egy alapszintű automatikus skálázási sablont használja. A Linux méretezési készletek ugyanúgy működnek.
+2. A méretezési csoport létrehozása után keresse meg a méretezési csoport erőforrás az Azure Resource Explorer. A microsoft.insights-csomópontban a következők et láthatja.
 
     ![Azure Explorer](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
-    A sablon végrehajtása létrehozta a **"autoscalewad"** nevű alapértelmezett autoskálázási beállítást. A jobb oldalon megtekintheti ennek az autoskálázási beállításnak a teljes definícióját. Ebben az esetben az alapértelmezett autoskálázási beállítás egy CPU%-alapú kibővített és méretezési szabályt tartalmaz.  
+    A sablon végrehajtása alapértelmezett automatikus skálázási beállítást hozott létre **"autoscalewad"** névvel. A jobb oldalon megtekintheti az automatikus skálázási beállítás teljes definícióját. Ebben az esetben az alapértelmezett automatikus skálázási beállítás egy CPU-alapú horizontális felskálázási és horizontális felskálázási szabályt tartalmazza.  
 
-3. Mostantól további profilokat és szabályokat adhat hozzá az ütemterv vagy a speciális követelmények alapján. Létrehozunk egy három profillal rendelkező autoskálázási beállítást. Az autoscale-profilok és-szabályok megértéséhez tekintse át az [ajánlott eljárások az autoscale](autoscale-best-practices.md)-ben című témakört.  
+3. Mostantól további profilokat és szabályokat adhat hozzá az ütemezés vagy a konkrét követelmények alapján. Három profillal automatikus skálázási beállítást hozunk létre. Az automatikus skálázásban szereplő profilok és szabályok megértéséhez tekintse át [az automatikus skálázás gyakorlati tanácsait.](autoscale-best-practices.md)  
 
     | Profilok & szabályok | Leírás |
     |--- | --- |
-    | **Profil** |**Teljesítmény/metrika-alapú** |
-    | Szabály |Service Bus üzenetsor-üzenetek száma > x |
-    | Szabály |Service Bus üzenetsor-üzenetek száma < y |
-    | Szabály |CPU% > n |
-    | Szabály |CPU% < p |
-    | **Profil** |**Hétköznap reggel óra (nincs szabály)** |
-    | **Profil** |**Termék indításának napja (nincs szabály)** |
+    | **Profil** |**Teljesítmény/metrikus** |
+    | Szabály |A szolgáltatásbusz üzeneteinek száma > x |
+    | Szabály |A szolgáltatásbusz üzeneteinek száma < y |
+    | Szabály |CPU%> n |
+    | Szabály |CPU< p |
+    | **Profil** |**Hétköznap reggeli órákban (nincs enek szabály)** |
+    | **Profil** |**A termék megjelenésének napja (nincsenek szabályok)** |
 
-4. Íme egy feltételezett méretezési forgatókönyv, amelyet ehhez az útmutatóhoz használunk.
+4. Íme egy hipotetikus skálázási forgatókönyv, amelyet ehhez a forgatókönyvhöz használunk.
 
-   * **Betöltés** – a méretezési csoporton üzemeltetett alkalmazás terhelése alapján szeretném felskálázást végezni. *
-   * **Üzenet-várólista mérete** – a beérkező üzenetekhez Service Bus várólistát használok az alkalmazáshoz. A várólista üzeneteinek számát és a CPU-t használja, és az alapértelmezett profilt úgy konfigurálja, hogy kiváltsa a méretezési műveletet, ha az üzenetek száma vagy a CPU eléri a küszöbértéket.\*
-   * **Hét és nap időpontja** – azt szeretném, hogy a nap egy heti ismétlődési ideje "hétköznap reggel órája". A korábbi adatmennyiségek alapján biztos lehet benne, hogy az alkalmazás terhelésének kezelése ebben az időszakban jobb.\*
-   * **Különleges dátumok** – Felvettem egy "termék elindítása nap" profilt. Előre tervezem a megadott dátumokat, így az alkalmazásom készen áll a marketinggel kapcsolatos bejelentések betöltésére, és amikor új terméket teszünk az alkalmazásba.\*
-   * *Az utolsó két profil más teljesítménymutató-alapú szabályokkal is rendelkezhet. Ebben az esetben úgy döntöttem, hogy nem az egyikre, hanem az alapértelmezett teljesítmény-metrikai szabályokra támaszkodik. A szabályok nem kötelezőek az ismétlődő és a dátum-alapú profilokhoz.*
+   * **Terhelés alapú** - szeretnék horizontális felskálázás vagy a terhelés alapján az én alkalmazás házigazdája az én scale set.*
+   * **Üzenetsor mérete** – Az alkalmazásomba érkező üzenetekhez szolgáltatásbusz-várólistát használok. A várólista üzenetszámát és a CPU%-t használom, és egy alapértelmezett profilt konfigurálok egy méretezési művelet elindításához, ha az üzenetek száma vagy a PROCESSZOR eléri a küszöbértéket.\*
+   * **A hét ideje és a nap** - Szeretnék egy heti ismétlődő "napszak" alapú profil úgynevezett "Hétköznap Morning Hours". A korábbi adatok alapján, tudom, hogy jobb, ha bizonyos számú virtuálisgép-példányok kezelésére az alkalmazás terhelése ez idő alatt.\*
+   * **Különleges dátumok** - Hozzáadtam egy "Termékbevezetés napja" profilt. Azt tervezem, előre konkrét időpontokban, így az alkalmazás készen áll, hogy kezelje a terhelés miatt marketing bejelentések és amikor egy új terméket az alkalmazásba.\*
+   * *Az utolsó két profil ban más teljesítménymérőmetrika-alapú szabályok is szerepelhetnek. Ebben az esetben úgy döntöttem, hogy nem rendelkezem ilyenvel, és ehelyett az alapértelmezett teljesítménymérő-metrika alapú szabályokra támaszkodom. Az ismétlődő és dátumalapú profilok esetében a szabályok nem kötelezőek.*
 
-     Az automatikus méretezési motor a profilok és a szabályok rangsorolását is rögzíti az automatikus [skálázás ajánlott eljárásai](autoscale-best-practices.md) című cikkben.
-     Az autoscale általános mérőszámait az [autoscale általános mérőszámai](autoscale-common-metrics.md) című témakörben tekintheti meg.
+     Automatikus skálázási motor rangsorolása a profilok és szabályok is rögzíti az [automatikus skálázás ajánlott eljárások](autoscale-best-practices.md) cikkben.
+     Az automatikus skálázás gyakori metrikáinak listáját az [automatikus skálázás gyakori metrikáiban](autoscale-common-metrics.md) olvassa el.
 
-5. Győződjön meg arról, hogy az **olvasási/írási** módban van erőforrás-kezelő
+5. Ellenőrizze, hogy **olvasási/írási** módban van-e az Erőforrás-kezelőben
 
-    ![Autoscalewad, alapértelmezett autoskálázási beállítás](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
+    ![Automatikus skálázás, alapértelmezett automatikus skálázási beállítás](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
-6. Kattintson a Szerkesztés gombra. **Cserélje le** a "profilok" elemet az automatikus skálázási beállításban a következő konfigurációval:
+6. Kattintson a Szerkesztés gombra. **Cserélje le** a "profilok" elemet az automatikus skálázási beállításban a következő konfigurációra:
 
-    ![profilok](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![Profilok](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {
@@ -190,14 +190,14 @@ Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforr
             }
           }
     ```
-    A támogatott mezőkhöz és azok értékeihez lásd: az [autoscale REST API dokumentációja](https://msdn.microsoft.com/library/azure/dn931928.aspx). Az autoskálázási beállítás most már tartalmazza a korábban ismertetett három profilt.
+    A támogatott mezőket és azok értékeit az [Autoscale REST API dokumentációjában](https://msdn.microsoft.com/library/azure/dn931928.aspx)találja. Most az automatikus skálázási beállítás tartalmazza a korábban ismertetett három profilt.
 
-7. Végül tekintse meg az autoskálázás **értesítési** szakaszt. Az autoscale Notifications lehetővé teszi, hogy három dolgot végezzen el a Kibővítés vagy a működés sikeres elindításához.
-   - Az előfizetés rendszergazdája és a társ-rendszergazdák értesítése
-   - Felhasználók e-mail-címe
-   - Webhook-hívás indítása. Ez a webhook az automatikus skálázási feltétellel és a méretezési csoport erőforrásaival kapcsolatos metaadatokat küld. Ha többet szeretne megtudni az autoscale webhook hasznos adatairól, tekintse meg a [webhook & e-mail-értesítések konfigurálása az autoskálázáshoz](autoscale-webhook-email.md)című témakört.
+7. Végül tekintse meg az automatikus **skálázásértesítési** szakaszt. Az automatikus skálázási értesítések lehetővé teszik, hogy három dolgot, ha egy horizontális felskálázás vagy működés közben sikeresen aktiválódik.
+   - Az előfizetés rendszergazdájának és társadminisztrátorainak értesítése
+   - Felhasználók e-mail ben
+   - Webhook-hívás aktiválása. Amikor a webhook, ez a webhook metaadatokat küld az automatikus skálázási feltétel és a méretezési csoport erőforrás. Az automatikus skálázási webhook hasznos terheléséről a [Webhook & e-mail értesítések konfigurálása automatikus skálázáshoz](autoscale-webhook-email.md)című témakörben olvashat bővebben.
 
-   Adja hozzá a következőt az autoskálázási beállításhoz, amely felülírja az **értesítési** elemet, amelynek értéke null
+   Adja hozzá a következőket az automatikus skálázás beállításhoz, amely az **értesítési** elemet váltja fel, amelynek értéke null
 
    ```
    "notifications": [
@@ -225,23 +225,23 @@ Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforr
 
    ```
 
-   Az autoskálázási beállítás frissítéséhez nyomja meg erőforrás-kezelő a **put** gombot.
+   Az automatikus skálázási beállítás frissítéséhez nyomja meg az **Elhelyezés** gombot az Erőforrás-kezelőben.
 
-Frissített egy, a virtuálisgép-méretezési csoporton egy olyan méretezési beállítást, amely több skálázási profilt és méretezési értesítéseket is tartalmaz.
+Frissítette az automatikus skálázási beállítást egy virtuálisgép-méretezési készleten, hogy több méretezési profilt és méretezési értesítéseket tartalmazzon.
 
 ## <a name="next-steps"></a>Következő lépések
-Ezekkel a hivatkozásokkal többet tudhat meg az automatikus skálázásról.
+Ezekkel a hivatkozásokkal többet is megtudhat az automatikus skálázásról.
 
-[Az Virtual Machine Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+[TroubleShoot automatikus skálázás virtuálisgép-méretezési készletekkel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 
-[Gyakori metrikák az autoskálázáshoz](autoscale-common-metrics.md)
+[Az automatikus skálázás közös metrikája](autoscale-common-metrics.md)
 
-[Ajánlott eljárások az Azure-ra való autoskálázáshoz](autoscale-best-practices.md)
+[Gyakorlati tanácsok az Azure automatikus skálázásához](autoscale-best-practices.md)
 
-[Az autoskálázás kezelése a PowerShell használatával](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[Automatikus skálázás kezelése a PowerShell használatával](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 
-[Az autoskálázás kezelése a parancssori felület használatával](cli-samples.md#autoscale)
+[Automatikus skálázás kezelése a CLI használatával](cli-samples.md#autoscale)
 
-[Webhook & e-mail-értesítések konfigurálása az autoskálázáshoz](autoscale-webhook-email.md)
+[Webhook & e-mail értesítések konfigurálása automatikus skálázáshoz](autoscale-webhook-email.md)
 
-[Microsoft. bepillantások/autoscalesettings-](/azure/templates/microsoft.insights/autoscalesettings) sablonok referenciája
+[Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings) sablon – referencia

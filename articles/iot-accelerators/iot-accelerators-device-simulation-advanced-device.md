@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy speciális szimulált eszköz modell – Azure |} A Microsoft Docs
-description: Ez az útmutató megtudhatja, hogyan hozhat létre egy speciális eszközmodell használatra Eszközszimuláció megoldásgyorsító.
+title: Speciális szimulált eszközmodell létrehozása - Azure| Microsoft dokumentumok
+description: Ebben az útmutatóútmutatóban megtudhatja, hogyan hozhat létre egy speciális eszközmodellt az eszközszimulációs megoldásgyorsítóhoz.
 author: troyhopwood
 manager: timlt
 ms.service: iot-accelerators
@@ -10,21 +10,21 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61449021"
 ---
-# <a name="create-an-advanced-device-model"></a>Hozzon létre egy speciális eszköz modellje
+# <a name="create-an-advanced-device-model"></a>Speciális eszközmodell létrehozása
 
-Ez az útmutató azt ismerteti, hogy a JSON és a JavaScript-fájlok, amelyek meghatározzák egy egyéni eszköz modellje. A cikk néhány minta eszköz modell definíciós fájlokat tartalmazza, és bemutatja, hogyan tölthet fel őket az Eszközszimuláció-példány. Speciális eszköz-modellek szimulálása a tesztelési realisztikusabb eszközműködés hozhat létre.
+Ez az útmutató ismerteti az egyéni eszközmodellt meghatározó JSON- és JavaScript-fájlokat. A cikk tartalmaz néhány mintaeszköz modell definíciófájlokat, és bemutatja, hogyan töltheti fel őket az eszközszimulációs példányba. Speciális eszközmodelleket hozhat létre, hogy valósághűbb eszközviselkedéseket szimuláljon a teszteléshez.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az Útmutató lépéseit, szükség Eszközszimuláció telepített példányát az Azure-előfizetésében.
+Az útmutató lépései végrehajtásához az Azure-előfizetésben az Eszközszimuláció üzembe helyezett példányára van szükség.
 
 Ha még nem helyezte üzembe az Eszközszimulációt, végezze el az [Azure-beli IoT-eszközszimuláció üzembe helyezését és futtatását](quickstart-device-simulation-deploy.md) ismertető rövid útmutatóban leírt lépéseket.
 
@@ -34,47 +34,47 @@ Az Eszközszimuláció böngészőben történő futtatásához először lépje
 
 A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
 
-Kattintson a **indítsa el a** az Eszközszimuláció központilag a csempére a [üzembe helyezése és futtatása az IoT eszköz szimulálása az Azure-ban](quickstart-device-simulation-deploy.md) rövid.
+Ezután kattintson a **Bevezetés** gombra a telepítésben üzembe helyezett eszközszimulációcsempe-csempén, [és futtasson egy IoT-eszközszimulációt](quickstart-device-simulation-deploy.md) az Azure-ban.
 
 ## <a name="device-models"></a>Eszközmodellek
 
-Mindegyik szimulált eszköz tartozik egy adott eszköz modellje, amely meghatározza a szimuláció viselkedését. Ez a viselkedés gyakori, hogy telemetriát küldjön módját, milyen típusú üzenetek küldése és a támogatott módszerek tartalmazza.
+Minden szimulált eszköz egy adott eszközmodellhez tartozik, amely meghatározza a szimuláció viselkedését. Ez a viselkedés magában foglalja, hogy milyen gyakran kell telemetriai adatokat küldeni, milyen típusú üzeneteket küldeni, és a támogatott módszerek.
 
-Megadhat egy JSON-eszköz csomagdefiníciós fájl- és JavaScript-fájlokat használó eszközök modell. A JavaScript-fájlok például a véletlenszerű telemetriai és a metódus logika szimuláció viselkedésének megadása.
+Az eszközmodellt JSON-eszközdefiníciós fájl és JavaScript-fájlok készletével határozhatja meg. Ezek a JavaScript-fájlok határozzák meg a szimulációs viselkedést, például a véletlenszerű telemetriai adatokat és a metódus logikáját.
 
-Egy tipikus eszközmodell rendelkezik:
+Egy tipikus eszközmodell:
 
-* Egy JSON-fájlban mindegyik eszköz modellje (például elevator.json).
-* Egy JavaScript viselkedés parancsfájlt minden egyes eszköz modell (például itt-state.js)
-* Egy JavaScript metódus parancsfájlt minden egyes eszköz metódus (például itt-go-down.js)
+* Minden eszközmodellhez egy JSON-fájl (például lift.json).
+* Minden eszközmodellhez egy JavaScript viselkedésparancsfájl (például lift-state.js)
+* Minden eszközmetódushoz egy JavaScript metódus parancsfájl (például lift-go-down.js)
 
 > [!NOTE]
-> Nem minden eszköz modellek metódus megadása. Egy eszköz modellje ezért előfordulhat, hogy, vagy nem rendelkezik metódus parancsfájlokat. Azonban minden eszközmodell viselkedésének parancsfájl kell rendelkeznie.
+> Nem minden eszközmodell definiál metódust. Ezért előfordulhat, hogy egy eszközmodell rendelkezik metódusparancsfájlokkal. Azonban minden eszközmodellnek rendelkeznie kell viselkedési parancsfájllal.
 
-## <a name="device-definition-file"></a>Eszköz csomagdefiníciós fájl
+## <a name="device-definition-file"></a>Eszközdefiníciós fájl
 
-Minden egyes eszköz csomagdefiníciós fájl részleteit egy szimulált eszköz modellje, többek között a következő információkat tartalmazza:
+Minden eszközdefiníciós fájl egy szimulált eszközmodell adatait tartalmazza, beleértve a következő információkat:
 
-* Eszköz modell neve: karakterlánc.
+* Eszközmodell neve: karakterlánc.
 * Protokoll: AMQP | MQTT | HTTP.
-* A kezdeti állapota.
-* Hogyan gyakran frissítheti az eszköz állapotát.
-* Melyik JavaScript-fájl az állapot frissítéséhez.
-* Telemetriai üzeneteket küldeni, minden egyes megadott gyakorisággal listája.
-* A telemetriai üzeneteket, a fogadott telemetriát elemezni a háttér-alkalmazás által használt sémája.
-* Támogatott módszerek és a JavaScript-fájl használatával szimulálja az egyes módszerek listája.
+* A kezdeti eszközállapot.
+* Milyen gyakran frissíti az eszköz állapotát.
+* Milyen JavaScript-fájlt használ az eszköz állapotának frissítéséhez.
+* Az elküldésre küldő telemetriai üzenetek listája, amelyek mindegyike egy adott gyakorisággal van.
+* A telemetriai üzenetek sémája, amelyet a háttéralkalmazás használ a fogadott telemetriai adatok elemzéséhez.
+* A támogatott módszerek listája és az egyes módszerek szimulálására használt JavaScript-fájl.
 
-### <a name="file-schema"></a>Fájl séma
+### <a name="file-schema"></a>Fájlséma
 
-A séma verziója mindig "1.0.0-s", és csak ez a fájl formátuma:
+A séma verziója mindig "1.0.0", és a fájl formátumára jellemző:
 
 ```json
 "SchemaVersion": "1.0.0"
 ```
 
-### <a name="device-model-description"></a>Eszköz leírása
+### <a name="device-model-description"></a>Eszközmodell leírása
 
-A következő tulajdonságok írják le, az eszköz típusa. Minden egyedi azonosítója, sémantická verze, egy nevet és leírást rendelkezik:
+Az alábbi tulajdonságok az eszközmodellt ismertetik. Minden típus egyedi azonosítóval, szemantikai verzióval, névvel és leírással rendelkezik:
 
 ```json
 "Id": "chiller-01",
@@ -83,17 +83,17 @@ A következő tulajdonságok írják le, az eszköz típusa. Minden egyedi azono
 "Description": "Chiller with external temperature and humidity sensors."
 ```
 
-### <a name="iot-protocol"></a>IoT-protokoll
+### <a name="iot-protocol"></a>IoT protokoll
 
-IoT-eszközök csatlakozhatnak különböző protokollok használatával. A szimuláció használatát teszi lehetővé vagy **AMQP**, **MQTT**, vagy **HTTP**:
+Az IoT-eszközök különböző protokollok használatával csatlakozhatnak. A szimuláció lehetővé teszi **az AMQP,** **MQTT**vagy **HTTP**:
 
 ```json
 "Protocol": "AMQP"
 ```
 
-### <a name="simulated-device-state"></a>Szimulált eszköz állapota
+### <a name="simulated-device-state"></a>Szimulált eszközállapota
 
-Mindegyik szimulált eszköz van egy belső állapotot, és meg kell határozni. Az állapot is meghatározza a tulajdonságokat, amelyeket jelenteni lehet a telemetriai adatokat. Például egy hűtő előfordulhat, hogy rendelkezik egy kezdeti állapot például:
+Minden szimulált eszköz belső állapottal rendelkezik, amelyet meg kell határozni. Az állapot is meghatározza a telemetriai adatokban jelenthető tulajdonságokat. Egy hűtő kezdeti állapota például a következő lehet:
 
 ```json
 "InitialState": {
@@ -102,7 +102,7 @@ Mindegyik szimulált eszköz van egy belső állapotot, és meg kell határozni.
 },
 ```
 
-Egy mozgó számos olyan előfordulhat eszköz további tulajdonságok, például:
+Egy több érzékelővel rendelkező mozgó eszköz több tulajdonsággal is rendelkezhet, például:
 
 ```json
 "InitialState": {
@@ -115,20 +115,20 @@ Egy mozgó számos olyan előfordulhat eszköz további tulajdonságok, példáu
 }
 ```
 
-Az eszköz állapotát a szimuláció szolgáltatás által a memóriában tárolja, és a JavaScript-függvény bemenetként. Sikerült döntse el, a JavaScript-függvény:
+Az eszközállapotát a szimulációs szolgáltatás őrzi a memóriában, és a JavaScript-függvény bemeneteként adja meg. A JavaScript függvény dönthet a következőkről:
 
-* Hagyja figyelmen kívül az állapot és a véletlenszerű adatok létrehozásához.
-* Az állapot frissítése egy adott forgatókönyv esetén valósághű módon.
+* Az állapot figyelmen kívül hagyása és véletlenszerű adatok létrehozása.
+* Az eszköz állapotának frissítése valamilyen reális módon egy adott forgatókönyvhöz.
 
-A függvény, amely létrehozza az állapot is fogad bemenetként:
+Az állapotot generáló függvény bemenetként is kap:
 
-* Az eszköz azonosítójával.
+* Az eszköz azonosítója.
 * Az eszköz modellje.
-* Az aktuális idő. Ez az érték lehetővé teszi különböző adatok létrehozására, az eszköz és időpontig.
+* Az aktuális idő. Ez az érték lehetővé teszi különböző adatok generálását eszköz és idő szerint.
 
-### <a name="generating-telemetry-messages"></a>Telemetriai üzeneteket generálása
+### <a name="generating-telemetry-messages"></a>Telemetriai üzenetek létrehozása
 
-A szimuláció szolgáltatás minden egyes eszközhöz többféle telemetriai adatokat küldhet. Telemetriai adatok általában az eszköz állapotát adatait tartalmazza. Például egy szimulált szoba küldhet információkat hőmérséklettel és páratartalommal kapcsolatos 10 másodpercenként. Vegye figyelembe a helyőrzőket az alábbi kódrészletben is automatikusan cserélni az eszköz állapotát a értékekkel:
+A szimulációs szolgáltatás minden eszközhöz több telemetriai típust küldhet. Általában telemetriai adatokat az eszköz állapota tartalmazza. Egy szimulált helyiség például 10 másodpercenként küldhet adatokat a hőmérsékletről és a páratartalomról. Vegye figyelembe a helyőrzőket a következő kódrészletben, amelyet a rendszer automatikusan lecserél az eszköz állapotából származó értékekre:
 
 ```json
 "Telemetry": [
@@ -149,27 +149,27 @@ A szimuláció szolgáltatás minden egyes eszközhöz többféle telemetriai ad
 ],
 ```
 
-A helyőrzők speciális szintaxissal **${NAME}** ahol **neve** a JavaScript által visszaadott objektum eszköz állapota a kulcs **fő** függvény. Meg kell adni a karakterláncokat, amíg számok nem ajánlott.
+A helyőrzők egy **speciális ${NAME}** szintaxist **használnak,** ahol a NAME a JavaScript **fő** függvény által visszaadott eszközállapot-objektum kulcsa. A karakterláncokat meg kell adni, míg a számokat nem.
 
-#### <a name="message-schema"></a>Üzenet séma
+#### <a name="message-schema"></a>Üzenetséma
 
-Minden üzenetet egy jól definiált sémával kell rendelkezniük. Az üzenet séma is közzéteszi az IoT hubhoz, így újból felhasználhatja az információkat a bejövő telemetriát értelmezése háttér-alkalmazások.
+Minden üzenettípusnak jól definiált sémával kell rendelkeznie. Az üzenetséma is közzé van téve az IoT Hubon, így a háttéralkalmazások újra felhasználhatják az információkat a bejövő telemetriai adatok értelmezéséhez.
 
-A séma támogatja a JSON-formátumban, amely lehetővé teszi, hogy könnyen elemzés, átalakítás és elemzés, több rendszerek és szolgáltatások között.
+A séma támogatja a JSON formátumot, amely lehetővé teszi a könnyű elemzés, átalakítás és elemzés, több rendszeren és szolgáltatáson keresztül.
 
-A séma szereplő mezőket a következő típusú lehet:
+A sémában felsorolt mezők a következő típusúak lehetnek:
 
-* Objektum - szerializált JSON használatával
-* Bináris - szerializálni a base64 használatával
-* Text
-* Boolean
+* Objektum - szerializálva a JSON használatával
+* Bináris - szerializált a base64 használatával
+* Szöveg
+* Logikai
 * Egész szám
 * Double
 * DateTime
 
 ### <a name="supported-methods"></a>Támogatott módszerek
 
-A szimulált eszközök is reagálhat a metódust hívja, ebben az esetben egy logikai hajtható végre, és bizonyos válasz meg. Hasonlóképpen, a szimulációt a metódus logika egy JavaScript-fájlban tárolt, és használhatják az eszköz állapotát. Példa:
+A szimulált eszközök is reagálhatnak a metódushívásokra, ebben az esetben valamilyen logikát hajtanak végre, és valamilyen választ adnak. A szimulációhoz hasonlóan a metóduslogika egy JavaScript-fájlban tárolódik, és kölcsönhatásba léphet az eszköz állapotával. Példa:
 
 ```json
 "CloudToDeviceMethods": {
@@ -180,13 +180,13 @@ A szimulált eszközök is reagálhat a metódust hívja, ebben az esetben egy l
 }
 ```
 
-## <a name="create-a-device-definition-file"></a>Egy eszköz csomagdefiníciós fájl létrehozása
+## <a name="create-a-device-definition-file"></a>Eszközdefiníciós fájl létrehozása
 
-Az útmutatóval-to-útmutatóban bemutatjuk, hogyan hozzon létre egy drónt egy eszköz modellje. A drone véletlenszerűen repülővel fog egy hely és a magasság módosítása koordináták kezdeti készleteinek körül.
+Ebben az útmutatóban láthatja, hogyan hozhat létre egy eszközmodellt egy drónhoz. A drón véletlenszerűen fog repülni a kezdeti koordináták körül, megváltoztatva a helyet és a magasságot.
 
-Másolja a következő JSON-t egy szövegszerkesztőben, és mentse **drone.json**.
+Másolja a következő JSON-t egy szövegszerkesztőbe, és mentse **el drone.json néven.**
 
-### <a name="device-definition-json-example"></a>Eszköz definíció JSON-példa
+### <a name="device-definition-json-example"></a>Példa a JSON-definícióra
 
 ```json
 {
@@ -247,19 +247,19 @@ Másolja a következő JSON-t egy szövegszerkesztőben, és mentse **drone.json
 }
 ```
 
-## <a name="behavior-script-files"></a>Viselkedés a parancsfájlok
+## <a name="behavior-script-files"></a>Viselkedési parancsfájlok
 
-A kód a viselkedés parancsfájlban a drone helyezi. A szkript módosítja a drone jogosultságszint-emelés és hely szerint az eszköz memória állapotának módosítása.
+A viselkedési parancsfájlban lévő kód áthelyezi a drónt. A parancsfájl megváltoztatja a drón magasságát és helyét azáltal, hogy manipulálja az eszköz memória állapotban van.
 
-A JavaScript-fájlok rendelkeznie kell egy **fő** függvény, amely két paramétert fogad el:
+A JavaScript fájloknak **rendelkezniük** kell egy fő funkcióval, amely két paramétert fogad el:
 
-* A **környezet** objektum, amely három tulajdonságot tartalmazza:
-    * **currentTime** formátumú karakterlánc formájában **yyyy-MM-dd'T'HH:mm:sszzz**.
-    * **deviceId**. Ha például **Simulated.Elevator.123**.
-    * **deviceModel**. Ha például **felvonó**.
-* A **állapot** , amelyet az előző hívás az a függvény által visszaadott objektum. Ez az eszköz állapotát a szimuláció szolgáltatás tartja karban, és telemetriai üzeneteket létrehozásához használt.
+* Három tulajdonságot tartalmazó **környezeti** objektum:
+    * **currentTime,** mint egy karakterlánc formátumban **yyy-MM-dd'T'Hh:mm:sszzz**.
+    * **deviceId**. Például **simulated.Elevator.123**.
+    * **deviceModel .** **Például: Lift**.
+* Olyan **állapotobjektum,** amely az előző hívásban a függvény által visszaadott érték. Ezt az eszközállapotot a szimulációs szolgáltatás tartja karban, és telemetriai üzenetek létrehozásához használja.
 
-A **fő** függvény az új eszköz állapotát adja vissza. Példa:
+A **fő** függvény az új eszközállapotot adja vissza. Példa:
 
 ```JavaScript
 function main(context, state) {
@@ -272,11 +272,11 @@ function main(context, state) {
 }
 ```
 
-## <a name="create-a-behavior-script-file"></a>Viselkedés parancsfájl létrehozása
+## <a name="create-a-behavior-script-file"></a>Viselkedési parancsfájl létrehozása
 
-Másolja a következő JavaScript egy szövegszerkesztőbe, és mentse **drónos-state.js**.
+Másolja a következő JavaScript-et egy szövegszerkesztőbe, és mentse **drone-state.js néven.**
 
-### <a name="device-model-javascript-simulation-example"></a>Eszköz modellje JavaScript szimuláció példa
+### <a name="device-model-javascript-simulation-example"></a>Példa a JavaScript eszközmodellre
 
 ```JavaScript
 "use strict";
@@ -397,15 +397,15 @@ function varylocation(latitude, longitude, distance) {
 }
 ```
 
-## <a name="create-a-method-script-file"></a>Módszer parancsfájl létrehozása
+## <a name="create-a-method-script-file"></a>Metódusparancsfájl létrehozása
 
-Módszer parancsprogramok viselkedésének parancsfájlok hasonlóak. Egy adott felhőbeli eszköz metódus hívásakor, azok eszköz viselkedésének megadása.
+A metódusparancsfájlok hasonlóak a viselkedési parancsfájlokhoz. Ezek határozzák meg az eszköz viselkedését, ha egy adott felhő-eszköz metódus neve.
 
-A drone visszaírási parancsfájlt a drone koordináták szimulálása a drone kezdőlap visszaadása egy rögzített pont állítja be.
+A drón visszahívási parancsfájlja a drón koordinátáit egy rögzített pontra állítja be, hogy szimulálja a hazatérő drónt.
 
-Másolja a következő JavaScript egy szövegszerkesztőbe, és mentse **droneRecall-method.js**.
+Másolja a következő JavaScript-et egy szövegszerkesztőbe, és mentse **el droneRecall-method.js néven.**
 
-### <a name="device-model-javascript-simulation-example"></a>Eszköz modellje JavaScript szimuláció példa
+### <a name="device-model-javascript-simulation-example"></a>Példa a JavaScript eszközmodellre
 
 ```JavaScript
 "use strict";
@@ -469,9 +469,9 @@ function main(context, previousState, previousProperties) {
 
 ## <a name="debugging-script-files"></a>Parancsfájlok hibakeresése
 
-Viselkedés fájl futtatása nem csatoljon egy hibakeresőt, miközben is lehet adatokat írni az szolgáltatás napló használata a **log** függvény. A szintaktikai hibákat a értelmezője számára készült meghiúsul, és a kivétel kapcsolatos adatokat ír a naplófájlba.
+Bár nem csatolhat hibakeresőt egy futó viselkedésfájlhoz, a **naplófunkció** használatával adatokat írhat a szolgáltatásnaplóba. Szintaktikai hibák esetén az értelmező meghibásodik, és információt ír a kivételről a naplóba.
 
-Naplózási. példa:
+Példa naplózásra:
 
 ```JavaScript
 function main(context, state) {
@@ -490,11 +490,11 @@ function main(context, state) {
 }
 ```
 
-## <a name="deploy-an-advanced-device-model"></a>Egy speciális eszköz-modell üzembe helyezése
+## <a name="deploy-an-advanced-device-model"></a>Speciális eszközmodell telepítése
 
-A speciális eszköz-modell üzembe helyezéséhez a fájlok feltöltése az Eszközszimuláció példány:
+A speciális eszközmodell telepítéséhez töltse fel az eszközszimulációs példányfájljait:
 
-A menüsávon válassza az **Eszközmodellek** gombot. A **eszközmodellt** lap felsorolja az eszköz érhető el ebben a példányban az Eszközszimuláció modellek:
+A menüsávon válassza az **Eszközmodellek** gombot. Az **Eszközmodellek** lap felsorolja az eszközmodelleket, amelyek az Eszközszimuláció ezen példányában érhetők el:
 
 ![Eszközmodellek](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
@@ -502,18 +502,18 @@ Kattintson az **+ Eszközmodellek hozzáadása** elemre a lap jobb felső sarká
 
 ![Eszközmodell hozzáadása](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
-Kattintson a **speciális** a speciális eszköz-modell lap megnyitása:
+A speciális eszközmodell lap megnyitásához kattintson a **Speciális** gombra:
 
-![Advanced Tab](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
+![Speciális lap](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
-Kattintson a **Tallózás** , és válassza ki a létrehozott JSON- és JavaScript-fájlokat. Győződjön meg arról, mindhárom fájlt kiválasztásához. Ha bármely fájl hiányzik, az érvényesítés sikertelen:
+Kattintson a **Tallózás** gombra, és jelölje ki a létrehozott JSON- és JavaScript-fájlokat. Ügyeljen arra, hogy mindhárom fájlt kijelölje. Ha egy fájl hiányzik, az érvényesítés sikertelen:
 
 ![Fájlok tallózása](media/iot-accelerators-device-simulation-advanced-device/browse.png)
 
-Ha a fájlok érvényesíteni, kattintson a **mentése** , és az eszköz modellje a egy használatra kész. Ellenkező esetben javítsa ki a hibákat, és a fájlok újrafeltöltése:
+Ha a fájlok megfelelnek az ellenőrzésen, kattintson a **Mentés** gombra, és az eszközmodell készen áll a szimulációban való használatra. Ellenkező esetben javítsa ki a hibákat, és töltse fel újra a fájlokat:
 
 ![Mentés](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az útmutató megismerkedett az Eszközszimuláció és a egy speciális eszközmodell létrehozása használt eszköz modell-fájlokat. Ezt követően előfordulhat, hogy szeretné hogyan [az Eszközszimuláció megoldásgyorsító által küldött telemetriai adatok megjelenítéséhez használja a Time Series Insights](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).
+Ebben az útmutatóútmutatóban megismerkedett az Eszközszimulációban használt eszközmodell-fájlokkal, valamint a fejlett eszközmodell létrehozásának módjával. Ezután érdemes lehet megvizsgálni, hogyan használhatja a Time Series Insights segítségével [az Eszközszimulációs megoldásgyorsítóból küldött telemetriai adatok megjelenítéséhez.](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)

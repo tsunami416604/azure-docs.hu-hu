@@ -1,6 +1,6 @@
 ---
-title: Egyedi gyorsítótárazás az Azure API Management szolgáltatásban
-description: Ismerje meg, hogyan elemeket gyorsítótárazza a kulcs az Azure API Management által
+title: Egyéni gyorsítótárazás az Azure API Managementben
+description: Ismerje meg, hogyan lehet elemeket gyorsítótárazni kulcs szerint az Azure API Managementben
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60780821"
 ---
-# <a name="custom-caching-in-azure-api-management"></a>Egyedi gyorsítótárazás az Azure API Management szolgáltatásban
-Az Azure API Management szolgáltatás tartalmaz beépített támogatást nyújt a [HTTP-válaszok gyorsítótárazását](api-management-howto-cache.md) kulcsként az erőforrás URL-cím használatával. Kérelemfejlécek használatával módosíthatja a kulcsot a `vary-by` tulajdonságait. Ez akkor hasznos, teljes (más néven reprezentációinak) HTTP-válaszok gyorsítótárazáshoz, de néha hasznos csak gyorsítótár létrehozása egy részét. Az új [gyorsítótár-keresési-érték](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) és [gyorsítótár-tároló-érték](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) szabályzatok lehetővé teszi, hogy tárolására és lekérésére tetszőleges darabok belüli szabályzatdefiníciók adatokat. Ez a képesség is értéket ad hozzá a korábban bevezetett [küldési-kérelmek](/azure/api-management/api-management-advanced-policies#SendRequest) házirend mivel most gyorsítótárazhatja a külső szolgáltatásokhoz érkező válaszokat.
+# <a name="custom-caching-in-azure-api-management"></a>Egyéni gyorsítótárazás az Azure API Managementben
+Az Azure API Management szolgáltatás beépített támogatást nyújt a [HTTP-válasz gyorsítótárazáshoz,](api-management-howto-cache.md) amely az erőforrás URL-címét használja kulcsként. A kulcs a `vary-by` tulajdonságok at használó kérelemfejlécekkel módosítható. Ez akkor hasznos, ha a gyorsítótárazás teljes HTTP-válaszok (más néven ábrázolások), de néha hasznos, hogy csak cache egy részét a reprezentáció. Az új [gyorsítótár-keresés-érték](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) és [a gyorsítótár-tároló-érték](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) házirendek lehetővé teszik tetszőleges adatadatok tárolását és beolvasását a házirend-definíciókon belül. Ez a képesség is hozzáadott értéket a korábban bevezetett [küldési kérelem](/azure/api-management/api-management-advanced-policies#SendRequest) házirend, mert most már cache válaszok külső szolgáltatásokból érkező válaszokat.
 
 ## <a name="architecture"></a>Architektúra
-Az API Management szolgáltatás által használt egy megosztott bérlőnkénti adatok gyorsítótárazása, hogy a skála több egységig, továbbra is elérheti a azonos gyorsítótárban tárolt adatokat. Azonban ha dolgozik a több régióból álló üzemelő vannak belül a régiók mindegyike független gyorsítótárak. Fontos a gyorsítótár nem tekinti a tárolóban, ahol a szolgáltatás néhány adat, csak forrását. Ha volt, és később úgy döntött, hogy a több régióban történő üzembe helyezés előnyeit, majd, amely az utazási felhasználóval rendelkező ügyfelek előfordulhat, hogy férhet hozzá, a gyorsítótárazott adatok.
+Az API Management szolgáltatás egy megosztott bérlőnkénti adatgyorsítótárat használ, így a több egységre való skálázásnak köszönhetően továbbra is hozzáférhet ugyanazokhoz a gyorsítótárazott adatokhoz. Azonban ha egy több régiós központi telepítés használata vannak független gyorsítótárak az egyes régiókban. Fontos, hogy ne kezelje a gyorsítótárat adattárként, ahol ez az egyetlen információforrás. Ha igen, és később úgy döntött, hogy kihasználja a több régióra kiterjedő telepítést, akkor az ügyfelek a felhasználók, hogy az utazási elveszítheti a hozzáférést a gyorsítótárazott adatokhoz.
 
-## <a name="fragment-caching"></a>Fragment gyorsítótárazás
-Vannak bizonyos esetekben, ahol a visszaadott válasz tartalmazza a költséges határozza meg, és a egy ésszerű időn még friss marad adatok bizonyos része. Tegyük fel fontolja meg egy szolgáltatás, amely légitársaság, amely azzal kapcsolatos, repülési foglalásokat, repülési állapot stb. Ha a felhasználó tagja a airlines pontok program, azokat is lenne a jelenlegi állapotuk vonatkozó információkat, és a távolság halmozott. A felhasználóval kapcsolatos információkat előfordulhat, hogy tárolja, eltérő, de lehet, adja meg a flight állapotáról és foglalások visszaadott válaszokat. Ezt megteheti egy zónaaláírásnak nevezett töredék gyorsítótárazását. Az elsődleges leképezése a forráskiszolgálóról, azt, hogy ha a felhasználóval kapcsolatos információkat beszúrandó bizonyos típusú jogkivonat használatával adhatók vissza. 
+## <a name="fragment-caching"></a>Töredék gyorsítótárazása
+Vannak olyan esetek, amikor a visszaküldött válaszok tartalmaznak bizonyos adatrészeket, amelyek meghatározása költséges, és mégis ésszerű ideig friss marad. Vegyük például egy légitársaság által épített szolgáltatást, amely tájékoztatást nyújt a repülőjegy-foglalásról, a járat állapotáról stb. Ha a felhasználó tagja a légitársaságok pont programjának, akkor a jelenlegi állapotukra és a felhalmozott futásteljesítményükre vonatkozó információkkal is rendelkeznek. Előfordulhat, hogy ez a felhasználóval kapcsolatos információ egy másik rendszerben tárolódik, de kívánatos lehet, hogy azokat a járat állapotáról és foglalásairól visszaküldött válaszokban is felvesse. Ezt a töredékgyorsítótárazásnak nevezett folyamattal teheti meg. Az elsődleges ábrázolás visszaküldhető az eredeti kiszolgálóról valamilyen jogkivonat használatával, amely jelzi, hogy a felhasználóval kapcsolatos információkat hol kell beszúrni. 
 
-Vegye figyelembe a következő JSON-választ a háttérrendszeri API.
+Fontolja meg a következő JSON-választ egy háttér-API-ból.
 
 ```json
 {
@@ -43,13 +43,13 @@ Vegye figyelembe a következő JSON-választ a háttérrendszeri API.
 }  
 ```
 
-És a másodlagos-erőforrás `/userprofile/{userid}` láthatóhoz hasonló
+És másodlagos `/userprofile/{userid}` erőforrás, hogy néz ki, mint,
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-Határozza meg a megfelelő felhasználói adatokat, az API Management kell azonosítani a végfelhasználó számára, akik. Ez a mechanizmus megvalósítási-függő. Tegyük fel, használom a `Subject` a jogcím egy `JWT` token. 
+A megfelelő felhasználói adatok meghatározásához az API Managementnek azonosítania kell, hogy ki a végfelhasználó. Ez a mechanizmus a végrehajtástól függ. Például egy `Subject` `JWT` jogkivonat jogcímét használom. 
 
 ```xml
 <set-variable
@@ -57,7 +57,7 @@ Határozza meg a megfelelő felhasználói adatokat, az API Management kell azon
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-Az API Management tárolja a `enduserid` későbbi használatra környezeti változó értékét. A következő lépés az határozza meg, ha már rendelkezik-e a felhasználói adatokat beolvasni egy korábbi kérelemre, és a gyorsítótárban tárolt. Ehhez használja az API Management a `cache-lookup-value` házirend.
+Az API `enduserid` Management egy környezeti változóban tárolja az értéket későbbi használatra. A következő lépés annak megállapítása, hogy egy korábbi kérelem már lekérte-e a felhasználói adatokat, és tárolta-e azokat a gyorsítótárban. Ehhez az API Management `cache-lookup-value` a szabályzatot használja.
 
 ```xml
 <cache-lookup-value
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Ha nem található bejegyzés a gyorsítótár, amely a kulcs értékét, akkor nem felel meg a `userprofile` környezeti változó jön létre. Az API Management ellenőrzi a sikeres a keresési használatának a `choose` folyamat házirend szabályozza.
+Ha a gyorsítótárban nincs a kulcsértéknek megfelelő bejegyzés, akkor nem `userprofile` jön létre környezeti változó. Az API Management a `choose` vezérlőfolyamat-házirend használatával ellenőrzi a vizsgálat sikeresét.
 
 ```xml
 <choose>
@@ -75,7 +75,7 @@ Ha nem található bejegyzés a gyorsítótár, amely a kulcs értékét, akkor 
 </choose>
 ```
 
-Ha a `userprofile` környezeti változó nem létezik, akkor az API Management lesz egy HTTP-kérés is lekérheti azt.
+Ha `userprofile` a környezeti változó nem létezik, majd az API Management http-kérelmet kell benyújtania a beolvasásához.
 
 ```xml
 <send-request
@@ -92,7 +92,7 @@ Ha a `userprofile` környezeti változó nem létezik, akkor az API Management l
 </send-request>
 ```
 
-Az API Management használja a `enduserid` létrehozni a felhasználói profil erőforrás URL-CÍMÉT. Után az API Management a válasz rendelkezik, ez lekéri a tartományon kívül a válasz törzse, és vissza egy környezeti változóba menti.
+Az API `enduserid` Management a felhasználói profil erőforrásURL-címének létrehozásához használja az url-címet. Miután az API Management rendelkezik a válasz, lekéri a törzs szöveget a válaszból, és tárolja vissza egy környezeti változó.
 
 ```xml
 <set-variable
@@ -100,7 +100,7 @@ Az API Management használja a `enduserid` létrehozni a felhasználói profil e
     value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 ```
 
-Az API Management a HTTP-kérelem újra, így, ha ugyanaz a felhasználó egy másik kérést elkerüléséhez megadhatja a felhasználói profil tárolása a gyorsítótárban.
+Annak elkerülése érdekében, api management attól, hogy ezt a HTTP-kérelmet újra, amikor ugyanaz a felhasználó egy másik kérelmet, megadhatja, hogy tárolja a felhasználói profilt a gyorsítótárban.
 
 ```xml
 <cache-store-value
@@ -108,11 +108,11 @@ Az API Management a HTTP-kérelem újra, így, ha ugyanaz a felhasználó egy m�
     value="@((string)context.Variables["userprofile"])" duration="100000" />
 ```
 
-Az API Management a használatával pontos ugyanazzal a kulccsal, amely az API Management eredetileg megpróbálta beolvasni a gyorsítótárban tárolja az értéket. Az időtartam, amely az API Management úgy dönt, hogy az érték tárolása alapján hogyan gyakran a változtatások és a felhasználók hogyan hibatűrő az elavult adatokat. 
+Az API Management pontosan ugyanazzal a kulccsal tárolja az értéket a gyorsítótárban, mint amivel az API Management eredetileg megpróbálta beolvasni. Az API Management által az érték tárolásához választott időtartamnak az adatok változásának és az elavult adatokkal szembeni toleránsságának függvényében kell alapulnia. 
 
-Fontos vegye figyelembe, hogy lekérése a gyorsítótárból továbbra is egy folyamaton, hálózati kérés és potenciálisan továbbra is felvehetőek tíz ezredmásodperc a kérelemre. Az előnyeit annak meghatározása, a felhasználói profil adatait, amely miatt kellene adatbázis-lekérdezések vagy több háttérrendszereket összesített adatait hosszabb ideig tart származnak.
+Fontos felismerni, hogy a gyorsítótárból való lekérés még mindig folyamaton kívüli, hálózati kérelem, és potenciálisan továbbra is tíz ezredmásodpercet adhat a kéréshez. Az előnyök akkor jelentkeznek, ha a felhasználói profil adatainak meghatározása hosszabb időt vesz igénybe, mint az adatbázis-lekérdezések vagy a több háttérrendszerből származó összesítő adatok miatt.
 
-A folyamat utolsó lépését, hogy frissítse a visszaadott válasz a felhasználói profil adatait.
+A folyamat utolsó lépése a visszaadott válasz frissítése a felhasználói profil adataival.
 
 ```xml
 <!-- Update response body with user profile-->
@@ -121,9 +121,9 @@ A folyamat utolsó lépését, hogy frissítse a visszaadott válasz a felhaszn�
     to="@((string)context.Variables["userprofile"])" />
 ```
 
-Választhatja ki, az idézőjelekkel együtt a token részeként, hogy akkor is, ha nem következik be, a csere, a választ még mindig egy érvényes JSON.  
+Az idézőjelek et a jogkivonat részeként is megadhatja, hogy még akkor is, ha a csere nem fordul elő, a válasz továbbra is érvényes JSON marad.  
 
-Miután együtt kombinálja ezeket a lépéseket, a végeredmény egy szabályzatot, amely az alábbihoz hasonlóan néz ki.
+Miután egyesíti ezeket a lépéseket együtt, a végeredmény egy olyan házirend, amely úgy néz ki, mint a következő.
 
 ```xml
 <policies>
@@ -177,22 +177,22 @@ Miután együtt kombinálja ezeket a lépéseket, a végeredmény egy szabályza
 </policies>
 ```
 
-A gyorsítótár használatának elsősorban a webhelyek szolgáltatásban, HTML jön létre a kiszolgáló oldalán, hogy egyetlen lapként megjeleníthetők. Azt is lehet hasznos, ahol az ügyfelek ügyféloldali HTTP-gyorsítótárazás nem hajtható végre, vagy nem kell helyezni, amely felelős az ügyfél API-k.
+Ezt a gyorsítótárazási megközelítést elsősorban olyan webhelyeken használják, ahol a HTML a kiszolgálóoldalon áll, így egyetlen oldalként jeleníthető meg. Az API-kban is hasznos lehet, ahol az ügyfelek nem tudnak ügyféloldali HTTP-gyorsítótárazást végezni, vagy kívánatos, hogy ezt a felelősséget ne az ügyfélre helyezze.
 
-Ez ugyanolyan típusú töredék gyorsítótárazás a háttér-webkiszolgálók, a Redis gyorsítótár-kiszolgáló használatával is elvégezhető, azonban az API Management szolgáltatás használatával a munka elvégzéséhez akkor hasznos, ha a gyorsítótárazott töredék érkeznek különböző háttérrendszereket, mint az elsődleges válaszok.
+Ugyanez a fajta töredék gyorsítótárazás is elvégezhető a háttér-webkiszolgálókon egy Redis gyorsítótárazási kiszolgáló használatával, azonban az API Management szolgáltatás használata a munka elvégzéséhez akkor hasznos, ha a gyorsítótárazott töredékek különböző háttérrendszerekből származnak, mint az elsődleges Válaszok.
 
-## <a name="transparent-versioning"></a>Transzparens verziószámozás
-Általános gyakorlat egy API-t is támogatja, egyszerre több különböző megvalósítási verzió. Ha például támogatják a különböző környezeteket (fejlesztői, teszt, éles környezetben, stb.) vagy az API-t az újabb verziókra történő áttelepítéséhez az API-fogyasztókat időt biztosíthat, régebbi verzióit támogatja. 
+## <a name="transparent-versioning"></a>Átlátszó verziószámozás
+Bevett gyakorlat, hogy egy API több különböző implementációs verziója egyszerre támogatott. Például a különböző környezetek (fejlesztés, tesztelés, éles környezet, stb), vagy az API-verziók támogatása, hogy időt adjon az API-fogyasztók áttérni az újabb verziók. 
 
-Ügyfél fejlesztők számára, hogy módosítsa az URL-címeket, az átjárószolgáltatásnak kezelésére, ennek egyik módszere `/v1/customers` való `/v2/customers` , hogy jelenleg szeretnék használni, és a megfelelő háttérkiszolgáló URL-cím hívja az API melyik verzióját a felhasználói profil adatait tárolja. Annak megállapításához, a háttérkészlet megfelelő URL-cím egy adott ügyfél meghívásához, néhány konfigurációs adatok lekérdezéséhez szükséges. A konfigurációs adatok gyorsítótárazásával az API Management minimalizálhatja a teljesítményét, a keresés állapotát.
+Ennek kezelésének egyik megközelítése, ahelyett, hogy az ügyfélfejlesztőknek az URL-címek ről az url-címekre kellene `/v1/customers` módosítaniuk, `/v2/customers` hogy a fogyasztó profiladataiban tárolják az API melyik verzióját kívánják használni, és megkell hívniuk a megfelelő háttérURL-t. A megfelelő háttér-URL-cím meghatározásához egy adott ügyfél számára, le kell kérdezni néhány konfigurációs adatot. A konfigurációs adatok gyorsítótárazásával az API Management minimálisra csökkentheti a vizsgálat teljesítményének büntetését.
 
-Az első lépéseként határozza meg a kívánt verziót konfigurálásához használt azonosító. Ebben a példában a kiválasztott a verziót, hogy a termékkulcs-előfizetés társítása. 
+Az első lépés a kívánt verzió konfigurálásához használt azonosító meghatározása. Ebben a példában úgy döntöttem, hogy a verziót társítom a termék-előfizetési kulcshoz. 
 
 ```xml
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
 ```
 
-Az API Management majd elvégzi a gyorsítótár keresési megtekintéséhez, hogy azt már beolvasni a kívánt ügyfél verziója.
+Az API Management ezután gyorsítótár-kereséssel ellenőrzi, hogy már lekérte-e a kívánt ügyfélverziót.
 
 ```xml
 <cache-lookup-value
@@ -200,14 +200,14 @@ key="@("clientversion-" + context.Variables["clientid"])"
 variable-name="clientversion" />
 ```
 
-Ezt követően az API Management ellenőrzi, hogy ha ezt nem találta ezt a gyorsítótárban.
+Ezután az API Management ellenőrzi, hogy nem találta-e meg a gyorsítótárban.
 
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 ```
 
-Ha az API Management nem találja, az API Management kérdezi le azt.
+Ha az API Management nem találta meg, az API Management lekéri azt.
 
 ```xml
 <send-request
@@ -220,7 +220,7 @@ Ha az API Management nem találja, az API Management kérdezi le azt.
 </send-request>
 ```
 
-A válasz törzse szöveg kinyerése a választ.
+A választörzs szövegének kibontása a válaszból.
 
 ```xml
 <set-variable
@@ -228,7 +228,7 @@ A válasz törzse szöveg kinyerése a választ.
       value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
 ```
 
-Store azt vissza a gyorsítótárban későbbi használatra.
+Tárolja vissza a gyorsítótárba későbbi használatra.
 
 ```xml
 <cache-store-value
@@ -237,14 +237,14 @@ Store azt vissza a gyorsítótárban későbbi használatra.
       duration="100000" />
 ```
 
-És végül frissíti a háttér-URL-CÍMÉT, válassza ki a kívánt az ügyfél által a szolgáltatás verzióját.
+És végül frissítse a háttér-URL-t, hogy válassza ki a szolgáltatás kívánt verzióját az ügyfél.
 
 ```xml
 <set-backend-service
       base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
 ```
 
-A teljes házirend a következőképpen történik:
+A teljes szabályzat a következő:
 
 ```xml
 <inbound>
@@ -269,12 +269,12 @@ A teljes házirend a következőképpen történik:
 </inbound>
 ```
 
-Transzparens módon szabályozhatók, mely háttérrendszer verzió frissítése és ismételt üzembe helyezése az ügyfelek nélkül az ügyfelek hozzáférnek az API-fogyasztókat engedélyezése egy elegáns megoldás, amely számos API versioning vonatkozik.
+Lehetővé teszi az API-felhasználók számára, hogy átlátható módon szabályozsák, hogy az ügyfelek mely háttérverzióhoz férnek hozzá anélkül, hogy frissíteniük kellene és újra kellene telepíteniük az ügyfeleket, elegáns megoldás, amely számos API-verziószámozási problémát kezel.
 
-## <a name="tenant-isolation"></a>Bérlők elkülönítését
-Nagyobb, több-bérlős központi telepítések egyes vállalatok hozzon létre külön csoportokat a bérlők a háttérrendszer hardver elkülönült üzemelő példányok esetében. Így minimálisra csökkenthető a háttérbeli hardverprobléma által érintett felhasználók számát. Emellett lehetővé teszi a szakaszaiban jelennek meg az új szoftververziók. Ez az architektúra háttérrendszer ideális esetben az API-fogyasztókat átlátható kell lennie. Ez lehet elérni a transzparens versioning hasonló módon alapú ugyanezzel a módszerrel, a háttérkiszolgáló URL-címet, állapotú konfigurációs API-kulcs használatával kezelésére, mert.  
+## <a name="tenant-isolation"></a>Bérlő elkülönítése
+Nagyobb, több-bérlős telepítések egyes vállalatok külön bérlőcsoportokat hoznak létre a háttérhardverek különböző központi telepítésein. Ez minimálisra csökkenti azoknak az ügyfeleknek a számát, akiket a háttérrendszer hardverproblémája érint. Azt is lehetővé teszi, hogy az új szoftververziók at gördült ki szakaszokban. Ideális esetben ez a háttérarchitektúra átláthatónak kell lennie az API-fogyasztók számára. Ez az átlátszó verziószámozáshoz hasonlóan érhető el, mivel a háttérbeli URL-cím API-kulcsonkénti konfigurációs állapothasználatával történő kezelésére szolgáló ugyanazon a technikán alapul.  
 
-Visszaadása egy előnyben részesített minden előfizetési kulcs API-verzió, helyett egy azonosítót, hogy egy bérlő vonatkozik, a hozzárendelt hardvercsoportba példában adja vissza. Adott azonosítót hozhatnak létre a megfelelő háttérkiszolgáló URL-cím használható.
+Ahelyett, hogy minden egyes előfizetési kulcshoz visszaadná az API előnyben részesített verzióját, egy olyan azonosítót adna vissza, amely a bérlőt a hozzárendelt hardvercsoporthoz kapcsolja. Ez az azonosító a megfelelő háttér-URL-cím létrehozásához használható.
 
 ## <a name="summary"></a>Összefoglalás
-Az Azure API management-gyorsítótár végezheti a bármilyen típusú adatok tárolására szolgáló lehetővé teszi a konfigurációs adatok, amelyek hatással lehetnek a bejövő kérelem feldolgozása módon hatékony hozzáférést. Is használható, amely is kiegészítheti a válaszokat, a háttérbeli API-k által visszaadott adatok töredék tárolásához.
+Az Azure API felügyeleti gyorsítótárának bármilyen típusú adat tárolása lehetővé teszi a konfigurációs adatok hatékony elérését, amelyek befolyásolhatják a bejövő kérelmek feldolgozásának módját. A háttér-API-ból visszaadott, a válaszokat bővítő adattöredékek tárolására is használható.

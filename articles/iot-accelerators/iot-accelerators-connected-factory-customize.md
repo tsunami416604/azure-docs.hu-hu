@@ -1,6 +1,6 @@
 ---
-title: Testre szabhatja a csatlakoztatott gyár megoldás – Azure |} A Microsoft Docs
-description: Hogyan szabhatja testre az Okosgyár-megoldásgyorsító viselkedésének leírása.
+title: A Csatlakoztatott gyármegoldás testreszabása - Azure | Microsoft dokumentumok
+description: A Csatlakoztatott gyári megoldásgyorsító viselkedésének testreszabása.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,78 +10,78 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67080486"
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Testre szabhatja, hogy a csatlakoztatott gyár megoldás az OPC UA-kiszolgálók adatait jeleníti meg
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>A Csatlakoztatott gyári megoldás adatok megjelenítésének testreszabása az OPC UA-kiszolgálókról
 
-A csatlakoztatott gyár megoldás összesíti, és a megoldáshoz csatlakoztatott OPC UA-kiszolgálók adatait jeleníti meg. Keresse meg, és parancsokat küldjön az OPC UA-kiszolgálók a megoldásban. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md) fejezetben talál további információt.
+A Connected Factory megoldás összesíti és megjeleníti a megoldáshoz csatlakoztatott OPC UA-kiszolgálók adatait. A megoldásban tallózhat és parancsokat küldhet az OPC UA-kiszolgálóinak. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md) fejezetben talál további információt.
 
-A megoldás az összesített adatok közé tartoznak az általános berendezések hatékonyságát (OEE) és a fő teljesítménymutatók (KPI-k), amely a factory, a sor és az állomás szinten az irányítópult megtekintéséhez. Az alábbi képernyőfelvételen az OEE és KPI értékeit a **szerelvény** az állomás **gyártósor 1**, a a **München** gyári:
+A megoldás összesített adatai közé tartozik például a teljes berendezéshatékonyság (OEE) és a fő teljesítménymutatók (KPI-k), amelyeket gyári, vonal- és állomásszintekirányítópultján tekinthet meg. Az alábbi képernyőképen az **összeszerelő** állomás OEE- és KPI-értékei láthatók az **1.** **Munich**
 
-![OEE és KPI mutatókra, a megoldás – példa][img-oee-kpi]
+![Példa oee- és KPI-értékekre a megoldásban][img-oee-kpi]
 
-A megoldás lehetővé teszi, hogy az adott adatelemek nevű OPC UA-kiszolgálók a részletes információk megtekintéséhez *állomások*. Az alábbi képernyőfelvételen a grafikon, egy adott állomásról előállított elemek száma:
+A megoldás lehetővé teszi az OPC UA-kiszolgálók, az úgynevezett állomások részletes adatainak *megtekintését.* A következő képernyőképen egy adott állomásról gyártott elemek száma látható:
 
-![Feldolgozott elemek száma a grafikon][img-manufactured-items]
+![A gyártott cikkek számának mintaszáma][img-manufactured-items]
 
-Ha rákattint az egyik a gráfok, feltárhatja az adatokat, továbbá a Time Series Insights (TSI) használatával:
+Ha az egyik grafikonra kattint, a Time Series Insights (TSI) használatával tovább fedezheti fel az adatokat:
 
-![Fedezze fel az adatokat a Time Series Insights használatával][img-tsi]
+![Adatok feltárása a Time Series Insights használatával][img-tsi]
 
-Ez a cikk ismerteti:
+Ez a cikk a következőket ismerteti:
 
-- Hogyan az adatok legyen elérhető a különböző nézetek a megoldásban.
-- Hogyan szabhatja testre a megoldás módja adatait jeleníti meg.
+- Hogyan érhető el az adatok a megoldás különböző nézetei számára.
+- Hogyan szabhatja testre a megoldás adatok megjelenítésének módját.
 
 ## <a name="data-sources"></a>Adatforrások
 
-A csatlakoztatott gyár megoldás a megoldáshoz csatlakoztatott OPC UA-kiszolgálók adatait jeleníti meg. Az alapértelmezett telepítés magában foglalja a több OPC UA-kiszolgálók egy gyári szimuláció futtatása. Saját OPC UA-kiszolgálókat is hozzáadhat, amelyek [egy átjárón keresztül csatlakozzon] [lnk-connect-cf] a megoldáshoz.
+A Connected Factory megoldás a megoldáshoz csatlakoztatott OPC UA-kiszolgálók adatait jeleníti meg. Az alapértelmezett telepítés több, gyári szimulációt futtató OPC UA-kiszolgálót tartalmaz. Hozzáadhatja saját OPC UA-kiszolgálóit, amelyek [átjárón keresztül csatlakoznak][lnk-connect-cf] a megoldáshoz.
 
-Egy csatlakoztatott OPC UA-kiszolgálóval küldhet a az irányítópulton lévő megoldás által megnyithatja:
+Az irányítópulton tallózhat a csatlakoztatott OPC UA-kiszolgáló által a megoldásnak küldhető adatelemek között:
 
-1. Válasszon **böngésző** navigálhat a **OPC UA-kiszolgáló kiválasztása** megtekintése:
+1. Válassza a **Böngésző** lehetőséget az **OPC UA-kiszolgáló kiválasztása nézetre** való navigáláshoz:
 
-    ![Keresse meg a Select egy OPC UA-kiszolgáló megtekintése][img-select-server]
+    ![Navigálás az OPC UA-kiszolgáló kiválasztása nézetre][img-select-server]
 
-1. Válasszon kiszolgálót, majd kattintson a **Connect**. Kattintson a **folytatása** amikor a biztonsági figyelmeztetés jelenik meg.
+1. Jelöljön ki egy kiszolgálót, és kattintson a **Csatlakozás gombra.** Kattintson a **Folytatás gombra,** amikor megjelenik a biztonsági figyelmeztetés.
 
     > [!NOTE]
-    > Ez a figyelmeztetés csak egyszer jelenik meg minden olyan kiszolgáló esetén, és a megoldás irányítópultján, és a kiszolgáló közötti megbízhatósági kapcsolatot hoz létre.
+    > Ez a figyelmeztetés csak egyszer jelenik meg minden kiszolgálón, és megbízhatósági kapcsolatot hoz létre a megoldás irányítópultja és a kiszolgáló között.
 
-1. Tallózhat az adatelemek, amely a kiszolgáló elküldheti a megoldáshoz. A megoldás elküldött elemek be van jelölve:
+1. Most már tallózhat az adatelemek között, amelyeket a kiszolgáló elküldhet a megoldásnak. A megoldásra küldött elemek be vannak jelölve:
 
-    ![Közzétett elemeket][img-published]
+    ![Közzétett elemek][img-published]
 
-1. Ha Ön egy *rendszergazda* a megoldást, és választhatja ki közzététele egy adatelemet, hogy a csatlakoztatott gyár megoldás érhető el. A rendszergazdák is módosítsa az értéket adatelemek és metódusokat hívja meg az OPC UA-kiszolgálóval.
+1. Ha Ön *rendszergazda* a megoldásban, közzétehet egy adatelemet, hogy elérhetővé tegye a Csatlakoztatott gyári megoldásban. Rendszergazdaként módosíthatja az adatelemek és a hívási módszerek értékét az OPC UA-kiszolgálón is.
 
 ## <a name="map-the-data"></a>Az adatok leképezése
 
-A csatlakoztatott gyár megoldás vannak leképezve, és a közzétett adatelemeket a forrásrendszerektől összegyűjtött és összegzett OPC UA-kiszolgáló a megoldásban a különböző nézetek. A megoldás üzembe helyezésekor a csatlakoztatott gyár megoldás üzembe helyezi az Azure-fiókjával. Egy JSON-fájlt a Visual Studio csatlakoztatott gyár megoldás tárolja a megfeleltetési adatokat. Megtekintheti, és módosítsa a JSON konfigurációs fájlt a csatlakoztatott gyári Visual Studio-megoldás. Ugyanakkor a megoldást, a módosítás végrehajtása után.
+A Connected Factory megoldás leképezi és összesíti a közzétett adatelemeket az OPC UA-kiszolgálóról a megoldás különböző nézeteire. A Connected Factory megoldás üzembe helyezi az Azure-fiók, amikor a megoldás kiépítése. A Visual Studio Connected Factory megoldásban található JSON-fájl tárolja ezt a leképezési információt. Ezt a JSON konfigurációs fájlt a Connected Factory Visual Studio megoldásban tekintheti meg és módosíthatja. A módosítás után újratelepítheti a megoldást.
 
-A konfigurációs fájlt használhatja:
+A konfigurációs fájl segítségével:
 
 - A meglévő szimulált gyárak, gyártósorok és állomások szerkesztése.
-- Térkép a megoldáshoz csatlakozó valós OPC UA-kiszolgálók adatait.
+- A megoldáshoz csatlakozó valós OPC UA-kiszolgálók adatainak leképezése.
 
-Leképezési és összesíti az adatokat az adott igényeknek kapcsolatos további információkért lásd: [konfigurálása az Okosgyár-megoldásgyorsító ](iot-accelerators-connected-factory-configure.md).
+Az adatok nak az adott követelményeknek való megfelelés érdekében történő leképezéséről és összesítéséről [a Csatlakoztatott gyári megoldásgyorsító konfigurálása ](iot-accelerators-connected-factory-configure.md)című témakörben talál további információt.
 
-## <a name="deploy-the-changes"></a>A módosítások üzembe helyezése
+## <a name="deploy-the-changes"></a>A módosítások telepítése
 
-Miután végzett, a módosításokat a **ContosoTopologyDescription.json** fájlt, újra kell telepítenie a csatlakoztatott gyár megoldás az Azure-fiókjába.
+Ha befejezte a **ContosoTopologyDescription.json** fájl módosításait, újra telepítenie kell a Connected Factory megoldást az Azure-fiókjába.
 
-A **azure-iot-connected-factory** tárház tartalmaz egy **build.ps1** PowerShell-parancsprogram, amellyel újraépítéséhez és a megoldás üzembe helyezéséhez.
+Az **azure-iot-connected-factory** repository tartalmaz egy **build.ps1** PowerShell-parancsfájlt, amelya megoldás újraépítéséhez és üzembe helyezéséhez használható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az Okosgyár-megoldásgyorsító a következő cikkek elolvasásával:
+A Connected Factory megoldásgyorsítóról az alábbi cikkekben olvashat bővebben:
 
-* [Engedélyek az azureiotsolutions.com webhelyen][lnk-permissions]
-* [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md)
-* [GYAKORI KÉRDÉSEK][lnk-faq]
+* [Engedélyek a azureiotsolutions.com webhelyen][lnk-permissions]
+* [Csatlakoztatott gyári gyakori kérdések](iot-accelerators-faq-cf.md)
+* [Gyik][lnk-faq]
 
 
 [img-oee-kpi]: ./media/iot-accelerators-connected-factory-customize/oeenadkpi.png

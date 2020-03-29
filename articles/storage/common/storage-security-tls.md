@@ -1,7 +1,7 @@
 ---
-title: Biztonságos TLS engedélyezése a .NET-tel
+title: Biztonságos TLS engedélyezése a .NET segítségével
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan engedélyezheti a TLS 1,2-et az Azure Storage-hoz készült .NET ügyféloldali kódtár használatával.
+description: Ismerje meg, hogyan engedélyezheti a TLS 1.2-t a .NET ügyfélkódtár használatával az Azure Storage-hoz.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,25 +11,25 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371802"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
 
-A Transport Layer Security (TLS) és a SSL (SSL) olyan titkosítási protokollok, amelyek kommunikációs biztonságot biztosítanak a számítógép hálózatán. Az SSL 1,0, 2,0 és 3,0 sebezhetőnek bizonyult. Az RFC tiltja őket. A TLS 1,0 nem biztonságos a nem biztonságos blokk titkosítás (DES CBC és RC2 CBC) és a stream Cipher (RC4) használatával. A PCI-Tanács azt is javasolta, hogy az áttelepítés nagyobb TLS-verzióra történjen. További részletekért tekintse meg [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
+A Transport Layer Security (TLS) és a Secure Sockets Layer (SSL) olyan kriptográfiai protokollok, amelyek számítógépes hálózaton keresztül biztosítják a kommunikáció biztonságát. Az SSL 1.0, 2.0 és 3.0 sebezhetőnek bizonyult. Az RFC megtiltotta őket. A TLS 1.0 nem biztonságos blokktitkosítás (DES CBC és RC2 CBC) és Stream titkosítás (RC4) használatával bizonytalanná válik. A PCI tanácsa azt is javasolta, hogy a nagyobb TLS-verziókra való áttérést. További részletek: Transport [Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
 
-Az Azure Storage a 2015 óta leállította az SSL 3,0-et, és a TLS 1,2-et a nyilvános HTTPs-végpontokon használja, de a TLS 1,0 és a TLS 1,1 továbbra is támogatott a visszafelé
+Az Azure Storage 2015 óta leállította az SSL 3.0-t, és a TLS 1.2-t használja a nyilvános HTTPs-végpontokon, de a TLS 1.0 és a TLS 1.1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében.
 
-Az Azure Storage szolgáltatáshoz való biztonságos és megfelelő kapcsolódás érdekében engedélyeznie kell a TLS 1,2-es vagy újabb verzióját az ügyféloldali oldalon, mielőtt elküldené a kérelmeket az Azure Storage szolgáltatásnak.
+Az Azure Storage biztonságos és megfelelő kapcsolatának biztosítása érdekében engedélyeznie kell a TLS 1.2-es vagy újabb verzióját az ügyféloldalon, mielőtt az Azure Storage-szolgáltatás üzemeltetésére vonatkozó kérelmeket küldene.
 
-## <a name="enable-tls-12-in-net-client"></a>A TLS 1,2 engedélyezése a .NET-ügyfélben
+## <a name="enable-tls-12-in-net-client"></a>A TLS 1.2 engedélyezése .NET-ügyfélben
 
-Ahhoz, hogy az ügyfél egyeztetni lehessen a TLS 1,2-et, az operációs rendszernek és a .NET-keretrendszernek is támogatnia kell a TLS 1,2-et. A [TLS 1,2-támogatással kapcsolatos](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)további részletekért lásd:.
+Ahhoz, hogy az ügyfél egyeztetje a TLS 1.2-t, az operációs rendszernek és a . További részletek A [TLS 1.2 támogatása .](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)
 
-Az alábbi példa bemutatja, hogyan engedélyezheti a TLS 1,2-et a .NET-ügyfélen.
+Az alábbi minta bemutatja, hogyan engedélyezheti a TLS 1.2-t a .NET ügyfélben.
 
 ```csharp
 
@@ -48,11 +48,11 @@ Az alábbi példa bemutatja, hogyan engedélyezheti a TLS 1,2-et a .NET-ügyfél
 
 ```
 
-## <a name="enable-tls-12-in-powershell-client"></a>A TLS 1,2 engedélyezése a PowerShell-ügyfélben
+## <a name="enable-tls-12-in-powershell-client"></a>A TLS 1.2 engedélyezése PowerShell-ügyfélben
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)] 
 
-Az alábbi példa bemutatja, hogyan engedélyezheti a TLS 1,2-et a PowerShell-ügyfélen.
+Az alábbi minta bemutatja, hogyan engedélyezheti a TLS 1.2-t a PowerShell-ügyfélben.
 
 ```powershell
 # Enable TLS 1.2 before connecting to Azure Storage
@@ -69,16 +69,16 @@ $listOfContainers = Get-AzStorageContainer -Context $ctx -Prefix $prefix
 $listOfContainers
 ```
 
-## <a name="verify-tls-12-connection"></a>TLS 1,2-kapcsolatok ellenőrzése
+## <a name="verify-tls-12-connection"></a>TLS 1.2-es kapcsolat ellenőrzése
 
-A Hegedűs használatával ellenőrizheti, hogy a TLS 1,2 valóban használatban van-e. Nyissa meg a hegedűst az ügyfél hálózati forgalmának megkezdéséhez, majd hajtsa végre a fenti mintát. Ezután megkeresheti a TLS-verziót abban a kapcsolatban, amelyet a minta tesz.
+A Fiddler segítségével ellenőrizheti, hogy a TLS 1.2-t valóban használják-e. Nyissa meg a Fiddler-t az ügyfélhálózati forgalom rögzítésének megkezdéséhez, majd hajtsa végre a fenti mintát. Ezután megtalálhatja a TLS-verziót a minta által létrevett kapcsolatban.
 
-Az alábbi képernyőkép az ellenőrzéshez használható minta.
+A következő képernyőkép egy minta az ellenőrzéshez.
 
-![képernyőkép a TLS-verzió ellenőrzéséről a Hegedűsben](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
+![képernyőkép a TLS-verzió ellenőrzéséről a Fiddlerben](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
-* [PCI-megfelelőség a TLS-ben](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
-* [A TLS engedélyezése Java-ügyfélben](https://www.java.com/en/configure_crypto.html)
+* [PCI-megfelelőség a TLS-en](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
+* [TLS engedélyezése Java-ügyfélben](https://www.java.com/en/configure_crypto.html)

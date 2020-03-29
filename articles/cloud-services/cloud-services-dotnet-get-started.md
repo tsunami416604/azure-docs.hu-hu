@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386731"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
@@ -31,8 +31,8 @@ Ez az alkalmazás egy hirdetőtábla. A felhasználók szöveg megadásával és
 
 Az alkalmazás [üzenetsor-központú munkasémát](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használ, hogy áthelyezze a miniatűrök létrehozásának processzorigényes feladatát egy háttérfolyamatra.
 
-## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatív architektúra: App Service és webjobs
-Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként futtassa az előtér- [Azure app Service](/azure/app-service/) , és használja a [webjobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkciót a háttérrendszer számára. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. További információ a forgatókönyvhöz legjobban illeszkedő szolgáltatások kiválasztásáról: [Azure app Service, Cloud Services és Virtual Machines összehasonlítás](/azure/architecture/guide/technology-choices/compute-decision-tree).
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatív architektúra: App Service és WebJobs
+Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Egy másik lehetőség az [előtér](/azure/app-service/) futtatása az Azure App Service-ben, és használja a [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkciót a háttér-. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvnek leginkább megfelelő szolgáltatások kiválasztásáról az Azure App Service, a Cloud Services és a [virtuális gépek összehasonlítása című témakörben](/azure/architecture/guide/technology-choices/compute-decision-tree)talál további információt.
 
 ## <a name="what-youll-learn"></a>Ismertetett témák
 * A gép alkalmassá tétele az Azure-alapú fejlesztésre az Azure SDK telepítésével.
@@ -47,9 +47,9 @@ Az oktatóanyag feltételezi, hogy tisztában van az [Azure-felhőszolgáltatás
 
 Helyileg Azure-előfizetés nélkül is futtathatja az alkalmazást, de a felhőben való közzétételhez előfizetés szükséges. Ha nincs fiókja, [aktiválhatja az MSDN előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668), vagy [regisztrálhat egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
-Az oktatóanyag utasításai a következő termékek bármelyikével működnek:
+Az oktatóanyag-utasítások a következő termékek bármelyikével működnek:
 
-* A Visual Studio 2013
+* Visual Studio 2013
 * Visual Studio 2015
 * Visual Studio 2017
 * Visual Studio 2019
@@ -124,7 +124,7 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Create** (Létrehozás) gombra.
+5. Kattintson **a Létrehozás gombra.**
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
@@ -153,7 +153,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új SQL-adatbáziskiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Create** (Létrehozás) gombra.
+10. Kattintson **a Létrehozás gombra.**
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
@@ -176,7 +176,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Create** (Létrehozás) gombra.
+7. Kattintson **a Létrehozás gombra.**
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -229,10 +229,10 @@ Az Azure-tárfiók kapcsolati sztringjeinek tárolása a webes- és a feldolgoz�
 1. A **Megoldáskezelőben** a **ContosoAdsCloudService** projekt **Szerepkörök** területén kattintson a jobb gombbal a **ContosoAdsWeb** elemre, majd kattintson a **Tulajdonságok** lehetőségre.
 
     ![Szerepkör tulajdonságai](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Kattintson a **Beállítások** fülre. A **szolgáltatás konfigurációja** legördülő listában válassza a **felhő**lehetőséget.
+2. Kattintson a **Beállítások** fülre. A **Szolgáltatás konfigurációja** legördülő lista válassza a **Felhő**lehetőséget.
 
     ![Felhő konfigurálása](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot ( **...** ) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanel megnyitásához.
+3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot (**...**) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanel megnyitásához.
 
     ![A Kapcsolati sztring létrehozása mező megnyitása](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. A **Create Storage Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanelen kattintson a **Your subscription** (Saját előfizetés) elemre, válassza a korábban létrehozott tárfiókot, majd kattintson az **OK** gombra. Ha még nincs bejelentkezve, a rendszer az Azure-fiókja hitelesítő adatait kéri.
@@ -353,7 +353,7 @@ A megoldás létrehozása után áttekinti a felhőszolgáltatás-projektekre n�
 6. Keresse meg a *Microsoft.WindowsAzure.ConfigurationManager* NuGet-csomagot, majd telepítse a feldolgozói szerepkör projektben.
 
 ### <a name="set-project-references"></a>A projekt hivatkozásainak beállítása
-1. A ContosoAdsWeb projektben állítson be egy hivatkozást a ContosoAdsCommon projektre. Kattintson a jobb gombbal a ContosoAdsWeb projektre, majd kattintson a **References** - **Add References** (Hivatkozások, Hivatkozások hozzáadása) elemre. A **Hivatkozáskezelő** párbeszédpanelen válassza a bal oldali ablaktáblában lévő **Megoldás – Projektek**, majd a **ContosoAdsCommon** lehetőséget, és végül kattintson az **OK** gombra.
+1. A ContosoAdsWeb projektben állítson be egy hivatkozást a ContosoAdsCommon projektre. Kattintson a jobb gombbal a ContosoAdsWeb projektre, majd kattintson **a Hivatkozások** - **hivatkozás hozzáadása parancsra.** A **Hivatkozáskezelő** párbeszédpanelen válassza a bal oldali ablaktáblában lévő **Megoldás – Projektek**, majd a **ContosoAdsCommon** lehetőséget, és végül kattintson az **OK** gombra.
 2. A ContosoAdsWorker projektben állítson be egy hivatkozást a ContosoAdsCommon projektre.
 
     A ContosoAdsCommon tartalmazza az Entity Framework-adatmodellt és a környezeti osztályt, amelyet az elő- és a háttéralkalmazás egyaránt használ.
@@ -361,7 +361,7 @@ A megoldás létrehozása után áttekinti a felhőszolgáltatás-projektekre n�
 
     Ezt a szerelvényt a háttéralkalmazás használja a képek miniatűrökké való átalakításához.
 
-### <a name="configure-connection-strings"></a>Csatlakozási sztringek konfigurálása
+### <a name="configure-connection-strings"></a>Kapcsolati sztringek konfigurálása
 Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurálni helyi tesztelés céljából. Az oktatóanyag korábbi telepítési utasításai ismertetik a kapcsolati sztringek beállításának módját, amikor az alkalmazás a felhőben fut.
 
 1. A ContosoAdsWeb projektben nyissa meg az alkalmazás Web.config fájlját, és illessze be a következő `connectionStrings` elemet a `configSections` elem után.
@@ -377,7 +377,7 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 3. A ContosoAdsCloudService projektben a **Szerepkörök** területen kattintson a jobb gombbal a ContosoAdsWeb elemre, majd kattintson a **Tulajdonságok** elemre.
 
     ![Szerepkör tulajdonságai](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. A **ContosoAdsWeb [szerepkör]** tulajdonságok ablakában kattintson a **Beállítások** fülre, majd a **beállítás hozzáadása**elemre.
+4. A **ContosoAdsWeb [Role]** tulajdonságai ablakban kattintson a **Beállítások** fülre, majd a **Beállítás hozzáadása gombra.**
 
     A **Service Configuration** (Szolgáltatáskonfiguráció) **All Configurations** (Minden konfiguráció) értékét ne módosítsa.
 5. Adjon hozzá egy *StorageConnectionString* névvel ellátott beállítást. A **Típus** beállítása legyen *ConnectionString*, az **Érték** beállítása pedig *UseDevelopmentStorage=true*.
@@ -398,12 +398,12 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 ### <a name="add-code-files"></a>Kódfájlok hozzáadása
 Ebben a szakaszban kódfájlokat fog másolni a letöltött megoldásból az új megoldásba. A következő szakaszok bemutatják és ismertetik a kód legfontosabb részeit.
 
-Fájlok hozzáadásához egy projekthez vagy mappához kattintson a jobb gombbal a projektre vagy a mappára, majd kattintson a **Hozzáadás** - **Létező elem** lehetőségre. Jelölje ki a kívánt fájlokat, majd kattintson az **Add** (Hozzáadás) gombra. Ha a rendszer rákérdez, hogy lecseréli-e a meglévő fájlokat, kattintson a **Yes** (Igen) gombra.
+Ha fájlokat szeretne hozzáadni egy projekthez vagy mappához, kattintson a jobb gombbal a projektre vagy mappára, és válassza a Meglévő elem **hozzáadása** - **parancsot.** Jelölje ki a kívánt fájlokat, majd kattintson az **Add** (Hozzáadás) gombra. Ha a rendszer rákérdez, hogy lecseréli-e a meglévő fájlokat, kattintson a **Yes** (Igen) gombra.
 
 1. A ContosoAdsCommon projektben törölje a *Class1.cs* fájlt, és a helyére illessze be az *Ad.cs* és a *ContosoAdscontext.cs* fájlt a letöltött projektből.
 2. A ContosoAdsWeb projektben adja hozzá az alábbi fájlokat a letöltött projektből.
 
-   * *Global.asax.cs*.  
+   * *Global.asax.cs.*  
    * A *Views\Shared* mappában: *\_Layout.cshtml*.
    * A *Views\Home* mappában: *Layout.cshtml*.
    * A *Controllers* mappában: *AdController.cs*.
@@ -528,7 +528,7 @@ A *Views\Home\Index.cshtml* fájl kategóriahivatkozásokat jelenít meg a kezd�
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb – AdController.cs
-Az *AdController.cs* fájlban lévő konstruktor meghívja az `InitializeStorage` metódust az Azure Storage ügyfélkódtár objektumainak létrehozásához, amelyek egy API-t biztosítanak a blobok és az üzenetsorok használatához.
+A *AdController.cs* fájlban a konstruktor meghívja a metódust az `InitializeStorage` Azure Storage Ügyféltár-objektumok létrehozásához, amelyek API-t biztosítanak a blobok és várólisták használatával való munkához.
 
 Ezután a kód lekér egy hivatkozást a *képek* blobtárolóra, ahogy azt korábban a *Global.asax.cs* esetében is láthatta. Mindeközben beállít egy webalkalmazásokhoz használható alapértelmezett [újrapróbálkozási házirendet](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling). Az alapértelmezett exponenciális leállítási újrapróbálkozási házirend egy átmeneti hiba miatti ismételt próbálkozás esetén egy percnél hosszabb időre állíthatja le a webalkalmazást. Az itt megadott újrapróbálkozási szabályzat minden próbálkozás után három másodpercet vár, legfeljebb három alkalommal.
 
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Ha a ciklus egyes ismétlései után nem található üzenet, a program egy másodpercre alvó állapotba vált. Ez megakadályozza, hogy a feldolgozói szerepkör túl sok CPU-időt használjon és további tárolási tranzakciós költségeket halmozzon fel. A Microsoft ügyféltanácsadói csapatának van egy története egy fejlesztőről, aki ezt elfelejtette beépíteni, elvégezte az éles környezetbe való telepítést, azután elment nyaralni. Amikor visszatértek, a felügyelete több, mint a vakáció.
+Ha a ciklus egyes ismétlései után nem található üzenet, a program egy másodpercre alvó állapotba vált. Ez megakadályozza, hogy a feldolgozói szerepkör túl sok CPU-időt használjon és további tárolási tranzakciós költségeket halmozzon fel. A Microsoft ügyféltanácsadói csapatának van egy története egy fejlesztőről, aki ezt elfelejtette beépíteni, elvégezte az éles környezetbe való telepítést, azután elment nyaralni. Amikor visszaértek, a felügyeletük többe került, mint a vakáció.
 
 Néha előfordul, hogy az üzenetsor egyik üzenetének tartalma feldolgozási hibát okoz. Az ilyet *ártalmas üzenetnek* nevezik, és ha épp naplózott egy hibát, majd újraindította a ciklust, akkor az üzenet feldolgozásával a végtelenségig próbálkozhat.  Ezért a catch blokk tartalmaz egy if utasítást, amely ellenőrzi, hogy az alkalmazás hány alkalommal próbálta feldolgozni az aktuális üzenetet, és amennyiben több mint 5 alkalommal, az üzenet törlődik az üzenetsorból.
 
@@ -758,7 +758,7 @@ Ha a teljes emulátor használatára szeretné módosítani a projekt beállít�
 
 Az alkalmazás teljes emulátorral való futtatásához rendszergazdai jogosultságokkal kell megnyitnia a Visual Studiót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Contoso Ads alkalmazás kialakítása szándékosan egyszerű az első lépéseket ismertető oktatóanyag kedvéért. Nem valósítja meg például a [függőségi beszúrást](https://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) vagy a [működési minták adattárát és egységét](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nem [használ felületet a naplózáshoz](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nem használ [EF Code First áttelepítést](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) az adatmodellek kezeléséhez vagy [EF-kapcsolati rugalmasságot](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) az átmeneti hálózati hibák kezeléséhez stb.
 
 Az alábbiakban példákat talál felhőszolgáltatás-alkalmazásokra, amelyek több valós kódolási gyakorlatot mutatnak be az egyszerűbbektől az összetettebbekig:
@@ -773,7 +773,7 @@ Bemutató videó az Azure Storage ajánlott eljárásairól és mintáiról: [Mi
 További információkért lásd a következőket:
 
 * [Azure Cloud Services – 1. rész: Bevezetés](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [A Cloud Services kezelése](cloud-services-how-to-manage-portal.md)
+* [A felhőszolgáltatások kezelése](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Felhőszolgáltató kiválasztása](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
 

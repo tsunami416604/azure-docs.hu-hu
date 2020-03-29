@@ -1,6 +1,6 @@
 ---
-title: Ismert problémák HB sorozatú és a hibrid kapcsolat sorozatú virtuális gépek - Azure Virtual Machines |} A Microsoft Docs
-description: Ismerje meg az Azure-ban HB-sorozat virtuális gépeinek szolgáltatással kapcsolatos ismert problémák.
+title: Ismert problémák a HB-sorozatú és HC-sorozatú virtuális gépekkel – Azure virtuális gépek | Microsoft dokumentumok
+description: Ismerje meg a HB sorozatú virtuálisgépek azure-beli méreteivel kapcsolatos ismert problémákat.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,47 +13,47 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707784"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>A HB és a HC sorozatú virtuális gépek ismert problémái
 
-Ez a cikk a leggyakoribb problémákat és megoldásokat nyújt HB sorozatú és a hibrid kapcsolat sorozatú virtuális gépek használata során.
+Ez a cikk a HB-sorozatú és HC-sorozatú virtuális gépek használata esetén a leggyakoribb problémákat és megoldásokat tartalmazza.
 
-## <a name="dram-on-hb-series"></a>A HB sorozat DRAM
+## <a name="dram-on-hb-series"></a>DRAM a HB sorozatban
 
-HB sorozatú virtuális gépek jelenleg csak közzéteheti 228 GB RAM Memóriát a Vendég virtuális gépeket. Megakadályozza, hogy a lapok lesz hozzárendelve a helyi DRAM az AMD CCX meg (tartományok NUMA) a Vendég virtuális gép számára lefoglalt okozza az Azure hipervizor egy ismert korlátozás.
+A HB sorozatú virtuális gépek jelenleg csak 228 GB RAM-ot tudnak elérhetővé tenni a vendég virtuális gépeknek. Ez annak köszönhető, hogy az Azure hypervisor ismert korlátozása megakadályozza, hogy az amd CCX helyi DRAM-hoz (NUMA-tartományok) hozzárendelve a vendég virtuális gép számára.
 
 ## <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
 
-Az Azure gyorsított hálózatkezelés van nincs engedélyezve, de fogja, hogy az előzetes verzió alatt. Ha ez a funkció támogatott ügyfelek értesíteni fogjuk.
+Az Azure Accelerated Networking jelenleg nincs engedélyezve, de az előzetes verzió időszakának előrehaladtával. Értesítjük az ügyfeleket, ha ez a funkció támogatott.
 
-## <a name="qp0-access-restriction"></a>qp0 hozzáférési korlátozás
+## <a name="qp0-access-restriction"></a>qp0 hozzáférés korlátozása
 
-Biztonsági rések, várólista pár is előfordulhat, hogy alacsony szintű hardver hozzáférés elkerülése érdekében 0 nem érhető el a Vendég virtuális gépeket. Ez csak érintheti műveletek általában társított felügyeleti hálózati adapter ConnectX-5 és egyes InfiniBand diagnosztikai például ibdiagnet, de nem magukat a végfelhasználói alkalmazások futtatásához.
+A biztonsági réseket okozó alacsony szintű hardverhozzáférés elkerülése érdekében a 0 várólistapár nem érhető el a vendég virtuális gépek számára. Ez csak a ConnectX-5 hálózati adapter adminisztrációjával és bizonyos InfiniBand-diagnosztikák, például az ibdiagnet futtatásával kapcsolatos műveletekre lehet hatással, de magukat a végfelhasználói alkalmazásokat nem.
 
-## <a name="ud-transport"></a>UD átviteli
+## <a name="ud-transport"></a>UD-átvitel
 
-Indításkor a HB és a hibrid kapcsolat-sorozat nem támogatja a dinamikus csatlakoztatott átviteli (DCT). Idővel DCT támogatása hajtják végre. Megbízható kapcsolat (RC) és a nem megbízható Hálózathatáron Datagram (UD) átvitel használata támogatott.
+Indításkor a HB- és HC-sorozat nem támogatja a dinamikusan csatlakoztatott átvitelt (DCT). A DCT támogatása idővel végrehajtásra kerül. A reliable connection (RC) és a megbízhatatlan Datagram (UD) átvitelek támogatottak.
 
-## <a name="gss-proxy"></a>GSS Proxy
+## <a name="gss-proxy"></a>GSS-proxy
 
-GSS-Proxy egy ismert hiba, amely jelentős teljesítmény és válaszképesség napján belül pótdíj NFS-SZEL való használatakor is manifest CentOS/RHEL 7.5 tartalmaz. Ez a mérsékelhető a:
+GSS Proxy egy ismert hiba CentOS / RHEL 7.5, hogy a nyilvánvaló, mint egy jelentős teljesítmény és érzékenység büntetést, ha használják nfs. Ez a következőkkel mérsékelhető:
 
 ```console
 sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 ```
 
-## <a name="cache-cleaning"></a>A gyorsítótár törlése
+## <a name="cache-cleaning"></a>Gyorsítótár-tisztítás
 
-A HPC-rendszerek esetében hasznos gyakran karbantartása a memória, a feladat befejezése után a következő felhasználónak ugyanazon a csomóponton kiosztása előtt. A Linuxos alkalmazások futtatása után előfordulhat, hogy a rendelkezésre álló memória csökkenti a puffer memória növekszik, annak ellenére, hogy nem fut az alkalmazások közben.
+HPC-rendszereken gyakran hasznos a memória törlése a feladat befejezése után, mielőtt a következő felhasználó hozatna ugyanazt a csomópontot. Az alkalmazások Linux on futtatása után előfordulhat, hogy a rendelkezésre álló memória csökken, miközben a puffermemória növekszik, annak ellenére, hogy nem futtat semmilyen alkalmazást.
 
-![Képernyőkép a parancssor használatával](./media/known-issues/cache-cleaning-1.png)
+![A parancssor képernyőképe](./media/known-issues/cache-cleaning-1.png)
 
-Használatával `numactl -H` jelennek meg a memória pufferelve van-e az (esetleg minden) melyik NUMAnode(s). A Linux, a felhasználók távolíthatja a gyorsítótárakat három módon való visszatéréshez pufferelt vagy gyorsítótárazza a memóriában "ingyenes". Legfelső szintű vagy sudo engedélyekkel rendelkeznie kell.
+A `numactl -H` használata megmutatja, hogy a memória melyik NUMAnode(i)val van pufferelve (valószínűleg az összes). A Linux, a felhasználók tisztítsa meg a gyorsítótárak három módon vissza pufferelt vagy gyorsítótárazott memória "szabad". Root-nak kell lenned, vagy sudo engedélyekkel kell rendelkezned.
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -61,11 +61,11 @@ echo 2 > /proc/sys/vm/drop_caches [frees slab objects e.g. dentries, inodes]
 echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
-![Képernyőkép a parancssor használatával](./media/known-issues/cache-cleaning-2.png)
+![A parancssor képernyőképe](./media/known-issues/cache-cleaning-2.png)
 
 ## <a name="kernel-warnings"></a>Kernel figyelmeztetések
 
-Amikor Linux HB sorozatú virtuális gép elindítása a következő kernel figyelmeztető üzeneteket jelenhet meg.
+A következő kernel figyelmeztető üzenetek jelenhetnek meg, amikor Linux alatt indít egy HB sorozatú virtuális gépindítást.
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -85,8 +85,8 @@ Amikor Linux HB sorozatú virtuális gép elindítása a következő kernel figy
 [  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
 ```
 
-Ez a figyelmeztetés figyelmen kívül hagyhatja. Az Azure hipervizor, amely az idő múlásával kibocsátásokban megtörténik egy ismert korlátozás miatt nem lehetséges.
+Ezt a figyelmeztetést figyelmen kívül hagyhatja. Ez az Azure hipervizor ismert korlátozásának köszönhető, amelyet az idő múlásával kezelnek.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [nagy teljesítményű számítási](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) az Azure-ban.
+További információ a [nagy teljesítményű azure-beli számítástechnikáról.](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)

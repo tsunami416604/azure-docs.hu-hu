@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Deklaratív kiépítés megértése |} A Microsoft Docs'
-description: Az Azure AD Connectben a deklaratív üzembe helyezési konfigurációs modell ismerteti.
+title: 'Azure AD Connect: A deklaratív kiépítés ismertetése | Microsoft dokumentumok'
+description: A deklaratív kiépítési konfigurációs modell az Azure AD Connect ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,151 +17,151 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60246321"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése
-Ez a témakör ismerteti az Azure AD Connect konfigurációs modell. A modell a deklaratív kiépítés neve, és lehetővé teszi, hogy olyan konfigurációs módosítást egyszerű. Sok-sok dolog ebben a témakörben leírt speciális és a legtöbb ügyfél forgatókönyvhöz nem szükséges.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect szinkronizálás: A deklaratív kiépítés ismertetése
+Ez a témakör ismerteti a konfigurációs modell az Azure AD Connect. A modell neve deklaratív kiépítés, és lehetővé teszi, hogy a konfiguráció sokkal könnyedén. A témakörben ismertetett számos dolog speciális, és a legtöbb ügyfélforgatókönyvesetében nem szükséges.
 
 ## <a name="overview"></a>Áttekintés
-Deklaratív kiépítés csatlakoztatott forráskönyvtárat érkező objektumok feldolgozása, és határozza meg, hogyan az objektum és attribútumokat kell lesz átalakítva egy forrásból egy cél. Az objektum feldolgozása a szinkronizálási folyamat, és a folyamat megegyezik a bejövő és kimenő szabályok. Egy bejövő szabályt az adott összekötőtérben, a metaverzumba és kimenő szabály származik a metaverzumba egy összekötőterében.
+A deklaratív kiépítés a forráshoz csatlakoztatott könyvtárból érkező objektumok feldolgozása, és meghatározza, hogy az objektumot és az attribútumokat hogyan kell forrásból céldá alakítani. Egy objektum feldolgozása egy szinkronizálási folyamat, és a folyamat megegyezik a bejövő és kimenő szabályok. A bejövő szabály egy összekötő térből a metaverzumba, a kimenő szabály pedig a metaverzumból egy összekötő térbe.
 
 ![Szinkronizálási folyamat](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
-A folyamat számos különböző modulokat tartalmaz. Mindegyik felelős felügyeltobjektum-szinkronizációs egy fogalom.
+A folyamat több különböző modullal rendelkezik. Mindegyik felelős egy fogalomért az objektum-szinkronizálásban.
 
 ![Szinkronizálási folyamat](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
-* Forrás, az adatforrás-objektum
-* [Hatókör](#scope), megkeresi az összes szinkronizálási szabály hatókörébe
-* [Csatlakozás](#join), meghatározza, hogy összekötőterét és metaverzumbeli közötti kapcsolat
-* Átalakítás számítja ki, hogyan lesz átalakítva attribútumok és a flow
-* [Elsőbbségi](#precedence), így feloldja az ütköző attribútum hozzájárulások
-* Cél, a célobjektum
+* Forrás, A forrásobjektum
+* [Hatókör](#scope), Megkeresi a hatókörben lévő összes szinkronizálási szabályt
+* [Illesztés](#join), Az összekötő tér és a metaverzum közötti kapcsolatot határozza meg
+* Átalakítás, Kiszámítja, hogyan kell átalakítani és folyni az attribútumokat
+* [Elsőbbség](#precedence), Ütköző attribútum-hozzájárulások feloldása
+* Cél, A célobjektum
 
-## <a name="scope"></a>Scope
-A hatókör-modul az a célja egy objektumot, és meghatározza, hogy a szabályokat, amelyek terjed ki, és szerepelnie kell a feldolgozása. Attribútumok értékek esetén az objektum különböző szinkronizálási szabály hatókörében kell értékeli ki. Például, hogy a letiltott felhasználó nem az Exchange-postaládával különböző szabályokat támaszt, mint az engedélyezett felhasználók egy postaládával rendelkezik.  
-![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+## <a name="scope"></a>Hatókör
+A hatókörmodul kiértékel egy objektumot, és meghatározza a hatókörben lévő szabályokat, amelyeket a feldolgozásnak tartalmaznia kell. Az objektum attribútumértékeitől függően a rendszer kiértékeli a különböző szinkronizálási szabályokat, hogy hatókörben legyenek. Egy Exchange-postaládával nem rendelkező letiltott felhasználónak például más szabályai vannak, mint a postaládával rendelkező engedélyezett felhasználóknak.  
+![Hatókör](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
-A hatókör van meghatározva, csoportok és a kikötéseket. A feltételek a csoporton belül vannak. Logikai és a egy csoport összes záradékai közötti szolgál. Ha például (részleg = informatikai és ország = Dánia). Logikai vagy csoportok közötti szolgál.
+A hatókör csoportokként és záradékokként van definiálva. A záradékok egy csoporton belül vannak. A logikai ÉS a csoport összes záradéka között használatos. Például (részleg =IT és ország = Dánia). A csoportok között logikai VAGY használatos.
 
-![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
-Olvassa el ezt a képet a hatókör (részleg = informatikai és ország Dánia =) vagy (ország Svédország =). Ha igaz értékre, majd a szabály kiértékelése történik a csoport 1 vagy 2. csoport hatóköre van.
+![Hatókör](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+A képen szereplő hatókört a következőképpen kell értelmezni: (osztály = IT ÉS ország = Dánia) VAGY (ország=Svédország). Ha az 1- es vagy a 2-es csoport értéke igaz, akkor a szabály hatóköre.
 
-A hatókör-modul a következő műveleteket támogatja.
+A hatókörmodul a következő műveleteket támogatja.
 
 | Művelet | Leírás |
 | --- | --- |
-| EGYENLŐ, NOTEQUAL |Egy karakterlánc hasonlítsa össze, amely kiértékeli, ha az érték az attribútum értéke megegyezik. Többértékű attribútumok ISIN és ISNOTIN témakörben talál. |
-| LESSTHAN, LESSTHAN_OR_EQUAL |Egy karakterlánc összehasonlítása, amely kiértékeli, ha az érték kevesebb az attribútum értéke. |
-| TARTALMAZ, NOTCONTAINS |Egy karakterlánc hasonlítsa össze, amely kiértékeli, ha az érték megtalálható valahol belüli értéket az attribútum. |
-| STARTSWITH, NOTSTARTSWITH |Egy karakterlánc hasonlítsa össze, amely kiértékeli, ha az érték szerepel az attribútum értékének elejére. |
-| ENDSWITH, NOTENDSWITH |Egy karakterlánc hasonlítsa össze, amely kiértékeli, ha az attribútum értéke lévő érték. |
-| GREATERTHAN, GREATERTHAN_OR_EQUAL |Egy karakterlánc-összehasonlítási, amely kiértékeli, ha az értéke nagyobb, mint az attribútum értéke. |
-| ISNULL, ISNOTNULL |Kiértékeli, ha az attribútum hiányzik az objektum. Ha az attribútum nem található, és ezért null értékű, a szabály hatóköre van. |
-| ISIN, ISNOTIN |Ha az érték megtalálható a megadott attribútum kiértékeli. Tato operace je egyenlő és NOTEQUAL többértékű változata. Az attribútum egy többértékű attribútumot várt és ha az érték található az attribútum értékeket, majd a szabály hatókörébe. |
-| ISBITSET, ISNOTBITSET |Kiértékeli, ha egy adott bit be van állítva. Például segítségével kiértékelheti a bits a userAccountControl megtekintheti, ha a felhasználó engedélyezve van-e vagy le van tiltva. |
-| ISMEMBEROF, ISNOTMEMBEROF |Az érték egy csoporthoz az összekötőtérben DN tartalmaznia kell. Ha az objektum a megadott csoport tagja, a szabály hatóköre van. |
+| EGYENLŐ, NEM EGYENLŐ |Egy karakterlánc összehasonlítása, amely kiértékeli, hogy az érték megegyezik-e az attribútum értékével. A többértékű attribútumokról az ISIN és AZ ISNOTIN. |
+| Kevesebb, LESSTHAN_OR_EQUAL |Egy karakterlánc összehasonlítása, amely kiértékeli, hogy az érték kisebb-e, mint az attribútum ban lévő érték. |
+| TARTALMAZ, NOTCONTAINS |Egy karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték megtalálható-e valahol az attribútumban az értéken belül. |
+| STARTSWITH, NOTSTARTSWITH |Egy karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték az attribútum értékének elején van-e. |
+| VÉGZŐDIK, NOTENDSWITH |Egy karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték az attribútum értékének végén van-e. |
+| NAGYOBB, GREATERTHAN_OR_EQUAL |Egy karakterlánc összehasonlítása, amely kiértékeli, hogy az érték nagyobb-e, mint az attribútum ban lévő érték. |
+| ISNULL, ISNOTNULL |Kiértékeli, hogy az attribútum hiányzik-e az objektumból. Ha az attribútum nincs jelen, és ezért null, akkor a szabály hatóköre. |
+| ISIN, ISNOTIN |Kiértékeli, hogy az érték szerepel-e a definiált attribútumban. Ez a művelet az EQUAL és a NOTEQUAL többértékű változata. Az attribútum nak többértékű attribútumnak kell lennie, és ha az érték megtalálható az attribútumértékek bármelyikében, akkor a szabály hatókörben van. |
+| ISBITSET, ISNOTBITSET |Kiértékeli, hogy egy adott bit be van-e állítva. Például a userAccountControl bitjének kiértékelésére használható, hogy lássa, engedélyezve van-e vagy le van-e tiltva egy felhasználó. |
+| ISMEMBEROF, ISNOTMEMBEROF |Az értéknek dn-t kell tartalmaznia az összekötő térben lévő csoportszámára. Ha az objektum a megadott csoport tagja, a szabály hatókörben van. |
 
 ## <a name="join"></a>Csatlakozás
-A szinkronizálási folyamat a join modul feladata a cél az objektum a forrás és a egy objektum közötti kapcsolat keresése. Egy bejövő szabályt a ezt a kapcsolatot az adott összekötőtérben, egy kapcsolat objektum keresése a metaverzum-objektum lehet.  
-![Csatlakozzon a cs- és mv között](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
-A cél, hogy tekintse meg, ha egy objektum már megtalálható a metaverzumban, egy másik összekötő által létesített, érdemes lehet társítva. Például egy fiók-erőforrás erdőben a felhasználónak a fiókerdőben kell csatlakoztatni az erőforráserdőből a felhasználóval.
+A szinkronizálási folyamat illesztési modulja felelős a forrásban lévő objektum és a célobjektum közötti kapcsolat megtalálásáért. Bejövő szabálynál ez a kapcsolat egy összekötőtérben lévő objektum lenne, amely kapcsolatot talál a metaverzumban lévő objektummal.  
+![Csatlakozás között cs és mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
+A cél az, hogy ha van egy objektum már a metaverzumban, egy másik összekötő által létrehozott, azt kell társozni. Egy fiókerőforrás-erdőben például a fiókerdő felhasználóját össze kell vonni az erőforráserdőből származó felhasználóval.
 
-Illesztések összekötő terület objektumok együtt csatlakoztatása az azonos metaverzum-objektum főleg a bejövő szabályok szolgálnak.
+Az illesztések többnyire bejövő szabályokon használatosak az összekötő térobjektumok ugyanazon metaverzum-objektumhoz való összekötéséhez.
 
-Egy vagy több csoportot az illesztések vannak meghatározva. Záradékok rendelkezik egy csoporton belül. Logikai és a egy csoport összes záradékai közötti szolgál. Logikai vagy csoportok közötti szolgál. A csoportok feldolgozása sorrendben felülről lefelé történik. Egy csoport egy objektummal pontosan egy egyezést talált a célkiszolgálón, ha nincsenek más illesztési szabályok értékeli. Ha nulla vagy több mint egy objektum található, a szabályok a következő csoport feldolgozás továbbra is. Ebből kifolyólag a szabályok létrehozott legtöbb explicit első sorrendjében, és több intelligens végén kell lennie.  
-![Csatlakozzon a definíció](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
-Ez a kép illesztéseket feldolgozása alsó történik. Először a szinkronizálási folyamat azt látja, hogy van-e az employeeID egyezést. Ha nem, a második szabálynak látja, ha a fiók nevét is használható együtt az objektumok csatlakozni. Ha ez nem egyező vagy, a harmadik és egyben utolsó szabály több algoritmuskódot a felhasználó nevét.
+Az illesztések egy vagy több csoportként vannak definiálva. Egy csoporton belül vannak záradékok. A logikai ÉS a csoport összes záradéka között használatos. A csoportok között logikai VAGY használatos. A csoportok feldolgozása fentről lefelé haladva. Ha az egyik csoport pontosan egy egyezést talált egy objektummal a célban, akkor a rendszer nem értékeli ki a többi illesztési szabályt. Ha nulla vagy egynél több objektum található, a feldolgozás folytatódik a következő szabálycsoportra. Ezért a szabályokat a legegyértelműbb első és homályosabb sorrendben kell létrehozni a végén.  
+![Csatlakozás definíciója](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
+A képen szereplő illesztések feldolgozása fentről lefelé halad. Először a szinkronizálási folyamat látja, ha van egyezés az employeeID. Ha nem, a második szabály azt látja, hogy a fióknév használható-e az objektumok összekapcsolására. Ha ez sem egyezik, a harmadik és egyben utolsó szabály a felhasználó nevének használatával egy homályosabb egyezés.
 
-Ha az összes illesztési szabályok kiértékelése, és nem pontosan egy egyezést, a **hivatkozás típusa** a a **leírás** lap szolgál. Ha ez a beállítás értéke **kiépítése**, akkor jön létre egy új objektumot a célkiszolgálón.  
-![Kiépítése, vagy csatlakozzon](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+Ha az összes illesztési szabály ki lett értékelve, és nincs pontosan egy egyezés, a Program a **Leírás** lapon lévő **Hivatkozástípust** használja. Ha ez a beállítás **kiépítés**re van állítva, akkor a célban egy új objektum jön létre.  
+![Rendelkezés vagy csatlakozás](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
-Az objektum kell rendelkeznie illesztési szabályok több egyetlen szinkronizálási szabály hatókörében. Ha több szinkronizálási szabály ahol való csatlakozás van definiálva, akkor hiba történik. Sorrend nem használatos illesztés az ütközések feloldása. Egy objektum rendelkeznie kell egy illesztési szabály hatókörébe tartozó attribútumokat tartalmazó ugyanabban az bejövő/kimenő irányban folyamat. Ha szeretne folyamat attribútumainak bejövő és kimenő ugyanazon az objektumon, egy bejövő és a egy kimenő szinkronizálási szabály az illesztési kell rendelkeznie.
+Egy objektumnak csak egyetlen szinkronizálási szabálya lehet, amelynek hatóköre illesztési szabályokat. Ha több szinkronizálási szabály van definiálva, hiba történik. Az elsőbbség nem használható illesztési ütközések feloldására. Egy objektumnak illesztési szabállyal kell rendelkeznie az azonos bejövő/kimenő irányú attribútumok áramlásához. Ha ugyanabba az objektumba bejövő és kimenő attribútumokat is kell folyatnia, akkor egy bejövő és egy kimenő szinkronizálási szabálynak is rendelkeznie kell az illesztéssel.
 
-Kimenő illesztési rendelkezik egy különleges viselkedését, való üzembe helyezése egy objektum egy cél összekötőterében. A megkülönböztető név attribútuma szolgál, hogy először kipróbálják a fordított csatlakozzon. Ha már van egy objektumot a céloldali összekötőtér a azonos DN-nel, az objektumok csatlakoznak.
+A kimenő illesztés különleges viselkedéssel rendelkezik, amikor megpróbál egy objektumot egy célösszekötő területére kiépíteni. A DN attribútum először fordított illesztést próbál meg. Ha már van egy objektum a célösszekötő térben ugyanazzal a DN-nel, az objektumok összekapcsolódnak.
 
-Az illesztési modul csak akkor történik meg után Ha egy új szinkronizálási szabály hatóköre kerül. Ha csatlakozott egy objektumot, a rendszer nem disjoining akkor is, ha az illesztési feltétel nem teljesül. Ha meg szeretné tartományról való leválasztás egy objektumot, be kell lépnie a szinkronizálási szabály, amely az objektumok csatlakoztatott hatókörén kívül.
+Az illesztési modul csak egyszer kerül kiértékelésre, amikor egy új szinkronizálási szabály lép hatókörbe. Ha egy objektum csatlakozott, akkor nem lesz kiválasztva, még akkor sem, ha az illesztési feltételek már nem teljesülnek. Ha le szeretne választadni egy objektumról, az objektumokat egyesítő szinkronizálási szabálynak nem szabad hatókörből kilépnie.
 
-### <a name="metaverse-delete"></a>Metaverzum delete
-A metaverzum-objektum megmarad, amíg nincs egy szinkronizálási szabály hatókörében az **hivatkozás típusa** beállítása **kiépítése** vagy **StickyJoin**. Egy StickyJoin használatos, ha az összekötő egy új objektumot a metaverzumba kiépítése nem engedélyezett, azonban csatlakoztatva van, akkor törölni kell a forrás a metaverzum-objektum törlése előtt.
+### <a name="metaverse-delete"></a>Metaverzum törlése
+A metaverzum-objektum mindaddig megmarad, amíg van egy szinkronizálási szabály a hatókörben, ha a **Kapcsolattípusa** **beállítás kiépítés** vagy **StickyJoin**lesz. A StickyJoin akkor használatos, ha egy összekötő nem építhet új objektumot a metaverzumba, de ha csatlakozott, törölni kell a forrásban a metaverzum objektum törlése előtt.
 
-A törölt metaverzum-objektum egy kimenő szinkronizálási szabály társított összes objektumot megjelölve **kiépítése** törlési jelennek meg.
+Metaverzum-objektum törlésekor a **leépítésre** megjelölt kimenő szinkronizálási szabályhoz társított összes objektum törlésre lesz megjelölve.
 
 ## <a name="transformations"></a>Átalakítások
-Az átalakítások meghatározásához attribútumok áramlásának módját a forrásról a célra használják. A flow a következők egyike lehet **típusok flow**: Közvetlen, állandó vagy kifejezés. Közvetlen folyamat, mint egy attribútumérték folyamatok-átalakítás nélküli további van. Állandó érték megadása esetén a megadott értéket. Egy kifejezés deklaratív üzembe helyezési kifejezés nyelvét használja, Express, hogyan kell lennie az átalakítást. A kifejezés nyelve részletei megtalálhatók a [deklaratív üzembe helyezési kifejezésnyelveket ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) témakör.
+Az átalakítások segítségével határozható meg, hogyan kell az attribútumok a forrásból a célba áramlani. A folyamatok a következő **folyamattípusok**egyikével rendelkezhetnek: Közvetlen, Állandó vagy Kifejezés. Közvetlen folyamat, egy attribútumértéket úgy folyik, ahogy van, további átalakítások nélkül. Egy állandó érték állítja be a megadott értéket. Egy kifejezés a deklaratív létesítési kifejezés nyelvét használja az átalakítás módjának kifejezésére. A kifejezés nyelvének részletei a [deklaratív kiépítési kifejezés nyelvi](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) témakörében találhatók.
 
-![Kiépítése, vagy csatlakozzon](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
+![Rendelkezés vagy csatlakozás](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
-A **egyszer a alkalmazni** jelölőnégyzet határozza meg, hogy az attribútum csak kell beállítani, ha az objektum először hozza létre. Például ez a konfiguráció segítségével állítsa be az új felhasználói objektumhoz kezdeti jelszavát.
+Az **Alkalmaz egyszer** jelölőnégyzet azt határozza meg, hogy az attribútumot csak az objektum kezdeti létrehozásakor kell beállítani. Ezzel a konfigurációval például egy új felhasználói objektum hoz létre egy kezdeti jelszót.
 
 ### <a name="merging-attribute-values"></a>Attribútumértékek egyesítése
-Az attribútumfolyamok van a beállítás határozza meg, ha a többértékű attribútumok több különböző összekötők össze kell vonni. Az alapértelmezett érték **frissítés**, ami azt jelenti, hogy a szinkronizálási szabály legmagasabb prioritású kell nyerhet.
+Az attribútumfolyamatokban van egy beállítás annak meghatározására, hogy a többértékű attribútumokat több különböző összekötőkből kell-e egyesíteni. Az alapértelmezett érték a **Frissítés**, amely azt jelzi, hogy a legmagasabb prioritású szinkronizálási szabálynak kell nyernie.
 
 ![Egyesítési típusok](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
-Is **egyesítése** és **MergeCaseInsensitive**. Ezek a beállítások lehetővé teszik, hogy a különböző forrásokból származó értékeket. Ha például használat a tag vagy a proxyAddresses attribútum számos különböző erdőkből származó egyesíteni. Ha ezt a beállítást használja, minden szinkronizálási szabály hatókörébe az objektum egyesítési ugyanolyan típusú kell használnia. Nem lehet definiálni **frissítés** egy összekötő és **egyesítése** másik. Ha megpróbál, hibaüzenetet kap.
+Van is **Merge** és **MergeCaseInsensitive**. Ezek a beállítások lehetővé teszik a különböző forrásokból származó értékek egyesítését. Például használható a tag vagy proxyAddresses attribútum egyesítésére több különböző erdőből. Ha ezt a beállítást használja, az objektum hatókörében lévő összes szinkronizálási szabálynak ugyanazt az egyesítési típust kell használnia. Nem definiálhat **frissítést** az egyik összekötőből, és **nem adhat hozzá** egy másiktól. Ha megpróbálja, hibaüzenetet kap.
 
-A különbség a között **egyesítése** és **MergeCaseInsensitive** , hogyan lehet feldolgozni az ismétlődő attribútumértékekkel. A szinkronizálási motor biztosítja, hogy az ismétlődő értékek nem helyez be a célattribútum. A **MergeCaseInsensitive**, az ismétlődő értékek különbség csak abban az esetben nem fog meglétét. Ha például nem kell megjelennie mindkét "SMTP:bob@contoso.com"és"smtp:bob@contoso.com" a célattribútum. **Egyesítse** csak fér hozzá a pontos értékeket, és több érték esetén csak az eltérő esetben szerepelhet.
+Az **Egyesítés** és **a MergeCaseInsensitive** közötti különbség az ismétlődő attribútumértékek feldolgozása. A szinkronizálási motor gondoskodik arról, hogy a rendszer ne szúrja be az ismétlődő értékeket a célattribútumba. A **MergeCaseInin**esetében a csak az esetben fennálló különbséggel rendelkező ismétlődő értékek nem lesznek jelen. Például nem láthatja aSMTP:bob@contoso.com"smtp:bob@contoso.com" és a " " " szót a célattribútumban. **Az egyesítés** csak a pontos értékeket és a több értéket vizsgálja, ahol csak az esetekben lehet különbség.
 
-A beállítás **cserélje le** ugyanaz, mint **frissítés**, viszont nem.
+A **Csere** beállítás megegyezik a **Frissítés**beállítással, de nem használatos.
 
-### <a name="control-the-attribute-flow-process"></a>Az attribútum a folyamat folyamatot vezérlő
-Ha több bejövő szinkronizálási szabály ugyanazt a metaverzum-attribútum hozzájárulni vannak beállítva, majd sorrend meghatározására szolgál a győztes. A szinkronizálási szabály (legkisebb numerikus értéket) legmagasabb prioritású működhet közre a érték történik. Kimenő szabályok esetében ugyanez történik. A szinkronizálási szabály a legmagasabb prioritású wins, és hozzájárul az értéket a csatlakoztatott címtárban.
+### <a name="control-the-attribute-flow-process"></a>Az attribútumfolyamat folyamatának szabályozása
+Ha több bejövő szinkronizálási szabály van beállítva, hogy hozzájáruljon ugyanahhoz a metaverzum-attribútumhoz, akkor a rendszer a prioritást használja a győztes meghatározásához. A legmagasabb prioritású szinkronizálási szabály (a legalacsonyabb numerikus érték) hozzá fog járulni az értékhez. Ugyanez történik a kimenő szabályok esetében is. A legmagasabb prioritású szinkronizálási szabály nyer, és hozzájárul a csatlakoztatott könyvtár értékéhez.
 
-Bizonyos esetekben helyett közreműködés egy értéket, a szinkronizálási szabály meg kell határoznia más szabályok működése kell. Van néhány speciális literálok, ebben az esetben használja.
+Bizonyos esetekben ahelyett, hogy egy értéket, a szinkronizálási szabály meg kell határoznia, hogyan kell más szabályokat kell viselkednie. Van néhány speciális szó használt ebben az esetben.
 
-A bejövő szinkronizálási szabályok, a szövegkonstansban **NULL** jelzi, hogy a folyamat nem rendelkezik értékkel közre is használható. Az alacsonyabb fontossági sorrendű egy másik szabály közreműködhet értéket. Ha nincs szabály viszonyított érték, a metaverzum-attribútum törlődik. Egy kimenő szabályhoz Ha **NULL** nem végső értéke az összes szinkronizálási szabály feldolgozása után a rendszer eltávolítja az értéket a csatlakoztatott címtárban.
+Bejövő szinkronizálási szabályok esetén a **null** érték segítségével jelezhető, hogy a folyamatnak nincs hozzájárulási értéke. Egy másik, alacsonyabb prioritású szabály is hozzájárulhat egy értékhez. Ha egyetlen szabály sem járult hozzá értékhez, akkor a metaverzum attribútum törlődik. Kimenő szabály esetén, ha a **NULL** a végső érték az összes szinkronizálási szabály feldolgozása után, akkor az érték törlődik a csatlakoztatott könyvtárból.
 
-A konstans **AuthoritativeNull** hasonló **NULL** , de a különbség az, hogy nincs alacsonyabb prioritású szabály közreműködhet értéket.
+A **literali Mérvadó null** értéke hasonló a **NULL-hoz,** de azzal a különbséggel, hogy egyetlen alacsonyabb elsőbbségi szabály sem járulhat hozzá értékhez.
 
-Az Attribútumfolyam is használhatja **IgnoreThisFlow**. Ez hasonlít NULL abban az értelemben, amely azt jelzi, semmit nem kell a közreműködéshez. A különbség az, hogy nem távolítja el egy már meglévő értéket a célkiszolgálón. Például az Attribútumfolyam soha nem volt hiba van.
+Az attribútumfolyamat az **IgnoreThisFlow -t**is használhatja. Ez hasonló a NULL abban az értelemben, hogy azt jelzi, nincs semmi, hogy hozzájáruljon. A különbség az, hogy nem távolítja el a cél egy már meglévő értékét. Olyan, mintha az attribútum áramlása soha nem volt ott.
 
 Például:
 
-A *vette az ad - felhasználó Exchange hibrid* található a következő folyamatot:  
+Az *Out to AD – User Exchange hibrid* ben a következő folyamat található:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
-Ez a kifejezés olvassa el: Ha a felhasználó postaláda az Azure ad-ben található, majd a flow az attribútum az Azure AD az AD-ból. Ha nem, nem flow vissza az Active Directory semmit. Ebben az esetben a az ad-ben, akkor megtartja a meglévő értéket.
+Ezt a kifejezést a következőképpen kell értelmezni: ha a felhasználói postaláda az Azure AD-ben található, majd az attribútumot az Azure AD-ből az AD-be. Ha nem, ne folyjon vissza semmit az Active Directoryba. Ebben az esetben megtartaná a meglévő értéket az AD-ben.
 
-### <a name="importedvalue"></a>ImportedValue
-A függvény ImportedValue eltér a további függvények, mert az attribútum neve szögletes zárójelek helyett idézőjelek közé kell tenni:  
+### <a name="importedvalue"></a>Importált érték
+Az ImportedValue függvény különbözik az összes többi függvénytől, mivel az attribútum nevét szögletes zárójelek helyett idézőjelek közé kell tenni:  
 `ImportedValue("proxyAddresses")`.
 
-A szinkronizálás során általában egy attribútumot a várt érték használ, még akkor is, ha ezt még nem még nincsenek exportált, vagy hiba érkezett ("felső részén a tower") exportálása során. Egy bejövő szinkronizálási azt feltételezi, hogy olyan attribútum, amely még nem ért egy csatlakoztatott címtárhoz idővel eléri azt. Bizonyos esetekben fontos csak szinkronizálás érték, amely a csatlakoztatott címtárban ("hologram és a különbözeti tower importálása") is megerősítette.
+A szinkronizálás során az attribútum általában a várt értéket használja, még akkor is, ha még nem exportálták, vagy hiba történt az exportálás során ("a torony teteje"). A bejövő szinkronizálás feltételezi, hogy egy attribútum, amely még nem érte el a csatlakoztatott könyvtárvégül eléri azt. Bizonyos esetekben fontos, hogy csak a csatlakoztatott könyvtár által megerősített értéket ("hologram és delta importtorony") szinkronizálja.
 
-Ez a függvény egy példát az out-of-box szinkronizálási szabályának található *a az AD-ből – az Exchange közös felhasználói*. Hibrid Exchange-hez, az Exchange online hozzáadott értéket csak a rendszer szinkronizálja az Ha megerősítette, hogy az érték exportálása sikeres:  
+Erre a funkcióra példa az AD – User Common *from Exchange in*in párbeszédpanel beépített szinkronizálási szabályában található. A Hibrid exchange programban az Exchange online által hozzáadott értéket csak akkor kell szinkronizálni, ha megerősítést nyert, hogy az érték exportálása sikeres volt:  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
-## <a name="precedence"></a>Sorrend
-Ha több szinkronizálási szabály megpróbál működhet közre a cél az azonos attribútum értéke, a sorrend értékét a győztes meghatározására szolgál. Hozzájárul az attribútum egy ütközik legmagasabb prioritású legkisebb numerikus értéket, a szabály fog.
+## <a name="precedence"></a>Precedencia
+Ha több szinkronizálási szabály próbálja meg hozzájárulni ugyanazt az attribútumértéket a célhoz, a rendszer a prioritási értéket használja a győztes meghatározásához. A legmagasabb prioritású, legalacsonyabb numerikus értéket képviselő szabály egy ütközésben hozzá fog járulni az attribútumhoz.
 
 ![Egyesítési típusok](./media/concept-azure-ad-connect-sync-declarative-provisioning/precedence1.png)  
 
-A sorrend meghatározására az objektumok kisebb részhalmazát pontosabb attribútumfolyamok használható. Például a out-az-box-szabályok győződjön meg arról, amelyek egy engedélyezett fiók attribútumok (**felhasználói AccountEnabled**) prioritást élveznek a többi fiók.
+Ez a rendezés az objektumok kis részhalmazának pontosabb attribútumfolyamatainak meghatározására használható. A beépített szabályok például győződjön meg arról, hogy az engedélyezett fiókból (**User AccountEnabled**) származó attribútumok elsőbbséget élveznek a többi fiókkal szemben.
 
-Elsőbbségi összekötők között lehet definiálni. Amely lehetővé teszi az összekötők, jobb adatokkal való közreműködés először az értékeket.
+Az összekötők között elsőbbség definiálható. Ez lehetővé teszi, hogy a jobb adatokkal rendelkező összekötők először értékekkel járuljanak hozzá.
 
-### <a name="multiple-objects-from-the-same-connector-space"></a>Az azonos összekötőtérben több objektumait
-Több objektum esetén az azonos összekötőtérben, ugyanahhoz a metaverzum-objektumhoz csatlakozik, érvénybe kell beállítani. Ha több objektum ugyanaz a szinkronizálási szabály hatókörében van, majd a szinkronizálási motor, nem tudja meghatározni a sorrend. Ez nem egyértelmű melyik adatforrás-objektum hozzá kell járulnia az értéket a metaverzumba. Ez a konfiguráció az elvártnak megfelelően nem egyértelmű akkor is, ha a forrás attribútumokhoz ugyanazt az értéket.  
-![Több objektumot csatoltak az azonos mv-objektum](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+### <a name="multiple-objects-from-the-same-connector-space"></a>Több objektum ugyanabból az összekötőtérből
+Ha ugyanabban az összekötő térben több objektum is kapcsolódik ugyanahhoz a metaverzum-objektumhoz, az elsőbbséget módosítani kell. Ha több objektum is ugyanannak a szinkronizálási szabálynak a hatókörében van, akkor a szinkronizálási motor nem tudja meghatározni a prioritást. Nem egyértelmű, hogy melyik forrásobjektumnak kell hozzájárulnia a metaverzum értékéhez. Ez a konfiguráció akkor is nem egyértelmű, ha a forrás attribútumai azonos értékűek.  
+![Több objektum ugyanahhoz az mv objektumhoz csatlakoztatva](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
-Ebben a forgatókönyvben a szinkronizálási szabályok hatókörének módosítása, így az adatforrás-objektumok különböző szinkronizálási szabály hatókörébe kell. Lehetővé teszi a különböző sorrend határozza meg.  
-![Több objektumot csatoltak az azonos mv-objektum](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
+Ebben az esetben módosítania kell a szinkronizálási szabályok hatókörét, hogy a forrásobjektumok hatóköre eltérő legyen. Ez lehetővé teszi, hogy különböző prioritást határozzon meg.  
+![Több objektum ugyanahhoz az mv objektumhoz csatlakoztatva](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
 
 ## <a name="next-steps"></a>További lépések
-* További információ az a kifejezés nyelv [deklaratív kiépítés kifejezéseinek ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
-* Lásd: hogyan deklaratív kiépítés használt out-of-box a [az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md).
-* Tekintse meg gyakorlati módosítást használata a deklaratív kiépítés [hogyan lehet módosítani az alapértelmezett konfiguráció](how-to-connect-sync-change-the-configuration.md).
-* Felhasználók és a kapcsolattartók együttműködésének olvasni [ismertetése felhasználók és a kapcsolattartók](concept-azure-ad-connect-sync-user-and-contacts.md).
+* A kifejezés nyelvéről a [Deklaratív kiépítési kifejezések ismertetése című](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)témakörben olvashat bővebben.
+* Tekintse meg, hogyan használja a deklaratív kiépítést a beépített használat [az alapértelmezett konfiguráció ismertetése című](concept-azure-ad-connect-sync-default-configuration.md)témakörben.
+* Tekintse meg, hogyan lehet gyakorlati módosítást eszközolni a deklaratív kiépítés használatával [az Alapértelmezett konfiguráció módosítása](how-to-connect-sync-change-the-configuration.md)című témakörben.
+* A Felhasználók és kapcsolattartók [ismertetése](concept-azure-ad-connect-sync-user-and-contacts.md)című témakörben továbbra is olvashatja, hogyan működnek együtt a felhasználók és a kapcsolattartók.
 
-**Áttekintő témakör**
+**Áttekintő témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 
 **Referencia-témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Functions – referencia](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect szinkronizálás: Függvények – referencia](reference-connect-sync-functions-reference.md)

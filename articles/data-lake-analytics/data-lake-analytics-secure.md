@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Analytics biztonságos több felhasználó számára
-description: Ismerje meg, hogyan konfigurálhatja a több felhasználó számára az Azure Data Lake Analytics-feladatok futtatása.
+title: Biztonságos Azure Data Lake Analytics több felhasználó számára
+description: Ismerje meg, hogyan konfigurálhat több felhasználót feladatok futtatására az Azure Data Lake Analytics szolgáltatásban.
 ms.service: data-lake-analytics
 services: data-lake-analytics
 author: matt1883
@@ -9,39 +9,39 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60813365"
 ---
-# <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>A feladat adatainak feladatinformációkat felhasználói elérésének konfigurálása az Azure Data Lake Analytics 
+# <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Felhasználói hozzáférés konfigurálása a feladatadatokhoz az Azure Data Lake Analytics szolgáltatásban 
 
-Az Azure Data Lake Analytics segítségével több felhasználói fiókhoz vagy szolgáltatásnevek feladatok futtatásához. 
+Az Azure Data Lake Analytics több felhasználói fiókkal vagy egyszerű szolgáltatásnévvel is futtathat feladatokat. 
 
-Ahhoz, hogy ezeket a feladat részletes információk megtekintéséhez ugyanazokat a felhasználókat a felhasználóknak kell el tudják olvasni a feladat mappák tartalmát. A feladat mappákban található `/system/` könyvtár. 
+Ahhoz, hogy ugyanezek a felhasználók láthassák a részletes feladatinformációkat, a felhasználóknak képesnek kell lenniük a feladatmappák tartalmának olvasására. A feladatmappák a `/system/` címtárban találhatók. 
 
-A szükséges engedélyek nincsenek konfigurálva, a felhasználó hiba jelenhet meg: `Graph data not available - You don't have permissions to access the graph data.` 
+Ha a szükséges engedélyek nincsenek konfigurálva, a felhasználó hibaüzenetet láthat:`Graph data not available - You don't have permissions to access the graph data.` 
 
-## <a name="configure-user-access-to-job-information"></a>Feladat adatainak való felhasználói hozzáférés konfigurálása
+## <a name="configure-user-access-to-job-information"></a>Felhasználói hozzáférés konfigurálása a feladatadatokhoz
 
-Használhatja a **varázslót** a hozzáférés-vezérlési listák konfigurálása a mappák. További információkért lásd: [új felhasználó hozzáadása](data-lake-analytics-manage-use-portal.md#add-a-new-user).
+A Felhasználó **hozzáadása varázslóval** konfigurálhatja a mappákon lévő ACL-kat. További információt az Új felhasználó hozzáadása című témakörben [talál.](data-lake-analytics-manage-use-portal.md#add-a-new-user)
 
-Ha többre van szüksége szabályozható, vagy a parancsfájl az engedélyeket kell majd a mappák biztonságossá a következő:
+Ha részletesebb vezérlésre van szüksége, vagy parancsfájlt kell írnia, akkor biztosítsa a mappákat az alábbiak szerint:
 
-1. Engedélyezés **végrehajtása** engedélyeket (keresztül hozzáférési ACL-t), a legfelső szintű mappához:
+1. Grant **execute** permissions (via an access ACL) on the root folder:
    - /
    
-2. Támogatás **végrehajtása** és **olvasása** engedélyeket (keresztül hozzáférési ACL-t és a egy alapértelmezett ACL-t) a feladat mappákat tartalmazó. Ha például egy adott feladat, a 2018. május 25., ezek a mappák kell érhető el:
-   - /system
+2. A feladatmappákat tartalmazó **mappákvégrehajtási** és **olvasási** engedélyeit (hozzáférési kulcson és alapértelmezett Hozzáférési ponton keresztül) engedélyezze. 2018. május 25-én egy adott feladathoz például ezekhez a mappákhoz hozzá kell férni:
+   - /rendszer
    - /system/jobservice
    - /system/jobservice/jobs
-   - /System/jobservice/Jobs/Usql
-   - /System/jobservice/Jobs/Usql/2018
-   - /System/jobservice/Jobs/Usql/2018/05
+   - /system/jobservice/jobs/Usql
+   - /system/jobservice/jobs/Usql/2018
+   - /system/jobservice/jobs/Usql/2018/05
    - /system/jobservice/jobs/Usql/2018/05/25
-   - /System/jobservice/Jobs/Usql/2018/05/25/11
-   - /System/jobservice/Jobs/Usql/2018/05/25/11/01
+   - /system/jobservice/jobs/Usql/2018/05/25/11
+   - /system/jobservice/jobs/Usql/2018/05/25/11/01
    - /system/jobservice/jobs/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
 
 ## <a name="next-steps"></a>További lépések

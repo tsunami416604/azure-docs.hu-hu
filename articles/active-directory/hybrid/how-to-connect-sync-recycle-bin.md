@@ -1,8 +1,8 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: AD lomtárának engedélyezése |} A Microsoft Docs'
-description: Ez a témakör az Azure AD Connect az AD Lomtár funkció használatát javasolja.
+title: 'Azure AD Connect szinkronizálása: AD lomtár engedélyezése | Microsoft dokumentumok'
+description: Ez a témakör az AD Lomtár szolgáltatás használatát javasolja az Azure AD Connect használatával.
 services: active-directory
-keywords: AD lomtárának véletlen törlés, a forráshorgony
+keywords: AD Lomtár, véletlen törlés, forráshorgony
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,32 +18,32 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fe7d3ea7d4f6d648438efc1a484d5909ade2f23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382895"
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Az Azure AD Connect szinkronizálása: Az AD lomtárának engedélyezése
-Javasoljuk, hogy a helyszíni Active címtárak, amely szinkronizálva vannak az Azure AD az AD Lomtár engedélyezése. 
+# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect szinkronizálás: AD lomtár engedélyezése
+Javasoljuk, hogy engedélyezze az AD Lomtár szolgáltatást a helyszíni aktív könyvtárakhoz, amelyek szinkronizálva vannak az Azure AD-vel. 
 
-Ha véletlenül törölte egy helyszíni AD-felhasználói objektum és a funkció használatát, az Azure AD helyreállítja a megfelelő Azure AD felhasználói objektum visszaállítása.  Az AD Lomtár funkció kapcsolatos információkért tekintse meg a cikk [forgatókönyv áttekintése a visszaállítás törölt Active Directory-objektumok](https://technet.microsoft.com/library/dd379542.aspx).
+Ha véletlenül törölt egy helyszíni AD felhasználói objektumot, és visszaállítja azt a funkció használatával, az Azure AD visszaállítja a megfelelő Azure AD felhasználói objektumot.  Az AD Lomtár szolgáltatásról a [Törölt Active Directory-objektumok visszaállításáról szóló forgatókönyv áttekintése](https://technet.microsoft.com/library/dd379542.aspx)című cikkben olvashat.
 
-## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Az AD Lomtár engedélyezése előnyei
-Ez a szolgáltatás segít az Azure AD felhasználói objektumok visszaállításához a következő módon:
+## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Az AD lomtár engedélyezésének előnyei
+Ez a funkció az alábbi módon segíti az Azure AD felhasználói objektumok visszaállítását:
 
-* Ha véletlenül törölte egy helyszíni AD-felhasználói objektumot, a megfelelő Azure AD felhasználói objektum törli a következő szinkronizálási ciklusban. Alapértelmezés szerint az Azure AD megtartja a törölt Azure AD felhasználói objektum 30 napig helyreállíthatóan törölt állapotban.
+* Ha véletlenül törölt egy helyszíni AD felhasználói objektumot, a megfelelő Azure AD felhasználói objektum törlődik a következő szinkronizálási ciklusban. Alapértelmezés szerint az Azure AD 30 napig megőrzi a törölt Azure AD felhasználói objektumot.
 
-* Ha rendelkezik a helyszíni AD Recycle Bin szolgáltatás engedélyezve van, a törölt állíthatja vissza a helyszíni AD-felhasználói objektum a Forráshorgony értékét módosítása nélkül. Ha a helyreállított a helyszíni AD-felhasználói objektum szinkronizált Azure ad-hez, az Azure AD fog visszaállítást a megfelelő helyreállíthatóan törölt Azure AD felhasználói objektum. Forráshorgony-attribútumként kapcsolatos információkért tekintse meg a cikk [az Azure AD Connect: Tervezési alapelvek](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
+* Ha engedélyezve van a helyszíni AD Lomtár szolgáltatás, a törölt helyszíni AD felhasználói objektumot a Forráshorgony értékének módosítása nélkül visszaállíthatja. Amikor a helyreállított helyszíni AD felhasználói objektum szinkronizálva van az Azure AD-vel, az Azure AD visszaállítja a megfelelő helyreállítható Azure AD felhasználói objektumot. A Forráshorgony attribútumról az [Azure AD Connect: Tervezési fogalmak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor)című cikkben olvashat.
 
-* Ha nem rendelkezik a helyszíni AD Recycle Bin szolgáltatás engedélyezve van, előfordulhat, hogy az AD-felhasználói objektum cserélje le a törölt objektum létrehozásához. Ha a rendszer által létrehozott AD-attribútum (például az ObjectGuid) használja a Forráshorgony-attribútumként az Azure AD Connect szinkronizálási szolgáltatás van konfigurálva, az újonnan létrehozott AD felhasználói objektum nem fog a törölt AD user objektum Forráshorgony értékét. Az újonnan létrehozott AD felhasználói objektum szinkronizálva van az Azure AD, ha az Azure ad-ben létrehoz egy új Azure AD felhasználói objektum helyett a helyreállíthatóan törölt visszaállítása az Azure AD felhasználói objektum.
+* Ha nincs engedélyezve a helyszíni AD Lomtár szolgáltatás, előfordulhat, hogy létre kell hoznia egy AD felhasználói objektumot a törölt objektum cseréjéhez. Ha az Azure AD Connect szinkronizálási szolgáltatás úgy van konfigurálva, hogy a rendszer által generált AD attribútum (például ObjectGuid) használatával használja a Forráshorgony attribútumot, az újonnan létrehozott AD felhasználói objektum nem rendelkezik a törölt AD felhasználói objektummal megegyező forráshorgony értékkel. Amikor az újonnan létrehozott AD felhasználói objektum szinkronizálva van az Azure AD-vel, az Azure AD egy új Azure AD felhasználói objektumot hoz létre a helyreállító Azure AD felhasználói objektum visszaállítása helyett.
 
 > [!NOTE]
-> Alapértelmezés szerint az Azure AD tartja az Azure AD felhasználói objektumok helyreállíthatóan törölt állapotban törlése 30 napig, mielőtt véglegesen törlődnek. A rendszergazdák azonban gyorsítható fel az ilyen objektumok a törlést. Az objektumok véglegesen törlődnek, ha azok már nem állíthatók helyre, még akkor is, ha a helyszíni AD Lomtár funkció engedélyezve van.
+> Alapértelmezés szerint az Azure AD a törölt Azure AD felhasználói objektumokat 30 napig véglegesen törli. A rendszergazdák azonban felgyorsíthatják az ilyen objektumok törlését. Az objektumok végleges törlése után már nem lehet visszaőket tetszni, még akkor sem, ha a helyszíni AD Lomtár szolgáltatás engedélyezve van.
 
 ## <a name="next-steps"></a>További lépések
-**Áttekintő témakör**
+**Áttekintő témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása](how-to-connect-sync-whatis.md)
 
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

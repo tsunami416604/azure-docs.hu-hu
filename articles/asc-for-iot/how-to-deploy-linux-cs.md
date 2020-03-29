@@ -1,6 +1,6 @@
 ---
-title: Útmutató a Azure Security Center linuxos C# ügynökének telepítéséhez és telepítéséhez a IoT-hez | Microsoft Docs
-description: Ismerje meg, hogyan telepítheti a IoT-ügynök Azure Security Center a 32 bites és a 64-bites Linux rendszeren.
+title: Útmutató az Azure Security Center for IoT Linux C# ügynökének telepítéséhez és üzembe helyezéséhez| Microsoft dokumentumok
+description: Ismerje meg, hogyan telepítheti az Azure Security Center for IoT-ügynök 32 bites és 64 bites Linuxra is.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
 ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75367416"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>C#-alapú Azure Security Center for IoT biztonsági ügynök üzembe helyezése Linuxon
 
 
-Ez az útmutató ismerteti, hogyan telepítheti és telepítheti a C#IoT-alapú biztonsági ügynök Azure Security Center a Linux rendszeren.
+Ez az útmutató bemutatja, hogyan telepítheti és telepítheti az Azure Security Center for IoT C#-alapú biztonsági ügynök Linuxon.
 
 Ebből az útmutatóból a következőket tanulhatja meg: 
 > [!div class="checklist"]
@@ -36,60 +36,60 @@ Ebből az útmutatóból a következőket tanulhatja meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Más platformokon és ügynöki Ízeknél tekintse meg [a megfelelő biztonsági ügynök kiválasztása](how-to-deploy-agent.md)című témakört.
+Más platformok és ügynök ízek, [lásd: Válassza ki a megfelelő biztonsági ügynök](how-to-deploy-agent.md).
 
-1. A biztonsági ügynök telepítéséhez helyi rendszergazdai jogosultságok szükségesek azon a gépen, amelyre telepíteni kívánja a szolgáltatást. 
+1. A biztonsági ügynök központi telepítéséhez helyi rendszergazdai jogok szükségesek azon a számítógépen, amelyen telepíteni szeretné. 
 
 1. [Hozzon létre egy biztonsági modult](quickstart-create-security-twin.md) az eszközhöz.
 
 ## <a name="installation"></a>Telepítés 
 
-A biztonsági ügynök üzembe helyezéséhez kövesse az alábbi lépéseket:
+A biztonsági ügynök központi telepítéséhez kövesse az alábbi lépéseket:
 
-1. Töltse le a legújabb verziót a gépére a [githubról](https://aka.ms/iot-security-github-cs).
+1. Töltse le a legújabb verziót a gépére a [GitHubról.](https://aka.ms/iot-security-github-cs)
 
-1. Bontsa ki a csomag tartalmát, és navigáljon a _/install_ mappára.
+1. Bontsa ki a csomag tartalmát, és keresse meg a _/Install_ mappát.
 
-1. Futtassa a futó engedélyeket a **InstallSecurityAgent parancsfájlhoz** a `chmod +x InstallSecurityAgent.sh` futtatásával 
+1. Futó engedélyek hozzáadása az **InstallSecurityAgent parancsfájlhoz** futással`chmod +x InstallSecurityAgent.sh` 
 
-1. Ezután futtassa a következő parancsot a **legfelső szintű jogosultságokkal**: 
+1. Ezután futtassa a következő parancsot **gyökérjogosultságokkal:** 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
    
-   További információ a hitelesítési paraméterekről: [a hitelesítés konfigurálása](concept-security-agent-authentication-methods.md).
+   A hitelesítési paraméterekkel kapcsolatos további információkért lásd: [A hitelesítés konfigurálása](concept-security-agent-authentication-methods.md).
 
-Ez a szkript a következő műveleteket hajtja végre:
+Ez a parancsfájl a következő műveleteket hajtja végre:
 
 - Telepíti az előfeltételeket.
 
-- Szolgáltatásbeli felhasználó (interaktív bejelentkezéssel letiltva) hozzáadásával.
+- Hozzáad egy szolgáltatásfelhasználót (az interaktív bejelentkezés le van tiltva).
 
-- Az ügynököt **démonként** telepíti, feltételezi, hogy az eszköz a klasszikus üzemi modellhez tartozó **rendszert** használja.
+- Az ügynököt **démonként telepíti** – feltételezi, hogy az eszköz a klasszikus központi telepítési modellhez **rendszerezve** használja.
 
-- Úgy konfigurálja a **sudoers** -t, hogy az ügynök elvégezzen bizonyos feladatokat root-ként.
+- Úgy konfigurálja a **sudoers-t,** hogy az ügynök root-ként elvégezhet bizonyos feladatokat.
 
-- A megadott hitelesítési paraméterekkel konfigurálja az ügynököt.
+- Az ügynök konfigurálása a megadott hitelesítési paraméterekkel.
 
 
-További segítségért futtassa a parancsfájlt a – Súgó paraméterrel: `./InstallSecurityAgent.sh --help`
+További segítségért futtassa a parancsfájlt a –help paraméterrel:`./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>Ügynök eltávolítása
 
-Az ügynök eltávolításához futtassa a parancsfájlt az – u paraméterrel: `./InstallSecurityAgent.sh -u`. 
+Az ügynök eltávolításához futtassa a parancsfájlt `./InstallSecurityAgent.sh -u`a –u paraméterrel: . 
 
 > [!NOTE]
 > Az eltávolítás nem távolítja el a telepítés során telepített hiányzó előfeltételeket.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás  
 
-1. A telepítés állapotának ellenőrzéséhez futtassa a következőket:
+1. Ellenőrizze a központi telepítés állapotát a következő futtatásával:
 
     `systemctl status ASCIoTAgent.service`
 
-2. Naplózás engedélyezése.  
-   Ha az ügynök nem indul el, a naplózás bekapcsolásával további információkat érhet el.
+2. Engedélyezze a naplózást.  
+   Ha az ügynök nem indul el, kapcsolja be a naplózást, hogy további információkat kapjon.
 
    A naplózás bekapcsolása:
 
@@ -97,7 +97,7 @@ Az ügynök eltávolításához futtassa a parancsfájlt az – u paraméterrel:
 
         `vi /var/ASCIoTAgent/General.config`
 
-   1. Szerkessze a következő értékeket: 
+   1. A következő értékek szerkesztése: 
 
       ```
       <add key="logLevel" value="Debug"/>
@@ -105,25 +105,25 @@ Az ügynök eltávolításához futtassa a parancsfájlt az – u paraméterrel:
       <add key="diagnosticVerbosityLevel" value="Some" /> 
       <add key="logFilePath" value="IotAgentLog.log"/>
       ```
-       A **logFilePath** érték konfigurálható. 
+       A **logFilePath** értéke konfigurálható. 
 
        > [!NOTE]
-       > A hibaelhárítás befejezése után javasoljuk a naplózás **kikapcsolását** . A naplózás **bekapcsolásával megnő a** naplófájl mérete és az adatfelhasználás.
+       > Javasoljuk, hogy a hibaelhárítás befejezése után kapcsolja **ki** a naplózást. A bejelentkezés elhagyása növeli **a** naplófájl méretét és az adathasználatot.
 
-   1. Indítsa újra az ügynököt a futtatásával:
+   1. Indítsa újra az ügynököt a következő futtatásával:
 
        `systemctl restart ASCIoTAgent.service`
 
-   1. A hibával kapcsolatos további információkért tekintse meg a naplófájlt.  
+   1. A hiba további információiért tekintse meg a naplófájlt.  
 
-       A naplófájl helye: `/var/ASCIoTAgent/IotAgentLog.log`
+       A naplófájl helye:`/var/ASCIoTAgent/IotAgentLog.log`
 
-       Módosítsa a fájl helyének elérési útját a 2. lépésben a **logFilePath** választott név szerint. 
+       Módosítsa a fájl elérési útját a **logFilePath** 2. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A IoT-szolgáltatás [áttekintésének](overview.md) Azure Security Center olvasása
-- További információ a IoT- [architektúra](architecture.md) Azure Security Center
+- Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
+- További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
 - A [szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése
-- A [GYIK](resources-frequently-asked-questions.md) áttekintése
-- A [riasztások](concept-security-alerts.md) ismertetése
+- Olvassa el a [GYIK-et](resources-frequently-asked-questions.md)
+- A [riasztások ismertetése](concept-security-alerts.md)

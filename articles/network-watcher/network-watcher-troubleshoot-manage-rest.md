@@ -1,7 +1,7 @@
 ---
-title: VNET-átjáró és-kapcsolatok – Azure REST API
+title: VNET-átjáró és kapcsolatok – Azure REST API – Hibaelhárítás
 titleSuffix: Azure Network Watcher
-description: Ez az oldal azt ismerteti, hogyan lehet elhárítani Virtual Network átjárók és az Azure Network Watcher kapcsolatainak használatát a REST használatával
+description: Ez a lap bemutatja, hogyan háríthatók el a virtuális hálózati átjárók és kapcsolatok az Azure Network Watcherrel a REST használatával
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,51 +13,51 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: ab9f7fd95d7081b66e05dfd3d6a5ef47eb3c4053
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840672"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Az átjáró és a kapcsolatok Virtual Network az Azure Network Watcher használatával – problémamegoldás
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Virtuális hálózati átjáró és kapcsolatok – az Azure Network Watcher használatával – problémamegoldás
 
 > [!div class="op_single_selector"]
 > - [Portál](diagnose-communication-problem-between-networks.md)
-> - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
+> - [Powershell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-A Network Watcher számos képességgel rendelkezik, amelyek az Azure hálózati erőforrásainak megismeréséhez kapcsolódnak. Ezen képességek egyike az erőforrás-hibaelhárítás. Az erőforrás-hibaelhárítás a portál, a PowerShell, a CLI vagy a REST API használatával hívható meg. A híváskor Network Watcher megvizsgálja egy Virtual Network átjáró vagy egy kapcsolat állapotát, és visszaadja az eredményeit.
+A Network Watcher számos lehetőséget kínál az Azure-beli hálózati erőforrások megértéséhez. Az egyik ilyen képesség az erőforrás-hibaelhárítás. Az erőforrás-hibaelhárítás a portálon, a PowerShellen, a CLI-n vagy a REST API-n keresztül hívható meg. A hálózatfigyelő a virtuális hálózati átjáró vagy a kapcsolat állapotát vizsgálja, és visszaadja annak eredményeit.
 
 Ez a cikk végigvezeti az erőforrás-hibaelhárításhoz jelenleg elérhető különböző felügyeleti feladatokon.
 
-- [**Virtual Network átjáró hibáinak megoldása**](#troubleshoot-a-virtual-network-gateway)
-- [**Kapcsolatok hibáinak megoldása**](#troubleshoot-connections)
+- [**Virtuális hálózati átjáró – problémamegoldás**](#troubleshoot-a-virtual-network-gateway)
+- [**Kapcsolat – problémamegoldás**](#troubleshoot-connections)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-A ARMclient a REST API a PowerShell használatával történő meghívására szolgál. A ARMClient a chocolatey címen található a [ARMClient-on](https://chocolatey.org/packages/ARMClient)
+Az ARMclient a REST API-t a PowerShell használatával hívja meg. ARMClient található csokoládés [armclient a Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához.
+Ez a forgatókönyv feltételezi, hogy már követte a [Hálózatfigyelő létrehozása](network-watcher-create.md) a Hálózatfigyelő létrehozásához című lépéseit.
 
-A támogatott átjáró-típusok listáját a [támogatott átjárók típusainál](network-watcher-troubleshoot-overview.md#supported-gateway-types)találhatja meg.
+A támogatott átjárótípusok listájáért látogasson el a [Támogatott átjárótípusok .](network-watcher-troubleshoot-overview.md#supported-gateway-types)
 
 ## <a name="overview"></a>Áttekintés
 
-Network Watcher hibaelhárítási funkció lehetővé teszi a Virtual Network átjárókkal és kapcsolatokkal kapcsolatos hibák elhárítását. Ha az erőforrás-hibaelhárításra vonatkozó kérelmet küld, a rendszer lekérdezi és ellenőrzi a naplókat. Az ellenőrzés befejezésekor a rendszer az eredményeket adja vissza. Az API-kérelmek hibakeresése hosszú ideig futó kérelmeket eredményez, ami több percet is igénybe vehet. A naplókat tároló fiók tárolja.
+A Network Watcher hibaelhárítása lehetővé teszi a virtuális hálózati átjárókkal és kapcsolatokkal kapcsolatos problémák elhárítását. Amikor az erőforrás hibaelhárítási kérelmet, naplók lekérdezése és ellenőrzése. Ha a vizsgálat befejeződött, az eredményeket visszaadja. Az API-kérelmek hibaelhárítási kérelmek hosszú ideig futó kérelmek, amelyek eredménye több percet is igénybe vehet. A naplók egy tárolóban tárolóban tárolóban tárolóban tárolóban tárolóban tárolóban tárolóban vannak tárolva.
 
-## <a name="log-in-with-armclient"></a>Bejelentkezés a ARMClient
+## <a name="log-in-with-armclient"></a>Bejelentkezés armclient nal
 
 ```powershell
 armclient login
 ```
 
-## <a name="troubleshoot-a-virtual-network-gateway"></a>Virtual Network átjáró hibáinak megoldása
+## <a name="troubleshoot-a-virtual-network-gateway"></a>Virtuális hálózati átjáró – problémamegoldás
 
 
-### <a name="post-the-troubleshoot-request"></a>A hibakeresési kérelem közzététele
+### <a name="post-the-troubleshoot-request"></a>Post a hibaelhárítási kérelem
 
-A következő példa egy Virtual Network átjáró állapotát kérdezi le.
+A következő példa lekérdezi egy virtuális hálózati átjáró állapotát.
 
 ```powershell
 
@@ -82,12 +82,12 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/troubleshoot?api-version=2016-03-30" $requestBody -verbose
 ```
 
-Mivel ez a művelet hosszú ideig fut, a művelethez tartozó URI-t és az eredmény URI-JÁT a válasz fejléce adja vissza, ahogy az a következő válaszban látható:
+Mivel ez a művelet már régóta fut, a művelet lekérdezéséhez szükséges URI és az eredmény URI-ja a válaszfejlécben jelenik meg, ahogy az a következő válaszban látható:
 
 **Fontos értékek**
 
-* **Azure-AsyncOperation** – ez a tulajdonság tartalmazza az aszinkron hibakeresési művelet lekérdezéséhez szükséges URI-t.
-* **Hely** – ez a tulajdonság tartalmazza azt az URI-t, amelyben az eredmények a művelet befejezésekor teljesülnek.
+* **Azure-AsyncOperation** – Ez a tulajdonság tartalmazza az Async hibaelhárítási művelet lekérdezéséhez szükséges URI-t
+* **Hely** - Ez a tulajdonság tartalmazza azt az URI-t, ahol az eredmények a művelet befejezésekor vannak.
 
 ```
 HTTP/1.1 202 Accepted
@@ -107,15 +107,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Aszinkron művelet lekérdezése befejezéshez
+### <a name="query-the-async-operation-for-completion"></a>Az aszinkron művelet befejezése
 
-Az operatív URI használatával kérdezheti le a művelet előrehaladását az alábbi példában látható módon:
+Az URI műveletek segítségével a következő példában látható módon kérdezheti a művelet előrehaladását:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
 ```
 
-Amíg a művelet folyamatban van, a válasz a következő példában látható módon **Inelőrehaladást** mutat:
+Amíg a művelet folyamatban van, a válasz az **InProgress-t** mutatja a következő példában látható módon:
 
 ```json
 {
@@ -123,7 +123,7 @@ Amíg a művelet folyamatban van, a válasz a következő példában látható m
 }
 ```
 
-Ha a művelet befejeződött, az állapot **sikeresre**változik.
+A művelet befejezése után az állapot **sikeresre változik.**
 
 ```json
 {
@@ -133,13 +133,13 @@ Ha a művelet befejeződött, az állapot **sikeresre**változik.
 
 ### <a name="retrieve-the-results"></a>Az eredmény lekérése
 
-Ha a visszaadott állapot **sikeres**volt, hívja a Get metódust a operationresult tevékenységen URI-n az eredmények lekéréséhez.
+Miután a visszaadott állapot **sikeres,** hívja meg a GET metódust az operationResult URI-n az eredmények lekéréséhez.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
 ```
 
-A következő válaszok példákat mutatnak az átjáró hibaelhárítási eredményeinek lekérdezése során visszaadott jellemző csökkentett teljesítményű válaszra. Tekintse meg [az eredmények megismerését](#understanding-the-results) ismertető témakört, amelyből megtudhatja, hogy a válasz milyen tulajdonságokat jelent.
+Az alábbi válaszok példák egy tipikus degradált válasz, amely az átjáró hibaelhárítási eredményeinek lekérdezésekénél jelenik meg. Lásd: [Az eredmények megértése,](#understanding-the-results) hogy tisztázza, mit jelentenek a tulajdonságok a válaszban.
 
 ```json
 {
@@ -186,9 +186,9 @@ A következő válaszok példákat mutatnak az átjáró hibaelhárítási eredm
 ```
 
 
-## <a name="troubleshoot-connections"></a>Kapcsolatok hibáinak megoldása
+## <a name="troubleshoot-connections"></a>Kapcsolatok – problémamegoldás
 
-A következő példa a kapcsolatok állapotát kérdezi le.
+A következő példa lekérdezi a kapcsolat állapotát.
 
 ```powershell
 
@@ -211,14 +211,14 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 
 > [!NOTE]
-> A hibakeresési műveletet nem lehet párhuzamosan futtatni a kapcsolaton és a hozzá tartozó átjárón. A műveletnek a korábbi erőforráson való futtatása előtt kell végrehajtania.
+> A hibaelhárítási művelet nem futtatható párhuzamosan a kapcsolaton és a hozzátartozók átjáróin. A műveletnek be kell fejeződnie, mielőtt az előző erőforráson futtatna.
 
-Mivel ez egy hosszú ideig futó tranzakció, a válasz fejlécében a művelet lekérdezéséhez és az eredmény URI azonosítójának URI-ja a következő válaszban látható módon lesz visszaadva:
+Mivel ez egy hosszú ideig futó tranzakció, a válaszfejlécben a művelet lekérdezéséhez szükséges URI és az eredmény URI-ja a következő válaszban látható módon jelenik meg:
 
 **Fontos értékek**
 
-* **Azure-AsyncOperation** – ez a tulajdonság tartalmazza az aszinkron hibakeresési művelet lekérdezéséhez szükséges URI-t.
-* **Hely** – ez a tulajdonság tartalmazza azt az URI-t, amelyben az eredmények a művelet befejezésekor teljesülnek.
+* **Azure-AsyncOperation** – Ez a tulajdonság tartalmazza az Async hibaelhárítási művelet lekérdezéséhez szükséges URI-t
+* **Hely** - Ez a tulajdonság tartalmazza azt az URI-t, ahol az eredmények a művelet befejezésekor vannak.
 
 ```
 HTTP/1.1 202 Accepted
@@ -238,15 +238,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Aszinkron művelet lekérdezése befejezéshez
+### <a name="query-the-async-operation-for-completion"></a>Az aszinkron művelet befejezése
 
-Az operatív URI használatával kérdezheti le a művelet előrehaladását az alábbi példában látható módon:
+Az URI műveletek segítségével a következő példában látható módon kérdezheti a művelet előrehaladását:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Amíg a művelet folyamatban van, a válasz a következő példában látható módon **Inelőrehaladást** mutat:
+Amíg a művelet folyamatban van, a válasz az **InProgress-t** mutatja a következő példában látható módon:
 
 ```json
 {
@@ -254,7 +254,7 @@ Amíg a művelet folyamatban van, a válasz a következő példában látható m
 }
 ```
 
-Ha a művelet befejeződött, az állapot **sikeresre**változik.
+Ha a művelet befejeződött, az állapot Sikeres állapotra **változik.**
 
 ```json
 {
@@ -262,17 +262,17 @@ Ha a művelet befejeződött, az állapot **sikeresre**változik.
 }
 ```
 
-A következő válaszok példát mutatnak a kapcsolatok hibaelhárítási eredményeinek lekérdezése során kapott tipikus válaszra.
+A következő válaszok példák egy tipikus válasz, amely a kapcsolat hibaelhárítási eredményeinek lekérdezésekénél jelenik meg.
 
 ### <a name="retrieve-the-results"></a>Az eredmény lekérése
 
-Ha a visszaadott állapot **sikeres**volt, hívja a Get metódust a operationresult tevékenységen URI-n az eredmények lekéréséhez.
+Miután a visszaadott állapot **sikeres,** hívja meg a GET metódust az operationResult URI-n az eredmények lekéréséhez.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-A következő válaszok példát mutatnak a kapcsolatok hibaelhárítási eredményeinek lekérdezése során kapott tipikus válaszra.
+A következő válaszok példák egy tipikus válasz, amely a kapcsolat hibaelhárítási eredményeinek lekérdezésekénél jelenik meg.
 
 ```json
 {
@@ -319,12 +319,12 @@ is a transient state while the Azure platform is being updated.",
 }
 ```
 
-## <a name="understanding-the-results"></a>Az eredmények megismerése
+## <a name="understanding-the-results"></a>Az eredmények megértése
 
-A művelet szövege általános útmutatást nyújt a probléma megoldásához. Ha a probléma megoldására is sor kerül, további útmutatást nyújt a hivatkozáshoz. Abban az esetben, ha nincs további útmutatás, a válasz egy támogatási eset megnyitására szolgáló URL-címet biztosít.  A válasz tulajdonságaival és a benne foglalt információkkal kapcsolatos további információkért tekintse meg [Network Watcher a hibakeresés áttekintése című](network-watcher-troubleshoot-overview.md) témakört.
+A műveletszöveg általános útmutatást ad a probléma megoldásához. Ha a probléma érdekében lehet műveletet végrehajtani, a hivatkozás további útmutatást kap. Abban az esetben, ha nincs további útmutatást, a válasz megadja az URL-t, hogy nyissa meg a támogatási eset.  A válasz tulajdonságairól és a benne foglalt információkról a [Network Watcher hibaelhárítás – áttekintés című témakörben olvashat bővebben.](network-watcher-troubleshoot-overview.md)
 
-A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
+A fájlok Azure storage-fiókokból való letöltésével kapcsolatos tudnivalókat az [Azure Blob storage .NET használatával történő használatának első lépései .](../storage/blobs/storage-dotnet-how-to-use-blobs.md) Egy másik eszköz, amely használható a Storage Explorer. További információ a Storage Explorer ről itt található az alábbi linken: [Storage Explorer](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha a beállítások megváltoztak a VPN-kapcsolat leállításakor, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és az esetlegesen érintett biztonsági szabályok nyomon követéséhez című témakört.
+Ha olyan beállítások módosultak, amelyek leállítják a VPN-kapcsolatot, olvassa el a [Hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) című témakört a kérdéses hálózati biztonsági csoport és biztonsági szabályok nyomon követéséhez.

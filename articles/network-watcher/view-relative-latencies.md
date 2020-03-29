@@ -1,6 +1,6 @@
 ---
-title: Az Azure-régiókhoz tartozó relatív késések megtekintése adott helyekről | Microsoft Docs
-description: Megtudhatja, hogyan tekintheti meg az internetes szolgáltatók relatív késéseit adott helyekről származó Azure-régiók között.
+title: Az Azure-régiók relatív késéseinek megtekintése adott helyekről | Microsoft dokumentumok
+description: Ismerje meg, hogyan tekintheti meg az internetszolgáltatók relatív késéseit az Azure-régiókba adott helyekről.
 services: network-watcher
 documentationcenter: ''
 author: damendo
@@ -13,31 +13,31 @@ ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: c3a85de3a201a89d6d9500e4f4b2df9e667e3537
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840536"
 ---
-# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Adott helyekről származó Azure-régiók relatív késésének megtekintése
+# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Adott helyek és Azure-régiók közötti relatív késés megtekintése
 
 > [!WARNING]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és még folyamatban van a stabilitás tesztelése.
+> Ez a funkció jelenleg előzetes verzióban érhető el, és még mindig tesztelik a stabilitást.
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure [Network Watcher](network-watcher-monitoring-overview.md) szolgáltatást, hogy eldöntse, milyen Azure-régiót helyez üzembe az alkalmazás vagy szolgáltatás a-ben a felhasználó demográfiai adatai alapján. Emellett a segítségével kiértékelheti a szolgáltatók kapcsolatait az Azure-ban.  
+Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure [Network Watcher](network-watcher-monitoring-overview.md) szolgáltatást annak eldöntéséhez, hogy milyen Azure-régióban telepítse az alkalmazást vagy szolgáltatást a felhasználó demográfiai adatai alapján. Emellett használhatja a szolgáltatók Azure-hoz fűződő kapcsolatainak kiértékelésére.  
         
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-network-watcher"></a>Network Watcher létrehozása
+## <a name="create-a-network-watcher"></a>Hálózati figyelő létrehozása
 
-Ha már rendelkezik hálózati figyelővel legalább egy Azure- [régióban](https://azure.microsoft.com/regions), kihagyhatja a jelen szakasz feladatait. Hozzon létre egy erőforráscsoportot a Network Watcher számára. Ebben a példában az erőforráscsoport az USA keleti régiójában jön létre, de az erőforráscsoport bármely Azure-régióban létrehozható.
+Ha már rendelkezik egy hálózati figyelővel legalább egy [Azure-régióban,](https://azure.microsoft.com/regions)kihagyhatja a szakaszokban szereplő feladatokat. Hozzon létre egy erőforráscsoportot a hálózatfigyelő számára. Ebben a példában az erőforráscsoport az USA keleti régiójában jön létre, de az erőforráscsoportot bármely Azure-régióban létrehozhatja.
 
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
-Hozzon létre egy hálózati figyelőt. Legalább egy Azure-régióban létre kell hoznia egy hálózati figyelőt. Ebben a példában egy Network Watcher jön létre az USA keleti régiójában.
+Hozzon létre egy hálózati figyelőt. Legalább egy Azure-régióban létre kell hoznia egy hálózati figyelőt. Ebben a példában egy hálózati figyelő jön létre az USA keleti régiójában az Azure régióban.
 
 ```powershell
 New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
@@ -45,7 +45,7 @@ New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatch
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Relatív hálózati késések összehasonlítása egyetlen Azure-régióval egy adott helyről
 
-Kiértékelheti a szolgáltatókat, vagy egy olyan felhasználót érintő hibát, amely egy olyan problémát jelentett, mint például a "a hely lassú volt", egy adott helyről az Azure-régióba, ahol a szolgáltatás telepítve van. A következő parancs például a Egyesült Államok és az USA 2. nyugati régiójában lévő, a 2017. december 13-15. között található Washington államban az átlagosan használt internetes szolgáltatói késéseket adja vissza.
+Kiértékelheti a szolgáltatókat, vagy elháríthatja a problémát , például a "a hely lassú" problémát jelző problémát egy adott helyről az azure-régióba, ahol egy szolgáltatás telepítve van. A következő parancs például az Egyesült Államokban Washington állam és az USA nyugati régiója 2017.
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -59,10 +59,10 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Az előző parancsban megadott régiónak nem kell megegyeznie a Network Watcher beolvasásakor megadott régióval. Az előző parancshoz egyszerűen meg kell adnia egy meglévő hálózati figyelőt. A Network Watcher bármely régióban lehet. Ha `-Country` és `-State`értéket ad meg, érvényesnek kell lennie. Az értékek megkülönböztetik a kis-és nagybetűket. Az adatmennyiség korlátozott számú országban, régióban, államban és városban is elérhető. Futtassa a parancsokat az [elérhető országok/régiók, Államok, városok és szolgáltatók nézetben](#view-available) , és tekintse meg az előző paranccsal használni kívánt országok/régiók, városok és Államok listáját. 
+> Az előző parancsban megadott területnek nem kell megegyeznie a hálózati figyelő beolvasásakor megadott területével. Az előző parancs egyszerűen meg kell adnia egy meglévő hálózati figyelőt. A hálózat figyelője bármely régióban lehet. Ha a és `-Country` `-State`a értékét adja meg, azoknak érvényesnek kell lenniük. Az értékek ben a kis- és nagybetűk et nem lehet figyelembe. Az adatok korlátozott számú országra/régióra, államra és városra vonatkozóan érhetők el. Futtassa a parancsokat [a Rendelkezésre álló országok/régiók, államok, városok és szolgáltatók nézetében](#view-available) az előző paranccsal használható országok/régiók, városok és állapotok listájának megtekintéséhez. 
 
 > [!WARNING]
-> `-StartTime` és `-EndTime`esetében meg kell adnia egy dátumot az elmúlt 30 napban. Egy korábbi dátum megadásával a rendszer nem ad vissza adatvesztést.
+> Meg kell adnia egy dátumot `-StartTime` az `-EndTime`elmúlt 30 napban a és a területen. Ha megad egy korábbi dátumot, a rendszer nem ad vissza adatokat.
 
 Az előző parancs kimenete a következő:
 
@@ -104,11 +104,11 @@ ReachabilityReport : [
                      ]
 ```
 
-A visszaadott kimenetben a **pontszám** értéke a különböző régiók és szolgáltatók relatív késése. Az 1 pontszám a legrosszabb (legmagasabb) késés, míg a 100 a legalacsonyabb késés. A relatív késések a napi átlagra vonatkoznak. Az előző példában látható, hogy habár a késések mindkét nap megegyeznek, és a két szolgáltató késése között kis különbség van, azt is egyértelművé teszi, hogy mindkét szolgáltatónál a késések is alacsonyak az 1-100 skálán. Habár ez várható, mivel a Egyesült Államok Washington állama fizikailag az USA 2. nyugati régiójában, az Azure-régióban található, időnként nem várt eredmények. Minél nagyobb a megadott dátumtartomány, annál több időt vehet igénybe az átlagos késleltetés.
+A visszaadott kimenetben a **Score** értéke a régiók és szolgáltatók relatív késése. Az 1-es pontszám a legrosszabb (legmagasabb) késés, míg a 100 a legalacsonyabb késés. A relatív késések átlagolója a nap. Az előző példában, bár egyértelmű, hogy a késések voltak azonosak mindkét nap, és hogy van egy kis különbség a késés a két szolgáltató, az is egyértelmű, hogy a késések mindkét szolgáltató alacsony az 1-100 skálán. Bár ez várható, mivel az Egyesült Államokwashington állam fizikailag közel van az USA 2 nyugat-azure-régióhoz, néha az eredmények nem a várt módon. Minél nagyobb a megadott dátumtartomány, annál többet átlagolhat az idő múlásával.
 
 ## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Relatív hálózati késések összehasonlítása az Azure-régiók között egy adott helyről
 
-Ha egy adott hely és egy adott Azure-régió közötti relatív késések meghatározása helyett a `-Location`, akkor azt is megteheti, hogy az összes Azure-régióhoz relatív késést szeretne meghatározni egy adott fizikai helyről. Például a következő parancs segítségével kiértékelheti, hogy milyen Azure-régiót kell üzembe helyezni a szolgáltatásban, ha az elsődleges felhasználók a Washington államban található Comcast-felhasználók:
+Ha ahelyett, hogy egy adott hely és egy adott Azure-régió között relatív késéseket ad meg, `-Location`meg szeretné határozni az összes Azure-régió relatív késéseit egy adott fizikai helyről, ezt is megteheti. A következő parancs például segít kiértékelni, hogy milyen azure-régióban telepítsen egy szolgáltatást, ha az elsődleges felhasználók A Comcast-felhasználók Washington államban találhatók:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -122,19 +122,19 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Ha egyetlen helyet ad meg, és nem ad meg helyet, vagy több helyet ad meg, például "West RÉGIÓJA", "West US", meg kell adnia egy internetszolgáltatót a parancs futtatásakor. 
+> Ellentétben akkor, ha egyetlen helyet ad meg, ha nem ad meg helyet, vagy több helyet ad meg, például "USA nyugati része", a parancs futtatásakor meg kell adnia egy internetszolgáltatót. 
 
-## <a name="view-available"></a>Az elérhető országok/régiók, Államok, városok és szolgáltatók megtekintése
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>Az elérhető országok/régiók, államok, városok és szolgáltatók megtekintése
 
-Az egyes internetszolgáltatók, országok/régiók, Államok és városok számára is elérhetők az egyes szolgáltatások. Az összes elérhető internetszolgáltató, ország/régió, állam és város listájának megtekintéséhez írja be a következő parancsot:
+Az adatok meghatározott internetszolgáltatók, országok/régiók, államok és városok számára érhetők el. Az összes elérhető internetszolgáltató, ország/régió, állam és város listájának megtekintéséhez adja meg a következő parancsot:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Az adatai csak az előző parancs által visszaadott országok/régiók, Államok és városok esetében érhetők el. Az előző parancshoz meg kell adnia egy meglévő hálózati figyelőt. A példában a *NetworkWatcher_eastus* Network Watcher egy *NetworkWatcherRG*nevű erőforráscsoporthoz lett megadva, de megadhatja a meglévő hálózati figyelőt. Ha nem rendelkezik meglévő hálózati figyelővel, hozzon létre egyet a [Network Watcher létrehozása](#create-a-network-watcher)című témakörben ismertetett feladatok végrehajtásával. 
+Az adatok csak az előző parancs által visszaküldött országokra/régiókra, állapotokra és városokra vonatkozóan érhetők el. Az előző parancs megköveteli, hogy adjon meg egy meglévő hálózati figyelőt. A példa a *NetworkWatcherRG*nevű *erőforráscsoportban* adta meg a NetworkWatcher_eastus a hálózati figyelőt, de bármely meglévő hálózati figyelőt megadhat. Ha nem rendelkezik meglévő hálózati figyelővel, hozzon létre egyet a [Hálózati figyelő létrehozása](#create-a-network-watcher)című területen végzett feladatok elvégzésével. 
 
-Az előző parancs futtatása után szűrheti a visszaadott kimenetet, ha szükséges, az **ország**, az **állam**és a **város**érvényes értékének megadásával.  Ha például a Seattle-ben elérhető internetszolgáltatók listáját szeretné megtekinteni a Egyesült Államokban, írja be a következő parancsot:
+Az előző parancs futtatása után szükség esetén az **Ország,** **az Állam**és a **Város**érvényes értékeinek megadásával szűrheti a visszaadott kimenetet.  Ha például meg szeretné tekinteni a Washington állambeli Seattle-ben(Washington) elérhető internetszolgáltatók listáját, írja be a következő parancsot:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList `
@@ -146,4 +146,4 @@ Get-AzNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> Az **ország** számára megadott értéknek kis-és nagybetűnek kell lennie. Az **állapot** és a **város** számára megadott értékeknek kisbetűnek kell lenniük. Az értékeknek szerepelniük kell a megadott kimenetben a parancs futtatása után az **ország**, **állam**és **város**érték nélkül. Ha a helytelen esetet adja meg, vagy olyan értéket ad meg az **ország**, **állam**vagy **város** számára, amely nem szerepel az adott tulajdonság értékeit nem tartalmazó parancs futtatása után, akkor a visszaadott kimenet üres.
+> **Az Ország** megadott értéknek kis- és nagybetűsnek kell lennie. **Az Állam** és **város** megadott értékeknek kisbetűseknek kell lenniük. Az értékeket az **Ország**, **Állam**és **Város**érték nélküli parancs futtatása után visszaadott kimenetben kell felsorolni. Ha a helytelen kis- és nagybetűket adja meg, vagy olyan értéket ad meg **az Ország,** **az Állam**vagy a **Város** értékhez, amely nem szerepel a parancs futtatása után visszaadott kimenetben, és ezeknek a tulajdonságoknak nincs értéke, a visszaadott kimenet üres lesz.

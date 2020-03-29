@@ -1,6 +1,6 @@
 ---
-title: Indítási feladatok futtatása az Azure Cloud Servicesban | Microsoft Docs
-description: Az indítási feladatok segítséget nyújtanak a felhőalapú szolgáltatási környezet előkészítésében az alkalmazáshoz. Ez a cikk bemutatja, hogyan működnek az indítási feladatok, és hogyan lehet őket
+title: Indítási feladatok futtatása az Azure Cloud Services szolgáltatásban | Microsoft dokumentumok
+description: Az indítási feladatok segítenek előkészíteni a felhőszolgáltatási környezetet az alkalmazásszámára. Ez bemutatja, hogyan működnek az indítási feladatok, és hogyan lehet
 services: cloud-services
 author: tgore03
 ms.service: cloud-services
@@ -8,55 +8,55 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360310"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása
-Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdése előtt. A végrehajtani kívánt műveletek közé tartozik például az összetevők telepítése, a COM-összetevők regisztrálása, a beállításkulcsok beállítása vagy a hosszú ideig futó folyamat elindítása.
+# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Indítási feladatok konfigurálása és futtatása felhőalapú szolgáltatáshoz
+Az indítási feladatok segítségével műveleteket hajthat végre a szerepkör indítása előtt. A végrehajtandó műveletek közé tartozik egy összetevő telepítése, COM-összetevők regisztrálása, beállítási kulcsok beállítása vagy egy hosszú ideig futó folyamat elindítása.
 
 > [!NOTE]
-> Az indítási feladatok nem alkalmazhatók Virtual Machinesra, csak a Cloud Service webes és feldolgozói szerepköreire.
+> Az indítási feladatok nem alkalmazhatók a virtuális gépekre, csak a Cloud Service Web és a Worker szerepkörökre.
 > 
 > 
 
-## <a name="how-startup-tasks-work"></a>Az indítási feladatok működése
-Az indítási feladatok olyan műveletek, amelyek a szerepkörök megkezdése előtt lettek végrehajtva, és a [ServiceDefinition. csdef] fájlban vannak meghatározva az [Startup] elemben található [Tevékenység] elem használatával. A gyakran használt indítási feladatok batch-fájlok, de a konzolon futó alkalmazások vagy a PowerShell-parancsfájlokat indító batch-fájlok is lehetnek.
+## <a name="how-startup-tasks-work"></a>Az indítási feladatok működésének megmunkálata
+Az indítási feladatok olyan műveletek, amelyeket a szerepkörök megkezdése előtt hajtanak végre, és amelyeket a [ServiceDefinition.csdef] fájlban az [Indítás] [elemEn] belüli Feladat elem használatával határoznak meg. Gyakran indítási feladatok kötegelt fájlokat, de lehetkonzolos alkalmazások, vagy kötegelt fájlokat, amelyek elindítják a PowerShell-parancsfájlok.
 
-A környezeti változók egy indítási feladatba adják át az adatokat, a helyi tárterület pedig az indítási feladatokból származó információk továbbítására használható. Egy környezeti változó például megadhatja a telepíteni kívánt program elérési útját, és a fájlok megírhatók a helyi tárolóba, amelyet később a szerepkörök is elolvashatnak.
+A környezeti változók adatokat továbbítanak egy indítási feladatba, és a helyi tároló segítségével adatokat továbbíthat nak egy indítási feladatból. Egy környezeti változó megadhatja például a telepíteni kívánt program elérési útját, és a fájlok at a helyi tárolóba írhatja, amelyeket később a szerepkörök elolvashatnak.
 
-Az indítási feladat adatokat és hibákat tud naplózni a **temp** környezeti változó által megadott könyvtárba. Az indítási feladat során a **temp** környezeti változó a *C:\\erőforrásokra van feloldva\\Temp\\[GUID]. [ rolename]\\RoleTemp* könyvtárat a felhőben való futtatáskor.
+Az indítási feladat naplózhatja az adatokat és a hibákat a **TEMP** környezeti változó által megadott könyvtárba. Az indítási feladat során a **TEMP** környezeti változó a *C:\\Erőforrások\\ideiglenes hőmérséklete\\[guid][ rolename]\\RoleTemp* könyvtárat, amikor fut a felhőben.
 
-Az indítási feladatok két újraindítás között többször is végrehajthatók. Például az indítási feladat a szerepkör minden egyes újraindításakor fut, és a szerepkör-újraindítás pedig nem feltétlenül jár újraindítással. Az indítási feladatokat úgy kell megírni, hogy a több alkalommal is fussanak a problémák nélkül.
+Az indítási feladatok két újraindítás között többször is végrehajthatók. Például az indítási feladat a szerepkör minden egyes újraindításakor fut, és a szerepkör-újraindítás pedig nem feltétlenül jár újraindítással. Az indítási feladatokat úgy kell megírni, hogy azok problémamentesen fussanak többször is.
 
-Az indítási feladatoknak az **indítási** folyamat befejezéséhez nullával (vagy kilépési kóddal) kell végződnie. Ha egy indítási feladat nullától eltérő **errorlevel**-értékre végződik, a szerepkör nem indul el.
+Az indítási feladatok nak nulla **hibaszinttel** (vagy kilépési kóddal) kell végződniük ahhoz, hogy az indítási folyamat befejeződjön. Ha egy indítási feladat nem nulla **hibaszinttel**végződik, a szerepkör nem indul el.
 
 ## <a name="role-startup-order"></a>Szerepkör indítási sorrendje
-Az alábbi listában az Azure-beli szerepkör indítási eljárása látható:
+Az alábbi lista a szerepkör indítási eljárás az Azure-ban:
 
-1. A példány **kezdőként** van megjelölve, és nem kap forgalmat.
-2. Az összes indítási feladat a **taskType** attribútum szerint lesz végrehajtva.
+1. A példány **indításként** van megjelölve, és nem fogad forgalmat.
+2. Minden indítási feladat végrehajtása a **taskType** attribútumuk szerint történik.
    
-   * Az **egyszerű** feladatok szinkron módon, egyszerre lesznek végrehajtva.
-   * A **háttér** -és **előtér** -feladatok aszinkron módon, az indítási feladattal párhuzamosan indíthatók el.  
+   * Az **egyszerű** feladatok végrehajtása szinkron módon történik, egyenként.
+   * A **háttér-** és **előtérfeladatok** aszinkron módon, az indítási feladattal párhuzamosan indulnak el.  
      
      > [!WARNING]
-     > Előfordulhat, hogy az IIS-t nem lehet teljesen konfigurálni az indítási folyamat indításakor, így előfordulhat, hogy a szerepkör-specifikus adatok nem érhetők el. A szerepkör-specifikus adatokhoz szükséges indítási feladatoknak a [Microsoft. WindowsAzure. ServiceRuntime. RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))használatát kell használniuk.
+     > Előfordulhat, hogy az IIS nincs teljesen konfigurálva az indítási feladat szakaszában az indítási folyamat során, ezért előfordulhat, hogy a szerepkör-specifikus adatok nem érhetők el. A szerepkörspecifikus adatokat igénylő indítási feladatoknak a [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))programot kell használniuk.
      > 
      > 
-3. A szerepkör-gazdagép folyamata elindult, és a hely az IIS-ben jön létre.
-4. A rendszer a [Microsoft. WindowsAzure. ServiceRuntime. RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metódust hívja meg.
-5. A példány **készként** van megjelölve, és a rendszer átirányítja a forgalmat a példányhoz.
-6. A rendszer a [Microsoft. WindowsAzure. ServiceRuntime. RoleEntryPoint. Run](/previous-versions/azure/reference/ee772746(v=azure.100)) metódust hívja meg.
+3. A szerepkör-gazdagép folyamata elindul, és a hely az IIS-ben jön létre.
+4. A [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metódus neve.
+5. A példány **készként** van megjelölve, és a forgalom a példányhoz lesz irányítva.
+6. A [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](/previous-versions/azure/reference/ee772746(v=azure.100)) metódus neve.
 
-## <a name="example-of-a-startup-task"></a>Indítási feladat – példa
-Az indítási feladatok a [ServiceDefinition. csdef] fájlban vannak definiálva a **Task** elemben. A **commandLine** attribútum megadja az indítási batch-fájl vagy a konzol parancsának nevét és paramétereit, a **executionContext** attribútum meghatározza az indítási feladat jogosultsági szintjét, és a **taskType** attribútum meghatározza a feladat végrehajtásának módját.
+## <a name="example-of-a-startup-task"></a>Példa indítási feladatra
+Az indítási feladatok a [ServiceDefinition.csdef] fájlban, a **Feladat** elemben vannak definiálva. A **commandLine** attribútum az indítási kötegfájl vagy a konzolparancs nevét és paramétereit adja meg, a **executionContext** attribútum megadja az indítási feladat jogosultsági szintjét, a **taskType** attribútum pedig a feladat végrehajtásának módját.
 
-Ebben a példában egy **MyVersionNumber**nevű környezeti változó jön létre az indítási feladathoz, és a "**1.0.0.0**" értékre van állítva.
+Ebben a példában egy **myVersionNumber**környezeti változó jön létre az indítási feladathoz, és az **"1.0.0.0**" értékre van állítva.
 
-**ServiceDefinition. csdef**:
+**ServiceDefinition.csdef**:
 
 ```xml
 <Startup>
@@ -68,7 +68,7 @@ Ebben a példában egy **MyVersionNumber**nevű környezeti változó jön létr
 </Startup>
 ```
 
-A következő példában a **Startup. cmd** batch-fájl az "aktuális verzió 1.0.0.0" sort írja a StartupLog. txt fájlba a TEMP környezeti változó által megadott könyvtárban. A `EXIT /B 0` sor biztosítja, hogy az indítási tevékenység nulla **errorlevel** értékkel végződik.
+A következő példában a **Startup.cmd** kötegfájl a TEMP környezeti változó által megadott könyvtárban lévő StartupLog.txt fájlba írja az "Aktuális verzió 1.0.0.0" sort. A `EXIT /B 0` sor biztosítja, hogy az indítási feladat nulla **hibaszinttel** végződjön.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,58 +76,58 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> A Visual Studióban az indítási batch-fájl **Másolás a kimeneti könyvtárba** tulajdonságának úgy kell beállítania, hogy **mindig a másoláskor** ellenőrizze, hogy az indítási batch-fájl megfelelően van-e telepítve a projekthez az Azure-ban (**AppRoot\\bin** webes szerepkörökhöz, és **AppRoot** a feldolgozói szerepkörökhöz).
+> A Visual Studio,a **Másolás kimeneti könyvtárba** tulajdonság az indítási kötegfájl ban kell állítani a **Másolás mindig,** hogy megbizonyosodjon arról, hogy az indítási kötegfájl megfelelően telepítve van a projekt az Azure-ban **(approot\\bin** webes szerepkörök, és **approot** a feldolgozói szerepkörök).
 > 
 > 
 
-## <a name="description-of-task-attributes"></a>A feladat attribútumainak leírása
-Az alábbiakban a [ServiceDefinition. csdef] fájlban található **Task** elem attribútumait ismertetjük:
+## <a name="description-of-task-attributes"></a>Feladatattribútumok leírása
+Az alábbiakban a [ServiceDefinition.csdef] fájl **Feladat** elemének attribútumait ismertetik:
 
-**commandLine** – az indítási feladat parancssorát adja meg:
+**commandLine** - Az indítási feladat parancssorát adja meg:
 
-* A parancs a parancssori paraméterekkel, amely megkezdi az indítási feladatot.
-* Gyakran ez egy. cmd vagy. bat nevű batch-fájl fájlneve.
-* A feladat az üzemelő példány AppRoot\\bin mappájához képest. A környezeti változók nincsenek kibontva a feladat elérési útjának és fájljának meghatározásához. Ha a környezet bővítése kötelező, létrehozhat egy kis. cmd parancsfájlt, amely meghívja az indítási feladatot.
-* Lehet egy konzolos alkalmazás vagy egy olyan batch-fájl, amely egy [PowerShell-parancsfájlt](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)indít el.
+* A parancs, választható parancssori paraméterekkel, amely elindítja az indítási feladatot.
+* Ez gyakran egy .cmd vagy .bat kötegfájl fájlneve.
+* A feladat a központi\\telepítés Hez tartozó AppRoot bin mappához viszonyítva történik. A környezeti változók nincsenek kibontva a feladat elérési útjának és fájljának meghatározásában. Ha szükség van a környezet bővítésére, létrehozhat egy kis .cmd parancsfájlt, amely meghívja az indítási feladatot.
+* Lehet egy konzolalkalmazás vagy egy batch fájl, amely elindítja a [PowerShell-parancsfájlt.](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 
-**executionContext** – megadja az indítási feladat jogosultsági szintjét. A jogosultsági szint korlátozott vagy emelt szintű lehet:
+**executionContext** - Megadja az indítási feladat jogosultsági szintjét. A jogosultsági szint korlátozható vagy megemelhető:
 
-* **korlátozott**  
-  Az indítási feladat ugyanazokkal a jogosultságokkal fut, mint a szerepkör. Ha a [Runtime] elem **executionContext** attribútuma is **korlátozott**, a rendszer a felhasználói jogosultságokat használja.
-* **emelt szintű**  
-  Az indítási feladat rendszergazdai jogosultságokkal fut. Ez lehetővé teszi a programok telepítésének indítási feladatait, az IIS konfigurációjának módosítását, a beállításjegyzék módosítását és egyéb rendszergazdai szintű feladatokat a szerepkör jogosultsági szintjének növelése nélkül.  
+* **Korlátozott**  
+  Az indítási feladat a szerepkörrel megegyező jogosultságokkal fut. Ha a [Runtime] elem **executionContext** attribútuma is **korlátozott,** a rendszer felhasználói jogosultságokat használ.
+* **Emelkedett**  
+  Az indítási feladat rendszergazdai jogosultságokkal fut. Ez lehetővé teszi, hogy az indítási feladatok programokat telepítsenek, módosítsák az IIS-konfigurációt, elvégezzék a rendszerleíró adatbázis módosításait és más rendszergazdai szintű feladatokat anélkül, hogy növelnék magának a szerepkörnek a jogosultsági szintjét.  
 
 > [!NOTE]
-> Az indítási feladatokhoz tartozó jogosultsági szintnek nem kell megegyeznie a szerepkörrel.
+> Az indítási feladat jogosultsági szintjének nem kell megegyeznie magával a szerepkörrel.
 > 
 > 
 
-**taskType** – az indítási feladat végrehajtásának módját adja meg.
+**taskType** - Az indítási feladat végrehajtásának módját adja meg.
 
-* **egyszerű**  
-  A feladatok szinkron módon, egyenként, a [ServiceDefinition. csdef] fájlban megadott sorrendben hajthatók végre. Ha egy **egyszerű** indítási feladat nulla **errorlevel** értékkel végződik, a rendszer a következő **egyszerű** indítási feladatot hajtja végre. Ha nincs több **egyszerű** indítási feladat, akkor a szerepkör maga lesz elindítva.   
+* **Egyszerű**  
+  A feladatok végrehajtása a [ServiceDefinition.csdef] fájlban megadott sorrendben, egyenként történik. Ha egy **egyszerű** indítási feladat nulla **hibaszinttel** végződik, a következő **egyszerű** indítási feladat végrehajtásra kerül. Ha nincs több **egyszerű** indítási feladat végrehajtása, akkor maga a szerepkör indul el.   
   
   > [!NOTE]
-  > Ha az **egyszerű** feladat nullától eltérő **errorlevel**-értékre végződik, a példány le lesz tiltva. Az ezt követő **egyszerű** indítási feladatok és a szerepkör maga a művelet nem indul el.
+  > Ha az **egyszerű** feladat nem nulla **hibaszinttel**végződik, a példány blokkolva lesz. Az ezt követő **egyszerű** indítási feladatok és maga a szerepkör nem indulnak el.
   > 
   > 
   
-    Annak ellenőrzéséhez, hogy a batch-fájl nullával végződik **-e,** hajtsa végre a parancsot `EXIT /B 0` a batch-fájl folyamat végén.
-* **háttér**  
-  A feladatok aszinkron módon, a szerepkör indításakor párhuzamosan hajthatók végre.
-* **előtér**  
-  A feladatok aszinkron módon, a szerepkör indításakor párhuzamosan hajthatók végre. Az **előtér** és a **háttérben** futó feladat közötti fő különbség az, hogy az **előtéri** feladat megakadályozza a szerepkör újrahasznosítását vagy leállítását, amíg a feladat véget nem ér. A **háttérben futó** feladatok nem rendelkeznek ezzel a korlátozással.
+    Annak érdekében, hogy a kötegfájl nulla **hibaszinttel** végződjön, a kötegfájl-folyamat végén hajtsa végre a parancsot. `EXIT /B 0`
+* **Háttér**  
+  A feladatok végrehajtása aszinkron módon történik, párhuzamosan a szerepkör indításával.
+* **Előtér**  
+  A feladatok végrehajtása aszinkron módon történik, párhuzamosan a szerepkör indításával. Az **előtérben** lévő és a **háttérfeladat** közötti legfontosabb különbség az, hogy **egy előtérfeladat** megakadályozza a szerepkör újrahasznosítását vagy leállítását a feladat befejezése ig. A **háttérfeladatokra** nem vonatkozik ez a korlátozás.
 
 ## <a name="environment-variables"></a>Környezeti változók
-A környezeti változók segítségével adatokat adhat át egy indítási feladatnak. Tegyük fel például, hogy az elérési utat egy olyan blobba helyezi, amely a telepítendő programot vagy a szerepkör által használt portszámokat, illetve az indítási feladat funkcióinak vezérlésére szolgáló beállításokat tartalmaz.
+A környezeti változók az adatok indítási feladatokhoz való átadására szolgálnak. Például elhelyezheti a telepítandó programot tartalmazó blob elérési útját, vagy a szerepkör által használt portszámokat, vagy az indítási feladat szolgáltatásainak vezérlésére szolgáló beállításokat.
 
-Az indítási feladatokhoz kétféle környezeti változó létezik; statikus környezeti változók és környezeti változók a [RoleEnvironment] osztály tagjai alapján. Mindkettő a [ServiceDefinition. csdef] fájl [környezet] szakaszában található, és mindkettő a [változó] elemet és a **Name** attribútumot használja.
+Az indítási feladatokhoz kétféle környezeti változó létezik; statikus környezeti változók és környezeti változók a [RoleEnvironment] osztály tagjai alapján. Mindkettő a [ServiceDefinition.csdef] fájl [Környezet] szakaszában található, és mindkettő a [Variable] elemet és a **name** attribútumot használja.
 
-A statikus környezeti változók a [változó] elem **Value** attribútumát használják. A fenti példa létrehozza a **MyVersionNumber** környezeti változót, amely a "**1.0.0.0**" statikus értékkel rendelkezik. Egy másik példa egy **StagingOrProduction** környezeti változó létrehozása, amely manuálisan beállítható "**átmeneti**" vagy "**éles**" értékre, ha a **StagingOrProduction** környezeti változó értéke alapján különböző indítási műveleteket hajt végre.
+A statikus környezeti változók a [Változó] elem **értékattribútumát** használja. A fenti példa létrehozza a **MyVersionNumber** környezeti változót, amelynek statikus értéke "**1.0.0.0**". Egy másik példa az lenne, hogy hozzon létre egy **StagingOrProduction** környezeti változó, amely manuálisan beállíthatja az **"átmeneti**" vagy "**éles**" értékek et a **StagingOrProduction** környezeti változó értéke alapján különböző indítási műveletek végrehajtásához.
 
-A RoleEnvironment osztály tagjai alapján a környezeti változók nem a [változó] elem **Value** attribútumát használják. Ehelyett a [RoleInstanceValue] gyermek elemnek a megfelelő **XPath** -attribútum értékkel kell rendelkeznie a környezeti változók létrehozásához a [RoleEnvironment] osztály egy adott tagja alapján. A különböző [RoleEnvironment] -értékek eléréséhez használt **XPath** attribútum értékei [itt](cloud-services-role-config-xpath.md)találhatók.
+A RoleEnvironment osztály tagjain alapuló környezeti változók nem használják a [Változó] elem **értékattribútumát.** Ehelyett a [RoleInstanceValue] gyermekelem, a megfelelő **XPath** attribútumértékkel, a [RoleEnvironment] osztály egy adott tagja alapján létrehozott környezeti változók at használ. Az **XPath** attribútum különböző [RoleEnvironment] értékek eléréséhez vezető értékei [itt](cloud-services-role-config-xpath.md)találhatók.
 
-Ha például egy "**igaz**" nevű környezeti változót szeretne létrehozni, ha a példány a Compute Emulatorban fut, a "**false**" pedig a felhőben való futtatáskor, használja a következő [változó] -és [RoleInstanceValue] elemeket:
+Ha például olyan környezeti változót szeretne létrehozni, amely "**true**" a számítási emulátorban fut, és "**false**" a felhőben való futtatáskor, használja a következő [Változó] és [RoleInstanceValue] elemeket:
 
 ```xml
 <Startup>
@@ -148,19 +148,19 @@ Ha például egy "**igaz**" nevű környezeti változót szeretne létrehozni, h
 </Startup>
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Ismerje meg, hogyan hajthat végre [gyakori indítási feladatokat](cloud-services-startup-tasks-common.md) a felhőalapú szolgáltatásban.
+## <a name="next-steps"></a>További lépések
+Ismerje meg, hogyan hajthat végre néhány [gyakori indítási feladatot](cloud-services-startup-tasks-common.md) a felhőszolgáltatással.
 
-A felhőalapú szolgáltatás [becsomagolása](cloud-services-model-and-package.md) .  
+[Csomagolja](cloud-services-model-and-package.md) be a felhőszolgáltatást.  
 
-[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
 [Tevékenység]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
+[Indítás]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
+[Futtatókörnyezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Környezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+[RoleInstanceValue érték]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[RoleEnvironment környezet]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
 
 

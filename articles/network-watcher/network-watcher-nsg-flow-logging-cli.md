@@ -1,7 +1,7 @@
 ---
-title: NSG-adatforgalmi naplók kezelése – Azure CLI
+title: NSG-folyamatnaplók kezelése - Azure CLI
 titleSuffix: Azure Network Watcher
-description: Ez az oldal ismerteti, hogyan kezelhetők a hálózati biztonsági csoport folyamatábrái az Azure Network Watcher Az Azure CLI-vel
+description: Ez a lap bemutatja, hogyan kezelhetők a network security group flow-naplók az Azure Network Watcher ben az Azure CLI segítségével
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,35 +13,35 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 285d19dbd0e7b8a94eada66f837d33b787006f09
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840961"
 ---
-# <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Hálózati biztonsági csoport Folyamatábráinak konfigurálása az Azure CLI-vel
+# <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Hálózati biztonsági csoportfolyamat-naplók konfigurálása az Azure CLI-vel
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure-portál](network-watcher-nsg-flow-logging-portal.md)
+> - [Powershell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-A hálózati biztonsági csoport folyamatábrái a Network Watcher szolgáltatása, amely lehetővé teszi, hogy a hálózati biztonsági csoporton keresztül megtekintse a bejövő és kimenő IP-forgalomra vonatkozó információkat. Ezeket a folyamatokat a rendszer JSON formátumban írja be, és a kimenő és bejövő folyamatokat egy szabály alapján jeleníti meg, a flow a folyamatra vonatkozik, 5 rekordos információ a folyamatról (forrás/cél IP-cím, forrás/cél port, protokoll), és ha a forgalom engedélyezett vagy megtagadott volt.
+A hálózati biztonsági csoport folyamatnaplói a Network Watcher szolgáltatása, amely lehetővé teszi a hálózati biztonsági csoporton keresztül a be- és kilépésip-forgalommal kapcsolatos információkat. Ezek a folyamatnaplók json formátumban vannak megírva, és szabályonként mutatják a kimenő és bejövő folyamatokat, a folyamat által alkalmazott hálózati adaptert, a folyamat 5-tuple információit (Forrás/cél IP, Forrás/cél port, Protokoll), és ha a forgalmat engedélyezték vagy megtagadták.
 
-A cikkben szereplő lépések végrehajtásához [telepítenie kell az Azure parancssori felületét Mac, Linux és Windows rendszerre (CLI)](/cli/azure/install-azure-cli).
+A cikkben ismertetett lépések végrehajtásához telepítenie kell [az Azure parancssori felületét Mac, Linux és Windows (CLI) rendszerhez.](/cli/azure/install-azure-cli)
 
 ## <a name="register-insights-provider"></a>Insights-szolgáltató regisztrálása
 
-Ahhoz, hogy a folyamatok naplózása sikeresen működjön, regisztrálni kell a **Microsoft. bepillantást** nyújtó szolgáltatót. Ha nem biztos abban, hogy a **Microsoft.** betekintő szolgáltató regisztrálva van, futtassa az alábbi szkriptet.
+A folyamatnaplózás sikeres működéséhez a **Microsoft.Insights-szolgáltatót** regisztrálni kell. Ha nem biztos abban, hogy a **Microsoft.Insights-szolgáltató** regisztrálva van-e, futtassa a következő parancsfájlt.
 
 ```azurecli
 az provider register --namespace Microsoft.Insights
 ```
 
-## <a name="enable-network-security-group-flow-logs"></a>Hálózati biztonsági csoport Folyamatábráinak engedélyezése
+## <a name="enable-network-security-group-flow-logs"></a>Hálózati biztonsági csoportfolyamat-naplók engedélyezése
 
-A flow-naplók engedélyezésére szolgáló parancs az alábbi példában látható:
+A folyamatnaplók engedélyezésére a következő példa jelenik meg:
 
 ```azurecli
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
@@ -49,13 +49,13 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName  --format JSON --log-version 2
 ```
 
-A megadott Storage-fiók nem rendelkezhet olyan hálózati szabályokkal, amelyek csak a Microsoft-szolgáltatásokhoz vagy adott virtuális hálózatokhoz való hálózati hozzáférést korlátozzák. A Storage-fiók azonos vagy egy másik Azure-előfizetéssel is rendelkezhet, mint a NSG. Ha különböző előfizetéseket használ, mindkettőhöz ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia. Az egyes előfizetésekhez használt fióknak rendelkeznie kell a [szükséges engedélyekkel](required-rbac-permissions.md). 
+A megadott tárfiókhoz nem lehetnek olyan hálózati szabályok, amelyek csak a Microsoft-szolgáltatásokra vagy adott virtuális hálózatokra korlátozzák a hálózati hozzáférést. A tárfiók lehet ugyanabban, vagy egy másik Azure-előfizetés, mint az NSG, amely engedélyezi a folyamatnaplót. Ha különböző előfizetéseket használ, mindkettőt ugyanahhoz az Azure Active Directory-bérlőhöz kell társítani. Az egyes előfizetésekhez használt fióknak rendelkeznie kell a [szükséges engedélyekkel.](required-rbac-permissions.md) 
 
-Ha a Storage-fiók egy másik erőforráscsoporthoz vagy előfizetéshez kapcsolódik, mint a hálózati biztonsági csoport, a neve helyett adja meg a Storage-fiók teljes AZONOSÍTÓját. Ha például a Storage-fiók egy *RG-Storage*nevű erőforráscsoporthoz van megadva, ahelyett, hogy *storageAccountName* az előző parancsban, akkor a */Subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/Providers/Microsoft.Storage/storageAccounts/storageAccountName*-t kell megadnia.
+Ha a tárfiók a hálózati biztonsági csoporttól eltérő erőforráscsoportban vagy előfizetésben található, adja meg a tárfiók teljes azonosítóját a neve helyett. Ha például a tárfiók *egy RG-Storage*nevű erőforráscsoportban található, és nem adja meg a *storageAccountName értéket* az előző parancsban, akkor a */subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/providers/Microsoft.Storage/storageAccounts/storageAccountName értéket kell megadnia.*
 
-## <a name="disable-network-security-group-flow-logs"></a>Hálózati biztonsági csoport Folyamatábráinak letiltása
+## <a name="disable-network-security-group-flow-logs"></a>Hálózati biztonsági csoportfolyamat-naplók letiltása
 
-A következő példa használatával tiltsa le a folyamat naplóit:
+A folyamatnaplók letiltásához használja az alábbi példát:
 
 ```azurecli
 az network watcher flow-log configure --resource-group resourceGroupName --enabled false --nsg nsgName
@@ -63,9 +63,9 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 ## <a name="download-a-flow-log"></a>Flow-napló letöltése
 
-A folyamat naplójának tárolási helye a létrehozáskor van meghatározva. A rendszer a Storage-fiókba mentett adatforgalmi naplók elérésére alkalmas eszközt Microsoft Azure Storage Explorer, amely letölthető innen: https://storageexplorer.com/
+A folyamatnapló tárolási helye a létrehozáskor van definiálva. A tárfiókba mentett folyamatnaplók elérésének kényelmes eszköze a Microsoft Azure Storage Explorer, amely itt tölthető le:https://storageexplorer.com/
 
-Ha meg van adva Storage-fiók, a rendszer a flow-naplófájlokat a következő helyen menti a Storage-fiókba:
+Ha meg van adva tárfiók, a folyamatnapló-fájlok a következő helyen tárolódnak egy tárfiókba:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
@@ -74,6 +74,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [jelenítheti meg a NSG flow-naplókat a PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) használatával
+Az [NSG-folyamatnaplók visualualizálása a PowerBI-vel](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
-Ismerje meg, hogyan [jelenítheti meg a NSG-flow-naplókat nyílt forráskódú eszközökkel](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Ismerje meg, hogyan [jelenítheti meg az NSG-folyamatnaplókat nyílt forráskódú eszközökkel](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

@@ -1,6 +1,6 @@
 ---
-title: Rács ad hozzá a távoli figyelési megoldás felhasználói felület – Azure |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan adhat hozzá egy új csoportazonosító egy oldalon, a távoli figyelési megoldás gyorsító webes felhasználói felületen.
+title: Rács hozzáadása a távfigyelési megoldás felhasználói felületéhez – Azure | Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan adhat hozzá új gid-t egy laphoz a távoli figyelési megoldásgyorsító webes felhasználói felületén.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,42 +9,42 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447097"
 ---
-# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egy egyéni rács ad hozzá a távoli figyelési megoldás gyorsító webes felhasználói felületen
+# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni rács hozzáadása a távfigyelési megoldásgyorsító webes felhasználói felületéhez
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy új rács egy lapra a távoli figyelési megoldás gyorsító webes felhasználói felületen. A cikk ismerteti:
+Ez a cikk bemutatja, hogyan adhat hozzá új rácsot egy laphoz a távoli figyelési megoldásgyorsító webes felhasználói felületén. A cikk a következőket írja le:
 
-- Hogyan készítheti elő a helyi fejlesztési környezetet.
-- Hogyan adhat hozzá egy új rács egy oldal, a webes felhasználói felületen.
+- Hogyan készítsünk egy helyi fejlesztési környezetben.
+- Új rács hozzáadása a webes felhasználói felület egyik oldalához?
 
-A példában ez a cikk a rácson az adatokat a szolgáltatásból, amely a [adjon hozzá egy egyéni szolgáltatás a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-service.md) útmutató a cikk bemutatja, hogyan adhat hozzá.
+A cikkben szereplő példarács megjeleníti a szolgáltatás adatait, amelyet az [Egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webfelhasználói felületéhez](iot-accelerators-remote-monitoring-customize-service.md) bemutató útmutató cikk bemutatja, hogyan kell hozzáadni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató a lépések végrehajtásához szüksége van a következő szoftvereknek telepítve a helyi fejlesztői gépen:
+Az útmutató lépéseinek végrehajtásához a következő szoftverre van szükség a helyi fejlesztői gépen:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A folytatás előtt kell végeznie az alábbi cikkekben leírt lépéseket:
+A folytatás előtt hajtsa végre a következő cikkekben ismertetett lépéseket:
 
-- [Egyéni oldal hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-page.md).
-- [Egy egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-service.md)
+- [Egyéni lap hozzáadása a Távfigyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-page.md).
+- [Egyéni szolgáltatás hozzáadása a távfigyelési megoldás gyorsító webes felhasználói felületéhez](iot-accelerators-remote-monitoring-customize-service.md)
 
 ## <a name="add-a-grid"></a>Rács hozzáadása
 
-Rács hozzáadása a webes felhasználói felületen, szüksége adja hozzá a forrásfájlokat, amelyek meghatározzák a rács, és néhány meglévő fájlokat, hogy a webes felhasználói felület az új összetevő tisztában módosításához.
+Ha rácsot szeretne hozzáadni a webes felhasználói felülethez, hozzá kell adnia a rácsot meghatározó forrásfájlokat, és módosítania kell néhány meglévő fájlt, hogy a webes felhasználói felület tisztában legyen az új összetevővel.
 
-### <a name="add-the-new-files-that-define-the-grid"></a>Adja hozzá az új fájlokat, amelyek meghatározzák a rács
+### <a name="add-the-new-files-that-define-the-grid"></a>A rácsot meghatározó új fájlok hozzáadása
 
-Az első lépésekhez, a **src/forgatókönyv/components/oldalak/pageWithGrid/exampleGrid** mappa a fájlokat, amelyek meghatározzák a rács tartalmazza:
+A kezdéshez az **src/walkthrough/components/pages/pageWithGrid/exampleGrid** mappa a rácsot meghatározó fájlokat tartalmazza:
 
 **exampleGrid.js**
 
@@ -54,11 +54,11 @@ Az első lépésekhez, a **src/forgatókönyv/components/oldalak/pageWithGrid/ex
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
-Másolás a **src/forgatókönyv/components/oldalak/pageWithGrid/exampleGrid** mappát a **példa src/components/oldalak** mappát.
+Másolja az **src/walkthrough/components/pages/pageWithGrid/exampleGrid** mappát az **src/components/pages/example** mappába.
 
-### <a name="add-the-grid-to-the-page"></a>A rács hozzáadása az oldalhoz
+### <a name="add-the-grid-to-the-page"></a>Rács hozzáadása a laphoz
 
-Módosítsa a **src/components/pages/example/basicPage.container.js** importálása a service definíciókat a következő:
+Módosítsa az **src/components/pages/example/basicPage.container.js fájlt** az alábbiak szerint a szolgáltatásdefiníciók importálásához:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Módosítsa a **src/components/pages/example/basicPage.js** a következőképpen adja hozzá a rács:
+Módosítsa az **src/components/pages/example/basicPage.js kapcsolót** a rács hozzáadásához:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Módosítsa a **src/components/pages/example/basicPage.test.js** módon, hogy a tesztek frissítése:
+Módosítsa az **src/components/pages/example/basicPage.test.js kapcsolót** a tesztek frissítéséhez:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -176,23 +176,23 @@ describe('BasicPage Component', () => {
 
 ## <a name="test-the-grid"></a>A rács tesztelése
 
-Ha a webes felhasználói felület még nem fut helyi, futtassa a következő parancsot a tárház helyi példányának gyökérmappájában:
+Ha a webes felhasználói felület még nem fut helyileg, futtassa a következő parancsot a tárház helyi példányának gyökerében:
 
 ```cmd/sh
 npm start
 ```
 
-Az előző parancs futtatása helyileg, a felhasználói felület [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Keresse meg a **példa** oldalon tekintheti meg a rács megjelenítési adatokat a szolgáltatásból.
+Az előző parancs helyileg futtatja a felhasználói felületet a ban. [http://localhost:3000/dashboard](http://localhost:3000/dashboard) Nyissa meg a **Példa** lapot a szolgáltatás rácsmegjelenítési adatainak megtekintéséhez.
 
-## <a name="select-rows"></a>Sorok kiválasztása
+## <a name="select-rows"></a>Sorok kijelölése
 
-A felhasználók engedélyezésének sorok kiválasztásához a rács két lehetőség van:
+Két lehetőség van arra, hogy a felhasználó sorokat jelöljön ki a rácsban:
 
-### <a name="hard-select-rows"></a>Sorok rögzített kiválasztása
+### <a name="hard-select-rows"></a>Sorok kijelölése
 
-Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnégyzetek alapján:
+Ha a felhasználónak egyszerre több sort kell használnia, használjon jelölőnégyzeteket a sorokon:
 
-1. A sorok rögzített kijelölés engedélyezése hozzáadásával egy **checkboxColumn** , a **columnDefs** a rácshoz megadott. **checkboxColumn** meghatározott **/src/components/shared/pcsGrid/pcsGrid.js**:
+1. A sorok kijelölésének engedélyezése egy **jelölőnégyzetoszlop** hozzáadásával a rácshoz megadott **oszlophoz.** **checkboxColumn** a **/src/components/shared/pcsGrid/pcsGrid.js**nyelven van definiálva:
 
     ```js
     this.columnDefs = [
@@ -202,7 +202,7 @@ Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnég
     ];
     ```
 
-1. A kijelölt elemek eléréséhez, kap egy hivatkozást a belső rács API:
+1. A kijelölt elemek eléréséhez a belső rács API-jára mutató hivatkozás tkap:
 
     ```js
     onGridReady = gridReadyEvent => {
@@ -214,7 +214,7 @@ Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnég
     };
     ```
 
-1. Adja meg a környezet gombokra kattintva a lap merevlemez kijelölt egy sort a rács esetén:
+1. Környezeti gombok biztosítása a laphoz, ha a rács egy sora nehezen van kijelölve:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnég
     }
     ```
 
-1. Ha egy környezet gombra kattint, a rögzített által kiválasztott elemek ezt a munkát a beolvasása:
+1. Amikor egy környezet gombra kattint, a nehezen kiválasztott elemeket a következőkhöz végezze el:
 
     ```js
     doSomething = () => {
@@ -243,11 +243,11 @@ Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnég
     };
     ```
 
-### <a name="soft-select-rows"></a>Helyreállítható-válasszon sorok
+### <a name="soft-select-rows"></a>Sorok lágy kijelölése
 
-Ha a felhasználó csak egyetlen sor ahhoz van szüksége, az egy vagy több oszlop a soft-válasszon kapcsolat konfigurálásához a **columnDefs**.
+Ha a felhasználónak csak egyetlen sorban kell eljárnia, állítson be egy lágyan kijelölő hivatkozást az oszlop egy vagy több **oszlopához.**
 
-1. A **exampleGridConfig.js**, adjon hozzá **SoftSelectLinkRenderer** , a **cellRendererFramework** számára egy **columnDef**.
+1. Az **exampleGridConfig.js fájlban**adja hozzá a **SoftSelectLinkRenderer programot** **cellRendererFramework** elemként egy **columnDef**hez.
 
     ```js
     export const exampleColumnDefs = {
@@ -260,7 +260,7 @@ Ha a felhasználó csak egyetlen sor ahhoz van szüksége, az egy vagy több osz
     };
     ```
 
-1. Egy helyreállítható-válasszon hivatkozásra kattint, amikor elindítja a **onSoftSelectChange** esemény. Hajtsa végre, bármilyen művelet van szükség a sorhoz, például a részletek úszó menü megnyitása. Ebben a példában egyszerűen ír a konzolon:
+1. Amikor egy soft-select linkre kattintanak, az elindítja az **onSoftSelectChange** eseményt. Hajtsa végre a sorhoz szükséges műveletet, például nyisson meg egy részletes úszó panelt. Ez a példa egyszerűen írja a konzol:
 
     ```js
     onSoftSelectChange = (rowId, rowData) => {
@@ -279,8 +279,8 @@ Ha a felhasználó csak egyetlen sor ahhoz van szüksége, az egy vagy több osz
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedett az erőforrások hozzáadása vagy a webes felhasználói felület a távoli figyelési megoldásgyorsító oldalainak testreszabása segíti.
+Ebben a cikkben a távoli figyelési megoldás gyorsítójában a webes felhasználói felület lapjainak hozzáadásához vagy testreszabásához rendelkezésre álló erőforrásokról szerzett tudomást.
 
-Most már beállított egy rácsot, a következő lépés az, hogy [adjon hozzá egy egyéni úszó menü a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-flyout.md) , amely a lap megjeleníti.
+Most már definiált egy rácsot, a következő lépés az, hogy [egyéni úszó panelt ad hozzá a távoli figyelési megoldásgyorsító webes felhasználói felületéhez,](iot-accelerators-remote-monitoring-customize-flyout.md) amely a példalapon jelenik meg.
 
-További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+A távfigyelési megoldásgyorsítóról a [Távoli figyelési architektúra című témakörben](iot-accelerators-remote-monitoring-sample-walkthrough.md)talál további általános tudnivalókat.

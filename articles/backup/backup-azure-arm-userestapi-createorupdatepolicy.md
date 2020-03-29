@@ -1,51 +1,51 @@
 ---
-title: Biztonsági mentési szabályzatok létrehozása REST API használatával
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet biztonsági mentési házirendeket a REST API használatával.
+title: Biztonsági mentési házirendek létrehozása rest api-val
+description: Ebben a cikkben megtudhatja, hogyan hozhat létre és kezelhet biztonsági mentési szabályzatokat (ütemezés és megőrzés) a REST API használatával.
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963852"
 ---
-# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
+# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatainak létrehozása REST API használatával
 
-Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályzat létrehozásához szükséges lépéseket a [szabályzat REST API dokumentum](/rest/api/backup/protectionpolicies/createorupdate)ismerteti. Ezt a dokumentumot hivatkozásként használjuk az Azure virtuális gépek biztonsági mentésére szolgáló szabályzat létrehozásához.
+Az Azure Recovery Services-tároló biztonsági mentési szabályzatának létrehozásának lépéseit a [REST API-dokumentum](/rest/api/backup/protectionpolicies/createorupdate)ismerteti. Használja ezt a dokumentumot hivatkozásként az Azure vm biztonsági mentésszabályzatának létrehozásához.
 
-## <a name="create-or-update-a-policy"></a>Szabályzat létrehozása vagy frissítése
+## <a name="create-or-update-a-policy"></a>Házirend létrehozása vagy frissítése
 
-Azure Backup szabályzat létrehozásához vagy frissítéséhez használja a következő *put* műveletet
+Azure Backup-szabályzat létrehozásához vagy frissítéséhez használja a következő *PUT-műveletet*
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-A `{policyName}` és a `{vaultName}` az URI-ban található. A kérés törzsében további információk is megtalálhatók.
+A `{policyName}` `{vaultName}` és az URI-ban vannak megadva. További információk a kérelem törzsében található.
 
-## <a name="create-the-request-body"></a>A kérelem törzsének létrehozása
+## <a name="create-the-request-body"></a>A kérelemtörzs létrehozása
 
-Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabályzatot szeretne létrehozni, az alábbiakban a kérelem törzsének összetevői láthatók.
+Például hozzon létre egy szabályzatot az Azure virtuális gép biztonsági mentéséhez, az alábbiakban a kérelem törzsösszetevői.
 
-|Name (Név)  |Szükséges  |Type (Típus)  |Leírás  |
+|Név  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
-|properties     |   Igaz      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
-|tags     |         | Objektum        |  Erőforráscímkék       |
+|properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
+|címkét     |         | Objektum        |  Erőforráscímkék       |
 
-A kérelem törzsében található definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API dokumentumát](/rest/api/backup/protectionpolicies/createorupdate).
+A kérelemtörzsben található definíciók teljes listáját a [REST API-dokumentum biztonsági mentési házirendje című dokumentumban tájékírja.](/rest/api/backup/protectionpolicies/createorupdate)
 
-### <a name="example-request-body"></a>Példa kérelem törzsére
+### <a name="example-request-body"></a>Példa kérelem törzse
 
-A következő kérelem törzse az Azure-beli virtuális gépek biztonsági másolatainak biztonsági mentési szabályzatát határozza meg.
+A következő kérelem törzse meghatározza az Azure virtuális gépek biztonsági mentési szabályzatát.
 
-A szabályzat szerint:
+A politika azt mondja:
 
-- Készítsen heti biztonsági mentést hétfőn, szerdán, csütörtökön, 10:00-kor, a csendes-óceáni téli idő szerint.
-- A biztonsági másolatok megtartása minden hétfőn, szerdán, csütörtökön, egy hétre.
-- A biztonsági másolatok megtartása a hónap első szerdán és harmadik csütörtökön, két hónapig (felülbírálja az előző megőrzési feltételeket, ha van ilyen).
-- A negyedik hétfőn és novemberben tartott biztonsági másolatok megtartása négy évig (amely felülbírálja a korábbi megőrzési feltételeket, ha vannak ilyenek).
+- Vegyen egy heti biztonsági mentést minden hétfőn, szerdán, csütörtökön 10:00-kor csendes-óceáni téli idő szerint.
+- Őrizze meg a biztonsági mentések hozott minden hétfőn, szerdán, csütörtökön egy hétig.
+- A hónap minden egyes szerdáján és harmadik csütörtökén két hónapon keresztül megőrzi a biztonsági mentéseket (felülírja a korábbi megőrzési feltételeket, ha vannak ilyenek).
+- Őrizze meg a biztonsági mentések hozott negyedik hétfőn és negyedik csütörtökfebruárban és novemberben négy évig (felülírja a korábbi megőrzési feltételek, ha van ilyen).
 
 ```json
 {
@@ -129,22 +129,22 @@ A szabályzat szerint:
 ```
 
 > [!IMPORTANT]
-> Az ütemterv és a megőrzési idő formátuma csak a DateTime formátumot támogatja. Nem támogatják az időformátumot.
+> Az ütemezés és megőrzés időformátumai csak a DateTime-ot támogatják. Nem támogatják a Time formátumot egyedül.
 
 ## <a name="responses"></a>Válaszok
 
-A biztonsági mentési szabályzat létrehozása/frissítése [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
+A biztonsági mentési házirend létrehozása/frissítése [aszinkron művelet.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Ez azt jelenti, hogy ez a művelet létrehoz egy másik műveletet, amelyet külön kell nyomon követni.
 
-Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
+Két választ ad vissza: 202 (Elfogadva) egy másik művelet létrehozásakor, majd 200 (OK) értéket, amikor a művelet befejeződik.
 
-|Name (Név)  |Type (Típus)  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
-|200 OK     |    [Védelem PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 elfogadva     |         |     Elfogadott    |
+|200 OK     |    [Védelmi házirenderőforrás](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|202 Elfogadva     |         |     Elfogadva    |
 
-### <a name="example-responses"></a>Válaszok – példa
+### <a name="example-responses"></a>Példa válaszok
 
-Miután elküldte a *put* kérelmet a szabályzat létrehozásához vagy frissítéséhez, a kezdeti válasz 202 (elfogadva), egy Location fejléctel vagy egy Azure-aszinkron-fejléccel.
+Miután elküldte a PUT-kérelmet a szabályzat létrehozására vagy frissítésére, a kezdeti válasz 202 (Elfogadva) egy helyfejléccel vagy az Azure-async-header.Once you submit the *PUT* request for policy creation or frissítés, the initial response is 202 (Accepted) with a location header or Azure-async-header.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -164,13 +164,13 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Ezután nyomon követheti az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy egyszerű *Get* paranccsal.
+Ezután kövesse nyomon az eredményül kapott műveletet a helyfejléc vagy az Azure-AsyncOperation fejléc használatával egy egyszerű *GET* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
-A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsében lévő szabályzat tartalmával.
+Miután a művelet befejeződött, 200 -ot (OK) ad vissza a választörzsben lévő házirend tartalommal.
 
 ```json
 {
@@ -258,13 +258,13 @@ A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsé
 }
 ```
 
-Ha egy házirend már használatban van egy elem védelmére, a házirendben szereplő összes frissítés az összes kapcsolódó elem [védelmét is módosítja](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) .
+Ha egy házirend már használatban van egy elem védelmére, a házirend bármely frissítése az összes ilyen társított elem [védelmét módosítja.](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Védelem engedélyezése a nem védett Azure](backup-azure-arm-userestapi-backupazurevms.md)-beli virtuális gépek számára.
+[Engedélyezze a védelem nélküli Azure virtuális gép védelmét.](backup-azure-arm-userestapi-backupazurevms.md)
 
-A Azure Backup REST API-kkal kapcsolatos további információkért tekintse meg a következő dokumentumokat:
+Az Azure Backup REST API-król az alábbi dokumentumokban talál további információt:
 
-- [Azure Recovery Services-szolgáltató REST API](/rest/api/recoveryservices/)
+- [Az Azure Recovery Services szolgáltatóREST API-ja](/rest/api/recoveryservices/)
 - [Bevezetés az Azure REST API használatába](/rest/api/azure/)

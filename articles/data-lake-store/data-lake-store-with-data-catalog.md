@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Storage Gen1 származó adatok regisztrálása az Azure Data Catalog |} A Microsoft Docs
-description: Az Azure Data Lake Storage Gen1 származó adatok regisztrálása az Azure Data Catalog
+title: Adatok regisztrálása az Azure Data Lake Storage Gen1 szolgáltatásból az Azure Data Catalogban | Microsoft dokumentumok
+description: Adatok regisztrálása az Azure Data Lake Storage Gen1 szolgáltatásból az Azure Data Catalogban
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: twooley
@@ -13,71 +13,71 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60196535"
 ---
-# <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Az Azure Data Lake Storage Gen1 származó adatok regisztrálása az Azure Data Catalog
-Ebből a cikkből megtudhatja, az Azure Data Lake Storage Gen1 integrálása az Azure Data Catalog, hogy az adatok felderíthető egy szervezeten belül a Data Catalog integrálásával. Az adatok katalogizálása további információkért lásd: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Forgatókönyvek, ahol használhatja a Data Catalog ismertetése: [Azure Data Catalog gyakori forgatókönyvei](../data-catalog/data-catalog-common-scenarios.md).
+# <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Adatok regisztrálása az Azure Data Lake Storage Gen1 szolgáltatásból az Azure Data Catalogban
+Ebben a cikkben megtudhatja, hogyan integrálhatja az Azure Data Lake Storage Gen1-et az Azure Data Catalog-tal, hogy az adatok felderíthetők legyenek egy szervezeten belül a Data Catalog-tal való integrálásával. Az adatok katalogizálásáról az Azure Data Catalog című [témakörben](../data-catalog/data-catalog-what-is-data-catalog.md)talál további információt. Az Azure [Data Catalog gyakori forgatókönyveiből.](../data-catalog/data-catalog-common-scenarios.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Az Azure-előfizetés engedélyezése** a Data Lake Storage Gen1. Lásd az [utasításokat](data-lake-store-get-started-portal.md).
-* **A Data Lake Storage Gen1 fiók**. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md). A jelen oktatóanyag esetében hozzon létre egy Data Lake Storage Gen1 fiókkal, amelynek neve **datacatalogstore**.
+* **Engedélyezze azure-előfizetését** a Data Lake Storage Gen1 szolgáltatáshoz. Lásd az [utasításokat](data-lake-store-get-started-portal.md).
+* **A Data Lake Storage Gen1 fiók**. Kövesse az [Azure Data Lake Storage Gen1 használatának első](data-lake-store-get-started-portal.md)lépéseit az Azure Portal használatával című útmutatóban. Ebben az oktatóanyagban hozzon létre egy Data Lake Storage Gen1 fiókot, amelyet **datacatalogstore-nak**hívnak.
 
-    A fiók létrehozása után, és töltse fel egy minta adatkészlet rá. Ebben az oktatóanyagban található összes .csv fájl feltöltéséhez ossza meg velünk az **AmbulanceData** mappájában a [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Használhatja például a különböző ügyfelek részére, [Azure Storage Explorer](https://storageexplorer.com/), az adatok feltöltése a blob-tárolóba.
-* **Az Azure Data Catalog**. A szervezet már rendelkeznie kell egy Azure Data Catalog létrehozása a szervezet számára. Csak egy katalógus minden szervezet számára engedélyezett.
+    Miután létrehozta a fiókot, töltsön fel hozzá egy mintaadatkészletet. Ebben az oktatóanyagban töltsük fel az összes .csv fájlt az [Azure Data Lake Git repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/) **AmbulanceData** mappája alatt. Különböző ügyfelek, például az [Azure Storage Explorer](https://storageexplorer.com/)használatával adatokat tölthet fel egy blobtárolóba.
+* **Az Azure-adatkatalógus**. A szervezetnek már rendelkeznie kell a szervezet számára létrehozott Azure Data Catalog-katalógussal. Minden szervezethez csak egy katalógus engedélyezett.
 
-## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Data Lake Storage Gen1 forrásként Regisztráljon a Data Catalog
+## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Adattó-tároló gen1 regisztrálása adatkatalógus forrásaként
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
-1. Lépjen a `https://azure.microsoft.com/services/data-catalog`, és kattintson a **Ismerkedés**.
-1. Jelentkezzen be az Azure Data Catalog portálra, és kattintson a **adatok közzététele**.
+1. Nyissa `https://azure.microsoft.com/services/data-catalog`meg a t, és kattintson **az Első lépések gombra.**
+1. Jelentkezzen be az Azure Data Catalog-portálra, majd kattintson a **Publish data** (Adatok közzététele) lehetőségre.
 
-    ![Egy adatforrás regisztrálása](./media/data-lake-store-with-data-catalog/register-data-source.png "egy adatforrás regisztrálása")
-1. A következő oldalon kattintson a **alkalmazás indítása**. Ez letölti az Alkalmazásjegyzék-fájl a számítógépen. Kattintson duplán a jegyzékfájl az alkalmazás elindításához.
-1. Az üdvözlőoldalon kattintson **jelentkezzen be a**, és adja meg hitelesítő adatait.
+    ![Adatforrás regisztrálása](./media/data-lake-store-with-data-catalog/register-data-source.png "Adatforrás regisztrálása")
+1. A következő lapon kattintson az **Alkalmazás indítása gombra.** Ezzel letölti az alkalmazás jegyzékfájlját a számítógépre. Kattintson duplán a jegyzékfájlra az alkalmazás elindításához.
+1. Az Üdvözlőlapon kattintson a **Bejelentkezés**gombra, és adja meg a hitelesítő adatait.
 
-    ![Üdvözlőképernyőn](./media/data-lake-store-with-data-catalog/welcome.screen.png "üdvözlőképernyője")
-1. A Select egy adatforrás lapon, válassza ki a **Azure Data Lake Store**, és kattintson a **tovább**.
+    ![Üdvözlőképernyő](./media/data-lake-store-with-data-catalog/welcome.screen.png "Üdvözlőképernyő")
+1. Az Adatforrás kiválasztása lapon válassza az **Azure Data Lake Store**lehetőséget, majd kattintson a **Tovább**gombra.
 
-    ![Adatforrás kiválasztása](./media/data-lake-store-with-data-catalog/select-source.png "adatforrás kiválasztása")
-1. A következő oldalon adja meg a Data Lake Storage Gen1 Data catalogban regisztrálni kívánt fiók nevét. Az egyéb beállításokat hagyja alapértelmezett, és kattintson a **Connect**.
+    ![Adatforrás kiválasztása](./media/data-lake-store-with-data-catalog/select-source.png "Adatforrás kiválasztása")
+1. A következő lapon adja meg a Data Lake Storage Gen1 fiók nevét, amelyet regisztrálni szeretne a Data Catalog-ban. Hagyja a többi beállítást alapértelmezettként, majd kattintson a **Csatlakozás gombra.**
 
-    ![Csatlakozás adatforráshoz](./media/data-lake-store-with-data-catalog/connect-to-source.png "Csatlakozás adatforráshoz")
-1. A következő oldalon a következő szakaszok lehet osztani.
+    ![Kapcsolódás adatforráshoz](./media/data-lake-store-with-data-catalog/connect-to-source.png "Kapcsolódás adatforráshoz")
+1. A következő oldal a következő szakaszokra osztható.
 
-    a. A **Kiszolgálóhierarchia** mezőbe a Data Lake Storage Gen1 fiók gyökérmappa-szerkezetében jelöli. **$Root** jelöli a Data Lake Storage Gen1 fiók legfelső szintű és **AmbulanceData** azt a mappát a Data Lake Storage Gen1 fiókjának gyökérmappájában létrejönnek.
+    a. A **Kiszolgálói hierarchia** mező a Data Lake Storage Gen1 fiókmappa-struktúrát jelöli. **$Root** a Data Lake Storage Gen1 fiók gyökér, a **AmbulanceData** pedig a Data Lake Storage Gen1 fiók gyökérében létrehozott mappát jelöli.
 
-    b. A **rendelkezésre álló objektumok** box sorolja fel, a fájlok és mappák mellett a **AmbulanceData** mappát.
+    b. A **Rendelkezésre álló objektumok** mezőben a AmbulanceData mappa alatt található fájlok és mappák **találhatók.**
 
-    c. **Regisztrálandó objektumok** megjeleníti a fájlok és mappák az Azure Data Catalogban regisztrálni kívánt mezőben.
+    c. **A regisztrálandó objektumok** listája azokat a fájlokat és mappákat, amelyeket regisztrálni szeretne az Azure Data Catalogban.
 
-    ![Megtekintheti az adatok szerkezetét](./media/data-lake-store-with-data-catalog/view-data-structure.png "adatstruktúra megtekintése")
-1. A jelen oktatóanyag esetében minden fájl a könyvtárban kell regisztrálni. Ehhez kattintson a (![-objektumainak áthelyezése](./media/data-lake-store-with-data-catalog/move-objects.png "-objektumainak áthelyezése")) gombra kattintva helyezze át az összes fájlt **regisztrálandó objektumok** mezőbe.
+    ![Adatstruktúra megtekintése](./media/data-lake-store-with-data-catalog/view-data-structure.png "Adatstruktúra megtekintése")
+1. Ebben az oktatóanyagban regisztrálnia kell a könyvtárban lévő összes fájlt. Ahhoz, hogy kattintson a (![objektumok áthelyezése](./media/data-lake-store-with-data-catalog/move-objects.png "Objektumok áthelyezése")) gombra, hogy helyezze át az összes fájlt **objektumok regisztrált** mezőbe.
 
-    Mivel az adatokat a rendszer a egy szervezeti a data catalog regisztrálja, bizonyos metaadatait, amelyek később segítségével gyorsan megtalálhatja az adatok hozzáadása egy ajánlott módja. Például az adatok tulajdonosa (például egy tölti fel az adatokat, akik) az e-mail cím megadása, vagy adjon hozzá egy címke azonosíthatja az adatokat. Az alábbi képernyőfelvétel-készítés jeleníti meg egy címkét, adja hozzá az adatokhoz.
+    Mivel az adatok egy szervezeti szintű adatkatalógusban lesznek regisztrálva, ajánlott néhány metaadatot hozzáadni, amelyek segítségével később gyorsan megtalálhatja az adatokat. Hozzáadhat például egy e-mail címet az adattulajdonoshoz (például egy olyanhoz, aki feltölti az adatokat), vagy hozzáadhat egy címkét az adatok azonosításához. Az alábbi képernyőfelvételen látható az adatokhoz adott címke.
 
-    ![Megtekintheti az adatok szerkezetét](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "adatstruktúra megtekintése")
+    ![Adatstruktúra megtekintése](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Adatstruktúra megtekintése")
 
-    Kattintson a **regisztrálása**.
-1. Az alábbi képernyőfelvétel-készítés, az azt jelzi, hogy az adatok sikeresen regisztrálva van a Data Catalog.
+    Kattintson a **Regisztráció gombra.**
+1. A következő képernyőfelvétel azt jelzi, hogy az adatok sikeresen regisztrálva vannak az adatkatalógusban.
 
-    ![Regisztráció kész](./media/data-lake-store-with-data-catalog/registration-complete.png "adatstruktúra megtekintése")
-1. Kattintson a **portál megtekintése** lépjen vissza a Data Catalog portálra, és győződjön meg arról, hogy most már elérhető a regisztrált adatforrásokat a portálról. Az adatok keresésére, használhatja a címke az adatok regisztrálása során használt.
+    ![Regisztráció kész](./media/data-lake-store-with-data-catalog/registration-complete.png "Adatstruktúra megtekintése")
+1. Kattintson **a Portál megtekintése** gombra a Data Catalog portálra való visszalépéshez, és ellenőrizze, hogy most már hozzáférhet-e a regisztrált adatokhoz a portálról. Az adatokban való kereséshez használhatja az adatok regisztrálása során használt címkét.
 
-     ![Adatok keresése a katalógusban](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "adatok keresése a katalógusban")
-1. Most már elvégezheti a műveletek, mint a jegyzetek és dokumentáció ad hozzá az adatokat. További információkért lásd az alábbi hivatkozásokat.
+     ![Keresés a katalógusban lévő adatok között](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Keresés a katalógusban lévő adatok között")
+1. Most már végre műveleteket, mint a megjegyzések hozzáadása és dokumentáció az adatokhoz. További információt az alábbi hivatkozásokon talál.
 
-    * [A Data Catalog az adatforrások ellátása megjegyzésekkel](../data-catalog/data-catalog-how-to-annotate.md)
-    * [A Data Catalog az adatforrások dokumentálása](../data-catalog/data-catalog-how-to-documentation.md)
+    * [Adatforrások jegyzetelése az adatkatalógusban](../data-catalog/data-catalog-how-to-annotate.md)
+    * [Dokumentumadatforrások az adatkatalógusban](../data-catalog/data-catalog-how-to-documentation.md)
 
 ## <a name="see-also"></a>Lásd még
-* [A Data Catalog az adatforrások ellátása megjegyzésekkel](../data-catalog/data-catalog-how-to-annotate.md)
-* [A Data Catalog az adatforrások dokumentálása](../data-catalog/data-catalog-how-to-documentation.md)
-* [Data Lake Storage Gen1 integrálása más Azure-szolgáltatások](data-lake-store-integrate-with-other-services.md)
+* [Adatforrások jegyzetelése az adatkatalógusban](../data-catalog/data-catalog-how-to-annotate.md)
+* [Dokumentumadatforrások az adatkatalógusban](../data-catalog/data-catalog-how-to-documentation.md)
+* [A Data Lake Storage Gen1 integrálása más Azure-szolgáltatásokkal](data-lake-store-integrate-with-other-services.md)

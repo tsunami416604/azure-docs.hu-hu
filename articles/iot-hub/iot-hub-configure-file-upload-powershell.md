@@ -1,6 +1,6 @@
 ---
-title: Fájlfeltöltés konfigurálása az Azure PowerShell használatával |} A Microsoft Docs
-description: Hogyan állítsa be IoT hubját fájl engedélyezése az Azure PowerShell-parancsmagok használatával feltölti a csatlakoztatott eszközökről. A cél az Azure storage-fiók konfigurálásával kapcsolatos információkat tartalmaz.
+title: Fájlfeltöltés konfigurálása az Azure PowerShell használatával | Microsoft dokumentumok
+description: Az Azure PowerShell-parancsmagok használata az IoT hub konfigurálásához a csatlakoztatott eszközökről származó fájlfeltöltések engedélyezéséhez. A cél Azure-tárfiók konfigurálásával kapcsolatos információkat tartalmazza.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60318460"
 ---
-# <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurálja az IoT Hub fájlfeltöltések PowerShell-lel
+# <a name="configure-iot-hub-file-uploads-using-powershell"></a>IoT Hub-fájlfeltöltések konfigurálása a PowerShell használatával
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-Használatához a [fájlba feltöltésének működését az IoT Hub](iot-hub-devguide-file-upload.md), először társítania kell egy Azure storage-fiókot az IoT hubbal. Használjon egy meglévő tárfiókot, vagy hozzon létre egy újat.
+A [fájlfeltöltési funkció az IoT Hubban](iot-hub-devguide-file-upload.md)használatához először hozzá kell rendelnie egy Azure-tárfiókot az IoT-központhoz. Használhatja a meglévő tárfiókot, vagy hozzon létre egy újat.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Aktív Azure-fiók. Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, néhány perc alatt létrehozhat egy [ingyenes fiókot.](https://azure.microsoft.com/pricing/free-trial/)
 
-* [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* [Az Azure PowerShell-parancsmagok.](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 
-* Az Azure IoT hubra. Ha nem rendelkezik egy IoT hubot, használhatja a [New-AzIoTHub parancsmag](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) hozzon létre egyet, vagy a portál használata [hozzon létre egy IoT hubot](iot-hub-create-through-portal.md).
+* Egy Azure IoT-központ. Ha nem rendelkezik IoT-központtal, a [New-AzIoTHub-parancsmag](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) használatával létrehozhat egyet, vagy a portál használatával [hozzon létre egy IoT hubot.](iot-hub-create-through-portal.md)
 
-* Egy Azure-tárfiók. Ha nem rendelkezik Azure storage-fiókkal, használhatja a [Azure Storage PowerShell parancsmagjainak](https://docs.microsoft.com/powershell/module/az.storage/) hozzon létre egyet, vagy a portál használata [storage-fiók létrehozása](../storage/common/storage-create-storage-account.md)
+* Egy Azure-tárfiók. Ha nem rendelkezik Azure-tárfiókkal, az [Azure Storage PowerShell-parancsmagokkal](https://docs.microsoft.com/powershell/module/az.storage/) létrehozhat egyet, vagy használhatja a [portált egy tárfiók létrehozásához](../storage/common/storage-create-storage-account.md)
 
-## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be az Azure-fiókkal
+## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be és állítsa be Azure-fiókját
 
 Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A PowerShell-parancssorban futtassa a következő a **Connect-AzAccount** parancsmagot:
+1. A PowerShell-parancssorban futtassa a **Connect-AzAccount** parancsmamot:
 
     ```powershell
     Connect-AzAccount
     ```
 
-2. Ha több Azure-előfizetéssel rendelkezik, az Azure-bA bejelentkezik hozzáférést, az összes Azure-előfizetések a hitelesítő adatokhoz tartozó. Használja a következő parancs használható elérhető Azure-előfizetések listázásához:
+2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba való bejelentkezés hozzáférést biztosít a hitelesítő adataihoz társított összes Azure-előfizetéshez. Az alábbi paranccsal felsorolhatja a használható Azure-előfizetéseket:
 
     ```powershell
     Get-AzSubscription
     ```
 
-    A következő parancs használata kezelheti az IoT hub-parancsok futtatásához használni kívánt előfizetés kiválasztásához. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
+    A következő paranccsal válassza ki az ioT hub kezeléséhez a parancsok futtatásához használni kívánt előfizetést. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```powershell
     Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
-## <a name="retrieve-your-storage-account-details"></a>A storage-fiók adatainak beolvasása
+## <a name="retrieve-your-storage-account-details"></a>A tárfiók adatainak lekérése
 
-A következő lépések azt feltételezik, hogy a tárfiók tárfiókkulcsait létrehozott a **Resource Manager** -alapú üzemi modellben, és nem a **klasszikus** üzemi modellt.
+A következő lépések feltételezik, hogy a tárfiókot az **Erőforrás-kezelő** központi telepítési modell, és nem a **klasszikus** központi telepítési modell használatával hozta létre.
 
-Fájlfeltöltés az eszközökről származó konfigurálásához szükség van a kapcsolati karakterláncot egy Azure storage-fiókot. A storage-fiókot az IoT hub az azonos előfizetésben kell lennie. A storage-fiókban található blob-tárolóra nevét is szükséges. A következő parancsot használja a storage-fiók kulcsok lekéréséhez:
+A fájlok feltöltésének konfigurálásához az eszközökről egy Azure-tárfiók csatlakozási karakterláncára van szükség. A tárfióknak ugyanabban az előfizetésben kell lennie, mint az IoT hubnak. Szüksége van egy blobtároló nevére is a tárfiókban. A tárfiók kulcsainak lekéréséhez használja a következő parancsot:
 
 ```powershell
 Get-AzStorageAccountKey `
@@ -68,11 +68,11 @@ Get-AzStorageAccountKey `
   -ResourceGroupName {your storage account resource group}
 ```
 
-Jegyezze fel a **key1** storage-fiók kulcs értékét. A következő lépésekben van szükség.
+Jegyezze fel a **key1** tárfiók kulcsértékét. Szüksége van rá a következő lépésekben.
 
-Meglévő blob tároló használata a fájlfeltöltési, vagy hozzon létre újat:
+Használhat egy meglévő blobtárolót a fájlfeltöltéshez, vagy létrehozhat újat:
 
-* A meglévő, a tárfiókban található blob-tárolók listájában, használja a következő parancsokat:
+* A meglévő blobtárolók listázásához a tárfiókban a következő parancsokat használja:
 
     ```powershell
     $ctx = New-AzStorageContext `
@@ -81,7 +81,7 @@ Meglévő blob tároló használata a fájlfeltöltési, vagy hozzon létre úja
     Get-AzStorageContainer -Context $ctx
     ```
 
-* Hozzon létre egy blobtárolót a tárfiókban található, használja a következő parancsokat:
+* Blob-tároló létrehozásához a tárfiókban a következő parancsokat használja:
 
     ```powershell
     $ctx = New-AzStorageContext `
@@ -93,23 +93,23 @@ Meglévő blob tároló használata a fájlfeltöltési, vagy hozzon létre úja
         -Context $ctx
     ```
 
-## <a name="configure-your-iot-hub"></a>Állítsa be IoT hubját
+## <a name="configure-your-iot-hub"></a>Az IoT hub konfigurálása
 
-Mostantól konfigurálhatja az IoT hub [fájlok feltöltése az IoT hub](iot-hub-devguide-file-upload.md) használatával a tárfiók részleteit.
+Most már konfigurálhatja az IoT hub [fájlok feltöltése az IoT hub](iot-hub-devguide-file-upload.md) a tárfiók adatait.
 
-A konfigurációs van szükség a következő értékeket:
+A konfigurációhoz a következő értékek szükségesek:
 
-* **A tároló**: Az aktuális Azure-előfizetés társítása az IoT hub az Azure storage-fiókban lévő blobtárolóba. A szükséges tárolási fiók adatait az előző szakaszban lekért. Az IoT Hub automatikusan létrehozza az SAS URI-k eszközöket használja, ha azok a fájlok feltöltése a blob-tárolóba írási engedéllyel rendelkező.
+* **Storage container:** Egy blob tároló egy Azure-tárfiókban a jelenlegi Azure-előfizetés az IoT hub társítására. Az előző szakaszban lekérte a szükséges tárfiók-adatokat. Az IoT Hub automatikusan létrehozza a SAS URI-k írási engedélyekkel ezt a blob tárolót az eszközök számára, amelyeket a fájlok feltöltésekor használni.
 
-* **A feltöltött fájlokkra vonatkozó értesítések fogadása**: Értesítések engedélyezése vagy letiltása fájl feltöltése.
+* **Értesítések fogadása a feltöltött fájlokról**: Fájlfeltöltési értesítések engedélyezése vagy letiltása.
 
-* **SAS-ÉLETTARTAM**: Ez a beállítás akkor a time-to-live, az eszközt az IoT Hub által visszaadott SAS URI-azonosítókat. Alapértelmezés szerint egy óra beállítva.
+* **SAS TTL**: Ez a beállítás az IoT Hub által az eszközre visszaadott SAS URI-k élő ideje. Alapértelmezés szerint egy órára van beállítva.
 
-* **Értesítési beállítások alapértelmezett TTL fájl**: Értesítés a time-to-live-fájl feltöltése, mielőtt lejár. Alapértelmezés szerint egy nap beállítva.
+* **Fájl értesítési beállítások alapértelmezett TTL**: A fájlfeltöltési értesítés lejárta előtti ideje. Alapértelmezés szerint egy napra van beállítva.
 
-* **A fájl értesítési kézbesítések maximális száma**: Az IoT Hub próbál fájlt hányszor értesítési töltse fel. Alapértelmezés szerint a 10-re állítva.
+* **A fájlok kézbesítésének maximális kézbesítési száma:** Az IoT Hub hányszor kísérel meg fájlfeltöltési értesítést kézbesíteni. Alapértelmezés szerint 10-re van állítva.
 
-Használja az alábbi PowerShell-parancsmagot a fájl konfigurálása töltse fel az IoT hub beállításai:
+A következő PowerShell-parancsmag segítségével konfigurálhatja a fájlfeltöltési beállításokat az IoT hubon:
 
 ```powershell
 Set-AzIotHub `
@@ -125,16 +125,16 @@ Set-AzIotHub `
 
 ## <a name="next-steps"></a>További lépések
 
-Az IoT Hub a fájl feltöltése képességeivel kapcsolatos további információkért lásd: [fájlfeltöltés az eszközökről](iot-hub-devguide-file-upload.md).
+Az IoT Hub fájlfeltöltési lehetőségeiről további információt a [Fájlok feltöltése eszközről](iot-hub-devguide-file-upload.md)című témakörben talál.
 
-Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
+Az Azure IoT Hub kezeléséről az alábbi hivatkozásokra kattintva olvashat bővebben:
 
 * [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
-* [Az IoT Hub-metrikák](iot-hub-metrics.md)
+* [IoT Hub-metrikák](iot-hub-metrics.md)
 * [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
-Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
+Az IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
-* [Az IoT-megoldás az alapoktól biztonságos mentése](../iot-fundamentals/iot-security-ground-up.md)
+* [Az IoT Hub fejlesztői útmutatója](iot-hub-devguide.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Biztosítsa IoT-megoldását az alapoktól kezdve](../iot-fundamentals/iot-security-ground-up.md)

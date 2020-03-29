@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services-telemetria konfigurálása .NET-tel |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan használható a .NET SDK használatával az Azure Media Services-telemetriát.
+title: Az Azure Media Services telemetriai adatainak konfigurálása a .NET| használatával Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan használhatja az Azure Media Services telemetriai adatok at .NET SDK használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61464946"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>.NET-tel az Azure Media Services-telemetria konfigurálása 
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Az Azure Media Services telemetriai adatainak konfigurálása a .NET használatával 
 
-Ez a cikk ismerteti, amely akkor is igénybe vehet, az Azure Media Services (AMS) telemetriai adatok .NET SDK használatával konfigurálásakor általános lépéseket. 
+Ez a cikk ismerteti az okat a .NET SDK használatával az Azure Media Services (AMS) telemetriai adatok konfigurálásakor tett általános lépéseket. 
 
 >[!NOTE]
->Mi részletes leírását az AMS telemetriai és hogyan lehet az azt van, tekintse meg a [áttekintése](media-services-telemetry-overview.md) cikk.
+>Az AMS-telemetria részletes magyarázatát és felhasználását az [áttekintő](media-services-telemetry-overview.md) cikkben találja.
 
-Telemetriai adatokat felhasználhatja az alábbi módszerek egyikével:
+A telemetriai adatokat az alábbi módokon használhatja fel:
 
-- Olvassa el az adatokat közvetlenül az Azure Table Storage (például a Storage SDK-val). A telemetriai adatok tárolótáblákat ismertetését lásd: a **telemetrikus adatokat használó** a [ez](https://msdn.microsoft.com/library/mt742089.aspx) cikk.
+- Adatok olvasása közvetlenül az Azure Table Storage (például a storage SDK használatával). A telemetriai tárolási táblák leírását lásd **a fogyasztása telemetriai adatok** [ebben](https://msdn.microsoft.com/library/mt742089.aspx) a cikkben.
 
 Vagy
 
-- A támogatási használja a Media Services .NET SDK storage adat beolvasására vonatkozóan. Ez a cikk bemutatja a megadott AMS-fiók telemetria engedélyezése és az Azure Media Services .NET SDK használatával a metrikák lekérdezése.  
+- Használja a Media Services .NET SDK támogatását a tárolási adatok olvasásához. Ez a cikk bemutatja, hogyan engedélyezheti a telemetriai adatokat a megadott AMS-fiókhoz, és hogyan lehet lekérdezni a metrikákat az Azure Media Services .NET SDK használatával.  
 
-## <a name="configuring-telemetry-for-a-media-services-account"></a>Egy Media Services-fiókot telemetria konfigurálása
+## <a name="configuring-telemetry-for-a-media-services-account"></a>Telemetria konfigurálása Media Services-fiókhoz
 
-Telemetria engedélyezése a következő lépések szükségesek:
+A telemetria engedélyezéséhez a következő lépések szükségesek:
 
-- A Media Services-fiókhoz csatolva a tárfiók hitelesítő adatainak lekérése. 
-- Az értesítési végpont létrehozásához **EndPointType** beállítása **AzureTable** és s parametry endPointAddress mutat a storage-táblához.
+- A Media Services-fiókhoz csatolt tárfiók hitelesítő adatainak beszereznie. 
+- Hozzon létre egy értesítési végpontot úgy, hogy az **EndPointType** **beállítása az AzureTable** és az endPointAddress a tárolóasztalra mutat.
 
 ```csharp
         INotificationEndPoint notificationEndPoint = 
@@ -50,7 +50,7 @@ Telemetria engedélyezése a következő lépések szükségesek:
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 ```
 
-- Hozzon létre egy beállítást a figyelni kívánt szolgáltatások figyelési konfigurációjának. Legfeljebb egy figyelési konfigurációs beállítás engedélyezett. 
+- Hozzon létre egy figyelési konfigurációs beállítást a figyelni kívánt szolgáltatásokhoz. Legfeljebb egy figyelési konfigurációs beállítás engedélyezett. 
 
 ```csharp
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
@@ -61,15 +61,15 @@ Telemetria engedélyezése a következő lépések szükségesek:
             });
 ```
 
-## <a name="consuming-telemetry-information"></a>Fogyasztó telemetrikus adatokat
+## <a name="consuming-telemetry-information"></a>Telemetriai adatok fogyasztása
 
-Fogyasztó telemetrikus adatokat kapcsolatos információkért lásd: [ez](media-services-telemetry-overview.md) cikk.
+A telemetriai adatok fogyasztásáról [ebben a](media-services-telemetry-overview.md) cikkben olvashat.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-1. Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
+1. Állítsa be a fejlesztői környezetet, és népesítse be az app.config fájlt a kapcsolatadataival, ahogy azt a Media Services fejlesztése a [.NET fájlban leírta.](media-services-dotnet-how-to-use.md) 
 
-2. Adja hozzá a következő elem **appSettings** az app.config fájlban meghatározott:
+2. Adja hozzá a következő elemet az app.config fájlban definiált **alkalmazásbeállításokhoz:**
 
     ```xml
         <add key="StorageAccountName" value="storage_name" />
@@ -77,7 +77,7 @@ Fogyasztó telemetrikus adatokat kapcsolatos információkért lásd: [ez](media
  
 ## <a name="example"></a>Példa  
     
-Az alábbi példa bemutatja a megadott AMS-fiók telemetria engedélyezése és az Azure Media Services .NET SDK használatával a metrikák lekérdezése.  
+A következő példa bemutatja, hogyan engedélyezheti a telemetriai adatokat a megadott AMS-fiókhoz, és hogyan lehet lekérdezni a metrikákat az Azure Media Services .NET SDK használatával.  
 
 ```csharp
 using System;

@@ -1,6 +1,6 @@
 ---
-title: Bevezetés a biztonsági csoport nézetbe az Azure Network Watcherban | Microsoft Docs
-description: Ez az oldal áttekintést nyújt a Network Watcher biztonsági nézet funkcióról
+title: Bevezetés a biztonsági csoport nézetbe az Azure Network Watcher ben | Microsoft dokumentumok
+description: Ez a lap áttekintést nyújt a Hálózatfigyelő biztonsági nézetének
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,29 +12,29 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
 ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840757"
 ---
-# <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Az Azure Network Watcher hatékony biztonsági szabályok nézetének bemutatása
+# <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Bevezetés a hatékony biztonsági szabályok nézetbe az Azure Network Watcherben
 
-A hálózati biztonsági csoportok alhálózatok vagy hálózati ADAPTERek szintjén vannak társítva. Ha az alhálózat szintjén van társítva, az az alhálózat összes virtuálisgép-példányára vonatkozik. A hatályos biztonsági szabályok nézet az összes olyan konfigurált NSG és szabályt visszaadja, amely a virtuális gép hálózati ADAPTERéhez és alhálózatának szintjén van társítva, és betekintést nyújt a konfigurációba. Emellett az érvényes biztonsági szabályok a virtuális gépek egyes hálózati adapterei esetében is visszakerülnek. A hatékony biztonsági szabályok nézet használatával olyan hálózati biztonsági réseket is felhasználhat, mint a nyitott portok. Azt is ellenőrizheti, hogy a hálózati biztonsági csoport a várt módon működik [-e a konfigurált és a jóváhagyott biztonsági szabályok összehasonlítása](network-watcher-nsg-auditing-powershell.md)alapján.
+A hálózati biztonsági csoportok alhálózati vagy hálózati adapterek szintjén vannak társítva. Ha egy alhálózati szinten van társítva, az alhálózat összes virtuálisgép-példányára vonatkozik. A hatékony biztonsági szabályok nézet visszaadja az összes konfigurált NSG-t és szabályt, amely hálózati adapteren és alhálózati szinten van társítva egy virtuális géphez, amely betekintést nyújt a konfigurációba. Emellett a hatékony biztonsági szabályok at a virtuális gép minden egyes hálózati adapterek. A Hatékony biztonsági szabályok nézet használatával felmérheti a virtuális gép hálózati biztonsági réseit, például a nyitott portokat. Azt is ellenőrizheti, hogy a hálózati biztonsági csoport a várt módon működik-e [a konfigurált és a jóváhagyott biztonsági szabályok összehasonlítása](network-watcher-nsg-auditing-powershell.md)alapján.
 
-A kiterjesztett használati eset a biztonsági megfelelőség és a naplózás. Megadhatja a biztonsági szabályok előírásos készletét a szervezet biztonsági irányításának modelljéként. Az időszakos megfelelőségi audit programozott módon valósítható meg, ha összehasonlítja az előírási szabályokat a hálózatban lévő virtuális gépekre érvényes szabályokkal.
+A kiterjesztett használati eset a biztonsági megfelelőség és a naplózás. A biztonsági szabályok előíró készletét a szervezet biztonsági cégirányítási modelljeként határozhatja meg. Az időszakos megfelelőségi naplózás programozott módon valósítható meg, ha összehasonlítja az előíró szabályokat a hálózat minden egyes virtuális gépének hatékony szabályaival.
 
-A portál szabályai megjelennek az egyes hálózati adapterekhez, és a bejövő és kimenő csoportok szerint vannak csoportosítva. Ez egyszerű áttekintést nyújt a virtuális gépekre alkalmazott szabályokról. A letöltés gombra kattintva egyszerűen letöltheti az összes biztonsági szabályt, függetlenül attól, hogy a TAB egy CSV-fájlba esik-e.
+A portálon szabályok jelennek meg minden hálózati adapter és csoportosítva bejövő vs kimenő. Ez egyszerű betekintést nyújt a virtuális gépekre alkalmazott szabályokba. A letöltés gomb áll rendelkezésre, hogy könnyen letölthető az összes biztonsági szabályok nem számít, a lap egy CSV fájlt.
 
-![biztonsági csoport nézet][1]
+![biztonsági csoport nézete][1]
 
-A szabályok kiválaszthatók, és egy új panel nyílik meg a hálózati biztonsági csoport, valamint a forrás és a cél előtagjainak megjelenítéséhez. Ebből a panelből közvetlenül a hálózati biztonsági csoport erőforrására lehet navigálni.
+Szabályok választhatók ki, és egy új panel nyílik meg a Hálózati biztonsági csoport, valamint a forrás- és célelőtagok megjelenítéséhez. Ebből a panelből közvetlenül a Hálózati biztonsági csoport erőforráshoz navigálhat.
 
-![részletezés][2]
+![Lebontása][2]
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan naplózhatja a hálózati biztonsági csoport beállításait a [hálózati biztonsági csoport beállításainak naplózása a PowerShell](network-watcher-nsg-auditing-powershell.md) használatával
+Megtudhatja, hogy miként naplózhatja a hálózati biztonsági csoport beállításait a [Naplózási hálózat biztonsági csoportjának beállításainak a PowerShell használatával](network-watcher-nsg-auditing-powershell.md)
 
 [1]: ./media/network-watcher-security-group-view-overview/securitygroupview.png
 [2]: ./media/network-watcher-security-group-view-overview/figure1.png

@@ -1,71 +1,71 @@
 ---
-title: Azure Migrate Server Assessment értékelésének testreszabása | Microsoft Docs
-description: A Azure Migrate Server Assessment használatával létrehozott értékelések testreszabásának ismertetése
+title: Az Azure Migrate Server Assessment értékelésének testreszabása | Microsoft dokumentumok
+description: Az Azure Migrate Server Assessment segítségével létrehozott értékelések testreszabása
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
 ms.openlocfilehash: 2cfac978b0a5af20e9e2fa1e32a7361488f20fbe
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68234273"
 ---
 # <a name="customize-an-assessment"></a>Értékelés testreszabása
 
-Ez a cikk a Azure Migrate Server Assessment által létrehozott értékelések testreszabását ismerteti.
+Ez a cikk ismerteti, hogyan szabhatja testre az Azure Migrate Server Assessment által létrehozott értékelések.
 
-[Azure Migrate](migrate-services-overview.md) egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatokhoz.
+[Az Azure Migrate](migrate-services-overview.md) központi központot biztosít a helyszíni alkalmazások és számítási feladatok, valamint a magán-/nyilvános felhőbeli virtuális gépek Azure-ba való felderítésének, értékelésének és áttelepítésének nyomon követéséhez. A központ Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint külső független szoftverszállítói (ISV) ajánlatokat.
 
-Az Azure-ba való Migrálás előkészítése során a Azure Migrate Server Assessment Tool eszközzel hozhat létre értékeléseket a helyszíni VMware virtuális gépekhez és a Hyper-V virtuális gépekhez.
+Az Azure Áttelepítési kiszolgáló értékelése eszközzel értékeléseket hozhat létre a helyszíni VMware virtuális gépek és a Hyper-V VM-ek számára az Azure-ba való migrálás előkészítéseként.
 
-## <a name="about-assessments"></a>Az értékelések ismertetése
+## <a name="about-assessments"></a>Az értékelésekről
 
-Az értékeléseknek két típusa lehet a Azure Migrate Server Assessment használatával.
+Kétféle értékelések futtatható az Azure Áttelepítési kiszolgáló értékelése használatával.
 
-**Assessment** | **Részletek** | **Adatok**
+**Értékelés** | **Részletek** | **Adatok**
 --- | --- | ---
-**Teljesítmény-alapú** | Értékelések az összegyűjtött teljesítményadatok alapján | **Ajánlott**virtuálisgép-méret: A CPU-és memória-kihasználtsági adatai alapján.<br/><br/> **Ajánlott lemez típusa (standard vagy prémium szintű felügyelt lemez)** : A helyszíni lemezek IOPS és átviteli sebessége alapján.
-**Helyszíni** | Helyszíni méretezésen alapuló értékelések. | **Ajánlott**virtuálisgép-méret: A helyszíni virtuális gép méretétől függően<br/><br> **Ajánlott lemez típusa**: Az értékeléshez kiválasztott tárolási típus alapján.
+**Teljesítményalapú** | Összegyűjtött teljesítményadatokon alapuló értékelések | **Ajánlott virtuális gép mérete:** A PROCESSZOR és a memória kihasználtsági adatai alapján.<br/><br/> **Ajánlott lemeztípus (standard vagy prémium díjas felügyelt lemez)**: Az IOPS és a helyszíni lemezek átviteli hatása alapján.
+**A helyszíni** | A helyszíni méretezésen alapuló értékelések. | **Ajánlott virtuális gép mérete:** A helyszíni virtuális gép mérete alapján<br/><br> **Ajánlott lemeztípus:** Az értékeléshez kiválasztott tárolási típusbeállítás alapján.
 
 
 ## <a name="how-is-an-assessment-done"></a>Hogyan történik az értékelés?
 
-Azure Migrate kiszolgáló értékelésében elvégzett értékelés három szakaszból áll. Az értékelés megfelelőségi elemzéssel kezdődik, majd a méretezés és végül a havi költségbecslés. A gépek csak akkor haladnak át egy későbbi fázisban, ha az előzőre kerül. Ha például egy gép meghibásodik az Azure alkalmassági ellenőrzésének, az az Azure-nak nem megfelelőként van megjelölve, és a méretezés és a költségszámítás nem lesz végrehajtva. [Részletek](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
+Az Azure Áttelepítési kiszolgáló értékelése három szakaszból áll. Az értékelés egy alkalmassági elemzéssel kezdődik, amelyet a méretezés követ, és végül egy havi költségbecslés. A gép csak akkor halad tovább egy későbbi szakaszba, ha átmegy az előzőn. Ha például egy gép nem felel meg az Azure alkalmassági ellenőrzésében, az Azure számára alkalmatlanként van megjelölve, és a méretezés és a költségszámítás nem történik meg. [További információ.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
 
 ## <a name="whats-in-an-assessment"></a>Mit tartalmaz egy értékelés?
 
 **Tulajdonság** | **Részletek**
 --- | ---
-**Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/> A kiszolgáló értékelése jelenleg a következő célcsoportokat támogatja: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Kelet-RÉGIÓJA, Közép-Németország, Északkelet-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Észak USA középső régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, US Gov Arizona, US Gov Texas, US Gov Virginia, az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és Nyugat-RÉGIÓJA.
-**Tárolás típusa** | Ezzel a tulajdonsággal adhatja meg, hogy milyen típusú lemezeket szeretne áthelyezni az Azure-ban.<br/><br/> A helyszíni méretezéshez a célként megadott tárolási típust prémium szintű felügyelt lemezként, standard SSD felügyelt lemezként vagy standard HDD által felügyelt lemezként is megadhatja. A teljesítmény-alapú méretezéshez megadhatja a céllemez típusát automatikus, prémium szintű felügyelt lemezként, standard HDD felügyelt lemezként vagy standard SSD által felügyelt lemezként.<br/><br/> Ha a tárolási típust automatikusként adja meg, a lemezre vonatkozó javaslat a lemezek teljesítményi adatai (IOPS és átviteli sebesség) alapján történik. Ha a tárterületet prémium/standard szintűként adja meg, akkor az értékelés a kiválasztott tárolási típuson belül egy lemez SKU-t javasol. Ha az Egypéldányos VM 99,9%-os SLA-t kívánja elérni, érdemes lehet a tárolási típust prémium szintű felügyelt lemezként megadni. Ez biztosítja, hogy az értékelés összes lemeze prémium szintű felügyelt lemezként legyen ajánlott. Azure
-**Fenntartott példányok (RI)** | Ennek a tulajdonságnak a segítségével megadhatja, hogy az Azure-ban [foglalt példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) rendelkeznek-e, majd az értékelésben szereplő KÖLTSÉGBECSLÉS az ri-kedvezményekbe kerül. A fenntartott példányok jelenleg csak az utólagos elszámolású ajánlatokhoz használhatók Azure Migrateban.
-**Méretezési feltétel** | Az Azure-hoz megfelelő méretű virtuális gépekhez használandó feltétel. A teljesítmény *-alapú* méretezés vagy a virtuális gépek mérete a *helyszínen*is végezhető, a teljesítmény előzményeinek figyelembevétele nélkül.
-**Teljesítményelőzmények** | A gépek teljesítményi adatai értékelésének időtartama. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel *teljesítmény-alapú*.
-**Százalékos kihasználtság** | A teljesítményminta-halmaz megfelelő méretezéshez figyelembe veendő százalékos értéke. Ez a tulajdonság csak akkor alkalmazható, ha a méretezés *teljesítmény-alapú*.
-**Virtuálisgép-sorozatok** |     Megadhatja, hogy melyik virtuálisgép-sorozatot szeretné figyelembe venni a megfelelő méretezéshez. Ha például olyan éles környezettel rendelkezik, amelyet nem szeretne áttelepíteni az Azure-beli sorozatú virtuális gépekre, kizárhatja a-sorozatokat a listából vagy adatsorozatból, és a jobb oldali méretezés csak a kiválasztott adatsorozatban végezhető el.
-**Kényelmi faktor** | Azure Migrate kiszolgáló értékelése az értékelés során egy puffert (komfort faktor) tekint. Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2\.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép.
+**Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/> A Server Assessment jelenleg a következő célrégiókat támogatja: Ausztrália Keleti, Ausztrália délkeleti, Brazília déli, Kanada középső, Kanada Keleti, Közép-India, Usa középső része, Kelet-Kína, Kína Északkeleti, Kína Észak-Ázsia, USA keleti régiója, USA keleti régiója, Németország közép-, németországi északkeleti része, Kelet-Japán, Nyugat-Japán, Korea Közép-Korea, Dél-Korea, Usa északi középső része, Észak-Európa, Dél-Közép-USA, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli része, az Egyesült Királyság nyugati része, az EGYESÜLT Államok kormánya, az USA állam kormánya, az USA nyugati régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és AZ USA nyugati régiója2.
+**Tárolás típusa** | Ezzel a tulajdonsággal megadhatja, hogy milyen típusú lemezekre szeretne áthelyezni az Azure-ban.<br/><br/> A helyszíni méretezéshez megadhatja a céltároló típusát prémium szintű felügyelt lemezek, standard SSD-felügyelt lemezek vagy standard HDD-felügyelt lemezek. A teljesítményalapú méretezéshez megadhatja a céllemez típusát automatikus, prémium szintű felügyelt lemezek, szabványos HDD-kezelt lemezek vagy standard SSD-felügyelt lemezek.<br/><br/> Ha a tároló típusát automatikusként adja meg, a lemezajánlás a lemezek (IOPS és átviteli teljesítmény) teljesítményadatai alapján történik. Ha prémium szintűként adja meg a tárolási típust, az értékelés egy lemeztermék-változatot javasol a kiválasztott tárolási típuson belül. Ha azt szeretné elérni, hogy egy példány vm SLA 99,9%, érdemes megadni a tárolási típus prémium szintű felügyelt lemezek. Ez biztosítja, hogy az értékelésben szereplő összes lemez prémium szintű felügyelt lemezként ajánlott. Azure
+**Fenntartott példányok (RI)** | Ez a tulajdonság segít meghatározni, ha az Azure-ban [fenntartott példányok,](https://azure.microsoft.com/pricing/reserved-vm-instances/) költségbecslések az értékelés ben, majd kész figyelembe vevő ri-kedvezmények. Fenntartott példányok jelenleg csak az Azure Migrate szolgáltatás on-you-go ajánlat támogatott.
+**Méretezési feltétel** | Az Azure-hoz megfelelő méretű virtuális gépekhez használandó feltétel. *Teljesítményalapú* méretezést vagy a virtuális gépek helyszíni méreteként is elláthatja, a teljesítményelőzmények figyelembe venélkül. *as on-premises*
+**Teljesítményelőzmények** | A gépek teljesítményadatainak kiértékelésére figyelembe vejthető időtartam. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel *teljesítményalapú.*
+**Százalékos kihasználtság** | A teljesítményminta-halmaz megfelelő méretezéshez figyelembe veendő százalékos értéke. Ez a tulajdonság csak akkor alkalmazható, ha a méretezés *teljesítményalapú.*
+**Virtuálisgép-sorozatok** |     Megadhatja, hogy melyik virtuálisgép-sorozatot szeretné figyelembe venni a megfelelő méretezéshez. Ha például olyan éles környezettel rendelkezik, amelyet nem tervez áttelepíteni az A-sorozatú virtuális gépekre az Azure-ban, kizárhatja az A-sorozatot a listából vagy sorozatból, és a jobb méretezés csak a kiválasztott sorozatban történik.
+**Kényelmi faktor** | Az Azure Áttelepítési kiszolgáló értékelése puffert (komforttényezőt) vesz figyelembe az értékelés során. Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép.
 **Ajánlat** | Az [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/), amelyre regisztrált. Az Azure Migrate ez alapján becsüli meg a költségeket.
 **Pénznem** | A számlázás pénzneme.
 **Kedvezmény (%)** | Az Azure-ajánlaton felül kapott, az előfizetéshez tartozó kedvezmények.<br/> Az alapértelmezett beállítás 0%.
-**Virtuális gép üzemideje** | Ha a virtuális gépek nem fognak nonstop futni az Azure-ban, megadhatja az időtartamot (a havonta megjelenő napok számát és a napi óraszámot), és ennek megfelelően elvégezheti a költségbecslést.<br/> Az alapértelmezett érték havi 31 nap, és naponta 24 óra.
-**Azure Hybrid Benefit** | Megadhatja, hogy rendelkezik-e frissítési garanciával, és jogosult-e a [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Ha az Igen értéket állítja be, a nem Microsoft Azure-alapú árazás érvényes a windowsos virtuális gépekre. Az alapértelmezett érték az Igen.
+**Virtuális gép üzemideje** | Ha a virtuális gépek nem fognak futni 24órás az Azure-ban, megadhatja az időtartamot (a napok száma havonta és órák száma naponta), amelyre futnának, és a költségbecslések ennek megfelelően történik.<br/> Az alapértelmezett érték havi 31 nap és napi 24 óra.
+**Azure Hybrid Benefit** | Adja meg, hogy rendelkezik-e szoftvergaranciával, és jogosult-e az [Azure Hybrid Benefit használatára.](https://azure.microsoft.com/pricing/hybrid-use-benefit/) Ha az Igen értéket állítja be, a nem Microsoft Azure-alapú árazás érvényes a windowsos virtuális gépekre. Az alapértelmezett érték az Igen.
 
 
-## <a name="edit-assessment-properties"></a>Értékelési Tulajdonságok szerkesztése
+## <a name="edit-assessment-properties"></a>Értékelési tulajdonságok szerkesztése
 
-Értékelés létrehozása után az értékelés tulajdonságainak szerkesztéséhez tegye a következőket:
+Ha az értékelés tulajdonságait az értékelés létrehozása után szeretné szerkeszteni, tegye a következőket:
 
-1. A Azure Migrate projektben kattintson a **kiszolgálók**elemre.
-2. **Azure Migrate: Kiszolgáló értékelése**, kattintson az értékelések száma elemre.
-3. Az **értékelés**területen kattintson a megfelelő értékelés > **Szerkesztés tulajdonságok**elemre.
-5. Szabja testre az értékelési tulajdonságokat a fenti táblázatnak megfelelően.
-6. Az értékelés frissítéséhez kattintson a **Save (Mentés** ) gombra.
+1. Az Azure Áttelepítés projektben kattintson a **Kiszolgálók gombra.**
+2. Az **Azure Migrate: Server Assessment (Az Azure Migrate: Server Assessment)** alkalmazásban kattintson az értékelések számának.
+3. Az **Értékelés párbeszédpanelen**kattintson a tulajdonságok szerkesztése > vonatkozó **értékelésre**.
+5. Az értékelési tulajdonságoktestreszabása a fenti táblázatnak megfelelően.
+6. Az értékelés frissítéséhez kattintson a **Mentés** gombra.
 
 
-Értékelés létrehozásakor is szerkesztheti az értékelési tulajdonságokat.
+Az értékelési tulajdonságokat is szerkesztheti, amikor értékelést hoz létre.
 
 
 ## <a name="next-steps"></a>További lépések

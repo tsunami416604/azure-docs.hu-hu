@@ -1,6 +1,6 @@
 ---
-title: Rendszergazdai szerepkör delegálás – Azure Active Directory ismertetése |} A Microsoft Docs
-description: Delegálás modellek, példákat és az Azure Active Directory szerepköralapú biztonság
+title: A rendszergazdai szerepkör-delegálás megismerése – Azure Active Directory | Microsoft dokumentumok
+description: Delegálási modellek, példák és szerepkör-biztonság az Azure Active Directoryban
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,102 +16,102 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67083769"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Felügyelet delegálása az Azure Active Directoryban
 
-Szervezeti növekedést összetettséget származnak. Egy közös választ, hogy csökkentse a számítási feladatok access Management az Azure Active Directory (AD) rendszergazdai szerepkörök némelyikét. A lehető legkevesebb jogosultságot rendelhet a felhasználók férhetnek hozzá az alkalmazásokhoz és a feladatok elvégzéséhez. Akkor is, ha a globális rendszergazdai szerepkör nem rendel minden alkalmazás tulajdonosa, elhelyezése a meglévő globális rendszergazdák az alkalmazások felügyeleti feladatai. Nincsenek számos oka lehet egy szervezet áthelyezése egy több központosított felügyelet felé. Ez a cikk alapján megtervezheti a szervezet delegáláshoz.
+A szervezeti növekedés komplexial jár. Az egyik gyakori válasz a hozzáférés-kezelés feladatainak csökkentése az Azure Active Directory (AD) rendszergazdai szerepkörökkel. A lehető legkevesebb jogosultságot rendelheti hozzá a felhasználóknak az alkalmazásaik eléréséhez és feladataik elvégzéséhez. Még akkor is, ha nem rendeli hozzá a globális rendszergazdai szerepkört minden alkalmazástulajdonoshoz, alkalmazáskezelési feladatokat helyez el a meglévő globális rendszergazdákra. Sok oka van annak, hogy egy szervezet egy decentralizáltabb adminisztráció felé mozdul el. Ez a cikk segítséget nyújt a szervezeten belüli delegálás megtervezésében.
 
 <!--What about reporting? Who has which role and how do I audit?-->
 
 ## <a name="centralized-versus-delegated-permissions"></a>Központosított és delegált engedélyek
 
-Egy szervezet növekedésével a felhasználók adott rendszergazdai szerepkörökkel rendelkezik nyomon követheti, nehézkes lehet. Ha egy alkalmazott azokat a nem rendszergazdai jogosultságokkal rendelkezik, a szervezet több ki van téve a biztonsági szabályok megsértése esetén alkalmazandók lehetnek. Általánosságban elmondható, hogy hány rendszergazdák támogatja, és hogyan részletes az engedélyeik így függ, hogy a méretét és a központi telepítés bonyolultságát.
+A szervezet növekedésével nehéz lehet nyomon követni, hogy mely felhasználók rendelkeznek adott rendszergazdai szerepkörrel. Ha egy alkalmazott rendszergazdai jogokkal rendelkezik, amelyeket nem kellene, a szervezet érzékenyebb lehet a biztonsági résekre. Általában a támogatott rendszergazdák száma és az engedélyeik részletessége általában a központi telepítés méretétől és összetettségétől függ.
 
-* A kis- és proof-of-concept-környezetekben egy vagy több rendszergazdák mindent; Nincs nem delegálás. Ebben az esetben hozzon létre minden egyes rendszergazda globális rendszergazdai szerepkörrel.
-* Nagyobb telepítések a további gépek, alkalmazások és asztali számítógépek a további delegálás van szükség. Előfordulhat, hogy a rendszergazdák számos pontosabban meghatározott működési feladatai (szerepkörök). Például előfordulhat, egyes Privileged Identity rendszergazdák, és mások esetleg az alkalmazás-rendszergazdák. Emellett a rendszergazda az objektumok, például az eszközök csak bizonyos csoportok előfordulhat, hogy kezelése.
-* Még nagyobb telepítések még részletesebb engedélyek, és valószínűleg karaktereknél rendelkező rendszergazdák vagy hibrid szerepkörök lehet szükség.
+* Kis vagy koncepcióálló telepítések esetén egy vagy néhány rendszergazda mindent megtesz; Nincs küldöttség. Ebben az esetben hozzon létre minden egyes rendszergazdát a Globális rendszergazda szerepkörrel.
+* A több géppel, alkalmazással és asztallal rendelkező nagyobb telepítésekesetén több delegálásra van szükség. Több rendszergazda is rendelkezhet konkrétabb funkcionális feladatokkal (szerepkörök). Lehetnek például kiemelt identitású rendszergazdák, mások pedig alkalmazás-rendszergazdák. Emellett a rendszergazda csak bizonyos objektumcsoportokat, például eszközöket kezelhet.
+* Még a nagyobb központi telepítések is szükség lehet még részletesebb engedélyeket, valamint esetleg a rendszergazdák nem hagyományos vagy hibrid szerepkörök.
 
-Az Azure AD-portálon is [bármely szerepkör összes tagja megtekintheti](directory-manage-roles-portal.md), amelyek segítségével gyorsan ellenőrizheti az üzembe helyezés és a delegált engedélyeit.
+Az Azure AD-portálon [megtekintheti bármely szerepkör összes tagját,](directory-manage-roles-portal.md)amely segítségével gyorsan ellenőrizheti a központi telepítést és delegálhatja az engedélyeket.
 
-Ha érdekli helyett rendszergazdai hozzáférést Azure-erőforrásokhoz való hozzáférés delegálása az Azure ad-ben, tekintse meg [szerepköralapú hozzáférés-vezérlés (RBAC) szerepkör hozzárendelése](../../role-based-access-control/role-assignments-portal.md).
+Ha az Azure AD-ben a rendszergazdai hozzáférés helyett az Azure-erőforrásokhoz való hozzáférés delegálása érdekli, olvassa el [a Szerepköralapú hozzáférés-vezérlési (RBAC) szerepkör hozzárendelése című témakört.](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="delegation-planning"></a>Delegálás megtervezése
+## <a name="delegation-planning"></a>Delegálás immár tervezése
 
-Ez a munkahelyi olyan delegálási modellt, amely a legjobban az igényeinek. A delegálási modell fejlesztéséhez egy iteratív tervezési folyamatát, és javasoljuk, hogy kövesse az alábbi lépéseket:
+Ez a munka, hogy dolgozzon ki egy delegálási modell, amely megfelel az Ön igényeinek. A delegálási modell kidolgozása ismétlődő tervezési folyamat, és javasoljuk, hogy kövesse az alábbi lépéseket:
 
-* A szükséges szerepkörök definiálása
-* Alkalmazások felügyelete
-* Alkalmazások regisztrálása megadása
-* Delegált alkalmazás tulajdonosa
+* A szükséges szerepkörök meghatározása
+* Alkalmazásfelügyelet delegálása
+* A jelentkezések regisztrálásának lehetővé tévő lehetővé tévő megadása
+* Alkalmazás tulajdonjogának delegálása
 * Biztonsági terv kidolgozása
 * Vészhelyzeti fiókok létrehozása
 * A rendszergazdai szerepkörök védelme
-* Győződjön meg, a kiemelt jogosultságú jogosultságszint-emelési ideiglenes
+* Emelt szintű jogosultsággal rendelkező jogosultsági szintezésideiglenesvé
 
 ## <a name="define-roles"></a>Szerepkörök definiálása
 
-Határozza meg, hogy a rendszergazdák, és hogyan leképezik a szerepkörök által végrehajtott Active Directory feladatokat. Is [megtekintése részletes szerepköreinek leírása](directory-manage-roles-portal.md) az Azure Portalon.
+Határozza meg a rendszergazdák által végzett Active Directory-feladatokat, és azt, hogy hogyan felelnek meg a szerepköröknek. Részletes [szerepkör-leírások](directory-manage-roles-portal.md) az Azure Portalon megtekintheti.
 
-Minden tevékenység gyakorisága, fontosság és nehézség kell kiértékelni. Ezek a feltételek a feladatdefiníció létfontosságú aspektusait azért, mert a azok szabályozzák, hogy delegálja az engedélyt:
+Minden feladatot ki kell értékelni a gyakoriság, a fontosság és a nehézség szempontjából. Ezek a feltételek a feladatdefiníció alapvető szempontjai, mivel szabályozzák, hogy egy engedélyt delegálni kell-e:
 
-* Feladatok, hogy Ön mindig tegye, kockázati korlátozott, pedig a trivial teljes alkalmasak a delegálást.
-* Hogy hajtsa végre a ritkán, de jelentős hatással a szervezet fájlkiszolgálóin és szükséges ismeretek magas szintű feladatok delegálása előtt alaposan kell tekinteni. Ehelyett [ideiglenesen fiók jogosultsági szintjének emelése egy, a szükséges szerepkör](../active-directory-privileged-identity-management-configure.md) vagy újbóli hozzárendelése a feladatot.
+* A rutinszerűen végzett feladatok, amelyek korlátozott kockázattal járnak, és triviálisak, kiváló jelöltek a delegálásra.
+* Feladatok, hogy nem ritkán, de nagy hatással van az egész szervezet, és megkövetelik a magas képzettségi szint kell figyelembe venni nagyon óvatosan, mielőtt delegálása. Ehelyett [ideiglenesen emelhet egy fiókot a szükséges szerepkörre,](../active-directory-privileged-identity-management-configure.md) vagy újra hozzárendelheti a feladatot.
 
-## <a name="delegate-app-administration"></a>Alkalmazások felügyelete
+## <a name="delegate-app-administration"></a>Alkalmazásfelügyelet delegálása
 
-A szervezeten belüli alkalmazások elterjedésével a delegálási modell is törzs. A globális rendszergazda helyezi az alkalmazáshozzáférés-kezeléshez nehezedő terheket, valószínű, hogy a modell a terhelés növekszik, idő előrehaladtával. Ha például a vállalati alkalmazások konfigurálása a globális rendszergazdai szerepkörrel rendelkezik kapott személyek, most kiszervezheti őket a következő kevesebb kiemelt jogosultságú szerepkörök. Ezzel javíthatja biztonsági helyzetét segítségével, és csökkenti a potenciális kellemetlen hibáktól. Az alkalmazás a legtöbb kiemelt jogosultságú rendszergazdai szerepköröket használják:
+Az alkalmazások elburjánzása a szervezeten belül megterhelheti a delegálási modellt. Ha az alkalmazáshozzáférés-kezelés terhét a globális rendszergazda, valószínű, hogy a modell növeli a többletterhelést az idő előrehaladtával. Ha globális rendszergazdai szerepkört adott a személyeknek például a vállalati alkalmazások konfigurálásához, most már kiszervezheti őket a következő, kevésbé kiemelt jogosultságú szerepkörökbe. Ezzel segít javítani a biztonsági testtartást, és csökkenti a szerencsétlen hibák lehetőségét. A legnagyobb jogosultsági szintű alkalmazásrendszergazdai szerepkörök a következők:
 
-* A **alkalmazás-rendszergazda** szerepkört, amely képes kezelni a könyvtárban, beleértve a regisztrációk, egyszeri bejelentkezési beállításainak, felhasználó és csoport-hozzárendelések és licencelés, alkalmazást proxybeállításokat, minden alkalmazás biztosít és engedélyt. Nem adja meg azt a feltételes hozzáférés kezelését.
-* A **Felhőalkalmazás-rendszergazda** szerepkört, amely engedélyezi a képességek az alkalmazás-rendszergazda, azzal a különbséggel, nem hozzáférést biztosítani az alkalmazásproxy-beállítások (mert nem a helyszíni jogosult azt).
+* Az **Alkalmazásfelügyelő** szerepkör, amely lehetővé teszi a címtárban lévő összes alkalmazás kezelését, beleértve a regisztrációkat, az egyszeri bejelentkezési beállításokat, a felhasználói és csoport-hozzárendeléseket és a licencelést, az alkalmazásproxy-beállításokat és a jóváhagyást. Nem teszi lehetővé a feltételes hozzáférés kezelését.
+* A **Felhőalkalmazás-rendszergazda** szerepkör, amely az alkalmazás-rendszergazda összes képességét biztosítja, kivéve, hogy nem ad hozzáférést az alkalmazásproxy-beállításokhoz (mivel nem rendelkezik helyszíni engedéllyel).
 
-## <a name="delegate-app-registration"></a>Delegált alkalmazásregisztráció
+## <a name="delegate-app-registration"></a>Alkalmazásregisztráció delegálása
 
-Alapértelmezés szerint minden felhasználó alkalmazásregisztrációkat hozhat létre. Alkalmazásregisztrációkat hozhat létre, lehetővé teszi külön-külön megadni:
+Alapértelmezés szerint minden felhasználó létrehozhat alkalmazásregisztrációkat. Alkalmazás-regisztrációk létrehozásának szelektív megadása:
 
-* Állítsa be **felhasználók regisztrálhatnak alkalmazásokat** a nem értékre **felhasználói beállítások**
-* Rendelje hozzá a felhasználót az alkalmazás fejlesztőjének szerepkörhöz
+* A **felhasználók regisztrálhatnak alkalmazásokat** nem beállításra a **Felhasználói beállításokban**
+* A felhasználó hozzárendelése az Alkalmazásfejlesztői szerepkörhöz
 
-A külön-külön megadja a járul hozzá az adatokhoz való hozzáférésének alkalmazás lehetővé teszi:
+Az alkalmazások adatokhoz való hozzáférésének engedélyezéséhez való hozzájárulás lehetőségének szelektív megadása:
 
-* Állítsa be **felhasználók engedélyezhetik alkalmazások hozzáférjenek a vállalati adatokhoz a felhasználók nevében** , nem a **felhasználói beállítások**
-* Rendelje hozzá a felhasználót az alkalmazás fejlesztőjének szerepkörhöz
+* A felhasználók beállítása **beleegyezhet abba, hogy a vállalati adatokhoz a nevükben hozzáférő alkalmazások** ne jelennek meg a **Felhasználói beállításokban**
+* A felhasználó hozzárendelése az Alkalmazásfejlesztői szerepkörhöz
 
-Amikor a alkalmazásfejlesztő létrehoz egy új alkalmazás regisztrálása, a rendszer automatikusan felveszi első tulajdonosként.
+Amikor egy alkalmazásfejlesztő új alkalmazásregisztrációt hoz létre, a rendszer automatikusan hozzáadja őket első tulajdonosként.
 
-## <a name="delegate-app-ownership"></a>Delegált alkalmazás tulajdonosa
+## <a name="delegate-app-ownership"></a>Alkalmazás tulajdonjogának delegálása
 
-Még részletesebben app access delegáláshoz hozzárendelheti tulajdonjoga az egyes vállalati alkalmazásokhoz. Ez egészíti ki a regisztrációs alkalmazástulajdonosok hozzárendelése meglévő támogatása. Tulajdonos hozzárendelése a vállalati alkalmazások panelen-enterprise alkalmazás ellenében. Az az előnye tulajdonosai csak a saját vállalati alkalmazások kezelheti. Például hozzárendelhet a Salesforce alkalmazás tulajdonosát, és a tulajdonos kezelheti a hozzáférést és konfigurációs a Salesforce és más alkalmazások nem. Vállalati alkalmazás számos tulajdonosokkal rendelkezhetnek, és a felhasználó lehet a tulajdonosa, számos vállalati alkalmazások számára. Két alkalmazás tulajdonosa szerepkörök állnak rendelkezésre:
+A még finomabb alkalmazáshozzáférés-delegáláshoz az egyes vállalati alkalmazásokhoz tulajdonjogot rendelhet. Ez kiegészíti az alkalmazásregisztráció-tulajdonosok hozzárendeléséhez nyújtott meglévő támogatást. A tulajdonjog vállalati alkalmazásonként van hozzárendelve a Vállalati alkalmazások panelen. A haszon az, hogy a tulajdonosok csak a saját vállalati alkalmazásaikat kezelhetik. Például hozzárendelhet egy tulajdonost a Salesforce alkalmazáshoz, és a tulajdonos kezelheti a Salesforce-hoz való hozzáférést és a konfigurációt, más alkalmazásokat nem. Egy vállalati alkalmazásnak sok tulajdonosa lehet, és a felhasználó számos vállalati alkalmazás tulajdonosa lehet. Két alkalmazástulajdonosi szerepkör létezik:
 
-* A **vállalati alkalmazás tulajdonosa** szerepkörök kezelését a "nagyvállalati alkalmazásokhoz, amelyeket a felhasználó tulajdonában lévő, ideértve az egyszeri bejelentkezés beállításai, felhasználó és csoport-hozzárendeléseit, illetve további tulajdonosok hozzáadása. Nem adja meg azt a képes kezelni az alkalmazásproxy-beállítások vagy feltételes hozzáférés.
-* A **regisztrációs Alkalmazástulajdonos** szerepköre lehetővé teszi, hogy a felhasználó tulajdonában lévő, beleértve az alkalmazásjegyzékben, és további tulajdonosok hozzáadása az alkalmazást az alkalmazásregisztrációk kezelését.
+* A **Vállalati alkalmazás tulajdonosa** szerepkör lehetővé teszi a "a felhasználó tulajdonában lévő vállalati alkalmazások kezelését, beleértve az egyszeri bejelentkezési beállításokat, a felhasználói és csoport-hozzárendeléseket, valamint további tulajdonosok hozzáadását. Nem teszi lehetővé az alkalmazásproxy-beállítások vagy a feltételes hozzáférés kezelését.
+* Az **alkalmazásregisztráció tulajdonosi** szerepköre lehetővé teszi a felhasználó tulajdonában lévő alkalmazásregisztrációk kezelését, beleértve az alkalmazásjegyzéket és további tulajdonosok hozzáadását.
 
 ## <a name="develop-a-security-plan"></a>Biztonsági terv kidolgozása
 
-Az Azure AD biztosít egy széles körű útmutató a tervezési és a egy biztonsági csomag végrehajtása az Azure AD felügyeleti szerepkörök [Securing privileged hozzáférni a felhőbeli és hibrid környezetekben](directory-admin-roles-secure.md).
+Az Azure AD átfogó útmutatót nyújt az Azure AD-rendszergazdai szerepkörök biztonsági tervének tervezéséhez [és végrehajtásához, a kiemelt hozzáférés biztosításához a hibrid és felhőalapú telepítésekhez.](directory-admin-roles-secure.md)
 
 ## <a name="establish-emergency-accounts"></a>Vészhelyzeti fiókok létrehozása
 
-Kezelése az identity management-áruház elérését, ha probléma merül fel, hogy készítse elő a következők szerint a vészelérési fiókok [válságkezelési hozzáférés rendszergazdai fiókok létrehozása](directory-emergency-access.md).
+Az identitáskezelési tárolóhoz való hozzáférés fenntartásához probléma esetén készítse elő a vészelérési fiókokat [a Vészhozzáférés-rendszergazdai fiókok létrehozása](directory-emergency-access.md)szolgáltatással.
 
 ## <a name="secure-your-administrator-roles"></a>A rendszergazdai szerepkörök védelme
 
-Kézben a kiemelt jogosultságú fiókok beolvasása, akik is tegye áttekintse kárt, így ezeket a fiókokat először használatával véd a [alapvető hozzáférési házirendet](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) , amely érhető el az összes Azure AD-bérlő alapértelmezés szerint (nyilvános előzetes verzió). A szabályzat kötelezővé teszi a multi-factor authentication az emelt szintű Azure AD-fiókokat. Az alábbi Azure AD-szerepkörök által az Azure AD alapvető házirendet terjed ki:
+A támadók, akik a kiemelt jogosultságú fiókok vezérlését is hatalmas károkat okozhat, ezért ezeket a fiókokat először védje, az [alapszintű hozzáférési szabályzat,](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) amely alapértelmezés szerint elérhető az összes Azure AD-bérlők (nyilvános előzetes verzióban). A szabályzat többtényezős hitelesítést kényszerít ki a kiemelt Azure AD-fiókokon. Az Azure AD alapszabályzata a következő Azure AD-szerepköröket fedi le:
 
 * Globális rendszergazda
 * SharePoint-rendszergazda
 * Exchange-rendszergazda
-* Feltételes hozzáférésű rendszergazda
+* Feltételes hozzáférés rendszergazdája
 * Biztonsági rendszergazda
 
-## <a name="elevate-privilege-temporarily"></a>Jogosultság ideiglenesen jogosultságszint-emelés
+## <a name="elevate-privilege-temporarily"></a>Jogosultság ideiglenes felemelése
 
-A legtöbb napi tevékenységek nem minden felhasználó globális rendszergazdai jogosultságokkal kell, és nem az összes véglegesen rendel hozzá a globális rendszergazdai szerepkörrel. Amikor a felhasználók a egy globális rendszergazdai engedélyekkel kell, a szerepkör-hozzárendelés az Azure ad-ben kell aktiválnak [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) saját vagy egy másik rendszergazdai fiókkal.
+A legtöbb napi tevékenység esetében nem minden felhasználónak van szüksége globális rendszergazdai jogokra, és nem mindegyiknek kell véglegesen hozzárendelnie a globális rendszergazdai szerepkörhöz. Ha a felhasználóknak szükségük van egy globális rendszergazda engedélyére, aktiválniuk kell a szerepkör-hozzárendelést az Azure AD [kiemelt identitáskezelés](../active-directory-privileged-identity-management-configure.md) ben, akár saját fiókjukon, akár egy másik felügyeleti fiókon.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD-szerepkör ismertetését referenciáért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure ad-ben](directory-assign-admin-roles.md)
+Az Azure AD-szerepkör-leírásokra való hivatkozásért [lásd: Rendszergazdai szerepkörök hozzárendelése az Azure AD-ben](directory-assign-admin-roles.md)

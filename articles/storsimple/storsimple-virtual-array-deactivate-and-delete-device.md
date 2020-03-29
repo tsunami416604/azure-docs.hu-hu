@@ -1,6 +1,6 @@
 ---
-title: Inaktiválás és törlés egy Microsoft Azure StorSimple Virtual Array |} A Microsoft Docs
-description: Ismerteti a StorSimple-eszköz eltávolítása a szolgáltatás inaktiválása először, és majd törlésével.
+title: Microsoft Azure StorSimple virtuális tömb inaktiválása és törlése | Microsoft dokumentumok
+description: A StorSimple-eszköz eltávolítását ismerteti, ha először inaktiválja, majd törli azt.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,80 +15,80 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60580598"
 ---
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Inaktiválás és törlés a StorSimple Virtual Array
+# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Virtuális StorSimple-tömb inaktiválása és törlése
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Virtual Array inaktiválása, megszünteti az eszköz és a megfelelő StorSimple-Eszközkezelő szolgáltatás közötti kapcsolat. Ez az oktatóanyag a következőket ismerteti:
+A StorSimple virtuális tömb inaktiválásakor megszakítja az eszköz és a megfelelő StorSimple Eszközkezelő szolgáltatás közötti kapcsolatot. Ez az oktatóanyag a következőket ismerteti:
 
 * Eszköz inaktiválása 
 * Inaktivált eszköz törlése
 
-Ebben a cikkben található információk csak a StorSimple Virtual Arrayt vonatkozik. A 8000-es sorozat további információkért tekintse meg, hogyan [inaktiválja vagy törölje az eszköz](storsimple-deactivate-and-delete-device.md).
+A cikkben szereplő információk csak a StorSimple virtuális tömbökre vonatkoznak. A 8000-es sorozattal kapcsolatos információkért látogasson el az [eszköz inaktiválásához vagy törléséhez.](storsimple-deactivate-and-delete-device.md)
 
-## <a name="when-to-deactivate"></a>Mikor inaktiválása?
+## <a name="when-to-deactivate"></a>Mikor kell kikapcsolni?
 
-Inaktiválási állandó művelet, és nem vonható vissza. Inaktivált eszköz újra nem lehet regisztrálni a StorSimple-Eszközkezelő szolgáltatással. Szükség lehet inaktiválása és törlése a StorSimple Virtual Array a következő esetekben:
+Az inaktiválás állandó művelet, és nem lehet visszavonni. Nem regisztrálhat újra inaktivált eszközt a StorSimple Eszközkezelő szolgáltatással. Előfordulhat, hogy inaktiválnia kell és törölnie kell egy StorSimple virtuális tömböt a következő esetekben:
 
-* **Tervezett feladatátvétel** : Az eszköz online állapotban, és azt tervezi, hogy az eszköz feladatainak átadása. Ha azt tervezi, egy nagyobb eszköz frissítése, szükség lehet az eszköz feladatainak átadása. Miután az adatok tulajdonjoga és a feladatátvétel befejeződött, a rendszer automatikusan törli a forráseszközt.
-* **Nem tervezett feladatátvétel** : Az eszköz offline állapotban, és az eszköz feladatainak átadása kell. Egy katasztrófa során ez a forgatókönyv fordulhat elő, ha egy kimaradás az adatközpontban, és az elsődleges eszköz nem működik. Azt tervezi, hogy egy másodlagos eszközre az eszköz feladatainak átadása. Miután az adatok tulajdonjoga és a feladatátvétel befejeződött, a rendszer automatikusan törli a forráseszközt.
-* **Leszerelése** : Szeretné az eszköz leszerelése. Ez megköveteli, hogy az eszköz először inaktiválja és törölje azt. Ha az eszköz inaktiválása, már nem érhető el helyben tárolt adatokat. Csak eléréséhez, és a felhőben tárolt adatok helyreállítását. Ha azt tervezi, hogy az eszközön lévő adatokat annak inaktiválása után, majd meg kell felhőbeli pillanatkép készítése az összes eszköz inaktiválása előtt. A felhőbeli pillanatképet minden az adatok helyreállítása egy későbbi szakaszban teszi lehetővé.
+* **Tervezett feladatátvétel:** Az eszköz online állapotban van, és azt tervezi, hogy feladatátvételt. Ha nagyobb eszközre szeretne frissíteni, előfordulhat, hogy át kell adnia az eszközt. Az adatok tulajdonjogának átvitele és a feladatátvétel befejezése után a forráseszköz automatikusan törlődik.
+* **Nem tervezett feladatátvétel** : Az eszköz offline állapotban van, és át kell adnia az eszközt. Ez a forgatókönyv akkor fordulhat elő, egy katasztrófa, ha van egy kimaradás az adatközpontban, és az elsődleges eszköz nem érhető el. Azt tervezi, hogy egy másodlagos eszközre átad egy eszközt. Az adatok tulajdonjogának átvitele és a feladatátvétel befejezése után a forráseszköz automatikusan törlődik.
+* **Leszerelés:** Le szeretné szerelni az eszközt. Ehhez először inaktiválnia kell az eszközt, majd törölnie kell azt. Az eszköz inaktiválásakor a továbbiakban nem férhet hozzá a helyileg tárolt adatokhoz. Csak a felhőben tárolt adatokat érheti el és állíthatja helyre. Ha azt tervezi, hogy az eszköz adatait az inaktiválás után megtartja, akkor az eszköz inaktiválása előtt felhőbeli pillanatképet kell készítenie az összes adatról. Ez a felhőbeli pillanatkép lehetővé teszi az összes adat helyreállítását egy későbbi szakaszban.
 
 ## <a name="deactivate-a-device"></a>Eszköz inaktiválása
 
-Az eszköz inaktiválása, hajtsa végre az alábbi lépéseket.
+Az eszköz inaktiválásához hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-deactivate-the-device"></a>Az eszköz inaktiválása
 
-1. A szolgáltatáshoz, lépjen a **felügyeleti > eszközök**. Az a **eszközök** panelen kattintson, és válassza ki az eszközt, akinél szeretné inaktiválni.
+1. A szolgáltatásban nyissa meg **a Felügyeleti > eszközök**lehetőséget. Az **Eszközök** panelen kattintson és válassza ki az inaktiválni kívánt eszközt.
    
-    ![Válassza ki az eszköz inaktiválása](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. Az a **irányítópultját** panelen kattintson a **... További** , és válassza ki a listából **inaktiválás**.
+    ![Az inaktiválandó eszköz kiválasztása](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
+2. Az **Eszköz irányítópultjának** paneljén kattintson **a ... Több,** és a listából válassza **az Inaktiválás**lehetőséget.
    
-    ![Kattintson az Inaktiválás](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. Az a **inaktiválás** panelen írja be az eszköz nevét, majd kattintson a **inaktiválás**. 
+    ![Kattintson az inaktiválásra](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
+3. Az **Inaktiválás** panelen írja be az eszköz nevét, majd kattintson **az Inaktiválás gombra.** 
    
-    ![Győződjön meg róla inaktiválása](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
+    ![Inaktiválás megerősítése](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
-    Az inaktiválás folyamat elindul, és néhány percet vesz igénybe.
+    A folyamat inaktiválása és néhány percet vesz igénybe.
    
     ![Inaktiválás folyamatban](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
-4. Inaktiválási, miután az eszközök listája frissül.
+4. Az inaktiválás után frissül az eszközök listája.
    
-    ![Teljes inaktiválása](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
+    ![Teljes inaktiválás](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
    
-    Most törölheti az eszközt.
+    Most már törölheti ezt az eszközt.
 
-## <a name="delete-the-device"></a>Az eszköz törlése
+## <a name="delete-the-device"></a>Eszköz törlése
 
-Egy eszköz lehet való törléséhez először inaktiválni rendelkezik. Eszköz törlése eltávolítja a szolgáltatáshoz csatlakozó eszközök listájából. A szolgáltatás már nem kezelhetők a törölt eszközt. Az eszközhöz társított adatokat azonban továbbra is a felhőben. Ezek az adatok ezután díjai vizualizációtól elvárható.
+Az eszköz törléséhez először inaktiválni kell. Az eszköz törlésével eltávolítja azt a szolgáltatáshoz csatlakoztatott eszközök listájáról. A szolgáltatás ezután már nem tudja kezelni a törölt eszközt. Az eszközhöz társított adatok azonban a felhőben maradnak. Ezek az adatok ezután felhalmozódnak a költségek.
 
 Az eszköz törléséhez hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-delete-the-device"></a>Az eszköz törlése
 
-1. Nyissa meg a StorSimple Device Manager **felügyeleti > eszközök**. Az a **eszközök** panelen válassza ki a törölni kívánt inaktív eszközt.
-2. Az a **irányítópultját** panelen kattintson a **... További** majd **törlése**.
+1. A StorSimple Eszközkezelőben nyissa meg **a Felügyeleti > eszközök**lehetőséget. Az **Eszközök** panelen válassza ki a törölni kívánt inaktivált eszközt.
+2. Az **Eszköz irányítópultjának** paneljén kattintson **a ... Egyezés** t, majd kattintson **a Törlés gombra.**
    
-   ![Válassza ki az eszköz törlése](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. Az a **törlése** panelen adja meg az eszköz a törlés megerősítéséhez, majd kattintson a **törlése**. Az eszköz törlése nem törli az eszközhöz társított felhőalapú adatokat. 
+   ![A törölni kívánt eszköz kiválasztása](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
+3. A **Törlés** panelen írja be az eszköz nevét a törlés megerősítéséhez, majd kattintson a **Törlés gombra.** Az eszköz törlése nem törli az eszközhöz társított felhőadatokat. 
    
    ![Törlés megerősítése](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
 4. A törlés elindul, és néhány percet vesz igénybe.
    
-   ![A Törlés folyamatban](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete6.png)
+   ![Törlés folyamatban](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete6.png)
    
-    Az eszköz törlését követően megtekintheti a eszközök frissített listáját.
+    Az eszköz törlése után megtekintheti az eszközök frissített listáját.
 
 ## <a name="next-steps"></a>További lépések
 
-* Hogyan végezhet feladatátvételt információkért látogasson el [feladatátvétel és vészhelyreállítás a StorSimple Virtual Array helyreállítása](storsimple-virtual-array-failover-dr.md).
+* A feladatátvételről a [StorSimple virtuális tömb feladatátvételi és vészhelyreállításával](storsimple-virtual-array-failover-dr.md)kapcsolatos információkért látogasson el a feladatátvételre és a vészhelyreállításra.
 
-* A StorSimple-Eszközkezelő szolgáltatás használatával kapcsolatos további tudnivalókért keresse fel [a StorSimple-Eszközkezelő szolgáltatás segítségével felügyelheti a StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md). 
+* Ha többet szeretne megtudni a StorSimple Eszközkezelő szolgáltatás használatáról, olvassa el [a StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb felügyeletéhez című webhelyet.](storsimple-virtual-array-manager-service-administration.md) 
 

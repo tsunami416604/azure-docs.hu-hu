@@ -1,6 +1,6 @@
 ---
-title: Kibocsátási megjegyzések – Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge kibocsátási megjegyzések Azure Event Grid
+title: Kibocsátási megjegyzések – Azure Event Grid IoT Edge | Microsoft dokumentumok
+description: Azure Event Grid az IoT Edge kibocsátási jegyzetein
 author: banisadr
 ms.author: babanisa
 ms.reviewer: spelluru
@@ -9,42 +9,42 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 18a4fb9a979841bbf6cd0090fc67a77327c61596
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76849707"
 ---
-# <a name="release-notes-azure-event-grid-on-iot-edge"></a>Kibocsátási megjegyzések: Azure Event Grid IoT Edge
+# <a name="release-notes-azure-event-grid-on-iot-edge"></a>Kibocsátási megjegyzések: Azure Event Grid az IoT Edge-en
 
-## <a name="100-preview1"></a>1.0.0 – Preview1
+## <a name="100-preview1"></a>1.0.0-preview1
 
-Azure Event Grid első kiadása IoT Edgeon. Mellékelt funkciók:
+Az Azure Event Grid kezdeti kiadása az IoT Edge-en. A mellékelt funkciók:
 
-* Témakör létrehozása
+* Téma létrehozása
 * Esemény-előfizetés létrehozása
 * Speciális szűrők
 * Kimenet kötegelése
-* Újrapróbálkozási szabályzatok
-* Modul-közzététel modul
-* Közzététel a webhookban célhelyként
-* Közzététel a IoT Edge hub célhelyként
-* Közzététel a Azure Event Grid Cloud Service-ben célhelyként
-* Metaadatok megőrzött állapota
-* BLOB Storage-modul integrációja
+* Házirendek újrapróbálkozása
+* Modul-modul közzététel
+* Közzététel a WebHook webhelyen célként
+* Közzététel az IoT Edge Hubban célként
+* Közzététel az Azure Event Grid felhőszolgáltatásában úti célként
+* A metaadatok megőrzött állapota
+* Blob-tárolómodul integrációja
 
-Címkék: `1.0.0-preview1`
+Címkék:`1.0.0-preview1`
 
-## <a name="100-preview2"></a>1.0.0 – Preview2
+## <a name="100-preview2"></a>1.0.0-preview2
 
-Előzetes verzió – Azure Event Grid IoT Edge hozzáadva:
+Az Azure Event Grid 2.
 
-* Beállíthatók a lemezre a megőrzött események
-* Témakör metrikái
-* Esemény-előfizetési metrikák
-* Közzététel Event Hubs célhelyként
-* Közzététel a Service Bus sorba célhelyként
-* Közzététel Service Bus témakörök célhelyként
-* Közzététel a tárolási várólistákban célhelyként
+* Konfigurálható, lemezre konfigurálható, megőrzött események
+* Témakör metrikák
+* Esemény-előfizetési mutatók
+* Közzététel az Eseményközpontokban célként
+* Közzététel a szolgáltatásbusz-várólistákban célként
+* Közzététel a Service Bus-témakörökben célként
+* Közzététel tárolóvárólistákban célként
 
-Címkék: `1.0.0-preview2`, `1.0`, `latest`
+Címkék: `1.0.0-preview2` `1.0`, ,`latest`

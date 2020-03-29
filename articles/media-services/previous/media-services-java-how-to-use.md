@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64869025"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű videotartalom-továbbítási szolgáltatást hozhat létre a Java ügyfél-SDK segítségével, az Azure Media Services alkalmazással.
 
@@ -53,17 +53,17 @@ Ha például a buildelőeszköze a `gradle`, adja a következő függőséget a 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Útmutató: Az Azure Media Services használata Javával
 
 >[!NOTE]
->A Media Services-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
+>Amikor a Media Services-fiók jön létre egy **alapértelmezett** streamelési végpont ot a fiók **leállított** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
 
 A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet fel az adategységbe egy médiafájlt, futtathat le egy feladatot az adategység átalakításához, és hozhat létre egy keresőt a videó továbbításához.
 
 A kód használata előtt hozzon létre egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
 
 A kód csatlakozik az Azure Media Services API-hoz az Azure AD egyszerű szolgáltatásnév hitelesítésével. Hozzon létre egy Azure AD-alkalmazást, és adja meg a kódban a következő változók értékeit:
-* `tenant`: Az Azure AD-alkalmazást tartalmazó Azure AD-bérlői tartomány
-* `clientId`: Az Azure AD-alkalmazás Ügyfélazonosítója
+* `tenant`: Annak az Azure AD-bérlőnek a tartománya, ahol az Azure AD-alkalmazás található
+* `clientId`: Az Azure AD-alkalmazás ügyfél-azonosítója
 * `clientKey`: Az Azure AD-alkalmazás ügyfélkulcsa
-* `restApiEndpoint`: Az Azure Media Services-fiók REST API-végpont
+* `restApiEndpoint`: Az Azure Media Services-fiók REST API-végpontja
 
 Létrehozhat egy Azure AD-alkalmazást, és lekérheti a megelőző konfigurációs értékeket az Azure Portalról. További információt az **Azure Portalon keresztül történő Azure AD-alapú hitelesítést** ismertető cikkben, az [egyszerű szolgáltatásnév hitelesítését](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) bemutató szakaszban talál.
 
@@ -304,7 +304,7 @@ A kód egy helyileg tárolt videofájlt is használ. Szerkesztenie kell a kódot
     }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

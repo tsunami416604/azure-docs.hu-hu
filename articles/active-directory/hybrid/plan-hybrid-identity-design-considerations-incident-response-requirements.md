@@ -1,6 +1,6 @@
 ---
-title: Hibrid identitás Tervező – Azure incidensválasz-követelmények |} A Microsoft Docs
-description: Határozza meg a figyelési és jelentéskészítési funkciókat a hibrid identitáskezelési megoldás, amely szerint is javítható az informatikai műveletek azonosításához és elhárításához szükséges egy potenciális fenyegetések
+title: Hibrid identitástervezés – incidensválasz-követelmények Azure | Microsoft dokumentumok
+description: Határozza meg a hibrid identitáskezelési megoldás figyelési és jelentéskészítési képességeit, amelyet az informatikai rendszer a potenciális fenyegetések azonosítására és csökkentésére használhat fel
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,55 +18,55 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109278"
 ---
-# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Hibrid identitáskezelési megoldás incidensválasz-követelmények meghatározása
-Nagy- vagy közepes szervezetek nagy valószínűséggel fog rendelkezni a [biztonsági incidensek megoldási](https://technet.microsoft.com/library/cc700825.aspx) segítségével történő informatikai műveleteket ennek megfelelően az incidens szintjét. Az identitáskezelési rendszerekkel az incidensmegoldási folyamat során fontos összetevője azért használható ki végzett egy adott művelet a célon azonosítása érdekében. A hibrid identitáskezelési megoldás, amely jól használható a figyelési és jelentéskészítési képességeket biztosít képesnek kell lennie az informatikai műveletek azonosításához és elhárításához szükséges potenciális fenyegetést. Egy tipikus incidensmegoldási terv a csomag részeként a következő fázisok fog rendelkezni:
+# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás incidensválasz-követelményeinek meghatározása
+A nagy- és közepes szervezetek valószínűleg [biztonsági incidensekre adott válaszokkal](https://technet.microsoft.com/library/cc700825.aspx) fognak rendelkezni, amelyek segítenek az informatikai szervezeteknek az incidens szintjének megfelelő műveletekben. Az identitáskezelő rendszer fontos eleme az incidens-válasz folyamatnak, mivel segítségével azonosítható, hogy ki hajtott végre egy adott műveletet a cél ellen. A hibrid identitáskezelési megoldásnak képesnek kell lennie olyan figyelési és jelentéskészítési képességek biztosítására, amelyeket az informatikai rendszer használhat a potenciális fenyegetés azonosítására és csökkentésére irányuló műveletek hez. Egy tipikus incidens-választervben a következő fázisok lesznek a terv részeként:
 
-1. Kezdeti felmérést.
-2. Incidens kommunikációt.
-3. Károk vezérlő és a kockázat csökkentése érdekében.
-4. Milyen azonosítása biztonsági sérülés és a súlyosság volt.
-5. Bizonyítékok megőrzését.
+1. Első értékelés.
+2. Váratlan kommunikáció.
+3. Kárelhárítás és kockázatcsökkentés.
+4. Azonosítása, hogy mi volt a kompromisszum és súlyossága.
+5. Bizonyíték megőrzése.
 6. Értesítés a megfelelő feleknek.
 7. Rendszer-helyreállítás.
 8. Dokumentáció.
-9. Sérülés és a költségek értékelése.
-10. Folyamat és a csomag verziójának.
+9. Kár- és költségfelmérés.
+10. A felülvizsgálat feldolgozása és megtervezése.
 
-Során az azonosítását, amit a rendszergazda volt a biztonsági sérülés és a súlyossági fázisú, de a rendszerek biztonsága sérült, elért, és határozza meg azokat a fájlokat az érzékeny fájlok azonosítása érdekében. A hibrid identitáskezelő rendszerbe kell tudni teljesítése ezek a követelmények azonosításának elősegítése a felhasználót, hogy a változtatásokat. 
+A kompromitmát és súlyossági fázis meghatározása során azonosítani kell a feltört rendszereket, a hozzáfért fájlokat, és meg kell határozni a fájlok érzékenységét. A hibrid identitásrendszer képesnek kell lennie arra, hogy megfeleljen ezeknek a követelményeknek, hogy segítsen azonosítani a felhasználót, aki ezeket a módosításokat. 
 
 ## <a name="monitoring-and-reporting"></a>Figyelés és jelentéskészítés
-Sokszor az azonosítási rendszer is segíthetnek a kezdeti megfelelőségvizsgálati fázis főleg, ha a rendszer rendelkezik beépített naplózási és jelentéskészítési lehetőségeket. Az első vizsgálat során a rendszergazdának a gyanús tevékenységek azonosítása érdekében képesnek kell lennie, vagy a rendszer automatikusan alapú előre konfigurált feladatok eseményindító képesnek kell lennie. Számos tevékenység jelezheti a lehetséges támadások, azonban más esetekben a rosszul konfigurált rendszer vezethet a vakriasztások számát egy behatolás-észlelési rendszerben. 
+Az identitáskezelő rendszer sokszor segíthet a kezdeti értékelési fázisban is, főként akkor, ha a rendszer beépített naplózási és jelentéskészítési képességekkel rendelkezik. A kezdeti értékelés során a rendszergazdának képesnek kell lennie a gyanús tevékenység azonosítására, vagy a rendszernek képesnek kell lennie arra, hogy egy előre konfigurált feladat alapján automatikusan elindítsa azt. Számos tevékenység lehetséges támadásra utalhat, más esetekben azonban egy rosszul konfigurált rendszer számos hamis pozitív eredményt eredményezhet egy behatolásérzékelő rendszerben. 
 
-Az identitáskezelési rendszerekkel kell segítséget nyújt a rendszergazdáknak, hogy azonosítsa és a jelentés az adott gyanús tevékenységek. Általában ezek a technikai követelmények teljesíthetők az összes rendszerek figyelése, és a egy jelentéskészítő képesség, amely képes kiemelni a potenciális fenyegetéseket. A hibrid identitáskezelési megoldás incidensválasz-követelmények figyelembe vételével alakítsa használja az alábbi kérdésekre:
+Az identitáskezelő rendszernek segítenie kell az informatikai rendszergazdákat a gyanús tevékenységek azonosításában és jelentésében. Általában ezek a műszaki követelmények az összes rendszer figyelésével és olyan jelentési képességgel rendelkeznek, amely kiemelheti a potenciális fenyegetéseket. Az alábbi kérdések segítségével megtervezheti hibrid identitáskezelési megoldását, miközben figyelembe veszi az incidensek válaszának követelményeit:
 
-* A vállalat rendelkezik olyan biztonsági incidensmegoldási helyen?
-  * Ha igen, az aktuális identitáskezelési rendszerének használja a folyamat részeként?
-* A vállalatának van szüksége, azonosíthatja a gyanús bejelentkezési kísérletet a felhasználók különböző eszközökön?
-* A vállalatának van szüksége észleli a potenciális feltört felhasználói hitelesítő adatokat?
-* A vállalatának van szüksége a felhasználó hozzáférési és művelet naplózását?
-* Vállalatának meg kell ismernie, amikor a felhasználó alaphelyzetbe állítja a jelszavát?
+* A vállalat a biztonsági incidensekre adott válasza van érvényben?
+  * Ha igen, a jelenlegi identitáskezelő rendszer a folyamat részeként használatos?
+* A vállalatnak azonosítania kell a felhasználók gyanús bejelentkezési kísérleteit különböző eszközökön?
+* A vállalatnak fel kell mutatnia a potenciálisan feltört felhasználó hitelesítő adatait?
+* A vállalatnak naplóznia kell a felhasználók hozzáférését és tevékenységét?
+* A vállalatnak tudnia kell, hogy a felhasználó mikor állítja vissza a jelszavát?
 
 ## <a name="policy-enforcement"></a>Szabályzatbetartatás
-Kárelhárítási és a kockázat csökkentésének-fázis során fontos gyorsan csökkentheti a támadás tényleges és lehetséges hatásait. Vesz igénybe, a művelet ezen a ponton végezhet egy kisebb és nagyobb egy közötti különbség. A pontos válasz a szervezet és a szolgálatára áll, amely a támadás természetének függ. Ha a kezdeti felmérést kötni, hogy egy fiókot feltörték, szüksége lesz a szabályzatban, ez a fiók blokkolása. Ez csupán egy példa, ahol az identitáskezelési rendszerekkel jól használható. Segítséget nyújtanak a hibrid identitáskezelési megoldás tervezése során figyelembe véve, hogyan házirendek érvénybe reagálni a folyamatban lévő incidens használja az alábbi kérdésekre:
+A kárelhárítás és a kockázatcsökkentési fázis során fontos, hogy gyorsan csökkentse a támadás tényleges és lehetséges hatásait. Ez a cselekvés, hogy meg fogja tenni ezen a ponton lehet, hogy a különbség a kisebb és a nagyobb egyet. A pontos válasz a szervezettől és a támadás jellegétől függ. Ha a kezdeti értékelés arra a következtetésre jutott, hogy egy fiók feltörték, akkor a fiók letiltásához házirendet kell érvényesítenie. Ez csak egy példa, ahol az identitáskezelő rendszer lesz kihasználva. Az alábbi kérdések segítségével megtervezheti hibrid identitáskezelési megoldását, miközben figyelembe veszi, hogy a szabályzatok hogyan lesznek érvényesítve egy folyamatban lévő incidensre való reagáláshoz:
 
-* A vállalat rendelkezik házirendek felhasználók számára a hozzáférés a hálózati szükség esetén?
-  * Ha igen, nem az aktuális megoldáshoz integrálhatja a hibrid identitáskezelési rendszerekkel, amelyek elfogadják kívánja?
-* A vállalatának van szüksége a karanténba helyezett felhasználók esetében a feltételes hozzáférés kényszerítésére? 
+* Rendelkezik a vállalat olyan házirendjeivel, amelyek lehetővé teszik a felhasználók hozzáférését a hálózathoz, ha szükséges?
+  * Ha igen, a jelenlegi megoldás integrálható a hibrid identitáskezelő rendszerrel, amelyet alkalmazni fog?
+* A vállalatnak ki kell kényszerítenie a feltételes hozzáférést a karanténban lévő felhasználók számára? 
 
 > [!NOTE]
-> Ügyeljen arra, hogy minden válaszról feljegyzéseket, és megismerheti a válaszok indokait. [Data protection stratégia kidolgozása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) halad keresztül a rendelkezésre álló lehetőségek előnyeit és hátrányait az egyes lehetőségek.  A fenti melyik leginkább megfelelő lehetőséget az üzleti kiválaszthatja kérdések megválaszolása szükséges.
+> Minden válaszról készítsen feljegyzéseket, és ismerje meg a válaszok indokait. [Határozza meg az adatvédelmi stratégia](plan-hybrid-identity-design-considerations-data-protection-strategy.md) megy át a rendelkezésre álló lehetőségeket és előnyeit / hátrányait az egyes lehetőségeket.  A kérdések megválaszolásával kiválaszthatja, hogy melyik lehetőség felel meg legjobban üzleti igényeinek.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-[Data protection stratégia kidolgozása](plan-hybrid-identity-design-considerations-data-protection-strategy.md)
+[Adatvédelmi stratégia meghatározása](plan-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## <a name="see-also"></a>Lásd még:
-[Kialakítási szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
 

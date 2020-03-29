@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect nem szinkronizálja a attribútum hibaelhárítása |} A Microsoft Docs
-description: Ez a témakör a hibaelhárítási feladat használatával attribútum-szinkronizálás hibáinak elhárítása a lépéseit ismerteti.
+title: Az Azure AD Connectben nem szinkronizált attribútumok hibáinak elhárítása | Microsoft Dokumentumok"
+description: Ez a témakör az attribútumok szinkronizálásával kapcsolatos problémák hibaelhárítási lépéseit ismerteti a hibaelhárítási feladattal.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,79 +16,79 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a639b14c9313179816f6376aa0c5642a645ea344
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60455969"
 ---
-# <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Az Azure AD Connect nem szinkronizálja a attribútum hibaelhárítása
+# <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Az Azure AD Connect ben nem szinkronizált attribútumok – problémamegoldás
 
-## <a name="recommended-steps"></a>**Javasolt lépések**
+## <a name="recommended-steps"></a>**Ajánlott lépések**
 
-Mielőtt attribútum szinkronizálásával kapcsolatos problémák kivizsgálása, tekintsük át, a **az Azure AD Connect** szinkronizálása folyamatban:
+Az attribútumok szinkronizálásával kapcsolatos problémák vizsgálata előtt ismerjük meg az **Azure AD Connect** szinkronizálási folyamatát:
 
-  ![Az Azure AD Connect szinkronizálási folyamat](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
+  ![Az Azure AD Connect szinkronizálási folyamata](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
 
 ### <a name="terminology"></a>**Terminológia**
 
-* **CS:** Összekötő-térben database egyik táblájába.
-* **MV:** Metaverzum, database egyik táblájába.
-* **AD:** Active Directory
+* **CS:** Összekötő szóköz, egy tábla az adatbázisban.
+* **MV:** Metaverse, egy tábla az adatbázisban.
+* **Hirdetés:** Active Directory
 * **AAD:** Azure Active Directory
 
-### <a name="synchronization-steps"></a>**Szinkronizálásának lépései**
+### <a name="synchronization-steps"></a>**Szinkronizálási lépések**
 
-* Importálás az AD-ből: Active Directory-objektumok az Active Directory Tanúsítványszolgáltatások való importálás.
+* Importálás AD-ből: Az Active Directory-objektumok az Active Directory active directory n-szolgáltatásokba kerülnek.
 
-* Importálás az aad-ből: Az Azure Active Directory-objektumokat hozza be AAD-CS.
+* Importálás AAD-ból: Az Azure Active Directory-objektumok az AAD CS-be kerülnek.
 
-* Szinkronizálás: **Bejövő szinkronizálási szabályok** és **kimenő szinkronizálási szabály** futnak sorrendjében prioritása kisebb, magasabb. Tekintse meg a szinkronizálási szabályokat, nyissa meg a **szinkronizálási Szabályszerkesztővel** az asztali alkalmazásokétól. A **bejövő szinkronizálási szabályok** adatok biztosítható a CS MV az. A **kimenő szinkronizálási szabály** helyez át adatokat MV CS.
+* Szinkronizálás: A **bejövő szinkronizálási szabályok** és **a kimenő szinkronizálási szabályok** a prioritási sorrendben futnak alacsonyabbtól magasabbig. A szinkronizálási szabályok megtekintéséhez nyissa meg a **Szinkronizálási szabályok szerkesztőjét** az asztali alkalmazásokból. A **bejövő szinkronizálási szabályok** adatokat hoznak a CS-ről az MV-re. A **kimenő szinkronizálási szabályok** áthelyezik az adatokat az MV-ről a CS-re.
 
-* Exportálása az ad-hez: Után futtatnia kell a szinkronizálást, objektumok exportálása az AD CS **Active Directory**.
+* Exportálás AD szolgáltatásba: A szinkronizálás futtatása után az objektumok exportálása az Active Directory tartományi szolgáltatásokból az **Active Directoryba**történik.
 
-* Exportálás az aad-be: Az AAD-CS programból exportált objektumokat után futtatnia kell a szinkronizálást, **Azure Active Directory**.
+* Exportálás AAD-ba: A szinkronizálás futtatása után az objektumok exportálása az AAD CS-ből az **Azure Active Directoryba**történik.
 
-### <a name="step-by-step-investigation"></a>**Részletes vizsgálat**
+### <a name="step-by-step-investigation"></a>**Lépésről lépésre vizsgálat**
 
-* Megkezdjük a keresést, hogy a **Metaverzum** , és tekintse meg a attribútum leképezés a cél forrásból.
+* Elkezdjük a keresést a **Metaverse-ből,** és megnézzük az attribútum leképezését a forrástól a célig.
 
-* Indítsa el a **Synchronization Service Managert** az asztali alkalmazásokétól alább látható módon:
+* Indítsa el **a Szinkronizálási szolgáltatáskezelőt** az asztali alkalmazásokból, az alábbiak szerint:
 
-  ![Indítsa el a Synchronization Service Managert](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
+  ![Szinkronizálási szolgáltatáskezelő indítása](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
 
-* Az a **Synchronization Service Managert**, jelölje be a **keresés a Metaverzumban**válassza **objektumtípus szerint hatókör**, jelölje ki az objektumot egy attribútum használatával, majd kattintson a **Keresési** gombra.
+* A **Szinkronizálási szolgáltatáskezelőben**jelölje ki a **Metaverzum-keresést**, válassza a **Hatókör objektumtípus szerint**lehetőséget, jelölje ki az objektumot egy attribútum használatával, majd kattintson a **Keresés** gombra.
 
-  ![Keresés a Metaverzumban](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
+  ![Metaverzum keresése](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
 
-* Kattintson duplán a található az objektum a **Metaverzum** keresés az összes hozzá tartozó attribútumok megtekintéséhez. Kattintson a a **összekötők** fülre, és tekintse meg az összes kapcsolódó objektumot a **Összekötőterek**.
+* Kattintson duplán a **metaverzum-keresésben** található objektumra az összes attribútum megtekintéséhez. Az **Összekötők** fülre kattintva megnézheti a megfelelő objektumot az összes **összekötőtérben.**
 
-  ![Összekötő Metaverzum-objektum](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
+  ![Metaverzum-objektum összekötők](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
 
-* Kattintson duplán a **Active Directory-összekötő** megtekintéséhez a **Összekötőterében** attribútumok. Kattintson a a **előzetes** , a következő párbeszédpanelen kattintson a gombra a **készítése előzetes** gombra.
+* Kattintson duplán az **Active Directory-összekötőre** az **összekötőtér** jellemzőinek megtekintéséhez. Kattintson az **Előnézet** gombra, a következő párbeszédpanelen kattintson az **Előnézet létrehozása** gombra.
 
-  ![Összekötő terület attribútumok](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Összekötő tér jellemzői](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
-* Ezután kattintson a a **importálási Attribútumfolyam**, ez jelzi, hogy az attribútumok folyamat **Active Directory Összekötőterében** , a **Metaverzum**. **A szabály szinkronizálása** az oszlopban látható, amely **szinkronizálási szabály** járult hozzá ezt az attribútumot. **Az adatforrás** az oszlopban látható, hogy az attribútumok alapján a **Összekötőterében**. **Metaverzum-attribútum** az oszlopban látható, hogy az attribútumok a **Metaverzum**. Az attribútum nem szinkronizálja az itt megkeresheti. Ha nem találja itt, az attribútumot, akkor ez nincs hozzárendelve, és létre kell hoznia az új egyéni **szinkronizálási szabály** való leképezéséhez az attribútum.
+* Most kattintson az **Import Attribútum folyamat**, ez azt mutatja, áramlását attribútumok Active Directory Connector **Space** a **Metaverse**. **A Szinkronizálási szabály** oszlop azt mutatja, hogy melyik **szinkronizálási szabály** járult hozzá az attribútumhoz. **Az Adatforrás** oszlop az összekötőtér attribútumait jeleníti **meg.** **A Metaverse attribútum** oszlop a **Metaverzum attribútumait**jeleníti meg. Itt megkeresheti a nem szinkronizált attribútumot. Ha itt nem találja az attribútumot, akkor ez nincs leképezve, és új egyéni **szinkronizálási szabályt** kell létrehoznia az attribútum leképezéséhez.
 
-  ![Összekötő terület attribútumok](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
+  ![Összekötő tér jellemzői](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
 
-* Kattintson a a **Attribútumfolyam exportálása** az Attribútumfolyam a megtekintéséhez a bal oldali panelen **Metaverzum** vissza **Active Directory Összekötőterében** használatával  **Kimenő szinkronizálási szabály**.
+* Kattintson az **Attribútumfolyamat exportálása** elemre a bal oldali ablaktáblában a **Metaverzumból** az **Active Directory összekötő területére** a **kimenő szinkronizálási szabályok**használatával.
 
-  ![Összekötő terület attribútumok](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Összekötő tér jellemzői](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
-* Ehhez hasonlóan megtekintheti a **Azure Active Directory Összekötőterében** objektumra, és hozhat létre a **előzetes** megtekintéséhez az Attribútumfolyam **Metaverzum** , a **Összekötőterében** és fordítva, ezzel a módszerrel segítségével megvizsgálhatja, hogy miért nem szinkronizálja a attribútum.
+* Hasonlóképpen megtekintheti az **Azure Active Directory-összekötő tér** objektumot, és **létrehozhatja** az előnézetet a **Metaverzumból** az **összekötő térbe** irányuló attribútum-áramlás megtekintéséhez, és fordítva, így megvizsgálhatja, hogy egy attribútum miért nem szinkronizál.
 
 ## <a name="recommended-documents"></a>**Ajánlott dokumentumok**
-* [Az Azure AD Connect szinkronizálása: Műszaki fogalmak](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Az Azure AD Connect szinkronizálása: Az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Az Azure AD Connect szinkronizálása: A deklaratív üzembehelyezési kifejezések ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Az Azure AD Connect szinkronizálása: A felhasználók, csoportok és kapcsolatok ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Az Azure AD Connect szinkronizálása: Árnyékattribútumok](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
+* [Azure AD Connect szinkronizálás: Az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+* [Azure AD Connect szinkronizálás: A deklaratív kiépítés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
+* [Azure AD Connect szinkronizálás: A deklaratív létesítési kifejezések ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+* [Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
+* [Azure AD Connect szinkronizálás: A felhasználók, csoportok és kapcsolattartók ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
+* [Azure AD Connect szinkronizálás: Árnyékattribútumok](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md).
-- [Mi a hibrid identitás? ](whatis-hybrid-identity.md).
+- [Mi a hibrid identitás?](whatis-hybrid-identity.md)

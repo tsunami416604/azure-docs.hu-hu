@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozatú eszköz webalkalmazás-proxy beállítása |} A Microsoft Docs
-description: 'Útmutató: a StorSimple-eszköz webproxy-beállításainak konfigurálása a storsimple-höz készült Windows PowerShell segítségével.'
+title: Webproxy beállítása a StorSimple 8000 sorozatú eszközhöz | Microsoft dokumentumok
+description: Megtudhatja, hogy a StorSimple-eszköz webproxy-beállításainak konfigurálásához hogyan konfigurálhatja a StorSimple-eszköz webproxy-beállításait a Windows PowerShell for StorSimple használatával.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,145 +15,145 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65204250"
 ---
-# <a name="configure-web-proxy-for-your-storsimple-device"></a>A StorSimple eszköz webproxy konfigurálása
+# <a name="configure-web-proxy-for-your-storsimple-device"></a>Webproxy konfigurálása a StorSimple eszközhöz
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag ismerteti a storsimple-höz készült Windows PowerShell segítségével a konfigurálása és a StorSimple-eszköz webproxy-beállításainak megjelenítése. A webproxy beállításai a StorSimple-eszköz segítségével a felhőbe való kommunikáció során. Proxy-webkiszolgáló hozzáadása egy másik réteget jelent, obsahu filtrování gyorsítótár egyszerű sávszélességre van szükség, vagy az analytics még akkor is kapcsolatban szolgál.
+Ez az oktatóanyag bemutatja, hogyan használhatja a Windows PowerShell for StorSimple-t a StorSimple-eszköz webproxy-beállításainak konfigurálásához és megtekintéséhez. A webproxy-beállításokat a StorSimple eszköz használja a felhővel való kommunikáció során. A webproxy-kiszolgáló egy újabb biztonsági réteg hozzáadására, a tartalom szűrésére, a gyorsítótárra, a sávszélesség-követelmények enyhítésére vagy akár az elemzéssel kapcsolatos segítségre szolgál.
 
-Az útmutató az ebben az oktatóanyagban csak a StorSimple 8000 sorozatú fizikai eszközök vonatkozik. A StorSimple Cloud Appliance (8010 és 8020) a webproxy konfigurálása nem támogatott.
+Az oktatóanyagban szereplő útmutató csak a StorSimple 8000 sorozatú fizikai eszközökre vonatkozik. Web proxy konfiguráció nem támogatott a StorSimple Cloud Appliance (8010 és 8020).
 
-Webalkalmazás-proxy van egy _választható_ a StorSimple eszköz konfigurációs. Webalkalmazás-proxy csak a Windows PowerShell használatával konfigurálhatja a storsimple-höz készült. A konfiguráció a következőképpen történik egy kétlépéses folyamat:
+A webproxy a StorSimple-eszköz _választható_ konfigurációja. A webproxy t csak a StorSimple Windows PowerShell használatával konfigurálhatja. A konfiguráció két lépésből áll a következőképpen:
 
-1. Először konfigurálja a webproxy beállításai a telepítővarázsló vagy a Windows Powershellen keresztül a StorSimple-parancsmagok.
-2. Ezután engedélyezze a StorSimple-parancsmagok Windows Powershellen keresztül konfigurált webes proxybeállításait.
+1. Először konfigurálja a webproxy-beállításokat a telepítő varázsló vagy a Windows PowerShell StorSimple parancsmagok.
+2. Ezután engedélyezze a konfigurált webproxy-beállításokat a Windows PowerShell storSimple parancsmagok.
 
-A webproxy konfigurálása befejezése után megtekintheti a konfigurált webes proxykiszolgáló beállításait a Microsoft Azure StorSimple-Eszközkezelő szolgáltatás és a Windows PowerShell storsimple-höz készült.
+A webproxy-konfiguráció befejezése után megtekintheti a konfigurált webproxy-beállításokat a Microsoft Azure StorSimple Eszközkezelő szolgáltatásban és a Windows PowerShell for StorSimple szolgáltatásban.
 
-Ebben az oktatóanyagban elolvasásával fogja tudni:
+Elolvasása után ez a bemutató, akkor képes lesz arra, hogy:
 
-* Webalkalmazás-proxy telepítése varázsló és a parancsmagok segítségével konfigurálhatja.
-* Webalkalmazás-proxy parancsmagok használatával engedélyezheti.
-* Megtekintheti a webproxy beállításai az Azure Portalon.
-* Webproxy konfigurálása során felmerülő hibák elhárítása.
+* Konfigurálja a webproxyt a telepítővarázsló és a parancsmagok használatával.
+* Webproxy engedélyezése parancsmagok használatával.
+* Tekintse meg a webproxy-beállításokat az Azure Portalon.
+* Hibák elhárítása a webproxy-konfiguráció során.
 
 
-## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows PowerShell segítségével a webalkalmazás-proxy konfigurálása
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>Webproxy konfigurálása a Windows PowerShell segítségével a StorSimple számára
 
-A következők egyikét használja, konfigurálja a webproxy beállításai:
+Az alábbi beállítások egyikével konfigurálhatja a webproxy-beállításokat:
 
-* A telepítő varázsló végigvezeti a konfigurációs lépéseket.
-* A storsimple-höz készült Windows PowerShell-parancsmagok.
+* A telepítő varázsló végigvezeti a konfigurációs lépéseken.
+* Parancsmagok a Windows PowerShell storsimple.Cmdlets in Windows PowerShell for StorSimple.
 
-Mindkét módszerhez a következő szakaszokban a következő cikkben.
+E módszerek mindegyikét a következő szakaszok ismertetik.
 
-## <a name="configure-web-proxy-via-the-setup-wizard"></a>A beállítási varázslóban a webproxy konfigurálása
+## <a name="configure-web-proxy-via-the-setup-wizard"></a>Webproxy konfigurálása a telepítővarázslón keresztül
 
-Használja a varázsló végigvezeti a webalkalmazás-proxy konfigurációs lépései. A következő lépésekkel a webproxy konfigurálása az eszközön.
+A beállítási varázsló segítségével végigvezetheti a webproxy-konfiguráció lépésein. Hajtsa végre az alábbi lépéseket a webproxy konfigurálásához az eszközön.
 
-#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>A beállítási varázslóban a webalkalmazás-proxy konfigurálása
+#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Webproxy konfigurálása a telepítővarázslón keresztül
 
-1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel** , és adja meg a **eszköz rendszergazdai jelszava**. Írja be a következő parancsot a telepítő varázsló munkamenet indításához:
+1. A soros konzol menüjében **Log in with full access** válassza az 1. **device administrator password** A telepítővarázsló munkamenetének elindításához írja be a következő parancsot:
    
     `Invoke-HcsSetupWizard`
-2. Ha először használja a telepítővarázsló számára az eszköz regisztrálása, konfigurálja a szükséges hálózati beállításokat, amíg el nem éri a webproxy konfigurálása szeretne. Ha az eszköz már regisztrálva van, fogadja el a konfigurált hálózati beállításokat, amíg el nem éri a webproxy konfigurálása. A telepítővarázslóban, amikor konfigurálja a webproxy beállításai kéri, írja be a **Igen**.
-3. A a **webes Proxy URL-címe**, adja meg az IP-cím vagy teljes tartománynevét (FQDN), a proxy-webkiszolgáló és a TCP-port száma, amelyek az eszköz a felhőn ügyfélböngészőkkel szeretné. Használja a következő formátumot:
+2. Ha ez az első alkalom, hogy a telepítővarázslót használja az eszköz regisztrációjához, az összes szükséges hálózati beállítást be kell állítania, amíg el nem éri a webproxy-konfigurációt. Ha az eszköz már regisztrálva van, fogadja el az összes konfigurált hálózati beállítást, amíg el nem éri a webproxy-konfigurációt. A telepítővarázslóban, amikor a rendszer a webproxy-beállítások konfigurálását kéri, írja be az **Igen**parancsot.
+3. A **webproxy URL-címéhez**adja meg a webproxy-kiszolgáló IP-címét vagy teljes tartománynevét (FQDN), valamint azt a TCP-portszámot, amelyet az eszköznek használnia kell a felhővel való kommunikáció során. Használja az alábbi formátumot:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
-    Alapértelmezés szerint a 8080-as TCP-port száma van megadva.
-4. Válassza ki a hitelesítéstípust, **NTLM**, **alapszintű**, vagy **None**. Alapszintű van a legkevésbé biztonságos hitelesítés esetében a proxykiszolgáló-konfigurációt. NT LAN Manager (NTLM) egy rendkívül biztonságos és összetett hitelesítési protokoll, amely egy háromutas üzenetkezelő rendszer (néha négy további integritás kötelező esetén) a felhasználó hitelesítéséhez. Az alapértelmezett hitelesítési NTLM. További információkért lásd: [alapszintű](https://hc.apache.org/httpclient-3.x/authentication.html) és [NTLM-hitelesítés](https://hc.apache.org/httpclient-3.x/authentication.html). 
+    Alapértelmezés szerint a TCP-port száma 8080.
+4. Válassza ki a hitelesítéstípusát **NTLM,** **Basic**vagy **Nincs**néven. Az alapszintű a proxykiszolgáló konfigurációjának legkevésbé biztonságos hitelesítése. Az NT LAN Manager (NTLM) egy rendkívül biztonságos és összetett hitelesítési protokoll, amely háromutas üzenetküldő rendszert használ (néha négyet, ha további integritásra van szükség) a felhasználó hitelesítéséhez. Az alapértelmezett hitelesítés az NTLM. További információ: [Basic](https://hc.apache.org/httpclient-3.x/authentication.html) and [NTLM authentication](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
-   > **A StorSimple-Eszközkezelő szolgáltatásban az eszköz figyelési diagramok nem működnek, ha ez a alapvető, vagy az NTLM-hitelesítés engedélyezve van az eszköz a proxykiszolgáló beállításait. A figyelési diagramok működik győződjön meg arról, hogy a hitelesítés a NONE értékre van állítva kell.**
+   > **A StorSimple Eszközkezelő szolgáltatásban az eszközfigyelési diagramok nem működnek, ha az alapszintű vagy NTLM-hitelesítés engedélyezve van az eszköz proxykiszolgáló-konfigurációjában. Ahhoz, hogy a figyelési diagramok működjenek, biztosítania kell, hogy a hitelesítés nincs legyen.**
   
-5. Ha engedélyezte a hitelesítést, adjon meg egy **webes proxykiszolgáló felhasználónév** és a egy **webes Proxy jelszava**. Is kell a jelszavát.
+5. Ha engedélyezte a hitelesítést, adja meg **a webproxy-felhasználónevet** és a **webproxy-jelszót.** A jelszót is meg kell erősítenie.
    
-    ![Configure Web Proxy On StorSimple Device1](./media/storsimple-configure-web-proxy/IC751830.png)
+    ![Webproxy konfigurálása StorSimple eszközön1](./media/storsimple-configure-web-proxy/IC751830.png)
 
-Ha az eszköz első alkalommal regisztrál, a regisztráció folytatásához. Ha az eszköz már regisztrálva van, a varázsló kilép. A konfigurált beállítások lesznek mentve.
+Ha első alkalommal regisztrálja az eszközt, folytassa a regisztrációval. Ha az eszköz már regisztrálva van, a varázsló kilép. A program menti a beállított beállításokat.
 
-Webalkalmazás-proxy engedélyezve van. Folytassa a [engedélyezése a webalkalmazás-proxy](#enable-web-proxy) lépést, és lépjen közvetlenül [megtekintése a webproxy beállításai az Azure Portalon](#view-web-proxy-settings-in-the-azure-portal).
+A webproxy engedélyezve van. A Webproxy engedélyezése lépést [kihagyhatja,](#enable-web-proxy) és közvetlenül [az Azure Portalon megtekintheti a webproxy-beállításokat.](#view-web-proxy-settings-in-the-azure-portal)
 
-## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>A webproxy konfigurálása Windows PowerShell StorSimple-parancsmagok
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>Webproxy konfigurálása a Windows PowerShell használatával StorSimple-parancsmagokhoz
 
-Konfigurálja a webproxy beállításai másik módszere van a Windows PowerShell StorSimple-parancsmagok használatával. A következő lépésekkel a webproxy konfigurálása.
+A webproxy-beállítások konfigurálásának másik módja a Windows PowerShell storSimple-parancsmagok. A webproxy konfigurálásához hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-configure-web-proxy-via-cmdlets"></a>A webalkalmazás-proxyn keresztül parancsmagok konfigurálása
-1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Amikor a rendszer kéri, adja meg a **eszköz rendszergazdai jelszava**. Az alapértelmezett jelszó az `Password1`.
+#### <a name="to-configure-web-proxy-via-cmdlets"></a>Webproxy konfigurálása parancsmagokon keresztül
+1. A soros konzol menüjében **Log in with full access**válassza az 1. Amikor a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát.** Az alapértelmezett `Password1`jelszó a .
 2. A parancssorba írja be a következőt:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
    
-    Adja meg, és erősítse meg a jelszót, amikor a rendszer kéri.
+    Adja meg és erősítse meg a jelszót, amikor a rendszer kéri.
    
-    ![Configure Web Proxy On StorSimple Device3](./media/storsimple-configure-web-proxy/IC751831.png)
+    ![Webproxy konfigurálása StorSimple eszközön3](./media/storsimple-configure-web-proxy/IC751831.png)
 
-A webalkalmazás-proxy van konfigurálva, és engedélyezni kell.
+A webproxy most konfigurálva van, és engedélyezni kell.
 
-## <a name="enable-web-proxy"></a>Webalkalmazás-proxy engedélyezése
+## <a name="enable-web-proxy"></a>Webproxy engedélyezése
 
-Webalkalmazás-proxy alapértelmezés szerint le van tiltva. Miután konfigurálta a webproxy beállításai a StorSimple eszközön, a storsimple-höz készült Windows PowerShell használatával engedélyezze a webproxy beállításai.
+A webproxy alapértelmezés szerint le van tiltva. Miután konfigurálta a webproxy beállításait a StorSimple-eszközön, a Windows PowerShell for StorSimple használatával engedélyezze a webproxy-beállításokat.
 
 > [!NOTE]
-> **Ebben a lépésben nincs szükség, ha a varázsló a webproxy konfigurálása. Webalkalmazás-proxy automatikusan alapértelmezés szerint engedélyezve van a telepítő varázsló munkamenet után.**
+> **Ez a lépés nem szükséges, ha a telepítővarázslóval konfigurálta a webproxyt. A webproxy alapértelmezés szerint automatikusan engedélyezve van a telepítővarázsló munkamenete után.**
 
 
-Windows PowerShell-bővítménye engedélyezése az eszközön a webalkalmazás-proxy hajtsa végre az alábbi lépéseket:
+A webproxy engedélyezéséhez hajtsa végre az alábbi lépéseket a Windows PowerShell for StorSimple rendszerben:
 
-#### <a name="to-enable-web-proxy"></a>Webalkalmazás-proxy engedélyezése
-1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Amikor a rendszer kéri, adja meg a **eszköz rendszergazdai jelszava**. Az alapértelmezett jelszó az `Password1`.
+#### <a name="to-enable-web-proxy"></a>Webproxy engedélyezése
+1. A soros konzol menüjében **Log in with full access**válassza az 1. Amikor a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát.** Az alapértelmezett `Password1`jelszó a .
 2. A parancssorba írja be a következőt:
    
     `Enable-HcsWebProxy`
    
-    Most már engedélyezte a webproxy konfigurálása a StorSimple eszközön.
+    Most engedélyezte a webproxy-konfigurációt a StorSimple eszközön.
    
-    ![Configure Web Proxy On StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
+    ![Webproxy konfigurálása StorSimple eszközön4](./media/storsimple-configure-web-proxy/IC751832.png)
 
-## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Megtekintheti a webproxy beállításai az Azure Portalon
+## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Webproxy-beállítások megtekintése az Azure Portalon
 
-A webproxy beállításai vannak konfigurálva a Windows PowerShell felületen, és nem módosítható a portálon. Azonban megtekintheti a konfigurált beállítások a portálon. A következő lépésekkel megtekintéséhez a webalkalmazás-proxy.
+A webproxy-beállítások a Windows PowerShell-felületen keresztül konfigurálhatók, és nem módosíthatók a portálon belülről. Ezeket a beállításokat azonban megtekintheti a portálon. A webproxy megtekintéséhez hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-view-web-proxy-settings"></a>Webes proxy beállításainak megtekintése
-1. Navigáljon a **StorSimple-Eszközkezelő szolgáltatás > eszközök**. Válassza ki, és kattintson egy eszközre, és folytassa a **eszközbeállítások > hálózati**.
+#### <a name="to-view-web-proxy-settings"></a>Webproxy-beállítások megtekintése
+1. Nyissa meg a **StorSimple Eszközkezelő szolgáltatás > Eszközök**. Jelöljön ki egy eszközt, majd kattintson az **Eszközbeállítások > Hálózat**elemre.
 
-    ![Kattintson a hálózat](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
+    ![Kattintson a Hálózat gombra](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
-2. Az a **hálózati beállítások** panelen kattintson a **webalkalmazás-proxy** csempére.
+2. A **Hálózati beállítások** panelen kattintson a **webproxy** csempére.
 
-    ![Kattintson a webalkalmazás-proxy](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
+    ![Kattintson a webproxyra](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
 
-3. Az a **webalkalmazás-proxy** panelen tekintse át a konfigurált webes proxykiszolgáló beállításait a StorSimple-eszköz.
+3. A **webproxy** panelen tekintse át a storSimple-eszközön beállított webproxy-beállításokat.
    
-    ![Nézet webproxy beállításai](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
+    ![Webproxy-beállítások megtekintése](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
 
 
-## <a name="errors-during-web-proxy-configuration"></a>Hibák a webproxy konfigurálása során
+## <a name="errors-during-web-proxy-configuration"></a>Hibák a webproxy-konfiguráció során
 
-Ha a webproxy beállításai helytelenül vannak konfigurálva, hibaüzenetek jelennek meg a felhasználó a Windows PowerShell storsimple-höz készült. Az alábbi táblázat ismerteti azokat a hibaüzenetek, azok okát és a javasolt műveleteket.
+Ha a webproxy beállításai helytelenül vannak konfigurálva, hibaüzenetek jelennek meg a felhasználó számára a Windows PowerShell for StorSimple rendszerben. Az alábbi táblázat ismerteti a hibaüzenetek némelyikét, azok valószínű okait és az ajánlott műveleteket.
 
-| Soros nem. | HRESULT hiba kódja | Probléma lehetséges kiváltó okai | Javasolt művelet |
+| Sorozatszám | HRESULT hibakód | Lehetséges kiváltó ok | Javasolt művelet |
 |:--- |:--- |:--- |:--- |
-| 1. |0x80070001 |A passzív vezérlő parancsot futtatja, és nem tud kommunikálni az aktív vezérlőn. |Az aktív vezérlőn futtassa a parancsot. Futtassa a parancsot a passzív vezérlő, hogy el kell hárítania a kapcsolat a passzív és aktív vezérlő. Ha a kapcsolat megszakad, Support kell eljárniuk. |
-| 2. |0x800710dd - műveletazonosító érvénytelen nem |Proxy beállításai nem támogatottak a StorSimple Cloud Appliance eszközzel. |Proxy beállításai nem támogatottak a StorSimple Cloud Appliance eszközzel. Ezek csak a StorSimple fizikai eszköz konfigurálható. |
-| 3. |0x80070057 - paraméter érvénytelen |A proxybeállítások megadott paraméterek egyike érvénytelen. |Nincs megadva az URI-t a megfelelő formátumban. Használja a következő formátumot: `http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
-| 4. |0x800706BA - RPC-kiszolgáló nem érhető el |Okozza-e az alábbi lehetőségek közül:</br></br>Fürt nem áll be. </br></br>DataPath szolgáltatás nem fut.</br></br>A parancs futtatása a passzív vezérlő, és nem tud kommunikálni az aktív vezérlőn. |Győződjön meg arról, hogy a fürt működik és datapath szolgáltatás fut a Microsoft Support léphet.</br></br>Az aktív vezérlőn futtassa a parancsot. Ha meg szeretné futtassa a parancsot a passzív vezérlő, biztosítania kell, hogy a passzív vezérlő képes-e kommunikálni az aktív vezérlőn. Ha a kapcsolat megszakad, Support kell eljárniuk. |
-| 5. |0X800706be - RPC-hívása sikertelen volt |Fürt nem működik. |Győződjön meg arról, hogy a fürt működik a Microsoft Support léphet. |
-| 6. |0x8007138f - fürt az erőforrás nem található |Platform szolgáltatás fürt erőforrás nem található. Ez akkor fordulhat elő, amikor a telepítés nem volt megfelelő. |Szükség lehet, hogy visszaállítsa a gyári beállításokat az eszközön. Szükség lehet a platform-erőforrás létrehozásához. A további lépésekhez kérjen segítséget a Microsoft ügyfélszolgálatától. |
-| 7. |0x8007138c - fürt erőforrás nincs online állapotban |Platform vagy datapath fürt erőforrásai nem érhetők el. |Forduljon a Microsoft Support, győződjön meg arról, hogy online állapotban-e az datapath és a platform-szolgáltatási erőforrásnak. |
+| 1. |0x80070001 |A parancs a passzív vezérlőből fut, és nem tud kommunikálni az aktív vezérlővel. |Futtassa a parancsot az aktív vezérlőn. A parancs passzív vezérlőből történő futtatásához ki kell javítania a kapcsolatot a passzívról az aktív vezérlőre. Ha a kapcsolat megszakadt, meg kell támadnia a Microsoft támogatási szolgálatát. |
+| 2. |0x800710dd - A műveletazonosító érvénytelen |A StorSimple Cloud Appliance proxybeállításai nem támogatottak. |A StorSimple Cloud Appliance proxybeállításai nem támogatottak. Ezek csak storSimple fizikai eszközön konfigurálhatók. |
+| 3. |0x80070057 - Érvénytelen paraméter |A proxybeállításokhoz megadott paraméterek egyike érvénytelen. |Az URI nem megfelelő formátumban van megadva. A következő formátumot használja:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 4. |0x800706ba - RPC szerver nem érhető el |A kiváltó ok az alábbiak egyike:</br></br>A fürt nem áll fel. </br></br>A Datapath szolgáltatás nem fut.</br></br>A parancs passzív vezérlőből fut, és nem tud kommunikálni az aktív vezérlővel. |Vegye igénybe a Microsoft támogatási szolgálatát annak érdekében, hogy a fürt működik, és a datapath szolgáltatás futjon.</br></br>Futtassa a parancsot az aktív vezérlőből. Ha a parancsot a passzív vezérlőből szeretné futtatni, gondoskodnia kell arról, hogy a passzív vezérlő képes legyen kommunikálni az aktív vezérlővel. Ha a kapcsolat megszakadt, meg kell támadnia a Microsoft támogatási szolgálatát. |
+| 5. |0x800706be – Az RPC-hívás sikertelen |A fürt nem. |Vegye igénybe a Microsoft támogatási szolgálatát, és győződjön meg arról, hogy a fürt fel van kapcsolva. |
+| 6. |0x8007138f – a fürterőforrás nem található |A platformszolgáltatás fürterőforrása nem található. Ez akkor fordulhat elő, ha a telepítés nem volt megfelelő. |Előfordulhat, hogy gyári beállítások visszaállítását kell végrehajtania az eszközön. Előfordulhat, hogy létre kell hoznia egy platformerőforrást. A további lépésekhez kérjen segítséget a Microsoft ügyfélszolgálatától. |
+| 7. |0x8007138c – A fürterőforrás nem online |A platform- vagy datapath-fürterőforrások nincsenek online állapotban. |Lépjen kapcsolatba a Microsoft támogatási szolgálatával, és győződjön meg arról, hogy a datapath és a platformszolgáltatás erőforrása online állapotban van. |
 
 > [!NOTE]
-> * Hibaüzenetek a fenti lista tehát nem tekinthető teljesnek.
-> * A webproxy beállításai kapcsolódó hibák nem jelenik meg az Azure Portalon a StorSimple-Eszközkezelő szolgáltatásban. A webalkalmazás-proxy probléma van a konfiguráció befejezése után, ha az eszköz állapota változik **Offline** a klasszikus portálon. |}
+> * A hibaüzenetek fenti listája nem teljes körű.
+> * A webproxy-beállításokkal kapcsolatos hibák nem jelennek meg az Azure Portalon a StorSimple Eszközkezelő szolgáltatásban. Ha a konfiguráció befejezése után probléma merül fel a webproxyval kapcsolatban, az eszköz állapota **offline** állapotra változik a klasszikus portálon.|
 
-## <a name="next-steps"></a>További lépések
-* Problémákat tapasztal az eszköz üzembe helyezésének vagy webes proxy beállításainak konfigurálása során, tekintse meg [a StorSimple eszköz üzembe helyezési hibáinak elhárítása](storsimple-troubleshoot-deployment.md).
-* További információk a StorSimple-Eszközkezelő szolgáltatás használata, [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Következő lépések
+* Ha bármilyen problémát tapasztal az eszköz telepítése vagy a webproxy-beállítások konfigurálása során, olvassa el [a StorSimple-eszköz telepítésének elhárítása című témakört.](storsimple-troubleshoot-deployment.md)
+* A StorSimple Eszközkezelő szolgáltatás használatáról a [StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez című](storsimple-8000-manager-service-administration.md)oldalon olvashat.
 

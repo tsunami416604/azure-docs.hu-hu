@@ -1,6 +1,6 @@
 ---
-title: Kötetek kezelése Azure NetApp fájlokkal |} A Microsoft Docs
-description: Kötetek kezelése az Azure Files-NetApp használatával módját ismerteti.
+title: Kötetek kezelése az Azure NetApp-fájlok használatával | Microsoft dokumentumok
+description: Ez a témakör ismerteti, hogyan kezelheti a köteteket az Azure NetApp Files szolgáltatás használatával.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60254745"
 ---
-# <a name="manage-volumes-by-using-azure-netapp-files"></a>Kötetek kezelése az Azure Files-NetApp használatával
-A kötet megtekintése, frissítése vagy törlése a kötet kezelheti. 
+# <a name="manage-volumes-by-using-azure-netapp-files"></a>Kötetek kezelése az Azure NetApp-fájlokkal
+A köteteket a kötet megtekintésével, frissítésével vagy törlésével kezelheti. 
 
-Ha törölni szeretné egy köteten, a kötet összes alárendelt objektumára először törölnie kell. 
+Ha törölni szeretne egy kötetet, először törölnie kell a kötet összes alobjektumát. 
 
 1.  Kattintson a **Kötetek** panelre a Kapacitáskészletek kezelése panelen. 
-2.  Használja a **Tallózás kötetek** nézetet, megtekintheti, frissíteni vagy törölni a meglévő kötetek. 
+2.  A **Kötetek tallózása** nézetben megtekintheti, frissítheti vagy törölheti a meglévő köteteket. 
 
 
 

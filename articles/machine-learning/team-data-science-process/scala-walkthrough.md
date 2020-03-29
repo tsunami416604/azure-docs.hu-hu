@@ -1,6 +1,6 @@
 ---
-title: Adatelemzés a Scala és Spark használata az Azure-on – a csoportos adatelemzési folyamat
-description: Hogyan Scala használható a Spark méretezhető MLlib és a Spark ML-csomagokat az Azure HDInsight Spark-fürtön a felügyelt gépi tanulási feladatok.
+title: Adatelemzés a Scala és a Spark használatával az Azure-ban – Csapatadat-elemzési folyamat
+description: A Scala használata felügyelt gépi tanulási feladatokhoz a Spark méretezhető MLlib és Spark ML-csomagokkal egy Azure HDInsight Spark-fürtön.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,82 +12,82 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76716761"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
-Ez a cikk bemutatja, hogyan Scala használata a Spark méretezhető MLlib és a Spark ML-csomagokat az Azure HDInsight Spark-fürtön a felügyelt gépi tanulási feladatok. Végigvezeti az [adatelemzési folyamatot](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)alkotó feladatokon: az adatok betöltését és feltárását, a vizualizációt, a szolgáltatások mérnöki használatát, a modellezést és a modell felhasználását. A cikk a modellek között logisztikai és lineáris regresszió, véletlenszerű erdők és színátmenet súlyozott fákat (GBTs), két általános felügyelt gépi tanulási feladatok mellett:
+Ez a cikk bemutatja, hogyan használhatja a Scala felügyelt gépi tanulási feladatok a Spark méretezhető MLlib és Spark ML-csomagok egy Azure HDInsight Spark-fürtön. Végigvezeti az [adatelemzési folyamatot](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)alkotó feladatokon: adatbetöltés és feltárás, vizualizáció, szolgáltatástervezés, modellezés és modellfelhasználás. A cikkben a modellek közé tartozik a logisztikai és lineáris regresszió, véletlenszerű erdők és gradiens-boosted fák (GBTs), amellett, hogy két közös felügyelt gépi tanulási feladatok:
 
-* Regressziós problémaként: előrejelzés taxi útnak tipp összeg ($)
-* Bináris osztályozás: előrejelzés tipp vagy taxi útnak nincs tip (1/0)
+* Regressziós probléma: A borravaló összegének előrejelzése ($) egy taxiútra
+* Bináris osztályozás: Tipp vagy tipp (1/0) előrejelzése taxikiránduláshoz
 
-A modellezési folyamat szükséges betanítása és kiértékelése egy teszt adatkészlet, és pontossága vonatkozó metrikákat. Ebből a cikkből tudhat meg ezek a modellek tárolása az Azure Blob storage-ban és a pontszám, és a prediktív teljesítmény kiértékelése. Ez a cikk emellett ismerteti, hogyan optimalizálható a modellek kereszt-ellenőrzési és a hyper-paraméter kezdik használatával összetettebb témákra. Az adatok, használja a 2013 NYC taxi utazást és diszkont adatkészlet a Githubon elérhető mintát.
+A modellezési folyamat betanítást és értékelést igényel egy tesztadatkészleten és a releváns pontossági mutatókon. Ebben a cikkben megtudhatja, hogyan tárolhatja ezeket a modelleket az Azure Blob storage-ban, és hogyan pontozhatja és értékelheti a prediktív teljesítményüket. Ez a cikk a modellek keresztérvényesítési és hiperparaméter-söprés használatával történő optimalizálásának speciális témaköreit is ismerteti. A felhasznált adatok egy példa a 2013 NYC taxi út és a viteldíj adatkészlet elérhető GitHub.
 
-A [Scala](https://www.scala-lang.org/), a Java virtuális gépen alapuló nyelv, integrálja az objektumorientált és funkcionális nyelvi fogalmakat. Egy méretezhető nyelv, amely kiválóan alkalmas elosztott feldolgozás a felhőben, és futtat az Azure-alapú Spark-fürtök.
+[Scala](https://www.scala-lang.org/), a java virtuális gépen alapuló nyelv, integrálja az objektum-orientált és funkcionális nyelvi fogalmakat. Ez egy skálázható nyelv, amely kiválóan alkalmas a felhőben elosztott feldolgozáshoz, és az Azure Spark-fürtökön fut.
 
-A [Spark](https://spark.apache.org/) egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást Big Data elemzési alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességeket adja meg a megfelelő választás az iteratív algoritmusaival együtt a machine learning és a graph számítások. A [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) csomag olyan, az adatkockákra épülő magas szintű API-k egységes készletét biztosítja, amelyek segítségével gyakorlati gépi tanulási folyamatokat hozhat létre és hangolhat össze. A [MLlib](https://spark.apache.org/mllib/) a Spark skálázható gépi tanulási könyvtára, amely modellezési képességeket biztosít az elosztott környezet számára.
+[A Spark](https://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozási keretrendszer, amely támogatja a memórián belüli feldolgozást a big data-elemzési alkalmazások teljesítményének növelése érdekében. A Spark feldolgozómotor a sebesség, a könnyű használat és a kifinomult analitika érdekében készült. A Spark memórián belüli elosztott számítási képességei jó választássá teszik a gépi tanulás és a gráfszámítások iteratív algoritmusai számára. A [spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) csomag az adatkeretekre épülő magas szintű API-k egységes készletét biztosítja, amelyek segítségével gyakorlati gépi tanulási folyamatokat hozhat létre és hangolhat be. [Az MLlib](https://spark.apache.org/mllib/) a Spark méretezhető gépi tanulási könyvtára, amely modellezési képességeket hoz létre ebben az elosztott környezetben.
 
-A [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) a nyílt forráskódú Spark Azure által üzemeltetett ajánlata. Emellett támogatja a Jupyter Scala notebookok a Spark-fürtön, és futtathatja a Spark SQL interaktív lekérdezések átalakítása, szűrését és az Azure Blob storage szolgáltatásban tárolt adatok megjelenítése. Scala kódrészletek ebben a cikkben, amelyek a megoldásokat, és megjelenítheti az adatokat a megfelelő grafikon megjelenítése futtatása a Jupyter notebooks, a Spark-fürtökön telepített. Ezek a témakörök modellezési lépéseiben kódot, amely bemutatja, hogyan betanításához, kiértékelése, mentése és felhasználását a modell különböző típusú.
+[A HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) a nyílt forráskódú Spark Azure-üzemeltetett ajánlata. Támogatja a Jupyter Scala-jegyzetfüzeteket a Spark-fürtön, és a Spark SQL interaktív lekérdezések futtatásával átalakíthatja, szűrheti és vizualizálhatja az Azure Blob storage-ban tárolt adatokat. A scala kódrészletek ebben a cikkben, amely a megoldásokat, és a megfelelő telkek megjelenítéséhez a Spark-fürtökre telepített Jupyter-jegyzetfüzetekben futó adatok megjelenítéséhez. Az ezekben a témakörökben leírt modellezési lépések kóddal rendelkeznek, amely bemutatja, hogyan lehet betanítása, kiértékelése, mentése és felhasználása az egyes típusú modellek.
 
-A beállítási lépéseket, és ebben a cikkben kód kapacitások Azure HDInsight 3.4-es Spark 1.6-os. Azonban a jelen cikkben és a [Scala Jupyter Notebookban](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) szereplő kód általános, és minden Spark-fürtön működnie kell. Lehet, hogy a fürt beállítása és kezelése a lépések kissé eltérő, az alábbiakhoz képest ez a cikk a HDInsight Spark nem használata.
+Ebben a cikkben a beállítási lépések és a kód az Azure HDInsight 3.4 Spark 1.6-hoz. Azonban a kódot ebben a cikkben és a [Scala Jupyter notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) általános, és működnie kell minden Spark-fürtön. A fürt beállítási és felügyeleti lépései némileg eltérhetnek a cikkben láthatótól, ha nem a HDInsight Sparkot használja.
 
 > [!NOTE]
-> Egy olyan témakörben, amely bemutatja, hogyan használhatja a Pythont a Scala helyett a teljes adatelemzési folyamat feladatainak elvégzéséhez, lásd: [adatelemzés a Spark on Azure HDInsight](spark-overview.md).
+> Ha egy témakört, amely bemutatja, hogyan használhatja a Python helyett a Scala feladatok teljes körű adatelemzési folyamat, olvassa el [az Adatelemzés a Spark használatával az Azure HDInsight.](spark-overview.md)
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Rendelkeznie kell egy Azure-előfizetéssel. Ha még nem rendelkezik ilyennel, szerezze be [az ingyenes Azure-próbaverziót](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Szüksége lesz egy Azure HDInsight 3.4-es Spark 1.6-os-fürtön az alábbi eljárások. Fürt létrehozásához tekintse [meg az első lépések: Apache Spark létrehozása az Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)című témakör utasításait. Állítsa be a fürt típusát és verzióját a **fürt típusának kiválasztása** menüben.
+* Rendelkeznie kell egy Azure-előfizetéssel. Ha még nem rendelkezik ilyen, [kap egy Ingyenes Azure-próbaverziót.](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
+* Az alábbi eljárások végrehajtásához egy Azure HDInsight 3.4 Spark 1.6-fürtre van szükség. Fürt létrehozásához olvassa el az Első lépések című témakörutasításait: [Az Apache Spark létrehozása az Azure HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)című témakörben. Állítsa be a fürt típusát és verzióját a **Fürttípus kiválasztása** menüben.
 
-![HDInsight fürt konfigurálása](./media/scala-walkthrough/spark-cluster-on-portal.png)
+![HDInsight-fürttípus-konfiguráció](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
 > [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 > 
 > 
 
-A New York-i utazási adatokról és a Spark-fürtön található Jupyter-jegyzetfüzetből származó kódok végrehajtásával kapcsolatos útmutatásért tekintse meg a megfelelő részeket az [adatelemzés az Azure HDInsight-on való használatának áttekintése](spark-overview.md)című témakörben.  
+A nyc-i taxiút-adatok leírását és a Spark-fürt Jupyter-jegyzetfüzetéből származó kód végrehajtására vonatkozó utasításokat az [Azure HDInsight Spark használatával az adatelemzés áttekintése](spark-overview.md)című témakörmegfelelő szakaszaiban találja.  
 
-## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Hajtsa végre a Spark-fürtön lévő Jupyter notebook Scala-kód
-Jupyter notebook az Azure portálról indíthatja el. A Spark-fürtöt az irányítópulton található, és kattintson rá a felügyelet lapon adja meg a fürt. Ezután kattintson a **fürt irányítópultok**elemre, majd kattintson a **Jupyter notebook** elemre a Spark-fürthöz társított jegyzetfüzet megnyitásához.
+## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Scala-kód végrehajtása egy Jupyter-jegyzetfüzetből a Spark-fürtön
+Jupyter-jegyzetfüzetet az Azure Portalról indíthat el. Keresse meg a Spark-fürtaz irányítópulton, és kattintson rá a fürt felügyeleti lapjának megadásához. Ezután kattintson **a Fürtirányítópultok**elemre , majd a **Jupyter-jegyzetfüzet** elemre a Spark-fürthöz társított jegyzetfüzet megnyitásához.
 
-![Fürt irányítópultja és Jupyter-notebookok](./media/scala-walkthrough/spark-jupyter-on-portal.png)
+![Fürtirányítópult és Jupyter-jegyzetfüzetek](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-A Jupyter-jegyzetfüzeteket a https://&lt;clustername&gt;. azurehdinsight.net/jupyter címen is elérheti. Cserélje le a *clustername* nevet a fürt nevére. A jelszót a rendszergazdai fiók, a Jupyter notebookok elérésére van szüksége.
+A Jupyter-jegyzetfüzetek https://&lt;fürtnév&gt;.azurehdinsight.net/jupyter. Cserélje le a *fürtnevét* a fürt nevére. A Jupyter-jegyzetfüzetek eléréséhez a rendszergazdai fiók jelszavára van szükség.
 
-![Nyissa meg a fürt nevét a Jupyter notebookok](./media/scala-walkthrough/spark-jupyter-notebook.png)
+![Ugrás a Jupyter-jegyzetfüzetek rekedése a fürtnevének használatával](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-A **Scala** lehetőség kiválasztásával megtekintheti a PySpark API-t használó előre csomagolt jegyzetfüzetek néhány példáját tartalmazó könyvtárat. A "a" ipynb notebook, amely tartalmazza a következő Spark-csomagokhoz tartozó kódrészleteket, a a [githubon](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)érhető el: a felderítési modellezés és pontozás.
+Válassza a **Scala** lehetőséget egy olyan könyvtár megtekintéséhez, amely néhány példát tartalmaz a PySpark API-t használó előre csomagolt jegyzetfüzetekre. A Scala.ipynb notebook használatával történő feltárási modellezés és pontozás, amely a Spark-témakörök ezen csomagjának kódmintáit tartalmazza, elérhető a [GitHubon.](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)
 
-A Jupyter Notebook server közvetlenül a githubból a notebook tölthet fel a Spark-fürtön. A Jupyter kezdőlapján kattintson a **feltöltés** gombra. A Fájlkezelőben illessze be a Scala notebookhoz tartozó GitHub (nyers tartalom) URL-címét, majd kattintson a **Megnyitás**gombra. A Scala-jegyzetfüzetek a következő URL-címen érhető el:
+A jegyzetfüzetet közvetlenül a GitHubról töltheti fel a Jupyter notebook-kiszolgálóra a Spark-fürtön. A Jupyter kezdőlapján kattintson a **Feltöltés gombra.** A fájlkezelőben illessze be a Scala-jegyzetfüzet GitHub-URL-címét, majd kattintson a **Megnyitás**gombra. A Scala-jegyzetfüzet a következő URL-címen érhető el:
 
-[Feltárás – modellezés és pontozás – a-Scala. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
+[Feltárás-modellezés-és pontozási-használat-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Telepítő: Spark-kódtárak, előre a Spark és a Hive-környezetek és a Spark magics
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Beállítás: Előre beállított Spark- és Hive-környezetek, Spark-varázslatok és Spark-könyvtárak
 ### <a name="preset-spark-and-hive-contexts"></a>Előre beállított Spark- és Hive-környezetek
     # SET THE START TIME
     import java.util.Calendar
     val beginningTime = Calendar.getInstance().getTime()
 
 
-A Spark kernelekkel, a Jupyter notebookok rendelkezik előre beállított környezeteket. Nem kell explicit módon állítsa be a Spark vagy a Hive-környezetek az alkalmazás használatának megkezdése előtt fejleszt. Az előre beállított környezetekről a következők:
+A Jupyter-jegyzetfüzetekhez mellékelt Spark kernelek előre beállított környezetekkel rendelkeznek. Nem kell explicit módon beállítani a Spark vagy a Hive környezetben, mielőtt elkezdené a munkát a fejlődő alkalmazással. Az előre beállított környezetek a következők:
 
-* SparkContext `sc`
-* HiveContext `sqlContext`
+* `sc`SparkContext-hez
+* `sqlContext`HiveContext esetén
 
-### <a name="spark-magics"></a>A Spark magics
-A Spark kernel néhány előre definiált "varázslatot" biztosít, amelyek a `%%`hívható speciális parancsok. A következő Kódminták két ezeket a parancsokat kell használni.
+### <a name="spark-magics"></a>Szikravarázslatok
+A Spark kernel néhány előre definiált "varázslatot" biztosít, `%%`amelyek speciális parancsok, amelyeket a segítségével hívhat meg. Ezek közül kettő a következő kódmintákban használatos.
 
-* `%%local` megadja, hogy a következő sorokban lévő kód helyileg lesz végrehajtva. A kód érvényes Scala-kódot kell lennie.
-* `%%sql -o <variable name>` egy kaptár-lekérdezést hajt végre `sqlContext`on. Ha a `-o` paraméter át lett adva, a lekérdezés eredménye a `%%local` Scala-környezetben, Spark-adatkeretként marad.
+* `%%local`megadja, hogy a következő sorokban lévő kód helyileg kerülvégrehajtásra. A kódnak érvényes Scala-kódnak kell lennie.
+* `%%sql -o <variable name>`Hive-lekérdezést hajt `sqlContext`végre. Ha `-o` a paraméter átlett adva, a lekérdezés `%%local` eredménye megmarad a Scala környezetben Spark-adatkeretként.
 
-A Jupyter-jegyzetfüzetek és az előre definiált "Magics" kernelekkel kapcsolatos további információkért, amelyeket a `%%` hív meg (például `%%local`), tekintse [meg a Jupyter notebookokhoz elérhető kerneleket HDInsight Spark Linux-fürtökkel a HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+A Jupyter-jegyzetfüzetek kerneleiről és azok előre definiált `%%` "varázslatairól", `%%local`amelyekkel (például ) rendelkezik , a [HDInsight-alapú Jupyter-jegyzetfüzetek számára elérhető Kernelek](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)című témakörben talál további információt.
 
 ### <a name="import-libraries"></a>Könyvtárak importálása
-A Spark MLlib és más könyvtárat a következő kód használatával kell importálni.
+Importálja a Sparkot, az MLlib-et és más tárakat, amelyekre szüksége lesz a következő kód használatával.
 
     # IMPORT SPARK AND JAVA LIBRARIES
     import org.apache.spark.sql.SQLContext
@@ -124,21 +124,21 @@ A Spark MLlib és más könyvtárat a következő kód használatával kell impo
 
 
 ## <a name="data-ingestion"></a>Adatfeldolgozás
-Az adatelemzési folyamat első lépése az elemzési adatok betöltését. Az adatok külső vagy származó rendszerek helyét, az adatok feltárására és modellezés környezetbe tenné. Ez a cikk az adatok betöltését, egy csatlakoztatott 0,1 % példa a taxi utazást és diszkont fájl (.tsv-fájlként tárolja). Az adatok feltárására és modellezési környezet Spark. Ez a szakasz tartalmazza a kódot, és hajtsa végre az alábbi lépéseket:
+Az adatelemzési folyamat első lépése az elemezni kívánt adatok betöltése. Az adatokat külső forrásokból vagy rendszerekből hozza létre, ahol azok az adatok feltárási és modellezési környezetében találhatók. Ebben a cikkben a betöltési adatok a taxiút és a viteldíjfájl (.tsv fájlként tárolt) 0,1%-os mintája. Az adatok feltárása és modellezési környezet Spark. Ez a szakasz a következő feladatsorozat elvégzéséhez szükséges kódot tartalmazza:
 
-1. Állítsa be az adatokat és a modell storage elérési utak.
-2. Olvassa el a bemeneti adatkészletben (.tsv-fájlként tárolja).
-3. Az adatok sémát, és tisztítsa meg az adatokat.
-4. Megtisztított adatkeretek létrehozása, és a memóriában gyorsítótárazza azt.
-5. Az adatok regisztrálása kontext SQLContext ideiglenes táblaként.
-6. A tábla lekérdezése, és az eredmények importálhat adatkeretek.
+1. Címtárelérési utak beállítása az adatok és a modelltárolás hoz.
+2. Olvasás a bemeneti adatkészletben (.tsv fájlként tárolva).
+3. Adjon meg egy sémát az adatokhoz, és tisztítsa meg az adatokat.
+4. Hozzon létre egy megtisztított adatkeretet, és gyorsítótárazza a memóriában.
+5. Regisztrálja az adatokat ideiglenes táblaként az SQLContext környezetben.
+6. A tábla lekérdezése és az eredmények importálása adatkeretbe.
 
-### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>A tárolási helyek elérési utak beállítása az Azure Blob storage-ban
-A Spark olvashat és írhat az Azure Blob storage. A Spark használata a meglévő adatokat feldolgozni, és ezután az eredmények tárolásához újra a Blob storage-ban.
+### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>Könyvtárelérési utak beállítása a tárolási helyekhez az Azure Blob storage-ban
+A Spark képes olvasni és írni az Azure Blob storage-ba. A Spark segítségével feldolgozhatja a meglévő adatokat, majd az eredményeket újra tárolhatja a Blob storage-ban.
 
-Szeretné menteni a modellek vagy a fájlok Blob storage-ban, szüksége megfelelően adja meg az elérési útját. A Spark-fürthöz csatolt alapértelmezett tárolóra a `wasb:///`kezdetű útvonal használatával hivatkozhat. A `wasb://`használatával más helyszínekre hivatkozhat.
+A Blob storage-ba történő modellek vagy fájlok mentéséhez megfelelően meg kell adnia az elérési utat. Hivatkozzon a Spark-fürthöz csatlakoztatott alapértelmezett tárolóra `wasb:///`a programmal kezdődő elérési út használatával. Hivatkozzon más `wasb://`helyekre a használatával.
 
-Az alábbi kódmintában szeretné menteni fogja a modellt kell olvasni a bemeneti adatokat és az elérési út a Blob storage, amely csatlakozik a Spark-fürt helyét adja meg.
+A következő kódminta határozza meg az olvasandó bemeneti adatok helyét, és a Spark-fürthöz csatolt Blob storage elérési útját, ahol a modell mentésre kerül.
 
     # SET PATHS TO DATA AND MODEL FILE LOCATIONS
     # INGEST DATA AND SPECIFY HEADERS FOR COLUMNS
@@ -150,7 +150,7 @@ Az alábbi kódmintában szeretné menteni fogja a modellt kell olvasni a bemene
     val modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/";
 
 
-### <a name="import-data-create-an-rdd-and-define-a-data-frame-according-to-the-schema"></a>Adatok importálása, hozzon létre egy RDD és -adatok, keret a séma szerint
+### <a name="import-data-create-an-rdd-and-define-a-data-frame-according-to-the-schema"></a>Adatok importálása, RDD létrehozása és adatkeret definiálása a séma szerint
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
 
@@ -224,12 +224,12 @@ Az alábbi kódmintában szeretné menteni fogja a modellt kell olvasni a bemene
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A cella futási idejét: 8 másodperc.
+8 másodperc a cella futtatására.
 
-### <a name="query-the-table-and-import-results-in-a-data-frame"></a>Lekérdezése a tábla és a egy adatkeretben eredmények importálása
-Ezután lekérdezése a tábla diszkont, az utasok és a tipp adatokat; sérült és lakatlan adatai; szűrése és nyomtathatják ki több sort.
+### <a name="query-the-table-and-import-results-in-a-data-frame"></a>A tábla lekérdezése és az eredmények importálása adatkeretben
+Ezután kérdezze meg a táblát a viteldíj, az utas és a tipp adatairól; kiszűrni a sérült és a külső adatokat; és nyomtasson több sort.
 
     # QUERY THE DATA
     val sqlStatement = """
@@ -245,39 +245,39 @@ Ezután lekérdezése a tábla diszkont, az utasok és a tipp adatokat; sérült
     # SHOW ONLY THE TOP THREE ROWS
     sqlResultsDF.show(3)
 
-**Kimeneti**
+**Kimeneti:**
 
-| fare_amount | passenger_count | tip_amount | Formabontó |
+| fare_amount | passenger_count | tip_amount | Megbillent |
 | --- | --- | --- | --- |
 |        13.5 |1.0 |2.9 |1.0 |
 |        16.0 |2.0 |3.4 |1.0 |
-|        10.5 |2.0 |1.0 |1.0 |
+|        10,5 |2.0 |1.0 |1.0 |
 
-## <a name="data-exploration-and-visualization"></a>Az adatok feltárása és képi megjelenítés
-A Spark lekérte az adatokat, miután az adatelemzési folyamat következő lépése az adatáttekintési és vizualizációs keresztül az adatok mélyebb betekintést nyerni. Ebben a szakaszban a taxik adatait az SQL-lekérdezések vizsgálata. Ezt követően importálja az eredményeket egy adatkeretbe, hogy az automatikus vizualizáció Jupyter funkció használatával kirajzolja a célzott változókat és a vizuális ellenőrzéshez szükséges jövőbeli funkciókat.
+## <a name="data-exploration-and-visualization"></a>Adatok feltárása és vizualizációja
+Miután az adatokat a Sparkba hozta, az adatelemzési folyamat következő lépése az adatok mélyebb megértése a feltárás és a vizualizáció révén. Ebben a szakaszban sql-lekérdezések segítségével vizsgálhatja meg a taxi adatokat. Ezután importálja az eredményeket egy adatkeretbe a célváltozók és a vizuális ellenőrzés lehetséges funkcióinak ábrázolásához az automatikus vizualizációs Jupyter funkció használatával.
 
-### <a name="use-local-and-sql-magic-to-plot-data"></a>Használja a helyi és SQL Magic Quadrant adatok ábrázolásához.
-Alapértelmezés szerint minden futtatása a Jupyter notebook Fragment kódu kimenete érhető el, amelyek a feldolgozó csomópontok a rendszer megőrzi a munkamenet környezetében. Ha a munkavégző csomópontok számára minden számításhoz szeretne utat menteni, és ha a számításhoz szükséges összes adat helyileg elérhető a Jupyter-kiszolgáló csomópontján (amely a fő csomópont), a `%%local` Magic használatával futtathatja a kódrészletet a Jupyter-kiszolgálón.
+### <a name="use-local-and-sql-magic-to-plot-data"></a>Adatok nyomtatása helyi és SQL-mágiával
+Alapértelmezés szerint a Jupyter-jegyzetfüzetből futtatott kódrészlet kimenete elérhető a munkavégző csomópontokon megőrzött munkamenet környezetében. Ha menteni szeretne egy utat a munkavégző csomópontokhoz minden számításhoz, és ha a számításhoz szükséges összes adat elérhető helyileg a Jupyter kiszolgáló csomóponton `%%local` (amely a fő csomópont), a varázsoló segítségével futtathatja a kódrészletet a Jupyter-kiszolgálón.
 
-* **SQL Magic** (`%%sql`). A HDInsight Spark-kernel támogatja az egyszerű beágyazott HiveQL-lekérdezéseket az kontext SQLContext. A (`-o VARIABLE_NAME`) argumentum megőrzi az SQL-lekérdezés kimenetét a Jupyter-kiszolgálón található pandák adatkeretként. Ez a beállítás azt jelenti, hogy a kimenet a helyi módban lesz elérhető.
-* `%%local` **Magic**. A `%%local` Magic helyileg futtatja a kódot a Jupyter-kiszolgálón, amely a HDInsight-fürt fő csomópontja. A `%%local` Magic szolgáltatás általában a `%%sql` Magic és a `-o` paraméter együttes használatával használható. A `-o` paraméter helyileg megőrizheti az SQL-lekérdezés kimenetét, majd `%%local` a Magic a következő kódrészletet aktiválja, hogy helyileg fusson a helyileg megőrzött SQL-lekérdezések kimenetén.
+* **SQL** magic`%%sql`( ). A HDInsight Spark kernel támogatja az SQLContext egyszerű, inline HiveQL lekérdezéseit. A`-o VARIABLE_NAME`( ) argumentum a Jupyter-kiszolgálón pandaadatkeretként megőrzi az SQL-lekérdezés kimenetét. Ez a beállítás azt jelenti, hogy a kimenet helyi módban lesz elérhető.
+* `%%local`**varázslat**. A `%%local` varázslat helyileg futtatja a kódot a Jupyter-kiszolgálón, amely a HDInsight-fürt fő csomópontja. Jellemzően, akkor `%%local` használja a `%%sql` mágia együtt `-o` a mágia a paraméter. A `-o` paraméter helyileg megmaradna az SQL-lekérdezés kimenetén, majd `%%local` a magic elindítja a következő kódrészletet, amely helyileg fut az SQL-lekérdezések helyileg megőrzött kimenetén.
 
-### <a name="query-the-data-by-using-sql"></a>Az adatok lekérdezése SQL használatával
-Ez a lekérdezés lekéri a taxi lelassítja diszkont összeg, utas száma és tipp összege.
+### <a name="query-the-data-by-using-sql"></a>Adatok lekérdezése sql használatával
+Ez a lekérdezés lekéri a taxi utak a viteldíj összege, az utasok száma, és a tipp összege.
 
     # RUN THE SQL QUERY
     %%sql -q -o sqlResults
     SELECT fare_amount, passenger_count, tip_amount, tipped FROM taxi_train WHERE passenger_count > 0 AND passenger_count < 7 AND fare_amount > 0 AND fare_amount < 200 AND payment_type in ('CSH', 'CRD') AND tip_amount > 0 AND tip_amount < 25
 
-A következő kódban a `%%local` Magic létrehoz egy helyi adatkeretet, a sqlResults. SqlResults segítségével matplotlib használatával jeleníti meg.
+A következő kódban `%%local` a mágia létrehoz egy helyi adatkeretet, az sqlResults-et. Az sqlResults segítségével matplotlib használatával is megrajzolhatja.
 
 > [!TIP]
-> Helyi Magic Quadrant ebben a cikkben több alkalommal van használva. Ha az adatkészlet túl nagy, adjon a memóriában való létrehozásához, amelyek illeszkednek adatok keret helyi minta.
+> A helyi varázslatot többször is használják ebben a cikkben. Ha az adatkészlet nagy, például hozzon létre egy olyan adatkeretet, amely elfér a helyi memóriában.
 > 
 > 
 
-### <a name="plot-the-data"></a>Az adatok ábrázolása
-Dolgozunk a Python-kód után az adathalmaz Pandas adatok keretet másként a helyi környezetben is.
+### <a name="plot-the-data"></a>Az adatok nyomtatása
+A Python-kód használatával is ábrázolhatja, miután az adatkeret a helyi környezetben, mint a Pandas adatkeret.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -287,15 +287,15 @@ Dolgozunk a Python-kód után az adathalmaz Pandas adatok keretet másként a he
     sqlResults
 
 
- A Spark-kernel automatikusan elérhetővé (HiveQL) SQL-lekérdezések kimenetének, a kód futtatása után. Többféle típusú vizualizációt is választhat:
+ A Spark kernel automatikusan vizualizálja az SQL (HiveQL) lekérdezések kimenetét a kód futtatása után. Többféle vizualizáció közül választhat:
 
 * Tábla
 * Torta
-* Sor
+* Vonal
 * Terület
 * Sáv
 
-Az adatok ábrázolása a kód itt látható:
+Itt a kód, hogy ábrázolja az adatokat:
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -327,25 +327,25 @@ Az adatok ábrázolása a kód itt látható:
     plt.show()
 
 
-**Kimeneti**
+**Kimeneti:**
 
-![Összeg hisztogram tipp](./media/scala-walkthrough/plot-tip-amount-histogram.png)
+![Tipp összege hisztogram](./media/scala-walkthrough/plot-tip-amount-histogram.png)
 
-![Tipp összeg utas száma szerint](./media/scala-walkthrough/plot-tip-amount-by-passenger-count.png)
+![Tipp összege utasszám szerint](./media/scala-walkthrough/plot-tip-amount-by-passenger-count.png)
 
-![Tipp összeg diszkont értékkel](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
+![Tipp összege viteldíj összeg szerint](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
 
-## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>Funkciók létrehozása és funkciók átalakítása, és ezután előkészítheti az adatokat a modellezési funkciók be
-Fa-alapú modellezési függvények a Spark ML és MLlib akkor készítse elő a cél- és a funkciók különböző technikák, például a dobozolás, indexelő, egy gyakori kódolási és vektorizációt használatával. Az alábbiakban az ebben a szakaszban szereplő eljárásokat:
+## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>Funkciók létrehozása és a funkciók átalakítása, majd az adatok előkészítése a modellezési függvényekbe történő bevitelhez
+A Spark ML és Az MLlib faalapú modellezési függvényeihez különböző technikák, például binning, indexelés, egy forró kódolás és vektorizálás használatával kell előkészítenie a cél- és funkciókat. Itt vannak az eljárások, hogy kövesse ebben a szakaszban:
 
-1. Hozzon létre egy új szolgáltatást **dobozolási** órával a forgalmi idő gyűjtőbe.
-2. Alkalmazzon **indexelést és egy gyors kódolást** a kategorikus funkciókra.
-3. **Kóstolja meg és ossza szét az adathalmazt** képzésbe és tesztelési frakcióba.
-4. **Adja meg a betanítási változót és a funkciókat**, majd hozzon létre indexelt vagy egy gyors kódolású betanítást, és tesztelje a bemeneti feliratú pont rugalmas elosztott adatkészleteit (RDD) vagy adatkereteket.
-5. A gépi tanulási modellekhez bemenetként használandó **funkciók és célok automatikus kategorizálása és vektorizálhatja** .
+1. Hozzon létre egy új funkciót **úgy, hogy** az órákat forgalmi időgyűjtőkbe binningeli.
+2. **Indexelés és egy gyors kódolás** alkalmazása kategorikus funkciókra.
+3. **Minta és felosztás a adathalmazt** betanítási és tesztelési törtekre.
+4. **Adja meg a képzési változót és a funkciókat,** majd hozzon létre indexelt vagy egy gyorsan kódolt betanítási és tesztelési bemeneti címkével ellátott pont rugalmas elosztott adatkészletek (RDDs) vagy adatkeretek.
+5. Automatikusan **kategorizálhatja és vektorizálja** a gépi tanulási modellek bemenetként használható jellemzőit és céljait.
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Hozzon létre egy új szolgáltatás be forgalom idő gyűjtők dobozolási órák száma alapján
-Ez a kód bemutatja, hogyan hozhat létre egy új szolgáltatás dobozolási órák száma alapján forgalom idő gyűjtőket, és hogyan gyorsítótárazza a memóriában az eredményül kapott adathalmaz. Ahol rdd-k és az adatok keretek használt ismételten, gyorsítótárazás javított végrehajtási időpontok vezet. Ennek megfelelően a rdd-k és adatkeretek fogja gyorsítótárazni, több fázisból áll, a következő eljárások.
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Új funkció létrehozása az órák forgalmi időgyűjtőkbe való berakásával
+Ez a kód bemutatja, hogyan hozhat létre egy új funkciót az órák forgalmi időgyűjtőkbe való beolvasásával és az eredményül kapott adatkeret gyorsítótárazásával a memóriában. Ha az RDD-ket és az adatkereteket ismételten használják, a gyorsítótárazás jobb végrehajtási időket eredményez. Ennek megfelelően az RDD-ket és az adatkereteket a következő eljárások több szakaszában gyorsítótárazza.
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     val sqlStatement = """
@@ -365,14 +365,14 @@ Ez a kód bemutatja, hogyan hozhat létre egy új szolgáltatás dobozolási ór
     taxi_df_train_with_newFeatures.count()
 
 
-### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>Indexelés és a egy gyakori kódolási kategorikus funkciók
-A modellezés és MLlib függvényekben kategorikus indexelve vagy használata előtt kódolású bemeneti adatokat a funkciókat. Ez a szakasz bemutatja, hogyan index, vagy a modellezési funkciók be kategorikus funkciói kódolása.
+### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>A kategorikus funkciók indexelése és egy forró kódolása
+Az MLlib modellezési és előrejelzési funkcióinak használatához a kategorikus bemeneti adatokkal rendelkező funkciókat a használat előtt indexelni vagy kódolni kell. Ez a szakasz bemutatja, hogyan indexelheti vagy kódolhatja a modellezési függvények kategorikus funkcióit.
 
-Index, vagy a modellek kódolása a modelltől függően más-más módon kell. Például logisztikai és lineáris regressziós modellek van szükség, egy gyakori kódolást. Például három kategóriába szolgáltatás három funkció oszlop bővíthet. 0 vagy 1 kategóriájától függően egy megfigyelési mindegyik oszlop tartalmaz. Az MLlib biztosítja az [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) függvényt egy gyors kódoláshoz. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. A kódolással elvárt numerikus értékelt szolgáltatások, például a logisztikai regressziós algoritmus kategorikus funkciókat is alkalmazható.
+A modelltől függően különböző módon kell indexelni vagy kódolni a modelleket. Például a logisztikai és lineáris regressziós modellek egy forró kódolást igényelnek. Egy három kategóriás funkció például három jellemzőoszlopra bontható ki. Minden oszlop 0-t vagy 1-et tartalmaz a megfigyelés kategóriájától függően. Az MLlib biztosítja a [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkciót az egy forró kódoláshoz. Ez a kódoló egy címkeindex-oszlopot rendel hozzá a bináris vektorok oszlopához, legbazis egyetlen értékkel. Ezzel a kódolással a numerikus értékű funkciókat, például a logisztikai regressziót elszenvedő algoritmusok alkalmazhatók a kategorikus funkciókra.
 
-Itt alakítsa át csak négy változókat, példák, amelyek karakterláncok megjelenítése. Más változók, például a hét napja, numerikus értékek kategorikus változókként által képviselt is tudja indexelni.
+Itt csak négy változót alakíthat át, hogy példákat mutasson be, amelyek karaktersorozatok. Más változókat is indexelhet, például a hétköznapokat, amelyeket numerikus értékek jelölnek kategorikus változókként.
 
-Indexeléshez használja a `StringIndexer()`t, és egy gyors kódoláshoz használja a MLlib `OneHotEncoder()` függvényeit. A következő index és a kategorikus funkciók kódolása a kódot:
+Az indexeléshez, a használathoz `StringIndexer()`és `OneHotEncoder()` az egy forró kódoláshoz használja az MLlib függvényeit. Itt van a kód index és kódolni kategorikus funkciók:
 
     # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
 
@@ -409,14 +409,14 @@ Indexeléshez használja a `StringIndexer()`t, és egy gyors kódoláshoz haszn�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A cella futási idejét: 4 másodperc.
+Ideje futtatni a cellát: 4 másodperc.
 
-### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>A minta és felosztása tanítási és tesztelési percenkénti egységeinek törtrészeként az adatkészlet
-Ez a kód létrehoz egy véletlenszerű mintavétel az adatok (ebben a példában a 25 %). Bár mintavételi nem szükséges ehhez a példához az adatkészlet méretének miatt, a cikk bemutatja, hogyan, hogy tudja, hogyan használhatja a saját problémákat, amikor szükség mintát is. Ha nagy a mintákat, ez jelentős időt takaríthat közben-modellek betanításához. Ezután ossza fel a minta-képzés (ebben a példában a 75 %) és egy tesztelési részét (ebben a példában a 25 %) besorolási és regressziós modellezéshez.
+### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>Minta és felosztása az adatkészlet képzési és vizsgálati frakciók
+Ez a kód véletlenszerű mintavételt hoz létre az adatokból (25%, ebben a példában). Bár ebben a példában az adatkészlet mérete miatt nincs szükség mintavételezésre, a cikk bemutatja, hogyan minta, így tudja, hogyan kell használni a saját problémáit, ha szükséges. Ha a minták nagyok, ez jelentős időt takaríthat meg a modellek betanítása közben. Ezután ossza fel a mintát egy betanítási részre (ebben a példában 75%) és egy tesztelési részre (ebben a példában) a besorolási és regressziós modellezéshez.
 
-Minden egyes sorban (a "rand" oszlop), amelyek segítségével válassza ki a kereszt-ellenőrzési modellrész betanítás során adja hozzá egy véletlenszerű szám (0 és 1) között.
+Adjon hozzá egy véletlen számot (0 és 1 között) minden sorhoz (egy "rand" oszlopban), amely a keresztérvényesítési redők kiválasztására használható az edzés során.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -448,14 +448,14 @@ Minden egyes sorban (a "rand" oszlop), amelyek segítségével válassza ki a ke
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A cella futási idejét: 2 másodperc.
+Ideje futtatni a cellát: 2 másodperc.
 
-### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Képzési változót és a szolgáltatásokat, és hozza létre indexelt vagy egy gyakori kódolású betanítására és tesztelésére bemeneti pont rdd-k vagy adatok keretek címkével
-Ez a szakasz tartalmazza a kódot, amely bemutatja, hogyan címkézett pont adattípusú értékként kategorikus szöveges adatok indexelése és kódolása, így azt használhatja taníthat vagy tesztelhet MLlib logisztikai regressziós és más képbesorolási modellek. Címkézett pont objektumok úgy, hogy a bemeneti adatként van szükség a gépi tanulási algoritmusok MLlib a többsége által formázott rdd-kként. A [címkével ellátott pont](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) egy olyan helyi vektor, amely egy címkéhez vagy válaszhoz van társítva, vagy sűrű vagy ritka.
+### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Adja meg a betanítási változót és a funkciókat, majd hozzon létre indexelt vagy egy gyorsan kódolt betanítási és tesztelési bemeneti pont RDD-k vagy adatkeretek
+Ez a szakasz olyan kódot tartalmaz, amely bemutatja, hogyan indexelheti a kategorikus szöveges adatokat címkézett pontadattípusként, és kódolhatja őket, így az MLlib logisztikai regresszióés más besorolási modellek betanításához és teszteléséhez használható. A címkézett pontobjektumok olyan RDD-k, amelyek az MLlib legtöbb gépi tanulási algoritmusa számára szükséges bemeneti adatként vannak formázva. A [címkézett pont](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) egy helyi vektor, akár sűrű, akár ritka, amely egy címkéhez/válaszhoz van társítva.
 
-Ezt a kódot kell megadni a cél (függő) változót és a funkciók használatához modelleket taníthat be. Ezután létrehozhat indexelt vagy egy gyakori betanítására és tesztelésére pont rdd-k vagy adatok keretek feliratú bemeneti kódolású.
+Ebben a kódban adja meg a cél (függő) változót és a modellek betanításához használandó funkciókat. Ezután hozzon létre indexelt vagy egy gyorsan kódolt betanítási és tesztelési bemeneti pont RDD-k vagy adatkeretek.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -491,17 +491,17 @@ Ezt a kódot kell megadni a cél (függő) változót és a funkciók használat
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A cella futási idejét: 4 másodperc.
+Ideje futtatni a cellát: 4 másodperc.
 
-### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>Automatikusan kategorizálása és a funkciók és a gépi tanulási modelleket bemenetként használandó célok vectorize
-A Spark ML használatával kategorizálása a cél és a szolgáltatásokat a fa-alapú modellezési funkciók használatára. A kód két feladatokat hajtja végre:
+### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>Gépi tanulási modellek bemenetként használt funkciók és célok automatikus kategorizálása és vektorizálása
+A Spark ML használatával kategorizálhatja a cél és a faalapú modellezési függvényekben használható funkciókat. A kód két feladatot hajt végre:
 
-* 0 vagy 1 értéket rendel az egyes adatpontok 0 és 1 közötti 0.5-ös küszöbérték érték használatával hoz létre egy bináris osztályozási célja.
-* Automatikusan kategorizálja a funkciókat. Ha az összes olyan szolgáltatás különböző numerikus értékek száma kisebb, mint 32, kategorizált ezt a funkciót.
+* Bináris célként hoz létre besorolást úgy, hogy 0 vagy 1 értéket rendel minden 0 és 1 közötti adatponthoz 0 és 1 közötti értékkel 0,5 küszöbérték használatával.
+* Automatikusan kategorizálja a funkciókat. Ha bármely jellemző különböző numerikus értékeinek száma 32-nél kisebb, a szolgáltatás kategorizálva lesz.
 
-Ez a kód a két feladatokhoz.
+Itt a kód a két feladathoz.
 
     # CATEGORIZE FEATURES AND BINARIZE THE TARGET FOR THE BINARY CLASSIFICATION PROBLEM
 
@@ -532,23 +532,23 @@ Ez a kód a két feladatokhoz.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Bináris osztályozási modell: előre jelezni, hogy tipp ki kell fizetni.
-Ebben a szakaszban három típusú bináris osztályozási modell előrejelzési e tipp kell fizetni hoz létre:
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Bináris osztályozási modell: Tipp elvárható, hogy egy tippet ki kell-e fizetni
+Ebben a szakaszban háromféle bináris osztályozási modellt hoz létre annak előrejelzéséhez, hogy egy tippet meg kell-e fizetni:
 
-* Egy **logisztikai regressziós modell** a Spark ml `LogisticRegression()` függvény használatával
-* **Véletlenszerű erdő besorolási modell** a Spark ml `RandomForestClassifier()` függvény használatával
-* **Színátmenetet növelő faosztályozási modell** a MLlib `GradientBoostedTrees()` függvény használatával
+* **Logisztikai regressziós modell** a `LogisticRegression()` Spark ML függvény használatával
+* **Véletlen erdőosztályozási modell** a `RandomForestClassifier()` Spark ML függvény használatával
+* **Színátmenetes fokozó faosztályozási modell** `GradientBoostedTrees()` az MLlib függvény használatával
 
-### <a name="create-a-logistic-regression-model"></a>Egy logisztikai regressziós modell létrehozása
-Ezután hozzon létre egy logisztikai regressziós modellt a Spark ML `LogisticRegression()` függvény használatával. A modell létrehozásához a kód a lépések egy sorozatát hoz létre:
+### <a name="create-a-logistic-regression-model"></a>Logisztikai regressziós modell létrehozása
+Ezután hozzon létre egy logisztikai regressziós modellt a Spark ML-függvény `LogisticRegression()` használatával. A modellépítési kódot lépések sorozatában hozza létre:
 
-1. **A modellre** vonatkozó adatkészletek betanítása egyetlen paraméterrel.
-2. **Értékelje ki a modellt** egy olyan tesztelési adatkészleten, amely metrikákkal rendelkezik.
-3. **Mentse a modellt** a blob Storage-ban a későbbi felhasználás érdekében.
-4. **A modell kiértékelése a** tesztelési adatként.
-5. **Az eredményeket** a fogadó működési jellemző (Roc) görbékkel ábrázolhatja.
+1. **A modelladatok betanítása** egy paraméterkészlettel.
+2. **Értékelje ki a modellt** egy mérőszámokkal rendelkező tesztadatkészleten.
+3. **Mentse a modellt a** Blob storage későbbi felhasználáshoz.
+4. **Pontszám a modell** a vizsgálati adatok.
+5. **Az eredményeket a** vevő működési jellemző (ROC) görbéivel ábrázolja.
 
-Ezeket az eljárásokat a kód itt látható:
+Itt van a kód részére ezek eljárásmód:
 
     # CREATE A LOGISTIC REGRESSION MODEL
     val lr = new LogisticRegression().setLabelCol("tipped").setFeaturesCol("features").setMaxIter(10).setRegParam(0.3).setElasticNetParam(0.8)
@@ -568,7 +568,7 @@ Ezeket az eljárásokat a kód itt látható:
     val filename = modelDir.concat(modelName).concat(datestamp)
     lrModel.save(filename);
 
-Betöltése, pontszám és a-eredményeket menteni.
+Töltse be, pontszám, és mentse az eredményeket.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -594,11 +594,11 @@ Betöltése, pontszám és a-eredményeket menteni.
     println("ROC on test data = " + ROC)
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A teszt adatai ROC = 0.9827381497557599
+ROC a vizsgálati adatokon = 0,9827381497557599
 
-Python használata a helyi Pandas adatkeretek ROC-görbe ábrázolásához.
+Használja a Python helyi Pandas adatkeretek a ROC-görbe ábrázolásához.
 
     # QUERY THE RESULTS
     %%sql -q -o sqlResults
@@ -632,12 +632,12 @@ Python használata a helyi Pandas adatkeretek ROC-görbe ábrázolásához.
     plt.show()
 
 
-**Kimeneti**
+**Kimeneti:**
 
-![Tipp vagy nincs tipp ROC-görbe](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
+![Tipp vagy nem tip ROC görbe](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
 
-### <a name="create-a-random-forest-classification-model"></a>Hozzon létre egy véletlenszerű besorolási erdőmodell
-Ezután hozzon létre egy véletlenszerű erdő besorolási modellt a Spark ML `RandomForestClassifier()` függvény használatával, majd értékelje ki a modellt a tesztelési adaton.
+### <a name="create-a-random-forest-classification-model"></a>Véletlen erdőosztályozási modell létrehozása
+Ezután hozzon létre egy véletlenszerű erdőbesorolási modellt a Spark ML `RandomForestClassifier()` függvény használatával, majd értékelje ki a modellt a tesztadatokon.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -665,12 +665,12 @@ Ezután hozzon létre egy véletlenszerű erdő besorolási modellt a Spark ML `
     println("ROC on test data = " + ROC)
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A teszt adatai ROC = 0.9847103571552683
+ROC a vizsgálati adatokon = 0,9847103571552683
 
-### <a name="create-a-gbt-classification-model"></a>Hozzon létre egy GBT osztályozási modell
-Ezután hozzon létre egy GBT besorolási modellt a MLlib `GradientBoostedTrees()` függvényének használatával, majd értékelje ki a modellt a tesztelési adatain.
+### <a name="create-a-gbt-classification-model"></a>GBT besorolási modell létrehozása
+Ezután hozzon létre egy GBT besorolási `GradientBoostedTrees()` modellt az MLlib függvény használatával, majd értékelje ki a modellt a tesztadatokon.
 
     # TRAIN A GBT CLASSIFICATION MODEL BY USING MLLIB AND A LABELED POINT
 
@@ -721,17 +721,17 @@ Ezután hozzon létre egy GBT besorolási modellt a MLlib `GradientBoostedTrees(
     println(s"Area under ROC curve: ${metrics.areaUnderROC}")
 
 
-**Kimeneti**
+**Kimeneti:**
 
-ROC-görbe alatti terület: 0.9846895479241554
+Roc görbe alatti terület: 0,9846895479241554
 
-## <a name="regression-model-predict-tip-amount"></a>Regressziós modell: tipp összeg előrejelzése
-Ebben a szakaszban két típusú tipp összeg előrejelzésére regressziós modelleket hoz létre:
+## <a name="regression-model-predict-tip-amount"></a>Regressziós modell: Tipp összegének előrejelzése
+Ebben a szakaszban kétféle regressziós modellt hozhat létre a tipp összegének előrejelzéséhez:
 
-* Egy **szabályos lineáris regressziós modell** a Spark ml `LinearRegression()` függvény használatával. A modell mentése fog, és a teszt adatai a modell kiértékelésére.
-* **Színátmenet-növelő fa regressziós modell** a Spark ml `GBTRegressor()` függvény használatával.
+* A spark ML `LinearRegression()` függvény használatával **szabályosanizált lineáris regressziós modell.** Mentse a modellt, és értékelje ki a modellt a tesztadatokon.
+* **Színátmenet-kiemelésfa regressziós** modell `GBTRegressor()` a Spark ML függvény használatával.
 
-### <a name="create-a-regularized-linear-regression-model"></a>Rendeződik lineáris regressziós modell létrehozása
+### <a name="create-a-regularized-linear-regression-model"></a>Szabályos lineáris regressziós modell létrehozása
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
 
@@ -773,9 +773,9 @@ Ebben a szakaszban két típusú tipp összeg előrejelzésére regressziós mod
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A cella futási idejét: 13 másodperc.
+Ideje futtatni a cellát: 13 másodperc.
 
     # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
 
@@ -804,11 +804,11 @@ A cella futási idejét: 13 másodperc.
     println("R-sqr on test data = " + r2)
 
 
-**Kimeneti**
+**Kimeneti:**
 
-R-sqr a Tesztadatok = 0.5960320470835743
+R-sqr a vizsgálati adatokon = 0,5960320470835743
 
-Ezután a vizsgálati eredmények lekérdezése adatkeretek, és AutoVizWidget és matplotlib a Vizualizáció.
+Ezután tesztelje le a teszteredményeket adatkeretként, és használja az AutoVizWidget és a matplotlib segítségével a megjelenítést.
 
     # RUN A SQL QUERY
     %%sql -q -o sqlResults
@@ -821,14 +821,14 @@ Ezután a vizsgálati eredmények lekérdezése adatkeretek, és AutoVizWidget �
     # CLICK THE TYPE OF PLOT TO GENERATE (LINE, AREA, BAR, AND SO ON)
     sqlResults
 
-A kód helyi adatkeretek hoz létre a lekérdezés kimenetét, és jeleníti meg az adatokat. A `%%local` Magic létrehoz egy helyi adatkeretet, `sqlResults`, amelyet a matplotlib való ábrázoláshoz használhat.
+A kód létrehoz egy helyi adatkeretet a lekérdezés kimenetéből, és megtervezi az adatokat. A `%%local` varázslat létrehoz egy `sqlResults`helyi adatkeretet, amelyet a matplotlib-mal ábrázolhat.
 
 > [!NOTE]
-> A Spark Magic Quadrant ebben a cikkben több alkalommal van használva. Nagy adatmennyiség esetén a kell mintát hozhat létre egy adatkeretbe, amelyek illeszkednek a helyi memóriához.
+> Ezt a Spark-varázslatot ebben a cikkben többször is használják. Ha az adatmennyiség nagy, a helyi memóriába illeszkedő adatkeret létrehozásához mintát kell venni.
 > 
 > 
 
-Grafikon létrehozása Python matplotlib használatával.
+Hozzon létre telkeket python matplotlib használatával.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -846,14 +846,14 @@ Grafikon létrehozása Python matplotlib használatával.
     plt.axis([-1, 15, -1, 8])
     plt.show(ax)
 
-**Kimeneti**
+**Kimeneti:**
 
-![Összeg tipp: tényleges és becsült](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Tipp összege: Tényleges és előre jelzett](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>GBT regressziós modell létrehozása
-Hozzon létre egy GBT regressziós modellt a Spark ML `GBTRegressor()` függvény használatával, majd értékelje ki a modellt a tesztelési adaton.
+Hozzon létre egy GBT regressziós modellt a Spark ML `GBTRegressor()` függvény használatával, majd értékelje ki a modellt a tesztadatokon.
 
-A [színátmenet által növelt fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS-EK) a döntési fák együttesei. A GBTS vonatok döntési feladatait iteratív a veszteségek csökkentése érdekében. A GBTS a regresszió és a besorolás használatára használhatja. Azok képes kezelni a kategorikus szolgáltatásokat, nincs szükség a szolgáltatás méretezése és rögzíthetők a hétköznapi nonlinearities és a szolgáltatás kapcsolati. Is használhatja őket egy osztályú-besorolás beállításban.
+[A gradienssel felturbózott fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) döntési fák együttesei. A GBTS a veszteségfunkció minimalizálása érdekében iteratív módon kiképezi a döntési fákat. A GBTS-t regressziós és besorolási célokra használhatja. Képesek kezelni a kategorikus funkciókat, nem igényelnek szolgáltatásskálázást, és rögzíthetik a nemlinearitásokat és a szolgáltatásinterakciókat. Ezeket többosztályos besorolási beállításban is használhatja.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -879,25 +879,25 @@ A [színátmenet által növelt fák](https://spark.apache.org/docs/latest/ml-cl
     println("Test R-sqr is: " + Test_R2);
 
 
-**Kimeneti**
+**Kimeneti:**
 
-Teszt R-sqr van: 0.7655383534596654
+Teszt R-sqr: 0,7655383534596654
 
-## <a name="advanced-modeling-utilities-for-optimization"></a>Az optimalizálás speciális modellekre segédprogramok
-Ebben a szakaszban használhatja a machine learning segédprogramok, amely a fejlesztőknek gyakran használt modell optimalizálása. Pontosabban a machine learning-modellek három különböző módon is optimalizálhatja paraméter kezdik és kereszt-ellenőrzés:
+## <a name="advanced-modeling-utilities-for-optimization"></a>Speciális modellezési segédprogramok optimalizáláshoz
+Ebben a szakaszban gépi tanulási segédprogramokat használ, amelyeket a fejlesztők gyakran használnak a modelloptimalizáláshoz. Pontosabban a gépi tanulási modelleket három különböző módon optimalizálhatja a paraméters söpréssel és keresztellenőrzéssel:
 
-* Az adatok felosztása tanítási és érvényesítési csoportok, a modell optimalizálása a gyakorlókészlethez hyper paraméter kezdik használatával és értékeléséhez érvényesítési konfigurálásában (lineáris regresszió)
-* A modell optimalizálása a kereszt-ellenőrzési és a hyper-abszolút Spark ML CrossValidator függvény (bináris osztályozás) használatával.
-* A modell optimalizálása bármely machine learning-függvény, és paraméter beállítása (lineáris regresszió) használatához egyéni kereszt-ellenőrzési és a paraméter-kezdik kód használatával
+* Az adatok felosztása betanítási és érvényesítési készletekre, a modell optimalizálása egy betanítási készlet hiperparaméteres söprésével, és egy érvényesítési készlet (lineáris regresszió) kiértékelése.
+* A modell optimalizálása keresztérvényesítési és hiperparaméter-söprés használatával a Spark ML CrossValidator függvényének használatával (bináris besorolás)
+* A modell optimalizálása egyéni keresztérvényesítési és paraméter-seprési kód használatával bármely gépi tanulási függvény és paraméterkészlet (lineáris regresszió) használatához
 
-A többszörös **Érvényesítés** egy olyan technika, amely kiértékeli, hogy az ismert adathalmazon alapuló modellek mennyire jól általánosítják az olyan adatkészletek funkcióinak előrejelzését, amelyeken még nincs betanítva. Ezzel a technikával általános működési, hogy a modell tanítása az ismert adatok adathalmazon, és az előrejelzések pontossága tesztelik egy független adatkészlet alapján. A közös megvalósítás egy adatkészlet felosztása a *k*-redők közé, majd a modell betanítása egy ciklikus multiplexelés, de az egyik hajtogatási módszer.
+**Keresztérvényesítés** egy olyan technika, amely felméri, hogy egy modell betanított egy ismert adathalmaz általánosítani, hogy előre jelezze az adatkészletek azon jellemzőit, amelyeken nem van betanítva. A technika mögött rejlő általános elképzelés az, hogy a modell ismert adatok adatkészletén van betanítva, majd az előrejelzések pontosságát egy független adatkészlettel tesztelik. A közös megvalósítás az, *k*hogy az adatkészletet k-hajtásokra osztja fel, majd ciklikus multiplexelési módon betanítja a modellt az egyik kivételével.
 
-A **Hyper-paraméter optimalizálása** olyan Hyper-paraméterek kiválasztásának a problémája, amely egy tanulási algoritmushoz szükséges, általában azzal a céllal, hogy az algoritmus teljesítményének mértékét egy független adathalmazon optimalizálja. A hyper-paraméter értéke a modell betanítási eljárás kívül is meg kell adnia. A hyper-paraméterértékek feltételezéseket hatással lehet a rugalmasság és a modell pontosságát. Döntési fák algoritmus a hyper-paraméterek, például a kívánt mélységének és hagyja, a fában száma például rendelkezik. Be kell állítani egy téves besorolás napján belül pótdíj kifejezés egy tartóvektor-gép (SVM).
+**A hyper-parameter optimization** a probléma a tanulási algoritmus hiperparamétereinek kiválasztásával, általában azzal a céllal, hogy optimalizálja az algoritmus teljesítményének mérését egy független adatkészleten. A hiper-paraméter olyan érték, amelyet meg kell adnia a modell betanítási eljáráson kívül. A hiperparaméter-értékekkel kapcsolatos feltételezések befolyásolhatják a modell rugalmasságát és pontosságát. Döntés fák hiper-paraméterek, például, mint például a kívánt mélység és a levelek száma a fában. Be kell állítania egy téves besorolás büntetés idot egy támogatási vektorgép (SVM).
 
-A Hyper-paraméterek optimalizálásának gyakori módja, ha egy rácsos keresést használ, más néven a **paramétert**is. Rács keresésnél egy teljes körű keresés az értékeket egy adott részének a tanulási algoritmus hyper paraméterrel adhatja át történik meg. Kereszt-ellenőrzési adhat meg a teljesítmény-mérőszám ki a rács keresési algoritmus által előállított az optimális eredmények rendezéséhez. Kereszt-ellenőrzési hyper paraméter kezdik használatakor korlát kapcsolatos, például egy modell a betanítási adatok overfitting segíthet. Ezzel a módszerrel a modell megőrzi a alkalmazni szeretné az általános, amelyről a betanítási adatok kinyert adatok kapacitást.
+A hiperparaméterek optimalizálásának gyakori módja a rácskeresés, más néven **paraméteres söprés**használata. A rácskereséssorán a teljes körű keresés a tanulási algoritmus hiperparaméter-területének egy megadott részhalmazának értékein keresztül történik. A keresztérvényesítés teljesítménymérőt biztosíthat a rácskeresési algoritmus által létrehozott optimális eredmények rendezéséhez. Ha kereszt-érvényesítési hiperparaméter-söprést használ, csökkentheti az olyan problémák korlátozását, mint például a modell betanítási adatokhoz való túlszerelése. Így a modell megtartja a kapacitást, hogy alkalmazza az általános adathalmazt, amelyből a betanítási adatok kinyerték.
 
-### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>A hyper-paraméter kezdik lineáris regressziós modell optimalizálása
-Ezután adatok felosztása tanítási és érvényesítés csoportok, használja a hyper-paraméter abszolút képzési konfigurálásában a modell optimalizálása és értékeléséhez érvényesítési konfigurálásában (lineáris regresszió).
+### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>Lineáris regressziós modell optimalizálása hiperparaméter-söpréssel
+Ezután ossza fel az adatokat betanítási és érvényesítési készletekre, használjon hyper-parameter sweeping-t egy betanítási készleten a modell optimalizálásához, és értékelje ki az érvényesítési készletet (lineáris regresszió).
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -936,12 +936,12 @@ Ezután adatok felosztása tanítási és érvényesítés csoportok, használja
     println("Test R-sqr is: " + Test_R2);
 
 
-**Kimeneti**
+**Kimeneti:**
 
-Teszt R-sqr van: 0.6226484708501209
+Teszt R-sqr: 0,626484708501209
 
-### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>A bináris osztályozási modell optimalizálása a kereszt-ellenőrzési és a hyper-paraméter kezdik használatával
-Ez a szakasz bemutatja, hogyan kereszt-ellenőrzési és a hyper-paraméter kezdik használatával egy bináris osztályozási modell optimalizálása érdekében. Ez a Spark ML `CrossValidator` függvényt használja.
+### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optimalizálja a bináris osztályozási modellt kereszt-érvényesítés és hiper-paraméter söprés használatával
+Ez a szakasz bemutatja, hogyan optimalizálhatja a bináris osztályozási modell segítségével kereszt-érvényesítés i és hyper-paraméter sweeping használatával. Ez a Spark `CrossValidator` ML függvényt használja.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -980,12 +980,12 @@ Ez a szakasz bemutatja, hogyan kereszt-ellenőrzési és a hyper-paraméter kezd
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A cella futási idejét: 33 másodperc.
+33 másodperc a cella futtatására.
 
-### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>Egyéni kereszt-ellenőrzési és a paraméter-kezdik kód használatával a lineáris regressziós modell optimalizálása
-Ezután a modell optimalizálása egyéni kód használatával, és a legjobb modellt paraméterek azonosításához a legnagyobb pontosságú feltétel használatával. Ezután hozzon létre a kész modell, a Tesztadatok a modell kiértékelésére, és mentse a Blob storage-ban. Végül a modell betöltése, tesztadatok pontszám és értékeléséhez pontosságát.
+### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>A lineáris regressziós modell optimalizálása egyéni keresztérvényesítési és paraméter-seprési kód használatával
+Ezután optimalizálja a modellt egyéni kód használatával, és azonosítsa a legjobb modellparamétereket a legnagyobb pontosságú kritérium használatával. Ezután hozza létre a végleges modellt, értékelje ki a modellt a tesztadatokon, és mentse a modellt a Blob storage-ban. Végül töltse be a modellt, pontozási tesztadatokat, és értékelje ki a pontosságot.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -1095,14 +1095,14 @@ Ezután a modell optimalizálása egyéni kód használatával, és a legjobb mo
     val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 
 
-**Kimeneti**
+**Kimeneti:**
 
-A cella futási idejét: 61 másodperc.
+61 másodperc a cella futtatására.
 
-## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>A Spark használatával összeállított gépi tanulási modelleket automatikusan Scala felhasználása
-Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos témakörök áttekintését itt találja: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Spark-alapú gépi tanulási modellek automatikus felhasználása a Scala segítségével
+Az Azure-beli adatelemzési folyamatot alkotó feladatokat ismertető témakörök áttekintését a [Csapatadat-elemzési folyamat című](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)témakörben találja.
 
-A [csoportos adatelemzési folyamat](walkthroughs.md) bemutatói ismertetik azokat a végpontok közötti bemutatókat, amelyek bemutatják a csoportos adatelemzési folyamat lépéseit adott forgatókönyvek esetén. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőalapú és helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására is.
+[A csapatadat-elemzési folyamat forgatókönyvei](walkthroughs.md) más végpontok között forgatókönyveket is leírnak, amelyek bemutatják a csapatadat-elemzési folyamat lépéseit az adott forgatókönyvekhez. A forgatókönyvek azt is bemutatják, hogyan kombinálhatja a felhőbeli és a helyszíni eszközöket és szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához.
 
-A [Spark-alapú gépi tanulási modellek](spark-model-consumption.md) azt mutatják be, hogyan használható a Scala Code az új adatkészletek automatikus betöltéséhez és az Azure Blob Storage-ban mentett gépi tanulási modellekkel való összegyűjtéséhez. A megjelenő utasításokat követve van, és egyszerűen cserélje le a Python-kód Scala kódra ebben a cikkben automatizált felhasználásra.
+[A Score Spark által készített gépi tanulási modellek](spark-model-consumption.md) bemutatják, hogyan használhatja a Scala-kódot az új adatkészletek automatikus betöltéséhez és pontozásához a Sparkbeépített és az Azure Blob storage-ban mentett gépi tanulási modellekkel. Kövesse az ott megadott utasításokat, és egyszerűen cserélje le a Python-kódot a Scala-kódra ebben a cikkben az automatikus felhasználás érdekében.
 

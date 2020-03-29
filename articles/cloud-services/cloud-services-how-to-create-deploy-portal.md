@@ -1,6 +1,6 @@
 ---
-title: Felhőalapú szolgáltatás létrehozása és üzembe helyezése | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe felhőalapú szolgáltatásokat a Azure Portal használatával.
+title: Felhőszolgáltatás létrehozása és üzembe helyezése | Microsoft dokumentumok
+description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe felhőszolgáltatást az Azure Portalon.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -9,88 +9,88 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386170"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>Felhőalapú szolgáltatás létrehozása és üzembe helyezése
-A Azure Portal kétféle módszert biztosít a felhőalapú szolgáltatások létrehozására és üzembe helyezésére: *gyors létrehozás* és *Egyéni létrehozás*.
+# <a name="how-to-create-and-deploy-a-cloud-service"></a>Felhőszolgáltatás létrehozása és üzembe helyezése
+Az Azure Portal kétféleképpen hozhat létre és helyezhet üzembe felhőalapú szolgáltatást: *gyors létrehozás* és *egyéni létrehozás.*
 
-Ez a cikk azt ismerteti, hogyan használható a gyors létrehozás módszer egy új felhőalapú szolgáltatás létrehozásához, majd a **feltöltéshez** a Cloud Service-csomagok feltöltéséhez és üzembe helyezéséhez az Azure-ban. Ha ezt a módszert használja, a Azure Portal elérhetővé teszi az összes követelmény betöltéséhez szükséges hasznos hivatkozásokat. Ha készen áll a Cloud Service üzembe helyezésére a létrehozásakor, mindkettőt megteheti az egyéni létrehozás használatával.
+Ez a cikk bemutatja, hogyan használhatja a Gyorslétrehozás metódust egy új felhőszolgáltatás létrehozásához, majd **az Upload** használatával egy felhőalapú szolgáltatáscsomag feltöltéséhez és üzembe helyezéséhez az Azure-ban. Ha ezt a módszert használja, az Azure Portal elérhetővé teszi a kényelmes linkeket az összes követelmény teljesítéséhez menet közben. Ha készen áll a felhőszolgáltatás üzembe helyezésére, amikor létrehozza, mindkettőt megteheti egyszerre az egyéni létrehozás használatával.
 
 > [!NOTE]
-> Ha azt tervezi, hogy közzéteszi a Cloud Service-t az Azure DevOps, használja a gyors létrehozás lehetőséget, majd állítsa be az Azure DevOps-közzétételt az Azure rövid útmutatóból vagy az irányítópultból. További információkért lásd: folyamatos kézbesítés az Azure-ba az [Azure DevOps használatával][TFSTutorialForCloudService], vagy a **gyorskonfigurálás** oldal súgójában.
+> Ha azt tervezi, hogy közzéteszi a felhőszolgáltatást az Azure DevOps-ból, használja a Gyorslétrehozás szolgáltatást, majd állítsa be az Azure DevOps-közzétételt az Azure gyorsútmutatóból vagy az irányítópultról. További információ: [Folyamatos kézbesítés az Azure-ba az Azure DevOps használatával,][TFSTutorialForCloudService]vagy tekintse meg a súgót a **Gyorsindítás** laphoz.
 >
 >
 
 ## <a name="concepts"></a>Alapelvek
-Az Azure-ban az alkalmazások felhőalapú szolgáltatásként való üzembe helyezéséhez három összetevő szükséges:
+Három összetevő szükséges egy alkalmazás felhőszolgáltatásként való üzembe helyezéséhez az Azure-ban:
 
 * **Szolgáltatás definíciója**  
-  A Cloud Service-definíciós fájl (. csdef) meghatározza a szolgáltatási modellt, beleértve a szerepkörök számát is.
+  A felhőszolgáltatás-definíciós fájl (.csdef) határozza meg a szolgáltatásmodellt, beleértve a szerepkörök számát is.
 * **Szolgáltatás konfigurációja**  
-  A Cloud Service konfigurációs fájlja (. cscfg) konfigurációs beállításokat biztosít a felhőalapú szolgáltatáshoz és az egyes szerepkörökhöz, beleértve a szerepkör-példányok számát is.
-* **Szolgáltatáscsomag**  
-  A szervizcsomag (. cspkg) tartalmazza az alkalmazás kódját és konfigurációit, valamint a szolgáltatás definíciós fájlját.
+  A felhőszolgáltatás konfigurációs fájlja (.cscfg) biztosítja a felhőszolgáltatás és az egyes szerepkörök konfigurációs beállításait, beleértve a szerepkörpéldányok számát is.
+* **Szolgáltatási csomag**  
+  A szolgáltatáscsomag (.cspkg) tartalmazza az alkalmazáskódot és konfigurációkat, valamint a szolgáltatásdefiníciós fájlt.
 
-Ezekről a szolgáltatásokról és a csomagok létrehozásáról [itt](cloud-services-model-and-package.md)tájékozódhat.
+Ezekről és a csomag létrehozásáról [itt](cloud-services-model-and-package.md)olvashat bővebben.
 
 ## <a name="prepare-your-app"></a>Az alkalmazás előkészítése
-A Cloud Service üzembe helyezése előtt létre kell hoznia a Cloud Service-csomagot (. cspkg) az alkalmazás kódjából és egy Cloud Service-konfigurációs fájlból (. cscfg). Az Azure SDK eszközöket biztosít ezeknek a szükséges központi telepítési fájloknak a előkészítéséhez. Az SDK-t az [Azure letöltések](https://azure.microsoft.com/downloads/) oldaláról telepítheti abban a nyelven, amelyben az alkalmazás kódját szeretné fejleszteni.
+A felhőalapú szolgáltatás üzembe helyezése előtt létre kell hoznia a felhőszolgáltatás-csomagot (.cspkg) az alkalmazáskódból és egy felhőszolgáltatás konfigurációs fájljából (.cscfg). Az Azure SDK eszközöket biztosít a szükséges központi telepítési fájlok előkészítéséhez. Az SDK-t az [Azure Downloads](https://azure.microsoft.com/downloads/) lapról telepítheti, azon a nyelven, amelyen az alkalmazáskód fejlesztését szeretné.
 
-A Service-csomagok exportálása előtt a felhőalapú szolgáltatások három funkciójának speciális konfigurációra van szüksége:
+A szolgáltatáscsomag exportálása előtt három felhőszolgáltatás-szolgáltatás speciális konfigurációt igényel:
 
-* Ha SSL (SSL) protokollt használó felhőalapú szolgáltatást szeretne üzembe helyezni az adattitkosításhoz, [konfigurálja az alkalmazást](cloud-services-configure-ssl-certificate-portal.md#modify) az SSL-hez.
-* Ha Távoli asztal kapcsolatokat kíván konfigurálni a szerepkör-példányokhoz, [konfigurálja a szerepköröket](cloud-services-role-enable-remote-desktop-new-portal.md) a távoli asztalhoz.
-* Ha szeretné beállítani a felhőalapú szolgáltatás részletes figyelését, engedélyezze Azure Diagnostics a Cloud Service-hez. A *minimális figyelés* (az alapértelmezett figyelési szint) a gazdagép operációs rendszereiből összegyűjtött teljesítményszámlálókat használja a szerepkör-példányok (virtuális gépek) számára. A *részletes figyelés* további mérőszámokat gyűjt a szerepkör példányain belüli teljesítményadatok alapján, így az alkalmazások feldolgozásakor felmerülő problémák alaposabb elemzését is lehetővé teszi. A Azure Diagnostics engedélyezéséről a [diagnosztika engedélyezése az Azure-ban](cloud-services-dotnet-diagnostics.md)című témakörben talál további információt.
+* Ha olyan felhőszolgáltatást szeretne telepíteni, amely Secure Sockets Layer (SSL) adattitkosítást használ, [konfigurálja az alkalmazást](cloud-services-configure-ssl-certificate-portal.md#modify) SSL-re.
+* Ha a Távoli asztali kapcsolatokat szerepkörpéldányokra szeretné konfigurálni, [konfigurálja a szerepköröket a](cloud-services-role-enable-remote-desktop-new-portal.md) Távoli asztal hoz.
+* Ha részletes figyelést szeretne konfigurálni a felhőszolgáltatáshoz, engedélyezze az Azure Diagnostics szolgáltatást a felhőszolgáltatáshoz. *Minimális figyelés* (az alapértelmezett figyelési szint) a gazdaoperációs rendszerekből a szerepkörpéldányok (virtuális gépek) teljesítményszámlálóit használja. *Részletes figyelési* gyűjt további metrikák teljesítményadatok alapján a szerepkör példányok, hogy közelebbi elemzése során felmerülő problémák az alkalmazás feldolgozása során. Az Azure Diagnosztika engedélyezéséről a [Diagnosztika engedélyezése az Azure-ban](cloud-services-dotnet-diagnostics.md)című témakörben talál.
 
-Ha felhőalapú szolgáltatást szeretne létrehozni webes szerepkörök vagy feldolgozói szerepkörök központi telepítésével, [létre kell hoznia a szervizcsomagot](cloud-services-model-and-package.md#servicepackagecspkg).
+Ha webes szerepköröket vagy feldolgozói szerepköröket központi telepítéssel szeretne létrehozni, létre kell [hoznia a szolgáltatási csomagot.](cloud-services-model-and-package.md#servicepackagecspkg)
 
-## <a name="before-you-begin"></a>Előzetes teendők
-* Ha még nem telepítette az Azure SDK-t, kattintson az **Azure SDK telepítése** lehetőségre az [Azure downloads oldalának](https://azure.microsoft.com/downloads/)megnyitásához, majd töltse le az SDK-t arra a nyelvre, amelyben a kódot fejleszteni szeretné. (Ezt később is megteheti.)
-* Ha bármelyik szerepkör-példányhoz tanúsítvány szükséges, hozza létre a tanúsítványokat. A Cloud Serviceshez titkos kulccsal rendelkező. pfx fájl szükséges. A tanúsítványokat feltöltheti az Azure-ba a Cloud Service létrehozása és üzembe helyezése során.
+## <a name="before-you-begin"></a>Előkészületek
+* Ha még nem telepítette az Azure SDK-t, kattintson az **Azure SDK telepítése** gombra az [Azure Downloads lap](https://azure.microsoft.com/downloads/)megnyitásához, majd töltse le az SDK-t arra a nyelvre, amelyen a kódot fejleszteni szeretné. (Erre később lehetősége lesz.)
+* Ha bármelyik szerepkörpéldányhoz tanúsítvány szükséges, hozza létre a tanúsítványokat. A felhőszolgáltatásokhoz .pfx fájlra van szükség, amelynek kulcsa titkos kulcs. A tanúsítványokat feltöltheti az Azure-ba a felhőszolgáltatás létrehozása és üzembe helyezése során.
 
 ## <a name="create-and-deploy"></a>Létrehozás és üzembe helyezés
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Kattintson az **erőforrás létrehozása > a számítás**elemre, majd görgessen le, és kattintson a **Cloud Service**elemre.
+2. Kattintson **az Erőforrás > számítás**létrehozása elemre, majd görgessen le a **Felhőszolgáltatás**elemre.
 
-    ![A felhőalapú szolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. Az új **Cloud Service** ablaktáblán adja meg a **DNS-név**értékét.
-4. Hozzon létre egy új **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
-5. Válasszon ki egy **helyet**.
-6. Kattintson a **csomag**elemre. Ekkor megnyílik a **csomag feltöltése** panel. Töltse ki a kötelező mezőket. Ha bármelyik szerepkör egyetlen példányt tartalmaz, akkor is győződjön meg arról, **hogy az üzembe helyezés akkor is, ha egy vagy több szerepkör egyetlen példányt tartalmaz** .
-7. Győződjön meg arról, hogy a **Start Deployment** beállítás van kiválasztva.
-8. Kattintson **az OK** gombra, amely a **csomag feltöltése** panelt fogja lezárva.
-9. Ha nem rendelkezik a hozzáadni kívánt tanúsítványokkal, kattintson a **Létrehozás**gombra.
+    ![A felhőszolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+3. Az új **Felhőszolgáltatás** ablaktáblán adja meg a **DNS-név**értékét.
+4. Hozzon létre egy új **erőforráscsoportot,** vagy jelöljön ki egy meglévőt.
+5. Válasszon egy **helyet**.
+6. Kattintson **a Csomag gombra.** Ezzel megnyitja a **Csomag feltöltése** ablaktáblát. Töltse ki a szükséges mezőket. Ha bármelyik szerepkör egyetlen példányt tartalmaz, győződjön meg **arról, hogy a telepítés akkor is, ha egy vagy több szerepkör egyetlen példányt tartalmaz,** ki van jelölve.
+7. Győződjön meg arról, hogy a **Központi telepítés indítása** jelölőnégyzet be van jelölve.
+8. Kattintson **az OK gombra,** amely bezárja a **Csomag feltöltése** ablaktáblát.
+9. Ha nincs hozzáaktatok, kattintson a **Létrehozás gombra.**
 
-    ![A felhőalapú szolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![A felhőszolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>Tanúsítvány feltöltése
-Ha a központi telepítési csomag [tanúsítvány használatára lett konfigurálva](cloud-services-configure-ssl-certificate-portal.md#modify), akkor most feltöltheti a tanúsítványt.
+Ha a központi telepítési csomag tanúsítványok használatára lett [konfigurálva,](cloud-services-configure-ssl-certificate-portal.md#modify)most feltöltheti a tanúsítványt.
 
-1. Válassza a **tanúsítványok**lehetőséget, majd a **tanúsítványok hozzáadása** PANELEN válassza ki az SSL-tanúsítvány. pfx fájlját, majd adja meg a tanúsítvány **jelszavát** .
-2. Kattintson a **tanúsítvány csatolása**elemre, majd kattintson az **OK** gombra a **tanúsítványok hozzáadása** panelen.
-3. Kattintson a **create (létrehozás** ) elemre a **Cloud Service** ablaktáblán. Ha az üzemelő példány elérte a **kész** állapotot, folytassa a következő lépésekkel.
+1. Válassza a **Tanúsítványok**lehetőséget, majd a **Tanúsítványok hozzáadása** ablaktáblán jelölje ki az SSL tanúsítvány .pfx fájlt, majd adja meg a tanúsítvány **jelszavát,**
+2. Kattintson **a Tanúsítvány csatolása**gombra, majd a **Tanúsítványok hozzáadása** ablaktáblán kattintson az **OK** gombra.
+3. Kattintson a **Felhőszolgáltatás** ablaktáblájának **Létrehozás** gombjára. Amikor a központi telepítés elérte a **Ready** állapotot, továbbléphet a következő lépésekkel.
 
-    ![A felhőalapú szolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![A felhőszolgáltatás közzététele](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
-## <a name="verify-your-deployment-completed-successfully"></a>Ellenőrizze, hogy az üzemelő példány sikeresen befejeződött-e
-1. Kattintson a Cloud Service-példányra.
+## <a name="verify-your-deployment-completed-successfully"></a>A telepítés sikeres befejezésének ellenőrzése
+1. Kattintson a felhőszolgáltatás-példányra.
 
-    Az állapotnak a szolgáltatás **futását**kell mutatnia.
-2. Az **Essentials**területen kattintson a **webhely URL-címére** a Cloud Service egy böngészőben való megnyitásához.
+    Az állapotnak azt kell mutatnia, hogy a szolgáltatás **fut.**
+2. Az **Essentials csoportban**kattintson a **Webhely URL-címére** a felhőszolgáltatás webböngészőben való megnyitásához.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
 [TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
-## <a name="next-steps"></a>Következő lépések
-* [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
-* Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
-* [A felhőalapú szolgáltatás kezelése](cloud-services-how-to-manage-portal.md).
-* Konfigurálja az [SSL-tanúsítványokat](cloud-services-configure-ssl-certificate-portal.md).
+## <a name="next-steps"></a>További lépések
+* [A felhőszolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
+* Egyéni [tartománynév konfigurálása](cloud-services-custom-domain-name-portal.md).
+* [A felhőszolgáltatás kezelése.](cloud-services-how-to-manage-portal.md)
+* [Ssl-tanúsítványok konfigurálása](cloud-services-configure-ssl-certificate-portal.md).
 
 
 

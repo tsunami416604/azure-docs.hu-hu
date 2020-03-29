@@ -1,6 +1,6 @@
 ---
-title: Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez |} A Microsoft Docs
-description: A témakör áttekintést nyújt az újrapróbálkozási logika a Media Services SDK-ban a .NET-hez.
+title: A Media Services SDK for . Microsoft dokumentumok
+description: A témakör áttekintést nyújt a Media Services SDK .NET újrapróbálkozási logikájának áttekintéséről.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,65 +15,65 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61094663"
 ---
-# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez  
+# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>A .NET Media Services SDK-ban az újrapróbálkozási logika  
 
-Az Microsoft Azure-szolgáltatások használatakor is fordulnak elő átmeneti hibák. Ha egy átmeneti hiba történik, a legtöbb esetben a művelet sikeres néhány újrapróbálkozás után. A Media Services SDK for .NET valósítja meg az újrapróbálkozási logika átmeneti hibák, kivételek és a webes kérések által okozott hibák kezeléséhez, a lekérdezések, a menti a módosításokat, és a tárolási műveletek végrehajtása.  Alapértelmezés szerint a .NET-keretrendszerhez készült Media Services SDK négy újrapróbálkozások ismételt kivétel az alkalmazásnak a kivétel előtt hajtja végre. Az alkalmazás kódja majd kezelni kell ehhez a kivételhez megfelelően.  
+A Microsoft Azure-szolgáltatásokkal való munka során átmeneti hibák léphetnek fel. Ha átmeneti hiba lép fel, a legtöbb esetben néhány újrapróbálkozás után a művelet sikeres. A .NET Media Services SDK-ja az újrapróbálkozási logikát valósítja meg a webes kérelmek, a lekérdezések végrehajtása, a módosítások és a tárolási műveletek által okozott kivételek és hibák miatti átmeneti hibák kezeléséhez.  Alapértelmezés szerint a Media Services SDK a .NET végrehajtja a négy újrapróbálkozások előtt újra dobott a kivétel az alkalmazás. Az alkalmazásban lévő kódnak megfelelően kell kezelnie ezt a kivételt.  
 
- A következő egy webes kérelem, tároló, lekérdezés és létrehozva házirendek rövid útmutató:  
+ A webkérelemre, tárolásra, lekérdezésre és mentett módosításra vonatkozó házirendek rövid iránymutatásai:  
 
-* A Storage szabályzatra van szükség, a blob storage-műveletek (feltöltések vagy az adategység-fájlok letöltését).  
-* A webes kapcsolatkérelmi házirend általános webes kérelmek (például egy hitelesítési tokent első felismerését és feloldását, a felhasználók fürtvégpont) használatos.  
-* A lekérdezés házirendet használja az entitások a REST (például mediaContext.Assets.Where(...)).  
-* A létrehozva csoportházirend csinál semmit, amely módosítja az adatokat a szolgáltatásban (például frissítése egy entitásban egy szolgáltatás függvény hívása egy művelet egy entitás létrehozása) használatos.  
+* A storage-szabályzat blob tárolási műveletek (feltöltések vagy az eszközfájlok letöltése) használják.  
+* A webkérelem-házirend általános webes kérelmekhez használatos (például hitelesítési jogkivonat beszerzésére és a felhasználók fürtvégpontjának feloldására).  
+* A lekérdezési házirend entitások REST-ből történő lekérdezésére szolgál (például mediaContext.Assets.Where(...)).  
+* A SaveChanges házirend et a szolgáltatáson belüli adatokat módosító műveletekhez használja (például egy entitást frissítő entitás létrehozásához, egy művelet szolgáltatásfunkciójának hívásához).  
   
-  Ez a témakör felsorolja a kivételtípus és a .NET-keretrendszerhez készült Media Services SDK által kezelt hibakódok újrapróbálkozási logika.  
+  Ez a témakör a Media Services SDK által a .NET újrapróbálkozási logikához kezelt kivételtípusokat és hibakódokat sorolja fel.  
 
 ## <a name="exception-types"></a>Kivételtípusok
-A következő táblázat ismerteti a kivételeket, amelyek a .NET-keretrendszerhez készült Media Services SDK kezeli, vagy nem kezeli a néhány művelet, amely az átmeneti hibákat okozhat.  
+Az alábbi táblázat azokat a kivételeket ismerteti, amelyeket a Media Services SDK a .NET leíróihoz kezel, vagy nem kezeli azokat a műveleteket, amelyek átmeneti hibákat okozhatnak.  
 
-| Kivétel | Web Request | Storage | Lekérdezés | SaveChanges |
+| Kivétel | Webes kérelem | Storage | Lekérdezés | Módosítások mentése |
 | --- | --- | --- | --- | --- |
-| WebException<br/>További információkért lásd: a [WebException állapotkódok](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) szakaszban. |Igen |Igen |Igen |Igen |
-| DataServiceClientException<br/> További információkért lásd: [HTTP-állapotkódok hiba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nem |Igen |Igen |Igen |
-| DataServiceQueryException<br/> További információkért lásd: [HTTP-állapotkódok hiba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nem |Igen |Igen |Igen |
-| DataServiceRequestException<br/> További információkért lásd: [HTTP-állapotkódok hiba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nem |Igen |Igen |Igen |
+| WebException<br/>További információt a [WebException állapotkódok](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) című szakaszban talál. |Igen |Igen |Igen |Igen |
+| DataServiceClientException<br/> További információ: [HTTP hibaállapot-kódok](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nem |Igen |Igen |Igen |
+| DataServiceQueryException<br/> További információ: [HTTP hibaállapot-kódok](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nem |Igen |Igen |Igen |
+| DataServiceRequestException<br/> További információ: [HTTP hibaállapot-kódok](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nem |Igen |Igen |Igen |
 | DataServiceTransportException |Nem |Nem |Igen |Igen |
-| TimeoutException |Igen |Igen |Igen |Nem |
+| IdőoutKivétel |Igen |Igen |Igen |Nem |
 | SocketException |Igen |Igen |Igen |Igen |
-| StorageException |Nem |Igen |Nem |Nem |
-| IOException |Nem |Igen |Nem |Nem |
+| StorageException (StorageException) |Nem |Igen |Nem |Nem |
+| IOKivétel |Nem |Igen |Nem |Nem |
 
-### <a name="WebExceptionStatus"></a> WebException állapotkódok
-Az alábbi táblázat mutatja, melyik WebException hiba kódok az újrapróbálkozási logika van megvalósítva. A [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) enumerálás a állapotkódok határozza meg.  
+### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a>WebException állapotkódok
+Az alábbi táblázat bemutatja, hogy a WebException melyik hibakódja esetén valósítja meg az újrapróbálkozási logikát. A [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) enumerálás határozza meg az állapotkódokat.  
 
-| Állapot | Web Request | Storage | Lekérdezés | SaveChanges |
+| status | Webes kérelem | Storage | Lekérdezés | Módosítások mentése |
 | --- | --- | --- | --- | --- |
-| ConnectFailure |Igen |Igen |Igen |Igen |
+| Csatlakozási hiba |Igen |Igen |Igen |Igen |
 | NameResolutionFailure |Igen |Igen |Igen |Igen |
 | ProxyNameResolutionFailure |Igen |Igen |Igen |Igen |
-| SendFailure |Igen |Igen |Igen |Igen |
-| PipelineFailure |Igen |Igen |Igen |Nem |
-| ConnectionClosed |Igen |Igen |Igen |Nem |
-| KeepAliveFailure |Igen |Igen |Igen |Nem |
-| UnknownError |Igen |Igen |Igen |Nem |
-| ReceiveFailure |Igen |Igen |Igen |Nem |
-| RequestCanceled |Igen |Igen |Igen |Nem |
-| Időtúllépés |Igen |Igen |Igen |Nem |
-| Protokollhiba lépett <br/>Az újrapróbálkozás Protokollhiba lépett a HTTP állapot kód kezelésének vezérli. További információkért lásd: [HTTP-állapotkódok hiba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Igen |Igen |Igen |Igen |
+| Sikertelen küldési hiba |Igen |Igen |Igen |Igen |
+| PipelineFailure (Folyamathiba) |Igen |Igen |Igen |Nem |
+| Kapcsolat lezárva |Igen |Igen |Igen |Nem |
+| KeepAliveFailure (KeepAliveFailure) |Igen |Igen |Igen |Nem |
+| Ismeretlen hiba |Igen |Igen |Igen |Nem |
+| Fogadási hiba |Igen |Igen |Igen |Nem |
+| Kéréstörölve |Igen |Igen |Igen |Nem |
+| Időkorlát |Igen |Igen |Igen |Nem |
+| Protokollhiba <br/>A ProtocolError újrapróbálkozását a HTTP-állapotkód-kezelés vezérli. További információ: [HTTP hibaállapot-kódok](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Igen |Igen |Igen |Igen |
 
-### <a name="HTTPStatusCode"></a> HTTP-állapotkódok hiba
-Lekérdezési és létrehozva műveletei throw dataserviceclientexception típusú kivétel, DataServiceQueryException vagy DataServiceQueryException, amikor a StatusCode tulajdonságban a HTTP-hiba állapotkódot adott vissza.  Az alábbi táblázat a hibakódok az újrapróbálkozási logika van megvalósítva.  
+### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a>HTTP-hibaállapot-kódok
+Amikor a Query és a SaveChanges műveletek a DataServiceClientException, a DataServiceQueryException vagy a DataServiceQueryException metódust dobják, a HTTP-hibaállapot-kód a StatusCode tulajdonságban jelenik meg.  Az alábbi táblázat bemutatja, hogy az újrapróbálkozási logika mely hibakódokhoz van megvalósítva.  
 
-| Állapot | Web Request | Storage | Lekérdezés | SaveChanges |
+| status | Webes kérelem | Storage | Lekérdezés | Módosítások mentése |
 | --- | --- | --- | --- | --- |
 | 401 |Nem |Igen |Nem |Nem |
-| 403 |Nem |Igen<br/>A hosszabb ideig vár az újrapróbálkozások kezelésére. |Nem |Nem |
+| 403 |Nem |Igen<br/>Az újrapróbálkozások kezelése hosszabb várakozással. |Nem |Nem |
 | 408 |Igen |Igen |Igen |Igen |
 | 429 |Igen |Igen |Igen |Igen |
 | 500 |Igen |Igen |Igen |Nem |
@@ -81,7 +81,7 @@ Lekérdezési és létrehozva műveletei throw dataserviceclientexception típus
 | 503 |Igen |Igen |Igen |Igen |
 | 504 |Igen |Igen |Igen |Nem |
 
-Ha szeretne vessen egy pillantást a Media Services SDK for .NET újrapróbálkozási logikát tényleges megvalósítását, lásd: [azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
+Ha meg szeretné tekinteni a Media Services SDK .NET újrapróbálkozási logikára vonatkozó tényleges megvalósítását, olvassa el az [azure-sdk-for-media-services című témakört.](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling)
 
 ## <a name="next-steps"></a>További lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

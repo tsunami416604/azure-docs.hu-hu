@@ -1,6 +1,6 @@
 ---
-title: Blobok másolása egy tárfiókból egy Azure Media Services adategységbe |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan másolhat egy meglévő blob egy Media Services-objektumba. A példában az Azure Media Services .NET SDK-bővítményeket.
+title: Blobok másolása tárfiókból egy Azure Media Services-eszközbe | Microsoft dokumentumok
+description: Ez a témakör bemutatja, hogyan másolhat egy meglévő blobot egy Media Services-eszközbe. A példa az Azure Media Services .NET SDK Extensions szolgáltatást használja.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67068895"
 ---
-# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Meglévő blobok másolása egy Media Services objektumba
+# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Meglévő blobok másolása Media Services-eszközbe
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Ez a cikk bemutatja, hogyan másolhat át blobokat egy tárfiókból egy új Azure Media Services (AMS) eszköz használatával történő [Azure Media Services .NET SDK-bővítményeket](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+Ez a cikk bemutatja, hogyan másolhat blobokat egy tárfiókból egy új Azure Media Services (AMS) eszközbe az [Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/)használatával.
 
-Meg nem próbálja meg módosítani a Media Services Media Service API-k használata nélkül létrehozott blob-tárolók tartalmát.
+Ne kísérelje meg a Media Services által a Media Services API-k használata nélkül létrehozott blobtárolók tartalmának módosítását.
 
-A bővítmény módszerek használata:
+A kiterjesztési módszerek a következőkkel működnek:
 
-- Rendszeres eszközök.
-- Élő archiválás eszközök (FragBlob formátumban).
-- Forrás és cél eszközök tartozó különböző Media Services-fiókok (akár különböző adatközpontokban) keresztül. Előfordulhat azonban, így felmerülő díjak. Díjszabással kapcsolatos további információkért lásd: [adatforgalom](https://azure.microsoft.com/pricing/#header-11).
+- Rendszeres vagyontárgyak.
+- Élő archív eszközök (FragBlob formátum).
+- Különböző Media Services-fiókokhoz tartozó forrás- és céleszközök (akár a különböző adatközpontok között is). Ennek során azonban felmerülhetnek költségek. Az árképzésről további információt az Adatátvitel című témakörben [talál.](https://azure.microsoft.com/pricing/#header-11)
 
-A cikk bemutatja, két Kódminták:
+A cikk két kódmintát mutat be:
 
-1. Blobok másolása egy AMS-fiók egy objektumba az AMS-fiók egy másik új eszközt.
-2. Blobok másolása egy tárfiókból egy AMS-fiók egy új objektumba.
+1. Blobok másolása egy aMS-fiók egyik eszközéről egy másik AMS-fiókban lévő új eszközbe.
+2. Blobok másolása néhány tárfiókból egy Új eszköz egy AMS-fiókban.
 
-## <a name="copy-blobs-between-two-ams-accounts"></a>Két AMS-fiókok közötti blobok másolása  
+## <a name="copy-blobs-between-two-ams-accounts"></a>Blobok másolása két AMS-fiók között  
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Két Media Services-fiókot. Tekintse meg a cikket [Media Services-fiók létrehozása](media-services-portal-create-account.md).
+Két Media Services-fiók. Lásd a [Media Services-fiók létrehozása című cikket.](media-services-portal-create-account.md)
 
 ### <a name="download-sample"></a>Minta letöltése
-Követheti, hogy ez a cikk lépéseit, vagy letöltheti, amely tartalmazza a kódot, az ebben a cikkben leírt mintát [Itt](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).
+A cikkben ismertetett lépéseket követheti, vagy letöltheti a cikkben leírt kódot tartalmazó mintát [innen.](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)
 
 ### <a name="set-up-your-project"></a>A projekt beállítása
 
-1. A fejlesztési környezet beállítása a leírtak szerint [.NET-keretrendszerrel történő Media Services-fejlesztés](media-services-dotnet-how-to-use.md). 
-2. Adja hozzá az appSettings szakaszt a .config fájlt, és frissítse az értékeket, a Media Services-fiókok, a cél tárfiók és a eszköz azonosítóját.  
+1. Állítsa be a fejlesztői környezetet a Media Services fejlesztésében a .NET segítségével [leírtak szerint.](media-services-dotnet-how-to-use.md) 
+2. Adja hozzá az appSettings szakaszt a .config fájlhoz, és frissítse az értékeket a Media Services-fiókok, a céltárfiók és a forráseszköz-azonosító alapján.  
 
 ```xml
 <appSettings>
@@ -76,9 +76,9 @@ Követheti, hogy ez a cikk lépéseit, vagy letöltheti, amely tartalmazza a kó
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Az AMS-fiók egy adategységbe egy AMS-fiók egy objektumba blobok másolása
+### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Blobok másolása egy AMS-fiók egyik eszközéről egy másik AMS-fiókban lévő eszközbe
 
-A következő kódot használ bővítmény **IAsset.Copy** módszer minden fájl másolása a forrás adategység egyetlen bővítmény használata az cél objektumba.
+A következő kód az **IAsset.Copy** metódus bővítményt használja a forráseszköz összes fájljának egyetlen bővítmény használatával történő másolásához.
 
 ```csharp
 using System;
@@ -158,17 +158,17 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Blobok másolása egy tárfiókból egy AMS-fiókba 
+## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Blobok másolása tárfiókból AMS-fiókba 
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Egy tárfiók, amelyről szeretne blobokat másolja.
-- Egy AMS-fiók, amelybe át szeretné másolni a blobokat.
+- Egy storage-fiók, amelyből blobokat szeretne másolni.
+- Egy AMS-fiók, amelybe blobokat szeretne másolni.
 
 ### <a name="set-up-your-project"></a>A projekt beállítása
 
-1. A fejlesztési környezet beállítása a leírtak szerint [.NET-keretrendszerrel történő Media Services-fejlesztés](media-services-dotnet-how-to-use.md). 
-2. Adja hozzá az appSettings szakaszt a .config fájlt, és frissítse az értékeket, a forrás tárolási és a cél AMS fiókok alapján.
+1. Állítsa be a fejlesztői környezetet a Media Services fejlesztésében a .NET segítségével [leírtak szerint.](media-services-dotnet-how-to-use.md) 
+2. Adja hozzá az appSettings szakaszt a .config fájlhoz, és frissítse az értékeket a forrástároló és a cél AMS-fiókok alapján.
 
 ```xml
 <appSettings>
@@ -185,12 +185,12 @@ namespace CopyExistingBlobsIntoAsset
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Blobok másolása egy tárfiókból egy AMS-fiók egy új objektumba
+### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Blobok másolása néhány tárfiókból egy Új eszközbe egy AMS-fiókban
 
-Az alábbi kód blobok másol egy Media Services-objektumba a storage-fiók. 
+A következő kód blobokat másol egy tárfiókból egy Media Services-eszközbe. 
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információt [ebben a cikkben](media-services-dotnet-manage-entities.md#limit-access-policies) talál.
 
 ```csharp
 using System;
@@ -381,7 +381,7 @@ Most már kódolhatja a feltöltött adategységeket. További információ: [En
 
 Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a konfigurált tárolóba érkező fájlok alapján. További információkért tekintse meg [ezt a mintát](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

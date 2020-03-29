@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cloud Shell a Windows-felhasználók |} A Microsoft Docs
-description: Útmutató a felhasználók számára, akik nem ismeri a Linux rendszereket
+title: Azure Cloud Shell Windows-felhasználóknak | Microsoft dokumentumok
+description: Útmutató a Linux rendszereket nem ismerő felhasználók számára
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67204139"
 ---
-# <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell az Azure Cloud Shell a Windows-felhasználók
+# <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell a Cloud Shellben Windows-felhasználóknak
 
-A 2018 május, a módosításra [bejelentett](https://azure.microsoft.com/blog/pscloudshellrefresh/) PowerShell az Azure Cloud Shellben.
-A PowerShell-tapasztalata az Azure Cloud Shell most futtatások [PowerShell Core 6-os](https://github.com/powershell/powershell) Linux-környezetben.
-Ezzel lehet a PowerShell-tapasztalata a Cloud Shellben egy Windows PowerShell által várt képest néhány eltérés tapasztalható.
+2018 májusában [módosításokat jelentettek be](https://azure.microsoft.com/blog/pscloudshellrefresh/) a PowerShellre az Azure Cloud Shellben.
+Az Azure Cloud Shell PowerShell-élménye mostantól linuxos környezetben futtatja a [PowerShell Core](https://github.com/powershell/powershell) 6-ot.
+Ezzel a módosítással előfordulhat, hogy a PowerShell-élmény a Cloud Shellben a Windows PowerShell-környezetben várhatóhoz képest némi különbséget mutat.
 
-## <a name="file-system-case-sensitivity"></a>Fájl rendszer kis-és nagybetűk
+## <a name="file-system-case-sensitivity"></a>Fájlrendszer kis- és nagybetűk megkülönböztetése
 
-A fájlrendszer az Windows, a kis-és, mivel a Linux, a fájlrendszer kis-és nagybetűket.
-Korábban `file.txt` és `FILE.txt` tekintették ugyanazt a fájlt, de most kell a különböző fájlok minősülnek.
-Kell használni a megfelelő kis-és közben `tab-completing` a fájlrendszerben.
-PowerShell-specifikus során lép fel, mint például `tab-completing` parancsmagok neveivel, paraméterek és értékek, nem különböznek.
+A fájlrendszer nem érzékeny a kis- és nagybetűkre a Windows rendszerben, míg Linux on a fájlrendszer a kis- és nagybetűket.
+Korábban, `file.txt` és `FILE.txt` úgy ítélték meg, hogy ugyanazt a fájlt, de most már úgy kell tekinteni, hogy a különböző fájlokat.
+A fájlrendszerben megfelelő `tab-completing` burkolatot kell használni.
+A PowerShell-specifikus `tab-completing` tapasztalatok, például a parancsmag nevei, paraméterei és értékei nem tartalmaznak kis- és nagybetűket.
 
-## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell-aliasok és Linux-segédeszközöket
+## <a name="windows-powershell-aliases-vs-linux-utilities"></a>A Windows PowerShell aliasok és Linux-segédprogramok
 
-Néhány meglévő PowerShell-aliasok rendelkezik az azonos nevű beépített Linux-parancsok, például `cat`,`ls`, `sort`, `sleep`stb. A PowerShell Core 6-os aliasról, amelyek ütköznek a beépített Linux-parancsok el lettek távolítva.
-Az alábbiakban gyakori aliasról, amelyek el lettek távolítva, valamint a hasonló parancsok:  
+Egyes meglévő PowerShell-aliasok neve megegyezik a beépített `cat`Linux-parancsokkal, például ,`ls`, `sort`, `sleep`, stb. A PowerShell Core 6-ban a beépített Linux-parancsokkal ütköző aliasokat eltávolították.
+Az alábbiakban az eltávolított általános aliasokat, valamint azok megfelelő parancsait találjuk meg:  
 
-|Alias eltávolítva   |Egyenértékű parancs   |
+|Eltávolított alias   |Egyenértékű parancs   |
 |---|---|
 |`cat`    | `Get-Content` |
 |`curl`   | `Invoke-WebRequest` |
@@ -51,22 +51,22 @@ Az alábbiakban gyakori aliasról, amelyek el lettek távolítva, valamint a has
 |`sort`   | `Sort-Object` |
 |`wget`   | `Invoke-WebRequest` |
 
-## <a name="persisting-home"></a>Persisting $HOME
+## <a name="persisting-home"></a>A $HOME továbbra is fennáll
 
-Korábbi felhasználók csak sikerült megőrizni, parancsprogramokat és egyéb felhőalapú Meghajtójukra fájlokat.
-Most a felhasználó $HOME könyvtár konzisztenciája is állandó munkamenetek között.
+A korábbi felhasználók csak parancsfájlokat és más fájlokat tudtak megtartani a Cloud Drive-on.
+Most a felhasználó $HOME könyvtára is megmarad a munkamenetek között.
 
-## <a name="powershell-profile"></a>PowerShell-profilt
+## <a name="powershell-profile"></a>PowerShell-profil
 
-Alapértelmezés szerint egy profil PowerShell nem jön létre.
-A profil, hozzon létre egy `PowerShell` könyvtár alatt `$HOME/.config`.
+Alapértelmezés szerint a felhasználó PowerShell-profilja nem jön létre.
+A profil létrehozásához `PowerShell` hozzon `$HOME/.config`létre egy könyvtárat a területen.
 
 ```azurepowershell-interactive
 mkdir (Split-Path $profile.CurrentUserAllHosts)
 ```
 
-A `$HOME/.config/PowerShell`, hozhat létre a profilfájlokat - `profile.ps1` és/vagy `Microsoft.PowerShell_profile.ps1`.
+A `$HOME/.config/PowerShell`területen létrehozhatja profilfájljait `profile.ps1` `Microsoft.PowerShell_profile.ps1`- és/vagy .
 
-## <a name="whats-new-in-powershell-core-6"></a>Újdonságok a PowerShell Core 6-os
+## <a name="whats-new-in-powershell-core-6"></a>A PowerShell Core 6 újdonságai
 
-Újdonságok a PowerShell Core 6-os kapcsolatos további információkért tekintse a [PowerShell docs](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) és a [első lépései a PowerShell Core](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) blogbejegyzést.
+A PowerShell Core 6 újdonságairól a [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) és a [PowerShell Core](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) első lépései blogbejegyzést.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub fejlesztői útmutató |} A Microsoft Docs
-description: Az Azure IoT Hub fejlesztői útmutató tartalmaz végpontokat, biztonsági, az eszközidentitás-jegyzék, eszközkezelés, közvetlen metódusok, ikereszközök, fájlfeltöltéseket, feladatok, az IoT Hub lekérdezési nyelv, hozzászólások és üzenetkezelés.
+title: Fejlesztői útmutató az Azure IoT Hubhoz | Microsoft dokumentumok
+description: Az Azure IoT Hub fejlesztői útmutató jaain végpontok, biztonság, az identitás-beállításjegyzék, eszközkezelés, közvetlen módszerek, eszköz twins, fájlfeltöltések, feladatok, az IoT Hub lekérdezési nyelv és az üzenetküldés.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,70 +9,70 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60400150"
 ---
-# <a name="azure-iot-hub-developer-guide"></a>Az Azure IoT Hub fejlesztői útmutató
+# <a name="azure-iot-hub-developer-guide"></a>Az Azure IoT Hub fejlesztői útmutatója
 
-Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer.
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a megbízható és biztonságos kétirányú kommunikációt több millió eszköz és egy megoldás háttérkiszolgáló között.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Az Azure IoT Hub a következőket tartalmazza:
+Az Azure IoT Hub a következőket biztosítja:
 
-* Biztonságos kommunikáció az eszközönkénti biztonsági hitelesítő adatok használatával, és a hozzáférés-vezérlés.
+* Biztonságos kommunikáció az eszközönkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés használatával.
 
-* Több eszköz-felhő és a felhőből az eszközre kapacitású kommunikációs lehetőségeit.
+* Több eszközről felhőre és felhőből az eszközre irányuló nagy léptékű kommunikációs lehetőségek.
 
-* Az eszközönkénti állapotinformációkat és metaadatok lekérdezhető tárolására.
+* Az eszközönkénti állapotadatok és metaadatok lekérdezhető tárolása.
 
-* A legnépszerűbb nyelvek és platformok eszközkönyvtárait egyszerű eszköz kapcsolat.
+* Egyszerű eszközkapcsolat a legnépszerűbb nyelvekhez és platformokhoz készült eszközkönyvtárakkal.
 
-Ez az IoT Hub fejlesztői útmutató a következő cikkeket tartalmazza:
+Ez az IoT Hub fejlesztői útmutatója a következő cikkeket tartalmazza:
 
-* [Eszközről a felhőbe való kommunikáció útmutatást](iot-hub-devguide-d2c-guidance.md) segít az eszköz – felhő üzeneteket, az eszköz ikereszköz jelentett tulajdonságait és a fájl feltöltése között választja.
+* [Az eszközről a felhőbe](iot-hub-devguide-d2c-guidance.md) irányuló kommunikációról szóló útmutatás segítségével választhat az eszközről a felhőbe irányuló üzenetek, az ikereszköz jelentett tulajdonságai és a fájlfeltöltés között.
 
-* [Útmutató a felhőből az eszközre irányuló kommunikáció](iot-hub-devguide-c2d-guidance.md) segít választhat a közvetlen metódusok, eszköz ikereszköz kívánt tulajdonságait és felhőből az eszközre irányuló üzenetek között.
+* [A felhőből az eszközre irányuló kommunikációútmutatás segítségével](iot-hub-devguide-c2d-guidance.md) választhat a közvetlen módszerek, az ikereszköz kívánt tulajdonságai és a felhőből az eszközre irányuló üzenetek között.
 
-* [Eszközről a felhőbe és a felhőből az eszközre irányuló, az IoT Hub üzenetküldési](iot-hub-devguide-messaging.md) a üzenettovábbítási szolgáltatások (eszköz-felhő és a felhőből az eszközre), amely az IoT Hub tesz ismerteti.
+* [Az IoT Hubbal az eszközök ről a felhőbe és a felhőbe irányuló üzenetküldés](iot-hub-devguide-messaging.md) az IoT Hub bal üzenetkezelési funkcióit (eszközről felhőbe és felhőből az eszközre) ismerteti.
 
-  * [Eszköz – felhő üzeneteket küldenek az IoT Hub](iot-hub-devguide-messages-d2c.md).
+  * [Eszközről felhőbe irányuló üzenetekküldése az IoT Hubba.](iot-hub-devguide-messages-d2c.md)
 
-  * [Olvassa el az eszközt a felhőbe irányuló üzenetek a beépített végpontról](iot-hub-devguide-messages-read-builtin.md).
+  * [Az eszközről a felhőbe irányuló üzeneteket a beépített végpontról olvashatja.](iot-hub-devguide-messages-read-builtin.md)
 
-  * [Egyéni végpontok és útválasztási szabályok használata az eszköz a felhőbe irányuló üzenetek](iot-hub-devguide-messages-read-custom.md).
+  * [Egyéni végpontok és útválasztási szabályok használata az eszközről a felhőbe irányuló üzenetekhez.](iot-hub-devguide-messages-read-custom.md)
 
-  * [Felhőből az eszközre irányuló üzenetek küldése az IoT hubról](iot-hub-devguide-messages-c2d.md).
+  * [Felhőből az eszközre irányuló üzenetek küldése az IoT Hubról.](iot-hub-devguide-messages-c2d.md)
 
-  * [Hozzon létre és üzenetek olvasásához az IoT Hub](iot-hub-devguide-messages-construct.md).
+  * [IoT Hub-üzenetek létrehozása és olvasása.](iot-hub-devguide-messages-construct.md)
 
-* [Fájlfeltöltés az eszközökről](iot-hub-devguide-file-upload.md) ismerteti, hogyan tölthet fel fájlokat az eszközről. A cikk többek között az értesítéseket küldhet a feltöltési folyamat információt is tartalmaz.
+* [Fájlok feltöltése egy eszközről](iot-hub-devguide-file-upload.md) leírja, hogyan tölthet fel fájlokat egy eszközről. A cikk olyan témakörökkel kapcsolatos információkat is tartalmaz, mint például a feltöltési folyamat által küldhető értesítések.
 
-* [Az IoT Hub eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)azt ismerteti, milyen információkat minden IoT-központ identitás beállításjegyzék tárolja. A cikk azt is leírja, hogyan elérheti és módosíthatja azt.
+* [Az IOt Hub ban az eszközök identitásainak kezelése](iot-hub-devguide-identity-registry.md)leírja, hogy az egyes IoT-központ identitás-beállításjegyzéke milyen adatokat tárol. A cikk azt is ismerteti, hogyan érheti el és módosíthatja azt.
 
-* [Ki férhet hozzá az IoT Hub](iot-hub-devguide-security.md) a biztonsági modell hozzáférést biztosít az IoT Hub funkció mindkét eszközökhöz és felhőalapú összetevőit ismerteti. A cikk tokeneket és X.509-tanúsítványokat, és részleteket adhat az engedélyek használatával kapcsolatos információt tartalmaz.
+* [Az IoT Hubhoz való hozzáférés szabályozása](iot-hub-devguide-security.md) az IoT Hub funkcióihoz való hozzáférés engedélyezéséhez használt biztonsági modellt írja le mind az eszközök, mind a felhőbeli összetevők számára. A cikk a jogkivonatok és az X.509-es tanúsítványok használatával kapcsolatos információkat, valamint a megadhat engedélyek részleteit tartalmazza.
 
-* [Ikereszközök használata az állapot és a konfiguráció szinkronizálása](iot-hub-devguide-device-twins.md) ismerteti a *ikereszköz* fogalom. A cikk is ismerteti a funkció eszköz twins teszi közzé, például az eszköz az ikereszköz való szinkronizálása. A cikk az ikereszközök tárolt adatokra vonatkozó információkat tartalmaz.
+* [Az eszköz twins állapot ának szinkronizálásához és konfigurációk](iot-hub-devguide-device-twins.md) ismerteti az *eszköz iker* koncepciója. A cikk azt is ismerteti, hogy az ikereszközök milyen funkciókat biztosítanak, például szinkronizálja az eszközt az ikereszközével. A cikk az ikereszközben tárolt adatokkal kapcsolatos információkat tartalmazza.
 
-* [Az eszközön közvetlen metódus meghívása](iot-hub-devguide-direct-methods.md) közvetlen metódus életciklusának ismerteti. A cikk ismerteti az eszköznek a háttéralkalmazás metódusokat hívhat meg, és kezelni a közvetlen metódus az eszközön.
+* [Közvetlen metódus meghívása egy eszközön](iot-hub-devguide-direct-methods.md) egy közvetlen metódus életciklusát írja le. A cikk ismerteti, hogyan lehet metódusokat hívni egy eszközön a háttéralkalmazásból, és kezelni a közvetlen módszert az eszközön.
 
-* [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md) ismerteti, hogyan ütemezhet feladatokat több eszközön. A cikk azt ismerteti, hogyan küldhetők be feladatok, mint az ikereszközök használatával egy eszköz frissítése közvetlen metódus végrehajtása a feladatokat elvégző. Emellett bemutatja, hogyan lehet egy feladat állapotának lekérdezése.
+* [A feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md) azt ismerteti, hogyan ütemezheti a feladatokat több eszközön. A cikk ismerteti, hogyan küldheti el a feladatokat végrehajtó feladatokat, mint egy közvetlen metódus végrehajtása, frissítése egy eszköz egy eszköz iker. Azt is leírja, hogyan lehet lekérdezni egy feladat állapotát.
 
-* [Hivatkozás - kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md) ismerteti a kommunikációs protokollokat, hogy az IoT Hub eszköz kommunikációt támogatja, és nyitva kell lennie portokat sorolja fel.
+* [Hivatkozás – válasszon egy kommunikációs protokollt,](iot-hub-devguide-protocols.md) amely az IoT Hub által az eszközkommunikációhoz támogatott kommunikációs protokollokat írja le, és felsorolja azokat a portokat, amelyeknek nyitva kell lenniük.
 
-* [Referencia – IoT Hub-végpontok](iot-hub-devguide-endpoints.md) ismerteti a különféle végpontok, amely minden egyes IoT hub-futtatókörnyezet és a felügyeleti műveletekhez. A cikk azt is leírja, hogyan hozhat létre további végpontokat az IoT hub és a helyszíni átjáró használata az IoT Hub-végpontok nem szabványos forgatókönyvekben csatlakozásának engedélyezéséhez.
+* [Referencia – Az IoT Hub-végpontok](iot-hub-devguide-endpoints.md) ismerteti a különböző végpontok, amelyek az egyes IoT-központok elérhetővé teszi a futásidejű és felügyeleti műveletek. A cikk azt is ismerteti, hogyan hozhat létre további végpontokat az IoT hubban, és hogyan használhat egy helyszíni átjárót az IoT Hub végpontjaihoz való kapcsolódás engedélyezéséhez nem szabványos forgatókönyvekben.
 
-* [Referencia - az IoT Hub lekérdezési nyelv az ikereszközökhöz, feladatokkal és üzenet-útválasztása](iot-hub-devguide-query-language.md) ismerteti, hogy az IoT Hub lekérdezési nyelv, amely lehetővé teszi, hogy a hub az ikereszközökhöz és feladatokhoz kapcsolatban lévő információk lekéréséhez.
+* [Referencia – Az IoT Hub lekérdezési nyelve az eszközök twins, feladatok és üzenet-útválasztás](iot-hub-devguide-query-language.md) leírja, hogy az IoT Hub lekérdezési nyelv, amely lehetővé teszi, hogy az eszköz twins és feladatok adatokat a hubról.
 
-* [Referencia - kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md) foglalja össze a kvóták, állítsa be az IoT Hub szolgáltatás és a szabályozás, amely akkor fordul elő, ha túllépi a kvótát.
+* [Referencia – kvóták és sávszélesség-szabályozás](iot-hub-devguide-quotas-throttling.md) összegzi az IoT Hub szolgáltatásban beállított kvótákat és a sávszélesség-szabályozást, amely akkor következik be, ha túllépi a kvótát.
 
-* [Hivatkozás - díjszabás](iot-hub-devguide-pricing.md) általános információkat tartalmaz a különböző SKU-k és az IoT Hub és az információt hogyan az IoT Hub különféle funkciók biztosításához mérjük üzenetekként által az IoT Hub díjszabása.
+* [Referencia – az árképzés](iot-hub-devguide-pricing.md) általános információkat nyújt a különböző SK-k és az IoT Hub díjszabása, valamint a rról, hogy a különböző IoT Hub-funkciók at az IoT Hub által imputálásként mérik.
 
-* [Referencia - eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md) sorolja fel az Azure IoT SDK-k, hogy az IoT hubbal együttműködő eszköz és szolgáltatás alkalmazások fejlesztéséhez. A cikk online API-dokumentáció mutató hivatkozásokat tartalmaz.
+* [Referencia – Az eszköz- és szolgáltatásSDK-k](iot-hub-devguide-sdks.md) az Azure IoT SDK-kat sorolja fel az IoT-központtal interakcióba lépő eszköz- és szolgáltatásalkalmazások fejlesztéséhez. A cikk az online API-dokumentációra mutató hivatkozásokat tartalmaz.
 
-* [Referencia – IoT Hub MQTT-támogatás](iot-hub-mqtt-support.md) arról, hogy az IoT Hub hogyan támogatja az MQTT protokoll részletes információkat tartalmaz. A cikk ismerteti az MQTT protokoll beépített, az Azure IoT SDK-k támogatását, és közvetlenül az MQTT protokoll használatával kapcsolatos információkat.
+* [Referencia – Az IoT Hub MQTT támogatása](iot-hub-mqtt-support.md) részletes információkat nyújt arról, hogy az IoT Hub hogyan támogatja az MQTT protokollt. A cikk ismerteti az Azure IoT SDK-kba beépített MQTT protokoll támogatását, és az MQTT protokoll közvetlen használatával kapcsolatos információkat ismerteti.
 
-* [Szószedet](iot-hub-devguide-glossary.md) gyakori IoT Hub-mal kapcsolatos kifejezések listája.
+* [Szószedet](iot-hub-devguide-glossary.md) a közös IoT Hub-vonatkozású kifejezések listája.

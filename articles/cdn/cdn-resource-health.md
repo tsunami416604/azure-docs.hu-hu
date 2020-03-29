@@ -1,6 +1,6 @@
 ---
-title: Az Azure CDN-erőforrások állapotfigyelésének |} A Microsoft Docs
-description: Útmutató az Azure Resource Health az Azure CDN-erőforrások állapotának monitorozásához.
+title: Az Azure CDN-erőforrások állapotának figyelése| Microsoft dokumentumok
+description: Ismerje meg, hogyan figyelheti az Azure CDN-erőforrások állapotát az Azure Resource Health használatával.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -15,53 +15,53 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6710f5e5b873f751ad21068acdc15d38574f8378
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593442"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Az Azure CDN-erőforrások állapotának figyelése
   
-Az Azure CDN a Resource health része a [az Azure resource health](../resource-health/resource-health-overview.md).  Az Azure resource health segítségével CDN-erőforrások állapotának monitorozásához és a gyakorlatban hasznosítható segítséget nyújt a problémák elhárításához.
+Az Azure CDN-erőforrás állapota az [Azure-erőforrások állapotának](../resource-health/resource-health-overview.md)egy része.  Az Azure-erőforrások állapotának használatával figyelheti a CDN-erőforrások állapotát, és a problémák elhárításához végrehajtható útmutatást kaphat.
 
 >[!IMPORTANT] 
->Az Azure CDN a resource health jelenleg csak a globális CDN tartalomkézbesítési és az API-funkciók fiókok.  Az Azure CDN erőforrás állapota nem ellenőrzi az egyes CDN-végpontok.
+>Az Azure CDN-erőforrások állapota jelenleg csak a globális CDN-kézbesítési és API-képességek állapotát teszi ki.  Az Azure CDN-erőforrás állapota nem ellenőrzi az egyes CDN-végpontokat.
 >
->Az azt jelzi, hogy az Azure CDN a resource health-hírcsatorna lehet akár 15 percet késik.
+>Az Azure CDN-erőforrások állapotát figyelő jelek akár 15 percet is késhetnek.
 
-## <a name="how-to-find-azure-cdn-resource-health"></a>Az Azure CDN a resource health megkeresése
+## <a name="how-to-find-azure-cdn-resource-health"></a>Az Azure CDN-erőforrások állapotának megkeresése
 
-1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg a CDN-profilra.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg a CDN-profilját.
 
-2. Kattintson a **beállítások** gombra.
+2. Kattintson a **Beállítások** gombra.
 
     ![Beállítások gomb](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. A *támogatás + hibaelhárítás*, kattintson a **a Resource health**.
+3. A *Támogatás + hibaelhárítás*csoportban kattintson **az Erőforrás állapota**elemre.
 
-    ![CDN erőforrás állapota](./media/cdn-resource-health/cdn-resource-health3.png)
+    ![CDN-erőforrás állapota](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->Megjelenik a CDN-erőforrások is megkeresheti a *a Resource health* csempéje a *súgó + támogatás* panelen.  Gyors bevezetés a *súgó + támogatás* kattintva a bekarikázott **?** a jobb felső sarokban a portál.
+>A CDN-erőforrásokat a *Súgó + támogatás* panel Erőforrás *állapota* csempén is megtalálhatja.  Gyorsan eljut *Súgó + támogatás* kattintva a bekarikázott? **?** a portál jobb felső sarkában.
 >
 > ![Súgó és támogatás](./media/cdn-resource-health/cdn-help-support.png)
 
-## <a name="azure-cdn-specific-messages"></a>Az Azure CDN-specifikus üzenetek
+## <a name="azure-cdn-specific-messages"></a>Azure CDN-specifikus üzenetek
 
-Állapotok kapcsolódnak az Azure CDN a resource health alább találja.
+Az Azure CDN-erőforrások állapotával kapcsolatos állapotok az alábbiakban találhatók.
 
-|Message | Javasolt művelet |
+|Üzenet | Javasolt művelet |
 |---|---|
 |Előfordulhat, hogy egy vagy több CDN-végpontot leállított, eltávolított vagy helytelenül konfigurált | Előfordulhat, hogy egy vagy több CDN-végpontot leállított, eltávolított vagy helytelenül konfigurált.|
-|Sajnáljuk, de a CDN-kezelési szolgáltatás jelenleg nem érhető el | Látogasson vissza később állapotának frissítése; Ha a probléma tartósan fennáll, után a megoldás várható időpontjára, forduljon az ügyfélszolgálathoz.|
-|Előfordulhat, hogy a CDN-végpontokra negatív hatással lesznek CDN-szolgáltatóink fennálló problémái | Látogasson vissza később állapotának frissítése; A hibaelhárító eszköz használatával megtudhatja, hogyan tesztelheti a forrást, és a CDN-végpontot; Ha a probléma tartósan fennáll, után a megoldás várható időpontjára, forduljon az ügyfélszolgálathoz. |
-|A CDN-végpontok konfigurációs módosításainak terjesztése során késedelmek tapasztalhatók | Látogasson vissza később állapotának frissítése; Ha a konfigurációs módosítások teljes nem továbbítódnak a várt időn belül, forduljon az ügyfélszolgálathoz.|
-|Sajnáljuk, de a kiegészítő portál betöltése közben problémák merültek fel | Látogasson vissza később állapotának frissítése; Ha a probléma tartósan fennáll, után a megoldás várható időpontjára, forduljon az ügyfélszolgálathoz.|
-Sajnáljuk, de problémák merültek fel néhány CDN-szolgáltatónkkal kapcsolatban | Látogasson vissza később állapotának frissítése; Ha a probléma tartósan fennáll, után a megoldás várható időpontjára, forduljon az ügyfélszolgálathoz. |
+|Sajnáljuk, de a CDN-kezelési szolgáltatás jelenleg nem érhető el | Látogasson vissza ide az állapotfrissítésekért; Ha a probléma a várt megoldási idő után is fennáll, forduljon az ügyfélszolgálathoz.|
+|Előfordulhat, hogy a CDN-végpontokra negatív hatással lesznek CDN-szolgáltatóink fennálló problémái | Látogasson vissza ide az állapotfrissítésekért; A Hibaelhárítás eszközzel megtudhatja, hogyan tesztelheti az eredeti és a CDN-végpontot; Ha a probléma a várt megoldási idő után is fennáll, forduljon az ügyfélszolgálathoz. |
+|A CDN-végpontok konfigurációs módosításainak terjesztése során késedelmek tapasztalhatók | Látogasson vissza ide az állapotfrissítésekért; Ha a konfigurációs módosítások nem lesznek teljesen propagálva a várt időben, forduljon az ügyfélszolgálathoz.|
+|Sajnáljuk, de a kiegészítő portál betöltése közben problémák merültek fel | Látogasson vissza ide az állapotfrissítésekért; Ha a probléma a várt megoldási idő után is fennáll, forduljon az ügyfélszolgálathoz.|
+Sajnáljuk, de problémák merültek fel néhány CDN-szolgáltatónkkal kapcsolatban | Látogasson vissza ide az állapotfrissítésekért; Ha a probléma a várt megoldási idő után is fennáll, forduljon az ügyfélszolgálathoz. |
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure resource health – áttekintés](../resource-health/resource-health-overview.md)
-- [CDN tömörítési hibáinak elhárítása](./cdn-troubleshoot-compression.md)
-- [404-es hibákkal kapcsolatos problémák elhárítása](./cdn-troubleshoot-endpoint.md)
+- [Az Azure-erőforrások állapotának áttekintése](../resource-health/resource-health-overview.md)
+- [CdN-tömörítéssel kapcsolatos problémák elhárítása](./cdn-troubleshoot-compression.md)
+- [404-es hibákelhárítás](./cdn-troubleshoot-endpoint.md)

@@ -1,6 +1,6 @@
 ---
-title: X-EK-Debug HTTP-fejlécek az Azure CDN szabálymotorral |} A Microsoft Docs
-description: Az X-EK-Debug hibakeresési gyorsítótár kérelem fejléce a gyorsítótár-szabályzat, amely a kért objektum érvényes további információkat tartalmaz. Ezek a fejlécek Verizon jellemzőek.
+title: X-EC-Debug HTTP fejlécek az Azure CDN-szabályok motorhoz | Microsoft dokumentumok
+description: Az X-EC-Debug hibakeresési gyorsítótár kérelem fejléce további információkat tartalmaz a kért eszközre alkalmazott gyorsítótár-házirendről. Ezek a fejlécek a Verizonra jellemzőek.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,159 +15,159 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
 ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593835"
 ---
-# <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral X-EK-Debug HTTP-fejlécek
-A hibakeresési gyorsítótár kérelem fejlécét, `X-EC-Debug`, a gyorsítótár-szabályzat, amely a kért objektum érvényes további információkat tartalmaz. Ezek a fejlécek csak az adott **verizon Azure CDN Premium** termékek.
+# <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-Debug HTTP-fejlécek az Azure CDN-szabálymotorhoz
+A hibakeresési gyorsítótár-kérelem fejléce , `X-EC-Debug`további információt nyújt a kért eszközre alkalmazott gyorsítótár-házirendről. Ezek a fejlécek a **Verizon-termékekből származó Azure CDN Premium szolgáltatásra** vonatkoznak.
 
 ## <a name="usage"></a>Használat
-A felhasználó a POP-kiszolgálók által küldött válasz tartalmazza a `X-EC-Debug` fejléc csak a következő feltételek teljesülése esetén:
+A POP-kiszolgálókról a felhasználónak `X-EC-Debug` küldött válasz csak akkor tartalmazza a fejlécet, ha a következő feltételek teljesülnek:
 
-- A [gyorsítótár válaszfejlécek hibakeresési funkció](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) engedélyezve van a rules engine, az adott kérelemhez.
-- A megadott kérelem hibakeresési gyorsítótár válaszfejlécek, melyeket fog szerepelni a válasz határozza meg.
+- A [Debug Cache Response Headers szolgáltatás](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) engedélyezve van a szabálymotoron a megadott kérelemhez.
+- A megadott kérelem határozza meg a hibakeresési gyorsítótár válaszfejléceinek készletét, amelyek szerepelni fognak a válaszban.
 
-## <a name="requesting-debug-cache-information"></a>Hibakeresési információk gyorsítótárazása kérése
-A hibakeresési gyorsítótár adatai, a válaszban szereplő használja a megadott kérés a következő irányelveket:
+## <a name="requesting-debug-cache-information"></a>Hibakeresési gyorsítótár adatainak kérése
+A megadott kérelemben a következő irányelvek segítségével határozhatja meg a válaszban szereplő hibakeresési gyorsítótár adatait:
 
 Kérelem fejléce | Leírás |
 ---------------|-------------|
-X-EK-Debug: x-EK-gyorsítótár | [Gyorsítótár-állapotkód:](#cache-status-code-information)
-X-EC-Debug: x-ec-cache-remote | [Gyorsítótár-állapotkód:](#cache-status-code-information)
+X-EC-Debug: x-ec-cache | [Gyorsítótár állapotkódja](#cache-status-code-information)
+X-EC-Debug: x-ec-cache-távoli | [Gyorsítótár állapotkódja](#cache-status-code-information)
 X-EC-Debug: x-ec-check-cacheable | [Cacheable](#cacheable-response-header)
-X-EK-Debug: x-EK-gyorsítótár-key | [Cache-key](#cache-key-response-header)
-X-EC-Debug: x-ec-cache-state | [Gyorsítótár állapota](#cache-state-response-header)
+X-EC-Debug: x-ec-cache-kulcs | [Gyorsítótár-kulcs](#cache-key-response-header)
+X-EC-Debug: x-ec-cache-állapot | [Gyorsítótár állapota](#cache-state-response-header)
 
 ### <a name="syntax"></a>Szintaxis
 
-Hibakeresési fejlécek kérheti többek között a következő fejlécére, és a megadott irányelveket a kérésben gyorsítótár választ:
+A hibakeresési gyorsítótár válaszfejlécei a következő fejléc és a megadott direktívák kéréssel kérhetők a kérelemben:
 
 `X-EC-Debug: Directive1,Directive2,DirectiveN`
 
-### <a name="sample-x-ec-debug-header"></a>X-EK-Debug minta fejléc
+### <a name="sample-x-ec-debug-header"></a>Minta X-EC-Debug fejléc
 
 `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-## <a name="cache-status-code-information"></a>Kód gyorsítótár állapotadatait.
-Az X-EK-Debug válaszfejléc azonosíthatja a kiszolgáló és a válasz az alábbi irányelvek keresztül kezelésének módját:
+## <a name="cache-status-code-information"></a>Gyorsítótár állapotkódjának adatai
+Az X-EC-Debug válaszfejléc a következő irányelvek alapján képes azonosítani a kiszolgálót és azt, hogyan kezelte a választ:
 
 Fejléc | Leírás
 -------|------------
-X-EK-Debug: x-EK-gyorsítótár | Ezt a fejlécet, amikor tartalmat továbbít a CDN jelentett. A kiszolgáló a kérelmet teljesítő webhelypéldány POP azonosítja.
-X-EC-Debug: x-ec-cache-remote | Ez a fejléc jelentett csak akkor, ha a kért tartalom gyorsítótárazva lett egy forrás pajzs vagy egy ADN-átjáró kiszolgálón.
+X-EC-Debug: x-ec-cache | Ez a fejléc minden alkalommal megjelenik, amikor a tartalom a CDN-en keresztül kerül átirányítva. Azonosítja a kérelmet teljesítő POP-kiszolgálót.
+X-EC-Debug: x-ec-cache-távoli | Ez a fejléc csak akkor jelenik meg, ha a kért tartalom gyorsítótárazása egy forráspajzs-kiszolgálón vagy egy ADN-átjárókiszolgálón történt.
 
-### <a name="response-header-format"></a>A válasz fejléce formátuma
+### <a name="response-header-format"></a>Válaszfejléc formátuma
 
-Az X-EK-Debug fejléc jelentések kód állapotinformációk gyorsítótár a következő formátumban:
+Az X-EC-Debug fejléc a gyorsítótár állapotkódjának adatait a következő formátumban jelenti:
 
 - `X-EC-Debug: x-ec-cache: <StatusCode from Platform (POP/ID)>`
 
 - `X-EC-Debug: x-ec-cache-remote: <StatusCode from Platform (POP/ID)>`
 
-A fenti válasz fejléce szintaxis használt kifejezések meghatározása a következő:
-- StatusCode: Azt jelzi, hogyan lett kezeli a lekért tartalom a CDN, amely a gyorsítótár állapotkódot keresztül jelöli.
+A fenti válaszfejléc szintaxisában használt kifejezések a következők:
+- StatusCode: Azt jelzi, hogy a kért tartalmat hogyan kezelte a CDN, amelyet egy gyorsítótár állapotkódja képvisel.
     
-    TCP_DENIED állapotkód jelenthető helyett nincs, amikor egy jogosulatlan kérelem jogkivonat-alapú hitelesítés miatt megtagadva. Gyorsítótár állapotjelentések vagy a nyers log megtekintett használható azonban továbbra is a NONE állapotkódot.
+    A TCP_DENIED állapotkód a NONE helyett is jelenthető, ha a tokenalapú hitelesítés miatt jogosulatlan kérést megtagadnak. A NONE állapotkód azonban továbbra is használatos a gyorsítótár állapotjelentésének vagy a nyers naplóadatoknak a megtekintésekor.
 
-- Platform: Azt jelzi, hogy a platformot, amelyre a tartalmat kért. Ez a mező a következő kód érvényesek:
+- Platform: Azt a platformot jelzi, amelyen a tartalmat kérték. A következő kódok érvényesek erre a mezőre:
 
     Kód  | Platform
     ------| --------
-    ECAcc | Nagy HTTP
-    ECS   | HTTP kicsi
-    ECD   | Alkalmazásszolgáltatási hálózat (ADN)
+    ECAcc | HTTP Nagy
+    Ecs   | HTTP Kicsi
+    Ecd   | Alkalmazáskézbesítési hálózat (ADN)
 
-- POP: Azt jelzi, hogy a [POP](cdn-pop-abbreviations.md) , amely kezeli a kérelmet. 
+- POP: Azt a [POP-ot](cdn-pop-abbreviations.md) jelzi, amely a kérést kezelte. 
 
-### <a name="sample-response-headers"></a>Minta válaszfejlécek
+### <a name="sample-response-headers"></a>Mintaválasz fejlécei
 
-A következő minta fejlécek adja meg a gyorsítótár állapotát kód adatait egy kérelem:
+A következő mintafejlécek gyorsítótár-állapotkód-információkat nyújtanak egy kérelemhez:
 
 - `X-EC-Debug: x-ec-cache: TCP_HIT from ECD (lga/0FE8)`
 
 - `X-EC-Debug: x-ec-cache-remote: TCP_HIT from ECD (dca/EF00)`
 
 ## <a name="cacheable-response-header"></a>Gyorsítótárazható válaszfejléc
-A `X-EC-Debug: x-ec-check-cacheable` válaszfejléc azt jelzi, hogy a kért tartalmat sikerült rendelkezik lett gyorsítótárba kerüljenek-e.
+A `X-EC-Debug: x-ec-check-cacheable` válaszfejléc azt jelzi, hogy a kért tartalom gyorsítótárazható-e.
 
-A válaszfejléc nem látható, hogy gyorsítótárazás került sor. Azt jelzi, hogy jogosult a gyorsítótárazás volt-e a kérés.
+Ez a válaszfejléc nem jelzi, hogy a gyorsítótárazás megtörtént-e. Inkább azt jelzi, hogy a kérelem jogosult volt-e a gyorsítótárazásra.
 
-### <a name="response-header-format"></a>A válasz fejléce formátuma
+### <a name="response-header-format"></a>Válaszfejléc formátuma
 
-A `X-EC-Debug` válaszfejléc reporting kérést sikerült rendelkezik lett gyorsítótárba kerüljenek-e a következő formátumban van:
+A `X-EC-Debug` válaszfejléc, amely azt jelzi, hogy egy kérés gyorsítótárazható-e, a következő formátumú:
 
 `X-EC-Debug: x-ec-check-cacheable: <cacheable status>`
 
-A fenti válasz fejléce szintaxisban használt kifejezés a következőképpen van meghatározva:
+A fenti válaszfejléc szintaxisában használt kifejezés a következőképpen határozható meg:
 
-Value  | Leírás
+Érték  | Leírás
 -------| --------
-IGEN    | Azt jelzi, hogy jogosult a gyorsítótárazás volt-e a kért tartalmat.
-NO     | Azt jelzi, hogy a kért tartalom gyorsítótárazása nem lehet áttelepíteni. Ez az állapot a következő okok egyike miatt lehet: <br /> -Ügyfél-specifikus konfigurációs: Egy adott fiókra konfigurációs megakadályozhatja, hogy a pop-kiszolgálók egy eszköz gyorsítótárazás. Például Szabálymodult megakadályozhatja az eszköz a Mellőzés gyorsítótárának a feltételeknek megfelelő kérelmek engedélyezésével a gyorsítótárba.<br /> -Gyorsítótár a válaszfejlécek: A kért objektum Expires és a Cache-Control fejléceket megakadályozhatja, hogy a POP-kiszolgálók, a gyorsítótárazás.
-ISMERETLEN | Azt jelzi, hogy sikerült-e a kiszolgálók annak ellenőrzéséhez, hogy a kért objektum lett gyorsítótárazható. Ez az állapot általában akkor fordul elő, amikor a jogkivonat-alapú hitelesítés miatt a kérelem megtagadva.
+IGEN    | Azt jelzi, hogy a kért tartalom gyorsítótárazásra jogosult volt.
+NO     | Azt jelzi, hogy a kért tartalom nem volt jogosult gyorsítótárazásra. Ennek az állapotnak az alábbi okai lehetnek: <br /> - Ügyfél-specifikus konfiguráció: A fiókra vonatkozó konfiguráció megakadályozhatja, hogy a pop szerverek gyorsítótárazjanak egy eszközt. A Rules Engine például megakadályozhatja egy eszköz gyorsítótárazását, ha engedélyezi a Gyorsítótár megkerülését funkció a minősítő kérelmekhez.<br /> - Cache Response Headers: A kért eszköz cache-control és lejár fejlécek megakadályozhatja a POP-kiszolgálók cache azt.
+Ismeretlen | Azt jelzi, hogy a kiszolgálók nem tudták felmérni, hogy a kért eszköz gyorsítótárazható-e. Ez az állapot általában akkor fordul elő, ha a kérés jogkivonat-alapú hitelesítés miatt megtagadva.
 
-### <a name="sample-response-header"></a>Minta válaszfejléc
+### <a name="sample-response-header"></a>Mintaválasz fejléce
 
-A következő minta válasz fejléce azt jelzi, hogy a kért tartalmat sikerült rendelkezik lett gyorsítótárba kerüljenek-e:
+A következő mintaválaszfejléc azt jelzi, hogy a kért tartalom gyorsítótárazható-e:
 
 `X-EC-Debug: x-ec-check-cacheable: YES`
 
-## <a name="cache-key-response-header"></a>Gyorsítótár-kulcs válaszfejléc
-A `X-EC-Debug: x-ec-cache-key` válaszfejléc azt jelzi, hogy a kért tartalomhoz társított fizikai gyorsítótár kulcs. Egy elérési utat, amely az eszköz azonosítja a gyorsítótárazás céljára áll egy fizikai gyorsítótár-kulcsot. Más szóval a kiszolgálók ellenőrzi, hogy egy eszköz, az elérési út alapján egy gyorsítótárazott verziója a gyorsítótár-kulcs által meghatározott módon.
+## <a name="cache-key-response-header"></a>Cache-Key válaszfejléc
+A `X-EC-Debug: x-ec-cache-key` válaszfejléc a kért tartalomhoz társított fizikai gyorsítótár-kulcsot jelzi. A fizikai gyorsítótár-kulcs egy olyan útvonalból áll, amely gyorsítótárazás céljából azonosítja az eszközt. Más szóval a kiszolgálók a gyorsítótárazott eszközelérési útnak megfelelően ellenőrzik az eszköz gyorsítótárazott verzióját a gyorsítótár-kulcs a szerint.
 
-A fizikai gyorsítótár-kulcs dupla perjellel kezdődik (/ /) követi a szabadságigények a tartalom (HTTP vagy HTTPS) protokollt. Ezt a protokollt az azt követő relatív elérési útját a kért eszközhöz, amely elindítja a tartalom-hozzáférési ponttal rendelkező (például _/000001/_ ).
+Ez a fizikai gyorsítótár-kulcs egy dupla perjellel (//) kezdődik, amelyet a tartalom (HTTP vagy HTTPS) kéréséhez használt protokoll követ. Ezt a protokollt a kért eszköz relatív elérési útja követi, amely a tartalom-hozzáférési ponttal kezdődik (például _/000001/_).
 
-Alapértelmezés szerint HTTP-platformok használatára vannak konfigurálva *standard-gyorsítótár*, ami azt jelenti, hogy lekérdezési karakterláncok figyelmen kívül hagyja a gyorsítótárazást. Ezt a konfigurációtípust megakadályozza, hogy a gyorsítótár-kulcs lekérdezési karakterlánc adatokat is beleértve.
+Alapértelmezés szerint a *HTTP-platformok szabványos gyorsítótár használatára*vannak konfigurálva, ami azt jelenti, hogy a gyorsítótárazási mechanizmus figyelmen kívül hagyja a lekérdezési karakterláncokat. Ez a konfigurációtípus megakadályozza, hogy a gyorsítótár-kulcs lekérdezési karakterlánc-adatokat is beírjon.
 
-Egy lekérdezési karakterláncot a gyorsítótár-kulcs van rögzítve, ha annak kivonatoló megfelelő alakítani, és majd a kért objektum nevét és a fájl kiterjesztése közötti beillesztett (például az eszköz&lt;kivonat értéke&gt;.html).
+Ha egy lekérdezési karakterláncot rögzít a gyorsítótár-kulcsban, akkor a rendszer a kivonatmegfelelőjéhez konvertálja, majd a&lt;kért eszköz&gt;neve és a fájlkiterjesztés (például az eszköz kivonatértéke .html) közé szúrja be.
 
-### <a name="response-header-format"></a>A válasz fejléce formátuma
+### <a name="response-header-format"></a>Válaszfejléc formátuma
 
-A `X-EC-Debug` válaszfejléc jelentések fizikai gyorsítótár-key-információkat a következő formátumban:
+A `X-EC-Debug` válaszfejléc a következő formátumban jelenti a gyorsítótárkulcs fizikai adatait:
 
 `X-EC-Debug: x-ec-cache-key: CacheKey`
 
-### <a name="sample-response-header"></a>Minta válaszfejléc
+### <a name="sample-response-header"></a>Mintaválasz fejléce
 
-A következő minta válasz fejléce azt jelzi, hogy a fizikai gyorsítótár-kulcs a kért tartalomhoz:
+A következő mintaválaszfejléc a kért tartalom fizikai gyorsítótár-kulcsát jelzi:
 
 `X-EC-Debug: x-ec-cache-key: //http/800001/origin/images/foo.jpg`
 
-## <a name="cache-state-response-header"></a>Gyorsítótár állapot válaszfejléc
-A `X-EC-Debug: x-ec-cache-state` válaszfejléc kérték időpontjában a lekért tartalom gyorsítótár állapotát jelzi.
+## <a name="cache-state-response-header"></a>Gyorsítótár állapotválasz fejléce
+A `X-EC-Debug: x-ec-cache-state` válaszfejléc a kért tartalom gyorsítótárállapotát jelzi a kérés időpontjában.
 
-### <a name="response-header-format"></a>A válasz fejléce formátuma
+### <a name="response-header-format"></a>Válaszfejléc formátuma
 
-A `X-EC-Debug` válaszfejléc jelentések állapot információk gyorsítótárazása a következő formátumban:
+A `X-EC-Debug` válaszfejléc a gyorsítótár állapotadatait a következő formátumban jelenti:
 
 `X-EC-Debug: x-ec-cache-state: max-age=MASeconds (MATimePeriod); cache-ts=UnixTime (ddd, dd MMM yyyy HH:mm:ss GMT); cache-age=CASeconds (CATimePeriod); remaining-ttl=RTSeconds (RTTimePeriod); expires-delta=ExpiresSeconds`
 
-A fenti válasz fejléce szintaxis használt kifejezések meghatározása a következő:
+A fenti válaszfejléc szintaxisában használt kifejezések a következők:
 
-- MASeconds: Azt jelzi a max-age (másodpercben), ahogyan a Cache-Control fejléc a kért tartalmat.
+- MASeconds: A kért tartalom Cache-Control fejlécei által meghatározott maximális életkort (másodpercben) jelzi.
 
-- MATimePeriod: Max-age értékét (azaz MASeconds) alakítja át egy nagyobb egység hozzávetőleges megfelelője (például, nap). 
+- MATimePeriod: A maximális életkori értéket (azaz a MASeconds-t) egy nagyobb egység (például napok) közelítő egyenértékére konvertálja. 
 
-- UnixTime: Azt jelzi, hogy a gyorsítótár időbélyeg a lekért tartalom Unix-ideje (más néven POSIX idő- vagy UNIX rendszerű alapidőpont). A gyorsítótár időbélyeg azt jelzi, hogy a kezdő dátumot és időt, amelyből egy eszköz TTL fog számítani. 
+- UnixTime: A kért tartalom gyorsítótár-időbélyegét jelzi Unix-idő (más néven POSIX idő vagy Unix korszak). A gyorsítótár időbélyege azt a kezdő dátumot/időpontot jelzi, amelyből az eszköz TTL-je kiszámításra kerül. 
 
-    Ha a forráskiszolgáló nem használja a kiszolgálón, vagy ha a kiszolgáló nem ad vissza az életkor válaszfejléc gyorsítótárazás külső HTTP, a gyorsítótár időbélyeg lesz a dátum/idő amikor az eszköz beolvasni vagy újra érvényesítve. Ellenkező esetben a POP-kiszolgálókat az életkor mező kiszámításához használja az eszköz TTL módon: Lekérés/RevalidateDateTime - kor.
+    Ha az eredeti kiszolgáló nem használ egy külső gyártótól származó HTTP-gyorsítótárazási kiszolgálót, vagy ha a kiszolgáló nem adja vissza az Age válaszfejlécet, akkor a gyorsítótár időbélyegzője mindig az eszköz beolvasásának vagy érvényesítésének dátuma/időpontja lesz. Ellenkező esetben a POP-kiszolgálók az Age mezőt használják az eszköz TTL értékének kiszámításához a következőképpen: Beolvasás/RevalidateDateTime - Kor.
 
-- nnn, NN ÓÓ GMT yyyy. mmm: Azt jelzi, hogy a gyorsítótár időbélyegzője a kért tartalmat. További információkért tekintse át a fenti UnixTime kifejezés.
+- ddd, dd MMM yyyy HH:mm:ss GMT: A kért tartalom gyorsítótárának időbélyegét jelzi. További információkért tekintse meg a fenti UnixTime kifejezést.
 
-- CASeconds: A gyorsítótár időbélyeg óta eltelt másodpercek számát jelöli.
+- CASeconds: A gyorsítótár időbélyege óta eltelt másodpercek számát jelzi.
 
-- RTSeconds: Másodperc van hátra, amelynek a gyorsítótárazott tartalom minősülnek friss számát jelzi. Ez az érték számítása a következőképpen: RTSeconds max-age - = gyorsítótár élettartama.
+- RTSeconds: Azt a másodpercszámot adja meg, amelyből a gyorsítótárazott tartalom frissnek minősül. Ez az érték a következőképpen kerül kiszámításra: RTSeconds = max-age - cache age.
 
-- RTTimePeriod: A fennmaradó TTL-érték (azaz RTSeconds) alakítja át egy nagyobb egység hozzávetőleges megfelelője (például, nap).
+- RTTimePeriod: A fennmaradó TTL-értéket (azaz RTSeconds-t) egy nagyobb egység (például napok) közelítő megfelelőjéhez konvertálja.
 
-- ExpiresSeconds: Azt jelzi, hogy a másodpercben megadott dátum/idő perc múlva a `Expires` válaszfejléc. Ha a `Expires` válaszfejléc nem tartalmazza a választ, akkor ez a kifejezés értéke *none*.
+- ExpiresSeconds: A `Expires` válaszfejlécben megadott dátum/idő előtt hátralévő másodpercek számát jelzi. Ha `Expires` a válaszfejléc nem szerepel a válaszban, akkor a kifejezés értéke *nincs*.
 
-### <a name="sample-response-header"></a>Minta válaszfejléc
+### <a name="sample-response-header"></a>Mintaválasz fejléce
 
-A következő minta válaszfejléc kérték időpontjában a lekért tartalom gyorsítótár állapotát jelzi:
+A következő mintaválaszfejléc a kért tartalom gyorsítótárállapotát jelzi a kérés időpontjában:
 
 ```X-EC-Debug: x-ec-cache-state: max-age=604800 (7d); cache-ts=1341802519 (Mon, 09 Jul 2012 02:55:19 GMT); cache-age=0 (0s); remaining-ttl=604800 (7d); expires-delta=none```
 
