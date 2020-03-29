@@ -1,6 +1,6 @@
 ---
-title: StringToNull Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function StringToNull Azure Cosmos DB.
+title: StringToNull az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg az SQL rendszer függvényStringToNull az Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296439"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
- NULL értékre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
+ Null-ra fordított kifejezést ad eredményül. Ha a kifejezés nem fordítható le, akkor nem definiált értéket ad vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,19 +26,19 @@ StringToNull(<str_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *str_expr*  
-   Egy karakterlánc-kifejezés, amelyet null kifejezésként kell elemezni.
+   Null kifejezésként elemezendő karakterlánc-kifejezés.
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  NULL kifejezést vagy nem definiált értéket ad vissza.  
+  Null kifejezést vagy nem definiált kifejezést ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan viselkedik a `StringToNull` különböző típusokban. 
+  A következő példa `StringToNull` bemutatja, hogyan viselkedik a különböző típusok között. 
 
-Az alábbi példák érvényes bemenettel rendelkeznek.
+Az alábbiakban érvényes bemenettel rendelkező példákat mutatunk be.
 
- A szóköz csak a "NULL" előtt vagy után engedélyezett.
+ A szóközszó közterület csak a "null" előtt vagy után engedélyezett.
 
 ```sql
 SELECT 
@@ -47,15 +47,15 @@ SELECT
     IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-A következő példák érvénytelen bemenettel rendelkeznek.
+Az alábbi példák érvénytelen bemenettel rendelkeznek.
 
-A null a kis-és nagybetűk megkülönböztetése, és minden kisbetűvel, azaz "NULL" karakterrel kell írni.
+A null a kis- és nagybetűket, és az összes kisbetűvel, azaz "null" karakterrel kell írni.
 
 ```sql
 SELECT    
@@ -63,13 +63,13 @@ SELECT
     StringToNull("Null")
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{}]
 ```  
 
-Az átadott kifejezést a rendszer null kifejezésként értelmezi. Ezek a bemenetek nem értékelik a null értéket, így a nem definiált értéket adja vissza.
+Az átadott kifejezés null kifejezésként lesz elemezve; ezek a bemenetek nem nullás típusúnak értékelik, és így nem definiált értéket adnak vissza.
 
 ```sql
 SELECT    
@@ -79,7 +79,7 @@ SELECT
     StringToNull(NaN) 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{}]
@@ -87,10 +87,10 @@ SELECT
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

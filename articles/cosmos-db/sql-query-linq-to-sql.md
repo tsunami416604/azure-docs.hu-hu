@@ -1,29 +1,29 @@
 ---
-title: LINQ to SQL fordítás Azure Cosmos DB
-description: Ismerje meg, hogy a LINQ-operátorok támogatottak-e, és hogy a LINQ-lekérdezések hogyan vannak leképezve a Azure Cosmos DB SQL-
+title: LINQ –SQL-fordítás az Azure Cosmos DB-ben
+description: Ismerje meg a támogatott LINQ-operátorokat, és azt, hogy a LINQ-lekérdezések hogyan vannak leképezve az Azure Cosmos DB SQL-lekérdezéseihez.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441250"
 ---
-# <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
+# <a name="linq-to-sql-translation"></a>LINQ-SQL fordítás
 
-A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. A következő leírás feltételezi, hogy a LINQ alapvető ismerete.
+Az Azure Cosmos DB lekérdezési szolgáltató a linq-lekérdezésből a Cosmos DB SQL-lekérdezésbe történő hozzárendelést hajtja végre. A következő leírás a LINQ alapvető ismeretségét feltételezi.
 
-A lekérdezés-szolgáltató típusa a rendszeren csak a JSON egyszerű típusokat támogatja: numerikus, logikai, karakterlánc és null.
+A lekérdezésszolgáltató típusa rendszer csak a JSON primitív típusokat támogatja: numerikus, logikai, karakterlánc és null.
 
-A lekérdezési szolgáltató a következő skaláris kifejezéseket támogatja:
+A lekérdezésszolgáltató a következő skaláris kifejezéseket támogatja:
 
 - Állandó értékek, beleértve a primitív adattípusok állandó értékeit a lekérdezés kiértékelési idején.
   
-- Tulajdonság/tömb index kifejezés, amely egy objektum vagy egy tömb elem tulajdonságára hivatkozik. Példa:
+- Egy objektum vagy tömbelem tulajdonságára hivatkozó tulajdonság-/tömbindex-kifejezések. Példa:
   
   ```
     family.Id;
@@ -32,21 +32,21 @@ A lekérdezési szolgáltató a következő skaláris kifejezéseket támogatja:
     family.children[n].grade; //n is an int variable
   ```
   
-- Aritmetikai kifejezések, beleértve a közös aritmetikai kifejezéseket a numerikus és a logikai értékeken. A teljes listát lásd: [Azure Cosmos db SQL-specifikáció](https://go.microsoft.com/fwlink/p/?LinkID=510612).
+- Aritmetikai kifejezések, beleértve a numerikus és logikai értékek gyakori aritmetikai kifejezéseit. A teljes listát az [Azure Cosmos DB SQL specifikációjában.](https://go.microsoft.com/fwlink/p/?LinkID=510612)
   
   ```
     2 * family.children[0].grade;
     x + y;
   ```
   
-- Karakterlánc-összehasonlító kifejezések, amelyek között szerepel egy karakterlánc-érték összehasonlítása egy konstans karakterlánc-értékkel.  
+- Karakterlánc-összehasonlító kifejezések, amelyek egy karakterlánc-érték összehasonlítását foglalják magukban valamilyen állandó karakterláncértékkel.  
   
   ```
     mother.familyName == "Wakefield";
     child.givenName == s; //s is a string variable
   ```
   
-- Objektum/tömb létrehozási kifejezése, amely összetett értéktípus vagy névtelen típus vagy ilyen objektumok tömbjét adja vissza. Ezeket az értékeket beágyazhatja.
+- Objektum-/tömblétrehozási kifejezések, amelyek összetett vagy névtelen típusú objektumot vagy ilyen objektumok tömbjét adják vissza. Ezeket az értékeket beágyazhatja.
   
   ```
     new Parent { familyName = "Wakefield", givenName = "Robin" };
@@ -54,33 +54,33 @@ A lekérdezési szolgáltató a következő skaláris kifejezéseket támogatja:
     new int[] { 3, child.grade, 5 };
   ```
 
-## <a id="SupportedLinqOperators"></a>Támogatott LINQ-operátorok
+## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>Támogatott LINQ operátorok
 
-Az SQL .NET SDK-ban található LINQ Provider a következő operátorokat támogatja:
+Az SQL .NET SDK részét képező LINQ-szolgáltató a következő operátorokat támogatja:
 
-- **Válassza ki**a kivetítések lefordítását az SQL SELECT (objektum-kialakítás) elemre.
-- **Hol**: a szűrők lefordítva az SQL-re, és a `&&`, `||`és `!` közötti fordítás támogatása az SQL-operátorok számára
-- **SelectMany**: lehetővé teszi a tömbök felcsévélését az SQL JOIN záradékba. A paranccsal a tömb elemeinek szűréséhez használhatja a kifejezéseket.
-- **OrderBy** és **OrderByDescending**: lefordítható az ASC vagy a desc szerinti sorrendbe.
-- Az összesítéshez a **Count**, a **Sum**, a **min**, a **Max**és az **átlag** operátor, valamint a **CountAsync**, a **SumAsync**, a **MinAsync**, a **MaxAsync**és a **AverageAsync**.
-- **Compareto metódus végrehajtása**: a tartomány-összehasonlításokra fordít. Általában a sztringek esetében használatos, mivel azok nem összehasonlíthatóak a .NET-ben.
-- **Kihagyás** és **igény**: az SQL-eltolás és a lekérdezési eredmények korlátozásának korlátozása és a tördelés végrehajtása.
-- **Matematikai függvények**: támogatja a .net `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`és `Truncate` megfelelő SQL beépített függvényeknek való fordítását.
-- **Karakterlánc-függvények**: támogatja a .net `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`és `TrimStart` megfelelő SQL beépített függvényeknek való fordítását.
-- **Array functions**: támogatja a .net `Concat`, `Contains`és `Count` fordítását a megfelelő SQL beépített függvényekbe.
-- **Térinformatikai bővítmény függvények**: a helyettes metódusok `Distance`, `IsValid`, `IsValidDetailed`és `Within`, a megfelelő SQL beépített függvények fordítását támogatja.
-- **Felhasználó által definiált függvény bővítményi függvény**: a helyettes metódusból `UserDefinedFunctionProvider.Invoke` a megfelelő felhasználó által definiált függvényhez való fordítást.
-- **Egyéb**: a `Coalesce` és a feltételes operátorok fordítását támogatja. A a (z) `Contains` karakterláncot a (z), ARRAY_CONTAINS vagy SQL értékre is lefordíthatja a környezettől függően.
+- **Válassza ki**a : A vetítések SQL SELECT-re vannak lefordítva, beleértve az objektumépítést is.
+- **Hol**: A szűrők SQL WHERE-ra, és támogatják a fordítást a , `&&` `||`és `!` az SQL operátorok között
+- **SelectMany**: Lehetővé teszi a tömbök oldását az SQL JOIN záradékba. Kifejezések láncolására vagy beágyazására használható a tömbelemek szűréséhez.
+- **OrderBy** és **OrderByDescending**: Fordítás rendelésre ASC vagy DESC.
+- Az összesítéshez a **count,** **sum**, **min**, **max**és az átlagos operátorok száma, száma és **aszinkron** megfelelőik, valamint a **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**és **AverageAsync**operátorok.
+- **CompareTo**: Tartományok összehasonlítására fordítva. A karakterláncok gyakran használatosak, mivel a .NET-ben nem hasonlíthatók össze.
+- **Ugrás** és **take:** Sql OFFSET és LIMIT fordítása a lekérdezés ből származó eredmények korlátozására és a tördelésre.
+- **Matematikai függvények**: Támogatja `Abs`a `Acos` `Asin`.NET `Cos`, `Exp` `Floor`, `Log` `Log10`, `Pow` `Round` `Sign` `Sin` `Sqrt` `Atan` `Ceiling`, , `Tan`, `Truncate` , , , , , , , , , , , , , , és az egyenértékű SQL beépített függvények fordítását.
+- **Karakterlánc-függvények**: Támogatja `Concat`a `Contains` `Count`.NET , , `SubString` `ToLower`, `ToUpper` `TrimEnd` `TrimStart` `EndsWith``IndexOf`, `Replace` `Reverse`, `StartsWith`, , , , , , , , és az egyenértékű SQL beépített függvények fordítását.
+- **Tömbfüggvények**: Támogatja a `Concat` `Contains`.NET `Count` , és az egyenértékű SQL beépített függvények fordítását.
+- **Térinformatikai bővítmény függvények**: Támogatja `Distance`a `IsValid` `IsValidDetailed`helyettes `Within` metódusok , , , és az egyenértékű SQL beépített függvények fordítását.
+- **Felhasználó által definiált függvénybővítmény függvény:** Támogatja a `UserDefinedFunctionProvider.Invoke` stub metódusból a megfelelő felhasználó által definiált függvényre történő fordítást.
+- **Egyéb**: Támogatja a feltételes operátorok fordítását `Coalesce` és a feltételes operátorokat. A `Contains` környezettől függően karakterlánc- és ARRAY_CONTAINS vagy SQL IN-re fordítható.
 
 ## <a name="examples"></a>Példák
 
-A következő példák azt szemléltetik, hogy a standard LINQ lekérdezési operátorok hogyan fordítanak le Cosmos DB lekérdezésekre.
+Az alábbi példák bemutatják, hogyan a szabványos LINQ-lekérdezési operátorok lefordítani a Cosmos DB-lekérdezések.
 
 ### <a name="select-operator"></a>Operátor kiválasztása
 
-A szintaxis `input.Select(x => f(x))`, ahol a `f` skaláris kifejezés.
+A szintaxis `input.Select(x => f(x))`a `f` , ahol a skaláris kifejezés.
 
-**Operátor kiválasztása, 1. példa:**
+**Válassza ki az operátort, 1. példa:**
 
 - **LINQ lambda kifejezés**
   
@@ -95,7 +95,7 @@ A szintaxis `input.Select(x => f(x))`, ahol a `f` skaláris kifejezés.
       FROM Families f
     ```
   
-**Operátor kiválasztása, 2. példa:** 
+**Válassza ki az operátort, 2 példa:** 
 
 - **LINQ lambda kifejezés**
   
@@ -110,7 +110,7 @@ A szintaxis `input.Select(x => f(x))`, ahol a `f` skaláris kifejezés.
       FROM Families f
   ```
   
-**Operátor kiválasztása, 3. példa:**
+**Válassza ki az operátort, 3 példa:**
 
 - **LINQ lambda kifejezés**
   
@@ -132,7 +132,7 @@ A szintaxis `input.Select(x => f(x))`, ahol a `f` skaláris kifejezés.
 
 ### <a name="selectmany-operator"></a>SelectMany operátor
 
-A szintaxis `input.SelectMany(x => f(x))`, ahol a `f` egy skaláris kifejezés, amely egy tároló típusát adja vissza.
+A szintaxis `input.SelectMany(x => f(x))`a `f` , ahol egy skaláris kifejezés, amely egy tárolótípust ad vissza.
 
 - **LINQ lambda kifejezés**
   
@@ -147,11 +147,11 @@ A szintaxis `input.SelectMany(x => f(x))`, ahol a `f` egy skaláris kifejezés, 
       FROM child IN Families.children
   ```
 
-### <a name="where-operator"></a>Where operátor
+### <a name="where-operator"></a>Amennyiben az üzemeltető
 
-A szintaxis `input.Where(x => f(x))`, ahol a `f` egy skaláris kifejezés, amely logikai értéket ad vissza.
+A szintaxis `input.Where(x => f(x))`a `f` , ahol egy skaláris kifejezés, amely logikai értéket ad vissza.
 
-**Where operátor, 1. példa:**
+**Amennyiben az üzemeltető, 1.**
 
 - **LINQ lambda kifejezés**
   
@@ -167,7 +167,7 @@ A szintaxis `input.Where(x => f(x))`, ahol a `f` egy skaláris kifejezés, amely
       WHERE f.parents[0].familyName = "Wakefield"
   ```
   
-**Where operátor, 2. példa:**
+**Amennyiben az üzemeltető, 2.**
 
 - **LINQ lambda kifejezés**
   
@@ -188,13 +188,13 @@ A szintaxis `input.Where(x => f(x))`, ahol a `f` egy skaláris kifejezés, amely
 
 ## <a name="composite-sql-queries"></a>Összetett SQL-lekérdezések
 
-Az előző operátorokat az erősebb lekérdezések létrehozásához is létrehozhatja. Mivel a Cosmos DB támogatja a beágyazott tárolókat, összefűzheti vagy beágyazhatja az összeállítást.
+Az előző operátorokat hatékonyabb lekérdezések létrehozásához írhatja. Mivel a Cosmos DB támogatja a beágyazott tárolókat, összefűzheti vagy beágyazhatja a kompozíciót.
 
 ### <a name="concatenation"></a>Összefűzés
 
-A szintaxis `input(.|.SelectMany())(.Select()|.Where())*`. Az összefűzött lekérdezések nem kötelező `SelectMany` lekérdezéssel kezdődhetnek, amelyet több `Select` vagy `Where` operátor követ.
+A szintaxis `input(.|.SelectMany())(.Select()|.Where())*`a . Az összeakadt lekérdezés ekkre egy választható `SelectMany` lekérdezéssel kezdődhet, amelyet több `Select` vagy `Where` operátor követ.
 
-**Összefűzés, 1. példa:**
+**Összefűzés, 1.**
 
 - **LINQ lambda kifejezés**
   
@@ -211,7 +211,7 @@ A szintaxis `input(.|.SelectMany())(.Select()|.Where())*`. Az összefűzött lek
       WHERE f.parents[0].familyName = "Wakefield"
   ```
 
-**Összefűzés, 2. példa:**
+**Összefűzés, 2.**
 
 - **LINQ lambda kifejezés**
   
@@ -228,7 +228,7 @@ A szintaxis `input(.|.SelectMany())(.Select()|.Where())*`. Az összefűzött lek
       WHERE f.children[0].grade > 3
   ```
 
-**Összefűzés, 3. példa:**
+**Összefűzés, 3.**
 
 - **LINQ lambda kifejezés**
   
@@ -245,7 +245,7 @@ A szintaxis `input(.|.SelectMany())(.Select()|.Where())*`. Az összefűzött lek
       WHERE ({grade: f.children[0].grade}.grade > 3)
   ```
 
-**Összefűzés, 4. példa:**
+**Összefűzés, 4.**
 
 - **LINQ lambda kifejezés**
   
@@ -264,11 +264,11 @@ A szintaxis `input(.|.SelectMany())(.Select()|.Where())*`. Az összefűzött lek
 
 ### <a name="nesting"></a>Fészkelő
 
-A szintaxis `input.SelectMany(x=>x.Q())`, ahol a `Q` `Select`, `SelectMany`vagy `Where` operátor.
+A szintaxis `input.SelectMany(x=>x.Q())` `Q` a `Select`, `SelectMany`vagy `Where` operátor.
 
-Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tároló minden elemére. Az egyik fontos funkció, hogy a belső lekérdezés hivatkozhat a külső tárolóban található elemek mezőire, például egy önillesztésre.
+A beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tároló minden elemére. Az egyik fontos jellemzője, hogy a belső lekérdezés hivatkozhat a külső tároló elemeinek mezőire, például egy önillesztésre.
 
-**Beágyazás, 1. példa:**
+**Beágyazás, 1.**
 
 - **LINQ lambda kifejezés**
   
@@ -285,7 +285,7 @@ Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tárol�
       JOIN p IN f.parents
   ```
 
-**Beágyazás, 2. példa:**
+**Egymás bafekálása, 2.**
 
 - **LINQ lambda kifejezés**
   
@@ -303,7 +303,7 @@ Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tárol�
       WHERE c.familyName = "Jeff"
   ```
 
-**Beágyazás, 3. példa:**
+**Egymás bafekálása, 3.**
 
 - **LINQ lambda kifejezés**
   
@@ -322,7 +322,7 @@ Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tárol�
   ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Dokumentum-adattípusok](modeling-data.md)
+- [Az Azure Cosmos DB .NET-mintái](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Dokumentumadatok modellezése](modeling-data.md)

@@ -1,6 +1,6 @@
 ---
-title: A Azure Data Factory saját üzemeltetésű integrációs moduljának hibakeresése
-description: Ismerje meg, hogy miként lehet elhárítani a Azure Data Factory a saját üzemeltetésű integrációs modul hibáit.
+title: Saját üzemeltetésű integrációs futásidejű hibák elhárítása az Azure Data Factoryban
+description: Ismerje meg, hogyan háríthatja el az Azure Data Factory saját üzemeltetésű integrációs futásidejű problémáit.
 services: data-factory
 author: nabhishek
 ms.service: data-factory
@@ -8,54 +8,54 @@ ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
 ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75439871"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs futásidejű hibáinak elhárítása
 
-Ez a cikk a Azure Data Factory saját üzemeltetésű integrációs moduljának gyakori hibaelhárítási módszereit vizsgálja.
+Ez a cikk az Azure Data Factory saját üzemeltetésű integrációs futásidejű megoldási módszereit ismerteti.
 
 ## <a name="common-errors-and-resolutions"></a>Gyakori hibák és megoldások
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Hibaüzenet: a saját üzemeltetésű Integration Runtime nem tud kapcsolódni a Cloud Service-hez
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Hibaüzenet: A saját üzemeltetésű integrációs futásidő nem tud csatlakozni a felhőszolgáltatáshoz
 
-![Saját üzemeltetésű IR-kapcsolati probléma](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+![Saját üzemeltetésű infravörös kapcsolattal kapcsolatos probléma](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Ok 
 
-A saját üzemeltetésű integrációs modul nem tud kapcsolódni a Data Factory szolgáltatáshoz (háttér). Ezt a problémát általában a tűzfal hálózati beállításai okozzák.
+A saját üzemeltetésű integrációs futásidejű nem tud csatlakozni a Data Factory szolgáltatás (háttérrendszer). Ezt a problémát általában a tűzfal hálózati beállításai okozzák.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
-1. Győződjön meg arról, hogy fut-e az Integration Runtime szolgáltatás.
+1. Ellenőrizze, hogy fut-e az integrációs futtatóheti szolgáltatás.
     
-   ![A saját üzemeltetésű IR-szolgáltatás futási állapota](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![Saját üzemeltetésű infravörös szolgáltatás futási állapota](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-1. Ha a szolgáltatás fut, folytassa a 3. lépéssel.
+1. Ha a szolgáltatás fut, folytassa a 3.
 
-1. Ha nincs proxy konfigurálva a saját üzemeltetésű integrációs modulban (amely az alapértelmezett beállítás), futtassa a következő PowerShell-parancsot azon a gépen, amelyen a saját üzemeltetésű integrációs modul telepítve van:
+1. Ha nincs konfigurálva proxy a saját üzemeltetésű integrációs futásidőben (ez az alapértelmezett beállítás), futtassa a következő PowerShell-parancsot azon a számítógépen, amelyen telepítve van az önkiszolgáló integrációs futásidő:
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
     ```
         
    > [!NOTE]     
-   > A szolgáltatás URL-címe eltérő lehet a Data Factory helyétől függően. A szolgáltatás URL-címét az **ADF felhasználói felület** > **kapcsolatok** > **Integration Runtimes** > a saját üzemeltetésű IR > **csomópontok** **szerkesztése** > **View Service URL-címek**című szakaszban találja.
+   > A szolgáltatás URL-címe a Data Factory tartózkodási helyétől függően változhat. A szolgáltatás URL-címét az **ADF felhasználói felületkapcsolatok** > **integrációs** > **futásideje** > alatt**találja, saját üzemeltetésű infravörös** > **csomópontok** > megtekintése szolgáltatás**URL-címei**.
             
     A várt válasz a következő:
             
-    ![PowerShell-parancs válasza](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+    ![PowerShell-parancsválasz](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
             
-1. Ha nem kapja meg a várt választ, használja a következő módszerek egyikét az adott helyzetnek megfelelően:
+1. Ha nem kapja meg a várt választ, használja az alábbi módszerek egyikét az adott helyzetnek megfelelően:
             
-    * Ha "a távoli név nem oldható fel" üzenet jelenik meg, a tartománynévrendszer (DNS) problémája van. A probléma megoldásához forduljon a hálózati csapathoz.
-    * Ha "SSL/TLS-tanúsítvány nem megbízható" üzenetet kap, ellenőrizze, hogy az https://wu2.frontend.clouddatahub.net/ tanúsítványa megbízható-e a gépen, majd telepítse a nyilvános tanúsítványt a Tanúsítványkezelő használatával. A műveletnek csökkentenie kell a problémát.
-    * Nyissa meg a **Windows** > **eseménynaplót (naplók)**  > az **alkalmazások és szolgáltatások naplói** > **Integration Runtime** , és keresse meg a DNS, a tűzfalszabály vagy a vállalati hálózati beállítások által okozott hibát. (Ha ilyen hibát talál, kényszerítse a kapcsolatok bezárását.) Mivel minden vállalat testreszabott hálózati beállításokat tartalmaz, a problémák elhárításához forduljon a hálózati csapatához.
+    * Ha "A távoli név nem oldható fel" üzenet jelenik meg, a DNS-rendszer rel van a probléma. A probléma megoldásához forduljon a hálózati csapathoz.
+    * Ha "Ssl/tls cert is not trusted" üzenetet kap, https://wu2.frontend.clouddatahub.net/ ellenőrizze, hogy a tanúsítvány megbízható-e a számítógépen, majd telepítse a nyilvános tanúsítványt a Tanúsítványkezelő segítségével. Ez a művelet enyhíti a problémát.
+    * Nyissa meg a **Windows** > **eseménynapló (naplók)** > **Alkalmazások és szolgáltatások naplóinak integrációs** > **futásidejűét,** és ellenőrizze, hogy vannak-e olyan hibák, amelyeket a DNS, a tűzfalszabály vagy a vállalati hálózati beállítások okoznak. (Ha ilyen hibát talál, erőszakkal zárja le a kapcsolatot.) Mivel minden vállalat testre szabott hálózati beállításokkal rendelkezik, a problémák megoldásához lépjen kapcsolatba a hálózati csapattal.
 
-1. Ha a "proxy" konfigurálva van a saját üzemeltetésű integrációs modulban, ellenőrizze, hogy a proxykiszolgáló hozzáférhet-e a szolgáltatási végponthoz. A minta parancsokért lásd: [PowerShell, webes kérelmek és proxyk](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
+1. Ha a "proxy" konfigurálva van a saját üzemeltetésű integrációs futásidőben, ellenőrizze, hogy a proxykiszolgáló képes-e elérni a szolgáltatásvégpontot. Mintaparancsért lásd: [PowerShell, webes kérések és proxyk.](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)    
                 
     ```powershell
     $user = $env:username
@@ -76,29 +76,29 @@ A saját üzemeltetésű integrációs modul nem tud kapcsolódni a Data Factory
 
 A várt válasz a következő:
             
-![2\. PowerShell-parancs válasza](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Powershell parancsválasz 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
 > [!NOTE] 
-> Proxyval kapcsolatos megfontolások:
-> * Győződjön meg arról, hogy a proxykiszolgálót a biztonságos címzettek listára kell helyezni. Ha igen, győződjön meg arról, hogy [ezek a tartományok](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) a biztonságos címzettek listán vannak.
-> * Győződjön meg arról, hogy a "wu2.frontend.clouddatahub.net/" TLS/SSL-tanúsítvány megbízható-e a proxykiszolgálón.
-> * Ha Active Directory hitelesítést használ a proxyn, módosítsa a szolgáltatásfiókot arra a felhasználói fiókra, amely a proxyt "Integration Runtime szolgáltatás" néven éri el.
+> Proxy szempontok:
+> * Ellenőrizze, hogy a proxykiszolgálót fel kell-e venni a Megbízható címzettek listára. Ha igen, győződjön meg arról, hogy ezek a [tartományok](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) szerepelnek a Megbízható címzettek listán.
+> * Ellenőrizze, hogy a proxykiszolgálón megbízható-e az "wu2.frontend.clouddatahub.net/" TLS/SSL tanúsítvány.
+> * Ha Active Directory-hitelesítést használ a proxyn, módosítsa a szolgáltatásfiókot arra a felhasználói fiókra, amely "Integrációs futásidejű szolgáltatásként" érheti el a proxyt.
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Hibaüzenet: a saját üzemeltetésű integrációs modul csomópontja/logikai a (z) rendszer inaktív/"fut (korlátozott)" állapotban van.
+### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Hibaüzenet: A saját üzemeltetésű integrációs futtató/ logikai SHIR inaktív/ "Futó (Korlátozott)" állapotban van
 
 #### <a name="cause"></a>Ok 
 
-Előfordulhat, hogy a saját üzemeltetésű integrált futásidejű csomópont **inaktív** állapotú, ahogy az alábbi képernyőképen is látható:
+A saját üzemeltetésű integrált futásidejű csomópont **inaktív** állapotú lehet, ahogy az a következő képernyőképen látható:
 
-![Inaktív önkiszolgáló IR-csomópont](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+![Inaktív, saját üzemeltetett infravörös csomópont](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
 Ez a viselkedés akkor fordul elő, ha a csomópontok nem tudnak kommunikálni egymással.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
-1. Jelentkezzen be a csomópont által üzemeltetett virtuális gépre. Az **alkalmazások és szolgáltatások naplóban** > **Integration Runtime**, nyissa meg Eseménynapló, és szűrje az összes hibakódot.
+1. Jelentkezzen be a csomópont által üzemeltetett virtuális gépbe. Az **Alkalmazások és szolgáltatások naplók integrációs** > **futásidejű**csoportban nyissa meg az Eseménynaplót, és szűrje az összes hibanaplót.
 
-1. Győződjön meg arról, hogy a hibanapló a következő hibát tartalmazza-e: 
+1. Ellenőrizze, hogy a hibanapló a következő hibát tartalmazza-e: 
     
     ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
     System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 

@@ -1,57 +1,57 @@
 ---
-title: Megbízható párhuzamos várólista az Azure Service Fabric
-description: A megbízható párhuzamos várólista egy nagy átviteli sebességű üzenetsor, amely párhuzamos enqueues és-várólistákat tesz lehetővé.
+title: ReliableConcurrentQueue az Azure Service Fabricben
+description: A ReliableConcurrentQueue egy nagy átviteli sebességű várólista, amely lehetővé teszi a párhuzamos várólistákat és a várólisták törlését.
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462736"
 ---
-# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható párhuzamos várólista bemutatása
-A megbízható párhuzamos üzenetsor egy aszinkron, tranzakciós és replikált üzenetsor, amely magas párhuzamosságot biztosít a sorba helyezni és a dequeuing műveletekhez. A szolgáltatás úgy lett kialakítva, hogy magas átviteli sebességet és kis késleltetést biztosítson a [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx) által biztosított szigorú FIFO-sorrend kihasználása mellett, és ehelyett a lehető legjobb rendezést biztosítja.
+# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Bevezetés a ReliableConcurrentQueue szolgáltatásba az Azure Service Fabricben
+A Megbízható egyidejű várólista egy aszinkron, tranzakciós és replikált várólista, amely magas egyidejűségi adatokat tartalmaz az enqueue és a dequeue műveletekhez. Úgy tervezték, hogy nagy átviteli és alacsony késleltetést biztosítson a [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) által biztosított szigorú FIFO rendelés lazításával, és ehelyett a legjobb megrendelést biztosítja.
 
 ## <a name="apis"></a>API-k
 
-|Egyidejű üzenetsor                |Reliable Concurrent Queue                                         |
+|Egyidejű várólista                |Reliable Concurrent Queue                                         |
 |--------------------------------|------------------------------------------------------------------|
-| void sorba helyezni (T-tétel)           | Feladat EnqueueAsync (ITransaction TX, T elem)                       |
-| bool TryDequeue (kimenő eredmény)  | Feladat < ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
-| int szám ()                    | hosszú darabszám ()                                                     |
+| void Enqueue(T elem)           | Feladat EnqueueAsync(ITransaction tx, T elem)                       |
+| bool TryDequeue(ki T eredmény)  | A Feltételes érték< < T > > A TryDequeueAsync(ITransaction tx) feladat  |
+| int Count()                    | hosszú szám()                                                     |
 
-## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Összehasonlítás [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx)
+## <a name="comparison-with-reliable-queue"></a>Összehasonlítás [a megbízható várólistával](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
-A megbízható párhuzamos üzenetsor a [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx)alternatívájaként is elérhető. Olyan esetekben kell használni, ahol nem szükséges szigorú FIFO-sorrend, mivel a FIFO garantálja a kompromisszumot a párhuzamosságtal.  A [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx) zárolásokkal kényszeríti ki a FIFO-sorrendet, és legfeljebb egy tranzakciót sorba helyezni, és legfeljebb egy tranzakciót használhat egyszerre. Az összehasonlításban a megbízható párhuzamos üzenetsor ellazítja a megrendelési korlátozást, és lehetővé teszi, hogy az egyidejű tranzakciók száma a sorba helyezni és a dequeuing műveletekkel párhuzamos legyen. A legjobb megoldás, ha azonban egy megbízható párhuzamos várólistában két érték relatív sorrendjét nem lehet garantálni.
+A megbízható egyidejű várólista a [Megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx)alternatívájaként érhető el. Olyan esetekben kell használni, amikor nincs szükség szigorú FIFO rendelésre, mivel a FIFO garantálása kompromisszumot igényel az egyidejűséggel.  [A Megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx) zárolásokat használ a FIFO-rendelés kényszerítéséhez, és legbőlegegy tranzakció tanusíthatja a várólistát, és egyszerre legtöbb tranzakció torkig van a várólistával. Összehasonlításképpen, megbízható egyidejű várólista ellazítja a rendelési megkötést, és lehetővé teszi, hogy tetszőleges számú egyidejű tranzakciók interleave a várólistán, és dequeue műveleteket. A legjobb rendelés biztosított, azonban a megbízható egyidejű várólistában lévő két érték relatív sorrendje soha nem garantálható.
 
-A megbízható párhuzamos üzenetsor nagyobb átviteli sebességet és kisebb késést biztosít, mint a [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx) , amikor több egyidejű tranzakció hajtja végre a enqueues és/vagy a várólistákat.
+A megbízható egyidejű várólista nagyobb átviteli és kisebb késleltetést biztosít, mint [a Megbízható várólista,](https://msdn.microsoft.com/library/azure/dn971527.aspx) ha több egyidejű tranzakció van várólistákés/vagy dequeues végrehajtása korlátja.
 
-A megbízható párhuzamos várólista esetében az [üzenetsor](https://en.wikipedia.org/wiki/Message_queue) -használati eset a példa. Ebben a forgatókönyvben egy vagy több üzenet gyártója hozza létre és adja hozzá az elemeket a várólistához, és egy vagy több üzenet felhasználója lekéri az üzeneteket a várólistából, és feldolgozza azokat. Több gyártó és fogyasztó is működhet egymástól függetlenül, egyidejű tranzakciók használatával a várólista feldolgozása céljából.
+A ReliableConcurrentQueue mintahasználati esete az [üzenetvárólista](https://en.wikipedia.org/wiki/Message_queue) forgatókönyv. Ebben az esetben egy vagy több üzenetkészítő hoz létre és ad hozzá elemeket a várólistához, és egy vagy több üzenetfogyasztó lekéri az üzeneteket a várólistából, és feldolgozza azokat. Több gyártó és fogyasztó is dolgozhat egymástól függetlenül, egyidejű tranzakciók használatával a várólista feldolgozásához.
 
 ## <a name="usage-guidelines"></a>Használati irányelvek
-* A várólista azt várja, hogy a várólistában lévő elemek alacsony megőrzési időtartammal rendelkezzenek. Ez azt eredményezi, hogy az elemek hosszú ideje nem maradnak a várólistán.
-* A várólista nem garantálja a szigorú FIFO-sorrendet.
-* A várólista nem olvassa be a saját írásait. Ha egy elem egy tranzakción belül várólistán lévő, az egy tranzakción belül nem jelenik meg a dequeuing számára.
-* A kihelyezett sorok nem elszigeteltek egymástól. Ha *a (a* ) elem a tranzakció *txnA*van elvégezve, bár a *txnA* nincs véglegesítve, akkor az *a* elem nem látható az egyidejű tranzakció *txnB*.  Ha a *txnA* megszakad, *a* *txnB* azonnal láthatóvá válik.
-* A *TryPeekAsync* viselkedését *TryDequeueAsync* használatával lehet megvalósítani, majd megszakítani a tranzakciót. Ennek a viselkedésnek a példája a programozási minták szakaszban található.
-* A Count nem tranzakciós. Felhasználhatja a várólista elemeinek számát, de egy időpontot is jelent, és nem hivatkozhat rá.
-* A nem várólistán lévő elemek költséges feldolgozását a tranzakció aktív állapotában nem kell végrehajtani, hogy elkerülje a hosszú ideig futó tranzakciókat, amelyek hatással lehetnek a rendszer teljesítményére.
+* A várólista arra számít, hogy a várólistában lévő elemek megőrzési ideje alacsony. Ez azt jelenti, hogy az elemek hosszú ideig nem maradnak a sorban.
+* A várólista nem garantálja a szigorú FIFO rendelést.
+* A várólista nem olvassa be a saját írási műveleteket. Ha egy cikk várólistára kerül egy tranzakción belül, az nem lesz látható az ugyanazon tranzakción belüli dequeuer számára.
+* A várólisták nincsenek elszigetelve egymástól. Ha az *A* cikk várólistán marad a *txnA*tranzakcióban, annak ellenére, hogy a *txnA* nincs véglegesítve, az *A* cikk nem lesz látható az egyidejű tranzakció *txnB számára.*  Ha *a txnA* megszakítja a műveletet, az *A* azonnal láthatóvá válik a *txnB számára.*
+* *A TryPeekAsync* viselkedése egy *TryDequeueAsync* használatával valósítható meg, majd a tranzakció megszakításával. Egy példa erre a viselkedésre a Programozási minták szakaszban található.
+* A számlálás nem tranzakciós. Használható a várólista elemeinek számának megismerésére, de pontaz időpontban, és nem lehet rájuk támaszkodni.
+* A várólistán lévő cikkek költséges feldolgozását nem szabad végrehajtani, amíg a tranzakció aktív, hogy elkerülhető legyen a hosszú ideig futó tranzakciók, amelyek hatással lehetnek a rendszer teljesítményére.
 
 ## <a name="code-snippets"></a>Kódtöredékek
-Nézzük meg néhány kódrészletet és a várt kimeneteket. Ebben a szakaszban a kivételek kezelését figyelmen kívül hagyja a rendszer.
+Nézzünk meg néhány kódrészletet és azok várható kimeneteit. Ebben a szakaszban a kivételkezelést figyelmen kívül hagyja.
 
 ### <a name="instantiation"></a>Példányosítás
-Egy megbízható párhuzamos várólista példányának létrehozása hasonló a többi megbízható gyűjteményhez.
+Egy megbízható egyidejű várólista példányának létrehozása hasonló bármely más megbízható gyűjteményhez.
 
 ```csharp
 IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
 ```
 
 ### <a name="enqueueasync"></a>EnqueueAsync
-Íme néhány kódrészlet a EnqueueAsync használatához, amelyet a várt kimenetek követnek.
+Íme néhány kódrészlet az EnqueueAsync és a várt kimenetek használatához.
 
-- *1. eset: egyetlen sorba helyezni feladat*
+- *1. eset: Egyszeri várólistás feladat*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -63,14 +63,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Tegyük fel, hogy a feladat sikeresen befejeződött, és nem volt egyidejű tranzakció, amely módosítja a várólistát. A felhasználó számíthat arra, hogy a várólista a következő megrendelések valamelyikében található elemeket tartalmazza:
+Tegyük fel, hogy a feladat sikeresen befejeződött, és hogy nem módosították egyidejűtranzakciók a várólistát. A felhasználó számíthat arra, hogy a várólista az alábbi rendelések bármelyikében tartalmazza az elemeket:
 
 > 10, 20
 > 
 > 20, 10
 
 
-- *2. eset: párhuzamos sorba helyezni feladat*
+- *2. eset: Párhuzamos várólistás feladat*
 
 ```
 // Parallel Task 1
@@ -92,14 +92,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Tegyük fel, hogy a feladatok sikeresen befejeződtek, és a feladatok párhuzamosan futnak, és nincsenek más párhuzamos tranzakciók a várólista módosításával. Nem hozható létre következtetés a várólistában lévő elemek sorrendjéről. Ebben a kódrészletben az elemek a 4! egyikében is megjelenhetnek. lehetséges rendezések.  A várólista megpróbálja megtartani az elemeket az eredeti (várólistán lévő) sorrendben, de az egyidejű műveletek vagy hibák miatt kénytelen lehet átrendezni őket.
+Tegyük fel, hogy a feladatok sikeresen befejeződtek, a feladatok párhuzamosan futottak, és hogy nem volt más egyidejű tranzakció a várólistán módosítva. A várólistában lévő elemek sorrendjére nem lehet következtetéseket levonni. Ehhez a kódrészlethez az elemek a 4- ben megjelenhetnek! lehetséges megrendeléseket.  A várólista megkísérli az elemeket az eredeti (várólistára helyezett) sorrendben tartani, de előfordulhat, hogy egyidejű műveletek vagy hibák miatt át kell rendelniőket.
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
-Íme néhány kódrészlet a TryDequeueAsync használatához, amelyet a várt kimenetek követnek. Tegyük fel, hogy a várólista már fel van töltve az üzenetsor következő elemeivel:
+Íme néhány kódrészlet a TryDequeueAsync és a várt kimenetek használatára. Tegyük fel, hogy a várólista már ki van töltve a következő elemekkel a várólistában:
 > 10, 20, 30, 40, 50, 60
 
-- *1. eset: egyetlen várólista-feladat*
+- *1. eset: Egyszeri várólistára állítási feladat*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -112,9 +112,9 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Tegyük fel, hogy a feladat sikeresen befejeződött, és nem volt egyidejű tranzakció, amely módosítja a várólistát. Mivel a várólista elemeinek sorrendjét nem lehet megtenni, az elemek közül bármelyik közül hármat el lehet végezni, bármilyen sorrendben. A várólista megpróbálja megtartani az elemeket az eredeti (várólistán lévő) sorrendben, de az egyidejű műveletek vagy hibák miatt kénytelen lehet átrendezni őket.  
+Tegyük fel, hogy a feladat sikeresen befejeződött, és hogy nem módosították egyidejűtranzakciók a várólistát. Mivel a várólistában lévő elemek sorrendjére vonatkozóan nem lehet következtetéseket levonni, a várólistán lévő elemek bármelyike bármilyen sorrendben megvonható a várólistából. A várólista megkísérli az elemeket az eredeti (várólistára helyezett) sorrendben tartani, de előfordulhat, hogy egyidejű műveletek vagy hibák miatt át kell rendelniőket.  
 
-- *2. eset: párhuzamos várólista-feladat*
+- *2. eset: Párhuzamos várólistára állítási feladat*
 
 ```
 // Parallel Task 1
@@ -138,13 +138,13 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Tegyük fel, hogy a feladatok sikeresen befejeződtek, és a feladatok párhuzamosan futnak, és nincsenek más párhuzamos tranzakciók a várólista módosításával. Mivel a várólistában lévő elemek sorrendjéről nem hozhatók létre következtetések, a *dequeue1* és a *dequeue2* listája minden esetben két elemet tartalmaz, bármilyen sorrendben.
+Tegyük fel, hogy a feladatok sikeresen befejeződtek, a feladatok párhuzamosan futottak, és hogy nem volt más egyidejű tranzakció a várólistán módosítva. Mivel a várólistában lévő elemek sorrendjére vonatkozóan nem lehet következtetéseket levonni, a *várólisták1* és a *dequeue2* listák mindegyike két elemet tartalmaz, bármilyen sorrendben.
 
-Ugyanez az tétel *nem* jelenik meg mindkét listán. Ezért ha a dequeue1 *10*, *30*, akkor a dequeue2 *20*, *40*.
+Ugyanaz az elem *nem* jelenik meg mindkét listában. Ezért ha a dequeue1 *10*, *30*, majd dequeue2 volna *20*, *40*.
 
-- *3. eset: rendezés a tranzakció megszakításával*
+- *3. eset: A rendezés megszakítása tranzakciómegszakítással*
 
-Ha egy tranzakciót az in-Flight dequeuing szolgáltatással szakít meg, a rendszer visszaállítja az elemeket a várólista élén. Az elemek a várólista élén történő visszahelyezésének sorrendje nem garantált. Nézzük meg a következő kódot:
+Ha megszakítja a művelet közbeni devárálltással rendelkező tranzakciót, az elemek visszakerülnek a várólista fejére. A cikkek várólistára kerülésének sorrendje nem garantált. Nézzük meg a következő kódot:
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -156,21 +156,21 @@ using (var txn = this.StateManager.CreateTransaction())
     await txn.AbortAsync();
 }
 ```
-Tegyük fel, hogy az elemek a következő sorrendben lettek elvégezve:
+Tegyük fel, hogy a cikkek várólistára kerültek a következő sorrendben:
 > 10, 20
 
-A tranzakció megszakításakor az elemek a következő megrendelések bármelyikében visszakerülnek a várólista fejre:
+A tranzakció megszakításakor a cikkek a következő rendelések bármelyikében visszakerülnek a várólista élére:
 > 10, 20
 > 
 > 20, 10
 
-Ugyanez érvényes minden olyan esetre, ahol a tranzakció *véglegesítése*sikertelen volt.
+Ugyanez vonatkozik minden olyan esetre, amikor a tranzakció *véglegesítése*nem sikerült .
 
 ## <a name="programming-patterns"></a>Programozási minták
-Ebben a szakaszban megvizsgálunk néhány programozási mintát, amelyek hasznosak lehetnek a megbízható párhuzamos várólista használatával.
+Ebben a szakaszban tekintse meg néhány programozási minták, amelyek hasznosak lehetnek a ReliableConcurrentQueue használatával.
 
-### <a name="batch-dequeues"></a>Kötegek várólistái
-Egy javasolt programozási minta a fogyasztói feladathoz, hogy a kötegelt feladatok elvégzését egy időben egy sorból végezze. A felhasználó dönthet úgy, hogy az egyes kötegek és a kötegek méretének késleltetését szabályozza. A következő kódrészlet ezt a programozási modellt mutatja be. Vegye figyelembe, hogy ebben a példában a feldolgozás a tranzakció véglegesítése után történik, így ha hiba történt a feldolgozás során, a feldolgozatlan elemek nem lesznek feldolgozva.  Azt is megteheti, hogy a feldolgozás a tranzakció hatókörébe esik, azonban negatív hatással lehet a teljesítményre, és megköveteli a már feldolgozott elemek kezelését.
+### <a name="batch-dequeues"></a>Kötegelt várólisták
+Az ajánlott programozási minta az, hogy a fogyasztói feladat kötegelje a dequeues végrehajtása helyett egy dequeue egy időben. A felhasználó dönthet úgy, hogy minden köteg vagy a köteg mérete közötti késések szabályozása. A következő kódrészlet ezt a programozási modellt mutatja. Ne feledje, hogy ebben a példában a feldolgozás a tranzakció véglegesítése után történik, így ha a feldolgozás során hiba történik, a feldolgozatlan cikkek feldolgozás nélkül elvesznek.  Másik lehetőségként a feldolgozás elvégezhető a tranzakció hatókörén belül, azonban negatív hatással lehet a teljesítményre, és a már feldolgozott cikkek kezelését igényli.
 
 ```
 int batchSize = 5;
@@ -215,8 +215,8 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>A legjobb erőfeszítést megkövetelő értesítés-alapú feldolgozás
-Egy másik érdekes programozási minta a Count API-t használja. Itt bemutatjuk a várakozási sor legjobb munkafolyamaton alapuló feldolgozását. A várólisták száma sorba helyezni vagy várólista-feladatok szabályozására is használható.  Vegye figyelembe, hogy ahogy az előző példában is, mivel a feldolgozás a tranzakción kívül történik, a feldolgozatlan elemek elvesznek, ha hiba történik a feldolgozás során.
+### <a name="best-effort-notification-based-processing"></a>Legjobb értesítésen alapuló feldolgozás
+Egy másik érdekes programozási minta a Count API-t használja. Itt valósíthatjuk meg a legjobb an- és kézhezállású értesítés-alapú feldolgozást a várólistához. A várólistaszáma egy enqueue vagy egy dequeue feladat szabályozására használható.  Vegye figyelembe, hogy az előző példához, mivel a feldolgozás a tranzakción kívül történik, a feldolgozatlan cikkek elveszhetnek, ha hiba történik a feldolgozás során.
 
 ```
 int threshold = 5;
@@ -263,10 +263,10 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>Legjobb teljesítményű Drain
-Az adatstruktúra egyidejű jellegéből adódóan nem garantálható a várólista kiürítése.  Előfordulhat, hogy még akkor is előfordulhat, ha a várólistán nincs felhasználói művelet, mert a TryDequeueAsync egy adott hívása nem ad vissza olyan tételt, amely korábban várólistán lévő és véglegesítve lett.  A várólistán lévő elem garantált, hogy *végül* láthatóvá válik a deüzenetsor számára, de sávon kívüli kommunikációs mechanizmus nélkül, egy független fogyasztó nem tudja, hogy a várólista állandó állapotba került, még akkor is, ha minden termelő le lett állítva, és nem engedélyezett új sorba helyezni művelet. Így a kiürítési művelet az alábbiakban ismertetett legjobb erőfeszítést mutatja.
+### <a name="best-effort-drain"></a>A legjobb erőfeszítés drain
+A várólista kiürítése nem garantálható az adatstruktúra egyidejű jellege miatt.  Lehetséges, hogy még akkor is, ha a várólistán egyetlen felhasználói művelet sem van folyamatban, előfordulhat, hogy a TryDequeueAsync hívása nem ad vissza korábban várólistára helyezett és véglegesített elemet.  A várólistára helyezett elem *garantáltan láthatóvá* válik a várólistából való törléshez, azonban a sávon kívüli kommunikációs mechanizmus nélkül a független fogyasztó nem tudhatja meg, hogy a várólista állandósult állapotba került, még akkor sem, ha az összes gyártó leállt, és nincsenek új várólistára állított műveletek. Így a leeresztési művelet a legjobb erőfeszítés az alábbiak szerint.
 
-A felhasználónak le kell állítania az összes további gyártó és fogyasztó feladatát, és várnia kell, amíg a folyamatban lévő tranzakciók véglegesítve vagy megszakítva lettek, mielőtt a rendszer kiüríti a várólistát.  Ha a felhasználó ismeri a várólistában lévő elemek várt számát, beállíthat egy értesítést, amely azt jelzi, hogy az összes elem el lett-e küldve.
+A felhasználónak le kell állítania az összes további gyártói és fogyasztói feladatot, és meg kell várnia a repülés közbeni tranzakciók véglegesítését vagy megszakítását, mielőtt megpróbálna kiüríteni a várólistát.  Ha a felhasználó ismeri a várólistában lévő elemek várható számát, beállíthat egy értesítést, amely jelzi, hogy az összes elem várólistán lett.
 
 ```
 int numItemsDequeued;
@@ -303,7 +303,7 @@ do
 ```
 
 ### <a name="peek"></a>Betekintés
-A megbízható párhuzamos várólista nem biztosítja a *TryPeekAsync* API-t. A felhasználók betekintést kaphatnak a *TryDequeueAsync* használatával, majd megszakítják a tranzakciót. Ebben a példában a deüzenetsor-sorok feldolgozása csak akkor történik meg, ha az elem értéke nagyobb, mint *10*.
+A ReliableConcurrentQueue nem biztosítja a *TryPeekAsync* api-t. A felhasználók a *tryDequeueAsync* használatával lejuthatnak a betekintő szemantikai elemre, majd megszakíthatják a tranzakciót. Ebben a példában a várólisták törlése csak akkor lesz feldolgozva, ha a cikk értéke *10-nél*nagyobb.
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -332,12 +332,12 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-## <a name="must-read"></a>Be kell olvasni
-* [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
+## <a name="must-read"></a>Kell olvasni
+* [Megbízható szolgáltatások rövid útmutató](service-fabric-reliable-services-quick-start.md)
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
-* [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
-* [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
-* [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
-* [Első lépések Service Fabric web API-szolgáltatásokkal](service-fabric-reliable-services-communication-webapi.md)
-* [Az Reliable Services programozási modell speciális használata](service-fabric-reliable-services-advanced-usage.md)
-* [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Megbízható szolgáltatásokról szóló értesítések](service-fabric-reliable-services-notifications.md)
+* [Megbízható szolgáltatások biztonsági mentése és visszaállítása (vészhelyreállítás)](service-fabric-reliable-services-backup-restore.md)
+* [Megbízható állapotkezelő-konfiguráció](service-fabric-reliable-services-configuration.md)
+* [A Service Fabric webAPI-szolgáltatások első lépései](service-fabric-reliable-services-communication-webapi.md)
+* [A megbízható szolgáltatások programozási modelljének speciális használata](service-fabric-reliable-services-advanced-usage.md)
+* [Fejlesztői kézikönyv megbízható gyűjtemények esetén](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

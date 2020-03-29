@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: Proximity elhelyezési csoportok használata'
-description: További információ a közelségi csoportok létrehozásáról és használatáról Azure PowerShell használatával.
+title: 'PowerShell: Közelségi elhelyezési csoportok használata'
+description: Ismerje meg a közelségelhelyezési csoportok létrehozását és használatát az Azure PowerShell használatával.
 services: virtual-machines
 ms.service: virtual-machines
 ms.topic: article
@@ -9,22 +9,22 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208525"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Virtuális gépek telepítése közelségi elhelyezési csoportokba a PowerShell használatával
 
 
-Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](co-location.md#proximity-placement-groups)belül kell telepítenie.
+Ahhoz, hogy a virtuális gépek a lehető legközelebb legyenek, és a lehető legalacsonyabb késést érjeel el, telepítenie kell őket egy [közelségelhelyezési csoporton](co-location.md#proximity-placement-groups)belül.
 
-A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. A közelségi csoportok olyan munkaterhelések esetén hasznosak, ahol az alacsony késés követelmény.
+A közelségelhelyezési csoport egy logikai csoportosítás, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag egymáshoz közel helyezkednek el. A közelségelhelyezési csoportok olyan számítási feladatokhoz hasznosak, ahol az alacsony késés követelmény.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Közelségi elhelyezési csoport létrehozása
-Hozzon létre egy közelségi elhelyezési csoportot a [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) parancsmag használatával. 
+Hozzon létre egy közelségelhelyezési csoportot a [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) parancsmag használatával. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -38,9 +38,9 @@ $ppg = New-AzProximityPlacementGroup `
    -ProximityPlacementGroupType Standard
 ```
 
-## <a name="list-proximity-placement-groups"></a>Proximity elhelyezési csoportok listázása
+## <a name="list-proximity-placement-groups"></a>Közelségi elhelyezési csoportok listázása
 
-A [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) parancsmag használatával listázhatja az összes közelségi elhelyezési csoportot.
+Az összes közelségelhelyezési csoportot a [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) parancsmag segítségével listázhatja.
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet a közelségi elhelyezési csoportban a `-ProximityPlacementGroup $ppg.Id` használatával, és tekintse meg az elhelyezési csoport AZONOSÍTÓját, amikor a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) használatával hozza létre a virtuális gépet.
+Hozzon létre egy virtuális gép `-ProximityPlacementGroup $ppg.Id` a közelség elhelyezési csoport segítségével hivatkozhat a közelség elhelyezési csoport azonosítója, amikor a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) a virtuális gép létrehozásához.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -62,16 +62,16 @@ New-AzVm `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-A virtuális gépet a [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup)használatával tekintheti meg az Elhelyezés csoportban.
+A [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup)csoportban megtekintheti a virtuális gép ét.
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
-### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Meglévő virtuális gép áthelyezése egy Proximity elhelyezési csoportba
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Meglévő virtuális gép áthelyezése közelségi elhelyezési csoportba
 
-Meglévő virtuális gépet is hozzáadhat egy közelségi elhelyezési csoporthoz. Először stop\deallocate kell a virtuális gépet, majd frissítenie kell a virtuális gépet, majd újra kell indítania.
+Egy meglévő virtuális gép hozzáadása a közelség elhelyezési csoporthoz. Először le kell állítania a virtuális gép felszabadítását, majd frissítenie kell a virtuális gép és az újraindítás.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -81,9 +81,9 @@ Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacement
 Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
-### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Meglévő virtuális gép áthelyezése egy közelségi elhelyezési csoportból
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Meglévő virtuális gép áthelyezése közelségi elhelyezési csoportból
 
-Ahhoz, hogy egy virtuális gépet el lehessen távolítani egy közelségi elhelyezési csoportból, először stop\deallocate kell a virtuális gépet, majd frissítenie kell a virtuális gépet, majd újra kell indítania.
+Virtuális gép eltávolítása a közelség elhelyezési csoportból, először le kell állítania\a virtuális gép felszabadítása, majd frissítse a virtuális gép és indítsa újra.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -96,11 +96,11 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állási csoportot. Használja ugyanazt a `-ProximityPlacementGroup` paramétert a [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) parancsmaggal, és hozzon létre egy rendelkezésre állási csoportot, és a rendelkezésre állási csoportban létrehozott összes virtuális gép is ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állási csoportot. Használja ugyanazt `-ProximityPlacementGroup` a paramétert a [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) parancsmaggal egy rendelkezésre állási csoport létrehozásához, és a rendelkezésre állási csoportban létrehozott összes virtuális gép ugyanabban a közelségelhelyezési csoportban jön létre.
 
-Ha egy meglévő rendelkezésre állási csoportot szeretne hozzáadni vagy eltávolítani egy közelségi elhelyezési csoporthoz, először le kell állítania az összes virtuális gépet a rendelkezésre állási csoportban. 
+Meglévő rendelkezésre állási csoport hozzáadása vagy eltávolítása egy közelségelhelyezési csoporthoz, először le kell állítania az összes virtuális gépet a rendelkezésre állási csoportban. 
 
-### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Meglévő rendelkezésre állási csoport áthelyezése egy Proximity elhelyezési csoportba
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Meglévő rendelkezésre állási készlet áthelyezése közelségi elhelyezési csoportba
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -122,7 +122,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Meglévő rendelkezésre állási csoport áthelyezése egy közelségi elhelyezési csoportból
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Meglévő rendelkezésre állási készlet áthelyezése közelségelhelyezési csoportból
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -146,12 +146,12 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Méretezési csoportok
 
-Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. Használja ugyanazt a `-ProximityPlacementGroup` paramétert a [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) használatával egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+Méretezési csoportot is létrehozhat a közelségi elhelyezési csoportban. Használja ugyanazt `-ProximityPlacementGroup` a paramétert [a New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) egy méretezési csoport létrehozásához, és az összes példány jön létre ugyanabban a közelség elhelyezési csoportban.
 
 
-Meglévő méretezési csoport hozzáadásához vagy eltávolításához először le kell állítania a méretezési csoportot. 
+Ha meglévő méretezési csoportot szeretne hozzáadni vagy eltávolítani egy közelségi elhelyezési csoporthoz, először le kell állítania a méretezési csoportot. 
 
-### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Meglévő méretezési csoport áthelyezése egy közelségi elhelyezési csoportba
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Meglévő léptékkészlet áthelyezése közelségi elhelyezési csoportba
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
@@ -161,7 +161,7 @@ Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupN
 Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
-### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Meglévő méretezési csoport áthelyezése egy közelségi elhelyezési csoportból
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Meglévő léptékkészlet áthelyezése közelségelhelyezési csoportból
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
@@ -173,4 +173,4 @@ Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupNa
 
 ## <a name="next-steps"></a>További lépések
 
-Az [Azure CLI](../linux/proximity-placement-groups.md) -vel közelségi elhelyezési csoportokat is létrehozhat.
+Az [Azure CLI](../linux/proximity-placement-groups.md) használatával is létrehozhat közelségi elhelyezési csoportokat.

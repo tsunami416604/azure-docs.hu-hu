@@ -1,6 +1,6 @@
 ---
-title: Az Azure soros konzol energiagazdálkodási lehetőségei | Microsoft Docs
-description: Az Azure soros konzolon elérhető virtuális gépek energiagazdálkodási lehetőségei
+title: Az Azure Soros konzol energiagazdálkodási lehetőségei | Microsoft dokumentumok
+description: Az Azure soros konzolon elérhető virtuális gép energiagazdálkodási lehetőségei
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451198"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Az Azure soros konzolon elérhető energiagazdálkodási lehetőségek
 
-Az Azure soros konzol számos hatékony eszközt biztosít az energiagazdálkodáshoz a virtuális gépen vagy a virtuálisgép-méretezési csoporton. Ezek az energiagazdálkodási lehetőségek bizonyos esetekben zavaróak lehetnek, így ez az egyes eszközök és a kívánt használati eset áttekintése.
+Az Azure Soros konzol számos hatékony eszközt biztosít az energiagazdálkodáshoz a virtuális gép vagy a virtuális gép méretezési csoportban. Ezek az energiagazdálkodási lehetőségek zavaróak lehetnek néhány, így ez egy áttekintést az egyes eszközök és a tervezett használati eset.
 
-Soros konzol funkció | Leírás | Használati eset
+Soros konzol szolgáltatás | Leírás | Kis- és nagybetű használata
 :----------------------|:------------|:---------
-Virtuális gép újraindítása | A virtuális gép vagy virtuálisgép-méretezési csoport példányának biztonságos újraindítása. Ez a művelet megegyezik az Áttekintés lapon elérhető újraindítási funkció meghívásával. | A legtöbb esetben ez a lehetőség az első eszköz a virtuális gép újraindítására tett kísérlet során. A soros konzol kapcsolata rövid megszakítást fog tapasztalni, és a virtuális gép újraindítása után automatikusan folytatódik.
-Virtuális gép alaphelyzetbe állítása | A virtuális gép vagy a virtuálisgép-méretezési csoport erőteljes energiagazdálkodási ciklusa az Azure platformon. | Ezzel a beállítással azonnal újraindíthatja az operációs rendszert az aktuális állapottól függetlenül. Mivel ez a művelet nem biztonságos, fennáll az adatvesztés vagy a sérülés kockázata. A soros konzol kapcsolata nem szakítható meg, ami hasznos lehet a parancsok rendszerindítási idő előtti elküldéséhez (például Linux rendszerű virtuális gépen vagy csökkentett módban a GRUB-ra egy Windows virtuális gépen).
-SysRq – újraindítás (b) | A vendég újraindítását kényszerítő rendszerkérelem. | Ez a funkció csak a Linux operációs rendszerekre alkalmazható, és az operációs rendszerben [engedélyezni kell a SYSRQ](./serial-console-nmi-sysrq.md#system-request-sysrq) . Ha az operációs rendszer megfelelően van konfigurálva a SysRq, ez a parancs az operációs rendszer újraindítását fogja eredményezni.
-NMI (nem maszkolt megszakítás) | Egy megszakítási parancs, amely az operációs rendszerbe lesz továbbítva | Ez a művelet [Windows](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) -és [Linux](./serial-console-nmi-sysrq.md#non-maskable-interrupt-nmi) -alapú virtuális gépekhez is elérhető, és a NMI engedélyezését igényli. A NMI elküldése általában az operációs rendszer összeomlását okozza. Beállíthatja, hogy az operációs rendszer hozzon létre egy memóriaképfájl-fájlt, majd indítsa újra a NMI fogadása után, ami hasznos lehet az alacsony szintű hibakeresésben.
+Virtuális gép újraindítása | A virtuális gép vagy a virtuális gép méretezési példányának kecses újraindítása. Ez a művelet megegyezik az Áttekintés lapon elérhető újraindítási szolgáltatás hívása. | A legtöbb esetben ez a beállítás legyen az első eszköz a virtuális gép újraindítása. A soros konzol kapcsolat a szolgáltatás egy rövid megszakítás, és automatikusan folytatódik, amint a virtuális gép újraindítása.
+Virtuális gép alaphelyzetbe állítása | Az Azure platform által beállított virtuális gép vagy virtuálisgép-méretezés erőteljes energiaciklusa. | Ezzel a beállítással azonnal újraindíthatja az operációs rendszert, függetlenül annak jelenlegi állapotától. Mivel ez a művelet nem kecses, adatvesztés vagy sérülés veszélye áll fenn. Nincs megszakítás a soros konzol kapcsolatában, ami hasznos lehet a parancsok korai indításkori küldéséhez (például a GRUB-hoz linuxos virtuális gépen vagy csökkentett módban egy Windows virtuális gépen).
+SysRq - Újraindítás (b) | A vendég újraindításának kényszerítésére irányuló rendszerkérés. | Ez a funkció csak Linux operációs rendszerekre alkalmazható, és a [SysRq-nak engedélyeznie kell](./serial-console-nmi-sysrq.md#system-request-sysrq) az operációs rendszerben. Ha az operációs rendszer megfelelően van konfigurálva a SysRq-hoz, ez a parancs az operációs rendszer újraindítását okozza.
+NMI (nem maszkolható megszakítás) | Megszakításparancs, amely et az operációs rendszerbe szállítják | Ez a művelet [Windows](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) és [Linux](./serial-console-nmi-sysrq.md#non-maskable-interrupt-nmi) virtuális gépeken is elérhető, és engedélyezni kell az NMI-t. Az NMI küldése általában az operációs rendszer összeomlását okozza. Beállíthatja, hogy az operációs rendszer memóriaképfájlt hozzon létre, majd az NMI fogadása után újrainduljon, ami hasznos lehet az alacsony szintű hibakeresésnél.
 
-## <a name="next-steps"></a>Következő lépések
-* További információ a [Linux rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-linux.md)
-* További információ a [Windows rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-windows.md)
+## <a name="next-steps"></a>További lépések
+* További információ az [Azure Serial Console for Linux virtuális gépekről](./serial-console-linux.md)
+* További információ az [Azure Serial Console for Windows virtuális gépekről](./serial-console-windows.md)

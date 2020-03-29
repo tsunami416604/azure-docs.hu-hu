@@ -1,7 +1,7 @@
 ---
-title: Nyelvi és szövegszerkesztés-elemzők
+title: Elemző készülékek nyelvi és szövegfeldolgozáshoz
 titleSuffix: Azure Cognitive Search
-description: Az alapértelmezett standard Lucene egyéni, előre definiált vagy nyelvspecifikus alternatívákkal való helyettesítéséhez rendeljen elemzőket a kereshető szöveges mezőkhöz egy indexben.
+description: Az indexkereshető szövegmezőihez rendelhet elemzőket, hogy az alapértelmezett normál Lucene-t egyéni, előre definiált vagy nyelvspecifikus alternatívákkal helyettesítse.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,115 +9,115 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460717"
 ---
-# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
+# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Elemzőelemzők szövegfeldolgozáshoz az Azure Cognitive Search szolgáltatásban
 
-Az *elemző* a [teljes szöveges keresőmotor](search-lucene-query-architecture.md) összetevője, amely a lekérdezési karakterláncokban és az indexelt dokumentumokban lévő szövegek feldolgozásához felelős. A különböző elemzők a forgatókönyvtől függően különböző módokon kezelhetik a szöveget. A nyelvi elemzők a nyelvi szabályok segítségével dolgozzák fel a minőségi keresési minőséget, míg más elemzők több alapvető feladatot hajtanak végre, például a karakterek kis-és nagybetűkre való konvertálásakor. 
+Az *analizátor* a [teljes szöveges keresőmotor](search-lucene-query-architecture.md) összetevője, amely a lekérdezési karakterláncokban és az indexelt dokumentumokban lévő szöveg feldolgozásáért felelős. A különböző elemzők a forgatókönyvtől függően különböző módon manipulálják a szöveget. A nyelvi elemzők nyelvi szabályok használatával dolgozzák fel a szöveget a keresési minőség javítása érdekében, míg más elemzők több alapvető feladatot végeznek el, például a karakterek kisbetűssé alakítását. 
 
-A nyelvi elemzők a leggyakrabban használatos, és az Azure Cognitive Search indexben található minden kereshető mezőhöz alapértelmezett nyelvi elemző van rendelve. A szöveg elemzése során a következő nyelvi átalakítások jellemzőek:
+Nyelvi elemzők a leggyakrabban használt, és van alapértelmezett nyelvi analizátor hozzárendelt minden kereshető mező egy Azure Cognitive Search index. A szövegelemzés során a következő nyelvi átalakítások jellemzőek:
 
-+ A nem lényeges szavakat (indexelendő) és a központozást a rendszer eltávolítja.
-+ A kifejezések és az elválasztott szavak összetevőinek bontása.
-+ A nagybetűs szavak kisebbek.
-+ A szavakat a rendszer a legfelső szintű űrlapokra csökkenti, hogy a találatok a feszült időtől függetlenül is megtalálhatók legyenek.
++ A nem lényeges szavak (stopwords) és az írásjelek törlődnek.
++ A kifejezések és az elválasztott szavak összetevőire vannak bontva.
++ A kisbetűs szavak kisbetűsek.
++ A szavak gyökéralakra redukálódnak, így a párapáróktól függetlenül megtalálhatók.
 
-A nyelvi elemzők olyan egyszerű vagy legfelső szintű űrlapokra alakítják át a szövegbeviteli adatokat, amelyek az információk tárolásához és lekéréséhez hatékonyak. A konverzió az indexelés során következik be, amikor a rendszer létrehoz egy indexet, majd a keresés során újra beolvassa az indexet. Nagyobb valószínűséggel kapja meg a várt keresési eredményeket, ha ugyanazt az elemzőt használja mindkét művelethez.
+A nyelvi elemzők a szövegbevitelt primitív vagy gyökérformákká alakítják, amelyek hatékonyak az információk tárolásához és visszakereséséhez. A konverzió az indexelés során, az index létrehozásakor, majd az index olvasásakor a keresés során történik. Nagyobb valószínűséggel kapja meg a várt keresési eredményeket, ha ugyanazt az elemzőt használja mindkét művelethez.
 
 ## <a name="default-analyzer"></a>Alapértelmezett elemző  
 
-Az Azure Cognitive Search az [Apache Lucene standard Analyzert (standard Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) használja alapértelmezettként, amely a ["Unicode Text szegmentálás"](https://unicode.org/reports/tr29/) szabályait követő elemekre bontja a szöveget. Emellett a standard Analyzer az összes karaktert a kisbetűs űrlapra konvertálja. Az indexelt dokumentumok és a keresési kifejezések az indexelés és a lekérdezés feldolgozása során is meghaladják az elemzést.  
+Az Azure Cognitive Search az [Apache Lucene Standard analizátort (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) használja alapértelmezettként, amely a szöveget a ["Unicode text segmentation"](https://unicode.org/reports/tr29/) szabályokat követő elemekre bontja. Ezenkívül a standard analizátor az összes karaktert kisbetűs formába konvertálja. Mind az indexelt dokumentumok, mind a keresési kifejezések az indexelés és a lekérdezésfeldolgozás során az elemzésen mennek keresztül.  
 
-Minden kereshető mező esetében automatikusan használatos. Az alapértelmezett mező felülbírálható a mezők alapján. Az alternatív elemzők lehetnek [nyelvi analizátorok](index-add-language-analyzers.md), [Egyéni analizátorok](index-add-custom-analyzers.md)vagy egy előre definiált elemzők az [elérhető elemzők listájából](index-add-custom-analyzers.md#AnalyzerTable).
+Minden kereshető mezőben automatikusan használják. Az alapértelmezett értéket mezőenként felülbírálhatja. Az alternatív elemzők lehetnek [nyelvi analizátor](index-add-language-analyzers.md), [egyéni analizátor,](index-add-custom-analyzers.md)vagy előre definiált analizátor a [rendelkezésre álló elemzők listájából.](index-add-custom-analyzers.md#AnalyzerTable)
 
 
-## <a name="types-of-analyzers"></a>Elemzők típusai
+## <a name="types-of-analyzers"></a>Az analizátorok típusai
 
-Az alábbi lista ismerteti, hogy mely elemzők érhetők el az Azure Cognitive Searchban.
+Az alábbi lista ismerteti, hogy mely elemzők érhetők el az Azure Cognitive Search szolgáltatásban.
 
 | Kategória | Leírás |
 |----------|-------------|
-| [Standard Lucene analizátor](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Alapértelmezett): Nincs szükség specifikációra vagy konfigurációra. Ez az általános célú elemző a legtöbb nyelv és forgatókönyv esetében jól teljesít.|
-| Előre definiált elemzők | A szolgáltatásként való használatra szánt késztermékként kínált termék. <br/>Két típus létezik: speciális és nyelvi. Mi teszi őket "előre definiált" értékre, ha név szerint hivatkozik rájuk, konfiguráció vagy testreszabás nélkül. <br/><br/>A [speciális (nyelv – agnosztikus) elemzők](index-add-custom-analyzers.md#AnalyzerTable) akkor használatosak, ha a szöveges bemenetek speciális feldolgozást vagy minimális feldolgozást igényelnek. A nem nyelvi előre definiált elemzők közé tartozik a **Asciifolding**, a **kulcsszó**, a **minta**, az **egyszerű**, a **Leállítás**és a **szóközök**.<br/><br/>[Nyelvi elemzőket](index-add-language-analyzers.md) akkor kell használni, ha az egyes nyelvekhez széles körű nyelvi támogatásra van szükség. Az Azure Cognitive Search támogatja a 35 Lucene Language Analyzers és a 50 Microsoft Natural Language Processing-elemzőt. |
-|[Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | A meglévő elemek kombinációjának felhasználó által definiált konfigurációját jelöli, amely egy tokenizer (kötelező) és opcionális szűrőket (char vagy token) tartalmaz.|
+| [Standard Lucene analizátor](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Alapértelmezett): Nincs szükség specifikációra vagy konfigurációra. Ez az általános célú analizátor a legtöbb nyelven és forgatókönyvben jól teljesít.|
+| Előre definiált analizátorok | Késztermékként kínálva, ahogy van. <br/>Két típusa van: speciális és nyelv. Mi teszi őket "előre meghatározott", hogy hivatkozik rájuk név szerint, nem konfiguráció vagy testreszabás. <br/><br/>[Speciális (nyelv-agnosztikus) analizátorok](index-add-custom-analyzers.md#AnalyzerTable) at használnak, ha a szövegbemenetek speciális feldolgozást vagy minimális feldolgozást igényelnek. Nem nyelvi előre definiált elemzők közé **Tartozik Asciifolding**, **Kulcsszó,** **Minta,** **Egyszerű,** **Stop**, **Whitespace**.<br/><br/>[A nyelvi elemzők](index-add-language-analyzers.md) akkor használatosak, ha az egyes nyelvek hez gazdag nyelvi támogatásra van szüksége. Az Azure Cognitive Search 35 Lucene nyelvi elemzőt és 50 Microsoft természetes nyelvi feldolgozási elemzőt támogat. |
+|[Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | A meglévő elemek kombinációjának felhasználó által definiált konfigurációjára utal, amely egy tokenizerből (kötelező) és választható szűrőkből (karakter vagy jogkivonat) áll.|
 
-Néhány előre definiált elemző, mint például a **minta** vagy a **Leállítás**, a konfigurációs beállítások korlátozott készletét támogatja. Ezen beállítások megadásához hatékonyan hozzon létre egy egyéni elemzőt, amely az előre definiált analizátorból és az [előre definiált Analyzer-referenciában](index-add-custom-analyzers.md#AnalyzerTable)dokumentált alternatív beállításokból áll. Ahogy az egyéni konfigurációk esetében is, adja meg az új konfigurációt egy névvel, például *myPatternAnalyzer* , hogy megkülönböztesse azt a Lucene Pattern analyzerből.
+Néhány előre definiált elemzők, mint például **a Minta** vagy **a Stop**, támogatja a korlátozott számú konfigurációs beállításokat. Ezeknek a beállításoknak a beállításához hatékonyan hozhat létre egy egyéni elemzőt, amely az előre definiált elemzőből és az [Előre definiált elemző hivatkozás](index-add-custom-analyzers.md#AnalyzerTable)ban dokumentált alternatív lehetőségek egyikéből áll. Mint minden egyéni konfiguráció, adja meg az új konfiguráció egy nevet, például *a myPatternAnalyzer* megkülönböztetni a Lucene Pattern analizátor.
 
-## <a name="how-to-specify-analyzers"></a>Elemzők meghatározása
+## <a name="how-to-specify-analyzers"></a>Az analizátorok megadása
 
-1. (csak egyéni elemzők esetén) Hozzon létre egy nevesített **analizátor** szakaszt az index definíciójában. További információ: [index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) és [Egyéni elemzők hozzáadása](index-add-custom-analyzers.md).
+1. (csak egyéni elemzők esetén) Hozzon létre egy elnevezett **elemző** szakaszt az indexdefinícióban. További információt az [Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) és egyéni elemzők [hozzáadása](index-add-custom-analyzers.md)című témakörben talál.
 
-2. Az index egyik [mezőjében](https://docs.microsoft.com/rest/api/searchservice/create-index) állítsa be a mező **Analyzer** tulajdonságát egy cél-elemző nevére (például `"analyzer" = "keyword"`. Az érvényes értékek közé tartozik az előre definiált analizátor, a Language Analyzer vagy az egyéni elemző neve is az index sémában. Tervezze meg az analizátor hozzárendelését az index definíciós fázisában, mielőtt létrehozza az indexet a szolgáltatásban.
+2. Az index [egyik meződefinícióján](https://docs.microsoft.com/rest/api/searchservice/create-index) állítsa a mező **elemzőtulajdonságát** egy célelemző nevére `"analyzer" = "keyword"`(például . Az érvényes értékek közé tartozik egy előre definiált elemző, nyelvi elemző vagy az indexsémában is definiált egyéni elemző neve. Tervezze meg, hogy az indexdefiníciós fázisban hozzárendeli az analizátort, mielőtt az index létrejön a szolgáltatásban.
 
-3. A **indexAnalyzer** és a **searchAnalyzer** mező paramétereinek használatával **különböző elemzőket** is beállíthat az indexeléshez és lekérdezésekhez. Az adatok előkészítéséhez és lekéréséhez különböző elemzőket kellene használni, ha az egyik tevékenységhez szükséges egy adott átalakítás, amelyet a másik nem igényel.
+3. Opcionálisan egy **elemző** tulajdonság helyett különböző elemzőket állíthat be az indexanalyzer és a **searchAnalyzer** mező paramétereinek használatával az indexanalyzer és a **searchAnalyzer** mező paramétereivel. Az adatok előkészítéséhez és lekéréséhez különböző elemzőket kell használnia, ha az egyik ilyen tevékenység hez a másik által nem szükséges adott átalakítás szükséges.
 
 > [!NOTE]
-> Egy adott mezőnél nem lehet más [nyelvi elemzőt](index-add-language-analyzers.md) használni, mint a lekérdezés időpontjában. Ez a képesség [Egyéni elemzők](index-add-custom-analyzers.md)számára van fenntartva. Ezért ha a **searchAnalyzer** vagy a **indexAnalyzer** tulajdonságot a Language Analyzer nevére próbálja beállítani, a REST API hibaüzenetet ad vissza. Ehelyett a **Analyzer** tulajdonságot kell használnia.
+> Indexeléskor nem lehet más [nyelvi elemzőt](index-add-language-analyzers.md) használni, mint egy mező lekérdezési idején. Ez a képesség az [egyéni elemzők](index-add-custom-analyzers.md)számára van fenntartva. Emiatt, ha megpróbálja beállítani a **searchAnalyzer** vagy **indexAnalyzer** tulajdonságait egy nyelvi elemző nevére, a REST API egy hibaválaszt ad vissza. Ehelyett az **analizátor tulajdonságot kell használnia.**
 
-Az **analizátor** vagy a **indexAnalyzer** egy már fizikailag létrehozott mezőhöz való hozzárendelésének engedélyezése nem engedélyezett. Ha a fentiek bármelyike nem egyértelmű, tekintse át a következő táblázatot annak részletezéséhez, hogy mely műveletek szükségesek a helyreállításhoz, és miért.
+Az **analizátor** vagy **az indexanalyzer** hozzárendelése egy már fizikailag létrehozott mezőhöz nem engedélyezett. Ha ezek bármelyike nem egyértelmű, tekintse át az alábbi táblázatban annak részletezését, hogy mely műveletek igényelnek újraépítést, és miért.
  
- | Alkalmazási helyzet | Hatás | Lépések |
+ | Forgatókönyv | Hatás | Lépések |
  |----------|--------|-------|
- | Új mező hozzáadása | minimális | Ha a mező még nem létezik a sémában, nem végezhető el a mező módosítása, mert a mező még nem rendelkezik fizikai jelenléttel az indexben. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával új mezőket adhat hozzá egy meglévő indexhez, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez.|
- | **Elemző** vagy **indexAnalyzer** hozzáadása egy meglévő indexelt mezőhöz. | [újraépítése](search-howto-reindex.md) | Az adott mező fordított indexét újra létre kell hozni az alapoktól, és a mezők tartalmát újra kell indexelni. <br/> <br/>Az aktív fejlesztés alatt álló indexek esetében [törölje](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [hozza létre](https://docs.microsoft.com/rest/api/searchservice/create-index) az indexet az új mező definíciójának kiválasztásához. <br/> <br/>Az éles környezetben lévő indexek esetében egy új mező létrehozásával elhalaszthatja az újraépítést, és megkezdheti a módosítást, és a régi helyett használhatja azt. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával vegye fel az új mezőt és a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez. Később, a tervezett indexek karbantartásának részeként törölheti az indexet az elavult mezők eltávolításához. |
+ | Új mező hozzáadása | Minimális | Ha a mező még nem létezik a sémában, nincs mezőmódosítás, mert a mező nek még nincs fizikai jelenléte az indexben. [Az Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) segítségével új mezőt adhat egy meglévő indexhez, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) segítségével feltöltheti azt.|
+ | Adjon hozzá egy **elemzőt** vagy **indexanalyzeregy** meglévő indexelt mezőt. | [Újjáépíteni](search-howto-reindex.md) | A mező fordított indexét az alapoktól kezdve újra létre kell hozni, és a mezők tartalmát újra indexelni kell. <br/> <br/>Aktív fejlesztés alatt lévő indexek esetén [törölje](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [hozza létre](https://docs.microsoft.com/rest/api/searchservice/create-index) az indexet az új meződefiníció felvételéhez. <br/> <br/>A termelésben lévő indexek esetében elhalaszthatja az újraépítést egy új mező létrehozásával, amely biztosítja a módosított definíciót, és a régi helyett elkezdi használni. Az [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) segítségével beépítheti az új mezőt, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) feltöltheti azt. Később a tervezett indexkarbantartás részeként az index et az elavult mezők eltávolításához törölje. |
 
-## <a name="when-to-add-analyzers"></a>Mikor lehet elemzőket felvenni
+## <a name="when-to-add-analyzers"></a>Mikor kell analizátorokat hozzáadni?
 
-Az adatelemzők hozzáadásához és hozzárendeléséhez a legjobb idő az aktív fejlesztés során, amikor az indexek eldobása és újbóli létrehozása rutinos.
+A legjobb alkalom, hogy adjunk hozzá és rendeljen analizátorok az aktív fejlesztés során, amikor csepegtető és újbóli indexek rutin.
 
-Ahogy az index definíciója megszilárdul, új elemzési szerkezeteket lehet hozzáfűzni egy indexhez, de a **allowIndexDowntime** jelzőt át kell adni az [index frissítéséhez](https://docs.microsoft.com/rest/api/searchservice/update-index) , ha el szeretné kerülni ezt a hibát:
+Az indexdefiníció megszilárdulásaként új elemzési konstrukciókat fűzhet egy indexhez, de az **allowIndexDowntime** jelzőt át kell adnia az [Index frissítési indexnek,](https://docs.microsoft.com/rest/api/searchservice/update-index) ha el szeretné kerülni ezt a hibát:
 
-*"Az index frissítése nem engedélyezett, mert az állásidőt okoz. Ahhoz, hogy új elemzőket, tokenizers, jogkivonat-szűrőket vagy karakterstílusokat adjon hozzá egy meglévő indexhez, állítsa a "allowIndexDowntime" lekérdezési paramétert "true" értékre az index frissítési kérelmében. Vegye figyelembe, hogy ez a művelet legalább néhány másodpercig offline állapotba helyezi az indexet, így az indexelés és a lekérdezési kérelmek sikertelenek lesznek. Az index teljesítményének és írásának rendelkezésre állása az index frissítése után több percig is eltarthat, vagy a nagyon nagy indexek esetében már nem. "*
+*"Az indexfrissítés nem engedélyezett, mert állásidőt okozna. Annak érdekében, hogy új elemzők, tokenizers, jogkivonat-szűrők vagy karakterszűrők egy meglévő index, állítsa be az "allowIndexDowntime" lekérdezési paraméter "true" az index frissítési kérelemben. Vegye figyelembe, hogy ez a művelet legalább néhány másodpercre offline állapotba helyezi az indexet, ami az indexelési és lekérdezési kérelmek sikertelensítését okozza. Az index teljesítménye és írási elérhetősége az index frissítése után néhány percig, vagy a nagyon nagy indexek esetében hosszabb ideig csökkenthető."*
 
-Ugyanez igaz, ha az analizátort egy mezőhöz rendeli. Az analizátor a mező definíciójának szerves részét képezi, így csak a mező létrehozásakor adható hozzá. Ha a meglévő mezőkhöz is hozzá kívánja adni a elemzőket, el kell [dobnia és újra kell építenie](search-howto-reindex.md) az indexet, vagy hozzá kell adnia egy új mezőt a kívánt elemzőhöz.
+Ugyanez igaz akkor is, ha egy elemzőt rendel egy mezőhöz. Az analizátor a mező definíciójának szerves része, ezért csak a mező létrehozásakor veheti fel. Ha elemzőket szeretne hozzáadni a meglévő mezőkhöz, el kell [dobnia és újra](search-howto-reindex.md) kell építenie az indexet, vagy új mezőt kell hozzáadnia a kívánt elemzővel.
 
-Ahogy azt említettük, kivételt jelent a **searchAnalyzer** -változat. Az elemzők (**Analyzer**, **indexAnalyzer**, **searchAnalyzer**) megadásának három módja közül csak a **searchAnalyzer** attribútum módosítható egy meglévő mezőben.
+Mint említettük, kivétel a **searchAnalyzer** változat. Az analizátorok (**elemző**, **indexAnalyzer**, **searchAnalyzer**) megadásának három módja közül csak a **searchAnalyzer** attribútum módosítható egy meglévő mezőben.
 
-## <a name="recommendations-for-working-with-analyzers"></a>Az elemzők használatának javaslatai
+## <a name="recommendations-for-working-with-analyzers"></a>Ajánlások az analizátorokkal való munkához
 
-Ez a szakasz az elemzők használatáról nyújt útmutatást.
+Ez a rész tanácsokat ad az analizátorokkal való munkához.
 
-### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Egyetlen elemző az írható-olvasható, hacsak nem rendelkezik konkrét követelményekkel
+### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Egy analizátor az olvasáshoz és az olvasáshoz, hacsak nincsenek speciális követelményei
 
-Az Azure Cognitive Search lehetővé teszi különböző elemzők megadását az indexeléshez és a kereséshez további **indexAnalyzer** és **searchAnalyzer** mezők paramétereinek használatával. Ha nincs megadva, az **Analyzer tulajdonsággal** beállított analizátor az indexeléshez és a kereséshez is használatos. Ha `analyzer` nincs meghatározva, a rendszer az alapértelmezett standard Lucene Analyzert használja.
+Az Azure Cognitive Search lehetővé teszi, hogy különböző elemzők indexelése és a keresés révén további **indexAnalyzer** és **searchAnalyzer** mező paramétereit. Ha nincs megadva, az **analizátor** tulajdonsággal beállított analizátor az indexeléshez és a kereséshez is használható. Ha `analyzer` nincs megadva, a rendszer az alapértelmezett Standard Lucene analizátort használja.
 
-Az általános szabály az, hogy ugyanazt az elemzőt használja mind az indexeléshez, mind a lekérdezéshez, kivéve, ha a konkrét követelmények másképp nem rendelkeznek. Ügyeljen arra, hogy alaposan tesztelje. Ha a szöveg feldolgozása a keresés és az indexelés során különbözik, akkor a lekérdezési feltételek és az indexelt kifejezések közötti eltérés kockázata nem egyezik meg, ha a keresési és az indexelési elemző konfigurációja nincs igazítva.
+Általános szabály, hogy ugyanazt az analizátort használja mind az indexeléshez, mind a lekérdezéshez, kivéve, ha a konkrét követelmények másként írják. Győződjön meg róla, hogy alaposan tesztelje. Ha a szövegfeldolgozás keresési és indexelési időpontban eltérő, fennáll a veszélye annak, hogy nem egyezik a lekérdezési kifejezések és az indexelt kifejezések között, ha a keresési és indexelő elemző konfigurációk nincsenek egymáshoz igazítva.
 
-### <a name="test-during-active-development"></a>Tesztelés az aktív fejlesztés során
+### <a name="test-during-active-development"></a>Teszt az aktív fejlesztés során
 
-A standard Analyzer felülbírálásához index-Újraépítés szükséges. Ha lehetséges, döntse el, hogy mely elemzőket szeretné használni az aktív fejlesztés során, mielőtt az indexet az éles környezetbe helyezné.
+A standard analizátor felüli megdöntéséhez index-újraépítésszükséges. Ha lehetséges, döntse el, hogy mely elemzőket használja az aktív fejlesztés során, mielőtt egy indexet éles környezetbe görgetne.
 
-### <a name="inspect-tokenized-terms"></a>Jogkivonatos kifejezések vizsgálata
+### <a name="inspect-tokenized-terms"></a>Tokenizált kifejezések vizsgálata
 
-Ha a keresés sikertelen a várt eredmények visszaadására, a legvalószínűbb forgatókönyv a lekérdezésben szereplő lejárati és az indexben található jogkivonatok közötti eltérés. Ha a jogkivonatok nem egyeznek, a egyezések nem fognak megvalósulni. A tokenizer-kimenet vizsgálatához javasolt az [API elemzése](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) vizsgálati eszközként. A válasz egy adott elemző által generált jogkivonatokból áll.
+Ha a keresés nem adja vissza a várt eredményeket, a legvalószínűbb forgatókönyv a lekérdezés kifejezésbemenetei és az index tokenizált kifejezései közötti tokeneltérések. Ha a tokenek nem azonosak, az egyezések nem valósulnak meg. A tokenizer kimenetének vizsgálatához azt javasoljuk, hogy az [Api elemzése](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a vizsgálati eszköz ként. A válasz egy adott elemző által generált jogkivonatokból áll.
 
 <a name="examples"></a>
 
-## <a name="rest-examples"></a>REST-példák
+## <a name="rest-examples"></a>REST példák
 
-Az alábbi példák az analizátor-definíciókat mutatják be néhány fő forgatókönyv esetében.
+Az alábbi példák néhány kulcsfontosságú forgatókönyv elemződefinícióit mutatják be.
 
-+ [Egyéni analizátor – példa](#Custom-analyzer-example)
-+ [Elemzők kiosztása például egy mezőhöz](#Per-field-analyzer-assignment-example)
-+ [Elemzők keverése az indexeléshez és a kereséshez](#Mixing-analyzers-for-indexing-and-search-operations)
-+ [Language Analyzer – példa](#Language-analyzer-example)
++ [Példa egyéni elemzőre](#Custom-analyzer-example)
++ [Példa analizátorok hozzárendelése mezőhöz](#Per-field-analyzer-assignment-example)
++ [Keverési analizátorok indexeléshez és kereséshez](#Mixing-analyzers-for-indexing-and-search-operations)
++ [Példa nyelvi elemzőre](#Language-analyzer-example)
 
 <a name="Custom-analyzer-example"></a>
 
-### <a name="custom-analyzer-example"></a>Egyéni analizátor – példa
+### <a name="custom-analyzer-example"></a>Példa egyéni elemzőre
 
-Ez a példa egy Analyzer-definíciót mutat be egyéni beállításokkal. A char szűrők, a tokenizers és a jogkivonat-szűrők egyéni beállításai külön vannak megadva, mint nevesített szerkezetek, majd a rendszer az analizátor definíciójában hivatkozik rá. Az előre definiált elemeket a rendszer a (z) értékre használja, és egyszerűen hivatkozik a név alapján.
+Ez a példa egy egyéni beállításokkal rendelkező elemződefiníciót mutat be. A karakterszűrők, tokenizerek és tokenszűrők egyéni beállításai külön-külön vannak megadva elnevezett szerkezetként, majd hivatkoznak az analizátor definíciójában. Az előre definiált elemek et a rendszer a következőképpen használja, és egyszerűen név szerint hivatkozik.
 
-A következő példa:
+Séta a példa:
 
-* Az elemzők egy kereshető mező mező osztályának tulajdonsága.
-* Az egyéni elemző egy index definíciójának része. Lehet, hogy ez a beállítás egyedileg testreszabható (például egyetlen lehetőség testreszabása egy szűrőben), vagy több helyen is testreszabható.
-* Ebben az esetben az egyéni analizátor "my_analyzer", amely egy testreszabott standard tokenizer "my_standard_tokenizer" és két jogkivonat-szűrőt használ: kisbetűs és testreszabott asciifolding szűrő "my_asciifolding".
-* Emellett 2 egyéni char-szűrőt is definiál: "map_dash" és "remove_whitespace". Az első lecseréli az aláhúzással ellátott kötőjeleket, míg a másodikban az összes szóköz el lett távolítva. A szóközöknek UTF-8 kódolással kell rendelkezniük a leképezési szabályokban. A char szűrők a jogkivonatok létrehozása előtt lesznek alkalmazva, és hatással vannak az eredményül kapott jogkivonatokra (a normál tokenizer kötőjeleken és szóközökön, de nem aláhúzáson).
+* Az elemzők a mezőosztály tulajdonságai egy kereshető mezőhöz.
+* Az egyéni analizátor egy indexdefiníció része. Lehet, hogy enyhén testre (például testre egyetlen lehetőség egy szűrőben), vagy testre több helyen.
+* Ebben az esetben az egyéni analizátor "my_analyzer", amely viszont egy testreszabott szabványos tokenizer "my_standard_tokenizer" és két token szűrőt használ: kisbetűs és testreszabott asciifolding szűrő "my_asciifolding".
+* Azt is meghatározza 2 egyéni karakter szűrők "map_dash" és a "remove_whitespace". Az első az összes kötőjelet aláhúzással helyettesíti, míg a második eltávolítja az összes szóközt. A szóközöknek UTF-8-nak kell lenniük a leképezési szabályokban. A char szűrők alkalmazása a tokenizálás előtt történik, és hatással lesz az eredményül kapott tokenekre (a szabványos tokenizer szünetek kötőjel és szóközök, de nem aláhúzás).
 
 ~~~~
   {
@@ -182,11 +182,11 @@ A következő példa:
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
-### <a name="per-field-analyzer-assignment-example"></a>Felhasználónkénti elemző-hozzárendelési példa
+### <a name="per-field-analyzer-assignment-example"></a>Példa mezőelemzői hozzárendelésre
 
-A standard Analyzer az alapértelmezett. Tegyük fel, hogy az alapértelmezett értéket egy másik előre definiált elemzővel szeretné lecserélni, például a minta-elemzőt. Ha nem állít be egyéni beállításokat, csak név alapján kell megadnia a mező definíciójában.
+A Standard analizátor az alapértelmezett. Tegyük fel, hogy az alapértelmezett értéket egy másik előre definiált elemzőre, például a mintaelemzőre szeretné cserélni. Ha nem ad meg egyéni beállításokat, akkor csak név szerint kell megadnia a meződefinícióban.
 
-A "Analyzer" elem felülbírálja a standard elemzőt egy mező – mező alapján. Nincs globális felülbírálás. Ebben a példában a `text1` a minta analizátort használja, és `text2`, amely nem ad meg elemzőt, az alapértelmezett értéket használja.
+Az "analizátor" elem mezőenként felülbírálja a Standard analizátort. Nincs globális felülbírálás. Ebben a `text1` példában a mintaelemző, a `text2`, amely nem ad meg elemzőt, az alapértelmezett.
 
 ~~~~
   {
@@ -215,9 +215,9 @@ A "Analyzer" elem felülbírálja a standard elemzőt egy mező – mező alapj�
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
-### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Elemzők keverése az indexeléshez és a keresési műveletekhez
+### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Keverési elemzők indexeléshez és keresési műveletekhez
 
-Az API-k további index-attribútumokkal rendelkeznek a különböző elemzők indexeléshez és kereséshez való megadásához. A **searchAnalyzer** és a **indexAnalyzer** attribútumot párosítva kell megadni, az egyetlen **elemző** attribútum helyett.
+Az API-k további indexattribútumokat tartalmaznak a különböző elemzők indexeléséhez és kereséséhez. A **searchAnalyzer** és **az indexAnalyzer** attribútumokat párként kell megadni, és az egyetlen **elemző** attribútumot kell helyettesíteni.
 
 
 ~~~~
@@ -243,9 +243,9 @@ Az API-k további index-attribútumokkal rendelkeznek a különböző elemzők i
 
 <a name="Language-analyzer-example"></a>
 
-### <a name="language-analyzer-example"></a>Language Analyzer – példa
+### <a name="language-analyzer-example"></a>Példa nyelvi elemzőre
 
-A különböző nyelvű karakterláncokat tartalmazó mezők nyelvi elemzőt is használhatnak, míg más mezők megőrzik az alapértelmezett értéket (vagy más előre definiált vagy egyéni elemzőt használnak). Ha nyelvi elemzőt használ, azt az indexelési és a keresési műveletekhez is használni kell. A Language Analyzert használó mezők nem rendelkezhetnek különböző elemzővel az indexeléshez és a kereséshez.
+A különböző nyelvű karakterláncokat tartalmazó mezők használhatnak nyelvi analizátort, míg más mezők megtartják az alapértelmezett értéket (vagy más előre definiált vagy egyéni analizátort használhatnak). Ha nyelvi analizátort használ, azt indexelési és keresési műveletekhez is használni kell. A nyelvi elemzőt használó mezők nem rendelkezhetnek különböző elemzőkkel az indexeléshez és a kereséshez.
 
 ~~~~
   {
@@ -274,22 +274,22 @@ A különböző nyelvű karakterláncokat tartalmazó mezők nyelvi elemzőt is 
   }
 ~~~~
 
-## <a name="c-examples"></a>C#Példák
+## <a name="c-examples"></a>C# példák
 
-Ha a .NET SDK-kód mintáit használja, ezeket a példákat az elemzők használatára vagy konfigurálására használhatja.
+Ha a .NET SDK kódmintákat használja, hozzáfűzheti ezeket a példákat az elemzők használatához vagy konfigurálásához.
 
-+ [Beépített analizátor kiosztása](#Assign-a-language-analyzer)
++ [Beépített elemző hozzárendelése](#Assign-a-language-analyzer)
 + [Analizátor konfigurálása](#Define-a-custom-analyzer)
 
 <a name="Assign-a-language-analyzer"></a>
 
-### <a name="assign-a-language-analyzer"></a>Nyelvi elemző kijelölése
+### <a name="assign-a-language-analyzer"></a>Nyelvi elemző hozzárendelése
 
-Bármely, konfiguráció nélkül használt analizátor meg van adva egy mező definíciójában. A Analyzer-szerkezet létrehozásához nincs szükség. 
+Minden olyan elemző, amelyet a rendszer konfiguráció nélkül használ, meződefinícióban van megadva. Nincs szükség analizátor-szerkezet létrehozására. 
 
-Ez a példa a Microsoft angol és francia elemzőit rendeli hozzá a Description (Leírás) mezőkhöz. Ez egy olyan kódrészlet, amely a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta Hotels.cs fájljában a Hotel osztály használatával jön létre.
+Ez a példa a Microsoft angol és francia elemzőket rendeli hozzá a leírásmezőkhöz. Ez egy részlet vett egy nagyobb meghatározása a szállodák index, ami segítségével a Hotel osztály a hotels.cs fájlt a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta.
 
-Hívja meg az [analizátort](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), adja meg az Azure Cognitive Search által támogatott [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) -típust.
+Hívás [elemző](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), adja meg az [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) típusú, amely az Azure Cognitive Search által támogatott szövegelemző.
 
 ```csharp
     public partial class Hotel
@@ -311,11 +311,11 @@ Hívja meg az [analizátort](https://docs.microsoft.com/dotnet/api/microsoft.azu
 ```
 <a name="Define-a-custom-analyzer"></a>
 
-### <a name="define-a-custom-analyzer"></a>Egyéni analizátor definiálása
+### <a name="define-a-custom-analyzer"></a>Egyéni elemző definiálása
 
-Ha testreszabásra vagy konfigurálásra van szükség, hozzá kell adnia egy Analyzer-szerkezetet egy indexhez. A Definiálás után hozzáadhatja a mező definícióját az előző példában bemutatott módon.
+Ha testreszabásra vagy konfigurációra van szükség, hozzá kell adnia egy elemző szerkezetet egy indexhez. Miután definiálta, hozzáadhatja a meződefiníciót az előző példában bemutatott módon.
 
-Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) objektumot. További példákat [a CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {
@@ -337,17 +337,17 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
    serviceClient.Indexes.Create(definition);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-+ Tekintse át a [teljes szöveges keresés az Azure Cognitive Search-ban való működésének](search-lucene-query-architecture.md)részletes leírását. Ez a cikk példákat használ az olyan viselkedések magyarázatára, amelyek a felületen intuitív módon jelenhetnek meg.
++ Tekintse át átfogó magyarázatunkat [arról, hogyan működik a teljes szöveges keresés az Azure Cognitive Search szolgáltatásban.](search-lucene-query-architecture.md) Ez a cikk példákat használ, hogy ismertesse a viselkedések, amelyek úgy tűnhet, ellentétes intuitív a felszínen.
 
-+ További lekérdezési szintaxist a [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) example szakasz vagy az [egyszerű lekérdezési szintaxis](query-simple-syntax.md) a Search Explorerben a portálon.
++ Próbálkozzon további lekérdezési szintaxissal a [Keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) példa szakaszból, vagy az Egyszerű [lekérdezés szintaxisából](query-simple-syntax.md) a kereséskezelőben a portálon.
 
-+ Megtudhatja, hogyan alkalmazhat [nyelvi specifikus lexikális elemzőket](index-add-language-analyzers.md).
++ További információ a [nyelvspecifikus lexikális elemzők alkalmazásáról.](index-add-language-analyzers.md)
 
-+ [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
++ [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) minimális feldolgozáshoz vagy speciális feldolgozáshoz az egyes mezőkön.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
  [Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub üzenet-gazdagítás áttekintése
-description: Ez a cikk az üzenetek bővítéseit jeleníti meg, amelyek lehetővé teszik a IoT Hub számára, hogy az üzeneteket a kijelölt végpontnak való küldés előtt további információkkal lehessen lepecsételni.
+title: Az Azure IoT Hub üzenetgazdagításainak áttekintése
+description: Ez a cikk az üzenetek bővítését mutatja be, amelyek lehetővé teszik az IoT Hub számára, hogy az üzeneteket további információkkal pecsételje le, mielőtt az üzeneteket a kijelölt végpontra küldenék.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,95 +9,95 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75429122"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Üzenetek bővítése az eszközről a felhőbe IoT Hub üzenetekhez
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Az eszközök felhőbe irányuló IoT Hub-üzenetek üzenetgazdagításai
 
-Az *üzenet-gazdagítás* a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen *lepecsételni* . Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz.
+*Az üzenetek dúsítása* az IoT Hub azon képessége, hogy az üzeneteket a kijelölt végpontra való küldés előtt további információkkal *bélyegezze* le. Az üzenetek bővítésének egyik oka az, hogy olyan adatokat is tartalmaz, amelyek egyszerűsíthetik az alsóbb rétegbeli feldolgozást. Például az eszköz telemetriai üzenetek egy eszköz ikercímke csökkentheti a terhelést az ügyfelek számára, hogy az eszköz iker API-hívások ezt az információt.
 
-![Üzenet-dúsítási folyamat](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
+![Üzenetgazdagítási folyamat](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
-Az üzenetek dúsításának három fő eleme van:
+Az üzenetek gazdagításának három fő eleme van:
 
-* Dúsítási név vagy kulcs
+* Dúsítás ineve vagy kulcsa
 
 * Egy érték
 
-* Egy vagy több olyan [végpont](iot-hub-devguide-endpoints.md) , amelyhez a dúsítást alkalmazni kell.
+* Egy vagy több [olyan végpont,](iot-hub-devguide-endpoints.md) amelyre a dúsítást alkalmazni kell.
 
-A **kulcs** egy karakterlánc. A kulcsok csak alfanumerikus karaktereket vagy a speciális karaktereket tartalmazhatják: kötőjel (`-`), aláhúzás (`_`) és pont (`.`).
+A **kulcs** egy karakterlánc. Egy kulcs csak alfanumerikus karaktereket tartalmazhat,`-`vagy ezek`_`a speciális`.`karakterek: kötőjel ( ), aláhúzás ( ) és pont ( ).
 
-Az **érték** az alábbi példák bármelyike lehet:
+Az **érték** a következő példák bármelyike lehet:
 
-* Bármilyen statikus karakterlánc. A dinamikus értékek, például a feltételek, a logika, a műveletek és a függvények nem engedélyezettek. Ha például olyan SaaS-alkalmazást fejleszt ki, amelyet számos ügyfél használ, hozzárendelhet egy azonosítót az egyes ügyfelekhez, és elérhetővé teheti az azonosítót az alkalmazásban. Az alkalmazás futtatásakor a IoT Hub lepecsételi az eszköz telemetria az ügyfél azonosítójával, így az egyes ügyfeleknél különbözőképpen dolgozhat fel az üzeneteket.
+* Bármilyen statikus karakterlánc. Dinamikus értékek, például feltételek, logika, műveletek és függvények nem engedélyezettek. Ha például több ügyfél által használt SaaS-alkalmazást fejleszt, minden ügyfélhez hozzárendelhet egy azonosítót, és elérhetővé teheti az azonosítót az alkalmazásban. Az alkalmazás futtatásakor az IoT Hub lebélyegzi az eszköz telemetriai üzeneteket az ügyfél azonosítójával, lehetővé téve az üzenetek eltérő feldolgozását az egyes ügyfelek számára.
 
-* Az üzenetet küldő IoT hub neve. Ez az érték *$iothubname*.
+* Az üzenetet küldő IoT-központ neve. Ez az érték *$iothubname*.
 
-* Az eszköz különálló információi, például annak elérési útja. Ilyenek például a következők: *$Twin. Tags. Field* és *$Twin. Tags. Latitude*.
+* Az ikereszközadatai, például az elérési útja. Ilyen például *a $twin.tags.field* és *a $twin.tags.latitude*.
 
    > [!NOTE]
-   > Jelenleg csak a $iothubname, a $twin. Tags, a $twin. properties. desired és a $twin. properties. jelentett változók az üzenetek dúsításának támogatott változói.
+   > Jelenleg csak $iothubname, $twin.tags, $twin.properties.desired és $twin.properties.reported támogatott változók az üzenetek bővítéséhez.
 
-Az üzenetek gazdagítása alkalmazás-tulajdonságokként történik a kiválasztott végpont (ok) ba küldött üzenetekhez.  
+Az üzenetbővítések alkalmazástulajdonságokként kerülnek hozzáadásra a kiválasztott végpont(ok)ba küldött üzenetekhez.  
 
 ## <a name="applying-enrichments"></a>Dúsítások alkalmazása
 
-Az üzenetek bármilyen, [IoT hub üzenet-útválasztás](iot-hub-devguide-messages-d2c.md)által támogatott adatforrásból származhatnak, beleértve az alábbi példákat is:
+Az üzenetek az [IoT Hub üzenet-útválasztása](iot-hub-devguide-messages-d2c.md)által támogatott bármely adatforrásból származhatnak, beleértve a következő példákat:
 
-* eszköz telemetria, például hőmérséklet vagy nyomás
-* eszköz kettős változásával kapcsolatos értesítések – az eszköz kettős változásai
-* az eszköz életciklusával kapcsolatos események, például az eszköz létrehozásakor vagy törlésekor
+* készülék telemetriai adatai, például hőmérséklet vagy nyomás
+* eszköz iker változásértesítések - változások az eszköz iker
+* életciklus-eseményeit, például amikor az eszközt létrehozták vagy törölték,
 
-Bővítheti az olyan üzenetekhez tartozó bővítéseket, amelyek a IoT Hub beépített végpontján, illetve az olyan üzeneteknél, amelyek az Azure Blob Storage-hoz, egy Service Bus-várólistához vagy egy Service Bus témakörhöz vannak irányítva.
+Az IoT Hub beépített végpontjára irányuló üzenetekhez dúsításokat adhat hozzá, vagy olyan üzeneteket, amelyek egyéni végpontokra, például az Azure Blob storage-ba, a Service Bus-várólistába vagy a Service Bus-témakörbe kerülnek.
 
-A Event Grid közzétett üzenetekhez bővítéseket adhat hozzá, ha Event Gridként kiválasztja a végpontot. A Event Grid-előfizetés alapján létrehozunk egy alapértelmezett útvonalat IoT Hub az eszköz telemetria. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Az Event Grid-végpont dúsítását az Event Grid-előfizetés az eszköz telemetria való létrehozása után is konfigurálhatja. További információ: [IOT hub és Event Grid](iot-hub-event-grid.md).
+Az Eseményrácsban közzétett üzenetekhez az Eseményrácson közzétett műveletekhez a végpont eseményrácsként való kiválasztásával adhat hozzá dúsításokat. Az Event Grid-előfizetés alapján létrehozunk egy alapértelmezett útvonalat az IoT Hubban az eszköztelemetriához. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetést. Az eseményrács végpontjának dúsításait konfigurálhatja, miután létrehozta az eseményrács-előfizetést az eszköz telemetriai adataihoz. További információ: [Iot Hub and Event Grid](iot-hub-event-grid.md).
 
-A dúsítások egy végponton vannak alkalmazva. Ha öt dúsítást ad meg egy adott végpontra vonatkozóan, a végponthoz tartozó összes üzenetet ugyanazzal az öt gazdagítva kell lepecsételni.
+A dúsítások végpontonként kerülnek alkalmazásra. Ha öt dúsítást ad meg egy adott végponthoz, akkor a végpontra irányuló összes üzenet ugyanazzal az öt dúsítással lesz lepecsételve.
 
-A dúsítást a következő módszerekkel lehet konfigurálni:
+A dúsítások a következő módszerekkel konfigurálhatók:
 
-| **Metódus** | **Parancs** |
+| **Módszer** | **Parancs** |
 | ----- | -----| 
-| Portál | [Azure Portal](https://portal.azure.com) | Lásd az [üzenet gazdagítása oktatóanyagot](tutorial-message-enrichments.md) | 
-| Azure parancssori felület (CLI)   | [az IOT hub Message-gazdagodás](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Portál | [Azure-portál](https://portal.azure.com) | Tekintse meg az [üzenetgazdagítások oktatóanyagát](tutorial-message-enrichments.md) | 
+| Azure CLI   | [az iot hub üzenetbővítés](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 
-Az üzenet-bővítések hozzáadása nem jár késéssel az üzenet-útválasztáshoz.
+Az üzenetek bővítésének hozzáadása nem növeli a késést az üzenetútválasztáshoz.
 
-Az üzenetek dúsításának kipróbálásához tekintse meg az [üzenet gazdagítása című oktatóanyagot](tutorial-message-enrichments.md) .
+Az üzenetek bővítésének kipróbálásához tekintse meg az [üzenetgazdagítások című oktatóanyagot](tutorial-message-enrichments.md)
 
 ## <a name="limitations"></a>Korlátozások
 
-* A standard vagy az alapszintű csomag esetében IoT Hub akár 10 dúsítást is hozzáadhat az adott hubokhoz. Az ingyenes szinten található IoT-huboknál legfeljebb 2 dúsítást adhat hozzá.
+* Az IoT Hubonként legfeljebb 10 dúsítást adhat hozzá a standard vagy alapszintű szolgáltatásokhoz. Az ingyenes szinten az IoT Hubs legfeljebb 2 dúsítást adhat hozzá.
 
-* Bizonyos esetekben, ha olyan értékkel rendelkező dúsítást alkalmaz, amely az eszköz Twin címkére vagy tulajdonságára van beállítva, akkor az érték karakterlánc-értékként lesz lepecsételve. Ha például a dúsítás értéke $twin. Tags. Field, az üzenetek a "$twin. Tags. Field" karakterlánccal lesznek lepecsételve, és nem az adott mező értékét a Twin-ből. Ez a következő esetekben fordul elő:
+* Bizonyos esetekben, ha egy dúsítást alkalmaz egy címkére vagy tulajdonságra beállított értékkel az ikereszközben, az érték karakterlánc-értékként lesz lepecsételve. Ha például egy dúsítási érték $twin.tags.field értékre van állítva, az üzenetek et a "$twin.tags.field" karakterlánc cal lesz lebélyegezve, nem pedig az ikermező értékét. Ez a következő esetekben fordul elő:
 
-   * Az IoT Hub alapszintű. Az alapszintű IoT hubok nem támogatják az eszközökhöz tartozó ikreket.
+   * Az IoT Hub az alapszintű. Az alapvető szintű IoT-központok nem támogatják az eszköz twins.
 
-   * A IoT Hub a standard szinten van, de az üzenetet küldő eszközön nincs külön eszköz.
+   * Az IoT Hub a standard szinten, de az eszköz az üzenetet küldő nem rendelkezik ikereszköz.
 
-   * A IoT Hub a standard szinten van, de a dúsítás értékéhez használt eszköz kettős elérési útja nem létezik. Ha például a dúsítás értéke $twin. Tags. location, és az eszköz Twin nem rendelkezik a címkék területen található Location tulajdonsággal, az üzenet a "$twin. Tags. location" karakterláncra van lepecsételve. 
+   * Az IoT Hub a standard szinten, de az eszköz két elérési út a dúsítás értéke nem létezik. Ha például a dúsítási érték $twin.tags.location értékre van állítva, és az ikereszköz nek nincs helytulajdonsága a címkék alatt, az üzenet a "$twin.tags.location" karakterlánccal lesz lepecsételve. 
 
-* A két eszköz frissítései akár öt percet is igénybe vehetnek a megfelelő alkoholtartalom-növelési értékben.
+* Az ikereszköz frissítései akár öt percet is igénybe vehetnek, hogy megjelenjenek a megfelelő dúsítási értékben.
 
-* Az üzenetek teljes mérete, beleértve a dúsítást, nem lépheti túl a 256 KB-ot. Ha az üzenet mérete meghaladja az 256 KB-ot, akkor a IoT Hub el fogja dobni az üzenetet. Az üzenetek eldobásakor a [IoT hub metrikák](iot-hub-metrics.md) használatával azonosíthatók és hibakeresési hibák jelentkezhetnek. Megfigyelheti például a D2C. telemetria. kimenő. érvénytelen.
+* Az üzenetek teljes mérete, beleértve a dúsításokat is, nem haladhatja meg a 256 KB-ot. Ha egy üzenet mérete meghaladja a 256 KB-ot, az IoT Hub eldobja az üzenetet. [Az IoT Hub-metrikák](iot-hub-metrics.md) segítségével azonosíthatja és debug hibák, amikor az üzenetek eldobása. Figyelheti például a d2c.telemetry.egress.invalid.For example, d2c.telemetry.egress.invalid.
 
-* Az üzenetek gazdagítása nem vonatkozik a digitális kettős változási eseményekre (a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verzió része).
+* Az üzenetek gazdagítása nem vonatkozik a digitális ikermódosítási eseményekre (az [IoT Plug and Play nyilvános előnézetének](../iot-pnp/overview-iot-plug-and-play.md)része).
 
 ## <a name="pricing"></a>Díjszabás
 
-Az üzenetek dúsítása díjmentesen elérhető. Jelenleg akkor számítunk fel díjat, amikor üzenetet küld egy IoT Hubnak. Erre az üzenetre csak egyszer kell fizetnie, még akkor is, ha az üzenet több végpontra is érvényes.
+Az üzenetek további díjmentesen elérhetők. Jelenleg akkor kell fizetnie, amikor üzenetet küld egy IoT Hub. Az üzenetért csak egyszer kell fizetnie, még akkor is, ha az üzenet több végpontra kerül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg ezeket a cikkeket, ha további információt szeretne arról, hogyan lehet útválasztási üzeneteket IoT Hub:
+Tekintse meg ezeket a cikkeket az üzenetek IoT Hubba történő útválasztásáról:
 
-* [Az üzenet-gazdagítás oktatóanyaga](tutorial-message-enrichments.md)
+* [Az üzenetek gazdagításának oktatóanyaga](tutorial-message-enrichments.md)
 
-* [Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](iot-hub-devguide-messages-d2c.md)
+* [Az IoT Hub üzenet-útválasztásának használata eszközről felhőbe irányuló üzenetek küldésére különböző végpontokra](iot-hub-devguide-messages-d2c.md)
 
-* [Oktatóanyag: IoT Hub Útválasztás](tutorial-routing.md)
+* [Oktatóanyag: IoT Hub útválasztás](tutorial-routing.md)

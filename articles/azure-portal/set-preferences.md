@@ -1,8 +1,8 @@
 ---
-title: A Azure Portal beállításainak megadása | Microsoft Docs
-description: Módosíthatja Azure Portal alapértelmezett beállításait, hogy megfeleljen a saját preferenciáinak. A beállítások közé tartozik az inaktív munkamenet időkorlátja, az alapértelmezett nézet, a menü mód, a kontraszt, a téma, az értesítések és a nyelv és a területi
+title: Az Azure Portal beállításainak beállítása | Microsoft dokumentumok
+description: Módosíthatja az Azure Portal alapértelmezett beállításait, hogy megfeleljen a saját beállításait. A beállítások közé tartozik az inaktív munkamenet időtúlhasználata, az alapértelmezett nézet, a menümód, a kontraszt, a téma, az értesítések, valamint a nyelvi és regionális formátumok
 services: azure-portal
-keywords: beállítások, időtúllépés, nyelv, regionális
+keywords: beállítások, időmeghosszabbítás, nyelv, regionális
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
@@ -10,116 +10,116 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310679"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Az Azure Portal-beállítások megadása
 
-Módosíthatja a Azure Portal alapértelmezett beállításait, hogy azok megfeleljenek a saját preferenciáinak. Az alábbiakban felsorolt beállítások mindegyike módosítható:
+Módosíthatja az Azure Portal alapértelmezett beállításait, hogy megfeleljen a saját beállításait. Az alább felsorolt beállítások mindegyike módosítható:
 
-* [Inaktív munkamenet időkorlátja](#change-the-idle-duration-for-inactive-sign-out)
+* [Inaktív munkamenet időtúlidőpontja](#change-the-idle-duration-for-inactive-sign-out)
 * [Alapértelmezett nézet](#choose-your-default-view)
-* [Portál menü mód](#choose-a-portal-menu-mode)
+* [Portál menümód](#choose-a-portal-menu-mode)
 * [Szín és kontrasztos téma](#choose-a-theme)
 * [Előugró értesítések](#enable-or-disable-pop-up-notifications)
-* [Nyelvi és területi formátum](#change-language-and-regional-settings)
+* [Nyelv és területi formátum](#change-language-and-regional-settings)
 
-## <a name="change-general-portal-settings"></a>Általános portál beállításainak módosítása
+## <a name="change-general-portal-settings"></a>Általános portálbeállítások módosítása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A globális oldal fejlécében válassza a **Beállítások** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Válassza a **beállítások lehetőséget** a globális oldalfejlécből.
 
-    ![Képernyőfelvétel a globális oldal fejlécének ikonjairól a Kiemelt beállításokkal](./media/set-preferences/header-settings.png)
+    ![Képernyőkép a globális oldalfejléc-ikonokról kiemelt beállításokkal](./media/set-preferences/header-settings.png)
 
-### <a name="change-the-idle-duration-for-inactive-sign-out"></a>Inaktív kijelentkezés üresjárati időtartamának módosítása
+### <a name="change-the-idle-duration-for-inactive-sign-out"></a>Az inaktív kijelentkezés tétlen időtartamának módosítása
 
-Az inaktivitás időtúllépési beállítása segít megvédeni az erőforrásokat a jogosulatlan hozzáféréstől, ha elfelejti a munkaállomás védelmét. Miután elvégezte a tétlenséget, automatikusan kijelentkezik a Azure Portal-munkamenetből.
+Az inaktivitás időelintézési beállítása segít megvédeni az erőforrásokat a jogosulatlan hozzáféréstől, ha elfelejti biztosítani a munkaállomást. Miután egy ideig tétlen volt, automatikusan kijelentkezik az Azure Portal-munkamenetből.
 
-Válassza ki a legördülő menüből a kijelentkezés az **inaktív állapotból**lehetőséget. Válassza ki azt az időtartamot, amely után a Azure Portal-munkamenet ki van jelentkezve, ha tétlen.
+Válassza ki a legördülő menü **Bejelentkezés inaktív állapotban csoportban.** Válassza ki azt az időtartamot, amely után az Azure Portal-munkamenet ki van jelentkezve, ha tétlen.
 
-   ![Képernyőkép a portál beállításairól az inaktív időtúllépési beállítások kiemelésével](./media/set-preferences/inactive-signout-user.png)
+   ![Képernyőkép a portál beállításairól kiemelt inaktív időtúltöltési beállításokkal](./media/set-preferences/inactive-signout-user.png)
 
-A rendszer automatikusan menti a változást. Ha tétlen, akkor a Azure Portal-munkamenet a beállított időtartam után kijelentkezik.
+A módosítás automatikusan mentésre kerül. Ha tétlen, az Azure Portal munkamenet kijelentkezik a beállított időtartam után.
 
-Ezt a beállítást egy rendszergazda is elvégezheti a címtár szintjén a maximális üresjárati idő érvényesítéséhez. Ha egy rendszergazda címtár-szintű időtúllépési beállítást adott meg, akkor továbbra is beállíthatja a saját inaktív kijelentkezési időtartamát. Olyan időbeállítást válasszon, amely kisebb, mint a könyvtár szintjén beállított érték.
+Ezt a beállítást a könyvtár szintjén lévő rendszergazda is elláthatja a maximális tétlen idő kikényszerítése érdekében. Ha egy rendszergazda címtárszintű időtúltöltési beállítást végzett, továbbra is beállíthatja a saját inaktív kijelentkezési időtartamát. Válasszon olyan időbeállítást, amely kisebb, mint a könyvtár szintjén beállított beállítás.
 
-Ha a rendszergazda engedélyezte a tétlenségi időtúllépési házirendet, jelölje be a **könyvtár inaktivitás időtúllépési házirendjének felülbírálása** jelölőnégyzetet. Állítsa be a házirend-beállításnál kisebb időintervallumot.
+Ha a rendszergazda engedélyezte az inaktivitás időtúllépési házirendjét, jelölje be **a Címtár inaktivitási időtúllépési házirendjének felülbírálása** jelölőnégyzetet. Állítson be egy időintervallumot, amely kisebb, mint a házirend-beállítás.
 
-   ![A portál beállításait megjelenítő képernyőkép, amely felülbírálja a címtár inaktivitási időtúllépési házirend-beállítását.](./media/set-preferences/inactive-signout-override.png)
+   ![Képernyőkép a portál beállításairól a nyitott könyvtárinaktivitási időtúllépési házirend beállítás felülírásával](./media/set-preferences/inactive-signout-override.png)
 
 
 > [!NOTE]
-> Ha Ön rendszergazda, és szeretné kényszeríteni a Azure Portal összes felhasználójának inaktív időtúllépési beállítását, tekintse meg a következő témakört: [a könyvtár szintű inaktivitás időkorlátjának beállítása a Azure Portal felhasználói](admin-timeout.md) számára.
+> Ha Ön rendszergazda, és inaktív időtúltöltési beállítást szeretne kikényszeríteni az Azure Portal összes felhasználója számára, olvassa [el a Címtárszintű inaktivitás időtúltöltésének beállítása az Azure Portal felhasználói számára című témakört.](admin-timeout.md)
 >
 
 ### <a name="choose-your-default-view"></a>Az alapértelmezett nézet kiválasztása 
 
-A Azure Portalba való bejelentkezéskor alapértelmezés szerint megnyithatja az oldalt.
+Módosíthatja a lapot, amely alapértelmezés szerint megnyílik, amikor az Azure Portalra való bejelentkezés.
 
-   ![Képernyőfelvétel – az alapértelmezett nézettel Azure Portal beállítások megjelenítése](./media/set-preferences/default-view.png)
+   ![Képernyőkép az Azure Portal beállításairól kiemelt alapértelmezett nézetben](./media/set-preferences/default-view.png)
 
-Az alapértelmezett nézet beállítás azt határozza meg, hogy mely Azure Portal nézet jelenik meg a bejelentkezéskor. Dönthet úgy, hogy alapértelmezés szerint megnyitja az Azure kezdőlapot vagy az irányítópult nézetet.
+Az alapértelmezett nézetbeállítás határozza meg, hogy melyik Azure Portal-nézet jelenjen meg bejelentkezéskor. Beállíthatja, hogy alapértelmezés szerint nyissa meg az Azure Home vagy az Irányítópult nézetet.
 
-* A **Kezdőlap** nem szabható testre.  Megjeleníti a népszerű Azure-szolgáltatásokra mutató parancsikonokat, és felsorolja a legutóbb használt erőforrásokat. Hasznos hivatkozásokat is biztosítunk az olyan erőforrásokhoz, mint a Microsoft Learn és az Azure-útiterv.
-* Az irányítópultok testreszabhatók úgy, hogy csak Ön számára kialakított munkaterületet hozzanak létre. Létrehozhat például egy projekt, feladat vagy szerepkör fókuszban lévő irányítópultot. Ha kijelöli az **irányítópultot**, az alapértelmezett nézet a legutóbb használt irányítópultra lép.
+* **Az otthon** nem szabható testre.  Megjeleníti a népszerű Azure-szolgáltatások parancsikonjait, és felsorolja a legutóbb használt erőforrásokat. Hasznos hivatkozásokat is biztosítunk olyan erőforrásokhoz, mint a Microsoft Learn és az Azure ütemterve.
+* Az irányítópultok testre szabhatók, hogy ön számára tervezett munkaterületet hozzanak létre. Létrehozhat például egy projekt-, tevékenység- vagy szerepkörközpontú irányítópultot. Ha az Irányítópult lehetőséget **választja,** az alapértelmezett nézet a legutóbb használt irányítópultra kerül.
 
-### <a name="choose-a-portal-menu-mode"></a>Portál menü mód kiválasztása
+### <a name="choose-a-portal-menu-mode"></a>Portálmenü mód kiválasztása
 
-A portál menü alapértelmezett módja határozza meg, hogy a portál menüjében mennyi lemezterületet vesz fel az oldal.
+A portálmenü alapértelmezett módja határozza meg, hogy a portálmenü mennyi helyet foglal el az oldalon.
 
-* Ha a portál menüje a **kilépési módban van** , akkor a rendszer rejtve marad, amíg nincs rá szüksége. Válassza a menü ikont a menü megnyitásához vagy bezárásához.
-* Ha a portál menü **dokkolt** mód elemét választja, mindig látható. A menü összecsukásával több munkaterületet is megadhat. 
+* Ha a portál menü **úszó panel** módban van, akkor a rendszer el van rejtve, amíg szükség nem lesz rá. A menü megnyitásához vagy bezárásához válassza a menü ikonját.
+* Ha a portál **menüben a dokkolt** módot választja, az mindig látható lesz. A menü összecsukható, hogy több munkaterületet biztosítson. 
 
 ### <a name="choose-a-theme"></a>Válasszon témát
 
-A kiválasztott téma befolyásolja a Azure Portalban megjelenő háttér-és betűszínt. A négy beállított színtéma közül választhat. Válassza ki az egyes miniatűrket, és keresse meg az Önnek legmegfelelőbb témát.
+A kiválasztott téma hatással van az Azure Portalon megjelenő háttér- és betűszínekre. A négy előre beállított színtéma közül választhat. Jelölje ki az egyes miniatűröket, hogy megtalálja az Önnek leginkább megfelelő témát.
 
-   ![A Kiemelt témákkal rendelkező Azure Portal beállításokat bemutató képernyőkép](./media/set-preferences/theme.png)
+   ![Képernyőkép az Azure Portal beállításairól kiemelt témákkal](./media/set-preferences/theme.png)
 
-Ehelyett kiválaszthatja a nagy kontrasztú témák egyikét. A kontrasztos beállítások a Azure Portal könnyebben olvashatók a gyengén látó felhasználók számára, és felülbírálják az összes többi téma kijelölését. További információt a [Kontrasztos megjelenítés bekapcsolása vagy a téma módosítása](azure-portal-change-theme-high-contrast.md)című témakörben talál.
+Ehelyett választhat a kontrasztos témák közül. A kontrasztos beállítások megkönnyítik az Azure Portal olvasását a csökkent látóképességű felhasználók számára, és felülírják az összes többi témaválasztást. További információt a [Kontrasztos megjelenítés bekapcsolása vagy téma módosítása című témakörben talál.](azure-portal-change-theme-high-contrast.md)
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>Előugró értesítések engedélyezése vagy letiltása
 
-Az értesítések az aktuális munkamenethez kapcsolódó rendszerüzenetek. Olyan információkat biztosítanak, mint a jelenlegi kredit egyenleg, ha az imént létrehozott erőforrások elérhetővé válnak, vagy megerősítik az utolsó műveletet, például:. Amikor bekapcsolják az előugró értesítéseket, a képernyő felső sarkában lévő üzenetek röviden megjelennek. 
+Az értesítések az aktuális munkamenethez kapcsolódó rendszerüzenetek. Olyan információkat szolgáltatnak, mint például az aktuális hitelegyenlege, amikor az imént létrehozott erőforrások elérhetővé válnak, vagy megerősítik például az utolsó műveletet. Ha az előugró értesítések be vannak kapcsolva, az üzenetek rövid en jelennek meg a képernyő felső sarkában. 
 
-Az előugró értesítések engedélyezéséhez vagy letiltásához jelölje be az **előugró értesítések engedélyezése** jelölőnégyzetet, vagy törölje a jelölését.
+Az előugró értesítések engedélyezéséhez vagy letiltásához jelölje be az **Előugró értesítések engedélyezése** jelölőnégyzetet, vagy törölje belőle a jelet.
 
-   ![Az előugró értesítések kiemelve Azure Portal beállításait bemutató képernyőkép](./media/set-preferences/popup-notifications.png)
+   ![Képernyőkép az Azure Portal beállításairól kiemelt előugró értesítésekkel](./media/set-preferences/popup-notifications.png)
 
-Az aktuális munkamenet során fogadott értesítések olvasásához válassza az **értesítések** elemet a globális fejlécből.
+Az aktuális munkamenet során kapott összes értesítés olvasásához válassza az **Értesítések** elemet a globális fejlécből.
 
-   ![A Azure Portal globális fejlécét bemutató képernyőkép](./media/set-preferences/read-notifications.png)
+   ![Az Azure Portal globális fejlécét ábrázoló képernyőkép kiemelt értesítésekkel](./media/set-preferences/read-notifications.png)
 
-Ha szeretné beolvasni az előző munkamenetek értesítéseit, keresse meg az eseményeket a tevékenység naplójában. További információért olvassa el az [Azure-Tevékenységnaplók eseményeinek megtekintése és](/azure/azure-monitor/platform/activity-log-view)beolvasása című témakört.
+Ha el szeretné olvasni az előző munkamenetek értesítéseit, keresse meg az eseményeket a tevékenységnaplóban. További információért olvassa el [az Azure-tevékenységnapló eseményeinek megtekintése és beolvasása.](/azure/azure-monitor/platform/activity-log-view)
 
-### <a name="settings-under-useful-links"></a>A hasznos hivatkozások alatt található beállítások
+### <a name="settings-under-useful-links"></a>Beállítások a hasznos hivatkozások alatt
 
-Ha módosította a Azure Portal beállításokat, és el szeretné vetni őket, válassza az **alapértelmezett beállítások visszaállítása**lehetőséget. A portál beállításaiban végrehajtott módosítások elvesznek. Ez a beállítás nem befolyásolja az irányítópultok testreszabását.
+Ha módosította az Azure Portal beállításait, és el szeretné vetni őket, válassza **az Alapértelmezett beállítások visszaállítása**lehetőséget. A portál beállításaiban végzett módosítások elvesznek. Ez a beállítás nincs hatással az irányítópult okán.
 
-További információ az **összes beállítás exportálásáról** , illetve az **összes beállítás és a privát irányítópultok törléséről**: [felhasználói beállítások exportálása vagy törlése](azure-portal-export-delete-settings.md).
+Az összes **beállítás exportálásáról** vagy **az összes beállítás és privát irányítópult törlése című**témakörben további információt a Felhasználói beállítások [exportálása vagy törlése](azure-portal-export-delete-settings.md)című témakörben talál.
 
 ## <a name="change-language-and-regional-settings"></a>Nyelvi és területi beállítások módosítása
 
-Két beállítás szabályozza a Azure Portal szövegének megjelenését. A **nyelvi** beállítás határozza meg, hogy milyen nyelven jelenik meg a szöveg a Azure Portalban. A **területi formátum** szabályozza a dátumok, az idő, a számok és a pénznem megjelenítésének módját.
+Két beállítás szabályozza, hogy a szöveg az Azure Portalon jelenik meg. A **Nyelvi** beállítás határozza meg az Azure Portalon a szöveghez látható nyelvet. **A területi formátum** határozza meg a dátumok, az idő, a számok és a pénznem ekként való megjelenítését.
 
-A Azure Portal használt nyelv módosításához a legördülő listából válassza ki az elérhető nyelvek listáját.
+Az Azure Portalon használt nyelv módosításához a legördülő menüsegítségével válasszon az elérhető nyelvek listájából.
 
-A területi formátum kiválasztása úgy változik, hogy csak a kiválasztott nyelvhez tartozó területi beállítások jelenjenek meg. Az Automatikus kijelölés módosításához a legördülő menüben válassza ki a kívánt területi formátumot.
+A területi formátum kijelölése úgy változik, hogy csak a kiválasztott nyelv területi beállításai jelenjenek meg. Az automatikus kijelölés módosításához a legördülő menüsegítségével válassza ki a kívánt területi formátumot.
 
-Ha például az angol nyelvet választja, majd a területi formátumot Egyesült Államok választja, akkor a pénznem amerikai dollárban jelenik meg. Ha az angol nyelvet választja, és az Európai területi formátumot választja, akkor a pénznem euróban jelenik meg.
+Ha például az angol nyelvet választja, majd az Egyesült Államokat választja regionális formátumként, a pénznem amerikai dollárban jelenik meg. Ha az angol nyelvet választja, majd Európát választja regionális formátumként, a pénznem euróban jelenik meg.
 
-Az **alkalmaz** gombra kattintva frissítheti a nyelvi és a területi formátum beállításait.
+Válassza az **Alkalmaz** lehetőséget a nyelvi és területi formátumbeállítások frissítéséhez.
 
-   ![A nyelvi és a területi formátum beállításait bemutató képernyőkép](./media/set-preferences/language.png)
+   ![Képernyőkép a nyelvi és területi formázási beállításokról](./media/set-preferences/language.png)
 
 >[!NOTE]
->Ezek a nyelvi és területi beállítások csak a Azure Portal érintik. Az új lapon vagy ablakban megnyitott dokumentációs hivatkozások a böngésző nyelvi beállításait fogják használni a megjelenítendő nyelv meghatározásához.
+>Ezek a nyelvi és területi beállítások csak az Azure Portalra vannak hatással. Az új lapon vagy ablakban megnyíló dokumentációs hivatkozások a böngésző nyelvi beállításait használják a megjelenítendő nyelv meghatározásához.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyéni irányítópultok létrehozása és megosztása](azure-portal-dashboards.md)
-* [Azure Portal útmutató videó sorozat](azure-portal-video-series.md)
+* [Az Azure Portal útmutató videósorozata](azure-portal-video-series.md)

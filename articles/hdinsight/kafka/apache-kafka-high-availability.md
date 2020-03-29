@@ -1,5 +1,5 @@
 ---
-title: Magas rendelkezésre állás a Apache Kafka-Azure HDInsight
+title: Magas rendelkezésre állás az Apache Kafka - Azure HDInsight segítségével
 description: Útmutató magas rendelkezésre állás biztosításához az Apache Kafka platformmal az Azure HDInsight szolgáltatásban. Megtudhatja, hogyan egyensúlyozza ki újra a partíciók replikáit a Kafkában, hogy különböző tartalék tartományban legyenek a HDInsightot tartalmazó Azure régióban.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
 ms.openlocfilehash: a90be471ca068869ee26fb02bba77dfdd476a44e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435295"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Magas rendelkezésre állású adatok a HDInsightban futó Apache Kafka platformmal
 
-Megtudhatja, hogyan konfigurálhat partíciós replikákat Apache Kafka témakörökhöz, hogy kihasználhassa a mögöttes hardveres állvány konfigurációját. Ez a konfiguráció biztosítja a HDInsighton az Apache Kafka platformon tárolt adatok rendelkezésre állását.
+Ismerje meg, hogyan konfigurálhatja az Apache Kafka-témakörök partícióreplikákat az alapul szolgáló hardverállvány-konfiguráció előnyeinek kihasználásához. Ez a konfiguráció biztosítja a HDInsighton az Apache Kafka platformon tárolt adatok rendelkezésre állását.
 
-## <a name="fault-and-update-domains-with-apache-kafka"></a>Hibák és frissítési tartományok Apache Kafka
+## <a name="fault-and-update-domains-with-apache-kafka"></a>Hiba és frissítés tartományok Apache Kafka
 
 A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight-fürtön belül a csomópontokat implementáló virtuális gépek és felügyelt lemezek ezek között a tartalék tartományok között vannak elosztva. Ez az architektúra csökkenti a fizikai hardverhibák lehetséges hatását.
 
@@ -43,15 +43,15 @@ A Kafka-adatok lehető legmagasabb rendelkezésre állásának biztosításához
 
 Ha kénytelen olyan régiót használni, amely csak két tartalék tartomány tartalmaz, használjon 4-es replikációs tényezőt, hogy egyenletesen ossza el a replikákat a két tartalék tartományban.
 
-A témakörök létrehozásával és a replikációs tényező beállításával kapcsolatos példát a [Start with apache Kafka on HDInsight](apache-kafka-get-started.md) Document című témakörben talál.
+A témakörök létrehozásához és a replikációs tényező beállításához tekintse meg az [Indítás az Apache Kafka szolgáltatással a HDInsight-dokumentumon](apache-kafka-get-started.md) című témakört.
 
 ## <a name="how-to-rebalance-partition-replicas"></a>A partícióreplikák újraegyensúlyozása
 
-A kiválasztott témakörök újraelosztásához használja a [Apache Kafka Partition rebalance eszközt](https://github.com/hdinsight/hdinsight-kafka-tools) . Ezt az eszközt egy SSH-munkamenetből kell futtatni a Kafka-fürt főcsomópontjához.
+Az [Apache Kafka partíció újraegyensúlyozása eszközzel](https://github.com/hdinsight/hdinsight-kafka-tools) egyensúlyba hozhassa a kijelölt témaköröket. Ezt az eszközt egy SSH-munkamenetből kell futtatni a Kafka-fürt főcsomópontjához.
 
 A HDInsight-hoz SSH-val való kapcsolódásról további információért lásd az [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md) dokumentumot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Apache Kafka skálázhatósága a HDInsight](apache-kafka-scalability.md)
-* [Tükrözés Apache Kafka a HDInsight-on](apache-kafka-mirroring.md)
+* [Az Apache Kafka méretezhetősége a HDInsighton](apache-kafka-scalability.md)
+* [Tükrözés az Apache Kafkával a HDInsighton](apache-kafka-mirroring.md)

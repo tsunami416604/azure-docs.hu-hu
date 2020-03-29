@@ -1,6 +1,6 @@
 ---
-title: Képek mentése és terjesztése a Azure DevTest Labsban | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan mentheti az egyéni lemezképeket a már létrehozott virtuális gépekről Azure DevTest Labs.
+title: Lemezképek mentése és terjesztése az Azure DevTest Labs ben | Microsoft dokumentumok
+description: Ez a cikk ismerteti az egyéni lemezképek mentésének lépéseit az Azure DevTest Labs már létrehozott virtuális gépekről (VM-ek).
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,52 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759431"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Egyéni rendszerképek mentése és továbbítása több tesztkörnyezetbe
-Ez a cikk a már létrehozott virtuális gépekről (VM) származó egyéni lemezképek mentésének lépéseit ismerteti. Azt is ismerteti, hogyan terjesztheti ezeket az egyéni rendszerképeket a szervezet más DevTest Labs szolgáltatásában.
+Ez a cikk a már létrehozott virtuális gépek (VM-ek) egyéni lemezképeinek mentéséhez szükséges lépéseket ismerteti. Azt is ismerteti, hogyan terjesztheti ezeket az egyéni rendszerképeket a szervezet más DevTest Labs.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A következő elemeket már meg kell adni:
+A következő elemeknek már a helyükön kell lenniük:
 
-- A Azure DevTest Labsban található rendszerkép-előállító laborja.
-- Egy Azure DevOps-projekt, amely a rendszerkép-előállító automatizálására szolgál.
-- A szkripteket és a konfigurációt tartalmazó forráskód helye (példánkban az előző lépésben említett DevOps-projektben).
-- Hozzon létre definíciót az Azure PowerShell-feladatok előkészítéséhez.
+- Az Azure DevTest Labs image factory tesztkörnyezete.
+- Egy Azure DevOps-projekt, amely a lemezkép-gyár automatizálására szolgál.
+- A parancsfájlokat és a konfigurációt tartalmazó forráskód helye (példánkban az előző lépésben említett ugyanabban a DevOps-projektben).
+- Az Azure Powershell-feladatok vezényléséhez hozzon létre definíciót.
 
-Ha szükséges, kövesse az [Azure DevOps a rendszerkép-előállító futtatása](image-factory-set-up-devops-lab.md) az alábbi elemek létrehozásához vagy beállításához című témakör lépéseit. 
+Szükség esetén kövesse a [Lemezkép-gyár futtatása az Azure DevOps-ból](image-factory-set-up-devops-lab.md) lépéseket ezeknek az elemeknek a létrehozásához vagy beállításához. 
 
-## <a name="save-vms-as-generalized-vhds"></a>Virtuális gépek mentése általánosított virtuális merevlemezként
-Mentse a meglévő virtuális gépeket általánosított virtuális merevlemezként.  Létezik egy PowerShell-parancsfájl, amely a meglévő virtuális gépeket általánosított virtuális merevlemezként menti. Először vegyen fel egy másik **Azure PowerShell** -feladatot a Build-definícióba az alábbi ábrán látható módon:
+## <a name="save-vms-as-generalized-vhds"></a>Virtuális gépek mentése általános virtuális gépként
+Mentse a meglévő virtuális gépekáltalános virtuális gépek.  Van egy powershell-parancsfájl, amely általános virtuális gépekként menti a meglévő virtuális gépeket. A használathoz először adjon hozzá egy másik **Azure Powershell-feladatot** a builddefinícióhoz az alábbi képen látható módon:
 
-![Azure PowerShell lépés hozzáadása](./media/save-distribute-custom-images/powershell-step.png)
+![Azure PowerShell-lépés hozzáadása](./media/save-distribute-custom-images/powershell-step.png)
 
-Ha az új feladat szerepel a listában, válassza ki az elemet, hogy az alábbi képen látható módon kitöltse az összes adatot: 
+Miután az új feladat a listában, válassza ki az elemet, így tudjuk kitölteni az összes részletet, ahogy az a következő képen látható: 
 
 ![PowerShell-beállítások](./media/save-distribute-custom-images/powershell-settings.png)
 
 
-## <a name="generalized-vs-specialized-custom-images"></a>Általánosított és speciális Egyéni rendszerképek
-Ha egy virtuális gépről egyéni rendszerképet hoz létre, akkor a [Azure Portal](https://portal.azure.com)általánosított vagy speciális egyéni rendszerképet választhat.
+## <a name="generalized-vs-specialized-custom-images"></a>Általános és speciális egyéni képek
+Az [Azure Portalon,](https://portal.azure.com)amikor egy virtuális gépről egyéni lemezképet hoz létre, választhat, hogy egy általános vagy egy speciális egyéni lemezképet.
 
-- **Speciális egyéni rendszerkép:** A Sysprep/megszüntetés nem fut a gépen. Ez azt jelenti, hogy a rendszerkép az operációsrendszer-lemez pontos másolata a meglévő virtuális gépen (egy pillanatkép).  Ugyanezek a fájlok, alkalmazások, felhasználói fiókok, számítógépnév stb. mind jelennek meg, amikor új gépet hozunk létre ebből az egyéni rendszerképből.
-- **Általánosított egyéni rendszerkép:** A Sysprep/megszüntetés a gépen futott.  A folyamat futtatásakor eltávolítja a felhasználói fiókokat, eltávolítja a számítógép nevét, kiszűri a felhasználói beállításjegyzék-struktúrákat stb., a rendszerkép általánosításának céljával, hogy testre lehessen szabni egy másik virtuális gép létrehozásakor.  Amikor általánosít egy virtuális gépet (a Sysprep futtatásával), a folyamat megsemmisíti az aktuális virtuális gépet – a továbbiakban nem lesz működőképes.
+- **Speciális egyéni kép:** A Sysprep/Deprovision nem futott a számítógépen. Ez azt jelenti, hogy a lemez az operációs rendszer lemezének pontos másolata a meglévő virtuális gépen (pillanatkép).  Ugyanazok a fájlok, alkalmazások, felhasználói fiókok, számítógépnév és így tovább, mind jelen vannak, amikor új gépet hozunk létre erről az egyéni lemezképről.
+- **Általános egyéni lemezkép:** A Sysprep/Deprovision futtatása a számítógépen történt.  Amikor ez a folyamat fut, eltávolítja a felhasználói fiókokat, eltávolítja a számítógép nevét, eltávolítja a felhasználói rendszerleíró struktúrákat stb., azzal a céllal, hogy általánosítsa a lemezképet, így testre szabható egy másik virtuális gép létrehozásakor.  Amikor általánosít egy virtuális gépet (a sysprep futtatásával), a folyamat elpusztítja az aktuális virtuális gépet – a továbbiakban nem lesz működőképes.
 
-Az Egyéni rendszerképek a rendszerkép-Előállítóban való illesztésére szolgáló parancsfájl az előző lépésben létrehozott virtuális gépek számára menti a VHD-ket (az Azure-beli erőforrás címkéje alapján azonosítva).
+A parancsfájl az egyéni lemezképek dokkolása a rendszerképgyárban menti a virtuális gépek az előző lépésben létrehozott (az azure-beli erőforrás címkéje alapján azonosított) virtuális gépek mentését.
 
-## <a name="update-configuration-for-distributing-images"></a>Lemezképek terjesztésére szolgáló konfiguráció frissítése
-A folyamat következő lépéseként le kell küldenie az egyéni rendszerképeket a rendszerkép-előállító laborból minden más olyan laborba, amelyre szükségük van. Ennek a folyamatnak a fő része a **Labs. JSON** konfigurációs fájl. Ezt a fájlt a rendszerkép-előállítóban található **konfigurációs** mappában találja.
+## <a name="update-configuration-for-distributing-images"></a>Lemezképek terjesztésének konfigurációjának frissítése
+A következő lépés a folyamat, hogy leküldéses az egyéni képeket a képgyári labor ki bármely más laborok, amelyek nek szükségük van rájuk. A folyamat központi része a **labs.json konfigurációs** fájl. Ezt a fájlt a **lemezképgyárkonfigurációs** mappájában találja.
 
-A Labs. JSON konfigurációs fájlban két kulcsfontosságú dolog szerepel:
+A labs.json konfigurációs fájlban két kulcsfontosságú dolog található:
 
-- Egyedi módon azonosít egy adott cél labort az előfizetés-azonosító és a labor neve alapján.
-- Azoknak a lemezképeknek a készletét, amelyeket a rendszer a konfiguráció gyökeréhez viszonyított elérési utakként küld a laborba. Teljes mappát is megadhat (az adott mappában található összes rendszerkép lekéréséhez).
+- Egyedileg azonosítja egy adott céllabor az előfizetés-azonosító és a labor neve használatával.
+- A konfigurációs gyökér relatív elérési útjaként a laborba lekell nyomni a rendszerképek adott készletét. Megadhatja a teljes mappát (az összes kép bekerüléséhez a mappában) is.
 
-Íme egy példa a Labs. JSON fájlra, amelyben két Labs szerepel. Ebben az esetben két különböző laborba terjeszti a lemezképeket.
+Íme egy példa labs.json fájl két labs felsorolt. Ebben az esetben képeket terjeszt két különböző laborban.
 
 ```json
 {
@@ -83,16 +83,16 @@ A Labs. JSON konfigurációs fájlban két kulcsfontosságú dolog szerepel:
 ```
 
 ## <a name="create-a-build-task"></a>Összeállítási feladat létrehozása
-A cikkben korábban látott lépéseket követve hozzáadhat egy további **Azure PowerShell** -felépítési feladatot a definíció létrehozásához. Adja meg a részleteket az alábbi képen látható módon: 
+A cikkben korábban ismertetett lépések használatával adjon hozzá egy további **Azure Powershell-buildfeladatot** a builddefinícióhoz. Töltse ki a részleteket az alábbi képen látható módon: 
 
-![Lemezképek terjesztésére szolgáló feladat létrehozása](./media/save-distribute-custom-images/second-build-task-powershell.png)
+![Képek terjesztésére irányuló feladat létrehozása](./media/save-distribute-custom-images/second-build-task-powershell.png)
 
-A paraméterek a következők: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
+A paraméterek a következők:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
 
-Ez a feladat a rendszerkép-előállítóban található összes egyéni rendszerképet végrehajtja, és leküldi azokat a Labs. JSON fájlban meghatározott laborokra.
+Ez a feladat a lemezképgyárban lévő egyéni lemezképeket a Labs.json fájlban definiált bármely laborba kilöki.
 
-## <a name="queue-the-build"></a>A Build várólistája
-A terjesztési felépítési feladat befejezése után egy új buildet állít be, amely gondoskodik arról, hogy minden működik. A létrehozás sikeres befejezése után az új egyéni lemezképek megjelennek a Labs. JSON konfigurációs fájlban megadott cél laborban.
+## <a name="queue-the-build"></a>A build várólistára állítása
+Miután a terjesztési build feladat befejeződött, várólistára egy új build, hogy megbizonyosodjon arról, hogy minden működik. Miután a build sikeresen befejeződött, az új egyéni lemezképek megjelennek a labs.json konfigurációs fájlba beírt céllaborban.
 
-## <a name="next-steps"></a>Következő lépések
-Az adatsorozat következő cikkében a rendszerkép-előállítót a megőrzési szabályzattal és a karbantartási lépésekkel frissítheti: az [adatmegőrzési szabályzat beállítása és a karbantartási parancsfájlok futtatása](image-factory-set-retention-policy-cleanup.md).
+## <a name="next-steps"></a>További lépések
+A sorozat következő cikkében adatmegőrzési szabályzattal és törlési lépésekkel frissíti a [lemezképgyárat: Adatmegőrzési házirend beállítása és törlési parancsfájlok futtatása.](image-factory-set-retention-policy-cleanup.md)

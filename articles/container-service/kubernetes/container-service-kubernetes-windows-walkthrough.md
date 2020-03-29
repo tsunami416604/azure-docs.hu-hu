@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Rövid útmutató – Azure Kubernetes-fürt Windows rendszerhez
+title: (ELAVULT) Rövid útmutató – Azure Kubernetes-fürt windowsos hoz
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Kubernetes-fürtöt Windows-tárolókhoz az Azure Container Service szolgáltatásban az Azure parancssori felületével.
 author: dlepow
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277642"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>ELAVULT Kubernetes-fürt üzembe helyezése Windows-tárolókhoz
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(ELAVULT) Kubernetes-fürt telepítése Windows-tárolókhoz
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Az útmutatóból megtudhatja, hogyan használható az Azure CLI [Kubernetes](https://kubernetes.io/docs/home/)-fürtök [Azure Container Service-ben](../container-service-intro.md) történő üzembe helyezésére. Miután üzembe helyezte a fürtöt, a Kubernetes `kubectl` parancssori eszközével kapcsolódhat hozzá, és üzembe helyezheti az első Windows-tárolóját.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -30,7 +30,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 > Az Azure Container Service szolgáltatásban a Kubernetesen működő Windows-tárolók támogatása előzetes verzióban érhető el. 
 >
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. 
 
@@ -61,7 +61,7 @@ Pár perc múlva befejeződik a parancs futtatása, és megjelennek az üzembe h
 
 ## <a name="install-kubectl"></a>A kubectl telepítése
 
-Ha a csatlakozni kíván a Kubernetes-fürthöz az ügyfélszámítógépről, ehhez a Kubernetes [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/) nevű parancssori ügyfelét használhatja. 
+Ha az ügyfélszámítógépről szeretne csatlakozni a Kubernetes-fürthöz, használja [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)a Kubernetes parancssori ügyfelet. 
 
 Az Azure CloudShell használata esetén a `kubectl` már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) parancsot.
 
@@ -72,7 +72,7 @@ az acs kubernetes install-cli
 ```
 
 
-## <a name="connect-with-kubectl"></a>Kapcsolódás a kubectl parancssori ügyfélhez
+## <a name="connect-with-kubectl"></a>Kapcsolódás a kubectl segítségével
 
 Az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) parancs futtatásával konfigurálja a `kubectl` ügyfelet úgy, hogy a saját Kubernetes-fürthöz kapcsolódjon. Az alábbi példában a Kubernetes-fürthöz tartozó fürtkonfiguráció letöltése történik.
 
@@ -160,7 +160,7 @@ A pod nyilvános IP-címmel történő közzétételéhez írja be a következő
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Ezzel a paranccsal a Kubernetes létrehoz egy szolgáltatást és egy Azure Load Balancer-szabályt a szolgáltatás nyilvános IP-címével. 
+Ezzel a paranccsal a Kubernetes létrehoz egy szolgáltatást és egy nyilvános IP-címmel rendelkező Azure Load Balancer-szabályt a szolgáltatás számára. 
 
 Futtassa az alábbi parancsot a szolgáltatás állapotának megtekintéséhez.
 
@@ -189,7 +189,7 @@ az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutató segítségével üzembe helyezett egy Kubernetes-fürtöt, kapcsolatot hozott létre a `kubectl` parancssori ügyféllel, és üzembe helyezett egy IIS-tárolóval rendelkező podot. Ha többet szeretne megtudni az Azure Container Service szolgáltatásról, tekintse meg a Kubernetes-oktatóanyagot.
 

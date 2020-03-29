@@ -1,84 +1,84 @@
 ---
-title: Azure Service Fabric Teljesítményfigyelés
-description: Az Azure Service Fabric-fürtök monitorozásához és diagnosztizálásához szükséges teljesítményszámlálók ismertetése.
+title: Az Azure Service Fabric teljesítményfigyelése
+description: Ismerje meg az Azure Service Fabric-fürtök figyeléséhez és diagnosztikájához szolgáló teljesítményszámlálókat.
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464700"
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
-A metrikákat össze kell gyűjteni a fürt teljesítményének és a rajta futó alkalmazásoknak a megismeréséhez. Service Fabric-fürtök esetében ajánlott a következő teljesítményszámlálók összegyűjtése.
+Metrikákat kell gyűjteni a fürt és a benne futó alkalmazások teljesítményének megértéséhez. A Service Fabric-fürtök esetében azt javasoljuk, hogy gyűjtse össze a következő teljesítményszámlálókat.
 
 ## <a name="nodes"></a>Csomópontok
 
-A fürtben lévő gépek esetében érdemes összegyűjteni a következő teljesítményszámlálók adatait, hogy jobban megértsék az egyes gépek terhelését, és a megfelelő fürtözött méretezési döntéseket hozzanak.
+A fürtben lévő gépek esetében érdemes lehet a következő teljesítményszámlálók at gyűjteni az egyes gépek terhelésének jobb megértéséhez, és megfelelő fürtskálázási döntéseket hozni.
 
-| Számláló kategóriája | Számláló neve |
+| Számláló kategória | Számláló neve |
 | --- | --- |
-| Logikai lemez | Logikai lemez – Szabad terület |
-| Fizikai lemez (lemezenként) | Lemez átlagos olvasási várólistájának hossza |
-| Fizikai lemez (lemezenként) | Lemez átlagos írási várólistájának hossza |
-| Fizikai lemez (lemezenként) | Átlagos írási idő (mp/olvasás) |
-| Fizikai lemez (lemezenként) | Átlagos írási idő (mp/írás) |
-| Fizikai lemez (lemezenként) | Lemezolvasások/mp |
-| Fizikai lemez (lemezenként) | Lemezolvasás sebessége bájt/mp-ben |
-| Fizikai lemez (lemezenként) | Lemezírások/mp |
-| Fizikai lemez (lemezenként) | Lemezírás sebessége bájt/mp-ben |
-| Memória | Rendelkezésre álló memória (MB) |
-| PagingFile | %-Os használat |
-| Processzor (összesen) | A processzor kihasználtsága (%) |
-| Folyamat (szolgáltatásként) | A processzor kihasználtsága (%) |
-| Folyamat (szolgáltatásként) | AZONOSÍTÓ folyamat |
-| Folyamat (szolgáltatásként) | Saját [nem megosztható] memória (bájt) |
-| Folyamat (szolgáltatásként) | Szálak száma |
-| Folyamat (szolgáltatásként) | Felhasznált virtuális memória jelenlegi mérete (bájt) |
-| Folyamat (szolgáltatásként) | Munkakészlet |
-| Folyamat (szolgáltatásként) | Munkakészlet – privát |
-| Hálózati adapter (összes példány) | Recd bájtok száma |
+| Logikai lemez | Logikai lemezszabad terület |
+| PhysicalDisk(lemezenként) | Lemezolvasási várólista átlagos hossza |
+| PhysicalDisk(lemezenként) | Lemezírási várólista átlagos hossza |
+| PhysicalDisk(lemezenként) | Átlagos lemezmásodperc/olvasás |
+| PhysicalDisk(lemezenként) | Átlagos lemez másodperc/írás |
+| PhysicalDisk(lemezenként) | Lemezolvasás/mp |
+| PhysicalDisk(lemezenként) | Lemez olvasási bájtjai/mp |
+| PhysicalDisk(lemezenként) | Lemezírás/mp |
+| PhysicalDisk(lemezenként) | Lemezírási bájtok/mp |
+| Memory (Memória) | Elérhető MBytes |
+| Lapozófájl | % használat |
+| Processzor(összesen) | A processzor kihasználtsága (%) |
+| Folyamat (szolgáltatásonként) | A processzor kihasználtsága (%) |
+| Folyamat (szolgáltatásonként) | Azonosító folyamata |
+| Folyamat (szolgáltatásonként) | Privát bájtok |
+| Folyamat (szolgáltatásonként) | Szálak száma |
+| Folyamat (szolgáltatásonként) | Felhasznált virtuális memória jelenlegi mérete (bájt) |
+| Folyamat (szolgáltatásonként) | Munkakészlet |
+| Folyamat (szolgáltatásonként) | Munkakészlet - Privát |
+| Hálózati adapter (összes példány) | Újrabeírható bájtok |
 | Hálózati adapter (összes példány) | Küldött bájtok |
-| Hálózati adapter (összes példány) | Bájtok összesen |
+| Hálózati adapter (összes példány) | Összes bájt |
 | Hálózati adapter (összes példány) | Kimeneti várólista hossza |
-| Hálózati adapter (összes példány) | Kimenő csomagok elvetve |
+| Hálózati adapter (összes példány) | Kimenő kimenő elvetett csomagok |
 | Hálózati adapter (összes példány) | Fogadott csomagok elvetve |
-| Hálózati adapter (összes példány) | Kimenő hibák a csomagoknál |
+| Hálózati adapter (összes példány) | Kimenő csomagok hibái |
 | Hálózati adapter (összes példány) | Fogadott csomagok hibái |
 
-## <a name="net-applications-and-services"></a>.NET-alkalmazások és-szolgáltatások
+## <a name="net-applications-and-services"></a>.NET alkalmazások és szolgáltatások
 
-Gyűjtsön a következő számlálókat, ha .NET-szolgáltatásokat helyez üzembe a fürtön. 
+A következő számlálók összegyűjtése, ha .NET szolgáltatásokat telepít a fürtre. 
 
-| Számláló kategóriája | Számláló neve |
+| Számláló kategória | Számláló neve |
 | --- | --- |
-| .NET CLR memória (szolgáltatás) | Folyamatazonosító |
-| .NET CLR memória (szolgáltatás) | Összes véglegesített bájt összesen |
-| .NET CLR memória (szolgáltatás) | Összesen lefoglalt bájtok száma |
-| .NET CLR memória (szolgáltatás) | Bájtok száma az összes halomban |
-| .NET CLR memória (szolgáltatás) | Nagyméretű objektum halom mérete |
-| .NET CLR memória (szolgáltatás) | # GC-kezelők |
-| .NET CLR memória (szolgáltatás) | 0\. generációs gyűjtemények száma |
-| .NET CLR memória (szolgáltatás) | 1\. generációs gyűjtemények száma |
-| .NET CLR memória (szolgáltatás) | 2\. generációs gyűjtemények száma |
-| .NET CLR memória (szolgáltatás) | %-Os idő a GC-ben |
+| .NET CLR memória (szolgáltatásonként) | Folyamatazonosító |
+| .NET CLR memória (szolgáltatásonként) | # Összes elkötött bájt |
+| .NET CLR memória (szolgáltatásonként) | # Összes lefoglalt bájt |
+| .NET CLR memória (szolgáltatásonként) | # Bájt minden halomban |
+| .NET CLR memória (szolgáltatásonként) | Nagy objektumhalom mérete |
+| .NET CLR memória (szolgáltatásonként) | # GC fogantyúk |
+| .NET CLR memória (szolgáltatásonként) | # Gen 0 Gyűjtemények |
+| .NET CLR memória (szolgáltatásonként) | # Gen 1 Gyűjtemények |
+| .NET CLR memória (szolgáltatásonként) | # Gen 2 Gyűjtemények |
+| .NET CLR memória (szolgáltatásonként) | %-os idő gc-ben |
 
-### <a name="service-fabrics-custom-performance-counters"></a>Service Fabric egyéni teljesítményszámlálók
+### <a name="service-fabrics-custom-performance-counters"></a>A Service Fabric egyéni teljesítményszámlálói
 
-Service Fabric jelentős mennyiségű egyéni teljesítményszámlálókat generál. Ha telepítette az SDK-t, a Teljesítményfigyelő alkalmazásban megtekintheti a Windows rendszerű számítógép átfogó listáját (indítsa el > Teljesítményfigyelőt). 
+A Service Fabric jelentős mennyiségű egyéni teljesítményszámlálót hoz létre. Ha telepítve van az SDK, a Teljesítményfigyelő alkalmazásban (Start > Performance Monitor) megtekintheti a Windows-gépen található átfogó listát. 
 
-A fürtön üzembe helyezett alkalmazásokban, ha Reliable Actors használ, vegyen fel számlálókat `Service Fabric Actor` és `Service Fabric Actor Method` kategóriákba (lásd: [Service Fabric Reliable Actors diagnosztika](service-fabric-reliable-actors-diagnostics.md)).
+A fürtre üzembe helyezett alkalmazásokban, ha Reliable Actors-t használ, `Service Fabric Actor Method` adjon hozzá számlálókat és kategóriákat `Service Fabric Actor` (lásd: Service Fabric Reliable Actors [Diagnostics).](service-fabric-reliable-actors-diagnostics.md)
 
-Ha Reliable Services vagy szolgáltatás-távelérést használ, akkor hasonló módon `Service Fabric Service` és `Service Fabric Service Method` a számlálókat tartalmazó kategóriákat, lásd: [figyelés a szolgáltatás távelérési szolgáltatásával](service-fabric-reliable-serviceremoting-diagnostics.md) és a [megbízható szolgáltatások teljesítményszámlálói](service-fabric-reliable-services-diagnostics.md#performance-counters). 
+Ha megbízható szolgáltatásokat vagy szolgáltatásátmosoló-szolgáltatást `Service Fabric Service` használ, hasonlóképpen vannak, és `Service Fabric Service Method` számlálókategóriákat kell gyűjtenünk, [lásd: figyelés szolgáltatás-átirányító](service-fabric-reliable-serviceremoting-diagnostics.md) és [megbízható szolgáltatások teljesítményszámlálói.](service-fabric-reliable-services-diagnostics.md#performance-counters) 
 
-Ha megbízható gyűjteményeket használ, javasoljuk, hogy adja hozzá a `Avg. Transaction ms/Commit` a `Service Fabric Transactional Replicator` a tranzakciós metrikák átlagos végrehajtási késésének összegyűjtéséhez.
+Ha megbízható gyűjtemények használata, azt `Avg. Transaction ms/Commit` javasoljuk, hogy adja hozzá a a `Service Fabric Transactional Replicator` tranzakciónkénti átlagos véglegesítési késés gyűjtése.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ [az események létrehozásáról a platform szintjén](service-fabric-diagnostics-event-generation-infra.md) Service Fabric
-* Teljesítmény-metrikák összegyűjtése [log Analytics ügynökön](service-fabric-diagnostics-oms-agent.md) keresztül
+* További információ [az eseménygenerálásról platformszinten a](service-fabric-diagnostics-event-generation-infra.md) Service Fabric ben
+* Teljesítménymutatók gyűjtése a [Log Analytics-ügynökön](service-fabric-diagnostics-oms-agent.md) keresztül

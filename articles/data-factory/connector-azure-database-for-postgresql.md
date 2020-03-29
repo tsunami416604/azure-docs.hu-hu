@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása Azure Database for PostgreSQL
-description: Megtudhatja, hogyan másolhat adatok Azure Database for PostgreSQLba és onnan a Azure Data Factory folyamat másolási tevékenységének használatával.
+title: Adatok másolása a PostgreSQL Azure-adatbázisába és onnan
+description: Megtudhatja, hogyan másolhat adatokat az Azure Database for PostgreSQL-be és onnan egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,51 +12,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
 ms.openlocfilehash: 67d59e3f733efe5a248e6763f46402302496d437
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444375"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Adatok másolása Azure Database for PostgreSQLba és onnan a Azure Data Factory használatával
+# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Adatok másolása a PostgreSQL Azure-adatbázisába és onnan az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Data Factory másolási tevékenység funkciója az adatok Azure Database for PostgreSQLból történő másolásához. A [másolási tevékenységre épül Azure Data Factory](copy-activity-overview.md) cikkben, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység funkció az Azure Data Factory adatok másolása az Azure Database for PostgreSQL. Az [Azure Data Factory-ban végzett másolási tevékenységre](copy-activity-overview.md) épül, amely általános áttekintést nyújt a másolási tevékenységről.
 
-Ez az összekötő a [Azure Database for PostgreSQL szolgáltatásra](../postgresql/overview.md)specializálódott. A helyszíni vagy a felhőben található általános PostgreSQL-adatbázisból származó adatok másolásához használja a [PostgreSQL-összekötőt](connector-postgresql.md).
+Ez az összekötő az [Azure Database for PostgreSQL szolgáltatásra](../postgresql/overview.md)specializálódott. Ha adatokat szeretne másolni egy általános PostgreSQL adatbázisból, amely a helyszínen vagy a felhőben található, használja a [PostgreSQL-összekötőt.](connector-postgresql.md)
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez az Azure Database for PostgreSQL-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Azure Database for PostgreSQL adatait átmásolhatja bármely támogatott fogadó adattárba. Vagy bármilyen támogatott forrás adattárból is másolhat adatok Azure Database for PostgreSQLba. A másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+Az Azure Database for PostgreSQL-ből adatokat másolhat bármely támogatott fogadó adattárba. Vagy bármely támogatott forrásadat-tárból másolhat adatokat az Azure Database for PostgreSQL-be. Az adattárak listáját, amelyeka másolási tevékenység támogatja a források és a fogadók, lásd: [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez. Ezért nem kell manuálisan telepítenie az illesztőprogramot az összekötő használatához.
+Az Azure Data Factory beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez. Ezért nem kell manuálisan telepítenie egyetlen illesztőprogramot sem az összekötő használatához.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő fejezetekben a Azure Database for PostgreSQL-összekötőhöz tartozó entitások definiálásához használt tulajdonságok részletes ismertetését találhatja Data Factory meg.
+A következő szakaszok a Data Factory-entitások meghatározására használt, a PostgreSQL-összekötőhöz tartozó Data Factory entitások definiálására használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-A Azure Database for PostgreSQL társított szolgáltatás a következő tulajdonságokat támogatja:
+Az Azure Database for PostgreSQL csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AzurePostgreSql**. | Igen |
-| connectionString | Az Azure Database for PostgreSQLhoz való kapcsolódáshoz használandó ODBC-kapcsolati karakterlánc.<br/>A jelszót Azure Key Vault is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a következő mintákat, és [tárolja Azure Key Vault a hitelesítő adatokat](store-credentials-in-key-vault.md) . | Igen |
-| Connectvia tulajdonsággal | Ez a tulajdonság az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modult jelöli. Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| type | A típustulajdonságnak a következőre kell állítania: **AzurePostgreSql**. | Igen |
+| connectionString (kapcsolati karakterlánc) | ODBC-kapcsolati karakterlánc a PostgreSQL Azure Database for PostgreSQL-hez való csatlakozáshoz.<br/>Az Azure Key Vaultban is elhelyezhet `password` egy jelszót, és kihúzhatja a konfigurációt a kapcsolati karakterláncból. További részletekért tekintse meg az alábbi mintákat és [az Áruházhitelesítő adatokat az Azure Key Vaultban.](store-credentials-in-key-vault.md) | Igen |
+| connectVia | Ez a tulajdonság az adattárhoz való csatlakozáshoz használandó [integrációs futásidőt](concepts-integration-runtime.md) jelöli. Használhatja az Azure-integrációs runtime vagy saját üzemeltetésű integrációs runtime (ha az adattár található magánhálózat). Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 
-Egy tipikus `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`a kapcsolatok karakterlánca. Az alábbiakban több tulajdonságot is beállíthat:
+Egy tipikus kapcsolati karakterlánc a `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Az esethez képest további tulajdonságokat állíthat be:
 
-| Tulajdonság | Leírás | Beállítások | Szükséges |
+| Tulajdonság | Leírás | Beállítások | Kötelező |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Az illesztőprogram és az adatbázis-kiszolgáló között továbbított adattitkosításhoz használt metódus. Például `EncryptionMethod=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** /1 (SSL)/6 (RequestSSL) | Nem |
-| ValidateServerCertificate (VSC) | Meghatározza, hogy az illesztőprogram érvényesítse-e az adatbázis-kiszolgáló által az SSL-titkosítás engedélyezésekor eljuttatott tanúsítványt (titkosítási módszer = 1). Például `ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** /1 (engedélyezve) | Nem |
+| EncryptionMethod (EM)| Az illesztőprogram által az illesztőprogram és az adatbázis-kiszolgáló között küldött adatok titkosítására használt módszer. Például,`EncryptionMethod=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** / 1 (SSL) / 6 (RequestSSL) | Nem |
+| ValidateServerCertificate (VSC) | Azt határozza meg, hogy az illesztőprogram érvényesítse-e az adatbázis-kiszolgáló által küldött tanúsítványt, ha az SSL-titkosítás engedélyezve van (Titkosítási módszer=1). Például,`ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** / 1 (engedélyezve) | Nem |
 
 **Példa**:
 
@@ -74,7 +74,7 @@ Egy tipikus `Server=<server>.postgres.database.azure.com;Database=<database>;Por
 
 **Példa**:
 
-***Jelszó tárolása Azure Key Vaultban***
+***Jelszó tárolása az Azure Key Vaultban***
 
 ```json
 {
@@ -98,14 +98,14 @@ Egy tipikus `Server=<server>.postgres.database.azure.com;Database=<database>;Por
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listájáért lásd: [Adatkészletek Azure Data Factoryban](concepts-datasets-linked-services.md). Ez a szakasz azoknak a tulajdonságoknak a listáját tartalmazza, amelyeket a Azure Database for PostgreSQL támogat az adatkészletekben.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek az Azure Data Factory ban](concepts-datasets-linked-services.md)című témakörben tartalmazza. Ez a szakasz azoknak a tulajdonságoknak a listáját tartalmazza, amelyeket az Azure Database for PostgreSQL támogat adatkészletekben.
 
-Az adatok Azure Database for PostgreSQLból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **AzurePostgreSqlTable**értékre. A következő tulajdonságok támogatottak:
+Ha adatokat szeretne másolni az Azure Database for PostgreSQL szolgáltatásból, állítsa az adatkészlet típustulajdonságát **az AzurePostgreSqlTable beállításra.** A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát **AzurePostgreSqlTable** értékre kell beállítani. | Igen |
-| tableName | A tábla neve | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| type | Az adatkészlet típustulajdonságát **AzurePostgreSqlTable-re** kell állítani. | Igen |
+| tableName | A tábla neve | Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva) |
 
 **Példa**:
 
@@ -125,16 +125,16 @@ Az adatok Azure Database for PostgreSQLból való másolásához állítsa az ad
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját a következő témakörben találja: [folyamatok és tevékenységek a Azure Data Factoryban](concepts-pipelines-activities.md). Ez a szakasz a Azure Database for PostgreSQL forrása által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Azure Data Factory folyamatai és tevékenységei című témakörben tartalmazza.](concepts-pipelines-activities.md) Ez a szakasz az Azure Database for PostgreSQL-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="azure-database-for-postgresql-as-source"></a>Azure-adatbázis PostgreSql-hez forrásként
+### <a name="azure-database-for-postgresql-as-source"></a>Azure Database for PostgreSql mint forrás
 
-Az adatok Azure Database for PostgreSQLból való másolásához állítsa a forrás típusát a másolás tevékenység **AzurePostgreSqlSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Ha adatokat szeretne másolni az Azure Database for PostgreSQL szolgáltatásból, állítsa be a forrástípusát a másolási tevékenységben az **AzurePostgreSqlSource mezőre.** A másolási tevékenység **forrásszakaszában** a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát **AzurePostgreSqlSource** értékre kell állítani. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például:`"SELECT * FROM MyTable"` | Nem (ha az adatkészlet táblanév tulajdonsága meg van adva) |
+| type | A másolási tevékenység forrásának típustulajdonságát **az AzurePostgreSqlSource** mezőre kell állítani. | Igen |
+| lekérdezés | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például:`"SELECT * FROM MyTable"` | Nem (ha a tableName tulajdonság meg van adva) |
 
 **Példa**:
 
@@ -168,16 +168,16 @@ Az adatok Azure Database for PostgreSQLból való másolásához állítsa a for
 ]
 ```
 
-### <a name="azure-database-for-postgresql-as-sink"></a>Azure Database for PostgreSQL fogadóként
+### <a name="azure-database-for-postgresql-as-sink"></a>A PostgreSQL Azure-adatbázisa fogadóként
 
-Az adatAzure Database for PostgreSQLba való másoláshoz a másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
+Adatok másolásához az Azure Database for PostgreSQL, a következő tulajdonságokat támogatja a másolási tevékenység **fogadó** szakaszban:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadójának Type tulajdonságát **AzurePostgreSQLSink**értékre kell állítani. | Igen |
-| preCopyScript | Adja meg azt az SQL-lekérdezést, amelyet végre szeretne hajtani a másolási tevékenységhez, mielőtt az egyes futtatások Azure Database for PostgreSQLba írna. Ennek a tulajdonságnak a használatával törölheti az előre feltöltött adatkészleteket. | Nem |
-| writeBatchSize | Az Azure Database for PostgreSQL táblázatba szúrja be az adatmennyiséget, amikor a puffer mérete eléri a writeBatchSize.<br>Az engedélyezett érték egy egész szám, amely a sorok számát jelöli. | Nem (az alapértelmezett érték 10 000) |
-| writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br>Az engedélyezett értékek a TimeSpan karakterláncok. Például 00:30:00 (30 perc). | Nem (az alapértelmezett érték 00:00:30) |
+| type | A másolási tevékenység fogadójának típustulajdonságát **az AzurePostgreSQLSink**beállításra kell állítani. | Igen |
+| preCopyScript | Adja meg az SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt minden futtatáskor adatokat írna a PostgreSQL Azure-adatbázisába. Ezzel a tulajdonsággal megtisztíthatja az előre betöltött adatokat. | Nem |
+| writeBatchSize | Adatokat szúr be az Azure Database for PostgreSQL táblába, amikor a puffer mérete eléri a writeBatchSize-ot.<br>Az engedélyezett érték egy egész szám, amely a sorok számát jelöli. | Nem (az alapértelmezett érték 10 000) |
+| writeBatchTimeout | Várjon időt a kötegbehelyezési művelet befejezésére, mielőtt az időtúljárna.<br>Az engedélyezett értékek Timespan karakterláncok. Ilyen például a 00:30:00 (30 perc). | Nem (az alapértelmezett érték 00:00:30) |
 
 **Példa**:
 
@@ -212,9 +212,9 @@ Az adatAzure Database for PostgreSQLba való másoláshoz a másolási tevékeny
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságokkal kapcsolatos további információkért lásd: [keresési tevékenység Azure Data Factoryban](control-flow-lookup-activity.md).
+A tulajdonságokról további információt az [Azure Data Factory keresgupatevékenységcímű témakörben talál.](control-flow-lookup-activity.md)
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [Támogatott adattárak című témakörben tetszhet.](copy-activity-overview.md#supported-data-stores-and-formats)

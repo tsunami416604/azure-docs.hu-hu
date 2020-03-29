@@ -1,37 +1,37 @@
 ---
-title: Tárolt eljárások, eseményindítók és UDF írása Azure Cosmos DB
-description: Megtudhatja, hogyan határozhat meg tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB
+title: Tárolt eljárások, eseményindítók és UDF-ek írása az Azure Cosmos DB-ben
+description: Ismerje meg, hogyan definiálhatja a tárolt eljárásokat, eseményindítókat és a felhasználó által definiált függvényeket az Azure Cosmos DB-ben
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441736"
 ---
-# <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
+# <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása az Azure Cosmos DB-ben
 
-A Azure Cosmos DB lehetővé teszi a JavaScript nyelvre integrált, tranzakciós végrehajtását, amely lehetővé teszi **tárolt eljárások**, **Eseményindítók**és **felhasználó által definiált függvények (UDF-EK)** írását. Ha az SQL API-t Azure Cosmos DBban használja, megadhatja a tárolt eljárásokat, eseményindítókat és UDF JavaScript nyelven. Megírhatja a logikát a JavaScriptben, és végrehajthatja azt az adatbázismotor használatával. Eseményindítókat, tárolt eljárásokat és UDF hozhat létre és futtathat [Azure Portal](https://portal.azure.com/)használatával, a [JavaScript nyelv integrált lekérdezési API-ját Azure Cosmos DB](javascript-query-api.md) és az [Cosmos db SQL API ügyféloldali SDK](sql-api-dotnet-samples.md)-kat. 
+Az Azure Cosmos DB a JavaScript nyelvbe integrált, tranzakciós végrehajtását biztosítja, amely lehetővé teszi **a tárolt eljárások,** **eseményindítók**és **a felhasználó által definiált függvények (UDF) írását.** Az SQL API használata az Azure Cosmos DB, megadhatja a tárolt eljárások, eseményindítók és UDF-ek JavaScript nyelven. Megírhatja a logikát javascriptben, és végrehajthatja az adatbázis-motorban. Az [Azure Portal](https://portal.azure.com/), az [Azure Cosmos DB JavaScript-nyelvű integrált lekérdezési API-ja](javascript-query-api.md) és a [Cosmos DB SQL API-k SDK-k](sql-api-dotnet-samples.md)használatával hozhat létre és hajthat végre eseményindítókat, tárolt eljárásokat és UDF-eket. 
 
-A tárolt eljárások, triggerek és felhasználó által definiált függvények meghívásához regisztrálnia kell. További információ: a [tárolt eljárások, eseményindítók, felhasználó által definiált függvények használata a Azure Cosmos DBban](how-to-use-stored-procedures-triggers-udfs.md).
+A tárolt eljárás, eseményindító és felhasználó által definiált függvény hívásához regisztrálnia kell azt. További információ: [A tárolt eljárások, eseményindítók, felhasználó által definiált függvények az Azure Cosmos DB.For more information, see How to work with stored procedures, triggers, user-defined functions in Azure Cosmos DB.](how-to-use-stored-procedures-triggers-udfs.md)
 
 > [!NOTE]
-> Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciós kulcs értékét a kérés beállításai között. A tárolt eljárásokat a rendszer mindig a partíciós kulcsra szűkíti. A másik partíciós kulcs értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárásban. Ez is a triggerekre is vonatkozik.
+> Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciókulcs-értéket a kérelembeállításokban. A tárolt eljárások hatóköre mindig partíciókulcsra terjed ki. A más partíciókulcs-értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárás számára. Ez az eseményindítókra is vonatkozott.
 
 > [!Tip]
-> A Cosmos támogatja a tárolók üzembe helyezését tárolt eljárásokkal, eseményindítókkal és felhasználó által definiált függvényekkel. További információ: [Azure Cosmos db tároló létrehozása kiszolgálóoldali funkciókkal.](manage-sql-with-resource-manager.md#create-sproc)
+> A Cosmos támogatja a tárolók üzembe helyezését tárolt eljárásokkal, eseményindítókkal és felhasználó által definiált függvényekkel. További információ: [Hozzon létre egy Azure Cosmos DB-tároló kiszolgálóoldali funkciókkal.](manage-sql-with-resource-manager.md#create-sproc)
 
-## <a id="stored-procedures"></a>Tárolt eljárások írása
+## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Hogyan írjunk tárolt eljárásokat
 
-A tárolt eljárások JavaScript használatával íródnak, és az Azure Cosmos-tárolóban lévő elemeket hozhatnak létre, frissíthetnek, olvashatnak, lekérhetnek és törölhetnek. A tárolt eljárások gyűjtemény szerint vannak regisztrálva, és a gyűjteményben található bármilyen dokumentumon vagy mellékleten működhetnek.
+A tárolt eljárások JavaScript használatával vannak írásban, létrehozhatnak, frissíthetnek, olvashatnak, lekérdezhetnek és törölhetnek elemeket az Azure Cosmos-tárolóban. A tárolt eljárások gyűjteményenként vannak regisztrálva, és a gyűjteményben található bármely dokumentumon vagy mellékleten működhetnek.
 
 **Példa**
 
-Az alábbi egyszerű tárolt eljárás egy ""Helló világ!"alkalmazás" választ ad vissza.
+Itt van egy egyszerű tárolt eljárás, amely visszaadja a "Hello World" választ.
 
 ```javascript
 var helloWorldStoredProc = {
@@ -45,17 +45,17 @@ var helloWorldStoredProc = {
 }
 ```
 
-A környezeti objektum hozzáférést biztosít a Azure Cosmos DBban végrehajtható összes művelethez, valamint a kérés és a válasz objektumokhoz való hozzáféréshez is. Ebben az esetben a válasz objektum segítségével állíthatja be a válasz törzsét, amelyet vissza szeretne adni az ügyfélnek.
+A környezetobjektum hozzáférést biztosít az Azure Cosmos DB-ben elvégezhető összes művelethez, valamint hozzáférést biztosít a kérés- és válaszobjektumokhoz. Ebben az esetben a válaszobjektum segítségével állítsa be az ügyfélnek visszaküldendő válasz törzsét.
 
-Az írást követően a tárolt eljárást regisztrálni kell egy gyűjteményben. További információ: [tárolt eljárások használata Azure Cosmos db](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures) cikkben.
+A megírást követően a tárolt eljárást nyilvántartásba kell venni egy gyűjteményben. További információ: [A tárolt eljárások használata az Azure Cosmos DB cikkben.](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
 
-### <a id="create-an-item"></a>Elemek létrehozása tárolt eljárás használatával
+### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>Elem létrehozása tárolt eljárással
 
-Amikor tárolt eljárással hoz létre egy tételt, az elem bekerül az Azure Cosmos-tárolóba, és az újonnan létrehozott elem AZONOSÍTÓját adja vissza. Egy elem létrehozása aszinkron művelet, amely a JavaScript visszahívási függvénytől függ. A visszahívási függvény két paraméterrel rendelkezik – egyet a hiba objektumhoz abban az esetben, ha a művelet meghiúsul, és egy másik a visszatérési értékhez. Ebben az esetben a létrehozott objektum. A visszahíváson belül kezelheti a kivételt, vagy hibát okozhat. Ha nincs megadva visszahívás, és hiba történt, akkor a Azure Cosmos DB futtatókörnyezet hibát jelez. 
+Amikor egy elemet tárolt eljárással hoz létre, az elem bekerül az Azure Cosmos-tárolóba, és az újonnan létrehozott elem azonosítóját adja vissza. Az elem létrehozása aszinkron művelet, amely a JavaScript visszahívási függvényektől függ. A visszahívási függvénynek két paramétere van : az egyik a hibaobjektumhoz, ha a művelet sikertelen, a másik pedig egy visszatérési értékhez; ebben az esetben a létrehozott objektum. A visszahíváson belül vagy kezelni tudja a kivételt, vagy hibát okozhat. Abban az esetben, ha a visszahívás nem biztosított, és hiba van, az Azure Cosmos DB futásidejű fog dobni egy hiba. 
 
-A tárolt eljárás egy paramétert is tartalmaz a Leírás megadásához, ez egy logikai érték. Ha a paraméter értéke TRUE (igaz), és a Leírás hiányzik, akkor a tárolt eljárás kivételt jelez. Ellenkező esetben a tárolt eljárás többi része továbbra is fut.
+A tárolt eljárás tartalmaz egy paramétert is a leírás beállításához, ez egy logikai érték. Ha a paraméter értéke igaz, és a leírás hiányzik, a tárolt eljárás kivételt okoz. Ellenkező esetben a tárolt eljárás többi része továbbra is fut.
 
-A következő példa tárolt eljárás egy új Azure Cosmos-elem bemenetként való behelyezését hajtja végre, beszúrja az Azure Cosmos tárolóba, és visszaadja az újonnan létrehozott elem AZONOSÍTÓját. Ebben a példában a ToDoList mintát használjuk a gyors üzembe helyezési [.net SQL API](create-sql-api-dotnet.md) -ból
+A következő példa tárolt eljárás egy új Azure Cosmos-elemet vesz be, beszúrja az Azure Cosmos-tárolóba, és visszaadja az újonnan létrehozott elem azonosítóját. Ebben a példában a [Quickstart .NET SQL API-ból](create-sql-api-dotnet.md) származó ToDoList mintát használjuk fel.
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -73,9 +73,9 @@ function createToDoItem(itemToCreate) {
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Tömbök bemeneti paraméterként a tárolt eljárásokhoz 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Tömbök a tárolt eljárások bemeneti paramétereiként 
 
-Azure Portal tárolt eljárás definiálásakor a bemeneti paraméterek mindig karakterláncként lesznek elküldve a tárolt eljáráshoz. Még ha sztringek tömbjét is át kell adni bemenetként, a rendszer karakterlánccá alakítja át a tömböt, és elküldi a tárolt eljárásnak. Ennek megkerüléséhez definiálhat egy függvényt a tárolt eljáráson belül a sztring tömbként való elemzéséhez. A következő kód bemutatja, hogyan elemezheti a karakterlánc bemeneti paramétereit tömbként:
+Ha egy tárolt eljárást definiál az Azure Portalon, a bemeneti paraméterek mindig a tárolt eljárás karakterláncként lesz elküldve. Még akkor is, ha egy tömb karakterláncok bemenetként, a tömb karakterlánc, és elküldi a tárolt eljárás. A probléma megoldásához definiálhat egy függvényt a tárolt eljáráson belül, hogy a karakterláncot tömbként elemezhesse. A következő kód bemutatja, hogyan elemezze a karakterlánc bemeneti paraméterét tömbként:
 
 ```javascript
 function sample(arr) {
@@ -88,9 +88,9 @@ function sample(arr) {
 }
 ```
 
-### <a id="transactions"></a>Tárolt eljárásokon belüli tranzakciók
+### <a name="transactions-within-stored-procedures"></a><a id="transactions"></a>A tárolt eljárásokon belüli ügyletek
 
-A tároló elemein belüli tranzakciókat tárolt eljárással is megvalósíthatja. Az alábbi példa egy fantasy Football Gaming-alkalmazáson belüli tranzakciókat használ, hogy egyetlen művelet keretében két csapat között kereskedni lehessen. A tárolt eljárás megkísérli beolvasni a két Azure Cosmos-elemet, amelyek megfelelnek az argumentumként átadott Player-azonosítóknak. Ha mindkét játékos megtalálható, a tárolt eljárás a csapatuk cseréjével frissíti az elemeket. Ha bármilyen hiba fordul elő, a tárolt eljárás olyan JavaScript-kivételt mutat be, amely implicit módon megszakítja a tranzakciót.
+A tárolón belüli cikkektranzakcióit tárolt eljárással valósíthatja meg. A következő példa egy fantasy futballjáték-alkalmazáson belüli tranzakciókat használ, hogy egyetlen műveletben két csapat között kereskedjen játékosokkal. A tárolt eljárás megpróbálja olvasni a két Azure Cosmos-elemek mindegyike megfelelő a játékos azonosítók átadott argumentumként. Ha mindkét játékos megtalálható, akkor a tárolt eljárás frissíti a tételeket a csapatok cseréjével. Ha bármilyen hibát észlel az út mentén, a tárolt eljárás egy JavaScript-kivételt hoz, amely implicit módon megszakítja a tranzakciót.
 
 ```javascript
 // JavaScript source code
@@ -156,9 +156,9 @@ function tradePlayers(playerId1, playerId2) {
 }
 ```
 
-### <a id="bounded-execution"></a>Kötött végrehajtás a tárolt eljárásokon belül
+### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>Tárolt eljárásokon belüli kötött végrehajtás
 
-Az alábbi példa egy olyan tárolt eljárást mutat be, amely tömegesen importál elemeket egy Azure Cosmos-tárolóba. A tárolt eljárás a határolt végrehajtást a `createDocument`logikai visszatérési értékének ellenőrzésével kezeli, majd a tárolt eljárás minden egyes meghívása során beszúrt elemek számát használja a kötegek előrehaladásának nyomon követéséhez és folytatásához.
+Az alábbiakban egy olyan tárolt eljárás, amely tömegesen importálja az elemeket egy Azure Cosmos-tárolóba. A tárolt eljárás úgy kezeli a határolt végrehajtást, hogy ellenőrzi a logikai visszatérési értéket a programból, `createDocument`majd a tárolt eljárás minden egyes meghívásában beszúrt elemek számát használja a kötegek közötti előrehaladás nyomon követéséhez és folytatásához.
 
 ```javascript
 function bulkImport(items) {
@@ -211,13 +211,13 @@ function bulkImport(items) {
 }
 ```
 
-## <a id="triggers"></a>Eseményindítók írása
+## <a name="how-to-write-triggers"></a><a id="triggers"></a>Hogyan írjunk eseményindítókat
 
-Azure Cosmos DB támogatja az előtriggereket és az eseményindítókat. Az adatbázis-elemek módosítása és az eseményindítók végrehajtása előtt az eseményindítók végrehajtása az adatbázis-elemek módosítása után történik.
+Az Azure Cosmos DB támogatja az elő- és utóindítókat. Az előindítók végrehajtása az adatbáziselem módosítása előtt történik, az utóindítók pedig az adatbáziselem módosítása után.
 
-### <a id="pre-triggers"></a>Trigger előtti
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Előzetes eseményindítók
 
-Az alábbi példa azt mutatja be, hogyan használható a pre-trigger a létrehozott Azure Cosmos-elemek tulajdonságainak ellenőrzésére. Ebben a példában kihasználjuk a ToDoList mintát a gyors üzembe helyezési [.net SQL API](create-sql-api-dotnet.md)-ból, hogy egy timestamp tulajdonságot adjon hozzá egy újonnan hozzáadott elemhez, ha az nem tartalmaz egyet.
+A következő példa bemutatja, hogyan egy elő-eseményindító használatával egy Azure Cosmos-elem, amely létrehozása alatt álló tulajdonságok érvényesítéséhez. Ebben a példában a [Quickstart .NET SQL API](create-sql-api-dotnet.md)ToDoList mintáját használjuk fel, hogy időbélyeg-tulajdonságot adjunk egy újonnan hozzáadott elemhez, ha az nem tartalmaz.
 
 ```javascript
 function validateToDoItemTimestamp() {
@@ -238,15 +238,15 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Az előzetes eseményindítóknak nem lehetnek bemeneti paramétereik. A triggerben található kérelem objektum a művelethez társított kérelem üzenetének kezelésére szolgál. Az előző példában a pre-trigger fut egy Azure Cosmos-elem létrehozásakor, és a kérelem üzenet törzse tartalmazza a JSON formátumban létrehozandó tételt.
+Az előzetes eseményindítóknak nem lehetnek bemeneti paramétereik. Az eseményindítóban lévő kérelemobjektum a művelethez társított kérésüzenet kezelésére szolgál. Az előző példában az előesemény egy Azure Cosmos-elem létrehozásakor fut, és a kérelem üzenet törzse tartalmazza a JSON formátumban létrehozandó elemet.
 
-Ha a triggerek regisztrálva vannak, megadhatja azokat a műveleteket, amelyeket futtathat a használatával. Ezt a triggert `TriggerOperation.Create``TriggerOperation` értékkel kell létrehozni, ami azt jelenti, hogy az triggert egy csere műveletben használja, ahogy az a következő kódban nem engedélyezett.
+Amikor az eseményindítók regisztrálva vannak, megadhatja azokat a műveleteket, amelyekkel futtatható. Ezt az eseményindítót `TriggerOperation` a `TriggerOperation.Create`értékével kell létrehozni, ami azt jelenti, hogy az eseményindító t a csereműveletben a következő kódban látható módon nem lehet használni.
 
-A pre-triggerek regisztrálásával és meghívásával kapcsolatos Példákért lásd: [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [trigger utáni](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkek. 
+Példákat, hogyan lehet regisztrálni, és hívja meg a pre-trigger, [lásd: elő-eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [utáni eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkeket. 
 
-### <a id="post-triggers"></a>Triggerek utáni
+### <a name="post-triggers"></a><a id="post-triggers"></a>Utólagos eseményindítók
 
-Az alábbi példa egy trigger utáni műveletet mutat be. Ez a trigger lekérdezi a metaadat-elemeket, és frissíti azt az újonnan létrehozott elemmel kapcsolatos részletekkel.
+A következő példa egy eseményindító utáni bemutatót mutat be. Ez az eseményindító lekérdezi a metaadatelemet, és frissíti az újonnan létrehozott elem részleteivel.
 
 
 ```javascript
@@ -282,13 +282,13 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-Fontos megjegyezni, hogy az eseményindítók tranzakciós végrehajtása Azure Cosmos DBban. Az utólagos indítás a mögöttes elemhez tartozó tranzakció részeként fut. Az indítás utáni végrehajtás során felmerülő kivétel esetén a teljes tranzakció sikertelen lesz. Minden véglegesítés visszavonásra kerül, és a rendszer kivételt ad vissza.
+Egy dolog, ami fontos megjegyezni, hogy az Azure Cosmos DB eseményindítók tranzakciós végrehajtása. Az eseményindító utáni eseményindító ugyanazon tranzakció részeként fut az alapul szolgáló cikkhez. Az eseményindító utáni végrehajtás során egy kivétel a teljes tranzakció sikertelen lesz. Minden elkövetett lesz visszaállítva, és egy kivétel tért vissza.
 
-A pre-triggerek regisztrálásával és meghívásával kapcsolatos Példákért lásd: [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [trigger utáni](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkek. 
+Példákat, hogyan lehet regisztrálni, és hívja meg a pre-trigger, [lásd: elő-eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [utáni eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkeket. 
 
-## <a id="udfs"></a>Felhasználó által definiált függvények írása
+## <a name="how-to-write-user-defined-functions"></a><a id="udfs"></a>Felhasználó által definiált függvények írása
 
-Az alábbi minta létrehoz egy UDF-t a jövedelemadó kiszámításához a különböző bevételi zárójelek esetében. Ezt a felhasználó által definiált függvényt ezután egy lekérdezésen belül fogjuk használni. Ebben a példában feltételezhető, hogy egy "jövedelem" nevű tároló található a következő tulajdonságokkal:
+A következő minta létrehoz egy UDF-et a különböző jövedelemadó-kategóriák kiszámításához. Ezt a felhasználó által definiált függvényt ezután egy lekérdezésen belül kell használni. Ennek a példának az alkalmazásában tegyük fel, hogy van egy "Jövedelmek" nevű tároló, amelynek tulajdonságai a következők:
 
 ```json
 {
@@ -298,7 +298,7 @@ Az alábbi minta létrehoz egy UDF-t a jövedelemadó kiszámításához a kül�
 }
 ```
 
-A következő egy függvény definíciója a jövedelemadó kiszámításához a különböző bevételi zárójelek esetében:
+A következő függvény definíciója a különböző jövedelemadó-kategóriák kiszámításához:
 
 ```javascript
 function tax(income) {
@@ -315,11 +315,11 @@ function tax(income) {
     }
 ```
 
-A felhasználó által definiált függvények regisztrálásával és használatával kapcsolatos Példákért lásd: [felhasználói függvények használata Azure Cosmos db](how-to-use-stored-procedures-triggers-udfs.md#udfs) cikkben.
+Példák at, hogyan regisztrálhat és használhat egy felhasználó által definiált függvényt, lásd: [A felhasználó által definiált függvények használata az Azure Cosmos DB cikkben.](how-to-use-stored-procedures-triggers-udfs.md#udfs)
 
 ## <a name="logging"></a>Naplózás 
 
-Tárolt eljárás, eseményindítók vagy felhasználó által definiált függvények használatakor a `console.log()` parancs használatával naplózhatja a lépéseket. Ez a parancs egy karakterláncot fog összpontosítani a hibakereséshez, ha a `EnableScriptLogging` True (igaz) értékre van állítva, ahogy az alábbi példában is látható:
+Ha tárolt eljárást, eseményindítókat vagy felhasználó által definiált függvényeket használ, a lépéseket a `console.log()` parancs segítségével naplózhatja. Ez a parancs egy karakterláncot `EnableScriptLogging` koncentrál a hibakereséshez, ha az alábbi példában látható módon igaz értékre van állítva:
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(
@@ -328,14 +328,14 @@ new RequestOptions { EnableScriptLogging = true } );
 Console.WriteLine(response.ScriptLog);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További fogalmak és útmutató: tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása vagy használata Azure Cosmos DBban:
+További fogalmak és a tárolt eljárások, eseményindítók és a felhasználó által definiált függvények írásának és használatának módjáról az Azure Cosmos DB-ben:
 
 * [Tárolt eljárások, eseményindítók és felhasználói függvények regisztrálása és használata az Azure Cosmos DB-ben](how-to-use-stored-procedures-triggers-udfs.md)
 
-* [Tárolt eljárások és eseményindítók írása a JavaScript lekérdezési API használatával Azure Cosmos DB](how-to-write-javascript-query-api.md)
+* [Tárolt eljárások és eseményindítók írása javascript-lekérdezési API használatával az Azure Cosmos DB-ben](how-to-write-javascript-query-api.md)
 
-* [Azure Cosmos DB tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata Azure Cosmos DB](stored-procedures-triggers-udfs.md)
+* [Az Azure Cosmos DB tárolt eljárásainak, eseményindítóinak és felhasználó által definiált függvényeinek együttműködése az Azure Cosmos DB-ben](stored-procedures-triggers-udfs.md)
 
-* [A JavaScript nyelvi integrált lekérdezési API használata a Azure Cosmos DBban](javascript-query-api.md)
+* [JavaScript-nyelvű integrált lekérdezési API-val való együttműködés az Azure Cosmos DB-ben](javascript-query-api.md)

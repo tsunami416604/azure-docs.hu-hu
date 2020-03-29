@@ -1,49 +1,49 @@
 ---
-title: Klasszikus Azure-beli üzembe helyezési erőforrások áthelyezése
-description: A Azure Resource Manager használatával helyezheti át a klasszikus üzembe helyezési erőforrásokat egy új erőforráscsoporthoz vagy előfizetésbe.
+title: Az Azure Classic telepítési erőforrásainak áthelyezése
+description: Az Azure Resource Manager használatával klasszikus üzembe helyezési erőforrásokat helyezhet át egy új erőforráscsoportba vagy előfizetésbe.
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 78b9769a31fa0c96c12e18d05cb9c484aa52a1d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485285"
 ---
-# <a name="move-guidance-for-classic-deployment-model-resources"></a>Útmutató a klasszikus üzemi modell erőforrásainak üzembe helyezéséhez
+# <a name="move-guidance-for-classic-deployment-model-resources"></a>Útmutató áthelyezése a klasszikus telepítési modell erőforrásaihoz
 
-A klasszikus modellen keresztül üzembe helyezett erőforrások áthelyezésének lépései attól függően változnak, hogy egy előfizetésen belül vagy egy új előfizetésben helyezi át az erőforrásokat.
+A klasszikus modellen keresztül üzembe helyezett erőforrások áthelyezésének lépései eltérnek attól függően, hogy egy előfizetésen belül vagy egy új előfizetésen belül helyezi-e át az erőforrásokat.
 
-## <a name="move-in-the-same-subscription"></a>Áthelyezés ugyanabba az előfizetésbe
+## <a name="move-in-the-same-subscription"></a>Áthelyezés ugyanabban az előfizetésben
 
-Ha az erőforrásokat az egyik erőforráscsoporthoz egy másik erőforráscsoporthoz helyezi át ugyanazon az előfizetésen belül, a következő korlátozások érvényesek:
+Amikor erőforrásokat helyez át egy erőforráscsoportból egy másik erőforráscsoportba ugyanazon az előfizetésen belül, a következő korlátozások érvényesek:
 
 * A virtuális hálózatok (klasszikus) nem helyezhetők át.
-* A virtuális gépeket (klasszikus) át kell helyezni a Cloud Service-be.
-* A Cloud Service csak akkor helyezhető át, ha az áthelyezés magában foglalja az összes virtuális gépet.
-* Egyszerre csak egy felhőalapú szolgáltatás helyezhető át.
-* Egyszerre csak egy Storage-fiók (klasszikus) helyezhető át.
-* A Storage-fiók (klasszikus) nem helyezhető át ugyanabban a műveletben egy virtuális géppel vagy egy felhőalapú szolgáltatással.
+* A virtuális gépeket (klasszikus) át kell helyezni a felhőszolgáltatással.
+* A felhőszolgáltatás csak akkor helyezhető át, ha az áthelyezés az összes virtuális gépet tartalmazza.
+* Egyszerre csak egy felhőszolgáltatás helyezhető át.
+* Egyszerre csak egy tárfiók (klasszikus) helyezhető át.
+* Tárfiók (klasszikus) nem helyezhető át ugyanabban a műveletben egy virtuális gép vagy egy felhőszolgáltatás.
 
-Ha a klasszikus erőforrásokat egy új erőforráscsoporthoz szeretné áthelyezni ugyanabba az előfizetésbe, használja a [standard Move műveletet](../move-resource-group-and-subscription.md) a portálon, Azure PowerShellon, az Azure CLI-n vagy a REST APIon keresztül. Ugyanazokat a műveleteket használja, mint a Resource Manager-erőforrások áthelyezéséhez.
+Klasszikus erőforrások áthelyezése egy új erőforráscsoport ugyanazon az előfizetésen belül, használja a [szokásos áthelyezési műveleteket](../move-resource-group-and-subscription.md) a portálon keresztül, az Azure PowerShell, az Azure CLI vagy a REST API-t. Ugyanazokat a műveleteket használja, mint az Erőforrás-kezelő erőforrásainak áthelyezéséhez.
 
 ## <a name="move-across-subscriptions"></a>Áthelyezés az előfizetések között
 
-Az erőforrások új előfizetésre való áthelyezésekor a következő korlátozások érvényesek:
+Amikor erőforrásokat helyez át egy új előfizetésbe, a következő korlátozások érvényesek:
 
-* Az előfizetésben lévő összes klasszikus erőforrást ugyanabban a műveletben kell áthelyezni.
-* A cél-előfizetés nem tartalmazhat más klasszikus erőforrásokat.
-* Az áthelyezést csak külön REST API keresztül lehet kérni klasszikus Áthelyezésekhez. A hagyományos Resource Manager-áthelyezési parancsok nem működnek, ha a klasszikus erőforrásokat új előfizetésre helyezi át.
+* Az előfizetés összes klasszikus erőforrását ugyanabban a műveletben kell áthelyezni.
+* A cél-előfizetés nem rendelkezhet más klasszikus erőforrásokkal.
+* Az áthelyezés csak egy külön REST API-n keresztül kérhető a klasszikus áthelyezések esetén. A szabványos Erőforrás-kezelő áthelyezési parancsok nem működnek, amikor klasszikus erőforrásokat helyez át egy új előfizetésbe.
 
-A klasszikus erőforrások új előfizetésre való áthelyezéséhez használja a klasszikus erőforrásokra jellemző REST-műveleteket. A REST használatához hajtsa végre a következő lépéseket:
+Klasszikus erőforrások áthelyezése egy új előfizetés, használja a KLASSZIKUS erőforrásokra jellemző REST-műveleteket. A REST használatához tegye a következő lépéseket:
 
-1. Ellenőrizze, hogy a forrás-előfizetés részt vehet-e az előfizetések közötti áthelyezésben. Használja a következő műveletet:
+1. Ellenőrizze, hogy a forrás-előfizetés részt vehet-e egy előfizetésközi áthelyezésben. Használja a következő műveletet:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     A kérelem törzsében adja meg a következőket:
+     A kérelem törzsében a következők et kell megadni:
 
    ```json
    {
@@ -51,7 +51,7 @@ A klasszikus erőforrások új előfizetésre való áthelyezéséhez használja
    }
    ```
 
-     Az érvényesítési műveletre adott válasz formátuma a következő:
+     Az érvényesítési műveletre a következő formátumú a válasz:
 
    ```json
    {
@@ -63,13 +63,13 @@ A klasszikus erőforrások új előfizetésre való áthelyezéséhez használja
    }
    ```
 
-1. Ellenőrizze, hogy a cél-előfizetés részt vehet-e az előfizetések közötti áthelyezésben. Használja a következő műveletet:
+1. Ellenőrizze, hogy a cél-előfizetés részt vehet-e egy előfizetésközi áthelyezésben. Használja a következő műveletet:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     A kérelem törzsében adja meg a következőket:
+     A kérelem törzsében a következők et kell megadni:
 
    ```json
    {
@@ -77,14 +77,14 @@ A klasszikus erőforrások új előfizetésre való áthelyezéséhez használja
    }
    ```
 
-     A válasz formátuma megegyezik a forrás-előfizetés ellenőrzésével.
-1. Ha mindkét előfizetés átadja az ellenőrzést, helyezze át az összes klasszikus erőforrást egy előfizetésből egy másik előfizetésbe a következő művelettel:
+     A válasz formátuma megegyezik a forrás-előfizetés érvényesítésével.
+1. Ha mindkét előfizetés megfelel az ellenőrzésen, az összes klasszikus erőforrásáthelyezése az egyik előfizetésből egy másik előfizetésbe a következő művelettel:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
    ```
 
-    A kérelem törzsében adja meg a következőket:
+    A kérelem törzsében a következők et kell megadni:
 
    ```json
    {
@@ -94,8 +94,8 @@ A klasszikus erőforrások új előfizetésre való áthelyezéséhez használja
 
 A művelet több percig is futhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha problémája van a klasszikus erőforrások áthelyezésekor, forduljon az [ügyfélszolgálathoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Ha nem sikerül klasszikus erőforrásokat áthelyezni, forduljon [az ügyfélszolgálathoz.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
-Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../move-resource-group-and-subscription.md).
+Az erőforrások áthelyezésére vonatkozó parancsokról az [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe (Erőforrások áthelyezése)](../move-resource-group-and-subscription.md)témakörben található.

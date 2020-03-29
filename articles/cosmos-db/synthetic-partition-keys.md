@@ -1,25 +1,25 @@
 ---
-title: Szintetikus partíciós kulcs létrehozása a Azure Cosmos DBban
-description: Megtudhatja, hogyan használhatja a szintetikus partíciós kulcsokat az Azure Cosmos-tárolókban az adatok és a számítási feladatok egyenletes elosztása érdekében a partíciós kulcsok között.
+title: Szintetikus partíciókulcs létrehozása az Azure Cosmos DB-ben
+description: Ismerje meg, hogyan használhatja a szintetikus partíciós kulcsokat az Azure Cosmos-tárolókban az adatok és a számítási feladatok egyenletes elosztásához a partíciós kulcsok között
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441222"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Szintetikus partíciókulcs létrehozása
 
-Az ajánlott eljárás egy olyan partíciós kulcs, amely számos különböző értékkel rendelkezik, például több száz vagy ezer. A cél az adatok és a számítási feladatok egyenletes elosztása a partíciós kulcs értékeihez társított elemek között. Ha egy ilyen tulajdonság nem létezik az adataiban, létrehozhat egy *szintetikus partíciós kulcsot*. Ez a dokumentum több alapvető technikát ismertet a Cosmos-tároló szintetikus partíciós kulcsának létrehozásához.
+Ajánlott eljárás, hogy egy partíciókulcs sok különböző értékeket, például több száz vagy több ezer. A cél az adatok és a számítási feladatok egyenletes elosztása a partíciókulcs-értékekhez társított elemek között. Ha ilyen tulajdonság nem létezik az adatokban, létrehozhat egy *szintetikus partíciókulcsot.* Ez a dokumentum számos alapvető technikát ismerteti a cosmos-tároló szintetikus partíciókulcsának létrehozásához.
 
-## <a name="concatenate-multiple-properties-of-an-item"></a>Egy elem több tulajdonságának összefűzése
+## <a name="concatenate-multiple-properties-of-an-item"></a>Elem több tulajdonságának összefűzése
 
-A partíciós kulcs úgy alakítható ki, hogy több tulajdonság értékét egyetlen mesterséges `partitionKey` tulajdonságba fűzi. Ezeket a kulcsokat szintetikus kulcsoknak nevezzük. Vegyük például a következő dokumentumot:
+Partíciókulcsot úgy hozhat létre, hogy több tulajdonságértéket fűz `partitionKey` egyetlen mesterséges tulajdonságba. Ezeket a kulcsokat szintetikus kulcsoknak nevezzük. Vegyük például a következő példadokumentumot:
 
 ```JavaScript
 {
@@ -28,7 +28,7 @@ A partíciós kulcs úgy alakítható ki, hogy több tulajdonság értékét egy
 }
 ```
 
-Az előző dokumentum esetében az egyik lehetőség a/deviceId vagy a/Date beállítása partíciós kulcsként. Akkor használja ezt a lehetőséget, ha az eszköz azonosító vagy dátum alapján szeretné particionálni a tárolót. Egy másik lehetőség a két érték összefűzése egy szintetikus `partitionKey` tulajdonságba, amelyet a partíciós kulcsként használ.
+Az előző dokumentum esetében az egyik lehetőség a /deviceId vagy /date beállítása partíciókulcsként. Akkor használja ezt a beállítást, ha a tárolót az eszközazonosító vagy a dátum alapján szeretné particionálni. Egy másik lehetőség, hogy összefűzze `partitionKey` ezt a két értéket egy szintetikus tulajdonság, amely a partíciókulcsként használt.
 
 ```JavaScript
 {
@@ -38,27 +38,27 @@ Az előző dokumentum esetében az egyik lehetőség a/deviceId vagy a/Date beá
 }
 ```
 
-Valós idejű forgatókönyvekben több ezer elemet is megadhat egy adatbázisban. Ahelyett, hogy manuálisan hozzáadja a szintetikus kulcsot, definiálja az ügyféloldali logikát az értékek összefűzéséhez, és illessze be a szintetikus kulcsot a Cosmos-tárolók elemeibe.
+Valós idejű esetekben több ezer elem lehet egy adatbázisban. Ahelyett, hogy a szintetikus kulcs manuálisan, ügyféloldali logika összefűzése értékek et, és helyezze be a szintetikus kulcsot az elemeket a Cosmos-tárolókban.
 
-## <a name="use-a-partition-key-with-a-random-suffix"></a>Partíciós kulcs használata véletlenszerű utótaggal
+## <a name="use-a-partition-key-with-a-random-suffix"></a>Partíciókulcs használata véletlenszerű utótaggal
 
-Egy másik lehetséges stratégia a számítási feladatok egyenletes elosztására a partíciós kulcs értékének végén található véletlenszerű szám hozzáfűzésével. Ha ily módon terjeszt el elemeket, párhuzamos írási műveleteket hajthat végre a partíciók között.
+Egy másik lehetséges stratégia a számítási feladatok egyenletesebb elosztásához egy véletlen szám hozzáfűzése a partíciókulcs-érték végén. Ha így osztja el az elemeket, párhuzamos írási műveleteket hajthat végre a partíciók között.
 
-Ilyen eset például, ha egy partíciós kulcs egy dátumot jelöl. Kiválaszthat egy 1 és 400 közötti véletlenszerű számot, és összefűzheti azt a dátumhoz. Ez a módszer a partíciós kulcs olyan értékeit eredményezi, mint a `2018-08-09.1`,`2018-08-09.2`stb., a `2018-08-09.400`on keresztül. Mivel a partíciós kulcs véletlenszerű, a tárolón lévő írási műveletek mindegyike egyenletesen oszlik el több partíció között. Ez a módszer jobb párhuzamosságot és összességében nagyobb átviteli sebességet eredményez.
+Erre példa, ha a partíciókulcs dátumot jelöl. Választhat egy 1 és 400 közötti véletlen számot, és összefűzheti a dátum utótagjaként. Ez a módszer partíciókulcs-értékeket eredményez, például `2018-08-09.1`a ,`2018-08-09.2`, és így tovább, a rendszeren keresztül. `2018-08-09.400` Mivel véletlenszerűen a partíciókulcsot, az írási műveletek a tároló minden nap egyenletesen oszlanak el több partíciót. Ez a módszer jobb párhuzamosságot és összességében nagyobb átviteli erőket eredményez.
 
-## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Előre kiszámított utótagokkal rendelkező partíciós kulcs használata 
+## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Előre kiszámított utótagokkal rendelkező partíciókulcs használata 
 
-A véletlenszerű utótaggal kapcsolatos stratégia nagy mértékben javíthatja az írási sebességet, de egy adott elem nehezen olvasható. Nem tudja, hogy milyen utótagot használt a rendszer az adott elemmel. Az egyes elemek olvasásának egyszerűbbé tételéhez használja az előre kiszámított utótagok stratégiát. Ahelyett, hogy véletlenszerű számmal terjessze az elemeket a partíciók között, egy számot kell használnia, amelyet a lekérdezni kívánt valami alapján kell kiszámítani.
+A véletlenszerű utótag stratégia nagyban javíthatja az írási átviteli, de nehéz olvasni egy adott elemet. Nem ismeri az elem megírt eleméhez használt utótag értéket. Az egyes elemek könnyebb olvasása érdekében használja az előre kiszámított utótagok stratégiát. Ahelyett, hogy egy véletlen számot használna az elemek partíciók közötti elosztásához, használjon olyan számot, amelyet a lekérdezni kívánt elem alapján számít ki.
 
-Vegye figyelembe az előző példát, ahol a tároló egy dátumot használ a partíciós kulcsként. Most tegyük fel, hogy minden egyes elemek `Vehicle-Identification-Number` (`VIN`) attribútummal rendelkeznek, amelyet szeretnénk elérni. Továbbá tegyük fel, hogy gyakran futtat lekérdezéseket, hogy a dátum mellett a `VIN`is megtalálják az elemeket. Mielőtt az alkalmazás beírja az elemeket a tárolóba, kiszámíthatja a VIN alapján egy kivonatoló utótagot, és hozzáfűzheti a partíciós kulcs dátumához. Előfordulhat, hogy a számítás egy 1 és 400 közötti számot állít elő, amely egyenletes eloszlású. Ez az eredmény hasonló a véletlenszerű utótagú stratégiai módszer által létrehozott eredményekhez. A partíciós kulcs értéke ezután a számított eredménnyel összefűzött dátum.
+Tekintsük az előző példát, ahol egy tároló egy dátumot használ partíciókulcsként. Most tegyük fel, `Vehicle-Identification-Number` `VIN`hogy minden elem nek van egy ( ) attribútuma, amelyet el szeretnénk érni. Továbbá tegyük fel, hogy gyakran futtat `VIN`lekérdezéseket az elemek kereséséhez a dátum mellett. Mielőtt az alkalmazás írja az elemet a tárolóba, kiszámíthatja a kivonatutótagot a VIN alapján, és hozzáfűzheti a partíciókulcs dátumához. A számítás 1 és 400 közötti számot hozhat létre, amely egyenletesen oszlik el. Ez az eredmény hasonló a véletlenszerű utótag stratégiai módszer által elért eredményekhez. A partíciókulcs értéke ekkor a számított eredménnyel összefűzött dátum.
 
-Ezzel a stratégiával az írások egyenletesen oszlanak el a partíciós kulcs értékein és a partíciók között. Egy adott elem és dátum könnyen olvasható, mert kiszámíthatja egy adott `Vehicle-Identification-Number`partíciós kulcsának értékét. Ennek a módszernek az előnye, hogy el kell kerülnie egy egyszerű, például egy olyan partíciós kulcs létrehozását, amely az összes munkaterhelést elvégzi. 
+Ezzel a stratégiával az írási műveletek egyenletesen oszlanak el a partíciókulcs-értékek között és a partíciók között. Könnyen elolvashat egy adott elemet és dátumot, mert kiszámíthatja `Vehicle-Identification-Number`egy adott partíciókulcs értékét. Ennek a módszernek az az előnye, hogy elkerülheti egyetlen gyorspartíció-kulcs, azaz egy partíciókulcs létrehozását, amely az összes számítási feladatot igénybe veszi. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A particionálási koncepcióról további információt a következő cikkekben talál:
+A particionálási koncepcióról a következő cikkekben olvashat bővebben:
 
-* További információ a [logikai partíciókhoz](partition-data.md).
-* További információ az [átviteli sebesség Azure Cosmos-tárolók és-adatbázisok létesítéséről](set-throughput.md).
-* Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.
-* Útmutató az [átviteli sebesség Azure Cosmos-adatbázison](how-to-provision-database-throughput.md)való kiépítéséhez.
+* További információ a [logikai partíciókról.](partition-data.md)
+* További információ az [Azure Cosmos-tárolók és -adatbázisok átviteli átviteli módjáról.](set-throughput.md)
+* Ismerje meg, hogyan [építheti ki az átviteli fazonát egy Azure Cosmos-tárolóban.](how-to-provision-container-throughput.md)
+* Ismerje meg, hogyan [építheti ki az átviteli mertét egy Azure Cosmos-adatbázisban.](how-to-provision-database-throughput.md)
