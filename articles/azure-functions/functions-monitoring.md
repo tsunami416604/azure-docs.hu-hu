@@ -1,179 +1,155 @@
 ---
 title: Az Azure Functions monitorozása
-description: Ismerje meg, hogyan használható az Azure Application Insights és a Azure Functions a függvények végrehajtásának figyelésére.
+description: Megtudhatja, hogyan használhatja az Azure Application Insights ot az Azure Functions funkcióival a függvények végrehajtásának figyeléséhez.
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 08da17f1ef023676aa0c499cf4e7e1bb9687f1c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276867"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257853"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
-A [Azure functions](functions-overview.md) az [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) beépített integrációját kínálja a függvények figyelésére. Ez a cikk bemutatja, hogyan konfigurálhatja a Azure Functions a rendszer által létrehozott naplófájlok Application Insightsba való küldéséhez.
+[Az Azure Functions](functions-overview.md) beépített integrációt kínál az [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) szolgáltatással a függvények figyeléséhez. Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Functions rendszer által létrehozott naplófájlokat az Application Insights.
 
-Javasoljuk, hogy használja a Application Insights, mert a napló-, a teljesítmény-és a hiba-adatokat gyűjti. A szolgáltatás automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a függvények használatának megismerésében. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Application Insights is használhatja a helyi funkció alkalmazás-projekt fejlesztése során. További információ: [Mi az Application Insights?](../azure-monitor/app/app-insights-overview.md)
+Az Application Insights használatát javasoljuk, mert napló-, teljesítmény- és hibaadatokat gyűjt. Automatikusan észleli a teljesítményanomáliákat, és hatékony elemzési eszközöket tartalmaz a problémák diagnosztizálásához és a funkciók használatának megértéséhez. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Az Application Insights ot is használhatja a helyi függvényalkalmazás-projektfejlesztés során. További információ: [Mi az Application Insights?](../azure-monitor/app/app-insights-overview.md)
 
-Mivel a szükséges Application Insights rendszerállapot-Azure Functions be van építve, mindössze egy érvényes kialakítási kulcs szükséges ahhoz, hogy a Function alkalmazást egy Application Insights erőforráshoz lehessen kapcsolni.
+Mivel a szükséges Application Insights-instrumentation be van építve az Azure Functionsbe, mindössze egy érvényes instrumentation kulcsra van szüksége a függvényalkalmazás egy Application Insights-erőforráshoz való csatlakoztatásához. A instrumentation kulcsot hozzá kell adni az alkalmazás beállításait, amikor a függvényalkalmazás-erőforrás jön létre az Azure-ban. Ha a függvényalkalmazás még nem rendelkezik ezzel a kulccsal, [manuálisan is beállíthatja.](#enable-application-insights-integration)  
 
-## <a name="application-insights-pricing-and-limits"></a>Díjszabás és korlátozások Application Insights
+## <a name="application-insights-pricing-and-limits"></a>Az Application Insights díjszabása és korlátai
 
-Kipróbálhatja Application Insights integrációját a Function apps ingyenes használatával. Napi korláttal rendelkezhet, hogy mennyi mennyiségű adatfeldolgozásra van lehetőség ingyenesen. Ezt a korlátot a tesztelés során is elérheti. Az Azure portál-és e-mail-értesítéseket biztosít, ha közeledik a napi korláthoz. Ha kihagyja ezeket a riasztásokat, és lenyomja a korlátot, az új naplók nem jelennek meg Application Insights lekérdezésekben. Ügyeljen arra, hogy a szükségtelen hibaelhárítási idő elkerülhető legyen. További információ: [a díjszabás és az adatmennyiség kezelése Application Insightsban](../azure-monitor/app/pricing.md).
+Kipróbálhatja az Application Insights-integrációt a Függvényalkalmazásokkal ingyenesen. Napi korlát van arra vonatkozóan, hogy mennyi adatot lehet ingyenesen feldolgozni. Előfordulhat, hogy ezt a korlátot a tesztelés során eléri. Az Azure portál- és e-mail-értesítéseket biztosít, amikor közeledik a napi korláthoz. Ha elmulasztja ezeket a riasztásokat, és eléri a korlátot, az új naplók nem jelennek meg az Application Insights-lekérdezésekben. Legyen tisztában a korláttal a szükségtelen hibaelhárítási idő elkerülése érdekében. További információt az [Árképzés és az adatmennyiség kezelése az Application Insightsban című témakörben](../azure-monitor/app/pricing.md)talál.
 
-A Function app számára elérhető Application Insights szolgáltatások teljes listáját a [Azure functions által támogatott funkciók Application Insightsjában](../azure-monitor/app/azure-functions-supported-features.md)részletesen ismertetjük.
+A függvényalkalmazás számára elérhető Application Insights-funkciók teljes listáját az [Application Insights for Azure Functions által támogatott funkciók](../azure-monitor/app/azure-functions-supported-features.md)részletezik.
 
-## <a name="enable-application-insights-integration"></a>Application Insights integráció engedélyezése
+## <a name="view-telemetry-in-monitor-tab"></a>Telemetria megtekintése a Figyelő lapon
 
-Ahhoz, hogy egy Function alkalmazás adatküldést Application Insights, ismernie kell egy Application Insights erőforrás rendszerállapot-kulcsát. A kulcsnak egy **APPINSIGHTS_INSTRUMENTATIONKEY**nevű alkalmazás-beállításban kell lennie.
+Ha [az Application Insights-integráció engedélyezve van,](#enable-application-insights-integration)megtekintheti a telemetriai adatokat a **Figyelő** lapon.
 
-### <a name="new-function-app-in-the-portal"></a>Új Function-alkalmazás a portálon
+1. A függvényalkalmazás lapján válasszon ki egy függvényt, amely legalább egyszer futott az Application Insights konfigurálása után. Ezután válassza a **Refresh** **Monitor** lapot.
 
-Ha [a Azure Portal létrehozza a Function alkalmazást](functions-create-first-azure-function.md), Application Insights integráció alapértelmezés szerint engedélyezve van. A Application Insights erőforrás neve megegyezik a Function alkalmazás nevével, és az ugyanabban a régióban vagy a legközelebbi régióban jön létre.
+   ![Behívási lista](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
-A létrehozandó Application Insights-erőforrás áttekintéséhez válassza ki azt a **Application Insights** ablak kibontásához. Módosíthatja az **új erőforrás nevét** , vagy kiválaszthat egy másik **helyet** az [Azure-földrajzban](https://azure.microsoft.com/global-infrastructure/geographies/) , ahol az adatait tárolni szeretné.
+    > [!NOTE]
+    > A lista megjelenése akár öt percet is igénybe vehet, amíg a telemetriai ügyfél adatokat kötegel a kiszolgálóra történő továbbításhoz. A késleltetés nem vonatkozik az [élő mérőszámok streamre.](../azure-monitor/app/live-stream.md) Ez a szolgáltatás a lap betöltésekén csatlakozik a Functions állomáshoz, így a naplók közvetlenül az oldalra kerülnek.
 
-![Application Insights engedélyezése a Function app létrehozásakor](media/functions-monitoring/enable-ai-new-function-app.png)
-
-Ha a **Létrehozás**lehetőséget választja, a rendszer létrehoz egy Application Insights erőforrást a Function alkalmazással, amely a `APPINSIGHTS_INSTRUMENTATIONKEY` van beállítva az alkalmazás beállításai között. Minden készen áll.
-
-<a id="manually-connect-an-app-insights-resource"></a>
-### <a name="add-to-an-existing-function-app"></a>Hozzáadás meglévő Function-alkalmazáshoz 
-
-Amikor az [Azure CLI](functions-create-first-azure-function-azure-cli.md), a [Visual Studio](functions-create-your-first-function-visual-studio.md)vagy a [Visual Studio Code](functions-create-first-function-vs-code.md)használatával hoz létre egy Function alkalmazást, létre kell hoznia a Application Insights erőforrást. Ezután hozzáadhatja a kialakítási kulcsot az adott erőforrásból a Function alkalmazásban.
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-A függvények korábbi verziói beépített figyelést használnak, ami már nem ajánlott. Ha egy ilyen Function alkalmazáshoz Application Insights integrációt engedélyez, le kell [tiltania a beépített naplózást](#disable-built-in-logging)is.  
-
-## <a name="view-telemetry-in-monitor-tab"></a>Telemetria megtekintése a figyelés lapon
-
-Ha [engedélyezve van Application Insights integráció](#enable-application-insights-integration), megtekintheti a telemetria a **figyelés** lapon.
-
-1. A Function app (függvény alkalmazása) lapon válasszon ki egy olyan függvényt, amely legalább egyszer fut Application Insights konfigurálása után. Ezután válassza a **figyelés** fület.
-
-   ![Figyelő lap kiválasztása](media/functions-monitoring/monitor-tab.png)
-
-1. Válassza a rendszeres **frissítés** lehetőséget, amíg meg nem jelenik a függvény meghívások listája.
-
-   Akár öt percet is igénybe vehet, amíg a lista megjelenik, miközben a telemetria-ügyfél a kiszolgálónak továbbított adatforgalmat. (A késleltetés nem vonatkozik a [élő metrikastreamra](../azure-monitor/app/live-stream.md). A szolgáltatás a lap betöltésekor csatlakozik a functions-gazdagéphez, így a naplók közvetlenül az oldalra kerülnek.)
-
-   ![Meghívások listája](media/functions-monitoring/monitor-tab-ai-invocations.png)
-
-1. Egy adott függvény naplóinak megtekintéséhez válassza ki az adott hívás **dátum** oszlopának hivatkozását.
-
-   ![Meghívási részletek hivatkozása](media/functions-monitoring/invocation-details-link-ai.png)
-
-   Az adott hívás naplózási kimenete új lapon jelenik meg.
+1. Egy adott függvény meghívásának naplóit a **Dátum (UTC)** oszlophivatkozásra kattintva megtekintheti. Az adott meghívás naplózási kimenete egy új lapon jelenik meg.
 
    ![Meghívás részletei](media/functions-monitoring/invocation-details-ai.png)
 
-Láthatja, hogy mindkét oldalon **fut Application Insights** hivatkozás az Application Insights Analytics-lekérdezésre, amely beolvassa az információt.
+1. Válassza a **Futtatás az Application Insightsban** hivatkozást a lekérdezés forrásának megtekintéséhez, amely lekéri az Azure Monitor naplóadatait az Azure-naplóban Ha ez az első alkalom, hogy az Azure Log Analytics szolgáltatást használja az előfizetésében, engedélyeznie kell.
 
-![Futtatás Application Insights](media/functions-monitoring/run-in-ai.png)
+1. Ha úgy dönt, hogy a linket, és úgy dönt, hogy engedélyezze Log Analytic. megjelenik a következő lekérdezés. Láthatja, hogy a lekérdezés eredménye az elmúlt`where timestamp > ago(30d)`30 napra korlátozódik ( ). Ezenkívül az eredmények legfeljebb 20`take 20`sort mutatnak ( ). Ezzel szemben a függvény meghívási részleteinek listája az elmúlt 30 napra szól, korlátozás nélkül.
 
-A következő lekérdezés jelenik meg. Láthatja, hogy a lekérdezés eredményei az elmúlt 30 napra korlátozódnak (`where timestamp > ago(30d)`). Emellett az eredmények legfeljebb 20 sort mutatnak (`take 20`). Ezzel szemben a függvény Meghívási részleteinek listája az elmúlt 30 napra, korlátozás nélkül.
+   ![Az Application Insights Analytics meghívási listája](media/functions-monitoring/ai-analytics-invocation-list.png)
 
-![Application Insights Analytics-meghívások listája](media/functions-monitoring/ai-analytics-invocation-list.png)
+További információ: [A telemetriai adatok lekérdezése](#query-telemetry-data) a cikk későbbi részében.
 
-További információ: telemetria- [adatok lekérdezése](#query-telemetry-data) a cikk későbbi részében.
+## <a name="view-telemetry-in-application-insights"></a>Telemetriai adatok megtekintése az Application Insightsban
 
-## <a name="view-telemetry-in-application-insights"></a>Telemetria megtekintése Application Insights
+Ha meg szeretné nyitni az Application Insights egy függvényalkalmazásból az Azure Portalon, nyissa meg a függvényalkalmazás **áttekintése** lapot. A **Konfigurált szolgáltatások csoportban**válassza az **Application Insights**lehetőséget.
 
-Ha Application Insights szeretne megnyitni a Azure Portalban lévő Function alkalmazásból, lépjen a Function alkalmazás **Áttekintés** lapjára. A **konfigurált szolgáltatások**területen válassza a **Application Insights**lehetőséget.
+![Az Application Insights megnyitása a függvényalkalmazás áttekintése lapjáról](media/functions-monitoring/ai-link.png)
 
-![Application Insights megnyitása a Function app – áttekintés oldalon](media/functions-monitoring/ai-link.png)
+Az Application Insights használatáról az [Application Insights dokumentációjában](https://docs.microsoft.com/azure/application-insights/)olvashat. Ez a szakasz néhány példát mutat be az Application Insights ban az adatok megtekintésére. Ha már ismeri az Application Insights, közvetlenül a [telemetriai adatok konfigurálásáról és testreszabásáról szóló szakaszokat.](#configure-categories-and-log-levels)
 
-A Application Insights használatáról az [Application Insights dokumentációjában](https://docs.microsoft.com/azure/application-insights/)olvashat bővebben. Ez a szakasz néhány példát mutat be a Application Insights lévő adatmegjelenítésre. Ha már ismeri a Application Insightst, közvetlenül [a telemetria-adatainak konfigurálásával és testreszabásával foglalkozó fejezetekre](#configure-categories-and-log-levels)léphet.
+![Az Application Insights – áttekintés lap](media/functions-monitoring/metrics-explorer.png)
 
-![Application Insights Áttekintés lap](media/functions-monitoring/metrics-explorer.png)
+Az Application Insights alábbi területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelésekor:
 
-Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
-
-| Lapon | Leírás |
+| Vizsgálat | Leírás |
 | ---- | ----------- |
-| **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
-| **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | Teljesítménnyel kapcsolatos problémák elemzése. |
-| **Kiszolgálók** | Megtekintheti a kiszolgálón az erőforrás-kihasználtságot és az átviteli sebességet. Ez az adat hasznos lehet olyan forgatókönyvek hibakereséséhez, ahol a függvények a mögöttes erőforrások leállását végzik. A kiszolgálókat **Felhőbeli szerepkör-példányoknak**nevezzük. |
-| **[Mutatókat](../azure-monitor/app/metrics-explorer.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
-| **[Élő metrikastream](../azure-monitor/app/live-stream.md)** | A metrikák adatait a közel valós időben létrehozva tekintheti meg. |
+| **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramokat és riasztásokat hozhat létre függvényhibák és kiszolgálói kivételek alapján. A **művelet neve** a függvény neve. A függőségek hibái csak akkor jelennek meg, ha egyéni telemetriai adatokat valósít meg a függőségekhez. |
+| **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítményproblémák at az erőforrás-kihasználtság és az átviteli teljesítmény **felhőbeli szerepkörpéldányonkénti**megtekintésével elemezheti. Ezek az adatok olyan forgatókönyvek hibakereséséhez lehetnek hasznosak, ahol a függvények lebontják az alapul szolgáló erőforrásokat. |
+| **[Mutatókat](../azure-monitor/app/metrics-explorer.md)** | A mérőszámokon alapuló diagramokat és riasztásokat hozhat létre. A metrikák tartalmazzák a függvénymeghívások számát, a végrehajtási időt és a sikerességi arányokat. |
+| **[Élő mérőszámok](../azure-monitor/app/live-stream.md)** | A metrikák adatait közel valós időben való létrehozása korlátjaként tekintheti meg. |
 
-## <a name="query-telemetry-data"></a>Telemetria-adatbázis lekérdezése
+## <a name="query-telemetry-data"></a>Telemetriai adatok lekérdezése
 
-[Application Insights Analytics](../azure-monitor/app/analytics.md) hozzáférést biztosít minden telemetria-adatbázishoz egy adatbázisban lévő táblák formájában. Az elemzés lekérdezési nyelvet biztosít az adatok kinyeréséhez, módosításához és megjelenítéséhez.
+[Az Application Insights Analytics](../azure-monitor/app/analytics.md) hozzáférést biztosít az összes telemetriai adathoz táblák formájában egy adatbázisban. Az Analytics lekérdezési nyelvet biztosít az adatok kinyeréséhez, kezeléséhez és megjelenítéséhez. 
 
-![Elemzés kiválasztása](media/functions-monitoring/select-analytics.png)
+A **naplózott** események feltárásához vagy lekérdezéséhez válassza a Naplók lehetőséget.
 
-![Elemzési példa](media/functions-monitoring/analytics-traces.png)
+![Példa elemzési](media/functions-monitoring/analytics-traces.png)
 
-Az alábbi példa egy lekérdezési példát mutat be, amely az elmúlt 30 percben megjeleníti az egyes feldolgozó kérelmek eloszlását.
+Íme egy példa egy lekérdezésre, amely a kérelmek feldolgozónkénti eloszlását mutatja az elmúlt 30 percben.
 
-```
+<pre>
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-```
+</pre>
 
-A rendelkezésre álló táblák a bal oldali **séma** lapon jelennek meg. Az alábbi táblázatokban megtalálhatja a függvények által generált adathívásokat:
+Az elérhető táblák a bal oldali **Séma** lapon láthatók. A függvénymeghívások által létrehozott adatokat az alábbi táblázatokban találja meg:
 
 | Tábla | Leírás |
 | ----- | ----------- |
-| **nyomok** | A futtatókörnyezet és a függvény kódja által létrehozott naplók. |
-| **kérelmek** | Egy kérelem az egyes függvények meghívásához. |
-| **kivételek** | A futtatókörnyezet által kiváltott kivételek. |
-| **customMetrics** | A sikeres és sikertelen meghívások száma, a sikerességi arány és az időtartam. |
-| **customEvents** | A futtatókörnyezet által követett események, például: a függvényt kiváltó HTTP-kérelmek. |
-| **performanceCounters** | Információk azon kiszolgálók teljesítményéről, amelyeken a függvények futnak. |
+| **Nyomok** | A futásidejű és a függvénykód által létrehozott naplók. |
+| **kérések** | Minden függvénymeghíváshoz egy kérelem tartozik. |
+| **Kivételek** | A futásidejű ek kivételei. |
+| **customMetrics** | A sikeres és sikertelen hívások száma, a sikerességi arány és az időtartam. |
+| **Customevents** | A futásidejű események, például: függvényt kiváltó HTTP-kérelmek. |
+| **performanceCounters** | Információ azoknak a kiszolgálóknak a teljesítményéről, amelyeken a funkciók futnak. |
 
-A többi tábla a rendelkezésre állási tesztekhez, valamint az ügyfél és a böngésző telemetria. Egyéni telemetria is létrehozhat, amelyekkel adathozzáadást adhat hozzájuk.
+A többi tábla a rendelkezésre állási tesztek, valamint az ügyfél és a böngésző telemetriai adatok. Egyéni telemetriai adatok hozzáadásával egyéni telemetriai adatokat adhat hozzá.
 
-Az egyes függvényekre jellemző adatok egy `customDimensions` mezőben találhatók.  A következő lekérdezés például lekéri az összes olyan nyomkövetést, amelynek `Error`a naplózási szintje.
+Az egyes táblákon belül a függvényspecifikus `customDimensions` adatok egy része egy mezőben található.  A következő lekérdezés például lekéri a naplószintű `Error`összes nyomkövetést.
 
-```
+<pre>
 traces 
 | where customDimensions.LogLevel == "Error"
-```
+</pre>
 
-A futtatókörnyezet biztosítja a `customDimensions.LogLevel` és `customDimensions.Category` mezőket. További mezőket is megadhat a függvény kódjába írt naplókban. Lásd a jelen cikk későbbi, [strukturált naplózás](#structured-logging) című részében.
+A futásidejű `customDimensions.LogLevel` biztosítja `customDimensions.Category` a és a mezőket. A függvénykódba írt naplókban további mezőket is megadhat. Lásd: [Strukturált naplózás](#structured-logging) később ebben a cikkben.
 
-## <a name="configure-categories-and-log-levels"></a>Kategóriák és naplózási szintek konfigurálása
+## <a name="configure-categories-and-log-levels"></a>Kategóriák és naplószintek konfigurálása
 
-A Application Insightst egyéni konfiguráció nélkül is használhatja. Az alapértelmezett konfiguráció nagy mennyiségű adattal járhat. Ha Visual Studio Azure-előfizetést használ, előfordulhat, hogy a Application Insightshoz tartozó adatkorlátot is elérheti. A cikk későbbi részében megtudhatja, hogyan konfigurálhatja és testre szabhatja a függvények által Application Insightsba küldött adatok konfigurálását. Egy Function alkalmazás esetében a naplózás a [Host. JSON] fájlban van konfigurálva.
+Az Application Insights egyéni konfiguráció nélkül is használható. Az alapértelmezett konfiguráció nagy mennyiségű adatot eredményezhet. Ha Visual Studio Azure-előfizetést használ, előfordulhat, hogy eléri az Application Insights adatplafonját. A cikk későbbi részében megtudhatja, hogyan konfigurálhatja és szabhatja testre a függvények által az Application Insightsnak küldött adatokat. Függvényalkalmazás esetén a naplózás a [host.json] fájlban van konfigurálva.
 
 ### <a name="categories"></a>Kategóriák
 
-A Azure Functions Logger minden naplóhoz tartalmaz *kategóriát* . A kategória azt jelzi, hogy a futásidejű kód mely része vagy a függvény kódja írta a naplót. 
+Az Azure Functions naplózó minden naplóhoz tartalmaz egy *kategóriát.* A kategória azt jelzi, hogy a futásidejű kód vagy a függvénykód melyik része írta a naplót. Az alábbi diagram a futásidejű által létrehozott naplók fő kategóriáit ismerteti. 
 
-A functions futtatókörnyezet olyan naplókat hoz létre, amelyek a "host" kezdetű kategóriába tartoznak. Az 1. x verzióban a `function started`, `function executed`és `function completed` naplók `Host.Executor`kategóriába tartoznak. A 2. x verziótól kezdődően ezek a naplók `Function.<YOUR_FUNCTION_NAME>`kategóriába tartoznak.
+| Kategória | Leírás |
+| ----- | ----- | 
+| Host.Results | Ezek a naplók az Application Insights ban **kérésként** jelennek meg. Egy függvény sikerét vagy sikertelenségét jelzik. Mindezek a naplók vannak `Information` írva szinten. Ha a `Warning` fenti vagy annál magasabb szűrést nem látja ezek az adatok. |
+| Host.Aggregator | Ezek a naplók a függvénymeghívások számát és átlagát biztosítják egy [konfigurálható](#configure-the-aggregator) időtartamalatt. Az alapértelmezett időszak 30 másodperc vagy 1000 eredmény, amelyik előbb következik be. A naplók érhetők el a **customMetrics** tábla Application Insights. Ilyenek például a futtatások száma, a sikerességi arány és az időtartam. Mindezek a naplók vannak `Information` írva szinten. Ha a `Warning` fenti vagy annál magasabb szűrést nem látja ezek az adatok. |
 
-Ha naplókat ír a függvény kódjába, a kategória `Function` a functions futtatókörnyezet 1. x verziójában. A 2. x verzióban a kategória `Function.<YOUR_FUNCTION_NAME>.User`.
+Ezeken kívüli kategóriák összes naplója elérhető az Application Insights **traces-i** táblájában.
+
+A függvények futásidejű által `Host` írt kategóriákkal rendelkező összes naplót a Függvények naplója írja. A **funkció elindult,** és a `Host.Executor`funkció **befejezett** naplók kategóriában . A sikeres futtatások esetén `Information` ezek a naplók szint. A kivételek naplózása szinten `Error` van. A futásidejű `Warning` is létrehoz szint naplók, például: várólista üzeneteket küldött a méreg várólistába.
+
+A Functions futásidejű naplókat hoz létre egy "Host" kategóriával. Az 1.x `function started`verzióban `function executed`a `function completed` , és `Host.Executor`a naplók kategóriában. Kezdve a 2.x verzió, ezek `Function.<YOUR_FUNCTION_NAME>`a naplók a kategória .
+
+Ha naplót ír a függvénykódban, `Function.<YOUR_FUNCTION_NAME>.User` a kategória bármilyen naplószint, és bármilyen naplószint lehet. A Functions futásidejű 1.x-es verziójában a kategória `Function`a .
 
 ### <a name="log-levels"></a>Naplózási szintek
 
-A Azure Functions naplózó *naplózási szintet* is tartalmaz minden naplóval. A [naplózási szint](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
+Az Azure Functions naplózó is tartalmaz egy *naplószintet* minden naplóhoz. [A LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) egy felsorolás, és az egész kód relatív fontosságot jelez:
 
-|LogLevel    |Kód|
+|Naplózási szint    |Kód|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
-|Adatok | 2 |
+|Információ | 2 |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Nincsenek        | 6 |
+|None        | 6 |
 
-A naplózási szintű `None` a következő szakaszban ismertetjük. 
+A `None` naplószint magyarázata a következő szakaszban található. 
 
-### <a name="log-configuration-in-hostjson"></a>Konfiguráció naplózása a Host. JSON fájlban
+### <a name="log-configuration-in-hostjson"></a>Naplózási konfiguráció a host.json fájlban
 
-A [Host. JSON] fájl azt konfigurálja, hogy a Function app hogyan küldi el a Application Insights. Minden kategória esetében meg kell határozni a küldéshez minimálisan szükséges naplózási szintet. Két példa létezik: az első példa a functions Runtime [2. x vagy újabb verzióját](functions-versions.md#version-2x) célozza meg (a .net Core használatával), a második példa pedig az 1. x futtatókörnyezet.
+A [host.json] fájl konfigurálja, hogy mennyi naplózási egy függvényalkalmazás küld az Application Insights. Minden kategóriához meg kell adni a minimális anamforát. Két példa van: az első példa a Functions runtime [2.x-es és újabb verzióját](functions-versions.md#version-2x) célozza meg (a .NET Core-nal), a második példa pedig az 1.x-es verziójú futásidejű.
 
-### <a name="version-2x-and-higher"></a>2\. x vagy újabb verzió
+### <a name="version-2x-and-higher"></a>2.x-es vagy újabb verzió
 
-A functions futtatókörnyezet v2. x és újabb verziói a [.net Core naplózási szűrő-hierarchiát](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)használják. 
+A Functions futásidejű verzióverzióa i.2.x és újabb verziói a [.NET Core naplózási szűrőhierarchiát](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)használják. 
 
 ```json
 {
@@ -189,7 +165,7 @@ A functions futtatókörnyezet v2. x és újabb verziói a [.net Core naplózás
 }
 ```
 
-### <a name="version-1x"></a>1\. x verzió
+### <a name="version-1x"></a>1.x verzió
 
 ```json
 {
@@ -208,15 +184,15 @@ A functions futtatókörnyezet v2. x és újabb verziói a [.net Core naplózás
 
 Ez a példa a következő szabályokat állítja be:
 
-* A `Host.Results` vagy `Function`kategóriába tartozó naplók esetében csak `Error` vagy magasabb szintű Application Insights. A `Warning`i szint és az alábbi naplók figyelmen kívül lesznek hagyva.
-* A `Host.Aggregator`kategóriába tartozó naplók esetében az összes naplót az Application Insightsba küldje el. A `Trace` naplózási szintje megegyezik azzal, amit egyes naplózók `Verbose`, de a [Host. JSON] fájlban `Trace`t használnak.
-* Az összes többi napló esetében csak `Information` szintet és a fentieket küldje el Application Insights.
+* A vagyoni `Host.Results` `Function`kategóriába tartozó `Error` naplók esetén csak az Application Insights nak küldjön csak szint felett. A szint `Warning` és az alatti naplók figyelmen kívül kerülnek.
+* A kategóriákkal `Host.Aggregator`rendelkező naplók esetén küldje el az összes naplót az Application Insightsnak. A `Trace` napló szintje megegyezik azzal, `Verbose`amit egyes `Trace` favágók hívnak , de a [host.json] fájlban használják.
+* Az összes többi naplók, `Information` csak szint felett, és az Application Insights.
 
-A [Host. JSON] kategória értéke az összes olyan kategória naplózását szabályozza, amely azonos értékkel kezdődik. a [Host. json] `Host` a `Host.General`, `Host.Executor`, `Host.Results`stb. naplózását vezérli.
+A [host.json] kategóriaértéke az azonos értékkel kezdődő összes kategória naplózását szabályozza. `Host`a [host.json] a `Host.General` `Host.Executor`, `Host.Results`, és így tovább naplózást szabályozza.
 
-Ha a [Host. JSON] több olyan kategóriát tartalmaz, amelyek ugyanazzal a karakterlánccal kezdődnek, akkor a többit is megegyeznek. Tegyük fel, hogy a futtatókörnyezetből mindent szeretne, kivéve a `Host.Aggregator` `Error` szinten való bejelentkezéshez, de a `Information` szinten szeretné `Host.Aggregator` a bejelentkezést:
+Ha [a host.json] több kategóriát is tartalmaz, amelyek ugyanazzal a karakterlánccal kezdődnek, a hosszabbak kerülnek egyeztetésre. Tegyük fel, hogy mindent `Host.Aggregator` szeretne `Error` a futásidejűtől `Host.Aggregator` kezdve, `Information` kivéve a naplózást a szinten, de a szinten szeretne naplózni:
 
-### <a name="version-2x-and-later"></a>2\. x vagy újabb verzió
+### <a name="version-2x-and-later"></a>2.x-es és újabb verzió
 
 ```json
 {
@@ -232,7 +208,7 @@ Ha a [Host. JSON] több olyan kategóriát tartalmaz, amelyek ugyanazzal a karak
 }
 ```
 
-### <a name="version-1x"></a>1\. x verzió 
+### <a name="version-1x"></a>1.x verzió 
 
 ```json
 {
@@ -249,41 +225,11 @@ Ha a [Host. JSON] több olyan kategóriát tartalmaz, amelyek ugyanazzal a karak
 }
 ```
 
-Egy kategória összes naplójának letiltásához használhatja a naplózási szint `None`. A rendszer nem ír naplókat az adott kategóriával, és nincs felettük naplózási szint.
-
-A következő szakaszok a futtatókörnyezet által létrehozott naplók fő kategóriáit ismertetik. 
-
-### <a name="category-hostresults"></a>Kategória Host. Results
-
-Ezek a naplók Application Insights kérelmekként jelennek meg. A függvények sikerességét vagy hibáját jelzik.
-
-![Kérelmek diagramja](media/functions-monitoring/requests-chart.png)
-
-Az összes napló `Information` szinten van írva. Ha `Warning` vagy annál újabb szűrést végez, nem fog megjelenni ezek az információk.
-
-### <a name="category-hostaggregator"></a>Kategória Host. aggregator
-
-Ezek a naplók a függvények számát és átlagát biztosítják egy [konfigurálható](#configure-the-aggregator) időszakra vonatkozóan. Az alapértelmezett időtartam 30 másodperc vagy 1 000 eredmény, attól függően, hogy melyik következik be először. 
-
-A naplók a Application Insights **customMetrics** táblájában érhetők el. Ilyenek például a futtatások száma, a sikerességi arány és az időtartam.
-
-![customMetrics-lekérdezés](media/functions-monitoring/custom-metrics-query.png)
-
-Az összes napló `Information` szinten van írva. Ha `Warning` vagy annál újabb szűrést végez, nem fog megjelenni ezek az információk.
-
-### <a name="other-categories"></a>Egyéb kategóriák
-
-A már felsorolt kategóriákhoz tartozó összes napló a Application Insights **nyomkövetési** táblájában érhető el.
-
-![nyomkövetési lekérdezés](media/functions-monitoring/analytics-traces.png)
-
-A functions Runtime a `Host`kal kezdődő kategóriákat tartalmazó naplókat írja le. A "függvény elindítva" és a "Function Completed" naplók kategóriája `Host.Executor`. A sikeres futtatáshoz ezek a naplók `Information` szinten vannak. A kivételek naplózása `Error` szinten történik. A futtatókörnyezet emellett `Warning` szintű naplókat is létrehoz, például: üzenetsor-üzenetek küldését a méreg várólistába.
-
-A függvény kódjában írt naplók kategóriája `Function`, és bármilyen naplózási szinten lehet.
+Egy kategória összes naplójának letiltásához `None`használja a naplószintet. Az adott kategóriában nincsenek naplók, és nincs felette naplószint.
 
 ## <a name="configure-the-aggregator"></a>A gyűjtő konfigurálása
 
-Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a [Host. JSON] fájlban állíthatja be.  Például:
+Az előző szakaszban megjegyeztük, a futásidejű összesíti a függvényvégrehajtások adatait egy adott időszakban. Az alapértelmezett időszak 30 másodperc vagy 1000 futtatás, amelyik előbb következik be. Ezt a beállítást a [host.json] fájlban állíthatja be.  Például:
 
 ```json
 {
@@ -294,11 +240,11 @@ Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a fü
 }
 ```
 
-## <a name="configure-sampling"></a>Mintavételezés konfigurálása
+## <a name="configure-sampling"></a>Mintavétel konfigurálása
 
-Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételt a [Host. JSON]fájlban állíthatja be.  Például:
+Az Application Insights rendelkezik egy [mintavételi](../azure-monitor/app/sampling.md) szolgáltatás, amely megvédi a túl sok telemetriai adatok at befejezett végrehajtások csúcsterhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, az Application Insights elkezdi véletlenszerűen figyelmen kívül hagyni a bejövő végrehajtásik egy részét. A másodpercenkénti végrehajtások maximális száma alapértelmezett beállítása 20 (az 1.x verzióban öt). A mintavételezéskonfigurálható a [host.json].  Például:
 
-### <a name="version-2x-and-later"></a>2\. x vagy újabb verzió
+### <a name="version-2x-and-later"></a>2.x-es és újabb verzió
 
 ```json
 {
@@ -313,7 +259,7 @@ Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.
 }
 ```
 
-### <a name="version-1x"></a>1\. x verzió 
+### <a name="version-1x"></a>1.x verzió 
 
 ```json
 {
@@ -327,17 +273,17 @@ Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.
 ```
 
 > [!NOTE]
-> A [mintavétel](../azure-monitor/app/sampling.md) alapértelmezés szerint engedélyezve van. Ha úgy tűnik, hogy hiányoznak az adatok, előfordulhat, hogy módosítania kell a mintavételi beállításokat, hogy az megfeleljen az adott figyelési forgatókönyvnek.
+> [A mintavételezés](../azure-monitor/app/sampling.md) alapértelmezés szerint engedélyezve van. Ha úgy tűnik, hogy hiányoznak az adatok, előfordulhat, hogy módosítania kell a mintavételi beállításokat, hogy illeszkedjen az adott figyelési forgatókönyvhez.
 
-## <a name="write-logs-in-c-functions"></a>Naplók írása a C# functions szolgáltatásban
+## <a name="write-logs-in-c-functions"></a>Naplók írása C#-függvényekben
 
-A függvény kódjában olyan naplókat írhat, amelyek nyomkövetésként jelennek meg Application Insightsban.
+Naplót írhat a függvénykódban, amelyek nyomkövetésként jelennek meg az Application Insightsban.
 
 ### <a name="ilogger"></a>ILogger
 
-`TraceWriter` paraméter helyett használjon [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) paramétert a függvényekben. A `TraceWriter` használatával létrehozott naplók a Application Insights, de `ILogger` lehetővé teszi a [strukturált naplózást](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+Paraméter helyett [iLogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) paramétert `TraceWriter` használjon a függvényekben. A használatával `TraceWriter` létrehozott naplók az Application `ILogger` Insights ra kerül, de lehetővé teszi a [strukturált naplózást.](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)
 
-`ILogger` objektummal a naplók létrehozásához [a ILogger `Log<level>` bővítmény metódusait](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) kell meghívnia. A következő kód `Information` naplókat ír a "Function. < YOUR_FUNCTION_NAME > kategóriába. Felhasználó. "
+Egy `ILogger` objektum, akkor `Log<level>` hívja [kiterjesztés módszerek ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) létrehozni naplók. A következő kód `Information` a "Function.<YOUR_FUNCTION_NAME> kategóriával rendelkező naplókat ír. Felhasználó."
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -347,7 +293,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 
 ### <a name="structured-logging"></a>Strukturált naplózás
 
-A helyőrzők sorrendje, a nevük nem, meghatározza, hogy a rendszer mely paramétereket használja a naplófájlban. Tegyük fel, hogy a következő kóddal rendelkezik:
+A helyőrzők sorrendje, nem pedig a nevük határozza meg, hogy a naplóüzenetben mely paramétereket használja a rendszer. Tegyük fel, hogy a következő kóddal rendelkezik:
 
 ```csharp
 string partitionKey = "partitionKey";
@@ -355,15 +301,15 @@ string rowKey = "rowKey";
 logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
 ```
 
-Ha megtartja ugyanazt az üzenetet, és megfordítja a paraméterek sorrendjét, az eredményül kapott üzenet szövege nem megfelelő helyen lenne.
+Ha megtartja ugyanazt az üzenetkarakterláncot, és megfordítja a paraméterek sorrendjét, az eredményül kapott üzenetszöveg nem a megfelelő helyen fogja tartani az értékeket.
 
-A helyőrzők kezelése így történik, így strukturált naplózást végezhet. Application Insights a paraméter név-érték párokat és az üzenet karakterláncát tárolja. Ennek az az oka, hogy az üzenet argumentumai olyan mezők lesznek, amelyeken lekérdezéseket végezhet.
+A helyőrzők kezelése így történik, így strukturált naplózást végezhet. Az Application Insights tárolja a paraméter név-érték pár és az üzenet karakterlánc. Az eredmény az, hogy az üzenet argumentumai olyan mezőkké válnak, amelyekről lekérdezhető.
 
-Ha a naplózó metódus hívása az előző példához hasonlóan néz ki, akkor lekérdezheti `customDimensions.prop__rowKey`mezőjét. A rendszer hozzáadja a `prop__` előtagot annak biztosításához, hogy ne legyenek ütközések a futtatókörnyezet által hozzáadott és mezőket tartalmazó mezők között.
+Ha a naplózó metódushívása az előző példához `customDimensions.prop__rowKey`hasonlónak tűnik, lekérdezheti a mezőt . Az `prop__` előtag hozzáadódik annak érdekében, hogy ne legyenek ütközések a futásidejű által hozzáadott mezők és a függvénykód által hozzáadott mezők között.
 
-Az eredeti üzenet sztringjét úgy is lekérdezheti, hogy az `customDimensions.prop__{OriginalFormat}`mezőre hivatkozik.  
+Az eredeti üzenetkarakterláncra a mezőre hivatkozva `customDimensions.prop__{OriginalFormat}`is lekérdezhetünk.  
 
-Az alábbi példa a `customDimensions`-adat JSON-ábrázolását mutatja be:
+Itt egy minta JSON `customDimensions` ábrázolása az adatok:
 
 ```json
 {
@@ -376,53 +322,73 @@ Az alábbi példa a `customDimensions`-adat JSON-ábrázolását mutatja be:
 }
 ```
 
-### <a name="custom-metrics-logging"></a>Egyéni metrikák naplózása
+### <a name="custom-metrics-logging"></a>Egyéni mérőszámok naplózása
 
-A C# szkript functions szolgáltatásban a `ILogger` `LogMetric` bővítmény módszerével egyéni metrikákat hozhat létre Application Insights. Íme egy példa metódus hívása:
+A C# parancsfájl-függvények, `LogMetric` a `ILogger` bővítmény metódus használatával egyéni metrikák at Application Insights. Itt egy minta módszer hív:
 
 ```csharp
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Ez a kód a .NET-hez készült Application Insights API-val való `TrackMetric` meghívásának alternatívája.
+Ez a kód a `TrackMetric` .NET Application Insights API használatával történő hívás alternatívája.
 
 ## <a name="write-logs-in-javascript-functions"></a>Naplók írása JavaScript-függvényekben
 
-A Node. js függvényekben a naplók írásához használja a `context.log`. A strukturált naplózás nincs engedélyezve.
+A Node.js függvényekben naplók írására használható. `context.log` A strukturált naplózás nincs engedélyezve.
 
 ```
 context.log('JavaScript HTTP trigger function processed a request.' + context.invocationId);
 ```
 
-### <a name="custom-metrics-logging"></a>Egyéni metrikák naplózása
+### <a name="custom-metrics-logging"></a>Egyéni mérőszámok naplózása
 
-Ha a functions futtatókörnyezet [1. x verziójában](functions-versions.md#creating-1x-apps) fut, a Node. js függvények a `context.log.metric` metódussal hozhatnak létre egyéni metrikákat a Application Insightsban. Ez a metódus jelenleg nem támogatott a 2. x és újabb verziókban. Íme egy példa metódus hívása:
+Ha a Functions futtatóidő [1.x-es verzióján](functions-versions.md#creating-1x-apps) fut, a Node.js függvények a módszer segítségével egyéni metrikákat hozhatnak létre az `context.log.metric` Application Insightsban. Ezt a módszert jelenleg nem támogatja a 2.x-es és újabb verzió. Itt egy minta módszer hív:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-Ez a kód egy alternatív megoldás a Application Insights Node. js SDK-val való meghívására `trackMetric`.
+Ez a kód a `trackMetric` Node.js SDK application insights használatával történő hívás alternatívája.
 
-## <a name="log-custom-telemetry-in-c-functions"></a>Egyéni telemetria naplózása C# a functions szolgáltatásban
+## <a name="log-custom-telemetry-in-c-functions"></a>Egyéni telemetria naplózása C#-függvényekben
 
-A [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet-csomag segítségével egyéni telemetria-fájlokat küldhet a Application Insightsba. Az alábbi C# példa az [Egyéni telemetria API](../azure-monitor/app/api-custom-events-metrics.md)-t használja. A példa egy .NET-osztályhoz tartozó könyvtárra mutat, de a Application Insights kódja megegyezik C# a parancsfájlhoz.
+Az Application Insights SDK-nak van egy Függvényspecifikus verziója, amelynek segítségével egyéni telemetriai adatokat küldhet a függvényekből az Application Insights: [Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights)rendszerbe. A csomag telepítéséhez használja a parancssor következő parancsát:
 
-### <a name="version-2x-and-later"></a>2\. x vagy újabb verzió
+# <a name="command"></a>[Parancs](#tab/cmd)
 
-A futtatókörnyezet 2. x vagy újabb verziói a Application Insights újabb funkcióit használják a telemetria automatikus összekapcsolásához a jelenlegi művelettel. Nem kell manuálisan beállítania a művelet `Id`, `ParentId`vagy `Name` mezőt.
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[Powershell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+Ebben a parancsban cserélje le `<VERSION>` a csomag egy olyan verzióját, amely támogatja a [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)telepített verzióját. 
+
+A következő C# példák az [egyéni telemetriai API-t](../azure-monitor/app/api-custom-events-metrics.md)használja. A példa egy .NET osztálytár, de az Application Insights-kód megegyezik a C# parancsfájl.
+
+### <a name="version-2x-and-later"></a>2.x-es és újabb verzió
+
+A futásidejű 2.x-es és újabb verziói az Application Insights újabb funkcióit használják a telemetriai adatok és az aktuális művelet automatikus összeegyeztéséhez. Nincs szükség a művelet `Id`, a `ParentId`mező `Name` vagy a mezők manuális beállítására.
 
 ```cs
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
 
 namespace functionapp0915
 {
@@ -478,7 +444,9 @@ namespace functionapp0915
 }
 ```
 
-### <a name="version-1x"></a>1\. x verzió
+[GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) a jelenleg ajánlott API-t egy metrika létrehozásához.
+
+### <a name="version-1x"></a>1.x verzió
 
 ```cs
 using System;
@@ -559,13 +527,13 @@ namespace functionapp0915
 }
 ```
 
-Ne hívja meg `TrackRequest` vagy `StartOperation<RequestTelemetry>`, mert egy függvény meghívásához ismétlődő kérések jelennek meg.  A függvények futtatókörnyezete automatikusan nyomon követi a kérelmeket.
+Ne `TrackRequest` hívjon, `StartOperation<RequestTelemetry>` vagy mert ismétlődő függvénymeghívási kérelmeket fog látni.  A Függvények futásidejű automatikusan nyomon követi a kérelmeket.
 
-Ne állítson be `telemetryClient.Context.Operation.Id`. Ez a globális beállítás helytelen korrelációt okoz, ha sok függvény egyidejűleg fut. Ehelyett hozzon létre egy új telemetria-példányt (`DependencyTelemetry`, `EventTelemetry`), és módosítsa a `Context` tulajdonságát. Ezután adja át a telemetria-példányt a megfelelő `Track` metódusnak `TelemetryClient` (`TrackDependency()`, `TrackEvent()`, `TrackMetric()`) értékre. Ez a módszer biztosítja, hogy a telemetria megfelelő korrelációs adatokat biztosítson az aktuális függvény meghívásához.
+Ne állítsa `telemetryClient.Context.Operation.Id`be . Ez a globális beállítás helytelen korrelációt okoz, ha sok függvény fut egyszerre. Ehelyett hozzon létre egy új`DependencyTelemetry` `EventTelemetry`telemetriai `Context` példányt ( , ) és módosítsa annak tulajdonságát. Ezután adja át a telemetriai `TelemetryClient` `TrackDependency()`példányt a megfelelő `Track` metódusnak a ( , `TrackEvent()`, `TrackMetric()`. Ez a módszer biztosítja, hogy a telemetriai adatok megfelelő korrelációs részleteket az aktuális függvény meghívása.
 
-## <a name="log-custom-telemetry-in-javascript-functions"></a>Egyéni telemetria naplózása a JavaScript-függvényekben
+## <a name="log-custom-telemetry-in-javascript-functions"></a>Egyéni telemetria naplózása JavaScript-függvényekben
 
-Íme egy kódrészlet, amely egyéni telemetria küld az [Application Insights Node. js SDK](https://github.com/microsoft/applicationinsights-node.js)-val:
+Az alábbiakban egy mintakódrészletet talál, amely egyéni telemetriát küld az [Application Insights Node.js SDK-val:](https://github.com/microsoft/applicationinsights-node.js)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -586,53 +554,76 @@ module.exports = function (context, req) {
 };
 ```
 
-A `tagOverrides` paraméter állítja be a `operation_Id`t a függvény Meghívási AZONOSÍTÓJÁHOZ. Ez a beállítás lehetővé teszi egy adott függvény összes automatikusan generált és egyéni telemetria korrelációját.
+A `tagOverrides` paraméter `operation_Id` beállítja a függvény meghívási azonosítóját. Ez a beállítás lehetővé teszi, hogy egy adott függvény meghívásához az összes automatikusan generált és egyéni telemetriai adatok korreláljon.
 
 ## <a name="dependencies"></a>Függőségek
 
-A functions v2 automatikusan gyűjti a függőségeket a HTTP-kérelmek, a ServiceBus, a EventHub és az SQL számára.
+A v2 függvények automatikusan gyűjtik a HTTP-kérelmek, a ServiceBus, az EventHub és az SQL függőségeit.
 
-A függőségek megjelenítéséhez egyéni kódot is írhat. Példákért tekintse meg a mintakód szakaszt az [ C# egyéni telemetria szakaszban](#log-custom-telemetry-in-c-functions). A mintakód olyan Application Insights alkalmazás- *hozzárendelést* eredményez, amely a következő képhez hasonlóan néz ki:
+A függőségek megjelenítéséhez egyéni kódot írhat. Példákat a [C# egyéni telemetriai szakaszban](#log-custom-telemetry-in-c-functions)található mintakódban talál. A mintakód egy *alkalmazásleképezést* eredményez az Application Insightsban, amely az alábbi hozadékhoz hasonlóan jelenik meg:
 
 ![Alkalmazástérkép](./media/functions-monitoring/app-map.png)
 
-## <a name="report-issues"></a>Problémák jelentése
+## <a name="enable-application-insights-integration"></a>Application Insights-integráció engedélyezése
 
-Ha Application Insights-integrációval kapcsolatos problémát szeretne jelenteni a functions szolgáltatásban, vagy javaslatot vagy kérést szeretne készíteni, [hozzon létre egy problémát a githubban](https://github.com/Azure/Azure-Functions/issues/new).
+Egy függvényalkalmazás adatokat küldeni az Application Insights, ismernie kell az Application Insights-erőforrás instrumentation kulcsát. A kulcsnak **a APPINSIGHTS_INSTRUMENTATIONKEY**nevű alkalmazásbeállításban kell lennie.
 
-## <a name="streaming-logs"></a>Folyamatos átviteli naplók
+Amikor létrehozza a függvényalkalmazást [az Azure Portalon,](functions-create-first-azure-function.md)a parancssorból az [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md)használatával, vagy a Visual [Studio-kód](functions-create-first-function-vs-code.md)használatával, az Application Insights-integráció alapértelmezés szerint engedélyezve van. Az Application Insights-erőforrás neve megegyezik a függvényalkalmazás nevével, és ugyanabban a régióban vagy a legközelebbi régióban jön létre.
 
-Az alkalmazások fejlesztése során gyakran érdemes megtekinteni, hogy mi történik a naplókba közel valós időben, ha az Azure-ban fut.
+### <a name="new-function-app-in-the-portal"></a>Új függvényalkalmazás a portálon
 
-Kétféle módon lehet megtekinteni a függvények végrehajtásával létrehozott naplófájlok streamjét.
+A létrehozandó Application Insights erőforrás áttekintéséhez jelölje ki az **Application Insights** ablak kibontásához. Módosíthatja az **új erőforrás nevét,** vagy válasszon egy másik **helyet** egy [Azure-földrajzi területen,](https://azure.microsoft.com/global-infrastructure/geographies/) ahol az adatokat szeretné tárolni.
 
-* **Beépített log streaming**: a app Service platformon megtekintheti az alkalmazás naplófájljainak streamjét. Ez egyenértékű azzal a kimenettel, amelyet a függvények a [helyi fejlesztés](functions-develop-local.md) során végzett hibakereséskor, illetve a portálon a **teszt** lap használatakor észlelt. Megjelenik az összes napló alapú információ. További információ: stream- [naplók](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Ez a folyamatos átviteli módszer csak egyetlen példányt támogat, és nem használható a Linux rendszeren futó alkalmazással egy használati tervben.
+![Az Application Insights engedélyezése függvényalkalmazás létrehozása közben](media/functions-monitoring/enable-ai-new-function-app.png)
 
-* **Élő metrikastream**: Ha a function alkalmazás [Application Insightshoz csatlakozik](#enable-application-insights-integration), a Azure Portal a [élő metrikastream](../azure-monitor/app/live-stream.md)használatával megtekintheti a naplózási adatokat és az egyéb mérőszámokat közel valós időben. Ezt a módszert akkor használja, ha több példányon vagy Linuxon futó figyelési funkciót használ a használati tervben. Ez a metódus [mintavételes adathalmazt](#configure-sampling)használ.
+Ha a Létrehozás lehetőséget **választja,** létrejön egy Application `APPINSIGHTS_INSTRUMENTATIONKEY` Insights-erőforrás a függvényalkalmazással, amely az alkalmazásbeállításokban van beállítva. Minden készen áll.
 
-A naplózási streamek a Portálon és a legtöbb helyi fejlesztési környezetben is megtekinthetők. 
+<a id="manually-connect-an-app-insights-resource"></a>
+### <a name="add-to-an-existing-function-app"></a>Hozzáadás meglévő függvényalkalmazáshoz 
 
-### <a name="portal"></a>portál
+Amikor függvényalkalmazást hoz létre a [Visual Studio](functions-create-your-first-function-visual-studio.md)használatával, létre kell hoznia az Application Insights erőforrást. Ezután hozzáadhatja a műszerezési kulcsot az adott erőforrásból alkalmazásbeállításként a függvényalkalmazásban.
 
-A portálon mindkét típusú naplózási adatfolyamot megtekintheti.
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-#### <a name="built-in-log-streaming"></a>Beépített log streaming
+A Functions korai verziói beépített figyelést használtak, ami már nem ajánlott. Az Application Insights-integráció engedélyezésekor egy ilyen függvényalkalmazáshoz le kell [tiltania a beépített naplózást](#disable-built-in-logging)is.  
 
-Ha a portálon szeretné megtekinteni a folyamatos átviteli naplókat, válassza a **platform szolgáltatások** fület a Function alkalmazásban. Ezután a **figyelés**területen válassza a **naplózási adatfolyam**lehetőséget.
+## <a name="report-issues"></a>Problémák bejelentése
 
-![Folyamatos átviteli naplók engedélyezése a portálon](./media/functions-monitoring/enable-streaming-logs-portal.png)
+Ha jelentést szeretne tenni egy probléma az Application Insights-integrációval a Függvényekben, vagy javaslatot vagy kérést szeretne [tenni, hozzon létre egy problémát a GitHubon.](https://github.com/Azure/Azure-Functions/issues/new)
 
-Ezzel összekapcsolja az alkalmazást a log streaming szolgáltatáshoz, és az alkalmazás naplói megjelennek az ablakban. Válthat az **alkalmazási naplók** és a **webkiszolgálói naplók**között.  
+## <a name="streaming-logs"></a>Streamelési naplók
 
-![Folyamatos átviteli naplók megtekintése a portálon](./media/functions-monitoring/streaming-logs-window.png)
+Egy alkalmazás fejlesztése közben gyakran szeretné látni, hogy mi van írva a naplók közel valós időben, amikor az Azure-ban fut.
+
+A függvényvégrehajtások által létrehozott naplófájlok adatfolyamának megtekintésére kétféleképpen tekintheti meg.
+
+* **Beépített naplóstreamelés:** az App Service platform lehetővé teszi az alkalmazásnaplófájlok adatfolyamának megtekintését. Ez megegyezik a helyi [fejlesztés](functions-develop-local.md) során a függvények hibakeresése során és a portál **Teszt** lapján látható kimenettel. Minden naplóalapú információ megjelenik. További információt a Stream naplók című [témakörben talál.](../app-service/troubleshoot-diagnostic-logs.md#stream-logs) Ez a streamelési módszer csak egyetlen példányt támogat, és nem használható linuxos linuxos alkalmazással a felhasználási csomagban.
+
+* **Élő metrikák stream:** ha a függvényalkalmazás csatlakozik az [Application Insights,](#enable-application-insights-integration)megtekintheti a naplóadatok és egyéb metrikák közel valós időben az Azure Portalon a [Live Metrics Stream](../azure-monitor/app/live-stream.md). Ezt a módszert akkor használja, ha több példányon vagy Linuxon futó függvények figyelése egy használati tervben. Ez a módszer [mintavételezett adatokat](#configure-sampling)használ.
+
+A naplófolyamok a portálon és a legtöbb helyi fejlesztési környezetben is megtekinthetők. 
+
+### <a name="portal"></a>Portál
+
+A portálon mindkét típusú naplóadatfolyam ot megtekintheti.
+
+#### <a name="built-in-log-streaming"></a>Beépített naplóstreamelés
+
+A portálon lévő streamelési naplók megtekintéséhez válassza a **Platform funkciók** lapját a függvényalkalmazásban. Ezután a **Figyelés**csoportban válassza **a Naplóstreamelés lehetőséget.**
+
+![Streamelési naplók engedélyezése a portálon](./media/functions-monitoring/enable-streaming-logs-portal.png)
+
+Ez összekapcsolja az alkalmazást a naplóstreamelési szolgáltatással, és az alkalmazásnaplók megjelennek az ablakban. Az **alkalmazásnaplók** és a **webkiszolgálói naplók**között válthat.  
+
+![Streamelési naplók megtekintése a portálon](./media/functions-monitoring/streaming-logs-window.png)
 
 #### <a name="live-metrics-stream"></a>Élő metrikastream
 
-Az alkalmazás Élő metrikastream megtekintéséhez válassza a Function app **Áttekintés** lapját. Application Insights engedélyezése esetén a **konfigurált szolgáltatások**területen megjelenik egy **Application Insights** -hivatkozás. Ez a hivatkozás az alkalmazás Application Insights lapjára lép.
+Az alkalmazás élő mérőszám-streamjének megtekintéséhez válassza a függvényalkalmazás **Áttekintés lapját.** Ha az Application Insights lehetővé teszi, megjelenik egy **Application Insights** hivatkozás **a Konfigurált szolgáltatások**területen. Ez a hivatkozás az alkalmazás alkalmazáselemzési lapjára mutat.
 
-A Application Insights területen válassza a **élő metrikastream**lehetőséget. A [mintavételes naplóbejegyzések](#configure-sampling) a **minta telemetria**alatt jelennek meg.
+Az Application Insights ban válassza az **Élő metrikák stream**. [A mintanapló-bejegyzések](#configure-sampling) a **Mintatelemetria**területen jelennek meg.
 
-![Élő metrikastream megtekintése a portálon](./media/functions-monitoring/live-metrics-stream.png) 
+![Élő mérőszámok stream megtekintése a portálon](./media/functions-monitoring/live-metrics-stream.png) 
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -644,7 +635,7 @@ A Application Insights területen válassza a **élő metrikastream**lehetőség
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az [Azure CLI](/cli/azure/install-azure-cli)használatával engedélyezheti a folyamatos átviteli naplókat. A következő parancsokkal jelentkezzen be, válassza ki az előfizetését és a stream naplófájljait:
+A streamelési naplókat az [Azure CLI](/cli/azure/install-azure-cli)használatával engedélyezheti. A következő parancsokkal jelentkezhet be, választhatja ki az előfizetést, és streamelheti a naplófájlokat:
 
 ```azurecli
 az login
@@ -655,7 +646,7 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview)használatával engedélyezheti a folyamatos átviteli naplókat. A PowerShell esetében használja az alábbi parancsokat az Azure-fiók hozzáadásához, és válassza ki az előfizetését és a stream naplófájljait:
+A streamelési naplókat az [Azure PowerShell](/powershell/azure/overview)használatával engedélyezheti. A PowerShell esetében a következő parancsokkal adja hozzá Azure-fiókját, válassza ki az előfizetést, és streamelje a naplófájlokat:
 
 ```powershell
 Add-AzAccount
@@ -666,9 +657,9 @@ Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 
 ## <a name="disable-built-in-logging"></a>Beépített naplózás letiltása
 
-A Application Insights engedélyezésekor tiltsa le az Azure Storage-t használó beépített naplózást. A beépített naplózás hasznos a könnyű számítási feladatokkal történő teszteléshez, de nem a nagy terhelésű éles használathoz. Éles monitorozáshoz ajánlott Application Insights. Ha a beépített naplózást éles környezetben használja, előfordulhat, hogy a naplózási rekord nem fejeződött be az Azure Storage-ban való szabályozás miatt.
+Ha engedélyezi az Application Insights, tiltsa le a beépített naplózás, amely az Azure Storage-ot használja. A beépített naplózás hasznos a könnyű számítási feladatok teszteléséhez, de nem nagy terhelésű éles használatra készült. Éles figyeléséhez azt javasoljuk, Application Insights. Ha a beépített naplózás éles környezetben van használva, a naplózási rekord lehet, hogy hiányos, mert az Azure Storage-szabályozás.
 
-A beépített naplózás letiltásához törölje a `AzureWebJobsDashboard` alkalmazás-beállítást. Az Alkalmazásbeállítások a Azure Portalban való törlésével kapcsolatos további információkért tekintse meg a [functions-alkalmazás kezelésével](functions-how-to-use-azure-function-app-settings.md#settings)foglalkozó témakör **Alkalmazásbeállítások** szakaszát. Az Alkalmazásbeállítások törlése előtt győződjön meg arról, hogy az azonos Function alkalmazásban lévő meglévő függvények nem használják az Azure Storage-eseményindítók és-kötések beállítását.
+A beépített naplózás letiltásához `AzureWebJobsDashboard` törölje az alkalmazásbeállítást. Az Azure Portalon lévő alkalmazásbeállítások törléséről a [Függvényalkalmazás kezelése](functions-how-to-use-azure-function-app-settings.md#settings)című **alkalmazásbeállítások** című szakaszban olvashat. Az alkalmazásbeállítás törlése előtt győződjön meg arról, hogy ugyanabban a függvényalkalmazásban egyetlen meglévő függvény sem használja az Azure Storage-eseményindítók vagy -kötések beállítását.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -677,4 +668,4 @@ További információkért lásd a következőket:
 * [Application Insights](/azure/application-insights/)
 * [ASP.NET Core naplózás](/aspnet/core/fundamentals/logging/)
 
-[Host. JSON]: functions-host-json.md
+[host.json]: functions-host-json.md

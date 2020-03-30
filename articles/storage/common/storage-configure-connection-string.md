@@ -1,7 +1,7 @@
 ---
-title: A kapcsolatok karakterláncának konfigurálása
+title: Kapcsolati karakterlánc konfigurálása
 titleSuffix: Azure Storage
-description: Konfiguráljon egy Azure Storage-fiókhoz tartozó kapcsolatok karakterláncot. A kapcsolati karakterlánc tartalmazza azokat az információkat, amelyek szükségesek ahhoz, hogy a megosztott kulcsos hitelesítés használatával engedélyezze a Storage-fiókhoz való hozzáférést az alkalmazásból.
+description: Konfiguráljon egy kapcsolati karakterláncot egy Azure-tárfiókhoz. A kapcsolati karakterlánc tartalmazza azokat az információkat, amelyek az alkalmazásból származó tárfiókhoz való hozzáférés engedélyezéséhez szükségesek futásidőben a megosztott kulcs engedélyezése használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,67 +11,67 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268352"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Configure Azure Storage connection strings (Az Azure Storage kapcsolati sztringek konfigurálása)
 
-A kapcsolati karakterlánc tartalmazza azokat az engedélyezési adatokat, amelyek szükségesek ahhoz, hogy az alkalmazás hozzáférjen az Azure Storage-fiókban lévő adatokhoz a megosztott kulcs engedélyezésekor. A kapcsolódási karakterláncokat a következőre állíthatja be:
+A kapcsolati karakterlánc tartalmazza az alkalmazás számára az Azure Storage-fiók ban a megosztott kulcs engedélyezése használatával futásidőben az adatok eléréséhez szükséges engedélyezési adatokat. A kapcsolati karakterláncokat a következőkre állíthatja be:
 
-* Kapcsolódjon az Azure Storage emulatorhoz.
-* Hozzáférés egy Storage-fiókhoz az Azure-ban.
-* Hozzáférés a megadott erőforrásokhoz az Azure-ban egy közös hozzáférési aláírás (SAS) használatával.
+* Csatlakozzon az Azure storage-emulátorhoz.
+* Az Azure-beli tárfiók elérése.
+* Hozzáférés a megadott erőforrások az Azure-ban egy megosztott hozzáférésű aláírás (SAS).
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-and-copy-a-connection-string"></a>A kapcsolatok karakterláncának megtekintése és másolása
+## <a name="view-and-copy-a-connection-string"></a>Kapcsolati karakterlánc megtekintése és másolása
 
 [!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
-## <a name="store-a-connection-string"></a>A kapcsolatok karakterláncának tárolása
+## <a name="store-a-connection-string"></a>Kapcsolati karakterlánc tárolása
 
-Az alkalmazásnak a futásidejű kapcsolati sztringhez kell hozzáférnie, hogy engedélyezze az Azure Storage-ba irányuló kéréseket. A következő több lehetőség áll rendelkezésre a kapcsolatok karakterláncának tárolásához:
+Az alkalmazásnak futásidőben hozzá kell férnie a kapcsolati karakterlánchoz az Azure Storage-nak küldött kérelmek engedélyezéséhez. A kapcsolati karakterlánc tárolására több lehetőség is kínálhatja:
 
-* A kapcsolatok karakterláncát egy környezeti változóban tárolhatja.
-* Az asztalon vagy eszközön futó alkalmazások tárolhatják a kapcsolati karakterláncot egy **app. config** vagy **web. config** fájlban. Adja hozzá a kapcsolódási karakterláncot a **appSettings** szakaszhoz ezekben a fájlokban.
-* Az Azure Cloud Service-ben futó alkalmazások tárolhatják a kapcsolatok karakterláncát az [Azure szolgáltatás konfigurációs sémájának (. cscfg) fájljában](https://msdn.microsoft.com/library/ee758710.aspx). Adja hozzá a kapcsolódási karakterláncot a szolgáltatás konfigurációs fájljának **ConfigurationSettings** szakaszához.
+* A kapcsolati karakterláncot egy környezeti változóban tárolhatja.
+* Az asztalon vagy eszközön futó alkalmazások a kapcsolati karakterláncot **egy app.config** vagy **web.config** fájlban tárolhatják. Adja hozzá a kapcsolati karakterláncot a fájlok **AppSettings** szakaszához.
+* Az Azure-felhőszolgáltatásban futó alkalmazások a kapcsolati karakterláncot az [Azure szolgáltatáskonfigurációs séma (.cscfg) fájlban](https://msdn.microsoft.com/library/ee758710.aspx)tárolhatják. Adja hozzá a kapcsolati karakterláncot a szolgáltatáskonfigurációs fájl **ConfigurationSettings** szakaszához.
 
-A kapcsolati karakterlánc egy konfigurációs fájlban való tárolása megkönnyíti a kapcsolati sztring frissítését a Storage-emulátor és a felhőben található Azure Storage-fiók közötti váltáshoz. Csak úgy kell szerkesztenie a kapcsolódási karakterláncot, hogy az a célként megadott környezetre mutasson.
+A kapcsolati karakterlánc konfigurációs fájlban való tárolása megkönnyíti a kapcsolati karakterlánc frissítését a storage-emulátor és egy Azure storage-fiók közötti váltáshoz a felhőben. Csak a kapcsolati karakterláncot kell szerkeszteni, hogy a célkörnyezetre mutasson.
 
-A [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) használatával a kapcsolati karakterláncot futásidőben érheti el, függetlenül attól, hogy az alkalmazás hol fut.
+A Microsoft [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) segítségével futásidőben érheti el a kapcsolati karakterláncot, függetlenül attól, hogy az alkalmazás hol fut.
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>A Storage emulatorhoz tartozó kapcsolatok karakterláncának konfigurálása
+## <a name="configure-a-connection-string-for-the-storage-emulator"></a>A tárolóemulátor kapcsolati karakterláncának konfigurálása
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-További információ a Storage emulatorról: [a fejlesztéshez és teszteléshez használja az Azure Storage emulatort](storage-use-emulator.md).
+A storage-emulátorról további információt [a Fejlesztéshez és teszteléshez az Azure-tároló emulátorának használata című témakörben talál.](storage-use-emulator.md)
 
-## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Egy Azure Storage-fiókhoz tartozó kapcsolatok karakterláncának konfigurálása
+## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Kapcsolati karakterlánc konfigurálása Azure-tárfiókhoz
 
-Az Azure Storage-fiókhoz tartozó kapcsolódási karakterlánc létrehozásához használja a következő formátumot. Jelezze, hogy HTTPS-kapcsolaton (ajánlott) vagy HTTP-n keresztül szeretne-e csatlakozni a Storage-fiókhoz, cserélje le a `myAccountName` a Storage-fiók nevére, és cserélje le a `myAccountKey`t a fiók hozzáférési kulcsára:
+Ha hozzon létre egy kapcsolati karakterláncot az Azure storage-fiókjához, használja a következő formátumot. Adja meg, hogy HTTPS -en (ajánlott) vagy HTTP-n keresztül kíván-e csatlakozni a tárfiókhoz, cserélje le `myAccountName` a tárfiók nevét, és cserélje le `myAccountKey` a fiók hozzáférési kulcsát:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
-A kapcsolódási karakterlánc például a következőhöz hasonló lehet:
+A kapcsolati karakterlánc például a következőhöz hasonló lehet:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Bár az Azure Storage a HTTP-t és a HTTPS-t is támogatja egy kapcsolati sztringben, a *https használata kifejezetten ajánlott*.
+Bár az Azure Storage támogatja a HTTP és https protokollt is egy kapcsolati karakterláncban, *a HTTPS használata erősen ajánlott.*
 
 > [!TIP]
-> A Storage-fiókhoz tartozó kapcsolatok karakterláncait a [Azure Portal](https://portal.azure.com)találja. Navigáljon a **beállítások** > **hozzáférési kulcsok** elemre a Storage-fiók menüjében, és tekintse meg az elsődleges és másodlagos hozzáférési kulcsok kapcsolati karakterláncait.
+> A tárfiók kapcsolati karakterláncait az [Azure Portalon](https://portal.azure.com)találhatja meg. A **beállítások** > hoz a tárfiók menüpaneljének**hozzáférési kulcsai** között az elsődleges és a másodlagos hozzáférési kulcsok kapcsolati karakterláncainak megtekintéséhez.
 >
 
-## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Kapcsolati karakterlánc létrehozása közös hozzáférési aláírás használatával
+## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Kapcsolati karakterlánc létrehozása megosztott hozzáférésű aláírással
 
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
-## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Egy explicit tárolási végponthoz tartozó kapcsolatok karakterláncának létrehozása
+## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Kapcsolati karakterlánc létrehozása explicit tárolóvégponthoz
 
-Az alapértelmezett végpontok használata helyett explicit szolgáltatási végpontokat is megadhat a kapcsolatok karakterláncában. Explicit végpontot megadó kapcsolati sztring létrehozásához adja meg az egyes szolgáltatások teljes szolgáltatási végpontját, beleértve a protokoll specifikációját (HTTPS (ajánlott) vagy HTTP), a következő formátumban:
+Az alapértelmezett végpontok használata helyett explicit szolgáltatásvégpontokat is megadhat a kapcsolati karakterláncban. Explicit végpontot megadó kapcsolati karakterlánc létrehozásához adja meg az egyes szolgáltatások teljes szolgáltatásvégpontját, beleértve a protokollspecifikációt (HTTPS (ajánlott) vagy HTTP), a következő formátumban:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -83,9 +83,9 @@ AccountName=myAccountName;
 AccountKey=myAccountKey
 ```
 
-Ha a blob Storage-végpontot [Egyéni tartományra](../blobs/storage-custom-domain-name.md)rendelte, az egyik esetben érdemes explicit végpontot megadni. Ebben az esetben megadhatja az egyéni végpontot a blob Storage-hoz a kapcsolatok karakterláncában. Igény szerint megadhatja az alapértelmezett végpontokat a többi szolgáltatáshoz, ha az alkalmazás ezeket használja.
+Az egyik forgatókönyv, ahol explicit végpontot kíván megadni, az, amikor a Blob storage-végpontot [egy egyéni tartományhoz](../blobs/storage-custom-domain-name.md)rendeli. Ebben az esetben megadhatja az egyéni végpont blob storage a kapcsolati karakterláncban. Ha az alkalmazás használja őket, megadhatja a többi szolgáltatás alapértelmezett végpontjait.
 
-Íme egy példa a Blob service explicit végpontját megadó kapcsolatok sztringre:
+Íme egy példa egy kapcsolati karakterláncra, amely a Blob szolgáltatás explicit végpontját adja meg:
 
 ```
 # Blob endpoint only
@@ -95,7 +95,7 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-Ez a példa az összes szolgáltatás explicit végpontját határozza meg, beleértve a Blob service egyéni tartományát is:
+Ez a példa explicit végpontokat határoz meg az összes szolgáltatáshoz, beleértve a Blob szolgáltatás egyéni tartományát is:
 
 ```
 # All service endpoints
@@ -108,17 +108,17 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-A kapcsolódási karakterláncban található végponti értékek a kérés URI-azonosítóinak a tárolási szolgáltatásokhoz való összeállítására szolgálnak, és a kód számára visszaadott URI azonosítók megadását írják elő.
+A végpont értékek egy kapcsolati karakterlánc létrehozásához használt kérelem URI-k a tárolási szolgáltatások, és diktálja a kódot visszaadott URI-k formáját.
 
-Ha hozzárendelt egy tárolási végpontot egy egyéni tartományhoz, és kihagyja a végpontot egy kapcsolati karakterláncból, akkor nem fogja tudni használni a kapcsolati sztringet, hogy az adott szolgáltatásban lévő adatokhoz hozzáférjen a kódból.
+Ha leképezett egy tárolóvégpontot egy egyéni tartományhoz, és kihagyja a végpontot egy kapcsolati karakterláncból, akkor nem fogja tudni használni ezt a kapcsolati karakterláncot az adott szolgáltatás ban lévő adatok eléréséhez a kódból.
 
 > [!IMPORTANT]
-> A kapcsolatok karakterláncában a szolgáltatás végpontjának értékeinek megfelelően formázott URI-azonosítóknak kell lenniük, beleértve a `https://` (ajánlott) vagy a `http://`. Mivel az Azure Storage még nem támogatja a HTTPS-t az egyéni tartományokhoz, meg *kell* adnia `http://` minden olyan végpont URI-azonosítóhoz, amely egyéni tartományra mutat.
+> A kapcsolati karakterláncokban lévő végpontértékeknek jól formázott `https://` URI-knak kell lenniük, beleértve (ajánlott) vagy `http://`. Mivel az Azure Storage még nem támogatja *must* a `http://` HTTPS egyéni tartományok, meg kell adnia minden végpont URI, amely egy egyéni tartományra mutat.
 >
 
-### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Végponti utótaggal rendelkező kapcsolatok karakterlánc létrehozása
+### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Végpontutótaggal rendelkező kapcsolati karakterlánc létrehozása
 
-Ha különböző végponti utótaggal rendelkező régiókban vagy példányokban szeretné létrehozni a tárolási szolgáltatáshoz tartozó kapcsolódási karakterláncot, például az Azure China 21Vianet vagy a Azure Governmenthoz, használja a következő kapcsolódási karakterlánc-formátumot. Jelezze, hogy HTTPS-kapcsolaton (ajánlott) vagy HTTP-n keresztül szeretne-e csatlakozni a Storage-fiókhoz, cserélje le a `myAccountName`t a Storage-fiók nevére, cserélje le a `myAccountKey`t a fiók hozzáférési kulcsára, és cserélje le a `mySuffix` értéket az URI utótagra:
+Ha hozzon létre egy kapcsolati karakterláncot egy tárolási szolgáltatás régiókban vagy példányokban különböző végpont-utótagok, például az Azure China 21Vianet vagy az Azure Government, használja a következő kapcsolati karakterlánc formátumban. Adja meg, hogy HTTPS -en (ajánlott) vagy HTTP-n keresztül kíván-e csatlakozni a tárfiókhoz, cserélje le `myAccountName` a tárfiók nevét, cserélje le `myAccountKey` a fiók hozzáférési kulcsát, és cserélje le `mySuffix` az URI-utótagot:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -127,7 +127,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-Íme egy példa a tárolási szolgáltatásokhoz az Azure China 21Vianet:
+Íme egy példa az Azure China 21Vianet tárolási szolgáltatásainak kapcsolati karakterláncára:
 
 ```
 DefaultEndpointsProtocol=https;
@@ -136,12 +136,12 @@ AccountKey=<account-key>;
 EndpointSuffix=core.chinacloudapi.cn;
 ```
 
-## <a name="parsing-a-connection-string"></a>A kapcsolatok karakterláncának elemzése
+## <a name="parsing-a-connection-string"></a>Kapcsolati karakterlánc elemzése
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Storage Emulator használata fejlesztéshez és teszteléshez](storage-use-emulator.md)
-* [Azure Storage-tallózók](storage-explorers.md)
-* [Közös hozzáférésű aláírások (SAS) használata](storage-sas-overview.md)
+* [Az Azure storage-emulátor használata fejlesztéshez és teszteléshez](storage-use-emulator.md)
+* [Az Azure Storage-kezelők](storage-explorers.md)
+* [Megosztott hozzáférésű aláírások (SAS) használata](storage-sas-overview.md)

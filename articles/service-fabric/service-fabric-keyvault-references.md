@@ -1,30 +1,30 @@
 ---
-title: Azure Service Fabric – a Service Fabric Application kulcstartó-referenciák használata
-description: Ez a cikk azt ismerteti, hogyan használható a Service-Fabric KeyVaultReference támogatása az alkalmazás titkos kulcsaihoz.
+title: Azure Service Fabric – A Service Fabric alkalmazás KeyVault-hivatkozásainak használata
+description: Ez a cikk bemutatja, hogyan használhatja a service-fabric KeyVaultReference támogatja az alkalmazás titkos kulcsokat.
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545483"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric alkalmazások KeyVaultReference támogatása (előzetes verzió)
+#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference támogatás Service Fabric-alkalmazásokhoz (előzetes verzió)
 
-A felhőalapú alkalmazások készítése során gyakran előforduló kihívás az alkalmazás által igényelt titkok biztonságos tárolása. Előfordulhat például, hogy a tároló adattárának hitelesítő adatait szeretné tárolni a kulcstartóban, és hivatkozni rá az alkalmazás jegyzékfájljában. Service Fabric a KeyVaultReference Service Fabric felügyelt identitást használ, és megkönnyíti a kulcstartó-titkok hivatkozását. A cikk további részében részletesen ismertetjük a Service Fabric KeyVaultReference használatát, és néhány tipikus használatot tartalmaz.
+A felhőalapú alkalmazások létrehozása kor gyakori kihívás, hogyan biztonságosan tárolja az alkalmazás által igényelt titkos kulcsokat. Például érdemes lehet a tárolótár hitelesítő adatait keyvaultban, és hivatkozik az alkalmazás jegyzékfájlban. A Service Fabric KeyVaultReference a Service Fabric felügyelt identitását használja, és megkönnyíti a keyvault titkos kulcsainak hivatkozását. A cikk további részletezi, hogyan kell használni a Service Fabric KeyVaultReference, és tartalmaz néhány tipikus használat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az alkalmazás felügyelt identitása (MIT)
+- Felügyelt identitás alkalmazáshoz (MIT)
     
-    Service Fabric KeyVaultReference-támogatás az alkalmazás felügyelt identitását használja, ezért a KeyVaultReferences használatára tervezett alkalmazások felügyelt identitást használnak. Ezt a [dokumentumot](concepts-managed-identity.md) követve engedélyezheti az alkalmazás felügyelt identitását.
+    A Service Fabric KeyVaultReference támogatása az alkalmazás felügyelt identitását használja, ezért a KeyVaultReferences használatára planaktív alkalmazásoknak felügyelt identitást kell használniuk. Kövesse ezt a [dokumentumot](concepts-managed-identity.md) az alkalmazás felügyelt identitásának engedélyezéséhez.
 
-- Központi titkok tárolója (CSS).
+- Központi Titkok Store (CSS).
 
-    A központi titkok tárolója (CSS) Service Fabric titkosított helyi titkok gyorsítótára. A CSS egy helyi titkos tároló-gyorsítótár, amely a memóriában titkosított bizalmas adatokat, például jelszavakat, jogkivonatokat és kulcsokat tárol. A beolvasott KeyVaultReference a CSS-ben vannak gyorsítótárazva.
+    A Central Secrets Store (CSS) a Service Fabric titkosított helyi titkos kulcsok gyorsítótára. A CSS egy helyi titkos tároló gyorsítótár, amely bizalmas adatokat, például jelszót, jogkivonatokat és kulcsokat titkosítva tárol a memóriában. KeyVaultReference, miután lehívása, a gyorsítótárba CSS.
 
-    Adja hozzá az alábbit a fürtkonfiguráció `fabricSettings` a KeyVaultReference támogatásához szükséges összes funkció engedélyezéséhez.
+    Adja hozzá az alábbi `fabricSettings` a fürt konfigurációja alatt, hogy az összes szükséges funkciók KeyVaultReference támogatás.
 
     ```json
     "fabricSettings": 
@@ -60,7 +60,7 @@ A felhőalapú alkalmazások készítése során gyakran előforduló kihívás 
     ```
 
     > [!NOTE] 
-    > Javasoljuk, hogy használjon külön titkosítási tanúsítványt a CSS-hez. A "CentralSecretService" szakaszban adhatja hozzá.
+    > Javasoljuk, hogy külön titkosítási tanúsítványt használjon a CSS-hez. Hozzáadhatja a "CentralSecretService" szakaszban.
     
 
     ```json
@@ -69,7 +69,7 @@ A felhőalapú alkalmazások készítése során gyakran előforduló kihívás 
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-Ahhoz, hogy a módosítások életbe lépjenek, módosítania kell a frissítési házirendet, hogy az egyes csomópontokon a frissítés folyamata során az Service Fabric-futtatókörnyezet kényszerített újraindítását is megadja. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindult, és minden csomóponton fusson. Az alábbi kódrészletben a forceRestart az alapvető beállítás; a többi beállításhoz használja a meglévő értékeket.
+Ahhoz, hogy a módosítások érvénybe lépjenek, a frissítési szabályzatot is módosítania kell, hogy a fürtön keresztül a frissítés előrehaladtával a Service Fabric futásidejű állapotának erőteljes újraindítását adja meg. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindul, és fut az egyes csomópontokon. Az alábbi kódrészletben a forceRestart az alapvető beállítás; a beállítások hátralévő részében használja a meglévő értékeket.
 ```json
 "upgradeDescription": {
     "forceRestart": true,
@@ -81,23 +81,23 @@ Ahhoz, hogy a módosítások életbe lépjenek, módosítania kell a frissítés
     "upgradeTimeout": "12:00:00"
 }
 ```
-- Az alkalmazás felügyelt identitás-hozzáférési engedélyének megadása a kulcstartóhoz
+- Az alkalmazás felügyelt identitás-hozzáférési engedélyének megadása a keyvault-hoz
 
-    Ebből a [dokumentumból](how-to-grant-access-other-resources.md) megtudhatja, hogyan biztosíthatja a felügyelt identitások hozzáférését a kulcstartóhoz. Azt is vegye figyelembe, hogy ha rendszerhez rendelt felügyelt identitást használ, a felügyelt identitás csak az alkalmazás telepítése után jön létre.
+    Hivatkozzon erre a [dokumentumra,](how-to-grant-access-other-resources.md) hogy hogyan adhat felügyelt identitás-hozzáférést a keyvault.Reference this document to see how to grant managed identity access to keyvault. Azt is vegye figyelembe, ha a rendszer hozzárendelt felügyelt identitás, a felügyelt identitás jön létre csak az alkalmazás telepítése után.
 
-## <a name="keyvault-secret-as-application-parameter"></a>Kulcstartó titkos kódja Application paraméter
-Tegyük fel, hogy az alkalmazásnak a kulcstartóban tárolt háttér-adatbázis jelszavát kell beolvasnia, Service Fabric a KeyVaultReference-támogatás megkönnyíti a használatát. Az alábbi példa beolvassa `DBPassword` titkos kulcsot a kulcstartóból Service Fabric KeyVaultReference-támogatással.
+## <a name="keyvault-secret-as-application-parameter"></a>Keyvault titkos kulcsa alkalmazásparaméterként
+Tegyük fel, hogy az alkalmazásnak el kell olvasnia a háttér-adatbázis keyvaultban tárolt jelszavát, a Service Fabric KeyVaultReference támogatása megkönnyíti. Az alábbi `DBPassword` példa beolvassa a keyvault titkos service fabric keyvaultreference támogatás használatával.
 
-- Szakasz hozzáadása a Settings. xml fájlhoz
+- Szakasz hozzáadása a settings.xml fájlhoz
 
-    `DBPassword` paraméter megadása `KeyVaultReference` és érték típussal `<KeyVaultURL>`
+    Paraméter `DBPassword` definiálása típussal `KeyVaultReference` és értékkel`<KeyVaultURL>`
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- A ApplicationManifest. xml fájl új szakaszának hivatkozása `<ConfigPackagePolicies>`
+- Hivatkozás az ApplicationManifest.xml új szakaszára a következőben:`<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
@@ -113,9 +113,9 @@ Tegyük fel, hogy az alkalmazásnak a kulcstartóban tárolt háttér-adatbázis
     </ServiceManifestImport>
     ```
 
-- KeyVaultReference használata az alkalmazásban
+- A KeyVaultReference használata az alkalmazásban
 
-    A szolgáltatás-példányon Service Fabric a KeyVaultReference paramétert az alkalmazás felügyelt identitásával fogja feloldani. A `<Section  Name=dbsecrets>` alatt felsorolt paraméterek az EnvironmentVariable SecretPath által mutatott mappában lesznek. Az C# alábbi kódrészlet bemutatja, hogyan olvashatja el a DBPassword az alkalmazásban.
+    A service Fabric szolgáltatás példányosítása feloldja a KeyVaultReference paramétert az alkalmazás felügyelt identitásának használatával. Az alatt `<Section  Name=dbsecrets>` felsorolt paraméterek egy fájlleszak az EnvironmentVariable SecretPath által mutatott mappában. A C# kódrészlet alatt mutatják be, hogyan kell olvasni a DBPassword-t az alkalmazásban.
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");
@@ -126,11 +126,11 @@ Tegyük fel, hogy az alkalmazásnak a kulcstartóban tárolt háttér-adatbázis
     }
     ```
     > [!NOTE] 
-    > A Container forgatókönyv esetén a csatlakoztatási pont segítségével szabályozhatja, hogy a `secrets` hová legyenek csatlakoztatva.
+    > A tároló forgatókönyv, használhatja a MountPoint `secrets` szabályozhatja, ahol a lesz csatlakoztatva.
 
-## <a name="keyvault-secret-as-environment-variable"></a>Kulcstartó titka környezeti változóként
+## <a name="keyvault-secret-as-environment-variable"></a>Keyvault titkos környezeti változóként
 
-Service Fabric környezeti változók mostantól támogatják a KeyVaultReference típusát, az alábbi példa bemutatja, hogyan köthető egy környezeti változó a kulcstartóban tárolt titkos kulcshoz.
+A Service Fabric környezeti változói mostantól támogatják a KeyVaultReference típust, az alábbi példa bemutatja, hogyan köthető egy környezeti változó a KeyVault-ban tárolt titkos kulcshoz.
 
 ```xml
 <EnvironmentVariables>
@@ -141,21 +141,21 @@ Service Fabric környezeti változók mostantól támogatják a KeyVaultReferenc
 ```C#
 string eventStorePassword =  Environment.GetEnvironmentVariable("EventStorePassword");
 ```
-## <a name="keyvault-secret-as-container-repository-password"></a>Kulcstartó titka tároló-adattár jelszava
-A KeyVaultReference egy támogatott típusú tároló-RepositoryCredentials, az alábbi példa azt szemlélteti, hogyan használható a kulcstároló-hivatkozás a tároló-adattár jelszavaként.
+## <a name="keyvault-secret-as-container-repository-password"></a>Keyvault titkos tárolótár jelszóként
+KeyVaultReference egy támogatott típusú tároló repositoryCredentials, az alábbi példa bemutatja, hogyan kell használni a keyvault hivatkozás tárolótár jelszóként.
 ```xml
  <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>Gyakori kérdések
-- A felügyelt identitást engedélyezni kell a KeyVaultReference-támogatáshoz, az alkalmazás aktiválása sikertelen lesz, ha a KeyVaultReference a felügyelt identitás engedélyezése nélkül használja.
+## <a name="faq"></a>GYIK
+- Felügyelt identitás engedélyezni kell a KeyVaultReference támogatás, az alkalmazás aktiválása sikertelen lesz, ha KeyVaultReference a felügyelt identitás engedélyezése nélkül használja.
 
-- Ha rendszerhez rendelt identitást használ, az csak az alkalmazás telepítése után jön létre, és körkörös függőséget hoz létre. Az alkalmazás üzembe helyezését követően megadhatja a rendszerhez rendelt identitás-hozzáférési engedélyt a kulcstartóhoz. A rendszerhez rendelt identitást a {cluster}/{Application Name}/{servicename} találja.
+- Ha rendszer hozzárendelt identitást használ, az csak az alkalmazás üzembe helyezése után jön létre, és ez körkörös függőséget hoz létre. Az alkalmazás üzembe helyezése után a rendszer hozzárendelt identitás-hozzáférési engedélyt adhat a keyvault. A rendszer hozzárendelt identitását {cluster}/{application name}/{servicename} név alapján találhatja meg.
 
-- A kulcstartónak ugyanahhoz az előfizetéshez kell esnie, mint a Service Fabric-fürtnek. 
+- A keyvault kell ugyanabban az előfizetésben, mint a szolgáltatás-háló fürt. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure kulcstartó – dokumentáció](https://docs.microsoft.com/azure/key-vault/)
+* [Az Azure KeyVault dokumentációja](https://docs.microsoft.com/azure/key-vault/)

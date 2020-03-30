@@ -1,29 +1,29 @@
 ---
-title: PowerShell fejlesztői referenciája Azure Functions
-description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell használatával.
+title: PowerShell fejlesztői útmutató az Azure Functionshez
+description: Ismerje meg, hogyan fejleszthet funkciókat a PowerShell használatával.
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276737"
 ---
-# <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
+# <a name="azure-functions-powershell-developer-guide"></a>Az Azure Functions PowerShell fejlesztői útmutatója
 
-Ez a cikk részletesen ismerteti, hogyan írhat Azure Functions a PowerShell használatával.
+Ez a cikk részletesen ismerteti, hogyan írja az Azure Functions a PowerShell használatával.
 
-A PowerShell Azure-függvény (Function) egy PowerShell-parancsfájlként jelenik meg, amely az aktiváláskor fut. Mindegyik függvény parancsfájlhoz tartozik egy kapcsolódó `function.json` fájl, amely meghatározza, hogy a függvény hogyan viselkedik, például hogyan aktiválódik, valamint a bemeneti és kimeneti paramétereket. További információt az [Eseményindítók és a kötések című cikkben](functions-triggers-bindings.md)talál. 
+A PowerShell Azure-függvény (függvény) egy PowerShell-parancsfájlként jelenik meg, amely az aktiváláskor hajt végre. Minden függvényparancsfájl rendelkezik egy kapcsolódó `function.json` fájllal, amely meghatározza a függvény működését, például a működés módját, valamint a bemeneti és kimeneti paramétereket. További információ: [Triggers and binding article](functions-triggers-bindings.md). 
 
-Más típusú függvényekhez hasonlóan a PowerShell-parancsfájlok is a `function.json` fájlban meghatározott összes bemeneti kötés nevével egyező paramétereket fogadnak. Egy `TriggerMetadata` paraméter is át lett adva, amely további információkat tartalmaz a függvényt elindító triggerről.
+Más típusú függvényekhez hasonlóan a PowerShell parancsfájlfüggvények olyan paramétereket vesznek fel, `function.json` amelyek megfelelnek a fájlban definiált összes bemeneti kötés nevének. Egy `TriggerMetadata` paraméter is át, amely további információkat tartalmaz az eseményindító, amely elindította a függvényt.
 
-Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első PowerShell-függvény létrehozásához a [PowerShell](functions-create-first-function-powershell.md) functions rövid útmutatóját is be kell fejeznie.
+Ez a cikk feltételezi, hogy már elolvasta az [Azure Functions fejlesztői hivatkozását.](functions-reference.md) Az első PowerShell-függvény létrehozásához el kellett végeznie a [PowerShell functionsi rövid útmutatóját](functions-create-first-function-powershell.md) is.
 
-## <a name="folder-structure"></a>Mappa szerkezete
+## <a name="folder-structure"></a>Mappastruktúra
 
-Egy PowerShell-projekthez szükséges mappastruktúrát a következőhöz hasonlóan néz ki. Ez az alapértelmezett érték módosítható. További információért lásd az alábbi [scriptFile](#configure-function-scriptfile) szakaszt.
+A PowerShell-projektekhez szükséges mappastruktúra a következőképpen néz ki. Ez az alapértelmezett lehet változtatni. További információt az alábbi [scriptFile](#configure-function-scriptfile) szakaszban talál.
 
 ```
 PSFunctionApp
@@ -48,17 +48,17 @@ PSFunctionApp
  | - bin
 ```
 
-A projekt gyökerében található egy megosztott [`host.json`](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy mappa (. ps1) és egy kötési konfigurációs fájl (`function.json`). A function. JSON fájljának szülő könyvtárának neve mindig a függvény neve.
+A projekt gyökerében van egy [`host.json`](functions-host-json.md) megosztott fájl, amely a függvényalkalmazás konfigurálásához használható. Minden függvénysaját kódfájllal (.ps1) és kötési`function.json`konfigurációs fájllal ( ) rendelkezik. A function.json fájl szülőkönyvtárának neve mindig a függvény neve.
 
-Bizonyos kötések `extensions.csproj` fájl jelenlétét igénylik. A függvények futtatókörnyezetének [2. x vagy újabb](functions-versions.md) verziójában szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában található tényleges függvénytár-fájlokkal. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
+Bizonyos kötések fájl jelenlétét `extensions.csproj` igénylik. A Functions futásidejű [2.x-es és újabb verzióiban](functions-versions.md) szükséges kötésbővítmények a `extensions.csproj` fájlban vannak `bin` definiálva, a mappában lévő tényleges könyvtárfájlokkal együtt. Helyi fejlesztés esetén kötelező kiterjesztéseket kell [regisztrálnia.](functions-bindings-register.md#extension-bundles) Amikor funkciókat fejleszt az Azure Portalon, ez a regisztráció az Ön számára történik.
 
-A PowerShell-függvény alkalmazásaiban szükség lehet egy `profile.ps1`ra, amely akkor fut le, amikor egy Function alkalmazás elindul (más néven a *[hidegindító kezdete](#cold-start)* ). További információ: PowerShell- [profil](#powershell-profile).
+A PowerShell függvényalkalmazásokban szükség esetén `profile.ps1` előfordulhat, hogy egy függvényalkalmazás futásának megkezdésekor fut (egyébként *[hidegindításként](#cold-start)* ismert. További információ: [PowerShell-profil.](#powershell-profile)
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>PowerShell-parancsfájl definiálása függvényként
 
-Alapértelmezés szerint a functions Runtime a `run.ps1`-ben keresi a függvényt, ahol a `run.ps1` ugyanazt a szülő könyvtárat osztja meg, mint a hozzá tartozó `function.json`.
+Alapértelmezés szerint a Functions futásidejű megkeresi a függvényt a alkalmazásban, `run.ps1`ahol `run.ps1` ugyanaz a szülőkönyvtár van, mint a megfelelő `function.json`.
 
-A szkript több argumentumot adott meg a végrehajtás során. A paraméterek kezeléséhez vegyen fel egy `param` blokkot a parancsfájl elejére, ahogy az alábbi példában látható:
+A parancsfájl végrehajtása számos argumentumot továbbít. A paraméterek kezeléséhez adjon `param` egy blokkot a parancsfájl tetejére, ahogy az a következő példában található:
 
 ```powershell
 # $TriggerMetadata is optional here. If you don't need it, you can safely remove it from the param block
@@ -67,7 +67,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 
 ### <a name="triggermetadata-parameter"></a>TriggerMetadata paraméter
 
-A `TriggerMetadata` paraméterrel további információkat adhat meg az triggerről. A további metaadatok a kötéstől a kötéstől függenek, de mindegyikük tartalmaz egy `sys` tulajdonságot, amely a következő adatokat tartalmazza:
+A `TriggerMetadata` paraméter az eseményindítóval kapcsolatos további információk szolgáltatására szolgál. A további metaadatok kötéstől kötésig változnak, de mindegyik olyan tulajdonságot `sys` tartalmaz, amely a következő adatokat tartalmazza:
 
 ```powershell
 $TriggerMetadata.sys
@@ -75,29 +75,29 @@ $TriggerMetadata.sys
 
 | Tulajdonság   | Leírás                                     | Típus     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Ha UTC-ben a függvény aktiválva lett        | DateTime |
-| MethodName | Az aktivált függvény neve     | sztring   |
-| RandGuid   | a függvény végrehajtásának egyedi GUID azonosítója | sztring   |
+| UtcNow között     | Amikor az UTC-ben a funkció        | DateTime |
+| Metódusneve | A kiváltott függvény neve     | sztring   |
+| RandGuid között   | egy egyedi guid, hogy ez a végrehajtás a funkció | sztring   |
 
-Minden trigger típushoz eltérő metaadatok vannak megadva. A `QueueTrigger` `$TriggerMetadata` például tartalmazza a `InsertionTime`, `Id`, `DequeueCount`, többek között. Az üzenetsor-eseményindító metaadataival kapcsolatos további információkért nyissa meg a [várólista-eseményindítók hivatalos dokumentációját](functions-bindings-storage-queue-trigger.md#message-metadata). Tekintse meg a dokumentációt azon [Eseményindítók](functions-triggers-bindings.md) használatával kapcsolatban, amelyekkel megtudhatja, mi történik az eseményindító metaadatainak között.
+Minden eseményindítótípus nak más a metaadat-készlete. A `$TriggerMetadata` for `QueueTrigger` például `InsertionTime`többek `Id` `DequeueCount`között a , , , . A várólista-eseményindító metaadatairól további információt a [várólista-eseményindítók hivatalos dokumentációjában talál.](functions-bindings-storage-queue-trigger.md#message-metadata) Ellenőrizze a dokumentációt az [eseményindítók,](functions-triggers-bindings.md) amelyekkel dolgozik, hogy mi kerül az eseményindító metaadataiba.
 
 ## <a name="bindings"></a>Kötések
 
-A PowerShellben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak egy függvény function. JSON fájljában. A függvények számos módon működnek együtt a kötésekkel.
+A PowerShellben [a kötések](functions-triggers-bindings.md) konfigurálva vannak, és egy függvény function.json. A függvények számos módon kommunikálnak a kötésekkel.
 
-### <a name="reading-trigger-and-input-data"></a>Trigger-és bemeneti adatok olvasása
+### <a name="reading-trigger-and-input-data"></a>Az eseményindító és a bemeneti adatok olvasása
 
-Az trigger és a bemeneti kötések a függvénynek átadott paraméterekként lesznek beolvasva. A bemeneti kötések `direction` úgy vannak beállítva, hogy a function. JSON fájlban `in`. A `function.json`ban definiált `name` tulajdonság a `param` blokkban található paraméter neve. Mivel a PowerShell nevesített paramétereket használ a kötéshez, a paraméterek sorrendje nem számít. Az ajánlott eljárás azonban a `function.json`ban meghatározott kötések sorrendjét követi.
+Az eseményindító és a bemeneti kötések olvasása a függvénynek átadott paraméterek ként lesz olvasható. A bemeneti `direction` kötések `in` készlete a function.json függvényben van. A `name` definiált `function.json` tulajdonság a blokkban lévő `param` paraméter neve. Mivel a PowerShell névvel ellátott paramétereket használ a kötéshez, a paraméterek sorrendje nem számít. Ajánlott azonban követni a kötések sorrendjét, amelyeket a. `function.json`
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
 ```
 
-### <a name="writing-output-data"></a>Kimeneti adatokat írunk
+### <a name="writing-output-data"></a>Kimeneti adatok írása
 
-A functions szolgáltatásban egy kimeneti kötés `direction` van beállítva a function. JSON fájlban `out`. A `Push-OutputBinding` parancsmaggal írhat egy kimeneti kötést, amely a functions Runtime számára érhető el. Minden esetben a kötés `name` tulajdonsága `function.json` a `Push-OutputBinding` parancsmag `Name` paraméterének felel meg.
+A Függvényekben a kimeneti kötés `direction` hez a function.json készlete `out` van. A függvények futásidejű parancsmaggal `Push-OutputBinding` írhat egy kimeneti kötést. A `name` kötés tulajdonsága minden esetben `function.json` megfelel a `Name` `Push-OutputBinding` parancsmag paraméterének.
 
-A következő bemutatja, hogyan hívhat meg `Push-OutputBinding` a függvény parancsfájljában:
+Az alábbiakban bemutatjuk, hogyan hívhatja meg `Push-OutputBinding` a függvényparancsfájlt:
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -105,7 +105,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Push-OutputBinding -Name myQueue -Value $myValue
 ```
 
-A folyamaton keresztül egy adott kötés értékét is átadhatja.
+Egy adott kötés értékét is átadhatja a folyamaton keresztül.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -113,25 +113,25 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-a `Push-OutputBinding` a `-Name`megadott érték alapján eltérően viselkedik:
+`Push-OutputBinding`a következőkben megadott értéknek megfelelően `-Name`eltérően viselkedik:
 
-* Ha a megadott név nem oldható fel érvényes kimeneti kötésre, akkor hiba történik.
+* Ha a megadott név nem oldható fel érvényes kimeneti kötéssé, a rendszer hibát jelez.
 
-* Ha a kimeneti kötés fogadja az értékek egy gyűjteményét, többször is meghívhatja `Push-OutputBinding` több érték leküldéséhez.
+* Ha a kimeneti kötés értékek gyűjteményét `Push-OutputBinding` fogadja el, többször is meghívhat több érték leküldéses.
 
-* Ha a kimeneti kötés csak egy egyszeres értéket fogad el, `Push-OutputBinding` egy második alkalommal hibát jelez.
+* Ha a kimeneti kötés csak egy singleton értéket fogad el, a második alkalommal történő hívás `Push-OutputBinding` hibát okoz.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` szintaxis
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`Szintaxis
 
-A következő `Push-OutputBinding`meghívásához használható paraméterek érvényesek:
+A híváshoz érvényes paraméterek `Push-OutputBinding`tartoznak:
 
-| Name (Név) | Típus | Pozíció | Leírás |
+| Név | Típus | Pozíció | Leírás |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Sztring | 1 | A beállítani kívánt kimeneti kötés neve. |
-| **`-Value`** | Objektum | 2 | A beállítani kívánt kimeneti kötés értéke, amelyet a rendszer a folyamat ByValue fogad el. |
-| **`-Clobber`** | SwitchParameter | Elemzi | Választható Ha meg van adva, a megadott kimeneti kötéshez beállított értéket kényszeríti ki. | 
+| **`-Value`** | Objektum | 2 | A beállítani kívánt kimeneti kötés értéke, amelyet a ByValue folyamatból fogad el. |
+| **`-Clobber`** | Kapcsolóparaméter | Nevezett | (Nem kötelező) Ha meg van adva, az értéket egy megadott kimeneti kötéshez kell beállítani. | 
 
-A következő közös paraméterek is támogatottak: 
+A következő gyakori paraméterek is támogatottak: 
 * `Verbose`
 * `Debug`
 * `ErrorAction`
@@ -142,11 +142,11 @@ A következő közös paraméterek is támogatottak:
 * `PipelineVariable`
 * `OutVariable` 
 
-További információ: [About általánosparaméterek](https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: [About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-#### <a name="push-outputbinding-example-http-responses"></a>Leküldéses OutputBinding – példa: HTTP-válaszok
+#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding példa: HTTP válaszok
 
-Egy HTTP-trigger egy `response`nevű kimeneti kötést használó választ ad vissza. A következő példában a `response` kimeneti kötésének értéke "output #1":
+A HTTP-eseményindító egy kimeneti `response`kötés nevű válaszát adja vissza. A következő példában a `response` kimeneti kötés értéke "output #1":
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -155,7 +155,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Mivel a kimenet a HTTP, amely csak egy egyedi értéket fogad el, akkor a rendszer hibát jelez, ha a `Push-OutputBinding`t másodszor is nevezik.
+Mivel a kimenet http-re, amely csak egyton értéket fogad `Push-OutputBinding` el, a rendszer hibát okoz, ha másodszor is meghívják.
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -164,7 +164,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Az olyan kimenetek esetében, amelyek csak egyszeres értékeket fogadnak el, a `-Clobber` paraméterrel felülbírálhatja a régi értéket, és nem kell hozzáadnia a gyűjteményhez. Az alábbi példa azt feltételezi, hogy már hozzáadott egy értéket. `-Clobber`használatával a következő példa válasza felülbírálja a meglévő értéket, hogy a "kimeneti #3" értéket adja vissza:
+Olyan kimenetek esetén, amelyek csak egyszeri értékeket fogadnak el, a `-Clobber` paraméter segítségével felülbírálhatja a régi értéket ahelyett, hogy egy gyűjteményhez próbálna hozzáadni. A következő példa feltételezi, hogy már hozzáadott egy értéket. A `-Clobber`használatával a következő példa válasza felülbírálja a meglévő értéket, hogy "kimeneti #3" értéket adjon vissza:
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -173,33 +173,33 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Leküldéses OutputBinding – példa: várólista kimeneti kötése
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Leküldéses kimenetkötéspélda: Várólista kimenetkötése
 
-`Push-OutputBinding` az adatokat kimeneti kötésekre küldi, például egy [Azure üzenetsor-tároló kimeneti kötését](functions-bindings-storage-queue-output.md). A következő példában a várólistára írt üzenet "output #1" értékkel rendelkezik:
+`Push-OutputBinding`adatok küldésére szolgál kimeneti kötések, például egy [Azure Queue storage-kimeneti kötés.](functions-bindings-storage-queue-output.md) A következő példában a várólistába írt üzenet értéke "kimeneti #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
 ```
 
-A tárolási várólista kimeneti kötése több kimeneti értéket is elfogad. Ebben az esetben a következő példát hívja meg a várólistára való első írás után, amely két elemből áll: "output #1" és "output #2".
+A storage-várólista kimeneti kötése több kimeneti értéket fogad el. Ebben az esetben a következő példa hívása az első után ír a várólistába egy listát két elemből: "output #1" és "output #2".
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #2"
 ```
 
-A következő példa, amikor az előző kettő után meghívja, két további értéket ad hozzá a kimeneti gyűjteményhez:
+A következő példa, amikor az előző kettő után hívják, két további értéket ad hozzá a kimeneti gyűjteményhez:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 ```
 
-A várólistába íráskor az üzenet a következő négy értéket tartalmazza: "output #1," output #2 "," output #3 "és" output #4 ".
+A várólistába íráskor az üzenet a következő négy értéket tartalmazza: "output #1", "output #2", "output #3" és "output #4".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` parancsmag
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`Parancsmag
 
-A `Get-OutputBinding` parancsmaggal kérheti le a kimeneti kötésekhez jelenleg beállított értékeket. Ez a parancsmag egy olyan szórótábla kérdez le, amely tartalmazza a kimeneti kötések nevét a megfelelő értékekkel. 
+A `Get-OutputBinding` parancsmag segítségével lekérheti a kimeneti kötések jelenleg beállított értékeket. Ez a parancsmag beolvas egy kivonattáblát, amely tartalmazza a kimeneti kötések nevét a megfelelő értékekkel. 
 
-Az alábbi példa az aktuális kötési értékek visszaküldésére szolgáló `Get-OutputBinding` használatát szemlélteti:
+Az alábbi példa az `Get-OutputBinding` aktuális kötési értékek visszaadására használja:
 
 ```powershell
 Get-OutputBinding
@@ -212,7 +212,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding` egy `-Name`nevű paramétert is tartalmaz, amely a visszaadott kötés szűrésére használható, ahogy az alábbi példában is látható:
+`Get-OutputBinding`tartalmaz egy paramétert `-Name`is, amely a visszaadott kötés szűrésére használható, ahogy a következő példában is:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -224,30 +224,30 @@ Name                           Value
 MyQueue                        myData
 ```
 
-A helyettesítő karakterek (*) a `Get-OutputBinding`ben támogatottak.
+A helyettesítő karakterek (*) támogatottak a ban. `Get-OutputBinding`
 
 ## <a name="logging"></a>Naplózás
 
-A PowerShell-függvények naplózása ugyanúgy működik, mint a rendszeres PowerShell-naplózás. A naplózási parancsmagok segítségével írhat az egyes kimeneti adatfolyamokhoz. Minden parancsmag a függvények által használt naplózási szintre mutat.
+A PowerShell-funkciók naplózása úgy működik, mint a normál PowerShell-naplózás. A naplózási parancsmagok segítségével írhat az egyes kimeneti adatfolyamok. Minden parancsmag a Függvények által használt naplószintre van leképezve.
 
-| Függvények naplózási szintje | Naplózási parancsmag |
+| Funkciók naplózási szintje | Naplózva a parancsmag |
 | ------------- | -------------- |
 | Hiba | **`Write-Error`** |
 | Figyelmeztetés | **`Write-Warning`**  | 
-| Információ | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Információ | _Az_ adatszint naplózásának megírása. |
+| Információ | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Információ | Az _információs_ szint naplózása. |
 | Hibakeresés | **`Write-Debug`** |
 | Nyomkövetés | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
-Ezen parancsmagok mellett a folyamatba írt összes adat át lesz irányítva a `Information` naplózási szintjére, és az alapértelmezett PowerShell-formázással jelenik meg.
+Ezeken a parancsmagokon kívül a folyamatra írt dolgokat a rendszer átirányítja a `Information` napló szintjére, és az alapértelmezett PowerShell-formázással jelenik meg.
 
 > [!IMPORTANT]
-> A `Write-Verbose`-vagy `Write-Debug`-parancsmagok használata nem elegendő a részletes és hibakeresési szintű naplózás megjelenítéséhez. A naplózási szint küszöbértékét is be kell állítania, amely kijelenti, hogy milyen szintű naplókra van szüksége. További információ: [az alkalmazás naplózási szintjének konfigurálása](#configure-the-function-app-log-level).
+> A `Write-Verbose` vagy `Write-Debug` parancsmagok használata nem elegendő a részletes és hibakeresési szint naplózásához. Azt is be kell állítania a naplószint küszöbértéket, amely deklarálja, hogy milyen szintű naplók ténylegesen érdekel. További információ: [A függvény alkalmazásnaplószintjének konfigurálása.](#configure-the-function-app-log-level)
 
-### <a name="configure-the-function-app-log-level"></a>A Function app naplózási szintjének konfigurálása
+### <a name="configure-the-function-app-log-level"></a>A függvény alkalmazásnaplószintjének konfigurálása
 
-Azure Functions segítségével meghatározhatja a küszöbértéket, hogy könnyen szabályozható legyen a függvények írási módja a naplókba. A konzolra írt összes nyomkövetés küszöbértékének megadásához használja a [`host.json` file][a host. json dokumentációja]`logging.logLevel.default` tulajdonságát. Ez a beállítás a Function alkalmazás összes függvényére érvényes.
+Az Azure Functions segítségével meghatározhatja a küszöbértéket, hogy könnyen szabályozhassa, hogyan írja a Functions a naplókba. A konzolra írt összes nyomkövetés küszöbértékének `logging.logLevel.default` beállításához használja a [ `host.json` ][host.json hivatkozás fájltulajdonságát.] Ez a beállítás a függvényalkalmazás összes függvényére vonatkozik.
 
-A következő példa beállítja a küszöbértéket az összes függvény részletes naplózásának engedélyezéséhez, de beállítja a küszöbértéket, hogy engedélyezze a hibakeresési naplózást egy `MyFunction`nevű függvénynél:
+A következő példa beállítja a küszöbértéket, hogy engedélyezze a részletes naplózást az `MyFunction`összes függvénynél, de beállítja a küszöbértéket a hibakeresési naplózás engedélyezéséhez egy nevű függvénynél:
 
 ```json
 {
@@ -260,67 +260,67 @@ A következő példa beállítja a küszöbértéket az összes függvény rész
 }  
 ```
 
-További információ: [a Host. JSON dokumentációja].
+További információ: [host.json reference].
 
 ### <a name="viewing-the-logs"></a>A naplók megtekintése
 
-Ha az függvényalkalmazás az Azure-ban fut, akkor a Application Insights használatával figyelheti. Olvassa el a [figyelési Azure functions](functions-monitoring.md) , ha többet szeretne megtudni a függvények naplóinak megtekintéséről és lekérdezéséről.
+Ha a függvényalkalmazás fut az Azure-ban, az Application Insights segítségével figyelheti azt. Olvassa el [az Azure Functions figyelését,](functions-monitoring.md) ha többet szeretne megtudni a függvénynaplók megtekintéséről és lekérdezéséről.
 
-Ha a függvényalkalmazást helyileg futtatja fejlesztésre, a a naplófájlok alapértelmezése a fájlrendszer. A naplóknak a konzolon való megtekintéséhez állítsa a `AZURE_FUNCTIONS_ENVIRONMENT` környezeti változót úgy, hogy `Development` a függvényalkalmazás elindítása előtt.
+Ha a függvényalkalmazást helyileg futtatja fejlesztésre, alapértelmezés szerint a fájlrendszer naplói. A naplók megtekintéséhez a konzolon, állítsa be a `AZURE_FUNCTIONS_ENVIRONMENT` környezeti változót, `Development` mielőtt a Függvény alkalmazás.
 
 ## <a name="triggers-and-bindings-types"></a>Eseményindítók és kötések típusai
 
-Számos eseményindító és kötés érhető el a Function alkalmazással való használathoz. Az eseményindítók és kötések teljes listája [itt található](functions-triggers-bindings.md#supported-bindings).
+Számos eseményindítók és kötések állnak rendelkezésre, hogy használja a függvényalkalmazás. Az eseményindítók és kötések teljes listája [itt található.](functions-triggers-bindings.md#supported-bindings)
 
-Az összes eseményindító és kötés a kódban szerepel néhány valós adattípus formájában:
+Az összes eseményindító és kötés néhány valós adattípusként jelenik meg a kódban:
 
-* Szórótábla
+* Kivonatoló
 * sztring
-* bájt []
+* bájt[]
 * int
 * double
-* HttpRequestContext
-* HttpResponseContext
+* httpRequestcontext
+* httpResponsecontext
 
-A lista első öt típusa a standard .NET-típusok. Az utolsó kettőt csak a [HttpTrigger trigger](#http-triggers-and-bindings)használja.
+A lista első öt típusa szabványos .NET-típus. Az utolsó kettőt csak a [HttpTrigger eseményindító](#http-triggers-and-bindings)használja.
 
-A függvények minden kötési paraméterének a következő típusok egyikének kell lennie.
+A függvények minden kötési paraméterének az alábbi típusok egyikének kell lennie.
 
-### <a name="http-triggers-and-bindings"></a>HTTP-eseményindítók és-kötések
+### <a name="http-triggers-and-bindings"></a>HTTP-eseményindítók és kötések
 
-A HTTP-és webhook-eseményindítók és a HTTP-kimeneti kötések a HTTP-üzenetküldést a kérelmek és válaszok objektumok használatával jelölik.
+A HTTP- és webhook-eseményindítók és a HTTP-kimeneti kötések kérés- és válaszobjektumokat használnak a HTTP-üzenetküldés hez.
 
 #### <a name="request-object"></a>Kérelem objektum
 
-A parancsfájlba átadott kérelem-objektum `HttpRequestContext`típusú, amely a következő tulajdonságokkal rendelkezik:
+A parancsfájlba átadott kérelemobjektum típusa `HttpRequestContext`a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság  | Leírás                                                    | Típus                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsét. a `Body` a legjobb típusra van szerializálva az adathalmaz alapján. Ha például az adatfájl JSON, a rendszer szórótábla adja át. Ha az érték karakterlánc, akkor karakterláncként adja át a rendszer. | objektum |
-| **`Headers`** | A kérések fejléceit tartalmazó szótár.                | Szótár < karakterlánc, karakterlánc ><sup>*</sup> |
+| **`Body`**    | A kérelem törzsét tartalmazó objektum. `Body`az adatok alapján a legjobb típusba kerül. Ha például az adatok JSON, kivonattable-ként adják át. Ha az adat egy karakterlánc, akkor karakterláncként kerül átadásra. | objektum |
+| **`Headers`** | A kérelemfejléceket tartalmazó szótár.                | Szótár<karakterlánc,karakterlánc><sup>*</sup> |
 | **`Method`** | A kérelem HTTP-metódusa.                                | sztring                    |
-| **`Params`**  | Egy objektum, amely a kérelem útválasztási paramétereit tartalmazza. | Szótár < karakterlánc, karakterlánc ><sup>*</sup> |
-| **`Query`** | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  | Szótár < karakterlánc, karakterlánc ><sup>*</sup> |
+| **`Params`**  | A kérelem útválasztási paramétereit tartalmazó objektum. | Szótár<karakterlánc,karakterlánc><sup>*</sup> |
+| **`Query`** | A lekérdezési paramétereket tartalmazó objektum.                  | Szótár<karakterlánc,karakterlánc><sup>*</sup> |
 | **`Url`** | A kérelem URL-címe.                                        | sztring                    |
 
-<sup>*</sup> Az összes `Dictionary<string,string>` kulcs kis-és nagybetűk megkülönböztetése.
+<sup>*</sup>Minden `Dictionary<string,string>` kulcs nem szokja a kis- és nagybetűket.
 
 #### <a name="response-object"></a>Válaszobjektum
 
-A visszaküldeni kívánt válasz-objektum típusa `HttpResponseContext`, amely a következő tulajdonságokkal rendelkezik:
+A visszaküldendő válaszobjektum típusa `HttpResponseContext`a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság      | Leírás                                                 | Típus                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Egy objektum, amely tartalmazza a válasz törzsét.           | objektum                    |
+| **`Body`**  | A válasz törzsét tartalmazó objektum.           | objektum                    |
 | **`ContentType`** | Egy rövid kéz a válasz tartalomtípusának beállításához. | sztring                    |
-| **`Headers`** | Egy objektum, amely tartalmazza a válasz fejléceit.               | Szótár vagy szórótábla   |
-| **`StatusCode`**  | A válasz HTTP-állapotkódot.                       | karakterlánc vagy int             |
+| **`Headers`** | A válaszfejléceket tartalmazó objektum.               | Szótár vagy Hashtable   |
+| **`StatusCode`**  | A válasz HTTP-állapotkódja.                       | karakterlánc vagy int             |
 
-#### <a name="accessing-the-request-and-response"></a>A kérelem és válasz elérése
+#### <a name="accessing-the-request-and-response"></a>A kérés és a válasz elérése
 
-Ha HTTP-eseményindítókkal dolgozik, ugyanúgy érheti el a HTTP-kérést, mint bármely más bemeneti kötést. Ez a `param` blokkban található.
+Http-eseményindítókkal való munka során ugyanúgy elérheti a HTTP-kérelmet, mint bármely más bemeneti kötést. A `param` tömbben van.
 
-Egy `HttpResponseContext` objektummal választ adhat vissza, ahogy az az alábbi ábrán látható:
+Használjon `HttpResponseContext` objektumot válasz visszaadásához, ahogy az a következőkben látható:
 
 `function.json`
 
@@ -353,18 +353,18 @@ Push-OutputBinding -Name res -Value ([HttpResponseContext]@{
 })
 ```
 
-A függvény meghívásának eredménye a következő:
+Ennek a funkciónak az eredménye:
 
 ```
 PS > irm http://localhost:5001?Name=Functions
 Hello Functions!
 ```
 
-### <a name="type-casting-for-triggers-and-bindings"></a>Triggerek és kötések típusa – öntés
+### <a name="type-casting-for-triggers-and-bindings"></a>Típusöntés a ravaszokhoz és kötésekhez
 
-Bizonyos kötésekhez, például a blob-kötésekhez, meg tudja adni a paraméter típusát.
+Bizonyos kötések, például a blob-kötés, megadhatja a paraméter típusát.
 
-Ha például a blob Storage-ból karakterláncként megadott adatokkal szeretne rendelkezni, adja hozzá a következő típust a `param` blokkhoz:
+Ha például a Blob storage-ból származó adatokat karakterláncként `param` szeretné megadni, adja hozzá a következő típust a blokkomhoz:
 
 ```powershell
 param([string] $myBlob)
@@ -372,29 +372,29 @@ param([string] $myBlob)
 
 ## <a name="powershell-profile"></a>PowerShell-profil
 
-A PowerShellben van egy PowerShell-profil fogalma. Ha még nem ismeri a PowerShell-profilokat, tekintse meg a következő témakört: [About Profiles](/powershell/module/microsoft.powershell.core/about/about_profiles).
+A PowerShellben van egy PowerShell-profil fogalma. Ha nem ismeri a PowerShell-profilokat, olvassa el [a Profilok – ismertet című témakört.](/powershell/module/microsoft.powershell.core/about/about_profiles)
 
-A PowerShell-függvények esetében a profil parancsfájlja a Function alkalmazás indításakor végrehajtódik. A Function apps az első üzembe helyezéskor kezdődik, és az üresjárat után ([Cold Start](#cold-start)).
+A PowerShell-függvények, a profil-parancsfájl végrehajtása a függvényalkalmazás indításakor. A függvényalkalmazások az első üzembe helyezéskor és az alaplegműködő[(hidegindítás)](#cold-start)után indulnak el.
 
-Ha olyan eszközökkel hoz létre Function alkalmazást, mint például a Visual Studio Code és a Azure Functions Core Tools, akkor a rendszer létrehoz egy alapértelmezett `profile.ps1`. Az alapértelmezett profil a [GitHub-tárház alapvető eszközein](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) marad, és a következőket tartalmazza:
+Ha olyan eszközökkel hoz létre függvényalkalmazást, mint például a `profile.ps1` Visual Studio-kód és az Azure Functions Core Tools, egy alapértelmezett alkalmazás jön létre. Az alapértelmezett profil megmarad [a Core Tools GitHub-tárházban,](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) és a következőket tartalmazza:
 
 * Automatikus MSI-hitelesítés az Azure-ba.
-* A Azure PowerShell `AzureRM` PowerShell-aliasok bekapcsolásának lehetősége, ha szeretné.
+* Az Azure PowerShell `AzureRM` PowerShell-aliasok bekapcsolása, ha szeretné.
 
 ## <a name="powershell-version"></a>PowerShell-verzió
 
-A következő táblázat a függvények futtatókörnyezetének egyes főbb verziói által használt PowerShell-verziót mutatja be:
+Az alábbi táblázat a Functions futásidejűek egyes főverziói által használt PowerShell-verziót mutatja be:
 
 | Függvények verziója | PowerShell-verzió                             |
 |-------------------|------------------------------------------------|
-| 1. x               | Windows PowerShell 5,1 (a futtatókörnyezet zárolta) |
-| 2. x               | 6\. PowerShell-mag                              |
+| 1,x               | Windows PowerShell 5.1 (a futásidő zárolva) |
+| 2,x               | PowerShell Core 6                              |
 
-Az aktuális verziót úgy tekintheti meg, hogy kinyomtatja `$PSVersionTable` bármely függvényből.
+Az aktuális verziót bármely `$PSVersionTable` funkcióból történő nyomtatással láthatja.
 
 ## <a name="dependency-management"></a>Függőségkezelés
 
-A functions lehetővé teszi a [PowerShell-Galéria](https://www.powershellgallery.com) kihasználása a függőségek kezeléséhez. Ha a függőségek kezelése engedélyezve van, a követelmények. psd1 fájl a szükséges modulok automatikus letöltésére szolgál. Ezt a viselkedést úgy engedélyezheti, ha a `managedDependency` tulajdonságot úgy állítja be, hogy az a [Host. JSON fájl](functions-host-json.md)gyökerében `true` a következő példában látható módon:
+A Functions segítségével használhatja a [PowerShell-gyűjteményt](https://www.powershellgallery.com) a függőségek kezeléséhez. Ha a függőségkezelés engedélyezve van, a requirements.psd1 fájl a szükséges modulok automatikus letöltésére szolgál. Ezt a viselkedést úgy `managedDependency` engedélyezheti, hogy a tulajdonságot `true` a [host.json fájl](functions-host-json.md)gyökerébe állítja, ahogy az a következő példában is:
 
 ```json
 {
@@ -404,7 +404,7 @@ A functions lehetővé teszi a [PowerShell-Galéria](https://www.powershellgalle
 }
 ```
 
-Új PowerShell functions-projekt létrehozásakor a függőségek kezelése alapértelmezés szerint engedélyezve van az Azure [`Az` modullal](/powershell/azure/new-azureps-module-az) . A jelenleg támogatott modulok maximális száma 10. A támogatott szintaxis _`MajorNumber`_ `.*` vagy a modul pontos verziója, ahogy az az alábbi követelményekben látható. psd1 példa:
+Amikor új PowerShell-függvényprojektet hoz létre, a függőségkezelés alapértelmezés szerint engedélyezve van, az [ `Az` Azure-modullal](/powershell/azure/new-azureps-module-az) együtt. A jelenleg támogatott modulok maximális száma 10. A támogatott szintaxis vagy _`MajorNumber`_ `.*` a modul pontos verziója, ahogy az alábbi requirements.psd1 példában látható:
 
 ```powershell
 @{
@@ -413,43 +413,43 @@ A functions lehetővé teszi a [PowerShell-Galéria](https://www.powershellgalle
 }
 ```
 
-A követelmények. psd1 fájl frissítésekor a frissített modulok újraindítást követően települnek.
+A requirements.psd1 fájl frissítésekor a frissített modulok az újraindítás után települnek.
 
 > [!NOTE]
-> A felügyelt függőségekhez hozzáférés szükséges a www.powershellgallery.com a modulok letöltéséhez. Helyileg futtatva győződjön meg arról, hogy a futtatókörnyezet hozzáférhet ehhez az URL-címhez a szükséges tűzfalszabályok hozzáadásával. 
+> A felügyelt függőségekhez www.powershellgallery.com kell hozzáférni a modulok letöltéséhez. Helyi futtatáskor győződjön meg arról, hogy a futtatójön helyt tud ütközni az URL-cím hez a szükséges tűzfalszabályok hozzáadásával. 
 
-A következő Alkalmazásbeállítások segítségével megváltoztathatja a felügyelt függőségek letöltésének és telepítésének módját. Az alkalmazás frissítése `MDMaxBackgroundUpgradePeriod`on belül kezdődik, és a frissítési folyamat körülbelül a `MDNewSnapshotCheckPeriod`on belül fejeződik be.
+A következő alkalmazásbeállítások segítségével módosíthatja a felügyelt függőségek letöltésének és telepítésének módját. Az alkalmazásfrissítés `MDMaxBackgroundUpgradePeriod`a ( alkalmazásfrissítés ) belül `MDNewSnapshotCheckPeriod`kezdődik, és a frissítési folyamat körülbelül a .
 
-| függvényalkalmazás beállítás              | Alapértelmezett érték             | Leírás                                         |
+| Függvényalkalmazás beállítása              | Alapértelmezett érték             | Leírás                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 nap)     | Minden PowerShell-munkavégző folyamat kezdeményezi a modul frissítéseinek ellenőrzését a PowerShell-galéria a folyamat indításakor és minden `MDMaxBackgroundUpgradePeriod` után. Ha egy új modul verziója elérhető a PowerShell-galériaban, a rendszer telepíti a fájlrendszerre, és elérhetővé teszi őket a PowerShell-feldolgozók számára. Ennek az értéknek a csökkentése lehetővé teszi, hogy a Function alkalmazás hamarabb lekérje a modul újabb verzióit, de az alkalmazás erőforrás-használatát is növeli (hálózati I/O-, CPU-és tárolási). Az érték növelése csökkenti az alkalmazás erőforrás-használatát, de az új modulok verzióinak az alkalmazásba való kézbesítése is késleltethető. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 óra)       | Miután telepítette az új modul-verziókat a fájlrendszerbe, minden PowerShell-munkavégző folyamatot újra kell indítani. A PowerShell-feldolgozók újraindítása hatással van az alkalmazás rendelkezésre állására, mivel ez megszakíthatja az aktuális függvény végrehajtását. Amíg az összes PowerShell-munkavégző folyamat újra nem indul, a függvény meghívása a régi vagy az új modul verzióját is használhatja. A PowerShell-feldolgozók újraindítása `MDNewSnapshotCheckPeriod`on belül. Az érték növelésével csökken a megszakítások gyakorisága, de az is előfordulhat, hogy a függvény meghívásakor a régi vagy az új modul nem determinisztikus módon verzióját használja. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 nap)     | A gyakori munkavégző újraindítások esetén a modul frissítéseinek figyelése nem történik meg, ha bármelyik feldolgozó már kezdeményezte az utolsó `MDMinBackgroundUpgradePeriod`ellenőrzését. |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 nap)     | Minden PowerShell-munkavégző folyamat kezdeményezi a modulfrissítések ellenőrzését a `MDMaxBackgroundUpgradePeriod` PowerShell-galériában a folyamat indításakor és minden után. Ha egy új modulverzió érhető el a PowerShell-galériában, akkor telepítve van a fájlrendszerre, és elérhetővé válik a PowerShell-dolgozók számára. Ennek az értéknek a csökkentése lehetővé teszi, hogy a függvényalkalmazás hamarabb megkapja az újabb modulverziókat, de növeli az alkalmazás erőforrás-használatát (hálózati I/O, CPU, tároló). Ennek az értéknek a növelésével csökken az alkalmazás erőforrás-felhasználása, de késleltetheti az új modulverziók alkalmazását is. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 óra)       | Miután új modulverziók telepítése a fájlrendszerbe, minden PowerShell munkavégző folyamat újra kell indítani. A PowerShell-dolgozók újraindítása hatással van az alkalmazás rendelkezésre állására, mivel megszakíthatja az aktuális függvényvégrehajtását. Amíg az összes PowerShell-munkavégző folyamat újra nem indul, a függvénymeghívások a régi vagy az új modulverziót használhatják. Az összes PowerShell-dolgozó `MDNewSnapshotCheckPeriod`újraindítása a rendszeren belül fejeződik be. Ennek az értéknek a növelése csökkenti a megszakítások gyakoriságát, de növelheti azt az időtartamot is, amikor a függvénymeghívások nem determinisztikusan használják a régi vagy az új modulverziót. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00`(1 nap)     | A gyakori dolgozói újraindítások túlzott modulfrissítésének elkerülése érdekében a rendszer nem ellenőrzi a modulfrissítéseket, ha az utolsó beadást már megindító dolgozó már kezdeményezte a beadást. `MDMinBackgroundUpgradePeriod` |
 
-A saját egyéni moduljainak kihasználása kicsit eltér a megszokott módon.
+Kihasználva a saját egyéni modulok egy kicsit más, mint ahogy tennéd rendesen.
 
-A helyi számítógépen a modul a `$env:PSModulePath`egyik globálisan elérhető mappájában lesz telepítve. Ha az Azure-ban fut, nincs hozzáférése a gépen telepített modulokhoz. Ez azt jelenti, hogy egy PowerShell-függvény alkalmazásának `$env:PSModulePath`e eltér a szokásos PowerShell-parancsfájlok `$env:PSModulePath`tól.
+A helyi számítógépen a modul a globálisan elérhető mappák egyikébe lesz `$env:PSModulePath`telepítve. Az Azure-ban való futtatáskor nincs hozzáférése a számítógépre telepített modulokhoz. Ez azt `$env:PSModulePath` jelenti, hogy a PowerShell-függvényalkalmazás eltér a normál PowerShell-parancsfájl. `$env:PSModulePath`
 
-A függvények `PSModulePath` két elérési utat tartalmaz:
+A Függvények csoportban két elérési utat `PSModulePath` tartalmaz:
 
-* `Modules` mappa, amely a Function alkalmazás gyökerében található.
-* A PowerShell nyelvi feldolgozója által vezérelt `Modules` mappa elérési útja.
+* A `Modules` függvényalkalmazás gyökerében található mappa.
+* A PowerShell-nyelvi dolgozó által vezérelt `Modules` mappa elérési útja.
 
-### <a name="function-app-level-modules-folder"></a>A függvény alkalmazás szintű `Modules` mappája
+### <a name="function-app-level-modules-folder"></a>Függvényalkalmazás-szintű `Modules` mappa
 
-Egyéni modulok használatához olyan modulokat helyezhet el, amelyeken a függvények egy `Modules` mappától függenek. Ebből a mappából a modulok automatikusan elérhetők a functions Runtime számára. A Function alkalmazás bármely funkciója használhatja ezeket a modulokat. 
+Az egyéni modulok használatához olyan modulokat helyezhet el, `Modules` amelyektől a függvények függnek egy mappában. Ebből a mappából a modulok automatikusan elérhetők a függvények futásidejű számára. A függvényalkalmazás bármely funkciója használhatja ezeket a modulokat. 
 
 > [!NOTE]
-> A követelmények. psd1 fájlban megadott modulokat a rendszer automatikusan letölti és belefoglalja az elérési útra, így nem kell felvennie őket a modulok mappába. Ezeket a rendszer helyileg tárolja a `$env:LOCALAPPDATA/AzureFunctions` mappában és a `/data/ManagedDependencies` mappában a felhőben való futtatáskor.
+> A requirements.psd1 fájlban megadott modulok automatikusan letöltődnek és bekerülnek az elérési útba, így nem kell őket a modulok mappájába foglalni. Ezek a felhőben való `$env:LOCALAPPDATA/AzureFunctions` futtatáskor `/data/ManagedDependencies` helyileg tárolódnak a mappában és a mappában.
 
-Az egyéni modul funkció kihasználása érdekében hozzon létre egy `Modules` mappát a Function alkalmazás gyökerében. Másolja a függvényekben használni kívánt modulokat erre a helyre.
+Az egyéni modul funkció előnyeinek `Modules` kihasználásához hozzon létre egy mappát a függvényalkalmazás gyökerében. Másolja a függvényekben használni kívánt modulokat erre a helyre.
 
 ```powershell
 mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-`Modules` mappában a Function alkalmazásnak a következő mappastruktúrát kell megjelennie:
+Egy `Modules` mappa esetén a függvényalkalmazásnak a következő mappastruktúrával kell rendelkeznie:
 
 ```
 PSFunctionApp
@@ -465,22 +465,22 @@ PSFunctionApp
  | - requirements.psd1
 ```
 
-Ha elindítja a Function alkalmazást, a PowerShell nyelvi feldolgozó hozzáadja ezt a `Modules` mappát a `$env:PSModulePath`hoz, így a modul automatikus betöltését ugyanúgy használhatja, mint egy hagyományos PowerShell-parancsfájlban.
+A függvényalkalmazás indításakor a PowerShell-nyelvi dolgozó hozzáadja ezt `Modules` a mappát a mappához, így ugyanúgy támaszkodhat a `$env:PSModulePath` modul automatikus betöltésére, mint egy normál PowerShell-parancsfájlban.
 
-### <a name="language-worker-level-modules-folder"></a>Nyelvi feldolgozói szint `Modules` mappája
+### <a name="language-worker-level-modules-folder"></a>Nyelvi munkavégző szint `Modules` mappa
 
-A PowerShell nyelvi feldolgozója általában számos modult használ. Ezek a modulok `PSModulePath`utolsó helyén vannak meghatározva. 
+A PowerShell nyelvi dolgozója gyakran használ több modult. Ezeket a modulokat a program `PSModulePath`utolsó pozíciójában határozzák meg. 
 
 A modulok aktuális listája a következő:
 
-* [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): az archívumok használatához használt modul, például `.zip`, `.nupkg`és egyebek.
-* **ThreadJob**: a PowerShell-feladatok API-k szálon alapuló implementációja.
+* [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): az archívumok, `.zip`például a , `.nupkg`és mások használatához használt modul.
+* **ThreadJob**: A PowerShell-feladat API-k szálalapú implementációja.
 
-Alapértelmezés szerint a függvények a modulok legújabb verzióját használják. Egy adott modul verziójának használatához helyezze az adott verziót a Function alkalmazás `Modules` mappájába.
+A Functions alapértelmezés szerint a modulok legújabb verzióját használja. Egy adott modulverzió használatához helyezze az `Modules` adott verziót a függvényalkalmazás mappájába.
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények, az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai a végrehajtás során környezeti változókként jelennek meg. Ezeket a beállításokat `$env:NAME_OF_ENV_VAR`használatával érheti el, ahogy az az alábbi példában is látható:
+A Funkciók alkalmazásban [az alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatáskapcsolati karakterláncok környezeti változókként jelennek meg a végrehajtás során. Ezeket a beállításokat a használatával `$env:NAME_OF_ENV_VAR`érheti el, ahogy az a következő példában látható:
 
 ```powershell
 param($myTimer)
@@ -492,36 +492,36 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functions-run-local.md#local-settings-file) Project fájlból lesznek beolvasva.
+Ha helyileg fut, a program a [local.settings.json](functions-run-local.md#local-settings-file) projektfájlból olvassa be az alkalmazásbeállításokat.
 
 ## <a name="concurrency"></a>Egyidejűség
 
-Alapértelmezés szerint a függvények PowerShell-futtatókörnyezete egyszerre csak egy függvény hívását képes feldolgozni. Előfordulhat azonban, hogy ez a párhuzamossági szint nem elegendő a következő helyzetekben:
+Alapértelmezés szerint a Funkciók PowerShell futásidejű csak egy függvény meghívása egy időben. Ez az egyidejűségi szint azonban a következő esetekben nem biztos, hogy elegendő:
 
-* Ha nagy számú hívást próbál meg egyszerre kezelni.
-* Ha olyan függvényekkel rendelkezik, amelyek más függvényeket hívnak meg ugyanazon a Function alkalmazáson belül.
+* Amikor egyszerre sok idézést próbál kezelni.
+* Ha olyan függvényeket, amelyek meghívja más függvények belül ugyanabban a függvényalkalmazásban.
 
-Ezt a viselkedést úgy módosíthatja, ha a következő környezeti változót egész értékre állítja:
+Ezt a viselkedést úgy módosíthatja, hogy a következő környezeti változót egész értékre állítja:
 
 ```
 PSWorkerInProcConcurrencyUpperBound
 ```
 
-Ezt a környezeti változót a függvényalkalmazás [alkalmazás beállításaiban](functions-app-settings.md) állíthatja be.
+Ezt a környezeti változót a Függvényalkalmazás [alkalmazásbeállításaiban](functions-app-settings.md) állíthatja be.
 
-### <a name="considerations-for-using-concurrency"></a>A párhuzamosság használatának szempontjai
+### <a name="considerations-for-using-concurrency"></a>Az egyidejűség használatának szempontjai
 
-Alapértelmezés szerint a PowerShell _egyszálas_ parancsfájlkezelési nyelv. A párhuzamosság azonban több PowerShell-futási terek is hozzáadható ugyanabban a folyamatban. A létrehozott futási terek mérete megegyezik a PSWorkerInProcConcurrencyUpperBound alkalmazás beállításával. Az átviteli sebességet a kiválasztott csomagban elérhető CPU és memória mennyisége befolyásolja.
+PowerShell egy _egyetlen szálas_ parancsfájlnyelv alapértelmezés szerint. Azonban egyidejűség adható több PowerShell-runspaces ugyanabban a folyamatban használatával. A létrehozott runspaces mennyisége meg egyezik a PSWorkerInProcConcurrencyUpperBound alkalmazás beállításával. Az átviteli sebességét befolyásolja a kiválasztott tervben rendelkezésre álló processzor és memória mennyisége.
 
-A Azure PowerShell egyes _folyamat-szintű_ kontextusokat és állapotot használ, hogy segítsen a felesleges gépelésben. Ha azonban a függvény alkalmazásban bekapcsolja a párhuzamosságot, és meghívja az állapotot megváltoztató műveleteket, akkor a verseny feltételei is megváltozhatnak. Ezek a versenyhelyzet nehéz hibakeresést végezni, mert egy hívás egy bizonyos állapotra támaszkodik, és a másik meghívás megváltoztatta az állapotot.
+Az Azure PowerShell bizonyos _folyamatszintű_ környezeteket és állapotokat használ a felesleges gépelési műveletek megmentése érdekében. Ha azonban bekapcsolja az egyidejűséget a függvényalkalmazásban, és olyan műveleteket hív meg, amelyek állapotváltozásra hajtanak, a versenyfeltételek et is megkaphatja. Ezeket a versenyfeltételeket nehéz hibakeresésnek kitenni, mert az egyik hívás egy bizonyos állapotra támaszkodik, a másik pedig megváltoztatta az állapotot.
 
-Az Azure PowerShell-ben óriási érték van, mivel néhány művelet jelentős időt vehet igénybe. Azonban körültekintően kell eljárnia. Ha azt gyanítja, hogy a verseny feltételét tapasztalja, állítsa a PSWorkerInProcConcurrencyUpperBound `1`re, és Ehelyett használja a [nyelvi feldolgozói folyamat szintjének elkülönítését](functions-app-settings.md#functions_worker_process_count) a párhuzamossághoz.
+Az Azure PowerShell rel, mivel egyes műveletek jelentős időt vehet igénybe. Azonban óvatosan kell eljárnia. Ha azt gyanítja, hogy egy versenyállapot, állítsa be a PSWorkerInProcConcurrencyUpperBound alkalmazás beállítása, `1` és helyette használja a nyelvi [munkavégző folyamat szintű elkülönítése](functions-app-settings.md#functions_worker_process_count) az egyidejűséghez.
 
-## <a name="configure-function-scriptfile"></a>A függvény konfigurálása `scriptFile`
+## <a name="configure-function-scriptfile"></a>Konfigurálás i`scriptFile`
 
-Alapértelmezés szerint a rendszer egy PowerShell-függvényt hajt végre `run.ps1`ból, egy olyan fájlt, amely ugyanazt a szülő könyvtárat osztja meg a megfelelő `function.json`.
+Alapértelmezés szerint a PowerShell-függvény `run.ps1`a programból jön ki, amely `function.json`nek ugyanaz a szülőkönyvtára van, mint a megfelelőnek.
 
-A `function.json` `scriptFile` tulajdonsága a következő példához hasonló mappa-struktúra beszerzésére használható:
+A `scriptFile` tulajdonság `function.json` a segítségével a következő példához hasonló mappastruktúra leéséhez használható:
 
 ```
 FunctionApp
@@ -532,7 +532,7 @@ FunctionApp
  | | - PSFunction.ps1
 ```
 
-Ebben az esetben a `myFunction` `function.json` tartalmaz egy `scriptFile` tulajdonságot, amely a fájlra hivatkozik, és futtatja az exportált függvényt.
+Ebben az esetben `function.json` `myFunction` a `scriptFile` for tartalmaz egy tulajdonságot, amely a fájlt az exportált függvénnyel hivatkozza.
 
 ```json
 {
@@ -543,12 +543,12 @@ Ebben az esetben a `myFunction` `function.json` tartalmaz egy `scriptFile` tulaj
 }
 ```
 
-## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>PowerShell-modulok használata BelépésiPont konfigurálásával
+## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>PowerShell-modulok használata entryPoint konfigurálásával
 
-Ez a cikk a sablonok által generált alapértelmezett `run.ps1` parancsfájl PowerShell-függvényeit mutatja be.
-A függvényeket azonban PowerShell-modulokban is felveheti. A modulban a function. JSON konfigurációs fájl `scriptFile` és `entryPoint` mezőinek használatával hivatkozhat az adott függvény kódjára.
+Ez a cikk a PowerShell-függvényeket a sablonok által létrehozott alapértelmezett `run.ps1` parancsfájlban mutatta be.
+Azonban a funkciókat is beillesztheti a PowerShell-modulokba. A modulban lévő adott függvénykódra `scriptFile` hivatkozhat a function.json konfigurációs fájlban lévő és `entryPoint` mezők használatával.
 
-Ebben az esetben `entryPoint` a `scriptFile`ban hivatkozott PowerShell-modul függvényének vagy parancsmagjának a neve.
+Ebben az `entryPoint` esetben a PowerShell-modulban található függvény vagy parancsmag `scriptFile`neve a.
 
 Vegye figyelembe a következő mappastruktúrát:
 
@@ -561,7 +561,7 @@ FunctionApp
  | | - PSFunction.psm1
 ```
 
-Ahol a `PSFunction.psm1` a következőket tartalmazza:
+Hol `PSFunction.psm1` tartalmaz:
 
 ```powershell
 function Invoke-PSTestFunc {
@@ -573,7 +573,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-Ebben a példában a `myFunction`hoz tartozó konfiguráció olyan `scriptFile` tulajdonságot tartalmaz, amely egy másik mappában található PowerShell-modulra hivatkozik `PSFunction.psm1`re.  A `entryPoint` tulajdonság a `Invoke-PSTestFunc` függvényre hivatkozik, amely a modul belépési pontja.
+Ebben a példában `myFunction` a `scriptFile` konfiguráció tartalmaz `PSFunction.psm1`egy tulajdonságot, amely hivatkozik , amely egy PowerShell-modul egy másik mappában.  A `entryPoint` tulajdonság a `Invoke-PSTestFunc` függvényre hivatkozik, amely a modul belépési pontja.
 
 ```json
 {
@@ -585,26 +585,26 @@ Ebben a példában a `myFunction`hoz tartozó konfiguráció olyan `scriptFile` 
 }
 ```
 
-Ezzel a konfigurációval a `Invoke-PSTestFunc` pontosan úgy lesz végrehajtva, mint egy `run.ps1`.
+Ezzel a konfigurációval a `Invoke-PSTestFunc` gets `run.ps1` végre pontosan úgy, ahogy lenne.
 
-## <a name="considerations-for-powershell-functions"></a>A PowerShell-függvények szempontjai
+## <a name="considerations-for-powershell-functions"></a>A PowerShell-függvényekkel kapcsolatos szempontok
 
-A PowerShell-függvények használatakor vegye figyelembe az alábbi részekben ismertetett szempontokat.
+Amikor a PowerShell-függvények, vegye figyelembe a következő szakaszokban található szempontokat.
 
-### <a name="cold-start"></a>Hidegindító
+### <a name="cold-start"></a>Hidegindítás
 
-Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-scale.md#consumption-plan)való fejlesztésekor a hideg indítás a valóság. A *hűtőházi kezdés* azt az időtartamot jelenti, ameddig a Function alkalmazásnak futnia kell a kérelem feldolgozásához. A hidegindító folyamat gyakrabban fordul elő a fogyasztási tervben, mert a Function alkalmazás leáll az inaktivitási időszakok során.
+Az Azure Functions kiszolgáló [nélküli üzemeltetési modellben](functions-scale.md#consumption-plan)történő fejlesztése során a hideg indítások valóságnak valóra váltanak. *A hidegindítás* azt az időtartamot veszi igénybe, amíg a függvényalkalmazás elindul a kérelem feldolgozásához. A hidegindítás gyakrabban fordul elő a fogyasztási tervben, mert a függvényalkalmazás inaktív időszakokban leáll.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>A `Install-Module` használata helyett köteg modulok
+### <a name="bundle-modules-instead-of-using-install-module"></a>Kötegmodulok használata helyett`Install-Module`
 
-A szkript minden meghívásnál fut. Ne használjon `Install-Module` a szkriptben. Ehelyett használja a `Save-Module` a közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
+A parancsfájl minden híváson fut. Ne `Install-Module` használja a parancsfájlban. Ehelyett `Save-Module` használja a közzététel előtt, hogy a funkció nem kell időt pazarolni a modul letöltésére. Ha a hidegindítások hatással vannak a funkciókra, fontolja meg a függvényalkalmazás üzembe helyezését egy [Olyan App Service-csomagra,](functions-scale.md#app-service-plan) amely mindig egy Prémium *csomagra* vagy [egy Prémium csomagra](functions-scale.md#premium-plan)van beállítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
-* [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)
+* [Az Azure Functions aktiválódik és kötéseket köt](functions-triggers-bindings.md)
 
-[a Host. JSON dokumentációja]: functions-host-json.md
+[host.json-referencia]: functions-host-json.md

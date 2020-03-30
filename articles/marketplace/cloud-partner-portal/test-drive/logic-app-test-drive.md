@@ -1,148 +1,147 @@
 ---
-title: Logic app Test Drive | Azure piactér
-description: A cikk azt ismerteti, hogyan hozhat létre olyan tesztelési meghajtót, amely egy Dynamics AX-vagy CRM-példánnyal, vagy bármely más, az Azure-on túli erőforrással csatlakozik.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Logic App Test Drive | Azure Piactér
+description: Bemutatja, hogyan hozhat létre a Tesztmeghajtó, amely egy Dynamics AX/CRM-példányhoz vagy bármely más, az Azure-on kívüli erőforráshoz kapcsolódik.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 87170344f7467770829cbd8ba7d8936a9e39c0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 766f893d71ca0830fe8b69c50145603c6544cc3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824598"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278382"
 ---
-<a name="logic-app-test-drive"></a>Logic app Test Drive
+<a name="logic-app-test-drive"></a>Logikai alkalmazás tesztmeghajtója
 ====================
 
-Ez a cikk azoknak a kiadóknak szól, akik rendelkeznek a AppSource, és szeretnék felépíteni a tesztelési meghajtót, amely egy Dynamics AX/CRM-példánnyal vagy más erőforrással csatlakozik az Azure-on kívül.
+Ez a cikk a kiadók, akik ajánlatukat appsource és szeretné konsizni a Test Drive, amely csatlakozik a Dynamics AX/CRM-példány vagy bármely más erőforrás túl csak az Azure-ban.
 
-<a name="how-to-build-a-logic-app-test-drive"></a>Logikai alkalmazás tesztelési meghajtójának létrehozása
+<a name="how-to-build-a-logic-app-test-drive"></a>Hogyan építsünk egy Logic App Test Drive
 -----------------------------------
 
-A test Drive dokumentációja a Logic app test-meghajtókhoz jelenleg továbbra is a GitHubon zajlik a [műveletekhez](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) és az [ügyfelek](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)bevonásához. További információért látogasson el ide.
+A Logic App Test Test Drives tesztmeghajtóinak tesztkapcsolati dokumentációja jelenleg a GitHub on [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) and [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)szolgáltatáson található, további információért.
 
-<a name="how-to-publish-a-test-drive"></a>Tesztelési meghajtó közzététele
+<a name="how-to-publish-a-test-drive"></a>Tesztvezetés közzététele
 ---------------------------
 
-Most, hogy elkészítette a tesztelési meghajtót, ez a szakasz végigvezeti a tesztelési meghajtó sikeres közzétételéhez szükséges összes mezőn.
+Most, hogy már megvan a Test Drive beépített, ez a szakasz végigvezeti az egyes mezők szükségesek ahhoz, hogy sikeresen tegye közzé a Test Drive.
 
-![A test Drive funkció engedélyezése](./media/azure-resource-manager-test-drive/howtopub1.png)
+![A Tesztmeghajtó szolgáltatás engedélyezése](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Az első és legfontosabb mező az, hogy a kitöltéshez meg kell-e jeleníteni az űrlap tesztelését az összes kötelező mezővel. Ha a nem lehetőséget választja **,** az űrlap le lesz tiltva, és ha újból közzéteszi a tesztelési meghajtót, a rendszer eltávolítja a tesztelési meghajtót az éles környezetből.
+Az első és legfontosabb mező az, hogy bekapcsolja, hogy szeretné-e az űrlap tesztelése az összes szükséges mezőt kitölteni. Ha a Nem lehetőséget választja, az űrlap letiltásra **kerül,** és ha újra közzéteszi a Tesztmeghajtót, a tesztmeghajtó törlődik az éles környezetből.
 
-*Megjegyzés*: Ha a felhasználók aktívan használják a tesztelési meghajtókat, akkor ezek a tesztelési meghajtók továbbra is futni fognak, amíg a munkamenet le nem jár.
+*Megjegyzés:* Ha a felhasználók aktívan használnak tesztmeghajtókat, akkor ezek a tesztmeghajtók a munkamenet lejártáig továbbra is futni fognak.
 
 ### <a name="details"></a>Részletek
 
-A kitöltendő következő szakasz a tesztelési meghajtó ajánlatának részleteit tartalmazza.
+A következő kitöltandó szakasz a Test Drive ajánlat részletei.
 
-![Illesztőprogram-ellenőrzés részletei](./media/azure-resource-manager-test-drive/howtopub2.png)
+![A tesztillesztő adatai](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Leírás –** *[kötelező mező]* itt írhatja be a tesztelési meghajtón található fő leírást. Az ügyfél itt olvashatja el, hogy milyen forgatókönyveket fog a tesztvezetés a termékre vonatkozóan. 
+**Leírás -** *[Kötelező mező]* Itt írja meg a fő leírást arról, hogy mi van a tesztmeghajtón. Az ügyfél jön ide, hogy olvassa el, milyen forgatókönyveket a Test Drive lesz, amely a termékről. 
 
-**Felhasználói kézikönyv –** *[kötelező mező]* ez a tesztelési meghajtó felületének részletes áttekintése. Az ügyfél ekkor megnyithatja ezt, és pontosan megtekintheti, hogy mit szeretne tenni a tesztelési meghajtón. Fontos, hogy ez a tartalom könnyen érthető és követhető legyen! (. PDF-fájlnak kell lennie)
+**Felhasználói kézikönyv -** *[Kötelező mező]* Ez a Test Drive-élmény részletes forgatókönyve. Az ügyfél megnyitja ezt, és végigsétálhat pontosan azon, amit szeretne, hogy tegyenek a Tesztvezetés során. Fontos, hogy ez a tartalom könnyen érthető és követhető legyen! (.pdf fájlnak kell lennie)
 
-A **Test Drive bemutató videója –** \[ajánlott\] a felhasználói kézikönyvhez hasonló módon, a legjobb megoldás egy videós oktatóanyag készítése a test Drive-élményhez. Az ügyfél ezt megelőzően vagy a tesztelési meghajtón tekinti meg, és pontosan megmutatja, mit szeretne tenni a tesztelési meghajtón. Fontos, hogy ez a tartalom könnyen érthető és követhető legyen!
+**Test Drive Demo Video -** \[Ajánlott\] Hasonló a felhasználói kézikönyv, a legjobb, ha egy video tutorial a Test Drive tapasztalat. Az ügyfél fogja nézni ezt a korábbi vagy során test drive, és végigjárni, hogy pontosan mit szeretne, hogy nem az egész Test Drive. Fontos, hogy ez a tartalom könnyen érthető és követhető legyen!
 
-- A videó **neve** – cím
-- **Hivatkozás** – a YouTube vagy a Vimeo beágyazott URL-címének kell lennie. Példa a beágyazott URL-cím beszerzésére:
-- **Miniatűr** – magas minőségi képpontnak (533x324) kell lennie. A test Drive-élmény néhány részének képernyőképét javasoljuk.
+- **Név** - A videó címe
+- **Link** - A YouTube vagy a Vimeo beágyazott URL-címe kell, hogy legyen. Példa arra, hogyan lehet a beágyazott URL alatt van:
+- **Thumbnail** - Jó minőségű képnek (533x324) kell lennie. Javasoljuk, hogy itt képernyőképet készít a Test Drive-élmény egy részéről.
 
-Alább látható, hogyan jelennek meg ezek a mezők az ügyfél számára a test Drive-élményben.
+Az alábbiakban azt olvashatja, hogy ezek a mezők hogyan jelennek meg az ügyfél számára a Test Drive-élmény során.
 
-![A test Drive-mezők megjelenése és hangulata](./media/azure-resource-manager-test-drive/howtopub4.png)
+![A Test Drive mezők megjelenésése](./media/azure-resource-manager-test-drive/howtopub4.png)
 
-### <a name="technical-configuration"></a>Technikai konfiguráció
+### <a name="technical-configuration"></a>Műszaki konfiguráció
 
-A kitöltés következő szakasza a tesztelési meghajtó logikai alkalmazásának konfigurálása és a tesztvezetés-példányok működésének meghatározása.
+A következő kitöltandó szakasz ban konfigurálhatja a Test Drive Logic App alkalmazást, és megadhatja, hogy a Tesztmeghajtó-példányok hogyan működnek.
 
-![Tesztelési meghajtó technikai konfigurációja](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
+![A Test Drive műszaki konfigurációja](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **Régió** -  *[kötelező mező]* a kiválasztott régió az a hely, ahol kiválaszthatja, hol vannak telepítve a test Drive Logic app-erőforrások.
+- **Régió** - *[Kötelező mező]* A kiválasztott régióban válassza ki, ahol a Test Drive Logic App erőforrásait üzembe helyezése.
 
-    *Megjegyzés:* Ha a logikai alkalmazás rendelkezik olyan egyéni erőforrásokkal, amelyek egy régióban vannak tárolva, győződjön meg arról, hogy a régió itt van kiválasztva. Ennek a legjobb módja a **logikai alkalmazás helyi üzembe helyezése az Azure-előfizetésben a portálon, és annak ellenőrzése, hogy az működik** -e az itt való írás előtt.
+    *Megjegyzés:* Ha a logikai alkalmazás rendelkezik olyan egyéni erőforrásokkal, amelyek egy régióban vannak tárolva, győződjön meg arról, hogy a régió itt van kiválasztva. Ennek legjobb módja, ha **teljes mértékben telepíti a logic app helyileg az Azure-előfizetésben a portálon, és ellenőrizze, hogy működik-e,** mielőtt ide írnák.
 
-- Az **egyidejű tesztelési meghajtók maximális** száma -  *[kötelező mező]* a már üzembe helyezett tesztvezetés-példányok száma, és a kiválasztott régióhoz való hozzáférésre vár. Az ügyfelek azonnal hozzáférhetnek a tesztelési meghajtókhoz, és nem kell megvárniuk az üzembe helyezést.
+- **Maximális egyidejű tesztmeghajtók** - *[Kötelező mező]* A már telepített és hozzáférésre váró tesztmeghajtó-példányok száma kiválasztott régiónként. Az ügyfelek azonnal elérhetik ezt a tesztmeghajtót, és nem kell megvárniuk a központi telepítést.
 
-    *Megjegyzés:* Ha olyan webes szemináriumot vagy osztályt futtat, amelyben az összes N-számú tanulót szeretné kipróbálni, akkor azt javasoljuk, hogy tegyen közzé nagy számú gyors példányt, majd miután az osztály átvette a normál számú gyors példány újbóli közzétételét.
+    *Megjegyzés:* Ha olyan webináriumot/osztályt futtat, ahol azt szeretné, hogy az összes N-számú tanuló tesztmeghajtót hajtson végre, ajánlott n számú hot példányt közzétenni, majd ha az osztály vége, tegye közzé újra a szokásos számú forró példányt.
 
-- **Tesztelési meghajtó időtartama (óra) –** *[kötelező mező]* időtartam, ameddig a tesztvezetés aktív marad, \# óra múlva. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
+- **Tesztvezetés időtartama (óra) -** *[Kötelező mező]* Időtartam, hogy mennyi \# ideig a tesztvezetés aktív marad, az óra. A tesztvezetés automatikusan leáll ezen időszak lejárta után.
 
-- **Azure-erőforráscsoport neve-** *[kötelező mező]* írja be az erőforráscsoport nevét, ahol a logikai alkalmazás tesztelési meghajtóit menti a rendszer.
+- **Azure Resource Group name –** *[Required Field]* Írás az erőforráscsoport nevében, ahol a logikai alkalmazás tesztmeghajtók menti.
 
-- A **logikai alkalmazás nevének kiosztása –** *[kötelező mező]* írás a logikai alkalmazásban, amely a felhasználó a tesztelési meghajtón való hozzárendelésére szolgál, mielőtt az ügyfél beolvassa azt, írja be a logikai alkalmazás nevét. Győződjön meg arról, hogy a fájl a fenti erőforráscsoporthoz lett mentve.
+- **Logic App Name -** *[Required Field]* Írás a logikai alkalmazásban, amely a tesztmeghajtón lévő felhasználó hozzárendelésére szolgál, mielőtt az ügyfél megkapja, írja be a logikai alkalmazás nevét itt. Győződjön meg arról, hogy a fájl a fenti erőforráscsoportba van mentve.
 
-- A **logikai alkalmazás nevének megszüntetése –** *[kötelező mező]* írja a logikai alkalmazás nevét a tesztelési meghajtón létrehozott összes erőforrás megszüntetéséhez. Győződjön meg arról, hogy a fájl a fenti erőforráscsoporthoz lett mentve.
+- **Deprovision Logic App Name -** *[Required Field]* Írás a logikai alkalmazás nevét a test drive-ban létrehozott összes erőforrás deprovisioning. Győződjön meg arról, hogy a fájl a fenti erőforráscsoportba van mentve.
 
-- **Hozzáférési információk –** *[kötelező mező]* miután egy ügyfél lekéri a tesztelési meghajtót, a hozzáférési információk megjelennek a számukra. Ezek az utasítások célja, hogy megosszák a hasznos kimeneti paramétereket a test Drive Resource Manager-sablonból. A kimeneti paraméterek belefoglalásához használjon dupla kapcsos zárójeleket (például **{{outputname}}** ), és a helyükön helyesen lesznek beszúrva. (A HTML-karakterlánc formázását érdemes az előtérben megjeleníteni).
+- **Hozzáférési információk -** *[Kötelező mező]* Miután az ügyfél megkapja a Tesztmeghajtót, a hozzáférési információk megjelennek számukra. Ezek az utasítások a Test Drive Resource Manager sablon hasznos kimeneti paramétereinek megosztására szolgálnak. A kimeneti paraméterek felvételéhez használjon dupla göndör szögletes zárójeleket (például **{{outputname}}**), és a rendszer helyesen szúrja be őket a helyre. (Html karakterlánc formázás ajánlott itt jelenik meg az előlapon).
 
-### <a name="test-drive-deployment-subscription-details"></a>Tesztelési meghajtó üzembe helyezésének előfizetése – részletek
+### <a name="test-drive-deployment-subscription-details"></a>A Test Drive-alapú üzembe helyezési előfizetés részletei
 
-A kitöltendő utolsó szakasz az Azure-előfizetés és a Azure Active Directory (AD) összekapcsolásával automatikusan képes lesz a tesztelési meghajtók üzembe helyezésére.
+Az utolsó kitöltendő szakasz az Azure-előfizetés és az Azure Active Directory (AD) automatikus üzembe helyezésének lehetővé teszi.
 
-![Tesztelési meghajtó üzembe helyezésének előfizetése – részletek](./media/azure-resource-manager-test-drive/subdetails1.png)
+![A Test Drive-alapú üzembe helyezési előfizetés részletei](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**Azure-előfizetés azonosítója** *[kötelező mező]* ez hozzáférést biztosít az Azure-szolgáltatásokhoz és a Azure Portalhoz. Az előfizetés az erőforrás-használat jelentését és a szolgáltatások számlázását jelenti. Ha még nem rendelkezik **külön** Azure-előfizetéssel kizárólag tesztelési meghajtókhoz, folytassa a következő lépéssel. Az Azure-előfizetési azonosítók megkereséséhez jelentkezzen be Azure Portal és navigáljon a bal oldali menüben lévő előfizetésekhez.
+**Azure-előfizetés-azonosító** *[Kötelező mező]* Ez hozzáférést biztosít az Azure-szolgáltatásokhoz és az Azure Portalhoz. Az előfizetés, ahol az erőforrás-használat jelentik, és a szolgáltatások számlázása. Ha még nem rendelkezik **külön** Azure-előfizetéssel csak tesztmeghajtókhoz, kérjük, folytassa, és készítsen egyet. Az Azure-előfizetés-azonosítókat az Azure Portalra való bejelentkezéssel és a bal oldali menü előfizetések parancsára való navigálással találhatja meg.
 (Példa: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Azure-előfizetések](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Azure ad-bérlő azonosítója** *[kötelező mező]* ha már elérhető bérlői azonosító, a Properties-\> Directory-azonosítóban találhatja meg alább.
+**Az Azure AD-bérlőazonosító** *[Kötelező mező]* Ha rendelkezik egy bérlői azonosító\> már elérhető megtalálja az alábbiakban a Tulajdonságok - Címtár-azonosító.
 
 ![Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-Ellenkező esetben hozzon létre egy új bérlőt Azure Active Directory.
+Ellenkező esetben hozzon létre egy új bérlőt az Azure Active Directoryban.
 
-![Azure Active Directory tulajdonságok képernyő](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Az Azure Active Directory tulajdonságainak képernyője](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-! Azure Active Directory] (./Media/Azure-Resource-Manager-Test-Drive/subdetails5.png)
+! Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails5.png)
 
-![Bérlők Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails6.png)
+![Az Azure Active Directory bérlői](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Azure ad alkalmazás azonosító** *[kötelező mező]* következő lépés egy új alkalmazás létrehozása és regisztrálása. Ezt az alkalmazást fogjuk használni a test Drive-példányon végrehajtott műveletek végrehajtásához.
+**Azure AD App ID** *[Kötelező mező]* Következő lépés egy új alkalmazás létrehozása és regisztrálása. Ezt az alkalmazást arra fogjuk használni, hogy műveleteket hajtsunk végre a Test Drive-példányon.
 
-1. Navigáljon az újonnan létrehozott címtárhoz vagy már meglévő címtárhoz, és válassza az Azure Active Directory elemet a szűrő ablaktáblán.
-2. Keressen rá a "Alkalmazásregisztrációk" kifejezésre, és kattintson a "Hozzáadás" gombra.
+1. Keresse meg az újonnan létrehozott könyvtárat vagy a már meglévő könyvtárat, és válassza az Azure Active directory a szűrőablaktáblán.
+2. Keressen rá az "Alkalmazásregisztrációk" kifejezésre, és kattintson a "Hozzáadás" gombra
 3. Adja meg az alkalmazás nevét.
-4. Válassza ki a "Web App/API" típust
-5. Adjon meg bármilyen értéket a bejelentkezési URL-címben, mi nyerte el\'t a mező használatával.
+4. Válassza ki a típusa a "Web app / API"
+5. Adjon meg bármilyen értéket a bejelentkezési URL-címben,\'akkor nem fogjuk használni ezt a mezőt.
 6. Kattintson a Létrehozás gombra.
-7. Az alkalmazás létrehozása után lépjen a Properties-\> az alkalmazás beállítása több-bérlős elemre, és kattintson a Save (Mentés) gombra.
+7. Az alkalmazás létrehozása után nyissa meg\> a Tulajdonságok – Állítsa be az alkalmazást több-bérlősként, és nyomja le a Mentés parancsot.
 
-Kattintson a Mentés gombra. Az utolsó lépés az alkalmazás AZONOSÍTÓjának beolvasása a regisztrált alkalmazáshoz, és beillesztés a test Drive (tesztelési meghajtó) mezőbe.
+Kattintson a Mentés gombra. Az utolsó lépés az, hogy megragad az alkalmazás azonosítója ehhez a regisztrált alkalmazáshoz, és illessze be a Test Drive mezőbe itt.
 
-![Azure Active Directory alkalmazás azonosítója](./media/azure-resource-manager-test-drive/subdetails7.png)
+![Az Azure Active Directory alkalmazásazonosítója](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Mivel az alkalmazást az előfizetésre való központi telepítésre használjuk, az alkalmazást közreműködőként kell hozzáadni az előfizetéshez. Az alábbi utasítások a következők:
+Tekintettel arra, hogy az alkalmazást az előfizetés üzembe helyezéséhez használjuk, hozzá kell adnunk az alkalmazást az előfizetés közreműködőjeként. Ezekre vonatkozó utasítások a következők:
 
-1. Navigáljon az előfizetések panelre, és válassza ki a megfelelő előfizetést, amelyet csak a tesztelési meghajtóhoz használ.
+1. Keresse meg az Előfizetések panelt, és válassza ki a tesztvezetéshez használt megfelelő előfizetést.
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
-1. Kattintson a **szerepkör-hozzárendelések** fülre.  ![Azure Active Directory, új Access Control rendszerbiztonsági tag hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre.
-1. Adja meg a szerepkört **közreműködőként**.
-1. Írja be az Azure AD-alkalmazás nevét, és válassza ki azt az alkalmazást, amelyhez hozzá szeretné rendelni a szerepkört.
-    ![Azure Active Directory engedélyek](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Szerepkör-hozzárendelések** fülre.  ![Azure Active Directory, új hozzáférés-vezérlési tag hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kattintson **a Szerepkör-hozzárendelés hozzáadása gombra.**
+1. Állítsa be a szerepkört **közreműködőként.**
+1. Írja be az Azure AD-alkalmazás nevét, és válassza ki a szerepkör hozzárendeléséhez az alkalmazást.
+    ![Az Azure Active Directory engedélyei](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kattintson a **Mentés** gombra.
 
-**Azure ad alkalmazás Key-** *[kötelező mező]* a végső mező egy hitelesítési kulcs létrehozása. A kulcsok területen adja meg a kulcs leírását, állítsa be az időtartamot, hogy soha ne járjon le, majd válassza a mentés lehetőséget. **Fontos** elkerülni, hogy a rendszer ne jelentsen egy lejárt kulcsot, így a tesztelési meghajtót éles környezetben fogja megszüntetni. Másolja ezt az értéket, és illessze be a szükséges tesztvezetés mezőjébe.
+**Azure AD alkalmazáskulcs –** *[Kötelező mező]* A végső mező egy hitelesítési kulcs létrehozása. A billentyűk alatt adjon hozzá egy kulcsleírást, állítsa úgy az időtartamot, hogy soha ne járjon le, majd válassza a mentés lehetőséget. **Fontos,** hogy ne legyen lejárt kulcs, amely megszakítja a tesztmeghajtót éles környezetben. Másolja másra ezt az értéket, és illessze be a szükséges Tesztmeghajtó mezőbe.
 
-![Azure Active Directory kulcsok szakasz](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Az Azure Active Directory kulcsai szakasz](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 > [!CAUTION]
-> Az Azure-alkalmazás regisztrációjának előzetes verziója nem használható, mert jelenleg nem állít elő Base64 kódolású kulcsot.
+> Az Azure App Regisztrációs előzetes verziója nem használható, mert jelenleg nem hoz létre base64 kódolású kulcsot.
 
 
 <a name="next-steps"></a>További lépések
 ----------
 
-Most, hogy kitöltötte az összes tesztelési meghajtó mezőjét, ugorjon át, és **tegye közzé újból** az ajánlatot. Miután a tesztvezetés átadta a minősítési folyamatot, az ajánlat **előzetes** verziójában alaposan tesztelni kell a felhasználói élményt. Indítsa el a tesztelési meghajtót a felhasználói felületen, és ellenőrizze, hogy a tesztelési meghajtók teljes mértékben telepítve vannak-e.
+Most, hogy az összes Tesztmeghajtó mező ki lett töltve, menjen át, és **tegye közzé újra** az ajánlatot. Miután a Tesztmeghajtó megfelelt a minősítési folyamaton, alaposan tesztelje az ügyfélélményt az ajánlat **előzetes verziójában.** Indítsa el a tesztmeghajtót a felhasználói felületen, és ellenőrizze, hogy a tesztmeghajtók teljes körűtelepítése megfelelő-e.
 
-Fontos megjegyezni, hogy nem törli a tesztvezetés azon részét, amelyet az ügyfeleknek kiépítenek, ezért a test Drive szolgáltatás automatikusan törli ezeket az erőforráscsoportokat, miután az ügyfél befejezte azt.
+Fontos megjegyezni, hogy nem törli a Tesztmeghajtó egyetlen részét sem, mivel azok ki vannak építve az ügyfelek számára, így a Test Drive szolgáltatás automatikusan megtisztítja ezeket az erőforráscsoportokat, miután az ügyfél befejezte azt.
 
-Ha már elégedett az előzetes verzió ajánlatával, most itt az ideje, hogy **élj**! A Microsoft végső felülvizsgálati folyamata az ajánlat közzétételét követően, a teljes végpontok közötti élmény ellenőrzéséhez. Ha valamilyen okból elutasítják az ajánlatot, elküldünk egy értesítést az ajánlat mérnöki kapcsolattartójának, amely elmagyarázza, mit kell megjavítania.
+Ha már jól érzi magát az Előzetes ajánlattal, most itt az ideje, hogy **élőben induljon!** Van egy végső felülvizsgálati folyamat a Microsoft, miután az ajánlat már közzétették, hogy ellenőrizze a teljes végponttól végpontig tapasztalat. Ha valamilyen okból az ajánlatot elutasítják, értesítést küldünk az ajánlat műszaki kapcsolattartójának, amelyben elmagyarázza, hogy mit kell javítani.
 
-Ha további kérdései vannak, hibaelhárítási tanácsokat talál, vagy ha szeretné, hogy a tesztvezetés sikeres legyen, tekintse meg a [Gyakori kérdések, hibaelhárítás és & ajánlott eljárásokat](./marketing-and-best-practices.md).
+Ha további kérdései vannak, hibaelhárítási tanácsokat keres, vagy szeretné sikeresebbé tenni a Tesztmeghajtót, látogasson el a [GYIK,Hibaelhárítás, & gyakorlati tanácsok](./marketing-and-best-practices.md)ra.

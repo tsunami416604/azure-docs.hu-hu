@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 sorozatú eszközök vezérlőinek kezelése | Microsoft Docs
-description: Megtudhatja, hogyan állíthatja le, indíthatja újra, állíthatja le vagy állíthatja alaphelyzetbe a StorSimple-eszközillesztőket.
+title: StorSimple 8000 sorozatú eszközvezérlők kezelése | Microsoft dokumentumok
+description: Ismerje meg, hogyan állíthatja le, indítható újra, állíthatja le vagy állíthatja alaphelyzetbe a StorSimple eszközvezérlőket.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,150 +15,150 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267767"
 ---
-# <a name="manage-your-storsimple-device-controllers"></a>StorSimple-eszközök vezérlőinek kezelése
+# <a name="manage-your-storsimple-device-controllers"></a>A StorSimple eszközvezérlők kezelése
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag ismerteti a StorSimple-vezérlőkön végrehajtható különböző műveleteket. A StorSimple-eszközben lévő vezérlők redundáns (társ-) vezérlők egy aktív-passzív konfigurációban. Egy adott időpontban csak egy vezérlő aktív, és az összes lemezt és hálózati műveletet feldolgozza. A másik vezérlő passzív üzemmódban van. Ha az aktív vezérlő meghibásodik, a passzív vezérlő automatikusan aktívvá válik.
+Ez az oktatóanyag ismerteti a StorSimple-eszközvezérlőkön elvégezhető különböző műveleteket. A StorSimple-eszköz vezérlői redundáns (társ)vezérlők aktív-passzív konfigurációban. Egy adott időpontban csak egy vezérlő aktív, és az összes lemez- és hálózati műveletet feldolgozza. A másik vezérlő passzív módban van. Ha az aktív vezérlő meghibásodik, a passzív vezérlő automatikusan aktívvá válik.
 
-Ez az oktatóanyag részletes útmutatást nyújt az eszközök vezérlőinek kezeléséhez a használatával:
+Ez az oktatóanyag lépésenkénti utasításokat tartalmaz az eszközvezérlők kezeléséhez a következők használatával:
 
-* Az eszközhöz tartozó **vezérlők** panelt a StorSimple Eszközkezelő szolgáltatásban.
-* Windows PowerShell StorSimple-bővítménye.
+* **Vezérlők** panel az eszköz höz a StorSimple Eszközkezelő szolgáltatásban.
+* Windows PowerShell a StorSimple számára.
 
-Javasoljuk, hogy az StorSimple Eszközkezelő szolgáltatáson keresztül kezelhesse az eszközöket. Ha egy műveletet csak Windows PowerShell StorSimple-bővítménye használatával lehet elvégezni, az oktatóanyag jegyezze fel.
+Azt javasoljuk, hogy az eszközvezérlők kezelése a StorSimple Eszközkezelő szolgáltatáson keresztül. Ha egy művelet csak a StorSimple Windows PowerShell használatával hajtható végre, az oktatóanyag feljegyzi azt.
 
-Az oktatóanyag elolvasása után a következőket teheti:
+Elolvasása után ez a bemutató, akkor képes lesz arra, hogy:
 
-* StorSimple-vezérlő újraindítása vagy leállítása
-* StorSimple-eszköz leállítása
-* A StorSimple-eszköz visszaállítása a gyári beállításokra
+* StorSimple eszközvezérlő újraindítása vagy leállítása
+* StorSimple eszköz leállítása
+* Állítsa vissza a StorSimple-eszközt a gyári alapértékekre
 
 ## <a name="restart-or-shut-down-a-single-controller"></a>Egyetlen vezérlő újraindítása vagy leállítása
-Egy vezérlő újraindítása vagy leállítása nem szükséges a normál rendszerbeli művelet részeként. Egy eszköz-vezérlő leállítási művelete csak olyan esetekben gyakori, amikor egy hibás eszköz hardver-összetevőjének cseréje szükséges. A vezérlő újraindítása olyan helyzetben is megkövetelhető, amelyben a túlzott memóriahasználat vagy az üzemzavart okozó vezérlő befolyásolja a teljesítményt. Előfordulhat, hogy a vezérlő cseréjét követően újra kell indítania a vezérlőt, ha engedélyezni és tesztelni szeretné a lecserélt vezérlőt.
+A vezérlő újraindítása vagy leállítása nem szükséges a rendszer normál működésének részeként. Egyetlen eszközvezérlő leállítási műveletei csak olyan esetekben gyakoriak, amikor egy meghibásodott eszközhardver-összetevőt ki kell cserélni. A vezérlő újraindítására akkor is szükség lehet, ha a teljesítményt a túlzott memóriahasználat vagy a hibás vezérlő befolyásolja. Ha engedélyezni és tesztelni szeretné a lecserélt vezérlőt, akkor előfordulhat, hogy a sikeres vezérlőcsere után újra kell indítania a vezérlőt.
 
 Az eszköz újraindítása nem okoz zavart a csatlakoztatott kezdeményezők működésében, feltéve, hogy a passzív vezérlő elérhető. Ha a passzív vezérlő nem érhető el vagy ki van kapcsolva, az aktív vezérlő újraindítása a szolgáltatás megszakadását és leállást eredményezhet.
 
 > [!IMPORTANT]
-> * **A futó vezérlőt soha nem szabad fizikailag eltávolítani, mivel ez a redundancia elvesztését eredményezi, és nagyobb a leállás kockázata.**
-> * Az alábbi eljárás csak a StorSimple fizikai eszközre vonatkozik. További információ a StorSimple Cloud Appliance indításáról, leállításáról és újraindításáról: [a felhőalapú berendezés használata](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance).
+> * **A futó vezérlőt soha nem szabad fizikailag eltávolítani, mivel ez a redundancia elvesztését és az állásidő fokozott kockázatát eredményezné.**
+> * A következő eljárás csak a StorSimple fizikai eszközre vonatkozik. A StorSimple felhőalapú berendezés elindításáról, leállításáról és újraindításáról [a Felhőalapú készülék munkája](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)című témakörben talál.
 
-A StorSimple Eszközkezelő szolgáltatás vagy a Windows PowerShell StorSimple-bővítménye Azure Portal használatával újraindíthatja vagy leállíthatja az egyes eszközök vezérlőit.
+Egyetlen eszközvezérlő t indíthat újra vagy állíthatj le a StorSimple Eszközkezelő szolgáltatás Azure-portálján vagy a StorSimple-hez készült Windows PowerShell használatával.
 
-Az Azure Portal a következő lépések végrehajtásával felügyelheti az eszközillesztőket.
+Az eszközvezérlők azure-portálról történő kezeléséhez hajtsa végre a következő lépéseket.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Vezérlő újraindítása vagy leállítása Azure Portal
-1. A StorSimple Eszközkezelő szolgáltatásban válassza az **eszközök**lehetőséget. Válassza ki az eszközt az eszközök listájából. 
+#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Vezérlő újraindítása vagy leállítása az Azure Portalon
+1. A StorSimple Eszközkezelő szolgáltatásban nyissa meg az **Eszközök**lehetőséget. Válassza ki az eszközt az eszközök listájából. 
 
     ![Válasszon egy eszközt.](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. Lépjen a **beállítások > vezérlők menüpontra**.
+2. Nyissa meg **a Beállítások > vezérlők lehetőséget.**
    
-    ![A StorSimple-vezérlők kifogástalan állapotának ellenőrzése](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. A **vezérlők** panelen ellenőrizze, hogy az eszközön lévő vezérlők állapota is **kifogástalan**-e. Válasszon ki egy vezérlőt, kattintson a jobb gombbal, majd válassza az **Újraindítás** vagy a **Leállítás**lehetőséget.
+    ![A StorSimple eszközvezérlők kifogástalan állapotának ellenőrzése](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
+3. A **Vezérlők** panelen ellenőrizze, hogy az eszköz mindkét vezérlőjének állapota **kifogástalan-e.** Jelöljön ki egy vezérlőt, kattintson a jobb gombbal, majd válassza **az Újraindítás** vagy **a Leállítás parancsot.**
 
-    ![StorSimple-vezérlők újraindítása vagy leállítása](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
+    ![Válassza ki a StorSimple eszközvezérlők újraindítását vagy leállítását](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. Létre kell hozni egy feladatot a vezérlő újraindításához vagy leállításához, és a megfelelő figyelmeztetések jelennek meg, ha vannak ilyenek. Az újraindítás vagy a Leállítás figyeléséhez nyissa meg a **szolgáltatás > tevékenység naplóit** , és szűrje a szolgáltatásra jellemző paraméterek alapján. Ha a vezérlőt leállították, a bekapcsoláshoz be kell állítania a főkapcsolót.
+4. Létrejön egy feladat a vezérlő újraindításához vagy leállításához, és a megfelelő figyelmeztetések jelennek meg, ha vannak ilyenek. Az újraindítás vagy a leállítás figyeléséhez nyissa meg **a Service > tevékenységnaplókat,** és szűrje a szolgáltatásra jellemző paraméterek szerint. Ha egy vezérlőt leállítottak, akkor meg kell nyomnia a bekapcsológombot, hogy bekapcsolja a vezérlőt.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Vezérlő újraindítása vagy leállítása Windows PowerShell StorSimple-bővítménye
-A következő lépések végrehajtásával állítsa le vagy indítsa újra a StorSimple-eszköz egyetlen vezérlőjét a Windows PowerShell StorSimple-bővítménye.
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Vezérlő újraindítása vagy leállítása a StorSimple-hez készült Windows PowerShell ben
+Hajtsa végre az alábbi lépéseket a StorSimple-eszközön lévő egyetlen vezérlő leállításához vagy újraindításához a StorSimple-hez készült Windows PowerShellből.
 
-1. Az eszközt a soros konzolon vagy egy távoli számítógépről származó Telnet-munkameneten keresztül érheti el. A 0 vagy a Controller 1 vezérlőhöz való kapcsolódáshoz kövesse a [Putty használata az eszköz soros konzolhoz való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)című szakasz lépéseit.
-2. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel.
-3. A szalagcím üzenetben jegyezze fel azt a vezérlőt, amelyhez csatlakozik (0. vezérlő vagy vezérlő 1), és hogy az aktív vagy a passzív (készenléti) vezérlő.
+1. Az eszköz elérése a soros konzolon vagy a telnet munkameneten keresztül távoli számítógépről. A 0 vagy 1 vezérlőhöz való csatlakozáshoz kövesse a [PuTTY használata](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)az eszköz soros konzoljához való csatlakozás lépéseit.
+2. A soros konzol menüjében **Log in with full access**válassza az 1.
+3. A szalagcímüzenetben jegyezze fel azt a vezérlőt, amelyhez csatlakozik (0 vezérlő vagy 1 vezérlő), és hogy az aktív vagy passzív (készenléti) vezérlőről van-e szó.
    
-   * Egyetlen vezérlő leállításához a parancssorba írja be a következőt:
+   * Egyetlen vezérlő leállításához írja be a következőt:
      
        `Stop-HcsController`
      
-       Ezzel leállítja azt a vezérlőt, amelyhez csatlakozik. Ha leállítja az aktív vezérlőt, az eszköz feladatátvételt hajt végre a passzív vezérlőn.
+       Ezzel leállítja azt a vezérlőt, amelyhez csatlakozik. Ha leállítja az aktív vezérlőt, akkor az eszköz átadja a feladatokat a passzív vezérlőnek.
 
-   * A vezérlő újraindításához írja be a következőt a parancssorba:
+   * Vezérlő újraindításához írja be a parancssorba a következőt:
      
        `Restart-HcsController`
      
-       Ezzel újraindítja azt a vezérlőt, amelyhez csatlakozik. Ha újraindítja az aktív vezérlőt, az újraindítást megelőzően feladatátvételt hajt végre a passzív vezérlőn.
+       Ezzel újraindítja azt a vezérlőt, amelyhez csatlakozik. Ha újraindítja az aktív vezérlőt, az újraindítás előtt átadja a feladatokat a passzív vezérlőnek.
 
-## <a name="shut-down-a-storsimple-device"></a>StorSimple-eszköz leállítása
+## <a name="shut-down-a-storsimple-device"></a>StorSimple eszköz leállítása
 
-Ez a szakasz azt ismerteti, hogyan lehet leállítani egy futó vagy sikertelen StorSimple eszközt egy távoli számítógépről. Az eszköz ki van kapcsolva, miután az eszközillesztők le vannak állítva. Az eszköz leállítása az eszköz fizikai áthelyezésekor vagy a szolgáltatáson kívül történik.
+Ez a szakasz bemutatja, hogyan lehet leállítani egy futó vagy egy sikertelen StorSimple-eszközt egy távoli számítógépről. Az eszköz ki van kapcsolva, miután mindkét eszközvezérlő leállt. Az eszköz leállítása akkor történik, amikor az eszközt fizikailag áthelyezik, vagy üzemen kívül helyezik.
 
 > [!IMPORTANT]
-> Az eszköz leállítása előtt tekintse meg az eszköz összetevőinek állapotát. Keresse meg az eszközt, majd kattintson a **beállítások > hardver állapota**lehetőségre. Az **állapot és hardver** állapota panelen ellenőrizze, hogy az összes összetevő LED állapota zöld. Csak egy kifogástalan állapotban lévő eszköz rendelkezik zöld állapottal. Ha az eszköz leállítása hibás összetevő helyett történik, akkor a megfelelő összetevő (k) esetében a sikertelen (piros) vagy a csökkentett teljesítményű (sárga) állapot jelenik meg.
+> Az eszköz leállítása előtt ellenőrizze az eszköz összetevőinek állapotát. Nyissa meg az eszközt, majd kattintson **a Beállítások > hardver állapota parancsra.** Az **Állapot és hardver állapot** panelen ellenőrizze, hogy az összes összetevő LED-állapota zöld-e. Csak egy kifogástalan állapotú eszköz rendelkezik zöld állapottal. Ha az eszköz leállítása egy hibás összetevő cseréje érdekében történik, az adott összetevő(k) hibás (piros) vagy degradálódott (sárga) állapotot fog látni.
 
 
-#### <a name="to-shut-down-a-storsimple-device"></a>StorSimple-eszköz leállítása
+#### <a name="to-shut-down-a-storsimple-device"></a>StorSimple eszköz leállítása
 
-1. Az eszközön a passzív vezérlő azonosításához vagy leállításához használja a [vezérlő újraindítása vagy](#restart-or-shut-down-a-single-controller) leállítása műveletet. Ezt a műveletet a Azure Portal vagy Windows PowerShell StorSimple-bővítménye is végrehajthatja.
-2. Az aktív vezérlő leállításához ismételje meg a fenti lépést.
-3. Ekkor meg kell vizsgálnia az eszköz hátsó síkjait. A két vezérlő teljes leállítása után mindkét vezérlőn a LED-ek állapotát piros színnel kell ellátni. Ha most ki kell kapcsolni az eszközt, a Power és a hűtési modulok (PCMs-EK) kikapcsolt állapotára kell váltania. Ez kikapcsolja az eszközt.
+1. Használja az [újraindítást, vagy állítsa le a vezérlő](#restart-or-shut-down-a-single-controller) eljárás azonosítására és leállítására a passzív vezérlő az eszközön. Ezt a műveletet az Azure Portalon vagy a Windows PowerShell storSimple.
+2. Ismételje meg a fenti lépést az aktív vezérlő leállításához.
+3. Most meg kell néznie a készülék hátsó síkját. A két vezérlő teljes leállítása után mindkét vezérlő állapotJELZŐ LED-jének pirosan kell villognia. Ha most teljesen ki kell kapcsolnia a készüléket, fordítsa ki a táp- és hűtőmodulok (PCM) áramellátását KI állásba. Ez majd kikapcsolja az eszközt.
 
 ## <a name="reset-the-device-to-factory-default-settings"></a>Az eszköz visszaállítása a gyári alapértelmezett beállításokra
 
 > [!IMPORTANT]
-> Ha alaphelyzetbe kell állítania az eszközt az alapértelmezett gyári beállításokra, forduljon a Microsoft ügyfélszolgálatahoz. Az alább ismertetett eljárást csak Microsoft ügyfélszolgálatasal együtt kell használni.
+> Ha vissza kell állítania az eszközt a gyári alapértelmezett beállításokra, forduljon a Microsoft támogatási szolgálatához. Az alábbiakban ismertetett eljárás csak a Microsoft támogatási szolgálatával együtt használható.
 
-Ez az eljárás leírja, hogyan állíthatja alaphelyzetbe a Microsoft Azure StorSimple eszközt a gyári alapértelmezett beállításokra Windows PowerShell StorSimple-bővítménye használatával.
-Az eszköz alaphelyzetbe állítása alapértelmezés szerint eltávolítja a teljes fürt összes adatait és beállítását.
+Ez az eljárás azt ismerteti, hogyan állíthatja vissza a Microsoft Azure StorSimple-eszközt a gyári alapértelmezett beállításokra a Windows PowerShell for StorSimple használatával.
+Az eszköz alaphelyzetbe állítása alapértelmezés szerint eltávolítja az összes adatot és beállítást a teljes fürtből.
 
-A következő lépések végrehajtásával alaphelyzetbe állíthatja Microsoft Azure StorSimple eszközét az alapértelmezett gyári beállításokra:
+Hajtsa végre az alábbi lépéseket a Microsoft Azure StorSimple-eszköz gyári alapértelmezett beállításainak visszaállításához:
 
-### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Az eszköz alaphelyzetbe állítása az alapértelmezett beállításokkal Windows PowerShell StorSimple-bővítménye
-1. Az eszközt a soros konzolján keresztül érheti el. Ellenőrizze a szalagcím üzenetét, és győződjön meg arról, hogy csatlakozik az **aktív** vezérlőhöz.
-2. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel.
-3. A parancssorba írja be a következő parancsot a teljes fürt alaphelyzetbe állításához, az összes adat, a metaadatok és a vezérlő beállításainak eltávolításával:
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Az eszköz alaphelyzetbe állítása a StorSimple-hez való Windows PowerShell alapértelmezett beállításaira
+1. Az eszköz elérése a soros konzolon keresztül. Ellenőrizze a szalagcímüzenetet, és győződjön meg arról, hogy csatlakozik az **Aktív** vezérlőhöz.
+2. A soros konzol menüjében **Log in with full access**válassza az 1.
+3. A parancssorba írja be a következő parancsot a teljes fürt alaphelyzetbe állításához, eltávolítva az összes adatot, metaadatot és vezérlőbeállítást:
    
     `Reset-HcsFactoryDefault`
    
-    Egy vezérlő visszaállításához használja a [reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) parancsmagot a `-scope` paraméterrel.)
+    Egyetlen vezérlő alaphelyzetbe állításához használja a [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) parancsmamot a `-scope` paraméterrel.)
    
-    A rendszer többször is újraindul. A rendszer értesítést küld, ha az Alaphelyzetbe állítás sikeresen befejeződött. A rendszermodelltől függően 45-60 percet is igénybe vehet egy 8100-es eszközön és 60-90 percen belül egy 8600-re a folyamat befejezéséhez.
+    A rendszer többször is újraindul. Értesítést fog kapni, ha az alaphelyzetbe állítás sikeresen befejeződött. A rendszermodelltől függően egy 8100-as eszköz esetében 45–60 perc, a 8600-as pedig 60–90 perc alatt fejeződhet be a folyamat.
    
-## <a name="questions-and-answers-about-managing-device-controllers"></a>Az eszközök vezérlőinek kezelésével kapcsolatos kérdések és válaszok
-Ebben a szakaszban összefoglaljuk a StorSimple-vezérlők kezelésével kapcsolatos gyakori kérdéseket.
+## <a name="questions-and-answers-about-managing-device-controllers"></a>Kérdések és válaszok az eszközvezérlők kezelésével kapcsolatban
+Ebben a szakaszban összefoglaltuk a StorSimple eszközvezérlők kezelésével kapcsolatos gyakori kérdéseket.
 
-**K.** Mi történik, ha az eszközön lévő vezérlők állapota Kifogástalan, és be van kapcsolva, és újraindulok vagy leállítottam az aktív vezérlőt?
+**K.** Mi történik, ha az eszköz mindkét vezérlője kifogástalan állapotban van, és be van kapcsolva, és újraindítom vagy leállítom az aktív vezérlőt?
 
-**V.** Ha az eszközön lévő vezérlők állapota Kifogástalan, és be van kapcsolva, a rendszer megerősítést kér. A következőket dönthet:
+**A.** Ha az eszköz mindkét vezérlője kifogástalan állapotú és be van kapcsolva, a rendszer megerősítést kér. Dönthet úgy, hogy:
 
-* **Indítsa újra az aktív vezérlőt** – értesítést kap arról, hogy egy aktív vezérlő újraindítása miatt az eszköz feladatátvételt okozott a passzív vezérlőnek. A vezérlő újraindul.
-* **Aktív vezérlő leállítása** – értesítést kap arról, hogy az aktív vezérlő leállítása leállást eredményez. A vezérlő bekapcsolásához le kell küldenie az eszköz főkapcsoló gombját is.
+* **Indítsa újra az aktív vezérlőt** – Értesítést kap arról, hogy egy aktív vezérlő újraindítása miatt az eszköz átadott feladatokat a passzív vezérlőnek. A vezérlő újraindul.
+* **Aktív vezérlő leállítása** – Értesítést kap arról, hogy egy aktív vezérlő leállítása állásidő vel jár. A kontroller bekapcsolásához meg kell nyomnia a készülék bekapcsológombját is.
 
-**K.** Mi történik, ha az eszközön található passzív vezérlő nem érhető el vagy ki van kapcsolva, és újraindulok vagy leállítottam az aktív vezérlőt?
+**K.** Mi történik, ha az eszközöm passzív vezérlője nem érhető el vagy ki van kapcsolva, és újraindítom vagy leállítom az aktív vezérlőt?
 
-**V.** Ha az eszközön található passzív vezérlő nem érhető el vagy ki van kapcsolva, és a következőket választja:
+**A.** Ha az eszköz passzív vezérlője nem érhető el vagy nem kapcsol ki, és a következőket választja:
 
-* **Indítsa újra az aktív vezérlőt** – értesítést kap arról, hogy a művelet folytatása a szolgáltatás átmeneti megszakadását eredményezi, és a rendszer megerősítést kér.
-* **Aktív vezérlő leállítása** – a rendszer értesítést küld a művelet folytatásáról. Az eszköz bekapcsolásához le kell küldenie az egyik vagy mindkét vezérlő főkapcsoló gombját is. A rendszer megerősítést kér.
+* **Indítsa újra az aktív vezérlőt** – Értesítést kap arról, hogy a művelet folytatása a szolgáltatás ideiglenes megszakadását eredményezi, és megerősítést kér.
+* **Aktív vezérlő leállítása** – Értesítést kap arról, hogy a művelet folytatása leállást eredményez. Az eszköz bekapcsolásához az egyik vagy mindkét vezérlőbe meg kell nyomnia a bekapcsológombot. A rendszer megerősítést kér.
 
-**K.** Mikor nem sikerül a vezérlő újraindítása vagy leállítása?
+**K.** Mikor indul újra vagy nem sikerül leállítani a vezérlőt?
 
-**V.** A vezérlő újraindítása vagy leállítása sikertelen lehet, ha:
+**A.** A vezérlő újraindítása vagy leállítása sikertelen lehet, ha:
 
-* Folyamatban van egy eszköz frissítése.
-* Már folyamatban van egy vezérlő újraindítása.
-* Már folyamatban van egy vezérlő leállítása.
+* Eszközfrissítés van folyamatban.
+* A vezérlő újraindítása már folyamatban van.
+* A vezérlő leállítása már folyamatban van.
 
-**K.** Hogyan állapítható meg, hogy a rendszer újraindította vagy leállította-e a vezérlőt?
+**K.** Hogyan állapíthatja meg, hogy egy vezérlőt újraindítottak vagy leállítottak?
 
-**V.** A vezérlő állapotát a vezérlő panelen tekintheti meg. A vezérlő állapota jelzi, hogy a vezérlő újraindítási vagy leállítási folyamatban van-e. Emellett a **riasztások** panel tájékoztató riasztást is tartalmaz, ha a vezérlő újraindul vagy leáll. A vezérlő újraindítási és leállítási műveleteit a tevékenység naplófájljai is rögzítik. A tevékenységek naplóival kapcsolatos további információkért [tekintse meg a tevékenységek naplóinak megtekintése](storsimple-8000-service-dashboard.md#view-the-activity-logs)című témakört.
+**A.** A vezérlő állapotát a Controller panelen ellenőrizheti. A vezérlő állapota jelzi, hogy a vezérlő újraindítása vagy leállítása folyamatban van-e. Emellett a **Riasztások** panel információs riasztást is tartalmaz, ha a vezérlőt újraindítja vagy leállítja. A vezérlő újraindítási és leállítási műveletei is rögzítésre kerülnek a tevékenységnaplókban. A tevékenységnaplókról a [Tevékenységnaplók megtekintése](storsimple-8000-service-dashboard.md#view-the-activity-logs)című területen talál további információt.
 
-**K.** Van hatással az I/O-re a vezérlő feladatátvételének eredményeképpen?
+**K.** Van-e hatása az I/O eredményeként vezérlő feladatátvétel?
 
-**V.** A kezdeményezők és az aktív vezérlő közötti TCP-kapcsolatok alaphelyzetbe állnak a vezérlő feladatátvételének eredményeképpen, de a rendszer újra létrejön, amikor a passzív vezérlő feltételezi a műveletet. Előfordulhat, hogy a művelet során a kezdeményezők és az eszköz között egy ideiglenes (30 másodpercnél rövidebb) szünet történik.
+**A.** A kezdeményezők és az aktív vezérlő közötti TCP-kapcsolatok a vezérlő feladatátvétele miatt alaphelyzetbe állnak, de a passzív vezérlő működését feltételezve újra létrejön. A művelet során ideiglenes (kevesebb mint 30 másodperc) szünet elállhat az I/O-tevékenységben a kezdeményezők és az eszköz között.
 
-**K.** Hogyan visszaküldi a vezérlőt a szolgáltatásnak a leállítása és eltávolítása után?
+**K.** Hogyan tudom visszaállítani a vezérlőt a szolgáltatásba, miután leállították és eltávolították?
 
-**V.** Ahhoz, hogy egy vezérlőt vissza lehessen adni a szolgáltatásnak, be kell szúrnia azt a [StorSimple-eszköz vezérlő-moduljának cseréje](storsimple-8000-controller-replacement.md)című részében leírtak szerint.
+**A.** A vezérlő szervizbe helyezéséhez be kell helyeznie azt a házba a [StorSimple eszköz vezérlőmoduljának cseréje](storsimple-8000-controller-replacement.md)című részben leírtak szerint.
 
-## <a name="next-steps"></a>Következő lépések
-* Ha olyan problémák merülnek fel a StorSimple-vezérlőkben, amelyeket az oktatóanyagban felsorolt eljárások használatával nem tud feloldani, [forduljon Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
-* Ha többet szeretne megtudni a StorSimple Eszközkezelő szolgáltatás használatáról, látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>További lépések
+* Ha olyan problémákat tapasztal a StorSimple eszközvezérlőkkel kapcsolatban, amelyeket az oktatóanyagban felsorolt eljárások használatával nem tud megoldani, forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md)
+* Ha többet szeretne tudni a StorSimple Eszközkezelő szolgáltatás használatáról, olvassa el [a StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez című webhelyet.](storsimple-8000-manager-service-administration.md)
 

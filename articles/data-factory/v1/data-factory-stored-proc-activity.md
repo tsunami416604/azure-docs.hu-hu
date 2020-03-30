@@ -1,6 +1,6 @@
 ---
-title: SQL Server tárolt eljárási tevékenység
-description: Ebből a témakörből megtudhatja, hogyan hívhat meg egy Azure SQL Database vagy Azure SQL Data Warehouse egy Data Factory folyamatból egy tárolt eljárást az SQL Server tárolt eljárási tevékenység használatával.
+title: SQL Server tárolt eljárási tevékenysége
+description: Megtudhatja, hogyan használhatja az SQL Server tárolt eljárástevékenység egy tárolt eljárást egy Azure SQL-adatbázisban vagy az Azure SQL Data Warehouse egy Data Factory-folyamat.
 services: data-factory
 documentationcenter: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
@@ -13,19 +13,19 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931627"
 ---
-# <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
+# <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenysége
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
-> * [Struktúra tevékenysége](data-factory-hive-activity.md)
-> * [Pig-tevékenység](data-factory-pig-activity.md)
+> * [Hive-tevékenység](data-factory-hive-activity.md)
+> * [Sertés tevékenység](data-factory-pig-activity.md)
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
-> * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
-> * [Spark-tevékenység](data-factory-spark.md)
+> * [Hadoop streaming tevékenység](data-factory-hadoop-streaming-activity.md)
+> * [Szikratevékenység](data-factory-spark.md)
 > * [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
@@ -33,27 +33,27 @@ ms.locfileid: "74931627"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az adatátalakítás a Data Factory tárolt eljárással tevékenységgel](../transform-data-using-stored-procedure.md)című témakört.
+> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [adatok átalakítása tárolt eljárástevékenység használatával a Data Factory alkalmazásban című témakört.](../transform-data-using-stored-procedure.md)
 
 ## <a name="overview"></a>Áttekintés
-Az Adatátalakítási tevékenységek egy Data Factory folyamaton keresztül alakíthatók át és feldolgozhatók az előrejelzések [és az](data-factory-create-pipelines.md) elemzések során. A tárolt eljárási tevékenység az Data Factory által támogatott átalakítási tevékenységek egyike. Ez a cikk az [Adatátalakítási tevékenységekről](data-factory-data-transformation-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatátalakításról és a Data Factory támogatott átalakítási tevékenységekről.
+A Data [Factory-folyamat](data-factory-create-pipelines.md) adatátalakítási tevékenységeivel átalakíthatja és feldolgozhatja a nyers adatokat előrejelzésekké és elemzési adatokká. A tárolt eljárás tevékenység a Data Factory által támogatott átalakítási tevékenységek egyike. Ez a cikk az [adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a Data Factory támogatott átalakítási tevékenységeiről.
 
-A tárolt eljárási tevékenységgel egy tárolt eljárást hívhat meg a vállalat vagy egy Azure-beli virtuális gép (VM) alábbi adattárainak egyikében:
+A tárolt eljárási tevékenység segítségével meghívhat egy tárolt eljárást a vállalat alábbi adattasztatúráinak egyikében vagy egy Azure virtuális gépen(VM):
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- SQL Server adatbázis. Ha SQL Server használ, telepítse adatkezelés átjárót ugyanarra a gépre, amely az adatbázist üzemelteti, vagy egy különálló gépen, amely hozzáfér az adatbázishoz. Adatkezelés átjáró egy olyan összetevő, amely biztonságos és felügyelt módon csatlakoztatja a helyszíni/Azure-beli virtuális gépen lévő adatforrásokat a Cloud Services szolgáltatással. További részletekért tekintse meg [adatkezelés Gateway](data-factory-data-management-gateway.md) -cikket.
+- SQL Server adatbázis. SQL Server használata esetén telepítse az Adatkezelési átjárót ugyanarra a számítógépre, amelyen az adatbázis található, vagy egy külön számítógépre, amely hozzáfér az adatbázishoz. Az Adatkezelési átjáró egy olyan összetevő, amely biztonságos és felügyelt módon kapcsolja össze a helyszíni/Azure-beli virtuális gépek adatforrásait a felhőszolgáltatásokkal. A részleteket az [Adatkezelési átjáró](data-factory-data-management-gateway.md) ról szóló cikkben találja.
 
 > [!IMPORTANT]
-> Az adatok Azure SQL Database vagy SQL Serverba való másolása során beállíthatja, hogy a **SqlSink** a másolási tevékenységben egy tárolt eljárást hívjanak a **sqlWriterStoredProcedureName** tulajdonság használatával. További információkért lásd: [tárolt eljárás hívása másolási tevékenységből](data-factory-invoke-stored-procedure-from-copy-activity.md). A tulajdonsággal kapcsolatos részletekért tekintse meg a következő összekötő-cikkeket: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Tárolt eljárás meghívása az adatok egy Azure SQL Data Warehouseba másolási tevékenységgel történő másolása során nem támogatott. Azonban a tárolt eljárási tevékenység használatával meghívhat egy tárolt eljárást egy SQL Data Warehouseban.
+> Amikor adatokat másol az Azure SQL Database vagy az SQL Server, beállíthatja az **SqlSink** másolási tevékenység meghívására tárolt eljárás használatával **az sqlWriterStoredProcedureName** tulajdonság. További információ: [A tárolt eljárás meghívása másolási tevékenységből](data-factory-invoke-stored-procedure-from-copy-activity.md)című témakörben talál. A tulajdonságról a következő összekötőcikkekben talál: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), SQL [Server](data-factory-sqlserver-connector.md#copy-activity-properties). Nem támogatott a tárolt eljárás meghívása az Azure SQL Data Warehouse-ba másolása közben egy másolási tevékenység használatával. De használhatja a tárolt eljárás tevékenység meghívására egy tárolt eljárást egy SQL Data Warehouse.
 >
-> Az adatok Azure SQL Database vagy SQL Server vagy Azure SQL Data Warehouseból való másolása esetén a másolási tevékenységben beállíthatja, hogy egy tárolt eljárás meghívja a **SqlSource** a **sqlReaderStoredProcedureName** tulajdonság használatával. További információt a következő összekötő cikkeiben talál: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> Amikor adatokat másol az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, beállíthatja **sqlSource** másolási tevékenység meghívására tárolt eljárást adatok at a forrás adatbázisból az **sqlReaderStoredProcedureName** tulajdonság használatával. További információt a következő összekötő cikkekben talál: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), SQL [Server](data-factory-sqlserver-connector.md#copy-activity-properties), Azure SQL [Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
-A következő útmutató egy folyamat tárolt eljárási tevékenységét használja egy tárolt eljárás meghívásához egy Azure SQL Database-adatbázisban.
+A következő forgatókönyv a tárolt eljárási tevékenység egy folyamatban egy azure SQL-adatbázisban tárolt eljárás meghívásához.
 
 ## <a name="walkthrough"></a>Útmutatás
-### <a name="sample-table-and-stored-procedure"></a>Minta tábla és tárolt eljárás
-1. Hozza létre a következő **táblázatot** a Azure SQL Databaseban SQL Server Management Studio vagy bármely olyan eszköz használatával, amellyel Ön is kényelmesen használható. A datetimestamp oszlop a megfelelő azonosító generálásának dátuma és időpontja.
+### <a name="sample-table-and-stored-procedure"></a>Mintatábla és tárolt eljárás
+1. Hozza létre az alábbi **táblázatot** az Azure SQL Database-ben az SQL Server Management Studio vagy bármely más, önnek kényelmes eszközzel. A datetimestamp oszlop a megfelelő azonosító létrehozásának dátuma és időpontja.
 
     ```SQL
     CREATE TABLE dbo.sampletable
@@ -66,12 +66,12 @@ A következő útmutató egy folyamat tárolt eljárási tevékenységét haszn�
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    Az azonosító az egyedi azonosított, a datetimestamp oszlop pedig a megfelelő azonosító generálásának dátuma és időpontja.
+    Id az egyedi azonosított és a datetimestamp oszlop a dátum és az idő, amikor a megfelelő azonosító jön létre.
     
     ![Mintaadatok](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    Ebben a példában a tárolt eljárás egy Azure SQL Database található. Ha a tárolt eljárás egy Azure SQL Data Warehouse és SQL Server adatbázisban található, a módszer hasonló. SQL Server-adatbázisok esetében telepítenie kell egy [adatkezelés-átjárót](data-factory-data-management-gateway.md).
-2. Hozza létre a következő **tárolt eljárást** , amely beszúrja az adatkészletet a **sampletable**.
+    Ebben a példában a tárolt eljárás egy Azure SQL-adatbázisban található. Ha a tárolt eljárás egy Azure SQL Data Warehouse és az SQL Server Database, a megközelítés hasonló. SQL Server adatbázis esetén [adatkezelési átjárót](data-factory-data-management-gateway.md)kell telepíteni.
+2. Hozza létre a következő **tárolt eljárást,** amely adatokat szúr be a **mintatáblába.**
 
     ```SQL
     CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
@@ -84,53 +84,53 @@ A következő útmutató egy folyamat tárolt eljárási tevékenységét haszn�
     ```
 
    > [!IMPORTANT]
-   > A paraméter **nevének** és **burkolatának** (ebben a példában a DateTime) meg kell egyeznie a folyamat/tevékenység JSON-ban megadott paraméterrel. A tárolt eljárás definíciójában győződjön meg arról, hogy **\@** a paraméter előtagjaként van használatban.
+   > A paraméter **nevének** és **be- és besorolásának** (ebben a példában a DateTime) meg kell egyeznie a jsonban megadott paraméterrel. A tárolt eljárás definíciójában **\@** győződjön meg arról, hogy a paraméter előtagjaként van használva.
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson az **új** elemre a bal oldali menüben, majd kattintson az **intelligencia és elemzés**lehetőségre, majd a **Data Factory**elemre.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+2. Kattintson a bal oldali menü **ÚJ parancsára,** kattintson az **Intelligencia + Elemzés**parancsra, majd a Data **Factory**parancsra.
 
     ![Új adat-előállító](media/data-factory-stored-proc-activity/new-data-factory.png)
-3. Az **új adatgyár** panelen írja be a **SProcDF** nevet. A Azure Data Factory nevek **globálisan egyediek**. A gyár sikeres létrehozásához előtaggal kell elvégeznie az adatgyár nevét.
+3. Az **Új adatgyár** panelen adja meg az **SProcDF** parancsot a névhez. Az Azure Data Factory-nevek **globálisan egyediek.** A gyár sikeres létrehozásához előtaggal kell előtagoznia az adatgyár nevét.
 
    ![Új adat-előállító](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. Válassza ki az **Azure-előfizetését**.
 5. Az **Erőforráscsoportban** hajtsa végre a következő lépések egyikét:
-   1. Kattintson az **új létrehozása** elemre, és adja meg az erőforráscsoport nevét.
-   2. Kattintson a **meglévő használata** elemre, és válasszon ki egy meglévő erőforráscsoportot.
+   1. Kattintson **az Új létrehozása gombra,** és adja meg az erőforráscsoport nevét.
+   2. Kattintson **a Meglévő használata** elemre, és jelöljön ki egy meglévő erőforráscsoportot.
 6. Válassza ki a Data Factory **helyét**.
-7. Válassza a **rögzítés az irányítópulton** lehetőséget, hogy a következő bejelentkezéskor megtekintheti az irányítópulton látható adatgyárat.
+7. Válassza **a Rögzítés az irányítópultra** lehetőséget, hogy a következő bejelentkezéskor láthassa az adatgyárat az irányítópulton.
 8. Kattintson a **Create** (Létrehozás) elemre a **New data factory** (Új data factory) panelen.
-9. Ekkor megjelenik a Azure Portal **irányítópultján** létrehozott adatelőállító. A data factory sikeres létrehozása után megjelenik a data factory oldal, amely megjeleníti a data factory tartalmát.
+9. Láthatja, hogy az adatgyár az Azure Portal **irányítópultján** jön létre. A data factory sikeres létrehozása után megjelenik a data factory oldal, amely megjeleníti a data factory tartalmát.
 
-   ![Data Factory Kezdőlap](media/data-factory-stored-proc-activity/data-factory-home-page.png)
+   ![A Data Factory kezdőlapja](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
-### <a name="create-an-azure-sql-linked-service"></a>Azure SQL társított szolgáltatás létrehozása
-Az adatelőállító létrehozása után létre kell hoznia egy Azure SQL társított szolgáltatást, amely összekapcsolja az Azure SQL Database-t, amely a sampletable táblázatot és usp_sample tárolt eljárást tartalmazza a saját adatelőállítójának.
+### <a name="create-an-azure-sql-linked-service"></a>Azure SQL-alapú szolgáltatás létrehozása
+Az adat-előállító létrehozása után hozzon létre egy Azure SQL-kapcsolt szolgáltatás, amely összeköti az Azure SQL-adatbázis, amely tartalmazza a mintatábla tábla és usp_sample tárolt eljárás, az adat-előállító.
 
-1. A **SProcDF** **Data Factory** paneljén kattintson a **Szerző és üzembe helyezés** elemre, hogy elindítsa a Data Factory szerkesztőt.
-2. Kattintson a parancssáv **új adattár** elemére, és válassza a **Azure SQL Database**lehetőséget. Az Azure SQL társított szolgáltatás létrehozásához a szerkesztőben megjelenik a JSON-szkript.
+1. Kattintson a Szerző elemre, **és telepítse** a **Data Factory** panel **sprocDF** elindításához a Data Factory Editor.
+2. Kattintson az **Új adattár elemre** a parancssávon, és válassza az **Azure SQL Database**lehetőséget. Meg kell jelennie a JSON-parancsfájl egy Azure SQL-kapcsolt szolgáltatás létrehozásához a szerkesztőben.
 
    ![Új adattár](media/data-factory-stored-proc-activity/new-data-store.png)
 3. A JSON-parancsfájlban hajtsa végre a következő módosításokat:
 
-   1. Cserélje le a `<servername>`t a Azure SQL Database-kiszolgáló nevére.
-   2. Cserélje le a `<databasename>`t arra az adatbázisra, amelyben létrehozta a táblát és a tárolt eljárást.
-   3. Cserélje le a `<username@servername>`t arra a felhasználói fiókra, amely hozzáféréssel rendelkezik az adatbázishoz.
-   4. Cserélje le a `<password>`t a felhasználói fiók jelszavára.
+   1. Cserélje `<servername>` le az Azure SQL Database-kiszolgáló nevét.
+   2. Cserélje `<databasename>` le arra az adatbázisra, amelyben létrehozta a táblát és a tárolt eljárást.
+   3. Cserélje `<username@servername>` le az adatbázishoz hozzáféréssel rendelkező felhasználói fiókkal.
+   4. Cserélje `<password>` le a felhasználói fiók jelszavával.
 
       ![Új adattár](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Deploy (üzembe helyezés** ) elemére. Győződjön meg arról, hogy a bal oldali fanézetben megjelenik a AzureSqlLinkedService.
+4. A csatolt szolgáltatás központi telepítéséhez kattintson a **központi telepítés gombra** a parancssávon. Győződjön meg arról, hogy az AzureSqlLinkedService a bal oldali fanézetben.
 
-    ![faszerkezetes nézet a társított szolgáltatással](media/data-factory-stored-proc-activity/tree-view.png)
+    ![fanézet csatolt szolgáltatással](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>Kimeneti adatkészlet létrehozása
-A tárolt eljárási tevékenység kimeneti adatkészletét akkor is meg kell adnia, ha a tárolt eljárás nem hoz létre adatokat. Ennek oka, hogy ez a kimeneti adatkészlet, amely a tevékenység ütemtervét vezeti (milyen gyakran fut a tevékenység óránként, naponta stb.). A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy egy Azure SQL Data Warehouse vagy egy SQL Server adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység által végzett későbbi feldolgozás céljából (a folyamaton belüli[láncolt tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) . A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet** (egy olyan adathalmaz, amely egy olyan táblára mutat, amely nem igazán tartja meg a tárolt eljárás kimenetét). Ez a próbabábu-adatkészlet csak a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál.
+Meg kell adnia egy kimeneti adatkészletet a tárolt eljárástevékenységhez, még akkor is, ha a tárolt eljárás nem hoz létre adatokat. Ez azért van, mert a kimeneti adatkészlet, amely hajtja a tevékenység ütemezését (milyen gyakran fut a tevékenység - óránkénti, napi stb.). A kimeneti adatkészlet kell használnia egy **összekapcsolt szolgáltatás,** amely egy Azure SQL-adatbázis vagy egy Azure SQL Data Warehouse vagy egy SQL Server-adatbázis, amelyben szeretné, hogy a tárolt eljárás futtatásához. A kimeneti adatkészlet szolgálhat egy módja annak, hogy adja át a tárolt eljárás eredményét későbbi feldolgozásra egy másik tevékenység[(láncolási tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) a folyamatban. A Data Factory azonban nem írja automatikusan a tárolt eljárás kimenetét ebbe az adatkészletbe. Ez az a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. Bizonyos esetekben a kimeneti adatkészlet lehet egy **dummy adatkészlet** (olyan adatkészlet, amely egy olyan táblára mutat, amely nem igazán tartalmazza a tárolt eljárás kimenetét). Ez a dummy adatkészlet csak a tárolt eljárási tevékenység futtatásának ütemezésének megadására szolgál.
 
-1. Kattintson a...  **További információ** az eszköztáron, kattintson az **új adatkészlet**elemre, majd az **Azure SQL**elemre. **Új adatkészlet** a parancssorban, majd válassza az **Azure SQL**lehetőséget.
+1. Kattintson **a ... További információk** az eszköztáron kattintson az **Új adatkészlet gombra**, majd az **Azure SQL**parancsra. **Új adatkészlet** a parancssávon, és válassza az **Azure SQL**lehetőséget.
 
-    ![faszerkezetes nézet a társított szolgáltatással](media/data-factory-stored-proc-activity/new-dataset.png)
-2. Másolja/illessze be a következő JSON-szkriptet a JSON-szerkesztőbe.
+    ![fanézet csatolt szolgáltatással](media/data-factory-stored-proc-activity/new-dataset.png)
+2. Másolja/illessze be a következő JSON-parancsfájlt a JSON-szerkesztőbe.
 
     ```JSON
     {
@@ -148,20 +148,20 @@ A tárolt eljárási tevékenység kimeneti adatkészletét akkor is meg kell ad
         }
     }
     ```
-3. Az adatkészlet üzembe helyezéséhez kattintson a parancssáv **Deploy (üzembe helyezés** ) elemére. Győződjön meg róla, hogy az adatkészlet megjelenik a fanézetben.
+3. Az adatkészlet központi telepítéséhez kattintson a **Központi telepítés gombra** a parancssávon. Ellenőrizze, hogy az adatkészlet megjelenik-e a fanézetben.
 
-    ![Fanézet a társított szolgáltatásokkal](media/data-factory-stored-proc-activity/tree-view-2.png)
+    ![fanézet csatolt szolgáltatásokkal](media/data-factory-stored-proc-activity/tree-view-2.png)
 
-### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Folyamat létrehozása SqlServerStoredProcedure-tevékenységgel
+### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Folyamat létrehozása SqlServerStoredProcedure tevékenységgel
 Most hozzon létre egy folyamatot egy tárolt eljárási tevékenységgel.
 
 Figyelje meg a következő tulajdonságokat:
 
-- A **Type** tulajdonság értéke **SqlServerStoredProcedure**.
-- A típus tulajdonságok **storedProcedureName** értéke **usp_sample** (a tárolt eljárás neve).
-- A **storedProcedureParameters** szakasz egy **datetime**nevű paramétert tartalmaz. A JSON-paraméter nevének és burkolatának meg kell egyeznie a tárolt eljárás definíciójában szereplő paraméter nevével és házával. Ha egy paraméter esetében a pass null értéket kell megadni, használja a következő szintaxist: `"param1": null` (mind kisbetűs).
+- A **típustulajdonság** **sqlServerStoredProcedure**.
+- A type properties **nevű storedProcedureName** érték **usp_sample** (a tárolt eljárás neve).
+- A **storedProcedureParameters** szakasz egy **DateTime**nevű paramétert tartalmaz. A JSON paraméter ének nevének és burkolatának meg kell egyeznie a paraméter nevével és burkolatával a tárolt eljárás definíciójában. Ha null paraméterre van szüksége, használja `"param1": null` a szintaxist: (minden kisbetű).
 
-1. Kattintson a...  **Továbbiak** a parancssorban, majd kattintson az **új folyamat**elemre.
+1. Kattintson **a ... További információk** a parancssávon, és kattintson **az Új folyamat gombra.**
 2. Másolja/illessze be a következő JSON-kódrészletet:
 
     ```JSON
@@ -195,33 +195,33 @@ Figyelje meg a következő tulajdonságokat:
         }
     }
     ```
-3. A folyamat üzembe helyezéséhez kattintson a **telepítés** elemre az eszköztáron.
+3. A folyamat üzembe helyezéséhez kattintson az eszköztár **Telepítése** gombjára.
 
 ### <a name="monitor-the-pipeline"></a>A folyamat figyelése
 1. A Data Factory Editor paneljeinek a bezárásához és a Data Factory panelre való visszatéréshez kattintson az **X**, majd a **Diagram** elemre.
 
-    ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. A **diagramnézet** áttekintést nyújt az oktatóanyagban használt folyamatokról és adatkészletekről.
+    ![diagram mozaikja](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+2. A **Diagram nézetben**az oktatóanyagban használt folyamatok és adatkészletek áttekintése látható.
 
-    ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. A diagram nézetben kattintson duplán az adatkészlet `sprocsampleout`elemre. A szeletek kész állapotban jelennek meg. Öt szeletnek kell lennie, mivel a JSON-ből a kezdési idő és a befejezési idő között minden órában létrejön egy szelet.
+    ![diagram mozaikja](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+3. Diagram nézetben kattintson duplán `sprocsampleout`az adatkészletre. A szeletek Kész állapotban jelennek meg. Öt szeletnek kell lennie, mert a JSON kezdő és záró időpontja között minden órához egy szelet keletkezik.
 
-    ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Ha egy szelet **üzemkész** állapotban van, futtasson egy `select * from sampletable` lekérdezést az Azure SQL Database-ben annak ellenőrzéséhez, hogy a tárolt eljárás beszúrta-e az adott táblát a táblába.
+    ![diagram mozaikja](media/data-factory-stored-proc-activity/data-factory-slices.png)
+4. Ha egy szelet **Ready** állapotban `select * from sampletable` van, futtasson egy lekérdezést az Azure SQL-adatbázisban, és ellenőrizze, hogy az adatokat a tárolt eljárás szúrta-e be a táblába.
 
    ![Kimeneti adatok](./media/data-factory-stored-proc-activity/output.png)
 
-   A Azure Data Factory-folyamatok figyelésével kapcsolatos részletes információkért lásd: [a folyamat figyelése](data-factory-monitor-manage-pipelines.md) .
+   Az Azure Data Factory-folyamatok figyeléséről a [folyamat figyelése](data-factory-monitor-manage-pipelines.md) című témakörben talál részletes információt.
 
-## <a name="specify-an-input-dataset"></a>Adja meg a bemeneti adatkészletet
-A forgatókönyvben a tárolt eljárás tevékenysége nem tartalmaz bemeneti adatkészleteket. Ha bemeneti adatkészletet ad meg, a tárolt eljárási tevékenység nem fut addig, amíg a bemeneti adatkészlet szelete nem érhető el (üzemkész állapotban). Az adatkészlet lehet külső adatkészlet (ez nem egy másik tevékenység, amely ugyanabban a folyamatban van) vagy egy felsőbb rétegbeli tevékenység által létrehozott belső adatkészlet (a tevékenység előtt futó tevékenység). Több bemeneti adatkészletet is megadhat a tárolt eljárási tevékenységhez. Ha így tesz, a tárolt eljárási tevékenység csak akkor fut le, ha a bemeneti adatkészlet összes szelete elérhető (kész állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését.
+## <a name="specify-an-input-dataset"></a>Bemeneti adatkészlet megadása
+A forgatókönyvben a tárolt eljárástevékenység nem rendelkezik bemeneti adatkészletek. Ha megad egy bemeneti adatkészletet, a tárolt eljárástevékenység nem fut, amíg a bemeneti adatkészlet szelete elérhető (Kész állapotban). Az adatkészlet lehet egy külső adatkészlet (amelyet nem egy másik tevékenység állít elő ugyanabban a folyamatban) vagy egy belső adatkészlet, amelyet egy upstream tevékenység (a tevékenység előtt futó tevékenység) hoz létre. A tárolt eljárási tevékenységhez több bemeneti adatkészletet is megadhat. Ha így tesz, a tárolt eljárástevékenység csak akkor fut, ha az összes bemeneti adatkészletszelet elérhető (Kész állapotban). A bemeneti adatkészlet nem használható fel a tárolt eljárásban paraméterként. Csak a függőség ellenőrzésére szolgál a tárolt eljárási tevékenység megkezdése előtt.
 
 ## <a name="chaining-with-other-activities"></a>Láncolás más tevékenységekkel
-Ha egy felsőbb rétegbeli tevékenységet szeretne felvenni ezzel a tevékenységgel, adja meg a felsőbb rétegbeli tevékenység kimenetét a tevékenység bemenetként. Ha így tesz, a tárolt eljárási tevékenység addig nem fut le, amíg a felsőbb rétegbeli tevékenység befejeződik, és a felsőbb rétegbeli tevékenység kimeneti adatkészlete elérhető (kész állapotban). Több felsőbb rétegbeli tevékenység kimeneti adatkészleteit is megadhatja a tárolt eljárási tevékenység bemeneti adatkészletei. Ha így tesz, a tárolt eljárási tevékenység csak akkor fut le, ha a bemeneti adatkészlet összes szelete elérhető.
+Ha ezzel a tevékenységgel egy upstream tevékenységet szeretne láncolni, adja meg a felfelé irányuló tevékenység kimenetét ennek a tevékenységnek a bemeneteként. Ha így tesz, a tárolt eljárástevékenység nem fut, amíg a felső-folyási tevékenység be nem fejeződik, és a felső-folyási tevékenység kimeneti adatkészlete elérhetővé nem válik (Kész állapot). Több upstream tevékenység kimeneti adatkészleteit is megadhatja a tárolt eljárástevékenység bemeneti adatkészleteként. Ha így tesz, a tárolt eljárástevékenység csak akkor fut, ha az összes bemeneti adatkészlet-szelet elérhető.
 
-Az alábbi példában a másolási tevékenység kimenete a következő: OutputDataset, amely a tárolt eljárási tevékenység bemenete. Ezért a tárolt eljárási tevékenység addig nem fut le, amíg a másolási tevékenység be nem fejeződik, és az OutputDataset szelet elérhető (üzemkész állapotban). Ha több bemeneti adatkészletet ad meg, akkor a tárolt eljárási tevékenység addig nem fut le, amíg az összes bemeneti adatkészlet-szelet elérhetővé nem válik (üzemkész állapotban). A bemeneti adatkészletek nem használhatók közvetlenül paraméterként a tárolt eljárási tevékenységhez.
+A következő példában a másolási tevékenység kimenete: OutputDataset, amely a tárolt eljárás tevékenység bemenete. Ezért a tárolt eljárás tevékenység nem fut, amíg a másolási tevékenység befejeződik, és a OutputDataset szelet érhető el (Kész állapotban). Ha több bemeneti adatkészletet ad meg, a tárolt eljárástevékenység nem fut, amíg az összes bemeneti adatkészletszelet elérhető (Kész állapotban). A bemeneti adatkészletek nem használhatók közvetlenül a tárolt eljárástevékenység paramétereként.
 
-A tevékenységek láncolásával kapcsolatos további információkért tekintse meg a [folyamatok több tevékenységét](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline) ismertető témakört.
+A tevékenységek láncolásával kapcsolatos további információkért tekintse meg [a folyamatban lévő több tevékenységet](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)
 
 ```json
 {
@@ -272,15 +272,15 @@ A tevékenységek láncolásával kapcsolatos további információkért tekints
 }
 ```
 
-Hasonlóképpen, az adattárolási eljárás tevékenységének **alárendelt tevékenységekkel** való összekapcsolásához (a tárolt eljárási tevékenység befejezése után futó tevékenységek) adja meg a tárolt eljárási tevékenység kimeneti adatkészletét a folyamat alsóbb rétegbeli tevékenységének bemenetében.
+Hasonlóképpen, ha az tárolási eljárás tevékenységét a **későbbi tevékenységekkel** (a tárolt eljárási tevékenység befejezése után futó tevékenységekkel) szeretné összekapcsolni, adja meg a tárolt eljárástevékenység kimeneti adatkészletét a folyamat alsóbb rétegbeli tevékenységének bemeneteként.
 
 > [!IMPORTANT]
-> Az adatok Azure SQL Database vagy SQL Serverba való másolása során beállíthatja, hogy a **SqlSink** a másolási tevékenységben egy tárolt eljárást hívjanak a **sqlWriterStoredProcedureName** tulajdonság használatával. További információkért lásd: [tárolt eljárás hívása másolási tevékenységből](data-factory-invoke-stored-procedure-from-copy-activity.md). A tulajdonsággal kapcsolatos részletekért tekintse meg a következő összekötő cikkeit: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
+> Amikor adatokat másol az Azure SQL Database vagy az SQL Server, beállíthatja az **SqlSink** másolási tevékenység meghívására tárolt eljárás használatával **az sqlWriterStoredProcedureName** tulajdonság. További információ: [A tárolt eljárás meghívása másolási tevékenységből](data-factory-invoke-stored-procedure-from-copy-activity.md)című témakörben talál. A tulajdonsággal kapcsolatos részletekért tekintse meg a következő összekötő cikkeket: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), SQL [Server](data-factory-sqlserver-connector.md#copy-activity-properties).
 > 
-> Az adatok Azure SQL Database vagy SQL Server vagy Azure SQL Data Warehouseból való másolása esetén a másolási tevékenységben beállíthatja, hogy egy tárolt eljárás meghívja a **SqlSource** a **sqlReaderStoredProcedureName** tulajdonság használatával. További információt a következő összekötő cikkeiben talál: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> Amikor adatokat másol az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, beállíthatja **sqlSource** másolási tevékenység meghívására tárolt eljárást adatok at a forrás adatbázisból az **sqlReaderStoredProcedureName** tulajdonság használatával. További információt a következő összekötő cikkekben talál: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), SQL [Server](data-factory-sqlserver-connector.md#copy-activity-properties), Azure SQL [Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 ## <a name="json-format"></a>JSON formátum
-Itt látható a tárolt eljárási tevékenység definiálásának JSON-formátuma:
+Itt van a JSON formátum a tárolt eljárási tevékenység meghatározásához:
 
 ```JSON
 {
@@ -301,24 +301,24 @@ Itt látható a tárolt eljárási tevékenység definiálásának JSON-formátu
 }
 ```
 
-A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
+Az alábbi táblázat a következő JSON-tulajdonságokat ismerteti:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | név | A tevékenység neve |Igen |
-| leírás |A tevékenység által használt szöveg leírása |Nem |
-| type | A következőre kell beállítani: **SqlServerStoredProcedure** | Igen |
-| bemenetek | Választható. Ha megad egy bemeneti adatkészletet, a tárolt eljárási tevékenység futtatásához elérhetőnek kell lennie ("Ready" (kész) állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését. |Nem |
-| kimenetek | Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárási tevékenységhez. A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). <br/><br/>A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy egy Azure SQL Data Warehouse vagy egy SQL Server adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. <br/><br/>A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység által végzett későbbi feldolgozás céljából (a folyamaton belüli[láncolt tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) . A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál. |Igen |
-| storedProcedureName |Adja meg a tárolt eljárás nevét az Azure SQL Database-ben, vagy Azure SQL Data Warehouse vagy SQL Server adatbázist, amelyet a kimeneti tábla által használt társított szolgáltatás képvisel. |Igen |
-| storedProcedureParameters |A tárolt eljárás paramétereinek értékeinek megadása. Ha egy paraméternél null értéket kell átadnia, használja a következő szintaxist: "param1": null (az összes kisbetű). Tekintse meg a következő mintát, amelyből megtudhatja, hogyan használhatja ezt a tulajdonságot. |Nem |
+| leírás |A tevékenységet leíró szöveg |Nem |
+| type | A következőt kell tenni: **SqlServerStoredProcedure** | Igen |
+| Bemenetek | Választható. Ha megad egy bemeneti adatkészletet, annak elérhetőnek kell lennie ("Kész" állapotban) a tárolt eljárási tevékenység futtatásához. A bemeneti adatkészlet nem használható fel a tárolt eljárásban paraméterként. Csak a függőség ellenőrzésére szolgál a tárolt eljárási tevékenység megkezdése előtt. |Nem |
+| Kimenetek | Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárástevékenységhez. A kimeneti adatkészlet a tárolt eljárási tevékenység **ütemezését** határozza meg (óránkénti, heti, havi stb.). <br/><br/>A kimeneti adatkészlet kell használnia egy **összekapcsolt szolgáltatás,** amely egy Azure SQL-adatbázis vagy egy Azure SQL Data Warehouse vagy egy SQL Server-adatbázis, amelyben szeretné, hogy a tárolt eljárás futtatásához. <br/><br/>A kimeneti adatkészlet szolgálhat egy módja annak, hogy adja át a tárolt eljárás eredményét későbbi feldolgozásra egy másik tevékenység[(láncolási tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) a folyamatban. A Data Factory azonban nem írja automatikusan a tárolt eljárás kimenetét ebbe az adatkészletbe. Ez az a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **dummy adatkészlet,** amely csak a tárolt eljárási tevékenység futtatásának ütemezését adja meg. |Igen |
+| storedProcedureName |Adja meg a tárolt eljárás nevét az Azure SQL-adatbázisban vagy az Azure SQL Data Warehouse vagy az SQL Server adatbázisban, amelyet a kimeneti tábla által használt csatolt szolgáltatás képvisel. |Igen |
+| storedProcedureParameters |Adja meg a tárolt eljárásparamétereinek értékeit. Ha null értéket kell átadnia egy paraméterhez, használja a következő szintaxist: "param1": null (minden kisbetű). A tulajdonság használatáról az alábbi mintában olvashat. |Nem |
 
 ## <a name="passing-a-static-value"></a>Statikus érték átadása
-Most vegyünk fel egy "forgatókönyv" nevű oszlopot egy olyan táblában, amely a "Document Sample" nevű statikus értéket tartalmazza.
+Most vegyük fontolóra egy "Forgatókönyv" nevű oszlop hozzáadását a "Dokumentumminta" nevű statikus értéket tartalmazó táblában.
 
-![Mintaadatok 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
+![2. mintaadat](./media/data-factory-stored-proc-activity/sample-data-2.png)
 
-**Tábla**
+**Táblázat:**
 
 ```SQL
 CREATE TABLE dbo.sampletable2
@@ -345,7 +345,7 @@ BEGIN
 END
 ```
 
-Most adja át a **forgatókönyv** paramétert és a tárolt eljárási tevékenység értékét. Az előző minta **typeProperties** szakasza a következő kódrészlethez hasonlít:
+Most adja át a **forgatókönyv** paramétert és a tárolt eljárástevékenység értékét. Az előző minta **TypeProperties** szakasza a következő kódrészletre néz:
 
 ```JSON
 "typeProperties":
@@ -379,7 +379,7 @@ Most adja át a **forgatókönyv** paramétert és a tárolt eljárási tevéken
 }
 ```
 
-**Data Factory folyamat**
+**Adatgyári folyamat**
 
 ```JSON
 {

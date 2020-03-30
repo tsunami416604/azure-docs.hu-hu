@@ -1,6 +1,6 @@
 ---
-title: 'SAP az Azure-on: támogatott forgatókönyvek Azure-beli virtuális gépekkel'
-description: Az Azure Virtual Machines támogatott forgatókönyvek SAP-munkaterheléssel
+title: 'SAP az Azure-ban: Támogatott forgatókönyvek az Azure virtuális gépekkel'
+description: Az Azure Virtuális gépek által támogatott forgatókönyvek AZ SAP-munkaterheléssel
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -17,294 +17,294 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137628"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben
-Az SAP NetWeaver, az üzleti `Hybris` vagy a S/4HANA rendszerek architektúrája az Azure-ban számos különböző lehetőséget nyit meg különböző architektúrák és eszközök számára, amelyek segítségével méretezhető, hatékony és nagy mértékben elérhető üzembe helyezést érhet el. Bár a használt operációs rendszertől vagy adatbázis-kezelőtől függ, korlátozások vannak érvényben. A helyszíni támogatás nem minden esetben támogatott ugyanúgy az Azure-ban. Ez a dokumentum a támogatott nem magas rendelkezésre állású konfigurációkon és a magas rendelkezésre állású konfigurációkon és architektúrán keresztül kizárólag az Azure-beli virtuális gépeket használja. A [Hana Large-példányokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)támogatott forgatókönyvek esetében tekintse [meg a Hana Large instances által támogatott forgatókönyvek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)című cikket. 
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-munkaterhelés az Azure virtuális gépen támogatott forgatókönyvekben
+Az SAP NetWeaver, Business `Hybris` one vagy S/4HANA rendszerarchitektúra tervezése az Azure-ban számos különböző lehetőséget nyit meg a különböző architektúrák és eszközök számára, hogy egy méretezhető, hatékony és magas rendelkezésre állású telepítést kapjon. Bár a használt operációs rendszertől vagy ADATBÁZIS-rendszertől függ, vannak korlátozások. Emellett nem minden helyszíni támogatott forgatókönyvek ugyanúgy támogatott az Azure-ban. Ez a dokumentum a támogatott, nem magas rendelkezésre állású konfigurációkon, valamint a magas rendelkezésre állású konfigurációkon és architektúrákon keresztül vezet kizárólag az Azure virtuális gépek használatával. A [HANA nagy példányokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)támogatott forgatókönyvek esetén tekintse meg a [hana nagy példányok támogatott forgatókönyvei című cikket.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario) 
 
 
-## <a name="2-tier-configuration"></a>kétrétegű konfiguráció
-Az SAP kétszintű konfigurációját úgy kell kiépíteni, hogy az SAP adatbázis-kezelő rendszer és az alkalmazás rétegének egy kombinált rétegében legyen kiépítve, amely ugyanazon a kiszolgálón vagy a virtuálisgép-egységen fut. A második szint a felhasználói felület rétegének tekintendő. Kétszintű konfiguráció esetén az adatbázis-kezelő és az SAP-alkalmazás rétege megosztja az Azure-beli virtuális gép erőforrásait. Ennek eredményeképpen a különböző összetevőket úgy kell konfigurálni, hogy azok ne versenyezzenek az erőforrásokhoz. Emellett körültekintően kell eljárnia, hogy ne kelljen túlfizetni a virtuális gép erőforrásait. Ilyen konfiguráció nem biztosít magas rendelkezésre állást, a különböző Azure-összetevőkre vonatkozó [Azure-szolgáltatói szerződéseken](https://azure.microsoft.com/support/legal/sla/) túl.
+## <a name="2-tier-configuration"></a>Kétrétegű konfiguráció
+Az SAP 2 rétegű konfiguráció az SAP DBMS és az ugyanazon a kiszolgálón vagy virtuális gép egységen futó alkalmazásréteg együttes rétegeiből épül fel. A második réteg a felhasználói felület rétege. Kétrétegű konfiguráció esetén a DBMS és az SAP alkalmazásréteg megosztja az Azure virtuális gép erőforrásait. Ennek eredményeképpen úgy kell konfigurálnia a különböző összetevőket, hogy azok ne versenyezzenek az erőforrásokért. Emellett óvatosnak kell lennie, hogy ne iratkozzon túl a virtuális gép erőforrásait. Egy ilyen konfiguráció nem biztosít magas rendelkezésre állást, a különböző Azure-összetevők [Azure szolgáltatási szintre vonatkozó megállapodásain](https://azure.microsoft.com/support/legal/sla/) kívül.
 
-Egy ilyen konfiguráció grafikus ábrázolása a következőképpen néz ki:
+Egy ilyen konfiguráció grafikus ábrázolása így nézhet ki:
 
 ![Egyszerű, kétrétegű konfiguráció](./media/sap-planning-supported-configurations/two-tier-simple-configuration.png)
 
-Ezeket a konfigurációkat a Windows, a Red Hat, a SUSE és a Oracle Linux támogatja a SQL Server, az Oracle, a DB2, a maxDB és az SAP-alapú adatkezelő rendszerek számára a termelési és nem üzemi esetekben. Az adatbázis-kezelői SAP HANAként az ilyen típusú konfigurációk csak nem üzemi esetekben támogatottak. Ez magában foglalja az [Azure HANA nagyméretű példányainak](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) üzembe helyezési esetét is.
-Az Azure-ban támogatott összes operációs rendszer/adatbázis-kezelő kombináció esetében ez a típusú konfiguráció támogatott. Azonban kötelező beállítani az adatbázis-kezelő és az SAP-összetevők konfigurációját úgy, hogy az adatbázis-kezelő és az SAP-összetevők ne versenyezzenek a memória-és a CPU-erőforrások esetében, és így meghaladják a fizikai rendelkezésre álló erőforrásokat. Ezt úgy kell végrehajtani, hogy korlátozza a memóriát, amelyet az adatbázis-kezelő le lehet foglalni. Az alkalmazások példányain korlátozni kell az SAP kiterjesztett memóriát is. A virtuális gép CPU-felhasználását is figyelnie kell, hogy az összetevők ne maximalizálják a CPU-erőforrásokat. 
+Ezeket a konfigurációkat a Windows, a Red Hat, a SUSE és az Oracle Linux támogatja az SQL Server, Oracle, Db2, maxDB és SAP ASE DB rendszerekkel az éles és nem éles esetekben. Az SAP HANA dbms-ként, az ilyen típusú konfigurációk csak nem éles esetekben támogatott. Ez magában foglalja az [Azure HANA nagy példányok üzembe helyezésének esetét](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) is.
+Az Azure-ban támogatott összes OS/DBMS-kombináció esetében az ilyen típusú konfiguráció támogatott. Azonban kötelező, hogy állítsa be a konfigurációt a DBMS és az SAP-összetevők oly módon, hogy a DBMS és az SAP-összetevők nem versenyeznek a memória és a CPU-erőforrások, és ezáltal meghaladja a fizikai rendelkezésre álló erőforrásokat. Ezt a DBMS által lefoglalni engedélyezett memória korlátozásával kell elvégezni. Az SAP extended memory alkalmazáspéldányokon is korlátoznia kell. Emellett a virtuális gép teljes processzorfogyasztását is figyelnie kell, hogy az összetevők ne maximalizálják a CPU-erőforrásokat. 
 
 > [!NOTE]
-> Az éles környezetben futó SAP-rendszerek esetében további magas rendelkezésre állást és végleges vész-helyreállítási konfigurációkat ajánlunk a jelen dokumentum későbbi részében leírtak szerint.
+> Éles SAP-rendszerek esetén további magas rendelkezésre állású és esetleges vész-helyreállítási konfigurációkat javasoljuk a jelen dokumentum későbbi részében leírtak szerint.
 
 
-## <a name="3-tier-configuration"></a>háromrétegű konfiguráció
-Ilyen konfigurációk esetén az SAP-alkalmazás réteget és az adatbázis-kezelő réteget különböző virtuális gépekre kell elkülöníteni. Ezt általában nagyobb rendszerek esetében teszi lehetővé, és az SAP-alkalmazási réteg erőforrásainál rugalmasabbak lehetnek. A legegyszerűbb beállítás szerint a különböző Azure-összetevőkön kívüli [Azure-szolgáltatói szerződésekkel](https://azure.microsoft.com/support/legal/sla/) nem érhető el magas rendelkezésre állás. 
+## <a name="3-tier-configuration"></a>Háromrétegű konfiguráció
+Az ilyen konfigurációkban az SAP-alkalmazásréteget és a DBMS-réteget különböző virtuális gépekre bontja. Általában ezt a nagyobb rendszerek és az okok miatt, hogy rugalmasabb az SAP alkalmazásréteg erőforrásait. A legegyszerűbb beállítás ban nincs magas rendelkezésre állás az [Azure szolgáltatási szint revonatkozó szerződésén](https://azure.microsoft.com/support/legal/sla/) kívül a különböző Azure-összetevők érintett. 
 
 A grafikus ábrázolás így néz ki:
 
 ![Egyszerű, kétrétegű konfiguráció](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
-Az ilyen típusú konfigurációt a Windows, a Red Hat, a SUSE és a Oracle Linux támogatja a SQL Server, az Oracle, a DB2, a SAP HANA, a maxDB és az SAP-alapú Rendszerfelügyeleti webszolgáltatások rendszeréhez a termelési és nem üzemi esetekben. Ez az [Azure HANA nagyméretű példányainak](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)alapértelmezett üzembe helyezési konfigurációja. Az SAP-alkalmazási rétegben az SAP központi szolgáltatások és az SAP-párbeszédpanel példányai nem különböztetik meg az egyszerűséget. Ebben az egyszerű, 3 rétegű konfigurációban nem lenne magas rendelkezésre állású védelem az SAP központi szolgáltatásai számára.
+Ez a konfigurációtípus támogatott Windows, Red Hat, SUSE és Oracle Linux az SQL Server, Oracle, Db2, SAP HANA, maxDB és SAP ASE adatbázis-rendszerében éles és nem éles esetekben. Ez az [Azure HANA nagy példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)alapértelmezett központi telepítési konfigurációja. Az egyszerűsítés érdekében nem különböztettünk meg az SAP központi szolgáltatások és az SAP-párbeszédpanel-példányok között az SAP alkalmazásrétegben. Ebben az egyszerű háromrétegű konfigurációban nem lenne magas rendelkezésre állású védelem az SAP központi szolgáltatások számára.
 
 > [!NOTE]
-> Az éles környezetben futó SAP-rendszerek esetében további magas rendelkezésre állást és végleges vész-helyreállítási konfigurációkat ajánlunk a jelen dokumentum későbbi részében leírtak szerint.
+> Éles SAP-rendszerek esetén további magas rendelkezésre állású és esetleges vész-helyreállítási konfigurációkat javasoljuk a jelen dokumentum későbbi részében leírtak szerint.
 
 
-## <a name="multiple-dbms-instances-per-vm-or-hana-large-instance-unit"></a>Több adatbázis-kezelő példány virtuális gépenként vagy a HANA nagyméretű példányának egysége
-Ebben a konfigurációban az Azure-beli virtuális gépen vagy a HANA nagyméretű példány-egységen belül több adatbázis-kezelő példányt üzemeltet. A motiváció lehet kevesebb operációs rendszer fenntartása és ezzel csökkentett költségei. Más motivációk nagyobb rugalmasságot és nagyobb hatékonyságot biztosítanak egy nagyobb méretű virtuális gép vagy a HANA nagyméretű példány-egység erőforrásainak több adatbázis-kezelő példány közötti megosztásával. Eddig ezek a konfigurációk többnyire nem éles rendszerekre mutattak.
+## <a name="multiple-dbms-instances-per-vm-or-hana-large-instance-unit"></a>Több DBMS-példány virtuális gépenként vagy HANA nagy példányegységenként
+Ebben a konfigurációs típusban több DBMS-példányt üzemeltet Az Azure Virtuális gép vagy a HANA nagy példány egységenként. A motiváció lehet, hogy kevesebb operációs rendszerek fenntartása és ezzel a csökkentett költségeket. Egyéb motivációk lehet, hogy nagyobb rugalmasságot és nagyobb hatékonyságot egy nagyobb virtuális gép vagy HANA nagy példány egység erőforrásainak megosztása több DBMS-példányok között. Eddig ezek a konfigurációk jelentek meg leginkább a nem termelési rendszerek.
 
-Egy hasonló konfiguráció, amely a következőképpen néz ki:
+Egy ilyen konfiguráció így nézhet ki:
 
-![Több adatbázis-kezelő példány egy egységben](./media/sap-planning-supported-configurations/multiple-database-instances.png)
+![Több DBMS-példány egy egységben](./media/sap-planning-supported-configurations/multiple-database-instances.png)
 
-Az ilyen típusú adatbázis-kezelő üzembe helyezését a következő támogatja:
+Az ilyen típusú DBMS-telepítés a következő célokra támogatott:
 
-- SQL Server Windows rendszeren
-- IBM DB2. További részletek a cikkben [több példányban (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)
-- Oracle esetén. Részletekért lásd: [SAP-támogatási megjegyzés #1778431](https://launchpad.support.sap.com/#/notes/1778431) és kapcsolódó SAP-megjegyzések
-- Ha SAP HANA, egy virtuális gépen több példány van, az SAP meghívja ezt a telepítési módszert MCOS, amely támogatott. Részletekért tekintse meg az SAP-cikket [több SAP HANA rendszer egy gazdagépen (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- SQL Server windowsrendszeren
+- IBM Db2. Részletek keresése a cikkben [Több példány (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)
+- Az Oracle-nek. További részletek: [SAP támogatási megjegyzés #1778431](https://launchpad.support.sap.com/#/notes/1778431) és a kapcsolódó SAP-megjegyzések
+- Az SAP HANA, egy virtuális gép több példánya, az SAP meghívja ezt a telepítési módszert MCOS, támogatott. További részletekért lásd az SAP cikk [Több SAP HANA systems on One Host (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
 - /b2751fd43bec41a9a14e01913f1edf18.html)
 
-Ha több adatbázis-példányt futtat egy gazdagépen, meg kell győződnie arról, hogy a különböző példányok nem versenyeznek az erőforrásokkal, és így túllépik a virtuális gép fizikai erőforrás-korlátait. Ez különösen akkor igaz, ha a memóriát a virtuális gépet megosztó példányok számára le kell foglalni. Ez a CPU-erőforrások esetében is igaz lehet, ha a különböző adatbázis-példányok képesek kihasználni. Az összes említett adatbázis-kezelő olyan konfigurációval rendelkezik, amelyek lehetővé teszik a memória-kiosztást és a processzor-erőforrásokat egy példány szintjén.
-Az Azure-beli virtuális gépek ilyen konfigurációjának támogatásához a rendszer azt várja, hogy a különböző példányok által kezelt adatbázisok adatkezelési és naplófájl-naplófájljaihoz használt lemezek vagy kötetek elkülönítve legyenek. Más szóval a különböző adatbázis-kezelő példányok által felügyelt adatbázisok vagy napló-vagy visszaadott naplófájlok nem ugyanazt a lemezt vagy kötetet használják. 
+Több adatbázis-példány futtatása egy gazdagépen, győződjön meg arról, hogy a különböző példányok nem versengenek az erőforrásokért, és ezáltal meghaladja a virtuális gép fizikai erőforrás-korlátait. Ez különösen igaz a memória, ahol meg kell, hogy a memória minden a virtuális gép megosztásának példányai lefoglalhatja. Ez is lehet, hogy igaz a CPU-erőforrások a különböző adatbázispéldányok is kihasználhatja. Az összes említett DBMS olyan konfigurációval rendelkezik, amely lehetővé teszi a memóriafoglalás és a CPU-erőforrások korlátozását egy példány szintjén.
+Annak érdekében, hogy az Azure virtuális gépek ilyen konfigurációjának támogatása érdekében várható, hogy az adatokhoz használt lemezek vagy kötetek, valamint a különböző példányok által kezelt adatbázisok napló-/ismétlési naplófájljai elkülönülnek. Más szóval a különböző DBMS-példány által kezelt adatbázisok adatai vagy napló-/ismétlése nem feltétlenül ugyanazt a lemezt vagy kötetet osztja meg. 
 
-A HANA nagyméretű példányok lemezes konfigurációja konfigurálva van, és részletesen szerepel a [Hana nagyméretű példányainak támogatott forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos). 
+A HANA nagy példányok lemezkonfigurációja konfigurálva van, és a [HANA nagy példányok támogatott forgatókönyveiben részletezi.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) 
 
 > [!NOTE]
-> Az éles környezetben futó SAP-rendszerek esetében további magas rendelkezésre állást és végleges vész-helyreállítási konfigurációkat ajánlunk a jelen dokumentum későbbi részében leírtak szerint. A több adatbázis-kezelő példányokkal rendelkező virtuális gépek nem támogatottak a jelen dokumentum későbbi részében ismertetett magas rendelkezésre állási konfigurációkkal.
+> Éles SAP-rendszerek esetén további magas rendelkezésre állású és esetleges vész-helyreállítási konfigurációkat javasolunk a jelen dokumentum későbbi részében leírtak szerint. Több DBMS-példánysal rendelkező virtuális gépek nem támogatottak a dokumentum későbbi részében ismertetett magas rendelkezésre állású konfigurációkkal.
 
 
-## <a name="multiple-sap-dialog-instances-in-one-vm"></a>Több SAP-párbeszédpanel példánya egy virtuális gépen
-Sok esetben több párbeszédpanel is üzembe lett helyezve operációs rendszer nélküli kiszolgálókon, vagy akár privát felhőkben futó virtuális gépeken is. Az ilyen konfigurációk esetében az egyes SAP-párbeszédpanelek bizonyos számítási feladatokhoz, üzleti funkciókhoz vagy számítási feladatokhoz való hozzáigazításának oka volt. A példányok elkülönített virtuális gépekre való elkülönítésének oka az operációs rendszer karbantartásának és műveleteinek az erőfeszítése volt. Vagy számos esetben a virtuális gép üzemeltetője vagy kezelője által a virtuális gép által üzemeltetett és adminisztrátora havi díjat kér. Az Azure-ban a Windows, a Red Hat, a SUSE és a Oracle Linux operációs rendszerein belül több SAP-párbeszédpanel példányának üzemeltetése az Egyesült Államokban, amelyek éles és nem éles környezetben is támogatottak. A Windows és modern Linux kerneleken elérhető SAP kernel PHYS_MEMSIZE paramétert úgy kell beállítani, ha több SAP Application Server-példány fut egyetlen virtuális gépen. Azt is javasoljuk, hogy korlátozza az SAP kiterjesztett memória kiterjesztését az operációs rendszereken, például a Windowsban, ahol az SAP kiterjesztett memória automatikus növekedése implementálva van. Ezt a `em/max_size_MB`SAP-profil paraméterrel végezheti el.
+## <a name="multiple-sap-dialog-instances-in-one-vm"></a>Több SAP-párbeszédpanel-példány egy virtuális gépben
+Sok esetben több párbeszédpéldány tértek üzembe a csupasz fémkiszolgálókon, vagy akár a privát felhőkben futó virtuális gépeken. Az ilyen konfigurációk oka az volt, hogy bizonyos SAP-párbeszédpanel-példányokat bizonyos munkaterheléshez, üzleti funkciókhoz vagy munkaterhelés-típusokhoz igazítson. Oka, hogy nem elkülöníti ezeket a példányokat külön virtuális gépekre volt az operációs rendszer karbantartásának és működésének erőfeszítése. Vagy számos esetben a költségek abban az esetben, ha a virtuális gép üzemeltetője vagy üzemeltetője havi díjat kér a virtuális gépen működő és adminisztrált virtuális gépenként. Az Azure-ban egy olyan forgatókönyv, amelyben több SAP-párbeszédpanel-példány tapad egyetlen virtuális gépen belül, amelyet éles és nem éles célokra támogatunk a Windows, a Red Hat, a SUSE és az Oracle Linux operációs rendszerén. Az SAP kernel paraméter PHYS_MEMSIZE, elérhető a Windows és a modern Linux kernelek, be kell állítani, ha több SAP Application Server példányok futnak egyetlen virtuális gépen. Azt is javasoljuk, hogy korlátozza az SAP Extended Memory bővítését az operációs rendszereken, például a Windows rendszeren, ahol az SAP kiterjesztett memória automatikus növekedése valósul meg. Ezt az SAP profil paraméterrel `em/max_size_MB`teheti meg.
 
-Ha az Azure-beli virtuális gépeken több SAP-párbeszédpanelt futtató példány fut, akkor a következő 3 szintű konfigurációban lehet kinézni:
+A háromrétegű konfiguráció, ahol több SAP-párbeszédpanel-példányok futnak az Azure virtuális gépeken belül így nézhet ki:
 
-![Több adatbázis-kezelő példány egy egységben](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![Több DBMS-példány egy egységben](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
-Az SAP-alkalmazási rétegben az SAP központi szolgáltatások és az SAP-párbeszédpanel példányai nem különböztetik meg az egyszerűséget. Ebben az egyszerű, 3 rétegű konfigurációban nem lenne magas rendelkezésre állású védelem az SAP központi szolgáltatásai számára. Éles rendszerek esetében nem ajánlott a nem védett SAP központi szolgáltatásokat hagyni. Az SAP központi példányai és az ilyen többszörös SID-konfigurációk magas rendelkezésre állása esetén az úgynevezett több SID-konfigurációra vonatkozó részletekért lásd a dokumentum későbbi szakaszait.
+Az egyszerűsítés érdekében nem különböztettünk meg az SAP központi szolgáltatások és az SAP-párbeszédpanel-példányok között az SAP alkalmazásrétegben. Ebben az egyszerű háromrétegű konfigurációban nem lenne magas rendelkezésre állású védelem az SAP központi szolgáltatások számára. Éles rendszerek esetén nem ajánlott az SAP központi szolgáltatások védelem nélkül hagyni. Az SAP központi példányok és az ilyen több-SID-konfigurációk magas rendelkezésre állású, úgynevezett több-SID-konfigurációk sajátosságait a dokumentum későbbi szakaszaiban.
 
-## <a name="high-availability-protection-for-the-sap-dbms-layer"></a>Magas rendelkezésre állású védelem az SAP adatbázis-kezelő rétegében
-Az SAP éles rendszerek üzembe helyezése során meg kell fontolnia a magas rendelkezésre állású konfigurációk gyors készenléti típusát. Különösen a SAP HANA, ahol a teljes teljesítmény és a méretezhetőség érdekében a memóriába be kell tölteni az adatmennyiséget, a magas rendelkezésre álláshoz nem ideális megoldás az Azure-szolgáltatások gyógyulása. 
+## <a name="high-availability-protection-for-the-sap-dbms-layer"></a>Magas rendelkezésre állásvédelem az SAP DBMS-réteghez
+Az SAP éles rendszerek üzembe helyezéséhez érdemes figyelembe venni a magas rendelkezésre állású konfigurációk készenléti típusát. Különösen az SAP HANA, ahol az adatokat be kell tölteni a memóriába, mielőtt képes a teljes teljesítmény és a méretezhetőség vissza, az Azure szolgáltatás gyógyulása nem ideális intézkedés a magas rendelkezésre állás. 
 
-A Microsoft általánosságban csak a magas rendelkezésre állású konfigurációk és szoftvercsomagok használatát támogatja, amelyeket a docs.microsoft.com SAP munkaterhelés szakasza ismertet. Ugyanezt az utasítást az SAP Megjegyzés [#1928533](https://launchpad.support.sap.com/#/notes/1928533)is olvashatja. A Microsoft nem nyújt támogatást a harmadik féltől származó olyan szoftveres keretrendszerek támogatásához, amelyeket a Microsoft nem dokumentál az SAP-munkaterhelésekkel együtt. Ilyen esetekben a magas rendelkezésre állási keretrendszer harmadik féltől származó szállítója a magas rendelkezésre állási konfigurációt támogató fél, amelynek az ügyfél által a támogatási folyamathoz kell kapcsolódnia. A kivételeket ebben a cikkben fogjuk megemlíteni. 
+A Microsoft általában csak a magas rendelkezésre állású konfigurációkat és szoftvercsomagokat támogatja, amelyek et az DOCS.MICROSOFT.COM SAP számítási feladatok szakasza ismerteti. Ugyanezt a kijelentést elolvashatja az SAP note [#1928533.](https://launchpad.support.sap.com/#/notes/1928533) A Microsoft nem nyújt támogatást más, magas rendelkezésre állású, külső gyártótól származó szoftverkeretrendszerekhez, amelyeket a Microsoft nem dokumentált az SAP-munkaterheléssel együtt. Ilyen esetekben a magas rendelkezésre állású keretrendszer külső szállítója a magas rendelkezésre állású konfiguráció támogató fele, akit ön nek kell igénybe vennie, mint ügyfélnek a támogatási folyamatba. Kivételek fognak említeni ebben a cikkben. 
 
-A Microsoft általánosságban a magas rendelkezésre állású konfigurációk korlátozott készletét támogatja az Azure-beli virtuális gépeken vagy a HANA Large instances-egységeken. A nagyméretű HANA-példányok támogatott forgatókönyvei esetében olvassa el a [Hana nagyméretű példányok által támogatott forgatókönyvek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)című dokumentumot.
+A Microsoft általában támogatja az Azure virtuális gépek en vagy hana nagy példányok egységein rendelkezésre álló magas rendelkezésre állású konfigurációk korlátozott készletét. A hana nagy példányok támogatott forgatókönyvei, olvassa el a dokumentum [támogatott forgatókönyvek HANA nagy példányok.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
 
-Azure-beli virtuális gépek esetén a következő magas rendelkezésre állású konfigurációk támogatottak az adatbázis-kezelői szinten:
+Az Azure virtuális gépek esetében a következő magas rendelkezésre állású konfigurációk támogatottak a DBMS szintjén:
 
-- SAP HANA a rendszer-replikációt a SUSE és a Red Hat Linux-pacemakere alapján. Tekintse meg a részletes cikkeket:
-    - [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-    - [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
-- SAP HANA kibővíthető n + m konfigurációk a SUSE és a Red Hat [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) használatával. A részleteket a következő cikkekben találja:
-    - [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server}](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-    - [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- A Windows kibővíthető Fájlszolgáltatások alapján SQL Server feladatátvevő fürt. Bár az éles rendszerekre vonatkozó javaslat a fürtözés helyett a SQL Server always on használata. A SQL Server always on jobb rendelkezésre állást biztosít a különálló tárolók használatával. A részleteket a cikk ismerteti: 
-    - [SQL Server feladatátvevő fürt példányának konfigurálása Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster)
-- A SQL Server always on az Azure-beli SQL Server Windows operációs rendszerét támogatja. Ez az Azure-beli éles SQL Server-példányok alapértelmezett ajánlása. A részleteket az alábbi cikkekben ismertetjük:
-    - [SQL Server always on rendelkezésre állási csoportok bemutatása az Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)szolgáltatásban.
-    - [Always On rendelkezésre állási csoport konfigurálása az Azure-beli virtuális gépeken különböző régiókban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr).
-    - [Terheléselosztó konfigurálása az Azure always on rendelkezésre állási csoportjához](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener).
-- Oracle-adatvédelem Windows és Oracle Linux. A Oracle Linux részletei a cikkben találhatók:
-    - [Oracle-adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
-- Az IBM DB2 HADR a SUSE-es és a RHEL-hez készült részletes dokumentációja a SUSE és a RHEL szolgáltatáshoz a pacemaker használatával:
-    - [Az IBM DB2-LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
-    - [Az IBM DB2-LUW magas rendelkezésre állása Red Hat Enterprise Linux-kiszolgálón lévő Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw)
-- SAP-bemenő és SAP-maxDB konfigurálása a következő dokumentumokban részletezett módon:
+- SAP HANA rendszer replikáció linuxos pacemaker alapján a SUSE és a Red Hat. Lásd a részletes cikkeket:
+    - [Az SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+    - [Az SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken a Red Hat Enterprise Linuxon](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+- SAP HANA horizontális felskálázásn keresztül n+m konfigurációk [az Azure NetApp-fájlok](https://azure.microsoft.com/services/netapp/) suse-on és a Red Hat használatával. A részleteket a következő cikkek sorolják fel:
+    - [SAP HANA horizontális felskálázási rendszer üzembe helyezése készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlok használatával a SUSE Linux Enterprise Server} használatával}](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+    - [SAP HANA horizontális felskálázási rendszer üzembe helyezése készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlok használatával Red Hat Enterprise Linux on Red Hat Enterprise Linux on](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- SQL Server feladatátvételi fürt a Windows kibővített fájlszolgáltatások alapján. Bár az éles rendszerek rejleési javaslata az SQL Server Always On használata a fürtözés helyett. Az SQL Server Always On jobb rendelkezésre állást biztosít külön tárolóhasználatával. A részleteket ebben a cikkben ismertetjük: 
+    - [SQL Server feladatátvételi fürtpéldány konfigurálása Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster)
+- Az SQL Server Always On az Azure-beli SQL Server operációs rendszerrel támogatott. Ez az alapértelmezett javaslat az azure-beli éles SQL Server-példányok hoz. A részleteket a következő cikkek ismertetik:
+    - [Bemutatjuk az SQL Server Always On rendelkezésre állási csoportokat az Azure virtuális gépeken.](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+    - [Konfiguráljon egy mindig rendelkezésre állási csoportot a különböző régiókban lévő Azure virtuális gépeken.](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)
+    - [Konfiguráljon egy terheléselosztót egy mindig elérhető helyen lévő csoporthoz az Azure-ban.](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener)
+- Oracle Data Guard Windows és Oracle Linux. Az Oracle Linux részletei ebben a cikkben találhatók:
+    - [Az Oracle Data Guard megvalósítása Egy Azure Linux-alapú virtuális gépen](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+- IBM Db2 HADR a SUSE-ról és RHEL A SUSE és rhel pacemaker használatával kapcsolatos részletes dokumentációitt található:
+    - [Az IBM Db2 LUW magas rendelkezésre állása az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server en pacemakerrel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
+    - [Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw)
+- Az SAP ASE és az SAP maxDB konfigurációja az alábbi dokumentumokban részletezett módon:
     - [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
-    - [Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
-- A HANA nagyméretű példányai magas rendelkezésre állási forgatókönyvei részletesen a következőkben találhatók:
-    - [A HANA Large instances-HSR által támogatott forgatókönyvek – magas rendelkezésre állású STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability)
-    - [A HANA nagyméretű példányainak támogatott forgatókönyvei – gazdagép automatikus feladatátvétele (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11)
+    - [SAP MaxDB, liveCache és Content Server központi telepítése az Azure virtuális gépein](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
+- Hana nagy példányok magas rendelkezésre állású forgatókönyvek részletesen:
+    - [Hana Large Instances támogatott forgatókönyvei – HSR STONITH-val a magas rendelkezésre állás érdekében](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability)
+    - [Hana nagypéldányok támogatott forgatókönyvei – Állomás automatikus feladatátvétele (1+1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11)
 
 > [!IMPORTANT]
-> A fent ismertetett forgatókönyvek egyike sem támogatja több adatbázis-kezelő példány konfigurációját egy virtuális gépen. Azt jelenti, hogy az egyes esetekben csak egy adatbázis-példány telepíthető virtuális gépenként és védett a magas rendelkezésre állási módszerekkel. Ezen a ponton **nem** támogatott több adatbázis-kezelő példány védelme ugyanazon a Windows-vagy pacemaker-feladatátvevő fürtön. Emellett az Oracle-adatvédelmet csak a virtuálisgép-telepítési esetekben támogatja a rendszer. 
+> A fent leírt forgatókönyvek egyike sem támogatjuk több DBMS-példány konfigurációját egy virtuális gépen. Eszközök minden esetben csak egy adatbázis-példány telepíthető virtuális gépenként, és a leírt magas rendelkezésre állási módszerekkel védett. Több DBMS-példány védelme ugyanazon Windows vagy Pacemaker feladatátvételi fürt alatt **jelenleg nem** támogatott. Az Oracle Data Guard is csak virtuális gép telepítési esetenként egy példányban támogatott. 
 
-A különböző adatbázis-rendszerek lehetővé teszik több adatbázis üzemeltetését egy adatbázis-kezelő példányban. Ahogy SAP HANA esetében, több adatbázis is üzemeltethető több adatbázis-tárolóban (MDC). Azokban az esetekben, amikor ezek a többadatbázisos konfigurációk egy feladatátvevő fürt erőforrásán belül működnek, ezek a konfigurációk támogatottak. A nem támogatott konfigurációk olyan esetek, amikor több fürterőforrás szükséges. Olyan konfigurációk esetében, amelyekben több SQL Server rendelkezésre állási csoportot határoz meg egy SQL Server példány alatt.
+A különböző adatbázisrendszerek lehetővé teszik több adatbázis üzemeltetését egy DBMS-példány alatt. Az SAP HANA-hoz hasonlóan több adatbázis-tárolóban (MDC) is üzemeltethető. Azokban az esetekben, amikor ezek a többadatbázisos konfigurációk egy feladatátvevő fürterőforráson belül működnek, ezek a konfigurációk támogatottak. A nem támogatott konfigurációk olyan esetek, amikor több fürterőforrásra lenne szükség. Ami azokat a konfigurációkat illeti, ahol több SQL Server-rendelkezésre állási csoportot definiálna, egyetlen SQL Server-példány alatt.
 
 
-![Adatbázis-kezelő HA konfiguráció](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)
+![DBMS HA konfiguráció](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)
 
-A/vagy operációs rendszerek, például az Azure Load Balancer vagy a megoldás architektúrájának részeként szükséges összetevőktől függ. 
+A DBMS an/vagy operációs rendszerektől függően az olyan összetevők, mint az Azure terheléselosztó, előfordulhat, hogy nem szükségesek a megoldásarchitektúra részeként. 
 
-Kifejezetten a maxDB esetében a tárolási konfigurációnak eltérőnek kell lennie. A maxDB az adatfájlok és a naplófájlok a magas rendelkezésre állású konfigurációkhoz szükségesek a megosztott tárolóban. A maxDB esetében csak a megosztott tárterület támogatott a magas rendelkezésre állás érdekében. Minden más adatbázis-kezelői különálló tárolási verem esetében az egyetlen támogatott lemez-konfiguráció.
+Kifejezetten a maxDB esetében a tárolási konfigurációnak másnak kell lennie. A maxDB-ben az adatoknak és a naplófájloknak megosztott tárolón kell elhelyezkedniük a magas rendelkezésre állású konfigurációkhoz. Csak abban az esetben, maxDB, megosztott tároló támogatott a magas rendelkezésre állás. Az összes többi DBMS külön tárolóhalom csomópontonként az egyetlen támogatott lemezkonfigurációk.
 
-Léteznek más magas rendelkezésre állási keretrendszerek is, és ismertek, hogy Microsoft Azureon is futnak. A Microsoft azonban nem tesztelte ezeket a keretrendszereket. Ha a magas rendelkezésre állású konfigurációt ezekkel a keretrendszerekkel szeretné felépíteni, akkor a szoftver szolgáltatójának kell működnie a következőkhöz:
+Más magas rendelkezésre állású keretrendszerek ismert, hogy létezik, és ismert, hogy fut a Microsoft Azure-ban is. A Microsoft azonban nem tesztelte ezeket a keretrendszereket. Ha ezekkel a keretrendszerekkel szeretné felépíteni a magas rendelkezésre állású konfigurációt, akkor a szoftver szolgáltatójával együtt kell működnie a következők érdekében:
 
-- Üzembe helyezési architektúra fejlesztése
-- Az architektúra üzembe helyezése
+- Telepítési architektúra kialakítása
+- Az architektúra telepítése
 - Az architektúra támogatása
 
 > [!IMPORTANT]
-> Microsoft Azure Marketplace számos olyan lágy készüléket kínál, amelyek tárolási megoldásokat biztosítanak az Azure natív tárolóján. Ezek a Soft készülékek az NFS-megosztások létrehozásához használhatók, és elméletileg használhatók a SAP HANA kibővíthető központi telepítések esetén, ahol készenléti csomópontra van szükség. Számos ok miatt a Microsoft és az SAP az Azure-ban való telepítésének egyik központi telepítése sem támogatja a Storage Soft-berendezéseket. Az adatbázis-kezelők SMB-megosztásokon való központi telepítése jelenleg nem támogatott. Az adatbázis-kezelő rendszer NFS-megosztásokon üzemelő telepítései a [Azure NETAPP Files](https://azure.microsoft.com/services/netapp/)NFS 4,1-megosztásokra korlátozódnak.
+> A Microsoft Azure Piactér számos olyan puha készüléket kínál, amelyek tárolási megoldásokat kínálnak az Azure natív tárhelyén felül. Ezek a soft appliances nfs-megosztások létrehozásához is használható, amelyek elméletileg felhasználhatók az SAP HANA kibővített telepítésekben, ahol készenléti csomópontra van szükség. Különböző okok miatt egyik ilyen tárolási soft appliances sem támogatja a Microsoft és az SAP az Azure-ban a DBMS-telepítések egyikét sem. A DBMS smb-megosztásokon történő telepítése egyáltalán nem támogatott. A DBMS NFS-megosztásokon történő telepítése az Azure NetApp Files NFS 4.1-es megosztására [korlátozódik.](https://azure.microsoft.com/services/netapp/)
 
 
-## <a name="high-availability-for-sap-central-service"></a>Magas rendelkezésre állás az SAP Central szolgáltatáshoz
-Az SAP Central Services az SAP-konfiguráció második meghibásodási pontja. Ennek eredményeképpen ezeket a központi szolgáltatási folyamatokat is el kell végeznie. Az SAP-munkaterhelések által támogatott és dokumentált ajánlat a következőhöz hasonló:
+## <a name="high-availability-for-sap-central-service"></a>Az SAP központi szolgáltatás magas rendelkezésre állása
+Az SAP központi szolgáltatások az SAP-konfiguráció második egyetlen meghibásodási pontja. Ennek eredményeképpen ezeket a központi szolgáltatási folyamatokat is meg kell védenie. Az SAP-munkaterheléstámogatott és dokumentált ajánlata a következőképpen szól:
 
-- Windows feladatátvevő fürt kiszolgálója a Windows kibővített Fájlszolgáltatások használatával a sapmnt és a globális átviteli címtárhoz. A részleteket a cikk ismerteti:
-    - [SAP ASCS-/SCS-példány fürthöz való fürtözése Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-    - [Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
-- A Windows feladatátvételi fürtszolgáltatás SMB-megosztást használ a sapmnt és a globális átviteli címtár [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) alapján. A részleteket a cikk tartalmazza:
-    - [Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-- A Windows feladatátvételi fürtszolgáltatás a SIOS `Datakeeper`alapján. Bár a Microsoft dokumentálja, a SIOS-vel való támogatási kapcsolatra van szükség, így a megoldás használatakor SIOS-támogatással is elvégezhető. A részleteket a cikk ismerteti:
-    - [Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-    - [Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
-- Pacemaker a SUSE operációs rendszerhez, amely egy nagyszámú NFS-megosztást hoz létre két SUSE virtuális gép és `drdb` használatával a fájlreplikációs szolgáltatáshoz. A részleteket a cikk ismerteti.
-    - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-    - [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- Pacemaker SUSE operációs rendszer az [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)által biztosított NFS-megosztások kihasználásával. A részletek dokumentációja:
-    - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- A Red Hat operációs rendszer pacemakere `glusterfs`-fürtön üzemeltetett NFS-megosztással. A részletek a cikkekben találhatók
-    - [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
-    - [`GlusterFS` az Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
-- A Red Hat operációs rendszer pacemakere [Azure NetApp Fileson](https://azure.microsoft.com/services/netapp/)ÜZEMELTETett NFS-megosztással. A részleteket a cikk ismerteti.
-    - [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+- Windows feladatátvevőfürt-kiszolgáló, amely a Windows kibővített fájlszolgáltatásokat használja a sapmnt és a globális átviteli könyvtárhoz. A részleteket a cikk ismerteti:
+    - [SAP ASCS/SCS-példány fürtjének fürtje Windows feladatátvevő fürtön fájlmegosztás használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
+    - [Az Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állására egy Windows feladatátvételi fürt és fájlmegosztás használatával SAP ASCS/SCS-példányokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
+- Windows feladatátvevő fürtkiszolgáló SMB-megosztáshasználatával az [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) sapmnt és globális átviteli könyvtár alapján. A részletek a cikkben találhatók:
+    - [Az SAP NetWeaver magas rendelkezésre állása az Azure-beli virtuális gépeken Windows rendszeren, SAP-alkalmazásokhoz készült Azure NetApp-fájlok (SMB)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+- Windows feladatátvevő fürtkiszolgáló sios `Datakeeper`alapú . Bár a Microsoft dokumentálta, a SIOS-szel támogatási kapcsolatra van szüksége, így a megoldás használatakor kapcsolatba léphet a SIOS-támogatással. A részleteket a cikk ismerteti:
+    - [SAP ASCS/SCS-példány fürtjének fürtje egy Windows feladatátvételi fürtön az Azure-ban megosztott fürt használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+    - [Az Azure-infrastruktúra előkészítése az SAP HA számára egy Windows feladatátvételi fürt és az SAP ASCS/SCS megosztott lemezhasználatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
+- A SUSE operációs rendszer pacemakere egy magas rendelkezésre állású `drdb` NFS-megosztás létrehozásával két SUSE virtuális gép használatával és fájlreplikációhoz. A részleteket a cikk dokumentálja
+    - [Az SAP NetWeaver magas rendelkezésre állása az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server SAP-alkalmazásokhoz szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
+    - [Magas rendelkezésre állás az NFS számára az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server rendszeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
+- Pacemaker SUSE operációs rendszer kihasználva NFS-megosztások által biztosított [Azure NetApp Files](https://azure.microsoft.com/services/netapp/). A részleteket a
+    - [Az SAP NetWeaver magas rendelkezésre állása az Azure virtuális gépeken a SUSE Linux Enterprise Server en az SAP-alkalmazásokhoz készült Azure NetApp-fájlokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+- Pacemaker a Red Hat operációs rendszer NFS megosztással egy `glusterfs` fürtön. Részletek találhatók a cikkekben
+    - [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux on](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+    - [`GlusterFS`Az Azure virtuális gépeken a Red Hat Enterprise Linux sap NetWeaver-hez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- Pacemaker a Red Hat operációs rendszer NFS megosztásházigazdája [az Azure NetApp Files](https://azure.microsoft.com/services/netapp/). A részleteket a cikk ismerteti
+    - [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux on Azure NetApp Files SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 
-A felsorolt megoldások esetében támogatási kapcsolatban kell lennie a SIOS-mel, hogy támogassa a `Datakeeper` terméket, és a SIOS közvetlenül a probléma esetén is felveszi a kapcsolatot. A Windows, a Red Hat és/vagy a SUSE operációs rendszer licencének függvényében az operációs rendszer szolgáltatójának támogatási szerződéssel is rendelkeznie kell, hogy teljes mértékben támogassa a felsorolt magas rendelkezésre állású konfigurációkat.
+A felsorolt megoldások közül támogatási kapcsolatra van szüksége a `Datakeeper` SIOS-szel, hogy támogassa a terméket, és problémák esetén közvetlenül kapcsolatba lépjen a SIOS-szel. A Windows, a Red Hat és/vagy a SUSE operációs rendszer licencmódjától függően előfordulhat, hogy támogatási szerződést kell kötnie az operációs rendszer szolgáltatójával, hogy teljes mértékben támogassa a felsorolt magas rendelkezésre állású konfigurációkat.
 
-A konfiguráció a következőhöz hasonló módon is megjeleníthető:
+A konfiguráció is megjeleníthető, mint:
 
-![Adatbázis-kezelő és ASCS HA konfiguráció](./media/sap-planning-supported-configurations/high-available-3-tier-configuration.png)
+![DBMS és ASCS HA konfiguráció](./media/sap-planning-supported-configurations/high-available-3-tier-configuration.png)
 
-A grafika jobb oldalán megjelenik a magasan elérhető SAP központi szolgáltatások. Amellett, hogy az SAP központi szolgáltatásai olyan feladatátvevő fürt keretrendszerrel védettek, amely probléma esetén feladatátvételt hajt végre, szükség van egy, a sapmnt és a globális átviteli címtárat is tartalmazó, magasan elérhető NFS-vagy SMB-megosztásra vagy egy megosztott Windows-lemezre. egyetlen virtuális gép létezésének függetlennek kell lennie. Az egyes megoldások, például a Windows feladatátvevő fürt és a pacemaker esetében az Azure Load Balancer szükséges ahhoz, hogy közvetlenül vagy átirányítsa a forgalmat egy kifogástalan állapotú csomópontra.
+A grafika jobb oldalán a magas rendelkezésre állású SAP central services jelenik meg. Amellett, hogy az SAP Központi szolgáltatások olyan feladatátvevő fürtkeretrendszerrel vannak védve, amely probléma esetén feladatátvételt tesz lehetővé, szükség van egy magas rendelkezésre állású NFS- vagy SMB-megosztásra, vagy egy Windows megosztott lemezre, hogy megbizonyosodjon arról, hogy a sapmnt és a globális átviteli könyvtár függetlenül attól, hogy létezik-e egyetlen virtuális gép. További megoldások, például a Windows feladatátvevő fürtkiszolgáló és a pacemaker lesz szükség egy Azure-terheléselosztó közvetlen vagy átirányítja a forgalmat egy kifogástalan csomópont.
 
-A listában nem szerepel a Oracle Linux operációs rendszer. A Oracle Linux nem támogatja a pacemakert fürt-keretrendszerként. Ha Oracle Linuxon szeretné telepíteni az SAP-rendszerét, és magas rendelkezésre állási keretrendszerre van szüksége a Oracle Linuxhoz, akkor a külső gyártótól származó szállítókkal kell dolgoznia. Az egyik szállító az Azure-beli SAP által támogatott SIOS rendelkezik. További információ: SAP Note [#1662610 – támogatás a SIOS Protection Suite for Linux](https://launchpad.support.sap.com/#/notes/1662610) további részleteiről.
+A listában látható, nincs említés az Oracle Linux operációs rendszer. Az Oracle Linux nem támogatja a Pacemaker t fürtkeretrendszerként. Ha sap-rendszerét Oracle Linuxra szeretné telepíteni, és magas rendelkezésre állási keretrendszerre van szüksége az Oracle Linux számára, külső beszállítókkal kell együttműködnie. Az egyik szállító a SIOS a Protection Suite for Linux, amely az SAP által támogatott az Azure-ban. További információkért olvassa el az SAP [note #1662610 - A SIOS Protection Suite for Linux támogatási adatait](https://launchpad.support.sap.com/#/notes/1662610) további részletekért.
 
 
 
-### <a name="supported-storage-with-the-sap-central-services-scenarios-listed-above"></a>Támogatott tárterület a fent felsorolt SAP Central Services-forgatókönyvekkel
-Mivel az Azure-beli tárolási típusok csak egy részhalmaza magas rendelkezésre állású NFS-vagy SMB-megosztásokat biztosít az SAP központi szolgáltatási fürtjében való használathoz, a támogatott tárolási típusok listája
+### <a name="supported-storage-with-the-sap-central-services-scenarios-listed-above"></a>Támogatott tárolás a fent felsorolt SAP központi szolgáltatási forgatókönyvekkel
+Mivel az Azure storage-típusoknak csak egy részhalmaza biztosít magas rendelkezésre állású NFS- vagy SMB-megosztásokat, amelyek minőséget biztosítanak az SAP Központi Szolgáltatások fürtforgatókönyveiben való használathoz, a támogatott tárolótípusok listáját
 
-- A Windows rendszerű feladatátvevő fürt a Windows kibővített fájlkiszolgálón telepíthető az összes natív Azure-beli tárolási típusra, kivéve a Azure NetApp Files. Azonban javasoljuk, hogy az átviteli sebesség és a IOPS terén a kiváló szolgáltatási szintű szerződések miatt Premium Storage kihasználja a szolgáltatást.
-- A Windows feladatátvételi fürtszolgáltatás az SMB-vel Azure NetApp Files a Azure NetApp Fileson támogatott. Az Azure file Services szolgáltatásban az SMB-megosztások **nem** támogatottak ebben az időpontban.
-- A Windows rendszerű feladatátvevő fürt a SIOS-`Datakeeper` alapuló Windows megosztott lemezzel telepíthető az összes natív Azure-beli tárolási típusra, kivéve a Azure NetApp Files. Azonban javasoljuk, hogy az átviteli sebesség és a IOPS terén a kiváló szolgáltatási szintű szerződések miatt Premium Storage kihasználja a szolgáltatást.
-- A SUSE vagy a Red Hat pacemaker az NFS-megosztások használatával Azure NetApp Files a Azure NetApp Fileson támogatott. 
-- A SUSE pacemaker a két virtuális gép közötti `drdb` konfiguráció használatával támogatott natív Azure Storage-típusok használatával, kivéve a Azure NetApp Files. Azonban javasoljuk, hogy az átviteli sebesség és a IOPS terén a kiváló szolgáltatási szintű szerződések miatt Premium Storage kihasználja a szolgáltatást.
-- A Red Hat pacemaker a `glusterfs` használatával biztosítja az NFS-megosztást a natív Azure Storage-típusok használatával, kivéve a Azure NetApp Files. Azonban javasoljuk, hogy az átviteli sebesség és a IOPS terén a kiváló szolgáltatási szintű szerződések miatt Premium Storage kihasználja a szolgáltatást.
+- A Windows feladatátvevő fürtkiszolgáló és a Windows kibővített fájlkiszolgáló minden natív Azure-tárhelytípusra telepíthető, kivéve az Azure NetApp-fájlokat. Azonban az a javaslat, hogy a prémium szintű storage-t az átviteli és iops-os magasabb szintű szolgáltatásiszint-szerződések nek köszönhetően használja.
+- Az Azure NetApp-fájlok smb-vel rendelkező Windows feladatátvevő fürtkiszolgálója támogatott. Az Azure File-szolgáltatások SMB-megosztások **jelenleg nem** támogatottak.
+- A Windows feladatátvevő fürtkiszolgáló sios-alapú Windows feladatátvételi fürtkiszolgálója sios-alapú `Datakeeper` Windows feladatátvevő fürtkiszolgálóval az Azure NetApp-fájlok kivételével minden natív Azure-tárhelytípusra telepíthető. Azonban az a javaslat, hogy a prémium szintű storage-t az átviteli és iops-os magasabb szintű szolgáltatásiszint-szerződések nek köszönhetően használja.
+- Az Azure NetApp-fájlok nfs-megosztásokat használó SUSE vagy Red Hat pacemaker támogatott. 
+- A két virtuális `drdb` gép közötti konfigurációt használó SUSE pacemaker t natív Azure-tárolási típusok használatával támogatja, kivéve az Azure NetApp-fájlokat. Azonban az a javaslat, hogy a prémium szintű storage-t az átviteli és iops-os magasabb szintű szolgáltatásiszint-szerződések nek köszönhetően használja.
+- Red Hat `glusterfs` pacemaker segítségével nfs-megosztás tanonc az Azure Storage-típusok, kivéve az Azure NetApp-fájlok használata. Azonban az a javaslat, hogy a prémium szintű storage-t az átviteli és iops-os magasabb szintű szolgáltatásiszint-szerződések nek köszönhetően használja.
 
 > [!IMPORTANT]
-> Microsoft Azure Marketplace számos olyan lágy készüléket kínál, amelyek tárolási megoldásokat biztosítanak az Azure natív tárolóján. Ezek a Soft készülékek az NFS-vagy SMB-megosztások létrehozásához használhatók, amelyek elméletileg használhatók a feladatátvevő fürtözött SAP központi szolgáltatásokban is. Ezeket a megoldásokat a Microsoft nem támogatja közvetlenül az SAP-munkaterhelések esetében. Ha úgy dönt, hogy egy ilyen megoldást használ az NFS-vagy SMB-megosztás létrehozásához, akkor az SAP központi szolgáltatás konfigurációjának támogatását a tárolóban található szoftvert birtokló külső gyártónak kell megadnia.
+> A Microsoft Azure Piactér számos olyan puha készüléket kínál, amelyek tárolási megoldásokat kínálnak az Azure natív tárhelyén felül. Ezek a soft appliances lehet használni NFS vagy SMB megosztások, valamint, hogy elméletileg lehet használni a feladatátvevő fürtözött SAP központi szolgáltatások is használható. Ezeket a megoldásokat a Microsoft nem támogatja közvetlenül az SAP-munkaterheléshez. Ha úgy dönt, hogy egy ilyen megoldás segítségével hozza létre az NFS vagy SMB-megosztás, az SAP központi szolgáltatás konfigurációját kell biztosítania a harmadik fél tulajdonában lévő szoftver a tároló puha készülék.
 
 
-## <a name="multi-sid-sap-central-services-failover-clusters"></a>Többszörös SID SAP Central Services feladatátvételi fürtök
-A nagyméretű SAP-tájakon szükséges virtuális gépek számának csökkentése érdekében az SAP lehetővé teszi, hogy a feladatátvevő fürt konfigurációjában több különböző SAP-rendszerből származó SAP központi szolgáltatási példányokat futtasson. Képzelje el azokat az eseteket, ahol 30 vagy több NetWeaver vagy S/4HANA éles rendszer van. Több SID-fürtszolgáltatás nélkül ezek a konfigurációk legalább 60-es virtuális gépet igényelnek 30 vagy több Windows vagy pacemaker feladatátvételi fürt konfigurációjában. Az adatbázis-kezelő feladatátvételi fürtökön kívül szükséges. Ha több SAP központi szolgáltatást helyez üzembe a feladatátvevő fürt két csomópontján, a virtuális gépek száma jelentősen csökkenthető. Azonban a több SAP központi szolgáltatási példány üzembe helyezése egyetlen két csomópontos fürtön is hátrányos. A fürt konfigurációjának egyetlen virtuális gépe által felmerülő problémák több SAP-rendszeren is érvényesek. A fürt konfigurációjában futó vendég operációs rendszer karbantartásának több koordinációra van szüksége, mivel több éles SAP-rendszer is érintett. Az olyan eszközök, mint az SAP láma, nem támogatják a több SID-fürtszolgáltatást a rendszer klónozási folyamatában.
+## <a name="multi-sid-sap-central-services-failover-clusters"></a>TöbbSID-szintű SAP központi szolgáltatások feladatátvételi fürtjei
+A nagy SAP-környezetekben szükséges virtuális gépek számának csökkentése érdekében az SAP lehetővé teszi több különböző SAP-rendszer SAP központi szolgáltatások példányainak futtatását feladatátvételi fürtkonfigurációban. Képzeljen el olyan eseteket, amikor 30 vagy több NetWeaver vagy S/4HANA termelési rendszerrel rendelkezik. Több SID-fürtözés nélkül ezek a konfigurációk 30 vagy több Windows vagy Pacemaker feladatátvételi fürtkonfigurációban 60 vagy több virtuális gépet igényelnének. A szükséges DBMS feladatátvételi fürtök mellett. Több SAP központi szolgáltatás üzembe helyezése két csomópont között egy feladatátvevő fürt konfigurációjában jelentősen csökkentheti a virtuális gépek számát. Azonban több SAP központi szolgáltatási példányok üzembe helyezése egyetlen két csomópont fürtkonfigurációis van néhány hátránya is. A fürtkonfigurációban lévő egyetlen virtuális gép körüli problémák több SAP-rendszerre vonatkoznak. A fürtkonfigurációban futó vendég operációs rendszer karbantartása nagyobb koordinációt igényel, mivel több éles SAP-rendszer érintett. Az OLYAN eszközök, mint az SAP LaMa nem támogatják a több SID-fürtözést a rendszer klónozási folyamatában.
 
-Az Azure-ban a ENSA1 és a ENSA2 Windows operációs rendszer esetén a több SID-alapú fürtkonfiguráció is támogatott. A javaslat nem ötvözi a régebbi sorba helyezni Replication Service Architecture (ENSA1) architektúrát az új architektúrával (ENSA2) egy több SID-fürtön. Az ilyen architektúrával kapcsolatos részletek a cikkekben vannak dokumentálva
+Az Azure-ban az ENSA1 és AZ ENSA2 operációs rendszer többSID-fürtkonfigurációja támogatott. Az ajánlás nem a régebbi enqueue replikációs szolgáltatás architektúrájának (ENSA1) és az új architektúra (ENSA2) egyetlen többSID-fürtön való egyesítése. Az ilyen architektúrával kapcsolatos részleteket a cikkek dokumentálják
 
-- [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk) 
-- [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share) 
+- [Az SAP ASCS/SCS példány több SID-példány magas rendelkezésre állása windows Server feladatátvételi fürtözéssel és megosztott lemezzel az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk) 
+- [Az SAP ASCS/SCS példány több SID-példány magas rendelkezésre állása windows Server feladatátvételi fürtözéssel és fájlmegosztással az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share) 
 
-A SUSE esetében a Pacemakeren alapuló több SID-fürt is támogatott. Eddig a következő konfiguráció támogatott:
+A SUSE esetében a Pacemaker alapú több-SID-fürt is támogatott. Eddig a konfiguráció támogatott:
 
 - Legfeljebb öt SAP ASCS/SCS-példány
-- A régi sorba helyezni-replikációs kiszolgáló Ice Architecture (ENSA1)
-- Két csomópontos pacemaker-fürt konfigurációja
+- A régi enqueue replikációs kiszolgáló jégarchitektúrája (ENSA1)
+- Két csomópont pacemakerének fürtkonfigurációja
 
-A konfigurációt az [Azure-beli virtuális gépeken futó SAP NetWeaver magas rendelkezésre állása ismerteti SUSE Linux Enterprise Server for SAP Applications multi-SID Guide](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+A konfiguráció dokumentálva [az SAP NetWeaver magas rendelkezésre állású az Azure-beli virtuális gépeken az Sap Enterprise Server for SAP alkalmazások több SID-útmutatójában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 
-A sorba helyezni replikációs kiszolgálóval rendelkező több SID-fürt sematikusan úgy néz ki, mint
+A több SID-fürt enqueue replikációs kiszolgáló samatikusan néz ki
 
-![Adatbázis-kezelő és ASCS HA konfiguráció](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![DBMS és ASCS HA konfiguráció](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
-## <a name="sap-hana-scale-out-scenarios"></a>Felskálázási forgatókönyvek SAP HANA
-A SAP HANA kibővíthető forgatókönyvek a HANA Certified Azure-beli virtuális gépek egy részhalmaza számára támogatottak, ahogy az a [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)szerepel. A "fürtözés" oszlopban az "igen" jelölésű összes virtuális gép használható OLAP-vagy S/4HANA-felskálázásra is. A STANDBY nélküli konfigurációk a következők: 
+## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA horizontális felskálázási forgatókönyvek
+Az SAP HANA horizontális felskálázási forgatókönyvek az [SAP HANA hardverkönyvtárában](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)felsorolt HANA-tanúsítvánnyal rendelkező Azure-virtuális gépek egy részhalmaza számára támogatottak. A "Fürtözés" oszlopban "Igen" jellel jelölt összes virtuális gép használható OLAP vagy S/4HANA horizontális felskálázáshoz. A készenlétnélküli konfigurációkat az Azure Storage-típusok támogatják: 
 
-- Azure Premium Storage, beleértve az Azure Write Accelerator-t a/Hana/log-kötethez
-- [Ultravékony lemez](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
+- Azure Premium Storage, beleértve az Azure Write gyorsítót a /hana/log kötethez
+- [Ultralemez](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-A készenléti csomópont (ok) val rendelkező OLAP-vagy S/4HANA-alapú kibővített konfigurációk kizárólag az Azure NetApp Files-on üzemeltetett NFS-en támogatottak. SAP HANA
+Az OLAP vagy az S/4HANA készenléti csomópontokkal rendelkező SAP HANA kibővített konfigurációit kizárólag az Azure NetApp-fájlokban üzemeltetett NFS támogatja.
 
-A készenléti csomóponttal vagy anélkül történő pontos tárolási konfigurációkról a következő cikkekben talál további információt:
+A készenléti csomós sal rendelkező vagy a nélküli pontos tárolási konfigurációkról további információt a következő cikkekben talál:
 
-- [Azure-beli virtuális gépek tárolási konfigurációinak SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
-- [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- [SAP-támogatási Megjegyzés #2080991](https://launchpad.support.sap.com/#/notes/2080991)
+- [SAP HANA Azure-beli virtuális gépek tárkonfigurációi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
+- [SAP HANA horizontális felskálázási rendszer üzembe helyezése készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlok használatával a SUSE Linux Enterprise Server en](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- [SAP HANA horizontális felskálázási rendszer üzembe helyezése készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlok használatával Red Hat Enterprise Linux on Red Hat Enterprise Linux on](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [SAP támogatási megjegyzés #2080991](https://launchpad.support.sap.com/#/notes/2080991)
 
-A Hana nagyméretű példányai által támogatott HANA-kibővített konfigurációk részleteiről az alábbi dokumentáció vonatkozik:
+A HANA nagy példányok által támogatott HANA kibővített konfigurációk részleteiért a következő dokumentáció vonatkozik:
 
-- [A HANA nagyméretű példányainak támogatott forgatókönyvei készenléti kibővítés esetén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby)
-- [A HANA nagyméretű példányainak támogatott forgatókönyvei készenlét nélkül kibővítve](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby)
+- [Támogatott forgatókönyvek hana nagy példányok horizontális felskálázás a készenléti](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby)
+- [Támogatott forgatókönyvek hana nagy példányok horizontális felskálázás nélkül készenléti](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby)
 
 
 ## <a name="disaster-recovery-scenario"></a>Vész-helyreállítási forgatókönyv
-Számos különböző vész-helyreállítási forgatókönyv támogatott. A vészhelyzeti architektúrákat olyan architektúrák definiáljuk, amelyek kompenzálják a teljes Azure-régiókat a rácson. Ez azt jelenti, hogy a vész-helyreállítási célpontnak egy másik Azure-régiónak kell lennie, mint célként az SAP-környezet futtatásához. Az adatbázis-kezelő rétegben és a nem adatbázis-kezelő rétegben külön metódusok és konfigurációk vannak elkülönítve. 
+Számos vész-helyreállítási forgatókönyvek támogatottak. A katasztrófa-architektúrákat olyan architektúrákként definiáljuk, amelyek kompenzálják a teljes Azure-régiókat, amelyek lekerülnek a hálózatról. Ez azt jelenti, hogy a vész-helyreállítási cél egy másik Azure-régióban, mint a cél az SAP-környezet futtatásához. A módszereket és konfigurációkat dbms rétegben és nem DBMS rétegben különítjük el. 
 
-### <a name="dbms-layer"></a>Adatbázis-kezelő réteg
-Az adatbázis-kezelő réteg esetében az adatbázis-kezelő natív replikációs mechanizmusokat használó konfigurációk, például az Always on, az Oracle-adatvédelem, a DB2-HADR, az SAP-alapú always-on vagy a HANA rendszerreplikáció támogatottak. Kötelező, hogy az ilyen esetekben a replikálási adatfolyam aszinkron módon legyen szinkronban, mint az egyetlen Azure-régióban üzembe helyezett jellemző magas rendelkezésre állási helyzetekben. Egy ilyen támogatott adatbázis-kezelői vész-helyreállítási konfiguráció egy tipikus példája az [Azure-régiók elérhetőségének SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions#combine-availability-within-one-region-and-across-regions)cikkében olvasható. A szakasz második ábrája a HANA példáját mutatja be. Az SAP-alkalmazások számára támogatott fő adatbázisok mindegyike képes az ilyen forgatókönyvekben való üzembe helyezésre.
+### <a name="dbms-layer"></a>DBMS-réteg
+A DBMS-réteg esetében a DBMS natív replikációs mechanizmusait használó konfigurációk, például az Always On, az Oracle Data Guard, a Db2 HADR, az SAP ASE Always-On vagy a HANA system replication támogatottak. Az ilyen esetekben kötelező, hogy a replikációs adatfolyam aszinkron, ahelyett, hogy szinkron, mint a tipikus magas rendelkezésre állású forgatókönyvek, amelyek egyetlen Azure-régióban telepített. Egy ilyen támogatott DBMS vész-helyreállítási konfiguráció egy tipikus példa az [SAP HANA rendelkezésre állása az Azure-régiók között.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions#combine-availability-within-one-region-and-across-regions) A szakasz második ábrája egy hana-val példaként leírt forgatókönyvet. Az SAP-alkalmazások által támogatott fő adatbázisok egy ilyen forgatókönyvben telepíthetők.
 
-A vész-helyreállítási régióban egy kisebb méretű virtuális gép is használható, mivel a virtuális gép nem használja a teljes munkaterhelés-forgalmat. Ehhez a következő szempontokat kell figyelembe vennie:
+A vész-helyreállítási régióban egy kisebb virtuális gép használata a vész-helyreállítási régióban, mivel a virtuális gép nem tapasztalja a teljes számítási terhelést. Ezzel a következő szempontokat kell szem előtt tartania:
 
-- A kisebb virtuálisgép-típusok nem teszik lehetővé, hogy a kisebb virtuális gépeknél több lemez legyen csatlakoztatva
-- A kisebb virtuális gépek kevesebb hálózati és tárolási teljesítményt biztosítanak
-- A virtuálisgép-családokra való átméretezés problémát jelenthet, ha a különböző virtuális gépeket egy Azure-beli rendelkezésre állási csoportba gyűjti, vagy ha az M sorozatú család és a virtuális gépek Mv2-családja között újraméretezés történik.
-- Az adatbázis-példány processzor-és memóriahasználat, amely minimális késleltetéssel és elegendő CPU-és memória-erőforrással képes fogadni a módosításokat, hogy a módosítások csak minimális késleltetéssel legyenek alkalmazva.  
+- A kisebb virtuálisgép-típusok nem teszik lehetővé, hogy a kisebb virtuális gépeknél sok lemez
+- A kisebb virtuális gépek kevesebb hálózati és tárolási átviteli
+- A virtuálisgép-családok közötti méretezés problémát okozhat, ha a különböző virtuális gépeket egy Azure rendelkezésre állási csoportban gyűjtik, vagy ha az újraméretezés nek az M sorozatú család és a virtuális gépek Mv2 családja között kell megtörténnie
+- Az adatbázis-példány processzor- és memóriafelhasználása, amely minimális késleltetéssel és elegendő CPU- és memóriaerőforrással képes fogadni a változások adatfolyamát, hogy ezeket a módosításokat minimális késleltetéssel alkalmazza az adatokra  
 
-A különböző virtuálisgép-méretek korlátozásával kapcsolatos további részletek [itt](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) találhatók 
+További részletek a korlátozások a különböző virtuális gép méretek megtalálható [itt](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) 
 
-Egy másik támogatott módszer a DR cél üzembe helyezéséhez, hogy egy második adatbázis-kezelő példányt telepítsen egy olyan virtuális gépre, amely egy nem éles környezetben működő SAP-példány nem üzemi adatbázis-kezelő példányát futtatja. Ez egy kicsit nagyobb kihívást jelenthet, mivel meg kell állapítania, hogy mi a memória, a processzor-erőforrások, a hálózati sávszélesség és a tárolási sávszélesség a DR forgatókönyvben főpéldányként működni kívánó konkrét cél példányok esetén. Különösen a HANA-ban kifejezetten ajánlott olyan példányt konfigurálni, amely egy megosztott gazdagépen a DR célként funkcionál, hogy az adatok ne legyenek előre betöltve a DR cél példányba.
+A DR-cél központi telepítésének egy másik támogatott módszere, hogy egy második DBMS-példány telepítve van egy virtuális gépre, amely egy nem éles SAP-példány nem éles ADATBÁZIS-példányát futtatja. Ez egy kicsit nagyobb kihívást jelenthet, mivel ki kell találnia, hogy mi van szükség a memóriában, a PROCESSZOR-erőforrásokon, a hálózati sávszélességen és a tárolási sávszélességen az adott célpéldányok esetében, amelyek nek fő példányként kell működniük a VÉSZ-forgatókönyvben. Különösen a HANA erősen ajánlott, hogy konfigurálja a példányt, amely vész-érték célként működik egy megosztott gazdagépen, hogy az adatok nem előre betöltött a VÉSZ-célpéldány.
 
-A HANA nagyméretű példányok DR-forgatókönyvei esetében tekintse meg a következő dokumentumokat:
+Hana nagy példány ra d. forgatókönyvek ellenőrizze ezeket a dokumentumokat:
 
-- [Önálló csomópont a Storage-replikációt használó DR használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication)
-- [Egyetlen csomópont DR (többcélú) tároló-replikáció használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
-- [Egyetlen csomópont DR (többcélú) tároló-replikáció használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
-- [Magas rendelkezésre állás a HSR és a DR tároló-replikálással](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication)
-- [Méretezés a DR használatával a Storage replikálásával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication)
-- [Egyetlen csomópont a DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr)
-- [Egyetlen csomópontos HSR a DR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized)
-- [Magas rendelkezésre állás és vész-helyreállítás a HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr)
-- [Magas rendelkezésre állás és vész-helyreállítás a HSR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
-- [Vertikális felskálázás DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr)
+- [Egyetlen csomópont a DR-rel a tárolóreplikáció használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication)
+- [Egyetlen csomópont DR-rel (többcélú) tárolóreplikációval](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
+- [Egyetlen csomópont DR-rel (többcélú) tárolóreplikációval](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
+- [Magas rendelkezésre állás hsr és DR tároló replikációval](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication)
+- [Horizontális felskálázás a DR-rel a tárolóreplikáció használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication)
+- [Egyetlen csomópont DR-rel hsr használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr)
+- [Egycsomópontos HSR–DR (költségoptimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized)
+- [Magas rendelkezésre állás és vészhelyreállítás a HSR-rel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr)
+- [Magas rendelkezésre állás és vészhelyreállítás a HSR-rel (költségoptimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
+- [Horizontális felskálázás dr-rel hsr használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr)
 
 > [!NOTE]
-> A [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát nem tesztelték az adatbázis-kezelő üzembe helyezéséhez az SAP munkaterhelés alatt. Ennek eredményeképpen az SAP Systems adatbázis-kezelő rétege jelenleg nem támogatott. A Microsoft és az SAP által nem felsorolt egyéb replikációs módszerek nem támogatottak. Ha külső gyártótól származó szoftvert használ a különböző Azure-régiók közötti SAP-rendszerek adatbázis-kezelő rétegének replikálására, akkor a szoftver gyártójának támogatnia kell a szoftvert, és a Microsoft és az SAP támogatási csatornái nem támogatják azokat. 
+> Az [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) használata nem tesztelt a DBMS-telepítések sap-munkaterhelés alatt. Ennek eredményeképpen jelenleg nem támogatott az SAP-rendszerek ADATBÁZIS-rétege. A Microsoft és az SAP más, nem felsorolt replikációs módszerei nem támogatottak. A szoftver szállítójának támogatnia kell az SAP-rendszerek ADATBÁZIS-rétegének replikálására szolgáló harmadik féltől származó szoftvert a különböző Azure-régiók közötti replikálására, és a Microsoft és az SAP támogatási csatornáin keresztül nem támogatott. 
  
-## <a name="non-dbms-layer"></a>Nem adatbázis-kezelő réteg
-Az SAP-alkalmazás rétege és a végsőan szükséges megosztások vagy tárolóhelyek esetében az ügyfelek a következő két fő forgatókönyvet használják:
+## <a name="non-dbms-layer"></a>Nem DBMS-réteg
+Az SAP-alkalmazásréteg és a szükséges esetleges megosztások vagy tárolási helyek esetében a két fő forgatókönyvet az ügyfelek használják ki:
 
-- A második Azure-régióban a vész-helyreállítási célokat nem használják termelési vagy nem termelési célokra. Ebben az esetben a vész-helyreállítási célként működő virtuális gépek ideális esetben nincsenek telepítve, és az éles környezetben futó SAP-alkalmazási réteg lemezképeit és módosításait a rendszer replikálja a vész-helyreállítási régióba. Egy ilyen feladatot végrehajtó funkció [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-move-overview). Azure Site Recovery támogatja az Azure – Azure replikációs forgatókönyveket, például a következőt:. 
-- A vész-helyreállítási célok olyan virtuális gépek, amelyeket valójában nem éles üzemi rendszerek használnak. A teljes SAP-környezet két különböző Azure-régióban érhető el, az éles rendszerek általában egy régióban és nem éles környezetben, egy másik régióban. Sok ügyfél-telepítés esetén az ügyfél egy éles rendszernek megfelelő, nem éles környezettel rendelkezik. Az ügyfél az alkalmazási réteg nem éles környezetekben előre telepített éles alkalmazási példányokat tartalmaz. Feladatátvétel esetén a nem éles példányok le lesznek állítva, az éles virtuális gépek virtuális nevei a nem éles virtuális gépekre lettek áthelyezve (miután új IP-címeket rendelt a DNS-ben), az előre telepített éles példányok pedig első lépések
+- A vész-helyreállítási célokat a második Azure-régióban nem használják semmilyen éles vagy nem éles célokra. Ebben a forgatókönyvben a vész-helyreállítási célként működő virtuális gépek ideális esetben nem üzembe helyezhetők, és a rendszerkép és az éles SAP-alkalmazásréteg rendszerképváltozásai replikálódnak a vész-helyreállítási régióba. Egy ilyen feladat végrehajtására alkalmas funkció az [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-move-overview). Az Azure Site Recovery támogatja az Azure-to-Azure replikációs forgatókönyvek, mint ez. 
+- A vész-helyreállítási célok olyan virtuális gépek, amelyek ténylegesen nem éles rendszerek által használt. A teljes SAP-környezet két különböző Azure-régióban van elosztva, ahol az éles rendszerek általában egy régióban és egy másik régióban nem éles rendszerek. Sok ügyfél-telepítésesetén az ügyfél rendelkezik egy nem éles rendszerrel, amely egyenértékű a termelési rendszerrel. A vevő éles alkalmazáspéldányok előre telepítve az alkalmazásréteg nem éles rendszerek. Feladatátvétel esetén a nem éles példányok leállnának, az éles virtuális gépek virtuális nevei áthelyezve a nem éles virtuális gépekre (miután új IP-címeket adtak hozzá a DNS-hez), és az előre telepített éles példányok elindulnak
 
-### <a name="sap-central-services-clusters"></a>SAP Central Services-fürtök
-A megosztott lemezeket (Windows), az SMB-megosztásokat (Windows) vagy NFS-megosztásokat használó SAP Central Services-fürtök valamivel nehezebben replikálhatók. A Windows-oldalon a Windows Storage-replikáció lehetséges megoldás. A Linux rsync egy életképes megoldás.
+### <a name="sap-central-services-clusters"></a>SAP központi szolgáltatások fürtjei
+A megosztott lemezeket (Windows), SMB-megosztásokat (Windows) vagy NFS-megosztásokat használó SAP központi szolgáltatások fürtjeit kissé nehezebb replikálni. A Windows oldalán a Windows storage replikáció egy lehetséges megoldás. Linux on rsync egy életképes megoldás.
 
 
 
 ## <a name="non-supported-scenario"></a>Nem támogatott forgatókönyv
-A forgatókönyvek listája, amelyek nem támogatottak az Azure-architektúrán futó SAP-munkaterhelések esetében. A **nem támogatott** érték azt jelenti, hogy az SAP és a Microsoft nem fogja tudni támogatni ezeket a konfigurációkat, és késleltetni kell egy olyan, az érintett harmadik fél számára, amely az ilyen architektúrák létrehozásához adott szoftvert adott. A kategóriák közül kettő a következőkből áll:
+Van egy forgatókönyv, amely nem támogatott az Azure-architektúrák SAP-számítási feladatok. **Nem támogatott** azt jelenti, hogy az SAP és a Microsoft nem fogja tudni támogatni ezeket a konfigurációkat, és el kell halasztania egy esetleges harmadik fél, amely az ilyen architektúrák létrehozásához szoftvert biztosított. A következő kategóriák közül kettő:
 
-- Storage Soft Appliances: az Azure Marketplace-en több tárolási Soft-eszköz is rendelkezésre áll. Néhány gyártó saját dokumentációval rendelkezik arról, hogyan használhatja ezeket a Storage Soft-berendezéseket az Azure-ban az SAP-szoftverekhez kapcsolódóan. Az ilyen típusú tárolást támogató konfigurációk vagy központi telepítések támogatását a tárolók által biztosított üdítőitalok szállítójának kell biztosítania. Ez a tény az [SAP-támogatási megjegyzésekben](https://launchpad.support.sap.com/#/notes/2015553) is megnyilvánult #2015553
-- Magas rendelkezésre állási keretrendszerek: csak a pacemaker és a Windows Server feladatátvevő fürt támogatott magas rendelkezésre állási keretrendszerek az Azure-beli SAP-munkaterhelésekhez. Amint azt korábban említettük, a SIOS `Datakeeper` megoldást a Microsoft ismerteti és dokumentálja. Ennek ellenére a `Datakeeper` SIOS összetevőit a SIOS-on keresztül kell támogatni, mint az ezeket az összetevőket szolgáltató szolgáltatót. Az SAP más Certified magas rendelkezésre állási keretrendszerek is szerepelnek a különböző SAP-megjegyzésekben. Néhányat a harmadik féltől származó gyártó is tanúsított az Azure-ban. Ennek ellenére az ezeket a termékeket használó konfigurációk támogatását a termék gyártójának kell megadnia. A különböző szállítók eltérő integrációt nyújtanak az SAP támogatási folyamataiba. Tisztázza, hogy milyen támogatási folyamat működik a legjobban az adott gyártónál, mielőtt a terméket az Azure-ban üzembe helyezett SAP-konfigurációkban kívánja használni.
-- A megosztott lemezeken az adatbázisfájlok nem támogatottak a maxDB kivételével. Az összes többi adatbázis esetében a támogatott megoldás az, hogy az SMB-vagy NFS-megosztások vagy megosztott lemezek helyett külön tárolóhelyek legyenek a magas rendelkezésre állású forgatókönyvek konfigurálásához
+- Soft appliances tárolása: Számos tároló puha készülékek az Azure piactéren kínálnak. Egyes gyártók saját dokumentációt kínálnak arról, hogyan használhatja ezeket a tárolópuha készülékeket az Sap-szoftverekhez kapcsolódóAn az Azure-ban. Az ilyen tárolópuha berendezéseket érintő konfigurációk vagy üzembe helyezések támogatását a tárolópuha készülékek forgalmazójának kell biztosítania. Ez a tény az [SAP támogatási megjegyzésében](https://launchpad.support.sap.com/#/notes/2015553) is megnyilvánul #2015553
+- Magas rendelkezésre állású keretrendszerek: Csak pacemaker és a Windows Server feladatátvételi fürt támogatott magas rendelkezésre állású keretrendszerek SAP számítási feladatok az Azure-ban. Mint korábban említettük, a `Datakeeper` SIOS megoldását a Microsoft ismerteti és dokumentálja. Mindazonáltal a SIOS `Datakeeper` összetevőit a SIOS-on keresztül kell támogatni, mint az összetevőket biztosító szállítót. Az SAP más, minősített, magas rendelkezésre állású keretrendszereket is felsorolt a különböző SAP-jegyzetekben. Ezek közül néhányat a külső gyártó is tanúsított az Azure-hoz. Mindazonáltal az ezeket a termékeket használó konfigurációkat a termék szállítójának kell biztosítania. A különböző szállítók különböző integrációval rendelkeznek az SAP támogatási folyamataiba. Tisztázza, hogy melyik támogatási folyamat működik a legjobban az adott szállító számára, mielőtt úgy dönt, hogy a terméket az Azure-ban telepített SAP-konfigurációkban használja.
+- Azok a megosztott lemezfürtök, amelyek adatbázisfájljai a megosztott lemezeken találhatók, a maxDB kivételével nem támogatottak. Az összes többi adatbázis esetében a támogatott megoldás az, hogy smb- vagy NFS-megosztás vagy megosztott lemez helyett külön tárolóhelyekkel kell rendelkeznie a magas rendelkezésre állású forgatókönyvek konfigurálásához.
 
-Egyéb forgatókönyvek, amelyek nem támogatottak, például a következők:
+Más forgatókönyvek, amelyek nem támogatottak, olyan forgatókönyvek, mint:
 
-- Üzembe helyezési forgatókönyvek, amelyek nagyobb hálózati késést mutatnak be az SAP alkalmazási szintje és az SAP adatbázis-kezelői szintje között az SAP általános architektúrájában, ahogyan az a NetWeaver, S/4HANA, és például `Hybris`ban látható. Az érintett műveletek közé tartoznak az alábbiak:
-    - A helyi szintek egyikének üzembe helyezése, míg a másik réteg üzembe helyezése az Azure-ban
-    - Egy rendszer SAP-alkalmazási szintjeinek üzembe helyezése egy másik Azure-régióban, mint az adatbázis-kezelői szint
-    - Az Azure-ba és az Azure-ban található másik rétegbe tartozó adatközpontok egyikének üzembe helyezése, kivéve, ha az adott architektúrát egy natív Azure-szolgáltatás biztosította
-    - Hálózati virtuális berendezések üzembe helyezése az SAP-alkalmazási réteg és az adatbázis-kezelő réteg között
-    - Az adatközpontokban üzemeltetett tárolók kihasználása az Azure-adatközpontba az SAP adatbázis-kezelői rétege vagy az SAP globális átviteli könyvtára számára
-    - A két réteg üzembe helyezése két különböző felhőalapú szolgáltatóval. Például üzembe helyezheti az adatbázis-kezelői szintet az Oracle Cloud Infrastructure-ben és az Azure-beli alkalmazási szinten
+- Üzembe helyezési forgatókönyvek, amelyek nagyobb hálózati késést vezetnek be az SAP alkalmazásréteg és az SAP DBMS-szint között `Hybris`az SAP közös architektúrájában, ahogy azt a NetWeaver, az S/4HANA és például . Az érintett műveletek közé tartoznak az alábbiak:
+    - Az egyik szint üzembe helyezése a helyszínen, míg a másik szint az Azure-ban van telepítve
+    - A rendszer SAP-alkalmazásszintjének üzembe helyezése a DBMS-rétegtől eltérő Azure-régióban
+    - Üzembe helyezése egy réteg adatközpontokban, amelyek az Azure-ban és a másik réteg az Azure-ban, kivéve, ha egy ilyen architektúra minták által biztosított Egy Azure natív szolgáltatás
+    - Hálózati virtuális készülékek üzembe helyezése az SAP alkalmazásréteg és a DBMS-réteg között
+    - Az SAP DBMS-csomag vagy az SAP globális átviteli címtárához tartozó, az Azure-adatközpontban található adatközpontokban tárolt tárterület kihasználása
+    - A két réteg üzembe helyezése két különböző felhőszállítóval. Például a DBMS-szint üzembe helyezése az Oracle Cloud Infrastructure-ben és az alkalmazásszint az Azure-ban
 - Többpéldányos HANA pacemaker-fürt konfigurációi
-- Windows-fürtök megosztott lemezekkel SOFS vagy SMB használatával a Windows rendszeren támogatott SAP-adatbázisok ANF. Ehelyett azt javasoljuk, hogy az adott adatbázisok natív magas rendelkezésre állású replikálásának használatát és a különböző tárolási veremeket használja.
-- A Linux rendszeren támogatott SAP-adatbázisok üzembe helyezése az NFS-megosztásokon található ANF felül, a SAP HANA kivételével
-- Az Oracle adatbázis-kezelő rendszer üzembe helyezése bármely más vendég operációs rendszeren, mint a Windows és Oracle Linux. Lásd még: [SAP-támogatás megjegyzés #2039619](https://launchpad.support.sap.com/#/notes/2039619)
+- Windows fürtkonfigurációk megosztott lemezekkel a SOFS-en vagy az SMB-n keresztül a Windows által támogatott SAP-adatbázisokhoz. Ehelyett azt javasoljuk, hogy az adott adatbázisok natív, magas rendelkezésre állású replikációját használja, és külön tárolóhalmokat használjon
+- Sap adatbázisok telepítése Linuxon támogatott adatbázis-fájlok nfs megosztások tetején ANF, kivéve az SAP HANA
+- Az Oracle DBMS telepítése a Windows és az Oracle Linux rendszeren kívül bármely más vendég operációs rendszeren. Lásd még: [SAP támogatási megjegyzés #2039619](https://launchpad.support.sap.com/#/notes/2039619)
 
-Olyan forgatókönyv (ek), amelyek nem teszteltek, ezért nem rendelkezik a hasonló listával:
+Forgatókönyv(ek), hogy nem tesztelt, és ezért nincs tapasztalata a lista, mint például:
 
-- Azure Site Recovery az adatbázis-kezelő rétegbeli virtuális gépek replikálását. Ennek eredményeképpen javasoljuk, hogy az adatbázis natív aszinkron replikálási funkcióját kihasználva potenciális vész-helyreállítási konfigurációt lehessen használni
+- Az Azure Site Recovery replikálása DBMS réteg virtuális gépek. Ennek eredményeképpen azt javasoljuk, hogy az adatbázis natív aszinkron replikációs funkcióját kihasználva a potenciális vész-helyreállítási konfigurációhoz
  
 
-## <a name="next-steps"></a>További lépések
-Az [Azure Virtual Machines tervezésének és megvalósításának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) következő lépéseinek elolvasása az SAP NetWeaver-ban
+## <a name="next-steps"></a>Következő lépések
+Olvassa el a következő lépéseket az [Azure virtuális gépek tervezésében és megvalósításában az SAP NetWeaver számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 
 
 

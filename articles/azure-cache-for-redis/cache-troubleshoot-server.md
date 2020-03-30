@@ -1,82 +1,82 @@
 ---
-title: Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén
-description: Megtudhatja, Hogyan oldhatók fel az Azure cache szolgáltatással kapcsolatos gyakori kiszolgálóoldali problémák a Redis, például a memória terhelése, a magas CPU-használat, a hosszan futó parancsok vagy a sávszélesség korlátozásai miatt.
+title: Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása
+description: Ismerje meg, hogyan oldhatja meg az Azure Cache for Redis gyakori kiszolgálóoldali problémáit, például a memórianyomást, a magas PROCESSZOR-, hosszú ideig futó parancsokat vagy a sávszélesség-korlátozásokat.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277933"
 ---
-# <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén
+# <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása
 
-Ez a szakasz azokat a hibaelhárítási problémákat ismerteti, amelyek az Azure cache Redis vagy az azt üzemeltető virtuális gép (ek) feltétele miatt fordulnak elő.
+Ez a szakasz ismerteti a redis-i Azure-gyorsítótár vagy az azt üzemeltető virtuális gép(ek) egyik feltétele miatt felmerülő hibaelhárítási problémákat.
 
 - [A Redis-kiszolgáló memóriaterhelése](#memory-pressure-on-redis-server)
-- [Magas CPU-használat vagy-kiszolgáló terhelése](#high-cpu-usage-or-server-load)
+- [Magas processzorhasználat vagy kiszolgálóterhelés](#high-cpu-usage-or-server-load)
 - [Hosszú ideig futó parancsok](#long-running-commands)
 - [Kiszolgálóoldali sávszélesség-korlátozás](#server-side-bandwidth-limitation)
 
 > [!NOTE]
-> Az útmutatóban ismertetett hibaelhárítási lépések többek között a Redis-parancsok futtatására és a különböző teljesítmény-mérőszámok figyelésére vonatkozó utasításokat tartalmaznak. További információkért és útmutatásért tekintse meg a [További információ](#additional-information) szakasz cikkeit.
+> Ebben az útmutatóban a hibaelhárítási lépések közé tartozik a Redis-parancsok futtatására és a különböző teljesítménymutatók figyelésére vonatkozó utasítások. További információt és útmutatást a [További információk](#additional-information) című részben található cikkben talál.
 >
 
-## <a name="memory-pressure-on-redis-server"></a>Memória-nyomás a Redis-kiszolgálón
+## <a name="memory-pressure-on-redis-server"></a>A Redis-kiszolgáló memóriaterhelése
 
-A kiszolgálóoldali memória-terhelés a kérelmek feldolgozását késleltető teljesítményproblémák összes típusához vezet. Ha a memória terhelése eléri a memóriát, előfordulhat, hogy a rendszer lemezre küldi az adatlapot. Az _oldal meghibásodása_ miatt a rendszerleállás jelentősen lelassul. Ennek a memória-nyomásnak több lehetséges oka van:
+A kiszolgálóoldalon a memórianyomás mindenféle teljesítményproblémát okoz, ami késleltetheti a kérelmek feldolgozását. Amikor a memórianyomás eléri, a rendszer adatokat paged lemezre. Ez _a laphiba_ miatt a rendszer jelentősen lelassul. Ennek a memórianyomásnak számos oka lehet:
 
-- A gyorsítótár megtelik a maximális kapacitás közelében lévő adattal.
-- A Redis nagy memória töredezettségét látja. Ezt a töredezettséget leggyakrabban a nagyméretű objektumok tárolása okozza, mivel a Redis kis objektumokra van optimalizálva.
+- A gyorsítótár a maximális kapacitásközelében lévő adatokkal van feltöltve.
+- Redis nagy memóriatöredezettséget lát. Ezt a töredezettséget leggyakrabban a nagy objektumok tárolása okozza, mivel a Redis kis objektumokra van optimalizálva.
 
-A Redis két statisztikát tesz elérhetővé az [info](https://redis.io/commands/info) paranccsal, amely segíthet a probléma azonosításában: "used_memory" és "used_memory_rss". Ezek a [metrikák](cache-how-to-monitor.md#view-metrics-with-azure-monitor) a portál használatával tekinthetők meg.
+A Redis két statisztikát tár fel az [INFO](https://redis.io/commands/info) paranccsal, amelyek segíthetnek a probléma azonosításában: "used_memory" és "used_memory_rss". [Ezeket a mutatókat](cache-how-to-monitor.md#view-metrics-with-azure-monitor) a portál on keresztül tekintheti meg.
 
-Több lehetséges módosítást is végezhet a memóriahasználat kifogástalan megőrzése érdekében:
+A memóriahasználat kifogástalan állapotának megőrzése érdekében számos lehetséges módosítást tehet meg:
 
-- [Állítsa be a memória-házirendet](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , és állítsa be a lejárati időt a kulcsokra. Előfordulhat, hogy ez a szabályzat nem elegendő, ha töredezettsége van.
-- [Állítson be egy olyan maxmemory foglalt értéket](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , amely elég nagy a memória töredezettségének kompenzálására.
-- Bontsa ki a nagy gyorsítótárban lévő objektumokat kisebb kapcsolódó objektumokra.
-- [Riasztásokat hozhat létre](cache-how-to-monitor.md#alerts) a metrikák, például a használt memória számára, hogy korán értesüljön a lehetséges hatásokról.
-- Nagyobb méretű gyorsítótár-méretre [méretezheti](cache-how-to-scale.md) a memóriát.
+- [Állítson be egy memóriaházirendet,](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) és állítsa be a kulcsok lejárati idejét. Ez a házirend nem feltétlenül elegendő, ha töredezettség.
+- [Olyan maxmemória-fenntartott érték konfigurálása,](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) amely elég nagy ahhoz, hogy kompenzálja a memória töredezettségét.
+- A nagy gyorsítótárazott objektumokat kisebb kapcsolódó objektumokra bontsa.
+- [Hozzon létre riasztásokat](cache-how-to-monitor.md#alerts) a metrikák, például a használt memória értesítést kell kapnia a lehetséges hatásokról.
+- [Nagyobb](cache-how-to-scale.md) gyorsítótárméretre méretezhető, nagyobb memóriakapacitással.
 
-## <a name="high-cpu-usage-or-server-load"></a>Magas CPU-használat vagy-kiszolgáló terhelése
+## <a name="high-cpu-usage-or-server-load"></a>Magas processzorhasználat vagy kiszolgálóterhelés
 
-A kiszolgálók nagy terhelése vagy CPU-kihasználtsága azt jelenti, hogy a kiszolgáló nem tudja időben feldolgozni a kérelmeket. Előfordulhat, hogy a kiszolgáló nem válaszol, és nem tud lépést tartani a kérelmek díjszabásával.
+A nagy kiszolgálóterhelés vagy a processzorhasználat azt jelenti, hogy a kiszolgáló nem tudja időben feldolgozni a kérelmeket. Előfordulhat, hogy a kiszolgáló lassan válaszol, és nem tud lépést tartani a kérelmek arányával.
 
-A metrikák, például a CPU vagy a kiszolgáló terhelésének [figyelése](cache-how-to-monitor.md#view-metrics-with-azure-monitor) . Figyelje meg a CPU-használathoz tartozó, időtúllépésekkel egyező tüskéket.
+[Monitor metrikák,](cache-how-to-monitor.md#view-metrics-with-azure-monitor) például a CPU vagy a kiszolgáló terhelése. Figyelje az időelőnyöknek megfelelő cpu-használat kiugrásait.
 
-Több módosítást is végezhet a kiszolgálók nagy terhelésének csökkentése érdekében:
+A kiszolgáló terhelésének csökkentése érdekében számos módosítást is elérhet:
 
-- Vizsgálja meg, hogy mi okozza a CPU-tüskéket, például a [hosszú ideig futó parancsokat](#long-running-commands) , amelyek a nagy memória-nyomás miatt az alább vagy az oldalon hibásak.
-- [Riasztásokat hozhat létre](cache-how-to-monitor.md#alerts) olyan mérőszámokon, mint a CPU vagy a kiszolgáló terhelése, hogy korán értesüljön a lehetséges hatásokról.
-- Nagyobb méretű gyorsítótár-méretre [Méretezés](cache-how-to-scale.md) nagyobb CPU-kapacitással.
+- Vizsgálja meg, hogy mi okozza a [CPU-csúcsokat,](#long-running-commands) például az alábbiakban vagy laphibákat a magas memórianyomás miatt.
+- [Hozzon létre riasztásokat](cache-how-to-monitor.md#alerts) a metrikák, például a CPU vagy a kiszolgáló terhelése, hogy korán értesítést kapjon a lehetséges hatásokról.
+- [Nagyobb](cache-how-to-scale.md) gyorsítótárméretre és nagyobb CPU-kapacitásra méretezhető.
 
-## <a name="long-running-commands"></a>Hosszan futó parancsok
+## <a name="long-running-commands"></a>Hosszú ideig futó parancsok
 
-Egyes Redis-parancsok drágábbak, mint mások. A [Redis-parancsok dokumentációja](https://redis.io/commands) az egyes parancsok időbeli összetettségét mutatja. Mivel a Redis-parancsok feldolgozása egyszálas, a Futtatás ideje alatt álló parancs letiltja az összes többiet, amely azután következik be. Tekintse át a Redis-kiszolgálónak kiadott parancsokat, hogy megértsék a teljesítményre gyakorolt hatásukat. A [kulcsok](https://redis.io/commands/keys) parancs például gyakran használatos az O (N) művelet ismerete nélkül. A kulcsok a [vizsgálat](https://redis.io/commands/scan) használatával elkerülhetők a CPU-tüskék csökkentése érdekében.
+Egyes Redis-parancsok végrehajtása drágább, mint mások. A [Redis parancsok dokumentációja](https://redis.io/commands) az egyes parancsok időösszetettségét mutatja. Mivel a Redis parancsfeldolgozás egyszálas, a futtatáshoz szükséges parancs blokkolja az összes többi, hogy jön utána. Tekintse át a Redis-kiszolgálónak kiadott parancsokat, hogy tisztában legyen a teljesítményükkel. Például a [KEYS](https://redis.io/commands/keys) parancsot gyakran használják anélkül, hogy tudnánk, hogy ez egy O(N) művelet. A PROCESSZORcsúcsok csökkentéséhez a [SCAN](https://redis.io/commands/scan) segítségével elkerülheti a KEYS billentyűket.
 
-A [slowlog parancs kimenetét](https://redis.io/commands/slowlog) parancs használatával a kiszolgálón végrehajtott költséges parancsok mérhetők.
+A [SLOWLOG](https://redis.io/commands/slowlog) paranccsal megmérheti a kiszolgálón végrehajtott költséges parancsokat.
 
 ## <a name="server-side-bandwidth-limitation"></a>Kiszolgálóoldali sávszélesség-korlátozás
 
-A különböző gyorsítótár-méretek eltérő hálózati sávszélességgel rendelkeznek. Ha a kiszolgáló meghaladja a rendelkezésre álló sávszélességet, akkor a rendszer nem küldi el az adatforgalmat az ügyfélnek gyorsan. Az ügyfelek kérései időtúllépést okoznak, mert a kiszolgáló nem tud elég gyorsan leküldeni az adott ügyfélnek az adatmennyiséget.
+A különböző gyorsítótárméretek különböző hálózati sávszélesség-kapacitással rendelkeznek. Ha a kiszolgáló túllépi a rendelkezésre álló sávszélességet, akkor az adatok nem lesznek olyan gyorsan elküldve az ügyfélnek. Az ügyfelek kérései időtúlodhatnak, mert a kiszolgáló nem tudja elég gyorsan leadni az adatokat az ügyfélnek.
 
-A "cache Read" és a "cache Write" metrikák használatával megtekintheti, hogy mennyi kiszolgálóoldali sávszélességet használ a rendszer. Ezek a [metrikák](cache-how-to-monitor.md#view-metrics-with-azure-monitor) a portálon tekinthetők meg.
+A "Gyorsítótár olvasása" és a "Gyorsítótár írása" metrikák segítségével megtekintheti, hogy mennyi kiszolgálóoldali sávszélességet használ. Ezeket a mutatókat a portálon [tekintheti](cache-how-to-monitor.md#view-metrics-with-azure-monitor) meg.
 
-Az olyan helyzetek enyhítése, amikor a hálózati sávszélesség-használat a maximális kapacitáshoz közeledik:
+Az olyan helyzetek csökkentése érdekében, amikor a hálózati sávszélesség-használat közel van a maximális kapacitáshoz:
 
-- Az ügyfél hívási viselkedésének módosítása a hálózati igény csökkentése érdekében.
-- [Riasztásokat hozhat létre](cache-how-to-monitor.md#alerts) olyan mérőszámokon, mint például a gyorsítótár olvasási vagy gyorsítótár-írási lehetősége, hogy korán értesüljön a lehetséges hatásokról.
-- Nagyobb méretű gyorsítótár-méretre [Méretezés](cache-how-to-scale.md) nagyobb hálózati sávszélesség-kapacitással.
+- Módosítsa az ügyfélhívás viselkedését a hálózati igények csökkentése érdekében.
+- [Hozzon létre riasztásokat](cache-how-to-monitor.md#alerts) a metrikák, például a gyorsítótár olvasása vagy a gyorsítótár írási értesítést kell kapnia a lehetséges hatásokról.
+- [Nagyobb](cache-how-to-scale.md) gyorsítótárméretre és nagyobb hálózati sávszélesség-kapacitással.
 
 ## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis ügyféloldali hibáinak elhárítása](cache-troubleshoot-client.md)
-- [Milyen Azure cache-t használ a Redis-ajánlat és-méret használatához?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Az Azure cache figyelése a Redis](cache-how-to-monitor.md)
-- [Hogyan Futtathatok Redis-parancsokat?](cache-faq.md#how-can-i-run-redis-commands)
+- [Milyen Azure-gyorsítótárat kell használni a Redis-ajánlathoz és a mérethez?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [Hogyan tesztelhetem és tesztelhetem a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Az Azure-gyorsítótár figyelése a Redis számára](cache-how-to-monitor.md)
+- [Hogyan futtathatom a Redis parancsokat?](cache-faq.md#how-can-i-run-redis-commands)

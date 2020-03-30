@@ -1,34 +1,34 @@
 ---
-title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
-description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
+title: Tömbtulajdonságok házirendjeinek készítése erőforrásokon
+description: Ismerje meg, hogyan dolgozhat tömbparaméterekkel és tömbnyelvi kifejezésekkel, értékelje ki a [*] aliast, és fűzhet hozzá elemeket az Azure Policy definíciós szabályaihoz.
 ms.date: 11/26/2019
 ms.topic: how-to
 ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280663"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömbtulajdonságainak házirendjeinek szerkesztése
 
-A Azure Resource Manager tulajdonságok általában karakterláncként és logikai értékként vannak definiálva. Ha egy-a-többhöz kapcsolat létezik, az összetett tulajdonságok tömbként vannak definiálva. Azure Policy a tömbök számos különböző módon használatosak:
+Az Azure Resource Manager tulajdonságai általában karakterláncok és logikai értékként vannak definiálva. Ha egy-a-többhöz kapcsolat létezik, az összetett tulajdonságok at tömbként definiálják. Az Azure-szabályzatban a tömbök et többféleképpen használják:
 
-- Egy [definíciós paraméter](../concepts/definition-structure.md#parameters)típusa több beállítás megadásához
-- Egy házirend- [szabály](../concepts/definition-structure.md#policy-rule) része a vagy a **in** **notIn** feltételek használatával
-- Egy olyan házirend-szabály része, amely kiértékeli a [\[\*\] aliast](../concepts/definition-structure.md#understanding-the--alias) a kiértékeléshez:
-  - Olyan forgatókönyvek, mint a **none** **, sem**vagy **az összes**
-  - Összetett forgatókönyvek **darabszámmal**
-- Meglévő tömb lecseréléséhez vagy hozzáadásához a [hozzáfűzési effektusban](../concepts/effects.md#append)
+- A [definíciós paraméter](../concepts/definition-structure.md#parameters)típusa , amely több lehetőséget biztosít
+- A [házirendszabály](../concepts/definition-structure.md#policy-rule) egy része, **notIn** amely a feltételeket használja **a**
+- Egy házirendszabály része, amely [ \[ \* \] ](../concepts/definition-structure.md#understanding-the--alias) kiértékeli a kiértékelt aliast:
+  - Például a **Nincs,** **a Vagy**vagy az **Összes**
+  - Összetett forgatókönyvek **a számmal**
+- Meglévő tömb lecseréléséhez vagy hozzáadásához a [hozzáfűző effektusban](../concepts/effects.md#append)
 
-Ez a cikk a Azure Policy egyes használatát ismerteti, és számos példát tartalmaz.
+Ez a cikk az Azure Policy minden egyes használatát ismerteti, és több példadefiníciót tartalmaz.
 
-## <a name="parameter-arrays"></a>Paraméterek tömbök
+## <a name="parameter-arrays"></a>Paramétertömbök
 
-### <a name="define-a-parameter-array"></a>Paraméter-tömb definiálása
+### <a name="define-a-parameter-array"></a>Paramétertömb definiálása
 
-A paraméter tömbként való meghatározása lehetővé teszi a szabályzat rugalmasságát, ha egynél több értékre van szükség.
-Ez a szabályzat-definíció lehetővé teszi, hogy a **allowedLocations** paraméter egyetlen helye legyen, és az alapértelmezett érték a _eastus2_:
+Egy paraméter tömbként történő definiálása lehetővé teszi a házirend rugalmasságát, ha egynél több értékre van szükség.
+Ez a házirend-definíció lehetővé teszi, hogy az **allowedLocations** paraméter és az _alapértelmezett érték az eastus2_paraméterhez egyetlen helyet engedélyezve:
 
 ```json
 "parameters": {
@@ -44,9 +44,9 @@ Ez a szabályzat-definíció lehetővé teszi, hogy a **allowedLocations** param
 }
 ```
 
-A **Type** _karakterlánc_volt, csak egy érték állítható be a szabályzat kiosztásakor. Ha ez a szabályzat hozzá van rendelve, a hatókörben lévő erőforrások csak egyetlen Azure-régión belül engedélyezettek. A legtöbb szabályzat-definíciónak lehetővé kell tennie a jóváhagyott beállítások listáját, például a _eastus2_, a _eastus_és a _westus2_engedélyezését.
+Mivel **a típus** _karakterlánc_volt, a házirend hozzárendelésekénknél csak egy érték állítható be. Ha ez a szabályzat van hozzárendelve, a hatókörben lévő erőforrások csak egyetlen Azure-régióban engedélyezettek. A legtöbb házirend-definíciónak lehetővé kell tennie a jóváhagyott lehetőségek listáját, például _az eastus2_, _eastus_és _westus2_engedélyezését.
 
-Ha a házirend-definíciót több beállítás engedélyezéséhez szeretné létrehozni, használja a _tömb_ **típusát**. Ugyanezt a szabályzatot a következőképpen lehet újraírni:
+Ha a házirend-definíciót több beállítás engedélyezéséhez szeretné létrehozni, használja a _array_ **tömbtípusát.** Ugyanez a házirend a következőképpen írható át:
 
 ```json
 "parameters": {
@@ -69,17 +69,17 @@ Ha a házirend-definíciót több beállítás engedélyezéséhez szeretné lé
 ```
 
 > [!NOTE]
-> A házirend-definíció mentése után a paraméter **Type** tulajdonsága nem módosítható.
+> A házirend-definíció mentése után a paraméter **típustulajdonsága** nem módosítható.
 
-Ez az új paraméter-definíció egynél több értéket vesz igénybe a szabályzat-hozzárendelés során. Ha a tömb tulajdonsága **allowedValues** van definiálva, a hozzárendelés során elérhető értékek tovább korlátozódnak az előre definiált lehetőségek listájára. A **allowedValues** használata nem kötelező.
+Ez az új paraméterdefiníció egynél több értéket vesz igénybe a házirend-hozzárendelés során. Az **allowedValues** tömbtulajdonság definiálásával a hozzárendelés során elérhető értékek tovább korlátozódnak az előre meghatározott választási lehetőségek listájára. A **megengedett értékek** használata nem kötelező.
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Értékek átadása egy paraméter-tömbnek a hozzárendelés során
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Értékek áthárítása paramétertömbbe hozzárendelés közben
 
-Ha a házirendet a Azure Portalon keresztül rendeli hozzá, a _tömb_ **típusú** paraméterek egyetlen szövegmezőként jelennek meg. A tipp a "use; az értékek elkülönítéséhez. (pl.: London; New York) ". Ha át szeretné adni a _eastus2_, a _eastus_és a _westus2_ engedélyezett tárolási értékeit a paraméternek, használja a következő karakterláncot:
+Amikor a szabályzatot az Azure Portalon keresztül rendeli hozzá, egy **típusú** _tömb_ paraméter jelenik meg egyetlen szövegdobozként. A tipp azt mondja: "Használja; az értékek elkülönítéséhez. (pl. London; New York)". Az _eastus2_, _eastus_és _westus2_ megengedett helyértékeinek paraméternek való átadására használja a következő karakterláncot:
 
 `eastus2;eastus;westus2`
 
-A paraméter értékének formátuma eltérő az Azure CLI, Azure PowerShell vagy a REST API használatakor. Az értékeket egy JSON-karakterlánc adja át, amely tartalmazza a paraméter nevét is.
+A paraméterérték formátuma eltérő az Azure CLI, az Azure PowerShell vagy a REST API használatakor. Az értékek egy JSON-karakterláncon keresztül kerülnek át, amely a paraméter nevét is tartalmazza.
 
 ```json
 {
@@ -93,18 +93,18 @@ A paraméter értékének formátuma eltérő az Azure CLI, Azure PowerShell vag
 }
 ```
 
-Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következő parancsokat:
+Ha ezt a karakterláncot minden SDK-val használni szeretné, kövesse a következő parancsokat:
 
-- Azure CLI: parancs [az Policy hozzárendelés-létrehozás](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paraméter **-paraméterekkel**
-- Azure PowerShell: parancsmag [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) paraméterrel **PolicyParameter**
-- REST API: a _put_ [create](/rest/api/resources/policyassignments/create) művelet a kérelem törzsének részeként a **Tulajdonságok. Parameters** tulajdonság értékeként
+- Azure CLI: Command [az policy hozzárendelés létrehozása](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paraméter **params**
+- Azure PowerShell: [Új-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) parancsmag **policyparameter** paraméterrel
+- REST API: A _PUT_ [create](/rest/api/resources/policyassignments/create) művelet részeként a kérelem törzs, mint a **properties.parameters** tulajdonság értéke
 
-## <a name="policy-rules-and-arrays"></a>Házirend-szabályok és tömbök
+## <a name="policy-rules-and-arrays"></a>Házirendszabályok és -tömbök
 
-### <a name="array-conditions"></a>Tömb feltételei
+### <a name="array-conditions"></a>Tömbfeltételek
 
-A házirend-szabály azon [feltételei](../concepts/definition-structure.md#conditions) , amelyekben a _tömb_
-a paraméter **típusa** használható, `in` és `notIn`ra korlátozódik. A következő házirend-definíciót a feltétel `equals` példaként vegye fel:
+A házirendszabály [azon feltételei,](../concepts/definition-structure.md#conditions) amelyekkel egy
+**tömbtípusú** paraméter használható, a- `in` és `notIn`a. _array_ Vegyük példaként a `equals` következő házirend-definíciót a feltétellel:
 
 ```json
 {
@@ -132,20 +132,20 @@ a paraméter **típusa** használható, `in` és `notIn`ra korlátozódik. A kö
 }
 ```
 
-A házirend-definíciónak a Azure Portalon keresztüli létrehozására tett kísérlet a következő hibaüzenetet eredményezi:
+A szabályzatdefiníció nak az Azure Portalon keresztül történő létrehozása olyan hibát eredményez, mint például ez a hibaüzenet:
 
-- "A (z) {GUID} szabályzatot érvényesítési hibák miatt nem lehetett paraméterbe állítani. Ellenőrizze, hogy a házirend-paraméterek megfelelően vannak-e megadva. A belső kivétel "a nyelv kifejezésének" [parameters (' allowedLocations ')] típusának "Array" típusúnak kell lennie, a várt típus a "string". "
+- "A(z) "{GUID}" házirend et érvényesítési hibák miatt nem lehet paraméterezve. Ellenőrizze, hogy a házirend paraméterei megfelelően vannak-e definiálva. A "[parameters('allowedLocations')]" nyelvi kifejezés belső kivétele "Tömb" típusú, a várt típus "Karakterlánc".".
 
-A feltétel várt **típusa** `equals` _karakterlánc_. Mivel a **allowedLocations** **típus** _tömbként_van definiálva, a házirend-végrehajtó kiértékeli a nyelvi kifejezést, és eldönti a hibát. A `in` és `notIn` feltétellel a irányelvmodul a Language kifejezésben a **típus** _tömböt_ várja. A hibaüzenet megoldásához módosítsa `equals` `in` vagy `notIn`re.
+A feltétel várható `equals` **típusa** a _karakterlánc_. Mivel **az allowedLocations** _típustömbként_van definiálva, a házirendmotor kiértékeli a nyelvi kifejezést, és eldobja a hibát. **type** A `in` és `notIn` a feltétel, a házirend-motor elvárja a **típus** _tömb_ a nyelvi kifejezésben. A hibaüzenet feloldásához `equals` módosítsa `in` a `notIn`vagy a .
 
-### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
+### <a name="evaluating-the--alias"></a>A[*] alias kiértékelése
 
-Azok az aliasok, amelyek neve **\[\*\]** a nevükhöz csatolva jelzi, hogy a **típus** _tömb_. A teljes tömb értékének kiértékelése helyett a **\[\*\]** lehetővé teszi, hogy a tömb egyes elemeit egyenként, a logikai és a köztük lévő elemeket is kiértékelje. Az elemek kiértékelésének három szabványos forgatókönyve hasznos a következőben: _none_, _any_, vagy _minden_ elem egyezés. Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
+A ** \[ \* ** nevükhöz csatolt aliasok azt jelzik, hogy a **típus** _tömb._ Ahelyett, hogy kiértékelen a ** \[ \* ** teljes tömb értékét, lehetővé teszi a tömb egyes elemeinek egyenkénti kiértékelését, logikai ÉS-vel a kettő között. Három szabványos forgatókönyv van, ha ez a cikkenkénti kiértékelés a következőkben hasznos: _Nincs,_ _Bármely_vagy _Minden_ elem egyezik. Összetett esetekben használja [a count .](../concepts/definition-structure.md#count)
 
-A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
-Ez a tény fontos, hogy tisztában legyen azzal, hogyan **\[\*** a tömb egyes elemeinek kiértékelése \].
+A házirendmotor csak akkor indítja el a **hatást,** ha az **if** szabály igazként értékeli ki. **then**
+Ez a tény fontos megérteni összefüggésben az utat ** \[ \* ** értékeli minden egyes eleme a tömb.
 
-Az alábbi forgatókönyv-táblázathoz tartozó példa házirend-szabály:
+A példa házirendszabály az alábbi forgatókönyvtáblázathoz:
 
 ```json
 "policyRule": {
@@ -164,7 +164,7 @@ Az alábbi forgatókönyv-táblázathoz tartozó példa házirend-szabály:
 }
 ```
 
-A **ipRules** tömb az alábbi forgatókönyv-táblázat esetében a következő:
+Az **ipRules** tömb az alábbi forgatókönyvtáblázatban a következő:
 
 ```json
 "ipRules": [
@@ -179,35 +179,35 @@ A **ipRules** tömb az alábbi forgatókönyv-táblázat esetében a következő
 ]
 ```
 
-Az alábbi példában szereplő összes feltételnél cserélje le a `<field>`t a `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`ra.
+Az alábbi példákban `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`cserélje ki a helyére a következőt:
 
-A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
+A következő eredmények a feltétel és a példaházirend-szabály és a fenti értékek tömbjének kombinációjából erednek:
 
 |Állapot |Eredmény | Forgatókönyv |Magyarázat |
 |-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nincs |Nincs egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Nincs egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Házirend hatása |Egy vagy több egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nincs |Egy vagy több egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_. A logikai operátor hamis (**nem** _igaz_) értéket ad vissza, ezért a hatás nincs aktiválva. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Házirend hatása |Nem minden egyezés |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Házirend hatása |Nem minden egyezés |A tömb elemeinek értéke false (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1), így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nincs |Összes egyezés |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nincs |Összes egyezés |Mindkét tömb elem hamis (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1) értéket ad eredményként, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Semmit |Nincs egyezés |Egy tömbelem értéke hamis (127.0.0.1 != 127.0.0.1) és egy igaz (127.0.0.1 != 192.168.1.1), így a **notEquals** feltétel _hamis,_ és a hatás nem aktiválódik. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Politikai hatás |Nincs egyezés |Mindkét tömbelem igazként értékeli ki (10.0.4.1 != 127.0.0.1 és 10.0.4.1 != 192.168.1.1), így a **notEquals** feltétel _igaz,_ és a hatás aktiválódik. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Politikai hatás |Egy vagy több egyezés |Egy tömbelem értéke hamis (127.0.0.1 != 127.0.0.1) és egy igaz (127.0.0.1 != 192.168.1.1), így a **notEquals** feltétel _hamis_. A logikai operátor igaz **(nem** _hamis)_ értéket ad ki, így a hatás aktiválódik. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Semmit |Egy vagy több egyezés |Mindkét tömbelem igazként értékelhető (10.0.4.1 != 127.0.0.1 és 10.0.4.1 != 192.168.1.1), így a **notEquals** feltétel _igaz_. A logikai operátor kiértékeli a hamis **(nem** _igaz_), így a hatás nem aktiválódik. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Politikai hatás |Nem minden egyezés |Egy tömbelem igazként (127.0.0.1 == 127.0.0.1) és egy hamis (127.0.0.1 == 192.168.1.1), így az **Egyenlő** feltétel _hamis_. A logikai operátor igaz **(nem** _hamis)_ értéket ad ki, így a hatás aktiválódik. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Politikai hatás |Nem minden egyezés |Mindkét tömbelem értéke hamis (10.0.4.1 == 127.0.0.1 és 10.0.4.1 == 192.168.1.1), így az **Egyenlő** feltétel _hamis_. A logikai operátor igaz **(nem** _hamis)_ értéket ad ki, így a hatás aktiválódik. |
+|`{<field>,"Equals":"127.0.0.1"}` |Semmit |Minden egyezés |Egy tömbelem igazként (127.0.0.1 == 127.0.0.1) és egy hamis (127.0.0.1 == 192.168.1.1), így az **Egyenlő** feltétel _hamis,_ és a hatás nem aktiválódik. |
+|`{<field>,"Equals":"10.0.4.1"}` |Semmit |Minden egyezés |Mindkét tömbelem kiértékelése hamis (10.0.4.1 == 127.0.0.1 és 10.0.4.1 == 192.168.1.1), így az **Equals** feltétel _hamis,_ és a hatás nem aktiválódik. |
 
-## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
+## <a name="the-append-effect-and-arrays"></a>A hozzáfűző hatás és a tömbök
 
-A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** **\[\*\]** alias-e.
+A [hozzáfűző hatás](../concepts/effects.md#append) eltérően viselkedik attól függően, ** \[ \* ** hogy a **details.field** alias-e vagy sem.
 
-- Ha nem **\[\*\]** aliast, a Hozzáfűzés a teljes tömböt a **Value** tulajdonsággal helyettesíti.
-- Ha egy **\[\*\]** aliast, a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehoz egy új tömböt.
+- Ha nem ** \[ \* ** alias, a hozzáfűzés a teljes tömböt az **értéktulajdonságra** cseréli.
+- Amikor ** \[ \* ** egy alias, hozzáfűzés hozzáadja az **érték** tulajdonságot a meglévő tömbhöz, vagy létrehozza az új tömböt
 
-További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
+További információt a [hozzáfűzési példákban](../concepts/effects.md#append-examples)talál.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
+- Tekintse át a példákat az [Azure Policy-mintákban.](../samples/index.md)
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
-- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](remediate-resources.md).
-- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).
+- Ismerje meg, hogyan hozhat [létre programozott házirendeket.](programmatically-create.md)
+- További információ a [nem megfelelő erőforrások kiújulásáról.](remediate-resources.md)
+- Tekintse át, hogy mi a felügyeleti csoport az [Erőforrások rendszerezése az Azure felügyeleti csoportokkal.](../../management-groups/overview.md)

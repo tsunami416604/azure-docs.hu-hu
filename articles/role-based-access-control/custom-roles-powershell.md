@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése Azure PowerShell
-description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet egyéni szerepköröket a szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz Azure PowerShell használatával.
+title: Egyéni szerepkörök létrehozása vagy frissítése az Azure PowerShell használatával az Azure PowerShell használatával
+description: Megtudhatja, hogyan listázhatja, hozhat létre, frissítheti vagy törölheti az egyéni szerepköröket az Azure PowerShell használatával szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,34 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 52057477fdba9757be2737c223d569b9e9a3e749
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3c72e04ff7a08fecc2ef352a5879898c4c6d41c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062280"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése Azure PowerShell használatával
+# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Egyéni szerepkörök létrehozása vagy frissítése az Azure PowerShell használatával az Azure-erőforrásokhoz
 
-Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk az egyéni szerepkörök listázását, létrehozását, frissítését és törlését ismerteti Azure PowerShell használatával.
+> [!IMPORTANT]
+> Felügyeleti csoport hozzáadása `AssignableScopes` jelenleg előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-Az egyéni szerepkörök létrehozásával kapcsolatos lépésenkénti útmutató: [oktatóanyag: egyéni szerepkör létrehozása az Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-custom-role-powershell.md).
+Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet egyedi igényeinek, létrehozhat saját egyéni szerepköröket. Ez a cikk ismerteti, hogyan listázheti, hozhat létre, frissítheti vagy törölheti az egyéni szerepköröket az Azure PowerShell használatával.
+
+Az egyéni szerepkör létrehozásáról részletes oktatóanyagaz [Oktatóanyag: Egyéni szerepkör létrehozása az Azure PowerShell használatával című témakörben látható.](tutorial-custom-role-powershell.md)
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egyéni szerepkörök létrehozásához a következőkre lesz szüksége:
+Egyéni szerepkörök létrehozásához a következőkre van szükség:
 
 - Egyéni szerepkörök létrehozására vonatkozó engedélyre, amely lehet például [Tulajdonos](built-in-roles.md#owner) vagy [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
 - [Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
-A hatókörben való hozzárendeléshez rendelkezésre álló szerepkörök listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot. Az alábbi példa felsorolja az összes olyan szerepkört, amely elérhető a kijelölt előfizetésben való hozzárendeléshez.
+A hatókörhozzárendeléshez rendelkezésre álló szerepkörök listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot. A következő példa a kijelölt előfizetésben a hozzárendeléshez rendelkezésre álló összes szerepkört felsorolja.
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, IsCustom
@@ -55,7 +60,7 @@ API Management Service Contributor                   False
 ...
 ```
 
-Az alábbi példa csak azokat az egyéni szerepköröket sorolja fel, amelyek elérhetők a kijelölt előfizetésben való hozzárendeléshez.
+A következő példa csak azokat az egyéni szerepköröket sorolja fel, amelyek a kijelölt előfizetésben hozzárendeléshez érhetők el.
 
 ```azurepowershell
 Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
@@ -67,14 +72,14 @@ Name                     IsCustom
 Virtual Machine Operator     True
 ```
 
-Ha a kiválasztott előfizetés nem szerepel a szerepkör `AssignableScopes`ban, az egyéni szerepkör nem jelenik meg.
+Ha a kijelölt előfizetés nem `AssignableScopes` szerepel a szerepkörben, az egyéni szerepkör nem jelenik meg.
 
-## <a name="list-a-custom-role-definition"></a>Egyéni szerepkör-definíció listázása
+## <a name="list-a-custom-role-definition"></a>Egyéni szerepkör-definíció felsorolása
 
-Egyéni szerepkör-definíciók listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition). Ez ugyanaz a parancs, mint amelyet egy beépített szerepkörhöz használ.
+Egyéni szerepkör-definíció listázásához használja a [Get-AzRoleDefinition programot.](/powershell/module/az.resources/get-azroledefinition) Ez ugyanaz a parancs, mint amit a beépített szerepkörhöz használ.
 
 ```azurepowershell
-Get-AzRoleDefinition <role name> | ConvertTo-Json
+Get-AzRoleDefinition <role_name> | ConvertTo-Json
 ```
 
 ```Example
@@ -106,10 +111,10 @@ PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
 }
 ```
 
-A következő példa csak a szerepkör műveleteit sorolja fel:
+A következő példa csak a szerepkör feladatait sorolja fel:
 
 ```azurepowershell
-(Get-AzRoleDefinition <role name>).Actions
+(Get-AzRoleDefinition <role_name>).Actions
 ```
 
 ```Example
@@ -130,13 +135,13 @@ PS C:\> (Get-AzRoleDefinition "Virtual Machine Operator").Actions
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
-Egyéni szerepkör létrehozásához használja a [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) parancsot. A szerepkört kétféleképpen lehet strukturálni `PSRoleDefinition` objektum vagy JSON-sablon használatával. 
+Egyéni szerepkör létrehozásához használja a [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) parancsot. A szerepkör strukturálásának két `PSRoleDefinition` módja van, objektum vagy JSON sablon használatával. 
 
-### <a name="get-operations-for-a-resource-provider"></a>Erőforrás-szolgáltató műveleteinek beolvasása
+### <a name="get-operations-for-a-resource-provider"></a>Erőforrás-szolgáltató műveleteinek beszereznie
 
-Egyéni szerepkörök létrehozásakor fontos tudni az erőforrás-szolgáltatók összes lehetséges műveletét.
-Megtekintheti az erőforrás- [szolgáltatói műveletek](resource-provider-operations.md) listáját, vagy a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) paranccsal kérheti le ezeket az adatokat.
-Ha például a virtuális gépek összes elérhető műveletét szeretné megtekinteni, használja a következő parancsot:
+Egyéni szerepkörök létrehozásakor fontos tudni az összes lehetséges műveletet az erőforrás-szolgáltatóktól.
+Megtekintheti az [erőforrás-szolgáltató i. műveletek](resource-provider-operations.md) listáját, vagy a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) paranccsal lejuthat ezekre az információkra.
+Ha például ellenőrizni szeretné a virtuális gépek összes rendelkezésre álló műveletét, használja ezt a parancsot:
 
 ```azurepowershell
 Get-AzProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
@@ -156,9 +161,9 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 ### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>Egyéni szerepkör létrehozása a PSRoleDefinition objektummal
 
-Ha a PowerShell használatával hoz létre egyéni szerepkört, kiindulási pontként használhatja a [beépített szerepkörök](built-in-roles.md) egyikét, vagy akár teljesen is elindíthat. Az ebben a szakaszban szereplő első példa egy beépített szerepkörrel kezdődik, majd a további engedélyekkel testreszabja azt. Szerkessze az attribútumokat a kívánt `Actions`, `NotActions`vagy `AssignableScopes` hozzáadásához, majd mentse a módosításokat új szerepkörként.
+Ha a PowerShell használatával egyéni szerepkört hoz létre, használhatja a [beépített szerepkörök](built-in-roles.md) egyikét kiindulási pontként, vagy kezdheti a nulláról. Ebben a szakaszban az első példa egy beépített szerepkörrel kezdődik, majd további engedélyekkel szabja testre. Módosítsa az attribútumokat `Actions`a `NotActions`lehetőség `AssignableScopes` hozzáadásához, vagy a kívánt kívánt attribútumokat, majd mentse a módosításokat új szerepkörként.
 
-Az alábbi példa a virtuálisgép- [közreműködő](built-in-roles.md#virtual-machine-contributor) beépített szerepkörével kezdődik a *Virtuálisgép-kezelő*nevű egyéni szerepkör létrehozásához. Az új szerepkör hozzáférést biztosít a *Microsoft. számítás*, a *Microsoft. Storage*és a *Microsoft. Network* erőforrás-szolgáltatók összes olvasási műveletéhez, és hozzáférést biztosít a virtuális gépek elindításához, újraindításához és figyeléséhez. Az egyéni szerepkör két előfizetésben is használható.
+A következő példa a [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor) beépített szerepkörrel kezdődik, hogy hozzon létre egy *virtuálisgép-üzemeltető*nevű egyéni szerepkört. Az új szerepkör hozzáférést biztosít a *Microsoft.Compute,* *a Microsoft.Storage*és a *Microsoft.Network* erőforrás-szolgáltatók összes olvasási műveletéhez, és hozzáférést biztosít a virtuális gépek indításához, újraindításához és figyeléséhez. Az egyéni szerepkör két előfizetésben használható.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -182,7 +187,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzRoleDefinition -Role $role
 ```
 
-A következő példa egy másik módszert mutat be a *Virtuálisgép-kezelő* egyéni szerepkörének létrehozásához. Egy új `PSRoleDefinition` objektum létrehozásával kezdődik. A műveleti műveleteket a `perms` változóban kell megadni, és a `Actions` tulajdonságra kell beállítani. A `NotActions` tulajdonságot úgy állítja be, hogy beolvassa a `NotActions` a [virtuális gép közreműködői](built-in-roles.md#virtual-machine-contributor) beépített szerepkörből. Mivel a [virtuálisgép-közreműködő](built-in-roles.md#virtual-machine-contributor) nem rendelkezik `NotActions`tel, ez a sor nem kötelező, de azt mutatja, hogyan kérhető le az információ egy másik szerepkörből.
+A következő példa bemutatja a *virtuálisgép-üzemeltető* egyéni szerepkör létrehozásának egy másik módját. Egy új `PSRoleDefinition` objektum létrehozásával kezdődik. A műveletműveletek a `perms` változóban vannak megadva, és a `Actions` tulajdonságra vannak állítva. A `NotActions` tulajdonság úgy van `NotActions` beállítva, hogy olvassa be a [virtuális gép közreműködője](built-in-roles.md#virtual-machine-contributor) beépített szerepkörből. Mivel [a virtuálisgép közreműködője](built-in-roles.md#virtual-machine-contributor) nem rendelkezik ilyenvel, `NotActions`ez a sor nem kötelező, de megmutatja, hogyan lehet adatokat beolvasni egy másik szerepkörből.
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
@@ -204,7 +209,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="create-a-custom-role-with-json-template"></a>Egyéni szerepkör létrehozása JSON-sablonnal
 
-A JSON-sablonok az egyéni szerepkör forrás-definíciója használhatók. Az alábbi példa egy egyéni szerepkört hoz létre, amely olvasási hozzáférést biztosít a tárolóhoz és a számítási erőforrásokhoz, hozzáférést biztosít a támogatáshoz, és hozzáadja ezt a szerepkört két előfizetéshez. Hozzon létre egy új fájlt `C:\CustomRoles\customrole1.json` az alábbi példával. Az azonosítót úgy kell beállítani, hogy `null` a kezdeti szerepkör létrehozásakor, mivel az új azonosító automatikusan létrejön. 
+A JSON-sablon használható az egyéni szerepkör forrásdefiníciójaként. A következő példa létrehoz egy egyéni szerepkört, amely lehetővé teszi az olvasási hozzáférést a tárolási és számítási erőforrásokhoz, a támogatáshoz való hozzáférést, és hozzáadja ezt a szerepkört két előfizetéshez. Hozzon létre `C:\CustomRoles\customrole1.json` egy új fájlt a következő példával. Az azonosítót a `null` kezdeti szerepkör-létrehozáskor kell beállítani, mivel az új azonosító automatikusan jön létre. 
 
 ```json
 {
@@ -225,7 +230,7 @@ A JSON-sablonok az egyéni szerepkör forrás-definíciója használhatók. Az a
 }
 ```
 
-Ha hozzá szeretné adni a szerepkört az előfizetésekhez, futtassa a következő PowerShell-parancsot:
+A szerepkör hozzáadása az előfizetésekhez, futtassa a következő PowerShell-parancsot:
 
 ```azurepowershell
 New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
@@ -233,13 +238,13 @@ New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 ## <a name="update-a-custom-role"></a>Egyéni szerepkörök frissítése
 
-Az egyéni szerepkörök létrehozásához hasonlóan a `PSRoleDefinition` objektum vagy egy JSON-sablon használatával is módosíthatja a meglévő egyéni szerepköröket.
+Az egyéni szerepkör létrehozásához hasonlóan egy meglévő egyéni `PSRoleDefinition` szerepkört is módosíthat az objektum vagy egy JSON-sablon használatával.
 
 ### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>Egyéni szerepkör frissítése a PSRoleDefinition objektummal
 
-Egyéni szerepkör módosításához először használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot a szerepkör-definíció lekéréséhez. Másodszor, végezze el a kívánt módosításokat a szerepkör-definícióban. Végül a [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) parancs használatával mentse a módosított szerepkör-definíciót.
+Egyéni szerepkör módosításához először a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) paranccsal olvassa be a szerepkör-definíciót. Másodszor, a kívánt módosításokat a szerepkör-definíció. Végül a [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) paranccsal mentse a módosított szerepkör-definíciót.
 
-A következő példa hozzáadja a `Microsoft.Insights/diagnosticSettings/*` műveletet a *Virtuálisgép-kezelő* egyéni szerepkörhöz.
+A következő példa `Microsoft.Insights/diagnosticSettings/*` hozzáadja a műveletet a *Virtuálisgép-üzemeltető* egyéni szerepkörhöz.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Operator"
@@ -263,7 +268,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/11111111-1111-1111-1111-111111111111}
 ```
 
-Az alábbi példa egy Azure-előfizetést ad hozzá a virtuálisgép- *kezelő* egyéni szerepkör hozzárendelhető hatóköréhez.
+A következő példa hozzáad egy Azure-előfizetést a *virtuálisgép-üzemeltető* egyéni szerepkör hozzárendelhető hatóköreihez.
 
 ```azurepowershell
 Get-AzSubscription -SubscriptionName Production3
@@ -297,9 +302,45 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
+A következő példa hozzáad egy felügyeleti csoportot a `AssignableScopes` *Virtuálisgép-kezelő* egyéni szerepkörhöz. Felügyeleti csoport hozzáadása `AssignableScopes` jelenleg előzetes verzióban érhető el.
+
+```azurepowershell
+Get-AzManagementGroup
+
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
+$role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/{groupId1}")
+Set-AzRoleDefinition -Role $role
+```
+
+```Example
+PS C:\> Get-AzManagementGroup
+
+Id          : /providers/Microsoft.Management/managementGroups/marketing-group
+Type        : /providers/Microsoft.Management/managementGroups
+Name        : marketing-group
+TenantId    : 99999999-9999-9999-9999-999999999999
+DisplayName : Marketing group
+
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
+PS C:\> $role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/marketing-group")
+PS C:\> Set-AzRoleDefinition -Role $role
+
+Name             : Virtual Machine Operator
+Id               : 88888888-8888-8888-8888-888888888888
+IsCustom         : True
+Description      : Can monitor and restart virtual machines.
+Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
+                   Microsoft.Compute/virtualMachines/start/action...}
+NotActions       : {}
+AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
+                   /subscriptions/11111111-1111-1111-1111-111111111111,
+                   /subscriptions/22222222-2222-2222-2222-222222222222,
+                   /providers/Microsoft.Management/managementGroups/marketing-group}
+```
+
 ### <a name="update-a-custom-role-with-a-json-template"></a>Egyéni szerepkör frissítése JSON-sablonnal
 
-Az előző JSON-sablon használatával egyszerűen módosíthat egy meglévő egyéni szerepkört a műveletek hozzáadásához vagy eltávolításához. Frissítse a JSON-sablont, és adja hozzá az olvasási műveletet a hálózatkezeléshez, ahogy az az alábbi példában is látható. A sablonban felsorolt definíciók nem alkalmazhatók összesítve egy meglévő definícióra, ami azt jelenti, hogy a szerepkör pontosan a sablonban megadott módon jelenik meg. Az id mezőt is frissítenie kell a szerepkör azonosítójával. Ha nem tudja, mi ez az érték, a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsmaggal kérheti le ezeket az adatokat.
+Az előző JSON-sablon használatával egyszerűen módosíthatja a meglévő egyéni szerepkört a műveletek hozzáadásához vagy eltávolításához. Frissítse a JSON-sablont, és adja hozzá a hálózati olvasási műveletet az alábbi példában látható módon. A sablonban felsorolt definíciók nem lesznek összesítve egy meglévő definícióra, ami azt jelenti, hogy a szerepkör pontosan úgy jelenik meg, ahogy a sablonban megadott. Az azonosítómezőt is frissítenie kell a szerepkör azonosítójával. Ha nem biztos abban, hogy mi ez az érték, a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsmag segítségével lejuthat erre az információra.
 
 ```json
 {
@@ -329,9 +370,9 @@ Set-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 ## <a name="delete-a-custom-role"></a>Egyéni szerepkörök törlése
 
-Egyéni szerepkör törléséhez használja a [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) parancsot.
+Egyéni szerepkör törléséhez használja az [Eltávolítás-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) parancsot.
 
-Az alábbi példa eltávolítja a *virtuális gép operátorának* egyéni szerepkörét.
+A következő példa eltávolítja a *Virtuálisgép-üzemeltető* egyéni szerepkört.
 
 ```azurepowershell
 Get-AzRoleDefinition "Virtual Machine Operator"
@@ -358,8 +399,8 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-custom-role-powershell.md)
+- [Oktatóanyag: Hozzon létre egy egyéni szerepkört az Azure-erőforrásokhoz az Azure PowerShell használatával](tutorial-custom-role-powershell.md)
 - [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
-- [Erőforrás-szolgáltatói műveletek Azure Resource Manager](resource-provider-operations.md)
+- [Az Azure Resource Manager erőforrás-szolgáltatóműveletei](resource-provider-operations.md)

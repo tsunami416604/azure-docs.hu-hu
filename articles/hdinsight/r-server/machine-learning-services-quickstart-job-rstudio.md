@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: RStudio Server & ML szolgáltatások az R-Azure HDInsight'
-description: A gyors útmutatóban egy R-szkriptet hajt végre az Azure HDInsight egy ML Services-fürtön az RStudio-kiszolgáló használatával.
+title: 'Rövid útmutató: Az RStudio Server & ML-szolgáltatások R-hez – Azure HDInsight'
+description: A rövid útmutatóban egy R-parancsfájlt hajt végre egy ML Services-fürtön az Azure HDInsightban az RStudio Server használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,39 +9,39 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73241882"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Gyors útmutató: R-szkript végrehajtása egy ML Services-fürtön az Azure HDInsight az RStudio-kiszolgáló használatával
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Rövid útmutató: R-parancsfájl végrehajtása ml-szolgáltatások fürtén az Azure HDInsightban az RStudio Server használatával
 
-Az Azure HDInsight ML-szolgáltatásai lehetővé teszik az R-parancsfájlok használatát Apache Spark és Apache Hadoop MapReduce elosztott számítások futtatásához. A ML-szolgáltatások azt vezérlik, hogy a rendszer hogyan hajtja végre a hívásokat a számítási környezet beállításával. A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való kapcsolódáshoz és az R-parancsfájlok futtatásához. A peremhálózati csomópontok esetében lehetősége van a RevoScaleR párhuzamosan elosztott funkcióinak futtatására a peremhálózati csomópont-kiszolgáló magjai között. Ezeket a fürtök csomópontjain is futtathatja a RevoScaleR Hadoop-leképezésével, és csökkentheti vagy Apache Spark a számítási környezeteket.
+Ml-szolgáltatások az Azure HDInsight lehetővé teszi, hogy az R-parancsfájlok az Apache Spark és az Apache Hadoop MapReduce használatával futtatják az elosztott számításokat. Az ML-szolgáltatások a számítási környezet beállításával szabályozzák a hívások végrehajtását. A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való csatlakozáshoz és az R-parancsfájlok futtatásához. Egy peremhálózati csomópont esetén lehetősége van a RevoScaleR párhuzamos elosztott függvényeinek futtatására a peremhálózati csomópont-kiszolgáló magjain. A RevoScaleR Hadoop-térképcsökkentés vagy az Apache Spark számítási környezeteinek használatával is futtathatja őket a fürt csomópontjain.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan futtathat egy R-szkriptet a RStudio-kiszolgálóval, amely bemutatja a Spark elosztott R-számításokhoz való használatát. A számítási kontextust úgy fogja meghatározni, hogy helyileg hajtja végre a számításokat egy peremhálózati csomóponton, majd újra elosztja a HDInsight-fürt csomópontjai között.
+Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt az RStudio-kiszolgálóval, amely bemutatja a Spark használatát az elosztott R-számításokhoz. Számítási környezetet határoz meg, hogy helyileg hajtson végre számításokat egy peremhálózati csomóponton, és ismét elosztva a HDInsight-fürt csomópontjai között.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához**.
+Ml services-fürt a HDInsighton. Lásd: [Apache Hadoop-fürtök létrehozása az Azure Portalon,](../hdinsight-hadoop-create-linux-clusters-portal.md) és válassza az **ML-szolgáltatások** **fürttípushoz lehetőséget.**
 
 ## <a name="connect-to-rstudio-server"></a>Csatlakozás az RStudio Serverhez
 
-A RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Nyissa meg a következő URL-címet, ahol a `CLUSTERNAME` a létrehozott ML Services-fürt neve:
+Az RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Nyissa meg a `CLUSTERNAME` következő URL-címet, ahol a létrehozott ML-szolgáltatások fürt neve található:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Amikor először jelentkezik be, kétszer kell hitelesítenie. Az első hitelesítési kéréshez adja meg a fürt rendszergazdai felhasználónevét és jelszavát, az alapértelmezett érték `admin`. A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót, az alapértelmezett érték pedig `sshuser`. A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
+Az első bejelentkezéskor kétszer kell hitelesítenie magát. Az első hitelesítési kérdés, adja meg a fürt `admin`rendszergazdai bejelentkezési és jelszó, az alapértelmezett . A második hitelesítési kérdés, adja meg az SSH bejelentkezési és jelszó, az `sshuser`alapértelmezett . A későbbi bejelentkezések csak az SSH hitelesítő adatokat igényelnek.
 
 A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kinéznie:
 
-![R Studio webkonzol – áttekintések](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png)
+![R studio webkonzol áttekintése](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png)
 
 ## <a name="use-a-compute-context"></a>Számítási környezet használata
 
-1. A RStudio-kiszolgálóról a következő kód használatával tölthet be például az alapértelmezett tárolóba a HDInsight:
+1. Az RStudio Server kiszolgálóról a következő kód használatával töltse be a példaadatokat a HDInsight alapértelmezett tárolójába:
 
     ```RStudio
     # Set the HDFS (WASB) location of example data
@@ -78,7 +78,7 @@ A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kin
 
     Ez a lépés körülbelül 8 percet is igénybe vehet.
 
-1. Hozzon létre adatinformációkat, és határozzon meg két adatforrást. Adja meg a következő kódot a RStudio:
+1. Hozzon létre néhány adatinformációt, és határozzon meg két adatforrást. Írja be a következő kódot az RStudio-ban:
 
     ```RStudio
     # Define the HDFS (WASB) file system
@@ -105,7 +105,7 @@ A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kin
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Futtasson logisztikai regressziót az adatokon a **helyi** számítási környezet használatával. Adja meg a következő kódot a RStudio:
+1. Logisztikai regressziót futtataz adatokon a **helyi** számítási környezet használatával. Írja be a következő kódot az RStudio-ban:
 
     ```RStudio
     # Set a local compute context
@@ -120,7 +120,7 @@ A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kin
      summary(modelLocal)
     ```
 
-    A számításoknak körülbelül 7 percen belül kell elvégezniük. Az alábbi kódrészlethez hasonló sorokkal végződő kimenetnek kell megjelennie:
+    A számítások körülbelül 7 perc alatt befejeződnek. A következő kódrészlethez hasonló vonalakkal végződő kimenetnek kell megtekintenie:
 
     ```output
     Data: airOnTimeDataLocal (RxTextData Data Source)
@@ -150,7 +150,7 @@ A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kin
       Number of iterations: 7
     ```
 
-1. Futtassa ugyanazt a logisztikai regressziót a **Spark** kontextus használatával. A Spark környezet elosztja a feldolgozást a HDInsight-fürt összes munkavégző csomópontja között. Adja meg a következő kódot a RStudio:
+1. Futtassa ugyanazt a logisztikai regressziót a **Spark-környezet** használatával. A Spark környezet elosztja a feldolgozást a HDInsight-fürt összes munkavégző csomópontja között. Írja be a következő kódot az RStudio-ban:
 
     ```RStudio
     # Define the Spark compute context
@@ -168,20 +168,20 @@ A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kin
      summary(modelSpark)
     ```
 
-    A számításoknak körülbelül 5 percen belül kell elvégezniük.
+    A számítások nak körülbelül 5 perc alatt befejeződnek.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A rövid útmutató befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 
-Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
+Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával című](../hdinsight-delete-cluster.md)témakörben jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan futtathat egy R-szkriptet a Spark által elosztott R-számításokhoz használt RStudio-kiszolgálóval.  A következő cikkből megtudhatja, hogy milyen lehetőségek érhetők el annak megadásához, hogy a végrehajtás hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között.
+Ebben a rövid útmutatóban megtanulta, hogyan futtathat R-parancsfájlt az RStudio Server rel, amely a Spark használatát mutatta be az elosztott R-számításokhoz.  A következő cikkre lépve ismerje meg, hogy milyen lehetőségek állnak rendelkezésre annak meghatározásához, hogy a végrehajtás párhuzamos-e a peremhálózati csomópont vagy a HDInsight-fürt magjai között, és ha az okat.
 
 > [!div class="nextstepaction"]
->[Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz](./r-server-compute-contexts.md)
+>[Az ML-szolgáltatások környezeti beállításainak számítási környezete a HDInsightban](./r-server-compute-contexts.md)
 
 > [!NOTE]
-> Ez az oldal a RStudio szoftver funkcióit ismerteti. Microsoft Azure HDInsight nem kapcsolódik a RStudio, Inc. szolgáltatáshoz.
+> Ez az oldal az RStudio szoftver funkcióit ismerteti. A Microsoft Azure HDInsight nem áll kapcsolatban az RStudio, Inc. vállalattal.

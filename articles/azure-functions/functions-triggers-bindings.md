@@ -1,56 +1,56 @@
 ---
-title: Eseményindítók és kötések Azure Functions
-description: Megtudhatja, hogyan használhatja az eseményindítókat és a kötéseket az Azure-függvények online eseményekhez és felhőalapú szolgáltatásokhoz való összekapcsolásához.
+title: Eseményindítók és kötések az Azure Functionsben
+description: Ismerje meg, hogy az azure-függvényt online eseményekhez és felhőalapú szolgáltatásokhoz csatlakoztathatja az eseményindítók és kötések használatával.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276503"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Triggerek és kötések Azure Functions fogalmak
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions elindítja és kötési fogalmak
 
-Ebből a cikkből megtudhatja, hogy milyen magas szintű fogalmakat indít a functions-eseményindítók és-kötések.
+Ebben a cikkben megismerheti a függvényeket körülvevő magas szintű fogalmakat, amelyek aktiválódnak és kötések.
 
-Az eseményindítók a függvény futtatását okozzák. Egy eseményindító határozza meg a függvény meghívásának módját, és a függvénynek pontosan egy eseményindítóval kell rendelkeznie. Az eseményindítók társított adatokkal rendelkeznek, amelyek gyakran a függvény hasznos adattartalmaként vannak megadva. 
+Az eseményindítók okozzák a függvények futtatását. Az eseményindító határozza meg, hogyan kell egy függvénymeghívása, és egy függvény nek pontosan egy eseményindítóval kell rendelkeznie. A triggerekhez társított adatok tartoznak, amelyek gyakran a függvény hasznos adataiként vannak megadva. 
 
-A függvények kötése egy másik erőforrás a függvényhez való deklaratív csatlakoztatásának módja. a kötések *bemeneti Kötésként*, *kimeneti Kötésként*vagy mindkettőként is csatlakoztathatók. A kötések adatait paraméterként a függvény kapja meg.
+A függvényhez való kötés egy másik erőforrás deklaratív módon történő csatlakoztatásának módja a függvényhez; kötések csatlakoztathatók *bemeneti kötésként,* *kimeneti kötésként vagy mindkettőként.* A kötések adatai a függvények számára paraméterekként vannak megadva.
 
-Az igényeinek megfelelően összekeverheti és egyeztetheti a különböző kötéseket. A kötések nem kötelezőek, és egy függvénynek lehet egy vagy több bemeneti és/vagy kimeneti kötése.
+A különböző kötéseket igény szerint kombinálhatja. A kötések választhatóak, és egy függvény rendelkezhet egy vagy több bemeneti és/vagy kimeneti kötéssel.
 
-Az eseményindítók és kötések lehetővé teszik a más szolgáltatásokhoz való rögzítjük való hozzáférés elkerülését. A függvény adatokat fogad (például egy üzenetsor tartalmát) a függvény paraméterei között. Az adatküldés (például üzenetsor létrehozása) a függvény visszatérési értékével végezhető el. 
+Az eseményindítók és kötések segítségével elkerülheti a más szolgáltatásokhoz való hardcoding hozzáférést. A függvény függvényparaméterekben kapja meg az adatokat (például egy üzenetsor üzenetének tartalmát). Az adatokat (például egy üzenetsor üzenetének tartalmát) a függvény által visszaadott értékek használatával küldheti el. 
 
-Tekintse át az alábbi példákat a különböző függvények megvalósítására.
+Vegye figyelembe az alábbi példákat arra, hogyan valósíthat meg különböző függvényeket.
 
-| Példaforgatókönyv | Eseményindító | Bemeneti kötés | Kimeneti kötés |
+| Példaforgatókönyv | Eseményindító | Bemeneti kötés | Kimenetkötés |
 |-------------|---------|---------------|----------------|
-| Egy új üzenetsor-üzenet érkezik, amely egy függvény futtatásával ír egy másik várólistára. | Üzenetsor<sup>*</sup> | *NEz egy* | Üzenetsor<sup>*</sup> |
-|Az ütemezett feladatok beolvassák Blob Storage tartalmát, és létrehoz egy új Cosmos DB dokumentumot. | Időzítő | Blob Storage | Cosmos DB |
-|A Event Grid egy rendszerképet olvas be a Blob Storageról, és a Cosmos DB dokumentumból küld e-mailt. | Event Grid | Blob Storage és Cosmos DB | SendGrid |
-| Egy webhook, amely Microsoft Grapht használ az Excel-lapok frissítéséhez. | HTTP | *NEz egy* | Microsoft Graph |
+| Új várólista-üzenet érkezik, amely egy függvényt futtat egy másik várólistába való íráshoz. | Várólista<sup>*</sup> | *Nincs* | Várólista<sup>*</sup> |
+|Egy ütemezett feladat beolvassa a Blob Storage tartalmát, és létrehoz egy új Cosmos DB-dokumentumot. | Időzítő | Blob Storage | Cosmos DB |
+|Az Event Grid segítségével olvashat egy képet a Blob Storage-ból és egy dokumentumot a Cosmos DB e-mailt küldeni. | Event Grid | Blob Storage és Cosmos DB | SendGrid |
+| Olyan webhook, amely a Microsoft Graph segítségével frissíti az Excel-lapokat. | HTTP | *Nincs* | Microsoft Graph |
 
-<sup>\*</sup> Különböző várólistákat jelöl
+<sup>\*</sup>Különböző várólistákat jelöl
 
-Ezek a példák nem teljes körűek, de az eseményindítók és kötések együttes használatának szemléltetésére szolgálnak.
+Ezek a példák nem célja, hogy teljes körű, de rendelkezésre állnak, hogy bemutassa, hogyan használhatja az eseményindítók és kötések együtt.
 
-###  <a name="trigger-and-binding-definitions"></a>Trigger-és kötési definíciók
+###  <a name="trigger-and-binding-definitions"></a>Kiváltó és kötési definíciók
 
-Az eseményindítók és kötések a fejlesztési módszertől függően eltérő módon vannak meghatározva.
+Az eseményindítók és kötések meghatározása a fejlesztési megközelítéstől függően eltérő.
 
-| Platform | Az eseményindítók és kötések konfigurálása... |
+| Platform | Az eseményindítókat és a kötéseket... |
 |-------------|--------------------------------------------|
-| C#osztály könyvtára | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;díszítő metódusok és paraméterek C# az attribútumokkal |
-| Minden más (beleértve a Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frissítési [function. JSON](./functions-reference.md) ([séma](http://json.schemastore.org/function)) |
+| C# osztálykönyvtár | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;díszítő módszerek és paraméterek C# attribútumokkal |
+| Az összes többi (beleértve az Azure Portalt is) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.json](./functions-reference.md) ([séma](http://json.schemastore.org/function)) frissítése |
 
-A portál egy felhasználói felületet biztosít ehhez a konfigurációhoz, de a fájl szerkesztéséhez közvetlenül is megnyithatja a függvény **integrálás** lapján elérhető **speciális szerkesztőt** .
+A portál felhasználói felületet biztosít ehhez a konfigurációhoz, de a fájl közvetlenül szerkeszthető a funkció **Integrálás** lapján elérhető **Speciális szerkesztő** megnyitásával.
 
-A .NET-ben a paraméter típusa határozza meg a bemeneti adatok adattípusát. Például a `string` használatával kösse a várólista-trigger szövegét, egy bájtos tömböt, amely binárisként és egyéni típusként egy objektumra deszerializálható.
+A .NET-ben a paramétertípus határozza meg a bemeneti adatok adattípusát. Például egy `string` várólista-eseményindító szövegéhez, egy binárisként olvasandó bájttömbhöz és egy objektumhoz való szerializálást leváltó egyéni típushoz köthető.
 
-A dinamikusan beírt nyelvek (például a JavaScript) esetében használja a *function. JSON* fájl `dataType` tulajdonságát. Ha például bináris formátumban szeretné beolvasni egy HTTP-kérelem tartalmát, állítsa be `dataType` `binary`:
+A dinamikusan beírt nyelvek, például a `dataType` JavaScript esetében használja a *function.json fájl tulajdonságát.* Ha például egy HTTP-kérelem tartalmát bináris formátumban `binary`szeretné olvasni, állítsa a következőre: `dataType`
 
 ```json
 {
@@ -61,33 +61,33 @@ A dinamikusan beírt nyelvek (például a JavaScript) esetében használja a *fu
 }
 ```
 
-A `dataType` további beállításai `stream` és `string`.
+Egyéb lehetőségek `dataType` `stream` vannak `string`és .
 
-## <a name="binding-direction"></a>Kötési irány
+## <a name="binding-direction"></a>Kötésirány
 
-Minden eseményindító és kötés `direction` tulajdonsággal rendelkezik a [function. JSON](./functions-reference.md) fájlban:
+Minden eseményindítónak és `direction` kötésnek van egy tulajdonsága a [function.json](./functions-reference.md) fájlban:
 
-- Az eseményindítók esetében az irány mindig `in`
-- A bemeneti és kimeneti kötések `in` és `out` használnak
-- Egyes kötések speciális irányt `inout`nak. Ha `inout`használ, csak a **speciális szerkesztő** érhető el a portál **integrálás** lapján.
+- Az eseményindítók esetében az irány mindig`in`
+- A bemeneti és `in` kimeneti kötések használata és`out`
+- Egyes kötések speciális `inout`irányt támogatnak. Ha a `inout`, csak a **Speciális szerkesztő** érhető el a **portál Integrálás** lapján.
 
-Ha az [attribútumokat egy osztály-függvénytárban](functions-dotnet-class-library.md) konfigurálja az eseményindítók és kötések konfigurálásához, az irány egy attribútum konstruktorában van megadva, vagy a paraméter típusa alapján következtethető ki.
+Ha [egy osztálytár attribútumait](functions-dotnet-class-library.md) használja az eseményindítók és kötések konfigurálásához, az irány egy attribútumkonstruktorban vagy a paramétertípusból következtethet.
 
 ## <a name="supported-bindings"></a>Támogatott kötések
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-További információ arról, hogy mely kötések érhetők el előzetes verzióban, vagy hogy a rendszer az éles használatra jóváhagyja a [támogatott nyelveket](supported-languages.md).
+Arról, hogy mely kötések előzetes verzióban vannak megtekinthetők, vagy milyen termelési használatra vannak jóváhagyva, a Támogatott nyelvek című [témakörben](supported-languages.md)talál tájékoztatást.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 - [Kötési kifejezések és minták](./functions-bindings-expressions-patterns.md)
-- [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)
+- [Az Azure Függvény visszatérési értékének használata](./functions-bindings-return-value.md)
 - [Kötési kifejezés regisztrálása](./functions-bindings-register.md)
-- Vizsgálat
-  - [Stratégiák a kód teszteléséhez Azure Functions](functions-test-a-function.md)
-  - [Nem HTTP-triggert futtató függvény manuális futtatása](functions-manually-run-non-http.md)
-- [Kötési hibák feldolgozása](./functions-bindings-errors.md)
+- Vizsgálat:
+  - [Kódtesztelési stratégiák az Azure Functions szolgáltatásban](functions-test-a-function.md)
+  - [Nem HTTP által aktivált függvény manuális futtatása](functions-manually-run-non-http.md)
+- [Kötési hibák kezelése](./functions-bindings-errors.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Azure Functions kötési bővítmények regisztrálása](./functions-bindings-register.md)
+> [Az Azure Functions kötésbővítményeinek regisztrálása](./functions-bindings-register.md)

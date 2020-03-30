@@ -1,37 +1,37 @@
 ---
-title: Linuxos virtuálisgép-rendszerképek kiválasztása az Azure CLI-vel
-description: Ismerje meg, hogyan határozhatja meg a Piactéri virtuálisgép-rendszerképek közzétevőjét, ajánlatát, SKU-jának és verziószámát az Azure CLI használatával.
+title: Válassza ki a Linux virtuálisgép-lemezképeket az Azure CLI-vel
+description: Ismerje meg, hogyan használhatja az Azure CLI a közzétevő, ajánlat, termékváltozat és a Marketplace virtuális gép lemezképek verziója meghatározásához.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250308"
 ---
-# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linuxos virtuálisgép-lemezképek keresése az Azure Marketplace-en az Azure CLI-vel
+# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux virtuálisgép-rendszerképek keresése az Azure Marketplace-en az Azure CLI-vel
 
-Ez a témakör azt ismerteti, hogyan használhatók az Azure parancssori felületi lemezképek az Azure piactéren. Ezen információk segítségével megadhatja a Piactéri rendszerképet, ha programozott módon hoz létre virtuális gépet a CLI-vel, a Resource Manager-sablonokkal vagy más eszközökkel.
+Ez a témakör ismerteti, hogyan használhatja az Azure CLI virtuálisgép-lemezképek az Azure Marketplace-en. Ezen információk segítségével adja meg a Marketplace-lemezképet, amikor programozott módon hoz létre virtuális gépet a CLI, az Erőforrás-kezelő sablonokkal vagy más eszközökkel.
 
-Az elérhető lemezképeket és ajánlatokat az [Azure Marketplace](https://azuremarketplace.microsoft.com/) kirakat, a [Azure Portal](https://portal.azure.com)vagy a [Azure PowerShell](../windows/cli-ps-findimage.md)használatával is böngészheti. 
+Az [Azure Marketplace](https://azuremarketplace.microsoft.com/) kirakatában, az Azure [Portalon](https://portal.azure.com)vagy az [Azure PowerShellben](../windows/cli-ps-findimage.md)is böngészhet a rendelkezésre álló képek és ajánlatok között. 
 
-Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure-fiókba (`az login`).
+Győződjön meg arról, hogy telepítette a legújabb Azure`az login` [CLI-t,](/cli/azure/install-azure-cli) és be van jelentkezve egy Azure-fiókba ( ).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="list-popular-images"></a>Népszerű lemezképek listázása
+## <a name="list-popular-images"></a>Népszerű képek listázása
 
-Futtassa az az [VM Image List](/cli/azure/vm/image) parancsot az `--all` lehetőség nélkül, hogy megtekintse a népszerű virtuálisgép-rendszerképek listáját az Azure Marketplace-en. Például a következő parancs futtatásával jelenítheti meg a népszerű rendszerképek gyorsítótárazott listáját táblázatos formátumban:
+Futtassa az [az vm-lemezképlista](/cli/azure/vm/image) parancsot, anélkül, hogy a `--all` lehetőség, a népszerű virtuálisgép-rendszerképek listájának megtekintéséhez az Azure Marketplace-en. Futtassa például a következő parancsot a népszerű képek gyorsítótárazott listájának táblázatformátumban való megjelenítéséhez:
 
 ```azurecli
 az vm image list --output table
 ```
 
-A kimenet tartalmazza a rendszerkép URN (az *urn* oszlop értékét). Ha virtuális gépet hoz létre ezen népszerű Piactéri rendszerképek valamelyikével, megadhatja a *UrnAlias*, egy rövidített formát, például *UbuntuLTS*.
+A kimenet tartalmazza a kép URN-ét (az *Urn* oszlop értéke). Amikor virtuális gép létrehozása az egyik ilyen népszerű Marketplace-lemezképekkel, megadhatja az *UrnAlias*, egy rövidített űrlapot, például *ubuntults*.
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -49,9 +49,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Adott rendszerképek keresése
 
-Ha egy adott virtuálisgép-rendszerképet szeretne keresni a piactéren, használja a `az vm image list` parancsot a `--all` kapcsolóval. A parancs ezen verziója hosszabb időt vesz igénybe, és visszaadja a hosszadalmas kimenetet, így általában `--publisher` vagy egy másik paraméter alapján szűri a listát. 
+Ha meg szeretne találni egy adott virtuális `az vm image list` géplemezképet a Marketplace-en, használja a parancsot a `--all` beállítással. A parancs ezen verziója némi időt vesz igénybe, és hosszú kimenetet `--publisher` adhat vissza, ezért általában a listát egy vagy más paraméter szerint szűrheti. 
 
-A következő parancs például megjeleníti az összes Debian-ajánlatot (ne feledje, hogy a `--all` kapcsoló nélkül csak a gyakori lemezképek helyi gyorsítótárában keres):
+A következő parancs például megjeleníti az összes Debian ajánlatot (ne feledje, hogy a `--all` kapcsoló nélkül csak a közös képek helyi gyorsítótárában keres):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -98,11 +98,11 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-Hasonló szűrőket alkalmazhat a `--location`, `--publisher`és `--sku` beállításokkal. A szűrőkben részleges egyezéseket végezhet, például megkeresheti a `--offer Deb`t az összes Debian-rendszerkép megkereséséhez.
+Alkalmazzon hasonló `--location`szűrőket a , `--publisher`és a `--sku` beállításokkal. Részleges egyezéseket hajthatvégre egy `--offer Deb` szűrőn, például megkeresheted az összes Debian képet.
 
-Ha nem ad meg egy adott helyet a `--location` kapcsolóval, a rendszer az alapértelmezett hely értékeit adja vissza. (Egy másik alapértelmezett helyet állítson be `az configure --defaults location=<location>`futtatásával.)
+Ha nem ad meg egy `--location` adott helyet a beállítással, a rendszer az alapértelmezett hely értékeit adja vissza. (Másik alapértelmezett helyet állítson be a .) `az configure --defaults location=<location>`
 
-Például a következő parancs felsorolja az összes Debian 8 SKU-t a Nyugat-európai helyen:
+A következő parancs például az összes Debian 8 su-t sorolja fel Nyugat-Európa területén:
 
 ```azurecli
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
@@ -140,17 +140,17 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 ...
 ```
 
-## <a name="navigate-the-images"></a>A képek navigálása
+## <a name="navigate-the-images"></a>Navigálás a képek között
  
-Egy másik lehetőség, hogy megkeresse a lemezképet egy helyen, az az [VM lemezkép-közzétevők](/cli/azure/vm/image), [az az VM lemezkép-ajánlatok](/cli/azure/vm/image)és [az az VM lemezkép-listázási](/cli/azure/vm/image) parancsok futtatásával. Ezekkel a parancsokkal meghatározhatja ezeket az értékeket:
+Egy másik módja annak, hogy megtalálja a képet egy helyen, hogy futtassa az [az vm lemezkép lista-kiadók](/cli/azure/vm/image), [az a vm image list-ajánlatok](/cli/azure/vm/image), és [az az vm lemezkép list-skus](/cli/azure/vm/image) parancsok sorrendben. Ezekkel a parancsokkal határozhatja meg a következő értékeket:
 
 1. Listázza a rendszerkép-közzétevőket.
 2. Listázza egy adott közzétevő ajánlatait.
 3. Listázza egy adott ajánlathoz tartozó termékváltozatokat.
 
-Ezután a kiválasztott SKU esetében kiválaszthatja a telepítendő verziót.
+Ezután a kiválasztott termékváltozat esetében kiválaszthatja a telepíteni kívánt verziót.
 
-A következő parancs például felsorolja az USA nyugati régiójában található képközzétevőket:
+A következő parancs például az USA nyugati részén lévő képközzétevőket sorolja fel:
 
 ```azurecli
 az vm image list-publishers --location westus --output table
@@ -186,7 +186,7 @@ westus      akumina
 ...
 ```
 
-Ezekkel az információkkal megkeresheti az ajánlatokat egy adott közzétevőtől. Az USA nyugati régiójában található *Canonical* Publisher esetében például `azure vm image list-offers`futtatásával kereshet ajánlatokat. Adja át a helyet és a közzétevőt a következő példában látható módon:
+Ezen információk alapján egy adott közzétevő ajánlatait keresheti meg. Például a *Canonical* kiadó az USA nyugati részén `azure vm image list-offers`helyen, keresse meg az ajánlatokat a futásával. Adja át a helyet és a közzétevőt az alábbi példában:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -203,7 +203,7 @@ westus      UbunturollingSnappy
 westus      UbuntuServer
 westus      Ubuntu_Core
 ```
-Láthatja, hogy az USA nyugati régiójában a Canonical közzéteszi a *UbuntuServer* ajánlatot az Azure-ban. De milyen termékváltozatokról van szó? Ezeknek az értékeknek a lekéréséhez futtassa `azure vm image list-skus` és állítsa be a felderített helyet, közzétevőt és ajánlatot:
+Láthatja, hogy az USA nyugati régiójában a Canonical közzéteszi az *UbuntuServer* ajánlatot az Azure-on. De milyen termékváltozatokról van szó? Ezen értékek lekérődéséhez futtassa `azure vm image list-skus` és állítsa be a felderített helyet, közzétevőt és ajánlatot:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -234,7 +234,7 @@ westus      18.10-DAILY
 westus      19.04-DAILY
 ```
 
-Végül a `az vm image list` parancs használatával keresse meg a kívánt SKU adott verzióját, például *18,04-LTS*:
+Végül a `az vm image list` paranccsal megkeresheti a kívánt termékváltozatot, például *a 18.04-LTS verziót:*
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
@@ -268,17 +268,17 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-Most kiválaszthatja a használni kívánt rendszerképet úgy, hogy az URN értékét jegyezze fel. Adja át ezt az értéket a `--image` paraméterrel, amikor létrehoz egy virtuális gépet az az [VM Create](/cli/azure/vm) paranccsal. Ne feledje, hogy opcionálisan lecserélheti az URN verziószámát a "legutóbbi" értékre. Ez a verzió mindig a lemezkép legújabb verziója. 
+Most már pontosan kiválaszthatja a használni kívánt képet az URN-érték megjegyzésével. Adja át ezt `--image` az értéket a paraméterrel, amikor virtuális gép létrehozása az [az vm create](/cli/azure/vm) paranccsal. Ne feledje, hogy az URN verziószámát lecserélheti a "legújabb" lehetőségre. Ez a verzió mindig a lemezkép legújabb verziója. 
 
-Ha Resource Manager-sablonnal helyez üzembe egy virtuális gépet, akkor a lemezkép paramétereit külön kell beállítania a `imageReference` tulajdonságai között. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.compute/virtualmachines).
+Ha egy Erőforrás-kezelő sablonnal rendelkező virtuális gép üzembe helyezése, `imageReference` a rendszerkép paramétereit külön-külön állítja be a tulajdonságokban. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Terv tulajdonságainak megtekintése
 
-Ha meg szeretné tekinteni a rendszerkép vásárlási tervének adatait, futtassa az az [VM rendszerkép megjelenítése](/cli/azure/image) parancsot. Ha a kimenetben lévő `plan` tulajdonság nem `null`, akkor a rendszerképnek a programozott telepítés előtt el kell fogadnia a feltételeket.
+A lemezkép vásárlási tervadatainak megtekintéséhez futtassa az [az vm image show](/cli/azure/image) parancsot. Ha `plan` a tulajdonság a `null`kimenetnem, a lemezkép feltételeket el kell fogadnia, mielőtt az automatizált telepítés.
 
-Például a Canonical Ubuntu Server 18,04 LTS-rendszerkép nem rendelkezik további feltételekkel, mert a `plan` információ `null`:
+Például a Canonical Ubuntu Server 18.04 LTS kép nem `plan` rendelkezik `null`további feltételekkel, mert az információ:
 
 ```azurecli
 az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
@@ -300,7 +300,7 @@ Kimenet:
 }
 ```
 
-A Bitnami-rendszerkép által hitelesített RabbitMQ hasonló parancs futtatása a következő `plan` tulajdonságokat jeleníti meg: `name`, `product`és `publisher`. (Néhány rendszerképnek `promotion code` tulajdonsága is van.) A rendszerkép üzembe helyezéséhez tekintse át a következő részeket a feltételek elfogadásához és a programozott telepítés engedélyezéséhez.
+A Bitnami által hitelesített RabbitMQ-képhez hasonló `plan` parancs `name`futtatása a következő tulajdonságokat jeleníti meg: , , `product`és. `publisher` (Néhány képnek `promotion code` van tulajdonsága is.) A lemezkép központi telepítéséhez tekintse meg a következő szakaszokban a feltételek elfogadásához és a programozott telepítés engedélyezéséhez.
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -327,13 +327,13 @@ Kimenet:
 
 ### <a name="accept-the-terms"></a>A feltételek elfogadása
 
-A licencfeltételek megtekintéséhez és elfogadásához használja az az [VM rendszerkép Accept-terms](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, az előfizetésében engedélyezheti a programozott üzembe helyezést. A rendszerképhez csak egyszer kell elfogadnia a feltételeket. Például:
+A licencfeltételek megtekintéséhez és elfogadásához használja az [az vm image accept-terms](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, engedélyezi az automatikus központi telepítést az előfizetésben. Előfizetésenként csak egyszer kell elfogadnod a feltételeket a lemezképhez. Példa:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
-A kimenet tartalmaz egy `licenseTextLink` a licencfeltételeket, és azt jelzi, hogy a `accepted` értéke `true`:
+A kimenet `licenseTextLink` tartalmazza a licencfeltételeket, és azt `accepted` `true`jelzi, hogy az érték:
 
 ```
 {
@@ -352,9 +352,9 @@ A kimenet tartalmaz egy `licenseTextLink` a licencfeltételeket, és azt jelzi, 
 }
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Üzembe helyezés a vásárlási terv paramétereinek használatával
+### <a name="deploy-using-purchase-plan-parameters"></a>Telepítés a beszerzésiterv paramétereivel
 
-A rendszerkép feltételeinek elfogadása után üzembe helyezhet egy virtuális gépet az előfizetésben. Ha a lemezképet a `az vm create` parancs használatával szeretné telepíteni, adja meg a vásárlási terv paramétereit a lemezképhez tartozó URN mellett. Ha például egy virtuális gépet szeretne üzembe helyezni a Bitnami-lemezkép által hitelesített RabbitMQ:
+Miután elfogadta a feltételeket a rendszerkép, üzembe helyezheti a virtuális gép az előfizetésben. Ha a parancsot `az vm create` szeretné használni, adja meg a vásárlási terv paramétereit a lemezkép URN-je mellett. Például egy bitnami által hitelesített RabbitMQ-lemezképpel rendelkező virtuális gép üzembe helyezéséhez:
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus
@@ -363,4 +363,4 @@ az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabb
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ha gyorsan szeretné létrehozni a virtuális gépet a rendszerkép információi alapján, tekintse meg a Linux rendszerű virtuális [gépek létrehozása és kezelése az Azure CLI-vel](tutorial-manage-vm.md)című témakört.
+Virtuális gép gyors létrehozásához a lemezképadatok használatával, [lásd: Linux os virtuális gépek létrehozása és kezelése az Azure CLI használatával.](tutorial-manage-vm.md)

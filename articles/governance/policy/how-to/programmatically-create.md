@@ -1,30 +1,30 @@
 ---
 title: Szabályzatok létrehozása programozott módon
-description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
+description: Ez a cikk végigvezeti az Azure CLI, az Azure PowerShell és a REST API használatával az Azure Policy szabályzatok programozással történő létrehozásán és kezelésén.
 ms.date: 01/31/2019
 ms.topic: how-to
 ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264543"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
-Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése. Azure Policy definíciók különböző szabályokat és hatásokat alkalmaznak az erőforrásokra. Kényszerítési gondoskodik arról, hogy az erőforrások maradjon felelnek meg a vállalati szabványoknak és szolgáltatói szerződéseknek.
+Ez a cikk végigvezeti a szabályzatok programozott létrehozásán és kezelésén. Az Azure Policy-definíciók különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokra. A kényszerítés biztosítja, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatásiszint-szerződéseknek.
 
-A megfelelőséggel kapcsolatos további információkért lásd a [megfelelőségi adatok beszerzése](get-compliance-data.md)című témakört.
+A megfelelőségről a [Megfelelőségi adatok beszerzése](get-compliance-data.md)című témakörben talál további információt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy a következő előfeltételek teljesülését:
+Mielőtt elkezdené, győződjön meg arról, hogy az alábbi előfeltételek teljesülnek:
 
 1. Ha még nem tette meg, telepítse az [ARMClient](https://github.com/projectkudu/ARMClient) eszközt. Ez egy olyan segédprogram, amely HTTP-kéréseket küld az Azure Resource Manager-alapú API-khoz.
 
-1. Frissítse Azure PowerShell modulját a legújabb verzióra. Részletes információkért lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) . További információ a legújabb verzióról: [Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
+1. Frissítse az Azure PowerShell-modult a legújabb verzióra. Részletes információt az [Azure PowerShell-modul telepítése](/powershell/azure/install-az-ps) című témakörben talál. A legújabb verzióról az [Azure PowerShell című témakörben](https://github.com/Azure/azure-powershell/releases)talál további információt.
 
-1. Regisztrálja a Azure Policy bepillantást erőforrás-szolgáltatót a Azure PowerShell használatával annak ellenőrzéséhez, hogy az előfizetés működik-e az erőforrás-szolgáltatóval. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálási műveletének futtatása. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+1. Regisztrálja az Azure Policy Insights erőforrás-szolgáltatót az Azure PowerShell használatával annak ellenőrzéséhez, hogy az előfizetés e-kiszolgálóval működik-e. Erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató regiszterműveletének futtatásához. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
@@ -32,15 +32,15 @@ Mielőtt elkezdené, győződjön meg arról, hogy a következő előfeltételek
 
    Az erőforrás-szolgáltatók regisztrálásával és megtekintésével kapcsolatos további információért tekintse meg az [erőforrás-szolgáltatókat és típusaikat](../../../azure-resource-manager/management/resource-providers-and-types.md) ismertető cikket.
 
-1. Ha még nem tette, az Azure CLI telepítése. A legújabb verziót az [Azure CLI telepítése Windows](/cli/azure/install-azure-cli-windows)rendszeren végezheti el.
+1. Ha még nem tette meg, telepítse az Azure CLI-t. A legújabb verziót az [Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)című témakörben szerezheti be.
 
-## <a name="create-and-assign-a-policy-definition"></a>Egy szabályzat-definíció létrehozása és hozzárendelése
+## <a name="create-and-assign-a-policy-definition"></a>Házirend-definíció létrehozása és hozzárendelése
 
-Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabályzatok létrehozása és hozzárendelése az erőforrások felett. A következő lépés, hogy programozott módon hozzon létre és rendelhet hozzá azokhoz. A példa a szabályzat a storage-fiókok, amelyek számára elérhető összes nyilvános hálózat HTTP-kérelmekre, PowerShell és Azure CLI használatával naplózza.
+Az erőforrások jobb láthatósága felé tett első lépés a házirendek létrehozása és hozzárendelése az erőforrásokhoz. A következő lépés a házirend programozott létrehozásának és hozzárendelésének megismerése. A példaházirend a PowerShell, az Azure CLI és a HTTP-kérelmek használatával minden nyilvános hálózat számára nyitott tárfiókokat naplózza.
 
-### <a name="create-and-assign-a-policy-definition-with-powershell"></a>A PowerShell-lel egy szabályzat-definíció létrehozása és hozzárendelése
+### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Házirend-definíció létrehozása és hozzárendelése a PowerShell használatával
 
-1. Az alábbi JSON-kódrészlet használatával hozzon létre egy JSON-fájlt a nevű AuditStorageAccounts.json.
+1. Az alábbi JSON-kódrészlet segítségével hozzon létre egy AuditStorageAccounts.json nevű JSON-fájlt.
 
    ```json
    {
@@ -61,23 +61,23 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
    }
    ```
 
-   A szabályzat-definíciók létrehozásával kapcsolatos további információkért lásd: [Azure Policy definíciós struktúra](../concepts/definition-structure.md).
+   A szabályzatdefiníciók szerzőiről az [Azure Policy Definition Structure című témakörben](../concepts/definition-structure.md)talál további információt.
 
-1. A következő paranccsal létrehozhat egy szabályzatdefiníciót a AuditStorageAccounts.json fájllal.
+1. A következő paranccsal hozzon létre egy házirend-definíciót az AuditStorageAccounts.json fájl használatával.
 
    ```azurepowershell-interactive
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   A parancs létrehoz egy naplózási fiók nevű házirend-definíciót a _nyilvános hálózatokhoz_.
-   További információ a használható egyéb paraméterekről: [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
+   A parancs létrehoz egy házirend-definíciót, _amelynek_neve Audit Storage Accounts Open to Public Networks .
+   A többi használható paraméterről a [New-AzPolicyDefinition című](/powershell/module/az.resources/new-azpolicydefinition)témakörben talál további információt.
 
-   Ha a hely paramétereinek megadása nélkül hívja meg őket, `New-AzPolicyDefinition` alapértelmezett értékekkel menti a házirend-definíciót a munkamenetek környezetének kiválasztott előfizetésében. A definíció mentése más helyre, használja a következő paraméterekkel:
+   Ha helyparaméterek nélkül `New-AzPolicyDefinition` hívják meg, alapértelmezés szerint a házirend-definíciót a munkamenetek kijelölt előfizetésébe menti. Ha a definíciót egy másik helyre szeretné menteni, használja a következő paramétereket:
 
-   - **SubscriptionId** – mentés másik előfizetésbe. _GUID_ -értéket igényel.
-   - **ManagementGroupName** – mentés egy felügyeleti csoportba. _Karakterlánc_ -értéket igényel.
+   - **SubscriptionId** – Mentés másik előfizetésre. GUID _GUID_ értéket igényel.
+   - **ManagementGroupName** - Mentés felügyeleti csoportba. _Karakterlánc-érték_ szükséges.
 
-1. Miután létrehozta a szabályzat-definíció, létrehozhat egy szabályzat-hozzárendelést a következő parancsok futtatásával:
+1. A házirend-definíció létrehozása után a következő parancsok futtatásával hozhat létre házirend-hozzárendelést:
 
    ```azurepowershell-interactive
    $rg = Get-AzResourceGroup -Name 'ContosoRG'
@@ -85,23 +85,23 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
    New-AzPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
    ```
 
-   Cserélje le a _ContosoRG_ nevet a kívánt erőforráscsoport nevére.
+   Cserélje le a _ContosoRG-t_ a tervezett erőforráscsoport nevére.
 
-   A `New-AzPolicyAssignment` **hatókör** -paramétere felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ, amely a `Get-AzResourceGroup` **ResourceId** tulajdonságát adja vissza. Az egyes tárolók **hatókörének** mintája a következő. Cserélje le `{rName}`, `{rgName}`, `{subId}`és `{mgName}` értékét az erőforrás nevére, az erőforráscsoport nevére, az előfizetés-AZONOSÍTÓra és a felügyeleti csoport nevére.
-   a `{rType}` helyére az **erőforrás erőforrástípus,** például egy virtuális gép `Microsoft.Compute/virtualMachines`.
+   A **Scope** `New-AzPolicyAssignment` paraméter felügyeleti csoporttal, előfizetéssel, erőforráscsoporttal vagy egyetlen erőforrással működik. A paraméter egy teljes erőforráselérési utat használ, `Get-AzResourceGroup` amelyet a **ResourceId** tulajdonság visszáruban. Az egyes **tárolók hatókörének** mintája a következő. Cserélje `{rName}` `{rgName}`le `{subId}`a `{mgName}` , , és az erőforrás nevét, erőforráscsoport nevét, az előfizetés-azonosítót és a felügyeleti csoport nevét.
+   `{rType}`lecserélné az erőforrás **erőforrás-típusa,** például `Microsoft.Compute/virtualMachines` egy virtuális gép.
 
-   - Erőforrás-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Erőforráscsoport – `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Előfizetés – `/subscriptions/{subId}/`
-   - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Erőforrás -`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforráscsoport -`/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Előfizetés -`/subscriptions/{subId}/`
+   - Vezetői csoport -`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Az erőforrás-házirendek Azure Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért lásd [az az. Resources](/powershell/module/az.resources/#policies)című témakört.
+Az Erőforrás-házirendek Azure Resource Manager PowerShell modullal történő kezeléséről az [Az.Resources](/powershell/module/az.resources/#policies)című témakörben talál további információt.
 
-### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Hozzon létre és ARMClient használatával szabályzatdefiníció hozzárendelése
+### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Házirend-definíció létrehozása és hozzárendelése az ARMClient használatával
 
-Az alábbi eljárás segítségével létrehozhat egy szabályzatdefiníciót.
+Házirend-definíció létrehozásához kövesse az alábbi eljárást.
 
-1. Másolja a következő JSON-kódrészletben hozhat létre egy JSON-fájlt. A fájl a következő lépésben Felhívjuk.
+1. JSON-fájl létrehozásához másolja a következő JSON-kódrészletet. A következő lépésben meghívja a fájlt.
 
    ```json
    "properties": {
@@ -129,7 +129,7 @@ Az alábbi eljárás segítségével létrehozhat egy szabályzatdefiníciót.
    }
    ```
 
-1. Hozza létre a szabályzat-definíció a következő hívások egyikével:
+1. Hozza létre a házirend-definíciót az alábbi hívások egyikével:
 
    ```console
    # For defining a policy in a subscription
@@ -139,13 +139,13 @@ Az alábbi eljárás segítségével létrehozhat egy szabályzatdefiníciót.
    armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
    ```
 
-   Cserélje le az előző {subscriptionId} azonosítót az előfizetés azonosítójával vagy {managementGroupId} a [felügyeleti csoportjának](../../management-groups/overview.md)azonosítójával.
+   Cserélje le az előző {subscriptionId} azonosítót az előfizetés ére vagy a (managementGroupId} azonosítót) a [felügyeleti csoport azonosítójára.](../../management-groups/overview.md)
 
-   További információ a lekérdezés struktúrájáról: [Azure Policy definíciók – létrehozás vagy frissítés](/rest/api/resources/policydefinitions/createorupdate) és [szabályzat-definíciók – létrehozás vagy frissítés a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   A lekérdezés szerkezetéről további információt az [Azure-szabályzatdefiníciók – létrehozás vagy frissítés](/rest/api/resources/policydefinitions/createorupdate) és [házirend-definíciók – Létrehozás vagy frissítés a felügyeleti csoportban című](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) témakörben talál.
 
-A következő eljárással hozhat létre szabályzat-hozzárendelést, és rendelje hozzá a szabályzatdefiníciót az erőforráscsoport szintjén.
+Az alábbi eljárással hozzon létre egy házirend-hozzárendelést, és rendelje hozzá a házirend-definíciót az erőforráscsoport szintjén.
 
-1. Másolja a következő JSON-kódrészletben hozhat létre egy JSON-szabályzat-hozzárendelés fájlt. Cserélje le például a &lt;&gt; szimbólumokat a saját értékeire.
+1. JSON-házirend-hozzárendelési fájl létrehozásához másolja a következő JSON-kódrészletet. A szimbólumokban &lt; &gt; lévő példaadatok cseréje a saját értékeire.
 
    ```json
    {
@@ -159,21 +159,21 @@ A következő eljárással hozhat létre szabályzat-hozzárendelést, és rende
    }
    ```
 
-1. A következő hívás segítségével a szabályzat-hozzárendelés létrehozásához:
+1. Hozza létre a házirend-hozzárendelést a következő hívással:
 
    ```console
    armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
    ```
 
-   Cserélje le például a &lt;&gt; szimbólumokat a saját értékeire.
+   A szimbólumokban &lt; &gt; lévő példaadatok cseréje a saját értékeire.
 
-   További információ a REST API HTTP-hívásáról: [Azure REST API-erőforrások](/rest/api/resources/).
+   A REST API HTTP-hívásairól az [Azure REST API-erőforrások című témakörben](/rest/api/resources/)talál további információt.
 
-### <a name="create-and-assign-a-policy-definition-with-azure-cli"></a>Hozzon létre és rendelje hozzá egy szabályzatdefiníciót az Azure CLI-vel
+### <a name="create-and-assign-a-policy-definition-with-azure-cli"></a>Házirend-definíció létrehozása és hozzárendelése az Azure CLI-vel
 
-Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
+Házirend-definíció létrehozásához kövesse az alábbi eljárást:
 
-1. Másolja a következő JSON-kódrészletben hozhat létre egy JSON-szabályzat-hozzárendelés fájlt.
+1. JSON-házirend-hozzárendelési fájl létrehozásához másolja a következő JSON-kódrészletet.
 
    ```json
    {
@@ -194,55 +194,55 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    }
    ```
 
-   A szabályzat-definíciók létrehozásával kapcsolatos további információkért lásd: [Azure Policy definíciós struktúra](../concepts/definition-structure.md).
+   A szabályzatdefiníciók szerzőiről az [Azure Policy Definition Structure című témakörben](../concepts/definition-structure.md)talál további információt.
 
-1. Futtassa a következő parancsot egy szabályzat-definíció létrehozása:
+1. Házirend-definíció létrehozásához futtassa a következő parancsot:
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
-   A parancs létrehoz egy naplózási fiók nevű házirend-definíciót a _nyilvános hálózatokhoz_.
-   További információ a használható egyéb paraméterekről: [az Policy definition Create](/cli/azure/policy/definition#az-policy-definition-create).
+   A parancs létrehoz egy házirend-definíciót, _amelynek_neve Audit Storage Accounts Open to Public Networks .
+   A többi használható paraméterről az az [házirend-definíció létrehozása című](/cli/azure/policy/definition#az-policy-definition-create)témakörben talál további információt.
 
-   Ha a hely paramétereinek megadása nélkül hívja meg őket, `az policy definition creation` alapértelmezett értékekkel menti a házirend-definíciót a munkamenetek környezetének kiválasztott előfizetésében. A definíció mentése más helyre, használja a következő paraméterekkel:
+   Ha helyparaméterek nélkül `az policy definition creation` hívják meg, alapértelmezés szerint a házirend-definíciót a munkamenetek kijelölt előfizetésébe menti. Ha a definíciót egy másik helyre szeretné menteni, használja a következő paramétereket:
 
-   - **--előfizetés** – mentse egy másik előfizetésbe. Az előfizetés-AZONOSÍTÓhoz vagy egy _karakterlánc_ -értékhez szükséges _GUID_ -értéket igényel az előfizetés neveként.
-   - **--felügyeleti** csoport – mentés egy felügyeleti csoportba. _Karakterlánc_ -értéket igényel.
+   - **--subscription** - Mentés másik előfizetésre. Az előfizetés azonosítójának _GUID-értékét_ vagy az előfizetés nevéhez _karakterlánc-értéket_ igényel.
+   - **--management-group** - Mentés egy felügyeleti csoportba. _Karakterlánc-érték_ szükséges.
 
-1. A következő paranccsal hozzon létre egy szabályzat-hozzárendelést. Cserélje le például a &lt;&gt; szimbólumokat a saját értékeire.
+1. Házirend-hozzárendelés létrehozásához használja a következő parancsot. A szimbólumokban &lt; &gt; lévő példaadatok cseréje a saját értékeire.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   A `az policy assignment create` **hatókör** paramétere a felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`, `{rgName}`, `{subId}`és `{mgName}` értékét az erőforrás nevére, az erőforráscsoport nevére, az előfizetés-AZONOSÍTÓra és a felügyeleti csoport nevére. a `{rType}` helyére az **erőforrás erőforrástípus,** például egy virtuális gép `Microsoft.Compute/virtualMachines`.
+   A **--scope** `az policy assignment create` paraméter felügyeleti csoporttal, előfizetéssel, erőforráscsoporttal vagy egyetlen erőforrással működik. A paraméter teljes erőforráselérési utat használ. A **minta --hatókör** minden tároló a következő. Cserélje `{rName}` `{rgName}`le `{subId}`a `{mgName}` , , és az erőforrás nevét, erőforráscsoport nevét, az előfizetés-azonosítót és a felügyeleti csoport nevét. `{rType}`lecserélné az erőforrás **erőforrás-típusa,** például `Microsoft.Compute/virtualMachines` egy virtuális gép.
 
-   - Erőforrás-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Erőforráscsoport – `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Előfizetés – `/subscriptions/{subID}`
-   - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Erőforrás -`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforráscsoport -`/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Előfizetés -`/subscriptions/{subID}`
+   - Vezetői csoport -`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-A Azure Policy definíciós AZONOSÍTÓját a PowerShell használatával szerezheti be a következő paranccsal:
+Az Azure Policy Definition ID a PowerShell használatával a következő paranccsal szerezheti be:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
 ```
 
-A szabályzatdefiníció azonosítója számára az Ön által létrehozott szabályzat-definíció az alábbi példa kell hasonlítania:
+A létrehozott házirend-definíció házirend-definícióazonosítójának a következő példához kell hasonlítania:
 
 ```output
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-Az erőforrás-házirendek Azure CLI-vel való kezelésével kapcsolatos további információkért lásd: [Azure CLI erőforrás-házirendek](/cli/azure/policy?view=azure-cli-latest).
+Az Azure CLI használatával az erőforrás-szabályzatok kezeléséről az [Azure CLI erőforrás-szabályzatai](/cli/azure/policy?view=azure-cli-latest)című témakörben talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a parancsok és lekérdezések ebben a cikkben további információt a következő cikkeket.
+A cikkben található parancsokkal és lekérdezésekkel kapcsolatos további információkért tekintse át az alábbi cikkeket.
 
 - [Azure REST API-erőforrások](/rest/api/resources/)
-- [Azure PowerShell modulok](/powershell/module/az.resources/#policies)
-- [Azure CLI-házirend parancsai](/cli/azure/policy?view=azure-cli-latest)
-- [Azure Policy az erőforrás-szolgáltató REST API referenciája](/rest/api/policy-insights)
-- [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../../management-groups/overview.md).
+- [Azure PowerShell-modulok](/powershell/module/az.resources/#policies)
+- [Azure CLI-házirendparancsok](/cli/azure/policy?view=azure-cli-latest)
+- [Az Azure Policy Insights erőforrás-szolgáltató REST API-hivatkozása](/rest/api/policy-insights)
+- [Az Azure felügyeleti csoportokkal rendszerezheti erőforrásait.](../../management-groups/overview.md)

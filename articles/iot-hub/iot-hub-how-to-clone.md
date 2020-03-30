@@ -1,6 +1,6 @@
 ---
-title: Azure IoT hub klónozása
-description: Azure IoT hub klónozása
+title: Azure IoT-központ klónozása
+description: Azure IoT-központ klónozása
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,122 +8,122 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75429151"
 ---
-# <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
+# <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT-központ klónozása egy másik régióba
 
-Ez a cikk a IoT Hub klónozásának módjait mutatja be, és a Kezdés előtt válaszol a szükséges kérdésekre. Többek között az IoT hub klónozására van szükség:
+Ez a cikk az IoT Hub klónozásának módjait ismerteti, és néhány kérdést tartalmaz, amelyeket meg kell válaszolnia a kezdés előtt. Az ioT-elosztók klónozásának több oka is lehet:
  
-* Áthelyezi a vállalatot az egyik régióból a másikba, például Európából Észak-Amerika (vagy fordítva), és azt szeretné, hogy az erőforrások és az adatok földrajzilag közel legyenek az új helyhez, ezért át kell helyeznie a hubot.
+* A vállalatot egyik régióból a másikba helyezi át, például Európából Észak-Amerikába (vagy fordítva), és azt szeretné, hogy erőforrásai és adatai földrajzilag közel legyenek az új helyhez, ezért át kell helyeznie a központot.
 
-* Egy központot állít be fejlesztési és éles környezetben.
+* Egy fejlesztői és éles környezethez hoz létre egy központot.
 
-* A több-hub magas rendelkezésre állásának egyéni megvalósítását szeretné elvégezni. További információkért tekintse meg a [IoT hub magas rendelkezésre állású és vész-helyreállítási szakaszát](iot-hub-ha-dr.md#achieve-cross-region-ha).
+* A több hubos magas rendelkezésre állás egyéni implementációját szeretné végezni. További információkért tekintse meg a Hogyan érhető el a [régióközi HA szakasz az IoT Hub magas rendelkezésre állású és vész-helyreállítási.](iot-hub-ha-dr.md#achieve-cross-region-ha)
 
-* Meg szeretné emelni a hubhoz konfigurált [partíciók](iot-hub-scaling.md#partitions) számát. Ez a hub első létrehozásakor van beállítva, és nem módosítható. A cikkben található információk segítségével klónozott a hubot, és a klón létrehozásakor növelheti a partíciók számát.
+* Növelni szeretné a hubhoz konfigurált [partíciók](iot-hub-scaling.md#partitions) számát. Ez akkor van beállítva, amikor először hozza létre a hubot, és nem módosítható. A cikkben szereplő információk segítségével klónozhatja a hubot, és a klón létrehozásakor növelheti a partíciók számát.
 
-A hub klónozásához rendszergazdai hozzáféréssel rendelkező előfizetésre van szükség az eredeti hubhoz. Az új hubot egy új erőforráscsoport és régióba helyezheti, ugyanabban az előfizetésben, mint az eredeti hubot, vagy akár egy új előfizetésben is. Csak nem használhatja ugyanazt a nevet, mert a hub nevének globálisan egyedinek kell lennie.
+A hub klónozásához rendszergazdai hozzáféréssel rendelkező előfizetésre van szükség. Az új hubot egy új erőforráscsoportba és régióba helyezheti, ugyanabban az előfizetésben, mint az eredeti hub, vagy akár egy új előfizetésben. Csak nem használhatja ugyanazt a nevet, mert a hub nevének globálisan egyedinek kell lennie.
 
 > [!NOTE]
-> Jelenleg nincs lehetőség az IoT hub automatikus klónozására. Ez elsősorban egy manuális folyamat, ezért meglehetősen hibákra hajlamos. A hub klónozásának összetettsége közvetlenül a központ összetettségével arányos. Például az IoT hub és az üzenet-útválasztás nélküli klónozás meglehetősen egyszerű. Ha csak egy összetettséggel adja hozzá az üzenet-útválasztást, akkor a hub klónozása legalább egy nagyságrenddel bonyolultabb lesz. Ha az útválasztási végpontokhoz használt erőforrásokat is át szeretné helyezni, akkor a magniture még összetettebb. 
+> Jelenleg nincs elérhető funkció az IoT hub automatikus klónozására. Ez elsősorban egy manuális folyamat, és így meglehetősen hibahajlamos. A hub klónozásának összetettsége közvetlenül arányos a hub összetettségével. Például egy IT hub üzenet-útválasztás nélküli klónozása meglehetősen egyszerű. Ha az üzenettovábbítást csak egy összetettségként adja hozzá, a hub klónozása legalább egy nagyságrenddel bonyolultabbá válik. Ha a végpontok útválasztásához használt erőforrásokat is áthelyezi, az egy másik magniture-sorrend, amely bonyolultabb. 
 
 ## <a name="things-to-consider"></a>Megfontolandó dolgok
 
-Az IoT hub klónozása előtt több dolgot is figyelembe kell venni.
+Az IoT-központ klónozása előtt több dolgot is figyelembe kell venni.
 
-* Győződjön meg arról, hogy az eredeti helyen elérhető összes funkció az új helyen is elérhető. Egyes szolgáltatások előzetes verzióban érhetők el, és nem minden szolgáltatás érhető el mindenhol.
+* Győződjön meg arról, hogy az eredeti helyen elérhető összes funkció elérhető az új helyen is. Egyes szolgáltatások előzetes verzióban érhetők el, és nem minden funkció érhető el mindenhol.
 
-* Ne távolítsa el az eredeti erőforrásokat a klónozott verzió létrehozása és ellenőrzése előtt. Ha eltávolít egy központot, az örökre megszűnik, és nem lehet helyreállítani a beállításokat vagy adatokat annak ellenőrzéséhez, hogy a központ megfelelően van-e replikálva.
+* A klónozott verzió létrehozása és ellenőrzése előtt ne távolítsa el az eredeti erőforrásokat. Miután eltávolított egy hubot, az örökre eltűnt, és nincs mód a beállítások vagy adatok helyreállítására, hogy ellenőrizze a hub megfelelő replikálását.
 
-* Számos erőforráshoz globálisan egyedi nevek szükségesek, ezért különböző neveket kell használnia a klónozott verziókhoz. Más nevet is kell használnia ahhoz az erőforrás-csoporthoz, amelyhez a klónozott hub tartozik. 
+* Számos erőforrás globálisan egyedi neveket igényel, ezért a klónozott verziókhoz különböző neveket kell használnia. Azt is meg kell használni egy másik nevet az erőforráscsoport, amelyhez a klónozott hub tartozik. 
 
-* Az eredeti IoT hub-adatközpont nem települ át. Ide tartozik a telemetria üzenetek, a felhőből az eszközre irányuló (C2D) parancsok, valamint a feladattal kapcsolatos információk, például az ütemtervek és a előzmények. A metrikák és a naplózási eredmények szintén nem települnek át. 
+* Az eredeti IoT-központ adatait nem telepíti át. Ez magában foglalja a telemetriai üzenetek, felhőből eszközre (C2D) parancsokat, és a feladattal kapcsolatos információkat, például az ütemezések és az előzmények. A metrikák és a naplózási eredmények szintén nem kerülnek áttelepítésre. 
 
-* Az Azure Storage-ba továbbított adatok vagy üzenetek esetében az eredeti Storage-fiókban hagyhatja el az adatok átvitelét, átviheti azokat az új régióban lévő új Storage-fiókba, vagy meghagyhatja a régi adatok helyét, és új Storage-fiókot hozhat létre az új adatokhoz. További információ a blob Storage-beli adatok áthelyezéséről: Ismerkedés [a AzCopy](../storage/common/storage-use-azcopy-v10.md).
+* Az Azure Storage-ba átirányított adatok vagy üzenetek esetében az adatokat az eredeti tárfiókban hagyhatja, átviheti az adatokat egy új tárolófiókba az új régióban, vagy a régi adatokat a helyén hagyhatja, és új tárfiókot hozhat létre az új adatok új helyén. Az adatok Blob storage-ban való áthelyezéséről az [AzCopy – Első lépések](../storage/common/storage-use-azcopy-v10.md)című témakörben talál további információt.
 
-* Event Hubs és Service Bus témakörök és várólisták esetében nem lehet áttelepíteni az adatátvitelt. Ez az adott időponthoz tartozó, az üzenetek feldolgozása után nem tárolt adategység.
+* Az Event Hubs és a Service Bus témakörök és várólisták adatai nem telepíthetők át. Ez az időponthoz és az üzenetek feldolgozása után nem tárolható.
 
-* Az áttelepítéshez ütemeznie kell az állásidőt. Az eszközök az új hubhoz való klónozása időt vesz igénybe. Ha az importálási/exportálási módszert használja, a teljesítményteszt tesztelése azt mutatta, hogy az 500 000-es eszközök áthelyezését és négy órát vesz igénybe egy millió eszköz áthelyezéséhez. 
+* Az áttelepítés leállását ütemezze. Az eszközök klónozása az új elosztóhoz időbe telik. Ha az Importálás/exportálás módszert használja, a benchmark tesztelés feltárta, hogy körülbelül két órát vehet igénybe 500 000 eszköz áthelyezése, és négy óra egy millió eszköz áthelyezése. 
 
-* Az eszközöket az új hubhoz másolhatja az eszközök leállítása vagy módosítása nélkül. 
+* Az eszközöket az új hubra másolhatja az eszközök leállítása vagy módosítása nélkül. 
 
-    * Ha az eszközök eredetileg a DPS használatával lettek kiépítve, akkor az újbóli kiépítés után az egyes eszközökön tárolt kapcsolatok adatai frissülnek. 
+    * Ha az eszközöket eredetileg A DPS használatával kiépítésre használták ki, az újraépítésük frissíti az egyes eszközökben tárolt kapcsolati adatokat. 
     
-    * Ellenkező esetben az importálási/exportálási módszert kell használnia az eszközök áthelyezéséhez, majd az eszközöket úgy kell módosítani, hogy az új hubot használják. Beállíthatja például, hogy az eszköz a IoT Hub állomásnév felhasználására a kívánt Twin-tulajdonságok közül. Az eszköz elvégzi a IoT Hub az állomásnév megkeresését, az eszköz leválasztását a régi központból, és újra csatlakoztatja az újat.
+    * Ellenkező esetben az importálási/exportálási módszert kell használnia az eszközök áthelyezéséhez, majd az eszközöket módosítani kell az új hub használatához. Beállíthatja például, hogy az eszköz felhasználja az IoT Hub állomásnevét az iker kívánt tulajdonságokból. Az eszköz veszi az IoT Hub állomás nevét, válassza le az eszközt a régi hub, és csatlakoztassa újra az újat.
     
-* Frissítenie kell a használt tanúsítványokat, hogy azok az új erőforrásokkal is használhatók legyenek. Azt is megteheti, hogy valahol egy DNS-táblában definiálta a hubot – ezt a DNS-információt frissítenie kell.
+* Frissítenie kell a használt tanúsítványokat, hogy azokat az új erőforrásokkal használhassa. Valószínűleg valahol egy DNS-táblában van definiálva a hub , frissítenie kell a DNS-adatokat.
 
 ## <a name="methodology"></a>Módszertan
 
-Ez az általános módszer, amelyet az IoT hub egyik régióból a másikba való áthelyezéséhez ajánlunk. Az üzenet-útválasztás esetében ez azt feltételezi, hogy az erőforrások nem kerülnek át az új régióba. További információ: az üzenet- [Útválasztás szakasza](#how-to-handle-message-routing).
+Ez az általános módszer azt javasoljuk, hogy egy IoT hub áthelyezése az egyik régióból a másikba. Az üzenet-útválasztás esetén ez azt feltételezi, hogy az erőforrások nem kerülnek át az új régióba. További információt az [Üzenetútválasztás című szakaszban](#how-to-handle-message-routing)talál.
 
-   1. Exportálja a hubot és a hozzá tartozó beállításokat egy Resource Manager-sablonba. 
+   1. Exportálja a központot és annak beállításait egy Erőforrás-kezelő sablonba. 
    
-   1. Végezze el a szükséges módosításokat a sablonon, például frissítse a név összes előfordulását és a klónozott központ helyét. Az üzenet-útválasztási végpontokhoz használt sablonban lévő összes erőforrás esetében frissítse az adott erőforrás sablonjának kulcsát.
+   1. Hajtsa végre a sablon szükséges módosításait, például frissítse a név és a klónozott hub helyének összes előfordulását. Az üzenet-útválasztási végpontokhoz használt sablon ban lévő erőforrások esetében frissítse az erőforrás sablonjában lévő kulcsot.
    
-   1. Importálja a sablont egy új erőforráscsoporthoz az új helyen. Ez létrehozza a klónt.
+   1. Importálja a sablont egy új erőforráscsoportba az új helyen. Ez hozza létre a klónt.
 
-   1. Hibakeresés igény szerint. 
+   1. Hibakeresés szükség szerint. 
    
-   1. Adja hozzá a sablonba nem exportált bármit. 
+   1. Adjon hozzá mindent, ami nem lett exportálva a sablonba. 
    
-       A fogyasztói csoportok például nem exportálhatók a sablonba. Manuálisan kell hozzáadnia a fogyasztói csoportokat a sablonhoz, vagy a [Azure Portalt](https://portal.azure.com) a hub létrehozása után kell használnia. Egy felhasználói csoport egy sablonhoz való hozzáadására példa van egy [Azure Resource Manager sablon használata IoT hub üzenet-útválasztás konfigurálásához](tutorial-routing-config-message-routing-rm-template.md).
+       A fogyasztói csoportok például nem kerülnek exportálásra a sablonba. A fogyasztói csoportokat manuálisan kell hozzáadnia a sablonhoz, vagy a központ létrehozása után használnia kell az [Azure Portalt.](https://portal.azure.com) Van egy példa egy fogyasztói csoport hozzáadására egy sablonhoz a cikkben [Az Azure Resource Manager sablon használata az IoT Hub üzenetútválasztás konfigurálásához.](tutorial-routing-config-message-routing-rm-template.md)
        
-   1. Másolja az eszközöket az eredeti hubhoz a klónba. Ez az IoT hub-ban [regisztrált eszközök kezelése](#managing-the-devices-registered-to-the-iot-hub)című szakaszban található.
+   1. Másolja az eszközöket az eredeti hubról a klónra. Ezt az [IoT hubra regisztrált eszközök kezelése](#managing-the-devices-registered-to-the-iot-hub)című szakasz ismerteti.
 
-## <a name="how-to-handle-message-routing"></a>Az üzenetek útválasztásának kezelése
+## <a name="how-to-handle-message-routing"></a>Az üzenettovábbítás kezelése
 
-Ha a hub [Egyéni útválasztást](iot-hub-devguide-messages-read-custom.md)használ, a hub sablonjának exportálása magában foglalja az útválasztási konfigurációt, de maguk nem tartalmazzák az erőforrásokat. Ki kell választania, hogy áthelyezi-e az útválasztási erőforrásokat az új helyre, vagy hagyja őket a helyükre, és továbbra is használja őket. 
+Ha a hub [egyéni útválasztást](iot-hub-devguide-messages-read-custom.md)használ, a sablon exportálása a hubhoz tartalmazza az útválasztási konfigurációt, de nem tartalmazza magukat az erőforrásokat. El kell döntenie, hogy az útválasztási erőforrásokat az új helyre helyezi át, vagy a helyén hagyja őket, és továbbra is "ahogy van". 
 
-Tegyük fel például, hogy az USA nyugati régiójában van egy olyan központ, amely az üzeneteket egy Storage-fiókba (az USA nyugati régiójában is) irányítja, és a hubot át szeretné helyezni az USA keleti régiójába. Áthelyezheti a hubot, és továbbra is továbbíthatja az üzeneteket a Storage-fiókba az USA nyugati régiójában, vagy áthelyezheti a hubot, és áthelyezheti a Storage-fiókot is. Előfordulhat, hogy egy kisebb teljesítmény éri el az útválasztási üzeneteket egy másik régióban lévő végponti erőforrásoknak.
+Tegyük fel például, hogy van egy hubja az USA nyugati részén, amely üzeneteket küld egy tárfiókba (az USA nyugati részén is), és át szeretné helyezni a hubot az USA keleti részére. Áthelyezheti a központot, és továbbra is átirányíthatja az üzeneteket az USA nyugati részén lévő tárfiókba, vagy áthelyezheti a központot, és áthelyezheti a tárfiókot is. Előfordulhat, hogy egy másik régióban lévő üzenetek útválasztása és végponterőforrásai egy kis teljesítmény lejön.
 
-Ha nem helyezi át az útválasztási végpontokhoz használt erőforrásokat, áthelyezheti az üzenetsor-útválasztást használó központot is. 
+Az üzenet-útválasztást használó elosztót könnyen áthelyezheti, ha az útválasztási végpontokhoz használt erőforrásokat sem. 
 
-Ha a hub üzenet-útválasztást használ, két lehetőség közül választhat. 
+Ha a hub üzenettovábbítást használ, két lehetősége van. 
 
 1. Helyezze át az útválasztási végpontokhoz használt erőforrásokat az új helyre.
 
-    * Az új erőforrásokat manuálisan kell létrehoznia a [Azure Portal](https://portal.azure.com) vagy Resource Manager-sablonok használatával. 
+    * Az új erőforrásokat saját maga kell létrehoznia manuálisan az [Azure Portalon](https://portal.azure.com) vagy az Erőforrás-kezelő sablonok használatával. 
 
-    * Az összes erőforrást az új helyen való létrehozásakor kell átnevezni, mivel azok globálisan egyedi névvel rendelkeznek. 
+    * Amikor az új helyen létrehozza őket, át kell neveznie az összes erőforrást, mivel azok globálisan egyedi nevekkel rendelkeznek. 
      
-    * Az új központ létrehozása előtt frissítenie kell az új hub sablonjának erőforrás-nevét és az erőforrás kulcsait. Az erőforrásoknak jelen kell lennie az új központ létrehozásakor.
+    * Az új központ létrehozása előtt frissítenie kell az erőforrásneveket és az erőforráskulcsokat az új hub sablonjában. Az erőforrásoknak jelen kell lenniük az új hub létrehozásakor.
 
-1. Ne helyezze át az útválasztási végpontokhoz használt erőforrásokat. Használja őket "helyben".
+1. Ne helyezze át az útválasztási végpontokhoz használt erőforrásokat. Használja őket "a helyén".
 
-   * A sablon szerkesztésének lépésében le kell kérnie az egyes útválasztási erőforrások kulcsait, és az új központ létrehozása előtt el kell helyeznie azokat a sablonban. 
+   * Abban a lépésben, ahol szerkeszti a sablont, az új központ létrehozása előtt be kell olvasnia az egyes útválasztási erőforrások kulcsait, és el kell helyeznie őket a sablonba. 
 
-   * A hub továbbra is az eredeti útválasztási erőforrásokra hivatkozik, és az üzeneteket konfiguráltként irányítja.
+   * A hub továbbra is hivatkozik az eredeti útválasztási erőforrásokra, és a konfigurált módon irányítja az üzeneteket.
 
-   * Egy kis teljesítményű találat lesz, mivel a hub és az útválasztási végpont erőforrásai nem ugyanazon a helyen találhatók.
+   * Lesz egy kis teljesítmény lecsapódás, mert a hub és az útválasztási végpont erőforrásai nem ugyanazon a helyen.
 
-## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Felkészülés a központ áttelepíteni egy másik régióba
+## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Felkészülés a hub másik régióba való áttelepítésére
 
-Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
+Ez a szakasz a hub áttelepítésével kapcsolatos konkrét utasításokat tartalmaz.
 
-### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Keresse meg az eredeti hubot, és exportálja egy erőforrás-sablonba.
+### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Keresse meg az eredeti központot, és exportálja egy erőforrássablonba.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-1. Lépjen az **erőforráscsoportok** elemre, és válassza ki azt az erőforráscsoportot, amely az áthelyezni kívánt hubot tartalmazza. Az **erőforrásokra** is rákereshet, és megkeresheti a hubot. Válassza ki a hubot.
+1. Nyissa meg az **Erőforráscsoportok lehetőséget,** és jelölje ki az áthelyezni kívánt központot tartalmazó erőforráscsoportot. Az **Erőforrások** és a hub így is megkeresheti. Válassza ki a hubot.
 
-1. Válassza a **sablon exportálása** lehetőséget a központ tulajdonságainak és beállításainak listájából. 
+1. Válassza a **sablon exportálása** elemet a hub tulajdonságainak és beállításainak listájából. 
 
-   ![Képernyőfelvétel: a IoT Hub sablonjának exportálására szolgáló parancs.](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
+   ![Képernyőkép az IoT Hub sablonjának exportálására vonatkozó parancsról.](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
 
-1. A sablon letöltéséhez kattintson a **Letöltés** gombra. Mentse újra a fájlt, és keresse meg újra. 
+1. A sablon letöltéséhez válassza a **Letöltés** lehetőséget. Mentse a fájlt olyan helyre, ahol újra megtalálhatja. 
 
-   ![Képernyőfelvétel: a IoT Hub sablonjának letöltésére szolgáló parancs.](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
+   ![Képernyőkép az IoT Hub sablonjának letöltésére vonatkozó parancsról.](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
 
 ### <a name="view-the-template"></a>A sablon megtekintése 
 
-1. Nyissa meg a letöltések mappát (vagy a sablon exportálásakor használt mappát), és keresse meg a zip-fájlt. Nyissa meg a zip-fájlt, és keresse meg a `template.json`nevű fájlt. Jelölje ki, majd válassza a CTRL + C billentyűkombinációt a sablon másolásához. Lépjen egy másik mappába, amely nem szerepel a zip-fájlban, és illessze be a fájlt (CTRL + V). Most már szerkesztheti is.
+1. Nyissa meg a Letöltések mappát (vagy azt a mappát, amelyet a sablon exportálásakor használt), és keresse meg a zip fájlt. Nyissa meg a zip fájlt, és keresse meg a nevű `template.json`fájlt. Jelölje ki, majd a Sablon másolásához válassza a Ctrl+C billentyűkombinációt. Lépjen egy másik mappába, amely nem a zip fájlban van, és illessze be a fájlt (Ctrl+V). Most már szerkesztheti.
  
-    Az alábbi példa egy általános, útválasztási konfiguráció nélküli hubhoz mutat. Ez egy, a **ContosoTestHub29358** nevű S1 szintű hub (1 egység) a **westus**régióban. Itt látható az exportált sablon.
+    A következő példa egy általános hub nélkül útválasztási konfiguráció. Ez egy S1 rétegű hub (1 egységgel) nevű **ContosoTestHub29358** régióban **westus.** Itt van az exportált sablon.
 
     ``` json
     {
@@ -233,11 +233,11 @@ Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
 
 ### <a name="edit-the-template"></a>A sablon szerkesztése 
 
-Néhány módosítást el kell végeznie ahhoz, hogy a sablon használatával létrehozza az új hubot az új régióban. A [vs Code](https://code.visualstudio.com) vagy egy szövegszerkesztő használatával szerkessze a sablont.
+Néhány módosítást kell végrehajtania, mielőtt a sablonnal létrehozhatná az új központot az új régióban. A sablon szerkesztéséhez használja a [VS Code-ot](https://code.visualstudio.com) vagy a szövegszerkesztőt.
 
-#### <a name="edit-the-hub-name-and-location"></a>A hub nevének és helyének szerkesztése
+#### <a name="edit-the-hub-name-and-location"></a>A központ nevének és helyének szerkesztése
 
-1. Távolítsa el a paraméterek szakaszt felül – sokkal egyszerűbb, hogy csak a hub nevét használja, mert nem fogunk több paraméterrel rendelkezni. 
+1. Távolítsa el a paraméterek szakasz tetején - ez sokkal egyszerűbb, hogy csak használja a hub nevét, mert nem lesz több paraméter. 
 
     ``` json
         "parameters": {
@@ -248,9 +248,9 @@ Néhány módosítást el kell végeznie ahhoz, hogy a sablon használatával l�
         },
     ```
 
-1. Módosítsa úgy a nevet, hogy a tényleges (új) nevet használja ahelyett, hogy egy paraméterből kellene beolvasnia (amelyet az előző lépésben eltávolított). 
+1. Módosítsa a nevet úgy, hogy a tényleges (új) nevet használja ahelyett, hogy lehívná azt egy paraméterből (amelyet az előző lépésben távolított el). 
 
-    Az új hub esetében az új név létrehozásához használja az eredeti hub nevét és a karakterlánc- *klónozást* . Először a hub nevét és helyét kell megtisztítani.
+    Az új hub, használja az eredeti hub nevét, valamint a string *clone* az új nevet. Először tisztítsa meg a hub nevét és helyét.
     
     Régi verzió:
 
@@ -266,9 +266,9 @@ Néhány módosítást el kell végeznie ahhoz, hogy a sablon használatával l�
     "location": "eastus",
     ```
 
-    Ezután megtudhatja, hogy az **elérési út** értékei tartalmazzák a régi hub nevét. Módosítsa őket úgy, hogy az újat használják. Ezek a **eventHubEndpoints** alatti elérésiút-értékek az **Events** és a **OperationsMonitoringEvents**.
+    Ezután azt fogja találni, hogy az **elérési út** értékei tartalmazzák a régi hub nevet. Változtassa meg őket, hogy az újat használják. Ezek az **eventHubEndpoints** nevű **események** és **OperationsMonitoringEvents**elérési útértékei.
 
-    Ha elkészült, az Event hub-végpontok szakasznak így kell kinéznie:
+    Ha elkészült, az eseményközpont végpontjai szakasz a következőképpen kell kinéznie:
 
     ``` json
     "eventHubEndpoints": {
@@ -296,11 +296,11 @@ Néhány módosítást el kell végeznie ahhoz, hogy a sablon használatával l�
 
 #### <a name="update-the-keys-for-the-routing-resources-that-are-not-being-moved"></a>A nem áthelyezett útválasztási erőforrások kulcsainak frissítése
 
-Ha olyan hubhoz exportálja a Resource Manager-sablont, amely rendelkezik konfigurált útválasztással, látni fogja, hogy az erőforrásokhoz tartozó kulcsok nincsenek megadva az exportált sablonban – az elhelyezést csillagokkal jelöli a rendszer. Az új központ sablonjának importálása és a hub létrehozása **előtt** ki kell töltenie őket a portálon, majd be kell olvasnia a kulcsokat. 
+Ha az útválasztással konfigurált elosztó erőforrás-kezelő sablonját exportálja, látni fogja, hogy az erőforrások kulcsai nem szerepelnek az exportált sablonban – elhelyezésüket csillagjelöli. Az új hub sablonjának importálása és a hub létrehozása **előtt** ki kell töltenie ezeket az erőforrásokat a portálon, és be kell töltenie azokat. 
 
-1. Kérje le az útválasztási erőforrásokhoz szükséges kulcsokat, és helyezze azokat a sablonba. A kulcs (oka) t a [Azure Portal](https://portal.azure.com)lévő erőforrásból kérheti le. 
+1. Az útválasztási erőforrásokhoz szükséges kulcsok beolvasása és a sablonba való betöltésük. A kulcs(oka)t az Azure [Portalon](https://portal.azure.com)lekérheti az erőforrásból. 
 
-   Ha például egy Storage-tárolóba irányítja az üzeneteket, keresse meg a Storage-fiókot a portálon. A beállítások szakaszban válassza a **hozzáférési kulcsok**elemet, majd másolja ki az egyik kulcsot. A kulcs a sablon első exportálásakor a következőhöz hasonlít:
+   Ha például üzeneteket küld egy tárolóba, keresse meg a tárfiókot a portálon. A Beállítások csoportban válassza az **Access billentyűk**lehetőséget, majd másolja az egyik billentyűt. Így néz ki a kulcs a sablon első exportálásakor:
 
    ```json
    "connectionString": "DefaultEndpointsProtocol=https;
@@ -308,9 +308,9 @@ Ha olyan hubhoz exportálja a Resource Manager-sablont, amely rendelkezik konfig
    "containerName": "fabrikamresults",
    ```
 
-1. A Storage-fiókhoz tartozó fiók kulcsának lekérése után helyezze azt a `AccountKey=****` záradékban található sablonba a csillagok helyén. 
+1. Miután lekérte a tárfiók fiókkulcsát, helyezze azt `AccountKey=****` a sablonba a záradékban a csillagok helyén. 
 
-1. A Service Bus-várólisták esetében szerezze be a SharedAccessKeyName megfelelő megosztott elérési kulcsot. A következő a kulcs és a `SharedAccessKeyName` a JSON-ban:
+1. A szolgáltatásbusz-várólisták esetén a SharedAccessKeyName-nek megfelelő megosztott hozzáférési kulcsot kapjuk meg. Itt van a `SharedAccessKeyName` kulcs és a json:
 
    ```json
    "connectionString": "Endpoint=sb://fabrikamsbnamespace1234.servicebus.windows.net:5671/;
@@ -319,123 +319,123 @@ Ha olyan hubhoz exportálja a Resource Manager-sablont, amely rendelkezik konfig
    EntityPath=fabrikamsbqueue1234",
    ```
 
-1. Ugyanez vonatkozik a Service Bus témakörökre és az Event hub-kapcsolatokra is.
+1. Ugyanez vonatkozik a Service Bus-témakörök és az Event Hub-kapcsolatok.
 
-#### <a name="create-the-new-routing-resources-in-the-new-location"></a>Új útválasztási erőforrások létrehozása az új helyen
+#### <a name="create-the-new-routing-resources-in-the-new-location"></a>Az új útválasztási erőforrások létrehozása az új helyen
 
-Ez a szakasz csak akkor érvényes, ha a hub által az útválasztási végpontok számára használt erőforrásokat helyezi át.
+Ez a szakasz csak akkor érvényes, ha a hub által az útválasztási végpontokhoz használt erőforrásokat helyezi át.
 
-Ha át szeretné helyezni az útválasztási erőforrásokat, manuálisan kell beállítania az erőforrásokat az új helyen. Az útválasztási erőforrásokat a [Azure Portal](https://portal.azure.com)használatával, vagy a Resource Manager-sablon exportálásával is létrehozhatja az üzenet-útválasztás által használt összes erőforráshoz, és szerkesztheti őket, és importálhatja őket. Az erőforrások beállítása után importálhatja a hub sablonját (amely magában foglalja az útválasztási konfigurációt is).
+Ha át szeretné helyezni a műveletterv-erőforrásokat, manuálisan kell beállítania az erőforrásokat az új helyen. Létrehozhatja az útválasztási erőforrásokat az [Azure Portalon](https://portal.azure.com)keresztül, vagy exportálhatja az Erőforrás-kezelő sablont az üzenet-útválasztás által használt erőforrásokhoz, szerkesztheti és importálhatja azokat. Az erőforrások beállítása után importálhatja a hub sablonját (amely tartalmazza az útválasztási konfigurációt).
 
-1. Hozza létre az Útválasztás által használt összes erőforrást. Ezt manuálisan is megteheti a [Azure Portal](https://portal.azure.com)használatával, vagy a Resource Manager-sablonok segítségével hozhatja létre az erőforrásokat. Ha sablonokat szeretne használni, kövesse az alábbi lépéseket:
+1. Hozza létre a műveletterv által használt erőforrásokat. Ezt manuálisan is megteheti az [Azure Portalhasználatával,](https://portal.azure.com)vagy létrehozhatja az erőforrásokat az Erőforrás-kezelő sablonok használatával. Ha sablonokat szeretne használni, a következő lépéseket kell végrehajtania:
 
-    1. Az Útválasztás által használt minden erőforráshoz exportálja azt egy Resource Manager-sablonba.
+    1. A műveletterv által használt minden egyes erőforrásesetében exportálja azt egy Erőforrás-kezelő sablonba.
     
     1. Frissítse az erőforrás nevét és helyét. 
 
-    1. Frissítse az erőforrások közötti kereszthivatkozásokat. Ha például létrehoz egy sablont egy új Storage-fiókhoz, akkor frissítenie kell a Storage-fiók nevét a sablonban, és minden más sablont, amely hivatkozik rá. A legtöbb esetben a hub sablonjának útválasztási szakasza az egyetlen másik sablon, amely az erőforrásra hivatkozik. 
+    1. Frissítse az erőforrások közötti kereszthivatkozásokat. Ha például létrehoz egy sablont egy új tárfiókhoz, frissítenie kell a tárfiók nevét a sablonban és minden más sablont, amely hivatkozik rá. A legtöbb esetben a hub sablonjában lévő útválasztási szakasz az egyetlen olyan sablon, amely hivatkozik az erőforrásra. 
 
-    1. Importálja az egyes erőforrásokat telepítő sablonokat.
+    1. Importálja az egyes sablonokat, amelyek az egyes erőforrásokat telepítik.
 
-    Miután beállította és futtatta az Útválasztás által használt erőforrásokat, folytathatja a szolgáltatást.
+    Miután a műveletterv által használt erőforrások bevannak állítva és futnak, folytathatja.
 
-1. Az IoT hub sablonjában módosítsa az egyes útválasztási erőforrások nevét az új névre, és szükség esetén frissítse a helyet. 
+1. Az IoT hub sablonjában módosítsa az egyes útválasztási erőforrások nevét az új nevére, és szükség esetén frissítse a helyet. 
 
-Most már rendelkezik egy olyan sablonnal, amely egy olyan új hubot hoz létre, amely majdnem pontosan a régi hubhoz hasonlít, attól függően, hogy hogyan kezeli az útválasztást.
+Most már rendelkezik egy sablont, amely létrehoz egy új hub, amely úgy néz ki, majdnem pontosan úgy néz ki, mint a régi hub, attól függően, hogy hogyan úgy döntött, hogy kezelje az útválasztást.
 
-## <a name="move----create-the-new-hub-in-the-new-region-by-loading-the-template"></a>Áthelyezés – a sablon betöltésével hozza létre az új hubot az új régióban.
+## <a name="move----create-the-new-hub-in-the-new-region-by-loading-the-template"></a>Áthelyezés - az új központ létrehozása az új régióban a sablon betöltésével
 
-Hozza létre az új hubot az új helyen a sablon használatával. Ha útválasztási erőforrásokkal rendelkezik, amelyeket át szeretne helyezni, az erőforrásokat az új helyen kell beállítani, és a sablonban szereplő hivatkozások a megfelelő értékre frissülnek. Ha nem helyezi át az útválasztási erőforrásokat, a frissített kulcsokkal rendelkező sablonban kell lenniük.
+Hozza létre az új központot az új helyen a sablon használatával. Ha áthelyezni kívánt útválasztási erőforrásokkal rendelkezik, az erőforrásokat az új helyen kell beállítani, és a sablonban lévő hivatkozásokat az egyezéshez kell frissíteni. Ha nem helyezi át az útválasztási erőforrásokat, azoknak a sablonban kell lenniük a frissített kulcsokkal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget. 
 
-1. A keresőmezőbe írja be a "sablon központi telepítése" kifejezést, és válassza az ENTER billentyűt.
+1. A keresőmezőbe helyezze a "sablon központi telepítését", és válassza az Enter lehetőséget.
 
-1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Kattintson a **Létrehozás** gombra. Ekkor az alábbi képernyő jelenik meg:
+1. Válassza ki **a sablon központi telepítését (üzembe helyezés egyéni sablonokkal)**. Ezzel a sablon központi telepítésének képernyőjére kerül. Kattintson a **Létrehozás** gombra. Ekkor az alábbi képernyő jelenik meg:
 
-   ![A saját sablon létrehozásához szükséges parancsot ábrázoló képernyőkép](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
+   ![Képernyőkép a saját sablon felépítésének parancsával](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
-1. Válassza a **saját sablon létrehozása lehetőséget a szerkesztőben**, amely lehetővé teszi a sablon feltöltését egy fájlból. 
+1. Válassza a Saját sablon létrehozása lehetőséget **a szerkesztőben,** amely lehetővé teszi a sablon fájlból való feltöltését. 
 
-1. Válassza a **fájl betöltése**lehetőséget. 
+1. Válassza **a Fájl betöltése**lehetőséget. 
 
-   ![A sablonfájl feltöltésére szolgáló parancsot megjelenítő képernyőkép](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
+   ![Sablonfájl feltöltésének parancsát bemutató képernyőkép](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. Keresse meg a szerkesztett új sablont, és válassza ki, majd kattintson a **Megnyitás**gombra. A sablon betöltődik a szerkesztési ablakba. Kattintson a **Mentés** gombra. 
+1. Tallózással keresse meg a szerkesztett új sablont, és jelölje ki, majd válassza a **Megnyitás**gombot. Betölti a sablont a szerkesztési ablakban. Kattintson a **Mentés** gombra. 
 
-   ![A sablon betöltését bemutató képernyőkép](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
+   ![Képernyőkép a sablon betöltését ábrázoló képernyőkép](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 
 1. Töltse ki az alábbi mezőket.
 
    **Előfizetés**: válassza ki a használni kívánt előfizetést.
 
-   **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot egy új helyen. Ha már rendelkezik egy új beállítással, kiválaszthatja egy új létrehozása helyett.
+   **Erőforráscsoport**: új erőforráscsoport létrehozása új helyen. Ha már van egy új beállítása, akkor új létrehozása helyett kijelölheti azt.
 
-   **Hely**: Ha kiválasztott egy meglévő erőforráscsoportot, a rendszer kitölti azt, hogy egyezzen az erőforráscsoport helyével. Ha létrehozott egy új erőforráscsoportot, ez lesz a helye.
+   **Hely:** Ha egy meglévő erőforráscsoportot választott ki, akkor ez lesz kitöltve, hogy megfeleljen az erőforráscsoport helyének. Ha új erőforráscsoportot hozott létre, ez lesz a helye.
 
-   **Elfogadom ezt a jelölőnégyzetet**: Ez lényegében azt mondja, hogy Ön vállalja, hogy a létrehozott erőforrás (oka) t kell fizetnie.
+   **Egyetértek jelölőnégyzet**: ez alapvetően azt mondja, hogy ön vállalja, hogy fizetni az erőforrás (ok) te létre.
 
-1. Kattintson a **vásárlás** gombra.
+1. Válassza a **Beszerzés** gombot.
 
-A portál most ellenőrzi a sablont, és üzembe helyezi a klónozott hubot. Ha útválasztási konfigurációs adattal rendelkezik, azt a rendszer az új központban fogja tartalmazni, de az előző helyen található erőforrásokra mutat.
+A portál most érvényesíti a sablont, és telepíti a klónozott hub. Ha rendelkezik útválasztási konfigurációs adatokkal, az az új hubban fog szerepelni, de az erőforrásokra fog mutatni az előző helyen.
 
-## <a name="managing-the-devices-registered-to-the-iot-hub"></a>Az IoT hub-ban regisztrált eszközök kezelése
+## <a name="managing-the-devices-registered-to-the-iot-hub"></a>Az IoT hubra regisztrált eszközök kezelése
 
-Most, hogy már telepítette a klónozást, az összes eszközt át kell másolnia az eredeti hubhoz a klónba. 
+Most, hogy már a klón, és fut, meg kell másolni az összes eszközt az eredeti hub a klón. 
 
-Ezt többféle módon is elvégezheti. Eredetileg a [Device kiépítési szolgáltatás (DPS)](/azure/iot-dps/about-iot-dps)használatával helyezi üzembe az eszközöket, vagy nem. Ha igen, ez nem nehéz. Ha nem, akkor ez nagyon bonyolult lehet. 
+Ennek többmódja is van. Vagy eredetileg [az eszközkiépítési szolgáltatást (DPS)](/azure/iot-dps/about-iot-dps)használta az eszközök kiépítéséhez, vagy nem. Ha igen, ez nem nehéz. Ha nem, ez nagyon bonyolult lehet. 
 
-Ha nem használta a DPS-t az eszközök kiépítéséhez, ugorja át a következő szakaszt, és kezdje az [Importálás/exportálás használatával az eszközök az új hubhoz való áthelyezéséhez](#using-import-export-to-move-the-devices-to-the-new-hub).
+Ha nem a DPS használatával létesített eszközöket, kihagyhatja a következő szakaszt, és az [Importálás/exportálás parancászóval áthelyezheti az eszközöket az új elosztóra.](#using-import-export-to-move-the-devices-to-the-new-hub)
 
-## <a name="using-dps-to-re-provision-the-devices-in-the-new-hub"></a>Az új központban lévő eszközök újbóli kiépítése a DPS használatával
+## <a name="using-dps-to-re-provision-the-devices-in-the-new-hub"></a>A DPS használata az új hubban lévő eszközök újbóli kiépítéséhez
 
-Ha a DPS használatával szeretné áthelyezni az eszközöket az új helyre, olvassa el az [eszközök újbóli kiépítése](../iot-dps/how-to-reprovision.md)című témakört. Ha elkészült, megtekintheti az eszközöket a [Azure Portalban](https://portal.azure.com) , és ellenőrizheti, hogy azok az új helyen találhatók-e.
+Ha a DPS segítségével szeretné áthelyezni az eszközöket az új helyre, olvassa el az Eszközök újbóli kiépítése című [témakört.](../iot-dps/how-to-reprovision.md) Ha elkészült, megtekintheti az eszközöket az [Azure Portalon,](https://portal.azure.com) és ellenőrizheti, hogy az új helyen vannak-e.
 
-Nyissa meg az új hubot a [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd válassza az **IoT-eszközök**lehetőséget. Megtekintheti a klónozott hubhoz újra kiépített eszközöket. Megtekintheti a klónozott központ tulajdonságait is. 
+Nyissa meg az új központot az [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd az **IoT-eszközök**lehetőséget. Láthatja az eszközöket, amelyek et újra kiépített a klónozott hub. A klónozott hub tulajdonságait is megtekintheti. 
 
-Ha implementálta az útválasztást, ellenőrizze, hogy az üzenetek megfelelően vannak-e irányítva az erőforrásokhoz.
+Ha már megvalósított a művelettervezést, ellenőrizze, hogy az üzenetek megfelelően vannak-e átirányítva az erőforrásokhoz.
 
 ### <a name="committing-the-changes-after-using-dps"></a>A módosítások véglegesítése a DPS használata után
 
-Ezt a változást a DPS szolgáltatás véglegesítette.
+Ezt a módosítást a DPS szolgáltatás követte el.
 
-### <a name="rolling-back-the-changes-after-using-dps"></a>A változtatások visszaállítása a DPS használata után. 
+### <a name="rolling-back-the-changes-after-using-dps"></a>A dps használata után a módosítások visszaállítása. 
 
-Ha vissza szeretné állítani a módosításokat, az eszközöket az új központból a régire kell állítania.
+Ha vissza szeretné vonni a módosításokat, állítsa ki újra az eszközöket az új hubról a régire.
 
-Ezzel befejezte a központ és az eszközei áttelepítését. A [tisztítás](#clean-up)lehetőségre ugorhat.
+Most már befejezte a hub és az eszközök áttelepítését. Akkor ugorjon a [Clean-up](#clean-up).
 
-## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Az import-export használata az eszközök új hubhoz való áthelyezéséhez
+## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Az eszközök áthelyezése az új hubra az Importálás exportálásával
 
-Az alkalmazás a .NET Core-t célozza meg, így azt Windows vagy Linux rendszeren is futtathatja. Letöltheti a mintát, lekérheti a kapcsolódási karakterláncokat, beállíthatja a futtatni kívánt BITS-jelzőket, és futtathatja azt. Ezt a kód megnyitása nélkül is megteheti.
+Az alkalmazás a .NET Core-t célozza meg, így Windows vagy Linux rendszeren futtatható. Letöltheti a mintát, lekérheti a kapcsolati karakterláncokat, beállíthatja azokat a jelzőket, amelyekbitjeit futtatni szeretné, és futtathatja azt. Meg tudod csinálni anélkül, hogy valaha is megnyitja a kódot.
 
 ### <a name="downloading-the-sample"></a>A minta letöltése
 
-1. Használja az IoT C# mintákat a következő lapról: [Azure IoT-minták C#a ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)alkalmazáshoz. Töltse le a zip-fájlt, és csomagolja ki a számítógépére. 
+1. Használja az IoT C# mintákat ezen az oldalon: [Azure IoT-minták C#](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/). Töltse le a zip fájlt, és csomagolja ki a számítógépre. 
 
-1. A kapcsolódó kód a./iot-hub/Samples/service/ImportExportDevicesSample. Az alkalmazás futtatásához nem kell megtekintenie vagy szerkesztenie a kódot.
+1. A vonatkozó kód ./iot-hub/Samples/service/ImportExportDevicesSample. Az alkalmazás futtatásához nem kell megtekintenie vagy szerkesztenie a kódot.
 
-1. Az alkalmazás futtatásához három kapcsolódási karakterláncot és öt beállítást kell megadni. Ezeket az adatsorokat parancssori argumentumként adja át, vagy használja a környezeti változókat, vagy használja a kettő kombinációját. A paramétereket parancssori argumentumként adjuk át, a kapcsolódási karakterláncokat pedig környezeti változókként. 
+1. Az alkalmazás futtatásához adjon meg három kapcsolati karakterláncot és öt beállítást. Ezeket az adatokat parancssori argumentumként adja át, vagy környezeti változókat használ, vagy a kettő kombinációját használja. A beállításokat parancssori argumentumként, a kapcsolati karakterláncokat pedig környezeti változókként adjuk át. 
 
-   Ennek oka az, hogy a kapcsolódási karakterláncok hosszúak és nem túl nagyok, és nem valószínű, hogy módosítani szeretnék, de előfordulhat, hogy módosítania kell a beállításokat, és többször is futtatnia kell az alkalmazást. Egy környezeti változó értékének módosításához be kell állítani a parancssorablakot és a Visual studiót vagy a VS Code-ot, attól függően, hogy melyik van használatban. 
+   Ennek az az oka, hogy a kapcsolati karakterláncok hosszúak és unainly, és nem valószínű, hogy változik, de érdemes lehet módosítani a beállításokat, és futtassa az alkalmazást többször. Egy környezeti változó értékének módosításához be kell zárnia a parancsablakot és a Visual Studio vagy a VS-kód értékét, attól függően, hogy melyiket használja. 
 
 ### <a name="options"></a>Beállítások
 
-Az alábbi öt lehetőség az alkalmazás futtatásakor adható meg. Ezeket a parancssorba helyezi egy percen belül.
+Az alkalmazás futtatásakor megadott öt beállítás a következőket tartalmazza. Egy perc múlva a parancssorba tesszük.
 
-*   **addDevices** (1. argumentum) – ezt állítsa igaz értékre, ha az Ön számára létrehozott virtuális eszközöket szeretne hozzáadni. Ezek hozzáadódnak a forrás hubhoz. A **numToAdd** (2. argumentum) beállítással megadhatja, hogy hány eszközt szeretne hozzáadni. A központba regisztrálni kívánt eszközök maximális száma 1 000 000. Ennek a lehetőségnek a célja a tesztelés: bizonyos számú eszközt létrehozhat, majd átmásolhatja őket egy másik hubhoz.
+*   **addDevices** (argument 1) -- állítsa ezt igaz, ha azt szeretné, hogy adjunk virtuális eszközök, amelyek az Ön számára létrehozott. Ezek hozzáadódnak a forrásközponthoz. Is, meg **numToAdd** (argumentum 2), hogy adja meg, hogy hány eszközt szeretne hozzáadni. A hubra regisztrálható eszközök maximális száma egymillió. Ennek a beállításnak a célja a tesztelés – létrehozhat egy adott számú eszközt, majd átmásolhatja őket egy másik hubra.
 
-*   **copyDevices** (3. érv) – ezt állítsa igaz értékre az eszközök egyik központból a másikba való másolásához. 
+*   **copyDevices** (argumentum 3) -- állítsa be ezt igaz az eszközök másolásához az egyik hubról a másikra. 
 
-*   **deleteSourceDevices** (4. argumentum) – ezt állítsa igaz értékre a forrásoldali hubhoz regisztrált összes eszköz törléséhez. Azt javasoljuk, hogy várjon, amíg az összes eszközt át nem adta, mielőtt futtatná. Miután törölte az eszközöket, nem kérheti vissza őket.
+*   **deleteSourceDevices** (argument 4 argumentum) -- állítsa ezt igaz értékre a forrásközpontba regisztrált összes eszköz törléséhez. Javasoljuk, hogy várjon, amíg biztos lehet benne, hogy az összes eszköz átvitelre került, mielőtt futtatná ezt. Miután törölte az eszközöket, nem tudja visszakapni őket.
 
-*   **deleteDestDevices** (5. argumentum) – ezt állítsa igaz értékre a célként megadott hubhoz (klón) regisztrált összes eszköz törléséhez. Erre akkor lehet szükség, ha többször szeretné átmásolni az eszközöket. 
+*   **deleteDestDevices** (5. argumentum) -- állítsa ezt igaz értékre a célközponthoz (a klónhoz) regisztrált összes eszköz törléséhez. Ezt akkor érdemes megtennie, ha többször szeretné másolni az eszközöket. 
 
-Az alapszintű parancs a *DotNet futtatása* lesz – ez azt jelzi, hogy a .net létrehozza a helyi csproj fájlt, majd futtatja azt. A Futtatás előtt adja hozzá a parancssori argumentumokat a befejezéshez. 
+Az alapparancs *a dotnet futtatása* lesz - ez azt mondja a .NET-nek, hogy építse fel a helyi csproj fájlt, majd futtassa azt. A parancssori argumentumokat a futtatás előtt hozzáadja a végponthoz. 
 
-A parancssor a következő példához hasonlóan fog kinézni:
+A parancssor a következő példákhoz fog hasonlítani:
 
 ``` console 
     // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
@@ -449,15 +449,15 @@ A parancssor a következő példához hasonlóan fog kinézni:
     dotnet run false 0 true false false 
 ```
 
-### <a name="using-environment-variables-for-the-connection-strings"></a>Környezeti változók használata a kapcsolatok karakterláncai esetében
+### <a name="using-environment-variables-for-the-connection-strings"></a>Környezeti változók használata a kapcsolati karakterláncokhoz
 
-1. A minta futtatásához szüksége lesz a régi és az új IoT-hubok kapcsolódási karakterláncára, valamint egy olyan Storage-fiókra, amelyet az ideiglenes munkafájlok számára használhat. Ezek az értékek a környezeti változókban lesznek tárolva.
+1. A minta futtatásához a régi és az új IoT-központok hoz, valamint egy tárfiókhoz kell használnia az ideiglenes munkafájlokhoz. Ezek értékeit környezeti változókban tároljuk.
 
-1. A kapcsolódási karakterlánc értékeinek beszerzéséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com). 
+1. A kapcsolati karakterlánc-értékek leválasztásához jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
 
-1. Helyezze el a kapcsolatok karakterláncait valahol, például a jegyzettömböt. Ha a következőt másolja, illessze be a kapcsolatok karakterláncait közvetlenül oda, ahol elmennek. Ne adjon szóközt az egyenlőségjel körül, vagy módosítsa a változó nevét. Emellett nincs szükség dupla idézőjelre a kapcsolatok karakterláncok köré. Ha idézőjelek közé helyezi a Storage-fiókhoz tartozó kapcsolatok karakterláncát, az nem fog működni.
+1. Helyezze a kapcsolati karakterláncokat olyan helyre, ahol lekérheti őket, például a NotePad-ot. Ha a következőt másolja, a kapcsolati karakterláncokat közvetlenül oda illesztheti be, ahová mennek. Ne adjon szóközt az egyenlőségjel köré, különben megváltoztatja a változó nevét. A kapcsolati karakterláncok körül nem kell dupla idézőjeleket végezni. Ha idézőjeleket helyez el a tárfiók kapcsolati karakterlánca körül, az nem fog működni.
 
-   Windows esetén a környezeti változók beállítása:
+   A Windows rendszerben a következő képpen állíthatja be a környezeti változókat:
 
    ``` console  
    SET IOTHUB_CONN_STRING=<put connection string to original IoT Hub here>
@@ -465,7 +465,7 @@ A parancssor a következő példához hasonlóan fog kinézni:
    SET STORAGE_ACCT_CONN_STRING=<put connection string to the storage account here>
    ```
  
-   A Linux esetében a környezeti változók meghatározása a következő:
+   Linux esetén így határozhatja meg a környezeti változókat:
 
    ``` console  
    export IOTHUB_CONN_STRING="<put connection string to original IoT Hub here>"
@@ -473,30 +473,30 @@ A parancssor a következő példához hasonlóan fog kinézni:
    export STORAGE_ACCT_CONN_STRING="<put connection string to the storage account here>"
    ```
 
-1. Az IoT hub kapcsolódási karakterláncai esetében lépjen a portál minden központjának helyére. Kereshet a hub **erőforrásai** között. Ha ismeri az erőforráscsoportot, lépjen az **erőforráscsoportok**elemre, válassza ki az erőforráscsoportot, majd válassza ki a hubot az adott erőforráscsoport eszközeinek listájából. 
+1. Az IoT hub kapcsolati karakterláncok, a portál minden egyes hub. Az **Erőforrások** területen kereshet a hubot. Ha ismeri az erőforráscsoportot, nyissa meg az **Erőforráscsoportok**at , válassza ki az erőforráscsoportot, majd válassza ki a központot az adott erőforráscsoport eszközeinek listájából. 
 
-1. A hub beállításai közül válassza a **megosztott elérési szabályzatok** lehetőséget, majd válassza a **iothubowner** lehetőséget, és másolja a kapcsolati karakterláncok egyikét. Tegye ugyanezt a célként megadott hubhoz. Adja hozzá őket a megfelelő SET parancsokhoz.
+1. Válassza **a megosztott hozzáférési szabályzatokat** a hub beállításai között, majd válassza az **iothubowner** lehetőséget, és másolja az egyik kapcsolati karakterláncot. Tegye ugyanezt a célközpontesetében is. Adja hozzá őket a megfelelő SET parancsokhoz.
 
-1. A Storage-fiók kapcsolati karakterláncához keresse meg a Storage-fiókot az **erőforrásokban** vagy az **erőforráscsoport** alatt, és nyissa meg. 
+1. A tárfiók kapcsolati karakterláncához keresse meg a tárfiókot az **Erőforrások** vagy az **Erőforrás csoport** ban, és nyissa meg. 
    
-1. A beállítások szakaszban válassza a **hozzáférési kulcsok** lehetőséget, és másolja a kapcsolati karakterláncok egyikét. A megfelelő SET parancshoz helyezze a szöveges fájlba a kapcsolatok karakterláncát. 
+1. A Beállítások csoportban válassza az **Access billentyűk** lehetőséget, és másolja az egyik kapcsolati karakterláncot. Helyezze a kapcsolati karakterláncot a szövegfájlba a megfelelő SET parancshoz. 
 
-Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező fájlban, és tudja, milyen parancssori argumentumok vannak. Futtassa a mintát.
+Most már a SET parancsokkal rendelkező fájlban vannak a környezeti változók, és tudja, hogy mik a parancssori argumentumai. Futtassuk le a mintát.
 
-### <a name="running-the-sample-application-and-using-command-line-arguments"></a>A minta alkalmazás futtatása és parancssori argumentumok használata
+### <a name="running-the-sample-application-and-using-command-line-arguments"></a>A mintaalkalmazás futtatása és parancssori argumentumok használata
 
-1. Nyisson meg egy parancsablakot. Válassza a Windows lehetőséget, és írja be `command prompt` a parancssorablak beszerzéséhez.
+1. Nyisson meg egy parancsablakot. Válassza a Windows `command prompt` lehetőséget, és írja be a parancssorablak lekérése.
 
-1. Másolja a környezeti változókat beállító parancsokat egy időben, és illessze be őket a parancssorablakba, és válassza az ENTER billentyűt. Ha elkészült, írja be a `SET` parancsot a parancssori ablakban, hogy megtekintse a környezeti változókat és azok értékeit. Miután bemásolta ezeket a parancssori ablakba, nem kell újból átmásolnia, hacsak nem nyit meg egy új parancssori ablakot.
+1. Másolja a vágólapra a környezeti változókat beállító parancsokat egyenként, és illessze be őket a parancssorablakba, és válassza az Enter lehetőséget. Ha végzett, írja `SET` be a parancssori ablakot a környezeti változók és azok értékeinek megtekintéséhez. Miután ezeket a parancssorablakba másolta, nem kell újra másolnia őket, hacsak nem nyit meg egy új parancssorablakot.
 
-1. A parancssori ablakban módosítsa a könyvtárakat, amíg be nem fejeződik a./ImportExportDevicesSample (ahol a ImportExportDevicesSample. csproj fájl létezik). Ezután írja be a következőt, és adja meg a parancssori argumentumokat.
+1. A parancssorablakban módosítsa a könyvtárakat, amíg be nem kell tenni a ./ImportExportDevicesSample fájlba (ahol az ImportExportDevicesSample.csproj fájl létezik). Ezután írja be a következőket, és adja meg a parancssori argumentumokat.
 
     ``` console
     // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
     dotnet run arg1 arg2 arg3 arg4 arg5
     ```
 
-    A DotNet-parancs létrehozza és futtatja az alkalmazást. Mivel az alkalmazás futtatásakor átadja a beállításokat, az alkalmazás minden egyes futtatásakor módosíthatja az értékeket. Előfordulhat például, hogy egyszer szeretné futtatni, és új eszközöket szeretne létrehozni, majd újra futtatja, majd átmásolja az eszközöket egy új hubhoz, és így tovább. Az összes lépést is elvégezheti ugyanabban a futtatásban, de javasoljuk, hogy ne töröljön semmilyen eszközt, amíg nem biztos benne, hogy elkészült a klónozással. Íme egy példa, amely 1000 eszközt hoz létre, majd átmásolja őket a másik hubhoz.
+    A dotnet parancs létrehozza és futtatja az alkalmazást. Mivel az alkalmazás futtatásakor adja át a beállításokat, az alkalmazás minden egyes futtatásakor módosíthatja azok értékeit. Előfordulhat például, hogy egyszer szeretné futtatni, és új eszközöket létrehozni, majd újra futtatni, és átmásolni ezeket az eszközöket egy új hubra, és így tovább. Az összes lépést ugyanebben a futtatásban is végrehajthatja, bár azt javasoljuk, hogy ne tegyünk törlésre egyetlen eszközt sem, amíg nem biztos abban, hogy befejezte a klónozást. Íme egy példa, amely létrehoz 1000 eszközt, majd másolja őket a másik hubra.
 
     ``` console
     // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
@@ -508,7 +508,7 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
     dotnet run false 0 true false false 
     ```
 
-    Miután meggyőződött róla, hogy az eszközök másolása sikeresen megtörtént, az alábbihoz hasonló módon távolíthatja el az eszközöket a forrás-hubhoz:
+    Miután meggyőződött arról, hogy az eszközök másolása sikeresen megtörtént, a következőkkel eltávolíthatja az eszközöket a forráselosztóból:
 
    ``` console
    // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
@@ -516,17 +516,17 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
    dotnet run false 0 false true false 
    ```
 
-### <a name="running-the-sample-application-using-visual-studio"></a>A minta alkalmazás futtatása a Visual Studióval
+### <a name="running-the-sample-application-using-visual-studio"></a>A mintaalkalmazás futtatása a Visual Studio használatával
 
-1. Ha az alkalmazást a Visual Studióban szeretné futtatni, módosítsa az aktuális könyvtárat arra a mappára, ahol a IoTHubServiceSamples. SLN fájl található. Ezután futtassa ezt a parancsot a parancssori ablakban a megoldás megnyitásához a Visual Studióban. Ezt ugyanabban a parancsablakban kell megtennie, ahol a környezeti változókat is megadhatja, így ezek a változók ismertek.
+1. Ha az alkalmazást a Visual Studióban szeretné futtatni, módosítsa az aktuális könyvtárat arra a mappára, amelyben az IoTHubServiceSamples.sln fájl található. Ezután futtassa ezt a parancsot a parancssorablakban a megoldás Visual Studio-ban való megnyitásához. Ezt ugyanabban a parancsablakban kell megtennie, ahol a környezeti változókat beállítja, hogy ezek a változók ismertek legyenek.
 
    ``` console       
    IoTHubServiceSamples.sln
    ```
     
-1. Kattintson a jobb gombbal a projekt *ImportExportDevicesSample* , és válassza a **beállítás indítási projektként**lehetőséget.    
+1. Kattintson a jobb gombbal az *ImportExportDevicesSample projektre,* és válassza **a Készlet indítási projektként parancsot.**    
     
-1. Állítsa be a változókat a Program.cs tetején a ImportExportDevicesSample mappában az öt lehetőséghez.
+1. Állítsa be a változók at the top of Program.cs in the ImportExportDevicesSample folder for the five options.
 
    ``` csharp
    // Add randomly created devices to the source hub.
@@ -541,64 +541,64 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
    private static bool deleteDestDevices = false;
    ```
 
-1. Az alkalmazás futtatásához válassza az F5 billentyűt. A futás befejezése után megtekintheti az eredményeket.
+1. Az alkalmazás futtatásához válassza az F5 lehetőséget. Miután befejezte a futást, megtekintheti az eredményeket.
 
 ### <a name="view-the-results"></a>Eredmények megtekintése 
 
-Megtekintheti az eszközöket a [Azure Portalban](https://portal.azure.com) , és ellenőrizheti, hogy azok az új helyen találhatók-e.
+Megtekintheti az eszközöket az [Azure Portalon,](https://portal.azure.com) és ellenőrizze, hogy az új helyen vannak-e.
 
-1. Nyissa meg az új hubot a [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd válassza az **IoT-eszközök**lehetőséget. A régi központból a klónozott hubhoz másolt eszközök láthatók. Megtekintheti a klónozott központ tulajdonságait is. 
+1. Nyissa meg az új központot az [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd az **IoT-eszközök**lehetőséget. Láthatja az okat az eszközöket, amelyeket a régi hubról a klónozott hubra másolt. A klónozott hub tulajdonságait is megtekintheti. 
 
-1. Az importálási/exportálási hibák ellenőrzéséhez lépjen a [Azure Portal](https://portal.azure.com) Azure Storage-fiókjába, és tekintse meg a `ImportErrors.log``devicefiles` tárolóját. Ha a fájl üres (a méret 0), nem történt hiba. Ha ugyanazt az eszközt többször próbálja meg importálni, a rendszer visszautasítja az eszközt a második alkalommal, és hibaüzenetet küld a naplófájlba.
+1. Ellenőrizze az importálási/exportálási hibákat az [Azure-tárfiókhoz](https://portal.azure.com) `devicefiles` az Azure `ImportErrors.log`Portalon, és keresse meg a tárolóban a. Ha ez a fájl üres (a mérete 0), nem voltak hibák. Ha többször próbálja importálni ugyanazt az eszközt, az másodszor utasítja el az eszközt, és hibaüzenetet ad a naplófájlhoz.
 
 ### <a name="committing-the-changes"></a>A módosítások véglegesítése 
 
-Ekkor átmásolta a hubot az új helyre, és áttelepítette az eszközöket az új klónba. Most meg kell változtatnia a módosításokat, hogy az eszközök működjenek a klónozott hubhoz.
+Ezen a ponton másolta a hubot az új helyre, és áttelepítette az eszközöket az új klónba. Most módosításokat kell végrehajtania, hogy az eszközök működjenek a klónozott hubbal.
 
-A módosítások elvégzéséhez a következő lépéseket kell végrehajtania: 
+A módosítások véglegesítéséhez kövesse a végrehajtandó lépéseket: 
 
-* Frissítse az egyes eszközöket a IoT Hub állomásnév módosítására, hogy az IoT Hub állomásneve az új hubhoz mutasson. Ezt ugyanazt a módszert használja, amelyet az eszköz kiépítés használt.
+* Frissítse az egyes eszközöket az IoT Hub állomásnevének módosításához, hogy az IoT Hub állomásnevét az új hubra irányítsa. Ezt ugyanazzal a módszerrel kell megtennie, amelyet az eszköz első kiépítésekor használt.
 
-* Módosítsa a régi hubhoz hivatkozó összes alkalmazást, hogy az új hubhoz mutasson.
+* Módosítsa a régi hubra hivatkozó alkalmazásokat, hogy az új hubra mutasson.
 
-* Ha elkészült, az új hubhoz kell futnia. A régi hubhoz nem tartozhat aktív eszköz, és leválasztott állapotban kell lennie. 
+* Miután végzett, az új hubnak működésbe kell indulnia. A régi hubnak nem kell aktív eszközökkel rendelkeznie, és leválasztott állapotban kell lennie. 
 
 ### <a name="rolling-back-the-changes"></a>A módosítások visszaállítása
 
-Ha úgy dönt, hogy visszaállítja a módosításokat, a következő lépéseket kell végrehajtania:
+Ha úgy dönt, hogy visszavonja a módosításokat, az alábbi lépéseket kell végrehajtania:
 
-* Frissítse az egyes eszközöket úgy, hogy az IoT Hub hostname-t úgy módosítsa, hogy az a régi központ IoT Hub állomásnevét mutasson. Ezt ugyanazt a módszert használja, amelyet az eszköz kiépítés használt.
+* Frissítse az egyes eszközöket az IoT Hub hostname módosításához, hogy a régi hub IoT Hub hostname-ja mutasson. Ezt ugyanazzal a módszerrel kell megtennie, amelyet az eszköz első kiépítésekor használt.
 
-* Módosítsa az új hubhoz hivatkozó összes alkalmazást, hogy az a régi hubhoz mutasson. Ha például az Azure Analytics szolgáltatást használja, előfordulhat, hogy újra kell konfigurálnia a [Azure stream Analytics bemenetét](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
+* Módosítsa az okat az alkalmazásokat, amelyek az új hubra hivatkoznak, és a régi hubra mutatnak. Ha például az Azure Analytics szolgáltatást használja, előfordulhat, hogy újra kell konfigurálnia az [Azure Stream Analytics-bemenetet.](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)
 
-* Törölje az új hubot. 
+* Törölje az új elosztót. 
 
 * Ha útválasztási erőforrásokkal rendelkezik, a régi hub konfigurációjának továbbra is a megfelelő útválasztási konfigurációra kell mutatnia, és a hub újraindítása után működnie kell ezekkel az erőforrásokkal.
 
 ### <a name="checking-the-results"></a>Az eredmények ellenőrzése 
 
-Az eredmények vizsgálatához módosítsa a IoT-megoldását úgy, hogy az új helyen mutasson a hubhoz, majd futtassa azt. Más szóval hajtsa végre ugyanezeket a műveleteket az előző központtal végrehajtott új hubhoz, és ellenőrizze, hogy megfelelően működnek-e. 
+Az eredmények ellenőrzéséhez módosítsa az IoT-megoldás, hogy pont a hub az új helyen, és futtassa azt. Más szóval hajtsa végre ugyanazokat a műveleteket az előző hubbal végrehajtott új hubbal, és győződjön meg arról, hogy azok megfelelően működnek. 
 
-Ha implementálta az útválasztást, ellenőrizze, hogy az üzenetek megfelelően vannak-e irányítva az erőforrásokhoz.
+Ha már megvalósított a művelettervezést, ellenőrizze, hogy az üzenetek megfelelően vannak-e átirányítva az erőforrásokhoz.
 
 ## <a name="clean-up"></a>Tisztítás
 
-Ne törölje a tisztítást, amíg nem biztos benne, hogy az új hub működik, és az eszközök megfelelően működnek. Ha ezt a funkciót használja, ügyeljen arra, hogy tesztelje az útválasztást is. Ha elkészült, törölje a régi erőforrásokat a következő lépések végrehajtásával:
+Ne tisztítsa meg, amíg nem biztos abban, hogy az új hub működik és az eszközök megfelelően működnek. Is győződjön meg róla, hogy tesztelje az útválasztást, ha használja ezt a funkciót. Ha készen áll, az alábbi lépések végrehajtásával tisztítsa meg a régi erőforrásokat:
 
-* Ha még nem tette meg, törölje a régi hubot. Ezzel eltávolítja az összes aktív eszközt a központból.
+* Ha még nem tette meg, törölje a régi hub. Ezzel eltávolítja az összes aktív eszközt a hubról.
 
-* Ha rendelkezik olyan útválasztási erőforrásokkal, amelyeket az új helyre helyezett át, akkor törölheti a régi útválasztási erőforrásokat.
+* Ha vannak útválasztási erőforrásai, amelyeket az új helyre helyezett át, törölheti a régi útválasztási erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az IoT hub egy új régióban található új hubhoz klónozott, és az eszközön is elkészült. További információ a IoT Hub található Identity registryben végzett tömeges műveletek végrehajtásáról: [IoT hub eszköz-identitások tömeges importálása és exportálása](iot-hub-bulk-identity-mgmt.md).
+Egy IoT-központot klónozott egy új régióban, az eszközökkel együtt. Ha többet szeretne tudni atömeges műveletek ioT-központ identitásainak importálásáról és exportálásáról, további információt az [IoT Hub-eszközidentitások tömeges importálása és exportálása című témakörben](iot-hub-bulk-identity-mgmt.md)talál.
 
-A központ IoT Hubával és fejlesztésével kapcsolatos további információkért tekintse meg a következő cikkeket.
+Az IoT Hubról és a hub fejlesztéséről az alábbi cikkekben talál további információt.
 
-* [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [Az IoT Hub fejlesztői útmutatója](iot-hub-devguide.md)
 
 * [IoT Hub útválasztási oktatóanyag](tutorial-routing.md)
 
-* [IoT Hub eszközkezelés – áttekintés](iot-hub-device-management-overview.md)
+* [IoT Hub-eszközkezelés – áttekintés](iot-hub-device-management-overview.md)
 
-* Ha telepíteni szeretné a minta alkalmazást, tekintse meg a [.net Core-alkalmazás üzembe helyezése](https://docs.microsoft.com/dotnet/core/deploying/index)című témakört.
+* Ha telepíteni szeretné a mintaalkalmazást, olvassa el a [.NET Core alkalmazás telepítését.](https://docs.microsoft.com/dotnet/core/deploying/index)

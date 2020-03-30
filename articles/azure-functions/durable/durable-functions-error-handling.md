@@ -1,27 +1,27 @@
 ---
-title: Hibák Durable Functions-Azure-ban való kezelésére
-description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functions Durable Functions bővítményében.
+title: Hibák kezelése a tartós funkciókban - Azure
+description: Ismerje meg, hogyan kezelje a hibákat az Azure Functions tartós függvények bővítményében.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277855"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák feldolgozása a Durable Functionsban (Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>A tartós függvények (Azure Functions) hibáinak kezelése
 
-A tartós függvények összehangolása programkódban valósul meg, és a programozási nyelv beépített hibák kezelésére szolgáló funkcióit használhatja. Valójában nincs olyan új fogalma, amelyet meg kell tanulnia a hibák kezelésére és a kompenzációba való felvételre. Vannak azonban olyan viselkedések, amelyeket érdemes figyelembe vennie.
+A tartós függvény vezénylései kódban vannak megvalósítva, és használhatják a programozási nyelv beépített hibakezelési funkcióit. Tényleg nincs enek olyan új fogalmak, amelyeket meg kell tanulnia hibakezelés és kompenzáció hozzáadásához a vezénylésekhez. Van azonban néhány viselkedés, amit tudnia kell.
 
-## <a name="errors-in-activity-functions"></a>Hibák a Activity functions szolgáltatásban
+## <a name="errors-in-activity-functions"></a>Tevékenységfüggvények hibái
 
-A tevékenységi függvényekben felmerülő kivételeket a rendszer visszaküldi a Orchestrator függvénynek, és `FunctionFailedException`ként dobja el. A Orchestrator függvényben az igényeinek megfelelő hibakezelés és kompenzációs kód is írható.
+A tevékenységfüggvényekben megjelenő kivételeket a függvény visszairányítja az orchestrator függvénybe, és a. `FunctionFailedException` Írhat hibakezelési és kompenzációs kódot, amely megfelel az igényeinek az orchestrator függvényben.
 
-Vegyük például a következő Orchestrator függvényt, amely az egyik fiókból a másikba továbbítja a forrásokat:
+Vegyük például a következő orchestrator függvényt, amely pénzeszközöket utal át egyik számláról a másikra:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -60,9 +60,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C# példák a Durable Functions 2.x. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -100,13 +100,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Ha az első **CreditAccount** -függvény hívása sikertelen, a Orchestrator függvény kompenzálja a források visszaküldését a forrás fiókba.
+Ha az első **CreditAccount** függvényhívás sikertelen lesz, az orchestrator függvény kompenzálja az alapok jóváírásával a forrásszámlára.
 
-## <a name="automatic-retry-on-failure"></a>Sikertelen automatikus újrapróbálkozás
+## <a name="automatic-retry-on-failure"></a>Hiba automatikus újrapróbálkozása
 
-A Activity functions vagy a beosztási függvények meghívásakor megadhat egy automatikus újrapróbálkozási házirendet. A következő példa legfeljebb háromszor próbálkozik egy függvény hívásával, és minden újrapróbálkozás után 5 másodpercet vár:
+Tevékenységfüggvények vagy alvezőfunkciók hívásakor megadhat egy automatikus újrapróbálkozási házirendet. A következő példa legfeljebb háromszor próbál meg meghívni egy függvényt, és 5 másodpercet vár az egyes újrapróbálkozások között:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -123,9 +123,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C# példák a Durable Functions 2.x. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,20 +145,20 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Az előző példában szereplő tevékenység függvény hívása egy paramétert fogad el az automatikus újrapróbálkozási házirend konfigurálásához. Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is van:
+Az előző példában szereplő tevékenységfüggvény-hívás egy paramétert vesz igénybe az automatikus újrapróbálkozási házirend konfigurálásához. Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is kínálkodhat:
 
-* **Kísérletek maximális száma**: az újrapróbálkozási kísérletek maximális száma.
-* **Első újrapróbálkozás időköze**: az első újrapróbálkozási kísérlet előtti várakozási idő.
-* **Leállítási együttható**: a leállítási növelésének mértékét meghatározó együttható. Az alapértelmezett érték 1.
-* **Maximális újrapróbálkozási időköz**: az újrapróbálkozási kísérletek között elvárt maximális időtartam.
-* **Újrapróbálkozás időtúllépése**: az újrapróbálkozások maximálisan elkölthető ideje. Az alapértelmezett viselkedés az, ha határozatlan ideig próbálkozik.
-* **Leíró**: a felhasználó által definiált visszahívás megadható annak megállapításához, hogy egy függvényt újra kell-e próbálni.
+* **A kísérletek maximális száma**: Az újrapróbálkozások maximális száma.
+* **Első újrapróbálkozási időköz**: Az első újrapróbálkozási kísérlet előtti várakozási idő.
+* **Visszamaradási együttható:** A visszamaradás növekedésének mértékének meghatározására használt együttható. Alapértelmezés szerint 1.
+* **Maximális újrapróbálkozási időköz**: Az újrapróbálkozási kísérletek közötti várakozási idő maximális ideje.
+* **Újrapróbálkozási időtúltöltés:** Az újrapróbálkozások maximális eltöltési ideje. Az alapértelmezett viselkedés az, hogy határozatlan ideig újra próbálkozik.
+* **Leíró**: Megadható a felhasználó által definiált visszahívás annak meghatározásához, hogy meg kell-e próbálni egy függvényt.
 
-## <a name="function-timeouts"></a>Függvények időtúllépései
+## <a name="function-timeouts"></a>Függvény időmegtat/időpontjai
 
-Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ennek a megfelelő módja, ha egy [tartós időzítőt](durable-functions-timers.md) hoz létre `context.CreateTimer` (.net) vagy `context.df.createTimer` (JavaScript) használatával a `Task.WhenAny` (.net) vagy a `context.df.Task.any` (JavaScript) segítségével, ahogy az alábbi példában is látható:
+Előfordulhat, hogy el szeretne hagyni egy függvényhívást egy orchestrator-függvényen belül, ha túl sokáig tart a befejezés. Ennek megfelelő módja ma egy [tartós](durable-functions-timers.md) időzítő `context.CreateTimer` létrehozása a `context.df.createTimer` (.NET) vagy `Task.WhenAny` a (JavaScript) használatával a (.NET) vagy `context.df.Task.any` a (JavaScript) használatával, mint a következő példában:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -189,9 +189,9 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 ```
 
 > [!NOTE]
-> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C# példák a Durable Functions 2.x. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -218,16 +218,16 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> Ez a mechanizmus valójában nem szakítja meg a folyamatban lévő tevékenységek működésének végrehajtását. Ehelyett egyszerűen lehetővé teszi, hogy a Orchestrator függvény figyelmen kívül hagyja az eredményt, és továbblép. További információ: [időzítők](durable-functions-timers.md#usage-for-timeout) dokumentációja.
+> Ez a mechanizmus valójában nem állítja le a folyamatban lévő tevékenység függvény végrehajtását. Inkább egyszerűen lehetővé teszi, hogy az orchestrator függvény figyelmen kívül hagyja az eredményt, és lépni. További információt az [Időzítők](durable-functions-timers.md#usage-for-timeout) dokumentációjában talál.
 
 ## <a name="unhandled-exceptions"></a>Nem kezelt kivételek
 
-Ha egy Orchestrator függvény nem kezelt kivétel miatt meghiúsul, a rendszer naplózza a kivétel részleteit, és a példány `Failed` állapottal fejeződik be.
+Ha egy orchestrator függvény sikertelen egy nem kezelt kivétellel, a kivétel részleteit `Failed` naplózza, és a példány állapottal fejeződik be.
 
-## <a name="next-steps"></a>Következő lépések
-
-> [!div class="nextstepaction"]
-> [Ismerje meg az örök összeszereléseket](durable-functions-eternal-orchestrations.md)
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan diagnosztizálhatja a problémákat](durable-functions-diagnostics.md)
+> [További információ az örök vezénylésekről](durable-functions-eternal-orchestrations.md)
+
+> [!div class="nextstepaction"]
+> [További információ a problémák diagnosztizálásáról](durable-functions-diagnostics.md)

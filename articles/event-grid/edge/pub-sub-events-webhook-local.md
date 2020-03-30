@@ -1,6 +1,6 @@
 ---
-title: Közzététel, előfizethet az eseményekre helyileg – Azure Event Grid IoT Edge | Microsoft Docs
-description: Közzététel, előfizethet az eseményekre helyileg a webhook Event Grid használatával IoT Edge
+title: Közzététel, feliratkozás eseményekre helyileg - Azure Event Grid IoT Edge | Microsoft dokumentumok
+description: Közzététel, feliratkozás helyi eseményekre a Webhook segítségével az IoT Edge Eseményrácshasználatával
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,54 +10,54 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281001"
 ---
-# <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
+# <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: Közzététel, feliratkozás helyi eseményekre
 
-Ez a cikk végigvezeti az eseményeknek a Event Grid on IoT Edge használatával történő közzétételéhez és előfizetéséhez szükséges lépéseken.
+Ez a cikk végigvezeti az események közzétételéhez és az Eseményekre való feliratkozáshoz szükséges összes lépésen az IoT Edge-en.
 
 > [!NOTE]
-> A Azure Event Grid témakörökről és előfizetésekről a [Event Grid fogalmak](concepts.md)című témakörben olvashat bővebben.
+> Az Azure Event Grid témaköreiről és előfizetéseiről az [Event Grid fogalmai című témakörben olvashat bővebben.](concepts.md)
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+Az oktatóanyag befejezéséhez a következőkre lesz szüksége:
 
-* **Azure-előfizetés** – hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) , ha még nem rendelkezik ilyennel. 
-* **Azure IoT hub és IoT Edge eszköz** – kövesse a [Linux](../../iot-edge/quickstart-linux.md) vagy [Windows rendszerű eszközök](../../iot-edge/quickstart.md) gyors üzembe helyezésének lépéseit, ha még nem rendelkezik ilyennel.
+* **Azure-előfizetés** – Hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) ha még nem rendelkezik ilyen. 
+* **Azure IoT Hub és IoT Edge-eszköz** – Kövesse a [linuxos](../../iot-edge/quickstart-linux.md) vagy [Windows-eszközökhöz](../../iot-edge/quickstart.md) való rövid útmutató lépéseit, ha még nem rendelkezik ilyentel.
 
-## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul üzembe helyezése
+## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul telepítése
 
-A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindegyik a IoT Edge Azure Event Grid. Ez a cikk azokat a lépéseket ismerteti, amelyekkel telepítheti a Event Gridt a Azure Portal IoT Edge.
+A modulok at ioT Edge-eszközökre többféleképpen is üzembe helyezheti, és mindegyik az Azure Event Grid ben működik az IoT Edge-en. Ez a cikk ismerteti az Event Grid az Azure Portalon az IoT Edge üzembe helyezésének lépéseit.
 
 >[!NOTE]
-> Ebben az oktatóanyagban a Event Grid-modult az adatmegőrzés nélkül fogja telepíteni. Ez azt jelenti, hogy a jelen oktatóanyagban létrehozott összes témakört és előfizetést a modul újbóli üzembe helyezésekor törli a rendszer. Az adatmegőrzés beállításával kapcsolatos további információkért tekintse meg a következő cikkeket: állapot megtartása [Linuxon](persist-state-linux.md) vagy [az állapot megőrzése a Windowsban](persist-state-windows.md). Éles számítási feladatokhoz javasoljuk, hogy az Event Grid modult az adatmegőrzéssel telepítse.
+> Ebben az oktatóanyagban az Event Grid modult adatmegőrzés nélkül telepíti. Ez azt jelenti, hogy az ebben az oktatóanyagban létrehozott témakörök és előfizetések törlődnek a modul újratelepítésekor. Az adatmegőrzés beállításáról a következő cikkekben talál további információt: [Állapot megőrzése Linux alatt](persist-state-linux.md) vagy [Perzisztencia állapot a Windows rendszerben.](persist-state-windows.md) Éles számítási feladatok esetén azt javasoljuk, hogy az Event Grid modult adatmegőrzéssel telepítse.
 
 
-### <a name="select-your-iot-edge-device"></a>IoT Edge eszköz kiválasztása
+### <a name="select-your-iot-edge-device"></a>Válassza ki az IoT Edge-eszközt
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Navigáljon a IoT Hub.
-1. Válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** szakasz menüjében. 
-1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról
-1. Válassza a **Modulok beállítása** lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com)
+1. Keresse meg az IoT Hubot.
+1. Válassza az **IoT Edge elemet** az **Automatikus eszközkezelés** szakasz menüjéből. 
+1. Kattintson a céleszköz azonosítójára az eszközök listájából
+1. Válassza **a Modulok beállítása**lehetőséget. Tartsa nyitva az oldalt. A következő szakaszban ismertetett lépésekkel folytatja.
 
-### <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
+### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzékfájl konfigurálása
 
-A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok üzembe helyezéséhez a modulokat, és az ikermodulokkal tulajdonságaiként közti adatfolyamok. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
+A központi telepítési jegyzékfájl egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan adatfolyamok a modulok között, és a modul twins kívánt tulajdonságait. Az Azure Portalon van egy varázsló, amely végigvezeti a központi telepítési jegyzékfájl létrehozásán, ahelyett, hogy a JSON-dokumentum manuálislétrehozása.  Három lépésből áll: **Modulok hozzáadása**, **Útvonalak megadása**és A **telepítés áttekintése**.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. A **telepítési modulok** szakaszban válassza a **Hozzáadás** lehetőséget.
-1. A legördülő listában válassza ki a modulok típusait **IoT Edge modult**
-1. Adja meg a tároló nevét, képét, tároló-létrehozási beállításait:
+1. A **Központi telepítési modulok csoportban** válassza **a Hozzáadás**
+1. A legördülő listában szereplő modulok típusai közül válassza az **IoT Edge Module**
+1. Adja meg a tároló nevét, lemezképét és tárolójának létrehozási beállításait:
 
    * **Név**: eventgridmodule
-   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
-   * **Tároló-létrehozási beállítások**:
+   * **Kép URI**-`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Tároló létrehozási beállításai:**
 
    [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
 
@@ -77,48 +77,48 @@ A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok
           }
         }
     ```    
- 1. Kattintson a **Mentés** gombra.
- 1. Folytassa a következő szakasszal, és vegye fel a Azure Event Grid előfizető modult, mielőtt együtt telepítené őket.
+ 1. Kattintson a **Mentés gombra**
+ 1. Folytassa a következő szakaszt az Azure Event Grid-előfizetői modul hozzáadásához, mielőtt együtt üzembe helyezne őket.
 
     >[!IMPORTANT]
-    > Ebben az oktatóanyagban a Event Grid-modult az ügyfél-hitelesítés letiltásával fogja telepíteni. Az éles számítási feladatokhoz javasoljuk, hogy engedélyezze az ügyfél-hitelesítést. A Event Grid modul biztonságos konfigurálásával kapcsolatos további információkért lásd: [Biztonság és hitelesítés](security-authentication.md).
+    > Ebben az oktatóanyagban az Event Grid modult úgy telepíti, hogy az ügyfélhitelesítés le van tiltva. Éles számítási feladatok esetén azt javasoljuk, hogy engedélyezze az ügyfél hitelesítését. Az Event Grid modul biztonságos konfigurálásáról a [Biztonság és hitelesítés](security-authentication.md)című témakörben talál további információt.
     > 
-    > Ha Azure-beli virtuális gépet használ peremhálózati eszközként, vegyen fel egy bejövő portszabály, hogy engedélyezze a bejövő forgalmat a 4438-es porton. A szabály hozzáadásával kapcsolatos útmutatásért lásd: [portok megnyitása virtuális géphez](../../virtual-machines/windows/nsg-quickstart-portal.md).
+    > Ha egy Azure virtuális gép peremhálózati eszközként, adjon hozzá egy bejövő port szabály, amely lehetővé teszi a bejövő forgalmat a 4438-as porton. A szabály hozzáadásáról a [Portok megnyitása virtuális géphez](../../virtual-machines/windows/nsg-quickstart-portal.md)című témakörben talál útmutatást.
     
 
-## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid előfizető IoT Edge modul üzembe helyezése
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid-előfizető IoT Edge moduljának telepítése
 
-Ebből a szakaszból megtudhatja, hogyan helyezhet üzembe egy másik IoT modult, amely az események kézbesítéséhez használható eseménykezelőként fog működni.
+Ez a szakasz bemutatja, hogyan telepíthet egy másik IoT-modult, amely eseménykezelőként működne, amelyhez események et lehet szállítani.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. A **telepítési modulok** szakaszban válassza a **Hozzáadás** újra lehetőséget. 
-1. A legördülő listában válassza ki a modulok típusait **IoT Edge modult**
-1. Adja meg a tároló nevét, képét és tároló-létrehozási beállításait:
+1. A **Telepítési modulok csoportban** válassza a **Hozzáadás** újra lehetőséget. 
+1. A legördülő listában szereplő modulok típusai közül válassza az **IoT Edge Module**
+1. Adja meg a tároló nevét, lemezképét és tárolójának létrehozási beállításait:
 
    * **Név**: előfizető
-   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
-   * **Tároló-létrehozási beállítások**: nincs
-1. Kattintson a **Mentés** gombra.
-1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
+   * **Kép URI**-`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Tároló létrehozási beállításai:** Nincs
+1. Kattintson a **Mentés gombra**
+1. Kattintson a **Tovább** gombra az útvonalak szakasz folytatásához
 
- ### <a name="setup-routes"></a>Telepítési útvonalak
+ ### <a name="setup-routes"></a>Útvonalak beállítása
 
-Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
+Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményezési szakasz folytatásához válassza a **Tovább** gombot.
 
 ### <a name="submit-the-deployment-request"></a>A központi telepítési kérelem elküldése
 
-1. A felülvizsgálati szakasz megjeleníti a JSON-telepítési jegyzékfájlt, amelyet az előző szakaszban megadott beállítások alapján hoztak létre. Győződjön meg arról, hogy a következő modulok szerepelnek a JSON-ban: **eventgridmodule** és **előfizető** . 
-1. Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés**lehetőséget. A telepítés elküldése után visszatérhet az **eszköz** oldalára.
-1. A **modulok szakaszban**ellenőrizze, hogy a **eventgrid** és az **előfizetői** modulok is szerepelnek-e a listáján. És ellenőrizze, hogy a **telepítésben megadott** és az **eszköz oszlopai által jelentett** oszlopok értéke **Igen**.
+1. A véleményezési szakasz a JSON telepítési jegyzékfájlját jeleníti meg, amely az előző szakaszban megadott beállítások alapján jött létre. Győződjön meg arról, hogy mindkét modul: **eventgridmodule** és **előfizető** szerepel a JSON. 
+1. Tekintse át a központi telepítési adatokat, majd válassza a **Küldés lehetőséget.** A központi telepítés elküldése után **device** visszatér az eszközlapra.
+1. A **Modulok szakaszban**ellenőrizze, hogy mind az **eventgrid,** mind **az előfizetői** modulok szerepelnek-e a listában. Ellenőrizze, hogy a **Telepítésben megadott** és az eszköz által **jelentett** oszlopok **értéke Igen.**
 
-    Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
+    Eltarthat néhány percig, amíg a modul elindul az eszközön, és majd jelenteni kell az IoT Hubnak. Frissítse a lapot a frissített állapot megtekintéséhez.
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 
-Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. Azure Event Grid a témakör egy olyan végpontra hivatkozik, ahol a közzétevők eseményeket küldhetnek a alkalmazásba.
+Egy esemény közzétevőjeként létre kell hoznia egy eseményrács-témakört. Az Azure Event Gridben egy témakör egy végpontra hivatkozik, ahol a közzétevők eseményeket küldhetnek.
 
-1. Hozzon létre egy topic. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md).
+1. Hozzon létre topic.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [az API dokumentációját.](api.md)
 
     ```json
         {
@@ -129,13 +129,13 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. Azure E
         }
     ```
 
-1. A következő parancs futtatásával hozzon létre egy Event Grid-témakört. Ellenőrizze, hogy megjelenik-e a HTTP-állapotkód `200 OK`.
+1. Eseményrács-témakör létrehozásához futtassa a következő parancsot. Ellenőrizze, hogy látja-e, `200 OK`hogy a HTTP-állapotkód a.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
     ```
 
-1. A következő parancs futtatásával ellenőrizheti, hogy a témakör sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
+1. Futtassa a következő parancsot a témakör sikeres létrehozásának ellenőrzéséhez. A 200 OK HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -159,11 +159,11 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. Azure E
 
 ## <a name="create-an-event-subscription"></a>Esemény-előfizetés létrehozása
 
-Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, létre kell hoznia egy Event Grid-előfizetést egy érdekes témakörhöz.
+Az előfizetők regisztrálhatnak a témában közzétett eseményekre. Ahhoz, hogy bármilyen eseményt megkapjon, létre kell hoznia egy Event Grid-előfizetést egy érdeklődésre számot tartó témakörhöz.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Hozzon létre egy előfizetés. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
+1. Hozzon létre subscription.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [AZ API dokumentációját](api.md)
 
     ```json
         {
@@ -179,13 +179,13 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
     ```
 
     >[!NOTE]
-    > A **endpointType** tulajdonság azt adja meg, hogy az előfizető egy **webhook**.  A **endpointUrl** meghatározza azt az URL-címet, amelyen az előfizető eseményeket figyel. Ez az URL-cím megfelel a korábban üzembe helyezett Azure-előfizetői mintának.
-2. A következő parancs futtatásával hozzon létre egy előfizetést a témakörhöz. Ellenőrizze, hogy megjelenik-e a HTTP-állapotkód `200 OK`.
+    > Az **endpointType** tulajdonság azt adja meg, hogy az előfizető **Webhook**.  A **endpointUrl** megadja azt az URL-címet, amelyen az előfizető figyeli az eseményeket. Ez az URL-cím a korábban üzembe helyezett Azure-előfizetői mintának felel meg.
+2. Futtassa a következő parancsot a témakör előfizetésének létrehozásához. Ellenőrizze, hogy látja-e, `200 OK`hogy a HTTP-állapotkód a.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
     ```
-3. A következő parancs futtatásával ellenőrizheti, hogy az előfizetés sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
+3. Futtassa a következő parancsot az előfizetés sikeres létrehozásának ellenőrzéséhez. A 200 OK HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +212,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
 ## <a name="publish-an-event"></a>Esemény közzététele
 
-1. Hozzon létre Event. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md).
+1. Hozzon létre event.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [az API dokumentációját.](api.md)
 
     ```json
         [
@@ -229,24 +229,24 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
           }
         ]
     ```
-1. Egy esemény közzétételéhez futtassa a következő parancsot.
+1. Esemény közzétételéhez futtassa a következő parancsot.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-event-delivery"></a>Esemény-kézbesítés ellenőrzése
+## <a name="verify-event-delivery"></a>Az esemény kézbesítésének ellenőrzése
 
-1. SSH vagy RDP a IoT Edge virtuális gépre.
-1. Az előfizetői naplók keresése:
+1. SSH vagy RDP az IoT Edge virtuális gépbe.
+1. Ellenőrizze az előfizetői naplókat:
 
-    Windows rendszeren futtassa a következő parancsot:
+    Windows rendszerben futtassa a következő parancsot:
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
-   Linux rendszeren futtassa a következő parancsot:
+   Linux on futtassa a következő parancsot:
 
     ```sh
     sudo docker logs subscriber
@@ -273,22 +273,22 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
 
-* Futtassa a következő parancsot a témakör és az összes előfizetésének törléséhez.
+* Futtassa a következő parancsot a témakör és az összes előfizetéstörléséhez.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
     ```
-* Törölje az előfizetői modult a IoT Edge eszközről.
+* Törölje az előfizetői modult az IoT Edge-eszközről.
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, előfizetést és közzétett eseményeket. Most, hogy már ismeri az alapszintű lépéseket, tekintse meg a következő cikkeket: 
+Ebben az oktatóanyagban létrehozott egy eseményrács-témakört, előfizetést és közzétett eseményeket. Most, hogy már ismeri az alapvető lépéseket, olvassa el az alábbi cikkeket: 
 
-- A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).
-- Előfizetés létrehozása/frissítése [szűrőkkel](advanced-filtering.md).
-- Event Grid modul megőrzésének engedélyezése [Linux](persist-state-linux.md) vagy [Windows](persist-state-windows.md) rendszeren
-- Az ügyfél-hitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)
-- Események továbbítása Azure Functions a felhőben az [oktatóanyag](pub-sub-events-webhook-cloud.md) követésével
-- [Reagálás Blob Storage eseményekre IoT Edge](react-blob-storage-events-locally.md)
-- [Témakörök és előfizetések figyelése a peremhálózat szélén](monitor-topics-subscriptions.md)
+- Az Azure Event Grid IoT Edge-en való használatával kapcsolatos problémák elhárításáról a [Hibaelhárítási útmutató](troubleshoot.md)című témakörben talál.
+- Előfizetés létrehozása/frissítése [szűrőkkel.](advanced-filtering.md)
+- Az Event Grid modul tartalommegőrzésének engedélyezése [Linuxvagy](persist-state-linux.md) [Windows rendszeren](persist-state-windows.md)
+- Az ügyfélhitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)
+- Események továbbítása az Azure Functions a felhőben az [oktatóanyag](pub-sub-events-webhook-cloud.md) követésével
+- [Reagálás a Blob Storage-eseményekre az IoT Edge-en](react-blob-storage-events-locally.md)
+- [Témakörök és előfizetések figyelése a peremhálózaton](monitor-topics-subscriptions.md)
 

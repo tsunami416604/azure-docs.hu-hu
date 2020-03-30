@@ -1,6 +1,6 @@
 ---
-title: Azure Storage Analytics naplózás
-description: Ismerje meg, hogyan naplózhatja az Azure Storage szolgáltatással kapcsolatos kérések részleteit.
+title: Azure Storage Analytics-naplózás
+description: Ismerje meg, hogyan naplózhat részleteket az Azure Storage-on végrehajtott kérelmekről.
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -9,60 +9,60 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268417"
 ---
-# <a name="azure-storage-analytics-logging"></a>Az Azure Storage Analytics naplózása
+# <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-naplózás
 
-A Storage Analytics naplózza a tárolási szolgáltatásoknak elküldött sikeres és sikertelen kérelmek részletes információit. Ezekkel az információkkal monitorozhatók az egyes kérelmek és diagnosztizálhatók a tárolási szolgáltatások problémái. A kéréseket a rendszer a lehető legjobb módon naplózza.
+A Storage Analytics naplózza a tárolási szolgáltatásoknak elküldött sikeres és sikertelen kérelmek részletes információit. Ezekkel az információkkal monitorozhatók az egyes kérelmek és diagnosztizálhatók a tárolási szolgáltatások problémái. A kérelmek naplózása a legjobb erőfeszítés alapján történik.
 
- A Storage Analytics-naplózás alapértelmezés szerint nincs engedélyezve a Storage-fiókjához. Engedélyezheti a [Azure Portal](https://portal.azure.com/); További információ: [Storage-fiók figyelése a Azure Portalban](/azure/storage/storage-monitor-storage-account). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A [blob szolgáltatás](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)tulajdonságainak beolvasása, a [várólista-szolgáltatás tulajdonságainak](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)beolvasása és a [Table Service tulajdonságok beolvasása](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) műveletekkel engedélyezheti az egyes szolgáltatások Storage Analyticsét.
+ A Storage Analytics-naplózás alapértelmezés szerint nincs engedélyezve a Storage-fiókjához. Az [Azure Portalon](https://portal.azure.com/)engedélyezheti; További információt a [Tárfiók figyelése az Azure Portalon című témakörben talál.](/azure/storage/storage-monitor-storage-account) A Storage Analytics programozott módon is engedélyezhető a REST API-n vagy az ügyfélkódtáron keresztül. Használja a [Blob szolgáltatás tulajdonságainak begete](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [A várólista-szolgáltatás tulajdonságainak beszereznie](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)és [a Table Service Properties műveleteket](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) az egyes szolgáltatások storage-elemzések engedélyezéséhez.
 
- A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás-végpontra irányuló kérések történnek. Ha például egy Storage-fiók egy tevékenységgel rendelkezik a blob-végponton, de nem a táblázat-vagy várólista-végpontokon, akkor csak a Blob servicehoz tartozó naplók lesznek létrehozva.
+ A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás végpontjának kérései vannak. Ha például egy tárfiók rendelkezik tevékenységa a Blob végpont, de nem a tábla vagy a várólista végpontok, csak a Blob szolgáltatáshoz tartozó naplók jönnek létre.
 
 > [!NOTE]
 >  A Storage Analytics-naplózás jelenleg csak a Blob, a Queue és a Table szolgáltatás esetében érhető el. A prémium szintű tárfiókok azonban nem támogatottak.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="requests-logged-in-logging"></a>Naplózásban bejelentkezett kérelmek
+## <a name="requests-logged-in-logging"></a>Naplózásba naplózott kérelmek
 ### <a name="logging-authenticated-requests"></a>Hitelesített kérelmek naplózása
 
- A rendszer naplózza a következő típusú hitelesített kérelmeket:
+ A hitelesített kérések alábbi típusai vannak rögzítve:
 
-- Sikeres kérések
-- Sikertelen kérések, beleértve az időtúllépést, a szabályozást, a hálózatot, az engedélyezést és az egyéb hibákat
-- Közös hozzáférésű aláírást (SAS) vagy OAuth (például sikertelen és sikeres kérelmeket) használó kérelmek
-- Elemzési adatkérések
+- Sikeres kérelmek
+- Sikertelen kérések, köztük az időtúllépések, torlódások, valamint a hálózati, hitelesítési és egyéb hibák
+- Közös hozzáférésű jogosultságkódot vagy OAuth-hitelesítést használó sikertelen és sikeres kérések
+- Elemzési adatokhoz kapcsolódó kérelmek
 
-  A Storage Analytics saját maga által kezdeményezett kérelmeket (például a naplózás létrehozását vagy törlését) nem naplózza a rendszer. A naplózott adatok teljes listáját az [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) , valamint a [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format) témakörök ismertetik.
+  A Storage Analytics által tett kérelmek, például a napló létrehozása vagy törlése, nem kerülnek naplózásra. A naplózott adatok teljes listáját a [Storage Analytics naplózott műveletek és állapotüzenetek és](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a Storage Analytics log [format](/rest/api/storageservices/storage-analytics-log-format) témakörök dokumentálják.
 
 ### <a name="logging-anonymous-requests"></a>Névtelen kérelmek naplózása
 
  A rendszer a következő típusú névtelen kérelmeket naplózza:
 
-- Sikeres kérések
-- Kiszolgálói hibák
-- Időtúllépési hibák az ügyfél és a kiszolgáló esetében
-- Sikertelen GET kérelmek a 304 hibakódmal (nincs módosítva)
+- Sikeres kérelmek
+- Kiszolgálóhibák
+- Időbeli megtapadási hibák mind az ügyfél, mind a kiszolgáló esetében
+- 304-es (Nincs módosítva) hibakóddal ellátott sikertelen GET-kérések
 
-  Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A naplózott adatok teljes listáját az [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) , valamint a [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format) témakörök ismertetik.
+  Az összes többi sikertelen névtelen kérelem nem kerül naplózásra. A naplózott adatok teljes listáját a [Storage Analytics naplózott műveletek és állapotüzenetek és](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a Storage Analytics log [format](/rest/api/storageservices/storage-analytics-log-format) témakörök dokumentálják.
 
-## <a name="how-logs-are-stored"></a>A naplók tárolása
+## <a name="how-logs-are-stored"></a>A naplók tárolásának megóra
 
-A rendszer az összes naplót blokkoló blobokban tárolja `$logs`nevű tárolóban, amely automatikusan létrejön, amikor a Storage Analytics engedélyezve van egy Storage-fiókhoz. A `$logs` tároló a Storage-fiók blob-névterében található, például: `http://<accountname>.blob.core.windows.net/$logs`. Ez a tároló nem törölhető, ha Storage Analytics engedélyezve lett, de a tartalma törölhető. Ha a Storage-Browsing eszköz használatával közvetlenül a tárolóra navigál, a naplózási adatait tartalmazó Blobok jelennek meg.
+Az összes napló tanéven ként egy `$logs`tárolóban tárolóban tárolja a naplókat, amely automatikusan létrejön, ha a Storage Analytics engedélyezve van egy tárfiókhoz. A `$logs` tároló a tárfiók blobnévterében található, `http://<accountname>.blob.core.windows.net/$logs`például: . Ez a tároló nem törölhető, ha a Storage Analytics engedélyezve van, bár annak tartalma törölhető. Ha a tároló-böngészési eszköz segítségével közvetlenül a tárolóra navigál, látni fogja az összes blobot, amely tartalmazza a naplózási adatokat.
 
 > [!NOTE]
->  A `$logs` tároló nem jelenik meg, ha egy tároló-listaelemet hajt végre, például a tárolók listázása műveletet. Közvetlenül elérhetőnek kell lennie. Használhatja például a Blobok listázása műveletet a `$logs` tárolóban lévő Blobok eléréséhez.
+>  A `$logs` tároló nem jelenik meg, ha egy tároló listaelemezési műveletet hajt végre, például a List Containers műveletet. Közvetlenül hozzá kell férni. Például a Lista blobok művelet segítségével elérheti a `$logs` blobok a tárolóban.
 
-Mivel a rendszer naplózza a kérelmeket, Storage Analytics a köztes eredményeket blokkként tölti fel. A Storage Analytics rendszeresen véglegesíti ezeket a blokkokat, és blobként elérhetővé teszi őket. Akár egy óráig is eltarthat, amíg a naplófájlok megjelennek a **$logs** tárolóban lévő blobokban, mert a tárolási szolgáltatás által használt gyakoriság a napló-írókat üríti. Ismétlődő rekordok létezhetnek ugyanabban az órában létrehozott naplókhoz. A **kérelemazonosító** és a **művelet** számának ellenőrzésével megállapíthatja, hogy egy rekord duplikált-e.
+A kérelmek naplózása után a Storage Analytics köztes eredményeket tölt fel blokkokként. Rendszeres időközönként a Storage Analytics véglegesíti ezeket a blokkokat, és elérhetővé teszi őket blobként. Akár egy órát is igénybe vehet, amíg a naplóadatok megjelennek a **blobokban** a $logs tárolóban, mert a tárolási szolgáltatás kiüríti a naplóírók gyakoriságát. Az ugyanabban az órában létrehozott naplókhoz ismétlődő rekordok is létezhetnek. A **RequestId** és a **Művelet** szám ának ellenőrzésével meghatározhatja, hogy egy rekord ismétlődő-e.
 
-Ha nagy mennyiségű naplózási adata van, és minden órában több fájl található, akkor a blob metaadataival meghatározhatja, hogy a napló mely adatokat tartalmazza a blob metaadatainak mezőinek vizsgálatával. Ez azért is hasznos, mert időnként előfordulhat, hogy az adatok a naplófájlokban vannak írva: a blob metaadatai a blob nevénél pontosabban jelzik a blob tartalmát.
+Ha óránként több fájllal rendelkező naplóadatok nagy mennyisége van, akkor a blob metaadatai segítségével meghatározhatja, hogy a napló milyen adatokat tartalmaz a blob metaadat-mezőinek vizsgálatával. Ez azért is hasznos, mert néha késleltethető, amíg az adatok a naplófájlokba írásakor: a blob metaadatai pontosabban jelzik a blob tartalmát, mint a blob neve.
 
-A legtöbb tárolási böngészési eszköz lehetővé teszi a Blobok metaadatainak megtekintését; ezeket az információkat a PowerShell vagy programozott módon is elolvashatja. A következő PowerShell-kódrészlet egy példa a naplók listájának szűrésére a név alapján egy idő megadásához, valamint a metaadatok alapján, hogy csak az **írási** műveleteket tartalmazó naplókat azonosítsák.  
+A legtöbb tárolóböngészési eszköz lehetővé teszi a blobok metaadatainak megtekintését; ezt az információt a PowerShell vagy programozott módon is elolvashatja. A következő PowerShell-kódrészlet egy példa a naplóblobok listájának név szerinti szűrésére egy időpont megadásához, valamint metaadatok alapján, hogy csak azokat a naplókat azonosítsa, amelyek **írási** műveleteket tartalmaznak.  
 
  ```powershell
  Get-AzureStorageBlob -Container '$logs' |  
@@ -78,89 +78,89 @@ A legtöbb tárolási böngészési eszköz lehetővé teszi a Blobok metaadatai
  }  
  ```  
 
-A Blobok programozott listázásával kapcsolatos információkért lásd: [blob-erőforrások enumerálása](https://msdn.microsoft.com/library/azure/hh452233.aspx) , [Tulajdonságok és metaadatok beállítása és lekérése blob-erőforrásokhoz](https://msdn.microsoft.com/library/azure/dd179404.aspx).  
+A blobok programozott listázásáról a [Blob-erőforrások felsorolása,](https://msdn.microsoft.com/library/azure/hh452233.aspx) valamint [a Tulajdonságok és metaadatok beállítása a Blob-erőforrásokhoz](https://msdn.microsoft.com/library/azure/dd179404.aspx)című témakörben talál további információt.  
 
-### <a name="log-naming-conventions"></a>Napló elnevezési konvenciói
+### <a name="log-naming-conventions"></a>Naplóelnevezési konvenciók
 
  Minden napló a következő formátumban lesz megírva:
 
  `<service-name>/YYYY/MM/DD/hhmm/<counter>.log`
 
- A következő táblázat a napló neve egyes attribútumait ismerteti:
+ Az alábbi táblázat a naplónév ben szereplő egyes attribútumokat ismerteti:
 
 |Attribútum|Leírás|
 |---------------|-----------------|
-|`<service-name>`|A tárolási szolgáltatás neve. Például: `blob`, `table`vagy `queue`|
-|`YYYY`|A naplófájl négyjegyű éve. Például:`2011`|
-|`MM`|A napló két számjegyű hónapja. Például:`07`|
-|`DD`|A napló két számjegyből álló napja. Például:`31`|
-|`hh`|A két számjegyű óra, amely a naplók kezdő óráját jelzi 24 órás UTC formátumban. Például:`18`|
-|`mm`|A naplók kezdő percét jelző kétszámjegyű szám. **Megjegyzés:**  Ez az érték nem támogatott a Storage Analytics aktuális verziójában, és az értéke mindig `00`lesz.|
-|`<counter>`|Egy nulla-alapú számláló hat számjegytel, amely a tárolási szolgáltatáshoz egy órás időszakban generált naplók számát jelzi. Ez a számláló a következő időpontban indul: `000000`. Például:`000001`|
+|`<service-name>`|A tárolószolgáltatás neve. Például: `blob` `table`, , vagy`queue`|
+|`YYYY`|A napló négyjegyű éve. Például:`2011`|
+|`MM`|A napló kétjegyű hónapja. Például:`07`|
+|`DD`|A napló kétjegyű napja. Például:`31`|
+|`hh`|A naplók kezdési óráját jelző kétjegyű óra, 24 órás UTC formátumban. Például:`18`|
+|`mm`|A naplók kezdőpercét jelző kétjegyű szám. **Megjegyzés:**  Ez az érték nem támogatott a Storage Analytics jelenlegi verziójában, és értéke mindig a. `00`|
+|`<counter>`|Egy nulla-alapú számláló hat számjegy, amely azt jelzi, hogy a tárolási szolgáltatás hoz létre egy óra alatt létrehozott naplóblobok száma. Ez a `000000`számláló a kezdő helyen kezdődik. Például:`000001`|
 
- A következő egy teljes minta-napló neve, amely a fenti példákat ötvözi:
+ A következő egy teljes mintanapló név, amely egyesíti a fenti példákat:
 
  `blob/2011/07/31/1800/000001.log`
 
- A következő példa egy URI-t használ a fenti napló eléréséhez:
+ A következő egy minta URI, amely a fenti napló eléréséhez használható:
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- Tárolási kérelem naplózásakor az eredményül kapott napló neve a kért művelet befejezésének órájával összefügg. Ha például egy GetBlob-kérelem a 7/31/2011-es 6-os időpontban fejeződött be, a naplót a következő előtaggal kell megírni: `blob/2011/07/31/1800/`
+ A tárolási kérelem naplózásakor az eredményül kapott naplónév korrelál a kért művelet befejezésének órájával. Ha például egy GetBlob-kérés 2011.07.31-én 6:30-kor befejeződött, a napló a következő előtaggal lesz megírva:`blob/2011/07/31/1800/`
 
-### <a name="log-metadata"></a>Naplózási metaadatok
+### <a name="log-metadata"></a>Napló metaadatai
 
- Minden naplózási blobot metaadatok tárolnak, amelyek segítségével azonosíthatók a blob által tartalmazott naplózási adatok. Az alábbi táblázat az egyes metaadatok attribútumait ismerteti:
+ Minden naplóblob metaadatokkal van tárolva, amelyek segítségével azonosíthatja, hogy a blob milyen naplózási adatokat tartalmaz. Az alábbi táblázat az egyes metaadat-attribútumokat ismerteti:
 
 |Attribútum|Leírás|
 |---------------|-----------------|
-|`LogType`|Leírja, hogy a napló tartalmazza-e az olvasási, írási és törlési műveletekkel kapcsolatos információkat. Ez az érték egy típust vagy mindhárom kombinációt tartalmazhat, vesszővel elválasztva.<br /><br /> 1\. példa: `write`<br /><br /> 2\. példa: `read,write`<br /><br /> 3\. példa: `read,write,delete`|
-|`StartTime`|A napló bejegyzéseinek legkorábbi időpontja `YYYY-MM-DDThh:mm:ssZ`formában. Például:`2011-07-31T18:21:46Z`|
-|`EndTime`|A napló bejegyzéseinek legkésőbbi időpontja `YYYY-MM-DDThh:mm:ssZ`formájában. Például:`2011-07-31T18:22:09Z`|
-|`LogVersion`|A naplózási formátum verziója.|
+|`LogType`|Ez a témakör azt ismerteti, hogy a napló tartalmaz-e olvasási, írási vagy törlési műveletekre vonatkozó információkat. Ez az érték tartalmazhat egy típust vagy mindhárom kombinációját, vesszővel elválasztva.<br /><br /> 1. példa:`write`<br /><br /> 2. példa:`read,write`<br /><br /> 3. példa:`read,write,delete`|
+|`StartTime`|A naplóban lévő bejegyzés legkorábbi időpontja `YYYY-MM-DDThh:mm:ssZ`. Például:`2011-07-31T18:21:46Z`|
+|`EndTime`|A naplóban lévő bejegyzés legkésőbbi időpontja `YYYY-MM-DDThh:mm:ssZ`. Például:`2011-07-31T18:22:09Z`|
+|`LogVersion`|A naplóformátum verziója.|
 
- A következő lista a fenti példák alapján mutatja be a teljes minta metaadatokat:
+ Az alábbi lista a teljes mintametaadatokat jeleníti meg a fenti példák használatával:
 
 -   `LogType=write`
 -   `StartTime=2011-07-31T18:21:46Z`
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-## <a name="enable-storage-logging"></a>Tárolók naplózásának engedélyezése
+## <a name="enable-storage-logging"></a>Tárolónaplózás engedélyezése
 
-Azure Portal, PowerShell és Storage SDK-k használatával engedélyezheti a tárolók naplózását.
+Az Azure Portal, a PowerShell és a Storage SDK-k használatával engedélyezheti a storage-naplózást.
 
-### <a name="enable-storage-logging-using-the-azure-portal"></a>A tárolók naplózásának engedélyezése a Azure Portal használatával  
+### <a name="enable-storage-logging-using-the-azure-portal"></a>Storage-naplózás engedélyezése az Azure Portalon  
 
-A Azure Portal használja a **diagnosztikai beállítások (klasszikus)** panelt a tárolási naplózás vezérléséhez, amely a Storage-fiók **menü**paneljének **figyelés (klasszikus)** szakaszában érhető el.
+Az Azure Portalon a **Diagnosztikai beállítások (klasszikus)** panel segítségével szabályozhatja a storage-naplózást, amely a storage-fiók **Menü panelének** **figyelése (klasszikus)** szakaszából érhető el.
 
-Megadhatja a naplózni kívánt tárolási szolgáltatásokat, valamint a naplózott adatok megőrzési időtartamát (napokban).  
+Megadhatja a naplózni kívánt tárolási szolgáltatásokat, valamint a naplózott adatok megőrzési időszakát (napokban).  
 
-### <a name="enable-storage-logging-using-powershell"></a>Tárolók naplózásának engedélyezése a PowerShell használatával  
+### <a name="enable-storage-logging-using-powershell"></a>Storage-naplózás engedélyezése a PowerShell használatával  
 
- A helyi gépen a PowerShell használatával konfigurálhatja a Storage-fiók tárolási naplózását, ha a **Get-AzureStorageServiceLoggingProperty** Azure PowerShell parancsmaggal szeretné lekérni az aktuális beállításokat, valamint a **set-AzureStorageServiceLoggingProperty** parancsmagot az aktuális beállítások módosításához.  
+ A PowerShell a helyi gépen konfigurálhatja a storage-naplózás a tárfiókban az Azure PowerShell-parancsmag **get-AzureStorageServiceLoggingProperty** az aktuális beállítások lekéréséhez, és a **parancsmag Set-AzureStorageServiceLoggingProperty** az aktuális beállítások módosításához.  
 
- A tárolási naplózást vezérlő parancsmagok olyan **LoggingOperations** paramétert használnak, amely a naplózandó kérelmek vesszővel tagolt listáját tartalmazó karakterlánc. A három lehetséges kérelem típusa: **olvasás**, **írás**és **Törlés**. A naplózás kikapcsolásához használja a **none** értéket a **LoggingOperations** paraméternél.  
+ A tárolónaplózást vezérlő parancsmagok olyan **LoggingOperations** paramétert használnak, amely a naplózandó kérelemtípusok vesszővel tagolt listáját tartalmazó karakterlánc. A három lehetséges kérelemtípus az **olvasás**, **írás**és **törlés.** A naplózás kikapcsolásához használja a **LoggingOperations** paraméter **none** értékét.  
 
- A következő parancs bekapcsolja az olvasási, írási és törlési kérelmek naplózását az alapértelmezett Storage-fiókban lévő Queue szolgáltatásban, a megőrzési érték pedig öt napig:  
+ A következő parancs bekapcsolja az olvasási, írási és törlési kérelmek naplózását az alapértelmezett tárfiók várólista szolgáltatásában, és a megőrzésöt öt napra állítja be:  
 
 ```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
- A következő parancs kikapcsolja az alapértelmezett Storage-fiókban lévő Table szolgáltatás naplózását:  
+ A következő parancs kikapcsolja a táblaszolgáltatás naplózását az alapértelmezett tárfiókban:  
 
 ```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
- Az Azure PowerShell-parancsmagoknak az Azure-előfizetéssel való használatához való konfigurálásával és a használni kívánt alapértelmezett Storage-fiók kiválasztásával kapcsolatos információkért lásd: [Azure PowerShell telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+ Az Azure PowerShell-parancsmagok Azure-előfizetéssel való együttműködésre történő konfigurálásáról, valamint a használandó alapértelmezett tárfiók kiválasztásáról a következő témakörben olvashat: [Az Azure PowerShell telepítése és konfigurálása.](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)  
 
-### <a name="enable-storage-logging-programmatically"></a>A tárolási naplózás engedélyezése programozott módon  
+### <a name="enable-storage-logging-programmatically"></a>Tárolónaplózás engedélyezése programozott módon  
 
- Amellett, hogy a Azure Portal vagy a Azure PowerShell parancsmagokat használja a tárolási naplózás vezérlésére, használhatja az egyik Azure Storage API-t is. Ha például .NET nyelvet használ, használhatja a Storage ügyféloldali kódtárat.  
+ Az Azure Portalon vagy az Azure PowerShell-parancsmagok használata mellett a storage-naplózás vezérléséhez is használhatja az Azure Storage API-k egyikét. Ha például .NET nyelvet használ, használhatja a Storage Client Library könyvtárat.  
 
- A **CloudBlobClient**, a **CloudQueueClient**és a **CloudTableClient** osztályok olyan metódusokkal rendelkeznek, mint például a **SetServiceProperties** és a **SetServicePropertiesAsync** , amelyek paraméterként egy **ServiceProperties** objektumot készítenek. A **ServiceProperties** objektum használatával konfigurálhatja a tárolási naplózást. Az alábbi C# kódrészlet például azt mutatja be, hogyan lehet módosítani a naplózási naplót és a várólista-naplózás megőrzési időtartamát:  
+ A **CloudBlobClient**, **CloudQueueClient**és **CloudTableClient** osztályok mindegyike rendelkezik olyan metódusokkal, mint például **a SetServiceProperties** és **a SetServicePropertiesAsync,** amelyek paraméterként a **ServiceProperties** objektumot veszik. A **ServiceProperties** objektum segítségével konfigurálhatja a tárolónaplózást. A következő C# kódrészlet például bemutatja, hogyan módosíthatja a naplózott adatokat, és hogyan lehet a várólista naplózásának megőrzési időszakát:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -173,37 +173,37 @@ serviceProperties.Logging.RetentionDays = 2;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
- További információ a tárolási naplózás konfigurálásához használható .NET-nyelvről: a [Storage ügyféloldali kódtár referenciája](https://msdn.microsoft.com/library/azure/dn261237.aspx).  
+ A .NET nyelv tárolási naplózásának konfigurálásáról a [Storage Client Library Reference című témakörben talál](https://msdn.microsoft.com/library/azure/dn261237.aspx)további információt.  
 
- A tárolási naplózásnak a REST API használatával történő konfigurálásával kapcsolatos általános információkért lásd: [Storage Analytics engedélyezése és konfigurálása](https://msdn.microsoft.com/library/azure/hh360996.aspx).  
+ A tárolónaplózás REST API-val történő konfigurálásáról a [Storage Analytics engedélyezése és konfigurálása](https://msdn.microsoft.com/library/azure/hh360996.aspx)című témakörben talál általános tudnivalókat.  
 
-## <a name="download-storage-logging-log-data"></a>Storage-naplózási napló adatai letöltése
+## <a name="download-storage-logging-log-data"></a>Storage naplózási naplóadatainak letöltése
 
- A naplófájlok megtekintéséhez és elemzéséhez le kell töltenie azokat a blobokat, amelyek tartalmazzák a helyi számítógép számára érdeklik a napló adatait. Számos Storage-Browsing eszköz lehetővé teszi a Blobok letöltését a Storage-fiókból; a naplófájlok letöltéséhez használhatja az Azure Storage csapata által biztosított parancssori Azure Copy Tool [AzCopy](storage-use-azcopy-v10.md) is.  
+ A naplóadatok megtekintéséhez és elemzéséhez töltse le azokat a blobokat, amelyek az önt érdeklő naplóadatokat tartalmazzák egy helyi számítógépre. Számos tárolóböngészési eszköz lehetővé teszi blobok letöltését a tárfiókból; az Azure Storage által biztosított parancssori Azure Copy Tool [AzCopy](storage-use-azcopy-v10.md) parancssori használatával is letöltheti a naplóadatokat.  
  
 >[!NOTE]
-> A `$logs` tároló nincs integrálva a Event Gridba, így nem fog értesítést kapni a naplófájlok írásakor. 
+> A `$logs` tároló nincs integrálva az Event Griddel, így nem kap értesítést a naplófájlok írásakor. 
 
- Győződjön meg arról, hogy letölti a kívánt naplózási adatnaplót, és hogy ne töltsön le ugyanazokat a naplókat többször:  
+ Annak érdekében, hogy biztosan letöltsd az Önt érdeklő naplóadatokat, és ne töltsön le ugyanazokat a naplóadatokat egynél többször:  
 
--   A naplózási adatokkal rendelkező Blobok dátum-és időelnevezési konvenciójának használatával nyomon követheti, hogy mely Blobok vannak már letöltve az elemzéshez, így elkerülhető, hogy az adatok többször is újra le legyenek töltve.  
+-   Használja a dátum- és időelnevezési konvenciót a naplóadatokat tartalmazó blobok esetében, hogy nyomon követhesse, mely blobokat töltötte le elemzésre, hogy elkerülje ugyanazon adatok többszöri újraletöltését.  
 
--   A naplózási adatokat tartalmazó Blobok metaadatait használva azonosíthatja azt a megadott időszakot, ameddig a blob a naplófájlokban tárolja a letölteni kívánt blob azonosításához szükséges adatokat.  
+-   A naplóadatokat tartalmazó blobok metaadatai segítségével azonosítsa azt az időszakot, amelyre vonatkozóan a blob naplóadatokat tartalmaz a letöltandó blob pontos azonosításához.  
 
-A AzCopy megkezdéséhez tekintse meg a [AzCopy első lépéseivel](storage-use-azcopy-v10.md) foglalkozó témakört. 
+Az AzCopy ismerkedése az [AzCopy első lépései: Az AzCopy ismerkedés](storage-use-azcopy-v10.md) 
 
-Az alábbi példa bemutatja, hogyan töltheti le a üzenetsor-szolgáltatás naplófájljait a 09., 10:00 és 11. május 20-án, 2014-kor kezdődő órákig.
+A következő példa bemutatja, hogyan töltheti le a várólista-szolgáltatás naplóadatait a 2014 május 20-án 09,10 és 11:00 órától kezdődő órákra.
 
 ```
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-Ha többet szeretne megtudni az egyes fájlok letöltéséről, tekintse meg az [adott fájlok letöltése](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)című témakört.
+Ha többet szeretne tudni arról, hogyan tölthet le bizonyos fájlokat, olvassa [el A fájlok letöltése (Fájl letöltése) (Fájlok letöltése)](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)témakört.
 
-Ha letöltötte a napló adatait, megtekintheti a bejegyzéseket a fájlokban. Ezek a naplófájlok olyan tagolt szöveges formátumot használnak, amelyet számos napló-olvasási eszköz képes elemezni, beleértve a Microsoft Message Analyzert (további információért lásd: útmutató a [figyeléshez, a diagnosztizáláshoz és a hibaelhárításhoz Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). A különböző eszközök különböző lehetőségekkel rendelkeznek a naplófájlok tartalmának formázásához, szűréséhez, rendezéséhez, valamint az ad-kereséshez. További információ a tárolási naplózási naplófájl formátumáról és tartalmáról: [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format) és [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
+A naplóadatok letöltése után megtekintheti a fájlok naplóbejegyzéseit. Ezek a naplófájlok olyan tagolt szövegformátumot használnak, amelyet számos naplóolvasó eszköz képes elemezni, beleértve a Microsoft Message Analyzer-t is (további információkért lásd a [Figyelés, diagnosztizálás és hibaelhárítás című témakört).](storage-monitoring-diagnosing-troubleshooting.md) A különböző eszközök különböző lehetőségeket tartalmaznak a naplófájlok formázásához, szűréséhez, rendezéséhez, hirdetéskereséséhez. A Storage Logging log fájlformátumáról és tartalmáról a [Storage Analytics naplóformátuma](/rest/api/storageservices/storage-analytics-log-format) és [a Tárolási elemzés naplózott műveletei és állapotüzenetei című témakörben](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format)
-* [Naplózott műveletek és állapotüzenetek Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
+* [Storage Analytics-napló formátuma](/rest/api/storageservices/storage-analytics-log-format)
+* [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Storage Analytics metrikák (klasszikus)](storage-analytics-metrics.md)

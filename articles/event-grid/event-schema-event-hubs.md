@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid event hubs eseménysémája
-description: Az event hubs-események az Azure Event Griddel biztosított tulajdonságait ismerteti
+title: Az Azure Event Grid eseményközpontok eseménysémája
+description: Az Eseményközpontok eseményeihez az Azure Event Grid del biztosított tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561828"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Az event hubs az Azure Event Grid eseménysémája
+# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid eseménysémája eseményközpontokhoz
 
-Ez a cikk a tulajdonságok és a séma event hubs-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk az eseményközpontok eseményeinek tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-Mintaszkriptek és oktatóanyagok listáját lásd: [az Event Hubs eseményforrás](event-sources.md#event-hubs).
+A mintaparancsfájlok és oktatóanyagok listáját az [Event Hubs eseményforrásában](event-sources.md#event-hubs)található.
 
-### <a name="available-event-types"></a>Rendelkezésre álló események típusai
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
-Az Event Hubs bocsát ki a **Microsoft.EventHub.CaptureFileCreated** eseménytípus rögzítési fájl létrehozásakor.
+Az Event Hubs a **Microsoft.EventHub.CaptureFileCreated** eseménytípust bocsátki rögzítési fájl létrehozásakor.
 
 ## <a name="example-event"></a>Példa esemény
 
-A minta esemény sémáját, az event hubs esemény következik be, amikor a capture funkciójának tárolja egy fájlt mutatja be: 
+Ez a mintaesemény egy eseményközpontok eseményének sémáját jeleníti meg, amely akkor jelenik meg, amikor a rögzítési szolgáltatás egy fájlt tárol: 
 
 ```json
 [
@@ -55,35 +55,35 @@ A minta esemény sémáját, az event hubs esemény következik be, amikor a cap
 
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény a következő legfelső szintű adatokat tartalmaz:
+Egy esemény legfelső szintű adatokat rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | string | Az esemény egyedi azonosítója. |
-| data | object | Event hub eseményadatokat. |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
+| id | sztring | Az esemény egyedi azonosítója |
+| data | objektum | Eseményközpont eseményadatai. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-Az objektum a következő tulajdonságokkal rendelkezik:
+Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| fileUrl | string | A capture-fájl elérési útja. |
-| fileType | string | A rögzítési fájl fájl típusa. |
-| partitionId | string | A szegmens azonosítóját. |
-| sizeInBytes | egész szám | A fájl mérete. |
-| eventCount | egész szám | A fájl az események száma. |
-| firstSequenceNumber | egész szám | A legkisebb sorszáma az üzenetsorból. |
-| lastSequenceNumber | egész szám | Az utolsó számát az üzenetsorból. |
-| firstEnqueueTime | string | Az első alkalommal az üzenetsorból. |
-| lastEnqueueTime | string | A legutóbbi alkalommal az üzenetsorból. |
+| fileUrl | sztring | A rögzítési fájl elérési útja. |
+| Filé | sztring | A rögzítési fájl fájltípusa. |
+| partitionId | sztring | A szilánk azonosítója. |
+| sizeInBájt | egész szám | A fájl mérete. |
+| eventCount (eseményszáma) | egész szám | A fájlban lévő események száma. |
+| firstSequenceNumber | egész szám | A várólista legkisebb sorozatszáma. |
+| lastSequenceNumber | egész szám | A várólista utolsó sorszáma. |
+| firstEnqueueTime | sztring | Az első alkalom a várólistából. |
+| lastEnqueueTime | sztring | Utoljára a várólistából. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
-* További információ az event hubs események kezelése: [Stream big Data típusú adatok egy data warehouse-bA](event-grid-event-hubs-integration.md).
+* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
+* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.
+* Az eseményközpontok eseményeinek kezeléséről a [Big Data adattárlásadat-raktárba című témakörben](event-grid-event-hubs-integration.md)talál további információt.

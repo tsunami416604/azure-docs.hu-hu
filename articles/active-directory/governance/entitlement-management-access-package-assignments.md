@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében – Azure Active Directory
-description: Megtudhatja, hogyan tekintheti meg, adhatja hozzá és távolíthat el egy hozzáférési csomaghoz tartozó hozzárendeléseket Azure Active Directory jogosultságok felügyeletében.
+title: Hozzáférési csomag hozzárendeléseimegtekintése, hozzáadása és eltávolítása az Azure AD jogosultságkezelésében – Azure Active Directory
+description: Megtudhatja, hogyan tekintheti meg, veheti fel és távolíthatja el egy hozzáférési csomag hozzárendeléseit az Azure Active Directory jogosultságkezelésében.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,91 +17,91 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262021"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag hozzárendeléseinek megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságkezelésben
 
-Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy kinek van hozzárendelve hozzáférési csomagokhoz, azok házirendjéhez és állapotához. Ha egy hozzáférési csomag megfelelő szabályzattal rendelkezik, közvetlenül is hozzárendelheti a felhasználót egy hozzáférési csomaghoz. Ez a cikk a hozzáférési csomagok hozzárendeléseinek megtekintését, hozzáadását és eltávolítását ismerteti.
+Az Azure AD jogosultságkezelés, láthatja, hogy ki van hozzárendelve a csomagok eléréséhez, a szabályzat és az állapot. Ha egy hozzáférési csomag rendelkezik megfelelő házirenddel, közvetlenül is hozzárendelheti a felhasználót egy hozzáférési csomaghoz. Ez a cikk a hozzáférési csomagok hozzárendeléseinek megtekintését, hozzáadását és eltávolítását ismerteti.
 
-## <a name="view-who-has-an-assignment"></a>Hozzárendelést használó nézet megtekintése
+## <a name="view-who-has-an-assignment"></a>A hozzárendelést végzők megtekintése
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
 
-1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
+1. A bal oldali menüben kattintson az **Access-csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **hozzárendelések** elemre az aktív hozzárendelések listájának megtekintéséhez.
+1. Kattintson **a Hozzárendelések** elemre az aktív hozzárendelések listájának megtekintéséhez.
 
-    ![Egy hozzáférési csomag hozzárendeléseinek listája](./media/entitlement-management-access-package-assignments/assignments-list.png)
+    ![Hozzáférési csomag hozzárendeléseinek listája](./media/entitlement-management-access-package-assignments/assignments-list.png)
 
-1. A további részletek megtekintéséhez kattintson egy konkrét hozzárendelésre.
+1. A további részletek megtekintéséhez kattintson egy adott hozzárendelésre.
 
-1. Ha meg szeretné tekinteni azoknak a hozzárendeléseknek a listáját, amelyeken nincs megfelelően kiépítve az összes erőforrás-szerepkör, kattintson a szűrő állapotára, és válassza a **kézbesítés**lehetőséget.
+1. Az olyan hozzárendelések listájának megtekintéséhez, amelyek nem rendelkeztek megfelelően kiépített erőforrásszerepkörökkal, kattintson a szűrő állapotára, és válassza a **Szállítás**lehetőséget.
 
-    A kézbesítési hibákkal kapcsolatos további részletekért tekintse meg a felhasználó megfelelő kérését a **kérelmek** lapon.
+    A kézbesítési hibáktovábbi részleteit a felhasználó megfelelő kérésének megkeresésével láthatja a **Kérések** lapon.
 
-1. A lejárt hozzárendelések megjelenítéséhez kattintson a szűrő állapotára, és válassza a **lejárt**lehetőséget.
+1. A lejárt hozzárendelések megtekintéséhez kattintson a szűrő állapotára, és válassza a **Lejárt**lehetőséget.
 
-1. A szűrt lista CSV-fájljának letöltéséhez kattintson a **Letöltés**gombra.
+1. A szűrt lista CSV-fájljának letöltéséhez kattintson a **Letöltés gombra.**
 
-### <a name="viewing-assignments-programmatically"></a>A hozzárendelések programozott megtekintése
+### <a name="viewing-assignments-programmatically"></a>Hozzárendelések programozott megtekintése
 
-Microsoft Graph használatával is lekérheti a hozzárendeléseket egy hozzáférési csomagban.  A megfelelő szerepkörbe tartozó, a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkező alkalmazással rendelkező felhasználó meghívhatja az API-t a [accessPackageAssignments listázásához](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+A hozzárendeléseket hozzáférési csomagban is lekérheti a Microsoft Graph használatával.  A delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkező alkalmazással rendelkező alkalmazással rendelkező felhasználó meghívhatja az API-t az [accessPackageAssignments listához.](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)
 
-## <a name="directly-assign-a-user"></a>Felhasználó közvetlen kiosztása
+## <a name="directly-assign-a-user"></a>Felhasználó közvetlen hozzárendelése
 
-Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót szeretne hozzárendelni egy hozzáférési csomaghoz, hogy a felhasználóknak ne kelljen átesniük a hozzáférési csomag igénylésének folyamatán. A felhasználók közvetlen hozzárendeléséhez a hozzáférési csomagnak rendelkeznie kell egy olyan házirenddel, amely lehetővé teszi a közvetlen rendszergazdai hozzárendeléseket.
+Bizonyos esetekben előfordulhat, hogy közvetlenül hozzá szeretne rendelni egy hozzáférési csomaghoz bizonyos felhasználókat, hogy a felhasználóknak ne kelljen végigmenniük a hozzáférési csomag kérésének folyamatán. A felhasználók közvetlen hozzárendeléséhez a hozzáférési csomagnak rendelkeznie kell egy olyan házirenddel, amely lehetővé teszi a rendszergazda közvetlen hozzárendelését.
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
 
-1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
+1. A bal oldali menüben kattintson az **Access-csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **hozzárendelések**elemre.
+1. A bal oldali menüben kattintson a **Hozzárendelések parancsra.**
 
-1. Kattintson az **új hozzárendelés** lehetőségre a felhasználó hozzáadása a csomaghoz lehetőség megnyitásához.
+1. Kattintson **az Új hozzárendelés gombra** a Felhasználó hozzáadása a hozzáféréshez csomag megnyitásához.
 
-    ![Hozzárendelések – felhasználó hozzáadása a csomag eléréséhez](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
+    ![Hozzárendelések – Felhasználó hozzáadása a hozzáférési csomaghoz](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Kattintson a **felhasználók hozzáadása** elemre azon felhasználók kiválasztásához, akik számára a hozzáférési csomagot hozzá szeretné rendelni.
+1. Kattintson a **Felhasználók hozzáadása** gombra, ha ki szeretné jelölni azokat a felhasználókat, akikhez hozzá szeretné rendelni ezt a hozzáférési csomagot.
 
-1. A **házirend kiválasztása** listából válassza ki azt a szabályzatot, amelyet a felhasználók jövőbeli kéréseinek és életciklusának szabályozására és nyomon követésére fog alkalmazni. Ha azt szeretné, hogy a kiválasztott felhasználók különböző házirend-beállításokkal rendelkezzenek, kattintson az **új házirend létrehozása** lehetőségre új szabályzat hozzáadásához.
+1. A **Házirend kiválasztása** listában válassza ki azt a házirendet, amely szabályozza és nyomon követi a felhasználók jövőbeli kéréseit és életciklusát. Ha azt szeretné, hogy a kijelölt felhasználók eltérő házirend-beállításokkal rendelkezhessenek, az **Új házirend létrehozása** gombra kattintva új házirendet vehet fel.
 
-1. Adja meg azt a dátumot és időpontot, ameddig a kiválasztott felhasználók hozzárendelésének kezdési és befejezési időpontja. Ha nincs megadva befejezési dátum, a rendszer a szabályzat életciklus-beállításait fogja használni.
+1. Állítsa be azt a dátumot és időpontot, amikor a kijelölt felhasználók hozzárendelését el szeretné kezdeni és le állítani. Ha nincs megadva a befejezési dátum, a házirend életciklus-beállításai lesznek használva.
 
-1. Igény szerint megadhatja a közvetlen hozzárendelését a rekordok megőrzése érdekében.
+1. Szükség esetén adja meg a nyilvántartási feladat ának indoklását.
 
-1. A **Hozzáadás** gombra kattintva közvetlenül hozzárendelheti a kiválasztott felhasználókat a hozzáférési csomaghoz.
+1. A **Hozzáadás gombra** kattintva közvetlenül hozzárendelheti a kijelölt felhasználókat a hozzáférési csomaghoz.
 
-    Néhány pillanat elteltével kattintson a **frissítés** gombra, hogy megjelenjenek a felhasználók a hozzárendelések listájában.
+    Néhány pillanat múlva kattintson a **Frissítés** gombra a Hozzárendelések lista felhasználóinak megtekintéséhez.
 
-### <a name="directly-assigning-users-programmatically"></a>Felhasználók közvetlen kiosztása programozott módon
+### <a name="directly-assigning-users-programmatically"></a>Felhasználók közvetlen hozzárendelése programozott módon
 
-Microsoft Graph használatával közvetlenül is hozzárendelhet egy felhasználót egy hozzáférési csomaghoz.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageAssignmentRequest létrehozásához](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+A Microsoft Graph segítségével közvetlenül is hozzárendelhet egy felhasználót egy hozzáférési csomaghoz.  A delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkező alkalmazással rendelkező alkalmazással rendelkező felhasználó meghívhatja az API-t [accessPackageAssignmentRequest létrehozásához.](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)
 
 ## <a name="remove-an-assignment"></a>Hozzárendelés eltávolítása
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
 
-1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
+1. A bal oldali menüben kattintson az **Access-csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **hozzárendelések**elemre.
+1. A bal oldali menüben kattintson a **Hozzárendelések parancsra.**
  
-1. Jelölje be azon felhasználó melletti jelölőnégyzetet, amelynek hozzárendelését el szeretné távolítani a hozzáférési csomagból. 
+1. Jelölje be azt a felhasználót, akinek a hozzárendelését el szeretné távolítani a hozzáférési csomagból. 
 
-1. Kattintson a bal oldali ablaktábla tetején található **Eltávolítás** gombra. 
+1. Kattintson az **Eltávolítás** gombra a bal oldali ablaktábla tetején. 
  
-    ![Hozzárendelések – felhasználó eltávolítása a hozzáférési csomagból](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+    ![Hozzárendelések – Felhasználó eltávolítása a hozzáférési csomagból](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
 
-    Ekkor megjelenik egy értesítés, amely tájékoztatja, hogy a hozzárendelés el lett távolítva. 
+    Megjelenik egy értesítés, amely tájékoztatja Önt arról, hogy a hozzárendelést eltávolították. 
 
 ## <a name="next-steps"></a>További lépések
 

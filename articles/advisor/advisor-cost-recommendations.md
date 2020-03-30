@@ -1,69 +1,69 @@
 ---
-title: A szolgáltatási költségek csökkentése Azure Advisor használatával
-description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
+title: A szolgáltatási költségek csökkentése az Azure Advisor használatával
+description: Az Azure Advisor használatával optimalizálhatja az Azure-telepítések költségeit.
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259694"
 ---
-# <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
+# <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése az Azure Advisor használatával
 
-Az Advisor az inaktív és a kihasználatlan erőforrások azonosításával segít optimalizálni és csökkenteni az Azure-t teljes egészében. A Cost javaslatait az Advisor irányítópultjának **Cost (Cost** ) lapján érheti el.
+Az Advisor segít optimalizálni és csökkenteni a teljes Azure-kiadásokat az kihasználatlan és kihasználatlan erőforrások azonosításával.Költségjavaslatokat az Advisor **irányítópultköltség** lapján kaphat.
 
-## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>A virtuális gépek a kihasználatlan példányok átméretezésével vagy leállításával optimalizálható 
+## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizálja virtuálisgép-költségeit az alacsony kihasználtságú példányok átméretezésével vagy leállításával 
 
-Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek a tervezéssel, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. Az Advisor Advanced értékelési modelljei úgy tekintik meg a virtuális gépeket, hogy a processzor kihasználtságának maximális értéke legfeljebb 3% legyen, és a hálózati kihasználtság kevesebb, mint 2% a 7 napos időszakra P95th. A virtuális gépek megfelelő méretűek, ha az aktuális terhelést egy kisebb SKU-ban (ugyanabban az SKU-családban) vagy egy kisebb számú példányon helyezi el, hogy az aktuális terhelés ne haladja meg a 80%-os kihasználtságot, ha a nem felhasználó felé irányuló munkaterhelések, és nem haladják meg a 40%-ot a felhasználó felé irányuló munkaterhelés Itt a számítási feladatok típusát a számítási feladatok CPU-kihasználtsági jellemzőinek elemzésével határozzuk meg.
+Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. A Tanácsadó speciális kiértékelési modelljei virtuális gépeket vesznek figyelembe a leállításhoz, ha a CPU-használat maximális értékének P95-ös része kevesebb, mint 3%, a hálózati kihasználtság pedig kevesebb, mint 2% egy 7 napos időszak alatt. Virtuális gépek akkor tekinthető a megfelelő méretű, ha lehetséges, hogy illeszkedjen az aktuális terhelésegy kisebb Termékváltozat (ugyanazon termékváltozat családon belül), vagy egy kisebb számú # példány, így az aktuális terhelés nem megy át 80%-os kihasználtság, ha nem a felhasználó előtt munkaterhelések és nem haladja meg a 40%, ha a felhasználó felé néző számítási feladatok. Itt a számítási feladatok típusát a számítási feladat CPU-kihasználtsági jellemzőinek elemzésével határozzuk meg.
 
-Az ajánlott műveletek leállnak, és a rendszer a számára ajánlott erőforrásra vonatkozik. Az Advisor a javasolt műveletek becsült költségmegtakarítását jeleníti meg – átméretezheti vagy leállíthatja. Emellett a javasolt művelet átméretezéséhez az Advisor az aktuális és a célként megadott SKU-információkat is biztosítja. 
+Az ajánlott műveletek leállítása vagy átméretezése, amely az erőforrás ajánlott. Az Advisor megmutatja az ajánlott műveletek – átméretezés vagy leállítás – becsült költségmegtakarítását. Az ajánlott művelet átméretezéséhez az Advisor aktuális és cél termékváltozat-információkat is biztosít. 
 
-Ha agresszíven szeretne lenni a kihasználatlan virtuális gépek azonosításához, a CPU-kihasználtsági szabályt előfizetések alapján is módosíthatja.
+Ha azt szeretné, hogy agresszívebb azonosítására kihasználatlan virtuális gépek, beállíthatja a CPU-kihasználtsági szabály egy előfizetési alapon.
 
-## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>A költségek csökkentése a nem kiépített ExpressRoute-áramkörök eltávolításával
+## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Csökkentse a költségeket a ki nem épített ExpressRoute-áramkörök eltávolításával
 
-Az Advisor azokat az ExpressRoute-áramköröket azonosítja, amelyekben a szolgáltató állapota nem több mint egy hónapra van *kiépítve* , és az áramkör törlését javasolja, ha nem tervezi az áramkör kiépítését a kapcsolati szolgáltatóval.
+Az Advisor azonosítja azokat az ExpressRoute-áramköröket, amelyek több mint egy hónapja *nincs kiépítve,* és javasolja az áramkör törlését, ha nem tervezi az áramkör kiépítését a kapcsolatszolgáltatóval.
 
-## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Csökkentse a költségeket a tétlen virtuális hálózati átjárók törlésével vagy újrakonfigurálásával
+## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Költségek csökkentése az inaktív virtuális hálózati átjárók törlésével vagy újrakonfigurálásával
 
-Az Advisor olyan virtuális hálózati átjárókat azonosít, amelyek több mint 90 napig inaktívak. Mivel ezeket az átjárókat óránként számlázzák, érdemes lehet újrakonfigurálni vagy törölni őket, ha már nem kívánja használni őket. 
+Az Advisor azonosítja azokat a virtuális hálózati átjárókat, amelyek több mint 90 napja tétlenek. Mivel ezek az átjárók számlázása óránként van számlázva, érdemes újrakonfigurálni vagy törlésüket, ha már nem kívánja használni őket. 
 
-## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Fenntartott virtuálisgép-példányok vásárlása az utólagos elszámolású költségek megtakarítása érdekében
+## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Vásároljon fenntartott virtuálisgép-példányokat a használatalapú fizetéshez képest elért pénzmegtakarítás érdekében
 
-Az Advisor áttekinti a virtuális gépek használatát az elmúlt 30 napban, és megállapítja, hogy pénzt takaríthat meg egy Azure-foglalás megvásárlásával. Az Advisor megmutatja azokat a régiókat és méreteket, ahol a legtöbb megtakarítás megtakarítást eredményez, és a megvásárolt foglalások becsült megtakarítását fogja megjeleníteni. Az Azure-foglalások segítségével előre megvásárolhatja a virtuális gépek alapdíjait. A kedvezmények automatikusan érvényesek az új vagy meglévő virtuális gépekre, amelyek mérete és régiója megegyezik a foglalásokkal. [További információ a Azure Reserved VM Instancesról.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Az Advisor az elmúlt 30 napban áttekinti a virtuális gép használatát, és meghatározza, hogy megtakaríthat-e pénzt egy Azure-foglalás megvásárlásával. Az Advisor megmutatja azokat a régiókat és méreteket, ahol potenciálisan a legtöbb megtakarítást tudja elérni, és megmutatja a foglalások megvásárlásából származó becsült megtakarításokat. Az Azure-foglalások segítségével előre megvásárolhatja a virtuális gépek alapköltségeit. A kedvezmények automatikusan vonatkoznak az új vagy meglévő virtuális gépekre, amelyek mérete és régiója megegyezik a foglalásokkal. [További információ az Azure által fenntartott virtuálisgép-példányokról.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-Az Advisor emellett értesíti Önt a fenntartott példányokról, amelyek a következő 30 napban lejárnak. Javasoljuk, hogy az utólagos elszámolású díjszabás kifizetésének elkerüléséhez új fenntartott példányokat vásároljon.
+Az Advisor a következő 30 napban lejáró fenntartott példányokról is értesíti Önt. Azt fogja javasolni, hogy vásároljon új fenntartott példányokat, hogy elkerülje a felosztó-ki-ki-díj szabásfizetést.
 
-## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>A nem társított nyilvános IP-címek törlése a pénz megtakarítása érdekében
+## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>A nem társított nyilvános IP-címek törlése, hogy pénzt takarítson meg
 
-Az Advisor olyan nyilvános IP-címeket azonosít, amelyek jelenleg nem tartoznak Azure-erőforrásokhoz, például Terheléselosztóokhoz vagy virtuális gépekhez. Ezek a nyilvános IP-címek névleges díjat számítanak fel. Ha nem tervezi használni őket, a törlésük költségmegtakarítást eredményezhet.
+Az Advisor azonosítja azokat a nyilvános IP-címeket, amelyek jelenleg nincsenek azure-erőforrásokhoz társítva, például a terheléselosztókhoz vagy a virtuális gépekhez. Ezek a nyilvános IP-címek névleges díjval érkeznek. Ha nem tervezi használni őket, a törlésük költségmegtakarítást eredményezhet.
 
-## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Sikertelen Azure Data Factory folyamatok törlése
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Meghiúsult Azure Data Factory-folyamatok törlése
 
-A Azure Advisor felismeri Azure Data Factory folyamatokat, amelyek többször is sikertelenek, és azt javasoljuk, hogy hárítsa el a problémákat, vagy törölje a sikertelen folyamatokat, ha már nincs rájuk szükség. Ezeknek a folyamatoknak a számlázása akkor is történik, ha nem szolgálnak Önnek, amíg nem működnek. 
+Az Azure Advisor észleli az Azure Data Factory-folyamatok, amelyek ismételten sikertelen, és azt javasolja, hogy oldja meg a problémákat, vagy törölje a hibás folyamatokat, ha már nincs rájuk szükség. Ezeket a folyamatokat akkor is ki számlázunk, ha nem szolgálják ki Önt, amíg sikertelenek. 
 
-## <a name="use-standard-snapshots-for-managed-disks"></a>Szabványos Pillanatképek használata Managed Diskshoz
-A 60%-os megtakarítás érdekében javasoljuk, hogy a pillanatképeket a Standard szintű Storage-ban tárolja, a szülőlemez tárolási típusától függetlenül. Ez a beállítás az alapértelmezett beállítás Managed Disks Pillanatképek esetében. Azure Advisor azonosítja a Premium Storage tárolt pillanatképeket, és javasolja, hogy a pillanatképet a premiumról a standard Storage-ra kell áttelepíteni. [További információ a felügyelt lemez díjszabásáról](https://aka.ms/aa_manageddisksnapshot_learnmore)
+## <a name="use-standard-snapshots-for-managed-disks"></a>Felügyelt lemezek szabványos pillanatképeinek használata
+A 60%-os megtakarítás érdekében javasoljuk, hogy a pillanatképeket a Standard szintű Storage-ban tárolja, a szülőlemez tárolási típusától függetlenül. Ez a beállítás az alapértelmezett beállítás a felügyelt lemezek pillanatképeihez. Az Azure Advisor azonosítja a prémium szintű storage-ban tárolt pillanatképeket, és javasolja a pillanatkép prémium verzióról standard tárhelyre való áttelepítését. [További információ a felügyelt lemez díjszabásáról](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="utilize-lifecycle-management"></a>Életciklus-felügyelet használata
-A Azure Advisor az Azure Blob Storage-objektumok számával, a teljes mérettel és a tranzakciókkal kapcsolatos intelligenciát fogja használni annak észleléséhez, hogy egy vagy több Storage-fiók a legjobb megoldás-e az életciklus-felügyelethez a rétegek adatai számára. Arra fogja kérni, hogy életciklus-kezelési szabályokat hozzon létre, hogy a tárolási költségek optimalizálása érdekében automatikusan leszűkítse az adatait az Azure Blob Storage szolgáltatásban az alkalmazások kompatibilitása érdekében.
+Az Azure Advisor az Azure blob storage-objektumok számával, a teljes mérettel és a tranzakciókkal kapcsolatos intelligenciát használja annak észlelésére, hogy egy vagy több tárfiók alkalmas-e arra, hogy lehetővé tegye az életciklus-kezelés a rétegadatokhoz. A rendszer kérni fogja, hogy hozzon létre életciklus-kezelési szabályokat, hogy automatikusan rétegezze az adatokat a ritka elérésű vagy az archiválási szolgáltatásba, hogy optimalizálja a tárolási költségeket, miközben megőrzi az adatokat az Azure blob storage-ban az alkalmazások kompatibilitása érdekében.
 
-## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>A Cost javaslatokhoz való hozzáférés Azure Advisor
+## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>A költségjavaslatok elérése az Azure Advisorban
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-1. Keresse meg és válassza ki az [**Advisor**](https://aka.ms/azureadvisordashboard) elemet bármelyik oldalon.
+1. Keressen rá és válassza ki az [**Advisort**](https://aka.ms/azureadvisordashboard) bármelyik oldalról.
 
-1. Az **Advisor** irányítópulton válassza a **Cost (Cost** ) lapot.
+1. Az **Advisor** irányítópulton válassza a **Költség** lapot.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
-* [Az Advisor bemutatása](advisor-overview.md)
-* [Első lépések](advisor-get-started.md)
-* [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
-* [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
-* [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
-* [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
+Ha többet szeretne megtudni az Advisor-ajánlásokról, olvassa el a következő témakört:
+* [Bevezetés a tanácsadó](advisor-overview.md)
+* [Induláshoz](advisor-get-started.md)
+* [Tanácsadó teljesítményre vonatkozó ajánlásai](advisor-performance-recommendations.md)
+* [Tanácsadó magas rendelkezésre állásra vonatkozó ajánlásai](advisor-high-availability-recommendations.md)
+* [Tanácsadó biztonsági ajánlásai](advisor-security-recommendations.md)
+* [Az Advisor Operational Excellence ajánlásai](advisor-operational-excellence-recommendations.md)

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Firewall szabályfeldolgozási logikája
-description: Azure Firewall rendelkezik NAT-szabályokkal, hálózati szabályokkal és alkalmazási szabályokkal. A szabályok feldolgozása a szabály típusa szerint történik.
+description: Az Azure Firewall rendelkezik NAT-szabályokkal, hálózati szabályokkal és alkalmazásszabályokkal. A szabályok feldolgozása a szabálytípusnak megfelelően.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,93 +8,93 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264777"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
-Megadhatja a NAT-szabályokat, a hálózati szabályokat és az alkalmazásokra vonatkozó szabályokat a Azure Firewall. A szabályok feldolgozása a szabály típusa szerint történik. 
+NAT-szabályokat, hálózati szabályokat és alkalmazásokat konfigurálhat az Azure Firewall ben. A szabályok feldolgozása a szabálytípusnak megfelelően. 
 
 > [!NOTE]
-> Ha engedélyezi a fenyegetést jelentő intelligencia-alapú szűrést, ezek a szabályok a legmagasabb prioritást jelentik, és a rendszer mindig feldolgozza azokat. A fenyegetés-intelligencia szűrése megtagadhatja a forgalmat a konfigurált szabályok feldolgozása előtt. További információ: [Azure Firewall Threat Intelligence-based Filtering](threat-intel.md).
+> Ha engedélyezi a fenyegetésfelderítésen alapuló szűrést, ezek a szabályok a legmagasabb prioritásúak, és mindig először kerülnek feldolgozásra. A fenyegetés-intelligencia szűrés megtagadhatja a forgalmat, mielőtt bármely konfigurált szabályok feldolgozása. További információ: [Azure Firewall fenyegetésintelligencia-alapú szűrés.](threat-intel.md)
 
 ## <a name="outbound"></a>Kimenő
 
 ### <a name="network-rules-and-applications-rules"></a>Hálózati szabályok és alkalmazások szabályai
 
-A hálózati szabályok és az alkalmazás szabályainak konfigurálásakor a hálózati szabályok prioritási sorrendben lesznek alkalmazva az alkalmazás szabályai előtt. A szabályok leállnak. Így ha a rendszer egyezést talál egy hálózati szabályban, a rendszer nem dolgozza fel más szabályokat.  Ha nincs megfelelő hálózati szabály, és ha a protokoll HTTP, HTTPS vagy MSSQL, akkor a rendszer a csomagot prioritási sorrendben értékeli ki az alkalmazás szabályai alapján. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az [infrastruktúra-szabálygyűjtemény](infrastructure-fqdns.md)alapján. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
+Ha hálózati és alkalmazásszabályokat konfigurál, a hálózati szabályok prioritási sorrendben kerülnek alkalmazásra az alkalmazásszabályok előtt. A szabályok megszűnnek. Ha tehát egyezést talál egy hálózati szabályban, a rendszer nem dolgoz fel más szabályokat.  Ha nincs hálózati szabály egyezés, és ha a protokoll HTTP, HTTPS vagy MSSQL, akkor a csomagot az alkalmazásszabályok prioritási sorrendben értékelik ki. Ha a rendszer továbbra sem talál egyezést, a csomag kiértékelése az [infrastruktúraszabály-gyűjteményalapján](infrastructure-fqdns.md)történik. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
 
 ## <a name="inbound"></a>Bejövő
 
 ### <a name="nat-rules"></a>NAT-szabályok
 
-A bejövő internetkapcsolatot a célként megadott hálózati címfordítás (DNAT) konfigurálásával engedélyezheti [az oktatóanyag: a bejövő forgalom szűrése Azure Firewall DNAT a Azure Portal használatával](tutorial-firewall-dnat.md). A NAT-szabályok prioritásban lesznek alkalmazva a hálózati szabályok előtt. Ha talál egyezést, egy implicit megfelelő hálózati szabályt ad hozzá a lefordított forgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak.
+A bejövő internetkapcsolat az oktatóanyagban leírtak szerint a célhálózati címfordítás (DNAT) konfigurálásával [engedélyezhető: Szűrje a bejövő forgalmat az Azure Firewall DNST szolgáltatással az Azure Portal használatával.](tutorial-firewall-dnat.md) A Hálózati etta-szabályok a hálózati szabályok előtt prioritásként kerülnek alkalmazásra. Ha egyezést talál, a fordítást engedélyező implicit megfelelő hálózati szabály hozzáadódik. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak.
 
-Az alkalmazás szabályai nem alkalmazhatók a bejövő kapcsolatokra. Ha tehát a bejövő HTTP/S forgalmat szeretné szűrni, használja a webalkalmazási tűzfalat (WAF). További információ: [Mi az az Azure webalkalmazási tűzfal?](../web-application-firewall/overview.md)
+Alkalmazásszabályok nem vonatkoznak a bejövő kapcsolatokra. Ezért ha szűrni szeretné a bejövő HTTP/S-forgalmat, használja a WebApplication Firewall (WAF) szolgáltatást. További információ: [Mi az Azure webalkalmazás-tűzfal?](../web-application-firewall/overview.md)
 
 ## <a name="examples"></a>Példák
 
-A következő példák a szabályok néhány kombinációjának eredményét mutatják be.
+A következő példák a szabálykombinációk némelyikének eredményeit mutatják be.
 
-### <a name="example-1"></a>1\. példa
+### <a name="example-1"></a>1. példa
 
-A google.com való kapcsolódás a megfelelő hálózati szabály miatt engedélyezett.
+A google.com való kapcsolat egy megfelelő hálózati szabály miatt engedélyezett.
 
 **Hálózati szabály**
 
 - Művelet: Engedélyezés
 
 
-|név  |Protokoll  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
+|név  |Protocol (Protokoll)  |Forrás típusa  |Forrás  |Cél típusa  |Rendeltetési hely  |Célportok|
 |---------|---------|---------|---------|----------|----------|--------|
-|Engedélyezés – web     |TCP|IP-cím|*|IP-cím|*|80,443
+|Web engedélyezése     |TCP|IP-cím|*|IP-cím|*|80 443
 
 **Alkalmazási szabály**
 
-- Művelet: megtagadás
+- Művelet: Megtagadás
 
-|név  |Forrás típusa  |Forrás  |Protokoll: Port|Cél teljes tartománynevek|
+|név  |Forrás típusa  |Forrás  |protokoll:port|Cél teljes tartományn-ok|
 |---------|---------|---------|---------|----------|----------|
-|Megtagadás – Google     |IP-cím|*|http: 80, https: 443|google.com
+|Deny-google     |IP-cím|*|http:80,https:443|google.com
 
-**Találat**
+**Eredmény**
 
-A google.com-kapcsolat engedélyezve van, mert a csomag megfelel az *Allow-web* Network szabálynak. Ezen a ponton a szabályok feldolgozása leáll.
+A kapcsolat google.com engedélyezett, mert a csomag megfelel a *webhálózati engedélyezési* szabálynak. A szabály feldolgozása ezen a ponton leáll.
 
-### <a name="example-2"></a>2\. példa
+### <a name="example-2"></a>2. példa
 
-Az SSH-forgalmat a rendszer megtagadja, mert egy magasabb prioritású hálózati szabálygyűjtemény *tiltja* azt.
+Az SSH-forgalom megtagadva, mert egy magasabb prioritású Hálózati szabály *gyűjteményének megtagadása* blokkolja azt.
 
-**Hálózati szabálygyűjtemény 1. gyűjteménye**
+**Hálózati szabálygyűjtemény 1**
 
-- Név: Allow-Collection
+- Név: Engedélyezési gyűjtés
 - Prioritás: 200
 - Művelet: Engedélyezés
 
-|név  |Protokoll  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
+|név  |Protocol (Protokoll)  |Forrás típusa  |Forrás  |Cél típusa  |Rendeltetési hely  |Célportok|
 |---------|---------|---------|---------|----------|----------|--------|
-|Engedélyezés – SSH     |TCP|IP-cím|*|IP-cím|*|22
+|Engedélyezés-SSH     |TCP|IP-cím|*|IP-cím|*|22
 
-**Hálózati szabályok gyűjteménye 2**
+**Hálózati szabály gyűjtemény 2**
 
-- Név: megtagadás – gyűjtemény
+- Név: Megtagadás-gyűjtemény
 - Prioritás: 100
-- Művelet: megtagadás
+- Művelet: Megtagadás
 
-|név  |Protokoll  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
+|név  |Protocol (Protokoll)  |Forrás típusa  |Forrás  |Cél típusa  |Rendeltetési hely  |Célportok|
 |---------|---------|---------|---------|----------|----------|--------|
-|Megtagadás – SSH     |TCP|IP-cím|*|IP-cím|*|22
+|Megtagadás-SSH     |TCP|IP-cím|*|IP-cím|*|22
 
-**Találat**
+**Eredmény**
 
-Az SSH-kapcsolatok megtagadva, mert egy magasabb prioritású hálózati szabálygyűjtemény blokkolja azt. Ezen a ponton a szabályok feldolgozása leáll.
+Az SSH-kapcsolatok at a rendszer megtagadja, mert egy magasabb prioritású hálózati szabálygyűjtemény blokkolja azt. A szabály feldolgozása ezen a ponton leáll.
 
-## <a name="rule-changes"></a>Szabály módosításai
+## <a name="rule-changes"></a>Szabályváltozások
 
-Ha módosít egy szabályt a korábban engedélyezett forgalom megtagadására, a rendszer minden kapcsolódó meglévő munkamenetet elvet.
+Ha módosítja a szabályt, hogy megtagadja a korábban engedélyezett forgalmat, a vonatkozó meglévő munkamenetek elmennek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).
+- Ismerje meg, hogyan [telepítheti és konfigurálhatja az Azure-tűzfalat.](tutorial-firewall-deploy-portal.md)

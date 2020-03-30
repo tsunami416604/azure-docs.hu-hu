@@ -1,6 +1,6 @@
 ---
-title: Azure Adatkezelő-betöltési műveletek figyelése diagnosztikai naplók használatával
-description: Ismerje meg, hogyan állíthatja be az Azure Adatkezelő diagnosztikai naplóit a betöltési műveletek figyeléséhez.
+title: Az Azure Data Explorer betöltési műveleteinek figyelése diagnosztikai naplók használatával
+description: Megtudhatja, hogyan állíthat be diagnosztikai naplókat az Azure Data Explorer betöltési műveletek figyelésére.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,76 +8,76 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277433"
 ---
-# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Azure Adatkezelő-betöltési műveletek figyelése diagnosztikai naplók használatával (előzetes verzió)
+# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Az Azure Data Explorer betöltési műveleteinek figyelése diagnosztikai naplók használatával (előzetes verzió)
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti a (betöltés) típusú adatot egy adatbázisba, így lekérdezéseket futtathat. [Azure monitor diagnosztikai naplók](/azure/azure-monitor/platform/diagnostic-logs-overview) az Azure-erőforrások működésével kapcsolatos információkat biztosítanak. Az Azure Adatkezelő diagnosztikai naplókat használ a betöltési sikerek és hibák elemzéséhez. A műveleti naplókat az Azure Storage-ba, az Event Hubbe vagy a Log Analyticsba exportálhatja a betöltési állapot figyeléséhez. Az Azure Storage-ból és az Azure Event hub-ból származó naplók további elemzés céljából átirányíthatók az Azure Adatkezelő-fürt egyik táblájába.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához először egy fürtöt hozunk létre, majd egy vagy több adatbázist a fürtben. Ezután az adatokat egy adatbázis táblájába kell betöltenie (betölteni), így lekérdezéseket futtathat ellene. [Az Azure Monitor diagnosztikai naplói](/azure/azure-monitor/platform/diagnostic-logs-overview) adatokat szolgáltatnak az Azure-erőforrások működéséről. Az Azure Data Explorer diagnosztikai naplókat használ a betöltési sikerességekkel és hibákkal kapcsolatos elemzésekhez. A műveletnaplók at exportálhatja az Azure Storage, az Event Hub vagy a Log Analytics szolgáltatásba a betöltési állapot figyeléséhez. Az Azure Storage és az Azure Event Hub naplói további elemzés céljából átirányíthatók az Azure Data Explorer-fürt egy táblájába.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
-* Hozzon létre egy [fürtöt és egy adatbázist](create-cluster-database-portal.md).
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiókot.](https://azure.microsoft.com/free/)
+* Hozzon létre [egy fürtöt és adatbázist](create-cluster-database-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Diagnosztikai naplók beállítása Azure Adatkezelő-fürthöz
+## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Diagnosztikai naplók beállítása egy Azure Data Explorer-fürthöz
 
-A diagnosztikai naplók használatával konfigurálhatja a következő naplózási adatkészletek gyűjteményét:
-* Sikeres betöltési műveletek: ezek a naplók információkkal szolgálnak a sikeresen befejezett betöltési műveletekről.
-* Sikertelen betöltési műveletek: ezek a naplók részletes információkat tartalmaznak a sikertelen betöltési műveletekről, beleértve a hibák részleteit. 
+A diagnosztikai naplók a következő naplóadatok gyűjtésének konfigurálására használhatók:
+* Sikeres betöltési műveletek: Ezek a naplók a sikeresen befejezett betöltési műveletekadatait tartalmazják.
+* Sikertelen betöltési műveletek: Ezek a naplók részletes információkat tartalmaznak a sikertelen betöltési műveletekről, beleértve a hiba részleteit is. 
 
-Az adatok ezután archiválva lesznek egy Storage-fiókba, egy Event hub streambe áramlanak, vagy az Ön által megadott specifikációknak megfelelően a Log Analyticsba lesznek küldve.
+Az adatokat ezután archiválja egy Tárfiókba, streameli egy Event Hubba, vagy elküldi a Log Analytics-nek, a specifikációknak megfelelően.
 
 ### <a name="enable-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
 
-A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez hajtsa végre a következő lépéseket:
+A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez tegye a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki a figyelni kívánt Azure adatkezelő fürterőforrás-erőforrást.
-1. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
+1. Az [Azure Portalon](https://portal.azure.com)válassza ki az Azure Data Explorer fürterőforrást, amelyet figyelni szeretne.
+1. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.
   
     ![Diagnosztikai naplók hozzáadása](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
-1. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
-1. A **diagnosztikai beállítások** ablakban:
+1. Válassza **a Diagnosztikai beállítás hozzáadása lehetőséget.**
+1. A **Diagnosztika beállításai** ablakban:
  
     ![Diagnosztikai beállítások konfigurálása](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
 
-    1. Válassza ki a diagnosztikai beállítás **nevét** .
-    1. Válasszon ki egy vagy több célt: egy Storage-fiókot, egy Event hubot vagy egy Log Analytics.
-    1. Válassza ki a gyűjteni kívánt naplókat: `SucceededIngestion` vagy `FailedIngestion`.
-    1. Válassza ki a gyűjteni kívánt [metrikákat](using-metrics.md#supported-azure-data-explorer-metrics) (nem kötelező).  
+    1. Válassza a **Név lehetőséget** a diagnosztikai beállításhoz.
+    1. Jelöljön ki egy vagy több célt: egy tárfiókot, az Event Hubot vagy a Log Analytics-et.
+    1. Válassza ki az összegyűjtendő naplókat: `SucceededIngestion` vagy `FailedIngestion`a .
+    1. Válassza ki a begyűjtendő [mérőszámokat](using-metrics.md#supported-azure-data-explorer-metrics) (nem kötelező).  
     1. Válassza a **Mentés** lehetőséget az új diagnosztikai naplók beállításainak és metrikáinak mentéséhez.
-    1. Hozzon létre egy **új támogatási kérelmet** a Azure Portal a diagnosztikai naplók aktiválásának kérelmezéséhez.
+    1. Hozzon létre egy **új támogatási kérelmet** az Azure Portalon a diagnosztikai naplók aktiválásának kéréséhez.
 
-Néhány perc múlva új beállítások lesznek beállítva. A naplók ezután megjelennek a konfigurált archiválási tárolóban (Storage-fiók, Event hub vagy Log Analytics). 
+Az új beállítások néhány perc múlva beállíthatók. A naplók ezután megjelennek a konfigurált archiválási célban (tárfiók, Event Hub vagy Log Analytics). 
 
 ## <a name="diagnostic-logs-schema"></a>Diagnosztikai naplók sémája
 
-Az összes [Azure monitor diagnosztikai napló közös legfelső szintű sémával rendelkezik](/azure/azure-monitor/platform/diagnostic-logs-schema). Az Azure Adatkezelő saját eseményeihez egyedi tulajdonságokkal rendelkezik. Az összes napló JSON formátumban van tárolva.
+Az [Azure Monitor összes diagnosztikai naplója közös legfelső szintű sémával rendelkezik.](/azure/azure-monitor/platform/diagnostic-logs-schema) Az Azure Data Explorer egyedi tulajdonságokkal rendelkezik a saját események. Minden napló JSON formátumban van tárolva.
 
 ### <a name="ingestion-logs-schema"></a>Betöltési naplók sémája
 
-A JSON-karakterláncok naplózása a következő táblázatban felsorolt elemeket tartalmazza:
+A napló JSON-karakterláncai az alábbi táblázatban felsorolt elemeket tartalmaznak:
 
-|Name (Név)               |Leírás
+|Név               |Leírás
 |---                |---
 |time               |A jelentés időpontja
-|resourceId         |Erőforrás-azonosító Azure Resource Manager
-|operationName      |A művelet neve: "MICROSOFT. KUSTO/FÜRTÖK/BETÖLTÉS/MŰVELET
-|operationVersion   |Séma verziója: "1,0" 
-|category           |A művelet kategóriája. `SucceededIngestion` vagy `FailedIngestion`. A tulajdonságok a [sikeres művelet](#successful-ingestion-operation-log) vagy a [sikertelen művelet](#failed-ingestion-operation-log)esetében különböznek.
-|properties         |A művelet részletes információi.
+|resourceId         |Az Azure Resource Manager erőforrásazonosítója
+|operationName      |A művelet neve: 'MICROSOFT. KUSTO/CLUSTERS/BETEJ/CSELEKVÉS"
+|operationVersion   |Sémaverzió: '1.0' 
+|category           |A művelet kategóriája. `SucceededIngestion` vagy `FailedIngestion`. A tulajdonságok különböznek a sikeres vagy [sikertelen művelethez.](#failed-ingestion-operation-log) [successful operation](#successful-ingestion-operation-log)
+|properties         |Részletes információk a műveletről.
 
-#### <a name="successful-ingestion-operation-log"></a>Sikeres betöltési műveleti napló
+#### <a name="successful-ingestion-operation-log"></a>Sikeres betöltési műveletnapló
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -98,21 +98,21 @@ A JSON-karakterláncok naplózása a következő táblázatban felsorolt elemeke
     }
 }
 ```
-**A sikeres művelet diagnosztikai naplójának tulajdonságai**
+**A sikeres műveletdiagnosztikai napló tulajdonságai**
 
-|Name (Név)               |Leírás
+|Név               |Leírás
 |---                |---
-|succeededOn        |Betöltési idő
-|operationId        |Azure Adatkezelő betöltési művelet azonosítója
+|succeededOn        |A lenyelés befejezésének időpontja
+|operationId        |Az Azure Data Explorer betöltési műveletazonosítója
 |adatbázis           |A céladatbázis neve
-|table              |A céltábla neve
-|ingestionSourceId  |A betöltési adatforrás azonosítója
-|ingestionSourcePath|A betöltési adatforrás vagy a blob URI elérési útja
+|tábla              |A céltábla neve
+|lenyelésForrásazonosító  |A betöltési adatforrás azonosítója
+|betöltésforrás-vezérlő|A betöltési adatforrás vagy blob URI elérési útja
 |rootActivityId     |Tevékenységazonosító
 
-#### <a name="failed-ingestion-operation-log"></a>Sikertelen betöltési műveleti napló
+#### <a name="failed-ingestion-operation-log"></a>Sikertelen betöltési művelet naplója
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -139,25 +139,25 @@ A JSON-karakterláncok naplózása a következő táblázatban felsorolt elemeke
 }
 ```
 
-**Sikertelen művelet diagnosztikai naplójának tulajdonságai**
+**A sikertelen műveletdiagnosztikai napló tulajdonságai**
 
-|Name (Név)               |Leírás
+|Név               |Leírás
 |---                |---
-|failedOn           |Betöltési idő
-|operationId        |Azure Adatkezelő betöltési művelet azonosítója
+|nem sikerültOn           |A lenyelés befejezésének időpontja
+|operationId        |Az Azure Data Explorer betöltési műveletazonosítója
 |adatbázis           |A céladatbázis neve
-|table              |A céltábla neve
-|ingestionSourceId  |A betöltési adatforrás azonosítója
-|ingestionSourcePath|A betöltési adatforrás vagy a blob URI elérési útja
+|tábla              |A céltábla neve
+|lenyelésForrásazonosító  |A betöltési adatforrás azonosítója
+|betöltésforrás-vezérlő|A betöltési adatforrás vagy blob URI elérési útja
 |rootActivityId     |Tevékenységazonosító
 |Részletek            |A hiba és a hibaüzenet részletes leírása
-|errorCode          |Hibakód 
-|failureStatus      |`Permanent` vagy `Transient`. Egy átmeneti hiba esetén az Újrapróbálkozás sikeres lehet.
-|originatesFromUpdatePolicy|Igaz, ha a hiba egy frissítési házirendből származik
-|shouldRetry        |Igaz, ha az Újrapróbálkozás sikeres lehet
+|hibakód          |Hibakód 
+|hibaÁllapota      |`Permanent` vagy `Transient`. Egy átmeneti hiba újrapróbálkozása sikeres lehet.
+|originatesFromUpdatePolicy|Igaz, ha a hiba frissítési házirendből származik
+|kellRetry        |Igaz, ha az újrapróbálkozás sikeres lehet
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: figyelési adatfeldolgozás és-lekérdezés az Azure Adatkezelő](ingest-data-no-code.md)
-* [Metrikák használata a fürt állapotának figyeléséhez](using-metrics.md)
+* [Oktatóanyag: Adatok betöltése és lekérdezésfigyelési adatok betöltése az Azure Data Explorerben](ingest-data-no-code.md)
+* [Metrikák használata a fürtállapot monitorozásához](using-metrics.md)
 

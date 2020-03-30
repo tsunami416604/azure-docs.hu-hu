@@ -1,24 +1,24 @@
 ---
-title: Kvóta hibái
-description: Ismerteti, Hogyan oldhatók fel az erőforrás-kvótával kapcsolatos hibák az erőforrások Azure Resource Manager használatával történő telepítésekor.
+title: Kvótahibák
+description: Ez a témakör ismerteti, hogyan oldhatja meg az erőforráskvóta-hibákat az Erőforrások Azure Resource Manager rel történő üzembe helyezésekor.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273786"
 ---
-# <a name="resolve-errors-for-resource-quotas"></a>Erőforrás-kvóták hibáinak elhárítása
+# <a name="resolve-errors-for-resource-quotas"></a>Erőforráskvótákkal kapcsolatos hibák elhárítása
 
-Ez a cikk az erőforrások telepítése során felmerülő kvóta-hibákat ismerteti.
+Ez a cikk az erőforrások telepítésekor előforduló kvótahibákat ismerteti.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha olyan sablont helyez üzembe, amely túllépi az Azure-kvótákat, a következőhöz hasonló telepítési hiba jelenik meg:
+Ha olyan sablont telepít, amely az Azure-kvótákat meghaladó erőforrásokat hoz létre, a következő központi telepítési hibát kap:
 
 ```
 Code=OperationNotAllowed
@@ -38,19 +38,19 @@ please delete some resources of this type before creating a new one.
 ## <a name="cause"></a>Ok
 
 A kvóták erőforráscsoportonként, előfizetésenként, fiókonként és egyéb hatókörönként érvényesek. Lehetséges például, hogy az előfizetése úgy van konfigurálva, hogy korlátozza a régiónként elérhető magok számát. Ha olyan virtuális gépet próbál üzembe helyezni, amely a megengedettnél több magot tartalmaz, akkor hibaüzenetet kap a kvóta túllépéséről.
-A kvóta részletes ismertetését az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md)című témakörben tekintheti meg.
+A teljes kvótainformációt az [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások című témakörben talál.](../../azure-resource-manager/management/azure-subscription-service-limits.md)
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI esetén használja a `az vm list-usage` parancsot a virtuálisgép-kvóták kereséséhez.
+Az Azure CLI, `az vm list-usage` használja a parancsot a virtuális gép kvóták keresése.
 
 ```azurecli
 az vm list-usage --location "South Central US"
 ```
 
-Amely a következőket adja vissza:
+Melyik adja vissza:
 
 ```output
 [
@@ -74,7 +74,7 @@ A PowerShell esetében használja a **Get-AzVMUsage** parancsot a virtuálisgép
 Get-AzVMUsage -Location "South Central US"
 ```
 
-Amely a következőket adja vissza:
+Melyik adja vissza:
 
 ```output
 Name                             Current Value Limit  Unit
@@ -86,10 +86,10 @@ Virtual Machines                             0 10000 Count
 
 ## <a name="solution"></a>Megoldás
 
-A kvóta növeléséhez lépjen a portálra, és küldjön egy támogatási problémát. A támogatási probléma esetén a kvóta növelését kell megadnia ahhoz a régióhoz, amelybe telepíteni kívánja.
+Kvótanövelés igényléséhez nyissa meg a portált, és nyújtson be támogatási problémát. A támogatási probléma, kérje a kvóta növelését a régió, amelyre telepíteni kívánt.
 
 > [!NOTE]
-> Ne feledje, hogy az erőforráscsoportok esetében a kvóta minden egyes régióra érvényes, nem a teljes előfizetéshez. Ha 30 magot kell üzembe helyeznie az USA nyugati régiójában, az USA nyugati régiójában 30 Resource Manager-magot kell kérnie. Ha minden olyan régióban 30 magot kell üzembe helyeznie, amelyhez hozzáférése van, akkor minden régióban 30 Resource Manager-magot kell kérnie.
+> Ne feledje, hogy az erőforráscsoportok esetében a kvóta az egyes régiókra vonatkozik, nem a teljes előfizetésre. Ha 30 mag telepítését kell telepítenie az USA nyugati részén, 30 Erőforrás-kezelő magját kell kérnie az USA nyugati részén. Ha 30 mag üzembe helyezéséhez kell rendelkeznie bármelyik olyan régióban, amelyhez hozzáféréssel rendelkezik, kérjen 30 Resource Manager-magot az összes régióban.
 >
 >
 
@@ -101,13 +101,13 @@ A kvóta növeléséhez lépjen a portálra, és küldjön egy támogatási prob
 
    ![Előfizetés kiválasztása](./media/error-resource-quota/select-subscription.png)
 
-3. **Használat + kvóták** kiválasztása
+3. **Felhasználás + kvóták** kiválasztása
 
    ![Használat és kvóták kiválasztása](./media/error-resource-quota/select-usage-quotas.png)
 
-4. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
+4. A jobb felső sarokban válassza a **Kérelem növelése lehetőséget.**
 
-   ![Kérések növekedése](./media/error-resource-quota/request-increase.png)
+   ![Emelés kérése](./media/error-resource-quota/request-increase.png)
 
 5. Töltse ki az űrlapot ahhoz a kvótatípushoz, amelyet növelni szeretne.
 

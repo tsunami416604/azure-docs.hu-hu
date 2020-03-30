@@ -1,33 +1,33 @@
 ---
 title: Erőforráscsoportok kezelése – Azure PowerShell
-description: Az erőforráscsoportok Azure Resource Manager használatával történő kezeléséhez használja a Azure PowerShell. Megjeleníti az erőforráscsoportok létrehozását, listázását és törlését.
+description: Az Azure PowerShell használatával kezelheti erőforráscsoportjait az Azure Resource Manager en keresztül. Erőforráscsoportok létrehozása, listázása és törlése.
 author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 25e001927d5c06b4a7e5639faaa054ae18b12bb7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248358"
 ---
-# <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager erőforráscsoportok kezelése Azure PowerShell használatával
+# <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Az Azure Resource Manager erőforráscsoportok kezelése az Azure PowerShell használatával
 
-Ismerje meg, hogyan kezelheti az Azure-erőforráscsoportokat a Azure PowerShell és a [Azure Resource Manager](overview.md) használatával. Az Azure-erőforrások kezelésével kapcsolatban lásd: az [Azure-erőforrások kezelése Azure PowerShell használatával](manage-resources-powershell.md).
+Ismerje meg, hogyan használhatja az Azure PowerShellt az [Azure Resource Managerrel](overview.md) az Azure-erőforráscsoportok kezeléséhez. Az Azure-erőforrások kezeléséről az [Azure-erőforrások kezelése az Azure PowerShell használatával.](manage-resources-powershell.md)
 
-Az erőforráscsoportok kezelésével kapcsolatos további cikkek:
+További cikkek az erőforráscsoportok kezeléséről:
 
-- [Azure-erőforráscsoportok kezelése a Azure Portal használatával](manage-resources-portal.md)
+- [Azure-erőforráscsoportok kezelése az Azure Portal használatával](manage-resources-portal.md)
 - [Azure-erőforráscsoportok kezelése az Azure CLI használatával](manage-resources-cli.md)
 
 ## <a name="what-is-a-resource-group"></a>Mi az erőforráscsoport?
 
-Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általában olyan erőforrásokat adjon hozzá, amelyek ugyanazt az életciklust használják ugyanahhoz az erőforráscsoporthoz, így egyszerűen üzembe helyezheti, frissítheti és törölheti őket csoportként.
+Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általában adja hozzá az azonos életciklusú erőforrásokat ugyanahhoz az erőforráscsoporthoz, így könnyen telepítheti, frissítheti és törölheti őket csoportként.
 
 Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha az erőforráscsoport számára megad egy helyet, akkor a metaadatok tárolási helyét adja meg. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
-Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor megad egy helyet az erőforráscsoporthoz, meg kell adnia, hogy hol tárolja a metaadatokat.
+Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor megadja az erőforráscsoport helyét, megadja a metaadatok tárolási helyét.
 
 ## <a name="create-resource-groups"></a>Erőforráscsoportok létrehozása
 
@@ -44,13 +44,13 @@ Get-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="list-resource-groups"></a>Erőforráscsoportok listázása
 
-A következő PowerShell-parancsfájl felsorolja az előfizetéséhez tartozó erőforráscsoportokat.
+A következő PowerShell-parancsfájl felsorolja az előfizetés alatt található erőforráscsoportokat.
 
 ```azurepowershell-interactive
 Get-AzResourceGroup
 ```
 
-Egy erőforráscsoport beszerzése:
+Egy erőforráscsoport bekése:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -68,31 +68,31 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-További információ arról, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését: [Azure Resource Manager erőforráscsoport törlése](delete-resource-group.md).
+Ha többet szeretne tudni arról, hogy az Azure Resource Manager hogyan rendeli meg az erőforrások törlését, olvassa el az [Azure Resource Manager erőforráscsoport-törlése című témakört.](delete-resource-group.md)
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>Erőforrások központi telepítése meglévő erőforráscsoporthoz
+## <a name="deploy-resources-to-an-existing-resource-group"></a>Erőforrások üzembe helyezése meglévő erőforráscsoportba
 
-Lásd: [erőforrások központi telepítése meglévő erőforráscsoporthoz](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group).
+Lásd: [Erőforrások telepítése egy meglévő erőforráscsoportba](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group).
 
-Az erőforráscsoport-telepítés ellenőrzéséhez tekintse meg a [test-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)című témakört.
+Az erőforráscsoport telepítésének ellenőrzéséhez olvassa el a [Test-AzResourceGroupDeployment .](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Erőforráscsoport és erőforrások üzembe helyezése
 
-Létrehozhat egy erőforráscsoportot, és erőforrásokat telepíthet a csoportba egy Resource Manager-sablon használatával. További információ: [erőforráscsoport létrehozása és erőforrások telepítése](../templates/deploy-to-subscription.md#resource-group-and-resources).
+Erőforrás-kezelő sablon használatával létrehozhat egy erőforráscsoportot, és erőforrásokat helyezhet a csoportba. További információ: [Erőforráscsoport létrehozása és erőforrások üzembe helyezése.](../templates/deploy-to-subscription.md#resource-group-and-resources)
 
-## <a name="redeploy-when-deployment-fails"></a>Újratelepítése, ha a telepítés sikertelen
+## <a name="redeploy-when-deployment-fails"></a>Újratelepítés, ha az üzembe helyezés sikertelen
 
-Ez a szolgáltatás a *hiba miatt visszagörgetés*néven is ismert. További információ: [újratelepítése, ha a telepítés sikertelen](../templates/rollback-on-error.md).
+Ezt a szolgáltatást *hiba visszaállításának is nevezik.* További információ: [Újratelepítés, ha az üzembe helyezés sikertelen.](../templates/rollback-on-error.md)
 
-## <a name="move-to-another-resource-group-or-subscription"></a>Áthelyezés másik erőforráscsoporthoz vagy előfizetésbe
+## <a name="move-to-another-resource-group-or-subscription"></a>Áthelyezés másik erőforráscsoportra vagy -előfizetésre
 
-A csoportban található erőforrásokat áthelyezheti egy másik erőforráscsoporthoz. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](move-resource-group-and-subscription.md).
+A csoport erőforrásait áthelyezheti egy másik erőforráscsoportba. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](move-resource-group-and-subscription.md).
 
 ## <a name="lock-resource-groups"></a>Erőforráscsoportok zárolása
 
-A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását. 
+A zárolás megakadályozza, hogy a szervezet más felhasználói véletlenül kiirtsák vagy módosítsák a kritikus erőforrásokat, például az Azure-előfizetést, az erőforráscsoportot vagy az erőforrást. 
 
-Az alábbi parancsfájl zárol egy erőforráscsoportot, így az erőforráscsoport nem törölhető.
+A következő parancsfájl zárol egy erőforráscsoportot, így az erőforráscsoport nem törölhető.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -100,7 +100,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName $resourceGroupName 
 ```
 
-Az alábbi parancsfájl egy erőforráscsoport összes zárolását lekéri:
+A következő parancsfájl lekéri az összes zárolást egy erőforráscsoporthoz:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -112,16 +112,16 @@ További információ: [Erőforrások zárolása az Azure Resource Manager eszk�
 
 ## <a name="tag-resource-groups"></a>Erőforráscsoportok címkézése
 
-Címkéket alkalmazhat az erőforráscsoportok és az erőforrások számára, hogy logikailag szervezze az eszközöket. További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](tag-resources.md#powershell).
+Címkéket alkalmazhat az erőforráscsoportokra és erőforrásokra az eszközök logikai rendszerezéséhez. További információ: [Címkék használata az Azure-erőforrások rendszerezéséhez című témakörben.](tag-resources.md#powershell)
 
 ## <a name="export-resource-groups-to-templates"></a>Erőforráscsoportok exportálása sablonokba
 
-Az erőforráscsoport beállítása után megtekintheti az erőforráscsoport Resource Manager-sablonját. A sablon exportálása két előnyt kínál:
+Az erőforráscsoport beállítása után megtekintheti az erőforráscsoport Erőforrás-kezelő sablonját. A sablon exportálása két előnnyel jár:
 
-- Automatizálja a megoldás jövőbeli üzembe helyezéseit, mert a sablon tartalmazza a teljes infrastruktúrát.
-- A sablon szintaxisának megismeréséhez tekintse meg a megoldást jelölő JavaScript Object Notation (JSON).
+- Automatizálja a megoldás jövőbeli üzembe helyezését, mert a sablon tartalmazza a teljes infrastruktúrát.
+- Ismerje meg a sablon szintaxisát a megoldást képviselő JavaScript-objektumnotikát (JSON) című filmben.
 
-Egy erőforráscsoport összes erőforrásának exportálásához használja az [export-AzResourceGroup](/powershell/module/az.resources/Export-AzResourceGroup) parancsmagot, és adja meg az erőforráscsoport nevét.
+Az erőforráscsoport összes erőforrásának exportálásához használja az [Export-AzResourceGroup](/powershell/module/az.resources/Export-AzResourceGroup) parancsmavet, és adja meg az erőforráscsoport nevét.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -153,7 +153,7 @@ Export-AzResourceGroup `
   -Resource @($resource1.ResourceId, $resource2.ResourceId)
 ```
 
-A sablon exportálásakor megadhatja, hogy a rendszer milyen paramétereket használ a sablonban. Alapértelmezés szerint az erőforrásnevek paraméterei szerepelnek, de nem rendelkeznek alapértelmezett értékkel. A paraméter értékét át kell adni az üzembe helyezés során.
+A sablon exportálásakor megadhatja, hogy a program használja-e a paramétereket a sablonban. Alapértelmezés szerint az erőforrásnevek paraméterei szerepelnek, de nincs alapértelmezett értékük. A telepítés során át kell adnia ezt a paraméterértéket.
 
 ```json
 "parameters": {
@@ -168,7 +168,7 @@ A sablon exportálásakor megadhatja, hogy a rendszer milyen paramétereket hasz
 }
 ```
 
-Az erőforrásban a nevet a paraméter használja.
+Az erőforrásban a paraméter a névhez használatos.
 
 ```json
 "resources": [
@@ -181,7 +181,7 @@ Az erőforrásban a nevet a paraméter használja.
 ]
 ```
 
-Ha a sablon exportálásakor a `-IncludeParameterDefaultValue` paramétert használja, a Template paraméter egy alapértelmezett értéket tartalmaz, amely az aktuális értékre van beállítva. Ezt az alapértelmezett értéket használhatja, vagy felülírhatja az alapértelmezett értéket egy másik érték megadásával.
+Ha a `-IncludeParameterDefaultValue` sablon exportálásakor a paramétert használja, a sablonparaméter tartalmaz egy alapértelmezett értéket, amely az aktuális értékre van állítva. Ezt az alapértelmezett értéket használhatja, vagy felülírhatja az alapértelmezett értéket egy másik érték átadásával.
 
 ```json
 "parameters": {
@@ -196,7 +196,7 @@ Ha a sablon exportálásakor a `-IncludeParameterDefaultValue` paramétert haszn
 }
 ```
 
-Ha a sablon exportálásakor a `-SkipResourceNameParameterization` paramétert használja, az erőforrásnevek paraméterei nem szerepelnek a sablonban. Ehelyett az erőforrás neve közvetlenül az erőforráson az aktuális értékre van beállítva. A név nem szabható testre a telepítés során.
+Ha a `-SkipResourceNameParameterization` sablon exportálásakor a paramétert használja, az erőforrásnevek paraméterei nem szerepelnek a sablonban. Ehelyett az erőforrás neve közvetlenül az erőforráson van beállítva az aktuális értékre. A név nem szabható testre az üzembe helyezés során.
 
 ```json
 "resources": [
@@ -209,19 +209,19 @@ Ha a sablon exportálásakor a `-SkipResourceNameParameterization` paramétert h
 ]
 ```
 
-A sablon exportálása funkció nem támogatja Azure Data Factory erőforrások exportálását. A Data Factory-erőforrások exportálásával kapcsolatos további tudnivalókért lásd: az [adatfeldolgozó másolása vagy klónozása Azure Data Factory-ben](https://aka.ms/exportTemplateViaAdf).
+Az exportálási sablon funkció nem támogatja az Azure Data Factory-erőforrások exportálását. Ha többet szeretne megtudni arról, hogyan exportálhatja a Data Factory-erőforrásokat, olvassa el [az Adatgyár másolása vagy klónozása az Azure Data Factoryban című témakört.](https://aka.ms/exportTemplateViaAdf)
 
-A klasszikus üzemi modellel létrehozott erőforrások exportálásához [át kell telepítenie azokat a Resource Manager](https://aka.ms/migrateclassicresourcetoarm)-alapú üzemi modellbe.
+A klasszikus központi telepítési modellen keresztül létrehozott erőforrások exportálásához át kell [telepítenie őket az Erőforrás-kezelő telepítési modelljébe.](https://aka.ms/migrateclassicresourcetoarm)
 
-További információkért lásd: [egy-és többerőforrásos exportálás a Azure Portal sablonba](../templates/export-template-portal.md).
+További információ: [Egy-és többerőforrásos exportálás sablonba az Azure Portalon.](../templates/export-template-portal.md)
 
-## <a name="manage-access-to-resource-groups"></a>Erőforráscsoportok hozzáférésének kezelése
+## <a name="manage-access-to-resource-groups"></a>Erőforráscsoportokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információ: a [hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md).
+[A szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-beli](../../role-based-access-control/overview.md) erőforrásokhoz való hozzáférés kezelésének módja. További információ: [Hozzáférés kezelése az RBAC és az Azure PowerShell használatával című témakörben.](../../role-based-access-control/role-assignments-powershell.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](overview.md)című témakört.
-- A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../templates/template-syntax.md)című témakört.
-- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](/azure/azure-resource-manager/).
-- A Azure Resource Manager sablon sémáinak megtekintéséhez lásd: [sablon-hivatkozás](/azure/templates/).
+- Az Azure Resource Manager megismeréséhez olvassa el az [Azure Resource Manager áttekintése című témakört.](overview.md)
+- Az Erőforrás-kezelő sablon szintaxisának megismeréséről [Az Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakörben olvashat.](../templates/template-syntax.md)
+- A sablonok fejlesztéséről részletesen olvashat [az oktatóanyagokról.](/azure/azure-resource-manager/)
+- Az Azure Resource Manager sablonsémák megtekintéséhez olvassa el a [sablon hivatkozási .](/azure/templates/)

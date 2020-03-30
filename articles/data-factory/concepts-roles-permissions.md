@@ -1,6 +1,6 @@
 ---
-title: A Azure Data Factory szerepkörei és engedélyei
-description: Az adat-előállítók létrehozásához és a gyermekek erőforrásainak használatához szükséges szerepköröket és engedélyeket ismerteti.
+title: Szerepkörök és engedélyek az Azure Data Factoryhoz
+description: Az adatgyárak létrehozásához és a gyermekerőforrásokkal való munkához szükséges szerepkörök és engedélyek ismertetése.
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,15 +11,15 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969228"
 ---
-# <a name="roles-and-permissions-for-azure-data-factory"></a>A Azure Data Factory szerepkörei és engedélyei
+# <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
-Ez a cikk a Azure Data Factory erőforrások létrehozásához és kezeléséhez szükséges szerepköröket, valamint a szerepkörök által biztosított engedélyeket ismerteti.
+Ez a cikk ismerteti az Azure Data Factory-erőforrások létrehozásához és kezeléséhez szükséges szerepköröket, valamint a szerepkörök által megadott engedélyeket.
 
 ## <a name="roles-and-requirements"></a>Szerepkörök és követelmények
 
@@ -33,62 +33,62 @@ Ha szeretne példautasításokat látni arra, hogyan kell egy felhasználót a s
 
 ## <a name="set-up-permissions"></a>Engedélyek beállítása
 
-A Data Factory létrehozása után előfordulhat, hogy más felhasználók is használni szeretnék az adatelőállítót. Ahhoz, hogy ez a hozzáférés más felhasználók számára is elérhető legyen, hozzá kell adnia azokat a beépített **Data Factory közreműködő** szerepkörhöz az adat-előállítót tartalmazó erőforráscsoporthoz.
+A Data Factory létrehozása után érdemes lehet más felhasználókszámára az adat-előállítóval dolgozni. Ahhoz, hogy ezt a hozzáférést más felhasználók számára, hozzá kell adnia őket a beépített **Data Factory Közreműködőszerepkör** az erőforrás-csoport, amely tartalmazza az adat-előállító.
 
-### <a name="scope-of-the-data-factory-contributor-role"></a>A Data Factory közreműködő szerepkör hatóköre
+### <a name="scope-of-the-data-factory-contributor-role"></a>Az adatfeldolgozó közreműködői szerepkör hatóköre
 
-A **Data Factory közreműködő** szerepkör tagsága lehetővé teszi a felhasználók számára a következőket:
-- Adat-és alárendelt erőforrások létrehozása, szerkesztése és törlése, beleértve az adatkészleteket, a társított szolgáltatásokat, a folyamatokat, az eseményindítókat és az integrációs modulokat.
-- Resource Manager-sablonok üzembe helyezése. A Resource Manager-alapú üzemelő példány a Azure Portal Data Factory által használt központi telepítési módszer.
-- Az alkalmazással kapcsolatos adatelemzési riasztások kezelése egy adatgyárban.
-- Támogatási jegyek létrehozása.
+A **Data Factory Közreműködői** szerepkörben való tagság lehetővé teszi a felhasználók számára, hogy a következő dolgokat tegyék:
+- Adatgyárakat és gyermekerőforrásokat hozhat létre, szerkeszthet és törölhet, beleértve az adatkészleteket, a csatolt szolgáltatásokat, a folyamatokat, az eseményindítókat és az integrációs futtatásokat.
+- Telepítse az Erőforrás-kezelő sablonokat. A Resource Manager központi telepítése a Data Factory által az Azure Portalon használt telepítési módszer.
+- Az App Insights-riasztások kezelése adatelőállítók számára.
+- Hozzon létre támogatási jegyeket.
 
-További információ erről a szerepkörről: [Data Factory közreműködő szerepkör](../role-based-access-control/built-in-roles.md#data-factory-contributor).
+A szerepkörről további információt a [Data Factory Közreműködői szerepkör című témakörben talál.](../role-based-access-control/built-in-roles.md#data-factory-contributor)
 
-### <a name="resource-manager-template-deployment"></a>Resource Manager-sablon üzembe helyezése
+### <a name="resource-manager-template-deployment"></a>Erőforrás-kezelő sablonjának telepítése
 
-Az **Data Factory közreműködő** szerepkör, az erőforráscsoport szintjén vagy felett, lehetővé teszi a felhasználóknak Resource Manager-sablonok telepítését. Ennek eredményeképpen a szerepkör tagjai a Resource Manager-sablonok használatával üzembe helyezhetik az adat-előállítók és a hozzájuk tartozó alárendelt erőforrásokat, beleértve az adatkészleteket, a társított szolgáltatásokat, a folyamatokat, az eseményindítókat és az integrációs modulokat. A szerepkör tagsága nem teszi lehetővé, hogy a felhasználó más erőforrásokat hozzon létre.
+A **Data Factory Közreműködő** szerepkör az erőforráscsoport szintjén vagy felett lehetővé teszi a felhasználók számára az Erőforrás-kezelő-sablonok telepítését. Ennek eredményeképpen a szerepkör tagjai az Erőforrás-kezelő sablonjai segítségével telepíthetik az adatgyárakat és a gyermekerőforrásaikat, beleértve az adatkészleteket, a kapcsolódó szolgáltatásokat, a folyamatokat, az eseményindítókat és az integrációs futtatásokat. A szerepkörben való tagság azonban nem teszi lehetővé, hogy a felhasználó más erőforrásokat hozzon létre.
 
-Az Azure Repos és a GitHub engedélyei függetlenek Data Factory engedélyeitől. Ennek eredményeképpen egy olyan felhasználó, aki a tárház engedélyekkel rendelkezik, és csak az olvasó szerepkör tagja, szerkesztheti Data Factory gyermek erőforrásait és véglegesítheti a tárház módosításait, de nem teheti közzé ezeket a módosításokat.
+Az Azure Repos és a GitHub engedélyei függetlenek a Data Factory engedélyektől. Ennek eredményeképpen az Olvasó szerepkörben csak az Olvasó szerepkörben csak tagsággal rendelkező felhasználó szerkesztheti a Data Factory gyermekerőforrásait, és véglegesítheti a tárműtor módosításait, de nem teheti közzé ezeket a módosításokat.
 
 > [!IMPORTANT]
-> A **Data Factory közreműködő** szerepkörrel rendelkező Resource Manager-sablonok nem emelik fel az engedélyeiket. Ha például olyan sablont telepít, amely egy Azure-beli virtuális gépet hoz létre, és nem rendelkezik virtuális gépek létrehozásához szükséges engedéllyel, akkor a központi telepítés engedélyezési hibával meghiúsul.
+> Az Erőforrás-kezelő sablon üzembe helyezése a **Data Factory Közreműködői** szerepkörrel nem emeli az engedélyeket. Ha például üzembe helyez egy sablont, amely létrehoz egy Azure virtuális gépet, és nincs engedélye a virtuális gépek létrehozására, a központi telepítés engedélyezési hibával sikertelen lesz.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Egyéni forgatókönyvek és egyéni szerepkörök
 
-Előfordulhat, hogy különböző hozzáférési szinteket kell megadnia a különböző adat-előállító felhasználók számára. Példa:
-- Előfordulhat, hogy olyan csoportra van szüksége, amelyben a felhasználók csak egy adott adatelőállítóhoz rendelkeznek engedéllyel.
-- Vagy szükség lehet egy olyan csoportra, amelyben a felhasználók csak egy adatgyárat (vagy gyárakat) tudnak figyelni, de nem módosíthatják azt.
+Néha előfordulhat, hogy különböző hozzáférési szinteket kell megadnia a különböző adatfeldolgozó felhasználókszámára. Példa:
+- Szükség lehet egy olyan csoportra, ahol a felhasználók csak egy adott adatelőüzemhez rendelkeznek engedélyekkel.
+- Vagy szükség lehet egy csoport, ahol a felhasználók csak figyelni egy adatgyár (vagy gyárak), de nem módosíthatja azt.
 
-Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és a szerepkörökhöz tartozó felhasználók hozzárendelésével érheti el. További információ az egyéni szerepkörökről: [Egyéni szerepkörök az Azure-ban](..//role-based-access-control/custom-roles.md).
+Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és a felhasználók szerepkörökhöz való hozzárendelésével érheti el. Az egyéni szerepkörökről további információt az [Egyéni szerepkörök az Azure-ban című témakörben talál.](..//role-based-access-control/custom-roles.md)
 
-Íme néhány példa, amely bemutatja, hogy mi valósítható meg az egyéni szerepkörökkel:
+Íme néhány példa, amely bemutatja, hogy mit érhet el az egyéni szerepkörökkel:
 
-- Lehetővé teszi, hogy a felhasználó a Azure Portal egy erőforráscsoport adatelőállítóját hozza létre, szerkessze vagy törölje.
+- Hagyja, hogy a felhasználó hozzon létre, szerkessze vagy törölje az erőforráscsoport bármely adatgyárát az Azure Portalról.
 
-  Rendelje hozzá a beépített **Data Factory közreműködő** szerepkört a felhasználó erőforráscsoport szintjén. Ha engedélyezni szeretné az előfizetéshez tartozó bármely adat-előállító hozzáférését, rendelje hozzá a szerepkört az előfizetés szintjén.
+  Rendelje hozzá a beépített **Data Factory közreműködői** szerepkört az erőforráscsoport szintjén a felhasználóhoz. Ha egy előfizetés bármely adat-előállítójához hozzáférést szeretne engedélyezni, rendelje hozzá a szerepkört az előfizetés szintjén.
 
-- A felhasználó megtekintheti (olvashatja) és figyelheti az adatgyárat, de nem szerkesztheti vagy módosíthatja.
+- Hagyja, hogy a felhasználó megtekintse (olvassa) és figyelje az adat-előállítót, de ne módosítsa vagy módosítsa azt.
 
-  Rendelje hozzá a beépített **olvasó** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
+  Rendelje hozzá a beépített **olvasószerepkört** az adat-előállító erőforráshoz a felhasználószámára.
 
-- Lehetővé teszi, hogy a felhasználó egyetlen adatfeldolgozót szerkesszen a Azure Portalban.
+- Hagyja, hogy egy felhasználó egyetlen adatgyárat szerkesztsen az Azure Portalon.
 
-  Ehhez a forgatókönyvhöz két szerepkör-hozzárendelés szükséges.
+  Ebben a forgatókönyvben két szerepkör-hozzárendelést igényel.
 
-  1. Társítsa a beépített **közreműködő** szerepkört a adat-előállító szintjén.
-  2. Hozzon létre egy egyéni szerepkört az engedéllyel rendelkező **Microsoft. Resources/Deployments/** . Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz erőforráscsoport szintjén.
+  1. Rendelje hozzá a beépített **közreműködői** szerepkört az adat-előállító szinten.
+  2. Hozzon létre egyéni szerepkört a **Microsoft.Resources/deployments/** engedéllyel. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz erőforráscsoport szinten.
 
-- A felhasználó csak a társított szolgáltatásban lévő kapcsolat tesztelését teszi lehetővé
+- A kapcsolat tesztelése csak csatolt szolgáltatásban
 
-    Hozzon létre egy egyéni szerepkör-szerepkört, amely rendelkezik engedélyekkel a következő műveletekhez: **Microsoft. DataFactory/Factorys/getFeatureValue/Read** és **Microsoft. DataFactory/gyárak/getDataPlaneAccess/Read**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
+    Hozzon létre egy egyéni szerepkört a következő műveletekhez szükséges engedélyekkel: **Microsoft.DataFactory/factories/getFeatureValue/read** és **Microsoft.DataFactory/factories/getDataPlaneAccess/read**. Rendelje hozzá ezt az egyéni szerepkört az adat-előállító erőforráshoz a felhasználószámára.
 
-- Lehetővé teheti, hogy a felhasználó frissítsen egy adatgyárat a PowerShellből vagy az SDK-ból, de ne a Azure Portal.
+- Hagyja, hogy egy felhasználó frissítse az adat-előállító powershellvagy az SDK, de nem az Azure Portalon.
 
-  Rendelje hozzá a beépített **közreműködő** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz. Ez a szerepkör lehetővé teszi, hogy a felhasználó láthassa a Azure Portal erőforrásait, de a felhasználó nem férhet hozzá a **Közzététel** és az **összes közzététel** gombhoz.
+  Rendelje hozzá a beépített **közreműködői** szerepkört az adat-előállító erőforráshoz a felhasználószámára. Ez a szerepkör lehetővé teszi, hogy a felhasználó az Azure Portalon tekintse meg az erőforrásokat, de a felhasználó nem férhet hozzá az Összes **közzététele** és **közzététele** gombhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
+- További információ az Azure-beli szerepkörökről – [A szerepkör-definíciók megismerése](../role-based-access-control/role-definitions.md)
 
-- További információ a **Data Factory közreműködő** szerepkör- [Data Factory közreműködő szerepkörről](../role-based-access-control/built-in-roles.md#data-factory-contributor).
+- További információ a **Data Factory közreműködői** szerepkör – [Data Factory Közreműködői szerepkörről.](../role-based-access-control/built-in-roles.md#data-factory-contributor)

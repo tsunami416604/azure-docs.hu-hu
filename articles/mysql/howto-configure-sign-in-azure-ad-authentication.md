@@ -1,103 +1,103 @@
 ---
-title: Azure Active Directory-Azure Database for MySQL használata
-description: Ismerje meg, hogyan állíthat be Azure Active Directory (Azure AD) a hitelesítéshez Azure Database for MySQL
+title: Az Azure Active Directory használata – Azure Database for MySQL
+description: Tudnivalók az Azure Active Directory (Azure AD) beállításáról az Azure Database for MySQL-hez való hitelesítéshez
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299005"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
+# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Az Azure Active Directory használata a MySQL-rel való hitelesítéshez
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Active Directory hozzáférését Azure Database for MySQL és hogyan csatlakozhat Azure AD-jogkivonat használatával.
+Ez a cikk bemutatja az Azure Active Directory-hozzáférés konfigurálásának lépéseit az Azure Database for MySQL szolgáltatással, és hogyan csatlakozhat egy Azure AD-jogkivonat használatával.
 
 > [!IMPORTANT]
-> A Azure Database for MySQL Azure AD-hitelesítése jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure AD-hitelesítés az Azure Database for MySQL jelenleg nyilvános előzetes verzióban.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda felhasználó beállítása
+## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda imassa beállítása
 
-Csak az Azure AD-rendszergazda felhasználó hozhat létre/engedélyezhet felhasználókat az Azure AD-alapú hitelesítéshez. Az Azure AD-rendszergazda felhasználó létrehozásához kövesse az alábbi lépéseket
+Csak egy Azure AD-rendszergazdai felhasználó hozhat létre/engedélyezhet felhasználókat az Azure AD-alapú hitelesítéshez. Az Azure AD-rendszergazdai felhasználók létrehozásához kövesse az alábbi lépéseket
 
-1. A Azure Portal válassza ki a Azure Database for MySQL azon példányát, amelyet engedélyezni kíván az Azure AD-ben.
-2. A beállítások területen válassza a Active Directory rendszergazda elemet:
+1. Az Azure Portalon válassza ki az Azure Database for MySQL, amely engedélyezni szeretné az Azure AD példányát.
+2. A Beállítások csoportban válassza az Active Directory rendszergazdája lehetőséget:
 
-![Az Azure ad-rendszergazda beállítása][2]
+![az Azure ad administrator beállítása][2]
 
-3. Válasszon ki egy érvényes Azure AD-felhasználót az ügyfél-bérlőben az Azure AD-rendszergazdaként.
+3. Válasszon ki egy érvényes Azure AD-felhasználót az ügyfél-bérlőben, hogy az Azure AD-rendszergazda legyen.
 
 > [!IMPORTANT]
-> A rendszergazda beállításakor a rendszer új felhasználót ad hozzá a Azure Database for MySQL-kiszolgálóhoz teljes körű rendszergazdai engedélyekkel.
+> A rendszergazda beállításakor egy új felhasználó kerül az Azure Database for MySQL server teljes rendszergazdai engedélyekkel.
 
-MySQL-Kiszolgálónként csak egy Azure AD-rendszergazda hozható létre, és a másik lehetőség kiválasztása esetén a rendszer felülírja a kiszolgálóhoz konfigurált meglévő Azure AD-rendszergazdát.
+MySQL-kiszolgálónként csak egy Azure AD-rendszergazda hozható létre, és egy másik kiválasztása felülírja a kiszolgálóhoz konfigurált meglévő Azure AD-rendszergazdát.
 
-A jövőbeli kiadásokban az egyes felhasználók helyett egy Azure AD-csoport megadását fogjuk támogatni, azonban ez jelenleg nem támogatott.
+Egy későbbi kiadásban támogatni fogjuk egy Azure AD-csoport megadását az egyes felhasználók helyett, hogy több rendszergazdával rendelkezik, de ez jelenleg még nem támogatott.
 
-A rendszergazda konfigurálása után most bejelentkezhet:
+A rendszergazda konfigurálása után bejelentkezhet:
 
-## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Csatlakozás az Azure Database for MySQLhoz az Azure AD használatával
+## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Csatlakozás a MySQL Azure-adatbázisához az Azure AD használatával
 
-A következő magas szintű diagram összefoglalja az Azure AD-hitelesítés Azure Database for MySQL használatával történő használatának munkafolyamatát:
+Az alábbi magas szintű diagram összefoglalja az Azure AD-hitelesítés azure-beli Azure Database for MySQL használatával kapcsolatos munkafolyamatot:
 
-![Hitelesítési folyamat][1]
+![hitelesítési folyamat][1]
 
-Az Azure AD-integrációt úgy terveztük, hogy olyan közös MySQL-eszközökkel működjön, mint például a MySQL parancssori felület, amely nem ismeri az Azure AD-t, és csak a Felhasználónév és a jelszó megadását támogatja a MySQL-hez való csatlakozáskor. Az Azure AD-tokent jelszóként adjuk át a fenti képen látható módon.
+Az Azure AD-integrációt úgy alakítottuk ki, hogy olyan közös MySQL-eszközökkel működjön, mint a mysql CLI, amelyek nem azure AD-tudatosak, és csak a mySQL-hez való csatlakozáskor támogatják a felhasználónév és a jelszó megadását. Az Azure AD-tokent jelszóként adjuk át, ahogy az a fenti képen látható.
 
 Jelenleg a következő ügyfeleket teszteltük:
 
 - MySQLWorkbench 
-- MySQL parancssori felület
+- Mysql CLI
 
-A leggyakoribb alkalmazás-illesztőprogramokat is teszteltük, a lap végén láthatja a részleteket.
+Azt is tesztelték a leggyakoribb alkalmazás-illesztőprogramok, láthatjuk részleteket a végén ezt az oldalt.
 
-Ezek a lépések, amelyekkel egy felhasználónak/alkalmazásnak a következőkben ismertetett Azure AD-hitelesítéssel kell rendelkeznie:
+Ezek azok a lépések, amelyeket egy felhasználónak/alkalmazásnak az alábbiakban ismertetett Azure AD-vel kell végeznie:
 
-### <a name="step-1-authenticate-with-azure-ad"></a>1\. lépés: hitelesítés az Azure AD-vel
+### <a name="step-1-authenticate-with-azure-ad"></a>1. lépés: Hitelesítés az Azure AD-vel
 
-Győződjön meg arról, hogy az [Azure CLI telepítve](/cli/azure/install-azure-cli)van.
+Győződjön meg arról, hogy telepítve van az [Azure CLI.](/cli/azure/install-azure-cli)
 
-Hívja meg az Azure CLI eszközt az Azure AD-vel való hitelesítéshez. Ehhez meg kell adnia az Azure AD-beli felhasználói azonosítót és a jelszót.
+Az Azure CLI eszköz meghívása az Azure AD-vel való hitelesítéshez. Az Azure AD felhasználói azonosítóját és jelszavát meg kell adnia.
 
 ```
 az login
 ```
 
-Ezzel a paranccsal megnyílik egy böngészőablak az Azure AD-hitelesítés lapra.
+Ez a parancs egy böngészőablakot indít el az Azure AD hitelesítési lapjára.
 
 > [!NOTE]
-> Ezen lépések végrehajtásához Azure Cloud Shell is használhatja.
-> Vegye figyelembe, hogy amikor az Azure AD hozzáférési jogkivonatot a Azure Cloud Shell beolvassa, explicit módon meg kell hívnia `az login` és újra be kell jelentkeznie (a külön ablakban a kóddal). A bejelentkezés után a `get-access-token` parancs a várt módon fog működni.
+> Az Azure Cloud Shell segítségével is végrehajthatja ezeket a lépéseket.
+> Kérjük, vegye figyelembe, hogy az Azure AD-hozzáférési jogkivonat beolvasásakor az Azure Cloud Shellben explicit módon kell hívnia, `az login` és újra be kell jelentkeznie (a külön ablakban egy kóddal). Ezt követően `get-access-token` a jel a parancs fog működni a várt módon.
 
-### <a name="step-2-retrieve-azure-ad-access-token"></a>2\. lépés: az Azure AD hozzáférési jogkivonatának beolvasása
+### <a name="step-2-retrieve-azure-ad-access-token"></a>2. lépés: Az Azure AD-hozzáférési jogkivonat lekérése
 
-Hívja meg az Azure CLI eszközt az 1. lépésben az Azure AD hitelesített felhasználó hozzáférési jogkivonatának beszerzéséhez az Azure Database for MySQL eléréséhez.
+Az Azure CLI eszköz meghívásához az Azure AD által hitelesített felhasználó hozzáférési jogkivonatot szerezzen be az 1.
 
-Példa (nyilvános felhő esetén):
+Példa (nyilvános felhőesetén):
 
 ```shell
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
-A fenti erőforrás-értéket pontosan az ábrán látható módon kell megadni. Más felhők esetében az erőforrás értéke a következő használatával kereshető fel:
+A fenti erőforrásértéket pontosan a látható módon kell megadni. Más felhők esetén az erőforrás-érték a következők használatával kereshető ki:
 
 ```shell
 az cloud show
 ```
 
-Az Azure CLI 2.0.71-es és újabb verziói esetén a parancs a következő kényelmesebb verzióban adható meg az összes felhőhöz:
+Az Azure CLI 2.0.71-es és újabb verziójához a parancs az alábbi, kényelmesebb verzióban adható meg az összes felhőhöz:
 
 ```shell
 az account get-access-token --resource-type oss-rdbms
 ```
 
-A sikeres hitelesítés után az Azure AD egy hozzáférési jogkivonatot fog visszaadni:
+A hitelesítés sikeres befejezése után az Azure AD egy hozzáférési jogkivonatot ad vissza:
 
 ```json
 {
@@ -109,16 +109,16 @@ A sikeres hitelesítés után az Azure AD egy hozzáférési jogkivonatot fog vi
 }
 ```
 
-A jogkivonat egy alapszintű 64 karakterlánc, amely kódolja a hitelesített felhasználóra vonatkozó összes információt, és amely a Azure Database for MySQL szolgáltatásra irányul.
+A jogkivonat egy Base 64 karakterlánc, amely kódolja a hitelesített felhasználó összes információt, és amely az Azure Database for MySQL szolgáltatás.
 
 > [!NOTE]
-> A hozzáférési jogkivonat érvényessége 5 perc és 60 perc között lehet. Javasoljuk, hogy közvetlenül a bejelentkezés megkezdése előtt szerezze be a hozzáférési jogkivonatot a Azure Database for MySQL.
+> A hozzáférési jogkivonat érvényessége 5 perc és 60 perc között van. Azt javasoljuk, hogy a hozzáférési jogkivonatot közvetlenül az Azure Database for MySQL-be való bejelentkezés megkezdése előtt kapja meg.
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>3\. lépés: a token használata jelszóként a MySQL-ben való bejelentkezéshez
+### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>3. lépés: Token használata jelszóként a MySQL-rel való bejelentkezéshez
 
-Kapcsolódáskor a hozzáférési tokent MySQL felhasználói jelszóként kell használnia. Grafikus felhasználói felületű ügyfelek (például a MySQLWorkbench) használatakor a fenti módszer használatával kérheti le a tokent. 
+A csatlakozáskor a hozzáférési jogkivonatot kell használnia MySQL felhasználói jelszóként. Gui-ügyfelek, például a MySQLWorkbench használatakor a fenti módszerrel lekérheti a jogkivonatot. 
 
-A CLI használatakor ez a rövid kéz a csatlakozáshoz használható: 
+A CLI használatakor ezzel a rövid kézzel csatlakozhat: 
 
 **Példa (Linux/macOS):**
 ```
@@ -128,25 +128,25 @@ mysql -h mydb.mysql.database.azure.com \
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
 
-Vegye figyelembe, hogy az "Enable-titkosítatlan-plugin" beállítással hasonló konfigurációt kell használnia más ügyfelekkel, hogy a tokent a rendszer a kivonat nélkül küldje el a kiszolgálónak.
+Vegye figyelembe a "enable-cleartext-plugin" beállítást – hasonló konfigurációt kell használnia más ügyfelekkel, hogy megbizonyosodjon arról, hogy a token elküldése a kiszolgálóra anélkül, hogy kivonatoló lenne.
 
-Most már hitelesítette a MySQL-kiszolgálót az Azure AD-hitelesítés használatával.
+Most már hitelesítve van a MySQL-kiszolgálón az Azure AD-hitelesítés használatával.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Azure AD-felhasználók létrehozása a Azure Database for MySQLban
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Azure AD-felhasználók létrehozása a MySQL Azure Database szolgáltatásában
 
-Ha Azure AD-felhasználót szeretne hozzáadni a Azure Database for MySQL-adatbázishoz, hajtsa végre a következő lépéseket a csatlakozás után (lásd: a kapcsolódási útmutató későbbi szakasza):
+Ha azure AD-felhasználót szeretne hozzáadni az Azure Database for MySQL-adatbázishoz, a csatlakozás után hajtsa végre a következő lépéseket (lásd a további szakaszt a csatlakozásról):
 
-1. Először győződjön meg arról, hogy az Azure AD-felhasználó `<user>@yourtenant.onmicrosoft.com` érvényes felhasználó az Azure AD-bérlőben.
-2. Jelentkezzen be az Azure Database for MySQL-példányba az Azure AD-rendszergazda felhasználóként.
-3. Hozzon létre felhasználói `<user>@yourtenant.onmicrosoft.com` a Azure Database for MySQLban.
+1. Először győződjön meg `<user>@yourtenant.onmicrosoft.com` arról, hogy az Azure AD-felhasználó egy érvényes felhasználó az Azure AD-bérlőben.
+2. Jelentkezzen be az Azure Database for MySQL-példány, mint az Azure AD-rendszergazdai felhasználó.
+3. Hozzon `<user>@yourtenant.onmicrosoft.com` létre felhasználót az Azure Database for MySQL-ben.
 
-**Példa**
+**Példa:**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
 ```
 
-Az 32 karakternél hosszabb felhasználónevek esetében ajánlott aliast használni, ha a csatlakozáskor használni szeretné a következőt: 
+A 32 karakternél hosszabb felhasználónevek esetén ajánlott inkább aliast használni a csatlakozáshoz: 
 
 Példa:
 
@@ -155,57 +155,57 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 ```
 
 > [!NOTE]
-> Egy felhasználó Azure AD-n keresztüli hitelesítése nem biztosít semmilyen engedélyt a felhasználónak a Azure Database for MySQL-adatbázisban lévő objektumok eléréséhez. A szükséges engedélyeket manuálisan kell megadnia a felhasználónak.
+> A felhasználó hitelesítése az Azure AD-n keresztül nem ad a felhasználónak semmilyen engedélyt az Azure Database for MySQL-adatbázis objektumainak eléréséhez. A felhasználónak manuálisan kell megadnia a szükséges engedélyeket.
 
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Azure AD-csoportok létrehozása a Azure Database for MySQLban
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Azure AD-csoportok létrehozása a MySQL-hez készült Azure Database-ben
 
-Ha engedélyezni szeretné az Azure AD-csoport számára az adatbázishoz való hozzáférést, használja ugyanazt a mechanizmust, mint a felhasználók számára, hanem adja meg a csoport nevét:
+Ha engedélyezni szeretné az Azure AD-csoportot az adatbázishoz való hozzáféréshez, használja ugyanazt a mechanizmust, mint a felhasználók esetében, de adja meg a csoport nevét:
 
-**Példa**
+**Példa:**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';
 ```
 
-Bejelentkezéskor a csoport tagjai a személyes hozzáférési jogkivonatokat fogják használni, de a felhasználónévként megadott csoport nevével jelentkezhetnek be.
+Bejelentkezéskor a csoport tagjai a személyes hozzáférési jogkivonataikat fogják használni, de a felhasználónévként megadott csoportnévvel jelentkeznek.
 
-## <a name="token-validation"></a>Jogkivonat ellenőrzése
+## <a name="token-validation"></a>Token érvényesítése
 
-Azure Database for MySQL Azure AD-hitelesítés biztosítja, hogy a felhasználó létezik a MySQL-kiszolgálón, és ellenőrzi a token érvényességét a jogkivonat tartalmának ellenőrzésével. A rendszer a következő jogkivonat-ellenőrzési lépéseket hajtja végre:
+Az Azure AD-hitelesítés az Azure Database for MySQL biztosítja, hogy a felhasználó létezik a MySQL-kiszolgálón, és ellenőrzi a jogkivonat érvényességét a jogkivonat tartalmának ellenőrzésével. A következő jogkivonat-érvényesítési lépések hajtják végre:
 
--   Az Azure AD aláírja a tokent, és nem módosították
--   A tokent az Azure AD adta ki a kiszolgálóhoz társított bérlőhöz
--   A jogkivonat nem járt le
--   Token a Azure Database for MySQL erőforráshoz (és nem egy másik Azure-erőforráshoz)
+-   A jogkivonatot az Azure AD írta alá, és nem módosították
+-   A jogkivonatot az Azure AD adta ki a kiszolgálóhoz társított bérlőszámára
+-   A token nem járt le
+-   A token az Azure Database for MySQL erőforráshoz készült (és nem egy másik Azure-erőforráshoz)
 
-## <a name="compatibility-with-application-drivers"></a>Kompatibilitás az alkalmazás-illesztőprogramokkal
+## <a name="compatibility-with-application-drivers"></a>Kompatibilitás alkalmazás-illesztőprogramokkal
 
-A legtöbb illesztőprogram támogatott, azonban győződjön meg arról, hogy a jelszó küldésére vonatkozó beállításokat nem egyértelmű szövegként használja, így a jogkivonat a módosítás nélkül lesz elküldve.
+A legtöbb illesztőprogram támogatott, azonban győződjön meg róla, hogy a jelszó tiszta szöveges küldéséhez a beállításokat használja, így a token módosítás nélkül kerül elküldésre.
 
-* CC++
-  * libmysqlclient: támogatott
-  * MySQL-Connector-c + +: támogatott
+* C/C++
+  * libmysqlclient: Támogatott
+  * mysql-connector-c++: Támogatott
 * Java
-  * Összekötő/J (MySQL-Connector-Java): támogatott, az `useSSL`-beállítást kell használnia
+  * Csatlakozó/J (mysql-connector-java): Támogatott, `useSSL` ki kell használni a beállítást
 * Python
-  * Összekötő/Python: támogatott
+  * Összekötő/Python: Támogatott
 * Ruby
-  * mysql2: támogatott
+  * mysql2: Támogatott
 * .NET
-  * MySQL-Connector-Net: támogatott, beépülő modult kell hozzáadni a mysql_clear_passwordhoz
-  * MySQL-net/MySqlConnector: támogatott
+  * mysql-connector-net: Támogatott, hozzá kell adni a plugin mysql_clear_password
+  * mysql-net/MySqlConnector: Támogatott
 * Node.js
-  * mysqljs: nem támogatott (nem küld tokent a nem titkosított szövegben javítás nélkül)
-  * Node-mysql2: támogatott
+  * mysqljs: Nem támogatott (nem küld token cleartext patch nélkül)
+  * node-mysql2: Támogatott
 * Perl
-  * DBD:: MySQL: támogatott
-  * NET:: MySQL: nem támogatott
-* Ugrás
-  * Go-SQL-illesztőprogram: támogatott, `?tls=true&allowCleartextPasswords=true` hozzáadása a kapcsolódási karakterlánchoz
+  * DBD::mysql: Támogatott
+  * Net::MySQL: Nem támogatott
+* Indítás
+  * go-sql-driver: Támogatott, `?tls=true&allowCleartextPasswords=true` hozzáadás a kapcsolati karakterlánchoz
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL
+* Az Azure Active [Directory-hitelesítés](concepts-azure-ad-authentication.md) általános fogalmainak áttekintése az Azure Database for MySQL szolgáltatással
 
 <!--Image references-->
 

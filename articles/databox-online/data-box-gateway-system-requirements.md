@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Gateway rendszerkövetelményei | Microsoft Docs
-description: Tudnivalók a Azure Data Box Gateway szoftveres és hálózati követelményeiről
+title: Microsoft Azure Data Box Gateway rendszerkövetelményei| Microsoft dokumentumok
+description: Ismerje meg az Azure Data Box Gateway szoftver- és hálózati követelményeit
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,25 +9,25 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260188"
 ---
-# <a name="azure-data-box-gateway-system-requirements"></a>Rendszerkövetelmények Azure Data Box Gateway
+# <a name="azure-data-box-gateway-system-requirements"></a>Az Azure Data Box Gateway rendszerkövetelményei
 
-Ez a cikk a Microsoft Azure Data Box Gateway megoldás és a Azure Data Box Gatewayhoz csatlakozó ügyfelek fontos rendszerkövetelményeit ismerteti. Javasoljuk, hogy körültekintően tekintse át az információkat, mielőtt üzembe helyezi a Data Box Gateway, majd az üzembe helyezés és az azt követő művelet során szükség szerint visszatekinti azt.
+Ez a cikk ismerteti a fontos rendszerkövetelmények a Microsoft Azure Data Box Gateway megoldás és az Azure Data Box Gateway csatlakozó ügyfelek számára. Azt javasoljuk, hogy alaposan tekintse át az információkat, mielőtt üzembe helyezné a Data Box Gateway-t, majd szükség szerint hivatkozzon rá a központi telepítés és az azt követő művelet során.
 
 A Data Box Gateway virtuális eszköz rendszerkövetelményei a következők:
 
-- A **gazdagépek szoftveres követelményei** – ismerteti a támogatott platformokat, a helyi konfiguráció felhasználói felületének böngészőit, az SMB-ügyfeleket, valamint az eszközhöz csatlakozó gazdagépek további követelményeit.
-- **Az eszköz hálózati követelményei** – információt nyújt a virtuális eszköz működésével kapcsolatos hálózati követelményekről.
+- **A gazdagépek szoftverkövetelményei** – ismertetik a támogatott platformokat, a helyi konfigurációs felhasználói felület böngészőit, az SMB-ügyfeleket, valamint az eszközhöz csatlakozó állomásokra vonatkozó további követelményeket.
+- **Hálózati követelmények az eszköz** - tájékoztatást nyújt a hálózati követelmények a virtuális eszköz működéséhez.
 
 
-## <a name="specifications-for-the-virtual-device"></a>A virtuális eszköz specifikációi
+## <a name="specifications-for-the-virtual-device"></a>A virtuális eszköz műszaki adatai
 
-A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrások kiosztására a virtuális eszköz kiépítése érdekében:
+A Data Box Gateway alapjául szolgáló gazdarendszer a következő erőforrásokat tudja a virtuális eszköz kiépítésére fordítani:
 
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
@@ -38,15 +38,15 @@ A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrás
 | Hálózati illesztők|1 vagy több virtuális hálózati adapter|
 
 
-## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszere
+## <a name="supported-os-for-clients-connected-to-device"></a>Támogatott operációs rendszer az eszközhöz csatlakoztatott ügyfelek számára
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-supported-client-os.md)]
 
-## <a name="supported-protocols-for-clients-accessing-device"></a>Az eszközt elérő ügyfelek által támogatott protokollok
+## <a name="supported-protocols-for-clients-accessing-device"></a>Az eszközt elérő ügyfelek támogatott protokolljai
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-virtualization-platforms-for-device"></a>Az eszköz által támogatott virtualizációs platformok
+## <a name="supported-virtualization-platforms-for-device"></a>Támogatott virtualizációs platformok eszközhöz
 
 | **Operációs rendszer/platform**  |**Verziók**   |**Megjegyzések**  |
 |---------|---------|---------|
@@ -59,33 +59,33 @@ A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrás
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
 
-## <a name="supported-storage-types"></a>Támogatott tárolási típus
+## <a name="supported-storage-types"></a>Támogatott tárolótípusok
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
-## <a name="supported-browsers-for-local-web-ui"></a>A helyi webes felhasználói felület által támogatott böngészők
+## <a name="supported-browsers-for-local-web-ui"></a>Támogatott böngészők a helyi webes felhasználói felülethez
 
 [!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-## <a name="networking-port-requirements"></a>Hálózati portokra vonatkozó követelmények
+## <a name="networking-port-requirements"></a>Hálózati portkövetelmények
 
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* *állapot arra utal* , hogy a Data Box Gateway-eszköz hogyan küldi el az adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
+Az alábbi táblázat azokat a portokat sorolja fel, amelyeket meg kell nyitni a tűzfalon az SMB, a felhő vagy a felügyeleti forgalom engedélyezéséhez. Ebben a *táblában a bejövő* vagy *bejövő* arra az irányra utal, amelyből a bejövő ügyfél hozzáférést kér az eszközhöz. *A* *kimenő* vagy kimenő eszköz arra az irányra utal, amelyben a Data Box Gateway eszköz a központi telepítésen kívül, például az internetre való kimenő adatokat küldi.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
-## <a name="url-patterns-for-firewall-rules"></a>Tűzfalszabályok URL-mintái
+## <a name="url-patterns-for-firewall-rules"></a>A tűzfalszabályok URL-mintái
 
-A hálózati rendszergazdák gyakran konfigurálhatják a speciális tűzfalszabályok alapján a bejövő és a kimenő forgalom szűrésére szolgáló URL-mintákat. A Data Box Gateway eszköz és a Data Box Gateway szolgáltatás más Microsoft-alkalmazásokkal (például Azure Service Bus, Azure Active Directory Access Control, Storage-fiókokkal és Microsoft Update-kiszolgálókkal függ. Az ezekhez az alkalmazásokhoz társított URL-mintákat a tűzfalszabályok konfigurálására lehet használni. Fontos megérteni, hogy az alkalmazásokhoz társított URL-minták megváltoztathatók. Ehhez a hálózati rendszergazdának szüksége lesz a Data Box Gateway tűzfalszabályok figyelésére és frissítésére, ahogy és amikor szükséges.
+A hálózati rendszergazdák gyakran konfigurálhatnak speciális tűzfalszabályokat az URL-minták alapján a bejövő és a kimenő forgalom szűréséhez. A Data Box Gateway eszköz és a Data Box Gateway szolgáltatás más Microsoft-alkalmazásoktól, például az Azure Service Bustól, az Azure Active Directory hozzáférés-vezérléstől, a tárfiókoktól és a Microsoft Update-kiszolgálóktól függ. Az ezekhez az alkalmazásokhoz társított URL-minták a tűzfalszabályok konfigurálására használhatók. Fontos megérteni, hogy az ezekhez az alkalmazásokhoz társított URL-minták változhatnak. Ehhez pedig a hálózati rendszergazdának szükség szerint figyelnie és frissítenie kell a Data Box Gateway tűzfalszabályait.
 
-Javasoljuk, hogy a legtöbb esetben a Data Box Gateway rögzített IP-címek alapján állítsa be a tűzfal szabályait a kimenő forgalomra vonatkozóan. Az alábbi információk segítségével azonban megadhatja a biztonságos környezetek létrehozásához szükséges speciális tűzfalszabályok beállításait is.
+Azt javasoljuk, hogy a tűzfal szabályok at kimenő forgalom alapján Data Box Gateway rögzített IP-címek, a legtöbb esetben. Az alábbi információk segítségével azonban speciális tűzfalszabályokat állíthat be, amelyek a biztonságos környezetek létrehozásához szükségesek.
 
 > [!NOTE]
-> - Az eszköz (forrás) IP-címeit mindig az összes felhőalapú hálózati adapterre kell beállítani.
-> - A cél IP-címeket az [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653)értékre kell beállítani.
+> - Az eszköz (forrás) IP-k mindig be kell állítani, hogy az összes felhő-kompatibilis hálózati adapterek.
+> - A cél IP-címeket [az Azure adatközpont IP-tartományaira](https://www.microsoft.com/download/confirmation.aspx?id=41653)kell állítani.
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-azure-government"></a>A Azure Government URL-mintái
+### <a name="url-patterns-for-azure-government"></a>URL-minták az Azure Government számára
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
@@ -95,5 +95,5 @@ Javasoljuk, hogy a legtöbb esetben a Data Box Gateway rögzített IP-címek ala
 
 ## <a name="next-step"></a>Következő lépés
 
-* [A Azure Data Box Gateway üzembe helyezése](data-box-gateway-deploy-prep.md)
+* [Az Azure Data Box-átjáró üzembe helyezése](data-box-gateway-deploy-prep.md)
 

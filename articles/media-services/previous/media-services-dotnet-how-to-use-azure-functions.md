@@ -1,6 +1,6 @@
 ---
-title: Azure Functions fejlesztése Media Services
-description: Ebből a témakörből megtudhatja, hogyan kezdheti el a Azure Functions fejlesztését Media Services a Azure Portal használatával.
+title: Azure-funkciók fejlesztése a Media Services szolgáltatással
+description: Ez a témakör bemutatja, hogyan kezdheti el az Azure Functions fejlesztését a Media Services használatával az Azure Portalhasználatával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251166"
 ---
-# <a name="develop-azure-functions-with-media-services"></a>Azure Functions fejlesztése Media Services
+# <a name="develop-azure-functions-with-media-services"></a>Azure-funkciók fejlesztése a Media Services szolgáltatással
 
-Ez a cikk bemutatja, hogyan kezdheti meg a Media Servicest használó Azure Functions létrehozását. A cikkben meghatározott Azure-függvény egy **input** nevű Storage-fiók tárolóját figyeli az új MP4-fájlokhoz. Miután a rendszer eldobott egy fájlt a tárolóba, a blob-trigger végrehajtja a függvényt. Az Azure functions áttekintését lásd: az **Azure functions** című témakör [áttekintése](../../azure-functions/functions-overview.md) és egyéb témakörei.
+Ez a cikk bemutatja, hogyan kezdheti el a Media Services t használó Azure-függvények létrehozását. A cikkben definiált Azure-függvény egy új MP4-fájlok **bemenetének** nevezett tárfiók-tárolót figyel. Miután egy fájlt a tárolóba dobott, a blob eseményindító végrehajtja a függvényt. Az Azure-függvények áttekintéséhez [tekintse át az áttekintést](../../azure-functions/functions-overview.md) és az Azure-függvények szakasz egyéb **témaköreit.**
 
-Ha a Azure Media Servicest használó meglévő Azure Functionsokat szeretné felderíteni és üzembe helyezni, tekintse meg [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Ez a tárház olyan példákat tartalmaz, amelyek Media Services használatával jelenítik meg a tartalom betöltéséhez kapcsolódó munkafolyamatokat közvetlenül a blob Storage-ból, a kódolásból és a tartalomnak a blob Storage-ba való írásához Példákat tartalmaz arra is, hogyan figyelhetők meg a feladatok értesítései webhookok és az Azure Queues használatával. A függvényeket a [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) adattár példái alapján is fejlesztheti. A függvények üzembe helyezéséhez nyomja le az **üzembe helyezés az Azure** -ban gombot.
+Ha az Azure Media Services szolgáltatást használó meglévő Azure-függvényeket szeretné feltárni és telepíteni, olvassa el a [Media Services Azure Functions című itt- és állapotban való használatát.](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) Ez a tárház olyan példákat tartalmaz, amelyek a Media Services használatával jelenítik meg a tartalom közvetlenül a blobstorageból, kódolásból és tartalom blobstorage-ból történő tartalombetöltésével kapcsolatos munkafolyamatokat. Emellett példákat is tartalmaz a webhookokon és az Azure-várólistákon keresztüli feladatértesítések figyelésére. A [Függvények](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) is fejlesztheti a példák alapján a Media Services Azure Functions tárházban. A függvények üzembe helyezéséhez nyomja meg a **Központi telepítés az Azure-ba** gombot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ahhoz, hogy létrehozhassa az első függvényét, egy aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
-- Ha olyan Azure Functions hoz létre, amely műveleteket hajt végre a Azure Media Services-(AMS-) fiókban, vagy a Media Services által eljuttatott eseményeket figyeli, hozzon létre egy AMS-fiókot az [itt](media-services-portal-create-account.md)leírtak szerint.
+- Ha olyan Azure Functions-et hoz létre, amely műveleteket hajt végre az Azure Media Services (AMS) fiókjában, vagy meghallgatja a Media Services által küldött eseményeket, hozzon létre egy AMS-fiókot az [itt](media-services-portal-create-account.md)leírtak szerint.
     
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be az Azure-fiókjával.
-2. Hozzon létre egy Function alkalmazást az [itt](../../azure-functions/functions-create-function-app-portal.md)leírtak szerint.
+2. Hozzon létre egy függvényalkalmazást [az itt](../../azure-functions/functions-create-function-app-portal.md)leírtak szerint.
 
 >[!NOTE]
-> A **StorageConnection** környezeti változóban megadott Storage-fiók (lásd a következő lépést) az alkalmazással megegyező régióban kell lennie.
+> A **StorageConnection** környezeti változóban megadott tárfióknak (lásd a következő lépést) ugyanabban a régióban kell lennie, mint az alkalmazásnak.
 
-## <a name="configure-function-app-settings"></a>Function alkalmazás beállításainak konfigurálása
+## <a name="configure-function-app-settings"></a>A függvényalkalmazás beállításainak konfigurálása
 
-Media Services függvények fejlesztésekor hasznos lehet olyan környezeti változók hozzáadása, amelyeket a rendszer a függvények során fog használni. Az Alkalmazásbeállítások konfigurálásához kattintson a configure app Settings (Alkalmazásbeállítások konfigurálása) hivatkozásra. További információ: [Az Azure Function app beállításainak konfigurálása](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+A Media Services-funkciók fejlesztése során hasznos olyan környezeti változókhozzáadása, amelyeket a funkciók során használni fog. Az alkalmazásbeállítások konfigurálásához kattintson az Alkalmazásbeállítások konfigurálása hivatkozásra. További információ: [Az Azure Function alkalmazásbeállításainak konfigurálása.](../../azure-functions/functions-how-to-use-azure-function-app-settings.md) 
 
-A jelen cikkben definiált függvény a következő környezeti változókat feltételezi az alkalmazás beállításaiban:
+A jelen cikkben definiált függvény feltételezi, hogy az alkalmazásbeállításokban a következő környezeti változók vannak:
 
-**AMSAADTenantDomain**: Azure ad-bérlői végpont. Az AMS API-hoz való csatlakozással kapcsolatos további információkért tekintse meg [ezt](media-services-use-aad-auth-to-access-ams-api.md) a cikket.
+**AMSAADTenantDomain**: Azure AD-bérlői végpont. Az AMS API-hoz való csatlakozásról ebben a [cikkben](media-services-use-aad-auth-to-access-ams-api.md) olvashat bővebben.
 
-**AMSRESTAPIEndpoint**: az REST API végpontot jelölő URI. 
+**AMSRESTAPIEndpoint**: URI, amely a REST API-végpontot jelöli. 
 
-**AMSClientId**: Azure ad-alkalmazás ügyfél-azonosítója.
+**AMSClientId**: Azure AD alkalmazásügyfél-ügyfélazonosító.
 
-**AMSClientSecret**: Azure ad-alkalmazás-ügyfél titka.
+**AMSClientSecret**: Azure AD alkalmazásügyfél-titkos.
 
-**StorageConnection**: a Media Services fiókhoz társított fiók tárolási kapcsolatai. Ezt az értéket a **function. JSON** fájlban kell használni, és a **. CSX fájlt kell futtatnia** (lásd alább).
+**StorageConnection**: a Media Services-fiókhoz társított fiók tárolókapcsolata. Ez az érték a **function.json** fájlban és a **run.csx** fájlban használatos (lásd alább).
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-Miután telepítette a Function alkalmazást, a **App Services** Azure functions között találhatja meg.
+Miután a függvényalkalmazás üzembe került, megtalálhatja azt az **App Services** Azure Functions között.
 
-1. Válassza ki a Function alkalmazást, és kattintson az **új függvény**elemre.
-2. Válassza ki **C#** a nyelvet és az **adatfeldolgozási** forgatókönyvet.
-3. Válassza a **BlobTrigger** -sablon lehetőséget. Ez a függvény akkor aktiválódik, amikor egy blob fel van töltve a **bemeneti** tárolóba. A **bemeneti** nevet a rendszer az **elérési úton**adja meg a következő lépésben.
+1. Válassza ki a függvényalkalmazást, és kattintson **az Új függvény gombra.**
+2. Válassza ki a **C#** nyelvet és **az adatfeldolgozási forgatókönyvet.**
+3. Válassza **a BlobTrigger** sablont. Ez a függvény akkor aktiválódik, ha egy blob feltölti a **bemeneti** tárolóba. A **bemeneti** név a következő lépésben az **Elérési útban**van megadva.
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![Fájlokat](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. Miután kiválasztotta a **BlobTrigger**-t, néhány további vezérlő jelenik meg az oldalon.
+4. Miután kiválasztotta a **BlobTrigger**lehetőséget, néhány további vezérlő jelenik meg a lapon.
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![Fájlokat](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Kattintson a  **Create** (Létrehozás) gombra. 
+4. Kattintson **a Létrehozás gombra.** 
 
 ## <a name="files"></a>Fájlok
 
-Az Azure-függvény az ebben a szakaszban ismertetett kódrészletekhez és egyéb fájlokhoz van társítva. Ha a Azure Portal használatával hoz létre egy függvényt, a **function. JSON** fájlt, és a **Run. CSX** fájlt hozza létre. Hozzá kell adnia vagy fel kell töltenie egy **Project. JSON** fájlt. A szakasz további része röviden ismerteti az egyes fájlokat, és megjeleníti a definíciókat.
+Az Azure-függvény kódfájlokhoz és más, ebben a szakaszban ismertetett fájlokhoz van társítva. Amikor az Azure Portalon hozzon létre egy függvényt, **function.json** és **run.csx** jönnek létre az Ön számára. **Project.json** fájlt kell hozzáadnia vagy feltöltenie. A szakasz további részei röviden ismertetik az egyes fájlokat, és ismertetik azok definícióit.
 
-![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![Fájlokat](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-A function. JSON fájl határozza meg a függvények kötéseit és az egyéb konfigurációs beállításokat. A futtatókörnyezet ezt a fájlt használja a figyelni kívánt események meghatározásához és az adatoknak a függvény végrehajtásból való visszaküldéséhez és az adatok visszaadásához. További információ: [Azure functions http-és webhook-kötések](../../azure-functions/functions-reference.md#function-code).
+A function.json fájl határozza meg a függvénykötéseket és más konfigurációs beállításokat. A futásidejű használja ezt a fájlt, hogy meghatározza az eseményeket a figyeléshez, és hogyan lehet adatokat átadni, és adatokat afüggvény-végrehajtás. További információ: [Azure-függvények HTTP és webhook kötések.](../../azure-functions/functions-reference.md#function-code)
 
 >[!NOTE]
->Állítsa a **letiltott** tulajdonságot **true (igaz** ) értékre a függvény végrehajtásának megakadályozása érdekében. 
+>Állítsa a **letiltott** tulajdonságot **true** értékre, hogy megakadályozza a funkció végrehajtását. 
 
-Cserélje le a meglévő function. JSON fájl tartalmát a következő kódra:
+Cserélje le a meglévő function.json fájl tartalmát a következő kódra:
 
 ```json
 {
@@ -102,11 +102,11 @@ Cserélje le a meglévő function. JSON fájl tartalmát a következő kódra:
 }
 ```
 
-### <a name="projectjson"></a>project.json
+### <a name="projectjson"></a>projekt.json
 
-A Project. JSON fájl függőségeket tartalmaz. Íme egy példa a **Project. JSON** fájlra, amely tartalmazza a szükséges .net Azure Media Services csomagokat a Nuget. Vegye figyelembe, hogy a verziószámok a csomagok legújabb frissítéseire változnak, ezért a legújabb verziókat kell megerősíteni. 
+A project.json fájl függőségeket tartalmaz. Íme egy példa a **project.json** fájlra, amely tartalmazza a Nuget szükséges .NET Azure Media Services-csomagjait. Ne feledje, hogy a verziószámok a csomagok legújabb frissítéseivel változnak, ezért erősítse meg a legújabb verziókat. 
 
-Adja hozzá a következő definíciót a Project. JSON fájlhoz. 
+Adja hozzá a következő definíciót a project.json hoz. 
 
 ```json
 {
@@ -124,18 +124,18 @@ Adja hozzá a következő definíciót a Project. JSON fájlhoz.
 
 ```
     
-### <a name="runcsx"></a>run.csx
+### <a name="runcsx"></a>futtatás.csx
 
-Ez a C# függvény kódja.  Az alábbi függvény egy **input** (az elérési úton megadott) nevű Storage-fiók tárolóját figyeli az új MP4-fájlokhoz. Miután a rendszer eldobott egy fájlt a tárolóba, a blob-trigger végrehajtja a függvényt.
+Ez a funkció C# kódja.  Az alábbiakban meghatározott függvény egy **bemenetnevű** tárfiók-tárolót figyel (ez az, ami az elérési úton meg van adva) az új MP4-fájlokhoz. Miután egy fájlt a tárolóba dobott, a blob eseményindító végrehajtja a függvényt.
     
-Az ebben a szakaszban meghatározott példa bemutatja a következőt: 
+Az ebben a szakaszban meghatározott példa bemutatja a 
 
-1. egy eszköz betöltése egy Media Services-fiókba (egy blob egy AMS-eszközbe való összevonásával) és 
-2. Media Encoder Standard "adaptív streaming" beállításkészletet használó kódolási feladatok beküldése.
+1. hogyan lehet bedolgozni egy eszközt egy Media Services-fiókba (egy blob aMS-eszközbe történő kezelésével), és 
+2. a Media Encoder Standard "Adaptive Streaming" készletét használó kódolási feladat elküldése.
 
-A valós életben forgatókönyvben legvalószínűbb, hogy nyomon szeretné követni a feladatok előrehaladását, majd közzéteszi a kódolt objektumot. További információ: [Media Services feladatok értesítéseinek figyelése az Azure Webhookok használatával](media-services-dotnet-check-job-progress-with-webhooks.md). További Példákért lásd: [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
+A valós életben valószínűleg szeretné nyomon követni a feladat előrehaladását, majd közzé tenni a kódolt eszköz. További információ: [Az Azure WebHooks használata a Media Services-feladatértesítések figyeléséhez](media-services-dotnet-check-job-progress-with-webhooks.md)című témakörben található. További példák: [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
-Cserélje le a meglévő Run. CSX fájl tartalmát a következő kódra: Ha elkészült, kattintson a **Mentés és Futtatás**gombra.
+Cserélje le a meglévő run.csx fájl tartalmát a következő kódra: Miután befejezte a funkció definiálását, kattintson a **Mentés és futtatás gombra.**
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -330,23 +330,23 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="test-your-function"></a>A függvény tesztelése
 
-A függvény teszteléséhez fel kell töltenie egy MP4-fájlt a kapcsolódási karakterláncban megadott Storage-fiók **bemeneti** tárolójába.  
+A funkció teszteléséhez fel kell töltenie egy MP4-fájlt a kapcsolati karakterláncban megadott tárfiók **bemeneti** tárolójába.  
 
-1. Válassza ki a **StorageConnection** környezeti változóban megadott Storage-fiókot.
-2. Kattintson a **Blobok**elemre.
-3. Kattintson a **+ Tároló** elemre. Nevezze el a tároló **bemenetét**.
-4. Kattintson a **feltöltés** gombra, és keresse meg a feltölteni kívánt. MP4-fájlt.
+1. Válassza ki a **StorageConnection** környezeti változóban megadott tárfiókot.
+2. Kattintson **a Blobs gombra.**
+3. Kattintson a **+ Tároló** elemre. Nevezze el a **tárolóbemenetet**.
+4. Nyomja **le a Feltöltés gombot,** és keresse meg a feltölteni kívánt .mp4 fájlt.
 
 >[!NOTE]
-> Ha egy használati tervben blob-triggert használ, az új Blobok feldolgozására akár 10 percet is igénybe vehet, miután egy Function alkalmazás üresjáratba került. A Function app futtatása után a Blobok feldolgozása azonnal megtörténik. További információ: [blob Storage-eseményindítók és-kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
+> Ha egy blob eseményindító t használ egy felhasználási terv, előfordulhat, hogy akár 10 perces késéssel feldolgozása új blobok után egy függvényalkalmazás tétlen. A függvényalkalmazás futása után a blobok feldolgozása azonnal. További információ: [Blob storage triggers and bindings](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 
 ## <a name="next-steps"></a>További lépések
 
-Ezen a ponton készen áll egy Media Services alkalmazás fejlesztésének megkezdésére. 
+Ezen a ponton készen áll a Media Services-alkalmazások fejlesztésének megkezdésére. 
  
-A Azure Functions és a Logic Apps és a Azure Media Services használatával végzett egyéni tartalom-létrehozási munkafolyamatok létrehozásával kapcsolatos további részletekért és példákért tekintse [meg a Media Services .net functions integrációs mintát a githubon](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) .
+Az Azure Functions és a Logic Apps azure Media Services használatával egyéni tartalom-létrehozási munkafolyamatok létrehozásához szükséges további részletekért és teljes mintákért/megoldásokért tekintse meg a [Media Services .NET Functions integrációs mintáját a GitHubon.](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
-Lásd még: [Az Azure Webhookok használata a Media Services-feladatok értesítéseinek figyeléséhez a .NET használatával](media-services-dotnet-check-job-progress-with-webhooks.md). 
+Lásd még: [Az Azure WebHooks használata a Media Services-feladatértesítések figyeléséhez a .NET](media-services-dotnet-check-job-progress-with-webhooks.md)használatával. 
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

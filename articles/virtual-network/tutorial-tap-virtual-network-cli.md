@@ -1,6 +1,6 @@
 ---
-title: VNet-KOPPINTÁS létrehozása, módosítása vagy törlése – Azure CLI
-description: Megtudhatja, hogyan hozhat létre, módosíthat vagy törölhet virtuális hálózatokat az Azure CLI használatával.
+title: Virtuális hálózat TAP létrehozása, módosítása vagy törlése – Azure CLI
+description: Ismerje meg, hogyan hozhat létre, módosíthat vagy törölhet virtuális hálózati TAP-ot az Azure CLI használatával.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 05ce45a52db2b8a47223023ce31b5591b2b97c37
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185399"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234978"
 ---
-# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>A virtuális hálózatok használata KOPPINTÁSsal az Azure CLI használatával
+# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Virtuális hálózati TAP használata az Azure CLI használatával
 
-Az Azure Virtual Network (terminál-hozzáférési pont) funkció lehetővé teszi a virtuális gép hálózati forgalmának folyamatos továbbítását egy hálózati csomag gyűjtője vagy analitikai eszköze számára. A gyűjtő vagy az elemzési eszközt egy [hálózati virtuális berendezési](https://azure.microsoft.com/solutions/network-appliances/) partner kapja meg. A virtuális hálózati KOPPINTÁSsal való együttműködéshez ellenőrzött partneri megoldások listáját a [partneri megoldások](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)című témakörben találja. 
+Az Azure virtuális hálózati TAP (Terminal Access Point) lehetővé teszi a virtuális gép hálózati forgalmának folyamatos streamelését egy hálózati csomaggyűjtő vagy -elemző eszköz felé. A gyűjtő vagy elemző eszközt egy [hálózati virtuális berendezés](https://azure.microsoft.com/solutions/network-appliances/) partner biztosítja. A virtuális hálózati TAP-val való együttműködésre ellenőrzött partnermegoldások listáját a [partnermegoldások](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)ban találja. 
 
-## <a name="create-a-virtual-network-tap-resource"></a>Virtuális hálózati KOPPINTÁS erőforrásának létrehozása
+## <a name="create-a-virtual-network-tap-resource"></a>Virtuális hálózati TAP-erőforrás létrehozása
 
-Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása a virtuális hálózati koppintó erőforrás létrehozása előtt. Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure parancssori felületét (CLI) a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj, amely nem igényli az Azure CLI telepítését a számítógépre. Be kell jelentkeznie az Azure-ba egy olyan fiókkal, amely rendelkezik a megfelelő [engedélyekkel](virtual-network-tap-overview.md#permissions). Ehhez a cikkhez az Azure CLI 2.0.46 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). A virtuális hálózat KOPPINTÁS jelenleg bővítményként érhető el. A bővítmény telepítéséhez `az extension add -n virtual-network-tap`kell futtatnia. Ha helyileg futtatja az Azure CLI-t, a `az login` futtatásával is létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+Virtuális hálózati TAP-erőforrás létrehozása előtt olvassa el [az előfeltételeket.](virtual-network-tap-overview.md#prerequisites) Futtathatja az Azure Cloud [Shellben](https://shell.azure.com/bash)követett parancsokat, vagy az Azure parancssori felületének (CLI) futtatásával a számítógépről. Az Azure Cloud Shell egy ingyenes interaktív rendszerhéj, amely nem igényel az Azure CLI telepítését a számítógépre. A megfelelő [engedélyekkel](virtual-network-tap-overview.md#permissions)rendelkező fiókkal kell bejelentkeznie az Azure-ba. Ez a cikk az Azure CLI 2.0.46-os vagy újabb verzióját igényli. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). A virtuális hálózati TAP jelenleg bővítményként érhető el. A bővítmény telepítéséhez futtatnia `az extension add -n virtual-network-tap`kell. Ha az Azure CLI helyileg fut, akkor `az login` is kell futtatnia, hogy hozzon létre egy kapcsolatot az Azure-ral.
 
-1. Kérje le az előfizetés AZONOSÍTÓját egy olyan változóra, amelyet egy későbbi lépésben használ:
+1. Az előfizetés azonosítójának lekérése egy későbbi lépésben használt változóba:
 
    ```azurecli-interactive
    subscriptionId=$(az account show \
@@ -38,21 +38,21 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
    --out tsv)
    ```
 
-2. Állítsa be azt az előfizetés-azonosítót, amelyet a virtuális hálózati KOPPINTó erőforrás létrehozásához fog használni.
+2. Állítsa be azt az előfizetés-azonosítót, amelyet egy virtuális hálózati TAP-erőforrás létrehozásához fog használni.
 
    ```azurecli-interactive
    az account set --subscription $subscriptionId
    ```
 
-3. Regisztrálja újra azt az előfizetés-azonosítót, amelyet a virtuális hálózati KOPPINTó erőforrás létrehozásához fog használni. Ha a TAP-erőforrás létrehozásakor regisztrációs hibaüzenetet kap, futtassa a következő parancsot:
+3. Regisztrálja újra a virtuális hálózati TAP-erőforrás létrehozásához használt előfizetés-azonosítót. Ha a TAP-erőforrás létrehozásakor regisztrációs hiba lép fel, futtassa a következő parancsot:
 
    ```azurecli-interactive
    az provider register --namespace Microsoft.Network --subscription $subscriptionId
    ```
 
-4. Ha a virtuális hálózat célhelye a gyűjtő vagy elemzési eszköz hálózati virtuális berendezésének hálózati adaptere, akkor
+4. Ha a virtuális hálózat TAP célja a hálózati virtuális készülék hálózati interfésze gyűjtő- vagy elemzőeszköz számára -
 
-   - Kérje le a hálózati virtuális berendezés hálózati adapterének IP-konfigurációját egy későbbi lépésben használt változóra. Az azonosító a végpont, amely összesíti a TAP-forgalmat. A következő példa lekéri a *ipconfig1* IP-konfiguráció azonosítóját egy *myNetworkInterface*nevű hálózati adapterhez egy *myResourceGroup*nevű erőforráscsoport:
+   - A hálózati virtuális berendezés hálózati illesztőjének IP-konfigurációjának beolvasása egy későbbi lépésben használt változóba. Az azonosító az a végpont, amely összesíti a TAP-forgalmat. A következő példa a *myNetworkInterface*nevű hálózati illesztő *ipconfig1* IP-konfigurációjának azonosítóját olvassa be egy *myResourceGroup*nevű erőforráscsoportban:
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -63,7 +63,7 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
        --out tsv)
       ```
 
-   - Hozzon létre egy virtuális hálózatot a westcentralus Azure-régióban az IP-konfiguráció AZONOSÍTÓjának használatával célként és egy opcionális port tulajdonságként. A port meghatározza a hálózati adapter IP-konfigurációjának célport beállítását, ahol a TAP-forgalom fogadása történik:  
+   - Hozza létre a virtuális hálózat TAP westcentralus azure régióban az IP-konfiguráció azonosítóját, mint a cél és egy opcionális port tulajdonság. A port megadja a hálózati csatoló IP-konfigurációjának azon célportját, amelyen a TAP-forgalom érkezik:  
 
       ```azurecli-interactive
        az network vnet tap create \
@@ -74,9 +74,9 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
        --location westcentralus
       ```
 
-5. Ha a virtuális hálózat célhelye egy belső Azure Load Balancer:
+5. Ha a virtuális hálózat célja a TAP egy azure belső terheléselosztó:
   
-   - Kérje le az Azure belső terheléselosztó előtér-IP-konfigurációját egy későbbi lépésben használt változóra. Az azonosító a végpont, amely összesíti a TAP-forgalmat. A következő példa lekéri a *myInternalLoadBalancer*nevű terheléselosztó *frontendipconfig1* előtér-IP-konfigurációjának azonosítóját egy *myResourceGroup*nevű erőforráscsoporthoz:
+   - Az Azure belső terheléselosztó előtér-IP-konfigurációjának lekérése egy későbbi lépésben használt változóba. Az azonosító az a végpont, amely összesíti a TAP-forgalmat. A következő példa a *frontendipconfig1* előtér-IP-konfigurációjának azonosítóját olvassa be egy *myInternalLoadBalancer*nevű terheléselosztóhoz egy *myResourceGroup*nevű erőforráscsoportban:
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \
@@ -86,7 +86,8 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
       --query id \
       --out tsv)
       ```
-   - A virtuális hálózat létrehozásához KOPPINTson a előtér-IP-konfiguráció AZONOSÍTÓját használja célként és egy opcionális port tulajdonságként. A port megadja a célként megadott portot az előtér-IP-konfigurációban, ahol a TAP-forgalom fogadása történik:  
+
+   - Hozza létre a virtuális hálózati TAP-t az előtér IP-konfigurációjának azonosítója alapján célként és választható porttulajdonságként. A port megadja azt a célportot az előtér-IP-konfiguráción, ahol a TAP-forgalom érkezik:  
 
       ```azurecli-interactive
       az network vnet tap create \
@@ -97,7 +98,7 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
      --location westcentralus
      ```
 
-6. A virtuális hálózat létrehozásának megerősítése:
+6. A virtuális hálózat létrehozásának megerősítése TAP:
 
    ```azurecli-interactive
    az network vnet tap show \
@@ -105,9 +106,9 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
    --name myTap
    ```
 
-## <a name="add-a-tap-configuration-to-a-network-interface"></a>KOPPINTÁS konfigurációjának hozzáadása hálózati adapterhez
+## <a name="add-a-tap-configuration-to-a-network-interface"></a>TAP-konfiguráció hozzáadása hálózati adapterhez
 
-1. Egy meglévő virtuális hálózati KOPPINTó erőforrás AZONOSÍTÓjának beolvasása. A következő példa egy *myResourceGroup*nevű erőforráscsoport egy *myTap* nevű virtuális hálózatát kéri le:
+1. Meglévő virtuális hálózati TAP-erőforrás azonosítójának beolvasása. A következő példa egy *myTap* nevű virtuális hálózatot kér be egy *myResourceGroup*nevű erőforráscsoportban:
 
    ```azurecli-interactive
    tapId=$(az network vnet tap show \
@@ -117,7 +118,7 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
    --out tsv)
    ```
 
-2. Hozzon létre egy KOPPINTÁS konfigurációt a figyelt virtuális gép hálózati adapterén. A következő példa létrehoz egy *myNetworkInterface*nevű hálózati adapterhez tartozó koppintó konfigurációt:
+2. Hozzon létre egy TAP-konfigurációt a figyelt virtuális gép hálózati felületén. A következő példa egy TAP-konfigurációt hoz létre a myNetworkInterface nevű hálózati *adapterhez:*
 
    ```azurecli-interactive
    az network nic vtap-config create \
@@ -138,9 +139,9 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
    --subscription subscriptionId
    ```
 
-## <a name="delete-the-tap-configuration-on-a-network-interface"></a>A KOPPINTÁS konfigurációjának törlése egy hálózati adapteren
+## <a name="delete-the-tap-configuration-on-a-network-interface"></a>A TAP-konfiguráció törlése hálózati adapteren
 
-   ```azure-cli-interactive
+   ```azurecli-interactive
    az network nic vtap-config delete \
    --resource-group myResourceGroup \
    --nic myNetworkInterface \
@@ -148,13 +149,13 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
    --subscription subscriptionId
    ```
 
-## <a name="list-virtual-network-taps-in-a-subscription"></a>Virtuális hálózati csapok listázása egy előfizetésben
+## <a name="list-virtual-network-taps-in-a-subscription"></a>Virtuális hálózati TA-k listázása előfizetésben
 
    ```azurecli-interactive
    az network vnet tap list
    ```
 
-## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Virtuális hálózati KOPPINTÁS törlése egy erőforráscsoporthoz
+## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Virtuális hálózati TAP törlése erőforráscsoportban
 
    ```azurecli-interactive
    az network vnet tap delete \

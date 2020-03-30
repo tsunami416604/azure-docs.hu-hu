@@ -1,41 +1,35 @@
 ---
 title: fájl belefoglalása
 description: fájl belefoglalása
-services: commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
-manager: evansma
-editor: ''
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 08/16/2019
-ms.author: v-qiwe
+ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: 059a2691c8e7905295a65daf262338ece65247d1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee6ee600160349548a0e886131f1a29b90de8746
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275883"
 ---
-Ha a partner centeren keresztül tesz közzé ajánlatot a piactéren, csatlakoznia kell az ajánlathoz az Ügyfélkapcsolat-kezelési (CRM) rendszerhez, hogy az ügyfél elérhetőségi adatait azonnal megkapja az ügyfelek érdeklődésének kinyilvánítása után. üzembe helyezi a terméket.
+Miközben a Partner Centeren keresztül teszi közzé ajánlatát a piacon, az ajánlatot össze kell kapcsolnia az ügyfélkapcsolat-kezelési (CRM) rendszerével, hogy az ügyfél elérhetőségi adatait közvetlenül azt követően kaphassa meg, hogy az ügyfél érdeklődést vagy telepíti a terméket.
 
-1. **Válassza ki a kívánt érdeklődő célhelyet, ahová az ügyfél-érdeklődőket küldeni szeretné**. A következő CRM-rendszerek támogatottak:
+1. **Válassza ki azt a vezető úti célt, ahová azt szeretné, hogy ügyfélérdeklődőket küldjünk.** A következő CRM-rendszerek támogatottak:
 
-    * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) ügyfél-engagement
+    * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) az ügyfelek elköteleződése érdekében
     * [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md)
     * [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md)
 
-    Ha a fenti listában nincs kifejezetten támogatva a CRM rendszer, a következő beállításokkal tárolhatja az ügyfél-érdeklődő adatait, majd exportálhatja vagy importálhatja ezeket az adatait a CRM-rendszerbe.
+    Ha a CRM-rendszert a fenti listában nem támogatja kifejezetten, a következő lehetőségek közül választhat, amelyek lehetővé teszik az ügyfélérdeklődők adatainak tárolását, majd exportálhatja vagy importálhatja ezeket az adatokat a CRM-rendszerbe.
 
-    * [Azure-tábla](../commercial-marketplace-lead-management-instructions-azure-table.md)
+    * [Azure-táblázat](../commercial-marketplace-lead-management-instructions-azure-table.md)
     * [Https-végpont](../commercial-marketplace-lead-management-instructions-https.md)
 
-2. Olvassa el a fent hivatkozott dokumentációt a kiválasztott vezető célhelyre, hogy megtudja, hogyan állíthatja be a vezető célhelyet a Piactéri ajánlatból érkező érdeklődők fogadására. 
-3. Kapcsolódjon az ajánlathoz a vezető célhoz, miközben közzéteszi az ajánlatot a piactéren a partner Centerben. Ehhez a fenti dokumentációban talál további információt.
-4. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van beállítva. Ha megfelelően konfigurálta az érdeklődői célhelyet, és a partner Centerben közzétette az ajánlatát, a rendszer érvényesíti a kapcsolatot, és elküld egy tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot. 
-5. Győződjön meg arról, hogy a vezető célhely kapcsolata naprakész marad, hogy ne veszítse el az érdeklődőket, ügyeljen arra, hogy frissítse ezeket a kapcsolatokat, amikor valami módosult a végén.
+2. Olvassa el a kiválasztott érdeklődési célhoz tartozó hivatkozott dokumentációt, hogy megtudja, hogyan állíthatja be az érdeklődési célt úgy, hogy megkapja a piactéren elérhető ajánlatához kapcsolódó érdeklődőket. 
+3. Csatlakoztassa ajánlatát az érdeklődési célhoz, és közben tegye közzé az ajánlatot a Partnerközpontban található piactéren. Ennek módjáról a fenti dokumentációban olvashat.
+4. Ellenőrizze, hogy az érdeklődési céllal való kapcsolat megfelelően van-e beállítva. Miután megfelelően konfigurálta az érdeklődő úti célját, és elérte a Közzététel az ajánlaton a Partnerközpontban, érvényesítjük a kapcsolatot, és elküldjük Önnek a tesztérdeklődőt. Amikor az ajánlat megtekintése előtt éles, akkor is tesztelheti a vezető kapcsolat, ha megpróbálja megszerezni az ajánlatot magad az előnézeti környezetben. 
+5. Győződjön meg arról, hogy az érdeklődő célállomásához való csatlakozás naprakész marad, hogy ne veszítse el az érdeklődőket, ezért frissítse ezeket a kapcsolatokat, ha valami megváltozott a végén.

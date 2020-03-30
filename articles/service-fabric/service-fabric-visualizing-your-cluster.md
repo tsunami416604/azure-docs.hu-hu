@@ -1,24 +1,24 @@
 ---
 title: A fürt megjelenítése az Azure Service Fabric Explorer használatával
-description: Service Fabric Explorer egy Microsoft Azure Service Fabric-fürtön futó felhőalapú alkalmazások és csomópontok vizsgálatára és felügyeletére szolgáló alkalmazás.
+description: A Service Fabric Explorer egy olyan alkalmazás, amely a Microsoft Azure Service Fabric-fürt felhőalapú alkalmazások és csomópontok vizsgálatára és kezelésére szolgál.
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258186"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
-A Service Fabric Explorer (SFX) egy nyílt forráskódú eszköz az Azure Service Fabric-fürtök vizsgálatához és kezeléséhez. A Service Fabric Explorer asztali alkalmazások Windows, macOS és Linux rendszerekhez.
+A Service Fabric Explorer (SFX) egy nyílt forráskódú eszköz az Azure Service Fabric-fürtök vizsgálatához és kezeléséhez. Service Fabric Explorer egy asztali alkalmazás Windows, macOS és Linux.
 
-## <a name="service-fabric-explorer-download"></a>Service Fabric Explorer Letöltés
+## <a name="service-fabric-explorer-download"></a>Service Fabric Explorer letöltése
 
-Az alábbi hivatkozások segítségével töltheti le Service Fabric Explorer asztali alkalmazásként:
+A Service Fabric Explorer asztali alkalmazásként való letöltéséhez használja az alábbi hivatkozásokat:
 
 - Windows
   - https://aka.ms/sfx-windows
@@ -31,111 +31,111 @@ Az alábbi hivatkozások segítségével töltheti le Service Fabric Explorer as
   - https://aka.ms/sfx-macos
 
 > [!NOTE]
-> A Service Fabric Explorer asztali verziója több vagy kevesebb funkciót is tartalmazhat, mint a fürt támogatása. A szolgáltatás teljes kompatibilitásának biztosítása érdekében visszatérhet a fürtre központilag telepített Service Fabric Explorer-verzióra.
+> A Service Fabric Explorer asztali verziója több vagy kevesebb szolgáltatással rendelkezhet, mint a fürt támogatása. A teljes szolgáltatáskompatibilitás biztosítása érdekében visszaléphet a fürtbe telepített Service Fabric Explorer-verzióra.
 >
 >
 
-### <a name="running-service-fabric-explorer-from-the-cluster"></a>Service Fabric Explorer futtatása a fürtből
+### <a name="running-service-fabric-explorer-from-the-cluster"></a>A Service Fabric Explorer futtatása a fürtből
 
-A Service Fabric Explorer egy Service Fabric-fürt HTTP-kezelési végpontján is fut. Ha egy webböngészőben szeretné elindítani az SFX-t, keresse meg a fürt HTTP-felügyeleti végpontját bármely böngészőből – például: https:\//clusterFQDN: 19080.
+A Service Fabric Explorer egy Service Fabric-fürt HTTP-felügyeleti végpontjában is található. Az SFX webböngészőben való elindításához keresse meg a fürt HTTP-kezelési végpontját bármely böngészőből – például https:\//clusterFQDN:19080.
 
-A fejlesztői munkaállomások beállításához a Service Fabric Explorert a helyi fürtön indíthatja el, ha https://localhost:19080/Explorernavigál. A [fejlesztési környezet előkészítéséhez](service-fabric-get-started.md)tekintse meg ezt a cikket.
+Fejlesztői munkaállomás-beállítás esetén a Service Fabric Explorer t https://localhost:19080/Explorera helyi fürtön indíthatja el a rendszerre navigálva. Tekintse meg ezt a cikket, hogy [előkészítse a fejlesztői környezetet](service-fabric-get-started.md).
 
 > [!NOTE]
-> Ha a fürtöt önaláírt tanúsítvány védi, a webböngésző "Ez a hely nem biztonságos" hibaüzenet jelenik meg. A figyelmeztetés felülbírálásával egyszerűen folytathatja a legtöbb modern böngészőt. Éles környezetben a fürtöt a köznapi név és a hitelesítésszolgáltató által kiadott tanúsítvány használatával kell védeni. 
+> Ha a fürtön önaláírt tanúsítvány biztosít, a következő hibaüzenet jelenik meg a következő webböngészőből: "Ez a webhely nem biztonságos". Egyszerűen haladjon végig a legtöbb modern böngészőn a figyelmeztetés felülbírálásával. Éles környezetben a fürtöt köznapi névvel és hitelesítésszolgáltató által kiállított tanúsítvánnyal kell biztosítani. 
 >
 >
 
-## <a name="connect-to-a-service-fabric-cluster"></a>Kapcsolódás Service Fabric fürthöz
-Service Fabric-fürthöz való csatlakozáshoz a fürtök felügyeleti végpontja (FQDN/IP) és a HTTP-felügyeleti végpont portja (alapértelmezés szerint 19080) szükséges. Például: https\://mysfcluster.westus.cloudapp.azure.com:19080. A "kapcsolódás a localhost-hoz" jelölőnégyzet bejelölésével csatlakozhat egy helyi fürthöz a munkaállomáson.
+## <a name="connect-to-a-service-fabric-cluster"></a>Kapcsolódás Service Fabric-fürthöz
+Service Fabric-fürthöz való csatlakozáshoz a fürtkezelési végpontra (FQDN/IP) és a HTTP-kezelési végpontportra (alapértelmezés szerint 19080) van szükség. Például\:https //mysfcluster.westus.cloudapp.azure.com:19080. Használja a "Csatlakozás a helyi állomáshoz" jelölőnégyzetet, hogy csatlakozzon egy helyi fürthöz a munkaállomáson.
 
 ### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
-A Service Fabric-fürthöz tanúsítványokkal vagy Azure Active Directory (HRE) használatával is szabályozhatja az ügyfelek hozzáférését.
+Szabályozhatja az ügyfél hozzáférést a Service Fabric-fürthöz tanúsítványokkal vagy az Azure Active Directory (AAD) használatával.
 
-Ha egy biztonságos fürthöz próbál csatlakozni, a fürt konfigurációjától függően meg kell adnia egy ügyféltanúsítványt, vagy be kell jelentkeznie a HRE használatával.
+Ha biztonságos fürthöz próbál csatlakozni, akkor a fürt konfigurációjától függően ügyféltanúsítványt kell bemutatnia, vagy AAD használatával kell bejelentkeznie.
 
-## <a name="understand-the-service-fabric-explorer-layout"></a>A Service Fabric Explorer elrendezésének megismerése
-A bal oldalon található fa használatával navigálhat Service Fabric Explorer. A fa gyökerében a fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazások és a csomópontok állapotának összefoglalását.
+## <a name="understand-the-service-fabric-explorer-layout"></a>A Service Fabric Explorer elrendezésének ismertetése
+A Service Fabric Intézőben a bal oldali fa használatával navigálhat. A fa gyökerében a fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazás és a csomópont állapotának összegzését.
 
-![Service Fabric Explorer-fürt irányítópultja][sfx-cluster-dashboard]
+![Service Fabric Explorer fürt irányítópultja][sfx-cluster-dashboard]
 
 ### <a name="view-the-clusters-layout"></a>A fürt elrendezésének megtekintése
-Egy Service Fabric fürt csomópontjai a tartalék tartományok és a frissítési tartományok kétdimenziós rácsára vannak helyezve. Ez az elhelyezés biztosítja, hogy alkalmazásai továbbra is elérhetők legyenek a hardveres hibák és az alkalmazások frissítéseinek jelenlétében. Megtekintheti, hogyan határozza meg az aktuális fürtöt a fürt térképe alapján.
+A Service Fabric-fürt csomópontjai a tartalék tartományok és a frissítési tartományok kétdimenziós rácsán keresztül kerülnek. Ez az elhelyezés biztosítja, hogy az alkalmazások hardverhibák és alkalmazásfrissítések esetén is elérhetők maradjanak. Az aktuális fürt lefektetésének módját a fürttérkép segítségével tekintheti meg.
 
-![Service Fabric Explorer fürt térképe][sfx-cluster-map]
+![Service Fabric Explorer fürttérkép][sfx-cluster-map]
 
 ### <a name="view-applications-and-services"></a>Alkalmazások és szolgáltatások megtekintése
-A fürt két alfáját tartalmaz: egyet az alkalmazásokhoz és egy másikat a csomópontokhoz.
+A fürt két részfát tartalmaz: az egyik az alkalmazásokhoz, a másik a csomópontokhoz.
 
-Az alkalmazás nézet használatával navigálhat Service Fabric logikai hierarchiáján: alkalmazások, szolgáltatások, partíciók és replikák.
+Az alkalmazásnézet segítségével navigálhat a Service Fabric logikai hierarchiájában: alkalmazások, szolgáltatások, partíciók és replikák.
 
-Az alábbi példában az alkalmazás **SajátPr** két szolgáltatásból, a **MyStatefulService** és a **webszolgáltatásból**áll. Mivel a **MyStatefulService** állapot-nyilvántartó, egy olyan partíciót tartalmaz, amely egy elsődleges és két másodlagos replikával rendelkezik. Ezzel szemben a WebSvcService állapot nélküli, és egyetlen példányt tartalmaz.
+Az alábbi példában a **MyApp** alkalmazás két szolgáltatásból áll: **a MyStatefulService** és a **WebService**. Mivel **a MyStatefulService** állapotalapú, egy elsődleges és két másodlagos replikával rendelkező partíciót tartalmaz. Ezzel szemben a WebSvcService állapot nélküli, és egyetlen példányt tartalmaz.
 
-![Service Fabric Explorer alkalmazás nézet][sfx-application-tree]
+![Service Fabric Explorer alkalmazásnézet][sfx-application-tree]
 
-A fa minden szintjén a fő ablaktábla az elemre vonatkozó információkat jeleníti meg. Megtekintheti például egy adott szolgáltatás állapotát és verzióját.
+A fa minden szintjén a fő ablaktábla az elemre vonatkozó információkat jelenít meg. Megtekintheti például egy adott szolgáltatás állapotát és verzióját.
 
-![Service Fabric Explorer Essentials panel][sfx-service-essentials]
+![A Service Fabric Explorer essentials ablaktáblája][sfx-service-essentials]
 
 ### <a name="view-the-clusters-nodes"></a>A fürt csomópontjainak megtekintése
-A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton. Pontosabban láthatja, hogy mely replikák futnak jelenleg.
+A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton. Pontosabban láthatja, hogy mely replikák futnak jelenleg ott.
 
 ## <a name="actions"></a>Műveletek
-A Service Fabric Explorer gyors módszert kínál a csomópontokon, alkalmazásokon és szolgáltatásokon belüli műveletek meghívására a fürtön belül.
+A Service Fabric Explorer gyors anno a fürt öncsomópontjain, alkalmazásain és szolgáltatásaiban való műveletek meghívására szolgál.
 
-Például egy alkalmazás-példány törléséhez válassza ki az alkalmazást a bal oldali fában, majd válassza a **műveletek** > **alkalmazás törlése**lehetőséget.
+Például egy alkalmazáspéldány törléséhez válassza ki az alkalmazást a bal oldali fából, majd válassza az Alkalmazás törlése **művelet parancsot.** > **Delete Application**
 
-![Alkalmazás törlése Service Fabric Explorer][sfx-delete-application]
+![Alkalmazás törlése a Service Fabric Intézőben][sfx-delete-application]
 
 > [!TIP]
-> Ugyanezeket a műveleteket az egyes elemek melletti három pontra kattintva is végrehajthatja.
+> Ugyanezeket a műveleteket az egyes elemek melletti három pontra kattintva hajthatja végre.
 >
-> Az Service Fabric Exploreron keresztül elvégezhető minden művelet a PowerShell vagy egy REST API használatával is végrehajtható az automatizálás engedélyezéséhez.
+> A Service Fabric Exploreren keresztül elvégezhető minden művelet powershellen vagy REST API-n keresztül is elvégezhető az automatizálás engedélyezéséhez.
 >
 >
 
-A Service Fabric Explorer használatával is létrehozhat alkalmazás-példányokat egy adott alkalmazás típusához és verziójához. Válassza ki az alkalmazás típusát a fanézetben, majd kattintson az alkalmazás **létrehozása** hivatkozásra a jobb oldali ablaktáblán a kívánt verzió mellett.
+A Service Fabric Intéző segítségével is létrehozhat alkalmazáspéldányokat egy adott alkalmazástípushoz és -verzióhoz. Válassza ki az alkalmazás típusát a fanézetben, majd kattintson az **Alkalmazáspéldány létrehozása** hivatkozásra a kívánt verzió mellett a jobb oldali ablaktáblában.
 
-![Alkalmazás-példány létrehozása Service Fabric Explorerban][sfx-create-app-instance]
+![Alkalmazáspéldány létrehozása a Service Fabric Intézőben][sfx-create-app-instance]
 
 > [!NOTE]
-> Az Service Fabric Explorer nem támogatja a paramétereket az alkalmazás példányainak létrehozásakor. Az alkalmazás példányai az alapértelmezett paramétereket használják.
+> A Service Fabric Explorer nem támogatja a paramétereket alkalmazáspéldányok létrehozásakor. Az alkalmazáspéldányok alapértelmezett paraméterértékeket használnak.
 >
 >
 
-## <a name="event-store"></a>Event Store
-A EventStore a platform által kínált olyan szolgáltatás, amely Service Fabric platformon elérhető eseményeket biztosít a Service Fabric Explorer és a REST APIon keresztül. Láthatja, hogy mi történik a fürtben az egyes entitások esetében, például a csomópont, a szolgáltatás, az alkalmazás és a lekérdezés az esemény időpontja alapján. További információt a EventStore a [EventStore áttekintése című](service-fabric-diagnostics-eventstore.md)témakörben talál.   
+## <a name="event-store"></a>Eseménytároló
+Az EventStore a platform által kínált szolgáltatás, amely a Service Fabric platformesemények et a Service Fabric Explorer ben és a REST API-n keresztül elérhető. Megtekintheti a pillanatkép nézet, hogy mi történik a fürtben az egyes entitások, például csomópont, szolgáltatás, alkalmazás és lekérdezés az esemény ideje alapján. Az EventStore áttekintése oldalon is olvashat bővebben az [EventStore áruházról.](service-fabric-diagnostics-eventstore.md)   
 
-![EventStore][sfx-eventstore]
-
->[!NOTE]
->A Service Fabric 6,4-es verziójának megfelelően. A EventStore alapértelmezés szerint nincs engedélyezve, és a Resource Manager-sablonban engedélyezve kell lennie.
+![EventStore (Rendezvény)][sfx-eventstore]
 
 >[!NOTE]
->A Service Fabric 6,4-es verziójának megfelelően. a EventStore API-k csak az Azure-on futó Windows-fürtök esetén érhetők el. Dolgozunk ezen funkciónak a Linuxon és a különálló fürtökön való portolása során.
+>A Service Fabric 6.4-es verziójától. Az EventStore alapértelmezés szerint nincs engedélyezve, és az erőforrás-kezelő sablonban is engedélyezni kell.
 
-## <a name="image-store-viewer"></a>lemezképtároló megjelenítője
-A képtárak megjelenítője olyan natív lemezképtároló használata, amely lehetővé teszi a képáruház aktuális tartalmának megtekintését és a fájl-és mappa információinak beolvasását, valamint a fájlok és mappák eltávolítását.
+>[!NOTE]
+>A Service Fabric 6.4-es verziójától. az EventStore API-k csak az Azure-ban futó Windows-fürtök esetén érhetők el. Dolgozunk a portolás ezt a funkciót a Linux, valamint a mi önálló klaszterek.
 
-![Service Fabric Explorer fürt térképe][sfx-imagestore]
+## <a name="image-store-viewer"></a>Képtár-megjelenítő
+A képtár-megjelenítő olyan szolgáltatás, amely a Natív képtároló használata esetén érhető el, amely lehetővé teszi a Képtároló aktuális tartalmának megtekintését, valamint a fájl- és mappaadatok betárolását, valamint a fájlok/ mappák eltávolítását.
+
+![Service Fabric Explorer fürttérkép][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
-A Service Fabric Explorer lehetővé teszi a kapcsolódást a [biztonsági mentéssel és visszaállítással](./service-fabric-reliable-services-backup-restore.md). Az SFX biztonsági mentési és visszaállítási funkcióinak megjelenítéséhez engedélyezni kell a speciális módot.
+Service Fabric Explorer lehetővé teszi, hogy interfész [biztonsági mentés és visszaállítás](./service-fabric-reliable-services-backup-restore.md). Az SFX Biztonsági mentési és visszaállítási funkcióinak megtekintéséhez engedélyezni kell a speciális módot.
 
 ![Speciális mód engedélyezése][0]
  
 A következő műveletek lehetségesek:
 
-* Biztonsági mentési szabályzat létrehozása, szerkesztése és törlése.
-* Egy alkalmazás, szolgáltatás vagy partíció biztonsági mentésének engedélyezése és letiltása.
+* Biztonságimásolat-házirend létrehozása, szerkesztése és törlése.
+* Alkalmazás, szolgáltatás vagy partíció biztonsági mentésének engedélyezése és letiltása.
 * Alkalmazás, szolgáltatás vagy partíció biztonsági mentésének felfüggesztése és folytatása.
-* Egy partíció biztonsági másolatának elindítása és nyomon követése.
-* Egy partíció aktiválását és nyomon követését.
+* Partíció biztonsági másolatának aktiválása és nyomon követése.
+* Indítsa el és kövesse nyomon a partíció visszaállítását.
 
-A biztonsági mentési és visszaállítási szolgáltatással kapcsolatos további információkért tekintse meg a [REST API referenciát](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore).
-## <a name="next-steps"></a>Következő lépések
+A Biztonsági mentés és visszaállítás szolgáltatásról a [REST API referencia című témakörben](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)lehet további.
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
-* [Service Fabric alkalmazás központi telepítése a PowerShell használatával](service-fabric-deploy-remove-applications.md)
+* [A Service Fabric-alkalmazások központi telepítése a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
 [sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-dashboard.png

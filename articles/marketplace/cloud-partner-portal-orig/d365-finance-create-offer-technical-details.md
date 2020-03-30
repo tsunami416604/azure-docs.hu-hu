@@ -1,24 +1,23 @@
 ---
-title: A technikai információ űrlap kitöltése
-description: Elavult és a hozzá tartozó PC-cikkekhez csatolva; a "elmagyarázza, hogyan adhat meg egy új Dynamics 365 Business Central-alkalmazáshoz a technikai információ űrlapon szereplő értékeket."
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
+title: A Műszaki adatok űrlap kitöltése
+description: Elavult, és kapcsolódik a megfelelő PC-cikkek; "A "Bemutatja, hogyan lehet megadni az értékeket egy új Dynamics 365 Business Central alkalmazás Műszaki információ űrlapján."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: pabutler
-ms.openlocfilehash: ffd8b22b19b8b73c99901e854b18465586fc9e7b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1297eb16dab082df4b224a0b9fcb482c4bc398ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276053"
 ---
-# <a name="how-to-fill-out-the-technical-info-form"></a>A technikai információ űrlap kitöltése
+# <a name="how-to-fill-out-the-technical-info-form"></a>A Műszaki adatok űrlap kitöltése
 
-A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 Business Central-ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információkért lásd: [új Dynamics 365 Business Central-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 Business Central ajánlatok létrehozását és kezelését. Ehelyett ezt a funkciót áthelyezték a Microsoft [Partner Center portálra.](https://partner.microsoft.com/) További információt a [Create a new Dynamics 365 Business Central ajánlat című témakörben talál.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)
 
 ## <a name="next-steps"></a>További lépések
 
-Új Dynamics 365 Business Central-ajánlat létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 Business Central-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) című témakör utasításait.
+Mielőtt új Dynamics 365 Business Central ajánlatot hozna létre, olvassa el [a Partnerközpont-fiók létrehozása című témakört,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) majd nyissa meg a [Kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) az **Áttekintés** lap kiválasztásával. Az ajánlat létrehozásához kövesse az [Új Dynamics 365 Business Central ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) című útmutatóutasításait.

@@ -1,6 +1,6 @@
 ---
-title: Fájlok feltöltése az eszközökről az Azure IoT Hub Javával | Microsoft Docs
-description: Fájlok feltöltése egy eszközről a felhőbe a Javához készült Azure IoT Device SDK használatával. A feltöltött fájlok tárolása egy Azure Storage blob-tárolóban történik.
+title: Fájlok feltöltése az eszközökről az Azure IoT Hubba Java-val | Microsoft dokumentumok
+description: Fájlok feltöltése az eszközről a felhőbe az Azure IoT-eszköz Java-alapú SDK használatával. A feltöltött fájlok egy Azure storage blobtárolóban tárolódnak.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,67 +10,67 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284524"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Java) használatával
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Fájlok feltöltése az eszközről a felhőbe az IoT Hub (Java) segítségével
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Ez az oktatóanyag a [felhőből az eszközre küldött üzenetek küldésére](iot-hub-java-java-c2d.md) szolgáló kódot a IoT hub oktatóanyag segítségével mutatja be, amelyből megtudhatja, hogyan tölthet fel fájlokat az [Azure Blob Storage](../storage/index.yml)-ba a [IoT hub fájlfeltöltés funkciójának](iot-hub-devguide-file-upload.md) használatával. Ez az oktatóanyag a következőket mutatja be:
+Ez az oktatóanyag az [IoT Hubmal való felhőből eszközre üzenetek küldése](iot-hub-java-java-c2d.md) című oktatóanyagban található kódra épül, amely bemutatja, hogyan használhatja az [IoT Hub fájlfeltöltési funkcióit](iot-hub-devguide-file-upload.md) egy fájl [Azure blobstorage-ba](../storage/index.yml)való feltöltéséhez. Ez az oktatóanyag a következőket mutatja be:
 
-* A fájlok feltöltéséhez biztonságosan biztosítson egy Azure Blob URI-t tartalmazó eszközt.
+* Biztonságosan biztosítson egy eszközt egy Azure blob URI-val egy fájl feltöltéséhez.
 
-* A fájl feltöltésével kapcsolatos értesítéseket használva aktiválja a fájlt az alkalmazás hátterében lévő IoT Hub.
+* Az IoT Hub fájlfeltöltési értesítései segítségével indítsa el a fájl feldolgozását az alkalmazás háttérrendszerében.
 
-A [telemetria küldése az eszközről egy IoT hub](quickstart-send-telemetry-java.md) gyors üzembe helyezése és a [felhőből az eszközre irányuló üzenetek küldése az IoT hub](iot-hub-java-java-c2d.md) oktatóanyaggal mutatja be a IoT hub alapszintű eszközről a felhőbe és a felhőből az eszközre való üzenetkezelés funkcióját. Az [üzenet-útválasztás konfigurálása IoT hub](tutorial-routing.md) oktatóanyagmal az eszközről a felhőbe irányuló üzenetek megbízható tárolásának módját ismerteti az Azure Blob Storage-ban. Bizonyos helyzetekben azonban nem lehet könnyedén leképezni az eszközök által a IoT Hub által elfogadott viszonylag kis eszközről a felhőbe küldött üzeneteket. Például:
+A [Telemetria küldése az eszközről egy IoT hub](quickstart-send-telemetry-java.md) rövid útmutató és [felhőbe az eszközre üzenetek küldése](iot-hub-java-java-c2d.md) az IoT Hub oktatóanyag az alapvető eszköz-felhő és felhő-eszköz üzenetkezelési funkció az IoT Hub. Az [Üzenetek útválasztásának konfigurálása az IoT Hub-mal](tutorial-routing.md) oktatóanyag ismerteti az eszközök közötti üzenetek megbízható tárolásának módját az Azure blob storage-ban. Bizonyos esetekben azonban nem tudja könnyen leképezni az eszközöket küldött adatokat az IoT Hub által fogadott viszonylag kis méretű eszközről felhőbe irányuló üzenetekbe. Példa:
 
-* Képeket tartalmazó nagyméretű fájlok
+* Képeket tartalmazó nagyfájlok
 * Videók
-* Nagy gyakorisággal vett vibrációs adatelemzés
-* Az előfeldolgozott adatmennyiségek valamilyen formája.
+* Nagy frekvenciájú rezgésadatok
+* Valamilyen előre feldolgozott adat.
 
-Ezeket a fájlokat a rendszer általában a felhőben dolgozza fel a felhőben olyan eszközökkel, mint a [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) stack. Ha egy eszközről szeretne fájlokat felvenni, továbbra is használhatja IoT Hub biztonságát és megbízhatóságát.
+Ezeket a fájlokat általában kötegelt a felhőben olyan eszközök használatával, mint az [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) verem használatával. Ha egy eszközről kell felnyitott fájlokat használnia, továbbra is használhatja az IoT Hub biztonságát és megbízhatóságát.
 
-Az oktatóanyag végén két Java-konzol alkalmazást futtat:
+Az oktatóanyag végén két Java konzolalkalmazást futtat:
 
-* **szimulált-eszköz**, a [felhőből az eszközre küldött üzenetek küldése a IoT hub] oktatóanyagmal létrehozott alkalmazás módosított verziója. Ez az alkalmazás feltölt egy fájlt a Storage-ba az IoT hub által biztosított SAS URI használatával.
+* **szimulált eszköz**, az alkalmazás módosított verziója a [Felhőből eszközre üzenetek küldése az IoT Hubba] oktatóanyagban. Ez az alkalmazás feltölt egy fájlt a tárolóba az IoT hub által biztosított SAS URI használatával.
 
-* **olvasási-fájl-feltöltési értesítés**, amely a IoT hub fájl feltöltési értesítéseit fogadja.
+* **read-file-upload-notification**, amely fájlfeltöltési értesítéseket kap az IoT hubról.
 
 > [!NOTE]
-> IoT Hub számos eszköz platformját és nyelvét támogatja (beleértve a C, .NET és JavaScript rendszereket) az Azure IoT Device SDK-k használatával. Az eszköz Azure IoT Hubhoz való csatlakoztatásának részletes ismertetését az [Azure IoT fejlesztői központban](https://azure.microsoft.com/develop/iot) találja.
+> Az IoT Hub számos eszközplatformot és nyelvet támogat (például a C, a .NET és a Javascript) az Azure IoT-eszköz SDK-kon keresztül. Tekintse meg az [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot) lépésenkénti utasításokat, hogyan csatlakoztathatja az eszközt az Azure IoT Hubhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Fejlesztői Készlet 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg róla, hogy a **Java** **8-at** a Hosszú távú támogatás alatt választja, hogy eljusson a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
-* Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
-* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. A cikkben szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Fájl feltöltése egy eszköz alkalmazásból
+## <a name="upload-a-file-from-a-device-app"></a>Fájl feltöltése eszközalkalmazásból
 
-Ebben a szakaszban a [felhőből az eszközre irányuló üzenetek küldése a IoT hub](iot-hub-java-java-c2d.md) használatával a IoT hub-ba való feltöltéshez létrehozott eszközt módosítja.
+Ebben a szakaszban módosíthatja a [felhőből az eszközre üzenetek küldése az IoT Hubbal](iot-hub-java-java-c2d.md) létrehozott eszközalkalmazást, hogy egy fájlt töltsön fel az IoT hubra.
 
-1. Másolja a lemezképfájlt a `simulated-device` mappába, és nevezze át `myimage.png`.
+1. Másolja a képfájlt `simulated-device` a mappába, és nevezze át. `myimage.png`
 
-2. Szövegszerkesztő használatával nyissa meg a `simulated-device\src\main\java\com\mycompany\app\App.java` fájlt.
+2. Szövegszerkesztő használatával nyissa `simulated-device\src\main\java\com\mycompany\app\App.java` meg a fájlt.
 
-3. Adja hozzá a változó deklarációt az **app** osztályhoz:
+3. Adja hozzá a **App** változódeklarációt az alkalmazásosztályhoz:
 
     ```java
     private static String fileName = "myimage.png";
     ```
 
-4. A fájlfeltöltés állapotának visszahívási üzeneteinek feldolgozásához adja hozzá a következő beágyazott osztályt az **app** osztályhoz:
+4. A fájlfeltöltési állapot-visszahívási üzenetek feldolgozásához **App** adja hozzá a következő beágyazott osztályt az alkalmazásosztályhoz:
 
     ```java
     // Define a callback method to print status codes from IoT Hub.
@@ -82,7 +82,7 @@ Ebben a szakaszban a [felhőből az eszközre irányuló üzenetek küldése a I
     }
     ```
 
-5. Ha képeket szeretne feltölteni a IoT Hubba, adja hozzá a következő metódust az **app** osztályhoz a lemezképek IoT hubba való feltöltéséhez:
+5. Képek feltöltéséhez az IoT Hubba, **App** adja hozzá a következő módszert az alkalmazásosztályba, hogy képeket töltsön fel az IoT Hubra:
 
     ```java
     // Use IoT Hub to upload a file asynchronously to Azure blob storage.
@@ -96,7 +96,7 @@ Ebben a szakaszban a [felhőből az eszközre irányuló üzenetek küldése a I
     }
     ```
 
-6. Módosítsa a **Main** metódust a **uploadFile** metódus meghívásához az alábbi kódrészletben látható módon:
+6. Módosítsa a **fő** metódust a **uploadFile** metódus hívásához a következő kódrészletben látható módon:
 
     ```java
     client.open();
@@ -116,31 +116,31 @@ Ebben a szakaszban a [felhőből az eszközre irányuló üzenetek küldése a I
     MessageSender sender = new MessageSender();
     ```
 
-7. A következő parancs használatával hozza létre a **szimulált-eszköz** alkalmazást, és keressen hibákat:
+7. A következő paranccsal megépítheti a **szimulált eszközalkalmazást,** és ellenőrizze a hibákat:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
 
-Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely a fájlfeltöltés-értesítési üzeneteket fogadja a IoT hub-ból, amelyet a [telemetria küldése eszközről egy IoT hubhoz](quickstart-send-telemetry-java.md)hozott létre. A fájlfeltöltés-értesítési üzenetek fogadásához a szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
+Ebben a cikkben létrehoz egy háttérszolgáltatást, amely fájlfeltöltési értesítési üzeneteket kap az [Eszközről egy IoT hubra](quickstart-send-telemetry-java.md)létrehozott IoT hubról. A fájlfeltöltési értesítési üzenetek fogadásához a szolgáltatásnak szüksége van a **szolgáltatás csatlakozási engedélyére.** Alapértelmezés szerint minden IoT Hub jön létre egy megosztott hozzáférési szabályzat nevű **szolgáltatás,** amely megadja ezt az engedélyt.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="receive-a-file-upload-notification"></a>Fájlfeltöltés-értesítés fogadása
+## <a name="receive-a-file-upload-notification"></a>Fájlfeltöltési értesítés fogadása
 
-Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub címről érkező fájlfeltöltés-értesítési üzeneteket fogad.
+Ebben a szakaszban hozzon létre egy Java konzolalkalmazást, amely fájlfeltöltési értesítési üzeneteket kap az IoT Hubtól.
 
-1. Hozzon létre egy **READ-file-upload-Notification** nevű Maven-projektet a következő parancs futtatásával a parancssorban. Vegye figyelembe, hogy ez a parancs egyetlen hosszú parancs:
+1. Hozzon létre egy Maven **projektet, amelyet read-file-upload-notification** -nek neveznek a következő paranccsal a parancssorból. Megjegyzés: ez a parancs egyetlen, hosszú parancs:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. A parancssorban navigáljon az új `read-file-upload-notification` mappára.
+2. A parancssorban keresse meg `read-file-upload-notification` az új mappát.
 
-3. Egy szövegszerkesztővel nyissa meg a `pom.xml` fájlt a `read-file-upload-notification` mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. A függőség hozzáadása lehetővé teszi, hogy a **iothub-Java-Service-Client** csomagot használja az alkalmazásban az IoT hub szolgáltatással való kommunikációhoz:
+3. Szövegszerkesztő használatával nyissa `pom.xml` meg a `read-file-upload-notification` mappában lévő fájlt, és adja hozzá a következő függőséget a **függőségi** csomóponthoz. A függőség hozzáadása lehetővé teszi, hogy az **iothub-java-service-client** csomagot használja az alkalmazásban az IoT hub szolgáltatással való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -151,11 +151,11 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
     ```
 
     > [!NOTE]
-    > A **IOT-Service-Client** legújabb verzióját a [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)használatával tekintheti meg.
+    > Az **iot-service-client** legújabb verzióját a [Maven keresési funkciójával](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) tekintheti meg.
 
-4. Mentse és zárjuk be a `pom.xml` fájlt.
+4. Mentse és `pom.xml` zárja be a fájlt.
 
-5. Szövegszerkesztő használatával nyissa meg a `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` fájlt.
+5. Szövegszerkesztő használatával nyissa `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` meg a fájlt.
 
 6. Adja hozzá a következő **importálási** utasításokat a fájlhoz:
 
@@ -167,7 +167,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
     import java.util.concurrent.Executors;
     ```
 
-7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{Your IoT Hub connection string}` helyőrző értékét a korábban a [IoT hub IoT beolvasása](#get-the-iot-hub-connection-string)során másolt, az alhálózati kapcsolatok karakterláncára:
+7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{Your IoT Hub connection string}` le a helyőrző értéket az IoT hub kapcsolati karakterláncára, amelyet korábban másolt [az IoT hub kapcsolati karakterláncának beszerzői közben:](#get-the-iot-hub-connection-string)
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -175,7 +175,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
     private static FileUploadNotificationReceiver fileUploadNotificationReceiver = null;
     ```
 
-8. Ha adatokat szeretne nyomtatni a konzolon a fájl feltöltéséről, adja hozzá a következő beágyazott osztályt az **app** osztályhoz:
+8. A fájlfeltöltéssel kapcsolatos információk konzolra történő nyomtatásához **App** adja hozzá a következő beágyazott osztályt az alkalmazásosztályhoz:
 
     ```java
     // Create a thread to receive file upload notifications.
@@ -202,7 +202,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
     }
     ```
 
-9. A fájlfeltöltés-értesítéseket figyelő szál elindításához adja hozzá a következő kódot a **Main** metódushoz:
+9. A fájlfeltöltési értesítéseket figyelő hozzászóláslánc elindításához adja hozzá a következő kódot a **fő** metódushoz:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException, Exception {
@@ -230,9 +230,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
     }
     ```
 
-10. Mentse és zárjuk be a `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` fájlt.
+10. Mentse és `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` zárja be a fájlt.
 
-11. A következő parancs használatával hozza létre az **olvasási-fájl-feltöltési-értesítési** alkalmazást, és keressen hibákat:
+11. A következő paranccsal hozhassa létre az **olvasási fájl-feltöltési értesítési** alkalmazást, és ellenőrizze a hibákat:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -242,40 +242,40 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
 
 Készen áll arra, hogy futtassa az alkalmazásokat.
 
-Futtassa a következő parancsot egy parancssorban a `read-file-upload-notification` mappában:
+A `read-file-upload-notification` mappa parancssorában futtassa a következő parancsot:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-Futtassa a következő parancsot egy parancssorban a `simulated-device` mappában:
+A `simulated-device` mappa parancssorában futtassa a következő parancsot:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-Az alábbi képernyőfelvételen a **szimulált eszköz** alkalmazás kimenete látható:
+A következő képernyőképen a **szimulált eszközalkalmazás** kimenete látható:
 
-![Szimulált eszköz alkalmazás kimenete](media/iot-hub-java-java-upload/simulated-device.png)
+![Kimenet szimulált eszközalkalmazásból](media/iot-hub-java-java-upload/simulated-device.png)
 
-A következő képernyőképen az **olvasási fájl – feltöltés – értesítési** alkalmazás kimenete látható:
+A következő képernyőképen a **read-file-upload-notification** alkalmazás kimenete látható:
 
-![A Read-file-upload-Notification alkalmazás kimenete](media/iot-hub-java-java-upload/read-file-upload-notification.png)
+![Kimenet a read-file-upload-notification alkalmazásból](media/iot-hub-java-java-upload/read-file-upload-notification.png)
 
-A portál használatával megtekintheti a feltöltött fájlt a konfigurált tárolóban:
+A portál segítségével megtekintheti a feltöltött fájlt a konfigurált tárolóban:
 
 ![Feltöltött fájl](media/iot-hub-java-java-upload/uploaded-file.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöltés funkcióit az eszközökről történő fájlfeltöltés egyszerűsítése érdekében. A IoT hub funkcióit és forgatókönyveit továbbra is megismerheti a következő cikkekkel:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja az IoT Hub fájlfeltöltési képességeit az eszközökről történő fájlfeltöltés egyszerűsítéséhez. Az IoT hub funkcióit és forgatókönyveit a következő cikkekkel folytathatja:
 
-* [IoT hub programozott módon történő létrehozása](iot-hub-rm-template-powershell.md)
+* [IoT-központ létrehozása programozott módon](iot-hub-rm-template-powershell.md)
 
-* [A C SDK bemutatása](iot-hub-device-sdk-c-intro.md)
+* [Bevezetés a C SDK-ba](iot-hub-device-sdk-c-intro.md)
 
 * [Azure IoT SDK-k](iot-hub-devguide-sdks.md)
 
-A IoT Hub képességeinek további megismeréséhez lásd:
+Az IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Eszköz szimulálása IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Eszköz szimulálása IoT Edge-el](../iot-edge/tutorial-simulate-device-linux.md)

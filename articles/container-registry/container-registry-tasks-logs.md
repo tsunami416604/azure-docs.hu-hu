@@ -1,33 +1,33 @@
 ---
-title: Feladat-futtatási naplók megtekintése – feladatok
+title: Feladatfuttatási naplók megtekintése – Feladatok
 description: Az ACR-feladatok által létrehozott futtatási naplók megtekintése és kezelése.
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246967"
 ---
-# <a name="view-and-manage-task-run-logs"></a>Feladat-futtatási naplók megtekintése és kezelése
+# <a name="view-and-manage-task-run-logs"></a>Feladatfuttatási naplók megtekintése és kezelése
 
-[Azure Container Registry feladatok](container-registry-tasks-overview.md) mindegyike futtatja a napló kimenetét, amelyet megvizsgálva megállapíthatja, hogy a feladat lépései sikeresen futottak-e. 
+Az Azure [Container Registry feladatokban](container-registry-tasks-overview.md) futtatott minden egyes feladat naplókimenetet hoz létre, amely et megvizsgálhatja annak megállapításához, hogy a feladatlépések sikeresen futottak-e. 
 
-Ez a cikk a feladat-futtatási naplók megtekintését és kezelését ismerteti.
+Ez a cikk a feladatfuttatási naplók megtekintését és kezelését ismerteti.
 
-## <a name="view-streamed-logs"></a>Továbbított naplók megtekintése
+## <a name="view-streamed-logs"></a>Streamelt naplók megtekintése
 
-Ha a feladatot manuálisan indítja el, a rendszer a napló kimenetét közvetlenül a konzolon továbbítja. Ha például manuálisan indítja el a feladatot az az [ACR Build](/cli/azure/acr#az-acr-build), az [ACR Run](/cli/azure/acr#az-acr-run)vagy [az ACR Task Run](/cli/azure/acr/task#az-acr-task-run) parancs használatával, a napló kimenete a konzolra áramlik. 
+Ha manuálisan indít el egy feladatot, a naplókimenet közvetlenül a konzolra kerül. Ha például manuálisan indít el egy feladatot az [az acr build](/cli/azure/acr#az-acr-build), az [acr run](/cli/azure/acr#az-acr-run)vagy az [acr task run](/cli/azure/acr/task#az-acr-task-run) paranccsal, megjelenik a konzolra streamelt naplókimenet. 
 
-A következő minta az [ACR Run](/cli/azure/acr#az-acr-run) paranccsal manuálisan indít el egy olyan feladatot, amely egy, a beállításjegyzékből lekért tárolót futtat:
+A következő minta [az acr run](/cli/azure/acr#az-acr-run) parancs manuálisan indít ja el egy feladatot, amely ugyanazon rendszerleíró adatbázisból lehúzott tárolót futtat:
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
   --cmd '$Registry/samples/hello-world:v1' /dev/null
 ```
 
-Továbbított napló:
+Streamelt napló:
 
 ```console
 Queued a run with ID: cf4
@@ -58,32 +58,32 @@ Run ID: cf4 was successful after 5s
 
 ## <a name="view-stored-logs"></a>Tárolt naplók megtekintése 
 
-Azure Container Registry az összes feladathoz naplókat futtat. A tárolt futtatási naplók a Azure Portalban tekinthetők meg. Vagy használja az az [ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) parancsot egy kiválasztott napló megtekintéséhez. Alapértelmezés szerint a rendszer 30 napig őrzi meg a naplókat.
+Az Azure Container Registry tárolja az összes feladat naplóinak futtatását. A tárolt futtatási naplók az Azure Portalon tekintheti meg. Vagy használja az [az acr feladatnaplók parancsot](/cli/azure/acr/task#az-acr-task-logs) a kijelölt napló megtekintéséhez. Alapértelmezés szerint a naplók 30 napig megmaradnak.
 
-Ha egy feladat automatikusan aktiválódik, például a forráskód frissítése, a tárolt naplók elérésének *egyetlen* módja a futtatási naplók megtekintése. Az automatikus feladat-eseményindítók közé tartoznak a forráskód-véglegesítő vagy a lekéréses kérelmek, az alaprendszerkép frissítései és az időzítő eseményindítói.
+Ha egy feladat automatikusan aktiválódik, például egy forráskód frissítése, a tárolt naplók elérése az *egyetlen* módja a futtatási naplók megtekintésének. Az automatikus feladateseményindítók közé tartoznak a forráskód véglegesítése vagy lekéréses kérések, az alaplemezképek frissítései és az időzítőeseményindítók.
 
-A futtatási naplók megtekintése a portálon:
+A portálon lévő futtatási naplók megtekintése:
 
-1. Navigáljon a tároló-beállításjegyzékhez.
-1. A **szolgáltatások**területen válassza a **feladatok** > **futtatások**lehetőséget.
-1. Válassza ki a futtatási **azonosítót** a futtatási állapot megtekintéséhez és a naplók futtatásához. A napló ugyanazokat az információkat tartalmazza, mint a továbbított napló, ha van ilyen.
+1. Nyissa meg a tároló beállításjegyzékét.
+1. A **Szolgáltatások területen**válassza a **Feladatok** > **futtatása**lehetőséget.
+1. Válassza ki a **Futtatás idazonosítót** a futtatási állapot megtekintéséhez és a naplók futtatásához. A napló ugyanazokat az információkat tartalmazza, mint az adatfolyam-napló, ha jön létre.
 
-![A feladat futtatási bejelentkezési portáljának megtekintése](./media/container-registry-tasks-logs/portal-task-run-logs.png)
+![Feladatfuttatási bejelentkezési portál megtekintése](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-Ha az Azure CLI-vel szeretné megtekinteni a naplót, futtassa az [az ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) parancsot, és adjon meg egy futtatási azonosítót, egy feladatnév vagy egy, a létrehozási feladat által létrehozott rendszerképet. Ha meg van adva a feladat neve, a parancs az utolsó létrehozott Futtatás naplóját jeleníti meg.
+Az Azure CLI használatával napló megtekintéséhez futtassa [az acr feladatnaplókat,](/cli/azure/acr/task#az-acr-task-logs) és adja meg a futtatási azonosítót, a feladat nevét vagy egy adott lemezképet, amelyet egy buildfeladat hoz létre. Ha meg van adva egy feladatnév, a parancs az utoljára létrehozott futtatás naplóját jeleníti meg.
 
-A következő példa a futtatási naplót a *CF4*azonosítóval adja eredményül:
+A következő példa az ID cf4 azonosítóval adja ki a futtatás *naplóját:*
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4
 ```
 
-## <a name="alternative-log-storage"></a>Alternatív naplózási tár
+## <a name="alternative-log-storage"></a>Alternatív naplótárolás
 
-Előfordulhat, hogy egy helyi fájlrendszeren szeretné tárolni a feladat futtatási naplóit, vagy alternatív archiválási megoldást, például az Azure Storage-t használja.
+Előfordulhat, hogy a feladat futtatása naplókat egy helyi fájlrendszeren szeretné tárolni, vagy egy alternatív archiválási megoldást, például az Azure Storage-t.
 
-Hozzon létre például egy helyi *tasklogs* könyvtárat, és irányítsa át az az [ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) kimenetét egy helyi fájlba:
+Hozzon létre például egy helyi *tasklogs könyvtárat,* és irányítsa át az [az acr feladatnaplók](/cli/azure/acr/task#az-acr-task-logs) kimenetét egy helyi fájlba:
 
 ```azurecli
 mkdir ~/tasklogs
@@ -92,12 +92,12 @@ az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4 > ~/tasklogs/cf4.log
 ```
 
-Helyi naplófájlokat is menthet az Azure Storage szolgáltatásba. Például az [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md), a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)vagy más módszerek használatával tölthet fel fájlokat egy Storage-fiókba.
+Helyi naplófájlokat is menthet az Azure Storage-ba. Például használja az [Azure CLI,](../storage/blobs/storage-quickstart-blobs-cli.md)az [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md), vagy más módszerek fájlok feltöltése egy tárfiókba.
 
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Azure Container Registry feladatokról](container-registry-tasks-overview.md)
+* További információ az [Azure Container beállításjegyzék-hibáiról](container-registry-tasks-overview.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

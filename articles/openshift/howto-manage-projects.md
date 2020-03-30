@@ -1,51 +1,51 @@
 ---
-title: Erőforrások kezelése az Azure Red Hat OpenShift | Microsoft Docs
-description: Projektek, sablonok, képstreamek kezelése Azure Red Hat OpenShift-fürtben
+title: Erőforrások kezelése az Azure Red Hat OpenShift ben | Microsoft dokumentumok
+description: Projektek, sablonok és képfolyamok kezelése Azure Red Hat OpenShift-fürtben
 services: openshift
-keywords: a Red Hat openshift projects önkiszolgálót kér
+keywords: red hat openshift projektek kéri önellátó
 author: mjudeikis
 ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79139113"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projektek, sablonok, képstreamek kezelése Azure Red Hat OpenShift-fürtben 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projektek, sablonok és képfolyamok kezelése Azure Red Hat OpenShift-fürtben 
 
-A OpenShift-tároló platformon a kapcsolódó objektumok csoportosítására és elkülönítésére szolgálnak a projektek. Rendszergazdaként hozzáférést biztosíthat a fejlesztőknek bizonyos projektekhez, így saját projektjeiket hozhatnak létre, és rendszergazdai jogosultságokat biztosíthatnak az egyes projektekhez.
+Az OpenShift tárolóplatformban a projektek a kapcsolódó objektumok csoportosítására és elkülönítésére szolgálnak. Rendszergazdaként hozzáférést biztosíthat a fejlesztőknek bizonyos projektekhez, lehetővé teheti számukra, hogy saját projekteket hozzanak létre, és rendszergazdai jogokat biztosíthatnek számukra az egyes projektekhez.
 
-## <a name="self-provisioning-projects"></a>Önálló kiépítési projektek
+## <a name="self-provisioning-projects"></a>Önellátó projektek
 
-Lehetővé teheti a fejlesztők számára, hogy saját projektjeiket hozzanak létre. Egy API-végpont feladata a projekt kiépítés a Project-Request nevű sablon alapján. A webkonzol és a `oc new-project` parancs ezt a végpontot használja, ha egy fejlesztő új projektet hoz létre.
+Engedélyezheti a fejlesztőknek, hogy saját projekteket hozzanak létre. Egy API-végpont felelős a projekt kiépítése a projekt-kérelem nevű sablon szerint. A webkonzol `oc new-project` és a parancs ezt a végpontot használja, amikor egy fejlesztő új projektet hoz létre.
 
-A Project-kérelem elküldésekor az API a következő paramétereket helyettesíti a sablonban:
+Projektkérelem benyújtásakor az API a következő paramétereket helyettesíti a sablonban:
 
 | Paraméter               | Leírás                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | A projekt neve. Kötelező.             |
-| PROJECT_DISPLAYNAME     | A projekt megjelenítendő neve. Lehet üres. |
-| PROJECT_DESCRIPTION     | A projekt leírása. Lehet üres.  |
-| PROJECT_ADMIN_USER      | Az adminisztráló felhasználó felhasználóneve.       |
+| PROJECT_DISPLAYNAME     | A projekt megjelenítendő neve. Lehet, hogy üres. |
+| PROJECT_DESCRIPTION     | A projekt leírása. Lehet, hogy üres.  |
+| PROJECT_ADMIN_USER      | A rendszergazda felhasználó felhasználóneve.       |
 | PROJECT_REQUESTING_USER | A kérelmező felhasználó felhasználóneve.           |
 
-Az API-hoz való hozzáférés a fejlesztők számára az önkiszolgáló fürt szerepkörének kötésével adható meg. Ez a funkció alapértelmezés szerint minden hitelesített fejlesztő számára elérhető.
+Az API-hoz való hozzáférés az önkiszolgáló fürtszerepkör-kötéssel rendelkező fejlesztők számára biztosított. Ez a funkció alapértelmezés szerint minden hitelesített fejlesztő számára elérhető.
 
 ## <a name="modify-the-template-for-a-new-project"></a>Új projekt sablonjának módosítása 
 
-1. Jelentkezzen be `customer-admin` jogosultságokkal rendelkező felhasználóként.
+1. Jelentkezzen be jogosultságokkal `customer-admin` rendelkező felhasználóként.
 
-2. Szerkessze az alapértelmezett Project-Request sablont.
+2. Az alapértelmezett projektkérelem-sablon szerkesztése.
 
    ```
    oc edit template project-request -n openshift
    ```
 
-3. A következő jegyzet hozzáadásával távolítsa el az alapértelmezett projektfájlt az Azure Red Hat OpenShift (ARO) frissítési folyamatáról: `openshift.io/reconcile-protect: "true"`
+3. Távolítsa el az alapértelmezett projektsablont az Azure Red Hat OpenShift (ARO) frissítési folyamatából a következő megjegyzés hozzáadásával:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -55,21 +55,21 @@ Az API-hoz való hozzáférés a fejlesztők számára az önkiszolgáló fürt 
    ...
    ```
 
-   A Project-Request sablont az ARO frissítési folyamata nem frissíti. Ez lehetővé teszi, hogy az ügyfelek testre szabják a sablont, és megőrizzék ezeket a testreszabásokat a fürt frissítésekor.
+   A projektkérelem sablont az ARO frissítési folyamata nem frissíti. Ez lehetővé teszi az ügyfelek számára a sablon testreszabását és a testreszabások megőrzését a fürt frissítésekor.
 
-## <a name="disable-the-self-provisioning-role"></a>Az önkiszolgáló szerepkör letiltása
+## <a name="disable-the-self-provisioning-role"></a>Az önkiépítési szerepkör letiltása
 
-Megakadályozhatja, hogy egy hitelesített felhasználói csoport új projektek önkiszolgáló létesítése után is megtörténjen.
+Megakadályozhatja, hogy egy hitelesített felhasználói csoport új projekteket létesítsen.
 
-1. Jelentkezzen be `customer-admin` jogosultságokkal rendelkező felhasználóként.
+1. Jelentkezzen be jogosultságokkal `customer-admin` rendelkező felhasználóként.
 
-2. Szerkessze az önkiszolgálók fürt szerepkörének kötését.
+2. Az önkiszolgáló fürtszerepkör-kötés szerkesztése.
 
    ```
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. A következő jegyzet hozzáadásával távolítsa el a szerepkört az ARO-frissítési folyamatból: `openshift.io/reconcile-protect: "true"`.
+3. Távolítsa el a szerepkört az ARO frissítési `openshift.io/reconcile-protect: "true"`folyamatból a következő megjegyzéssel: .
 
    ```
    ...
@@ -79,7 +79,7 @@ Megakadályozhatja, hogy egy hitelesített felhasználói csoport új projektek 
    ...
    ```
 
-4. Módosítsa a fürt szerepkörének kötését, hogy `system:authenticated:oauth` ne hozzon létre projekteket:
+4. Módosítsa a fürtszerepkör-kötést, hogy megakadályozza `system:authenticated:oauth` a projektek létrehozását:
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -99,20 +99,20 @@ Megakadályozhatja, hogy egy hitelesített felhasználói csoport új projektek 
      name: osa-customer-admins
    ```
 
-## <a name="manage-default-templates-and-imagestreams"></a>Az alapértelmezett sablonok és imageStreams kezelése
+## <a name="manage-default-templates-and-imagestreams"></a>Alapértelmezett sablonok és imageStreamek kezelése
 
-Az Azure Red Hat OpenShift letilthatja az alapértelmezett sablonok és a `openshift` névtéren belüli képstreamek frissítéseit.
-Az összes `Templates` és `ImageStreams` frissítéseinek letiltása `openshift` névtérben:
+Az Azure Red Hat OpenShift letilthatja a frissítéseket az `openshift` alapértelmezett sablonok és képstreamelések belül névtérben.
+Az ALL `Templates` és `ImageStreams` a `openshift` névtér frissítéseinek letiltása:
 
-1. Jelentkezzen be `customer-admin` jogosultságokkal rendelkező felhasználóként.
+1. Jelentkezzen be jogosultságokkal `customer-admin` rendelkező felhasználóként.
 
-2. `openshift` névtér szerkesztése:
+2. Névtér `openshift` szerkesztése:
 
    ```
    oc edit namespace openshift
    ```
 
-3. Távolítsa el `openshift` névteret az ARO frissítési folyamatból a következő jegyzet hozzáadásával: `openshift.io/reconcile-protect: "true"`
+3. A `openshift` névtér eltávolítása az ARO frissítési folyamatból a következő megjegyzés hozzáadásával:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,10 +122,10 @@ Az összes `Templates` és `ImageStreams` frissítéseinek letiltása `openshift
    ...
    ```
 
-   A `openshift` névtérben lévő minden egyes objektum eltávolítható a frissítési folyamatból, ha a jegyzetet `openshift.io/reconcile-protect: "true"` hozzá.
+   A `openshift` névtér bármely egyes objektuma eltávolítható a frissítési `openshift.io/reconcile-protect: "true"` folyamatból, ha jegyzetet ad hozzá.
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az oktatóanyagot:
+Próbálja ki a bemutató:
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md)

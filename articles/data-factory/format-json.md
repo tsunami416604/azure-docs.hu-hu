@@ -1,6 +1,6 @@
 ---
-title: JSON formátum Azure Data Factory
-description: Ez a témakör azt ismerteti, hogyan kezelhető a JSON formátuma Azure Data Factoryban.
+title: JSON formátum az Azure Data Factoryban
+description: Ez a témakör ismerteti, hogyan kezelje a JSON formátumot az Azure Data Factoryban.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,31 +10,31 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260643"
 ---
-# <a name="json-format-in-azure-data-factory"></a>JSON formátum Azure Data Factory
+# <a name="json-format-in-azure-data-factory"></a>JSON formátum az Azure Data Factoryban
 
-Kövesse ezt a cikket, ha **elemezni szeretné a JSON-fájlokat, vagy írja be az adatbevitelt JSON formátumba**. 
+Kövesse ezt a cikket, ha elemezni szeretné **a JSON-fájlokat, vagy az adatokat JSON formátumba**szeretné írni. 
 
-A JSON formátum a következő összekötők esetén támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
+A JSON formátum a következő összekötőkesetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob,](connector-azure-blob-storage.md) [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), File [System,](connector-file-system.md) [FTP,](connector-ftp.md) [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)és [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a JSON-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek](concepts-datasets-linked-services.md) című cikkben olvashatja. Ez a szakasz a JSON-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Az adatkészlet Type tulajdonságát **JSON**-ra kell beállítani. | Igen      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz a saját hely típusa és a `location`alatt támogatott tulajdonságok tartozik. **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
-| encodingName     | A tesztelési fájlok olvasására/írására szolgáló kódolási típus. <br>Az engedélyezett értékek a következők: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 "," WINDOWS-1256 "," WINDOWS-1257 "," WINDOWS-1258 ".| Nem       |
-| compressionCodec | A szövegfájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2**, a **gzip**, a **deflate**, a **ZipDeflate**, a **Snappy**vagy a **lz4**. a fájl mentésekor használatos. <br>Megjegyzés a másolási tevékenység jelenleg nem támogatja a "Snappy" & "lz4".<br>Vegye figyelembe, hogy ha másolási tevékenységet használ a ZipDeflate fájl (ok) kibontásához és a fájl alapú fogadó adattárba való íráshoz, a fájlok a következő mappába lesznek kibontva: `<path specified in dataset>/<folder named as source zip file>/`. | Nem       |
-| compressionLevel | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek**.<br>- **leggyorsabb:** a tömörítési műveletnek a lehető leggyorsabbnak kell lennie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **optimális**: a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör. | Nem       |
+| type             | Az adatkészlet típustulajdonságát **Json**-ra kell állítani. | Igen      |
+| location         | A fájl(ok) helybeállításai. Minden fájlalapú összekötő saját helytípussal és `location`támogatott tulajdonságokkal rendelkezik a csoportban. **További részletek az összekötő -> adatkészlet tulajdonságai szakaszban.** | Igen      |
+| encodingName     | A tesztfájlok olvasásához/írásához használt kódolási típus. <br>Az engedélyezett értékek a következők: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM437", "IBM437", "IBM437", "IBM437", "IBM430", "IBM400", IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01148", IBM "01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Nem       |
+| tömörítési kodek | A szövegfájlok olvasására/írására használt tömörítési kodek. <br>Megengedett **értékek: bzip2**, **gzip,** **deflate,** **ZipDeflate**, **lendületes,** vagy **lz4**. a fájl mentésekor. <br>Megjegyzés: Jelenleg a másolási tevékenység nem támogatja a "lendületes" & az "lz4"-et.<br>Megjegyzés: Ha másolási tevékenységet használ a ZipDeflate fájl(ok) kibontásához és a fájlalapú `<path specified in dataset>/<folder named as source zip file>/`fogadó adattárba való íráshoz, a fájlok kibontása a következő mappába kerül: . | Nem       |
+| tömörítésI szint | A tömörítési arány. <br>Az engedélyezett értékek **az Optimális** vagy **a Leggyorsabb**.<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban el kell végeznie, még akkor is, ha az eredményül kapott fájl nincs optimálisan tömörítve.<br>- **Optimális**: A tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet hosszabb időt vesz igénybe. További információt a [Tömörítési szint témakörben](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) talál. | Nem       |
 
-Alább látható egy példa a JSON-adatkészletre az Azure Blob Storageban:
+Az alábbiakban egy példa a JSON-adatkészlet az Azure Blob Storage:
 
 ```json
 {
@@ -61,42 +61,42 @@ Alább látható egy példa a JSON-adatkészletre az Azure Blob Storageban:
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a JSON-forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a JSON-forrás és -fogadó által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="json-as-source"></a>JSON forrásként
 
-A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdonságok támogatottak.
+A következő tulajdonságokat a másolási tevékenység *** \*forrása\* *** szakasz támogatja.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrásának Type tulajdonságát **JSONSource**értékre kell állítani. | Igen      |
-| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. Minden fájl alapú összekötő rendelkezik a saját támogatott olvasási beállításokkal a `storeSettings`alatt. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| type          | A másolási tevékenységforrás típustulajdonságát **JSONSource**-ra kell állítani. | Igen      |
+| storeSettings (tárolóbeállítások) | Tulajdonságok csoportja az adattárból történő adatok olvasásáról. Minden fájlalapú összekötő saját támogatott olvasási beállításokkal rendelkezik a területen. `storeSettings` **További részletek az összekötő cikkében -> a tevékenység tulajdonságainak másolása szakaszban.** | Nem       |
 
-### <a name="json-as-sink"></a>JSON mint fogadó
+### <a name="json-as-sink"></a>JSON mint mosogató
 
-A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdonságok támogatottak.
+A következő tulajdonságokat a *** \*\* *** másolási tevékenység fogadó szakasza támogatja.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrásának Type tulajdonságát **JSONSink**értékre kell állítani. | Igen      |
-| formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi **JSON írási beállítások** táblázatát. | Nem       |
-| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. Minden fájl alapú összekötő rendelkezik a saját támogatott írási beállításaival a `storeSettings`alatt. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| type          | A másolási tevékenységforrás típustulajdonságának **JSONSink (JSONSink**. | Igen      |
+| formatSettings (Beállítások) | Tulajdonságok csoportja. Lásd az alábbi **JSON írási beállítások** táblázatot. | Nem       |
+| storeSettings (tárolóbeállítások) | Tulajdonságok csoportja az adatok adattárba való írásának módjáról. Minden fájlalapú összekötő saját támogatott írási beállításokkal rendelkezik a területen. `storeSettings` **További részletek az összekötő cikkében -> a tevékenység tulajdonságainak másolása szakaszban.** | Nem       |
 
-Támogatott **JSON írási beállítások** a `formatSettings`alatt:
+Támogatott **JSON írási beállítások a** következő alatt: `formatSettings`
 
 | Tulajdonság      | Leírás                                                  | Kötelező                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | A formatSettings típusát **JsonWriteSettings**értékre kell beállítani. | Igen                                                   |
+| type          | A formátum típusátA Beállítások beállítást **JsonWriteSettings**- formátumra kell állítani. | Igen                                                   |
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
 
 ### <a name="json-file-patterns"></a>JSON-fájlminták
 
-A másolási tevékenység automatikusan képes azonosítani és elemezni a JSON-fájlok következő mintáit. 
+Másolás tevékenység automatikusan felismeri és elemzi a következő mintákat a JSON fájlokat. 
 
 - **I. típus: setOfObjects**
 
     Minden fájl egyetlen objektumot, illetve több, sorokkal határolt/összefűzött objektumot tartalmaz. 
-    Ha ez a beállítás a másolási tevékenység fogadójában van kiválasztva, a másolási tevékenység egyetlen JSON-fájlt hoz létre, amely soronként minden objektummal rendelkezik (sorok tagolása).
+    Ha ezt a beállítást választja a másolási tevékenység fogadójában, a másolási tevékenység egyetlen JSON-fájlt hoz létre minden objektummal soronként (vonaltag).
 
     * **példa egy objektumot tartalmazó JSON-fájlra**
 
@@ -181,27 +181,27 @@ A másolási tevékenység automatikusan képes azonosítani és elemezni a JSON
     ]
     ```
 
-## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
+## <a name="mapping-data-flow-properties"></a>Adatfolyam tulajdonságainak leképezése
 
-A JSON-fájltípusok elfogadóként és forrásként is használhatók a leképezési folyamatokban.
+A JSON fájltípusok fogadóként és forrásként is használhatók az adatfolyam leképezésében.
 
 ### <a name="creating-json-structures-in-a-derived-column"></a>JSON-struktúrák létrehozása származtatott oszlopban
 
-A származtatott oszlop Expression Builder használatával hozzáadhat egy összetett oszlopot az adatfolyamathoz. A származtatott oszlop transzformációjában adjon hozzá egy új oszlopot, és nyissa meg a Kifejezésszerkesztőt a kék mezőre kattintva. Az oszlopok összetett létrehozásához manuálisan megadhatja a JSON-struktúrát, vagy a UX használatával interaktív módon adhat hozzá aloszlopokat.
+A származtatott oszlopkifejezés-szerkesztőn keresztül összetett oszlopot adhat az adatfolyamhoz. A származtatott oszlop átalakításában vegyen fel egy új oszlopot, és a kék mezőre kattintva nyissa meg a kifejezésszerkesztőt. Oszlopkomplexushoz manuálisan is megadhatja a JSON-struktúrát, vagy a felhasználói felület segítségével interaktívan adhat hozzá aloszlopokat.
 
-#### <a name="using-the-expression-builder-ux"></a>A Expression Builder UX használata
+#### <a name="using-the-expression-builder-ux"></a>A kifejezésszerkesztő felhasználói felületének használata
 
-A kimeneti séma oldali ablaktáblán vigye az egérmutatót egy oszlop fölé, és kattintson a plusz ikonra. Válassza az **aloszlop hozzáadása** lehetőséget az oszlop összetett típusának elvégzéséhez.
+A kimeneti séma oldalsó ablaktábláján mutasson egy oszlopra, és kattintson a plusz ikonra. Ha az oszlopot összetett típussá szeretné tenni, válassza az **Aloszlop hozzáadása** lehetőséget.
 
 ![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "Aloszlop hozzáadása")
 
-Ugyanilyen módon adhat hozzá további oszlopokat és aloszlopokat. Minden nem összetett mezőhöz egy kifejezés adható hozzá a jobb oldali kifejezés-szerkesztőben.
+Ugyanígy további oszlopokat és aloszlopokat is hozzáadhat. Minden nem összetett mezőhöz egy kifejezés adható a jobb oldali kifejezésszerkesztőhöz.
 
 ![Összetett oszlop](media/data-flow/complexcolumn.png "Összetett oszlop")
 
 #### <a name="entering-the-json-structure-manually"></a>A JSON-struktúra manuális megadása
 
-JSON-struktúra manuális hozzáadásához vegyen fel egy új oszlopot, és adja meg a kifejezést a szerkesztőben. A kifejezés a következő általános formátumot követi:
+JSON-struktúra manuális hozzáadásához vegyen fel egy új oszlopot, és írja be a kifejezést a szerkesztőbe. A kifejezés a következő általános formátumot követi:
 
 ```
 @(
@@ -212,7 +212,7 @@ JSON-struktúra manuális hozzáadásához vegyen fel egy új oszlopot, és adja
 )
 ```
 
-Ha ez a kifejezés egy "complexColumn" nevű oszlophoz lett megadva, akkor a rendszer a fogadóba írja a következő JSON-t:
+Ha ezt a kifejezést egy "complexColumn" nevű oszlophoz adta meg, akkor a következő JSON-ként írná be a fogadóba:
 
 ```
 {
@@ -225,7 +225,7 @@ Ha ez a kifejezés egy "complexColumn" nevű oszlophoz lett megadva, akkor a ren
 }
 ```
 
-#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Minta manuális parancsfájl a teljes hierarchikus definícióhoz
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Minta kézi parancsfájl a teljes hierarchikus definícióhoz
 ```
 @(
     title=Title,
@@ -251,15 +251,15 @@ Ha ez a kifejezés egy "complexColumn" nevű oszlophoz lett megadva, akkor a ren
 )
 ```
 
-### <a name="source-format-options"></a>Forrás formátum beállításai
+### <a name="source-format-options"></a>Forrásformátum beállításai
 
-A JSON-adatkészletek adatáramlási forrásaként való használata lehetővé teszi öt további beállítás megadását. Ezek a beállítások a **forrás beállításai** lap **JSON-beállítások** című részében találhatók.  
+A JSON-adatkészlet forrásként való használata lehetővé teszi öt további beállítás beállítását. Ezek a beállítások a **JSON beállítások** harmonika alatt találhatók a **Forrásbeállítások** lapon.  
 
 ![JSON-beállítások](media/data-flow/json-settings.png "JSON-beállítások")
 
 #### <a name="default"></a>Alapértelmezett
 
-Alapértelmezés szerint a JSON-adatolvasás a következő formátumban történik.
+Alapértelmezés szerint a JSON-adatok olvasása a következő formátumban történik.
 
 ```
 { "json": "record 1" }
@@ -269,7 +269,7 @@ Alapértelmezés szerint a JSON-adatolvasás a következő formátumban történ
 
 #### <a name="single-document"></a>Egyetlen dokumentum
 
-Ha **egyetlen dokumentum** van kiválasztva, az adatforgalom leképezése minden fájlból beolvas egy JSON-dokumentumot. 
+Ha **az Egy dokumentum van** kiválasztva, a leképezési adatfolyamok minden fájlból egy JSON-dokumentumot olvasnak be. 
 
 ``` json
 File1.json
@@ -288,7 +288,7 @@ File3.json
 
 #### <a name="unquoted-column-names"></a>Nem jegyzett oszlopnevek
 
-Ha nem **jegyzett oszlopnevek** vannak kiválasztva, az adatfolyamatok leképezése beolvassa azokat a JSON-oszlopokat, amelyeket nem idézőjelek öveznek. 
+Ha **a nem idézett oszlopnevek** et választja, az adatfolyamok leképezése olyan JSON-oszlopokat olvas, amelyeket nem vesznek körül idézőjelek. 
 
 ```
 { json: "record 1" }
@@ -296,9 +296,9 @@ Ha nem **jegyzett oszlopnevek** vannak kiválasztva, az adatfolyamatok leképez�
 { json: "record 3" }
 ```
 
-#### <a name="has-comments"></a>Megjegyzésekkel rendelkezik
+#### <a name="has-comments"></a>Megjegyzések
 
-Válassza a **Megjegyzések lehetőséget,** ha a JSON-adatként C++ C vagy stílusú Megjegyzés van.
+Válassza **a Megjegyzések hez** lehetőséget, ha a JSON-adatok C vagy C++ stílusú megjegyzésekkel rendelkeznek.
 
 ``` json
 { "json": /** comment **/ "record 1" }
@@ -306,9 +306,9 @@ Válassza a **Megjegyzések lehetőséget,** ha a JSON-adatként C++ C vagy stí
 { /** comment **/ "json": "record 3" }
 ```
 
-#### <a name="single-quoted"></a>Egyszer idézett
+#### <a name="single-quoted"></a>Egyszeres idézett
 
-Válassza az **egyszeres** idézőjel lehetőséget, ha a JSON-mezők és-értékek idézőjelek helyett szimpla idézőjeleket használnak.
+Válassza az **Egyszeres idézőjel** lehetőséget, ha a JSON mezők és értékek idézőjeleket használnak idézőjelek helyett.
 
 ```
 { 'json': 'record 1' }
@@ -316,9 +316,9 @@ Válassza az **egyszeres** idézőjel lehetőséget, ha a JSON-mezők és-érté
 { 'json': 'record 3' }
 ```
 
-#### <a name="backslash-escaped"></a>Megmenekült fordított perjel
+#### <a name="backslash-escaped"></a>A fordított perjel megszökött
 
-Jelölje ki az **egyszeres idézőjelet** , ha fordított perjeleket használ a JSON-Adatkarakterek elmenekülni.
+Jelölje **be az Egyszeridézett lehetőséget,** ha fordított perjelek et használ a JSON-adatok karaktereinek kikerülésére.
 
 ```
 { "json": "record 1" }
@@ -326,9 +326,9 @@ Jelölje ki az **egyszeres idézőjelet** , ha fordított perjeleket használ a 
 { "json": "record 3" }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
-- [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
+- [Tevékenység másolása – áttekintés](copy-activity-overview.md)
+- [Adatfolyam leképezése](concepts-data-flow-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)

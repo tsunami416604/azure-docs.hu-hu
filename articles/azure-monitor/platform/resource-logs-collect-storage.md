@@ -1,6 +1,6 @@
 ---
-title: Azure-beli erőforrás-naplók archiválása a Storage-fiókba | Microsoft Docs
-description: Ismerje meg, hogyan archiválhatja Azure-beli erőforrás-naplóit a Storage-fiókok hosszú távú megőrzéséhez.
+title: Az Azure-erőforrásnaplók archiválása a tárfiókba | Microsoft dokumentumok
+description: Ismerje meg, hogyan archiválhatja az Azure-erőforrás naplók hosszú távú megőrzése egy tárfiókban.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,61 +8,61 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274215"
 ---
-# <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-beli erőforrás-naplók archiválása a Storage-fiókba
-Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról.  Ez a cikk ismerteti a platform-naplók Azure Storage-fiókba való gyűjtését az archiváláshoz szükséges adatok megőrzése érdekében.
+# <a name="archive-azure-resource-logs-to-storage-account"></a>Az Azure-erőforrásnaplók archiválása tárfiókba
+Az Azure-beli [platformnaplók,](platform-logs-overview.md) beleértve az Azure-tevékenységnaplót és az erőforrásnaplókat, részletes diagnosztikai és naplózási információkat nyújtanak az Azure-erőforrásokhoz és az Azure platformhoz, amelytől függenek.  Ez a cikk ismerteti a platformnaplók gyűjtése egy Azure-tárfiók archiválási adatok megőrzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha még nem rendelkezik ilyennel, [létre kell hoznia egy Azure Storage-fiókot](../../storage/common/storage-account-create.md) . A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
+Létre kell [hoznia egy Azure storage-fiókot,](../../storage/common/storage-account-create.md) ha még nem rendelkezik ilyen. A tárfiók nem kell ugyanabban az előfizetésben, mint az erőforrás-küldő naplók, amíg a felhasználó, aki konfigurálja a beállítást a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
 
 
 > [!IMPORTANT]
-> A Azure Data Lake Storage Gen2 fiókok jelenleg nem támogatottak a diagnosztikai beállítások célhelye, annak ellenére, hogy érvényes lehetőségként szerepelnek a Azure Portalban.
+> Az Azure Data Lake Storage Gen2-fiókok jelenleg nem támogatottak a diagnosztikai beállítások célhelyeként, még akkor sem, ha az Azure Portalon érvényes lehetőségként szerepelhetnek.
 
 
-Ne használjon olyan meglévő Storage-fiókot, amely más, nem monitorozási adattárolási információkkal rendelkezik, így jobban szabályozhatja az adathozzáférést. Ha a tevékenység naplóját és az erőforrás-naplókat együtt archiválja, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adattal egy központi helyen maradjon.
+Ne használjon olyan meglévő tárfiókot, amelymás, nem figyelési adatokat tárol, hogy jobban szabályozhassa az adatokhoz való hozzáférést. Ha a tevékenységnapló és az erőforrásnaplók együtt archiválása, bár, dönthet úgy, hogy ugyanazt a tárfiókot, hogy az összes figyelési adatok at egy központi helyen.
 
 ## <a name="create-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
-Platform-naplók küldése a tárolóba és más célállomásokra az Azure-erőforrások diagnosztikai beállításának létrehozásával. A részletekért lásd: [diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md) .
+Platformnaplók küldése a tárolóba és más célhelyekre egy Azure-erőforrás diagnosztikai beállításának létrehozásával. A naplók [és metrikák azure-beli gyűjtéséhez](diagnostic-settings.md) olvassa el a Diagnosztikai beállítás létrehozása című témakört.
 
 
-## <a name="collect-data-from-compute-resources"></a>Adatok gyűjtése a számítási erőforrásokból
-A diagnosztikai beállítások olyan erőforrás-naplókat gyűjtenek az Azure számítási erőforrásaihoz, mint bármely más erőforrás, nem pedig a vendég operációs rendszerük vagy a munkaterhelések. Az adatok gyűjtéséhez telepítse a [Windows Azure Diagnostics Agent ügynököt](diagnostics-extension-overview.md). 
+## <a name="collect-data-from-compute-resources"></a>Adatok gyűjtése számítási erőforrásokból
+A diagnosztikai beállítások erőforrásnaplókat gyűjtenek az Azure számítási erőforrásaihoz, mint bármely más erőforráshoz, de a vendég operációs rendszerüket vagy a számítási feladataikat nem. Az adatok gyűjtéséhez telepítse a [Windows Azure Diagnosztika ügynököt.](diagnostics-extension-overview.md) 
 
 
-## <a name="schema-of-platform-logs-in-storage-account"></a>A Storage-fiókban található platform-naplók sémája
+## <a name="schema-of-platform-logs-in-storage-account"></a>Platformnaplók sémája a tárfiókban
 
-Miután létrehozta a diagnosztikai beállítást, a rendszer egy tárolót hoz létre a Storage-fiókban, amint egy esemény bekövetkezik az engedélyezett naplózási kategóriák egyikében. A tárolóban lévő Blobok a következő elnevezési konvenciót használják:
+Miután létrehozta a diagnosztikai beállítást, létrejön egy tárolótároló a tárfiókban, amint egy esemény bekövetkezik az engedélyezett naplókategóriák egyikében. A tárolón belüli blobok a következő elnevezési konvenciót használják:
 
 ```
 insights-logs-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/RESOURCEGROUPS/{resource group name}/PROVIDERS/{resource provider name}/{resource type}/{resource name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Például egy hálózati biztonsági csoport blobjának neve a következőhöz hasonló lehet:
+Egy hálózati biztonsági csoport blobjának neve például a következőhöz hasonló lehet:
 
 ```
 insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 ```
 
-Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m = 00) mindig 00, mivel az erőforrás-naplózási események óránként egyedi blobokra vannak bontva.
+Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc érték (m=00) mindig 00, mivel az erőforrásnapló-események óránként ida ba vannak osztva.
 
-Az PT1H. JSON fájlon belül minden eseményt a következő formátumban tárol a rendszer. Ez közös legfelső szintű sémát használ, de minden egyes Azure-szolgáltatás esetében egyedinek kell lennie, az [erőforrás-naplók sémája](diagnostic-logs-schema.md) és a [tevékenység napló sémája](activity-log-schema.md)szerint.
+A PT1H.json fájlon belül minden esemény a következő formátumban tárolódik. Ez egy közös legfelső szintű sémát fog használni, de minden Azure-szolgáltatáshoz egyedi lesz az [Erőforrás-naplók sémájában](diagnostic-logs-schema.md) és [a tevékenységnapló sémájában](activity-log-schema.md)leírtak szerint.
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}
 ```
 
 > [!NOTE]
-> A platform naplói a blob Storage-ba kerülnek a [JSON-vonalak](http://jsonlines.org/)használatával, ahol minden esemény egy sor, a sortörési karakter pedig új eseményt jelez. Ez a formátum a 2018 novemberében lett implementálva. Ezen időpont előtt a naplók a blob Storage-ba kerülnek, mint a rekordok JSON-tömbje, amelyet a következő témakörben talál: [felkészülés a formátum változására a Storage-fiókba archivált Azure monitor platform-naplók](resource-logs-blob-format.md)számára.
+> A platformnaplók a Blob storage-ba [json-vonalak](http://jsonlines.org/)használatával kerülnek írásra, ahol minden esemény egy vonal, és az újvonal karakter egy új eseményt jelez. Ezt a formátumot 2018 novemberében vezették be. Ezt a dátumot megelőzően a naplók a blobstorage-ba egy json-tömbként kerültek írásra az [Azure Monitor platformnaplóinak egy tárfiókba archivált formátummódosításra](resource-logs-blob-format.md)című részében leírtak szerint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [További információ az erőforrás-naplókról](platform-logs-overview.md).
-* [Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md).
-* [Blobok letöltése elemzéshez](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
-* [Archiválja Azure Active Directory naplókat a Azure monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).
+* [További információ az erőforrásnaplókról.](platform-logs-overview.md)
+* [Diagnosztikai beállítás létrehozásával naplót és metrikákat gyűjthet az Azure-ban.](diagnostic-settings.md)
+* [Blobok letöltése elemzésre.](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [Archiválja az Azure Active Directory-naplókat az Azure Monitor segítségével.](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)

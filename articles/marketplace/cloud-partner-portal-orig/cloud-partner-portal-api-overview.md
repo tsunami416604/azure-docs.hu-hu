@@ -1,48 +1,47 @@
 ---
-title: Cloud Partner Portal API-hivatkozás | Azure piactér
-description: A, a használatának előfeltételei és a piactér API-műveleteinek listája.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Cloud Partner Portal API –hivatkozás | Azure Piactér
+description: A használandó előfeltételek és a piactéri API-műveletek listája.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b6591e1780d03cbfaff70fbd19ec3dfd274fae79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 296c667876807bdd05a6281de461df76207b5490
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288546"
 ---
-<a name="cloud-partner-portal-api-reference"></a>Cloud Partner Portal API-hivatkozás
+<a name="cloud-partner-portal-api-reference"></a>Felhőpartneri portál API-útmutatója
 ==================================
 
-A Cloud Partner Portal REST API-k lehetővé teszik a számítási feladatok, ajánlatok és kiadói profilok programozott lekérését és kezelését. Az API-k szerepköralapú hozzáférés-vezérlés (RBAC) használatával kényszerítik ki a megfelelő engedélyeket a feldolgozási idő során.
+A Cloud Partner Portal REST API-k lehetővé teszik a számítási feladatok, ajánlatok és közzétevői profilok programozott lekérését és kezelését. Az API-k szerepköralapú hozzáférés-vezérlés (RBAC) használatával kényszerítik a megfelelő engedélyeket a feldolgozási idő alatt.
 
-Ez a hivatkozás a Cloud Partner Portal REST API-k technikai részleteit ismerteti. A dokumentumban szereplő hasznos adatok csak referenciául szolgálnak, és új funkciók hozzáadásakor változhatnak.
+Ez a hivatkozás a Cloud Partner Portal REST API-k technikai részleteit tartalmazza. A dokumentumban szereplő hasznos teherminták csak tájékoztató jellegűek, és az új funkciók hozzáadásával változhatnak.
 
 
-<a name="prerequisites-and-considerations"></a>Előfeltételek és megfontolások
+<a name="prerequisites-and-considerations"></a>Előfeltételek és szempontok
 -------------------------------
 
 Az API-k használata előtt tekintse át a következőket:
 
-- Az [Előfeltételek](./cloud-partner-portal-api-prerequisites.md) című cikkből megtudhatja, hogyan adhat hozzá egy egyszerű szolgáltatásnevet a fiókjához, és hogyan szerezhet be Azure Active Directory (Azure ad) hozzáférési tokent a hitelesítéshez. 
-- A két [Egyidejűség vezérlőelem](./cloud-partner-portal-api-concurrency-control.md).
-az API-k meghívásához elérhető stratégiák.
-- További API- [megfontolások](./cloud-partner-portal-api-considerations.md), például verziószámozás és hibakezelés.
+- [Az előfeltételek](./cloud-partner-portal-api-prerequisites.md) cikk megtudhatja, hogyan adhat hozzá egy egyszerű szolgáltatás a fiókjához, és egy Azure Active Directory (Azure AD) hozzáférési jogkivonatot a hitelesítéshez. 
+- A két [egyidejűség-ellenőrzés](./cloud-partner-portal-api-concurrency-control.md).
+api-k hívására rendelkezésre álló stratégiákat.
+- További [API-szempontok](./cloud-partner-portal-api-considerations.md), például verziószámozás és hibakezelés.
 
 
 <a name="common-tasks"></a>Gyakori feladatok
 ------------
-Ez a hivatkozás a következő gyakori feladatok végrehajtására szolgáló API-kat ismerteti.
+Ez a hivatkozás a következő gyakori feladatok végrehajtásához szükséges API-kat részletezi.
 
 
 ### <a name="offers"></a>Ajánlatok
 
--   [Az összes ajánlat beolvasása](./cloud-partner-portal-api-retrieve-offers.md)
--   [Adott ajánlat beolvasása](./cloud-partner-portal-api-retrieve-specific-offer.md)
+-   [Az összes ajánlat lekérése](./cloud-partner-portal-api-retrieve-offers.md)
+-   [Adott ajánlat lekérése](./cloud-partner-portal-api-retrieve-specific-offer.md)
 -   [Ajánlat állapotának lekérése](./cloud-partner-portal-api-retrieve-offer-status.md)
 -   [Ajánlat létrehozása](./cloud-partner-portal-api-creating-offer.md)
 -   [Ajánlat közzététele](./cloud-partner-portal-api-publish-offer.md)
@@ -58,7 +57,7 @@ Ez a hivatkozás a következő gyakori feladatok végrehajtására szolgáló AP
 
 ### <a name="other-tasks"></a>Egyéb feladatok
 
--   [A virtuális gépekre vonatkozó ajánlatok díjszabásának beállítása](./cloud-partner-portal-api-setting-price.md)
+-   [A virtuális gépi ajánlatok díjszabásának beállítása](./cloud-partner-portal-api-setting-price.md)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 

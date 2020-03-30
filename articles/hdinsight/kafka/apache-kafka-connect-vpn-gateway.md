@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Kafka-hoz Virtual Networks használatával – Azure HDInsight
-description: Ismerje meg, hogyan kapcsolódhat közvetlenül a Kafka on HDInsight egy Azure-Virtual Networkon keresztül. Ismerje meg, hogyan csatlakozhat a Kafka-hez a fejlesztői ügyfelektől egy VPN-átjáróval vagy a helyszíni hálózatban lévő ügyfelekkel a VPN Gateway eszköz használatával.
+title: Csatlakozás a Kafkához virtuális hálózatok használatával – Azure HDInsight
+description: Ismerje meg, hogyan csatlakozhat közvetlenül a Kafka a HDInsight egy Azure virtuális hálózaton keresztül. Ismerje meg, hogyan csatlakozhat a Kafka-hoz a fejlesztői ügyfelekvpn-átjáróhasználatával, vagy a helyszíni hálózat ügyfeleitől VPN-átjáróeszköz használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,83 +9,83 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272122"
 ---
-# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Kapcsolódás Apache Kafka HDInsight az Azure-on keresztül Virtual Network
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafkához HDInsight-on egy Azure-beli virtuális hálózaton keresztül
 
-Megtudhatja, hogyan kapcsolódhat közvetlenül a HDInsight Apache Kafkahoz egy Azure-Virtual Network keresztül. Ebből a dokumentumból megtudhatja, hogyan kapcsolódhat a Kafka-hez a következő konfigurációk használatával:
+Ismerje meg, hogyan csatlakozhat közvetlenül az Apache Kafkához a HDInsight-on egy Azure virtuális hálózaton keresztül. Ez a dokumentum a Kafkához való csatlakozással kapcsolatos információkat a következő konfigurációk használatával tartalmazza:
 
-* Egy helyszíni hálózat erőforrásaiból. Ez a kapcsolat VPN-eszköz (szoftver vagy hardver) használatával jön a helyi hálózaton.
-* Egy VPN-ügyfélszoftvert használó fejlesztési környezetből.
+* A helyszíni hálózat erőforrásaiból. Ez a kapcsolat a helyi hálózaton lévő VPN-eszköz (szoftver vagy hardver) használatával jön létre.
+* VPN-szoftverügyfélt használó fejlesztői környezetből.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="architecture-and-planning"></a>Architektúra és tervezés
+## <a name="architecture-and-planning"></a>Építészet és tervezés
 
-A HDInsight nem teszi lehetővé a közvetlen kapcsolódást a Kafka-hez a nyilvános interneten keresztül. Ehelyett a Kafka-ügyfeleknek (termelőknek és fogyasztóknak) az alábbi módszerek egyikét kell használniuk:
+A HDInsight nem engedélyezi a Kafka-hoz való közvetlen csatlakozást a nyilvános interneten keresztül. Ehelyett a Kafka ügyfeleknek (gyártóknak és fogyasztóknak) az alábbi csatlakozási módszerek egyikét kell használniuk:
 
-* Futtassa az ügyfelet ugyanabban a virtuális hálózatban, mint a Kafka on HDInsight. Ezt a konfigurációt a [Start with apache Kafka on HDInsight](apache-kafka-get-started.md) dokumentum használja. Az ügyfél közvetlenül fut a HDInsight-fürt csomópontjain vagy ugyanazon a hálózaton lévő másik virtuális gépen.
+* Futtassa az ügyfelet ugyanabban a virtuális hálózatban, mint a Kafka a HDInsight. Ez a konfiguráció a Start az [Apache Kafka a](apache-kafka-get-started.md) HDInsight-dokumentumban. Az ügyfél közvetlenül a HDInsight fürtcsomópontokon vagy ugyanazon a hálózaton lévő másik virtuális gépen fut.
 
-* Csatlakoztasson egy magánhálózati hálózatot, például a helyszíni hálózatot a virtuális hálózathoz. Ez a konfiguráció lehetővé teszi, hogy a helyszíni hálózatban lévő ügyfelek közvetlenül működjenek a Kafka használatával. A konfiguráció engedélyezéséhez hajtsa végre a következő feladatokat:
-
-  1. Hozzon létre egy virtuális hálózatot.
-  2. Hozzon létre egy VPN-átjárót, amely helyek közötti konfigurációt használ. A dokumentumban használt konfiguráció egy VPN Gateway-eszközhöz csatlakozik a helyszíni hálózaton.
-  3. Hozzon létre egy DNS-kiszolgálót a virtuális hálózaton.
-  4. Konfigurálja a DNS-kiszolgáló közötti továbbítást az egyes hálózatokban.
-  5. Hozzon létre egy Kafka-t a HDInsight-fürtön a virtuális hálózaton.
-
-     További információkért tekintse meg a [kapcsolódás Apache Kafka a helyszíni hálózatról](#on-premises) című szakaszt.
-
-* Az egyes gépeket VPN-átjáró és VPN-ügyfél használatával csatlakoztatható a virtuális hálózathoz. A konfiguráció engedélyezéséhez hajtsa végre a következő feladatokat:
+* Csatlakoztasson egy magánhálózatot, például a helyszíni hálózatot a virtuális hálózathoz. Ez a konfiguráció lehetővé teszi, hogy a helyszíni hálózat ügyfelei közvetlenül együttműködjenek a Kafkával. A konfiguráció engedélyezéséhez hajtsa végre a következő feladatokat:
 
   1. Hozzon létre egy virtuális hálózatot.
-  2. Hozzon létre egy VPN-átjárót, amely pont – hely konfigurációt használ. Ez a konfiguráció Windows-és MacOS-ügyfelekkel is használható.
-  3. Hozzon létre egy Kafka-t a HDInsight-fürtön a virtuális hálózaton.
-  4. A Kafka konfigurálása az IP-hirdetésekhez. Ez a konfiguráció lehetővé teszi, hogy az ügyfél a tartománynevek helyett a Broker IP-címein keresztül kapcsolódjon.
+  2. Hozzon létre egy VPN-átjárót, amely helyek közötti konfigurációt használ. A dokumentumban használt konfiguráció a helyszíni hálózat VPN-átjáróeszközéhez csatlakozik.
+  3. Hozzon létre egy DNS-kiszolgálót a virtuális hálózatban.
+  4. Konfigurálja az adattovábbítást az egyes hálózatok DNS-kiszolgálói között.
+  5. Hozzon létre egy Kafka a HDInsight-fürt a virtuális hálózatban.
+
+     További információ: Csatlakozás az [Apache Kafkához egy helyszíni hálózati szakaszból.](#on-premises)
+
+* Egyes gépek csatlakoztatása a virtuális hálózathoz VPN-átjáró és VPN-ügyfél használatával. A konfiguráció engedélyezéséhez hajtsa végre a következő feladatokat:
+
+  1. Hozzon létre egy virtuális hálózatot.
+  2. Hozzon létre egy VPN-átjárót, amely pont-hely konfigurációt használ. Ez a konfiguráció Windows és MacOS ügyfelekkel egyaránt használható.
+  3. Hozzon létre egy Kafka a HDInsight-fürt a virtuális hálózatban.
+  4. Konfigurálja a Kafka-t az IP-hirdetésekhez. Ez a konfiguráció lehetővé teszi, hogy az ügyfél tartománynevek helyett közvetítőI IP-címekkel csatlakozzon.
   5. Töltse le és használja a VPN-ügyfelet a fejlesztői rendszeren.
 
-     További információkért lásd a [csatlakozás Apache Kafka VPN-ügyféllel](#vpnclient) című szakaszt.
+     További információ: Csatlakozás az [Apache Kafkához VPN-ügyféllel](#vpnclient) című szakaszban.
 
      > [!WARNING]  
-     > Ez a konfiguráció csak fejlesztési célokra ajánlott, a következő korlátozások miatt:
+     > Ez a konfiguráció csak fejlesztési célokra ajánlott, mert a következő korlátozások:
      >
-     > * Minden ügyfélnek VPN-ügyfélszoftver használatával kell kapcsolódnia.
-     > * A VPN-ügyfél nem továbbítja a névfeloldási kérelmeket a virtuális hálózatnak, ezért az IP-címzést kell használnia a Kafka-vel való kommunikációhoz. Az IP-kommunikációhoz további konfigurációra van szükség a Kafka-fürtön.
+     > * Minden ügyfélnek VPN-szoftverügyfélen keresztül kell csatlakoznia.
+     > * A VPN-ügyfél nem adja át a névfeloldási kérelmeket a virtuális hálózatnak, ezért az IP-címzést a Kafkával való kommunikációhoz kell használnia. Az IP-kommunikáció további konfigurációt igényel a Kafka-fürtön.
 
-A virtuális hálózat HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat megtervezése Azure HDInsight-fürtökhöz](../hdinsight-plan-virtual-network-deployment.md).
+A HDInsight virtuális hálózatban való használatáról az [Azure HDInsight-fürtök virtuális hálózatának megtervezése](../hdinsight-plan-virtual-network-deployment.md)című témakörben talál további információt.
 
-## <a id="on-premises"></a>Kapcsolódás Apache Kafka helyszíni hálózatról
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a>Csatlakozás az Apache Kafkához helyszíni hálózatról
 
-A helyszíni hálózattal kommunikáló Kafka-fürt létrehozásához kövesse a [HDInsight összekapcsolása](./../connect-on-premises-network.md) a helyszíni hálózati dokumentumhoz című témakör lépéseit.
+Hozzon létre egy Kafka-fürt, amely kommunikál a helyszíni hálózat, kövesse a [hdinsight csatlakoztatása a helyszíni hálózati dokumentum lépéseit.](./../connect-on-premises-network.md)
 
 > [!IMPORTANT]  
-> A HDInsight-fürt létrehozásakor válassza ki a __Kafka__ -fürt típusát.
+> A HDInsight-fürt létrehozásakor válassza ki a __Kafka__ fürttípusát.
 
-Ezek a lépések a következő konfigurációt hozzanak létre:
+Ezek a lépések a következő konfigurációt hozzák létre:
 
 * Azure Virtual Network
 * Helyek közötti VPN-átjáró
-* Azure Storage-fiók (HDInsight által használt)
+* Azure Storage-fiók (a HDInsight használja)
 * Kafka on HDInsight
 
-Annak ellenőrzéséhez, hogy a Kafka-ügyfél tud-e csatlakozni a fürthöz a helyszíni környezetből, hajtsa végre a [példa: Python-ügyfél](#python-client) című szakasz lépéseit.
+Annak ellenőrzéséhez, hogy egy Kafka-ügyfél a helyszíni csatlakozáshoz csatlakozhat-e a fürthöz, kövesse a [Példa: Python-ügyfél](#python-client) szakasz lépéseit.
 
-## <a id="vpnclient"></a>Csatlakozás Apache Kafka VPN-ügyféllel
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a>Csatlakozás az Apache Kafkához VPN-ügyféllel
 
-A jelen szakaszban ismertetett lépések segítségével hozza létre a következő konfigurációt:
+Az ebben a szakaszban ismertetett lépésekkel hozza létre a következő konfigurációt:
 
 * Azure Virtual Network
-* Pont – hely típusú VPN-átjáró
-* Azure Storage-fiók (HDInsight által használt)
+* Pont-hely VPN átjáró
+* Azure storage-fiók (a HDInsight használja)
 * Kafka on HDInsight
 
-1. Kövesse az [önaláírt tanúsítványok használata pont – hely kapcsolatokra vonatkozó](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) dokumentum lépéseit. Ez a dokumentum hozza létre az átjáróhoz szükséges tanúsítványokat.
+1. Kövesse a [Pont-hely kapcsolatok önaláírt tanúsítványainak használata](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) című dokumentum lépéseit. Ez a dokumentum létrehozza az átjáróhoz szükséges tanúsítványokat.
 
-2. Nyisson meg egy PowerShell-parancssort, és az alábbi kód használatával jelentkezzen be az Azure-előfizetésbe:
+2. Nyisson meg egy PowerShell-kérdést, és a következő kód dal jelentkezzen be az Azure-előfizetésbe:
 
     ```powershell
     Connect-AzAccount
@@ -93,7 +93,7 @@ A jelen szakaszban ismertetett lépések segítségével hozza létre a követke
     #Select-AzSubscription -SubscriptionName "name of your subscription"
     ```
 
-3. A következő kód használatával hozhat létre konfigurációs adatokat tartalmazó változókat:
+3. A következő kóddal konfigurációs adatokat tartalmazó változókat hozhat létre:
 
     ```powershell
     # Prompt for generic information
@@ -188,9 +188,9 @@ A jelen szakaszban ismertetett lépések segítségével hozza létre a követke
     ```
 
     > [!WARNING]  
-    > A folyamat elvégzése több percet is igénybe vehet.
+    > A folyamat több percig is eltarthat, amíg ez a folyamat befejeződik.
 
-5. Az Azure Storage-fiók és a blob-tároló létrehozásához használja a következő kódot:
+5. Az alábbi kód dalhoz az Azure Storage-fiók és a blob tároló:
 
     ```powershell
     # Create the storage account
@@ -213,7 +213,7 @@ A jelen szakaszban ismertetett lépések segítségével hozza létre a követke
         -Context $storageContext
     ```
 
-6. A HDInsight-fürt létrehozásához használja a következő kódot:
+6. A HDInsight-fürt létrehozásához használja az alábbi kódot:
 
     ```powershell
     # Create the HDInsight cluster
@@ -236,29 +236,29 @@ A jelen szakaszban ismertetett lépések segítségével hozza létre a követke
     ```
 
    > [!WARNING]  
-   > A folyamat elvégzése körülbelül 15 percet vesz igénybe.
+   > Ez a folyamat körülbelül 15 percet vesz igénybe.
 
-### <a name="configure-kafka-for-ip-advertising"></a>A Kafka konfigurálása az IP-hirdetéshez
+### <a name="configure-kafka-for-ip-advertising"></a>A Kafka konfigurálása IP-hirdetésekhez
 
-Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevét adja vissza az ügyfeleknek. Ez a konfiguráció nem működik a VPN-ügyfélszoftverrel, mivel nem használhatja a névfeloldást a virtuális hálózatban lévő entitások esetében. Ehhez a konfigurációhoz a következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek helyett IP-címeket Hirdessen:
+Alapértelmezés szerint az Apache Zookeeper visszaadja a Kafka brókerek tartománynevét az ügyfeleknek. Ez a konfiguráció nem működik a VPN-szoftverügyféllel, mivel nem használhatja a névfeloldást a virtuális hálózat entitásaihoz. Ehhez a konfigurációhoz az alábbi lépésekkel konfigurálhatja a Kafka-t az IP-címek tartománynevek helyett történő hirdetésére:
 
-1. Webböngészővel nyissa meg a `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a `CLUSTERNAME`t a Kafka on HDInsight-fürt nevére.
+1. Egy böngészőben nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net`. Cserélje `CLUSTERNAME` le a HDInsight-fürt Kafka nevét.
 
-    Ha a rendszer kéri, használja a fürt HTTPS-felhasználónevét és-jelszavát. Megjelenik a fürt Ambari webes felhasználói felülete.
+    Amikor a rendszer kéri, használja a fürt HTTPS-felhasználónevét és jelszavát. Megjelenik a fürt Ambari webfelhasználói felülete.
 
-2. A Kafka-adatok megtekintéséhez válassza a __Kafka__ lehetőséget a bal oldali listából.
+2. A Kafka-val kapcsolatos információk megtekintéséhez válassza a __Kafka__ elemet a bal oldali listából.
 
-    ![Szolgáltatások listája a Kafka kiemelésével](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
+    ![Szolgáltatási lista kiemelt Kafkával](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
-3. A Kafka-konfiguráció megtekintéséhez válassza a __konfigurációk__ lehetőséget a felső középső listából.
+3. A Kafka-konfiguráció megtekintéséhez válassza a __Konfigurációk__ elemet a felső középről.
 
-    ![Apache Ambari Services-konfiguráció](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Apache Ambari szolgáltatások konfigurációja](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. A __Kafka-env__ konfiguráció megkereséséhez írja be a `kafka-env` értéket a jobb felső sarokban található __szűrő__ mezőbe.
+4. A __kafka-env__ konfiguráció megkereséséhez írja be `kafka-env` a jobb felső __sarokszűrő__ mezőjét.
 
-    ![Kafka-konfiguráció, Kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
+    ![Kafka konfiguráció, kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
-5. Ha a Kafka-t IP-címekre szeretné reklámozni, adja hozzá a következő szöveget a __Kafka-env-template__ mező aljához:
+5. Ha a Kafkát az IP-címek hirdetésére szeretné beállítani, adja hozzá a következő szöveget a __kafka-env-template__ mező aljához:
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -268,33 +268,33 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. A Kafka által figyelt felület konfigurálásához írja be a `listeners` értéket a jobb felső sarokban található __szűrő__ mezőbe.
+6. A Kafka által figyelt összeköttetés konfigurálásához írja be `listeners` a jobb felső __sarokszűrő__ mezőjébe.
 
-7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert figyelje, módosítsa a __figyelők__ mező értékét `PLAINTEXT://0.0.0.0:9092`értékre.
+7. Ha azt szeretné, hogy a Kafka az összes hálózati `PLAINTEXT://0.0.0.0:9092`csatolón figyelje a figyelést, módosítsa a __figyelők__ mező értékét a értékre.
 
-8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
+8. A konfigurációs módosítások mentéséhez használja a __Mentés__ gombot. Írjon be egy szöveges üzenetet a módosításokról. A módosítások mentése után válassza az __OK__ gombot.
 
-    ![Apache Ambari-mentési konfiguráció](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Apache Ambari menteni konfiguráció](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
-9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
+9. A Kafka újraindításakor előforduló hibák elkerülése érdekében használja a __Szolgáltatási műveletek__ gombot, és válassza a Karbantartási __mód bekapcsolása lehetőséget.__ A művelet végrehajtásához válassza az OK gombot.
 
-    ![Szolgáltatási műveletek, a karbantartás bekapcsolásával](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
+    ![Szolgáltatási műveletek, kiemelve a karbantartás bekapcsolva](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza az __összes érintett újraindítása__lehetőséget. Erősítse meg az újraindítást, majd használja az __OK__ gombot a művelet befejeződése után.
+10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza __az Újraindítás minden érintettet.__ Erősítse meg az újraindítást, majd a művelet befejezése után használja az __OK__ gombot.
 
-    ![Újraindítás gomb az összes érintett Kiemelt újraindítással](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
+    ![Újraindítás gomb az összes érintett érintett újraindításával kiemelve](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. A karbantartási mód letiltásához használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód kikapcsolása__lehetőséget. A művelet befejezéséhez kattintson **az OK gombra** .
+11. A karbantartási mód letiltásához használja a __Szervizműveletek__ gombot, és válassza __a Karbantartási mód kikapcsolása__lehetőséget. A művelet végrehajtásához válassza az **OK** gombot.
 
 ### <a name="connect-to-the-vpn-gateway"></a>Csatlakozás a VPN-átjáróhoz
 
-A VPN-átjáróhoz való csatlakozáshoz használja a [pont – hely kapcsolati dokumentum konfigurálása](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) a __Csatlakozás az Azure-hoz__ című szakaszát.
+A VPN-átjáróhoz való csatlakozáshoz használja a Csatlakozás az __Azure-hoz__ szakasza a [Pont-hely kapcsolat dokumentum konfigurálása.](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)
 
-## <a id="python-client"></a>Példa: Python-ügyfél
+## <a name="example-python-client"></a><a id="python-client"></a>Példa: Python-ügyfél
 
-A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-gyártó és-fogyasztó létrehozásához és futtatásához:
+A Kafka-val való kapcsolat érvényesítéséhez az alábbi lépésekkel hozzon létre és futtasson egy Python-gyártót és -fogyasztót:
 
-1. A következő módszerek egyikével kérheti le a Kafka-fürt csomópontjainak teljes tartománynevét (FQDN) és IP-címét:
+1. A Kafka-fürt csomópontjainak teljesen minősített tartománynevét (FQDN) és IP-címét az alábbi módszerek egyikével szerezheti be:
 
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
@@ -316,17 +316,17 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Ez a parancsfájl feltételezi, hogy `$resourceGroupName` a virtuális hálózatot tartalmazó Azure-erőforráscsoport neve.
+    Ez a parancsfájl `$resourceGroupName` feltételezi, hogy a virtuális hálózatot tartalmazó Azure-erőforráscsoport neve.
 
     Mentse a visszaadott adatokat a következő lépésekben való használatra.
 
-2. A következő paranccsal telepítheti a [Kafka-Python-](https://kafka-python.readthedocs.io/) ügyfelet:
+2. A [kafka-python](https://kafka-python.readthedocs.io/) ügyfél telepítéséhez használja az alábbiakat:
 
     ```bash
     pip install kafka-python
     ```
 
-3. Az alábbi Python-kóddal küldheti el az adatgyűjtést a Kafka számára:
+3. Ha adatokat szeretne küldeni a Kafkának, használja a következő Python-kódot:
 
    ```python
    from kafka import KafkaProducer
@@ -337,14 +337,14 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
       producer.send('testtopic', b'test message')
    ```
 
-    Cserélje le a `'kafka_broker'` bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
+    Cserélje `'kafka_broker'` le a bejegyzéseket az 1.
 
    * Ha __szoftveres VPN-ügyfelet__használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
 
-   * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
+   * Ha __egyéni DNS-kiszolgálón keresztül engedélyezte a névfeloldást,__ cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
 
      > [!NOTE]
-     > Ez a kód a `test message` karakterláncot küldi el a témakör `testtopic`. A Kafka HDInsight alapértelmezett konfigurációja a témakör létrehozása, ha nem létezik.
+     > Ez a kód `test message` elküldi `testtopic`a karakterláncot a témakörnek. A Kafka alapértelmezett konfigurációja a HDInsight-on a témakör létrehozása, ha nem létezik.
 
 4. A Kafka üzeneteinek lekéréséhez használja a következő Python-kódot:
 
@@ -360,23 +360,23 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
      print (msg)
    ```
 
-    Cserélje le a `'kafka_broker'` bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
+    Cserélje `'kafka_broker'` le a bejegyzéseket az 1.
 
     * Ha __szoftveres VPN-ügyfelet__használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
 
-    * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
+    * Ha __egyéni DNS-kiszolgálón keresztül engedélyezte a névfeloldást,__ cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A HDInsight virtuális hálózattal való használatával kapcsolatos további információkért tekintse meg a [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](../hdinsight-plan-virtual-network-deployment.md) című dokumentumot.
+A HDInsight virtuális hálózattal való használatáról további információt az [Azure HDInsight-fürtök virtuális hálózati üzembe helyezésének megtervezése](../hdinsight-plan-virtual-network-deployment.md) című dokumentumban talál.
 
-Az Azure-Virtual Network pont – hely típusú VPN-átjáróval való létrehozásával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
+Az Azure virtuális hálózat point-to-site VPN-átjáróval való létrehozásáról az alábbi dokumentumokban talál további információt:
 
-* [Pont – hely kapcsolat konfigurálása a Azure Portal használatával](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Pont-hely közötti kapcsolat konfigurálása az Azure Portal használatával](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 
-* [Pont – hely kapcsolat konfigurálása Azure PowerShell használatával](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Pont-hely kapcsolat konfigurálása az Azure PowerShell használatával](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-A HDInsight-Apache Kafka használatáról a következő dokumentumokban talál további információt:
+Az Apache Kafka HDInsight-on végzett együttműködésével kapcsolatos további tudnivalókért tekintse meg az alábbi dokumentumokat:
 
-* [Ismerkedés a HDInsight Apache Kafkaával](apache-kafka-get-started.md)
-* [Tükrözés Apache Kafka HDInsight használatával](apache-kafka-mirroring.md)
+* [Ismerkedés az Apache Kafkával a HDInsighton](apache-kafka-get-started.md)
+* [Tükrözés használata az Apache Kafkával a HDInsighton](apache-kafka-mirroring.md)

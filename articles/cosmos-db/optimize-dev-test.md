@@ -1,52 +1,52 @@
 ---
-title: Optimalizálás a Azure Cosmos DB fejlesztéséhez és teszteléséhez
-description: Ez a cikk azt ismerteti, hogy Azure Cosmos DB több lehetőséget kínál a szolgáltatás ingyenes fejlesztésére és tesztelésére.
+title: Optimalizálás az Azure Cosmos DB fejlesztéséhez és teszteléséhez
+description: Ez a cikk bemutatja, hogy az Azure Cosmos DB hogyan kínál több lehetőséget a szolgáltatás ingyenes fejlesztésére és tesztelésére.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: d2ca7b7e4b637802df6a78c2493e3cc088f09881
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246681"
 ---
-# <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>A fejlesztési és tesztelési díjak optimalizálása Azure Cosmos DB
+# <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Fejlesztési és tesztelési költségek optimalizálása az Azure Cosmos DB-ben
 
-Ez a cikk a fejlesztéshez és teszteléshez használható Azure Cosmos DB különböző lehetőségeit ismerteti díjmentesen, valamint olyan technikákat, amelyekkel optimalizálhatja a költségeket a fejlesztési vagy tesztelési fiókokban.
+Ez a cikk ismerteti a különböző lehetőségeket az Azure Cosmos DB a fejlesztési és tesztelési ingyenes, valamint a fejlesztési költségek optimalizálására szolgáló technikákat.
 
-## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Azure Cosmos DB Emulator (helyileg letölthető verzió)
+## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Azure Cosmos DB emulátor (helyileg letölthető verzió)
 
-[Azure Cosmos db Emulator](local-emulator.md) egy helyi letölthető verzió, amely a Azure Cosmos db Cloud Service-t utánozza. Megírhatja és tesztelheti a Azure Cosmos DB API-kat használó kódokat, még akkor is, ha nincs hálózati kapcsolatban, és nem merül fel költségek. A Azure Cosmos DB Emulator helyi környezetet biztosít a felhőalapú szolgáltatás számára magas szintű megbízhatósággal rendelkező fejlesztési célokra. Az alkalmazást helyileg fejlesztheti és tesztelheti Azure-előfizetés létrehozása nélkül is. Ha készen áll az alkalmazás felhőben való üzembe helyezésére, frissítse a kapcsolati karakterláncot a felhőben lévő Azure Cosmos DB végponthoz való csatlakozáshoz, nincs szükség további módosításokra. [Egy CI/CD-folyamatot is beállíthat a Azure Cosmos db emulátor](tutorial-setup-ci-cd.md) felépítési feladattal az Azure DevOps a tesztek futtatásához. Első lépésként látogasson el a [Azure Cosmos db Emulator](local-emulator.md) cikkre.
+[Az Azure Cosmos DB-emulátor](local-emulator.md) egy helyi letölthető verzió, amely az Azure Cosmos DB felhőszolgáltatást utánozza. Írhat és tesztelhet kódot, amely az Azure Cosmos DB API-kat használja, még akkor is, ha nincs hálózati kapcsolat, és anélkül, hogy bármilyen költség. Az Azure Cosmos DB emulátor helyi környezetet biztosít fejlesztési célokra, a felhőszolgáltatáshoz való hűséggel. Az alkalmazást helyileg fejlesztheti és tesztelheti anélkül, hogy Azure-előfizetést hozna létre. Ha készen áll az alkalmazás felhőbe való üzembe helyezésére, frissítse a kapcsolati karakterláncot az Azure Cosmos DB-végponthoz való csatlakozáshoz a felhőben, nincs szükség további módosításokra. [Ci/CD-folyamatot is beállíthat az Azure Cosmos DB emulátor-alapú](tutorial-setup-ci-cd.md) buildelési feladattal az Azure DevOps-ban a tesztek futtatásához. Első lépések az [Azure Cosmos DB emulátor](local-emulator.md) cikk.
 
-## <a name="azure-cosmos-db-free-tier"></a>Ingyenes Azure Cosmos DB szintű 
-A Azure Cosmos DB ingyenes szintje megkönnyíti az alkalmazások megkezdését, fejlesztését és tesztelését, vagy akár kisebb éles számítási feladatok futtatását is ingyenesen. Ha az ingyenes szintet engedélyezi egy fiókon, az első 400 RU/s és 5 GB tárterület ingyenesen elérhető a fiókban. Létrehozhat egy közös átviteli sebességű adatbázist is, amely 25 tárolóval rendelkezik, amelyek az adatbázis szintjén osztják meg az 400 RU/s-t, és mindezt az ingyenes szint (az 5 közös átviteli sebességű adatbázis egy ingyenes szintű fiókban) fedi le. Az ingyenes szinten határozatlan ideig tart a fiók élettartama, és a rendszeres Azure Cosmos DB fiók összes [előnyét és funkcióját](introduction.md#key-benefits) tartalmazza, beleértve a korlátlan tárterületet és átviteli SEBESSÉGET (ru/s), SLA-kat, magas rendelkezésre állást, kulcsrakész globális elosztást az összes Azure-régióban, és így tovább. Az Azure-előfizetések esetében akár egy ingyenes szintű fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Első lépésként [hozzon létre egy új fiókot, amely lehetővé teszi az ingyenes szintet](create-cosmosdb-resources-portal.md). További részleteket a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) talál. 
+## <a name="azure-cosmos-db-free-tier"></a>Az Azure Cosmos DB ingyenes szintje 
+Az Azure Cosmos DB ingyenes csomagja megkönnyíti az alkalmazások elindítását, fejlesztését és tesztelését, vagy akár kis éles számítási feladatok ingyenes futtatását. Ha az ingyenes szint engedélyezve van egy fiókban, az első 400 RU/s és 5 GB tárterület ingyenes lesz a fiókban. Létrehozhat egy megosztott átviteli adatbázist 25 tárolóval, amelyek 400 RU/s-ot osztanak meg az adatbázis szintjén, amelyek mindegyike ingyenes szint (5 megosztott átviteli adatbázis korlátozása egy ingyenes rétegfiókban). Az ingyenes szint a fiók élettartama alatt korlátlan ideig tart, és a rendszeres Azure Cosmos DB-fiók minden [előnyét és funkcióját](introduction.md#key-benefits) tartalmazza, beleértve a korlátlan tárhelyet és átviteli kapacitást (RU/s), az SLA-kat, a magas rendelkezésre állást, a kulcsrakész globális disztribúciót az összes Azure-régióban, és így tovább. Azure-előfizetésenként legfeljebb egy ingyenes rétegfiókkal rendelkezhet, és a fiók létrehozásakor engedélyeznie kell. A kezdéshez [hozzon létre egy új fiókot, amelyen engedélyezve van az ingyenes szint.](create-cosmosdb-resources-portal.md) További részleteket a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) talál. 
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása
 
-[Próbálja ki a Azure Cosmos db for Free](https://azure.microsoft.com/try/cosmosdb/) ingyenes élményét, amely lehetővé teszi, hogy az Azure-fiókra való feliratkozás vagy a bankkártya használata nélkül kísérletezzen a felhőben Azure Cosmos DBokkal. A kipróbálási Azure Cosmos DB fiókokat a rendszer jelenleg legfeljebb 30 napig elérhetővé teszi. Bármikor megújíthatja őket. Azure Cosmos DB fiókok kipróbálásával egyszerűen kiértékelheti az alkalmazásokat Azure Cosmos DB, felépítheti és tesztelheti az alkalmazásokat, vagy használhatja a gyors útmutatókat vagy oktatóanyagokat. Létrehozhat egy bemutatót is, elvégezheti az egység tesztelését, vagy akár többrégiós fiókot is létrehozhat, és anélkül futtathat egy alkalmazást, hogy költségeket kellene kivonnia. A Try Azure Cosmos DB fiókban egy megosztott átviteli sebességű adatbázishoz legfeljebb 25 tároló és 20 000 RU/s átviteli sebesség tartozhat, vagy egy legfeljebb 5000 RU/s méretű tároló. Első lépésként tekintse [meg az ingyenes Azure Cosmos db kipróbálása](https://azure.microsoft.com/try/cosmosdb/) oldalt.
+[Próbálja ki az Azure Cosmos DB-t ingyenesen,](https://azure.microsoft.com/try/cosmosdb/) amely lehetővé teszi, hogy az Azure Cosmos DB-vel kísérletezzen a felhőben anélkül, hogy feliratkozna egy Azure-fiókra vagy hitelkártyával. Az Azure Cosmos DB-fiókok kipróbálása korlátozott ideig, jelenleg 30 napig érhető el. Ezeket bármikor megújíthatja. Próbálja ki az Azure Cosmos DB-fiókjait, amely megkönnyíti az Azure Cosmos DB kiértékelését, egy alkalmazás összeállítását és tesztelését, illetve a rövid útmutatók vagy oktatóanyagok használatát. Demót is létrehozhat, egységtesztelést végezhet, vagy akár több régióra kiterjedő fiókot is létrehozhat, és költség nélkül futtathat rajta egy alkalmazást. Egy Próbálja ki az Azure Cosmos DB-fiókjában egy megosztott átviteli adatbázis, legfeljebb 25 tárolók és 20 000 RU/s átviteli, vagy egy tároló legfeljebb 5000 RU/s. Első lépésekhez tekintse [meg az Azure Cosmos DB kipróbálása ingyenes](https://azure.microsoft.com/try/cosmosdb/) lapot.
 
 ## <a name="azure-free-account"></a>Ingyenes Azure-fiók
 
-A Azure Cosmos DBt az [ingyenes Azure-fiók](https://azure.microsoft.com/free)tartalmazza, amely egy adott időszakra ingyenesen kínál Azure-krediteket és-erőforrásokat. Kifejezetten a Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RUs-t biztosít az egész évre kiépített átviteli sebességhez. Ez a megoldás lehetővé teszi, hogy a fejlesztők egyszerűen teszteljék Azure Cosmos DB funkcióit, vagy más Azure-szolgáltatásokkal integrálják azt nulla áron. Az ingyenes Azure-fiókkal $200 kreditet kap, amelyet az első 30 napban kell költeni. Nem számítunk fel díjat, még akkor sem, ha a szolgáltatást a frissítés megkezdése előtt elkezdi használni. Első lépésként látogasson el az [ingyenes Azure-fiók](https://azure.microsoft.com/free) oldalra.
+Az Azure Cosmos DB az [ingyenes Azure-fiók](https://azure.microsoft.com/free)része, amely egy bizonyos ideig ingyenesen kínál Azure-krediteket és erőforrásokat. Ez az ingyenes fiók 5 GB-os tárhelyet és 400 kiépített átviteli kapacitást kínál az egész évre. Ez a felület lehetővé teszi, hogy bármely fejlesztő egyszerűen tesztelje az Azure Cosmos DB funkcióit, vagy integrálja azt más Azure-szolgáltatásokkal nulla költség gel. Az ingyenes Azure-fiókkal az első 30 napban $200-os kreditet kap. Nem kell fizetnie, még akkor sem, ha elkezdi használni a szolgáltatásokat, amíg úgy nem dönt, hogy frissít. Első lépésekhez látogasson el [az Azure ingyenes fiókoldalára.](https://azure.microsoft.com/free)
 
-## <a name="use-shared-throughput-databases"></a>Megosztott átviteli sebességű adatbázisok használata
+## <a name="use-shared-throughput-databases"></a>Megosztott átviteliadat-adatbázisok használata
 
-Egy [megosztott átviteli sebességű adatbázisban](set-throughput.md#set-throughput-on-a-database)az adatbázisban lévő összes tároló osztozik az adatbázis kiépített átviteli sebességén (ru/s). Ha például 400 RU/s-vel rendelkező adatbázist hoz létre, és négy tárolóval rendelkezik, mind a négy tároló osztozik a 400 RU/s-ban. Fejlesztési vagy tesztelési környezetben, ahol az egyes tárolók ritkábban érhetők el, és így a minimum 400 RU/s értéknél kevesebbet igényelnek, és a tárolók egy megosztott átviteli sebességű adatbázisban való üzembe helyezése segít optimalizálni a költségeket. 
+Egy [megosztott átviteli adatbázisban](set-throughput.md#set-throughput-on-a-database)az adatbázison belüli összes tároló megosztja az adatbázis kiosztott átviteli fáteresztő(RU)-ját. Ha például egy 400 RU/s-os adatbázist hoz üzembe, és négy tárolóval rendelkezik, mind a négy tároló megosztja a 400 RU/s-ot. Olyan fejlesztési vagy tesztelési környezetben, ahol minden tároló ritkábban érhető el, és így a legalább 400 RU/s-nál alacsonyabbra van szükség, a tárolók megosztott átviteli-adatbázisba helyezése segíthet a költségek optimalizálásában. 
 
-Tegyük fel például, hogy a fejlesztési vagy tesztelési fiók négy tárolóval rendelkezik. Ha négy tárolót hoz létre dedikált átviteli sebességgel (legalább 400 RU/s), akkor a teljes RU/s a 1600 RU/s lesz. Ezzel szemben, ha létrehoz egy megosztott átviteli sebességű adatbázist (minimum 400 RU/s), és elhelyezi a tárolókat, a teljes RU/s csak 400 RU/s lesz. Általánosságban elmondható, hogy a megosztott átviteli sebességű adatbázisok kiválóan alkalmasak olyan forgatókönyvek esetén, amelyeknél nincs szükség a garantált átviteli sebességre minden egyes tárolón  További információ a [megosztott átviteli sebességű adatbázisokról.](set-throughput.md#set-throughput-on-a-database)
+Tegyük fel például, hogy a fejlesztési vagy tesztelési fiók négy tárolóval rendelkezik. Ha négy tárolót hoz létre dedikált átviteli fokkal (legalább 400 RU/s), a teljes RU/s 1600 RU/s lesz. Ezzel szemben, ha létrehoz egy megosztott átviteli adatbázist (legalább 400 RU/s), és a tárolókat ott helyezi el, a teljes RU/s csak 400 RU/s lesz. Általában a megosztott átviteli adatbázisok nagyszerű ek olyan esetekben, ahol nem kell garantált átviteli hang egyetlen egyes tárolókban.  További információ a [megosztott átviteli adatáteri adatbázisokról.](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az emulátor vagy az ingyenes Azure Cosmos DB fiókok használatának első lépései a következő cikkekkel szerezhetők be:
+Az emulátor vagy az ingyenes Azure Cosmos DB-fiókok használatának első lépései a következő cikkekkel:
 
-* További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)
-* További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
-* További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
-* További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
-* További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
-* További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
+* További információ [az optimalizálásról fejlesztési és tesztelési célokra](optimize-dev-test.md)
+* További információ [az Azure Cosmos DB-számlájának ismertetéséről](understand-your-bill.md)
+* További információ az [átviteli költség optimalizálásáról](optimize-cost-throughput.md)
+* További információ a [tárolási költség optimalizálásáról](optimize-cost-storage.md)
+* További információ [az olvasási és írási költségek optimalizálásáról](optimize-cost-reads-writes.md)
+* További információ [a lekérdezések költségének optimalizálásáról](optimize-cost-queries.md)
+* További információ a több régióra kiterjedő [Azure Cosmos-fiókok költségeinek optimalizálásáról](optimize-cost-regions.md)
 

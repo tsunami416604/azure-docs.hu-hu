@@ -1,7 +1,7 @@
 ---
-title: Adott RDP-hibaüzenetek az Azure-beli virtuális gépekhez | Microsoft Docs
-description: Az Azure-beli Windows rendszerű virtuális gépekhez való Távoli asztal kapcsolódáskor kapott hibaüzenetek ismertetése
-keywords: Távoli asztali hiba, távoli asztali kapcsolati hiba, nem lehet csatlakozni a virtuális géphez, távoli asztal hibaelhárítása
+title: Adott RDP-hibaüzenetek az Azure virtuális gépeihez | Microsoft dokumentumok
+description: A Távoli asztali kapcsolat Azure-beli Windows-alapú virtuális géphez való használata során megjelenő konkrét hibaüzenetek ismertetése
+keywords: Távoli asztal hiba,távoli asztali kapcsolathiba,nem lehet csatlakozni a virtuális géphez,távoli asztali hibaelhárítás
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -16,97 +16,97 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266870"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure-beli Windows virtuális gépek konkrét RDP-hibaüzeneteinek elhárítása
-A Windows rendszerű virtuális gépekhez (VM) az Azure-ban Távoli asztal-csatlakozás használatakor hibaüzenet jelenhet meg. Ez a cikk a leggyakoribb hibaüzenetek némelyikét ismerteti, valamint a hibaelhárítási lépéseket. Ha olyan problémák merülnek fel, amelyek RDP használatával kapcsolódnak a virtuális géphez, de nem találnak konkrét hibaüzenetet, tekintse [meg a távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md).
+Előfordulhat, hogy egy adott hibaüzenetet kap, ha távoli asztali kapcsolatot használ egy Windows virtuális gép (VM) az Azure-ban. Ez a cikk a leggyakoribb hibaüzeneteket, valamint a megoldásukhoz szükséges hibaelhárítási lépéseket ismerteti. Ha problémái vannak a virtuális géphez az RDP használatával való csatlakozással, de nem talál konkrét hibaüzenetet, olvassa el a [Távoli asztal hibaelhárítási útmutatóját.](troubleshoot-rdp-connection.md)
 
-Az adott hibaüzenetekről a következő témakörben talál további információt:
+Az egyes hibaüzenetekkel kapcsolatos tudnivalókat az alábbi témakörben talál:
 
-* [A távoli munkamenet le lett választva, mert nincs elérhető távoli asztal licenckiszolgálóra a licenc biztosításához](#rdplicense).
-* [Távoli asztal nem találja a "Name" nevű számítógépet](#rdpname).
-* [Hitelesítési hiba történt. Nem lehet felvenni a kapcsolatot a helyi biztonsági szolgáltatóval](#rdpauth).
-* [Windows biztonsági hiba: a hitelesítő adatai nem működnek](#wincred).
-* [Ez a számítógép nem tud kapcsolódni a távoli számítógéphez](#rdpconnect).
+* [A távoli munkamenet le lett választva, mert nincs elérhető távoli asztali licenckiszolgáló a licenc biztosításához.](#rdplicense)
+* [A Távoli asztal nem találja a számítógép "nevét"](#rdpname).
+* [Hitelesítési hiba történt. A helyi biztonsági hatósággal nem lehet kapcsolatba lépni.](#rdpauth)
+* [Windows biztonsági hiba: A hitelesítő adatok nem működtek](#wincred).
+* [Ez a számítógép nem tud csatlakozni a távoli számítógéphez](#rdpconnect).
 
 <a id="rdplicense"></a>
 
-## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>A távoli munkamenet le lett választva, mert nincs elérhető Távoli asztal licenckiszolgálóra a licenc biztosításához.
-Ok: a Távoli asztal kiszolgálói szerepkör 120 napos licencelési türelmi időszaka lejárt, és licenceket kell telepítenie.
+## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>A távoli munkamenet lelett választva, mert nincs elérhető távoli asztali licenckiszolgáló a licenc biztosításához.
+Ok: A Távoli asztali kiszolgáló szerepkör 120 napos licencelési türelmi ideje lejárt, és licenceket kell telepítenie.
 
-Megkerülő megoldásként mentse az RDP-fájl egy helyi példányát a portálról, és futtassa ezt a parancsot egy PowerShell-parancssorból a kapcsolódáshoz. Ez a lépés letiltja a csak a következő kapcsolatok licencelését:
+Kerülő megoldásként mentse az RDP-fájl helyi példányát a portálról, és futtassa ezt a parancsot a PowerShell parancssorában a csatlakozáshoz. Ez a lépés csak a kapcsolat licencelését tiltja le:
 
         mstsc <File name>.RDP /admin
 
-Ha valójában nem szükséges több mint két egyidejű Távoli asztal kapcsolat a virtuális géppel, a Kiszolgálókezelő használatával távolíthatja el a Távoli asztal kiszolgálói szerepkört.
+Ha valójában nincs szüksége kettőnél több egyidejű távoli asztali kapcsolatra a virtuális géphez, a Kiszolgálókezelő segítségével eltávolíthatja a Távoli asztali kiszolgáló szerepkört.
 
-További információ: az Azure-beli [virtuális gép "nincs távoli asztal elérhető licenckiszolgálóra"](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)nevű blogbejegyzést.
+További információt az Azure [vm sikertelen " Nincs elérhető távoli asztali licenckiszolgálók" című blogbejegyzésben talál.](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)
 
 <a id="rdpname"></a>
 
-## <a name="remote-desktop-cant-find-the-computer-name"></a>Távoli asztal nem találja a "Name" nevű számítógépet.
-Ok: a számítógép Távoli asztal ügyfele nem tudja feloldani a számítógép nevét az RDP-fájl beállításaiban.
+## <a name="remote-desktop-cant-find-the-computer-name"></a>A Távoli asztal nem találja a számítógép "nevét".
+Ok: A számítógép Távoli asztali ügyfele nem tudja feloldani a számítógép nevét az RDP-fájl beállításaiban.
 
 Lehetséges megoldások:
 
-* Ha a szervezet intranetén található, győződjön meg arról, hogy a számítógépe rendelkezik hozzáféréssel a proxykiszolgálóhoz, és HTTPS-forgalmat tud küldeni a kiszolgálónak.
-* Ha helyileg tárolt RDP-fájlt használ, próbálja meg használni a portál által generált ilyet. Ez a lépés biztosítja, hogy a virtuális gép, illetve a felhőalapú szolgáltatás és a virtuális gép végpont-portjának helyes DNS-neve legyen. Íme egy példa a portál által generált RDP-fájlra:
+* Ha egy szervezet intranetjén van, győződjön meg arról, hogy a számítógép hozzáfér a proxykiszolgálóhoz, és https-forgalmat tud küldeni hozzá.
+* Ha helyileg tárolt RDP-fájlt használ, próbálja meg a portál által létrehozott fájlt használni. Ez a lépés biztosítja, hogy a megfelelő DNS-nevet a virtuális gép, vagy a felhőszolgáltatás és a virtuális gép végpontportja. Itt van egy minta RDP fájl által generált portál:
   
         full address:s:tailspin-azdatatier.cloudapp.net:55919
         prompt for credentials:i:1
 
-Az RDP-fájl címzési része a következő:
+Az RDP-fájl címrésze:
 
-* A virtuális gépet tartalmazó felhőalapú szolgáltatás teljes tartományneve (ebben a példában a "tailspin-azdatatier.cloudapp.net").
-* A végpont külső TCP-portja Távoli asztal forgalomhoz (55919).
+* A virtuális gép -t tartalmazó felhőszolgáltatás teljesen minősített tartományneve ("tailspin-azdatatier.cloudapp.net" ebben a példában).
+* A távoli asztali forgalom végpontjának külső TCP-portja (55919).
 
 <a id="rdpauth"></a>
 
-## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Hitelesítési hiba történt. Nem lehet felvenni a kapcsolatot a helyi biztonsági szolgáltatóval.
-Ok: a célként megadott virtuális gép nem találja a biztonsági szolgáltatót a hitelesítő adatok Felhasználónév részében.
+## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Hitelesítési hiba történt. A helyi biztonsági hatósággal nem lehet kapcsolatba lépni.
+Ok: A cél virtuális gép nem találja a biztonsági hatóság a hitelesítő adatok felhasználónév része.
 
-Ha a Felhasználónév a *SecurityAuthority* formában van\\*Felhasználónév* (például: Corp \ Felhasználó1), a *SecurityAuthority* része vagy a virtuális gép számítógépneve (a helyi biztonsági hatóság esetében) vagy egy Active Directory tartománynév.
+Ha a felhasználónév *securityauthority*\\*felhasználónév* (például CORP\User1) formában található, a *SecurityAuthority* rész vagy a virtuális gép számítógépneve (a helyi biztonsági hatóság számára) vagy egy Active Directory tartománynév.
 
 Lehetséges megoldások:
 
-* Ha a fiók helyi a virtuális gép számára, győződjön meg arról, hogy a virtuális gép neve helyesen van-e írva.
-* Ha a fiók egy Active Directory tartományban található, ellenőrizze a tartománynév helyesírását.
-* Ha Active Directory tartományi fiók, és a tartománynevet helyesen írta be, ellenőrizze, hogy a tartományvezérlő elérhető-e az adott tartományban. Ez egy gyakori probléma az Azure-beli virtuális hálózatokban, amelyek olyan tartományvezérlőket tartalmaznak, amelyekben a tartományvezérlő nem érhető el, mert nem indult el. Megkerülő megoldásként tartományi fiók helyett helyi rendszergazdai fiókot is használhat.
+* Ha a fiók helyi a virtuális gép, győződjön meg arról, hogy a virtuális gép neve helyesen van beírva.
+* Ha a fiók Active Directory-tartományban található, ellenőrizze a tartománynév helyesírását.
+* Ha Active Directory tartományi fiókról van szó, és a tartománynév helyesen van beírva, ellenőrizze, hogy van-e tartományvezérlő az adott tartományban. Gyakori probléma az Azure virtuális hálózatok, amelyek tartományvezérlők, hogy a tartományvezérlő nem érhető el, mert még nem indult el. Kerülő megoldásként tartományi fiók helyett helyi rendszergazdai fiókot is használhat.
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows biztonsági hiba: a hitelesítő adatai nem működnek.
-Ok: a célként megadott virtuális gép nem tudja érvényesíteni a fiók nevét és jelszavát.
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows biztonsági hiba: A hitelesítő adatok nem működtek.
+Ok: A cél virtuális gép nem tudja érvényesíteni a fiók nevét és jelszavát.
 
-A Windows-alapú számítógépek ellenőrizhetik egy helyi fiók vagy egy tartományi fiók hitelesítő adatait.
+A Windows-alapú számítógépek ellenőrizhetik a helyi vagy tartományi fiók hitelesítő adatait.
 
-* Helyi fiókok esetén használja a *számítógépnév*\\*Felhasználónév* szintaxisát (például: SQL1\Admin4798).
-* Tartományi fiókok esetén használja a *tartománynév*\\*Felhasználónév* szintaxisát (például: CONTOSO\peterodman).
+* Helyi fiókok esetén használja a *ComputerName*\\*UserName* szintaxist (példa: SQL1\Admin4798).
+* Tartományi fiókok esetén használja a *DomainName*\\*UserName* szintaxist (példa: CONTOSO\peterodman).
 
-Ha előléptette a virtuális gépet egy új Active Directory erdőben lévő tartományvezérlőre, akkor a szolgáltatásba bejelentkezett helyi rendszergazdai fiók az új erdőben és tartományban ugyanazzal a jelszóval egyenértékű fiókba lesz konvertálva. Ekkor a helyi fiók törlődik.
+Ha a virtuális gép egy tartományvezérlő egy új Active Directory erdőben, a helyi rendszergazdai fiók, amely bejelentkezett, egy egyenértékű fiókot ugyanazzal a jelszóval az új erdő és a tartomány. A helyi fiók ezután törlődik.
 
-Ha például bejelentkezett a helyi fiók DC1\DCAdmin, majd előléptette a virtuális gépet tartományvezérlőként egy új erdőben a corp.contoso.com tartományhoz, a DC1\DCAdmin helyi fiókja törölve lesz, és egy új tartományi fiók (CORP\DCAdmin) ugyanazzal a jelszóval lett létrehozva.
+Ha például a DC1\DCAdmin helyi fiókkal jelentkezett be, majd a virtuális gépet tartományvezérlőként léptette elő a corp.contoso.com tartomány új erdőjében, a DC1\DCAdmin helyi fiók törlődik, és egy új tartományi fiók (CORP\DCAdmin) ugyanazzal a jelszóval jön létre.
 
-Győződjön meg arról, hogy a fiók neve olyan név, amelyet a virtuális gép érvényes fiókként tud ellenőrizni, és a jelszó helyes.
+Győződjön meg arról, hogy a fióknév olyan név, amelyet a virtuális gép érvényes fiókként ellenőrizhet, és hogy a jelszó helyes.Make sure that the account name is a name that the virtual machine can verify as a valid account, and that the password is correct.
 
-Ha módosítania kell a helyi rendszergazdai fiók jelszavát, tekintse meg a [jelszó alaphelyzetbe állítása vagy a távoli asztal szolgáltatás használata Windows rendszerű virtuális gépekhez](reset-rdp.md)című témakört.
+Ha módosítania kell a helyi rendszergazdai fiók jelszavát, olvassa [el a Jelszó alaphelyzetbe állítása vagy a Windows virtuális gépek Távoli asztal szolgáltatása című témakört.](reset-rdp.md)
 
 <a id="rdpconnect"></a>
 
-## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Ez a számítógép nem tud kapcsolódni a távoli számítógéphez.
-Ok: a kapcsolódáshoz használt fiók nem rendelkezik Távoli asztal bejelentkezési jogosultságokkal.
+## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Ez a számítógép nem tud csatlakozni a távoli számítógéphez.
+Ok: A csatlakozáshoz használt fiók nem rendelkezik távoli asztali bejelentkezési jogokkal.
 
-Minden Windows-számítógép rendelkezik egy Távoli asztal felhasználó helyi csoporttal, amely tartalmazza azokat a fiókokat és csoportokat, amelyek távolról is bejelentkezhetnek. A helyi Rendszergazdák csoport tagjai is hozzáférhetnek, bár ezek a fiókok nem szerepelnek a Távoli asztal felhasználók helyi csoportjában. Tartományhoz csatlakozó gépek esetén a helyi Rendszergazdák csoport a tartományhoz tartozó tartományi rendszergazdákat is tartalmazza.
+Minden Windows-számítógépen van egy Helyi távoli asztali felhasználó csoport, amely azokat a fiókokat és csoportokat tartalmazza, amelyek távolról jelentkezhetnek be. A helyi rendszergazdák csoport tagjai is rendelkeznek hozzáféréssel, még akkor is, ha ezek a fiókok nem szerepelnek a Távoli asztal felhasználói helyi csoportban. Tartományhoz csatlakozó gépek esetén a helyi rendszergazdák csoport a tartomány rendszergazdáit is tartalmazza.
 
-Győződjön meg arról, hogy a kapcsolódáshoz használt fiók Távoli asztal bejelentkezési jogosultságokkal rendelkezik. Megkerülő megoldásként használjon egy tartományi vagy helyi rendszergazdai fiókot Távoli asztalhoz való kapcsolódáshoz. Ha a kívánt fiókot hozzá szeretné adni a Távoli asztal felhasználók helyi csoportjához, használja a Microsoft Management Console beépülő modult (**Rendszereszközök > helyi felhasználók és csoportok > csoportok > Távoli asztal felhasználók**).
+Győződjön meg arról, hogy a fiók, amelyet a csatlakozáshoz használ, rendelkezik távoli asztali bejelentkezési jogokkal. Kerülő megoldásként használjon tartományi vagy helyi rendszergazdai fiókot a Távoli asztalon keresztüli csatlakozáshoz. A kívánt fiók hozzáadásához használja a Microsoft Management Console beépülő modult (**Rendszereszközök > helyi felhasználók és csoportok > csoportok > Távoli asztali felhasználók )** beépülő modult.
 
-## <a name="next-steps"></a>Következő lépések
-Ha a hibák egyike sem fordult elő, és az RDP-vel való kapcsolódással kapcsolatban ismeretlen probléma merült fel, tekintse meg a [Távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>További lépések
+Ha a hibák egyike sem történt, és ismeretlen probléma merült fel az RDP használatával való csatlakozással kapcsolatban, olvassa el a [Távoli asztal hibaelhárítási útmutatóját.](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-* A virtuális gépen futó alkalmazások elérésével kapcsolatos hibaelhárítási lépéseket lásd: az Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Ha a Secure Shell (SSH) segítségével csatlakozik egy Linux rendszerű virtuális géphez az Azure-ban, tekintse meg az [SSH-kapcsolatok hibaelhárítása Az Azure-ban linuxos virtuális géppel](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című témakört.
+* A virtuális gépeken futó alkalmazások elérésének hibaelhárítási lépéseit az [Azure virtuális gépeken futó alkalmazások hozzáférése hibaelhárítása](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című témakörben található.
+* Ha problémái vannak a Secure Shell (SSH) használatával egy Linux-alapú virtuális géphez való csatlakozáshoz az Azure-ban, olvassa [el az SSH-kapcsolatok hibaelhárítása linuxos virtuális géphez az Azure-ban című témakört.](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

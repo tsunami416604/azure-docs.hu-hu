@@ -1,177 +1,123 @@
 ---
-title: Az AI-bővítés bemutatása
+title: Bevezetés a a ai-dúsításba
 titleSuffix: Azure Cognitive Search
-description: Tartalom kinyerése, természetes nyelvi feldolgozás (NLP) és képfeldolgozás, kereshető tartalom létrehozása az Azure-ban Cognitive Search a kognitív képességek és AI-algoritmusok használatával.
+description: A tartalomkinyerés, a természetes nyelvi feldolgozás (NLP) és a képfeldolgozás segítségével kereshető tartalmat hozhat létre az Azure Cognitive Search indexekben előre definiált kognitív képességekkel és egyéni AI-algoritmusokkal.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 0a4dd3247a9931de3ae2c699bdf7800407695c86
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.date: 03/24/2020
+ms.openlocfilehash: a41dcc9c7ec86f41c64a69ea1aba762b960b2633
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080213"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283021"
 ---
-# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Az AI bemutatása az Azure-ban Cognitive Search
+# <a name="getting-started-with-ai-enrichment"></a>A ai-dúsítás első lépései
 
-Az AI-bővítés az Azure Cognitive Search a képekből, blobokból és egyéb strukturálatlan adatforrásokból származó szöveg kinyerésére szolgáló funkciója – a tartalom gazdagítása, hogy azok kereshetőek legyenek egy indexben vagy egy Tudásbázisban. A kinyerést és a dúsítást az indexelési folyamathoz csatolt *kognitív képességek* valósítják meg. A szolgáltatásba beépített kognitív képességek a következő kategóriákba sorolhatók: 
+Az AI-bővítés az Azure Cognitive Search indexelésének egyik képessége, amely a képek, blobok és más strukturálatlan adatforrások szövegeinek kinyerésére szolgál. A gazdagítás és a kitermelés teszi a tartalmat kereshetőbbé egy [indexben](search-what-is-an-index.md) vagy [tudástárolóban.](knowledge-store-concept-intro.md) A kibontás és a dúsítás az indexelési folyamathoz kapcsolódó *kognitív képességek* használatával valósul meg. A szolgáltatásba beépített kognitív képességek a következő kategóriákba tartoznak: 
 
-+ A **természetes nyelvi feldolgozási** képességek közé tartozik az [entitások felismerése](cognitive-search-skill-entity-recognition.md), a [nyelvfelismerés](cognitive-search-skill-language-detection.md), a [kulcsfontosságú kifejezés kinyerése](cognitive-search-skill-keyphrases.md), a szöveg-manipuláció, [a felismerések](cognitive-search-skill-pii-detection.md) [észlelése](cognitive-search-skill-sentiment.md)és a személyre Ezekkel a képességekkel a strukturálatlan szöveg feltételezheti, hogy az indexben kereshető és szűrhető mezőkként leképezett új űrlapok is megadhatók.
++ **A természetes nyelvi feldolgozási** készségek közé tartozik [az entitásfelismerés, a](cognitive-search-skill-entity-recognition.md) [nyelvfelismerés,](cognitive-search-skill-language-detection.md) [a kulcskifejezések kinyerése,](cognitive-search-skill-keyphrases.md)a szövegkezelés, [a hangulatészlelés](cognitive-search-skill-sentiment.md)és [a személyazonosításra használt személy azonosítása.](cognitive-search-skill-pii-detection.md) Ezekkel a képességekkel a strukturálatlan szöveg kereshető és szűrhető mezőkként van leképezve az indexben.
 
-+ A **képfeldolgozási** képességek közé tartozik az [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és a [vizuális funkciók](cognitive-search-skill-image-analysis.md)azonosítása, például az arc észlelése, a képek értelmezése, a képfelismerés (a híres személyek és tereptárgyak) vagy az olyan attribútumok, mint például a képek tájolása. Az Azure Cognitive Search összes lekérdezési funkciójának használatával szöveget hozhat létre a képtartalom ábrázolásával.
++ **A képfeldolgozási** készségek közé tartozik [az optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és a [vizuális jellemzők](cognitive-search-skill-image-analysis.md)azonosítása, például arcfelismerés, képértelmezés, képfelismerés (híres emberek és tereptárgyak) vagy olyan jellemzők, mint a képtájolás. Ezek a képességek szöveges ábrázolásokat hoznak létre a képtartalomról, így az Azure Cognitive Search lekérdezési képességeinek használatával kereshető.
 
-![Dúsítási folyamat diagramja](./media/cognitive-search-intro/cogsearch-architecture.png "a dúsítási folyamat áttekintése")
+![Dúsítási folyamat diagramja](./media/cognitive-search-intro/cogsearch-architecture.png "dúsítási folyamat – áttekintés")
 
-Az Azure Cognitive Search kognitív képességei az előre betanított gépi tanulási modelleken alapulnak Cognitive Services API-k: [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) és [text Analysis](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
+Az Azure Cognitive Search kognitív képességei a Cognitive Services API-k előre betanított gépi tanulási modelljein alapulnak: [számítógépes látás](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) és [szövegelemzés.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 
 
-A természetes nyelv és a képfeldolgozás az adatfeldolgozási fázisban történik, és az eredmények egy dokumentum összeállításának részévé válnak az Azure Cognitive Search kereshető indexében. Az adatforrások Azure-adatkészletként vannak kialakítva, majd egy indexelési folyamaton keresztül leküldve, amely a szükséges [beépített képességekkel](cognitive-search-predefined-skills.md) rendelkezik. Az architektúra bővíthető, így ha a beépített képességek nem elegendőek, létrehozhat és csatolhat [Egyéni képességeket](cognitive-search-create-custom-skill-example.md) az egyéni feldolgozás integrálásához. Ilyenek például a pénzügy, a tudományos publikációk vagy az orvostudomány egy adott tartományhoz tartozó egyéni entitás-modul vagy dokumentum-osztályozó.
+A természetes nyelvi és képfeldolgozási a rendszer az adatbetöltési fázisban kerül alkalmazásra, és az eredmények a dokumentum összetételének részévé válnak az Azure Cognitive Search kereshető indexében. Az adatok forrása Egy Azure-adatkészlet, majd egy indexelési folyamaton keresztül, akívánt [beépített képességek](cognitive-search-predefined-skills.md) van szüksége. Az architektúra bővíthető, így ha a beépített szakértelem nem elegendőek, létrehozhat és csatolhat [egyéni képességeket](cognitive-search-create-custom-skill-example.md) az egyéni feldolgozás integrálásához. Ilyen lehet például egy egyéni entitásmodul vagy dokumentumosztályozó, amely egy adott területet, például a pénzügyeket, a tudományos publikációkat vagy az orvostudományt célozza meg.
 
-> [!NOTE]
-> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
->
-> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+## <a name="when-to-use-ai-enrichment"></a>Mikor kell használni az AI-dúsítást?
 
-## <a name="when-to-use-cognitive-skills"></a>Mikor kell használni a kognitív képességeket
+Érdemes érdemes a beépített kognitív képességek, ha a nyers tartalom strukturálatlan szöveg, képtartalom, vagy a tartalom, amely nyelvi felismerés és fordítás szükséges. A a mi alkalmazása a beépített kognitív képességek segítségével feloldhatja ezt a tartalmat, növelve annak értékét és hasznosságát a keresési és adatelemzési alkalmazásokban. 
 
-Érdemes megfontolni a beépített kognitív ismeretek használatát, ha a nyers tartalma strukturálatlan szöveg, képtartalom vagy olyan tartalom, amely nyelvi észlelést és fordítást igényel. Ha a mesterséges intelligenciát a beépített kognitív ismeretek használatával szeretné feloldani, a keresési és adatelemzési alkalmazásaiban megnövelheti a tartalmat, és növelheti annak értékét és hasznosságát. 
+Emellett érdemes lehet egy egyéni szakértelem hozzáadása, ha nyílt forráskódú, harmadik féltől származó vagy külső kódot szeretne integrálni a folyamatba. A különböző dokumentumtípusok jelentős jellemzőit azonosító besorolási modellek ebbe a kategóriába tartoznak, de minden olyan csomag, amely hozzáadott értéket ad a tartalomhoz, használható.
 
-Emellett érdemes lehet egyéni képességet is felvennie, ha olyan nyílt forráskódú, harmadik féltől származó vagy első féltől származó kóddal rendelkezik, amelyet be szeretne építeni a folyamatba. A különböző dokumentumtípusok kiugró jellemzőit azonosító besorolási modellek ebbe a kategóriába tartoznak, de a tartalomhoz hozzáadott csomagok is felhasználhatók.
+### <a name="more-about-built-in-skills"></a>További információk a beépített készségekről
 
-### <a name="more-about-built-in-skills"></a>További információ a beépített képességekről
+A beépített képességek használatával összeállított [skillset](cognitive-search-defining-skillset.md) a következő alkalmazási forgatókönyvekhez megfelelő:
 
-A beépített képességekkel összeállított készségkészlet jól illeszkedik a következő alkalmazási forgatókönyvekhez:
++ A teljes szöveget kereshetővé tenni kívánt beolvasott dokumentumok (JPEG). Optikai karakterfelismerő (OCR) szakértelem csatolásával azonosíthatja, kinyerheti és beláthatja a JPEG-fájlokszövegét.
 
-+ A teljes szöveges keresést végezni kívánó beolvasott dokumentumok (JPEG). A JPEG-fájlok szövegének azonosításához, kinyeréséhez és betöltéséhez egy optikai karakterfelismerési (OCR) képességet is csatolhat.
++ PDF-fájlok kombinált képpel és szöveggel. A PDF-dokumentumokban lévő szöveg az indexelés során dúsítási lépések használata nélkül is kinyerhető, de a kép és a természetes nyelvi feldolgozás hozzáadása gyakran jobb eredményt eredményez, mint amit a szabványos indexelés biztosít.
 
-+ Kombinált képpel és szöveggel rendelkező PDF-fájlok. A PDF-fájlokban lévő szöveg kinyerhető az indexelés során a dúsítási lépések használata nélkül, de a képek és a természetes nyelvi feldolgozás hozzáadása gyakran jobb eredményt eredményezhet, mint a szabványos indexelés.
++ Többnyelvű tartalom, amelyre nyelvfelismerést és esetleg szövegfordítást szeretne alkalmazni.
 
-+ Többnyelvű tartalom, amelyre alkalmazni kívánja a nyelvi észlelést és a szöveges fordítást.
++ Strukturálatlan vagy félig strukturált dokumentumok, amelyek olyan tartalmat tartalmaznak, amelynek rejtett jelentése vagy környezete el van rejtve a nagyobb dokumentumban. 
 
-+ Strukturálatlan vagy részben strukturált dokumentumok, amelyek olyan tartalmat tartalmaznak, amely a nagyobb dokumentumban rejtett jelentéssel vagy kontextussal rendelkezik. 
+  A blobok gyakran tartalmaznak nagy mennyiségű tartalmat, amely egyetlen "mezőbe" van csomagolva. Ha kép- és természetes nyelvi feldolgozási készségeket csatol egy indexelőhöz, olyan új információkat hozhat létre, amelyek a nyers tartalomban vannak, de más módon nem kerülnek külön mezőként. Néhány használatra kész beépített kognitív képességek, amelyek segíthetnek: kulcskifejezések kinyerése, hangulatelemzés és entitásfelismerés (személyek, szervezetek és helyek).
 
-  A Blobok különösen gyakran tartalmaznak egy olyan nagy méretű tartalmat, amely egyetlen "mező"be van csomagolva. Ha rendszerképeket és természetes nyelvi feldolgozási képességeket csatol egy indexelő alkalmazáshoz, létrehozhat olyan új adatokat, amelyek a nyers tartalomban is fennmaradnak, de másképp nem különálló mezőkként. Néhány használatra kész, beépített kognitív képesség, amely segítséget nyújt a kulcsfontosságú kifejezés kinyeréséhez, a hangulat elemzéséhez és az entitások felismeréséhez (személyek, szervezetek és helyszínek).
+  Ezenkívül a beépített szakértelem szövegfelosztással, egyesítési és alakzatműveletekkel is használható a tartalom átstrukturálása révén.
 
-  Emellett a beépített készségek is használhatók a tartalom átstrukturálása a szöveg felosztása, egyesítése és alakja műveletekkel.
+### <a name="more-about-custom-skills"></a>További információk az egyéni készségekről
 
-### <a name="more-about-custom-skills"></a>További információ az egyéni képességekről
-
-Az egyéni képességek olyan összetettebb forgatókönyveket is támogatnak, mint például az űrlapok felismerése vagy az egyéni entitások észlelése az Ön által megadott és az [Egyéni szakértelem webes felületén](cognitive-search-custom-skill-interface.md)beburkolt modell használatával. Az egyéni képességek számos példája például az [űrlap-felismerő](/azure/cognitive-services/form-recognizer/overview), a [Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)integrációja és az [egyéni entitások felismerése](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Az egyéni képességek összetettebb forgatókönyveket is támogathatnak, például az űrlapok felismerését vagy az egyéni entitásészlelést az [egyéni szakértelem webes felületén](cognitive-search-custom-skill-interface.md)megadott és körbefolyatott modell használatával. Az egyéni képességek közé tartozik az [Űrlapfelismerő](/azure/cognitive-services/form-recognizer/overview), a [Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)integrációja és az egyéni [entitásfelismerés](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
 
-## <a name="components-of-an-enrichment-pipeline"></a>A dúsítási folyamat összetevői
+## <a name="steps-in-an-enrichment-pipeline"></a>A dúsítási folyamat lépései
 
-A dúsítási folyamat olyan [*Indexelő*](search-indexer-overview.md) eszközökön alapul, amelyek az adatforrásokat térképezik fel, és a végpontok közötti index feldolgozását biztosítják. A szaktudás mostantól az indexelő anyagokhoz van csatolva, a dokumentumok elfogása és gazdagítása az Ön által meghatározott készségkészlet szerint. Az indexelés után az [Azure Cognitive Search által támogatott összes lekérdezési típuson](search-query-overview.md)keresztül érheti el a tartalmat.  Ha még nem ismeri az indexeket, ez a szakasz végigvezeti a lépéseken.
+A dúsítási folyamat [*indexelőkön*](search-indexer-overview.md)alapul. Az indexelők az index és a dokumentumfeltörés adatforrása közötti mező-mező leképezések alapján feltöltenek egy indexet. Skills, most csatolt indexelők, elfogása és gazdagítják dokumentumok szerint a skillset (ek) határozza meg. Az indexelést követően az Azure Cognitive Search által támogatott összes [lekérdezéstípuson](search-query-overview.md)keresztül érheti el a tartalmat.  Ha most az indexelők, ez a szakasz végigvezeti a lépéseket.
 
-### <a name="step-1-connection-and-document-cracking-phase"></a>1\. lépés: a kapcsolatok és a dokumentumok repedésének fázisa
+### <a name="step-1-connection-and-document-cracking-phase"></a>1. lépés: A be- és kirepedési fázis
 
-A folyamat elején strukturálatlan szöveggel vagy nem szöveges tartalommal (például kép és beolvasott dokumentum JPEG-fájlok) rendelkezik. Az adattáraknak olyan Azure-beli adattárolási szolgáltatásban kell lenniük, amely egy indexelő segítségével érhető el. Az indexelő "kiváló" forrás dokumentumokat gyűjthetnek a forrásadatokből származó szöveg kinyeréséhez.
+A folyamat kezdetén strukturálatlan szöveg vagy nem szöveges tartalom (például képek, beolvasott dokumentumok vagy JPEG-fájlok) található. Az adatoknak létezniük kell egy olyan Azure-adattárolási szolgáltatásban, amelyet egy indexelő érhet el. Az indexelők "feltörhetik" a forrásdokumentumokat, hogy szöveget nyerjenek ki a forrásadatokból. A dokumentumfeltörés az a folyamat, amelynek során nem szöveges forrásokból szövegtartalmat lehet kinyerni vagy létrehozni az indexelés során.
 
-![A dokumentum repedésének fázisa](./media/cognitive-search-intro/document-cracking-phase-blowup.png "a dokumentum repedése")
+![Dokumentum feltörési fázis](./media/cognitive-search-intro/document-cracking-phase-blowup.png "dokumentum feltörése")
 
- A támogatott források közé tartozik az Azure Blob Storage, az Azure Table Storage, a Azure SQL Database és az Azure Cosmos DB. A szöveges tartalmat a következő fájltípusokból lehet kinyerni: PDF-fájlok, Word-, PowerPoint-és CSV-fájlok. A teljes listát lásd: [támogatott formátumok](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
+ A támogatott források közé tartozik az Azure blob storage, az Azure table storage, az Azure SQL Database és az Azure Cosmos DB. A szövegalapú tartalom a következő fájltípusokból nyerhető ki: PDF-fájlok, Word, PowerPoint, CSV-fájlok. A teljes listát a [Támogatott formátumok című témakörben található.](search-howto-indexing-azure-blob-storage.md#supported-document-formats) Az indexelés időt vesz igénybe, ezért kezdje egy kis, reprezentatív adatkészlettel, majd a megoldás érlelődésével fokozatosan.
 
-### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>2\. lépés: a kognitív képességek és a gazdagodás fázisa
+### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>2. lépés: Kognitív készségek és gazdagodási fázis
 
-A gazdagodás az atomi műveleteket végző *kognitív képességeken* keresztül történik. Ha például egy PDF-fájlból szöveges tartalmat használ, alkalmazhatja az entitás-felismerési nyelvfelismerés vagy a fő kifejezés kinyerése lehetőséget, hogy az indexben olyan új mezőket hozzon létre, amelyek nem érhetők el natív módon a forrásban. A folyamat során használt szaktudás gyűjteményét teljes egészében *készségkészlet*nevezzük.  
+A dúsítást *kognitív képességekkel* végezzük, atomi műveleteket végezve. Ha például feltört egy PDF-dokumentumot, entitásfelismerést, nyelvfelismerést vagy kulcskifejezés-kinyerést alkalmazhat olyan új mezők létrehozásához az indexben, amelyek nem érhetők el natív módon a forrásban. A folyamatban használt készségek gyűjteményét összesen *skillsetnek nevezzük.*  
 
 ![Dúsítási fázis](./media/cognitive-search-intro/enrichment-phase-blowup.png "dúsítási fázis")
 
-A készségkészlet a [beépített kognitív képességek](cognitive-search-predefined-skills.md) vagy az Ön által biztosított [egyéni képességek](cognitive-search-create-custom-skill-example.md) , valamint a készségkészlet való kapcsolódás alapján történik. A készségkészlet minimális vagy nagyon összetett lehet, és nem csak a feldolgozás típusát, hanem a műveletek sorrendjét is meghatározhatja. A készségkészlet és az indexelő részeként definiált mező-hozzárendelések teljes mértékben a dúsítási folyamatot határozzák meg. További információ ezekről a darabokról: [Készségkészlet definiálása](cognitive-search-defining-skillset.md).
+A skillset alapul [beépített kognitív képességek](cognitive-search-predefined-skills.md) vagy egyéni [képességek](cognitive-search-create-custom-skill-example.md) ön által biztosított, és csatlakozzon a skillset. A skillset lehet minimális vagy nagyon összetett, és nem csak a feldolgozás típusát határozza meg, hanem a műveletek sorrendjét is. A skillset, valamint az indexelő részeként definiált mezőleképezések teljes mértékben meghatározza a dúsítási folyamatot. Az összes darab összehúzásáról további információt a [Skillset definiálása](cognitive-search-defining-skillset.md)című témakörben talál.
 
-Belsőleg a folyamat gazdagított dokumentumok gyűjteményét hozza létre. Eldöntheti, hogy a bővített dokumentumok mely részeit kell leképezni a keresési index indexelhető mezőihez. Ha például alkalmazotta a fő kifejezéseket és az entitás-felismerési képességeket, akkor ezek az új mezők a dúsított dokumentum részévé válnak, és az index mezőire képezhetők le. A bemeneti/kimeneti formációkkal kapcsolatos további tudnivalókért tekintse meg a [megjegyzéseket](cognitive-search-concept-annotations-syntax.md) .
+Belsőleg a folyamat bővített dokumentumok gyűjteményét hozza létre. Eldöntheti, hogy a bővített dokumentumok mely részei legyenek leképezve a keresési index indexindexindexindexében indexelhető mezőkhöz. Ha például a kulcsmondat-kinyerést és az entitásfelismerési készségeket alkalmazta, ezek az új mezők a bővített dokumentum részévé válnak, és az index mezőihez rendelhetők hozzá. A [bemeneti/kimeneti formációkról](cognitive-search-concept-annotations-syntax.md) további információt a Jegyzetek című témakörben olvashat.
 
-#### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>KnowledgeStore elem hozzáadása a dúsítások mentéséhez
+#### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Tudástároló elem hozzáadása a dúsítások mentéséhez
 
-[Keresési REST API-Version = 2019-05 -06 – az előzetes verzió](search-api-preview.md) kibővíti a szakértelmével-t egy olyan `knowledgeStore`-definícióval, amely egy Azure Storage-kapcsolattal és-vetítéssel foglalkozik, amely leírja a dúsítások tárolási módját. 
+[Search REST api-version=2019-05-06-Preview](search-api-preview.md) kiterjeszti skillsets egy `knowledgeStore` definíciót, amely egy Azure storage-kapcsolat és előrejelzések, amelyek leírják, hogyan tárolja a dúsítások. Ez az indexen kívül van. Egy szabványos AI-folyamatban a bővített dokumentumok átmenetiek, csak indexelés során használatosak, majd elvetik őket. A tudástárolóval a bővített dokumentumok megőrződnek. További információ: [Tudástároló (előzetes verzió)](knowledge-store-concept-intro.md).
 
-Ha egy tudásbázist ad hozzá egy készségkészlet, lehetővé teszi a teljes szöveges kereséstől eltérő forgatókönyvek megjelenítését a bővítések számára. További információ: [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md).
+### <a name="step-3-search-index-and-query-based-access"></a>3. lépés: Keresési index és lekérdezésalapú hozzáférés
 
-### <a name="step-3-search-index-and-query-based-access"></a>3\. lépés: a keresési index és a lekérdezésen alapuló hozzáférés
+Amikor a feldolgozás befejeződött, rendelkezik egy bővített dokumentumokból álló keresési indexszel, amely teljes mértékben kereshető az Azure Cognitive Search-ben. [Az index lekérdezése az,](search-query-overview.md) hogy a fejlesztők és a felhasználók hogyan férhetnek hozzá a folyamat által létrehozott bővített tartalomhoz. 
 
-A feldolgozás befejezésekor egy olyan keresési index található, amely az Azure Cognitive Searchban teljes mértékben kereshető dokumentumokból áll. [Az index lekérdezése](search-query-overview.md) , hogy a fejlesztők és a felhasználók hogyan érhetik el a folyamat által generált dúsított tartalmat. 
+![Index kereséssel ikonnal](./media/cognitive-search-intro/search-phase-blowup.png "Index kereséssel ikonnal")
 
-![Index keresési ikonnal](./media/cognitive-search-intro/search-phase-blowup.png "Index keresési ikonnal")
+Az index olyan, mint bármely más, amelyet az Azure Cognitive Search számára hozhat létre: kiegészítheti az egyéni elemzőkkel, intelligens keresési lekérdezéseket hívhat meg, szűrt keresést adhat hozzá, vagy kísérletezhet a pontozási profilokkal a keresési eredmények átformálásához.
 
-Az index olyan, mint bármely más, amelyet az Azure Cognitive Search hoz létre: kiegészítheti az egyéni elemzőket, a fuzzy keresési lekérdezések meghívását, a szűrt keresés hozzáadását, illetve a keresési eredmények átalakítására szolgáló pontozási profilokkal való kísérletezést.
+Az indexek egy indexsémából jönnek létre, amely meghatározza egy adott indexhez kapcsolódó mezőket, attribútumokat és egyéb konstrukciókat, például a pontozási profilokat és a szinonimaleképezéseket. Az index definiálása és feltöltése után az új és frissített forrásdokumentumok felvételéhez fokozatosan indexelheti. Bizonyos módosítások teljes újraépítést igényelnek. Egy kis adatkészletet kell használnia, amíg a sématerv stabil nem lesz. A további tudnivalókért lásd az [indexek újraépítését](search-howto-reindex.md) ismertető cikket.
 
-Az indexek olyan index-sémából jönnek létre, amely meghatározza az adott indexhez csatolt mezőket, attribútumokat és egyéb szerkezeteket, például a pontozási profilokat és a szinonimákat. Az indexek definiálása és feltöltése után a rendszer növekményes módon indexelheti az új és a frissített forrásdokumentum-dokumentumokat. Bizonyos módosítások teljes újraépítést igényelnek. Kis adatkészletet kell használnia, amíg a séma kialakítása nem stabil. A további tudnivalókért lásd az [indexek újraépítését](search-howto-reindex.md) ismertető cikket.
+**Feladatlista: Tipikus munkafolyamat**
 
-<a name="feature-concepts"></a>
+1. Az Azure-forrásadatok részhalmaza egy reprezentatív mintába. Az indexelés időt vesz igénybe, ezért kezdje egy kis, reprezentatív adatkészlettel, majd a megoldás érlelődésével fokozatosan.
 
-## <a name="key-features-and-concepts"></a>A legfontosabb jellemzők és fogalmak
+1. Hozzon létre egy [adatforrás-objektumot](https://docs.microsoft.com/rest/api/searchservice/create-data-source) az Azure Cognitive Search szolgáltatásban, hogy az adatok lekéréséhez kapcsolati karakterláncot biztosítson.
 
-| Fogalom | Leírás| Hivatkozások |
-|---------|------------|-------|
-| Készségkészlet | A legfelső szintű névvel ellátott erőforrás, amely a szaktudás gyűjteményét tartalmazza. A készségkészlet a dúsítási folyamat. Egy indexelő indexelése során hívja meg. | Lásd: [Készségkészlet megadása](cognitive-search-defining-skillset.md) |
-| Kognitív képességek | Egy dúsítási folyamat atomi átalakítása. Gyakran előfordul, hogy egy olyan összetevő, amely kinyeri vagy kikövetkezteti a struktúrát, így fokozza a bemeneti adatok megértését. Szinte minden esetben a kimenet Text-alapú, a feldolgozás pedig természetes nyelvi feldolgozás vagy képfeldolgozás, amely a képbemenetek szövegét kinyeri vagy hozza létre. A szaktudás kimenete egy index egy mezőjéhez rendelhető hozzá, vagy az alsóbb rétegbeli dúsítás bemenetként használható. A szaktudás előre definiált és a Microsoft által biztosított, vagy egyéni: Ön által létrehozott és telepített. | [Beépített kognitív képességek](cognitive-search-predefined-skills.md) |
-| Adatok kinyerése | A feldolgozás széles körét fedi le, de az AI-bővítésre is vonatkozik, az entitás-felismerési képesség általában az adatok (entitások) olyan forrásból való kinyerésére szolgál, amely nem biztosítja az adott információt natív módon. | Lásd: [entitás-felismerési szakértelem](cognitive-search-skill-entity-recognition.md) és [dokumentum-kinyerési képesség (előzetes verzió)](cognitive-search-skill-document-extraction.md)| 
-| Képfeldolgozás | Kikövetkezteti a szöveget egy képből, például felismerhetővé teszi a tereptárgyak felismerését vagy szöveg kinyerését egy képből. Gyakori példák a beolvasott dokumentumokból (JPEG-fájlokból) származó karakterek feloldására szolgáló OCR-t, illetve az utca nevének felismerését egy utcai aláírást tartalmazó fényképen. | Lásd: [képelemzési szakértelem](cognitive-search-skill-image-analysis.md) vagy [OCR-képesség](cognitive-search-skill-ocr.md)
-| Természetes nyelvek feldolgozása | Szöveg-feldolgozás a szöveges bemenetekkel kapcsolatos információkhoz és adatokhoz. A nyelvfelismerés, a hangulat elemzése és a kulcsfontosságú kifejezés kinyerése a természetes nyelvi feldolgozás alá eső képességek.  | Lásd: [kulcsszókeresés skill](cognitive-search-skill-keyphrases.md), [nyelvfelismerés skill](cognitive-search-skill-language-detection.md), [szöveg fordítási készség](cognitive-search-skill-text-translation.md), [Hangulatelemzés készség](cognitive-search-skill-sentiment.md), személyre vonatkozó [észlelési képesség (előzetes verzió)](cognitive-search-skill-pii-detection.md) |
-| a dokumentum repedése | Szöveges tartalom kinyerésének vagy létrehozásának folyamata a nem szöveges forrásokból az indexelés során. Az optikai karakterfelismerés (OCR) egy példa, de általában az alapszintű indexelő funkcióra hivatkozik, mivel az indexelő Kinyeri a tartalmat az alkalmazás fájljaiból. A forrásfájl helyét biztosító adatforrás és az indexelő definíciója, amely a mezők leképezéseit biztosítja, a dokumentumok repedésének kulcsfontosságú tényezői. | Lásd: [Indexelő – áttekintés](search-indexer-overview.md) |
-| Alakításában | Összevonhatja a szöveges töredékeket egy nagyobb struktúrába, vagy megfordíthatja a nagyobb szöveges adattömböket egy kezelhető méretre a további alsóbb rétegbeli feldolgozás érdekében. | Lásd: [formáló képesség](cognitive-search-skill-shaper.md), [szöveges egyesítési szakértelem](cognitive-search-skill-textmerger.md), [szöveg felosztása](cognitive-search-skill-textsplit.md) készség |
-| Dúsított dokumentumok | Egy átmeneti belső struktúra, amely a feldolgozás során keletkezik, és a végső kimenet egy keresési indexben jelenik meg. A készségkészlet határozza meg, hogy mely dúsítások vannak elvégezve. A mező-hozzárendelések határozzák meg, hogy mely adatelemek legyenek hozzáadva az indexhez. Ha szeretné, létrehozhat egy tudásbázist, amellyel megőrizheti és felderítheti a dúsított dokumentumokat olyan eszközökkel, mint a Storage Explorer, a Power BI vagy bármely más eszköz, amely az Azure Blob Storage-hoz csatlakozik. | Lásd: [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md) |
-| Indexelő |  Egy webbejáró, amely Kinyeri a kereshető adatokat és metaadatokat egy külső adatforrásból, és feltölti az indexet az index és az adatforrása közötti mező-mező leképezések alapján. Az AI-bővítésekhez az indexelő meghívja a készségkészlet, és tartalmazza azokat a mező-hozzárendeléseket, amelyek a dúsítási kimenetet társítják az index mezőihez. Az indexelő definíciója a feldolgozási műveletek összes utasítását és hivatkozását tartalmazza, a folyamat pedig az indexelő futtatásakor lesz meghívva. A további beállításokkal újra felhasználhatja a meglévő feldolgozott tartalmakat, és csak a megváltoztatott lépéseket és képességeket hajthatja végre. | Lásd: [Indexelő](search-indexer-overview.md) és [növekményes bővítés (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md). |
-| Adatforrás  | Az indexelő által az Azure-ban támogatott típusok külső adatforráshoz való kapcsolódásra használt objektum. | Lásd: [Indexelő – áttekintés](search-indexer-overview.md) |
-| Index | Egy megőrzött keresési index az Azure Cognitive Searchban, amely egy olyan index-sémából épül, amely meghatározza a mező szerkezetét és használatát. | Lásd: [alapszintű index létrehozása](search-what-is-an-index.md) | 
-| Tudástár | Olyan Storage-fiók, amelyben a keresési indexen kívül a dúsított dokumentumok formázható és kiterjeszthetők | Lásd: [a Knowledge Store bemutatása](knowledge-store-concept-intro.md) | 
-| Gyorsítótár | Egy olyan Storage-fiók, amely egy dúsítási folyamat által létrehozott gyorsítótárazott kimenetet tartalmaz. A gyorsítótár engedélyezése megőrzi a meglévő kimenetet, amelyet a készségkészlet vagy a dúsítási folyamat más összetevőinek módosításai nem érintenek. | Lásd: [növekményes dúsítás](cognitive-search-incremental-indexing-conceptual.md) | 
+1. Hozzon létre egy [skillset](https://docs.microsoft.com/rest/api/searchservice/create-skillset) gazdagítási lépéseket.
 
-<a name="where-do-i-start"></a>
+1. Adja meg az [indexsémát](https://docs.microsoft.com/rest/api/searchservice/create-index). A *Mezők* gyűjtemény a forrásadatokból származó mezőket tartalmaz. További mezőket is ki kell tolnia a dúsítás során létrehozott tartalom hozadékának tárolására.
 
-## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá?
+1. Adja meg az adatforrásra, a skillsetre és az indexre hivatkozó [indexelőt.](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 
-**1. lépés: [Azure Cognitive Search-erőforrás létrehozása](search-create-service-portal.md)** 
+1. Az indexelőn belül adja hozzá az *outputFieldMappings értéket.* Ez a szakasz leképezi a skillset kimenetét (3. lépésben) az indexséma bemeneti mezőihez (a 4. lépésben).
 
-**2. lépés: próbálja ki néhány rövid útmutatót és példát a gyakorlati tapasztalatokra**
+1. Küldje *létre az indexelő létrehozása* kérelmet az imént létrehozott (egy POST-kérelem egy indexelő definícióval a kérelem törzsében) az indexelő kifejezésére az Azure Cognitive Search. Ez a lépés az indexelő futtatásának módját, a folyamat meghívását.
 
-+ [Gyors útmutató (portál)](cognitive-search-quickstart-blob.md)
-+ [Oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)
-+ [Példa: egyéni képesség létrehozása AI-dúsításhoz (C#)](cognitive-search-create-custom-skill-example.md)
+1. Lekérdezések futtatásával kiértékelheti az eredményeket, és módosíthatja a kódot a skillsets, séma vagy indexelő konfigurációjának frissítéséhez.
 
-Javasoljuk, hogy az ingyenes szolgáltatás tanulási célokra legyen elérhető, azonban az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha többször szeretné futtatni a leckéket, törölje, majd hozza létre újra az indexelő, hogy nullára állítsa vissza a számlálót.
+1. [Állítsa alaphelyzetbe az indexelőt](search-howto-reindex.md) a folyamat újraépítése előtt.
 
-**3. lépés: az API áttekintése**
+## <a name="next-steps"></a>További lépések
 
-A REST `api-version=2019-05-06` a kéréseken vagy a .NET SDK-ban is használható. Ha a Knowledge Store-t vizsgálja, használja helyette az előzetes verziójú REST API (`api-version=2019-05-06-Preview`).
-
-Ez a lépés a REST API-kkal hozza létre az AI-gazdagító megoldást. Az AI-bővítéshez csak két API van hozzáadva vagy kibővítve. Más API-k ugyanazzal a szintaxissal rendelkeznek, mint az általánosan elérhető verziók.
-
-| REST API | Leírás |
-|-----|-------------|
-| [Adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Egy olyan erőforrás, amely egy külső adatforrást azonosít, amely a dúsított dokumentumok létrehozásához használt forrásadatokat biztosít.  |
-| [Készségkészlet létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Ez az API kifejezetten az AI-bővítésre vonatkozik. Ez egy olyan erőforrás, amely összehangolja a [beépített készségek](cognitive-search-predefined-skills.md) használatát és a dúsítási folyamat során használt [Egyéni kognitív képességeket](cognitive-search-custom-skill-interface.md) az indexelés során. |
-| [Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Egy Azure Cognitive Search indexet kifejező séma. Az indexben található mezők a forrásadatok mezőire vagy a dúsítási fázisban előállított mezőkre (például az entitások felismerése által létrehozott szervezeti nevekre vonatkozó mezőre) vonatkoznak. |
-| [Indexelő létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Az indexelés során használt összetevőket meghatározó erőforrás: beleértve az adatforrást, a készségkészlet, a forrás-és a közbenső adatstruktúrákat a célként megadott indexbe, valamint magát az indexet. Az indexelő futtatása az adatfeldolgozáshoz és a dúsításhoz használt trigger. A kimenet egy olyan keresési index, amely az index sémán alapul, és a forrásadatok alapján van feltöltve, és a szakértelmével-n keresztül dúsított. Ez a meglévő API a készségkészlet tulajdonság bevonásával kognitív keresési helyzetekben bővíthető. |
-
-**Ellenőrzőlista: egy tipikus munkafolyamat**
-
-1. Az Azure-forrásadatok részhalmaza egy reprezentatív mintának. Az indexelés időt vesz igénybe, hogy egy kisebb, reprezentatív adatkészletet hozzon létre, majd fokozatosan felépítse a megoldás idejére.
-
-1. Hozzon létre egy [adatforrás-objektumot](https://docs.microsoft.com/rest/api/searchservice/create-data-source) az Azure Cognitive Searchban, és adjon meg egy kapcsolódási karakterláncot az adatok lekéréséhez.
-
-1. Hozzon létre egy [készségkészlet](https://docs.microsoft.com/rest/api/searchservice/create-skillset) a gazdagodás lépéseivel.
-
-1. Adja meg az [index sémát](https://docs.microsoft.com/rest/api/searchservice/create-index). A *mezők* gyűjteménye mezőket tartalmaz a forrásadatokből. Emellett további mezőket kell kimutatnia, amelyekkel megtarthatja a gazdagodás során létrehozott tartalomhoz generált értékeket.
-
-1. Az adatforrásra, a készségkészlet és az indexre hivatkozó [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-skillset) definiálása.
-
-1. Az indexelő alkalmazásban adja hozzá a *outputFieldMappings*. Ez a szakasz a készségkészlet (a 3. lépésben) lévő kimeneteket a tárgymutató sémájának bemenet mezőibe (a 4. lépésben) képezi le.
-
-1. Küldje el az imént létrehozott *Indexer* -kérést (egy post-kérést a kérelem törzsében lévő indexelő definícióval), hogy kifejezze az indexelő az Azure Cognitive Searchban. Ez a lépés az indexelő futtatásának módja, a folyamat meghívása.
-
-1. Lekérdezések futtatása az eredmények kiértékeléséhez és a kód módosítása a szakértelmével, a séma vagy az indexelő konfigurációjának frissítéséhez.
-
-1. Az [Indexelő alaphelyzetbe állítása](search-howto-reindex.md) a folyamat újraépítése előtt.
-
-További információ az adott kérdésekről vagy problémákról: [hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md).
-
-## <a name="next-steps"></a>Következő lépések
-
-+ [AI-gazdagító dokumentációs hivatkozások](cognitive-search-resources-documentation.md)
-+ [Gyors útmutató: az AI-gazdagítás kipróbálása egy portálon](cognitive-search-quickstart-blob.md)
-+ [Oktatóanyag: az AI-gazdagító API-k megismerése](cognitive-search-tutorial-blob.md)
-+ [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md)
-+ [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-create-rest.md)
++ [AI dúsítási dokumentációs hivatkozások](cognitive-search-resources-documentation.md)
++ [Példa: Egyéni szakértelem létrehozása a ai-bővítéshez (C#)](cognitive-search-create-custom-skill-example.md)
++ [Rövid útmutató: Próbálja ki a ai-dúsítást egy portál-útmutatóban](cognitive-search-quickstart-blob.md)
++ [Oktatóanyag: Ismerje meg az AI gazdagítási API-kat](cognitive-search-tutorial-blob.md)
++ [Tudástároló (előzetes verzió)](knowledge-store-concept-intro.md)
++ [Tudástároló létrehozása a REST-ben](knowledge-store-create-rest.md)
++ [Hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md)

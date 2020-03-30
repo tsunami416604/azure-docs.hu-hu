@@ -1,54 +1,53 @@
 ---
-title: Standard szintű szerződés | Azure
-description: Standard szintű szerződés az Azure Marketplace és a AppSource számára
-services: Azure, Marketplace, Compute, Storage, Networking
-author: ChJenk
+title: Általános szerződés | Azure
+description: Általános szerződés az Azure Piactérhez és az AppSource-hoz
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: v-chjen
-ms.openlocfilehash: dc8edf2b6e4a1204e7edd515da9323896049eb13
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: dsindona
+ms.openlocfilehash: 00a83a1b3005043f317ed49cafa735540cd21793
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228214"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284959"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
+# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piacterének általános szerződése
 
-Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft szabványos szerződést biztosít a Microsoft kereskedelmi piactérről, hogy segítse a tranzakciók megkönnyítése a piactéren. Az egyéni használati feltételek és kikötések elvégzése helyett a kereskedelmi piactér-közzétevők dönthetnek úgy, hogy a standard szintű szerződés keretében kínálják a szoftvereket, amelyeket csak egyszer kell bemutatni és elfogadni. A standard szintű szerződés itt található: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
+Az ügyfelek beszerzési folyamatának egyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft a Microsoft kereskedelmi piacterére vonatkozó általános szerződést kínál a tranzakciók megkönnyítése érdekében a piacon. Ahelyett, hogy egyedi feltételeket gyártanának, a kereskedelmi piactér kiadói dönthetnek úgy, hogy az Általános Szerződés alapján kínálják szoftvereiket, amelyet az ügyfeleknek csak egyszer kell ellenőrizniük és elfogadniuk. Az alapszerződés itt található: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
 
-Az ajánlat feltételei és kikötései az ajánlat a partner Centerben vagy a Cloud Partner Portal való létrehozásakor vannak meghatározva. Kiválaszthatja, hogy a szokásos szerződést használja a Microsoft kereskedelmi piactérre, és nem adja meg saját használati feltételeit.
-
->[!Note]
->Miután közzétette az ajánlatot a Microsoft kereskedelmi piactér standard szerződésével, nem használhatja a saját használati feltételeit. Ez egy "vagy" forgatókönyv. A megoldást a standard szerződés *vagy* a saját használati feltételei alapján ajánljuk fel. Ha módosítani szeretné a standard szintű szerződés feltételeit, ezt a standard szintű szerződés módosításain keresztül teheti meg.
-
-## <a name="standard-contract-amendments"></a>Standard szintű szerződés módosításai
-
-A standard szintű szerződés módosításai lehetővé teszik a kiadók számára, hogy az egyszerűség kedvéért standard szerződést válasszanak, a termékük vagy a vállalatuk testreszabott feltételeivel. Az ügyfeleknek csak akkor kell áttekinteniük a szerződés módosításait, ha már áttekintették és elfogadták a Microsoft standard szerződést.
-
-A kereskedelmi piactér-közzétevők számára két fajta módosítás érhető el:
-
-* Univerzális módosítások: ezeket a módosításokat a rendszer univerzálisan alkalmazza az összes ügyfélre vonatkozó standard szerződésre. Az univerzális módosítások az ajánlat minden ügyfelének a vásárlás folyamatában jelennek meg. Az ügyfeleknek el kell fogadniuk a standard szerződés és a módosítás feltételeit, mielőtt felhasználhatják az ajánlatot.
-
-* Egyéni módosítások: ezek a módosítások a standard szerződés speciális módosításai, amelyek csak az Azure-bérlői azonosítók használatával vannak megcélozva az egyes ügyfelekre. A kiadók kiválaszthatják, hogy melyik bérlőt szeretnék megcélozni. Az ajánlat vásárlási folyamatában csak a bérlő ügyfelei jelennek meg az egyéni módosítási feltételekkel.  Az ügyfeleknek el kell fogadniuk a standard szerződés feltételeit és a módosítás (oka) t, mielőtt felhasználhatják az ajánlatot.
+Az ajánlat feltételeit a Partnerközpontban vagy a Felhőpartneri portálon való létrehozáskor határozzák meg. Választhat, hogy a Microsoft kereskedelmi piactér általános szerződését használja ahelyett, hogy saját egyéni feltételeket biztosítana.
 
 >[!Note]
->Ez a két típusú módosítás egymásra épül. Az egyéni módosításokkal rendelkező ügyfelek a vásárlás során általános módosítást is kapnak a standard szerződéshez.
+>Miután közzétett egy ajánlatot a Microsoft kereskedelmi piactér általános szerződésével, nem használhatja a saját egyéni szerződéseit. Ez egy "vagy" forgatókönyv. Vagy a Standard Szerződés, *vagy* a saját szerződési feltételek alapján kínálja a megoldást. Ha módosítani szeretné az Általános Szerződés feltételeit, ezt a Szerződés általános módosításai révén teheti meg.
 
-A Microsoft kereskedelmi piactér standard szerződését a következő típusú ajánlatokra használhatja: Azure-alkalmazások (megoldás-sablonok és felügyelt alkalmazások), Virtual Machines, tárolók, tároló alkalmazások, IoT Edge modulok és SaaS .
+## <a name="standard-contract-amendments"></a>Általános szerződésmódosítások
+
+Az általános szerződésmódosítások lehetővé teszik a kiadók számára, hogy az egyszerűség kedvéért és a termékükre vagy vállalkozásukra szabott feltételekkel válasszák ki az általános szerződést. Az ügyfeleknek csak akkor kell áttekinteniük a szerződés módosításait, ha már felülvizsgálták és elfogadták a Microsoft általános szerződését.
+
+A kereskedelmi piactér kiadói számára kétféle módosítás érhető el:
+
+* Univerzális módosítások: Ezek a módosítások általánosan alkalmazzák az általános szerződés minden ügyfél számára. Az univerzális módosításokat az ajánlat minden ügyfele számára bemutatják a beszerzési folyamatban. Az ügyfeleknek el kell fogadniuk az Általános Szerződés feltételeit és a módosítást, mielőtt felhasználhatnák az ajánlatot.
+
+* Egyéni módosítások: Ezek a módosítások a standard szerződés speciális módosításai, amelyek csak az Azure-beli bérlői azonosítókon keresztül irányulnak bizonyos ügyfelekre. A közzétevők kiválaszthatják a megcélozni kívánt bérlőt. Csak a bérlői ügyfelek kapnak egyéni módosítási feltételeket az ajánlat beszerzési folyamatában.  Az ügyfeleknek el kell fogadniuk az Általános Szerződés feltételeit és a módosítás(oka)t, mielőtt felhasználhatják az ajánlatot.
+
+>[!Note]
+>Ez a két típusú módosítások verem egymásra. Az egyéni módosításokkal megcélzott ügyfelek a vásárlás során az Általános Szerződés általános módosítását is megkapják.
+
+A Microsoft kereskedelmi piacterének standard szerződését a következő ajánlattípusokhoz használhatja: Azure-alkalmazások (megoldássablonok és felügyelt alkalmazások), virtuális gépek, tárolók, tárolóalkalmazások, IoT edge-modulok és SaaS .
 
 ## <a name="customer-experience"></a>Felhasználói élmény
 
-Az Azure Marketplace-en vagy AppSource észlelt felderítési élményben az ügyfelek az ajánlathoz tartozó feltételeket a Microsoft kereskedelmi piactér standard szerződésének és bármely egyetemes módosításnak megfelelően láthatják.
+Az Azure piactéren vagy az AppSource-ban a felderítési élmény során az ügyfelek láthatják az ajánlathoz társított feltételeket a Microsoft kereskedelmi piactér általános szerződésként és az általános módosításokat.
 
-![A Azure Portal ügyfél-felderítési élmény.](media/marketplace-publishers-guide/azure-discovery-process.png)
+![Az Azure Portal ügyfélfelderítési élmény.](media/marketplace-publishers-guide/azure-discovery-process.png)
 
-A Azure Portal vásárlási folyamata során az ügyfelek megtekinthetik az ajánlathoz tartozó feltételeket a Microsoft kereskedelmi piactér standard szerződése, valamint az univerzális és/vagy bérlők által meghatározott módosítások esetében.
+Az Azure Portalon a vásárlási folyamat során az ügyfelek láthatják az ajánlathoz társított feltételeket, mint a Microsoft kereskedelmi piactér általános szerződését, valamint az általános és/vagy bérlőspecifikus módosításokat.
 
-![A Azure Portal ügyfél-vásárlási élmény.](media/marketplace-publishers-guide/azure-purchase-process.png)
+![Az Azure Portal ügyfélvásárlási élménye.](media/marketplace-publishers-guide/azure-purchase-process.png)
 
 ## <a name="api"></a>API
 
-Az ügyfelek a Get-AzureRmMarketplaceTerms használatával lekérhetik az ajánlatok feltételeit, és elfogadják azt. A standard szerződést és a kapcsolódó módosításokat a rendszer a parancsmag kimenetében adja vissza.
+Az ügyfelek a Get-AzureRmMarketplaceTerms használatával lekérhetik az ajánlat feltételeit, és elfogadhatják azt. Az általános szerződés és a kapcsolódó módosítások a parancsmag kimenetében kerülnek visszaadásra.

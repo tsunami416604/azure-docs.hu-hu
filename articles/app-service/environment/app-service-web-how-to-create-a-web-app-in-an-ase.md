@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás létrehozása a bemutató v1-ben
-description: Ismerje meg, hogyan hozhat létre webalkalmazásokat egy App Service Environment v1-ben. Ez a dokumentum csak az örökölt v1-es szolgáltatót használó ügyfelek számára van megadva.
+title: Webalkalmazás létrehozása az ASE 1-es v1-es ében
+description: Ismerje meg, hogyan hozhat létre webalkalmazásokat az App Service-környezet 1-es alkalmazásában. Ez a dokumentum csak az örökölt v1 ASE-t használó ügyfelek számára érhető el.
 author: ccompy
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.topic: article
@@ -8,88 +8,88 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266194"
 ---
-# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Webalkalmazás létrehozása App Service Environment v1-ben
+# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Webalkalmazás létrehozása az App Service-környezet 1-es alkalmazásában
 
 > [!NOTE]
-> Ez a cikk a App Service Environment v1-es verzióról szól.  A App Service Environment újabb verziója könnyebben használható, és nagyobb teljesítményű infrastruktúrán fut. Ha többet szeretne megtudni az új verzióról, kezdje a [app Service Environment bevezetésével](intro.md).
+> Ez a cikk az App Service-környezet 1-es v1-es programjáról szól.  Az App Service-környezet egy újabb verziója könnyebben használható, és hatékonyabb infrastruktúrán fut. Ha többet szeretne megtudni az új verzió kezdődik az [App Service-környezet bemutatása](intro.md).
 > 
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag bemutatja, hogyan hozhat létre webalkalmazásokat és App Service terveket egy [app Service Environment v1](app-service-app-service-environment-intro.md) -ben. 
+Ez az oktatóanyag bemutatja, hogyan hozhat létre webalkalmazásokat és App Service-csomagokat egy [App Service-környezet v1](app-service-app-service-environment-intro.md) (ASE) alkalmazásban. 
 
 > [!NOTE]
-> Ha szeretné megismerni, hogyan hozhat létre egy webalkalmazást, de nem kell megtennie egy App Service Environmentban, tekintse meg a [.net-Webalkalmazás létrehozása](../app-service-web-get-started-dotnet.md) vagy az egyéb nyelvekhez és keretrendszerekhez kapcsolódó oktatóanyagokat ismertető témakört.
+> Ha meg szeretné tudni, hogyan hozhat létre webalkalmazást, de nem kell azt egy App Service-környezetben megtennie, olvassa [el a .NET webalkalmazás létrehozása](../app-service-web-get-started-dotnet.md) vagy más nyelvekhez és keretrendszerekhez kapcsolódó oktatóanyagok egyikének című témakört.
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. Ha még nem tette meg, tekintse meg [az App Service Environment létrehozását](app-service-web-how-to-create-an-app-service-environment.md)ismertető témakört. 
+Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service-környezetet. Ha még nem tette meg, olvassa el [az App Service-környezet létrehozása című témakört.](app-service-web-how-to-create-an-app-service-environment.md) 
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-1. Az [Azure Portalon](https://portal.azure.com/)kattintson az **erőforrás létrehozása > Web és mobil > webalkalmazás**elemre. 
+1. Az [Azure Portalon](https://portal.azure.com/)kattintson az **Erőforrás létrehozása > Web + Mobile > Web App**elemre. 
    
     ![][1]
 2. Válassza ki előfizetését.  
    
-    Ha több előfizetéssel is rendelkezik, akkor a környezet létrehozásakor használt előfizetést kell használnia, hogy létrehozzon egy alkalmazást a App Service Environmentban. 
+    Ha több előfizetéssel is rendelkezik, vegye figyelembe, hogy az Alkalmazásszolgáltatás-környezetben egy alkalmazás létrehozásához ugyanazt az előfizetést kell használnia, amelyet a környezet létrehozásakor használt. 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
    
-    Az *erőforráscsoportok* lehetővé teszik a kapcsolódó Azure-erőforrások egységként való kezelését, és hasznosak lehetnek az alkalmazások *szerepköralapú hozzáférés-vezérlési* (RBAC) szabályainak létrehozásakor. További információk: [Azure Resource Manager overview][ResourceGroups] (Az Azure Resource Manager áttekintése). 
+    *Az erőforráscsoportok* lehetővé teszik a kapcsolódó Azure-erőforrások egységként történő kezelését, és hasznosak az alkalmazások *szerepköralapú hozzáférés-vezérlési* (RBAC) szabályainak létrehozásakor. További információk: [Azure Resource Manager overview][ResourceGroups] (Az Azure Resource Manager áttekintése). 
 4. Válassza ki vagy hozzon létre egy App Service-csomagot.
    
-    A *app Service csomagok* a webalkalmazások felügyelt készletei.  Általában a díjszabás kiválasztásakor a díjat az egyes alkalmazások helyett a App Servicei csomagra kell alkalmazni. Egy olyan előfizetésben, amelyet a központhoz rendelt számítási példányok kell fizetnie, és nem az ASP-vel megjelenő.  A webalkalmazások példányai számának vertikális felskálázásához felskálázást végez a App Service terv példányain, és az adott csomagban található összes webalkalmazásra hatással van.  Bizonyos funkciók, például a tárolóhelyek vagy a VNET-integráció a csomagon belül mennyiségi korlátozásokkal is rendelkeznek.  További információ: [Azure app Service csomagok áttekintése](../overview-hosting-plans.md)
+    *Az App Service-csomagok* webalkalmazások felügyelt készletei.  Általában az árképzés kiválasztásakor a felszámított ár az App Service-csomagra vonatkozik, nem pedig az egyes alkalmazásokra. Egy ASE fizet a számítási példányok az ASE helyett, amit az ASP-ben felsorolt.  Egy webalkalmazás példányainak számának skálázására skálázhatja az App Service-csomag példányait, és hatással van az adott csomagösszes webalkalmazásra.  Egyes funkciók, például a helytárolóhelyek vagy a Virtuálishálózat-integráció is mennyiségi korlátozásokat tartalmaznak a terven belül.  További információ: [Azure App Service-csomagok – áttekintés](../overview-hosting-plans.md)
    
-    A szolgáltató App Service-csomagjait a csomag neve alatt megjelenő helyen tekintheti meg.  
+    Az App Service-csomagok az ASE-ben a terv neve alatt feljegyzett hely megtekintésével.  
    
     ![][5]
    
-    Ha olyan App Service csomagot szeretne használni, amely már létezik a App Service Environmentban, válassza ki ezt a csomagot. Ha új App Service csomagot szeretne létrehozni, tekintse meg az oktatóanyag következő szakaszát, és [hozzon létre egy app Service tervet egy app Service Environmentban](#createplan).
-5. Adja meg a webalkalmazás nevét, majd kattintson a **Létrehozás**gombra. 
+    Ha olyan App Service-csomagot szeretne használni, amely már létezik az App Service-környezetben, válassza ki azt a csomagot. Ha új App Service-csomagot szeretne létrehozni, tekintse meg az oktatóanyag következő szakaszát, az [App Service-csomag létrehozása appszolgáltatási környezetben című témakört.](#createplan)
+5. Írja be a webalkalmazás nevét, majd kattintson a **Létrehozás gombra.** 
    
-    Ha a kiegészítő szolgáltatás külső virtuális IP-címet használ, akkor a rendszer a (z) [*sitename*]-t használja az alkalmazás URL-címére. [*a app Service Environment neve*]. p.azurewebsites.net helyett a (z) [*sitename*]. azurewebsites.net
+    Ha az ASE külső VIP-t használ, az ASE-ben lévő alkalmazás URL-címe: [*sitename*]. [*az App Service-környezet neve*]. p.azurewebsites.net a [*helynév*helyett ].azurewebsites.net
    
-    Ha a bemutató belső virtuális IP-címet használ, akkor az alkalmazás URL-címe a (z) [*sitename*]. [a beléptetési*létrehozás során megadott altartomány*]   
-    Miután kiválasztotta az ASP-t a központilag történő létrehozás során, látni fogja **az alábbi** altartomány-frissítést.
+    Ha az ASE belső VIP-t használ, akkor az adott ASE-ben lévő alkalmazás URL-címe: [*sitename*]. [*az ASE létrehozása során megadott altartomány*]   
+    Miután kiválasztotta az ASP-t az ASE létrehozása során, látni fogja az altartomány frissítését a **Név alatt**
 
-## <a name="createplan"></a>App Service terv létrehozása
-Ha egy App Service Environment App Service csomagot hoz létre, a feldolgozói döntések eltérőek, mivel nincsenek megosztott feldolgozók egy központba.  Azokat a munkavégzőket kell használni, amelyeket a rendszergazda a szolgáltatóhoz rendelt.  Ez azt jelenti, hogy új csomag létrehozásához több dolgozót kell kiosztania a bedolgozói készletben, mint az összes, az adott munkaterületen már meglévő csomag példányainak száma.  Ha nem rendelkezik elegendő feldolgozóval a csomag létrehozásához, akkor hozzá kell dolgoznia a beadásával a beszerzéshez.
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a>App Szolgáltatási csomag létrehozása
+Amikor egy App Service-csomagot hoz létre egy App Service-környezetben, a dolgozói lehetőségek eltérőek, mivel nincsenek megosztott dolgozók az ASE-ben.  A dolgozók, amelyeket használnia kell azok, amelyeket az admin az ASE számára kiosztott.  Ez azt jelenti, hogy egy új terv létrehozásához több dolgozót kell hozzárendelni az ASE munkavégző készletéhez, mint a példányok száma az összes már az adott munkavégző készletben lévő összes tervben.  Ha nincs elég dolgozó az ASE munkavégző készletben a terv létrehozásához, az ASE-rendszergazdával együtt kell dolgoznia a hozzáadott.
 
-Egy másik különbség a App Service Environment által üzemeltetett App Service-csomagokkal kapcsolatban a díjszabás hiánya.  Ha van App Service Environment, akkor a rendszer által használt számítási erőforrásokért kell fizetnie, és nem számítunk fel díjat az adott környezetben lévő csomagokhoz.  Általában Amikor létrehoz egy App Service tervet, ki kell választania egy díjszabási tervet, amely meghatározza a számlázást.  Az App Service Environment lényegében egy privát hely, ahol tartalmat hozhat létre.  A környezetért kell fizetnie, és nem kell a tartalmat üzemeltetni.
+Egy másik különbség az App Service-környezet által üzemeltetett App Service-csomagokkal az árképzési kiválasztás hiánya.  Ha egy App Service-környezetben fizet a rendszer által használt számítási erőforrások, és nem rendelkezik hozzáadott díjakat a tervek ebben a környezetben.  Általában, amikor létrehoz egy App Service-csomagot, kiválaszt egy díjszabási csomagot, amely meghatározza a számlázást.  Az App Service-környezet lényegében egy privát hely, ahol tartalmat hozhat létre.  Ön fizet a környezetért, és nem a fogadó a tartalmat.
 
-Az alábbi utasítások bemutatják, hogyan hozhat létre egy App Service tervet a webalkalmazások létrehozásakor az oktatóanyag előző szakaszában leírtak szerint.
+Az alábbi utasítások bemutatják, hogyan hozhat létre egy App Service-csomagot egy webalkalmazás létrehozása közben, ahogy azt az oktatóanyag előző szakaszában ismerteti.
 
-1. Kattintson az **új létrehozása** lehetőségre a terv kiválasztása felhasználói felületen, és adjon meg egy nevet a csomagnak ugyanúgy, ahogy azt a Központon kívüli szokásos módon tenné.
-2. Válassza ki azt a beadási szolgáltatót, amelyet a hely választójában szeretne használni.
+1. Kattintson az **Új létrehozása gombra** a tervkijelölési felhasználói felületen, és adja meg a terv nevét, ugyanúgy, ahogy az ASE-n kívül szokott.
+2. Válassza ki a használni kívánt ASE-t a helyválasztóból.
    
-    Mivel az App Service Environment lényegében egy privát telepítési hely, az a hely területen jelenik meg. 
+    Mivel az App Service-környezet lényegében egy privát központi telepítési hely, a Hely csoportban jelenik meg. 
    
     ![][2]
    
-    Miután kiválasztotta a beléptetést a hely választójában, a App Service tervezze meg a felhasználói felület frissítéseit.  A hely ekkor megjeleníti a beszállítói rendszer és a régió nevét, és a díjszabási csomagot a feldolgozó készlet választója váltja fel.  
+    Miután kiválasztott egy ASE a helyválasztó, az App Service-csomag létrehozása felhasználói felület frissítések.  A hely most az ASE-rendszer és a régió nevét jeleníti meg, és az árképzési terv választóját egy feldolgozókészlet-választó váltja fel.  
    
     ![][3]
 
-### <a name="selecting-a-worker-pool"></a>Munkavégző készlet kiválasztása
-Általában a App Service Environment Azure App Service és azon kívül 3 számítási méret áll rendelkezésre, amely egy dedikált díjcsomag kiválasztásával érhető el.  A beadáshoz hasonló módon legfeljebb 3 készletet határozhat meg, és meghatározhatja a munkavégző készlethez használt számítási méretet.  Ez azt jelenti, hogy a beadási csomag bérlői számára a számítási mérettel rendelkező díjszabási csomag kiválasztása helyett a App Service a *munkavégző készletnek*kell kiválasztania.  
+### <a name="selecting-a-worker-pool"></a>Dolgozókészlet kiválasztása
+Általában az Azure App Service-ben és egy App Service-környezeten kívül 3 számítási méret érhető el egy dedikált árcsomag kiválasztásával.  Hasonló módon egy ASE legfeljebb 3 feldolgozói készletet határozhat meg, és megadhatja az adott munkavégző készlethez használt számítási méretet.  Ez azt jelenti, hogy az ASE bérlői számára az, hogy ahelyett, hogy az App Service-csomag számítási méretével rendelkező díjszabási csomagot választana ki, kiválaszthatja az úgynevezett *feldolgozókészletet.*  
 
-A Worker Pool kiválasztási felhasználói felülete az adott feldolgozó készlethez használt számítási méretet jeleníti meg a név alatt.  A rendelkezésre álló mennyiség arra utal, hogy hány számítási példány használható a készletben.  Előfordulhat, hogy a teljes készletnek több példánya is van ennél a számnál, de ez az érték azt jelenti, hogy a nem használatos.  Ha módosítania kell a App Service Environment további számítási erőforrások hozzáadására, tekintse [meg a app Service Environment konfigurálását](app-service-web-configure-an-app-service-environment.md)ismertető témakört.
+A dolgozói készlet kiválasztása felhasználói felületen az adott munkavégző készlethez használt számítási méret látható a név alatt.  A rendelkezésre álló mennyiség arra utal, hogy hány számítási példány használható az adott készletben.  Előfordulhat, hogy a teljes készletnek több példánya van, mint ennek a számnak, de ez az érték egyszerűen arra utal, hogy hány nincs használatban.  Ha módosítania kell az App Service-környezetet további számítási erőforrások hozzáadásához, olvassa [el az App Service-környezet konfigurálása](app-service-web-configure-an-app-service-environment.md)című témakört.
 
 ![][4]
 
-Ebben a példában csak két munkavégző készlet érhető el. Ennek oka, hogy a szolgáltatói rendszergazda csak a két munkavégző készletbe foglalt gazdagépeket.  A harmadik akkor jelenik meg, ha virtuális gépek vannak lefoglalva.  
+Ebben a példában csak két munkavégző készlet érhető el. Ennek az az oka, hogy az ASE-rendszergazda csak a két feldolgozókészlethez rendelt állomásokat.  A harmadik akkor jelenik meg, ha vannak virtuális gépek hozzárendelt.  
 
 ## <a name="after-web-app-creation"></a>A webalkalmazás létrehozása után
-A webalkalmazások futtatására és a App Service csomagok egy olyan központba való felügyeletére van szükség, amelyet figyelembe kell venni.  
+Van néhány szempont a webalkalmazások futtatásához és az App Service-csomagok kezeléséhez egy ASE-ben, amelyeket figyelembe kell venni.  
 
-Amint azt korábban említettük, a szolgáltató tulajdonosa felelős a rendszer méretétől, és ennek eredményeképpen a felelősek annak biztosításáért is, hogy elegendő kapacitás áll rendelkezésre a kívánt App Service csomagok üzemeltetéséhez. Ha nincsenek elérhető feldolgozók, nem hozhatja létre a App Service tervet.  Ez a webalkalmazás skálázására is igaz.  Ha több példányra van szüksége, akkor további feldolgozók hozzáadásához a App Service Environment rendszergazdájának kell megszereznie.
+Amint azt korábban említettük, az ASE tulajdonosa felelős a rendszer méretéért, és ennek eredményeképpen ők is felelősek annak biztosításáért, hogy elegendő kapacitás álljon rendelkezésre a kívánt App Service-csomagok üzemeltetéséhez. Ha nincsenek elérhető dolgozók, nem fogja tudni létrehozni az App Service-csomagot.  Ez a webalkalmazás skálázása is igaz.  Ha több példányra van szüksége, akkor az App Service-környezet rendszergazdáját kell beszereznie további dolgozók hozzáadásához.
 
-A webalkalmazás létrehozása és a App Service megtervezése után érdemes felskálázást készíteni.  A beadásban mindig legalább két példánynak kell lennie a App Service terve, hogy hibatűrést biztosítson az alkalmazásai számára.  A App Service-csomag egy beosztásban való skálázása megegyezik a App Service terv felhasználói felületén található normál értékkel.  További információ a méretezésről [: webalkalmazás](app-service-web-scale-a-web-app-in-an-app-service-environment.md) skálázása app Service Environment
+A webalkalmazás és az App Service-csomag létrehozása után célszerű felskálázni.  Egy ASE mindig szükség van legalább 2 példánya az App Service-csomag hibatűrést az alkalmazások.  Az App Service-csomag méretezése egy ASE-ben megegyezik az App Service-csomag felhasználói felületén a szokásos módon.  További információ a méretezésről, [webalkalmazások méretezése App Service-környezetben](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 
 <!--Image references-->
 [1]: ./media/app-service-web-how-to-create-a-web-app-in-an-ase/createaspnewwebapp.png

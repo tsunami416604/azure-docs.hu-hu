@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250984"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Microsoft Azure Media Services (AMS) lehetővé teszi különböző videó- és hangtartalmak biztonságos feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő streamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
 Az AMS világszerte számos adatközpontban működik. Ezek az adatközpontok földrajzi régiók szerint vannak csoportosítva, ami kellő mozgásteret biztosít az alkalmazások létrehozási helyének megválasztásához. [A régiók és a kapcsolódó helyek listáját itt](https://azure.microsoft.com/regions/) tekintheti meg. 
 
-Ez a témakör a tartalmak [élő](#live_scenarios) vagy igény szerinti továbbításának általános forgatókönyveit mutatja be. Ez a témakör a médiafunkciók és szolgáltatások adatközpontok közötti rendelkezésre állásáról is részleteket nyújt.
+Ez a témakör a tartalom élő vagy [igény](#live_scenarios) szerinti kézbesítésének gyakori forgatókönyveit mutatja be. Ez a témakör a médiafunkciók és szolgáltatások adatközpontok közötti rendelkezésre állásáról is részleteket nyújt.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -104,7 +104,7 @@ Az adatközpontokban lévő rendelkezésre állásról információért lásd a 
     Az SAS-kereső használata esetén a tartalmat az Azure-blobtárolóból lehet letölteni. Ebben az esetben nincs szükség elindított állapotú streamvégpontokra.
 4. Töltse le fokozatosan a tartalmat.
 
-## <a id="live_scenarios"></a>Események élő közvetítése 
+## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>Események élő közvetítése 
 
 1. Élő tartalmakat dolgozhat fel különböző élő streamelési protokollok (például RTMP vagy Smooth Streaming) használatával.
 2. A streamet adaptív sávszélességűvé kódolhatja (opcionális).
@@ -143,7 +143,7 @@ Az Azure Media Services biztosította eszközökkel részletes, dinamikus ügyf�
 
 A Media Services támogatja az Azure CDN-integrációt. További információk az Azure CDN engedélyezéséről: [Adatfolyam-továbbítási végpontok kezelése egy Media Services-fiókban](media-services-portal-manage-streaming-endpoints.md)
 
-## <a id="scaling"></a>Media Services-fiók méretezése
+## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Media Services-fiók méretezése
 
 Az AMS-ügyfelek méretezhetik a streamvégpontokat, a médiafeldolgozást és a tárolást az AMS-fiókjukon.
 
@@ -151,9 +151,9 @@ Az AMS-ügyfelek méretezhetik a streamvégpontokat, a médiafeldolgozást és a
 
     A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. A **prémium** streamvégponttal rendelkező ügyfelek alapértelmezés szerint kapnak egy adategységet (SU-t). A streamvégpont adategységek hozzáadásával méretezhető. Mindegyik adategység további sávszélesség-kapacitást nyújt az alkalmazásnak. A **prémium** szintű streamvégpontok méretezéséről további információt a [streamvégpontok méretezését](media-services-portal-scale-streaming-endpoints.md) ismertető témakörben talál.
 
-* A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
+* A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egységtípusok közül választhat: **S1,** **S2**vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
 
-    A Fenntartott egység típusának meghatározása mellett megadhatja, hogy ellátja-e a fiókot **Fenntartott egységekkel** (RU-kkal). A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát.
+    A fenntartott egység típusának megadása mellett megadhatja, hogy a fiók a fenntartott egységek (RT) segítségével is kiépítse a **fiókot.** A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát.
 
     >[!NOTE]
     >A Fenntartott egységek az összes médiafeldolgozás párhuzamossá tételéért felelősek, beleértve az Azure Media Indexerrel végzett indexelési feladatokat is. De a kódolással ellentétben az indexelési feladatok feldolgozása nem lesz gyorsabb a gyorsabb Fenntartott egységekkel.
@@ -161,7 +161,7 @@ Az AMS-ügyfelek méretezhetik a streamvégpontokat, a médiafeldolgozást és a
     További információkért olvassa el a [médiafeldolgozás méretezését](media-services-portal-scale-media-processing.md) ismertető cikket.
 * A Media Services-fiókját tárfiókok hozzáadásával is méretezheti. Minden tárfiók legfeljebb 500 TB kapacitású lehet. Ha a tárolót az alapértelmezett határérték fölé szeretné bővíteni, több tárfiókot is társíthat ugyanahhoz a Media Services-fiókhoz. További információkért olvassa el a [tárfiókok kezelését](meda-services-managing-multiple-storage-accounts.md) ismertető cikket.
 
-## <a id="availability"></a> A Media Services-funkciók rendelkezésre állása az egyes adatközpontokban
+## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> A Media Services-funkciók rendelkezésre állása az egyes adatközpontokban
 
 Ez a szakasz a Media Services-funkciók az adatközpontok közötti rendelkezésre állásáról nyújt részleteket.
 
@@ -177,10 +177,10 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Name (Név)|status|Adatközpontok
+|Név|status|Adatközpontok
 |---|---|---|
 |Standard|FE|Összes|
-|Premium|FE|Összes|
+|Prémium|FE|Összes|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -204,7 +204,7 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](media-services-analytics-overview.md)
 
 > [!NOTE]
-> Egyes elemzési adathordozó-processzorok ki lesznek vonva. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
+> Egyes elemzési médiaprocesszorok kilesznek vonva. A nyugdíjazási dátumokat lásd az [örökölt összetevők](legacy-components.md) témakörben.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
@@ -225,7 +225,7 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 |Titkosítás|status|Adatközpontok|
 |---|---|---| 
-|Tárterület|FE|Összes|
+|Storage|FE|Összes|
 |AES-128-kulcsok|FE|Összes|
 |FairPlay|FE|Összes|
 |PlayReady|FE|Összes|
@@ -257,9 +257,9 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+* A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a Media Services képzési terveket.
 

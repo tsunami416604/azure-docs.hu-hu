@@ -1,6 +1,6 @@
 ---
-title: A .NET és a Hadoop MapReduce használata Linux-alapú HDInsight – Azure
-description: Ismerje meg, hogyan használhatók a .NET-alkalmazások a streaming MapReduce Linux-alapú HDInsight.
+title: A .NET és a Hadoop MapReduce használata Linux-alapú HDInsight - Azure
+description: Ismerje meg, hogyan használhatja a .NET alkalmazásokat a MapReduce streameléséhez Linux-alapú HDInsight-alapú.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,66 +9,66 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272369"
 ---
-# <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET-megoldások migrálása Windows-alapú HDInsight Linux-alapú HDInsight
+# <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>A Windows-alapú HDInsight .NET megoldásainak áttelepítése Linux alapú HDInsight-ra
 
-A Linux-alapú HDInsight-fürtök a [mono (https://mono-project.com)](https://mono-project.com) használatával futtatják a .NET-alkalmazásokat. A Mono lehetővé teszi a .NET-összetevők, például a MapReduce-alkalmazások Linux-alapú HDInsight való használatát. Ebből a dokumentumból megtudhatja, hogyan telepíthet át Windows-alapú HDInsight-fürtökhöz létrehozott .NET-megoldásokat a Mono használatával a Linux-alapú HDInsight.
+A Linux-alapú HDInsight-fürtök [a Mono (ahttps://mono-project.com) ](https://mono-project.com) .NET alkalmazások futtatásához) használatosak. A Monó lehetővé teszi a .NET-összetevők, például a MapReduce alkalmazások használatát Linux-alapú HDInsight-mal. Ebből a dokumentumból megtudhatja, hogyan telepítheti át a Windows-alapú HDInsight-fürtökhöz létrehozott .NET-megoldásokat, hogy a Monóval működjön Linux alapú HDInsight-alapú.
 
-## <a name="mono-compatibility-with-net"></a>Mono-kompatibilitás a .NET-tel
+## <a name="mono-compatibility-with-net"></a>Monó kompatibilitás a .NET-tel
 
-A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight által tartalmazott mono-verzióról: HDInsight- [összetevő verziója](hdinsight-component-versioning.md).
+A 4.2.1-es monó a HDInsight 3.6-os verziójához tartozik. A HDInsight részét képező Monó verziójáról a [HDInsight összetevő-verziói](hdinsight-component-versioning.md)című témakörben talál további információt.
 
-További információ a mono és a .NET közötti kompatibilitásról: [monó kompatibilitási (https://www.mono-project.com/docs/about-mono/compatibility/)](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentum.
-
-> [!IMPORTANT]  
-> A SCP.NET keretrendszer kompatibilis a Mono-val. További információ a SCP.NET és a Mono használatával történő használatáról: a [Visual Studio C# használata a HDInsight Apache Stormához szükséges topológiák fejlesztéséhez](storm/apache-storm-develop-csharp-visual-studio-topology.md).
-
-## <a name="automated-portability-analysis"></a>Automatizált hordozhatóság elemzése
-
-A [.net-hordozhatósági elemző](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) segítségével az alkalmazás és a Mono közötti inkompatibilitási jelentések készíthetők. A következő lépésekkel konfigurálhatja az elemzőt az alkalmazás monó-hordozhatóságra való vizsgálatához:
-
-1. Telepítse a [.net-hordozhatósági elemzőt](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). A telepítés során válassza ki a használni kívánt Visual Studio-verziót.
-
-2. A Visual Studio 2015-es verziójában válassza a > __hordozhatósági elemző beállításainak__ __elemzése__ lehetőséget, és győződjön meg arról, hogy a __4,5__ be van jelölve a __mono__ szakaszban.
-
-    ![4,5 az analizátor beállításainál a Mono szakaszban be van jelölve](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
-
-    A konfiguráció mentéséhez kattintson __az OK gombra__ .
-
-3. Válassza az __elemzés__ > a __szerelvény hordozhatóságának elemzése__lehetőséget. Válassza ki a megoldást tartalmazó szerelvényt, majd válassza a __Megnyitás__ lehetőséget az elemzés megkezdéséhez.
-
-4. Az elemzés befejezése __után válassza az__ elemzés > az __elemzési jelentések megtekintése__lehetőséget. A __hordozhatósági elemzés eredményei__között válassza a __jelentés megnyitása__ lehetőséget a jelentés megnyitásához.
-
-    ![A hordozhatósági elemző eredményei párbeszédpanel](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+A Mono és a .NET közötti kompatibilitásról a [Mono compatibility (https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentum.
 
 > [!IMPORTANT]  
-> Az analizátor nem tud minden problémát megfogni a megoldásával. Például `c:\temp\file.txt` fájljának elérési útja rendben van, ha a Mono Windows rendszeren fut. Ugyanez az elérési út nem érvényes Linux platformon.
+> A SCP.NET keretrendszer kompatibilis a Monóval. A SCP.NET monival való használatáról a [Visual Studio használata Az Apache Storm C# topológiáinak fejlesztéséhez a HDInsight-on](storm/apache-storm-develop-csharp-visual-studio-topology.md)című témakörben talál további információt.
 
-## <a name="manual-portability-analysis"></a>Manuális hordozhatóság elemzése
+## <a name="automated-portability-analysis"></a>Automatizált hordozhatóság-elemzés
 
-Hajtsa végre a kód manuális vizsgálatát az [alkalmazás-hordozhatóság (https://www.mono-project.com/docs/getting-started/application-portability/)](https://www.mono-project.com/docs/getting-started/application-portability/) dokumentum) információi alapján.
+A [.NET hordozhatóság-elemző](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) segítségével jelentést készíthet az alkalmazás és a Monó közötti inkompatibilitásról. Az alábbi lépésekkel konfigurálhatja az analizátort az alkalmazás monó hordozhatóságának ellenőrzésére:
 
-## <a name="modify-and-build"></a>Módosítás és létrehozás
+1. Telepítse a [.NET hordozhatósági elemzőt](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). A telepítés során válassza ki a Visual Studio használni kívánt verzióját.
 
-Továbbra is használhatja a Visual studiót a .NET-megoldások HDInsight való létrehozásához. Gondoskodnia kell azonban arról, hogy a projekt a .NET-keretrendszer 4,5-es használatára legyen konfigurálva.
+2. A Visual Studio 2015-ben válassza a__Hordozhatósági elemző beállításainak__ __elemzése__ > lehetőséget, és győződjön meg arról, hogy a __4.5__ be van jelölve a __Mona__ szakaszban.
 
-## <a name="deploy-and-test"></a>Üzembe helyezés és tesztelés
+    ![4.5 ellenőrzött Mono részben az analizátor beállításait](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
-Miután módosította a megoldást a .NET-hordozhatósági elemző ajánlásaival vagy manuális elemzéssel, tesztelni kell a HDInsight használatával. A megoldás Linux-alapú HDInsight-fürtön való tesztelése a kijavítani kívánt finom problémákat jelezheti. Javasoljuk, hogy a tesztelés során engedélyezze a további naplózást az alkalmazásban.
+    A konfiguráció mentéséhez válassza az __OK gombot.__
 
-A naplók elérésével kapcsolatos további információkért tekintse meg a következő dokumentumokat:
+3. Válassza __az Elemző__ > __elemző elemének hordozhatósága__lehetőséget. Jelölje ki a megoldást tartalmazó szerelvényt, majd az elemzés megkezdéséhez kattintson a __Megnyitás__ gombra.
 
-* [Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz a Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+4. Az elemzés befejezése után válassza __az Elemzési__ > __jelentések elemzése__lehetőséget. A __Hordozhatóság-elemzés eredményei között__válassza a Jelentés __megnyitása__ lehetőséget a jelentés megnyitásához.
+
+    ![A hordozhatóság elemzőjének eredménypárbeszédpanele](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+
+> [!IMPORTANT]  
+> Az analizátor nem tud minden problémát elkapni a megoldással. Ha például a `c:\temp\file.txt` Monó windowson fut, a fájl elérési útja rendben van. Ugyanez az elérési út nem érvényes Linux platformon.
+
+## <a name="manual-portability-analysis"></a>Kézi hordozhatóság-elemzés
+
+Végezze el a kód manuális ellenőrzését az [alkalmazáshttps://www.mono-project.com/docs/getting-started/application-portability/) hordozhatósága (](https://www.mono-project.com/docs/getting-started/application-portability/) dokumentum) adatainak felhasználásával.
+
+## <a name="modify-and-build"></a>Módosítás és összeállítás
+
+Továbbra is használhatja a Visual Studio alkalmazást a .NET-megoldások létrehozásához a HDInsight számára. A projektnek azonban a .NET Framework 4.5 használatára van konfigurálva.
+
+## <a name="deploy-and-test"></a>Telepítés és tesztelés
+
+Miután módosította a megoldást a .NET hordozhatósági elemző ajánlásaival vagy egy manuális elemzéssel, tesztelnie kell azt a HDInsight segítségével. A megoldás Linux-alapú HDInsight-fürtön való tesztelése olyan finom problémákat tárhat fel, amelyeket ki kell javítani. Azt javasoljuk, hogy a tesztelés során engedélyezze a további naplózást az alkalmazásban.
+
+A naplók eléréséről további információt az alábbi dokumentumokban talál:
+
+* [Az Apache Hadoop YARN alkalmazásnaplók elérése Linux-alapú HDInsight-alapú](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [A C# MapReduce használata a HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [C# használata a MapReduce használatával a HDInsighton](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Felhasználó C# által definiált függvények használata Apache Hive és Apache Pig használatával](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [C# felhasználó által definiált függvények használata Apache Hive és Apache Pig használatával](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Apache Storm C# -topológiák fejlesztése a HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [C# topológiák fejlesztése apache stormhoz a HDInsighton](storm/apache-storm-develop-csharp-visual-studio-topology.md)

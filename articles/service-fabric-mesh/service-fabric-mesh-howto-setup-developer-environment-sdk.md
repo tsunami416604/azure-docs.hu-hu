@@ -1,58 +1,58 @@
 ---
-title: Windows fejlesztői környezet beállítása Service Fabric Mesh számára
+title: Windows fejlesztői környezet beállítása a Service Fabric Mesh számára
 description: Kialakíthatja úgy a Windows fejlesztési környezetet, hogy Service Fabric Mesh-alkalmazást hozhasson létre, és üzembe helyezhesse azt az Azure Service Fabric Mesh-ben.
 author: dkkapur
 ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259200"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>A Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához
 
-Az Azure Service Fabric Mesh-alkalmazások Windows-fejlesztői gépen való létrehozásához és futtatásához a következőkre lesz szüksége:
+Az Azure Service Fabric Mesh alkalmazások Windows fejlesztői gépen való létrehozásához és futtatásához a következőkre van szükség:
 
 * Docker
 * Visual Studio 2017 vagy újabb
-* Service Fabric Mesh futtatókörnyezet
+* Service Fabric Háló futásidejű
 * Service Fabric Mesh SDK és eszközök.
 
-Valamint a Windows következő verzióinak egyike:
+És az alábbi Windows-verziók egyike:
 
-* Windows 10 (Enterprise, Professional vagy Education) verziók 1709 (Fall Creators Update) vagy 1803 (Windows 10 április 2018 Update)
+* Windows 10 (Enterprise, Professional vagy Education) 1709-es (Fall Creators-frissítés) vagy 1803-as (Windows 10 2018. áprilisi frissítés)
 * Windows Server 1709-es verzió
-* Windows Server 1803-es verzió
+* Windows Server 1803-as verzió
 
-A következő utasítások segítséget nyújtanak a futtatott Windows-verzió alapján végzett minden telepítéshez.
+Az alábbi utasítások segítenek abban, hogy mindent a futtatott Windows-verzió alapján telepítsünk.
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="visual-studio"></a>Visual Studio
 
-Service Fabric Mesh-alkalmazások telepítéséhez a Visual Studio 2017-es vagy újabb verziójára van szükség. [Telepítse a 15.6.0][download-visual-studio] vagy újabb verziót, és engedélyezze a következő számítási feladatokat:
+A Service Fabric Mesh-alkalmazások telepítéséhez a Visual Studio 2017-es vagy újabb verziói szükségesek. [Telepítse a 15.6.0-s][download-visual-studio] vagy újabb verziót, és engedélyezze a következő számítási feladatokat:
 
 * ASP.NET és webfejlesztés
 * Azure-fejlesztés
 
 ## <a name="install-docker"></a>A Docker telepítése
 
-Ha a Docker már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. A Docker kérheti, hogy ha egy új verzió ki van-e, de manuálisan is ellenőrizheti, hogy a legújabb verzióval rendelkezik-e.
+Ha már telepítette a Dockert, győződjön meg arról, hogy a legújabb verzióval rendelkezik. A Docker kérheti, ha egy új verzió nincs ki, de manuálisan ellenőrizze, hogy a legújabb verzióval rendelkezik-e.
 
-#### <a name="install-docker-on-windows-10"></a>A Docker telepítése Windows 10 rendszeren
+#### <a name="install-docker-on-windows-10"></a>A Docker telepítése Windows 10-re
 
-Töltse le és telepítse a [Windowshoz készült Docker Community Edition][download-docker] legújabb verzióját, hogy támogassa a Service Fabric Mesh által használt tároló Service Fabric alkalmazásokat.
+Töltse le, majd telepítse a [Docker Community Edition for Windows][download-docker] legújabb verzióját a Service Fabric Mesh által használt tárolóalapú Service Fabric-alkalmazások támogatásához.
 
 Amikor a telepítés során a rendszer kéri, válassza a **Windows-tárolók használatát Linux-tárolók helyett**.
 
-Ha a Hyper-V nincs engedélyezve a gépen, akkor a Docker telepítője felajánlja az engedélyezését. Ehhez kattintson az **OK** gombra, ha a rendszer arra kéri.
+Ha a Hyper-V nincs engedélyezve a számítógépen, a Docker telepítője felajánlja az engedélyezést. Ehhez kattintson az **OK** gombra, ha a rendszer arra kéri.
 
-#### <a name="install-docker-on-windows-server-2016"></a>A Docker telepítése Windows Server 2016 rendszerre
+#### <a name="install-docker-on-windows-server-2016"></a>A Docker telepítése Windows Server 2016-ra
 
-Ha nincs engedélyezve a Hyper-V szerepkör, nyissa meg a PowerShellt rendszergazdaként, futtassa a következő parancsot a Hyper-V engedélyezéséhez, majd indítsa újra a számítógépet. További információ: [a Windows Serverhez készült Docker Enterprise Edition][download-docker-server].
+Ha nincs engedélyezve a Hyper-V szerepkör, nyissa meg a PowerShellt rendszergazdaként, futtassa a következő parancsot a Hyper-V engedélyezéséhez, majd indítsa újra a számítógépet. További információt a [Docker Enterprise Edition for Windows Server][download-docker-server] kiadást ismertető szakaszban talál.
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
@@ -72,8 +72,8 @@ Install-WindowsFeature Containers
 
 Telepítse a Service Fabric Mesh-futtatókörnyezetet, az SDK-t és az eszközöket a következő sorrendben.
 
-1. Telepítse a [Service Fabric Mesh SDK][download-sdkmesh] -t a webplatform-telepítő használatával. Ez a Microsoft Azure Service Fabric SDK-t és a futtatókörnyezetet is telepíti.
-2. Telepítse a [Visual studio Service Fabric Mesh Tools (előzetes verzió) bővítményt][download-tools] a Visual Studio Piactérről.
+1. A [Service Fabric Mesh SDK][download-sdkmesh] telepítéséhez használjon webplatform-telepítőt. Ez a Microsoft Azure Service Fabric SDK-t és a futtatókörnyezetet is telepíti.
+2. Telepítse a [Visual Studio Service Fabric Mesh Tools (előzetes verzió) bővítményt][download-tools] a Visual Studio piacteréről.
 
 ## <a name="build-a-cluster"></a>Fürt létrehozása
 
@@ -82,14 +82,14 @@ Telepítse a Service Fabric Mesh-futtatókörnyezetet, az SDK-t és az eszközö
 > A Docker futásának ellenőrzéséhez nyisson meg egy terminálablakot, majd a `docker ps` parancs futtatásával ellenőrizze, hogy történik-e hiba. Ha a válasz nem jelez hibát, akkor a Docker fut, és készen áll a fürt létrehozására.
 
 > [!Note]
-> Ha a Windows Fall Creators Update (1709-es verzió) gépen fejleszt, csak a Windows Version 1709 Docker-rendszerképeket használhatja.
-> Ha a Windows 10 április 2018 Update (1803-es verzió) gépen dolgozik, a Windows-verzió 1709-es vagy 1803-es Docker-rendszerképeket is használhat.
+> Ha a Windows Fall Creators frissítési (1709-es verzió) gépen fejleszt, csak a Windows 1709-es verziójú docker-lemezképeit használhatja.
+> Ha a Windows 10 2018 áprilisi frissítési (1803-as verzió) gépen fejleszt, használhatja a Windows 1709-es vagy 1803-as docker-lemezképeit.
 
-Ha a Visual studiót használja, akkor kihagyhatja ezt a szakaszt, mert a Visual Studio létrehoz egy helyi fürtöt, ha még nem rendelkezik ilyennel.
+A Visual Studio használata esetén kihagyhatja ezt a szakaszt, mert a Visual Studio helyi fürtöt hoz létre, ha még nem rendelkezik ilyentel.
 
-Ha egyszerre csak egyetlen Service Fabric alkalmazást hoz létre és futtat, hozzon létre egy egycsomópontos helyi fejlesztési fürtöt a legjobb hibakeresési teljesítményhez. Ha egyszerre több alkalmazást futtat, hozzon létre egy öt csomópontos helyi fejlesztési fürtöt. Ha Service Fabric Mesh-projektet telepít vagy hibakeresést végez, a fürtnek futnia kell.
+A legjobb hibakeresési teljesítmény érdekében, ha egyszerre egyetlen Service Fabric-alkalmazást hoz létre és futtat, hozzon létre egy egycsomópontos helyi fejlesztési fürtöt. Ha egyszerre több alkalmazást futtat, hozzon létre egy öt csomópontos helyi fejlesztési fürtöt. A fürtnek futnia kell, amikor egy Service Fabric Mesh projektet telepít vagy hibakeresést tesz le.
 
-Miután telepítette a futtatókörnyezetet, az SDK-kat, a Visual Studio-eszközöket, a Docker-t és a Docker szolgáltatást, hozzon létre egy fejlesztési fürtöt.
+A futtatókörnyezet telepítése után sdk-k, Visual Studio-eszközök, Docker, és a Docker fut, hozzon létre egy fejlesztői fürt.
 
 1. Zárja be a PowerShell-ablakot.
 2. Nyisson meg egy új, emelt szintű PowerShell-ablakot rendszergazdaként. Ez a lépés a nemrégiben telepített Service Fabric-modulok betöltéséhez szükséges.
@@ -103,9 +103,9 @@ Miután telepítette a futtatókörnyezetet, az SDK-kat, a Visual Studio-eszköz
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
-5. Miután a Service cluster Manager eszköz fut (megjelenik a rendszertálcán), kattintson rá a jobb gombbal, majd kattintson a **helyi fürt indítása**lehetőségre.
+5. Ha a Service cluster manager eszköz fut (a tálcán megjelenik), kattintson rá a jobb gombbal, és válassza **a Helyi fürt indítása parancsra**.
 
-![1\. ábra – a helyi fürt elindítása](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
+![1. ábra – A helyi fürt indítása](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 
 Készen áll a Service Fabric Mesh-alkalmazások létrehozására!
 
@@ -113,7 +113,7 @@ Készen áll a Service Fabric Mesh-alkalmazások létrehozására!
 
 Olvassa át az [Azure Service Fabric-alkalmazás létrehozásáról](service-fabric-mesh-tutorial-create-dotnetcore.md) szóló szakaszt.
 
-Választ kaphat a [gyakori kérdésekre és az ismert problémákra](service-fabric-mesh-faq.md).
+Válaszok a [gyakori kérdésekre és az ismert problémákra.](service-fabric-mesh-faq.md)
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [download-docker]: https://store.docker.com/editions/community/docker-ce-desktop-windows
