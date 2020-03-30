@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service – biztonsági fogalmak
-description: Az eszközök kiépítési szolgáltatásával (DPS) és IoT Hubekkel kapcsolatos biztonsági kiépítési fogalmakat ismerteti.
+title: Azure IoT Hub-eszközkiépítési szolgáltatás – Biztonsági fogalmak
+description: Az eszközkiépítési szolgáltatással (DPS) és az IoT Hubmal rendelkező eszközökre vonatkozó biztonsági kiépítési fogalmak ismertetése
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,99 +8,99 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271563"
 ---
-# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service biztonsági fogalmak 
+# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub-eszközkiépítési szolgáltatás biztonsági fogalmai 
 
-A IoT Hub Device Provisioning Service egy olyan IoT Hub segítő szolgáltatás, amellyel a nulla érintéses eszköz kiépíthető a megadott IoT hubhoz. A Device kiépítési szolgáltatással akár több millió eszközt is biztonságosan és méretezhető módon lehet [automatikusan kiépíteni](concepts-auto-provisioning.md) . Ez a cikk áttekintést nyújt az eszközök kiépítés során felmerülő *biztonsági* fogalmakról. Ez a cikk az eszközök üzembe helyezésére való felkészüléshez szükséges összes Personával kapcsolatos.
+Az IoT Hub-eszközkiépítési szolgáltatás egy segítő szolgáltatás az IoT Hub, amely segítségével konfigurálja a nulla érintésű eszköz kiépítése egy adott IoT hub. Az eszközkiépítési szolgáltatással [biztonságos](concepts-auto-provisioning.md) és méretezhető módon több millió eszközt biztosíthat automatikusan. Ez a cikk áttekintést nyújt az eszköz kiépítéssel kapcsolatos *biztonsági* fogalmakról. Ez a cikk minden olyan személy számára fontos, aki részt vesz egy eszköz üzembe helyezésre való felszerzésében.
 
 ## <a name="attestation-mechanism"></a>Igazolási mechanizmus
 
-Az igazolási mechanizmus az eszköz identitásának megerősítésére szolgál. Az igazolási mechanizmus a beléptetési listához is kapcsolódik, amely közli a kiépítési szolgáltatással, hogy az adott eszközzel milyen igazolást kell használni.
+Az igazolási mechanizmus az eszköz identitásának megerősítésére használt módszer. Az igazolási mechanizmus is fontos a regisztrációs lista, amely megmondja a létesítési szolgáltatás, amely egy adott eszköz höz használt tanúsítvány milyen módszerrel.
 
 > [!NOTE]
-> IoT Hub a "hitelesítési séma" kifejezést használja az adott szolgáltatáshoz hasonló fogalomhoz.
+> Az IoT Hub "hitelesítési sémát" használ egy hasonló koncepcióhoz az adott szolgáltatásban.
 
-A Device kiépítési szolgáltatás a következő igazolási formákat támogatja:
-* **X. 509 tanúsítványok** a szabványos x. 509 tanúsítvány-hitelesítési folyamat alapján.
-* **Platformmegbízhatósági modul (TPM)** egy egyszeres kihívás alapján, a kulcsokhoz tartozó TPM standard használatával egy aláírt közös hozzáférésű aláírási (SAS-) tokent mutat be. Ez az igazolás nem igényel fizikai TPM-t az eszközön, de a szolgáltatás a [TPM-specifikáció](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)alapján tanúsítja, hogy a hátirat kulcsát használja.
-* A **szimmetrikus kulcs** a közös hozzáférésű aláírás (SAS) [biztonsági jogkivonatok](../iot-hub/iot-hub-devguide-security.md#security-tokens)alapján, amelyek egy kivonatoló aláírást és egy beágyazott lejáratot foglalnak magukban. További információ: [szimmetrikus kulcs igazolása](concepts-symmetric-key-attestation.md).
+Az Eszközkiépítési szolgáltatás a következő igazolási formákat támogatja:
+* **X.509 tanúsítványok** a szabványos X.509 tanúsítványhitelesítési folyamat alapján.
+* **Platformmegbízhatósági modul (TPM)** egy nonce kihívás alapján, a TPM-szabvány használatával a kulcsok egy aláírt megosztott hozzáférésű aláírási (SAS) jogkivonat bemutatásához. Ez a tanúsítványforma nem igényel fizikai TPM-et az eszközön, de a szolgáltatás elvárja, hogy tanúsítsa az ellenőrző kulcs használatát a [TPM specifikációszerint.](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)
+* **A** megosztott hozzáférésű aláírás (SAS) [biztonsági jogkivonatain](../iot-hub/iot-hub-devguide-security.md#security-tokens)alapuló szimmetrikus kulcs , amely kivonatolt aláírást és beágyazott lejárati rendszert tartalmaz. További információ: [Symmetric key attestation](concepts-symmetric-key-attestation.md).
 
 
 ## <a name="hardware-security-module"></a>Hardveres biztonsági modul
 
-A hardveres biztonsági modul, vagy a HSM biztonságos, hardveres tárolást biztosít az eszköz titkai számára, és a titkos tároló legbiztonságosabb formája. Az X. 509 tanúsítványok és az SAS-tokenek a HSM-ben is tárolhatók. A HSM a kiépítés által támogatott igazolási mechanizmusokkal is használható.
+A hardveres biztonsági modul (HSM) az eszköztitkok biztonságos, hardveralapú tárolására szolgál, és a titkos tárolás legbiztonságosabb formája. Mind az X.509-es tanúsítványok, mind a SAS-jogkivonatok tárolhatók a HSM-ben. A HSM-ek a kiépítés által támogatott mindkét tanúsítványmechanizmussal használhatók.
 
 > [!TIP]
-> Javasoljuk, hogy használjon egy HSM-et az eszközökkel, hogy biztonságosan tárolja az eszközein a titkokat.
+> Javasoljuk, hogy használjon HSM-et olyan eszközökkel, amelyek biztonságosan tárolják a titkos kulcsokat az eszközökön.
 
-Az eszköz titkai a szoftverben (memóriában) is tárolhatók, de ez a tárterület kevésbé biztonságos, mint a HSM.
+Az eszköztitkok szoftverben (memóriában) is tárolhatók, de kevésbé biztonságos tárolási forma, mint a HSM.
 
-## <a name="trusted-platform-module"></a>platformmegbízhatósági modul
+## <a name="trusted-platform-module"></a>Platformmegbízhatósági modul (TPM)
 
-A TPM a platform hitelesítéséhez használt kulcsok biztonságos tárolására szolgál, vagy a szabványt megvalósító modulokkal való interakcióhoz használt I/O-felületre hivatkozhat. A TPM különálló hardverként, integrált hardverként, belső vezérlőprogram-vagy szoftver-alapúként is létezhetnek. További információ a [TPM és a TPM-igazolásról](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Az eszközök kiépítési szolgáltatása csak a TPM 2,0-es verziója használatát támogatja.
+A TPM hivatkozhat a platform hitelesítéséhez használt kulcsok biztonságos tárolására vonatkozó szabványra, vagy a szabványt megvalósító modulokkal való interakcióhoz használt I/O interfészre. A TPM-ek különálló hardverként, integrált hardverként, belső vezérlőprogram-alapúként vagy szoftveralapúként létezhetnek. További információ a [TPM-ekről és a TPM-igazolásokról.](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation) Az eszközkiépítési szolgáltatás csak a TPM 2.0-s támogatását támogatja.
 
-A TPM-igazolás egy egyszer használatos kihíváson alapul, amely a jóváhagyás és a tároló legfelső szintű kulcsait használja egy aláírt közös hozzáférésű aláírási (SAS) jogkivonat megjelenítéséhez.
+A TPM-tanúsítvány egy nonce kihíváson alapul, amely az ellenőrző és tárolási gyökérkulcsokat használja egy aláírt sas-jogkivonat bemutatásához.
 
-### <a name="endorsement-key"></a>Érvényesítési kulcs
+### <a name="endorsement-key"></a>Ellenőrző kulcs
 
-A jóváhagyó kulcs egy aszimmetrikus kulcs, amely a TPM-ben található, amelyet belsőleg generáltak vagy injektáltak a gyártási időszakban, és minden TPM esetében egyediek. A jóváhagyó kulcs nem módosítható és nem távolítható el. A jóváhagyó kulcs privát része soha nem jelenik meg a TPM-en kívül, míg a jóváhagyó kulcs nyilvános része egy valódi TPM felismerésére szolgál. További információ a [jóváhagyó kulcsról](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
+Az ellenőrző kulcs a TPM-ben található aszimmetrikus kulcs, amelyet a gyártási idő alatt hoztak létre vagy injektáltak, és minden TPM esetében egyedi. Az ellenőrzőkulcs nem módosítható és nem távolítható el. Az ellenőrzőkulcs titkos része soha nem szabadul fel a TPM-en kívül, míg az ellenőrzőkulcs nyilvános része az eredeti TPM felismerésére szolgál. További információ az [ellenőrző kulcsról](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 
-### <a name="storage-root-key"></a>Tároló legfelső szintű kulcsa
+### <a name="storage-root-key"></a>Tároló gyökérkulcsa
 
-A tároló legfelső szintű kulcsát a TPM tárolja, és az alkalmazások által létrehozott TPM-kulcsok elleni védelemre szolgál, így ezek a kulcsok nem használhatók a TPM nélkül. A rendszer a tároló legfelső szintű kulcsát hozza létre a TPM tulajdonjogának elvégzése során. Ha törli a TPM-t, hogy az új felhasználó tulajdonjogot szabadítson fel, új tárolási legfelső szintű kulcs jön létre. További információ a [tároló legfelső szintű kulcsáról](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
+A tárológyökér-kulcs a TPM-ben van tárolva, és az alkalmazások által létrehozott TPM-kulcsok védelmére szolgál, így ezek a kulcsok nem használhatók a TPM nélkül. A tároló gyökérkulcsa akkor jön létre, amikor átveszi a TPM tulajdonjogát; ha törli a TPM-et, hogy egy új felhasználó átvehesse a tulajdonjogot, új tárológyökér-kulcs jön létre. További információ a [tároló gyökérkulcsáról.](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx)
 
-## <a name="x509-certificates"></a>X. 509 tanúsítványok
+## <a name="x509-certificates"></a>X.509 bizonyítványok
 
-Az X. 509 tanúsítványok az igazolási mechanizmusként való használata kiváló módszer a termelés méretezésére és az eszközök üzembe helyezésének egyszerűsítésére. Az X. 509 tanúsítványokat jellemzően olyan megbízhatósági láncba rendezi a rendszer, amelyben a láncban lévő összes tanúsítványt aláírja a következő magasabb tanúsítvány titkos kulcsa, és így tovább, egy önaláírt főtanúsítványban leáll. Ez a megállapodás egy megbízható legfelső szintű hitelesítésszolgáltató (CA) által létrehozott főtanúsítványból delegált megbízhatósági láncot hoz létre az egyes közbenső HITELESÍTÉSSZOLGÁLTATÓKon keresztül az eszközre telepített végfelhasználói "levél" tanúsítványhoz. További információért lásd: [az eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](/azure/iot-hub/iot-hub-x509ca-overview). 
+Az X.509 tanúsítványok igazolási mechanizmusként való használata kiváló módja az éles környezet méretezésének és az eszközkiépítés egyszerűsítésének. Az X.509 tanúsítványok általában egy megbízhatósági tanúsítványláncba vannak rendezve, amelyben a lánc minden tanúsítványát a következő magasabb tanúsítvány titkos kulcsa írja alá, és így tovább, önaláírt főtanúsítványban végződve. Ez a megállapodás létrehoz egy delegált bizalmi láncot a megbízható legfelső szintű hitelesítésszolgáltató (CA) által létrehozott főtanúsítványból az egyes köztes hitelesítésszolgáltatókon keresztül az eszközre telepített végfelhasználói "levél" tanúsítványig. További információ: [Device Authentication using X.509 CA Certificates](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-A tanúsítványlánc gyakran az eszközökhöz társított logikai vagy fizikai hierarchiát jelképezi. A gyártó például a következőket teheti:
-- önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiállítása
-- a főtanúsítvány használata egyedi közbenső HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány előállításához minden egyes gyárhoz
-- az egyes gyári tanúsítványok használata egy egyedi közbenső HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány előállításához a üzemben lévő minden egyes gépsor esetében
-- Végül pedig használja az éles vonal tanúsítványát, hogy létrehozzon egy egyedi eszköz-(végfelhasználói) tanúsítványt a sorban gyártott összes eszközhöz. 
+A tanúsítványlánc gyakran az eszközökhöz társított logikai vagy fizikai hierarchiát jelöli. Például a gyártó:
+- önaláírt legfelső szintű hitelesítésszolgáltatói tanúsítvány kiállítása
+- használja a főtanúsítványt, hogy egyedi köztes hitelesítésszolgáltatói tanúsítványt hozzon létre minden gyárhoz
+- az egyes gyári tanúsítványok felhasználásával egyedi köztes hitelesítésszolgáltatói tanúsítványt állít elő az üzem minden egyes gyártósorához
+- és végül használja a gyártósori tanúsítványt, hogy egyedi eszköz (end-entity) tanúsítványt hozzon létre a sorban gyártott minden egyes eszközhöz. 
 
-További információ: [az X. 509 hitelesítésszolgáltatói tanúsítványok fogalmi megértése a IoT-iparágban](/azure/iot-hub/iot-hub-x509ca-concept). 
+További információ: [Az IoT-iparág X.509 hitelesítésszolgáltatói tanúsítványainak fogalmi ismerete.](/azure/iot-hub/iot-hub-x509ca-concept) 
 
 ### <a name="root-certificate"></a>Főtanúsítvány
 
-A főtanúsítvány egy önaláírt X. 509 tanúsítvány, amely egy hitelesítésszolgáltatót (CA) jelöl. Ez a tanúsítványlánc végállomása vagy megbízhatósági kapcsolata. A főtanúsítványokat a szervezet önállóan vagy egy főtanúsítvány-szolgáltatótól vásárolhatja meg. További információért lásd: [X. 509 hitelesítésszolgáltatói tanúsítványok beolvasása](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). A főtanúsítványt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak is nevezzük.
+A főtanúsítvány egy hitelesítésszolgáltatót (CA) jelölő, önaláírt X.509-es tanúsítvány. Ez a tanúsítványlánc végállomása vagy megbízhatósági horgonya. A főtanúsítványokat egy szervezet önkiadta, vagy megvásárolhatja egy főtanúsítvány-szolgáltatótól. További információ: [X.509 hitelesítésszolgáltatói tanúsítványok beszerezhetése](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). A főtanúsítvány ra legfelső szintű hitelesítésszolgáltatói tanúsítványként is lehet hivatkozni.
 
 ### <a name="intermediate-certificate"></a>Köztes tanúsítvány
 
-A köztes tanúsítvány egy X. 509 tanúsítvány, amelyet a főtanúsítvány (vagy egy másik, a lánc főtanúsítványával rendelkező közbenső tanúsítvány) írt alá. A lánc utolsó köztes tanúsítványa a levél tanúsítványának aláírására szolgál. A köztes tanúsítványok köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak is lehet hivatkozni.
+A köztes tanúsítvány egy X.509 tanúsítvány, amelyet a főtanúsítvány (vagy egy másik köztes tanúsítvány, amelynek láncában a főtanúsítvány) írta alá. A lánc utolsó köztes tanúsítványa a levéltanúsítvány aláírására szolgál. A köztes tanúsítványra köztes hitelesítésszolgáltatói tanúsítványnak is lehet tekinteni.
 
 ### <a name="end-entity-leaf-certificate"></a>Végfelhasználói "levél" tanúsítvány
 
-A levél tanúsítványa vagy a végfelhasználói tanúsítvány azonosítja a tanúsítvány tulajdonosát. A tanúsítvány főtanúsítványa a tanúsítványlánc, valamint nulla vagy több köztes tanúsítvány. A levél tanúsítványa nem használható más tanúsítványok aláírására. Egyedileg azonosítja az eszközt a kiépítési szolgáltatás számára, és más néven az eszköz tanúsítványa. A hitelesítés során az eszköz a tanúsítványhoz tartozó titkos kulcsot használja arra, hogy válaszoljon a szolgáltatásból származó birtoklási kihívásra.
+A levéltanúsítvány vagy a végfelhasználói tanúsítvány azonosítja a tanúsítvány tulajdonosát. A tanúsítványláncban a főtanúsítvány, valamint nulla vagy több köztes tanúsítvány található. A levéltanúsítvány nem használható más tanúsítványok aláírására. Egyedileg azonosítja az eszközt a létesítési szolgáltatás, és néha az eszköz tanúsítvány. A hitelesítés során az eszköz a tanúsítványhoz társított személyes kulcsot használja a szolgáltatás birtokában lévő kihívás igazolásának megválaszolására.
 
-Az [Egyéni beléptetési](./concepts-service.md#individual-enrollment) bejegyzésekhez használt levél-tanúsítványokhoz követelmény, hogy a **tulajdonos nevét** az egyéni beléptetési bejegyzés regisztrációs azonosítójára kell beállítani. A [beléptetési csoport](./concepts-service.md#enrollment-group) bejegyzéseihez használt levél-tanúsítványoknak a **tulajdonos nevét** a kívánt eszköz-azonosítóra kell beállítani, amely a beléptetési csoportban lévő hitelesített eszköz **regisztrációs rekordjaiban** jelenik meg.
+[Az egyéni beléptetési](./concepts-service.md#individual-enrollment) bejegyzéshez használt levéltanúsítványoknak követelményként kell megkötniük a **Tulajdonos nevét** az Egyéni beléptetési bejegyzés regisztrációs azonosítójára. A [regisztrációs csoport](./concepts-service.md#enrollment-group) bejegyzésével használt levéltanúsítványok **tulajdonosnevét** a kívánt eszközazonosítóra kell állítani, amely megjelenik a regisztrációs csoport hitelesített eszközének **regisztrációs nyilvántartásában.**
 
-További információért lásd: [X. 509 hitelesítésszolgáltatói tanúsítványokkal aláírt eszközök hitelesítése](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+További információ: [Az X.509 hitelesítésszolgáltatói tanúsítvánnyal aláírt eszközök hitelesítése.](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)
 
-## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Eszköz hozzáférésének szabályozása a kiépítési szolgáltatáshoz X. 509 tanúsítvánnyal
+## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Az eszköz hozzáférésének szabályozása a létesítési szolgáltatáshoz X.509 tanúsítványokkal
 
-A kiépítési szolgáltatás két típusú beléptetési bejegyzést tesz elérhetővé, amelyek segítségével szabályozhatja az X. 509 igazolási mechanizmust használó eszközök hozzáférését:  
+A létesítési szolgáltatás kétféle regisztrációs bejegyzést tesz elérhetővé, amelyek segítségével szabályozhatja az X.509-es tanúsítványmechanizmust használó eszközök hozzáférését:  
 
-- Az [egyes beléptetési](./concepts-service.md#individual-enrollment) bejegyzések egy adott eszközhöz társított eszköz tanúsítványával vannak konfigurálva. Ezek a bejegyzések vezérlik az adott eszközök regisztrációit.
-- A [beléptetési csoport](./concepts-service.md#enrollment-group) bejegyzései egy adott közbenső vagy legfelső szintű hitelesítésszolgáltatói tanúsítvánnyal vannak társítva. Ezek a bejegyzések vezérlik az összes olyan eszköz regisztrációját, amelynél az adott közbenső vagy főtanúsítvány szerepel a tanúsítvány láncában. 
+- [Az egyes beléptetési](./concepts-service.md#individual-enrollment) bejegyzések egy adott eszközhöz társított eszköztanúsítvánnyal vannak konfigurálva. Ezek a bejegyzések szabályozzák az adott eszközök regisztrációját.
+- [Az igénylési csoport](./concepts-service.md#enrollment-group) bejegyzései egy adott köztes vagy legfelső szintű hitelesítésszolgáltatói tanúsítványhoz vannak társítva. Ezek a bejegyzések szabályozzák az összes olyan eszköz regisztrációját, amely a tanúsítványláncban rendelkezik ezzel a köztes vagy főtanúsítvánnyal. 
 
-Amikor egy eszköz csatlakozik a kiépítési szolgáltatáshoz, a szolgáltatás a kevésbé konkrét beléptetési bejegyzéseken keresztül rangsorolja a beléptetési bejegyzéseket. Azaz ha az eszközhöz egyéni regisztráció van, a kiépítési szolgáltatás alkalmazza ezt a bejegyzést. Ha nincs egyéni regisztráció az eszközhöz, és egy regisztrációs csoport az eszköz tanúsítványlánc-láncában az első közbenső tanúsítványhoz, a szolgáltatás alkalmazza a bejegyzést, és így tovább, a láncot a gyökérbe. A szolgáltatás a megtalált első megfelelő bejegyzést alkalmazza, például:
+Amikor egy eszköz csatlakozik a létesítési szolgáltatáshoz, a szolgáltatás rangsorolja a konkrét regisztrációs bejegyzéseket a kevésbé specifikus regisztrációs bejegyzésekkel szemben. Ez azt, hogy ha az eszköz egyéni regisztrációlétezik, a létesítési szolgáltatás alkalmazza ezt a bejegyzést. Ha nincs egyéni regisztráció az eszközhöz, és az eszköz tanúsítványláncában található első köztes tanúsítvány igénylési csoportja létezik, a szolgáltatás ezt a bejegyzést alkalmazza, és így tovább, a gyökérlánchoz. A szolgáltatás az általa talált első alkalmazandó bejegyzést alkalmazza, úgy, hogy:
 
-- Ha az első beléptetési bejegyzés engedélyezve van, a szolgáltatás kiépíti az eszközt.
-- Ha az első beléptetési bejegyzés le van tiltva, a szolgáltatás nem építi ki az eszközt.  
-- Ha nem található beléptetési bejegyzés az eszköz tanúsítványlánc egyik tanúsítványához sem, a szolgáltatás nem építi ki az eszközt. 
+- Ha a talált első regisztrációs bejegyzés engedélyezve van, a szolgáltatás elhatárolásra képessé tesz az eszközt.
+- Ha az első talált regisztrációs bejegyzés le van tiltva, a szolgáltatás nem építi ki az eszközt.  
+- Ha az eszköz tanúsítványláncában lévő tanúsítványok egyikéhez sem található beléptetési bejegyzés, a szolgáltatás nem építi ki az eszközt. 
 
-Ez a mechanizmus és a tanúsítványlánc hierarchikus szerkezete nagy rugalmasságot biztosít az egyes eszközökhöz, illetve az eszközök csoportjaihoz való hozzáférés szabályozásához. Tegyük fel például, hogy öt eszköz a következő tanúsítványláncot: 
+Ez a mechanizmus és a tanúsítványláncok hierarchikus struktúrája hatékony rugalmasságot biztosít az egyes eszközök és eszközcsoportok hozzáférésének szabályozásában. Képzeljen el például öt eszközt a következő tanúsítványláncokkal: 
 
-- *1. eszköz*: főtanúsítvány – > A tanúsítvány – > eszköz 1 tanúsítványa
-- *2. eszköz*: főtanúsítvány – > A tanúsítvány – > eszköz 2 tanúsítványa
-- *3. eszköz*: főtanúsítvány – > tanúsítvány A-> 3. eszköz tanúsítványa
-- *4. eszköz*: főtanúsítvány – > B tanúsítvány > 4. eszköz tanúsítványa
-- *5. eszköz*: főtanúsítvány – > B tanúsítvány > 5. eszköz tanúsítványa
+- *1. eszköz:*-> A->-eszköz tanúsítványa
+- *2. eszköz:*-> -> device 2 tanúsítvány
+- *3. eszköz*: főtanúsítvány -> A-> 3-as eszköz tanúsítványa
+- *4. eszköz:*-> B->->-eszköz tanúsítványa
+- *5. eszköz:* root tanúsítvány -> B-> 5-ös eszköz tanúsítványa
 
-Kezdetben létrehozhat egyetlen engedélyezett csoportos beléptetési bejegyzést a főtanúsítvány számára, hogy az összes öt eszköz számára engedélyezze a hozzáférést. Ha a B tanúsítvány később sérül, létrehozhat egy letiltott regisztrációs csoport bejegyzést a B tanúsítványhoz, amely megakadályozza a *4* . és az *5. eszköz* regisztrációját. Ha továbbra is a *3. eszköz* biztonsága sérül, létrehozhat egy letiltott egyéni beléptetési bejegyzést a tanúsítványához. Ez visszavonja a *3. eszköz*hozzáférését, de az *1* . és a *2* . eszköz regisztrációját is lehetővé teszi.
+Kezdetben létrehozhat egy engedélyezett csoport regisztrációs bejegyzést a főtanúsítványhoz, hogy mind az öt eszközhöz hozzáférést biztosítson. Ha a B tanúsítvány később veszélybe kerül, létrehozhat egy letiltott regisztrációs csoportbejegyzést a B tanúsítványhoz, hogy megakadályozza *a 4-es* és *az 5-ös eszköz* regisztrációját. Ha még később *a 3-as eszköz* biztonsága sérül, létrehozhat egy letiltott egyéni beléptetési bejegyzést a tanúsítványához. Ez visszavonja a hozzáférést a *Device 3,* de továbbra is lehetővé teszi *az Eszköz 1* és device *2* regisztrálása.

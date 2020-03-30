@@ -1,7 +1,7 @@
 ---
-title: IPv6 hozzáadása IPv4-alkalmazáshoz az Azure Virtual Networkben – Azure CLI
+title: IPv6 hozzáadása egy IPv4-alkalmazáshoz az Azure virtuális hálózatában – Azure CLI
 titlesuffix: Azure Virtual Network
-description: Ez a cikk bemutatja, hogyan helyezhet üzembe IPv6-címeket egy meglévő Azure Virtual Network-alkalmazásban az Azure CLI használatával.
+description: Ez a cikk bemutatja, hogyan telepítheti az IPv6-címeket egy meglévő alkalmazásra az Azure VIRTUÁLIS hálózatban az Azure CLI használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,52 +13,54 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/23/2019
 ms.author: kumud
-ms.openlocfilehash: 0631ea51894e7e0642a55cedee54422fddab623b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240760"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>IPv6 hozzáadása IPv4-alkalmazáshoz az Azure Virtual Networkben – Azure CLI (előzetes verzió)
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>IPv6 hozzáadása egy IPv4-alkalmazáshoz az Azure virtuális hálózatában – Azure CLI (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan adhat IPv6-címeket olyan alkalmazáshoz, amely IPv4 nyilvános IP-címet használ egy Azure-beli virtuális hálózaton egy standard Load Balancer az Azure CLI használatával. A helyben történő frissítés magában foglalja a virtuális hálózatot és az alhálózatot standard Load Balancer, az IPv4 + IPV6-alapú előtér-konfigurációval rendelkező virtuális gépeket, valamint az IPv4 + IPv6-konfigurációval, a hálózati biztonsági csoporttal és a nyilvános IP-címmel rendelkező virtuális gépeket
+Ez a cikk bemutatja, hogyan adhat iPv6-címeket egy olyan alkalmazáshoz, amely IPv4 nyilvános IP-címet használ egy Azure virtuális hálózatban az Azure CLI használatával. A helybeni frissítés tartalmaz egy virtuális hálózatot és alhálózatot, egy standard terheléselosztót IPv4 + IPV6 előtér-konfigurációkkal, iPv4 + IPv6 konfigurációval rendelkező hálózati adapterekkel rendelkező virtuális gépeket, hálózati biztonsági csoportot és nyilvános IP-címeket.
 
 > [!Important]
 > Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version` parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha úgy dönt, hogy az Azure CLI-t helyileg telepíti és használja, ez a rövid útmutató az Azure CLI 2.0.28-as vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a futtassa a futtassa a futtassa a futtassa a program `az --version` A telepítési vagy frissítési információkért tekintse meg az [Azure CLI telepítése](/cli/azure/install-azure-cli) című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="register-the-service"></a>A szolgáltatás regisztrálása
 
-A Dual stack-alkalmazás Azure-ban való üzembe helyezése előtt az alábbi Azure CLI-vel kell konfigurálnia az előfizetését ehhez az előzetes verzióhoz:
+Mielőtt üzembe helyezne egy kétverű alkalmazást az Azure-ban, konfigurálnia kell az előfizetést ehhez az előzetes verzióhoz a következő Azure CLI használatával:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure CLI-parancs futtatásával tekintheti meg:
 
-```azurelci
+A funkcióregisztráció befejezéséhez akár 30 perc is igénybe vesszen. A regisztrációs állapot ot a következő Azure CLI-parancs futtatásával ellenőrizheti:
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A regisztráció befejeződése után futtassa a következő parancsot:
 
-```azurelci
+A regisztráció befejezése után futtassa a következő parancsot:
+
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
 ### <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
-Ez a cikk azt feltételezi, hogy üzembe helyezett egy standard Load Balancert a gyors útmutató [: standard Load Balancer létrehozása – Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)című témakörben leírtak szerint.
+Ez a cikk feltételezi, hogy üzembe helyezett egy standard terheléselosztót a rövid útmutatóban leírtak [szerint: Standard terheléselosztó létrehozása - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
 
 ## <a name="create-ipv6-addresses"></a>IPv6-címek létrehozása
 
-Hozzon létre nyilvános IPv6-címet az az [Network Public-IP Create](/cli/azure/network/public-ip) paranccsal a standard Load Balancerhoz. Az alábbi példa egy *PublicIP_v6* nevű IPv6 nyilvános IP-címet hoz létre a *myresourcegroupslb erőforráscsoportban* erőforráscsoporthoz:
+Hozzon létre nyilvános IPv6-címet az [az hálózati nyilvános ip-létrehozással](/cli/azure/network/public-ip) a standard terheléselosztóhoz. A következő példa létrehoz egy *PublicIP_v6* nevű IPv6 nyilvános IP-címet a *myResourceGroupSLB* erőforráscsoportban:
 
 ```azurecli
   
@@ -71,9 +73,9 @@ az network public-ip create \
 --version IPv6
 ```
 
-## <a name="configure-ipv6-load-balancer-frontend"></a>Az IPv6 Load Balancer felületének konfigurálása
+## <a name="configure-ipv6-load-balancer-frontend"></a>Az IPv6 terheléselosztó előtérének konfigurálása
 
-Konfigurálja a Load balancert az új IPv6 IP-címmel az [az Network LB frontend-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) paranccsal:
+COnfigure a terheléselosztót az új IPv6 IP-címmel az [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) használatával az alábbiak szerint:
 
 ```azurecli
 az network lb frontend-ip create \
@@ -83,9 +85,9 @@ az network lb frontend-ip create \
 --public-ip-address PublicIP_v6
 ```
 
-## <a name="configure-ipv6-load-balancer-backend-pool"></a>IPv6 Load Balancer backend-készlet konfigurálása
+## <a name="configure-ipv6-load-balancer-backend-pool"></a>IPv6-terheléselosztó háttérkészletének konfigurálása
 
-Hozza létre az IPv6-címekkel rendelkező hálózati adapterek háttér-készletét az [az Network LB Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) paranccsal a következőképpen:
+Hozza létre az IPv6-címekkel rendelkező hálózati adapterek háttérkészletét az [az hálózati címkészlet létrehozása](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) segítségével az alábbiak szerint:
 
 ```azurecli
 az network lb address-pool create \
@@ -94,9 +96,9 @@ az network lb address-pool create \
 --resource-group MyResourceGroupSLB
 ```
 
-## <a name="configure-ipv6-load-balancer-rules"></a>IPv6 Load Balancer-szabályok konfigurálása
+## <a name="configure-ipv6-load-balancer-rules"></a>IPv6-terheléselosztó szabályainak konfigurálása
 
-Hozzon létre IPv6 Load Balancer-szabályokat az [az Network LB Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)paranccsal.
+IPv6-os terheléselosztó-szabályok létrehozása [az hálózati lb szabállyal létrehozva.](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)
 
 ```azurecli
 az network lb rule create \
@@ -112,7 +114,7 @@ az network lb rule create \
 
 ## <a name="add-ipv6-address-ranges"></a>IPv6-címtartományok hozzáadása
 
-Adja hozzá az IPv6-címtartományt a virtuális hálózathoz és a terheléselosztó-t futtató alhálózathoz az alábbiak szerint:
+Adja hozzá az IPv6-címtartományokat a virtuális hálózathoz és a terheléselosztót üzemeltető alhálózathoz az alábbiak szerint:
 
 ```azurecli
 az network vnet update \
@@ -129,7 +131,7 @@ az network vnet subnet update \
 
 ## <a name="add-ipv6-configuration-to-nics"></a>IPv6-konfiguráció hozzáadása hálózati adapterekhez
 
-Konfigurálja a virtuális hálózati adaptereket egy IPv6-címmel az [az Network NIC IP-config Create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) paranccsal:
+Konfigurálja a virtuálisgép-hálózati adaptereket [IPv6-címmel az az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) használatával az alábbiak szerint:
 
 ```azurecli
 az network nic ip-config create \
@@ -164,24 +166,24 @@ az network nic ip-config create \
 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>IPv6-alapú kettős verem virtuális hálózatának megtekintése Azure Portal
-Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti meg Azure Portalban:
-1. A portál keresési sávján adja meg a *myVnet*.
-2. Ha a **myVnet** megjelenik a keresési eredmények között, válassza ki. Ez elindítja a *myVNet*nevű kettős verem virtuális hálózat **Áttekintés** lapját. A kettős verem virtuális hálózata a három hálózati adaptert jeleníti meg, amelyek IPv4-és IPv6-konfigurációval rendelkeznek, amelyek a *mySubnet*nevű kettős verem alhálózatában találhatók.
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Az IPv6 kétletétes virtuális hálózatának megtekintése az Azure Portalon
+Az IPv6 kettős veremű virtuális hálózatot az Azure Portalon az alábbiak szerint tekintheti meg:
+1. A portál keresősávján adja meg a *myVnet*.
+2. Amikor **a myVnet** megjelenik a keresési eredmények között, jelölje ki. Ez elindítja a *myVNet*nevű kettős verem virtuális hálózat **áttekintése** oldalt. A kétverű virtuális hálózat a három hálózati adaptert jeleníti meg, amelyek iPv4- és IPv6-konfigurációkkal is rendelkeznek, és amelyek a *mySubnet*nevű kettős verem alhálózatban találhatók.
 
-  ![IPv6-alapú kettős verem virtuális hálózata az Azure-ban](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
+  ![IPv6 kettős halmozott virtuális hálózat az Azure-ban](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
 > [!NOTE]
-> Az Azure-beli virtuális hálózat IPv6-értéke csak olvashatóként érhető el a Azure Portal ebben az előzetes kiadásban.
+> Az IPv6 for Azure virtuális hálózat érhető el az Azure Portalon írásvédett ebben az előzetes verzióban.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
+Ha már nincs szükség rá, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépés az összes kapcsolódó erőforrást.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben frissített egy meglévő standard Load Balancer IPv4-es előtér-IP-konfigurációval egy kettős verem (IPv4 és IPv6) konfigurációra. Az IPv6-konfigurációkat a háttér-készletben található virtuális gépek hálózati adapterei számára is felvette. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)
+Ebben a cikkben egy meglévő standard terheléselosztót frissített iPv4 előtér-IP-konfigurációval egy kettős veremkonfigurációra (IPv4 és IPv6). IPv6-konfigurációkat is hozzáadott a háttérkészletben lévő virtuális gépek hálózati adaptereihez. Ha többet szeretne tudni az IPv6-támogatásról az Azure virtuális hálózatokban, olvassa el [a Mi az IPv6 az Azure virtuális hálózathoz című témakörben?](ipv6-overview.md)

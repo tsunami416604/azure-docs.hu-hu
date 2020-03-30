@@ -1,6 +1,6 @@
 ---
-title: Oracle-adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen | Microsoft Docs
-description: Gyorsan lekérheti az Oracle-adatvédelmet az Azure-környezetben.
+title: Az Oracle Data Guard megvalósítása Egy Azure Linux virtuális gépen | Microsoft dokumentumok
+description: Gyorsan működésbe hozhatja az Oracle Data Guardot azure-környezetében.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 52723ca53b9156dd8e8183d92d8d4a350750c936
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7a165935e2c232167a0752272d244ce98bf6aff2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100109"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534405"
 ---
-# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle-adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen 
+# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Az Oracle Data Guard megvalósítása Egy Azure Linux-alapú virtuális gépen 
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a cikk azt ismerteti, hogyan használható az Azure CLI egy Oracle Database 12c-adatbázis üzembe helyezéséhez az Azure Marketplace-rendszerképből. Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálhatja az adatvédelmet egy Azure-beli virtuális gépen (VM).
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a cikk ismerteti, hogyan azure CLI egy Oracle Database 12c adatbázis üzembe helyezéséhez az Azure Marketplace-rendszerkép. Ez a cikk ezután bemutatja, lépésről lépésre, hogyan telepítheti és konfigurálhatja a Data Guard egy Azure virtuális gépen (VM).
 
-Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van. További információ: az [Azure CLI telepítési útmutatója](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van. További információt az [Azure CLI telepítési útmutatójában talál.](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 ### <a name="assumptions"></a>Feltételezések
 
-Az Oracle-adatvédelem telepítéséhez két Azure-beli virtuális gépet kell létrehoznia ugyanazon rendelkezésre állási csoporton belül:
+Az Oracle Data Guard telepítéséhez két Azure-beli virtuális gépet kell létrehoznia ugyanazon a rendelkezésre állási csoporton:
 
-- Az elsődleges virtuális gép (myVM1) egy futó Oracle-példánnyal rendelkezik.
-- A készenléti virtuális gépen (myVM2) csak az Oracle-szoftverek vannak telepítve.
+- Az elsődleges virtuális gép (myVM1) egy futó Oracle-példánysal rendelkezik.
+- A készenléti virtuális gép (myVM2) csak az Oracle szoftvert telepíti.
 
-A virtuális gépek létrehozásához használt Piactéri lemezkép Oracle: Oracle-Database-EE: 12.1.0.2: Latest.
+A virtuális gépek létrehozásához használt Marketplace-lemezkép az Oracle:Oracle-Database-Ee:12.1.0.2:latest.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
-Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe az [az bejelentkezési](/cli/azure/reference-index) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```azurecli
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport egy logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése. 
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
-A rendelkezésre állási csoport létrehozása nem kötelező, de ajánlott. További információ: az [Azure rendelkezésre állási készletek irányelveinek útmutatója](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Egy rendelkezésre állási csoport létrehozása nem kötelező, de azt javasoljuk, hogy. További információt az [Azure rendelkezésre állási készleteire vonatkozó irányelvek című témakörben talál.](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)
 
 ```azurecli
 az vm availability-set create \
@@ -69,9 +69,9 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az az [VM Create](/cli/azure/vm) paranccsal. 
+Hozzon létre egy virtuális gép az [az vm create](/cli/azure/vm) paranccsal. 
 
-A következő példa két virtuális gépet hoz `myVM1` létre `myVM2`, és a nevet. Emellett SSH-kulcsokat hoz létre, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+A következő példa két `myVM1` nevű `myVM2`virtuális gépet hoz létre. SSH-kulcsokat is létrehoz, ha azok még nem léteznek az alapértelmezett kulcshelyen. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
 MyVM1 létrehozása (elsődleges):
 ```azurecli
@@ -85,9 +85,9 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel `publicIpAddress`a értékét. Ennek a címnek a használatával férhet hozzá a virtuális géphez.
+A virtuális gép létrehozása után az Azure CLI a következő példához hasonló információkat jelenít meg. Figyelje meg `publicIpAddress`az értékét. Ezzel a címmel érheti el a virtuális gép.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -101,6 +101,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 ```
 
 MyVM2 létrehozása (készenlét):
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -112,11 +113,11 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-A myVM2 létrehozása után `publicIpAddress` jegyezze fel a értékét.
+Vegye figyelembe `publicIpAddress` a myVM2 létrehozása utáni értékét.
 
 ### <a name="open-the-tcp-port-for-connectivity"></a>A TCP-port megnyitása a kapcsolathoz
 
-Ez a lépés külső végpontokat konfigurál, amelyek lehetővé teszik a távoli hozzáférést az Oracle-adatbázishoz.
+Ez a lépés külső végpontokat konfigurál, amelyek lehetővé teszik az Oracle-adatbázis távoli elérését.
 
 Nyissa meg a myVM1 portját:
 
@@ -128,9 +129,9 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-Az eredménynek a következőhöz hasonlóan kell kinéznie:
+Az eredménynek a következő válaszhoz hasonlóan kell kinéznie:
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -161,23 +162,23 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 
-Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le az IP-címet `publicIpAddress` a virtuális gép értékére.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le az `publicIpAddress` IP-címet a virtuális gép értékére.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>Adatbázis létrehozása a myVM1 (elsődleges)
+### <a name="create-the-database-on-myvm1-primary"></a>Az adatbázis létrehozása a myVM1-en (elsődleges)
 
-Az Oracle-szoftver már telepítve van a Piactéri rendszerképre, ezért a következő lépés az adatbázis telepítése. 
+Az Oracle szoftver már telepítve van a Marketplace-lemezképre, így a következő lépés az adatbázis telepítése. 
 
-Váltson az Oracle-adminisztrátorra:
+Váltás az Oracle felügyelőre:
 
 ```bash
 $ sudo su - oracle
 ```
 
-Hozza létre az adatbázist:
+Az adatbázis létrehozása:
 
 ```bash
 $ dbca -silent \
@@ -198,9 +199,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-A kimeneteknek a következőhöz hasonlóan kell kinézniük:
 
-```bash
+A kimenetek nek a következő válaszhoz hasonlóan kell kinézniük:
+
+```output
 Copying database files
 1% complete
 2% complete
@@ -230,14 +232,14 @@ Creating Pluggable Databases
 Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
 ```
 
-Állítsa be a ORACLE_SID és a ORACLE_HOME változót:
+Állítsa be a ORACLE_SID és ORACLE_HOME változókat:
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 $ ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-Opcionálisan hozzáadhat ORACLE_HOME és ORACLE_SID a/Home/Oracle/.bashrc-fájlhoz, így ezek a beállítások a jövőbeli bejelentkezésekhez lesznek mentve:
+A /home/oracle/.bashrc fájlhoz hozzáadhat ORACLE_HOME és ORACLE_SID, így a rendszer a későbbi bejelentkezésekhez menti ezeket a beállításokat menti:
 
 ```bash
 # add oracle home
@@ -246,9 +248,9 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-## <a name="configure-data-guard"></a>Az adatvédelem konfigurálása
+## <a name="configure-data-guard"></a>Adatvédő konfigurálása
 
-### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Archiválási napló üzemmódjának engedélyezése a myVM1 (elsődleges)
+### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Archív napló mód engedélyezése a myVM1-en (elsődleges)
 
 ```bash
 $ sqlplus / as sysdba
@@ -263,14 +265,15 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
-Engedélyezze a kényszerített naplózást, és győződjön meg arról, hogy legalább egy naplófájl létezik:
+
+Engedélyezze a kényszerítésnaplózást, és győződjön meg arról, hogy legalább egy naplófájl található:
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-Készenléti visszaállítási naplók létrehozása:
+Készenléti ismétlési naplók létrehozása:
 
 ```bash
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
@@ -279,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-A flashback bekapcsolása (ami sokkal könnyebbé teszi a helyreállítást)\_és\_a készenléti Fájlkezelés automatikusra állítása. Zárja be az SQL * Plus parancsot.
+Kapcsolja be a Flashback (ami a helyreállítás\_sokkal könnyebb), és állítsa standby FILE\_MANAGEMENT automatikus. Lépjen ki az SQL*Plus-ból.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -287,9 +290,9 @@ SQL> ALTER SYSTEM SET STANDBY_FILE_MANAGEMENT=AUTO;
 SQL> EXIT;
 ```
 
-### <a name="set-up-service-on-myvm1-primary"></a>Szolgáltatás beállítása a myVM1 (elsődleges)
+### <a name="set-up-service-on-myvm1-primary"></a>Szolgáltatás beállítása a myVM1 szolgáltatáson (elsődleges)
 
-Szerkessze vagy hozza létre a tnsnames. ora fájlt, amely a $ORACLE _HOME \ Network \ admin mappában található.
+A $ORACLE_HOME\network\admin mappában található tnsnames.ora fájl szerkesztése vagy létrehozása.
 
 Adja hozzá a következő bejegyzéseket:
 
@@ -315,7 +318,7 @@ cdb1_stby =
   )
 ```
 
-Szerkessze vagy hozza létre a figyelő. ora fájlt, amely a $ORACLE _HOME \ Network \ admin mappában található.
+A figyelő.ora fájl szerkesztése vagy létrehozása, amely a $ORACLE_HOME\network\admin mappában található.
 
 Adja hozzá a következő bejegyzéseket:
 
@@ -340,34 +343,36 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Az adatőr-közvetítő engedélyezése:
+Adatvédő bróker engedélyezése:
+
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
-A figyelő elindítása:
+
+Indítsa el a figyelőt:
 
 ```bash
 $ lsnrctl stop
 $ lsnrctl start
 ```
 
-### <a name="set-up-service-on-myvm2-standby"></a>Szolgáltatás beállítása a myVM2-on (készenlét)
+### <a name="set-up-service-on-myvm2-standby"></a>Szolgáltatás beállítása myVM2-n (készenléti állapot)
 
-SSH – myVM2:
+SSH a myVM2-re:
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-Bejelentkezés Oracle-ként:
+Jelentkezzen be Oracle néven:
 
 ```bash
 $ sudo su - oracle
 ```
 
-Szerkessze vagy hozza létre a tnsnames. ora fájlt, amely a $ORACLE _HOME \ Network \ admin mappában található.
+A $ORACLE_HOME\network\admin mappában található tnsnames.ora fájl szerkesztése vagy létrehozása.
 
 Adja hozzá a következő bejegyzéseket:
 
@@ -393,7 +398,7 @@ cdb1_stby =
   )
 ```
 
-Szerkessze vagy hozza létre a figyelő. ora fájlt, amely a $ORACLE _HOME \ Network \ admin mappában található.
+A figyelő.ora fájl szerkesztése vagy létrehozása, amely a $ORACLE_HOME\network\admin mappában található.
 
 Adja hozzá a következő bejegyzéseket:
 
@@ -418,7 +423,7 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-A figyelő elindítása:
+Indítsa el a figyelőt:
 
 ```bash
 $ lsnrctl stop
@@ -426,9 +431,10 @@ $ lsnrctl start
 ```
 
 
-### <a name="restore-the-database-to-myvm2-standby"></a>Az adatbázis visszaállítása myVM2 (készenléti állapotba)
+### <a name="restore-the-database-to-myvm2-standby"></a>Az adatbázis visszaállítása myVM2 -re (készenlét)
 
-Hozza létre a/tmp/initcdb1_stby.ora paramétert a következő tartalommal:
+Hozza létre a /tmp/initcdb1_stby paraméterfájlt a következő tartalommal:
+
 ```bash
 *.db_name='cdb1'
 ```
@@ -442,12 +448,13 @@ mkdir -p /u01/app/oracle/fast_recovery_area/cdb1
 mkdir -p /u01/app/oracle/admin/cdb1/adump
 ```
 
-Hozzon létre egy jelszavas fájlt:
+Jelszófájl létrehozása:
 
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
-Az adatbázis elindítása a myVM2:
+
+Indítsa el az adatbázist a myVM2-n:
 
 ```bash
 $ export ORACLE_SID=cdb1
@@ -457,13 +464,14 @@ SQL> STARTUP NOMOUNT PFILE='/tmp/initcdb1_stby.ora';
 SQL> EXIT;
 ```
 
-Állítsa vissza az adatbázist a Oláh Anna eszköz használatával:
+Az adatbázis visszaállítása az RMAN eszközzel:
 
 ```bash
 $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
-Futtassa a következő parancsokat a Oláh Anna:
+Futtassa a következő parancsokat az RMAN-ben:
+
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -474,16 +482,19 @@ DUPLICATE TARGET DATABASE
   NOFILENAMECHECK;
 ```
 
-A parancs befejezésekor a következőhöz hasonló üzeneteket kell látnia. Kilépés a Oláh Anna.
-```bash
+A parancs befejezésekor a következőhöz hasonló üzeneteknek kell megjelennie. Kifelé az RMAN-ből.
+
+```output
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
 Finished Duplicate Db at 29-JUN-17
+```
 
+```bash
 RMAN> EXIT;
 ```
 
-Opcionálisan hozzáadhat ORACLE_HOME és ORACLE_SID a/Home/Oracle/.bashrc-fájlhoz, így ezek a beállítások a jövőbeli bejelentkezésekhez lesznek mentve:
+A /home/oracle/.bashrc fájlhoz hozzáadhat ORACLE_HOME és ORACLE_SID, így a rendszer a későbbi bejelentkezésekhez menti ezeket a beállításokat menti:
 
 ```bash
 # add oracle home
@@ -492,16 +503,16 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-Az adatőr-közvetítő engedélyezése:
+Adatvédő bróker engedélyezése:
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
 
-### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Adatőr-átvitelszervező konfigurálása a myVM1 (elsődleges)
+### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Adatvédő-bróker konfigurálása myVM1-en (elsődleges)
 
-Indítsa el az adatőr-kezelőt, és jelentkezzen be a SYS és a Password használatával. (Ne használja az operációs rendszer hitelesítését.) Hajtsa végre a következőket:
+Indítsa el a Data Guard Manager-t, és jelentkezzen be SYS és jelszó használatával. (Ne használjon operációsrendszer-hitelesítést.) Hajtsa végre a következőket:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -520,6 +531,7 @@ Enabled.
 ```
 
 Tekintse át a konfigurációt:
+
 ```bash
 DGMGRL> SHOW CONFIGURATION;
 
@@ -536,13 +548,13 @@ Configuration Status:
 SUCCESS   (status updated 26 seconds ago)
 ```
 
-Elvégezte az Oracle-adatvédelem beállítását. A következő szakasz bemutatja, hogyan tesztelheti a kapcsolatot, és hogyan válthat át.
+Befejezte az Oracle Data Guard beállítását. A következő szakasz bemutatja, hogyan tesztelheti a kapcsolatot, és átválthat.
 
-### <a name="connect-the-database-from-the-client-machine"></a>Az adatbázis összekötése az ügyfélgépről
+### <a name="connect-the-database-from-the-client-machine"></a>Az adatbázis csatlakoztatása az ügyfélgépről
 
-Frissítse vagy hozza létre az tnsnames. ora fájlt az ügyfélszámítógépen. Ez a fájl általában $ORACLE _HOME \ Network \ admin.
+Frissítse vagy hozza létre a tnsnames.ora fájlt az ügyfélszámítógépen. Ez a fájl általában a $ORACLE_HOME\network\admin mappában található.
 
-Cserélje le az IP-címeket `publicIpAddress` a myVM1 és a myVM2 értékére:
+Cserélje le az `publicIpAddress` IP-címeket a myVM1 és a myVM2 értékeire:
 
 ```bash
 cdb1=
@@ -572,7 +584,7 @@ cdb1_stby=
   )
 ```
 
-Az SQL * Plus elindítása:
+Sql*Plus indítása:
 
 ```bash
 $ sqlplus sys/OraPasswd1@cdb1
@@ -586,11 +598,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 
 SQL>
 ```
-## <a name="test-the-data-guard-configuration"></a>Az adatvédelemi konfiguráció tesztelése
 
-### <a name="switch-over-the-database-on-myvm1-primary"></a>Váltás az adatbázison a myVM1 (elsődleges)
+## <a name="test-the-data-guard-configuration"></a>Az Adatvédő konfigurációjának tesztelése
 
-Váltás az elsődlegesről készenléti állapotra (cdb1 – cdb1_stby):
+### <a name="switch-over-the-database-on-myvm1-primary"></a>Az adatbázis váltása a myVM1-en (elsődleges)
+
+Váltás elsődlegesről készenléti állapotra (cdb1 cdb1_stby):
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -616,7 +629,7 @@ DGMGRL>
 
 Most már csatlakozhat a készenléti adatbázishoz.
 
-Az SQL * Plus elindítása:
+Sql*Plus indítása:
 
 ```bash
 
@@ -632,9 +645,10 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-### <a name="switch-over-the-database-on-myvm2-standby"></a>Váltás az adatbázison a myVM2 (készenlét)
+### <a name="switch-over-the-database-on-myvm2-standby"></a>Az adatbázis átkapcsolása a myVM2-n (készenlét)
 
-A váltáshoz futtassa a következő parancsot a myVM2:
+Az átkapcsoláshoz futtassa a következőket a myVM2-n:
+
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
@@ -656,9 +670,9 @@ Database mounted.
 Switchover succeeded, new primary is "cdb1"
 ```
 
-Most már csatlakozhat az elsődleges adatbázishoz.
+Még egyszer, most már képesnek kell lennie arra, hogy csatlakozzon az elsődleges adatbázishoz.
 
-Az SQL * Plus elindítása:
+Sql*Plus indítása:
 
 ```bash
 
@@ -674,12 +688,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-Elvégezte a Oracle Linux adatvédelmek telepítését és konfigurálását.
+Befejezte a Data Guard telepítését és konfigurálását oracle Linuxon.
 
 
 ## <a name="delete-the-virtual-machine"></a>Törölje a következő virtuális gépet:
 
-Ha már nincs szüksége a virtuális gépre, a következő paranccsal távolíthatja el az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást:
+Ha már nincs szüksége a virtuális gépre, a következő paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépés az összes kapcsolódó erőforrást:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -687,6 +701,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: Magasan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
+[Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 
-[A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)
+[Fedezze fel a virtuális gép üzembe helyezését az Azure CLI-mintákban](../../linux/cli-samples.md)

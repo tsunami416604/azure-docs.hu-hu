@@ -1,20 +1,19 @@
 ---
-title: Útmutató az Azure Marketplace-hez és a AppSource-közzétevőhöz | Azure
-description: Útmutató az Azure Marketplace-hez és a AppSource az alkalmazások és szolgáltatások közzétevői számára
+title: Az Azure Piactér és az AppSource-közzétevő irányelvei | Azure
+description: Az Azure Piactér és az AppSource irányelvei az alkalmazás- és szolgáltatásközzétevők számára
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825937"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281527"
 ---
 # <a name="guidelines"></a>Irányelvek  
 
@@ -23,52 +22,52 @@ ms.locfileid: "73825937"
 -->
 ---
 
-## <a name="guidelines-for-azure-marketplace"></a>Útmutató az Azure Marketplace-hez  
+## <a name="guidelines-for-azure-marketplace"></a>Az Azure Piactér irányelvei  
 
-### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Útmutató Microsoft-azonosító létrehozásához piactér-fiók kezeléséhez  
-Ha egynél több személy számára szükséges a piactér-fiók létrehozásához használt Microsoft-AZONOSÍTÓhoz való hozzáférés, kövesse az alábbi irányelveket a vállalati fiók létrehozásához. 
+### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>A piactéri fiók kezeléséhez létrehozott Microsoft ID-k használatának irányelvei  
+Ha egynél több személynek van szüksége a piactéri fiók létrehozásához használt Microsoft-azonosítóhoz való hozzáférésre, akkor kövesse az alábbi irányelveket a vállalati fiók létrehozásához. 
 
 >[!IMPORTANT]
->Annak engedélyezéséhez, hogy több felhasználó hozzáférhessen a Microsoft fejlesztői központ (fejlesztői központ) fiókjához, a Microsoft javasolja, hogy az Azure Active Directory (Azure AD) használatával rendeljen hozzá szerepköröket az egyes felhasználókhoz. Minden felhasználónak hozzá kell férnie a fiókhoz az egyes Azure AD-beli hitelesítő adatokkal való bejelentkezéssel. Hozza létre a Microsoft ID-t a vállalata Microsoft által regisztrált tartomány e-mail-címének használatával, ami azt jelenti, hogy az e-mailt nem rendeli hozzá a rendszer. Például: `windowsapps@fabrikam.com`.  
->*   További információ [: Microsoft ID egy Azure ad összevont tartomány](#issue-microsoft-id-in-an-azure-ad-federated-domain) szakaszban.  
+>Ahhoz, hogy több felhasználó számára is elérhető a Microsoft Developer Center (Dev Center) fiók, a Microsoft azt javasolja, hogy az Azure Active Directory (Azure AD) szerepkörök hozzárendelése az egyes felhasználók hoz. Minden felhasználónak hozzá kell férnie a fiókhoz, ha egyedi Azure AD-hitelesítő adatokkal jelentkezik be. Hozza létre Microsoft-azonosítóját egy, a vállalata által regisztrált tartományban található e-mail-cím használatával, a Microsoft azt javasolja, hogy az e-mailt ne rendeljék hozzá egy magánszemélynek. Például: `windowsapps@fabrikam.com`.  
+>*   További információért keresse fel a [Probléma: Microsoft-azonosító egy Azure AD összevont tartomány szakaszban.](#issue-microsoft-id-in-an-azure-ad-federated-domain)  
 
-*   Korlátozza a Microsoft ID elérését a lehető legkisebb számú fejlesztőhöz. 
-*   Állítson be egy vállalati e-mail-terjesztési listát (DL), amely tartalmazza mindazokat, akiknek hozzá kell férniük a Fejlesztői központ fiókjához. Adja hozzá a DL e-mail-címét a biztonsági adataihoz. A DL lehetővé teszi, hogy a listán szereplő összes alkalmazott biztonsági kódokat kapjon a kéréskor, valamint a Microsoft-azonosító biztonsági adatainak kezeléséhez. Ha a terjesztési lista beállítása nem valósítható meg, akkor az egyéni e-mail-fiók tulajdonosának elérhetőnek kell lennie a hozzáféréshez és a biztonsági kód megosztásához, amikor a rendszer kéri.  
-    *   A rendszer a tulajdonost például arra kéri, hogy új biztonsági adatokat adjanak hozzá a Microsoft ID-hez, vagy ha a Microsoft-azonosító új eszközről érhető el.  
-*   Adjon hozzá egy olyan vállalati telefonszámot, amelyhez nincs szükség bővítményre, és elérhető a legfontosabb csapattagok számára.  
-*   Általánosságban megkövetelheti, hogy a fejlesztők megbízható eszközöket használjanak a Fejlesztői központ fiókjába való bejelentkezéshez. Az összes kulcsfontosságú csapat tagjának hozzáféréssel kell rendelkeznie a megbízható eszközökhöz. A megbízható eszközök hozzáférésének használata csökkenti a biztonsági kódok küldésének követelményét, ha valaki hozzáfér a Fejlesztői központ fiókjához.  
-*   Ha nem megbízható számítógépről kell hozzáférést biztosítania a Fejlesztői központ fiókjához, akkor legfeljebb öt fejlesztőnek kell korlátoznia a hozzáférést. Ideális esetben a fejlesztőknek el kell érniük a fiókot azokról a számítógépekről, amelyek ugyanazt a földrajzi és hálózati helyet használják.  
-*   A biztonsági adatok gyakori áttekintése és ellenőrzése.  
-    *   A biztonsági adatok megtekintéséhez látogasson el a biztonsági beállítások lapra, amely a következő helyen található: [Account.Live.com/Proofs/Manage](https://account.live.com/proofs/Manage).
+*   Korlátozza a Microsoft-azonosítóhoz való hozzáférést a lehető legkevesebb fejlesztőre. 
+*   Hozzon létre egy vállalati e-mail terjesztési listát (DL), amely tartalmazza mindenki, akinek hozzá kell férnie a fejlesztői központ fiókjához. Adja hozzá a DL e-mail címet a biztonsági adatokhoz. A dl lehetővé teszi, hogy a listán szereplő összes alkalmazott szükség esetén biztonsági kódokat kapjon, és kezelje a Microsoft-azonosító biztonsági adatait. Ha a terjesztési lista beállítása nem valósítható meg, akkor az egyes e-mail fiók tulajdonosának elérhetőnek kell lennie a biztonsági kód eléréséhez és megosztásához, amikor a rendszer kéri.  
+    *   A rendszer például a tulajdonost kéri, amikor új biztonsági adatokat ad hozzá a Microsoft ID azonosítóhoz, vagy amikor a Microsoft-azonosítót új eszközről érik el.  
+*   Adjon hozzá egy olyan vállalati telefonszámot, amelyhez nincs szükség bővítményre, és amely a csapat kulcstagjai számára elérhető.  
+*   Általában meg kell követelnie a fejlesztőktől, hogy megbízható eszközöket használjanak a fejlesztői központ-fiókba való bejelentkezéshez. A csapat minden kulcsfontosságú tagjának hozzáféréssel kell rendelkeznie a megbízható eszközökhöz. A megbízható eszközök eléréséhez csökkenti a biztonsági kódok küldésének követelményét, amikor valaki a fejlesztői központ-fiókhoz fér hozzá.  
+*   Ha nem megbízható számítógépről kell hozzáférést biztosítania a fejlesztői központ-fiókhoz, akkor legfeljebb öt fejlesztőre kell korlátoznia a hozzáférést. Ideális esetben a fejlesztőknek azonos földrajzi és hálózati helyű számítógépekről kell hozzáférniük a fiókhoz.  
+*   Gyakran tekintse át és ellenőrizze a biztonsági adatokat.  
+    *   A biztonsági információk megtekintéséhez látogasson el a [account.live.com/proofs/Manage](https://account.live.com/proofs/Manage).
 
-A Fejlesztői központ fiókjának elsődlegesen megbízható számítógépekről kell elérhetőnek lennie. Kritikus fontosságú, hogy a megbízható számítógépektől hozzáférjen, mivel a Fejlesztői központ által létrehozott kódok száma hetente van korlátozva. A megbízható számítógépek használata a legbiztonságosabb és egységes bejelentkezési élményt is lehetővé teszi. 
-*   További információ a Fejlesztői központ fiókokra vonatkozó irányelveiről és biztonságáról: [docs.microsoft.com/Windows/uwp/publish/Opening-a-Developer-Account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account)címen található fejlesztői fiók megnyitása oldalon. 
+A fejlesztői központ-fiók elsősorban megbízható számítógépekről érhető el. Fontos, hogy megbízható számítógépekről férjen hozzá, mert a fejlesztői központ-fiókonként hetente generált kódok száma korlátozva van. A megbízható számítógépek használata a legbiztonságosabb és legkonzisztensebb bejelentkezési élményt is lehetővé teszi. 
+*   A fejlesztői központ fiókkal kapcsolatos további irányelveiről és biztonságáról a fejlesztői fiók megnyitása lapon talál [docs.microsoft.com/windows/uwp/publish/opening-a-developer-account.](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account) 
 
 ---
 
-#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Probléma: Microsoft ID egy Azure AD összevont tartományban  
-Előfordulhat, hogy a vállalati fiók összevont Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel összevont vállalati e-mail-címmel próbál létrehozni egy Microsoft-azonosítót, hibaüzenetet kap. Ha hibaüzenetet kap, ellenőrizze az IT-csapattal, hogy a fiókját az Azure AD-ben összevonta-e. Az Azure AD összevont e-mailek ismert probléma, és a Microsoft dolgozik a megoldásban.  
-*   Az Azure AD-vel kapcsolatos további információkért látogasson el a Azure Active Directory dokumentációs oldalra, amely a következő címen található: [docs.microsoft.com/Azure/Active-Directory](https://docs.microsoft.com/azure/active-directory).
+#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Probléma: Microsoft-azonosító Azure AD összevont tartományban  
+Előfordulhat, hogy a vállalati fiók az Azure Active Directoryn (Azure AD) keresztül kerül összevonásra. Ha az Azure AD-vel összevont vállalati e-mail-cím használatával próbál meg Microsoft-azonosítót létrehozni, hibaüzenetet kap. Ha hibaüzenetet kap, akkor kérdezze meg informatikai csapatát, hogy a fiók összevan-e vonva az Azure AD-n keresztül. Az Azure AD összevont e-mail egy ismert probléma, és a Microsoft dolgozik annak megoldásán.  
+*   Az Azure AD-ről további információt az Azure Active Directory dokumentációs lapján [talál,](https://docs.microsoft.com/azure/active-directory)amely a docs.microsoft.com/azure/active-directory .
 
-A Microsoft megkerülő megoldást javasol. Az alábbi lépéseket követve hozzon létre egy új e-mail-címet a `outlook.com` tartományban, és hozzon létre egy szabályt a kommunikáció továbbításához.  
-1.  Lépjen a fiók létrehozása lapra, és kattintson az új e-mail-cím beolvasása hivatkozásra. 
-    *   Ha regisztrálni szeretné a Microsoft-AZONOSÍTÓját, látogasson el a fiók létrehozása lapra a következő helyen: [signup.Live.com/signup](https://signup.live.com/signup).  
-2.  Hozza létre az új e-mail-címet, és adjon meg egy jelszót. Létrejön egy új Microsoft-azonosító és egy e-mail-postaláda a `outlook.com` tartományban. A fiók létrehozása előtt folytassa a regisztrációs folyamatot.  
+A Microsoft egy kerülő megoldást javasol. Az alábbi lépésekkel új e-mail címet hozhat létre a tartományban, `outlook.com` és létrehozhat egy szabályt a kommunikáció továbbítására.  
+1.  Nyissa meg a Fiók létrehozása lapot, és kattintson az Új e-mail cím beküldése hivatkozásra. 
+    *   A Microsoft-azonosító regisztrálásához látogasson el a [fiók](https://signup.live.com/signup)létrehozása lapra, amely a signup.live.com/signup .  
+2.  Hozza létre az új e-mail címet, és adjon meg egy jelszót. Létrejön egy új Microsoft-azonosító `outlook.com` és egy e-mail postaláda a tartományban. Folytassa a regisztrációs folyamatot a fiók létrehozásáig.  
 
     >[!IMPORTANT]
-    >A fejlesztői központban regisztrálni kívánt e-mail-címet vagy terjesztési listát kell használnia, amely Microsoft-AZONOSÍTÓként van regisztrálva. A Microsoft azt javasolja, hogy terjesztési lista használatával távolítsa el az egyéni függőségeket. Ha az e-mail-cím vagy a terjesztési lista nincs regisztrálva, akkor regisztrálnia kell most.    
+    >A fejlesztői központban való regisztrációhoz microsoftos azonosítóként regisztrált e-mail címet vagy terjesztési listát kell használnia. A Microsoft azt javasolja, hogy terjesztési lista használatával távolítsa el az egyénektől való függőséget. Ha az e-mail címe vagy a terjesztési listája nincs regisztrálva, akkor most kell regisztrálnia.    
 
     >[!Important]
-    >Ha e-mail-címe a `Microsoft` vállalati tartományban található, akkor nem használhatja azt a fejlesztői központban való regisztrációhoz.  
+    >Ha bármely e-mail-cím `Microsoft` található a vállalati tartományban, majd nem tudja használni a regisztrációs a fejlesztői központban.  
 
-3.  Miután létrehozta a Microsoft ID-t az Outlook e-mail-címével, jelentkezzen be az Outlook-postaládába. Hozzon létre egy e-mail továbbítási szabályt. Az e-mail továbbítási szabálynak az Outlook-postaládában fogadott összes e-mail-címet át kell helyeznie a saját tartományában, amelyet a piactér-fiók kezeléséhez hozott létre.  
-    *   Az Outlook-postaládába való bejelentkezéshez látogasson el a [Outlook.Live.com/OWA](https://outlook.live.com/owa)címen található Outlook-oldalra.  
-    *   A továbbítási szabályokkal kapcsolatos további információkért tekintse meg a használati szabályok az Outlook Web App alkalmazásban című témakört, amely automatikusan továbbítja az üzeneteket a [support.Office.com/article/use-Rules-in-Outlook-Web-App-to-automatically-Forward-messages-to-another-Account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed)címen található másik fiók oldalára.  
+3.  Miután létrehozta a Microsoft-azonosítót az Outlook e-mail címével, jelentkezzen be az Outlook-postaládába. Hozzon létre egy e-mail továbbítási szabályt. Az e-mail továbbítási szabály nak át kell helyeznie az Outlook-postaládában kapott összes e-mailt a piactéri fiók kezeléséhez létrehozott tartománye e-mail címére.  
+    *   Az Outlook-postaládába való bejelentkezéshez látogasson el a [outlook.live.com/owa](https://outlook.live.com/owa).  
+    *   A továbbítási szabályokról az Outlook Web App szabályok használata című oldalán talál, ha az üzeneteket automatikusan továbbítani szeretné egy másik, [support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed)található fióklapra.  
 
-1.  A továbbítási szabály az Outlook e-mail-fiókjában kapott összes e-mailt és kommunikációt elküldi az e-mail-címre a vállalatnál regisztrált tartományban. A `outlook.com` e-mail-címét a fejlesztői központban és a Cloud Partner Portalban történő hitelesítéshez is használni kell.  
+1.  A továbbítási szabály az Outlook e-mail fiókjában kapott összes e-mailt és kommunikációt a vállalata által regisztrált tartomány e-mail címére küldi. Az `outlook.com` e-mail címét a fejlesztői központban és a felhőpartneri portálon való hitelesítéshez kell használni.  
 
 ## <a name="next-steps"></a>További lépések
 
-*   Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) oldalára. 
+*   Keresse fel az Azure Piactér és az [AppSource Publisher Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) lapot. 
  
 ---

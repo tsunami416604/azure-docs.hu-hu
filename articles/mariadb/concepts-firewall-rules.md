@@ -1,74 +1,74 @@
 ---
-title: Tűzfalszabályok – Azure Database for MariaDB
-description: Tudnivalók a tűzfalszabályok használatáról a Azure Database for MariaDB-kiszolgálóhoz való csatlakozás engedélyezéséhez.
+title: Tűzfalszabályok – Azure-adatbázis a MariaDB-hez
+description: Ismerje meg, hogy használatával tűzfalszabályok at az Azure Database for MariaDB-kiszolgáló hoz való csatlakozás engedélyezéséhez.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: a09d9ebe0defc970e1c3b9e74a25f23fe94e6634
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 3/18/2020
+ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532042"
 ---
-# <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB kiszolgálói tűzfalszabályok
-A tűzfalak mindaddig megakadályozzák az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal az egyes kérések származó IP-címe alapján engedélyezi a hozzáférést a kiszolgálóhoz.
+# <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB kiszolgáló tűzfalszabályai
+A tűzfalak mindaddig megakadályozzák az adatbázis-kiszolgálóhoz való hozzáférést, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal hozzáférést biztosít a kiszolgálóhoz az egyes kérelmek eredeti IP-címe alapján.
 
-A tűzfal konfigurálásához hozzon létre olyan tűzfalszabályok, amelyek elfogadható IP-címek tartományait határozzák meg. A tűzfalszabályok a kiszolgáló szintjén hozhatók létre.
+A tűzfal konfigurálásához hozzon létre olyan tűzfalszabályokat, amelyek elfogadható IP-címtartományokat adnak meg. Tűzfalszabályokat a kiszolgáló szintjén hozhat létre.
 
-**Tűzfalszabályok:** Ezek a szabályok lehetővé teszik az ügyfelek számára, hogy elérjék a teljes Azure Database for MariaDB-kiszolgálót, azaz az azonos logikai kiszolgálón belüli összes adatbázist. A kiszolgálói szintű tűzfalszabályok a Azure Portal vagy az Azure CLI-parancsok használatával konfigurálhatók. A kiszolgálói szintű tűzfalszabályok létrehozásához az előfizetés tulajdonosának vagy az előfizetés közreműködőinek kell lennie.
+**Tűzfalszabályok:** Ezek a szabályok lehetővé teszik az ügyfelek számára, hogy hozzáférjenek a mariadb-kiszolgáló teljes Azure-adatbázisához, azaz az ugyanazon logikai kiszolgálón belüli összes adatbázishoz. A kiszolgálószintű tűzfalszabályok konfigurálhatók az Azure Portal vagy az Azure CLI-parancsok használatával. Kiszolgálószintű tűzfalszabályok létrehozásához az előfizetés tulajdonosának vagy az előfizetés közreműködőjének kell lennie.
 
 ## <a name="firewall-overview"></a>Tűzfal áttekintése
-A tűzfal alapértelmezés szerint blokkolja a Azure Database for MariaDB-kiszolgálóhoz tartozó összes adatbázis-hozzáférést. A kiszolgáló másik számítógépről való használatának megkezdéséhez meg kell adnia egy vagy több kiszolgálóoldali tűzfalszabályok használatát a kiszolgálóhoz való hozzáférés engedélyezéséhez. A tűzfalszabályok használatával adhatja meg, hogy mely IP-címtartományok legyenek engedélyezve az internetről. A tűzfalszabályok nem érintik a Azure Portal webhelyhez való hozzáférést.
+A MariaDB-kiszolgáló Azure-adatbázisához való összes adatbázis-hozzáférést alapértelmezés szerint blokkolja a tűzfal. Ha egy másik számítógépről szeretné használni a kiszolgálót, meg kell adnia egy vagy több kiszolgálószintű tűzfalszabályt a kiszolgáló elérésének engedélyezéséhez. A tűzfalszabályok segítségével megadhatja, hogy az internetről mely IP-címtartományokat engedélyezze. Az Azure Portal-webhelyhez való hozzáférést a tűzfalszabályok nem érintik.
 
-Az internetről és az Azure-ról érkező csatlakozási kísérleteknek előbb át kell haladnia a tűzfalon, mielőtt azok elérnék a Azure Database for MariaDB-adatbázist, ahogy az a következő ábrán is látható:
+Az internetről és az Azure-ból érkező csatlakozási kísérleteknek először át kell haladniuk a tűzfalon, mielőtt elérnék a MariaDB-adatbázis Azure-adatbázisát, ahogy az az alábbi ábrán látható:
 
-![Példa a tűzfal működésének folyamatára](./media/concepts-firewall-rules/1-firewall-concept.png)
+![Példa a tűzfal működésére](./media/concepts-firewall-rules/1-firewall-concept.png)
 
 ## <a name="connecting-from-the-internet"></a>Csatlakozás az internetről
-A kiszolgálói szintű tűzfalszabályok a Azure Database for MariaDB-kiszolgálón lévő összes adatbázisra érvényesek.
+A kiszolgálószintű tűzfalszabályok az Azure Database for MariaDB-kiszolgáló összes adatbázisára vonatkoznak.
 
-Ha a kérés IP-címe a kiszolgálói szintű tűzfalszabályok megadott tartományán belül van, akkor a rendszer megadja a kapcsolatokat.
+Ha a kérelem IP-címe a kiszolgálószintű tűzfalszabályokban megadott tartományok egyikén belül van, akkor a kapcsolat megadható.
 
-Ha a kérelem IP-címe kívül esik az adatbázis-vagy a kiszolgálói szintű tűzfalszabályok valamelyikében megadott tartományon, akkor a kapcsolati kérelem sikertelen lesz.
+Ha a kérelem IP-címe kívül esik az adatbázis- vagy kiszolgálószintű tűzfalszabályok bármelyikében megadott tartományon, akkor a csatlakozási kérelem sikertelen lesz.
 
 ## <a name="connecting-from-azure"></a>Csatlakozás az Azure-ból
-Javasoljuk, hogy keresse meg bármely alkalmazás vagy szolgáltatás kimenő IP-címét, és explicit módon engedélyezze az adott IP-címekhez vagy tartományokhoz való hozzáférést. Megkeresheti például egy Azure App Service kimenő IP-címét, vagy használhat egy virtuális géphez vagy más erőforráshoz kötött nyilvános IP-címet (lásd alább a virtuális gép magánhálózati IP-címével való csatlakozáshoz a szolgáltatási végpontokon). 
+Javasoljuk, hogy keresse meg bármely alkalmazás vagy szolgáltatás kimenő IP-címét, és kifejezetten engedélyezze a hozzáférést az egyes IP-címekhez vagy -tartományokhoz. Például megkeresheti egy Azure App Service kimenő IP-címét, vagy használhat egy virtuális géphez vagy más erőforráshoz kötött nyilvános IP-címet (lásd alább a virtuális gép privát IP-címhez való csatlakozással kapcsolatos információkat a szolgáltatás végpontok felett). 
 
-Ha az Azure-szolgáltatáshoz nem érhető el rögzített kimenő IP-cím, az összes Azure-adatközpont IP-címéről is engedélyezheti a kapcsolódást. Ezt a beállítást engedélyezheti a Azure Portal az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** lehetőségre a **kapcsolat biztonsági** paneljén **, és** a **Mentés**gombra kattintva. Az Azure CLI-ből egy tűzfalszabály-beállítás, amely a 0.0.0.0 értékkel egyenlő, és ezzel egyenértékű. Ha a kapcsolódási kísérlet nem engedélyezett, a kérelem nem éri el a Azure Database for MariaDB-kiszolgálót.
+Ha egy rögzített kimenő IP-cím nem érhető el az Azure-szolgáltatáshoz, fontolja meg az összes Azure-adatközpont IP-címből származó kapcsolatok engedélyezését. Ez a beállítás az Azure Portalon is engedélyezhető, ha a Kapcsolat biztonsági ablaktábláján az **Azure-szolgáltatások hoz való hozzáférés engedélyezése** beállítást **a** Kapcsolat biztonsági ablaktáblájáról a **Be** értékre **állítja,** és a Mentés gombra kerül. Az Azure CLI-ből a 0.0.0.0 kezdő és záró című tűzfalszabály-beállítás felel meg ennek. Ha a csatlakozási kísérlet nem engedélyezett, a kérelem nem éri el az Azure Database for MariaDB-kiszolgálót.
 
 > [!IMPORTANT]
-> Az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítással konfigurálhatja a tűzfalat úgy, hogy az az Azure összes kapcsolatát engedélyezze, beleértve a más ügyfelek előfizetéseit is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
+> Az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás úgy konfigurálja a tűzfalat, hogy az Azure-ból érkező összes kapcsolat engedélyezze, beleértve a más ügyfelek előfizetéseiből származó kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
 > 
 
-![Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése a portálon](./media/concepts-firewall-rules/allow-azure-services.png)
+![Hozzáférés engedélyezése az Azure-szolgáltatásokhoz a portálon konfigurálása](./media/concepts-firewall-rules/allow-azure-services.png)
 
-### <a name="connecting-from-a-vnet"></a>Csatlakozás VNet
-Ha biztonságosan szeretne csatlakozni a Azure Database for MariaDB-kiszolgálóhoz egy VNet, vegye fontolóra a [VNet szolgáltatás-végpontok](./concepts-data-access-security-vnet.md)használatát. 
+### <a name="connecting-from-a-vnet"></a>Csatlakozás virtuális hálózatról
+Ha biztonságosan szeretne csatlakozni az Azure Database for MariaDB-kiszolgálóhoz egy virtuális hálózatról, fontolja meg [a Virtuálishálózat-szolgáltatás végpontjainak](./concepts-data-access-security-vnet.md)használatát. 
 
 ## <a name="programmatically-managing-firewall-rules"></a>Tűzfalszabályok szoftveres kezelése
-A Azure Portalon kívül a tűzfalszabályok programozott módon is kezelhetők az Azure CLI használatával. 
+Az Azure Portalon kívül a tűzfalszabályok az Azure CLI használatával programozott módon is kezelhetők. 
 
-Lásd még: [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése az Azure CLI használatával](./howto-manage-firewall-cli.md).
+Lásd: [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése az Azure CLI használatával.](./howto-manage-firewall-cli.md)
 
-## <a name="troubleshooting-firewall-issues"></a>Tűzfalakkal kapcsolatos problémák elhárítása
-Vegye figyelembe a következő szempontokat, amikor a MariaDB-kiszolgáló szolgáltatáshoz való hozzáférés nem Microsoft Azure a várt módon viselkedik:
+## <a name="troubleshooting-firewall-issues"></a>Tűzfalproblémák elhárítása
+Vegye figyelembe a következő pontokat, ha a Microsoft Azure Database for MariaDB kiszolgálószolgáltatáshoz való hozzáférés nem a várt módon működik:
 
-* **Az engedélyezési lista módosításai még nem léptek érvénybe:** A Azure Database for MariaDB-kiszolgáló tűzfal-konfigurációjának változásaira vonatkozóan akár öt perc is eltelhet.
+* **Az engedélyezési lista módosításai még nem léptek hatályba:** Előfordulhat, hogy a MariaDB Server tűzfalkonfigurációjának Azure Database módosításai akár öt perces késéssel lépnek életbe.
 
-* **A bejelentkezési azonosító nincs engedélyezve, vagy helytelen jelszót használt:** Ha a bejelentkezési azonosító nem rendelkezik engedéllyel a Azure Database for MariaDB-kiszolgálón, vagy helytelen a használt jelszó, a rendszer megtagadja a kapcsolódást a Azure Database for MariaDB-kiszolgálóhoz. Egy tűzfalbeállítás létrehozása lehetővé teszi az ügyfelek számára a kiszolgálóhoz való csatlakozás megkísérlését, azonban minden egyes ügyfélnek meg kell adnia a szükséges biztonsági hitelesítő adatokat.
+* **A bejelentkezés nem engedélyezett, vagy helytelen jelszót használtak:** Ha egy bejelentkezési jogosultsággal nem rendelkezik az Azure Database for MariaDB kiszolgálón, vagy a használt jelszó helytelen, a kapcsolat az Azure Database for MariaDB-kiszolgáló megtagadva. Egy tűzfalbeállítás létrehozása lehetővé teszi az ügyfelek számára a kiszolgálóhoz való csatlakozás megkísérlését, azonban minden egyes ügyfélnek meg kell adnia a szükséges biztonsági hitelesítő adatokat.
 
-* **Dinamikus IP-cím:** Ha a dinamikus IP-címzéssel rendelkező internetkapcsolattal rendelkezik, és a tűzfalon keresztül nem sikerül bejutnia, akkor a következő megoldások valamelyikét kipróbálhatja:
+* **Dinamikus IP-cím:** Ha dinamikus IP-címzéssel rendelkező internetkapcsolattal rendelkezik, és nem tud átjutni a tűzfalon, próbálkozzon az alábbi megoldási javaslatokkal:
 
-   * Kérje meg az internetszolgáltatót (ISP) a Azure Database for MariaDB-kiszolgálót elérő ügyfélszámítógépekhez hozzárendelt IP-címtartomány számára, majd adja hozzá az IP-címtartományt tűzfalszabályként.
+   * Kérdezze meg az internetszolgáltatótól az Azure-adatbázishoz a MariaDB-kiszolgálóhoz hozzáférő ügyfélszámítógépekhez rendelt IP-címtartományt, majd adja hozzá az IP-címtartományt tűzfalszabályként.
 
    * Állítson be statikus IP-címeket az ügyfélszámítógépei számára, majd adja meg az IP-címeket tűzfalszabályokként.
 
-* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for MariaDB-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md). 
+* **A kiszolgáló IP-címe nyilvánosnak tűnik:** A MariaDB-kiszolgálóazure-adatbázisával létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül kerülnek átirányítva. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információt a [kapcsolódási architektúra című cikkben](concepts-connectivity-architecture.md)talál. 
 
-## <a name="next-steps"></a>Következő lépések
-- [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-portal.md)
-- [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-cli.md)
-- [VNet szolgáltatásbeli végpontok a Azure Database for MariaDB](./concepts-data-access-security-vnet.md)
+## <a name="next-steps"></a>További lépések
+- [Azure Database létrehozása és kezelése a MariaDB tűzfalszabályaihoz az Azure Portal használatával](./howto-manage-firewall-portal.md)
+- [Azure Database létrehozása és kezelése a MariaDB tűzfalszabályaihoz az Azure CLI használatával](./howto-manage-firewall-cli.md)
+- [Virtuális hálózat szolgáltatásvégpontjai a MariaDB Azure Database-ben](./concepts-data-access-security-vnet.md)

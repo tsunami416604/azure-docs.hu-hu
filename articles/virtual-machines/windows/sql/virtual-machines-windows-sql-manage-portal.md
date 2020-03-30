@@ -1,6 +1,6 @@
 ---
-title: SQL Server virtuális gépek kezelése az Azure-ban a Azure Portal használatával | Microsoft Docs
-description: Megtudhatja, hogyan érheti el az SQL-alapú virtuális gép erőforrását az Azure-ban üzemeltetett SQL Server VM Azure Portal.
+title: SQL Server virtuális gépek kezelése az Azure-ban az Azure Portalhasználatával | Microsoft dokumentumok
+description: Megtudhatja, hogyan érheti el az SQL virtuálisgép-erőforrást az Azure Portalon az Azure-ban üzemeltetett SQL Server virtuális géphez.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,73 +14,73 @@ ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 244ad7d079fd7baf25f8079557576c42d25ca785
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243210"
 ---
-# <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>SQL Server virtuális gépek kezelése az Azure-ban a Azure Portal használatával
+# <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>SQL Server virtuális gépek kezelése az Azure-ban az Azure Portal használatával
 
-A [Azure Portal](https://portal.azure.com)az **SQL Virtual Machines** erőforrás egy független felügyeleti szolgáltatás. Használhatja az SQL Server virtuális gépek egyidejű megtekintésére és a SQL Server dedikált beállítások módosítására: 
+Az [Azure Portalon](https://portal.azure.com)az **SQL virtuális gépek** erőforrás egy független felügyeleti szolgáltatás. Ezzel egyidejűleg megtekintheti az összes SQL Server virtuális gépet, és módosíthatja az SQL Server számára kijelölt beállításokat: 
 
-![SQL-alapú virtuális gépek erőforrása](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
+![SQL virtuális gépek erőforrás](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Javasoljuk, hogy az **SQL Virtual Machines** erőforrás használatával tekintse meg és kezelje a SQL Server virtuális gépeket az Azure-ban. Az **SQL Virtual Machines** erőforrás jelenleg azonban nem támogatja a SQL Server virtuális gépek [támogatásának](virtual-machines-windows-sql-server-2008-eos-extend-support.md) felügyeletét. A támogatási SQL Server virtuális gépek beállításainak kezeléséhez használja helyette az elavult [SQL Server konfiguráció fület](#access-the-sql-server-configuration-tab) . 
-- Az **SQL Virtual Machines** erőforrás csak olyan SQL Server virtuális gépek számára érhető el, amelyek [regisztrálva vannak az SQL VM erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md). 
+- Azt javasoljuk, hogy az **SQL virtuális gépek** erőforrás használatával tekintse meg és kezelje az SQL Server virtuális gépek az Azure-ban. De jelenleg az **SQL virtuális gépek** erőforrás nem támogatja a [végfelhasználói](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server virtuális gépek kezelését. A támogatás megszűnése utáni SQL Server virtuális gépek beállításainak kezeléséhez használja az elavult [SQL Server konfigurációs lapot.](#access-the-sql-server-configuration-tab) 
+- Az **SQL virtuális gépek** erőforrás csak az SQL [VM erőforrás-szolgáltatónál regisztrált](virtual-machines-windows-sql-register-with-resource-provider.md)SQL Server virtuális gépek számára érhető el. 
 
 
-## <a name="access-the-sql-virtual-machines-resource"></a>Hozzáférés az SQL Virtual Machines erőforráshoz
-Az SQL-alapú **virtuális gépek** erőforrásának eléréséhez tegye a következőket:
+## <a name="access-the-sql-virtual-machines-resource"></a>Az SQL virtuális gépek erőforrásának elérése
+A **virtuális SQL-gépek** erőforrásának eléréséhez tegye a következőket:
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
-1. Válassza **a minden szolgáltatás**lehetőséget. 
-1. A keresőmezőbe írja be az **SQL Virtual Machines** kifejezést.
-1. (Nem kötelező): válassza ki az SQL-alapú **virtuális gépek** melletti csillagot, és adja hozzá ezt a lehetőséget a **Kedvencek** menühöz. 
-1. Válassza az SQL-alapú **virtuális gépek**lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Válassza ki **az összes szolgáltatást**. 
+1. Írja be az **SQL virtuális gépeket** a keresőmezőbe.
+1. (Nem kötelező): Válassza ki a csillag mellett **SQL virtuális gépek** hozzá ezt a lehetőséget a **Kedvencek** menüben. 
+1. Válassza az **SQL virtuális gépek**lehetőséget. 
 
    ![SQL Server virtuális gépek keresése az összes szolgáltatásban](media/virtual-machines-windows-sql-manage-portal/sql-vm-search.png)
 
-1. A portálon az előfizetésen belül elérhető összes SQL Server virtuális gép szerepel. Válassza ki a felügyelni kívánt elemet az **SQL Virtual Machines** -erőforrás megnyitásához. Ha a SQL Server VM nem jelenik meg, használja a keresőmezőt. 
+1. A portál felsorolja az összes SQL Server virtuális gép elérhető az előfizetésen belül. Válassza ki azt, amelyiknek meg szeretné nyitni az **SQL virtuális gépek** erőforrását. Használja a keresőmezőt, ha az SQL Server virtuális gép nem jelenik meg. 
 
-   ![Az összes rendelkezésre álló SQL Server virtuális gép](media/virtual-machines-windows-sql-manage-portal/all-sql-vms.png)
+   ![Az összes elérhető SQL Server virtuális gép](media/virtual-machines-windows-sql-manage-portal/all-sql-vms.png)
 
-   A SQL Server VM kiválasztásával megnyílik az **SQL Virtual Machines** erőforrás: 
+   Az SQL Server virtuális gép kiválasztása megnyitja az **SQL virtuális gépek erőforrását:** 
 
 
-   ![SQL-alapú virtuális gépek erőforrása](media/virtual-machines-windows-sql-manage-portal/sql-vm-resource.png)
+   ![SQL virtuális gépek erőforrás](media/virtual-machines-windows-sql-manage-portal/sql-vm-resource.png)
 
 > [!TIP]
-> Az **SQL-alapú virtuális gépek** erőforrása dedikált SQL Server beállításokra szolgál. Válassza ki a **virtuális gép nevét a virtuális gép** mezőben, hogy megnyissa a virtuális géphez tartozó beállításokat, de nem kizárólag SQL Server. 
+> Az **SQL virtuális gépek** erőforrás dedikált SQL Server-beállításokhoz tartozik. Válassza ki a virtuális gép nevét a **virtuális gép** mezőben a virtuális gépre jellemző, de nem kizárólag az SQL Serverre vonatkozó beállítások megnyitásához. 
 
-## <a name="access-the-sql-server-configuration-tab"></a>A SQL Server konfiguráció lap elérése
-A **SQL Server konfiguráció** lap elavult. Jelenleg ez az egyetlen módszer a támogatási SQL Server virtuális gépek [támogatásához](virtual-machines-windows-sql-server-2008-eos-extend-support.md) , és olyan virtuális gépek SQL Server, amelyek nem lettek [regisztrálva az SQL VM erőforrás-szolgáltatóban](virtual-machines-windows-sql-register-with-resource-provider.md).
+## <a name="access-the-sql-server-configuration-tab"></a>Az SQL Server konfigurációs lapjának elérése
+Az **SQL Server konfigurációs** lapja elavult. Jelenleg ez az egyetlen módszer a [támogatás megszűnése](virtual-machines-windows-sql-server-2008-eos-extend-support.md) utáni SQL Server virtuális gépek és [az SQL Virtuálisgép-erőforrás-szolgáltatóval nem regisztrált](virtual-machines-windows-sql-register-with-resource-provider.md)SQL Server virtuális gépek kezelésére.
 
-Az elavult **SQL Server konfiguráció** lap megnyitásához nyissa meg a **virtuális gépek** erőforrást. Ehhez a következő lépések szükségesek:
+Az SQL Server elavult **konfigurációs** lapjának eléréséhez nyissa meg a **Virtuális gépek** erőforrást. Ehhez a következő lépések szükségesek:
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
-1. Válassza **a minden szolgáltatás**lehetőséget. 
-1. A keresőmezőbe írja be a **virtuális gépeket** .
-1. (Nem kötelező): válassza ki a **virtuális gépek** melletti csillagot, és adja hozzá ezt a lehetőséget a **Kedvencek** menühöz. 
-1. Válassza a **virtuális gépek**lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Válassza ki **az összes szolgáltatást**. 
+1. Írja be a **virtuális gépeket** a keresőmezőbe.
+1. (Nem kötelező): Válassza ki a **virtuális gépek** melletti csillagot, ha hozzá szeretné adni ezt a lehetőséget a **Kedvencek** menühöz. 
+1. Válassza a **Virtuális gépek** lehetőséget. 
 
    ![Virtuális gépek keresése](media/virtual-machines-windows-sql-manage-portal/vm-search.png)
 
-1. A portál felsorolja az előfizetésben található összes virtuális gépet. Válassza ki a felügyelni kívánt elemet a **virtuális gépek** erőforrásának megnyitásához. Ha a SQL Server VM nem jelenik meg, használja a keresőmezőt. 
-1. A **Beállítások** ablaktáblán válassza a **SQL Server konfiguráció** lehetőséget a SQL Server VM kezeléséhez. 
+1. A portál felsorolja az összes virtuális gép az előfizetésben. Válassza ki azt, amelyiknek meg szeretné nyitni a **Virtuális gépek** erőforrást. Használja a keresőmezőt, ha az SQL Server virtuális gép nem jelenik meg. 
+1. Válassza az **SQL Server konfigurációját** a **Beállítások** ablaktáblán az SQL Server virtuális gép kezeléséhez. 
 
-   ![SQL Server konfiguráció](media/virtual-machines-windows-sql-manage-portal/sql-vm-configuration.png)
+   ![SQL Server-konfiguráció](media/virtual-machines-windows-sql-manage-portal/sql-vm-configuration.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért tekintse át a következő cikkeket: 
 
-* [Windows rendszerű virtuális gépek SQL Server áttekintése](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](virtual-machines-windows-sql-server-iaas-faq.md)
-* [A Windows rendszerű virtuális gépek SQL Server díjszabási útmutatója](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Windows rendszerű virtuális gépen SQL Server kibocsátási megjegyzései](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Az SQL Server áttekintése Windows virtuális gépen](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Gyakori kérdések az SQL Server rendszerrel kapcsolatos kérdésekről Windows VM rendszeren](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Az SQL Server díjszabási útmutatója Windows virtuális gépen](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Kibocsátási megjegyzések az SQL Server rendszerhez Windows vM rendszeren](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

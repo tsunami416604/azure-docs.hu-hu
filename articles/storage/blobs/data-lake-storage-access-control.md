@@ -1,101 +1,108 @@
 ---
-title: A Azure Data Lake Storage Gen2 hozzáférés-vezérlésének áttekintése | Microsoft Docs
-description: Ismerje meg, hogyan működik a hozzáférés-vezérlés Azure Data Lake Storage Gen2
+title: Hozzáférés-vezérlés áttekintése az Azure Data Lake Storage Gen2 szolgáltatásban | Microsoft dokumentumok
+description: A hozzáférés-vezérlés működésének ismertetése az Azure Data Lake Storage Gen2 szolgáltatásban
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79255573"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528608"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés Azure Data Lake Storage Gen2
+# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
-Azure Data Lake Storage Gen2 olyan hozzáférés-vezérlési modellt valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). Ez a cikk a Data Lake Storage Gen2 hozzáférés-vezérlési modelljének alapjait összegzi.
+Az Azure Data Lake Storage Gen2 olyan hozzáférés-vezérlési modellt valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlési (RBAC) és a POSIX-szerű hozzáférés-vezérlési listákat (ACL-ek). Ez a cikk a Data Lake Storage Gen2 hozzáférés-vezérlési modelljének alapjait foglalja össze.
 
 <a id="azure-role-based-access-control-rbac" />
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-A RBAC szerepkör-hozzárendelésekkel hatékonyan alkalmazza a *rendszerbiztonsági tag*engedélyeinek készleteit. A *rendszerbiztonsági tag* egy olyan objektum, amely az Azure-erőforrásokhoz való hozzáférést kérő Azure Active Directory (ad) által meghatározott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl.
+Az RBAC szerepkör-hozzárendeléseket használ a rendszerbiztonsági tagok engedélykészleteinek hatékony *alkalmazására.* A *rendszerbiztonsági tag* egy olyan objektum, amely egy felhasználót, csoportot, egyszerű szolgáltatást vagy felügyelt identitást jelöl, amely az Azure Active Directoryban (AD) van definiálva, és hozzáférést kér az Azure-erőforrásokhoz.
 
-Ezek az Azure-erőforrások jellemzően legfelső szintű erőforrásokra vannak korlátozva (például: Azure Storage-fiókok). Az Azure Storage esetében, és ennek következtében Azure Data Lake Storage Gen2 ezt a mechanizmust a tároló (fájlrendszer) erőforrásra kiterjesztették.
+Ezek az Azure-erőforrások általában a legfelső szintű erőforrásokra vannak korlátozva (például: Azure Storage-fiókok). Az Azure Storage, és ebből következően az Azure Data Lake Storage Gen2 esetében ez a mechanizmus ki lett terjesztve a tároló (fájlrendszer) erőforrásra.
 
-Ha szeretné megtudni, hogyan rendeljen hozzá szerepköröket rendszerbiztonsági tag számára a Storage-fiók hatókörében, tekintse meg [Az Azure Blob-és üzenetsor-kezelés hozzáférésének biztosítása a Azure Portal RBAC](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)című témakört.
-
-### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>A szerepkör-hozzárendelések hatása a fájl-és könyvtár szintű hozzáférés-vezérlési listára
-
-A RBAC szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, ez egy nagyon durva módszer a hozzáférés-vezérlési listákhoz képest. A RBAC legkisebb részletessége a tároló szintjén van, ezért a rendszer az ACL-ekkel magasabb prioritással értékeli. Ezért ha egy szerepkört egy rendszerbiztonsági tag számára rendel hozzá egy tároló hatókörében, a rendszerbiztonsági tag az adott szerepkörhöz tartozó összes könyvtárra és fájlra vonatkozó engedélyezési szinttel rendelkezik, függetlenül az ACL-hozzárendeléstől.
-
-Ha egy rendszerbiztonsági tag egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkörön keresztül kap RBAC-adatengedélyeket, akkor ezeket az engedélyeket először a kérelem engedélyezése után értékeli ki a rendszer. Ha a kért műveletet a rendszerbiztonsági tag RBAC-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik RBAC-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
+Ha meg szeretné tudni, hogyan rendelhet szerepköröket a rendszerbiztonsági tagokhoz a tárfiók hatókörében, olvassa el [a Hozzáférés megadása az Azure blob- és várólista-adatokhoz az RBAC-mal az Azure Portalon című témakört.](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 > [!NOTE]
-> Ha a rendszerbiztonsági tag a Storage blob-adatok tulajdonosának beépített szerepkör-hozzárendelését rendelte hozzá, akkor a rendszerbiztonsági tag egy *felügyelőnek* tekintendő, és teljes hozzáférést kap az összes mutációs művelethez, beleértve a címtár vagy fájl tulajdonosának beállítását, valamint a könyvtárak és fájlok hozzáférés-vezérlési listáihoz tartozó ACL-eket, amelyekhez nem a tulajdonos. A felügyelői hozzáférés csak az erőforrás tulajdonosának módosítására jogosult.
+> Egy vendégfelhasználó nem hozhat létre szerepkör-hozzárendelést.
 
-## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Megosztott kulcs és közös hozzáférésű aláírás (SAS) hitelesítése
+### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>A szerepkör-hozzárendelések hatása a fájl- és címtárszintű hozzáférés-vezérlési listákra
 
-Azure Data Lake Storage Gen2 támogatja a megosztott kulcs-és SAS-metódusokat a hitelesítéshez. Ezen hitelesítési módszerek egyik jellemzője, hogy a hívóhoz nem tartozik identitás, ezért a rendszerbiztonsági tag engedély-alapú engedélyezése nem hajtható végre.
+Az RBAC szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, ez egy nagyon durva szemcsés mechanizmus az ACL-ekhez képest. Az RBAC legkisebb granularitása a tároló szintjén van, és ezt a rendszer magasabb prioritással értékeli ki, mint az ACL-eket. Ezért ha egy tároló hatókörében szerepkört rendel egy rendszerbiztonsági taghoz, akkor a rendszerbiztonsági tag rendelkezik az adott szerepkörhöz társított engedélyezési szinttel az adott tárolóban lévő összes könyvtárhoz és fájlhoz, függetlenül az ACL-hozzárendelésektől.
 
-Megosztott kulcs esetén a hívó gyakorlatilag "felügyelői" hozzáférést kap, ami teljes hozzáférést biztosít az összes erőforrás összes műveletéhez, beleértve a tulajdonos beállítását és a hozzáférés-vezérlési listák módosítását.
+Ha egy rendszerbiztonsági tag rbac-adatengedélyeket kap egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)keresztül, vagy egy egyéni szerepkörön keresztül, ezeket az engedélyeket a rendszer először egy kérelem engedélyezésekor értékeli ki. Ha a kért műveletet a rendszerbiztonsági tag RBAC-hozzárendelései engedélyezik, az engedélyezés azonnal feloldódik, és nem történik további ACL-ellenőrzés. Másik lehetőségként, ha a rendszerbiztonsági tag nem rendelkezik RBAC-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések et hajt végre annak megállapítására, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
 
-Az SAS-tokenek a jogkivonat részeként tartalmazzák az engedélyezett engedélyeket. Az SAS-jogkivonatban található engedélyeket a rendszer hatékonyan alkalmazza az összes hitelesítési döntésre, de nem végez további ACL-ellenőrzéseket.
+> [!NOTE]
+> Ha a rendszerbiztonsági tag a Storage Blob Data Owner beépített szerepkör-hozzárendelés, majd a rendszerbiztonsági tag tekinthető *egy szuper-felhasználó,* és teljes hozzáférést kap az összes mutáns műveletek, beleértve a beállítás a tulajdonos egy könyvtár vagy fájl, valamint a hozzáférés-kezelők a könyvtárak és fájlok, amelyek nem a tulajdonos. A rendszergazdai hozzáférés az egyetlen engedélyezett módja az erőforrás tulajdonosának módosításához.
 
-## <a name="access-control-lists-on-files-and-directories"></a>Fájlok és könyvtárak hozzáférés-vezérlési listája
+## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Megosztott kulcs és megosztott hozzáférésű aláírás (SAS) hitelesítése
 
-Fájlok és könyvtárak hozzáférési szintjén társíthatja a rendszerbiztonsági tag-t. Ezek a társítások egy *hozzáférés-vezérlési listán (ACL)* vannak rögzítve. A Storage-fiók minden fájlja és könyvtára rendelkezik egy hozzáférés-vezérlési listával.
+Az Azure Data Lake Storage Gen2 támogatja a megosztott kulcs és a SAS hitelesítési módszereket. A hitelesítési módszerek egyik jellemzője, hogy nincs identitás társítva a hívóhoz, ezért a rendszerbiztonsági rendszer engedélyalapú engedélyenem hajtható végre.
 
-Ha a szerepkört egy rendszerbiztonsági tag számára rendelte hozzá a Storage-fiók szintjén, a hozzáférés-vezérlési listában megadhatja, hogy a rendszerbiztonsági tag emelt szintű hozzáférést adott fájlokhoz és címtárakhoz.
+A megosztott kulcs esetében a hívó ténylegesen "szuper-felhasználó" hozzáférést kap, ami teljes hozzáférést jelent az összes erőforrás összes műveletéhez, beleértve a tulajdonos beállítását és az ACL-k módosítását.
 
-A hozzáférés-vezérlési listán nem használható olyan hozzáférési szint, amely alacsonyabb, mint a szerepkör-hozzárendelés által megadott szint. Ha például a [tárolási blob adatközreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) szerepkört egy rendszerbiztonsági tag számára rendeli hozzá, akkor nem használhatja a hozzáférés-vezérlési listát, hogy megakadályozza a rendszerbiztonsági tag írását egy könyvtárba.
+A SAS-jogkivonatok a jogkivonat részeként tartalmazzák a megengedett engedélyeket. A SAS-jogkivonatban szereplő engedélyek hatékonyan vonatkoznak az összes engedélyezési döntésre, de nem végeznek további ACL-ellenőrzéseket.
 
-### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Fájl-és könyvtár-szintű engedélyek beállítása hozzáférés-vezérlési lista használatával
+## <a name="access-control-lists-on-files-and-directories"></a>Hozzáférés-vezérlési listák fájlokon és könyvtárakon
 
-A fájl-és könyvtári szintű engedélyek megadásához tekintse meg a következő cikkek bármelyikét:
+A rendszerbiztonsági tagokat a fájlok és könyvtárak hozzáférési szintjéhez társíthatja. Ezeket a társításokat *egy hozzáférés-vezérlési listában (ACL)* rögzítik. A tárfiók minden fájlja és könyvtára rendelkezik hozzáférés-vezérlési listával.
+
+> [!NOTE]
+> Az ACL-ok csak az azonos bérlő rendszerbiztonsági tagokra vonatkoznak. A vendégfelhasználót nem társíthatja hozzáférési szinthez.  
+
+Ha a tárfiók szintjén szerepkört rendelt egy rendszerbiztonsági taghoz, hozzáférés-vezérlési listák használatával rendszergazdai jogosultsággal biztosíthatja az adott rendszerbiztonsági tag számára az adott fájlokhoz és könyvtárakhoz való hozzáférést.
+
+Hozzáférés-vezérlési listák nem használhatók olyan hozzáférési szint biztosításához, amely alacsonyabb, mint egy szerepkör-hozzárendelés által megadott szint. Ha például a [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) szerepkört egy rendszerbiztonsági taghoz rendeli hozzá, akkor nem használhatja a hozzáférés-vezérlési listákat annak megakadályozására, hogy a rendszerbiztonsági tag egy könyvtárba írjon.
+
+
+### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Fájl- és könyvtárszintű engedélyek beállítása hozzáférés-vezérlési listák használatával
+
+A fájl- és könyvtárszintű engedélyek beállításához tekintse meg az alábbi cikkek egyikét:
 
 |||
 |--------|-----------|
-|Azure Storage Explorer |[A Azure Storage Explorer használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
-|.NET |[A .NET használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
-|Java|[A Java segítségével kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
-|Python|[A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
-|PowerShell|[A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
-|REST API |[Elérési út – frissítés](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure Storage Explorer |[Az Azure Storage Explorer használatával kezelheti a könyvtárakat, fájlokat és ACL-eket az Azure Data Lake Storage Gen2 szolgáltatásban](data-lake-storage-explorer.md#managing-access)|
+|.NET |[A .NET használatával kezelheti a könyvtárakat, fájlokat és ACL-okat az Azure Data Lake Storage Gen2 szolgáltatásban](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Könyvtárak, fájlok és AC-k kezelése a Java használatával az Azure Data Lake Storage Gen2 szolgáltatásban](data-lake-storage-directory-file-acl-java.md)|
+|Python|[A Python használatával kezelheti a könyvtárakat, fájlokat és ACL-okat az Azure Data Lake Storage Gen2-ben](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[Könyvtárak, fájlok és AC-k kezelése a PowerShell használatával az Azure Data Lake Storage Gen2 szolgáltatásban](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure CLI|[Az Azure CLI használatával kezelheti a könyvtárakat, fájlokat és ACL-eket az Azure Data Lake Storage Gen2 szolgáltatásban](data-lake-storage-directory-file-acl-cli.md)|
+|REST API |[Elérési út - frissítés](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Ha a rendszerbiztonsági tag egy egyszerű *szolgáltatásnév* , fontos, hogy használja az egyszerű szolgáltatásnév objektum-azonosítóját, nem pedig a kapcsolódó alkalmazás regisztrációs OBJEKTUMának azonosítóját. Az egyszerű szolgáltatásnév objektum-AZONOSÍTÓjának lekéréséhez nyissa meg az Azure CLI-t, majd használja a következő parancsot: `az ad sp show --id <Your App ID> --query objectId`. Ügyeljen arra, hogy az `<Your App ID>` helyőrzőt cserélje le az alkalmazás-regisztrációhoz tartozó alkalmazás-AZONOSÍTÓra.
+> Ha a rendszerbiztonsági tag *egy egyszerű szolgáltatás,* fontos, hogy a szolgáltatásnév objektumazonosítóját használja, és nem a kapcsolódó alkalmazásregisztráció objektumazonosítóját. Az egyszerű szolgáltatás objektumazonosítójának lekértje az Azure CLI-t, majd használja ezt a parancsot: `az ad sp show --id <Your App ID> --query objectId`. Győződjön meg `<Your App ID>` róla, hogy lecseréli a helyőrzőt az alkalmazásregisztráció alkalmazásazonosítójára.
 
-### <a name="types-of-access-control-lists"></a>Hozzáférés-vezérlési listák típusai
+### <a name="types-of-access-control-lists"></a>A hozzáférés-vezérlési listák típusai
 
-A hozzáférés-vezérlési listáknak két típusa létezik: *hozzáférés-ACL* -EK és *alapértelmezett ACL*-EK.
+Kétféle hozzáférés-vezérlési lista létezik: *hozzáférés-hozzáférés-vezérlési listák* és *alapértelmezett Hozzáférés-vezérlési listák*.
 
-Hozzáférési ACL-ek szabályozzák az objektumokhoz való hozzáférést. A fájlok és könyvtárak egyaránt rendelkeznek hozzáférési ACL-ekkel.
+Az Access Hozzáférés-vezérlési adatok szabályozzák az objektumhoz való hozzáférést. Files and directories both have access ACLs.
 
-Az alapértelmezett ACL-ek olyan címtárhoz tartozó ACL-sablonok, amelyek meghatározzák az adott címtárban létrehozott alárendelt elemek hozzáférési ACL-jeit. A fájlok nem rendelkeznek alapértelmezett ACL-ekkel.
+Default ACLs are templates of ACLs associated with a directory that determine the access ACLs for any child items that are created under that directory. A fájlok nem rendelkeznek alapértelmezett ACL-okkal.
 
-A hozzáférési ACL-ek és az alapértelmezett ACL-ek azonos struktúrával rendelkeznek.
+Both access ACLs and default ACLs have the same structure.
 
 > [!NOTE]
-> A szülő alapértelmezett ACL-értékének módosítása nincs hatással a már létező alárendelt elemek hozzáférési ACL-jéhez vagy alapértelmezett ACL-jéhez.
+> A szülő alapértelmezett hozzáférés-kulcszatának módosítása nincs hatással a már meglévő gyermekelemek hozzáférési hozzáférés-hozzáférés-hozzáférés-hozzáférési kulcsára vagy alapértelmezett hozzáférési kulcsára.
 
-### <a name="levels-of-permission"></a>Engedélyek szintjei
+### <a name="levels-of-permission"></a>Az engedély szintjei
 
-A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **írás**és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
+A tárolóobjektumok engedélyei: **Olvasás**, **Írás**és **Végrehajtás**, és fájlokon és könyvtárakon használhatók az alábbi táblázatban látható módon:
 
 |            |    Fájl     |   Címtár |
 |------------|-------------|----------|
-| **Olvasás (R)** | Olvashatja a fájl tartalmát | **Olvasás** és **végrehajtás** szükséges a könyvtár tartalmának listázásához |
-| **Írás (W)** | Írhatja a fájlt vagy hozzáfűzhet a fájlhoz | **Írás** és **végrehajtás** szükséges az alárendelt elemek létrehozásához egy címtárban |
-| **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 kontextusában | Egy könyvtár alárendelt elemeinek bejárásához szükséges. |
+| **Olvasás (R)** | Olvashatja a fájl tartalmát | **Olvasás és** **végrehajtás** szükséges a könyvtár tartalmának listázásához |
+| **Írás (W)** | Írhatja a fájlt vagy hozzáfűzhet a fájlhoz | **Írás** és **végrehajtás** szükséges gyermekelemek létrehozásához egy könyvtárban |
+| **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 | Könyvtár gyermekelemeinek bejárásához szükséges |
 
 > [!NOTE]
-> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, a rendszerbiztonsági tag számára olvasási vagy írási hozzáférést kell adnia egy fájlhoz, meg kell adnia a rendszerbiztonsági tag számára a tárolóhoz **tartozó engedélyeket,** valamint a fájlhoz vezető mappák hierarchiájában lévő összes mappát.
+> Ha csak ACL-ek használatával ad meg engedélyeket (nincs RBAC), akkor a rendszerbiztonsági tag olvasási vagy írási hozzáférésének biztosításához meg kell adnia a **rendszerbiztonsági** tag végrehajtási engedélyeket a tárolónak és a fájlhoz vezető mappák hierarchiájának minden mappájának.
 
 #### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 
@@ -110,24 +117,24 @@ A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **
 
 #### <a name="permissions-inheritance"></a>Engedélyek öröklése
 
-Az Data Lake Storage Gen2 által használt POSIX stílusú modellben az elemhez tartozó engedélyeket maga az elem tárolja. Ez azt jelenti, hogy egy elem engedélyei nem öröklődnek a fölérendelt elemből, ha az engedélyek a gyermek elem már létrejötte után vannak beállítva. Az engedélyek csak akkor lesznek örökölve, ha a fölérendelt elemekhez az alárendelt elemek létrehozása előtt alapértelmezett engedélyek vannak beállítva.
+A Data Lake Storage Gen2 által használt POSIX-stílusú modellben az elem engedélyei magán az elemen tárolódnak. Más szóval egy elem engedélyei nem örökölhetők a szülőelemektől, ha az engedélyek a gyermekelem létrehozása után vannak beállítva. Az engedélyek csak akkor öröklődnek, ha a gyermekelemek létrehozása előtt alapértelmezett engedélyek vannak beállítva a szülőelemekre.
 
 ### <a name="common-scenarios-related-to-permissions"></a>Az engedélyekhez kapcsolódó gyakori helyzetek
 
-A következő táblázat felsorolja azokat a gyakori forgatókönyveket, amelyekkel megtudhatja, hogy mely engedélyek szükségesek bizonyos műveletek elvégzéséhez egy Storage-fiókon.
+Az alábbi táblázat néhány gyakori forgatókönyvet sorol fel, amelyek segítenek megérteni, hogy milyen engedélyek szükségesek bizonyos műveletek végrehajtásához egy tárfiókban.
 
-|    Művelet             |    /    | Oregon | Portland / | Data.txt     |
+|    Művelet             |    /    | Oregon/ | Portland/ | Data.txt fájl     |
 |--------------------------|---------|----------|-----------|--------------|
-| Az adatgyűjtés. txt fájl olvasása            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Hozzáfűzés az adat. txt fájlhoz       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| A. txt fájl törlése          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Adatfájl létrehozása. txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Listáját                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| /Oregon/listázása           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| /Oregon/Portland/listázása  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Data.txt fájl olvasása            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Hozzáfűzés a Data.txt fájlhoz       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Data.txt fájl törlése          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt fájl létrehozása          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Lista /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| Lista /Oregon/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| Lista /Oregon/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 > [!NOTE]
-> A fájlra vonatkozó írási engedélyek nem szükségesek a törléséhez, feltéve, hogy az előző két feltétel igaz.
+> A fájl írási engedélyei nem szükségesek a fájl törléséhez, feltéve, hogy az előző két feltétel teljesül.
 
 ### <a name="users-and-identities"></a>Felhasználók és identitások
 
@@ -137,11 +144,11 @@ Minden fájl és könyvtár külön engedélyekkel rendelkezik ezekhez az identi
 - A tulajdonoscsoport
 - Nevesített felhasználók
 - Nevesített csoportok
-- Névvel ellátott egyszerű szolgáltatások
-- Nevesített felügyelt identitások
+- Elnevezett egyszerű szolgáltatás
+- Elnevezett felügyelt identitások
 - Minden egyéb felhasználó
 
-A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így ha nincs másképp jelölve, a *felhasználó*Data Lake Storage Gen2 kontextusában hivatkozhat egy Azure ad-felhasználóra, egyszerű szolgáltatásnévre, felügyelt identitásra vagy biztonsági csoportra.
+A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így eltérő módon, ha a *felhasználó*, a Data Lake Storage Gen2 környezetben, hivatkozhat egy Azure AD-felhasználó, egyszerű szolgáltatás, felügyelt identitás vagy biztonsági csoport.
 
 #### <a name="the-owning-user"></a>A tulajdonos felhasználó
 
@@ -151,31 +158,31 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 * megváltoztathatja a tulajdonában lévő fájl tulajdonos csoportját, ha a tulajdonos felhasználó szintén tagja ennek a csoportnak.
 
 > [!NOTE]
-> A tulajdonos felhasználó *nem* változtathatja meg egy fájl vagy könyvtár tulajdonos felhasználóját. Csak a felügyelők módosíthatják egy fájl vagy könyvtár tulajdonos felhasználóját.
+> A tulajdonában lévő felhasználó *nem módosíthatja* egy fájl vagy könyvtár tulajdonában lévő felhasználót. Csak a szuperfelhasználók módosíthatják egy fájl vagy könyvtár tulajdonában lévő felhasználót.
 
 #### <a name="the-owning-group"></a>A tulajdonoscsoport
 
-A POSIX ACL-ekben minden felhasználó egy *elsődleges csoporttal*van társítva. Például az "Alice" nevű felhasználó a "Finance" csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
+A POSIX ACL-ekben minden felhasználó egy *elsődleges csoporthoz*van társítva. Előfordulhat például, hogy az "Alice" felhasználó a "finance" csoporthoz tartozik. Alice is több csoporthoz is tartozhat, de egy csoport mindig elsődleges csoportként van kijelölve. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
 
-##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>A tulajdonos csoport kiosztása új fájlhoz vagy könyvtárhoz
+##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>A birtokló csoport hozzárendelése új fájlhoz vagy könyvtárhoz
 
-* **1. eset**: a gyökérkönyvtár "/". Ez a könyvtár akkor jön létre, amikor létrejön egy Data Lake Storage Gen2 tároló. Ebben az esetben a tulajdonos csoport arra a felhasználóra van beállítva, aki létrehozta a tárolót, ha az a OAuth használatával történt. Ha a tároló megosztott kulccsal, a fiók SAS-vel vagy egy szolgáltatás SAS-vel lett létrehozva, akkor a tulajdonos és a tulajdonos csoport **$superuserra**van állítva.
-* **2. eset** (minden egyéb eset): új elem létrehozásakor a tulajdonos csoportot a rendszer a szülő könyvtárából másolja.
+* **1. eset**: A gyökérkönyvtár "/". Ez a könyvtár a Data Lake Storage Gen2 tároló létrehozásakor jön létre. Ebben az esetben a tulajdonában lévő csoport a tárolót létrehozó felhasználóra van beállítva, ha az OAuth használatával történt. Ha a tároló megosztott kulcs, fiókSAS vagy szolgáltatás SAS használatával jön létre, akkor a tulajdonos és a tulajdonos csoport **$superuser**lesz.
+* **2. eset** (Minden második eset): Új elem létrehozásakor a tulajdonos csoport a szülőkönyvtárból lesz másolva.
 
-##### <a name="changing-the-owning-group"></a>A tulajdonos csoport módosítása
+##### <a name="changing-the-owning-group"></a>A birtokló csoport módosítása
 
 A tulajdonoscsoportot megváltoztathatja:
 * Bármely felügyelő.
 * a tulajdonos, ha szintén tagja ennek a csoportnak.
 
 > [!NOTE]
-> A tulajdonos csoport nem változtathatja meg egy fájl vagy könyvtár ACL-jeit.  Míg a tulajdonos csoport arra a felhasználóra van beállítva, aki a gyökérkönyvtár esetében létrehozta a fiókot, az **1. eset esetében** egyetlen felhasználói fiók nem érvényes a tulajdonos csoporton keresztüli engedélyek biztosításához. Az engedélyt hozzárendelheti egy érvényes felhasználócsoporthoz, ha van ilyen.
+> A tulajdonában lévő csoport nem módosíthatja egy fájl vagy könyvtár AC-jeit.  Míg a tulajdonában lévő csoport a felhasználói fiókot létrehozó felhasználóra van beállítva a gyökérkönyvtár esetében, a fenti **1.** Az engedélyt hozzárendelheti egy érvényes felhasználócsoporthoz, ha van ilyen.
 
 ### <a name="access-check-algorithm"></a>Hozzáférés-ellenőrzési algoritmus
 
-A következő pseudocode a Storage-fiókok hozzáférés-ellenőrzési algoritmusát képviselik.
+A következő pszeudokód a tárfiókok hozzáférés-ellenőrzési algoritmusát jelöli.
 
-```
+```console
 def access_check( user, desired_perms, path ) : 
   # access_check returns true if user has the desired permissions on the path, false otherwise
   # user is the identity that wants to perform an operation on path
@@ -218,43 +225,43 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 
 #### <a name="the-mask"></a>A maszk
 
-Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korlátozza a megnevezett felhasználók, a tulajdonos csoport és a nevesített csoportok hozzáférését.  
+Ahogy azt az Access Check Algorithm szemlélteti, a maszk korlátozza a hozzáférést a megnevezett felhasználók, a tulajdonában lévő csoport és a megnevezett csoportok számára.  
 
 > [!NOTE]
-> Új Data Lake Storage Gen2 tároló esetén a gyökérkönyvtár ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint 750 a könyvtárakhoz és a 640 fájlokhoz. A fájlok nem kapják meg az X bitet, mert nem relevánsak a csak tárolót tartalmazó rendszer fájljaiban.
+> For a new Data Lake Storage Gen2 container, the mask for the access ACL of the root directory ("/") defaults to 750 for directories and 640 for files. A fájlok nem kapják meg az X bitet, mivel az nem releváns a csak tárolóban lévő rendszer fájljai számára.
 >
-> A maszk hívásos alapon adható meg. Ez lehetővé teszi, hogy a különböző fogyasztási rendszerek, például a fürtök különböző hatékony maszkokkal rendelkezzenek a fájl műveleteihez. Ha egy adott kérelemhez maszk van megadva, az teljesen felülbírálja az alapértelmezett maszkot.
+> A maszk hívásonként is megadható. Ez lehetővé teszi, hogy a különböző fogyasztó rendszerek, például a fürtök, különböző hatékony maszkokkal rendelkeznek a fájlműveletekhez. Ha egy maszk meg van adva egy adott kérelemben, az teljesen felülírja az alapértelmezett maszkot.
 
 #### <a name="the-sticky-bit"></a>Ragadós bit
 
-A ragadós bit egy POSIX-tároló fejlettebb funkciója. Data Lake Storage Gen2 kontextusában nem valószínű, hogy a Sticky bit szükséges. Összefoglalva, ha a ragadós bit engedélyezve van egy címtárban, a gyermek elem csak törölhető vagy átnevezhető az alárendelt elem tulajdonos felhasználója számára.
+A ragadós bit a POSIX tároló fejlettebb jellemzője. A Data Lake Storage Gen2 környezetében nem valószínű, hogy a ragadós bitre lesz szükség. Összefoglalva, ha a ragadós bit engedélyezve van egy könyvtárban, a gyermekelemet csak a gyermekelem tulajdonában lévő felhasználó törölheti vagy nevezheti át.
 
-A Sticky bit nem jelenik meg a Azure Portalban.
+A ragadós bit nem jelenik meg az Azure Portalon.
 
-### <a name="default-permissions-on-new-files-and-directories"></a>Új fájlok és könyvtárak alapértelmezett engedélyei
+### <a name="default-permissions-on-new-files-and-directories"></a>Alapértelmezett engedélyek az új fájlokhoz és könyvtárakhoz
 
-Ha új fájlt vagy könyvtárat hoz létre egy meglévő címtárban, a szülő könyvtár alapértelmezett ACL-je határozza meg a következőket:
+Ha egy meglévő könyvtár alatt új fájlt vagy könyvtárat hoz létre, a szülőkönyvtár alapértelmezett acl-je a következőket határozza meg:
 
-- Egy alárendelt könyvtár alapértelmezett ACL-je és hozzáférési ACL-je.
-- Egy alárendelt fájl hozzáférési ACL-je (a fájloknak nincs alapértelmezett ACL-je).
+- A child directory's default ACL and access ACL.
+- A child file's access ACL (files do not have a default ACL).
 
 #### <a name="umask"></a>umask
 
-Fájl vagy könyvtár létrehozásakor a rendszer a umask használatával módosítja az alapértelmezett ACL-ek beállítását az alárendelt elemen. a umask egy 9 bites érték a szülő címtárakban, amelyek RWX értéket tartalmaznak a **tulajdonos felhasználó**, a **tulajdonos csoport**és a **többi**számára.
+Fájl vagy könyvtár létrehozásakor az umask segítségével módosíthatja, hogy az alapértelmezett ACL-k hogyan vannak beállítva a gyermekelemen. Az umask a szülőkönyvtárak 9 bites értéke, amely RWX-értéket tartalmaz a felhasználó , **a tulajdonos csoport**és az **egyéb**könyvtárak **tulajdonában.**
 
-A umask, amely a 007-re beállított állandó érték Azure Data Lake Storage Gen2. Ez az érték a következőre van lefordítva:
+Az Azure Data Lake Storage Gen2 umask egy 007-es állandó érték. Ez az érték a következőkre fordítva:
 
 | umask összetevő     | Numerikus alak | Rövid alak | Jelentés |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
-| umask.owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
-| umask.Other         |    7         |   `RWX`      | Egyéb esetben távolítsa el az összes engedélyt a gyermek hozzáférési ACL-jéhez |
+| umask.owning_user   |    0         |   `---`      | Felhasználó esetén másolja a szülő alapértelmezett hozzáférés-hozzáférés-kulcsát a gyermek hozzáférési kulcsára | 
+| umask.owning_group  |    0         |   `---`      | For owning group, copy the parent's default ACL to the child's access ACL | 
+| umask.más         |    7         |   `RWX`      | Más esetén távolítsa el a gyermek hozzáférési engedélyére vonatkozó összes engedélyt |
 
-Az Azure Data Lake Storage Gen2 által használt umask-érték azt jelenti, hogy a **többi** esetében az érték soha nem kerül be alapértelmezés szerint az új gyermekekre, függetlenül attól, hogy az alapértelmezett ACL mit jelez. 
+Az Azure Data Lake Storage Gen2 által használt umask érték hatékonyan azt jelenti, hogy a **többi érték** alapértelmezés szerint soha nem kerül továbbításra az új gyermekek, függetlenül attól, hogy az alapértelmezett ACL jelzi. 
 
-A következő pseudocode bemutatja, hogyan kell alkalmazni az umask a hozzáférés-vezérlési egy gyermek-konfigurációelem létrehozása során.
+A következő pszeudokód bemutatja, hogyan alkalmazza az umask-ot az ACL-ek létrehozásakor egy gyermekelemhez.
 
-```
+```console
 def set_default_acls_for_new_child(parent, child):
     child.acls = []
     for entry in parent.acls :
@@ -270,76 +277,77 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen2"></a>Gyakori kérdések a Data Lake Storage Gen2 ACL-ekkel kapcsolatban
+## <a name="common-questions-about-acls-in-data-lake-storage-gen2"></a>Gyakori kérdések a Data Lake Storage Gen2 ACL-jével kapcsolatban
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Engedélyeznem kell az ACL támogatását?
 
-Nem. Az ACL-eken keresztüli hozzáférés-vezérlés engedélyezve van egy Storage-fiókhoz, ha a hierarchikus névtér (HNS) funkció be van kapcsolva.
+Nem. Az ACL-eken keresztüli hozzáférés-vezérlés engedélyezve van egy tárfiókhoz, amíg a Hierarchikus névtér (HNS) szolgáltatás be van kapcsolva.
 
-Ha a HNS ki van kapcsolva, az Azure RBAC engedélyezési szabályai továbbra is érvényben vannak.
+Ha a HNS ki van kapcsolva, az Azure RBAC engedélyezési szabályok továbbra is érvényesek.
 
-### <a name="what-is-the-best-way-to-apply-acls"></a>Mi a legjobb módszer az ACL-ek alkalmazására?
+### <a name="what-is-the-best-way-to-apply-acls"></a>Mi a legjobb módja az ACL-k alkalmazásának?
 
-Mindig az Azure AD-beli biztonsági csoportokat használja a hozzárendelt rendszerbiztonsági csoportokként az ACL-ekben. Lehetősége van arra, hogy közvetlenül rendeljen hozzá egyéni felhasználókat vagy egyszerű szolgáltatásokat. Ezzel a struktúrával felhasználókat vagy egyszerű szolgáltatásokat adhat hozzá és távolíthat el anélkül, hogy újra kellene alkalmaznia az ACL-eket egy teljes címtár-struktúrára. ) Ehelyett egyszerűen fel kell vennie vagy el kell távolítania azokat a megfelelő Azure AD biztonsági csoportból. Ne feledje, hogy az ACL-ek nem öröklődnek, ezért az ACL-ek újraalkalmazása az ACL-eket minden fájlra és alkönyvtárra vonatkozóan frissítenie kell. 
+Mindig használja az Azure AD biztonsági csoportok, mint a hozzárendelt egyszerű a cl-k. Ellenálljon az egyes felhasználók vagy egyszerű szolgáltatástagok közvetlen hozzárendelésének lehetőségének. Ezzel a struktúrával felhasználókat vagy egyszerű szolgáltatást kell hozzáadnia és eltávolítania anélkül, hogy újra alkalmaznia kellene az ACL-eket egy teljes könyvtárstruktúrára. ) Ehelyett egyszerűen hozzá kell adnia vagy el kell távolítania őket a megfelelő Azure AD biztonsági csoportból. Ne feledje, hogy az ACL-ek nem öröklődnek, ezért az ACL-ek újbóli alkalmazása minden fájlés alkönyvtár rendszerében frissíteni kell az ACL-t. 
 
-### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Mely engedélyek szükségesek a címtár és annak tartalmának rekurzív törléséhez?
+### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Milyen engedélyek szükségesek a könyvtár és annak tartalmának rekurzív törléséhez?
 
-- A hívó "felügyelői" engedéllyel rendelkezik,
+- A hívó "szuper-felhasználó" engedélyekkel rendelkezik,
 
 Vagy
 
-- A szülő könyvtárnak írási és végrehajtási engedélyekkel kell rendelkeznie.
-- A törlendő könyvtár és a benne található összes címtár olvasás + írás + végrehajtás engedélyre van szükség.
+- A szülőkönyvtárnak írási + végrehajtási engedéllyel kell rendelkeznie.
+- A törölni a könyvtárhoz és a benne lévő összes könyvtárhoz olvasási + írási + végrehajtási engedélyek szükségesek.
 
 > [!NOTE]
-> A címtárakban található fájlok törléséhez nincs szükség írási engedélyekre. Emellett a "/" gyökérkönyvtár nem törölhető.
+> A könyvtárakban lévő fájlok törléséhez nincs szükség írási engedélyre. A gyökérkönyvtár "/" soha nem törölhető.
 
-### <a name="who-is-the-owner-of-a-file-or-directory"></a>Ki a fájl vagy könyvtár tulajdonosa?
+### <a name="who-is-the-owner-of-a-file-or-directory"></a>Ki a tulajdonosa egy fájlnak vagy könyvtárnak?
 
-Egy fájl vagy könyvtár létrehozója lesz a tulajdonos. A gyökérkönyvtár esetében ez annak a felhasználónak az identitása, aki létrehozta a tárolót.
+A fájl vagy könyvtár létrehozója lesz a tulajdonos. A gyökérkönyvtár esetében ez a tárolót létrehozó felhasználó identitása.
 
-### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Melyik csoport van beállítva egy fájl vagy könyvtár tulajdonosi csoportjaként a létrehozáskor?
+### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Melyik csoport van beállítva egy fájl vagy könyvtár tulajdonában lévő csoportként a létrehozáskor?
 
-A tulajdonos csoportot a szülő könyvtár tulajdonos csoportjából másolja a rendszer, amelyben az új fájlt vagy könyvtárat létrehozták.
+A tulajdonos csoport annak a szülőkönyvtárnak a tulajdonos csoportjából lesz másolva, amely alatt az új fájl vagy könyvtár létrejön.
 
-### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Én vagyok egy fájl tulajdonosa, de nem rendelkezem a szükséges RWX-engedéllyel. Mit tegyek?
+### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Én vagyok a tulajdonában lévő felhasználó egy fájlt, de nem rendelkezem a RWX engedélyeket van szükségem. Mit tegyek?
 
 A tulajdonos módosíthatja a fájlhoz tartozó engedélyeket, így bármilyen szükséges RWX-engedélyt megadhat saját magának.
 
-### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Miért látok időnként GUID azonosítókat az ACL-eken?
+### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Miért jelennek meg néha GUID-ok az ACL-kben?
 
-A GUID azonosító akkor jelenik meg, ha a bejegyzés egy felhasználót jelöl, és a felhasználó már nem létezik az Azure AD-ben. Ez általában akkor történik, ha a felhasználó elhagyta a vállalatot, vagy törölve lett a fiókja az Azure AD-ben. Emellett az egyszerű szolgáltatások és a biztonsági csoportok nem rendelkeznek egyszerű felhasználónévvel (UPN), hogy azonosítsák őket, és hogy azok az OID-attribútum (GUID) szerint legyenek megjelenítve.
+A GUID akkor jelenik meg, ha a bejegyzés egy felhasználót jelöl, és a felhasználó már nem létezik az Azure AD-ben. Ez általában akkor történik, ha a felhasználó elhagyta a vállalatot, vagy törölve lett a fiókja az Azure AD-ben. Ezenkívül a szolgáltatásnevek és a biztonsági csoportok nem rendelkeznek egyszerű felhasználónévvel (UPN) az azonosításukhoz, ezért az OID-attribútumuk (guid) képviseli őket.
 
-### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Hogyan helyesen beállítani az ACL-eket egy egyszerű szolgáltatásnév számára?
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Hogyan állíthatom be helyesen az ACL-okat egy egyszerű szolgáltatáshoz?
 
-Ha az egyszerű szolgáltatások hozzáférés-vezérlési listáit definiálja, fontos, hogy az *egyszerű szolgáltatás* OBJEKTUMAZONOSÍTÓ (OID) használatával használja a létrehozott alkalmazás-regisztrációt. Fontos megjegyezni, hogy a regisztrált alkalmazások külön szolgáltatásnevet biztosítanak az adott Azure AD-bérlőben. A regisztrált alkalmazások egy OID-vel rendelkeznek, amely látható a Azure Portalban, de az *egyszerű szolgáltatásnév* egy másik (eltérő) OID-vel rendelkezik.
+Amikor a rendszernévi elvekhez a cl-ket definiálja, fontos, hogy a létrehozott alkalmazásregisztrációhoz a *szolgáltatásnév* objektumazonosítóját (OID) használja. Fontos megjegyezni, hogy a regisztrált alkalmazások egy külön egyszerű szolgáltatásaz adott Azure AD-bérlőben rendelkezik. A regisztrált alkalmazások rendelkeznek egy OID, amely látható az Azure Portalon, de a szolgáltatás egyszerű egy másik (más) OID.Registered apps have a OID that's visible in the Azure portal but the *service principal* has another (different) OID.
 
-Az alkalmazás regisztrálásához tartozó egyszerű szolgáltatás OID-azonosítójának lekéréséhez használhatja a `az ad sp show` parancsot. Határozza meg az alkalmazás AZONOSÍTÓját paraméterként. Íme egy példa arra, hogyan kérheti le az OID-t az App ID = 18218b12-1895-43e9-ad80-6e8fc1ea88ce azonosítójú alkalmazás-regisztrációnak megfelelő egyszerű szolgáltatásnév számára. Futtassa az alábbi parancsot az Azure CLI-ben:
+Az alkalmazásregisztrációnak megfelelő egyszerű szolgáltatásazonosító lekérni, használhatja `az ad sp show` a parancsot. Adja meg az alkalmazásazonosítót paraméterként. Íme egy példa az OID beszerzésére a szolgáltatásnévhez, amely megfelel egy alkalmazásregisztrációnak az Alkalmazásazonosítóval = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Futtassa a következő parancsot az Azure CLI-ben:
 
+```azurecli
+az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 ```
-$ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
-<<OID will be displayed>>
-```
 
-Ha a szolgáltatásnév helyes OID-je van, lépjen a Storage Explorer a **hozzáférés kezelése** lapra az OID hozzáadásához, és rendelje hozzá a megfelelő engedélyeket az OID-hez. Győződjön meg róla, hogy a **Mentés**gombra kattint.
+az OID jelenik meg.
 
-### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Támogatja Data Lake Storage Gen2 az ACL-ek öröklését?
+Ha rendelkezik a megfelelő OID a szolgáltatás egyszerű, menj a Storage Explorer **Manage Access** lap hozzá az OID, és rendelje hozzá a megfelelő engedélyeket az OID. Győződjön meg arról, hogy a Mentés lehetőséget **választja.**
 
-Az Azure RBAC-hozzárendelések öröklik. A hozzárendelések az előfizetés, az erőforráscsoport és a Storage-fiók erőforrásaiból származnak a tároló-erőforráshoz.
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>A Data Lake Storage Gen2 támogatja az ACL-ek öröklődését?
 
-Az ACL-ek nem öröklik az öröklést. Az alapértelmezett ACL-ek azonban az alárendelt alkönyvtárakhoz és a szülő könyvtár alatt létrehozott fájlokhoz tartozó ACL-ek beállítására is használhatók. 
+Az Azure RBAC-hozzárendelések örökölnek. A hozzárendelések az előfizetési, erőforráscsoport- és tárfiók-erőforrásoktól a tárolóerőforrásig áramlanak.
+
+Az ACL-ok nem örökölnek. Az alapértelmezett ACL-k azonban a szülőkönyvtár alatt létrehozott gyermekalkönyvtárak és fájlok ACL-jainak beállítására használhatók. 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 
 * [POSIX hozzáférés-vezérlési listák Linux rendszeren](https://www.linux.com/news/posix-acls-linux)
-* [HDFS-engedélyek útmutatója](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+* [HDFS-engedélyútmutató](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 * [POSIX – gyakori kérdések](https://www.opengroup.org/austin/papers/posix_faq.html)
 * [POSIX 1003.1 2008](https://standards.ieee.org/findstds/standard/1003.1-2008.html)
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
 * [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [Hozzáférés-vezérlési listák használatával Az ACL Linuxon](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>Lásd még
 
-* [A Azure Data Lake Storage Gen2 áttekintése](../blobs/data-lake-storage-introduction.md)
+* [Az Azure Data Lake Storage Gen2 áttekintése](../blobs/data-lake-storage-introduction.md)

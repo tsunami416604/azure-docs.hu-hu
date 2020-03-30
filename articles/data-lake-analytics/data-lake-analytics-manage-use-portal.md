@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics kezelése a Azure Portal használatával
-description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal a Data Lake Analytics fiókok, adatforrások, felhasználók és & feladatok kezelésére.
+title: Az Azure Data Lake Analytics kezelése az Azure Portal használatával
+description: Ez a cikk bemutatja, hogyan használhatja az Azure Portalon a Data Lake Analytics-fiókok, adatforrások, felhasználók, & feladatok kezelésére.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,16 +10,16 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265700"
 ---
-# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics kezelése a Azure Portal használatával
+# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics kezelése az Azure Portal használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatforrásokat, felhasználókat és feladatokat a Azure Portal használatával.
+Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics-fiókok, adatforrások, felhasználók és feladatok az Azure Portal használatával.
 
 
 <!-- ################################ -->
@@ -29,24 +29,24 @@ Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatf
 
 ### <a name="create-an-account"></a>Fiók létrehozása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Kattintson **az erőforrás létrehozása** > **Intelligence + Analytics** > **Data Lake Analytics**elemre.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Kattintson az >  **Erőforrás-intelligencia** > **létrehozása + elemzés,****a Data Lake Analytics**elemre.
 3. Adja meg az alábbi elemek értékeit: 
-   1. **Name (név**): az Data Lake Analytics fiók neve.
-   2. **Előfizetés**: a fiókhoz használt Azure-előfizetés.
-   3. **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben létre kell hozni a fiókot. 
-   4. **Hely**: az Data Lake Analytics-fiókhoz tartozó Azure-adatközpont. 
-   5. **Data Lake Store**: a Data Lake Analytics-fiókhoz használandó alapértelmezett tároló. A Azure Data Lake Store fióknak és a Data Lake Analytics fióknak ugyanazon a helyen kell lennie.
-4. Kattintson a  **Create** (Létrehozás) gombra. 
+   1. **Név**: A Data Lake Analytics-fiók neve.
+   2. **Előfizetés**: A fiókhoz használt Azure-előfizetés.
+   3. **Erőforráscsoport:** Az Azure erőforráscsoport, amelyben a fiók létrehozásához. 
+   4. **Hely:** Az Azure-adatközpont a Data Lake Analytics-fiókhoz. 
+   5. **Data Lake Store**: A Data Lake Analytics-fiók alapértelmezett tárolója. Az Azure Data Lake Store-fiók és a Data Lake Analytics-fiók ugyanazon a helyen kell lennie.
+4. Kattintson **a Létrehozás gombra.** 
 
-### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics fiók törlése
+### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics-fiók törlése
 
-Data Lake Analytics fiók törlése előtt törölje az alapértelmezett Data Lake Store-fiókját.
+A Data Lake Analytics-fiók törlése előtt törölje az alapértelmezett Data Lake Store-fiókot.
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson a **Delete** (Törlés) gombra.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
+2. Kattintson a **Törlés** gombra.
 3. Írja be a fiók nevét.
-4. Kattintson a **Delete** (Törlés) gombra.
+4. Kattintson a **Törlés** gombra.
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -58,66 +58,66 @@ A Data Lake Analytics a következő adatforrásokat támogatja:
 * Data Lake Store
 * Azure Storage
 
-A Adatkezelő használatával böngészheti az adatforrásokat, és alapszintű fájlkezelési műveleteket hajthat végre. 
+Az Adatkezelő segítségével tallózhat az adatforrások között, és alapvető fájlkezelési műveleteket hajthat végre. 
 
-### <a name="add-a-data-source"></a>Adatforrás hozzáadása
+### <a name="add-a-data-source"></a>Adatforrások felvétele
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson **az adatforrások**elemre.
-3. Kattintson **az adatforrás hozzáadása**lehetőségre.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
+2. Kattintson **az Adatforrások gombra.**
+3. Kattintson **az Adatforrás hozzáadása gombra.**
     
-   * Data Lake Store fiók hozzáadásához szüksége lesz a fiók nevére, és hozzáfér a fiókhoz, hogy le tudja kérdezni.
-   * Az Azure Blob Storage hozzáadásához szüksége lesz a Storage-fiókra és a fiók kulcsára. A megkereséséhez nyissa meg a Storage-fiókot a portálon.
+   * Data Lake Áruházbeli fiók hozzáadásához a fiók nevére és a fiókhoz való hozzáférésre van szükség ahhoz, hogy lekérdezhesse azt.
+   * Az Azure Blob-tárhozzáadásaa szükséges a tárfiók és a fiókkulcs hozzáadása. A keresésükhöz nyissa meg a portálon lévő tárfiókot.
 
 ## <a name="set-up-firewall-rules"></a>Tűzfalszabályok beállítása
 
-A Data Lake Analytics a hálózati szinten lévő Data Lake Analytics-fiókhoz való hozzáférés további zárolására is használható. Engedélyezheti a tűzfalat, megadhat egy IP-címet, vagy megadhat egy IP-címtartományt a megbízható ügyfelek számára. Miután engedélyezte ezeket a mértékeket, csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak az áruházhoz.
+A Data Lake Analytics segítségével hálózati szinten további zárolást biztosíthat a Data Lake Analytics-fiókjához. Engedélyezheti a tűzfalat, ip-címet adhat meg, vagy ip-címtartományt adhat meg a megbízható ügyfelek számára. Miután engedélyezte ezeket a mértékeket, csak azok az ügyfelek csatlakozhatnak az üzlethez, amelyek a megadott tartományon belül rendelkeznek az IP-címekkel.
 
-Ha más Azure-szolgáltatások, például Azure Data Factory vagy virtuális gépek, akkor kapcsolódjon a Data Lake Analytics-fiókhoz, és győződjön **meg**arról, hogy az **Azure-szolgáltatások engedélyezése** be van kapcsolva. 
+Ha más Azure-szolgáltatások, például az Azure Data Factory vagy a virtuális gépek is csatlakoznak a Data Lake Analytics-fiókhoz, győződjön meg arról, hogy az **Azure-szolgáltatások engedélyezése** be van **kapcsolva.** 
 
 ### <a name="set-up-a-firewall-rule"></a>Tűzfalszabály beállítása
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. A bal oldali menüben kattintson a **tűzfal**elemre.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
+2. A bal oldali menüben kattintson a **Tűzfal parancsra.**
 
 ## <a name="add-a-new-user"></a>Új felhasználó hozzáadása
 
-A **felhasználó hozzáadása varázslóval** egyszerűen kiépítheti az új Data Lake felhasználókat.
+A Felhasználó **hozzáadása varázslóval** egyszerűen hozhat létre új Data Lake-felhasználókat.
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. A bal oldalon **első lépések**alatt kattintson a **felhasználó hozzáadása varázsló**elemre.
-3. Válasszon ki egy felhasználót, majd kattintson a **kiválasztás**elemre.
-4. Válasszon ki egy szerepkört, majd kattintson a **kiválasztás**elemre. Ha új fejlesztőt szeretne beállítani Azure Data Lake használatára, válassza ki a **Data Lake Analytics fejlesztői** szerepkört.
-5. Válassza ki a U-SQL-adatbázisokhoz tartozó hozzáférés-vezérlési listákat (ACL-eket). Ha elégedett a lehetőségeivel, kattintson a **kiválasztás**elemre.
-6. Válassza ki az ACL-eket a fájlokhoz. Az alapértelmezett tároló esetében ne módosítsa a "/" gyökérmappa és a/System mappához tartozó ACL-eket. Kattintson a **Kiválasztás** gombra.
-7. Tekintse át a kiválasztott módosításokat, majd kattintson a **Futtatás**gombra.
-8. A varázsló befejezése után kattintson a **kész**gombra.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
+2. A bal oldalon az **Első lépések**csoportban kattintson a Felhasználó hozzáadása **varázsló gombra.**
+3. Jelöljön ki egy felhasználót, majd kattintson **a Kijelölés gombra.**
+4. Jelöljön ki egy szerepkört, majd kattintson **a Kijelölés gombra.** Ha új fejlesztőt szeretne beállítani az Azure Data Lake használatára, válassza a **Data Lake Analytics fejlesztői** szerepkört.
+5. Jelölje ki az U-SQL adatbázisok hozzáférés-vezérlési listáit (Hozzáférés-vezérlési listáit). Ha elégedett a választásokkal, kattintson a **Kijelölés gombra.**
+6. Jelölje ki a fájlok acl-jait. Az alapértelmezett tároló esetében ne módosítsa az ACL-eket a gyökérmappához "/" és a /system mappához. Kattintson a **Kiválasztás** gombra.
+7. Tekintse át az összes kijelölt módosítást, majd kattintson a **Futtatás gombra.**
+8. Amikor a varázsló elkészült, kattintson a **Kész gombra.**
 
-## <a name="manage-role-based-access-control"></a>Szerepköralapú Access Control kezelése
+## <a name="manage-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés kezelése
 
-A többi Azure-szolgáltatáshoz hasonlóan a szerepköralapú Access Control (RBAC) segítségével szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatást.
+Más Azure-szolgáltatásokhoz hasonlóan a szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatást.
 
-A standard szintű RBAC-szerepkörök a következő képességekkel rendelkeznek:
-* **Tulajdonos**: feladatokat küldhet be, figyelheti a feladatokat, megszakíthatja a feladatokat bármely felhasználótól, és konfigurálhatja a fiókot.
-* **Közreműködő**: feladatokat küldhet be, figyelheti a feladatokat, megszakíthatja a feladatokat bármely felhasználótól, és konfigurálhatja a fiókot.
-* **Olvasó**: nyomon követheti a feladatokat.
+A szabványos RBAC-szerepkörök a következő képességekkel rendelkeznek:
+* **Tulajdonos:** Elküldheti a feladatokat, figyelheti a feladatokat, megszüntetheti a feladatokat bármely felhasználótól, és konfigurálhatja a fiókot.
+* **Közreműködő**: Feladatok küldése, feladatok figyelése, bármely felhasználó feladatának megszakítása és a fiók konfigurálása.
+* **Olvasó**: Nyomon követheti a feladatokat.
 
-A Data Lake Analytics fejlesztői szerepkör használatával engedélyezheti a U-SQL-fejlesztők számára a Data Lake Analytics szolgáltatás használatát. A Data Lake Analytics fejlesztői szerepkört a következőre használhatja:
-* Feladatok elküldése.
-* A feladat állapotának figyelése és a felhasználók által benyújtott feladatok előrehaladásának monitorozása.
-* Tekintse meg az U-SQL-szkripteket bármely felhasználó által küldött feladatokból.
-* Csak a saját feladatok megszakítása.
+A Data Lake Analytics fejlesztői szerepkörrel engedélyezheti, hogy az U-SQL-fejlesztők használhassák a Data Lake Analytics szolgáltatást. A Data Lake Analytics fejlesztői szerepköre a következőkre használható:
+* Feladatok beküldése.
+* A feladat állapotának és a bármely felhasználó által beküldött feladatok előrehaladásának figyelése.
+* Tekintse meg az U-SQL-parancsfájlokat bármely felhasználó által beküldött feladatokból.
+* Csak a saját feladatait mondja le.
 
-### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Felhasználók vagy biztonsági csoportok hozzáadása egy Data Lake Analytics-fiókhoz
+### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Felhasználók vagy biztonsági csoportok hozzáadása Data Lake Analytics-fiókhoz
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson a **hozzáférés-vezérlés (iam)**  > **szerepkör-hozzárendelés hozzáadása**elemre.
-3. Válasszon egy szerepkört.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
+2. Kattintson **a Hozzáférés-vezérlés (IAM)** > **Szerepkör-hozzárendelés hozzáadása parancsra.**
+3. Jelöljön ki egy szerepkört.
 4. Adjon hozzá egy felhasználót.
 5. Kattintson az **OK** gombra.
 
 >[!NOTE]
->Ha egy felhasználónak vagy biztonsági csoportnak feladatokat kell elküldenie, akkor is engedélyre van szüksége az áruház fiókján. További információ: [Data Lake Store tárolt adatok védelme](../data-lake-store/data-lake-store-secure-data.md).
+>Ha egy felhasználónak vagy egy biztonsági csoportnak feladatokat kell benyújtania, akkor az áruházi fiókhoz is engedélyt kell kérnie. További információ: [Biztonságos adatok a Data Lake Store-ban.](../data-lake-store/data-lake-store-secure-data.md)
 >
 
 <!-- ################################ -->
@@ -125,44 +125,44 @@ A Data Lake Analytics fejlesztői szerepkör használatával engedélyezheti a U
 
 ## <a name="manage-jobs"></a>Feladatok kezelése
 
-### <a name="submit-a-job"></a>Feladatok elküldése
+### <a name="submit-a-job"></a>Feladat beküldése
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
 
-2. Kattintson az **új feladatok**lehetőségre. Az egyes feladatokhoz konfigurálja a következőt:
+2. Kattintson **az Új feladat gombra.** Minden feladathoz konfigurálja a következőket:
 
-    1. **Feladatok neve**: a feladattípus neve.
-    2. **Prioritás**: az alacsonyabb számok magasabb prioritással rendelkeznek. Ha két feladat van várólistán, az alacsonyabb prioritású érték fut először.
-    3. **Párhuzamosság**: a feladatokhoz fenntartott számítási folyamatok maximális száma.
+    1. **Feladat neve**: A feladat neve.
+    2. **Prioritás**: Az alacsonyabb számok elsőbbséget élveznek. Ha két feladat várakozik, az alacsonyabb prioritású értékkel rendelkező feladat fut először.
+    3. **Párhuzamosság:** A feladathoz lefoglalandó számítási folyamatok maximális száma.
 
 3. Kattintson a **Feladat elküldése** elemre.
 
 ### <a name="monitor-jobs"></a>Feladatok figyelése
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson **az összes feladat megtekintése**elemre. Megjelenik a fiók összes aktív és legutóbb befejezett feladatának listája.
-3. A **szűrő** lehetőségre kattintva megkeresheti a feladatokat az **időtartomány**, a **feladat neve**és a **Szerző** értékei alapján. 
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókját.
+2. Kattintson **az Összes feladat megtekintése gombra.** Megjelenik a fiókban lévő összes aktív és nemrég befejezett feladat listája.
+3. Szükség esetén a **Szűrő** gombra kattintva megkeresheti a feladatokat **az Időtartomány,** **a Feladat neve**és a **Szerző** értéke szerint. 
 
-### <a name="monitoring-pipeline-jobs"></a>Folyamat-feladatok figyelése
-A folyamat részét képező feladatok együttesen, általában egymás után, egy adott forgatókönyv megvalósítására szolgálnak. Például rendelkezhet egy olyan folyamattal, amely megtisztítja, kinyeri, átalakítja, összesíti a vásárlói adatok felhasználását. A folyamat-feladatok a feladat elküldésekor a "folyamat" tulajdonság használatával azonosíthatók. Az ADF V2 használatával ütemezett feladatok automatikusan feltöltve lesznek a tulajdonsággal. 
+### <a name="monitoring-pipeline-jobs"></a>Folyamatfeladatok figyelése
+A folyamat részét használó feladatok általában egymás után dolgoznak egy adott forgatókönyv megvalósításához. Például lehet egy folyamat, amely tisztítja, kinyeri, átalakítja, összesíti a használatot az ügyfél-elemzésekhez. A folyamatfeladatok a "Pipeline" tulajdonság használatával kerülnek azonosításra a feladat elküldésekor. Az ADF V2 használatával ütemezett feladatok automatikusan feltöltik ezt a tulajdonságot. 
 
-A folyamatok részét képező U-SQL-feladatok listájának megtekintése: 
+A folyamatok részét tartalmazó U-SQL-feladatok listájának megtekintése: 
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókok elemre.
-2. Kattintson a **Job bepillantások**elemre. A "minden feladat" lap alapértelmezésben megjelenik, amely megjeleníti a futó, a várólistán lévő és a Befejezett feladatok listáját.
-3. Kattintson a **folyamat feladatai** fülre. A folyamat-feladatok listája az egyes folyamatokhoz tartozó összesített statisztikával együtt jelenik meg.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókokat.
+2. Kattintson **a Feladatelemzések gombra.** A "Minden feladat" lap alapértelmezett lesz, és a futó, várólistára helyezett és a leállított feladatok listáját jeleníti meg.
+3. Kattintson a **Folyamatfolyamatok** fülre. A folyamatfeladatok listája jelenik meg az egyes folyamatok összesített statisztikáival együtt.
 
 ### <a name="monitoring-recurring-jobs"></a>Ismétlődő feladatok figyelése
-Az ismétlődő feladatok olyanok, amelyek ugyanazt az üzleti logikát használják, de minden egyes futtatásakor különböző bemeneti adatokat használnak. Ideális esetben az ismétlődő feladatok mindig sikeresek lesznek, és viszonylag stabil végrehajtási idővel rendelkeznek; ezen viselkedések monitorozásával biztosítható, hogy a feladatok kifogástalanok legyenek. Az ismétlődő feladatok az "Ismétlődés" tulajdonság használatával azonosíthatók. Az ADF V2 használatával ütemezett feladatok automatikusan feltöltve lesznek a tulajdonsággal.
+Az ismétlődő feladat az, amely ugyanazt az üzleti logikát, de különböző bemeneti adatokat használ minden egyes futtatásakor. Ideális esetben az ismétlődő feladatoknak mindig sikeresnek kell lenniük, és viszonylag stabil végrehajtási idővel kell rendelkezniük; ezeknek a viselkedéseknek a figyelése segít biztosítani, hogy a feladat kifogástalan legyen. Az ismétlődő feladatok azonosítása az "Ismétlődés" tulajdonság használatával lesz azonosítva. Az ADF V2 használatával ütemezett feladatok automatikusan feltöltik ezt a tulajdonságot.
 
-Az ismétlődő U-SQL-feladatok listájának megtekintése: 
+Ismétlődő U-SQL-feladatok listájának megtekintése: 
 
-1. A Azure Portal lépjen a Data Lake Analytics-fiókok elemre.
-2. Kattintson a **Job bepillantások**elemre. A "minden feladat" lap alapértelmezésben megjelenik, amely megjeleníti a futó, a várólistán lévő és a Befejezett feladatok listáját.
-3. Kattintson az **ismétlődő feladatok** fülre. Az ismétlődő feladatok listája az egyes ismétlődő feladatokhoz tartozó összesített statisztikával együtt jelenik meg.
+1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiókokat.
+2. Kattintson **a Feladatelemzések gombra.** A "Minden feladat" lap alapértelmezett lesz, és a futó, várólistára helyezett és a leállított feladatok listáját jeleníti meg.
+3. Kattintson az **Ismétlődő feladatok** fülre. Megjelenik az ismétlődő feladatok listája az egyes ismétlődő feladatok összesített statisztikáival együtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
-* [Azure Data Lake Analytics kezelése Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)
-* [Azure Data Lake Analytics kezelése házirendek használatával](data-lake-analytics-account-policies.md)
+* [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
+* [Az Azure Data Lake Analytics kezelése az Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)
+* [Az Azure Data Lake Analytics kezelése szabályzatokkal](data-lake-analytics-account-policies.md)

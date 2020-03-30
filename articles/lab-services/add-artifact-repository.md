@@ -1,6 +1,6 @@
 ---
-title: Összetevő hozzáadása a laborhoz Azure DevTest Labsban | Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá egy műtárgy-tárházat a laborhoz az Azure DevTest Labs szolgáltatásban.
+title: Műterméktár hozzáadása a laborhoz az Azure DevTest Labs ben | Microsoft dokumentumok
+description: Megtudhatja, hogyan adhat hozzá egy műtermék-tárházat a laborhoz az Azure DevTest labsben.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -13,90 +13,90 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 28ab6ca9b87bb00cbb7b5e329b7ff08972ba370a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979135"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295509"
 ---
-# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
-A DevTest Labs lehetővé teszi, hogy a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után adja meg a virtuális géphez hozzáadandó összetevőt. Ez az összetevő lehet egy eszköz vagy egy alkalmazás, amelyet telepíteni kíván a virtuális gépre. Az összetevők egy GitHub vagy Azure DevOps git-tárházból betöltött JSON-fájlban vannak meghatározva.
+# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Műterméktár hozzáadása a laborhoz a DevTest Labs-ben
+DevTest Labs lehetővé teszi, hogy adjon meg egy összetevőt hozzá kell adni a virtuális gép létrehozásakor a virtuális gép létrehozásakor, vagy a virtuális gép létrehozása után. Ez a műtermék lehet egy eszköz vagy egy alkalmazás, amely a virtuális gépre szeretne telepíteni. A műtermékek egy GitHub- vagy Azure DevOps Git-tárházból betöltött JSON-fájlban vannak definiálva.
 
-A DevTest Labs által karbantartott nyilvános összetevő- [tárház](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)számos gyakori eszközt biztosít a Windows és a Linux rendszerhez is. A rendszer automatikusan hozzáadja az adattárra mutató hivatkozást a laborhoz. Létrehozhat egy saját összetevő-tárházat olyan konkrét eszközökkel, amelyek nem érhetők el a nyilvános összetevő-tárházban. Az egyéni összetevők létrehozásával kapcsolatos további információkért lásd: [egyéni összetevők létrehozása](devtest-lab-artifact-author.md).
+A DevTest Labs által karbantartott [nyilvános műterméktár](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)számos közös eszközt biztosít Windows és Linux rendszerhez. A tárházra mutató hivatkozás automatikusan hozzáadódik a tesztkörnyezethez. Létrehozhat saját műtermék-tárházat olyan speciális eszközökkel, amelyek nem érhetők el a nyilvános műterméktárban. Az egyéni összetevők létrehozásáról az [Egyéni összetevők létrehozása című](devtest-lab-artifact-author.md)témakörben olvashat.
 
-Ez a cikk azt ismerteti, hogyan adhat hozzá egyéni összetevő-tárházat Azure Portal, Azure Resource Management-sablonok és Azure PowerShell használatával. A PowerShell-vagy CLI-parancsfájlok írásával automatizálhatja az összetevők tárházának laborba való hozzáadását.
+Ez a cikk az egyéni må±termÃ©k használatával az egyéni műtermék-tárház hozzáadásáról, az Azure Resource Management-sablonok és az Azure PowerShell használatával. PowerShell- vagy CLI-parancsfájlok írásával automatizálhatja a műterméktártár hozzáadása a laborhoz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfontosabb információkat a tárházból. A következő szakaszok azt ismertetik, hogyan kérhető le a **githubon** vagy az **Azure DevOps**tárolt adattárakhoz szükséges információk.
+Ha hozzá szeretne adni egy adattárat a laborhoz, először is fontos információkat kell leszereznie a tárházból. Az alábbi szakaszok ismertetik, hogyan szerezheti be a Szükséges információkat a **GitHubon** vagy az **Azure DevOps-on**üzemeltetett adattárakhoz.
 
-### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>A GitHub-adattár klónozási URL-címének és a személyes hozzáférési jogkivonat beszerzése
+### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>A GitHub-tárház klónozási URL-címének és személyes hozzáférési jogkivonatának beszereznie
 
-1. Nyissa meg a GitHub-tárház kezdőlapját, amely tartalmazza az összetevő vagy a Resource Manager-sablon definícióit.
+1. Nyissa meg a GitHub-tárház kezdőlapját, amely a műtermék- vagy erőforrás-kezelősablon-definíciókat tartalmazza.
 2. Válassza a **Clone or download** (Klónozás vagy letöltés) lehetőséget.
-3. Az URL-cím vágólapra másolásához válassza a **https-klón URL-címe** gombot. Mentse az URL-címet későbbi használatra.
-4. A GitHub jobb felső sarkában válassza ki a profil rendszerképét, majd válassza a **Beállítások**lehetőséget.
-5. A bal oldali **személyes beállítások** menüben válassza a **fejlesztői beállítások**elemet.
-6. A bal oldali menüben válassza a **személyes hozzáférési tokenek** lehetőséget.
-7. Válassza az **új jogkivonat előállítása**lehetőséget.
-8. Az **új személyes hozzáférési jogkivonat** lapon a **jogkivonat leírása**területen adjon meg egy leírást. Fogadja el az alapértelmezett elemeket a **hatókörök kiválasztása**területen, majd válassza a **jogkivonat előállítása**lehetőséget.
-9. Mentse a generált tokent. Később a tokent használja.
-10. A GitHub bezárásához.   
+3. Ha az URL-címet a vágólapra szeretné másolni, jelölje ki a **HTTPS klón url gombját.** Mentse az URL-címet későbbi használatra.
+4. A GitHub jobb felső sarkában jelölje ki a profilképet, majd válassza a **Beállítások**lehetőséget.
+5. A bal oldali **Személyes beállítások** menüben válassza a **Fejlesztői beállítások lehetőséget**.
+6. Válassza a **személyes hozzáférési jogkivonatok lehetőséget** a bal oldali menüben.
+7. Válassza **az Új jogkivonat létrehozása**lehetőséget.
+8. Az **Új személyes hozzáférési jogkivonat** lap **Token leírása**csoportban adjon meg egy leírást. Fogadja el az alapértelmezett elemeket a **Hatókörkiválasztása**csoportban, majd válassza **a Jogkivonat létrehozása**lehetőséget.
+9. Mentse a generált jogkivonatot. A token később használható.
+10. Zárja be a GitHubot.   
 
-### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Az Azure Repos Clone URL-cím és a személyes hozzáférési jogkivonat beszerzése
-1. Lépjen a csapat gyűjteményének kezdőlapjára (például https://contoso-web-team.visualstudio.com), majd válassza ki a projektet.
-2. A projekt kezdőlapján válassza a **kód**lehetőséget.
-3. A klónozott URL-cím megtekintéséhez a projekt **kódja** lapon válassza a **klónozás**lehetőséget.
-4. Mentse az URL-címet. Később az URL-címet használja.
-5. Személyes hozzáférési jogkivonat létrehozásához a felhasználói fiók legördülő menüjében válassza a **saját profil**lehetőséget.
-6. A profil adatai lapon válassza a **Biztonság**elemet.
-7. A **Biztonság** lapon válassza a **Hozzáadás**lehetőséget.
-8. A **személyes hozzáférési jogkivonat létrehozása** oldalon:
-   1. Adja meg a jogkivonat **leírását** .
-   2. A **lejárat** listán válassza a **180 nap**lehetőséget.
-   3. A **fiókok** listában válassza az **összes elérhető fiók**lehetőséget.
-   4. Válassza a **minden hatókör** lehetőséget.
-   5. Válassza a **Jogkivonat létrehozása**lehetőséget.
-9. Az új jogkivonat megjelenik a **személyes hozzáférési tokenek** listájában. Válassza a **token másolása**lehetőséget, majd mentse a jogkivonat értékét későbbi használatra.
-10. Folytassa a labor összekapcsolásával a tárház szakaszával.
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Az Azure Repos klónozott URL-címének és a személyes hozzáférési jogkivonatának beszereznie
+1. Nyissa meg a csoportgyűjtemény kezdőlapját (például `https://contoso-web-team.visualstudio.com`), és válassza ki a projektet.
+2. A projekt kezdőlapján válassza a **Kód**lehetőséget.
+3. A klón URL-címének megtekintéséhez a projekt **kódlapján** válassza a **Klónozás**lehetőséget.
+4. Mentse az URL-címet. Az URL-címet később használhatja.
+5. Személyes hozzáférési jogkivonat létrehozásához a felhasználói fiók legördülő menüjében válassza a **Saját profil lehetőséget.**
+6. A profilinformációs lapon válassza a **Biztonság**lehetőséget.
+7. A **Biztonság** lapon válassza a **Hozzáadás gombot.**
+8. A **Személyes hozzáférési jogkivonat létrehozása** lapon:
+   1. Adja meg a token **leírását.**
+   2. A **Expires In** listában válassza a **180 napot**.
+   3. A **Fiókok** listában válassza a **Minden akadálymentes fiók lehetőséget.**
+   4. Válassza az **Összes hatókör lehetőséget.**
+   5. Válassza **a Jogkivonat létrehozása**lehetőséget.
+9. Az új jogkivonat megjelenik a **személyes hozzáférési jogkivonatok** listájában. Válassza **a Jogkivonat másolása**lehetőséget, majd mentse a token értékét későbbi használatra.
+10. Folytassa a Labor csatlakoztatása a tárház szakaszhoz.
 
-## <a name="use-azure-portal"></a>Az Azure-portál használata
-Ez a szakasz azokat a lépéseket ismerteti, amelyekkel egy összetevő-tárházat adhat hozzá egy laborhoz a Azure Portal.
+## <a name="use-azure-portal"></a>Az Azure Portal használata
+Ez a szakasz lépéseket tartalmaz egy må±termÃ©k-tárház hozzáadása az Azure Portalon.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Válassza a **További szolgáltatások**lehetőséget, majd válassza a **DevTest Labs** lehetőséget a szolgáltatások listájából.
-3. A Labs listából válassza ki a labort.
-4. Válassza a **konfiguráció és szabályzatok** lehetőséget a bal oldali menüben.
-5. A bal oldali menüben válassza a **külső erőforrások** szakaszban található **adattárak** elemet.
-6. Válassza a **+ Hozzáadás** lehetőséget az eszköztáron.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Válassza a **További szolgáltatások**lehetőséget, majd a Szolgáltatások listájából válassza a **DevTest Labs** elemet.
+3. A laborok listájából válassza ki a labort.
+4. Válassza a bal oldali menü **Konfiguráció és házirendek parancsát.**
+5. Válassza a bal oldali menü **Külső erőforrások** csoport Ban válassza az **Adattárak** lehetőséget.
+6. Válassza a **+ Hozzáadás lehetőséget** az eszköztáron.
 
-    ![Az adattár hozzáadása gomb](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
-5. A **Tárházak** lapon a következő információkat kell megadni:
-   1. **Név**. Adja meg az adattár nevét.
-   2. **Git Clone URL-cím**. Adja meg a korábban a GitHub vagy az Azure DevOps Services szolgáltatásból másolt git HTTPS Clone URL-címet.
-   3. **Ág**. A definíciók beszerzéséhez adja meg a ágat.
-   4. **Személyes hozzáférési jogkivonat**. Adja meg azt a személyes hozzáférési jogkivonatot, amelyet korábban a GitHub vagy az Azure DevOps Services szolgáltatásból kapott.
-   5. **Mappa elérési útjai** Adja meg legalább egy olyan mappa elérési útját, amely az összetevő vagy a Resource Manager-sablon definícióit tartalmazó klónozási URL-címhez képest van. Alkönyvtár megadásakor ügyeljen arra, hogy a mappa elérési útja tartalmazza a továbbítás perjelét.
+    ![A Tárház hozzáadása gomb](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
+5. Az **Adattárak** lapon adja meg a következő információkat:
+   1. **Név**. Adja meg a tárház nevét.
+   2. **Git klón URL**. Adja meg a Git HTTPS klón URL-jét, amelyet korábban másolt a GitHubról vagy az Azure DevOps-szolgáltatásokból.
+   3. **Ág**. A definíciók beírásához adja meg az ágat.
+   4. **Személyes hozzáférési jogkivonat**. Adja meg a személyes hozzáférési jogkivonatot, amelyet korábban kapott a GitHubról vagy az Azure DevOps-szolgáltatásokból.
+   5. **Mappaelérési utak**. Adjon meg legalább egy mappaelérési utat a műtermék- vagy Erőforrás-kezelő sablondefinícióit tartalmazó klónozó URL-címhez képest. Ha alkönyvtárat ad meg, győződjön meg arról, hogy a perjelet a mappa elérési útjába helyezi.
 
-        ![Adattárakhoz tartozó területek](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+        ![Adattárak területe](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Kattintson a **Mentés** gombra.
 
-## <a name="use-azure-resource-manager-template"></a>Az Azure Resource Manager sablonjainak használata
-Az Azure erőforrás-kezelési (Azure Resource Manager) Sablonok JSON-fájlok, amelyek az Azure-ban létrehozni kívánt erőforrásokat írják le. További információ ezekről a sablonokról: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/templates/template-syntax.md).
+## <a name="use-azure-resource-manager-template"></a>Az Azure Resource Manager sablon használata
+Az Azure Resource Management (Azure Resource Manager) sablonok Olyan JSON-fájlok, amelyek leírják a létrehozni kívánt erőforrásokat az Azure-ban. Ezekről a sablonokról további információt az [Azure Resource Manager-sablonok készítése című témakörben talál.](../azure-resource-manager/templates/template-syntax.md)
 
-Ez a szakasz azt ismerteti, hogyan adhat hozzá egy összetevőt a laborhoz egy Azure Resource Manager sablon használatával.  A sablon létrehozza a labort, ha még nem létezik.
+Ez a szakasz egy összetevő-tárház hozzáadása egy labor egy Azure Resource Manager-sablon használatával.  A sablon létrehozza a tesztkörnyezetet, ha még nem létezik.
 
 ### <a name="template"></a>Sablon
-A cikkben használt minta sablon a következő információkat gyűjti össze paraméterek használatával:. A paraméterek többsége intelligens alapértékekkel rendelkezik, de néhány értéket meg kell adni. Meg kell adnia a labor nevét, az összetevő-tárház URI azonosítóját, valamint a tárház biztonsági jogkivonatát.
+A cikkben használt mintasablon a következő információkat gyűjti a paramétereken keresztül. A legtöbb paraméter intelligens alapértelmezett értékekkel rendelkezik, de néhány értéket meg kell adni. Meg kell adnia a labor nevét, a må±termÃ©k-tárház URI-ját és a tárház biztonsági jogkivonatát.
 
-- Labor neve
-- Az DevTest Labs felhasználói felületének (UI) megjelenítendő neve az összetevő-tárházhoz. Az alapértelmezett érték a: `Team Repository`.
-- A tárház URI-ja (példa: `https://github.com/<myteam>/<nameofrepo>.git` vagy `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.
-- A tárházban található ágakat tartalmazó ág. Az alapértelmezett érték a: `master`.
-- Az összetevőket tartalmazó mappa neve. Az alapértelmezett érték a: `/Artifacts`.
-- A tárház típusa. Az engedélyezett értékek `VsoGit` vagy `GitHub`.
+- Labor neve.
+- A műterméktár a DevTest Labs felhasználói felületén (UI) lévő műterméktár nevének megjelenítése. Az alapértelmezett érték `Team Repository`a következő: .
+- uri-t a tárházba `https://github.com/<myteam>/<nameofrepo>.git` `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`(Példa: vagy .
+- Elágazás a tárházban, amely összetevőket tartalmaz. Az alapértelmezett érték `master`a következő: .
+- Az összetevőket tartalmazó mappa neve. Az alapértelmezett érték `/Artifacts`a következő: .
+- A tárház típusa. Az engedélyezett `VsoGit` `GitHub`értékek vagy .
 - A tárház hozzáférési jogkivonata.
 
     ```json
@@ -165,22 +165,22 @@ A cikkben használt minta sablon a következő információkat gyűjti össze pa
 
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
-A sablon üzembe helyezése többféleképpen is elvégezhető az Azure-ban, és ha az erőforrás már nem létezik, vagy nem frissült, akkor ha létezik. Részletekért tekintse meg a következő cikkeket:
+Többmódon is üzembe helyezheti a sablont az Azure-ban, és az erőforrás létrehozása, ha nem létezik, vagy frissített, ha létezik. További részletek a következő cikkekben:
 
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/templates/deploy-powershell.md)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével](../azure-resource-manager/templates/deploy-cli.md)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal](../azure-resource-manager/templates/deploy-portal.md)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/templates/deploy-rest.md)
 
-Nézzük meg, hogyan helyezheti üzembe a sablont a PowerShellben. A sablon üzembe helyezéséhez használt parancsmagok környezetfüggők, így az aktuális bérlő és a jelenlegi előfizetés használatos. A [set-AzContext](/powershell/module/az.accounts/set-azcontext) használata a sablon telepítése előtt, ha szükséges, a környezet módosításához.
+Menjünk előre, és tekintse meg, hogyan telepítheti a sablont a PowerShellben. A sablon üzembe helyezéséhez használt parancsmagok környezetfüggőek, így a jelenlegi bérlő és az aktuális előfizetés használatos. Használja [a Set-AzContext-t](/powershell/module/az.accounts/set-azcontext) a sablon üzembe helyezése előtt, ha szükséges, a környezet módosításához.
 
-Először hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. Ha a használni kívánt erőforráscsoport már létezik, ugorja át ezt a lépést.
+Először hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. Ha a használni kívánt erőforráscsoport már létezik, hagyja ki ezt a lépést.
 
 ```powershell
 New-AzResourceGroup -Name MyLabResourceGroup1 -Location westus
 ```
 
-Ezután hozzon létre egy központi telepítést az erőforráscsoporthoz a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)használatával. Ez a parancsmag az Azure-beli erőforrás-módosításokat alkalmazza. Az adott erőforráscsoporthoz több erőforrás-telepítés is elvégezhető. Ha többször is telepíti ugyanazt az erőforráscsoportot, győződjön meg arról, hogy az egyes központi telepítések neve egyedi.
+Ezután hozzon létre egy központi telepítést az erőforráscsoportba a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)használatával. Ez a parancsmag alkalmazza az erőforrás-módosításokat az Azure-ra. Egy adott erőforráscsoporthoz több erőforrás-telepítés is eladható. Ha több alkalommal telepíti ugyanahhoz az erőforráscsoporthoz, győződjön meg arról, hogy az egyes központi telepítések neve egyedi.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,15 +190,15 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-A New-AzResourceGroupDeployment sikeres futtatása után a parancs a kiépítési állapothoz hasonló fontos információkat (sikeresnek kell lennie) és a sablon kimeneteit is megjeleníti.
+A New-AzResourceGroupDeployment sikeres futtatása után a parancs olyan fontos információkat ad ki, mint a létesítési állapot (sikeresnek kell lennie) és a sablon kimenetei.
 
-## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
-Ez a szakasz egy PowerShell-parancsfájlt tartalmaz, amely egy összetevő-adattár tesztkörnyezetben való hozzáadására használható. Ha még nem rendelkezik Azure PowerShellval, tekintse meg a telepítési [és konfigurálási Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) részletes útmutatását.
+## <a name="use-azure-powershell"></a>Azure PowerShell használatával
+Ez a szakasz egy minta PowerShell-parancsfájlt biztosít, amely egy må±termÃ©k-tároló hozzáadása egy laborhoz. Ha nem rendelkezik Az Azure PowerShell, olvassa el [az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview?view=azps-1.2.0) részletes utasításokat a telepítéshez.
 
 ### <a name="full-script"></a>Teljes szkript
-Itt látható a teljes szkript, beleértve néhány részletes üzenetet és megjegyzést:
+Itt van a teljes script, beleértve néhány részletes üzenetek és megjegyzések:
 
-**New-DevTestLabArtifactRepository. ps1**:
+**Új-DevTestLabArtifactRepository.ps1**:
 
 ```powershell
 
@@ -336,7 +336,7 @@ return $result
 ```
 
 ### <a name="run-the-powershell-script"></a>A PowerShell-parancsprogram futtatása
-Az alábbi példa bemutatja, hogyan futtathatja a szkriptet:
+A következő példa bemutatja a parancsfájl futtatását:
 
 ```powershell
 Set-AzContext -SubscriptionId <Your Azure subscription ID>
@@ -346,20 +346,20 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 
 
 ### <a name="parameters"></a>Paraméterek
-A cikkben szereplő PowerShell-parancsfájl a következő paramétereket veszi figyelembe:
+A minta PowerShell-parancsfájl ebben a cikkben a következő paramétereket veszi:
 
 | Paraméter | Leírás |
 | --------- | ----------- |
-| LabName | A labor neve. |
-| ArtifactRepositoryName | Az új összetevő-tárház neve. A szkript létrehoz egy véletlenszerű nevet a adattár, ha az nincs megadva. |
-| ArtifactRepositoryDisplayName | Az összetevő-tárház megjelenítendő neve. Ez a név jelenik meg a Azure Portalban (https://portal.azure.com) a labor összes összetevő-tárházának megtekintésekor. |
-| RepositoryUri | A tárház URI-ja. Példák: `https://github.com/<myteam>/<nameofrepo>.git` vagy `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.|
-| RepositoryBranch | Az összetevők, amelyekben megtalálható az összetevők fájljai. Az alapértelmezett érték a "Master". |
-| FolderPath | A mappában található összetevők. Alapértelmezett érték: "/artifacts" |
-| PersonalAccessToken | Biztonsági jogkivonat a GitHub vagy a VSOGit adattár eléréséhez. A személyes hozzáférési token beszerzésére vonatkozó utasításokért tekintse meg az előfeltételek című szakaszt. |
-| SourceType | Azt jelzi, hogy az összetevő VSOGit vagy GitHub-tárház. |
+| Laborneve | A labor neve. |
+| ArtifactRepositoryName | Az új műtermék-tárház neve. A parancsfájl véletlenszerű nevet hoz létre a respository számára, ha nincs megadva. |
+| ArtifactRepositoryDisplayName | A műtermék-tárház megjelenítendő neve. Ez a név jelenik meg azhttps://portal.azure.com) Azure Portalon ( egy tesztkörnyezet összes összetevő-tárházának megtekintésekor. |
+| RepositoryUri | Uri-t a tárházba. `https://github.com/<myteam>/<nameofrepo>.git` Példák: `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`vagy .|
+| RepositoryBranch | Az ág, amelyben műtermékfájlok találhatók. Alapértelmezés szerint a "master". |
+| FolderPath (Mappaelérési út) | Az a mappa, amely alatt az összetevők megtalálhatók. Alapértelmezésszerint '/Műtermékek' |
+| PersonalAccessToken | Biztonsági jogkivonat a GitHub vagy a VSOGit tárház eléréséhez. A személyes hozzáférési jogkivonat bekérésével kapcsolatos utasításokat az előfeltételek című szakaszban találja. |
+| SourceType | Akár VSOGit vagy GitHub-tárház. |
 
-A tárháznak szüksége van egy belső névre az azonosításhoz, amely eltér a Azure Portalban látható megjelenítendő névvel. A belső név nem jelenik meg a Azure Portal használatával, de az Azure REST API-k vagy Azure PowerShell használatakor jelenik meg. A szkript megadja a nevet, ha az egyiket nem a parancsfájl felhasználója adta meg.
+A tárház maga is szüksége van egy belső nevet az azonosításhoz, amely eltér az Azure Portalon látható megjelenítendő névtől. Nem látja a belső nevet az Azure Portalon, de az Azure REST API-k vagy az Azure PowerShell használatakor láthatja. A parancsfájl nevet ad, ha nincs a parancsfájlunk felhasználója által megadott.
 
 ```powershell
 #Set artifact repository name, if not set by user
@@ -372,18 +372,18 @@ if ($ArtifactRepositoryName -eq $null){
 
 | PowerShell-parancs | Megjegyzések |
 | ------------------ | ----- |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Ezzel a paranccsal lekérheti a labor részleteit, például annak helyét. |
-| [Új – AzResource](/powershell/module/az.resources/new-azresource) | Az összetevő-Tárházak hozzáadására nincs specifikus parancs. Az általános [New-AzResource](/powershell/module/az.resources/new-azresource) parancsmag végzi a feladatot. Ehhez a parancsmaghoz vagy a **ResourceId** , vagy a **resourcename** és a **resourcetype** pár szükséges a létrehozandó erőforrás típusának megismeréséhez. Ez a minta parancsfájl az erőforrás neve és az erőforrástípus pár értéket használja. <br/><br/>Figyelje meg, hogy az összetevő-tárház forrását ugyanazon a helyen hozza létre, és a laborban megegyező erőforráscsoporthoz tartozik.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Ez a parancs a tesztkörnyezet részleteinek, például a helyének a leésre szolgál. |
+| [Új-AzResource](/powershell/module/az.resources/new-azresource) | Nincs külön parancs a műtermék-tárolók hozzáadásához. Az általános [New-AzResource](/powershell/module/az.resources/new-azresource) parancsmag végzi el a feladatot. Ennek a parancsmagnak a **ResourceId** vagy a **ResourceName** és **a ResourceType** pár ra van szüksége a létrehozandó erőforrás típusának ismeretében. Ez a mintaparancsfájl az erőforrás nevét és az erőforrástípus-párt használja. <br/><br/>Figyelje meg, hogy a må±termÃ©k-tároló forrását ugyanazon a helyen és a laborban ugyanazon az erőforráscsoport alatt hozza létre.|
 
-A parancsfájl új erőforrást hoz létre a jelenlegi előfizetéshez. A [Get-AzContext](/powershell/module/az.accounts/get-azcontext) használatával tekintheti meg ezeket az információkat. A [set-AzContext](/powershell/module/az.accounts/set-azcontext) használatával állítsa be az aktuális bérlőt és előfizetést.
+A parancsfájl új erőforrást ad hozzá az aktuális előfizetéshez. A [Get-AzContext](/powershell/module/az.accounts/get-azcontext) segítségével tekintse meg ezt az információt. A [Set-AzContext](/powershell/module/az.accounts/set-azcontext) segítségével állítsa be az aktuális bérlőt és előfizetést.
 
-Az erőforrás neve és az erőforrástípus adatainak felderítésére a legjobb módszer, ha a [Test Drive Azure REST API](https://azure.github.io/projects/apis/) -k webhelyét használja. Tekintse meg a [DevTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) szolgáltatót, ahol megtekintheti a DevTest Labs-szolgáltató rendelkezésre álló REST API-jait. A parancsfájl a következő erőforrás-AZONOSÍTÓval rendelkező felhasználókat adja meg.
+Az erőforrás nevének és erőforrástípus-adatainak felderítése a legjobb módja a [Test Drive Azure REST API-k](https://azure.github.io/projects/apis/) webhelyének használata. Tekintse meg a [DevTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) szolgáltatót a DevTest Labs-szolgáltató elérhető REST API-jainak megtekintéséhez. A parancsfájl a következő erőforrás-azonosítót teszi lehetővé.
 
 ```powershell
 "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"
 ```
 
-Az erőforrástípus minden, a "szolgáltatók" elem után szerepel az URI-ban, a kapcsos zárójelben felsorolt elemek kivételével. Az erőforrás neve a kapcsos zárójelben látható. Ha az erőforrás neveként egynél több elem várható, akkor az egyes elemeket perjelként válassza el.
+Az erőforrástípus minden, amely az URI-ban a "szolgáltatók" után szerepel, kivéve a göndör zárójelben felsorolt elemeket. Az erőforrás neve mindent, ami a göndör zárójelben látható. Ha egynél több elem várható az erőforrás nevéhez, válassza el az egyes elemeket egy perjellel, ahogy tettük.
 
 ```powershell
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
@@ -391,7 +391,7 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
-- [A laborhoz tartozó kötelező összetevők megadása Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
-- [Egyéni összetevők létrehozása a DevTest Labs virtuális géphez](devtest-lab-artifact-author.md)
-- [Az összetevők hibáinak diagnosztizálása a laborban](devtest-lab-troubleshoot-artifact-failure.md)
+## <a name="next-steps"></a>További lépések
+- [Kötelező összetevők megadása a laborhoz az Azure DevTest Labsben](devtest-lab-mandatory-artifacts.md)
+- [Egyéni összetevők létrehozása a DevTest Labs virtuális gépéhez](devtest-lab-artifact-author.md)
+- [Műtermék-hibák diagnosztizálása a laborban](devtest-lab-troubleshoot-artifact-failure.md)

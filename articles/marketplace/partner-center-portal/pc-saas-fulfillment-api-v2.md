@@ -1,124 +1,123 @@
 ---
-title: SaaS-teljesítési API v2 | Azure piactér
-description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet SaaS-ajánlatokat a AppSource és az Azure Marketplace-en a társított teljesítési v2 API-k használatával.
-services: Azure, Marketplace, Cloud Partner Portal,
+title: SaaS teljesítési API v2 | Azure Piactér
+description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet egy SaaS-ajánlatot az AppSource és az Azure Marketplace-en a társított teljesítési v2 API-k használatával.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
-ms.author: evansma
-ms.openlocfilehash: c0d5deef609796501515fc9c7064a96ca1419b3a
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.author: dsindona
+ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275764"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS-teljesítési API-k, 2-es verzió 
+# <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API-k, 2-es verzió 
 
-Ez a cikk azokat az API-kat ismerteti, amelyek lehetővé teszik partnerei számára, hogy SaaS-alkalmazásaikat eladják a AppSource piactéren és az Azure piactéren. Ezek az API-k a AppSource és az Azure Marketplace-en elérhető, a transacter SaaS-ajánlatok követelményei.
+Ez a cikk az api-kat részletezi, amelyek lehetővé teszik a partnerek számára, hogy eladják SaaS-alkalmazásaikat az AppSource-piactéren és az Azure Marketplace-en. Ezek az API-k az AppSource és az Azure Marketplace-en a tranzakciós SaaS-ajánlatok követelménye.
 
-## <a name="managing-the-saas-subscription-life-cycle"></a>Az SaaS-előfizetési életciklus kezelése
+## <a name="managing-the-saas-subscription-life-cycle"></a>A SaaS-előfizetés életciklusának kezelése
 
-Az Azure SaaS a SaaS-előfizetés vásárlásának teljes életciklusát kezeli. A teljesítési API-kat olyan mechanizmusként használja, amely a tényleges teljesítést, a csomagok változásait és az előfizetés törlését hajtja végre a partnerrel. Az ügyfél számlája a Microsoft által fenntartott SaaS-előfizetés állapotától függ. Az alábbi ábrán az állapotok és az állapotok közötti módosításokat meghajtó műveletek láthatók.
+Az Azure SaaS kezeli a SaaS-előfizetések teljes életciklusát. A teljesítési API-kat használja mechanizmusként a tényleges teljesítés, a tervek módosításaés az előfizetés partnerrel való törlésének ösztönzésére. Az ügyfél számlája a Microsoft által fenntartott SaaS-előfizetés állapotától függ. Az alábbi ábra azokat az állapotokat és műveleteket ábrázolja, amelyek az állapotok közötti változásokat hajtják.
 
-![SaaS-előfizetések életciklusának állapota](./media/saas-subscription-lifecycle-api-v2.png)
+![SaaS előfizetés életciklus-állapotok](./media/saas-subscription-lifecycle-api-v2.png)
 
 
-### <a name="states-of-a-saas-subscription"></a>SaaS-előfizetés állapota
+### <a name="states-of-a-saas-subscription"></a>SaaS-előfizetés államai
 
-A következő táblázat az SaaS-előfizetések kiépítési állapotait sorolja fel, beleértve az egyes (ha alkalmazható) leírását és sorszámát. 
+Az alábbi táblázat egy SaaS-előfizetés létesítési állapotait sorolja fel, beleértve az egyes szolgáltatások leírását és szekvenciadiagramját (ha van ilyen). 
 
 #### <a name="provisioning"></a>Kiépítés
 
-Amikor egy ügyfél megvásárolja a vásárlást, a partner megkapja ezt az információt egy olyan ügyfél-interaktív weblap engedélyezési kódjában, amely URL-paramétert használ. Ilyen például a `https://contoso.com/signup?token=..`, míg a partner Centerben a Kezdőlap URL-címe `https://contoso.com/signup`. Az engedélyezési kód érvényesíthető és kicserélhető a kiépítési szolgáltatás részleteire az API feloldása lehetőség meghívásával.  Ha egy SaaS-szolgáltatás befejezi az üzembe helyezést, az aktiválási hívást küld, amely jelzi, hogy a teljesítés befejeződött, és az ügyfél számlázása is megtörténik. 
+Amikor egy ügyfél vásárlást kezdeményez, a partner ezt az információt egy URL-paramétert használó, ügyfél-interaktív weboldal engedélyezési kódjában kapja meg. Ilyen például a `https://contoso.com/signup?token=..`céloldal URL-címe `https://contoso.com/signup`a Partnerközpontban. Az engedélyezési kód érvényesíthető, és a kiépítési szolgáltatás részleteiért a Resolve API hívásával cserélhető.  Amikor egy SaaS-szolgáltatás befejezi a kiépítést, egy aktiválási hívást küld annak jelzésére, hogy a teljesítés befejeződött, és az ügyfél számlázható. 
 
-Az alábbi ábrán egy kiépítési forgatókönyvhöz tartozó API-hívások sora látható.  
+Az alábbi ábrán az API-hívások sorozata létesítési forgatókönyv.  
 
-![API-hívások SaaS-szolgáltatás létesítéséhez](./media/saas-post-provisioning-api-v2-calls.png)
+![Az API saas-szolgáltatás kiépítését kéri](./media/saas-post-provisioning-api-v2-calls.png)
 
 #### <a name="provisioned"></a>Kiépítve
 
-Ez az állapot a kiépített szolgáltatás állandó állapota.
+Ez az állapot egy kiépített szolgáltatás állandósult állapota.
 
-##### <a name="provisioning-for-update"></a>Kiépítés a frissítéshez 
+##### <a name="provisioning-for-update"></a>Kiépítés frissítéshez 
 
-Ez az állapot azt jelzi, hogy egy meglévő szolgáltatás frissítése függőben van. Ezt a frissítést az ügyfél kezdeményezheti, akár a piactéren, akár az SaaS szolgáltatásban (csak a közvetlen ügyfelek által lebonyolított tranzakciók esetében).
+Ez az állapot azt jelenti, hogy egy meglévő szolgáltatás frissítése függőben van. Az ilyen frissítést az ügyfél kezdeményezheti, akár a piactérről, akár a SaaS szolgáltatásból (csak közvetlenül az ügyfélhez történő tranzakciók esetén).
 
-##### <a name="provisioning-for-update-when-its-initiated-from-the-marketplace"></a>Kiépítés a frissítéshez (ha a piactéren kezdeményezik)
+##### <a name="provisioning-for-update-when-its-initiated-from-the-marketplace"></a>Frissítés kiépítése (amikor a piactérről kezdeményezett)
 
-A következő ábra azokat a műveleteket mutatja be, amikor egy frissítést kezdeményeznek a piactéren.
+Az alábbi ábra a műveletek sorrendjét mutatja be, amikor egy frissítést kezdeményez nek a piactérről.
 
-![API-hívások a piactéren való frissítés kezdeményezése esetén](./media/saas-update-api-v2-calls-from-marketplace-a.png)
+![API-hívások, amikor a frissítés a piactérről van kezdeményezve](./media/saas-update-api-v2-calls-from-marketplace-a.png)
 
-##### <a name="provisioning-for-update-when-its-initiated-from-the-saas-service"></a>Kiépítés a frissítéshez (ha az SaaS szolgáltatásból kezdeményezik)
+##### <a name="provisioning-for-update-when-its-initiated-from-the-saas-service"></a>Frissítés kiépítése (ha a SaaS-szolgáltatásból kezdeményezett)
 
-A következő ábra azokat a műveleteket mutatja be, amikor egy frissítést kezdeményeznek a SaaS szolgáltatásból. (A webhook-hívást a SaaS szolgáltatás által kezdeményezett előfizetés egy frissítése váltja fel.) 
+Az alábbi ábrán látható, hogy a saas-szolgáltatásból frissítést kezdeményeznek-e. (A webhook-hívást a SaaS-szolgáltatás által kezdeményezett előfizetés frissítése váltja fel.) 
 
-![API-hívások, ha a frissítés az SaaS szolgáltatásból indul el](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
+![API-hívások, amikor a frissítés a SaaS-szolgáltatásból történik](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
 #### <a name="suspended"></a>Felfüggesztve
 
-Ez az állapot azt jelzi, hogy az ügyfél fizetése nem érkezett meg. A szabályzat szerint az ügyfél türelmi időszakot biztosít az előfizetés megszakítása előtt. Ha egy előfizetés ebben az állapotban van: 
+Ez az állapot azt jelzi, hogy a vevő kifizetése nem érkezett meg. A szabályzat szerint türelmi időszakot biztosítunk az ügyfélnek az előfizetés lemondása előtt. Ha egy előfizetés ebben az állapotban van: 
 
-- Partnerként dönthet úgy, hogy lecsökkenti vagy letiltja a felhasználó hozzáférését a szolgáltatáshoz.
-- Az előfizetést helyreállítható állapotba kell helyezni, amely a teljes funkcionalitást visszaállíthatja az adatvesztés vagy a beállítások elvesztése nélkül. 
-- A rendszer az előfizetésre vonatkozó visszavonási kérelmet vár a teljesítési API-kon vagy egy, a türelmi időszak végén található kiépítési kérésen keresztül. 
+- Partnerként dönthet úgy, hogy gyengíti vagy letiltja a felhasználó hozzáférését a szolgáltatáshoz.
+- Az előfizetést helyreállítható állapotban kell tartani, amely az adatok vagy beállítások elvesztése nélkül vissza tudja állítani a teljes funkcionalitást. 
+- Elvárják, hogy a teljesítési API-k on keresztül visszaállítsa az előfizetés visszaállítási kérelmét, vagy a türelmi időszak végén egy de-provisioning kérelmet. 
 
 #### <a name="unsubscribed"></a>Leiratkozott 
 
-Az előfizetések ezt az állapotot a kifejezett vásárlói kérelemre vagy illetékek fizetésére reagálva érik el. A partnertől érkező elvárás az, hogy az ügyfél adatait bizonyos számú napig megőrzi a rendszer a helyreállításhoz, majd törli azt. 
+Az előfizetések ezt az állapotot kifejezett ügyfélkérésre vagy illetékek meg nem fizetésére válaszul érik el. A partner elvárása az, hogy az ügyfél adatait kérésre bizonyos számú napig megőrizzék, majd töröljék. 
 
 
 ## <a name="api-reference"></a>API-referencia
 
-Ez a szakasz a SaaS- *előfizetés API* -ját és az *Operations API*-t dokumentálja.  A 2. verziójú API-k `api-version` paraméterének értéke `2018-08-31`.  
+Ez a szakasz a SaaS *subscription API-t* és *az Operations API-t dokumentálja.*  A 2-es verziójú API-k `api-version` paraméterének értéke . `2018-08-31`  
 
 
-### <a name="parameter-and-entity-definitions"></a>Paraméterek és entitások definíciói
+### <a name="parameter-and-entity-definitions"></a>Paraméter- és entitásdefiníciók
 
-A következő táblázat a teljesítési API-k által használt általános paraméterek és entitások definícióit sorolja fel.
+Az alábbi táblázat a teljesítési API-k által használt közös paraméterek és entitások definícióit sorolja fel.
 
 |     Entitás/paraméter     |     Meghatározás                         |
 |     ----------------     |     ----------                         |
 | `subscriptionId`         | Egy SaaS-erőforrás GUID-azonosítója.  |
-| `name`                   | Az erőforráshoz az ügyfél által megadott rövid név. |
-| `publisherId`            | Egyedi karakterlánc-azonosító minden közzétevőhöz (például: contoso). |
-| `offerId`                | Minden ajánlat egyedi karakterlánc-azonosítója (például: "offer1").  |
-| `planId`                 | Minden csomag/SKU egyedi karakterlánc-azonosítója (például: "Silver"). |
-| `operationId`            | Egy adott művelet GUID-azonosítója.  |
-|  `action`                | Az erőforráson végrehajtott művelet `Unsubscribe`, `Suspend`, `Reinstate`vagy `ChangePlan`, `ChangeQuantity`, `Transfer`. |
+| `name`                   | Az erőforrásnak a vevő által megadott rövid név. |
+| `publisherId`            | Az egyes közzétevők egyedi karakterlánc-azonosítója (például: "contoso"). |
+| `offerId`                | Az egyes ajánlathoz egyedi karakterlánc-azonosító (például "offer1").  |
+| `planId`                 | Az egyes tervekhez/termékváltozatokhoz egyedi karakterlánc-azonosító (például "ezüst"). |
+| `operationId`            | Egy adott művelet GUID azonosítója.  |
+|  `action`                | Az erőforráson végrehajtott művelet, `Unsubscribe` `Suspend`, `Reinstate`, `ChangePlan` `ChangeQuantity`, `Transfer`vagy , , . |
 |   |   |
 
-A globálisan egyedi azonosítók ([GUID azonosítók](https://en.wikipedia.org/wiki/Universally_unique_identifier)) a jellemzően automatikusan generált 128 bites (32-hexadecimális) számok. 
+A globálisan egyedi azonosítók ([GUID-ok](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 128 bites (32 hexadecimális) számok, amelyek általában automatikusan generálódnak. 
 
 #### <a name="resolve-a-subscription"></a>Előfizetés feloldása 
 
-A feloldási végpont lehetővé teszi, hogy a közzétevő a Piactéri tokent egy állandó erőforrás-AZONOSÍTÓra oldja fel. Az erőforrás-azonosító az SaaS-előfizetés egyedi azonosítója. Amikor egy felhasználó átirányítja egy partner webhelyére, az URL-cím tartalmaz egy tokent a lekérdezési paraméterekben. A partnernek a tokent kell használnia, és el kell végeznie a feloldását. A válasz tartalmazza az egyedi SaaS-előfizetés AZONOSÍTÓját, nevét, ajánlatának AZONOSÍTÓját, és megtervezi az erőforrást. Ez a jogkivonat csak egy órára érvényes. 
+A feloldási végpont lehetővé teszi, hogy a közzétevő feloldja a piactéri jogkivonatot egy állandó erőforrás-azonosítóra. Az erőforrás-azonosító egy SaaS-előfizetés egyedi azonosítója. Amikor egy felhasználót átirányítanak egy partner webhelyére, az URL-cím tartalmaz egy jogkivonatot a lekérdezési paraméterekben. A partnernek használnia kell ezt a jogkivonatot, és kérelmet kell benyújtania a probléma megoldásához. A válasz tartalmazza az egyedi SaaS-előfizetés-azonosítót, nevet, ajánlatazonosítót és az erőforrás tervét. Ez a jogkivonat csak egy óráig érvényes. 
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Utáni<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Közzététel<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  A kérelemhez használni kívánt művelet verziója.  |
+|  ApiVersion        |  A kérelemhez használandó művelet verziója.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-ms-requestid    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-|  x-ms-correlationid |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Például: "`Bearer <access_token>`". |
-|  x-ms-marketplace-token  |  Az URL-cím jogkivonat-lekérdezési paramétere, ha a felhasználó átirányítja a SaaS-partner webhelyére az Azure-ból (például: `https://contoso.com/signup?token=..`). *Megjegyzés:* Az URL-cím dekódolja a jogkivonat értékét a böngészőből a használat előtt.  |
+|  x-ms-requestid    |  Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
+|  x-ms-correlationid |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Például:`Bearer <access_token>`" ". |
+|  x-ms-piactér-token  |  A token lekérdezési paraméter az URL-címben, amikor a felhasználó átirányítja a SaaS-partner webhelyére az Azure-ból (például: `https://contoso.com/signup?token=..`). *Megjegyzés:* Az URL-cím használat előtt dekódolja a böngésző tokenértékét.  |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 200<br>
-Az átlátszatlan token feloldása SaaS-előfizetéshez. Válasz törzse:
+Feloldja az átlátszatlan jogkivonatot egy SaaS-előfizetés. Válasz szerv:
  
 
 ```json
@@ -132,10 +131,10 @@ Az átlátszatlan token feloldása SaaS-előfizetéshez. Válasz törzse:
 ```
 
 Kód: 400<br>
-Hibás kérelem. x-MS-Marketplace-token hiányzik, helytelenül formázott vagy lejárt.
+Rossz kérés. x-ms-marketplace-token hiányzik, hibásan formázott vagy lejárt.
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.
@@ -152,14 +151,14 @@ Belső kiszolgálóhiba.
 }
 ```
 
-### <a name="subscription-api"></a>Előfizetés API
+### <a name="subscription-api"></a>Előfizetéses API
 
-Az előfizetési API a következő HTTPS-műveleteket támogatja: **Get**, **post**, **patch**és **delete**.
+Az előfizetéses API a következő HTTPS-műveleteket támogatja: **Get**, **Post**, **Patch**és **Delete**.
 
 
 #### <a name="list-subscriptions"></a>Előfizetések listázása
 
-Felsorolja a közzétevőhöz tartozó összes SaaS-előfizetést.
+A közzétevő összes SaaS-előfizetésének listázása.
 
 ##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Lekérés<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
@@ -167,26 +166,26 @@ Felsorolja a közzétevőhöz tartozó összes SaaS-előfizetést.
 
 |             |                   |
 |  --------   |  ---------------  |
-| ApiVersion  |  A kérelemhez használni kívánt művelet verziója.  |
+| ApiVersion  |  A kérelemhez használandó művelet verziója.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 | Content-Type       |  `application/json`  |
-| x-ms-requestid     |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-| x-ms-correlationid |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-| authorization      |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Például: "`Bearer <access_token>`".  |
+| x-ms-requestid     |  Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
+| x-ms-correlationid |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+| engedélyezés      |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Például:`Bearer <access_token>`" ".  |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 200 <br/>
-Lekéri a közzétevőt és a hozzá tartozó előfizetéseket a közzétevő összes ajánlatához a hitelesítési jogkivonat alapján.
+Lekéri a közzétevő és a megfelelő előfizetések a közzétevő ajánlatai, a hitelesítési jogkivonat alapján.
 
 >[!Note]
->Az ajánlott [API](#mock-apis) -k az ajánlat első fejlesztésekor használatosak, a valós API-kat pedig az ajánlat tényleges közzétételekor kell használni.  A valós API-k és az Mock API-k különböznek a kód első sorától.  A valós API-ban van a `subscription` szakasz, míg ez a szakasz nem létezik a modell API-hoz.
+>[A mock API-kat](#mock-apis) az ajánlat első fejlesztésekor használja a program, míg a valódi API-kat az ajánlat tényleges közzétételekor kell használni.  A valódi API-k és a mock API-k a kód első sorában különböznek.  A valódi API-ban `subscription` van a szakasz, míg ez a szakasz nem létezik a mock API.In the real API there is the section, while this section doesn't exist for mock API.
 
-A modell API válaszának adattartalma:<br>
+Válasz hasznos adata a hamis API-hoz:<br>
 
 ```json
 {
@@ -220,7 +219,7 @@ A modell API válaszának adattartalma:<br>
   "continuationToken": ""
 }
 ```
-És a valós API-hoz: <br>
+És az igazi API:And for real API: <br>
 
 ```json
 {
@@ -260,10 +259,10 @@ A modell API válaszának adattartalma:<br>
   "@nextLink": ""
 }
 ```
-A folytatási token csak akkor jelenik meg, ha a lekérdezni kívánt csomagok további "lapjai" vannak. 
+A folytatási token csak akkor lesz jelen, ha további "oldalak" vannak a tervek visszakeresésére. 
 
 Kód: 403 <br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. 
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. 
 
 Kód: 500<br>
 Belső kiszolgálóhiba.
@@ -277,9 +276,9 @@ Belső kiszolgálóhiba.
 }
 ```
 
-#### <a name="get-subscription"></a>Előfizetés lekérése
+#### <a name="get-subscription"></a>Előfizetés beszereznie
 
-Lekéri a megadott SaaS-előfizetést. Ezzel a hívással kérheti le a licencek adatait, és megtervezheti az információkat.
+Leveszi a megadott SaaS-előfizetést. Ezzel a hívással licencinformációkat és tervinformációkat kaphat.
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
@@ -287,22 +286,22 @@ Lekéri a megadott SaaS-előfizetést. Ezzel a hívással kérheti le a licencek
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| subscriptionId     |   Azon SaaS-előfizetés egyedi azonosítója, amelyet a jogkivonat feloldása után szereztek fel az API-n keresztül.   |
-|  ApiVersion        |   A kérelemhez használni kívánt művelet verziója.   |
+| subscriptionId     |   A SaaS-előfizetés egyedi azonosítója, amely a jogkivonat feloldása után érhető el a Feloldás API-n keresztül.   |
+|  ApiVersion        |   A kérelemhez használandó művelet verziója.   |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      |  `application/json`  |
-|  x-ms-requestid    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-|  x-ms-correlationid |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Például: "`Bearer <access_token>`".  |
+|  x-ms-requestid    |  Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
+|  x-ms-correlationid |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Például:`Bearer <access_token>`" ".  |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 200<br>
-Az SaaS-előfizetés beolvasása az azonosítóból. Válasz hasznos adatai:<br>
+Leveszi a SaaS-előfizetést az azonosítóból. Válasz hasznos teher:<br>
 
 ```json
 Response Body:
@@ -332,7 +331,7 @@ Response Body:
 ```
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.<br> 
@@ -348,9 +347,9 @@ Belső kiszolgálóhiba.<br>
     }  
 ```
 
-#### <a name="list-available-plans"></a>Elérhető csomagok listázása
+#### <a name="list-available-plans"></a>Elérhető csomagok listája
 
-Ezzel a hívással megtudhatja, hogy vannak-e olyan magán-vagy nyilvános ajánlatok az aktuális közzétevőhöz.
+Ezzel a hívással megtudhatja, hogy vannak-e privát vagy nyilvános ajánlatok az aktuális közzétevőhöz.
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
@@ -358,21 +357,21 @@ Ezzel a hívással megtudhatja, hogy vannak-e olyan magán-vagy nyilvános aján
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |   A kérelemhez használni kívánt művelet verziója.  |
+|  ApiVersion        |   A kérelemhez használandó művelet verziója.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|   x-ms-requestid   |   Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-|  x-ms-correlationid  | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Például: "`Bearer <access_token>`". |
+|   x-ms-requestid   |   Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
+|  x-ms-correlationid  | Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Például:`Bearer <access_token>`" ". |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 200<br>
-Lekéri az ügyfél számára elérhető csomagok listáját. Válasz törzse:
+Egy ügyfél számára elérhető csomagok listájának lekéri. Válasz szerv:
 
 ```json
 {
@@ -388,7 +387,7 @@ Kód: 404<br>
 Nem található.<br> 
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. <br> 
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. <br> 
 
 Kód: 500<br>
 Belső kiszolgálóhiba.<br>
@@ -403,25 +402,25 @@ Belső kiszolgálóhiba.<br>
 
 #### <a name="activate-a-subscription"></a>Előfizetés aktiválása
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Utáni<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Közzététel<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  A kérelemhez használni kívánt művelet verziója.  |
-| subscriptionId     | A jogkivonat feloldása után az API feloldása után beszerzett SaaS-előfizetés egyedi azonosítója.  |
+|  ApiVersion        |  A kérelemhez használandó művelet verziója.  |
+| subscriptionId     | A SaaS-előfizetés egyedi azonosítója, amely a jogkivonat feloldása után a Feloldási API használatával kapott.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json`  |
-|  x-ms-requestid    | Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  x-ms-correlationid  | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a karakterlánc a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Például: "`Bearer <access_token>`". |
+|  x-ms-requestid    | Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  x-ms-correlationid  | Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a karakterlánc korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Például:`Bearer <access_token>`" ". |
 
-*Kérelem tartalma:*
+*Hasznos adat kérése:*
 
 ```json
 {
@@ -430,16 +429,16 @@ Belső kiszolgálóhiba.<br>
 }
 ```
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 200<br>
 Aktiválja az előfizetést.<br>
 
 Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Hibás kérés: érvényesítési hibák.
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.
@@ -456,29 +455,29 @@ Belső kiszolgálóhiba.
 }
 ```
 
-#### <a name="change-the-plan-on-the-subscription"></a>Az előfizetés tervének módosítása
+#### <a name="change-the-plan-on-the-subscription"></a>Az előfizetés csomagjának módosítása
 
-Frissítse a csomagot az előfizetésben.
+Frissítse a csomagot az előfizetésen.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Javítás<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  A kérelemhez használni kívánt művelet verziója.  |
-| subscriptionId     | A jogkivonat feloldása után az API feloldása után beszerzett SaaS-előfizetés egyedi azonosítója.  |
+|  ApiVersion        |  A kérelemhez használandó művelet verziója.  |
+| subscriptionId     | A SaaS-előfizetés egyedi azonosítója, amely a jogkivonat feloldása után a Feloldási API használatával kapott.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-ms-requestid    |   Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  x-ms-correlationid  |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.    |
-| authorization      |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Például: "`Bearer <access_token>`".  |
+|  x-ms-requestid    |   Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  x-ms-correlationid  |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.    |
+| engedélyezés      |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Például:`Bearer <access_token>`" ".  |
 
-*Kérelem tartalma:*
+*Hasznos adat kérése:*
 
 ```json
 Request Body:
@@ -487,22 +486,22 @@ Request Body:
 }
 ```
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Művelet – hely | Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.   |
+| Művelet-hely | A művelet állapotának leválasztásához egy erőforrásra mutató hivatkozás.   |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 202<br>
-A terv módosítására irányuló kérelmet elfogadták. A partnernek a művelet helye alapján kell lekérdezni a sikerességet vagy a hibát. <br>
+A terv módosítására vonatkozó kérés tanuskó immár elfogadásra került. A partnernek le kell hallgatnia a művelet helyét a sikeres vagy sikertelen ség meghatározásához. <br>
 
 Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Hibás kérés: érvényesítési hibák.
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.
@@ -520,31 +519,31 @@ Belső kiszolgálóhiba.
 ```
 
 >[!Note]
->Egyszerre csak egy csomagot vagy mennyiséget lehet kijavítani, mindkettőt nem. A **frissítéssel** rendelkező előfizetések módosítása nem `allowedCustomerOperations`.
+>Egyszerre csak egy tervet vagy mennyiséget lehet foltozni, mindkettőt nem. A **Frissítés** szolgáltatással rendelkező előfizetés `allowedCustomerOperations`szerkesztései nincsenek benne.
 
-#### <a name="change-the-quantity-on-the-subscription"></a>Az előfizetés mennyiségének módosítása
+#### <a name="change-the-quantity-on-the-subscription"></a>Az előfizetés ben szereplő mennyiség módosítása
 
-Frissítse az előfizetés mennyiségét.
+Frissítse az előfizetésben szereplő mennyiséget.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Javítás<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Javítás:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  A kérelemhez használni kívánt művelet verziója.  |
-| subscriptionId     | A jogkivonat feloldása után az API feloldása után beszerzett SaaS-előfizetés egyedi azonosítója.  |
+|  ApiVersion        |  A kérelemhez használandó művelet verziója.  |
+| subscriptionId     | A SaaS-előfizetés egyedi azonosítója, amely a jogkivonat feloldása után a Feloldási API használatával kapott.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-ms-requestid    |   Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  x-ms-correlationid  |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.    |
-| authorization      |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Például: "`Bearer <access_token>`".  |
+|  x-ms-requestid    |   Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  x-ms-correlationid  |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.    |
+| engedélyezés      |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Például:`Bearer <access_token>`" ".  |
 
-*Kérelem tartalma:*
+*Hasznos adat kérése:*
 
 ```json
 Request Body:
@@ -553,23 +552,23 @@ Request Body:
 }
 ```
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Művelet – hely | Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.   |
+| Művelet-hely | Hivatkozás egy erőforrásra a művelet állapotának leválasztásához.   |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 202<br>
-A mennyiség módosítására vonatkozó kérés el lett fogadva. A partnernek a művelet helye alapján kell lekérdezni a sikerességet vagy a hibát. <br>
+A mennyiség módosítására vonatkozó kérés tanuskó immár elfogadásra került. A partnernek le kell hallgatnia a művelet helyét a sikeres vagy sikertelen ség meghatározásához. <br>
 
 Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Hibás kérés: érvényesítési hibák.
 
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.
@@ -587,11 +586,11 @@ Belső kiszolgálóhiba.
 ```
 
 >[!Note]
->Egyszerre csak egy csomagot vagy mennyiséget lehet kijavítani, mindkettőt nem. A **frissítéssel** rendelkező előfizetések módosítása nem `allowedCustomerOperations`.
+>Egyszerre csak egy tervet vagy mennyiséget lehet foltozni, mindkettőt nem. A **Frissítés** szolgáltatással rendelkező előfizetés `allowedCustomerOperations`szerkesztései nincsenek benne.
 
 #### <a name="delete-a-subscription"></a>Előfizetés törlése
 
-Leiratkozás és a megadott előfizetés törlése.
+Leiratkozhat és törölheti a megadott előfizetést.
 
 ##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Törlés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
@@ -599,28 +598,28 @@ Leiratkozás és a megadott előfizetés törlése.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  A kérelemhez használni kívánt művelet verziója.  |
-| subscriptionId     | A jogkivonat feloldása után az API feloldása után beszerzett SaaS-előfizetés egyedi azonosítója.  |
+|  ApiVersion        |  A kérelemhez használandó művelet verziója.  |
+| subscriptionId     | A SaaS-előfizetés egyedi azonosítója, amely a jogkivonat feloldása után a Feloldási API használatával kapott.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|  x-ms-requestid    |   Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.   |
-|  x-ms-correlationid  |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.   |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Például: "`Bearer <access_token>`".  |
+|  x-ms-requestid    |   Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.   |
+|  x-ms-correlationid  |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.   |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Például:`Bearer <access_token>`" ".  |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
 Kód: 202<br>
-A partner egy SaaS-előfizetés lemondására irányuló hívást kezdeményezett.<br>
+A partner hívást kezdeményezett egy SaaS-előfizetés leiratkozására.<br>
 
 Kód: 400<br>
-Törlés nem `allowedCustomerOperations`**törléssel** előfizetésre.
+Törlés olyan előfizetésen, `allowedCustomerOperations` **amelyen** a Törlés nincs a ban.
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.
@@ -638,13 +637,13 @@ Belső kiszolgálóhiba.
 ```
 
 
-### <a name="operations-api"></a>Operatív API
+### <a name="operations-api"></a>Műveletek API
 
-Az operatív API a következő javítási és lekérési műveleteket támogatja.
+A műveletek API támogatja a következő Patch és get műveleteket.
 
-#### <a name="list-outstanding-operations"></a>Függőben lévő műveletek listázása 
+#### <a name="list-outstanding-operations"></a>Függőben lévő műveletek listája 
 
-Felsorolja az aktuális közzétevőre vonatkozó függőben lévő műveleteket. 
+Az aktuális közzétevő függőben lévő műveleteinek listája. 
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
@@ -652,21 +651,21 @@ Felsorolja az aktuális közzétevőre vonatkozó függőben lévő műveleteket
 
 |             |        |
 |  ---------------   |  ---------------  |
-|    ApiVersion                |   A kérelemhez használni kívánt művelet verziója.                |
-| subscriptionId     | A jogkivonat feloldása után az API feloldása után beszerzett SaaS-előfizetés egyedi azonosítója.  |
+|    ApiVersion                |   A kérelemhez használandó művelet verziója.                |
+| subscriptionId     | A SaaS-előfizetés egyedi azonosítója, amely a jogkivonat feloldása után a Feloldási API használatával kapott.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|  x-ms-requestid    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  x-ms-correlationid |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Például: "`Bearer <access_token>`".  |
+|  x-ms-requestid    |  Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  x-ms-correlationid |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Például:`Bearer <access_token>`" ".  |
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
-Kód: 200<br> A függőben lévő műveletek listájának beolvasása egy előfizetésen. Válasz hasznos adatai:
+Kód: 200<br> Leképezi az előfizetés függőben lévő műveleteinek listáját. Válasz hasznos teher:
 
 ```json
 [{
@@ -685,10 +684,10 @@ Kód: 200<br> A függőben lévő műveletek listájának beolvasása egy előfi
 
 
 Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Hibás kérés: érvényesítési hibák.
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.
@@ -706,9 +705,9 @@ Belső kiszolgálóhiba.
 
 ```
 
-#### <a name="get-operation-status"></a>Művelet állapotának beolvasása
+#### <a name="get-operation-status"></a>A művelet állapotának beírása
 
-Lehetővé teszi a közzétevő számára a megadott aktivált aszinkron művelet (például `Subscribe`, `Unsubscribe`, `ChangePlan`vagy `ChangeQuantity`) állapotának nyomon követését.
+Lehetővé teszi, hogy a közzétevő nyomon kövesse a `Subscribe`megadott `Unsubscribe` `ChangePlan`aktivált `ChangeQuantity`aszinkron művelet (például , , , vagy ) állapotát.
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -716,20 +715,20 @@ Lehetővé teszi a közzétevő számára a megadott aktivált aszinkron művele
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  A kérelemhez használni kívánt művelet verziója.  |
+|  ApiVersion        |  A kérelemhez használandó művelet verziója.  |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      |  `application/json`   |
-|  x-ms-requestid    |   Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  x-ms-correlationid |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Például: "`Bearer <access_token>`".  |
+|  x-ms-requestid    |   Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  x-ms-correlationid |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja.  |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Például:`Bearer <access_token>`" ".  |
 
-*Reagálási kódok:*<br>
+*Válaszkódok:*<br>
 
-Kód: 200<br> Lekéri a megadott függőben lévő SaaS-műveletet. Válasz hasznos adatai:
+Kód: 200<br> Leképezi a megadott függőben lévő SaaS-műveletet. Válasz hasznos teher:
 
 ```json
 Response body:
@@ -749,10 +748,10 @@ Response body:
 ```
 
 Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Hibás kérés: érvényesítési hibák.
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
  
 Kód: 404<br>
 Nem található.
@@ -770,28 +769,28 @@ Kód: 500<br> Belső kiszolgálóhiba.
 ```
 #### <a name="update-the-status-of-an-operation"></a>Művelet állapotának frissítése
 
-Egy művelet állapotának frissítése a megadott értékekkel való sikeres vagy sikertelenség jelzéséhez.
+Frissítse egy művelet állapotát, hogy jelezze a megadott értékek sikeres vagy sikertelen teljesítését.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Javítás<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   ApiVersion       |  A kérelemhez használni kívánt művelet verziója.  |
-| subscriptionId     | A jogkivonat feloldása után az API feloldása után beszerzett SaaS-előfizetés egyedi azonosítója.  |
-|  operationId       | Az éppen befejezett művelet. |
+|   ApiVersion       |  A kérelemhez használandó művelet verziója.  |
+| subscriptionId     | A SaaS-előfizetés egyedi azonosítója, amely a jogkivonat feloldása után a Feloldási API használatával kapott.  |
+|  operationId       | A művelet, ami folyamatban van. |
 
-*Kérelem fejlécei:*
+*Fejlécek kérése:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     | `application/json`   |
-|   x-ms-requestid   |   Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-|  x-ms-correlationid |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-|  authorization     |  A [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Például: "`Bearer <access_token>`".  |
+|   x-ms-requestid   |   Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez, lehetőleg GUID. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
+|  x-ms-correlationid |  Az ügyfélen végzett művelet egyedi karakterlánc-értéke. Ez a paraméter korrelálja az ügyfélműveletből származó összes eseményt a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a függvény létrehoz egyet, és a válaszfejlécekben megadja. |
+|  engedélyezés     |  [JSON webes token (JWT) tulajdonosi token beszerezni.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Például:`Bearer <access_token>`" ".  |
 
-*Kérelem tartalma:*
+*Hasznos adat kérése:*
 
 ```json
 {
@@ -802,21 +801,21 @@ Egy művelet állapotának frissítése a megadott értékekkel való sikeres va
 
 ```
 
-*Reagálási kódok:*
+*Válaszkódok:*
 
-Kód: 200<br> Egy műveletnek a partner oldalon való befejezését jelző hívás. Ez a válasz például jelezheti az ülések vagy a csomagok változását.
+Kód: 200<br> A partneroldalon végzett művelet befejezéséről szóló felhívás. Ez a válasz például jelezheti az ülőhelyek vagy tervek megváltoztatását.
 
 Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Hibás kérés: érvényesítési hibák.
 
 Kód: 403<br>
-Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva, vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
 Kód: 404<br>
 Nem található.
 
 Kód: 409<br>
-Ütközés. Egy újabb tranzakció például már teljesül.
+Konfliktus. Például egy újabb tranzakció már teljesült.
 
 Kód: 500<br> Belső kiszolgálóhiba.
 
@@ -830,9 +829,9 @@ Kód: 500<br> Belső kiszolgálóhiba.
 
 ```
 
-## <a name="implementing-a-webhook-on-the-saas-service"></a>Webhook megvalósítása az SaaS szolgáltatásban
+## <a name="implementing-a-webhook-on-the-saas-service"></a>Webhook megvalósítása a SaaS szolgáltatáson
 
-A közzétevőnek be kell vezetnie egy webhookot ebben az SaaS-szolgáltatásban, hogy proaktívan értesítse a felhasználókat a szolgáltatás változásairól. Az SaaS szolgáltatásnak meg kell hívnia az operatív API-t az ellenőrzéshez és az engedélyezéshez, mielőtt lépéseket hozna a webhook értesítésére.
+A közzétevőnek egy webhookot kell megvalósítania ebben a SaaS-szolgáltatásban, hogy proaktív módon értesítse a felhasználókat a szolgáltatás változásairól. A SaaS-szolgáltatás várhatóan meghívja az operations API-t, hogy ellenőrizze és engedélyezze, mielőtt egy műveletet a webhook értesítés.
 
 
 ```json
@@ -850,34 +849,34 @@ A közzétevőnek be kell vezetnie egy webhookot ebben az SaaS-szolgáltatásban
 
 }
 ```
-Ahol a művelet a következők egyike lehet: 
-- `Unsubscribe` (az erőforrás törlése után)
-- `ChangePlan` (a változási terv műveletének befejezése után)
-- `ChangeQuantity` (ha a mennyiség módosítása művelet befejeződött)
-- `Suspend` (ha az erőforrást felfüggesztették)
-- `Reinstate` (ha az erőforrást a felfüggesztést követően állították vissza)
+Amennyiben a cselekvés a következők egyike lehet: 
+- `Unsubscribe`(ha az erőforrást törölték)
+- `ChangePlan`(ha a változásterv-művelet befejeződött)
+- `ChangeQuantity`(ha a változási mennyiség művelet befejeződött)
+- `Suspend`(ha az erőforrást felfüggesztették)
+- `Reinstate`(ha az erőforrást a felfüggesztés után visszaállították)
 
 Ahol az állapot a következők egyike lehet: 
-- **NotStarted** <br>
+- **Nincs beindítva** <br>
  - **Folyamatban** <br>
-- **Sikerült** <br>
-- **Sikertelen** <br>
-- **Ütközés** <br>
+- **Sikeres** <br>
+- **Nem sikerült** <br>
+- **Konfliktus** <br>
 
-Egy webhook-értesítésben a végrehajtható állapotok **sikeresek** és **sikertelenek voltak**. A művelet életciklusa a **NotStarted** -ből olyan terminál-állapotba történik, mint a **sikeres**, **sikertelen**vagy **ütközés**. Ha **NotStarted** vagy inaktivitást kap, folytassa az állapot lekérése az **API-val**, amíg a művelet el nem éri a terminál állapotát a művelet megkezdése előtt. 
+A webhook-értesítésben a végrehajtható állapotok **sikeresek** és **sikertelenek.** Egy művelet életciklusa a **NotStarted** -tól a terminál állapotig , például **Sikeres**, **Sikertelen**vagy **Ütközés**. Ha **notstarted** vagy **inprogress -t**kap, folytassa az állapot kéréséhez a GET API-n keresztül, amíg a művelet el nem éri a terminálállapotot a művelet megkezdése előtt. 
 
-## <a name="mock-apis"></a>Modell API-k
+## <a name="mock-apis"></a>Mock API-k
 
-A modell API-k segítségével megkezdheti a fejlesztést, különösen a prototípusokat, valamint a projektek tesztelését. 
+Ál-API-inkkal segítheta fejlesztés, különösen a prototípusok készítése és a projektek tesztelése. 
 
-Gazdagép végpontja: `https://marketplaceapi.microsoft.com/api` (nincs szükség hitelesítésre)<br/>
-API-verzió: `2018-09-15`<br/>
-Minta URI: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
+Állomásvégpont: `https://marketplaceapi.microsoft.com/api` (nincs szükség hitelesítésre)<br/>
+API-verzió:`2018-09-15`<br/>
+URI-minta:`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-Az API-végpont elérési útjai ugyanazok, mint a modell és a valós API-k esetében, de az API-verziók eltérőek. A verzió `2018-09-15` a modell verziójához, és `2018-08-31` az üzemi verzióhoz. 
+Az API-végpont elérési útjai ugyanazok a mock és a valós API-k között, de az API-verziók eltérőek. A verzió `2018-09-15` a modell `2018-08-31` verzióra és a gyártási verzióra. 
 
-Az ebben a cikkben szereplő API-hívások az ál-gazdagép végpontján hozhatók létre. Általánosságban elmondható, hogy a rendszer válaszként visszaküldi az adatok mintáját. A frissítési előfizetés módszereinek meghívása az ál API-ban mindig a 500-as értéket kell visszaadnia. 
+A cikkben szereplő API-hívások bármelyike a modell gazdagép végpontjára is elvégezhető. Általában elvárják, hogy a modell adatokat válaszként visszakapja. A modell API-n a frissítési előfizetési módszerek hívásai mindig 500-at adnak vissza. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A fejlesztők a [Cloud Partner Portal REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)-k használatával programozott módon is lekérhetik és kezelhetik a munkaterheléseket, az ajánlatokat és a közzétevői profilokat.
+A fejlesztők a [Cloud Partner Portal REST API-jainak](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)használatával programozott módon is lekérhetik és kezelhetik a számítási feladatokat, ajánlatokat és közzétevői profilokat.

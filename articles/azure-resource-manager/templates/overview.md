@@ -1,74 +1,74 @@
 ---
-title: Sablonok – áttekintés
-description: A Azure Resource Manager-sablonok használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
+title: Sablonok – Áttekintés
+description: Az Azure Resource Manager-sablonok használatával az erőforrások üzembe helyezéséhez nyújtott előnyök ismertetése.
 ms.topic: conceptual
-ms.date: 01/02/2020
-ms.openlocfilehash: a4b0dff4b351098095de0b98ede21d9af8a7eef9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 03/25/2020
+ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689702"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258124"
 ---
-# <a name="azure-resource-manager-templates-overview"></a>Azure Resource Manager sablonok áttekintése
+# <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
-A felhőbe való áttéréssel számos csapat agilis fejlesztési módszereket fogadott el. Ezek a csapatok gyorsan megismétlik. A megoldásoknak többször is üzembe kell helyezniük a felhőben, és tudniuk kell, hogy az infrastruktúra megbízható állapotban van. Mivel az infrastruktúra az iterációs folyamat részévé vált, a műveletek és a fejlesztés közötti felosztás eltűnt. A csapatoknak egységes folyamaton keresztül kell kezelniük az infrastruktúrát és az alkalmazás kódját.
+A felhőbe való áthelyezéssel számos csapat agilis fejlesztési módszereket fogadott el. Ezek a csapatok gyorsan haladnak. Ismételten telepíteniük kell a megoldásaikat a felhőbe, és tudniuk kell, hogy az infrastruktúrájuk megbízható állapotban van. Mivel az infrastruktúra az iteratív folyamat részévé vált, a műveletek és a fejlesztés közötti megosztás megszűnt. A csapatoknak egységes folyamaton keresztül kell kezelnie az infrastruktúrát és az alkalmazáskódot.
 
-Ezeknek a kihívásoknak a kielégítéséhez automatizálhatja az üzembe helyezéseket, és használhatja az infrastruktúra mint kód gyakorlatát. A kódban definiálni kell a telepítendő infrastruktúrát. Az infrastruktúra kódja a projekt részévé válik. Az alkalmazás kódjához hasonlóan az infrastruktúra kódját is tárolhatja egy forrás adattárban, és annak verzióját is. A csapatának bármelyike futtathatja a kódot, és telepíthet hasonló környezeteket is.
+Ezeknek a kihívásoknak való megfeleltetéshez automatizálhatja a központi telepítéseket, és az infrastruktúra kódként való használatát használhatja. A kódban megadhatja a telepítendő infrastruktúrát. Az infrastruktúra-kód a projekt részévé válik. Az alkalmazáskódhoz hasonlóan az infrastruktúrakódot is egy forrástárházban tárolja, és verziószámmal verzióal kell elkönyvelni. A csapat bármely tagja futtathatja a kódot, és hasonló környezeteket helyezhet üzembe.
 
-Ha az Azure-megoldások számára kíván infrastruktúra-kódot megvalósítani, használja Azure Resource Manager-sablonokat. A sablon egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon deklaratív szintaxist használ, amely lehetővé teszi, hogy a telepítéshez szükséges programozási parancsok sorrendjének megírása nélkül adja meg az üzembe helyezni kívánt adatokat. A sablonban megadhatja a telepítendő erőforrásokat és az erőforrások tulajdonságait.
+Az Azure-megoldások infrastruktúra-kódként való megvalósításához használja az Azure Resource Manager (ARM) sablonokat. A sablon egy JavaScript-objektumjelölési (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon deklaratív szintaxist használ, amely lehetővé teszi a telepítéshez használt állapot ot anélkül, hogy meg kellene írnia a létrehozáshoz szükséges programozási parancsok sorrendjét. A sablonban megadhatja az üzembe helyezandó erőforrásokat és az erőforrások tulajdonságait.
 
-## <a name="why-choose-resource-manager-templates"></a>Miért érdemes Resource Manager-sablonokat választani?
+## <a name="why-choose-arm-templates"></a>Miért válassza az ARM sablonokat?
 
-Ha a Resource Manager-sablonok és az egyik másik infrastruktúra kód-szolgáltatásként való használatának eldöntését tervezi, vegye figyelembe a következő előnyöket a sablonok használatával:
+Ha az ARM-sablonok és a másik infrastruktúra kódszolgáltatásként való használata között próbál dönteni, vegye figyelembe a sablonok használatának következő előnyeit:
 
-* **Deklaratív szintaxis**: a Resource Manager-sablonok lehetővé teszik, hogy teljes körű Azure-infrastruktúrát hozzon létre és helyezzen üzembe. Telepítheti például nem csak a virtuális gépeket, hanem a hálózati infrastruktúrát, a tárolási rendszereket és minden más szükséges erőforrást is.
+* **Deklaratív szintaxis:** ARM sablonok lehetővé teszik, hogy hozzon létre és telepítsen egy teljes Azure-infrastruktúra deklaratív módon. Például nem csak a virtuális gépeket telepítheti, hanem a hálózati infrastruktúrát, a tárolórendszereket és minden más erőforrást is, amire szüksége lehet.
 
-* **Ismételhető eredmények**: az infrastruktúra ismételt üzembe helyezése a fejlesztési életciklus során, és az erőforrások megbízhatóságának egységes módon történő üzembe helyezése. A sablonok idempotens, ami azt jelenti, hogy több alkalommal is telepítheti ugyanazt a sablont, és ugyanazokat az erőforrásokat ugyanaz az állapot teszi elérhetővé. Létrehozhat egy olyan sablont, amely a kívánt állapotot jelöli, nem pedig sok különálló sablon kidolgozását a frissítések megjelenítéséhez.
+* **Ismételhető eredmények:** Az infrastruktúra ismételt üzembe helyezése a fejlesztési életciklus során, és bízom abban, hogy az erőforrások at konzisztens módon telepítik. A sablonok idempotensek, ami azt jelenti, hogy ugyanazt a sablont többször is üzembe helyezheti, és ugyanazokat az erőforrástípusokat kaphatja ugyanabban az állapotban. Kifejleszthet egy sablont, amely a kívánt állapotot képviseli, ahelyett, hogy sok különálló sablont fejlesztene a frissítések reprezentatiójára.
 
-* Előkészítés **: nem**kell aggódnia a megrendelési műveletek bonyolultságával kapcsolatban. A Resource Manager összehangolja az egymástól függő erőforrások telepítését, hogy azok a megfelelő sorrendben jöjjenek létre. Ha lehetséges, a Resource Manager párhuzamosan helyezi üzembe az erőforrásokat, így az üzemelő példányok gyorsabban futnak, mint a soros központi telepítések. A sablont egyetlen parancs használatával helyezheti üzembe, nem pedig több, felszólító parancs használatával.
+* **Vezénylés:** Nem kell aggódnia a rendelési műveletek bonyolultsága miatt. Az Erőforrás-kezelő vezényli az egymástól függő erőforrások üzembe helyezését, így azok a megfelelő sorrendben jönnek létre. Ha lehetséges, az Erőforrás-kezelő párhuzamosan telepíti az erőforrásokat, így a központi telepítések gyorsabban befejeződnek, mint a soros telepítések. A sablont nem több imperatív parancs, hanem egy parancs segítségével telepítheti.
 
-   ![Template deployment összehasonlítása](./media/overview/template-processing.png)
+   ![A sablonok központi telepítésének összehasonlítása](./media/overview/template-processing.png)
 
-* **Beépített ellenőrzés**: a rendszer csak az érvényesítést követően telepíti a sablont. A Resource Manager a telepítés megkezdése előtt ellenőrzi a sablont, hogy a telepítés sikeres legyen-e. Az üzembe helyezés kevésbé valószínű, hogy egy félig kész állapotban leáll.
+* **Beépített érvényesítés:** A sablon csak az ellenőrzés átadása után kerül üzembe helyezésre. Az Erőforrás-kezelő ellenőrzi a sablont a központi telepítés megkezdése előtt, hogy a központi telepítés sikeres lesz-e. A központi telepítés kevésbé valószínű, hogy félig kész állapotban leáll.
 
-* **Moduláris fájlok**: a sablonokat felbonthatja kisebb, újrafelhasználható összetevőkre, és összekapcsolhatja őket az üzembe helyezés ideje alatt. Egy sablont egy másik sablonba is beágyazhat.
+* **Moduláris fájlok:** A sablonokat kisebb, újrafelhasználható összetevőkre bonthatja, és a telepítés kor összekapcsolhatja őket. Egy sablont egy másik sablonba is beágyazhat.
 
-* **Hozzon létre egy Azure-erőforrást**: azonnal használhatja a sablonok új Azure-szolgáltatásait és szolgáltatásait. Amint egy erőforrás-szolgáltató új erőforrásokat vezet be, ezeket az erőforrásokat sablonokon keresztül is telepítheti. Az új szolgáltatások használata előtt nem kell megvárnia, hogy az eszközök és modulok frissítése megtörténjen.
+* **Hozzon létre bármilyen Azure-erőforrást:** Azonnal használhatja az új Azure-szolgáltatásokat és -funkciókat a sablonokban. Amint egy erőforrás-szolgáltató új erőforrásokat vezet be, ezeket az erőforrásokat sablonokon keresztül telepítheti. Az új szolgáltatások használata előtt nem kell megvárnia az eszközök vagy modulok frissítésének megvárását.
 
-* **Követett központi telepítések**: a Azure Portal áttekintheti az üzembe helyezési előzményeket, és információkat kaphat a sablon telepítéséről. Megtekintheti a telepített sablont, az átadott paramétereket és a kimeneti értékeket. Más infrastruktúrát, mint a Code Services a portálon keresztül nem követik nyomon.
+* **Nyomon követett telepítések:** Az Azure Portalon megtekintheti a központi telepítési előzményeket, és információkat kaphat a sablon üzembe helyezéséről. Láthatja az üzembe helyezett sablont, a paraméterértékeket és a kimeneti értékeket. Más infrastruktúra kódszolgáltatásként nem követi nyomon a portálon keresztül.
 
-   ![Üzembe helyezési előzmények](./media/overview/deployment-history.png)
+   ![Telepítési előzmények](./media/overview/deployment-history.png)
 
-* Szabályzat **mint kód**: [Azure Policy](../../governance/policy/overview.md) a szabályozás automatizálására szolgáló szabályzat. Ha Azure-szabályzatokat használ, a szabályzat szervizelése a nem megfelelő erőforrásokon történik a sablonokkal való üzembe helyezéskor.
+* **Szabályzat kódként:** [Az Azure Policy](../../governance/policy/overview.md) egy szabályzat, amely kódkeretrendszerként a cégirányítási automatizálásautomatizálási. Ha Azure-szabályzatokat használ, a szabályzatok szervizelése nem megfelelő erőforrásokon történik, amikor sablonokon keresztül telepítik őket.
 
-* **Üzembe helyezési tervezetek**: kihasználhatja a Microsoft által a szabályozási és megfelelőségi követelmények teljesítéséhez biztosított [tervrajzok](../../governance/blueprints/overview.md) előnyeit. Ezek a tervrajzok előre elkészített sablonokat is tartalmaznak a különböző architektúrák esetében.
+* **Üzembe helyezési tervrajzok:** A Microsoft által biztosított [tervrajzok](../../governance/blueprints/overview.md) előnyeit kihasználhatja a szabályozási és megfelelőségi szabványok nak való megfelelés érdekében. Ezek a tervrajzok előre elkészített sablonokat tartalmaznak a különböző architektúrákhoz.
 
-* **CI/CD-integráció**: a sablonokat integrálhatja a folyamatos integrációs és folyamatos üzembe helyezési (CI/CD) eszközökbe, amelyekkel automatizálhatja a kiadási folyamatokat a gyors és megbízható alkalmazás-és infrastruktúra-frissítésekhez. Az Azure DevOps és a Resource Manager-sablon feladatának használatával Azure-folyamatokat használhat Azure Resource Manager sablonok projektjeinek folyamatos létrehozásához és üzembe helyezéséhez. További információért lásd: [a vs projekt a folyamatokkal](add-template-to-azure-pipelines.md) és a [folyamatos integráció az Azure-folyamatokkal](template-tutorial-use-azure-pipelines.md).
+* **CI/CD integráció:** Sablonokat integrálhat a folyamatos integrációs és folyamatos üzembe helyezési (CI/CD) eszközökbe, amelyek automatizálhatják a kiadási folyamatokat a gyors és megbízható alkalmazás- és infrastruktúra-frissítések érdekében. Az Azure DevOps és a Resource Manager sablonfeladat használatával az Azure Pipelines segítségével folyamatosan hozhat létre és helyezhet üzembe ARM-sablonprojekteket. További információ: [VS-projekt folyamatokés](add-template-to-azure-pipelines.md) [folyamatos integráció az Azure Pipelines.](template-tutorial-use-azure-pipelines.md)
 
-* **Exportálható kód**: egy meglévő erőforráscsoport sablonjának lekéréséhez exportálja az erőforráscsoport aktuális állapotát, vagy tekintse meg az adott központi telepítéshez használt sablont. Az [exportált sablon](export-template-portal.md) megtekintése hasznos információkat nyújt a sablon szintaxisáról.
+* **Exportálható kód**: Egy meglévő erőforráscsoport sablonját az erőforráscsoport aktuális állapotának exportálásával vagy egy adott központi telepítéshez használt sablon megtekintésével szerezheti be. Az [exportált sablon](export-template-portal.md) megtekintése hasznos módszer a sablon szintaxisának megismerésére.
 
-* Szerzői **eszközök**: a sablonok a [Visual Studio Code](use-vs-code-to-create-template.md) és a Template Tool bővítménnyel hozhatók létre. Az IntelliSense, a szintaxis kiemelése, a beágyazott Súgó és számos más nyelvi funkció is elérhető. A Visual Studio Code mellett a [Visual studiót](create-visual-studio-deployment-project.md)is használhatja.
+* **Szerzői eszközök**: A Visual [Studio-kóddal](use-vs-code-to-create-template.md) és a sabloneszköz-kiterjesztéssel sablonokat hozhat meg. Kapsz intellisense, szintaxis kiemelése, in-line segítséget, és sok más nyelvi funkciókat. A Visual Studio-kód mellett használhatja a [Visual Studio](create-visual-studio-deployment-project.md)alkalmazást is.
 
 ## <a name="template-file"></a>Sablonfájl
 
-A sablonon belül olyan sablon- [kifejezéseket](template-expressions.md) írhat, amelyek kibővítik a JSON képességeit. Ezek a kifejezések a Resource Manager által biztosított [függvények](template-functions.md) használatát teszik elérhetővé.
+A sablonon belül [olyan sablonkifejezéseket](template-expressions.md) írhat, amelyek kiterjesztik a JSON képességeit. Ezek a kifejezések az Erőforrás-kezelő által biztosított [függvényeket](template-functions.md) használják.
 
-A sablon a következő résszel rendelkezik:
+A sablon a következő szakaszokat ismerteti:
 
-* [Paraméterek](template-parameters.md) – az üzembe helyezés során értékeket adhat meg, amelyek lehetővé teszik, hogy ugyanaz a sablon más környezetekben is használható legyen.
+* [Paraméterek](template-parameters.md) – Adja meg azokat az értékeket a központi telepítés során, amelyek lehetővé teszik, hogy ugyanazt a sablont különböző környezetekben használják.
 
-* [Változók](template-variables.md) – a sablonokban újra felhasználható értékek definiálása. Ezek a paraméterek értékeiből állíthatók össze.
+* [Változók](template-variables.md) – A sablonokban újrafelhasznált értékek meghatározása. Ezek paraméterértékekből is létrehozhatók.
 
-* [Felhasználó által definiált függvények](template-user-defined-functions.md) – a sablont leegyszerűsítő testreszabott függvények létrehozása.
+* [Felhasználó által definiált függvények](template-user-defined-functions.md) – A sablont leegyszerűsítő testreszabott függvények létrehozása.
 
-* [Erőforrások](template-syntax.md#resources) – a telepítendő erőforrások meghatározása.
+* [Erőforrások](template-syntax.md#resources) – Adja meg az üzembe helyezendő erőforrásokat.
 
-* [Kimenetek](template-outputs.md) – az üzembe helyezett erőforrások értékeit adja vissza.
+* [Kimenetek](template-outputs.md) – Az üzembe helyezett erőforrások ból származó értékek visszaadása.
 
-## <a name="template-deployment-process"></a>Template deployment folyamat
+## <a name="template-deployment-process"></a>Sablon telepítési folyamata
 
-Sablon központi telepítésekor a Resource Manager átalakítja a sablont REST API műveletekre. Például amikor a Resource Manager megkap egy sablont, amely a következő erőforrás-definíciót tartalmazza:
+Sablon üzembe helyezésekor az Erőforrás-kezelő a sablont REST API-műveletekké alakítja át. Például amikor a Resource Manager megkap egy sablont, amely a következő erőforrás-definíciót tartalmazza:
 
 ```json
 "resources": [
@@ -102,7 +102,7 @@ REQUEST BODY
 }
 ```
 
-## <a name="template-design"></a>Sablon kialakítása
+## <a name="template-design"></a>Sablon terv
 
 A sablonok és erőforráscsoportok meghatározási módja teljes mértékben Öntől függ, illetve attól, hogyan szeretné kezelni a megoldást. Például egyetlen sablon segítségével üzembe helyezheti a háromszintű alkalmazását egyetlen erőforráscsoportra.
 
@@ -118,8 +118,8 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 
 A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](linked-templates.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
-* További információ a sablonfájlok tulajdonságairól: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).
-* A sablonok exportálásával kapcsolatos tudnivalókat [a gyors útmutató: Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal segítségével](quickstart-create-templates-use-the-portal.md)című témakörben talál.
+* A sablon létrehozásának folyamatát végigvezető részletes oktatóanyagról az [Oktatóanyag: Az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md)című témakörben olvashat.
+* A sablonfájlok tulajdonságairól az [ARM-sablonok szerkezetének és szintaxisának ismertetése című témakörben olvashat.](template-syntax.md)
+* A sablonok exportálásáról a [Rövid útmutató: ARM-sablonok létrehozása és üzembe helyezése az Azure Portal használatával](quickstart-create-templates-use-the-portal.md)című témakörben olvashat.

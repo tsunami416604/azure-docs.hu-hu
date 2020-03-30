@@ -1,25 +1,24 @@
 ---
-title: Földrajzi Elérhetőség és pénznemek támogatása | Azure
-description: Földrajzi elérhetőség az Azure Marketplace-en és a AppSource-ben
-services: Azure, Marketplace, Compute, Storage, Networking
+title: Földrajzi elérhetőség és pénznemtámogatás | Azure
+description: Földrajzi elérhetőség az Azure Piactéren és az AppSource-ban
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2020
-ms.author: ellacroi
-ms.openlocfilehash: f2369388f00f6a023ac77865ab8e3540bc35de70
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.author: dsindona
+ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905670"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288427"
 ---
-# <a name="geographic-availability-and-currency-support"></a>Földrajzi Elérhetőség és pénznemek támogatása
+# <a name="geographic-availability-and-currency-support"></a>Földrajzi elérhetőség és pénznemtámogatás
 
-Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe által meghatározott 141 földrajzi régiókban lehet megvásárolni, a tranzakciók pedig 17 pénznemben végezhetők el. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
+Az Azure Marketplace- és AppSource-ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi területen vásárolhatók meg, és a tranzakciók 17 pénznemben hajthatók végre. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 kétjegyű alfa-kódját](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
-|   Ország/régió neve               |   ISO-2   |   Currency (Deviza)   |
+|   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
 |-------------------------------------|-----------|--------------|
 | Afganisztán                         | AF        | USD          |
 | Albánia                             | AL        | USD          |
@@ -37,7 +36,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Belarusz                             | BY        | USD          |
 | Belgium                             | BE        | EUR          |
 | Belize                              | BZ        | USD          |
-| Bermuda                             | BM        | USD          |
+| Bermuda                             | Bm        | USD          |
 | Bolívia                             | BO        | USD          |
 | Bosznia-Hercegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
@@ -49,14 +48,14 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Cabo Verde                          | CV        | USD          |
 | Kajmán-szigetek                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Kína\**                            | CN        | –          |
+| Kína\**                            | CN        | N/A          |
 | Kolumbia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
-| Côte d’Ivoire                       | CI        | USD          |
+| Côte d'Ivoire                       | CI        | USD          |
 | Horvátország                             | HR        | EUR          |
-| Curaçao                             | CW        | USD          |
+| Curaçao                             | Cw        | USD          |
 | Ciprus                              | CY        | EUR          |
-| Csehország                      | CZ        | EUR          |
+| Cseh Köztársaság                      | CZ        | EUR          |
 | Dánia                             | DK        | DKK          |
 | Dominikai Köztársaság                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
@@ -64,7 +63,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Salvador                         | SV        | USD          |
 | Észtország                             | EE        | EUR          |
 | Etiópia                            | ET        | USD          |
-| Feröer-szigetek                       | UTCÁN        | DKK          |
+| Feröer szigetek                       | FO (FO)        | DKK          |
 | Fidzsi                                | FJ        | AUD          |
 | Finnország                             | FI        | EUR          |
 | Franciaország                              | JK        | EUR          |
@@ -88,7 +87,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Jordánia                              | JO        | USD          |
 | Kazahsztán                          | KZ        | USD          |
 | Kenya                               | KE        | USD          |
-| Dél-Korea                       | KR        | KRW          |
+| Korea (dél)                       | KR        | KRW          |
 | Kuvait                              | KW        | USD          |
 | Kirgizisztán                          | KG        | USD          |
 | Lettország                              | LV        | EUR          |
@@ -97,18 +96,18 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Liechtenstein                       | LI        | EUR          |
 | Litvánia                           | LT        | EUR          |
 | Luxemburg                          | LU        | EUR          |
-| Makaó KKT                           | MO        | USD          |
+| Makaó (KKT)                           | MO        | USD          |
 | Észak-Macedónia                     | MK        | USD          |
 | Malajzia                            | MY        | USD          |
 | Málta                               | MT        | EUR          |
-| Mauritius                           | MU        | USD          |
+| Mauritius                           | Mu        | USD          |
 | Mexikó                              | MX        | USD          |
 | Moldova                             | MD        | USD          |
 | Monaco                              | MC        | EUR          |
 | Mongólia                            | MN        | USD          |
-| Montenegró                          | Nekem        | USD          |
+| Montenegró                          | ME        | USD          |
 | Marokkó                             | MA        | USD          |
-| Namíbia                             | n/a        | USD          |
+| Namíbia                             | NA        | USD          |
 | Nepál                               | NP        | USD          |
 | Hollandia                         | NL        | EUR          |
 | Nicaragua                           | NI        | USD          |
@@ -142,29 +141,29 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Svédország                              | SE        | SEK          |
 | Svájc                         | CH        | CHF          |
 | Tajvan                              | TW        | TWD          |
-| Tádzsikisztán                          | TJ        | USD          |
+| Tádzsikisztán                          | Tj        | USD          |
 | Tanzánia                            | TZ        | USD          |
 | Thaiföld                            | TH        | USD          |
 | Trinidad és Tobago                 | TT        | USD          |
 | Tunézia                             | TN        | USD          |
 | Törökország                              | TR        | USD          |
 | Türkmenisztán                        | TM        | USD          |
-| Vatikáni Városállam (Szentszék)             | VA        | EUR          |
-| Amerikai Virgin-szigetek | VI        | USD          |
+| Vatikán (Szentszék)             | VA        | EUR          |
+| Az Egyesült Államok Virgin-szigetei | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrajna                             | UA        | USD          |
 | Egyesült Arab Emírségek                | AE        | USD          |
 | Egyesült Királyság                      | GB        | GBP          |
-| Egyesült Államok                       | Egyesült Államok        | USD          |
+| Egyesült Államok                       | USA        | USD          |
 | Uruguay                             | UY        | USD          |
 | Üzbegisztán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | TI        | USD          |
+| Jemen                               | Ti        | USD          |
 | Zambia                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-a Brazíliában található ügyfelek \* USD-t használnak a Cloud Solution Providers (CSP) által használt piactéren.
+\*A brazíliai ügyfelek számára a Piactér a felhőalapú megoldásszolgáltatókon (CSP) keresztül USD-t használ.
 
-\** csak az ingyenes és a BYOL VM-lemezképek.
+\** Ingyenes és BYOL VM képek csak.

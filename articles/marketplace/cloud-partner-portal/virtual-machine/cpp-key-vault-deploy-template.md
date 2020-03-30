@@ -1,23 +1,22 @@
 ---
-title: Azure Key Vault telepítési sablon | Azure piactér
-description: Felsorolja az új Azure Key Vault példány telepítéséhez szükséges Azure Resource Manager sablont.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure Key Vault telepítési sablon | Azure Piactér
+description: Az Új Azure Key Vault-példány üzembe helyezéséhez szükséges Azure Resource Manager-sablon.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: befed70b6858ebc8aaab7ebe200bb8082a430bab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 63f49946b14b003348758a5ae7ebadd7a4acf383
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277668"
 ---
 # <a name="key-vault-deployment-template"></a>Key Vault üzembehelyezési sablonja
 
-A következő Azure Resource Manager sablon egy új Azure Key Vault példányt határoz meg.  Ez a cikk a [Key Vault-tanúsítvány létrehozása](cpp-create-key-vault-cert.md)című cikkben használatos. 
+A következő Azure Resource Manager-sablon egy új Azure Key Vault-példányt határoz meg.  A key vault [tanúsítványának létrehozása](cpp-create-key-vault-cert.md)című cikkben használatos. 
 
 ```json
 {

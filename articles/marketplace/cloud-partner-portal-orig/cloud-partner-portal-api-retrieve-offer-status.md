@@ -1,35 +1,34 @@
 ---
-title: Ajánlat állapotának beolvasása | Azure piactér
-description: Az API lekérdezi az ajánlat aktuális állapotát.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Ajánlat állapotának lekérése | Azure Piactér
+description: Az API lekéri az ajánlat aktuális állapotát.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280507"
 ---
 <a name="retrieve-offer-status"></a>Ajánlat állapotának lekérése 
 =====================
 
-Az ajánlat aktuális állapotának beolvasása.
+Az ajánlat aktuális állapotának lekérése.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
 <a name="uri-parameters"></a>URI-paraméterek
 --------------
 
-|  **Name (Név)**       |   **Leírás**                            |  **Adattípus** |
+|  **Név**       |   **Leírás**                            |  **Adattípus** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Közzétevő azonosítója, például `Contoso`  |     Sztring     |
-|  OfferId        | Az ajánlatot egyedileg azonosító GUID      |     Sztring     |
-|  API-Version    | Az API legújabb verziója                        |     Dátum       |
+|  publisherId    | Közzétevő azonosítója, például`Contoso`  |     Sztring     |
+|  offerId        | Az ajánlatot egyedileg azonosító GUID      |     Sztring     |
+|  api-verzió    | Az API legújabb verziója                        |     Dátum       |
 |  |  |
 
 
@@ -43,7 +42,7 @@ Az ajánlat aktuális állapotának beolvasása.
 |  |  |
 
 
-<a name="body-example"></a>Példa szövegtörzsre
+<a name="body-example"></a>Példa törzsre
 ------------
 
 ### <a name="response"></a>Válasz
@@ -121,60 +120,60 @@ Az ajánlat aktuális állapotának beolvasása.
 ```
 
 
-### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
+### <a name="response-body-properties"></a>Választörzs tulajdonságai
 
-|  **Name (Név)**             |    **Leírás**                                                                             |
+|  **Név**             |    **Leírás**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  status               | Az ajánlat állapota. A lehetséges értékek listájáért lásd az [ajánlat állapota](#offer-status) alább. |
-|  üzenet             | Az ajánlattal társított üzenetek tömbje                                                    |
-|  lépések                | Azon lépések tömbje, amelyek az ajánlat közzétételekor haladnak                      |
-|  estimatedTimeFrame   | A lépés végrehajtásához szükséges idő becslése rövid formátumban                       |
+|  status               | Az ajánlat állapota. A lehetséges értékek listáját lásd alább [Az Ajánlat állapota.](#offer-status) |
+|  üzenet             | Az ajánlathoz társított üzenetek tömbje                                                    |
+|  lépések                | Az ajánlat közzététele során megtett lépések tömbje                      |
+|  becsültTimeFrame   | Becsült idő lenne igénybe, hogy ezt a lépést, barátságos formában                       |
 |  id                   | A lépés azonosítója                                                                         |
-|  stepName             | A lépés neve                                                                               |
+|  lépésneve             | A lépés neve                                                                               |
 |  leírás          | A lépés leírása                                                                        |
-|  status               | A lépés állapota. A lehetséges értékek listájáért lásd az alábbi [lépések állapotát](#step-status) .    |
+|  status               | A lépés állapota. A lehetséges értékek listáját lásd alább a [Lépés állapota](#step-status) című témakörben.    |
 |  üzenet             | A lépéshez kapcsolódó üzenetek tömbje                                                          |
 |  processPercentage    | A lépés százalékos készültsége                                                              |
-|  previewLinks         | *Jelenleg nincs implementálva*                                                                    |
-|  liveLinks            | *Jelenleg nincs implementálva*                                                                    |
-|  notificationEmails   | Az e-mail-címek vesszővel tagolt listája, amelyekről értesíteni kell a művelet állapotát        |
+|  previewLinks         | *Jelenleg nincs megvalósítva*                                                                    |
+|  élő linkek            | *Jelenleg nincs megvalósítva*                                                                    |
+|  értesítésEmailek   | Vesszővel tagolt e-mail címek listája, amelyeket értesíteni kell a művelet előrehaladásáról        |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Válasz-állapotkódok
+### <a name="response-status-codes"></a>Válasz állapotkódjai
 
 | **Kód** |   **Leírás**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK` – a kérés feldolgozása sikeres volt, és az ajánlat aktuális állapota vissza lett állítva. |
-|  400     | `Bad/Malformed request` – a hiba-válasz törzse több információt is tartalmazhat.                 |
-|  404     | `Not found` – a megadott entitás nem létezik.                                                |
+|  200     |  `OK`- A kérés feldolgozása sikeresen megtörtént, és az ajánlat aktuális állapotát visszaadta. |
+|  400     | `Bad/Malformed request`- A hibaválasz törzse további információkat tartalmazhat.                 |
+|  404     | `Not found`- A megadott entitás nem létezik.                                                |
 |  |  |
 
 
 ### <a name="offer-status"></a>Ajánlat állapota
 
-|  **Name (Név)**                    |    **Leírás**                                       |
+|  **Név**                    |    **Leírás**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
-|  NeverPublished              | Az ajánlatot még soha nem tették közzé.                          |
-|  NotStarted                  | Az ajánlat új, és nem indult el.                            |
-|  WaitingForPublisherReview   | Az ajánlat a közzétevő jóváhagyására vár.                 |
-|  Fut                     | Az ajánlatok beküldése folyamatban van.                     |
-|  Sikeres                   | Az ajánlat küldése befejeződött a feldolgozás során.               |
-|  Megszakítva                    | Az ajánlat beküldését megszakították.                           |
-|  Meghiúsult                      | Az ajánlat küldése nem sikerült.                                 |
+|  Soha nem lett közzétéve              | Az ajánlatot soha nem tették közzé.                          |
+|  Nincs beindítva                  | Az ajánlat új, és nem indult el.                            |
+|  VárakozásA PublisherReview-ra   | Az ajánlat a közzétevő jóváhagyására vár.                 |
+|  Fut                     | Az ajánlat beküldése feldolgozása folyamatban van.                     |
+|  Sikeres                   | Az ajánlat beküldése befejeződött a feldolgozás.               |
+|  Megszakítva                    | Az ajánlat beküldését törölték.                           |
+|  Sikertelen                      | Az ajánlat beküldése nem sikerült.                                 |
 |  |  |
 
 
 ### <a name="step-status"></a>Lépés állapota
 
-|  **Name (Név)**                    |    **Leírás**                           |
+|  **Név**                    |    **Leírás**                           |
 |  -------------------------   |  ------------------------------------------  |
-|  NotStarted                  | A lépés nem indult el.                        |
-|  Folyamatban                  | A lépés fut.                             |
-|  WaitingForPublisherReview   | A lépés a közzétevő jóváhagyására vár.      |
-|  WaitingForApproval          | A lépés a folyamat jóváhagyására vár.        |
-|  Blokkolt                     | A lépés le van tiltva.                             |
-|  Elutasította                    | A lépés elutasításra kerül.                            |
+|  Nincs beindítva                  | A lépés még nem kezdődött el.                        |
+|  Folyamatban                  | A lépés működik.                             |
+|  VárakozásA PublisherReview-ra   | A lépés a közzétevő jóváhagyására vár.      |
+|  WaitingForApproval (Jóváhagyásra vár)          | A lépés a folyamat jóváhagyására vár.        |
+|  Blokkolva                     | A lépés blokkolva van.                             |
+|  Elutasítva                    | A lépés elutasítva.                            |
 |  Befejezve                    | A lépés befejeződött.                            |
-|  Megszakítva                    | A lépést megszakították.                           |
+|  Megszakítva                    | A lépés megszakadt.                           |
 |  |  |

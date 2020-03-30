@@ -1,79 +1,78 @@
 ---
-title: A virtuálisgép-rendszerkép tanúsítása az Azure Marketplace-en
-description: Elmagyarázza, hogyan lehet tesztelni és elküldeni a virtuálisgép-rendszerképeket az Azure Marketplace minősítéshez.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: A virtuális gép lemezképének hitelesítése az Azure Marketplace-en
+description: Bemutatja, hogyan tesztelheti és küldheti el a virtuális gép lemezképét az Azure Marketplace-tanúsítványhoz.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/26/2018
-ms.author: pabutler
-ms.openlocfilehash: 4088864db4bf861d07821f5a0287336d8431f889
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826510"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278195"
 ---
-# <a name="certify-your-vm-image"></a>A virtuális gép rendszerképének tanúsítása
+# <a name="certify-your-vm-image"></a>A virtuális gép lemezképének hitelesítése
 
-A virtuális gép (VM) létrehozása és üzembe helyezése után tesztelje és küldje el a virtuálisgép-lemezképet az Azure Marketplace minősítéshez. Ez a cikk bemutatja, hogyan kérheti le az *Azure Certified minősítési teszt eszközét*, hogyan használhatja ezt az eszközt a virtuálisgép-lemezkép tanúsítására, valamint az ellenőrzési eredmények feltöltésére az Azure-tárolóba, ahol a VHD-k találhatók. 
-
-
-## <a name="download-and-run-the-certification-test-tool"></a>A minősítési teszt eszköz letöltése és futtatása
-
-Az Azure Certified minősítési teszt eszköze egy helyi Windows-gépen fut, de tesztel egy Azure-alapú Windows vagy Linux rendszerű virtuális gépet.  Ellenőrzi, hogy a felhasználói virtuálisgép-rendszerkép kompatibilis-e a Microsoft Azureval – a virtuális merevlemez előkészítésére vonatkozó útmutatás és követelmények teljesültek. Az eszköz kimenete egy kompatibilitási jelentés, amelyet a rendszer feltölthet a [Cloud Partner Portalre](https://cloudpartner.azure.com) , és a virtuális gép minősítését kéri.
-
-1. Töltse le és telepítse a legújabb [minősítési teszt eszközt az Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299)minősítéshez. 
-2. Nyissa meg a minősítési eszközt, majd kattintson az **új teszt indítása**lehetőségre.
-3. A teszt **adatai** képernyőn adjon meg egy **teszt nevet** a teszt futtatásához.
-4. Válassza ki a virtuális gép **platformját** `Windows Server` vagy `Linux`. A platform választása hatással van a fennmaradó lehetőségekre.
-5. Ha a virtuális gép ezt az adatbázis-szolgáltatást használja, jelölje be **Azure SQL Database** jelölőnégyzetet.
-
-   ![Tanúsítvány-tesztelési eszköz kezdeti lapja](./media/publishvm_025.png)
+Miután létrehozta és üzembe helyezte a virtuális gépet (VM), tesztelnie kell, és be kell küldenie a virtuális gép lemezképét az Azure Marketplace-tanúsítványhoz. Ez a cikk ismerteti, hogy hol szerezheti be az *Azure Certified minősítési teszteszközét,* hogyan használhatja ezt az eszközt a virtuális gép lemezképének hitelesítéséhez, és hogyan töltheti fel az ellenőrzési eredményeket az Azure-tárolóba, ahol a virtuális gépek tartózkodnak. 
 
 
-## <a name="connect-the-certification-tool-to-a-vm-image"></a>A minősítési eszköz összekötése egy virtuálisgép-lemezképpel
+## <a name="download-and-run-the-certification-test-tool"></a>A tanúsítási teszteszköz letöltése és futtatása
 
-  Az eszköz a [PowerShell](https://docs.microsoft.com/powershell/) használatával csatlakozik a Windows-alapú virtuális gépekhez, és a [SSH.net](https://www.ssh.com/ssh/protocol/)-on keresztül csatlakozik a Linux rendszerű virtuális gépekhez.
+Az Azure Certified minősítési teszteszköze egy helyi Windows-gépen fut, de azure-alapú Windows vagy Linux virtuális gépet tesztel.  Ellenőrzi, hogy a felhasználói virtuálisgép-lemezkép kompatibilis-e a Microsoft Azure-ral– hogy a virtuális merevlemez előkészítésére vonatkozó útmutatás és követelmények teljesültek.It verifies that your user VM image is compatible with Microsoft Azure,that the guidance and requirements around preparing your VHD have met. Az eszköz kimenete egy kompatibilitási jelentés, amelyet a [felhőpartneri portálra](https://cloudpartner.azure.com) kell feltöltenie a virtuális gép minősítésének kérelmezéséhez.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>A minősítési eszköz összekötése Linux rendszerű virtuálisgép-lemezképpel
+1. Töltse le és telepítse az Azure Certified legújabb [minősítési teszteszközét.](https://www.microsoft.com/download/details.aspx?id=44299) 
+2. Nyissa meg a minősítő eszközt, majd kattintson **az Új teszt indítása gombra.**
+3. A **Tesztinformáció** képernyőn adja meg a **tesztnevét** a tesztfuttatáshoz.
+4. Válassza ki a **platform** a `Windows Server` `Linux`virtuális gép, vagy. A platform választása hatással van a fennmaradó lehetőségekre.
+5. Ha a virtuális gép használja ezt az adatbázis-szolgáltatást, jelölje be az **Azure SQL-adatbázis tesztelése** jelölőnégyzetet.
 
-1. Válassza ki az **SSH hitelesítési** módot: `Password Authentication` vagy `key File Authentication`.
-2. Jelszó-alapú hitelesítés használata esetén adja meg a **virtuális gép DNS-nevének**, **felhasználónevének**és **jelszavának**értékeit.  Igény szerint megváltoztathatja az alapértelmezett **SSH-portszámot** .
-
-     ![Linux rendszerű virtuális gép rendszerképének jelszavas hitelesítése](./media/publishvm_026.png)
-
-3. Ha Key file-alapú hitelesítést használ, adja meg a **virtuális gép DNS-neve**, a **Felhasználónév**és a **titkos kulcs** helyének értékeit.  Opcionálisan megadhat egy **hozzáférési kódot** vagy megváltoztathatja az alapértelmezett **SSH-portszámot** .
-
-     ![Linux rendszerű virtuálisgép-rendszerkép fájljának hitelesítése](./media/publishvm_027.png)
-
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**A minősítési eszköz összekötése Windows-alapú VM-lemezképpel**
-1. Adja meg a teljesen minősített **virtuális gép DNS-nevét** (például `MyVMName.Cloudapp.net`).
-2. Adja meg a **Felhasználónév** és a **jelszó**értékeit.
-
-   ![Windows rendszerű virtuális gép rendszerképének jelszavas hitelesítése](./media/publishvm_028.png)
+   ![Tanúsítványteszteszköz kezdő oldala](./media/publishvm_025.png)
 
 
-## <a name="run-a-certification-test"></a>Minősítési teszt futtatása
+## <a name="connect-the-certification-tool-to-a-vm-image"></a>A minősítő eszköz csatlakoztatása virtuális gép lemezképéhez
 
-Miután megadta a virtuálisgép-rendszerkép paramétereinek értékét a minősítési eszközben, válassza a **Kapcsolódás tesztelése** lehetőséget a virtuális géphez való érvényes kapcsolódás biztosításához. A kapcsolatok ellenőrzése után kattintson a **tovább** gombra a teszt elindításához.  A teszt befejezésekor egy tábla jelenik meg a teszt eredményeivel (Pass/Fail/Warning).  Az alábbi példa a Linux rendszerű virtuális gépek tesztelési eredményeit mutatja be. 
+  Az eszköz [powershelles](https://docs.microsoft.com/powershell/) Windows-alapú virtuális gépekhez csatlakozik, és [SSH.Net](https://www.ssh.com/ssh/protocol/)keresztül csatlakozik a Linux-virtuális gépekhez.
 
-![A Linux rendszerű virtuális gép rendszerképének minősítési teszt eredményei](./media/publishvm_029.png)
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>A minősítő eszköz csatlakoztatása Linux virtuális géplemezképhez
 
-Ha a tesztek bármelyike meghiúsul, a rendszerkép *nem* rendelkezik tanúsítvánnyal. Ebben az esetben tekintse át a követelményeket és a hibaüzeneteket, hajtsa végre a jelzett módosításokat, majd futtassa újra a tesztet. 
+1. Válassza az **SSH hitelesítési** módot: `Password Authentication` vagy `key File Authentication`.
+2. Jelszóalapú hitelesítés használata esetén adja meg a **virtuális gép DNS-neve**, **felhasználóneve**és **jelszó értékét.**  Szükség esetén módosíthatja az alapértelmezett **SSH portszámot.**
 
-Az automatizált teszt után további információkat kell megadnia a virtuálisgép-rendszerképről a **Kérdőív** képernyőjén.  Két fület tartalmaz, amelyeket el kell végeznie.  Az **általános értékelés** lap **igaz/hamis** kérdéseket tartalmaz, míg a **kernel testreszabása** több kiválasztási és szabadkézi kérdést is tartalmaz.  Végezze el a kérdéseket mindkét lapon, majd válassza a **tovább**lehetőséget.
+     ![Linux virtuális géplemezjel jelszóhitelesítése](./media/publishvm_026.png)
 
-![Minősítési eszköz kérdőíve](./media/publishvm_030.png)
+3. Kulcsfájl-alapú hitelesítés használata esetén adja meg a **virtuális gép DNS-neve**, **felhasználónév**és **személyes kulcs** helyének értékeit.  Megadhatja a **jelszót,** vagy módosíthatja az alapértelmezett **SSH-portszámot.**
 
-Az utolsó képernyőn további információk is megadhatók, például az SSH-hozzáférési információk egy linuxos virtuálisgép-rendszerképhez, valamint a sikertelen értékelések magyarázata, ha a rendszer kivételeket keres. 
+     ![Linux os virtuális géplemez fájlhitelesítése](./media/publishvm_027.png)
 
-Végül kattintson a **jelentés előállítása** lehetőségre, hogy letöltse a teszt eredményeit és a naplófájlokat a végrehajtott tesztelési esetekhez, továbbá a kérdőívre adott válaszokat is. Mentse az eredményeket ugyanabba a tárolóba, mint a VHD (k).
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**A minősítő eszköz csatlakoztatása Windows-alapú virtuálisgép-lemezképhez**
+1. Adja meg a teljesen minősített virtuális `MyVMName.Cloudapp.net`gép **DNS-nevét** (például ).
+2. Adja meg a **Felhasználónév** és **a Jelszó**értékét.
 
-![A minősítési tesztek eredményeinek mentése](./media/publishvm_031.png)
+   ![Windows virtuálisgép-lemezkép jelszóhitelesítése](./media/publishvm_028.png)
+
+
+## <a name="run-a-certification-test"></a>Hitelesítési vizsgálat futtatása
+
+Miután megadta a virtuális gép lemezképének paraméterértékeit a minősítő eszközben, válassza a **Kapcsolat tesztelése** lehetőséget a virtuális géphez való érvényes kapcsolat biztosításához. A kapcsolat ellenőrzése után válassza a **Tovább** gombot a teszt elindításához.  Amikor a teszt befejeződött, egy táblázat jelenik meg a vizsgálati eredményekkel (Pass/Fail/Warning).  A következő példa egy Linux virtuális gép teszttesztjének teszteredményeit mutatja be. 
+
+![A Linux virtuálisgép-lemezkép minősítési teszteredményei](./media/publishvm_029.png)
+
+Ha a tesztek bármelyike sikertelen, a rendszerkép *nem* lesz hitelesítve. Ebben az esetben tekintse át a követelményeket és a hibaüzeneteket, hajtsa végre a jelzett módosításokat, és futtassa újra a tesztet. 
+
+Az automatikus teszt után a kérdőív képernyőn további információkat kell **megadnia** a virtuális gép lemezképéről.  Két lapot tartalmaz, amelyeket ki kell töltenie.  Az **Általános értékelés** lap **Igaz/hamis** kérdéseket tartalmaz, míg a Kernel **testreszabása** több kijelölési és szabadkézi kérdést tartalmaz.  Töltse ki a kérdéseket mindkét lapon, majd válassza a **Tovább**gombot.
+
+![Minősítő eszköz kérdőíve](./media/publishvm_030.png)
+
+Az utolsó képernyő lehetővé teszi, hogy további információkat, például ssh hozzáférési információkat a Linux virtuális gép rendszerkép és a magyarázat a sikertelen értékelések, ha kivételeket keres. 
+
+Végül kattintson a **Jelentés készítése gombra** a teszteredmények és a naplófájlok letöltéséhez a kivégzett tesztesetekhez, a kérdőívre adott válaszok mellett. Mentse az eredményeket ugyanabban a tárolóban, mint a virtuális merevlemez(ek).
+
+![Tanúsítványvizsgálati eredmények mentése](./media/publishvm_031.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután [létrehoz egy egységes erőforrás-azonosítót (URI-t) minden olyan virtuális merevlemezhez](./cpp-get-sas-uri.md) , amelyet a piactéren küld el. 
+Ezután [létrehoz egy egységes erőforrás-azonosítók (URI) minden virtuális merevlemez,](./cpp-get-sas-uri.md) amely elküldi a piactérre. 

@@ -13,53 +13,53 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: c1a6a53e6db883c63164a6367012faf32ed75519
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2c7d312910c6d38c54b291da34bfb827246c7dad
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673371"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79504402"
 ---
-## <a name="prepare-for-akv-integration"></a>Készítse elő az AKV-integráció
-Az Azure Key Vault-integráció konfigurálása az SQL Server virtuális gép használatához van néhány előfeltételnek: 
+## <a name="prepare-for-akv-integration"></a>Felkészülés az AKV-integrációra
+Az Azure Key Vault-integráció használatához az SQL Server virtuális gép konfigurálásához számos előfeltétel áll fenn: 
 
-1. [Az Azure Powershell telepítése](#install)
-2. [Hozzon létre egy Azure Active Directory](#register)
+1. [Az Azure PowerShell telepítése](#install)
+2. [Azure Active Directory létrehozása](#register)
 3. [Kulcstartó létrehozása](#createkeyvault)
 
-A következő szakaszok ismertetik ezeket az előfeltételeket és a információkat kell gyűjtenie később a PowerShell-parancsmagok futtatásához.
+Az alábbi szakaszok ismertetik ezeket az előfeltételeket és a PowerShell-parancsmagok későbbi futtatásához szükséges adatokat.
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-### <a id="install"></a> Az Azure PowerShell telepítése
-Győződjön meg arról, hogy telepítette a legújabb Azure PowerShell-modul. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-az-ps) foglalkozó témakörben talál.
+### <a name="install-azure-powershell"></a><a id="install"></a>Az Azure PowerShell telepítése
+Győződjön meg arról, hogy telepítette a legújabb Azure PowerShell-modult. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-az-ps) foglalkozó témakörben talál.
 
-### <a id="register"></a> Alkalmazás regisztrálása az Azure Active Directoryban
+### <a name="register-an-application-in-your-azure-active-directory"></a><a id="register"></a>Alkalmazás regisztrálása az Azure Active Directoryban
 
-Először is szüksége lesz egy [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) az előfizetésében. Számos előnnyel jár, többek között ez lehetővé teszi, hogy adjon engedélyt a key vault egyes felhasználókat és alkalmazásokat.
+Először rendelkeznie kell egy [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) az előfizetésben. Számos előnye, ez lehetővé teszi, hogy engedélyt adjon a key vault bizonyos felhasználók és alkalmazások számára.
 
-Ezután regisztrálni egy alkalmazást az aad-ben. Ekkor kap egy egyszerű szolgáltatásfiókot, amely hozzáfér a kulcstartóra, amely a virtuális Gépre lesz szüksége. Az Azure Key Vault-cikkben szereplő lépéseket annak a [alkalmazás regisztrálása az Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) szakaszt, és láthatja a lépéseket a képernyőképeket az **identitás lekérése az alkalmazás szakaszban**  , [ebben a blogbejegyzésben](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Az alábbi lépések elvégzése előtt kell gyűjtenie az alábbi információkat, amelyek később szükség van az SQL virtuális gép az Azure Key Vault-integráció engedélyezése esetén a regisztráció során.
+Ezután regisztráljon egy alkalmazást az AAD-nél. Ez egy egyszerű szolgáltatásfiókot biztosít, amely hozzáfér a key vaulthoz, amelyre a virtuális gépnek szüksége lesz. Az Azure Key Vault cikkben ezeket a lépéseket az [Alkalmazás regisztrálása](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) az Azure Active Directoryval című szakaszban találja, vagy a képernyőképeket leadott lépéseket a [blogbejegyzés](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx) **alkalmazásának identitásának beszerezni című szakaszában** találja. A lépések végrehajtása előtt a regisztráció során a következő adatokat kell gyűjtenie, amelyekre később szükség van, amikor engedélyezi az Azure Key Vault-integrációt az SQL virtuális gépen.
 
-* Az alkalmazás hozzáadása után keresse meg a **Alkalmazásazonosító** a a **regisztrált alkalmazás** panelen.
-    Az Alkalmazásazonosítót később hozzá van rendelve a **$spName** (egyszerű szolgáltatásnév) paramétert az Azure Key Vault-integráció engedélyezése a PowerShell-parancsfájlt.
+* Az alkalmazás hozzáadása után keresse meg az **alkalmazásazonosítót** (más néven AAD ClientID vagy AppID) a **Regisztrált alkalmazás** panelen.
+    Az alkalmazásazonosító később hozzá van rendelve a **$spName** (egyszerű szolgáltatásnév) paraméterhez a PowerShell-parancsfájlban az Azure Key Vault-integráció engedélyezéséhez.
 
    ![Alkalmazásazonosító](./media/virtual-machines-sql-server-akv-prepare/aad-application-id.png)
 
-* Ezek a lépések során a kulcs létrehozásakor másolja a titkos kulcs az alábbi képernyőképen látható módon. A kulcs titkos kód később hozzá van rendelve a **$spSecret** (egyszerű szolgáltatás titkos kódot) paramétert a PowerShell-parancsfájlt.
+* A kulcs létrehozásakor a következő lépések során másolja a kulcs titkos kulcsát az alábbi képernyőképen látható módon. Ez a kulcstitkos kulcs később hozzá van rendelve a **$spSecret** (egyszerű titkos) paraméterhez a PowerShell-parancsfájlban.
 
-   ![AAD-secret](./media/virtual-machines-sql-server-akv-prepare/aad-sp-secret.png)
+   ![AAD titok](./media/virtual-machines-sql-server-akv-prepare/aad-sp-secret.png)
 
-* Az Alkalmazásazonosító és a titkos kulcsot is használható az SQL Server-hitelesítő adat létrehozása.
+* Az alkalmazásazonosító és a titkos adata is használható hitelesítő adatok létrehozásához az SQL Server ben.
 
-* Engedélyeznie kell az új ügyfél-azonosító a következő hozzáférési engedélyekkel kell rendelkeznie: **első**, **wrapKey**, **unwrapKey**. Ez a lépés a [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmagot. További információkért lásd: [Azure Key Vault – áttekintés](../articles/key-vault/key-vault-overview.md).
+* Az új alkalmazásazonosító (vagy ügyfélazonosító) engedélyezésével a következő hozzáférési engedélyekkel kell rendelkeznie: **get**, **wrapKey**, **unwrapKey**. Ez a [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmaggal történik. További információ: [Azure Key Vault overview](../articles/key-vault/key-vault-overview.md).
 
-### <a id="createkeyvault"></a> Kulcstartó létrehozása
-Az Azure Key Vault tárolja a kulcsokat, a virtuális gép a titkosításhoz használandó, a key vault hozzáférésre van szüksége. Ha Ön még nem állította be a key vaultban, hozzon létre egyet a lépéseket követve a [Ismerkedés az Azure Key Vault](../articles/key-vault/key-vault-overview.md) cikk. Az alábbi lépések elvégzése előtt van néhány információt kell gyűjtenie a telepítéskor be, amely később szükség van az SQL virtuális gép az Azure Key Vault-integráció engedélyezése esetén.
+### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>Kulcstartó létrehozása
+Annak érdekében, hogy az Azure Key Vault használatával tárolja a titkosításhoz használt kulcsokat a virtuális gép, hozzáférésre van szüksége egy kulcstartóhoz. Ha még nem állította be a key vault, hozzon létre egyet az Azure Key Vault első [lépései](../articles/key-vault/key-vault-overview.md) című cikkben leírt lépéseket követve. A lépések végrehajtása előtt van néhány információ, amelyet a beállítás során kell gyűjtenie, amelyre később szükség van, amikor engedélyezi az Azure Key Vault-integrációt az SQL virtuális gépen.
 
     New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
-Amikor kap a létrehozása a key vault lépés, vegye figyelembe a visszaadott **vaultUri** tulajdonság, amely a key vault URL-címe. Ezt a lépést, a kulcstároló nevét ContosoKeyVault, az alább látható a megadott példa lecserélésére az tehát a key vault URL-cím lenne https://contosokeyvault.vault.azure.net/.
+Amikor eljut a Key Vault létrehozása lépés, vegye figyelembe a visszaadott **vaultUri** tulajdonság, amely a key vault URL-címét. A példában megadott lépésben, az alábbiakban látható, a key vault neve ContosoKeyVault, ezért a key vault URL-címe lenne. https://contosokeyvault.vault.azure.net/
 
-A key vault URL-cím később hozzá van rendelve a **$akvURL** paramétert az Azure Key Vault-integráció engedélyezése a PowerShell-parancsfájlt.
+A key vault URL-címe később van hozzárendelve a powershell-parancsfájl **$akvURL** paraméteréhez az Azure Key Vault-integráció engedélyezéséhez.
 
-Után jön létre a key vault, a kulcs hozzáadása a key vaulthoz kell, ez a kulcs lehet hivatkozni, amikor létrehozunk egy aszimmetrikus kulcs létrehozni az SQL Server később.
+A key vault létrehozása után hozzá kell adnunk egy kulcsot a key vault, ez a kulcs lesz ajánlott, amikor létrehozunk egy aszimmetrikus kulcs létrehozása az SQL Server később.

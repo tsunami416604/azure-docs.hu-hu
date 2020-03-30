@@ -1,18 +1,18 @@
 ---
-title: Kapcsolat a MySQL Workbench használatával – Azure Database for MariaDB
+title: Csatlakozás a MySQL Workbench használatával – Azure Database for MariaDB
 description: Ez a rövid útmutató bemutatja, hogyan csatlakozhat az Azure Database for MariaDB-hez a MySQL Workbench használatával, és hogyan kérdezhet le adatokat.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2018
-ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 4bb1a71c5d8a58e6d94007554c72019001d395db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772061"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79529000"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Csatlakozás és adatlekérdezés a MySQL Workbench használatával
 
@@ -22,7 +22,7 @@ Ez a rövid útmutató azt szemlélteti, hogyan lehet a MySQL Workbench használ
 
 Ez a rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
 
-- [Azure Database for MariaDB-kiszolgáló létrehozása az Azure Portal használatával](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [Azure-adatbázis létrehozása MariaDB-kiszolgálóhoz az Azure Portal használatával](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 - [Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával](./quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 ## <a name="install-mysql-workbench"></a>A MySQL Workbench telepítése
@@ -33,7 +33,7 @@ Ez a rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőf
 
 Kérje le az Azure Database for MariaDB-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
 2. Az Azure Portal bal oldali menüjében válassza a **Minden erőforrás** elemet. Keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 
@@ -53,12 +53,12 @@ Csatlakozás az Azure Database for MariaDB-kiszolgálóhoz a MySQL Workbench has
 
    | Beállítás | Ajánlott érték | Mező leírása |
    |---|---|---|
-   |   Kapcsolat neve | **Bemutató kapcsolat** | Adjon meg egy címkét a kapcsolathoz. |
+   |   Kapcsolat neve | **Demó kapcsolat** | Adjon meg egy címkét a kapcsolathoz. |
    | Kapcsolati módszer | **Standard (TCP/IP)** | A Standard (TCP/IP) elégséges. |
    | Gazdanév | *kiszolgáló neve* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgálónév értékét. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (\*.mariadb.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.  |
    | Port | **3306** | Az Azure Database for MariaDB-hez való csatlakozáskor mindig a 3306-os portot használja. |
-   | Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgáló-rendszergazdai bejelentkezési felhasználónevet. A példában szereplő Felhasználónév a **myadmin\@mydemoserver**. Ha nem emlékszik a kiszolgáló-rendszergazdai bejelentkezési névre, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat. A formátum a *username\@servername*.
-   | Jelszó | *az Ön jelszava* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |
+   | Felhasználónév |  *kiszolgáló rendszergazdai bejelentkezési neve* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgáló-rendszergazdai bejelentkezési felhasználónevet. A példa felhasználónév **myadmin\@mydemoserver**. Ha nem emlékszik a kiszolgáló-rendszergazdai bejelentkezési névre, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat. A formátum *\@felhasználónév servername*.
+   | Jelszó | *a jelszó* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |
 
    ![Új kapcsolat beállítása](./media/connect-workbench/2-setup-new-connection.png)
 

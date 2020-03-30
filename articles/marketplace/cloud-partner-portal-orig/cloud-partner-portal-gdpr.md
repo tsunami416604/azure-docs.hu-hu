@@ -1,47 +1,46 @@
 ---
-title: GDPR-megfelelőség | Azure piactér
-description: Cloud Partner Portal és GDPR.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: GDPR megfelelés | Azure Piactér
+description: Felhőpartneri portál és a GDPR.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bc43a6cb3c30638d8c3904d7ca5b004e0905f1d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f09bc60a59ff2a6e21d0cdae1917a1faed072ea4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824308"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280286"
 ---
-<a name="cloud-partner-portal-gdpr-compliance"></a>Cloud Partner Portal GDPR megfelelősége
+<a name="cloud-partner-portal-gdpr-compliance"></a>Cloud Partner Portal GDPR megfelelőség
 ====================================
 
-[Általános adatvédelmi rendelet (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) az Európai Unió (EU) adatvédelmi és adatvédelmi törvénye. A GDPR szabályokat ír elő a vállalatokra, a kormányzati szervekre, a nonprofit szervezetekre, valamint az olyan szervezetek számára, amelyek árukat és szolgáltatásokat kínálnak az EU-beli személyeknek, illetve amelyek az EU-beli rezidenseknek szánt adatok összegyűjtését és elemzését
+[Az általános adatvédelmi rendelet (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) az Európai Unió (EU) adatvédelmi és adatvédelmi joga. A GDPR szabályokat ír elő azeu-ban élőknek árukat és szolgáltatásokat kínáló vállalatokra, kormányzati szervekre, nonprofit szervezetekre és egyéb szervezetekre, illetve az EU-ban lakószemélyekhez kapcsolódó adatokat gyűjtő és elemző szervezetekre.
 
-Cloud Partner Portal részletes információkat nyújt az ügyféladatok feldolgozásáról és az adatok védelméhez használt biztonsági intézkedésekről. Ez az információ a termékkel kapcsolatos tapasztalatain keresztül érhető el.
+A Cloud Partner Portal részletes információkat nyújt az ügyféladatok feldolgozásáról és az adatok védelmére használt biztonsági intézkedésekről. Ez az információ a terméken keresztül érhető el.
 
-<a name="discover"></a>Ismertetők
+<a name="discover"></a>Felderítés
 --------
 
-Cloud Partner Portal hozzáférést biztosít a felhasználók lapon lévő összes adataihoz. A személyes adatait itt is azonosíthatja. A felhasználók hozzáadásával és eltávolításával kapcsolatos információkért tekintse meg a [dokumentációt](./cloud-partner-portal-manage-users.md).
+A Cloud Partner Portal hozzáférést biztosít a Felhasználók lapon található összes adathoz. Személyes adatait ott azonosíthatja. A felhasználók hozzáadásáról/eltávolításáról a [dokumentációban](./cloud-partner-portal-manage-users.md)olvashat.
 
 <a name="manage"></a>Kezelés
 ------
 
-A személyes adatait úgy kezelheti, hogy a felhasználók lapon megnyomja a Törlés gombot a felhasználói fiókban. Egy **tulajdonos** és egy **közreműködő** szerepkörrel rendelkezik, amely minden egyes felhasználóhoz hozzárendelhető, és mindkettő hozzárendelhető/másolható/módosítható vagy törölhető is.
+Személyes adatait úgy kezelheti, hogy a Felhasználók lapon megnyomja a Törlés gombot a Felhasználói fiókjában. Van egy **tulajdonosés** egy **közreműködő,** amely hozzárendelhető az egyes felhasználók, és mindkettő lehet rendelni / másolni / frissíteni / törölni.
 
-<a name="consent"></a>Hozzájárulása
+<a name="consent"></a>Beleegyezés
 -------
 
-A Cloud Partner Portalban való hozzájárulás kezeléséhez mindig egy kiadói szerződésre vonatkozó szerződést kell megadnia, amelyhez el kell fogadnia a Microsofttal való közzétevőt. Ha nem járul hozzá a kiadói szerződéshez, akkor a közzétevőt úgy korlátozzuk, hogy a Microsofttal ne lehessen értékesíteni.
+A Cloud Partner Portalon a hozzájárulás kezeléséhez mindig megjelenik egy kiadói szerződés, amelyhez el kell fogadnia ahhoz, hogy a Microsoft kiadója lehessen. Ha ön nem járul hozzá a kiadói szerződésmegkötéséhez, akkor korlátozzuk a kiadót, hogy ne értékesíthesse magát a Microsofttal.
 
 <a name="related-links"></a>Kapcsolódó hivatkozások
 -------------
 
--   [Hogyan és hol küldi a Microsoft az ügyfeleknek\' adatokat, beleértve a földrajzi helyeket](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
--   [Azok az alvállalkozók, akik hozzáféréssel rendelkeznek az ügyfelekhez\'](https://aka.ms/Online_Serv_Subcontractor_List)
--   [A Microsoft által felügyelt Azure biztonsági intézkedések részletei](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
--   [A Microsoft\'s adatvédelmi felülvizsgálati folyamatával kapcsolatos részletek, amelyeket minden termékre vonatkozóan elvégeztek, beleértve az összes Azure-szolgáltatást is](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
--   [A Microsoft milyen adatokat gyűjt és dolgoz fel az ügyfelek és a végfelhasználók számára](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)
+-   [Hogyan és hol\' küldi a Microsoft az ügyfeleknek az adatokat, beleértve a földrajzi helyeket is?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
+-   [Az ügyfelek\' adataihoz hozzáféréssel rendelkező alvállalkozók](https://aka.ms/Online_Serv_Subcontractor_List)
+-   [Részletek a Microsoft által felügyelt Azure biztonsági intézkedésekről](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+-   [Részletek a\'Microsoft adatvédelmi felülvizsgálati folyamatával kapcsolatban, amelyet az összes termékre vonatkozóan végeztek, beleértve az összes Azure-szolgáltatást](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
+-   [Milyen adatokat gyűjt és dolgoz fel a Microsoft az ügyfélrendszerektől és a végfelhasználóktól?](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)

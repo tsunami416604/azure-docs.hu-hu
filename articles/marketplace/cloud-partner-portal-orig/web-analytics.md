@@ -1,105 +1,103 @@
 ---
-title: Webes elemzés
-description: .
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: Web Analytics
+description: Ez a cikk útmutatást nyújt a Web Analytics tanulásához és használatához a vállalkozás legjobb növekedéséhez.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814642"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285333"
 ---
-<a name="web-analytics"></a>Webes elemzés
+<a name="web-analytics"></a>Web Analytics
 =============
 
-Ez a cikk útmutatást nyújt a webes elemzések megismeréséhez és használatához, hogy a lehető leghatékonyabban fejlessze vállalkozását. Jelenleg ez az Áttekintés lap minden AppSource-ajánlathoz elérhető.
+Ez a cikk útmutatást nyújt a Web Analytics tanulásához és használatához a vállalkozás legjobb növekedéséhez. Jelenleg ez az Insights lap minden AppSource-ajánlathoz elérhető.
 
-Most, hogy létrehozta és közzétette az ajánlatát, az utazás következő lépése a\' sikerességének nyomon követése és mérése. A **Web Analytics**szolgáltatással a piactéren pontosan megtekintheti, hogy az egyes ajánlatok milyen jól zajlanak. Az utazás megkezdéséhez navigáljon a Cloud Partner Portal bal oldalán található elemzések lapra, és tekintse meg az új Analitika lapot.
+Most, hogy megépítette és közzétette az ajánlatát, az utazás következő\' része a siker nyomon követése és mérése. A **Web Analytics**segítségével pontosan láthatjuk, hogy az egyes ajánlatok milyen jól teljesítenek a piacon. Az utazás megkezdéséhez keresse meg a Cloud Partner Portal bal oldalán található Insights lapot az új Analytics lap megtekintéséhez.
 
-![Webanalitikai lap](./media/si-getting-started/WebAnalytics1.png)
+![WebAnalytics lap](./media/si-getting-started/WebAnalytics1.png)
 
-Megjelenik egy, a Microsoft Power BI szolgáltatással létrehozott kiadói AZONOSÍTÓhoz tartozó, részletes irányítópult, amely lehetővé teszi, hogy minden egyes, a naponta frissülő\'-információt megjelenítse.
+A Microsoft Power BI-val létrehozott, a Publisher-azonosítóhoz egy gazdag irányítópultot fog\' látni, amely lehetővé teszi az ajánlatok minden egyes, naponta frissülő adatának megtekintését.
 
 <a name="microsoft-campaigns"></a>**Microsoft-kampányok**
 -----------------------
 
-Az ajánlatok növelése és az ajánlatok növekedésének nyomon követése érdekében engedélyezjük a **Microsoft-kampányok** használatát a Cloud Partner Portalon. A kampányok egy újonnan támogatott szolgáltatás a piactéren, amely lehetővé teszi, hogy nyomon kövesse az ügyfelek által az alkalmazás részletei lapra küldött különböző csatornákat.
+Az ajánlatok bővítéséhez és az ajánlatok növekedésének nyomon követéséhez lehetővé tettük a **Microsoft-kampányok** használatát a Cloud Partner Portálon. A kampányok a piactér újonnan támogatott funkciói, amelyek lehetővé teszik, hogy nyomon kövesse azokat a különböző csatornákat, amelyek az ügyfeleket az alkalmazás részleteit tartalmazó oldalra küldik.
 
-### <a name="how-to-make-a-campaign"></a>**Kampány létrehozása**
+### <a name="how-to-make-a-campaign"></a>**Hogyan készítsünk egy kampányt**
 
-A kampányok leírásának legegyszerűbb módja, ha olyan egyéni szót/kifejezést ad hozzá az URL-címhez, amely a piactéren az alkalmazás részleteit tartalmazó oldalon landol. A Google, a Bing, a LinkedIn és számos más webhely azt javasolja, hogy hozzon létre egy hirdetést, amely a saját webhelyéről a kívánt webhelyre mutat.
+A legegyszerűbb módja a kampányok leírásának, ha olyan egyéni szót/kifejezést ad hozzá az URL-címhez, amely az alkalmazás részletes oldalán landol a piactéren. A Google, a Bing, a LinkedIn és sok más webhely arra ösztönzi Önt, hogy építsen egy hirdetést, linket a webhelyéről a kívánt webhelyre.
 
-Ezek az erőfeszítések általában segítik az új ügyfelek bevezetését a termékbe, és elengedhetetlen az egyes csatornák sikerének mérése. Ebben az esetben a kampányok beérkeznek.
+Általánosságban elmondható, hogy ezek az erőfeszítések segítenek az új ügyfeleket a termékbe vezetni, és alapvető fontosságú, hogy felmérjük az egyes csatornák sikerének mérését. Itt jönnek a képbe a kampányok.
 
-Kétféle módon hozhatja ki saját kampányát.
+Két módon hozhat létre saját kampányt.
 
-1. Adja hozzá az URL-címhez a lekérdezési paraméter **mktcmpid** , amely leírja, hogy mi a kampány, és milyen lapok/események érkeznek ezek az ügyfelek.
+1. Adja hozzá az URL-címhez az **mktcmpid** lekérdezési paramétert, amely leírja, hogy mi a kampány, és milyen oldalból/eseményből érkeznek ezek az ügyfelek.
 
-Például a következőt használhatja: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Használhatja például a következőket:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-1. (Speciális): használja az URL-cím támogatott, általános kampány-azonosítóinak egyikét. Azt szeretnénk, hogy a használni kívánt további ref-címkékkel legyenek elszállásolva, ezért a további címkék automatikus felismerését a következő módon támogatjuk:
+1. (Speciális): Használja az egyik támogatott, általános kampányazonosítónkat az URL-ben. Azt akarjuk, hogy alkalmazkodjanak a további ref címkéket, hogy meg kell használni, ezért támogatjuk az egyezményt, hogy automatikusan felismeri ezeket a további címkéket:
     
-    1. **UTM\_kampány**
-    2. **UTM\_forrása**
-    3. **ref**
+    1. **utm\_kampány**
+    2. **utm\_forrás**
+    3. **Ref**
     4. **src**
 
-Például a következőt használhatja: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Használhatja például a következőket:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
-A kampány-azonosítók több kombinációját is kiválaszthatja, így több forrást is megadhat a kampányhoz, például hogy az ügyfél honnan származik (e-mail, blog, közösségi média forrása stb.).
+Választhat, hogy több ilyen kampányazonosító kombinációjával is rendelkezik, hogy tovább azonosítsa a kampány forgalmát hajtó több forrást, például azt, hogy honnan érkezett az ügyfél (e-mail, blog, közösségi média forrás stb.).
+
+Példa:
+
+1. Hírlevél ajánlója:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. LinkedIn-ajánló:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+
+### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Annak biztosítása, hogy a kampányok az összes oldalon áthaladjanak**
+
+Előfordulhat, hogy a kampányok rendelkeznek egy köztes oldallal, amelyhez forgalmat vezet, majd folytatja az ügyfelek piactérre küldését. Fontos, hogy a kezdeti kampányazonosítókat átmenjen a piactérre küldött végső URL-címbe.
 
 Például:
 
-1. Hírlevél ajánlója: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn referrer: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Marketing alkalmazott vásárol hirdetéseket a Google-tól, hogy a forgalom a cég\'céloldal <https://contoso.com>. Ez a céloldal \"egy\" megpróbál az <https://appsource.com>én termék linket, hogy megy .
+2. A felhasználó rákattint a hirdetésre,\'és a vállalat céloldalára landol.
+    1.  Hivatkozó URL = google.com
+    2.  Céloldal URL-címe =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. A felhasználó rákattint \"a\" próbálja ki a terméket linket, és bemegy AppSource.
+    1. Hivatkozó URL =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. Céloldal URL-címe (**Győződjön\_meg arról, hogy ez az URL-cím utm kampányt és utm forrást\_ad hozzá ehhez az URL-hez**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm\_campaign=MyCampaignAdName&utm\_source=SajdName](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
-### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**A kampányok továbbítása az összes oldalon**
-
-Előfordulhat, hogy a kampányok olyan közbenső oldallal rendelkeznek, amelyre a forgalmat irányítja, és így folytatja az ügyfelek küldését a piactéren. Fontos, hogy átadja a kezdeti kampány-azonosítókat a piactérnek küldött utolsó URL-címnek.
-
-Például:
-
-1. A marketing-alkalmazott hirdetéseket vásárol a Google-tól, hogy átirányítsa a forgalmat a vállalati\'s kezdőlapra <https://contoso.com>. A kezdőlapon \"próbálja ki a termék\" hivatkozást, amely a <https://appsource.com>re mutat.
-2. A felhasználó rákattint az ad-re, és landol a vállalat\'s kezdőlapján.
-    1.  Hivatkozó URL-cím = google.com
-    2.  Kezdőlap URL-címe = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. A felhasználó a \"kipróbálása a termék\" hivatkozásra kattint, és bekerül a AppSource.
-    1. Hivatkozó URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Kezdőlap URL-címe (**Győződjön meg róla, hogy ez az URL-cím utm\_kampányt és a utm\_forrást adtak hozzá ehhez az URL-címhez**) = [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**UTM\_kampány = MyCampaignAdName & UTM\_forrás = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
-
-<a name="how-to-evaluate-the-success-of-a-campaign"></a>Kampány sikerességének kiértékelése
+<a name="how-to-evaluate-the-success-of-a-campaign"></a>A kampány sikerének értékelése
 -----------------------------------------
 
-### <a name="page-visits-by-campaign"></a>**Oldalak látogatása kampány alapján**
+### <a name="page-visits-by-campaign"></a>**Oldallátogatások kampány szerint**
 
 ![WebAnalytics2](./media/si-getting-started/WebAnalytics2.png)
 
-Ez az egyes napi oldalak meglátogatásának lebontása a kampányból származnak.
+Ez a napi oldallátogatások lebontása a kampány szerint, amelyből származnak.
 
 ### <a name="conversion-rate-by-campaign"></a>**Konverziós arány kampány szerint**
 
 ![WebAnalytics3](./media/si-getting-started/WebAnalytics3.png)
 
-A teljes ajánlat konverziós arányának megjelenítéséhez hasonlóan ebben a diagramban láthatja a különböző kampányok működésének részletezését. Ennek a diagramnak a segítségével azonosíthatja, hogy a magasabb konverziós arányú kampányok hová érkeznek.
+Hasonlóan ahhoz, ahogyan a teljes ajánlat konverziós arányát megmutatjuk, ebben a táblázatban láthatja a különböző kampányok működésének lebontását. Ez a diagram segít azonosítani, hogy a magasabb konverziós arányú kampányok honnan származnak.
 
-### <a name="distribution-by-campaign"></a>**Eloszlás kampány szerint**
+### <a name="distribution-by-campaign"></a>**Terjesztés kampány szerint**
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 
-Hasonlóan ahhoz, ahogy megtekintjük az ügyfelek tartományait, ez a diagram lehetővé teszi, hogy megtekintse az adatelosztást egy kampány alapján, amelyet a felhasználók a piactéren kapnak. \_a nem kampány azt jelenti, hogy az ügyfél nem rendelkezik kampány-AZONOSÍTÓval az URL-címben, amikor a piactérre navigáltak.
+Hasonlóan ahhoz, ahogyan az ügyfelek domainjeit vizsgáljuk, ez a diagram lehetővé teszi az adatok kampányonkénti terjesztését, amely alatt a felhasználók a piactérre érkeznek. \_A NoCampaign azt jelenti, hogy az ügyfél nem rendelkezett kampányazonosítóval az URL-ben, amikor a piactérre navigált.
 
 <a name="next-steps"></a>**Következő lépések**
 --------------
 
-Most, hogy lehetősége van az ajánlatok sikeres nyomon követésére, javasoljuk, hogy hozzon létre saját kampányait.
+Most, hogy nyomon követheti ajánlatai sikerét, szeretnénk arra ösztönözni, hogy hozzon létre saját kampányokat.
 
-Ha kérdése/funkciója van, a jobb felső sarokban található visszajelzések használatával ossza meg őket.
+Ha kérdése/funkciókérése van, ossza meg őket a visszajelzésen keresztül, amely a jobb felső sarokban található.
 
-![Visszajelzés Cloud Partner Portal](./media/si-getting-started/WebAnalytics5.png)
+![Visszajelzés a Felhőpartneri portálon](./media/si-getting-started/WebAnalytics5.png)

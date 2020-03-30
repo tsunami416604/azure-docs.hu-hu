@@ -1,88 +1,88 @@
 ---
-title: az Spring Cloud
+title: az tavaszi felhő
 description: Az Azure Spring Cloud kezelése az Azure CLI használatával
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
-ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279045"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298776"
 ---
-# <a name="az-spring-cloud"></a>az Spring-Cloud
+# <a name="az-spring-cloud"></a>az tavaszi felhő
 
 ## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Az Azure Spring Cloud kezelése az Azure CLI használatával
 
 >[!Note]
-> Az Azure Spring Cloud jelenleg előzetes verzióban érhető el.  Előfordulhat, hogy ezek a parancsok egy későbbi kiadásban módosíthatók vagy eltávolíthatók.
+> Az Azure Spring Cloud jelenleg előzetes verzióban érhető el.  Ezek a parancsok egy későbbi kiadásban módosíthatók vagy eltávolíthatók.
 
-| az Spring-Cloud |  |
+| az tavaszi felhő |  |
 |------|------:|
-| [az Spring-Cloud Create](#az-spring-cloud-create) | Hozzon létre egy Azure Spring Cloud-példányt. |
-| [az Spring-Cloud delete](#az-spring-cloud-delete) | Azure Spring Cloud-példány törlése. |
-| [az Spring-Cloud List](#az-spring-cloud-list) | Az adott erőforráscsoport összes Azure Spring Cloud-példányának listázása, egyéb esetben az előfizetési azonosítók listázása. |
-| [az Spring-Cloud show](#az-spring-cloud-show) | Egy Azure Spring-felhő részleteinek megjelenítése. |
+| [az tavaszi felhő létrehozása](#az-spring-cloud-create) | Hozzon létre egy Azure Spring Cloud-példányt. |
+| [az tavaszi felhő törlése](#az-spring-cloud-delete) | Töröljön egy Azure Spring Cloud-példányt. |
+| [az tavaszi felhőlista](#az-spring-cloud-list) | Az adott erőforráscsoportban az összes Azure Spring Cloud-példány t, ellenkező esetben sorolja fel az előfizetési azonosítókat. |
+| [az tavaszi felhő show](#az-spring-cloud-show) | Az Azure Spring Cloud részleteinek megjelenítése. |
 
-| az Spring-Cloud app | Parancsok az Azure Spring-Felhőbeli alkalmazások kezeléséhez.  |
+| az tavaszi felhő alkalmazás | Az Azure Spring Cloud ban lévő alkalmazások kezelésére szolgáló parancsok.  |
 | ---- | ----: |
-| [az Spring-Cloud app Create](#az-spring-cloud-app-create) | Hozzon létre egy új alkalmazást alapértelmezett üzembe helyezéssel az Azure Spring Cloud-ban. |
-| [az Spring-Cloud app delete](#az-spring-cloud-app-delete) | Egy alkalmazás törlése az Azure Spring-felhőben. |
-| [az Spring-Cloud app Deploy](#az-spring-cloud-app-deploy) | Üzembe helyezés forráskódból vagy egy előre elkészített bináris fájlból egy alkalmazásba és a kapcsolódó konfigurációk frissítése. |
-| [az Spring-Cloud app List](#az-spring-cloud-app-list) | Az Azure Spring Cloud összes alkalmazásának listázása. |
-| [az Spring-Cloud app restart](#az-spring-cloud-app-restart) | Indítsa újra az alkalmazás példányait az éles üzembe helyezési Alapértelmezések használatával. |
-| [az Spring-Cloud app Scale](#az-spring-cloud-app-scale) | Egy alkalmazás vagy üzembe helyezésének manuális skálázása. |
-| [az Spring-Cloud app set-Deployment](#az-spring-cloud-app-set-deployment) | Alkalmazás éles üzembe helyezésének beállítása. |
-| [az Spring-Cloud app show](#az-spring-cloud-app-show) | Egy alkalmazás részleteinek megjelenítése az Azure Spring-felhőben. |
-| [az Spring-Cloud app show-Deploy-log](#az-spring-cloud-app-show-deploy-log) | A forrásról származó legújabb központi telepítéshez tartozó összeállítási naplók megjelenítése. Az alapértelmezett érték az éles üzembe helyezés. |
-| [az Spring-Cloud app Start](#az-spring-cloud-app-start) | Az alkalmazás példányainak elindítása éles üzembe helyezési alapértékek használatával. |
-| [az Spring-Cloud app stop](#az-spring-cloud-app-stop) | Az alkalmazás példányainak leállítása éles üzembe helyezési alapértékek használatával. |
-| [az Spring-Cloud app Update](#az-spring-cloud-app-update) | A megadott alkalmazás konfigurációjának frissítése. |
+| [az tavaszi felhő alkalmazás létrehozása](#az-spring-cloud-app-create) | Hozzon létre egy új alkalmazást az Azure Spring Cloud alapértelmezett központi telepítésével. |
+| [az tavaszi felhő alkalmazás törlése](#az-spring-cloud-app-delete) | Töröljön egy alkalmazást az Azure Spring Cloud szolgáltatásban. |
+| [az tavaszi felhőalkalmazás telepítése](#az-spring-cloud-app-deploy) | Telepítse a forráskódból vagy egy előre elkészített bináris fájlból egy alkalmazásba, és frissítse a kapcsolódó konfigurációkat. |
+| [az tavaszi felhőalkalmazás-lista](#az-spring-cloud-app-list) | Az Azure Spring Cloud összes alkalmazásának listázása. |
+| [az tavaszi felhőalkalmazás újraindítása](#az-spring-cloud-app-restart) | Indítsa újra az alkalmazás példányait az éles környezetben történő telepítés alapértelmezett beállításaival. |
+| [az tavaszi felhőalkalmazás-méretezés](#az-spring-cloud-app-scale) | Manuálisan méretezz egy alkalmazást vagy annak központi példányait. |
+| [az tavaszi felhőalapú alkalmazáskészlet-telepítés](#az-spring-cloud-app-set-deployment) | Állítsa be egy alkalmazás éles telepítését. |
+| [az tavaszi felhő alkalmazás show](#az-spring-cloud-app-show) | Egy alkalmazás részleteinek megjelenítése az Azure Spring Cloud ban. |
+| [az tavaszi felhőalkalmazás show-deploy-log](#az-spring-cloud-app-show-deploy-log) | Buildnaplók megjelenítése a legújabb központi telepítés forrásból. Alapértelmezés szerint éles környezetben. |
+| [az tavaszi felhő alkalmazás indítása](#az-spring-cloud-app-start) | Indítsa el az alkalmazás példányait az éles környezetben történő központi telepítés alapértelmezett használatával. |
+| [az tavaszi felhő alkalmazás leállítása](#az-spring-cloud-app-stop) | Az alkalmazás példányainak leállítása az éles környezetben történő központi telepítés alapértelmezett használatával. |
+| [az tavaszi felhőalkalmazás frissítése](#az-spring-cloud-app-update) | Frissítse a megadott alkalmazás konfigurációját. |
 
-| az Spring-Cloud app kötés | Parancsok az Azure Data Services-vel való kötések kezeléséhez.  A beállítások érvénybe léptetéséhez újra kell indítani az alkalmazást. |
+| az tavaszi felhőalkalmazás-kötés | Az Azure Data Services használatával a kötések kezelésére szolgáló parancsok.  A beállítások érvénybe lépése előtt újra kell indítani az alkalmazást. |
 | --- | ---: |
-| [az Spring-Cloud app kötési listája](#az-spring-cloud-app-binding-list) | Egy alkalmazás összes szolgáltatási kötésének listázása. |
-| [az Spring-Cloud app bind Remove](#az-spring-cloud-app-binding-remove) | Távolítson el egy szolgáltatási kötést az alkalmazásból. |
-| [az Spring-Cloud app bind show](#az-spring-cloud-app-binding-show) | Egy szolgáltatás kötésének részleteit jeleníti meg. |
-| [az Spring-Cloud app bind Cosmos Add](#az-spring-cloud-app-binding-cosmos-add) | Egy Azure-CosmosDB kötése az alkalmazással. |
-| [az Spring-Cloud app bind Cosmos Update](#az-spring-cloud-app-binding-cosmos-update) | Azure CosmosDB szolgáltatás kötésének frissítése. |
-| [az Spring-Cloud app bind MySQL Add](#az-spring-cloud-app-binding-mysql-add) | Azure Database for MySQL kötése az alkalmazással. |
-| [az Spring-Cloud app bind MySQL Update](#az-spring-cloud-app-binding-mysql-update) | Azure Database for MySQL szolgáltatás kötésének frissítése. |
-| [az Spring-Cloud app kötési Redis hozzáadása](#az-spring-cloud-app-binding-redis-add) | Egy Azure-gyorsítótár kötése a Redis az alkalmazással. |
-| [az Spring-Cloud app kötési Redis frissítése](#az-spring-cloud-app-binding-redis-update) | Azure cache frissítése a Redis Service-kötéshez. |
+| [az tavaszi felhőalkalmazás-kötési lista](#az-spring-cloud-app-binding-list) | Az összes szolgáltatáskötés listázása egy alkalmazásban. |
+| [az tavaszi felhőalkalmazás kötéseltávolítása](#az-spring-cloud-app-binding-remove) | Távolítsa el a szolgáltatáskötést az alkalmazásból. |
+| [az tavaszi felhőalkalmazás-kötési show](#az-spring-cloud-app-binding-show) | A szolgáltatáskötés részleteinek megjelenítése. |
+| [az tavaszi felhőalkalmazás kötési kozmosz hozzáadása](#az-spring-cloud-app-binding-cosmos-add) | Kösse össze az Azure CosmosDB-t az alkalmazással. |
+| [az tavaszi felhőalkalmazás-kötési cosmos frissítés](#az-spring-cloud-app-binding-cosmos-update) | Frissítsen egy Azure CosmosDB szolgáltatáskötést. |
+| [az tavaszi felhő alkalmazás kötés mysql hozzá](#az-spring-cloud-app-binding-mysql-add) | Kösse össze a MySQL Azure-adatbázisát az alkalmazással. |
+| [az tavaszi felhőalkalmazás kötésmysql frissítés](#az-spring-cloud-app-binding-mysql-update) | Frissítsen egy Azure-adatbázist a MySQL szolgáltatáskötéshez. |
+| [az tavaszi felhő alkalmazás kötés redis hozzá](#az-spring-cloud-app-binding-redis-add) | Kösse meg a Redis Azure-gyorsítótárát az alkalmazással. |
+| [az tavaszi felhőalkalmazás-kötés redis frissítés](#az-spring-cloud-app-binding-redis-update) | Frissítsen egy Azure-gyorsítótárat a Redis szolgáltatáskötéshez. |
 
-| az Spring-Cloud app Deployment | Parancsok egy alkalmazás üzembe helyezési életciklusának kezeléséhez az Azure Spring Cloud-ban. |
+| az tavaszi felhőalapú alkalmazások telepítése | Parancsok egy alkalmazás üzembe helyezésének életciklusának kezelésére az Azure Spring Cloud ban. |
 | --- | ---: |
-| [az Spring-Cloud app Deployment Create](#az-spring-cloud-app-deployment-create) | Hozzon létre egy átmeneti üzembe helyezést az alkalmazáshoz. |
-| [az Spring-Cloud app Deployment delete](#az-spring-cloud-app-deployment-delete) | Az alkalmazás központi telepítésének törlése. |
-| [az Spring-Cloud app Deployment List](#az-spring-cloud-app-deployment-list) | Egy alkalmazás összes központi telepítésének listázása. |
-| [az Spring-Cloud app Deployment show](#az-spring-cloud-app-deployment-show) | A központi telepítés részleteinek megjelenítése. |
+| [az tavaszi felhőalapú alkalmazások üzembe helyezése](#az-spring-cloud-app-deployment-create) | Hozzon létre egy átmeneti központi telepítést az alkalmazáshoz. |
+| [az tavaszi felhőalkalmazás telepítése törlés](#az-spring-cloud-app-deployment-delete) | Törölje az alkalmazás központi telepítését. |
+| [az tavaszi felhőalkalmazás-telepítési lista](#az-spring-cloud-app-deployment-list) | Az alkalmazások összes központi telepítésének listázása. |
+| [az tavaszi felhőalapú alkalmazás-telepítési show](#az-spring-cloud-app-deployment-show) | A központi telepítés részleteinek megjelenítése. |
 
-| az Spring-Cloud config-Server | Parancsok az Azure Spring Cloud config-kiszolgáló kezeléséhez. |
+| az tavaszi felhő config-szerver | Az Azure Spring Cloud Config Server kezeléséhez szükséges parancsok. |
 | --- | ---: |
-| [az Spring-Cloud config-Server Clear](#az-spring-cloud-config-server-clear) | A konfigurációs kiszolgáló összes beállításának törlése. |
-| [az Spring-Cloud config-Server set](#az-spring-cloud-config-server-set) | Adja meg a konfigurációs kiszolgálót egy YAML-fájlból. |
-| [az Spring-Cloud config-Server show](#az-spring-cloud-config-server-show) | A konfigurációs kiszolgáló konfigurációjának megjelenítése. |
-| [az Spring-Cloud config Server git set](#az-spring-cloud-config-server-git-set) | Adja meg a konfigurációs kiszolgáló git-tulajdonságait.  A rendszer felülírja az előző értékeket. |
-| [az Spring-Cloud config Server git-tárház hozzáadása](#az-spring-cloud-config-server-git-repo-add) | Adja hozzá a git-adattár új konfigurációját a konfigurációs kiszolgálóhoz. |
-| [az Spring-Cloud config Server git-tárház listája](#az-spring-cloud-config-server-git-repo-list) | A konfigurációs kiszolgáló összes git-tárház-konfigurációjának listázása. |
-| [az Spring-Cloud config Server git repo Remove](#az-spring-cloud-config-server-git-repo-remove) | Távolítsa el a megadott git-tárházat a konfigurációs kiszolgálóról. |
+| [az tavaszi felhő config-server tiszta](#az-spring-cloud-config-server-clear) | Törölje a Config Server összes beállítását. |
+| [az tavaszi felhőconfig-server set](#az-spring-cloud-config-server-set) | Definiálja a Config Server kiszolgálót YAML-fájlból. |
+| [az tavaszi felhő config-szerver show](#az-spring-cloud-config-server-show) | A Config Server konfigurációjának megjelenítése. |
+| [az tavaszi felhő config szerver git készlet](#az-spring-cloud-config-server-git-set) | Adja meg a Config Server git-tulajdonságait.  A korábbi értékek felülíródnak. |
+| [az tavaszi felhő config szerver git társzóhozzáadása](#az-spring-cloud-config-server-git-repo-add) | Adjon hozzá egy új git-tárház konfigurációját a Config Server kiszolgálóhoz. |
+| [az tavaszi felhő config szerver git repo lista](#az-spring-cloud-config-server-git-repo-list) | Sorolja fel a Config Server összes git-tárház-konfigurációját. |
+| [az tavaszi felhő config szerver git repo eltávolítása](#az-spring-cloud-config-server-git-repo-remove) | Távolítsa el a megadott git-tárházat a Config Server kiszolgálóról. |
 
-| az Spring-Cloud test-Endpoint | Parancsok a végpontok tesztelésének kezeléséhez az Azure Spring Cloud-ban |
+| az rugó-felhő teszt-végpont | A végponttesztelés kezeléséhez szükséges parancsok az Azure Spring Cloud ban |
 | --- | ---: |
-| [az Spring-Cloud test-Endpoint Disable](#az-spring-cloud-test-endpoint-disable) | Teszt végpont letiltása. |
-| [az Spring-Cloud test-Endpoint Enable](#az-spring-cloud-test-endpoint-enable) | Tesztelési végpont engedélyezése. |
-| [az Spring-Cloud test-Endpoint List](#az-spring-cloud-test-endpoint-list) | A tesztelési végpont kulcsainak listázása. |
-| [az Spring-Cloud test-Endpoint megújít-Key](#az-spring-cloud-test-endpoint-renew-key) | Egy teszt-végponti kulcs újbóli létrehozása. |
+| [az rugó-felhő tesztvégpont letiltása](#az-spring-cloud-test-endpoint-disable) | A tesztvégpont letiltása. |
+| [az rugós-felhő tesztvégpont engedélyezése](#az-spring-cloud-test-endpoint-enable) | Engedélyezze a tesztvégpontot. |
+| [az rugós felhőteszt-végpontok listája](#az-spring-cloud-test-endpoint-list) | A tesztvégpont-kulcsok listázása. |
+| [az rugó-felhő teszt-végpont megújítási-kulcs](#az-spring-cloud-test-endpoint-renew-key) | Tesztvégpont-kulcs újragenerálása. |
 
-## <a name="az-spring-cloud-create"></a>az Spring-Cloud Create
+## <a name="az-spring-cloud-create"></a>az tavaszi felhő létrehozása
 
-Hozzon létre egy új alkalmazást alapértelmezett üzembe helyezéssel az Azure Spring Cloud-ban.
+Hozzon létre egy új alkalmazást az Azure Spring Cloud alapértelmezett központi telepítésével.
 
-```cli
+```azurecli
 az spring-cloud create  --name -n
                         --resource-group -g
                         --location -l
@@ -91,27 +91,27 @@ az spring-cloud create  --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az Azure Spring Cloud-példány neve. |
-| --erőforrás-csoport-g | Megadja az alkalmazáshoz tartozó erőforráscsoportot.  Az alapértelmezett csoport konfigurálása a `az configure --defaults group=<name>` használatával |
+| --név -n | Az Azure Spring Cloud-példány neve. |
+| --erőforrás-csoport -g | Az alkalmazás erőforráscsoportját adja meg.  Az alapértelmezett csoport konfigurálása a`az configure --defaults group=<name>` |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Location-l | Megadja az alkalmazás kiszolgálójának helyét.  Érvényes helyszínek keresése `az account list-locations` használatával |
-| --No-WAIT | A hosszú ideig futó műveletek befejezéséhez ne.
+| --hely -l | Megadja az alkalmazás kiszolgálói helyét.  Érvényes helyek keresése a következő vel:`az account list-locations` |
+| --nem-várjon | Ne végezze el a hosszú ideig futó műveleteket.
 
 ### <a name="examples"></a>Példák
 
-Új Azure Spring-felhő létrehozása a WestUS-ben
+Új Azure Spring Cloud létrehozása a WestUS-ban
 
-```cli
+```azurecli
 az spring-cloud create -n MyService -g MyResourceGroup -l westus
 ```
 
-## <a name="az-spring-cloud-delete"></a>az Spring-Cloud delete
+## <a name="az-spring-cloud-delete"></a>az tavaszi felhő törlése
 
-Azure Spring Cloud-példány törlése.
+Töröljön egy Azure Spring Cloud-példányt.
 
-```cli
+```azurecli
 az spring cloud --name -n
                 --resource-group -g
                 --no-wait
@@ -119,52 +119,52 @@ az spring cloud --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | A törlendő Azure Spring Cloud-példány neve. |
-| --erőforrás-csoport-g | Azon erőforráscsoport neve, amelyhez az Azure Spring-felhő tartozik. |
+| --név -n | A törölni aandó Azure Spring Cloud-példány neve. |
+| --erőforrás-csoport -g | Annak az erőforráscsoportnak a neve, amelyhez az Azure Spring Cloud tartozik. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| -No-WAIT | Várjon, amíg a hosszú ideig futó műveletek befejeződik. |
+| -no-wait | Ne várjon a hosszú ideig futó műveletek befejezésére. |
 
 ### <a name="example"></a>Példa
 
-Egy "MyService" nevű Azure Spring Cloud-példány törlése a következőből: "MyResourceGroup".
+Töröljön egy "MyService" nevű Azure Spring Cloud-példányt a "MyResourceGroup" szolgáltatásból.
 
-```cli
+```azurecli
 az spring-cloud delete -n MyService -g MyResourceGroup
 ```
 
-## <a name="az-spring-cloud-list"></a>az Spring-Cloud List
+## <a name="az-spring-cloud-list"></a>az tavaszi felhőlista
 
-Az adott erőforráscsoporthoz társított összes Azure Spring Cloud-példány listázása. Ha nincs megadva erőforráscsoport, sorolja fel az előfizetési azonosítókat.
+Az adott erőforráscsoporthoz társított összes Azure Spring Cloud-példány listázása. Ha nincs megadva erőforráscsoport, sorolja fel az előfizetés-azonosítókat.
 
-```cli
+```azurecli
 az spring-cloud list --resource-group -g
 ```
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --erőforrás-csoport-g | Az erőforráscsoport neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve. |
 
-## <a name="az-spring-cloud-show"></a>az Spring-Cloud show
+## <a name="az-spring-cloud-show"></a>az tavaszi felhő show
 
 A megadott Azure Spring Cloud-példány részleteinek megjelenítése.
 
-```cli
+```azurecli
 az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az Azure Spring Cloud-példány neve. |
-| --erőforrás-csoport-g | Azon erőforráscsoport neve, amelyhez az Azure Spring Cloud-példány tartozik.
+| --név -n | Az Azure Spring Cloud-példány neve. |
+| --erőforrás-csoport -g | Annak az erőforráscsoportnak a neve, amelyhez az Azure Spring Cloud-példány tartozik.
 
-## <a name="az-spring-cloud-app-create"></a>az Spring-Cloud app Create
+## <a name="az-spring-cloud-app-create"></a>az tavaszi felhő alkalmazás létrehozása
 
-Hozzon létre egy új alkalmazást egy Azure Spring-felhőben.
+Hozzon létre egy új alkalmazást az Azure Spring Cloud ban.
 
-```cli
+```azurecli
 az spring-cloud app create --name -n
                             --resource-group -g
                             --service -s
@@ -177,37 +177,37 @@ az spring-cloud app create --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --CPU | Virtuális magok száma egy példányban.  Alapértelmezett: 1. |
-| --Enable-perzisztens-Storage | Logikai érték.  Ha az értéke igaz, a egy 50 GB-lemezt csatlakoztat az alapértelmezett elérési úttal. |
-| – példányok száma | A példányok száma.  Alapértelmezett: 1. |
-| – nyilvános | Logikai érték.  Ha az értéke igaz, egy nyilvános tartományt rendel hozzá. |
-| – memória | A memória GB memóriájának száma egy példányban.  Alapértelmezett: 1. |
+| --cpu | Virtuális magok száma példányonként.  Alapértelmezett: 1. |
+| --enable-persistent-storage | Logikai érték.  Ha ez igaz, egy 50 GB-os lemezt csatlakoztat alapértelmezett elérési úttal. |
+| --példány-szám | Példány száma.  Alapértelmezett: 1. |
+| --nyilvános | Logikai érték.  Ha ez igaz, nyilvános tartományt rendel hozzá. |
+| --memória | A példányonkénti GB memória száma.  Alapértelmezett: 1. |
 
 ### <a name="examples"></a>Példák
 
 Hozzon létre egy alkalmazást az alapértelmezett konfigurációval.
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService
 ```
 
 Hozzon létre egy nyilvánosan elérhető alkalmazást 3 példányban.  Minden példány 3 GB memóriával és 2 CPU-maggal rendelkezik.
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService --is-public true --cpu 2 --memory 3
 ```
 
-## <a name="az-spring-cloud-app-delete"></a>az Spring-Cloud app delete
+## <a name="az-spring-cloud-app-delete"></a>az tavaszi felhő alkalmazás törlése
 
-Töröl egy alkalmazást az Azure Spring-felhőben.
+Töröl egy alkalmazást az Azure Spring Cloud szolgáltatásban.
 
-```cli
+```azurecli
 az spring cloud app delete  --name -n
                             --resource-group -g
                             --service -s
@@ -215,15 +215,15 @@ az spring cloud app delete  --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-deploy"></a>az Spring-Cloud app Deploy
+## <a name="az-spring-cloud-app-deploy"></a>az tavaszi felhőalkalmazás telepítése
 
-Helyezzen üzembe egy alkalmazást az Azure Spring Cloud forráskódból vagy egy előre elkészített bináris fájlból, és frissítse a kapcsolódó konfigurációkat.
+Telepítsen egy alkalmazást az Azure Spring Cloud-ba forráskódból vagy egy előre elkészített bináris fájlból, és frissítse a kapcsolódó konfigurációkat.
 
-```cli
+```azurecli
 az spring cloud app deploy  --name -n
                             --resource-group -g
                             --service -s
@@ -242,63 +242,63 @@ az spring cloud app deploy  --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --CPU | A virtuális CPI-magok száma példányban. |
-| --Deployment-d | Egy meglévő alkalmazás központi telepítésének neve.  Ha nincs megadva, az alapértelmezett érték az éles üzembe helyezés. |
-| --env | Szóközzel tagolt környezeti változók a "Key [= Value]" formátumban. |
-| – példányok száma | Példányok száma. |
-| --jar-elérési út | Ha meg van adva, telepítse a jar-t a megadott elérési útról. Egyéb esetben a jelenlegi mappát tar-ként telepítse. |
-| --JVM – beállítások | JVM-beállításokat tartalmazó karakterlánc.  A rendszerhéj-elemzési hibák elkerülése érdekében használja a "=" helyett a következőt: "". Például `--jvm-options='-Xms1024m -Xmx2048m`. |
-| – memória | A memória GB memóriájának száma egy példányban. |
-| --No-WAIT | Várjon, amíg a hosszú ideig futó műveletek befejeződik. |
-| --futtatókörnyezet-verzió | Az alkalmazásban használt nyelv futtatókörnyezet-verziója.  Megengedett értékek: `Java_11`, `Java_8`. |
-| --cél-modul | A telepítendő alárendelt modul.  Kötelező, ha több jar-csomag van kiépítve a forráskódból. |
-| --Version | Központi telepítés verziója.  Ha nincs beállítva, változatlan marad. |
+| --cpu | A virtuális CPI-magok példányonkénti száma. |
+| --telepítés -d | Meglévő alkalmazásközponti telepítés neve.  Alapértelmezés szerint az éles környezetben, ha nincs megadva. |
+| --env | Szóközre tagolt környezeti változók "key[=value]" formátumban. |
+| --példány-szám | Példányok száma. |
+| --jar-path | Ha rendelkezésre áll, telepítse jar adott elérési útról. Ellenkező esetben telepítse az aktuális mappát kátrányként. |
+| --jvm-opciók | JVM-beállításokat tartalmazó karakterlánc.  Használja a '=' helyett a ' '-t a rendszerhéj-elemzési hibák elkerülése érdekében. Pl. `--jvm-options='-Xms1024m -Xmx2048m`. |
+| --memória | A példányonkénti GB memória száma. |
+| --nem-várjon | Ne várjon a hosszú ideig futó műveletek befejezésére. |
+| --runtime-verzió | Az alkalmazásban használt nyelv futásidejű verziója.  Megengedett `Java_11`értékek: `Java_8`, . |
+| --célmodul | A bevetendő gyermekmodul.  Akkor szükséges, ha több jar csomag épül a forráskódból. |
+| --verzió | Központi telepítési verzió.  Változatlan, ha nincs beállítva. |
 
 ### <a name="examples"></a>Példák
 
-Forráskód üzembe helyezése egy alkalmazásban. Ezzel becsomagolja az aktuális könyvtárat, létrehoz egy bináris fájlt a Pivotal Build szolgáltatás használatával, majd üzembe helyezi az alkalmazást.
+Forráskód telepítése egy alkalmazásba. Ez becsomagolja az aktuális könyvtárat, bináris fájlt hoz létre a Pivotal Build szolgáltatás használatával, majd telepíti az alkalmazásba.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService
 ```
 
-Egy előre összeállított jar üzembe helyezése az JVM-beállításokkal és környezeti változók használatával.
+Előre elkészített jar üzembe helyezése egy alkalmazáshoz jvm-beállítások és környezeti változók használatával.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseG1GC -XX:+UseStringDeduplication" --env foo=bar
 ```
 
-Forráskód üzembe helyezése egy alkalmazás adott központi telepítéséhez.
+Forráskód központi telepítése egy alkalmazás adott központi telepítéséhez.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s Myspring-cloud -d green-deployment
 ```
 
-## <a name="az-spring-cloud-app-list"></a>az Spring-Cloud app List
+## <a name="az-spring-cloud-app-list"></a>az tavaszi felhőalkalmazás-lista
 
-Az Azure Spring Cloud-példány összes alkalmazásának listázása.
+Az Azure Spring Cloud-példányban az összes alkalmazás listázása.
 
-```cli
+```azurecli
 az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
 |Kötelező paraméterek | |
 | --- | ---: |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-restart"></a>az Spring-Cloud app restart
+## <a name="az-spring-cloud-app-restart"></a>az tavaszi felhőalkalmazás újraindítása
 
-Indítsa újra az alkalmazás példányait.  Alapértelmezés szerint az éles környezetben üzemelő példány.
+Indítsa újra az alkalmazás példányait.  Alapértelmezés szerint az éles környezetben.
 
-```cli
+```azurecli
 az spring-cloud app restart --name -n
                             --resource-group -g
                             --service -s
@@ -308,20 +308,20 @@ az spring-cloud app restart --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve.  Ha nincs megadva, az alapértelmezett érték az éles üzembe helyezés. |
-| --No-WAIT | Várjon, amíg a hosszú ideig futó műveletek befejeződik. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve.  Alapértelmezés szerint az éles környezetben, ha nincs megadva. |
+| --nem-várjon | Ne várjon a hosszú ideig futó műveletek befejezésére. |
 
-## <a name="az-spring-cloud-app-scale"></a>az Spring-Cloud app Scale
+## <a name="az-spring-cloud-app-scale"></a>az tavaszi felhőalkalmazás-méretezés
 
-Egy alkalmazás vagy üzembe helyezésének manuális skálázása.
+Manuálisan méretezz egy alkalmazást vagy annak központi példányait.
 
-```cli
+```azurecli
 az spring-cloud app scale --name -n
                           --resource-group -g
                           --service -s
@@ -334,37 +334,37 @@ az spring-cloud app scale --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --CPU | A virtuális CPU-magok száma az egyes alkalmazás-példányokban. |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve.  Ha nincs megadva, az alapértelmezett érték az éles üzembe helyezés. |
-| – példányok száma | Az alkalmazás példányainak száma. |
-| – memória | A memória GB memóriájának száma az alkalmazás példányaiban. |
-| --No-WAIT | Várjon, amíg a hosszan futó műveletek befejeződik. |
+| --cpu | Virtuális processzormagok száma alkalmazáspéldányonként. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve.  Alapértelmezés szerint az éles környezetben, ha nincs megadva. |
+| --példány-szám | Az alkalmazás példányainak száma. |
+| --memória | A GB-os memória száma alkalmazáspéldányonként. |
+| --nem-várjon | Ne várja meg, amíg a hosszú ideig futó műveletek befejeződnek. |
 
 ### <a name="examples"></a>Példák
 
-Egy alkalmazás felskálázása 4 CPU-mag és 8 GB memória/példány esetén.
+Egy alkalmazást 4 PROCESSZORmagra és példányonként 8 GB memóriára méretezhet.
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService --cpu 3 --memory 8
 ```
 
-Az alkalmazás 5 példányra történő központi telepítésének felskálázása.
+Az alkalmazás központi telepítésének horizontális felskálázása 5 példányra.
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService -d green-deployment --instance-count 5
 ```
 
-## <a name="az-spring-cloud-app-set-deployment"></a>az Spring-Cloud app set-Deployment
+## <a name="az-spring-cloud-app-set-deployment"></a>az tavaszi felhőalapú alkalmazáskészlet-telepítés
 
-Adja meg az alkalmazás éles környezetben történő üzembe helyezésének konfigurációs beállításait.
+Adja meg az alkalmazás éles telepítésének konfigurációs beállításait.
 
-```cli
+```azurecli
 az spring-cloud app set-deployment --deployment -d
                                    --name -n
                                    --resource-group -g
@@ -374,28 +374,28 @@ az spring-cloud app set-deployment --deployment -d
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve. |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --No-WAIT | Várjon, amíg a hosszan futó műveletek befejeződik. |
+| --nem-várjon | Ne várja meg, amíg a hosszú ideig futó műveletek befejeződnek. |
 
 ### <a name="examples"></a>Példák
 
-Az alkalmazás átmeneti üzembe helyezésének felcserélése az éles környezetbe.
+Az alkalmazás éles környezetbe való felhelyezése.
 
-```cli
+```azurecli
 az spring-cloud app set-deployment -d green-deployment -n MyApp -s MyService
 ```
 
-## <a name="az-spring-cloud-app-show"></a>az Spring-Cloud app show
+## <a name="az-spring-cloud-app-show"></a>az tavaszi felhő alkalmazás show
 
-Egy alkalmazás részleteinek megjelenítése az Azure Spring-felhőben.
+Egy alkalmazás részleteinek megjelenítése az Azure Spring Cloud ban.
 
-```cli
+```azurecli
 az spring-cloud app show --name -n
                          --resource-group -g
                          --service -s
@@ -403,15 +403,15 @@ az spring-cloud app show --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-show-deploy-log"></a>az Spring-Cloud app show-Deploy-log
+## <a name="az-spring-cloud-app-show-deploy-log"></a>az tavaszi felhőalkalmazás show-deploy-log
 
-A forráskód utolsó telepítésének felépítési naplójának megjelenítése.  Az alapértelmezett érték az éles környezet.
+Az utolsó központi telepítés buildnaplójának megjelenítése a forráskódból.  Alapértelmezés szerint éles környezetben.
 
-```cli
+```azurecli
 az spring-cloud app show-deploy-log --name -n
                                     --resource-group -g
                                     --service -s
@@ -420,19 +420,19 @@ az spring-cloud app show-deploy-log --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve.  Az alapértelmezett érték az éles környezet. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve.  Alapértelmezés szerint az éles környezetben. |
 
-## <a name="az-spring-cloud-app-start"></a>az Spring-Cloud app Start
+## <a name="az-spring-cloud-app-start"></a>az tavaszi felhő alkalmazás indítása
 
-Elindítja az alkalmazás példányait.  Az alapértelmezett érték az éles környezet.
+Elindítja az alkalmazás példányait.  Alapértelmezés szerint éles környezetben.
 
-```cli
+```azurecli
 az spring-cloud app start --name -n
                           --resource-group -g
                           --service -s
@@ -442,20 +442,20 @@ az spring-cloud app start --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve.  Az alapértelmezett érték az éles környezet. |
-| --No-WAIT | Várjon, amíg a hosszan futó műveletek befejeződik. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve.  Alapértelmezés szerint az éles környezetben. |
+| --nem-várjon | Ne várja meg, amíg a hosszú ideig futó műveletek befejeződnek. |
 
-## <a name="az-spring-cloud-app-stop"></a>az Spring-Cloud app stop
+## <a name="az-spring-cloud-app-stop"></a>az tavaszi felhő alkalmazás leállítása
 
-Az alkalmazás példányainak leállítása.  Az alapértelmezett érték az éles környezet.
+Az alkalmazás példányainak leállítása.  Alapértelmezés szerint az éles környezetben.
 
-```cli
+```azurecli
 az spring-cloud app stop --name -n
                          --resource-group -g
                          --service -s
@@ -465,20 +465,20 @@ az spring-cloud app stop --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve.  Az alapértelmezett érték az éles környezet. |
-| --No-WAIT | Várjon, amíg a hosszan futó műveletek befejeződik. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve.  Alapértelmezés szerint az éles környezetben. |
+| --nem-várjon | Ne várja meg, amíg a hosszú ideig futó műveletek befejeződnek. |
 
-## <a name="az-spring-cloud-app-update"></a>az Spring-Cloud app Update
+## <a name="az-spring-cloud-app-update"></a>az tavaszi felhőalkalmazás frissítése
 
-Egy alkalmazás tárolt konfigurációjának frissítése.
+Az alkalmazás tárolt konfigurációjának frissítése.
 
-```cli
+```azurecli
 az spring-cloud app update --name -n
                            --resource-group -g
                            --service -s
@@ -493,33 +493,33 @@ az spring-cloud app update --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név-n | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --név -n | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve.  Az alapértelmezett érték az éles környezet. |
-| --Enable-perzisztens-Storage | Logikai.  Ha az értéke igaz, csatlakoztassa az alapértelmezett elérési úttal rendelkező 50 GB-lemezt. |
-| --env | Szóközzel tagolt környezeti változók a "Key [= Value]" formátumban. |
-| – nyilvános | Logikai.  Ha az értéke igaz, rendeljen hozzá egy nyilvános tartományt az alkalmazáshoz. |
-| --JVM – beállítások | JVM-beállításokat tartalmazó karakterlánc.  A rendszerhéj-elemzési hibák elkerülése érdekében használja a "=" helyett a következőt: "". Például `--jvm-options='-Xms1024m -Xmx2048m`. |
-| --No-WAIT | Várjon, amíg a hosszan futó műveletek befejeződik. |
-| --futtatókörnyezet-verzió | Az alkalmazásban használt nyelv futtatókörnyezet-verziója.  Megengedett értékek: `Java_11`, `Java_8`. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve.  Alapértelmezés szerint az éles környezetben. |
+| --enable-persistent-storage | Logikai.  Ha igaz, csatlakoztassa az 50 GB-os lemezt az alapértelmezett elérési úttal. |
+| --env | Szóközre tagolt környezeti változók "key[=value]" formátumban. |
+| --nyilvános | Logikai.  Ha ez igaz, rendeljen nyilvános tartományt az alkalmazáshoz. |
+| --jvm-opciók | JVM-beállításokat tartalmazó karakterlánc.  Használja a '=' helyett a ' '-t a rendszerhéj-elemzési hibák elkerülése érdekében. Pl. `--jvm-options='-Xms1024m -Xmx2048m`. |
+| --nem-várjon | Ne várja meg, amíg a hosszú ideig futó műveletek befejeződnek. |
+| --runtime-verzió | Az alkalmazásban használt nyelv futásidejű verziója.  Megengedett `Java_11`értékek: `Java_8`, . |
 
 ### <a name="example"></a>Példa
 
 Adjon hozzá egy környezeti változót az alkalmazáshoz.
 
-```cli
+```azurecli
 az spring-cloud app update --env foo=bar
 ```
 
-## <a name="az-spring-cloud-app-binding-list"></a>az Spring-Cloud app kötési listája
+## <a name="az-spring-cloud-app-binding-list"></a>az tavaszi felhőalkalmazás-kötési lista
 
-Egy alkalmazás összes szolgáltatási kötésének listázása.
+Az összes szolgáltatáskötés listázása egy alkalmazásban.
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --resource-group -g
                                  --service -s
@@ -527,15 +527,15 @@ az spring-cloud app binding list --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-binding-remove"></a>az Spring-Cloud app bind Remove
+## <a name="az-spring-cloud-app-binding-remove"></a>az tavaszi felhőalkalmazás kötéseltávolítása
 
-Távolítson el egy szolgáltatási kötést az alkalmazásból.
+Távolítsa el a szolgáltatáskötést az alkalmazásból.
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -544,16 +544,16 @@ az spring-cloud app binding list --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | Az eltávolítandó szolgáltatási kötés neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | Az eltávolítandó szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-binding-show"></a>az Spring-Cloud app bind show
+## <a name="az-spring-cloud-app-binding-show"></a>az tavaszi felhőalkalmazás-kötési show
 
-Egy szolgáltatás kötésének részleteit jeleníti meg.
+A szolgáltatáskötés részleteinek megjelenítése.
 
-```cli
+```azurecli
 az spring-cloud app binding show --app
                                  --name -n
                                  --resource-group -g
@@ -562,16 +562,16 @@ az spring-cloud app binding show --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-binding-cosmos-add"></a>az Spring-Cloud app bind Cosmos Add
+## <a name="az-spring-cloud-app-binding-cosmos-add"></a>az tavaszi felhőalkalmazás kötési kozmosz hozzáadása
 
-Azure Cosmos DB kötése az alkalmazással.
+Kösse össze az Azure Cosmos DB-t az alkalmazással.
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos add --api-type
                                        --app
                                        --name -n
@@ -583,7 +583,7 @@ az spring-cloud app binding cosmos add --api-type
                                        --key-space
 ```
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -592,21 +592,21 @@ az spring-cloud app binding list --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --API-Type | Adja meg az API-típust a következő értékek egyikének használatával: Cassandra, Gremlin, Mongo, SQL, table. |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --api-típus | Adja meg az API-típust a következő értékek egyikével: cassandra, gremlin, mongo, sql, table. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 |Opcionális paraméterek | |
 | --- | ---: |
-| --gyűjtemény-név | A gyűjtemény neve.  A Gremlin használatakor szükséges. |
-| --adatbázis-név | Az adatbázis neve.  A Mongo, az SQL és a Gremlin használatakor szükséges. |
-| – kulcs – szóköz | Cassandra kulcs – szóköz.  A Cassandra használatakor szükséges. |
+| --gyűjtemény neve | A gyűjtemény neve.  A Gremlin használatakor szükséges. |
+| --adatbázis-név | Az adatbázis neve.  Mongo, SQL és Gremlin használataesetén szükséges. |
+| --kulcs-tér | Cassandra kulcs-tér.  Cassandra használatakor szükséges. |
 
-## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az Spring-Cloud app bind Cosmos Update
+## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az tavaszi felhőalkalmazás-kötési cosmos frissítés
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos update --app
                                           --name -n
                                           --resource-group -g
@@ -618,20 +618,20 @@ az spring-cloud app binding cosmos update --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 |Opcionális paraméterek | |
 | --- | ---: |
-| --gyűjtemény-név | A gyűjtemény neve.  A Gremlin használatakor szükséges. |
-| --adatbázis-név | Az adatbázis neve.  A Mongo, az SQL és a Gremlin használatakor szükséges. |
-| – kulcs – szóköz | Cassandra kulcs – szóköz.  A Cassandra használatakor szükséges. |
+| --gyűjtemény neve | A gyűjtemény neve.  A Gremlin használatakor szükséges. |
+| --adatbázis-név | Az adatbázis neve.  Mongo, SQL és Gremlin használataesetén szükséges. |
+| --kulcs-tér | Cassandra kulcs-tér.  Cassandra használatakor szükséges. |
 
-## <a name="az-spring-cloud-app-binding-mysql-add"></a>az Spring-Cloud app bind MySQL Add
+## <a name="az-spring-cloud-app-binding-mysql-add"></a>az tavaszi felhő alkalmazás kötés mysql hozzá
 
-```cli
+```azurecli
 az spring-cloud app binding mysql add --app
                                       --database-name
                                       --key
@@ -643,20 +643,20 @@ az spring-cloud app binding mysql add --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
+| --alkalmazás | Az alkalmazás neve. |
 | --adatbázis-név | Az adatbázis neve. |
-| – kulcs | A szolgáltatás API-kulcsa. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| – erőforrás-azonosító | A szolgáltatáshoz kötődő Azure-erőforrás azonosítója. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
-| --username | Az adatbázis-hozzáféréshez használt Felhasználónév. |
+| --gomb | A szolgáltatás API-kulcsa. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --erőforrás-azonosító | A kötéshez kapcsolódó szolgáltatás Azure-erőforrásazonosítója. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --username | Felhasználónév az adatbázis-hozzáféréshez. |
 
-## <a name="az-spring-cloud-app-binding-mysql-update"></a>az Spring-Cloud app bind MySQL Update
+## <a name="az-spring-cloud-app-binding-mysql-update"></a>az tavaszi felhőalkalmazás kötésmysql frissítés
 
-Frissítse a szolgáltatás kötési kapcsolatát az alkalmazáshoz egy Azure Database for MySQL.
+Frissítse a szolgáltatáskötési kapcsolatot az alkalmazás egy Azure Database for MySQL.Update the service binding connection the app to an Azure Database for MySQL.
 
-```cli
+```azurecli
 az spring-cloud app binding mysql update --add
                                          --name -n
                                          --resource-group -g
@@ -668,22 +668,22 @@ az spring-cloud app binding mysql update --add
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
 | --adatbázis-név | Az adatbázis neve. |
-| – kulcs | A szolgáltatás API-kulcsa. |
-| --username | Az adatbázis-hozzáféréshez használt Felhasználónév. |
+| --gomb | A szolgáltatás API-kulcsa. |
+| --username | Felhasználónév az adatbázis-hozzáféréshez. |
 
-## <a name="az-spring-cloud-app-binding-redis-add"></a>az Spring-Cloud app kötési Redis hozzáadása
+## <a name="az-spring-cloud-app-binding-redis-add"></a>az tavaszi felhő alkalmazás kötés redis hozzá
 
-Egy Azure-gyorsítótár kötése a Redis az alkalmazással.
+Kösse meg a Redis Azure-gyorsítótárát az alkalmazással.
 
-```cli
+```azurecli
 az spring-cloud app binding redis add --app
                                       --name -n
                                       --resource-group -g
@@ -694,77 +694,77 @@ az spring-cloud app binding redis add --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| – erőforrás-azonosító | A szolgáltatáshoz kötni kívánt szolgáltatás Azure-erőforrás-azonosítója. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --erőforrás-azonosító | Annak a szolgáltatásnak az Azure-erőforrásazonosítója, amelyhez kötődni szeretne. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --letiltás-SSL | Tiltsa le az SSL-t. |
+| --disable-ssl | Tiltsa le a TLS-t. |
 
-## <a name="az-spring-cloud-app-binding-redis-update"></a>az Spring-Cloud app kötési Redis frissítése
+## <a name="az-spring-cloud-app-binding-redis-update"></a>az tavaszi felhőalkalmazás-kötés redis frissítés
 
-Az Azure cache szolgáltatáshoz tartozó Redis frissítése.
+Frissítsen egy szolgáltatáskötést az Azure Cache for Redis számára.
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --letiltás-SSL | Tiltsa le az SSL-t. |
+| --disable-ssl | Tiltsa le a TLS-t. |
 
-## <a name="az-spring-cloud-app-deployment-create"></a>az Spring-Cloud app Deployment Create
+## <a name="az-spring-cloud-app-deployment-create"></a>az tavaszi felhőalapú alkalmazások üzembe helyezése
 
-Hozzon létre egy átmeneti üzembe helyezést az alkalmazáshoz.
+Hozzon létre egy átmeneti központi telepítést az alkalmazáshoz.
 
-A kód üzembe helyezéséhez, illetve a beállítások egy meglévő központi telepítésre való frissítéséhez használja a `az spring-cloud app deploy --deployment <staging-deployment>` vagy az "az Spring-Cloud app Update – Deployment <staging deployment>.
+Kód központi telepítéséhez vagy a beállítások `az spring-cloud app deploy --deployment <staging-deployment>` meglévő központi telepítéshez való frissítéséhez <staging deployment>használja vagy használja az "az rugós felhőalkalmazás frissítését --üzembe helyezés.
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --név | A szolgáltatás kötésének neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --név | A szolgáltatáskötés neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --CPU | A virtuális CPU-magok száma példányban.  Alapértelmezett: 1 |
-| --env | Szóközzel tagolt környezeti változók a "Key [= Value]" formátumban. |
-| – példányok száma | Példányok száma. Alapértelmezett: 1. |
-| --jar-elérési út | Ha meg van adni, telepítse a jar-t.  Egyéb esetben a jelenlegi mappát tar-ként telepítse. |
-| --JVM – beállítások | JVM-beállításokat tartalmazó karakterlánc.  A rendszerhéj-elemzési hibák elkerülése érdekében használja a "=" helyett a következőt: "". Például `--jvm-options='-Xms1024m -Xmx2048m`. |
-| – memória | A memória GB memóriájának száma egy példányban. |
-| --No-WAIT | Várjon, amíg a hosszú ideig futó műveletek befejeződik. |
-| --futtatókörnyezet-verzió | Az alkalmazásban használt nyelv futtatókörnyezet-verziója.  Megengedett értékek: `Java_11`, `Java_8`. |
-| --Skip-Clone-Settings | Hozzon létre egy átmeneti üzembe helyezést a jelenlegi éles üzembe helyezési beállítások klónozásával. |
-| --cél-modul | A telepítendő alárendelt modul.  Kötelező, ha több jar-csomag van kiépítve a forráskódból. |
-| --Version | Központi telepítés verziója.  Ha nincs beállítva, változatlan marad. |
+| --cpu | A virtuális processzormagok száma példányonként.  Alapértelmezett: 1 |
+| --env | Szóközre tagolt környezeti változók "key[=value]" formátumban. |
+| --példány-szám | Példányok száma. Alapértelmezett: 1. |
+| --jar-path | Ha rendelkezésre áll, telepítse jar.  Ellenkező esetben telepítse az aktuális mappát kátrányként. |
+| --jvm-opciók | JVM-beállításokat tartalmazó karakterlánc.  Használja a '=' helyett a ' '-t a rendszerhéj-elemzési hibák elkerülése érdekében. Pl. `--jvm-options='-Xms1024m -Xmx2048m`. |
+| --memória | A példányonkénti GB memória száma. |
+| --nem-várjon | Ne várjon a hosszú ideig futó műveletek befejezésére. |
+| --runtime-verzió | Az alkalmazásban használt nyelv futásidejű verziója.  Megengedett `Java_11`értékek: `Java_8`, . |
+| --skip-clone-beállítások | Átmeneti központi telepítés létrehozása az aktuális éles telepítési beállítások klónozásával. |
+| --célmodul | A bevetendő gyermekmodul.  Akkor szükséges, ha több jar csomag épül a forráskódból. |
+| --verzió | Központi telepítési verzió.  Változatlan, ha nincs beállítva. |
 
 ### <a name="examples"></a>Példák
 
-A forráskód üzembe helyezése az alkalmazás új központi telepítéséhez.  Ezzel becsomagolja az aktuális könyvtárat, létrehoz egy bináris fájlt a Pivotal Build rendszer használatával, majd üzembe helyezi azt.
+Forráskód központi telepítése az alkalmazás új központi telepítéséhez.  Ez becsomagolja az aktuális könyvtárat, bináris fájlt hoz létre a Pivotal Build System használatával, majd telepíti.
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService
 ```
 
-Egy előre összeállított jar üzembe helyezése JVM-beállításokkal és környezeti változók használatával.
+Előre elkészített jar üzembe helyezése egy alkalmazásba JVM-beállításokkal és környezeti változókkal.
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseStringDeDuplication" --env foo=bar
 ```
 
-## <a name="az-spring-cloud-app-deployment-delete"></a>az Spring-Cloud app Deployment delete
+## <a name="az-spring-cloud-app-deployment-delete"></a>az tavaszi felhőalkalmazás telepítése törlés
 
-Az alkalmazás központi telepítésének törlése.
+Törölje az alkalmazás központi telepítését.
 
-```cli
+```azurecli
 az spring-cloud app deployment delete --app
                                       --name -n
                                       --resource-group -g
@@ -773,16 +773,16 @@ az spring-cloud app deployment delete --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
+| --alkalmazás | Az alkalmazás neve. |
 | --név | A központi telepítés neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-deployment-list"></a>az Spring-Cloud app Deployment List
+## <a name="az-spring-cloud-app-deployment-list"></a>az tavaszi felhőalkalmazás-telepítési lista
 
-Egy alkalmazás összes központi telepítésének listázása.
+Az alkalmazások összes központi telepítésének listázása.
 
-```cli
+```azurecli
 az spring-cloud app deployment list --app
                                     --resource-group -g
                                     --service -s
@@ -790,15 +790,15 @@ az spring-cloud app deployment list --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --alkalmazás | Az alkalmazás neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-app-deployment-show"></a>az Spring-Cloud app Deployment show
+## <a name="az-spring-cloud-app-deployment-show"></a>az tavaszi felhőalapú alkalmazás-telepítési show
 
-Egy központi telepítés részleteinek megjelenítése.
+A központi telepítés részleteinek megjelenítése.
 
-```cli
+```azurecli
 az spring-cloud app deployment show --app
                                     --name -n
                                     --resource-group -g
@@ -807,30 +807,30 @@ az spring-cloud app deployment show --app
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
+| --alkalmazás | Az alkalmazás neve. |
 | --név | A központi telepítés neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --Service-s | Az Azure Spring-felhő neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --szolgáltatás -s | Az Azure Spring Cloud neve.  Az alapértelmezett szolgáltatást a `az configure --defaults spring-cloud=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-config-server-clear"></a>az Spring-Cloud config-Server Clear
+## <a name="az-spring-cloud-config-server-clear"></a>az tavaszi felhő config-server tiszta
 
-Törölje az összes konfigurációs beállítást a konfigurációs kiszolgálón.
+Törölje a Config Server összes konfigurációs beállítását.
 
-```cli
+```azurecli
 az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-config-server-set"></a>az Spring-Cloud config-Server set
+## <a name="az-spring-cloud-config-server-set"></a>az tavaszi felhőconfig-server set
 
-Konfigurációs beállítások beállítása a konfigurációs kiszolgálón YAML-fájl használatával.
+A konfigurációs kiszolgáló konfigurációs beállításainak megadása YAML-fájl használatával.
 
-```cli
+```azurecli
 az spring-cloud config-server set --config-file
                                   --name -n
                                   --resource-group -g
@@ -839,33 +839,33 @@ az spring-cloud config-server set --config-file
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --config-file | A konfigurációs kiszolgáló konfigurációjához tartozó YAML-jegyzékfájl elérési útja. |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --konfigurációs fájl | A Config Server konfigurációjához egy YAML-jegyzékfájl elérési útja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --No-WAIT | A hosszú ideig futó műveletek befejezéséhez ne.
+| --nem-várjon | Ne végezze el a hosszú ideig futó műveleteket.
 
-## <a name="az-spring-cloud-config-server-show"></a>az Spring-Cloud config-Server show
+## <a name="az-spring-cloud-config-server-show"></a>az tavaszi felhő config-szerver show
 
-A konfigurációs kiszolgáló beállításainak megjelenítése.
+A Konfigurációs kiszolgáló beállításainak megjelenítése.
 
-```cli
+```azurecli
 az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-config-server-git-set"></a>az Spring-Cloud config-Server git set
+## <a name="az-spring-cloud-config-server-git-set"></a>az tavaszi felhő config-server git készlet
 
-Állítsa be a konfigurációs kiszolgáló git-tulajdonságait.  Ezzel felülírja az összes meglévő git-tulajdonságot.
+Állítsa be a Konfigurációs kiszolgáló git-tulajdonságait.  Ez felülírja az összes meglévő git tulajdonságot.
 
-```cli
+```azurecli
 az spring-cloud config-server git set --name -n
                                       --resource-group g
                                       --uri
@@ -882,25 +882,25 @@ az spring-cloud config-server git set --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --URI | A hozzáadott konfiguráció URI-ja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --uri | A hozzáadott konfiguráció URI-ja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Elhalasztva | Az objektum ideiglenes tárolása a helyi gyorsítótárban az Azure-ba való küldés helyett.  A `az cache` használatával megtekintheti vagy törölheti. |
-| --host-key | A hozzáadott konfigurációhoz tartozó gazdagép kulcsa. |
-| --host-key-algoritmus | A hozzáadott konfigurációhoz tartozó host key algoritmus. |
-| --Label | A hozzáadott konfiguráció címkéje. |
+| --halasztás | Ideiglenesen tárolja az objektumot a helyi gyorsítótárban, ahelyett, hogy az Azure-ba küldené.  A `az cache` megtekintéshez / törléshez használható. |
+| --host-kulcs | A hozzáadott konfiguráció gazdakulcsa. |
+| --host-kulcs-algoritmus | A hozzáadott konfiguráció gazdakulcs-algoritmusa. |
+| --címke | A hozzáadott konfiguráció címkéje. |
 | --password | A hozzáadott konfiguráció jelszava. |
 | --titkos kulcs | A hozzáadott konfiguráció titkos kulcsa. |
-| --Keresés – elérési utak | Keresési útvonalak a hozzáadott konfigurációhoz.  Vesszővel elválasztó karakterek használata több elérési útra. |
-| --Strict-host-key-check | A hozzáadott konfiguráció szigorú gazdagép-ellenőrzésének engedélyezése. |
+| --keresési útvonalak | A hozzáadott konfiguráció elérési útjainak keresése.  Több útvonalhoz használjon vesszőhatárolókat. |
+| --szigorú-host-kulcs-ellenőrzés | Lehetővé teszi a hozzáadott konfiguráció szigorú gazdakulcs-ellenőrzését. |
 | --username | A hozzáadott konfiguráció felhasználóneve. |
 
-## <a name="az-spring-cloud-config-server-git-repo-add"></a>az Spring-Cloud config-Server git-tárház hozzáadása
+## <a name="az-spring-cloud-config-server-git-repo-add"></a>az tavaszi felhő config-server git repo hozzá
 
-```cli
+```azurecli
 az spring-cloud config-server git repo add --name -n
                                            --repo-name
                                            --resource-group -g
@@ -919,29 +919,29 @@ az spring-cloud config-server git repo add --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --repó-név | A tárház URI-ja. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| --URI | A hozzáadott konfiguráció URI-ja. |
+| --név | Az Azure Spring Cloud neve. |
+| --repo-név | A tárműtér URI-ja. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --uri | A hozzáadott konfiguráció URI-ja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Elhalasztva | Az objektum ideiglenes tárolása a helyi gyorsítótárban az Azure-ba való küldés helyett.  A `az cache` használatával megtekintheti vagy törölheti. |
-| --host-key | A hozzáadott konfigurációhoz tartozó gazdagép kulcsa. |
-| --host-key-algoritmus | A hozzáadott konfigurációhoz tartozó host key algoritmus. |
-| --Label | A hozzáadott konfiguráció címkéje. |
+| --halasztás | Ideiglenesen tárolja az objektumot a helyi gyorsítótárban, ahelyett, hogy az Azure-ba küldené.  A `az cache` megtekintéshez / törléshez használható. |
+| --host-kulcs | A hozzáadott konfiguráció gazdakulcsa. |
+| --host-kulcs-algoritmus | A hozzáadott konfiguráció gazdakulcs-algoritmusa. |
+| --címke | A hozzáadott konfiguráció címkéje. |
 | --password | A hozzáadott konfiguráció jelszava. |
-| – minta | A tárház mintája.  Vesszővel elválasztó karakterek használata több elérési útra.|
+| --minta | Minta a tármű.  Több útvonalhoz használjon vesszőhatárolókat.|
 | --titkos kulcs | A hozzáadott konfiguráció titkos kulcsa. |
-| --Keresés – elérési utak | Keresési útvonalak a hozzáadott konfigurációhoz.  Vesszővel elválasztó karakterek használata több elérési útra. |
-| --Strict-host-key-check | A hozzáadott konfiguráció szigorú gazdagép-ellenőrzésének engedélyezése. |
+| --keresési útvonalak | A hozzáadott konfiguráció elérési útjainak keresése.  Több útvonalhoz használjon vesszőhatárolókat. |
+| --szigorú-host-kulcs-ellenőrzés | Lehetővé teszi a hozzáadott konfiguráció szigorú gazdakulcs-ellenőrzését. |
 | --username | A hozzáadott konfiguráció felhasználóneve. |
 
-## <a name="az-spring-cloud-config-server-git-repo-list"></a>az Spring-Cloud config-Server git-tárház listája
+## <a name="az-spring-cloud-config-server-git-repo-list"></a>az tavaszi felhő config-server git repo lista
 
-A konfigurációs kiszolgáló által definiált összes git-repó listázása
+A Config Server ben definiált összes git-ellenőrző fájl felsorolása
 
-```cli
+```azurecli
 az spring-cloud config-server git repo list --name -n
                                        --resource-group -g
                                        --defer
@@ -949,18 +949,18 @@ az spring-cloud config-server git repo list --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Elhalasztva | Az objektum ideiglenes tárolása a helyi gyorsítótárban az Azure-ba való küldés helyett.  A `az cache` használatával megtekintheti vagy törölheti. |
+| --halasztás | Ideiglenesen tárolja az objektumot a helyi gyorsítótárban, ahelyett, hogy az Azure-ba küldené.  A `az cache` megtekintéshez / törléshez használható. |
 
-## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az Spring-Cloud config-Server git-tárház eltávolítása
+## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az tavaszi felhő config-server git repo eltávolítás
 
-Távolítsa el a git-tárház meglévő konfigurációját a konfigurációs kiszolgálóról.
+Meglévő git-tármű-konfiguráció eltávolítása a Config Server kiszolgálóról.
 
-```cli
+```azurecli
 az spring-cloud config-server git repo remove --name -n
                                          --repo-name
                                          --resource-group -g
@@ -969,47 +969,47 @@ az spring-cloud config-server git repo remove --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --repó-név | A tárház URI-ja. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --név | Az Azure Spring Cloud neve. |
+| --repo-név | A tárműtér URI-ja. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| --Elhalasztva | Az objektum ideiglenes tárolása a helyi gyorsítótárban az Azure-ba való küldés helyett.  A `az cache` használatával megtekintheti vagy törölheti. |
+| --halasztás | Ideiglenesen tárolja az objektumot a helyi gyorsítótárban, ahelyett, hogy az Azure-ba küldené.  A `az cache` megtekintéshez / törléshez használható. |
 
-## <a name="az-spring-cloud-test-endpoint-disable"></a>az Spring-Cloud test-Endpoint Disable
+## <a name="az-spring-cloud-test-endpoint-disable"></a>az rugó-felhő tesztvégpont letiltása
 
-Az Azure Spring Cloud tesztelési végpontjának letiltása
+Az Azure Spring Cloud tesztvégpontjának letiltása
 
-```cli
+```azurecli
 az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-test-endpoint-enable"></a>az Spring-Cloud test-Endpoint Enable
+## <a name="az-spring-cloud-test-endpoint-enable"></a>az rugós-felhő tesztvégpont engedélyezése
 
-Az Azure Spring Cloud tesztelési végpontjának engedélyezése. 
+Engedélyezze a tesztvégpontot az Azure Spring Cloud számára. 
 
-```cli 
+```azurecli
 az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
-## <a name="az-spring-cloud-test-endpoint-list"></a>az Spring-Cloud test-Endpoint List 
+## <a name="az-spring-cloud-test-endpoint-list"></a>az rugós felhőteszt-végpontok listája 
 
-Az Azure Spring Cloud számára elérhető teszt Endpoint kulcsok listázása.
+Az Azure Spring Cloud elérhető tesztvégpont-kulcsainak listázása.
 
-```cli
+```azurecli
 az spring-cloud test-endpoint list --name -n
                                    --resource-group -g
                                    --app
@@ -1018,19 +1018,19 @@ az spring-cloud test-endpoint list --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
 
 | Opcionális paraméterek | |
 | --- | ---: |
-| – alkalmazás | Az alkalmazás neve. |
-| --Deployment-d | Az alkalmazás meglévő központi telepítésének neve.  Ha nincs megadva, az alapértelmezett érték a termelés. |
+| --alkalmazás | Az alkalmazás neve. |
+| --telepítés -d | Az alkalmazás meglévő központi telepítésének neve.  Alapértelmezés szerint a termelés, ha nincs megadva. |
 
-## <a name="az-spring-cloud-test-endpoint-renew-key"></a>az Spring-Cloud test-Endpoint megújít-Key
+## <a name="az-spring-cloud-test-endpoint-renew-key"></a>az rugó-felhő teszt-végpont megújítási-kulcs
 
-Egy teszt-Endpoint kulcs újbóli létrehozása az Azure Spring Cloud-hoz.
+Az Azure Spring Cloud tesztvégpont-kulcsának újragenerálása.
 
-```cli
+```azurecli
 az spring-cloud test-endpoint renew-key --name -n
                                         --resource-group -g
                                         --type
@@ -1038,6 +1038,6 @@ az spring-cloud test-endpoint renew-key --name -n
 
 | Kötelező paraméterek | |
 | --- | ---: |
-| --név | Az Azure Spring-felhő neve. |
-| --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával is konfigurálhatja. |
-| – típus | A teszt végpont kulcsának típusa.  Engedélyezett értékek: elsődleges, másodlagos. |
+| --név | Az Azure Spring Cloud neve. |
+| --erőforrás-csoport -g | Az erőforráscsoport neve.  Az alapértelmezett csoportot a `az configure --defaults group=<name>`használatával konfigurálhatja. |
+| --típus | A tesztvégpont-kulcs típusa.  Engedélyezett értékek: Elsődleges, Másodlagos. |

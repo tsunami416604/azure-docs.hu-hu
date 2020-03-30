@@ -1,6 +1,6 @@
 ---
-title: Eszköz kiépítése szimmetrikus kulcsú tanúsítvány használatával – Azure IoT Edge
-description: A szimmetrikus kulcsos tanúsítványok használata a Azure IoT Edge automatikus eszköz-kiépítés teszteléséhez az eszköz kiépítési szolgáltatásával
+title: Eszköz kiépítése szimmetrikus kulcsigazolással - Azure IoT Edge
+description: Szimmetrikus kulcsigazolás használata az Azure IoT Edge automatikus eszközkiépítéséhez az eszközkiépítési szolgáltatással
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,76 +9,76 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3adefbdf248deaec6170037521ab65890356d184
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510889"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535918"
 ---
-# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése a szimmetrikus kulcs igazolásával
+# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése szimmetrikus kulcsigazolás sal
 
-Azure IoT Edge eszközök automatikusan kiállíthatók az [eszköz kiépítési szolgáltatásával](../iot-dps/index.yml) , ugyanúgy, mint az Edge-t nem használó eszközök. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át az [automatikus kiépítési fogalmakat](../iot-dps/concepts-auto-provisioning.md) .
+Az Azure IoT Edge-eszközök is automatikusan kiépíthető az [eszközkiépítési szolgáltatás,](../iot-dps/index.yml) csakúgy, mint az eszközök, amelyek nem él-kompatibilis. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át az [automatikus kiépítés iményét.](../iot-dps/concepts-auto-provisioning.md)
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni regisztrációt egy IoT Edge eszközön a szimmetrikus kulcs igazolásával egy eszköz kiépítési szolgáltatásához a következő lépések végrehajtásával:
+Ez a cikk bemutatja, hogyan hozhat létre egy eszközkiépítési szolgáltatás egyéni regisztráció szimmetrikus kulcs igazolása egy IoT Edge-eszközön a következő lépésekkel:
 
-* Hozzon létre egy IoT Hub Device Provisioning Service (DPS) egy példányát.
-* Hozzon létre egy egyéni regisztrációt az eszközhöz.
-* Telepítse a IoT Edge futtatókörnyezetet, és kapcsolódjon a IoT Hubhoz.
+* Hozzon létre egy példányt az IoT Hub-eszközlétesítési szolgáltatás (DPS) példánya.
+* Hozzon létre egyéni regisztrációt az eszközhöz.
+* Telepítse az IoT Edge futásidejű, és csatlakozzon az IoT Hub.
 
-A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz kiépítési szolgáltatási példánnyal való hitelesítésére. Ez az igazolási módszer a "Hello World" felhasználói élményt jelöli olyan fejlesztők számára, akik még nem ismerik az eszközök üzembe helyezését, vagy nincsenek szigorú biztonsági követelmények. A [TPM](../iot-dps/concepts-tpm-attestation.md) vagy [X. 509 tanúsítványokat](../iot-dps/concepts-security.md#x509-certificates) használó eszközök igazolása biztonságosabb, és szigorúbb biztonsági követelményekhez kell használni őket.
+A szimmetrikus kulcsigazolás egy egyszerű módszer az eszköz kiépítési szolgáltatáspéldánysal való hitelesítéséhez. Ez az igazolási módszer egy "Hello world" élményt jelent azoknak a fejlesztőknek, akik újak az eszközkiépítésben, vagy nem rendelkeznek szigorú biztonsági követelményekkel. A [TPM](../iot-dps/concepts-tpm-attestation.md) vagy [X.509 tanúsítvánnyal](../iot-dps/concepts-security.md#x509-certificates) használt eszközigazolás biztonságosabb, és szigorúbb biztonsági követelmények hez kell használni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív IoT Hub
+* Egy aktív IoT Hub
 * Fizikai vagy virtuális eszköz
 
-## <a name="set-up-the-iot-hub-device-provisioning-service"></a>A IoT Hub Device Provisioning Service beállítása
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Az IoT Hub-eszközkiépítési szolgáltatás beállítása
 
-Hozzon létre egy új példányt a IoT Hub Device Provisioning Service az Azure-ban, és kapcsolja össze az IoT hubhoz. A [IOT hub DPS beállítása](../iot-dps/quick-setup-auto-provision.md)című témakör útmutatását követve végezheti el.
+Hozzon létre egy új példányt az IoT Hub-eszközkiépítési szolgáltatás az Azure-ban, és kapcsolja össze az IoT hub. Az [IoT Hub DPS beállítása](../iot-dps/quick-setup-auto-provision.md)című útmutató utasításait követheti.
 
-Miután futtatta az eszköz kiépítési szolgáltatását, másolja az **azonosító hatókör** értékét az Áttekintés lapról. Ezt az értéket használja a IoT Edge futtatókörnyezet konfigurálásakor.
+Miután futtatta az eszközkiépítési szolgáltatást, másolja az **ID Scope** értékét az áttekintő lapról. Ezt az értéket használja az IoT Edge futásidejű konfigurálásakor.
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Válasszon egyedi regisztrációs azonosítót az eszközhöz
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Egyedi regisztrációs azonosító kiválasztása az eszközhöz
 
-Az egyes eszközök azonosításához egyedi regisztrációs azonosítót kell megadni. Az eszköz MAC-címe, sorozatszáma vagy bármely egyedi adata használható.
+Az egyes eszközök azonosításához egyedi regisztrációs azonosítót kell definiálni. Használhatja a MAC-címet, a sorozatszámot vagy az eszközbármely egyedi információját.
 
-Ebben a példában egy MAC-címe és sorozatszáma kombinációját használjuk, amely a következő karakterláncot képezi a regisztrációs AZONOSÍTÓhoz: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
+Ebben a példában egy MAC-cím és egy sorszám kombinációját használjuk, amely a következő karakterláncot képezi a regisztrációs azonosítóhoz: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
 
-Hozzon létre egy egyedi regisztrációs azonosítót az eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel ("-").
+Hozzon létre egy egyedi regisztrációs azonosítót az eszközhöz. Az érvényes karakterek a kisbetűk alfanumerikus és a kötőjel ('-').
 
 ## <a name="create-a-dps-enrollment"></a>DPS-regisztráció létrehozása
 
-Az eszköz regisztrációs AZONOSÍTÓjának használatával egyéni regisztrációt hozhat létre a DPS-ben.
+Az eszköz regisztrációs azonosítójával egyéni regisztrációt hozhat létre a DPS-ben.
 
-Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a **kezdeti eszköz kettős állapotát**. Az eszköz Twin-ben címkéket állíthat be az eszközök csoportosításához a megoldásban szükséges mérőszámok, például a régió, a környezet, a hely vagy az eszköz típusa alapján. Ezek a címkék [automatikus központi telepítések](how-to-deploy-monitor.md)létrehozásához használhatók.
+Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van egy **kezdeti ikereszköz-állapot**deklarálni. Az ikereszközben beállíthatja az eszközök csoportosítását a megoldásban szükséges bármely mutató, például a régió, a környezet, a hely vagy az eszköz típusa szerint. Ezek a címkék az automatikus központi telepítések létrehozásához [használatosak.](how-to-deploy-monitor.md)
 
 > [!TIP]
-> A csoportos regisztrációk akkor is lehetségesek, ha szimmetrikus kulcsú igazolást használ, és ugyanazokat a döntéseket vonja be, mint az egyéni regisztrációk.
+> A csoportos beléptetések akkor is lehetségesek, ha szimmetrikus kulcsigazolást használ, és ugyanazokat a döntéseket vonja magában, mint az egyes regisztrációk.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg az IoT Hub-eszközkiépítési szolgáltatás példányát.
 
-1. A **Beállítások**területen válassza a **regisztrációk kezelése**lehetőséget.
+1. A **Beállítások csoportban**válassza **a Regisztrációk kezelése**lehetőséget.
 
-1. Válassza az **Egyéni regisztráció hozzáadása** lehetőséget, majd végezze el a következő lépéseket a beléptetés konfigurálásához:  
+1. Válassza **az Egyéni regisztráció hozzáadása lehetőséget,** majd hajtsa végre a következő lépéseket a regisztráció konfigurálásához:  
 
-   1. A **mechanizmus**mezőben válassza a **szimmetrikus kulcs**lehetőséget.
+   1. A **Mechanizmus**csoportban válassza **a Szimmetrikus billentyű**lehetőséget.
 
-   1. Jelölje be a **kulcsok automatikus generálása** jelölőnégyzetet.
+   1. Jelölje be a **billentyűk automatikus generálása** jelölőnégyzetet.
 
-   1. Adja meg az eszközhöz létrehozott **regisztrációs azonosítót** .
+   1. Adja meg az eszközhöz létrehozott **regisztrációs azonosítót.**
 
-   1. Ha szeretné, adja meg **IoT hub eszköz azonosítóját** az eszközhöz. Az eszközök azonosítói segítségével megcélozhat egy különálló eszközt a modulok telepítéséhez. Ha nem adja meg az eszköz AZONOSÍTÓját, a rendszer a regisztrációs azonosítót használja.
+   1. Adja meg az **IoT Hub-eszközazonosítóját** az eszközhöz, ha szeretné. Az eszközazonosítók segítségével megcélozhat egy adott eszközt a modul telepítéséhez. Ha nem adja meg az eszközazonosítót, a regisztrációs azonosítót használja a készülék.
 
-   1. A **true (igaz** ) érték kiválasztásával deklarálhatja, hogy a beléptetés egy IoT Edge eszközre vonatkozik. Csoportos regisztráció esetén minden eszköznek IoT Edge eszköznek kell lennie, vagy egyikük sem lehet.
+   1. **Válassza a True lehetőséget,** ha deklarálni szeretné, hogy a regisztráció egy IoT Edge-eszközhöz kapcsolódik. Egy csoport regisztráció, minden eszköznek IoT Edge-eszközöknek kell lennie, vagy egyikük sem lehet.
 
-   1. Fogadja el az alapértelmezett értéket az eszköz kiépítési szolgáltatásának kiosztási házirendjében, hogy **hogyan kívánja hozzárendelni az eszközöket az elosztóhoz** , vagy válasszon egy másik, a regisztrációra vonatkozó értéket.
+   1. Fogadja el az alapértelmezett értéket az Eszközkiépítési szolgáltatás foglalási szabályzatából **arra vonatkozóan, hogy miként szeretné eszközöket hozzárendelni a hubokhoz,** vagy hogy milyen eltérő értéket szeretne választani a regisztrációhoz.
 
-   1. Válassza ki azt a csatolt **IoT hub** , amelyhez csatlakoztatni szeretné az eszközt. Több hub is kiválasztható, és az eszköz a kiválasztott foglalási szabályzatnak megfelelően lesz hozzárendelve az egyikhez.
+   1. Válassza ki azt a csatolt **IoT-központot,** amelyhez csatlakoztatni szeretné az eszközt. Több elosztót is kiválaszthat, és az eszköz a kiválasztott foglalási házirendnek megfelelően lesz hozzárendelve az egyikhez.
 
-   1. Válassza ki **, hogyan történjen az eszközbeállítások kezelése** az eszközök első kiépítés utáni ismételt kiépítés esetén.
+   1. Válassza **ki, hogyan szeretné kezelni az eszközadatokat az újraépítés során,** amikor az eszközök első alkalommal kérik a kiépítést.
 
-   1. Ha szeretné, adjon hozzá egy címke értéket a **kezdeti eszköz iker állapotához** . A címkék használatával megcélozhatja az eszközök csoportjait a modulok üzembe helyezéséhez. Példa:
+   1. Ha szeretné, adjon hozzá egy címkeértéket a **kezdeti ikereszköz-állapothoz.** A címkék segítségével a modul üzembe helyezéséhez eszközcsoportokat célozhat meg. Példa:
 
       ```json
       {
@@ -91,28 +91,28 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
       }
       ```
 
-   1. Győződjön meg arról, hogy a **bejegyzés** engedélyezése beállítás **engedélyezve**van.
+   1. Győződjön meg arról, hogy a **Belépés engedélyezése** beállítás **engedélyezése.**
 
    1. Kattintson a **Mentés** gombra.
 
-Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. Ügyeljen arra, hogy a beléptetés **elsődleges kulcsának** értékét a IoT Edge futtatókörnyezet telepítésekor használja, vagy ha az eszköz kulcsait a csoportos regisztrációval való használatra kívánja létrehozni.
+Most, hogy egy regisztráció létezik ehhez az eszközhöz, az IoT Edge futásidejű automatikusan kiépítheti az eszközt a telepítés során. Győződjön meg arról, hogy másolja a regisztráció **elsődleges kulcs** értéke az IoT Edge futásidejű telepítésekor, vagy ha lesz eszközkulcsok létrehozása a csoport regisztrációhoz.
 
-## <a name="derive-a-device-key"></a>Eszköz kulcsának származtatása
+## <a name="derive-a-device-key"></a>Eszközkulcs leszármaztatása
 
 > [!NOTE]
-> Ez a szakasz csak akkor szükséges, ha csoportos regisztrációt használ.
+> Ez a szakasz csak akkor kötelező, ha csoportos regisztrációt használ.
 
-Minden eszköz a származtatott eszköz kulcsát használja az egyedi regisztrációs AZONOSÍTÓval a szimmetrikus kulcs igazolásának végrehajtásához a regisztráció során. Az eszköz kulcsának létrehozásához használja a DPS-regisztrációból másolt kulcsot, hogy kiszámítsa az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC-sha256](https://wikipedia.org/wiki/HMAC) , és az eredményt Base64 formátumra konvertálja.
+Minden eszköz a származtatott eszközkulcsot használja az egyedi regisztrációs azonosítóval, hogy szimmetrikus kulcsigazolást hajtson végre a regisztráció során a kiépítés során. Az eszközkulcs létrehozásához használja a DPS-regisztrációból másolt kulcsot az eszköz egyedi regisztrációs azonosítójának [HMAC-SHA256-os](https://wikipedia.org/wiki/HMAC) számának kiszámításához és az eredmény Base64 formátumba történő konvertálásához.
 
-Ne foglalja bele a regisztráció elsődleges vagy másodlagos kulcsát az eszköz kódjába.
+Ne adja meg a regisztráció elsődleges vagy másodlagos kulcsát az eszközkódban.
 
-### <a name="linux-workstations"></a>Linux-munkaállomások
+### <a name="linux-workstations"></a>Linux munkaállomások
 
-Ha Linux-munkaállomást használ, az OpenSSL használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
+Ha Linux munkaállomást használ, az openssl segítségével létrehozhatja a származtatott eszközkulcsot, ahogy az a következő példában látható.
 
-Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
+Cserélje le a **KEY** értékét a korábban feljegyzett **elsődleges kulcsra.**
 
-Cserélje le **REG_ID** értékét az eszköz regisztrációs azonosítójával.
+Cserélje le a **REG_ID** értékét az eszköz regisztrációs azonosítójára.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -128,11 +128,11 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ### <a name="windows-based-workstations"></a>Windows-alapú munkaállomások
 
-Ha Windows-alapú munkaállomást használ, a PowerShell használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
+Ha Windows-alapú munkaállomást használ, a PowerShell segítségével létrehozhatja a származtatott eszközkulcsot, ahogy az a következő példában látható.
 
-Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
+Cserélje le a **KEY** értékét a korábban feljegyzett **elsődleges kulcsra.**
 
-Cserélje le **REG_ID** értékét az eszköz regisztrációs azonosítójával.
+Cserélje le a **REG_ID** értékét az eszköz regisztrációs azonosítójára.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -149,61 +149,61 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
-## <a name="install-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet telepítése
+## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge futásidejű telepítése
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, így a kód a peremhálózat szélén is futtatható.
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközre, így a kód a peremhálózaton futtatható.
 
-Az eszköz kiépítés során a következő információkra lesz szüksége:
+Az eszköz kiépítésekor a következő adatokra lesz szüksége:
 
-* A DPS- **azonosító hatókörének** értéke
+* A **DPS-azonosító hatókörének** értéke
 * A létrehozott eszköz **regisztrációs azonosítója**
 * A DPS-regisztrációból másolt **elsődleges kulcs**
 
 > [!TIP]
-> Csoportos regisztráció esetén az eszköz [származtatott kulcsára](#derive-a-device-key) van szükség a DPS regisztrációs kulcs helyett.
+> A csoportos regisztrációkhoz az egyes eszközök [származtatott kulcsára](#derive-a-device-key) van szükség a DPS regisztrációs kulcs helyett.
 
-### <a name="linux-device"></a>Linuxos eszköz
+### <a name="linux-device"></a>Linux-eszköz
 
-Kövesse az eszköz architektúrájának utasításait. Győződjön meg arról, hogy a IoT Edge futtatókörnyezet automatikus, nem manuális, kiépítés esetén van konfigurálva.
+Kövesse az eszköz architektúrájára vonatkozó utasításokat. Győződjön meg arról, hogy konfigurálja az IoT Edge futásidejű automatikus, nem manuális, kiépítés.
 
-[A Azure IoT Edge Runtime telepítése Linux rendszeren](how-to-install-iot-edge-linux.md)
+[Az Azure IoT Edge futásidejű telepítésélinuxra](how-to-install-iot-edge-linux.md)
 
-A szimmetrikus kulcs kiépítésének konfigurációs fájljának szakasza így néz ki:
+A szimmetrikus kulcs kiépítéskonfigurációjának konfigurációs fájljában lévő szakasz a következőképpen néz ki:
 
 ```yaml
 # DPS symmetric key provisioning configuration
 provisioning:
    source: "dps"
    global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "{scope_id}"
+   scope_id: "<SCOPE_ID>"
    attestation:
       method: "symmetric_key"
-      registration_id: "{registration_id}"
-      symmetric_key: "{symmetric_key}"
+      registration_id: "<REGISTRATION_ID>"
+      symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-Cserélje le `{scope_id}`, `{registration_id}`és `{symmetric_key}` helyőrző értékeit a korábban összegyűjtött adatokra. Győződjön meg arról, hogy a **kiépítés:** sor nem tartalmaz korábbi szóközt, és a beágyazott elemek két szóközzel vannak behúzva.
+Cserélje le a `<SCOPE_ID>`helyőrző értékeket a, `<REGISTRATION_ID>`és `<SYMMETRIC_KEY>` a korábban gyűjtött adatokra. Győződjön meg arról, hogy a **kiépítés:** sor nem rendelkezik előző szóközzel, és hogy a beágyazott elemeket két szóköz bevan húzva.
 
 ### <a name="windows-device"></a>Windows-eszköz
 
-Telepítse a IoT Edge futtatókörnyezetet azon az eszközön, amelyhez létrehozta a származtatott eszköz kulcsát. A IoT Edge futtatókörnyezetet automatikus, nem manuális, kiépítés esetén kell konfigurálnia.
+Telepítse az IoT Edge futásidejű az on device, amelyhez létrehozott egy származtatott eszköz kulcsot. Az IoT Edge-futásidejű automatikus, nem manuális, kiépítés konfigurálása.
 
-A IoT Edge Windows rendszeren való telepítésével kapcsolatos további információkért, beleértve a tárolók kezeléséhez és a IoT Edge frissítéséhez szükséges feladatok előfeltételeit és utasításait lásd: [a Azure IoT Edge futtatókörnyezet telepítése Windows](how-to-install-iot-edge-windows.md)rendszeren.
+Az IoT Edge Windows rendszeren történő telepítéséről, beleértve az olyan feladatok előfeltételeit és utasításait, mint a tárolók kezelése és az IoT Edge frissítése, [az Azure IoT Edge futásidejének telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)című témakörben talál további információt.
 
-1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. Ügyeljen arra, hogy az IoT Edge telepítésekor a PowerShell AMD64-munkamenetét használja, nem a PowerShell (x86) rendszerre.
+1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. Győződjön meg arról, hogy az IoT Edge telepítésekor a PowerShell AMD64-munkamenetét használja, ne a PowerShellt (x86).
 
-1. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, majd letölti a Moby Runtime és a IoT Edge futtatókörnyezetet. A parancs alapértelmezés szerint Windows-tárolókat használ.
+1. A **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows-gép egy támogatott verzió, bekapcsolja a tárolók funkciót, majd letölti a moby futásidejű és az IoT Edge futásidejű. A parancs alapértelmezés szerint Windows-tárolókat használ.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
+1. Ezen a ponton az IoT Core-eszközök automatikusan újraindulhatnak. Más Windows 10- vagy Windows Server-eszközök újraindítást kérhetnek. Ha igen, indítsa újra az eszközt most. Ha az eszköz készen áll, futtassa újra a PowerShellt rendszergazdaként.
 
-1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés, ha a `-Dps` jelzőt használja az automatikus kiépítés használatára.
+1. Az **Initialize-IoTEdge** parancs konfigurálja az IoT Edge futásidejét a számítógépen. A parancs alapértelmezés szerint manuális annektálás `-Dps` a Windows-tárolók, kivéve, ha a jelző t használja az automatikus kiépítés.
 
-   Cserélje le `{scope_id}`, `{registration_id}`és `{symmetric_key}` helyőrző értékeit a korábban összegyűjtött adatokra.
+   Cserélje le a `{scope_id}`helyőrző értékeket a, `{registration_id}`és `{symmetric_key}` a korábban gyűjtött adatokra.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -212,9 +212,9 @@ A IoT Edge Windows rendszeren való telepítésével kapcsolatos további inform
 
 ## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
 
-Ha a futtatókörnyezet sikeresen elindult, beléphet a IoT Hubba, és megkezdheti a IoT Edge modulok üzembe helyezését az eszközön. Az eszközön az alábbi parancsokkal ellenőrizheti, hogy a futtatókörnyezet telepítése és elindítása sikeresen megtörtént-e.
+Ha a futásidő sikeresen elindult, az IoT Hubba léphet, és elkezdheti az IoT Edge-modulok üzembe helyezését az eszközre. Az alábbi parancsokkal ellenőrizheti, hogy a futásidő sikeresen telepítve van-e, és sikeresen elindult-e.
 
-### <a name="linux-device"></a>Linuxos eszköz
+### <a name="linux-device"></a>Linux-eszköz
 
 Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 
@@ -222,13 +222,13 @@ Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 systemctl status iotedge
 ```
 
-A szolgáltatási naplók vizsgálata.
+Vizsgálja meg a szolgáltatásnaplókat.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Futó modulok listázása.
+Futó modulok listája.
 
 ```cmd/sh
 iotedge list
@@ -242,20 +242,20 @@ Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 Get-Service iotedge
 ```
 
-A szolgáltatási naplók vizsgálata.
+Vizsgálja meg a szolgáltatásnaplókat.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Futó modulok listázása.
+Futó modulok listája.
 
 ```powershell
 iotedge list
 ```
 
-Ellenőrizheti, hogy a rendszer használta-e a Device kiépítési szolgáltatásban létrehozott egyéni regisztrációt. Navigáljon az eszköz kiépítési szolgáltatási példányához a Azure Portal. Nyissa meg a regisztráció részleteit a létrehozott egyéni regisztrációhoz. Figyelje meg, hogy a regisztráció állapota **hozzá van rendelve** , és az eszköz azonosítója megjelenik.
+Ellenőrizheti, hogy az eszközkiépítési szolgáltatásban létrehozott egyéni regisztrációt használta-e. Keresse meg az Eszközkiépítési szolgáltatás példányát az Azure Portalon. Nyissa meg a létrehozott egyéni beléptetési adatokat. Figyelje meg, hogy a regisztráció állapota hozzá van **rendelve,** és az eszközazonosító szerepel a listában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezheti üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-monitor.md) [Azure CLI használatával](how-to-deploy-monitor-cli.md).
+Az eszközkiépítési szolgáltatás regisztrációs folyamat lehetővé teszi, hogy az eszközazonosítóés az ikercímkék beállítása az új eszköz kiépítésével egy időben. Ezeket az értékeket használhatja az egyes eszközök vagy eszközcsoportok automatikus eszközkezelés használatával történő célzásához. Ismerje meg, hogyan [telepítheti és figyelheti az IoT Edge-modulokat az Azure Portalon](how-to-deploy-monitor.md) vagy az [Azure CLI használatával.](how-to-deploy-monitor-cli.md)

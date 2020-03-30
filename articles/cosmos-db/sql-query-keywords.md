@@ -1,24 +1,25 @@
 ---
-title: Azure Cosmos DB SQL-kulcsszavai
-description: A Azure Cosmos DB SQL-kulcsszavainak megismerése.
+title: SQL-kulcsszavak az Azure Cosmos DB-hez
+description: Ismerje meg az Azure Cosmos DB SQL-kulcsszavait.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f2da2695ec20eac9dd2636104d3314427e60d541
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498541"
 ---
-# <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB kulcsszavai
-Ez a cikk a Azure Cosmos DB SQL-lekérdezésekben felhasználható kulcsszavakat részletezi.
+# <a name="keywords-in-azure-cosmos-db"></a>Kulcsszavak az Azure Cosmos DB-ben
 
-## <a name="between"></a>KÖZÖTT
+Ez a cikk az Azure Cosmos DB SQL-lekérdezésekben használható kulcsszavakat részletezi.
 
-Ahogy az ANSI SQL esetében is, a közötti kulcsszó használatával a lekérdezéseket karakterláncok vagy numerikus értékek tartományán keresztül lehet kifejezni. Például a következő lekérdezés az összes olyan elemet adja vissza, amelyben az első gyermek 1-5-as osztálya.
+## <a name="between"></a>BETWEEN
+
+A `BETWEEN` kulcsszó segítségével karakterlánc- vagy numerikus értékek tartományaialapján fejezhet ki lekérdezéseket. A következő lekérdezés például minden olyan elemet visszaad, amelyben az első gyermek osztályzata 1-5, beleértve a értéket is.
 
 ```sql
     SELECT *
@@ -26,30 +27,30 @@ Ahogy az ANSI SQL esetében is, a közötti kulcsszó használatával a lekérde
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-Az ANSI SQL-től eltérően a FROM záradékban is használhatja a FROM záradék közötti záradékot, ahogy az az alábbi példában is látható.
+A kulcsszót `BETWEEN` a `SELECT` záradékban is használhatja, ahogy az a következő példában is.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-Az SQL API-ban – az ANSI SQL-től eltérően – különböző típusú lekérdezéseket adhat meg a vegyes típusok tulajdonságainál. Előfordulhat például, hogy az `grade` egy szám, például `5` egyes elemekben, és egy karakterlánc, például `grade4` a többinél. Ezekben az esetekben, ahogy a JavaScriptben, a két különböző típus összehasonlítása `Undefined`eredményez, így az elem kimarad.
+Az SQL API-ban az ANSI SQL-től eltérően tartománylekérdezéseket adhat meg a vegyes típusok tulajdonságaival szemben. Lehet például egy szám, mint `grade` `5` egyes elemekben, és egy karakterlánc, mint `grade4` a többiben. Ezekben az esetekben, mint a JavaScript, a `Undefined`két különböző típusú összehasonlítása eredményez, így az elem kimarad.
 
 > [!TIP]
-> A lekérdezések gyorsabb végrehajtásához hozzon létre egy olyan indexelési házirendet, amely egy tartomány-index típust használ bármely numerikus tulajdonság vagy elérési út alapján, amely a záradékok között szerepel.
+> A lekérdezések gyorsabb végrehajtási ideje érdekében hozzon létre egy indexelési házirendet, amely tartományindex-típust használ a `BETWEEN` záradék által szűrt numerikus tulajdonságokkal vagy elérési utakkal szemben.
 
-## <a name="distinct"></a>KÜLÖNBÖZŐ
+## <a name="distinct"></a>DISTINCT
 
-A DISTINCT kulcsszó kiküszöböli az ismétlődéseket a lekérdezés leképezésében.
+A `DISTINCT` kulcsszó kiküszöböli az ismétlődéseket a lekérdezés kivetítésében.
 
-Ebben a példában a lekérdezési projektek értékei az egyes vezetéknevek esetében:
+Ebben a példában a lekérdezés minden vezetéknévhez kivetíti az értékeket:
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
 [
@@ -57,14 +58,14 @@ Az eredmények a következők:
 ]
 ```
 
-Emellett egyedi objektumokat is létrehozhat. Ebben az esetben a lastName mező nem létezik a két dokumentum egyikében sem, így a lekérdezés üres objektumot ad vissza.
+Egyedi objektumokat is kivetíthet. Ebben az esetben a LastName mező nem létezik a két dokumentum egyikében, így a lekérdezés üres objektumot ad vissza.
 
 ```sql
 SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
 [
@@ -75,16 +76,16 @@ Az eredmények a következők:
 ]
 ```
 
-A DISTINCT a segédlekérdezés egy allekérdezésen belüli kivetítésében is használható:
+A DISTINCT segédlekérdezésen belüli vetületben is használható:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-Ez a lekérdezés egy tömböt hoz létre, amely tartalmazza az egyes gyermekekhez tartozó givenName, amelyekben duplikált elemek törlődnek. Ez a tömb ChildNames, és a külső lekérdezésben is szerepel.
+Ez a lekérdezés kivetít egy tömböt, amely tartalmazza az egyes gyermek givenName az ismétlődések eltávolítása. Ezt a tömböt gyermeknévként aliasálod, és a külső lekérdezésvetíti.
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
 [
@@ -102,7 +103,7 @@ Az eredmények a következők:
 ]
 ```
 
-Az összesített rendszerfunkcióval rendelkező lekérdezések és a különálló allekérdezések nem támogatottak. Például a következő lekérdezés nem támogatott:
+Az összesítő rendszerfüggvénnyel és `DISTINCT` segédlekérdezéssel rendelkező lekérdezések nem támogatottak. A következő lekérdezés például nem támogatott:
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -110,7 +111,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-A IN kulcsszó használatával megvizsgálhatja, hogy egy adott érték egyezik-e egy lista bármely értékével. Például a következő lekérdezés az összes olyan családi elemet adja vissza, amelyben a `id` `WakefieldFamily` vagy `AndersenFamily`.
+Az IN kulcsszó segítségével ellenőrizheti, hogy egy adott érték megfelel-e a lista bármely értékének. A következő lekérdezés például az összes `id` `WakefieldFamily` olyan `AndersenFamily`családi elemet visszaadja, ahol a vagy a .
 
 ```sql
     SELECT *
@@ -118,7 +119,7 @@ A IN kulcsszó használatával megvizsgálhatja, hogy egy adott érték egyezik-
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-A következő példa azokat az elemeket adja vissza, amelyekben az állapot a megadott értékek bármelyike:
+A következő példa minden olyan elemet visszaad, ahol az állapot a megadott értékek bármelyike:
 
 ```sql
     SELECT *
@@ -126,22 +127,22 @@ A következő példa azokat az elemeket adja vissza, amelyekben az állapot a me
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-Az SQL API támogatást nyújt a [JSON-tömbök megismétléséhez](sql-query-object-array.md#Iteration), és egy új, a from forrásban található kulcsszóval hozzáadott összeállítást biztosít.
+Az SQL API támogatja a [JSON-tömböken keresztüli iterációt,](sql-query-object-array.md#Iteration)egy új konstrukcióval, amelyet a FROM forrásban lévő kulcsszó on keresztül ad hozzá.
 
-Ha a `IN` szűrőben tartalmazza a partíciós kulcsot, a lekérdezés automatikusan csak a megfelelő partíciókat fogja szűrni.
+Ha a partíciókulcsot is `IN` beilleszti a szűrőbe, a lekérdezés automatikusan csak a megfelelő partíciókra szűr.
 
-## <a name="top"></a>TOP
+## <a name="top"></a>Top
 
-A felső kulcsszó a lekérdezés eredményének első `N` számát adja vissza, meghatározatlan sorrendben. Ajánlott eljárásként használja az ORDER BY záradékot, hogy az eredményeket az első `N` a rendezett értékek számára korlátozza. A két záradék összevonása az egyetlen módszer arra, hogy előre jelezze, hogy mely sorok érintik a LEGFONTOSABBat.
+A TOP kulcsszó `N` a lekérdezési eredmények első számát adja meg határozatlan sorrendben. Ajánlott eljárásként használja a `ORDER BY` TOP-ot a záradékkal az eredmények első `N` számú rendezett értékre való korlátozásához. E két záradék kombinálása az egyetlen módja annak, hogy kiszámíthatóan jelezze, hogy a TOP sorok mely hatással vannak.
 
-A TOP értéket állandó értékkel használhatja, ahogy az alábbi példában, vagy egy változó értékkel, amely paraméteres lekérdezéseket használ.
+A TOP-ot állandó értékkel használhatja, mint a következő példában, vagy egy változó értékkel paraméterezett lekérdezések használatával.
 
 ```sql
     SELECT TOP 1 *
     FROM Families f
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -163,8 +164,8 @@ Az eredmények a következők:
     }]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Első lépések](sql-query-getting-started.md)
-- [Csatlakozik](sql-query-join.md)
-- [Allekérdezéseket](sql-query-subquery.md)
+- [Kezdetekhez](sql-query-getting-started.md)
+- [Illesztések](sql-query-join.md)
+- [Segédlekérdezések](sql-query-subquery.md)
