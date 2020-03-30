@@ -1,6 +1,6 @@
 ---
-title: Rendszerindítási hibák elhárítása az Azure Virtual Machinesban | Microsoft Docs
-description: Ez a cikk segítséget nyújt az Azure-Virtual Machines rendszerindítási hibák elhárításához szükséges cikkek összekapcsolásához.
+title: Rendszerindítási hibák elhárítása az Azure virtuális gépekben | Microsoft dokumentumok
+description: Ez a cikk az Azure virtuális gépek rendszerindítási hibáinak elhárításához cikkekre mutató hivatkozásokat tartalmaz.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,22 +13,22 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
 ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71059170"
 ---
-# <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure Virtual Machines rendszerindítási hibák elhárítása
+# <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Az Azure virtuális gépek rendszerindítási hibáinak elhárítása
 
-Ez a cikk azokat a gyakori rendszerindítási hibákat sorolja fel, amelyeket a Windows rendszerű virtuális gépek (VM) indításakor kaphat a Microsoft Azure. További információ a hibákról: a **rendszerindítási hibák és megoldások** szakasz cikkei.
+Ez a cikk felsorolja azokat a gyakori rendszerindítási hibákat, amelyek a Windows virtuális gép (VM) microsoft Azure-beli indításakor jelenhetnek meg. A hibákról további információt a **Rendszerindítási hibák és megoldások** című részben található cikkekben talál.
 
 ## <a name="boot-errors-and-solutions"></a>Rendszerindítási hibák és megoldások
 
 * [BitLocker rendszerindítási hibái](troubleshoot-bitlocker-boot-error.md) 
 * [A Windows „A fájlrendszer ellenőrzése” üzenetet jeleníti meg a rendszerindítás során](troubleshoot-check-disk-boot-error.md)
 * [Kék képernyős hibák](troubleshoot-common-blue-screen-error.md)
-* [A virtuális gép indítása elakadt „A Windows előkészítése.](troubleshoot-vm-boot-configure-update.md)
+* [A virtuális gép indítása beragadt a "Windows-felkésésre való felkészülésre](troubleshoot-vm-boot-configure-update.md)
 * [EGY KULCSFONTOSSÁGÚ SZOLGÁLTATÁS MEGHIÚSULT” hibával a kék képernyőn](troubleshoot-critical-service-failed-boot-error.md)
 * [Újraindítási hurokkal kapcsolatos probléma](troubleshoot-reboot-loop.md)
 * [A virtuális gép indítása elakadt a Windows frissítési szakaszánál](troubleshoot-stuck-updating-boot-error.md)
@@ -36,5 +36,5 @@ Ez a cikk azokat a gyakori rendszerindítási hibákat sorolja fel, amelyeket a 
 ## <a name="next-steps"></a>További lépések
 
 - [Rendszerindítási diagnosztika](boot-diagnostics.md)
-- [VM soros konzol](../windows/serial-console.md)
-- [Windows rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez helyreállítási virtuális géphez való csatolásával](../windows/troubleshoot-recovery-disks.md)
+- [Virtuális gép soros konzolja](../windows/serial-console.md)
+- [Windows virtuális gép hibaelhárítása az operációsrendszer-lemez helyreállítási virtuális géphez való csatlakoztatásával](../windows/troubleshoot-recovery-disks.md)

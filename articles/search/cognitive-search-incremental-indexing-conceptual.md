@@ -1,7 +1,7 @@
 ---
-title: Növekményes gazdagodás (előzetes verzió)
+title: Növekményes dúsítás (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: A meglévő feldolgozott dokumentumok beruházásainak megőrzése érdekében gyorsítótárazza az AI-bővítési folyamat közbenső tartalmát és növekményes változásait az Azure Storage-ban. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+description: Gyorsítótárazhatja a köztes tartalmat és a növekményes módosításokat az AI-bővítési folyamatból az Azure Storage-ban a meglévő feldolgozott dokumentumokba történő befektetések megőrzése érdekében. Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
@@ -9,28 +9,28 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024143"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Bevezetés a növekményes bővítés és a gyorsítótárazás az Azure-ban Cognitive Search
+# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Bevezetés a növekményes bővítésbe és gyorsítótárazásba az Azure Cognitive Search szolgáltatásban
 
 > [!IMPORTANT] 
-> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
+> A növekményes bővítés jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) A [REST API 2019-05-06-Preview verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs portál- vagy .NET SDK-támogatás.
 
-A növekményes bővítés egy bővítési folyamathoz adja a gyorsítótárazást és a statefulness, megőrizve a meglévő kimenetbe való befektetését, miközben csak az adott módosítás által érintett dokumentumokat változtatja meg. Ez a művelet nem csupán a feldolgozásban (különösen az OCR-ben és a képfeldolgozásban) való pénzügyi beruházások megőrzését teszi lehetővé, ugyanakkor hatékonyabb rendszerre is vonatkozik. Ha a rendszer gyorsítótárazza a struktúrákat és a tartalmakat, az indexelő meghatározhatja, hogy mely készségek módosultak és fussanak, és csak azokat, amelyeket módosítottak, valamint az alsóbb rétegbeli függő képességeket is. 
+A növekményes dúsítás gyorsítótárazást és állapotmegőrzési lehetőséget ad hozzá a dúsítási folyamathoz, megőrizve a meglévő kimenetbe történő befektetést, miközben csak az adott módosítás által érintett dokumentumokat módosítja. Ez nem csak a feldolgozásba (különösen az OCR-be és a képfeldolgozásba) történő monetáris befektetést őrzi meg, hanem hatékonyabb rendszert is biztosít. Struktúrák és tartalom gyorsítótárazása kor az indexelő meghatározhatja, hogy mely képességek változtak meg, és csak a módosított képességeket futtathatja, valamint az alsóbb rétegbeli függő képességeket. 
 
-## <a name="indexer-cache"></a>Indexelő gyorsítótár
+## <a name="indexer-cache"></a>Indexelő gyorsítótára
 
-A növekményes bővítés hozzáadja a gyorsítótárat a dúsítási folyamathoz. Az indexelő gyorsítótárazza az eredményeket a dokumentum repedésével együtt, valamint az egyes dokumentumok egyes képességeinek kimeneteit. A készségkészlet frissítésekor a rendszer csak a megváltozott vagy az alárendelt képességeket futtatja újra. A frissített eredményeket a rendszer a gyorsítótárba írja, és a dokumentum frissül a keresési indexben vagy a Knowledge Store-ban.
+A növekményes bővítés gyorsítótárat ad a dúsítási folyamathoz. Az indexelő gyorsítótárazza a dokumentumfeltörés eredményeit, valamint az egyes szakértelem kimeneteit minden dokumentumhoz. Egy skillset frissítése esetén csak a módosított vagy a későbbi, a szakértelem újrafuttatása lesz. A frissített eredmények a gyorsítótárba kerülnek, és a dokumentum frissül a keresési indexben vagy a tudástárolóban.
 
-Fizikailag a gyorsítótár egy blob-tárolóban tárolódik az Azure Storage-fiókban. A gyorsítótár a táblázatos tárterületet is használja a feldolgozási frissítések belső rekordjához. A keresési szolgáltatáson belüli összes index ugyanazt a Storage-fiókot is megoszthatja az indexelő gyorsítótárban. Minden indexelő egy egyedi és nem módosítható gyorsítótár-azonosítót rendel hozzá az általa használt tárolóhoz.
+Fizikailag a gyorsítótár egy blob tárolóban van tárolva az Azure Storage-fiókban. A gyorsítótár táblatárolót is használ a frissítések feldolgozásának belső rekordjaként. A keresési szolgáltatáson belüli összes index ugyanazt a tárfiókot is megoszthatja az indexelő gyorsítótárához. Minden indexelő egyedi és nem módosítható gyorsítótár-azonosítót rendel a használt tárolóhoz.
 
-## <a name="cache-configuration"></a>Gyorsítótár-konfiguráció
+## <a name="cache-configuration"></a>Gyorsítótár konfigurációja
 
-A növekményes gazdagodás kihasználása érdekében be kell állítania a `cache` tulajdonságot az indexelő alkalmazásban. Az alábbi példa egy olyan indexelő mutat be, amelyen engedélyezve van a gyorsítótárazás. A konfiguráció adott részeit a következő szakasz ismerteti. További információt a [növekményes bővítés beállítása](search-howto-incremental-index.md)című témakörben talál.
+Be kell állítania `cache` a tulajdonságot az indexelőn, hogy elkezdhesse a növekményes dúsítás előnyeit. A következő példa egy olyan indexelőt mutat be, amelyen engedélyezve van a gyorsítótárazás. A konfiguráció egyes részeit a következő szakaszok ismertetik. További információ: [Növekményes bővítés beállítása](search-howto-incremental-index.md).
 
 ```json
 {
@@ -48,115 +48,115 @@ A növekményes gazdagodás kihasználása érdekében be kell állítania a `ca
 }
 ```
 
-Ha ezt a tulajdonságot egy meglévő indexelő eszközön szeretné beállítani, alaphelyzetbe kell állítania és újra kell futtatnia az indexelő, ami az adatforrásban lévő összes dokumentumot újra feldolgozza. Ez a lépés szükséges a készségkészlet korábbi verzióival dúsított dokumentumok eltávolításához. 
+Ha ezt a tulajdonságot egy meglévő indexelőre állítja be, alaphelyzetbe állítja és újrafuttatja az indexelőt, így az adatforrás összes dokumentuma újra feldolgozásra kerül. Ez a lépés a skillset korábbi verzióival bővített dokumentumok kiküszöböléséhez szükséges. 
 
 ## <a name="cache-management"></a>Gyorsítótár-kezelés
 
-A gyorsítótár életciklusát az indexelő kezeli. Ha az indexelő `cache` tulajdonsága NULL értékűre van állítva, vagy a kapcsolódási karakterlánc módosul, a rendszer törli a meglévő gyorsítótárat a következő indexelő futtatásakor. A gyorsítótár életciklusa az indexelő életciklushoz is kötődik. Ha töröl egy indexelő, a társított gyorsítótár is törlődik.
+A gyorsítótár életciklusát az indexelő kezeli. Ha `cache` az indexelő tulajdonsága null értékű, vagy a kapcsolati karakterlánc megváltozik, a meglévő gyorsítótár törlődik a következő indexelő futtatáskor. A gyorsítótár életciklusa is az indexelő életciklusához van kötve. Ha egy indexelő törlődik, a társított gyorsítótár is törlődik.
 
-Míg a növekményes bővítés úgy van kialakítva, hogy észlelje és reagáljon a változásokra az Ön részéről beavatkozás nélkül, vannak olyan paraméterek, amelyek segítségével felülbírálhatja az alapértelmezett viselkedéseket:
+Bár a növekményes bővítés célja, hogy az Ön beavatkozása nélkül észlelje és reagáljon a változásokra, vannak olyan paraméterek, amelyek segítségével felülbírálhatja az alapértelmezett viselkedést:
 
-+ Új dokumentumok rangsorolása
-+ Készségkészlet-ellenőrzések mellőzése
++ Új dokumentumok fontossági sorrendbe állítása
++ Szakértelem-ellenőrzések megkerülése
 + Adatforrás-ellenőrzések megkerülése
-+ Készségkészlet kiértékelésének kényszerítése
++ Force skillset értékelése
 
-### <a name="prioritize-new-documents"></a>Új dokumentumok rangsorolása
+### <a name="prioritize-new-documents"></a>Új dokumentumok fontossági sorrendbe állítása
 
-A `enableReprocessing` tulajdonság beállításával szabályozhatja a gyorsítótárban már megjelenő bejövő dokumentumok feldolgozását. Ha `true` (alapértelmezett), akkor a gyorsítótárban már meglévő dokumentumok újra fel lesznek dolgozva az indexelő újrafuttatásakor, feltéve, hogy a szakértelem frissítése hatással van erre a doc-ra. 
+Állítsa `enableReprocessing` be, hogy a tulajdonság szabályozza a gyorsítótárban már képviselt bejövő dokumentumok feldolgozását. Ha `true` (alapértelmezett), a gyorsítótárban már lévő dokumentumok újra feldolgozása az indexelő újrafuttatásakor, feltéve, hogy a szakértelem frissítése hatással van a dokumentumra. 
 
-Ha `false`, a meglévő dokumentumokat nem dolgozza fel újra, és az új, a meglévő tartalomhoz képest hatékonyan rangsorolja a tartalmat. A `enableReprocessing`t csak ideiglenesen `false` kell beállítania. A corpuson keresztüli konzisztencia biztosítása érdekében `enableReprocessing` az idő nagy részében `true`, hogy az új és a meglévő dokumentumok is érvényesek legyenek a jelenlegi készségkészlet-definíció alapján.
+Ha `false`a meglévő dokumentumokat nem dolgozza fel újra, hatékonyan rangsorolja az új, bejövő tartalmat a meglévő tartalommal szemben. Csak ideiglenesen `enableReprocessing` `false` kell beállítani. A korpusz közötti konzisztencia biztosítása érdekében az idő nagy részében biztosítani `enableReprocessing` `true` kell, hogy minden új és meglévő dokumentum érvényes legyen a jelenlegi skillset definíció szerint.
 
-### <a name="bypass-skillset-evaluation"></a>Kikerülő készségkészlet kiértékelése
+### <a name="bypass-skillset-evaluation"></a>A skillset értékelésének megkerülése
 
-A készségkészlet módosítása és a készségkészlet újrafeldolgozása jellemzően a kezét eredményezi. A készségkészlet módosításai azonban nem eredményezhetik az újrafeldolgozást (például egy egyéni képesség üzembe helyezését egy új helyre vagy egy új hozzáférési kulccsal). Legvalószínűbb, hogy ezek olyan perifériás módosítások, amelyeknek nincs valódi hatása a készségkészlet tartalmára. 
+A skillset módosítása és az adott skillset újrafeldolgozása általában kéz a kézben jár. Azonban a skillset néhány módosítása nem eredményezheti az újrafeldolgozást (például egy egyéni szakértelem üzembe helyezése egy új helyre vagy egy új hozzáférési kulccsal). Ezek valószínűleg olyan perifériás módosítások, amelyek nek nincs valódi hatása a skillset anyagára. 
 
-Ha tudja, hogy a készségkészlet változása valóban felszínes, érdemes felülbírálni a készségkészlet értékelését úgy, hogy a `disableCacheReprocessingChangeDetection` paramétert `true`re állítja:
+Ha tudja, hogy a skillset módosítása valóban felületes, felül kell `disableCacheReprocessingChangeDetection` írnia a skillset kiértékelését a paraméter `true`beállításával:
 
-1. Hívja meg a frissítési Készségkészlet, és módosítsa a készségkészlet-definíciót.
-1. Fűzze hozzá a `disableCacheReprocessingChangeDetection=true` paramétert a kérelemhez.
-1. Küldje el a változást.
+1. Hívja meg a Frissítési képességekkészletet, és módosítsa a skillset definícióját.
+1. Fűzz `disableCacheReprocessingChangeDetection=true` hozzá a paraméterhez a kéréshez.
+1. Küldje el a módosítást.
 
-A paraméter beállítása biztosítja, hogy csak a készségkészlet-definíció frissítései legyenek véglegesítve, és a változás nem lesz kiértékelve a meglévő Corpus hatására.
+Ez a paraméter beállítása biztosítja, hogy csak a skillset definíciójának frissítései legyenek véglegesítve, és a módosítás ne legyen kiértékelve a meglévő corpus ra gyakorolt hatásokra.
 
-Az alábbi példa egy frissítési Készségkészlet kérelmet mutat be a következő paraméterrel:
+A következő példa egy Frissítési Skillset-kérést mutat be a paraméterrel:
 
 ```http
 PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2019-05-06-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
-### <a name="bypass-data-source-validation-checks"></a>Adatforrás-ellenőrzési ellenőrzések megkerülése
+### <a name="bypass-data-source-validation-checks"></a>Adatforrás-érvényesítési ellenőrzések megkerülése
 
-Az adatforrás-definíciók legtöbb módosítása érvényteleníti a gyorsítótárat. Ha azonban biztos lehet abban, hogy a módosítás nem érvényteleníti a gyorsítótárat – például a kapcsolatok karakterláncának módosítása vagy a kulcs elforgatása a Storage-fiókban – fűzze hozzá a`ignoreResetRequirement` paramétert az adatforrás frissítéséhez. Ha ezt a paramétert úgy állítja be, hogy `true` lehetővé tegye a végrehajtást, anélkül, hogy olyan visszaállítási feltételt váltott ki, amely az összes objektum újraépítését és a semmiből való feltöltését eredményezi.
+Az adatforrás-definíció legtöbb módosítása érvényteleníti a gyorsítótárat. Azonban olyan esetekben, ahol tudja, hogy a változás nem érvénytelenítheti a gyorsítótárat – például egy kapcsolati`ignoreResetRequirement` karakterlánc módosítása vagy a tárfiók kulcsának elforgatása – hozzáfűzi a paramétert az adatforrás-frissítéshez. Ha ezt `true` a paramétert úgy állítja be, hogy a véglegesítés átmenjen, anélkül, hogy olyan alaphelyzetbe állítási feltételt indítana el, amely az összes objektum újraépítését és feltöltését eredményezné.
 
 ```http
 PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
 ```
 
-### <a name="force-skillset-evaluation"></a>Készségkészlet kiértékelésének kényszerítése
+### <a name="force-skillset-evaluation"></a>Force skillset értékelése
 
-A gyorsítótár célja, hogy elkerülje a szükségtelen feldolgozást, de tegyük fel, hogy olyan képességet módosít, amelyet az indexelő nem érzékel (például egy másikat a külső kódban, például egy egyéni képességet).
+A gyorsítótár célja, hogy elkerülje a szükségtelen feldolgozást, de tegyük fel, hogy módosítja a szakértelem, amely az indexelő nem észleli (például a külső kód módosítása, például egy egyéni szakértelem).
 
-Ebben az esetben a [képességek alaphelyzetbe állításával](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) kényszerítheti az adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott szakértelem kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni kell, és meg kell adni az újrafeldolgozáshoz. A képességek alaphelyzetbe állítása után futtassa az indexelő a folyamat meghívásához.
+Ebben az esetben [használhatja](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) a reset képességek egy adott szakértelem újrafeldolgozásának kényszerítésére, beleértve az okat a szakértelem kimenetétől függő alsóbb rétegbeli képességeket is. Ez az API elfogad egy POST-kérelmet, amely tartalmazza azokat a képességeket, amelyeket érvényteleníteni kell, és újrafeldolgozásra meg kell jelölni. A képességek alaphelyzetbe állítása után futtassa az indexelőt a folyamat meghívásához.
 
-## <a name="change-detection"></a>Változás észlelése
+## <a name="change-detection"></a>Változásészlelés
 
-Miután engedélyezte a gyorsítótárat, az indexelő kiértékeli a folyamat-összeállítás változásait annak meghatározására, hogy mely tartalmak használhatók fel újra, és melyeket újra kell dolgozni. Ez a szakasz azokat a módosításokat sorolja fel, amelyek érvénytelenítik a gyorsítótárat, majd a növekményes feldolgozást kiváltó változások következnek. 
+Miután engedélyezte a gyorsítótárat, az indexelő kiértékeli a folyamatösszeállítás változásait annak meghatározásához, hogy mely tartalom használható fel újra, és mely újrafeldolgozást igényel. Ez a szakasz felsorolja azokat a módosításokat, amelyek véglegesen érvénytelenítik a gyorsítótárat, majd olyan módosításokat, amelyek növekményes feldolgozást váltanak ki. 
 
-### <a name="changes-that-invalidate-the-cache"></a>A gyorsítótár érvénytelenítésének módosításai
+### <a name="changes-that-invalidate-the-cache"></a>A gyorsítótárat érvénytelenítő módosítások
 
-Az érvénytelenítési változás egy olyan esetben, amikor a teljes gyorsítótár már nem érvényes. Az érvénytelenítési változások például az adatforrás frissítésének egyike. Itt látható a gyorsítótárat érvénytelenítő módosítások teljes listája:
+Az érvénytelenítő módosítás olyan, ahol a teljes gyorsítótár már nem érvényes. Az érvénytelenítő módosításra példa az adatforrás frissítése. Itt van a teljes lista a változások, amelyek érvénytelenítik a cache:
 
 * Váltás az adatforrás típusára
-* Váltás az adatforrás-tárolóra
-* Adatforrás hitelesítő adatai
-* Adatforrás-változás észlelési házirendje
-* Adatforrások törlésének észlelési szabályzata
-* Indexelő mező-hozzárendelések
-* Indexelő paraméterei
+* Váltás adatforrás-tárolóra
+* Adatforráshoz tartozó hitelesítő adatok
+* Adatforrás-változásészlelési házirend
+* Adatforrások törlési észlelési házirendje
+* Indexelő mezőleképezései
+* Indexelő paraméterek
     * Elemzési mód
-    * Kizárt fájlnévkiterjesztések
-    * Indexelt fájlnévkiterjesztések
-    * A tárolási metaadatok indexelése csak a túlméretezett dokumentumok esetében
-    * Tagolt szöveges fejlécek
-    * Tagolt szöveg elválasztója
-    * Dokumentum gyökere
-    * Kép művelet (a képek kibontásának módosításai)
+    * Kizárt fájlnév-kiterjesztések
+    * Indexelt fájlnév-kiterjesztések
+    * Csak a túlméretes dokumentumok tárolási metaadatainak indexelése
+    * Tagolt szövegfejlécek
+    * Tagolt szöveghatároló
+    * Dokumentum gyökér
+    * Képművelet (a képek kibontásának módosítása)
 
-### <a name="changes-that-trigger-incremental-processing"></a>Növekményes feldolgozást kiváltó változások
+### <a name="changes-that-trigger-incremental-processing"></a>Növekményes feldolgozást kiváltó módosítások
 
-A növekményes feldolgozás kiértékeli a készségkészlet-definícióját, és meghatározza, hogy mely készségeket kell újra futtatni, szelektíven frissíteni a dokumentum fájának érintett részeit. Itt látható a növekményes bővítést eredményező változások teljes listája:
+Növekményes feldolgozás kiértékeli a skillset definícióját, és meghatározza, hogy mely képességek et kell újrafuttatni, szelektíven frissíti a dokumentumfa érintett részeit. Itt van a teljes lista a változások at eredményező növekményes dúsítás:
 
-* A készségkészlet lévő szakértelem típusa eltérő. A szakértelem OData-típusa frissítve
-* A szaktudás-specifikus paraméterek frissítve lettek, például az URL-cím, az alapértelmezett beállítások vagy más paraméterek
-* A szaktudás kimenetei megváltoznak, a szakértelem további vagy eltérő kimeneteket ad vissza.
-* A szaktudás frissítései eltérő ősei, a szaktudás láncolása megváltozott, azaz Szaktudás bemenetei
-* A felsőbb rétegbeli képzettségek nem érvényesek, ha az ehhez a szaktudáshoz bemenetet biztosító képesség frissül
-* A Knowledge Store-leképezési hely frissítései, a dokumentumok újravetítésének eredményei
-* A Knowledge Store-kivetítések módosításai, a dokumentumok újravetítésének eredményei
-* A kimeneti mezők leképezése módosult egy indexelő esetében, így a dokumentumok újravetítése az indexbe
+* A skillset-ben a skill-nek más típusa van. A szakértelem odata típusa frissül
+* A szakértelem-specifikus paraméterek frissülnek, például az URL-cím, az alapértelmezett értékek vagy más paraméterek
+* A szakértelem kimenete megváltozik, a szakértelem további vagy különböző kimeneteket ad vissza
+* Az ebből eredő készségfrissítések különböző származásúak, a készségek láncolása megváltozott, azaz szakértelem-bevitel
+* Bármely upstream szakértelem érvénytelenítése, ha egy olyan szakértelem, amely ehhez a szakértelemhez bemenetet biztosít, frissül
+* A tudástároló vetítési helyének frissítése, dokumentumok újravetítése
+* Változások a tudástároló-előrejelzésekben, dokumentumok újravetítését eredményezik
+* Az indexelőn módosított kimeneti mezőleképezések eredménye a dokumentumok indexbe való újravetítése
 
-## <a name="api-reference"></a>API-leírások
+## <a name="api-reference"></a>API-referencia
 
-A REST API verzió `2019-05-06-Preview` az indexelő, a szakértelmével és az adatforrások további tulajdonságai révén növekményes dúsítást biztosít. A dokumentáción kívül az API-k meghívásával kapcsolatos részletekért lásd: a [gyorsítótárazás konfigurálása a növekményes](search-howto-incremental-index.md) bővítéshez.
+A REST `2019-05-06-Preview` API-verzió növekményes bővítést biztosít az indexelők, a skillsetek és az adatforrások további tulajdonságai révén. A referenciadokumentációmellett [lásd: A gyorsítótárazás konfigurálása növekményes bővítéshez](search-howto-incremental-index.md) az API-k hívásának részleteiről.
 
-+ [Indexelő létrehozása (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [Indexelő létrehozása (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-+ [Indexer frissítése (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [Indexelő frissítése (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-+ [Készségkészlet frissítése (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (új URI-paraméter a kérésen)
++ [Skillset frissítése (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (új URI-paraméter a kérelemben)
 
-+ [Képességek alaphelyzetbe állítása (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
++ [Reset Skills (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ Adatbázis-indexelő (Azure SQL, Cosmos DB). Egyes indexelő lekérdezéseken keresztül kérik le az adatforrásokat. Az Adatlekérdezési lekérdezések esetében az adatforrás [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-data-source) egy új paramétert támogat a kérések **ignoreResetRequirement**, amelyet `true` kell beállítani, ha a frissítési művelet nem érvényteleníti a gyorsítótárat. 
++ Adatbázis-indexelők (Azure SQL, Cosmos DB). Egyes indexelők lekérdezéseken keresztül olvassa le az adatokat. Az adatokat lekérő lekérdezések esetén [az adatforrás frissítése](https://docs.microsoft.com/rest/api/searchservice/update-data-source) egy új paramétert támogat a **ignoreResetRequirement**kérésen, amelyet akkor kell beállítani, `true` amikor a frissítési művelet nem érvényteleníti a gyorsítótárat. 
 
-  A **ignoreResetRequirement** takarékosan használható, mert nem kívánt inkonzisztenciát eredményezhet az adataiban, amelyeket nem lehet könnyen észlelni.
+  Használja **az ignoreResetRequirement-t** takarékosan, mivel nem kívánt inkonzisztenciához vezethet az adatokban, amelyet a rendszer nem fog könnyen észlelni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A növekményes bővítés egy hatékony szolgáltatás, amely kibővíti a változások követését a szakértelmével és a mesterséges intelligenciával. A AIncremental-bővítés lehetővé teszi a meglévő feldolgozott tartalom újbóli használatát a készségkészlet-kialakítás megismétlése során.
+A növekményes bővítés egy hatékony funkció, amely kiterjeszti a változások nyomon követését a skillsets-re és a a i-gazdagításra. Az AIncremental dúsítása lehetővé teszi a meglévő feldolgozott tartalom újrafelhasználását a skillset tervezés során.
 
-A következő lépésként engedélyezze a gyorsítótárazást egy meglévő indexelő esetében, vagy adjon hozzá egy gyorsítótárat egy új indexelő definiálásához.
+Következő lépésként engedélyezze a gyorsítótárazást egy meglévő indexelőn, vagy adjon hozzá egy gyorsítótárat egy új indexelő definiálásakor.
 
 > [!div class="nextstepaction"]
-> [A növekményes dúsítás gyorsítótárazásának konfigurálása](search-howto-incremental-index.md)
+> [Gyorsítótárazás konfigurálása növekményes dúsításhoz](search-howto-incremental-index.md)

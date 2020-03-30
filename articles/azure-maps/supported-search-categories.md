@@ -1,6 +1,6 @@
 ---
-title: Kategóriák keresése | Microsoft Azure térképek
-description: Ebben a cikkben megismerheti a Microsoft Azure Maps támogatott keresési kategóriáit.
+title: Keresési kategóriák | Microsoft Azure Maps
+description: Ebben a cikkben a Microsoft Azure Maps támogatott keresési kategóriáiról olvashat.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -9,124 +9,124 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988287"
 ---
-# <a name="azure-maps-supported-categories"></a>Azure Maps támogatott kategóriák
+# <a name="azure-maps-supported-categories"></a>Az Azure Maps által támogatott kategóriák
 
-Ha egy [kategóriára keres rá](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) , több mint száz támogatott kategória szerepel. Az alábbi lista a támogatott kategóriájú nevek kategóriáit sorolja fel. A rendszer a legfelső szintű kategóriákhoz generál kategóriákat. Minden alkategória ugyanazt a kategóriát használja. Ebben a kategóriában a lista új adatkiadásokkal is változhat.
+Az érdekes pontok [kategóriakeresése](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) során több mint száz támogatott kategória van. Az alábbi lista a támogatott kategórianevek kategóriakódjait tartalmazza. A kategóriakódok a legfelső szintű kategóriákhoz jönnek létre. Minden alkategória azonos kategóriakóddal rendelkezik. Ez a kategórialista új adatkiadásokkal változhat.
 
 <br/>
 
-| **Kategória kódja** | **A kódot megfeleltetési kategóriák** |
+| **Kategória kódja** | **Kategóriák egyező kódja** |
 | --- | --- |
-| HOZZÁFÉRÉS\_ÁTJÁRÓhoz | légiforgalmi hozzáférés, biztonsági kapu, állomás-hozzáférés, elérési átjáró |
-| FELÜGYELETI\_divízió | tartomány, negyedik rendelés adminisztratív részleg, első sorrendű felügyeleti részleg, korábbi, harmadik rendű felügyeleti részleg, a negyedik rendelésű felügyeleti részleg székhelye, a második rendű felügyeleti részleg székhelye, függő politikai entitás, feltöltött hely, harmadik rendeléssel rendelkező felügyeleti részleg, kitöltött helyek, másodfokú felügyeleti részleg, első rendelésű felügyeleti részleg, adminisztratív részleg, kitöltött helység, történelmi régió, korábbi adatok webhely, korábbi feltöltésű hely, izraeli település, történelmi negyedik rendű adminisztrációs részleg, ötödik rendű adminisztrációs részleg, korábbi első rendelésű felügyeleti részleg, harmadik rendű felügyeleti részleg, korábbi politikai entitás, korábbi adminisztratív részleg, egy politikai entitás kormányának székhelye, egy politikai entitások korábbi, második rendű felügyeleti részlege |
-| ADVENTURE\_sport\_helyszín | Adventure sport helyszíne |
-| MEZŐGAZDASÁG | Kertészet, elsődleges termelő, mezőgazdaság, Farm, tanya, tanya, tanya, legeltetési térség, közös, akvakultúra létesítmény, farmok, halászati térség, tejtermékek, mező (k) |
-| AIRPORT | privát hatóság, katonai hatóság, Heliport, zárt, közepes repülőtér, nagyméretű repülőtér, kisméretű repülőtér, Airfield, hidroplán Base, állami hatóság, ballon port, repülőtér |
-| VIDÁMPARK\_PARK | szórakoztató arcade, vidámpark, vidámpark |
-| AUTÓIPARi\_-kereskedő | ATV/motoros, csónak, busz, motorkerékpár, teherautó, Furgon, szabadidős járművek, autó, autóipari kereskedő |
-| BANK | Bank, bank, Bank (ok) |
-| BEACH | strand, strandok |
-| \_pont kiépítése | építési (pont) |
-| ÜZLETI\_PARK | üzleti Park, ipari térség |
-| CAFE\_PUB | Internet kávézó, teaház, kávézó, internet kávézó, kávézó, kávézó, kávéfőző/sörkert, pub, kávézó/pub, kávézó/pub |
-| CAMPING\_-TEREP | rekreációs, lakókocsis webhely, kemping |
-| \_AUTÓMOSÓ | Autómosó |
-| CASH\_adagoló | automatikus elbeszélő gép, készpénz-adagoló |
-| KASZINÓ | kaszinó |
-| MOZIBEMUTATÓK | mozifilm, mozi |
-| VÁROSI\_központ | szomszédság, közigazgatási körzet, Városközpont, központ |
-| CLUB\_TÁRSÍTÁS | Beach Club, Hockey Club, Club Association |
-| FŐISKOLA\_Egyetem | Junior Főiskola/közösségi Főiskola, Főiskola/Egyetem, Főiskola, University PREP School, University |
-| KERESKEDELMI\_építése | irodaház, Park-központ, kereskedelmi felépítés |
-| KÖZÖSSÉGI\_központ | közösségi központ |
-| VÁLLALATI | elektronika, gyártás, számítógépes adatszolgáltatások, nyilvános egészségügyi technológiák, diverzifikált pénzügyek, állati menedék, légitársaság, berendezések kölcsönzése, szolgáltatás, posta/csomag/áruszállítás, buszjáratok, otthoni berendezés javítása, takarítási szolgáltatások, OEM, adózási szolgáltatások, kőolaj földgáz, jogi szolgáltatások, építőipar, távközlés, szállítás, személygépkocsi-gyártás, vegyszerek, temetkezési szolgáltatás mortuaries, híd-alagút műveletei, személygépkocsi, gépészet, szolgáltatások, befektetési tanácsadók, reklám/marketing, tárolás, megtakarítási intézmény, biztosítás, számítógépes szoftver, gyógyszeripar, vendéglátás, esküvői szolgáltatások, mezőgazdasági technológia, ingatlan, taxi, limuzin shuttle szolgáltatás, autóbusz-bérletek bérbeadása, bányászat, közzétételi technológiák, kábel telefon, Importálás/exportálás eloszlás, vállalat, menekültügy, kőszénkátrány, ingatlan (ok), sörfőzde, aranyér (ek) |
-| COURTHOUSE | Courthouse |
-| KULTURÁLIS\_központ | kulturális központ |
-| FOGORVOS | fogorvos |
-| RÉSZLEG\_áruház | áruház |
-| KÖVETIK | általános orvos, szakember, orvos |
-| ELEKTROMOS\_jármű\_állomás | elektromos jármű állomása |
-| NAGYKÖVETSÉG | nagykövetség |
-| SÜRGŐSSÉGI\_orvosi\_szolgáltatás | sürgősségi orvosi szolgáltatás |
-| SZÓRAKOZÁS | szórakozás |
-| EXCHANGE | Gold Exchange, valutaváltó, Értéktőzsde, Exchange |
-| KIÁLLÍTÁSI\_CONVENTION\_CENTER | kiállítási kiállítási központ |
-| FERRY\_terminál | komp, komp terminál |
-| FIRE\_STATION\_BRIGÁD | Tűzoltó állomás/dandár |
-| HATÁR\_CROSSing | határátlépés |
-| ÜZEMANYAG\_létesítmények | üzemanyag-létesítmények |
-| FÖLDRAJZI\_funkció | öböl, öböl, Pan, területi beállítás, gerinc, ásvány/meleg források, jól, víztározó, Marsh/mocsár/Vlei, kőbánya, folyó átkelés, völgy, hegyi csúcs, zátony, Dune, lagúna, egyszerű/lapos, zuhatag, Cape, Plateau, oázis, Harbor, barlang, sziklák, földrajzi funkció, hegyfok (-IES), szigetek kráter-tó, szikla (ok), domb, sivatag, Portage, gleccser, vízmosás, gejzír, korallzátonyok, hézagok, öböl, móló, Ghat, Hole, kráter tavak, földgáz mező, sziget, kráter (ok), öböl (k), legelő, kavics terület, törési zóna, Heath, szurdok, sziget, headwaters, függő völgy, dombok, forró rugó (k), barázda, anabranch |
-| GOLF\_tanfolyam | golfpálya |
-| KORMÁNYZATI\_iroda | 5\. rendelés, 8. rendelés, 9. rendelés, sorrend, 2. megrendelés, 7. megrendelés, 3. sorrend, a Supra National, a 4. rendezési hely, a Government Office, a diplomáciai létesítmény, az Egyesült Államok közigazgatási intézménye, helyi kormányzati hivatal, vámügyi posta |
-| EGÉSZSÉGÜGYI\_CARE\_szolgáltatás | Blood Bank, személyes szolgáltatás, testápolási létesítmény, mentő egység, egészségügyi szolgáltatás, leprosarium, Szanatórium, kórház, orvosi központ, klinika |
-| HELIPAD\_helikopter\_kirakodás | Helipad/helikopter-kirakodás |
-| NYARALÁS\_bérlet | Bungalow, Víkendház, faház, Villa, apartman, üdülési bérlet |
-| KÓRHÁZI\_-Klinika | különleges, kórház a kínai gyógyászatban, kórházi nők számára, általános, kórházi/antiklinika |
-| HOTEL\_MOTEL | kabinok, Bed Breakfast Guest Houses, Hotel, Rest táborok, Motel, Resort, Hostel, Hotel/Motel, resthouse, függőágy (ok), vendégház |
-| ICE\_KORCSOLYÁZó\_JÉGPÁLYA | korcsolyapálya |
-| FONTOS\_turisztikai\_ATTRACTION | épület, Obszervatórium, ív, alagút, szobor, torony, híd, Planetárium, mauzóleum/Grave, emlékmű, víz lyuk, természetes attrakció, fontos turisztikai attrakció, sétány, piramisok, Pagoda, kastély, palota, Hermitage, piramis, erőd, kapu, vidéki ház, gát, világítótorony, Grave |
-| IPARI\_építése | öntöde, Fuel Depot, ipari felépítés, gyári |
-| SZABADIDŐ\_központ | bowling, snooker, pool biliárd, Flying Club, Dance Studio School, szauna, szolárium masszázs, szabadidő központ, Spa |
-| ERŐFORRÁSTÁR | erőforrástár |
-| GYÁRTÁSI\_létesítmény | gyártási létesítmény |
-| MARINA | Yacht-medence, Marina |
-| PIACI | szupermarketek – hipermarketek, gazdák, állami, informális, piac |
-| MÉDIA\_létesítmény | adathordozó létesítmény |
-| KATONAI\_telepítés | katonai bázis, Coast Guard Station, katonai telepítés, haditengerészeti bázis |
-| A\_szervezet\_OFFICE | a szervezeti iroda |
-| HEGYI\_PASS | hegyi bérlet |
+| ACCESS\_ÁTJÁRÓ | légitársaság-hozzáférés, biztonsági kapu, állomáshozzáférés, hozzáférési átjáró |
+| KÖZIGAZGATÁSI\_KÖRZET | tartomány, negyedik rendű közigazgatási osztály, elsőrendű közigazgatási osztály, történelmi harmadrendű közigazgatási osztály, negyedik rendű közigazgatási osztály székhelye, másodrendű közigazgatási osztály székhelye, függő politikai jogalany, lakott hely, harmadik rendű közigazgatási körzet székhelye, lakott helyek, másodrendű közigazgatási körzet, elsőrendű közigazgatási osztály székhelye, közigazgatási körzet, lakott település, történelmi régió, történelmi helyszín, történelmi lakott hely, izraeli település, történelmi negyedik rendű közigazgatási részleg, ötödik rendű közigazgatási osztály, történelmi elsőrendű közigazgatási osztály, harmadrendű közigazgatási osztály, történelmi politikai korábbi közigazgatási szerv, politikai szervezet székhelye, korábbi másodrendű közigazgatási osztály, politikai egység tőkéje |
+| KALAND\_\_SPORT HELYSZÍN | kaland sporthelyszín |
+| Mezőgazdaság | kertészet, elsődleges termelő, mezőgazdaság, farm, farm falu, tanya, legeltetési terület, közös, akvakultúra-létesítmény, gazdaságok, halászati terület, tejelő, mező(k) |
+| Repülőtér | magánhatóság, katonai hatóság, heliport, zárt, közepes repülőtér, nagy repülőtér, kis repülőtér, repülőtér, hidroplán bázis, hatóság, ballonkikötő, repülőtér |
+| VIDÁMPARK\_ | játékterem, vidámpark, vidámpark |
+| AUTÓIPARI\_MÁRKAKERESKEDŐ | atv/motoros szán, hajó, busz, motorkerékpár, teherautó, van, szabadidős járművek, autó, autókereskedő |
+| Bank | bank, bankok, bank(ok) |
+| Beach | strand, strandok |
+| ÉPÍTÉSI\_PONT | épület (pont) |
+| ÜZLETI\_PARK | üzleti park, ipari terület |
+| CAFE\_PUB | internet kávézó, teaház, kávézó, internet kávézó, kávézó, kávézó, sörfőzde/sörkert, pub, kávézó/pub, kávézó/pub, kávézó/pub |
+| KEMPING\_PÁLYA | rekreációs, lakókocsi, kemping |
+| AUTÓMOSÓ\_ | autómosó |
+| PÉNZKIADÓ\_ | automata pénztárgép, pénztárgép |
+| Kaszinó | Kaszinó |
+| Mozi | drive-in mozi, mozi |
+| VÁROSKÖZPONT\_ | környék, közigazgatási terület, városközpont, központ |
+| KLUB\_SZÖVETSÉG | strandklub, jégkorong klub, klubszövetség |
+| FŐISKOLAI\_EGYETEM | főiskolai főiskola, főiskola, főiskola/egyetem, főiskola, egyetemi előkészítő iskola, egyetem |
+| KERESKEDELMI\_ÉPÜLET | irodaház, park központ, kereskedelmi épület |
+| KÖZÖSSÉGI\_KÖZPONT | közösségi központ |
+| Vállalat | elektronika, gyártás, számítógépes adatszolgáltatások, közegészségügyi technológiák, diverzifikált pénzügyek, állatmenhely, légitársaság, felszerelés kölcsönzés, szolgáltatás, postai/csomag/áruszállítás, buszvonalak, háztartási gép javítása, takarítási szolgáltatások, oem, adószolgáltatások, olajföldgáz, jogi szolgáltatások, építőipar, távközlés, szállítás, autógyártás, vegyi anyagok, temetkezési szolgáltatás temetkezési, hídalagút műveletek, gépjármű, gépészeti, szolgáltatások, befektetési tanácsadók, reklám/marketing, mozgó tárolás, takarékpénztár, biztosítás, számítógépes szoftver, gyógyszerek, vendéglátás, esküvői szolgáltatások, mezőgazdasági technológia, ingatlan, taxi, limuzin ingajárat, autóbusz-charter kölcsönzés, bányászat, kiadói technológiák, kábeltelefon, import/export elosztás, társaság, menekültügy, szénbánya(k), birtok(ok), sörfőzde, aranybánya(k) |
+| Törvényszék | Törvényszék |
+| KULTURÁLIS\_KÖZPONT | kulturális központ |
+| Fogorvos | Fogorvos |
+| ÁRUHÁZ\_ | Áruház |
+| Orvos | háziorvos, szakorvos, orvos |
+| ELEKTROMOS\_\_JÁRMŰÁLLOMÁS | elektromos jármű állomás |
+| Nagykövetség | Nagykövetség |
+| SÜRGŐSSÉGI\_\_ORVOSI SZOLGÁLAT | sürgősségi orvosi szolgálat |
+| Szórakozás | Szórakozás |
+| Exchange | aranytőzsde, pénztőzsde, tőzsde, tőzsde |
+| \_KIÁLLÍTÁSI\_KONGRESSZUSI KÖZPONT | kiállítási konferencia központ |
+| KOMPKIKÖTŐ\_ | komp, kompterminál |
+| TŰZOLTÓSÁG\_\_ | tűzoltóság/brigád |
+| HATÁRÁTKELŐHELY\_ | határátlépés |
+| ÜZEMANYAG-ELLÁTÓ\_LÉTESÍTMÉNYEK | üzemanyag-ellátó létesítmények |
+| FÖLDRAJZI\_JELLEMZŐ | öböl, öböl, serpenyőben, locale, gerinc, ásványi / meleg források, jól, tározó, mocsár / mocsár / vlei, kőbánya, folyó átkelés, völgy, hegycsúcs, zátony, dűne, lagúna, sima / lapos, zuhatag, köpeny, fennsík, oázis, kikötő, barlang, sziklák, földrajzi jellemző, hegyfok (-ies), szigetek, hegyfok, móló, kráter tó, szikla(ok), szikla, hegy, sivatag, kikötőhely, gleccser (ek), vízmosás, gejzír, korallzátony (ok), szakadék, öböl, móló, ghat, lyuk, kráter tavak, gázmező, sziget, kráter (ek), öböl (ek), legelő, kavicsos terület, törészóna, heath, szurdok(ok), sziget, headwaters, függő völgy, dombok, forró tavasz(ok), barázda, anabranch |
+| GOLFPÁLYA\_ | golfpálya |
+| KORMÁNYZATI\_HIVATAL | érdekében 5 terület, érdekében 8 terület, érdekében 9 terület, rend 2 terület, rend 7 terület, rend 3 terület, supra nemzeti, érdekében 4 terület, rend 6 terület, kormányzati hivatal, diplomáciai létesítmény, egyesült államokbeli kormányzati létesítmény, helyi kormányzati hivatal, vámhivatal, vámhivatal, vámhivatal |
+| EGÉSZSÉGÜGYI\_\_SZOLGÁLAT | vérbank, személyes szolgáltatás, testápolási létesítmény, mentőegység, egészségügyi szolgáltatás, lepraárium, szanatórium, kórház, orvosi központ, klinika |
+| HELIKOPTER-LESZÁLLÓHELY\_HELIKOPTER\_LESZÁLLÁS | helikopter-leszállóhely/helikopterleszállás |
+| NYARALÓBÉRLÉS\_ | bungaló, házikó, faház, villa, lakás, nyaraló |
+| KÓRHÁZI\_POLIKLINIKA | speciális, kínai orvosi kórház, női gyermekkórház, általános, kórház/poliklinika |
+| HOTEL\_MOTEL | kabinok kunyhók, bed breakfast vendégházak, szálloda, pihenőtáborok, motel, üdülő, hostel, szálloda / motel, pihenőház, függőágy (ok), vendégház |
+| \_KORCSOLYAPÁLYA\_ | korcsolyapálya |
+| FONTOS\_\_TURISZTIKAI ATTRAKCIÓ | épület, obszervatórium, boltív, alagút, szobor, torony, híd, planetárium, mauzóleum / sír, emlékmű, vízlyuk, természeti attrakció, fontos turisztikai attrakció, sétány, piramisok, pagoda, kastély, palota, remetázis, piramis, erőd, kapu, tájház, gát, világítótorony, sír |
+| IPARI\_ÉPÜLET | öntödei, üzemanyag-raktár, ipari épület, gyár |
+| SZABADIDŐ\_KÖZPONT | bowling, snooker, biliárd, repülő klub, táncstúdió iskola, szauna, szolárium masszázs, szabadidő központ, gyógyfürdő |
+| Könyvtár | Könyvtár |
+| Gyártóüzem\_ | gyártó létesítmény |
+| Marina | jacht-medence, kikötő |
+| Piac | szupermarketek hipermarketek, mezőgazdasági termelők, állami, informális, piaci |
+| MÉDIA-LÉTESÍTMÉNY\_ | médialétesítmény |
+| KATONAI\_LÉTESÍTMÉNY | katonai bázis, parti őrség állomás, katonai létesítmény, haditengerészeti bázis |
+| AUTÓS\_\_SZERVEZET IRODÁJA | autós szervezet irodája |
+| HEGYI\_HÁGÓ | hágó |
 | Múzeum | Múzeum |
-| NATÍV\_foglalás | natív foglalás, foglalás |
-| ÉJSZAKAI | Bar, karaoke Club, Jazz Club, Private Club, Wine Bar, Comedy Club, koktél bár, diszkó, éjszakai élet |
-| NEM\_kormányzati\_szervezet | nem kormányzati szervezet |
-| NYISSa meg\_\_a PARKOLÓt | nyitott parkoló, parkoló |
-| MÁS | helység, ingyenes kereskedelmi zóna, forgalmi kör, ismeretlen |
-| PARKOLÓ\_garázs | parkolóház |
-| PARK\_REKREÁCIÓs\_térség | történelmi hely, Tópart, tengerpart, River Scenic terület, halászati vadászati terület, Csatatér, téli sport, hajó indítása rámpa, megőrzés, erdő terület, rekreációs terület, síközpont, temető, Historical Park, Parkway, Memorial, vásár, Piknik terület, Wilderness terület, Park rekreációs terület, erdő (k), fosszilizálódott erdő, kert (ek), Wildlife Reserve, természetvédelmi terület, erdő állomás, vadászati tartalék, erdő-tartalék, Park |
-| BENZIN\_állomás | benzin-állomás |
-| GYÓGYSZERTÁR | gyógyszertár, egyéb |
-| \_ISTENTISZTELET\_elhelyezése | Ashram, a Zsinagóga, a mecset, a Gurudwara, a templom, a templom, az istentisztelet, a misszió, a visszavonulás, a templom (ok), a vallási hely, a vallási központ, a kolostor, a zárda |
-| RENDŐRSÉGI\_állomás | 1\. megrendelés körzet, rendőrségi állomás, rendőrségi bejegyzés |
-| PORT\_WAREHOUSE\_létesítmény | kikötő (k), docking-medence, port, Port/Warehouse létesítmény, hajógyár, Dock (ok) |
-| \_iroda közzététele | helyi, posta |
-| ELSŐDLEGES\_RESOURCE\_segédprogram | elsődleges erőforrás/segédprogram, erőmű, gáz-olaj elválasztó üzem |
-| BÖRTÖN\_javító\_létesítmény | börtön, börtön/javító intézmény |
-| NYILVÁNOS\_REKREÁCIÓ | Váci, WC, Road Rescue, személyszállítási iroda, nyilvános hívás, nyilvános rekreáció, kommunikációs központ |
-| NYILVÁNOS\_átviteli\_leállítása | Edző leállítása, buszmegálló, taxiállomás, villamosmegálló, tömegközlekedés leállítása, metró, vasútállomás, vasúti állomás, autóbusz állomás, vasút leállítása |
-| VASÚTI\_állomás | országos, vasúti iparvágány, Metro, (Sub) városi, vasúti állomás |
-| \_CAR\_létesítmény\_KÖLCSÖNZÉSe | autókölcsönzési lehetőség |
-| \_KÖLCSÖNZÉSe\_autó\_PARKOLÓban | Autókölcsönzés – parkoló |
-| \_létesítmény javítása | bodyshops, abroncs (gumiabroncs) szolgáltatások, üzletek javítása, autó-üveg helyettesítő üzletek, általános autószerelő karbantartás, autó-tartozékok eladása, motorkerékpár-javítás, tehergépkocsi-javító szolgáltatás, javítási lehetőség |
-| KUTATÁSI\_létesítmény | kutatási létesítmény |
-| LAKOSSÁGI\_szállások | kivonuló Közösség, sorházi komplexum, lakás/apartman összetett, társasházi komplexum, lakóingatlan, bentlakásos Szállás |
-| ÉTTERMI | Német, kreol-Cajun, holland, bankett termek, bisztró, izraeli, szlovák, Jamaikai, vegetáriánus, tengeri, vietnami, máltai, Szecsuán, walesi, kínai, Japán, Algériai, kaliforniai, Fusion, Shandong, Salad Bar, Savoy an, spanyol, Etiópiai, tajvani, fánk, iráni, kanadai, Amerikai, norvég, francia, Hunan, polinéz, az afgán, a közúti, az ázsiai, a svájci, az erotikus, a crêperie, a Suriname, az egyiptomi, a magyar és a nepáli, a barbecue, a meleg pot, a hamburger, a Földközi-tenger , Guangdong, ázsiai (egyéb), Buffet, sushi, mongol, nemzetközi, kagyló, thai, venezuelai, román, csirke, leves, kóser, Steak House, joghurt/juice bar, olasz, Koreai, ciprusi, bosnyák, bolíviai, Dominikai, belga, tunéziai, skót, angol, pakisztáni, Cseh, Hawaii, Magreb, tibeti, Arab, Közel-Kelet, Chilei, Shanghai, lengyel, filippínó, Szudáni, örmény, burmai, brazil, skandináv, bolgár, Soul Food, kolumbiai, zsidó, pizza, szicíliai, Organic, görög, baszk, Uruguay, kávézó, finn, afrikai, korzikai, Szíriai, Karib-tengeri, Dongbei, Orosz, grill, Take-re, gyorsétterem, ausztrál, ír, pub Food, fondü, libanoni, indonéz, dán, Provence, Teppanyaki, indiai, Mauritiusi, Nyugat-kontinentális, perui, kambodzsai, snackek, svéd, makrobiotikus, Ice Cream, szláv, Török, argentin, osztrák, egzotikus, portugál, luxemburgi, marokkói, szendvics |
-| ÉTTEREM\_i térség | éttermi területek |
-| REST\_i térség | Rest-felület, hely leállítása |
-| FESTŐI\_panorámás\_nézet | látványos/panoráma nézet, megfigyelési pont |
-| ISKOLAI | kulináris iskola, általános iskola, művészeti iskola, vezető középiskola, Autósiskola, nyelviskola, sport iskola, óvoda, középiskola, középiskola, szakmai képzés, speciális iskola, gyermekgondozási létesítmény, iskola, műszaki iskola, katonai iskola, mezőgazdasági iskola |
-| SHOP | Factory Outlet, Security Products, Christmas/Holiday Store, optikusok, House Garden: világítás, lottó-Shop, hangszerek, Nail Salon, House Garden: festészeti feldíszítés, hobby/szabad idő, újságos dohányboltok, ruházati kiegészítők: speciális, száraz tisztítószerek, táskák bőrárú, PET-készletek, ruházati kiegészítők: gyermekek, építőanyag-berendezések, ékszerek, órák óra, ruházati kellékek: cipő-cipő javítása, House Garden: függöny/textil, elektromos, irodai elektronika, elektromosság, Office IT: kamera&#39;s fotográfia, CD&#39;s, DVD-videók, mosoda, ruházati kiegészítők: Men, virágárusok, gyalog-Shop, könyvesboltok, tengeri elektronikus berendezések, élelmiszer-italok: élelmiszer-piacok, House Garden: szőnyeg/padlóburkolatok, fénymásolat, csónakázási berendezések tartozékai, mobiltelefon-áruház, játékok játékok, speciális élelmiszerek, ruházati kiegészítők: általános, élelmiszer-italok: pékek, személyre szabott bolt, ajándékok, kártyák, újdonságok, állati szolgáltatások, sportfelszerelés-kölcsönzés, bélyeg elektromos berendezés, elektromos, irodai IT: irodai berendezések, fénylabor/fejlesztés, nagykereskedelmi klubok, ház kertje: Bútor-szerelvények, helyi specialitások, élelmiszer-italok: hentesek, különféle tárolók, élelmiszer-italok: élelmiszerboltok, élelmiszer-italok: borpárlat, kábítószer-áruház, Bútor/Lakberendezés, elektromos, irodai IT: számítógép-készletek, CD/video-kölcsönzés, orvosi ellátással kapcsolatos berendezések, mezőgazdasági készletek, szépségszalon, ház kertje tartozékok: nők, utazási ügynökök, kiskereskedelmi Outlet, Recycling Shop, House Garden: üveg-ablakok, hardverek, ingatlanközvetítők, poharak/kerámia, delikátesz, House Garden: konyha, fürdőszoba, fogadási állomás, fodrászok, fodrászok, élelmiszer-italok: élelmiszerboltok, élelmiszer-italok: zöld élelmiszerboltok, üzletek, áruház, tárolás |
-| VÁSÁRLÁSI\_központ | Mall, bevásárló központ |
-| Sport\_központ | tematikus sport, squash-pálya, Fitness Club Center, sport központ |
-| STADIONT | Netball, futball, baseball, Race Track, többfunkciós, motoros sport, krikett-terep, rögbi-terep, jégkorong, atlétika, lóverseny, kosárlabda, futball, stadion, atlétikai pálya, versenypálya |
-| ÚSZÁS\_készlet | uszoda |
-| TENISZ\_bíróság | teniszpálya |
-| Színház | amfiteátrum, koncert terem, vacsora színház, Music Center, Opera, kabaré, színház, Operaház |
-| TURISTA\_információ\_OFFICE | turisztikai információs iroda |
-| FORGALMI\_fény | forgalmi lámpa |
-| TRAFFIC\_SERVICE\_CENTER | Traffic Control részleg, Traffic Service Center |
-| FORGALMI\_aláírása | forgalmi jel |
-| NYOMVONAL\_rendszer | kalandos jármű, sziklamászás, lovaglás, Mountain Bike, túrázás, Trail System |
-| TRANSPORT\_hatóság jármű\_regisztráció | szállítási szolgáltató/jármű regisztrációja |
-| KAMION\_leállítása | kamion leállítása |
-| ÁLLATORVOS | állatorvosi létesítmény, állatorvos |
-| VÍZ\_SPORT | vízisport |
-| \_állomás MÉRÉSe | mérlegek súlya, mérési állomás |
-| JÓLÉTi\_szervezet | jóléti szervezet |
+| NATÍV\_FOGLALÁS | natív foglalás, foglalás |
+| Éjszakai | bár, karaoke klub, jazz klub, privát klub, borozó, komédia klub, koktélbár, diszkó, éjszakai élet |
+| NEM\_\_KORMÁNYZATI SZERVEZET | nem kormányzati szervezet |
+| NYITOTT\_\_PARKOLÓ | nyitott parkoló, parkoló |
+| Más | helység, szabadkereskedelmi övezet, forgalmi kör, ismeretlen |
+| PARKOLÓHÁZ\_ | parkolóház |
+| PARK\_\_REKREÁCIÓS TERÜLET | történelmi helyszín, tóparti, tengerpart, folyó festői terület, halászati vadászati terület, csatatér, téli sport, hajó kilövőrámpa, megőrzése, erdőterület, üdülőterület, temető, történelmi park, park, emlékmű, vásári terület, piknik terület, vadon terület, park rekreációs terület, erdő(k), megkövesedett erdő, kert(ek), vadrezervátum, természetvédelmi terület, erdei állomás, vadászati terület, erdőrezervátum, park |
+| BENZINKÚT\_ | benzinkút |
+| Gyógyszertár | gyógyszertár, gyógyszertár |
+| \_ISTENTISZTELETI\_HELY | ashram, zsinagóga, mecset, gurudwara, templom, templom, istentiszteleti hely, küldetés, visszavonulás, templom(ok), vallási helyszín, vallási központ, kolostor, kolostor |
+| RENDŐRŐRS\_ | 1. rend, rendőrőrs, rendőrőrs |
+| \_KIKÖTŐI\_RAKTÁR LÉTESÍTMÉNY | kikötő(k), dokkolómedence, kikötő, kikötő/raktárlétesítmény, hajógyár, dokk(ok) |
+| POSTA\_ | helyi, posta |
+| ELSŐDLEGES\_\_ERŐFORRÁS SEGÉDPROGRAM | elsődleges erőforrás/közmű, erőmű, gázolaj-leválasztó berendezés |
+| \_BÖRTÖN-VÉGREHAJTÁSI\_JAVÍTÓ INTÉZET | börtön, börtön/büntetés-végrehajtási intézet |
+| Közszolgáltatások\_ | gyalogos metró, WC, közúti mentés, személyszállítási jegyiroda, nyilvános call box, nyilvános kényelem, kommunikációs központ |
+| \_TÖMEGKÖZLEKEDÉSI\_MEGÁLLÓ | buszmegálló, buszmegálló, taxiállomás, villamosmegálló, tömegközlekedési megálló, metróállomás, vasútállomás, buszmegálló, vasútállomás, vasútállomás, vasútállomás |
+| VASÚTÁLLOMÁS\_ | nemzeti, vasúti mellékvágány, metró, (sub) városi, vasútállomás |
+| \_BÉRELJEN\_\_AUTÓT | autókölcsönző |
+| \_BÉRELJEN\_\_EGY PARKOLÓT | autóbérlési parkoló |
+| JAVÍTÓberendezés\_ | karosszéria, gumiabroncs (gumiabroncs) szolgáltatások, javítóműhelyek, autóüveg-csere üzletek, általános autójavítási szerviz, autótartozékok értékesítése, motorkerékpár-javítás, teherautó-javítás, javító műhely |
+| KUTATÁSI\_ESZKÖZ | kutatási létesítmény |
+| LAKÓTÉR\_ | nyugdíjas közösség, lakóparkkomplexum, lakás/apartman komplexum, társasház komplexum, lakóingatlan, lakóingatlan |
+| Étterem | Német, kreol-cajun, holland, bankett-termek, bisztró, izraeli, szlovák, jamaikai, vegetáriánus, tenger gyümölcsei, vietnami, máltai, Szecsuán, walesi, kínai, japán, algériai, kaliforniai, fúziós, Shandong, salátabár, Savoy a, spanyol, etióp, tajvani, fánk, iráni, kanadai, amerikai, norvég, francia, hunan, polinéz, afgán, út menti, ázsiai, svájci, erotikus, crêperie, Surinamese, egyiptomi, magyar, nepáli, grill, forró fazék, hamburger, mediterrán, latin-amerikai, tapas, brit, , Guangdong, ázsiai (egyéb), büfé, sushi, mongol, nemzetközi, kagyló, thai, venezuelai, román, csirke, leves, kóser, steak ház, joghurt / gyümölcslé bár, olasz, koreai, ciprusi, bosnyák, bolíviai, dominikai, belga, tunéziai, skót, angol, pakisztáni, cseh, hawaii, maghrib, tibeti, arab, közel-keleti, chilei, Shanghai, lengyel, filippínó, szudáni, örmény, burmai, brazil, skandináv, bolgár, soul étel, kolumbiai, zsidó, pizza, szicíliai, szerves, görög, baque, Uruguayi, kávézók, finn, afrikai, Korzikai, szíriai, karibi, dongbei, orosz, grill, elvitelre, gyorsétterem, ausztrál, ír, pub food, fondü, libanoni, indonéz, dán, provence-i, teppanyaki, indiai, mauritiusi, nyugati kontinentális, perui, kambodzsai, snack, svéd, makrobiotikus, fagylaltozó, szláv, török, argentin, osztrák, egzotikus, portugál, luxemburgi, marokkói, marokkói, |
+| ÉTTERMI\_TERÜLET | étterem területén |
+| PIHENŐTERÜLET\_ | pihenőterület, leállítási hely |
+| FESTŐI\_\_PANORÁMA | festői/panorámás kilátás, megfigyelési pont |
+| Iskola | gasztronómiai iskola, általános iskola, művészeti iskola, felső iskola, autósiskola, nyelviskola, sportiskola, óvoda, középiskola, középiskola, szakképzés, speciális iskola, gyermekgondozási létesítmény, iskola, műszaki iskola, katonai iskola, mezőgazdasági iskola |
+| Bolt | gyári kivezetés, biztonsági termékek, karácsonyi/ünnepi bolt, optikusok, házkert: világítás, lottóbolt, hangszerek, körömszalon, házkert: festmény díszítő, hobbi / szabadidő, újságárusoknál, ruházati kiegészítők: speciális, vegytisztítók, táskák bőráru, kisállat kellékek, ruházati kiegészítők: gyermekek, építőanyag berendezések, ékszerek, óraórák, ruházati kiegészítők: cipő cipő javítás, ház kert: függöny / textil, elektromos, irodai elektronika, elektromos, iroda it: kamera&#39;fényképészet, cd&#39;s, DVD videók, mosoda, ruházati kiegészítők: férfiak, virágárusok, zálogház, könyvesboltok, tengeri elektronikus berendezések, élelmiszer-italok: élelmiszer-piacok, házkert: szőnyeg / padlóburkolatok: szőnyeg / padlóburkolatok, fénymásoló, csónakázó berendezések kiegészítők, mobiltelefon bolt, játékok, speciális élelmiszerek, ruházati kiegészítők: általános, élelmiszer italok: pékek, szabó üzlet, ajándékok, kártyák, újdonságok ajándéktárgyak, állati szolgáltatások, sportfelszerelés ek, ruházati cikkek, elektromos, irodai is: irodai berendezések, fotó labor / fejlesztés, nagykereskedelmi klubok, ház kert: bútor szerelvények, helyi specialitások, élelmiszer-italok: hentesek, fajta bolt, élelmiszer-italok: élelmiszerüzletek, élelmiszer-italok: bor szeszes italok, drogéria, bútor / lakberendezési cikkek, elektromos, iroda is: számítógépes kellékek, cd / video kölcsönzés, orvosi felszerelések, mezőgazdasági kellékek, szépségszalon, kertkert szolgáltatások, élelmiszer-italok: halárusok, szépségápolási cikkek, ruházati kiegészítők: női, utazási kiegészítők: női, utazási cikkek ügynökök, kiskereskedelmi üzlet, újrahasznosító üzlet, házkert: üvegablakok, hardver, ingatlanügynökök, üvegáru / kerámia, csemegeház kert: konyha fürdőszoba, fogadóállomás, fodrászok, élelmiszeritalok: fűszeresek, élelmiszer-italok: zöld fűszerek, kisboltok, hajt át üvegbolt, házkert: do-it-yourself központok, antik / art, üzlet, üzlet, bolt |
+| BEVÁSÁRLÓKÖZPONT\_ | bevásárlóközpont, bevásárlóközpont |
+| SPORTKÖZPONT\_ | tematikus sport, squash pálya, fitness club center, sportközpont |
+| Stadium | netball, futball, baseball, versenypálya, többcélú, motorsport, krikett pálya, rögbi pálya, jégkorong, sportos, lóverseny, kosárlabda, foci, stadion, atlétikai pálya, versenypálya |
+| USZODA\_ | Medence |
+| TENISZPÁLYA\_ | teniszpálya |
+| Színház | amfiteátrum, koncertterem, vacsora színház, zenei központ, opera, kabaré, színház, operaház |
+| TURISZTIKAI\_\_INFORMÁCIÓS IRODA | turisztikai információs iroda |
+| KÖZLEKEDÉSI\_LÁMPA | közlekedési lámpa |
+| KÖZLEKEDÉSI\_\_SZOLGÁLTATÓ KÖZPONT | forgalomirányító részleg, forgalomszolgáltató központ |
+| KÖZLEKEDÉSI\_TÁBLA | közlekedési tábla |
+| TRAIL\_RENDSZER | kalandjármű, sziklamászás, lovaglás, mountain bike, túrázás, nyomrendszer |
+| KÖZLEKEDÉSI\_HATÓSÁG\_JÁRMŰNYILVÁNTARTÁSA | közlekedési hatóság/jármű-nyilvántartás |
+| KAMIONPARKOLÓ\_ | kamionparkoló |
+| Állatorvos | állatorvosi létesítmény, állatorvos |
+| VÍZI\_SPORT | vízi sport |
+| MÉRŐÁLLOMÁS\_ | mérlegek, mérőállomás |
+| JÓLÉTI\_SZERVEZET | jóléti szervezet |
 | Pincészet | Pincészet |
-| ÁLLATKERTek\_ARBORETA\_botanikai\_GARDEN | Wildlife Park, vízi Zoo Marine Park, arboreta botanikus kertek, Állatkert, állatkertek, arboreta botanikus kert |
+| Állatkertek\_Arboréta\_\_Botanikus Kert | vadaspark, vízi állatkert tengeri park, arboréta botanikus kertek, állatkert, állatkertek, arboréta botanikus kert |

@@ -1,6 +1,6 @@
 ---
-title: Ha a feltétel tevékenysége Azure Data Factory
-description: Az IF Condition tevékenység lehetővé teszi, hogy egy feltétel alapján vezérelje a feldolgozási folyamatot.
+title: Ha feltételtevékenység az Azure Data Factoryban
+description: Az If Condition tevékenység lehetővé teszi a feldolgozási folyamat egy feltétel alapján történő szabályozását.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238698"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel tevékenysége Azure Data Factory
+# <a name="if-condition-activity-in-azure-data-factory"></a>Ha feltételtevékenység az Azure Data Factoryban
 Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Egy tevékenységkészletet futtat le, ha a feltétel `true` értéket ad vissza, és egy másik tevékenységkészletet, ha a feltétel `false` értéket ad vissza. 
 
 ## <a name="syntax"></a>Szintaxis
@@ -63,21 +63,21 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | Az IF-Condition tevékenység neve. | Sztring | Igen
-type | **IfCondition** értékre kell állítani | Sztring | Igen
-kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Igen
-ifTrueActivities | Azoknak a tevékenységeknek a csoportja, amelyek akkor futnak, amikor a kifejezés kiértékeli a `true`. | Tömb | Igen
-ifFalseActivities | Azoknak a tevékenységeknek a csoportja, amelyek akkor futnak, amikor a kifejezés kiértékeli a `false`. | Tömb | Igen
+név | Az if-condition tevékenység neve. | Sztring | Igen
+type | **IfCondition (IfCondition)** beállításra kell állítani. | Sztring | Igen
+kifejezés | Olyan kifejezés, amelynek igaz vagy hamis értéket kell kiértékelnie | Kifejezés eredménytípusú logikai változóval | Igen
+ifTrueActivities (TrueActivities) | A kifejezés kiértékelésénél végrehajtott tevékenységek `true`készlete. | Tömb | Igen
+ifFalseActivities | A kifejezés kiértékelésénél végrehajtott tevékenységek `false`készlete. | Tömb | Igen
 
 ## <a name="example"></a>Példa
-Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából a kimeneti mappába. A kimeneti mappát a (z) routeSelection folyamat paraméterének értéke határozza meg. Ha a routeSelection értéke TRUE (igaz), a rendszer átmásolja az adatmennyiséget a outputPath1. Ha pedig a routeSelection értéke hamis, a rendszer az outputPath2-re másolja az adatfájlokat. 
+Ebben a példában a folyamat egy bemeneti mappából egy kimeneti mappába másolja az adatokat. A kimeneti mappát a csővezeték paraméter értéke határozza meg: routeSelection. Ha az útvonal kiválasztása értéke igaz, az adatok másolása a outputPath1-be történik. És ha a routeSelection értéke hamis, az adatok másolása a outputPath2-be. 
 
 > [!NOTE]
-> Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
+> Ez a szakasz JSON-definíciókat és minta PowerShell-parancsokat biztosít a folyamat futtatásához. A Data Factory-folyamat Azure PowerShell- és JSON-definíciók használatával történő létrehozásához részletes útmutatót az oktatóanyag ban [talál: adatgyár létrehozása az Azure PowerShell használatával](quickstart-create-data-factory-powershell.md)című témakörben.
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Folyamat IF-Condition tevékenységgel (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>HA-feltétel tevékenységgel rendelkező folyamat (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -182,13 +182,13 @@ Egy másik példa a kifejezésre:
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage-kapcsolt szolgáltatás (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -202,8 +202,8 @@ Egy másik példa a kifejezésre:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset. JSON)
-A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméterezett Azure Blob-adatkészlet (BlobDataset.json)
+A folyamat a **folderPath-ot** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére állítja be. 
 
 ```json
 {
@@ -229,7 +229,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON csővezeték-paraméter (PipelineParameters.json)
 
 ```json
 {
@@ -244,7 +244,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a következő mappába: C:\ADF. 
+Ezek a parancsok feltételezik, hogy a JSON-fájlokat a C:\ADF mappába mentette. 
 
 ```powershell
 Connect-AzAccount
@@ -285,11 +285,11 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
+## <a name="next-steps"></a>További lépések
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevékenységeket: 
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
-- [Minden tevékenységhez](control-flow-for-each-activity.md)
+- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keresstevékenységet](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

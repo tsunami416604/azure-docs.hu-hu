@@ -1,7 +1,7 @@
 ---
-title: Munkafolyamat elküldése több bemenet használatával
+title: Munkafolyamat küldése több bemenettel
 titleSuffix: Microsoft Genomics
-description: Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemeneti fájl több FASTQ-vagy BAM-fájlból áll ugyanabból a mintából.
+description: Ez a cikk bemutatja, hogyan küldhet el munkafolyamatot a Microsoft Genomics szolgáltatásnak, ha a bemeneti fájl több FASTQ vagy BAM fájl ugyanabból a mintából.
 services: genomics
 ms.service: genomics
 author: grhuynh
@@ -10,25 +10,25 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248565"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Munkafolyamat elküldése azonos mintából származó több bemenet használatával
 
-Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemeneti fájl több FASTQ-vagy BAM-fájlból **származik, amelyek ugyanabból a mintából származnak**. Ha például **egyazon mintát** a sorrendvezérlő több sávjában futtatja, a sorrendvezérlő FASTQ-fájlpárokat ad vissza kimenetként minden egyes sávhoz. Ahelyett, hogy összefűzné ezeket a FASTQ-fájlokat az illesztés és a variánskeresés előtt, közvetlenül elküldheti ezeket a bemeneteket az `msgen` ügyfélnek. Az `msgen` ügyfél kimenete **egyetlen** fájlkészlet lesz, köztük egy .bam, .bai és .vcf fájl. 
+Ez a cikk bemutatja, hogyan küldhet el munkafolyamatot a Microsoft Genomics szolgáltatásnak, ha a bemeneti fájl több FASTQ vagy BAM **fájl, amelyek ugyanabból a mintából származnak.** Ha például **egyazon mintát** a sorrendvezérlő több sávjában futtatja, a sorrendvezérlő FASTQ-fájlpárokat ad vissza kimenetként minden egyes sávhoz. Ahelyett, hogy összefűzné ezeket a FASTQ-fájlokat az illesztés és a variánskeresés előtt, közvetlenül elküldheti ezeket a bemeneteket az `msgen` ügyfélnek. Az `msgen` ügyfél kimenete **egyetlen** fájlkészlet lesz, köztük egy .bam, .bai és .vcf fájl. 
 
 Ne feledje azonban, hogy FASTQ- és BAM-fájlokat **nem** küldhet egyszerre. Emellett ügyeljen rá, hogy **nem** küldhet több FASTQ- vagy BAM-fájlt, amelyek több személytől származnak. 
 
-Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldött egy munkafolyamatot a megadott mintaadatok használatával, készen áll a cikk folytatására. 
+Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldött egy munkafolyamatot a megadott mintaadatok felhasználásával, készen áll a cikk folytatására. 
 
 
 ## <a name="multiple-bam-files"></a>Több BAM-fájl
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Bemeneti fájlok feltöltése az Azure Storage-ba
-Tegyük fel, hogy a bemenet több BAM-fájlból áll (*reads.bam*, *additional_reads.bam*, és *yet_more_reads.bam*), amelyeket feltöltött saját *myaccount* nevű tárfiókjába az Azure-ban. Emellett rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
+Tegyük fel, hogy a bemenet több BAM-fájlból áll (*reads.bam*, *additional_reads.bam*, és *yet_more_reads.bam*), amelyeket feltöltött saját *myaccount* nevű tárfiókjába az Azure-ban. Emellett rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Feladat elküldése az `msgen`-ügyfélnek 
@@ -91,7 +91,7 @@ Küldje el a `config.txt` fájlt a következő hívással: `msgen submit -f conf
 ## <a name="multiple-paired-fastq-files"></a>Több párosított FASTQ-fájl
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Bemeneti fájlok feltöltése az Azure Storage-ba
-Tegyük fel, hogy a bemenet több párosított FASTQ-fájlból áll: *reads_1.fq.gz* és *reads_2.fq.gz*,  *additional_reads_1.fq.gz* és *additional_reads_2.fq.gz*, valamint *yet_more_reads_1.fq.gz* és *yet_more_reads_2.fq.gz*. Az említett fájlokat már feltöltötte *myaccount* nevű Azure-beli tárfiókjába, valamint rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
+Tegyük fel, hogy a bemenet több párosított FASTQ-fájlból áll: *reads_1.fq.gz* és *reads_2.fq.gz*,  *additional_reads_1.fq.gz* és *additional_reads_2.fq.gz*, valamint *yet_more_reads_1.fq.gz* és *yet_more_reads_2.fq.gz*. Az említett fájlokat már feltöltötte *myaccount* nevű Azure-beli tárfiókjába, valamint rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Feladat elküldése az `msgen`-ügyfélnek 
@@ -155,5 +155,5 @@ output_storage_account_container: outputs
 
 Küldje el a `config.txt` fájlt a következő hívással: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egyszerre több BAM-fájlt vagy párosított FASTQ-fájlt töltött fel az Azure Storage-ba, valamint elküldött egy munkafolyamatot a Microsoft Genomics szolgáltatásba az `msgen` Python-kliensen keresztül. A munkafolyamatok elküldésével, illetve a Microsoft Genomics szolgáltatásban használható egyéb parancsokkal kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](frequently-asked-questions-genomics.md). 

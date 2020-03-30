@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop architektúra – Azure HDInsight
-description: Ismerteti Apache Hadoop tárolását és feldolgozását az Azure HDInsight-fürtökön.
+description: Az Apache Hadoop tárolása és feldolgozása az Azure HDInsight-fürtökön.
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,66 +9,66 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162208"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
 
-A [Apache Hadoop](https://hadoop.apache.org/) két alapvető összetevőből áll: a [Apache HADOOP elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) , amely tárolót biztosít, és [Apache Hadoop még egy olyan erőforrás-tárgyalót (fonalat)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , amely feldolgozást biztosít. A tárolási és feldolgozási képességekkel a fürt képes lesz a [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) programok futtatására a kívánt adatfeldolgozás végrehajtásához.
+[Az Apache Hadoop](https://hadoop.apache.org/) két alapvető összetevőt tartalmaz: az [Apache Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) tárolót, és az [Apache Hadoop Another Resource Negotiator (YARN),](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) amely feldolgozást biztosít. A tárolási és feldolgozási lehetőségekkel a fürt képeslesz [a MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) programok futtatására a kívánt adatfeldolgozás elvégzéséhez.
 
 > [!NOTE]  
-> A HDFS nem a HDInsight-fürtön belül helyezi üzembe a tároló biztosításához. Ehelyett egy HDFS-kompatibilis illesztőfelület-réteget használ a Hadoop-összetevők. A tényleges tárolási képességet Azure Storage vagy Azure Data Lake Storage biztosítjuk. A Hadoop esetében a HDInsight-fürtön futtatott MapReduce-feladatok úgy futnak, mintha egy HDFS voltak, és így nem szükséges módosítani a tárolási igényeiket. A HDInsight Hadoop a tárolás kiszervezve, de a FONÁL feldolgozása továbbra is egy alapvető összetevő. További információ: [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md).
+> A HDFS általában nem központi lag a HDInsight-fürtön belüli tárolás biztosítása érdekében. Ehelyett a Hadoop-összetevők hdfs-kompatibilis felületi réteget használnak. A tényleges tárolási lehetőséget az Azure Storage vagy az Azure Data Lake Storage biztosítja. A Hadoop esetében a HDInsight-fürtön futó MapReduce feladatok úgy futnak, mintha hdfs lenne jelen, ezért nem igényelnek módosításokat a tárolási igényeik támogatásához. A HDInsight Hadoop ban a tárolás ki van szervezve, de a YARN feldolgozás továbbra is alapvető összetevő marad. További információ: [Bevezetés az Azure HDInsightba.](hadoop/apache-hadoop-introduction.md)
 
-Ez a cikk a FONALat mutatja be, valamint azt, hogyan koordinálja az alkalmazások végrehajtását a HDInsight-on.
+Ez a cikk bemutatja a YARN-t, és azt, hogy hogyan koordinálja a HDInsight-alkalmazások végrehajtását.
 
-## <a name="apache-hadoop-yarn-basics"></a>A fonal Apache Hadoop alapjai
+## <a name="apache-hadoop-yarn-basics"></a>Az Apache Hadoop YARN alapjai
 
-A fonal a Hadoop-ben szabályozza és koordinálja az adatfeldolgozást. A fonal két fő szolgáltatással rendelkezik, amelyek folyamatokként futnak a fürt csomópontjain:
+A YARN szabályozza és vezényli az adatfeldolgozást a Hadoopban. A YARN két alapvető szolgáltatással rendelkezik, amelyek a fürt csomópontjain folyamatokként futnak:
 
 * ResourceManager
 * NodeManager
 
-A erőforráskezelő a fürt számítási erőforrásait a MapReduce-feladatokhoz hasonló alkalmazások számára biztosítja. A erőforráskezelő tárolóként engedélyezi ezeket az erőforrásokat, ahol mindegyik tároló a CPU-magok és a memória memóriájának kiosztását tartalmazza. Ha kombinálja a fürtben rendelkezésre álló összes erőforrást, majd a magok és a memória blokkokban való elosztását, minden egyes blokk erőforrás egy tároló. A fürt minden csomópontja rendelkezik bizonyos számú tároló kapacitásával, ezért a fürtnek van rögzített korlátja a rendelkezésre álló tárolók számánál. A tárolóban lévő erőforrások kiosztása konfigurálható.
+A ResourceManager fürtszámítási erőforrásokat biztosít az olyan alkalmazásoknak, mint a MapReduce feladatok. A ResourceManager ezeket az erőforrásokat tárolóként adja, ahol minden tároló a PROCESSZORmagok és a RAM-memória lefoglalásából áll. Ha egy fürtben rendelkezésre álló összes erőforrást kombinált, majd a magokat és a memóriát blokkokban osztotta el, az erőforrások minden blokkja egy tároló. A fürt minden csomópontja rendelkezik egy bizonyos számú tároló kapacitásával, ezért a fürt rendelkezik egy rögzített korláttal a rendelkezésre álló tárolók számára. A tárolóban lévő erőforrások lekötése konfigurálható.
 
-Amikor egy MapReduce-alkalmazás egy fürtön fut, a erőforráskezelő biztosítja az alkalmazást, hogy mely tárolók futnak. A erőforráskezelő nyomon követi a futó alkalmazások állapotát, a rendelkezésre álló szektorcsoportok kapacitását, és nyomon követi az alkalmazásokat, és felszabadítja az erőforrásokat.
+Amikor egy MapReduce alkalmazás egy fürtön fut, a ResourceManager biztosítja az alkalmazás számára azokat a tárolókat, amelyekben végre kell hajtani. A ResourceManager nyomon követi a futó alkalmazások állapotát, a rendelkezésre álló fürtkapacitást, és nyomon követi az alkalmazásokat az erőforrások befejezése és felszabadítása közben.
 
-A erőforráskezelő egy webkiszolgáló-folyamatot is futtat, amely webes felhasználói felületet biztosít az alkalmazások állapotának figyeléséhez.
+A ResourceManager egy webkiszolgálói folyamatot is futtat, amely webes felhasználói felületet biztosít az alkalmazások állapotának figyelésére.
 
-Amikor egy felhasználó elküld egy MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás a erőforráskezelő lesz elküldve. A erőforráskezelő pedig kioszt egy tárolót az elérhető NodeManager-csomópontokon. A NodeManager-csomópontok, ahol az alkalmazás ténylegesen fut. Az első lefoglalt tároló egy ApplicationMaster nevű speciális alkalmazást futtat. Ennek a ApplicationMaster az a feladata, hogy az elküldött alkalmazás futtatásához szükséges további tárolók formájában beszerezze az erőforrásokat. A ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképi fázist és a szakasz csökkentését, valamint azt, hogy mekkora mennyiségű adatok feldolgozása szükséges. A ApplicationMaster ezután megkéri (*egyezteti*) az erőforrásokat a erőforráskezelő az alkalmazás nevében. A erőforráskezelő a fürt Csomópontkezelők származó erőforrásokat biztosít ahhoz a ApplicationMaster, amelyet az alkalmazás végrehajtásához kíván használni.
+Amikor egy felhasználó elküldi a MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás elküldésre kerül a ResourceManager-nek. A ResourceManager viszont lefoglal egy tárolót a rendelkezésre álló NodeManager-csomópontokon. A NodeManager-csomópontok azok, ahol az alkalmazás ténylegesen végrehajtja. Az első lefoglalt tároló egy speciális alkalmazást futtat, amelyet Az ApplicationMaster néven hoz. Ez az ApplicationMaster felelős a beküldött kérelem futtatásához szükséges további tárolók formájában történő beszerzéséért. Az ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképfázist és a fázis csökkentésének, valamint a feldolgozáshoz szükséges adatok mennyiségének tényezőit. Az ApplicationMaster ezután az alkalmazás nevében kéri (*egyezteti)* a ResourceManager erőforrásait. A ResourceManager viszont a fürt nodemanager-ei től erőforrásokat ad az ApplicationMasternek az alkalmazás végrehajtásához.
 
-A Csomópontkezelők futtatják az alkalmazást alkotó feladatokat, majd jelentést készítenek az előrehaladásról és az állapotról a ApplicationMaster. A ApplicationMaster visszaküldi az alkalmazás állapotát a erőforráskezelő. A erőforráskezelő bármilyen eredményt ad vissza az ügyfélnek.
+A NodeManagers futtatja az alkalmazást kikészítő feladatokat, majd jelentést tesz azok előrehaladásáról és állapotáról az ApplicationMasternek. Az ApplicationMaster viszont jelenti az alkalmazás állapotát vissza a ResourceManager. A ResourceManager minden eredményt visszaad az ügyfélnek.
 
-## <a name="yarn-on-hdinsight"></a>FONAL a HDInsight
+## <a name="yarn-on-hdinsight"></a>YARN a HDInsight-on
 
-Az összes HDInsight-fürt a FONALat helyezi üzembe. A erőforráskezelő a magas rendelkezésre álláshoz van telepítve egy elsődleges és egy másodlagos példánnyal, amely az első és a második főcsomóponton fut a fürtön belül. Egyszerre csak a erőforráskezelő egyetlen példánya aktív. A NodeManager-példányok a fürt rendelkezésre álló munkavégző csomópontjain futnak.
+Minden HDInsight-fürttípus telepíti a YARN-t. A ResourceManager magas rendelkezésre állású egy elsődleges és másodlagos példány, amely a fürt első és második fő csomópontjain fut. Egyszerre csak a ResourceManager egyetlen példánya aktív. A NodeManager-példányok a fürt ben elérhető feldolgozócsomópontokon futnak.
 
-![Apache-fonal az Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+![Apache YARN az Azure HDInsighton](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
 
 ## <a name="soft-delete"></a>Helyreállítható törlés
 
-Ha törölni szeretne egy fájlt a Storage-fiókból, tekintse meg a következőt:
+Ha vissza szeretne vonni egy fájl törlését a tárfiókból, olvassa el a következő témakört:
 
 ### <a name="azure-storage"></a>Azure Storage
 
 * [Az Azure Storage-blobok helyreállítható törlése](../storage/blobs/storage-blob-soft-delete.md)
-* [BLOB törlésének visszavonása](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [Blob törlésének törlése](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
 
-### <a name="azure-data-lake-storage-gen-1"></a>1\. generációs Azure Data Lake Storage
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-[Visszaállítás – AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[Visszaállítás-AzDataLakeStoreDeleteditem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
-### <a name="azure-data-lake-storage-gen-2"></a>2\. generációs Azure Data Lake Storage
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
 
-[Ismert problémák a Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-known-issues.md)
+[Ismert problémák az Azure Data Lake Storage Gen2 szolgáltatással kapcsolatban](../storage/blobs/data-lake-storage-known-issues.md)
 
-## <a name="trash-purging"></a>Kukába ürítése
+## <a name="trash-purging"></a>Szemét tisztítása
 
-A **HDFS** > **Advanced core-hely** `fs.trash.interval` tulajdonságának az alapértelmezett értéknek kell lennie `0`, mert nem kell a helyi fájlrendszerben tárolt adatok tárolására. Ez az érték nem befolyásolja a távoli tárolási fiókokat (WASB, ADLS GEN1, ABFS)
+A `fs.trash.interval` **HDFS** > **Advanced core-site** tulajdonságának az `0` alapértelmezett értéken kell maradnia, mert nem szabad adatokat tárolni a helyi fájlrendszeren. Ez az érték nincs hatással a távtároló-fiókokra(WASB, ADLS GEN1, ABFS)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A MapReduce használata a HDInsight-alapú Apache Hadoopban](hadoop/hdinsight-use-mapreduce.md)
-* [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)
+* [Bevezetés az Azure HDInsight ba](hadoop/apache-hadoop-introduction.md)

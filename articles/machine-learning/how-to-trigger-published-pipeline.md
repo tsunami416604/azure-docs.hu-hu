@@ -1,7 +1,7 @@
 ---
-title: Egy ML-folyamat futtatásának elindítása logikai alkalmazásból
+title: Egy ml-folyamat futtatása egy logikai alkalmazásból
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan indíthat el egy ML-folyamat futtatását Azure Logic Apps használatával.
+description: Ismerje meg, hogyan indíthatja el egy ml-folyamat futtatását az Azure Logic Apps használatával.
 services: machine-learning
 author: sanpil
 ms.author: sanpil
@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 6bb976b8b310fb3eb4d0247a8d745599f688d7b5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122856"
 ---
-# <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Machine Learning folyamat futtatásának elindítása logikai alkalmazásból
+# <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Machine Learning-folyamat futtatásának aktiválása logikai alkalmazásból
 
-Aktiválja az Azure Machine Learning folyamat futtatását, amikor új adatmennyiség jelenik meg. Előfordulhat például, hogy a folyamatot úgy szeretné elindítani, hogy az új modellt betanítsa, amikor az új adatértékek megjelennek a blob Storage-fiókban. Az trigger beállítása [Azure Logic Appssal](../logic-apps/logic-apps-overview.md).
+Indítsa el az Azure Machine Learning-folyamat futtatását, amikor új adatok jelennek meg. Például érdemes lehet a folyamat ot egy új modell betanításához, amikor új adatok jelennek meg a blob storage-fiókban. Állítsa be az eseményindítót az [Azure Logic Apps](../logic-apps/logic-apps-overview.md)alkalmazásokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
+* Egy Azure Machine Learning-munkaterület. További információ: [Create an Azure Machine Learning workspace](how-to-manage-workspace.md).
 
-* A közzétett Machine Learning folyamat REST-végpontja. [A folyamat létrehozása és közzététele](how-to-create-your-first-pipeline.md). Ezután keresse meg a PublishedPipeline REST-végpontját a folyamat AZONOSÍTÓjának használatával:
+* A REST-végpont egy közzétett Machine Learning-folyamat. [Hozza létre és tegye közzé a folyamatot.](how-to-create-your-first-pipeline.md) Ezután keresse meg a közzétett folyamat folyamatának REST-végpontját a folyamatazonosító használatával:
     
      ```
     # You can find the pipeline ID in Azure Machine Learning studio
@@ -33,46 +33,46 @@ Aktiválja az Azure Machine Learning folyamat futtatását, amikor új adatmenny
     published_pipeline = PublishedPipeline.get(ws, id="<pipeline-id-here>")
     published_pipeline.endpoint 
     ```
-* Az [Azure Blob Storage](../storage/blobs/storage-blobs-overview.md) tárolja az adatait.
-* A munkaterületen lévő [adattár](how-to-access-data.md) , amely a blob Storage-fiók adatait tartalmazza.
+* [Azure blob storage](../storage/blobs/storage-blobs-overview.md) az adatok tárolásához.
+* A munkaterület egy [adattár,](how-to-access-data.md) amely tartalmazza a blob storage-fiók részleteit.
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
 
-Most hozzon létre egy [Azure Logic app](../logic-apps/logic-apps-overview.md) -példányt. Ha szeretné, [használjon integrációs szolgáltatási környezetet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) , és [állítson be egy ügyfél által felügyelt kulcsot](../logic-apps/customer-managed-keys-integration-service-environment.md) a logikai alkalmazás általi használatra.
+Most hozzon létre egy Azure Logic App-példányt. [Azure Logic App](../logic-apps/logic-apps-overview.md) Ha szeretné, [használjon integrációs szolgáltatási környezetet (ISE),](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) és [állítson be egy ügyfél által felügyelt kulcsot](../logic-apps/customer-managed-keys-integration-service-environment.md) a logikai alkalmazás általi használatra.
 
-A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfigurálhat egy triggert a folyamathoz:
+A logikai alkalmazás kiépítése után az alábbi lépésekkel konfigurálhatja a folyamat eseményindítóját:
 
-1. [Hozzon létre egy rendszerhez rendelt felügyelt identitást](../logic-apps/create-managed-service-identity.md) , amely hozzáférést biztosít az alkalmazásnak a Azure Machine learning-munkaterülethoz.
+1. [Hozzon létre egy rendszer által hozzárendelt felügyelt identitást,](../logic-apps/create-managed-service-identity.md) hogy az alkalmazás hozzáférést biztosítson az Azure Machine Learning-munkaterülethez.
 
-1. Navigáljon a Logic app Designer nézethez, és válassza ki az üres logikai alkalmazás sablonját. 
+1. Nyissa meg a Logic App Designer nézetet, és válassza ki az Üres logikai alkalmazás sablont. 
     > [!div class="mx-imgBorder"]
-    > Üres sablon ![](media/how-to-trigger-published-pipeline/blank-template.png)
+    > ![Üres sablon](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. A tervezőben keresse meg a **blob**kifejezést. Válassza ki a **blob hozzáadása vagy módosítása (csak tulajdonságok)** triggert, és adja hozzá ezt az triggert a logikai alkalmazáshoz.
+1. A Tervezőben keressen rá a **blobra.** Válassza ki a **Blob hozzáadásakor vagy módosításakor (csak tulajdonságok)** eseményindító, és adja hozzá ezt az eseményindítót a logikai alkalmazáshoz.
     > [!div class="mx-imgBorder"]
-    > ![trigger hozzáadása](media/how-to-trigger-published-pipeline/add-trigger.png)
+    > ![Trigger hozzáadása](media/how-to-trigger-published-pipeline/add-trigger.png)
 
-1. Adja meg a blob-hozzáadások vagy-módosítások figyeléséhez használni kívánt blob Storage-fiók kapcsolódási adatait. Válassza ki a figyelni kívánt tárolót. 
+1. Töltse ki a blobtár-fiók kapcsolatadatait, amelyet figyelni szeretne a blob-kiegészítések vagy -módosítások miatt. Válassza ki a figyelni kívánt tárolót. 
  
-    Válassza ki az **időintervallumot** és a **gyakoriságot** az Önnek munkát igénylő frissítések lekérdezéséhez.  
+    Válassza ki az **Intervallum** és **gyakoriság** lehetőséget az Ön számára megfelelő frissítések lekérdezéséhez.  
 
     > [!NOTE]
-    > Ez az trigger figyeli a kiválasztott tárolót, de nem figyeli az almappákat.
+    > Ez az eseményindító figyeli a kijelölt tárolót, de nem figyeli az almappákat.
 
-1. Olyan HTTP-művelet hozzáadása, amely akkor fut le, amikor új vagy módosított blobot észlel. Válassza az **+ új lépés**elemet, majd keresse meg és válassza ki a http-műveletet.
+1. Adjon hozzá egy HTTP-műveletet, amely új vagy módosított blob észlelésekor fog futni. Válassza a **+ Új lépés**lehetőséget, majd keresse meg és jelölje ki a HTTP műveletet.
 
   > [!div class="mx-imgBorder"]
   > ![HTTP-művelet keresése](media/how-to-trigger-published-pipeline/search-http.png)
 
-  A művelet konfigurálásához használja a következő beállításokat:
+  A művelet konfigurálásához használja az alábbi beállításokat:
 
   | Beállítás | Érték | 
   |---|---|
   | HTTP-művelet | POST |
-  | URI |az [előfeltételként](#prerequisites) megtalált közzétett folyamat végpontja |
+  | URI |a végpontot a közzétett folyamathoz, amelyet [előfeltételként](#prerequisites) talált |
   | Hitelesítési módszer | Felügyelt identitás |
 
-1. Állítsa be úgy az ütemtervet, hogy beállítsa bármely [DataPath PipelineParameters](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) értékét:
+1. Állítsa be az ütemezést, hogy beállítsa a [DataPath PipelineParameters](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) lehet, hogy:
 
     ```json
     "DataPathAssignments": { 
@@ -87,9 +87,9 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
     },
     ```
 
-    [Előfeltételként](#prerequisites)használja a munkaterülethez hozzáadott `DataStoreName`.
+    `DataStoreName` A munkaterülethez hozzáadott feltételt [használja.](#prerequisites)
      
     > [!div class="mx-imgBorder"]
     > ![HTTP-beállítások](media/how-to-trigger-published-pipeline/http-settings.png)
 
-1. Válassza a **Mentés** lehetőséget, és most már készen áll az ütemtervre.
+1. Válassza a **Mentés** lehetőséget, és az ütemezés készen áll.

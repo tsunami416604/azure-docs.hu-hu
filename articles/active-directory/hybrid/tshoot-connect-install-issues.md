@@ -1,6 +1,6 @@
 ---
-title: A Azure AD Connect telepítési problémáinak elhárítása | Microsoft Docs "
-description: Ez a témakör a Azure AD Connect telepítésével kapcsolatos hibák elhárításának lépéseit ismerteti.
+title: Az Azure AD Connect telepítési problémáinak elhárítása | Microsoft Dokumentumok"
+description: Ez a témakör az Azure AD Connect telepítésével kapcsolatos problémák elhárításának lépéseit ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,36 +16,36 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70211845"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Hibaelhárítása Az Azure AD Connect telepítésével kapcsolatos problémák
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Hibaelhárítás: Az Azure AD Connect telepítési problémái
 
-## <a name="recommended-steps"></a>**Javasolt lépések**
-Ellenőrizze, hogy a [Azure ad Connect telepítési típusa](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) megfelelő-e. Ha teljesíti az expressz telepítés feltételeit, javasoljuk, hogy az expressz telepítéssel lépjen tovább. Az expressz telepítés a telepítés befejezéséhez minimálisan szükséges beállításokat biztosít, ezért a problémák kevésbé valószínűek. 
+## <a name="recommended-steps"></a>**Ajánlott lépések**
+Ellenőrizze, hogy melyik [Azure AD Connect telepítési típus](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) alkalmas az Ön számára. Ha megfelel az expressz telepítés kritériumainak, akkor javasoljuk, hogy menjen az expressz telepítéshez. Az expressz telepítés minimális lehetőségeket biztosít a telepítés befejezéséhez, így kisebb a valószínűsége a problémáknak. 
 
-Ha azonban nem felel meg az expressz telepítési feltételeknek, és el kell végeznie az Egyéni telepítést, akkor itt talál néhány ajánlott eljárást, amelyekkel elkerülheti a gyakori problémákat. Az egyszerűség kedvéért csak a szelektív beállítások szerepelnek itt:
+Ha azonban nem felel meg az expressz telepítési feltételeknek, és meg kell tennie az egyéni telepítést, akkor az alábbiakat néhány ajánlott eljárás követheti a gyakori problémák elkerülése érdekében. Az egyszerűség kedvéért csak a szelektív lehetőségek et említik itt:
 
-* Győződjön meg arról, hogy Ön rendszergazda azon a számítógépen, amelyre a HRE-kapcsolatot telepíti. Jelentkezzen be a gépre ugyanazzal a rendszergazdai hitelesítő adatokkal.
+* Győződjön meg arról, hogy rendszergazda azon a számítógépen, amelyen az AAD Connect et telepíti. Jelentkezzen be a számítógépre ugyanazzal a rendszergazdai hitelesítő adatokkal.
 
-* Ha meglévő SQL Server kíván használni, a következő lapon minden beállítás alapértelmezett értékre kerül, kivéve a "meglévő SQL Server használata" lehetőséget. [További](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) információ az egyéni telepítési beállítások használatáról. 
+* Hagyja, hogy az összes beállítás legyen az alapértelmezett a következő lapon, kivéve a "Meglévő SQL Server használata" lehetőséget, ha meglévő SQL Server t szeretné használni. Az alábbiakban [további részleteket olvashat](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) az egyéni telepítési beállítások használatáról. 
 
     ![Meglévő SQL Server használata](media/tshoot-connect-install-issues/tshoot-connect-install-issues/useexistingsqlserver.png)
 
-* A következő lapon válassza az "új AD-fiók létrehozása" lehetőséget, hogy elkerülje a meglévő fiókkal kapcsolatos engedélyek megadását.
+* A következő lapon válassza az "Új AD-fiók létrehozása" lehetőséget, hogy elkerülje a meglévő fiókkal kapcsolatos engedélyproblémákat.
 
-    ![AD Forest-fiók](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
+    ![AD erdőfiók](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
 ### <a name="common-issues"></a>**Gyakori problémák**
 
-* [A helyszíni Active Directory kapcsolódási problémái](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
+* [Kapcsolódási problémák a helyszíni Active Directoryval.](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)
 
-* [Kapcsolódási problémák az online Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity).
+* [Kapcsolódási problémák az online Azure Active Directoryval kapcsolati problémákkal kapcsolatban.](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity)
 
-* [A helyszíni Active Directoryekkel kapcsolatos engedélyek](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
+* [A helyszíni Active Directoryval kapcsolatos engedélyproblémák.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)
 
 ## <a name="recommended-documents"></a>**Ajánlott dokumentumok**
 * [Az Azure AD Connect előfeltételei](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
@@ -53,11 +53,11 @@ Ha azonban nem felel meg az expressz telepítési feltételeknek, és el kell v�
 * [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [Az Azure AD Connect testreszabott telepítése](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
 * [Azure AD Connect: frissítés egy előző verzióról a legújabbra](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
-* [Azure AD Connect: Mi az az átmeneti kiszolgáló?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
+* [Azure AD Connect: Mi az átmeneti kiszolgáló?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
 * [Mi az az ADConnectivityTool PowerShell-modul?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 
 ## <a name="next-steps"></a>További lépések
-- [Azure ad Connect szinkronizálás](how-to-connect-sync-whatis.md).
+- [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md).
 - [Mi az a hibrid identitás?](whatis-hybrid-identity.md)
 
 

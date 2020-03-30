@@ -1,6 +1,6 @@
 ---
-title: Szerkessze a csoport adatait – Azure Active Directory |} A Microsoft Docs
-description: Szerkessze a csoport adatait az Azure Active Directoryval kapcsolatos utasításokat.
+title: A csoportadatok szerkesztése – Azure Active Directory | Microsoft dokumentumok
+description: Útmutató a csoport adatainak az Azure Active Directory használatával történő szerkesztéséhez.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,55 +14,55 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561884"
 ---
-# <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatait az Azure Active Directoryval
+# <a name="edit-your-group-information-using-azure-active-directory"></a>A csoportadatok szerkesztése az Azure Active Directory használatával
 
-Azure Active Directory (Azure AD) használatával, módosíthatja egy csoport beállításait, többek között a nevét, leírását és tagsági típusa frissítése.
+Az Azure Active Directory (Azure AD) használatával szerkesztheti a csoport beállításait, beleértve a név, leírás vagy tagságtípus frissítését.
 
-## <a name="to-edit-your-group-settings"></a>A csoport beállításainak módosítása
+## <a name="to-edit-your-group-settings"></a>A csoportbeállítások szerkesztése
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza ki **Azure Active Directory**, majd válassza ki **csoportok**.
+2. Válassza az **Azure Active Directory**lehetőséget, majd a **Csoportok**lehetőséget.
 
-    A **csoportok – összes csoport** megjelenítő lap jelenik meg, az összes aktív csoportot.
+    Megjelenik **a Csoportok – Minden csoport** lap, amely az összes aktív csoportot jeleníti meg.
 
-3. Az a **csoportok – összes csoport** mint az a csoport nevét írja be a **keresési** mezőbe. Ez a cikk céljából, hogy keres a **mobileszköz-kezelési szabályzat – Nyugat-India** csoport.
+3. A **Csoportok – Minden csoport** lapon írja be a csoport nevének mekkora részét a **Keresőmezőbe.** Ennek a cikknek az alkalmazásában az **MDM-házirend - Nyugati** csoport keresése.
 
-    A keresési eredmények között meg fog jelenni a **keresési** frissítése több karakter beírása mezőben.
+    A keresési eredmények a **Keresés** mezőben jelennek meg, és a további karakterek beírásakor frissülnek.
 
-    ![Az összes csoport lapon, a keresési szöveget a keresőmezőbe](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
+    ![Minden csoport lap, a keresőszöveggel a Keresőmezőben](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. Válassza ki azt a csoportot **mobileszköz-kezelési szabályzat – Nyugat-India**, majd válassza ki **tulajdonságok** a a **kezelés** területen.
+4. Válassza ki a csoport **MDM-házirend - Nyugat**, majd válassza **tulajdonságok** a **Kezelés** területen.
 
-    ![Csoport áttekintése lap, a tag lehetőséggel és a Kiemelt információkkal](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![Csoport áttekintése lap, a Tag lehetőséggel és a kiemelt információkkal](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
-5. Frissítés a **általános beállítások** információkat, ha szükséges, beleértve:
+5. Szükség szerint frissítse az **általános beállításokra** vonatkozó információkat, többek között:
 
-    ![Egy csoport beállításainak tulajdonságai](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
+    ![Csoport tulajdonságbeállításai](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
 
-    - **Csoport neve.** Szerkessze a meglévő csoportnevet.
+    - **Csoport neve.** A meglévő csoportnév szerkesztése.
     
-    - **A csoport ismertetése.** Szerkessze a meglévő csoport leírását.
+    - **A csoport ismertetése.** Szerkessze a meglévő csoportleírást.
 
-    - **Csoport típusa.** Miután létrejött a csoport típusa nem módosítható. Módosíthatja a **csoporttípust**, akkor törölje a csoportot, majd hozzon létre egy új.
+    - **Csoport típusa.** A csoport típusa nem módosítható a létrehozás után. A **Csoport típusának**módosításához törölnie kell a csoportot, és újat kell létrehoznia.
     
-    - **Tagság típusa.** A tagsági típus módosítása További információ a különböző elérhető tagsági típusokról [: How to: Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat a Azure Active Directory portál](active-directory-groups-create-azure-portal.md)használatával.
+    - **Tagság típusa.** Módosítsa a tagság típusát. A különböző elérhető tagsági típusokról további információt a [Hogyan hozhat létre: Egyszerű csoport létrehozása és tagok hozzáadása az Azure Active Directory portálon.](active-directory-groups-create-azure-portal.md)
     
-    - **Objektum azonosítója.** Az Objektumazonosító nem módosítható, de az, hogy a PowerShell-parancsokban a csoport számára is másolhatja. PowerShell-parancsmagok használatával kapcsolatos további információkért lásd: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-v2-cmdlets.md).
+    - **Objektumazonosító.** Az objektumazonosító nem módosítható, de másolhatja a csoport PowerShell-parancsaiban való használatra. A PowerShell-parancsmagok használatáról további információt az [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásáról](../users-groups-roles/groups-settings-v2-cmdlets.md)című témakörben talál.
 
 ## <a name="next-steps"></a>További lépések
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
 - [Csoportok és tagok megtekintése](active-directory-groups-view-azure-portal.md)
 
-- [Hozzon létre egy alapszintű csoportot, és tagokat vehet fel](active-directory-groups-create-azure-portal.md)
+- [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-- [Hogyan lehet hozzáadni, vagy a tagok eltávolítása egy csoportból](active-directory-groups-members-azure-portal.md)
+- [Tagok hozzáadása és eltávolítása a csoportból](active-directory-groups-members-azure-portal.md)
 
 - [A csoportban lévő felhasználók dinamikus szabályainak kezelése](../users-groups-roles/groups-create-rule.md)
 

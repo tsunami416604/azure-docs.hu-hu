@@ -1,6 +1,6 @@
 ---
-title: 'Kapcsolódás különböző adatforrásokhoz Azure Databricks '
-description: Megtudhatja, hogyan csatlakozhat a Azure SQL Databasehoz, a Azure Data Lake Storehoz, a blob Storage-hoz, a Cosmos DBhoz, a Event Hubshoz és a Azure SQL Data Warehousehoz.
+title: 'Csatlakozás az Azure Databricks különböző adatforrásaihoz '
+description: Megtudhatja, hogyan csatlakozhat az Azure SQL Database- hez, az Azure Data Lake Store-hoz, a blobstorage-hoz, a Cosmos DB-hoz, az Event Hubs-hoz és az Azure SQL Data Warehouse-hoz az Azure Databricks-ből.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -10,50 +10,50 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
 ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74129386"
 ---
-# <a name="connect-to-data-sources-from-azure-databricks"></a>Kapcsolódás adatforrásokhoz Azure Databricks
+# <a name="connect-to-data-sources-from-azure-databricks"></a>Csatlakozás az Azure Databricks adatforrásaihoz
 
-Ez a cikk az Azure-beli különböző adatforrásokra mutató hivatkozásokat tartalmaz, amelyek Azure Databrickshoz csatlakoztathatók. Az alábbi hivatkozásokra kattintva az Azure-adatforrásokból (például Azure Blob Storage, Azure Event Hubs stb.) származó adatok kinyerése egy Azure Databricks-fürtön, valamint analitikus feladatok futtatása rajtuk. 
+Ez a cikk az Azure Databricks-hez csatlakoztatható azure Databricks-hez csatlakoztatható összes különböző adatforrásra mutató hivatkozásokat tartalmaz. Kövesse az alábbi hivatkozásokban található példákat az Azure-adatforrásokból (például az Azure Blob Storage, az Azure Event Hubs stb.) egy Azure Databricks-fürtbe történő kinyeréséhez, és elemzési feladatok futtatásához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Rendelkeznie kell egy Azure Databricks munkaterülettel és egy Spark-fürttel. Kövesse a [Azure Databricks első lépéseinek](quickstart-create-databricks-workspace-portal.md)utasításait.
+* Rendelkeznie kell egy Azure Databricks munkaterület és egy Spark-fürt. Kövesse az [Azure Databricks első lépései című útmutatóutasításait.](quickstart-create-databricks-workspace-portal.md)
 
-## <a name="data-sources-for-azure-databricks"></a>Azure Databricks adatforrásai
+## <a name="data-sources-for-azure-databricks"></a>Az Azure Databricks adatforrásai
 
-Az alábbi lista az Azure-ban használható adatforrásokat tartalmazza, amelyeket Azure Databricks használhat. A Azure Databricks használható adatforrások teljes listájáért tekintse meg a [Azure Databricks adatforrásait](/azure/databricks/data/data-sources/index)ismertető témakört.
+Az alábbi lista az Azure Databricks-szel használható adatforrásokat tartalmazza. Az Azure Databricks-szel használható adatforrások teljes listáját az [Azure Databricks adatforrásai](/azure/databricks/data/data-sources/index)ban.
 
-- [Azure SQL Database](/azure/databricks/data/data-sources/sql-databases)
+- [Azure SQL-adatbázis](/azure/databricks/data/data-sources/sql-databases)
 
-    Ez a hivatkozás a DataFrame API-t biztosítja az SQL-adatbázisokhoz való csatlakozáshoz a JDBC használatával, valamint az olvasások párhuzamosságának vezérlését a JDBC felületen keresztül. Ez a témakör részletes példákat tartalmaz a Scala API-val, valamint a rövidített Python és Spark SQL-példákkal.
+    Ez a hivatkozás biztosítja a DataFrame API-t a JDBC használatával az SQL-adatbázisokhoz való csatlakozáshoz, valamint az olvasások párhuzamosságának szabályozásához a JDBC felületen keresztül. Ez a témakör részletes példákat a Scala API használatával, rövidített Python és Spark SQL példák a végén.
 - [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
-    Ez a hivatkozás példákat tartalmaz arra, hogyan használhatja a Azure Active Directory egyszerű szolgáltatást a Azure Data Lake Storage való hitelesítéshez. Emellett útmutatást nyújt arról, hogyan férhet hozzá a Azure Data Lake Storage lévő adatokhoz Azure Databricksból.
+    Ez a hivatkozás példákat tartalmaz arra, hogyan használhatja az Azure Active Directory egyszerű szolgáltatás hitelesítéséhez az Azure Data Lake Storage használatával. Azt is ismerteti, hogyan érheti el az adatokat az Azure Data Lake Storage-ban az Azure Databricks.
 
 - [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage)
 
-    Ez a hivatkozás példákat tartalmaz arra, hogyan lehet közvetlenül hozzáférni az Azure Blob Storagehoz a Azure Databricks hozzáférési kulccsal vagy SAS-vel egy adott tárolóhoz. A hivatkozás azt is ismerteti, hogyan férhet hozzá az Azure Blob Storage a Azure Databricks a RDD API használatával.
+    Ez a hivatkozás példákat tartalmaz arra, hogyan érheti el közvetlenül az Azure Blob Storage-t az Azure Databricks-ből hozzáférési kulcs vagy egy adott tároló SAS használatával. A hivatkozás azt is tartalmazza, hogyan érheti el az Azure Blob Storage-ot az Azure Databricks rdd API használatával.
 
 - [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector)
 
-    Ez a hivatkozás azt ismerteti, hogyan használható a [Azure Cosmos db Spark-összekötő](https://github.com/Azure/azure-cosmosdb-spark) a Azure Databricksból a Azure Cosmos db lévő adatok eléréséhez.
+    Ez a hivatkozás útmutatást nyújt az [Azure Cosmos DB Spark-összekötő](https://github.com/Azure/azure-cosmosdb-spark) azure Databricks használatával az Azure Cosmos DB-ben lévő adatok eléréséhez.
 
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-spark-connector)
 
-    Ez a hivatkozás azt ismerteti, hogyan használható az [azure Event Hubs Spark-összekötő](https://github.com/Azure/azure-event-hubs-spark) Azure Databricks az adatok Azure-beli Event Hubs való eléréséhez.
+    Ez a hivatkozás útmutatást nyújt az [Azure Event Hubs Spark-összekötő](https://github.com/Azure/azure-event-hubs-spark) azure Databricks használatával az Azure Event Hubs-adatok eléréséhez.
 
-- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
+- [Azure SQL adattárház](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
 
-    Ez a hivatkozás azt ismerteti, hogyan használható az Azure SQL Data Warehouse-összekötő a Azure Databricksból való csatlakozáshoz.
+    Ez a hivatkozás útmutatást nyújt az Azure SQL Data Warehouse-összekötő használatával az Azure Databricks-ből való csatlakozáshoz.
     
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatok Azure Databricksba való importálásának forrásairól a [Azure Databricks adatforrásaiban](/azure/databricks/data/data-sources/index)talál további információt.
+Ha többet szeretne megtudni a források, ahonnan adatokat importálhat az Azure Databricks, olvassa el [az Adatforrások az Azure Databricks.](/azure/databricks/data/data-sources/index)
 
 

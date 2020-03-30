@@ -1,6 +1,6 @@
 ---
-title: Egyéni HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány hozzáadása – Azure API Management | Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá egyéni HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt az Azure API Managementban.
+title: Egyéni hitelesítésszolgáltatói tanúsítvány hozzáadása – Azure API Management | Microsoft dokumentumok
+description: Ismerje meg, hogyan adhat hozzá egyéni hitelesítésszolgáltatói tanúsítványt az Azure API Managementben.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,52 +13,52 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70073604"
 ---
-# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Egyéni HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány hozzáadása az Azure API Management
+# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Egyéni hitelesítésszolgáltatói tanúsítvány hozzáadása az Azure API Management ben
 
-Az Azure API Management lehetővé teszi HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok telepítését a gépre a megbízható gyökér-és köztes tanúsítványtárolókban. Ezt a funkciót akkor kell használni, ha a szolgáltatások egyéni HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt igényelnek.
+Az Azure API Management lehetővé teszi a hitelesítésszolgáltatói tanúsítványok telepítését a számítógépen a megbízható legfelső szintű és köztes tanúsítványtárolókban. Ezt a funkciót akkor kell használni, ha a szolgáltatásokhoz egyéni hitelesítésszolgáltatói tanúsítvány szükséges.
 
-A cikk bemutatja, hogyan kezelheti a Azure Portal egy Azure API Management Service-példány HITELESÍTÉSSZOLGÁLTATÓI tanúsítványait.
+A cikk bemutatja, hogyan kezelheti az Azure API Management szolgáltatáspéldány hitelesítésszolgáltatói tanúsítványait az Azure Portalon.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>Hitelesítésszolgáltatói tanúsítvány feltöltése
+## <a name="upload-a-ca-certificate"></a><a name="step1"> </a>Hitelesítésszolgáltatói tanúsítvány feltöltése
 
-![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/00.png)
+![Hitelesítésszolgáltatói tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/00.png)
 
-Az új HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány feltöltéséhez kövesse az alábbi lépéseket. Ha még nem hozott létre API Management Service-példányt, tekintse meg az [API Management Service-példány létrehozása](get-started-create-service-instance.md)című oktatóanyagot.
+Új hitelesítésszolgáltatói tanúsítvány feltöltéséhez kövesse az alábbi lépéseket. Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg az [OKTATÓanyag Egy API Management szolgáltatáspéldány létrehozása című témakört.](get-started-create-service-instance.md)
 
-1. Navigáljon az Azure API Management Service-példányhoz a Azure Portal.
+1. Keresse meg az Azure API Management szolgáltatáspéldányát az Azure Portalon.
 
-2. Válassza ki a **hitelesítésszolgáltatói tanúsítványok** lehetőséget a menüből.
+2. Válassza a **hitelesítésszolgáltatói tanúsítványok parancsát** a menüből.
 
 3. Kattintson a **+ Hozzáadás** gombra.  
 
-    ![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/01.png)  
+    ![Hitelesítésszolgáltatói tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/01.png)  
 
-4. Keresse meg a tanúsítványt, és döntse el a tanúsítványtárolót. Csak a nyilvános kulcsra van szükség, ezért a jelszó megadása nem kötelező.
+4. Keresse meg a tanúsítványt, és döntse el a tanúsítványtárolót. Csak a nyilvános kulcs szükséges, így a jelszó nem szükséges.
 
-    ![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/02.png)  
+    ![Hitelesítésszolgáltatói tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/02.png)  
 
-5. Kattintson a **Save** (Mentés) gombra. A művelet eltarthat néhány percig.
+5. Kattintson a **Mentés** gombra. A művelet eltarthat néhány percig.
 
-    ![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/03.png)  
+    ![Hitelesítésszolgáltatói tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
-> A hitelesítésszolgáltatói tanúsítványt a `New-AzApiManagementSystemCertificate` PowerShell-paranccsal töltheti fel.
+> Hitelesítésszolgáltatói tanúsítványt a `New-AzApiManagementSystemCertificate` Powershell paranccsal tölthet fel.
 
-## <a name="step1a"> </a>Ügyféltanúsítvány törlése
+## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>Ügyféltanúsítvány törlése
 
-A tanúsítvány törléséhez kattintson a helyi menü **...** lehetőségre, és válassza a **Törlés** lehetőséget a tanúsítvány mellett.
+Tanúsítvány törléséhez kattintson a helyi **menüre ...** és válassza a **Törlés** parancsot a tanúsítvány mellett.
 
-![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok törlése](media/api-management-howto-ca-certificates/04.png)  
+![Hitelesítésszolgáltatói tanúsítványok törlése](media/api-management-howto-ca-certificates/04.png)  
 
 [Upload a CA certificate]: #step1
 [Delete a CA certificate]: #step1a

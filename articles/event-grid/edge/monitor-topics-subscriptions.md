@@ -1,5 +1,5 @@
 ---
-title: Témakörök és esemény-előfizetések figyelése – Azure Event Grid IoT Edge | Microsoft Docs
+title: Témakörök és esemény-előfizetések figyelése – Azure Event Grid IoT Edge | Microsoft dokumentumok
 description: Témakörök és esemény-előfizetések figyelése
 author: banisadr
 ms.author: babanisa
@@ -9,19 +9,19 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086673"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Témakörök és esemény-előfizetések figyelése
 
-A Event Grid on Edge számos mérőszámot nyújt a témakörökhöz és az esemény-előfizetésekhez a [Prometheus kiállítási formátumában](https://prometheus.io/docs/instrumenting/exposition_formats/). Ez a cikk a rendelkezésre álló mérőszámokat és azok engedélyezésének módját ismerteti.
+Az Event Grid on Edge számos metrikát tár fel a témakörökhöz és az esemény-előfizetésekhez a [Prometheus kiállítás iszszert formátumban.](https://prometheus.io/docs/instrumenting/exposition_formats/) Ez a cikk ismerteti a rendelkezésre álló metrikákat, és hogyan engedélyezheti őket.
 
-## <a name="enable-metrics"></a>Metrikák engedélyezése
+## <a name="enable-metrics"></a>Mérőszámok engedélyezése
 
-Konfigurálja a modult a metrikák kibocsátására úgy, hogy a `metrics__reporterType` környezeti változót `prometheus`re állítja be a tároló létrehozási beállításaiban:
+Konfigurálja a modult metrikák kibocsátására úgy, hogy a környezeti változót `metrics__reporterType` `prometheus` a tárolóban létre szeretné hozni a beállításokat:
 
  ```json
         {
@@ -40,32 +40,32 @@ Konfigurálja a modult a metrikák kibocsátására úgy, hogy a `metrics__repor
         }
  ```    
 
-A metrikák a HTTP-n és a https-ben `4438/metrics` modul `5888/metrics`én lesznek elérhetők. Például `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` a http-hez. Ezen a ponton a metrikák modulja lekérdezheti a végpontot, hogy összegyűjtse a mérőszámokat az ebben a [példában szereplő architektúrában](https://github.com/veyalla/ehm).
+Metrikák lesz `5888/metrics` elérhető a modul `4438/metrics` http és https. Például `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` a http. Ezen a ponton egy metrikamodul lejátszhatja a végpontot a metrikák gyűjtéséhez ebben a [példában architektúrában.](https://github.com/veyalla/ehm)
 
 ## <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
-A témakörök és az esemény-előfizetések mérőszámokat bocsátanak ki, hogy betekintést nyújtson az események kézbesítésére és a modulok teljesítményére.
+A témakörök és az esemény-előfizetések egyaránt metrikákat bocsátanak ki, hogy betekintést nyújtson az események kézbesítésébe és a modul teljesítményébe.
 
-### <a name="topic-metrics"></a>Témakör metrikái
-
-| Metrika | Leírás |
-| ------ | ----------- |
-| EventsReceived | A témakörben közzétett események száma
-| UnmatchedEvents | A témakörben közzétett események száma, amelyek nem felelnek meg az esemény-előfizetésnek, és el lettek dobva
-| SuccessRequests | A témakörben fogadott bejövő közzétételi kérelmek száma
-| SystemErrorRequests | A bejövő közzétételi kérelmek száma belső rendszerhiba miatt sikertelen volt.
-| UserErrorRequests | A bejövő közzétételi kérelmek száma felhasználói hiba miatt meghiúsult, például helytelenül formázott JSON
-| SuccessRequestLatencyMs | Kérelemre adott válasz késésének közzététele ezredmásodpercben
-
-
-### <a name="event-subscription-metrics"></a>Esemény-előfizetési metrikák
+### <a name="topic-metrics"></a>Témakör metrikák
 
 | Metrika | Leírás |
 | ------ | ----------- |
-| deliverySuccessCounts | A konfigurált végponthoz sikeresen küldött események száma
-| deliveryFailureCounts | A konfigurált végpontnak sikertelenül küldött események száma
-| deliverySuccessLatencyMs | Az események késése (ezredmásodpercben) sikeresen lefutott
-| deliveryFailureLatencyMs | Az események kézbesítési hibáinak késése ezredmásodpercben
-| systemDelayForFirstAttemptMs | Események rendszerkésleltetése az első kézbesítési kísérlet előtt ezredmásodpercben
-| deliveryAttemptsCount | Esemény kézbesítési kísérletek száma – sikeres és sikertelen
-| expiredCounts | A lejárt és a beállított végpontnak nem továbbított események száma
+| Beérkezett események | A témában közzétett események száma
+| Nem egyező események | A témakörben közzétett olyan események száma, amelyek nem felelnek meg egy esemény-előfizetésnek, és el vannak dobva
+| SuccessRequests (Sikerkérések) | A témakör által fogadott bejövő közzétételi kérelmek száma
+| SystemErrorRequests | Belső rendszerhiba miatt meghiúsult bejövő közzétételi kérelmek száma
+| UserErrorRequests (UserErrorRequests) | A bejövő közzétételi kérelmek száma nem sikerült felhasználói hiba, például hibásan formázott JSON miatt
+| SuccessRequestLatencyMs | Kérésválasz-késleltetés közzététele ezredmásodpercben
+
+
+### <a name="event-subscription-metrics"></a>Esemény-előfizetési mutatók
+
+| Metrika | Leírás |
+| ------ | ----------- |
+| DeliverySuccessCounts (DeliverySuccessCounts) | A konfigurált végpontra sikeresen kézbesített események száma
+| DeliveryFailureCounts (Kézbesítési hibák száma) | A konfigurált végpontra nem kézbesített események száma
+| DeliverySuccessLatencyMs | Az események késése sikeresen megadva ezredmásodpercben
+| DeliveryFailureLatencyMs | Az események kézbesítési hibáinak késése ezredmásodpercben
+| SystemDelayFor FirstAttemptms | Az események rendszerkésése az első kézbesítési kísérlet előtt ezredmásodpercben
+| DeliveryAttemptsCount között | Eseménykézbesítési kísérletek száma – sikeres ség és sikertelenség
+| ExpiredCounts (Lejárt) | Lejárt és a konfigurált végpontra nem kézbesített események száma

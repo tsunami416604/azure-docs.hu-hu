@@ -1,6 +1,6 @@
 ---
-title: Munkafüzetek Azure Monitor jelentésekhez | Microsoft Docs
-description: Megtudhatja, hogyan használhatja Azure Monitor munkafüzeteket Azure Active Directory jelentésekhez.
+title: Az Azure Monitor jelentéseihez tartozó munkafüzetek | Microsoft dokumentumok
+description: Megtudhatja, hogyan használhatja az Azure Monitor munkafüzetek az Azure Active Directory-jelentések.
 services: active-directory
 author: MarkusVi
 manager: daveba
@@ -15,85 +15,85 @@ ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014364"
 ---
-# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez
+# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Az Azure Monitor munkafüzeteinek használata az Azure Active Directory-jelentésekhez
 
 > [!IMPORTANT]
-> A munkafüzet alapjául szolgáló lekérdezések optimalizálásához kattintson a "szerkesztés" gombra, kattintson a Beállítások ikonra, és válassza ki azt a munkaterületet, ahol ezeket a lekérdezéseket futtatni kívánja. Alapértelmezés szerint a munkafüzetek minden olyan munkaterületet kijelölnek, ahol az Azure AD-naplókat irányítja. 
+> A munkafüzet alapjául szolgáló lekérdezések optimalizálásához kattintson a "Szerkesztés" gombra, kattintson a Beállítások ikonra, és válassza ki azt a munkaterületet, ahol futtatni szeretné ezeket a lekérdezéseket. Munkafüzetek alapértelmezés szerint kiválasztja az összes munkaterületet, ahol az Azure AD-naplók at. 
 
-Kívánja:
+Szeretné:
 
-- Megtudhatja, milyen hatással vannak a [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) a felhasználói bejelentkezési élményre?
+- Ismerje meg a [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) hatását a felhasználók bejelentkezési élményére?
 
-- A bejelentkezési hibák elhárításával jobban áttekintheti a szervezet bejelentkezési állapotát, és gyorsan megoldhatja a problémákat?
+- A bejelentkezési hibák elhárításával jobbképet kaphat a szervezet bejelentkezési állapotáról, és gyorsan megoldhatja a problémákat?
 
-- Tudja, kik használják a örökölt hitelesítéseket a környezetbe való bejelentkezéshez? (Az [örökölt hitelesítés blokkolásával](../conditional-access/block-legacy-authentication.md)javíthatja a bérlők védelmét.)
+- Tudja, hogy ki használ örökölt hitelesítéseket a környezetébe való bejelentkezéshez? (Az [örökölt hitelesítés letiltásával](../conditional-access/block-legacy-authentication.md)javíthatja a bérlő védelmét.)
 
-- Ismernie kell a bérlőre vonatkozó feltételes hozzáférési szabályzatok hatását?
+- Szüksége van a feltételes hozzáférési szabályzatok a bérlőben gyakorolt hatásának megértéséhez?
 
-- Szeretné áttekinteni a következőt: bejelentkezési naplók, a munkafüzet azt jelenti, hogy hány felhasználó adta meg vagy tagadta meg a hozzáférést, valamint hogy hány felhasználó megkerüli a feltételes hozzáférési szabályzatokat az erőforrásokhoz való hozzáféréskor?
+- Szeretné áttekinteni: bejelentkezési naplólekérdezések, a munkafüzet jelenti, hogy hány felhasználó kapott vagy megtagadták a hozzáférést, valamint hány felhasználó megkerülte a feltételes hozzáférési házirendeket az erőforrások elérésekor?
 
-- Az alábbiak mélyebb megismerését szeretnék megismerni: a munkafüzet részleteit/feltételeit, hogy a szabályzatok milyen hatással lehetnek az egyes feltételekre, beleértve az eszköz platformját, az eszköz állapotát, az ügyfélalkalmazás, a bejelentkezési kockázat, a hely és az alkalmazás?
+- Szeretne mélyebb ismereteket kidolgozni: a munkafüzet részletei feltételenként, hogy a szabályzat hatása feltételenként is környezetfüggővé lehessen tenni, beleértve az eszközplatformot, az eszközállapotát, az ügyfélalkalmazást, a bejelentkezési kockázatot, a helyet és az alkalmazást?
 
-- Mélyebb betekintést nyerhet a bejelentkezési naplókba, a munkafüzet azt jelenti, hogy hány felhasználó adta meg vagy tagadta meg a hozzáférést, valamint hogy hány felhasználó megkerülte a feltételes hozzáférési szabályzatokat az erőforrások elérésekor.
+- A munkafüzet a bejelentkezési naplólekérdezések mélyebb betekintést nyerhet, így a munkafüzet jelenti, hogy hány felhasználó kapott vagy nem kapott hozzáférést, valamint azt, hogy hány felhasználó kerülte meg a feltételes hozzáférési házirendeket az erőforrások elérésekor.
 
-- A kérdések megválaszolásához Active Directory a munkafüzeteket biztosít a figyeléshez. A [Azure monitor munkafüzetek](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) gazdag interaktív jelentésekben egyesítik a szöveges, elemzési és mérőszámokat, valamint a paramétereket.
+- A kérdések megválaszolása érdekében az Active Directory figyelési munkafüzeteket biztosít. [Az Azure Monitor munkafüzetei](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) a szöveget, az elemzési lekérdezéseket, a metrikákat és a paramétereket gazdag interaktív jelentésekké egyesítik.
 
 
 
 A cikk tartalma:
 
-- Feltételezi, hogy tisztában van azzal, hogyan [hozhat létre interaktív jelentéseket a figyelő munkafüzetek használatával](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+- Feltételezi, hogy ismeri az [interaktív jelentések létrehozásának módját a Monitor munkafüzetek használatával.](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)
 
-- A cikk azt ismerteti, hogyan használhatók a figyelő munkafüzetek a feltételes hozzáférési szabályzatok hatásának megértéséhez, a bejelentkezési hibák elhárításához és a régi hitelesítések azonosításához.
+- A cikk azt ismerteti, hogy miként használhatja a Munkafüzetek figyelése a feltételes hozzáférési házirendek hatását, a bejelentkezési hibák elhárítását és az örökölt hitelesítések azonosítását.
  
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A figyelő munkafüzetek használatához a következőkre lesz szüksége:
+A Monitor munkafüzetek használatához a következőkre van szükség:
 
-- Egy Active Directory bérlő prémium szintű (P1 vagy P2) licenccel. Megtudhatja, hogyan [szerezhet be prémium szintű licencet](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+- Prémium (P1 vagy P2) licenccel rendelkező Active Directory-bérlő. Ismerje meg, hogyan [juthat hozzá prémium licenchez.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)
 
-- [Log Analytics munkaterület](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+- [A Log Analytics munkaterület](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-- [Hozzáférés](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) a log Analytics-munkaterülethez
-- A következő szerepkörök a Azure Active Directoryban (ha a Log Analytics a Azure Active Directory portálon keresztül éri el)
+- [Hozzáférés](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) a naplóelemzési munkaterülethez
+- Szerepkörök követése az Azure Active Directoryban (ha az Azure Active Directory portálon keresztül éri el a Log Analytics szolgáltatást)
     - Biztonsági rendszergazda
     - Biztonsági olvasó
-    - Jelentés olvasója
+    - Jelentésolvasó
     - Globális rendszergazda
 
 ## <a name="roles"></a>Szerepkörök
-A következő szerepkörök egyikének kell lennie, valamint hozzáféréssel kell rendelkeznie az [alapul szolgáló log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) munkaterülethez a munkafüzetek kezeléséhez:
+A munkafüzetek kezeléséhez a következő szerepkörök egyikében kell lennie, valamint [hozzáféréssel](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) kell rendelkeznie az alapul szolgáló Log Analytics-munkaterülethez:
 -   Globális rendszergazda
 -   Biztonsági rendszergazda
 -   Biztonsági olvasó
--   Jelentés olvasója
+-   Jelentésolvasó
 -   Alkalmazás-rendszergazda
 
 ## <a name="workbook-access"></a>Munkafüzet-hozzáférés 
 
-A munkafüzetek eléréséhez:
+Munkafüzetek elérése:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-1. Navigáljon **Azure Active Directory** >  > **munkafüzetek** **figyelése** . 
+1. Nyissa meg az **Azure Active Directory** > **figyelési** > **munkafüzeteit.** 
 
-1. Válasszon ki egy jelentést vagy sablont, vagy kattintson a **Megnyitás**gombra az eszköztáron. 
+1. Jelöljön ki egy jelentést vagy sablont, vagy az eszköztáron válassza a **Megnyitás**gombot. 
 
-![A Azure Monitor-munkafüzetek keresése az Azure AD-ben](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
+![Az Azure Monitor munkafüzeteinek megkeresése az Azure AD-ben](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Bejelentkezési elemzés
 
-A bejelentkezési elemzési munkafüzet eléréséhez a **használat** szakaszban válassza a **bejelentkezések**lehetőséget. 
+A bejelentkezési elemző munkafüzet eléréséhez a **Használat** csoportban válassza a **Bejelentkezések**lehetőséget. 
 
-Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
+Ez a munkafüzet a következő bejelentkezési trendeket mutatja be:
 
 - Minden bejelentkezés
 
@@ -114,7 +114,7 @@ Az egyes trendeket a következő kategóriák szerint szűrheti:
 ![Bejelentkezési elemzés](./media/howto-use-azure-monitor-workbooks/43.png)
 
 
-Minden egyes trend esetében a következő kategóriák szerinti részletezést kapja:
+Az egyes tirányzatok hoz egy bontást a következő kategóriák szerint:
 
 - Hely
 
@@ -125,12 +125,12 @@ Minden egyes trend esetében a következő kategóriák szerinti részletezést 
     ![Bejelentkezések eszköz szerint](./media/howto-use-azure-monitor-workbooks/46.png)
 
 
-## <a name="sign-ins-using-legacy-authentication"></a>Korábbi hitelesítéssel történő bejelentkezések 
+## <a name="sign-ins-using-legacy-authentication"></a>Bejelentkezések örökölt hitelesítéssel 
 
 
-Ha a munkafüzetet [örökölt hitelesítést](../conditional-access/block-legacy-authentication.md)használó bejelentkezésekhez szeretné elérni, a **használat** szakaszban válassza a **Bejelentkezés örökölt hitelesítés használatával**lehetőséget. 
+Az [örökölt hitelesítést](../conditional-access/block-legacy-authentication.md)használó bejelentkezések munkafüzetének eléréséhez a **Használat** csoportban válassza a **Bejelentkezések örökölt hitelesítéssel**lehetőséget. 
 
-Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
+Ez a munkafüzet a következő bejelentkezési trendeket mutatja be:
 
 - Minden bejelentkezés
 
@@ -150,18 +150,18 @@ Az egyes trendeket a következő kategóriák szerint szűrheti:
 ![Bejelentkezések örökölt hitelesítéssel](./media/howto-use-azure-monitor-workbooks/47.png)
 
 
-Az egyes trendek esetében az alkalmazás és a protokoll részletezést kap.
+Minden trend, kapsz egy bontást az alkalmazás és a protokoll.
 
 ![Örökölt hitelesítési bejelentkezések alkalmazás és protokoll szerint](./media/howto-use-azure-monitor-workbooks/48.png)
 
 
 
-## <a name="sign-ins-by-conditional-access"></a>Bejelentkezések feltételes hozzáféréssel 
+## <a name="sign-ins-by-conditional-access"></a>Bejelentkezések feltételes hozzáférés sel 
 
 
-Ha a munkafüzetet a [feltételes hozzáférési házirendek](../conditional-access/overview.md)alapján szeretné elérni a bejelentkezésekhez, a **feltételes hozzáférés** szakaszban válassza a **bejelentkezések feltételes hozzáférés alapján**lehetőséget. 
+Ha [feltételes hozzáférési házirendek](../conditional-access/overview.md)szerint szeretne bejelentkezni a munkafüzetben, a **Feltételes hozzáférés** szakaszban válassza a **Bejelentkezések feltételes hozzáféréssel**lehetőséget. 
 
-Ez a munkafüzet a letiltott bejelentkezések trendjét jeleníti meg. Az egyes trendeket a következő kategóriák szerint szűrheti:
+Ez a munkafüzet a letiltott bejelentkezések trendjeit mutatja be. Az egyes trendeket a következő kategóriák szerint szűrheti:
 
 - Időtartomány
 
@@ -172,7 +172,7 @@ Ez a munkafüzet a letiltott bejelentkezések trendjét jeleníti meg. Az egyes 
 ![Bejelentkezés feltételes hozzáféréssel](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
-A letiltott bejelentkezések esetében a feltételes hozzáférési állapot szerinti részletezést kap.
+A letiltott bejelentkezések esetén a feltételes hozzáférés állapota lebontja.
 
 ![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
@@ -181,37 +181,37 @@ A letiltott bejelentkezések esetében a feltételes hozzáférési állapot sze
 
 ### <a name="overview"></a>Áttekintés
 
-A munkafüzetek olyan bejelentkezési naplózási lekérdezéseket tartalmaznak, amelyek segítségével a rendszergazdák megfigyelheti a feltételes hozzáférési házirendek hatását a bérlőn. Azt is megteheti, hogy hány felhasználó adta meg vagy tagadta meg a hozzáférést. A munkafüzet azt mutatja be, hogy hány felhasználónál lehet megkerülni a feltételes hozzáférési szabályzatokat a bejelentkezés időpontjában a felhasználók attribútumai alapján. A szolgáltatás minden feltétel részleteit tartalmazza, hogy a szabályzatok milyen hatással lehetnek a feltételekre, beleértve az eszköz platformját, az eszköz állapotát, az ügyfélalkalmazás, a bejelentkezési kockázat, a hely és az alkalmazás állapotát.
+A munkafüzetek bejelentkezési naplólekérdezéseket tartalmaznak, amelyek segítségével a rendszergazdák figyelhetik a feltételes hozzáférési házirendek hatását a bérlőben. Arról is beszámolhatsz, hogy hány felhasználó kapott volna hozzáférést vagy tagadott volna meg. A munkafüzet betekintést nyújt arra vonatkozóan, hogy hány felhasználó került volna meg feltételes hozzáférési házirendeket az adott felhasználó attribútumai alapján a bejelentkezés időpontjában. Feltételenként részleteket tartalmaz, így a szabályzat hatása feltételenként is környezetfüggővé válhat, beleértve az eszközplatformot, az eszközállapotát, az ügyfélalkalmazást, a bejelentkezési kockázatot, a helyet és az alkalmazást.
 
 ### <a name="instructions"></a>Utasítások 
-Ha a munkafüzetet a feltételes hozzáférési információhoz szeretné elérni, válassza a feltételes hozzáférésről szóló szakaszban található **feltételes hozzáférési információ** munkafüzetet. Ez a munkafüzet az egyes feltételes hozzáférési házirendek várható hatását mutatja be a bérlőben. Válasszon ki egy vagy több feltételes hozzáférési szabályzatot a legördülő listából, és szűkítse a munkafüzet hatókörét a következő szűrők alkalmazásával: 
+A feltételes hozzáférés-elemzési adatok munkafüzetének eléréséhez jelölje ki a **Feltételes hozzáférés elemzési** adatok munkafüzetet a Feltételes hozzáférés szakaszban. Ez a munkafüzet a bérlő ben az egyes feltételes hozzáférési házirendek várható hatását mutatja. Jelöljön ki egy vagy több feltételes hozzáférési házirendet a legördülő listából, és szűkítse a munkafüzet hatókörét a következő szűrők alkalmazásával: 
 
 - **Időtartomány**
 
-- **Felhasználói**
+- **Felhasználó**
 
-- **Apps**
+- **Alkalmazások**
 
 - **Adatnézet**
 
 ![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
-A hatás összegzése azon felhasználók vagy bejelentkezések számát jeleníti meg, amelyekhez a kiválasztott szabályzatok adott eredménnyel rendelkeztek. Az összeg azon felhasználók vagy bejelentkezések száma, amelyekhez a kiválasztott szabályzatokat kiértékelték a kiválasztott időtartományban. Kattintson egy csempére a munkafüzetben lévő adatértékek szűréséhez. 
+A Hatásösszegzés azoknak a felhasználóknak vagy bejelentkezéseknek a számát jeleníti meg, amelyekhez a kiválasztott házirendek adott eredményt kaptak. Összesen azoknak a felhasználóknak vagy bejelentkezéseknek a száma, amelyeknél a kiválasztott házirendeket kiértékelték a kiválasztott időtartományban. Kattintson egy csempére, hogy a munkafüzet ben lévő adatokat az adott eredménytípus szerint szűrje. 
 
 ![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
-Ez a munkafüzet azt is mutatja, hogy a kiválasztott házirendek milyen hatással vannak az egyes hat feltételek szerinti bontásra: 
+Ez a munkafüzet a kiválasztott házirendek hatását is bemutatja hat feltétel szerinti bontásban: 
 - **Eszköz állapota**
-- **Eszközplatform**
+- **Eszköz platform**
 - **Ügyfélalkalmazások**
 - **Bejelentkezési kockázat**
-- **Hely**
+- **Helyen**
 - **Alkalmazások**
 
 ![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
-Egyéni bejelentkezéseket is megvizsgálhat, a munkafüzetben kiválasztott paraméterek szerint szűrve. Kereshet egyéni felhasználókat, a bejelentkezési gyakoriság szerint rendezve, és megtekintheti a hozzájuk tartozó bejelentkezési eseményeket. 
+A munkafüzetben kiválasztott paraméterek szerint szűrve az egyes bejelentkezéseket is megvizsgálhatja. Keresse meg az egyes felhasználók, a bejelentkezési gyakoriság szerint rendezve, és tekintse meg a megfelelő bejelentkezési eseményeket. 
 
 ![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
@@ -219,9 +219,9 @@ Egyéni bejelentkezéseket is megvizsgálhat, a munkafüzetben kiválasztott par
 
 
 
-## <a name="sign-ins-by-grant-controls"></a>Bejelentkezések engedélyezési vezérlőkkel
+## <a name="sign-ins-by-grant-controls"></a>Bejelentkezések támogatási vezérlők kel
 
-Ha [vezérlőket ad](../conditional-access/controls.md)meg a bejelentkezéshez, a **feltételes hozzáférés** szakaszban válassza a **bejelentkezések engedélyezése vezérlők alapján**lehetőséget. 
+Ha [támogatási vezérlőkkel](../conditional-access/controls.md)szeretné elérni a munkafüzetet a bejelentkezésekhez, a **Feltételes hozzáférés** szakaszban válassza a **Bejelentkezések a támogatási vezérlőkkel**lehetőséget. 
 
 Ez a munkafüzet a következő letiltott bejelentkezési trendeket mutatja:
 
@@ -229,7 +229,7 @@ Ez a munkafüzet a következő letiltott bejelentkezési trendeket mutatja:
  
 - Használati feltételek megkövetelése
 
-- Adatvédelmi nyilatkozat szükséges
+- Adatvédelmi nyilatkozat megkövetelése
 
 - Egyéb
 
@@ -242,28 +242,28 @@ Az egyes trendeket a következő kategóriák szerint szűrheti:
 
 - Felhasználók
 
-![Bejelentkezések engedélyezési vezérlőkkel](./media/howto-use-azure-monitor-workbooks/50.png)
+![Bejelentkezések támogatási vezérlők kel](./media/howto-use-azure-monitor-workbooks/50.png)
 
 
-Az egyes trendek esetében az alkalmazás és a protokoll részletezést kap.
+Minden trend, kapsz egy bontást az alkalmazás és a protokoll.
 
-![Legutóbbi bejelentkezések részletezése](./media/howto-use-azure-monitor-workbooks/51.png)
-
-
+![A legutóbbi bejelentkezések bontása](./media/howto-use-azure-monitor-workbooks/51.png)
 
 
-## <a name="sign-ins-failure-analysis"></a>Sikertelen bejelentkezések elemzése
 
-A **bejelentkezések sikertelen elemzése** munkafüzettel a következő hibákkal lehet elhárítani a hibákat:
+
+## <a name="sign-ins-failure-analysis"></a>Bejelentkezési hibák elemzése
+
+A **Bejelentkezési hibák elemzésére használt** munkafüzet segítségével elháríthatja a következő kkel kapcsolatos hibákat:
 
 - Bejelentkezések
-- Feltételes hozzáférési szabályzatok
+- Feltételes hozzáférési házirendek
 - Örökölt hitelesítés 
 
 
-A bejelentkezés feltételes hozzáférési adatai alapján való eléréséhez a **hibakeresés** szakaszban válassza az **örökölt hitelesítés használatával történő bejelentkezések**lehetőséget. 
+A feltételes hozzáférés adatainak bejelentkezéséhez a **Hibaelhárítás** csoportban válassza a **Bejelentkezések örökölt hitelesítéssel**lehetőséget. 
 
-Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
+Ez a munkafüzet a következő bejelentkezési trendeket mutatja be:
 
 - Minden bejelentkezés
 
@@ -282,24 +282,24 @@ Az egyes trendeket a következő kategóriák szerint szűrheti:
 
 - Felhasználók
 
-![Bejelentkezések hibaelhárítása](./media/howto-use-azure-monitor-workbooks/52.png)
+![Bejelentkezések – hibaelhárítás](./media/howto-use-azure-monitor-workbooks/52.png)
 
 
-Ha segítségre van szüksége a bejelentkezések hibakereséséhez, Azure Monitor a következő kategóriák szerinti bontást biztosít:
+A bejelentkezések hibaelhárításának segítése érdekében az Azure Monitor a következő kategóriák szerinti bontást biztosít:
 
-- Leggyakoribb hibák
+- A legfontosabb hibák
 
-    ![Leggyakoribb hibák összefoglalása](./media/howto-use-azure-monitor-workbooks/53.png)
+    ![A legfontosabb hibák összefoglalása](./media/howto-use-azure-monitor-workbooks/53.png)
 
 - Felhasználói műveletre váró bejelentkezések
 
-    ![Felhasználói műveletre váró bejelentkezések összefoglalása](./media/howto-use-azure-monitor-workbooks/54.png)
+    ![A felhasználói műveletre váró bejelentkezések összegzése](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Interaktív jelentéseket hozhat létre a munkafüzetek figyelése használatával](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[Interaktív jelentéseket hozhat létre a Munkafüzetek figyelése segítségével.](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)

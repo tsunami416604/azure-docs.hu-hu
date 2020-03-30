@@ -1,6 +1,6 @@
 ---
-title: Azure import/export-feladatok állapotának megtekintése | Microsoft Docs
-description: Megtudhatja, hogyan tekintheti meg az importálási/exportálási feladatok és a használt meghajtók állapotát.
+title: Az Azure importálási/exportálási feladatainak állapotának megtekintése | Microsoft dokumentumok
+description: További információ az importálási/exportálási feladatok és a használt meghajtók állapotának megtekintéséről.
 author: alkohli
 services: storage
 ms.service: storage
@@ -9,75 +9,75 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72821442"
 ---
-# <a name="view-the-status-of-azure-importexport-jobs"></a>Azure-beli importálási/exportálási feladatok állapotának megtekintése
+# <a name="view-the-status-of-azure-importexport-jobs"></a>Az Azure Import/Export-feladatok állapotának megtekintése
 
-Ez a cikk azt ismerteti, hogyan lehet megtekinteni a meghajtó és a feladat állapotát az Azure import/export feladatok számára. Az Azure import/export szolgáltatás használatával nagy mennyiségű adatok biztonságosan vihetők át az Azure-Blobokra és a Azure Filesra. A szolgáltatás az Azure Blob Storage-ból származó adatok exportálására is használható.  
+Ez a cikk az Azure importálási/exportálási feladatok meghajtó- és feladatállapotának megtekintésével kapcsolatos információkat tartalmaz. Az Azure importálási/exportálási szolgáltatás segítségével biztonságosan továbbíthat nagy mennyiségű adatot az Azure Blobs és az Azure Files. A szolgáltatás is használják az adatok exportálására az Azure Blob storage.The service is used to export data from Azure Blob storage.  
 
-## <a name="view-job-and-drive-status"></a>Feladatok és meghajtók állapotának megtekintése
-Az importálási vagy exportálási feladatok állapotát a Azure Portal követheti nyomon. Kattintson az **Importálás/exportálás** fülre. A feladatok listája megjelenik az oldalon.
+## <a name="view-job-and-drive-status"></a>Feladat és meghajtó állapotának megtekintése
+Az importálási vagy exportálási feladatok állapotát az Azure Portalon követheti nyomon. Kattintson az **Importálás/exportálás** fülre. A feladatok listája megjelenik az oldalon.
 
-![Feladatok állapotának megtekintése](./media/storage-import-export-service/jobstate.png)
+![Feladat állapotának megtekintése](./media/storage-import-export-service/jobstate.png)
 
 ## <a name="view-job-status"></a>Feladat állapotának megtekintése
 
-A következő feladatok egyike jelenik meg attól függően, hogy a meghajtó hol található a folyamatban.
+Attól függően, hogy a meghajtó hol van a folyamatban, az alábbi feladatállapotok egyike jelenik meg.
 
-| Feladatok állapota | Leírás |
+| Feladat állapota | Leírás |
 |:--- |:--- |
-| Létrehozás | A feladatok létrehozása után az állapota a **Létrehozás**értékre van állítva. Amíg a feladatsor **létrehozza** az állapotot, az importálási/exportálási szolgáltatás feltételezi, hogy a meghajtókat nem szállították el az adatközpontba. A feladatok akár két hétig is maradhatnak ebben az állapotban, ami után a szolgáltatás automatikusan törli azt. |
-| Szállítási | A csomag szállítása után frissítenie kell a követési információkat a Azure Portal.  Ez a feladatot **szállítási** állapotba kapcsolja. A feladatok legfeljebb két hétig maradnak a **szállítási** állapotban. 
-| Megérkezett | Miután az összes meghajtó beérkezett az adatközpontba, a feladatsor értéke **fogadott**. |
-| Átadó | Ha legalább egy meghajtó megkezdte a feldolgozást, a feladattípus az **átvitelre**van beállítva. További információért lépjen a [meghajtó állapota](#view-drive-status)elemre. |
-| Csomagolás | Miután az összes meghajtó befejezte a feldolgozást, a rendszer **csomagolási** állapotba helyezi a feladatot, amíg a meghajtókat vissza nem szállítja. |
-| Befejezve | Miután az összes meghajtót visszaküldi a rendszer, ha a feladatot hibák nélkül végezte el, a rendszer **Befejezettre**állítja a feladatot. A feladatot a rendszer a **befejezett** állapot 90 napja után automatikusan törli. |
-| zárt | Miután az összes meghajtót visszaküldi Önnek, ha hiba történt a feladatok feldolgozásakor, a rendszer **Lezártra**állítja a feladatot. A feladatot a rendszer a 90 nap után automatikusan törli a **lezárt** állapotban. |
+| Létrehozás | A feladat létrehozása után az állapota **Létrehozás.** Amíg a feladat **létrehozási** állapotban van, az Importálás/exportálás szolgáltatás feltételezi, hogy a meghajtókat nem szállították az adatközpontba. Egy feladat legfeljebb két hétig maradhat ebben az állapotban, majd a szolgáltatás automatikusan törli azt. |
+| Shipping | A csomag szállítása után frissítenie kell a nyomon követési információkat az Azure Portalon.  Ez a feladatot szállítási állapottá **alakítja.** A munka legfeljebb két hétig a **szállítási** állapotban marad. 
+| Megérkezett | Miután az összes meghajtó tanévenként érkezett az adatközpontba, a feladat állapota **Beérkezett**lesz állítva. |
+| Átvitele | Ha legalább egy meghajtó feldolgozása megkezdődött, a feladat állapota **Átkerülése**lesz. További információ: [Meghajtó-állapotok](#view-drive-status). |
+| Csomagolás | Miután az összes meghajtó feldolgozása befejeződött, a feladat **csomagolási** állapotba kerül, amíg a meghajtókat vissza nem szállítják Önnek. |
+| Befejezve | Miután az összes meghajtót visszaküldték Önnek, ha a feladat hiba nélkül befejeződött, akkor a feladat **befejeződött**. A feladat automatikusan törlődik 90 nap után a **Befejezett** állapotban. |
+| Lezárt | Miután az összes meghajtót visszaszállítják Önnek, ha a feladat feldolgozása során bármilyen hiba történt, a feladat **zárt**. A feladat automatikusan törlődik 90 nap után **zárt** állapotban. |
 
 ## <a name="view-drive-status"></a>A meghajtók állapotának megtekintése
 
-Az alábbi táblázat az egyes meghajtók életciklusát mutatja be az importálási vagy exportálási feladatokhoz való áttérés során. A feladatok egyes meghajtóinak aktuális állapota a Azure Portal látható.
+Az alábbi táblázat az egyes meghajtók életciklusát ismerteti, ahogy átvált egy importálási vagy exportálási feladaton keresztül. A feladat egyes meghajtóinak aktuális állapota az Azure Portalon látható.
 
-A következő táblázat ismerteti az egyes állapotokat, amelyeket a feladatok egyes meghajtói továbbítanak.
+Az alábbi táblázat azegyes állapotokat ismerteti, amelyeken a feladat egyes meghajtói áthaladhatnak.
 
 | Meghajtó állapota | Leírás |
 |:--- |:--- |
-| Megadott | Importálási feladatokhoz, ha a feladatot a Azure Portal hozza létre, a meghajtó kezdeti állapota meg van **adva**. Exportálási feladatokhoz, mivel a rendszer nem ad meg meghajtót a feladatok létrehozásakor, a rendszer a kezdeti meghajtó állapotát **fogadja**. |
-| Megérkezett | A meghajtó átvált a **fogadott** állapotba, amikor az importálási/exportálási szolgáltatás feldolgozta az importálási feladatokhoz a hajózási vállalattól érkezett meghajtókat. Exportálási feladatok esetén a kezdeti meghajtó állapota a **fogadott** állapot. |
-| NeverReceived | A meghajtó a **NeverReceived** állapotba kerül, amikor a csomag egy adott feladatokhoz érkezik, de a csomag nem tartalmazza a meghajtót. A meghajtó akkor is ebbe az állapotba kerül, ha két hét telt el, mivel a szolgáltatás megkapta a szállítási adatokat, de a csomag még nem érkezett meg az adatközpontban. |
-| Átadó | A meghajtó áthelyezi az **átadási** állapotba, amikor a szolgáltatás megkezdi az adatok átvitelét a meghajtóról az Azure Storage-ba. |
-| Befejezve | A meghajtó a **befejezett** állapotba kerül, ha a szolgáltatás sikeresen áthelyezte az összes olyan hibát, amely hibák nélkül történt.
-| CompletedMoreInfo | A meghajtó a **CompletedMoreInfo** állapotba kerül, amikor a szolgáltatás valamilyen hibát észlelt az adatoknak a vagy a meghajtóra történő másolása közben. Az információ tartalmazhat hibákat, figyelmeztetéseket és tájékoztató üzeneteket a Blobok felülírásával kapcsolatban.
-| ShippedBack | A meghajtó a **ShippedBack** állapotba kerül, amikor az adatközpontból a visszaküldési címnek visszaszállították. |
+| Megadott | Importálási feladat esetén, amikor a feladat az Azure Portalon jön létre, a meghajtó kezdeti állapota **megadva van.** Exportálási feladat esetén, mivel a feladat létrehozásakor nincs megadva meghajtó, a kezdeti meghajtóállapota **Beérkezett.** |
+| Megérkezett | A meghajtó **átvált a Beérkezett** állapotba, amikor az Importálás/exportálás szolgáltatás feldolgozta a hajózási társaságtól importálási feladathoz kapott meghajtókat. Exportálási feladat esetén a kezdeti meghajtóállapota a **Beérkezett** állapot. |
+| Soha nem érkezett | A meghajtó a **NeverReceived** állapotba kerül, amikor egy feladat csomagja megérkezik, de a csomag nem tartalmazza a meghajtót. A meghajtó is ebbe az állapotba kerül, ha már két hét telt el azóta, hogy a szolgáltatás megkapta a szállítási információkat, de a csomag még nem érkezett meg az adatközpontba. |
+| Átvitele | A meghajtó átkerül az **átviteli** állapotba, amikor a szolgáltatás elkezdi átvinni az adatokat a meghajtóról az Azure Storage-ba. |
+| Befejezve | A meghajtó **a Befejezett** állapotba kerül, ha a szolgáltatás hiba nélkül sikeresen átvitte az összes adatot.
+| CompletedMoreInfo | A meghajtó **az CompletedMoreInfo** állapotba kerül, ha a szolgáltatás problémákat észlelt az adatok nak a meghajtóról vagy a meghajtóra történő másolása közben. Az információk tartalmazhatnak hibákat, figyelmeztetéseket vagy a blobok felülírásával kapcsolatos tájékoztató üzeneteket.
+| Visszaszállítás | A meghajtó akkor kerül a **Visszaszállítás** állapotba, ha az adatközpontból visszaszállították a feladó címére. |
 
-Ez a rendszerkép a Azure Portal egy példaként szolgáló feladatokhoz tartozó meghajtó állapotát jeleníti meg:
+Ez a lemezkép az Azure Portalon egy példafeladat meghajtóállapotát jeleníti meg:
 
 ![Meghajtó állapotának megtekintése](./media/storage-import-export-service/drivestate.png)
 
-Az alábbi táblázat a meghajtó meghibásodási állapotait és az egyes állapotokhoz végrehajtott műveleteket ismerteti.
+Az alábbi táblázat ismerteti a meghajtó meghibásodási állapotait és az egyes állapotok esetében végrehajtott műveleteket.
 
-| Meghajtó állapota | Esemény | Megoldás/következő lépés |
+| Meghajtó állapota | Esemény | Felbontás / Következő lépés |
 |:--- |:--- |:--- |
-| NeverReceived | Egy **NeverReceived** jelölésű meghajtó (mert nem érkezett a feladatokhoz a feladatainak részeként) egy másik szállítmányban érkezik. | Az operatív csapat áthelyezi a meghajtót a **fogadásba**. |
-| – | Egy olyan meghajtó, amely nem része a feladatoknak, egy másik feladattípus részeként az adatközpontba kerül. | A meghajtó külön meghajtóként van megjelölve, és az eredeti csomaghoz társított feladatok befejezése után visszaadja. |
+| Soha nem érkezett | Egy **NeverReceived** jelölésű meghajtó (mivel nem érkezett meg a feladat szállítmányának részeként) egy másik szállítmányba érkezik. | A műveleti csapat áthelyezi a meghajtót **a Beérkezett**meghajtóra. |
+| N/A | Egy olyan meghajtó, amely nem része egyetlen feladatnak sem, egy másik feladat részeként érkezik az adatközpontba. | A meghajtó egy további meghajtóként van megjelölve, és az eredeti csomaghoz társított feladat befejezésekor visszakapja. |
 
-## <a name="time-to-process-job"></a>A feladatok feldolgozásának ideje
-Az importálási/exportálási feladatok feldolgozásához szükséges idő számos tényezőtől függ, például:
+## <a name="time-to-process-job"></a>Feladat feldolgozásának ideje
+Az importálási/exportálási feladat feldolgozásához szükséges idő számos tényezőtől függ, például:
 
 -  Szállítási idő
 -  Betöltés az adatközpontban
--  A másolandó adatok feladattípusa és mérete
--  Egy adott feladatokban található lemezek száma. 
+-  A feladat típusa és a másolt adatok mérete
+-  Lemezek száma egy feladatban. 
 
-Az importálási/exportálási szolgáltatás nem rendelkezik SLA-val, de a szolgáltatás arra törekszik, hogy a másolást 7 – 10 nappal a lemezek fogadása után végezze el. Az Azure Portalon közzétett állapot mellett a REST API-k a feladatok előrehaladásának nyomon követésére is használhatók. A [feladatok listázása](/previous-versions/azure/dn529083(v=azure.100)) művelet API-hívásának százalékos készültségi paramétere a másolási folyamat százalékos arányát adja meg.
+Az import/exportálás i szolgáltatás nem rendelkezik SLA-val, de a szolgáltatás arra törekszik, hogy a másolatot a lemezek fogadását követő 7–10 napon belül töltse ki. Az Azure Portalon közzétett állapot mellett a REST API-k is használhatók a feladat előrehaladásának nyomon követésére. A [Listafeladatok](/previous-versions/azure/dn529083(v=azure.100)) művelet API-hívásának készültségi szint paramétere biztosítja a másolás százalékos előrehaladását.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A WAImportExport eszköz beállítása](storage-import-export-tool-how-to.md)
-* [Adatok átvitele a AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
-* [Azure importálási REST API minta](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [Adatok átvitele az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
+* [Azure Import Export REST API-minta](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) – a saját AVS-felhő összekötése az Azure-hálózattal az ExpressRoute használatával
-description: Útmutató az AVS Private Cloud Environment Azure-beli virtuális hálózathoz való összekapcsolásához a ExpressRoute használatával
+title: Azure VMware-megoldás a CloudSimple által – Privát felhő csatlakoztatása az Azure-hálózathoz az ExpressRoute használatával
+description: A CloudSimple private cloud környezet csatlakoztatása az Azure virtuális hálózatához az ExpressRoute használatával
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,51 +8,51 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d487794e219f63150142db8df4b0c1abf112947
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9bb68ec68f4de646239477ceeaac50a7a33989fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77015235"
 ---
-# <a name="connect-your-avs-private-cloud-environment-to-the-azure-virtual-network-using-expressroute"></a>Az AVS Private Cloud Environment összekötése az Azure Virtual Network ExpressRoute használatával
+# <a name="connect-your-cloudsimple-private-cloud-environment-to-the-azure-virtual-network-using-expressroute"></a>A CloudSimple privátfelhő-környezet csatlakoztatása az Azure virtuális hálózatához az ExpressRoute használatával
 
-Az AVS Private Cloud az Azure ExpressRoute használatával csatlakoztatható az Azure-beli virtuális hálózathoz. Ez a nagy sávszélességű, kis késleltetésű kapcsolat lehetővé teszi az Azure-előfizetésében futó szolgáltatások elérését az AVS Private Cloud Environment használatával.
+A CloudSimple private cloud az Azure ExpressRoute használatával is csatlakoztatható az Azure virtuális hálózatához.  Ez a nagy sávszélességű, alacsony késésű kapcsolat lehetővé teszi, hogy az Azure-előfizetésében futó szolgáltatásokat a privát felhőkörnyezetből érje el.
 
-A virtuális hálózati kapcsolatok a következőket teszik lehetővé:
+A virtuális hálózati kapcsolat lehetővé teszi a következőket:
 
-* Az Azure-t biztonsági mentési célként használhatja a virtuális gépekhez az AVS Private Cloud-on.
-* KMS-kiszolgálók üzembe helyezése az Azure-előfizetésben az AVS Private Cloud vSAN adattárának titkosításához.
-* Használjon olyan hibrid alkalmazásokat, amelyekben az alkalmazás webes szintje a nyilvános felhőben fut, miközben az alkalmazás-és adatbázis-rétegek a saját AVS-felhőben futnak.
+* Az Azure-t biztonsági mentési célként használhatja a privát felhőben lévő virtuális gépekhez.
+* KmS-kiszolgálók üzembe helyezése az Azure-előfizetésben a private cloud vSAN-adattár titkosításához.
+* Olyan hibrid alkalmazásokat használjon, amelyeken az alkalmazás webes szintje a nyilvános felhőben fut, míg az alkalmazás- és adatbázisszintek a privát felhőben futnak.
 
-![Azure ExpressRoute-kapcsolódás virtuális hálózathoz](media/cloudsimple-azure-network-connection.png)
+![Azure ExpressRoute-kapcsolat a virtuális hálózattal](media/cloudsimple-azure-network-connection.png)
 
-## <a name="set-up-a-virtual-network-connection"></a>Virtuális hálózati kapcsolatok beállítása
+## <a name="set-up-a-virtual-network-connection"></a>Virtuális hálózati kapcsolat beállítása
 
-Az AVS Private Cloud-hoz való virtuális hálózati kapcsolat beállításához szüksége lesz az engedélyezési kulcsra, a társ áramköri URI-ra és az Azure-előfizetéséhez való hozzáférésre. Ezek az információk az AVS-portál Virtual Network csatlakozás lapján érhetők el. Útmutatásért lásd: az [Azure-beli virtuális hálózathoz kapcsolódó információk beszerzése az AVS-kapcsolatok eléréséhez](virtual-network-connection.md). Ha bármilyen problémája van az információ beszerzésével, küldjön egy <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatási kérést</a>.
+A virtuális hálózati kapcsolat beállítása a magánfelhőhöz, szüksége van az engedélyezési kulcs, a társ-áramkörURI-k és az Azure-előfizetéshez való hozzáférés. Ez az információ a CloudSimple portál virtuális hálózati kapcsolatlapján érhető el. További információt az [Azure virtuális hálózat és a CloudSimple-kapcsolat társviszony-létesítési adatainak beszerzése](virtual-network-connection.md)című témakörben talál. Ha bármilyen problémája van az információ megszerzésével, nyújtson be <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatási kérelmet.</a>
 
 > [!TIP]
-> Ha már rendelkezik Azure-beli virtuális hálózattal, átjáró-alhálózattal és virtuális hálózati átjáróval, ugorjon a 4. lépésre.
+> Ha már rendelkezik egy Azure virtuális hálózat, átjáró alhálózat, és a virtuális hálózati átjáró, akkor ugorjon a 4.
 
-1. Hozzon létre egy virtuális hálózatot az Azure-előfizetésében, és ellenőrizze, hogy a kiválasztott címterület különbözik-e az AVS Private-felhő címterület-területtől. Ha már rendelkezik Azure-beli virtuális hálózattal, használhatja a meglévőt. Részletekért lásd: [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/quick-create-portal.md).
-2. Hozza létre az átjáró-alhálózatot az Azure-beli virtuális hálózaton. Ha már rendelkezik átjáró-alhálózattal az Azure-beli virtuális hálózatban, használhatja a meglévőt. Részletekért lásd: [átjáró-alhálózat létrehozása](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet).
-3. Hozza létre a virtuális hálózati átjárót a virtuális hálózaton. Ha meglévő virtuális hálózati átjáróval rendelkezik, használhatja a meglévőt. Részletekért lásd: [a virtuális hálózati átjáró létrehozása](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-virtual-network-gateway).
-4. Hozza létre a kapcsolatot a virtuális hálózat és az AVS Private Cloud között úgy, hogy beváltja az engedélyezési kulcsot a [virtuális hálózat csatlakoztatása egy áramkörhöz – eltérő előfizetéshez](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)című részben leírtak szerint.
+1. Hozzon létre egy virtuális hálózatot az Azure-előfizetésében, és ellenőrizze, hogy a kiválasztott címterület eltér-e a magánfelhő címterétől.  Ha már rendelkezik egy Azure virtuális hálózat, használhatja a meglévőt.  További információt a [Virtuális hálózat létrehozása az Azure Portal használatával című témakörben talál.](../virtual-network/quick-create-portal.md)
+2. Hozza létre az átjáró alhálózatot az Azure virtuális hálózaton.  Ha már rendelkezik egy átjáró alhálózat az Azure virtuális hálózat, használhatja a meglévőt. További információt [az Átjáró alhálózat létrehozása](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet)című témakörben talál.
+3. Hozza létre a virtuális hálózati átjárót a virtuális hálózaton.  Ha meglévő virtuális hálózati átjáróval rendelkezik, használhatja a meglévőt. További információt a Virtuális hálózati átjáró létrehozása című [témakörben talál.](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-virtual-network-gateway)
+4. Hozza létre a kapcsolatot a virtuális hálózat és a magánfelhő között az engedélyezési kulcs beváltásával a [Virtuális hálózat csatlakoztatása egy áramkörhöz - más előfizetéshez](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription).
 
 > [!WARNING]
-> Ha meglévő virtuális hálózati átjárót használ, és egy ExpressRoute-kapcsolattal rendelkezik az AVS ExpressRoute áramkörével megegyező helyen, a kapcsolat nem lesz létrehozva. Hozzon létre egy új virtuális hálózatot, és kövesse az előző lépéseket.
+> Ha egy meglévő virtuális hálózati átjárót használ, és expressroute-kapcsolattal rendelkezik a CloudSimple ExpressRoute-kapcsolattal azonos helyen, a kapcsolat nem jön létre.  Hozzon létre egy új virtuális hálózatot, és kövesse az előző lépéseket.
 
-## <a name="test-the-virtual-network-connection"></a>A virtuális hálózati kapcsolatok tesztelése
+## <a name="test-the-virtual-network-connection"></a>A virtuális hálózati kapcsolat tesztelése
 
-A létrehozást követően a **Tulajdonságok** elemre kattintva megtekintheti a kapcsolatok **állapotát.** Az állapot és a kiépítési állapot megjelenítésének **sikeresnek**kell lennie.
+A kapcsolat létrehozása után a Beállítások csoport **tulajdonságok** parancsára kattintva ellenőrizheti a kapcsolat **állapotát.**  A jogállás és a kiépítési állapot nak sikeresnek kell **lennie.**
 
-![A kapcsolatok állapota](media/azure-expressroute-connection.png)
+![Kapcsolat állapota](media/azure-expressroute-connection.png)
 
-A virtuális hálózati kapcsolatok tesztelése:
+A virtuális hálózati kapcsolat tesztelése:
 
 1. Hozzon létre egy virtuális gépet az Azure-előfizetésében.
-2. Az AVS Private Cloud vCenter IP-címének megkeresése (tekintse meg az üdvözlő e-mailt).
-3. Pingelje Felhőbeli vCenter az Azure Virtual Networkben létrehozott virtuális gépről.
-4. Az Azure-beli virtuális gép pingelése az AVS Private Cloud vCenter futó virtuális gépről.
+2. Keresse meg a Private Cloud vCenter IP-címét (olvassa el az üdvözlő e-mailt).
+3. Pingelheti a Cloud vCenter-t az Azure virtuális hálózatában létrehozott virtuális gépről.
+4. Pingelheti az Azure virtuális gépét a privát felhőbeli vCenterben futó virtuális gépről.
 
-Ha problémák merülnek fel a kapcsolat létrehozásakor, küldjön egy <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatási kérést</a>.
+Ha bármilyen probléma merül fel a kapcsolat létesítése során, nyújtson be <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatási kérelmet.</a>

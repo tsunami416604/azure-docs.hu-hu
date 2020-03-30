@@ -1,6 +1,6 @@
 ---
-title: Saját üzemeltetésű átjáró kiépítése az Azure API Managementban | Microsoft Docs
-description: Ismerje meg, hogyan helyezhet üzembe egy saját üzemeltetésű átjárót az Azure API Managementban.
+title: Saját üzemeltetésű átjáró kiépítése az Azure API Management ben | Microsoft dokumentumok
+description: Ismerje meg, hogyan építhet ki saját üzemeltetésű átjárót az Azure API Managementben.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,47 +13,47 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075290"
 ---
-# <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Saját üzemeltetésű átjáró kiépítése az Azure API Management
+# <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Saját üzemeltetésű átjáró kiépítése az Azure API Managementben
 
-Az átjáró erőforrásának az Azure API Management-példányban való kiépítése a saját üzemeltetésű átjáró üzembe helyezésének előfeltétele. Ez a cikk végigvezeti az átjáró-erőforrások API Managementban való kiépítésének lépésein.
+Egy átjáró-erőforrás kiépítése az Azure API Management-példányban előfeltétele egy saját üzemeltetett átjáró üzembe helyezéséhez. Ez a cikk bemutatja az API-kezelés átjáró-erőforrás kiépítésének lépéseit.
 
 > [!NOTE]
-> A saját üzemeltetésű átjáró funkció előzetes verzióban érhető el. Az előzetes verzió ideje alatt a saját üzemeltetésű átjáró csak a fejlesztői és prémium szinteken érhető el, díjmentesen. A fejlesztői réteg egyetlen saját üzemeltetésű átjáróra korlátozódik.
+> A saját üzemeltetésű átjárófunkció előzetes verzióban érhető el. Az előzetes verzió során a saját üzemeltetésű átjáró csak a Fejlesztői és prémium szintű csomagokban érhető el további díj nélkül. A fejlesztői szint egyetlen saját üzemeltetésű átjáró-telepítésre korlátozódik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="provision-a-self-hosted-gateway"></a>Saját üzemeltetésű átjáró üzembe helyezése
 
-1. Válassza ki az **átjárókat** a **Beállítások**területen.
+1. Válassza ki az **Átjárók elemet** a **Beállítások csoportban.**
 2. Kattintson a **+Hozzáadás** gombra.
-3. Adja meg az átjáró **nevét** és **régióját** .
+3. Adja meg az átjáró **nevét** és **régióját.**
 > [!TIP]
-> A **régió** adja meg az átjáró-erőforráshoz társítandó átjáró-csomópontok kívánt helyét. Szemantikailag egyenértékű az Azure-erőforrásokhoz társított hasonló tulajdonsággal, de tetszőleges karakterlánc-értéket rendelhet hozzá.
+> **A régió** az átjáró-erőforráshoz társított átjárócsomópontok tervezett helyét határozza meg. Szemantikailag egyenértékű bármely Azure-erőforráshoz társított hasonló tulajdonsággal, de tetszőleges karakterlánc-értékrendelhető hozzá.
 
-4. Igény szerint megadhatja az átjáró erőforrásának **leírását** .
-5. Ha szeretné, az **API** -k területen válassza a **+** lehetőséget, hogy egy vagy több API-t társítson ehhez az átjáró-erőforráshoz.
+4. Adja meg az átjáró erőforrás **leírását.**
+5. Ha szükséges, **+** válassza az **API-k alatt** egy vagy több API-k társításához az átjáró erőforrás.
 > [!TIP]
-> Az API **Beállítások** lapján hozzárendelhet és eltávolíthat API-kat az átjáróról.
+> Az API-k at az API **Beállítások** lapján társíthatja és eltávolíthatja egy átjáróról.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a meglévő API-k egyike sem lesz társítva az új átjáró erőforráshoz. Ezért az új átjárón keresztül történő meghívására tett kísérletek `404 Resource Not Found` választ fognak eredményezni.
+> Alapértelmezés szerint egyik meglévő API-k sem lesznek társítva az új átjáró-erőforráshoz. Ezért az új átjárón `404 Resource Not Found` keresztül i.
 
-6. Kattintson az **Hozzáadás** parancsra.
+6. Kattintson a **Hozzáadás** gombra.
 
-Most az átjáró-erőforrás kiépítve lett a API Management-példányban. Folytathatja az átjáró üzembe helyezését.
+Most az átjáró-erőforrás ki van építve az API Management-példányban. Folytathatja az átjáró telepítését.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
-* További információ a saját üzemeltetésű [átjárók Kubernetes történő üzembe helyezéséről](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
-* További információ a saját üzemeltetésű [átjárók Docker-ben történő üzembe helyezéséről](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
+* Ha többet szeretne megtudni a saját üzemeltetésű átjáróról, olvassa el az [Azure API Management saját üzemeltetésű átjáró – áttekintés című témakört.](self-hosted-gateway-overview.md)
+* További információ a saját [üzemeltetésű átjáró kubernetesi üzembe helyezéséről](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+* További információ a saját [üzemeltetésű átjáró kitakarásáról a Dockerben](api-management-howto-deploy-self-hosted-gateway-to-docker.md)

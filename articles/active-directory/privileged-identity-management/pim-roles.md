@@ -1,6 +1,6 @@
 ---
-title: A nem felügyelhető szerepkörök Privileged Identity Management-Azure Active Directoryban | Microsoft Docs
-description: Ismerteti azokat a szerepköröket, amelyeket nem kezelhet Azure AD Privileged Identity Management (PIM) szolgáltatásban.
+title: A kiemelt identitáskezelésben nem kezelhető szerepkörök – Azure Active Directory | Microsoft dokumentumok
+description: Ismerteti az Azure AD emelt szintű identitáskezelés (PIM) szerepkörök nem kezelhető.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,34 +15,34 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72895206"
 ---
-# <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Nem felügyelhető szerepkörök Privileged Identity Management
+# <a name="roles-you-cant-manage-in-privileged-identity-management"></a>A kiemelt identitáskezelésben nem kezelhető szerepkörök
 
-A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) segítségével kezelheti az összes [Azure ad-szerepkört](../users-groups-roles/directory-assign-admin-roles.md) és az összes [Azure-erőforrás-szerepkört](../../role-based-access-control/built-in-roles.md). Ezek a szerepkörök a felügyeleti csoportokhoz, előfizetésekhez, erőforrás-csoportokhoz és erőforrásokhoz csatolt egyéni szerepköröket is tartalmazzák. Vannak azonban olyan szerepkörök, amelyeket nem kezelhet. Ez a cikk azokat a szerepköröket ismerteti, amelyeket nem kezelhet Privileged Identity Managementban.
+Az Azure Active Directory (Azure AD) privilegizált identitáskezelése (PIM) lehetővé teszi az összes [Azure AD-szerepkör](../users-groups-roles/directory-assign-admin-roles.md) és az összes [Azure-erőforrás-szerepkör](../../role-based-access-control/built-in-roles.md)kezelését. Ezek a szerepkörök magukban foglalják a felügyeleti csoportokhoz, előfizetésekhez, erőforráscsoportokhoz és erőforrásokhoz csatolt egyéni szerepköröket is. Azonban kevés olyan szerepkör van, amelyet nem tud kezelni. Ez a cikk ismerteti a szerepkörök nem kezelhető a kiemelt identitáskezelés.
 
 ## <a name="classic-subscription-administrator-roles"></a>A hagyományos előfizetés-rendszergazdai szerepkörök
 
-A következő klasszikus előfizetés-rendszergazdai szerepkörök nem kezelhetők Privileged Identity Managementban:
+A következő klasszikus előfizetés-rendszergazdai szerepkörök nem kezelhetők a Kiemelt identitáskezelésben:
 
 - Fiókadminisztrátor
 - Szolgáltatás-rendszergazda
 - Társadminisztrátor
 
-A klasszikus előfizetés-rendszergazdai szerepkörökkel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure RBAC-szerepköröket és az Azure ad rendszergazdai szerepköreit](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+A klasszikus előfizetéses rendszergazdai szerepkörökről további információt a [Klasszikus előfizetéses rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök című témakörben talál.](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
 ## <a name="what-about-office-365-admin-roles"></a>Mi a helyzet az Office 365 rendszergazdai szerepköreivel?
 
-Az Exchange Online-ban vagy a SharePoint Online-ban lévő szerepkörök nem jelennek meg az Azure AD-ben, az Exchange-rendszergazda és a SharePoint-rendszergazda kivételével, ezért nem kezelhetők Privileged Identity Managementban. További információ ezekről az Office 365-szolgáltatásokról: [office 365 rendszergazdai szerepkörök](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Az Exchange Online-ban vagy a SharePoint Online-on belüli szerepkörök – az Exchange-rendszergazda és a SharePoint-rendszergazda kivételével – nem jelennek meg az Azure AD-ben, így nem kezelhetők a Kiemelt identitáskezelés ben. Az Office 365-szolgáltatásokról az [Office 365 rendszergazdai szerepkörei című témakörben](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)talál további információt.
 
 > [!NOTE]
-> A SharePoint-rendszergazda rendszergazdai hozzáféréssel rendelkezik a SharePoint Online-hoz a SharePoint Online felügyeleti központban, és szinte bármilyen feladatot képes végrehajtani a SharePoint Online-ban. A jogosult felhasználók a Privileged Identity Management-ban való aktiválás után késést tapasztalhatnak a SharePointon belüli ezen szerepkör használatával.
+> A SharePoint-rendszergazda rendszergazdai hozzáféréssel rendelkezik a SharePoint Online-hoz a SharePoint Online Felügyeleti központon keresztül, és szinte bármilyen feladatot el tud végezni a SharePoint Online-ban. A jogosult felhasználók késésben lehetnek a SharePoint-on belüli szerepkör használatában, miután aktiválták a Kiemelt identitáskezelést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Azure AD-szerepkörök hozzárendelése a kiemelt identitáskezelésben](pim-how-to-add-role-to-user.md)
+- [Azure-erőforrás-szerepkörök hozzárendelése a kiemelt identitáskezelésben](pim-resource-roles-assign-roles.md)

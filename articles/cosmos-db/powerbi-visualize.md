@@ -1,55 +1,55 @@
 ---
-title: Azure Cosmos DB Connector Power BI oktatóanyaga
-description: Ez a Power BI oktatóanyag a JSON importálására, az éleslátó jelentések létrehozására és az adatmegjelenítésre az Azure Cosmos DB és Power BI összekötő használatával.
+title: Power BI oktatóanyag az Azure Cosmos DB-összekötőhöz
+description: Ezzel a Power BI-oktatóanyaggal importálhatja a JSON-t, éleslátó jelentéseket hozhat létre, és az Azure Cosmos DB- és Power BI-összekötővel jelenítheti meg az adatokat.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69616804"
 ---
-# <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatmegjelenítés az Power BI-összekötő használatával
+# <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok vizualizációja a Power BI-összekötő használatával
 
-A [Power bi](https://powerbi.microsoft.com/) egy online szolgáltatás, ahol irányítópultokat és jelentéseket hozhat létre és oszthat meg. A Power BI Desktop egy jelentéskészítő eszköz, amely lehetővé teszi a különböző adatforrásokból származó adatok lekérését. Az Azure Cosmos DB a Power BI Desktoppal használható egyik adatforrás. A Power BI Desktopot a Power BI-hoz készült Azure Cosmos DB-összekötővel csatlakoztathatja az Azure Cosmos DB-fiókhoz.  Miután importálta az Azure Cosmos DB-ben található adatokat a Power BI-ba, átalakíthatja őket, valamint jelentéseket hozhat létre, amelyeket közzé tehet a Power BI-ban.   
+[A Power BI](https://powerbi.microsoft.com/) egy online szolgáltatás, ahol irányítópultokat és jelentéseket hozhat létre és oszthat meg. A Power BI Desktop egy jelentéskészítő eszköz, amely lehetővé teszi a különböző adatforrásokból származó adatok lekérését. Az Azure Cosmos DB a Power BI Desktoppal használható egyik adatforrás. A Power BI Desktopot a Power BI-hoz készült Azure Cosmos DB-összekötővel csatlakoztathatja az Azure Cosmos DB-fiókhoz.  Miután importálta az Azure Cosmos DB-ben található adatokat a Power BI-ba, átalakíthatja őket, valamint jelentéseket hozhat létre, amelyeket közzé tehet a Power BI-ban.   
 
 Ez a cikk az Azure Cosmos DB-fiók a Power BI Desktophoz való csatlakozásához szükséges lépéseket ismerteti. A csatlakoztatás után egy gyűjteményhez léphet, kinyerheti az adatok, átalakíthatja a JSON-adatokat táblázatos formátumba, majd közzétehet egy jelentést a Power BI-ban.
 
 > [!NOTE]
-> A Azure Cosmos DB Power BI-összekötő csatlakozik a Power BI Desktophoz. A Power BI Desktopban létrehozott jelentések közzétehető a PowerBI.com-ben. Azure Cosmos DB adatok közvetlen kibontása nem végezhető el a PowerBI.com. 
+> Az Azure Cosmos DB Power BI-csatlakozója csatlakozik a Power BI Desktophoz. A Power BI Desktopban létrehozott jelentések közzétehetők PowerBI.com. Az Azure Cosmos DB-adatok közvetlen kinyerése nem hajtható végre PowerBI.com. 
 
 > [!NOTE]
-> Az Power BI-összekötővel való csatlakozás Azure Cosmos DB jelenleg csak Azure Cosmos DB SQL API-és Gremlin API-fiókok esetében támogatott.
+> Az Azure Cosmos DB-hez a Power BI-összekötővel való csatlakozás jelenleg csak az Azure Cosmos DB SQL API és a Gremlin API-fiókok számára támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Power BI oktatóanyag utasításait követve ellenőrizze, hogy rendelkezik-e hozzáféréssel a következő erőforrásokhoz:
+Mielőtt követene a Power BI-oktatóanyag utasításait, győződjön meg arról, hogy hozzáfér a következő erőforrásokhoz:
 
-* [Töltse le a Power bi Desktop legújabb verzióját](https://powerbi.microsoft.com/desktop).
+* [Töltse le a Power BI Desktop legújabb verzióját.](https://powerbi.microsoft.com/desktop)
 
-* Töltse le a [minta vulkán adatait](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) a githubról.
+* Töltse le a [minta vulkán adatait](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) a GitHubról.
 
-* [Hozzon létre egy Azure Cosmos Database-fiókot](https://azure.microsoft.com/documentation/articles/create-account/) , és importálja a vulkáni adataikat a [Azure Cosmos db adatáttelepítési eszköz](import-data.md)használatával. Az adatimportálás során vegye figyelembe az alábbi beállításokat a forrás és a célhelyek számára az adatáttelepítési eszközben:
+* [Hozzon létre egy Azure Cosmos-adatbázis-fiókot,](https://azure.microsoft.com/documentation/articles/create-account/) és importálja a vulkán adatait az [Azure Cosmos DB adatáttelepítési eszközzel.](import-data.md) Adatok importálásakor vegye figyelembe a forrás és a célhelyek alábbi beállításait az adatáttelepítési eszközben:
 
-   * **Forrás paramétereinek** 
+   * **Forrásparaméterek** 
 
-       * **Importálás forrása:** JSON-fájl (ok)
+       * **Importálás innen:** JSON-fájl(ok)
 
-   * **Cél paraméterei** 
+   * **Célparaméterek** 
 
-      * **Kapcsolatok karakterlánca:** `AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
+      * **Kapcsolati karakterlánc:**`AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
 
-      * **Partíciós kulcs:** /Country 
+      * **Partíciókulcs:** /Ország 
 
-      * **Gyűjtemény átviteli sebessége:** 1000 
+      * **Gyűjtemény átviteli:** 1000 
 
-A jelentések a PowerBI.com-ben való megosztásához fiókkal kell rendelkeznie a PowerBI.com-ben.  További információ a Power BI és a Power BI Proról: [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
+Ahhoz, hogy a jelentéseket PowerBI.com oszthassa meg, fiókkal kell rendelkeznie PowerBI.com.  Ha többet szeretne megtudni a Power [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)BI-ról és a Power BI Pro-ról, olvassa el az Témakört.
 
-## <a name="lets-get-started"></a>Első lépések
-Ebben az oktatóanyagban képzeljük el, hogy Ön a geológus a világ különböző pontjain tanul. A vulkáni adatfájlok tárolása egy Azure Cosmos DB fiókban történik, a JSON-dokumentum formátuma pedig a következő:
+## <a name="lets-get-started"></a>Kezdjük el.
+Ebben a bemutatóban képzeljük el, hogy geológus vagy, aki a világ minden tájáról tanulmányozza a vulkánokat. A vulkán adatok egy Azure Cosmos DB-fiókban tárolódnak, és a JSON-dokumentum formátuma a következő:
 
     {
         "Volcano Name": "Rainier",
@@ -68,126 +68,126 @@ Ebben az oktatóanyagban képzeljük el, hogy Ön a geológus a világ különb�
           "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
-A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjelenítése interaktív Power BI-jelentésben történik.
+A vulkánadatokat az Azure Cosmos DB-fiókjából fogja lekérni, és egy interaktív Power BI-jelentésben jelenítheti meg az adatokat.
 
-1. Power BI Desktop futtatása.
+1. Futtassa a Power BI Desktop ot.
 
-2. Lekérheti az **adatait**, megtekintheti a **legutóbbi forrásokat**, vagy megnyithatja az **egyéb jelentéseket** közvetlenül az üdvözlőképernyőn. A képernyő bezárásához kattintson a jobb felső sarokban található "X" elemre. Megjelenik a Power BI Desktop **jelentés** nézete.
+2. Az **üdvözlőképernyőről adatokat kaphat,** a **Legutóbbi források**vagy az **Egyéb jelentések megnyitása című** témakört közvetlenül az üdvözlőképernyőről kaphat. A képernyő bezárásához válassza az "X" gombot a jobb felső sarokban. Megjelenik a Power BI Desktop **Jelentés** nézete.
    
-   ![A Power BI Desktop jelentés nézet – Power BI-összekötő](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
+   ![Power BI Desktop jelentésnézet – Power BI-csatlakozó](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
 
-3. Válassza ki a **Kezdőlap** menüszalagot, majdkattintson az adatlekérdezés elemre.  Az **adatlekérdezés** ablaknak meg kell jelennie.
+3. Válassza a **Kezdőlap** menüszalagot, majd kattintson az **Adatok bekésése gombra.**  Meg kell jelennie **az Adatok bekésése** ablaknak.
 
-4. Kattintson az **Azure**-ra, válassza a **Azure Cosmos db (bétaverzió)** lehetőséget, majd kattintson a **kapcsolat**gombra. 
+4. Kattintson az **Azure**,válassza **az Azure Cosmos DB (Béta)** lehetőséget, majd kattintson a **Csatlakozás gombra.** 
 
-    ![Az adatPower BI-összekötő Power BI Desktop beolvasása](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
+    ![Power BI Desktop Adatok beszedése – Power BI-csatlakozó](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
 
-5. Az előnézeti **összekötő** lapon kattintson a **Continue (folytatás**) gombra. Megjelenik a **Azure Cosmos db** ablak.
+5. Az **Összekötő megtekintése** lapon kattintson a **Folytatás gombra.** Megjelenik **az Azure Cosmos DB** ablaka.
 
-6. Adja meg azt a Azure Cosmos DB-fiók végpontjának URL-címét, amelyet az alább látható módon szeretne beolvasni az adatokból, majd kattintson **az OK**gombra. Ha saját fiókját szeretné használni, az URL-címet a Azure Portal **kulcsok** paneljének URI mezőjéből kérheti le. Opcionálisan megadhatja az adatbázis nevét, a gyűjtemény nevét, vagy a navigátor használatával kiválaszthatja az adatbázist és a gyűjteményt annak meghatározásához, hogy az adatok honnan származnak.
+6. Adja meg az Azure Cosmos DB-fiók végpontjának URL-címét, amelyből az alábbi módon szeretné beolvasni az adatokat, majd kattintson az **OK**gombra. Saját fiókjának használatához lekérheti az URL-címet az Azure Portal **Keys paneluridában** lévő URI-mezőből. Megadhatja az adatbázis nevét, a gyűjtemény nevét, vagy a navigátor segítségével kiválaszthatja az adatbázist és a gyűjteményt az adatok származásának azonosításához.
    
-7. Ha első alkalommal csatlakozik ehhez a végponthoz, a rendszer a fiók kulcsát kéri. Saját fiókja esetén a Azure Portal **írásvédett kulcsok** paneljének **elsődleges kulcs** mezőjéből kérje le a kulcsot. Adja meg a megfelelő kulcsot, majd kattintson a **kapcsolat**elemre.
+7. Ha első alkalommal csatlakozik ehhez a végponthoz, a rendszer kéri a fiókkulcsot. Saját fiókjához olvassa be a kulcsot az **Elsődleges kulcs** mezőből az Azure **Portal írásvédett kulcsok** panelén. Írja be a megfelelő kulcsot, majd kattintson a **Csatlakozás gombra.**
    
-   Javasoljuk, hogy a jelentések készítésekor a csak olvasási kulcsot használja. Ez megakadályozza a főkulcs szükségtelen expozícióját a lehetséges biztonsági kockázatokkal szemben. A csak olvasható kulcs a Azure Portal **kulcsok** paneljéről érhető el. 
+   Azt javasoljuk, hogy a jelentések készítéséhez használja az írásvédett kulcsot. Ez megakadályozza, hogy a főkulcs szükségtelenmértékben ki legyen téve a lehetséges biztonsági kockázatoknak. A csak olvasható kulcs érhető el az Azure Portal **Keys** panelen érhető el. 
     
-8. Ha a fiók sikeresen csatlakoztatva van, megjelenik a **navigátor** panel. A **navigátor** a fiókban lévő adatbázisok listáját jeleníti meg.
+8. A fiók sikeres csatlakoztatása után megjelenik a **Navigátor** ablaktábla. A **Navigátor** megjeleníti a fiók alatti adatbázisok listáját.
 
-9. Kattintson és bontsa ki azt az adatbázist, ahol a jelentés adatai származnak, válassza ki a **volcanodb** (az adatbázis neve eltérő lehet).   
+9. Kattintson és bontsa ki az adatbázist, ahonnan a jelentés adatai származnak, válassza **volcanodb** (az adatbázis neve eltérő lehet).   
 
-10. Most válasszon ki egy gyűjteményt, amely tartalmazza a lekérdezni kívánt adatait, válassza ki a **volcano1** (a gyűjtemény neve eltérő lehet).
+10. Most válasszon ki egy gyűjteményt, amely tartalmazza a lekérni kívánt adatokat, válassza a **volcano1** elemet (a gyűjtemény neve eltérő lehet).
     
-    A betekintő ablaktábla a **rekordok** listáját jeleníti meg.  A dokumentumok a Power BIban szereplő **bejegyzéstípusként** jelennek meg. Hasonlóképpen, a dokumentumban egy beágyazott JSON-blokk is **rekord**.
+    A Betekintő ablaktábla a Rekordelemek listáját jeleníti **meg.**  A Power BI-ban egy dokumentum **rekordtípusként** jelenik meg. Hasonlóképpen, a dokumentumon belüli beágyazott JSON-blokk is **rekord.**
     
-    ![Azure Cosmos DB Power BI Connector – navigátor ablak Power BI oktatóanyaga](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
-12. A **Szerkesztés** gombra kattintva elindíthatja a lekérdezés-szerkesztőt egy új ablakban az adatátalakításhoz.
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-csatlakozójához – Navigátor ablak](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
+12. Kattintson a **Szerkesztés gombra** az adatok átalakításához egy új ablakban a Lekérdezésszerkesztő elindításához.
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON-dokumentumok összeolvasztása és átalakítása
-1. Váltson a Power BI lekérdezés-szerkesztő ablakára, ahol a középső ablaktábla **dokumentum** oszlopa látható.
-   ![Power BI Desktop lekérdezés-szerkesztő](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. Kattintson a **dokumentum** -oszlop fejlécének jobb oldalán található Expander elemre.  Ekkor megjelenik a helyi menü a mezők listájával.  Válassza ki a jelentéshez szükséges mezőket, például a vulkán nevét, az országot, a régiót, a helyet, a jogosultságszint-emelést, a típust, az állapotot és az utolsó ismeret kitörését. Törölje az **eredeti oszlopnév használata előtagként** négyzet jelölését, majd kattintson az **OK**gombra.
+1. Váltson a Power BI Lekérdezésszerkesztő ablakára, ahol a középső ablaktábla **Dokumentum** oszlopa található.
+   ![Power BI Desktop Lekérdezésszerkesztő](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
+2. Kattintson a **Dokumentum** oszlopfejléc jobb oldalán található kibontóra.  Megjelenik a mezők listáját tartalmazó helyi menü.  Válassza ki a jelentéshez szükséges mezőket, például a vulkán nevét, országát, területét, helyét, magasságát, típusát, állapotát és utolsó ismert kitörését. Törölje a jelet az **Eredeti oszlopnév használata előtagként** jelölőnégyzetből, majd kattintson az **OK**gombra.
    
-    ![Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – dokumentumok kibontása](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. A középső ablaktábla az eredmény előnézetét jeleníti meg a kijelölt mezőkkel.
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-összekötőhöz – Dokumentumok kibontása](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
+3. A középső ablaktábla megjeleníti az eredmény előnézetét a kijelölt mezőkkel.
    
-    ![Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – eredmények összeolvasztása](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
-4. A példánkban a Location tulajdonság egy GeoJSON-blokk a dokumentumban.  Amint láthatja, a hely a Power BI Desktopban szereplő **bejegyzéstípusként** jelenik meg.  
-5. Kattintson a Document. location oszlopfejléc jobb oldalán található Expander elemre.  Megjelenik a típus és a koordináták mezőkkel rendelkező helyi menü.  Jelölje be a koordináták mezőt, ügyeljen arra, hogy az **eredeti oszlopnév használata előtagként** ne legyen kiválasztva, majd kattintson **az OK**gombra.
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-összekötőhöz – Eredmények simítása](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
+4. A példánkban a Location tulajdonság egy GeoJSON blokk egy dokumentumban.  Amint láthatja, a Hely **bejegyzéstípusként** jelenik meg a Power BI Desktopban.  
+5. Kattintson a Document.Location oszlopfejléc jobb oldalán található kibontóra.  Megjelenik a szöveg- és koordináták mezőt tartalmazó helyi menü.  Jelöljük ki a koordináták mezőt, győződjünk meg arról, hogy **az Eredeti oszlopnév használata előtagként** nincs kijelölve, majd kattintsunk az **OK**gombra.
    
-    ![Power BI oktatóanyag a Azure Cosmos DB Power BI Connector-hely rekordhoz](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
-6. A középső ablaktábla ekkor egy **lista** típusú koordináták oszlopot jelenít meg.  Ahogy az oktatóanyag elején is látható, az ebben az oktatóanyagban található GeoJSON-adatok a koordináták tömbben rögzített szélességi és hosszúsági értékkel rendelkező pont típusúak.
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-összekötőhöz – Helyrekord](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
+6. A középső ablaktáblán megjelenik a **Lista** típusú koordináták oszlopa.  Amint az az oktatóanyag elején látható, az oktatóanyag GeoJSON-adatai pont típusúak, és a koordináták tömbjében rögzített szélességi és hosszúsági értékek vannak rögzítve.
    
-    A koordináták [0] elem a hosszúságot jelöli, míg a koordináták [1] a szélességet jelöli.
-    ![Power BI oktatóanyag a Azure Cosmos DB Power BI összekötőhöz – koordináták listája](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. A koordináták tömb összeolvasztásához hozzon létre egy LatLong nevű **Egyéni oszlopot** .  Válassza az **oszlop hozzáadása** menüszalagot, és kattintson az **Egyéni oszlop**elemre.  Megjelenik az **Egyéni oszlop** ablak.
-8. Adja meg az új oszlop nevét, például LatLong.
-9. Ezután adja meg az új oszlop egyéni képletét.  Példánkban a szélességi és a hosszúsági értékeket egy vesszővel elválasztva fogjuk összefűzve, az alábbi képlettel: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Kattintson az **OK** gombra.
+    A koordináták[0] elem a hosszúság, míg a koordináták[1] a Szélességt jelölik.
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-összekötőhöz – Koordináták listája](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
+7. A koordináta-tömb összeolvasztásához hozzon létre egy LatLong nevű **egyéni oszlopot.**  Jelölje ki az **Oszlop hozzáadása** menüszalagot, és kattintson az Egyéni **oszlop gombra.**  Megjelenik **az Egyéni oszlop** ablak.
+8. Adja meg az új oszlop nevét, pl. LatLong.
+9. Ezután adja meg az új oszlop egyéni képletét.  Példánkban a szélességi és hosszúsági értékeket vesszővel elválasztjuk, amint az az `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`alábbi képletet mutatja: . Kattintson az **OK** gombra.
    
-    Az adatelemzési kifejezésekkel (DAX) kapcsolatos további információkért, beleértve a DAX-függvényeket is, tekintse meg a [DAX alapjai Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
+    Az adatelemzési kifejezésekről (DAX) és a DAX-függvényeket is beleértve további információt a Dax BI Alapismeretek a [Power BI Desktop ban talál.](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)
    
-    ![Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – egyéni oszlop hozzáadása](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-csatlakozójához – Egyéni oszlop hozzáadása](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
-10. A középső ablaktábla mostantól megjeleníti az új LatLong oszlopokat, amelyek az értékekkel vannak feltöltve.
+10. Most a középső ablaktábla az új LatLong oszlopokat jeleníti meg, amelyek et az értékekkel töltötték fel.
     
-    ![Power BI oktatóanyag a Azure Cosmos DB Power BI connectorhoz – egyéni LatLong oszlop](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-csatlakozójához – Egyéni LatLong oszlop](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
     
-    Ha hibaüzenetet kap az új oszlopban, győződjön meg arról, hogy a lekérdezési beállítások alatt alkalmazott lépések megfelelnek a következő ábrának:
+    Ha hibaüzenet jelenik meg az új oszlopban, győződjön meg arról, hogy a Lekérdezési beállítások csoportban alkalmazott lépések megegyeznek az alábbi ábrával:
     
-    ![Az alkalmazott lépések forrása, navigáció, kibontott dokumentum, kibontott dokumentum. hely, egyéni Hozzáadás](./media/powerbi-visualize/power-bi-applied-steps.png)
+    ![Alkalmazott lépéseket kell forrás, navigáció, kibontott dokumentum, bővített document.Location, Hozzáadott Egyéni](./media/powerbi-visualize/power-bi-applied-steps.png)
     
-    Ha a lépések eltérnek, törölje a további lépéseket, és próbálkozzon újra az egyéni oszlop hozzáadásával. 
+    Ha a lépések eltérőek, törölje a további lépéseket, és próbálja meg újra hozzáadni az egyéni oszlopot. 
 
-11. Kattintson a **Bezárás gombra, és alkalmazza** az adatmodell mentésére.
+11. Az adatmodell mentéséhez kattintson a **Bezárás és** az Alkalmaz gombra.
     
-    ![Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – Bezárás & alkalmazás](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
+    ![Power BI oktatóanyag az Azure Cosmos DB Power BI-csatlakozójához – & bezárása](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>A jelentések összeállítása
-Power BI Desktop jelentés nézetből megkezdheti az adatmegjelenítéshez szükséges jelentések létrehozását.  Jelentéseket úgy hozhat létre, hogy mezőket húz és eldobja a **jelentés** vásznon.
+A Power BI Asztali Jelentés nézetben elkezdheti az adatok megjelenítéséhez szükséges jelentések létrehozását.  Jelentéseket úgy hozhat létre, hogy mezőket húz a **Jelentés** vászonra.
 
-![A Power BI Desktop jelentés nézet – Power BI-összekötő](./media/powerbi-visualize/power_bi_connector_pbireportview2.png)
+![Power BI Desktop jelentésnézet – Power BI-csatlakozó](./media/powerbi-visualize/power_bi_connector_pbireportview2.png)
 
-A jelentés nézetben a következőket kell megkeresni:
+A Jelentés nézetben a következőket kell találnia:
 
-1. A **mezők** panelen megtekintheti az adatmodellek listáját a jelentésekhez használható mezőkkel.
-2. A **vizualizációk** panel. Egy jelentés tartalmazhat egyetlen vagy több vizualizációt is.  Válassza ki az igényeinek megfelelő vizuális típusokat a **vizualizációk** ablaktáblán.
-3. A **jelentés** vászon, amely a jelentés vizualizációinak összeállítására szolgál.
-4. A **jelentés** lapja. Power BI Desktopban több jelentés lapja is felvehető.
+1. A **Mezők** ablaktábla itt láthatja a jelentésekhez használható mezőket tartalmazó adatmodellek listáját.
+2. A **Vizualizációk** ablaktábla. A jelentések egy vagy több vizualizációt tartalmazhatnak.  A **Képi megjelenítések** ablaktáblából kiválaszthatja az igényeinek megfelelő vizuális típusokat.
+3. A **Jelentés** vászon, itt hozhat létre a jelentés vizualizációit.
+4. A **Jelentés** lap. A Power BI Desktopban több jelentéslapot is hozzáadhat.
 
-Az alábbi ábrán egy egyszerű interaktív térképes nézet létrehozásának alapvető lépései láthatók.
+Az alábbiakban egy egyszerű interaktív térképnézet-jelentés létrehozásának alapvető lépéseit mutatja be.
 
-1. A példánkban egy Térkép nézetet fogunk létrehozni, amely az egyes vulkánok helyét mutatja.  A **vizualizációk** ablaktáblán kattintson a Térkép vizuális típusára, ahogy az a fenti képernyőképen ki van emelve.  A térkép típusú vizualizációt a **jelentés** vásznon festve kell megtekinteni.  A **vizualizáció** ablaktáblán a Térkép vizuális típusához kapcsolódó tulajdonságokat is meg kell adni.
-2. Most húzza át a LatLong mezőt a **mezők** ablaktábláról a vizualizációk ablaktábla **Location** (hely ) tulajdonságára.
-3. Ezután húzza a vulkán neve mezőt a **Jelmagyarázat** tulajdonságra.  
-4. Ezután húzza a Jogosultságszint-emelés mezőt a **Size (méret** ) tulajdonságra.  
-5. Ekkor megjelenik a Térkép vizualizációja, amely az egyes vulkánok helyét jelöli, és a buborék megemelésének mértékét jelzi.
-6. Most létrehozott egy alapszintű jelentést.  A jelentést további vizualizációk hozzáadásával is testreszabhatja.  Ebben az esetben egy vulkán típusú szeletelőt adunk hozzá a jelentés interaktív létrehozásához.  
+1. Példánkban egy térképnézetet hozunk létre, amely megmutatja az egyes vulkánok helyét.  A **Vizualizációk** ablaktáblában kattintson a Térkép vizualizációtípusra a fenti képernyőképen kiemelt módon.  A **Jelentés** vásznon meg kell jelennie a Térkép vizualizációs típusnak.  A **Vizualizációs** ablaktáblán a Térkép vizualizáció típusához kapcsolódó tulajdonságok at is meg kell jelenítenie.
+2. Most húzza a LatLong mezőt a **Mezők** ablaktáblából a **Megjelenítési** ablaktábla **Hely** tulajdonságára.
+3. Ezután húzza a Volcano Name mezőt a **Legend** tulajdonságra.  
+4. Ezután húzza a Magasság mezőt a **Méret** tulajdonságra.  
+5. Most látnia kell a Térkép vizualizációt, amely buborékokat jelenít meg, jelezve az egyes vulkánok helyét a buborék méretével, amely a vulkán magasságához kapcsolódik.
+6. Most létrehozott egy alapjelentést.  További vizualizációk hozzáadásával tovább testreszabhatja a jelentést.  A mi esetünkben, mi hozzá egy volcano típusú szeletelő, hogy a jelentés interaktív.  
    
-7. A Fájl menüben kattintson a **Mentés** elemre, és mentse a fájlt PowerBITutorial. pbix néven.
+7. Kattintson a Fájl menü **Mentés parancsára,** és mentse a fájlt PowerBITutorial.pbix fájlként.
 
 ## <a name="publish-and-share-your-report"></a>A jelentés közzététele és megosztása
-A jelentés megosztásához fiókkal kell rendelkeznie a PowerBI.com-ben.
+A jelentés megosztásához fiókkal kell rendelkeznie a PowerBI.com.
 
-1. A Power BI Desktop kattintson a **Kezdőlap** menüszalagra.
-2. Kattintson a **Publish** (Közzététel) gombra.  A rendszer felszólítja, hogy adja meg a PowerBI.com-fiókhoz tartozó felhasználónevet és jelszót.
-3. A hitelesítő adatok hitelesítése után a jelentést a rendszer közzéteszi a kiválasztott célhelyen.
-4. Kattintson a **Power bi PowerBITutorial. pbix** elemre a jelentés megtekintéséhez és megosztásához a PowerBI.com-on.
+1. A Power BI Desktopban kattintson a **Kezdőlap** menüszalagra.
+2. Kattintson a **Publish** (Közzététel) gombra.  A rendszer kéri, hogy adja meg a PowerBI.com fiók felhasználónevét és jelszavát.
+3. A hitelesítő adatok hitelesítése után a jelentés közzé lesz téve a kiválasztott úti cél számára.
+4. Kattintson **a Power BI "PowerBITutorial.pbix" megnyitása** elemre, ha megtekintheti és megoszthatja jelentését a PowerBI.com.
    
-    ![Power BI sikeres közzététel! Oktatóanyag megnyitása Power BI](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
+    ![Közzététel a Power BI sikerességére! Oktatóanyag megnyitása a Power BI-ban](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
 
-## <a name="create-a-dashboard-in-powerbicom"></a>Irányítópult létrehozása a PowerBI.com-ben
-Most, hogy már van egy jelentés, lehetővé teszi a megosztást a PowerBI.com
+## <a name="create-a-dashboard-in-powerbicom"></a>Hozzon létre egy irányítópultot a PowerBI.com webhelyen
+Most, hogy már van egy jelentést, lehetővé teszi, ossza meg a PowerBI.com
 
-Amikor a jelentést Power BI Desktopról a PowerBI.com-be teszi közzé, egy **jelentést** és egy adatkészletet hoz létre a PowerBI.com-bérlőben. Ha például közzétett egy **PowerBITutorial** nevű jelentést a PowerBI.com-ben, akkor a PowerBITutorial a PowerBI.com-on található **jelentések** és adatkészletek szakaszban is megjelenik.
+Amikor közzéteszi a jelentést a Power BI Desktopról PowerBI.com, **az létrehoz** egy jelentést és egy **adatkészletet** a PowerBI.com-bérlőben. Például miután közzétett egy **PowerBITutorial** nevű jelentést PowerBI.com, a PowerBITutorial a **PowerBI.com Jelentések** és **adatkészletek** szakaszában is megjelenik.
 
-   ![Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben](./media/powerbi-visualize/powerbi-reports-datasets.png)
+   ![Képernyőkép az új jelentésről és adatkészletről a PowerBI.com](./media/powerbi-visualize/powerbi-reports-datasets.png)
 
-Megosztható irányítópult létrehozásához kattintson az **élő oldal rögzítése** gombra a PowerBI.com-jelentésben.
+Megosztható irányítópult létrehozásához kattints az élő **oldal rögzítése** gombra a PowerBI.com jelentésedben.
 
-   ![Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben](./media/powerbi-visualize/power-bi-pin-live-tile.png)
+   ![Képernyőkép az új jelentésről és adatkészletről a PowerBI.com](./media/powerbi-visualize/power-bi-pin-live-tile.png)
 
-Ezután kövesse a [csempe rögzítése](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) a jelentésből című témakör utasításait egy új irányítópult létrehozásához. 
+Ezután kövesse a [Jelentés csempéjének rögzítése](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) című részben található utasításokat egy új irányítópult létrehozásához. 
 
-Az irányítópult létrehozása előtt ad hoc módosításokat is készíthet a jelentéshez. Javasoljuk azonban, hogy az Power BI Desktop használatával hajtsa végre a módosításokat, és tegye közzé újból a jelentést a PowerBI.com.
+Az irányítópult létrehozása előtt eseti módosításokat is elvégezhet a jelentéskészítéshez. Javasoljuk azonban, hogy a Power BI Desktop segítségével hajtsa végre a módosításokat, és tegye közzé újra a jelentést a PowerBI.com.
 
 <!-- ## Refresh data in PowerBI.com
 There are two ways to refresh data, ad hoc and scheduled.
@@ -210,6 +210,6 @@ For a scheduled refresh, do the following.
 6. Click **Apply** and you are done setting up the scheduled refresh.
 -->
 ## <a name="next-steps"></a>További lépések
-* További információ a Power BIről: a [Power bi első lépései](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
-* Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg a [Azure Cosmos db dokumentáció kezdőlapját](https://azure.microsoft.com/documentation/services/cosmos-db/).
+* A Power BI-ról az [Első lépések a Power BI-val](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)való ismerkedés .
+* Ha többet szeretne megtudni az Azure Cosmos DB-ről, tekintse meg az [Azure Cosmos DB dokumentációjának céloldalát.](https://azure.microsoft.com/documentation/services/cosmos-db/)
 

@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 675ad278cb8bdc0ced4eff3bd77572f44c9808fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68857405"
 ---
-Ebben a szakaszban a meglévő Mobile Apps háttér-projektben szereplő kódot frissíti egy leküldéses értesítés elküldéséhez minden alkalommal, amikor új elem kerül felvételre. Ezt a folyamatot az Azure Notification Hubs [sablon](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) funkciója működteti, amely lehetővé teszi a platformok közötti leküldést. A különböző ügyfelek regisztrálva vannak a leküldéses értesítésekhez a sablonok használatával, és egyetlen univerzális leküldéses lehetőség az összes ügyfél-platformon elérhető.
+Ebben a szakaszban a meglévő mobilalkalmazások háttérprojektjének kódját frissíti, hogy minden alkalommal leküldéses értesítést küldjön, amikor új elemet ad hozzá. Ezt a folyamatot az Azure Notification Hubs [sablonszolgáltatása](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) működteti, amely lehetővé teszi a platformok közötti leküldéseket. A különböző ügyfelek sablonok használatával vannak regisztrálva a leküldéses értesítésekhez, és egyetlen univerzális leküldéses elérhető az összes ügyfélplatformra.
 
-Válassza ki az alábbi eljárások egyikét, amely megfelel a háttérben futó projektnek&mdash;, vagy a [.net back end](#dotnet) vagy a [Node. js háttérrendszer](#nodejs).
+Válasszon az alábbi eljárások közül, amelyek&mdash;megfelelnek a háttérprojekt [Node.js back end](#nodejs) [típusának.](#dotnet)
 
-### <a name="dotnet"></a>.NET háttérrendszer-projekt
+### <a name="net-back-end-project"></a><a name="dotnet"></a>.NET háttérprojekt
 
-1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektre. Ezután válassza a **NuGet-csomagok kezelése**lehetőséget. Keresse meg `Microsoft.Azure.NotificationHubs`a elemet, majd válassza a **telepítés**lehetőséget. Ez a folyamat telepíti a Notification Hubs könyvtárat a háttérbeli értesítések küldéséhez.
-2. A kiszolgálói projektben nyissa meg a **vezérlők** > **TodoItemController.cs**. Ezután adja hozzá a következő using utasításokat:
+1. A Visual Studio programban kattintson a jobb gombbal a kiszolgálóprojektre. Ezután válassza **a NuGet csomagok kezelése**lehetőséget. Keresse `Microsoft.Azure.NotificationHubs`meg a t, és válassza a **Telepítés**lehetőséget. Ez a folyamat telepíti az értesítési központok könyvtárat az értesítések háttérrendszerről történő küldéséhez.
+2. A kiszolgálóprojektben nyissa meg a **Vezérlők** > **TodoItemController.cs.** Ezután adja hozzá a következőket az utasítások használatával:
 
     ```csharp
     using System.Collections.Generic;
@@ -26,7 +26,7 @@ Válassza ki az alábbi eljárások egyikét, amely megfelel a háttérben futó
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. A **PostTodoItem** metódusban adja hozzá a következő kódot a **InsertAsync**hívása után:  
+3. A **PostTodoItem** metódusban adja hozzá a következő kódot az **InsertAsync**hívása után:  
 
     ```csharp
     // Get the settings for the server project.
@@ -64,14 +64,14 @@ Válassza ki az alábbi eljárások egyikét, amely megfelel a háttérben futó
     }
     ```
 
-    Ez a folyamat az adott tételt tartalmazó sablon-értesítést küld. Új elemek beszúrásakor megjelenő szöveg
+    Ez a folyamat sablonértesítést küld, amely tartalmazza az elemet. Szöveg új elem beszúrásakor.
 
-4. A kiszolgálói projekt ismételt közzététele.
+4. Tegye közzé újra a kiszolgálóprojektet.
 
-### <a name="nodejs"></a>Node. js háttérrendszer-projekt
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Node.js háttérprojekt
 
-1. Állítsa be a háttér-projektet.
-2. Cserélje le a todoitem. js fájl meglévő kódját a következő kódra:
+1. Állítsa be a háttérprojektet.
+2. Cserélje le a todoitem.js fájlban lévő kódot a következő kódra:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -114,6 +114,6 @@ Válassza ki az alábbi eljárások egyikét, amely megfelel a háttérben futó
     module.exports = table;  
     ```
 
-    Ez a folyamat olyan sablon-értesítést küld, amely tartalmazza az item. Text karakterláncot új elemek beszúrásakor.
+    Ez a folyamat sablonértesítést küld, amely új elem beszúrásakor tartalmazza az item.text fájlt.
 
-3. Amikor szerkeszti a fájlt a helyi számítógépen, tegye közzé újra a kiszolgálói projektet.
+3. Amikor a helyi számítógépen szerkeszti a fájlt, tegye közzé újra a kiszolgálóprojektet.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Ha már rendelkezik Azure AD-val | Microsoft Docs'
-description: Ez a témakör azt ismerteti, hogyan használható a csatlakozás, ha meglévő Azure AD-Bérlővel rendelkezik.
+title: 'Azure AD Connect: Ha már rendelkezik azure AD - | Microsoft dokumentumok'
+description: Ez a témakör ismerteti, hogyan használhatja a Connect, ha egy meglévő Azure AD-bérlő.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,62 +17,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71336824"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már létezik bérlő
-A Azure AD Connect használatának első lépései a legtöbb esetben feltételezik, hogy új Azure AD-bérlőt használ, és nincsenek felhasználók vagy más objektumok. Ha azonban egy Azure AD-Bérlővel lett elindítva, feltöltve a felhasználókkal és más objektumokkal, és most a kapcsolódást szeretné használni, akkor ez a témakör Önnek szól.
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha egy létező bérlővel rendelkezik
+Az Azure AD Connect használatával kapcsolatos témakörök többsége feltételezi, hogy egy új Azure AD-bérlővel kezdi, és nincsenek ott felhasználók vagy más objektumok. De ha egy Azure AD-bérlővel kezdett, felhasználókkal és más objektumokkal töltötte fel, és most szeretné használni a Connect szolgáltatást, akkor ez a témakör az Ön számára.
 
 ## <a name="the-basics"></a>Az alapok
-Az Azure AD-beli objektumok a felhőben (Azure AD) vagy a helyszínen vannak elsajátítva. Egyetlen objektum esetében nem kezelheti a helyszíni és egyéb attribútumokat az Azure AD-ben. Minden objektumhoz tartozik egy jelző, amely azt jelzi, hogy az objektum hol van kezelve.
+Az Azure AD-ben egy objektum a felhőben (Azure AD) vagy a helyszínen van elsajátítva. Egyetlen objektum esetén nem kezelheti a helyszíni attribútumokat és néhány más attribútumot az Azure AD-ben. Minden objektumnak van egy jelzője, amely jelzi, hogy hol van az objektum kezelése.
 
-A helyszínen és a felhőben is kezelheti a felhasználókat. Ennek a konfigurációnak a gyakori forgatókönyve egy olyan szervezet, amely többek között a könyvelési feldolgozókat és az értékesítőket is feldolgozók. A könyvelési feldolgozók helyszíni AD-fiókkal rendelkeznek, de az értékesítők nem rendelkeznek fiókkal az Azure AD-ben. A helyszíni és az Azure AD-beli felhasználók is kezelhetők.
+Egyes felhasználók a helyszínen és más a felhőben kezelheti. A konfiguráció gyakori forgatókönyve a könyvelési dolgozók és az értékesítési dolgozók vegyesen rendelkező szervezete. A könyvelési dolgozók rendelkeznek egy helyszíni AD-fiókkal, de az értékesítési dolgozók nem, rendelkeznek egy fiókot az Azure AD-ben. Egyes felhasználókat a helyszínen, és néhányat az Azure AD-ben kezelne.
 
-Ha olyan Azure AD-felhasználók felügyeletét kezdte meg, amelyek a helyszíni AD-ben is szerepelnek, és később a kapcsolódást szeretnék használni, akkor további szempontokat is figyelembe kell vennie.
+Ha elkezdte kezelni a felhasználókat az Azure AD, amelyek szintén a helyszíni AD, és később szeretné használni connect, majd van néhány további aggályokat kell figyelembe venni.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Szinkronizálás meglévő felhasználókkal az Azure AD-ben
-A Azure AD Connect telepítésekor és a szinkronizálás megkezdése után az Azure AD Sync Service (az Azure AD-ben) minden új objektumon bekerül, és megpróbál megkeresni egy meglévő objektumot. Ehhez a folyamathoz három attribútumot kell használni: **userPrincipalName**, **proxyAddresses**és **sourceAnchor**/**immutableID**. A **userPrincipalName** és a **ProxyAddresses** egyezését a rendszer **puha egyezésnek**nevezzük. A **sourceAnchor** való egyezés a **rögzített egyezés**. A **ProxyAddresses** attribútum csak az **SMTP:** értékkel rendelkező értéket használja, amely az elsődleges e-mail-cím, amelyet a rendszer a kiértékeléshez használ.
+Amikor telepíti az Azure AD Connectet, és elkezdi a szinkronizálást, az Azure AD szinkronizálási szolgáltatása (az Azure AD-ben) minden új objektumot ellenőriz, és megpróbál egy meglévő objektumot találni. A folyamathoz három attribútum használatos: **userPrincipalName**, **proxyAddresses**, és **sourceAnchor**/**immutableID**. A **userPrincipalName** és a proxyAddresses egyezést **soft match-nek nevezzük.** **proxyAddresses** A **sourceAnchor** egyezését **kemény egyezésnek**nevezik. A **proxyAddresses** attribútum hoz csak az **smtp:**, azaz az elsődleges e-mail cím, a kiértékeléshez használt érték.
 
-A egyezés csak a kapcsolatból érkező új objektumok esetében lesz kiértékelve. Ha módosít egy meglévő objektumot, hogy az a fenti attribútumok bármelyikének megfelelő legyen, akkor egy hibaüzenet jelenik meg.
+Az egyezést a rendszer csak a Connectből érkező új objektumok esetében értékeli ki. Ha úgy módosít egy meglévő objektumot, hogy az megfeleljen ezeknek az attribútumoknak, akkor egy hiba jelenik meg helyette.
 
-Ha az Azure AD olyan objektumot talál, amelyben az attribútumok értékei megegyeznek egy olyan objektum esetében, amely a kapcsolatból származik, és már megtalálható az Azure AD-ben, akkor az Azure AD-beli objektumot a kapcsolat veszi át. A korábban felhőben felügyelt objektum a helyszínen felügyelt van megjelölve. Az Azure AD-ben a helyszíni AD értékkel rendelkező összes attribútum felülíródik a helyszíni értékkel. A kivétel az, amikor egy attribútumnak van egy **Null** értékű értéke a helyszínen. Ebben az esetben az Azure AD-beli érték marad, de továbbra is csak a helyszínen módosítható egy másikra.
+Ha az Azure AD talál egy objektumot, ahol az attribútumértékek megegyeznek a Connectből érkező objektumhoz, és hogy már szerepel az Azure AD-ben, akkor az Azure AD-ben lévő objektumot a Connect átveszi. A korábban felhőáltal felügyelt objektum a helyszíni felügyeltként van megjelölve. Az Azure AD-ben a helyszíni AD-ben értékkel rendelkező összes attribútum felülírja a helyszíni értéket. A kivétel az, ha egy attribútum **null értékkel** rendelkezik a helyszínen. Ebben az esetben az Azure AD értéke megmarad, de továbbra is csak a helyszíni módosítása, hogy valami más.
 
 > [!WARNING]
-> Mivel az Azure AD összes attribútumát felülírja a helyszíni érték, győződjön meg arról, hogy a helyszínen található a megfelelő adatközpont. Ha például csak a felügyelt e-mail-címe van az Office 365-ben, és nem frissült a helyszíni AD DSban, akkor az Azure AD-ban és az Office 365-ben nem jelennek meg a AD DSban található értékek.
+> Mivel az Azure AD összes attribútumát felül írja felül a helyszíni érték, győződjön meg arról, hogy jó adatokat a helyszínen. Ha például csak az Office 365-ben kezelte az e-mail-címet, és nem frissítette azt a helyszíni AD DS-ben, akkor elveszíti az Azure AD/Office 365 nem az AD DS-ben nem található értékeket.
 
 > [!IMPORTANT]
-> Ha jelszó-szinkronizálást használ, amelyet mindig az expressz beállítások használnak, akkor a rendszer felülírja az Azure AD-ban található jelszót a helyszíni AD-ben lévő jelszóval. Ha a felhasználók különböző jelszavakat kezelhetnek, akkor tájékoztatnia kell őket arról, hogy a csatlakozás telepítésekor a helyszíni jelszót kell használniuk.
+> Ha jelszó-szinkronizálást használ, amelyet mindig a gyorsbeállítások használnak, majd az Azure AD-ben a jelszót felülírja a jelszóval a helyszíni AD-ben. Ha a felhasználók különböző jelszavak kezelésére szolgálnak, akkor tájékoztatnia kell őket arról, hogy a Csatlakozás telepítésekor a helyszíni jelszót kell használniuk.
 
-Az előző szakaszt és a figyelmeztetést figyelembe kell venni a tervezésben. Ha az Azure AD-ben számos olyan módosítást hajtott végre, amely nem tükröződik a helyszíni AD DSban, akkor meg kell terveznie, hogy miként tölthetők fel AD DS a frissített értékekkel, mielőtt szinkronizálja az objektumokat a Azure AD Connect használatával.
+Az előző szakaszt és a figyelmeztetést figyelembe kell venni a tervezéssorán. Ha számos olyan módosítást hajtott végre az Azure AD-ben, amely nem jelenik meg a helyszíni AD DS-ben, akkor meg kell terveznie, hogyan népetheti fel az AD DS-t a frissített értékekkel, mielőtt szinkronizálná az objektumokat az Azure AD Connecttel.
 
-Ha az objektumokat egy Soft-matchtel egyeztette, akkor a **sourceAnchor** az Azure ad-ben lévő objektumhoz adja hozzá, így a rendszer a rögzített egyezést később is felhasználhatja.
+Ha az objektumokat egy soft-match egyező, majd a **sourceAnchor** hozzáadódik az objektumhoz az Azure AD így a kemény egyezés később használható.
 
 >[!IMPORTANT]
-> A Microsoft nyomatékosan javasolja a helyszíni fiókok szinkronizálását a Azure Active Directory meglévő rendszergazdai fiókjaival.
+> A Microsoft nyomatékosan javasolja, hogy ne szinkronizálja a helyszíni fiókokat az Azure Active Directory már meglévő felügyeleti fiókokkal.
 
-### <a name="hard-match-vs-soft-match"></a>Nehezen illeszkedő vs Soft-Match
-A csatlakozási szolgáltatás új telepítéséhez nincs gyakorlati különbség a puha és a rögzített egyezés között. A különbség a vész-helyreállítási helyzetben van. Ha elveszítette a kiszolgálót a Azure AD Connect, akkor az új példányok elvesztése nélkül is újratelepíthetők. A rendszer a kezdeti telepítés során egy sourceAnchor rendelkező objektumot kap a csatlakozáshoz. Ezután az ügyfél (Azure AD Connect) kiértékelheti a egyezést, ami sokkal gyorsabb, mint az Azure AD-ben. A rögzített egyezést a kapcsolat és az Azure AD is kiértékeli. A rendszer csak az Azure AD által kiértékelt lágy egyezést ellenőrzi.
+### <a name="hard-match-vs-soft-match"></a>Hard-match vs Soft-match
+A Connect új telepítéséhez nincs gyakorlati különbség a puha és a kemény mérkőzés között. A különbség a katasztrófa-helyreállítási helyzet. Ha elvesztette a kiszolgálót az Azure AD Connect, újratelepítheti az új példány adatvesztés nélkül. Egy objektum sourceAnchor küldött Connect a kezdeti telepítés során. Az egyezést ezután az ügyfél (Azure AD Connect) kiértékelheti, ami sokkal gyorsabb, mint az Azure AD-ben. A nehezen illeszkedő egyezést a Connect és az Azure AD is kiértékeli. A soft match csak az Azure AD által kiértékelt.
 
-### <a name="other-objects-than-users"></a>Más objektumok, mint a felhasználók
-A levelezésre képes csoportok és névjegyek esetében a proxyAddresses alapján lehet Soft-Matching. A rögzített egyezés nem alkalmazható, mert csak a felhasználók csak a sourceAnchor/immutableID (a PowerShell használatával) frissíthetők. A levelezésre nem alkalmas csoportok esetében jelenleg nem támogatott a Soft Match vagy a Hard Match.
+### <a name="other-objects-than-users"></a>A felhasználókon kívüli egyéb objektumok
+A levelezést támogató csoportok és névjegyek esetében a proxycímek alapján is lágyan egyezhet. A hard-match nem alkalmazható, mivel csak a sourceAnchor/immutableID (PowerShell használatával) csak a felhasználók számára frissíthető. A nem levelezési engedélyezésű csoportok esetében jelenleg nem támogatja a soft-match vagy a hard-match.
 
-### <a name="admin-role-considerations"></a>Rendszergazdai szerepkörrel kapcsolatos megfontolások
-Ha meg szeretné akadályozni, hogy a nem megbízható helyszíni felhasználók a rendszergazdai szerepkörrel rendelkező Felhőbeli felhasználókkal egyezzenek meg, Azure AD Connect a rendszergazdai szerepkörrel rendelkező objektumokkal nem egyeznek meg a helyszíni felhasználói objektumokkal. Alapértelmezés szerint ez a beállítás. A viselkedés megkerülő megoldásához a következőket teheti:
+### <a name="admin-role-considerations"></a>Rendszergazdai szerepkörre vonatkozó szempontok
+Annak megakadályozása érdekében, hogy a nem megbízható helyszíni felhasználók egyezés egy felhőalapú felhasználó, amely bármilyen rendszergazdai szerepkörrel rendelkezik, az Azure AD Connect nem egyezik a helyszíni felhasználói objektumok olyan objektumokkal, amelyek rendszergazdai szerepkörrel rendelkeznek. Ez alapértelmezés szerint. A probléma kerülő megoldásához tegye a következőket:
 
-1.  Távolítsa el a címtárbeli szerepköröket a csak felhőalapú felhasználói objektumból.
-2.  Ha sikertelen volt a felhasználói szinkronizálás, akkor a felhőben törölje a karanténba helyezett objektumot.
-3.  Indítson el egy szinkronizálást.
-4.  Opcionálisan hozzáadhatja a címtárbeli szerepköröket a felhőben lévő felhasználói objektumhoz, ha a megfeleltetés megtörtént.
+1.  Távolítsa el a címtárszerepköröket a csak felhőalapú felhasználói objektumból.
+2.  Ha sikertelen felhasználói szinkronizálási kísérlet történt, törölje a karanténba helyezett objektumot a felhőből.
+3.  Szinkronizálás tanuska.
+4.  Igény szerint adja hozzá a címtárszerepköröket a felhőbeli felhasználói objektumhoz, miután az egyeztetés megtörtént.
 
 
 
-## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Új helyszíni Active Directory létrehozása az Azure AD-beli adatokból
-Néhány ügyfél csak felhőalapú megoldást indít az Azure AD-vel, és nem rendelkezik helyszíni AD-vel. Később a helyszíni erőforrásokat szeretnék felhasználni, és az Azure AD-beli adatforrásokon alapuló helyszíni AD-t szeretnének létrehozni. Azure AD Connect nem tud segíteni ehhez a forgatókönyvhöz. Nem hozza létre a felhasználókat a helyszínen, és nem képes a helyi jelszó beállítására, mint az Azure AD-ben.
+## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Új helyszíni Active Directory létrehozása az Azure AD-ben tárolt adatokból
+Egyes ügyfelek az Azure AD-vel egy csak felhőalapú megoldással kezdik, és nem rendelkeznek helyszíni AD-vel. Később a helyszíni erőforrásokat szeretnék felhasználni, és az Azure AD-adatok on-premise AD-t szeretnének építeni. Az Azure AD Connect nem tud segíteni ebben a forgatókönyvben. It does not create users on-premises and it does not have any ability to set the password on-premises to the same as in Azure AD.
 
-Ha az egyetlen ok, amiért a helyszíni AD hozzáadását tervezi a LOBs (üzletági alkalmazások) támogatásához, érdemes lehet inkább az [Azure ad tartományi szolgáltatásokat](../../active-directory-domain-services/index.yml) használni.
+Ha az egyetlen ok, amiért azt tervezi, hogy a helyszíni AD hozzáadása a LOBs (Business-alkalmazások) támogatása, akkor talán érdemes az [Azure AD tartományi szolgáltatások](../../active-directory-domain-services/index.yml) használata helyett.
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -1,6 +1,6 @@
 ---
-title: Teljesítménnyel kapcsolatos teljesítményteszt-tesztek eredményei Azure NetApp Files | Microsoft Docs
-description: A teljesítménnyel kapcsolatos teljesítményteszt-tesztek eredményeit ismerteti Azure NetApp Files a kötet szintjén.
+title: Az Azure NetApp Files teljesítményteszteredményei | Microsoft dokumentumok
+description: Az Azure NetApp-fájlok teljesítménytesztjeinek eredményeit ismerteti a kötet szintjén.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,81 +15,81 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
 ms.openlocfilehash: 1d6b43110046f26d8c8070b19587366588eee7b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68881757"
 ---
-# <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Teljesítménnyel kapcsolatos teljesítményteszt-tesztek eredményei Azure NetApp Files
+# <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Az Azure NetApp Files teljesítményteszt-eredményei
 
-Ez a cikk a teljesítménnyel kapcsolatos teljesítményteszt-tesztek eredményeit ismerteti Azure NetApp Files a kötet szintjén. 
+Ez a cikk az Azure NetApp-fájlok teljesítménytesztjeinek eredményeit ismerteti a kötet szintjén. 
 
-## <a name="sample-application-used-for-the-tests"></a>A tesztekhez használt minta alkalmazás
+## <a name="sample-application-used-for-the-tests"></a>A vizsgálatokhoz használt mintaalkalmazás
 
-A teljesítményteszteket egy Azure NetApp Files használó minta alkalmazással futtatták. Az alkalmazás jellemzői a következők: 
+A teljesítményteszteket egy mintaalkalmazással futtatták az Azure NetApp-fájlok használatával. Az alkalmazás a következő jellemzőkkel rendelkezik: 
 
 * A felhőhöz készült Linux-alapú alkalmazás
-* Lineárisan méretezhető a hozzáadott virtuális gépekkel (VM) a számítási teljesítmény igény szerinti növeléséhez
-* Gyors hozzáférhetőségre van szükség a the Lake
-* Olyan I/O-mintázatokkal rendelkezik, amelyek időnként véletlenszerűek és néha szekvenciálisak 
-    * A véletlenszerű mintázat nagy mennyiségű I/O esetén kis késleltetést igényel. 
-    * A szekvenciális mintázat nagy mennyiségű sávszélességet igényel. 
+* Lineárisan skálázható a hozzáadott virtuális gépekkel (VM-ekkel) a számítási teljesítmény szükség szerint történő növelése érdekében
+* Gyors hozzáférést igényel az adattóhoz
+* Van I/ O minták, amelyek néha véletlenszerű és néha szekvenciális 
+    * A véletlenszerű minta nagy mennyiségű I/O-hoz alacsony késleltetést igényel. 
+    * A szekvenciális minta nagy sávszélességet igényel. 
 
-## <a name="about-the-workload-generator"></a>Tudnivalók a munkaterhelés-Generátorról
+## <a name="about-the-workload-generator"></a>A munkaterhelés-generátorról
 
-Az eredmények Vdbench összefoglaló fájlokból származnak. A [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html) olyan parancssori segédprogram, amely lemezes I/O-munkaterheléseket hoz létre a tárolási teljesítmény ellenőrzéséhez. A használt ügyfél-kiszolgáló konfiguráció méretezhető.  Egyetlen vegyes főkiszolgálót, ügyfelet és 14 dedikált ügyfél virtuális gépet tartalmaz.
+Az eredmények a Vdbench összefoglaló fájljaiból származnak. [A Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html) egy parancssori segédprogram, amely lemezEs I/O-számítási feladatokat hoz létre a tárolási teljesítmény érvényesítéséhez. A használt ügyfél-kiszolgáló konfiguráció méretezhető.  Egyetlen vegyes főkiszolgálót/ügyfelet és 14 dedikált ügyfélvirtuális gépet tartalmaz.
 
-## <a name="about-the-tests"></a>A tesztek ismertetése
+## <a name="about-the-tests"></a>A tesztekről
 
-A tesztek úgy lettek kialakítva, hogy azonosítsák a minta alkalmazás által esetlegesen felhasználható korlátokat, valamint azt, hogy a válaszadási idő a határértékeknek megfelelő legyen.  
+A vizsgálatok célja az volt, hogy azonosítsák a mintaalkalmazás által esetleg megállapítandó határértékeket, valamint azt a válaszidőt, amely a határértékekig ível.  
 
-A következő tesztek futnak: 
+A következő teszteket futtatták: 
 
-* 100% 8 – KiB véletlenszerű olvasás
-* 100% 8 – KiB véletlenszerű írás
-* 100% 64 – KiB szekvenciális olvasás
-* 100% 64 – KiB szekvenciális írás
+* 100% 8-KiB véletlenszerű olvasás
+* 100% 8-KiB véletlenszerű írás
+* 100% 64-KiB szekvenciális olvasás
+* 100% 64-KiB szekvenciális írás
 * 50% 64-KiB szekvenciális olvasás, 50% 64-KiB szekvenciális írás
-* 50% 8 – KiB véletlenszerű olvasás, 50% 8 – KiB véletlenszerű írás
+* 50% 8-KiB véletlenszerű olvasás, 50% 8-KiB véletlenszerű írás
 
-## <a name="bandwidth"></a>A sávszélesség
+## <a name="bandwidth"></a>Sávszélesség
 
-Azure NetApp Files több [szolgáltatási szintet](azure-netapp-files-service-levels.md)is biztosít. Minden szolgáltatási szint a kiosztott kapacitás (mennyiségi kvóta) különböző sávszélességét biztosítja. A kötet sávszélesség-korlátja a szolgáltatási szint és a mennyiségi kvóta kombinációja alapján van kiépítve. A sávszélesség korlátja csak egy tényező, amely a megvalósított átviteli sebesség tényleges mértékét határozza meg.  
+Az Azure NetApp Files több [szolgáltatási szintet](azure-netapp-files-service-levels.md)kínál. Minden szolgáltatási szint különböző mennyiségű sávszélességet kínál a kiosztott kapacitás TiB-je (mennyiségi kvóta) szerint. A kötet sávszélesség-korlátja a szolgáltatási szint és a mennyiségi kvóta kombinációja alapján van kiépítve. A sávszélesség-korlát csak egy tényező a megvalósítandó átviteli mennyiség meghatározásában.  
 
-Jelenleg a 4 500 MiB a legnagyobb átviteli sebesség, amelyet egy, a tesztelés során egyetlen köteten lévő munkaterhelés elért.  A prémium szintű szolgáltatási szint esetében az 70,31 TiB mennyiségi kvótája elegendő sávszélességet biztosít ahhoz, hogy az alábbi számítás alapján megvalósítsa ezt az átviteli sebességet: 
+Jelenleg 4500 MiB a legnagyobb átviteli, amelyet a tesztelés során egyetlen kötettel szembeni munkaterhelés elért.  A prémium szintű szolgáltatási szint, a kötet kvóta 70,31 TiB biztosít elegendő sávszélességet, hogy megvalósítsa ezt az átviteli teljesítmény egy számítás az alábbi: 
 
 ![Sávszélesség képlete](../media/azure-netapp-files/azure-netapp-files-bandwidth-formula.png)
 
-![Kvóta-és szolgáltatási szint](../media/azure-netapp-files/azure-netapp-files-quota-service-level.png)
+![Kvóta és szolgáltatási szint](../media/azure-netapp-files/azure-netapp-files-quota-service-level.png)
 
-## <a name="throughput-intensive-workloads"></a>Teljesítmény-igényes számítási feladatok
+## <a name="throughput-intensive-workloads"></a>Nagy átviteli sebességű munkaterhelések
 
-Az átviteli sebesség tesztelése a Vdbench és a 12xD32s v3 Storage virtuális gépek kombinációjával történik. A tesztben szereplő minta mennyisége a következő átviteli sebességeket eredményezte:
+Az átviteli teszt vdbench-et és 12xD32s V3-tároló virtuális gépek kombinációját használta. A vizsgálat során a minta térfogata a következő átviteli értékeket érte el:
 
-![Átviteli sebesség tesztelése](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
+![Átviteli áttétel-vizsgálat](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
 
-## <a name="io-intensive-workloads"></a>I/O-igényes számítási feladatok
+## <a name="io-intensive-workloads"></a>I/O-igényes munkaterhelések
 
-Az I/O-teszt a Vdbench és a 12xD32s v3 Storage virtuális gépek kombinációját használta. A tesztben szereplő minta mennyisége a következő I/O-számokat eredményezte:
+Az I/O-teszt Vdbench-et és 12xD32s V3 tárolóvirtuális gépek kombinációját használta. A vizsgálat során a minta térfogata a következő I/O-számokat érte el:
 
-![I/O-teszt](../media/azure-netapp-files/azure-netapp-files-io-test.png)
+![I/O-vizsgálat](../media/azure-netapp-files/azure-netapp-files-io-test.png)
 
 ## <a name="latency"></a>Késés
 
-A teszt virtuális gépek és a Azure NetApp Files kötet közötti távolság hatással van az I/O-teljesítményre.  Az alábbi diagram összehasonlítja a IOPS és a késési válasz görbéit két különböző virtuálisgép-csoportra vonatkozóan.  A virtuális gépek egy halmaza közel van Azure NetApp Fileshoz, és a másik készlet távolabb van.  A további virtuális gépek további készletének megnövekedett késése hatással van a párhuzamosságok adott szintjén elért IOPS mennyiségére.  Függetlenül attól, hogy egy kötetre beolvasott olvasás túllépheti a 300 000 IOPS, az alábbi ábrán látható módon: 
+A teszt virtuális gépek és az Azure NetApp Files kötet közötti távolság hatással van az I/O-teljesítményre.  Az alábbi diagram összehasonlítja az IOPS versus késés válaszgörbék két különböző virtuális gépkészlet.  A virtuális gépek egyik készlete az Azure NetApp-fájlok közelében található, a másik pedig távolabb.  A virtuális gépek további készletének megnövekedett késése hatással van az IOPS egy adott párhuzamossági szinten elért mennyiségére.  Ettől függetlenül a kötetek olvasása meghaladhatja a 300 000 IOPS-t az alábbi ábrán látható módon: 
 
-![Késési vizsgálat](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
+![Látencia vizsgálat](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
-A késésre érzékeny számítási feladatokhoz (adatbázisokhoz) egy ezredmásodperces válaszidő tartozhat. A tranzakciós teljesítmény egyetlen köteten 300k IOPS lehet.
+Késés-érzékeny számítási feladatok (adatbázisok) egy ezredmásodperces válaszidő vel rendelkezhet. A tranzakciós teljesítmény több mint 300 k IOPS egyetlen köteten.
 
-Az átviteli sebességre érzékeny alkalmazások (a folyamatos átvitelhez és a képalkotáshoz) 4.5 GiB/s adatátviteli kapacitással rendelkezhetnek.
+Az átviteli sebességű alkalmazások (streameléshez és képalkotáshoz) 4.5GiB/s átviteli sebességű ek lehetnek.
 
 ## <a name="example-scripts"></a>Példa parancsfájlok
 
-A következő példa szkriptek kizárólag demonstrációs célokat szolgálnak.  Nem használhatók termelési célokra.  
+A következő példaparancsfájlok csak demonstrációs célokat szolgálnak.  Nem használhatók termelési célokra.  
 
     #
     #This script makes the following assumptions about the environment

@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a Azure Security Center a beépített IoT Hub Integration Service-IoT való használatával | Microsoft Docs
-description: Ismerkedjen meg a IoT Service Azure Security Center beépített munkafolyamatával.
+title: Ismerkedés az Azure Security Center for IoT Built-in IoT Hub integrációs szolgáltatással| Microsoft dokumentumok
+description: Ismerkedés az Azure Security Center for IoT-szolgáltatás beépített munkafolyamatával.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,29 +16,29 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: ef2affcd0cf7f6bd0a8ef0ec2dbc0244a971a57e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68600513"
 ---
-# <a name="get-started-with-built-in-iot-hub-integration"></a>Ismerkedés a beépített IoT Hub integrációval 
+# <a name="get-started-with-built-in-iot-hub-integration"></a>Első lépések a beépített IoT Hub-integrációval 
 
-Ez a beállítás lehetővé teszi a szolgáltatás használatát a IoT biztonsági ügynökök Azure Security Center használata nélkül.
+Ez a beállítás lehetővé teszi a szolgáltatás használatát az Azure Security Center ioT biztonsági ügynökök használata nélkül.
 
-## <a name="enable-built-in-iot-hub-integration"></a>Beépített IoT Hub integráció engedélyezése
-Az eszköz Identitáskezelés, a felhő és a felhő közötti kommunikációs minták figyelésének engedélyezéséhez tegye a következőket a szolgáltatás elindításához: 
+## <a name="enable-built-in-iot-hub-integration"></a>Beépített IoT Hub-integráció engedélyezése
+Az eszközidentitás-kezelés, az eszközfelhőbe és a felhőből az eszközre irányuló kommunikációs minták figyeléséhez tegye a következőket a szolgáltatás elindításához: 
 
-1. Nyissa meg a **IoT hub**.
-1. Válassza a **Biztonság áttekintése** menüt. 
-1. Kattintson a **IoT-megoldás biztonságossá tétele** lehetőségre, és fejezze be a bevezetési űrlapot. 
+1. Nyissa meg az **IoT Hubot.**
+1. Válassza a **Biztonság áttekintése menüt.** 
+1. Kattintson **az IoT-megoldás biztonságossá** tétele elemre, és töltse ki a bevezetési űrlapot. 
 
-Gratulálunk! Végrehajtotta a IoT szolgáltatás Azure Security Centerának engedélyezését a IoT Hub. 
+Gratulálunk! Befejezte az Azure Security Center ioT-szolgáltatás engedélyezését az IoT Hubon. 
 
 ## <a name="next-steps"></a>További lépések
 
 
 - A [megoldás](quickstart-configure-your-solution.md) konfigurálása
 - [Biztonsági modulok létrehozása](quickstart-create-security-twin.md)
-- [Egyéni riasztások](quickstart-create-custom-alerts.md) konfigurálása
+- [Egyéni riasztások konfigurálása](quickstart-create-custom-alerts.md)
 

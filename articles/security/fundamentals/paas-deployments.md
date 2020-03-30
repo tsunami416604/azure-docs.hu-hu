@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások a biztonságos Pásti üzembe helyezéséhez – Microsoft Azure
-description: Ismerje meg az Azure-beli biztonságos felhőalapú alkalmazások tervezésével, létrehozásával és kezelésével kapcsolatos ajánlott eljárásokat, és ismerkedjen meg a Péter és más felhőalapú szolgáltatási modellek biztonsági előnyeivel.
+title: Gyakorlati tanácsok a biztonságos PaaS-telepítésekhez – Microsoft Azure
+description: Ismerje meg a biztonságos felhőalkalmazások azure-beli tervezésére, készítésére és kezelésére vonatkozó gyakorlati tanácsokat, és ismerje meg a PaaS és más felhőszolgáltatási modellek biztonsági előnyeit.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,154 +16,154 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77138016"
 ---
-# <a name="securing-paas-deployments"></a>A Pásti üzembe helyezésének biztonságossá tétele
+# <a name="securing-paas-deployments"></a>PaaS-környezetek védelme
 
-Ez a cikk segítséget nyújt a következőkhöz:
+Ez a cikk a következőket ismerteti:
 
-- Ismerje meg a Felhőbeli alkalmazások üzemeltetésének biztonsági előnyeit
-- Értékelje ki a szolgáltatásként nyújtott platform (a Pásti) és más felhőalapú szolgáltatási modellek biztonsági előnyeit
-- Módosítsa a biztonsági fókuszt a hálózatról az identitás-központú peremhálózati biztonsági megközelítésre
-- Az általános Pásti biztonsági eljárásokkal kapcsolatos ajánlott eljárások megvalósítása
+- Ismerje meg az alkalmazások felhőben való üzemeltetésének biztonsági előnyeit
+- A platform szolgáltatásként (PaaS) és más felhőszolgáltatási modellek biztonsági előnyeinek kiértékelése
+- A biztonsági fókusz hálózatközpontúról identitásközpontú perembiztonsági megközelítésre való módosítása
+- Általános PaaS-biztonsági gyakorlati tanácsok megvalósítása
 
-A [biztonságos alkalmazások fejlesztése az Azure](abstract-develop-secure-apps.md) -ban általános útmutató a biztonsági kérdésekhez és ellenőrzésekhez, amelyeket érdemes figyelembe venni a szoftverfejlesztés életciklusának minden fázisában a Felhőbeli alkalmazások fejlesztésekor.
+[A biztonságos alkalmazások fejlesztése az Azure-ban](abstract-develop-secure-apps.md) egy általános útmutató a biztonsági kérdésekhez és vezérlőkhöz, amelyeket a szoftverfejlesztési életciklus minden fázisában figyelembe kell vennie a felhőhöz való alkalmazások fejlesztése során.
 
-## <a name="cloud-security-advantages"></a>Felhőbeli biztonsági előnyök
-Fontos megérteni az Ön és a Microsoft közötti [felelősség megosztását](shared-responsibility.md) . A helyszíni, a teljes verem tulajdonosa, de a felhőbe való áttérés során bizonyos felelősségek a Microsoft felé irányulnak.
+## <a name="cloud-security-advantages"></a>Felhőalapú biztonsági előnyök
+Fontos megérteni, hogy ön és a Microsoft [milyen felelősségmegosztást](shared-responsibility.md) vállal. A helyszíni, a teljes verem a teljes verem, de afelhőbe lépés közben bizonyos felelősségek átad nak a Microsoft.
 
-[A felhőben biztonsági előnyökkel jár](shared-responsibility.md#cloud-security-advantages). A helyszíni környezetben a szervezetek valószínűleg kielégítetlen felelősséggel rendelkeznek, és korlátozott erőforrásokkal ruházzák fel a biztonságot, ami olyan környezetet hoz létre, amelyben a támadók kihasználhatják a biztonsági réseket minden rétegben.
+Vannak [biztonsági előnyei, hogy a felhőben](shared-responsibility.md#cloud-security-advantages). A helyszíni környezetben a szervezetek valószínűleg kielégítetlen felelősségi körökkel és korlátozott erőforrásokkal rendelkeznek a biztonságba való befektetéshez, ami olyan környezetet hoz létre, ahol a támadók minden rétegbiztonsági biztonsági réseit ki tudják használni.
 
-A szervezetek a szolgáltató felhőalapú biztonsági képességeivel és a Felhőbeli intelligenciával javíthatják a fenyegetések észlelését és a válaszadás időpontját.  A felelősségi körök felhőbe való áthelyezésével a szervezetek nagyobb biztonsági lefedettséggel rendelkezhetnek, ami lehetővé teszi, hogy a biztonsági erőforrásokat és a költségvetést más üzleti prioritásokhoz lehessen rendelni.
+A szervezetek javíthatják a fenyegetések észlelési és válaszidejét a szolgáltató felhőalapú biztonsági képességeinek és felhőalapú intelligenciájának használatával.  Azáltal, hogy a feladatokat a felhőszolgáltatóra helyezi át, a szervezetek nagyobb biztonsági lefedettséget kaphatnak, ami lehetővé teszi számukra, hogy a biztonsági erőforrásokat és a költségvetést más üzleti prioritásokhoz csoportosítsák át.
 
-## <a name="security-advantages-of-a-paas-cloud-service-model"></a>A Pásti Cloud Service-modell biztonsági előnyei
-Tekintsük át az Azure Pásti üzembe helyezésének, illetve a helyszíni környezetnek a biztonsági előnyeit.
+## <a name="security-advantages-of-a-paas-cloud-service-model"></a>A PaaS felhőszolgáltatás-modell biztonsági előnyei
+Tekintsük át az Azure PaaS-telepítés és a helyszíni biztonsági előnyeit.
 
-![A Péter biztonsági előnyei](./media/paas-deployments/advantages-of-paas.png)
+![A PaaS biztonsági előnyei](./media/paas-deployments/advantages-of-paas.png)
 
-A verem alján kezdődően a fizikai infrastruktúra, a Microsoft csökkenti a gyakori kockázatokat és a felelősségi köröket. Mivel a Microsoft-felhőt a Microsoft folyamatosan figyeli, nehéz támadni. Nincs értelme arra, hogy egy támadó a Microsoft-felhőt célként célozza meg. Ha a támadónak sok pénze és erőforrása van, a támadó valószínűleg egy másik célpontba kerül.  
+A fizikai infrastruktúra, a fizikai infrastruktúra, a fizikai infrastruktúra alján, a Microsoft csökkenti a gyakori kockázatok és felelősségek. Mivel a Microsoft-felhőt folyamatosan figyeli a Microsoft, nehéz támadni. Nincs értelme, hogy a támadó a Microsoft felhőt célként kövesse. Ha a támadó nem rendelkezik sok pénzzel és erőforrással, a támadó valószínűleg egy másik célpontra lép.  
 
-A verem közepén nincs különbség a Pásti-telepítés és a helyszíni környezet között. Az alkalmazás rétegében és a fiók-és hozzáférés-kezelési rétegben hasonló kockázatokkal jár. A jelen cikk következő lépések szakaszában bemutatjuk a kockázatok kiküszöbölésére vagy minimalizálására vonatkozó ajánlott eljárásokat.
+A verem közepén nincs különbség a PaaS-üzembe helyezés és a helyszíni között. Az alkalmazásrétegen, valamint a fiók- és hozzáférés-kezelési rétegben hasonló kockázatokkal rendelkezik. A cikk következő lépéseiben bemutatjuk, hogy mi a legjobb gyakorlat a kockázatok kiküszöbölésére vagy minimalizálására.
 
-A stack, az adatkezelés és a Rights Management felső részén egy olyan kockázat áll fenn, amely a kulcskezelő szolgáltatással enyhíthető. (A kulcskezelő szolgáltatás az ajánlott eljárásokkal foglalkozik.) Míg a kulcskezelő szolgáltatás egy további felelősség, egy olyan Pásti-telepítésben található területtel rendelkezik, amelyet már nem kell kezelnie, így az erőforrások áthelyezhetők a kulcskezelő szolgáltatásba.
+A verem, az adatkezelés és a jogkezelés tetején egy olyan kockázatot vállal, amelyet a kulcskezelés mérsékelhet. (A kulcskezelést a legjobb gyakorlatok fedezik.) Bár a kulcskezelés további felelősség, a PaaS-telepítés olyan területeivannak, amelyeket már nem kell kezelnie, így az erőforrásokat kulcskezelésre áthelyezheti.
 
-Az Azure platform a különböző hálózati technológiák használatával erős DDoS-védelmet is biztosít. Azonban a hálózat alapú DDoS-védelmi módszerek minden típusa egy-és adatközponton alapul. Annak érdekében, hogy elkerülje a nagy DDoS-támadások hatását, kihasználhatja az Azure alapszintű Felhőbeli képességeit, amellyel gyorsan és automatikusan méretezhető a DDoS-támadások elleni védelem. Részletesebben is bemutatjuk, hogyan teheti meg ezt az ajánlott eljárások cikkeiben.
+Az Azure platform is erős DDoS-védelmet biztosít a különböző hálózati technológiák használatával. Azonban minden típusú hálózati ddos védelmi módszerek a korlátok at egy-link és egy adatközpont alapon. A nagy DDoS-támadások hatásának elkerülése érdekében kihasználhatja az Azure alapvető felhőbeli képességét, amely lehetővé teszi, hogy gyorsan és automatikusan skálázható legyen a DDoS-támadások elleni védelem érdekében. Részletesebben kifejtjük, hogyan teheti ezt meg az ajánlott gyakorlati cikkekben.
 
-## <a name="modernizing-the-defenders-mindset"></a>A Defender szemléletének modernizálása
-A Pásti üzemelő példányok a biztonság általános megközelítését váltották át. A felelősségnek a Microsofttal való megosztásához saját maga is át kell irányítani.
+## <a name="modernizing-the-defenders-mindset"></a>A védő gondolkodásmódjának modernizálása
+A PaaS-telepítések jönnek a váltás az általános megközelítés a biztonság. A felelősséget a Microsofttal való megosztására való áttérésről áthelyezheti.
 
-A Pásti és a hagyományos helyszíni üzemelő példányok közötti jelentős különbség egy új nézet, amely meghatározza az elsődleges biztonsági területet. Történelmileg az elsődleges helyszíni biztonsági terület volt a hálózata, és a legtöbb helyszíni biztonsági terv a hálózatot használja elsődleges biztonsági kimutatásként. A Pásti-környezetek esetében jobban kiszolgálja, hogy az identitás az elsődleges biztonsági határ.
+Egy másik jelentős különbség a PaaS és a hagyományos helyszíni telepítések között, egy új nézet, hogy mi határozza meg az elsődleges biztonsági területet. Korábban az elsődleges helyszíni biztonsági peremterület a hálózat volt, és a legtöbb helyszíni biztonsági terv a hálózatot használja elsődleges biztonsági pivotként. A PaaS-telepítések esetén jobban ki szolgálhatja, ha az identitást az elsődleges biztonsági kerületnek tekinti.
 
-## <a name="adopt-a-policy-of-identity-as-the-primary-security-perimeter"></a>Identitásra vonatkozó szabályzat elfogadása elsődleges biztonsági peremhálózatként
-A felhőalapú számítástechnika öt alapvető jellemzője a széles körű hálózati hozzáférés, ami a hálózat-központú gondolkodást kevésbé fontosnak teszi. A felhő-számítástechnika nagy része, hogy lehetővé tegye a felhasználók számára az erőforrások elérését a helytől függetlenül. A legtöbb felhasználó számára a helyükük valahol az interneten lesz.
+## <a name="adopt-a-policy-of-identity-as-the-primary-security-perimeter"></a>Identitási házirend elfogadása elsődleges biztonsági kerületként
+A felhőalapú számítástechnika öt alapvető jellemzője közé tartozik a széles körű hálózati hozzáférés, ami kevésbé relevánssá teszi a hálózatközpontú gondolkodást. A felhőalapú számítástechnika nagy részének célja, hogy lehetővé tegye a felhasználók számára az erőforrásokhoz való hozzáférést, függetlenül a helytől. A legtöbb felhasználó számára a tartózkodási helyük valahol az interneten lesz.
 
-Az alábbi ábra azt mutatja be, hogy a biztonsági szegély hogyan alakult ki egy hálózati peremhálózat és egy identitás peremhálózati hálózata között. A biztonság kevesebb információt nyújt a hálózat védelméről és az adatai védelméről, valamint az alkalmazások és a felhasználók biztonságának kezeléséről. A legfontosabb különbség az, hogy a biztonságot közelebbről szeretné leküldeni, ami a vállalat számára fontos.
+Az alábbi ábra bemutatja, hogyan alakult ki a biztonsági peremvonal a hálózat peremétől az identitás pereméig. A biztonság kevésbé szól a hálózat védelméről, hanem az adatok védelméről, valamint az alkalmazások és felhasználók biztonságának kezeléséről. A legfontosabb különbség az, hogy szeretné, hogy a biztonság közelebb, ami fontos, hogy a cég.
 
 ![Identitás új biztonsági kerületként](./media/paas-deployments/identity-perimeter.png)
 
-Kezdetben az Azure Pásti szolgáltatásai (például a webes szerepkörök és az Azure SQL) nem rendelkeznek a hagyományos hálózati peremhálózat-védelemmel. Megértettük, hogy az elem célja az Internet (webes szerepkör), és a hitelesítés az új területet (például a BLOBot vagy az Azure SQL-t) teszi elérhetővé.
+Kezdetben az Azure PaaS-szolgáltatások (például webes szerepkörök és az Azure SQL) nyújtott kevés vagy semmilyen hagyományos hálózati peremvédelmi. Úgy ismerték meg, hogy az elem célja az volt, hogy az internet (webes szerepkör) számára legyen elérhető, és hogy a hitelesítés biztosítja az új kerületet (például BLOB vagy Azure SQL).
 
-A modern biztonsági gyakorlatok feltételezik, hogy a támadó megsértette a hálózati területet. Ezért a modern védelmi gyakorlatok átkerültek az identitásra. A szervezeteknek identitás-alapú biztonsági területet kell létrehozniuk erős hitelesítési és engedélyezési higiéniai (ajánlott eljárások).
+A modern biztonsági gyakorlat feltételezi, hogy az ellenség áttörte a hálózat peremét. Ezért a modern védelmi gyakorlatok átkerültek az identitásba. A szervezeteknek identitásalapú biztonsági kerületet kell létrehozniuk erős hitelesítési és engedélyezési higiéniával (ajánlott eljárások).
 
-A hálózati peremhálózat alapelvei és mintái évtizedek óta rendelkezésre állnak. Ezzel szemben az iparág viszonylag kevesebb tapasztalattal rendelkezik az identitás elsődleges biztonsági kerületként való használatával. Ebben az esetben felhalmozottunk egy elég élményt, amely a mezőben bevált általános ajánlásokat tartalmazza, és szinte minden Péter-szolgáltatásra érvényes.
+Elvek és minták a hálózat peremén már évtizedek óta rendelkezésre állnak. Ezzel szemben az iparág viszonylag kevesebb tapasztalattal rendelkezik az identitás elsődleges biztonsági kerületként való használatával kapcsolatban. Ezzel azt mondta, már felhalmozott elég tapasztalat, hogy néhány általános ajánlásokat, amelyek bizonyítottak a területen, és alkalmazni szinte minden PaaS szolgáltatásokat.
 
-Az alábbi ajánlott eljárások az identitás peremhálózati kezeléséhez szükségesek.
+Az alábbiakban ajánlott eljárásokat az identitás kerületének kezelésére.
 
-**Ajánlott eljárás**: a kulcsok és a hitelesítő adatok biztonságossá tétele a Pásti-telepítés biztonságossá tételéhez.   
-**Részletek**: a kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Olyan központosított megoldást használhat, amelyben a kulcsok és a titkos kódok a hardveres biztonsági modulokban (HSM) tárolhatók. [Azure Key Vault](../../key-vault/key-vault-overview.md) védi a kulcsokat és a titkokat a hitelesítő kulcsok, a Storage-fiókok kulcsai, az adattitkosítási kulcsok, a. pfx-fájlok és a jelszavak a HSM által védett kulcsokkal történő titkosításával.
+**Ajánlott eljárás:** A kulcsok és a hitelesítő adatok biztonságossá tétele a PaaS-telepítés biztonságossá tétele érdekében.   
+**Részlet:** A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Használhat egy központi megoldást, ahol kulcsok és titkos kulcsok tárolhatók a hardveres biztonsági modulokban (HSM). [Az Azure Key Vault](../../key-vault/key-vault-overview.md) a hitelesítési kulcsok, a tárfiók kulcsai, az adattitkosítási kulcsok, a .pfx-fájlok és a HSM-ek által védett kulcsok használatával történő titkosításával védi a kulcsokat és a titkos kulcsokat.
 
-**Ajánlott eljárás**: ne helyezzen el hitelesítő adatokat és egyéb titkokat a forráskódban vagy a githubban.   
-**Részletek**: az egyetlen dolog, ami rosszabb, mint a kulcsok és a hitelesítő adatok elvesztése, hogy jogosulatlan fél hozzáférjen hozzájuk. A támadók kihasználhatják a robot-technológiák előnyeit, hogy megtalálják a kódrészletekben, például a GitHubban tárolt kulcsokat és titkokat. Ne helyezze el a kulcsokat és a titkos kódokat ezekben a nyilvános programkódokban.
+**Ajánlott eljárás:** Ne helyezzen hitelesítő adatokat és egyéb titkos kulcsokat a forráskódba vagy a GitHubba.   
+**Részlet:** Az egyetlen dolog rosszabb, mint a kulcsok és a hitelesítő adatok elvesztése, hogy egy jogosulatlan fél hozzáférhet hozzájuk. A támadók kihasználhatják a robottechnológiák at a kódtárolókban, például a GitHubban tárolt kulcsok és titkos kulcsok megkereséséhez. Ne helyezzen kulcsot és titkos kulcsokat ezekbe a nyilvános kódtárolókba.
 
-**Ajánlott eljárás**: gondoskodjon a virtuális gépek felügyeleti felületének védelméről a hibrid Pásti-és IaaS-szolgáltatásokhoz egy olyan felügyeleti felületen keresztül, amely lehetővé teszi, hogy közvetlenül felügyelje ezeket a virtuális gépeket.   
-**Részletek**: távoli felügyeleti protokollok, például [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)és [PowerShell távelérés](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) használható. Általánosságban azt javasoljuk, hogy ne engedélyezze a közvetlen távoli hozzáférést az internetről érkező virtuális gépekhez.
+**Ajánlott eljárás:** A virtuális gép felügyeleti felületei a hibrid PaaS és IaaS-szolgáltatások egy felügyeleti felület, amely lehetővé teszi, hogy a virtuális gépek közvetlen ülepedése.   
+**Részlet:** A távoli felügyeleti protokollok, például [az SSH,](https://en.wikipedia.org/wiki/Secure_Shell) [az RDP](https://support.microsoft.com/kb/186607)és [a PowerShell távoli eljárásátirányítási](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) protokollok használhatók. Általában azt javasoljuk, hogy ne engedélyezze a közvetlen távoli hozzáférést a virtuális gépekhez az internetről.
 
-Ha lehetséges, alternatív megközelítéseket használhat, például virtuális magánhálózatok használatát egy Azure-beli virtuális hálózaton. Ha az alternatív megoldások nem érhetők el, győződjön meg arról, hogy összetett hozzáférési kódok és kétfaktoros hitelesítés (például [Azure multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)) használata szükséges.
+Ha lehetséges, használjon alternatív módszereket, például virtuális magánhálózatokat egy Azure virtuális hálózatban. Ha nem állnak rendelkezésre alternatív módszerek, győződjön meg arról, hogy összetett jelmondatokat és kétfaktoros hitelesítést (például [Azure multi-factor authentication)](/azure/active-directory/authentication/multi-factor-authentication)használ.
 
-**Ajánlott eljárás**: erős hitelesítési és engedélyezési platformok használata.   
-**Részletek**: összevont identitások használata az Azure ad-ben egyéni felhasználói tárolók helyett. Összevont identitások használata esetén kihasználhatja a platform-alapú megközelítést, és delegálhatja a meghatalmazott identitások kezelését a partnerei számára. Az összevont identitások megközelítése különösen fontos az alkalmazottak leállításakor, és az információt több identitás-és engedélyezési rendszeren keresztül kell megjeleníteni.
+**Ajánlott eljárás:** Használjon erős hitelesítési és engedélyezési platformokat.   
+**Részlet:** Az egyéni felhasználói tárolók helyett használjon összevont identitásokat az Azure AD-ben. Ha összevont identitásokat használ, kihasználhatja a platformalapú megközelítést, és átruházza az engedélyezett identitások kezelését a partnereire. Az összevont identitáskezelési megközelítés különösen fontos az alkalmazottak megszüntetésekor, és hogy az információkat több identitás- és engedélyezési rendszeren keresztül kell tükrözni.
 
-Egyéni kód helyett platform által biztosított hitelesítési és engedélyezési mechanizmusokat használhat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése hibás lehet. A fejlesztők többsége nem rendelkezik biztonsági szakértőkkel, és nem valószínű, hogy tisztában van a finomságokkal, valamint a hitelesítés és az engedélyezés legújabb fejleményeivel. A kereskedelmi kódokat (például a Microsofttól) gyakran széles körű biztonsági felülvizsgálatnak tekintjük.
+Az egyéni kód helyett használjon platformáltal biztosított hitelesítési és engedélyezési mechanizmusokat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése hibaveszélyes lehet. A legtöbb fejlesztő nem biztonsági szakértők, és nem valószínű, hogy tisztában legyenek a finomságok és a legújabb fejlesztések hitelesítés és engedélyezés. A kereskedelmi kódot (például a Microsofttól) gyakran alaposan ellenőrzik a biztonság.
 
-Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a hitelesítéshez és az engedélyezéshez használt jelenlegi szabvány, mivel elkerüli a Felhasználónév és jelszó típusú hitelesítéssel kapcsolatos biztonsági gyengeségeket. Az Azure felügyeleti (portál/távoli PowerShell) interfészekhez és az ügyfelek felé irányuló szolgáltatásokhoz való hozzáférést az [azure multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)használatára kell tervezni és konfigurálni.
+Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a hitelesítés és engedélyezés jelenlegi szabványa, mivel elkerüli a felhasználónév- és jelszótípusokban rejlő biztonsági hiányosságokat. Az Azure-felügyeleti (portál-/távoli PowerShell-) felületekhez és az ügyfélfelé irányuló szolgáltatásokhoz való hozzáférést úgy kell megtervezni és konfigurálni, hogy [az Azure többtényezős hitelesítést használhassa.](/azure/active-directory/authentication/multi-factor-authentication)
 
-Használjon szabványos hitelesítési protokollokat, például a OAuth2 és a Kerberost. Ezek a protokollok széles körben áttekintve lettek, és valószínűleg a platform könyvtárainak részeként valósulnak meg a hitelesítéshez és engedélyezéshez.
+Használjon szabványos hitelesítési protokollokat, például Az OAuth2 és a Kerberos protokollt. Ezeket a protokollokat alaposan lektoradtuk, és valószínűleg a platformkódtárak részeként implementálták hitelesítésre és engedélyezésre.
 
-## <a name="use-threat-modeling-during-application-design"></a>Veszélyforrások modellezése az alkalmazás tervezésekor
-A Microsoft [biztonsági fejlesztési életciklusa](https://www.microsoft.com/en-us/sdl) azt határozza meg, hogy a csapatok a tervezési fázisban részt vesznek a veszélyforrások modellezése nevű folyamaton. A folyamat elősegítése érdekében a Microsoft létrehozta az [SDL Threat Modeling Tool](/azure/security/azure-security-threat-modeling-tool). Az alkalmazás megtervezése és az [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) összes bizalmi kapcsolat határainak számbavétele az összes megbízhatósági határ között a tervezési hibák korai befogása.
+## <a name="use-threat-modeling-during-application-design"></a>Fenyegetésmodellezés használata az alkalmazás tervezése kor
+A Microsoft [biztonsági fejlesztési életciklusa](https://www.microsoft.com/en-us/sdl) meghatározza, hogy a csapatoknak a tervezési fázisban részt kell venniük egy fenyegetésmodellezésnek nevezett folyamatban. A folyamat megkönnyítése érdekében a Microsoft létrehozta az [SDL Threat Modeling Tool eszközt.](/azure/security/azure-security-threat-modeling-tool) Az alkalmazástervezésének modellezése és a [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) fenyegetések összes megbízhatósági határon történő számbavétele már korán elkaphatja a tervezési hibákat.
 
-A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tartalmaz az Azure-szolgáltatásokat használó megoldásokra. Ezek a enyhítések nem fognak működni minden helyzetben.
+Az alábbi táblázat a STRIDE fenyegetéseket sorolja fel, és néhány példacsökkentést tartalmaz, amelyek az Azure-funkciókat használják. Ezek a mérséklések nem fognak működni minden helyzetben.
 
-| Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
+| Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges kockázatenyhítései |
 | --- | --- | --- |
-| Hamisítási | Authentication | HTTPS-kapcsolatok megkövetelése. |
-| Illetéktelen módosításának | Integritás | Ellenőrizze az SSL-tanúsítványokat. |
-| Letagadhatóság | Nem megtagadási | Az Azure [monitorozásának és diagnosztizálásának](/azure/architecture/best-practices/monitoring)engedélyezése. |
-| Információk közzététele | Titoktartási | Bizalmas adatok titkosítása a [szolgáltatás tanúsítványainak](/rest/api/appservice/certificates)használatával. |
-| Szolgáltatás megtagadása | Rendelkezésre állás | Teljesítmény-mérőszámok figyelése a lehetséges szolgáltatásmegtagadási feltételekhez. A kapcsolatok szűrőinek implementálása. |
-| Jogosultsági szint emelése | Engedélyezés | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)használata. |
+| Hamisítás | Hitelesítés | HTTPS-kapcsolatok megkövetelése. |
+| Hamisít | Integritás | Ssl-tanúsítványok érvényesítése. |
+| Megtagadás | Megtagadás elmaradása | Engedélyezze az Azure [figyelését és diagnosztikát.](/azure/architecture/best-practices/monitoring) |
+| Az információk nyilvánosságra hozatala | Titkosság | Titkosítsa a bizalmas adatokat [szolgáltatástanúsítványok](/rest/api/appservice/certificates)használatával. |
+| Szolgáltatásmegtagadás | Rendelkezésre állás | A szolgáltatásmegtagadási feltételek lehetséges teljesítménymutatóinak figyelése. Kapcsolatszűrők megvalósítása. |
+| Jogosultság emelése | Engedélyezés | Használja [a kiemelt identitáskezelést.](/azure/active-directory/privileged-identity-management/subscription-requirements) |
 
-## <a name="develop-on-azure-app-service"></a>Fejlesztés Azure App Service
-A [Azure app Service](/azure/app-service/overview) egy olyan Pásti-ajánlat, amely lehetővé teszi webes és mobil alkalmazások létrehozását bármilyen platformra vagy eszközre, és bárhol, a felhőben vagy a helyszínen csatlakozhat az adatforrásokhoz. A App Service tartalmazza azokat a webes és mobil képességeket, amelyeket korábban az Azure websites és az Azure Mobile Services külön szállítottak el. Ezenkívül új lehetőségek is elérhetők az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként a App Service számos lehetőséget kínál webes, mobil-és integrációs forgatókönyvek kialakítására.
+## <a name="develop-on-azure-app-service"></a>Fejlesztés az Azure App Service szolgáltatásban
+[Az Azure App Service](/azure/app-service/overview) egy PaaS-ajánlat, amely lehetővé teszi, hogy webes és mobilalkalmazásokat hozzon létre bármilyen platformra vagy eszközre, és csatlakozzon az adatokhoz bárhol, a felhőben vagy a helyszínen. Az App Service tartalmazza azokat a webes és mobilfunkciókat, amelyeket korábban külön szállítottak Azure-webhelyek ként és Az Azure Mobile Services szolgáltatásként. Ezenkívül új lehetőségek is elérhetők az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként az App Service számos funkciót biztosít a webes, mobil- és integrációs forgatókönyvekhez.
 
-A App Service használatának ajánlott eljárásai a következők:
+Az alábbiakban az App Service használatával kapcsolatos gyakorlati tanácsokat.
 
-**Ajánlott eljárás**: [hitelesítés Azure Active Directoryon keresztül](/azure/app-service/overview-authentication-authorization).   
-**Részletek**: a App Service OAuth 2,0 szolgáltatást biztosít az identitás-szolgáltató számára. A OAuth 2,0 a webalkalmazások, asztali alkalmazások és mobiltelefonok speciális engedélyezési folyamatainak biztosítása mellett az ügyfelek fejlesztői egyszerűségére koncentrál. Az Azure AD OAuth 2,0-et használ a mobil-és webalkalmazásokhoz való hozzáférés engedélyezéséhez.
+**Ajánlott eljárás:** [Hitelesítés az Azure Active Directoryn keresztül.](/azure/app-service/overview-authentication-authorization)   
+**Részlet:** Az App Service oauth 2.0 szolgáltatást biztosít az identitásszolgáltató számára. Az OAuth 2.0 az ügyfélfejlesztők egyszerűségére összpontosít, miközben speciális engedélyezési folyamatokat biztosít a webes alkalmazásokhoz, asztali alkalmazásokhoz és mobiltelefonokhoz. Az Azure AD az OAuth 2.0-s használatával engedélyezi a hozzáférést a mobil- és webalkalmazásokhoz.
 
-**Ajánlott eljárás**: a hozzáférés korlátozása a szükséges ismeret és a legalacsonyabb szintű biztonsági alapelvek alapján.   
-**Részletek**: a hozzáférés korlátozása elengedhetetlen azoknak a szervezeteknek, akik biztonsági házirendeket kívánnak kikényszeríteni az adatok eléréséhez. A RBAC segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A felhasználók alkalmazásokhoz való hozzáférésének biztosításával kapcsolatos további tudnivalókért lásd: Ismerkedés [a hozzáférés-kezeléssel](/azure/role-based-access-control/overview).
+**Ajánlott eljárás:** Korlátozza a hozzáférést a szükséges ismeretés és a legkisebb jogosultságbiztonsági elvek alapján.   
+**Részletes:** A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, amelyek az adatelérésbiztonsági házirendeket szeretnék érvényesíteni. Az RBAC segítségével engedélyeket rendelhet a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörön. Ha többet szeretne tudni arról, hogy miként kaphat hozzáférést a felhasználóknak az alkalmazásokhoz, olvassa el a [Hozzáférés-kezelés – Első lépések a hozzáférés-kezeléssel ( Első lépések a hozzáférés-kezeléssel ) témakört.](/azure/role-based-access-control/overview)
 
-**Ajánlott eljárás**: a kulcsok védelmének biztosítása.   
-**Részletek**: a Azure Key Vault segít megőrizni a Felhőbeli alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. További információ: [Azure Key Vault](/azure/key-vault/key-vault-overview) . A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja.
+**Ajánlott eljárás:** A kulcsok védelme.   
+**Részletes:** Az Azure Key Vault segít megvédeni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkos kulcsokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat, a . PFX fájlok és jelszavak) hardveres biztonsági modulokkal (HSM) védett kulcsokkal. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. További információért tekintse meg az [Azure Key Vaultot.](/azure/key-vault/key-vault-overview) A Key Vault segítségével is kezelheti a TLS-tanúsítványokat automatikus megújítással.
 
-**Ajánlott eljárás**: a bejövő forrás IP-címeinek korlátozása.   
-**Részletek**: a [app Service Environment](/azure/app-service/environment/intro) virtuális hálózati integrációs funkcióval rendelkezik, amely a bejövő forrás IP-címeinek hálózati biztonsági csoportokon keresztüli korlátozására nyújt segítséget. A virtuális hálózatok lehetővé teszik az Azure-erőforrások olyan nem internetes, irányítható hálózatban való elhelyezését, amellyel a hozzáférését szabályozhatja. További információ: [az alkalmazás integrálása egy Azure-beli virtuális hálózattal](/azure/app-service/web-sites-integrate-with-vnet).
+**Ajánlott eljárás:** Korlátozza a bejövő forrás IP-címeket.   
+**Részlet:** [Az App Service Environment](/azure/app-service/environment/intro) rendelkezik egy virtuális hálózati integrációs szolgáltatással, amely segít a bejövő forrás IP-címek hálózati biztonsági csoportokon keresztül történő korlátozásában. A virtuális hálózatok lehetővé teszik, hogy az Azure-erőforrásokat egy nem internetes, irányítható hálózatba helyezze, amelyhez szabályozhatja a hozzáférést. További információ: [Az alkalmazás integrálása Azure virtuális hálózattal.](/azure/app-service/web-sites-integrate-with-vnet)
 
-**Ajánlott eljárás**: a app Service környezetek biztonsági állapotának figyelése.   
-**Részletek**: Azure Security Center használata a app Service-környezetek figyeléséhez. Ha a Security Center felismeri a lehetséges biztonsági réseket, [javaslatokat](../../security-center/security-center-virtual-machine-protection.md) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán.
+**Ajánlott eljárás:** Az App Service-környezetek biztonsági állapotának figyelése.   
+**Részlet:** Az Azure Security Center segítségével figyelheti az App Service-környezeteket. Amikor a Security Center potenciális biztonsági réseket azonosít, [javaslatokat](../../security-center/security-center-virtual-machine-protection.md) készít, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán.
 
 > [!NOTE]
-> A figyelési App Service előzetes verzióban érhető el, és csak a Security Center [standard szintjére](/azure/security-center/security-center-pricing) használható.
+> Az App Service figyelése előzetes verzióban érhető el, és csak a Security Center [standard szintű szintjén](/azure/security-center/security-center-pricing) érhető el.
 >
 >
 
-## <a name="install-a-web-application-firewall"></a>Webalkalmazási tűzfal telepítése
+## <a name="install-a-web-application-firewall"></a>Webalkalmazás-tűzfal telepítése
 A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának számos rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
-A [webalkalmazási tűzfal (WAF)](/azure/frontdoor/waf-overview) a Application Gateway szolgáltatása, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen. A WAF az [Open Web Application Security Project (OWASP) alapszintű szabálykészlet (3,0)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) vagy a 2.2.9.
+[A webalkalmazás-tűzfal (WAF)](/azure/frontdoor/waf-overview) az Application Gateway egyik szolgáltatása, amely központosított védelmet nyújt a webalkalmazásoknak a gyakori biztonsági rések és biztonsági rések elleni védelemben. A WAF az [Open Web Application Security Project (OWASP) 3.0](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) vagy 2.2.9-es alapszabálykészletének szabályain alapul.
 
 ## <a name="monitor-the-performance-of-your-applications"></a>Az alkalmazások teljesítményének figyelése
-A monitorozás az adatok összegyűjtését és elemzését, valamint az alkalmazás teljesítményének, állapotának és rendelkezésre állásának meghatározására szolgáló eljárás. A hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás összetevőinek működéséről. Ez segít az üzemidő növelésében, ha a kritikus fontosságú problémákkal értesíti Önt, hogy feloldja őket, mielőtt problémák lépnek fel. Emellett segít a biztonsággal kapcsolatos rendellenességek észlelésében.
+A figyelés az adatok gyűjtése és elemzése az alkalmazás teljesítményének, állapotának és elérhetőségének meghatározásához. A hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás összetevőinek működéséről. Segít növelni az uptime-ot azáltal, hogy értesíti Önt a kritikus problémákról, hogy megoldhassa azokat, mielőtt problémákká válnak. Emellett segít észlelni a biztonsággal kapcsolatos anomáliákat.
 
-Az [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) segítségével figyelheti az alkalmazás rendelkezésre állását, teljesítményét és használatát, függetlenül attól, hogy a felhőben vagy a helyszínen üzemel. A Application Insights használatával gyorsan azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy a felhasználónak meg kellene várnia a jelentést. A gyűjtött információk alapján megalapozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
+Az [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) segítségével figyelheti az alkalmazás rendelkezésre állását, teljesítményét és használatát, függetlenül attól, hogy az a felhőben vagy a helyszínen van-e. Az Application Insights használatával gyorsan azonosíthatja és diagnosztizálhatja a hibákat az alkalmazásban anélkül, hogy megvárna egy felhasználót, hogy jelentse őket. A gyűjtött információk alapján megalapozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
 
-Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. A Kusto lekérdezési nyelvével kihasználhatja a megosztott funkciók, például a riasztások, az irányítópultok és a mélyreható elemzés előnyeit.
+Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. Kihasználhatja a megosztott funkciók, például a riasztások, irányítópultok és a Kusto lekérdezési nyelv vel végzett mélyelemzés előnyeit.
 
-## <a name="perform-security-penetration-testing"></a>Biztonsági behatolási teszt végrehajtása
-A biztonsági védelem ellenőrzése olyan fontos, mint bármely más funkció tesztelése. A létrehozási és üzembe helyezési folyamat standard részét a [behatolások tesztelésével](pen-testing.md) teheti meg. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
+## <a name="perform-security-penetration-testing"></a>Biztonsági behatolási vizsgálat végrehajtása
+A biztonsági védelem érvényesítése ugyanolyan fontos, mint bármely más funkció tesztelése. A [penetrációs tesztelést](pen-testing.md) a build- és üzembe helyezési folyamat szabványos részévé teheti. Ütemezze a rendszeres biztonsági teszteket és a biztonsági rések ellenőrzését az üzembe helyezett alkalmazásokon, és figyelje a nyitott portokat, végpontokat és támadásokat.
 
-A fuzz Testing metódus a programbeli hibák (hibakódok) megkeresésére, ha helytelenül formázott bemeneti adatokat ad meg az adatok elemzésére és felhasználására szolgáló kezelőfelületekhez (belépési pontokhoz). A [Microsoft biztonsági kockázatok észlelése](https://www.microsoft.com/en-us/security-risk-detection/) egy felhőalapú eszköz, amellyel a szoftverben az Azure-ba történő üzembe helyezése előtt hibákat és egyéb biztonsági réseket kereshet. Az eszköz úgy van kialakítva, hogy a szoftverek központi telepítése előtt elkapjon biztonsági réseket, így nem kell hibát kijavítania, összeomlásokkal foglalkoznia, vagy támadásra reagálni a szoftver felszabadítása után.
+A fuzz tesztelés a programhibák (kódhibák) megtalálásának egyik módszere azáltal, hogy hibás bemeneti adatokat szolgáltat az adatokat elemző és felhasználási programfelületeknek (belépési pontoknak). [A Microsoft Security Risk Detection](https://www.microsoft.com/en-us/security-risk-detection/) egy felhőalapú eszköz, amellyel megkeresheti a szoftver hibáit és egyéb biztonsági réseit, mielőtt telepítené az Azure-ba. Az eszközt úgy tervezték, hogy elkapja a biztonsági réseket a szoftver telepítése előtt, így nem kell kijavítania egy hibát, nem kell kezelnie az összeomlásokat, vagy reagálnia a támadásra a szoftver megjelenése után.
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebben a cikkben az Azure Pásti üzembe helyezésének és a felhőalapú alkalmazásokhoz ajánlott biztonsági eljárásoknak a biztonsági előnyeire összpontosítunk. Ezután Ismerkedjen meg a javasolt eljárásokkal, amelyekkel az adott Azure-szolgáltatásokkal biztonságossá teheti a Pásti web-és mobil megoldásait. A Azure App Service, a Azure SQL Database és a Azure SQL Data Warehouse, valamint az Azure Storage szolgáltatással fogunk kezdeni. Az egyéb Azure-szolgáltatásokra vonatkozó ajánlott eljárásokról szóló cikkek elérhetővé válnak, és az alábbi listán szereplő hivatkozásokat fogjuk megadni:
+## <a name="next-steps"></a>További lépések
+Ebben a cikkben az Azure PaaS-telepítés biztonsági előnyeire és a felhőalapú alkalmazások biztonsági gyakorlati tanácsokra összpontosítottunk. Ezután ismerje meg a PaaS-web- és mobilmegoldások speciális Azure-szolgáltatások használatával történő védelmére vonatkozó ajánlott eljárásokat. Az Azure App Service, az Azure SQL Database és az Azure SQL Data Warehouse, valamint az Azure Storage szolgáltatással kezdjük. Amint más Azure-szolgáltatások ajánlott gyakorlataira vonatkozó cikkek elérhetővé válnak, a hivatkozások az alábbi listában jelennek meg:
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database és Azure SQL Data Warehouse](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
 - Azure Cache for Redis
 - Azure Service Bus
-- Webalkalmazási tűzfalak
+- Webalkalmazás-tűzfalak
 
-Tekintse meg a [biztonságos alkalmazások fejlesztése az Azure](abstract-develop-secure-apps.md) -ban biztonsági kérdéseket és ellenőrzéseket a szoftverfejlesztés életciklusának minden fázisában a Felhőbeli alkalmazások fejlesztésekor.
+A felhőhöz való alkalmazások fejlesztésekor a szoftverfejlesztési életciklus minden egyes fázisában figyelembe veheti a biztonságos alkalmazások fejlesztése az [Azure-ban](abstract-develop-secure-apps.md) című témakört.
 
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
+Tekintse meg [az Azure biztonsági gyakorlati tanácsait és mintáit,](best-practices-and-patterns.md) amelyek további biztonsági gyakorlati tanácsokat tartalmaznak a felhőbeli megoldások tervezése, üzembe helyezése és kezelése során az Azure használatával.
 
-Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
-* Az [Azure Security csapatának blogja](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, vagy e-mailen keresztül secure@microsoft.com
+Az alábbi források az Azure biztonságával és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általánosabb információk biztosításához érhetők el:
+* [Azure Security Team Blog](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb adatairól
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – ahol a Microsoft biztonsági rései, beleértve az Azure-ral kapcsolatos problémákat is, jelenthetők, vagy e-mailben asecure@microsoft.com

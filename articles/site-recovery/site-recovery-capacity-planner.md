@@ -1,6 +1,6 @@
 ---
-title: A Hyper-V vész-helyreállítás kapacitásának megtervezése Azure Site Recovery
-description: Ebből a cikkből megbecsülheti a kapacitást, amikor a Azure Site Recovery szolgáltatással vész-helyreállítást állít be.
+title: Tervezze meg a Hyper-V vész-helyreállítási kapacitását az Azure Site Recovery segítségével
+description: Ez a cikk a kapacitás becsléséhez, amikor az Azure Site Recovery szolgáltatás sal történő vészhelyreállítást állít fel.
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
@@ -9,142 +9,142 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73936049"
 ---
-# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>A Hyper-V virtuális gép vész-helyreállítási kapacitásának megtervezése 
+# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>A Hyper-V VM vész-helyreállítási kapacitásának megtervezése 
 
-A Hyper-V – Azure üzembe helyezéséhez szükséges [Azure Site Recovery Deployment Planner] (site-recovery-hyper-v-deployment-planner.md) a következőket biztosítja:
+Az[Azure Site Recovery Deployment Planner] (site-recovery-hyper-v-deployment-planner.md) a Hyper-V és az Azure üzembe helyezéséhez a következőket biztosítja:
 
-* A virtuális gépek támogathatóságának értékelése a lemezek száma, a lemez mérete, a IOPS, a forgalom és néhány virtuálisgép-jellemző alapján
-* A hálózati sávszélességre és a RPO értékelésre van szükség
-* Azure-infrastruktúra követelményei
-* A helyszíni infrastruktúrára vonatkozó követelmények
-* Kezdeti replikálási kötegelt útmutató
-* A vész-helyreállítási költségek becsült teljes költsége az Azure-ban
+* Virtuális gép jogosultsági felmérése a lemezek száma, a lemezméret, az IOPS, a lemorzsolódás és néhány virtuális gép-jellemzők alapján
+* A hálózatisávszélesség-igény és RPO-elemzés
+* Azure infrastruktúra-követelmények
+* Helyszíni infrastruktúra-követelmények
+* Útmutató a kezdeti replikáció kötegeléséhez
+* Becsült teljes vész-helyreállítási költség az Azure-ba
 
 
-Azure Site Recovery Capacity Planner segít meghatározni a kapacitásra vonatkozó követelményeket a Hyper-V virtuális gépek Azure Site Recovery használatával történő replikálásakor.
+Az Azure Site Recovery capacity Planner segítségével meghatározhatja a kapacitásigényeket, amikor hyper-v virtuális gépeket replikál az Azure Site Recovery segítségével.
 
-Használja Site Recovery Capacity Planner a forrás-és a számítási feladatok elemzéséhez. Segít megbecsülni a sávszélességi igényeket, a forrás helyéhez szükséges kiszolgálói erőforrásokat, valamint a célhelyen szükséges erőforrásokat (például virtuális gépeket és tárterületet).
+A Webhely-helyreállítási kapacitástervező vel elemezheti a forráskörnyezetet és a munkaterheléseket. Segít megbecsülni a sávszélesség-igényeket, a forráshelyhez szükséges kiszolgálói erőforrásokat, valamint a célhelyen szükséges erőforrásokat (például virtuális gépeket és tárhelyet).
 
-Az eszközt két módban is futtathatja:
+Az eszközt kétféle kulccant üzemmódban futtathatja:
 
-* **Gyors tervezés**: hálózati és kiszolgáló-kivetítéseket biztosít a virtuális gépek, lemezek, tárolók és a változási arányok átlagos száma alapján.
-* **Részletes tervezés**: az egyes számítási feladatok részleteit tartalmazza a virtuális gép szintjén. A virtuális gépek kompatibilitásának elemzése és a hálózati és kiszolgálói előrejelzések beolvasása.
+* **Gyors tervezés**: Hálózati és kiszolgálói előrejelzéseket biztosít a virtuális gépek, lemezek, tárolók és a változási sebesség átlagos száma alapján.
+* **Részletes tervezés:** A virtuális gép szintjén az egyes munkaterhelések részleteit tartalmazza. Elemezze a virtuális gép kompatibilitását, és kapjon hálózati és kiszolgálói előrejelzéseket.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-* Gyűjtsön információkat a környezetéről, beleértve a virtuális gépeket, a lemezeket/virtuális gépeket, a tárterületet.
-* A replikált adatforgalom napi változási arányának meghatározása. Töltse le a [Hyper-V kapacitás-tervezési eszközt](https://www.microsoft.com/download/details.aspx?id=39057) a változási arány eléréséhez. [További információ](site-recovery-capacity-planning-for-hyper-v-replication.md) az eszközről. Javasoljuk, hogy az átlagok rögzítése érdekében futtassa az eszközt egy hétre.
+* Adatokat gyűjthet a környezetről, beleértve a virtuális gépeket, a virtuális gépenkénti lemezeket, a lemezenkénti tárhelyet.
+* Azonosítsa a replikált adatok napi változási (lemorzsolódási) sebességét. Töltse le a [Hyper-V kapacitástervező eszközt](https://www.microsoft.com/download/details.aspx?id=39057) a változási sebesség leigazolásához. [További információ](site-recovery-capacity-planning-for-hyper-v-replication.md) az eszközről. Azt javasoljuk, hogy futtassa ezt az eszközt egy héten keresztül az átlagok rögzítéséhez.
 
 
-## <a name="run-the-quick-planner"></a>A gyors Planner futtatása
-1. Töltse le és nyissa meg [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Makrókat kell futtatnia. Amikor a rendszer kéri, válassza a Szerkesztés és a tartalom engedélyezése lehetőséget.
+## <a name="run-the-quick-planner"></a>A gyorstervező futtatása
+1. Töltse le és nyissa meg [a Site Recovery Capacity Planner -t.](https://aka.ms/asr-capacity-planner-excel) Makrókat kell futtatnia. Amikor a rendszer kéri, a szerkesztés és a tartalom engedélyezéséhez válasszon.
 
-2. A **Planner típusának kiválasztása** listában válassza a **gyors Planner**elemet.
+2. A **Tervezőtípus kiválasztása** listában válassza a **Gyorstervező lehetőséget.**
 
-   ![Első lépések](./media/site-recovery-capacity-planner/getting-started.png)
+   ![Bevezetés](./media/site-recovery-capacity-planner/getting-started.png)
 
-3. A **Capacity Planner** munkalapon adja meg a szükséges adatokat. Töltse ki az összes piros színnel jelölt mezőt a következő képernyőképen:
+3. A **Kapacitástervező** munkalapon adja meg a szükséges adatokat. Töltse ki az összes pirosan bekarikázott mezőt a következő képernyőképen:
 
-   a. A **forgatókönyv kiválasztása**területen válassza a **Hyper-V – Azure** vagy a **VMware/fizikai az Azure-hoz**lehetőséget.
+   a. A **Válassza ki a forgatókönyvet,** válassza a **Hyper-V az Azure** vagy **vmware/fizikai az Azure-ba.**
 
-   b. A **napi adatváltozási arány (%)** mezőben adja meg az összegyűjtött adatokat a [Hyper-V kapacitás-tervezési eszköz](site-recovery-capacity-planning-for-hyper-v-replication.md) vagy a [site Recovery Deployment Planner](./site-recovery-deployment-planner.md)használatával.
+   b. A **Napi adatváltozási arány átlaga (%)** csoportban adja meg a [Hyper-V kapacitástervező eszközzel](site-recovery-capacity-planning-for-hyper-v-replication.md) vagy a [Hely-helyreállítási telepítéstervezővel](./site-recovery-deployment-planner.md)gyűjtött adatokat.
 
-   c. A **tömörítési** beállítás nem használatos a Hyper-V virtuális gépek Azure-ba történő replikálásakor. A tömörítéshez használjon egy külső gyártótól származó készüléket, például Riverbed.
+   c. A **tömörítési** beállítás nem használatos, ha hyper-V virtuális gépeket replikál az Azure-ba. A tömörítéshez használjon külső gyártótól származó készüléket, például a folyómedert.
 
-   d. A **megőrzési napok**mezőben határozza meg, hogy hány nap elteltével kell megőrizni a replikákat.
+   d. A **Megőrzés napokban**adja meg napokban, hogy mennyi ideig őrizze meg a replikákat.
 
-   e. Azon **órák száma, amelyekben a virtuális gépek kezdeti replikálása szükséges** , és a **virtuális gépek száma kezdeti replikálási kötegben**, a kezdeti replikációs követelmények kiszámításához használt beállítások megadása. Site Recovery telepítésekor a rendszer feltölti a teljes kezdeti adatkészletet.
+   e. Az **On Number of Hours , amelyben a virtuális gépek kötegének kezdeti replikációja befejeződik,** és **a virtuális gépek száma kezdeti replikációs kötegenként**( Adja meg a kezdeti replikációs követelmények kiszámításához használt beállításokat). A Site Recovery telepítésekor a rendszer feltölti a teljes kezdeti adatkészletet.
 
    ![Bemenetek](./media/site-recovery-capacity-planner/inputs.png)
 
-4. A forrás-környezet értékeinek megadása után a megjelenített kimenet a következőket tartalmazza:
+4. Miután megadta a forráskörnyezet értékeit, a megjelenített kimenet a következőket tartalmazza:
 
-   * A **különbözeti replikációhoz szükséges sávszélesség (megabit/mp)** : a különbözeti replikáció hálózati sávszélességét a napi adatváltozások átlagos száma alapján számítjuk ki.
-   * A **kezdeti replikáláshoz szükséges sávszélesség (megabit/mp)** : a kezdeti replikálás hálózati sávszélességét a megadott kezdeti replikálási értékek alapján számítjuk ki.
-   * **Tárterület szükséges (GB-ban)** : a teljes Azure-tárterület szükséges.
-   * A **standard szintű tárterület teljes IOPS**: a rendszer a 8K IOPS egység mérete alapján számítja ki az összes standard Storage-fiókra vonatkozó értéket. A Quick Planner esetében a számot az összes forrásoldali virtuálisgép-lemez és a napi adatváltozási arány alapján számítjuk ki. A részletes Planner esetében a számot a standard Azure-beli virtuális gépekre leképezett virtuális gépek teljes száma, valamint a virtuális gépek adatváltozási sebessége alapján számítjuk ki.
-   * A **szükséges standard szintű Storage-fiókok száma**: a virtuális gépek elleni védelemhez szükséges standard Storage-fiókok teljes száma. A standard szintű Storage-fiókok akár 20 000 IOPS is rendelkezhetnek a standard szintű tárolóban lévő összes virtuális gépen. Lemezenként legfeljebb 500 IOPS támogatott.
-   * **Szükséges blob-lemezek száma**: az Azure Storage-on létrehozott lemezek száma.
-   * A **szükséges prémium szintű fiókok száma**: a virtuális gépek elleni védelemhez szükséges prémium szintű Storage-fiókok teljes száma. A magas IOPS (20 000-nál nagyobb) forrásként szolgáló virtuális gépnek prémium szintű Storage-fiókra van szüksége. A prémium szintű Storage-fiók akár 80 000 IOPS is rendelkezhet.
-   * **Premium Storage összes IOPS**: a szám kiszámítása a Premium Storage-fiókok 256K IOPS-egységének mérete alapján történik. A Quick Planner esetében a számot az összes forrásoldali virtuálisgép-lemez és a napi adatváltozási arány alapján számítjuk ki. A részletes Planner esetében a számot a prémium szintű Azure-beli virtuális gépekre (DS és GS sorozat) leképezett virtuális gépek teljes száma, valamint a virtuális gépek adatváltozási sebessége alapján számítjuk ki.
-   * **Szükséges konfigurációs kiszolgálók száma**: azt mutatja, hogy hány konfigurációs kiszolgáló szükséges a központi telepítéshez.
-   * **További szükséges folyamat-kiszolgálók száma**: azt mutatja, hogy szükség van-e további folyamat-kiszolgálókra a konfigurációs kiszolgálón futó folyamaton kívül alapértelmezés szerint.
-   * **100%-os további tárterület a forráson**: azt mutatja, hogy szükséges-e további tárterület a forrás helyén.
+   * **A különbözeti replikációhoz szükséges sávszélesség (Megabit/mp-ben)**: A különbözeti replikáció hálózati sávszélessége a napi adatváltozás irásának átlaga alapján kerül kiszámításra.
+   * **A kezdeti replikációhoz szükséges sávszélesség (Megabit/mp-ben)**: A kezdeti replikáció hálózati sávszélessége a megadott kezdeti replikációs értékek alapján kerül kiszámításra.
+   * **Szükséges tárhely (gb-kban)**: A teljes Azure-tárhely szükséges.
+   * **Teljes IOPS standard storage:** A szám számítása a teljes standard storage-fiókok 8K IOPS-egységmérete alapján kerül kiszámításra. A Gyorstervező esetében a szám kiszámítása az összes forrás virtuálisgép-lemez és a napi adatváltozási arány alapján történik. A részletes tervező, a szám kiszámítása alapján a szabványos Azure virtuális gépekhez leképezett virtuális gépek teljes száma és az adatok változási aránya a virtuális gépek.
+   * **A szükséges standard szintű tárfiókok**száma: A virtuális gépek védelméhez szükséges szabványos tárfiókok teljes száma. Egy normál tárfiók legfeljebb 20 000 IOPS-t tarthat a szabványos tárolóban lévő összes virtuális gépen. Lemezenként legfeljebb 500 IOPS támogatott.
+   * **Blob lemezek száma szükséges:** Az Azure storage-ban létrehozott lemezek száma.
+   * **A szükséges prémium szintű fiókok**száma: A virtuális gépek védelméhez szükséges prémium szintű tárfiókok teljes száma. A magas IOPS-értékkel (20 000-nél nagyobb) rendelkező forrásvirtuális gépnek prémium szintű tárfiókra van szüksége. Egy prémium szintű tárfiók legfeljebb 80 000 IOPS-t képes tárolni.
+   * **Teljes IOPS prémium szintű storage:** A szám számítása a 256K IOPS-egység mérete alapján a teljes prémium szintű tárfiókok. A Gyorstervező esetében a szám kiszámítása az összes forrás virtuálisgép-lemez és a napi adatváltozási arány alapján történik. A részletes tervező, a szám kiszámítása alapján a prémium szintű Azure virtuális gépek (DS és GS sorozat) és az adatváltozási arány a virtuális gépek en leképezve a virtuális gépek teljes száma alapján.
+   * **A szükséges konfigurációs kiszolgálók száma**: Megmutatja, hogy hány konfigurációs kiszolgálóra van szükség a központi telepítéshez.
+   * **További folyamatkiszolgálók száma szükséges**: Megmutatja, hogy szükség van-e további folyamatkiszolgálókra a konfigurációs kiszolgálón alapértelmezés szerint futó folyamatkiszolgálón kívül.
+   * **100%-os további tárhely a Forrás:** Megmutatja, hogy szükség van-e további tárhelyre a forráshelyen.
 
       ![Kimenet](./media/site-recovery-capacity-planner/output.png)
 
-## <a name="run-the-detailed-planner"></a>A részletes Planner futtatása
+## <a name="run-the-detailed-planner"></a>A részletes tervező futtatása
 
-1. Töltse le és nyissa meg [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Makrókat kell futtatnia. Amikor a rendszer kéri, válassza a Szerkesztés és a tartalom engedélyezése lehetőséget.
+1. Töltse le és nyissa meg [a Site Recovery Capacity Planner -t.](https://aka.ms/asr-capacity-planner-excel) Makrókat kell futtatnia. Amikor a rendszer kéri, a szerkesztés és a tartalom engedélyezéséhez válasszon.
 
-2. A **tervező típusának kiválasztása**mezőben válassza a **részletes Planner** elemet a listából.
+2. A **Tervezőtípus kiválasztása**párbeszédpanelen válassza a **Listamező Részletes tervező mezőjét.**
 
    ![Útmutató az első lépésekhez](./media/site-recovery-capacity-planner/getting-started-2.png)
 
-3. A **munkaterhelés-minősítés** munkalapon adja meg a szükséges adatokat. Ki kell töltenie az összes megjelölt mezőt.
+3. A **Munkaterhelés minősítése** munkalapon adja meg a szükséges adatokat. Ki kell töltenie az összes megjelölt mezőt.
 
-   a. A **processzor magok**területen határozza meg a forráskiszolgálón lévő magok teljes számát.
+   a. A **processzormagok**ban adja meg a forráskiszolgálón lévő magok teljes számát.
 
-   b. A **memória kiosztása (MB)** mezőben határozza meg a forráskiszolgáló RAM-méretét.
+   b. A **Memórialefoglalás (MB-kben)** adja meg a forráskiszolgáló RAM-méretét.
 
-   c. A hálózati adapterek **száma**mezőben határozza meg a forráskiszolgálón lévő hálózati adapterek számát.
+   c. A **Hálózati adapterek száma csoportban**adja meg a hálózati adapterek számát a forráskiszolgálón.
 
-   d. A **teljes tárterület (GB)** mezőben határozza meg a virtuális gép tárterületének teljes méretét. Ha például a forráskiszolgáló három lemezből áll, amelyek mindegyike 500 GB, a teljes tárterület mérete 1 500 GB.
+   d. A **Teljes tárterület (GB)**, adja meg a virtuális gép tároló teljes méretét. Ha például a forráskiszolgáló három, egyenként 500 GB-os lemezzel rendelkezik, a teljes tárterület mérete 1500 GB.
 
-   e. A **csatlakoztatott lemezek száma**mezőben határozza meg a forráskiszolgáló összes lemezének teljes számát.
+   e. A **Csatlakoztatott lemezek száma csoportban**adja meg a forráskiszolgáló lemezeinek teljes számát.
 
-   f. A **lemez kapacitása kihasználtsága (%)** mezőben határozza meg az átlagos kihasználtságot.
+   f. A **Lemezkapacitás-kihasználtság (%)** csoportban adja meg az átlagos kihasználtságot.
 
-   g. A **napi adatváltozási arány (%)** értéknél a forráskiszolgáló napi adatváltozási arányát kell megadni.
+   g. A **Napi adatváltozási arányban (%)** adja meg a forráskiszolgáló napi adatváltozási sebességét.
 
-   h. Az **Azure-beli virtuális gép méretének leképezése**mezőben adja meg a leképezni kívánt Azure-beli virtuális gép méretét. Ha ezt manuálisan nem szeretné elvégezni, válassza a **számítási IaaS virtuális gépek**lehetőséget. Ha a manuális beállítást adja meg, majd kiválasztja a **számítási IaaS virtuális gépek**lehetőséget, előfordulhat, hogy a manuális beállítás felül van írva. A számítási folyamat automatikusan azonosítja az Azure-beli virtuális gépek méretének legmegfelelőbb egyezését.
+   h. Az **Azure virtuális gép méretének leképezése,** adja meg az Azure virtuális gép méretét, amely le szeretné képezni. Ha ezt nem szeretné manuálisan elvégezni, válassza **a Számítási iaaS virtuális gépek lehetőséget.** Ha kézi beállítást ad meg, majd a **Számítási iaaS virtuális gépek lehetőséget választja,** előfordulhat, hogy a manuális beállítás felülíródik. A számítási folyamat automatikusan azonosítja a legjobb egyezést az Azure virtuális gép mérete.
 
-   ![Munkaterhelés-minősítési munkalap](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![Számítási feladatok képzettsége munkalap](./media/site-recovery-capacity-planner/workload-qualification.png)
 
-4. Ha a **számítási IaaS virtuális gépek**lehetőséget választja, a következőkre van szüksége:
+4. Ha **a Számítási iaaS virtuális gépek lehetőséget választja,** a következőket teszi:
 
    * Ellenőrzi a kötelező bemeneteket.
-   * Kiszámítja a IOPS, és az Azure-ba való replikációra jogosult minden virtuális gép esetében a legjobb Azure-beli virtuálisgép-méretet javasolja. Ha a megfelelő méretű Azure-beli virtuális gép nem észlelhető, hibaüzenet jelenik meg. Ha például a csatlakoztatott lemezek száma 65, akkor egy hibaüzenet jelenik meg, mert az Azure-beli virtuális gép legmagasabb mérete 64.
-   * Az Azure-beli virtuális gépekhez használható Storage-fiókot javasolja.
-   * Kiszámítja a standard Storage-fiókok és a számítási feladatok számára szükséges prémium szintű Storage-fiókok teljes számát. Görgessen le az Azure Storage-típus és a forráskiszolgáló számára használható Storage-fiók megtekintéséhez.
-   * Befejezi és rendezi a táblázat többi részét a virtuális géphez hozzárendelt szükséges tárolási típus (standard vagy prémium) alapján, valamint a csatlakoztatott lemezek számát. Az Azure-ra vonatkozó követelményeket teljesítő összes virtuális gép esetében az oszlop a **VM minősítéssel rendelkezik?** az **Igen értéket**mutatja. Ha egy virtuális gépet nem lehet biztonsági másolatot készíteni az Azure-ba, hibaüzenet jelenik meg.
+   * Kiszámítja az IOPS-t, és a legjobb Azure-virtuálisgép-méretet javasolja minden olyan virtuális géphez, amely jogosult az Azure-ba való replikációra. Ha egy megfelelő méretű Azure virtuális gép nem észlelhető, egy hiba jelenik meg. Ha például a csatlakoztatott lemezek száma 65, egy hiba jelenik meg, mert az Azure virtuális gép legnagyobb mérete 64.
+   * Egy Azure-beli virtuális géphez használható tárfiókot javasol.
+   * Kiszámítja a számítási feladatokhoz szükséges standard szintű tárfiókok és prémium szintű tárfiókok teljes számát. Görgessen le az Azure-tárhely típusának és a forráskiszolgálóhoz használható tárfiók megtekintéséhez.
+   * Befejezi és rendezi a tábla többi részét a virtuális géphez rendelt szükséges tárolási típus (standard vagy prémium díj) és a csatlakoztatott lemezek száma alapján. Az Azure követelményeinek megfelelő összes virtuális gép esetében az oszlop **a virtuális gép minősített?** **az Igen**oszlop ot mutatja. Ha egy virtuális gép nem lehet biztonsági másolatot az Azure-ba, egy hiba jelenik meg.
 
-Az AA – AE oszlopok kimenete és az egyes virtuális gépek adatainak megadása.
+Az AA–AE oszlopok kimeneti és információkat nyújtanak az egyes virtuális gépekhez.
 
-![Kimeneti oszlopok AA – AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![AA–AE kimeneti oszlopok](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>Példa
-Ha például hat virtuális gép esetében a táblázatban látható értékek szerepelnek, az eszköz kiszámítja és hozzárendeli a legjobb Azure-beli virtuális gép egyeztetését és az Azure Storage követelményeit.
+Például hat virtuális gép a táblázatban látható értékekkel, az eszköz kiszámítja és hozzárendeli a legjobb Azure virtuális gép egyezést és az Azure storage-követelmények.
 
-![Munkaterhelés-minősítési hozzárendelések](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![Számítási feladatok képzettsége](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
-* A példában a kimenetben vegye figyelembe a következőket:
+* A példakimenetben vegye figyelembe a következőket:
 
-  * Az első oszlop a virtuális gépek, a lemezek és a forgalom ellenőrzési oszlopa.
-  * Öt virtuális géphez két standard Storage-fiókra és egy Premium Storage-fiókra van szükség.
-  * A VM3 nem jogosult a védelemre, mert egy vagy több lemez nagyobb, mint 1 TB.
-  * A VM1 és a VM2 az első szabványos Storage-fiókot használhatja
-  * A VM4 a második szabványos Storage-fiókot is használhatja.
-  * A VM5 és a VM6 Premium Storage-fiókra van szükség, és mindkettő egyetlen fiókot is használhat.
+  * Az első oszlop a virtuális gépek, lemezek és forgalomjegyzék érvényesítési oszlopa.
+  * Két standard szintű tárfiókok és egy prémium szintű tárfiók öt virtuális gépek.
+  * VM3 doesn't qualify for protection because one or more disks are more than 1 TB.
+  * A VM1 és a VM2 használhatja az első standard szintű tárfiókot
+  * A VM4 használhatja a második standard szintű tárfiókot.
+  * VM5 és VM6 kell egy prémium szintű tárfiókot, és mindkettő használhatja egyetlen fiókot.
 
     > [!NOTE]
-    > A standard és a prémium szintű tároló IOPS a virtuálisgép-szinten, nem pedig a lemez szintjén számítjuk ki. A standard szintű virtuális gép legfeljebb 500 IOPS tud kezelni. Ha a lemez IOPS nagyobb, mint 500, prémium szintű tárterületre van szükség. Ha a lemez IOPS nagyobb, mint 500, de a teljes virtuálisgép-lemezek IOPS a standard szintű Azure-beli virtuálisgép-korlátokon belül vannak, akkor a Planner szabványos virtuális gépet vesz fel, nem pedig a DS vagy a GS sorozatra. (Az Azure virtuális gép korlátai a virtuális gépek mérete, a lemezek száma, az adapterek száma, a processzor és a memória.) Manuálisan kell frissítenie az Azure-beli méretezési cellát a megfelelő DS vagy GS sorozatú virtuális géppel.
+    > IOPS standard és prémium szintű storage a virtuális gép szintjén számítják ki, és nem lemez szinten. Egy szabványos virtuális gép lemezenként legfeljebb 500 IOPS-t képes kezelni. Ha egy lemez IOPS nagyobb, mint 500, prémium szintű tárhelyre van szüksége. Ha egy lemez IOPS-a több mint 500, de az IOPS az összes virtuálisgép-lemezek a támogatási szabványos Azure virtuális gép korlátok, a tervező egy szabványos virtuális gép, és nem a DS vagy gs sorozat. (Az Azure vm-korlátok a virtuális gép mérete, a lemezek száma, az adapterek száma, a PROCESSZOR és a memória.) Manuálisan kell frissítenie a leképezési Azure méretcella a megfelelő DS vagy GS sorozat virtuális gép.
 
 
-Az összes adat megadása után válassza **az adatok elküldése a Planner eszközre** lehetőséget a Capacity Planner megnyitásához. A munkaterhelések ki vannak emelve, hogy megjelenjenek a védelemre jogosultak.
+Miután az összes adatot megadta, válassza **az Adatok küldése a tervező eszköznek** lehetőséget a Kapacitástervező megnyitásához. A munkaterhelések ki vannak emelve, hogy megmutassák, jogosultak-e a védelemre.
 
-### <a name="submit-data-in-capacity-planner"></a>Az adatküldés Capacity Planner
-1. Amikor megnyitja a **Capacity Planner** munkalapot, a rendszer a megadott beállítások alapján tölti fel. A "munkaterhelés" szó az **infra bemenetek forrás** cellájában jelenik meg, hogy a bemenet a **munkaterhelés-minősítési** munkalap legyen.
+### <a name="submit-data-in-capacity-planner"></a>Adatok küldése a Kapacitástervezőben
+1. A **Kapacitástervező** munkalap megnyitásakor a rendszer a megadott beállítások alapján tölti ki. A "Munkaterhelés" szó megjelenik az **Infra bemenetek** forráscellájában, amely azt mutatja, hogy a bemenet a **Számítási feladatok minősítése** munkalap.
 
-2. Ha módosításokat szeretne végezni, módosítania kell a **munkaterhelés-minősítési** munkalapot. Ezután válassza **az adatküldés a Planner eszközre** lehetőséget.
+2. Ha módosításokat szeretne végrehajtani, módosítania kell a **Munkaterhelés minősítése** munkalapot. Ezután ismét válassza **az Adatok küldése a tervezőeszköznek** lehetőséget.
 
-   ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![Kapacitástervező](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-## <a name="next-steps"></a>Következő lépések
-[Megtudhatja, hogyan futtathatja](site-recovery-capacity-planning-for-hyper-v-replication.md) a kapacitás-tervezési eszközt.
+## <a name="next-steps"></a>További lépések
+További információ a kapacitástervezési eszköz [futtatásáról.](site-recovery-capacity-planning-for-hyper-v-replication.md)

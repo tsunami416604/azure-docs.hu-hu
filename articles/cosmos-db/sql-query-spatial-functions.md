@@ -1,6 +1,6 @@
 ---
-title: Térbeli függvények Azure Cosmos DB lekérdezési nyelven
-description: Ismerje meg Azure Cosmos DB térbeli SQL-rendszerfunkcióit.
+title: Térbeli függvények az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg a térbeli SQL-rendszer függvényeit az Azure Cosmos DB-ben.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 1d523b09cb3d7142a6c375a0ffde77f8ca1153b0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349453"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>Térbeli függvények (Azure Cosmos DB)
 
-A cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. 
+A Cosmos DB a következő Open Geospatial Consortium (OGC) beépített függvényeket támogatja a térinformatikai lekérdezéshez. 
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>Functions
 
-A következő skaláris függvények végrehajtania egy műveletet a térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.  
+A következő skaláris függvények egy térbeli objektum bemeneti értékén hajtanak végre műveletet, és numerikus vagy logikai értéket adnak vissza.  
   
 |||||
 |-|-|-|-|
@@ -30,7 +30,7 @@ A következő skaláris függvények végrehajtania egy műveletet a térbeli ob
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
-- [Aggregátumok](sql-query-aggregates.md)
+- [Összesítések](sql-query-aggregates.md)

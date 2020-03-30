@@ -1,6 +1,6 @@
 ---
-title: Állapot megőrzése a Windowsban – Azure Event Grid IoT Edge | Microsoft Docs
-description: Állapot megőrzése a Windowsban
+title: Megőrzési állapot a Windows rendszerben – Azure Event Grid IoT Edge | Microsoft dokumentumok
+description: Állapot megőrzése a Windows rendszerben
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,28 +10,28 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086625"
 ---
-# <a name="persist-state-in-windows"></a>Állapot megőrzése a Windowsban
+# <a name="persist-state-in-windows"></a>Állapot megőrzése a Windows rendszerben
 
-A Event Grid modulban létrehozott témaköröket és előfizetéseket a rendszer alapértelmezés szerint a tároló fájlrendszerében tárolja. Az adatmegőrzés nélkül, ha a modul újratelepítése megtörténik, az összes létrehozott metaadat elvész. A központi telepítések és újraindítások közötti adatmegőrzéshez a tároló fájlrendszerén kívül kell megőriznie az adattárolást. 
+Az Event Grid modulban létrehozott témakörök és előfizetések alapértelmezés szerint a tárolófájlrendszerben tárolófájlrendszerben tárolóba kerülnek. Megőrzés nélkül, ha a modul újratelepítése, az összes létrehozott metaadatok elveszne. Az adatok megőrzése a központi telepítések és újraindítások között, meg kell őriznie az adatokat a tároló fájlrendszeren kívül. 
 
-Alapértelmezés szerint a rendszer csak a metaadatokat őrzi meg, az eseményeket pedig a memóriában tárolja a jobb teljesítmény érdekében. Az esemény-megőrzés engedélyezéséhez kövesse az események megőrzése szakaszt is.
+Alapértelmezés szerint csak a metaadatok maradnak meg, és az események továbbra is a memóriában tárolódnak a jobb teljesítmény érdekében. Kövesse az események megőrzése szakaszt az eseménymegőrzés engedélyezéséhez is.
 
-Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a Windows rendszerű központi telepítések Event Grid moduljának telepítéséhez.
+Ez a cikk az Event Grid modul windows-központi telepítésekben való megőrzéséhez szükséges lépéseket ismerteti.
 
 > [!NOTE]
->A Event Grid modul alacsony jogosultsági szintű felhasználói **ContainerUser** fut a Windows rendszerben.
+>Az Event Grid modul alacsony jogosultságú **felhasználóként** fut a Windows ban.
 
-## <a name="persistence-via-volume-mount"></a>Adatmegőrzés a Volume Mount használatával
+## <a name="persistence-via-volume-mount"></a>Perzisztencia a kötetcsatlakoztatással
 
-A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával megőrizhető az egyes központi telepítések. Kötet csatlakoztatásához a Docker-parancsokkal létre kell hoznia a tárolót, engedélyeket kell adnia, hogy a tároló képes legyen olvasni, írni, majd üzembe helyezni a modult.
+[Docker-kötetek](https://docs.docker.com/storage/volumes/) adatok megőrzése a központi telepítések között. Egy kötet csatlakoztatása, docker-parancsok használatával kell létrehozni, engedélyeket adni, hogy a tároló olvasni, írni, majd telepíteni a modult.
 
-1. Hozzon létre egy kötetet a következő parancs futtatásával:
+1. Kötet létrehozása a következő parancs futtatásával:
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
@@ -42,7 +42,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
    ```
-1. Az alábbi parancs futtatásával szerezze be a kötethez hozzárendelni kívánt gazdagépi könyvtárat:
+1. A kötet által leképezett gazdakönyvtár beszerezni az alábbi parancs futtatásával
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
@@ -54,7 +54,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
    ```
 
-   Minta kimenete:-
+   Minta kimenet:-
 
    ```json
    [
@@ -69,15 +69,15 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
           }
    ]
    ```
-1. Adja hozzá a **felhasználók** csoportot a **csatlakoztatási pont** által mutatott értékhez a következőképpen:
-    1. Indítsa el a fájlkezelőt.
-    1. Navigáljon a **csatlakoztatási pont**által mutatott mappára.
-    1. Kattintson a jobb gombbal, majd válassza a **Tulajdonságok**lehetőséget.
-    1. Válassza a **Biztonság**elemet.
-    1. A * csoport vagy felhasználó neve területen válassza a **Szerkesztés**lehetőséget.
-    1. Válassza a **Hozzáadás**lehetőséget, írja be `Users` **, válassza a Névellenőrzés lehetőséget**, majd kattintson **az OK gombra**.
-    1. A *Felhasználók engedélyei*területen válassza a **módosítás**lehetőséget, majd kattintson **az OK gombra**.
-1. **Kötések** használata a kötet csatlakoztatásához és Event Grid modul újbóli üzembe helyezéséhez Azure Portal
+1. Adja hozzá a **Felhasználók** csoportot a **MountPoint** által mutatott értékhez az alábbiak szerint:
+    1. Indítsa el a Fájlkezelőt.
+    1. Keresse meg a **Mountpoint**által mutatott mappát.
+    1. Kattintson a jobb gombbal, majd válassza **a Tulajdonságok parancsot.**
+    1. Válassza a **Security** (Biztonság) lehetőséget.
+    1. A *Csoport- vagy felhasználónevek csoportban válassza a **Szerkesztés**lehetőséget.
+    1. Válassza a `Users` **Hozzáadás**, írja be a Jelet, a Nevek **ellenőrzése**lehetőséget, majd az **Ok**gombot.
+    1. A *Felhasználók engedélyei*csoportban válassza a **Modify (Módosítás)** lehetőséget, majd az **Ok parancsot.**
+1. **A Kötések** használatával csatlakoztatja ezt a kötetet, és újratelepítheti az Event Grid modult az Azure Portalról
 
    Például:
 
@@ -112,7 +112,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     ```
 
    >[!IMPORTANT]
-   >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljában a következőnek kell lennie **: C:\\app\\metadataDb**.
+   >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. Az Event Grid modul windows, meg kell **C:\\app\\metadataDb**.
 
 
     Például:
@@ -148,11 +148,11 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     }
     ```
 
-## <a name="persistence-via-host-directory-mount"></a>Adatmegőrzés a gazdagép könyvtárának csatlakoztatása révén
+## <a name="persistence-via-host-directory-mount"></a>Perzisztencia a gazdatár-csatlakoztatással
 
-Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és csatlakoztathatja a könyvtárat.
+Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdarendszeren, és csatlakoztathatja a könyvtárat.
 
-1. Hozzon létre egy könyvtárat a gazdagép fájlrendszerén a következő parancs futtatásával.
+1. Hozzon létre egy könyvtárat a gazdafájlrendszeren a következő parancs futtatásával.
 
    ```sh
    mkdir <your-directory-name-here>
@@ -163,7 +163,7 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
    ```sh
    mkdir C:\myhostdir
    ```
-1. A **kötések** használatával csatlakoztassa a könyvtárat, és telepítse újra a Event Grid modult Azure Portal.
+1. **A Binds** használatával csatlakoztathatja a címtárat, és újratelepítheti az Event Grid modult az Azure Portalról.
 
     ```json
     {
@@ -176,7 +176,7 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
     ```
 
     >[!IMPORTANT]
-    >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C:\\app\\metadataDb**.
+    >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. Az Event Grid modul windows, meg kell **C:\\app\\metadataDb**.
 
     Például:
 
@@ -212,15 +212,15 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
     ```
 ## <a name="persist-events"></a>Események megőrzése
 
-Az események megőrzésének engedélyezéséhez előbb engedélyeznie kell az események megőrzését a Volume Mount vagy a Host Directory Mount használatával a fenti részekkel.
+Az eseménymegőrzés engedélyezéséhez először engedélyeznie kell az események megőrzését a kötetcsatlakoztatás vagy a gazdakönyvtár csatlakoztatása segítségével a fenti szakaszok használatával.
 
-Fontos tudnivalók a megőrzött eseményekről:
+Fontos tudnivalók a tartós eseményekről:
 
-* Az események megtartása esemény-előfizetések alapján engedélyezett, és a kötet vagy a könyvtár csatlakoztatása után is engedélyezve van.
-* Az esemény-megőrzés a létrehozáskor egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az események megőrzésének váltásához törölnie kell, majd újra létre kell hoznia az esemény-előfizetést.
-* A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum az összes üzenetkezelő rendszerhez alkalmazkodik, de csak nagy léptékben érezhető lesz.
+* A tartós események esemény-előfizetésenként engedélyezve vannak, és a kötet vagy könyvtár csatlakoztatása után engedélyezve vannak.
+* Az eseménymegőrzés a létrehozás időpontjában egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az eseménymegőrzésváltáshoz törölnie kell, majd újra létre kell hoznia az Esemény-előfizetést.
+* A tartós események szinte mindig lassabbak, mint a memóriaműveletekben, azonban a sebességkülönbség nagymértékben függ a meghajtó jellemzőitől. A sebesség és a megbízhatóság közötti kompromisszum minden üzenetküldő rendszer velejárója, de csak nagy léptékben válik észrevehetővé.
 
-Ha engedélyezni szeretné az esemény-megőrzést egy esemény-előfizetésben, állítsa a `persistencePolicy` `true`:
+Az esemény-előfizetés eseménymegőrzésének engedélyezéséhez `true`állítsa a következőt: `persistencePolicy`
 
  ```json
         {

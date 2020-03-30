@@ -1,6 +1,6 @@
 ---
-title: A NewTek TriCaster Encoder beállítása egyetlen sávszélességű élő stream küldésére | Microsoft Docs
-description: Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Tricaster élő kódolót úgy, hogy egyetlen sávszélességű adatfolyamot küldjön az élő kódoláshoz engedélyezett AMS-csatornákra.
+title: Konfigurálja a NewTek TriCaster kódolót úgy, hogy egyetlen bitráta-élő közvetítést küldjön | Microsoft dokumentumok
+description: Ez a témakör bemutatja, hogyan konfigurálhatja a Tricaster élő kódolót úgy, hogy egyetlen bitráta-adatfolyamot küldjön az élő kódolásra engedélyezett AMS-csatornáknak.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -16,155 +16,155 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152499"
 ---
-# <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen sávszélességű élő stream küldése a NewTek TriCaster Encoder használatával  
+# <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>A NewTek TriCaster kódoló segítségével egyetlen bitráta élő közvetítést küldhet  
 > [!div class="op_single_selector"]
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
-> * [Elemi élő](media-services-configure-elemental-live-encoder.md)
+> * [Tricaster között](media-services-configure-tricaster-live-encoder.md)
+> * [Elemental Live](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 >
 >
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a [NewTek TriCaster](https://newtek.com/products/tricaster-40.html) élő kódolót úgy, hogy egyetlen sávszélességű adatfolyamot küldjön az élő kódolásra engedélyezett AMS-csatornáknak. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
+Ez a cikk bemutatja, hogyan konfigurálhatja a [NewTek TriCaster](https://newtek.com/products/tricaster-40.html) élő kódolót, hogy egyetlen bitráta-adatfolyamot küldjön az élő kódolásra engedélyezett AMS-csatornáknak. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
 
-Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux operációs rendszert használ, [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md)létrehozásához használja a Azure Portal.
+Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) szolgáltatást az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak Windows rendszerű számítógépen fut. Mac vagy Linux használata esetén az Azure Portalon [csatornákat](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programokat](media-services-portal-creating-live-encoder-enabled-channel.md)hozhat létre.
 
-Ha a Tricaster-t használja az élő kódolásra engedélyezett AMS-csatornákhoz való adatküldéshez, akkor az élő eseményen video-és hanghibák jelentkezhetnek, ha a Tricaster bizonyos funkcióit használja, például a hírcsatornák gyors kivágását, vagy váltás a betöltésre vagy a listára. Az AMS csapat dolgozik ezen problémák elhárításán, addig nem ajánlott ezeket a funkciókat használni.
+Ha a Tricastert használja az élő kódolásra engedélyezett AMS-csatornákba való hozzájárulási hírcsatorna küldésére, akkor video- és hanghibák léphetnek fel az élő eseményben, ha a Tricaster bizonyos funkcióit használja, például a hírcsatornák közötti gyors vágást, vagy a palákra való váltást. Az AMS csapata dolgozik a problémák megoldásán, addig nem ajánlott használni ezeket a funkciókat.
 
 > [!NOTE]
->  Érdemes lehet áthelyezni a TLS 1,2-re, a prefferred TLS-verzióra.
+>  Fontolja meg a TLS 1.2,az előre kibékített TLS verzióra való áttérést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure Media Services fiók létrehozása](media-services-portal-create-account.md)
-* Győződjön meg arról, van egy folyamatos átviteli végponton fut-e. További információ: [streaming-végpontok kezelése Media Services-fiókban](media-services-portal-manage-streaming-endpoints.md)
-* Telepítse a [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) eszköz legújabb verzióját.
-* Indítsa el az eszközt, és csatlakozzon az AMS-fiók.
+* [Azure Media Services-fiók létrehozása](media-services-portal-create-account.md)
+* Győződjön meg arról, hogy fut egy streamelési végpont. További információ: [Streamelési végpontok kezelése médiaszolgáltatások-fiókban](media-services-portal-manage-streaming-endpoints.md)
+* Telepítse az [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) eszköz legújabb verzióját.
+* Indítsa el az eszközt, és csatlakozzon Az AMS-fiókhoz.
 
 ## <a name="tips"></a>Tippek
 
-* Amikor csak lehetséges, hardveresen rögzített beállítású internet kapcsolat használatára.
-* Jó tapasztalatok forrássávszélesség követelményeinek meghatározásakor, hogy a streamelési bitsebességre való átkódolása duplán. Bár ez nem kötelezők, segít a hálózati torlódás hatásainak mérséklése érdekében.
-* Szoftveralapú kódolók használatáról, amikor el minden felesleges programot zárja be.
+* Lehetőség szerint használjon vezetékes internetkapcsolatot.
+* A sávszélesség-követelmények meghatározásának jól használható módszere a streamelés átviteli sebességének megduplázása. Bár ez nem kötelező követelmény, segít enyhíteni a hálózati torlódások hatását.
+* Szoftveralapú kódolók használata esetén zárja be a szükségtelen programokat.
 
 ## <a name="create-a-channel"></a>Csatorna létrehozása
 
-1. A AMSE eszközben navigáljon az **élő** lapra, és kattintson a jobb gombbal a csatorna területére. Válassza a **csatorna létrehozása... lehetőséget.** a menüből.
+1. Az AMSE eszközben keresse meg az **Élő** lapot, és kattintson a jobb gombbal a csatornaterületen belül. Válassza **a Csatorna létrehozása lehetőséget...** a menüből.
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
+    ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
-2. Adjon meg egy csatorna nevét, a Leírás mező kitöltése nem kötelező. A Channel Settings (csatorna beállításai) területen válassza a **standard** lehetőséget a Live Encoding beállításnál, a bemeneti protokollt pedig az **RTMP**értékre állítva. Hagyhatja, hogy a többi beállítás-jébe.
+2. Adja meg a csatorna nevét, a megnevezés mező nem kötelező. A Csatornabeállítások csoportban válassza a **Normál** az Élő kódoláshoz lehetőséget, ha a bemeneti protokoll **rtmp**lesz. Az összes többi beállítást úgy hagyhatja meg, ahogy van.
 
-    Győződjön meg arról, hogy az **új csatorna elindítása most** lehetőség van kiválasztva.
+    Győződjön meg arról, hogy **az Új csatorna indítása most** ki van jelölve.
 
-3. Kattintson a **csatorna létrehozása**gombra.
+3. Kattintson **a Csatorna létrehozása gombra.**
 
-   ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
+   ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
 
 > [!NOTE]
-> A csatorna mindaddig elindításához 20 percet is igénybe vehet.
+> A csatorna indítása akár 20 percet is igénybe vehet.
 >
 >
 
-A csatorna elindítása után beállíthatja [a kódolót](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp).
+A csatorna indítása közben [konfigurálhatja a kódolót.](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp)
 
 > [!IMPORTANT]
-> A számlázás elindul, amint a csatorna üzemkész állapotba kerül. További információ: [csatorna állapotai](media-services-manage-live-encoder-enabled-channels.md#states).
+> A számlázás akkor kezdődik, amikor a Csatorna készen áll. További információ: [Channel's states](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>a NewTek TriCaster-kódoló konfigurálása
+## <a name="configure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>A NewTek TriCaster kódoló konfigurálása
 
-Ebben az oktatóanyagban a következő kimeneti beállításokat használják. Ez a szakasz a többi konfigurációs lépések részletesebben ismerteti.
+Ebben az oktatóanyagban a következő kimeneti beállításokat használja a program. A szakasz további részei részletesebben ismertetik a konfigurációs lépéseket.
 
 **Videó**:
 
 * Kodek: H.264
-* Profil: High (4.0-s szint)
-* Átviteli sebesség: 5000 KB/s
-* Kulcsképkocka: 2 másodperc (60 másodperc)
-* Keret arány: 30
+* Profil: Jó minőség (4.0-ás szint)
+* Bitráta: 5000 kbps
+* Kulcskép: 2 másodperc (60 másodperc)
+* Képkockasebesség: 30
 
 **Hang**:
 
-* Kodekkel: Az AAC (LC)
-* Átviteli sebesség: 192 Kb/s
-* Mintavételi gyakoriság: 44,1 kHz
+* Kodek: AAC (LC)
+* Átviteli sebesség: 192 kbps
+* Mintavételi sebesség: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Konfigurációs lépések
 
-1. Hozzon létre egy új **NewTek-TriCaster** -projektet attól függően, hogy milyen video input-forrást használ.
-2. A projekten belül keresse meg a **stream** gombot, és kattintson a mellette lévő fogaskerék ikonra az adatfolyam-konfiguráció menüjének eléréséhez.
+1. Hozzon létre egy új **NewTek TriCaster** projekt attól függően, hogy milyen video bemeneti forrást használnak.
+2. Miután a projekten belül, keresse meg a **Stream** gombot, és kattintson a fogaskerék ikonra mellette az adatfolyam konfigurációs menüjének eléréséhez.
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster3.png)
-3. A menü megnyitása után kattintson az **új** elemre a kapcsolatok fejléce alatt. Ha a rendszer kéri a kapcsolattípus megadását, válassza az **Adobe Flash**elemet.
+    ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster3.png)
+3. A menü megnyitása után kattintson az **Új** gombra a Kapcsolat fejléc alatt. Amikor a rendszer kéri a kapcsolat típusát, válassza az **Adobe Flash**lehetőséget.
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
+    ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
 4. Kattintson az **OK** gombra.
-5. A FMLE-profil most már importálható a **streaming profil** alatt található legördülő nyílra, és a **Tallózás**gombra kattintva navigálhat.
+5. Az FMLE-profilok most már importálhatók, ha a **Streamelési profil** alatti legördülő nyílra kattintanak, és navigálnak a **Tallózás elemre.**
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
-6. Navigáljon arra a helyre, ahová a konfigurált FMLE-profilt mentette.
-7. Jelölje ki, majd kattintson **az OK gombra**.
+    ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
+6. Lépjen a beállított FMLE-profil mentésére.
+7. Jelölje ki, és nyomja **le az OK gombot.**
 
     A profil feltöltése után folytassa a következő lépéssel.
-8. Szerezze be a csatorna bemeneti URL-címét a Tricaster **RTMP-végponthoz**való hozzárendeléshez.
+8. A csatorna bemeneti URL-címének beírása a Tricaster **RTMP végponthoz**való hozzárendeléséhez.
 
-    Lépjen vissza az AMSE eszköz, és a csatorna befejezési állapotának ellenőrzéséhez. Ha az állapot már **megkezdődött** a **futtatástól**kezdve, beolvashatja a bemeneti URL-címet.
+    Lépjen vissza az AMSE eszközhöz, és ellenőrizze a csatorna készültségi állapotát. Miután az állapot **átvált a kezdő indításról** **a futtatásra,** beszerezheti a bemeneti URL-címet.
 
-    Ha a csatorna fut, kattintson a jobb gombbal a csatorna nevére, navigáljon lefelé a **beviteli URL-cím másolása a vágólapra** , majd válassza az **elsődleges bemeneti URL-cím**elemet.  
+    Amikor a csatorna fut, kattintson a jobb gombbal a csatorna nevére, lefelé navigálva mutasson a **Szövegbeviteli URL másolása a vágólapra,** majd válassza az **Elsődleges bemeneti URL lehetőséget**.  
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
-9. Illessze be ezt az információt a **hely** mezőbe a Tricaster projekt **Flash-kiszolgáló** területén. Az adatfolyam- **azonosító** mezőben is rendeljen egy stream-nevet.
+    ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
+9. Illessze be ezt az információt a **Hely** mezőbe a Tricaster projekt **Flash Server területén.** Rendeljen hozzá egy adatfolyam-nevet is az **Adatfolyam-azonosító** mezőben.
 
-    Ha a stream-adatok a FMLE-profilhoz lettek adva, a **Beállítások importálása**lehetőségre kattintva, a mentett FMLE-profilra navigálva, majd **az OK gombra**kattintva is importálhatja azt. A megfelelő Flash Server-mezőket a FMLE információi alapján kell feltölteni.
+    Ha adatfolyam-adatokat adott hozzá az FMLE-profilhoz, akkor az **importálási beállítások**, a mentett FMLE-profilra való navigálás és az **OK**gombra kattintva is importálható ebbe a szakaszba. A megfelelő Flash Server mezőknek fel kell nagyulniuk az FMLE-ből származó információkkal.
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster7.png)
-10. Ha elkészült, kattintson az **OK** gombra a képernyő alján. Ha a Tricaster lévő videó-és hangbemenetek készen állnak, az **adatfolyam** gombra kattintva megkezdheti a folyamatos átvitelt az AMS-be.
+    ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster7.png)
+10. Ha végzett, kattintson az **OK** gombra a képernyő alján. Amikor a Tricasterbe bevitt video- és hangbemenetek készen állnak, a **Stream** gombra kattintva kezdje el az AMS-re való streamelést.
 
-     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
+     ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
 
 > [!IMPORTANT]
-> Mielőtt a **stream**elemre kattint, meg **kell** győződnie arról, hogy a csatorna készen áll.
-> Bizonyosodjon meg róla, hogy ne maradjon a csatorna egy kész állapotú > 15 percnél hosszabb ideig hírcsatorna egy bemeneti hozzájárulás nélkül.
+> Mielőtt a **Stream**gombra kattintana, meg **kell** győződnie arról, hogy a csatorna készen áll.
+> Ügyeljen arra is, hogy ne hagyja el a csatornát készenléti állapotban, > 15 percnél hosszabb ideig ne hagyjon bemeneti hozzájárulási hírcsatornát.
 >
 >
 
-## <a name="test-playback"></a>Teszt lejátszás
+## <a name="test-playback"></a>Visszajátszás tesztelése
 
-Keresse meg az AMSE eszköz, és kattintson a jobb gombbal a csatorna tesztelését. A menüben vigye az egérmutatót **az előnézet lejátszásához** , és válassza a **Azure Media Player**lehetőséget.  
+Nyissa meg az AMSE eszközt, és kattintson a jobb gombbal a tesztelendő csatornára. A menüben mutasson **az Előnézet lejátszása** elemre, és válassza **az Azure Media Player alkalmazással**lehetőséget.  
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
 
-Ha a lejátszó az adatfolyam jelenik meg, majd a kódoló konfigurációja megfelelő AMS csatlakozni.
+Ha az adatfolyam megjelenik a lejátszóban, akkor a kódoló megfelelően van konfigurálva az AMS-hez való csatlakozáshoz.
 
-Ha hiba érkezik, a csatornát alaphelyzetbe kell állítani, és a kódoló beállításait is módosítani kell. Útmutatásért tekintse meg a [hibaelhárítással](media-services-troubleshooting-live-streaming.md) foglalkozó cikket.  
+Ha hiba érkezik, a csatornát alaphelyzetbe kell állítani, és módosítani kell a kódoló beállításait. Útmutatást a [hibaelhárítási](media-services-troubleshooting-live-streaming.md) cikkben talál.  
 
-## <a name="create-a-program"></a>Egy olyan program létrehozásához
+## <a name="create-a-program"></a>Program létrehozása
 
-1. Csatorna lejátszási ellenőrzése után hozzon létre egy programot. A AMSE eszköz **élő** lapján kattintson a jobb gombbal a program területére, és válassza az **új program létrehozása**lehetőséget.  
+1. A csatorna lejátszásának megerősítést követően hozzon létre egy programot. Az AMSE eszköz **Élő** lapján kattintson a jobb gombbal a programterületen belül, és válassza az **Új program létrehozása parancsot.**  
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
-2. Adja meg a program nevét, és ha szükséges, állítsa be az **archiválási időszak hosszát** (amely alapértelmezés szerint négy óra). Adjon meg egy tárolási helyet is, vagy hagyja meg az alapértelmezett.  
-3. Jelölje be a **program indítása** jelölőnégyzetet.
-4. Kattintson a **program létrehozása**lehetőségre.  
+    ![tricaster között](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
+2. Nevezze el a programot, és szükség esetén állítsa be az **Archív ablak hosszát** (amely alapértelmezés szerint négy óra). Megadhat egy tárolási helyet is, vagy alapértelmezettként hagyhatja.  
+3. Jelölje be **a Program indítása most** jelölőnégyzetet.
+4. Kattintson **a Program létrehozása gombra.**  
 
     >[!NOTE]
-    >Program létrehozása csatornák létrehozásának-nál kevesebb időt vesz igénybe.
+    >A program létrehozása kevesebb időt vesz igénybe, mint a csatorna létrehozása.
         
-5. A program futása után erősítse meg a lejátszást. ehhez kattintson a jobb gombbal a programra, és navigáljon **a program (ok) lejátszásához** , majd válassza **a Azure Media Player**lehetőséget.  
-6. A megerősítést követően kattintson a jobb gombbal a programra, majd válassza a **kimeneti URL-cím másolása a vágólapra** lehetőséget (vagy olvassa be ezt az információt a **program információi és beállítások** menüpontból a menüből).
+5. A program futtatása után erősítse meg a lejátszást úgy, hogy a jobb gombbal a programra kattint, és **a program(ok) lejátszására** navigál, majd az **Azure Media Player programmal**választ.  
+6. A megerősítést követően kattintson ismét a jobb gombbal a programra, és válassza **a Kimeneti URL másolása a vágólapra** (vagy olvassa be ezt az információt a **menü Program adatai és beállításai** beállításából).
 
-A stream beágyazott lejátszóval, vagy egy adott célközönségnek élő megtekintésre elosztott készen áll.  
+Az adatfolyam most már készen áll arra, hogy beágyazódjon egy lejátszóba, vagy élő megtekintésre a közönség nek terjesszék.  
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-Útmutatásért tekintse meg a [hibaelhárítással](media-services-troubleshooting-live-streaming.md) foglalkozó cikket.
+Útmutatást a [hibaelhárítási](media-services-troubleshooting-live-streaming.md) cikkben talál.
 
 ## <a name="next-step"></a>Következő lépés
 

@@ -1,7 +1,7 @@
 ---
-title: Egyéni állapot továbbítása a hitelesítési kérelmekben (MSAL. js) | Azure
+title: Egyéni állapot átadása hitelesítési kérelmekben (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan adhat át egyéni állapotú paramétereket a hitelesítési kérelemben a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
+description: Megtudhatja, hogy miként adható meg egyéni állapotparaméter-érték a hitelesítési kérelemben a Microsoft JavaScript-hitelesítési könyvtár (MSAL.js) használatával.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084936"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Egyéni állapot továbbítása a hitelesítési kérelmekben a MSAL. js használatával
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Egyéni állapot áthárítása az MSAL.js használatával történő hitelesítési kérelmekben
 
-A OAuth 2,0 által definiált *State* paraméter a hitelesítési kérelem része, és a jogkivonat válaszában is visszaadja, hogy megakadályozza a helyek közötti kérelmek hamisításának elleni támadásokat. Alapértelmezés szerint a Microsoft Authentication Library for JavaScript (MSAL. js) egy véletlenszerűen generált egyedi *állapot* paramétert ad meg a hitelesítési kérelmekben.
+Az OAuth 2.0 által meghatározott *állapotparaméter* egy hitelesítési kérelemben is szerepel, és a jogkivonat-válaszban is megjelenik a helyek közötti kérelmek hamisítási támadásainak megakadályozása érdekében. Alapértelmezés szerint a Microsoft JavaScript hitelesítési könyvtára (MSAL.js) *state* egy véletlenszerűen generált egyedi állapotparaméter-értéket ad át a hitelesítési kérelmekben.
 
-Az állapot paraméter az alkalmazás állapotának az átirányítás előtt történő kódolására is használható. Átadhatja a felhasználó állapotát az alkalmazásban, például a lapon vagy a nézetben, a paraméter bemenetének megfelelően. A MSAL. js függvénytár lehetővé teszi, hogy az egyéni állapot paramétert átadja a `Request` objektumban:
+Az állapotparaméter az alkalmazás állapotának kódolására is használható az átirányítás előtt. A felhasználó állapotát átadhatja az alkalmazásban, például azt az oldalt vagy nézetet, amelyen voltak, a paraméter bemeneteként. Az MSAL.js könyvtár lehetővé teszi, hogy az `Request` egyéni állapotot állapotparaméterként adja át az objektumban:
 
 ```javascript
 // Request type
@@ -45,13 +45,13 @@ export type AuthenticationParameters = {
 ```
 
 > [!Note]
-> Ha egy gyorsítótárazott tokent szeretne kihagyni, és a kiszolgálóra lép, adja át a logikai `forceRefresh` a bejelentkezési/jogkivonat-kérelem létrehozásához használt AuthenticationParameters objektumba.
-> a `forceRefresh` nem használható alapértelmezés szerint az alkalmazás teljesítményére gyakorolt hatás miatt.
-> A gyorsítótárra támaszkodva jobb felhasználói élményt biztosíthat a felhasználóknak.
-> A gyorsítótár kihagyása csak olyan helyzetekben használható, ahol tudja, hogy a jelenleg gyorsítótárazott adatok nem rendelkeznek naprakész információkkal.
-> Például egy felügyeleti eszköz, amely szerepköröket rendel hozzá egy olyan felhasználóhoz, akinek új jogkivonatot kell beszereznie a frissített szerepkörökkel.
+> Ha ki szeretne hagyni egy gyorsítótárazott jogkivonatot, és a `forceRefresh` kiszolgálóra szeretne menni, adja át a logikai értéket a bejelentkezési/tokenkérelemhez használt AuthenticationParameters objektumba.
+> `forceRefresh`nem kell használni alapértelmezés szerint, mert a teljesítmény hatással van az alkalmazásra.
+> A gyorsítótárra támaszkodva a felhasználók jobb élményben lesz része.
+> A gyorsítótár kihagyása csak olyan esetekben használható, amikor a jelenleg gyorsítótárazott adatok nem rendelkeznek naprakész adatokkal.
+> Például egy rendszergazdai eszköz, amely szerepköröket ad hozzá egy felhasználóhoz, amelynek új jogkivonatot kell beszereznie frissített szerepkörökkel.
 
-Például:
+Példa:
 
 ```javascript
 let loginRequest = {
@@ -62,7 +62,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-A rendszer hozzáfűzi az átadott állapotot a MSAL. js által a kérelem elküldésekor beállított egyedi GUID-azonosítóhoz. A válasz visszaadásakor a MSAL. js ellenőrzi az állapot egyezését, majd visszaadja a `Response` objektumban lévő egyéni átadott állapotot `accountState`ként.
+Az átadott állapot hozzáfűzi az MSAL.js által beállított egyedi GUID-hoz a kérelem elküldésekor. A válasz visszaadásakor az MSAL.js megkeresi az állapotegyezést, majd visszaadja az `Response` objektumban megadott egyéni értéket `accountState`.
 
 ```javascript
 export type AuthResponse = {
@@ -78,4 +78,4 @@ export type AuthResponse = {
 };
 ```
 
-További tudnivalókért tekintse meg az [egyoldalas alkalmazások (Spa)](scenario-spa-overview.md) MSAL. js használatával történő létrehozását ismertető témakört.
+További információ: [egyoldalas alkalmazás (SPA) létrehozása](scenario-spa-overview.md) az MSAL.js használatával.

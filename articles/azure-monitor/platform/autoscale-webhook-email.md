@@ -1,35 +1,35 @@
 ---
-title: Az e-mailek és a webhookok riasztási értesítéseinek küldése az autoscale használatával
-description: Útmutató a webes URL-címek meghívásához vagy e-mail-értesítések küldéséhez Azure Monitorban.
+title: E-mailek és webhook-értesítési értesítések automatikus skálázásának használata
+description: Megtudhatja, hogyan használhatja az automatikus skálázási műveleteket webes URL-címek hívására vagy e-mail értesítések küldésére az Azure Monitorban.
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120685"
 ---
-# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>E-mailek és webhookok riasztási értesítéseinek küldése a Azure Monitorban az autoskálázási műveletek használatával
-Ebből a cikkből megtudhatja, hogyan állíthatja be az eseményindítókat, hogy konkrét webes URL-címeket hívjon fel, vagy az Azure-ban végzett autoskálázási műveletek alapján küldjön e-mailt.  
+# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatikus skálázási műveletek használata e-mailek és webhook-riasztási értesítések küldéséhez az Azure Monitorban
+Ez a cikk bemutatja, hogyan állítsa be az eseményindítókat, hogy adott webes URL-címeket hívhat, vagy e-maileket küldjön az Azure-beli automatikus skálázási műveletek alapján.  
 
 ## <a name="webhooks"></a>Webhookok
-A webhookok lehetővé teszik, hogy az Azure riasztási értesítéseket más rendszerekre irányítsa a feldolgozás utáni vagy egyéni értesítések esetén. Tegyük fel például, hogy a riasztást olyan szolgáltatásokra irányítja, amelyek képesek az SMS-küldésre, a hibák naplózására és a csapatnak a csevegési vagy üzenetküldési szolgáltatásokkal való értesítésére. A webhook URI azonosítójának érvényes HTTP-vagy HTTPS-végpontnak kell lennie.
+A webhookok lehetővé teszik az Azure riasztási értesítéseinek más rendszerekre történő továbbítását utófeldolgozási vagy egyéni értesítésekhez. Például a riasztás tágítása olyan szolgáltatásokhoz, amelyek képesek kezelni egy bejövő webes kérést SMS küldésére, hibák naplózására, csevegési vagy üzenetküldő szolgáltatásokkal való értesítésére stb. A webhook URI-nak érvényes HTTP- vagy HTTPS-végpontnak kell lennie.
 
 ## <a name="email"></a>E-mail
-Az e-maileket bármely érvényes e-mail-címre lehet elküldeni. A rendszergazdák és az előfizetés azon előfizetések rendszergazdái, akiknél a szabály fut, szintén értesítést kapnak.
+Az e-mail eket bármely érvényes e-mail címre elküldheti. A szabály futtatásához szükséges előfizetés rendszergazdái és társrendszergazdái is értesítést kapnak.
 
-## <a name="cloud-services-and-app-services"></a>Cloud Services és App Services
-Cloud Services és kiszolgálófarm (App Services) Azure Portal is bejelentkezhet.
+## <a name="cloud-services-and-app-services"></a>Felhőszolgáltatások és alkalmazásszolgáltatások
+Az Azure Portalon a Felhőszolgáltatások és a kiszolgálófarmok (App Services) szolgáltatáshoz iratkozhat fel.
 
-* Válassza a **skála mérőszám alapján** lehetőséget.
+* Válassza ki a **skálát metrika szerint.**
 
-![skálázás](./media/autoscale-webhook-email/insights-autoscale-notify.png)
+![méretarányos an](./media/autoscale-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
-A Resource Managerrel (virtuálisgép-méretezési csoportokkal) létrehozott újabb Virtual Machines a REST API, a Resource Manager-sablonok, a PowerShell és a parancssori felület használatával konfigurálható. Egy portál felülete még nem érhető el.
-A REST API vagy Resource Manager-sablon használatakor a következő beállításokkal adja meg az értesítések elemet a [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) .
+Az Erőforrás-kezelővel létrehozott újabb virtuális gépek (virtuálisgép-méretezési csoportok) esetén konfigurálhatja ezt rest API, Erőforrás-kezelő sablonok, PowerShell és CLI használatával. A portálfelület még nem érhető el.
+A REST API vagy az Erőforrás-kezelő sablon használatakor az automatikus [skálázási beállítások](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) ban az értesítések elem szerepeljen az alábbi beállításokkal.
 
 ```
 "notifications": [
@@ -58,19 +58,19 @@ A REST API vagy Resource Manager-sablon használatakor a következő beállítá
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| operation |igen |az értéknek "Scale" értékűnek kell lennie |
-| sendToSubscriptionAdministrator |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
-| sendToSubscriptionCoAdministrators |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
-| customEmails |igen |az érték lehet null [] vagy az e-mailek karakterlánc-tömbje. |
-| webhooks |igen |az érték lehet null vagy érvényes URI |
-| serviceUri |igen |érvényes HTTPS URI |
-| properties |igen |az értéknek üresnek kell lennie {} vagy tartalmazhat kulcs-érték párokat. |
+| Művelet |igen |az értéknek "Lépték" értékűnek kell lennie |
+| sendToSubscriptionAdministrator |igen |értéknek "igaz" vagy "hamis" értékűnek kell lennie |
+| sendToSubscriptionCoRendszergazdák |igen |értéknek "igaz" vagy "hamis" értékűnek kell lennie |
+| egyéni e-mailek |igen |az érték lehet null [] vagy e-mailek karakterlánctömbje |
+| webhookok |igen |az érték lehet null vagy érvényes Uri |
+| serviceUri |igen |érvényes https Uri |
+| properties |igen |az értéknek {} üresnek kell lennie, vagy kulcs-érték párokat tartalmazhat |
 
 ## <a name="authentication-in-webhooks"></a>Hitelesítés webhookokban
-A webhook hitelesítése jogkivonat-alapú hitelesítéssel történik, ahol a webhook URI-JÁT lekérdezési paraméterként egy jogkivonat-AZONOSÍTÓval menti. Például: https:\//mysamplealert/webcallback? következőből tokenid = sometokenid & someparameter = érték1
+A webhook hitelesíthető jogkivonat-alapú hitelesítéssel, ahol mentse a webhook URI egy token id lekérdezési paraméterként. Https például\/https: /mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
 
-## <a name="autoscale-notification-webhook-payload-schema"></a>Értesítési webhook-adattartalom sémájának autoskálázása
-Az autoskálázási értesítés létrehozásakor a webhook hasznos adatai a következő metaadatokat tartalmazzák:
+## <a name="autoscale-notification-webhook-payload-schema"></a>Automatikus skálázási értesítés webhook hasznos sémája
+Az automatikus skálázási értesítés létrehozásakor a webhook-tartalom a következő metaadatokat tartalmazza:
 
 ```
 {
@@ -101,20 +101,20 @@ Az autoskálázási értesítés létrehozásakor a webhook hasznos adatai a kö
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| status |igen |Az az állapot, amely azt jelzi, hogy egy autoskálázási művelet létrejött |
-| operation |igen |A példányok növekedése a "vertikális felskálázás", a példányok csökkenése pedig a "skálázás" lesz. |
-| context |igen |Az autoscale művelet kontextusa |
-| időbélyeg |igen |Az autoskálázási művelet elindítására szolgáló időbélyegző |
-| id |Igen |Az autoskálázási beállítás Resource Manager-azonosítója |
-| név |Igen |Az autoskálázási beállítás neve |
-| details |Igen |Az autoskálázási szolgáltatás és a példányszám változásának magyarázata |
-| subscriptionId |Igen |A méretezni kívánt cél erőforrás előfizetés-azonosítója |
-| resourceGroupName |Igen |A méretezni kívánt cél erőforrás erőforráscsoport-neve |
-| resourceName |Igen |A méretezni kívánt cél erőforrás neve |
-| resourceType |Igen |A három támogatott érték: "Microsoft. classiccompute/tartománynév/bővítőhely/szerepkörök" – Cloud Service roles, "Microsoft. számítás/virtualmachinescalesets"-Virtual Machine Scale Sets és "Microsoft. Web/kiszolgálófarmok" – Web App |
-| resourceId |Igen |A méretezni kívánt cél erőforrás Resource Manager-azonosítója |
-| portalLink |Igen |Azure Portal hivatkozás a cél erőforrás Összegzés lapjára |
-| oldCapacity |Igen |Az aktuális (régi) példányok száma, ha az autoskálázás skálázási műveletet vett igénybe |
-| newCapacity |Igen |Az új példányszám az erőforrás méretezése |
-| properties |Nem |Választható. < Kulcs, érték > párok (például szótár < karakterlánc, karakterlánc >) készlete. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban megadhatja azokat a kulcsokat és értékeket, amelyek átadhatók a hasznos adatok használatával. Ha az egyéni tulajdonságokat vissza szeretné adni a kimenő webhook-hívásra, akkor a webhook URI-ja (lekérdezési paraméterekként) is használható. |
+| status |igen |Az az állapot, amely azt jelzi, hogy automatikus skálázási művelet jött létre |
+| Művelet |igen |A példányok számának növelése esetén "Horizontális felskálázás" lesz, és a példányok csökkenése esetén "Méretezés" lesz |
+| Összefüggésben |igen |Az automatikus skálázási műveletkörnyezet |
+| időbélyeg |igen |Időbélyegző az automatikus skálázási művelet aktiválásakor |
+| id |Igen |Az automatikus skálázási beállítás erőforrás-kezelőazonosítója |
+| név |Igen |Az automatikus skálázási beállítás neve |
+| Részletek |Igen |Az automatikus skálázási szolgáltatás által végrehajtott művelet és a példányszám változásának magyarázata |
+| subscriptionId |Igen |A méretezés alatt álló célerőforrás előfizetés-azonosítója |
+| resourceGroupName |Igen |A méretezés alatt álló célerőforrás erőforráscsoport neve |
+| resourceName |Igen |A méretezendő célerőforrás neve |
+| resourceType |Igen |A három támogatott érték: "microsoft.classiccompute/domainnames/slots/roles" - Cloud Service szerepkörök, "microsoft.compute/virtualmachinescalesets" - Virtuálisgép-méretezési csoportok és "Microsoft.Web/serverfarms" – Web App |
+| resourceId |Igen |A méretezés alatt álló célerőforrás erőforrás-kezelőazonosítója |
+| portalLink |Igen |Az Azure Portal hivatkozása a célerőforrás összefoglaló oldalára |
+| régiKapacitás |Igen |Az aktuális (régi) példányok száma, amikor az automatikus skálázás méretezési műveletet végzett |
+| újkapacitás |Igen |Az új példányok száma, amely az automatikus skálázás az erőforrást |
+| properties |Nem |Választható. <kulcs, érték> párok készlete (például Szótár <karakterlánc, Karakterlánc>). A tulajdonságok mező nem kötelező. Egy egyéni felhasználói felületen vagy logikai alkalmazásalapú munkafolyamatban megadhatja a hasznos adattal átadható kulcsokat és értékeket. Az egyéni tulajdonságok nak a kimenő webhook-hívásnak való visszaadásának másik módja a webhook URI használata (lekérdezési paraméterekként) |
 

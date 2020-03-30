@@ -1,6 +1,6 @@
 ---
-title: Globális VNet-társítás konfigurálása Azure-beli virtuális WAN-hoz | Microsoft Docs
-description: Csatlakoztasson egy VNet egy másik régióban a virtuális WAN-hubhoz.
+title: Globális virtuális hálózat-társviszony-létesítés konfigurálása az Azure Virtual WAN-hoz | Microsoft dokumentumok
+description: Csatlakoztasson egy virtuális hálózatot egy másik régióban a virtuális WAN-központhoz.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 340472f84d2dd2c4f46d180992745a57e8ad1884
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73588225"
 ---
-# <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Globális VNet-társítás konfigurálása (régiók közötti VNet) virtuális WAN-hoz
+# <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Globális virtuális hálózat-társviszony-létesítés (régióközi virtuális hálózat) konfigurálása virtuális WAN-hoz
 
-Egy VNet egy másik régióban is csatlakoztatható a virtuális WAN-hubhoz.
+Egy másik régióban lévő virtuális hálózatot csatlakoztathat a virtuális WAN-központhoz.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Ellenőrizze, hogy teljesültek-e az alábbi feltételek:
+Ellenőrizze, hogy teljesítette-e az alábbi feltételeket:
 
-* A régiók közötti VNet (küllő) nincs csatlakoztatva egy másik virtuális WAN-hubhoz. Küllő csak egyetlen virtuális hubhoz csatlakoztatható.
-* A VNet (küllő) nem tartalmaz virtuális hálózati átjárót (például Azure VPN Gateway vagy ExpressRoute virtuális hálózati átjárót). Ha a VNet virtuális hálózati átjárót tartalmaz, el kell távolítania az átjárót, mielőtt csatlakoztatná a küllős VNet a hubhoz.
+* A régióközi virtuális hálózat (küllős) nem csatlakozik egy másik Virtual WAN hub. A küllő csak egy virtuális hubhoz csatlakoztatható.
+* A virtuális hálózat (küllős) nem tartalmaz virtuális hálózati átjárót (például egy Azure VPN-átjárót vagy egy ExpressRoute virtuális hálózati átjárót). Ha a virtuális hálózat virtuális hálózati átjárót tartalmaz, el kell távolítania az átjárót, mielőtt csatlakoztatja a küllővirtuális hálózatot a hubhoz.
 
-## <a name="register"></a>A funkció regisztrálása
+## <a name="register-this-feature"></a><a name="register"></a>A funkció regisztrálása
 
-Ezt a funkciót a PowerShell használatával lehet regisztrálni. Ha az alábbi példában a "kipróbálás" lehetőséget választja, megnyílik az Azure Cloud-shell, és nem kell helyileg telepítenie a PowerShell-parancsmagokat a számítógépre. Ha szükséges, módosíthatja az előfizetéseket a "Select-AzSubscription-SubscriptionId <subid>" parancsmag használatával.
+Ehhez a funkcióhoz a PowerShell használatával regisztrálhat. Ha az alábbi példában a "Try It" lehetőséget választja, megnyílik az Azure Cloud-Shell, és nem kell helyileg telepítenie a PowerShell-parancsmagokat a számítógépre. Szükség esetén módosíthatja az előfizetéseket a "Select-AzSubscription <subid>-SubscriptionId" parancsmag használatával.
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Network'
 ```
 
-## <a name="verify"></a>Regisztráció ellenőrzése
+## <a name="verify-registration"></a><a name="verify"></a>Regisztráció ellenőrzése
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="hub"></a>VNet összekötése a hubhoz
+## <a name="connect-a-vnet-to-the-hub"></a><a name="hub"></a>Virtuális hálózat csatlakoztatása a hubhoz
 
-Ebben a lépésben létrehozza a köztes kapcsolatot a központ és a régiók közötti VNet között. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
+Ebben a lépésben hozza létre a társviszony-létesítési kapcsolatot a hub és a régiók közötti virtuális hálózat között. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
 
 1. A virtuális WAN lapján kattintson a **Virtuális hálózati kapcsolatok** elemre.
 2. A virtuális hálózati kapcsolat lapján kattintson a **+Kapcsolat hozzáadása** elemre.
@@ -56,4 +56,4 @@ Ebben a lépésben létrehozza a köztes kapcsolatot a központ és a régiók k
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a virtuális WAN-ról: [virtuális WAN – áttekintés](virtual-wan-about.md).
+Ha többet szeretne megtudni a Virtual WAN-ról, olvassa el a [Virtuális WAN – áttekintés című témakört.](virtual-wan-about.md)

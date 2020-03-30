@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldások (AVS) privát felhő törlése
-description: Útmutató a saját AVS-felhő törléséhez.
+title: Azure VMware-megoldás törlése a CloudSimple private cloud szolgáltatásával
+description: A CloudSimple private cloud törlésének ismertetése.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,54 +8,54 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 77cbfb19c3861bac517142f7491e6b1a5fb4ca27
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024755"
 ---
-# <a name="delete-an-avs-private-cloud"></a>AVS Private Cloud törlése
+# <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő törlése
 
-Az AVS rugalmasságot biztosít az AVS privát felhő törléséhez. Az AVS Private Cloud egy vagy több vSphere-fürtből áll. Minden fürthöz 3 – 16 csomópont tartozhat. Ha töröl egy AVS Private-felhőt, az összes fürt törölve lesz.
+A CloudSimple rugalmasságot biztosít a magánfelhő törléséhez.  A magánfelhő egy vagy több vSphere-fürtből áll. Minden fürt rendelkezhet 3–16 csomópontos csomópontokkal. Ha töröl egy magánfelhőt, az összes fürt törlődik.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Az AVS Private Cloud törlése törli a teljes AVS privát felhőt. Az AVS Private Cloud összes összetevője törölve lesz. Ha meg szeretné őrizni az összes adatmennyiséget, győződjön meg róla, hogy biztonsági másolatot készített a helyszíni tárolóba vagy az Azure Storage szolgáltatásba.
+A magánfelhő törlése törli a teljes magánfelhőt.  A magánfelhő összes összetevője törlődik.  Ha meg szeretné tartani az adatokat, győződjön meg arról, hogy biztonsági másolatot tett az adatokról a helyszíni tárolóba vagy az Azure-tárolóba.
 
-Az AVS Private Cloud összetevői a következők:
+A magánfelhő összetevői a következők:
 
-* AVS-csomópontok
+* CloudSimple csomópontok
 * Virtuális gépek
-* VLAN-ok/alhálózatok
-* Az AVS Private Cloud-on tárolt összes felhasználói érték
-* Az összes tűzfalszabály melléklete egy VLAN/alhálózat számára
+* Virtuális helyi hálózatok vagy alhálózatok
+* A magánfelhőn tárolt összes felhasználói adat
+* A VIRTUÁLIS/ ALHÁLÓZAT összes tűzfalszabály-melléklete
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
-## <a name="delete-an-avs-private-cloud"></a>AVS Private Cloud törlése
+## <a name="delete-a-private-cloud"></a>Magánfelhő törlése
 
-1. [Hozzáférés az AVS-portálhoz](access-cloudsimple-portal.md).
+1. [A CloudSimple portál elérése.](access-cloudsimple-portal.md)
 
-2. Nyissa meg az **erőforrások** lapot.
+2. Nyissa meg az **Erőforrások** lapot.
 
-3. Kattintson a törölni kívánt AVS Private-felhőre
+3. Kattintson a törölni kívánt magánfelhőre
 
-4. Az összefoglalás lapon kattintson a **Törlés**gombra.
+4. Az összesítő lapon kattintson a **Törlés gombra.**
 
-    ![Az AVS Private Cloud törlése](media/delete-private-cloud.png)
+    ![Magánfelhő törlése](media/delete-private-cloud.png)
 
-5. A jóváhagyás lapon adja meg az AVS privát felhő nevét, és kattintson a **Törlés**gombra. 
+5. A megerősítő lapon adja meg a magánfelhő nevét, és kattintson a **Törlés gombra.** 
 
-    ![Az AVS Private Cloud törlése – megerősítés](media/delete-private-cloud-confirm.png)
+    ![Privát felhő törlése - megerősítés](media/delete-private-cloud-confirm.png)
 
-Az AVS Private Cloud törlésre van megjelölve. A törlési folyamat három óra elteltével indul el, és törli a saját AVS-felhőt.
+A magánfelhő törlésre van megjelölve.  A törlési folyamat három óra elteltével kezdődik, és törli a magánfelhőt.
 
 > [!CAUTION]
-> Az AVS Private Cloud törlését követően törölni kell a csomópontokat. A csomópontok mérése folytatódni fog, amíg a csomópontok törlődnek az előfizetésből.
+> A csomópontokat a magánfelhő törlése után törölni kell.  A csomópontok mérése addig folytatódik, amíg a csomópontok törlődnek az előfizetésből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Csomópontok törlése](delete-nodes.md)

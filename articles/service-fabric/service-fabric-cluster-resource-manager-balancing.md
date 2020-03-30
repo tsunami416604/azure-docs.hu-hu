@@ -1,39 +1,39 @@
 ---
-title: Az Azure Service Fabric-fürt kiegyensúlyozása
-description: Bevezetés a fürt kiegyensúlyozására a Service Fabric fürterőforrás-kezelővel.
+title: Az Azure Service Fabric-fürt egyensúlya
+description: Bevezetés a fürt és a Service Fabric fürterőforrás-kezelő közötti egyensúly kiegyensúlyozása.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79081692"
 ---
-# <a name="balancing-your-service-fabric-cluster"></a>A Service Fabric-fürt kiegyensúlyozása
-A Service Fabric fürterőforrás-kezelő támogatja a dinamikus betöltési változásokat, a csomópontok vagy szolgáltatások hozzáadására és eltávolítására való reagálást. Emellett automatikusan kijavította a megkötések megsértését, és proaktív módon kiegyensúlyozza a fürtöt. Milyen gyakran történtek ezek a műveletek, és mi váltja ki őket?
+# <a name="balancing-your-service-fabric-cluster"></a>A szolgáltatásháló-fürt kiegyensúlyozása
+A Service Fabric fürterőforrás-kezelő támogatja a dinamikus terhelés változások, reagálva a csomópontok vagy szolgáltatások hozzáadása vagy eltávolítása. Emellett automatikusan kijavítja a megszorítás-megsértéseket, és proaktív módon újraegyensúlyozza a fürtöt. De milyen gyakran történnek ezek a műveletek, és mi váltja ki őket?
 
-A fürterőforrás-kezelő három különböző kategóriájú munkát hajt végre. Ezek a következők:
+A fürterőforrás-kezelő három különböző munkakategóriát hajt végre. Ezek a következők:
 
-1. Elhelyezés – ez a szakasz a hiányzó állapotú replikák vagy állapot nélküli példányok elhelyezését tárgyalja. Az elhelyezés magában foglalja az új szolgáltatásokat és az állapot-nyilvántartó replikák vagy az állapot nélküli, sikertelenül kezelt példányok kezelését. A replikák vagy példányok törlését és eldobását itt kezeljük.
-2. Korlátozási ellenőrzések – ebben a szakaszban a rendszeren belüli különböző elhelyezési megkötések (szabályok) megsértéseit ellenőrzi és kijavította. A szabályok példái olyan dolgok, mint például annak biztosítása, hogy a csomópontok ne legyenek túlterhelve, és hogy teljesülnek a szolgáltatások elhelyezésére vonatkozó korlátozások.
-3. Egyensúly – ez a fázis ellenőrzi, hogy szükséges-e az egyensúly a különböző metrikák beállított kívánt szintje alapján. Ha így van, akkor megpróbál olyan elrendezést találni a fürtben, amely kiegyensúlyozottabb.
+1. Elhelyezés – ez a szakasz foglalkozik a hiányzó állapotalapú replikák vagy állapotmentes példányok elhelyezésével. Elhelyezés magában foglalja az új szolgáltatások és az állapotalapú replikák vagy állapotmentes példányok, amelyek nem sikerült. A replikák vagy példányok törlése és eldobása itt kezeli.
+2. Megkötési ellenőrzések – ez a szakasz ellenőrzi és kijavítja a rendszeren belüli különböző elhelyezési korlátozások (szabályok) megsértését. Példák a szabályok, például annak biztosítása, hogy a csomópontok nem túlkapacitás, és hogy a szolgáltatás elhelyezési korlátok teljesülnek.
+3. Kiegyensúlyozás – ez a szakasz ellenőrzi, hogy szükség van-e az újraegyensúlyozásra a különböző metrikák konfigurált kívánt egyensúlyszintje alapján. Ha igen, megpróbál egy kiegyensúlyozottabb elrendezést találni a fürtben.
 
-## <a name="configuring-cluster-resource-manager-timers"></a>A fürterőforrás-kezelő időzítő konfigurálása
-Az egyensúly körüli vezérlők első készlete időzítők halmaza. Ezek az időzítők szabályozzák, hogy a fürterőforrás-kezelő milyen gyakran vizsgálja meg a fürtöt, és végrehajtja a megfelelő műveleteket.
+## <a name="configuring-cluster-resource-manager-timers"></a>Fürterőforrás-kezelő időzítőinek konfigurálása
+A kiegyensúlyozás körüli vezérlők első készlete időzítők ből áll. Ezek az időzítők szabályozzák, hogy a fürterőforrás-kezelő milyen gyakran vizsgálja meg a fürtöt, és milyen korrekciós műveleteket végez.
 
-A fürterőforrás-kezelő különböző típusú helyesbítéseit egy másik időzítő vezérli, amely a gyakoriságát szabályozza. Amikor az egyes időzítők bekövetkeznek, a feladat ütemezve lesz. Alapértelmezés szerint a Resource Manager:
+A fürterőforrás-kezelő által ellátható különböző típusú javítások mindegyikét egy másik időzítő vezérli, amely szabályozza annak gyakoriságát. Amikor minden időzítő aktiválódik, a feladat ütemezése lesz ütemezve. Alapértelmezés szerint az Erőforrás-kezelő:
 
-* megvizsgálja az állapotát, és alkalmazza a frissítéseket (például egy csomópont leállását) a másodpercenként 1/10-én
-* az elhelyezési ellenőrzési jelző másodpercenkénti beállítása
-* a megkötés-ellenőrzési jelző másodpercenkénti beállítása
-* öt másodpercenként beállítja az egyenlegező jelzőt
+* ellenőrzi az állapotát, és alkalmazza a frissítéseket (például a felvétel, hogy egy csomópont nem érhető el) minden 1/10th a második
+* másodpercenként beállítja az elhelyezés-ellenőrzési jelzőt
+* másodpercenként beállítja a megkötés-ellenőrző jelzőt
+* öt másodpercenként beállítja a kiegyensúlyozó jelzőt
 
-Az időzítők szabályozásának példái a következők:
+Példák az időzítőket szabályozó konfigurációra:
 
-ClusterManifest. XML:
+ClusterManifest.xml fájl:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -44,7 +44,7 @@ ClusterManifest. XML:
         </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+a ClusterConfig.json keresztül önálló telepítésekhez vagy template.json az Azure által üzemeltetett fürtökhöz:
 
 ```json
 "fabricSettings": [
@@ -72,18 +72,18 @@ a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a 
 ]
 ```
 
-A fürterőforrás-kezelő jelenleg csak az egyik műveletet hajtja végre egyszerre, egymás után. Ezért ezekre az időpontokra a "minimális intervallumok", valamint az időzítők "beállítás jelzők"ként való kilépésének lépésein kerül sor. A fürterőforrás-kezelő például gondoskodik a szolgáltatások létrehozására vonatkozó függőben lévő kérelmekről a fürt kiegyensúlyozása előtt. Ahogy az alapértelmezett időintervallumok szerint is látható, a fürterőforrás-kezelő megkeresi a gyakran szükséges műveleteket. Ez általában azt jelenti, hogy az egyes lépések során végzett módosítások halmaza kicsi. A kisméretű módosítások gyakran lehetővé teszik, hogy a fürterőforrás-kezelő reagáljon a fürtben előforduló dolgokra. Az alapértelmezett időzítők biztosítják a kötegelt feldolgozást, mivel a több azonos típusú esemény általában egyszerre fordul elő. 
+Ma a fürterőforrás-kezelő egyszerre csak egy műveletet hajt végre, egymás után. Ez az oka annak, hogy ezeket az időzítőket "minimális intervallumoknak" nevezzük, és azokat a műveleteket, amelyeket akkor hajtanak végre, amikor az időzítők "jelzők beállításaként" jelennek meg. A fürterőforrás-kezelő például gondoskodik a függőben lévő, szolgáltatások létrehozására irányuló kérelmekről a fürt kiegyensúlyozása előtt. Amint azt a megadott alapértelmezett időintervallumok ból láthatja, a fürterőforrás-kezelő mindent megvizsgál, amit gyakran meg kell tennie. Ez általában azt jelenti, hogy az egyes lépcsők során végrehajtott módosítások kicsik. A kis módosítások gyakran lehetővé teszik, hogy a fürterőforrás-kezelő reagáljon, amikor a fürtben történnek dolgok. Az alapértelmezett időzítők némi kötegelést biztosítanak, mivel az azonos típusú események közül sok általában egyidejűleg fordul elő. 
 
-Ha például a csomópontok meghibásodnak, akkor a teljes tartalék tartományok egyszerre is megadhatók. Ezeket a hibákat a rendszer a *PLBRefreshGap*utáni következő állapot frissítése során rögzíti. A javítások meghatározása a következő elhelyezés, a korlátozás-ellenőrzés és a kiegyenlítés futtatása során történik. Alapértelmezés szerint a fürterőforrás-kezelő nem ellenőrzi a fürt változásainak időpontját, és az összes módosítást egyszerre próbálja meg kezelni. Ennek eredményeképpen a forgalom feltört.
+Ha például a csomópontok meghibásodnak, akkor ezt teljes tartalék tartományok egy időben. Mindezek a hibák a *PLBRefreshGap*utáni következő állapotfrissítés során kerülnek rögzítésre. A javítások meghatározása a következő elhelyezés, megkötés-ellenőrzés és kiegyensúlyozási futtatások során kerül meghatározásra. Alapértelmezés szerint a fürterőforrás-kezelő nem vizsgálhatja át a fürt több órányi változását, és nem próbálja meg egyszerre kezelni az összes módosítást. Ha így tennék, az a kavarodás kitöréséhez vezetne.
 
-A fürterőforrás-kezelőnek további információra van szüksége annak megállapításához, hogy a fürt kiegyensúlyozva van-e. A következő két konfigurációval rendelkezünk: *BalancingThresholds* és *ActivityThresholds*.
+A fürterőforrás-kezelőnek további információkra is szüksége van annak megállapításához, hogy a fürt kiegyensúlyozatlan-e. Az, hogy van két másik darab konfiguráció: *BalancingThresholds* és *ActivityThresholds*.
 
 ## <a name="balancing-thresholds"></a>Kiegyensúlyozási küszöbértékek
-A kiegyensúlyozás kiváltásának fő vezérlője a kiegyensúlyozó küszöbérték. A metrika kiegyensúlyozási küszöbértéke egy _arány_. Ha a legtöbbet betöltött csomóponton lévő metrika terhelése a legkevésbé betöltött csomópont terhelésének mértékével meghaladja a mérőszám *BalancingThreshold*, a fürt kiegyensúlyozatlan. Ennek eredményeképpen a rendszer a fürterőforrás-kezelő legközelebb ellenőrzi a terheléselosztást. A *MinLoadBalancingInterval* időzítő határozza meg, hogy a fürterőforrás-kezelő milyen gyakran ellenőrizze, hogy szükség van-e a kiegyensúlyozásra. Az ellenőrzés nem jelenti azt, hogy bármi történik. 
+A kiegyensúlyozási küszöbérték az egyensúly helyreállításának fő vezérlője. A mérőszám kiegyensúlyozási küszöbértéke _arány._ Ha a legtöbb betöltött csomópont on egy metrika terhelése osztva a legkisebb betöltve csomópont terhelésének összegével meghaladja a metrika *BalancingThreshold-ját,* akkor a fürt kiegyensúlyozatlan. Ennek eredményeképpen az egyenlegezés a fürterőforrás-kezelő következő ellenőrzésekor aktiválódik. A *MinLoadBalancingInterval* időzítő azt határozza meg, hogy a fürterőforrás-kezelő nek milyen gyakran kell ellenőriznie, hogy szükség van-e újraegyensúlyozásra. Az ellenőrzés nem jelenti azt, hogy bármi is történne. 
 
-Az egyensúlyi küszöbértékek meghatározása a fürt definíciójának részeként, metrikus alapon történik. A metrikákkal kapcsolatos további információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md).
+A kiegyensúlyozási küszöbértékek metrikus alapon vannak meghatározva a fürtdefiníció részeként. A mérőszámokkal kapcsolatos további információkért tekintse meg [ezt a cikket.](service-fabric-cluster-resource-manager-metrics.md)
 
-ClusterManifest.xml
+ClusterManifest.xml fájl
 
 ```xml
     <Section Name="MetricBalancingThresholds">
@@ -92,7 +92,7 @@ ClusterManifest.xml
     </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+a ClusterConfig.json keresztül önálló telepítésekhez vagy template.json az Azure által üzemeltetett fürtökhöz:
 
 ```json
 "fabricSettings": [
@@ -114,37 +114,37 @@ a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a 
 
 <center>
 
-![kiegyensúlyozási küszöbérték például][Image1]
+![Példa kiegyenlítési küszöbértékre][Image1]
 </center>
 
-Ebben a példában az egyes szolgáltatások egy adott metrika egy egységét veszik igénybe. A fenti példában a csomópontok maximális terhelése öt, a minimum pedig kettő. Tegyük fel, hogy a metrika kiegyensúlyozási küszöbértéke három. Mivel a fürt aránya 5/2 = 2,5, és a megadott egyenlegező küszöbértéknél kevesebb, mint három, a fürt egyensúlyban van. A fürterőforrás-kezelő ellenőrzésekor nem aktiválódik az egyensúly.
+Ebben a példában minden szolgáltatás egy bizonyos metrika egy egységét fogyasztja. A legfelső példában a csomópont maximális terhelése öt, a minimum pedig kettő. Tegyük fel, hogy a kiegyenlítő küszöbértéket a metrika három. Mivel a fürt ben az arány 5/2 = 2,5, és ez kisebb, mint a megadott kiegyenlítő küszöbérték három, a fürt kiegyensúlyozott. A fürterőforrás-kezelő ellenőrzésekkor nem aktiválódik az egyensúlyozás.
 
-Az alsó példában a csomópontok maximális terhelése 10, míg a minimum kettő, ami öt arányt eredményez. Az öt érték nagyobb, mint az adott metrika esetében három kijelölt egyenlegező küszöbérték. Ennek eredményeképpen a rendszer az egyenlegező időzítőt a következő időpontra ütemezi. Ilyen esetben a terhelést általában a Csomópont3 terjesztik. Mivel a Service Fabric fürterőforrás-kezelő nem használ kapzsi megközelítést, néhány terhelést is el lehet osztani a Csomópont2. 
+Az alsó példában a csomópont maximális terhelése 10, míg a minimum kettő, ami öt arányt eredményez. Öt nagyobb, mint a kijelölt kiegyenlítő küszöbérték három az adott metrika. Ennek eredményeképpen a kiegyensúlyozási futtatás a következő alkalommal lesz ütemezve, amikor a kiegyensúlyozó időzítő aktiválódik. Egy ilyen helyzetben bizonyos terhelésáltalában a Node3 között oszlik meg. Mivel a Service Fabric fürterőforrás-kezelő nem használ egy kapzsi megközelítést, néhány terhelés is elosztható a Node2. 
 
 <center>
 
-![terheléselosztási küszöbértékek][Image2]
+![Kiegyensúlyozási küszöbérték példa műveletek][Image2]
 </center>
 
 > [!NOTE]
-> A "kiegyensúlyozás" két különböző stratégiát kezel a fürt terhelésének kezeléséhez. A fürterőforrás-kezelő által használt alapértelmezett stratégia a terhelés elosztása a fürt csomópontjai között. A másik stratégia a [Töredezettségmentesítés](service-fabric-cluster-resource-manager-defragmentation-metrics.md). A Lemeztöredezettség-mentesítést ugyanabban az egyenlegező futtatásban hajtja végre a rendszer. Az egyenlegező és a töredezettségmentesítés stratégiák különböző mérőszámokhoz használhatók ugyanazon a fürtön belül. A szolgáltatások mind az egyenlegező, mind a Lemeztöredezettség-mentesítő metrikával rendelkezhetnek. A Lemeztöredezettség-mentesítő metrikák esetében a fürtben betöltött terhelések aránya akkor aktiválódik, ha a terheléselosztási küszöbérték _alá_ esik. 
+> A "Kiegyensúlyozás" két különböző stratégiát kezel a fürt terhelésének kezelésére. A fürterőforrás-kezelő által használt alapértelmezett stratégia a terhelés elosztása a fürt csomópontjai között. A másik stratégia a [töredezettségmentesítés](service-fabric-cluster-resource-manager-defragmentation-metrics.md). A töredezettségmentesítés ugyanazon kiegyensúlyozási futtatás során történik. A kiegyensúlyozási és töredezettségmentesítési stratégiák különböző metrikákhoz használhatók ugyanazon a fürtön belül. Egy szolgáltatás rendelkezhet kiegyensúlyozási és töredezettségmentesítési metrikákkal is. Töredezettségmentesítési metrikák esetében a fürtterhelések aránya újraegyensúlyoz, ha az a kiegyensúlyozási küszöbérték _alatt_ van. 
 >
 
-Az elosztási küszöbérték alá való beszerzés nem kifejezett cél. Az egyenlegező küszöbértékek csak *triggerek*. A kiegyenlítő futtatásakor a fürterőforrás-kezelő meghatározza, hogy milyen módosításokat végezhet, ha van ilyen. Csak azért, mert egy kiegyenlítő keresés kiindul, nem jelent semmi lépést. Előfordulhat, hogy a fürt kiegyensúlyozatlan, de túl van korlátozva. Alternatív megoldásként a tökéletesítésekhez túl [költséges](service-fabric-cluster-resource-manager-movement-cost.md)mozgások szükségesek.
+A kiegyensúlyozási küszöbérték alá jutás nem kifejezett cél. A küszöbértékek kiegyensúlyozása csak egy *eseményindító*. A kiegyensúlyozás futtatásakor a fürterőforrás-kezelő határozza meg, hogy milyen fejlesztéseket érhet el, ha van ilyen. Csak azért, mert a kiegyensúlyozó keresés elindult, nem jelenti azt, hogy bármi mozog. Néha a fürt kiegyensúlyozatlan, de túl korlátozott a helyesbítéshez. Alternatív megoldásként a fejlesztések túl [költséges](service-fabric-cluster-resource-manager-movement-cost.md)mozgásokat igényelnek).
 
-## <a name="activity-thresholds"></a>Tevékenység küszöbértékei
-Időnként, bár a csomópontok viszonylag kiegyensúlyozva vannak, a fürt terhelésének *teljes* mennyisége alacsony. A terhelés hiánya átmeneti dip lehet, vagy mert a fürt új, és csak a bootstrapped. Mindkét esetben előfordulhat, hogy nem kíván időt fordítani a fürtre, mert kevés a kinyerhető. Ha a fürt egyensúlyba került, a hálózat és a számítási erőforrások elköltésével bármilyen nagy *abszolút* különbség nélkül mozgathatja a dolgokat. A szükségtelen mozgatások elkerülése érdekében egy másik, a tevékenység küszöbértékének nevezett vezérlőelem van. A tevékenységi küszöbértékek lehetővé teszik a tevékenységhez tartozó abszolút alsó határ megadását. Ha egyetlen csomópont sem haladja meg a küszöbértéket, akkor a rendszer nem aktiválja a kiegyenlítést, még akkor sem, ha a kiegyenlítési küszöbérték teljesül.
+## <a name="activity-thresholds"></a>Tevékenységküszöbértékek
+Néha, bár a csomópontok viszonylag kiegyensúlyozatlan, a *teljes* terhelés a fürtben alacsony. A terhelés hiánya lehet átmeneti dip, vagy azért, mert a fürt új, és csak egyre bootstrapped. Mindkét esetben előfordulhat, hogy nem szeretne időt tölteni a fürt kiegyensúlyozása, mert kevés a nyerhető. Ha a fürt kiegyensúlyozáson ment keresztül, akkor a hálózati és számítási erőforrásokat arra fordíthatja, hogy a dolgokat nagy *abszolút* különbség nélkül mozgassa. A szükségtelen lépések elkerülése érdekében van egy másik vezérlő, a tevékenységküszöbértékek. A tevékenységküszöbértékek lehetővé teszik, hogy a tevékenységhez abszolút alsó határértéket adjon meg. Ha nincs csomópont ezen a küszöbértékfelett, a kiegyensúlyozás nem aktiválódik akkor sem, ha a kiegyensúlyozási küszöbérték teljesül.
 
-Tegyük fel, hogy megtartjuk a jelen metrika három értékének kiegyensúlyozási küszöbértékét. Tegyük fel, hogy a 1536-es tevékenység küszöbértéke is. Az első esetben, amíg a fürt kiegyensúlyozva van, a terheléselosztási küszöbértéknél nincs csomópont, amely nem felel meg a tevékenység küszöbértékének, így semmi nem történik. Az alsó példában a Csomópont1 a tevékenység küszöbértéke felett van. Mivel az egyenlegező küszöbérték és a metrika tevékenységi küszöbértéke is túllépve, a rendszer ütemezi a kiegyenlítést. Példaként tekintse meg a következő ábrát: 
+Tegyük fel, hogy megtartjuk a hárompontos kiegyenlítő küszöbértéket ehhez a mutatóhoz. Tegyük fel, hogy 1536-os aktivitási küszöbünk van. Az első esetben, míg a fürt kiegyensúlyozatlan a kiegyensúlyozási küszöbérték, nincs csomópont megfelel a tevékenység küszöbértéket, így nem történik semmi. Az alsó példában a Node1 a tevékenységküszöbérték felett van. Mivel mind a kiegyensúlyozási küszöbértéket, mind a mérőszám tevékenységi küszöbértékét túllépi, a kiegyensúlyozás ütemezése van ütemezve. Vegyük például az alábbi ábrát: 
 
 <center>
 
-![tevékenység küszöbértékének példája][Image3]
+![Példa tevékenységi küszöbértékre][Image3]
 </center>
 
-Az elosztási küszöbértékekhez hasonlóan a tevékenység küszöbértékei a fürt definíciója szerint vannak definiálva a metrikán keresztül:
+A kiegyensúlyozási küszöbértékekhez hasonlóan a tevékenységküszöbértékek is metpontonként vannak meghatározva a fürtdefiníción keresztül:
 
-ClusterManifest.xml
+ClusterManifest.xml fájl
 
 ``` xml
     <Section Name="MetricActivityThresholds">
@@ -152,7 +152,7 @@ ClusterManifest.xml
     </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+a ClusterConfig.json keresztül önálló telepítésekhez vagy template.json az Azure által üzemeltetett fürtökhöz:
 
 ```json
 "fabricSettings": [
@@ -168,44 +168,43 @@ a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a 
 ]
 ```
 
-A kiegyensúlyozási és a tevékenységi küszöbértékek is egy adott metrika esetében vannak kötve, csak akkor aktiválódik, ha az adott metrika esetében az elosztási küszöbérték és a tevékenység küszöbértéke is túllépve.
+A kiegyensúlyozási és tevékenységi küszöbértékek egy adott metrikához vannak kötve – a kiegyensúlyozás csak akkor aktiválódik, ha ugyanazért a metrikához túllépi a kiegyensúlyozási küszöbértéket és a tevékenységküszöbértéket.
 
 > [!NOTE]
-> Ha nincs megadva, a metrika kiegyensúlyozási küszöbértéke 1, a tevékenység küszöbértéke pedig 0. Ez azt jelenti, hogy a fürterőforrás-kezelő megkísérli a metrika teljes mértékben kiegyensúlyozottan megtartani az adott terhelést. Ha egyéni metrikákat használ, javasoljuk, hogy explicit módon határozza meg a metrikák saját kiegyensúlyozási és tevékenységi küszöbértékeit. 
+> Ha nincs megadva, a metrika kiegyensúlyozási küszöbértéke 1, a tevékenységküszöbérték pedig 0. Ez azt jelenti, hogy a fürterőforrás-kezelő megpróbálja a metrikát tökéletesen kiegyensúlyozottan tartani az adott terheléshez. Ha egyéni metrikákat használ, javasoljuk, hogy explicit módon határozza meg a saját egyensúlyi és tevékenységi küszöbértékeket a metrikákhoz. 
 >
 
-## <a name="balancing-services-together"></a>Szolgáltatások kiegyensúlyozása együtt
-Azt jelzi, hogy a fürt kiegyensúlyozva van-e, vagy sem a fürtre kiterjedő döntés. A kijavításának módja azonban az egyes szolgáltatás-replikák és-példányok áthelyezése. Ez logikus, igaz? Ha a memória fel van halmozva egy csomóponton, több replika vagy példány is hozzájárulhat ahhoz. Az egyensúlyhiány kijavítása szükségessé teheti az olyan állapot-nyilvántartó replikák vagy állapot nélküli példányok áthelyezését, amelyek a kiegyensúlyozatlan metrikát használják.
+## <a name="balancing-services-together"></a>A kiegyenlítő szolgáltatások együttesen
+Az, hogy a fürt kiegyensúlyozatlan-e vagy sem, fürtszintű döntés. Azonban a javítási módja az egyes szolgáltatásreplikák és példányok áthelyezése. Ennek van értelme, ugye? Ha a memória egy csomóponton van halmozva, több replikák vagy példányok is hozzájárulnak hozzá. A kiegyensúlyozatlanság kijavítása lehet, hogy az állapotalapú replikák vagy állapotmentes példányok, amelyek a kiegyensúlyozatlan metrika áthelyezése.
 
-Időnként előfordulhat azonban, hogy egy olyan szolgáltatás, amely még nem volt kiegyensúlyozva, áthelyezte a szolgáltatást (ne feledje, hogy korábban a helyi és a globális súlyok megvitatását) Miért mozdulnak el egy szolgáltatás, ha az összes ilyen szolgáltatás mérőszáma kiegyensúlyozott volt? Lássunk egy példát:
+Alkalmanként azonban, a szolgáltatás, amely nem maga kiegyensúlyozatlan lesz mozgott (ne feledje, a vita a helyi és globális súlyok korábban). Miért helyeződne el egy szolgáltatás, ha a szolgáltatás összes mérőszáma kiegyensúlyozott volt? Lássunk egy példát:
 
-- Tegyük fel, hogy négy szolgáltatás, a service1, a service2, a Service3 és a Service4 van. 
-- A service1-jelentések mérőszámai Metric1 és Metric2. 
-- A service2-jelentések mérőszámai Metric2 és Metric3. 
-- A Service3-jelentések mérőszámai Metric3 és Metric4.
-- Service4 jelentések metrika Metric99. 
+- Tegyük fel, hogy négy szolgáltatás van: Service1, Service2, Service3 és Service4. 
+- Service1 jelentések metrikák 1 és metrika2. 
+- A Service2 a Metrika2 és a Metric3 mutatókat jelenti. 
+- A Service3 a Metric3 és a Metric4 mutatókat jelenti.
+- Service4 jelentések Metric99 metrika. 
 
-Bizonyára láthatja, hová megyünk itt: van egy lánc! Négy független szolgáltatásunk nem érhető el, három olyan szolgáltatásunk van, amely kapcsolódik egymáshoz, és az egyik a saját tulajdonában van.
-
-<center>
-
-][Image4]
-![terheléselosztási szolgáltatások együtt </center>
-
-Ennek a láncnak a miatt előfordulhat, hogy a 1-4-es metrikai egyensúlyhiány a szolgáltatások 1-3-hez tartozó replikákat vagy példányokat eredményezhet. Azt is tudjuk, hogy az 1., 2. vagy 3. mérőszámok egyensúlyhiánya nem okozhat mozgást a Service4. A Service4-hoz tartozó replikák vagy példányok áthelyezése óta nem lenne pont semmi, ami hatással lehet a 1-3 mérőszámok egyenlegére.
-
-A fürterőforrás-kezelő automatikusan kiszámítja, hogy mely szolgáltatások kapcsolódnak egymáshoz. A szolgáltatások metrikáinak hozzáadása, eltávolítása vagy módosítása hatással lehet a kapcsolataira. Előfordulhat például, hogy a service2 két futtatása is frissült a Metric2 eltávolításához. Ez megszakítja a láncot a service1 és a service2 között. Mostantól a kapcsolódó szolgáltatások két csoportja helyett három:
+Bizonyára látod, hová megyünk itt: van egy lánc! Nem igazán van négy független szolgáltatásunk, három kapcsolódó szolgáltatásunk van, és az egyik önmagában ki van kapcsolva.
 
 <center>
 
-][Image5]
-![terheléselosztási szolgáltatások együtt </center>
+![Kiegyensúlyozó szolgáltatások együtt][Image4]
+</center>
 
-## <a name="next-steps"></a>Következő lépések
-* A metrikák azt jelentik, hogyan kezeli a Service Fabric fürterőforrás-kezelő a fürtben a felhasználást és a kapacitást. A metrikákkal és azok konfigurálásával kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md)
-* A szállítási költség az egyik módja annak, hogy a fürterőforrás-kezelőnek jelezze, hogy bizonyos szolgáltatások drágábbak a többinél. További információ a mozgási díjakról: [ebben a cikkben](service-fabric-cluster-resource-manager-movement-cost.md)
-* A fürterőforrás-kezelő több szabályozást is tartalmaz, amelyekkel lelassíthatja a forgalom változását a fürtben. Általában nem szükségesek, de ha [szüksége van rájuk, megismerheti őket](service-fabric-cluster-resource-manager-advanced-throttling.md)
-* A fürterőforrás-kezelő felismeri és kezeli az alfürtözést (ez a helyzet akkor fordul elő, ha elhelyezési megkötéseket és kiegyensúlyozást használ). Ha szeretné megtudni, hogy az alfürtözés hogyan befolyásolhatja az egyensúlyt, és hogyan kezelheti azt, tekintse meg [a következőt](service-fabric-cluster-resource-manager-subclustering.md) :
+Ez a lánc miatt lehetséges, hogy az 1-4 metrikák egyensúlyhiánya miatt az 1-3 szolgáltatásokhoz tartozó replikák vagy példányok mozoghatnak. Azt is tudjuk, hogy az 1-es, 2-es vagy 3-as metrikák közötti egyensúlyhiány nem okozhat mozgásokat a Service4-ben. Nem lenne értelme, mivel a replikák vagy példányok service4 körül nem tehet semmit, hogy befolyásolja az 1-3 metrikák egyenlegét.
+
+A fürterőforrás-kezelő automatikusan kitalálja, hogy milyen szolgáltatások kapcsolódnak egymáshoz. A szolgáltatások metrikáinak hozzáadása, eltávolítása vagy módosítása hatással lehet a kapcsolataikra. Például két kiegyensúlyozó Service2 futtatása között lehet, hogy frissítve lett a Metric2 eltávolításához. Ez megszakítja a Service1 és service2 közötti láncot. Most ahelyett, hogy két csoport kapcsolódó szolgáltatások, három:
+
+<center>
+
+![Kiegyensúlyozó szolgáltatások együtt][Image5]
+</center>
+
+## <a name="next-steps"></a>További lépések
+* Metrikák, amelyek a Service Fabric fürterőforrás-kezelő kezeli a fürt ben a fogyasztás és a kapacitás. Ha többet szeretne megtudni a metrikákról és azok konfigurálásáról, olvassa el [ezt a cikket.](service-fabric-cluster-resource-manager-metrics.md)
+* A mozgásköltség az egyik módja annak, hogy jelezze a fürterőforrás-kezelőnek, hogy bizonyos szolgáltatások áthelyezése drágább, mint másoké. A mozgási költségekről ebben a [cikkben](service-fabric-cluster-resource-manager-movement-cost.md) olvashat bővebben.
+* A fürterőforrás-kezelő számos szabályozással rendelkezik, amelyek konfigurálhatók a fürtben a lemorzsolódás lassítására. Általában nincs rájuk szükség, de ha szüksége van rájuk, itt megismerheti [őket.](service-fabric-cluster-resource-manager-advanced-throttling.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

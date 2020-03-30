@@ -1,6 +1,6 @@
 ---
 title: Mi történt az ASP.NET-projektemmel?
-description: Leírja, hogy mi történik az Azure Storage ASP.NET-projekthez való hozzáadása után a Visual Studio Connected Services használatával
+description: A cikk azt ismerteti, hogy mi történik, miután hozzáadott egy ASP.NET projekthez a Visual Studio csatlakoztatott szolgáltatásainak használatával
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,28 +14,28 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 4374955d6d51c1ae44c211aaa93d0b5e8930fe5b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72300035"
 ---
-# <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Mi történt a ASP.NET-projekttel (Visual Studio Azure Storage Connected Service)?
-## <a name="references-added"></a>Hivatkozások hozzáadva
-Az Azure Storage NuGet csomagja hozzá lett adva a Visual Studio-projekthez.  
-Ez a csomag a következő .NET-referenciákat veszi fel:
+# <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Mi történt a ASP.NET projekttel (Visual Studio Azure Storage-hoz csatlakoztatott szolgáltatás)?
+## <a name="references-added"></a>Hozzáadott hivatkozások
+Az Azure Storage NuGet csomag hozzá lett adva a Visual Studio-projekthez.  
+Ez a csomag a következő .NET-hivatkozásokat adja hozzá:
 
-* **Microsoft. EDM**
-* **Microsoft. OData**
-* **Microsoft. Services. Services. Client**
-* **Microsoft. WindowsAzure. Configuration**
-* **Microsoft. WindowsAzure. Storage**
-* **Newtonsoft. JSON**
-* **System. reaz**
-* **System. térbeli**
+* **Microsoft.Data.Edm**
+* **Microsoft.Data.OData**
+* **Microsoft.Data.Services.Ügyfél**
+* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft.WindowsAzure.Storage**
+* **Newtonsoft.Json**
+* **System.Data**
+* **System.Spatial**
 
-## <a name="connection-string-for-azure-storage-added"></a>Az Azure Storage-hoz hozzáadott kapcsolatok karakterlánca
-A projekt web. config fájljában egy elem lett létrehozva a kiválasztott Storage-fiók kapcsolati karakterlánccal és kulcsával.
+## <a name="connection-string-for-azure-storage-added"></a>Az Azure Storage csatlakozási karakterlánca hozzáadva
+A projekt web.config fájljában egy elem jött létre a kijelölt tárfiók kapcsolati karakterláncával és kulcsával.
 
-További információ: [ASP.net](https://www.asp.net).
+További információ: [ASP.NET](https://www.asp.net).
 

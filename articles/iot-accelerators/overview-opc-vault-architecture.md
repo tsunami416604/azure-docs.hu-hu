@@ -1,6 +1,6 @@
 ---
-title: OPC Vault-architektúra – Azure | Microsoft Docs
-description: OPC-tár tanúsítványkezelő szolgáltatás architektúrája
+title: OPC Vault architektúra - Azure | Microsoft dokumentumok
+description: OPC Vault tanúsítványkezelő szolgáltatás architektúrája
 author: mregen
 ms.author: mregen
 ms.date: 08/16/2019
@@ -9,81 +9,81 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71200158"
 ---
-# <a name="opc-vault-architecture"></a>OPC-tár architektúrája
+# <a name="opc-vault-architecture"></a>OPC Vault architektúra
 
-Ez a cikk áttekintést nyújt az OPC Vault-szolgáltatásról és az OPC-tároló IoT Edge modulról.
+Ez a cikk áttekintést nyújt az OPC Vault mikroszolgáltatásról és az OPC Vault IoT Edge modulról.
 
-Az OPC UA-alkalmazások alkalmazás-példány-tanúsítványokat használnak az alkalmazás szintű biztonság biztosításához. A biztonságos kapcsolatok aszimmetrikus titkosítással lettek létrehozva, amelyek esetében az alkalmazás tanúsítványai biztosítják a nyilvános és a titkos kulcspár használatát. A tanúsítványok önaláírtak vagy hitelesítésszolgáltatók (CA) által is aláírva.
+Az OPC ua alkalmazások alkalmazáspéldány-tanúsítványokat használnak az alkalmazásszintű biztonság biztosításához. A biztonságos kapcsolat aszimmetrikus titkosítással jön létre, amelyhez az alkalmazástanúsítványok biztosítják a nyilvános és a személyes kulcspárt. A tanúsítványok lehetnek önaláírtak, vagy egy hitelesítésszolgáltató (CA) írható alá.
 
-Az OPC UA-alkalmazások listáját az általa megbízhatónak ítélt alkalmazásokat képviselő megbízható tanúsítványok listája tartalmazza. Ezeket a tanúsítványokat egy HITELESÍTÉSSZOLGÁLTATÓ önaláírta vagy aláírhatja, vagy lehet egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ vagy egy alárendelt HITELESÍTÉSSZOLGÁLTATÓ is. Ha egy megbízható tanúsítvány egy nagyobb tanúsítványlánc részét képezi, az alkalmazás megbízik az összes olyan tanúsítványban, amely a megbízható tanúsítványok listáján a tanúsítványhoz csatlakozik. Ez akkor igaz, ha a teljes tanúsítványláncot ellenőrizni lehet.
+Az OPC Felhasználói felületi azonosító alkalmazás rendelkezik a megbízható alkalmazásokat jelölő megbízható tanúsítványok listájával. Ezek a tanúsítványok lehetnek önaláírtak vagy aláírhatók egy hitelesítésszolgáltató által, vagy lehetnek legfelső szintű hitelesítésszolgáltató vagy maguk alhitelesítésszolgáltató. Ha egy megbízható tanúsítvány egy nagyobb tanúsítványlánc része, az alkalmazás megbízik az összes olyan tanúsítványban, amely a megbízhatósági listában szereplő tanúsítványig láncol. Ez mindaddig igaz, amíg a teljes tanúsítványlánc érvényesíthető.
 
-A megbízható önaláírt tanúsítványok és a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megbízhatósága közötti legnagyobb különbség a megbízhatóság üzembe helyezéséhez és karbantartásához szükséges telepítési erőfeszítés. A vállalatra vonatkozó HITELESÍTÉSSZOLGÁLTATÓ üzemeltetése is további erőfeszítést igényel. 
+Az önaláírt tanúsítványok megbízhatósága és a hitelesítésszolgáltatói tanúsítványok megbízhatósága közötti fő különbség a megbízhatóság üzembe helyezéséhez és fenntartásához szükséges telepítési munka. További erőfeszítéseket is tesz a vállalatspecifikus hitelesítésszolgáltató üzemeltetésére. 
 
-Ha az önaláírt tanúsítványok megbízhatóságát szeretné terjeszteni több kiszolgáló számára egyetlen ügyfélalkalmazás használatával, az összes kiszolgálói alkalmazás tanúsítványát telepítenie kell az ügyfélalkalmazás megbízhatósági listájára. Emellett az ügyfélalkalmazás tanúsítványát is telepítenie kell az összes kiszolgálói alkalmazás megbízhatósági listájára. Ez a felügyeleti erőfeszítés meglehetősen nagy terhet jelent, és akkor is növekszik, ha a tanúsítványok élettartamát kell megfontolnia, és meg kell újítania a tanúsítványokat.
+Ha egyetlen ügyfélalkalmazással több kiszolgálóra szeretne megbízhatósági kapcsolatot terjeszteni, telepítenie kell az összes kiszolgálóalkalmazás-tanúsítványt az ügyfélalkalmazás megbízhatósági listájára. Ezenkívül telepítenie kell az ügyfélalkalmazás-tanúsítványt az összes kiszolgálóalkalmazás-megbízhatósági listára. Ez az adminisztratív erőfeszítés elég nagy terhet jelent, és még akkor is növekszik, ha figyelembe kell vennie a tanúsítványok élettartamát és meg kell újítania a tanúsítványokat.
 
-A vállalati HITELESÍTÉSSZOLGÁLTATÓ használata nagy mértékben egyszerűsítheti a megbízhatóság kezelését több kiszolgálóval és ügyféllel. Ebben az esetben a rendszergazda egyszer létrehoz egy HITELESÍTÉSSZOLGÁLTATÓI aláírású alkalmazás példányának tanúsítványát minden egyes használt ügyfél és kiszolgáló esetében. Emellett a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány minden alkalmazás-megbízhatósági listában telepítve van minden kiszolgálón és ügyfélen. Ezzel a módszerrel csak a lejárt tanúsítványokat kell megújítani, és lecserélni az érintett alkalmazásokra.
+A vállalatspecifikus hitelesítésszolgáltató használata nagymértékben leegyszerűsítheti a több kiszolgálóval és ügyféllel való bizalmi kapcsolat kezelését. Ebben az esetben a rendszergazda minden használt ügyfélhez és kiszolgálóhoz egyszer létrehoz egy hitelesítésszolgáltató által aláírt alkalmazáspéldány-tanúsítványt. Ezenkívül a hitelesítésszolgáltatói tanúsítvány minden alkalmazásmegbízhatósági listára telepítve van, minden kiszolgálón és ügyfélen. Ezzel a megközelítéssel csak a lejárt tanúsítványokat kell megújítani, és cserélni az érintett alkalmazások.
 
-Az Azure Industrial IoT OPC UA tanúsítványkezelő szolgáltatása segítségével kezelheti az OPC UA-alkalmazások vállalati szintű HITELESÍTÉSSZOLGÁLTATÓit. Ez a szolgáltatás az OPC Vault-szolgáltatáson alapul. Az OPC-tároló egy olyan szolgáltatást biztosít, amely egy biztonságos felhőben üzemelteti a vállalatra jellemző HITELESÍTÉSSZOLGÁLTATÓT. Ezt a megoldást a Azure Active Directory (Azure AD) által védett szolgáltatások, Azure Key Vault a hardveres biztonsági modulokkal (HSM), a Azure Cosmos DBekkel és opcionálisan IoT Hub alkalmazás-tárolóként.
+Az Azure Industrial IoT OPC UA tanúsítványkezelési szolgáltatás segít az OPC UA-alkalmazások vállalatspecifikus hitelesítésszolgáltatójának kezelésében. Ez a szolgáltatás az OPC Vault mikroszolgáltatáson alapul. Az OPC Vault mikroszolgáltatást biztosít egy vállalatspecifikus hitelesítésszolgáltató biztonságos felhőben való üzemeltetéséhez. Ezt a megoldást az Azure Active Directory (Azure AD), az Azure Key Vault hardveres biztonsági modulokkal (HSMs), az Azure Cosmos DB és opcionálisan az IoT Hub alkalmazástárolója által védett szolgáltatások is támogatja.
 
-Az OPC-tár szolgáltatás úgy van kialakítva, hogy támogassa a szerepköralapú munkafolyamatot, ahol a biztonsági rendszergazdák és a jóváhagyók a Azure Key Vault jóváhagyására vagy elutasítására vonatkozó jogosultságokkal rendelkeznek.
+Az OPC Vault mikroszolgáltatás célja, hogy támogassa a szerepköralapú munkafolyamat, ahol a biztonsági rendszergazdák és jóváhagyók aláírási jogokkal az Azure Key Vault jóváhagyja vagy elutasítja a kérelmeket.
 
-A meglévő OPC UA-megoldásokkal való kompatibilitás érdekében a szolgáltatások közé tartozik az OPC-tár webszolgáltatás által támogatott peremhálózati moduljának támogatása. Ezzel implementálja az **OPC ua globális felderítési kiszolgáló és a Tanúsítványkezelő** felületet, a tanúsítványok és a megbízhatósági kapcsolatok listáját a specifikáció 12. részének megfelelően. 
+A meglévő OPC UA-megoldásokkal való kompatibilitás érdekében a szolgáltatások tartalmazzák az OPC Vault mikroszolgáltatás-alapú peremhálózati modul támogatását. Ezzel megvalósítja az **OPC UA Global Discovery Server és a Certificate Management** felületet, így a specifikáció 12. 
 
 
 ## <a name="architecture"></a>Architektúra
 
-Az architektúra az OPC-tár szolgáltatáson alapul, és egy OPC-tároló IoT Edge modul a gyári hálózathoz és egy webes minta UX a munkafolyamat vezérléséhez:
+Az architektúra az OPC Vault mikroszolgáltatáson alapul, egy OPC Vault IoT Edge modullal a gyári hálózathoz és egy webes minta UX-t a munkafolyamat vezérléséhez:
 
-![OPC Vault-architektúra ábrája](media/overview-opc-vault-architecture/opc-vault.png)
+![OpC Vault architektúra diagramja](media/overview-opc-vault-architecture/opc-vault.png)
 
-## <a name="opc-vault-microservice"></a>OPC Vault-szolgáltatás
+## <a name="opc-vault-microservice"></a>OPC-tároló mikroszolgáltatása
 
-Az OPC-tár szolgáltatás a következő felületekből áll, hogy megvalósítsa a munkafolyamatot az OPC UA-alkalmazások számára a vállalati HITELESÍTÉSSZOLGÁLTATÓ terjesztéséhez és kezeléséhez.
+Az OPC Vault mikroszolgáltatás a következő felületekből áll, amelyek megvalósítják a munkafolyamatot az OPC UA-alkalmazások vállalatspecifikus hitelesítésszolgáltatójának terjesztéséhez és kezeléséhez.
 
 ### <a name="application"></a>Alkalmazás 
-- Az OPC UA-alkalmazás lehet egy kiszolgáló vagy egy ügyfél, vagy mindkettő. Az OPC-tároló ebben az esetben alkalmazás-regisztrációs szolgáltatóként szolgál. 
-- Az alkalmazások regisztrálására, frissítésére és regisztrációjának megszüntetésére szolgáló alapvető műveletek mellett a keresési kifejezésekkel rendelkező alkalmazások keresése és lekérdezése is elérhető. 
-- A tanúsítványkérelem érvényes alkalmazásra hivatkozik, hogy feldolgozza a kérést, és az összes OPC UA-specifikus bővítménnyel kiállítson egy aláírt tanúsítványt. 
-- Az Application Service-t a Azure Cosmos DB adatbázisa támogatja.
+- Az OPC UA-alkalmazások lehetnek kiszolgálók vagy ügyfélalkalmazások, vagy mindkettő. Az OPC Vault ebben az esetben alkalmazásregisztrációs hatóságként szolgál. 
+- Az alkalmazások regisztrálásához, frissítéséhez és regisztrációjának lekérdezéséhez az alkalmazások regisztrálásához, frissítéséhez és regisztrációjának megszüntetése érdekében olyan felületek is vannak, amelyek keresési kifejezésekkel rendelkező alkalmazásokat keresnek és kérdeznek le. 
+- A tanúsítványkérelmeknek érvényes kérelemre kell hivatkozniuk a kérelem feldolgozásához és az OPC UA-specifikus összes bővítményével rendelkező aláírt tanúsítvány kiállításához. 
+- Az alkalmazásszolgáltatás az Azure Cosmos DB adatbázisa.
 
-### <a name="certificate-group"></a>Tanúsítvány csoport
-- A tanúsítvány-csoport egy olyan entitás, amely egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT vagy egy alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt tárol, beleértve a tanúsítványok aláírására szolgáló titkos kulcsot is. 
-- Az RSA-kulcs hossza, az SHA-2 kivonat hossza, valamint az élettartamok mind a kiállító HITELESÍTÉSSZOLGÁLTATÓ, mind az aláírt alkalmazás tanúsítványainak esetében konfigurálhatók. 
-- A CA-tanúsítványokat a Azure Key Vault-ban tárolja, és a FIPS 140-2 2. szintű HSM-mel támogatott. A titkos kulcs soha nem hagyja el a biztonságos tárterületet, mert az aláírást egy, az Azure AD által védett Key Vault művelet hajtja végre. 
-- Az idő múlásával megújíthatja a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat, és a Key Vault előzmények miatt megmaradnak a biztonságos tárolóban. 
-- Az egyes HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok visszavonási listáját Key Vault titkos kulcsként is tárolja a rendszer. Egy alkalmazás regisztrációjának törlésekor az alkalmazás tanúsítványát a rendszer a visszavont tanúsítványok listáján (CRL) is visszavonja a rendszergazda.
-- Visszavonhatja az önálló tanúsítványokat és a kötegelt tanúsítványokat is.
+### <a name="certificate-group"></a>Tanúsítványcsoport
+- A tanúsítványcsoport olyan entitás, amely legfelső szintű hitelesítésszolgáltatót vagy alhitelesítési tanúsítványt tárol, beleértve a tanúsítványok aláírásához szükséges személyes kulcsot is. 
+- Az RSA-kulcs hossza, az SHA-2 kivonathossza és élettartama konfigurálható mind a kiállító hitelesítésszolgáltatóhoz, mind az aláírt alkalmazástanúsítványokhoz. 
+- A hitelesítésszolgáltatói tanúsítványokat az Azure Key Vaultban tárolja, fips 140-2 2 szintű HSM-mel támogatva. A személyes kulcs soha nem hagyja el a biztonságos tárolót, mert az aláírást az Azure AD által védett Key Vault-művelet végzi. 
+- A hitelesítésszolgáltatói tanúsítványokat idővel megújíthatja, és a Key Vault előzményei miatt biztonságos tárolóban maradhatnak. 
+- Az egyes hitelesítésszolgáltatói tanúsítványok visszavonási listája a Key Vaultban is titkos kulcsként tárolódik. Ha egy alkalmazás nincs regisztrálva, az alkalmazástanúsítványt a rendszergazda is visszavonja a visszavont tanúsítványok listájában.
+- Az egyes és kötegelt tanúsítványok at visszavonhatja.
 
 ### <a name="certificate-request"></a>Tanúsítványkérelem
-A tanúsítványkérelem egy új kulcspár vagy egy aláírt tanúsítvány előállítására szolgáló munkafolyamatot valósít meg egy OPC UA-alkalmazáshoz tartozó tanúsítvány-aláírási kérelem (CSR) használatával. 
-- A kérést egy olyan adatbázisban tárolja a rendszer, amely a kapcsolódó információkat, például a tulajdonost vagy a CSR-t, valamint az OPC UA-alkalmazásra mutató hivatkozást tartalmaz. 
-- A szolgáltatásban lévő üzleti logika érvényesíti a kérelmet az alkalmazás-adatbázisban tárolt információkkal. Az adatbázisban szereplő alkalmazás-URI-nak például meg kell egyeznie az alkalmazás URI azonosítóval a CSR-ben.
-- Az aláírási jogokkal rendelkező biztonsági rendszergazda (azaz a jóváhagyó szerepkör) jóváhagyja vagy elutasítja a kérelmet. Ha a kérést jóváhagyják, egy új kulcspár vagy aláírt tanúsítvány (vagy mindkettő) jön létre. Az új titkos kulcsot a rendszer biztonságosan tárolja Key Vaultban, és az új aláírt nyilvános tanúsítvány tárolása a tanúsítványkérelem adatbázisában történik.
-- A kérelmező lekérdezheti a kérés állapotát, amíg jóvá nem hagyta vagy vissza nem vonja. Ha a kérést jóváhagyták, a titkos kulcs és a tanúsítvány az OPC UA-alkalmazás tanúsítványtárolójában tölthető le és telepíthető.
-- A kérelmező mostantól elfogadhatja a szükségtelen információk törlésére vonatkozó kérelmet a kérelem-adatbázisból. 
+A tanúsítványkérelem egy opc ua alkalmazás tanúsítványaláírási kérelem (CSR) használatával valósítja meg a munkafolyamatot egy új kulcspár vagy aláírt tanúsítvány létrehozásához. 
+- A kérelem egy adatbázisban tárolódik, amely tartalmazza a kapcsolódó információkat, például a tárgyat vagy a CSR-t, valamint az OPC UA alkalmazásra való hivatkozást. 
+- A szolgáltatás üzleti logikája érvényesíti a kérelmet az alkalmazás-adatbázisban tárolt adatokkal szemben. Például az alkalmazás Uri az adatbázisban meg kell egyeznie az alkalmazás Uri a CSR-ben.
+- Az aláírási jogosultságokkal (azaz a Jóváhagyó szerepkörrel) rendelkező biztonsági rendszergazda jóváhagyja vagy elutasítja a kérelmet. Ha a kérelmet jóváhagyták, új kulcspár vagy aláírt tanúsítvány (vagy mindkettő) jön létre. Az új személyes kulcs biztonságosan tárolódik a Key Vaultban, és az új aláírt nyilvános tanúsítvány a tanúsítványkérelem-adatbázisban tárolódik.
+- A kérelmező lekérheti a kérelem állapotát, amíg jóvá nem hagyják vagy vissza nem vonják. Ha a kérelmet jóváhagyták, a személyes kulcs és a tanúsítvány letölthető és telepíthető az OPC UA alkalmazás tanúsítványtárolójában.
+- A kérelmező most már elfogadhatja a szükségtelen adatok törlésére vonatkozó kérést a kérelemadatbázisból. 
 
-Egy aláírt tanúsítvány élettartama során előfordulhat, hogy egy alkalmazás törölve lett, vagy a kulcs biztonsága sérült lehet. Ilyen esetben a CA-kezelő a következőket teheti:
-- Töröl egy alkalmazást, amely az alkalmazás összes függőben lévő és jóváhagyott tanúsítványkérelem-kérelmét is törli. 
-- Csak egyetlen tanúsítványkérelem törlése, ha csak egy kulcs van megújítva vagy sérült.
+Az aláírt tanúsítvány élettartama alatt előfordulhat, hogy egy alkalmazás törlődik, vagy egy kulcs biztonsága sérülhet. Ilyen esetben a hitelesítésigazgató:
+- Töröljön egy alkalmazást, amely az alkalmazás összes függőben lévő és jóváhagyott tanúsítványkérelmét is törli. 
+- Csak egyetlen tanúsítványkérelmet töröljön, ha csak egy kulcs megújítása vagy feltörése történik.
 
-A rendszer megszakította a megsérült jóváhagyott és elfogadott tanúsítványkérelmek törlését.
+Most a feltört jóváhagyott és elfogadott tanúsítványkérelmek töröltként vannak megjelölve.
 
-A kezelők rendszeresen megújítják a kiállító HITELESÍTÉSSZOLGÁLTATÓ CRL-t. A megújítás időpontjában a rendszer az összes törölt tanúsítványkérelmet visszavonja, és a tanúsítvány sorozatszámait hozzáadja a CRL-visszavonási listához. Visszavont tanúsítványkérelmek vannak megjelölve visszavont tanúsítványként. Sürgős eseményekben az egytanúsítványos kérelmek is visszavonhatók.
+A kezelő rendszeresen megújíthatja a kiállító hitelesítéshitelesítéssel kapcsolatos visszavonási felhívást. A megújítás időpontjában az összes törölt tanúsítványkérelmet visszavonják, és a tanúsítvány sorozatszámai hozzáadódnak a visszavont tanúsítványok listájához. A visszavont tanúsítványkérelmek visszavonásra van békülve. Sürgős események esetén az egyes tanúsítványkérelmek is visszavonhatók.
 
-Végezetül a frissített CRL-ket elérhetővé kell tenni a résztvevő OPC UA-ügyfelek és-kiszolgálók számára.
+Végül a frissített visszavonási adatok terjeszthetőek a részt vevő OPC UA-ügyfelek és -kiszolgálók számára.
 
-## <a name="opc-vault-iot-edge-module"></a>OPC-tároló IoT Edge modulja
-A gyári hálózat globális felderítési kiszolgálójának támogatásához az OPC-tároló modult a peremhálózat szélén helyezheti üzembe. Futtassa helyi .NET Core-alkalmazásként, vagy indítsa el egy Docker-tárolóban. Vegye figyelembe, hogy a jelenlegi OPC UA .NET Standard szintű Auth2 érték-hitelesítési támogatás hiánya miatt az OPC-tároló peremhálózati moduljának funkciói az olvasói szerepkörre korlátozódnak. Egy felhasználót nem lehet megszemélyesíteni az Edge-modulból a szolgáltatásba az OPC UA GDS standard interfész használatával.
+## <a name="opc-vault-iot-edge-module"></a>OPC-tároló IoT Edge modul
+A globális felderítési kiszolgáló üzemi hálózatának támogatásához telepítheti az OPC Vault modult a peremhálózaton. Futtassa helyi .NET Core alkalmazásként, vagy indítsa el egy Docker-tárolóban. Vegye figyelembe, hogy az aktuális OPC UA .NET standard verem auth2 hitelesítési támogatásának hiánya miatt az OPC Vault peremmodul funkciója egy Olvasó szerepkörre korlátozódik. A felhasználó nem személyesíthető megszemélyesítve a peremhálózati modulról a mikroszolgáltatásra az OPC UA GDS szabványos felülethasználatával.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az OPC Vault architektúráját, a következőket teheti:
+Most, hogy megismerkedett az OPC Vault architektúrával, a következőket teheti:
 
 > [!div class="nextstepaction"]
-> [OPC-tároló létrehozása és üzembe helyezése](howto-opc-vault-deploy.md)
+> [OpC Vault létrehozása és üzembe helyezése](howto-opc-vault-deploy.md)

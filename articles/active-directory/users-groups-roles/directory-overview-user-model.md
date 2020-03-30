@@ -1,5 +1,5 @@
 ---
-title: Felhasználók, csoportok, licencelés és szerepkörök áttekintése – Azure AD | Microsoft Docs
+title: Felhasználók, csoportok, licencelés és szerepkörök – Azure AD | Microsoft dokumentumok
 description: A felhasználók és a hozzárendelt licencek, a rendszergazdai szerepkörök és a csoporttagságok közti kapcsolatok az Azure Active Directoryban
 keywords: ''
 author: curtand
@@ -15,10 +15,10 @@ services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77046337"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Nagyobb szervezetek felhasználói, csoportjai, licenckezelése és szerepkörei
@@ -31,7 +31,7 @@ A cikk az Azure AD-rendszergazdák számára mutatja be a felhasználókra vonat
 
 ## <a name="assign-users-to-groups"></a>Felhasználók hozzárendelése csoportokhoz
 
-A csoportok segítségével az Azure AD-ben licenceket rendelhet hozzá egyszerre sok felhasználóhoz, illetve felhasználói hozzáféréseket rendelhet hozzá a telepített vállalati alkalmazásokhoz. A csoportok segítségével az összes rendszergazdai szerepkört hozzárendelheti, kivéve az Azure AD globális rendszergazdáját, vagy megadhat hozzáférést a külső erőforrásokhoz, például SaaS-alkalmazásokhoz vagy SharePoint-webhelyekhez.
+A csoportok segítségével az Azure AD-ben licenceket rendelhet hozzá egyszerre sok felhasználóhoz, illetve felhasználói hozzáféréseket rendelhet hozzá a telepített vállalati alkalmazásokhoz. A csoportok segítségével az Azure AD globális rendszergazdája kivételével az összes rendszergazdai szerepkört hozzárendelheti, vagy hozzáférést biztosíthat a külső erőforrásokhoz, például az SaaS-alkalmazásokhoz vagy a SharePoint-webhelyekhez.
 
 A nagyobb rugalmasság és a csoporttagság-felügyeleti tevékenységek csökkentése érdekében [dinamikus csoportokat](groups-create-rule.md) is használhat az Azure AD-ben a csoporttagság automatikus kiterjesztésére és szűkítésére. Minden egyedi felhasználóhoz, amely egy vagy több dinamikus csoport tagja, egy Azure AD Premium P1-licencre lesz szükség.
 
@@ -70,7 +70,7 @@ Az Azure AD emellett lehetővé teszi az alkalmazások és a hozzáféréssel fe
 * Elindíthatja vagy leállíthatja az Azure AD kiépítési szolgáltatást valamely alkalmazásra, törölheti a kiépítési gyorsítótárat, vagy újraindíthatja a szolgáltatást
 * Megtekintheti a **kiépítési tevékenységekre vonatkozó jelentést**, amely naplózza az Azure AD és az alkalmazás között létrehozott, frissített és törölt összes felhasználót és csoportot, valamint a **kiépítési hibákat tartalmazó jelentést**, amely a részletes hibaüzeneteket tartalmazza
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Amennyiben még csak most ismerkedik az Azure AD rendszergazdai feladataival, az alapvető információkért tekintse meg [az Azure Active Directory alapjait](https://docs.microsoft.com/azure/active-directory/fundamentals/index) bemutató cikket.
 

@@ -1,6 +1,6 @@
 ---
-title: Teljesítménnyel kapcsolatos problémák elhárítása Intelligent Insights
-description: A Intelligent Insights segítségével elháríthatja Azure SQL Database teljesítménnyel kapcsolatos problémákat.
+title: Teljesítményproblémák elhárítása az Intelligent Insights segítségével
+description: Az Intelligent Insights segítségével elháríthatja az Azure SQL Database teljesítményével kapcsolatos problémákat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,323 +12,323 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: 739bba7ed9ab4770a762c08fccc422ce048ae11d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214097"
 ---
-# <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>A Intelligent Insights teljesítményével kapcsolatos hibák elhárítása Azure SQL Database
+# <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Az Azure SQL Database teljesítményével kapcsolatos problémák elhárítása az Intelligent Insights segítségével
 
-Ez a lap a [Intelligent Insights](sql-database-intelligent-insights.md) erőforrás-naplóban észlelt Azure SQL Database és felügyelt példányok teljesítményével kapcsolatos problémákat ismerteti. A metrikák és erőforrás-naplók a [Azure monitor naplókba](../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../azure-monitor/platform/resource-logs-stream-event-hubs.md), az [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)-ba vagy egy harmadik féltől származó, az egyéni DevOps-riasztási és jelentéskészítési képességekhez továbbítható megoldás.
+Ez a lap az Azure SQL Database és a felügyelt példány teljesítményével kapcsolatos problémákat tartalmaz, amelyeket az [Intelligent Insights](sql-database-intelligent-insights.md) erőforrásnapló ban észleltek. Metrikák és erőforrásnaplók streamelhetők az Azure Monitor naplóiba, az Azure Event [Hubsba,](../azure-monitor/insights/azure-sql.md) [az](../azure-monitor/platform/resource-logs-stream-event-hubs.md)Azure [Storageba](sql-database-metrics-diag-logging.md#stream-into-azure-storage)vagy egy külső megoldásba az egyéni DevOps-riasztási és jelentéskészítési képességekhez.
 
 > [!NOTE]
-> A Intelligent Insights használatával kapcsolatos gyors SQL Database teljesítmény-hibaelhárítási útmutatóért tekintse meg a jelen dokumentum [javasolt hibaelhárítási folyamat](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábráját.
+> Az INTELLIGENT Insights használatával az SQL Database teljesítményével kapcsolatos gyors hibaelhárítási útmutatót ebben a dokumentumban az [Ajánlott hibaelhárítási folyamatábra](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) című témakörben találja.
 
-## <a name="detectable-database-performance-patterns"></a>Észlelhető adatbázis-teljesítménnyel kapcsolatos minták
+## <a name="detectable-database-performance-patterns"></a>Észlelhető adatbázis-teljesítményminták
 
-A Intelligent Insights automatikusan észleli a Azure SQL Database-adatbázisokkal kapcsolatos teljesítményproblémák a lekérdezés végrehajtásának várakozási ideje, hibái vagy időtúllépése alapján. Intelligent Insights a kimenetek a SQL Database erőforrás-naplóba tartozó teljesítménnyel kapcsolatos mintákat észleltek. A észlelhető teljesítményi mintákat az alábbi táblázat foglalja össze.
+Az Intelligent Insights automatikusan észleli az Azure SQL Database adatbázisaival kapcsolatos teljesítményproblémákat a lekérdezés-végrehajtási várakozási idők, hibák vagy időtúlkérdések alapján. Az Intelligent Insights kimenetek teljesítménymintákat észleltek az SQL Database erőforrásnaplójában. A kimutatható teljesítménymintákat az alábbi táblázat foglalja össze.
 
-| Észlelhető teljesítményminták | Azure SQL Database és rugalmas készletek leírása | A felügyelt példányban lévő adatbázisok leírása |
+| Észlelhető teljesítményminták | Az Azure SQL Database és a rugalmas készletek leírása | A felügyelt példányadatbázisainak leírása |
 | :------------------- | ------------------- | ------------------- |
-| [Erőforrás-korlátok elérése](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | A megfigyelt előfizetésben elérhető erőforrások (DTU), adatbázis-feldolgozó szálak vagy adatbázis-bejelentkezési munkamenetek felhasználása elérte a határértékeket. Ez hatással van a SQL Database teljesítményére. | A CPU-erőforrások felhasználása a felügyelt példányok korlátainak elérése. Ez hatással van az adatbázis teljesítményére. |
-| [Munkaterhelés növekedése](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | A rendszer észlelte a munkaterhelés növelését vagy a számítási feladatok folyamatos felhalmozódását az adatbázisban. Ez hatással van a SQL Database teljesítményére. | A rendszer a munkaterhelés növelését észlelte. Ez hatással van az adatbázis teljesítményére. |
-| [Memória nyomása](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | A memóriát igénylő munkavállalóknak meg kell várniuk a memória kiosztását a statisztikailag jelentős mennyiségű időszakra, vagy a feldolgozók megnövekedett felhalmozódását, amelyek a rendelkezésre álló memória-támogatást igényelték. Ez hatással van a SQL Database teljesítményére. | A rendelkezésre álló memória-támogatást igénylő munkatársak statisztikaian jelentős mennyiségű időt várnak a memória kiosztására. Ez hatással van az adatbázis teljesítményére. |
-| [Zárolási](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | A rendszer túl sok adatbázis-zárolást észlelt a SQL Database teljesítményének befolyásolása érdekében. | A rendszer túlzott adatbázis-zárolást észlelt, ami hatással volt az adatbázis teljesítményére. |
-| [Megnövekedett MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | A maximális párhuzamossági lehetőség (MAXDOP) módosult a lekérdezés végrehajtásának hatékonyságát érintően. Ez hatással van a SQL Database teljesítményére. | A maximális párhuzamossági lehetőség (MAXDOP) módosult a lekérdezés végrehajtásának hatékonyságát érintően. Ez hatással van az adatbázis teljesítményére. |
-| [Pagelatch-tartalom](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Több szál párhuzamosan próbálkozik ugyanahhoz a memóriában tárolt adatpuffer-lapok eléréséhez, ami megnöveli a várakozási időt, és pagelatch-tartalmat okoz. Ez hatással van az SQL-adatbázis teljesítményére. | Több szál párhuzamosan próbálkozik ugyanahhoz a memóriában tárolt adatpuffer-lapok eléréséhez, ami megnöveli a várakozási időt, és pagelatch-tartalmat okoz. Ez hatással van az adatbázis teljesítményére. |
-| [Hiányzó index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | A rendszer hiányzó indexet észlelt az SQL Database teljesítményének befolyásolására. | A rendszer hiányzó indexet észlelt, ami hatással volt az adatbázis teljesítményére. |
-| [Új lekérdezés](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | A rendszer a teljes SQL Database teljesítményt érintő új lekérdezést észlelt. | A rendszer új lekérdezést észlelt, ami hatással volt az adatbázis általános teljesítményére. |
-| [Megnövekedett várakozási statisztika](sql-database-intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) | A rendszer megnövelte az adatbázis-várakozási időt, ami hatással volt az SQL Database teljesítményére. | A megnövelt adatbázis-várakozási idő észlelhető az adatbázis teljesítményére. |
-| [TempDB-tartalom](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Több szál megpróbál hozzáférni ugyanahhoz a TempDB-erőforráshoz, ami szűk keresztmetszetet okoz. Ez hatással van a SQL Database teljesítményére. | Több szál megpróbál hozzáférni ugyanahhoz a TempDB-erőforráshoz, ami szűk keresztmetszetet okoz. Ez hatással van az adatbázis teljesítményére. |
-| [A rugalmas készlet DTU hiánya](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | A rugalmas készletben rendelkezésre álló Edtu hiánya SQL Database teljesítményt érint. | A felügyelt példányhoz nem érhető el, mert a virtuális mag modellt használja. |
-| [Regressziós terv](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Az új terv vagy egy meglévő csomag munkaterhelésének változása észlelhető. Ez hatással van a SQL Database teljesítményére. | Az új terv vagy egy meglévő csomag munkaterhelésének változása észlelhető. Ez hatással van az adatbázis teljesítményére. |
-| [Adatbázis hatókörű konfigurációs értékének változása](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | A rendszer a SQL Database konfigurációs változását észlelte az adatbázis teljesítményére. | A rendszer észlelte az adatbázis konfigurációs változását, ami hatással volt az adatbázis teljesítményére. |
-| [Lassú ügyfél](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | A lassú alkalmazás-ügyfél nem tudja elég gyorsan felhasználni az adatbázis kimenetét. Ez hatással van a SQL Database teljesítményére. | A lassú alkalmazás-ügyfél nem tudja elég gyorsan felhasználni az adatbázis kimenetét. Ez hatással van az adatbázis teljesítményére. |
-| [Díjszabási szintek visszalépése](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | A díjszabási szintek visszalépési művelete csökkent a rendelkezésre álló erőforrásokat. Ez hatással van a SQL Database teljesítményére. | A díjszabási szintek visszalépési művelete csökkent a rendelkezésre álló erőforrásokat. Ez hatással van az adatbázis teljesítményére. |
+| [Erőforráskorlátok elérése](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | A figyelt előfizetésen elérhető erőforrások (DDO-k), adatbázis-feldolgozó szálak vagy a figyelt előfizetésen elérhető adatbázis-bejelentkezési munkamenetek felhasználása elérte a korlátokat. Ez hatással van az SQL Database teljesítményére. | A CPU-erőforrások felhasználása eléri a felügyelt példány korlátait. Ez hatással van az adatbázis teljesítményére. |
+| [A munkaterhelés növelése](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | A munkaterhelés növelése vagy a munkaterhelés folyamatos felhalmozódása az adatbázisban észlelt. Ez hatással van az SQL Database teljesítményére. | A rendszer a munkaterhelés növekedését észlelte. Ez hatással van az adatbázis teljesítményére. |
+| [Memórianyomás](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | A memóriatámogatást kérő dolgozóknak statisztikailag szignifikáns mennyiségű memóriafoglalásra kell várniuk, vagy a memóriatámogatást kérő dolgozók megnövekedett felhalmozódása létezik. Ez hatással van az SQL Database teljesítményére. | A memóriatámogatást kérő dolgozók statisztikailag szignifikáns ideig várják a memórialefoglalásokat. Ez hatással van az adatbázis teljesítményére. |
+| [Zárolás](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | A rendszer az SQL-adatbázis teljesítményét befolyásoló túlzott adatbáziszárolást észlelt. | A rendszer túlzott adatbázis-zárolást észlelt, ami hatással volt az adatbázis teljesítményére. |
+| [Megnövekedett MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | A párhuzamosság maximális foka (MAXDOP) megváltozott, ami hatással van a lekérdezés végrehajtási hatékonyságára. Ez hatással van az SQL Database teljesítményére. | A párhuzamosság maximális foka (MAXDOP) megváltozott, ami hatással van a lekérdezés végrehajtási hatékonyságára. Ez hatással van az adatbázis teljesítményére. |
+| [Pagelatch versengés](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Több szál egyidejűleg próbál hozzáférni ugyanazokhoz a memórián belüli adatpufferlapokhoz, ami megnövekedett várakozási időt eredményez, és pagelatch versengést okoz. Ez hatással van az SQL-adatbázis teljesítményére. | Több szál egyidejűleg próbál hozzáférni ugyanazokhoz a memórián belüli adatpufferlapokhoz, ami megnövekedett várakozási időt eredményez, és pagelatch versengést okoz. Ez hatással van az adatbázis teljesítményére. |
+| [Hiányzó index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | A rendszer az SQL-adatbázis teljesítményét befolyásoló hiányzó indexet észlelt. | A rendszer hiányzó indexet észlelt, amely hatással volt az adatbázis teljesítményére. |
+| [Új lekérdezés](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | A rendszer új lekérdezést észlelt, amely hatással volt az SQL Database általános teljesítményére. | A rendszer új lekérdezést észlelt, amely hatással volt az adatbázis általános teljesítményére. |
+| [Megnövekedett várakozási statisztika](sql-database-intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) | A rendszer az SQL-adatbázis teljesítményét befolyásoló megnövekedett adatbázis-várakozási időket észlelt. | A rendszer az adatbázis teljesítményét befolyásoló megnövekedett adatbázis-várakozási időket észlelt. |
+| [TempDB-versengés](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Több szál próbál hozzáférni ugyanahhoz a TempDB-erőforráshoz, ami szűk keresztmetszetet okoz. Ez hatással van az SQL Database teljesítményére. | Több szál próbál hozzáférni ugyanahhoz a TempDB-erőforráshoz, ami szűk keresztmetszetet okoz. Ez hatással van az adatbázis teljesítményére. |
+| [Rugalmas medence DTU hiány](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | A rugalmas készletben rendelkezésre álló eD-k hiánya hatással van az SQL Database teljesítményére. | A felügyelt példány nem érhető el, mert virtuálismag-modellt használ. |
+| [Regresszió simára tervezése](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Új terv, vagy egy meglévő terv munkaterhelésének változása történt. Ez hatással van az SQL Database teljesítményére. | Új terv, vagy egy meglévő terv munkaterhelésének változása történt. Ez hatással van az adatbázis teljesítményére. |
+| [Adatbázis-hatókörrel kapcsolatos konfigurációs érték módosítása](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | A rendszer az SQL-adatbázis konfigurációs módosítását észlelte, amely hatással volt az adatbázis teljesítményére. | A rendszer az adatbázis teljesítményét befolyásoló konfigurációs módosítást észlelt az adatbázisban. |
+| [Lassú ügyfél](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | A lassú alkalmazásügyfél nem tudja elég gyorsan felhasználni az adatbázisból származó kimenetet. Ez hatással van az SQL Database teljesítményére. | A lassú alkalmazásügyfél nem tudja elég gyorsan felhasználni az adatbázisból származó kimenetet. Ez hatással van az adatbázis teljesítményére. |
+| [Tarifacsomag visszaminősítése](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Tarifacsomag-visszaminősítési művelet csökkent a rendelkezésre álló erőforrások. Ez hatással van az SQL Database teljesítményére. | Tarifacsomag-visszaminősítési művelet csökkent a rendelkezésre álló erőforrások. Ez hatással van az adatbázis teljesítményére. |
 
 > [!TIP]
-> SQL Database folyamatos teljesítményének optimalizálása érdekében engedélyezze [Azure SQL Database automatikus finomhangolását](sql-database-automatic-tuning.md). A SQL Database beépített intelligencia egyedi funkciója folyamatosan figyeli az SQL-adatbázist, automatikusan összehangolja az indexeket, és alkalmazza a lekérdezés-végrehajtási terv helyesbítéseit.
+> Az SQL Database folyamatos teljesítményoptimalizálásához engedélyezze az [Azure SQL Database automatikus hangolását.](sql-database-automatic-tuning.md) Az SQL Database beépített intelligenciájának ez az egyedülálló funkciója folyamatosan figyeli az SQL-adatbázist, automatikusan beállítja az indexeket, és lekérdezés-végrehajtási terv-javításokat alkalmaz.
 >
 
-A következő szakasz a észlelhető teljesítményi mintákat ismerteti részletesebben.
+A következő szakasz részletesebben ismerteti a kimutatható teljesítménymintákat.
 
-## <a name="reaching-resource-limits"></a>Erőforrás-korlátok elérése
-
-### <a name="what-is-happening"></a>mi történik
-
-Ez a észlelhető teljesítményi minta ötvözi a rendelkezésre álló erőforrás-korlátok, a munkavégző korlátok és a munkamenet-korlátok eléréséhez kapcsolódó teljesítménnyel kapcsolatos problémákat. A probléma észlelése után a diagnosztikai napló leírás mezőjében látható, hogy a teljesítménnyel kapcsolatos probléma erőforrás-, feldolgozó vagy munkamenet-korlátokhoz kapcsolódik-e.
-
-A SQL Database erőforrásait általában [DTU](sql-database-what-is-a-dtu.md) vagy [virtuális mag](sql-database-service-tiers-vcore.md) -erőforrásoknak nevezzük. A rendszer felismeri az erőforrás-korlátok elérésének mintáját, ha a rendszer az észlelt lekérdezési teljesítmény romlását okozza a mért erőforrás-korlátok bármelyikének elérésekor.
-
-A munkamenet-korlátok erőforrás az SQL Database-ben elérhető egyidejű bejelentkezések számát jelöli. Ezt a teljesítménytesztet akkor ismeri fel a rendszer, ha az SQL-adatbázisokhoz csatlakozó alkalmazások megkaptak a rendelkezésre álló párhuzamos bejelentkezések számát az adatbázisba. Ha az alkalmazások az adatbázison elérhetőnél több munkamenetet próbálnak használni, a rendszer a lekérdezési teljesítményt érinti.
-
-A feldolgozói korlátok elérése egy konkrét eset az erőforrás-korlátok elérésekor, mivel a rendelkezésre álló munkavégzők nem számítanak bele a DTU vagy a virtuális mag-felhasználásba. Az adatbázis-feldolgozói korlátok elérése az erőforrás-specifikus várakozási idő emelkedését okozhatja, ami a lekérdezés teljesítményének romlását eredményezi.
-
-### <a name="troubleshooting"></a>Hibaelhárítás
-
-A diagnosztikai napló kimenete lekérdezési kivonatokat jelenít meg, amelyek hatással voltak a teljesítményre és az erőforrás-felhasználási arányra. Ezt az információt kiindulási pontként használhatja az adatbázis-számítási feladatok optimalizálásához. Az indexek hozzáadásával különösen optimalizálhatja a teljesítmény romlását befolyásoló lekérdezéseket. Vagy optimalizálhatja az alkalmazásokat még a számítási feladatok eloszlásával is. Ha nem tudja csökkenteni a munkaterheléseket, vagy optimalizálásokat hajt végre, érdemes lehet növelni az SQL Database-előfizetés díjszabási szintjét, hogy növelje az elérhető erőforrások mennyiségét.
-
-Ha elérte az elérhető munkamenet-korlátokat, az alkalmazások optimalizálásához csökkentse az adatbázisba való bejelentkezések számát. Ha nem tudja csökkenteni az alkalmazásaiból az adatbázisba való bejelentkezések számát, érdemes lehet növelni az adatbázis díjszabási szintjét. Az adatbázist több adatbázisra is feloszthatja és áthelyezheti kiegyensúlyozottabb számítási feladatok elosztása érdekében.
-
-A munkamenet-korlátok feloldásával kapcsolatos további javaslatokért tekintse meg a következő témakört: [hogyan kezelheti SQL Database maximális bejelentkezések korlátozásait](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). A kiszolgálók és az előfizetési szintek korlátaival kapcsolatos információkért lásd: [SQL Database-kiszolgálók erőforrás-korlátainak áttekintése](sql-database-resource-limits-database-server.md) .
-
-## <a name="workload-increase"></a>Munkaterhelés növekedése
+## <a name="reaching-resource-limits"></a>Erőforráskorlátok elérése
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a teljesítményi minta a munkaterhelés növekedésével, illetve a számítási feladatok felhalmozása által okozott problémákat azonosítja.
+Ez a észlelhető teljesítményminta egyesíti a teljesítmény problémák, amelyek a rendelkezésre álló erőforrás-korlátok elérése, a dolgozói korlátok és a munkamenet korlátok. A teljesítményprobléma észlelése után a diagnosztikai napló leíró mezője jelzi, hogy a teljesítményprobléma erőforrás-, dolgozói vagy munkamenet-korlátokhoz kapcsolódik-e.
 
-Ez az észlelés több mérőszám kombinációján keresztül történik. A mért alapszintű mérőszám a számítási feladatok növekedését észleli a korábbi számítási feladatokhoz képest. Az észlelés másik formája az aktív munkavégző szálak nagy növekedésének mérésén alapul, amely elég nagy a lekérdezés teljesítményének befolyásolásához.
+Az SQL Database-erőforrások általában [DTU-](sql-database-what-is-a-dtu.md) vagy [virtuálismag-erőforrásokra](sql-database-service-tiers-vcore.md) hivatkoznak. Az erőforrás-korlátok elérésének mintáját a rendszer felismeri, ha a lekérdezés teljesítményének csökkenését a mért erőforrás-korlátok bármelyikének elérése okozza.
 
-Súlyosabb formában a munkaterhelés folyamatosan felhalmozódik, mert az SQL-adatbázis nem képes kezelni a munkaterhelést. Ennek eredményeként a munkaterhelés felhalmozása folyamatosan növekszik. Ennek a feltételnek az az ideje, hogy a munkaterhelés a végrehajtásra vár. Ez az állapot az egyik legsúlyosabb adatbázis-teljesítménnyel kapcsolatos problémát jelenti. Ez a probléma a megszakított munkaszálak számának növekedésének figyelésével észlelhető.
+A munkamenet korlátozza az erőforrást az SQL-adatbázisba rendelkezésre álló egyidejű bejelentkezések számát jelöli. Ezt a teljesítménymintát akkor ismeri fel a rendszer, ha az SQL-adatbázisokhoz kapcsolódó alkalmazások elérték az adatbázishoz rendelkezésre álló egyidejű bejelentkezések számát. Ha az alkalmazások az adatbázisban elérhetőnél több munkamenetet próbálnak használni, az hatással van a lekérdezés teljesítményére.
+
+A dolgozói korlátok elérése az erőforráskorlátok elérésének konkrét esete, mivel az elérhető dolgozók nem számítanak a DTU- vagy a virtuálismag-használatban. Az adatbázis dolgozói korlátainak elérése erőforrás-specifikus várakozási idők növekedését okozhatja, ami a lekérdezés teljesítményének csökkenését eredményezheti.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló kiírja a végrehajtással megnövelt lekérdezések számát, valamint a lekérdezés lekérdezési kivonatát, amely a legnagyobb mértékben járul hozzá a munkaterhelés növekedéséhez. Ezeket az információkat kiindulási pontként használhatja a munkaterhelés optimalizálásához. A számítási feladatok növekedésének legnagyobb közreműködője azonosított lekérdezés különösen hasznos a kiindulási pontként.
+A diagnosztikai napló kimenetek lekérdezési kikeresés, amely hatással volt a teljesítmény és az erőforrás-felhasználás százalékos. Ezt az információt kiindulási pontként használhatja az adatbázis-munkaterhelés optimalizálásához. Különösen optimalizálhatja a lekérdezéseket, amelyek befolyásolják a teljesítménycsökkenést indexek hozzáadásával. Vagy optimalizálhatja az alkalmazásokat egy egyenletesebb munkaterhelés-elosztással. Ha nem tudja csökkenteni a számítási feladatokat, vagy optimalizálást, fontolja meg az SQL-adatbázis-előfizetés tarifacsomag növelését a rendelkezésre álló erőforrások mennyiségének növelése érdekében.
 
-Érdemes lehet egyenletesen kiosztani a munkaterheléseket az adatbázisra. Az indexek hozzáadásával érdemes lehet optimalizálni a teljesítményt befolyásoló lekérdezést. A számítási feladatokat több adatbázis között is eloszthatja. Ha ezek a megoldások nem lehetségesek, érdemes lehet növelni az SQL Database-előfizetés díjszabási szintjét, hogy növelje az elérhető erőforrások mennyiségét.
+Ha elérte a rendelkezésre álló munkamenet-korlátokat, optimalizálhatja az alkalmazásokat az adatbázisba bekövetkező bejelentkezések számának csökkentésével. Ha nem tudja csökkenteni az alkalmazásokból az adatbázisba történő bejelentkezések számát, fontolja meg az adatbázis tarifacsomagjának növelését. Vagy feloszthatja és áthelyezheti az adatbázist több adatbázisba a kiegyensúlyozottabb számítási feladatok elosztása érdekében.
+
+A munkamenet-korlátok feloldására vonatkozó további javaslatokról az [SQL Database maximális bejelentkezési korlátainak kezelése című témakörben található.](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/) A kiszolgálói és előfizetési szintekkorlátairól az [SQL Database-kiszolgálón lévő erőforráskorlátok áttekintése](sql-database-resource-limits-database-server.md) című témakörben olvashat.
+
+## <a name="workload-increase"></a>Munkaterhelés növelése
+
+### <a name="what-is-happening"></a>mi történik
+
+Ez a teljesítményminta azonosítja a munkaterhelés növekedése által okozott problémákat, vagy súlyosabb formában a munkaterhelés-halmozás.
+
+Ez az észlelés több metrika kombinációjával történik. A mért alapvető metrika a munkaterhelés növekedését észleli a korábbi számítási feladatok alapértékéhez képest. Az észlelés másik formája az aktív munkaszálak olyan nagy növekedésének mérésén alapul, amely elég nagy ahhoz, hogy befolyásolja a lekérdezés teljesítményét.
+
+A súlyosabb formában a munkaterhelés előfordulhat, hogy folyamatosan felhalmozódnak, mivel az SQL-adatbázis nem képes kezelni a számítási feladatokat. Az eredmény egy folyamatosan növekvő számítási feladatok mérete, amely a munkaterhelés halmozási feltétel. Ennek a feltételnek köszönhetően a számítási feladatok a végrehajtásra vár. Ez a feltétel az egyik legsúlyosabb adatbázis-teljesítménnyel kapcsolatos problémát jelenti. Ezt a problémát a megszakított munkaszálak számának növekedése figyeli.
+
+### <a name="troubleshooting"></a>Hibaelhárítás
+
+A diagnosztikai napló kimeneti a lekérdezések száma, amelyek végrehajtása nőtt, és a lekérdezés kivonata a lekérdezés a legnagyobb mértékben járul hozzá a számítási feladatok növekedését. Ezt az információt kiindulási pontként használhatja a munkaterhelés optimalizálásához. A lekérdezés azonosított, mint a legnagyobb hozzájáruló a munkaterhelés növelése különösen hasznos kiindulási pontként.
+
+Érdemes lehet a számítási feladatok egyenletesebben elosztani az adatbázisba. Fontolja meg a teljesítményt befolyásoló lekérdezés optimalizálását indexek hozzáadásával. Azt is előfordulhat, hogy a számítási feladatok között több adatbázis között. Ha ezek a megoldások nem lehetségesek, fontolja meg az SQL-adatbázis-előfizetés tarifacsomag jának növelését a rendelkezésre álló erőforrások mennyiségének növelése érdekében.
 
 ## <a name="memory-pressure"></a>Memóriaterhelés
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a teljesítményteszt azt jelzi, hogy a jelenlegi adatbázis-teljesítmény romlása a memória nyomása okozta, vagy a memóriában felhalmozott mennyiségű, az elmúlt hét nap során kiinduló alapkonfigurációhoz képest.
+Ez a teljesítményminta a memórianyomás által okozott jelenlegi adatbázis-teljesítmény romlását jelzi, vagy annak súlyosabb formájában memóriahalmozási állapot, az elmúlt hét napos teljesítményalapkonfigurációhoz képest.
 
-A memória terhelése egy olyan teljesítménnyel kapcsolatos feltételt jelöl, amelyben nagy számú munkavégző szál igényel memóriát az SQL Database-ben. A nagy mennyiség nagy memória-kihasználtsági feltételt okoz, amelyben az SQL-adatbázis nem képes hatékonyan lefoglalni a memóriát az azt kérelmező összes feldolgozónak. A probléma egyik leggyakoribb oka az, hogy az SQL Database számára elérhető memória mennyisége az egyik oldalon van. Másfelől a munkaterhelés növekedése a munkaszálak és a memória terhelésének növekedését eredményezi.
+A memórianyomás olyan teljesítményfeltételt jelöl, amelyben nagy számú munkavégző szál igényel memóriatámogatást az SQL-adatbázisban. A nagy hangerő magas memóriakihasználtsági feltételt okoz, amelyben az SQL-adatbázis nem tudja hatékonyan lefoglalni a memóriát az azt kérő összes dolgozó számára. A probléma egyik leggyakoribb oka egyrészről az SQL-adatbázis számára rendelkezésre álló memória mennyiségével kapcsolatos. Másrészt a munkaterhelés növekedése okozza a munkaszálak növekedését és a memórianyomást.
 
-A memória terhelésének súlyosabb formája a memória felhalmozása. Ez az állapot azt jelzi, hogy a feldolgozói szálak nagyobb számú memóriát igényelnek, mint a memóriát kiadó lekérdezések. A memória-támogatást kérő munkavégző szálak száma folyamatosan növekszik (halmozása), mert az SQL Database motorja nem tudja megfelelően kiosztani a memóriát ahhoz, hogy megfeleljen az igénynek. A memóriát felhalmozó feltétel a leggyakoribb adatbázis-teljesítménnyel kapcsolatos problémák egyikét jelenti.
+A súlyosabb formája a memória nyomás a memória halom-up állapotban. Ez a feltétel azt jelzi, hogy a munkaszálak nagyobb száma igényel memóriatámogatást, mint ahány lekérdezés felszabadítja a memóriát. A memóriatámogatást kérő munkaszálak száma is folyamatosan növekedhet (halmozódhat fel), mert az SQL-adatbázis-motor nem tudja elég hatékonyan lefoglalni a memóriát az igény kielégítéséhez. A memóriahalmozási állapot az adatbázis egyik legsúlyosabb teljesítményproblémája.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló kimenete a memória-objektum tárolására szolgáló adatokat a jegyző (azaz a munkaszál) számára a nagy memóriahasználat és a kapcsolódó időbélyegek legmagasabb okának jelöli. Ezeket az információkat a hibaelhárítás alapjául használhatja.
+A diagnosztikai napló a memóriaobjektum-tároló adatait a magas memóriahasználat és a megfelelő időbélyegzők legmagasabb okaként megjelölt bélyegzővel (munkaszál) adja ki. Ezt az információt használhatja a hibaelhárítás alapjaként.
 
-A legmagasabb memóriahasználat használatával optimalizálhatja vagy eltávolíthatja a titkárokkal kapcsolatos lekérdezéseket. Azt is megteheti, hogy nem kérdezi le azokat az adatlekérdezéseket, amelyeket nem kíván használni. A bevált gyakorlat az, hogy mindig a WHERE záradékot használják a lekérdezésekben. Emellett azt javasoljuk, hogy nem fürtözött indexeket hozzon létre az adatok kereséséhez.
+Optimalizálhatja vagy eltávolíthatja a legmagasabb memóriahasználattal rendelkező ügyintézőkkel kapcsolatos lekérdezéseket. Azt is ellenőrizheti, hogy nem olyan adatokat kérdez-e le, amelyeket nem kíván használni. Helyes gyakorlat, hogy mindig használja a WHERE záradékot a lekérdezések. Emellett azt javasoljuk, hogy hozzon létre nem fürtözött indexek az adatok kereséséhez, nem pedig beszkutat.
 
-Emellett csökkentheti a munkaterhelést, ha több adatbázisra optimalizálja vagy terjeszti azt. A számítási feladatokat több adatbázis között is eloszthatja. Ha ezek a megoldások nem lehetségesek, érdemes lehet növelni az SQL Database-előfizetés díjszabási szintjét, hogy növelje az adatbázis számára elérhető memória-erőforrások mennyiségét.
+A számítási feladatok csökkentése több adatbázison keresztül történő optimalizálásával vagy elosztásával is csökkentheti a munkaterhelést. Vagy eloszthatja a számítási feladatok között több adatbázisok között. Ha ezek a megoldások nem lehetségesek, fontolja meg az SQL-adatbázis-előfizetés tarifacsomagjának növelését az adatbázis számára rendelkezésre álló memória-erőforrások mennyiségének növelése érdekében.
 
-További hibaelhárítási javaslatokért lásd [: memória-ösztöndíjak meditáció: a titokzatos SQL Server memória fogyasztója sok névvel](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994).
+További hibaelhárítási javaslatokat a [Memória a meditáció: A titokzatos SQL Server memóriafogyasztó sok névvel](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994)című témakörben ismer.
 
-## <a name="locking"></a>Zárolási
+## <a name="locking"></a>Zárolás
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a teljesítményteszt azt jelzi, hogy a jelenlegi adatbázis-teljesítmény romlása az elmúlt hét nap során felderített nagy mennyiségű adatbázis-zárolást mutatja.
+Ez a teljesítményminta az aktuális adatbázis-teljesítmény romlását jelzi, amelyben a rendszer túlzott adatbázis-zárolást észlel az előző hét napos teljesítményalapkonfigurációhoz képest.
 
-A modern RDBMS a zárolás elengedhetetlen a többszálas rendszerek megvalósításához, amelyekben a teljesítmény maximalizálható azáltal, hogy több egyidejű feldolgozót és párhuzamos adatbázis-tranzakciót futtat, ahol lehetséges. A zárolás ebben a kontextusban a beépített hozzáférési mechanizmusra vonatkozik, amelyben csak egyetlen tranzakció férhet hozzá a szükséges sorokhoz, lapokhoz, táblákhoz és fájlokhoz, és nem versenyez más erőforrásokkal kapcsolatos tranzakciókkal. Ha az erőforrásokat zároló tranzakciót velük együtt végzik, a rendszer felszabadítja az erőforrások zárolását, ami lehetővé teszi, hogy más tranzakciók hozzáférjenek a szükséges erőforrásokhoz. További információ a zárolásról: [az adatbázismotor zárolása](https://msdn.microsoft.com/library/ms190615.aspx).
+A modern RDBMS-ben a zárolás elengedhetetlen a többszálas rendszerek megvalósításához, amelyekben a teljesítményt több egyidejű dolgozó és párhuzamos adatbázis-tranzakciók futtatásával maximalizálják, ahol lehetséges. Ebben a környezetben a zárolás a beépített hozzáférési mechanizmusra utal, amelyben csak egyetlen tranzakció férhet hozzá kizárólag a szükséges sorokhoz, lapokhoz, táblákhoz és fájlokhoz, és nem versenyezhet az erőforrások másik tranzakciójával. Amikor a tranzakció, amely zárolta az erőforrásokat használatra történik velük, a zárolás az erőforrások felszabadulnak, amely lehetővé teszi, hogy más tranzakciók a szükséges erőforrások eléréséhez. A zárolásról további információt [a Zárolás az adatbázis-motorban című témakörben talál.](https://msdn.microsoft.com/library/ms190615.aspx)
 
-Ha az SQL-motor által végrehajtott tranzakciók hosszabb ideig tartanak a használatra zárolt erőforrásokhoz való hozzáféréshez, ez a várakozási idő a munkaterhelés-végrehajtás teljesítményének lassulását okozza.
+Ha az SQL-motor által végrehajtott tranzakciók hosszabb ideig várnak a használatra zárolt erőforrások eléréséhez, ez a várakozási idő a számítási feladatok végrehajtási teljesítményének lassulását okozza.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló kimenete a hibaelhárítás alapjaként használható zárolási adatokat jeleníti meg. Elemezheti a jelentett letiltási lekérdezéseket, azaz a zárolási teljesítmény romlását bevezető lekérdezéseket, és eltávolíthatja őket. Bizonyos esetekben sikeres lehet a blokkoló lekérdezések optimalizálása.
+A diagnosztikai napló kimenetek zárolási részleteket, amelyek segítségével a hibaelhárítás alapjául szolgáló részleteket. Elemezheti a jelentett blokkoló lekérdezéseket, azaz a zárolási teljesítményromlást okozó lekérdezéseket, és eltávolíthatja azokat. Bizonyos esetekben előfordulhat, hogy sikeresen optimalizálja a blokkoló lekérdezéseket.
 
-A probléma enyhítésének legegyszerűbb és legbiztonságosabb módja a tranzakciók rövid és a legdrágább lekérdezések zárolási lábnyomának csökkentése. A műveletek nagy kötegeit kisebb műveletekre lehet bontani. Az ajánlott eljárás a lekérdezési zárolási lábnyom csökkentése a lekérdezés lehető leghatékonyabb megtételével. Csökkentse a nagy mennyiségű vizsgálatot, mivel azok egyre nagyobb eséllyel csökkentik a holtpontokat, és a teljes adatbázis-teljesítményt befolyásolhatják. A zárolást okozó azonosított lekérdezések esetén létrehozhat új indexeket, vagy hozzáadhat oszlopokat a meglévő indexhez, hogy elkerülje a tábla vizsgálatát.
+A probléma csökkentésének legegyszerűbb és legbiztonságosabb módja a tranzakciók röviden tartása és a legdrágább lekérdezések zárolási lábnyomának csökkentése. A műveletek nagy kötegét kisebb műveletekre bonthatja. Ajánlott eljárás, hogy csökkentse a lekérdezés zárolási lábnyomát azáltal, hogy a lekérdezés a lehető leghatékonyabb. Csökkentse a nagy beolvasásokat, mert növelik a holtpontok esélyét, és hátrányosan befolyásolják az adatbázis általános teljesítményét. A zárolást okozó azonosított lekérdezések esetén új indexeket hozhat létre, vagy oszlopokat adhat a meglévő indexhez, hogy elkerülje a táblázatvizsgálatokat.
 
-További javaslatokat a következő témakörben talál: az [SQL Server zárolásának feloldása által okozott blokkoló problémák megoldása](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+További javaslatok: [A zárolások eszkalációja által az SQL Server ben okozott blokkolási problémák megoldása című témakörben található.](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>Megnövekedett MAXDOP
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítményi minta azt a feltételt jelzi, amelyben egy kiválasztott lekérdezés-végrehajtási terv nagyobb mértékben párhuzamosan lett. A SQL Database lekérdezés-optimalizáló képes növelni a számítási feladatok teljesítményét azáltal, hogy a lekérdezéseket párhuzamosan hajtja végre, ahol lehetséges a dolgok felgyorsítása. Bizonyos esetekben a lekérdezéseket feldolgozó párhuzamos dolgozóknak több időt kell várniuk arra, hogy szinkronizálják és összevonják az eredményeket, mint a kevesebb párhuzamos feldolgozóval rendelkező lekérdezéseket, vagy akár bizonyos esetekben egyetlen munkaszálhoz képest.
+Ez a észlelhető teljesítményminta azt a feltételt jelzi, amelyben a kiválasztott lekérdezés-végrehajtási terv párhuzamos, mint kellett volna. Az SQL Database lekérdezés-optimalizáló növelheti a számítási feladatok teljesítményét a lekérdezések párhuzamos végrehajtásával, hogy gyorsítsa fel a dolgokat, ahol lehetséges. Bizonyos esetekben a lekérdezést feldolgozó párhuzamos dolgozók több időt töltenek egymásra az eredmények szinkronizálásával és egyesítésével, mint ha ugyanazt a lekérdezést kevesebb párhuzamos feldolgozóval hajtják végre, vagy akár bizonyos esetekben egyetlen munkaszálhoz képest.
 
-A szakértői rendszerek a jelenlegi adatbázis-teljesítményt elemzik az alapidőszakhoz képest. Azt határozza meg, hogy egy korábban futó lekérdezés lassabban fut-e, mert a lekérdezés végrehajtási terve sokkal párhuzamos, mint amilyennek lennie kell.
+A szakértői rendszer elemzi az aktuális adatbázis teljesítményét az alapkonfigurációs időszakhoz képest. Azt határozza meg, hogy egy korábban futó lekérdezés lassabban fut-e, mint korábban, mert a lekérdezés végrehajtási terve párhuzamosabb, mint amilyennek lennie kellene.
 
-A SQL Database MAXDOP-kiszolgáló konfigurációs beállításával szabályozható, hogy hány CPU-magot lehet párhuzamosan végrehajtani ugyanazzal a lekérdezéssel.
+Az SQL Database MAXDOP kiszolgálókonfigurációs beállításával szabályozható, hogy hány processzormag használható ugyanazon lekérdezés párhuzamos végrehajtásához.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló kimeneti lekérdezési kivonatai olyan lekérdezésekkel kapcsolatosak, amelyekhez a végrehajtás időtartama nagyobb, mint amennyinek a végrehajtása nagyobb volt. A napló a CXP várakozási idejét is megjeleníti. Ez az idő azt jelzi, hogy az egyes szervezők/koordinátorok szála (0. szál) arra vár, hogy az összes többi szálat befejezze az eredmények egyesítése előtt, és haladjon előre. Emellett a diagnosztikai napló kimenete a várakozási idő, ameddig a gyenge teljesítményű lekérdezések a végrehajtásra várnak. Ezeket az információkat a hibaelhárítás alapjául használhatja.
+A diagnosztikai napló kimeneti lekérdezési kihágások olyan lekérdezésekhez kapcsolódó, amelyek a végrehajtás időtartama nőtt, mert párhuzamosabbak voltak, mint kellett volna. A napló a CXP várakozási időket is kiadja. Ez az idő azt az időt jelöli, amikor egyetlen szervező/koordinátor szál (0. szál) arra vár, hogy az összes többi szál befejeződzön, mielőtt egyesítené az eredményeket és haladna előre. Emellett a diagnosztikai napló a gyenge teljesítményű lekérdezések által a végrehajtás során összességében várakozó várakozási időket adja ki. Ezt az információt használhatja a hibaelhárítás alapjaként.
 
-Először is optimalizálja vagy egyszerűsítse a komplex lekérdezéseket. Az ajánlott eljárás a hosszú batch-feladatok kisebbekre bontása. Emellett győződjön meg arról, hogy a lekérdezések támogatásához indexeket hozott létre. Azt is megteheti, hogy manuálisan érvényesíti a maximális mértékű párhuzamosságot (MAXDOP) egy olyan lekérdezéshez, amely gyenge végrehajtásként lett megjelölve. A művelet T-SQL használatával történő konfigurálásához lásd: [a MAXDOP-kiszolgáló konfigurációs beállításának konfigurálása](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
+Először optimalizálja vagy egyszerűsítse az összetett lekérdezéseket. Jó gyakorlat, hogy a hosszú kötegelt feladatokat kisebbfeladatokra bontják. Emellett győződjön meg arról, hogy a lekérdezések támogatásához létrehozott indexeket. Manuálisan is kényszerítheti a maximális párhuzamosság (MAXDOP) egy lekérdezés, amely meg jelölt e gyenge teljesítő. A művelet T-SQL használatával történő konfigurálásához olvassa [el a MAXDOP-kiszolgáló konfigurációs beállításának konfigurálása című témakört.](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)
 
-Ha a MAXDOP-kiszolgáló konfigurációs beállítását nullára (0) állítja be, akkor az alapértelmezett érték azt jelzi, hogy SQL Database az összes rendelkezésre álló logikai CPU-magot felhasználhatja, hogy egyetlen lekérdezés végrehajtásához integrálással a szálakat. A MAXDOP beállítása eggyel (1) azt jelzi, hogy egyetlen lekérdezés-végrehajtáshoz csak egy mag használható. A gyakorlatban ez azt jelenti, hogy a párhuzamosság ki van kapcsolva. Az adott esettől függően az adatbázishoz rendelkezésre álló magok és a diagnosztikai napló adatai alapján beállíthatja a MAXDOP beállítást a párhuzamos lekérdezés-végrehajtáshoz használt magok számára, amelyek megoldhatja a problémát az adott esetben.
+A MAXDOP-kiszolgáló konfigurációs beállításának alapértelmezett értékként nullára (0) való beállítása azt jelzi, hogy az SQL Database az összes rendelkezésre álló logikai PROCESSZORmagot használhatja a szálak párhuzamosítására egyetlen lekérdezés végrehajtásához. A MAXDOP beállítása egy (1) értékre azt jelzi, hogy egyetlen lekérdezés végrehajtásához csak egy mag használható. A gyakorlatban ez azt jelenti, hogy a párhuzamosság ki van kapcsolva. Az esetenkénti alapon, az adatbázis rendelkezésre álló magjaitól és a diagnosztikai naplóadataitól függően a MAXDOP-beállítást a párhuzamos lekérdezések végrehajtásához használt magok számára hangolhatja, amelyek megoldhatják a problémát az Ön esetében.
 
-## <a name="pagelatch-contention"></a>Pagelatch-tartalom
+## <a name="pagelatch-contention"></a>Pagelatch versengés
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a teljesítményteszt azt jelzi, hogy az adatbázis aktuális számítási feladatának romlása az elmúlt hét napos munkaterhelési alaptervhez képest a pagelatch-tartalom miatt történt.
+Ez a teljesítményminta azt jelzi, hogy az adatbázis aktuális számítási feladatok teljesítményromlása miatt pagelatch versengés az elmúlt hét napos számítási feladatok alapkonfigurációja.
 
-A zárolások az SQL Database által a többszálas küldés engedélyezéséhez használt könnyű szinkronizációs mechanizmusok. Garantálják az indexeket, az adatlapokat és az egyéb belső struktúrákat is tartalmazó memóriabeli struktúrák konzisztenciáját.
+A zárak az SQL Database által a többszálas sápítás engedélyezéséhez használt könnyű szinkronizálási mechanizmusok. Biztosítják az indexeket, adatlapokat és más belső struktúrákat tartalmazó memórián belüli struktúrák konzisztenciáját.
 
-Az SQL-adatbázisban számos típusú zárolás érhető el. Az egyszerűség kedvéért a puffer-Zárolások segítségével biztosítható a memóriában lévő lapok használata a pufferben. Az i/o-zárak a pufferben még be nem töltött lapok elleni védelemhez használhatók. Amikor az adatok bekerülnek a pufferbe, vagy egy oldalról beolvasják őket, a feldolgozói szálnak először egy puffer-zárolást kell beolvasnia az oldalhoz. Ha egy munkavégző szál olyan oldalhoz próbál hozzáférni, amely még nem érhető el a memóriában lévő puffer-készletben, akkor a szükséges információk a tárolóból való betöltéséhez i/o-kérés készül. Az események ezen eseménysorozat a teljesítmény romlásának súlyosabb formáját jelzi.
+Az SQL adatbázisban sokféle zár található. Az egyszerűség kedvéért a pufferzárak a pufferkészlet ben lévő memórialapok védelmére szolgálnak. Az IO-zárak a pufferkészletbe még be nem töltött oldalak védelmére szolgálnak. Amikor a pufferkészlet egyik oldalára ír vagy olvas adatokat, a munkaszálnak először pufferzárat kell beszereznie az oldalhoz. Amikor egy munkaszál olyan lapelérésére próbál, amely még nem érhető el a memórián belüli pufferkészletben, i/o-kérelem érkezik a szükséges adatok betöltéséhez a tárolóból. Ez az eseménysorozat a teljesítménycsökkenés súlyosabb formáját jelzi.
 
-A lap zárolásai akkor fordulnak elő, ha több szál párhuzamosan kísérli meg a zárolások beolvasását ugyanazon a memórián belüli struktúrában, ami megnövelt várakozási időt eredményez a lekérdezés végrehajtásához. A pagelatch IO-verseny esetén, ha adatokat kell elérni a tárterületről, ez a várakozási idő még nagyobb. Jelentős mértékben befolyásolhatja a munkaterhelés teljesítményét. A Pagelatch-tartalom a leggyakoribb forgatókönyv, amellyel a szálak egymásra várnak, és több CPU-rendszeren lévő erőforrásokkal versengenek.
+Az oldalzárak versengése akkor következik be, amikor egyidejűleg több szál is megpróbál zárat szerezni ugyanazon a memórián belüli struktúrán, ami nagyobb várakozási időt eredményez a lekérdezés végrehajtásához. Pagelatch IO-versengés esetén, ha az adatokat a tárolóból kell elérni, ez a várakozási idő még nagyobb. Ez jelentősen befolyásolhatja a számítási feladatok teljesítményét. Pagelatch versengés a leggyakoribb forgatókönyv a szálak vár egymásra, és versenyeznek az erőforrások több CPU-rendszerek.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló megjeleníti a pagelatch-tartalom részleteit. Ezeket az információkat a hibaelhárítás alapjául használhatja.
+A diagnosztikai napló kimenetek pagelatch versengés részleteit. Ezt az információt használhatja a hibaelhárítás alapjaként.
 
-Mivel a pagelatch a SQL Database belső vezérlési mechanizmusa, automatikusan meghatározza, hogy mikor kell használni őket. Az alkalmazásra vonatkozó döntések, beleértve a séma kialakítását, befolyásolhatják a pagelatch viselkedését a determinisztikus viselkedése miatt.
+Mivel a pagelatch az SQL Database belső vezérlőmechanizmusa, automatikusan meghatározza, hogy mikor kell használni őket. Az alkalmazásdöntései, beleértve a sématervezést is, befolyásolhatják a lapozat viselkedését a zárak determinisztikus viselkedése miatt.
 
-A zárolási tartalom kezelésére szolgáló egyik módszer egy szekvenciális index-kulcs lecserélése egy nem szekvenciális kulccsal, hogy egyenletesen terjesszen be lapkákat egy index tartományon belül. Az index egyik vezető oszlopa általában a számítási feladatokat arányos módon osztja el. Egy másik módszer a tábla particionálásának megfontolására. A particionált tábla számított oszlopával létrehozott kivonatoló particionálási séma a túlzott zárolások elleni támadás mérséklésének gyakori módszere. Pagelatch IO-tartalom esetén az indexek bemutatása segít enyhíteni a teljesítménnyel kapcsolatos problémát.
+A zárversengés kezelésének egyik módja, ha egy szekvenciális indexkulcsot nem szekvenciális kulcsra cserél, hogy a lapkák egyenletesen oszlassa el az indextartományt. Általában az index egyik vezető oszlopa arányosan osztja el a munkaterhelést. Egy másik megfontolandó módszer a táblaparticionálás. A kivonatos particionálási séma létrehozása egy particionált tábla számított oszlopával gyakori módszer a túlzott zárversengés csökkentésére. A pagelatch IO-versengés esetén az indexek bevezetése segít a teljesítményprobléma enyhítésében.
 
-További információkért lásd: a SQL Server (PDF-letöltés) zárolásának [diagnosztizálása és megoldása](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) .
+További információ: [A zárversengés diagnosztizálása és feloldása az SQL Server kiszolgálón](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (PDF letöltés).
 
 ## <a name="missing-index"></a>Hiányzó index
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a teljesítményteszt azt jelzi, hogy az aktuális adatbázis-munkaterhelés teljesítményének csökkenése az elmúlt hét napos alaptervhez képest hiányzó index miatt történt.
+Ez a teljesítményminta azt jelzi, hogy az adatbázis aktuális számítási feladatának teljesítményromlása a hiányzó index miatt az elmúlt hét napos alaptervhez képest.
 
-Az index a lekérdezések teljesítményének felgyorsítására szolgál. A táblázatos adatokat gyors hozzáférést biztosít a meglátogatni vagy beolvasott adatkészlet-lapok számának csökkentésével.
+Az index a lekérdezések teljesítményének felgyorsítására szolgál. Gyors hozzáférést biztosít a táblaadatokhoz azáltal, hogy csökkenti a meglátogatott vagy beolvasandó adatkészlet-oldalak számát.
 
-A teljesítmény romlását okozó lekérdezések azonosítása ezen észlelésen keresztül történik, amely esetében az indexek létrehozása hasznos lehet a teljesítmény szempontjából.
+A teljesítményromlást okozó konkrét lekérdezéseket ez az észlelés azonosítja, amelyek esetében az indexek létrehozása előnyös lenne a teljesítmény relevancia.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló kimeneti lekérdezési kivonatokat jelenít meg az azonosított lekérdezésekhez, amelyek hatással vannak a munkaterhelés teljesítményére. Ezeket a lekérdezéseket indexeket hozhat létre. Ezeket a lekérdezéseket optimalizálhatja vagy eltávolíthatja, ha azok nem szükségesek. A legjobb teljesítmény a nem használt adat lekérdezésének elkerülése.
+A diagnosztikai napló kimeneti lekérdezési kihágásai a számítási feladatok teljesítményét befolyásolólekérdezésekhez. Ezekhez a lekérdezésekhez indexeket hozhat létre. Optimalizálhatja vagy eltávolíthatja ezeket a lekérdezéseket is, ha nincs rájuk szükség. Egy jó teljesítmény gyakorlat, hogy ne kérdezzen adatokat, amelyek et nem használ.
 
 > [!TIP]
-> Tudta, hogy SQL Database beépített intelligencia automatikusan képes kezelni az adatbázisok legjobban teljesítő indexeit?
+> Tudta, hogy az SQL Database beépített intelligenciája automatikusan kezelheti az adatbázisok legjobban teljesítő indexeit?
 >
-> A SQL Database folyamatos teljesítményének optimalizálása érdekében javasoljuk, hogy engedélyezze [SQL Database automatikus finomhangolását](sql-database-automatic-tuning.md). A SQL Database beépített intelligencia egyedi funkciója folyamatosan figyeli az SQL-adatbázist, és automatikusan összehangolja és indexeket hoz létre az adatbázisaihoz.
+> Az SQL Database folyamatos teljesítményoptimalizálásához azt javasoljuk, hogy engedélyezze [az SQL Database automatikus hangolását.](sql-database-automatic-tuning.md) Az SQL Database beépített intelligenciájának ez az egyedülálló funkciója folyamatosan figyeli az SQL-adatbázist, és automatikusan hangolja és létrehozza az adatbázisok indexeit.
 >
 
 ## <a name="new-query"></a>Új lekérdezés
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a teljesítményi minta azt jelzi, hogy a rendszer egy új lekérdezést észlel, amely rosszul teljesít, és a munkaterhelési teljesítményt befolyásolja a hétéves teljesítményhez képest.
+Ez a teljesítményminta azt jelzi, hogy a rendszer olyan új lekérdezést észlel, amely rosszul teljesít, és befolyásolja a munkaterhelés teljesítményét a hétnapos teljesítményalapkonfigurációhoz képest.
 
-A jó teljesítményű lekérdezéseket néha nehéz feladatként lehet megírni. További információ a lekérdezések írásához: SQL- [lekérdezések írása](https://msdn.microsoft.com/library/bb264565.aspx). A meglévő lekérdezési teljesítmény optimalizálása: [lekérdezés finomhangolása](https://msdn.microsoft.com/library/ms176005.aspx).
+A jól teljesítő lekérdezés írása néha kihívást jelentő feladat lehet. A lekérdezések írásáról további információt az [SQL-lekérdezések írása](https://msdn.microsoft.com/library/bb264565.aspx)című témakörben talál. A lekérdezés teljesítményének optimalizálásához olvassa el a [Lekérdezés hangolása című témakört.](https://msdn.microsoft.com/library/ms176005.aspx)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló a lekérdezési kivonatokkal együtt legfeljebb két új, legnagyobb CPU-felhasználású lekérdezést eredményez. Mivel az észlelt lekérdezés hatással van a munkaterhelés teljesítményére, optimalizálhatja a lekérdezést. A bevált gyakorlat az, hogy csak a használni kívánt adatértékeket kéri le. Azt is javasoljuk, hogy használjon WHERE záradékkal rendelkező lekérdezéseket. Javasoljuk továbbá, hogy egyszerűsítse az összetett lekérdezéseket, és bontsa ki őket kisebb lekérdezésekre. Egy másik helyes gyakorlat a nagyméretű batch-lekérdezések kisebb batch-lekérdezésekre való bontása. Az új lekérdezések indexelése általában jó megoldás a teljesítménnyel kapcsolatos probléma mérséklésére.
+A diagnosztikai napló legfeljebb két új, leginkább cpu-fogyasztó lekérdezést, köztük a lekérdezési kihálásokat adja ki. Mivel az észlelt lekérdezés hatással van a számítási feladatok teljesítményére, optimalizálhatja a lekérdezést. Helyes gyakorlat, hogy csak a használandó adatokat olvassa be. Azt is javasoljuk, hogy a lekérdezések egy WHERE záradékkal. Azt is javasoljuk, hogy egyszerűsítse az összetett lekérdezéseket, és bontsa fel őket kisebb lekérdezésekre. Egy másik jó gyakorlat, hogy a nagy köteges lekérdezéseket kisebb kötegelt lekérdezésekre bontja. Az új lekérdezések indexeinek bevezetése általában jó gyakorlat a teljesítményprobléma csökkentésére.
 
-Vegye fontolóra [Azure SQL Database lekérdezési terheléselemző](sql-database-query-performance.md)használatát.
+Fontolja meg [az Azure SQL Database Query Performance Insight használatát.](sql-database-query-performance.md)
 
 ## <a name="increased-wait-statistic"></a>Megnövekedett várakozási statisztika
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítmény azt jelzi, hogy a munkaterhelés teljesítményének romlása, amelyben a rendszer a gyenge teljesítményű lekérdezéseket azonosítja az elmúlt hét napos számítási feladathoz képest.
+Ez a észlelhető teljesítményminta a számítási feladatok teljesítményének csökkenését jelzi, amelyben a gyenge teljesítményű lekérdezéseket azonosítja a rendszer az elmúlt hét napos számítási feladatok alapértékéhez képest.
 
-Ebben az esetben a rendszer nem tudja osztályozni a gyenge teljesítményt nyújtó lekérdezéseket bármely más szabványos észlelhető teljesítmény-kategóriába, de a regresszióért felelős várakozási statisztikát észlelte. Ezért a *megnövelt várakozási statisztikának*minősülő lekérdezéseknek tekinti őket, ahol a regresszióért felelős várakozási statisztika is elérhetővé válik.
+Ebben az esetben a rendszer nem tudja osztályozni a gyengén teljesítő lekérdezéseket más szabványos észlelhető teljesítménykategóriák alá, de észlelte a regresszióért felelős várakozási statisztikát. Ezért úgy véli, hogy a *lekérdezések megnövekedett várakozási statisztikák*, ahol a várakozási statisztika felelős a regresszió is ki vannak téve.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló az érintett lekérdezések megnövekedett várakozási idejének részleteivel és lekérdezési kivonatával kapcsolatos információkat jeleníti meg.
+A diagnosztikai napló az érintett lekérdezések megnövekedett várakozási időre vonatkozó részleteire és lekérdezési kijelentésekre vonatkozó információkat adja ki.
 
-Mivel a rendszer nem tudta sikeresen azonosítani a gyenge teljesítményű lekérdezések okát, a diagnosztikai információk jó kiindulási pont a manuális hibaelhárításhoz. Optimalizálhatja a lekérdezések teljesítményét. A bevált gyakorlat az, hogy csak a használni kívánt adatmennyiséget kell lekérnie, és leegyszerűsíteni és lebontani az összetett lekérdezéseket kisebbekre.
+Mivel a rendszer nem tudta azonosítani a gyenge teljesítményű lekérdezések kiváltó okát, a diagnosztikai információk jó kiindulópontot jelentenek a manuális hibaelhárításhoz. Optimalizálhatja ezeknek a lekérdezéseknek a teljesítményét. Egy jó gyakorlat, hogy csak a szükséges adatokat kell letölteni, és egyszerűsíteni és lebontani az összetett lekérdezéseket kisebbekre.
 
-A lekérdezési teljesítmény optimalizálásával kapcsolatos további információkért lásd: [lekérdezés finomhangolása](https://msdn.microsoft.com/library/ms176005.aspx).
+A lekérdezésteljesítmény optimalizálásáról a [Lekérdezés hangolása](https://msdn.microsoft.com/library/ms176005.aspx)című témakörben talál további információt.
 
-## <a name="tempdb-contention"></a>TempDB-tartalom
+## <a name="tempdb-contention"></a>TempDB-versengés
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítményi minta egy adatbázis-teljesítménnyel kapcsolatos feltételt jelez, amelyben a tempDB-erőforrásokhoz hozzáférő szálak szűk keresztmetszete létezik. (Ez az állapot nem kapcsolódik az IO-hoz.) A probléma tipikus forgatókönyve több száz egyidejű lekérdezés, amely az összes létrehozás, használat és eldobás kis tempDB-táblákat használja. A rendszer azt észlelte, hogy az azonos tempDB-táblákat használó egyidejű lekérdezések száma a megfelelő statisztikai jelentőséggel bővült, hogy az adatbázis teljesítménye az elmúlt hét napra hasonlítson.
+Ez a észlelhető teljesítményminta egy adatbázis-teljesítményfeltételt jelez, amelyben a tempDB-erőforrások elérésére próbáló szálak szűk keresztmetszete áll fenn. (Ez a feltétel nem i/o-val kapcsolatos.) A teljesítményprobléma tipikus forgatókönyve több száz egyidejű lekérdezés, amelyek mindegyike kis tempDB táblákat hoz létre, használ, majd eldob. A rendszer észlelte, hogy az azonos tempDB táblákat használó egyidejű lekérdezések száma nőtt, és elegendő statisztikai szignifikanciával az adatbázis teljesítményének befolyásolásához képest az előző hét napos teljesítményalapkonfigurációhoz képest.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló megjeleníti a tempDB-tartalom részleteit. Az információkat kiindulási pontként használhatja a hibaelhárításhoz. Az ilyen jellegű és a teljes munkaterhelés teljesítményének növelésére két dolgot kell követnie: az ideiglenes táblák használatát le is állíthatja. Használhatja a memóriára optimalizált táblákat is.
+A diagnosztikai napló a tempDB versengés részleteit adja létre. Az információkat a hibaelhárítás kiindulópontjaként használhatja. Két dolgot tehet az ilyen típusú versengés enyhítésére és a teljes munkaterhelés átviteli terhelésének növelésére: Leállíthatja az ideiglenes táblák használatát. A memóriaoptimalizált táblákat is használhatja.
 
-További információ: [Bevezetés a memóriába optimalizált táblákba](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables).
+További információt a [Bevezetés a memóriaoptimalizált táblákba című témakörben talál.](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)
 
-## <a name="elastic-pool-dtu-shortage"></a>A rugalmas készlet DTU hiánya
+## <a name="elastic-pool-dtu-shortage"></a>Rugalmas medence DTU hiány
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítményi minta az aktuális adatbázis-munkaterhelés teljesítményének csökkenését jelzi az elmúlt hét napos alaptervhez képest. Ez az előfizetése rugalmas készletében rendelkezésre álló DTU hiánya miatt.
+Ez a észlelhető teljesítményminta az aktuális adatbázis-számítási feladatok teljesítményének romlását jelzi az előző hét napos alaptervhez képest. Ez annak köszönhető, hogy az előfizetés rugalmas készletében kevés a rendelkezésre álló DRU-k.
 
-Az SQL Database erőforrásait általában [DTU-erőforrásoknak](sql-database-purchase-models.md#dtu-based-purchasing-model)nevezzük, amelyek a CPU és az IO (adat-és tranzakciónapló-i/o-erőforrások) kevert mértékét tartalmazzák. Az [Azure rugalmas készlet erőforrásai](sql-database-elastic-pool.md) a rendelkezésre álló eDTU-erőforrások készletét használják, amelyek több adatbázis között vannak elosztva méretezési célokra. Ha a rugalmas készletben rendelkezésre álló eDTU-erőforrások nem elég nagyok a készletben lévő összes adatbázis támogatásához, a rendszer a rugalmas készlet DTU-hiányát észleli.
+Az SQL Database erőforrásait általában [DTU-erőforrásoknak](sql-database-purchase-models.md#dtu-based-purchasing-model)nevezik, amelyek a CPU és az IO (adat- és tranzakciónapló IO) erőforrások kevert mértékéből állnak. [Az Azure rugalmas készlet erőforrásait](sql-database-elastic-pool.md) a rendelkezésre álló eDTU-erőforrások készleteként használják, amelyek et több adatbázis között osztanak meg méretezési célokra. Ha a rugalmas készletben elérhető eDTU-erőforrások nem elég nagyok ahhoz, hogy a készlet összes adatbázisát támogassák, a rendszer rugalmas készlet DTU-hiányteljesítmény-problémát észlel.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló a rugalmas készletre vonatkozó adatokat jeleníti meg, felsorolja a legfontosabb DTU-adatbázisokat, és a készletnek a legfelső szintű adatbázis által használt DTU százalékát adja meg.
+A diagnosztikai napló a rugalmas készlet adatait adja ki, felsorolja a legfelső DTU-fogyasztó adatbázisokat, és megadja a készlet a legfelső fogyasztó adatbázis által használt DTU bizonyos százalékát.
 
-Mivel ez a teljesítmény-feltétel több adatbázishoz kapcsolódik, és a rugalmas készletben lévő Edtu azonos készletét használja, a hibaelhárítási lépések a legnépszerűbb DTU-adatbázisokra összpontosítanak. Csökkentheti a munkaterhelést a legfelső szintű adatbázisokon, beleértve az ezen adatbázisokra vonatkozó legfelső szintű lekérdezések optimalizálását is. Emellett gondoskodhat arról is, hogy a nem használt adatlekérdezések ne legyenek lekérdezve. Egy másik megoldás, hogy optimalizálja az alkalmazásokat a legfelső DTU adatbázisokkal, és a számítási feladatokat több adatbázis között terjesztheti.
+Mivel ez a teljesítményfeltétel több adatbázishoz kapcsolódik, amelyek ugyanazt az eDTU-készletet használják a rugalmas készletben, a hibaelhárítási lépések a legfelső DTU-fogyasztó adatbázisokra összpontosítanak. Csökkentheti a munkaterhelést a legjobban fogyasztó adatbázisok, amely magában foglalja az adatbázisok on a legigényesebb lekérdezések optimalizálása. Azt is biztosíthatja, hogy ne kérdezzen le nem használt adatokat. Egy másik megközelítés az alkalmazások optimalizálása a felső DTU-fogyasztó adatbázisok használatával, és a számítási feladatok több adatbázis közötti újraelosztása.
 
-Ha a legfontosabb DTU-adatbázisokra vonatkozó aktuális számítási feladatok csökkentése és optimalizálása nem lehetséges, érdemes lehet növelni a rugalmas készlet díjszabási szintjét. Ez a növekedés a rugalmas készletben elérhető DTU növekedését eredményezi.
+Ha a felső DTU-igényes adatbázisok aktuális számítási feladatának csökkentése és optimalizálása nem lehetséges, fontolja meg a rugalmas készlet tarifacsomag növelését. Ez a növekedés a rugalmas készletben rendelkezésre álló DRU-k növekedését eredményezi.
 
-## <a name="plan-regression"></a>Regressziós terv
+## <a name="plan-regression"></a>Regresszió simára tervezése
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítményi minta azt a feltételt jelöli, amelyben a SQL Database az optimálisnál rosszabb lekérdezés-végrehajtási tervet használ. A legoptimálisabb terv általában nagyobb lekérdezés-végrehajtást eredményez, ami az aktuális és egyéb lekérdezéseknél több időt vár.
+Ez a észlelhető teljesítményminta olyan állapotot jelöl, amelyben az SQL Database egy optimálistól elmaradó lekérdezés-végrehajtási tervet használ. Az optimálistól elmaradó terv általában nagyobb lekérdezés-végrehajtást eredményez, ami hosszabb várakozási időt eredményez az aktuális és egyéb lekérdezések esetében.
 
-Az SQL Database a lekérdezés végrehajtási tervét határozza meg a lekérdezés végrehajtásának legkevesebb költsége alapján. Ahogy a lekérdezések és a munkaterhelések típusa megváltozik, néha a meglévő csomagok már nem hatékonyak, vagy talán SQL Database nem jó értékelést végeztek. A hibajavítások miatt a lekérdezés-végrehajtási tervek manuálisan is kényszeríthető.
+Az SQL-adatbázis határozza meg a lekérdezés végrehajtási terv a legkevesebb költséget a lekérdezés végrehajtása. A lekérdezések és a munkaterhelések típusának változásával néha a meglévő tervek már nem hatékonyak, vagy talán az SQL Database nem végzett jó értékelést. A javítás, lekérdezés végrehajtási tervek manuálisan kényszeríthető.
 
-Ez a észlelhető teljesítményi minta a terv regressziójának három különböző esetét ötvözi: az új terv regressziója, a régi terv regressziója és a meglévő csomagok megváltoztak a számítási feladatok. A terv regressziójának adott típusát a diagnosztikai napló *részletek* tulajdonsága adja meg.
+Ez a észlelhető teljesítményminta a terv regressziójának három különböző esetét egyesíti: új terv regresszió, régi tervregresszió és meglévő tervek módosított munkaterhelése. A terv regressziójának adott típusa a diagnosztikai napló *részletes* tulajdonsága tartalmazza.
 
-Az új terv regressziós állapota olyan állapotra utal, amelyben SQL Database elindítja egy új lekérdezés-végrehajtási terv végrehajtását, amely nem annyira hatékony, mint a régi csomag. A régi terv regressziós állapota arra az állapotra hivatkozik, amikor SQL Database vált a régi csomagra vonatkozó új, hatékonyabb terv használatával, ami nem annyira hatékony, mint az új csomag. A meglévő csomagok megváltoztak a számítási feladatok regressziója arra az állapotra utal, amelyben a régi és az új csomagok folyamatosan váltakoznak, és így az egyenleg nagyobb lesz a gyenge teljesítményű terv felé.
+Az új terv regressziós feltétele olyan állapot, amelyben az SQL Database megkezdi egy új lekérdezés-végrehajtási terv végrehajtását, amely nem olyan hatékony, mint a régi terv. A régi terv regressziós feltétel arra az állapotra utal, amikor az SQL Database egy új, hatékonyabb terv ről a régi tervre vált, ami nem olyan hatékony, mint az új terv. A meglévő tervek megváltozott számítási feladatok regresszióutal, hogy az állapot, amelyben a régi és az új tervek folyamatosan váltakoznak, az egyensúly megy inkább a rosszul teljesítő terv felé.
 
-A regressziós csomaggal kapcsolatos további információkért lásd: [Mi a terv regresszió a SQL Serverban?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/).
+A terv regresszióiról a [Mi a terv regressziója az SQL Server ben.](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló a lekérdezési kivonatokat, a jó csomag AZONOSÍTÓját, a rossz csomag AZONOSÍTÓját és a lekérdezési azonosítókat jeleníti meg. Ezeket az információkat a hibaelhárítás alapjául használhatja.
+A diagnosztikai napló kimenetele a lekérdezés kimondottak, jó tervazonosító, hibás tervazonosító és lekérdezésazonosítók. Ezt az információt használhatja a hibaelhárítás alapjaként.
 
-Elemezheti, hogy melyik terv jobban teljesíti az adott lekérdezéseket, amelyeket azonosíthat a megadott lekérdezési kivonatok használatával. Miután eldöntötte, hogy melyik csomag jobban működik a lekérdezéseknél, manuálisan kényszerítheti azt.
+Elemezheti, hogy melyik terv jobban teljesít az adott lekérdezésekhez, amelyeket azonosíthat a megadott lekérdezési kibékítményekkel. Miután megállapította, hogy melyik terv működik jobban a lekérdezésekhez, manuálisan kényszerítheti azt.
 
-További információ: [how SQL Server meggátolja a terv-regressziók megtervezését](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+További [információ: A terv regresszióinak megakadályozása című témakörből megtudhatja, hogy az SQL Server hogyan akadályozza meg a regressziók tervezését.](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)
 
 > [!TIP]
-> Tudta, hogy SQL Database beépített intelligenciával automatikusan kezelheti az adatbázisaihoz legjobban teljesítő lekérdezés-végrehajtási terveket?
+> Tudta, hogy az SQL Database beépített intelligenciája automatikusan képes kezelni az adatbázisok legjobban teljesítő lekérdezés-végrehajtási terveit?
 >
-> A SQL Database folyamatos teljesítményének optimalizálása érdekében javasoljuk, hogy engedélyezze [SQL Database automatikus finomhangolását](sql-database-automatic-tuning.md). A SQL Database beépített intelligencia egyedi funkciója folyamatosan figyeli az SQL-adatbázist, és automatikusan összehangolja és létrehozza az adatbázisokhoz legjobban teljesítő lekérdezés-végrehajtási terveket.
+> Az SQL Database folyamatos teljesítményoptimalizálásához azt javasoljuk, hogy engedélyezze [az SQL Database automatikus hangolását.](sql-database-automatic-tuning.md) Az SQL Database beépített intelligenciájának ez az egyedülálló funkciója folyamatosan figyeli az SQL-adatbázist, és automatikusan hangolja és létrehozza az adatbázisok legjobban teljesítő lekérdezés-végrehajtási terveit.
 >
 
-## <a name="database-scoped-configuration-value-change"></a>Adatbázis hatókörű konfigurációs értékének változása
+## <a name="database-scoped-configuration-value-change"></a>Adatbázis-hatókörrel konfigurált érték módosítása
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítményi minta azt a feltételt jelzi, hogy az adatbázis hatókörű konfigurációjának változása a teljesítmény-regressziót okozza, amelyet a rendszer az elmúlt hét napos adatbázis-munkaterhelési viselkedéshez képest észlelt. Ez a minta azt jelzi, hogy az adatbázis-hatókörű konfigurációban történt legutóbbi módosítás nem hasznosnak tűnik az adatbázis teljesítményére nézve.
+Ez a észlelhető teljesítményminta azt a feltételt jelzi, amelyben az adatbázis-hatókörű konfiguráció változása teljesítmény-regressziót okoz, amely az adatbázis korábbi hét napos számítási feladatának viselkedéséhez képest észlelhető. Ez a minta azt jelzi, hogy az adatbázis-hatókörű konfiguráció legutóbbi módosítása nem tűnik előnyösnek az adatbázis teljesítményére nézve.
 
-Az adatbázis-hatókörű konfiguráció módosításait minden egyes adatbázishoz be lehet állítani. Ezt a konfigurációt eseti alapon kell használni az adatbázis egyedi teljesítményének optimalizálása érdekében. Az egyes adatbázisokhoz a következő beállítások konfigurálhatók: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES és CLEAR PROCEDURE_CACHE.
+Az adatbázis hatókörrel végzett konfigurációs módosításai minden egyes adatbázishoz beállíthatók. Ezt a konfigurációt eseti alapon használjuk az adatbázis egyéni teljesítményének optimalizálásához. Minden egyes adatbázishoz a következő beállítások konfigurálhatók: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES és CLEAR PROCEDURE_CACHE.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló kiírja az adatbázis hatókörű konfigurációjának módosításait, amelyek a közelmúltban történtek, ami a teljesítmény romlását okozta a munkaterhelések előző hét napján. Visszaállíthatja az előző értékek konfigurációs módosításait. Az érték értéke a kívánt teljesítményszint eléréséig is beállítható. Az adatbázis-hatókör konfigurációs értékeit egy hasonló adatbázisból is átmásolhatja, amely kielégítő teljesítménnyel rendelkezik. Ha nem tudja elhárítani a teljesítményt, térjen át az alapértelmezett SQL Database alapértelmezett értékekre, és próbálja meg az alaptervtől kezdődően finomhangolást elvégezni.
+A diagnosztikai napló olyan adatbázis-hatókörrel végzett konfigurációs módosításokat hajt végre, amelyek a közelmúltban történtek, és amelyek teljesítménycsökkenést okoztak az előző hétnapos számítási feladat viselkedéséhez képest. A konfigurációs módosításokat visszaállíthatja az előző értékekre. Az értéket érték szerint is behangolhatja, amíg el nem éri a kívánt teljesítményszintet. Az adatbázis-hatókör konfigurációs értékeit megfelelő teljesítménnyel másolhatja egy hasonló adatbázisból. Ha nem tudja elhárítani a teljesítményt, térjen vissza az SQL Database alapértelmezett értékeihez, és próbálja meg finomítani az alapkonfigurációtól kezdve.
 
-Az adatbázis hatókörű konfigurációjának és a T-SQL szintaxisának a konfiguráció módosítására való optimalizálásával kapcsolatos további információkért lásd: az [adatbázis hatókörű konfigurációjának módosítása (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
+Az adatbázis-hatókörrel kapcsolatos konfiguráció és a T-SQL szintaxis optimalizálásáról a konfiguráció módosítása című témakörben talál további információt az [Adatbázis-hatókörrel (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx)című témakörben talál.
 
 ## <a name="slow-client"></a>Lassú ügyfél
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítményi minta azt jelzi, hogy az SQL Database-t használó ügyfél nem tudja felhasználni az adatbázis kimenetét olyan gyorsan, ahogy az adatbázis elküldi az eredményeket. Mivel SQL Database nem tárolja a futtatott lekérdezések eredményeit egy pufferben, lelassul, és megvárja, amíg az ügyfél a továbblépés előtt felhasználja a továbbított lekérdezési kimeneteket. Ez az állapot olyan hálózathoz is kapcsolódhat, amely nem elég gyors ahhoz, hogy az SQL-adatbázisból továbbítsa a kimeneteket a fogyasztó ügyfélnek.
+Ez a észlelhető teljesítményminta azt a feltételt jelzi, amelyben az SQL-adatbázist használó ügyfél nem tudja olyan gyorsan felhasználni az adatbázis kimenetét, mint az adatbázis az eredményeket. Mivel az SQL Database nem tárolja a végrehajtott lekérdezések eredményeit egy pufferben, lelassul, és megvárja, amíg az ügyfél felhasználja a továbbított lekérdezéskimeneteket a folytatás előtt. Ez a feltétel is lehet egy olyan hálózathoz, amely nem elég gyors ahhoz, hogy az SQL-adatbázis kimenetek továbbítására a fogyasztó ügyfél.
 
-Ez az állapot csak akkor jön létre, ha a rendszer a teljesítmény-regressziót észleli az adatbázis az elmúlt hét napi számítási feladatához képest. Ezt a problémát csak akkor észleli a rendszer, ha a teljesítmény statisztikailag jelentős romlása történik a korábbi teljesítmény-viselkedéshez képest.
+Ez a feltétel csak akkor jön létre, ha a rendszer teljesítményregressziót észlel az adatbázis korábbi hétnapos számítási feladatának viselkedéséhez képest. Ez a teljesítményprobléma csak akkor észlelhető, ha statisztikailag szignifikáns teljesítménycsökkenés következik be a korábbi teljesítményviselkedéshez képest.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ez az észlelhető teljesítményi minta egy ügyféloldali feltételt jelöl. Hibaelhárításra van szükség az ügyféloldali alkalmazásban vagy az ügyféloldali hálózaton. A diagnosztikai napló kiadja a lekérdezési kivonatokat, és várakozási időt, amely úgy tűnik, hogy az ügyfél a legtöbbet fogja használni az elmúlt két órában. Ezeket az információkat a hibaelhárítás alapjául használhatja.
+Ez a észlelhető teljesítményminta ügyféloldali állapotot jelez. Hibaelhárításszükséges az ügyféloldali alkalmazásban vagy az ügyféloldali hálózaton. A diagnosztikai napló kimenetele a lekérdezés kimondott, és a várakozási idő, hogy úgy tűnik, hogy várja a legtöbbet az ügyfél számára, hogy felhasználja őket az elmúlt két órában. Ezt az információt használhatja a hibaelhárítás alapjaként.
 
-Optimalizálhatja az alkalmazás teljesítményét a lekérdezések felhasználásához. Az esetleges hálózati késéssel kapcsolatos problémákat is megvizsgálhatja. Mivel a teljesítmény-romlási probléma az elmúlt hét napos teljesítménybeli változáson alapult, megvizsgálhatja, hogy a legutóbbi alkalmazás-vagy hálózati feltétel változása okozta-e a teljesítmény-regressziós eseményt.
+Optimalizálhatja az alkalmazás teljesítményét ezeknek a lekérdezéseknek a felhasználásához. A lehetséges hálózati késési problémákat is figyelembe veheti. Mivel a teljesítménycsökkenési probléma az utolsó hétnapos teljesítményalapkonfiguráció változásán alapult, megvizsgálhatja, hogy az alkalmazás vagy a hálózati állapot legutóbbi változásai okozták-e ezt a teljesítményregressziós eseményt.
 
-## <a name="pricing-tier-downgrade"></a>Díjszabási szintek visszalépése
+## <a name="pricing-tier-downgrade"></a>Tarifacsomag visszaminősítése
 
 ### <a name="what-is-happening"></a>mi történik
 
-Ez a észlelhető teljesítményi minta azt a feltételt jelzi, amelyben a SQL Database-előfizetés díjszabási szintje leállt. Az adatbázis számára elérhető erőforrások (DTU-EK) csökkentése miatt a rendszer a jelenlegi adatbázis-teljesítmény csökkenését észlelte az elmúlt hét napos alaptervhez képest.
+Ez a észlelhető teljesítményminta azt a feltételt jelzi, amelyben az SQL Database-előfizetés tarifacsomagját visszaminősítették. Az adatbázis számára elérhető erőforrások (DDO-k) csökkenése miatt a rendszer az adatbázis aktuális teljesítményének csökkenését észlelte az előző hét napos alapértékhez képest.
 
-Emellett előfordulhat, hogy egy olyan feltételt is felhasználtak, amelyben a SQL Database előfizetésének díjszabási szintje leállt, és rövid időn belül magasabb szintre lett frissítve. Ennek az ideiglenes teljesítménynek az észlelése a diagnosztikai napló részletek szakaszában található, a díjszabási szintek visszalépése és frissítése során.
+Emellett lehet egy olyan feltétel, amelyben az SQL Database-előfizetés tarifacsomagját visszaminősítették, majd rövid időn belül magasabb szintre frissítették. Az ideiglenes teljesítménycsökkenés észlelése a diagnosztikai napló részletes szakaszában történik, mint a tarifacsomag-visszaminősítés és -frissítés.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha csökkentette az árképzési szintet, és így a DTU elérhetővé válik a SQL Database számára, és elégedett a teljesítménnyel, semmit nem kell tennie. Ha csökkentette az árképzési szintet, és nem elégedett az SQL-adatbázis teljesítményével, csökkentse az adatbázis számítási feladatait, vagy növelje magasabb szintre az árképzési szintet.
+Ha csökkentette a tarifacsomagot, és így az SQL Database számára elérhető DIT-eket, és elégedett a teljesítménnyel, semmit sem kell tennie. Ha csökkentette a tarifacsomagot, és elégedetlen az SQL-adatbázis teljesítményével, csökkentse az adatbázis-számítási feladatokat, vagy fontolja meg a tarifacsomag magasabb szintre emelését.
 
 ## <a name="recommended-troubleshooting-flow"></a>Ajánlott hibaelhárítási folyamat
 
- A teljesítménnyel kapcsolatos problémák Intelligent Insights használatával történő hibaelhárításához kövesse a folyamatábrát.
+ Kövesse a folyamatábrát egy ajánlott megközelítés teljesítményproblémák intelligens insights használatával.
 
-Intelligent Insights a Azure Portal keresztül érheti el a Azure SQL Analytics. Próbálja meg megkeresni a bejövő teljesítmény riasztását, és jelölje ki. Azonosítsa, hogy mi történik az észlelések lapon. Figyelje meg a probléma okának elemzését, a lekérdezés szövegét, a lekérdezési idő trendjeit és az incidensek evolúcióját. A probléma megoldásához a Intelligent Insights javaslat használatával próbálja megoldani a problémát.
+Az Azure SQL Analytics webhelyen keresztül elérheti az Intelligens elemzéseket az Azure SQL Analytics webhelyen keresztül. Próbálja meg megkeresni a bejövő teljesítményriasztást, és jelölje ki. Azonosítsa, hogy mi történik az észlelések oldalon. Figyelje meg a megadott kiváltó oka a probléma, lekérdezés szöveg, lekérdezési idő trendek és az incidensek alakulása. Próbálja meg megoldani a problémát az Intelligent Insights javaslat használatával a teljesítményprobléma csökkentésére.
 
-[![hibaelhárítási folyamatábra](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
+[![Folyamatábra – hibaelhárítás](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
-> Válassza ki a folyamatábrát egy PDF-verzió letöltéséhez.
+> A FOLYAMATÁBRA kiválasztásával töltse le a PDF-verziót.
 
-Intelligent Insights általában egy órányi időt kell igénybe vennie a teljesítménnyel kapcsolatos probléma kiváltó okának elemzéséhez. Ha nem találja a problémát Intelligent Insights és kritikus fontosságú az Ön számára, a lekérdezési tároló használatával manuálisan azonosíthatja a teljesítménnyel kapcsolatos probléma okát. (Általában ezek a problémák kevesebb, mint egy órával régebbiek.) További információ: [a teljesítmény figyelése a lekérdezési tároló használatával](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
+Az Intelligens elemzési adatoknak általában egy óra időre van szüksége a teljesítményprobléma kiváltó okainak elemzéséhez. Ha nem találja a problémát az Intelligens elemzési adatok ban, és ez fontos az Ön számára, használja a Lekérdezési tároló segítségével manuálisan azonosítani a probléma kiváltó okát. (Ezek a problémák általában egy óránál rövidebbek.) További információt a [Teljesítmény figyelése a Lekérdezéstároló használatával című témakörben talál.](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerkedjen meg [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakkal.
-- Használja a [Intelligent Insights Azure SQL Database Performance Diagnostics-naplót](sql-database-intelligent-insights-use-diagnostics-log.md).
-- Azure SQL Database figyelése [Azure SQL Analytics használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/platform-logs-overview.md).
+- Ismerje meg [az Intelligens elemzési](sql-database-intelligent-insights.md) fogalmakat.
+- Használja az [Intelligent Insights Azure SQL Database teljesítménydiagnosztikai naplóját.](sql-database-intelligent-insights-use-diagnostics-log.md)
+- Az [Azure SQL Database figyelése az Azure SQL Analytics használatával.](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)
+- Ismerje meg, hogyan [gyűjthet naplóadatokat az Azure-erőforrásokból.](../azure-monitor/platform/platform-logs-overview.md)

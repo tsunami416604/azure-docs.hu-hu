@@ -1,5 +1,5 @@
 ---
-title: Linux rendszerű számítógépek beléptetése a Azure Security Centerba | Microsoft Docs
+title: Linuxos számítógépek alaplapja az Azure Security Centerbe | Microsoft dokumentumok
 description: Ez a rövid útmutató bemutatja, hogyan vehet fel Linux rendszerű számítógépeket a Security Centerbe.
 services: security-center
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
 ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664503"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rövid útmutató: Linux rendszerű számítógépek felvétele a Security Centerbe
-Az Azure-előfizetések előkészítése után az ügynök kiépítésével engedélyezheti az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások Security Centerét. Az ügynök neve Microsoft monitoring Agent (MMA), de más néven OMS-ügynök.
+Miután az Azure-előfizetések, engedélyezheti a Security Center for Linux-erőforrások futó azure-on kívül, például a helyszínen vagy más felhők, egy ügynök kiépítése. Az ügynök neve a Microsoft Monitoring Agent (MMA), de az OMS-ügynök néven is ismert.
 
-Ez a rövid útmutató bemutatja, hogyan telepítheti az ügynököt egy Linux rendszerű számítógépre.
+Ez a rövid útmutató bemutatja, hogyan telepítheti az ügynököt linuxos számítógépre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Kipróbálhatja a Security Center Standard díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Új Linux rendszerű számítógép hozzáadása
 
@@ -39,7 +39,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
    ![Security Center – Áttekintés][2]
 
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
-4. Válassza ki az első **lépések** fület. ![első lépések][3]
+4. Válassza az **Első** ![lépések lapot.][3]
 
 5. Az **Új nem Azure-beli számítógépek hozzáadása** menüpont alatt kattintson a **Konfigurálás** elemre, hogy megjelenítse a Log Analytics-munkaterületek listáját. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
@@ -56,7 +56,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 
    ![Az ügynök telepítése][5]
 
-Az ügynök naplói a következő helyen találhatók: */var/opt/microsoft/omsagent/\<munkaterület azonosítója >/log/*
+Az ügynök naplói a következő helyen találhatók: */var/opt/microsoft/omsagent/\<workspace id>/log/*
 
   ![Az ügynök naplói][6]
 
@@ -81,7 +81,7 @@ Az ügynök eltávolítása:
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban egy Linux rendszerű számítógépen kiépített egy ügynököt. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
+Ebben a rövid útmutatóban kiépítette az ügynököt egy Linux-számítógépen. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Biztonsági szabályzatok meghatározása és értékelése](tutorial-security-policy.md)

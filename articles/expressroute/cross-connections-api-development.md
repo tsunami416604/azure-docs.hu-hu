@@ -1,6 +1,6 @@
 ---
 title: Az Azure ExpressRoute CrossConnnections API fejlesztése és integrációja
-description: Ez a cikk részletes áttekintést nyújt a expressRouteCrossConnections erőforrástípus ExpressRoute-partnereiről.
+description: Ez a cikk részletes áttekintést nyújt az ExpressRoute-partnerek nek az expressRouteCrossConnections erőforrástípusról.
 services: expressroute
 author: mialdrid
 ms.service: expressroute
@@ -8,80 +8,80 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
 ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77187012"
 ---
-# <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-fejlesztés és-integráció
+# <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API fejlesztés és integráció
 
-A ExpressRoute partner Resource Manager API lehetővé teszi, hogy a ExpressRoute-partnerek kezelni tudják az ügyfél ExpressRoute-áramkörök 2. és 3. rétegbeli konfigurációját. A ExpressRoute partner Resource Manager API egy új erőforrástípust ( **expressRouteCrossConnections**) vezet be. A partnerek ezt az erőforrást használják az ügyfél-ExpressRoute áramkörök kezelésére.
+Az ExpressRoute Partner Resource Manager API lehetővé teszi az ExpressRoute-partnerek számára az ügyfél ExpressRoute-áramkörök 2- es és 3-as rétegkonfigurációjának kezelését. Az ExpressRoute Partner Resource Manager API egy új erőforrástípust, **az expressRouteCrossConnections-t**vezet be. A partnerek ezt az erőforrást használják az ügyfelek ExpressRoute-áramköri viszonyainak kezelésére.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A expressRouteCrossConnections erőforrás a ExpressRoute áramkörhöz tartozó árnyékmásolat-erőforrás. Amikor egy Azure-ügyfél létrehoz egy ExpressRoute áramkört, és kiválaszt egy adott ExpressRoute-partnert, a Microsoft létrehoz egy expressRouteCrossConnections-erőforrást a partner Azure ExpressRoute-felügyeleti előfizetésében. Ennek során a Microsoft definiál egy erőforráscsoportot a expressRouteCrossConnections-erőforrás létrehozásához a alkalmazásban. Az erőforráscsoport elnevezési szabványa **CrossConnection-* PeeringLocation * * *; ahol a PeeringLocation = a ExpressRoute helye. Ha például egy ügyfél létrehoz egy ExpressRoute-áramkört Denverben, a CrossConnection a partner Azure-előfizetésében jön létre a következő erőforráscsoporthoz: **CrossConnnection-Denver**.
+Az expressRouteCrossConnections erőforrás az ExpressRoute-kapcsolat árnyékerőforrása. Amikor egy Azure-ügyfél létrehoz egy ExpressRoute-csoportot, és kiválaszt egy adott ExpressRoute-partnert, a Microsoft létrehoz egy expressRouteCrossConnections erőforrást a partner Azure ExpressRoute-felügyeleti előfizetésében. Ennek során a Microsoft egy erőforráscsoportot határoz meg az expressRouteCrossConnections erőforrás létrehozásához. Az erőforráscsoport elnevezési szabványa **CrossConnection-* Társviszony-létesítés***; ahol peeringlocation = az ExpressRoute helye. Ha például egy ügyfél létrehoz egy ExpressRoute-csoportot Denverben, a CrossConnection a partner Azure-előfizetésében jön létre a következő erőforráscsoportban: **CrossConnnection-Denver**.
 
-A ExpressRoute-partnerek a 2. rétegbeli és 3. rétegbeli konfigurációt a expressRouteCrossConnections-erőforrásra vonatkozó REST-műveletek kiadásával kezelik.
+Az ExpressRoute-partnerek a 2- es és 3-as rétegkonfigurációt rest-műveletek kiadásával kezelik az expressRouteCrossConnections erőforrással szemben.
 
 ## <a name="benefits"></a>Előnyök
 
-A expressRouteCrossConnections-erőforrásra való áttérés előnyei:
+Az expressRouteCrossConnections erőforrásra való áttérés előnyei:
 
-* A ExpressRoute-partnerek jövőbeni továbbfejlesztései elérhetővé válnak a ExpressRouteCrossConnection-erőforráson.
+* Az ExpressRoute-partnerek jövőbeli fejlesztései elérhetők lesznek az ExpressRouteCrossConnection erőforráson.
 
-* A partnerek [szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) alkalmazhatnak a expressRouteCrossConnection erőforrásra. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
+* A partnerek [szerepköralapú hozzáférés-vezérlést](https://docs.microsoft.com/azure/role-based-access-control/overview) alkalmazhatnak az expressRouteCrossConnection erőforrásra. Ezek a vezérlők meghatározhatják azokat az engedélyeket, amelyekhez a felhasználói fiókok módosíthatják az expressRouteCrossConnection erőforrást, és hozzáadhatnak/frissíthetnek/törölhetnek társviszony-létesítési konfigurációkat.
 
-* A expressRouteCrossConnection erőforrás olyan API-kat tesz elérhetővé, amelyek segíthetnek a ExpressRoute-kapcsolatok hibaelhárításában. Ide tartozik az ARP-tábla, a BGP-útválasztási táblázat összefoglalása és a BGP-útválasztási táblázat részletei. Ezt a képességet a klasszikus üzembe helyezési API-k nem támogatják.
+* Az expressRouteCrossConnection erőforrás olyan API-kat tár fel, amelyek hasznosak lehetnek az ExpressRoute-kapcsolatok hibaelhárításában. Ez magában foglalja az ARP-táblát, a BGP-útvonaltábla összegzését és a BGP-útvonaltábla részleteit. Ezt a funkciót a klasszikus üzembe helyezési API-k nem támogatják.
 
-* A partnerek a *RouteFilter* -erőforrás használatával is megkereshetik a meghirdetett közösségeket a Microsoft-partnereken.
+* A partnerek a *RouteFilter-erőforrás* használatával a Microsoft társviszony-létesítésén is kereshetik a hirdetett közösségeket.
 
-## <a name="api-development-and-integration-steps"></a>API-fejlesztési és integrációs lépések
+## <a name="api-development-and-integration-steps"></a>API-fejlesztési és -integrációs lépések
 
-A partner API-val való fejlesztéshez a ExpressRoute-partnerek kihasználják az ügyfél és a tesztelési partner beállításait. A tesztelési ügyfél beállításával ExpressRoute-áramkörök hozhatók létre olyan tesztelési társítási helyen, amelyek a dummy-eszközökre és-portokra vannak leképezve. A tesztelési partner beállítása a tesztelési társítási helyen létrehozott ExpressRoute-áramkörök kezelésére szolgál.
+A Partner API-val való fejlesztéshez az ExpressRoute-partnerek egy tesztügyfelet és tesztpartner-beállítást használhatnak. A tesztügyfél-beállítás expressroute-áramkörök létrehozására szolgál a próbaeszközökhöz és portokhoz leképező teszttársviszony-létesítési helyeken. A tesztpartner beállítása a teszttárs-létesítési helyen létrehozott ExpressRoute-áramkörök kezelésére szolgál.
 
-### <a name="1-enlist-subscriptions"></a>1. előfizetések
+### <a name="1-enlist-subscriptions"></a>1. Besorozás előfizetések
 
-A tesztelési partner igényléséhez és az ügyfél beállításának teszteléséhez két utólagos elszámolású Azure-előfizetést kell igénybe vennie a ExpressRoute Engineering Contact szolgáltatásban:
-* **ExpressRoute_API_Dev_Provider_Sub:** Ez az előfizetés a próbabábu-eszközök és portok tesztelési célú helyein létrehozott ExpressRoute áramkörök felügyeletére szolgál.
+A tesztpartner és az ügyfél beállításának igényléséhez kérjen két azure-os fizetéses Azure-előfizetést expressroute-i mérnöki kapcsolattartójára:
+* **ExpressRoute_API_Dev_Provider_Sub:** Ez az előfizetés a próbaeszközökön és portokon teszttársviszony-létesítési helyeken létrehozott ExpressRoute-áramkörök kezelésére szolgál.
 
-* **ExpressRoute_API_Dev_Customer_Sub:** Ezt az előfizetést ExpressRoute-áramkörök létrehozásához használja a rendszer a dummy-eszközökre és-portokra leképező tesztelési társítási helyein.
+* **ExpressRoute_API_Dev_Customer_Sub:** Ez az előfizetés expressroute-áramkörök létrehozására szolgál a próbaverzióhelyeken, amelyek a hamis eszközökhöz és portokhoz vannak leképezve.
 
-A tesztelési társítási helyszínek: a dummy-eszközök és-portok alapértelmezés szerint nem érhetők el az üzemi ügyfelek számára. Ahhoz, hogy ExpressRoute-áramköröket lehessen létrehozni, amelyek leképezik a tesztet, engedélyezni kell egy előfizetési szolgáltatás jelölőjét.
+A teszttársviszony-létesítési helyek: a hamis eszközök és a portok alapértelmezés szerint nincsenek kitéve az éles ügyfeleknek. Annak érdekében, hogy ExpressRoute-áramköröket hozzon létre, amelyek leképezik a tesztbeállításokat, engedélyezni kell egy előfizetési szolgáltatásjelzőt.
 
-### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. regisztrálja a Dev_Provider-előfizetést a expressRouteCrossConnections API eléréséhez
+### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. Regisztrálja a Dev_Provider előfizetést az expressRouteCrossConnections API eléréséhez
 
-A expressRouteCrossConnections API-hoz való hozzáféréshez a partner-előfizetést regisztrálni kell a **Microsoft. Network erőforrás-szolgáltatóban**. A regisztrációs folyamat befejezéséhez kövesse az [Azure Resource Providers és types](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) című cikk lépéseit.
+Az expressRouteCrossConnections API eléréséhez a partner-előfizetést be kell jegyezni a **Microsoft.Network Resource Provider**szolgáltatásba. Kövesse az [Azure-erőforrás-szolgáltatók](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) lépéseit, és írja be a cikket a regisztrációs folyamat befejezéséhez.
 
-### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Azure Resource Manager REST API-hívások hitelesítésének beállítása
+### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Hitelesítés beállítása az Azure Resource Manager REST API-hívásokhoz
 
-A legtöbb Azure-szolgáltatáshoz a Service API-k meghívása előtt érvényes hitelesítő adatokkal kell rendelkeznie az ügyfél kódjával a Resource Manager használatával történő hitelesítéshez. A hitelesítés az Azure AD különböző résztvevői között történik, és a hitelesítést igazoló hozzáférési jogkivonattal látja el az ügyfelet.
+A legtöbb Azure-szolgáltatás ügyfélkódra van szükség az Erőforrás-kezelővel való hitelesítéshez, érvényes hitelesítő adatok használatával, a szolgáltatás API-jainak hívása előtt. A hitelesítést az Azure AD koordinálja a különböző szereplők között, és az ügyfél számára egy hozzáférési jogkivonatot biztosít a hitelesítés igazolásaként.
 
-A hitelesítési folyamat két fő lépést tesz szükségessé:
+A hitelesítési folyamat két fő lépésből áll:
 
 1. [Regisztrálja az ügyfelet](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad).
-2. [Hozza létre a hozzáférési kérelmet](https://docs.microsoft.com/rest/api/azure/#create-the-request).
+2. [Hozza létre a hozzáférési kérelmet.](https://docs.microsoft.com/rest/api/azure/#create-the-request)
 
-### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. adja meg a hálózati közreműködői engedélyt az ügyfélalkalmazás számára
+### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. Hálózati közreműködői engedély biztosítása az ügyfélalkalmazásszámára
 
-A hitelesítés sikeres konfigurálása után meg kell adnia a hálózat közreműködői hozzáférését az ügyfélalkalmazás számára a Dev_Provider_Sub alatt. Az engedély megadásához jelentkezzen be a [Azure Portalba](https://ms.portal.azure.com/#home) , és hajtsa végre a következő lépéseket:
+A hitelesítés sikeres konfigurálása után a hálózati közreműködőnek hozzáférést kell biztosítania az ügyfélalkalmazáshoz a Dev_Provider_Sub alatt. Az engedély megadásához jelentkezzen be az [Azure Portalra,](https://ms.portal.azure.com/#home) és hajtsa végre az alábbi lépéseket:
 
-1. Navigáljon az előfizetésekhez, és válassza ki a Dev_Provider_Sub
-2. Navigáljon Access Control (IAM)
+1. Nyissa meg az Előfizetések elemet, és válassza ki a Dev_Provider_Sub
+2. Navigálás a hozzáférés-vezérlés (IAM) pontjára
 3. Szerepkör-hozzárendelés hozzáadása
-4. Hálózati közreműködő szerepkör kiválasztása
-5. Hozzáférés kiosztása az Azure AD-felhasználóhoz,-csoporthoz vagy egyszerű szolgáltatáshoz
-6. Ügyfélalkalmazás kiválasztása
+4. A hálózati közreműködői szerepkör kiválasztása
+5. Hozzáférés hozzárendelése az Azure AD-felhasználóhoz, csoporthoz vagy egyszerű szolgáltatáshoz
+6. Az ügyfélalkalmazás kiválasztása
 7. Módosítások mentése
 
-### <a name="5-develop"></a>5. fejlesztés
+### <a name="5-develop"></a>5. Fejlesztés
 
-Fejlesztés a [EXPRESSROUTECROSSCONNECTIONS API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections)-val.
+Dolgozzon az [expressRouteCrossConnections API-val.](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections)
 
 ## <a name="rest-api"></a>REST API
 
-REST API dokumentációért lásd: [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) .
+Lásd: [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) rest API-t a REST API dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az összes ExpressRoute REST API-ról: [EXPRESSROUTE REST API](https://docs.microsoft.com/rest/api/expressroute/)-k.
+Az ExpressRoute REST összes API-járól további információt az [ExpressRoute REST API-k című témakörben talál.](https://docs.microsoft.com/rest/api/expressroute/)

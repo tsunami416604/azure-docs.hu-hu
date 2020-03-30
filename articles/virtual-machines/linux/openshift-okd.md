@@ -1,6 +1,6 @@
 ---
-title: OKD üzembe helyezése az Azure-ban
-description: OKD üzembe helyezése az Azure-ban.
+title: Az OKD üzembe helyezése az Azure-ban
+description: Telepítse az OKD-t az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -15,34 +15,34 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035404"
 ---
-# <a name="deploy-okd-in-azure"></a>OKD üzembe helyezése az Azure-ban
+# <a name="deploy-okd-in-azure"></a>Az OKD üzembe helyezése az Azure-ban
 
-Az Azure-ban kétféleképpen helyezhet üzembe OKD (korábban OpenShift Origin):
+Az OKD (korábban OpenShift Origin) azure-beli üzembe helyezésének két módja van:
 
-- Manuálisan telepítheti az összes szükséges Azure-infrastruktúra-összetevőt, majd követheti a [OKD dokumentációját](https://docs.okd.io).
-- Használhat egy meglévő [Resource Manager-sablont](https://github.com/Microsoft/openshift-origin) is, amely leegyszerűsíti a OKD-fürt üzembe helyezését.
+- Manuálisan telepítheti az összes szükséges Azure-infrastruktúra-összetevőt, majd követheti az [OKD dokumentációját.](https://docs.okd.io)
+- Egy meglévő [Erőforrás-kezelő sablont](https://github.com/Microsoft/openshift-origin) is használhat, amely leegyszerűsíti az OKD-fürt telepítését.
 
-## <a name="deploy-using-the-okd-template"></a>Üzembe helyezés a OKD sablon használatával
+## <a name="deploy-using-the-okd-template"></a>Telepítés az OKD-sablon használatával
 
-A Resource Manager-sablonnal történő üzembe helyezéshez egy Parameters-fájl segítségével adja meg a bemeneti paramétereket. Az üzembe helyezés további testreszabásához a GitHub-tárházat kell megváltoztatnia, és módosítani a megfelelő elemeket.
+Az Erőforrás-kezelő sablonnal történő telepítéshez egy paraméterfájlt kell használnia a bemeneti paraméterek biztosításához. A központi telepítés további testreszabásához elágazás a GitHub-tármű, és módosítsa a megfelelő elemeket.
 
 Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következőkre:
 
-- Megerősített VM-méret (változó a azuredeploy. JSON fájlban)
-- Elnevezési konvenciók (változók a azuredeploy. JSON fájlban)
-- OpenShift-fürtök, a Hosts fájlon keresztül módosítva (deployOpenShift.sh)
+- Bástya virtuális gép mérete (változó azuredeploy.json)
+- Elnevezési konvenciók (változók az azuredeploy.jsonban)
+- OpenShift fürtspecifikus, gazdagépfájlon keresztül módosítva (deployOpenShift.sh)
 
-A [OKD sablonban](https://github.com/Microsoft/openshift-origin) több ág is elérhető a OKD különböző verzióihoz.  Igény szerint közvetlenül a tárházból is üzembe helyezhető, vagy a tárházat leválaszthatja, és egyéni módosításokat hajthat végre az üzembe helyezés előtt.
+Az [OKD-sablon](https://github.com/Microsoft/openshift-origin) több ágat is elrendelhet az OKD különböző verzióihoz.  Az igényeinek megfelelően közvetlenül a tárcsóból telepítheti, vagy elágazhatja a tárta, és egyéni módosításokat hajthat végre a telepítés előtt.
 
-Használja a `appId` értéket azon szolgáltatásnév alapján, amelyet korábban hozott létre a `aadClientId` paraméterhez.
+Használja `appId` a `aadClientId` paraméterhez korábban létrehozott egyszerű szolgáltatás értékét.
 
-A következő példa egy azuredeploy. Parameters. JSON nevű paramétereket tartalmazó fájlt mutat be az összes szükséges bemenettel.
+Az alábbiakban egy azuredeploy.parameters.json nevű paraméterfájl látható az összes szükséges bemenettel.
 
 ```json
 {
@@ -118,15 +118,15 @@ A következő példa egy azuredeploy. Parameters. JSON nevű paramétereket tart
 
 Cserélje le a paramétereket a megadott adatokra.
 
-A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért kérjük, ellenőrizze a használt ág szükséges paramétereit.
+A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért ellenőrizze a használt ág hoz szükséges paramétereket.
 
 ### <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 
 > [!NOTE] 
-> A következő parancshoz Azure CLI-2.0.8 vagy újabb verzió szükséges. A CLI-verziót a `az --version` paranccsal ellenőrizheti. A CLI verziójának frissítéséhez lásd: az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> A következő parancs hoz azure CLI 2.0.8 vagy újabb. A CLI-verziót a `az --version` paranccsal ellenőrizheti. A CLI-verzió frissítéséhez olvassa [el az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)című témakört.
 
-A következő példa a OKD-fürtöt és az összes kapcsolódó erőforrást egy openshiftrg nevű erőforráscsoporthoz helyezi üzembe a myOpenShiftCluster központi telepítési nevével. A sablon közvetlenül a GitHub-tárházból van hivatkozva a azuredeploy. Parameters. JSON nevű helyi paraméterek fájljának használatakor.
+A következő példa az OKD-fürtöt és az összes kapcsolódó erőforrást egy openshiftrg nevű erőforráscsoportba helyezi, a myOpenShiftCluster központi telepítési nevével. A sablon közvetlenül a GitHub-tárlaton keresztül hivatkozik, miközben egy azuredeploy.parameters.json nevű helyi paraméterfájlt használ.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -134,7 +134,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Az üzembe helyezés legalább 30 percet vesz igénybe, a telepített csomópontok teljes száma alapján. A OpenShift-konzol URL-címe és a OpenShift-főkiszolgáló DNS-neve a terminálra nyomtatódik a telepítés befejeződése után. Másik lehetőségként megtekintheti a központi telepítés kimenetek szakaszát is a Azure Portal.
+A központi telepítés legalább 30 percet vesz igénybe, az üzembe helyezett csomópontok teljes száma alapján. Az OpenShift konzol URL-címe és az OpenShift főkiszolgáló DNS-neve a központi telepítés befejezésekor a terminálra nyomtatódik. Másik lehetőségként megtekintheti a központi telepítés kimeneti szakaszát az Azure Portalon.
 
 ```json
 {
@@ -143,11 +143,11 @@ Az üzembe helyezés legalább 30 percet vesz igénybe, a telepített csomópont
 }
 ```
 
-Ha nem szeretné összekapcsolni a parancssort, amíg a telepítés befejeződik, adja hozzá `--no-wait` a csoport központi telepítésének egyik beállításaként. A központi telepítés kimenete az erőforráscsoport telepítési szakaszában található Azure Portalból kérhető le.
+Ha nem szeretné lekötni a parancssort, amíg a `--no-wait` központi telepítés befejeződik, adja hozzá a csoport központi telepítésének egyik beállítását. A központi telepítés kimenete lehívható az Azure Portalon az erőforráscsoport üzembe helyezési szakaszában.
 
-## <a name="connect-to-the-okd-cluster"></a>Kapcsolódás a OKD-fürthöz
+## <a name="connect-to-the-okd-cluster"></a>Csatlakozás az OKD-fürthöz
 
-Az üzembe helyezés befejezésekor a `OpenShift Console Url`használatával kapcsolódjon a OpenShift-konzolhoz. Azt is megteheti, hogy SSH-t használ a OKD-főkiszolgálóval. Az alábbi példa az üzemelő példány kimenetét használja:
+Amikor a telepítés befejeződik, csatlakozzon az OpenShift `OpenShift Console Url`konzolhoz a böngészőjével a segítségével. Másik lehetőségként az SSH-t az OKD-főkiszolgálóhoz is használhatja. A következő példa a központi telepítés kimenetét használja:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -155,14 +155,14 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, a OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
+Az [az csoport törlése](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, az OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
 
 ```azurecli 
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
-- [OpenShift-telepítés hibáinak megoldása](./openshift-container-platform-3x-troubleshooting.md)
-- [A OKD első lépései](https://docs.okd.io)
+- [Telepítés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift központi telepítésének – problémamegoldás](./openshift-container-platform-3x-troubleshooting.md)
+- [Az OKD – első lépések](https://docs.okd.io)

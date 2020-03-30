@@ -1,7 +1,7 @@
 ---
-title: WAF az Azure Application Gateway bot Protection áttekintése
+title: WAF az Azure Application Gateway robotvédelem – áttekintés
 titleSuffix: Azure Web Application Firewall
-description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfalról (WAF) a Application Gateway bot Protection szolgáltatásban
+description: Ez a cikk áttekintést nyújt az Application Gateway robotvédelmével foglalkozó webalkalmazás-tűzfalról (WAF)
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
@@ -9,31 +9,31 @@ ms.date: 02/04/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 3bc481cfc35ac94699d2795862f1fe8e4decf875
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77027094"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Azure webalkalmazási tűzfal az Azure-ban Application Gateway bot Protection – áttekintés
+# <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Az Azure Web Application Firewall az Azure Application Gateway robotvédelemen – áttekintés
 
-Az internetes forgalom körülbelül 20%-a rossz robotoktól származik. Olyan dolgok, mint a kaparás, a vizsgálat és a biztonsági rések keresése a webalkalmazásban. Ha ezek a robotok le vannak állítva a webalkalmazási tűzfalon (WAF), nem tudnak megtámadni. Emellett nem használhatják fel erőforrásait és szolgáltatásait, például a háttérrendszer és más mögöttes infrastruktúra használatát.
+Nagyjából 20%-a az összes internetes forgalom származik rossz botok. Ők csinál dolog szeret kaparás, átkésés, és látszó részére sebezhetőség -ban -a pókháló alkalmazás. Amikor ezek a botok leállnak a webalkalmazás-tűzfalon (WAF), nem támadhatják meg Önt. Emellett nem használhatják fel az erőforrásokat és a szolgáltatásokat, például a háttérrendszereket és más mögöttes infrastruktúrát.
 
-Engedélyezheti a WAF felügyelt bot Protection-szabálykészlet számára az ismert kártékony IP-címekről érkező kérések blokkolását vagy naplózását. Az IP-címek forrása a Microsoft Threat Intelligence-hírcsatorna. A Microsoft Threat Intelligence az Intelligens biztonsági gráffal működik, amelyet több szolgáltatás, így az Azure Security Center is használ.
+Engedélyezheti a felügyelt robotvédelmi szabálykészletet, hogy a WAF letiltsa vagy naplózza az ismert rosszindulatú IP-címekről érkező kérelmeket. Az IP-címek a Microsoft Threat Intelligence hírcsatornából származnak. Az Intelligent Security Graph a Microsoft fenyegetésekkel kapcsolatos intelligenciáját működteti, és több szolgáltatás, köztük az Azure Security Center is használja.
 
 > [!IMPORTANT]
-> A robot Protection-szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és az előzetes verziójú szolgáltatói szerződéssel rendelkezik. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További részletekért tekintse meg a [Microsoft Azure előzetesek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+> A robotvédelemi szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és egy előzetes szolgáltatásiszint-szerződéssel van ellátva. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A [részleteket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a Microsoft Azure előzetes verziók kiegészítő használati feltételei ben találja.
 
-## <a name="use-with-owasp-rulesets"></a>Használat a OWASP szabályrendszerek
+## <a name="use-with-owasp-rulesets"></a>OWASP szabályrendszerekkel való használat
 
-A bot Protection szabályait a OWASP szabályrendszerek (2.2.9, 3,0 és 3,1) együtt használhatja. Egy adott időpontban csak egy OWASP-szabályrendszert lehet használni. A bot Protection szabályrendszert egy további szabályt is tartalmaz, amely a saját szabályzatában jelenik meg. A cím **Microsoft_BotManagerRuleSet_0 1**, és engedélyezheti vagy letilthatja a többi OWASP-szabályhoz hasonlóan.
+A Bot Protection szabálykészlet az OWASP szabálykészlet (2.2.9, 3.0 és 3.1) mellett használható. Egy oWASP szabálykészlet egy adott időpontban használható. A robotvédelmi szabálykészlet tartalmaz egy további szabályt, amely megjelenik a saját szabálykészletében. A címe **Microsoft_BotManagerRuleSet_0.1**, és a többi OWASP-szabályhoz hasonlóan engedélyezheti vagy letilthatja azt.
 
-![Robot-szabályrendszert](../media/bot-protection-overview/bot-ruleset.png)
+![Bot szabályrendszer](../media/bot-protection-overview/bot-ruleset.png)
 
-## <a name="ruleset-update"></a>Szabályrendszer frissítése
+## <a name="ruleset-update"></a>Szabálykészlet frissítése
 
-Az ismert rossz IP-címek robot-elhárítási szabályait naponta többször frissítik a Microsoft Threat Intelligence-hírcsatornában, hogy szinkronban maradjanak a botokkal. A webalkalmazások folyamatosan védve vannak, még akkor is, ha a robot támadási vektorok változnak.
+Az ismert rossz IP-címek robotkockázat-kockázatcsökkentési szabálykészlet-listája naponta többször frissül a Microsoft Threat Intelligence hírcsatornából, hogy szinkronban maradjon a robotokkal. A webes alkalmazások folyamatosan védettek, még akkor is, ha a bot támadásvektorok változnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A robot Protection konfigurálása a webalkalmazási tűzfalhoz az Azure Application Gateway (előzetes verzió)](bot-protection.md)
+- [Bot-védelem konfigurálása a webalkalmazás-tűzfalhoz az Azure Application Gateway-en (előzetes verzió)](bot-protection.md)

@@ -1,7 +1,7 @@
 ---
-title: Érzelmek kognitív szaktudása
+title: Hangulat kognitív készség
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search AI-dúsítási folyamatában lévő szövegből kinyerheti a pozitív negatív érzelmi pontszámot.
+description: Pozitív-negatív hangulatpontszám kinyerése az Azure Cognitive Search AI-dúsítási folyamat szövegéből.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,49 +9,49 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3aab703b9c5ffcb5f3280060417ce32fcec2fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791915"
 ---
-# <a name="sentiment-cognitive-skill"></a>Érzelmek kognitív szaktudása
+# <a name="sentiment-cognitive-skill"></a>Hangulat kognitív készség
 
-A **hangulati** készség kiértékeli a strukturálatlan szöveget a pozitív negatív folytonosság mellett, és minden rekord esetében 0 és 1 közötti numerikus pontszámot ad vissza. Az 1-hez közeli pontszámok pozitív véleményt jeleznek, míg a 0-hoz közeliek negatívat. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
+A **Hangulat** szakértelem kiértékeli a strukturálatlan szöveget egy pozitív-negatív kontinuum mentén, és minden rekordhoz 0 és 1 közötti numerikus pontszámot ad vissza. Az 1-hez közeli pontszámok pozitív véleményt, a 0-hoz közeli pontszámok pedig negatív hangulatot jeleznek. Ez a szakértelem a Cognitive Services [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
 
 > [!NOTE]
-> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
+> A hogy a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti a hatókört, [egy számlázható Cognitive Services-erőforrást kell csatolnia.](cognitive-search-attach-cognitive-services.md) A díjak akkor keletkeznek, amikor API-kat hívnak a Cognitive Servicesben, és az Azure Cognitive Search dokumentumfeltörési szakaszának részeként képkinyerést végeznek. A dokumentumokból történő szövegkinyerésért nem kell díjat fizetni.
 >
-> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+> A beépített képességek végrehajtása a meglévő [Cognitive Services díja int.](https://azure.microsoft.com/pricing/details/cognitive-services/) A képkinyerésdíj szabása az [Azure Cognitive Search díjszabási lapján található.](https://go.microsoft.com/fwlink/?linkid=2042400)
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. Skills. Text. SentimentSkill
+Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 5000 karakternek kell lennie [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)alapján mérve. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
+A rekord maximális méretének 5000 karakternek [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)kell lennie a szerint mérve. Ha meg kell szakítania az adatokat, mielőtt elküldené azokat a véleményelemzőnek, használja a [Szövegfelosztás (Szövegfelosztás) készséget.](cognitive-search-skill-textsplit.md)
 
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterek megkülönböztetik a kis-és nagybetűket.
+A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Paraméter neve |                      |
 |----------------|----------------------|
-| defaultLanguageCode | választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód. <br/> [A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| defaultLanguageCode | (nem kötelező) A nem kifejezetten nyelvet megnem meghatározó dokumentumokra alkalmazandó nyelvkód. <br/> Lásd: [A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
-## <a name="skill-inputs"></a>Szaktudás bemenetei 
+## <a name="skill-inputs"></a>Szakértelem bemenetei 
 
-| Bemeneti név | Leírás |
+| Bemenet neve | Leírás |
 |--------------------|-------------|
-| szöveg | Az elemezni kívánt szöveg.|
-| languageCode  |  Választható A rekordok nyelvét jelző sztring. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/>[A támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/text-analytics-supported-languages.md)itt tekintheti meg.|
+| szöveg | Az elemzendő szöveg.|
+| languageCode  |  (Nem kötelező) A rekordok nyelvét jelző karakterlánc. Ha ez a paraméter nincs megadva, az alapértelmezett érték "en". <br/>Lásd: [A támogatott nyelvek teljes listája.](../cognitive-services/text-analytics/text-analytics-supported-languages.md)|
 
-## <a name="skill-outputs"></a>Szaktudás kimenetei
+## <a name="skill-outputs"></a>Szakértelem kimenetei
 
 | Kimenet neve | Leírás |
 |--------------------|-------------|
-| pontszám | 0 és 1 közötti érték, amely az elemzett szöveg hangulatát jelöli. A 0 értéknél közelebbi értékek negatív érzelmekkel rendelkeznek, és a 0,5-es számú érték semleges, az 1. pedig pedig pozitív hangulatú.|
+| pontszám | 0 és 1 közötti érték, amely az elemzett szöveg hangulatát tükrözi. A 0-hoz közeli értékek negatív hangulattal, a 0,5-höz közeli semleges hangulattal rendelkeznek, az 1-hez közeli értékek pedig pozitív hangulattal rendelkeznek.|
 
 
 ##  <a name="sample-definition"></a>Minta definíciója
@@ -78,7 +78,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 }
 ```
 
-##  <a name="sample-input"></a>Minta bemenet
+##  <a name="sample-input"></a>Mintabevitel
 
 ```json
 {
@@ -111,12 +111,12 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 ```
 
 ## <a name="notes"></a>Megjegyzések
-Ha üres, a rendszer nem adja vissza az adott rekordokhoz tartozó hangulati pontszámot.
+Ha üres, a rekordokhoz nem ad vissza véleménypontszám.
 
-## <a name="error-cases"></a>Hibák esetei
-Ha a nyelv nem támogatott, a rendszer hibát generál, és nem ad vissza értéket.
+## <a name="error-cases"></a>Hibaesetek
+Ha egy nyelv nem támogatott, hiba jön létre, és nem ad vissza hangulatpontszámot.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-+ [Beépített szaktudás](cognitive-search-predefined-skills.md)
-+ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Beépített képességek](cognitive-search-predefined-skills.md)
++ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)

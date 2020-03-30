@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857406"
 ---
-**.Net-háttérC#()** :
+**.NET háttér-háttér -(C#)**:
   
-1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektre, majd kattintson a NuGet- `Microsoft.Azure.NotificationHubs` **csomagok kezelése**elemre, keresse meg, majd kattintson a **telepítés**gombra. Ezzel telepíti a Notification Hubs könyvtárat a háttérbeli értesítések küldéséhez.
-2. A háttér Visual Studio-projektben nyissa meg a **vezérlők** > **TodoItemController.cs**. Adja hozzá a következő `using` utasítást a fájl elejéhez:
+1. A Visual Studio programban kattintson a jobb gombbal a kiszolgálóprojektre, és válassza **a NuGet csomagok kezelése**, a keresett témakört, `Microsoft.Azure.NotificationHubs`majd kattintson a Telepítés **parancsra.** Ez telepíti az értesítési központok könyvtár értesítések küldésére a háttérrendszerből.
+2. A háttérrendszer Visual Studio-projektjében nyissa meg **a** > Vezérlők**TodoItemController.cs.** A fájl tetején adja hozzá `using` a következő utasítást:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -63,13 +63,13 @@ ms.locfileid: "68857406"
     }
     ```
 
-4. A kiszolgálói projekt ismételt közzététele.
+4. Tegye közzé újra a kiszolgálóprojektet.
 
 **Node.js háttérrendszer**:
 
-1. Állítsa be a háttér-projektet.    
+1. Állítsa be a háttérprojektet.    
 
-2. Cserélje le a todoitem. js tábla parancsfájlját a következő kódra:
+2. Cserélje le a todoitem.js táblaparancsfájlt a következő kódra:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "68857406"
     module.exports = table;
     ```
 
-3. Ha a helyi számítógépen szerkeszti a fájlt, tegye közzé újra a kiszolgálói projektet.
+3. Amikor a helyi számítógépen szerkeszti a fájlt, tegye közzé újra a kiszolgálóprojektet.

@@ -1,6 +1,6 @@
 ---
-title: Távoli figyelési megoldás Edge-eszköz hozzáadása – Azure | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan adhat hozzá IoT Edge eszközt egy távoli figyelési megoldás-gyorsító eszközhöz
+title: Távoli figyelési megoldás hozzáadása Edge-eszköz - Azure | Microsoft dokumentumok
+description: Ez a cikk azt ismerteti, hogyan adhat hozzá IoT Edge-eszközt egy távoli figyelési megoldásgyorsítóhoz
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,47 +9,47 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72965373"
 ---
-# <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>IoT Edge-eszköz hozzáadása a távoli figyelési megoldáshoz – gyorssegéd
+# <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>IoT Edge-eszköz hozzáadása a távfigyelési megoldás gyorsítóhoz
 
-Ha [IoT Edge](../iot-edge/about-iot-edge.md) eszközt szeretne hozzáadni a megoldás-gyorsító eszközhöz, hajtsa végre a következő két lépést:
+[Ha IoT Edge-eszközt](../iot-edge/about-iot-edge.md) szeretne hozzáadni a megoldásgyorsítóhoz, hajtsa végre az alábbi két lépést:
 
-1. Adja hozzá a peremhálózati eszközt a távoli figyelési megoldás webes felhasználói felületének **Device Explorer** lapján.
-1. Telepítse a IoT Edge futtatókörnyezetet a peremhálózati eszközén.
+1. Adja hozzá az Edge-eszközt az **Eszközkezelő** lapon a Távfigyelési megoldásgyorsító webes felhasználói felületén.
+1. Telepítse az IoT Edge futásidejű az Edge-eszközön.
 
-## <a name="add-the-iot-edge-device"></a>A IoT Edge eszköz hozzáadása
+## <a name="add-the-iot-edge-device"></a>Az IoT Edge-eszköz hozzáadása
 
-Ha IoT Edge eszközt szeretne hozzáadni a távoli figyelési megoldás-gyorsító eszközhöz, navigáljon a webes felületen található **Device Explorer** lapra, és kattintson az **+ új eszköz**elemre.
+Ha IoT Edge-eszközt szeretne hozzáadni a távfigyelési megoldás gyorsítójához, keresse meg az **Eszközkezelő** lapot a webes felhasználói felületen, és kattintson a **+ Új eszköz gombra.**
 
-Az **új eszköz** panelen válassza a **IoT Edge eszköz**elemet. A többi beállítás alapértelmezett értékeit is meghagyhatja. Ezután kattintson az **Apply** (Alkalmaz) gombra:
+Az **Új eszköz** panelen válassza az **IoT Edge-eszköz**lehetőséget. A többi beállítás alapértelmezett értékeit is meghagyhatja. Ezután kattintson az **Apply** (Alkalmaz) gombra:
 
-![IoT Edge eszköz hozzáadása](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
+![IoT Edge-eszköz hozzáadása](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
 ### <a name="alternative-ways-to-add-an-iot-edge-device"></a>IoT Edge-eszköz hozzáadásának alternatív módjai
 
-IoT Edge eszköz közvetlenül is regisztrálható a megoldás-gyorsító IoT Hub példányával. Az alábbi útmutató-útmutatók követése előtt ismernie kell az IoT hub nevét a megoldás-gyorssegédben:
+Az IoT Edge-eszköz regisztrálása közvetlenül az IoT Hub-példány a megoldásgyorsítóban. Az alábbi útmutatók követése előtt ismernie kell az IoT hub nevét a megoldásgyorsítóban:
 
-- [Új Azure IoT Edge-eszköz regisztrálása a Azure Portal](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
+- [Új Azure IoT Edge-eszköz regisztrálása az Azure Portalról](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
 - [Új Azure IoT Edge-eszköz regisztrálása az Azure CLI-vel](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [Új Azure IoT Edge eszköz regisztrálása a Visual Studio Code-ból](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [Új Azure IoT Edge-eszköz regisztrálása a Visual Studio-kódból](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
 
-Ha közvetlenül regisztrálja az eszközt az IoT hub-ban a távoli figyelési megoldás-gyorsító eszközben, a rendszer a webes felhasználói felület **Device Explorer** oldalán találja.
+Ha közvetlenül az IoT-központtal regisztrál egy eszközt a távoli figyelési megoldásgyorsítóban, az megjelenik a webes felhasználói felület **Eszközkezelő** lapján.
 
-## <a name="install-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet telepítése
+## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge futásidejű telepítése
 
-Mielőtt üzembe helyezi a modulokat a peremhálózati eszközön, telepítenie kell a IoT Edge futtatókörnyezetet a valós eszközre. A következő útmutatók bemutatják, hogyan telepítheti a futtatókörnyezetet az általános eszköz-platformokon:
+Mielőtt üzembe helyezheti a modulokat az Edge-eszközre, telepítenie kell az IoT Edge futásidejű a valós eszközön. Az alábbi útmutatóútmutatók bemutatják, hogyan telepítheti a futásidejűt a közös eszközplatformokra:
 
-- [A Azure IoT Edge Runtime telepítése Linux rendszeren (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Azure IoT Edge futtatókörnyezet telepítése Linux rendszeren (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)
-- [Azure IoT Edge futtatókörnyezet telepítése Windows rendszerű tárolókkal való használatra](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
-- [Telepítse a Windows rendszerhez készült Azure IoT Edge futtatókörnyezetet Linux-tárolókkal való használatra.](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [A IoT Edge Runtime telepítése a Windows IoT Core-on](../iot-edge/how-to-install-iot-core.md)
+- [Az Azure IoT Edge futásidejű telepítésélinuxos (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
+- [Az Azure IoT Edge futásidejének telepítése Linuxon (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)
+- [Telepítse az Azure IoT Edge futásidejét a Windows rendszeren a Windows-tárolókkal való használatra](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
+- [Telepítse az Azure IoT Edge futásidejét a Windows-ra linuxos tárolókkal való használatra](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
+- [Az IoT Edge futásidejű telepítéséwindowsos IoT Core-ra](../iot-edge/how-to-install-iot-core.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy előkészítette a IoT Edge eszközt, a következő lépés a modulok üzembe helyezése. Lásd: [IoT Edge csomag importálása a távoli figyelési megoldás-gyorsító](iot-accelerators-remote-monitoring-import-edge-package.md)
+Most, hogy elkészítette az IoT Edge-eszközt, a következő lépés a modulok üzembe helyezése. Lásd: [IoT Edge-csomag importálása a távoli figyelési megoldás gyorsítójába](iot-accelerators-remote-monitoring-import-edge-package.md)

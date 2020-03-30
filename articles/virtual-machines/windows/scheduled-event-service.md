@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális gépek ütemezett eseményeinek figyelése az Azure-ban
-description: Ismerje meg, hogyan figyelheti meg az Azure-beli virtuális gépeket az ütemezett eseményekhez.
+title: A Windows virtuális gépek ütemezett eseményeinek figyelése az Azure-ban
+description: Ismerje meg, hogyan figyelheti az Azure virtuális gépeit az ütemezett eseményekhez.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -11,38 +11,38 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
 ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073318"
 ---
-# <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
+# <a name="monitoring-scheduled-events"></a>Ütemezett események figyelése
 
-A frissítések minden nap különböző Azure-részekre érvényesek, így a szolgáltatások biztonságban és naprakészen tarthatók. A tervezett frissítések mellett a nem tervezett események is előfordulhatnak. Ha például valamilyen hardveres romlást vagy hibát észlel, előfordulhat, hogy az Azure-szolgáltatásoknak nem tervezett karbantartást kell végezniük. Az élő áttelepítés, a memóriában lévő frissítések és a frissítések hatására általában szigorú sáv tart fenn, a legtöbb esetben ezek az események szinte transzparensek az ügyfeleknek, és a virtuális gépek lefagyása nem befolyásolja a legtöbb esetet. Egyes alkalmazások esetében azonban a virtuális gépek befagyasztásának néhány másodperce is hatással lehet. Fontos tudni, hogy a közelgő Azure-karbantartási feladatok a lehető legjobb élményt biztosítják az alkalmazások számára. A [Scheduled Events szolgáltatás](scheduled-events.md) egy programozott felületet biztosít a közelgő karbantartásról, és lehetővé teszi a karbantartás zökkenőmentes kezelését. 
+A frissítések minden nap az Azure különböző részeire vonatkoznak, hogy a szolgáltatások biztonságosés naprakész ek legyenek. A tervezett frissítések mellett nem tervezett események is előfordulhatnak. Ha például hardveres romlást vagy hibát észlel, előfordulhat, hogy az Azure-szolgáltatásoknak nem tervezett karbantartást kell végrehajtaniuk. Az élő áttelepítés, a memória megőrzése frissítések és általában a frissítések hatásának szigorú sávja, a legtöbb esetben ezek az események szinte átláthatóak az ügyfelek számára, és nincs hatásuk, vagy legfeljebb néhány másodpercnyi virtuálisgép-lefagyást okoznak. Egyes alkalmazások esetében azonban még néhány másodpercnyi virtuálisgép-fagyasztás is hatással lehet. Fontos, hogy előre megismerjék a közelgő Azure-karbantartást, hogy a lehető legjobb élményt nyújtják ezekhez az alkalmazásokhoz. [Az Ütemezett események szolgáltatás](scheduled-events.md) programozott felületet biztosít a közelgő karbantartásról, és lehetővé teszi a karbantartás kecses kezelését. 
 
-Ebben a cikkben bemutatjuk, hogyan használhatók az ütemezett események olyan karbantartási eseményekről, amelyek hatással lehetnek a virtuális gépekre, és olyan alapszintű automatizálást készíthetnek, amely segíthet a monitorozásban és az elemzésben.
+Ebben a cikkben bemutatjuk, hogyan használhatja az ütemezett eseményeket a virtuális gépeket érintő karbantartási eseményekről való értesítéshez, és hozzon létre néhány alapvető automatizálást, amely segíthet a figyelésben és az elemzésben.
 
 
-## <a name="routing-scheduled-events-to-log-analytics"></a>Ütemezett események útválasztása Log Analyticsba
+## <a name="routing-scheduled-events-to-log-analytics"></a>Ütemezett események útválasztása a Log Analytics szolgáltatásba
 
-Scheduled Events az [azure instance metadata Service](instance-metadata-service.md)részeként érhető el, amely minden Azure-beli virtuális gépen elérhető. Az ügyfelek írhatnak automatizálást a virtuális gépek végpontjának lekéréséhez, hogy megkeressék az ütemezett karbantartási értesítéseket, és csökkentsék a szükséges megoldásokat, például az állapot mentését és a virtuális gép elforgatásának elvégzését. Javasoljuk, hogy az automatizálás létrehozásával rögzítse a Scheduled Events, így az Azure karbantartási eseményeinek naplózási naplója is lehet. 
+Az ütemezett események az [Azure Instance metaadat-szolgáltatásának](instance-metadata-service.md)részeként érhetők el, amely minden Azure virtuális gépen elérhető. Az ügyfelek az automatizálás taséiban lekérdezhetik a virtuális gépek végpontját az ütemezett karbantartási értesítések megkereséséhez és kockázatcsökkentést végezhetnek, például az állapot mentéséhez és a virtuális gép elforgatásából való kiváltásához. Javasoljuk, hogy az ütemezett események et az ütemezett események rögzítéséhez végezze el, így rendelkezhet az Azure karbantartási eseményeinek naplózási naplójával. 
 
-Ebből a cikkből megtudhatja, hogyan rögzítheti Log Analytics a karbantartási Scheduled Events. Ezután elindítunk néhány alapszintű értesítési műveletet, például e-mailek küldését a csapatnak, és bemutatjuk a virtuális gépeket érintő összes esemény előzményeit. Az események összesítéséhez és automatizálásához [log Analytics](/azure/azure-monitor/learn/quick-create-workspace)fogjuk használni, de a naplók összegyűjtéséhez és az automatizálás elindításához bármelyik figyelési megoldás használható.
+Ebben a cikkben bemutatjuk, hogyan rögzítheti a karbantartási ütemezett eseményeket a Log Analytics szolgáltatásba. Ezután néhány alapvető értesítési műveletet indítunk el, például e-mailt küldünk a csapatának, és történelmi képet kapunk a virtuális gépeket érintett összes eseményről. Az esemény összesítése és automatizálása fogjuk használni [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace), de használhatja a figyelési megoldás gyűjteni ezeket a naplókat, és elindítja az automatizálást.
 
-![Az esemény életciklusát ábrázoló diagram](./media/notifications/events.png)
+![Az esemény életciklusát bemutató diagram](./media/notifications/events.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a példában létre kell hoznia egy [Windows rendszerű virtuális gépet egy rendelkezésre állási csoportba](tutorial-availability-sets.md). Scheduled Events a rendelkezésre állási csoport, a Cloud Service, a virtuálisgép-méretezési csoport vagy az önálló virtuális gépek bármelyikét érintő változásokkal kapcsolatos értesítéseket biztosítson. Egy olyan [szolgáltatást](https://github.com/microsoft/AzureScheduledEventsService) fogunk futtatni, amely egy gyűjtőként működő virtuális gép ütemezett eseményeit kérdezi le, hogy beszerezze az eseményeket a rendelkezésre állási csoport összes többi virtuális gépe számára.    
+Ebben a példában létre kell hoznia egy [Windows virtuális gépet egy rendelkezésre állási készletben.](tutorial-availability-sets.md) Ütemezett események értesítéseket biztosít a változásokat, amelyek hatással lehetnek a virtuális gépek a rendelkezésre állási csoport, a felhőszolgáltatás, a virtuálisgép-méretezési készlet vagy önálló virtuális gépek. Egy [olyan szolgáltatást](https://github.com/microsoft/AzureScheduledEventsService) fogunk futtatni, amely lekérdezi az ütemezett eseményeket az egyik virtuális gépen, amely gyűjtőként fog működni, hogy eseményeket kapjon a rendelkezésre állási csoportban lévő összes többi virtuális géphez.    
 
 Ne törölje a csoport erőforráscsoportot az oktatóanyag végén.
 
-[Létre kell hoznia egy log Analytics munkaterületet](/azure/azure-monitor/learn/quick-create-workspace) is, amelyet a rendelkezésre állási csoportba tartozó virtuális gépek adatainak összesítésére fogunk használni.
+Emellett létre kell [hoznia egy Log Analytics-munkaterületet,](/azure/azure-monitor/learn/quick-create-workspace) amelyet a rendelkezésre állási csoportban lévő virtuális gépekből származó információk összesítéséhez használunk.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
 
-A rendelkezésre állási csoportnak két kezdeti virtuális géppel kell rendelkeznie. Most létre kell hozni egy myCollectorVM nevű harmadik virtuális gépet ugyanabban a rendelkezésre állási csoportba. 
+Most már 2 kezdeti virtuális gépegy rendelkezésre állási csoportban. Most létre kell hoznunk egy 3rd VM, úgynevezett myCollectorVM, ugyanabban a rendelkezésre állási csoportban. 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -59,9 +59,9 @@ New-AzVm `
 ```
  
 
-Töltse le a projekt telepítési. zip fájlját a [githubról](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
+Töltse le a projekt telepítési .zip fájlját a [GitHubról.](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip)
 
-Kapcsolódjon a **myCollectorVM** , és másolja a. zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. Nyisson meg egy PowerShell-parancssort a virtuális gépen. Helyezze át a promptot a `SchService.ps1`tartalmazó mappába, például: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, és állítsa be a szolgáltatást.
+Csatlakozzon **a myCollectorVM-hez,** és másolja a .zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. A virtuális gépen nyisson meg egy PowerShell-parancssorba. Helyezze át a kérdést `SchService.ps1`a következő `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`mappába, például: , és állítsa be a szolgáltatást.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -73,71 +73,71 @@ Indítsa el a szolgáltatást.
 .\SchService.ps1 -Start
 ```
 
-A szolgáltatás mostantól 10 másodpercenként megkezdi a lekérdezést minden ütemezett eseményre, és jóváhagyja az eseményeket a karbantartás meggyorsításához.  A befagyasztás, az újraindítás, az újbóli üzembe helyezés és a megelőzik az események ütemezett eseményeinek rögzítése.   Vegye figyelembe, hogy a parancsfájlt kiterjesztve az esemény jóváhagyása előtt bizonyos enyhítéseket is aktiválhat.
+A szolgáltatás most antól 10 másodpercenként megkezdi a lekérdezést az ütemezett eseményekhez, és jóváhagyja az eseményeket a karbantartás felgyorsítása érdekében.  Freeze, Reboot, Redeploy és Preempt az események ütemezése események által rögzített események.   Vegye figyelembe, hogy az esemény jóváhagyása előtt kiterjesztheti a parancsfájlt bizonyos megoldások aktiválásához.
 
-Ellenőrizze a szolgáltatás állapotát, és győződjön meg róla, hogy fut.
+Ellenőrizze a szolgáltatás állapotát, és győződjön meg arról, hogy fut.
 
 ```powershell
 .\SchService.ps1 -status  
 ```
 
-Ennek `Running`kell visszaadnia.
+Ennek vissza `Running`kell térnie .
 
-A szolgáltatás mostantól 10 másodpercenként megkezdi a lekérdezést minden ütemezett eseményre, és jóváhagyja az eseményeket a karbantartás meggyorsításához.  A befagyasztás, az újraindítás, az újbóli üzembe helyezés és a megelőzik az események ütemezett eseményei által rögzített események. Kiterjesztheti a szkriptet bizonyos enyhítések elindításához az esemény jóváhagyása előtt.
+A szolgáltatás most antól 10 másodpercenként megkezdi a lekérdezést az ütemezett eseményekhez, és jóváhagyja az eseményeket a karbantartás felgyorsítása érdekében.  Freeze, Reboot, Redeploy és Preempt az események ütemezése által rögzített események. Kiterjesztheti a parancsfájlt, hogy az esemény jóváhagyása előtt bizonyos megoldásokat váltson ki.
 
-Ha a fenti események bármelyikét rögzíti az Event Service szolgáltatás, akkor az az alkalmazás eseménynapló eseményének állapota, az esemény típusa, az erőforrások (a virtuális gépek nevei) és a NotBefore (a minimális értesítési időszak) bekerül a naplóba. Az alkalmazás-eseménynaplóban megtalálhatja az 1234 AZONOSÍTÓJÚ eseményeket.
+Ha a fenti események bármelyikét a Schedule Event szolgáltatás rögzíti, akkor az megjelenik az Alkalmazás eseménynaplójának eseményállapotában, eseménytípusában, erőforrásokban (virtuálisgép nevek) és NotBefore (minimális értesítési időszak) való bejelentkezése. Az 1234-es azonosítójú eseményeket az alkalmazás eseménynaplójában találhatja meg.
 
-A szolgáltatás beállítása és elindítása után a rendszer naplózza az eseményeket a Windows-alkalmazás naplófájljaiban.   A működés ellenőrzéséhez indítsa újra az egyik virtuális gépet a rendelkezésre állási csoportból, és meg kell jelennie az eseménynaplóban naplózott eseménynek a Windows-naplók > az alkalmazás naplójában, amely a virtuális gép újraindítását mutatja. 
+A szolgáltatás beállítása és indítása után naplózza az eseményeket a Windows alkalmazásnaplóiban.   Ennek ellenőrzéséhez indítsa újra az egyik virtuális gépet a rendelkezésre állási csoportban, és meg kell jelennie egy esemény, amely bejelentkezett az Eseménynaplóban a Windows naplók > alkalmazásnapló, amely a virtuális gép újraindítását mutatja. 
 
-![Képernyőkép az Eseménynaplóról.](./media/notifications/event-viewer.png)
+![Képernyőkép az eseménynaplóról.](./media/notifications/event-viewer.png)
 
-Ha az események az ütemezett esemény szolgáltatásban vannak rögzítve, akkor az alkalmazás naplózva lesz az esemény állapota, az esemény típusa, az erőforrások (virtuális gép neve) és a NotBefore (a minimális értesítési időszak). Az alkalmazás-eseménynaplóban megtalálhatja az 1234 AZONOSÍTÓJÚ eseményeket.
+Amikor az eseményeket az Ütemezési esemény szolgáltatás rögzíti, akkor az eseményállapot, eseménytípus, erőforrások (vm-név) és notbefore (minimális értesítési időszak) naplója is be lesz jelentkezve az alkalmazásba. Az 1234-es azonosítójú eseményeket az alkalmazás eseménynaplójában találhatja meg.
 
 > [!NOTE] 
-> Ebben a példában a virtuális gépek egy rendelkezésre állási csoportba tartoznak, amely lehetővé tette, hogy egyetlen virtuális gépet jelöljön ki a gyűjtőnek, amely figyeli és irányítja az ütemezett eseményeket a log Analytics-beli működés területére. Ha önálló virtuális gépekkel rendelkezik, minden virtuális gépen futtathatja a szolgáltatást, majd egyenként összekapcsolhatja őket a log Analytics-munkaterülethez.
+> Ebben a példában a virtuális gépek egy rendelkezésre állási csoportban voltak, amely lehetővé tette számunkra, hogy egyetlen virtuális gépet jelöljünk ki gyűjtőként, amely figyeli és irányítja az ütemezett eseményeket a naplóelemzési munkaterületünkre. Ha önálló virtuális gépekkel rendelkezik, futtathatja a szolgáltatást minden virtuális gépen, majd külön-külön csatlakoztathatja őket a naplóelemzési munkaterülethez.
 >
-> A beállításhoz a Windowst választottuk, de a Linuxon hasonló megoldást is tervezhet.
+> A mi létre, úgy döntöttünk, a Windows, de lehet tervezni egy hasonló megoldás linuxos.
 
-Bármikor leállíthatja vagy eltávolíthatja az ütemezett esemény szolgáltatást a kapcsolók `–stop` és `–remove`használatával.
+Bármikor leállíthatja / eltávolíthatja az Ütemezett esemény szolgáltatást `–stop` `–remove`a kapcsolók és segítségével.
 
-## <a name="connect-to-the-workspace"></a>Kapcsolódás a munkaterülethez
+## <a name="connect-to-the-workspace"></a>Csatlakozás a munkaterülethez
 
 
-Most szeretnénk csatlakozni egy Log Analytics munkaterülethez a gyűjtő virtuális géphez. Az Log Analytics munkaterület adattárként működik, és az Eseménynapló-gyűjteményt úgy konfigurálja, hogy rögzítse az alkalmazás naplóit a gyűjtő virtuális gépről. 
+Most szeretnénk csatlakoztatni egy Log Analytics-munkaterületet a gyűjtő virtuális géphez. A Log Analytics munkaterület adattárként működik, és az eseménynapló-gyűjteményt úgy állítjuk be, hogy rögzítse az alkalmazásnaplókat a gyűjtő virtuális gépről. 
 
- Ahhoz, hogy a Scheduled Events az eseménynaplóba irányítsa, amelyet a szolgáltatás az alkalmazási naplóként fog menteni, a virtuális gépet a Log Analytics-munkaterülethez kell kötnie.  
+ Az ütemezett események átirányítása az eseménynaplóba, amelyet a szolgáltatás unk alkalmazásnaplóként ment, csatlakoztatnia kell a virtuális gépet a Log Analytics-munkaterülethez.  
  
-1. Nyissa meg a létrehozott munkaterület oldalát.
-1. **A kapcsolódás adatforráshoz** területen válassza az **Azure Virtual Machines (VM)** lehetőséget.
+1. Nyissa meg a létrehozott munkaterület lapját.
+1. A **Csatlakozás adatforráshoz** csoportban válassza az Azure virtuális gépek (VM).Under Connect to a data source select **Azure virtual machines (VM)**.
 
-    ![Kapcsolódás virtuális géphez adatforrásként](./media/notifications/connect-to-data-source.png)
+    ![Csatlakozás virtuális géphez adatforrásként](./media/notifications/connect-to-data-source.png)
 
-1. Keresse meg és válassza ki a **myCollectorVM**. 
-1. A **myCollectorVM**új lapján válassza a **kapcsolat**lehetőséget.
+1. Keresse meg és válassza **a myCollectorVM elemet.** 
+1. A **myCollectorVM**új lapján válassza a **Csatlakozás**lehetőséget.
 
-Ekkor a rendszer telepíti a [Microsoft monitoring agentet](/azure/virtual-machines/extensions/oms-windows) a virtuális gépre. A virtuális gép a munkaterülethez való összekapcsolásához és a bővítmény telepítéséhez több percet is igénybe vehet. 
+Ez telepíti a [Microsoft Monitoring agent](/azure/virtual-machines/extensions/oms-windows) a virtuális gép. Néhány percet vesz igénybe, hogy csatlakoztassa a virtuális gép a munkaterülethez, és telepítse a bővítményt. 
 
 ## <a name="configure-the-workspace"></a>A munkaterület konfigurálása
 
-1. Nyissa meg a munkaterülethez tartozó lapot, és válassza a **Speciális beállítások**lehetőséget.
-1. Válassza az **adatok** lehetőséget a bal oldali menüben, majd válassza a **Windows-eseménynaplók**lehetőséget.
-1. A **következő eseménynaplók**beírásával kezdje el beírni az *alkalmazást* , majd válassza az **alkalmazás** elemet a listából.
+1. Nyissa meg a munkaterület lapját, és válassza a **Speciális beállítások lehetőséget**.
+1. Válassza a bal oldali menü **Adatok** parancsát, majd a **Windows eseménynaplók lehetőséget.**
+1. A **Collect a következő eseménynaplókban**kezdje el beírni az *alkalmazást,* majd válassza az **Alkalmazás** elemet a listából.
 
-    ![Speciális beállítások kiválasztása](./media/notifications/advanced.png)
+    ![Válassza a Speciális beállítások lehetőséget](./media/notifications/advanced.png)
 
-1. Hagyja a **hiba**, a **Figyelmeztetés**és a kijelölt **információk** lehetőséget, majd válassza a **Mentés** lehetőséget a beállítások mentéséhez.
+1. Hagyja **a HIBA**, **Figyelem**és **INFORMÁCIÓK** beállítást, majd a Beállítások mentéséhez válassza a **Mentés** gombot.
 
 
 > [!NOTE]
-> Némi késés lesz, és akár 10 percet is igénybe vehet, mielőtt a napló elérhetővé válik. 
+> Lesz némi késés, és akár 10 percet is igénybe vehet, mielőtt a napló elérhetővé válik. 
 
 
-## <a name="creating-an-alert-rule-with-azure-monitor"></a>Riasztási szabály létrehozása Azure Monitor 
+## <a name="creating-an-alert-rule-with-azure-monitor"></a>Riasztási szabály létrehozása az Azure Monitorhasználatával 
 
 
-Az események Log Analyticsba való leküldése után a következő [lekérdezés](/azure/azure-monitor/log-query/get-started-portal) futtatásával megkeresheti az ütemezett eseményeket.
+Miután az események et lelökték a Log Analytics szolgáltatásba, a következő [lekérdezés](/azure/azure-monitor/log-query/get-started-portal) futtatásával megkeresheti az ütemezési eseményeket.
 
-1. A lap tetején válassza a **naplók** lehetőséget, majd illessze be a következőt a szövegmezőbe:
+1. A lap tetején válassza a **Naplók** lehetőséget, és illessze be a következőt a szövegmezőbe:
 
     ```
     Event
@@ -153,28 +153,28 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Válassza a **Mentés**lehetőséget, majd írja be a *logQuery* nevet, hagyja beírni a **lekérdezést** , írja be a *VMLogs* **kategóriába**, majd válassza a **Mentés**lehetőséget. 
+1. Válassza a **Mentés**lehetőséget, majd írja be a *logQuery* parancsot a névbe, hagyja a **Lekérdezés** nevet típusként, írja be a *VMLogs* **parancsot kategóriaként,** majd válassza a **Mentés parancsot.** 
 
     ![A lekérdezés mentése](./media/notifications/save-query.png)
 
 1. Válassza az **Új riasztási szabály** lehetőséget. 
-1. A **szabály létrehozása** lapon hagyja `collectorworkspace` **erőforrásként**.
-1. A **feltétel**területen válassza ki a bejegyzést, *amikor az ügyfél naplójának keresése <login undefined>* . Ekkor megnyílik a **jel logikai beállítása** lap.
-1. A **küszöbérték**mezőben adja meg a *0* értéket, majd válassza a **kész**lehetőséget.
-1. A **műveletek**területen válassza a **műveleti csoport létrehozása**lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.
-1. A **műveleti csoport neve**mezőbe írja be a következőt: *myActionGroup*.
-1. A **rövid név**mezőbe írja be a következőt: **myActionGroup**.
-1. Az **erőforráscsoport**területen válassza a **myResourceGroupAvailability**lehetőséget.
-1. A műveletek területen a **művelet neve** mezőbe írja be az **e-mail**nevet, majd válassza az **E-mail/SMS/leküldés/hang**lehetőséget. Ekkor megnyílik az **e-mail/SMS/push/Voice** oldal.
-1. Válassza az **e-mail**lehetőséget, írja be az e-mail címét, majd kattintson **az OK gombra**.
-1. A **műveleti csoport hozzáadása** lapon kattintson az **OK gombra**. 
-1. A **szabály létrehozása** lap **riasztás részletei**területén írja be a *myAlert* **nevet a riasztási szabály neveként**, majd írja be a **leíráshoz**az *e-mailes riasztási szabályt* .
-1. Ha elkészült, válassza a **riasztási szabály létrehozása**lehetőséget.
-1. Indítsa újra az egyik virtuális gépet a rendelkezésre állási csoportból. Néhány percen belül egy e-mailt kell kapnia arról, hogy a riasztás aktiválva lett.
+1. A **Szabály létrehozása** lapon `collectorworkspace` hagyja **erőforrásként.**
+1. A **Feltétel csoportban**válassza ki a *bejegyzést, amikor a vevői naplókeresés a. <login undefined> * Megnyílik **a Jellogika konfigurálása** lap.
+1. A **Küszöbérték mezőbe**írja be a *0* értéket, majd válassza a **Kész**lehetőséget.
+1. A **Műveletek csoportban**válassza **a Műveletcsoport létrehozása lehetőséget.** Megnyílik **a Műveletcsoport hozzáadása** lap.
+1. A **Műveletcsoport nevének**mezőbe írja be a *myActionGroup csoportot.*
+1. A **Rövid név mezőbe**írja be a **myActionGroup csoportot.**
+1. Az **Erőforrás csoportban**válassza a **myResourceGroupAvailability**lehetőséget.
+1. A Műveletek **csoportban** az ACTION NAME mezőbe írja be **az E-mail**nevet, és válassza **az E-mail/SMS/Push/Voice lehetőséget.** Megnyílik **az E-mail/SMS/Push/Voice** oldal.
+1. Válassza **az E-mail**lehetőséget, írja be az e-mail címét, majd kattintson az **OK gombra.**
+1. A **Műveletcsoport hozzáadása** lapon válassza az **OK gombot.** 
+1. A **Szabály létrehozása** lap **FIGYELMEZTETÉSRÉSZLETEI csoportjában**írja be a *myAlert* parancsot a **riasztási szabály nevéhez,** majd írja be az *E-mail riasztási szabályt* a Leírás **mezőbe.**
+1. Ha végzett, válassza **a Figyelmeztetési szabály létrehozása**lehetőséget.
+1. Indítsa újra az egyik virtuális gépet a rendelkezésre állási csoportban. Néhány percen belül e-mailt kell kapnia arról, hogy a riasztás aktiválódott.
 
-A riasztási szabályok kezeléséhez nyissa meg az erőforráscsoportot, válassza a bal oldali menüben a **riasztások** elemet, majd a lap tetején válassza a **riasztási szabályok kezelése** lehetőséget.
+A riasztási szabályok kezeléséhez lépjen az erőforráscsoportra, válassza a bal oldali menü **Riasztások** parancsát, majd válassza a **riasztási szabályok kezelése lehetőséget** a lap tetején.
 
      
 ## <a name="next-steps"></a>További lépések
 
-További információ: [ütemezett események szolgáltatás](https://github.com/microsoft/AzureScheduledEventsService) lapja a githubon.
+További információ: [Az Ütemezett események szolgáltatás](https://github.com/microsoft/AzureScheduledEventsService) lap a GitHubon.

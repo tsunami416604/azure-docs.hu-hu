@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások renderelése – Azure Batch
-description: Azure Batch használatával bármilyen renderelési alkalmazás használható. Az Azure Marketplace virtuálisgép-lemezképei azonban előre telepített általános alkalmazásokkal is elérhetők.
+title: Renderelési alkalmazások – Azure Batch
+description: Az Azure Batch-el bármilyen renderelési alkalmazást használhat. Azonban az Azure Marketplace virtuális gép lemezképek érhetők el a közös alkalmazások előre telepített.
 services: batch
 ms.service: batch
 author: LauraBrenner
@@ -8,87 +8,87 @@ ms.author: labrenne
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.openlocfilehash: 77672534b2aad993a44e9b637fbed58df8610e97
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022987"
 ---
-# <a name="pre-installed-applications-on-rendering-vm-images"></a>Előre telepített alkalmazások a virtuálisgép-lemezképek megjelenítéséhez
+# <a name="pre-installed-applications-on-rendering-vm-images"></a>Előre telepített alkalmazások a virtuálisgép-lemezképek renderelésén
 
-Azure Batch használatával bármilyen renderelési alkalmazás használható. Az Azure Marketplace virtuálisgép-lemezképei azonban előre telepített általános alkalmazásokkal is elérhetők.
+Az Azure Batch-el bármilyen renderelési alkalmazást használhat. Azonban az Azure Marketplace virtuális gép lemezképek érhetők el a közös alkalmazások előre telepített.
 
-Ha alkalmazható, a használaton kívüli licencelés elérhető az előre telepített renderelési alkalmazásokhoz. Batch-készlet létrehozásakor a szükséges alkalmazások megadhatók, és a virtuális gép és az alkalmazások díja percenként történik. Az alkalmazások árai a [Azure batch díjszabási oldalon](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)találhatók.
+Adott esetben az előre telepített renderelési alkalmazások esetében használatalapú licencelés áll rendelkezésre. Kötegkészlet létrehozásakor a szükséges alkalmazások megadhatók, és mind a virtuális gép, mind az alkalmazások költsége percenként kerül számlázásra. Az alkalmazásárak az [Azure Batch díjszabási oldalán](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)jelennek meg.
 
-Néhány alkalmazás csak a Windowst támogatja, de a legtöbb Windows és Linux rendszeren is támogatott.
+Egyes alkalmazások csak a Windows rendszert támogatják, de a legtöbb a Windows és a Linux operációs rendszert is támogatja.
 
-## <a name="applications-on-centos-7-rendering-images"></a>Alkalmazások CentOS 7 renderelési lemezképekben
+## <a name="applications-on-centos-7-rendering-images"></a>Alkalmazások a CentOS 7 renderelési képek
 
-A következő lista a CentOS 7,6-es verziójú 1.1.6-renderelési lemezképekre vonatkozik.
+Az alábbi lista a CentOS 7.6 1.1.6-os verziójú renderelési képére vonatkozik.
 
 * Autodesk Maya I/O 2017 5. frissítés (201708032230-s verzió)
-* Autodesk Maya I/O 2018 2. frissítés (cut 201711281015)
-* Autodesk Maya I/O 2019 1. frissítés
-* Autodesk Arnold Maya 2017 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2017
-* Autodesk Arnold Maya 2018 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2018
-* Autodesk Arnold Maya 2019 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2019
+* Autodesk Maya I/O 2018 2- es frissítés (201711281015 vágás)
+* Az Autodesk Maya I/O 2019 1.
+* Autodesk Arnold a Maya 2017-hez (Arnold 5.3.1.1) MtoA-3.2.1.1-2017
+* Autodesk Arnold a Maya 2018-hoz (Arnold 5.3.1.1) MtoA-3.2.1.1-2018
+* Autodesk Arnold a Maya 2019-hez (Arnold 5.3.1.1) MtoA-3.2.1.1-2019
 * Chaos Group V-Ray for Maya 2017 (3.60.04-es verzió)
 * Chaos Group V-Ray for Maya 2018 (3.60.04-es verzió)
 * Blender (2.68)
-* Turmixgép (2,8)
+* Turmixgép (2.8)
 
-## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>A legújabb Windows Server 2016-es renderelési rendszerképeket használó alkalmazások
+## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>Alkalmazások a windows Server 2016 legújabb renderelési lemezképein
 
-A következő lista a Windows Server 2016-es verziójának 1.3.8-megjelenítési lemezképeit érinti.
+Az alábbi lista a Windows Server 2016 1.3.8-as verziójának renderelési lemezképeire vonatkozik.
 
 * Autodesk Maya I/O 2017 5. frissítés (17.4.5459-es verzió)
-* Autodesk Maya I/O 2018 6. frissítés (18.4.0.7622 verzió)
+* Autodesk Maya I/O 2018 6.
 * Autodesk Maya I/O 2019
 * Autodesk 3ds Max I/O 2018 4. frissítés (20.4.0.4254-es verzió)
-* Autodesk 3ds Max I/O 2019 1. frissítés (21.2.0.2219 verzió)
-* Autodesk 3ds Max I/O 2020 2. frissítés
-* Autodesk Arnold Maya 2017 (Arnold Version 5.3.0.2) MtoA-3.2.0.2-2017
-* Autodesk Arnold Maya 2018 (Arnold Version 5.3.0.2) MtoA-3.2.0.2-2018
-* Autodesk Arnold Maya 2019 (Arnold Version 5.3.0.2) MtoA-3.2.0.2-2019
-* Autodesk Arnold 3ds Max 2018 (Arnold Version 5.3.0.2) (1.2.926 verzió)
-* Autodesk Arnold 3ds Max 2019 (Arnold Version 5.3.0.2) (1.2.926 verzió)
-* Autodesk Arnold 3ds Max 2020 (Arnold Version 5.3.0.2) (1.2.926 verzió)
-* Chaos Group V-Ray a Maya 2017 (4.12.01 verzió)
-* Chaos Group V-Ray a Maya 2018 (4.12.01 verzió)
-* Chaos Group V-Ray a Maya 2019 (4.04.03 verzió)
-* Chaos Group V-Ray a 3ds Max 2018 (4.20.01 verzió)
-* Chaos Group V-Ray a 3ds Max 2019 (4.20.01 verzió)
-* Chaos Group V-Ray a 3ds Max 2020 (4.20.01 verzió)
+* Autodesk 3ds Max I/O 2019 1.
+* Autodesk 3ds Max I/O 2020 2.
+* Autodesk Arnold a Maya 2017-hez (Arnold 5.3.0.2) MtoA-3.2.0.2-2017
+* Autodesk Arnold a Maya 2018-hoz (Arnold 5.3.0.2) MtoA-3.2.0.2-2018
+* Autodesk Arnold a Maya 2019-hez (Arnold 5.3.0.2) MtoA-3.2.0.2-2019
+* Autodesk Arnold a 3ds Max 2018-hoz (Arnold 5.3.0.2-es verzió) (1.2.926 verzió)
+* Autodesk Arnold a 3ds Max 2019-hez (Arnold 5.3.0.2-es verzió) (1.2.926 verzió)
+* Autodesk Arnold a 3ds Max 2020-hoz (Arnold 5.3.0.2-es verzió) (1.2.926 verzió)
+* Chaos Group V-Ray a 2017-es Maya számára (4.12.01-es verzió)
+* Chaos Group V-Ray a 2018-as Maya számára (4.12.01 verzió)
+* Chaos Group V-Ray a 2019-es Maya számára (4.04.03 verzió)
+* Chaos Group V-Ray a 3ds Max 2018-hoz (4.20.01 verzió)
+* Chaos Group V-Ray a 3ds Max 2019-hez (4.20.01 verzió)
+* Chaos Group V-Ray a 3ds Max 2020-hoz (4.20.01 verzió)
 * Blender (2.79)
 * Turmixgép (2,80)
 * AZ 10
 
 > [!IMPORTANT]
-> A V-Ray és a Maya [Azure batch-bővítmény sablonjain](https://github.com/Azure/batch-extension-templates)kívüli futtatásához indítsa el `vrayses.exe` a renderelés futtatása előtt. A vrayses. exe sablonon kívüli elindításához használhatja a következő parancsot `%MAYA_2017%\vray\bin\vrayses.exe"`.
+> V-ray futtatásához maya kívül az [Azure Batch-bővítmény sablonok,](https://github.com/Azure/batch-extension-templates)indítsa el `vrayses.exe` a render futtatása előtt. A vrayses.exe program sablonokon kívüli elindításához használja `%MAYA_2017%\vray\bin\vrayses.exe"`a következő parancsot.
 >
-> Példaként tekintse meg a [Maya és a V-Ray sablon](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) indítási feladatát a githubon.
+> Például tekintse meg a Maja és a [V-Ray sablon](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) kezdő feladatát a GitHubon.
 
-## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>Alkalmazások a korábbi Windows Server 2016 képmegjelenítési lemezképeken
+## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>Alkalmazások a korábbi Windows Server 2016 renderelési képeken
 
-A következő lista a Windows Server 2016-es verziójának 1.3.7-megjelenítési lemezképeit érinti.
+Az alábbi lista a Windows Server 2016 1.3.7-es verziójának renderelési lemezképeire vonatkozik.
 
 * Autodesk Maya I/O 2017 5. frissítés (17.4.5459-es verzió)
-* Autodesk Maya I/O 2018 4. frissítés (18.4.0.7622 verzió)
-* Autodesk 3ds Max I/O 2019 1. frissítés (21.2.0.2219 verzió)
+* Autodesk Maya I/O 2018 4.
+* Autodesk 3ds Max I/O 2019 1.
 * Autodesk 3ds Max I/O 2018 4. frissítés (20.4.0.4254-es verzió)
-* Autodesk Arnold Maya 2017 (Arnold Version 5.2.0.1) MtoA-3.1.0.1-2017
-* Autodesk Arnold Maya 2018 (Arnold Version 5.2.0.1) MtoA-3.1.0.1-2018
-* Autodesk Arnold 3ds Max 2018 (Arnold Version 5.0.2.4) (1.2.926 verzió)
-* Autodesk Arnold 3ds Max 2019 (Arnold Version 5.0.2.4) (1.2.926 verzió)
-* Chaos Group V-Ray a Maya 2018 (3.52.03 verzió)
-* Chaos Group V-Ray a 3ds Max 2018 (3.60.02 verzió)
-* Chaos Group V-Ray a Maya 2019 (3.52.03 verzió)
-* Chaos Group V-Ray a 3ds Max 2019 (4.10.01 verzió)
+* Autodesk Arnold a Maya 2017-hez (Arnold 5.2.0.1- MtoA-3.1.0.1-2017
+* Autodesk Arnold a Maya 2018-hoz (Arnold 5.2.0.1) MtoA-3.1.0.1-2018
+* Autodesk Arnold a 3ds Max 2018-hoz (Arnold 5.0.2.4-es verzió) (1.2.926 verzió)
+* Autodesk Arnold a 3ds Max 2019-hez (Arnold 5.0.2.4-es verzió) (1.2.926 verzió)
+* Chaos Group V-Ray a 2018-as Maya számára (3.52.03 verzió)
+* Chaos Group V-Ray a 3ds Max 2018-hoz (3.60.02 verzió)
+* Chaos Group V-Ray a Maya 2019-hez (3.52.03 verzió)
+* Chaos Group V-Ray a 3ds Max 2019-hez (4.10.01 verzió)
 * Blender (2.79)
 
 > [!NOTE]
-> A Chaos-csoport V-Ray for 3ds Max 2019 (4.10.01 verzió) bevezeti a V-Ray változásait. Az előző verzió (3.60.02-verzió) használatához használja a Windows Server 2016-es verzióját, a 1.3.2 renderelési csomópontokat.
+> Chaos Group V-Ray for 3ds Max 2019 (version 4.10.01) bemutatja a V-ray törési módosításait. Az előző verzió (3.60.02-es verzió) használatához használja a Windows Server 2016 1.3.2-es verziójú renderelő csomópontjait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A renderelési virtuálisgép-lemezképek használatához a készlet létrehozásakor meg kell adni őket a készlet konfigurációjában. Tekintse [meg a Batch-készlet képességeit a rendereléshez](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools).
+A renderelési virtuálisgép-lemezképek használatához meg kell adni őket a készlet konfigurációjában a készlet létrehozásakor; lásd a [Kötegkészlet renderelési lehetőségeit.](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools)

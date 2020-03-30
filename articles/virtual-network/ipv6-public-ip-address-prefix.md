@@ -1,7 +1,7 @@
 ---
-title: Nyilvános IPv6-cím előtagja az Azure Virtual Networkben
+title: Nyilvános IPv6-címelőtag az Azure virtuális hálózatában
 titlesuffix: Azure Virtual Network
-description: Ismerje meg a nyilvános IPv6-cím előtagját az Azure Virtual Networkben.
+description: Ismerje meg a nyilvános IPv6-cím előtagot az Azure virtuális hálózatában.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,44 +13,44 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
 ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72965172"
 ---
-# <a name="reserved-public-ipv6-address-prefix-preview"></a>Fenntartott nyilvános IPv6-cím előtagja (előzetes verzió)
+# <a name="reserved-public-ipv6-address-prefix-preview"></a>Fenntartott nyilvános IPv6-címelőtag (előzetes verzió)
 
-Az Azure-ban a kettős verem (IPv4 és IPv6) virtuális hálózatok (VNet) és a virtuális gépek (VM-EK) alapértelmezés szerint biztonságosak, mivel nem rendelkeznek internetkapcsolattal. Az Azure-ból beszerezhető nyilvános IPv6-címekkel könnyedén hozzáadhat IPv6-alapú internetkapcsolatot az Azure Load Balancerhez és a virtuális gépekhez.
+Az Azure-ban a kétverű (IPv4+IPv6) virtuális hálózatok (VNet) és a virtuális gépek (VM-ek) alapértelmezés szerint biztonságosak, mivel nem rendelkeznek internetkapcsolattal. Az Azure load balancers és a virtuális gépek hez egyszerűen hozzáadhat iPv6-internetkapcsolatot az Azure-ból beszerzett nyilvános IPv6-címekkel.
 
-A fenntartott nyilvános IP-címek a választott Azure-régióval és az Azure-előfizetéssel vannak társítva. A fenntartott (statikus) IPv6 nyilvános IP-címet áthelyezheti az előfizetésében található bármely Azure Load Balancer vagy virtuális gép között. Az IPv6-alapú nyilvános IP-címet teljes mértékben leválaszthatja, és a használatra kerül, amikor elkészült.
+A lefoglalt nyilvános IP-k az Ön által választott Azure-régióhoz és az Azure-előfizetéshez vannak társítva. A fenntartott (statikus) nyilvános IP-cím az Azure Load Balancers vagy a virtuális gépek között az előfizetésben áthelyezheti. Az IPv6 nyilvános IP-címét teljesen elissza, és ha készen áll, akkor az ön számára is megtörténik.
 
 > [!WARNING]
-> A nyilvános IP-címek véletlen törléséhez használja a figyelmeztetést. Egy nyilvános IP-cím törlése eltávolítja az előfizetésből, és nem fogja tudni visszaállítani (még az Azure-támogatás segítségével sem).
+> Legyen óvatos, ha nem törli véletlenül a nyilvános IP-címeket. A nyilvános IP-cím törlésével eltávolítja azt az előfizetésből, és nem fogja tudni helyreállítani (még az Azure-támogatás segítségével sem).
 
-Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is fenntarthatja a használatra.  Az egyes IP-címekhez hasonlóan a fenntartott előtagok egy Ön által választott Azure-régióhoz, valamint az Azure-előfizetéshez kapcsolódnak. Egy előre jelezhető, összefüggő címtartomány megőrzése számos felhasználási területtel rendelkezik. Nagymértékben leegyszerűsítheti például az Azure által üzemeltetett alkalmazások IP- *engedélyezési* feltételeit a vállalat és az ügyfelek számára, mivel a statikus IP-címtartományok a helyszíni tűzfalakra is könnyen beprogramozhatók.  Igény szerint létrehozhat egyéni nyilvános IP-címeket az IP-előtagból, és törölheti azokat az egyes nyilvános IP-címeket, amelyeket a fenntartott tartományba *visszaadottak* , így később újra felhasználhatja őket. Az IP-előtagban lévő összes IP-cím a kizárólagos használatra van fenntartva, amíg el nem távolítja az előtagot.
+Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is lefoglalhatja a használatra.  Az egyes IP-címekhez hasonlóan a fenntartott előtagok az Ön által választott Azure-régióhoz és az Azure-előfizetéshez kapcsolódnak. A címk kiszámítható, összefüggő tartományának lefoglalása számos felhasználási haszna van. Például nagyban leegyszerűsítheti a vállalat és az ügyfelek által üzemeltetett Azure-alkalmazások *IP-engedélyezési listáját,* mivel a statikus IP-tartományok könnyen programozhatók helyszíni tűzfalakba.  Szükség szerint létrehozhat egyéni nyilvános IP-címeket az IP-előtagból, és amikor törli ezeket az egyes nyilvános IP-címeket, azok *visszakerülnek* a fenntartott tartományba, így később újra felhasználhatja őket. Az IP-előtagban lévő összes IP-cím az előtag törléséig van fenntartva az Ön kizárólagos használatára.
 
 > [!Important]
-> Az Azure Virtual Networkhez készült IPv6 jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az IPv6 for Azure Virtual Network jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="ipv6-prefix-sizes"></a>IPv6-előtag mérete
-A következő nyilvános IP-előtag-méretek érhetők el:
+## <a name="ipv6-prefix-sizes"></a>IPv6 előtagok méretei
+A következő nyilvános IP-előtagok érhetők el:
 
--  IPv6-előtag minimális mérete:/127 = 2 cím
--  IPv6-előtag maximális mérete:/124 = 16 cím
+-  Minimális IPv6 előtagméret: /127 = 2 cím
+-  Maximális IPv6 előtagméret: /124 = 16 cím
 
-Az előtag mérete osztály nélküli tartományok közötti útválasztási (CIDR) maszk méretként van megadva. Például a/128 maszkja egy egyedi IPv6-címet jelöl, mivel az IPv6-címek a 128 BITS-ből állnak.
+Az előtag mérete osztály nélküli TARTOMÁNYOK közötti útválasztás (CIDR) maszkméretként van megadva. A /128 maszk például egyedi IPv6-címet jelöl, mivel az IPv6-címek 128 bitből állnak.
 
 ## <a name="pricing"></a>Díjszabás
  
-Az Azure-beli nyilvános IP-címek, az egyedi IP-címek és az IP-címtartományok használatával kapcsolatos költségekért lásd: [nyilvános IP-cím díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
+Az Azure nyilvános IP-címek , egyéni IP-címek és IP-tartományok használatával kapcsolatos költségekről a [Nyilvános IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/)című témakörben van.
 
 ## <a name="limitations"></a>Korlátozások
-Az IPv6 az alapszintű nyilvános IP-címeknél csak a "dinamikus" kiosztással támogatott, ami azt jelenti, hogy az IPv6-cím akkor változik, ha törli és újból üzembe helyezi az alkalmazást (virtuális gép vagy terheléselosztó) az Azure-ban. A standard szintű IPv6 nyilvános IP-címek kizárólag statikus (fenntartott) foglalást támogatnak, bár a standard belső terheléselosztó a hozzájuk rendelt alhálózaton belül is támogatja a dinamikus kiosztást.  
+Az IPv6 csak "dinamikus" foglalással támogatott az IPv6-alapú ip-címek, ami azt jelenti, hogy az IPv6-cím megváltozik, ha törli és újratelepíti az alkalmazást (virtuális gépek vagy terheléselosztók) az Azure-ban. Standard IPv6 nyilvános IP-támogatás kizárólag statikus (fenntartott) foglalás, bár standard belső terheléselosztók is támogatja a dinamikus elosztás attól az alhálózattól, amelyhez hozzá vannak rendelve.  
 
-Ajánlott eljárásként javasoljuk, hogy szabványos nyilvános IP-címeket és standard Load Balancereket használjon IPv6-alkalmazásaihoz.
+Ajánlott eljárásként azt javasoljuk, hogy az IPv6-alkalmazások hoz szabványos nyilvános IP-címeket és standard terheléselosztókat használjon.
 
-## <a name="next-steps"></a>Következő lépések
-- Foglaljon le egy nyilvános [IPv6-cím előtagot](ipv6-reserve-public-ip-address-prefix.md).
-- További információ az [IPv6-címekről](ipv6-overview.md).
-- Ismerje meg, [hogyan hozhat létre és használhat nyilvános IP-címeket](virtual-network-public-ip-address.md) (IPv4-és IPv6-alapú) az Azure-ban.
+## <a name="next-steps"></a>További lépések
+- Nyilvános [IPv6-címelőtag lefoglalása](ipv6-reserve-public-ip-address-prefix.md).
+- További információ az [IPv6-címekről.](ipv6-overview.md)
+- [Megtudhatja, hogyan hozhat létre és használhat nyilvános IP-címeket](virtual-network-public-ip-address.md) (iPv4-et és IPv6-ot egyaránt) az Azure-ban.

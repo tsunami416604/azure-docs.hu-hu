@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68361530"
 ---
-### <a name="database-tier"></a>Adatbázis-szint
+### <a name="database-tier"></a>Adatbázisszint
 
-Az adatbázis szintje tartalmazza az alkalmazás adatbázis-példányait. Az adatbázis lehet Oracle DB, Oracle RAC vagy Oracle Exadata Database rendszer. 
+Az adatbázisréteg az alkalmazás adatbázispéldányait tartalmazza. Az adatbázis lehet Oracle DB, Oracle RAC vagy Oracle Exadata Database rendszer. 
 
-Ha a választás a Oracle DB használata, az adatbázis-példány az Azure piactéren elérhető Oracle DB rendszerképeken keresztül is üzembe helyezhető az Azure-ban. Azt is megteheti, hogy az összekötőt az Azure és a OCI között használja, hogy a Oracle DBt a OCI-on található egy Pásti modellben telepítse.
+Ha az Oracle DB használata, az adatbázispéldány telepíthető az Azure-ban az Azure Piactéren elérhető Oracle DB lemezképeken keresztül. Azt is megteheti, hogy az Azure és az OCI közötti kapcsolatot használja az Oracle DB üzembe helyezéséhez egy PaaS-modellben oci-n.
 
-Az Oracle RAC esetében az Oracle RAC üzembe helyezése az Azure CloudSimple-ben az IaaS-modellben vagy a OCI-ben a Pásti modellben. Ajánlott két csomópontos RAC-rendszer használata. 
+Az Oracle RAC esetében az Oracle RAC-t az Azure CloudSimple-en telepítheti IaaS-modellben vagy OCI-ben A PaaS-modellben. Javasoljuk, hogy kétcsomópontos RAC rendszert használjon. 
 
-Végül a Exadata rendszerek esetében használja a OCI interconnectt, és telepítse a Exadata rendszert a OCI-ben. A fenti architektúra-diagramon egy, a OCI-ben üzembe helyezett Exadata-rendszer látható két alhálózaton belül.
+Végül az Exadata-rendszerek esetében használja az OCI-összeköttetést, és telepítse az Exadata rendszert az OCI-ben. Az előző architektúradiagram egy OCI-ben üzembe helyezett Exadata-rendszert jelenít meg két alhálózaton keresztül.
 
-Éles forgatókönyvek esetén az adatbázis több példányát is üzembe helyezheti két rendelkezésre állási zónában (ha az Azure-ban üzembe helyezhető), vagy két rendelkezésre állási tartomány (a OCI-ben). Az Oracle Active Database Guard használatával szinkronizálhatja az elsődleges és a készenléti adatbázist.
+Éles környezetben az adatbázis több példányát helyezheti üzembe két rendelkezésre állási zónában (ha az Azure-ban telepíti) vagy két rendelkezésre állási tartományban (OCI-ben). Az elsődleges és készenléti adatbázisok szinkronizálásához használja az Oracle Active Data Guard segítségével.
 
-Az adatbázis-rétegek csak a középső szintű kérelmeket kapják meg. Javasoljuk, hogy hozzon létre egy hálózati biztonsági csoportot (biztonsági lista, ha az adatbázist a OCI-ben telepíti), hogy csak a középső szinten és a 22-es porton engedélyezze a kérelmeket rendszergazdai okokból a megerősített kiszolgálóról a 1521-as porton.
+Az adatbázisszint csak a középső rétegtől érkező kéréseket fogad. Javasoljuk, hogy állítson be egy hálózati biztonsági csoportot (biztonsági lista, ha az adatbázist oci-ben telepíti), hogy csak a középső rétegről és a 22-es portról a megerősített kiszolgálóról érkező 1521-es porton engedélyezze a kérelmeket.
 
-A OCI-ben üzembe helyezett adatbázisok esetében egy különálló virtuális felhőalapú hálózatot kell beállítani egy olyan dinamikus útválasztási átjáróval (DRG), amely a FastConnect-áramkörhöz csatlakozik.
+Az OCI-ben telepített adatbázisok esetében külön virtuális felhőhálózatot kell létrehozni egy dinamikus útválasztási átjáróval (DRG), amely a FastConnect-áramkörhöz csatlakozik.

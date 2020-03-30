@@ -1,6 +1,6 @@
 ---
-title: Azure-IoT Hub létrehozása PowerShell-parancsmag használatával | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy erőforráscsoportot a PowerShell-parancsmagok használatával, majd hogyan hozhat létre IoT hubot az erőforráscsoporthoz. Azt is megtudhatja, hogyan távolíthatja el a hubot.
+title: Hozzon létre egy Azure IoT Hub ot PowerShell-parancsmag használatával | Microsoft dokumentumok
+description: Ismerje meg, hogyan használhatja a PowerShell-parancsmagokat egy erőforráscsoport létrehozásához, majd hozzon létre egy IoT-központot az erőforráscsoportban. Azt is megtudhatja, hogyan távolíthatja el a hubot.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890602"
 ---
-# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>IoT hub létrehozása a New-AzIotHub parancsmag használatával
+# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>IoT-központ létrehozása az Új-AzIotHub-parancsmag használatával
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>Bevezetés
 
-Az Azure IoT-hubok létrehozásához és kezeléséhez Azure PowerShell parancsmagokat is használhat. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre IoT hubot a PowerShell használatával.
+Az Azure PowerShell-parancsmagokkal azure IoT-központokat hozhat létre és kezelhet. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy IoT hub powershellnel.
 
-A útmutató végrehajtásához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Az útmutató befejezéséhez Azure-előfizetésre van szüksége. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -30,18 +30,18 @@ A útmutató végrehajtásához Azure-előfizetésre van szükség. Ha nem rende
 
 ## <a name="connect-to-your-azure-subscription"></a>Csatlakozás az Azure-előfizetéshez
 
-Ha a Cloud Shell használja, már be van jelentkezve az előfizetésbe. Ha ehelyett a PowerShellt helyileg futtatja, a következő parancs beírásával jelentkezzen be az Azure-előfizetésbe:
+Ha a Cloud Shellt használja, már be van jelentkezve az előfizetésbe. Ha ehelyett helyileg futtatja a PowerShellt, írja be a következő parancsot az Azure-előfizetésbe való bejelentkezéshez:
 
 ```powershell
 # Log into Azure account.
 Login-AzAccount
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az IoT hub üzembe helyezéséhez erőforráscsoport szükséges. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
+Egy IOt-központ üzembe helyezéséhez erőforráscsoportra van szükség. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
-Az IoT hub-hoz tartozó erőforráscsoport létrehozásához használja a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) parancsot. Ez a példa létrehoz egy **MyIoTRG1** nevű ERŐFORRÁSCSOPORTOT az **USA keleti** régiójában:
+Erőforráscsoport létrehozásához az IoT hub, használja a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) parancsot. Ez a példa létrehoz egy **MyIoTRG1** nevű erőforráscsoportot az **USA keleti régiójában:**
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
@@ -49,7 +49,7 @@ New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Ha az előző lépésben létrehozott erőforráscsoporthoz IoT hubot szeretne létrehozni, használja a [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) parancsot. Ez a példa egy **MyTestIoTHub** nevű **S1** HUBOT hoz létre az **USA keleti** régiójában:
+Ha az előző lépésben létrehozott erőforráscsoportban hozzon létre egy IoT-központot, használja a [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) parancsot. Ez a példa létrehoz egy **S1** hub nevű **MyTestIoTHub** az **USA keleti régiójában:**
 
 ```azurepowershell-interactive
 New-AzIotHub `
@@ -63,15 +63,15 @@ Az IoT hub nevének globálisan egyedinek kell lennie.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-Az előfizetésben található összes IoT-hub a [Get-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) paranccsal listázható:
+A [Get-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) paranccsal az előfizetésében lévő összes IoT-központot listázhatja:
 
 ```azurepowershell-interactive
 Get-AzIotHub
 ```
 
-Ez a példa az előző lépésben létrehozott S1 standard IoT Hub mutatja.
+Ebben a példában az előző lépésben létrehozott S1 standard IoT Hub látható.
 
-Az IoT hub a [Remove-AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) paranccsal törölhető:
+Az IoT-hub az [Remove-AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) paranccsal törölhető:
 
 ```azurepowershell-interactive
 Remove-AzIotHub `
@@ -79,7 +79,7 @@ Remove-AzIotHub `
     -Name MyTestIoTHub
 ```
 
-Azt is megteheti, hogy eltávolít egy erőforráscsoportot és a benne található összes erőforrást a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) parancs használatával:
+Másik lehetőségként eltávolíthatja az erőforráscsoportot és a benne lévő összes erőforrást az [Eltávolítás-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) paranccsal:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyIoTRG1
@@ -87,18 +87,18 @@ Remove-AzResourceGroup -Name MyIoTRG1
 
 ## <a name="next-steps"></a>További lépések
 
-Most már üzembe helyezett egy IoT hubot egy PowerShell-parancsmag használatával, ha további részleteket szeretne felfedezni, tekintse meg a következő cikkeket:
+Most egy PowerShell-parancsmag használatával telepített egy IoT-központot, ha további lehetőségeket szeretne feltárni, tekintse meg a következő cikkeket:
 
-* [PowerShell-parancsmagok az IoT hub használatával végzett munkához](https://docs.microsoft.com/powershell/module/az.iothub/).
+* [PowerShell-parancsmagok az IoT hub használatával való munkához.](https://docs.microsoft.com/powershell/module/az.iothub/)
 
-* [IoT hub erőforrás-szolgáltató REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource).
+* [IoT Hub erőforrás-szolgáltató REST API.](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 
-Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg a következő cikkeket:
+Ha többet szeretne tudni az IoT Hub fejlesztéseiről, olvassa el az alábbi cikkeket:
 
-* [A C SDK bemutatása](iot-hub-device-sdk-c-intro.md)
+* [Bevezetés a C SDK-ba](iot-hub-device-sdk-c-intro.md)
 
 * [Azure IoT SDK-k](iot-hub-devguide-sdks.md)
 
-A IoT Hub képességeinek további megismeréséhez lásd:
+Az IoT Hub képességeinek további megismeréséhez lásd:
 
-* [AI üzembe helyezése az Edge-eszközökön Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)

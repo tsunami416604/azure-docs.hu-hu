@@ -1,7 +1,7 @@
 ---
 title: Terheléselosztás több IP-konfiguráción – Azure Portal
 titleSuffix: Azure Load Balancer
-description: Ebben a cikkben megismerheti az elsődleges és másodlagos IP-konfigurációk terheléselosztását a Azure Portal használatával.
+description: Ebben a cikkben az Azure Portal on az Azure Portal használatával az elsődleges és másodlagos IP-konfigurációk terheléselosztása.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,184 +14,184 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74077007"
 ---
-# <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfiguráción a Azure Portal használatával
+# <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfiguráción az Azure Portal használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](load-balancer-multiple-ip.md)
-> * [PowerShell](load-balancer-multiple-ip-powershell.md)
-> * [Parancssori felület](load-balancer-multiple-ip-cli.md)
+> * [Powershell](load-balancer-multiple-ip-powershell.md)
+> * [parancssori felület](load-balancer-multiple-ip-cli.md)
 
 
-Ebben a cikkben bemutatjuk, hogyan használhatók a Azure Load Balancer több IP-címmel egy másodlagos hálózati adapteren (NIC). A következő ábra szemlélteti a forgatókönyvet:
+Ebben a cikkben bemutatjuk, hogyan használhatja az Azure Load Balancer több IP-címekkel egy másodlagos hálózati adapter vezérlő (NIC). Az alábbi ábra a forgatókönyvünket mutatja be:
 
 ![Terheléselosztói forgatókönyv](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-A forgatókönyvben a következő konfigurációt használjuk:
+A mi forgatókönyvünkben a következő konfigurációt használjuk:
 
-- Két virtuális gép (VM), amely Windows rendszert futtat.
+- Két windowsos virtuális gép (VM).
 - Minden virtuális gép rendelkezik egy elsődleges és egy másodlagos hálózati adapterrel.
-- Minden másodlagos NIC két IP-konfigurációval rendelkezik.
-- Mindegyik virtuális gép két webhelyet üzemeltet: contoso.com és fabrikam.com.
-- Minden webhely egy IP-konfigurációhoz van kötve a másodlagos hálózati adapteren.
-- A Azure Load Balancer két előtér-IP-címet tesz elérhetővé, egyet az egyes webhelyekhez. Az előtérbeli címek a forgalom elosztására szolgálnak az egyes webhelyek megfelelő IP-konfigurációjához.
-- Ugyanazt a portszámot használja mind az előtér-, mind a háttér-készlet IP-címeihez.
+- Minden másodlagos hálózati adapter két IP-konfigurációval rendelkezik.
+- Minden virtuális gép két webhelyet üzemeltet: contoso.com és fabrikam.com.
+- Minden webhely a másodlagos hálózati adapter IP-konfigurációjához van kötve.
+- Az Azure Load Balancer két előtér-IP-cím, egy-egy webhely. Az előtér-címek a forgalom elosztására szolgálnak a megfelelő IP-konfigurációkhoz az egyes webhelyeken.
+- Ugyanaz tanportszám az előtér-IP-címekhez és a háttérkészlet IP-címeihez is használatos.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A példában feltételezzük, hogy van egy **contosofabrikam** nevű erőforráscsoport, amely a következőképpen van konfigurálva:
+A példapélda feltételezi, hogy rendelkezik egy **contosofabrikam** nevű erőforráscsoporttal, amely a következőképpen van konfigurálva:
 
 - Az erőforráscsoport tartalmaz egy **myVNet**nevű virtuális hálózatot.
-- A **myVNet** hálózat két, **VM1** és **VM2**nevű virtuális gépet tartalmaz.
-- A VM1 és a VM2 ugyanazon rendelkezésre állási csoportba tartoznak, **myavailset elemet**néven. 
-- A VM1 és a VM2 mindegyikének van egy **VM1NIC1** és **VM2NIC1**nevű elsődleges hálózati adaptere. 
-- A VM1 és a VM2 egy **VM1NIC2** és **VM2NIC2**nevű másodlagos hálózati adapterrel rendelkeznek.
+- A **myVNet-hálózat** két **VM1** és **VM2**nevű virtuális gépet tartalmaz.
+- A VM1 és a VM2 ugyanabban a **myAvailset**nevű rendelkezésre állási halmazban található. 
+- VM1 és VM2 mindegyikrendelkezik egy elsődleges hálózati adapter nevű **VM1NIC1** és **VM2NIC1,** illetve. 
+- VM1 és VM2 mindegyik rendelkezik egy másodlagos hálózati adapter nevű **VM1NIC2** és **VM2NIC2**, illetve.
 
-A virtuális gépek több hálózati adapterrel történő létrehozásával kapcsolatos további információkért lásd: [virtuális gép létrehozása több hálózati adapterrel a PowerShell használatával](../virtual-machines/windows/multiple-nics.md).
+A több hálózati adapterrel rendelkező virtuális gépek létrehozásáról a [Virtuálisgép létrehozása több hálózati adapterrel a PowerShell használatával című témakörben talál](../virtual-machines/windows/multiple-nics.md)további információt.
 
 ## <a name="perform-load-balancing-on-multiple-ip-configurations"></a>Terheléselosztás végrehajtása több IP-konfiguráción
 
-A jelen cikkben ismertetett forgatókönyv megvalósításához hajtsa végre az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket a cikkben ismertetett forgatókönyv eléréséhez.
 
-### <a name="step-1-configure-the-secondary-nics"></a>1\. lépés: a másodlagos hálózati adapterek konfigurálása
+### <a name="step-1-configure-the-secondary-nics"></a>1. lépés: A másodlagos hálózati adapterek konfigurálása
 
-A virtuális hálózat minden egyes virtuális gépén adja hozzá a másodlagos hálózati adapter IP-konfigurációját:  
+A virtuális hálózat minden egyes virtuális gépéhez adja hozzá a másodlagos hálózati adapter IP-konfigurációját:  
 
-1. Keresse meg a Azure Portalt: https://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
+1. Tallózással keresse https://portal.azure.commeg az Azure-portált: . . Jelentkezzen be Azure-fiókjával.
 
-2. A képernyő bal felső részén válassza ki az **erőforráscsoport** ikont. Ezután válassza ki azt az erőforráscsoportot, amelyben a virtuális gépek találhatók (például **contosofabrikam**). Az **erőforráscsoportok** ablaktábla megjeleníti a virtuális gépek összes erőforrását és hálózati adapterét.
+2. A képernyő bal felső részén válassza az **Erőforráscsoport** ikont. Ezután válassza ki azt az erőforráscsoportot, amelyben a virtuális gépek találhatók (például **contosofabrikam).** Az **Erőforráscsoportok** ablaktábla a virtuális gépek összes erőforrását és hálózati adapterét megjeleníti.
 
-3. Az egyes virtuális gépek másodlagos hálózati adapteréhez adja hozzá az IP-konfigurációt:
+3. Az egyes virtuális gépek másodlagos hálózati adaptere esetén adja hozzá az IP-konfigurációt:
 
     1. Válassza ki a konfigurálni kívánt másodlagos hálózati adaptert.
     
-    2. Válassza az **IP-konfigurációk**lehetőséget. A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget.
+    2. Válassza az **IP-konfigurációk lehetőséget.** A következő ablaktáblán, a felső ablak tetején válassza a **Hozzáadás lehetőséget.**
 
-    3. Az **IP-konfigurációk hozzáadása**területen adjon hozzá egy második IP-konfigurációt a hálózati adapterhez: 
+    3. Az **IP-konfigurációk hozzáadása csoportban**adjon hozzá egy második IP-konfigurációt a hálózati adapterhez: 
 
-        1. Adja meg a másodlagos IP-konfiguráció nevét. (A VM1 és a VM2 esetében például a **VM1NIC2-ipconfig2** és a **VM2NIC2-ipconfig2**IP-konfiguráció nevet adja meg.)
+        1. Adja meg a másodlagos IP-konfiguráció nevét. (VM1 és VM2 esetén például nevezze el a **VM1NIC2-ipconfig2** és a **VM2NIC2-ipconfig2**IP-konfigurációt.)
 
-        2. A **magánhálózati IP-cím**, **kiosztási** beállítás területen válassza a **statikus**lehetőséget.
+        2. A **Privát IP-cím**, **A Foglalás** beállításhoz válassza a **Statikus**lehetőséget.
 
-        3. Kattintson az **OK** gombra.
+        3. Válassza **az OK gombot.**
 
-A másodlagos hálózati adapter második IP-konfigurációjának befejeződése után megjelenik az adott hálózati adapter **IP-konfigurációk** beállításai között.
+Miután a másodlagos hálózati adapter második IP-konfigurációja befejeződött, az az adott hálózati adapter **IP-konfigurációs** beállításai alatt jelenik meg.
 
-### <a name="step-2-create-the-load-balancer"></a>2\. lépés: A terheléselosztó létrehozása
+### <a name="step-2-create-the-load-balancer"></a>2. lépés: A terheléselosztó létrehozása
 
-A terheléselosztó létrehozása a konfigurációhoz:
+Hozza létre a terheléselosztót a konfigurációhoz:
 
-1. Keresse meg a Azure Portalt: https://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
+1. Tallózással keresse https://portal.azure.commeg az Azure-portált: . . Jelentkezzen be Azure-fiókjával.
 
-2. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Load Balancer**lehetőséget. Ezután válassza a **Létrehozás**lehetőséget.
+2. A képernyő bal felső részén válassza az **Erőforrás** > **létrehozása hálózati** > **terheléselosztó**lehetőséget. Ezután válassza a **Létrehozás gombot.**
 
-3. A terheléselosztó **létrehozása**területen adja meg a terheléselosztó nevét. Ebben a forgatókönyvben a **mylb**nevet használjuk.
+3. A **Terheléselosztó létrehozása**csoportban adja meg a terheléselosztó nevét. Ebben a forgatókönyvben a **mylb**nevet használjuk.
 
-4. A **nyilvános IP-cím**területen hozzon létre egy új, **PublicIP1**nevű nyilvános IP-címet.
+4. A **Nyilvános IP-cím csoportban**hozzon létre egy új nyilvános IP-címet, a **PublicIP1**címet.
 
-5. Az **erőforráscsoport**területen válassza ki a virtuális gépekhez tartozó meglévő erőforráscsoportot (például **contosofabrikam**). Válassza ki a terheléselosztó üzembe helyezésének helyét, majd kattintson **az OK gombra**.
+5. Az **Erőforráscsoport**csoport csoportban válassza ki a virtuális gépek meglévő erőforráscsoportját (például **contosofabrikam).** Válassza ki azt a helyet, ahol a terheléselosztót telepíteni szeretné, majd kattintson az **OK gombra.**
 
-A terheléselosztó megkezdi a telepítést. Az üzembe helyezés eltarthat néhány percig, hogy sikeresen befejeződjön. Az üzembe helyezés befejezése után a terheléselosztó erőforrásként jelenik meg az erőforráscsoporthoz.
+A terheléselosztó megkezdi az üzembe helyezést. A telepítés sikeres befejezése néhány percet is igénybe vehet. A központi telepítés befejezése után a terheléselosztó erőforrásként jelenik meg az erőforráscsoportban.
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>3\. lépés: az előtér-IP-készlet konfigurálása
+### <a name="step-3-configure-the-front-end-ip-pool"></a>3. lépés: Az előtér-IP-készlet konfigurálása
 
-Az egyes webhelyekhez (contoso.com és fabrikam.com) konfigurálja az előtér-IP-készletet a terheléselosztó számára:
+Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja az előtér-IP-készletet a terheléselosztón:
 
-1. A portálon válassza a **További szolgáltatások**lehetőséget. A szűrő mezőbe írja be a **nyilvános IP-címet** , majd válassza a **nyilvános IP-címek**lehetőséget. A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget.
+1. A portálon válassza a **További szolgáltatások**lehetőséget. A szűrőmezőbe írja be a **Nyilvános IP-címet,** majd válassza a **Nyilvános IP-címek**lehetőséget. A következő ablaktáblán, a felső ablak tetején válassza a **Hozzáadás lehetőséget.**
 
-2. Két nyilvános IP-cím (**PublicIP1** és **PublicIP2**) konfigurálása mindkét webhelyhez (contoso.com és fabrikam.com):
+2. Két nyilvános IP-cím **(PublicIP1** és **PublicIP2)** konfigurálása mindkét webhelyhez (contoso.com és fabrikam.com):
 
-   1. Adja meg az előtér-IP-cím nevét.
+   1. Írja be az előtér-IP-cím nevét.
 
-   2. Az **erőforráscsoport**mezőben válassza ki a virtuális gépekhez tartozó meglévő erőforráscsoportot (például **contosofabrikam**).
+   2. Az **Erőforráscsoport**csoport esetében válassza ki a virtuális gépek meglévő erőforráscsoportját (például **contosofabrikam).**
 
-   3. A **hely**mezőben válassza ki a virtuális gépekkel megegyező helyet.
+   3. A **Hely**területen válassza ki ugyanazt a helyet, mint a virtuális gépek.
 
-   4. Kattintson az **OK** gombra.
+   4. Válassza **az OK gombot.**
 
-      A nyilvános IP-címek létrehozása után azok a **nyilvános IP-** címek alatt jelennek meg.
+      A nyilvános IP-címek létrehozása után azok a **nyilvános IP-címek** alatt jelennek meg.
 
-3. <a name="step3-3"></a>A portálon válassza a **További szolgáltatások**lehetőséget. A szűrő mezőbe írja be a **Load balancert** , majd válassza a **Load Balancer**lehetőséget. 
+3. <a name="step3-3"></a>A portálon válassza a **További szolgáltatások**lehetőséget. A szűrőmezőbe írja be a **terheléselosztót,** és válassza a **Terheléselosztó**lehetőséget . 
 
-4. Válassza ki azt a terheléselosztó (**mylb**), amelyhez hozzá szeretné adni az ELŐTÉR-IP-készletet.
+4. Válassza ki azt a terheléselosztót **(mylb),** amelyhez hozzá szeretné adni az előtér-IP-készletet.
 
-5. A **Beállítások**területen válassza a előtér **IP-konfiguráció**elemet. A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget.
+5. A **Beállítások csoportban**válassza **az Előtér IP-konfigurációja**lehetőséget. A következő ablaktáblán, a felső ablak tetején válassza a **Hozzáadás lehetőséget.**
 
-6. Adja meg az előtér-IP-cím nevét (például **contosofe** vagy **fabrikamfe**).
+6. Írja be az előtér-IP-cím (például **contosofe** vagy **fabrikamfe**) nevét.
 
-7. <a name="step3-7"></a>Válassza ki az **IP-címet**. A **nyilvános IP-cím választása**területen válassza ki az előtér IP-címeit (**PublicIP1** vagy **PublicIP2**).
+7. <a name="step3-7"></a>Válassza az **IP-címet.** A **Nyilvános IP-cím kiválasztása**csoportban válassza ki az előtérhez **(PublicIP1** vagy **PublicIP2)** vonatkozó IP-címeket.
 
-8. Hozza létre a második előtér-IP-címet a <a href="#step3-3">3</a> . lépés a jelen szakasz <a href="#step3-7">7. lépésével</a> megismételve.
+8. A második előtér-IP-cím létrehozása a szakasz <a href="#step3-7">3–7.</a> <a href="#step3-3">step 3</a>
 
-Az előtér-készlet konfigurálása után az IP-címek a terheléselosztó előtérbeli **IP-konfigurációs** beállításai alatt jelennek meg. 
+Az előtérkészlet konfigurálása után az IP-címek a terheléselosztó **előtér IP-konfigurációs** beállításai alatt jelennek meg. 
     
-### <a name="step-4-configure-the-back-end-pool"></a>4\. lépés: a háttér-készlet konfigurálása
+### <a name="step-4-configure-the-back-end-pool"></a>4. lépés: A háttérkészlet konfigurálása
 
-Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja a háttérbeli címkészletet a terheléselosztó számára:
+Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja a terheléselosztó háttércímkészletét:
         
-1. A portálon válassza a **További szolgáltatások**lehetőséget. A szűrő mezőbe írja be a **Load balancert** , majd válassza a **Load Balancer**lehetőséget.
+1. A portálon válassza a **További szolgáltatások**lehetőséget. A szűrőmezőbe írja be a **terheléselosztót,** és válassza a **Terheléselosztó**lehetőséget .
 
-2. Válassza ki azt a terheléselosztó (**mylb**), amelyhez hozzá szeretné adni a háttér-készletet.
+2. Válassza ki azt a terheléselosztót **(mylb),** amelyhez hozzá szeretné adni a háttérkészletet.
 
-3. A **Beállítások**területen válassza a **háttér-készletek**elemet. Adja meg a háttér-készlet nevét (például **contosopool** vagy **fabrikampool**). A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget. 
+3. A **Beállítások csoportban**válassza **a Háttérkészletek lehetőséget.** Írja be a háttérkészlet (például **contosopool** vagy **fabrikampool)** nevét. A következő ablaktáblán, a felső ablak tetején válassza a **Hozzáadás lehetőséget.** 
 
-4. A **társított**elemnél válassza a **rendelkezésre állási csoport**lehetőséget.
+4. A **Társítotthoz beállításban**válassza az **Elérhetőségi készlet lehetőséget.**
 
-5. A **rendelkezésre állási csoport beállításnál**válassza a **myavailset elemet**lehetőséget.
+5. A **Rendelkezésre állás beállításhoz**válassza a **myAvailset lehetőséget.**
 
-6. Adja hozzá a célként megadott hálózati IP-konfigurációkat mindkét virtuális géphez: 
+6. Adja hozzá a célhálózati IP-konfigurációkat mindkét virtuális géphez: 
 
-    ![Háttérbeli készletek konfigurálása a terheléselosztó számára](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
+    ![Háttérkészletek konfigurálása terheléselosztóhoz](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
     
-    1. A **cél virtuális gép**beállításnál válassza ki a háttér-készlethez hozzáadni kívánt virtuális gépet (például **VM1** vagy **VM2**).
+    1. A **cél virtuális gép,** válassza ki a virtuális gépet, amelyet hozzá szeretne adni a háttér-készlet (például **VM1** vagy **VM2).**
 
-    2. A **hálózati IP-konfiguráció**területen válassza ki az előző lépésben kiválasztott virtuális gép másodlagos hálózati ADAPTERÉNEK IP-konfigurációját (például **VM1NIC2-ipconfig2** vagy **VM2NIC2-ipconfig2**).
+    2. Hálózati **IP-konfiguráció**esetén válassza ki az előző lépésben kiválasztott virtuális gép másodlagos hálózati adapterének IP-konfigurációját (például **VM1NIC2-ipconfig2** vagy **VM2NIC2-ipconfig2).**
 
-7. Kattintson az **OK** gombra.
+7. Válassza **az OK gombot.**
 
-Miután konfigurálta a háttér-készletet, a címek a terheléselosztó **háttér-készletének** beállításai alatt jelennek meg.
+A háttérkészlet konfigurálása után a címek a terheléselosztó **háttérkészlet-beállításai** között jelennek meg.
 
-### <a name="step-5-configure-the-health-probe"></a>5\. lépés: az állapot-mintavétel konfigurálása
+### <a name="step-5-configure-the-health-probe"></a>5. lépés: Az állapotminta konfigurálása
 
-Állapot-mintavétel konfigurálása a terheléselosztó számára:
+Állítson be egy állapotmintát a terheléselosztóhoz:
 
-1. A portálon válassza a **További szolgáltatások**lehetőséget. A szűrő mezőbe írja be a **Load balancert** , majd válassza a **Load Balancer**lehetőséget.
+1. A portálon válassza a **További szolgáltatások**lehetőséget. A szűrőmezőbe írja be a **terheléselosztót,** és válassza a **Terheléselosztó**lehetőséget .
 
-2. Válassza ki azt a terheléselosztó (**mylb**), amelyhez hozzá szeretné adni az állapot-mintavételt.
+2. Válassza ki azt a terheléselosztót **(mylb),** amelyhez hozzá szeretné adni az állapotmintát.
 
-3. A **Beállítások**területen válassza az **állapot**mintavétel elemet. A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget. 
+3. A **Beállítások csoportban**válassza az **Állapot mintavétel lehetőséget.** A következő ablaktáblán, a felső ablak tetején válassza a **Hozzáadás lehetőséget.** 
 
-4. Adja meg az állapot-mintavétel nevét (például **http**). Kattintson az **OK** gombra.
+4. Írja be az állapotminta nevét (például **HTTP**). Válassza **az OK gombot.**
 
-### <a name="step-6-configure-load-balancing-rules"></a>6\. lépés: terheléselosztási szabályok konfigurálása
+### <a name="step-6-configure-load-balancing-rules"></a>6. lépés: Terheléselosztási szabályok konfigurálása
 
 Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja a terheléselosztási szabályokat:
     
-1. <a name="step6-1"></a>A **Beállítások**területen válassza a terheléselosztási **szabályok**elemet. A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget. 
+1. <a name="step6-1"></a>A **Beállítások csoportban**válassza a **Terheléselosztási szabályok lehetőséget.** A következő ablaktáblán, a felső ablak tetején válassza a **Hozzáadás lehetőséget.** 
 
-2. A **Name (név**) mezőbe írja be a terheléselosztási szabály nevét (például **HTTPc** for contoso.com vagy **HTTPf** for fabrikam.com).
+2. A **Név mezőbe**írja be a terheléselosztási szabály nevét (például **HTTPc** contoso.com vagy **HTTPf** fabrikam.com).
 
-3. A **felületi IP-cím**mezőben válassza ki a korábban létrehozott ELŐTÉR-IP-címet (például **contosofe** vagy **fabrikamfe**).
+3. **Előtér-IP-cím**esetén válassza ki a korábban létrehozott előtér-IP-címet (például **contosofe** vagy **fabrikamfe).**
 
-4. A **port** -és **háttér-portok**esetében tartsa meg az alapértelmezett **80**-as értéket.
+4. A **Port** és **a Backend port**esetében tartsa meg az alapértelmezett **80**értéket.
 
-5. A **lebegőpontos IP-cím (közvetlen kiszolgáló visszatérése)** beállításnál válassza a **Letiltva**lehetőséget.
+5. **Lebegő IP (közvetlen kiszolgálóvisszatérés)** esetén válassza **a Letiltva**lehetőséget.
 
-6. <a name="step6-6"></a>Kattintson **az OK gombra**.
+6. <a name="step6-6"></a>Válassza **az OK gombot.**
 
-7. Hozza létre a második terheléselosztó-szabályt az <a href="#step6-1">1. lépés</a> megismétlésével a jelen szakasz <a href="#step6-6">6. lépésével</a> .
+7. Hozza létre a második terheléselosztó szabályt <a href="#step6-6">step 6</a> az <a href="#step6-1">1.</a>
 
-A szabályok konfigurálása után ezek megjelennek a terheléselosztó terheléselosztási **szabályok** beállításai között.
+A szabályok konfigurálása után azok a **terheléselosztási terheléselosztási szabályok** beállításai között jelennek meg.
 
-### <a name="step-7-configure-dns-records"></a>7\. lépés: DNS-rekordok konfigurálása
+### <a name="step-7-configure-dns-records"></a>7. lépés: DNS-rekordok konfigurálása
 
-Az utolsó lépésként konfigurálja a DNS-erőforrásrekordokat úgy, hogy az a terheléselosztó megfelelő előtér-IP-címeire mutasson. You can host your domains in Azure DNS. A Azure DNS és a Load Balancer használatával kapcsolatos további információkért lásd: a [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
+Utolsó lépésként állítsa be úgy a DNS-erőforrásrekordokat, hogy azok a terheléselosztó megfelelő előtér-IP-címeire mutassanak. A tartományok at az Azure DNS-ben üzemeltetheti. Az Azure DNS és a terheléselosztó használatával kapcsolatos további tudnivalókért olvassa el [az Azure DNS használata más Azure-szolgáltatásokkal című témakört.](../dns/dns-for-azure-services.md)
 
 ## <a name="next-steps"></a>További lépések
-- További információ az Azure terheléselosztási szolgáltatásainak az Azure-beli [terheléselosztási szolgáltatások használatával](../traffic-manager/traffic-manager-load-balancing-azure.md)történő összevonásáról.
-- Megtudhatja, hogyan használhatja a különböző típusú naplókat a Load Balancer kezeléséhez és a [Azure Load Balancer Azure monitor-naplókban](../load-balancer/load-balancer-monitor-log.md)való hibakereséséhez.
+- További információ a terheléselosztási szolgáltatások Azure-beli kombinálásáról [az Azure terheléselosztási szolgáltatásainak használata során.](../traffic-manager/traffic-manager-load-balancing-azure.md)
+- Megtudhatja, hogy miként használhat különböző típusú naplókat a terheléselosztó kezeléséhez és hibaelhárításához az [Azure Load Balancer naplóiban.](../load-balancer/load-balancer-monitor-log.md)

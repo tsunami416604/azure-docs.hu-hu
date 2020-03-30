@@ -1,6 +1,6 @@
 ---
-title: Erőforrás-és objektum-korlátok Azure Analysis Servicesa | Microsoft Docs
-description: Ez a cikk egy Azure Analysis Services-kiszolgáló erőforrás-és objektumokra vonatkozó korlátozásait ismerteti.
+title: Az Azure Analysis Services erőforrás- és objektumkorlátai | Microsoft dokumentumok
+description: Ez a cikk az Azure Analysis Services-kiszolgáló erőforrás- és objektumkorlátait ismerteti.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,36 +8,36 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f309c9863eb2f3065251537380a2977839f990d8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573203"
 ---
-# <a name="analysis-services-resource-and-object-limits"></a>Erőforrás-és objektum-korlátok Analysis Services
+# <a name="analysis-services-resource-and-object-limits"></a>Analysis Services erőforrás- és objektumkorlátai
 
-Ez a cikk az erőforrás-és modell-objektumok korlátait ismerteti.
+Ez a cikk az erőforrás- és modellobjektum-korlátokat ismerteti.
 
-## <a name="tier-limits"></a>Rétegek korlátai
+## <a name="tier-limits"></a>Szinthatárok
 
-A fejlesztői, alapszintű és standard szintű QPU és a memória korlátozásait a [Azure Analysis Services díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/analysis-services/)tekintheti meg.
+A fejlesztői, alapszintű és standard szintű csomagok QPU- és memóriakorlátait az [Azure Analysis Services díjszabási oldalán találja.](https://azure.microsoft.com/pricing/details/analysis-services/)
 
-## <a name="object-limits"></a>Objektum korlátai
+## <a name="object-limits"></a>Objektumkorlátok
 
-Ezek a korlátok elméletiak. A teljesítmény csökkenése alacsonyabb számokkal történik.
+Ezek a határok elméletiek. A teljesítmény alacsonyabb számban csökken.
 
 |Objektum|Maximális méretek/számok|  
 |------------|----------------------------|  
-|Példányban lévő adatbázisok|16 000|  
-|Táblák és oszlopok együttes száma egy adatbázisban|16 000|  
-|Táblázat sorai|Korlátlan<br /><br /> **Figyelmeztetés:** Azzal a korlátozással, hogy a táblában egyetlen oszlop sem rendelkezhet több mint 1 999 999 997 különböző értékkel.|  
-|Hierarchiák egy táblában|15 999|  
-|Hierarchia szintjei|15 999|  
+|Adatbázisok egy példányban|16000|  
+|Táblák és oszlopok együttes száma az adatbázisban|16000|  
+|Táblázat sorai|Korlátlan<br /><br /> **Figyelmeztetés:** Azzal a korlátozással, hogy a táblázat egyetlen oszlopa sem rendelkezhet 1 999 999 997 különböző értéknél több elévülési értékkel.|  
+|Hierarchiák egy táblázatban|15,999|  
+|Szintek a hierarchiában|15,999|  
 |Kapcsolatok|8,000|  
-|A kulcsok oszlopai az összes táblában|15 999|  
-|Mértékek a táblákban|2 ^ 31-1 = 2 147 483 647|  
-|Lekérdezés által visszaadott cellák|2 ^ 31-1 = 2 147 483 647|  
-|A forrás-lekérdezés rekordjának mérete|64 K|  
-|Az objektumok neveinek hossza|512 karakter|  
+|Kulcsoszlopok az összes táblázatban|15,999|  
+|Intézkedések a táblázatokban|2^31-1 = 2 147 483 647|  
+|Lekérdezés által visszaadott cellák|2^31-1 = 2 147 483 647|  
+|A forráslekérdezés rekordmérete|64 Ezer|  
+|Az objektumnevek hossza|512 karakter|  
 
 

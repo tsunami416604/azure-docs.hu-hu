@@ -1,6 +1,6 @@
 ---
-title: SQL-lekérdezés teljesítményének beolvasása & végrehajtási metrikák
-description: Megtudhatja, hogyan kérhet le Azure Cosmos DB kérelmek SQL-lekérdezési végrehajtási metrikáit és profiljának SQL-lekérdezési teljesítményét.
+title: SQL-lekérdezés teljesítményének & végrehajtási mérőszámok begyűjtése
+description: Ismerje meg, hogyan kérheti be az SQL-lekérdezés-végrehajtási metrikákat és az Azure Cosmos DB-kérelmek profil SQL-lekérdezési teljesítményét.
 author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: girobins
 ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70998362"
 ---
-# <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>SQL-lekérdezés végrehajtási metrikáinak lekérése és a lekérdezési teljesítmény elemzése a .NET SDK használatával
+# <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>SQL-lekérdezésvégrehajtási mérőszámok begyűjtése és lekérdezési teljesítmény elemzése a .NET SDK használatával
 
-Ez a cikk bemutatja, hogyan lehet profilt felvenni az SQL-lekérdezés teljesítményére Azure Cosmos DBon. Ez a profilkészítés a .net SDK- `QueryMetrics` ból beolvasott használatával végezhető el, és részletesen itt olvasható. A [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) egy erősen begépelt objektum, amely információkat nyújt a háttérbeli lekérdezés végrehajtásáról. Ezeket a metrikákat a [lekérdezési teljesítmény finomhangolása](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) című cikkben részletesebben dokumentáljuk.
+Ez a cikk bemutatja, hogyan profil sql lekérdezési teljesítmény az Azure Cosmos DB. Ez a profilkészítés `QueryMetrics` a .NET SDK-ból lekért és itt részletezett használatával végezhető el. [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) egy erősen gépelt objektum, amely a háttérlekérdezés végrehajtásával kapcsolatos információkat tartalmaz. Ezeket a mutatókat a [Lekérdezés teljesítményének finomhangolása](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) című cikk részletesebben dokumentálja.
 
 ## <a name="set-the-feedoptions-parameter"></a>A FeedOptions paraméter beállítása
 
-A [DocumentClient. CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) összes túlterhelése egy opcionális [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) paramétert is igénybe veheti. Ez a beállítás lehetővé teszi, hogy a lekérdezés-végrehajtás beállítható és paraméteres legyen. 
+A [DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) összes túlterhelése egy választható [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) paramétert tartalmaz. Ez a beállítás teszi lehetővé a lekérdezésvégrehajtásának hangolást és paraméterezését. 
 
-Az SQL-lekérdezés végrehajtási metrikáinak összegyűjtéséhez be kell állítania a [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) paramétert [](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) a `true`FeedOptions. A `PopulateQueryMetrics` True értékre állításával a `FeedResponse` rendszer a megfelelőt `QueryMetrics`fogja tartalmazni. 
+Az SQL-lekérdezés végrehajtási metrikáinak összegyűjtéséhez a [Betáplálási](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) `true`beállítások ban a [PopullateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) paramétert kell beállítania. Beállítása `PopulateQueryMetrics` igaz teszi, hogy `FeedResponse` a végrendelet `QueryMetrics`tartalmazza a megfelelő . 
 
-## <a name="get-query-metrics-with-asdocumentquery"></a>Lekérdezési metrikák beolvasása a AsDocumentQuery ()
-Az alábbi mintakód bemutatja, hogyan kérhet le mérőszámokat a [AsDocumentQuery ()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) metódus használatakor:
+## <a name="get-query-metrics-with-asdocumentquery"></a>Lekérdezési mutatók begyűjtése az AsDocumentQuery() segítségével
+A következő kódminta bemutatja, hogyan lehet metrikákat lekérni [az AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) metódus használatakor:
 
 ```csharp
 // Initialize this DocumentClient and Collection
@@ -62,7 +62,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>QueryMetrics összesítése
 
-Az előző szakaszban figyelje meg, hogy a [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) metódusnak több hívása is volt. Minden hívás egy `FeedResponse` olyan objektumot adott vissza, amely a `QueryMetrics`lekérdezés minden folytatásához tartalmaz egy-egy szótárt. Az alábbi példa bemutatja, hogyan összesítheti `QueryMetrics` ezeket a LINQ használatával:
+Az előző szakaszban figyelje meg, hogy az [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) metódustöbb hívást is kezdeményezett. Minden hívás `FeedResponse` olyan objektumot adott `QueryMetrics`vissza, amelynek szótára ; a lekérdezés minden folytatásához. A következő példa bemutatja, hogyan összesítse ezeket `QueryMetrics` a LINQ használatával:
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -82,9 +82,9 @@ QueryMetrics aggregatedQueryMetrics = queryMetricsList.Aggregate((curr, acc) => 
 Console.WriteLine(aggregatedQueryMetrics);
 ```
 
-## <a name="grouping-query-metrics-by-partition-id"></a>Lekérdezési metrikák csoportosítása partíció-azonosító alapján
+## <a name="grouping-query-metrics-by-partition-id"></a>Lekérdezési mutatók csoportosítása partícióazonosító szerint
 
-A `QueryMetrics` partíciót azonosító alapján csoportosíthatja. A Partition ID szerinti csoportosítással megtekintheti, hogy egy adott partíció okoz-e teljesítménnyel kapcsolatos problémákat, amikor másokhoz hasonlít. Az alábbi példa bemutatja, hogyan csoportosíthatók `QueryMetrics` a LINQ:
+Csoportosíthatja a `QueryMetrics` partícióazonosító. A partícióazonosító szerint történő csoportosítás lehetővé teszi annak megtekintését, hogy egy adott partíció teljesítményproblémákat okoz-e másokhoz képest. A következő példa bemutatja, hogyan csoportosítsa `QueryMetrics` a LINQ-val:
 
 ```csharp
 List<KeyValuePair<string, QueryMetrics>> partitionedQueryMetrics = new List<KeyValuePair<string, QueryMetrics>>();
@@ -113,9 +113,9 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 }
 ```
 
-## <a name="linq-on-documentquery"></a>LINQ on DocumentQuery
+## <a name="linq-on-documentquery"></a>LINQ a DocumentQuery-en
 
-A következő `AsDocumentQuery()` metódussal is `FeedResponse` kérheti le a LINQ-lekérdezést:
+A `FeedResponse` LINQ-lekérdezésből is beszerezheti a `AsDocumentQuery()` következő módszert:
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -127,9 +127,9 @@ FeedResponse<Document> feedResponse = await linqQuery.ExecuteNextAsync<Document>
 IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetrics;
 ```
 
-## <a name="expensive-queries"></a>Költséges lekérdezések
+## <a name="expensive-queries"></a>Drága lekérdezések
 
-Az egyes lekérdezések által felhasznált kérelmek mennyiségét rögzítheti a nagy átviteli sebességet használó költséges lekérdezések vagy lekérdezések vizsgálatához. A kérések díját a [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) tulajdonsággal `FeedResponse`kérheti le. Ha többet szeretne megtudni arról, hogyan kérheti le a kérelmek díját a Azure Portal és a különböző SDK-k használatával, tekintse meg [a kérelem egységének megkeresése](find-request-unit-charge.md) című cikket.
+Rögzítheti az egyes lekérdezések által felhasznált kérelemegységeket a nagy átviteli sebességű költséges lekérdezések vagy lekérdezések vizsgálatához. A kérésdíj a [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) tulajdonság használatával `FeedResponse`szerezhető be a alkalmazásban. Ha többet szeretne megtudni arról, hogyan kaphatja be a kérelemdíj az Azure Portalon és a különböző SDK-k, [olvassa el a kérelem egység díja](find-request-unit-charge.md) cikk keresése.
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -146,9 +146,9 @@ while (documentQuery.HasMoreResults)
 }
 ```
 
-## <a name="get-the-query-execution-time"></a>Lekérdezés végrehajtási idejének lekérése
+## <a name="get-the-query-execution-time"></a>A lekérdezés végrehajtási idejének betöltése
 
-Az ügyféloldali lekérdezés végrehajtásához szükséges idő kiszámításakor ügyeljen arra, hogy csak a `ExecuteNextAsync` metódus meghívásának idejét és a kód más részeit tartalmazza. Ezek a hívások segítenek kiszámítani, hogy mennyi ideig tartott a lekérdezés végrehajtása a következő példában látható módon:
+Az ügyféloldali lekérdezés végrehajtásához szükséges idő kiszámításakor győződjön meg arról, hogy csak a metódus hívásához szükséges időt adja meg, `ExecuteNextAsync` a kódbázis más részeinek megjelenítése esetén. Csak ezek a hívások segítenek annak kiszámításában, hogy mennyi ideig tartott a lekérdezés végrehajtása a következő példában látható módon:
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -166,11 +166,11 @@ while (documentQuery.HasMoreResults)
 DoSomeLogging(queryExecutionTimeEndToEndTotal.Elapsed);
 ```
 
-## <a name="scan-queries-commonly-slow-and-expensive"></a>Lekérdezések vizsgálata (általában lassú és költséges)
+## <a name="scan-queries-commonly-slow-and-expensive"></a>Lekérdezések bekéselése (általában lassú és költséges)
 
-A vizsgálati lekérdezés olyan lekérdezésre hivatkozik, amely nem az index által szolgált, mert számos dokumentum töltődik be az eredményhalmaz visszaküldése előtt.
+A vizsgálat lekérdezés olyan lekérdezésre hivatkozik, amelyet nem az index szolgált ki, ami miatt sok dokumentum töltődik be az eredményhalmaz visszaadása előtt.
 
-Az alábbi példa egy vizsgálati lekérdezést mutat be:
+Az alábbi példa egy beszkavalizált lekérdezésre mutat be:
 
 ```sql
 SELECT VALUE c.description 
@@ -178,7 +178,7 @@ FROM   c
 WHERE UPPER(c.description) = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-A lekérdezés szűrője a System (felső) rendszerfunkciót használja, amely nem az indexből van kézbesítve. A lekérdezés egy nagy gyűjteményen való végrehajtása a következő lekérdezési metrikákat hozta létre az első folytatáshoz:
+A lekérdezés szűrője az UPPER rendszerfunkciót használja, amely nem az indexből jelenik meg. A lekérdezés végrehajtása egy nagy gyűjtemény en a következő lekérdezési metrikákat hozta létre az első folytatáshoz:
 
 ```
 QueryMetrics
@@ -206,22 +206,22 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-Jegyezze fel a lekérdezési metrika kimenetének következő értékeit:
+Vegye figyelembe a következő értékeket a lekérdezési metrikák kimenetéből:
 
 ```
 Retrieved Document Count                 :          60,951
 Retrieved Document Size                  :     399,998,938 bytes
 ```
 
-A lekérdezés 60 951 olyan dokumentumot töltött be, amely összesen 399 998 938 bájtot adott meg. A sok bájt betöltése nagy költséggel vagy a kérések egységének díjszabásával jár. A lekérdezés végrehajtása hosszú időt is igénybe vesz, amely a teljes töltött idő tulajdonsággal együtt egyértelmű:
+Ez a lekérdezés 60 951 dokumentumot töltött be, amelyek összesen 399 998 938 bájtot. Ennyi bájt betöltése magas költség- vagy kérelemegység-díjat eredményez. A lekérdezés végrehajtása is hosszú időt vesz igénybe, ami egyértelmű a teljes eltöltött idő tulajdonsággal:
 
 ```
 Total Query Execution Time               :        4,500.34 milliseconds
 ```
 
-Azt jelenti, hogy a lekérdezés végrehajtása 4,5 másodperc volt (és ez csak egy folytatás volt).
+Ami azt jelenti, hogy a lekérdezés 4,5 másodpercet vett igénybe (és ez csak egy folytatás volt).
 
-A példában szereplő lekérdezés optimalizálásához Kerülje a szűrőben lévő felső rész használatát. Ehelyett a dokumentumok létrehozásakor vagy frissítésekor az értékeket az `c.description` összes nagybetűvel kell beszúrni. A lekérdezés ekkor a következőket válik: 
+A példalekérdezés optimalizálásához kerülje a NAGYBETŰS szűrő használatát. Ehelyett a dokumentumok létrehozásakor vagy `c.description` frissítésekor az értékeket minden nagybetűs karakterbe be kell szúrni. A lekérdezés ekkor a következővé válik: 
 
 ```sql
 SELECT VALUE c.description 
@@ -229,13 +229,13 @@ FROM   c
 WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-Ez a lekérdezés mostantól elérhető az indexből.
+Ez a lekérdezés most már kiszolgálható az indexből.
 
-A lekérdezési teljesítmény finomhangolásával kapcsolatos további tudnivalókért tekintse meg a [lekérdezési teljesítmény finomhangolása](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) című cikket.
+A lekérdezésteljesítmény finomhangolásáról a [Lekérdezés teljesítményének finomhangolása](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) című cikkben olvashat bővebben.
 
-## <a id="References"></a>Hivatkozások
+## <a name="references"></a><a id="References"></a>Referencia
 
-- [Az Azure Cosmos DB SQL-specifikáció](https://go.microsoft.com/fwlink/p/?LinkID=510612)
+- [Az Azure Cosmos DB SQL specifikációja](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
@@ -244,4 +244,4 @@ A lekérdezési teljesítmény finomhangolásával kapcsolatos további tudnival
 
 - [Lekérdezési teljesítmény hangolása](sql-api-query-metrics.md)
 - [Indexelés – áttekintés](index-overview.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Az Azure Cosmos DB .NET-mintái](https://github.com/Azure/azure-cosmos-dotnet-v3)

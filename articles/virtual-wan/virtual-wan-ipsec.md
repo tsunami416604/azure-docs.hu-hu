@@ -1,6 +1,6 @@
 ---
-title: Azure virtuális WAN alapértelmezett IPsec-házirendjei | Microsoft Docs
-description: Ez a cikk a virtuális WAN-hoz tartozó IPsec-házirendekkel kapcsolatos információkat tartalmaz.
+title: Az Azure Virtual WAN alapértelmezett IPsec-házirendjei | Microsoft dokumentumok
+description: Ez a cikk a Virtual WAN IPsec-házirendjeiről nyújt tájékoztatást.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.openlocfilehash: 877a17327f13e407f86cb3a1a21f051572f74343
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73499725"
 ---
-# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Virtuális WAN alapértelmezett házirendjei az IPsec-kapcsolathoz
+# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Az IPsec-kapcsolat virtuális WAN alapértelmezett házirendjei
 
-Ez a cikk az IPsec-házirendek támogatott kombinációit mutatja be.
+Ez a cikk a támogatott IPsec-házirend-kombinációkat mutatja be.
 
 ## <a name="default-ipsec-policies"></a>Alapértelmezett IPsec-házirendek
 
@@ -28,5 +28,5 @@ Ez a cikk az IPsec-házirendek támogatott kombinációit mutatja be.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Egyéni IPsec-házirend konfigurálásának lépéseiért lásd: [Egyéni IPsec-házirend konfigurálása a virtuális WAN-](virtual-wan-custom-ipsec-portal.md)hoz.
-További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).
+Az egyéni IPsec-házirend konfigurálásának lépéseit a [Virtual WAN egyéni IPsec-házirendének konfigurálása című témakörben található.](virtual-wan-custom-ipsec-portal.md)
+A Virtual WAN szolgáltatásról további információt az [Azure Virtual WAN és](virtual-wan-about.md) az Azure Virtual WAN – gyakori kérdések című [témakörben talál.](virtual-wan-faq.md)
