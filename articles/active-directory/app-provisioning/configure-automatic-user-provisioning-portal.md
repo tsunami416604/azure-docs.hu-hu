@@ -1,6 +1,6 @@
 ---
-title: Felhasználók üzembe helyezésének felügyelete az Azure AD-ben vállalati alkalmazásokhoz
-description: Megtudhatja, hogyan kezelheti a vállalati alkalmazások felhasználói fiókjának kiépítési folyamatait a Azure Active Directory használatával
+title: A vállalati alkalmazások felhasználói kiépítési kezelése az Azure AD-ben
+description: Megtudhatja, hogy miként kezelheti a vállalati alkalmazások felhasználói fiókkiépítését az Azure Active Directory használatával
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,76 +16,76 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f9bd1afeebedf4cbf37d75d9c57f3d8be0f288
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264127"
 ---
-# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
+# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Vállalati alkalmazások felhasználói fiókkiépítésének kezelése az Azure Portalon
 
-Ez a cikk a felhasználói fiókok automatikus üzembe helyezésének és kiépítési folyamatának általános lépéseit ismerteti az azt támogató alkalmazások esetében. A *felhasználói fiókok üzembe* helyezése a felhasználói fiókok rekordjainak létrehozása, frissítése és/vagy letiltása az alkalmazás helyi felhasználói profiljának tárolójába. A legtöbb felhőalapú és SaaS-alkalmazás a felhasználók szerepkörét és engedélyeit tárolja a felhasználó helyi felhasználói profiljának tárolójában, és az egyszeri bejelentkezéshez és a munkához való hozzáféréshez *szükség* van egy ilyen felhasználói rekord meglétét a felhasználó helyi tárolójába. A felhasználói fiókok automatikus kiépítésével kapcsolatos további információkért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](user-provisioning.md).
+Ez a cikk az automatikus felhasználói fiók-kiépítés és az azt támogató alkalmazások kiépítésének általános lépéseit ismerteti. *A felhasználói fiókok kiépítése* az alkalmazás helyi felhasználói profiltárolójában a felhasználói fiókbejegyzések létrehozása, frissítése és/vagy letiltása. A legtöbb felhő- és SaaS-alkalmazás a felhasználói szerepkört és engedélyeket a felhasználó saját helyi felhasználói profiltárolójában tárolja, és az ilyen felhasználói bejegyzés jelenléte a felhasználó helyi tárolójában az egyszeri bejelentkezéshez és a munkához való *hozzáféréshez szükséges.* Ha többet szeretne tudni az automatikus felhasználói fiókok kiépítéséről, olvassa el [a Felhasználói kiépítés és a SaaS-alkalmazások létesítésének automatizálása az Azure Active Directoryval.](user-provisioning.md)
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak az Azure AD-vel való automatikus kiépítés során. Először meg kell keresnie az alkalmazásra vonatkozó kiépítési beállítási oktatóanyagot, amely [bemutatja, hogyan integrálható az SaaS-alkalmazások Azure Active Directory használatával](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). A kiépítési kapcsolatok létrehozásához az alkalmazás és az Azure AD konfigurálásának lépésenkénti útmutatója is várható.
+> Az Azure Active Directory (Azure AD) rendelkezik egy katalógus, amely több ezer előre integrált alkalmazások, amelyek engedélyezve vannak az Azure AD automatikus kiépítéséhez. Először keresse meg az alkalmazásra vonatkozó létesítési beállítási oktatóanyagot az [Útmutatók listájában aRról, hogyan integrálható az SaaS-alkalmazások az Azure Active Directoryval.](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) Valószínűleg részletes útmutatást talál az alkalmazás és az Azure AD konfigurálásához a létesítési kapcsolat létrehozásához.
 
-## <a name="finding-your-apps-in-the-portal"></a>Alkalmazások keresése a portálon
+## <a name="finding-your-apps-in-the-portal"></a>Alkalmazások megkeresése a portálon
 
-A Azure Active Directory portálon megtekintheti és kezelheti az egyszeri bejelentkezéshez konfigurált összes alkalmazást egy címtárban. A vállalati alkalmazások a szervezeten belül üzembe helyezett és használt alkalmazások. A vállalati alkalmazások megtekintéséhez és kezeléséhez kövesse az alábbi lépéseket:
+Az Azure Active Directory portálon megtekintheti és kezelheti az összes olyan alkalmazást, amely konfigurálva van a címtárban való egyszeri bejelentkezéshez. A vállalati alkalmazások olyan alkalmazások, amelyek a szervezeten belül vannak telepítve és használatban. A vállalati alkalmazások megtekintéséhez és kezeléséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [Azure Active Directory portált](https://aad.portal.azure.com).
-1. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Megjelenik az összes konfigurált alkalmazás listája, beleértve a gyűjteményből hozzáadott alkalmazásokat is.
-1. Válassza ki bármelyik alkalmazást az erőforrás-ablaktábla betöltéséhez, ahol megtekintheti a jelentéseket, és kezelheti az alkalmazás beállításait.
-1. A **kiépítés** lehetőség kiválasztásával kezelheti a kiválasztott alkalmazás felhasználói fiókjának kiépítési beállításait.
+1. Nyissa meg az [Azure Active Directory portált.](https://aad.portal.azure.com)
+1. Válassza a **vállalati alkalmazások lehetőséget** a bal oldali ablaktáblából. Megjelenik az összes konfigurált alkalmazás listája, beleértve a katalógusból hozzáadott alkalmazásokat is.
+1. Jelölje ki bármelyik alkalmazást az erőforrásablak ának betöltéséhez, ahol megtekintheti a jelentéseket és kezelheti az alkalmazásbeállításokat.
+1. Válassza **a Kiépítés** lehetőséget a kijelölt alkalmazás felhasználói fiók kiépítési beállításainak kezeléséhez.
 
-   ![Kiépítési képernyő a felhasználói fiókok üzembe helyezési beállításainak kezeléséhez](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![A felhasználói fiókok kiépítési beállításainak kezeléséhez szolgáló kiépítési képernyő](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
-## <a name="provisioning-modes"></a>Üzembe helyezési módok
+## <a name="provisioning-modes"></a>Kiépítési módok
 
-A **kiépítés** ablaktábla egy **üzemmód** menüvel kezdődik, amely a vállalati alkalmazások által támogatott üzembe helyezési módokat mutatja, és lehetővé teszi a konfigurálását. Az elérhető lehetőségek a következők:
+A **kiépítés** ablaktábla egy **mód menüvel** kezdődik, amely egy vállalati alkalmazás számára támogatott létesítési módokat jelenít meg, és lehetővé teszi azok konfigurálását. A rendelkezésre álló lehetőségek a következők:
 
-* **Automatikus** – ez a beállítás akkor jelenik meg, ha az Azure ad támogatja az API-alapú üzembe helyezést vagy a felhasználói fiókok ezen alkalmazáshoz való kivonását. Válassza ezt a módot egy olyan felület megjelenítéséhez, amely segít a rendszergazdáknak:
+* **Automatikus** – Ez a beállítás akkor jelenik meg, ha az Azure AD támogatja az automatikus API-alapú kiépítése vagy az alkalmazás felhasználói fiókok kiépítésének kiépítése. Ebben a módban olyan felületet szeretne megjeleníteni, amely segít a rendszergazdáknak:
 
-  * Az Azure AD konfigurálása az alkalmazás felhasználói kezelési API-hoz való kapcsolódáshoz
-  * Fiók-hozzárendelések és munkafolyamatok létrehozása, amelyek meghatározzák, hogy a felhasználói fiókadatok hogyan legyenek az Azure AD és az alkalmazás között
+  * Az Azure AD konfigurálása az alkalmazás felhasználói felügyeleti API-jához való csatlakozáshoz
+  * Fiókleképezések és munkafolyamatok létrehozása, amelyek meghatározzák, hogy a felhasználói fiók adatai hogyan folynak az Azure AD és az alkalmazás között
   * Az Azure AD-kiépítési szolgáltatás kezelése
 
-* **Manuális** – ez a beállítás akkor jelenik meg, ha az Azure ad nem támogatja a felhasználói fiókok automatikus üzembe helyezését az alkalmazásban. Ebben az esetben az alkalmazásban tárolt felhasználói fiókok rekordjait külső folyamattal kell felügyelni, az adott alkalmazás által biztosított felhasználói felügyelet és kiépítési képességek alapján (amely magában foglalhatja az SAML igény szerinti üzembe helyezését).
+* **Manuális** – Ez a beállítás akkor jelenik meg, ha az Azure AD nem támogatja a felhasználói fiókok automatikus kiépítését az alkalmazásba. Ebben az esetben az alkalmazásban tárolt felhasználói fiókrekordokat egy külső folyamat használatával kell kezelni, az adott alkalmazás által biztosított felhasználói felügyeleti és kiépítési képességek alapján (amely magában foglalhatja az SAML just-in-time kiépítését).
 
-## <a name="configuring-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása
+## <a name="configuring-automatic-user-account-provisioning"></a>Automatikus felhasználói fiók-kiépítés konfigurálása
 
-Válassza az **automatikus** lehetőséget a rendszergazdai hitelesítő adatok, hozzárendelések, Indítás és Leállítás, valamint a szinkronizálás beállításainak megadásához.
+Válassza az **Automatikus** lehetőséget a rendszergazdai hitelesítő adatok, a hozzárendelések, a kezdés és leállítás, valamint a szinkronizálás beállításainak megadásához.
 
 ### <a name="admin-credentials"></a>Rendszergazdai hitelesítő adatok
 
-A **rendszergazdai hitelesítő adatok** kibontásával adja meg azokat a hitelesítő adatokat, amelyek szükségesek ahhoz, hogy az Azure ad csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. A bemenet megadása az alkalmazástól függően változhat. Az adott alkalmazások hitelesítő adataival és követelményeivel kapcsolatos további információkért tekintse meg az adott [alkalmazás konfigurációs oktatóanyagát](user-provisioning.md).
+Bontsa ki a **rendszergazdai hitelesítő adatokat** az Azure AD-hez az alkalmazás felhasználói felügyeleti API-jához való csatlakozáshoz szükséges hitelesítő adatok megadásához. A szükséges bemenet az alkalmazástól függően változik. Az adott alkalmazás hitelesítő adatok típusairól és követelményeiről az [adott alkalmazás konfigurációs oktatóanyaga](user-provisioning.md)című témakörben olvashat.
 
-Válassza a **kapcsolat tesztelése** lehetőséget a hitelesítő adatok teszteléséhez azáltal, hogy az Azure ad megpróbál csatlakozni az alkalmazás kiépítési alkalmazásához a megadott hitelesítő adatok használatával.
+Válassza a **Kapcsolat tesztelése** a hitelesítő adatok teszteléséhez, ha az Azure AD megkísérli az alkalmazás létesítési alkalmazáshoz való csatlakozást a megadott hitelesítő adatok használatával.
 
 ### <a name="mappings"></a>Leképezések
 
-A **leképezések** kibontásával megtekintheti és szerkesztheti az Azure ad és a célalkalmazás közötti felhasználói attribútumokat, amikor a felhasználói fiókokat kiépítik vagy frissítik.
+A **Leképezések** csomópontot az Azure AD és a célalkalmazás között a felhasználói fiókok kiépítésekor vagy frissítésekor futó felhasználói attribútumok megtekintéséhez és szerkesztéséhez bontsa ki.
 
-Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között előre konfigurált leképezések vannak. Egyes alkalmazások más típusú objektumokat, például csoportokat vagy névjegyeket kezelnek. Válasszon ki egy leképezést a táblázatban a leképezési szerkesztő jobbra való megnyitásához, ahol megtekintheti és testreszabhatja azokat.
+Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között előre konfigurált leképezések előre konfigurált készlete található. Egyes alkalmazások más típusú objektumokat kezelnek, például csoportokat vagy névjegyeket. Jelöljön ki egy leképezést a táblában a jobb oldali leképezési szerkesztő megnyitásához, ahol megtekintheti és testreszabhatja őket.
 
-![Az attribútum-leképezési képernyő megjelenítése](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Az Attribútumleképezés képernyő megjelenítése](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 A támogatott testreszabások a következők:
 
-* Adott objektumok (például az Azure AD felhasználói objektum) leképezésének engedélyezése és letiltása a SaaS-alkalmazás felhasználói objektumához.
-* Az Azure AD felhasználói objektumból az alkalmazás felhasználói objektumára áramló attribútumok szerkesztése. További információ az attribútumok hozzárendeléséről: az [attribútumok megfeleltetési típusainak ismertetése](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Az Azure AD által a célként megadott alkalmazáson futtatott kiépítési műveletek szűrése. Ahelyett, hogy az Azure AD teljes mértékben szinkronizálja az objektumokat, korlátozhatja a műveletek futtatását.
+* Adott objektumok, például az Azure AD felhasználói objektum leképezésének engedélyezése és letiltása az SaaS-alkalmazás felhasználói objektumához.
+* Az Azure AD felhasználói objektumból az alkalmazás felhasználói objektumába áramló attribútumok szerkesztése. Az attribútumleképezésről az [Attribútumleképezési típusok ismertetése](customize-application-attributes.md#understanding-attribute-mapping-types)című témakörben talál további információt.
+* Az Azure AD által a megcélzott alkalmazáson futtatott létesítési műveletek szűrése. Ahelyett, hogy az Azure AD teljesen szinkronizálja az objektumokat, korlátozhatja a műveletek futtatását.
 
-  Ha például csak a **frissítés** lehetőséget választja, és az Azure ad csak a meglévő felhasználói fiókokat frissíti egy alkalmazásban, de nem hoz létre újakat. Csak a **Létrehozás** és az Azure lehetőséget kell választania, csak új felhasználói fiókokat hoz létre, de nem frissíti a meglévőket. Ez a funkció lehetővé teszi, hogy a rendszergazdák különböző leképezéseket hozzanak létre a fiókok létrehozásához és a munkafolyamatokhoz.
+  Például csak **válassza a Frissítés** és az Azure AD csak frissíti a meglévő felhasználói fiókok egy alkalmazásban, de nem hoz létre újakat. Csak válassza **a Create and** Azure csak új felhasználói fiókokat hoz létre, de nem frissíti a meglévőket. Ez a funkció lehetővé teszi a rendszergazdák számára, hogy különböző hozzárendeléseket hozzanak létre a fiók létrehozásához és a munkafolyamatok frissítéséhez.
 
-* Új attribútum-hozzárendelés hozzáadása. Az **attribútum-hozzárendelési** ablaktábla alján kattintson az **Új leképezés hozzáadása** lehetőségre. Töltse ki az **attribútum szerkesztése** űrlapot, és kattintson az **OK** gombra az új hozzárendelésnek a listához való hozzáadásához.
+* Új attribútumleképezés hozzáadása. Az **Attribútumleképezés** ablaktábla alján válassza az **Új leképezés hozzáadása** lehetőséget. Töltse ki az **Attribútum szerkesztése űrlapot,** és válassza az **Ok gombra** lehetőséget, ha hozzá szeretné adni az új hozzárendelést a listához.
 
 ### <a name="settings"></a>Beállítások
 
-A **kiépítési** képernyő **Beállítások** területén elindíthatja és leállíthatja az Azure ad kiépítési szolgáltatást a kiválasztott alkalmazáshoz. Dönthet úgy is, hogy törli a kiépítési gyorsítótárat, és újraindítja a szolgáltatást.
+Elindíthatja és leállíthatja az Azure AD-kiépítési szolgáltatást a kiválasztott alkalmazáshoz a **Kiépítés** képernyő **Beállítások** területén. Azt is választhatja, hogy törölje a létesítési gyorsítótárat, és indítsa újra a szolgáltatást.
 
-Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja be a szolgáltatást úgy, hogy a **kiépítési állapotot** **a be**értékre módosítja. Ez a módosítás azt eredményezi, hogy az Azure AD-kiépítési szolgáltatás kezdeti ciklust futtat. Beolvassa a **felhasználók és csoportok** szakaszban hozzárendelt felhasználókat, lekérdezi azokat, majd futtatja az Azure ad- **leképezések** szakaszban meghatározott üzembe helyezési műveleteket. A folyamat során a kiépítési szolgáltatás tárolja a gyorsítótárazott információkat arról, hogy milyen felhasználói fiókokat kezel, ezért a nem felügyelt fiókokat a nem a hozzárendelés hatókörébe tartozó alkalmazásokon belül nem érinti a kiépítési műveletek. A kezdeti ciklust követően a kiépítési szolgáltatás 40 percenként automatikusan szinkronizálja a felhasználók és a csoportok objektumait.
+Ha egy alkalmazás első alkalommal engedélyezve van, kapcsolja be a szolgáltatást a **Kiépítési állapot** **bekapcsolva**állapotértékre módosításával. Ez a módosítás hatására az Azure AD-kiépítési szolgáltatás egy kezdeti ciklus futtatásához. Beolvassa a felhasználók rendelt a **felhasználók és** csoportok szakaszban, lekérdezi a célalkalmazást, és majd futtatja az Azure **AD-leképezések** szakaszban meghatározott létesítési műveleteket. A folyamat során a létesítési szolgáltatás tárolja a gyorsítótárazott adatokat arról, hogy milyen felhasználói fiókokat kezel, így a nem kezelt fiókok a célalkalmazásokon belül, amelyek soha nem voltak hatókörben hozzárendelésnem érinti a de-kiépítési műveletek. A kezdeti ciklus után a létesítési szolgáltatás automatikusan szinkronizálja a felhasználói és csoport objektumok egy negyven perces időközzel.
 
-Állítsa a **kiépítési állapotot** **ki** értékre a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít vagy távolít el semmilyen felhasználói vagy csoportos objektumot az alkalmazásban. Állítsa vissza az állapotot **a be** értékre, és a szolgáltatás felveszi a helyét, ahol abbahagyta.
+Módosítsa a **kiépítési állapot** **ot Kikapcsolva** állapotra a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít és nem távolít el felhasználói vagy csoportobjektumokat az alkalmazásban. Módosítsa az állapotot **Be** állapotra, és a szolgáltatás ott folytatja, ahol abbahagyta.
 
-**Törölje az aktuális állapotot, és indítsa újra a szinkronizálást** kezdeti ciklusban. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútum-hozzárendeléseket. Vegye figyelembe, hogy a kezdeti ciklus a kiértékeléshez szükséges objektumok száma miatt hosszabb időt vesz igénybe, mint a szokásos növekményes ciklus. A kezdeti és a növekményes ciklusok teljesítményéről [itt](application-provisioning-when-will-provisioning-finish-specific-user.md)olvashat bővebben. 
+**Az aktuális állapot törlésének és a szinkronizálás újraindításának törlése** kezdeti ciklust indít el. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében vannak-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútumleképezéseket. Vegye figyelembe, hogy a kezdeti ciklus befejezése hosszabb időt vesz igénybe, mint a tipikus növekményes ciklus a kiértékelendő objektumok száma miatt. A kezdeti és a növekményes ciklusok teljesítményéről itt olvashat [bővebben.](application-provisioning-when-will-provisioning-finish-specific-user.md) 

@@ -1,6 +1,6 @@
 ---
-title: Az Object models és a térbeli intelligencia Graph áttekintése – Azure digitális Twins | Microsoft Docs
-description: Az Azure digitális Twins használata a személyek, a helyek és az eszközök közötti kapcsolatok modellezésére
+title: Az objektummodellek és a térintelligencia-grafikon ismertetése - Azure Digital Twins | Microsoft dokumentumok
+description: Az Azure Digital Twins használata személyek, helyek és eszközök közötti kapcsolatok modellezéséhez
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,96 +9,96 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265206"
 ---
-# <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>A digitális ikrek Object models és a térbeli intelligencia Graph ismertetése
+# <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>A Digital Twins objektummodelljeinek és térbeli intelligenciagrafikonjának megértése
 
-Az Azure Digital Twins egy Azure IoT-szolgáltatás, amely a fizikai környezetek és a hozzájuk kapcsolódó eszközök, érzékelők és személyek átfogó virtuális ábrázolását is felruházza. A fejlesztést a tartományra vonatkozó fogalmak hasznos modellekre való szervezésével javítja. A modellek ezután a térbeli intelligencia gráfon belül helyezkednek el. Ezek a fogalmak hűen modellezik a kapcsolatokat és az interakciókat a személyek, a szóközök és az eszközök között.
+Az Azure Digital Twins egy Azure IoT-szolgáltatás, amely a fizikai környezetek és a kapcsolódó eszközök, érzékelők és személyek átfogó virtuális megjelenítését biztosítja. Javítja a fejlesztést azáltal, hogy a tartományspecifikus fogalmakat hasznos modellekké szervezi. A modellek ezután egy térbeli intelligencia grafikonon helyezkednek el. Az ilyen fogalmak hűen modellezik az emberek, terek és eszközök közötti kapcsolatokat és kölcsönhatásokat.
 
-A digitális Twins-objektumok modelljei a tartományra jellemző fogalmakat, kategóriákat és tulajdonságokat írják le. A modelleket olyan felhasználók határozzák meg, akik szeretnék a megoldást egyedi igényeiknek megfelelően testre szabni. Ezek együttesen az előre definiált digitális Twins-objektumok modelljei egy _ontológia_-t alkotnak. Az intelligens épület ontológia a régiókat, a helyszíneket, a szinteket, az irodákat, a zónákat, a konferenciatermeket és a fókusz termeket ismerteti. Az Energy Grid ontológia különböző erőműveket, alállomásokat, energiaforrásokat és ügyfeleket tartalmaz. A digitális ikrek Object models és ontológiákat használatával a különböző forgatókönyvek és igények testreszabhatók.
+A Digital Twins objektummodellek tartományspecifikus fogalmakat, kategóriákat és tulajdonságokat írnak le. A modelleket előre definiálják azok a felhasználók, akik a megoldást az egyedi igényeikhez szeretnék igazítani. Ezek az előre definiált Digital Twins objektummodellek együtt _ontológiát alkotnak._ Az intelligens épület ontológia régióit, helyszíneit, padlóit, irodáit, zónáit, konferenciatermeit és fókusztermeit írja le. Az energiahálózati ontológia különböző erőműveket, alállomásokat, energiaforrásokat és ügyfeleket ír le. A Digital Twins objektummodellekkel és ontológiákkal különböző forgatókönyvek és igények szabhatók testre.
 
-A Digital ikrek Object models és az ontológia a helyén egy _térbeli gráfot_is feltölthet. A térbeli diagramok a helyek, az eszközök és a IoT-megoldásokhoz kapcsolódó személyek közötti kapcsolatok számos kapcsolatának virtuális ábrázolásai. Ez az ábra egy intelligens épületben lévő ontológia-t használó térbeli gráf példáját mutatja be.
+A Digital Twins objektummodellekkel és egy ontológia segítségével feltöltheti a _térbeli grafikont._ A térbeli grafikonok a terek, az eszközök és az IoT-megoldások szempontjából releváns személyek közötti számos kapcsolat virtuális ábrázolásai. Ez az ábra egy olyan térbeli grafikont mutat be, amely egy intelligens épület ontológiáját használja.
 
-[![digitális Twins térbeli gráf-összeállítás](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
+[![Digitális Ikrek térbeli grafikon épület](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
-A térbeli gráf a szóközöket, az eszközöket, az érzékelőket és a felhasználókat egyesíti. Mindegyik össze van kapcsolva oly módon, hogy a valós világban modellezhető legyen. Ebben a példában a 43-es helyszín négy emelettel rendelkezik, amelyek mindegyike számos különböző területtel rendelkezik. A felhasználók a munkaállomásokhoz vannak társítva, és hozzáférést kapnak a gráf egyes részeihez. A rendszergazdának joga van a térbeli gráf módosítására, míg a látogató jogosult arra, hogy csak bizonyos építési adatszolgáltatásokat tekintse meg.
+A térbeli grafikon egyesíti a tereket, eszközöket, érzékelőket és felhasználókat. Mindegyik úgy kapcsolódik össze, hogy a valós világot modellezi. Ebben a mintában a 43-as helyszín négy szintes, mindegyik különböző területtel rendelkezik. A felhasználók a munkaállomásaikhoz vannak társítva, és hozzáférést kapnak a grafikon egyes részeihez. A rendszergazda jogosult a térbeli grafikon módosítására, míg a látogatónak csak bizonyos épületadatok megtekintésére van joga.
 
-## <a name="digital-twins-object-models"></a>Digitális ikrek Object models
+## <a name="digital-twins-object-models"></a>Digitális Twins objektum modellek
 
-A digitális Twins-objektumok modelljei a következő fő kategóriákat támogatják:
+A Digital Twins objektummodellek támogatják az objektumok alábbi fő kategóriáit:
 
-- A **szóközök** virtuális vagy fizikai helyek, például `Tenant`, `Customer`, `Region`és `Venue`.
-- Az **eszközök** virtuális vagy fizikai berendezések, például `AwesomeCompany Device` és `Raspberry Pi 3`.
-- Az **érzékelők** olyan objektumok, amelyek az eseményeket (például `AwesomeCompany Temperature Sensor` és `AwesomeCompany Presence Sensor`) azonosítják.
-- A **felhasználók** azonosítják az utasokat és azok jellemzőit.
+- **A szóközök** virtuális vagy `Tenant`fizikai `Customer` `Region`helyek, `Venue`például , , , és .
+- **Az eszközök** például virtuális vagy fizikai `AwesomeCompany Device` berendezések, és `Raspberry Pi 3`.
+- **Az érzékelők** olyan objektumok, amelyek `AwesomeCompany Temperature Sensor` észlelik az eseményeket, például és `AwesomeCompany Presence Sensor`.
+- **A felhasználók** azonosítják a lakókat és jellemzőiket.
 
 Az objektumok egyéb kategóriái a következők:
 
-- Az **erőforrások** egy szóközzel vannak csatolva, és jellemzően olyan Azure-erőforrásokat jelölnek, amelyeket a térbeli gráf objektumai használnak, például `IoTHub`.
-- A **Blobok** objektumokhoz (például szóközökhöz, eszközökhöz, érzékelőkhöz és felhasználókhoz) vannak csatolva. A MIME-típust és metaadatokat tartalmazó fájlként használják, például `maps`, `pictures`és `manuals`.
-- A **kiterjesztett típusok** olyan bővíthető enumerálások, amelyek adott jellemzőkkel bővítik az entitásokat, például `SpaceType` és `SpaceSubtype`.
-- A **ontológiákat** kiterjesztett típusok (például `Default`, `Building`, `BACnet`és `EnergyGrid`) halmazát jelölik.
-- A **Tulajdonságok kulcsai és értékei** a szóközök, eszközök, érzékelők és felhasználók egyéni jellemzői. A beépített jellemzőkkel együtt használhatók, például `DeltaProcessingRefreshTime` kulcsként, `10`ként pedig értékként.
-- A **szerepkörök** a térbeli gráf felhasználóihoz és eszközeihez rendelt engedélyek készletei, például `Space Administrator`, `User Administrator`és `Device Administrator`.
-- A **szerepkör-hozzárendelések** egy szerepkör és egy, a térbeli gráfban található objektum közötti társítások. Előfordulhat például, hogy egy felhasználó vagy egy szolgáltatásnév engedélyt kap a térbeli gráfban található terület kezelésére.
-- A **biztonsági kulcsok tárolói** biztosítják a hierarchiában lévő összes eszköz biztonsági kulcsait, hogy az eszköz biztonságosan tudjon kommunikálni a digitális ikrekkel.
-- A **felhasználó által definiált függvények** (UDF) lehetővé teszik a testreszabható érzékelő telemetria feldolgozását a térbeli gráfon belül. Az UDF például a következőket teheti:
-  - Állítsa be az érzékelő értékét.
-  - Végezzen egyéni logikát az érzékelő beolvasása alapján, és állítsa be a kimenetet egy szóközzel.
-  - Metaadatok csatolása egy szóközzel.
-  - Értesítések küldése, ha az előre meghatározott feltételek teljesülnek. A UDF jelenleg JavaScript nyelven is megírhatók.
-- Az **egyeztető** olyan objektumok, amelyek meghatározzák, hogy mely UDF kell végrehajtani egy adott telemetria-üzenet esetében.
-- A **végpontok** azok a helyszínek, ahol a telemetria üzenetek és a digitális ikrek eseményei irányíthatók, például `Event Hub`, `Service Bus`és `Event Grid`.
+- **Az erőforrások** egy területhez vannak csatolva, `IoTHub`és általában a térbeli grafikonban lévő objektumok által használandó Azure-erőforrásokat jelölik, például.
+- **A blobok** objektumokhoz (például szóközökhöz, eszközökhöz, érzékelőkhöz és felhasználókhoz) vannak csatolva. A program a mime típusú fájlokat és a `maps`metaadatokat használja, például a , `pictures`és `manuals`a.
+- **A kiterjesztett típusok** olyan bővíthető felsorolások, amelyek speciális `SpaceType` `SpaceSubtype`jellemzőkkel rendelkező entitásokat bővítenek, például és .
+- **Az ontológiák** kiterjesztett típusok készletét `Default` `Building`jelentik, például , , `BACnet`és `EnergyGrid`.
+- **A tulajdonságkulcsok és -értékek** a terek, eszközök, érzékelők és felhasználók egyéni jellemzői. Használhatók együtt beépített jellemzők, például a `DeltaProcessingRefreshTime` kulcs és `10` az érték.
+- **A szerepkörök** a térbeli grafikonon a felhasználókhoz és `Space Administrator` `User Administrator`eszközökhöz `Device Administrator`rendelt engedélyek készletei, például , , és .
+- **A szerepkör-hozzárendelések** egy szerepkör és egy objektum közötti társítás a térbeli grafikonon. Például egy felhasználó vagy egy egyszerű szolgáltatás engedélyt kaphat a térbeli gráf ban lévő tér kezeléséhez.
+- **A biztonsági kulcstárolók** biztosítják a biztonsági kulcsokat a hierarchia összes eszközéhez egy adott térobjektum alatt, hogy az eszköz biztonságosan kommunikáljon a Digital Twins programmal.
+- **A felhasználó által definiált függvények** (UDF-ek) lehetővé teszik a testreszabható érzékelő telemetriai feldolgozást a térbeli grafikonon belül. Egy UDF például:
+  - Állítson be egy érzékelő értéket.
+  - Egyéni logikát hajtson végre az érzékelő mért értékek alapján, és állítsa a kimenetet egy szóközre.
+  - Metaadatok csatolása szóközhöz.
+  - Értesítések küldése, ha az előre meghatározott feltételek teljesülnek. Jelenleg az UDF-ek JavaScript nyelven is írhatók.
+- **A matcherek** olyan objektumok, amelyek meghatározzák, hogy mely UDF-ek vannak végrehajtva egy adott telemetriai üzenetben.
+- **A végpontok** azok a helyek, ahol a telemetriai üzenetek `Event Hub` `Service Bus`és `Event Grid`a Digitális Twins események irányíthatók, például , és.
 
 ## <a name="spatial-intelligence-graph"></a>Térbeliintelligencia-diagramok
 
-A térbeli gráf a szóközök, az eszközök és a digitális Twins-objektummodell által meghatározott személyek hierarchikus gráfja. A térbeli gráf támogatja az öröklést, a szűrést, a átjárást, a méretezhetőséget és a bővíthetőséget. A térbeli gráfot a REST API-k gyűjteményével kezelheti és használhatja.
+Térbeli grafikon a hierarchikus grafikon terek, eszközök és a digitális twins objektum modellben meghatározott személyek. A térbeli diagram támogatja az öröklődést, a szűrést, az átjárást, a méretezhetőséget és a bővíthetőséget. A térbeli grafikont a REST API-k gyűjteményével kezelheti és kezelheti.
 
-Ha az előfizetésében egy digitális Twins szolgáltatást helyez üzembe, akkor a legfelső szintű csomópont globális rendszergazdája lesz. Ezután automatikusan megkapja a teljes hozzáférést a teljes struktúrához. Szóközök kiépítése a gráfban a Space API használatával. Szolgáltatások kiépítése az eszköz API-val és érzékelőkkel az érzékelő API használatával. A [nyílt forráskódú eszközök](https://github.com/Azure-Samples/digital-twins-samples-csharp) is elérhetők a gráf tömeges kiépítéséhez.
+Ha egy Digital Twins szolgáltatást telepít az előfizetésében, a gyökércsomópont globális rendszergazdája lesz. Ezután automatikusan teljes hozzáférést kap az egész struktúrához. A térközök üzembe helyeződése a diagramon a Tér API használatával. Szolgáltatások nyújtása az Eszköz API és érzékelők használatával a Sensor API használatával. [Nyílt forráskódú eszközök](https://github.com/Azure-Samples/digital-twins-samples-csharp) is rendelkezésre állnak a grafikon ömlesztve történő kiépítéséhez.
 
-**Gráf öröklése**. Az öröklés a szülő csomópontról az alatta lévő összes csomópontra leképezett engedélyekre és tulajdonságokra vonatkozik. Ha például egy szerepkör egy adott csomóponton lévő felhasználóhoz van rendelve, akkor a felhasználó rendelkezik az adott szerepkörhöz tartozó jogosultságokkal az adott csomóponthoz és az alatta lévő összes csomóponthoz. Az adott csomóponthoz definiált összes tulajdonságot és kiterjesztett típust a csomópont alatti összes csomópont örökli.
+**Grafikon öröklés**. Az öröklés azokra az engedélyekre és tulajdonságokra vonatkozik, amelyek a szülőcsomópontról az alatta lévő összes csomópontra érkeznek. Ha például egy szerepkör egy adott csomóponton lévő felhasználóhoz van rendelve, a felhasználó rendelkezik a szerepkör engedélyeivel az adott csomóponthoz és az alatta lévő összes csomóponthoz. Minden adott csomóponthoz definiált tulajdonságkulcsot és kiterjesztett típust az adott csomópont alatti összes csomópont örökli.
 
-**Gráf szűrése** A szűrés a kérelmek eredményeinek szűkítéséhez használható. Az azonosítók, a név, a típusok, az altípusok, a szülő terület és a társított szóközök alapján szűrhet. Az adattípusok, a tulajdonságok és az értékek, a *bejárás*, a *minLevel*, a *maxLevel*és más OData-szűrési paraméterek alapján is szűrhetők.
+**Grafikonszűrés**. A szűrés a kérelem eredmények szűkítésére szolgál. Szűrhet azonosítók, nevek, típusok, altípusok, szülőtér és a kapcsolódó szóközök szerint. Szűrhet érzékelőadattípusok, tulajdonságkulcsok és -értékek, *bejárás,* *minSzint*, *maxLevel*és egyéb OData-szűrőparaméterek szerint is.
 
-**Gráf átjárása**. A térbeli gráfot a mélysége és szélessége alapján is áthaladhatja. A részletes adatok megjelenítéséhez a *minLevel*és a *maxLevel*paraméterek használatával a diagram felülről lefelé vagy alulról *lefelé halad.* A gráf bejárásával lekérheti, hogy a testvér-csomópontok közvetlenül a szülő területhez vagy az egyik leszármazotthoz legyenek csatolva. Amikor lekérdez egy objektumot *, a Get* API-k beolvasása paraméter használatával lekérheti az összes kapcsolódó objektumot, amely az objektummal való kapcsolattal rendelkezik.
+**A grafikon áthalad**. A térbeli grafikont a mélysége és szélessége révén is átjárhatja. A mélység beállításhoz a grafikont felülről lefelé vagy alulról felfelé járja a *sokszögelés,* *a minLevel*és a *maxLevel*paraméterek használatával. A diagram on-át történő bejárásával közvetlenül egy szülőtérhez vagy annak egyik leszármazottjához kell kapcsolódnia a szélességhez. Amikor lekérdez egy objektumot, a GET *API-k tartalmazza* a kapcsolódó objektumokat tartalmazó paraméterhasználatával lekaphatja az összes kapcsolódó objektumot, amely kapcsolatban áll az adott objektummal.
 
-**Gráf skálázhatósága**. A digitális Twins garantálja a gráf méretezhetőségét, így képes kezelni a valós munkaterheléseket. A digitális ikrek a Real Estate, az infrastruktúra, az eszközök, az érzékelők, a telemetria és sok más portfóliójának ábrázolására alkalmasak.
+**Grafikon méretezhetősége**. A Digital Twins garantálja a grafikonméretezhetőségét, így képes kezelni a valós munkaterheléseket. A Digital Twins segítségével ingatlanok, infrastruktúra, eszközök, érzékelők, telemetriai adatok és egyebek nagy portfólióit képviselheti.
 
-**Gráf bővíthetősége**. A bővíthetőség használatával testreszabhatja az alapul szolgáló digitális Twins-objektumok modelljét új típusokkal és ontológiákat. A digitális Twins-adatok bővíthető tulajdonságokkal és értékekkel is bővíthetők.
+**Grafikon bővíthetőség**. A bővíthetőség segítségével testre szabhatja az alapul szolgáló Digital Twins objektummodelleket új típusokkal és ontológiákkal. A Digital Twins adatok is bővíthető tulajdonságokkal és értékekkel gazdagodhatnak.
 
-### <a name="spatial-intelligence-graph-management-apis"></a>Térbeli intelligencia Graph felügyeleti API-k
+### <a name="spatial-intelligence-graph-management-apis"></a>Térintelligencia-grafikon kezelési API-k
 
-Miután a [Azure Portal](https://portal.azure.com)a digitális Twins üzembe helyezését, automatikusan [létrejön a felügyeleti](https://swagger.io/tools/swagger-ui/) API-k felvágási URL-címe. A Azure Portal az **Áttekintés** szakaszban a következő formátumban jelenik meg.
+Miután telepítette a digitális twins az [Azure Portalon,](https://portal.azure.com)a felügyeleti API-k [Swagger](https://swagger.io/tools/swagger-ui/) URL-címe automatikusan létrejön. Megjelenik az Azure Portalon az **áttekintés szakaszban** a következő formátumban.
 
 ```plaintext
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name (Név) | Csere erre |
+| Név | Csere erre |
 | --- | --- |
-| YOUR_INSTANCE_NAME | A digitális Twins-példány nevét |
-| YOUR_LOCATION | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_INSTANCE_NAME | A digitális twins példány neve |
+| YOUR_LOCATION | A példány mely kiszolgálórégiójában található |
 
- A képen megjelenik a teljes URL-cím formátuma.
+ A teljes URL-formátum megjelenik ezen a képen.
 
-[![digitális Twins portál Management API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
+[![Digitális Twins portál felügyeleti API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
-További információ a térbeli intelligencia-diagramok használatáról: Azure digitális Twins Management API-k – előzetes verzió.
+A térbeli intelligencia grafikonok használatával kapcsolatos további részletekért látogasson el az Azure Digital Twins Management API-k besurranó előzetes verziójára.
 
 > [!TIP]
-> Az API-szolgáltatások készletének bemutatásához meg kell adni egy hencegő előzetes verziót.
-> A szolgáltatás a [docs.westcentralus.azuresmartspaces.net/Management/Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger)webhelyen található.
+> A Swagger setbesurrittió előzetes verziója az API-szolgáltatáskészlet bemutatására szolgál.
+> A [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger)házigazdája.
 
-További információ a [hencegés használatáról](how-to-use-swagger.md).
+További információ [a Swagger használatáról.](how-to-use-swagger.md)
 
-Az összes API-hívást hitelesíteni kell a [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)használatával. Az API-k a [Microsoft REST API irányelvek konvencióit](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)követik. A gyűjteményeket visszaadó API-k többsége támogatja a [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) rendszer-lekérdezési lehetőségeket.
+Minden API-hívást az [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)használatával kell hitelesíteni. Az API-k követik a [Microsoft REST API-irányelvek irányelveit.](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md) A gyűjteményeket visszaadó API-k többsége támogatja az [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) rendszer lekérdezési beállításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az eszközök kapcsolatának megismeréséhez és a digitális Twins telemetria-üzeneteinek elküldéséhez olvassa el az [Azure Digital Twins-eszközök csatlakoztatása és a telemetria](concepts-device-ingress.md)beáramlása című témakört.
+- Ha többet szeretne megtudni az eszközkapcsolatról és arról, hogyan küldhet telemetriai üzeneteket a digitális twins-nek, olvassa el [az Azure Digital Twins-eszköz kapcsolatát és a telemetriai adatok közötti kapcsolatot.](concepts-device-ingress.md)
 
-- A felügyeleti API korlátozásait és szabályozásait az [Azure digitális ikrek API Management és korlátozásai](concepts-service-limits.md)című témakör ismerteti.
+- Ha többet szeretne megtudni a Felügyeleti API korlátairól és szabályozásáról, olvassa el [az Azure Digital Twins API-kezelést és korlátozásokat.](concepts-service-limits.md)

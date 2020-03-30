@@ -1,16 +1,16 @@
 ---
-title: Rövid útmutató – virtuális gép biztonsági mentése a Azure Portal
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Recovery Services-tárolót, hogyan engedélyezheti a védelmet egy Azure-beli virtuális gépen, és hogyan készíthet biztonsági másolatot a virtuális gépről a Azure Portal.
+title: Rövid útmutató – Egy virtuális gép biztonsági és biztonsági másolatot az Azure Portal
+description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Recovery Services-tárolót, engedélyezze a védelmet egy Azure-beli virtuális gépen, és biztonsági másolatot készítsen a virtuális gépről az Azure Portalon.
 ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 02/06/2020
 ms.custom: mvc
 ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240449"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
@@ -21,7 +21,7 @@ Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági ment
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
 ## <a name="select-a-vm-to-back-up"></a>A virtuális gép kiválasztása a biztonsági mentéshez
 
@@ -76,7 +76,7 @@ Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a vir
 
 3. Válassza az **Biztonsági másolat adatainak törlése** lehetőséget a legördülő menüből.
 
-4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza a **biztonsági mentés leállítása**lehetőséget.
+4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza **a Biztonsági mentés leállítása**lehetőséget.
 
     Miután a virtuális gép biztonsági mentése leállt, és a helyreállítási pontok is ellettek távolítva, törölheti az erőforráscsoportot. Ha egy meglévő virtuális gépet használt, megtarthatja az erőforráscsoportot és a virtuális gépet.
 

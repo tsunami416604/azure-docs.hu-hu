@@ -1,6 +1,6 @@
 ---
-title: Rendszerindítási diagnosztika az Azure-beli virtuális gépekhez | Microsoft doc
-description: Az Azure-beli virtuális gépek két hibakeresési funkciójának áttekintése
+title: Rendszerindítási diagnosztika virtuális gépekhez az Azure-ban | Microsoft Dokumentum
+description: Az Azure-beli virtuális gépek két hibakeresési szolgáltatásának áttekintése
 services: virtual-machines
 author: Deland-Han
 manager: dcscontentpm
@@ -10,20 +10,20 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: fe2427d008b49daa6222ca981994f0dc2fbea355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476586"
 ---
-# <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata az Azure-beli virtuális gépek hibáinak megoldásához
+# <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata a virtuális gépek hibaelhárításához az Azure-ban
 
-Számos oka lehet annak, hogy egy virtuális gép nem rendszerindító állapotba lép. A Resource Manager-alapú üzemi modellel létrehozott virtuális gépekkel kapcsolatos problémák megoldásához használhatja a következő hibakeresési funkciókat: konzol kimenete és képernyőkép-támogatás az Azure Virtual Machines szolgáltatáshoz. 
+Számos oka lehet annak, hogy egy virtuális gép nem indítható állapotba kerül. A Resource Manager központi telepítési modellel létrehozott virtuális gépekkel kapcsolatos problémák megoldásához a következő hibakeresési funkciókat használhatja: Konzolkimenet és Képernyőkép támogatása az Azure virtuális gépekhez. 
 
-Linux rendszerű virtuális gépek esetén a konzol naplójának kimenetét a portálról tekintheti meg. A Windows és a Linux rendszerű virtuális gépek esetében az Azure lehetővé teszi, hogy megtekintse a virtuális gép képernyőképét a hypervisorból. Mindkét funkció támogatott az Azure Virtual Machines szolgáltatásban az összes régióban. Ne feledje, akár 10 percet is igénybe vehet, hogy a képernyőképek és a kimenet megjelenjen a tárfiókjában.
+Linux os virtuális gépek esetén megtekintheti a konzolnapló kimenetét a portálról. Windows és Linux virtuális gépek esetén az Azure lehetővé teszi, hogy a hipervizorból tekintsen egy képernyőképet a virtuális gépről. Mindkét funkció támogatott az Azure virtuális gépek minden régióban. Megjegyzés: a képernyőképek és a kimenet akár 10 percet is igénybe vehet, hogy megjelenjenek a tárfiókban.
 
-A **rendszerindítási diagnosztika** lehetőség kiválasztásával megtekintheti a naplót és a képernyőképet.
+A **rendszerindítási diagnosztika** lehetőséget választhatja a napló és a képernyőkép megtekintéséhez.
 
 ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
@@ -43,21 +43,21 @@ A **rendszerindítási diagnosztika** lehetőség kiválasztásával megtekinthe
 - [Nem található operációs rendszer](https://support.microsoft.com/help/4010142)
 - [Rendszerindítási hiba vagy INACCESSIBLE_BOOT_DEVICE](https://support.microsoft.com/help/4010143)
 
-## <a name="enable-diagnostics-on-a-virtual-machine-created-using-the-azure-portal"></a>Diagnosztika engedélyezése az Azure Portal használatával létrehozott virtuális gépeken
+## <a name="enable-diagnostics-on-a-virtual-machine-created-using-the-azure-portal"></a>Diagnosztika engedélyezése az Azure Portal használatával létrehozott virtuális gépen
 
-A következő eljárás a Resource Manager-alapú üzemi modell használatával létrehozott virtuális gépekre mutat.
+Az alábbi eljárás az Erőforrás-kezelő telepítési modelljével létrehozott virtuális gépre szolgál.
 
-Győződjön meg arról, hogy a **felügyelet lap figyelés** területén be van **kapcsolva a** **rendszerindítási diagnosztika** . A **Diagnostics Storage-fiók** legördülő listából válassza ki azt a Storage-fiókot, amelyben el szeretné helyezni a diagnosztikai fájlokat.
+A **Kezelés** lap **Figyelés** csoportjában győződjön meg arról, hogy a **rendszerindítási diagnosztika** be van kapcsolva. A **Diagnosztikai tárfiók** legördülő listájában válassza ki azt a tárfiókot, amelybe a diagnosztikai fájlokat el szeretné helyezni.
  
 ![Virtuális gép létrehozása](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> A rendszerindítási diagnosztika funkció nem támogatja a Premium Storage-fiókot. Ha a Premium Storage-fiókot használja a rendszerindítási diagnosztika számára, előfordulhat, hogy a virtuális gép indításakor a StorageAccountTypeNotSupported hibaüzenet jelenik meg.
+> A rendszerindítási diagnosztikai szolgáltatás nem támogatja a prémium szintű tárfiókot. Ha a prémium szintű tárfiókot használja a rendszerindítási diagnosztikához, előfordulhat, hogy a StorageAccountTypeNotSupported hibaüzenet jelenik meg a virtuális gép indításakor.
 >
 
-### <a name="deploying-from-an-azure-resource-manager-template"></a>Üzembe helyezés egy Azure Resource Manager sablonból
+### <a name="deploying-from-an-azure-resource-manager-template"></a>Üzembe helyezés Azure Resource Manager-sablonból
 
-Ha Azure Resource Manager-sablonból telepít központilag, navigáljon a virtuális gép erőforrásához, és fűzze hozzá a diagnosztikai profil szakaszhoz. Állítsa az API-verzió fejlécét "2015-06-15" vagy újabb értékre. A legújabb verzió: "2018-10-01".
+Ha egy Azure Resource Manager-sablonból telepít, keresse meg a virtuálisgép-erőforrást, és fűzz hozzá a diagnosztikai profil szakaszhoz. Állítsa az API-verzió fejlécét "2015-06-15" vagy újabb verzióra. A legújabb verzió a "2018-10-01".
 
 ```json
 {
@@ -79,22 +79,22 @@ A diagnosztikai profil lehetővé teszi, hogy kiválassza a tárfiókot, ahol el
 }
 ```
 
-Az erőforrások sablonok használatával történő telepítésével kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
+Az erőforrások sablonok használatával történő üzembe helyezéséről további információt a [Rövid útmutató: Azure Resource Manager-sablonok létrehozása és üzembe helyezése az Azure Portal használatával című témakörben talál.](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Rendszerindítási diagnosztika engedélyezése meglévő virtuális gépen 
 
-A rendszerindítási diagnosztika meglévő virtuális gépen való engedélyezéséhez kövesse az alábbi lépéseket:
+A rendszerindítási diagnosztika engedélyezéséhez egy meglévő virtuális gépen hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd válassza ki a virtuális gépet.
-2. A **támogatás + hibaelhárítás** szakaszban válassza a **rendszerindítási diagnosztika**lehetőséget, majd kattintson a **Beállítások** fülre.
-3. A **rendszerindítási diagnosztika** beállításaiban módosítsa az állapotot **be értékre, majd**a **Storage-fiók** legördülő listából válassza ki a Storage-fiókot. 
-4. Mentse a változást.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)majd válassza ki a virtuális gépet.
+2. A **Támogatás + hibaelhárítás** csoportban válassza a **Rendszerindítás diagnosztika**lehetőséget, majd a **Beállítások** lapot.
+3. A **Rendszerindítási diagnosztika** beállításaiban módosítsa az állapotot **Be**állásra, és a **Tárfiók** legördülő listából válasszon ki egy tárfiókot. 
+4. Mentse a módosításokat.
 
     ![Létező virtuális gép frissítése](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
 
-A módosítás érvénybe léptetéséhez újra kell indítania a virtuális gépet.
+A módosítás érvénybe léptetéséhez újra kell indítani a virtuális gépet.
 
-### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Rendszerindítási diagnosztika engedélyezése az Azure CLI használatával
+### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>A rendszerindítási diagnosztika engedélyezése az Azure CLI használatával
 
-Az Azure CLI-vel engedélyezheti a rendszerindítási diagnosztika használatát egy meglévő Azure-beli virtuális gépen. További információ: [az VM boot-Diagnostics](
+Az Azure CLI használatával engedélyezheti a rendszerindítási diagnosztikát egy meglévő Azure virtuális gépen. További információ: [az vm boot-diagnostics](
 https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).

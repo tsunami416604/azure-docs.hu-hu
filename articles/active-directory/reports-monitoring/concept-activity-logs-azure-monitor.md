@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory tevékenység naplói a Azure Monitorban | Microsoft Docs
-description: Bevezetés a Azure Active Directoryi tevékenység naplóiba Azure Monitor
+title: Az Azure Active Directory tevékenységnaplói az Azure Monitorban | Microsoft dokumentumok
+description: Bevezetés az Azure Active Directory-tevékenységnaplókba az Azure Monitorban
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,20 +18,20 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266545"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-tevékenységek naplói a Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Az Azure AD-tevékenységnaplók az Azure Monitorban
 
-A hosszú távú adatmegőrzéshez és az adatelemzéshez Azure Active Directory (Azure AD) tevékenység naplóit több végpontra is átirányíthatja. Ez a funkció lehetővé teszi a következőket:
+Az Azure Active Directory (Azure AD) tevékenységnaplók at több végpontra irányíthatja a hosszú távú megőrzésés adatelemzésérdekében. Ez a funkció lehetővé teszi, hogy:
 
-* Archiválja az Azure AD-tevékenységek naplóit egy Azure Storage-fiókba, hogy hosszú ideig őrizze meg az adatok megőrzését.
-* Stream Azure AD-tevékenységek naplóit az Azure Event hub for Analytics szolgáltatásban, a népszerű biztonsági információk és az eseménykezelő (SIEM) eszközök, például a splunk és a QRadar használatával.
-* Integrálhatja az Azure AD-tevékenységek naplóit a saját egyéni bejelentkezési megoldásaival az Event hub-ba való továbbítással.
-* Az Azure AD-tevékenység naplófájljainak elküldése Azure Monitor naplókba, így lehetővé teszi a kapcsolódó adatmegjelenítést, monitorozást és riasztást.
+* Archiválja az Azure AD-tevékenységnaplókat egy Azure-tárfiókba, hogy hosszú ideig megőrizze az adatokat.
+* Az Azure AD-tevékenységnaplók streamelése egy Azure-eseményközpontba elemzés céljából, a népszerű biztonsági információk és eseménykezelési (SIEM) eszközök, például a Splunk és a QRadar használatával.
+* Integrálja az Azure AD-tevékenységnaplókat a saját egyéni naplómegoldásaival, és streamelje őket egy eseményközpontba.
+* Az Azure AD-tevékenységnaplók at küldhet az Azure Monitor-naplókba, hogy gazdag vizualizációkat, figyelést és riasztást kapjon a csatlakoztatott adatokon.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
@@ -39,7 +39,7 @@ A hosszú távú adatmegőrzéshez és az adatelemzéshez Azure Active Directory
 
 ## <a name="supported-reports"></a>Támogatott jelentések
 
-Ezzel a szolgáltatással átirányíthatja az Azure AD-naplókat és bejelentkezési naplókat az Azure Storage-fiókjába, az Event hub-ba, Azure Monitor-naplókba vagy egyéni megoldásba. 
+Az Azure AD naplózási naplóit és bejelentkezési naplóit az Azure storage-fiókjába, az eseményközpontba, az Azure Monitor-naplókba vagy az egyéni megoldásba irányíthatja ezzel a funkcióval. 
 
 * **Auditnaplók**: Az [auditnaplók tevékenységjelentés](concept-audit-logs.md) hozzáférést nyújt a bérlőn elvégzett összes feladat előzményeihez.
 * **Bejelentkezési naplók**: A [bejelentkezések tevékenységjelentéssel](concept-sign-ins.md) meghatározhatja, hogy ki hajtotta végre az auditnaplók által jelentett feladatokat.
@@ -62,7 +62,7 @@ Attól függően, hogy hová szeretné irányítani a naplózási adatokat, a k�
 
 * Egy Azure Storage-fiók, amelyen *ListKeys* jogosultsággal rendelkezik. Azt javasoljuk, hogy általános tárfiókot használjon, ne Blob Storage-fiókot. A tárolás díjszabásával kapcsolatban lásd az [Azure Storage-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/?service=storage). 
 * Azure Event Hubs-névtér a külső megoldásokkal való integrációhoz.
-* Egy Azure Log Analytics-munkaterület, amely naplókat küld Azure Monitor naplókba.
+* Az Azure Log Analytics-munkaterület a naplók küldéséhez az Azure Monitor naplók.
 
 ## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
 
@@ -70,7 +70,7 @@ Ha már rendelkezik Azure AD-licenccel, egy Azure-előfizetésre lesz szüksége
 
 ### <a name="storage-size-for-activity-logs"></a>Tevékenységnaplók tárterületmérete
 
-Minden auditnapló-esemény körülbelül 2 KB adattárhelyet foglal el. A bejelentkezési eseménynaplók körülbelül 4 KB tárhellyel rendelkeznek. Egy 100 000 felhasználót számláló bérlőhöz, amely naponta körülbelül 1,5 millió eseményt hoz létre, hozzávetőleg napi 3 GB adattárhelyre lesz szüksége. Mivel az írási műveletek hozzávetőleg ötperces kötegekben történnek, havonta várhatóan körülbelül 9000 írási művelettel számolhat. 
+Minden auditnapló-esemény körülbelül 2 KB adattárhelyet foglal el. A bejelentkezési eseménynaplók körülbelül 4 KB adattárolást jelentenek. Egy 100 000 felhasználót számláló bérlőhöz, amely naponta körülbelül 1,5 millió eseményt hoz létre, hozzávetőleg napi 3 GB adattárhelyre lesz szüksége. Mivel az írási műveletek hozzávetőleg ötperces kötegekben történnek, havonta várhatóan körülbelül 9000 írási művelettel számolhat. 
 
 
 Az alábbi táblázat tartalmaz egy költségbecslést a bérlő méretének függvényében egy általános célú v2-es tárfiókra az USA nyugati régiójában, legalább egyéves megőrzéssel. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/details/storage/blobs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről.
@@ -106,15 +106,15 @@ Az alábbi táblázat egy alapszintű eseményközpont becsült havi költségé
 | Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
-### <a name="azure-monitor-logs-cost-considerations"></a>A Azure Monitor naplózza a költségeket
+### <a name="azure-monitor-logs-cost-considerations"></a>Az Azure Monitor naplózza a költséggel kapcsolatos szempontokat
 
 
 
-| Naplókategória       | Felhasználók száma | Napi események | Esemény havonta (30 nap) | Havi díj USD-ben (EST) |
+| Naplókategória       | Felhasználók száma | Napi események | Események havonta (30 nap) | Havi költség USD-ben (est) |
 | :--                | ---             | ---            | ---                        | --:                          |
-| Naplózás és bejelentkezések | 100 000         | 16 500 000     | 495 000 000                |  $1093,00                       |
-| Naplózás              | 100 000         | 1 500 000      | 45,000,000                 |  $246,66                     |
-| Bejelentkezések           | 100 000         | 15,000,000     | 450 000 000                |  $847,28                     |
+| Naplózás és bejelentkezések | 100 000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| Naplózás              | 100 000         | 1,500,000      | 45,000,000                 |  $246.66                     |
+| Bejelentkezések           | 100 000         | 15,000,000     | 450,000,000                |  $847.28                     |
 
 
 
@@ -125,7 +125,7 @@ Az alábbi táblázat egy alapszintű eseményközpont becsült havi költségé
 
 
 
-A Azure Monitor naplók kezelésével kapcsolatos költségek áttekintését lásd: a [költségek kezelése az adatmennyiség szabályozásával és a megőrzéssel Azure monitor naplókban](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Az Azure Monitor-naplók kezelésével kapcsolatos költségek áttekintéséhez olvassa el a Költségek kezelése az [adatok mennyiségének és megőrzésének szabályozásával az Azure Monitor naplóiban című témakört.](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -137,21 +137,21 @@ Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsol
 
 ---
 
-**K: Milyen hamar megjelenik a művelet a kapcsolódó naplókban az Event hub-ban?**
+**K: Milyen hamar jelennek meg a megfelelő naplók az eseményközpontban a művelet után?**
 
 **V**: A naplóknak körülbelül két-öt percen belül kell megjelenniük az eseményközpontban a műveletek végrehajtása után. Az Event Hubsról a [Mi az Azure Event Hubs?](../../event-hubs/event-hubs-about.md) című cikkben talál további információt.
 
 ---
 
-**K: Milyen hamar megjelenik a megfelelő naplók a Storage-fiókomban?**
+**K: Milyen hamar jelennek meg a megfelelő naplók a tárfiókomban?**
 
 **V**: Az Azure Storage-fiókok esetében a késés 5–15 perc az egyes műveletek végrehajtása után.
 
 ---
 
-**K: mi történik, ha egy rendszergazda megváltoztatja a diagnosztikai beállítások megőrzési időtartamát?**
+**K: Mi történik, ha egy rendszergazda módosítja a diagnosztikai beállítás megőrzési időszakát?**
 
-**A**: az új adatmegőrzési szabály a változás után gyűjtött naplókra lesz alkalmazva. A szabályzat módosítása előtt gyűjtött naplók nem lesznek hatással.
+**V**: Az új adatmegőrzési szabály a módosítás után gyűjtött naplókra lesz alkalmazva. A házirend módosítása előtt gyűjtött naplókat ez nem érinti.
 
 ---
 
@@ -197,13 +197,13 @@ Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsol
 
 **K: Elérhetem az adatokat egy eseményközpontban külső SIEM-eszköz használata nélkül is?** 
 
-**V**: Igen. Az [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) használatával is elérheti a naplókat az egyéni alkalmazásokban. 
+**A:** Igen. Az [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) használatával is elérheti a naplókat az egyéni alkalmazásokban. 
 
 ---
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tevékenységnaplók archiválása egy Storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Tevékenységnaplók irányítása egy eseményközpontba](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [Tevékenységek naplóinak integrálása Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)
+* [Tevékenységnaplók integrálása az Azure Monitorral](howto-integrate-activity-logs-with-log-analytics.md)

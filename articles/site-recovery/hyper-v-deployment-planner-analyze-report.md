@@ -1,6 +1,6 @@
 ---
-title: A Hyper-V Deployment Planner jelentés elemzése Azure Site Recovery
-description: Ez a cikk azt ismerteti, hogyan elemezheti a Azure Site Recovery Deployment Planner által generált jelentéseket a Hyper-V virtuális gépek Azure-ba való vész-helyreállításához.
+title: A Hyper-V deployment planner jelentés elemzése az Azure Site Recovery szolgáltatásban
+description: Ez a cikk ismerteti, hogyan elemezheti az Azure Site Recovery Deployment Planner által létrehozott jelentés a Hyper-V virtuális gépek azure-ba történő vész-helyreállítási.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257900"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>A Azure Site Recovery Deployment Planner jelentés elemzése
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.
 
 ## <a name="on-premises-summary"></a>Helyszíni összefoglalás
@@ -23,7 +23,7 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt a vizsgált Hyper-V-k
 
 ![Helyszíni összefoglalás](media/hyper-v-deployment-planner-analyze-report/on-premises-summary-h2a.png)
 
-**Start Date** és **End Date** (Kezdő dátum és záró dátum): Azon profilkészítési adatok kezdő és záró dátuma, amelyekről jelentést kíván készíteni. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődik, a záró dátum pedig az a dátum, amikor a profilkészítés leáll. Ezek az adatok lehetnek a „StartDate” és „EndDate” értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
+**Kezdő dátum** és **záró dátum**: A jelentés készítése korát figyelembe vett profilkészítési adatok kezdő és záró dátumai. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődik, a záró dátum pedig az a dátum, amikor a profilkészítés leáll. Ezek az adatok lehetnek a „StartDate” és „EndDate” értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
 
 **Total number of profiling days** (Profilkészítés napjainak teljes száma): A jelentéskészítés kezdő és záró dátuma között eltelt profilkészítési napok teljes száma.
 
@@ -35,7 +35,7 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt a vizsgált Hyper-V-k
 
 **Average disk size (GB)** (Átlagos lemezméret (GB)): Az összes kompatibilis virtuális gép alapján számított átlagos lemezméret.
 
-**Desired RPO (minutes)** (Kívánt RPO (perc)): A helyreállítási időkorlát alapértelmezett értéke vagy a jelentéskészítéskor a „DesiredRPO” paraméter számára a szükséges sávszélesség becslése érdekében megadott érték.
+**Kívánt RPO (perc)**: Vagy az alapértelmezett helyreállítási pont célja, vagy a "DesiredRPO" paraméternek a jelentés létrehozásakor átadott érték a szükséges sávszélesség becsléséhez.
 
 **Desired bandwidth (Mbps)** (Kívánt sávszélesség (Mbps)): A jelentéskészítéskor az elérhető helyreállítási időkorlát (RPO) becslése érdekében a „Bandwidth” paraméter számára megadott érték.
 
@@ -179,7 +179,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor, a VMListFile-ban használt virtuálisgép-név. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen**\* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen** \* azokban az esetekben, amikor a virtuális gép alkalmas [prémium SSD-k](../virtual-machines/windows/disks-types.md). A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15.
 * 256 GB és 512 GB között P20.
@@ -187,7 +187,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 * 1025 GB és 2048 GB között P40.
 * 2049 GB és 4095 GB között P50.
 
-Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vagy P30-as kategóriába tartozik, de a mérete alapján egy alacsonyabb prémium szintű tárolólemez-típusba kerül, az eszköz **Yes**\* (Igen) megjelöléssel látja el ezeket a virtuális gépeket. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
+Ha például egy lemez munkaterhelési jellemzői a P20 vagy P30 kategóriába sorolják, de a méret alacsonyabb prémium szintű tárolólemez-típusra van leképezve, az eszköz **igennel**\*jelöli a virtuális gépet. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 
 **Storage Type** (Tároló típusa): Standard vagy Premium.
 
@@ -246,7 +246,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben az ös
 
 * A forrás IOPS-érték meghaladja a tároló virtuális gépenkénti 80 000-es IOPS-korlátját.
 
-* A forrás virtuális gép átlagos adatváltozása meghaladja a támogatott Site Recovery adatváltozási korlátot 20 MB/s értéknél az átlagos I/O-mérethez.
+* A forrás virtuális gép átlagos adatváltozása meghaladja a támogatott Site Recovery adatváltozási korlátot 20 MB/s átlagos I/O-méret esetén.
 
 * A forrás virtuális gép átlagos tényleges írási IOPS-értéke meghaladja a Site Recovery lemezenkénti 840-es támogatott IOPS-korlátját.
 
@@ -258,7 +258,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben az ös
 
 **Number of Disks** (Lemezek száma): A virtuális gép VHD-inek teljes száma.
 
-**Disk size (GB)** (Lemez mérete (GB)): A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+**Lemezméret (GB)**: A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
 
 **Cores** (Magok): A virtuális gép processzormagjainak száma.
 
@@ -275,7 +275,7 @@ Az alábbi táblázat a Site Recovery korlátait tartalmazza. Ezek a korlátok t
 ---|---|---|---
 Standard szintű Storage | 8 KB | Virtuális gépenként 2 MB/s | Virtuális gépenként 168 GB
 Prémium szintű Storage | 8 KB  | Virtuális gépenként 5 MB/s | Virtuális gépenként 421 GB
-Prémium szintű Storage | 16 KB vagy több| 20 MB/s virtuális gépenként | 1684 GB/virtuális gépenként
+Prémium szintű Storage | 16 KB vagy több| 20 MB/s/s virtuális gépenként | 1684 GB virtuális gépenként
 
 Ezek átlagos határértékek, amelyek 30 százalékos I/O-átfedést feltételeznek. A Site Recovery képes magasabb átviteli sebesség kezelésére az átfedési arány, a nagyobb írási méretek és a számítási feladatok tényleges I/O-viselkedése alapján. Az előbbi számok egy általános, körülbelül ötperces várólistát feltételeznek. Ez azt jelenti, hogy a feltöltést követő öt percben megtörténik az adat feldolgozása, és létrejön egy helyreállítási pont.
 
@@ -323,19 +323,19 @@ Ha minden kötet esetében megfelelt a javasolt helyszíni tárterület-követel
 ### <a name="each-batch-provides-the-following-information"></a>Minden kötegben az alábbi információk találhatók meg 
 **Hyper-V host** (Hyper-V gazdagép): A levédendő virtuális gép Hyper-V gazdagépe.
 
-**Virtual machine** (Virtuális gép): A levédendő virtuális gép. 
+**Virtuális gép:** A védeni kell a virtuális gépet. 
 
 **Comments** (Megjegyzések): Ha egy virtuális gép egy meghatározott kötete esetében bármilyen műveletre van szükség, itt látható a vonatkozó megjegyzés. Ha például nem érhető el elegendő szabad terület egy köteten, akkor megjelenik az „Add additional storage to protect this VM” (Adjon hozzá további tárterületet a virtuális gép levédéséhez) megjegyzés.
 
 **Volume (VHD path)** (Kötet (VHD útvonala)): Azon kötet neve, amelyen a virtuális gép VHD-i találhatók. 
 
-**Free space available on the volume (GB)** (Elérhető szabad tárterület a köteten (GB)): A virtuális géphez tartozó köteten lévő szabad lemezterület. A köteteken lévő elérhető szabad terület kiszámításakor a rendszer figyelembe veszi az előző kötegek virtuális gépei – amelyeknek a VHD-i egyazon köteten találhatók – változásreplikációja által felhasznált lemezterületet is. 
+**A köteten (GB) rendelkezésre álló szabad terület:** A virtuális gép kötetén rendelkezésre álló szabad lemezterület. A köteteken lévő elérhető szabad terület kiszámításakor a rendszer figyelembe veszi az előző kötegek virtuális gépei – amelyeknek a VHD-i egyazon köteten találhatók – változásreplikációja által felhasznált lemezterületet is. 
 
 Például tegyük fel, hogy a VM1, VM2 és VM3 virtuális gép egy köteten található (E:\VHDpath). A replikáció előtt a köteten 500 GB szabad terület van. A VM1 gép az 1. köteg része, a VM2 a 2. kötegé, a VM3 pedig a 3. kötegé. A VM1 által 500 GB szabad terület érhető el. A VM2 esetében a szabad terület 500 GB – ennyire van szükség a VM1 változásreplikációjához. Ha a VM1-nek 300 GB területre van szüksége a változásreplikációhoz, akkor a VM2 számára 500 GB - 300 GB = 200 GB szabad terület lesz elérhető. A VM2-nek hasonló módon 300 GB területre van szüksége a változásreplikációhoz. A VM3 számára 200 GB - 300 GB = -100 GB szabad terület lesz elérhető.
 
 **Storage required on the volume for initial replication (GB)** (A kezdeti replikációhoz szükséges tárterület a köteten (GB)): A virtuális gép kezdeti replikációjához szükséges szabad tárterület a köteten.
 
-**Storage required on the volume for delta replication (GB)** (A változásreplikációhoz szükséges tárterület a köteten (GB)): A virtuális gép változásreplikációjához szükséges szabad tárterület a köteten.
+**A különbözeti replikáció (GB) kötetén szükséges tárhely:** A virtuális gép hez szükséges szabad tárhely a különbözeti replikációhoz szükséges.
 
 **Additional storage required based on deficit to avoid replication failure (GB)** A deficiten alapuló, további szükséges tárterület a köteten, amellyel elkerülhető a replikáció meghiúsulása (GB): A kötetre vonatkozó, a virtuális gép számára szükséges további tárterület-követelmény. Ez a maximális kezdeti replikációra és változásreplikációra vonatkozó tárterületi követelmények maximuma, levonva belőle a köteten elérhető szabad területet.
 
@@ -352,9 +352,9 @@ Minden kötegtáblázathoz tartozik egy összefoglalás az adott köteg hálóza
 
 **Approximate bandwidth consumed for delta replication of batch** (A köteg változásreplikációja által felhasznált hozzávetőleges sávszélesség): A köteg virtuális gépeinek változásreplikációjához szükséges sávszélesség. 
 
-**Estimated Initial Replication time for Batch (HH:MM)** (A köteg kezdeti replikációjának becsült ideje (ÓÓ:PP)): A kezdeti replikáció becsült ideje óra:perc formátumban.
+**A köteg becsült kezdeti replikációs ideje (ÓÓ:PP)**: A kezdeti replikáció becsült ideje órák:perc értékben.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a [költségbecslésről](hyper-v-deployment-planner-cost-estimation.md).

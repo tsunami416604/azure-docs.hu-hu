@@ -1,103 +1,103 @@
 ---
-title: Átmeneti környezet beállítása az Azure Spring Cloud-ban | Microsoft Docs
-description: Ismerje meg, hogyan használható a kék-zöld üzembe helyezés az Azure Spring Cloud használatával
+title: Átmeneti környezet beállítása az Azure Spring Cloud ban | Microsoft dokumentumok
+description: Ismerje meg, hogyan használhatja a kék-zöld üzembe helyezést az Azure Spring Cloud segítségével
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 5612a514ed89f73453f3751b34263b0beeea1c59
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138145"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471030"
 ---
-# <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
+# <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloudban
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be az átmeneti üzembe helyezést a kék-zöld üzembe helyezési minta használatával az Azure Spring Cloud-ban. A kék/zöld üzembe helyezés egy Azure DevOps folyamatos kézbesítési minta, amelynek lényege, hogy működésben tart egy meglévő (kék) verziót, miközben üzembe helyez egy új (zöld) verziót. Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az előkészítési telepítést éles környezetben anélkül, hogy az éles üzembe helyezést közvetlenül módosítaná.
+Ez a cikk ismerteti, hogyan állíthat be egy átmeneti központi telepítés használatával a kék-zöld üzembe helyezési minta az Azure Spring Cloud. A kék/zöld üzembe helyezés egy Azure DevOps folyamatos kézbesítési minta, amelynek lényege, hogy működésben tart egy meglévő (kék) verziót, miközben üzembe helyez egy új (zöld) verziót. Ez a cikk bemutatja, hogyan helyezheti üzembe az átmeneti központi telepítés éles környezetben az éles környezet módosítása nélkül közvetlenül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy már üzembe helyezte a PiggyMetrics alkalmazást az [Azure Spring Cloud-alkalmazás elindításáról szóló oktatóanyagban](spring-cloud-quickstart-launch-app-portal.md). A PiggyMetrics három alkalmazást tartalmaz: "Gateway", "Account-Service" és "Auth-Service".  
+Ez a cikk feltételezi, hogy már telepítette a PiggyMetrics alkalmazást az [Azure Spring Cloud-alkalmazás elindításáról szóló oktatóanyagunkból.](spring-cloud-quickstart-launch-app-portal.md) A PiggyMetrics három alkalmazásból áll: "átjáró", "fiókszolgáltatás" és "hitelesítési szolgáltatás".  
 
-Ha ehhez a példához egy másik alkalmazást szeretne használni, egyszerű módosítást kell végeznie az alkalmazás nyilvános részén.  Ez a változás megkülönbözteti az átmeneti üzembe helyezést az éles környezetben.
+Ha ebben a példában egy másik alkalmazást szeretne használni, egyszerű módosítást kell ellátnia az alkalmazás nyilvános anamnézisében.  Ez a módosítás megkülönbözteti az átmeneti üzembe helyezést az éles környezettől.
 
 >[!TIP]
-> A Azure Cloud Shell egy ingyenes interaktív felület, amelyet a cikkben szereplő utasítások futtatására használhat.  Gyakori, előre telepített Azure-eszközöket tartalmaz, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud Shell](https://shell.azure.com).  További információ: [Azure Cloud Shell áttekintése](../cloud-shell/overview.md).
+> Az Azure Cloud Shell egy ingyenes interaktív rendszerhéj, amely segítségével futtathatja a cikkben található utasításokat.  Gyakori, előre telepített Azure-eszközökkel rendelkezik, beleértve a Git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha be van jelentkezve az Azure-előfizetésbe, indítsa el az [Azure Cloud Shell.](https://shell.azure.com)  További információ: [Az Azure Cloud Shell áttekintése.](../cloud-shell/overview.md)
 
-Ha átmeneti környezetet szeretne beállítani az Azure Spring Cloud-ban, kövesse a következő szakasz utasításait.
+Átmeneti környezet beállítása az Azure Spring Cloudban kövesse a következő szakaszokban található utasításokat.
 
-## <a name="install-the-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
+## <a name="install-the-azure-cli-extension"></a>Az Azure CLI bővítmény telepítése
 
-Telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi paranccsal:
+Telepítse az Azure Spring Cloud bővítményt az Azure CLI-hez a következő paranccsal:
 
 ```azurecli
 az extension add --name spring-cloud
 ```
     
-## <a name="view-all-deployments"></a>Az összes üzemelő példány megtekintése
+## <a name="view-all-deployments"></a>Az összes központi telepítés megtekintése
 
-Nyissa meg a szolgáltatási példányt a Azure Portalban, és válassza a **központi telepítés kezelése** lehetőséget az összes központi telepítés megtekintéséhez. További részletek megtekintéséhez kiválaszthatja az egyes központi telepítéseket.
+Nyissa meg a szolgáltatáspéldányt az Azure Portalon, és válassza **a Központi telepítés az** összes központi telepítés megtekintéséhez. További részletek megtekintéséhez kiválaszthatja az egyes központi telepítéseket.
 
-## <a name="create-a-staging-deployment"></a>Előkészítési központi telepítés létrehozása
+## <a name="create-a-staging-deployment"></a>Átmeneti központi telepítés létrehozása
 
-1. A helyi fejlesztési környezetben végezze el a PiggyMetrics-átjáró alkalmazás kis módosítását. Például módosítsa az *átjáró/forrás/fő/erőforrás/statikus/CSS/Launch. css* fájl színét. Így egyszerűen megkülönböztetheti a két üzemelő példányt. A jar-csomag létrehozásához futtassa a következő parancsot: 
+1. A helyi fejlesztői környezetben hajtson végre egy kis módosítást a PiggyMetrics átjáróalkalmazáson. Például módosítsa a színét az *átjáró/src/main/resources/static/css/launch.css* fájlban. Ezzel könnyedén megkülönböztetheti a két központi telepítést. A jar csomag létrehozásához futtassa a következő parancsot: 
 
-    ```azurecli
+    ```console
     mvn clean package
     ```
 
-1. Az Azure CLI-ben hozzon létre egy új központi telepítést, és adja meg a "zöld" átmeneti telepítési nevet.
+1. Az Azure CLI-ben hozzon létre egy új központi telepítést, és adja meg az átmeneti központi telepítés nevét "zöld".
 
     ```azurecli
     az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app gateway -n green --jar-path gateway/target/gateway.jar
     ```
 
-1. Az üzembe helyezés sikeres befejeződése után nyissa meg az átjáró lapját az **alkalmazás irányítópultján**, és tekintse meg az összes példányát a bal oldali **alkalmazás példányai** lapon.
+1. Miután a központi telepítés sikeresen befejeződött, lépjen be az átjárólapra az **alkalmazás irányítópultjáról,** és tekintse meg az összes példányt a bal oldali **Alkalmazáspéldányok** lapon.
   
 > [!NOTE]
-> A felderítési állapot *OUT_OF_SERVICE* , így az ellenőrzés befejeződése előtt a rendszer nem irányítja át a forgalmat ehhez a központi telepítéshez.
+> A felderítési állapot *OUT_OF_SERVICE,* így a forgalom nem lesz irányítva erre a központi telepítésre, mielőtt az ellenőrzés befejeződött.
 
 ## <a name="verify-the-staging-deployment"></a>Az átmeneti telepítés ellenőrzése
 
-1. Térjen vissza a **központi telepítés kezelése** lapra, és válassza ki az új központi telepítést. Az üzembe helyezési állapotnak *futnia*kell. A **tartomány kiosztása/megszüntetése** gomb szürkén jelenik meg, mert a környezet átmeneti környezet.
+1. Térjen vissza a **Telepítés kezelés** lapra, és válassza ki az új központi telepítést. A központi telepítés állapotának *futnia*kell. A **Tartomány hozzárendelése/visszavonása** gombszürkének szürkén jelenjen meg, mivel a környezet átmeneti környezet.
 
-1. Az **Áttekintés** ablaktáblán egy **teszt végpontot**kell látnia. Másolja és illessze be egy új böngészőablakba, és megjelenik az új PiggyMetrics oldal.
+1. Az **Áttekintő** ablaktáblán meg kell jelennie egy **tesztvégpontnak.** Másolja és illessze be egy új böngészőablakba, és az új PiggyMetrics oldal nak meg kell jelennie.
 
 >[!TIP]
-> * Győződjön meg arról, hogy a tesztelési végpont perjel (/) karakterrel végződik, hogy a CSS-fájl megfelelően van-e betöltve.  
-> * Ha a böngésző megköveteli a bejelentkezési hitelesítő adatok megadását a lap megtekintéséhez, használja az [URL-címet](https://www.urldecoder.org/) a teszt végpont dekódolásához. Az URL-cím dekódolása egy URL-címet ad vissza "https://\<username >:\<Password > @\<cluster-Name >. test. azureapps. IO/Gateway/Green".  Ezt az űrlapot használhatja a végpont eléréséhez.
+> * Ellenőrizze, hogy a tesztvégpont perjellel (/) végződik-e, hogy a CSS-fájl megfelelően töltődjön be.  
+> * Ha a böngésző megköveteli, hogy adja meg a bejelentkezési hitelesítő adatokat, hogy megtekinthesse a lapot, [url-dekódolni](https://www.urldecoder.org/) a teszt végpontját. URL-dekódolni ad vissza\<egy URL-t a "https:// felhasználónév>:\<jelszó>@\<cluster-name>.test.azureapps.io/gateway/green".  Ezen a képernyőn érheti el a végpontot.
 
 >[!NOTE]    
-> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és a termelésre egyaránt érvényesek. Ha például az alkalmazás-átjáró környezeti elérési útját (`server.servlet.context-path`) a konfigurációs kiszolgálón a *somepath*értékre állítja, akkor a zöld telepítés elérési útja "https://\<username >:\<Password > @\<cluster-Name >. test. azureapps. IO/Gateway/Green/somepath/...".
+> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és az éles környezetre egyaránt vonatkoznak. Ha például a konfigurációs`server.servlet.context-path`kiszolgálón lévő alkalmazásátjáró ( ) környezeti elérési útját ( ) *állítja be,* a zöld központi telepítés elérési útja "https://\<felhasználónév>:\<jelszó>@\<cluster-name>.test.azureapps.io/gateway/green/somepath/...".
  
- Ha ezen a ponton látogatja meg a nyilvános alkalmazás-átjárót, az új módosítás nélkül látnia kell a régi oldalt.
+ Ha ezen a ponton látogat ja meg a nyilvános alkalmazásátjárót, az új módosítás nélkül kell látnia a régi oldalt.
     
 ## <a name="set-the-green-deployment-as-the-production-environment"></a>A zöld telepítés beállítása éles környezetként
 
-1. Miután ellenőrizte a változást az átmeneti környezetben, leküldheti azt az éles környezetbe. Térjen vissza a **központi telepítés felügyeletéhez**, és jelölje be az **átjáró** alkalmazás jelölőnégyzetet.
+1. Miután ellenőrizte a változást az átmeneti környezetben, leküldéses éles környezetbe. Térjen vissza a **Központi telepítés kezeléséhez**, és jelölje be az **átjáróalkalmazás** jelölőnégyzetet.
 
-2. Válassza a **telepítés beállítása**lehetőséget.
-3. Az **éles üzembe helyezés** listában válassza a **zöld**lehetőséget, majd kattintson az **alkalmaz**gombra.
-4. Nyissa meg az átjáró alkalmazás **Áttekintés** lapját. Ha már hozzárendelt egy tartományt az átjáró-alkalmazáshoz, az URL-cím megjelenik az **Áttekintés** ablaktáblán. A módosított PiggyMetrics megtekintéséhez válassza ki az URL-címet, és lépjen a webhelyre.
+2. Válassza **a Telepítés beállítása**lehetőséget.
+3. Az **Éles környezetben futó telepítés** listában válassza a **Zöld**lehetőséget, majd az **Alkalmaz**lehetőséget.
+4. Nyissa meg az átjáróalkalmazás **áttekintése** lapot. Ha már rendelt egy tartományt az átjáróalkalmazáshoz, az URL-cím megjelenik az **Áttekintő** ablaktáblán. A módosított PiggyMetrics lap megtekintéséhez jelölje ki az URL-címet, és nyissa meg a webhelyet.
 
 >[!NOTE]
-> Miután beállította a zöld telepítést üzemi környezetként, az előző üzemelő példány lesz az átmeneti üzembe helyezés.
+> Miután beállította a zöld üzembe helyezést az éles környezetben, az előző központi telepítés lesz az átmeneti központi telepítés.
 
-## <a name="modify-the-staging-deployment"></a>Az átmeneti telepítés módosítása
+## <a name="modify-the-staging-deployment"></a>Az átmeneti központi telepítés módosítása
 
-Ha nem elégedett a módosítással, módosíthatja az alkalmazás kódját, létrehozhat egy új jar-csomagot, és feltöltheti azt a zöld üzembe helyezéshez az Azure CLI használatával.
+Ha nem elégedett a módosítással, módosíthatja az alkalmazás kódját, új jar csomagot hozhat létre, és feltöltheti a zöld üzembe helyezéshez az Azure CLI használatával.
 
 ```azurecli
 az spring-cloud app deploy  -g <resource-group-name> -s <service-instance-name> -n gateway -d green --jar-path gateway.jar
 ```
 
-## <a name="delete-the-staging-deployment"></a>Az előkészítési központi telepítés törlése
+## <a name="delete-the-staging-deployment"></a>Az átmeneti központi telepítés törlése
 
-Ha törölni szeretné az átmeneti üzembe helyezést az Azure-portról, nyissa meg az átmeneti üzembe helyezés lapot, majd kattintson a **Törlés** gombra.
+Ha törölni szeretné az átmeneti központi telepítést az Azure-portról, lépjen az átmeneti központi telepítés lapra, és válassza a **Törlés** gombot.
 
-Azt is megteheti, hogy az alábbi parancs futtatásával törli az átmeneti üzembe helyezést az Azure CLI-ből:
+Másik lehetőségként törölje az átmeneti központi telepítést az Azure CLI-ből a következő parancs futtatásával:
 
 ```azurecli
 az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-group-name> -s <service-instance-name> --app gateway

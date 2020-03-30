@@ -1,6 +1,6 @@
 ---
-title: A Azure Cosmos DB .NET SDK használatakor felmerülő problémák diagnosztizálása és hibaelhárítása
-description: A .NET SDK használatakor olyan szolgáltatásokat használhat, mint az ügyféloldali naplózás és más külső eszközök a Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához.
+title: Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
+description: A .NET SDK használatakor az ügyféloldali naplózás és más külső eszközök használatával azonosíthatja, diagnosztizálhatja és elháríthatja az Azure Cosmos DB-val kapcsolatos problémákat.
 author: j82w
 ms.service: cosmos-db
 ms.date: 03/11/2020
@@ -9,102 +9,102 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137954"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>A Azure Cosmos DB .NET SDK használatakor felmerülő problémák diagnosztizálása és hibaelhárítása
-Ez a cikk általános problémákról, megkerülő megoldásokról, diagnosztikai lépésekről és eszközökről tartalmaz Azure Cosmos DB SQL API-fiókokkal rendelkező [.net SDK](sql-api-sdk-dotnet.md) -t használva.
-A .NET SDK ügyféloldali logikai ábrázolást biztosít a Azure Cosmos DB SQL API eléréséhez. Ez a cikk azokat az eszközöket és módszereket ismerteti, amelyek segítenek megoldani a problémákat.
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
+Ez [a](sql-api-sdk-dotnet.md) cikk a .
+A .NET SDK ügyféloldali logikai ábrázolást biztosít az Azure Cosmos DB SQL API eléréséhez. Ez a cikk azokat az eszközöket és módszereket ismerteti, amelyek segítenek megoldani a problémákat.
 
-## <a name="checklist-for-troubleshooting-issues"></a>Ellenőrzőlista a hibaelhárítási problémákhoz:
-Mielőtt éles környezetben áthelyezi az alkalmazást, vegye figyelembe a következő ellenőrzőlistát. Az ellenőrzőlista használatával több gyakori probléma is megjelenhet. A probléma megoldásához gyorsan is diagnosztizálhatja a problémát:
+## <a name="checklist-for-troubleshooting-issues"></a>Ellenőrzőlista a hibaelhárításhoz:
+Vegye figyelembe az alábbi ellenőrzőlistát, mielőtt áthelyezi az alkalmazást éles környezetbe. Az ellenőrzőlista használata számos gyakori problémát megelőzhet. A probléma előfordulása esetén is gyorsan diagnosztizálhatja a következőket:
 
-*    Használja a legújabb [SDK](sql-api-sdk-dotnet-standard.md)-t. Az előzetes verziójú SDK-kat nem ajánlott éles környezetben használni. Ez megakadályozza a már kijavított ismert problémák elkerülését.
-*    Tekintse át a [teljesítménnyel kapcsolatos tippeket](performance-tips.md), és kövesse a javasolt eljárásokat. Ez segít megakadályozni a skálázást, a késést és az egyéb teljesítménnyel kapcsolatos problémákat.
-*    A probléma megoldásához engedélyezze az SDK-naplózást. A naplózás engedélyezése hatással lehet a teljesítményre, így csak hibaelhárítási problémák esetén ajánlott engedélyezni. A következő naplók engedélyezhetők:
-    *    A [metrikák naplózása](monitor-accounts.md) a Azure Portal használatával. A portál metrikái a Azure Cosmos DB telemetria mutatják be, ami hasznos lehet annak megállapítására, hogy a probléma megfelel-e a Azure Cosmos DBnak, vagy az ügyfél oldaláról származik-e.
-    *    Naplózza a [diagnosztikai karakterláncot](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) a v2 SDK-ban vagy [DIAGNOSZTIKÁT](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) a v3 SDK-ban a pont műveleti válaszai közül.
-    *    Az [SQL-lekérdezési metrikák](sql-api-query-metrics.md) naplózása az összes lekérdezési válaszból 
-    *    Az [SDK-naplózás]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) beállításának követése
+*    Használja a legújabb [SDK](sql-api-sdk-dotnet-standard.md). Az Előzetes SDK-k nem használhatók éles környezetben. Ez megakadályozza, hogy a már kijavított ismert problémákat találja el.
+*    Tekintse át a [teljesítményre vonatkozó tippeket,](performance-tips.md)és kövesse a javasolt eljárásokat. Ez segít megelőzni a skálázást, a késést és más teljesítményproblémákat.
+*    Az SDK-naplózás engedélyezésével elháríthatja a problémát. A naplózás engedélyezése hatással lehet a teljesítményre, ezért a legjobb, ha csak a problémák elhárításakor engedélyezi. A következő naplókat engedélyezheti:
+    *    [Metrikák naplózása](monitor-accounts.md) az Azure Portal használatával. A portálmetrikák az Azure Cosmos DB telemetriai adatokat jelenítik meg, amely hasznos annak megállapításához, hogy a probléma megfelel-e az Azure Cosmos DB-nek, vagy az ügyféloldalról származik.Portal metrics show the Azure Cosmos DB telemettry, which is helpful to determine if the issue corresponds to Azure Cosmos DB or if it's from the client side.
+    *    Naplózza a [diagnosztikai karakterláncot](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) a V2 SDK-ban vagy [a nanikta](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) V3 SDK-ban a pontművelet-válaszokból.
+    *    Az [SQL-lekérdezési metrikák naplózása](sql-api-query-metrics.md) az összes lekérdezési válaszból 
+    *    Kövesse az [SDK-naplózás]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) beállítását
 
-Tekintse meg a jelen cikk [gyakori problémák és megoldások](#common-issues-workarounds) című szakaszát.
+Tekintse meg a cikk [Gyakori problémák és kerülő megoldások](#common-issues-workarounds) című szakaszát.
 
-Ellenőrizze, hogy aktív-e a [GitHub-problémák szakasza](https://github.com/Azure/azure-cosmos-dotnet-v2/issues) . Ellenőrizze, hogy a megkerülő megoldással kapcsolatos bármilyen hasonló probléma már be van-e jelölve. Ha nem talál megoldást, a GitHub-problémát is megteheti. A sürgős problémákhoz egy támogatási kullancsot is megnyithat.
+Ellenőrizze a [GitHub-problémák szakasz,](https://github.com/Azure/azure-cosmos-dotnet-v2/issues) amely aktívan figyelt. Ellenőrizze, hogy van-e már benyújtani hasonló probléma a kerülő megoldással kapcsolatban. Ha nem talált megoldást, majd nyújtson be egy GitHub-problémát. Megnyithatja a támogatási kullancs sürgős kérdéseket.
 
 
-## <a name="common-issues-workarounds"></a>Gyakori problémák és megkerülő megoldások
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Gyakori hibák és áthidaló megoldásaik
 
 ### <a name="general-suggestions"></a>Általános javaslatok
-* Ha lehetséges, futtassa az alkalmazást ugyanabban az Azure-régióban, mint a Azure Cosmos DB-fiókját. 
-* Az ügyfélszámítógépen lévő erőforrások hiánya miatt előfordulhat, hogy kapcsolati vagy rendelkezésre állási problémákba ütközik. Javasoljuk, hogy a CPU-kihasználtságot a Azure Cosmos DB-ügyfelet futtató csomópontokon figyelje, és ha nagy terhelésen futnak, fel kell skálázást.
+* Az alkalmazást az Azure Cosmos DB-fiókjával azonos Azure-régióban futtathatja, amikor csak lehetséges. 
+* Előfordulhat, hogy az ügyfélgépen lévő erőforrások hiánya miatt kapcsolódási/rendelkezésre állási problémák merülnek fel. Azt javasoljuk, hogy az Azure Cosmos DB-ügyfelet futtató csomópontokon figyelheti a CPU-használatot, és nagy terhelés mellett történő felskálázást és felskálázást.
 
-### <a name="check-the-portal-metrics"></a>A portál metrikáinak megtekintése
-A [portál metrikáinak](monitor-accounts.md) ellenőrzése segít meghatározni, hogy az ügyféloldali probléma-e, vagy hogy van-e probléma a szolgáltatással. Ha például a mérőszámok nagy arányban korlátozott kérelmeket tartalmaznak (a 429-as HTTP-állapotkód), ami azt jelenti, hogy a kérést a rendszer lekéri, akkor ellenőrizze, hogy a [Túl nagy a kérelmek aránya] . 
+### <a name="check-the-portal-metrics"></a>A portál metrikáinak ellenőrzése
+A [portál metrikáinak](monitor-accounts.md) ellenőrzése segít meghatározni, hogy ügyféloldali probléma-e, vagy ha probléma van a szolgáltatással. Például ha a metrikák nagy arányú korlátozott kérelmeket tartalmaznak(HTTP-állapotkód 429), ami azt jelenti, hogy a kérelem szabályozása van, majd ellenőrizze a [kérelem aránya túl nagy] szakasz. 
 
-### <a name="request-timeouts"></a>Kérelmek időtúllépései
-A RequestTimeout általában a Direct/TCP használatakor fordul elő, de az átjáró módban is történhet. Ezek a hibák a leggyakoribb ismert okok, és javaslatok a probléma megoldására.
+### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Időeltetéskérések kérése
+RequestTimeout általában közvetlen/TCP használatakor történik, de átjáró módban is előfordulhat. Ezek a hibák a leggyakoribb ismert okok, és javaslatokat, hogyan lehet megoldani a problémát.
 
-* A CPU-kihasználtság magas, ami késést és/vagy kérelmek időtúllépését okozhatja. Az ügyfél vertikális felskálázást végez a gazdagépen, hogy több erőforrást biztosítson, vagy ha a terhelés több gépen is elosztható.
-* A szoftvercsatorna/port rendelkezésre állása alacsony lehet. Az Azure-ban való futtatáskor a .NET SDK-t használó ügyfelek elérhetik az Azure SNAT (PAT) portjának kimerülését. Ha csökkenteni szeretné a probléma előfordulásának esélyét, használja a .NET SDK legújabb, 2. x vagy 3. x verzióját. Ez egy példa arra, hogy miért ajánlott mindig a legújabb SDK-verziót futtatni.
-* Több DocumentClient-példány létrehozása a kapcsolati és időtúllépési problémákhoz vezethet. Kövesse a [teljesítménnyel kapcsolatos tippeket](performance-tips.md), és használjon egyetlen DocumentClient-példányt egy teljes folyamaton belül.
-* A felhasználók időnként emelt szintű késést vagy kérelmek időtúllépését láthatják, mert a gyűjtemények nem megfelelő módon vannak kiépítve, a háttér-szabályozási kérelmek és az ügyfél belső újrapróbálkozások. Keresse meg a [portál metrikáit](monitor-accounts.md).
-* A Azure Cosmos DB a teljes kiosztott átviteli sebességet egyenletesen osztja el a fizikai partíciók között. Tekintse meg a portál metrikáit, és ellenőrizze, hogy a számítási feladatok egy gyors [partíciós kulcson](partition-data.md)futnak-e. Ez azt eredményezi, hogy az összesített felhasznált átviteli sebesség (RU/s) úgy tűnik, hogy a kiépített RUs alatt legyenek, de egyetlen partíción felhasznált átviteli sebesség (RU/s) túllépi a kiosztott átviteli sebességet. 
-* Emellett az 2,0 SDK a csatornák szemantikai feladását is hozzáadja a közvetlen/TCP-kapcsolatokhoz. Egy TCP-kapcsolatok egyszerre több kérelemhez használatosak. Ez két problémát eredményezhet bizonyos esetekben:
-    * A magas fokú párhuzamosság a csatornán való kivezetéshez vezethet.
-    * A nagyméretű kérelmek vagy válaszok a csatornán kívüli blokkolást okozhatnak a csatornán, és súlyosbítják a versengés mértékét, akár viszonylag alacsony fokú párhuzamosságtal is.
-    * Ha az eset mindkét kategóriába tartozik (vagy ha a magas CPU-kihasználtság gyanúja van), akkor ezek lehetséges enyhítések:
-        * Próbálja meg az alkalmazás felskálázását.
-        * Emellett a [nyomkövetési figyelővel](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) is rögzítheti az SDK-naplókat, így további részleteket érhet el.
+* A processzorkihasználtság magas, ami késést és/vagy időkérést okoz. Az ügyfél felskálázhatja a gazdagép, hogy több erőforrást, vagy a terhelés több gép között osztható konosztálása.
+* A Socket / Port elérhetősége alacsony lehet. Amikor az Azure-ban fut, a .NET SDK-t használó ügyfelek megüt az Azure SNAT (PAT) port kimerültség. A probléma alkalmazásának esélyének csökkentése érdekében használja a .NET SDK legújabb 2.x vagy 3.x verzióját. Ez egy példa arra, hogy miért ajánlott mindig futtatni a legújabb SDK-verziót.
+* Több DocumentClient-példány létrehozása kapcsolati versengéshez és időtúllépési problémákhoz vezethet. Kövesse a [teljesítménytippeket,](performance-tips.md)és használjon egyetlen DocumentClient példányt a teljes folyamatban.
+* A felhasználók néha emelt szintű késést látnak, vagy időtúlhívásokat kérnek, mert a gyűjtemények nem megfelelően vannak kiépítve, a háttérrendszer-szabályozási kérelmek, és az ügyfél belsőleg újrapróbálkozik. Ellenőrizze a [portál metrikáit.](monitor-accounts.md)
+* Az Azure Cosmos DB a teljes kiosztott átviteli forgalmat egyenletesen osztja el a fizikai partíciók között. Ellenőrizze a portál metrikáit, hogy a munkaterhelés [gyorspartíció-kulcsba](partition-data.md)ütközik-e. Ez azt eredményezi, hogy az összesített felhasznált átviteli -átbocsátás (RU/s) a kiosztott vt-k alatt jelenik meg, de egy partíció által felhasznált átviteli -át (RU/s) meghaladja a kiosztott átviteli. 
+* Emellett a 2.0 SDK csatornaszemantikát ad hozzá a közvetlen/TCP-kapcsolatokhoz. Egy TCP-kapcsolat egyszerre több kérelemhez használatos. Ez két konkrét esetben két kérdést eredményezhet:
+    * A magas szintű egyidejűség vezethet viszálykodás a csatornán.
+    * A nagy kérések vagy válaszok a csatorna vezetékközbeni blokkolásához vezethetnek, és súlyosbíthatják a versengést, még viszonylag alacsony egyidejűség mellett is.
+    * Ha az eset a két kategória valamelyikébe tartozik (vagy ha nagy CPU-kihasználtság gyanúja merül fel), ezek lehetséges megoldások:
+        * Próbálja meg fel-ki-ki méretezni az alkalmazást.
+        * Emellett az SDK-naplók a [Trace Listener](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) en keresztül rögzíthetők további részletekért.
 
-### <a name="high-network-latency"></a>Nagy hálózati késés
-A hálózati késést a v2 SDK- [ban vagy a](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) használatával lehet azonosítani.
+### <a name="high-network-latency"></a><a name="high-network-latency"></a>Nagy hálózati késés
+A nagy hálózati késés a V2 SDK [diagnosztikai karakterláncával](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) vagy a V3 SDK [diagnosztikájával](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) azonosítható.
 
-Ha nincsenek [időtúllépések](#request-timeouts) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a `ResponseTime` és `RequestStartTime`közötti különbségnél (például > 300 ezredmásodperc):
+Ha nincs [időtúltöltés,](#request-timeouts) és a diagnosztika egyetlen olyan kérelmeket `ResponseTime` `RequestStartTime`jelenít meg, ahol a nagy késés nyilvánvaló a különbség és a , a ) (>300 ezredmásodperc ebben a példában):
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
 
-Ennek a késésnek több oka lehet:
+Ennek a késésnek több oka is lehet:
 
-* Az alkalmazás nem ugyanabban a régióban fut, mint a Azure Cosmos DB fiókja.
-* A [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) vagy a [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) konfigurációja helytelen, és megpróbál csatlakozni egy másik régióhoz, ahol az alkalmazás jelenleg fut.
-* A nagy adatforgalom miatt a hálózati adapter szűk keresztmetszetet jelenthet. Ha az alkalmazás az Azure Virtual Machineson fut, lehetséges a megkerülő megoldások:
-    * A [gyorsított hálózatkezelést használó virtuális gépeket](../virtual-network/create-vm-accelerated-networking-powershell.md)érdemes lehet használni.
-    * [Gyorsított hálózatkezelés engedélyezése egy meglévő virtuális gépen](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
-    * Érdemes lehet [magasabb végpontú virtuális gépet](../virtual-machines/windows/sizes.md)használni.
+* Az alkalmazás nem fut ugyanabban a régióban, mint az Azure Cosmos DB-fiók.
+* A [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) vagy [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) konfigurációja helytelen, és megpróbál csatlakozni egy másik régióhoz, ahol az alkalmazás jelenleg fut.
+* Előfordulhat, hogy a nagy forgalmú forgalom miatt szűk keresztmetszet van a hálózati kapcsolaton. Ha az alkalmazás Azure virtuális gépeken fut, lehetséges megoldások:
+    * Fontolja meg egy [olyan virtuális gép használatát, amelyen engedélyezve van a gyorsított hálózatkezelés.](../virtual-network/create-vm-accelerated-networking-powershell.md)
+    * Gyorsított hálózatkezelés engedélyezése [meglévő virtuális gépen.](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)
+    * Fontolja meg egy [magasabb kategóriás virtuális gép](../virtual-machines/windows/sizes.md)használatát.
 
-### <a name="snat"></a>Az Azure SNAT (PAT) portjának kimerülése
+### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) port kimerülése
 
-Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)van telepítve, alapértelmezés szerint az [Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza. Ez a helyzet a kapcsolat szabályozásához, a kapcsolat bezárásához vagy a fent említett [kérelmek időtúllépéséhez](#request-timeouts)vezethet.
+Ha az alkalmazás [nyilvános IP-cím nélküli Azure virtuális gépeken](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)van telepítve, alapértelmezés szerint [az Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) létesítenek kapcsolatokat a virtuális gépen kívüli bármely végponthoz. A virtuális gép és az Azure Cosmos DB-végpont között engedélyezett kapcsolatok számát az [Azure SNAT-konfiguráció](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza. Ez a helyzet kapcsolatszabályozáshoz, kapcsolatlezárásához vagy a fent említett [kérelem időtúlteljesítéséhez](#request-timeouts)vezethet.
 
- Az Azure SNAT-portokat csak akkor használja a rendszer, ha a virtuális gép magánhálózati IP-címmel csatlakozik egy nyilvános IP-címhez. Az Azure SNAT-korlátozás elkerülése érdekében két Áthidaló megoldás létezik (ha már egyetlen ügyfél-példányt használ a teljes alkalmazásban):
+ Az Azure SNAT-portok csak akkor használatosak, ha a virtuális gép privát IP-címmel rendelkezik, és nyilvános IP-címhez csatlakozik. Az Azure SNAT-korlátozás elkerülése érdekében két kerülő megoldás létezik (feltéve, hogy már egyetlen ügyfélpéldányt használ a teljes alkalmazásban):
 
-* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). 
+* Adja hozzá az Azure Cosmos DB szolgáltatásvégpontját az Azure virtuális gépek virtuális hálózatának alhálózatához. További információ: [Azure Virtual Network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](../virtual-network/virtual-networks-acl.md)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
-* Rendeljen hozzá egy [nyilvános IP-címet az Azure-beli virtuális géphez](../load-balancer/load-balancer-outbound-connections.md#assignilpip).
+    Ha a szolgáltatás végpontja engedélyezve van, a kérelmek et már nem küldi el a nyilvános IP-cím ről az Azure Cosmos DB. Ehelyett a virtuális hálózat és az alhálózati identitás küldése. Ez a módosítás tűzfal-leejtést eredményezhet, ha csak nyilvános IP-k engedélyezettek. Ha tűzfalat használ, a szolgáltatásvégpont engedélyezésekor vegyen fel egy alhálózatot a tűzfalhoz a [virtuális hálózati abeil-ek](../virtual-network/virtual-networks-acl.md)használatával.
+* Rendeljen hozzá egy [nyilvános IP-címet az Azure virtuális géphez.](../load-balancer/load-balancer-outbound-connections.md#assignilpip)
 
 ### <a name="http-proxy"></a>HTTP-proxy
-Ha HTTP-proxyt használ, győződjön meg arról, hogy az támogatja az SDK-`ConnectionPolicy`konfigurált kapcsolatok számát.
-Ellenkező esetben a csatlakoztatási problémákkal szembesül.
+Http-proxy használata esetén győződjön meg arról, hogy az támogatja `ConnectionPolicy`az SDK-ban konfigurált kapcsolatok számát.
+Ellenkező esetben csatlakozási problémákkal kell szembenéznie.
 
-### <a name="request-rate-too-large"></a>Túl nagy a kérelmek aránya
-"A kérelmek aránya túl nagy" vagy a 429-es hibakód azt jelzi, hogy a kérések szabályozása folyamatban van, mert a felhasznált átviteli sebesség (RU/s) túllépte a [kiosztott átviteli sebességet](set-throughput.md). Az SDK automatikusan újrapróbálkozik a kérelmekkel a megadott [újrapróbálkozási házirend](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)alapján. Ha ez a hiba gyakran előfordul, érdemes lehet növelni az átviteli sebességet a gyűjteményen. Tekintse [meg a portál metrikáit](use-metrics.md) , és ellenőrizze, hogy a 429-es hibát észlel-e. Tekintse át a [partíciós kulcsot](partitioning-overview.md#choose-partitionkey) , és győződjön meg arról, hogy a tárolók és a kérelmek mennyiségének egyenletes eloszlását eredményezi. 
+### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>A kérelem aránya túl nagy
+A "kérelemaránya túl nagy" vagy a 429-es hibakód azt jelzi, hogy a kérelmek szabályozás alatt állnak, mivel a felhasznált átviteli sebesség (RU/s) túllépte a [kiosztott átviteli sebességet.](set-throughput.md) Az SDK automatikusan újrapróbálkozik a kérelmeket a megadott [újrapróbálkozási házirend](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)alapján. Ha gyakran előfordul ez a hiba, fontolja meg a gyűjtemény átviteli igényének növelését. Ellenőrizze a [portál metrikáit,](use-metrics.md) hogy ha 429 hibát észlel. Tekintse át a [partíciókulcsot,](partitioning-overview.md#choose-partitionkey) és győződjön meg arról, hogy a tárolási és kérelemkötet egyenletes eloszlását eredményezi. 
 
 ### <a name="slow-query-performance"></a>Lassú lekérdezési teljesítmény
-A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, hogy a lekérdezés hol tölti le a legtöbb időt. A lekérdezési mérőszámokból megtekintheti, hogy mennyi időt tölt a háttér és a-ügyfél.
-* Ha a háttérbeli lekérdezés gyorsan visszatér, és nagy időt tölt az ügyfélen, ellenőrizze a terhelést a gépen. Valószínű, hogy nincs elegendő erőforrás, és az SDK arra vár, hogy az erőforrások elérhetők legyenek a válasz kezelésére.
-* Ha a háttérbeli lekérdezés lassú, próbálkozzon [a lekérdezés optimalizálásával](optimize-cost-queries.md) , és tekintse meg az aktuális [indexelési házirendet](index-overview.md) 
+A [lekérdezési metrikák segítenek](sql-api-query-metrics.md) meghatározni, hogy a lekérdezés az idő nagy részében hol van eltöltve. A lekérdezési metrikákból láthatja, hogy mennyi van a háttérrendszerés az ügyfél számára.
+* Ha a háttérlekérdezés gyorsan visszatér, és nagy időt tölt az ügyfélen, ellenőrizze a terhelést a számítógépen. Valószínű, hogy nincs elég erőforrás, és az SDK arra vár, hogy az erőforrások elérhetők legyenek a válasz kezeléséhez.
+* Ha a háttérlekérdezés lassú, próbálja meg [optimalizálni a lekérdezést,](optimize-cost-queries.md) és megvizsgálni az aktuális [indexelési házirendet](index-overview.md) 
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[Túl nagy a kérelmek aránya]: #request-rate-too-large
+[A kérelem aránya túl nagy]: #request-rate-too-large
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list

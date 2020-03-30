@@ -1,6 +1,6 @@
 ---
-title: Azure API Management házirend-kifejezések | Microsoft Docs
-description: Ismerje meg az Azure API Management házirend-kifejezéseit.
+title: Azure API Management házirend-kifejezések | Microsoft dokumentumok
+description: Ismerje meg a szabályzati kifejezéseket az Azure API Managementben.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244003"
 ---
-# <a name="api-management-policy-expressions"></a>API Management házirend-kifejezések
-Ez a cikk a szabályzat kifejezések szintaxisát C# ismerteti 7. Mindegyik kifejezés rendelkezik hozzáféréssel a implicit módon megadott [környezeti](api-management-policy-expressions.md#ContextVariables) változóhoz, valamint a .NET-keretrendszer engedélyezett [részhalmazához](api-management-policy-expressions.md#CLRTypes) .
+# <a name="api-management-policy-expressions"></a>API-kezelés házirend-kifejezései
+Ez a cikk a C# 7 házirend-kifejezéseit ismerteti. Minden kifejezés hozzáfér az implicit módon megadott [környezeti](api-management-policy-expressions.md#ContextVariables) változóhoz és a .NET keretrendszertípusok engedélyezett [részhalmazához.](api-management-policy-expressions.md#CLRTypes)
 
 További információk:
 
-- Ismerje meg, hogyan adhat meg környezeti információkat a háttér-szolgáltatáshoz. Használja a [lekérdezési karakterlánc beállítása paramétert](api-management-transformation-policies.md#SetQueryStringParameter) , és adja meg a HTTP-fejléc házirendjeit az információk [megadásához](api-management-transformation-policies.md#SetHTTPheader) .
-- Tekintse meg, hogyan használhatja a JWT-szabályzat [érvényesítése](api-management-access-restriction-policies.md#ValidateJWT) beállítást a jogkivonatok jogcímein alapuló műveletekhez való hozzáférés előzetes engedélyezéséhez.
-- A szabályzatok kiértékelésének és az értékelések eredményeinek megtekintéséhez tekintse meg az [API-ellenőrök](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) nyomkövetésének használatát ismertető témakört.
-- Tekintse meg, hogyan használhat kifejezéseket a [Get from cache](api-management-caching-policies.md#GetFromCache) és a [Store to cache](api-management-caching-policies.md#StoreToCache) policy házirendekkel a API Management válasz gyorsítótárazásának konfigurálásához. Állítson be egy időtartamot, amely megfelel a háttér-szolgáltatás válasz-gyorsítótárazásának, ahogy azt a támogatott szolgáltatás `Cache-Control` irányelve megadja.
-- Lásd: tartalom szűrésének végrehajtása. Távolítsa el az adatelemeket a háttértől kapott válaszból a [vezérlési folyamat](api-management-advanced-policies.md#choose) és a [szövegtörzs](api-management-transformation-policies.md#SetBody) -szabályzatok használatával.
-- A házirend-utasítások letöltéséhez tekintse meg az [API-Management-Samples/policies GitHub-](https://github.com/Azure/api-management-samples/tree/master/policies) tárházat.
+- Tekintse meg, hogyan biztosíthatja a háttéradatokat a háttérszolgáltatás. Használja a [Lekérdezési karakterlánc beállítása paramétert](api-management-transformation-policies.md#SetQueryStringParameter) és a [HTTP fejlécházirendek beállítását](api-management-transformation-policies.md#SetHTTPheader) az adatok biztosításához.
+- Tekintse meg, hogyan használhatja a [JWT-szabályzat érvényesítése](api-management-access-restriction-policies.md#ValidateJWT) a jogkivonatjogcímeken alapuló műveletekhez való hozzáférés előzetes engedélyezéséhez.
+- Tekintse meg, hogyan használhatja az [API-felügyelő](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) nyomkövetési a szabályzatok kiértékelésének és az értékelések eredményeinek megtekintéséhez.
+- Tekintse meg, hogyan használhatja a kifejezéseket a [Get from cache](api-management-caching-policies.md#GetFromCache) and Store to [cache](api-management-caching-policies.md#StoreToCache) házirendek API Management válaszgyorsítótárazás konfigurálásához. Olyan időtartamot állítson be, amely megfelel a háttérszolgáltatás válaszgyorsítótárazásának `Cache-Control` a háttérszolgáltatás direktíva által meghatározott módon.
+- Tekintse meg a tartalomszűrés elvégzésének módját. Távolítsa el az adatelemeket a háttérrendszerből kapott válaszból a [Vezérlőfolyamat](api-management-advanced-policies.md#choose) és a [Testházirendek beállítása](api-management-transformation-policies.md#SetBody) használatával.
+- A szabályzati utasítások letöltéséhez tekintse meg az [api-felügyeleti minták/szabályzatok](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub-tár).
 
 
-## <a name="Syntax"></a>Szintaxis
-Az egyutasításos kifejezések `@(expression)`vannak lefoglalva, ahol a `expression` egy jól C# formázott kifejezési utasítás.
+## <a name="syntax"></a><a name="Syntax"></a>Szintaxis
+Az egyutasításos kifejezések `@(expression)`a `expression` be vannak zárva, ahol egy jól formázott C# kifejezés.
 
-A többutasításos kifejezések `@{expression}`ba vannak bezárva. A többutasításos kifejezéseken belül minden kód elérési útnak `return` utasítással kell végződnie.
+A többutasításos kifejezések et `@{expression}`a. A többutasításos kifejezéseken belüli összes kódelérési utat utasítással `return` kell befejezni.
 
-## <a name="PolicyExpressionsExamples"></a>Példák
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a>Példák
 
 ```
 @(true)
@@ -65,114 +65,114 @@ A többutasításos kifejezések `@{expression}`ba vannak bezárva. A többutas�
 }
 ```
 
-## <a name="PolicyExpressionsUsage"></a>Használati
-A kifejezések bármely API Management [házirendben](api-management-policies.md) attribútumértékként vagy szöveges értékként használhatók (kivéve, ha a házirend-hivatkozás másként nem határoz meg).
+## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>Használat
+A kifejezések attribútum- vagy szöveges értékként használhatók bármely API [Management-házirendben](api-management-policies.md) (kivéve, ha a házirend-hivatkozás másként rendelkezik).
 
 > [!IMPORTANT]
-> Ha házirend-kifejezéseket használ, csak korlátozott mértékben ellenőrzi a házirend-kifejezéseket, ha a házirend meg van határozva. A kifejezéseket az átjáró futásidőben hajtja végre, a házirend-kifejezések által generált kivételek futásidejű hibát eredményeznek.
+> Ha házirend-kifejezéseket használ, a házirend-kifejezések csak korlátozottan ellenőrzik, ha a házirend definiálva van. A kifejezéseket az átjáró futásidőben hajtja végre, a házirend-kifejezések által létrehozott kivételek futásidejű hibát eredményeznek.
 
-## <a name="CLRTypes"></a>A .NET-keretrendszerben engedélyezett típusok házirend-kifejezésekben
-A következő táblázat a .NET-keretrendszer típusait és azok tagjait sorolja fel, amelyek a házirend-kifejezésekben engedélyezettek.
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>A házirend-kifejezésekben engedélyezett .
+Az alábbi táblázat a .
 
 |Típus|Támogatott tagok|
 |--------------|-----------------------|
-|Newtonsoft. JSON. formázás|Összes|
-|Newtonsoft.Json.JsonConvert|Serializeobject elem, DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|Összes|
+|Newtonsoft.Json.Formázás|Összes|
+|Newtonsoft.Json.JsonKonvertál|Szerializálásobjektum, DeserializeObjektum|
+|Newtonsoft.Json.Linq.Extensions (Newtonsoft.Json.Linq.Extensions)|Összes|
 |Newtonsoft.Json.Linq.JArray|Összes|
-|Newtonsoft.Json.Linq.JConstructor|Összes|
-|Newtonsoft.Json.Linq.JContainer|Összes|
-|Newtonsoft.Json.Linq.JObject|Összes|
-|Newtonsoft.Json.Linq.JProperty|Összes|
+|Newtonsoft.Json.Linq.JKKonstruktor|Összes|
+|Newtonsoft.Json.Linq.JKonténer|Összes|
+|Newtonsoft.Json.Linq.JTárgy|Összes|
+|Newtonsoft.Json.Linq.JIngatlan|Összes|
 |Newtonsoft.Json.Linq.JRaw|Összes|
 |Newtonsoft.Json.Linq.JToken|Összes|
 |Newtonsoft.Json.Linq.JTokenType|Összes|
-|Newtonsoft.Json.Linq.JValue|Összes|
-|System. Array|Összes|
+|Newtonsoft.Json.Linq.JÉrték|Összes|
+|System.Tömb|Összes|
 |System.BitConverter|Összes|
 |System.Boolean|Összes|
-|System. byte|Összes|
-|System.Char|Összes|
-|System. Collections. Generic. Dictionary < TKey, TValue >|Összes|
-|System. Collections. Generic. HashSet\<T >|Összes|
-|System. Collections. Generic. ICollection illesztőfelületet\<T >|Összes|
-|System. Collections. Generic. IDictionary < TKey, TValue >|Összes|
-|System. Collections. Generic. IEnumerable\<T >|Összes|
-|System. Collections. Generic. IEnumerator\<T >|Összes|
-|System. Collections. Generic. IList\<T >|Összes|
-|System. Collections. Generic. IReadOnlyCollection\<T >|Összes|
-|System. Collections. Generic. IReadOnlyDictionary < TKey, TValue >|Összes|
-|System. Collections. Generic. ISet\<T >|Összes|
-|System. Collections. Generic. KeyValuePair < TKey, TValue >|Összes|
-|System. Collections. Generic. list\<T >|Összes|
-|System. Collections. Generic. üzenetsor\<T >|Összes|
-|System. Collections. Generic. stack\<T >|Összes|
+|System.Byte fájl|Összes|
+|Rendszer.Karakter|Összes|
+|System.Collections.Generic.Dictionary<TKey, TValue>|Összes|
+|System.Collections.Generic.HashSet\<T>|Összes|
+|System.Collections.Generic.ICollection\<T>|Összes|
+|System.Collections.Generic.IDictionary<TKey, TValue>|Összes|
+|System.Collections.Generic.IEnumerable\<T>|Összes|
+|System.Collections.Generic.IEnumerator\<T>|Összes|
+|System.Collections.Generic.IList\<T>|Összes|
+|System.Collections.Generic.IReadOnlyCollection\<T>|Összes|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Összes|
+|System.Collections.Generic.ISet\<T>|Összes|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|Összes|
+|System.Collections.Generic.List\<T>|Összes|
+|System.Collections.Generic.Queue\<T>|Összes|
+|System.Collections.Generic.Stack\<T>|Összes|
 |System.Convert|Összes|
-|System.DateTime|(Konstruktor), Hozzáadás, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, dátum, nap, DayOfWeek, DayOfYear, DaysInMonth, óra, IsDaylightSavingTime, IsLeapYear, MaxValue, ezredmásodperc, perc, MinValue, hónap, most , Elemzés, második, kivonás, ketyeg, TimeOfDay, ma, ToString, UtcNow, Year|
-|System.DateTimeKind|UTC|
+|System.DateTime|(Konstruktor), Add, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, Dátum, Nap, DayOfWeek, DayOfYear, DaysInMonth, Hour, IsDaylightSavingTime, IsLeapYear, MaxValue, Milliszekundum, Perc, MinValue, Hónap, Now , Elemzés, Második, Kivonás, Kullancsok, TimeOfDay, Ma, ToString, UtcNow, Év|
+|System.DateTimeKind|Utc|
 |System.DateTimeOffset|Összes|
 |System.Decimal|Összes|
-|System. Double|Összes|
+|System.Double (Kétszeris)|Összes|
 |System.Exception|Összes|
-|System.Guid|Összes|
-|System.Int16|Összes|
-|System.Int32|Összes|
-|System.Int64|Összes|
+|System.Guid fájl|Összes|
+|Rendszer.Int16|Összes|
+|Rendszer.Int32|Összes|
+|Rendszer.Int64|Összes|
 |System.IO.StringReader|Összes|
 |System.IO.StringWriter|Összes|
-|System. LINQ. enumerable|Összes|
+|System.Linq.Ennumerable|Összes|
 |System.Math|Összes|
 |System.MidpointRounding|Összes|
-|System .net. websegédprogram|Összes|
+|System.Net.WebUtility|Összes|
 |System.Nullable|Összes|
 |System.Random|Összes|
-|System.SByte|Összes|
+|System.SByte fájl|Összes|
 |System.Security.Cryptography.AsymmetricAlgorithm|Összes|
 |System.Security.Cryptography.CipherMode|Összes|
 |System.Security.Cryptography.HashAlgorithm|Összes|
 |System.Security.Cryptography.HashAlgorithmName|Összes|
-|System.Security.Cryptography.HMAC|Összes|
-|System.Security.Cryptography.HMACMD5|Összes|
-|System.Security.Cryptography.HMACSHA1|Összes|
-|System.Security.Cryptography.HMACSHA256|Összes|
-|System.Security.Cryptography.HMACSHA384|Összes|
-|System.Security.Cryptography.HMACSHA512|Összes|
+|Rendszer.Biztonság.Kriptográfia.HMAC|Összes|
+|Rendszer.Security.Cryptography.HMACMD5|Összes|
+|Rendszer.Biztonság.Kriptográfia.HMACSHA1|Összes|
+|Rendszer.Security.Cryptography.HMACSHA256|Összes|
+|Rendszer.Security.Cryptography.HMACSHA384|Összes|
+|Rendszer.Security.Cryptography.HMACSHA512|Összes|
 |System.Security.Cryptography.KeyedHashAlgorithm|Összes|
-|System.Security.Cryptography.MD5|Összes|
-|System.Security.Cryptography.Oid|Összes|
+|Rendszer.Security.Cryptography.MD5|Összes|
+|Rendszer.Biztonság.Kriptográfia.Oid|Összes|
 |System.Security.Cryptography.PaddingMode|Összes|
 |System.Security.Cryptography.RNGCryptoServiceProvider|Összes|
-|System.Security.Cryptography.RSA|Összes|
+|Rendszer.Biztonság.Kriptográfia.RSA|Összes|
 |System.Security.Cryptography.RSAEncryptionPadding|Összes|
 |System.Security.Cryptography.RSASignaturePadding|Összes|
-|System.Security.Cryptography.SHA1|Összes|
-|System.Security.Cryptography.SHA1Managed|Összes|
-|System.Security.Cryptography.SHA256|Összes|
-|System.Security.Cryptography.SHA256Managed|Összes|
-|System.Security.Cryptography.SHA384|Összes|
-|System.Security.Cryptography.SHA384Managed|Összes|
-|System.Security.Cryptography.SHA512|Összes|
-|System.Security.Cryptography.SHA512Managed|Összes|
+|Rendszer.Security.Cryptography.SHA1|Összes|
+|System.Security.Cryptography.SHA1Felügyelt|Összes|
+|Rendszer.Security.Cryptography.SHA256|Összes|
+|System.Security.Cryptography.SHA256Felügyelt|Összes|
+|Rendszer.Security.Cryptography.SHA384|Összes|
+|System.Security.Cryptography.SHA384Felügyelt|Összes|
+|Rendszer.Security.Cryptography.SHA512|Összes|
+|System.Security.Cryptography.SHA512Felügyelt|Összes|
 |System.Security.Cryptography.SymmetricAlgorithm|Összes|
 |System.Security.Cryptography.X509Certificates.PublicKey|Összes|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Összes|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name (Név)|
-|System. Security. kriptográfia. X509Certificates. X509|Összes|
+|System.Security.Cryptography.X509Certificates.X500Megkülönböztetett név|Név|
+|System.Security.Cryptography.X509Certificates.X509Certificate|Összes|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|Összes|
 |System.Security.Cryptography.X509Certificates.X509ContentType|Összes|
-|System. Security. kriptográfia. X509Certificates. X509NameType|Összes|
+|System.Security.Cryptography.X509Certificates.X509NameType|Összes|
 |System.Single|Összes|
 |System.String|Összes|
 |System.StringComparer|Összes|
-|System.StringComparison|Összes|
+|System.StringÖsszehasonlítás|Összes|
 |System.StringSplitOptions|Összes|
-|System.Text.Encoding|Összes|
-|System.Text.RegularExpressions.Capture|Index, hossz, érték|
-|System.Text.RegularExpressions.CaptureCollection|Darabszám, elem|
-|System.Text.RegularExpressions.Group|Rögzítés, sikeres|
-|System.Text.RegularExpressions.GroupCollection|Darabszám, elem|
-|System.Text.RegularExpressions.Match|Üres, csoportok, eredmény|
-|System.Text.RegularExpressions.Regex|(Konstruktor), IsMatch, egyezés, egyezés, csere, felszabadulás, felosztás|
+|System.Text.Enkódolás|Összes|
+|System.Text.RegularExpressions.Capture|Index, Hossz, Érték|
+|System.Text.RegularExpressions.CaptureCollection|Darabszám, Cikk|
+|System.Text.RegularExpressions.Group|Rögzítés, siker|
+|System.Text.RegularExpressions.GroupCollection|Darabszám, Cikk|
+|System.Text.RegularExpressions.Match|Üres, Csoportok, Eredmény|
+|System.Text.RegularExpressions.Regex|(Konstruktor), IsMatch, Egyezés, Gyufa, Csere, Kioldatlan, Split|
 |System.Text.RegularExpressions.RegexOptions|Összes|
 |System.Text.StringBuilder|Összes|
 |System.TimeSpan|Összes|
@@ -180,77 +180,77 @@ A következő táblázat a .NET-keretrendszer típusait és azok tagjait sorolja
 |System.TimeZoneInfo.AdjustmentRule|Összes|
 |System.TimeZoneInfo.TransitionTime|Összes|
 |System.TimeZoneInfo|Összes|
-|System. rekord|Összes|
+|System.Tuple fájl|Összes|
 |System.UInt16|Összes|
 |System.UInt32|Összes|
 |System.UInt64|Összes|
-|System.Uri|Összes|
-|System. UriPartial|Összes|
-|System.Xml.Linq.Extensions|Összes|
+|Rendszer.Uri|Összes|
+|System.UriPartial|Összes|
+|System.Xml.Linq.Extensions (System.Xml.Linq.Extensions)|Összes|
 |System.Xml.Linq.XAttribute|Összes|
 |System.Xml.Linq.XCData|Összes|
-|System.Xml.Linq.XComment|Összes|
-|System.Xml.Linq.XContainer|Összes|
+|System.Xml.Linq.XMegjegyzés|Összes|
+|System.Xml.Linq.XContainer fájl|Összes|
 |System.Xml.Linq.XDeclaration|Összes|
-|System.Xml.Linq.XDocument|Az összes, a kivételével: Load|
+|System.Xml.Linq.XDocument|Mind, kivéve: Betöltés|
 |System.Xml.Linq.XDocumentType|Összes|
 |System.Xml.Linq.XElement|Összes|
 |System.Xml.Linq.XName|Összes|
 |System.Xml.Linq.XNamespace|Összes|
-|System.Xml.Linq.XNode|Összes|
+|Rendszer.Xml.Linq.XNode|Összes|
 |System.Xml.Linq.XNodeDocumentOrderComparer|Összes|
 |System.Xml.Linq.XNodeEqualityComparer|Összes|
-|System.Xml.Linq.XObject|Összes|
+|System.Xml.Linq.XObject objektum|Összes|
 |System.Xml.Linq.XProcessingInstruction|Összes|
-|System.Xml.Linq.XText|Összes|
+|System.Xml.Linq.XSzöveg|Összes|
 |System.Xml.XmlNodeType|Összes|
 
-## <a name="ContextVariables"></a>Környezeti változó
-Egy `context` nevű változó implicit módon elérhető minden házirend- [kifejezésben](api-management-policy-expressions.md#Syntax). A tagjai a `\request`kapcsolatos információkat biztosítanak. Az `context` összes tagja csak olvasható.
+## <a name="context-variable"></a><a name="ContextVariables"></a>Környezeti változó
+A megnevezett `context` változó implicit módon elérhető minden [házirendkifejezésben.](api-management-policy-expressions.md#Syntax) Tagjai az adott országgal kapcsolatos `\request`információkat szolgáltatnak. Minden `context` tag csak olvasható.
 
-|Környezeti változó|Engedélyezett metódusok, tulajdonságok és paraméterek értékei|
+|Környezeti változó|Engedélyezett metódusok, tulajdonságok és paraméterértékek|
 |----------------------|-------------------------------------------------------|
-|context|[API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Üzembe helyezés](#ref-context-deployment)<br /><br /> Eltelt idő: TimeSpan időköz az időbélyegző és az aktuális idő értéke között<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Művelet](#ref-context-operation)<br /><br /> [Termék](#ref-context-product)<br /><br /> [Kérés](#ref-context-request)<br /><br /> Kérelemazonosító: GUID – egyedi kérelem azonosítója<br /><br /> [Válasz](#ref-context-response)<br /><br /> [Előfizetés](#ref-context-subscription)<br /><br /> Időbélyeg: dátum és idő – a kérés fogadásakor időpontra<br /><br /> Nyomkövetés: bool – jelzi, hogy a nyomkövetés be van-e kapcsolva <br /><br /> [Felhasználói](#ref-context-user)<br /><br /> [Változók](#ref-context-variables): IReadOnlyDictionary < sztring, objektum ><br /><br /> void nyomkövetés (üzenet: karakterlánc)|
-|<a id="ref-context-api"></a>összefüggésben. API|Azonosító: karakterlánc<br /><br /> IsCurrentRevision: bool<br /><br />  Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Változat: karakterlánc<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verzió: karakterlánc |
-|<a id="ref-context-deployment"></a>összefüggésben. Telepítési|Régió: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|
-|<a id="ref-context-lasterror"></a>összefüggésben. LastError|Forrás: karakterlánc<br /><br /> Ok: karakterlánc<br /><br /> Üzenet: karakterlánc<br /><br /> Hatókör: karakterlánc<br /><br /> Szakasz: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> PolicyId: karakterlánc<br /><br /> További információ a környezetről. LastError lásd: [hibakezelés](api-management-error-handling-policies.md).|
-|<a id="ref-context-operation"></a>összefüggésben. Művelet|Azonosító: karakterlánc<br /><br /> Metódus: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> UrlTemplate: karakterlánc|
-|<a id="ref-context-product"></a>összefüggésben. Termék|API-k: IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Csoportok: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Állapot: Enum ProductState {NotPublished, published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
-|<a id="ref-context-request"></a>összefüggésben. Kérelem|Törzs: [IMessageBody](#ref-imessagebody) vagy `null`, ha a kérelem nem rendelkezik törzstel.<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers): IReadOnlyDictionary < karakterlánc, karakterlánc [] ><br /><br /> IP-cím: karakterlánc<br /><br /> MatchedParameters: IReadOnlyDictionary<string, string><br /><br /> Metódus: karakterlánc<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> URL-cím: [IUrl](#ref-iurl)|
-|<a id="ref-context-request-headers"></a>karakterlánc-környezet Request. headers. GetValueOrDefault (headerName: karakterlánc, defaultValue: string)|headerName: karakterlánc<br /><br /> defaultValue: karakterlánc<br /><br /> Vesszővel tagolt kérések fejlécének értékét adja vissza, vagy `defaultValue`, ha a fejléc nem található.|
-|<a id="ref-context-response"></a>összefüggésben. Válasz|Törzs: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary < karakterlánc, karakterlánc [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: karakterlánc|
-|<a id="ref-context-response-headers"></a>karakterlánc-környezet Response. headers. GetValueOrDefault (headerName: karakterlánc, defaultValue: karakterlánc)|headerName: karakterlánc<br /><br /> defaultValue: karakterlánc<br /><br /> A vesszővel tagolt válasz fejlécének értékeit vagy `defaultValue` adja vissza, ha a fejléc nem található.|
-|<a id="ref-context-subscription"></a>összefüggésben. Előfizetés|CreatedTime: dátum és idő<br /><br /> EndDate: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kulcs: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> PrimaryKey: karakterlánc<br /><br /> Értesítésiközpont: karakterlánc<br /><br /> StartDate: DateTime?|
-|<a id="ref-context-user"></a>összefüggésben. Felhasználói|E-mail: karakterlánc<br /><br /> FirstName: karakterlánc<br /><br /> Csoportok: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Azonosító: karakterlánc<br /><br /> Identitások: IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: sztring<br /><br /> Megjegyzés: karakterlánc<br /><br /> RegistrationDate: DateTime|
-|<a id="ref-iapi"></a>IApi|Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Protokollok: IEnumerable < karakterlánc\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
-|<a id="ref-igroup"></a>IGroup|Azonosító: karakterlánc<br /><br /> Name: karakterlánc|
-|<a id="ref-imessagebody"></a>IMessageBody|Mint < T\>(preserveContent: bool = false): where T: string, byte [], JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> A `context.Request.Body.As<T>` és `context.Response.Body.As<T>` metódusok egy adott típusú `T`ban található kérelmek és válaszüzenetek törzsének olvasására szolgálnak. Alapértelmezés szerint a metódus az eredeti üzenettörzs-adatfolyamot használja, és a visszatérés után elérhetetlenné teszi. Annak elkerülése érdekében, hogy a metódus a szövegtörzs egy példányán működjön, állítsa `true`értékre a `preserveContent` paramétert. [Itt](api-management-transformation-policies.md#SetBody) láthat egy példát.|
-|<a id="ref-iurl"></a>IUrl|Gazdagép: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Port: int<br /><br /> [Lekérdezés](#ref-iurl-query): IReadOnlyDictionary < karakterlánc, karakterlánc [] ><br /><br /> QueryString: karakterlánc<br /><br /> Séma: karakterlánc|
+|Összefüggésben|[Api](#ref-context-api): [Iapi](#ref-iapi)<br /><br /> [Környezet](#ref-context-deployment)<br /><br /> Eltelt: TimeSpan - az időbélyeg értéke és az aktuális idő közötti időintervallum<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Művelet](#ref-context-operation)<br /><br /> [Termék](#ref-context-product)<br /><br /> [Kérés](#ref-context-request)<br /><br /> RequestId: Guid – egyedi kérelemazonosító<br /><br /> [Válasz](#ref-context-response)<br /><br /> [Előfizetés](#ref-context-subscription)<br /><br /> Időbélyeg: DateTime - a kérelem beérkezésének időpontja<br /><br /> Nyomkövetés: bool - azt jelzi, hogy a nyomkövetés be van-e kapcsolva vagy ki van kapcsolva <br /><br /> [Felhasználó](#ref-context-user)<br /><br /> [Változók](#ref-context-variables): IReadOnlyDictionary<karakterlánc, objektum><br /><br /> void Trace(message: string)|
+|<a id="ref-context-api"></a>Összefüggésben. Api|Azonosító: karakterlánc<br /><br /> IsCurrentRevision: bool<br /><br />  Név: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Verzió: karakterlánc<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verzió: karakterlánc |
+|<a id="ref-context-deployment"></a>Összefüggésben. Telepítési|Régió: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Tanúsítványok: IReadOnlyDictionary<karakterlánc, X509Certificate2>|
+|<a id="ref-context-lasterror"></a>Összefüggésben. Utolsó hiba|Forrás: karakterlánc<br /><br /> Ok: karakterlánc<br /><br /> Üzenet: karakterlánc<br /><br /> Hatókör: karakterlánc<br /><br /> Szakasz: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> PolicyId: karakterlánc<br /><br /> További információ a környezetről. LastError , [lásd: Hibakezelés](api-management-error-handling-policies.md).|
+|<a id="ref-context-operation"></a>Összefüggésben. Művelet|Azonosító: karakterlánc<br /><br /> Metódus: karakterlánc<br /><br /> Név: karakterlánc<br /><br /> URLTemplate: karakterlánc|
+|<a id="ref-context-product"></a>Összefüggésben. Termék|Apis: IEnumera<[IApi](#ref-iapi)\><br /><br /> JóváhagyásSzükséges: bool<br /><br /> Csoportok: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Azonosító: karakterlánc<br /><br /> Név: karakterlánc<br /><br /> Állapot: felsorak: ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> Előfizetésszükséges: bool|
+|<a id="ref-context-request"></a>Összefüggésben. Kérés|Törzs: [IMessageBody](#ref-imessagebody) vagy `null` ha a kérés nem rendelkezik törzs.<br /><br /> Tanúsítvány: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Fejlécek](#ref-context-request-headers): IReadOnlyDictionary<karakterlánc, karakterlánc[]><br /><br /> IpAddress: karakterlánc<br /><br /> MatchedParameters: IReadOnlyDictionary<karakterlánc, karakterlánc><br /><br /> Metódus: karakterlánc<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Url: [IUrl](#ref-iurl)|
+|<a id="ref-context-request-headers"></a>karakterlánc-környezetben. Request.Headers.GetValueOrDefault(headerName: karakterlánc, defaultValue: karakterlánc)|headerName: karakterlánc<br /><br /> defaultValue : karakterlánc<br /><br /> Vesszővel tagolt kérelemfejléc-értékeket `defaultValue` ad eredményül, vagy ha a fejléc nem található.|
+|<a id="ref-context-response"></a>Összefüggésben. Válasz|Törzs: [IMessageBody](#ref-imessagebody)<br /><br /> [Fejlécek](#ref-context-response-headers): IReadOnlyDictionary<karakterlánc, karakterlánc[]><br /><br /> StatusCode: int<br /><br /> StatusReason: karakterlánc|
+|<a id="ref-context-response-headers"></a>karakterlánc-környezetben. Response.Headers.GetValueOrDefault(headerName: karakterlánc, defaultValue: karakterlánc)|headerName: karakterlánc<br /><br /> defaultValue : karakterlánc<br /><br /> Vesszővel tagolt válaszfejléc-értékeket `defaultValue` ad eredményül, vagy ha a fejléc nem található.|
+|<a id="ref-context-subscription"></a>Összefüggésben. Előfizetés|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kulcs: karakterlánc<br /><br /> Név: karakterlánc<br /><br /> PrimaryKey: karakterlánc<br /><br /> SecondaryKey: karakterlánc<br /><br /> StartDate: DateTime?|
+|<a id="ref-context-user"></a>Összefüggésben. Felhasználó|E-mail cím: karakterlánc<br /><br /> Keresztnév: karakterlánc<br /><br /> Csoportok: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Azonosító: karakterlánc<br /><br /> Identitások: IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> Vezetéknév: karakterlánc<br /><br /> Megjegyzés: karakterlánc<br /><br /> RegistrationDate: DateTime|
+|<a id="ref-iapi"></a>Iapi között|Azonosító: karakterlánc<br /><br /> Név: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Protokollok: IEnumerable<karakterlánc\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [iSubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
+|<a id="ref-igroup"></a>IGroup csoport|Azonosító: karakterlánc<br /><br /> Név: karakterlánc|
+|<a id="ref-imessagebody"></a>IMessageBody|Ahogy\><T (preserveContent: bool = false): Ahol T: karakterlánc, bájt[],JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> A `context.Request.Body.As<T>` `context.Response.Body.As<T>` és a módszerek egy adott típusú `T`kérés- és válaszüzenet-törzsek olvasására szolgálnak. Alapértelmezés szerint a metódus az eredeti üzenettörzs-adatfolyamot használja, és visszatérése után elérhetetlenné teszi azt. Annak elkerülése érdekében, hogy a metódus a törzsfolyam `preserveContent` egy `true`példányán működjön, állítsa a paramétert a-ra. Menj [ide,](api-management-transformation-policies.md#SetBody) hogy egy példát.|
+|<a id="ref-iurl"></a>IUrl|Állomás: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Port: int<br /><br /> [Lekérdezés](#ref-iurl-query): IReadOnlyDictionary<karakterlánc, karakterlánc[]><br /><br /> QueryString: karakterlánc<br /><br /> Séma: string|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Azonosító: karakterlánc<br /><br /> Szolgáltató: karakterlánc|
-|<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Fejléc: karakterlánc<br /><br /> Lekérdezés: karakterlánc|
-|<a id="ref-iurl-query"></a>string IUrl. Query. GetValueOrDefault (queryParameterName: karakterlánc, defaultValue: karakterlánc)|queryParameterName: karakterlánc<br /><br /> defaultValue: karakterlánc<br /><br /> A vesszővel tagolt lekérdezési paraméterek értékeit vagy `defaultValue` adja vissza, ha a paraméter nem található.|
-|<a id="ref-context-variables"></a>T környezet. Változók. GetValueOrDefault < T\>(variableName: karakterlánc, defaultValue: T)|variableName: karakterlánc<br /><br /> defaultValue: T<br /><br /> A változó értékét adja vissza `T` vagy `defaultValue` típusra, ha a változó nem található.<br /><br /> Ez a metódus kivételt jelez, ha a megadott típus nem egyezik a visszaadott változó tényleges típusával.|
-|BasicAuthCredentials AsBasic (bemenet: Ez a karakterlánc)|bemenet: karakterlánc<br /><br /> Ha a bemeneti paraméter érvényes HTTP alapszintű hitelesítési engedélyezési kérelem fejlécének értékét tartalmazza, a metódus `BasicAuthCredentials`; típusú objektumot ad vissza. Ellenkező esetben a metódus null értéket ad vissza.|
-|bool TryParseBasic (bemenet: Ez a karakterlánc, eredmény: out BasicAuthCredentials)|bemenet: karakterlánc<br /><br /> eredmény: kimenő BasicAuthCredentials<br /><br /> Ha a bemeneti paraméter érvényes HTTP alapszintű hitelesítési engedélyezési értéket tartalmaz a kérelem fejlécében, a metódus visszaadja a `true`, és az eredmény paraméter `BasicAuthCredentials`típusú értéket tartalmaz. Ellenkező esetben a metódus `false`értéket ad vissza.|
-|BasicAuthCredentials|Password (jelszó): karakterlánc<br /><br /> UserId: string|
-|JWT AsJwt (bemenet: Ez a karakterlánc)|bemenet: karakterlánc<br /><br /> Ha a bemeneti paraméter érvényes JWT token értéket tartalmaz, a metódus `Jwt`; típusú objektumot ad vissza. Ellenkező esetben a metódus `null`értéket ad vissza.|
-|bool TryParseJwt (bemenet: Ez a karakterlánc, eredmény: out JWT)|bemenet: karakterlánc<br /><br /> eredmény: kimenő JWT<br /><br /> Ha a bemeneti paraméter érvényes JWT jogkivonat-értéket tartalmaz, a metódus `true` ad vissza, és az eredmény paraméter `Jwt`típusú értéket tartalmaz. Ellenkező esetben a metódus `false`értéket ad vissza.|
-|JWT|Algoritmus: karakterlánc<br /><br /> Célközönség: IEnumerable < sztring\><br /><br /> Claims: IReadOnlyDictionary<string, string[]><br /><br /> Expirationtime tulajdonságok: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kiállító: karakterlánc<br /><br /> IssuedAt: DateTime?<br /><br /> NotBefore: DateTime?<br /><br /> Tárgy: karakterlánc<br /><br /> Típus: karakterlánc|
-|string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: karakterlánc<br /><br /> defaultValue: karakterlánc<br /><br /> Vesszővel tagolt jogcím-értékeket ad vissza, vagy `defaultValue`, ha a fejléc nem található.|
-|byte [] titkosítás (bemenet: Ez a bájt [], ALG: karakterlánc, kulcs: byte [], IV: bájt [])|bemenet – titkosítatlan szöveges szöveg<br /><br />ALG – szimmetrikus titkosítási algoritmus neve<br /><br />kulcs-titkosítási kulcs<br /><br />IV – inicializálási vektor<br /><br />Titkosított egyszerű szöveges értéket ad vissza.|
-|byte [] titkosítás (bemenet: Ez a bájt [], ALG: System. Security. kriptográfia. SymmetricAlgorithm)|bemenet – titkosítatlan szöveges szöveg<br /><br />ALG-titkosítási algoritmus<br /><br />Titkosított egyszerű szöveges értéket ad vissza.|
-|byte [] titkosítás (bemenet: Ez a bájt [], ALG: System. Security. kriptográfia. SymmetricAlgorithm, kulcs: byte [], IV: byte [])|bemenet – titkosítatlan szöveges szöveg<br /><br />ALG-titkosítási algoritmus<br /><br />kulcs-titkosítási kulcs<br /><br />IV – inicializálási vektor<br /><br />Titkosított egyszerű szöveges értéket ad vissza.|
-|byte [] visszafejtés (bemenet: Ez a bájt [], ALG: karakterlánc, kulcs: byte [], IV: bájt [])|bemeneti – Cypher szöveg, amelyet vissza kell fejteni<br /><br />ALG – szimmetrikus titkosítási algoritmus neve<br /><br />kulcs-titkosítási kulcs<br /><br />IV – inicializálási vektor<br /><br />Szöveges karakterláncot ad vissza.|
-|byte [] visszafejtés (bemenet: Ez a bájt [], ALG: System. Security. kriptográfia. SymmetricAlgorithm)|bemeneti – Cypher szöveg, amelyet vissza kell fejteni<br /><br />ALG-titkosítási algoritmus<br /><br />Szöveges karakterláncot ad vissza.|
-|byte [] visszafejtés (bemenet: Ez a bájt [], ALG: System. Security. kriptográfia. SymmetricAlgorithm, kulcs: byte [], IV: byte [])|bemeneti – Cypher szöveg, amelyet vissza kell fejteni<br /><br />ALG-titkosítási algoritmus<br /><br />kulcs-titkosítási kulcs<br /><br />IV – inicializálási vektor<br /><br />Szöveges karakterláncot ad vissza.|
-|bool VerifyNoRevocation (bemenet: Ez a System. Security. kriptográfia. X509Certificates. X509certificate2))|Egy X. 509 lánc érvényesítését végzi a tanúsítvány visszavonási állapotának ellenőrzése nélkül.<br /><br />bemeneti-tanúsítvány objektum<br /><br />`true` visszaadása, ha az érvényesítés sikeres; `false`, ha az ellenőrzés sikertelen.|
+|<a id="ref-isubscriptionkeyparameternames"></a>iSubscriptionKeyParameterNames|Fejléc: karakterlánc<br /><br /> Lekérdezés: karakterlánc|
+|<a id="ref-iurl-query"></a>string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName: karakterlánc<br /><br /> defaultValue : karakterlánc<br /><br /> Vesszővel tagolt lekérdezési paraméterértékeket ad eredményül, vagy `defaultValue` ha a paraméter nem található.|
+|<a id="ref-context-variables"></a>T kontextus. Variables.GetValueOrDefault<T\>(variableName: string, defaultValue: T)|variableName: karakterlánc<br /><br /> defaultValue: T<br /><br /> A beírt változó `T` `defaultValue` értéket adja vissza, vagy ha a változó nem található.<br /><br /> Ez a módszer kivételt okoz, ha a megadott típus nem egyezik meg a visszaadott változó tényleges típusával.|
+|BasicAuthCredentials AsBasic(input: ez a karakterlánc)|bemenet: karakterlánc<br /><br /> Ha a bemeneti paraméter érvényes HTTP-alapfokú hitelesítés engedélyezési kérelem `BasicAuthCredentials`fejlécértékét tartalmazza, a metódus egy típusú objektumot ad vissza; ellenkező esetben a metódus null értéket ad vissza.|
+|bool TryParseBasic(input: ez a karakterlánc, eredmény: out BasicAuthCredentials)|bemenet: karakterlánc<br /><br /> eredmény: out BasicAuthCredentials<br /><br /> Ha a bemeneti paraméter érvényes HTTP-alaphitelesítési engedélyezési `true` értéket tartalmaz a kérelem fejlécében, a metódus ad vissza, és az eredményparaméter típusértéket `BasicAuthCredentials`tartalmaz; ellenkező esetben `false`a metódus visszatér .|
+|BasicAuthCredentials|Jelszó: karakterlánc<br /><br /> UserId: karakterlánc|
+|Jwt AsJwt(bemenet: ez a karakterlánc)|bemenet: karakterlánc<br /><br /> Ha a bemeneti paraméter érvényes JWT tokenértéket tartalmaz, `Jwt`a metódus egy típusú objektumot ad vissza; ellenkező esetben `null`a metódus visszatér .|
+|bool TryParseJwt(input: ez a karakterlánc, eredmény: ki Jwt)|bemenet: karakterlánc<br /><br /> eredmény: ki Jwt<br /><br /> Ha a bemeneti paraméter érvényes JWT tokenértéket tartalmaz, a metódus `true` `Jwt`visszaadja, és az eredményparaméter típusértéket tartalmaz; ellenkező esetben `false`a metódus visszatér .|
+|Jwt|Algoritmus: karakterlánc<br /><br /> Közönség: IEnumerable<string\><br /><br /> Jogcímek: IReadOnlyDictionary<karakterlánc, karakterlánc[]><br /><br /> ExpirationTime: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kiállító: karakterlánc<br /><br /> IssuedAt: DateTime?<br /><br /> NotBefore: DateTime?<br /><br /> Tárgy: karakterlánc<br /><br /> Típus: karakterlánc|
+|jwt.claims.getvalueordefault(jogcímnév: karakterlánc, defaultValue: karakterlánc)|jogcímnév: karakterlánc<br /><br /> defaultValue : karakterlánc<br /><br /> Vesszővel tagolt jogcímértékeket `defaultValue` ad eredményül, vagy ha a fejléc nem található.|
+|byte[] Titkosítás(bemenet: ez a bájt[], alg: karakterlánc, kulcs:bájt[], iv:bájt[])|bemenet - titkosítandó egyszerű szöveg<br /><br />alg - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />iv - inicializálási vektor<br /><br />Titkosított egyszerű szöveget ad vissza.|
+|byte[] Titkosítás(bemenet: ez a bájt[], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet - titkosítandó egyszerű szöveg<br /><br />alg - titkosítási algoritmus<br /><br />Titkosított egyszerű szöveget ad vissza.|
+|byte[] Titkosítás(bemenet: ez a bájt[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|bemenet - titkosítandó egyszerű szöveg<br /><br />alg - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />iv - inicializálási vektor<br /><br />Titkosított egyszerű szöveget ad vissza.|
+|byte[] Visszafejtés(bemenet: ez a bájt[], alg: karakterlánc, kulcs:bájt[], iv:bájt[])|bemenet - visszafejtendő cypher szöveg<br /><br />alg - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />iv - inicializálási vektor<br /><br />Egyszerű szöveget ad vissza.|
+|byte[] Visszafejtés(bemenet: ez a bájt[], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet - visszafejtendő cypher szöveg<br /><br />alg - titkosítási algoritmus<br /><br />Egyszerű szöveget ad vissza.|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|bemenet - visszafejtendő cypher szöveg<br /><br />alg - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />iv - inicializálási vektor<br /><br />Egyszerű szöveget ad vissza.|
+|bool VerifyNoRevocation(bemenet: ez system.Security.Cryptography.X509Certificates.X509Certificate2)|X.509 láncellenőrzést hajt végre a tanúsítvány visszavonási állapotának ellenőrzése nélkül.<br /><br />bemenet - tanúsítványobjektum<br /><br />Akkor `true` adja vissza, ha az érvényesítés sikeres; `false` ha az érvényesítés sikertelen.|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a házirendek használatáról:
+A házirendekkel kapcsolatos további információkért lásd:
 
-+ [Szabályzatok API Management](api-management-howto-policies.md)
++ [Szabályzatok az API Managementben](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
-+ Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](policy-samples.md)
++ [Házirend-útmutató](api-management-policy-reference.md) a házirend-utasítások és beállításaik teljes listájához
++ [Házirendminták](policy-samples.md)

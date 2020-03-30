@@ -1,6 +1,6 @@
 ---
-title: WebSocket-kiszolgáló közzététele Application Gateway
-description: Ez a cikk tájékoztatást nyújt arról, hogyan tehet elérhetővé egy WebSocket-kiszolgálót az AK-fürtök bejövő adatvezérlési szolgáltatásával Application Gateway.
+title: WebSocket-kiszolgáló felfedése az Application Gateway számára
+description: Ez a cikk arról nyújt tájékoztatást, hogyan teheti elérhetővé a WebSocket-kiszolgálót az Application Gateway számára az AKS-fürtök be- és éivel rendelkező vezérlővel.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297832"
 ---
-# <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket-kiszolgáló közzététele Application Gateway
+# <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket-kiszolgáló felfedése az Application Gateway számára
 
-A Application Gateway v2 dokumentációjában leírtaknak megfelelően [a WebSocket és a http/2 protokollok natív támogatást biztosítanak](features.md#websocket-and-http2-traffic). Vegye figyelembe, hogy mind a Application Gateway, mind a Kubernetes beáramlása esetén nincs felhasználó által konfigurálható beállítás a WebSocket-támogatás szelektív engedélyezéséhez vagy letiltásához.
+Az Application Gateway v2 dokumentációjában felvázolt [módon natív támogatást nyújt a WebSocket és a HTTP/2 protokollokhoz.](features.md#websocket-and-http2-traffic) Kérjük, vegye figyelembe, hogy mind az Application Gateway, mind a Kubernetes ingress esetében nincs felhasználó által konfigurálható beállítás a WebSocket-támogatás szelektív engedélyezéséhez vagy letiltásához.
 
-Az alábbi Kubernetes-telepítési YAML a WebSocket-kiszolgáló üzembe helyezésének minimális konfigurációját mutatja be, amely megegyezik egy normál webkiszolgáló üzembe helyezésével:
+A Kubernetes telepítési YAML az alábbi mutatja a websocket-kiszolgáló telepítéséhez használt minimális konfigurációt, amely megegyezik egy normál webkiszolgáló telepítésével:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -75,9 +75,9 @@ spec:
               servicePort: 80
 ```
 
-Tekintettel arra, hogy minden előfeltétel teljesült, és Application Gateway egy Kubernetes bejövő forgalom vezérli az AK-ban, a fenti üzembe helyezés a Application Gateway nyilvános IP-címének és `ws.contoso.com` tartományának 80-as portján elérhető WebSocket-kiszolgálóval fog rendelkezni.
+Tekintettel arra, hogy az összes feltétel teljesül, és rendelkezik egy Kubernetes ingress által ellenőrzött Alkalmazásátjáró az AKS-ben, a fenti központi telepítés azt eredményezné, hogy a WebSockets-kiszolgáló elérhető portján 80-as porton az Application Gateway nyilvános IP-cím és a `ws.contoso.com` domain.
 
-A következő cURL-parancs teszteli a WebSocket-kiszolgáló telepítését:
+A következő cURL parancs tesztelné a WebSocket-kiszolgáló telepítését:
 ```sh
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
@@ -88,10 +88,10 @@ curl -i -N -H "Connection: Upgrade" \
         http://1.2.3.4:80/ws
 ```
 
-## <a name="websocket-health-probes"></a>WebSocket-állapotú tesztek
+## <a name="websocket-health-probes"></a>WebSocket állapotpróbák
 
-Ha az üzemelő példány nem határozza meg explicit módon az állapot-mintavételt, Application Gateway megkísérli egy HTTP GET-t a WebSocket Server-végponton.
-A kiszolgáló megvalósításának függvényében ([itt az egyik szeretjük](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)) WebSocket-specifikus fejlécekre lehet szükség (`Sec-Websocket-Version` például).
-Mivel Application Gateway nem ad hozzá WebSocket-fejléceket, a WebSocket-kiszolgálóról érkező Application Gateway állapot-mintavételi válasz valószínűleg `400 Bad Request`lesz.
-Ennek eredményeképpen Application Gateway a hüvelyét nem megfelelő állapotba fogja megjelölni, ami végül egy `502 Bad Gateway` fog eredményezni a WebSocket-kiszolgáló felhasználói számára.
-Ennek elkerüléséhez előfordulhat, hogy egy HTTP GET kezelőt kell hozzáadnia az állapot-ellenőrzési kiszolgálóhoz (`/health`, amely visszaadja a `200 OK`).
+Ha a központi telepítés nem határozza meg kifejezetten az állapotmintákat, az Application Gateway http GET-t kísérel meg a WebSocket-kiszolgáló végpontján.
+Attól függően, hogy a szerver végrehajtása[(itt van egy szeretjük)](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)WebSocket konkrét fejlécek lehet szükség (például).`Sec-Websocket-Version`
+Mivel az Application Gateway nem ad hozzá WebSocket-fejléceket, az Application Gateway `400 Bad Request`állapotminta válasza a WebSocket-kiszolgálóról valószínűleg .
+Ennek eredményeképpen az Application Gateway a podokat nem megfelelő `502 Bad Gateway` állapotúként jelöli meg, ami végül a WebSocket-kiszolgáló fogyasztói számára egy.
+Ennek elkerülése érdekében előfordulhat, hogy hozzá kell adnia egy`/health` HTTP GET-kezelőt az állapot-ellenőrzéshez a kiszolgálóhoz (például, amely visszaadja). `200 OK`

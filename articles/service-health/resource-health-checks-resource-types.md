@@ -1,230 +1,230 @@
 ---
-title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Microsoft Docs
-description: Támogatott erőforrástípusok az Azure Resource Health használatával
+title: Támogatott erőforrástípusok az Azure Resource Health szolgáltatáson keresztül | Microsoft dokumentumok
+description: Támogatott erőforrástípusok az Azure Resource állapota révén
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258303"
 ---
-# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
-Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
+# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapotellenőrzések az Azure-erőforrások állapotában
+Az alábbi lista az erőforrás-állapotok erőforrás-típusonkénti összes ellenőrzését tartalmazza.
 
-## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/kiszolgálók
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A kiszolgáló működik és fut?</li><li>Elfogyott a kiszolgáló memóriája?</li><li>Elindul a kiszolgáló?</li><li>A kiszolgáló helyreállítása?</li></ul>|
+|<ul><li>A szerver működik?</li><li>Elfogyott a kiszolgáló memóriája?</li><li>Elindul a kiszolgáló?</li><li>Helyreáll a kiszolgáló?</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik az API Management szolgáltatás?</li></ul>|
+|<ul><li>Működik az Api Management szolgáltatás?</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik a Batch-fiókja?</li><li>Túllépte a készlet kvótáját ehhez a Batch-fiókhoz?</li></ul>|
+|<ul><li>A Batch fiók működik és működik?</li><li>Túllépte a készletkvótát ehhez a kötegfiókhoz?</li></ul>|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Az összes gyorsítótár-csomópont fel van-e telepítve és fut?</li><li>Elérheti a gyorsítótárat az adatközponton belülről?</li><li>Elérte a gyorsítótárban a kapcsolatok maximális számát?</li><li> A gyorsítótár kimerítette a rendelkezésre álló memóriát? </li><li>A gyorsítótár nagy számú laphibát tapasztal?</li><li>A gyorsítótár nagy terhelés alatt van?</li></ul>|
+|<ul><li>Az összes gyorsítótár-csomópont működik?</li><li>A gyorsítótár elérhető az adatközponton belülről?</li><li>Elérte a gyorsítótár a kapcsolatok maximális számát?</li><li> A gyorsítótár kimerítette a rendelkezésre álló memóriát? </li><li>A gyorsítótárban nagy számú laphiba tapasztalható?</li><li>A cache nagy terhelés alatt van?</li></ul>|
 
-## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profile
+## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profil
 |Végrehajtott ellenőrzések|
 |---|
-|<ul> <li>Elérhető-e a kiegészítő portál a CDN konfigurációs műveleteihez?</li><li>Folyamatban van a CDN-végpontokkal kapcsolatos kézbesítési probléma?</li><li>Módosíthatják a felhasználók a CDN-erőforrásaik konfigurációját?</li><li>A konfigurációs változások a várt sebességgel lesznek propagálva?</li><li>A felhasználók kezelhetik a CDN-konfigurációt a Azure Portal, a PowerShell vagy az API használatával?</li> </ul>|
+|<ul> <li>A kiegészítő portál elérhető a CDN konfigurációs műveletek hez?</li><li>Vannak folyamatban lévő szállítási problémák a CDN-végpontokkal?</li><li>A felhasználók módosíthatják a CDN-erőforrások konfigurációját?</li><li>A konfigurációs módosítások a várt ütemben terjednek?</li><li>A felhasználók kezelhetik a CDN-konfigurációt az Azure Portalon, a PowerShellen vagy az API-n keresztül?</li> </ul>|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik a gazdagép kiszolgálója?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
+|<ul><li>Működik a gazdakiszolgáló?</li><li>Befejeződött a gazdaoperációs rendszer indítása?</li><li>Ki van építve és be van kapcsolva a virtuálisgép-tároló?</li><li>Van hálózati kapcsolat a gazdagép és a tárfiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Van-e folyamatban lévő tervezett karbantartás?</li><li>A gazdagép hardvere leromlott, és az előrejelzések szerint hamarosan meghibásodik?</li></ul>|
 
-## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
+## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/fiókok
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Elérheti a fiókot az adatközponton belülről?</li><li>Elérhető a Cognitive Services erőforrás-szolgáltató?</li><li>Elérhető-e a kognitív szolgáltatás a megfelelő régióban?</li><li>Elvégezhető az olvasási műveletek végrehajtása az erőforrás-metaadatokat tároló Storage-fiókon?</li><li>Elérte az API-hívási kvótát?</li><li>Elérte az API-hívás olvasási korlátját?</li></ul>|
+|<ul><li>A fiók elérhető az adatközponton belülről?</li><li>Elérhető a Cognitive Services erőforrás-szolgáltató?</li><li>A Cognitive Service elérhető a megfelelő régióban?</li><li>Az erőforrás metaadatait tároló tárfiókban olvasási műveletek hajthatók végre?</li><li>Elérte az API-hívási kvótát?</li><li>Elérte az API-hívás olvasási korlátját?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A virtuális gépet üzemeltető kiszolgáló működik?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
+|<ul><li>A virtuális gépet üzemeltető kiszolgáló működik?</li><li>Befejeződött a gazdaoperációs rendszer indítása?</li><li>Ki van építve és be van kapcsolva a virtuálisgép-tároló?</li><li>Van hálózati kapcsolat a gazdagép és a tárfiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Van-e folyamatban lévő tervezett karbantartás?</li><li>A gazdagép hardvere leromlott, és az előrejelzések szerint hamarosan meghibásodik?</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/gyárak
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Történtek a folyamat futási hibái?</li><li>A fürt a Data Factory kifogástalan állapotú?</li></ul>|
+|<ul><li>Voltak-e folyamatfuttatási hibák?</li><li>A Data Factory-t üzemeltető fürt kifogástalan állapotú?</li></ul>|
 
-## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/fiókok
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Tapasztaltak-e a felhasználók a Data Lake Analytics feladatok elküldését vagy listázását?</li><li>A Data Lake Analytics feladatok a rendszerhibák miatt nem hajthatók végre?</li></ul>|
+|<ul><li>A felhasználók tapasztalták-e a Data Lake Analytics-feladataik elküldésével vagy listázásával kapcsolatos problémákat?</li><li>A Data Lake Analytics-feladatok rendszerhibák miatt nem hajthatók végre?</li></ul>|
 
 
-## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. Data Lake Store/fiókok
+## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/fiókok
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Problémák léptek fel a felhasználók számára az adatfeltöltés Data Lake Store?</li><li>Problémák léptek fel a felhasználóktól a Data Lake Store adatok letöltésekor?</li></ul>|
+|<ul><li>Problémát tapasztaltak a felhasználók az adatok Data Lake Store-ba való feltöltésével kapcsolatban?</li><li>Problémákat tapasztaltak a felhasználók az adatok Data Lake Store-ból való letöltésével kapcsolatban?</li></ul>|
 
-## <a name="microsoftdatamigrationservices"></a>Microsoft. datamigration/szolgáltatások
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Nem sikerült kiépíteni az adatbázis-áttelepítési szolgáltatást?</li><li>Az adatbázis-áttelepítési szolgáltatás inaktivitás vagy felhasználói kérelem miatt leállt?</li></ul>|
+|<ul><li>Nem sikerült az adatbázis-áttelepítési szolgáltatás kiépítése?</li><li>Inaktivitás vagy felhasználói kérelem miatt leállt az adatbázis-áttelepítési szolgáltatás?</li></ul>|
 
-## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/fiókok
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/fiókok
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Az adatmegosztási fiók fel van-e telepítve és fut?</li><li>Elérhető-e az adatmegosztást tároló fürt?</li></ul>|
+|<ul><li>Az adatmegosztási fiók működik?</li><li>Elérhető az adatmegosztást üzemeltető fürt?</li></ul>|
 
-## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/kiszolgálók
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A kiszolgáló nem érhető el karbantartás miatt?</li><li>Nem érhető el a kiszolgáló az újrakonfigurálás miatt?</li></ul>|
+|<ul><li>Karbantartás miatt nem érhető el a kiszolgáló?</li><li>Az újrakonfigurálás miatt nem érhető el a kiszolgáló?</li></ul>|
 
-## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/kiszolgálók
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A kiszolgáló nem érhető el karbantartás miatt?</li><li>Nem érhető el a kiszolgáló az újrakonfigurálás miatt?</li></ul>|
+|<ul><li>Karbantartás miatt nem érhető el a kiszolgáló?</li><li>Az újrakonfigurálás miatt nem érhető el a kiszolgáló?</li></ul>|
 
-## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/szerverek
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A kiszolgáló nem érhető el karbantartás miatt?</li><li>Nem érhető el a kiszolgáló az újrakonfigurálás miatt?</li></ul>|
+|<ul><li>Karbantartás miatt nem érhető el a kiszolgáló?</li><li>Az újrakonfigurálás miatt nem érhető el a kiszolgáló?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A IoT hub működik?</li></ul>|
+|<ul><li>Az IoT hub működik?</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Van-e olyan adatbázis-vagy gyűjtési kérelem, amely egy Azure Cosmos DB szolgáltatás nem rendelkezésre állása miatt nem szolgált?</li><li>Van-e olyan dokumentumra vonatkozó kérelem, amely egy Azure Cosmos DB szolgáltatás nem rendelkezésre állása miatt nem szolgált?</li></ul>|
+|<ul><li>Voltak olyan adatbázis- vagy gyűjteménykérelmek, amelyeket nem szolgáltak ki az Azure Cosmos DB-szolgáltatás elérhetetlensége miatt?</li><li>Voltak olyan dokumentumkérelmek nem kézbesített miatt az Azure Cosmos DB szolgáltatás elérhetetlensége miatt?</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft. eventhub/névterek
+## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/névterek
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A Event Hubs névtér a felhasználó által generált hibákat észlelt?</li><li>Jelenleg folyamatban van a Event Hubs névtér frissítése?</li></ul>|
+|<ul><li>Az Event Hubs névtér felhasználói generált hibákat tapasztal?</li><li>Az Event Hubs névtér frissítése folyamatban van?</li></ul>|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Elérhetők-e a Core Services a HDInsight-fürtön?</li><li>A HDInsight-fürt hozzáfér a kulcshoz a BYOK-titkosításhoz a nyugalmi állapotban?</li></ul>|
+|<ul><li>Elérhetők az alapvető szolgáltatások a HDInsight-fürtön?</li><li>A HDInsight-fürt hozzáférhet a BYOK titkosítási kulcshoz inaktív állapotban?</li></ul>|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Az Azure kulcstartó-platformmal kapcsolatos problémák miatt nem sikerül a Key vaultra irányuló kérés?</li><li>A Key Vault felé irányuló kérések szabályozva lettek, mivel az ügyfél túl sok kérést igényel?</li></ul>|
+|<ul><li>A key vault-kérelmek az Azure KeyVault platformproblémái miatt sikertelenek?</li><li>A key vault-kérelmek szabályozása az ügyfél által küldött túl sok kérés miatt?</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Fut a webszolgáltatás?</li></ul>|
+|<ul><li>Működik és működik a webszolgáltatás?</li></ul>|
 
-## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Mediaservices
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik az adathordozó szolgáltatás?</li></ul>|
+|<ul><li>Működik és működik a médiaszolgáltatás?</li></ul>|
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A Application Gateway teljesítménye romlik?</li><li>Elérhető a Application Gateway?</li></ul>|
+|<ul><li>Az Alkalmazásátjáró teljesítménye leromlott?</li><li>Elérhető az alkalmazásátjáró?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Csatlakozik a VPN-alagút?</li><li>Vannak konfigurációs ütközések a kapcsolatban?</li><li>Megfelelően vannak-e konfigurálva az előmegosztott kulcsok?</li><li>Elérhető a helyszíni VPN-eszköz?</li><li>Eltérnek az IPSec/IKE biztonsági házirend?</li><li>A S2S VPN-kapcsolat megfelelően van kiépítve vagy hibás állapotban van?</li><li>Megfelelően van-e kiépítve vagy hibás állapotban a VNET-VNET-kapcsolatok?</li></ul>|
+|<ul><li>Csatlakoztatva van a VPN-alagút?</li><li>Vannak konfigurációs ütközések a kapcsolatban?</li><li>Megfelelően vannak konfigurálva az előmegosztott kulcsok?</li><li>A VPN helyszíni eszköz elérhető?</li><li>Vannak eltérések az IPSec/IKE biztonsági házirendben?</li><li>Az S2S VPN-kapcsolat megfelelően ki van építve, vagy hibás állapotban van?</li><li>A VNET-vNET-kapcsolat megfelelően ki van építve, vagy hibás állapotban van?</li></ul>|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Kifogástalan a ExpressRoute áramkör?</li></ul>|
+|<ul><li>Az ExpressRoute-kapcsolat kifogástalan?</li></ul>|
 
-## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Az állapotjelző háttérrendszer a hibákkal válaszol az állapot-mintavételi problémákra?</li><li>A konfigurációs változások késleltetve vannak?</li></ul>|
+|<ul><li>A Bejárati ajtó háttérrendszerei hibákkal válaszolnak az állapotminta-vizsgálatokra?</li><li>Késnek a konfigurációs módosítások?</li></ul>|
 
-## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/LoadBalancers
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Elérhetőek-e a terheléselosztási végpontok?</li></ul>|
+|<ul><li>Elérhetők a terheléselosztási végpontok?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Elérhető a VPN-átjáró az internetről?</li><li>A VPN Gateway készenléti állapotban van?</li><li>Fut a VPN-szolgáltatás az átjárón?</li></ul>|
+|<ul><li>Elérhető-e a VPN-átjáró az internetről?</li><li>A VPN-átjáró készenléti állapotban van?</li><li>Fut a VPN-szolgáltatás az átjárón?</li></ul>|
 
-## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
+## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/névtér
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Futtathatók-e olyan futásidejű műveletek, mint a regisztráció, a telepítés vagy a Küldés a névtérben?</li></ul>|
+|<ul><li>A futásidejű műveletek, például a regisztráció, a telepítés vagy a küldés a névtéren hajthatók végre?</li></ul>|
 
-## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. operationalinsights/munkaterületek
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Vannak-e késések a munkaterületen?</li></ul>|
+|<ul><li>Vannak indexelési késések a munkaterületen?</li></ul>|
 
-## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedikált/Kapacitások
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A kapacitás-erőforrás felépítése és futtatása folyamatban van?</li><li>Működik az összes számítási feladat?</li></ul>|
+|<ul><li>Működik és működik a kapacitáserőforrás?</li><li>Minden számítási feladat működik?</li></ul>|
 
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
+## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceGyűjtemények
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A gazdagép operációs rendszere működik?</li><li>Elérhető a workspaceCollection az adatközponton kívülről?</li><li>Elérhető a Power BI erőforrás-szolgáltató?</li><li>Elérhető a Power BI szolgáltatás a megfelelő régióban?</li></ul>|
+|<ul><li>A gazdaoperációs rendszer működik?</li><li>A munkaterületgyűjtemény elérhető az adatközponton kívülről?</li><li>Elérhető a Power BI erőforrás-szolgáltató?</li><li>Elérhető a Power BI szolgáltatás a megfelelő régióban?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Végezhető diagnosztikai műveletek a fürtön?</li></ul>|
+|<ul><li>Végezhetők-e diagnosztikai műveletek a fürtön?</li></ul>|
 
-## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/névterek
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Az ügyfelek a felhasználó által generált Service Bus hibákat észleltek?</li><li>A felhasználók a Service Bus névtér frissítése miatt átmeneti hibákat tapasztalnak?</li></ul>|
+|<ul><li>Az ügyfelek felhasználói által generált Service Bus-hibákat tapasztalnak?</li><li>A felhasználók átmeneti hibák növekedését tapasztalják a Service Bus névtér frissítése miatt?</li></ul>|
 
-## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/fürtök
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik a Service Fabric-fürt?</li><li>Kezelhető-e a Service Fabric-fürt a Azure Resource Manager használatával?</li></ul>|
+|<ul><li>A Service Fabric-fürt működik?</li><li>A Service Fabric-fürt kezelhető az Azure Resource Manageren keresztül?</li></ul>|
 
-## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/adatbázisok
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Az adatbázis működik és fut?</li></ul>|
+|<ul><li>Működik és működik az adatbázis?</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft. SQL/Server/adatbázisok
+## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/Databases
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Van-e bejelentkezés az adatbázisba?</li></ul>|
+|<ul><li>Voltak bejelentkezések az adatbázisba?</li></ul>|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Nem sikerül beolvasni az adatok beolvasását a Storage-fiókból az Azure Storage platformmal kapcsolatos problémák miatt?</li><li>Az Azure Storage platformmal kapcsolatos problémák miatt nem sikerül az adatbevitel a Storage-fiókba?</li><li>Az a tárolási fürt, ahol a Storage-fiók nem érhető el?</li></ul>|
+|<ul><li>Az Azure Storage platformproblémái miatt nem sikerül adatokat olvasni a Storage-fiókból?</li><li>Az Azure Storage platformproblémái miatt nem sikerül adatokat írni a Storage-fiókba?</li><li>Nem érhető el a Storage-fürt, ahol a storage-fiók található?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Az összes gazdagép, ahol a feladatot végrehajtják és futtatják?</li><li>Nem sikerült elindítani a feladatot?</li><li>Folyamatban van a futtatókörnyezet frissítése?</li><li>A feladatoknak a várt állapotban kell lenniük (például az ügyfél által futtatott vagy leállított)?</li><li>Észlelte a feladatot a memórián kívüli kivételek?</li><li>Van-e folyamatban ütemezett számítási frissítés?</li><li>Elérhető a végrehajtás-kezelő (vezérlési terv)?</li></ul>|
+|<ul><li>Az összes olyan állomás, ahol a feladat fut és fut?</li><li>Nem sikerült elindítani a feladatot?</li><li>Vannak folyamatban lévő futásidejű frissítések?</li><li>A feladat várt állapotban van (például fut vagy leállítja az ügyfél)?</li><li>A feladat memóriakivételekkel rendelkezik?</li><li>Vannak folyamatban lévő ütemezett számítási frissítések?</li><li>Elérhető a Végrehajtáskezelő (vezérlőterv) ?</li></ul>|
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik a gazdagép kiszolgálója?</li><li>Internet Information Services fut?</li><li>Fut a terheléselosztó?</li><li>Elérhető a App Service-csomag az adatközponton belülről?</li><li>Elérhető-e a kiszolgálófarm tároló fiók a helyek tartalmában?</li></ul>|
+|<ul><li>Működik a gazdakiszolgáló?</li><li>Fut az Internet Information Services?</li><li>Működik a terheléselosztó?</li><li>Elérhető-e az App Service-csomag az adatközponton belülről?</li><li>A tárfiók otthont a helyszínek tartalmát a serverFarm elérhető?</li></ul>|
 
-## <a name="microsoftwebsites"></a>Microsoft.web/sites
+## <a name="microsoftwebsites"></a>Microsoft.web/webhelyek
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Működik a gazdagép kiszolgálója?</li><li>Fut az Internet Information Server?</li><li>Fut a terheléselosztó?</li><li>Elérheti a webalkalmazást az adatközponton belülről?</li><li>Elérhető-e a webhely tartalmát üzemeltető Storage-fiók?</li></ul>|
+|<ul><li>Működik a gazdakiszolgáló?</li><li>Fut az Internet Information kiszolgáló?</li><li>Működik a terheléselosztó?</li><li>Elérhető a webalkalmazás az adatközponton belülről?</li><li>Elérhető a webhely tartalmát tároló tárfiók?</li></ul>|
 
-## <a name="next-steps"></a>További lépések
--  További információ: [Bevezetés a Azure Service Health irányítópultra](service-health-overview.md) és [a Azure Resource Health bevezetésére](resource-health-overview.md) . 
--  [Gyakori kérdések a Azure Resource Health](resource-health-faq.md)
-- Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [riasztások konfigurálása a szolgáltatás állapotára vonatkozó eseményekhez](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+## <a name="next-steps"></a>Következő lépések
+-  [Az Azure Service Health irányítópultjának bemutatása](service-health-overview.md) és az Azure Resource Health [bemutatása](resource-health-overview.md) című témakörben további tudnivalókat. 
+-  [Gyakori kérdések az Azure Resource Health szolgáltatásról](resource-health-faq.md)
+- Állítsa be a riasztásokat, hogy értesítést kapjon az egészségügyi problémákról. További információ: [Riasztások konfigurálása szolgáltatásállapot-eseményekhez](../azure-monitor/platform/alerts-activity-log-service-notifications.md)című témakörben talál. 

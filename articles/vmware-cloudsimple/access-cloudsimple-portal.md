@@ -1,5 +1,5 @@
 ---
-title: Azure VMware-megoldás elérése a CloudSimple-portálon
+title: Access Azure VMware-megoldás a CloudSimple által – Portál
 description: Leírja, hogyan érhető el a VMware Solution by CloudSimple portálja az Azure Portalról
 author: sharaths-cs
 ms.author: b-shsury
@@ -9,21 +9,21 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244731"
 ---
-# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>A VMware-megoldás elérése a CloudSimple-portálon a Azure Portal
+# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>A VMware-megoldás elérése a CloudSimple portálon keresztül az Azure Portalról
 
-Az egyszeri bejelentkezés támogatott a CloudSimple-portálhoz való hozzáféréshez. Miután bejelentkezett a Azure Portalba, a CloudSimple-portálra való bejelentkezés nélkül is hozzáférhet. Amikor először fér hozzá a CloudSimple-portálhoz, a rendszer felszólítja, hogy engedélyezze a [CloudSimple szolgáltatás-engedélyezési](#consent-to-cloudsimple-service-authorization-application) alkalmazást.  Az engedélyezés egyszeri művelet.
+Egyszeri bejelentkezés a CloudSimple portál eléréséhez támogatott. Miután bejelentkezett az Azure Portalra, a CloudSimple portált anélkül érheti el, hogy újra bejelentkezne. A CloudSimple portál első elérésekor a rendszer kéri, hogy engedélyezze a [CloudSimple szolgáltatásengedélyezési](#consent-to-cloudsimple-service-authorization-application) alkalmazást.  Az engedélyezés egyszeri művelet.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A szerepköröket olyan erőforráscsoporthoz kell konfigurálni, ahol a CloudSimple szolgáltatás telepítve van.  A szerepkörök is konfigurálhatók a CloudSimple szolgáltatás objektumán.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikket. Csak a beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók férhetnek hozzá a CloudSimple-portálhoz.  A szerepköröket az előfizetésen kell konfigurálni.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikket.
+A beépített **tulajdonosi** és **közreműködői** szerepkörrel rendelkező felhasználók hozzáférhetnek a CloudSimple portálhoz.  A szerepköröket azon az erőforráscsoporton kell konfigurálni, ahol a CloudSimple szolgáltatás telepítve van.  A szerepkörök is konfigurálhatók a CloudSimple szolgáltatás objektum.  A szerepkör ellenőrzéséről a [Szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikkben olvashat bővebben. Csak a beépített **tulajdonosi** és **közreműködői** szerepkörrel rendelkező felhasználók férhetnek hozzá a CloudSimple portálhoz.  A szerepköröket konfigurálni kell az előfizetésen.  A szerepkör ellenőrzéséről a [Szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikkben olvashat bővebben.
 
-Ha egyéni szerepköröket használ, a szerepkörnek a ```Actions```alatt a következő műveletek bármelyikével kell rendelkeznie.  Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Ha a műveletek bármelyike ```NotActions```része, a felhasználó nem férhet hozzá a CloudSimple-portálhoz.
+Ha egyéni szerepköröket használ, a szerepkörnek az ```Actions```alábbi műveletek bármelyikével kell rendelkeznie a területen.  Az egyéni szerepkörökről az [Egyéni szerepkörök az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)című témakörben talál további információt.  Ha a műveletek bármelyike része ```NotActions```a, a felhasználó nem tud hozzáférni a CloudSimple portálhoz.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -34,42 +34,42 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
 ## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. Keressen rá a **CloudSimple Services**kifejezésre.
+2. Keresse meg a **CloudSimple szolgáltatásokat.**
 
-3. Válassza ki azt a CloudSimple-szolgáltatást, amelyen létre szeretné hozni a saját Felhőjét.
+3. Válassza ki azt a CloudSimple szolgáltatást, amelyen létre szeretné hozni a magánfelhőt.
 
-4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra**elemre.  Ha első alkalommal éri el a CloudSimple-Azure Portal portált, a rendszer felszólítja, hogy engedélyezze a [CloudSimple szolgáltatás-engedélyezési](#consent-to-cloudsimple-service-authorization-application) alkalmazást. 
+4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra**elemre.  Ha első alkalommal éri el a CloudSimple portált az Azure Portalról, a rendszer kéri, hogy engedélyezze a [CloudSimple szolgáltatásengedélyezési](#consent-to-cloudsimple-service-authorization-application) alkalmazást. 
 
-    ![A CloudSimple-portál elindítása](media/launch-cloudsimple-portal.png)
+    ![A CloudSimple portál elindítása](media/launch-cloudsimple-portal.png)
 
 > [!NOTE]
-> Ha kijelöl egy privát Felhőbeli műveletet (például egy privát felhő létrehozását vagy kibővítését) közvetlenül a Azure Portal, megnyílik a CloudSimple portál a jelzett oldalon.
+> Ha közvetlenül az Azure Portalról választ ki egy magánfelhő-műveletet (például egy magánfelhő létrehozását vagy bővítését), a CloudSimple portál megnyílik a megjelölt oldalon.
 
-A CloudSimple-portálon válassza a **Kezdőlap** lehetőséget a saját felhőkre vonatkozó összegző információk megjelenítéséhez. A privát felhők erőforrásai és kapacitása látható, valamint a riasztások és a beavatkozást igénylő feladatok. A gyakori feladatokhoz kattintson az oldal tetején található elnevezett ikonokra.
+A CloudSimple portálon válassza az oldalsó menü **Kezdőlap** parancsát a privát felhők összesítő adatainak megjelenítéséhez. A privát felhők erőforrásai és kapacitása, valamint a figyelmet igénylő riasztások és feladatok láthatók. Gyakori feladatok esetén kattintson a lap tetején található elnevezett ikonokra.
 
 ![Kezdőlap](media/cloudsimple-portal-home.png)
 
-## <a name="consent-to-cloudsimple-service-authorization-application"></a>Hozzájárulás a CloudSimple Service Authorization alkalmazáshoz
+## <a name="consent-to-cloudsimple-service-authorization-application"></a>Hozzájárulás a CloudSimple szolgáltatásengedélyezési alkalmazáshoz
 
-Ha első alkalommal indítja el a CloudSimple-portált a Azure Portal, a CloudSimple szolgáltatás-engedélyezési alkalmazáshoz kell beleegyeznie.  Válassza az **elfogadás** lehetőséget a kért engedélyek megadásához és a CloudSimple-portál eléréséhez.
+A CloudSimple portál első indítása az Azure Portalról az Ön beleegyezését igényli a CloudSimple szolgáltatásengedélyezési alkalmazáshoz.  Válassza **az Elfogadás** lehetőséget a kért engedélyek megadásához és a CloudSimple portál eléréséhez.
 
-![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez – rendszergazdák](media/cloudsimple-azure-consent.png)
+![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez - rendszergazdák](media/cloudsimple-azure-consent.png)
 
-Ha globális rendszergazdai jogosultsággal rendelkezik, akkor Ön hozzájárulhat a szervezetéhez.  Válassza **a jóváhagyva lehetőséget a szervezet nevében**.
+Ha globális rendszergazdai jogosultsággal rendelkezik, beleegyezhet a szervezetbe.  Válassza a **Jóváhagyás a szervezet nevében** lehetőséget.
 
 ![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez – globális rendszergazda](media/cloudsimple-azure-consent-global-admin.png)
 
-Ha az engedélyei nem engedélyezik a hozzáférést a CloudSimple-portálhoz, forduljon a bérlő globális rendszergazdájához a szükséges engedélyek megadásához.  A globális rendszergazda hozzájárulhat a szervezet nevében.
+Ha az engedélyek nem engedélyezik a hozzáférést a CloudSimple portálhoz, lépjen kapcsolatba a bérlő globális rendszergazdájával a szükséges engedélyek megadásához.  A globális rendszergazda a szervezet nevében is beleegyezhet.
 
-![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez – rendszergazdákat igényel](media/cloudsimple-azure-consent-requires-administrator.png)
+![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez – rendszergazdáknak](media/cloudsimple-azure-consent-requires-administrator.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [hozhat létre saját felhőt](https://docs.azure.cloudsimple.com/create-private-cloud/)
-* Ismerje meg, hogyan [konfigurálhatja a saját felhőalapú környezetét](quickstart-create-private-cloud.md)
+* További információ a [magánfelhő létrehozásáról](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* További információ a [magánfelhő-környezet konfigurálásáról](quickstart-create-private-cloud.md)

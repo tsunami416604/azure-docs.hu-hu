@@ -1,14 +1,14 @@
 ---
-title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányítás
+title: Az erőforrások rendszerezése felügyeleti csoportokkal – Azure Governance
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
 ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240939"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
@@ -23,7 +23,7 @@ A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozás
 
 ![Példa egy felügyeleti csoport hierarchiafájára](./media/tree.png)
 
-Létrehozhat egy hierarchiát, amelyre szabályzatot alkalmazhat, például a virtuális gépek helyének az USA nyugati régiójára való korlátozását a „Production” csoporton. Ez a szabályzat minden olyan Nagyvállalati Szerződés (EA) előfizetésre vonatkozik, amely az adott felügyeleti csoport leszármazottait képezi, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
+Létrehozhat egy hierarchiát, amelyre szabályzatot alkalmazhat, például a virtuális gépek helyének az USA nyugati régiójára való korlátozását a „Production” csoporton. Ez a szabályzat örökli az összes nagyvállalati szerződés (EA) előfizetések, amelyek leszármazottai az adott felügyeleti csoport, és az előfizetések szerinti összes virtuális gépre vonatkozik. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
 
 A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetés számára szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést.
 Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
@@ -45,7 +45,7 @@ Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy m
 ### <a name="important-facts-about-the-root-management-group"></a>A gyökérszintű felügyeleti csoport fontosabb jellemzői
 
 - A gyökérszintű felügyeleti csoport megjelenített neve alapértelmezés szerint **Bérlői gyökércsoport** lesz. Az azonosító az Azure Active Directory-azonosító lesz.
-- A megjelenített név módosításához a fiókjának a Tulajdonos vagy Közreműködő szerepkörrel kell rendelkeznie a gyökérszintű felügyeleti csoportra vonatkozóan. A felügyeleti csoport nevének frissítéséhez tekintse meg a [felügyeleti csoport nevének módosítása](manage.md#change-the-name-of-a-management-group) című témakört.
+- A megjelenített név módosításához a fiókjának a Tulajdonos vagy Közreműködő szerepkörrel kell rendelkeznie a gyökérszintű felügyeleti csoportra vonatkozóan. Lásd: [Felügyeleti csoport nevének módosítása](manage.md#change-the-name-of-a-management-group) a felügyeleti csoport nevének frissítéséhez.
 - A gyökérszintű felügyeleti csoportot a többi felügyeleti csoporttal szemben nem lehet törölni vagy áthelyezni.  
 - A címtár összes előfizetése és felügyeleti csoportja a gyökérszintű felügyeleti csoport alá kerül.
   - A globális felügyelet érdekében a címtár erőforrásai is a gyökérszintű felügyeleti csoport alá kerülnek.
@@ -82,12 +82,12 @@ Ha kérdése van a visszatöltési folyamatot illetően, lépjen kapcsolatba vel
 ## <a name="management-group-access"></a>Hozzáférés a felügyeleti csoportokhoz
 
 Az Azure felügyeleti csoportjai támogatják az [Azure szerepkör-alapú hozzáférés-vezérlést (RBAC)](../../role-based-access-control/overview.md) minden erőforrás-hozzáféréshez és szerepkör-definícióhoz.
-Ezeket az engedélyeket a hierarchiában található összes gyermek erőforrás örökli. Bármely RBAC-szerepkör hozzárendelhető egy olyan felügyeleti csoporthoz, amely örökölni fogja a hierarchiát az erőforrásokhoz.
+Ezeket az engedélyeket a hierarchiában található összes gyermek erőforrás örökli. Bármely RBAC szerepkör hozzárendelhető egy felügyeleti csoporthoz, amely örökli a hierarchiát az erőforrásokhoz.
 A virtuálisgép-közreműködői RBAC-szerepkör például hozzárendelhető a felügyeleti csoporthoz. Ez a szerepkör nem végez műveletet a felügyeleti csoporton, de a csoport alá tartozó összes virtuális gép örökli.
 
 Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és támogatott műveletek listája látható.
 
-| RBAC-szerepkör neve             | Létrehozás | Átnevez | Áthelyezés** | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
+| RBAC-szerepkör neve             | Létrehozás | Átnevezés | Áthelyezés** | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Tulajdonos                       | X      | X      | X      | X      | X             | X             | X     |
 |Közreműködő                 | X      | X      | X      | X      |               |               | X     |
@@ -98,16 +98,16 @@ Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és tá
 |Felhasználói hozzáférés rendszergazdája   |        |        |        |        | X             | X             |       |
 
 *: a Felügyeleti csoport közreműködője és a Felügyeleti csoport olvasója szerepkör kizárólag a felügyeleti csoport hatókörén belül engedélyezi az adott művelet végrehajtását a felhasználók számára.  
-\* *: A gyökérszintű felügyeleti csoportban lévő szerepkör-hozzárendelések nem szükségesek ahhoz, hogy egy előfizetést vagy felügyeleti csoportot át lehessen helyezni onnan.  A hierarchián belüli elemek áthelyezésének részleteiért tekintse meg az [Erőforrások kezelése felügyeleti csoportokkal](manage.md) című szakaszt.
+**: Szerepkör-hozzárendelések a legfelső szintű felügyeleti csoport nem szükséges áthelyezni egy előfizetés vagy felügyeleti csoport, és onnan.  A hierarchián belüli elemek áthelyezésének részleteiért tekintse meg az [Erőforrások kezelése felügyeleti csoportokkal](manage.md) című szakaszt.
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Egyéni RBAC szerepkör-definíció és hozzárendelés
 
-A felügyeleti csoportok egyéni RBAC szerepkör-támogatása jelenleg előzetes verzióban érhető el bizonyos [korlátozásokkal](#limitations).  A felügyeleti csoportok hatóköre a szerepkör-definíció hozzárendelhető hatókörében határozható meg.  Az egyéni RBAC-szerepkör hozzárendelhető lesz az adott felügyeleti csoporthoz és az alá tartozó összes felügyeleti csoporthoz, előfizetéshez, erőforráscsoporthoz vagy erőforráshoz. Az egyéni szerepkör ugyanúgy öröklődik lefelé a hierarchián belül, mint a beépített szerepkörök.    
+A felügyeleti csoportok egyéni RBAC szerepkör-támogatása jelenleg előzetes verzióban érhető el, bizonyos [korlátozásokkal.](#limitations)  A felügyeleti csoportok hatóköre a szerepkör-definíció hozzárendelhető hatókörében határozható meg.  Az egyéni RBAC-szerepkör hozzárendelhető lesz az adott felügyeleti csoporthoz és az alá tartozó összes felügyeleti csoporthoz, előfizetéshez, erőforráscsoporthoz vagy erőforráshoz. Az egyéni szerepkör ugyanúgy öröklődik lefelé a hierarchián belül, mint a beépített szerepkörök.    
 
-### <a name="example-definition"></a>Példa definíció
-Az [Egyéni szerepkör definiálása és létrehozása](../../role-based-access-control/custom-roles.md) nem változik a felügyeleti csoportok belefoglalásával. A felügyeleti csoport **/providers/Microsoft.Management/managementgroups/{GroupID}** megadásához használja a teljes elérési utat. 
+### <a name="example-definition"></a>Példa definíciója
+[Az egyéni szerepkör definiálása és létrehozása](../../role-based-access-control/custom-roles.md) nem változik a felügyeleti csoportok felvételével. A teljes elérési út segítségével definiálja a **/providers/Microsoft.Management/managementgroups/{groupId}** felügyeleti csoportot. 
 
-Használja a felügyeleti csoport AZONOSÍTÓját, és ne a felügyeleti csoport megjelenítendő nevét. Ez a gyakori hiba azért fordul elő, mert mindkettő egyéni definiált mező a felügyeleti csoport létrehozásakor. 
+A felügyeleti csoport azonosítóját használja, ne a felügyeleti csoport megjelenítendő nevét. Ez a gyakori hiba azért fordul elő, mert mindkettő egyénileg definiált mező egy felügyeleti csoport létrehozásakor. 
 
 ```json
 ...
@@ -140,46 +140,46 @@ Használja a felügyeleti csoport AZONOSÍTÓját, és ne a felügyeleti csoport
 ...
 ```
 
-### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>A szerepkör-definíció és a hozzárendelési hierarchia elérési útjának megszakításával kapcsolatos problémák
-A szerepkör-definíciók a felügyeleti csoport hierarchiáján belül bárhol hozzárendelhetők. A fölérendelt felügyeleti csoportban definiálható egy szerepkör-definíció, miközben a tényleges szerepkör-hozzárendelés létezik a gyermek előfizetésen. Mivel a két elem között fennáll a kapcsolat, hibaüzenet jelenik meg, amikor a hozzárendelést a definíciója alapján választja el. 
+### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>A szerepkör-definíció és a hozzárendelés-hierarchia elérési útjának megszakadásával kapcsolatos problémák
+A szerepkör-definíciók a felügyeleticsoport-hierarchia bármely pontjára hozzárendelhető hatókört jelentenek. A szerepkör-definíció definiálható egy fölérendelt felügyeleti csoporton, míg a tényleges szerepkör-hozzárendelés létezik a gyermek-előfizetés. Mivel kapcsolat van a két elem között, hibaüzenet jelenik meg, amikor megpróbálja elválasztani a hozzárendelést a definíciójától. 
 
-Példa: nézzük meg a hierarchia egy kis szakaszát a vizualizációhoz. 
+Például: Nézzük meg a hierarchia egy kis szakaszát egy vizualizációhoz. 
 
 ![részfa](./media/subtree.png)
 
-Tegyük fel, hogy egy egyéni szerepkör van definiálva a marketing felügyeleti csoportban. Ezt az egyéni szerepkört ezután a két ingyenes próbaverziós előfizetéshez rendeli hozzá.  
+Tegyük fel, hogy van egy egyéni szerepkör definiálva a Marketing felügyeleti csoportban. Ezt az egyéni szerepkört ezután a két ingyenes próba-előfizetéshez rendeli hozzá.  
 
-Ha az egyik előfizetést úgy próbálja áthelyezni, hogy az éles felügyeleti csoport gyermeke legyen, akkor ez az áthelyezés az előfizetés szerepkör-hozzárendelésének elérési útját megtöri a marketing-felügyeleti csoport szerepkör-definíciójában. Ebben az esetben hibaüzenetet kap, amely azt jelzi, hogy az áthelyezés nem engedélyezett, mert megszakítja ezt a kapcsolatot.  
+Ha megpróbáljuk áthelyezni az egyik ilyen előfizetést, hogy a termelésfelügyeleti csoport gyermekének legyen, ez az áthelyezés megszakítja az előfizetési szerepkör-hozzárendelésről a Marketingfelügyeleti csoport szerepkör-definíciójára való elérési utat. Ebben az esetben hibaüzenet jelenik meg, amely szerint az áthelyezés nem engedélyezett, mivel megszakítja ezt a kapcsolatot.  
 
-A forgatókönyv kijavításához néhány különböző lehetőség áll rendelkezésre:
-- Távolítsa el a szerepkör-hozzárendelést az előfizetésből, mielőtt áthelyezi az előfizetést egy új szülőre MG-ra.
-- Adja hozzá az előfizetést a szerepkör-definícióhoz hozzárendelhető hatókörhöz.
-- Módosítsa a hozzárendelhető hatókört a szerepkör-definíción belül. A fenti példában frissítheti a hozzárendelhető hatóköröket a marketingből a gyökérszintű felügyeleti csoportba, hogy a definíciót a hierarchia mindkét ága elérheti.   
-- Hozzon létre egy további egyéni szerepkört, amely a másik ágban lesz meghatározva.  Ehhez az új szerepkörhöz szükség lesz a szerepkör-hozzárendelés módosítására az előfizetésben is.  
+Van néhány különböző lehetőség, hogy rögzítse ezt a forgatókönyvet:
+- Távolítsa el a szerepkör-hozzárendelést az előfizetésből, mielőtt áthelyezi az előfizetést egy új szülő MG-re.
+- Adja hozzá az előfizetést a szerepkör-definíció hozzárendelhető hatóköréhez.
+- Módosítsa a hozzárendelhető hatókört a szerepkör-definíción belül. A fenti példában frissítheti a hozzárendelhető hatóköröket a Marketingről a Gyökérfelügyeleti csoportra, hogy a definíciót a hierarchia mindkét ága elérhesse.   
+- Hozzon létre egy további egyéni szerepkört, amely a másik ágban lesz definiálva.  Ez az új szerepkör megköveteli, hogy a szerepkör-hozzárendelés az előfizetésen is meg kell változtatni.  
 
 ### <a name="limitations"></a>Korlátozások  
-A felügyeleti csoportok egyéni szerepköreinek használatakor korlátozások vannak érvényben. 
+Vannak korlátozások, amelyek léteznek, ha egyéni szerepköröket használ a felügyeleti csoportokon. 
 
- - Egy új szerepkör hozzárendelhető hatókörében csak egy felügyeleti csoportot lehet definiálni.  Ez a korlátozás azért van érvényben, hogy csökkentse a helyzetek számát, amikor a szerepkör-definíciók és a szerepkör-hozzárendelések le vannak választva.  Ez akkor fordulhat elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetést vagy felügyeleti csoportot egy másik, szerepkör-definícióval nem rendelkező szülőbe helyez át a rendszer.   
- - A RBAC adatsíkok műveletei nem definiálhatók a felügyeleti csoport egyéni szerepköreiben.  Ez a korlátozás azért van érvényben, mert késési probléma van az adatközpont-erőforrás-szolgáltatókat frissítő RBAC-műveletekkel. Ez a késési probléma jelenleg használatban van, és ezek a műveletek le lesznek tiltva a szerepkör-definícióból a kockázatok csökkentése érdekében.
- - A Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében.  Ha a rendszer elküld egy elírást vagy helytelen felügyeleti csoport AZONOSÍTÓját, akkor a szerepkör-definíció továbbra is létrejön.   
+ - Egy új szerepkör hozzárendelhető hatóköreiben csak egy felügyeleti csoportot határozhat meg.  Ez a korlátozás a szerepkör-definíciók és a szerepkör-hozzárendelések kapcsolatának megszakadása esetén érvényben van.  Ez akkor fordul elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetésvagy felügyeleti csoport egy másik szülőre kerül, amely nem rendelkezik a szerepkör-definícióval.   
+ - Az RBAC Data Plane-műveletek nem definiálhatók a felügyeleti csoport egyéni szerepköreiben.  Ez a korlátozás van érvényben, mivel van egy késési probléma RBAC műveletek frissítése az adatsík erőforrás-szolgáltatók. Ez a késési probléma dolgozik, és ezeket a műveleteket le lesz tiltva a szerepkör-definíció kockázatok csökkentése érdekében.
+ - Az Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében.  Ha elírás vagy helytelen felügyeleticsoport-azonosító szerepel a listában, a szerepkör-definíció továbbra is létrejön.   
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Felügyeleti csoportok és előfizetések áthelyezése 
 
-Egy felügyeleti csoportba vagy előfizetésbe egy másik felügyeleti csoport gyermekének kell lennie. a három szabályt igaz értékre kell kiértékelni.
+Egy felügyeleti csoport vagy előfizetés egy másik felügyeleti csoport gyermekének, három szabályt kell kiértékelni igazként.
 
-Ha az áthelyezés műveletet végzi, a következőkre lesz szüksége: 
+Ha a költözési műveletet végzi, a következőkre van szüksége: 
 
--  Felügyeleti csoport írási és szerepkör-hozzárendelési írási engedélyei az alárendelt előfizetéshez vagy a felügyeleti csoporthoz.
-   - Beépített szerepkör – példa **tulajdonosa**
-- Felügyeleti csoport írási hozzáférése a cél szülő felügyeleti csoportnál.
-   - Beépített szerepkör – példa: **tulajdonos**, **közreműködő**, **felügyeleti csoport közreműködője**
-- Felügyeleti csoport írási hozzáférése a meglévő szülő felügyeleti csoporton.
-   - Beépített szerepkör – példa: **tulajdonos**, **közreműködő**, **felügyeleti csoport közreműködője**
+-  Felügyeleti csoport írási és szerepkör-hozzárendelés írási engedélyei a gyermek-előfizetésvagy felügyeleti csoport.
+   - Beépített szerepkör példa **tulajdonos**
+- A felügyeleti csoport írási hozzáférése a célszülő felügyeleti csoporthoz.
+   - Példa beépített szerepkörre: **Tulajdonos,** **Közreműködő**, **Felügyeleti csoport közreműködője**
+- A felügyeleti csoport írási hozzáférése a meglévő szülőfelügyeleti csoporthoz.
+   - Példa beépített szerepkörre: **Tulajdonos,** **Közreműködő**, **Felügyeleti csoport közreműködője**
 
-**Kivétel**: Ha a cél vagy a meglévő szülő felügyeleti csoport a gyökérszintű felügyeleti csoport, az engedélyek követelményei nem érvényesek. Mivel a legfelső szintű felügyeleti csoport az összes új felügyeleti csoport és előfizetés alapértelmezett kihelyezett helye, nincs szükség arra, hogy az adott elem áthelyezéséhez szükséges engedélyekkel rendelkezik.
+**Kivétel**: Ha a cél vagy a meglévő szülő felügyeleti csoport a legfelső szintű felügyeleti csoport, az engedélykövetelmények nem érvényesek. Mivel a gyökérfelügyeleti csoport az összes új felügyeleti csoport és előfizetés alapértelmezett leszállási helye, nincs szüksége engedélyekre egy elem áthelyezéséhez.
 
-Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól örökölt, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a tulajdonosi szerepköre van. Nem helyezhető át olyan felügyeleti csoportba, ahol Ön közreműködő, mert elveszti az előfizetés tulajdonjogát. Ha közvetlenül az előfizetés tulajdonosi szerepköréhez van rendelve (nem a felügyeleti csoporttól örökölt), akkor áthelyezheti bármely olyan felügyeleti csoportba, ahol Ön közreműködő. 
+Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól öröklődik, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a Tulajdonos szerepkör van. Nem helyezheti át egy felügyeleti csoportba, ahol közreműködő, mert elveszítené az előfizetés tulajdonjogát. Ha közvetlenül hozzá van rendelve az előfizetés tulajdonosi szerepköréhez (nem a felügyeleti csoporttól örökölt), áthelyezheti bármelyik felügyeleti csoportba, ahol közreműködő. 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Felügyeleti csoportok naplózása tevékenységnaplókkal
 
@@ -187,7 +187,7 @@ A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../a
 
 ![Tevékenységnaplók felügyeleti csoportokkal](media/al-mg.png)
 
-Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"** .
+Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
 ## <a name="next-steps"></a>További lépések
 

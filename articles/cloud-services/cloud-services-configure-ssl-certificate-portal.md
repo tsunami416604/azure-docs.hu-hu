@@ -1,6 +1,6 @@
 ---
-title: Az SSL konfigurálása a Cloud Service-hez | Microsoft Docs
-description: Megtudhatja, hogyan határozhat meg egy HTTPS-végpontot webes szerepkörhöz, és hogyan tölthetők fel SSL-tanúsítványok az alkalmazások biztonságossá tételéhez. Ezek a példák a Azure Portal használják.
+title: SSL konfigurálása felhőszolgáltatáshoz | Microsoft dokumentumok
+description: Megtudhatja, hogyan adhat meg HTTPS-végpontot egy webes szerepkörhöz, és hogyan tölthet fel SSL-tanúsítványt az alkalmazás védelméhez. Ezek a példák az Azure Portalt használják.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,44 +9,44 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273136"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>Az SSL konfigurálása Azure-beli alkalmazásokhoz
+# <a name="configuring-ssl-for-an-application-in-azure"></a>Az SSL beállítása Azure-alkalmazásokhoz
 
-A Secure Socket Layer (SSL) titkosítás a leggyakrabban használt módszer az interneten keresztül továbbított adatmennyiség biztosításához. Ez a gyakori feladat azt ismerteti, hogyan lehet HTTPS-végpontot megadni egy webes szerepkörhöz, és hogyan tölthetők fel SSL-tanúsítványok az alkalmazások biztonságossá tételéhez.
+A Secure Socket Layer (SSL) titkosítás az interneten keresztül küldött adatok védelmének leggyakrabban használt módszere. Ez a gyakori feladat azt ismerteti, hogyan adhat meg EGY HTTPS-végpontot egy webes szerepkörhöz, és hogyan tölthet fel SSL-tanúsítványt az alkalmazás védelméhez.
 
 > [!NOTE]
-> A feladat eljárásai az Azure Cloud Servicesra vonatkoznak; App Services esetén [Ez](../app-service/configure-ssl-bindings.md)a következő:.
+> A feladatban szereplő eljárások az Azure Cloud Servicesre vonatkoznak; az App Services, lásd [ezt](../app-service/configure-ssl-bindings.md).
 >
 
-Ez a feladat éles üzembe helyezést használ. A témakör végén található az átmeneti üzembe helyezés használatával kapcsolatos információk.
+Ez a feladat éles telepítést használ. Az átmeneti központi telepítés használatával kapcsolatos információk a témakör végén található.
 
-Először [olvassa](cloud-services-how-to-create-deploy-portal.md) el, ha még nem hozott létre felhőalapú szolgáltatást.
+Olvassa el [ezt](cloud-services-how-to-create-deploy-portal.md) az első, ha még nem hozott létre egy felhőalapú szolgáltatás.
 
-## <a name="step-1-get-an-ssl-certificate"></a>1\. lépés: SSL-tanúsítvány beszerzése
-Az SSL konfigurálásához először be kell szereznie egy, a hitelesítésszolgáltató (CA) által aláírt SSL-tanúsítványt, amely egy megbízható harmadik fél, aki erre a célra tanúsítványt bocsát ki. Ha még nem rendelkezik ilyennel, be kell szereznie egy olyan vállalattól, amely SSL-tanúsítványokat árul.
+## <a name="step-1-get-an-ssl-certificate"></a>1. lépés: SSL-tanúsítvány beszerezni
+Az SSL alkalmazáshoz való konfigurálásához először be kell szereznie egy hitelesítésszolgáltató által aláírt SSL-tanúsítványt, amely megbízható harmadik fél, aki erre a célra tanúsítványokat állít ki. Ha még nem rendelkezik ilyensel, be kell szereznie egyet egy SSL-tanúsítványokat értékesítő vállalattól.
 
-A tanúsítványnak meg kell felelnie az alábbi követelményeknek az SSL-tanúsítványokhoz az Azure-ban:
+A tanúsítványnak meg kell felelnie az Alábbi követelményeknek az SSL-tanúsítványokra vonatkozóan az Azure-ban:
 
-* A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
-* A tanúsítványt létre kell hozni a személyes információcsere (. pfx) fájlba exportálható kulcscsere-fájlhoz.
-* A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománnyal. A cloudapp.net tartományhoz nem lehet SSL-tanúsítványt beszerezni a hitelesítésszolgáltatótól (CA). A szolgáltatáshoz való hozzáféréskor egyéni tartománynevet kell megadnia. Amikor tanúsítványt kér egy HITELESÍTÉSSZOLGÁLTATÓTÓL, a tanúsítvány tulajdonosának nevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az Egyéni tartománynév a **contoso.com** , akkor a (z **) *. contoso.com** vagy a **www\.contoso.com**tanúsítványt kér a hitelesítésszolgáltatótól.
+* A tanúsítványnak titkos kulcsot kell tartalmaznia.
+* A tanúsítványt kulcscseréhez kell létrehozni, amely személyes adatcserefájlba (.pfx) exportálható.
+* A tanúsítvány tulajdonosnevének meg kell egyeznie a felhőszolgáltatás eléréséhez használt tartománnyal. A cloudapp.net tartományhoz tartozó hitelesítésszolgáltatótól nem szerezhet be SSL-tanúsítványt. A szolgáltatás elérésekor egyéni tartománynevet kell beszereznie. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az egyéni tartománynév **contoso.com** a hitelesítésszolgáltatótól a ***.contoso.com** vagy a **www\.contoso.com**tanúsítványt kell kérnie.
 * A tanúsítványnak legalább 2048 bites titkosítást kell használnia.
 
-Tesztelési célból [létrehozhat](cloud-services-certs-create.md) és használhat önaláírt tanúsítványokat. Az önaláírt tanúsítványokat a rendszer nem hitelesíti a HITELESÍTÉSSZOLGÁLTATÓn keresztül, és a cloudapp.net tartományt használhatja a webhely URL-címéhez. A következő feladat például egy önaláírt tanúsítványt használ, amelyben a tanúsítványban használt köznapi név (CN) **sslexample.cloudapp.net**.
+Tesztelési célokra önaláírt tanúsítványt [hozhat létre](cloud-services-certs-create.md) és használhat. Az önaláírt tanúsítványok hitelesítésre nem szolgálnak, és a cloudapp.net tartományt használhatják webhely URL-címként. A következő feladat például egy önaláírt tanúsítványt használ, amelyben a tanúsítványban használt köznapi név (CN) **sslexample.cloudapp.net.**
 
-Ezután meg kell adnia a tanúsítványra vonatkozó adatokat a szolgáltatás definíciójában és a szolgáltatás konfigurációs fájljaiban.
+Ezután a szolgáltatásdefinícióban és a szolgáltatáskonfigurációs fájlokban meg kell foglalnia a tanúsítványra vonatkozó információkat.
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>2\. lépés: a szolgáltatás definíciójának és konfigurációs fájljainak módosítása
-Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá kell adni egy HTTPS-végpontot. Ennek eredményeképpen frissíteni kell a szolgáltatás definícióját és a szolgáltatás konfigurációs fájljait.
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>2. lépés: A szolgáltatásdefiníció és a konfigurációs fájlok módosítása
+Az alkalmazást úgy kell konfigurálni, hogy a tanúsítványt használja, és hozzá kell adni egy HTTPS-végpontot. Ennek eredményeképpen a szolgáltatásdefiníciót és a szolgáltatáskonfigurációs fájlokat frissíteni kell.
 
-1. A fejlesztési környezetében nyissa meg a Service Definition (CSDEF) fájlt, adja hozzá a **tanúsítványok** szakaszt a **webrole** szakaszban, és adja meg a következő információkat a tanúsítványról (és a köztes tanúsítványokról):
+1. A fejlesztői környezetben nyissa meg a szolgáltatásdefiníciós fájlt (CSDEF), adjon hozzá egy **Tanúsítványok szakaszt** a **WebRole** szakaszban, és adja meg a következő információkat a tanúsítványról (és a köztes tanúsítványokról):
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -72,16 +72,16 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
     </WebRole>
     ```
 
-   A **tanúsítványok** szakasz a tanúsítvány nevét és helyét, valamint annak az áruháznak a nevét határozza meg, ahol az található.
+   A **Tanúsítványok** szakasz határozza meg tanúsítványunk nevét, helyét és annak az üzletnek a nevét, ahol található.
 
-   Az engedélyek (`permissionLevel` attribútum) az alábbi értékek egyikére állíthatók be:
+   Az`permissionLevel` Engedélyek (attribútum) az alábbi értékek egyikére állíthatók be:
 
    | Engedély értéke | Leírás |
    | --- | --- |
-   | limitedOrElevated |**(Alapértelmezett)** Az összes szerepkör-folyamat hozzáfér a titkos kulcshoz. |
-   | emelt szintű |Csak emelt szintű folyamatok férhetnek hozzá a titkos kulcshoz. |
+   | korlátozottOrElevated |**(Alapértelmezett)** Minden szerepkör-folyamat hozzáférhet a személyes kulcshoz. |
+   | Emelkedett |Csak emelt szintű folyamatok férhetnek hozzá a személyes kulcshoz. |
 
-2. A szolgáltatás definíciós fájljában adjon hozzá egy **InputEndpoint** elemet a **végpontok** szakaszban a https engedélyezéséhez:
+2. A szolgáltatásdefiníciós fájlban adjon hozzá egy **InputEndpoint** elemet a **Végpontok** szakaszban a HTTPS engedélyezéséhez:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -94,7 +94,7 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
     </WebRole>
     ```
 
-3. A szolgáltatás definíciós fájljában adjon hozzá egy **kötési** elemet a **helyek** szakaszon belül. Ez az elem egy HTTPS-kötés hozzáadásával rendeli hozzá a végpontot a webhelyhez:
+3. A szolgáltatásdefiníciós fájlban adjon hozzá egy **kötési** elemet a **Helyek** szakaszban. Ez az elem https-kötést ad hozzá a végpont leképezéséhez a webhelyhez:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -110,8 +110,8 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
     </WebRole>
     ```
 
-   A szolgáltatás-definíciós fájl összes szükséges módosítása befejeződött; azonban továbbra is hozzá kell adnia a tanúsítvány adatait a szolgáltatás konfigurációs fájljához.
-4. A szolgáltatás konfigurációs fájljában (CSCFG) ServiceConfiguration. Cloud. CSCFG, adjon hozzá egy **tanúsítvány** értéket a tanúsítványához. A következő mintakód a **tanúsítványok** szakasz részleteit tartalmazza, kivéve az ujjlenyomat értékét.
+   A szolgáltatásdefiníciós fájl összes szükséges módosítása befejeződött; de továbbra is hozzá kell adnia a tanúsítvány adatait a szolgáltatás konfigurációs fájljához.
+4. A serviceconfiguration.Cloud.cscfg szolgáltatáskonfigurációs fájljában (CSCFG) adjon hozzá egy **tanúsítványértéket** a tanúsítványhoz. A következő kódminta a **Tanúsítványok** szakasz részleteit tartalmazza, kivéve az ujjlenyomatértéket.
 
    ```xml
     <Role name="Deployment">
@@ -128,54 +128,54 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
     </Role>
     ```
 
-(Ez a példa **SHA1** -t használ az ujjlenyomat-algoritmushoz. Adja meg a tanúsítvány ujjlenyomat-algoritmusának megfelelő értéket.)
+(Ez a példa **sha1-et** használ az ujjlenyomat-algoritmushoz. Adja meg a tanúsítvány ujjlenyomat-algoritmusának megfelelő értéket.)
 
-Most, hogy frissítettük a szolgáltatás definícióját és a szolgáltatás konfigurációs fájljait, csomagolja ki az üzembe helyezést az Azure-ba való feltöltéshez. Ha a **cspack**-t használja, ne használja a **/generateConfigurationFile** jelzőt, mert ez felülírja az imént beszúrt tanúsítvány-információkat.
+Most, hogy a szolgáltatásdefiníció és a szolgáltatáskonfigurációs fájlok frissültek, csomagolja be a központi telepítést az Azure-ba való feltöltéshez. Ha **cspack programot**használ, ne használja a **/generateConfigurationFile** jelzőt, mert az felülírja az imént beszúrt tanúsítványadatokat.
 
-## <a name="step-3-upload-a-certificate"></a>3\. lépés: tanúsítvány feltöltése
-Kapcsolódás a Azure Portalhoz és...
+## <a name="step-3-upload-a-certificate"></a>3. lépés: Tanúsítvány feltöltése
+Csatlakozás az Azure portalhoz, és...
 
-1. A portál **minden erőforrás** szakaszában válassza ki a felhőalapú szolgáltatást.
+1. A portál **Minden erőforrás** szakaszában válassza ki a felhőszolgáltatást.
 
-    ![A felhőalapú szolgáltatás közzététele](media/cloud-services-configure-ssl-certificate-portal/browse.png)
+    ![A felhőszolgáltatás közzététele](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. Kattintson a **tanúsítványok**elemre.
+2. Kattintson **a Tanúsítványok gombra.**
 
     ![Kattintson a tanúsítványok ikonra](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
-3. Kattintson a **feltöltés** gombra a tanúsítványok terület tetején.
+3. Kattintson a **Feltöltés** gombra a tanúsítványok területének tetején.
 
-    ![Kattintson a feltöltés menüpontra](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
+    ![Kattintson a Feltöltés menüelemre](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. Adja meg a **fájlt**, a **jelszót**, majd kattintson a **feltöltés** elemre az adatbeviteli terület alján.
+4. Adja meg a **Fájl**, **Jelszó**, majd kattintson a **Feltöltés** alján az adatbeviteli terület.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>4\. lépés: Kapcsolódás a szerepkör-példányhoz HTTPS használatával
-Most, hogy üzembe helyezése az Azure-ban működik, HTTPS használatával csatlakozhat hozzá.
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>4. lépés: Csatlakozás a szerepkörpéldányhttps használatával
+Most, hogy az üzembe helyezés az Azure-ban működik, https használatával csatlakozhat hozzá.
 
-1. A **webhely URL-címére** kattintva nyissa meg a webböngészőt.
+1. A webböngésző megnyitásához kattintson a **webhely URL-címére.**
 
    ![Kattintson a webhely URL-címére](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. A webböngészőben módosítsa a **http**helyett **https** használatára mutató hivatkozást, majd látogasson el az oldalra.
+2. A webböngészőben módosítsa a hivatkozást úgy, hogy **http**helyett **https-t** használjon, majd látogasson el az oldalra.
 
    > [!NOTE]
-   > Ha önaláírt tanúsítványt használ, az önaláírt tanúsítványhoz tartozó HTTPS-végpontra való tallózáskor a böngészőben a tanúsítvány hibája is megjelenik. Egy megbízható hitelesítésszolgáltató által aláírt tanúsítvány használata kiküszöböli ezt a problémát; addig is figyelmen kívül hagyhatja a hibát. (Egy másik lehetőség, hogy hozzáadja az önaláírt tanúsítványt a felhasználó megbízható hitelesítésszolgáltatójának tanúsítványtárolóhoz.)
+   > Ha önaláírt tanúsítványt használ, amikor az önaláírt tanúsítványhoz társított HTTPS-végpontot keresi, tanúsítványhiba jelenhet meg a böngészőben. A megbízható hitelesítésszolgáltató által aláírt tanúsítvány használata kiküszöböli a problémát; addig is figyelmen kívül hagyhatja a hibát. (Egy másik lehetőség, hogy az önaláírt tanúsítványt hozzáadja a felhasználó megbízható hitelesítésszolgáltatói tanúsítványtárolójához.)
    >
    >
 
-   ![Webhely előzetes verziója](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
+   ![Webhely előnézete](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Ha éles üzembe helyezés helyett egy átmeneti üzembe helyezéshez SSL-t szeretne használni, először meg kell határoznia az átmeneti üzembe helyezéshez használt URL-címet. Miután telepítette a felhőalapú szolgáltatást, az átmeneti környezet URL-címét a **központi telepítési azonosító** GUID azonosítója határozza meg a következő formátumban: `https://deployment-id.cloudapp.net/`  
+   > Ha az SSL-t éles környezet helyett átmeneti központi telepítéshez szeretné használni, először meg kell határoznia az átmeneti központi telepítéshez használt URL-címet. A felhőszolgáltatás üzembe helyezése után az átmeneti környezet URL-címét a telepítési azonosító GUID **azonosítója** határozza meg ebben a formátumban:`https://deployment-id.cloudapp.net/`  
    >
-   > Hozzon létre egy common name (CN) nevű tanúsítványt a GUID-alapú URL-címmel (például **328187776e774ceda8fc57609d404462.cloudapp.net**). A portál használatával adja hozzá a tanúsítványt a szakaszos felhőalapú szolgáltatáshoz. Ezután adja hozzá a tanúsítvány adatait a CSDEF és a CSCFG-fájlokhoz, csomagolja ki az alkalmazást, és frissítse a szakaszos üzembe helyezést az új csomag használatára.
+   > Hozzon létre egy tanúsítványt, amelynek közös neve (CN) megegyezik a GUID-alapú URL-címmel (például **328187776e774ceda8fc57609d404462.cloudapp.net).** A portál használatával adja hozzá a tanúsítványt a szakaszos felhőszolgáltatáshoz. Ezután adja hozzá a tanúsítványadatait a CSDEF- és CSCFG-fájlokhoz, csomagolja újra az alkalmazást, és frissítse a szakaszos központi telepítést az új csomag használatához.
    >
 
-## <a name="next-steps"></a>Következő lépések
-* [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
-* Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
-* [A felhőalapú szolgáltatás kezelése](cloud-services-how-to-manage-portal.md).
+## <a name="next-steps"></a>További lépések
+* [A felhőszolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
+* További információ a [felhőszolgáltatások üzembe helyezéséről.](cloud-services-how-to-create-deploy-portal.md)
+* Egyéni [tartománynév konfigurálása](cloud-services-custom-domain-name-portal.md).
+* [A felhőszolgáltatás kezelése.](cloud-services-how-to-manage-portal.md)
 
 
 

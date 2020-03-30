@@ -1,7 +1,7 @@
 ---
-title: Munkaterület hibaelhárítása
+title: Munkaterület – hibaelhárítás
 titleSuffix: ML Studio (classic) - Azure
-description: Ez az útmutató a Azure Machine Learning Studio (klasszikus) munkaterületek beállításakor gyakran felmerülő kihívásokhoz nyújt megoldásokat.
+description: Ez az útmutató megoldásokat kínál néhány gyakran előforduló kihívásokhoz az Azure Machine Learning Studio (klasszikus) munkaterületek beállításakor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,53 +11,53 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: 58ccd63e16382aca8e16eb67efba951a055eb254
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217840"
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Hibaelhárítási útmutató: Azure Machine Learning Studio (klasszikus) munkaterület létrehozása és kapcsolódás
+# <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Hibaelhárítási útmutató: Azure Machine Learning Studio (klasszikus) munkaterület létrehozása és csatlakoztatása
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Ez az útmutató a Azure Machine Learning Studio (klasszikus) munkaterületek beállításakor gyakran felmerülő kihívásokhoz nyújt megoldásokat.
+Ez az útmutató megoldásokat kínál néhány gyakran előforduló kihívásokhoz az Azure Machine Learning Studio (klasszikus) munkaterületek beállításakor.
 
-## <a name="workspace-owner"></a>Munkaterület tulajdonosa
-Ha Machine Learning Studio (klasszikus) munkaterületet szeretne megnyitni, be kell jelentkeznie a munkaterület létrehozásához használt Microsoft-fiókba, vagy meg kell kapnia egy meghívót a tulajdonostól, hogy csatlakozzon a munkaterülethez. A Azure Portal kezelheti a munkaterületet, amely a hozzáférés konfigurálását is lehetővé teszi.
+## <a name="workspace-owner"></a>Munkaterület-tulajdonos
+A machine learning-stúdióban (klasszikus) munkaterület megnyitásához be kell jelentkeznie a munkaterület létrehozásához használt Microsoft-fiókba, vagy meghívót kell kapnia a tulajdonostól, hogy csatlakozzon a munkaterülethez. Az Azure Portalon kezelheti a munkaterületet, amely magában foglalja a hozzáférés konfigurálását.
 
-A munkaterületek kezelésével kapcsolatos további információkért lásd: [Azure Machine Learning Studio (klasszikus) munkaterület kezelése].
+A munkaterület kezeléséről az [Azure Machine Learning Studio (klasszikus) munkaterület kezelése]című témakörben talál további információt.
 
 [Azure Machine Learning Studio (klasszikus) munkaterület kezelése]: manage-workspace.md
 
 ## <a name="allowed-regions"></a>Engedélyezett régiók
-Machine Learning jelenleg korlátozott számú régióban érhető el. Ha az előfizetése nem tartalmaz ilyen régiókat, a következő hibaüzenet jelenhet meg: "nincsenek előfizetések az engedélyezett régiókban."
+A Machine Learning jelenleg korlátozott számú régióban érhető el. Ha az előfizetés nem tartalmazza a következő régiók egyikét, akkor a következő hibaüzenet jelenhet meg: "Nincs előfizetése az engedélyezett régiókban."
 
-Ha egy régiót szeretne felvenni az előfizetésbe, hozzon létre egy új Microsoft-támogatási kérelmet a Azure Portal, válassza a **számlázás** lehetőséget a probléma típusaként, és kövesse az utasításokat a kérelem elküldéséhez.
+Ha azt szeretné kérni, hogy egy régiót adjanak hozzá az előfizetéshez, hozzon létre egy új Microsoft-támogatási kérelmet az Azure Portalon, válassza a **Számlázás** lehetőséget a probléma típusaként, és kövesse a kérés elküldéséhez szükséges utasításokat.
 
 ## <a name="storage-account"></a>Tárfiók
-A Machine Learning szolgáltatásnak szüksége van egy Storage-fiókra az adattároláshoz. Használhat meglévő Storage-fiókot, vagy létrehozhat egy új Storage-fiókot az új Machine Learning Studio (klasszikus) munkaterület létrehozásakor (ha van kvótája új Storage-fiók létrehozásához).
+A Machine Learning szolgáltatásnak szüksége van egy tárfiókra az adatok tárolásához. Használhatja a meglévő tárfiókot, vagy létrehozhat egy új tárfiókot, amikor létrehozza az új Machine Learning Studio (klasszikus) munkaterület (ha kvótával egy új tárfiók létrehozásához).
 
-Miután létrehozta az új Machine Learning Studio (klasszikus) munkaterületet, bejelentkezhet a Machine Learning Studio (klasszikus) webhelyre a munkaterület létrehozásához használt Microsoft-fiók használatával. Ha a "munkaterület nem található" hibaüzenet jelenik meg (az alábbi képernyőképhez hasonlóan), akkor a következő lépésekkel törölheti a böngésző cookie-jait.
+Az új Machine Learning Studio (klasszikus) munkaterület létrehozása után a munkaterület létrehozásához használt Microsoft-fiókkal bejelentkezhet a Machine Learning Studio (klasszikus) gépi tanulási stúdióba. Ha a "Munkaterület nem található" hibaüzenettel találkozik (hasonlóan az alábbi képernyőképhez), kérjük, kövesse a következő lépéseket a böngésző cookie-jainak törléséhez.
 
 ![A munkaterület nem található](media/troubleshooting-creating-ml-workspace/screen3.png)
 
-**Böngésző cookie-k törlése**
+**Böngészőcookie-k törlése**
 
-1. Ha az Internet Explorert használja, kattintson a jobb felső sarokban található **eszközök** gombra, és válassza az **Internetbeállítások**lehetőséget.  
+1. Az Internet Explorer használata esetén kattintson a jobb felső sarokban található **Eszközök** gombra, és válassza az **Internetbeállítások lehetőséget**.  
 
    ![Internetbeállítások](media/troubleshooting-creating-ml-workspace/screen4.png)
 
-2. Az **általános** lapon kattintson a **Törlés...** elemre.
+2. Az **Általános** lap csoportban kattintson a **Törlés gombra.**
 
    ![Általános lap](media/troubleshooting-creating-ml-workspace/screen5.png)
 
-3. A **böngészési előzmények törlése** párbeszédpanelen ellenőrizze, hogy ki van-e jelölve a **cookie-k és a webhely-adatértékek** , majd kattintson a **Törlés**gombra.
+3. A **Böngészési előzmények törlése** párbeszédpanelen győződjön meg arról, hogy **a cookie-k és a webhelyadatai** ki vannak jelölve, majd kattintson a **Törlés gombra.**
 
    ![Cookie-k törlése](media/troubleshooting-creating-ml-workspace/screen6.png)
 
-A cookie-k törlése után indítsa újra a böngészőt, majd lépjen a [Microsoft Azure Machine learning Studio (klasszikus)](https://studio.azureml.net) lapra. Ha a rendszer a Felhasználónév és a jelszó megadását kéri, adja meg ugyanazt a Microsoft-fiók, amelyet a munkaterület létrehozásához használt.
+A cookie-k törlése után indítsa újra a böngészőt, és nyissa meg a [Microsoft Azure Machine Learning Studio (klasszikus)](https://studio.azureml.net) lapot. Amikor a rendszer felhasználónevet és jelszót kér, adja meg ugyanazt a Microsoft-fiókot, amelyet a munkaterület létrehozásához használt.
 
 ## <a name="comments"></a>Megjegyzések
 
-Célunk, hogy a lehető legzökkenőmentesebb legyen a Machine Learning élmény. Kérjük, tegye közzé megjegyzéseit és problémáit a [Azure Machine learning fórumban](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) , hogy segítsen jobban kiszolgálni.
+Célunk, hogy a Machine Learning élménye a lehető leggördülékenyebb legyen. Kérjük, tegye közzé észrevételeit és kérdéseit az [Azure Machine Learning fórumán,](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) hogy jobban szolgálhassuk Önt.

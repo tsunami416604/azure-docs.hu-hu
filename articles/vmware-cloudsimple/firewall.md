@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple használatával – tűzfalszabályok és szabályok beállítása
-description: Leírja, hogyan állítható be a saját felhőalapú tűzfalak táblái és szabályai az alhálózatokon és a VLAN-ok forgalmának korlátozására.
+title: Azure VMware-megoldás a CloudSimple-től – Tűzfaltáblák és -szabályok beállítása
+description: Ez a témakör azt ismerteti, hogy miként állíthatók be a magánfelhőbeli tűzfaltáblák és az alhálózatok és a VLAN-ok forgalmának korlátozására vonatkozó szabályok.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,71 +9,71 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244666"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Tűzfalszabályok és szabályok beállítása privát Felhőkhöz
+# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Tűzfaltáblák és szabályok beállítása a magánfelhőkhöz
 
-A tűzfalak és a kapcsolódó szabályok lehetővé teszik, hogy korlátozásokat határozzon meg az egyes alhálózatokra és VLAN-okra érvényes adatforgalomra vonatkozóan.
+A tűzfaltáblák és a kapcsolódó szabályok lehetővé teszik az adott alhálózatokra és VLAN-okra vonatkozó forgalomkorlátozásainak megadását.
 
-* Az alhálózatok egy tűzfal táblához társíthatók.
-* A tűzfal tábla több alhálózathoz is társítható.
+* Az alhálózat egy tűzfaltáblához társítható.
+* A tűzfaltábla több alhálózathoz is társítható.
 
-## <a name="add-a-new-firewall-table"></a>Új tűzfalszabály hozzáadása
+## <a name="add-a-new-firewall-table"></a>Új tűzfaltábla hozzáadása
 
-1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
-2. Válassza a **Tűzfalszabályok**lehetőséget.
-3. Válassza a **Tűzfalszabály létrehozása**lehetőséget.
+1. Az oldalsó menüben [elérheti a CloudSimple portált,](access-cloudsimple-portal.md) és válassza a **Hálózat** lehetőséget.
+2. Válassza **a Tűzfaltáblák lehetőséget.**
+3. Válassza **a Tűzfaltábla létrehozása lehetőséget.**
 
-    ![VLAN/alhálózat lap](media/firewall-tables-page.png)
+    ![VLAN/alhálózati lap](media/firewall-tables-page.png)
 
 4. Adja meg a tábla nevét.
-5. A táblázat alapértelmezett szabálya szerepel a táblázatban. További szabály létrehozásához kattintson az **új szabály létrehozása** lehetőségre. A részletekért tekintse meg a következő eljárást.
-6. Kattintson a **kész** gombra a tűzfalszabály mentéséhez.
+5. A táblázat alapértelmezett szabálya szerepel a listában. További szabály létrehozásához kattintson az **Új szabály létrehozása** gombra. A részleteket az alábbi eljárásban találja.
+6. A tűzfaltábla mentéséhez kattintson a **Kész** gombra.
 
 > [!IMPORTANT]
-> Saját felhőben legfeljebb két tűzfal-táblázatot hozhat létre.
+> Privát felhőnként legfeljebb két tűzfaltáblát hozhat létre.
 
 ## <a name="firewall-rules"></a>Tűzfalszabályok
 
-A tűzfalszabályok határozzák meg, hogy a tűzfal hogyan kezelje a különböző típusú forgalmat. A kiválasztott tűzfalszabály **szabályai** lap felsorolja az összes kapcsolódó szabályt.
+A tűzfalszabályok határozzák meg, hogy a tűzfal hogyan kezelje az egyes típusú forgalmat. A kijelölt tűzfaltábla **Szabályok** lapja felsorolja az összes kapcsolódó szabályt.
 
-![Tűzfalszabályok táblázata](media/firewall-rules-tab.png)
+![Tűzfalszabályok táblája](media/firewall-rules-tab.png)
 
 ## <a name="create-a-firewall-rule"></a>Tűzfalszabály létrehozása
 
-1. A következő módokon jelenítheti meg a tűzfalszabályok létrehozásához szükséges beállításokat:
-    * A tűzfalszabály létrehozásakor kattintson a **szabály hozzáadása** elemre.
-    * Válasszon ki egy adott tűzfal-táblázatot a **hálózat > a tűzfalszabályok** lapon, és kattintson az **Új tűzfalszabály létrehozása**lehetőségre.
+1. A beállítások megjelenítése a tűzfalszabály létrehozásához az alábbi módokon:
+    * Tűzfaltábla létrehozásakor kattintson a **Szabály hozzáadása** gombra.
+    * Jelöljön ki egy adott tűzfaltáblát a **Hálózati > tűzfaltáblák** lapon, és kattintson **az Új tűzfalszabály létrehozása gombra**.
 2. Állítsa be a szabályt a következőképpen:
     * **Név**. Adjon nevet a szabálynak.
-    * **Prioritás**. Rendeljen hozzá egy prioritást a szabályhoz. A rendszer először az alacsonyabb számú szabályokat hajtja végre.
-    * **Forgalom típusa** Válassza ki, hogy a szabály a privát felhő, az Internet vagy a VPN-forgalom (állapot nélküli) vagy egy nyilvános IP-cím (állapot) esetén van-e.
-    * **Protokoll**. Válassza ki a szabály által lefedett protokollt (TCP, UDP vagy bármely protokoll).
-    * **Irány**. Válassza ki, hogy a szabály bejövő vagy kimenő forgalomra vonatkozik-e. Külön szabályokat kell megadnia a bejövő és a kimenő forgalomhoz.
-    * **Művelet**. Válassza ki az elvégzendő műveletet, ha a szabály megfelel (Engedélyezés vagy megtagadás).
-    * **Forrás**. Határozza meg a szabály által lefedett forrásokat (CIDR blokk, belső vagy bármilyen forrás).
-    * **Forrásport tartománya**. A szabály hatálya alá eső portok tartományának meghatározása.
-    * **Irány**. Válassza a bejövő vagy a kimenő lehetőséget.
-    * **Cél**. Határozza meg a szabály által lefedett célhelyeket (CIDR blokk, belső vagy bármilyen forrás).
-    * **Forrásport tartománya**. A szabály hatálya alá eső portok tartományának meghatározása.
+    * **Prioritás**. Rendeljen prioritást a szabályhoz. Először az alacsonyabb számú szabályok lesznek végrehajtva.
+    * **Forgalom típusa**. Válassza ki, hogy a szabály a private cloud, internet, vagy VPN-forgalom (állapot nélküli) vagy egy nyilvános IP-cím (állapotalapú).
+    * **protokollt**. Válassza ki a szabály hatálya alá tartozó protokollt (TCP, UDP vagy bármely protokoll).
+    * **irány.** Adja meg, hogy a szabály bejövő vagy kimenő forgalomra van-e. A bejövő és a kimenő forgalomhoz külön szabályokat kell meghatároznia.
+    * **Művelet**. Válassza ki azt a műveletet, amelyet akkor szeretne végrehajtani, ha a szabály egyezik (engedélyezés vagy megtagadás).
+    * **Forrás**. Adja meg a szabály hatálya alá tartozó forrásokat (CIDR blokk, belső vagy bármilyen forrás).
+    * **Forrásport tartománya**. Adja meg a szabály hatálya alá tartozó portok tartományát.
+    * **irány.** Válassza ki a bejövő vagy kimenő lehetőséget.
+    * **Rendeltetési hely**. Adja meg a szabály által lefedett célokat (CIDR blokk, belső vagy bármilyen forrás).
+    * **Forrásport tartománya**. Adja meg a szabály hatálya alá tartozó portok tartományát.
 
-    ![Tűzfalszabály hozzáadása szabály](media/firewall-rule-create.png)
+    ![Tűzfaltábla hozzáadása szabály](media/firewall-rule-create.png)
 
-3. Kattintson a **kész** gombra a szabály mentéséhez és a tűzfalszabály szabályainak listájához való hozzáadásához.
+3. Kattintson a **Kész** gombra a szabály mentéséhez és a tűzfaltábla szabályainak listájához való hozzáadásához.
 
 > [!IMPORTANT]
-> Minden egyes tűzfalszabály legfeljebb 10 bejövő szabályt és 20 kimenő szabályt tartalmazhat. Ezeket a korlátokat a [támogatási szolgálattal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)növelheti.
+> Minden tűzfaltábla legfeljebb 10 bejövő és 20 kimenő szabállyal rendelkezhet. Ezek a korlátok növelhetők a [támogatási szolgálathoz való felvételsel.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-## <a name="attach-vlans-subnet"></a>VLAN-ok/alhálózatok csatolása
+## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>VLAN-ok/alhálózatok csatolása
 
-A tűzfalszabályok definiálása után megadhatja azokat az alhálózatokat, amelyek a táblázatban szereplő szabályok hatálya alá esnek.
+A tűzfaltábla definiálása után megadhatja azokat az alhálózatokat, amelyekre a táblában szereplő szabályok vonatkoznak.
 
-1. A **hálózati** > **Tűzfalszabályok** lapon válasszon ki egy tűzfal-táblázatot.
-2. Nyissa meg a **csatolt VLAN-ok/alhálózat** lapot.
-3. Kattintson **a csatolás egy VLAN/alhálózat**elemre.
-4. Válassza ki a privát felhőt és a VLAN-t. Megjelenik a társított alhálózat neve és CIDR-blokkja.
-5. Kattintson a **Küldés** gombra.
+1. A **Hálózati** > **tűzfal táblák** lapon jelöljön ki egy tűzfaltáblát.
+2. Nyissa meg a **Csatolt VLAN-ok/Alhálózat** lapot.
+3. Kattintson **a Csatolás VLAN/Alhálózathoz gombra.**
+4. Válassza ki a privát felhő és a VLAN. A társított alhálózat neve és cidr blokkja látható.
+5. Kattintson a **Küldés gombra.**

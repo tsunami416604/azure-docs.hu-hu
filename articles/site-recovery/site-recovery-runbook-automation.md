@@ -1,6 +1,6 @@
 ---
-title: Azure Automation runbookok hozzáadása Site Recovery helyreállítási tervekhez
-description: Megtudhatja, hogyan bővítheti a helyreállítási terveket a Azure Automation for vész-helyreállításra Azure Site Recovery használatával.
+title: Azure Automation-runbookok hozzáadása a webhely-helyreállítási helyreállítási tervekhez
+description: Ismerje meg, hogyan bővítheti a helyreállítási terveket az Azure Automation használatával az Azure Site Recovery használatával a vészhelyreállításhoz.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257484"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbookok hozzáadása helyreállítási tervekhez
 
-Ez a cikk azt ismerteti, hogyan integrálható Azure Automation runbookok, hogy kiterjessze [Azure site Recovery](site-recovery-overview.md) helyreállítási terveket. Bemutatjuk, hogy miként automatizálható az olyan alapszintű feladatok automatizálása, amelyek egyébként manuális beavatkozást igényelnek, és hogyan lehet egy többlépéses helyreállítást egyetlen kattintással végrehajtható műveletre konvertálni.
+Ez a cikk ismerteti, hogyan integrálható az Azure Automation runbookok, az [Azure Site Recovery](site-recovery-overview.md) helyreállítási tervek kiterjesztése. Bemutatjuk, hogyan automatizálhatja azokat az alapvető feladatokat, amelyek egyébként manuális beavatkozást igényelnének, és hogyan alakíthat át egy többlépéses helyreállítást egykattintásos műveletté.
 
 ## <a name="recovery-plans"></a>Helyreállítási tervek 
 
-Helyreállítási terveket akkor használhat, ha feladatátvételt végez a helyszíni gépeken vagy az Azure-beli virtuális gépeken. A helyreállítási tervek segítségével egy rendszeres helyreállítási folyamatot határozhat meg, amely meghatározza a gépek feladatátvételét, valamint azt, hogy a feladatátvételt követően hogyan indulnak és állíthatók vissza. 
+A helyreállítási tervek et a helyszíni gépek vagy az Azure-beli virtuális gépek feladatátvételkor használhatja. A helyreállítási tervek segítségével meghatározhatja a rendszeres helyreállítási folyamatot, amely meghatározza, hogy a gépek hogyan feladatátvételt, és hogyan indulnak el és helyreállnak a feladatátvétel után. 
 
-A helyreállítási nagyméretű alkalmazások összetettek lehetnek. A helyreállítási tervek segítenek megszabni a sorrendet, így a helyreállítás konzisztens, ismételhető és automatizált. A helyreállítási tervekben a parancsfájlok segítségével automatizálhatja a feladatokat, valamint Azure Automation runbookok is. A tipikus példák egy Azure-beli virtuális gépen a feladatátvételt követően, vagy a virtuális gépen futó alkalmazás újrakonfigurálását is konfigurálják.
+A nagy méretű alkalmazások helyreállítása összetett lehet. A helyreállítási tervek segítenek a megrendelés előírásában, így a helyreállítás következetesen pontos, megismételhető és automatizált. A helyreállítási tervben lévő feladatokat parancsfájlok és Azure Automation-runbookok használatával automatizálhatja. Tipikus példák lehet nek beállítások konfigurálása egy Azure-beli virtuális gép feladatátvétel után, vagy újrakonfigurálása egy alkalmazás, amely fut a virtuális gépen.
 
-- [További](recovery-plan-overview.md) információ a helyreállítási tervekről.
-- [További](../automation/automation-runbook-types.md) információ a Azure Automation runbookok.
+- [További információ](recovery-plan-overview.md) a helyreállítási tervekről.
+- [További információ](../automation/automation-runbook-types.md) az Azure Automation runbookokról.
 
 
 
 ## <a name="runbooks-in-recovery-plans"></a>Runbookok a helyreállítási tervekben
 
-Azure Automation fiókot és runbookok kell hozzáadnia egy helyreállítási tervhez. A rendszer meghívja a runbook a helyreállítási terv futtatásakor.
+Hozzáad egy Azure Automation-fiókot és runbookokat egy helyreállítási tervhez. A runbook meghívása a helyreállítási terv futtatásakor.
 
-- Az Automation-fiók bármely Azure-régióban lehet, és a Site Recovery-tárolóval megegyező előfizetésben kell lennie. 
-- A runbook egy helyreállítási tervben is futtathatók a feladatátvétel során egy elsődleges helyről a másodlagosra, vagy a másodlagos helyről az elsődlegesre történő feladat-visszavétel során.
-- A helyreállítási tervekben a runbookok sorosan, egymás után, a set sorrendben futnak.
-- Ha a helyreállítási tervben a virtuális gépek különböző csoportokban való runbookok vannak konfigurálva, a helyreállítási terv csak akkor fog folytatódni, ha az Azure minden virtuális gépet futtat.
+- Az Automation-fiók bármely Azure-régióban lehet, és ugyanabban az előfizetésben kell lennie, mint a Site Recovery-tároló. 
+- A runbook futtatható a helyreállítási terv során feladatátvétel egy elsődleges helyről másodlagos, vagy a feladat-visszavétel során a másodlagos helyről az elsődleges.
+- A helyreállítási tervben lévő Runbookok egymás után, a beállított sorrendben futnak.
+- Ha a helyreállítási tervben lévő runbookok konfigurálják a virtuális gépeket, hogy különböző csoportokban induljanak el, a helyreállítási terv csak akkor folytatódik, ha az Azure az összes virtuális gépet futóként jelenti.
 - A helyreállítási tervek továbbra is futnak, még akkor is, ha egy parancsfájl meghibásodik.
 
 ### <a name="recovery-plan-context"></a>Helyreállítási terv környezete
 
-Parancsfájl futtatásakor a helyreállítási terv környezetét befecskendezi a runbook. A környezet tartalmazza a táblázatban összefoglalt változókat.
+Amikor egy parancsfájl fut, egy helyreállítási terv környezetet a runbook. A környezet a táblázatban összegzett változókat tartalmazza.
 
 | **Változó neve** | **Leírás** |
 | --- | --- |
-| RecoveryPlanName |Helyreállítási terv neve. A nevén alapuló műveletekben használatos. |
-| FailoverType |Meghatározza, hogy teszt vagy éles feladatátvétel van-e. 
-| FailoverDirection | Meghatározza, hogy a helyreállítás elsődleges vagy másodlagos helyre történik-e. |
-| GroupID |A csomag futásakor a helyreállítási tervben szereplő csoport számát azonosítja. |
-| VmMap |A csoportban található összes virtuális gép tömbje. |
-| VMMap kulcs |Egyedi kulcs (GUID) az egyes virtuális gépekhez. |
-| SubscriptionId |Az Azure-előfizetés azonosítója, amelyben a virtuális gép létrejött. |
-| ResourceGroupName | Azon erőforráscsoport neve, amelyben a virtuális gép található.
-| CloudServiceName |Az Azure Cloud Service neve, amely alatt a virtuális gép létrejött. |
-| RoleName |Az Azure-beli virtuális gép neve. |
-| RecoveryPointId|A virtuális gép helyreállításának időbélyege. |
+| RecoveryPlanName (Helyreállításitervneve) |Helyreállítási terv neve. A névn alapuló műveletekben használatos. |
+| Feladatátvételtípusa |Megadja, hogy teszt ről vagy éles feladatátvételről van-e szó. 
+| Feladatátvételirány | Itt adható meg, hogy a helyreállítás elsődleges vagy másodlagos helyre kerüljön.Specifies whether recovery is to a primary or secondary location. |
+| Csoportazonosító |A helyreállítási tervben lévő csoportszámot azonosítja a terv futásakor. |
+| Vmmap |A csoport összes virtuális gépének tömbje. |
+| VMMap-kulcs |Egy egyedi kulcs (GUID) minden virtuális gép. |
+| SubscriptionId |Az Azure-előfizetés-azonosító, amelyben a virtuális gép jött létre. |
+| ResourceGroupName | Annak az erőforráscsoportnak a neve, amelyben a virtuális gép található.
+| CloudServiceName (Felhőszolgáltatásneve) |Az Azure felhőszolgáltatás neve, amely alatt a virtuális gép jött létre. |
+| RoleName |Az Azure virtuális gép neve. |
+| RecoveryPointId azonosító|A virtuális gép helyreállításának időbélyege. |
 
-Az alábbi példa egy környezeti változót mutat be:
+A következő példa egy környezeti változót mutat be:
 
 ```
 {"RecoveryPlanName":"hrweb-recovery",
@@ -74,7 +74,7 @@ Az alábbi példa egy környezeti változót mutat be:
 }
 ```
 
-Ha a VMMap lévő összes virtuális gépet egy hurokban szeretné elérni, a következő kódot használhatja:
+Ha egy ciklusban szeretné elérni a VMMap összes virtuális gépét, a következő kódot használhatja:
 
 ```
 $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -91,50 +91,50 @@ $vmMap = $RecoveryPlanContext.VmMap
 ```
 
 
-Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [helyreállítási terv környezeti parancsfájljának](http://harvestingclouds.com/post/script-sample-azure-automation-runbook-for-asr-recovery-plan/)hasznos példája.
+Aman Sharma blogja több mint a [betakarítás felhők](http://harvestingclouds.com) egy hasznos példa a helyreállítási [terv összefüggésben script](http://harvestingclouds.com/post/script-sample-azure-automation-runbook-for-asr-recovery-plan/).
 
 
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Ha még nem ismeri a Azure Automation, [regisztrálhat és](https://azure.microsoft.com/services/automation/) [letöltheti a minta parancsfájlokat](https://azure.microsoft.com/documentation/scripts/).
-- Győződjön meg arról, hogy az Automation-fiók a következő modulokkal rendelkezik:
+- Ha most jön az Azure Automation, [regisztrálhat](https://azure.microsoft.com/services/automation/) és [letöltheti a mintaparancsfájlokat.](https://azure.microsoft.com/documentation/scripts/)
+- Győződjön meg arról, hogy az Automation-fiók rendelkezik a következő modulokkal:
     - AzureRM.profile
     - AzureRM.Resources
     - AzureRM.Automation
     - AzureRM.Network
     - AzureRM.Compute
 
-    Minden modulnak kompatibilis verziónak kell lennie. A legegyszerűbb módszer az, hogy mindig az összes modul legújabb verzióját használja.
+    Minden modulnak kompatibilis verzióból kell lennie. A legegyszerűbb módja az, hogy mindig a legújabb verzióját használja az összes modul.
 
 
 
 ## <a name="customize-the-recovery-plan"></a>A helyreállítási terv testreszabása
 
-1. A tárolóban válassza a **helyreállítási tervek (site Recovery) lehetőséget.**
-2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv**elemre. [További információk](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
-3. A helyreállítási terv lapon kattintson a **Testreszabás**elemre.
+1. A tárolóban válassza a **Helyreállítási tervek (Site Recovery) lehetőséget.**
+2. Helyreállítási terv létrehozásához kattintson **a +Helyreállítási terv gombra.** [További információ](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza a megnyitásához.
+3. A helyreállítási terv lapon kattintson a **Testreszabás gombra.**
 
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Kattintson a három pontra (...) az **1. csoport mellett: Start** > **post művelet hozzáadása**.
-3. A **beszúrási művelet**területen ellenőrizze, hogy a **parancsfájl** ki van-e választva, majd adja meg a parancsfájl nevét ( **"Helló világ!" alkalmazás**).
-4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva az **1. csoporthoz: utólagos lépések**.
+2. Kattintson az **1.** > **Add post action**
+3. A **Beszúrás műveletben**ellenőrizze, hogy a **Parancsfájl** ki van-e jelölve, és adja meg a parancsfájl (**Hello World**) nevét.
+4. Adjon meg egy automatizálási fiókot, és válasszon ki egy runbookot. A parancsfájl mentéséhez kattintson az **OK gombra.** A szkript hozzáadódik az **1.**
 
 
-## <a name="reuse-a-runbook-script"></a>Runbook-szkript újrafelhasználása
+## <a name="reuse-a-runbook-script"></a>Runbook-parancsfájl újrafelhasználása
 
-A külső változók használatával egyetlen runbook parancsfájlt is használhat több helyreállítási tervben. 
+Egyetlen runbook-parancsfájlt több helyreállítási tervben is használhat külső változók használatával. 
 
-- [Azure Automation változók](../automation/automation-variables.md) használatával tárolhatja a helyreállítási terv futtatásához szükséges paramétereket.
-- Ha a helyreállítási terv nevét hozzáadja a változóhoz, az egyes helyreállítási tervekhez egyedi változókat hozhat létre. Ezután használja a változókat paraméterekként.
-- A paramétereket módosíthatja a parancsfájl módosítása nélkül, de továbbra is megváltoztathatja a szkript működésének módját.
+- Az [Azure Automation-változók](../automation/automation-variables.md) segítségével tárolja a helyreállítási terv futtatásához paramétereket.
+- Ha a helyreállítási terv nevét előtagként adja hozzá a változóhoz, minden helyreállítási tervhez létrehozhat egyedi változókat. Ezután használja a változókat paraméterként.
+- A paramétereket a parancsfájl módosítása nélkül módosíthatja, de a parancsfájl működését mégis módosíthatja.
 
 ### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Egyszerű karakterlánc-változó használata runbook-parancsfájlban
 
-Ebben a példában egy parancsfájl egy hálózati biztonsági csoport (NSG) bemenetét veszi át, és azt a helyreállítási tervben szereplő virtuális gépekre alkalmazza. 
+Ebben a példában egy parancsfájl egy hálózati biztonsági csoport (NSG) bemenetét veszi fel, és alkalmazza azt a helyreállítási tervben szereplő virtuális gépekre. 
 
-1. Annak érdekében, hogy a parancsfájl képes legyen felderíteni, hogy melyik helyreállítási terv fut, használja a helyreállítási terv környezetét:
+1. Annak érdekében, hogy a parancsfájl észlelje, hogy melyik helyreállítási terv fut, használja ezt a helyreállítási terv környezetet:
 
     ```
     workflow AddPublicIPAndNSG {
@@ -146,17 +146,17 @@ Ebben a példában egy parancsfájl egy hálózati biztonsági csoport (NSG) bem
         $RPName = $RecoveryPlanContext.RecoveryPlanName
     ```
 
-2. Jegyezze fel a NSG nevét és az erőforráscsoportot. Ezeket a változókat bemenetként használja a helyreállítási terv parancsfájljaihoz. 
-1. Az Automation-fiók eszközeiben. hozzon létre egy változót, amely a NSG nevét tárolja. Adjon hozzá egy előtagot a változó nevéhez a helyreállítási terv nevével.
+2. Jegyezze fel az NSG nevét és erőforráscsoportját. Ezeket a változókat használja bemenetként a helyreállítási terv parancsfájljaihoz. 
+1. Az Automation számlaeszközeiben. hozzon létre egy változót az NSG nevének tárolására. Adjon előtagot a változó nevéhez a helyreállítási terv nevével.
 
-    ![NSG-név változó létrehozása](media/site-recovery-runbook-automation-new/var1.png)
+    ![NSG-névváltozó létrehozása](media/site-recovery-runbook-automation-new/var1.png)
 
-2. Hozzon létre egy változót, amely a NSG erőforrás erőforráscsoport-nevét tárolja. Adjon hozzá egy előtagot a változó nevéhez a helyreállítási terv nevével.
+2. Hozzon létre egy változót az NSG-erőforrás erőforráscsoport nevének tárolására. Adjon előtagot a változó nevéhez a helyreállítási terv nevével.
 
     ![NSG-erőforráscsoport nevének létrehozása](media/site-recovery-runbook-automation-new/var2.png)
 
 
-3.  A szkriptben használja ezt a hivatkozási kódot a változók értékeinek lekéréséhez:
+3.  A parancsfájlban ezzel a hivatkozási kóddal kaphatja le a változóértékeket:
 
     ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
@@ -166,7 +166,7 @@ Ebben a példában egy parancsfájl egy hálózati biztonsági csoport (NSG) bem
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
     ```
 
-4.  A runbook szereplő változók használatával alkalmazza a NSG a feladatátvételt használó virtuális gép hálózati adapterére:
+4.  A runbook változóival alkalmazhatja az NSG-t a sikertelen virtuális gép hálózati felületére:
 
     ```
     InlineScript {
@@ -182,23 +182,23 @@ Ebben a példában egy parancsfájl egy hálózati biztonsági csoport (NSG) bem
     ```
 
 
-Mindegyik helyreállítási tervhez hozzon létre független változókat, hogy újra fel tudja használni a parancsfájlt. Adjon hozzá egy előtagot a helyreállítási terv neve alapján. 
+Minden helyreállítási tervhez hozzon létre független változókat, hogy újra felhasználhassa a parancsfájlt. Adjon hozzá előtagot a helyreállítási terv nevének használatával. 
 
-Ennek a forgatókönyvnek a teljes körű, végpontok közötti parancsfájlt ebben a [parancsfájlban](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee)tekintheti át.
+Ebben a forgatókönyvben egy teljes, teljes körű parancsfájlt tekintse át [ezt a parancsfájlt.](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee)
 
 
-### <a name="use-a-complex-variable-to-store-more-information"></a>Összetett változó használata további információk tárolásához
+### <a name="use-a-complex-variable-to-store-more-information"></a>Több információ tárolása összetett változó használatával
 
-Bizonyos esetekben előfordulhat, hogy nem tud külön változókat létrehozni az egyes helyreállítási tervekhez. Vegyünk egy olyan forgatókönyvet, amelyben egyetlen parancsfájlt szeretne hozzárendelni egy nyilvános IP-címet az adott virtuális gépeken. Egy másik esetben előfordulhat, hogy különböző NSG szeretne alkalmazni különböző virtuális gépeken (nem minden virtuális gépen). Vegye figyelembe:
+Bizonyos esetekben előfordulhat, hogy nem tud külön változót létrehozni az egyes helyreállítási tervekhez. Fontolja meg egy olyan forgatókönyvet, amelyben egyetlen parancsfájlt szeretne hozzárendelni egy nyilvános IP-címet az adott virtuális gépekhez. Egy másik esetben előfordulhat, hogy különböző NSG-ket szeretne alkalmazni a különböző virtuális gépeken (nem minden virtuális gépen). Vegye figyelembe:
 
-- Létrehozhat egy olyan parancsfájlt, amely bármely helyreállítási tervhez újrahasznosítható.
-- Minden helyreállítási terv változó számú virtuális gépet tartalmazhat.
-- A SharePoint-helyreállítás például két előtéri végponttal rendelkezik. Egy alapszintű üzletági (LOB) alkalmazás csak egy előtérrel rendelkezik.
-- Ebben a forgatókönyvben nem hozhat létre külön változókat az egyes helyreállítási tervekhez.
+- Olyan parancsfájlt hozhat újra, amely minden helyreállítási tervhez újrafelhasználható.
+- Minden helyreállítási terv rendelkezhet egy változó számú virtuális gépek.
+- Egy SharePoint-helyreállításnak például két előtérvége van. Egy egyszerű üzletági (LOB) alkalmazás csak egy előtérrel rendelkezik.
+- Ebben az esetben nem hozhat létre külön változókat az egyes helyreállítási tervekhez.
 
-Az alábbi példában egy [összetett változót](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) hozunk létre a Azure Automation fiókban.
+A következő példában egy [összetett változót](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) hozunk létre az Azure Automation-fiókban.
 
-Ehhez több értéket kell megadnia Azure PowerShell használatával.
+Ezt több érték megadásával tesszük meg az Azure PowerShell használatával.
 
 1. A PowerShellben jelentkezzen be az Azure-előfizetésbe:
 
@@ -208,24 +208,24 @@ Ehhez több értéket kell megadnia Azure PowerShell használatával.
     $sub | Select-AzureRmSubscription
     ```
 
-2. A paraméterek tárolásához hozza létre a komplex változót a helyreállítási terv nevével:
+2. A paraméterek tárolásához hozza létre az összetett változót a helyreállítási terv nevével:
 
     ```
     $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-3. Ebben az összetett változóban a **VMDetails** a védett virtuális gép VIRTUÁLISGÉP-azonosítója. A virtuális gép AZONOSÍTÓjának lekéréséhez a Azure Portalban tekintse meg a virtuális gép tulajdonságait. Az alábbi képernyőfelvételen egy olyan változó látható, amely két virtuális gép részleteit tárolja:
+3. Ebben az összetett változóban **a VMDetails** a védett virtuális gép virtuális gép virtuális gépazonosítója. A virtuálisgép-azonosító leigazolásához az Azure Portalon tekintse meg a virtuális gép tulajdonságait. A következő képernyőképen látható egy változó, amely tárolja a részleteket a két virtuális gép:
 
-    ![A virtuális gép AZONOSÍTÓjának használata GUID-ként](media/site-recovery-runbook-automation-new/vmguid.png)
+    ![A virtuálisgép-azonosító használata GUID azonosítóként](media/site-recovery-runbook-automation-new/vmguid.png)
 
-4. Használja ezt a változót a runbook. Ha a megadott VM GUID a helyreállítási terv kontextusában található, alkalmazza a NSG a virtuális gépen:
+4. Használja ezt a változót a runbookban. Ha a jelzett virtuálisgép GUID található a helyreállítási terv környezetben, alkalmazza az NSG a virtuális gép:
 
     ```
     $VMDetailsObj = (Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName).ToObject([hashtable])
     ```
 
-4. A runbook a helyreállítási terv környezetének virtuális gépeken keresztül hurkot kell készítenie. Győződjön meg arról, hogy a virtuális gép létezik a **$VMDetailsObjban**. Ha létezik, a NSG alkalmazásához nyissa meg a változó tulajdonságait:
+4. A runbookban a helyreállítási terv környezetében a virtuális gépek között. Ellenőrizze, hogy a virtuális gép létezik-e **$VMDetailsObj.** Ha létezik, az NSG alkalmazásához érje el a változó tulajdonságait:
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -245,25 +245,25 @@ Ehhez több értéket kell megadnia Azure PowerShell használatával.
         }
     ```
 
-A különböző helyreállítási tervekhez ugyanazt a parancsfájlt használhatja. Adjon meg különböző paramétereket úgy, hogy a különböző változókban lévő helyreállítási tervnek megfelelő értéket tárolja.
+Ugyanazt a parancsfájlt használhatja a különböző helyreállítási tervekhez. Adjon meg különböző paramétereket a különböző változók helyreállítási tervének megfelelő érték tárolásával.
 
-## <a name="sample-scripts"></a>Mintaparancsfájlok
+## <a name="sample-scripts"></a>Mintaszkriptek
 
-Ha a parancsfájlokat az Automation-fiókban szeretné üzembe helyezni, kattintson az **üzembe helyezés az Azure** -ban gombra.
+Ha mintaparancsfájlokat szeretne telepíteni az Automation-fiókba, kattintson az **Azure-ba való üzembe helyezés** gombra.
 
 [![Üzembe helyezés az Azure-ban](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-Ez a videó egy másik példát is tartalmaz. Bemutatja, hogyan lehet helyreállítani egy kétrétegű WordPress-alkalmazást az Azure-ban:
+Ez a videó egy másik példa. Bemutatja, hogyan lehet visszaállítani egy kétrétegű WordPress alkalmazást az Azure-ba:
 
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Azure Automation futtató fiók](../automation/automation-create-runas-account.md) megismerése
-- Tekintse át [Azure Automation minta parancsfájlokat](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).
-- [További](site-recovery-failover.md) információ a feladatátvételek futtatásáról.
+- További információ az [Azure Automation Futtatás másként fiókról](../automation/automation-create-runas-account.md)
+- Tekintse át [az Azure Automation mintaparancsfájljait.](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)
+- [További információ](site-recovery-failover.md) a feladatátvételek futtatásáról.
 
 
 
