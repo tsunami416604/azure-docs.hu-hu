@@ -4,10 +4,10 @@ description: Új alkalmazás figyelésének megkezdése új kialakítási kulccs
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671443"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
@@ -39,7 +39,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-Szúrja be a szkriptet közvetlenül az összes nyomon követni kívánt lap &lt;/Head&gt; címkéjébe. Ha a webhelynek van főoldala, akkor a parancsfájlt ott helyezheti el. Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: View\Shared\_Layout.cshtml
+Szúrja be a &lt;parancsfájlt&gt; közvetlenül a követni kívánt oldalak /head címkéje elé. Ha webhelyén van mesteroldal, a parancsfájlt oda helyezheti. Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: View\Shared\_Layout.cshtml
 
 A szkript tartalmazza a kialakítási kulcsot, amely a telemetriát az Application Insights-erőforrásra irányítja.
 
@@ -132,7 +132,7 @@ function onRequestFail(sender, args) {
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) webhelye rendelkezésre állásának figyeléséhez.
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) más típusú alkalmazásokhoz.
 

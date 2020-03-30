@@ -1,7 +1,7 @@
 ---
-title: 'Betanítási modell: modul-hivatkozás'
+title: 'Betanítási modell: Modul hivatkozási'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning **Train Model** modult egy besorolási vagy regressziós modell betanításához.
+description: Ismerje meg, hogyan használhatja a **Betanítási modell** modult az Azure Machine Learningben egy besorolási vagy regressziós modell betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,71 +9,71 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455859"
 ---
-# <a name="train-model-module"></a>Tanítási modell modulhoz
+# <a name="train-model-module"></a>Betanítási modell modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-Ezzel a modullal betaníthatja a besorolási vagy regressziós modellt. A képzés a modell meghatározása és a hozzá tartozó paraméterek beállítása után zajlik, és címkézett adatokra van szükség. A **betanítási modell** használatával egy meglévő modell újratanítását is elvégezheti új adattal. 
+Ezzel a modullal betanítása osztályozási vagy regressziós modell. A betanítás a modell definiálása és paramétereinek beállítása után történik, és címkézett adatokat igényel. A **Betanítási modell** segítségével is betaníthat egy meglévő modellt új adatokkal. 
 
-## <a name="how-the-training-process-works"></a>A betanítási folyamat működése
+## <a name="how-the-training-process-works"></a>A képzési folyamat működése
 
-Azure Machine Learning a Machine learning-modellek létrehozása és használata általában egy három lépésből álló folyamat. 
+Az Azure Machine Learningben a gépi tanulási modell létrehozása és használata általában három lépésből áll. 
 
-1. A modell konfigurálásához válasszon egy adott típusú algoritmust, és határozza meg a paramétereit vagy hiperparaméterek beállítása. Válassza ki a következő típusok bármelyikét: 
+1. A modellkonfigurálása egy adott algoritmustípus kiválasztásával, valamint annak paramétereinek vagy hiperparamétereinek meghatározásával. Válasszon az alábbi modelltípusok közül: 
 
-    + A **besorolási** modellek neurális hálózatok, Döntési fák és döntési erdők, valamint más algoritmusok alapján.
-    + **Regressziós** modellek, amelyek standard lineáris regressziót tartalmazhatnak, vagy amelyek más algoritmusokat használnak, beleértve a neurális hálózatokat és a Bayes-regressziót is.  
+    + **Besorolási** modellek, neurális hálózatok, döntési fák, döntési erdők és egyéb algoritmusok alapján.
+    + **Regressziós** modellek, amelyek standard lineáris regressziót tartalmazhatnak, vagy amelyek más algoritmusokat használnak, beleértve a neurális hálózatokat és a bayes-i regressziót.  
 
-2. Adja meg a címkével ellátott adatkészletet, és az algoritmussal kompatibilis adatokat tartalmaz. Kapcsolja össze az adattípust és a modellt a **modell betanításához**.
+2. Adjon meg egy adatkészletet, amely címkével van ellátva, és az algoritmussal kompatibilis adatokkal rendelkezik. Csatlakoztassa az adatokat és a modellt is a **Betanítási modellhez.**
 
-    A létrehozott képzések egy adott bináris formátum, a iLearner, amely az adatokból beszerzett statisztikai mintákat foglalja magában. Ezt a formátumot nem lehet közvetlenül módosítani vagy olvasni; más modulok azonban használhatják ezt a betanított modellt. 
+    Milyen betanítási termel egy adott bináris formátum, az iLearner, amely magában foglalja a statisztikai mintákat tanult az adatokból. Ezt a formátumot nem lehet közvetlenül módosítani vagy olvasni; azonban más modulok is használhatják ezt a betanított modellt. 
     
-    Megtekintheti a modell tulajdonságait is. További információ: Results (eredmények) szakasz.
+    Megtekintheti a modell tulajdonságait is. További információt az Eredmények szakaszban talál.
 
-3. A betanítás befejezése után használja a betanított modellt az egyik [pontozási modullal](./score-model.md), hogy előrejelzéseket készítsen az új adatmennyiségekről.
+3. A betanítás befejezése után használja a betanított modellt az egyik [pontozási modullal,](./score-model.md)hogy előrejelzéseket készítsen az új adatokról.
 
 ## <a name="how-to-use-train-model"></a>A Train Model használata 
   
-1.  Azure Machine Learning a besorolási modell vagy a regressziós modell konfigurálása.
+1.  Az Azure Machine Learningben konfiguráljon egy besorolási modellt vagy regressziós modellt.
     
-2. Adja hozzá a **Train Model** modult a folyamathoz.  Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **vonat**elemet, majd húzza a **Train Model** modult a folyamatba.
+2. Adja hozzá a **Train Model** modult a folyamathoz.  Ez a modul a **Machine Learning** kategóriában található. Bontsa ki a **Train**csomópontot, majd húzza a **Train Model** modult a folyamatba.
   
-3.  A bal oldali bemeneten csatolja a képzetlen üzemmódot. Csatolja a betanítási adatkészletet a **betanítási modell**jobb oldali bemenetéhez.
+3.  A bal oldali bemeneten csatlakoztassa a képzetlen módot. Csatolja a betanítási adatkészletet a Train Model jobb oldali **bemenetéhez.**
 
-    A betanítási adatkészlet címkét tartalmazó oszlopot kell tartalmaznia. A címkék nélküli sorok figyelmen kívül lesznek hagyva.
+    A betanítási adatkészletnek tartalmaznia kell egy címkeoszlopot. A rendszer figyelmen kívül hagyja a címkék nélküli sorokat.
   
-4.  A **label (címke) oszlopban**kattintson az **oszlop szerkesztése** elemre a modul jobb oldali paneljén, és válasszon ki egy olyan oszlopot, amely tartalmazza a modell által a képzéshez használható eredményeket.
+4.  A **Címke oszlopban**kattintson a jobb oldali modulpanel **oszlopának szerkesztése** gombjára, és válasszon egy oszlopot, amely tartalmazza a modell által betanításra használható eredményeket.
   
-    - Besorolási problémák esetén a Label oszlopnak **kategorikus** értékeket vagy **különálló** értékeket kell tartalmaznia. Néhány példa lehet igen/nem minősítés, a betegség besorolási kódja vagy neve, vagy egy bevételi csoport.  Ha nem kategorikus oszlopot választ, a modul a betanítás során hibát ad vissza.
+    - Besorolási problémák esetén a címkeoszlopnak **kategorikus** értékeket vagy különálló értékeket kell **tartalmaznia.** Néhány példa lehet egy igen/nem minősítés, egy betegség besorolási kódja vagy neve, vagy egy jövedelemcsoport.  Ha nem kategorikus oszlopot választ, a modul a betanítás során hibaüzenetet ad vissza.
   
-    -   A regressziós problémák esetén a Label oszlopnak a válasz változót jelölő **numerikus értékeket** kell tartalmaznia. Ideális esetben a numerikus adat folyamatos méretezést jelent. 
+    -   Regressziós problémák esetén a címkeoszlopnak **numerikus** adatokat kell tartalmaznia, amelyek a válaszváltozót jelölik. Ideális esetben a numerikus adatok folyamatos skálát jelölnek. 
     
-    Ilyen lehet például a kreditek kockázati pontszáma, a merevlemez meghibásodásának tervezett ideje, vagy egy adott napon vagy időpontban a Call Center felé irányuló hívások előre jelzett száma.  Ha nem választ egy numerikus oszlopot, hibaüzenetet kaphat.
+    Ilyen lehet például a hitelkockázati pontszám, a merevlemez meghibásodásának várható ideje, vagy a hívásközpontba irányuló hívások előre jelzett száma egy adott napon vagy időpontban.  Ha nem választ numerikus oszlopot, hibaüzenet jelenhet meg.
   
-    -   Ha nem határozza meg, hogy melyik címke oszlopot szeretné használni, Azure Machine Learning megpróbálja kikövetkeztetni, hogy melyik a megfelelő címke oszlop az adatkészlet metaadatainak használatával. Ha nem a megfelelő oszlopot választja, a kiválasztó oszlop segítségével javítsa ki.
+    -   Ha nem adja meg, hogy melyik címkeoszlopot használja, az Azure Machine Learning megpróbálja kikövetkeztetni, hogy melyik a megfelelő címkeoszlop az adatkészlet metaadatainak használatával. Ha nem a megfelelő oszlopot választja, az oszlopkijelölővel javítsa ki.
   
     > [!TIP] 
-    > Ha problémája van az oszlop Választójának használatával, tekintse meg a tippek az [Oszlopok kiválasztása az adatkészletben](./select-columns-in-dataset.md) című cikket. Ismertet néhány gyakori forgatókönyvet és tippet a **with Rules** és a **Name** beállítások használatával.
+    > Ha nem tudja használni az Oszlopválasztót, a tippeket az [Oszlopok kijelölése](./select-columns-in-dataset.md) az adatkészletben című témakörben talál. Néhány gyakori forgatókönyvet és tippet ír le a **SZABÁLYOKKAL** és név **szerint** beállítás használatához.
   
-5.  A folyamat futtatása. Ha sok adattal rendelkezik, ez hosszabb időt is igénybe vehet.
+5.  Küldje el a folyamatot. Ha sok adata van, ez eltarthat egy ideig.
 
-## <a name="bkmk_results"></a>Eredmények
+## <a name="results"></a><a name="bkmk_results"></a>Eredmények
 
-A modell képzése után:
-
-
-+ Ha más folyamatokban szeretné használni a modellt, válassza ki a modult, és válassza az **adatkészlet regisztrálása** ikont az **outputs (kimenetek** ) lapon a jobb oldali panelen. A mentett modelleket a modul palettáján, az **adatkészletek**területen érheti el.
-
-+ Ha a modellt az új értékek előrejelzéséhez szeretné használni, akkor a [pontszám modell](./score-model.md) modulhoz kell csatlakoznia, az új bemeneti adatokkal együtt.
+A modell betanítása után:
 
 
-## <a name="next-steps"></a>Következő lépések
++ Ha a modellt más folyamatokban szeretné használni, jelölje ki a modult, és válassza az **Adatkészlet regisztrálása** ikont a jobb oldali **panel Kimenetek** lapján. A modulpalettán mentett modelleket az Adatkészletek területen **érheti**el.
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
++ A modell használata az új értékek előrejelzéséhez csatlakoztassa azt a [Score Model](./score-model.md) modulhoz, az új bemeneti adatokkal együtt.
+
+
+## <a name="next-steps"></a>További lépések
+
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

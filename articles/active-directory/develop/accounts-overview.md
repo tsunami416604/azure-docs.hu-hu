@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform-fiókok & bérlői profilok Androidon | Azure
-description: Az Androidhoz készült Microsoft Identity platform-fiókok áttekintése
+title: Microsoft identity platform fiókok & bérlői profilok Android | Azure
+description: Az Android Microsoft identitásplatform-fiókjainak áttekintése
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -14,75 +14,75 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77611889"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Fiókok és bérlői profilok (Android)
 
-Ez a cikk áttekintést nyújt arról, hogy mi a `account` a Microsoft Identity platformon.
+Ez a cikk áttekintést `account` nyújt arról, hogy mi is a Microsoft identitásplatformon.
 
-A Microsoft Authentication Library (MSAL) API lecseréli a *felhasználó* kifejezést a term *fiókra*. Ennek egyik oka, hogy egy felhasználó (emberi vagy szoftver ügynök) több fiókot is használhat. Ezek a fiókok lehetnek a felhasználó saját szervezetében és/vagy más szervezetekben, amelyeknek a felhasználó a tagja.
+A Microsoft Authentication Library (MSAL) API a *felhasználó* kifejezést a *fiókkifejezéssel*helyettesíti. Ennek egyik oka az, hogy egy felhasználó (emberi vagy szoftverügynök) több fiókkal rendelkezhet, vagy használhat. Ezek a fiókok lehetnek a felhasználó saját szervezetében és/vagy más szervezetekben, amelyeknek a felhasználó tagja.
 
-A Microsoft Identity platform egyik fiókja a következőkből áll:
+A Microsoft identity platformon lévő fiók a következőkből áll:
 
 - Egyedi azonosító.  
-- Egy vagy több hitelesítő adat, amely a fiók tulajdonjogának vagy vezérlésének bemutatására szolgál.
-- Egy vagy több olyan attribútum, amely többek között a következőkből áll:
-  - Kép, Utónév, család neve, cím, iroda helye
-- A fióknak van egy szolgáltatói vagy nyilvántartási forrása. Ez az a rendszer, ahol a fiók létrejön, és ahol a fiókhoz társított hitelesítő adatok tárolódnak. A több-bérlős rendszerek (például a Microsoft Identity platform) esetében a rekord rendszere a fiók létrehozásának `tenant`. Ez a bérlő a `home tenant`néven is ismert.
-- A Microsoft Identity platform fiókjai a következő nyilvántartási rendszerekkel rendelkeznek:
-  - Azure Active Directory, beleértve a Azure Active Directory B2C.
-  - Microsoft-fiók (élő).
-- A Microsoft Identity platformon kívüli rekordokból származó fiókok a Microsoft Identity platformon belül jelennek meg, beleértve a következőket:
-  - helyi könyvtárak identitásai (Windows Server Active Directory)
-  - külső identitások a LinkedIn, a GitHub és így tovább.
-  Ezekben az esetekben a fiók a Microsoft Identity platformon belül mind a forrás-, mind a rekordrendszer-rendszerrel rendelkezik.
-- A Microsoft Identity platform lehetővé teszi, hogy az egyik fiók a több szervezethez (Azure Active Directory bérlőhöz) tartozó erőforrások elérésére legyen használva.
-  - Annak rögzítéséhez, hogy az egyik HRE (A bérlő A) egy fiók egy másik (HRE-bérlői) rekordban lévő erőforráshoz fér hozzá, a fióknak szerepelnie kell abban a bérlőn, ahol az erőforrás definiálva van. Ezt úgy teheti meg, hogy helyi rekordot hoz létre a fiókból a B rendszeren.
-  - Ez a helyi rekord, amely a fiók ábrázolása, az eredeti fiókhoz van kötve.
-  - A MSAL ezt a helyi rekordot `Tenant Profile`ként teszi elérhetővé.
-  - A bérlői profilnak különböző attribútumai lehetnek, amelyek megfelelnek a helyi környezetnek, például a beosztás, az iroda helye, a kapcsolattartási adatok stb.
-- Mivel előfordulhat, hogy egy fiók egy vagy több bérlőn is megtalálható, egy fiók több profillal is rendelkezhet.
+- Egy vagy több hitelesítő adat a fiók tulajdonjogának/ellenőrzésének igazolására szolgál.
+- Egy vagy több profil, amely attribútumokat, például:
+  - Kép, utónév, családnév, cím, irodahely
+- Egy fiók nak van egy jogosultsági forrása vagy nyilvántartási rendszere. Ez az a rendszer, ahol a fiók létrejön, és ahol a fiókhoz társított hitelesítő adatok at tárolják. A több-bérlős rendszerek, mint például a Microsoft `tenant` identitás platform, a rekord rendszer az, ahol a fiók jött létre. Ezt a bérlőt `home tenant`a.
+- A Microsoft identity platformon lévő fiókok a következő nyilvántartási rendszerekkel rendelkeznek:
+  - Az Azure Active Directory, beleértve az Azure Active Directory B2C.
+  - Microsoft-fiók (Live).
+- A Microsoft identity platformon kívüli rekordrendszerekből származó fiókok a Microsoft identitásplatformon belül jelennek meg, beleértve a következőket:
+  - identitások csatlakoztatott helyszíni könyvtárakból (Windows Server Active Directory)
+  - külső identitások a LinkedIn, GitHub, és így tovább.
+  Ezekben az esetekben egy fiók rendelkezik egy eredeti nyilvántartási rendszerrel és egy rekordrendszerrel a Microsoft identitásplatformján belül.
+- A Microsoft identity platform lehetővé teszi, hogy egy fiók több szervezethez (Azure Active Directory-bérlőkhöz) tartozó erőforrások eléréséhez használható.
+  - Annak rögzítéséhez, hogy az egyik rekordrendszerből (AAD-bérlő A) származó fiók hozzáfér egy erőforráshoz egy másik rekordrendszerben (AAD Tenant B), a fiókot abban a bérlőben kell ábrázolni, ahol az erőforrás definiálva van. Ez úgy történik, hogy helyi nyilvántartást hoz létre a fiókról a B rendszer A rendszeréből.
+  - Ez a helyi rekord, azaz a fiók ábrázolása az eredeti fiókhoz van kötve.
+  - Az MSAL ezt a `Tenant Profile`helyi rekordot .
+  - A bérlői profil különböző attribútumokkal rendelkezhet, amelyek megfelelnek a helyi környezetnek, például a beosztás, az Office helye, a kapcsolattartási adatok stb.
+- Mivel egy fiók egy vagy több bérlőben is jelen lehet, előfordulhat, hogy egy fiók egynél több profillal rendelkezik.
 
 > [!NOTE]
-> A MSAL a Microsoft Identity platformon belüli másik bérlőként kezeli a Microsoft-fiók rendszerét (élő, MSA). A Microsoft-fiók bérlő bérlői azonosítója: `9188040d-6c67-4c5b-b112-36a304b66dad`
+> Az MSAL a Microsoft-fiókrendszert (Live, MSA) a Microsoft identitásplatformon belül egy másik bérlőként kezeli. A Microsoft-fiók bérlői azonosítója:`9188040d-6c67-4c5b-b112-36a304b66dad`
 
-## <a name="account-overview-diagram"></a>Fiók áttekintése diagram
+## <a name="account-overview-diagram"></a>Számlaáttekintő diagram
 
-![Fiók áttekintése diagram](./media/accounts-overview/accounts-overview.svg)
+![Fiókáttekintő diagram](./media/accounts-overview/accounts-overview.svg)
 
 A fenti ábrán:
 
-- A fiók `bob@contoso.com` a helyszíni Windows Server Active Directory (a rekord forrása a helyszíni rendszer) létrehozásakor jön létre.
-- A fiók `tom@live.com` a Microsoft-fiók bérlőben jön létre.
-- `bob@contoso.com` legalább egy erőforráshoz hozzáfér a következő Azure Active Directory-bérlők számára:
-  - contoso.com (a rekord Felhőbeli rendszere – a rekord a helyszíni rendszerhez kapcsolódik)
+- A `bob@contoso.com` fiók a helyszíni Windows Server Active Directoryban (a helyszíni rekordrendszer) jön létre.
+- A `tom@live.com` fiók a Microsoft-fiók bérlőjében jön létre.
+- `bob@contoso.com`legalább egy erőforráshoz hozzáfér az Alábbi Azure Active Directory-bérlőkben:
+  - contoso.com (nyilvántartási felhőrendszer – a helyszíni nyilvántartási rendszerhez kapcsolva)
   - fabrikam.com
   - woodgrovebank.com
-  - A `bob@contoso.com` bérlői profilja megtalálható a bérlők mindegyikében.
-- `tom@live.com` a következő Microsoft-bérlők erőforrásaihoz fér hozzá:
+  - Ezekhez a `bob@contoso.com` bérlőkhöz minden bérlőhöz létezik bérlői profil.
+- `tom@live.com`a következő Microsoft-bérlők erőforrásaihoz fér hozzá:
   - contoso.com
   - fabrikam.com
-  - A `tom@live.com` bérlői profilja megtalálható a bérlők mindegyikében.
-- A más bérlők Tom és Bob szolgáltatásával kapcsolatos információk eltérhetnek a rekordból. Eltérőek lehetnek az attribútumok, például a beosztás, az iroda helye stb. Az egyes szervezetekben (Azure Active Directory bérlőn) belüli csoportok és/vagy szerepkörök tagjai lehetnek. Ezt az információt bob@contoso.com bérlői profilként tekintjük át.
+  - Ezekhez a `tom@live.com` bérlőkhöz minden bérlőhöz létezik bérlői profil.
+- A tomra és Bobra vonatkozó információk más bérlőknél eltérhetnek a nyilvántartási rendszertől. Ezek eltérhetnek az olyan attribútumoktól, mint a Beosztás, az Office helye és így tovább. Lehetnek csoportok és/vagy szerepkörök tagjai az egyes szervezeteken belül (Azure Active Directory-bérlő). Ezt az információt bob@contoso.com bérlői profilként hivatkozunk.
 
-A diagramon bob@contoso.com és tom@live.com különböző Azure Active Directory bérlők erőforrásaihoz férhet hozzá. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+Az bob@contoso.com ábrán, tom@live.com és hozzáférhet a különböző Azure Active Directory-bérlők erőforrásaihoz. További információ: [Add Azure Active Directory B2B együttműködési felhasználók az Azure Portalon.](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)
 
 ## <a name="accounts-and-single-sign-on-sso"></a>Fiókok és egyszeri bejelentkezés (SSO)
 
-Az MSAL jogkivonat-gyorsítótár *egyetlen frissítési jogkivonatot* tárol egy fiókban. A frissítési token használatával csendesen kérhet hozzáférési jogkivonatokat több Microsoft Identity platform-bérlőtől. Ha egy ügynök telepítve van egy eszközön, a fiókot a közvetítő felügyeli, és az eszközre érvényes egyszeri bejelentkezés válik elérhetővé.
+Az MSAL token gyorsítótára fiókonként *egyetlen frissítési jogkivonatot* tárol. Ez a frissítési jogkivonat segítségével csendben hozzáférési jogkivonatokat kérhet több Microsoft identitásplatform-bérlőtől. Amikor egy bróker telepítve van egy eszközön, a fiókot a bróker kezeli, és az eszköz szintű egyszeri bejelentkezés lehetővé válik.
 
 > [!IMPORTANT]
-> A vállalatok közötti (B2C) fiók és a frissítési jogkivonat viselkedése eltér a Microsoft Identity platform többi részétől. További információ: B2C- [szabályzatok & fiókok](#b2c-policies--accounts).
+> Az üzleti felhasználók (B2C) fiók és a frissítési jogkivonat viselkedése eltér a Microsoft identitásplatform többi részétől. További információ: [B2C Policies & Accounts](#b2c-policies--accounts).
 
-## <a name="account-identifiers"></a>Fiókazonosító
+## <a name="account-identifiers"></a>Fiókazonosítók
 
-A MSAL fiók azonosítója nem fiók-objektumazonosító. Nem kell elemezni és/vagy támaszkodni arra, hogy a Microsoft Identity platformon belül bármilyen egyediséget közvetítenek.
+Az MSAL-fiókazonosító nem fiókobjektum-azonosító. Ez nem azt jelentette, hogy elemezni és / vagy hivatkozott közvetíteni semmi más, mint egyediség a Microsoft identitás platformon.
 
-Az Azure AD Authentication Library (ADAL) szolgáltatással való kompatibilitás érdekében, valamint a ADAL-ről a MSAL-re való Migrálás megkönnyítéséhez a MSAL a MSAL-gyorsítótárban elérhető fiók bármely érvényes azonosítójának használatával kereshet fiókokat.  A következőkben például mindig ugyanaz a fiók-objektum lesz lekérdezve a tom@live.comhoz, mert az egyes azonosítók érvényesek:
+Az Azure AD hitelesítési könyvtár (ADAL) kompatibilitás, valamint az ADAL-ról MSAL-ra való áttérés megkönnyítése érdekében az MSAL az MSAL-gyorsítótárban elérhető fiók bármely érvényes azonosítójával kereshet fiókokat.  Például a következő mindig ugyanazt a tom@live.com fiókobjektumot kéri be, mert az egyes azonosítók érvényesek:
 
 ```java
 // The following would always retrieve the same account object for tom@live.com because each identifier is valid
@@ -92,20 +92,20 @@ IAccount account = app.getAccount("<tom@live.com contoso user object id>");
 IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>");
 ```
 
-## <a name="accessing-claims-about-an-account"></a>Fiókhoz tartozó jogcímek elérése
+## <a name="accessing-claims-about-an-account"></a>Hozzáférés egy fiókkal kapcsolatos jogcímekhez
 
-A hozzáférési token igénylése mellett a MSAL is minden bérlőtől kér azonosító jogkivonatot. Ezt mindig a következő hatókörökre kéri:
+A hozzáférési jogkivonat kérése mellett az MSAL mindig kér egy azonosító jogkivonatot minden egyes bérlőtől. Ezt úgy éri el, hogy mindig a következő hatóköröket kéri:
 
-- OpenID
-- profile
+- Openid
+- profil
 
-Az azonosító jogkivonat a jogcímek listáját tartalmazza. `Claims` a fiókhoz tartozó név-érték párok, és a kérést használják.
+Az azonosító jogkivonat a jogcímek listáját tartalmazza. `Claims`név-érték párok a fiókról, és a kérés hez használatosak.
 
-Ahogy azt korábban említettük, az egyes bérlők, ahol egy fiók létezik, különböző adatokat tárolhatnak a fiókról, többek között a következő attribútumokra: beosztás, iroda helye stb.
+Mint korábban említettük, minden bérlő, ahol egy fiók létezik, különböző információkat tárolhat a fiókról, beleértve, de nem kizárólagosan az attribútumokat, például: beosztás, iroda helye és így tovább.
 
-Habár egy fiók lehet tag vagy vendég több szervezeten belül, a MSAL nem kérdez le egy szolgáltatást, hogy lekérje azon bérlők listáját, amelyeknek a fiók tagja. Ehelyett a MSAL létrehoz egy listát azokról a bérlők listájáról, amelyeken a fiók szerepel, a jogkivonat-kérelmek eredményeképpen.
+Bár egy fiók több szervezet tagja vagy vendége is lehet, az MSAL nem kérdez meg egy szolgáltatást, hogy leszámítsa azoknak a bérlőknek a listáját, amelyeknek a fiók tagja. Ehelyett az MSAL összeáll egy listát a bérlők, hogy a fiók jelen van, a token kérelmek eredményeként, amelyek történtek.
 
-A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Például:
+A fiókobjektumban elérhető jogcímek mindig a "főbérlő"/{authority} jogcímek egy fiókhoz. Ha ezt a fiókot nem használták jogkivonat kéréséhez az otthoni bérlőhöz, az MSAL nem tud jogcímeket biztosítani a fiókobjektumon keresztül.  Példa:
 
 ```java
 // Psuedo Code
@@ -118,14 +118,14 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> A fiók objektumból elérhető jogcímek listájának megtekintéséhez tekintse meg a [jogcímek egy id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
+> A fiókobjektumból elérhető jogcímek listájának megtekintéséhez olvassa el [a id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
 
 > [!TIP]
-> Ha további jogcímeket szeretne felvenni a id_tokenba, tekintse meg a választható jogcímek dokumentációját a [útmutató: opcionális jogcímek megadása az Azure ad-alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
+> További jogcímek id_token, olvassa el a választható jogcímek [dokumentációját Hogyan: Opcionális jogcímek biztosítása az Azure AD-alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
 
-### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímeinek elérése
+### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímei elérése
 
-Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először el kell végeznie a fiók objektumát `IMultiTenantAccount`. Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Például:
+Ha más bérlőknél is szeretné elérni a fiókkal kapcsolatos jogcímeket, először a fiókobjektumot kell a programra `IMultiTenantAccount`vetnie. Az összes fiók lehet több-bérlős, de az MSAL-on keresztül elérhető bérlői profilok száma azon alapul, hogy mely bérlők kért jogkivonatokat az aktuális fiók használatából.  Példa:
 
 ```java
 // Psuedo Code
@@ -136,11 +136,11 @@ multiTenantAccount.getTenantProfiles().get("tenantid for fabrikam").getClaims().
 multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().get("family_name");
 ```
 
-## <a name="b2c-policies--accounts"></a>B2C-szabályzatok & fiókok
+## <a name="b2c-policies--accounts"></a>B2C-házirendek & fiókok
 
-A fiókok frissítési jogkivonatai nem oszthatók meg a B2C-szabályzatok között. Ennek eredményeképpen a tokeneket használó egyszeri bejelentkezés nem lehetséges. Ez nem jelenti azt, hogy az egyszeri bejelentkezés nem lehetséges. Ez azt jelenti, hogy az egyszeri bejelentkezéshez olyan interaktív élményt kell használni, amelyben az egyszeri bejelentkezés lehetővé teszi a cookie-t.
+Egy fiók frissítési jogkivonatai nincsenek megosztva a B2C-házirendek között. Ennek eredményeképpen a jogkivonatok használatával történő egyszeri bejelentkezés nem lehetséges. Ez nem jelenti azt, hogy az egyszeri bejelentkezés nem lehetséges. Ez azt jelenti, hogy az egyszeri bejelentkezésnek olyan interaktív élményt kell használnia, amelyben egy cookie elérhető az egyszeri bejelentkezés engedélyezéséhez.
 
-Ez azt is jelenti, hogy a MSAL esetén, ha különböző B2C-szabályzatokat használó jogkivonatokat vásárol, ezeket külön fiókokként kezeli a rendszer, amelyek mindegyike saját azonosítóval rendelkezik. Ha `acquireTokenSilent`használatával szeretne jogkivonatot kérni egy fiókkal, akkor ki kell választania a fiókot azon fiókok listájából, amelyek megfelelnek a jogkivonat-kérelemmel használt szabályzatnak. Például:
+Ez azt is jelenti, hogy az MSAL esetében, ha különböző B2C-házirendek használatával szerez be jogkivonatokat, akkor ezeket külön fiókokként kezeli a program - mindegyik saját azonosítóval. Ha egy fiókot szeretne használni a `acquireTokenSilent`token igényléséhez a használatával, akkor ki kell választania a fiókot a fiókok listájából, amely megfelel a jogkivonat-kérelemmel használt szabályzatnak. Példa:
 
 ```java
 // Get Account For Policy

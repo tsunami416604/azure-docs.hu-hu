@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtajának szolgáltatás – az Azure-alkalmazás kézbesítési suite terheléselosztás |} A Microsoft Docs
-description: Ez a cikk segít a további tudnivalók az Azure javasolja a terheléselosztás és a hozzá tartozó kézbesítési alkalmazáscsomag
+title: Azure Bejárati ajtó – Terheléselosztás az Azure alkalmazáskézbesítési csomagjával | Microsoft dokumentumok
+description: Ez a cikk segítséget nyújt arról, hogy az Azure hogyan ajánlja a terheléselosztást az alkalmazáskézbesítési csomaggal
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,79 +11,79 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f8d1959549eaddfb4a2c9ea271094db0073c788
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736500"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471710"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás az Azure alkalmazáskézbesítési csomagjával
 
 ## <a name="introduction"></a>Bevezetés
-A Microsoft Azure több globális és regionális szolgáltatásokat kínál a kezelése, hogyan ossza a hálózati forgalmat és elosztott terhelésű: A TRAFFIC Manager, bejárati ajtajának szolgáltatás, Application Gateway és Load Balancert.  Együtt az Azure számos régióban és a zónaszintű architektúra, ezek a szolgáltatások együttes használata lehetővé teszi nagy teherbírású, méretezhető, nagy teljesítményű alkalmazásokat hozhat létre.
+A Microsoft Azure több globális és regionális szolgáltatást is kínál a hálózati forgalom elosztásának és terheléselosztásának kezeléséhez: Traffic Manager, Bejárati ajtó, Application Gateway és Terheléselosztó.  Az Azure számos régiójával és zónaszintű architektúrájával együtt ezek a szolgáltatások együttes használatával robusztus, méretezhető, nagy teljesítményű alkalmazásokat hozhat létre.
 
-![Alkalmazáscsomag-kézbesítés ][1]
+![Alkalmazáskézbesítési csomag ][1]
  
-Ezek a szolgáltatások megszakadnak a két kategóriába sorolhatók:
-1. **Globális terheléselosztási szolgáltatás** például a Traffic Manager és a bejárati ajtajának elosztani a forgalmat, a végfelhasználók számára a regionális háttérrendszerekre több felhő között, vagy még a hibrid helyszíni szolgáltatásokat. Globális terheléselosztás irányítja a forgalmat a legközelebbi szolgáltatás háttérrendszerhez, és reagálás a módosításokat a szolgáltatás megbízhatóságát és teljesítményét a felhasználók folyamatosan elérhető, a maximális teljesítményének fenntartása érdekében. 
-2. **Regionális terheléselosztási szolgáltatás** például a Standard Load Balancer vagy az Application Gateway lehetővé teszi a virtuális hálózatok (Vnetek) forgalom elosztásához a virtuális gépek (VM) vagy egy adott régión belül zónaszintű Szolgáltatásvégpontok között.
+Ezek a szolgáltatások két kategóriába sorolhatók:
+1. **A globális terheléselosztási szolgáltatások,** például a Traffic Manager és a Bejárati ajtó a végfelhasználóktól érkező forgalmat a regionális háttérrendszereken, felhőkközött vagy akár a hibrid helyszíni szolgáltatások között osztja el. A globális terheléselosztás a forgalmat a legközelebbi szolgáltatás-háttérrendszerhez irányítja, és reagál a szolgáltatás megbízhatóságának vagy teljesítményének változásaira, hogy mindig bekapcsolt, maximális teljesítményt nyújtson a felhasználók számára. 
+2. **A regionális terheléselosztási szolgáltatások,** például a standard terheléselosztó vagy az Application Gateway lehetővé teszik a virtuális hálózatokon (VNE) belüli forgalom elosztását a virtuális gépek (VM-ek) vagy a régión belüli zónaszintű szolgáltatásvégpontok között.
 
-Az alkalmazás a globális és regionális szolgáltatások kombinálásával biztosít egy végpontok közötti megbízható, nagy teljesítményű, és biztonságos módon irányítani a forgalmat, és a felhasználók az IaaS, PaaS, vagy a helyszíni szolgáltatásokhoz. A következő szakaszban ismertetünk az ilyen szolgáltatásokkal.
+A globális és regionális szolgáltatások kombinálása az alkalmazásban egy végponttól végpontig megbízható, nagy teljesítményt nyújt, és biztonságos módja annak, hogy a forgalmat a felhasználók és a felhasználók az IaaS, PaaS vagy helyszíni szolgáltatások. A következő szakaszban ismertetik ezeket a szolgáltatásokat.
 
-## <a name="global-load-balancing"></a>Terhelés globális kiegyenlítéséhez
-**A TRAFFIC Manager** globális DNS terheléselosztást biztosít. Megvizsgálja a beérkező DNS és a egy megfelelően működő háttér megfelelően a vásárlói ki van választva az útválasztási házirend fűzi hozzá. Útválasztási módszerek lehetőségek közül választhat:
-- Teljesítmény-útválasztási a kérelmező küldeni a legközelebbi háttérrendszer késés szempontjából.
-- Az Útválasztás a háttérrendszernek, más háttérrendszerek vissza, az összes forgalom irányítása be prioritás.
-- Súlyozott ciklikus időszeletelés útválasztás, amely elosztja a forgalmat, amely az egyes háttérrendszerek van rendelve a súlyozás alapján.
-- Győződjön meg arról, hogy meghatározott földrajzi régióban lévő kérelmezőket irányítja a háttérrendszerek ezekben a régiókban leképezve a földrajzi útválasztásának (például Spanyolország érkező kérelmek legyen átirányítva a franciaországi központi Azure-régió)
-- Alhálózat útválasztási, amely lehetővé teszi, hogy az IP-címet, hogy azok érkező kéréseket küld az adott háttérrendszer címtartományok háttérkomponenseinek (például a vállalati központ IP-címtartományból csatlakozás minden felhasználó kapja meg, mint az általános különböző webes tartalom felhasználó)
+## <a name="global-load-balancing"></a>Globális terheléselosztás
+**A Traffic Manager** globális DNS-terheléselosztást biztosít. Megvizsgálja a bejövő DNS-kérelmeket, és kifogástalan háttérprogrammal válaszol, az ügyfél által kiválasztott útválasztási házirendnek megfelelően. Az útválasztási módszerek lehetőségei a következők:
+- Teljesítmény-útválasztás a kérelmező nek a legközelebbi háttérrendszerre való elküldéséhez a késés szempontjából.
+- Prioritás-útválasztás az összes forgalmat egy háttérrendszer, más háttérrendszerek biztonsági mentésként.
+- Súlyozott ciklikus multiplexelés útválasztás, amely elosztja a forgalmat az egyes háttér-háttérszolgáltatásokhoz rendelt súlyozás alapján.
+- Földrajzi útválasztás annak biztosítása érdekében, hogy az adott földrajzi régiókban található kérelmezők az ezekhez a régiókhoz leképezett háttérrendszerekre irányuljanak (például a Spanyolországból érkező összes kérelmet a Franciaország közép-azure-régiójába kell irányítani)
+- Alhálózati útválasztás, amely lehetővé teszi az IP-címtartományok hozzárendelését a háttérrendszerekhez, így az ezekből érkező kérések a megadott háttérrendszernek lesznek elküldve (például a vállalati központ IP-címtartományából csatlakozó összes felhasználónak más webes tartalmat kell kapnia, mint az általános felhasználók)
 
-Az ügyfél közvetlenül csatlakozik az adott háttérrendszer. Az Azure Traffic Manager észleli, ha egy háttérszolgáltatás nem kifogástalan, és majd átirányítja a megfelelő egy másik példánya az ügyfelek. Tekintse meg [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) dokumentációban talál további információt a szolgáltatás.
+Az ügyfél közvetlenül csatlakozik a háttérrendszerhez. Az Azure Traffic Manager észleli, ha egy háttérrendszer nem megfelelő állapotú, és majd átirányítja az ügyfeleket egy másik kifogástalan állapotú példányra. A szolgáltatásról az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) dokumentációjában olvashat bővebben.
 
-**Az Azure bejárati ajtajának szolgáltatás** dinamikus webhely gyorsításként (DSA), beleértve a globális HTTP-terheléselosztást biztosít.  Úgy tűnik, bejövő HTTP-kérelmeket a legközelebbi service háttérrendszer útvonalakat és a megadott gazdagépnév, az URL-cím és a konfigurált szabályok régiót.  
-Bejárati ajtajának megszünteti a HTTP-kérelmekre, a Microsoft hálózatához a peremhálózaton, és aktívan mintavételek alkalmazás vagy infrastruktúra állapotát vagy a késés módosítások észleléséhez.  Bejárati ajtajának majd mindig irányítja a forgalmat a leggyorsabb és a rendelkezésre álló (megfelelő) háttérrendszeréhez. Bejárati ajtajának hivatkoznak [útválasztási architektúra](front-door-routing-architecture.md) részletei és [forgalom-útválasztási módszerek](front-door-routing-methods.md) további információ a szolgáltatás.
+**Az Azure Front Door** dinamikus webhelygyorsítást (DSA) biztosít, beleértve a globális HTTP terheléselosztást is.  Megvizsgálja a bejövő HTTP-kérelmek útvonalakat a legközelebbi szolgáltatás háttérrendszer / régió a megadott állomásnév, URL elérési út és a konfigurált szabályok.  
+A Front Door megszakítja a Microsoft hálózatának szélén lévő HTTP-kérelmeket, és aktívan megvizsgálja az alkalmazások vagy az infrastruktúra állapotának vagy késésének változásait.  Bejárati ajtó, majd mindig irányítja a forgalmat a leggyorsabb és a rendelkezésre álló (egészséges) háttér. A szolgáltatásról a Front Door [útválasztási architektúrájának](front-door-routing-architecture.md) részleteiés [forgalomútválasztási módszerei](front-door-routing-methods.md) című dokumentumban olvashat bővebben.
 
-## <a name="regional-load-balancing"></a>Regionális terheléselosztási
-Az Application Gateway alkalmazáskézbesítési vezérlőt (ADC) szolgáltatásként biztosítja, amely számos 7. rétegbeli terheléselosztási lehetőséget nyújt alkalmazásának. Lehetővé teszi az ügyfelek optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások az Alkalmazásátjáró felé történő kiszervezésével. Egyéb 7. rétegbeli útválasztási lehetőségeket tartalmazza, Ciklikus időszeleteléses elosztását bejövő forgalom, a cookie-alapú munkamenet-affinitást, a URL-cím-alapú útválasztás és a egy application gateway mögött több webhelyet is üzemeltethet. Az Application Gateway konfigurálható egy internetre irányuló átjáró, egy belső átjáró vagy mindkettőt. Application Gateway-példány az Azure teljes körűen felügyelt, méretezhető és magas rendelkezésre állású. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
-Load Balancer nagy teljesítményű, kis késleltetésű 4. rétegű terheléselosztási szolgáltatásokat nyújtó UDP és TCP protokoll minden, az Azure SDN-verem szerves részét képezi. Kezeli a bejövő és kimenő kapcsolatokat. A nyilvános és belső elosztott terhelésű végpontok konfigurálása, és definiáljon szabályokat a bejövő kapcsolatok leképezése háttérbeli készletet destinations TCP- és HTTP-állapotellenőrzéséhez beállítások használatával kezelheti a szolgáltatás rendelkezésre állása.
+## <a name="regional-load-balancing"></a>Regionális terheléselosztás
+Az Application Gateway szolgáltatásként biztosítja az alkalmazáskézbesítési vezérlőt (ADC), amely különböző Layer 7 terheléselosztási lehetőségeket kínál az alkalmazásszámára. Lehetővé teszi az ügyfelek számára, hogy optimalizálják a webfarm okait a CPU-igényes SSL-végződés alkalmazásátjáróra történő kiszervezésével. A Layer 7 egyéb útválasztási képességei közé tartozik a bejövő forgalom ciklikus multiplexelése, a cookie-alapú munkamenet-affinitás, az URL-útvonal-alapú útválasztás, valamint az egyetlen alkalmazásátjáró mögött több webhely üzemeltetésének lehetősége. Az Application Gateway konfigurálható internetfelé néző átjáróként, csak belső átjáróként vagy a kettő kombinációjaként. Az Application Gateway teljes mértékben felügyelt, méretezhető és magas rendelkezésre állású. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
+A terheléselosztó az Azure SDN-verem szerves része, amely nagy teljesítményű, alacsony késleltetésű Layer 4 terheléselosztási szolgáltatásokat biztosít az összes UDP- és TCP-protokollhoz. Kezeli a bejövő és kimenő kapcsolatokat. Segítségével nyilvános és belső elosztott terhelésű végpontok konfigurálhatók, valamint szabályok definiálhatók, amelyek a bejövő kapcsolatokat a háttérbeli készletben található célokra irányítják TCP- és HTTP-állapotellenőrzési lehetőségek használatával, a szolgáltatás rendelkezésre állásának felügyeletéhez.
 
 
-## <a name="choosing-a-global-load-balancer"></a>Egy globális a terheléselosztót választja
-A Traffic Manager és az Azure bejárati ajtajának között globális terheléselosztó globális útválasztás kiválasztásakor érdemes mi hasonló, és mi a két szolgáltatás.   Mindkét szolgáltatás megadása
-- **Többszörös közötti redundancia:** Egy adott régióban leáll, ha forgalmat zökkenőmentesen régió felé irányítja a legközelebbi beavatkozása nélkül, az alkalmazás tulajdonosa.
-- **Legközelebb eső régióban útválasztási:** A legközelebbi régió, automatikusan irányítja a forgalmat
+## <a name="choosing-a-global-load-balancer"></a>Globális terheléselosztó kiválasztása
+Amikor globális terheléselosztót választ a Traffic Manager és az Azure Front Door között a globális útválasztáshoz, vegye figyelembe, hogy mi a hasonló, és mi a különbség a két szolgáltatásban.   Mindkét szolgáltatás
+- **Többgeos redundancia:** Ha egy régió leáll, a forgalom zökkenőmentesen a legközelebbi régióba vezet az alkalmazás tulajdonosának beavatkozása nélkül.
+- **Legközelebbi terület-útválasztás:** A forgalom automatikusan a legközelebbi régióba lesz irányítva
 
-</br>Az alábbi táblázat a Traffic Manager és az Azure bejárati ajtajának szolgáltatás közötti különbségeket ismerteti:</br>
+</br>Az alábbi táblázat a Traffic Manager és az Azure Bejárati ajtó közötti különbségeket ismerteti:</br>
 
-| Traffic Manager | Azure Front Door Service |
+| Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**Bármely protokoll:** A Traffic Manager a DNS-rétegben működik, mert irányíthatja a bármilyen típusú hálózati forgalmat; HTTP, a TCP, UDP, stb. | **HTTP-gyorsítás:** Az bejárati ajtajának forgalom nem használ proxyt, a Microsoft Edge-hálózatot.  Emiatt a HTTP (S)-kérelmek tekintse meg a teljesítmény és a késés fejlesztései csökkenti a késéseket az SSL-egyeztetési és a gyakori elérésű AFD kapcsolatot az alkalmazás használatával.|
-|**A helyszíni útválasztási:** A DNS-rétegben útválasztás, a forgalom a pont-pont mindig irányul.  Útválasztás a fiókirodában, a helyszíni adatközpontba is igénybe vehet egy közvetlen elérési útja; a saját hálózaton is a Traffic Managerrel. | **Független méretezhetősége:** Bejárati ajtajának működik együtt a HTTP-kérelem, mert különböző URL-cím elérési utakhoz kérések lehetnek az irányított különböző háttérrendszere / regionális szolgáltatási készletek (mikroszolgáltatás-alapú) alapuló szabályokat és az egyes alkalmazás mikroszolgáltatások állapotát.|
-|**A számlázás formátuma:** DNS-alapú számlázás méretezi a felhasználóival és a szolgáltatások több felhasználóval rendelkező, trületek magasabb használat, a költségek csökkentése érdekében. |**A beágyazott biztonsági:** Bejárati ajtajának lehetővé teszi, hogy a szabályokat, például a sebességkorlátozás és IP-ACL-ing a háttérrendszerekre védelmére, mielőtt a forgalom eléri az alkalmazást. 
+|**Bármilyen protokoll:** Mivel a Traffic Manager a DNS-rétegen működik, bármilyen típusú hálózati forgalmat továbbíthat; HTTP, TCP, UDP stb. | **HTTP-gyorsítás:** A Bejárati ajtó forgalom proxied szélén a Microsoft hálózata.  Emiatt a HTTP(S) kérelmek látnak késés és átviteli fejlesztések csökkenti késés az SSL-egyeztetés és az AFD-ből az alkalmazáshoz való gyorskapcsolatot.|
+|**Helyszíni útválasztás:** Ha a DNS-rétegen halad, a forgalom mindig pontról pontra halad.  Útválasztás a fiókirodából a helyszíni adatközpont is közvetlen elérési utat; még a saját hálózatán is a Traffic Manager használatával. | **Független méretezhetőség:** A Bejárati ajtó a HTTP-kérelemmel működik, a különböző URL-címekre irányuló kérelmek a szabályok és az egyes alkalmazásmikroszolgáltatások állapota alapján különböző háttér- és regionális szolgáltatáskészletekre (mikroszolgáltatások) irányíthatók.|
+|**Számlázási formátum:** A DNS-alapú számlázás a felhasználókkal és a több felhasználóval rendelkező szolgáltatások esetében a költségek csökkentésére szolgáló fennsíkokon méreteket ölthet. |**Szövegközi biztonság:** Bejárati ajtajának lehetővé teszi a szabályok, például a sebességkorlátozás és az IP-ACL-ing, hogy lehetővé teszi a háttérrendszerek védelme előtt a forgalom eléri az alkalmazást. 
 
-</br>A teljesítménnyel, a működési követelmények és a bejárati ajtó a HTTP-munkaterhelések biztonsági funkcióit javasoljuk, ügyfelek bejárati ajtajának használja a HTTP számítási feladatai.    A TRAFFIC Manager és a bejárati ajtajának segítségével párhuzamosan minden forgalmat az alkalmazásához. 
+</br>A Bejárati ajtajával http-munkaterhelések teljesítmény, működőképesség és biztonsági előnyök miatt azt javasoljuk, hogy az ügyfelek a Bejárati ajtót használják a HTTP-munkaterhelésükhöz.    Traffic Manager és a Bejárati ajtó lehet használni párhuzamosan kiszolgálni az alkalmazás összes forgalmat. 
 
-## <a name="building-with-azures-application-delivery-suite"></a>Az Azure tartalomkézbesítési alkalmazáscsomag való fejlesztés 
-Azt javasoljuk, hogy a websites, API-k, az összes szolgáltatás alapvetően georedundáns beállítással rendelkeznek, és a felhasználók a legközelebbi (legkisebb késéssel) a forgalom továbbítására helyet őket, amikor csak lehetséges.  Traffic Manager, bejárati ajtajának szolgáltatás, Application Gateway és a Load Balancer szolgáltatások kombinálásával lehetővé teszi a build földrajzilag és zonally redundáns megbízhatóság, a méretezési csoport és a teljesítmény maximalizálása érdekében.
+## <a name="building-with-azures-application-delivery-suite"></a>Építés az Azure alkalmazáskézbesítési csomagjával 
+Azt javasoljuk, hogy minden webhely, API-k, szolgáltatások földrajzilag redundáns, és forgalmat a felhasználók a legközelebbi (legalacsonyabb késés) helyen őket, amikor csak lehetséges.  A Traffic Manager, a Bejárati ajtó, az Application Gateway és a Terheléselosztó szolgáltatásainak kombinálása lehetővé teszi, hogy földrajzilag és zónaszinten redundáns állapotú szolgáltatásokat hozzon létre a megbízhatóság, a méretezés és a teljesítmény maximalizálása érdekében.
 
-Az alábbi ábrán egy példa szolgáltatás, amely az ezek a szolgáltatások olyan kombinációját használja hozhat létre egy globális webszolgáltatás ismertetünk.   Ebben az esetben a fejlesztő használatban van a Traffic Manager irányíthatja a fájl- és objektum kézbesítési globális háttérrendszerek bejárati ajtajának használatával globálisan irányíthatja az URL-cím elérési utak, amelyek megfelelnek a minta/tároló / * a szolgáltatáshoz, a migrálás az App Service-útválasztás az összes többi közben az Application Gateway-átjárók regionális kérelmeket.
+Az alábbi ábrán egy példaszolgáltatást mutatunk be, amely az összes szolgáltatás kombinációját használja egy globális webszolgáltatás létrehozásához.   Ebben az esetben az építész a Traffic Manager használatával irányította a globális háttérrendszereket a fájl- és objektumkézbesítéshez, miközben a Bejárati ajtót használva globálisan irányítja az URL-útvonalakat, amelyek megfelelnek a /store/* mintának az App Service-be áttelepített szolgáltatáshoz, miközben az összes többi kérelmet a regionális alkalmazásátjárókhoz továbbítják.
 
-A régióban, az IaaS-szolgáltatás, az alkalmazás fejlesztőjének úgy döntött, hogy bármely URL-címek, amelyek megfelelnek a minta/képek / * üzemeltetett virtuális gépek, amelyek eltérnek a web farm többi a dedikált készletből.
+A régióban, az IaaS-szolgáltatás, az alkalmazás fejlesztője úgy döntött, hogy minden URL-t, amely megfelel a minta /images/* szolgálnak ki egy dedikált készlet virtuális gépek, amelyek eltérnek a többi webfarm.
 
-Emellett az alapértelmezett VM-készletet, a dinamikus tartalmat szolgáltató kommunikáljon egy háttérbeli futó adatbázis magas rendelkezésre állású fürt kell. A teljes üzembe helyezés Azure Resource Manageren keresztül állítható be.
+Emellett a dinamikus tartalmat kiszolgáló alapértelmezett virtuálisgép-készletnek egy magas rendelkezésre állású fürtön tárolt háttér-adatbázissal kell beszélnie. A teljes üzembe helyezés az Azure Resource Manageren keresztül van beállítva.
 
-Az alábbi ábra az ebben a forgatókönyvben architektúráját mutatja be:
+Az alábbi ábra a forgatókönyv architektúráját mutatja be:
 
-![Kézbesítési alkalmazáscsomag részletes architektúrája][2] 
+![Alkalmazáskézbesítési csomag részletes architektúrája][2] 
 
 > [!NOTE]
-> Ebben a példában az csak a terheléselosztási szolgáltatások, Azure által kínált számos lehetséges konfigurációk egyik. A TRAFFIC Manager, a bejárati ajtajának, az Application Gateway és a Load Balancer lehet vegyes és terheléselosztási igényeinek legjobban megfeleljen egyeztetését. Például ha SSL alapú kiszervezést, illetve a 7. rétegbeli feldolgozása már nem szükséges, Load Balancer az Application Gateway helyett használható.
+> Ez a példa csak egy a sok lehetséges konfigurációk az Azure által nyújtott terheléselosztási szolgáltatások. A Traffic Manager, a Bejárati ajtó, az Application Gateway és a Terheléselosztó keverhető és a terheléselosztási igényeknek leginkább megfelelően illeszthető. Ha például az SSL-kiszervezés vagy a 7- es réteg feldolgozása nem szükséges, a terheléselosztó használható az Application Gateway helyett.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
 
 <!--Image references-->

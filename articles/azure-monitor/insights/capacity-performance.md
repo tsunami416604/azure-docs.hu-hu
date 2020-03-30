@@ -1,38 +1,38 @@
 ---
-title: Capacity and Performance megoldás a Azure Monitorban | Microsoft Docs
-description: A figyelő Capacity and Performance megoldásával megismerheti a Hyper-V-kiszolgálók kapacitását.
+title: Kapacitás- és teljesítménymegoldás az Azure Monitorban | Microsoft dokumentumok
+description: Használja a Monitor kapacitás- és teljesítménymegoldását a Hyper-V-kiszolgálók kapacitásának megértéséhez.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666943"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>A Hyper-V virtuális gépek kapacitásának megtervezése a Capacity and Performance megoldással (elavult)
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>A Hyper-V virtuálisgép kapacitásának megtervezése a Kapacitás és teljesítmény megoldással (elavult)
 
 ![Kapacitás és teljesítmény szimbólum](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
-> A kapacitás és teljesítmény-megoldás elavult.  Ügyfelek, akik már telepítették a megoldás továbbra is használhatja, de a kapacitásra és teljesítményre nem vehető új munkaterületek.
+> A Kapacitás és teljesítmény megoldás elavult.  Azok az ügyfelek, akik már telepítették a megoldást, továbbra is használhatják, de a Kapacitás és a Teljesítmény nem adható hozzá új munkaterületekhez.
 
-A figyelő Capacity and Performance megoldásával könnyebben megismerheti a Hyper-V-kiszolgálók kapacitását. A megoldás biztosítja, hogy a Hyper-V környezetébe insights jeleníti meg a teljes kihasználtság (Processzor, memória és lemezek) a gazdagépek és a Hyper-V gazdagépeken futó virtuális gépek. Metrikákat gyűjt CPU, memória és a lemezek az összes gazdagép és a rajtuk futó virtuális gépek között.
+A Monitor kapacitás- és teljesítménymegoldásával megismerheti a Hyper-V-kiszolgálók kapacitását. A megoldás betekintést nyújt a Hyper-V környezetbe azáltal, hogy bemutatja a gazdagépek és a Hyper-V gazdagépeken futó virtuális gépek általános kihasználtságát (CPU, memória és lemez). Metrikák a cpu, a memória és a lemezek az összes gazdagép és a rajtuk futó virtuális gépek között.
 
 A megoldás:
 
--   A legmagasabb és legalacsonyabb CPU és memória kihasználtságáról gazdagépei láthatók
--   Virtuális gépek látható, legmagasabb és legalacsonyabb CPU és memória kihasználtságáról
--   Virtuális gépek látható, legmagasabb és legalacsonyabb IOPS és átviteli kihasználtság
--   Jeleníti meg, amely a virtuális gépek mely állomásokon futnak
--   A felső lemezek nagy átviteli sebesség, IOPS és a késés jeleníti meg a fürt megosztott kötete
-- Lehetővé teszi, hogy testre szabhatja és szűrése csoportok alapján
+-   A legmagasabb és a legalacsonyabb processzorral és memóriakihasználtsú állomások megjelenítése
+-   A legmagasabb és a legalacsonyabb processzorral és memóriakihasználtsú virtuális gépeket jeleníti meg
+-   A legmagasabb és a legalacsonyabb IOPS-értékkel és átviteli kihasználtsult megjelenítő virtuális gépeket jeleníti meg
+-   Megmutatja, hogy mely virtuális gépek futnak, mely gazdagépeken
+-   A nagy átviteli sebességgel, IOPS-szal és késéssel rendelkező legfelső lemezek megjelenítése a fürt megosztott kötetein
+- Lehetővé teszi csoportok alapján testre szabható és szűrhet
 
 > [!NOTE]
-> A kapacitásra és teljesítményre megoldást a kapacitáskezelés előző verziója szükséges a System Center Operations Manager és a System Center Virtual Machine Manager. A frissített megoldás ezeket a függőségeket nem rendelkezik.
+> A Kapacitás- és teljesítménymegoldás korábbi verziójához, a Capacity Managementhez a System Center Operations Manager és a System Center Virtual Machine Manager is szükséges. Ez a frissített megoldás nem rendelkezik ezekkel a függőségekkel.
 
 
 ## <a name="connected-sources"></a>Összekapcsolt források
@@ -41,92 +41,92 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 | Összekapcsolt forrás | Támogatás | Leírás |
 |---|---|---|
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Igen | A megoldás kapacitás és teljesítmény adatokkal kapcsolatos információk Windows-ügynököktől gyűjti. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem    | A megoldás nem kapacitás és teljesítmény adatok adatainak gyűjtését a Linux-ügynökök közvetlen.|
-| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Igen |A megoldás egy csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől származó kapacitás és teljesítmény adatokat gyűjt. Az SCOM-ügynöktől a Log Analyticshez való közvetlen kapcsolat nem kötelező.|
-| [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | Az Azure storage nem tartalmaz a kapacitás-és teljesítményadatokat.|
+| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Igen | A megoldás kapacitás- és teljesítményadatokat gyűjt a Windows-ügynököktől. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem    | A megoldás nem gyűjt kapacitás- és teljesítményadatokat a közvetlen Linux-ügynököktől.|
+| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Igen |A megoldás kapacitás- és teljesítményadatokat gyűjt egy csatlakoztatott SCOM felügyeleti csoport ügynökeitől. Az SCOM-ügynök közvetlen kapcsolata a Log Analytics szolgáltatással nem szükséges.|
+| [Azure tárfiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | Az Azure storage nem tartalmazza a kapacitás és a teljesítmény adatokat.|
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Windows vagy az Operations Manager-ügynököket a Windows Server 2012 vagy újabb Hyper-V gazdagépek, virtuális gépek nem kell telepíteni.
+- A Windows vagy az Operations Manager ügynököket windows Server 2012 vagy újabb Hyper-V állomásokra kell telepíteni, nem pedig virtuális gépekre.
 
 
 ## <a name="configuration"></a>Konfiguráció
 
-Hajtsa végre a következő lépéseket a kapacitás és teljesítmény megoldás hozzáadása a munkaterülethez.
+Hajtsa végre a következő lépést a Kapacitás és teljesítmény megoldás munkaterülethez való hozzáadásához.
 
-- Adja hozzá a Capacity and Performance megoldást a Log Analytics munkaterülethez az [Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárással.
+- Adja hozzá a Kapacitás és teljesítmény megoldást a Log Analytics-munkaterülethez a [Megoldások tárból származó LogAnalytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című részben ismertetett folyamat tal.
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha az SCOM felügyeleti csoport a Log Analytics-munkaterülethez van csatlakoztatva, majd a következő felügyeleti csomagokat telepíti az SCOM Ez a megoldás hozzáadásakor. Ezek a felügyeleti csomagok nem igényelnek további konfigurációs vagy karbantartási feladatokat.
+Ha az SCOM felügyeleti csoport csatlakozik a Log Analytics-munkaterülethez, akkor a következő felügyeleti csomagok lesznek telepítve az SCOM-ban a megoldás hozzáadásakor. Ezek a felügyeleti csomagok nem igényelnek további konfigurációs vagy karbantartási feladatokat.
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 
-A 1201 esemény a következőhöz hasonló:
+Az 1201-es esemény a következőkhöz hasonlít:
 
 
 ```
 New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
 ```
 
-Ha a kapacitás és teljesítmény megoldás frissül, a verziószám változik.
+A Kapacitás és teljesítmény megoldás frissítésekor a verziószám megváltozik.
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
-A kapacitásra és teljesítményre megoldás ad hozzá a munkaterülethez, ha a kapacitás és teljesítmény hozzáadódik az áttekintő irányítópult. Ez a csempe jelenleg aktív Hyper-V-gazdagépek számát jeleníti meg, és is figyeli az adott időszakban aktív virtuális gépek számát kiválasztva.
+Amikor hozzáadja a Kapacitás és teljesítmény megoldást a munkaterülethez, a Kapacitás és teljesítmény hozzáadódik az Áttekintés irányítópulthoz. Ez a csempe az aktuálisan aktív Hyper-V-állomások számát és a figyelt aktív virtuális gépek számát jeleníti meg a kiválasztott időszakban.
 
 ![Kapacitás és teljesítmény csempe](./media/capacity-performance/capacity-tile.png)
 
 
-### <a name="review-utilization"></a>Tekintse át a kihasználtság
+### <a name="review-utilization"></a>Használat áttekintése
 
-Kattintson a kapacitás és teljesítmény csempére a kapacitás és teljesítmény irányítópultjának megnyitásához. Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlopban legfeljebb tíz olyan elem jelenik meg, amely megfelel a megadott hatóköri és időtartományi kritériumoknak. Az oszlop alján található **Az összes megtekintése** elemre vagy az oszlop fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
+Kattintson a Kapacitás és teljesítmény csempére a Kapacitás és teljesítmény irányítópult megnyitásához. Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlopban legfeljebb tíz olyan elem jelenik meg, amely megfelel a megadott hatóköri és időtartományi kritériumoknak. Az oszlop alján található **Az összes megtekintése** elemre vagy az oszlop fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-- **Gazdagépek**
-    - **GAZDAGÉP CPU-kihasználtsága** Megjeleníti a gazdagépek CPU-kihasználtságának grafikus trendjét, valamint a gazdagépek listáját a kiválasztott időszak alapján. A kurzort a vonaldiagram időben egy adott időpontra részleteinek megtekintéséhez. Kattintson a diagramra további részletek megtekintése a naplókeresésben. Kattintson bármely Naplókeresés megnyitásához, ahol megtekintheti a CPU-számláló adatai üzemeltetett virtuális gépek gazdagép nevére.
-    - **Gazdagép memóriájának kihasználtsága** A gazdagépek memóriájának kihasználtságát és a gazdagépek listáját jeleníti meg a kiválasztott időszak alapján. A kurzort a vonaldiagram időben egy adott időpontra részleteinek megtekintéséhez. Kattintson a diagramra további részletek megtekintése a naplókeresésben. Kattintson bármely Naplókeresés megnyitásához, ahol megtekintheti a memória számláló adatai üzemeltetett virtuális gépek gazdagép nevére.
-- **Virtual Machines**
-    - **Virtuális gép CPU-kihasználtsága** Megjeleníti a virtuális gépek CPU-kihasználtságának grafikus trendjét, valamint a virtuális gépek listáját a kiválasztott időszak alapján. A kurzort a vonaldiagramot egy adott időpontra részleteinek megtekintése az idő az első 3 virtuális gépek. Kattintson a diagramra további részletek megtekintése a naplókeresésben. Kattintson bármely Naplókeresés megnyitásához, ahol megtekintheti a CPU-számláló összesített adatai a virtuális gép virtuális gép nevére.
-    - **Virtuális gépek memóriájának kihasználtsága** Megjeleníti a virtuális gépek memóriahasználat és a virtuális gépek listájának grafikus trendjét a kiválasztott időszak alapján. A kurzort a vonaldiagramot egy adott időpontra részleteinek megtekintése az idő az első 3 virtuális gépek. Kattintson a diagramra további részletek megtekintése a naplókeresésben. Kattintson bármely virtuális gép neve a Naplókeresés megnyitásához, és a virtuális gép összesített memória számláló részleteinek megtekintéséhez.
-    - **Virtuális gép – teljes lemez IOPS** Megjeleníti a virtuális gépek teljes IOPS grafikus trendjeit, valamint a virtuális gépek listáját, amelyekhez a IOPS a kiválasztott időszak alapján. A kurzort a vonaldiagramot egy adott időpontra részleteinek megtekintése az idő az első 3 virtuális gépek. Kattintson a diagramra további részletek megtekintése a naplókeresésben. Kattintson az egyik virtuális gép nevére, és nyissa meg a napló keresési és összesített lemez-IOPS részletek számláló a virtuális gép.
-    - **Virtuális gép teljes lemezének átviteli sebessége** Megjeleníti a virtuális gépek teljes lemezének átviteli sebességét, valamint a kiválasztott időszak alapján a virtuális gépek teljes lemezes átviteli sebességét tartalmazó listát. A kurzort a vonaldiagramot egy adott időpontra részleteinek megtekintése az idő az első 3 virtuális gépek. Kattintson a diagramra további részletek megtekintése a naplókeresésben. Kattintson bármely Naplókeresés megnyitásához, ahol megtekintheti a összesített lemez teljes átviteli sebesség teljesítményszámláló adatait a virtuális gép virtuális gép nevére.
+- **Házigazdák**
+    - **Állomás CPU-kihasználtsága** A gazdaszámítógépek cpu-kihasználtságának grafikus trendjét és az állomások listáját jeleníti meg a kiválasztott időszak alapján. Mutasson a vonaldiagramra egy adott időpont részleteinek megtekintéséhez. Kattintson a diagramra a további részletek megtekintéséhez a naplókeresésben. Kattintson bármelyik állomásnévre a naplókeresés megnyitásához és a üzemeltetett virtuális gépek CPU-számlálójának részleteinek megtekintéséhez.
+    - **Gazdamemória kihasználtsága** A gazdaszámítógépek memóriafelhasználásának grafikus trendjét és az állomások listáját jeleníti meg a kiválasztott időszak alapján. Mutasson a vonaldiagramra egy adott időpont részleteinek megtekintéséhez. Kattintson a diagramra a további részletek megtekintéséhez a naplókeresésben. Kattintson bármelyik állomásnévre a naplókeresés megnyitásához és a tárolt virtuális gépek memóriaszámláló-részleteinek megtekintéséhez.
+- **Virtuális gépek**
+    - **Virtuális gép cpu-kihasználtsága** A virtuális gépek CPU-kihasználtságának grafikus trendjét és a virtuális gépek listáját jeleníti meg a kiválasztott időszak alapján. Vigye az egérmutatót a vonaldiagram fölé a felső 3 virtuális gép adott időpontjának részleteinek megtekintéséhez. Kattintson a diagramra a további részletek megtekintéséhez a naplókeresésben. Kattintson bármelyik virtuális gép nevére a naplókeresés megnyitásához és a virtuális gép összesített CPU-számlálórészleteinek megtekintéséhez.
+    - **Virtuális gép memóriakihasználtsága** A virtuális gépek memóriakihasználtságának grafikus trendjét és a virtuális gépek listáját jeleníti meg a kiválasztott időszak alapján. Vigye az egérmutatót a vonaldiagram fölé a felső 3 virtuális gép adott időpontjának részleteinek megtekintéséhez. Kattintson a diagramra a további részletek megtekintéséhez a naplókeresésben. Kattintson bármelyik virtuális gép nevére a naplókeresés megnyitásához és a virtuális gép összesített memóriaszámláló-részleteinek megtekintéséhez.
+    - **Virtuális gép teljes lemezi iOPS-a** A virtuális gépek teljes lemezIOPS-azonosítójának grafikus trendjét jeleníti meg, és a kiválasztott időszak alapján az egyes eszközökre vonatkozó IOPS-t tartalmazó virtuális gépek listáját jeleníti meg. Vigye az egérmutatót a vonaldiagram fölé a felső 3 virtuális gép adott időpontjának részleteinek megtekintéséhez. Kattintson a diagramra a további részletek megtekintéséhez a naplókeresésben. Kattintson bármelyik virtuális gép nevét a naplókeresés megnyitásához és a virtuális gép összesített lemez IOPS-számláló részleteinek megtekintéséhez.
+    - **Virtuális gép teljes lemezátviteli-átata** A virtuális gépek teljes lemezátviteli-állásának grafikus trendjét és az egyes gépek teljes lemezátviteli-átmenő virtuális gépeinek listáját jeleníti meg a kiválasztott időszak alapján. Vigye az egérmutatót a vonaldiagram fölé a felső 3 virtuális gép adott időpontjának részleteinek megtekintéséhez. Kattintson a diagramra a további részletek megtekintéséhez a naplókeresésben. Kattintson bármelyik virtuális gép nevére a naplókeresés megnyitásához és a virtuális gép összesített teljes lemezátviteli számlálójának részleteinek megtekintéséhez.
 - **Fürtözött megosztott kötetek**
-    - **Teljes átviteli sebesség** A fürtözött megosztott kötetek olvasási és írási összegét jeleníti meg.
-    - **Összes IOPS** A fürtözött megosztott köteteken másodpercenkénti bemeneti/kimeneti műveletek összegét jeleníti meg.
-    - **Teljes késés** Megjeleníti a fürtözött megosztott kötetek teljes késését.
-- **Gazdagép sűrűsége** A felső csempe a megoldás számára elérhető gazdagépek és virtuális gépek teljes számát jeleníti meg. Kattintson a felső csempére a naplókeresésben további részletek megtekintéséhez. Minden gazdagép és a virtuális gépek számát is megjeleníti. Kattintson egy gazdagépet a virtuális gép találatok a Naplókeresés részletes.
+    - **Teljes átviteli** A fürtözött megosztott kötetekolvasásek és írások összegzését jeleníti meg.
+    - **IOPS összesen** A fürtözött megosztott köteteken másodpercenkénti bemeneti/kimeneti műveletek összegét jeleníti meg.
+    - **Teljes késés** A fürtözött megosztott kötetek teljes késését jeleníti meg.
+- **Állomás sűrűsége** A legfelső csempén a megoldás számára elérhető állomások és virtuális gépek teljes száma látható. A naplókeresésben a legfelső csempére kattintva megtekintheti a további részleteket. Felsorolja az összes állomást és a üzemeltetett virtuális gépek számát is. Kattintson egy állomásra a virtuális gép eredményeinek naplókeresésben történő részletezéséhez.
 
 
-![Irányítópult gazdagépek panel](./media/capacity-performance/dashboard-hosts.png)
+![műszerfal hosts panel](./media/capacity-performance/dashboard-hosts.png)
 
-![Irányítópult (virtuális gépek) panel](./media/capacity-performance/dashboard-vms.png)
+![műszerfal virtuális gépek blade](./media/capacity-performance/dashboard-vms.png)
 
 
 ### <a name="evaluate-performance"></a>Teljesítmény kiértékelése
 
-Éles környezetekhez nagy mértékben eltérnek egymástól az egyik szervezetből történő egy másikba. Ezenkívül számítási kapacitás és teljesítmény függhet hogyan a virtuális gépek futnak, és mit érdemes normál. Konkrét útmutatást mérték teljesítményt valószínűleg nem alkalmazhatók a környezetre. Így több általánosítva előíró útmutatás a jobban illeszkednek az segítségével. A Microsoft tesz közzé, előírásszerű útmutató cikkek segítségével különböző mérhetik a teljesítményt.
+A termelési számítástechnikai környezetek nagymértékben különböznek szervezetenként. Emellett a kapacitás és a teljesítmény számítási feladatok függhet a ttól, hogy a virtuális gépek futnak, és mit tekint normálisnak. A teljesítmény mérését segítő speciális eljárások valószínűleg nem vonatkoznak a környezetre. Így az általánosabb előíró útmutatás alkalmasabb a segítségre. A Microsoft számos előíró útmutatócikket tesz közzé a teljesítmény mérése érdekében.
 
-Összefoglalva, az a megoldás kapacitás és teljesítmény adatokat gyűjt különböző forrásokból, beleértve a teljesítményszámlálókat. Használja ezt a kapacitást és teljesítményadatokat, amelyet a megoldás különböző felületeinek mutatnak be, és hasonlítsa össze az eredményeket a [Hyper-V cikk mérési teljesítményének](https://msdn.microsoft.com/library/cc768535.aspx) megfelelő értékekkel. Bár a cikket régebben lett közzétéve, a metrikák, szempontokat és irányelveket még érvényesek. A cikk egyéb hasznos források hivatkozásait tartalmazza.
+Összefoglalva, a megoldás kapacitás- és teljesítményadatokat gyűjt különböző forrásokból, beleértve a teljesítményszámlálókat is. Használja ki a megoldás különböző felületein megjelenő kapacitás- és teljesítményadatokat, és hasonlítsa össze az eredményeket a [Hyper-V mérési teljesítmény című](https://msdn.microsoft.com/library/cc768535.aspx) cikkében szereplő adatokkal. Bár a cikk néhány évvel ezelőtt jelent meg, a mérőszámok, szempontok és irányelvek továbbra is érvényesek. A cikk más hasznos forrásokra mutató hivatkozásokat tartalmaz.
 
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
-Az alábbi táblázat a kapacitás és teljesítmény adatokat gyűjteni, és a megoldás által számított naplókeresési mintákat tartalmazza.
+Az alábbi táblázat mintanapló-kereséseket tartalmaz az ezzel a megoldással gyűjtött és kiszámított kapacitás- és teljesítményadatokra vonatkozóan.
 
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| Az összes gazdagép-memóriakonfiguráció | Teljesítményoptimalizált &#124; ahol ObjectName == "Kapacitás és teljesítmény" és a CounterName == "Gazdagép hozzárendelt memória (MB)" &#124; MB összefoglalója avg(CounterValue) által InstanceName = |
-| Az összes Virtuálisgép-memóriakonfiguráció | Teljesítményoptimalizált &#124; ahol ObjectName == "Kapacitás és teljesítmény" és a CounterName == "Virtuális Géphez rendelt memória (MB)" &#124; MB összefoglalója avg(CounterValue) által InstanceName = |
-| Minden virtuális gép teljes lemez IOPS-művelet részletezése | Teljesítményoptimalizált &#124; ahol ObjectName == "Kapacitás és teljesítmény" és a (CounterName == "VHD olvasás/mp" vagy CounterName == "VHD írási műveletek/s") &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), amelyet CounterName, InstanceName |
-| Minden virtuális gép teljes lemez átviteli sebességének részletezése | Teljesítményoptimalizált &#124; ahol ObjectName == "Kapacitás és teljesítmény" és a (CounterName == "VHD olvasási MB/s" vagy CounterName == "VHD Write MB/s") &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), amelyet CounterName, InstanceName |
-| Az összes CSV-k összes i/o-művelet részletezése | Teljesítményoptimalizált &#124; ahol ObjectName == "Kapacitás és teljesítmény" és a (CounterName == "CSV olvasás/mp" vagy CounterName == "CSV-írási műveletek/s") &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), amelyet CounterName, InstanceName |
-| Minden CSV-n teljes átviteli sebességének részletezése | Teljesítményoptimalizált &#124; ahol ObjectName == "Kapacitás és teljesítmény" és a (CounterName == "CSV olvasás/mp" vagy CounterName == "CSV-írási műveletek/s") &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), amelyet CounterName, InstanceName |
-| Minden CSV-n teljes késés részletezése | Teljesítményoptimalizált &#124; ahol ObjectName == "Kapacitás és teljesítmény" és a (CounterName == "CSV olvasási késés" vagy CounterName == "CSV írási késés") &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), amelyet CounterName, InstanceName |
+| Az összes állomásmemória-konfiguráció | Perf &#124; ahol az ObjectName == "Kapacitás és teljesítmény" és a CounterName == "Állomás hozzárendelt memória MB" &#124; összegzi az MB = átlagot(CounterValue) a InstanceName szerint |
+| Az összes virtuálisgép-memória konfigurációja | Perf &#124; ahol az ObjectName == "Kapacitás és teljesítmény" és a CounterName == "VM hozzárendelt memória MB" &#124; összegzi az MB = átlagot(CounterValue) a InstanceName szerint |
+| A teljes lemez IOPS-ának lebontása az összes virtuális gép között | Perf &#124; ahol az ObjectName == "Kapacitás és teljesítmény" és (CounterName == "VHD olvasás/s" vagy CounterName == "VHD writes/s") &#124; összegző összesített érték = átlag(CounterValue) bin(TimeGenerated, 1h), CounterName, InstanceName |
+| A teljes lemezátviteli-rendszer lebontása az összes virtuális gép között | Perf &#124; ahol az ObjectName == "Kapacitás és teljesítmény" és (CounterName == "VHD Read MB/s" vagy CounterName == "VHD Write MB/s") &#124; összegződik az AggregatedValue = avg(CounterValue) tárolóval(TimeGenerated, 1h), CounterName, InstanceName |
+| Az összes IOPS bontása az összes CSV-n | Perf &#124; ahol az ObjectName == "Kapacitás és teljesítmény" és (CounterName == "CSV olvasás/s" vagy CounterName == "CSV írások/s") &#124; összegződik az AggregatedValue = avg(CounterValue) raktárhely(TimeGenerated, 1h), CounterName, InstanceName szerint |
+| A teljes átviteli érték bontása az összes csv-n | Perf &#124; ahol az ObjectName == "Kapacitás és teljesítmény" és (CounterName == "CSV olvasás/s" vagy CounterName == "CSV írások/s") &#124; összegződik az AggregatedValue = avg(CounterValue) raktárhely(TimeGenerated, 1h), CounterName, InstanceName szerint |
+| A teljes késés bontása az összes csv-n | Perf &#124; ahol az ObjectName == "Kapacitás és teljesítmény" és (CounterName == "CSV olvasási késés" vagy countername == "CSV írási késés") &#124; összegezi az AggregatedValue = avg(CounterValue) raktárhely(TimeGenerated, 1h), CounterName, InstanceName |
 
 
-## <a name="next-steps"></a>Következő lépések
-* A részletes Capacity and Performance-információk megtekintéséhez használja [a log Analytics a naplóbeli kereséseket](../../azure-monitor/log-query/log-query-overview.md) .
+## <a name="next-steps"></a>További lépések
+* A [Log Analytics naplókeresései](../../azure-monitor/log-query/log-query-overview.md) vel részletes kapacitás- és teljesítményadatokat tekinthet meg.

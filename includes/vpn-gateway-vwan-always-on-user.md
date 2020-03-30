@@ -8,24 +8,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7d2248360e499aab79459d0be549da3d8baa79ab
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500196"
 ---
-## <a name="configure-a-user-tunnel"></a>Felhasználói alagút konfigurálása
+1. Telepítse az ügyféltanúsítványokat a Windows 10-ügyfélre, ahogy az a [pont-hely VPN ügyfélcikkben](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) látható. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie.
 
-1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélre, ahogyan az ebben a [pont – hely VPN-ügyfél](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) című cikkben látható. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie.
+1. Konfigurálja a Mindig VPN-ügyfélen a PowerShellen, a Configuration Manageren vagy az Intune-on keresztül a Mindig VPN-kapcsolatokon beállítást követően a [Windows 10-ügyfél konfigurálása mindig VPN-kapcsolatokon](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)című útmutató utasításait követve.
 
-1. Konfigurálja az Always On VPN-ügyfelet a PowerShell, a Configuration Manager vagy az Intune használatával a [Windows 10-ügyfél konfigurálása mindig a VPN-kapcsolatokon](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)című témakör útmutatását követve.
+### <a name="example-configuration-for-the-user-tunnel"></a>Példa konfigurációa a felhasználói alagút
 
-### <a name="example-configuration-for-the-user-tunnel"></a>Példa a felhasználói alagút konfigurációjának használatára
+Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a Windows 10-ügyfél helyi számítógéptárolójában, konfiguráljon egy ügyféleszköz-alagutat az alábbi példák használatával:
 
-Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a Windows 10-es ügyfél helyi számítógép tárolójába, konfigurálja az ügyfél-eszköz alagutat az alábbi példák használatával:
-
-1. Másolja a következő szöveget, és mentse a *usercert. ps1*néven:
+1. Másolja a következő szöveget, és mentse *a usercert.ps1:*
 
    ```
    Param(
@@ -77,7 +75,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja az alábbi szöveget, és mentse *VPNProfile. XML* néven a *usercert. ps1*fájl mappájába. Szerkessze a következő szöveget a környezetének megfelelően:
+1. Másolja a következő szöveget a következő szövegbe, és mentse *VPNProfile.xml* fájlként ugyanabba a mappába, mint a *usercert.ps1*fájl. A környezetnek megfelelően szerkesztheti a következő szöveget:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -123,13 +121,13 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    ```
 1. Futtassa a PowerShellt rendszergazdaként.
 
-1. A PowerShellben váltson arra a mappára, ahol a *usercert. ps1* és az *VPNProfile. xml fájl* található, és futtassa a következő parancsot:
+1. A PowerShellben váltson arra a mappára, amelyben a *usercert.ps1* és a *VPNProfile.xml* fájl található, és futtassa a következő parancsot:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. A **VPN-beállítások**területen keresse meg a **UserTest** bejegyzést, majd válassza a **Csatlakozás**lehetőséget.
+1. A **VPN-beállítások**csoportban keresse meg a **UserTest** bejegyzést, majd válassza a **Csatlakozás**lehetőséget.
 
-1. Ha a kapcsolatok sikeresek, sikeresen konfigurált egy mindig felhasználói alagutat.
+1. Ha a kapcsolat sikeres, sikeresen konfigurált egy Mindig bekapcsolva felhasználói alagutat.

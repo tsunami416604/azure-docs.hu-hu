@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: dc334932bfd57bc81a58314ee68f02aeed520f41
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670950"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetria a Visual Studio CodeLensben
@@ -67,10 +67,10 @@ További részletekért kattintson a CodeLens-kérésjelzőre:
 * A **Trend** segítségével megtekintheti a kérések, meghiúsult kérések vagy átlagos válaszidők trendjének vizualizációját az elmúlt 24 órából.
 * A CodeLens-adatok forrásának módosításához válassza ki az Application Insights-erőforrás nevét a CodeLens részletes nézetének bal felső sarkában.
 
-## <a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 |  |  |
 | --- | --- |
 | **[Az Application Insights használata a Visual Studióban](../../azure-monitor/app/visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/visual-studio-codelens/34.png) |
 | **[További adatok hozzáadása](../../azure-monitor/app/asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio-codelens/64.png) |
-| **[Az Application Insights-portál használata](../../azure-monitor/app/overview-dashboard.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/visual-studio-codelens/62.png) |
+| **[Az Application Insights portál használata](../../azure-monitor/app/overview-dashboard.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/visual-studio-codelens/62.png) |
 

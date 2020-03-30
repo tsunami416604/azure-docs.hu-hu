@@ -1,6 +1,6 @@
 ---
-title: Apache Hive használata ETL-eszközként – Azure HDInsight
-description: A Apache Hive használatával kinyerheti, átalakíthatja és betöltheti az ETL-adatok az Azure HDInsight-ben.
+title: Az Apache Hive használata ETL-eszközként – Azure HDInsight
+description: Az Apache Hive használatával kinyerheti, átalakíthatja és betöltheti (ETL) adatait az Azure HDInsightban.
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,30 +9,30 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623115"
 ---
-# <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként
+# <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Az Apache Hive használata kivonat, átalakítás és betöltés (ETL) eszközként
 
-A beérkező adatbevitelt általában úgy kell megtisztítani és átalakítani, hogy az a megfelelő helyre kerüljön az elemzéshez. A kinyerési, átalakítási és betöltési (ETL) műveletek az adatok előkészítéséhez és egy adatcélhelybe való betöltéséhez használatosak.  A HDInsight Apache Hive a strukturálatlan adatban is olvashatók, szükség szerint feldolgozza az adatfeldolgozást, majd betölti az összes adatát egy kapcsolódó adattárházba a döntési támogatási rendszerek esetében. Ebben a megközelítésben az adatok kinyerése a forrásból történik, és méretezhető tárolóban (például Azure Storage-blobokban vagy Azure Data Lake Storage) tárolódik. A rendszer ezután átalakítja a kaptár-lekérdezések sorát, és végül a kaptáron belül, a cél adattárba való tömeges betöltés előkészítéséhez készíti el azokat.
+Általában meg kell tisztítania és át kell alakítania a bejövő adatokat, mielőtt betöltené azokat egy elemzésre alkalmas célhelyre. A kinyerési, átalakítási és betöltési (ETL) műveletek az adatok előkészítésére és az adatcélba való betöltésére szolgálnak.  A HDInsight-on futó Apache Hive képes olvasni strukturálatlan adatokban, szükség szerint feldolgozni az adatokat, majd betölteni az adatokat egy relációs adattárházba a döntéstámogató rendszerek hez. Ebben a megközelítésben az adatok kinyerése a forrásból, és méretezhető tároló, például az Azure Storage blobok vagy az Azure Data Lake Storage tárolja. Az adatok ezután átalakulnak a Hive-lekérdezések sorozata, és végül a Hive-n belül előkészítve a cél adattárba való tömeges betöltése.
 
-## <a name="use-case-and-model-overview"></a>Használati eset és modell áttekintése
+## <a name="use-case-and-model-overview"></a>Használati eset és modell – áttekintés
 
-Az alábbi ábra az ETL Automation használati eseteit és modelljét mutatja be. A bemeneti adatok át lettek alakítva a megfelelő kimenet létrehozásához.  Az átalakítás során az adattípust, az adattípust és a nyelvet is módosíthatja.  Az ETL-folyamatok átalakítják az Imperial-t metrikára, módosíthatja az időzónákat, és javíthatják a pontosságot, hogy megfelelően illeszkedjenek a cél meglévő adataihoz.  Az ETL-folyamatok az új adatok meglévő adatokkal való összevonásával naprakészen tarthatják a jelentéseket, vagy további információkat biztosíthatnak a meglévő adatokról.  Az olyan alkalmazások, mint például a Jelentéskészítő eszközök és szolgáltatások, a kívánt formátumban használhatják ezeket az eszközöket.
+Az alábbi ábra áttekintést nyújt az ETL-automatizálás használati esetéről és modelljéről. A bemeneti adatok a megfelelő kimenet létrehozásához alakulnak át.  Az átalakítás során az adatok megváltoztathatják az alakot, az adattípust és akár a nyelvet is.  Az ETL-folyamatok metrikussá alakíthatják az Imperialt, módosíthatják az időzónákat, és javíthatják a pontosságot, hogy megfelelően igazodjanak a célban meglévő adatokhoz.  Az ETL-folyamatok az új adatokat a meglévő adatokkal is kombinálhatják, hogy naprakészen tartsák a jelentéseket, vagy hogy további betekintést nyújtsanak a meglévő adatokba.  Az alkalmazások, például a jelentéskészítő eszközök és szolgáltatások ezután a kívánt formátumban felhasználhatók.
 
-![Apache Hive ETL-architektúra](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+![Apache Hive mint ETL architektúra](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-A Hadoop jellemzően olyan ETL-folyamatokban használják, amelyek nagy mennyiségű szövegfájlt (például CSV) vagy kisebb, de gyakran változó számú szövegfájlt vagy mindkettőt importálnak.  A kaptár egy nagyszerű eszköz, amellyel előkészítheti az adatfeldolgozást, mielőtt betölti azt az adatcélhelybe.  A struktúra lehetővé teszi, hogy létrehoz egy sémát a CSV-fájlon keresztül, és SQL-szerű nyelven hozzon létre MapReduce-programokat, amelyek az adatkezeléssel működnek együtt.
+A Hadoop-ot általában olyan ETL folyamatokban használják, amelyek nagyszámú szöveges fájlt (például CSV-t) vagy kisebb, de gyakran változó számú szöveges fájlt importálnak, vagy mindkettőt.  Hive egy nagyszerű eszköz, amelynek segítségével előkészíti az adatokat betöltése előtt az adatok cél.  Hive lehetővé teszi, hogy hozzon létre egy sémát a CSV felett, és egy SQL-szerű nyelvet hozhat létre MapReduce programok, amelyek kölcsönhatásba lépnek az adatokkal.
 
-A Kaptárnak az ETL végrehajtásához való használatának tipikus lépései a következők:
+A Hive-nek az ETL végrehajtásához való használatának tipikus lépései a következők:
 
-1. Betöltheti az adatAzure Data Lake Storage vagy az Azure Blob Storage.
-2. Hozzon létre egy metaadat-tároló adatbázist (a Azure SQL Database használatával) a sémák tárolásához a kaptár használatával.
-3. Hozzon létre egy HDInsight-fürtöt, és kapcsolódjon az adattárhoz.
-4. Adja meg az adattárban található adatolvasáskor alkalmazandó sémát:
+1. Adatok betöltése az Azure Data Lake Storage vagy az Azure Blob Storage.
+2. Hozzon létre egy Metadata Store-adatbázist (az Azure SQL Database használatával) a Hive által a sémák tárolásához.
+3. Hozzon létre egy HDInsight-fürtöt, és csatlakoztassa az adattárból.
+4. Adja meg azt a sémát, amelyet olvasáskor szeretne alkalmazni az adattárban lévő adatokkal szemben:
 
     ```
     DROP TABLE IF EXISTS hvac;
@@ -48,48 +48,48 @@ A Kaptárnak az ETL végrehajtásához való használatának tipikus lépései a
     STORED AS TEXTFILE LOCATION 'wasbs://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
-5. Alakítsa át az adatszerkezetet, és töltse be a célhelyre.  A struktúra több módon is használható az átalakítás és a betöltés során:
+5. Alakítsa át az adatokat, és töltse be a célhelyre.  A Hive-ot az átalakítás és a betöltés során többféleképpen is használhatja:
 
-    * Megkérdezheti és előkészítheti az adatstruktúrákat a kaptár használatával, és mentheti CSV-ként Azure Data Lake Storage vagy Azure Blob Storage-tárolóban.  Ezután használjon olyan eszközt, mint a SQL Server Integration Services (SSIS), hogy megszerezze ezeket a CSV, és betöltse az adattárolót egy célként szolgáló, például SQL Serverba.
-    * Az adatok lekérdezése közvetlenül az Excelből vagy C# a kaptár ODBC-illesztő használatával.
-    * Az [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) használatával olvassa el az előkészített CSV-fájlokat, és töltse be azokat a cél-viszonyítási adatbázisba.
+    * Adatok lekérdezése és előkészítése a Hive használatával, és mentse csv-ként az Azure Data Lake Storage vagy az Azure blob storage használatával.  Ezután az SQL Server Integration Services (SSIS) eszközhöz hasonló eszközzel szerezze be ezeket a csv-ket, és töltse be az adatokat egy célrelációs adatbázisba, például az SQL Serverbe.
+    * Az adatok lekérdezése közvetlenül az Excel vagy a C# a Hive ODBC illesztőprogram használatával.
+    * Az [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) segítségével olvassa el az előkészített lapos CSV-fájlokat, és töltse be őket a célrelációs adatbázisba.
 
 ## <a name="data-sources"></a>Adatforrások
 
-Az adatforrások jellemzően olyan külső információk, amelyek az adattár meglévő adataihoz is illeszkednek, például:
+Az adatforrások általában olyan külső adatok, amelyek megfelelhetnek az adattárban lévő adatoknak, például:
 
-* Az adatfájlokat létrehozó közösségi adathordozók, naplófájlok, érzékelők és alkalmazások.
-* Adatszolgáltatókból beszerzett adatkészletek, például időjárási statisztikák vagy szállítói értékesítési számok.
-* Egy megfelelő eszközön vagy keretrendszeren keresztül rögzített, szűrt és feldolgozott adatátviteli adatcsatorna.
+* Közösségi médiaadatok, naplófájlok, érzékelők és adatfájlokat generáló alkalmazások.
+* Adatszolgáltatóktól, például időjárási statisztikáktól vagy szállítói értékesítési számoktól kapott adatkészletek.
+* A megfelelő eszközön vagy keretrendszeren keresztül rögzített, szűrt és feldolgozott adatfolyamok.
 
 <!-- TODO: (see Collecting and loading data into HDInsight). -->
 
 ## <a name="output-targets"></a>Kimeneti célok
 
-A kaptár használatával több célra is elvégezheti az adatokat, többek között a következőket:
+A Hive segítségével különböző célokhoz adhat ki adatokat, többek között a következőkre:
 
-* Egy rokon adatbázis, például SQL Server vagy Azure SQL Database.
-* Egy adattárház, például Azure SQL Data Warehouse.
+* Relációs adatbázis, például SQL Server vagy Azure SQL Database.
+* Egy adattárház, például az Azure SQL Data Warehouse.
 * Excel.
-* Azure Table és blob Storage.
-* Azok az alkalmazások vagy szolgáltatások, amelyeknek az adatok meghatározott formátumokba való feldolgozására, vagy adott típusú adatszerkezetet tartalmazó fájlokra van szükségük.
-* Egy JSON-dokumentum tárolója, például [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/).
+* Azure-tábla és blob storage.
+* Olyan alkalmazások vagy szolgáltatások, amelyek nél az adatokat meghatározott formátumokba vagy meghatározott típusú információstruktúrát tartalmazó fájlokká kell feldolgozni.
+* A JSON document store, mint az [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-## <a name="considerations"></a>Megfontolások
+## <a name="considerations"></a>Megfontolandó szempontok
 
-Az ETL modellt általában a következő esetekben használja a rendszer:
+Az ETL modell általában akkor használatos, ha a következőket szeretné:
 
-* Egy meglévő adatbázisba vagy információs rendszerbe betöltheti a külső forrásokból származó, részben strukturált vagy strukturálatlan adatok adatfolyamait vagy nagy mennyiségű részét.
-* Megtisztíthatja, átalakíthatja és érvényesítheti az adataikat a betöltés előtt, például a fürtön keresztül egynél több transzformációs folyamat használatával.
-* Jelentéseket és vizualizációkat készíthet, amelyek rendszeresen frissülnek. Ha például a jelentés túl hosszú időt vesz igénybe a nap folyamán, a jelentést a következő időpontban is futtathatja:. A kaptár-lekérdezések automatikus futtatásához használhatja a [Azure Logic apps](../../logic-apps/logic-apps-overview.md) és a PowerShellt is.
+* Adatfolyam-adatok vagy nagy mennyiségű, külső forrásokból származó félig strukturált vagy strukturálatlan adat betöltése egy meglévő adatbázisba vagy információs rendszerbe.
+* Tisztítsa meg, alakítsa át és érvényesítse az adatokat betöltése előtt, esetleg egynél több átalakítási áthaladás sal a fürtön keresztül.
+* Rendszeresen frissített jelentések és vizualizációk létrehozása. Ha például a jelentés létrehozása túl sokáig tart a nap folyamán, ütemezheti a jelentés éjszakai futtatását. A Hive-lekérdezés automatikus futtatásához [használhatja az Azure Logic Apps](../../logic-apps/logic-apps-overview.md) és a PowerShell.
 
-Ha az adatelérési cél nem adatbázis, a lekérdezésen belül, például egy CSV-fájlban is létrehozhatja a megfelelő formátumú fájlt. Ez a fájl ezután importálható az Excelbe vagy a Power BIba.
+Ha az adatok célja nem adatbázis, a lekérdezésen belül a megfelelő formátumú fájlt hozhat létre, például csv-t. Ez a fájl ezután importálható az Excelbe vagy a Power BI-ba.
 
-Ha több műveletet kell végrehajtania az adatokon az ETL-folyamat részeként, gondolja át, hogyan kezeli őket. Ha a műveleteket egy külső program vezérli, nem pedig a megoldáson belüli munkafolyamatként, el kell döntenie, hogy vannak-e párhuzamosan végrehajtható műveletek, valamint az egyes feladatok befejezésének észlelése. A munkafolyamati mechanizmusok, például a Hadoop belüli Oozie könnyebben megoldhatók, mint a külső parancsfájlok vagy egyéni programok használatával végzett műveletek sorrendjének kipróbálása. További információ a Oozie: [munkafolyamatok és feladatok](https://msdn.microsoft.com/library/dn749829.aspx)összehangolása.
+Ha az ETL-folyamat részeként több műveletet kell végrehajtania az adatokon, fontolja meg, hogyan kezeli őket. Ha a műveleteket egy külső program vezérli, nem pedig a megoldáson belüli munkafolyamat, el kell döntenie, hogy egyes műveletek párhuzamosan hajthatók-e végre, és észlelnie kell, ha az egyes feladatbefejeződik. A hadoopon belüli oozie-hoz hasonló munkafolyamat-mechanizmus használata egyszerűbb lehet, mint külső parancsfájlok vagy egyéni programok használatával műveletek sorozatának vezénylése. Az Oozie-ról további információt a [Munkafolyamat és a feladatvezényezés című témakörben](https://msdn.microsoft.com/library/dn749829.aspx)talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [ETL-skála](apache-hadoop-etl-at-scale.md)
-* [Adatfolyamatok működővé tenni](../hdinsight-operationalize-data-pipeline.md)
+* [ETL méretarányban](apache-hadoop-etl-at-scale.md)
+* [Adatfolyamat üzembe építése](../hdinsight-operationalize-data-pipeline.md)
 
 <!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->

@@ -1,57 +1,59 @@
 ---
-title: Gyors útmutató az Azure-alkalmazások konfigurálásához a Azure Functionskal | Microsoft Docs
-description: Útmutató az Azure-alkalmazások konfigurálásához a Azure Functions használatával.
+title: Az Azure App konfigurációjának rövid útmutatója az Azure Functions funkcióival | Microsoft dokumentumok
+description: Rövid útmutató az Azure App Configuration és az Azure Functions használatához.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207064"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245497"
 ---
-# <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
+# <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Rövid útmutató: Azure Functions alkalmazás létrehozása az Azure App konfigurációjával
 
-Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatást egy Azure Functions alkalmazásba, hogy központilag központosítsa az összes Alkalmazásbeállítások tárolását és kezelését.
+Ebben a rövid útmutatóban az Azure App Konfigurációs szolgáltatás egy Azure Functions alkalmazás központosíthatja a tárolás és az alkalmazás beállításainak kezelése a kódtól elkülönítve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) az **Azure-fejlesztési** számítási feladattal.
-- [Eszközök Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) az **Azure fejlesztési** munkaterheléssel.
+- [Az Azure Functions eszközei](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
-## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
+## <a name="create-an-app-configuration-store"></a>Alkalmazáskonfigurációs tároló létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
+6. A következő kulcsérték-párok hozzáadásához válassza a **Configuration Explorer** > + Create**Key-value (Kulcsérték** **létrehozása)** > lehetőséget:
 
-    | Paraméter | Érték |
+    | Kulcs | Érték |
     |---|---|
-    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp:Beállítások:Üzenet | Az Azure App konfigurációjából származó adatok |
 
-    Most hagyja üresen a **címke** és a **tartalom típusát** .
+    Egyelőre hagyja üresen a **Címke** és **a Tartalomtípus** mezőt.
 
-## <a name="create-a-functions-app"></a>Functions-alkalmazás létrehozása
+7. Kattintson az **Alkalmaz** gombra.
+
+## <a name="create-a-functions-app"></a>Functions alkalmazás létrehozása
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
+## <a name="connect-to-an-app-configuration-store"></a>Csatlakozás alkalmazáskonfigurációs tárolóhoz
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagot a projekthez. Ha nem találja, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
+1. Kattintson a jobb gombbal a projektre, és válassza **a NuGet csomagok kezelése parancsot.** A **Tallózás** lapon keresse `Microsoft.Extensions.Configuration.AzureAppConfiguration` meg és adja hozzá a NuGet csomagot a projekthez. Ha nem találja, jelölje be az **Előzetes kiadás belefoglalása** jelölőnégyzetet.
 
-2. Nyissa meg a *Function1.cs*, és adja hozzá a .net Core konfiguráció és az alkalmazás konfigurációs szolgáltatójának névtereit.
+2. Nyissa *meg a Function1.cs,* és adja hozzá a .NET Core konfiguráció és az alkalmazáskonfigurációs szolgáltató névtereit.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Adjon hozzá egy `Configuration` nevű `static` tulajdonságot a `IConfiguration`egy egyedi példányának létrehozásához. Ezután vegyen fel egy `static` konstruktort az alkalmazás-konfigurációhoz való kapcsolódáshoz `AddAzureAppConfiguration()`meghívásával. Ez az alkalmazás indításakor automatikusan betöltődik a konfigurációba. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később.
+3. Adjon `static` hozzá `Configuration` egy nevű tulajdonságot a `IConfiguration`singleton példányának létrehozásához. Ezután `static` adjon hozzá egy konstruktot, hogy csatlakozzon az alkalmazás konfigurációjához a hívással. `AddAzureAppConfiguration()` Ez egyszer betölti a konfigurációt az alkalmazás indításakor. Ugyanaz a konfigurációs példány lesz később az összes Függvényhíváshoz.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -64,7 +66,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
     }
     ```
 
-4. Frissítse a `Run` metódust a konfiguráció értékeinek olvasásához.
+4. Frissítse `Run` a metódust, hogy értékeket olvasson be a konfigurációból.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -83,41 +85,41 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
-1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazáskonfigurációs tároló hozzáférési kulcsára. Ha a Windows parancssorát használja, futtassa a következő parancsot, és indítsa újra a parancssort a módosítás érvénybe léptetéséhez:
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
-    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
+    Ha windows PowerShellt használ, futtassa a következő parancsot:
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
 
-    Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
+    MacOS vagy Linux használata esetén futtassa a következő parancsot:
 
     ```bash
         export ConnectionString='connection-string-of-your-app-configuration-store'
     ```
 
-2. Nyomja le az F5 billentyűt a függvény teszteléséhez. Ha a rendszer kéri, fogadja el a Visual Studiótól érkező kérést **Azure functions Core (CLI)** eszközök letöltéséhez és telepítéséhez. Előfordulhat, hogy egy tűzfal-kivételt is engedélyeznie kell, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
+2. A funkció teszteléséhez nyomja meg az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az **Azure Functions Core (CLI)** eszközök letöltésére és telepítésére. Előfordulhat, hogy engedélyeznie kell egy tűzfalkivételt is, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
 
 3. Másolja a függvény URL-címét az Azure-függvény futtatókörnyezetéből.
 
-    ![Gyors üzembe helyezési funkció hibakeresése a VS-ben](./media/quickstarts/function-visual-studio-debugging.png)
+    ![Gyorsindítási függvény hibakeresése a VS-ben](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az alábbi képen a böngészőben a függvény által visszaadott helyi GET kérelemre adott válasz látható.
+4. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az alábbi képen a böngészőben a függvény által visszaadott helyi GET-kérésre adott válasz látható.
 
-    ![A Gyorsindítás funkció helyi elindítása](./media/quickstarts/dotnet-core-function-launch-local.png)
+    ![A Quickstart függvény helyi indítása](./media/quickstarts/dotnet-core-function-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazáskonfigurációs áruházat, és használta azt egy Azure Functions alkalmazással az [alkalmazáskonfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha meg szeretné tudni, hogyan konfigurálhatja az Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-azure-functions-csharp.md)

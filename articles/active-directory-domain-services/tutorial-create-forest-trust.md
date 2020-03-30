@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – erdőszintű megbízhatósági kapcsolat létrehozása a Azure AD Domain Servicesban | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre egyirányú kimenő erdőt helyszíni AD DS tartományba a Azure Portalban Azure AD Domain Services
+title: Oktatóanyag – Erdőszintű bizalmi kapcsolat létrehozása az Azure AD tartományi szolgáltatásokban | Microsoft dokumentumok
+description: Megtudhatja, hogy miként hozhat létre egy egyirányú kimenő erdőt egy helyszíni AD DS-tartományhoz az Azure AD tartományi szolgáltatásokhoz létrehozott Azure AD-s portálon
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,208 +11,208 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612520"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Oktatóanyag: kimenő erdőszintű megbízhatósági kapcsolat létrehozása helyi tartományhoz Azure Active Directory Domain Services (előzetes verzió)
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Oktatóanyag: Kimenő erdőszintű bizalmi kapcsolat létrehozása egy helyszíni tartományba az Azure Active Directory tartományi szolgáltatásokban (előzetes verzió)
 
-Olyan környezetekben, ahol nem lehet szinkronizálni a jelszavakat, vagy ha olyan felhasználókkal rendelkezik, akik kizárólag intelligens kártyákkal jelentkeznek be, ezért nem ismerik a jelszavukat, használhat Azure Active Directory Domain Services (AD DS) erőforrás-erdőt. Az erőforrás-erdő egyirányú kimenő bizalmi kapcsolatot használ az Azure AD DS egy vagy több helyszíni AD DS környezetbe. Ez a megbízhatósági kapcsolat lehetővé teszi a felhasználók, az alkalmazások és a számítógépek számára a helyszíni tartományon belüli hitelesítést az Azure AD DS felügyelt tartományból. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
+Olyan környezetekben, ahol nem szinkronizálhatja a jelszókivét, vagy olyan felhasználókkal rendelkezik, akik kizárólag intelligens kártyákkal jelentkeznek be, így nem ismerik a jelszavukat, használhat egy erőforráserdőt az Azure Active Directory tartományi szolgáltatásokban (AD DS). Az erőforrás-erdő egyirányú kimenő megbízhatósági kapcsolatot használ az Azure AD DS-ből egy vagy több helyszíni AD DS-környezetbe. Ez a megbízhatósági kapcsolat lehetővé teszi a felhasználók, alkalmazások és számítógépek hitelesítését az Azure AD DS felügyelt tartományból származó helyszíni tartományban. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban.
 
-![Az Azure AD DS és a helyszíni AD DS közötti erdőszintű megbízhatóság diagramja](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Az Azure AD DS és a helyszíni AD DS közötti erdőszintű bizalmi kapcsolat diagramja](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A DNS konfigurálása helyszíni AD DS környezetben az Azure AD DS-kapcsolat támogatásához
-> * Egyirányú bejövő erdőszintű megbízhatósági kapcsolat létrehozása helyszíni AD DS környezetben
-> * Egyirányú kimenő erdőszintű megbízhatósági kapcsolat létrehozása az Azure-ban AD DS
-> * A hitelesítés és az erőforrás-hozzáférés megbízhatósági kapcsolatának tesztelése és ellenőrzése
+> * A DNS konfigurálása helyszíni Active AD DS-környezetben az Azure AD DS-kapcsolat támogatásához
+> * Egyirányú bejövő erdőszintű bizalmi kapcsolat létrehozása helyszíni AD DS-környezetben
+> * Egyirányú kimenő erdőszintű bizalmi kapcsolat létrehozása az Azure AD DS-ben
+> * A hitelesítéshez és az erőforrás-hozzáféréshez szükséges megbízhatósági kapcsolat tesztelése és ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
+Az oktatóanyag végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
-* Egy Azure Active Directory Domain Services felügyelt tartomány, amely egy erőforrás-erdő használatával lett létrehozva, és az Azure AD-bérlőben van konfigurálva.
-    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance-advanced].
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
+    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
+* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány egy erőforráserdő használatával létrehozott és az Azure AD-bérlőben konfigurált.
+    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory tartományi szolgáltatások példányát.][create-azure-ad-ds-instance-advanced]
     
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy Azure AD DS felügyelt tartományt hoz létre egy *erőforrás* -erdő használatával. Az alapértelmezett beállítás egy *felhasználói* erdőt hoz létre. Csak az erőforrás-erdők hozhatnak létre megbízhatósági kapcsolatot a helyszíni AD DS környezetekben. Emellett legalább a *vállalati* SKU-t kell használnia a felügyelt tartományhoz. Ha szükséges, [módosítsa az SKU-t egy Azure AD DS felügyelt tartományhoz][howto-change-sku].
+    > Győződjön meg arról, hogy hozzon létre egy Azure AD DS felügyelt tartomány t *erőforráserdő* használatával. Az alapértelmezett beállítás *felhasználói* erdőt hoz létre. Csak az erőforrás-erdők hozhatnak létre megbízhatósági kapcsolatokat az ad ds-környezetekben. A felügyelt tartományhoz legalább egy *vállalati* termékváltozatot is használnia kell. Szükség esetén [módosítsa az Azure AD DS felügyelt tartományának termékváltozatát.][howto-change-sku]
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Ebben az oktatóanyagban a Azure Portal használatával hozza létre és konfigurálja a kimenő erdőszintű megbízhatósági kapcsolatot az Azure-AD DS. Első lépésként jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Ebben az oktatóanyagban hozza létre és konfigurálja a kimenő erdőszintű bizalmi kapcsolatot az Azure AD DS-ből az Azure Portalhasználatával. Első lépésekhez először jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
 ## <a name="networking-considerations"></a>Hálózati megfontolások
 
-Az Azure AD DS erőforrás-erdőt üzemeltető virtuális hálózatnak a helyszíni Active Directory hálózati kapcsolatra van szüksége. Az alkalmazásoknak és a szolgáltatásoknak hálózati kapcsolatra van szükségük az Azure AD DS erőforrás-erdőt üzemeltető virtuális hálózathoz is. Az Azure AD DS erőforrás-erdőhöz való hálózati kapcsolatnak mindig és stabilnak kell lennie, különben előfordulhat, hogy a felhasználók nem tudják hitelesíteni vagy elérni az erőforrásokat.
+Az Azure AD DS-erőforráserdőt üzemeltető virtuális hálózatnak hálózati kapcsolatra van szüksége a helyszíni Active Directoryval. Az alkalmazásoknak és szolgáltatásoknak is hálózati kapcsolatra van szükségük az Azure AD DS erőforráserdőt üzemeltető virtuális hálózathoz. Az Azure AD DS erőforráserdő hálózati kapcsolatának mindig bekapcsolva és stabilnak kell lennie, különben a felhasználók nem hitelesíthetik vagy nem férhetnek hozzá az erőforrásokhoz.
 
-Mielőtt erdőszintű megbízhatósági kapcsolatot konfigurál az Azure AD DSban, győződjön meg arról, hogy az Azure és a helyszíni környezet közötti hálózatkezelés megfelel a következő követelményeknek:
+Mielőtt erdőszintű megbízhatósági kapcsolatot konfigurálna az Azure AD DS szolgáltatásban, győződjön meg arról, hogy az Azure és a helyszíni környezet közötti hálózatkezelés megfelel az alábbi követelményeknek:
 
-* Magánhálózati IP-címek használata. Ne használja a DHCP-t dinamikus IP-címek hozzárendelésével.
-* Kerülje az átfedésben lévő IP-címek használatát, hogy a virtuális hálózatok és az Útválasztás sikeresen kommunikáljon az Azure-ban és a helyszínen.
-* Egy Azure-beli virtuális hálózatnak szüksége van egy átjáró-alhálózatra a helyek közötti (S2S) VPN-vagy ExpressRoute-kapcsolat konfigurálásához.
-* Hozzon létre elegendő IP-címmel rendelkező alhálózatokat a forgatókönyv támogatásához.
-* Győződjön meg arról, hogy az Azure AD DS rendelkezik saját alhálózattal, ne ossza meg ezt a virtuális hálózati alhálózatot az Application VM és a Services szolgáltatással.
-* A társ virtuális hálózatok nem tranzitívak.
-    * Az Azure-beli virtuális hálózatokat az összes olyan virtuális hálózat között létre kell hozni, amely az Azure AD DS erőforrás-erdő megbízhatóságát szeretné használni a helyszíni AD DS környezetben.
-* Folyamatos hálózati kapcsolatot biztosít a helyszíni Active Directory erdőben. Ne használjon igény szerinti kapcsolatokat.
-* Győződjön meg arról, hogy folyamatos névfeloldás (DNS) van az Azure AD DS erőforrás-erdő neve és a helyszíni Active Directory erdő neve között.
+* Használjon privát IP-címeket. Ne hagyatkozzon dinamikus IP-cím-hozzárendeléssel rendelkező DHCP-re.
+* Kerülje az egymást átfedő IP-címterek, hogy a virtuális hálózati társviszony-létesítés és útválasztás sikeresen kommunikálni az Azure és a helyszíni.
+* Az Azure virtuális hálózatnak átjáróalhálózatra van szüksége a helyek közötti (S2S) VPN- vagy ExpressRoute-kapcsolat konfigurálásához
+* Hozzon létre olyan alhálózatokat, amelyek elegendő IP-címmel támogatják a forgatókönyvet.
+* Győződjön meg arról, hogy az Azure AD DS saját alhálózattal rendelkezik, ne ossza meg ezt a virtuális hálózati alhálózatot az alkalmazás virtuális gépeivel és szolgáltatásaival.
+* A társviszonyba vett virtuális hálózatok nem tranzitívak.
+    * Az Azure virtuális hálózati társviszony-létesítések létre kell hozni az összes virtuális hálózatok szeretné használni az Azure AD DS erőforrás-erdő szintű bizalmi kapcsolatot a helyszíni AD DS-környezetben.
+* Folyamatos hálózati kapcsolat biztosítása a helyszíni Active Directory-erdőhöz. Ne használjon igény szerinti kapcsolatokat.
+* Győződjön meg arról, hogy az Azure AD DS-erőforrás neve és a helyszíni Active Directory erdőneve között folyamatos névfeloldás (DNS) van.
 
 ## <a name="configure-dns-in-the-on-premises-domain"></a>A DNS konfigurálása a helyszíni tartományban
 
-Ha az Azure AD DS felügyelt tartományát a helyszíni környezetből szeretné megfelelően feloldani, lehetséges, hogy továbbítókat kell hozzáadnia a meglévő DNS-kiszolgálókhoz. Ha nem konfigurálja a helyszíni környezetet az Azure AD DS felügyelt tartományával folytatott kommunikációra, hajtsa végre a következő lépéseket a helyszíni AD DS tartomány felügyeleti munkaállomásáról:
+Az Azure AD DS felügyelt tartomány ának a helyszíni környezetből történő helyes feloldásához előfordulhat, hogy továbbítókat kell hozzáadnia a meglévő DNS-kiszolgálókhoz. Ha még nem konfigurálta a helyszíni környezetet az Azure AD DS felügyelt tartományával való kommunikációra, hajtsa végre a következő lépéseket a helyszíni ActiveÁd-tartományi szolgáltatások tartományfelügyeleti munkaállomásáról:
 
-1. Válassza a **Start | Felügyeleti eszközök | DNS**
-1. Kattintson a jobb gombbal a DNS-kiszolgáló, például a *myAD01*lehetőségre, majd válassza a **Tulajdonságok** lehetőséget.
-1. Válassza a **továbbítók**, majd a **Szerkesztés** lehetőséget a további továbbítók hozzáadásához.
-1. Adja hozzá az Azure AD DS felügyelt tartomány IP-címeit, például a *10.0.1.4* és a *10.0.1.5*.
+1. Válassza **a Start | Adminisztratív eszközök | DNS**
+1. Válassza ki a jobb oldali DNS-kiszolgálót, például *a myAD01-et,* válassza a **Tulajdonságok lehetőséget.**
+1. Válassza **a Továbbítók**lehetőséget, majd **a Szerkesztés lehetőséget** további továbbítók hozzáadásához.
+1. Adja hozzá az Azure AD DS felügyelt tartományÁNAK IP-címét, például *a 10.0.1.4* és *a 10.0.1.5.*
 
-## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Bejövő erdőszintű megbízhatóság létrehozása a helyszíni tartományban
+## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Bejövő erdőszintű bizalmi kapcsolat létrehozása a helyszíni tartományban
 
-A helyszíni AD DS tartománynak szüksége van egy bejövő erdőszintű megbízhatóságra az Azure AD DS felügyelt tartományhoz. Ezt a megbízhatóságot manuálisan kell létrehozni a helyszíni AD DS tartományban, nem hozható létre a Azure Portalból.
+A helyszíni AD DS-tartománynak bejövő erdőszintű megbízhatósági kapcsolatra van szüksége az Azure AD DS felügyelt tartományában. Ezt a megbízhatósági kapcsolatot manuálisan kell létrehozni a helyszíni AD DS-tartományban, nem hozható létre az Azure Portalon.
 
-A helyi AD DS tartomány bejövő megbízhatóságának konfigurálásához hajtsa végre az alábbi lépéseket a helyszíni AD DS tartomány felügyeleti munkaállomásáról:
+A helyszíni Active Ád DS-tartomány bejövő bizalmi kapcsolatának konfigurálásához hajtsa végre a helyszíni Active Ád Tartományi szolgáltatások tartomány felügyeleti munkaállomásának következő lépéseit:
 
-1. Válassza a **Start | Felügyeleti eszközök | Tartományok és megbízhatósági kapcsolatok Active Directory**
-1. Kattintson a jobb gombbal a tartomány, például a *onprem.contoso.com*, majd a **Tulajdonságok** elemre.
-1. Válassza a **Megbízhatóságok** lapot, majd az **új megbízhatóság** elemet.
+1. Válassza **a Start | Adminisztratív eszközök | Active Directory – tartományok és megbízhatósági kapcsolatok**
+1. Válassza ki a jobb oldali tartományt, például *onprem.contoso.com,* válassza a **Tulajdonságok lehetőséget.**
+1. Válassza **a Megbízhatóság ok a** lapot, majd az Új **megbízhatósági kapcsolatok lapot**
 
    > [!NOTE]
-   > Ha nem látja a **megbízhatósági kapcsolatok** menüt, ellenőrizze a **Tulajdonságok** területen az *erdő típusát*. Csak az *erőforrás* -erdők hozhatnak létre megbízhatósági kapcsolatokat. Ha az erdő típusa *felhasználó*, nem hozhat létre megbízhatósági kapcsolatot. Jelenleg nincs lehetőség egy Azure AD DS felügyelt tartomány erdő-típusának módosítására. Törölnie kell, majd újra létre kell hoznia a felügyelt tartományt erőforrás-erdőként.
+   > Ha nem látható a **Megbízhatóságok** menü, jelölje be az Erdő típus **tulajdonságai** *csoportjában.* Csak *az erőforráserdők* hozhatnak létre bizalmi kapcsolatokat. Ha az erdő típusa *Felhasználó,* nem hozhat létre bizalmi kapcsolatokat. Jelenleg nincs mód az Azure AD DS felügyelt tartomány erdőtípusának módosítására. A felügyelt tartományt erőforráserdőként kell törölnie, majd újra létrehoznia.
 
-1. Adja meg a nevet az Azure AD DS tartománynév, például *aaddscontoso.com*, majd kattintson a **tovább** gombra.
-1. Válassza az **erdőszintű megbízhatóság**létrehozása lehetőséget, majd hozzon létre egy **módszert: bejövő** megbízhatóság.
-1. Válassza **ezt a tartományt csak**a megbízhatósági kapcsolat létrehozásához. A következő lépésben létrehozza a megbízhatóságot az Azure AD DS felügyelt tartományhoz tartozó Azure Portalban.
-1. Válassza az **erdőszintű hitelesítés**használata lehetőséget, majd adja meg és erősítse meg a megbízhatósági jelszót. Ugyanezt a jelszót is megadta a Azure Portal a következő szakaszban.
-1. Lépjen be a következő néhány Windows alapértelmezett beállításokkal, majd válassza a nem lehetőséget **, ne erősítse meg a kimenő megbízhatóságot**.
-1. Válassza a **Befejezés** lehetőséget.
+1. Adja meg a nevet az Azure AD DS tartománynevében, például *aaddscontoso.com,* majd válassza a **Tovább gombot.**
+1. Válassza ki az **erdőszintű bizalmi kapcsolat**létrehozásának lehetőségét, majd hozzon létre egy **egyirányú: bejövő** bizalmi kapcsolatot.
+1. Válassza ki, hogy csak ehhez a **tartományhoz hozza-e**létre a bizalmi kapcsolatot. A következő lépésben hozza létre a megbízhatóságot az Azure AD DS felügyelt tartományban az Azure AD DS felügyelt tartományban.
+1. Válassza az **erdőszintű hitelesítés**t, majd adja meg és erősítse meg a megbízhatósági jelszót. Ugyanez a jelszó is megvan adva az Azure Portalon a következő szakaszban.
+1. Lépjen végig a következő néhány ablakon az alapértelmezett beállításokkal, majd válassza a **Nem lehetőséget, ne erősítse meg a kimenő bizalmi kapcsolatot**.
+1. **Befejezés** kiválasztása
 
-## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Kimenő erdőszintű megbízhatósági kapcsolat létrehozása az Azure-ban AD DS
+## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Kimenő erdőszintű bizalmi kapcsolat létrehozása az Azure AD DS szolgáltatásban
 
-Az Azure AD DS felügyelt tartomány és a létrehozott bejövő erdőszintű megbízhatósági kapcsolat megoldására konfigurált helyszíni AD DS tartománnyal most létrehozta a kimenő erdőszintű megbízhatóságot. Ez a kimenő erdőszintű megbízhatósági kapcsolat befejezi a helyszíni AD DS tartomány és az Azure AD DS felügyelt tartomány közötti megbízhatósági kapcsolatot.
+A helyszíni AD DS-tartomány konfigurálva az Azure AD DS felügyelt tartomány és egy bejövő erdő megbízhatósági kapcsolat létre, most létrehozta a kimenő erdő megbízhatósági kapcsolat. Ez a kimenő erdőszintű bizalmi kapcsolat befejezi a helyszíni AD DS-tartomány és az Azure AD DS felügyelt tartomány közötti megbízhatósági kapcsolatot.
 
-A Azure Portal Azure AD DS felügyelt tartomány kimenő megbízhatóságának létrehozásához hajtsa végre a következő lépéseket:
+Az Azure AD DS által felügyelt tartomány kimenő megbízhatósági kapcsolatának létrehozásához hajtsa végre az alábbi lépéseket:
 
-1. A Azure Portal keresse meg és válassza ki a **Azure ad Domain Services**elemet, majd válassza ki a felügyelt tartományt, például *aaddscontoso.com*
-1. Az Azure AD DS felügyelt tartomány bal oldali menüjében válassza a **Megbízhatóságok**lehetőséget, majd válassza a **+ megbízhatóság hozzáadása** lehetőséget.
-1. Adja meg a megbízhatóságot azonosító megjelenítendő nevet, majd a helyszíni megbízható erdő DNS-nevét, például *onprem.contoso.com*
-1. Adja meg ugyanazt a megbízhatósági jelszót, amelyet a rendszer az előző szakaszban található helyszíni AD DS tartományhoz tartozó bejövő erdő megbízhatóságának konfigurálásakor használt.
-1. Adjon meg legalább két DNS-kiszolgálót a helyszíni AD DS tartományhoz, például *10.0.2.4* és *végpontjául szolgáló*
-1. Ha elkészült, **mentse** a kimenő erdő megbízhatóságát
+1. Az Azure Portalon keresse meg és válassza ki az **Azure AD tartományi szolgáltatásokat,** majd válassza ki a felügyelt tartományt, például *aaddscontoso.com*
+1. Az Azure AD DS felügyelt tartomány bal oldalán található menüben válassza a **Megbízhatóságok**lehetőséget, majd válassza a + Bizalmi kapcsolat **hozzáadása lehetőséget.**
+1. Adjon meg egy megjelenítendő nevet, amely azonosítja a megbízhatóságot, majd a helyszíni megbízható erdő DNS-nevét, például *onprem.contoso.com*
+1. Adja meg ugyanazt a megbízhatósági jelszót, amelyet a helyszíni AD DS-tartomány bejövő erdőszintű megbízhatósági kapcsolatának konfigurálásakor használt az előző szakaszban.
+1. Legalább két DNS-kiszolgáló biztosítása a helyszíni AD DS-tartományhoz, például *10.0.2.4* és *10.0.2.5*
+1. Ha készen áll, **mentse** a kimenő erdőszintű bizalmi kapcsolatot
 
-    [Kimenő erdőszintű megbízhatóság létrehozása a Azure Portalban](./media/create-forest-trust/portal-create-outbound-trust.png)
+    [Kimenő erdőszintű bizalmi kapcsolat létrehozása az Azure Portalon](./media/create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>Erőforrás-hitelesítés ellenőrzése
 
-A következő gyakori forgatókönyvekkel ellenőrizheti, hogy az erdőszintű megbízhatóság helyesen hitelesíti-e a felhasználókat és az erőforrásokhoz való hozzáférést:
+Az alábbi gyakori esetekben ellenőrizheti, hogy az erdőszintű bizalmi kapcsolat megfelelően hitelesíti-e a felhasználókat és az erőforrásokhoz való hozzáférést:
 
-* [Helyszíni felhasználói hitelesítés az Azure AD DS erőforrás-erdőben](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
-* [Erőforrásokhoz való hozzáférés az Azure AD DS erőforrás-erdőben helyszíni felhasználó használatával](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
-    * [Fájl-és nyomtatómegosztás engedélyezése](#enable-file-and-printer-sharing)
-    * [Biztonsági csoport létrehozása és Tagok hozzáadása](#create-a-security-group-and-add-members)
-    * [Fájlmegosztás létrehozása erdők közötti hozzáféréshez](#create-a-file-share-for-cross-forest-access)
-    * [Erdők közötti hitelesítés ellenőrzése erőforráshoz](#validate-cross-forest-authentication-to-a-resource)
+* [Helyszíni felhasználói hitelesítés az Azure AD DS erőforráserdőből](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
+* [Erőforrások elérése az Azure AD DS erőforráserdőben a helyszíni felhasználó használatával](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
+    * [Fájl- és nyomtatómegosztás engedélyezése](#enable-file-and-printer-sharing)
+    * [Biztonsági csoport létrehozása és tagok hozzáadása](#create-a-security-group-and-add-members)
+    * [Fájlmegosztás létrehozása erdőközi hozzáféréshez](#create-a-file-share-for-cross-forest-access)
+    * [Erdőközi hitelesítés ellenőrzése erőforráson](#validate-cross-forest-authentication-to-a-resource)
 
-### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Helyszíni felhasználói hitelesítés az Azure AD DS erőforrás-erdőben
+### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Helyszíni felhasználói hitelesítés az Azure AD DS erőforráserdőből
 
-Az Azure AD DS erőforrás-tartományhoz csatlakoztatni kell a Windows Server rendszerű virtuális gépet. Ezzel a virtuális géppel ellenőrizheti, hogy a helyszíni felhasználó tud-e hitelesítést végezni egy virtuális gépen.
+A Windows Server virtuális gép csatlakozott az Azure AD DS erőforrás-tartományhoz. Ezzel a virtuális géppel tesztelheti a helyszíni felhasználó hitelesítést egy virtuális gépen.
 
-1. Kapcsolódjon az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez Távoli asztal és az Azure AD DS rendszergazdai hitelesítő adataival. Ha hálózati szintű hitelesítés (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
+1. Csatlakozzon a Windows Server virtuális gép csatlakozott az Azure AD DS erőforráserdő a Távoli asztal és az Azure AD DS rendszergazdai hitelesítő adatait. Ha hálózati szintű hitelesítési (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
 
     > [!NOTE]
-    > A Azure AD Domain Serviceshoz csatlakozó virtuális gépekhez való biztonságos csatlakozáshoz használhatja az Azure-beli [megerősített gazdagép szolgáltatást](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
+    > Az Azure AD tartományi szolgáltatásokhoz csatlakozott virtuális gépekhez való biztonságos csatlakozáshoz használhatja az [Azure Bastion Host Service-t](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
 
-1. Nyisson meg egy parancssort, és a `whoami` parancs használatával jelenítse meg az aktuálisan hitelesített felhasználó megkülönböztető nevét:
+1. Nyisson meg egy `whoami` parancssort, és a paranccsal jelenítse meg az aktuálisan hitelesített felhasználó megkülönböztető nevét:
 
     ```console
     whoami /fqdn
     ```
 
-1. A `runas` parancs használatával hitelesítheti magát a helyszíni tartományból. A következő parancsban cserélje le a `userUpn@trusteddomain.com` elemet a megbízható helyszíni tartomány felhasználójának egyszerű felhasználónevével. A parancs a felhasználó jelszavát kéri:
+1. A `runas` parancs segítségével hitelesítheti magát felhasználóként a helyszíni tartományból. A következő parancsban `userUpn@trusteddomain.com` cserélje le a megbízható helyszíni tartományból származó felhasználó upn-jét. A parancs a felhasználó jelszavát kéri:
 
     ```console
     Runas /u:userUpn@trusteddomain.com cmd.exe
     ```
 
-1. Ha a hitelesítés sikeres, megnyílik egy új parancssori ablak. Az új parancssor címe `running as userUpn@trusteddomain.com`tartalmaz.
-1. A helyi Active Directory a hitelesített felhasználó megkülönböztető nevét az új parancssorban `whoami /fqdn` használatával tekintheti meg.
+1. Ha a hitelesítés sikeres, új parancssor nyílik meg. Az új parancssor címe `running as userUpn@trusteddomain.com`tartalmazza a .
+1. Az `whoami /fqdn` új parancssorban a hitelesített felhasználó megkülönböztető nevének megtekintéséhez a helyszíni Active Directoryból.
 
-### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Erőforrásokhoz való hozzáférés az Azure AD DS erőforrás-erdőben helyszíni felhasználó használatával
+### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Erőforrások elérése az Azure AD DS erőforráserdőben a helyszíni felhasználó használatával
 
-Az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális gép használatával tesztelheti azt a forgatókönyvet, ahol a felhasználók hozzáférhetnek az erőforrás-erdőben tárolt erőforrásokhoz, amikor a helyszíni tartományban lévő számítógépekkel hitelesítik magukat a helyszíni tartomány számítógépeiről. Az alábbi példák bemutatják, hogyan hozhat létre és tesztelheti a különböző gyakori forgatókönyveket.
+Az Azure AD DS erőforráserdőhöz csatlakozott Windows Server virtuális gép használatával tesztelheti azt a forgatókönyvet, amelyben a felhasználók hozzáférhetnek az erőforráserdőben tárolt erőforrásokhoz, amikor a helyszíni tartomány számítógépeiről hitelesítik magukat a helyszíni tartomány felhasználóival. Az alábbi példák bemutatják, hogyan hozhat létre és tesztelheti a különböző gyakori forgatókönyveket.
 
-#### <a name="enable-file-and-printer-sharing"></a>Fájl-és nyomtatómegosztás engedélyezése
+#### <a name="enable-file-and-printer-sharing"></a>Fájl- és nyomtatómegosztás engedélyezése
 
-1. Kapcsolódjon az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez Távoli asztal és az Azure AD DS rendszergazdai hitelesítő adataival. Ha hálózati szintű hitelesítés (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
-
-    > [!NOTE]
-    > A Azure AD Domain Serviceshoz csatlakozó virtuális gépekhez való biztonságos csatlakozáshoz használhatja az Azure-beli [megerősített gazdagép szolgáltatást](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
-
-1. Nyissa meg a **Windows-beállításokat**, majd keresse meg és válassza ki a **hálózati és megosztási központot**.
-1. Válassza a **Speciális megosztási beállítások módosítása** lehetőséget.
-1. A **tartományi profil**területen válassza a **fájl-és nyomtatómegosztás bekapcsolása** , majd a **módosítások mentése**lehetőséget.
-1. **A hálózati és megosztási központ**bezárásához.
-
-#### <a name="create-a-security-group-and-add-members"></a>Biztonsági csoport létrehozása és Tagok hozzáadása
-
-1. Nyissa meg **Active Directory felhasználók és számítógépek beépülő modult**.
-1. Kattintson a jobb gombbal a tartománynévre, válassza az **új**, majd a **szervezeti egység**elemet.
-1. A név mezőbe írja be a *LocalObjects*nevet, majd kattintson az **OK gombra**.
-1. Válassza ki, majd kattintson a jobb gombbal a **LocalObjects** elemre a navigációs ablaktáblán. Válassza az **új** , majd a **csoport**lehetőséget.
-1. Írja be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre**területen válassza a **tartomány helyi**lehetőséget, majd kattintson **az OK gombra**.
-1. A tartalom ablaktáblán kattintson duplán a **FileServerAccess**elemre. Válassza a **tagok**lehetőséget, válassza a **Hozzáadás**, majd a **helyszínek**lehetőséget.
-1. Válassza ki a helyszíni Active Directory a **hely** nézetből, majd kattintson **az OK gombra**.
-1. Írja be a *tartományi felhasználók* értéket az **adja meg a kijelölendő objektumok nevét** mezőbe. Jelölje be a Névellenőrzés **jelölőnégyzetet**, adja meg a helyszíni Active Directory hitelesítő adatait, majd kattintson **az OK gombra**.
+1. Csatlakozzon a Windows Server virtuális gép csatlakozott az Azure AD DS erőforráserdő a Távoli asztal és az Azure AD DS rendszergazdai hitelesítő adatait. Ha hálózati szintű hitelesítési (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
 
     > [!NOTE]
-    > Meg kell adnia a hitelesítő adatokat, mert a megbízhatósági kapcsolat csak egy módszer. Ez azt jelenti, hogy az Azure-AD DS felhasználók nem férhetnek hozzá az erőforrásokhoz, vagy megkereshetik a megbízható (helyszíni) tartományban lévő felhasználókat vagy csoportokat.
+    > Az Azure AD tartományi szolgáltatásokhoz csatlakozott virtuális gépekhez való biztonságos csatlakozáshoz használhatja az [Azure Bastion Host Service-t](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
 
-1. A helyszíni Active Directory **tartományi felhasználók** csoportjának a **FileServerAccess** csoport tagjának kell lennie. A csoport mentéséhez és az ablak bezárásához kattintson **az OK gombra** .
+1. Nyissa meg **a Windows beállításai t,** majd keresse meg a **Hálózati és megosztási központot.**
+1. Válassza a **Speciális megosztási** beállítások módosítása lehetőséget.
+1. A **Domain Profil csoportban**jelölje be **a Fájl- és nyomtatómegosztás bekapcsolása,** majd **a Módosítások mentése lehetőséget.**
+1. A **Hálózati és megosztási központ bezárása**.
 
-#### <a name="create-a-file-share-for-cross-forest-access"></a>Fájlmegosztás létrehozása erdők közötti hozzáféréshez
+#### <a name="create-a-security-group-and-add-members"></a>Biztonsági csoport létrehozása és tagok hozzáadása
 
-1. A Windows Server rendszerű virtuális gépen, amely az Azure AD DS erőforrás-erdőhöz csatlakozik, hozzon létre egy mappát, és adja meg a nevet (például *CrossForestShare*).
-1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok**lehetőséget.
-1. Válassza a **Biztonság** fület, majd kattintson a **Szerkesztés**elemre.
-1. A *CrossForestShare engedélyei* párbeszédpanelen válassza a **Hozzáadás**lehetőséget.
-1. Írja be a *FileServerAccess* **nevet az írja be a kijelölendő objektumok nevét**, majd kattintson **az OK gombra**.
-1. A **csoportok vagy a felhasználónevek** listából válassza a *FileServerAccess* lehetőséget. A **FileServerAccess engedélyei** listán válassza az *Engedélyezés lehetőséget* a **módosítási** és **írási** engedélyekhez, majd kattintson **az OK gombra**.
-1. Válassza a **megosztás** fület, majd kattintson a speciális megosztás elemre. **..**
-1. Válassza a **mappa megosztása**lehetőséget, majd adjon meg egy emlékezetes nevet a fájlmegosztás számára a **megosztás nevében** , például *CrossForestShare*.
-1. Válassza az **engedélyek**lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
-1. Kattintson kétszer **az OK** , majd a **Bezárás**gombra.
+1. Nyissa meg az **Active Directory – felhasználók és számítógépek** beépülő modult.
+1. Válassza ki jobbra a tartománynevet, válassza az **Új**lehetőséget, majd a **Szervezeti egység parancsot.**
+1. A névmezőbe írja be a *LocalObjects (Névobjektum)* parancsot, majd kattintson **az OK gombra.**
+1. A navigációs ablakban jelölje ki a **Helyi objektumok** elemet, és kattintson a jobb gombbal. Válassza az **Új,** majd **a Csoport lehetőséget.**
+1. Írja be a *FileServerAccess* nevet a **Csoport név** mezőbe. A **Csoporthatókör csoportban**válassza a **Tartományon belüli**lehetőséget, majd az **OK lehetőséget.**
+1. A tartalomablaktáblán kattintson duplán a **FileServerAccess**elemre. Válassza a **Tagok**lehetőséget, válassza a **Hozzáadás**lehetőséget, majd a **Helyek**lehetőséget.
+1. Válassza ki a helyszíni Active Directoryt a **Hely** nézetből, majd kattintson az **OK gombra.**
+1. Írja be *a Tartományfelhasználók parancsot* a **Kijelölendő objektumok nevének megadása** mezőbe. Válassza **a Nevek ellenőrzése lehetőséget,** adja meg a hitelesítő adatokat a helyszíni Active Directoryszámára, majd kattintson az OK **gombra.**
 
-#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Erdők közötti hitelesítés ellenőrzése erőforráshoz
+    > [!NOTE]
+    > Meg kell adnia a hitelesítő adatokat, mert a bizalmi kapcsolat csak egy irányú. Ez azt jelenti, hogy az Azure AD DS-ből származó felhasználók nem férhetnek hozzá az erőforrásokhoz, és nem kereshetnek felhasználókat vagy csoportokat a megbízható (helyszíni) tartományban.
 
-1. Jelentkezzen be a helyszíni Active Directoryhoz csatlakoztatott Windows-számítógép használatával a helyszíni Active Directory felhasználói fiókjával.
-1. A **Windows Intéző**használatával kapcsolódjon a létrehozott megosztáshoz a teljes állomásnév és a megosztás (például `\\fs1.aaddscontoso.com\CrossforestShare`) használatával.
-1. Az írási engedély ellenőrzéséhez kattintson a jobb gombbal a mappára, válassza az **új**, majd a **szöveges dokumentum**lehetőséget. Használja az alapértelmezett név **új szöveges dokumentumot**.
+1. A helyszíni Active Directory **tartományi felhasználók** csoportjának a **FileServerAccess** csoport tagjának kell lennie. A csoport mentéséhez és az ablak bezárásához válassza az **OK gombot.**
 
-    Ha az írási engedélyek helyesen vannak beállítva, létrejön egy új szöveges dokumentum. A következő lépésekkel megnyithatja, szerkesztheti és szükség szerint törölheti a fájlt.
-1. Az olvasási engedély ellenőrzéséhez nyissa meg az **új szöveges dokumentumot**.
-1. A módosítási engedély érvényességének ellenőrzéséhez adjon hozzá szöveget a fájlhoz, és lépjen be a **Jegyzettömbbe**. Amikor a rendszer kéri a módosítások mentését, válassza a **Mentés**lehetőséget.
-1. A törlési engedély ellenőrzéséhez kattintson a jobb gombbal az **új szöveges dokumentum** elemre, és válassza a **Törlés**lehetőséget. A fájl törlésének megerősítéséhez válassza az **Igen** lehetőséget.
+#### <a name="create-a-file-share-for-cross-forest-access"></a>Fájlmegosztás létrehozása erdőközi hozzáféréshez
 
-## <a name="next-steps"></a>Következő lépések
+1. Az Azure AD DS erőforráserdőhöz csatlakozott Windows Server virtuális gépen hozzon létre egy mappát, és adja meg a nevet, például *a CrossForestShare nevet.*
+1. Jelölje ki a jobb gombot a mappában, és válassza **a Tulajdonságok parancsot.**
+1. Kattintson a **Biztonság** fülre, majd a **Szerkesztés gombra.**
+1. A *CrossForestShare engedélyek* párbeszédpanelen válassza a **Hozzáadás lehetőséget.**
+1. Írja be *a FileServerAccess* parancsot **a Jelölje be a kijelölendő objektumneveket,** majd kattintson az **OK gombra.**
+1. Válassza a *FileServerAccess* elemet a **Csoportok vagy felhasználónevek** listából. A **FileServerAccess engedélyei** listában válassza a **Modify** and **Write** engedélyek *engedélyezése lehetőséget,* majd kattintson az **OK gombra.**
+1. Válassza a **Megosztás** lapot, majd a **Speciális megosztás lehetőséget...**
+1. Válassza **a Mappa megosztása**lehetőséget, majd adja meg a fájlmegosztás emlékezetes nevét a Megosztás **névben,** például *a CrossForestShare névben.*
+1. Válassza **az Engedélyek lehetőséget.** Az **Engedélyek mindenkinek** listában válassza az **Engedélyezés** a **módosítási** engedély engedélyezése lehetőséget.
+1. Kattintson az **OK** gombra kétszer, majd zárja be a **gombot.**
+
+#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Erdőközi hitelesítés ellenőrzése erőforráson
+
+1. Jelentkezzen be egy Windows-számítógéphez, amely a helyszíni Active Directoryhoz csatlakozott a helyszíni Active Directoryfelhasználói fiókjával.
+1. A **Windows Intéző**segítségével csatlakozzon a teljesen minősített állomásnévvel `\\fs1.aaddscontoso.com\CrossforestShare`létrehozott megosztáshoz és a megosztáshoz, például .
+1. Az írási engedély érvényesítéséhez válassza ki a jobb gombot a mappában, válassza az **Új**lehetőséget, majd válassza a **Szöveges dokumentum lehetőséget.** Használja az alapértelmezett nevet **Új szövegdokumentum**.
+
+    Ha az írási engedélyek megfelelően vannak beállítva, új szöveges dokumentum jön létre. A következő lépések ekkor megnyitják, szerkesztik és törlik a fájlt.
+1. Az olvasási engedély érvényesítéséhez nyissa meg az **Új szöveges dokumentumot**.
+1. A módosítási engedély érvényesítéséhez adjon szöveget a fájlhoz, és zárja be a **Jegyzettömböt**. Amikor a program a módosítások mentését kéri, válassza a **Mentés gombot.**
+1. A törlési engedély érvényesítéséhez válassza a jobb oldali új **szövegdokumentum** lehetőséget, majd válassza a **Törlés parancsot.** A fájl törlésének megerősítéséhez válassza az **Igen** lehetőséget.
+
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A DNS konfigurálása helyszíni AD DS környezetben az Azure AD DS-kapcsolat támogatásához
-> * Egyirányú bejövő erdőszintű megbízhatósági kapcsolat létrehozása helyszíni AD DS környezetben
-> * Egyirányú kimenő erdőszintű megbízhatósági kapcsolat létrehozása az Azure-ban AD DS
-> * A hitelesítés és az erőforrás-hozzáférés megbízhatósági kapcsolatának tesztelése és ellenőrzése
+> * A DNS konfigurálása helyszíni Active AD DS-környezetben az Azure AD DS-kapcsolat támogatásához
+> * Egyirányú bejövő erdőszintű bizalmi kapcsolat létrehozása helyszíni AD DS-környezetben
+> * Egyirányú kimenő erdőszintű bizalmi kapcsolat létrehozása az Azure AD DS-ben
+> * A hitelesítéshez és az erőforrás-hozzáféréshez szükséges megbízhatósági kapcsolat tesztelése és ellenőrzése
 
-Az Azure AD DS erdők típusaival kapcsolatos további információk: Mik az [erőforrás-erdők?][concepts-forest] és [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
+Az Azure AD DS erdőtípusaira vonatkozó további információkért lásd: [Mik az erőforráserdők és][concepts-forest] [hogyan működnek az erdőszintű bizalmi kapcsolatok az Azure AD DS-ben?][concepts-trust]
 
 <!-- INTERNAL LINKS -->
 [concepts-forest]: concepts-resource-forest.md

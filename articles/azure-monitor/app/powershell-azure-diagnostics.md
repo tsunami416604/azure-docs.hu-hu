@@ -1,16 +1,16 @@
 ---
 title: Az Application Insights beállítása a PowerShell segítségével az Azure-ban | Microsoft Docs
-description: Automatizálja a Azure Diagnostics Application Insightsre való konfigurálását.
+description: Automatizálhatja az Azure Diagnostics konfigurálását az Application Insights ban az adatok pipe-ra való konfigurálásához.
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669803"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Azure-Application Insights beállítása a PowerShell használatával Cloud Services
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Az Application Insights azure felhőszolgáltatásokhoz való beállítása a PowerShell használatával
 
 A [Microsoft Azure](https://azure.com)[konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) az [Azure Application Insights ](../../azure-monitor/app/app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
 
@@ -35,10 +35,10 @@ Ha a webalkalmazás az Azure-ban található és Azure Resource Manager-sablonna
      } 
 
 * `nameOfAIAppResource`– az Application Insights-erőforrás neve
-* `myWebAppName` – a webalkalmazás azonosítója
+* `myWebAppName`- a webalkalmazás azonosítója
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
-A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` paraméterrel, amely egy diagnosztikakonfigurációs tömböt foglal magába. Ez a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag segítségével hozható létre. Például:
+A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` paraméterrel, amely egy diagnosztikakonfigurációs tömböt foglal magába. Ez a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag segítségével hozható létre. Példa:
 
 ```ps
 

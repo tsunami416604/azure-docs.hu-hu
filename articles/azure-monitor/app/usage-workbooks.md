@@ -1,123 +1,123 @@
 ---
-title: Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel | Microsoft docs
-description: Összetett jelentéskészítés egyszerűsítése előre elkészített és egyéni paraméterekkel rendelkező munkafüzetekből
+title: Interaktív jelentések létrehozása az Azure Monitor munkafüzeteivel | Microsoft-dokumentumok
+description: Az összetett jelentések egyszerűsítése előre összeállított és egyéni paraméterezett munkafüzetekkel
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 15543f7f761c707e8eff8e0cc0a0e4532475ddf8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671001"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel
+# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása az Azure Monitor munkafüzeteivel
 
-A munkafüzetek szöveg-, [elemzési](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)és Azure-metrikákat és-paramétereket egyesítenek gazdag interaktív jelentésekben. A munkafüzetek szerkeszthető más csapattagok számára, akik ugyanahhoz az Azure-erőforrásokhoz férnek hozzá.
+A munkafüzetek a szöveget, [az Analytics-lekérdezéseket](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), az Azure Metrics-t és a paramétereket gazdag interaktív jelentésekké egyesítik. A munkafüzeteket bármely más csapattag szerkeszti, akik hozzáférnek ugyanazokhoz az Azure-erőforrásokhoz.
 
-A munkafüzetek a következő esetekben hasznosak:
+A munkafüzetek olyan esetekben hasznosak, mint például:
 
-* Az alkalmazás használatának megvizsgálása, ha nem tudja, hogy milyen mérőszámok vannak előre: a felhasználók száma, a megőrzési arány, az átalakítási arány stb. A többi használati elemzési eszköztől eltérően a munkafüzetek több fajta vizualizációt és elemzést is lehetővé tesznek, így nagyszerűen használhatók az ilyen típusú, ingyenes űrlapos feltáráshoz.
-* Elmagyarázza a csapatának, hogy hogyan végzi el az újonnan kiadott funkciót, és a felhasználók számát jeleníti meg a kulcsfontosságú interakciók és más metrikák esetében.
-* Egy A/B kísérlet eredményeinek megosztása az alkalmazásban a csapat más tagjaival. Megadhatja a kísérlet szöveggel kapcsolatos céljait, majd megjelenítheti a kísérlet kiértékeléséhez használt egyes használati metrikákat és elemzési lekérdezéseket, valamint egyértelmű meghívásokat, hogy az egyes metrikák a fenti vagy a cél alatt voltak-e.
-* Az alkalmazás használatának, az adatok összevonásának, a szöveg magyarázatának és a következő lépések megvitatását a jövőben a leállások megelőzése érdekében.
+* Az alkalmazás használatának feltárása, ha nem ismeri előre az érdeklődési mutatókat: a felhasználók száma, megőrzési arányok, konverziós arányok stb. A többi használatelemző eszközzel ellentétben a munkafüzetek segítségével többféle vizualizációt és elemzést kombinálhat, így nagyszerűek az ilyen típusú szabad formájú feltáráshoz.
+* Elmagyarázza a csapatnak, hogyan teljesít egy újonnan kiadott funkció, a legfontosabb interakciók és egyéb mutatók felhasználói számának megjelenítésével.
+* Az alkalmazás a/B-kísérlet eredményeinek megosztása a csapat többi tagjával. Elmagyarázhatja a kísérlet céljait a szöveggel, majd megjelenítheti az egyes használati metrikákat és a kísérlet kiértékeléséhez használt Analytics-lekérdezéseket, valamint egyértelmű kijelentéseket arról, hogy az egyes mutatók a cél felett vagy alatt voltak-e.
+* A kimaradásnak az alkalmazás használatára gyakorolt hatásának jelentése, az adatok, a szöveges magyarázat és a jövőbeli kimaradások megelőzésére szolgáló következő lépések megvitatása.
 
-## <a name="starting-with-a-template-or-saved-workbook"></a>Kezdés sablon vagy mentett munkafüzet alapján
+## <a name="starting-with-a-template-or-saved-workbook"></a>Kezdés sablonnal vagy mentett munkafüzettel
 
-A munkafüzetek egymástól függetlenül szerkeszthető diagramokat, táblázatokat, szövegeket és beviteli vezérlőket tartalmazó részből állnak. A munkafüzetek jobb megismeréséhez érdemes megnyitnia egyet. 
+A munkafüzet ektől függetlenül szerkeszthető diagramokból, táblázatokból, szövegekből és beviteli vezérlőkből álló szakaszokból áll. A munkafüzetek jobb megértéséhez a legjobb, ha megnyit egyet. 
 
-Válassza ki a **munkafüzetek** elemet a bal oldali menüben az alkalmazás Application Insights felületén belül.
+Válassza ki a **munkafüzetek** a bal oldali menüből az Application Insights-élmény az alkalmazáshoz.
 
-![Képernyőkép a munkafüzetek közötti navigálásról](./media/usage-workbooks/001-workbooks.png)
+![Képernyőkép a munkafüzetekbe való navigálásról](./media/usage-workbooks/001-workbooks.png)
 
-Ezzel elindít egy munkafüzet-katalógust számos előre elkészített munkafüzettel, amelyek segítenek az első lépések megtételében.
+Ezzel elindítja a munkafüzet-gyűjteményt, amely számos előre összeállított munkafüzetet foglal el az első lépések hez.
 
-![Képernyőfelvétel a munkafüzet-gyűjteményről](./media/usage-workbooks/002-workbook-gallery.png)
+![Képernyőkép a munkafüzetgyűjteményről](./media/usage-workbooks/002-workbook-gallery.png)
 
-Kezdjük az **alapértelmezett sablonnal**, amely az első **lépések**fejléc alatt található.
+Kezdjük az **Alapértelmezett sablonnal,** amely a **Gyorsindítás**cím alatt található.
 
-![Képernyőfelvétel a munkafüzet-gyűjteményről](./media/usage-workbooks/003-default-template.png)
+![Képernyőkép a munkafüzetgyűjteményről](./media/usage-workbooks/003-default-template.png)
 
-## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>A munkafüzet fejezeteinek szerkesztése, átrendezése, klónozása és törlése
+## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Munkafüzet-szakaszok szerkesztése, átrendezése, klónozása és törlése
 
-A munkafüzeteknek két módja van: **szerkesztési mód**és **olvasási mód**. Az alapértelmezett munkafüzet első indításakor a **szerkesztési módban**nyílik meg. Ez megjeleníti a munkafüzet összes tartalmát, beleértve az egyébként rejtett lépéseket és paramétereket is. Az **olvasási mód** egy egyszerűsített jelentési stílus nézetet jelenít meg. Így elkerülheti a jelentés létrehozásakor felmerülő összetettséget, miközben az alapul szolgáló mechanika csak néhány kattintással elvégezhető a módosításhoz.
+A munkafüzetek két üzemmódban is rendelkeznek: **szerkesztési módés** **olvasási mód.** Az alapértelmezett munkafüzet első indításakor **szerkesztési módban**nyílik meg. Ez a munkafüzet összes tartalmát megjeleníti, beleértve az egyébként rejtett lépéseket és paramétereket is. **Az olvasási mód** egyszerűsített jelentésstílus-nézetet jelenít meg. Ez lehetővé teszi, hogy absztrakt el a komplexitás, hogy bement létre egy jelentést, miközben továbbra is az alapul szolgáló mechanika csak néhány kattintásnyira van, ha szükséges a módosításhoz.
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/editing-controls-new.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/editing-controls-new.png)
 
-1. Ha elkészült egy szakasz szerkesztésével, kattintson a **kész szerkesztés** gombra a szakasz bal alsó sarkában.
+1. Ha végzett egy szakasz szerkesztésével, kattintson a szakasz bal alsó sarkában található **Szerkesztés nélkül** elemre.
 
-2. Egy szakasz másodpéldányának létrehozásához kattintson a **szakasz klónozása** ikonra. Az ismétlődő lépések létrehozása nagyszerű módja annak, hogy a lekérdezéseket az előző iterációk elvesztése nélkül lehessen megismételni.
+2. Szakasz másolatának létrehozásához kattintson a **Szakasz klónozása** ikonra. Az ismétlődő szakaszok létrehozása nagyszerű módja annak, hogy a lekérdezések en a korábbi ismétlések elvesztése nélkül iteráljon.
 
-3. Ha feljebb szeretne helyezni egy szakaszt egy munkafüzetben, kattintson a **fel** vagy **a lejjebb ikonra** .
+3. Ha feljebb szeretne lépni egy munkafüzet egy szakaszával, kattintson a **Fel** vagy **a Le** ikonra.
 
-4. Egy szakasz végleges eltávolításához kattintson az **Eltávolítás** ikonra.
+4. Ha véglegesen el szeretne távolítani egy **szakaszt,** kattintson az Eltávolítás ikonra.
 
-## <a name="adding-text-and-markdown-sections"></a>Szöveg-és Markdown-csoportok hozzáadása
+## <a name="adding-text-and-markdown-sections"></a>Szöveg és Markdown-szakaszok hozzáadása
 
-A fejlécek, a magyarázatok és a kommentárok hozzáadása a munkafüzetekhez megkönnyíti a táblázatok és diagramok egy csoportba való bekapcsolását. A munkafüzetek szöveges szakaszai támogatják a [Markdown szintaxisát](https://daringfireball.net/projects/markdown/) , például a fejléceket, a félkövér, a dőlt és a listajeles listákat.
+Ha címsorokat, magyarázatokat és kommentárokat ad a munkafüzethez, akkor a táblázatok és diagramok készletét narratívaként alakíthatja át. A munkafüzetek szövegszakaszai támogatják a szövegformázás [Markdown szintaxisát,](https://daringfireball.net/projects/markdown/) például a címsorokat, a félkövér, a dőlt és a listajeles listákat.
 
-Ha szöveges szakaszt szeretne felvenni a munkafüzetbe, használja a munkafüzet alján található **szöveg hozzáadása** gombot, vagy a szakasz alján.
+Ha szövegszakaszt szeretne hozzáadni a munkafüzethez, használja a **Szöveg hozzáadása** gombot a munkafüzet alján vagy bármely szakasz alján.
 
-## <a name="adding-query-sections"></a>Lekérdezési csoportok hozzáadása
+## <a name="adding-query-sections"></a>Lekérdezési szakaszok hozzáadása
 
-![A munkafüzetek lekérdezési szakasza](./media/usage-workbooks/analytics-section-new.png)
+![Lekérdezés szakasz a munkafüzetekben](./media/usage-workbooks/analytics-section-new.png)
 
-A lekérdezési szakasz a munkafüzethez való hozzáadásához használja a munkafüzet alján található **lekérdezés hozzáadása** gombot, vagy a szakasz alján.
+Ha lekérdezési szakaszt szeretne hozzáadni a munkafüzethez, használja a **Lekérdezés hozzáadása** gombot a munkafüzet alján vagy bármely szakasz alján.
 
-A lekérdezési szakaszban nagyon rugalmasak, és a következő kérdésekre lehet válaszolni:
+A lekérdezési szakaszok rendkívül rugalmasak, és olyan kérdések megválaszolására használhatók, mint például:
 
-* Hány kivételt hajtottak végre a webhely a használat csökkenésével megegyező időszakban?
-* Mi volt az oldal betöltési idejének megoszlása a felhasználók számára egy oldal megtekintésekor?
-* Hány felhasználó tekintett meg néhány oldalt a webhelyen, de nem más lapokat? Ez akkor lehet hasznos, ha olyan felhasználói fürtökkel rendelkezik, akik a hely funkcióinak különböző részhalmazait használják (használja a `join` operátort a `kind=leftanti` módosítóval a [Kusto lekérdezési nyelvén](/azure/kusto/query/)).
+* Hány kivételt tett a webhely dobott ugyanebben az időszakban, mint a használat csökkenése?
+* Mi volt az oldalbetöltési idők eloszlása az egyes oldalakat megtekintő felhasználók számára?
+* Hány felhasználó tekintett meg néhány lapot a webhelyén, de más oldalakat nem? Ez hasznos lehet annak megértéséhez, hogy a webhely funkcióinak különböző részhalmazait `join` használó `kind=leftanti` felhasználók csoportjai vannak-e (használja az operátort a [Kusto lekérdezési nyelvének](/azure/kusto/query/)módosítójával).
 
-Emellett nem csak a munkafüzetből indított alkalmazás környezetében való lekérdezésre korlátozódik. Több Application Insights figyelt alkalmazásban, valamint Log Analytics munkaterületeken is lekérdezheti, ha rendelkezik hozzáférési engedéllyel ezen erőforrásokhoz.
+Nem csak arra korlátozódik, hogy annak az alkalmazásnak a környezetéből kérdezzünk, amelyből elindította a munkafüzetet. Lekérdezheti több Application Insights figyelt alkalmazások, valamint a Log Analytics-munkaterületek, amíg rendelkezik hozzáférési engedéllyel ezeket az erőforrásokat.
 
-További külső Application Insights-erőforrások lekérdezéséhez használja az **alkalmazás** azonosítóját.
+További külső Application Insights-erőforrások **app** lekérdezéséhez használja az alkalmazásazonosítót.
 
 ```
 union app('app01').requests, app('app02').requests, requests
 | summarize count() by bin(timestamp, 1h)
 ```  
 
-Ez a lekérdezés három különböző alkalmazástól származó kérelmeket egyesít. Egy app01 nevű alkalmazás, egy app02 nevű alkalmazás, valamint a helyi Application Insights erőforrástól érkező kérések.
+Ez a lekérdezés három különböző alkalmazásból származó kérelmeket egyesít. Egy app01 nevű alkalmazás, egy app02 nevű alkalmazás és a helyi Application Insights-erőforrástól érkező kérések.
 
-Az adatok külső Log Analytics munkaterületről való lekéréséhez használja a **munkaterület** -azonosítót.
+Ha egy külső Log Analytics-munkaterületről szeretne adatokat beszedni, használja a **munkaterület** azonosítóját.
 
-Ha többet szeretne megtudni az erőforrások közötti lekérdezésekről, tekintse meg a [hivatalos útmutatást](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+Ha többet szeretne megtudni az erőforrás-közi lekérdezésekről, olvassa el a [hivatalos útmutatást.](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)
 
 ### <a name="advanced-analytic-query-settings"></a>Speciális analitikus lekérdezési beállítások
 
-Az egyes szakaszok saját speciális beállításokkal rendelkeznek, amelyek a beállítások ikonon keresztül érhetők el ![Application Insights munkafüzetek szakaszban, a **Paraméterek hozzáadása** gombtól jobbra található vezérlők szerkesztése](./media/usage-workbooks/005-settings.png).
+Minden szakasz saját speciális beállításokkal rendelkezik, ![amelyek a beállítások ikonon Application Insights Munkafüzetek szakasz szerkesztési vezérlők](./media/usage-workbooks/005-settings.png) található a jobb oldalon a Paraméterek **hozzáadása** gomb.
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/0006-settings-expanded.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/0006-settings-expanded.png)
 
    |         |          |
    | ---------------- |:-----|
-   | **Egyéni szélesség**    | Ezt úgy állíthatja be, hogy tetszőleges méretű elemet hozzon létre, így egyetlen sorban sok elem is elfér, így a diagramokat és a táblákat jobban rendszerezheti interaktív jelentésekben.  |
-   | **Feltételesen látható** | Ezzel a lépésekkel elrejtheti a paramétereket a paraméterek alapján, ha olvasási módban van. |
-   | **Paraméter exportálása**| Ez lehetővé teszi, hogy a rács vagy a diagram kijelölt sora későbbi lépéseket okozzon az értékek módosításához vagy láthatóvá váljon.  |
-   | **Lekérdezés megjelenítése nem szerkesztéskor** | Ez megjeleníti a diagram vagy a tábla feletti lekérdezést, még olvasási módban is.
-   | **Megnyitás az Analyticsben gomb megjelenítése nem szerkesztéskor** | Ezzel hozzáadja a kék elemzési ikont a diagram jobb oldali sarkához az egykattintásos hozzáférés engedélyezéséhez.|
+   | **Egyéni szélesség**    | Állítsa be ezt úgy, hogy egy elem tetszőleges méretű legyen, így több elemet is elérhet egyetlen sorban, így jobban rendszerezheti a diagramokat és táblázatokat gazdag interaktív jelentésekbe.  |
+   | **Feltételesen látható** | Ezzel elrejtheti a paramétereken alapuló lépéseket olvasási módban. |
+   | **Paraméter exportálása**| Ez lehetővé teszi, hogy a rács vagy a diagram kijelölt sora később módosíthatja az értékeket, vagy láthatóvá váljon.  |
+   | **Lekérdezés megjelenítése szerkesztés kor** | Ez a lekérdezés a diagram vagy a táblázat felett jelenik meg, még olvasási módban is.
+   | **Megnyitás az elemzésben gomb szerkesztés kor** | Ezzel hozzáadja a kék Analytics ikont a diagram jobb sarkához, így egy kattintással elérhető.|
 
-Ezeknek a beállításoknak a nagy része meglehetősen intuitív, de a **Paraméterek exportálásának** megismeréséhez érdemes megvizsgálni egy olyan munkafüzetet, amely használja ezt a funkciót.
+A legtöbb ilyen beállítás meglehetősen intuitív, de a **paraméter exportálásához** jobb megvizsgálni egy munkafüzetet, amely kihasználja ezt a funkciót.
 
-Az előre elkészített munkafüzetek egyike az aktív felhasználókról nyújt információkat.
+Az egyik előre összeállított munkafüzet az Aktív felhasználókról nyújt tájékoztatást.
 
-A munkafüzet első szakasza az analitikus lekérdezési adatmennyiségen alapul:
+A munkafüzet első szakasza analitikus lekérdezési adatokon alapul:
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/003-active-users.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/003-active-users.png)
 
-A második szakasz az analitikus lekérdezési adatmennyiségen alapul, de az első táblázatban lévő sorok kiválasztásakor a rendszer interaktív módon frissíti a diagram tartalmát:
+A második szakasz szintén analitikus lekérdezési adatokon alapul, de az első tábla egy sorának kijelölése interaktívmódon frissíti a diagram tartalmát:
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/004-active-users-trend.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/004-active-users-trend.png)
 
- Ez az **elem kiválasztásakor lehetséges, ha** olyan speciális beállításokat exportál, amelyek engedélyezve vannak a tábla elemzési lekérdezésében.
+ Ez a Ha egy elem kiválasztása kor lehetőséget **választja, exportálja** a tábla Analytics-lekérdezésében engedélyezett speciális paramétereket.
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/007-settings-export.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/007-settings-export.png)
 
-A második elemzési lekérdezés ezt követően kijelöli az exportált értékeket egy sor kijelölésekor. Ha nincs kiválasztva sor, a rendszer alapértelmezés szerint a teljes értékeket jelképező sort jelöli. 
+A második elemzési lekérdezés ezután az exportált értékeket használja, ha egy sor van kiválasztva. Ha nincs kijelölt sor, akkor az alapértelmezett érték az általános értékeket jelölő sorra. 
 
 ```
 let start = startofday(ago({TimeRange} + {Metric}));
@@ -132,60 +132,60 @@ union customEvents, pageViews
 | render timechart 
 ```
 
-## <a name="adding-metrics-sections"></a>Metrikák fejezeteinek hozzáadása
+## <a name="adding-metrics-sections"></a>Metrikaszakaszok hozzáadása
 
-A metrikák részben teljes hozzáférést biztosítanak a Azure Monitor metrikák adatait az interaktív jelentésekhez. Az előre elkészített munkafüzetek közül számos analitikus lekérdezési adatokat és metrikus adatokat is tartalmaz, így teljes mértékben kihasználhatja mindkét funkció előnyeit egy helyen. Lehetősége van arra is, hogy az erőforrásokból származó metrikus adatokat bármely olyan előfizetésből lehívhatja, amelyhez hozzáfér.
+A Metrikák szakaszok teljes hozzáférést biztosítanak az Azure Monitor metrikaadatainak interaktív jelentésekbe való beépítéséhez. Az előre összeállított munkafüzetek közül sok analitikus lekérdezési adatokat és metrikaadatokat is tartalmaz, amelyek lehetővé teszik, hogy mindkét funkció ból a lehető legjobbat kihasználhassa egy helyen. Azt is lehetővé teszi, hogy lekérése metrika adatokat az erőforrások bármelyik előfizetések hozzáféréssel rendelkezik.
 
-Itt látható egy példa arra, hogy a virtuális gép adatai egy munkafüzetbe kerüljenek, és a CPU-teljesítmény rácsos megjelenítését biztosítják:
+Íme egy példa arra, hogy a virtuális gép adatai bevannak húzva egy munkafüzetbe, hogy a PROCESSZOR teljesítményének rácsos vizualizációját biztosítsák:
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/008-metrics-grid.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/008-metrics-grid.png)
 
-## <a name="adding-parameter-sections"></a>Paraméterek hozzáadása
+## <a name="adding-parameter-sections"></a>Paraméterszakaszok hozzáadása
 
-A munkafüzet-paraméterek lehetővé teszik az értékek módosítását a munkafüzetben anélkül, hogy manuálisan kellene szerkeszteni a lekérdezési vagy szöveges szakaszt.  Ez megszünteti az alapul szolgáló analitikai lekérdezési nyelv megismerésének követelményét, és nagy mértékben kiterjeszti a munkafüzet-alapú jelentéskészítés lehetséges célközönségét.
+A munkafüzet paraméterei lehetővé teszik a munkafüzet értékeinek módosítását anélkül, hogy manuálisan kellene módosítani a lekérdezési vagy szövegszakaszokat.  Ez megszünteti azt a követelményt, hogy meg kell érteni az alapul szolgáló elemzési lekérdezési nyelvet, és jelentősen kibővíti a munkafüzet-alapú jelentések potenciális közönségét.
 
-A paraméterek értékei a lekérdezés, a szöveg vagy más paraméterek részekben vannak lecserélve, ha a paraméter nevét kapcsos zárójelbe helyezi, például ``{parameterName}``.  A paraméterek nevei a hasonló szabályokra korlátozódnak JavaScript-azonosítóként, alapvetően alfabetikus karakterként vagy aláhúzásként, amelyet alfanumerikus karakterek vagy aláhúzások követnek. Az **a1** például engedélyezve van, de az **1a** nem engedélyezett.
+A paraméterek értékeit a lekérdezési, szöveg- vagy más paraméterszakaszokban lecseréli a ``{parameterName}``paraméter neve kapcsos zárójelbe, például .  A paraméternevek a JavaScript-azonosítókhoz, alapvetően alfabetikus karakterekhez vagy aláhúzásjelekhez hasonló szabályokra korlátozódnak, amelyeket alfanumerikus karakterek vagy aláhúzásjelek követnek. Például **az a1** megengedett, de az **1a** nem megengedett.
 
-A paraméterek lineárisak, a munkafüzetek elejétől kezdve, és a későbbi lépésekig áramlanak.  A munkafüzet későbbi részében deklarált paraméterek felülbírálják azokat, amelyeket a rendszer még nem jelentett.  Ez azt is lehetővé teszi, hogy a lekérdezéseket használó paraméterek hozzáférjenek a további definiált paraméterek értékeihez.  A paraméter lépésein belül a paraméterek is lineárisak, balról jobbra, ahol a jobb oldali paraméterek az adott lépésben korábban bejelentett paraméterektől függően változhatnak.
+A paraméterek lineárisak, a munkafüzet tetejétől kezdve a későbbi lépésekig.  A munkafüzet későbbi részében deklarált paraméterek felülbírálhatják a továbbfelé deklarált paramétereket.  Ez azt is lehetővé teszi, hogy a lekérdezések használatával elérhető értékek et a további feljebb definiált paraméterekből érje el.  Egy paraméter lépésén belül a paraméterek is lineárisak, balról jobbra, ahol a jobb oldali paraméterek függhetnek egy paramétertől, amelyet ugyanebben a lépésben korábban deklaráltak.
  
-A jelenleg négy különböző típusú paraméter támogatott:
+Jelenleg négy különböző típusú paraméter támogatott:
 
   |         |          |
    | ---------------- |:-----|
-   | **Szöveg**    | a felhasználó szerkesztheti a szövegmezőt, és igény szerint megadhat egy lekérdezést az alapértelmezett érték kitöltéséhez. |
-   | **Legördülő lista** | A felhasználó az értékek egy halmazát fogja választani. |
-   | **Időtartomány-választó**| A felhasználó egy előre meghatározott időtartomány-érték közül választhat, vagy egyéni időtartományból válogathat.|
-   | **Erőforrás-választó** | A felhasználó a munkafüzethez kiválasztott erőforrások közül választhat.|
+   | **Szöveg**    | a felhasználó szerkeszti a szövegdobozt, és tetszés szerint megadhat egy lekérdezést az alapértelmezett érték kitöltéséhez. |
+   | **Legördülő lista** | A felhasználó egy értékkészlet közül fog választani. |
+   | **Időtartomány-választó**| A felhasználó egy előre meghatározott időtartomány-értékkészlet közül választhat, vagy egyéni időtartományból választ.|
+   | **Erőforrás-választó** | A felhasználó a munkafüzethez kiválasztott erőforrások közül fog választani.|
 
-### <a name="using-a-text-parameter"></a>Szöveges paraméter használata
+### <a name="using-a-text-parameter"></a>Szövegparaméter használata
 
-A szövegmezőben a felhasználói típusok értékét a rendszer közvetlenül a lekérdezésben cseréli le, és nem jár el. Ha a szükséges érték egy karakterlánc, a lekérdezésnek idézőjelekkel kell rendelkeznie a paraméter körül (például **"{paraméter}"** ).
+A felhasználó által a szövegdobozban beírt értéket a rendszer közvetlenül lecseréli a lekérdezésben, és nem kerül ki, és nem idéz. Ha a szükséges érték karakterlánc, a lekérdezésnek idézőjelekkel kell rendelkeznie a paraméter körül (például **"{parameter}" ).**
 
-Ez lehetővé teszi, hogy a szövegmezőben lévő értéket bárhol lehessen használni. Ez lehet egy tábla neve, egy oszlop neve, egy függvény neve, operátor stb.
+Ez lehetővé teszi, hogy a szövegdobozban lévő érték bárhol használható legyen. Ez lehet egy tábla neve, oszlop neve, függvény neve, operátor, stb.
 
-A Text paraméter típusa beállítás az **alapértelmezett érték beolvasása az elemzési lekérdezésből**, amely lehetővé teszi, hogy a munkafüzet szerzője lekérdezés használatával töltse fel az adott szövegmezőhöz tartozó alapértelmezett értéket.
+A szövegparaméter típusa rendelkezik egy ** Alapértelmezett érték beszámítása az elemzési lekérdezésből**beállítással, amely lehetővé teszi, hogy a munkafüzet szerzője lekérdezéssel feltöltse az adott szövegdoboz alapértelmezett értékét.
 
-Egy elemzési lekérdezés alapértelmezett értékének használatakor a rendszer csak az első sor első értékét (0. sor, 0. oszlop) használja alapértelmezett értékként. Ezért javasolt a lekérdezés korlátozása, hogy csak egy sort és egy oszlopot adjanak vissza. A rendszer figyelmen kívül hagyja a lekérdezés által visszaadott összes egyéb adatkérést. 
+Az elemzési lekérdezés alapértelmezett értékének használatakor a rendszer csak az első sor első értékét használja (0. sor, 0. oszlop) a rendszer alapértelmezett értékként. Ezért ajánlott korlátozni a lekérdezést, hogy csak egy sort és egy oszlopot ad vissza. A lekérdezés által visszaadott egyéb adatokat a rendszer figyelmen kívül hagyja. 
 
-A lekérdezés által visszaadott értéket a rendszer közvetlenül a szökés vagy az idézés nélkül váltja fel. Ha a lekérdezés nem ad vissza sorokat, a paraméter eredménye vagy üres karakterlánc (ha a paraméter nem szükséges) vagy nincs megadva (ha a paraméter megadása kötelező).
+Bármilyen értéket is ad vissza a lekérdezés, közvetlenül lecserélődik, és nem kerül ki, és nem idéz. Ha a lekérdezés nem ad vissza sorokat, a paraméter eredménye vagy egy üres karakterlánc (ha a paraméter nem szükséges) vagy nincs definiálva (ha a paraméter szükséges).
 
-### <a name="using-a-dropdown"></a>Legördülő lista használata
+### <a name="using-a-dropdown"></a>Legördülő menü használata
 
-A legördülő paraméter típusa lehetővé teszi egy legördülő lista létrehozását, amely lehetővé teszi egy vagy több érték kijelölését.
+A legördülő paraméter típusa lehetővé teszi egy legördülő vezérlő létrehozását, amely lehetővé teszi egy vagy több érték kiválasztását.
 
-A legördülő lista egy elemzési lekérdezéssel van feltöltve. Ha a lekérdezés egy oszlopot ad vissza, az oszlopban szereplő értékek mind az **érték** , mind a legördülő lista **címkéje** . Ha a lekérdezés két oszlopot ad vissza, akkor az első oszlop az **érték**, a második oszlop pedig a legördülő menüben látható **felirat** .  Ha a lekérdezés három oszlopot ad vissza, a harmadik oszlop a legördülő lista alapértelmezett kijelölését jelzi.  Ez az oszlop bármilyen típusú lehet, de a legegyszerűbb a logikai vagy numerikus típusok használata, ahol a 0 hamis, és 1 igaz.
+A legördülő menüt egy elemzési lekérdezés tölti fel. Ha a lekérdezés egy oszlopot ad vissza, az oszlopban lévő értékek a legördülő **vezérlőben** szereplő értéket és **feliratot** is tartalmazják. Ha a lekérdezés két oszlopot ad vissza, az első oszlop az **érték**, a második pedig a legördülő menüben látható **címke.**  Ha a lekérdezés három oszlopot ad vissza, a harmadik oszlop jelzi a legördülő lista alapértelmezett kiválasztását.  Ez az oszlop bármilyen típusú lehet, de a legegyszerűbb a bool vagy numerikus típusok használata, ahol a 0 hamis, és az 1 igaz.
 
- Ha az oszlop karakterlánc típusú, a null/üres karakterlánc hamisnak minősül, és minden más érték igaznak minősül. Az egyszeres kiválasztási legördülő listában az alapértelmezett érték a true értékkel lesz kiválasztva.  Több kijelölési legördülő lista esetén az összes igaz értékkel rendelkező érték lesz az alapértelmezett kijelölt készlet. A legördülő listában szereplő elemek a lekérdezés által visszaadott sorrendben jelennek meg. 
+ Ha az oszlop karakterlánctípusú, a null/üres karakterlánc hamisnak, és minden más érték igaznak minősül. Az egyszeri kijelölés legördülő menüknél a program az első, valódi értékkel rendelkező értéket használja alapértelmezett ként.  Több kijelöléslegördülő menü esetén a program a valós értékű értékeket használja alapértelmezettként. A legördülő menü elemei a lekérdezés által visszaadott sorok sorrendjében jelennek meg. 
 
-Nézzük meg az aktív felhasználók jelentésben szereplő paramétereket. Kattintson a **TimeRange**melletti Szerkesztés szimbólumra.
+Tekintsük át az Aktív felhasználók jelentésben található paramétereket. Kattintson a **TimeRange**melletti szerkesztési szimbólumra.
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/009-time-range.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/009-time-range.png)
 
-Ekkor elindul a paraméter szerkesztése menüelem:
+Ekkor megjelenik a Paraméter szerkesztése menüpont:
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/010-time-range-edit.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/010-time-range-edit.png)
 
-A lekérdezés a **DataTable** nevű elemzési lekérdezési nyelv egy funkcióját használja, amely lehetővé teszi egy tetszőleges tábla, teljes tartalom, valamint a vékony levegőben történő létrehozását. Például a következő elemzési lekérdezés:
+A lekérdezés az elemzési lekérdezési nyelv egy **datatable** nevű szolgáltatását használja, amely lehetővé teszi egy tetszőleges, tartalommal teli tábla generálását a semmiből! Például a következő elemzési lekérdezés:
 
 ```
 datatable( column1:string, column2:string )
@@ -195,11 +195,11 @@ datatable( column1:string, column2:string )
 ]
 ```
 
-Az eredmény generálása:
+Az eredményt hozza létre:
 
-![Application Insights munkafüzetek szakasz szerkesztési vezérlői](./media/usage-workbooks/011-data-table.png)
+![Az Application Insights-munkafüzetek szakaszszerkesztő vezérlői](./media/usage-workbooks/011-data-table.png)
 
-Egy részletesebb példa egy olyan legördülő listát használ, amely az országok/régiók csoportból való kiválasztását használja név szerint:
+Egy alkalmazhatóbb példa egy legördülő lista segítségével választ egy sor ország / régiók név szerint:
 
 ```
 customEvents
@@ -210,49 +210,49 @@ customEvents
 | order by client_CountryOrRegion asc
 ```
 
-A lekérdezés a következőképpen jeleníti meg az eredményeket:
+A lekérdezés az eredményeket a következőképpen jeleníti meg:
 
-![Ország legördülő lista](./media/usage-workbooks/012-country-dropdown.png)
+![Ország legördülő menü](./media/usage-workbooks/012-country-dropdown.png)
 
-A legördülő lista hihetetlenül hatékony eszközöket biztosít az interaktív jelentések testreszabásához és létrehozásához.
+A legördülő menük hihetetlenül hatékony eszközök az interaktív jelentések testreszabásához és létrehozásához.
 
-### <a name="time-range-parameters"></a>Időintervallum-paraméterek
+### <a name="time-range-parameters"></a>Időtartomány paraméterei
 
-Míg a legördülő menüből a saját egyéni időtartomány-paramétert is létrehozhatja, a beépített időtartomány-paraméter típusát is használhatja, ha nem kell ugyanolyan fokú rugalmasságot biztosítania. 
+Bár a legördülő paraméter típusán keresztül saját egyéni időtartomány-paramétert hozhat létre, használhatja a beépített időtartomány paramétertípusát is, ha nincs szüksége ugyanolyan fokú rugalmasságra. 
 
-Az időtartomány-paraméterek típusának 15 alapértelmezett tartománya van, amelyek öt perctől az utolsó 90 napra mutatnak. Lehetőség van az egyéni időtartomány kiválasztására is, amely lehetővé teszi, hogy a jelentés kezelője explicit indítási és leállítási értékeket válasszon az időtartományhoz.
+Az időtartomány-paramétertípusok 15 alapértelmezett tartományt használnak, amelyek öt perctől az utolsó 90 napig terjednek. Lehetőség van egyéni időtartomány-kiválasztásengedélyezésére is, amely lehetővé teszi, hogy a jelentés kezelője explicit kezdő és leállítási értékeket válasszon az időtartományhoz.
 
 ### <a name="resource-picker"></a>Erőforrás-választó
 
-Az erőforrás-választó paraméterének típusa lehetővé teszi, hogy a jelentést bizonyos típusú erőforrásokra szűkítse. Példa az erőforrás-választót használó előre létrehozott munkafüzetre, amely a **sikertelen** elemzések munkafüzetét használja.
+Az erőforrás-választó paraméter típusa lehetővé teszi a jelentés hatókörét bizonyos típusú erőforrásokra. Egy példa az előre összeállított munkafüzet, amely kihasználja az erőforrás-választó típus a **Failure Insights** munkafüzet.
 
-![Ország legördülő lista](./media/usage-workbooks/013-resource-picker.png)
+![Ország legördülő menü](./media/usage-workbooks/013-resource-picker.png)
 
 ## <a name="saving-and-sharing-workbooks-with-your-team"></a>Munkafüzetek mentése és megosztása a csapattal
 
-A munkafüzetek egy Application Insights erőforráson belül lesznek mentve, vagy a **saját jelentések** szakaszban, amely az Ön számára elérhető, vagy a **megosztott jelentések** szakaszban, amelyet mindenki elérhet a Application Insights erőforráshoz való hozzáféréssel. Az erőforrás összes munkafüzetének megtekintéséhez kattintson a művelet sávban a **Megnyitás** gombra.
+A munkafüzetek egy Application Insights-erőforráson belül kerülnek mentésre, vagy az Ön számára privát ként rendelkező **Saját jelentések** szakaszban, vagy a **Megosztott jelentések** szakaszban, amely mindenki számára elérhető, aki hozzáfér az Application Insights-erőforráshoz. Az erőforrás összes munkafüzetének megtekintéséhez kattintson a műveletsáv **Megnyitás** gombjára.
 
-A jelenleg **saját jelentésekban**lévő munkafüzetek megosztása:
+A **Saját jelentések**ben lévő munkafüzet megosztása:
 
-1. Kattintson a **Megnyitás** gombra a műveleti sávon
-2. Kattintson a "..." a megosztani kívánt munkafüzet melletti gomb
-3. Kattintson **a áthelyezés megosztott jelentésekre**elemre.
+1. Kattintson a **műveletsáv Megnyitás** gombjára
+2. Kattintson a "..." gombot a megosztani kívánt munkafüzet mellett
+3. Kattintson **az Áthelyezés megosztott jelentésekre gombra.**
 
-Egy hivatkozással vagy e-mailen keresztüli munkafüzet megosztásához kattintson a művelet sávban a **megosztás** elemre. Ne feledje, hogy a hivatkozás címzettjeinek hozzáféréssel kell rendelkezniük ehhez az erőforráshoz a Azure Portal a munkafüzet megtekintéséhez. A módosítások elvégzéséhez a címzetteknek legalább közreműködői engedélyekkel kell rendelkezniük az erőforráshoz.
+Ha egy munkafüzetet hivatkozással vagy e-mailben szeretne megosztani, kattintson a műveletsáv **Megosztás gombjára.** Ne feledje, hogy a hivatkozás címzettjeinek hozzáférésre van szükségük ehhez az erőforráshoz az Azure Portalon a munkafüzet megtekintéséhez. A szerkesztéshez a címzetteknek legalább közreműködői engedélyekkel kell rendelkezniük az erőforráshoz.
 
-Egy munkafüzetre mutató hivatkozás rögzítése egy Azure-irányítópulton:
+Munkafüzetre mutató hivatkozás rögzítése Egy Azure-irányítópultra:
 
-1. Kattintson a **Megnyitás** gombra a műveleti sávon
-2. Kattintson a "..." a rögzíteni kívánt munkafüzet melletti gomb
-3. Kattintson **a rögzítés az irányítópulton**elemre.
+1. Kattintson a **műveletsáv Megnyitás** gombjára
+2. Kattintson a "..." gombot a rögzíteni kívánt munkafüzet mellett
+3. Kattintson **a Rögzítés az irányítópultra gombra.**
 
-## <a name="contributing-workbook-templates"></a>Közreműködő munkafüzet-sablonok
+## <a name="contributing-workbook-templates"></a>Közreműködő munkafüzetsablonok
 
-Létrehozott egy fantasztikus munkafüzet-sablont, és szeretné megosztani a Közösséggel? További információért látogasson el a [GitHub](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)-tárházba.
+Létrehozott egy fantasztikus munkafüzetsablont, és szeretné megosztani a közösséggel? Ha többet szeretne megtudni, látogasson el a [GitHub repo](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md).
 
-## <a name="next-steps"></a>Következő lépések
-- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
-- Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
+## <a name="next-steps"></a>További lépések
+- A használati élmény engedélyezéséhez kezdje el elküldeni [az egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalnézeteket.](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)
+- Ha már küld egyéni eseményeket vagy oldalnézeteket, fedezze fel a Használati eszközöket, hogy megtudja, hogyan használják a felhasználók a szolgáltatást.
     - [Felhasználók, munkamenetek, események](../../azure-monitor/app/usage-segmentation.md)
     - [Tölcsérek](../../azure-monitor/app/usage-funnels.md)
     - [Megőrzés](../../azure-monitor/app/usage-retention.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor a Designer és a munkafüzetek közötti átalakítási beállítások megjelenítése
+title: Az Azure Monitor nézettervezője a munkafüzetek konvertálási beállításaihoz
 description: ''
 author: austonli
 ms.author: aul
@@ -7,41 +7,41 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658710"
 ---
-# <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Azure Monitor a Designer és a munkafüzetek közötti átalakítási beállítások megjelenítése
-A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk összehasonlítja a két és a munkafüzetek nézeteinek konvertálására szolgáló lehetőségek alapvető fogalmait.
+# <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Az Azure Monitor nézettervezője a munkafüzetek konvertálási beállításaihoz
+[A View designer](view-designer.md) az Azure Monitor egyik szolgáltatása, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti az adatokat a Log Analytics-munkaterületen, diagramokkal, listákkal és ütemtervekkel. Ezeket fokozatosan megszüntetik, és olyan munkafüzetekre cserélik, amelyek további funkciókat biztosítanak. Ez a cikk a nézetek munkafüzetté alakításának alapvető fogalmait és lehetőségeit hasonlítja össze.
 
-## <a name="basic-workbook-designs"></a>Alapszintű munkafüzetek tervezése
+## <a name="basic-workbook-designs"></a>Alapvető munkafüzettervek
 
-A tervezőben rögzített statikus ábrázolási stílus szerepel, míg a munkafüzetek lehetővé teszik az adatmegjelenítést és az adatmegjelenítést. Az alábbi ábrán két példa látható arra, hogyan rendezheti a munkafüzeteket a nézetek konvertálásakor.
+A nézettervező rögzített statikus ábrázolási stílussal rendelkezik, míg a munkafüzetek lehetővé teszik az adatok ábrázolásának és megjelenítésének szabadságát. Az alábbi képek két példát mutatnak be arra, hogyan rendezheti el a munkafüzeteket a nézetek konvertálásakor.
 
 [Függőleges munkafüzet](view-designer-conversion-examples.md#vertical)
-![függőlegesen](media/view-designer-conversion-options/view-designer-vertical.png)
+![függőleges](media/view-designer-conversion-options/view-designer-vertical.png)
 
-A [Többlapos munkafüzet](view-designer-conversion-examples.md#tabbed)
-![adattípus-terjesztés lap](media/view-designer-conversion-options/distribution-tab.png)
-![adattípusok az idő lapon](media/view-designer-conversion-options/over-time-tab.png)
+[Többlapos munkafüzet](view-designer-conversion-examples.md#tabbed)
+![Adattípus elosztása lap](media/view-designer-conversion-options/distribution-tab.png)
+![Adattípusok idővel lap](media/view-designer-conversion-options/over-time-tab.png)
 
-## <a name="tile-conversion"></a>Csempe konvertálása
-A tervező a teljes állapot ábrázolására és összegzésére használja az Áttekintés csempe funkciót. Ezek hét csempén jelennek meg, a számoktól a diagramig terjedően. A munkafüzetekben a felhasználók hasonló vizualizációkat hozhatnak létre, és rögzíthetik őket az áttekintő csempék eredeti stílusához hasonló módon. 
+## <a name="tile-conversion"></a>Csempe átalakítása
+A nézettervező az áttekintő csempe funkciót használja a teljes állapot ábrázolására és összegzésére. Ezek hét csempén jelennek meg, a számoktól a diagramokig. A munkafüzetekben a felhasználók hasonló vizualizációkat hozhatnak létre, és az áttekintő csempék eredeti stílusához hasonlítanak. 
 
 ![Katalógus](media/view-designer-conversion-options/overview.png)
 
 
 ## <a name="view-dashboard-conversion"></a>Irányítópult-átalakítás megtekintése
-A Designer csempék általában két szakaszból állnak, egy vizualizációból és egy olyan listából, amely megfelel a vizualizációban lévő adatoknak, például a **fánk & lista** csempét.
+A nézettervezőcsempék általában két szakaszból állnak, egy vizualizációból és egy listából, amely megfelel a vizualizáció adatainak, például a **Donut & List** csempe.
 
-![fánk](media/view-designer-conversion-options/donut-example.png)
+![Gyűrű](media/view-designer-conversion-options/donut-example.png)
 
-A munkafüzetek esetében lehetővé tesszük a felhasználó számára, hogy lekérdezze a nézet egy vagy mindkét részét. A munkafüzetekbe való lekérdezések egyszerű kétlépéses folyamatnak vannak kialakítva. Először az adatok a lekérdezésből jönnek létre, a másodikban pedig vizualizációként jelennek meg az adatok.  A következő példa azt szemlélteti, hogyan hozza létre újra a nézetet a munkafüzetekbe:
+A munkafüzetek segítségével a felhasználó kiválaszthatja, hogy lekérdezi-e a nézet egyik vagy mindkét szakaszát. A munkafüzetekben lévő lekérdezések kialakítása egyszerű, kétlépésből álló folyamat. Először is, az adatok a lekérdezésből jönnek létre, másodszor pedig az adatok vizualizációként jelennek meg.  A munkafüzetekben a következő példa a nézet újbóli létrehozása:
 
 ![Konvertálás](media/view-designer-conversion-options/convert-donut.png)
 
 
-## <a name="next-steps"></a>Következő lépések
-- [Munkafüzetek & engedélyeinek elérése](view-designer-conversion-access.md)
+## <a name="next-steps"></a>További lépések
+- [Munkafüzetek & engedélyek elérése](view-designer-conversion-access.md)

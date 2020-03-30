@@ -6,66 +6,66 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367074"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Hibakezelés az Azure Automation grafikus runbookokban
 
-A Azure Automation grafikus runbook figyelembe venni kívánt alapvető tervezési elv annak a problémának az azonosítása, amelyet a runbook a végrehajtás során felmerülhet. Az ilyen helyzetek közé tartoznak a sikeres műveletek, a várt hibaállapotok és a váratlan hibafeltételek.
+Az Azure Automation grafikus runbookhoz figyelembe veendő legfontosabb tervezési elv a runbook által a végrehajtás során tapasztalt problémák azonosítása. Az ilyen helyzetek közé tartoznak a sikeres műveletek, a várt hibaállapotok és a váratlan hibafeltételek.
 
-Gyakran előfordul, hogy ha egy runbook-tevékenységgel kapcsolatos megszakítást nem okozó hiba történik, a Windows PowerShell az alábbi tevékenységek feldolgozásával kezeli a tevékenységet, függetlenül attól, hogy milyen hiba történt. A hiba valószínűleg kivételt hoz létre, a lényeg azonban az, hogy a következő tevékenység is lefuthat.
+Gyakran előfordul, hogy nem végződő hiba fordul elő egy runbook-tevékenység, a Windows PowerShell kezeli a tevékenység feldolgozásával minden tevékenység, amely követi, függetlenül attól, hogy a hiba. A hiba valószínűleg kivételt hoz létre, a lényeg azonban az, hogy a következő tevékenység is lefuthat.
 
-A grafikus runbook tartalmaznia kell a hibák kezelésére szolgáló kódot a végrehajtási problémák kezeléséhez. Ha ellenőrizni szeretné egy tevékenység kimenetét, vagy hibát észlel, használhat PowerShell-kód tevékenységet, feltételes logikát definiálhat a tevékenység kimeneti hivatkozására, vagy alkalmazhat egy másik módszert.
+A grafikus runbook nak tartalmaznia kell a végrehajtási problémák kezelésére hibakezelési kódot. Egy tevékenység kimenetének érvényesítéséhez vagy egy hiba kezeléséhez használhatja a PowerShell-kódtevékenységet, feltételes logikát definiálhat a tevékenység kimeneti kapcsolatán, vagy alkalmazhat más módszert.
 
-Azure Automation grafikus runbookok javult a hibák kezelésére szolgáló képességgel. A kivételeket mostantól nem megszakító hibákká változtathatja, valamint hibahivatkozásokat hozhat létre a tevékenységek között. A továbbfejlesztett folyamat lehetővé teszi a runbook számára a hibák észlelését és a realizált vagy váratlan feltételek kezelését. 
+Az Azure Automation grafikus runbookok kiegészültek a hibakezelés képességével is. A kivételeket mostantól nem megszakító hibákká változtathatja, valamint hibahivatkozásokat hozhat létre a tevékenységek között. A továbbfejlesztett folyamat lehetővé teszi, hogy a runbook hibákat észleljen, és kezelje a realizált vagy váratlan körülményeket. 
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
 
-## <a name="powershell-error-types"></a>PowerShell-hibák típusai
+## <a name="powershell-error-types"></a>PowerShell-hibatípusok
 
-A runbook végrehajtása során fellépő PowerShell-hibák típusai leállnak a hibák és a megszakítást nem okozó hibák.
+A RunBook végrehajtása során előforduló PowerShell-hibák típusai a hibák és a nem végződési hibák.
  
-### <a name="terminating-error"></a>Megszakítási hiba
+### <a name="terminating-error"></a>Megszüntetési hiba
 
-A leállítási hiba súlyos hiba a végrehajtás során, amely teljesen megszakítja a parancs vagy a parancsfájl végrehajtását. Ilyenek például a nem létező parancsmagok, a parancsmag futását megakadályozó szintaktikai hibák és egyéb végzetes hibák.
+A megszüntetési hiba súlyos hiba a végrehajtás során, amely teljesen leállítja a parancsot vagy parancsfájlok végrehajtását. Ilyenek például a nem létező parancsmagok, a parancsmag futását megakadályozó szintaktikai hibák és más végzetes hibák.
 
-### <a name="non-terminating-error"></a>Megszakítást nem okozó hiba
+### <a name="non-terminating-error"></a>Nem végződési hiba
 
-A megszakítást nem okozó hiba egy nem súlyos hiba, amely lehetővé teszi, hogy a végrehajtás a hiba feltétele ellenére is folytatódjon. Ilyenek például a működési hibák, például a fájl nem található hibák és az engedélyek problémái.
+A nem megszüntetési hiba nem súlyos hiba, amely lehetővé teszi a végrehajtás folytatását a hibaállapot ellenére. Ilyenek például a működési hibák, például a fájl nem talált hibák és engedélyekkel kapcsolatos problémák.
 
 ## <a name="when-to-use-error-handling"></a>Mikor érdemes hibakezelést használni?
 
-Ha egy kritikus tevékenység hibát vagy kivételt jelez, használja a runbook a hibakezelés során. Fontos, hogy megakadályozza a runbook következő tevékenységének feldolgozását, és megfelelően kezelni a hibát. A hiba kezelése különösen kritikus fontosságú, ha a runbookok üzleti vagy szolgáltatási műveleti folyamatot támogat.
+Használja a hibakezelést a runbookban, ha egy kritikus tevékenység hibát vagy kivételt okoz. Fontos, hogy megakadályozza a runbook következő tevékenységének feldolgozását, és megfelelően kezelje a hibát. A hiba kezelése különösen fontos, ha a runbookok támogatják az üzleti vagy szolgáltatási műveletek folyamata.
 
-Minden olyan tevékenységnél, amely hibát okozhat, bármilyen más tevékenységre mutató hibaüzenetet adhat hozzá. A célként megadott tevékenység bármilyen típusú lehet, beleértve a kód tevékenységét, a parancsmag meghívását, egy másik runbook meghívását stb. A célként megadott tevékenység kimenő hivatkozásokat is tartalmazhat, amelyek rendszeres vagy hibás hivatkozásokat tartalmaznak. A hivatkozások lehetővé teszik, hogy a runbook a kód tevékenysége nélkül implementálja az összetett hibák kezelésére szolgáló logikát.
+Minden olyan tevékenységhez, amely hibát okozhat, bármely más tevékenységre mutató hibahivatkozást adhat hozzá. A céltevékenység bármilyen típusú lehet, beleértve a kódtevékenységet, a parancsmag meghívását, egy másik runbook meghívását és így tovább. A céltevékenység nek lehetnek kimenő hivatkozásai is, akár rendszeres, akár hibahivatkozások. A hivatkozások lehetővé teszik, hogy a runbook összetett hibakezelési logikát valósítson meg kódtevékenység alkalmazása nélkül.
 
-Az ajánlott eljárás egy dedikált hibakezelés runbook létrehozása közös funkciókkal, de ez a gyakorlat nem kötelező. Vegyünk például egy olyan runbook, amely megpróbál elindítani egy virtuális gépet, és telepít egy alkalmazást. Ha a virtuális gép nem indul el megfelelően, a következőket kell tennie:
+Az ajánlott eljárás egy dedikált hibakezelési runbook közös funkciókkal, de ez a gyakorlat nem kötelező. Vegyünk például egy runbookot, amely megpróbál elindítani egy virtuális gépet, és telepíteni egy alkalmazást. Ha a virtuális gép nem indul el megfelelően, akkor:
 
-1. Értesítés küldése erről a problémáról.
-2. Elindítja egy másik runbook, amely automatikusan kiépít egy új virtuális gépet.
+1. Értesítést küld a problémáról.
+2. Elindítja egy másik runbook, amely automatikusan egy új virtuális gép helyett.
 
-Az egyik megoldás az, ha a runbook egy olyan tevékenységre mutat, amely az első lépést kezeli. A runbook például összekapcsolhatja a `Write-Warning` parancsmagot a második lépés tevékenységével, például a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) parancsmaggal.
+Az egyik megoldás az, hogy egy hibahivatkozást a runbook mutat egy tevékenységet, amely kezeli az első lépés. Például a runbook csatlakoztathatja a `Write-Warning` parancsmast egy tevékenységhez a második lépéshez, például a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) parancsmaghoz.
 
-Ezt a viselkedést is általánosíthatja számos runbookok való használathoz azáltal, hogy ezt a két tevékenységet külön hibakezelés runbook. Mielőtt az eredeti runbook meghívja ezt a hibát a runbook kezelésében, létrehozhat egy egyéni üzenetet az adataiból, majd átadhatja azt paraméterként a runbook kezeléséhez.
+Ezt a viselkedést számos runbookban való használatra is általánosíthatja, ha ezt a két tevékenységet külön hibakezelési runbookba helyezi. Mielőtt az eredeti runbook meghívja ezt a hibakezelési runbookot, létrehozhat egy egyéni üzenetet az adataiból, majd paraméterként átadhatja azt a hibakezelési runbooknak.
 
 ## <a name="how-to-use-error-handling"></a>A hibakezelés használata
 
-A runbook minden tevékenysége rendelkezik olyan konfigurációs beállítással, amely a kivételeket a nem lezáró hibákra kapcsolja. Alapértelmezés szerint ez a beállítás le van tiltva. Azt javasoljuk, hogy engedélyezze ezt a beállítást minden olyan tevékenységnél, amelynél a runbook kezeli a hibákat. Ezzel a beállítással biztosíthatja, hogy a runbook a tevékenységek megszakításával és megszakításával kapcsolatos hibákat a nem megszakítást okozó hibaként kezelje.  
+A runbook minden tevékenysége rendelkezik egy konfigurációs beállítással, amely a kivételeket nem végződő hibákká alakítja. Alapértelmezés szerint ez a beállítás le van tiltva. Azt javasoljuk, hogy engedélyezze ezt a beállítást minden olyan tevékenység, ahol a Runbook kezeli a hibákat. Ez a beállítás biztosítja, hogy a runbook kezeli mind a leállítási és a nem végződési hibák a tevékenység nem végződési hibák, egy hibahivatkozás használatával.  
 
-A konfigurációs beállítás engedélyezése után a runbook létrehozhat egy tevékenységet, amely kezeli a hibát. Ha a tevékenység hibát okoz, a rendszer a kimenő hibák hivatkozásait követi. A normál kapcsolatok nem lesznek követve, még akkor is, ha a tevékenység a normál kimenetet is létrehozza.<br><br> ![Példa egy Automation runbook hibahivatkozásra](media/automation-runbook-graphical-error-handling/error-link-example.png)
+A konfigurációs beállítás engedélyezése után a runbook hozzon létre egy tevékenységet, amely kezeli a hibát. Ha a tevékenység hibát okoz, a rendszer követi a kimenő hibahivatkozásokat. A rendszeres kapcsolatokat nem követik, még akkor sem, ha a tevékenység rendszeres kimenetet is eredményez.<br><br> ![Példa egy Automation runbook hibahivatkozásra](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
-A következő példában egy runbook egy olyan változót kér le, amely egy virtuális gép számítógépnevét tartalmazza. Ezután megpróbálja elindítani a virtuális gépet a következő tevékenységgel.<br><br> ![Automatizálási runbook – példa](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
+A következő példában egy runbook lekéri a virtuális gép számítógépnevét tartalmazó változót. Ezután megpróbálja elindítani a virtuális gép a következő tevékenység.<br><br> ![Automatizálási runbook hibakezelés példa](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-A `Get-AutomationVariable` tevékenység és a [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) parancsmag úgy van konfigurálva, hogy a kivételeket a hibákra konvertálja. Ha problémák merülnek fel a változó beszerzése vagy a virtuális gép elindítása során, a kód hibákat generál.<br><br> ![Automation runbook hiba-kezelési tevékenység beállítások](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
+A `Get-AutomationVariable` tevékenység és a [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) parancsmag úgy van konfigurálva, hogy a kivételeket hibákká konvertálja. Ha problémák merülnek fel a változó beszerzése vagy a virtuális gép indítása, a kód hibákat generál.<br><br> ![Automation runbook hibakezelési](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)tevékenység beállításai .
 
-Hiba történt a folyamatok ezen tevékenységekből egyetlen `error management` kód tevékenységre való csatolásakor. Ez a tevékenység egy egyszerű PowerShell-kifejezéssel van konfigurálva, amely a `throw` kulcsszó használatával leállítja a feldolgozást, valamint `$Error.Exception.Message` az aktuális kivételt leíró üzenet beszerzéséhez.<br><br> ![Automation runbook hiba a kód kezelésére példa](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+A hibakapcsolatok ezekből a `error management` tevékenységekből egyetlen kódtevékenységhez áramlanak. Ez a tevékenység egy egyszerű PowerShell-kifejezéssel van konfigurálva, amely a kulcsszót használja a `throw` feldolgozás leállításához, valamint `$Error.Exception.Message` az aktuális kivételt leíró üzenet lekérő üzenet lekérő.<br><br> ![Automatizálási runbook hibakezelési kód példa](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információk a hivatkozásokról és a grafikus runbookokban szereplő hivatkozástípusokról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md#links-and-workflow).
 
-* A runbook végrehajtásával, a runbook-feladatok figyelésével és egyéb technikai részletekkel kapcsolatos további tudnivalókért tekintse meg [a runbook végrehajtásáról szóló részt Azure Automation](automation-runbook-execution.md).
+* Ha többet szeretne megtudni a runbook-végrehajtásról, a runbook-feladatok figyeléséről és egyéb technikai részletekről, olvassa el [a Runbook-végrehajtás az Azure Automationben című témakört.](automation-runbook-execution.md)

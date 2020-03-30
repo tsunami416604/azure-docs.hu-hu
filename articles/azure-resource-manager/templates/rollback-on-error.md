@@ -1,30 +1,30 @@
 ---
-title: A sikeres üzembe helyezés hibába való visszaállítása
-description: Azt határozza meg, hogy egy sikertelen központi telepítés visszaálljon-e egy sikeres üzembe helyezésre.
+title: Hiba visszaállítása a sikeres telepítésre
+description: Adja meg, hogy egy sikertelen központi telepítés visszakell-e állnia egy sikeres központi telepítésre.
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 32ba5485e1980eb819bf5429fbfbb597dfe75c2a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484297"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460143"
 ---
-# <a name="rollback-on-error-to-successful-deployment"></a>Hiba visszaállítása a sikeres központi telepítéshez
+# <a name="rollback-on-error-to-successful-deployment"></a>Hiba visszaállítása a sikeres telepítésre
 
-Ha egy telepítés meghiúsul, automatikusan újratelepítheti a korábbi, sikeres telepítést az üzembe helyezési előzményekből. Ez a funkció akkor hasznos, ha az infrastruktúra központi telepítésének ismert jó állapota van, és ezt az állapotot szeretné visszaállítani. Számos figyelmeztetés és korlátozás létezik:
+Ha egy központi telepítés sikertelen, automatikusan újratelepítheti a korábbi, sikeres üzembe helyezést a központi telepítési előzményekből. Ez a funkció akkor hasznos, ha van egy ismert jó állapotban az infrastruktúra üzembe helyezését, és szeretné, hogy visszatérjen az állapot. Számos kikötés és korlátozás létezik:
 
-- Az újratelepítést a rendszer pontosan úgy futtatja, ahogy korábban ugyanazzal a paraméterekkel futtatta. A paraméterek nem módosíthatók.
-- Az előző központi telepítés a [teljes móddal](./deployment-modes.md#complete-mode)fut. A rendszer törli az előző üzemelő példányban nem szereplő erőforrásokat, és minden erőforrás-konfiguráció a korábbi állapotukra van beállítva. Győződjön meg arról, hogy teljes mértékben megértette az [üzembe helyezési módokat](./deployment-modes.md).
-- Az újratelepítés csak az erőforrásokat befolyásolja, az adatváltozások nincsenek hatással.
-- Ezt a funkciót csak az erőforráscsoport-telepítésekhez használhatja, az előfizetés és a felügyeleti csoport szintjén üzemelő példányok nem. Az előfizetési szintű telepítéssel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](./deploy-to-subscription.md).
-- Ezt a lehetőséget csak gyökérszintű központi telepítések esetén használhatja. A beágyazott sablonból történő központi telepítések nem érhetők el az újratelepítéshez.
+- Az újratelepítés pontosan úgy fut, ahogy korábban futtatták ugyanazzal a paraméterrel. A paraméterek nem módosíthatók.
+- Az előző központi telepítés a [teljes módban](./deployment-modes.md#complete-mode)fut. Az előző központi telepítésben nem szereplő erőforrások törlődnek, és az erőforrás-konfigurációk a korábbi állapotukra vannak beállítva. Győződjön meg arról, hogy teljes mértékben megértette a [telepítési módokat.](./deployment-modes.md)
+- Az újratelepítés csak az erőforrásokat érinti, az adatok módosításait ez nem érinti.
+- Ezt a szolgáltatást csak erőforráscsoport-telepítésekkel használhatja, előfizetési vagy felügyeleti csoportszintű telepítésekkel nem. Az előfizetési szintű telepítésről további információt [az Erőforráscsoportok és -erőforrások létrehozása előfizetési szinten](./deploy-to-subscription.md)című témakörben talál.
+- Ezt a beállítást csak gyökérszintű központi telepítésekkel használhatja. A beágyazott sablonból származó központi telepítések nem érhetők el az újratelepítéshez.
 
-Ha ezt a beállítást szeretné használni, a központi telepítéseknek egyedi névvel kell rendelkezniük, hogy az előzményekben azonosíthatók legyenek. Ha nem rendelkezik egyedi névvel, akkor az aktuális sikertelen telepítés felülírhatja a korábban sikeres telepítést az előzményekben.
+A beállítás használatához a központi telepítések egyedi nevekkel kell rendelkezniük, hogy az előzményekben azonosíthatók legyenek. Ha nem rendelkezik egyedi nevekkel, az aktuális sikertelen telepítés felülírhatja a korábban sikeres központi telepítést az előzményekben.
 
 ## <a name="powershell"></a>PowerShell
 
-Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez adja hozzá a `-RollbackToLastDeployment` paramétert jelzőként.
+Az utolsó sikeres telepítés újratelepítéséhez adja hozzá a `-RollbackToLastDeployment` paramétert jelzőként.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -33,7 +33,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollbackToLastDeployment
 ```
 
-Egy adott központi telepítés újbóli üzembe helyezéséhez használja a `-RollBackDeploymentName` paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
+Adott központi telepítés újratelepítéséhez `-RollBackDeploymentName` használja a paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -42,12 +42,12 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollBackDeploymentName ExampleDeployment01
 ```
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
-Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez adja hozzá a `--rollback-on-error` paramétert jelzőként.
+Az utolsó sikeres telepítés újratelepítéséhez adja hozzá a `--rollback-on-error` paramétert jelzőként.
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -55,10 +55,10 @@ az group deployment create \
   --rollback-on-error
 ```
 
-Egy adott központi telepítés újbóli üzembe helyezéséhez használja a `--rollback-on-error` paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
+Adott központi telepítés újratelepítéséhez `--rollback-on-error` használja a paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment02 \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -68,7 +68,7 @@ az group deployment create \
 
 ## <a name="rest-api"></a>REST API
 
-Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez, ha az aktuális telepítés meghiúsul, használja a következőt:
+Ha az aktuális telepítés sikertelen, az utolsó sikeres telepítés újratelepítéséhez használja a következőket:
 
 ```json
 {
@@ -89,7 +89,7 @@ Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez, ha az 
 }
 ```
 
-Ha az aktuális telepítés meghiúsulása esetén a megadott központi telepítés újratelepítése sikertelen, használja a következőt:
+Ha az aktuális telepítés sikertelen, egy adott központi telepítés újratelepítéséhez használja a következőket:
 
 ```json
 {
@@ -113,9 +113,9 @@ Ha az aktuális telepítés meghiúsulása esetén a megadott központi telepít
 
 A megadott központi telepítésnek sikeresnek kell lennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A szolgáltatás több régióba való biztonságos kivonásához lásd: [Azure Telepítéskezelő](deployment-manager-overview.md).
-- Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
-- Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](template-syntax.md)ismertető témakört.
-- A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon üzembe helyezése sas-tokenrel](secure-template-with-sas-token.md).
+- Ha biztonságosan szeretné kivonni a szolgáltatást egynél több régióra, olvassa el az [Azure Deployment Manager](deployment-manager-overview.md).
+- Ha meg szeretné adni, hogyan kezelje az erőforráscsoportban létező, de a sablonban nem definiált erőforrásokat, olvassa el az Azure Resource Manager telepítési módjai című [témakört.](deployment-modes.md)
+- Ha tudni szeretné, hogyan definiálhatja a paramétereket a sablonban, [olvassa el az Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakört.](template-syntax.md)
+- A SAS-jogkivonatot igénylő sablonok üzembe helyezéséről a [Privát sablon telepítése SAS-jogkivonattal](secure-template-with-sas-token.md)című témakörben olvashat.

@@ -1,7 +1,7 @@
 ---
-title: 'A Train SVD ajánló: modul referenciája'
+title: 'Vonat SVD ajánlója: Modul referencia'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning Train SVD ajánló modulját a SVD algoritmus használatával a Bayes-ajánlások betanításához.
+description: Ismerje meg, hogyan használhatja a Betanítás SVD ajánló modul az Azure Machine Learning betanításához egy Bayes-i an recommender az SVD algoritmus használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,68 +9,68 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920797"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477408"
 ---
 # <a name="train-svd-recommender"></a>SVD-ajánló betanítása
 
-Ez a cikk azt ismerteti, hogyan használható a SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal betaníthatja a javaslat modelljét az egyértékű dekompozíció (SVD) algoritmus alapján.  
+Ez a cikk ismerteti, hogyan használhatja a Train SVD ajánló modul az Azure Machine Learning designer (előzetes verzió). Ezzel a modullal az egyértékű bomlás (SVD) algoritmuson alapuló ajánlási modell betanítása.  
 
-A Train SVD ajánló modul beolvassa a felhasználói elemek minősítésének háromszorosát tartalmazó adatkészletet. Egy betanított SVD-ajánlót ad vissza. Ezután használhatja a betanított modellt a minősítések előrejelzéséhez vagy javaslatok létrehozásához a [score SVD ajánló](score-svd-recommender.md) modul használatával.  
+A Train SVD Recommender modul beolvassa a felhasználói cikk-minősítési háromszorosai adatkészletét. Egy képzett SVD-ajánlót ad vissza. Ezután a betanított modell segítségével előre jelezheti a minősítések, vagy javaslatokat generál, a [Score SVD ajánló](score-svd-recommender.md) modul használatával.  
 
 
   
-## <a name="more-about-recommendation-models-and-the-svd-recommender"></a>További tudnivalók a javaslatok modelljeiről és a SVD ajánlóról  
+## <a name="more-about-recommendation-models-and-the-svd-recommender"></a>További információk az ajánlási modellekről és az SVD ajánlóról  
 
-Egy ajánlási rendszer fő célja, hogy a rendszer egy vagy több *elemét* javasolja a *felhasználóknak* . Egy elem például film, étterem, könyv vagy zeneszám lehet. A felhasználók lehetnek személy, személyek csoportja vagy más entitások, amelyek elem-beállításokkal rendelkeznek.  
+Az ajánlási rendszer fő célja, hogy egy vagy több *elemet* ajánljon a rendszer *felhasználóinak.* Egy elemre lehet például film, étterem, könyv vagy dal. A felhasználó lehet személy, személyek csoportja vagy más, elembeállításokkal rendelkező entitás.  
 
-Az ajánló rendszerek két fő megközelítéssel rendelkeznek: 
+Az ajánlórendszereknek két fő megközelítése van: 
 
-+ A **Content-based** módszer a felhasználók és az elemek funkcióinak használatát is lehetővé teszi. A felhasználókat a tulajdonságok, például az életkor és a nemek szerint lehet leírva. Az elemeket a következő tulajdonságok írják le: Szerző és gyártó. A közösségi partnerkereső webhelyeken tipikus példákat talál a Content-based ajánlási rendszerekre. 
-+ Az **együttműködési szűrés** csak a felhasználók és az elemek azonosítóit használja. A felhasználók által az elemeknek megadott minősítési (ritka) mátrixokból származó, implicit információkat kap ezekről az entitásokról. Megtudhatja, hogy egy felhasználó a minősítéssel rendelkező elemekről, illetve azokról a felhasználókról, akik azonos elemeket értékeltek.  
++ A **tartalomalapú** megközelítés mind a felhasználók, mind az elemek számára használja a funkciókat. A felhasználók olyan tulajdonságokkal írhatók le, mint az életkor és a nem. Az elemeket olyan tulajdonságokkal lehet leírni, mint a szerző és a gyártó. A közösségi partnerkereső webhelyeken a tartalomalapú ajánlási rendszerek tipikus példáit találja. 
++ **Az együttműködésen alapuló szűrés** csak a felhasználók és az elemek azonosítóit használja. Ezeket az entitásokat implicit információkat kap a felhasználók által az elemeknek adott minősítések (ritka) mátrixából. A felhasználóról az általa értékelt elemekből és más olyan felhasználóktól tudhatunk meg többet, akik ugyanazokat az elemeket értékelték.  
 
-A SVD ajánló a felhasználók és az elemek azonosítóit, valamint a felhasználók által az elemeknek megadott minősítési mátrixot használja. Ez egy *együttműködési javaslat*. 
+Az SVD-ajánló a felhasználók és az elemek azonosítóit, valamint a felhasználók által az elemekhez adott minősítések mátrixát használja. Ez egy *együttműködésen alapuló ajánló*. 
 
-A SVD ajánlóval kapcsolatos további információkért tekintse meg a kapcsolódó kutatási papírt: [Matrix faktorizációs Techniques for ajánló Systems](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
+Az SVD ajánlójáról további információt a megfelelő kutatási dokumentumban talál: [Mátrixfaktorizációs technikák az ajánlórendszerekhez](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
 
 
-## <a name="how-to-configure-train-svd-recommender"></a>A Train SVD ajánló konfigurálása  
+## <a name="how-to-configure-train-svd-recommender"></a>A Train SVD recommender beállítása  
 
 ### <a name="prepare-data"></a>Adatok előkészítése
 
-A modul használata előtt a bemeneti adatoknak az ajánlási modell által várt formátumban kell lenniük. A felhasználó-tétel minősítéssel rendelkező triplák betanítási adatkészlete kötelező.
+A modul használata előtt a bemeneti adatokat kell a formátumot, hogy a javaslat modell elvár. A felhasználói cikk-minősítési háromszoros betanítási adatkészlet szükséges.
 
 + Az első oszlop felhasználói azonosítókat tartalmaz.
-+ A második oszlop az elemek azonosítóit tartalmazza.
-+ A harmadik oszlop tartalmazza a felhasználó-tétel párok minősítését. A minősítési értékeknek numerikus típusúnak kell lenniük.  
++ A második oszlop cikkazonosítókat tartalmaz.
++ A harmadik oszlop a felhasználói elem pár minősítését tartalmazza. A minősítési értékeknek numerikus típusúaknak kell lenniük.  
 
-A Azure Machine Learning Designer **Movie Ratings** adatkészlete (az **adatkészletek** kiválasztása, majd a **minták**) a várt formátumot mutatja:
+Az Azure Machine Learning tervezőjének **filmminősítési** adatkészlete (válassza **az Adatkészletek,** majd **a Minták**lehetőséget) bemutatja a várt formátumot:
 
-![Film minősítése](media/module/movie-ratings-dataset.png)
+![Film értékelések](media/module/movie-ratings-dataset.png)
 
-Ebből a mintából láthatja, hogy egyetlen felhasználó értékelte a több filmet. 
+Ebből a mintából láthatja, hogy egyetlen felhasználó több filmet értékelt. 
 
 ### <a name="train-the-model"></a>A modell betanítása
 
-1.  Adja hozzá a Train SVD Ajánlói modult a folyamathoz a tervezőben, és kapcsolja össze a betanítási adataival.  
+1.  Adja hozzá a Train SVD recommender modult a folyamathoz a tervezőben, és csatlakoztassa a betanítási adatokhoz.  
    
-2.  A **tényezők száma**mezőben adhatja meg, hogy hány tényezőt kell használni az ajánlóban.  
+2.  A **Tényezők száma területen**adja meg az ajánlóval használandó tényezők számát.  
     
-    Az egyes tényezők azt mérik, hogy a felhasználó milyen mértékben kapcsolódik az elemhez. A tényezők száma egyben a látens dimenzióját is. A felhasználók és az elemek számának növelésével jobb, ha nagyobb számú tényezőt állít be. Ha azonban a szám túl nagy, csökkenhet a teljesítmény.
+    Minden tényező azt méri, hogy a felhasználó mennyire kapcsolódik az elemhez. A tényezők száma is a dimenziós látens tényező térben. A felhasználók és elemek számának növekedésével jobb, ha nagyobb számú tényezőt állít be. De ha a szám túl nagy, a teljesítmény csökkenhet.
     
-3.  Az **ajánlási algoritmusok Ismétlések száma** azt jelzi, hogy az algoritmus hányszor dolgozza fel a bemeneti adatokat. Minél nagyobb ez a szám, annál pontosabbak lesznek a jóslatok. A nagyobb szám azonban lassabb betanítást jelent. Az alapértelmezett érték 30.
+3.  **A javaslati algoritmus iterációinak száma** azt jelzi, hogy az algoritmusnak hányszor kell feldolgoznia a bemeneti adatokat. Minél magasabb ez a szám, annál pontosabbak az előrejelzések. A nagyobb szám azonban lassabb képzést jelent. Az alapértelmezett érték 30.
 
-4.  A **tanulási arány**mezőben adjon meg egy 0,0 és 2,0 közötti számot, amely meghatározza a tanulási lépés méretét.
+4.  A **tanulási sebesség**hez adjon meg egy 0.0 és 2.0 közötti számot, amely meghatározza a tanulás lépésméretét.
 
-    A tanulási arány meghatározza a lépés méretét az egyes iterációk során. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldást keresi. 
+    A tanulási arány határozza meg a lépés méretét az egyes iterációk. Ha a lépés mérete túl nagy, előfordulhat, hogy túllépi az optimális megoldást. Ha a lépés mérete túl kicsi, a képzés hosszabb időt vesz igénybe, hogy megtalálja a legjobb megoldást. 
   
-5.  A folyamat futtatása.  
+5.  Küldje el a folyamatot.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

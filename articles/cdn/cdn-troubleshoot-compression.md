@@ -1,10 +1,10 @@
 ---
-title: Az Azure CDN-beli fájlok tömörítési hibáinak elhárítása |} A Microsoft Docs
-description: Az Azure CDN-fájlok tömörítési hibáinak elhárítása.
+title: Fájltömörítés hibaelhárítása az Azure CDN-ben | Microsoft dokumentumok
+description: Az Azure CDN-fájltömörítéssel kapcsolatos problémák elhárítása.
 services: cdn
 documentationcenter: ''
-author: zhangmanling
-manager: erikre
+author: sohamnc
+manager: danielgi
 editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: azure-cdn
@@ -14,108 +14,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5195dc3c47d2a4377147b2ef49b23bab6b3fee77
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593325"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476423"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
-Ez a cikk segít a hibák elhárításában [CDN-fájltömörítés](cdn-improve-performance.md).
+Ez a cikk segítséget nyújt a [CDN-fájltömörítéssel](cdn-improve-performance.md)kapcsolatos problémák elhárításához.
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a [az MSDN Azure és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik megoldásként is fájl is egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) kattintson **támogatás kérése**.
+Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel [az MSDN Azure-ban és a Veremtúlcsordulás fórumain.](https://azure.microsoft.com/support/forums/) Azt is megteheti, hogy egy Azure-támogatási incidenst is benyújthat. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és kattintson a Támogatás beszerezni e **gombra.**
 
-## <a name="symptom"></a>Jelenség
-A végpont tömörítés engedélyezve van, de a fájlok vannak a visszaadott tömörítetlen.
+## <a name="symptom"></a>Hibajelenség
+A végpont tömörítése engedélyezve van, de a fájlok tömörítetlenül kerülnek visszaadásra.
 
 > [!TIP]
-> Annak ellenőrzéséhez, hogy a fájlokat a rendszer már ad tömörített kell használnia egy eszköz, például [Fiddler](https://www.telerik.com/fiddler) vagy a böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Ellenőrizze a HTTP-válaszfejlécek adott vissza a gyorsítótárazott CDN-tartalom.  Van-e nevű fejléc `Content-Encoding` értékkel **gzip**, **bzip2**, vagy **deflate**, a tartalom tömörítése.
+> Annak ellenőrzéséhez, hogy a fájlok at tömörítetten adja-e vissza, olyan eszközt kell használnia, mint a [Fiddler](https://www.telerik.com/fiddler) vagy a böngésző [fejlesztői eszközei](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Ellenőrizze a gyorsítótárazott CDN-tartalommal visszaadott HTTP-válaszfejléceket.  Ha van egy `Content-Encoding` **fejléc neve,** amelynek értéke gzip , **bzip2**, vagy **leereszt,** a tartalom tömörített.
 > 
-> ![Tartalom kódolása fejléc](./media/cdn-troubleshoot-compression/cdn-content-header.png)
+> ![Tartalomkódolás fejléce](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
 > 
 
 ## <a name="cause"></a>Ok
-Van több lehetséges oka lehet, többek között:
+Számos oka lehet, többek között:
 
-* A kért tartalmat, nem jogosult a tömörítést.
-* A tömörítés nem engedélyezve van a kért fájl típusa.
-* A HTTP-kérelem nem tartalmazott egy érvénytelen tömörítési típus kérése fejléc.
+* A kért tartalom nem jogosult tömörítésre.
+* A kért fájltípushoz nincs engedélyezve a tömörítés.
+* A HTTP-kérelem nem tartalmazott érvényes tömörítési típust kérő fejlécet.
+* Az Origin adattömböket küld.
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 > [!TIP]
-> Mint az új végpontok üzembe, a CDN konfigurációs módosítások némi időt a hálózaton belüli propagálásához.  Változások általában 90 percen belül lépnek érvénybe.  Ha az első alkalommal beállította a tömörítés a CDN-végpont, vegye figyelembe, hogy a tömörítési beállítások a POP-kre történő propagálása megtörtént 1 – 2 óra várakozás. 
+> Az új végpontok központi telepítéséhez ugyanúgy, mint az új végpontok üzembe helyezése, a CDN konfigurációs módosításai némi időt vesz igénybe a hálózaton keresztül történő propagáláshoz.  Általában a módosításokat 90 percen belül alkalmazzák.  Ha ez az első alkalom, hogy tömörítést állít be a CDN-végponthoz, érdemes megvárnia az 1-2 órát, hogy megbizonyosodjon arról, hogy a tömörítési beállítások propagáltak a POP-ok számára. 
 > 
 > 
 
 ### <a name="verify-the-request"></a>A kérelem ellenőrzése
-Először azt kell tennie a kérelem ellenőrzése gyors megerősítést.  A böngésző használható [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) megtekintéséhez a webkiszolgálónak kéréseket.
+Először is, gyorsan ellenőriznünk kell a kérést.  A böngésző [fejlesztői eszközeivel](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) megtekintheti a kéréseket.
 
-* Ellenőrizze, hogy a kérelem érkezik a végponti URL-cím `<endpointname>.azureedge.net`, és nem a forráshoz.
-* Ellenőrizze, hogy a kérés tartalmaz egy **Accept-Encoding** fejlécére, majd a fejléc értéke tartalmaz **gzip**, **deflate**, vagy **bzip2**.
+* Ellenőrizze, hogy a kérelem a végpont `<endpointname>.azureedge.net`URL-címére érkezik-e, és ne az eredetére.
+* Ellenőrizze, hogy a kérelem **tartalmaz-e Accept-Encoding fejlécet,** és a fejléc értéke tartalmazza a **gzip,** **deflate**vagy **bzip2 fejlécet.**
 
 > [!NOTE]
-> **Az Azure CDN az Akamaitól** podporují profilok **gzip** kódolást.
+> **Az Akamai-profilokból származó Azure CDN** csak a **gzip** kódolást támogatja.
 > 
 > 
 
-![A CDN-kérelemfejlécek](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
+![CDN-kérelemfejlécek](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profiles"></a>Ellenőrizze a tömörítési beállítások (standard szintű CDN-profilok)
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>Tömörítési beállítások ellenőrzése (szabványos CDN-profilok)
 > [!NOTE]
-> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **Azure CDN Standard a Microsoft**, **Azure CDN Standard verizon**, vagy **Azure CDN Akamai Standard** profilt. 
+> Ez a lépés csak akkor érvényes, ha a CDN-profil a **Microsoft Azure CDN-szabványa,** a **Verizon Azure CDN Standard**vagy az **Akamai-profilAzure CDN Standard.** 
 > 
 > 
 
-Keresse meg a végpont a [az Azure portal](https://portal.azure.com) , és kattintson a **konfigurálása** gombra.
+Keresse meg a végpontot az [Azure Portalon,](https://portal.azure.com) és kattintson a **Konfigurálás gombra.**
 
-* Ellenőrizze, hogy engedélyezve van a tömörítés.
-* Ellenőrizze, hogy a MIME-típus tömörítendő a tartalmat a tömörített formátumok listáját tartalmazza.
+* Ellenőrizze, hogy a tömörítés engedélyezve van-e.
+* Ellenőrizze, hogy a tömörítendő tartalom MIME-típusa szerepel-e a tömörített formátumok listájában.
 
 ![CDN tömörítési beállítások](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profiles"></a>Ellenőrizze a tömörítési beállítások (prémium szintű CDN-profilok)
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>Tömörítési beállítások ellenőrzése (Prémium CDN-profilok)
 > [!NOTE]
-> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **verizon Azure CDN Premium** profilt.
+> Ez a lépés csak akkor érvényes, ha a CDN-profil egy **Azure CDN Premium a Verizon-profilból.**
 > 
 > 
 
-Keresse meg a végpont a [az Azure portal](https://portal.azure.com) , és kattintson a **kezelés** gombra.  A kiegészítő portál nyílik meg.  A kurzort a **HTTP nagy** lapfülre, majd mutasson a **gyorsítótár beállításainak** úszó menü.  Kattintson a **tömörítési**. 
+Keresse meg a végpontot az [Azure Portalon,](https://portal.azure.com) és kattintson a **Kezelés** gombra.  Megnyílik a kiegészítő portál.  Mutasson a **NAGY HTTP-fülre,** majd mutasson a **Gyorsítótár beállításai** úszó panelre.  Kattintson **a Tömörítés gombra.** 
 
-* Ellenőrizze, hogy engedélyezve van a tömörítés.
-* Ellenőrizze a **fájltípusok** lista tartalmaz egy vesszővel tagolt listája (szóközök nélkül) a MIME-típusok.
-* Ellenőrizze, hogy a MIME-típus tömörítendő a tartalmat a tömörített formátumok listáját tartalmazza.
+* Ellenőrizze, hogy a tömörítés engedélyezve van-e.
+* Ellenőrizze, hogy a **Fájltípusok** lista a MIME-típusok vesszővel tagolt listáját tartalmazza-e (szóközök nélkül).
+* Ellenőrizze, hogy a tömörítendő tartalom MIME-típusa szerepel-e a tömörített formátumok listájában.
 
-![CDN premium tömörítési beállítások](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
+![CDN prémium szintű tömörítési beállítások](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>Ellenőrizze a tartalom gyorsítótárazott (Verizon CDN-profilok)
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>A tartalom gyorsítótárazásának ellenőrzése (Verizon CDN-profilok)
 > [!NOTE]
-> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **Azure CDN Standard verizon** vagy **verizon Azure CDN Premium** profilt.
+> Ez a lépés csak akkor érvényes, ha a CDN-profil egy **Azure CDN standard a Verizon** vagy az Azure **CDN Premium a Verizon-profilból.**
 > 
 > 
 
-A böngésző fejlesztői eszközök használatával, ellenőrizze a válaszfejlécek biztosításához a régióban, ahol éppen kérés gyorsítótárazza a fájlt.
+A böngésző fejlesztői eszközeivel ellenőrizze a válaszfejléceket, hogy a fájl a rendszer a kért régióban legyen gyorsítótárazva.
 
-* Ellenőrizze a **kiszolgáló** válaszfejléc.  A fejléc kell rendelkeznie a formátum **platformmal (POP vagy kiszolgáló-azonosító)** , az alábbi példában látható módon.
-* Ellenőrizze a **X-gyorsítótár** válaszfejléc.  Beolvassa a fejléc **TALÁLATI**.  
+* Ellenőrizze a **Kiszolgáló** válaszfejlécét.  A fejlécnek **platformformátummal (POP/Server ID) kell rendelkeznie,** ahogy az a következő példában látható.
+* Ellenőrizze az **X-Cache** válaszfejlécet.  A fejléc ben kell olvasni **HIT**.  
 
-![A CDN-válaszfejlécek](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
+![CDN-válaszfejlécek](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Ellenőrizze, hogy a fájl megfelel a mérete (Verizon CDN-profilok)
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Ellenőrizze, hogy a fájl megfelel-e a méretkövetelményeknek (Verizon CDN-profilok)
 > [!NOTE]
-> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **Azure CDN Standard verizon** vagy **verizon Azure CDN Premium** profilt.
+> Ez a lépés csak akkor érvényes, ha a CDN-profil egy **Azure CDN standard a Verizon** vagy az Azure **CDN Premium a Verizon-profilból.**
 > 
 > 
 
-Jogosult a tömörítést, a fájl a következő méret követelményeknek kell megfelelnie:
+A tömörítésre való jogosultsághoz a fájlnak a következő méretkövetelményeknek kell megfelelnie:
 
-* Nagyobb, mint 128 bájt.
+* 128 bájtnál nagyobb.
 * 1 MB-nál kisebb.
 
-### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Ellenőrizze a forrás kiszolgálón a kérés egy **keresztül** fejléc
-A **keresztül** HTTP-fejléc azt jelzi, hogy a webkiszolgáló egy proxykiszolgáló által átadott a kérelmet.  Microsoft IIS-kiszolgálók alapértelmezés szerint nem tömöríthetők válaszokat, ha a kérés tartalmaz egy **keresztül** fejléc.  Bírálja felül ezt a viselkedést, hajtsa végre a következőket:
+### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>A forráskiszolgálón a **Via** fejléc ellenőrzése
+A **HTTP-n keresztül** fejléc azt jelzi a webkiszolgálónak, hogy a kérelmet egy proxykiszolgáló továbbítja.  A Microsoft IIS webkiszolgálói alapértelmezés szerint nem tömörítik a válaszokat, ha a kérelem **Via** fejlécet tartalmaz.  A viselkedés felülbírálásához hajtsa végre az alábbi műveleteket:
 
-* **AZ IIS 6**: [HcNoCompressionForProxies állítsa "FALSE" = az IIS-metabázis tulajdonságai](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **Az IIS 7, és akár**: [Állítsa be mindkét **noCompressionForHttp10** és **noCompressionForProxies** hamis, a kiszolgáló konfigurációjában](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 6**: [A HcNoCompressionForProxies="FALSE" beállítása az IIS metabázis-tulajdonságaiközött](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
+* **IIS 7 és újabb:** [Állítsa mind a **noCompressionForHttp10-et,** mind **a noCompressionForProxies értéket** False-ra a kiszolgáló konfigurációjában](https://www.iis.net/configreference/system.webserver/httpcompression)
 

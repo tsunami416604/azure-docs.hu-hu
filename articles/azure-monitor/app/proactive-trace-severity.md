@@ -1,31 +1,31 @@
 ---
-title: A nyomkövetés súlyossági arányának csökkenése – Azure Application Insights
-description: Az alkalmazások nyomon követését az Azure Application Insights az intelligens észleléssel rendelkező nyomkövetési telemetria szokatlan mintázatait figyelheti.
+title: Romlás a nyomkövetési súlyossági arányban – Azure Application Insights
+description: Az Azure Application Insights segítségével figyelheti az alkalmazások nyomkövetéseit, hogy az intelligens észleléssel szokatlan mintákat keressenek a nyomkövetési telemetriai adatokban.
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671681"
 ---
-# <a name="degradation-in-trace-severity-ratio-preview"></a>A nyomkövetés súlyossági arányának csökkenése (előzetes verzió)
+# <a name="degradation-in-trace-severity-ratio-preview"></a>Lebomlás a nyomkövetési súlyossági arányban (előnézet)
 
-A nyomkövetéseket széles körben használják az alkalmazásokban, mivel ezek segítenek megismerni a jelenetek mögötti történések történetét. Ha a dolgok helytelenek, a Nyomkövetések kritikus láthatóságot biztosítanak a nemkívánatos állapotot eredményező események sorrendjében. Míg a Nyomkövetések általában strukturálatlan, az egyik dolog, ami konkrétan megtudhatja tőlük a súlyossági szintet. Az alkalmazás állandó állapotában a "jó" nyomkövetési*adatok (információ* és *részletes*információk) és a "rossz" (*Figyelmeztetés*, *hiba*és *kritikus*) közötti arány marad a stabil működés érdekében. Ennek az az oka, hogy a "rossz" nyomon követések rendszeres időközönként, bizonyos számú ok miatt előfordulhatnak (átmeneti hálózati problémák esetén). De ha egy valós probléma egyre nő, az általában a "rossz", a "jó" nyomok relatív arányának növekedésével nyilvánul meg. Application Insights az intelligens észlelés automatikusan elemzi az alkalmazás által naplózott nyomokat, és figyelmezteti a szokatlan mintákat a nyomkövetési telemetria súlyosságára.
+A nyomokat széles körben használják az alkalmazásokban, mivel segítenek elmondani a történetet arról, hogy mi történik a színfalak mögött. Amikor a dolgok rosszra fordulnak, a nyomok döntő betekintést nyújtanak a nem kívánt állapothoz vezető események sorozatába. Míg a nyomok általában strukturálatlan, van egy dolog, hogy konkrétan lehet tanulni tőlük - a súlyossági szint. Egy alkalmazás állandósult állapotában a "jó" nyomkövetések *(Információ* és *részletes)* és a "rossz" nyomkövetések (*Figyelmeztetés*, *Hiba*és *Kritikus*) aránya stabil marad. A feltételezés az, hogy a "rossz" nyomok előfordulhatnak rendszeresen, bizonyos mértékig miatt számos okból (átmeneti hálózati problémák például). De amikor egy igazi probléma növekedni kezd, általában a "rossz" nyomok relatív arányának növekedéseként jelentkezik. Az Application Insights intelligens észlelése automatikusan elemzi az alkalmazás által naplózott nyomkövetéseket, és figyelmezteti a nyomkövetési telemetria súlyosságának szokatlan mintáira.
 
-Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, az alkalmazás nyomkövetési naplózásának konfigurálása nélkül (lásd: nyomkövetési naplók konfigurálása [.net](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) vagy [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)esetén). Akkor aktív, ha az alkalmazás elég kivételt hoz létre a telemetria.
+Ez a szolgáltatás nem igényel speciális telepítést, kivéve az alkalmazás nyomkövetési naplózásának konfigurálását (lásd: a nyomkövetési naplófigyelő konfigurálása [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) vagy [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)számára). Akkor aktív, ha az alkalmazás elegendő kivételtelemetriai adatokat hoz létre.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
-Ez a típusú értesítés akkor fordulhat elő, ha a "jó" nyomok (az információ vagy a *részletes* *adatokkal* naplózott Nyomkövetések) és a "rossz" nyomok közötti arány (a *Figyelmeztetési*, *hiba*vagy *végzetes*szintű Nyomkövetések) egy adott napon, az előző hét napban kiszámított alapértékkel összehasonlítva van.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapom meg az ilyen típusú intelligens észlelési értesítést?
+Előfordulhat, hogy ilyen típusú értesítést kap, ha a "jó" nyomkövetések *(az információ* vagy *részletes*szinttel naplózott nyomkövetések) és a "hibás" nyomkövetések *(a Figyelmeztetés,* *Hiba*vagy *Végzetes*szinttel naplózott nyomkövetések) aránya egy adott napon romlik az előző hét nap ban számított alaptervhez képest.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Az alkalmazásom biztosan probléma?
-Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Bár a "jó" és a "rossz" nyomkövetési arány közötti csökkenés az alkalmazással kapcsolatos problémát jelezhet, a változás a arányban jóindulatú lehet. Például a növekedés oka az lehet, hogy az alkalmazás egy új folyamata több "rossz" nyomkövetést bocsát ki, mint a meglévő folyamatok esetében.
+## <a name="does-my-app-definitely-have-a-problem"></a>Biztos, hogy az alkalmazásomnak van problémája?
+Nem, az értesítés nem jelenti azt, hogy az alkalmazásnak feltétlenül problémája van. Bár a "jó" és a "rossz" nyomkövetés arányának romlása alkalmazásproblémát jelezhet, ez az arányváltozás jóindulatú lehet. A növekedés oka lehet például egy új folyamat az alkalmazásban, amely több "hibás" nyomkövetést bocsát ki, mint a meglévő folyamatok).
 
-## <a name="how-do-i-fix-it"></a>Hogyan javíthatom?
-Az értesítések közé tartoznak a diagnosztikai információk, amelyek támogatják a diagnosztikai folyamatot:
-1. **Osztályozás.** Az értesítésből megtudhatja, hogy hány műveletet érint. Ez segíthet a probléma prioritásának hozzárendelésében.
-2. **Hatókör.** A probléma hatással van az összes forgalomra, vagy csak néhány műveletre? Ezeket az információkat az értesítésből lehet beszerezni.
-3. **Diagnosztizálása.** A probléma további diagnosztizálásához a kapcsolódó elemek és jelentések hivatkozását használhatja a támogatási információkhoz.
+## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
+Az értesítések diagnosztikai információkat tartalmaznak a diagnosztikai folyamat támogatásához:
+1. **Osztályozás.** Az értesítés megmutatja, hogy hány művelet érintett. Ez segíthet abban, hogy prioritást rendeljen a problémához.
+2. **Hatókör.** A probléma minden forgalmat érint, vagy csak valamilyen műveletet? Ez az információ az értesítésből szerezhető be.
+3. **Diagnosztizálni.** A kapcsolódó elemek és jelentések mellékelése i. alátámasztó információk segítségével tovább diagnosztizálhatja a problémát.
 
 

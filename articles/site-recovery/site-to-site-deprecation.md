@@ -1,6 +1,6 @@
 ---
-title: Az ügyfél által felügyelt webhelyek (VMM) közötti vész-helyreállítás elavult a Azure Site Recovery használatával | Microsoft Docs
-description: A DR a Hyper-V-t használó és a SCVMM által az Azure-ba és az alternatív lehetőségekkel felügyelt helyek közötti, az ügyfél által birtokolt webhelyek közötti közelgő elavult elavulás
+title: Vészhelyreállítás e-visszaállása az ügyfél által felügyelt helyek között (vmm-mel) az Azure Site Recovery használatával | Microsoft dokumentumok
+description: Részletek a DR közelgő ejgéséről az ügyfél tulajdonában lévő webhelyek között a Hyper-V használatával, valamint az SCVMM által kezelt és az Azure-ba kezelt webhelyek között, valamint alternatív lehetőségek
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -9,59 +9,59 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
 ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661670"
 ---
-# <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Az ügyfél által felügyelt webhelyek (VMM) közötti vész-helyreállítás elavult Azure Site Recovery használatával
+# <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Vészhelyreállítás e-visszaállásának eprecációja az ügyfél által felügyelt helyek között (vmm-mel) az Azure Site Recovery használatával
 
-Ez a cikk a közelgő elavult tervet, a kapcsolódó következményeket és az ügyfelek számára elérhető alternatív lehetőségeket ismerteti a következő esetekben:
+Ez a cikk ismerteti a közelgő eprecation terv, a megfelelő következményeket, és az alternatív lehetőségek állnak rendelkezésre az ügyfelek számára a következő forgatókönyv:
 
-DR System Center Virtual Machine Manager (SCVMM) által kezelt, az ügyfél által birtokolt helyek között Site Recovery
+Dr a System Center Virtual Machine Manager (SCVMM) által a Site Recovery használatával kezelt ügyféltulajdonú helyek között
 
 > [!IMPORTANT]
-> Javasoljuk, hogy a legkorábbi módon végezze el a Szervizelési lépéseket, hogy elkerülje a környezet megszakadását. 
+> Javasoljuk, hogy az ügyfelek a lehető leghamarabb tegyenek a javítási lépésekhez, hogy elkerüljék a környezetük megzavarását. 
 
-## <a name="what-changes-should-you-expect"></a>Milyen módosításokat kell elvárnia?
+## <a name="what-changes-should-you-expect"></a>Milyen változásokra számíthat?
 
-- A 2020 márciusa után Azure Portal értesítéseket kap, & e-mailes kommunikációt a Hyper-V virtuális gépek helyek közötti replikálásának közelgő elavulása alapján. Az elavultság tervezett értéke 2023 március.
+- 2020 márciusátantól az Azure Portalon értesítést kap & e-mailes kommunikációról a Hyper-V virtuális gépek helyek közötti replikációjának közelgő e-mailes e-mailben történő e-mailben történő leplezésével. Az aknamentesítést 2023 márciusára tervezik.
 
-- Ha rendelkezik meglévő konfigurációval, a beállítás nem lesz hatással.
+- Ha meglévő konfigurációval rendelkezik, annak nincs hatása a beállításra.
 
-- Ha a forgatókönyvek elavultak, kivéve, ha az ügyfél nem követi az alternatív módszereket, a meglévő replikálások megszakadnak. Az ügyfelek nem tekinthetik meg, kezelhetik és nem hajthatják végre a DR-vel kapcsolatos műveleteket a Azure Portal Azure Site Recovery felületén keresztül.
+- Miután a forgatókönyvek elavult, kivéve, ha az ügyfél követi az alternatív megközelítések, a meglévő replikációk előfordulhat, hogy megszakad. Az ügyfelek nem tekinthetik meg, kezelhetik és nem hajthatják végre a VÉSZ-kezeléssel kapcsolatos műveleteket az Azure Site Recovery szolgáltatáson keresztül az Azure Portalon.
  
 ## <a name="alternatives"></a>Alternatív megoldások 
 
-Az alábbiakban azokat az alternatívákat láthatja, amelyekkel az ügyfél kiválaszthatja, hogy a DR-stratégiájuk ne legyen hatással a forgatókönyv elavulása után. 
+Az alábbiakban azokat az alternatívákat, amelyek közül az ügyfél választhat annak érdekében, hogy a VÉSZ-stratégia nem érinti, ha a forgatókönyv elavult. 
 
-- 1\. lehetőség (ajánlott): dönthet úgy, hogy [Az Azure-t használja Dr célként](hyper-v-vmm-azure-tutorial.md).
-
-
-- 2\. lehetőség: válassza ki a helyek közötti replikálást a mögöttes [Hyper-V replika megoldás](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)használatával, de nem tudja kezelni a Dr-konfigurációkat a Azure Portal Azure site Recovery használatával. 
+- 1. lehetőség (Ajánlott): Válassza ki, hogy [az Azure-t szeretné-e dr-célként használni.](hyper-v-vmm-azure-tutorial.md)
 
 
-## <a name="remediation-steps"></a>Szervizelési lépések
+- 2. lehetőség: Válassza ki, hogy folytatja a helyek közötti replikáció t az alapul szolgáló [Hyper-V replika megoldás](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)használatával, de nem fogja tudni kezelni a DR-konfigurációk at Azure Site Recovery az Azure Portalon. 
 
-Ha az 1. lehetőséget választja, hajtsa végre a következő lépéseket:
 
-1. [Tiltsa le a VMMs társított összes virtuális gép védelmét](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario). A replikáció **letiltása és eltávolítása** lehetőséggel vagy a megemlített szkriptek futtatásával gondoskodhat arról, hogy a helyszíni replikációs beállítások törlődnek. 
+## <a name="remediation-steps"></a>Javítási lépések
 
-2. [Szüntesse meg az összes VMM-kiszolgáló regisztrációját](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) a helyek közötti replikációs konfigurációból.
+Ha az 1.
 
-3. [Készítse elő az Azure-erőforrásokat](tutorial-prepare-azure-for-hyperv.md) a virtuális gépek replikálásának engedélyezéséhez.
-4. [Helyszíni Hyper-V kiszolgálók előkészítése](hyper-v-prepare-on-premises-tutorial.md)
-5. [A VMM-felhőben található virtuális gépek replikálásának beállítása](hyper-v-vmm-azure-tutorial.md)
-6. Nem kötelező, de ajánlott: [Dr-részletezés futtatása](tutorial-dr-drill-azure.md)
+1. [Tiltsa le a virtuális gépekkel társított összes virtuális gép védelmét.](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario) Használja a **Replikáció letiltása és eltávolítása** lehetőséget, vagy futtassa az említett parancsfájlokat a replikációs beállítások helyszíni karbantartásához. 
 
-Ha a Hyper-V replika használatának 2. lehetőségét választja, hajtsa végre a következő lépéseket:
+2. [Törölje az összes VMM-kiszolgáló regisztrációját](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) a helyek közötti replikációs konfigurációból.
 
-1. A **védett elemek** > **replikált elemek**területen kattintson a jobb gombbal a gépre, > **Tiltsa le a replikációt**.
-2. A **replikáció letiltása**lapon válassza az **Eltávolítás**lehetőséget.
+3. [Készítse elő az Azure-erőforrásokat](tutorial-prepare-azure-for-hyperv.md) a virtuális gépek replikációjának engedélyezéséhez.
+4. [Helyszíni Hyper-V-kiszolgálók előkészítése](hyper-v-prepare-on-premises-tutorial.md)
+5. [A virtuális gépek replikációjának beállítása a VMM-felhőben](hyper-v-vmm-azure-tutorial.md)
+6. Nem kötelező, de ajánlott: [DR-fúró futtatása](tutorial-dr-drill-azure.md)
 
-    Ezzel eltávolítja a replikált elemet a Azure Site Recoveryról (a számlázás leállt). A helyszíni virtuális gépen a replikálási konfiguráció **nem** lesz törölve. 
+Ha a Hyper-V replika 2.
 
-## <a name="next-steps"></a>Következő lépések
-Tervezze meg az elavult alkalmazást, és válasszon egy alternatív lehetőséget, amely az infrastruktúra és a vállalat számára legmegfelelőbb. Ha bármilyen kérdése van, forduljon Microsoft ügyfélszolgálata
+1. A **Védett elemek** > **replikált elemei ben**kattintson a jobb gombbal a számítógépre > A replikáció **letiltása parancsra.**
+2. A **Replikáció letiltása**csoportban válassza **az Eltávolítás**lehetőséget.
+
+    Ezzel eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból (a számlázás levan állítva). A helyszíni virtuális gépen a replikációs konfiguráció **nem lesz** törölve. 
+
+## <a name="next-steps"></a>További lépések
+Tervezze meg az eprecációt, és válasszon egy másik lehetőséget, amely a legjobban megfelel az infrastruktúrának és az üzleti életnek. Abban az esetben, ha bármilyen kérdése van ezzel kapcsolatban, forduljon a Microsoft támogatási
 

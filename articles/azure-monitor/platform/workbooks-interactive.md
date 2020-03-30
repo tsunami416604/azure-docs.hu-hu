@@ -1,6 +1,6 @@
 ---
-title: Egyéni paraméterekkel rendelkező munkafüzetek Azure Monitor
-description: Összetett jelentéskészítés egyszerűsítése előre elkészített és egyéni paraméterekkel rendelkező munkafüzetekből
+title: Azure Monitor munkafüzetek egyéni paraméterekkel
+description: Az összetett jelentések egyszerűsítése előre összeállított és egyéni paraméterezett munkafüzetekkel
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,138 +10,138 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658268"
 ---
 # <a name="interactive-workbooks"></a>Interaktív munkafüzetek
 
-A munkafüzetek lehetővé teszik, hogy a szerzők interaktív jelentéseket és tapasztalatokat hozzanak létre a felhasználók számára. Az interaktivitás több módon is támogatott.
+A munkafüzetek lehetővé teszik a szerzők számára, hogy interaktív jelentéseket és élményeket hozzanak létre a fogyasztók számára. Az interaktivitás számos módon támogatott.
 
-## <a name="parameter-changes"></a>Paraméterek módosítása
-Amikor egy munkafüzet felhasználó frissíti a paramétert, a paramétert használó vezérlők automatikusan frissítik és újrarajzolják az új állapotot. A Azure Portal-jelentések többsége támogatja az interaktivitást. A munkafüzetek nagyon egyszerű továbbítási módon biztosítják ezt a minimális felhasználói beavatkozást.
+## <a name="parameter-changes"></a>Paraméterváltozások
+Amikor egy munkafüzet-felhasználó frissít egy paramétert, a paramétert használó vezérlőautomatikusan frissül, majd újrarajzolja az új állapotot. Az Azure Portal legtöbb jelentése így támogatja az interaktivitást. Munkafüzetek biztosítják ezt egy nagyon egyenes előre módon minimális felhasználói erőfeszítést.
 
-További információ a [munkafüzetek paramétereinek](workbooks-parameters.md) használatáról
+További információ [a munkafüzetek paramétereiről](workbooks-parameters.md)
 
-## <a name="grid-row-clicks"></a>Rácsos sor kattintás
-A munkafüzetek lehetővé teszik, hogy a szerzők olyan forgatókönyveket hozzanak létre, amelyekben egy sor egy sorára kattintva frissíti az ezt követő diagramokat a sor tartalma alapján. 
+## <a name="grid-row-clicks"></a>A rácssor kattintásai
+A munkafüzetek lehetővé teszik a szerzők számára, hogy olyan eseteket dolgozzanak ki, amelyekben a rács egy sorára kattintva frissíti a következő diagramokat a sor tartalma alapján. 
 
-A felhasználók rendelkezhetnek például egy olyan rácstal, amely megjeleníti a kérelmek listáját, és néhány statisztikát, például a hibák számát. Úgy állíthatják be, hogy a kérelemnek megfelelő sorokra kattintva a rendszer a frissítés után részletes diagramokat hoz létre, hogy csak erre a kérésre szűrje.
+Például egy felhasználó rendelkezhet egy rács, amely megjeleníti a kérelmek listáját, és néhány statisztika, mint a hiba számít. Ők is létre úgy, hogy egy sorra kattintva megfelelő kérelmet, azt eredményezi, hogy részletes diagramok alatt frissítése, hogy kiszűrje le, hogy csak a kérelmet.
 
-### <a name="setting-up-interactivity-on-grid-row-click"></a>Az interaktivitás beállítása a rácsvonalak sorában kattintson a
-1. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
-2. A _lekérdezés hozzáadása_ hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez. 
-3. Válassza ki a lekérdezés típusát _naplóként_, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
-4. Az elemzéshez használandó KQL megadásához használja a lekérdezés-szerkesztőt
+### <a name="setting-up-interactivity-on-grid-row-click"></a>Az interaktivitás beállítása a rácssor kattintásakor
+1. Az eszköztárelemre kattintva átváltson _Edit_ a munkafüzetet szerkesztési módra.
+2. A _Lekérdezés hozzáadása_ hivatkozással naplólekérdezés-vezérlőt adhat a munkafüzethez. 
+3. Válassza ki a lekérdezés típusát _naplóként,_ erőforrástípusként (például Application Insights) és a megcélozandó erőforrásokként.
+4. A Lekérdezés szerkesztő vel adja meg a KQL-t elemzésre
     ```kusto
     requests
     | summarize AllRequests = count(), FailedRequests = countif(success == false) by Request = name
     | order by AllRequests desc    
     ```
-5. `Run query` az eredmények megtekintéséhez
-6. Kattintson a _Speciális beállítások_ ikonra a lekérdezés láblécében (az ikon úgy néz ki, mint egy fogaskerék). Ekkor megnyílik a speciális beállítások ablaktábla 
-7. A beállítás bejelölése: `When an item is selected, export a parameter`
-    1. Exportálandó mező: `Request`
-    2. Paraméter neve: `SelectedRequest`
-    3. Alapértelmezett érték: `All requests`
+5. `Run query`hogy az eredményeket
+6. Kattintson a speciális _beállítások_ ikonra a lekérdezés láblécén (az ikon úgy néz ki, mint egy fogaskerék). Ezzel megnyitja a speciális beállítások ablaktáblát 
+7. Ellenőrizze a beállítást:`When an item is selected, export a parameter`
+    1. Exportálandó mező:`Request`
+    2. Paraméter neve:`SelectedRequest`
+    3. Alapértelmezett érték:`All requests`
     
-    ![Kép: a speciális szerkesztő, amely a mezők exportálási beállításait tartalmazza paraméterekként](./media/workbooks-interactive/advanced-settings.png)
+    ![A speciális szerkesztőt bemutató kép a mezők paraméterekként történő exportálásának beállításaival](./media/workbooks-interactive/advanced-settings.png)
 
 8. Kattintson a `Done Editing` gombra.
-9. Adjon hozzá egy másik lekérdezés-vezérlőelemet a 2. és a 3. lépéssel.
-10. Az elemzéshez használandó KQL megadásához használja a lekérdezés-szerkesztőt
+9. A 2.
+10. A Lekérdezés szerkesztő vel adja meg a KQL-t elemzésre
     ```kusto
     requests
     | where name == '{SelectedRequest}' or 'All Requests' == '{SelectedRequest}'
     | summarize ['{SelectedRequest}'] = count() by bin(timestamp, 1h)
     ```
-11. `Run query` az eredmények megtekintéséhez.
-12. _Vizualizáció_ módosítása `Area chart`re
-12. Kattintson az első rács egyik sorára. Figyelje meg, hogy az alábbi diagramterület a kiválasztott kérelemre szűri a szűrőket.
+11. `Run query`az eredmények megtekintéséhez.
+12. _Képi megjelenítés_ módosítása`Area chart`
+12. Kattintson egy sorra az első rácsban. Figyelje meg, hogy az alábbi területdiagram hogyan szűri a kijelölt kérelmet.
 
 Az eredményül kapott jelentés szerkesztési módban így néz ki:
 
-![Kép az interaktív élmény létrehozásához a rácsos sorok használatával kattintás](./media/workbooks-interactive//grid-click-create.png)
+![A létrehozás interaktív élményét ábrázoló kép rácssorkattintásokkal](./media/workbooks-interactive//grid-click-create.png)
 
-Az alábbi ábrán egy részletesebb interaktív jelentés olvasható az olvasási módban, ugyanazon alapelvek alapján. A jelentés rácsos kattintásokat használ a paraméterek exportálására – ez pedig két diagramon és egy szöveges blokkon is használatos.
+Az alábbi képen egy bonyolultabb interaktív jelentés olvasható módban, ugyanazon elvek alapján. A jelentés rácskattintások segítségével exportálja a paramétereket , amelyeket két diagramban és egy szövegblokkban is használnak.
 
-![Kép az interaktív élmény létrehozásához a rácsos sorok használatával kattintás](./media/workbooks-interactive/grid-click-read-mode.png)
+![A létrehozás interaktív élményét ábrázoló kép rácssorkattintásokkal](./media/workbooks-interactive/grid-click-read-mode.png)
 
 ### <a name="exporting-the-contents-of-an-entire-row"></a>Teljes sor tartalmának exportálása
-Előfordulhat, hogy csak egy adott oszlop helyett érdemes exportálni a kijelölt sor teljes tartalmát. Ilyen esetekben ne törölje a `Field to export` tulajdonságot a fenti 7,1. lépésben. A munkafüzetek a teljes sor tartalmát a paraméternek megfelelő JSON-fájlként exportálják. 
+Néha kívánatos, hogy a kijelölt sor teljes tartalmát exportálja egy adott oszlop helyett. Ilyen esetekben hagyja `Field to export` a tulajdonságot a fenti 7.1 lépésben beállítatlanul. A munkafüzetek a teljes sor tartalmát jsonként exportálják a paraméterbe. 
 
-A hivatkozó KQL vezérlőelemen a `todynamic` függvénnyel elemezheti a JSON-t, és elérheti az egyes oszlopokat.
+A hivatkozó KQL vezérlő, `todynamic` használja a funkciót a json elemzéséhez és az egyes oszlopok eléréséhez.
 
- ## <a name="grid-cell-clicks"></a>Rács cellára kattintás
-A munkafüzetek lehetővé teszik, hogy a szerzők interaktivitást adjanak hozzá egy speciális, `link renderer`nevű, rácsos oszlop-megjelenítő használatával. A hivatkozás-megjelenítő egy rácsvonalat helyez át egy hiperhivatkozásba a cella tartalma alapján. A munkafüzetek számos különböző típusú csatolást támogatnak – többek között az erőforrás-áttekintő pengék, a tulajdonság-megjelenítők, az alkalmazás-elemzések keresése, a használat, a tranzakciók nyomon követése stb.
+ ## <a name="grid-cell-clicks"></a>Rácscella kattintások
+A munkafüzetek lehetővé teszik a szerzők számára, hogy `link renderer`interaktivitást adjanak hozzá egy speciális típusú rácsoszlop-megjelenítőn keresztül, amelyet . A hivatkozásmegjelenítő a cella tartalma alapján hiperhivatkozássá alakítja a rácscellát. A munkafüzetek sokféle hivatkozásmegjelenítőt támogatnak - beleértve azokat is, amelyek lehetővé teszik az erőforrás-áttekintési pengék megnyitását, az ingatlantáska-megtekintőket, az App Insights-keresést, a használatot, a tranzakciókövetést stb.
 
-### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Az interaktivitás beállítása a rács cellájának kattintással
-1. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
-2. A _lekérdezés hozzáadása_ hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez. 
-3. Válassza ki a lekérdezés típusát _naplóként_, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
-4. Az elemzéshez használandó KQL megadásához használja a lekérdezés-szerkesztőt
+### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Az interaktivitás beállítása rácscella-kattintásokkal
+1. Az eszköztárelemre kattintva átváltson _Edit_ a munkafüzetet szerkesztési módra.
+2. A _Lekérdezés hozzáadása_ hivatkozással naplólekérdezés-vezérlőt adhat a munkafüzethez. 
+3. Válassza ki a lekérdezés típusát _naplóként,_ erőforrástípusként (például Application Insights) és a megcélozandó erőforrásokként.
+4. A Lekérdezés szerkesztő vel adja meg a KQL-t elemzésre
     ```kusto
     requests
     | summarize Count = count(), Sample = any(pack_all()) by Request = name
     | order by Count desc
     ```
-5. `Run query` az eredmények megtekintéséhez
-6. A beállítások ablaktábla megnyitásához kattintson az _oszlop beállításai_ elemre.
-7. Az _oszlopok_ szakaszban állítsa be a következőket:
-    1. _Minta_ -oszlop megjelenítő: `Link`, nézet megnyitva: `Cell Details`, hivatkozás felirata: `Sample`
-    2. _Count_ -Column megjelenítő: `Bar`, színpaletta: `Blue`, minimális érték: `0`
-    3. _Kérelem_ -oszlop megjelenítő: `Automatic`
-    4. A módosítások alkalmazásához kattintson a _Mentés és bezárás_ gombra.
-8. Kattintson a rács egyik `Sample` hivatkozására. Ekkor megnyílik a Tulajdonságok ablaktábla egy mintavételi kérelem részleteivel.
+5. `Run query`hogy az eredményeket
+6. A Beállítások ablaktábla megnyitásához kattintson az _Oszlopbeállítások_ gombra.
+7. Az _Oszlopok_ szakaszban állítsa be a következőt:
+    1. _Minta_ - Oszlopmegjelenítő: `Link`, `Cell Details`Megnyitás nézet: , Hivatkozáscímke:`Sample`
+    2. _Count_ - Oszlopmegjelenítő: `Bar`, `Blue`Színpaletta: , Minimális érték:`0`
+    3. _Kérés_ - Oszlopmegjelenítő:`Automatic`
+    4. A módosítások alkalmazásához kattintson a _Mentés és a Bezárás_ gombra
+8. Kattintson az `Sample` egyik linkre a rácsban. Ez megnyit egy tulajdonságpanelt a mintavételezett kérelem részleteivel.
 
-    ![Kép, amely interaktív élményt nyújt a Grid cella kattintások használatával](./media/workbooks-interactive/grid-cell-click-create.png)
+    ![A létrehozást ábrázoló kép egy interaktív élményt jelenít meg a rácscella-kattintások használatával](./media/workbooks-interactive/grid-cell-click-create.png)
 
-### <a name="link-renderer-actions"></a>Renderelési műveletek csatolása
-| Művelet csatolása | Művelet kattintáskor |
+### <a name="link-renderer-actions"></a>Hivatkozásmegjelenítői műveletek
+| Hivatkozásművelet | Művelet kattintásra |
 |:------------- |:-------------|
-| `Generic Details` | A sortulajdonság-környezet paneljén lévő sorok értékeinek megjelenítése |
-| `Cell Details` | A cella értékét jeleníti meg a tulajdonságok rácsának paneljén. Hasznos, ha a cella tartalmaz egy dinamikus típust (például a JSON-t a kérelem tulajdonságaival, például a helytel, a szerepkör-példánnyal stb.). |
-| `Cell Details` | A cella értékét jeleníti meg a tulajdonságok rácsának paneljén. Hasznos, ha a cella tartalmaz egy dinamikus típust (például a JSON-t a kérelem tulajdonságaival, például a helytel, a szerepkör-példánnyal stb.). |
-| `Custom Event Details` | A Application Insights keresési adatok megnyitása a cella egyéni eseményazonosító (elemazonosító) alapján |
-| `* Details` | Az egyéni esemény részleteihez hasonlóan, a függőségek, a kivételek, az oldalletöltések, a kérések és a Nyomkövetések kivételével. |
-| `Custom Event User Flows` | Megnyitja a cellában az egyéni esemény nevében felmutatott Application Insights Felhasználókövetési élményt. |
-| `* User Flows` | Az egyéni eseményekhez hasonlóan Felhasználókövetés a kivételek, az oldalletöltések és a kérelmek kivételével |
-| `User Timeline` | A felhasználó idővonalának megnyitása a felhasználói AZONOSÍTÓval (user_Id) a cellában |
-| `Session Timeline` | Megnyitja a cella értékének Application Insights keresési élményét (például az "ABC" szöveg keresése, ahol az ABC a cella értéke) |
-| `Resource overview` | Nyissa meg az erőforrás áttekintését a portálon a cella erőforrás-azonosító értéke alapján |
+| `Generic Details` | A tulajdonságrács környezetének paneljének sorértékei |
+| `Cell Details` | A cellaértékét jeleníti meg egy tulajdonságrács környezetpaneljén. Akkor hasznos, ha a cella tartalmaz egy dinamikus típust információkkal (például json kéréstulajdonságokkal, például hely, szerepkörpéldány stb.). |
+| `Cell Details` | A cellaértékét jeleníti meg egy tulajdonságrács környezetpaneljén. Akkor hasznos, ha a cella tartalmaz egy dinamikus típust információkkal (például json kéréstulajdonságokkal, például hely, szerepkörpéldány stb.). |
+| `Custom Event Details` | Megnyitja az Application Insights keresési adatait a cellában lévő egyéni eseményazonosítóval (itemId) |
+| `* Details` | Az Egyéni esemény részleteihez hasonlóan, kivéve a függőségeket, a kivételeket, az oldalmegtekintéseket, a kéréseket és a nyomkövetéseket. |
+| `Custom Event User Flows` | Megnyitja az Application Insights felhasználói folyamatok felületét, amely a cellában lévő egyéni eseménynévre mutat |
+| `* User Flows` | Hasonló az egyéni eseményfelhasználói folyamatokhoz, kivéve a kivételeket, az oldalmegtekintéseket és a kéréseket |
+| `User Timeline` | A felhasználói idővonal megnyitása a cellában lévő felhasználói azonosítóval (user_Id) |
+| `Session Timeline` | Megnyitja az Application Insights keresési felületét a cellában lévő értékhez (például az "abc" szöveg keresése, ahol az abc a cella értéke) |
+| `Resource overview` | Az erőforrás áttekintésének megnyitása a portálon a cellában lévő erőforrásazonosító értéke alapján |
 
 ## <a name="conditional-visibility"></a>Feltételes láthatóság
-A munkafüzet lehetővé teszi, hogy a felhasználók bizonyos vezérlőelemek megjelenjenek vagy eltűnnek a paraméterek értékei alapján. Ez lehetővé teszi a szerzők számára, hogy a jelentések eltérőek legyenek a felhasználói bevitel vagy a telemetria állapot alapján. Egy példa arra, hogy a felhasználók csak egy összefoglalót jelenítenek meg, ha a dolgok jók, de a teljes részleteket megmutatják, ha valami nem stimmel.
+A munkafüzet lehetővé teszi a felhasználók számára, hogy bizonyos vezérlők megjelenjenek vagy eltűnjenek a paraméterek értékei alapján. Ez lehetővé teszi a szerzők számára, hogy a jelentések a felhasználói bevitel vagy a telemetriai állapot alapján eltérőek legyenek. Egy példa van bemutatás fogyasztó csak egy összefoglalt mikor dolog van jó de mutat teli részlet mikor valami van rossz.
 
-### <a name="setting-up-interactivity-using-conditional-visibility"></a>Az interaktivitás beállítása feltételes láthatósággal
-1. Két interaktív vezérlő beállításához kövesse a `Setting up interactivity on grid row click` szakasz lépéseit.
-2. Új paraméter hozzáadása a tetején:
-    1. Név: `ShowDetails`
-    2. Paraméter típusa: `Drop down`
-    3. Kötelező: `checked`
-    4. Adatok beolvasása innen: `JSON`
-    5. JSON-bemenet: `["Yes", "No"]`
-    6. Mentés a módosítások végrehajtásához.
-3. Paraméter értékének beállítása `Yes`
-4. A lekérdezés vezérlőelemben a körzet diagramon kattintson a _Speciális beállítások_ ikonra (fogaskerék ikon)
-5. A beállítás bejelölése `Make this item conditionally visible`
-    1. Ez az elem látható, ha `ShowDetails` paraméter értéke `equals` `Yes`
-6. A módosítások _elvégzéséhez kattintson a Szerkesztés kész_ lehetőségre.
-7. Az olvasási mód megadásához kattintson a _Szerkesztés kész_ gombra a munkafüzet eszköztárán.
-8. A `ShowDetails` paraméter értékét állítsa `No`értékre. Figyelje meg, hogy az alábbi diagram eltűnik.
+### <a name="setting-up-interactivity-using-conditional-visibility"></a>Az interaktivitás beállítása feltételes láthatósághasználatával
+1. Két interaktív vezérlő `Setting up interactivity on grid row click` beállításához kövesse a szakasz lépéseit.
+2. Új paraméter hozzáadása felül:
+    1. név:`ShowDetails`
+    2. Paraméter típusa:`Drop down`
+    3. Szükséges:`checked`
+    4. Adatok beszerezése innen:`JSON`
+    5. JSON bemenet:`["Yes", "No"]`
+    6. Mentés a módosítások véglegesítéséhez.
+3. Paraméterérték beállítása`Yes`
+4. A területdiagramot tartalmazó lekérdezésvezérlőben kattintson a _Speciális beállítások_ ikonra (fogaskerék ikon)
+5. A beállítás ellenőrzése`Make this item conditionally visible`
+    1. Ez az elem `ShowDetails` akkor `equals` látható, ha a paraméter értéke`Yes`
+6. A módosítások véglegesítéséhez kattintson a _Kész szerkesztés gombra._
+7. Az olvasási módba való belépéshez kattintson a munkafüzet eszköztárán a _Szerkesztés_ elvégezve gombra.
+8. Váltson a `ShowDetails` `No`paraméter értékére a értékre. Figyelje meg, hogy az alábbi táblázat eltűnik.
 
-Az alábbi képen látható az a látható eset, amelyben a `ShowDetails` `Yes`
+Az alábbi képen látható `ShowDetails` eset látható, hol van`Yes`
 
 ![A diagram látható feltételes láthatóságát ábrázoló kép](./media/workbooks-interactive/conditional-visibility.png)
 
-Az alábbi képen a rejtett eset látható, ahol a `ShowDetails` `No`
+Az alábbi képen látható `ShowDetails` a rejtett eset, ahol`No`
 
-![A diagram elrejtésének feltételes láthatóságát bemutató kép](./media/workbooks-interactive/conditional-invisible.png)
+![A diagram rejtett feltételes láthatóságát ábrázoló kép](./media/workbooks-interactive/conditional-invisible.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
-* [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
-* A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.
+* [Ismerkedés a](workbooks-visualizations.md) munkafüzetekkel, számos gazdag vizualizációs lehetőséggel.
+* [Szabályozhatja](workbooks-access-control.md) és megoszthatja a munkafüzet erőforrásaihoz való hozzáférést.

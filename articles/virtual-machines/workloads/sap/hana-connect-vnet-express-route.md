@@ -1,6 +1,6 @@
 ---
-title: A virtuális hálózatról az Azure-ra (nagyméretű példányok) való SAP HANAre beállított kapcsolat | Microsoft Docs
-description: A virtuális hálózatról az Azure-ban (nagyméretű példányok) SAP HANA használatára beállított kapcsolat.
+title: A virtuális hálózatról az SAP HANA-ra beállított kapcsolat az Azure-ban (nagy példányok) | Microsoft dokumentumok
+description: A virtuális hálózatból beállított kapcsolat az SAP HANA azure-beli (nagy példányok) használatára.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,28 +14,28 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617185"
 ---
-# <a name="connect-a-virtual-network-to-hana-large-instances"></a>Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival
+# <a name="connect-a-virtual-network-to-hana-large-instances"></a>Virtuális hálózat csatlakoztatása hana nagy példányokhoz
 
-Miután létrehozott egy Azure-beli virtuális hálózatot, ezt a hálózatot SAP HANA Azure-beli nagyméretű példányokon is összekapcsolhatja. Hozzon létre egy Azure ExpressRoute-átjárót a virtuális hálózaton. Ez az átjáró lehetővé teszi, hogy összekapcsolja a virtuális hálózatot ahhoz a ExpressRoute-áramkörhöz, amely az ügyfél bérlőhöz csatlakozik a HANA nagyméretű példány bélyegzőn.
+Miután létrehozott egy Azure virtuális hálózatot, csatlakoztathatja a hálózatot az SAP HANA-hoz az Azure nagy példányain. Hozzon létre egy Azure ExpressRoute-átjárót a virtuális hálózaton. Ez az átjáró lehetővé teszi, hogy a virtuális hálózat ot az ExpressRoute-kapcsolathoz kapcsolja, amely a HANA nagy példány bélyegzőjének ügyfél-bérlőjéhez csatlakozik.
 
 > [!NOTE] 
-> Ez a lépés akár 30 percet is igénybe vehet. A rendszer létrehozza az új átjárót a kijelölt Azure-előfizetésben, majd csatlakozik a megadott Azure-beli virtuális hálózathoz.
+> Ez a lépés akár 30 percet is igénybe vehet. Az új átjáró jön létre a kijelölt Azure-előfizetésben, majd csatlakozik a megadott Azure virtuális hálózathoz.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-Ha egy átjáró már létezik, ellenőrizze, hogy a ExpressRoute-átjáró-e vagy sem. Ha nem ExpressRoute-átjáró, törölje az átjárót, és hozza létre újból ExpressRoute-átjáróként. Ha már létrejött egy ExpressRoute-átjáró, tekintse meg a cikk következő, "virtuális hálózatok csatolása" című szakaszát. 
+Ha már létezik átjáró, ellenőrizze, hogy ExpressRoute-átjáró-e vagy sem. Ha nem ExpressRoute-átjáró, törölje az átjárót, és hozza létre újra ExpressRoute-átjáróként. Ha már létrejött egy ExpressRoute-átjáró, olvassa el a cikk következő, "Virtuális hálózatok összekapcsolása" című szakaszát. 
 
-- A [Azure Portal](https://portal.azure.com/) vagy a PowerShell használatával hozzon létre egy ExpressRoute VPN-átjárót a virtuális hálózathoz csatlakoztatva.
-  - Ha a Azure Portal használja, vegyen fel egy új **Virtual Network-átjárót**, majd válassza a **ExpressRoute** lehetőséget az átjáró típusaként.
-  - Ha a PowerShellt használja, először töltse le és használja a legújabb [Azure POWERSHELL SDK](https://azure.microsoft.com/downloads/)-t. 
+- Az [Azure Portalon](https://portal.azure.com/) vagy a PowerShellben hozzon létre egy, a virtuális hálózathoz csatlakoztatott ExpressRoute VPN-átjárót.
+  - Ha az Azure Portalon, adjon hozzá egy új **virtuális hálózati átjárót**, majd válassza **az ExpressRoute** átjárótípust.
+  - Ha PowerShellt használ, először töltse le és használja a legújabb [Azure PowerShell SDK-t.](https://azure.microsoft.com/downloads/) 
  
-Az alábbi parancsok ExpressRoute-átjárót hoznak létre. A _$_ által megelőzt szövegek a felhasználó által definiált változók, amelyeket frissíteni kell az adott információkkal.
+A következő parancsok ExpressRoute-átjárót hoznak létre. Az egy által _$_ előzze meg a szövegeket a felhasználó által definiált változók, amelyeket frissíteni kell az Ön konkrét adataival.
 
 ```powershell
 # These Values should already exist, update to match your environment
@@ -63,16 +63,16 @@ New-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Loc
 -GatewaySku $myGWSku -VpnType PolicyBased -EnableBgp $true
 ```
 
-Ebben a példában a HighPerformance Gateway SKU-t használták. A lehetőségek a HighPerformance vagy a UltraPerformance, mint az Azure-ban (nagyméretű példányok) SAP HANA által támogatott átjárók.
+Ebben a példában a HighPerformance átjáró termékváltozat ot használták. A lehetőségek highperformance vagy UltraPerformance, mint az egyetlen átjáró sk, amely támogatja az SAP HANA az Azure-ban (nagy példányok).
 
 > [!IMPORTANT]
-> A II. típusú UltraPerformance-átjárót használó HANA nagyméretű példányok esetén a következőt kell használnia:.
+> A Type II osztály termékváltozatának HANA nagy példányai esetén az UltraPerformance Gateway Termékváltozatot kell használnia.
 
-## <a name="link-virtual-networks"></a>Virtuális hálózatok csatolása
+## <a name="link-virtual-networks"></a>Virtuális hálózatok összekapcsolása
 
-Az Azure-beli virtuális hálózat most már rendelkezik egy ExpressRoute-átjáróval. A Microsoft által biztosított engedélyezési információk segítségével kapcsolja össze a ExpressRoute-átjárót a SAP HANA Large Instances ExpressRoute áramkörrel. A Azure Portal vagy a PowerShell használatával csatlakozhat. A PowerShell-utasítások a következők. 
+Az Azure virtuális hálózat most már rendelkezik egy ExpressRoute-átjáróval. A Microsoft által megadott engedélyezési adatok segítségével csatlakoztassa az ExpressRoute átjárót az SAP HANA nagypéldányok ExpressRoute-áramkörhöz. Az Azure Portalon vagy a PowerShellen keresztül csatlakozhat. A PowerShell-utasítások a következők. 
 
-Futtassa az alábbi parancsokat mindegyik ExpressRoute-átjáróhoz az egyes kapcsolatok eltérő AuthGUID használatával. A következő parancsfájlban látható első két bejegyzés a Microsoft által biztosított információból származik. Emellett a AuthGUID minden virtuális hálózat és az átjárója számára is egyedi. Ha egy másik Azure-beli virtuális hálózatot szeretne hozzáadni, egy másik AuthID kell beszereznie a ExpressRoute-áramkörhöz, amely a HANA Large-példányokat az Azure-ba csatlakoztatja a Microsofttól. 
+Futtassa a következő parancsokat minden ExpressRoute-átjáróhoz egy másik AuthGUID használatával minden kapcsolathoz. A következő parancsfájlban látható első két bejegyzés a Microsoft által megadott információkból származik. Emellett az AuthGUID minden virtuális hálózatra és átjárójára vonatkozik. Ha szeretne hozzáadni egy másik Azure virtuális hálózatot, be kell szereznie egy másik AuthID az ExpressRoute-kapcsolat, amely összeköti a HANA nagy példányok az Azure-ban a Microsofttól. 
 
 ```powershell
 # Populate with information provided by Microsoft Onboarding team
@@ -96,12 +96,12 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> A New-AzVirtualNetworkGatewayConnection parancs utolsó paramétere, a **ExpressRouteGatewayBypass** egy új paraméter, amely lehetővé teszi a ExpressRoute gyors elérési útját. Olyan funkció, amely csökkenti a HANA nagyméretű példány-egységek és az Azure-beli virtuális gépek közötti hálózati késést. A funkciók a 2019 májusában lettek hozzáadva. További részletekért lásd a [SAP HANA (nagyméretű példányok) hálózati architektúráját](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)ismertető cikket. A parancsok futtatása előtt győződjön meg arról, hogy a PowerShell-parancsmagok legújabb verzióját futtatja.
+> A New-AzVirtualNetworkGatewayConnection parancs utolsó paramétere, az **ExpressRouteGatewayBypass** egy új paraméter, amely lehetővé teszi az ExpressRoute gyorselérési utat. Olyan funkció, amely csökkenti a hálózati késést a HANA nagy példányegységek és az Azure virtuális gépek között. A funkció 2019 májusában került hozzáadásra. További részletekért tekintse meg az [SAP HANA (Nagy példányok) hálózati architektúráját.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) Győződjön meg arról, hogy a parancsok futtatása előtt a PowerShell-parancsmagok legújabb verzióját futtatja.
 
-Ha az átjárót az előfizetéshez társított több ExpressRoute-áramkörhöz szeretné összekapcsolni, lehetséges, hogy ezt a lépést többször kell futtatnia. Előfordulhat például, hogy ugyanazt a virtuális hálózati átjárót fogja csatlakoztatni a ExpressRoute áramkörhöz, amely a virtuális hálózatot a helyszíni hálózathoz csatlakoztatja.
+Ha az átjárót az előfizetéséhez társított egynél több ExpressRoute-kapcsolathoz szeretné csatlakoztatni, előfordulhat, hogy ezt a lépést többször is futtatnia kell. Például valószínűleg ugyanazt a virtuális hálózati átjárót fogja csatlakoztatni az ExpressRoute-kapcsolathoz, amely a virtuális hálózatot a helyszíni hálózathoz csatlakoztatja.
 
-## <a name="applying-expressroute-fast-path-to-existing-hana-large-instance-expressroute-circuits"></a>ExpressRoute gyors elérési út alkalmazása meglévő HANA nagyméretű példányok ExpressRoute-áramkörökhöz
-A dokumentáció eddig elmagyarázta, hogyan kapcsolódhat egy olyan új ExpressRoute-áramkörhöz, amelyet HANA nagyméretű példányú telepítéssel hoztak létre az Azure-beli virtuális hálózatok egyik Azure ExpressRoute-átjáróján. Számos ügyfél már rendelkezik a ExpressRoute-áramkörök beállításával, és a virtuális hálózatok már a HANA nagyméretű példányaihoz vannak csatlakoztatva. Mivel az új ExpressRoute gyors elérési útja csökkenti a hálózati késést, javasoljuk, hogy alkalmazza a módosítást a funkció használatára. Az új ExpreesRoute-kör és a meglévő ExpressRoute-áramkör módosításához szükséges parancsok megegyeznek. Ennek eredményeképpen futtatnia kell a PowerShell-parancsok ezen sorozatát egy meglévő kör használatára 
+## <a name="applying-expressroute-fast-path-to-existing-hana-large-instance-expressroute-circuits"></a>ExpressRoute gyorselérési út alkalmazása meglévő HANA large instance ExpressRoute-áramkörökre
+A dokumentáció eddig elmagyarázta, hogyan csatlakoztathat egy új ExpressRoute-áramkört, amely hana nagy példány központi telepítésével jött létre az egyik Azure virtuális hálózat Azure ExpressRoute-átjárójához. De sok ügyfél már rendelkezik az ExpressRoute-áramkörök beállításmár, és a virtuális hálózatok csatlakozik hana nagy példányok már. Mivel az új ExpressRoute gyors elérési út csökkenti a hálózati késést, ajánlott a módosítást alkalmazni a funkció használatára. Az új ExpreesRoute-kapcsolat csatlakoztatásához és egy meglévő ExpressRoute-áramkör módosításához szükséges parancsok megegyeznek. Ennek eredményeképpen futtatnia kell ezt a PowerShell-parancsoksorozatot egy meglévő áramkör 
 
 ```powershell
 # Populate with information provided by Microsoft Onboarding team
@@ -124,39 +124,39 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID -ExpressRouteGatewayBypass
 ```
 
-Fontos, hogy a fentiekben látható módon adja hozzá az utolsó paramétert a ExpressRoute gyors elérési útja funkciójának engedélyezéséhez.
+Fontos, hogy az ExpressRoute gyorselérési út funkció engedélyezéséhez adja hozzá a fenti módon megjelenített utolsó paramétert.
 
 
 ## <a name="expressroute-global-reach"></a>Az ExpressRoute Global Reach
-Ha engedélyezni szeretné a Global Reacht a két forgatókönyv egyikéhez vagy mindkettőhöz:
+Mivel engedélyezni szeretné a Globális elérést a két forgatókönyv egyikénvagy mindkettőben:
 
  - HANA rendszerreplikáció további proxyk vagy tűzfalak nélkül
- - Biztonsági másolatok másolása két különböző régióban lévő HANA nagyméretű példány-egységek között a rendszermásolatok vagy a rendszerfrissítések elvégzéséhez
+ - Biztonsági másolatok másolása a HANA nagy példányegységei között két különböző régióban a rendszermásolatok vagy rendszerfrissítések végrehajtásához
 
-a következőket kell figyelembe vennie:
+meg kell vizsgálni, hogy:
 
-- Meg kell adnia egy címtartomány-tartományt egy/29 címterület számára. Előfordulhat, hogy a címtartomány nem fedi át a többi olyan címtartományt, amelyet eddig használt a HANA nagyméretű példányainak az Azure-hoz való csatlakoztatásával, és előfordulhat, hogy az Azure-ban vagy a helyszínen használt IP-címtartományok egyike sem fedi át a tartományt.
-- A ASN (autonóm rendszer száma) korlátozás vonatkozik arra, hogy a helyszíni útvonalakat a HANA nagyméretű példányokra hirdesse. A helyszíni szolgáltatás nem tehet közzé semmilyen, a 65000 – 65020 vagy 65515 tartományba tartozó privát ASN rendelkező útvonalat. 
-- Ha a helyszíni közvetlen hozzáférést a HANA nagyméretű példányaihoz csatlakoztatja, ki kell számítania az Azure-hoz csatlakozó áramkör díját. Az árakért keresse [meg Global REACH-bővítmény](https://azure.microsoft.com/pricing/details/expressroute/)árát.
+- Meg kell adnia egy /29 címtérből álló címterületet. Előfordulhat, hogy ez a címtartomány nem fedi át a hana nagypéldányok Azure-hoz való csatlakoztatása eddig használt többi címtér-tartományt, és nem fedi át az Azure-ban vagy a helyszíni környezetben máshol használt IP-címtartományokkal.
+- Az ASN-ek (autonóm rendszerszám) korlátozása, amely a HANA nagy példányok helyszíni útvonalainak hirdetésére használható. A helyszíni járatok nem hirdethetnek 65000–65020 vagy 65515 közötti privát ASN-ekkel rendelkező útvonalakat. 
+- A forgatókönyv a hana nagy példányokhoz való közvetlen hozzáférés csatlakoztatása esetén ki kell számítania az Azure-hoz csatlakozó áramkör díját. Az árak, ellenőrizze az árakat a [Global Reach Add-On](https://azure.microsoft.com/pricing/details/expressroute/).
 
-A telepítésre alkalmazott forgatókönyvek egyikének vagy mindkettőnek a megkereséséhez nyisson meg egy támogatási üzenetet az Azure-ban a következő témakörben leírtak szerint: [támogatási kérelem megnyitása HANA Large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)
+Ha az egyik vagy mindkét forgatókönyvet a központi telepítésre szeretné alkalmazni, nyisson meg egy támogatási üzenetet az Azure-ral a [HANA nagy példányok támogatási kérelemének megnyitása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances) című részében leírtak szerint.
 
-Az ehhez szükséges, a Microsoft számára a kéréshez használni kívánt, valamint a hozzájuk tartozó kulcsszavakat a következőképpen kell kinéznie:
+A szükséges adatok és a Microsoft számára a kérésre történő továbbirányításhoz és végrehajtáshoz használandó kulcsszavak a következőképpen néznek ki:
 
-- Szolgáltatás: SAP HANA nagyméretű példány
-- Probléma típusa: konfiguráció és beállítás
-- Probléma altípusa: a probléma nem szerepel a fentiekben
-- "A hálózat módosítása – Global Reach hozzáadása" témakör tárgya
-- Részletek: "Global Reach hozzáadása a HANA nagyméretű példányhoz a HANA nagyméretű példány-bérlőhöz vagy a" Global Reach hozzáadása a helyszínhez a nagyméretű példányok bérlője számára.
-- További részletek a HANA nagyméretű példányának a HANA nagyméretű példány bérlői esetéhez: meg kell határoznia azt a **két Azure-régiót** , ahol a két bérlő csatlakozik, **és** el kell küldenie a **/29 IP-címtartományt** .
-- További részletek a helyszíni és a HANA nagyméretű példányok bérlői esetéhez: meg kell határoznia azt az **Azure-régiót** , ahol a Hana nagyméretű példány bérlője telepítve van, közvetlenül szeretne csatlakozni. Emellett meg kell adnia a **hitelesítési GUID** azonosítót és az **áramköri társ-azonosítót** , amelyet a ExpressRoute áramkörnek a helyszíni és az Azure közötti létrehozásakor kapott. Emellett az **ASN**nevet kell megadnia. Az utolsó megszabadítható egy **/29 IP-címtartomány** a ExpressRoute Global REACH.
+- Szolgáltatás: SAP HANA nagy példány
+- Probléma típusa: Konfiguráció és telepítés
+- Probléma altípusa: A probléma nem szerepel a fenti felsorolásban
+- Tárgy " A hálózat módosítása - globális elérés hozzáadása"
+- Részletek: "Globális elérés hozzáadása hana nagy példány hana nagy példány bérlőhöz vagy "Globális elérés hozzáadása a helyszíni HANA nagy példány bérlőjéhez.
+- További részletek a HANA nagy példány hana nagy példány bérlői eset: Meg kell határoznia a **két Azure-régióban,** ahol a két bérlő csatlakozni, **és** be kell küldenie a **/29 IP-címtartomány**
+- A helyszíni hana nagypéldány-bérlői eset: meg kell határoznia az **Azure-régió,** ahol a HANA nagy példány bérlő települ, amelyhez közvetlenül csatlakozni szeretne. Emellett meg kell adnia az **auth GUID** és **a Circuit Peer-azonosító,** amely akkor kapott, amikor létrehozta az ExpressRoute-kapcsolat létrehozása a helyszíni és az Azure között. Ezenkívül meg kell neveznie az **ASN-t.** Az utolsó termék az ExpressRoute Globális **elérés /29 IP-címtartománya.**
 
 > [!NOTE]
-> Ha mindkét esetet kezelni szeretné, két különböző/29 IP-címtartományt kell megadnia, amelyek nem fedik át az eddig használt egyéb IP-címtartományt. 
+> Ha mindkét esetet kezelni szeretné, két különböző /29 IP-címtartományt kell megadnia, amelyek nem fedik át az eddig használt más IP-címtartományt. 
 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A HLI további hálózati követelményei](hana-additional-network-requirements.md)
+- [A HLI-re vonatkozó további hálózati követelmények](hana-additional-network-requirements.md)

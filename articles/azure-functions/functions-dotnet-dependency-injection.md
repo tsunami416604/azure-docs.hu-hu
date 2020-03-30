@@ -1,39 +1,39 @@
 ---
-title: Függőségi befecskendezés használata a .NET-Azure Functions
-description: Ismerje meg, hogyan használhatja a függőségi befecskendezést a szolgáltatások .NET-függvényekbe való regisztrálásához és használatához
+title: Függőséginjektálás használata a .NET Azure Functionsben
+description: A függőségi injektálás használata a szolgáltatások regisztrálásához és használatához a .NET függvényekben
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: f8f1eb353087c5121eaafb4c8789e7a2f7638b99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329016"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475121"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi befecskendezés használata a .NET-Azure Functions
+# <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
-A Azure Functions támogatja a függőségi injektálás (DI) szoftver kialakítási mintáját, amely az osztályok és a függőségek közötti [vezérlés (NOB)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elérését szolgáló módszer.
+Az Azure Functions támogatja a függőségi injektálási (DI) szoftvertervezési mintát, amely az osztályok és függőségeik közötti [Inverzió (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elérésének technikája.
 
-- A függőség injekciója Azure Functions a .NET Core függőségi injekciós funkciókra épül. A [.net Core-függőség injektálásának](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ismerete ajánlott. A függőségek felülbírálása és a konfigurációs értékek beolvasása a használati terv Azure Functions alapján azonban eltérő.
+- Függőségi injektálás az Azure Functions ben épül a .NET core függőségi injektálás funkciók. A [.NET Core függőségi injektálás](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ismerete ajánlott. Vannak különbségek azonban abban, hogy hogyan bírálja felül a függőségeket, és hogyan konfigurációs értékek et olvas az Azure Functions a felhasználási terv.
 
-- A függőségi befecskendezés támogatása Azure Functions 2. x-vel kezdődik.
+- A függőségi injektálás támogatása az Azure Functions 2.x-szel kezdődik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A függőségi befecskendezés használata előtt telepítenie kell a következő NuGet-csomagokat:
+A függőségi injektálás használata előtt telepítenie kell a következő NuGet csomagokat:
 
-- [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- A [Microsoft. net. SDK. functions csomag](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28 vagy újabb verziója
+- [Microsoft.NET.Sdk.Functions csomag](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28-as vagy újabb verzió
 
 ## <a name="register-services"></a>Szolgáltatások regisztrálása
 
-A szolgáltatások regisztrálásához hozzon létre egy metódust egy `IFunctionsHostBuilder`-példányhoz tartozó összetevők konfigurálásához és hozzáadásához.  A Azure Functions gazdagép létrehoz egy `IFunctionsHostBuilder` egy példányát, és közvetlenül a metódusba továbbítja azokat.
+Szolgáltatások regisztrálásához hozzon létre egy módszert egy `IFunctionsHostBuilder` példány konfigurálására és összetevők hozzáadására.  Az Azure Functions gazdagép `IFunctionsHostBuilder` létrehoz egy példányt, és továbbítja azt közvetlenül a metódusba.
 
-A metódus regisztrálásához adja hozzá a `FunctionsStartup` Assembly attribútumot, amely megadja az indításkor használt típus nevét.
+A metódus regisztrálásához `FunctionsStartup` adja hozzá az indításkor használt típusnevet megadó összeállítási attribútumot.
 
 ```csharp
 using System;
@@ -62,19 +62,19 @@ namespace MyNamespace
 }
 ```
 
-### <a name="caveats"></a>Figyelmeztetések
+### <a name="caveats"></a>Ellenmondások
 
-A Futtatás előtt és után futtatott regisztrációs lépések sorozata az indítási osztályt dolgozza fel. Ezért ne feledje a következő elemeket:
+A futásidejű folyamatok előtt és után futó regisztrációs lépések sorozata fut. Ezért tartsa szem előtt a következő elemeket:
 
-- *Az indítási osztály csak a beállítás és a regisztráció céljára szolgál.* Ne használja az indításkor regisztrált szolgáltatásokat az indítási folyamat során. Például ne próbáljon naplózni egy olyan üzenetet, amely az indítás során regisztrálva van. A regisztrációs folyamat ezen pontja túl korai ahhoz, hogy a szolgáltatások elérhetők legyenek. A `Configure` metódus futtatása után a functions Runtime továbbra is regisztrál további függőségeket, ami befolyásolhatja a szolgáltatások működését.
+- *Az indítási osztály csak beállításra és regisztrációra szolgál.* Kerülje az indításkor regisztrált szolgáltatások használatát az indítási folyamat során. Például ne próbáljon meg naplózni egy üzenetet egy olyan naplózóban, amely et az indítás során regisztrálnak. A regisztrációs folyamat ezen pontja túl korai ahhoz, hogy a szolgáltatások elérhetők legyenek. A `Configure` metódus futtatása után a Functions futásidejű továbbra is regisztrálja a további függőségeket, amelyek befolyásolhatják a szolgáltatások működését.
 
-- *A függőségi injektálási tároló csak explicit módon regisztrált típusokat*tartalmaz. A `Configure` metódusban csak az injekciós típusként elérhető szolgáltatások vannak beállítva. Ennek eredményeképpen a functions-specifikus típusok, például a `BindingContext` és az `ExecutionContext` nem érhetők el a telepítés során vagy injekciós típusokként.
+- *A függőségi injektálási tároló csak kifejezetten regisztrált típusokat tartalmaz.* Az egyetlen elérhető szolgáltatás injekciós típusként `Configure` az, ami a módszerben be van állítva. Ennek eredményeképpen a funkciók-specifikus `ExecutionContext` típusok, például `BindingContext` a telepítés során vagy injekciós típusként nem érhetők el.
 
-## <a name="use-injected-dependencies"></a>Beinjektált függőségek használata
+## <a name="use-injected-dependencies"></a>Injektált függőségek használata
 
-A konstruktor-injektálás a függőségek elérhetővé tételéhez használható a függvényben. A konstruktor befecskendezésének használata megköveteli, hogy ne használjon statikus osztályokat.
+Konstruktor injekció segítségével, hogy a függőségek elérhetővé egy funkciót. A konstruktor befecskendezés etekintetben megköveteli, hogy ne használjon statikus osztályokat.
 
-Az alábbi minta azt mutatja be, hogy a rendszer hogyan fecskendez be a `IMyService` és `HttpClient` függőségeket egy HTTP-triggert igénylő függvénybe. Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csomagot használja, amely a `HttpClient` indításkor való regisztrálásához szükséges.
+Az alábbi minta `IMyService` bemutatja, hogyan injektálják a függőségeket és `HttpClient` a függőségeket egy HTTP-aktivált függvénybe. Ez a példa a [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) `HttpClient` csomagot használja, amely indításkor regisztráláshoz szükséges.
 
 ```csharp
 using System;
@@ -85,6 +85,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
 
 namespace MyNamespace
 {
@@ -93,10 +94,10 @@ namespace MyNamespace
         private readonly IMyService _service;
         private readonly HttpClient _client;
 
-        public HttpTrigger(IMyService service, IHttpClientFactory httpClientFactory)
+        public HttpTrigger(IMyService service, HttpClient httpClient)
         {
             _service = service;
-            _client = httpClientFactory.CreateClient();
+            _client = httpClient;
         }
 
         [FunctionName("GetPosts")]
@@ -114,27 +115,27 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>Szolgáltatás élettartama
+## <a name="service-lifetimes"></a>A szolgáltatás élettartama
 
-Azure Functions alkalmazások ugyanazt a szolgáltatási élettartamot biztosítják, mint a [ASP.net függőségi injekció](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). A functions alkalmazás esetében a különböző szolgáltatási élettartamok a következőképpen viselkednek:
+Az Azure Functions-alkalmazások ugyanazokat a szolgáltatásélettartamokat biztosítják, mint [ASP.NET függőségi injektálás.](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) A Functions alkalmazások esetében a különböző szolgáltatásélettartamok a következőképpen viselkednek:
 
-- **Átmeneti**: az átmeneti szolgáltatások a szolgáltatás minden egyes kérelme alapján jönnek létre.
-- **Hatókörön**belüli: a hatókörön belüli szolgáltatás élettartama megfelel a függvény végrehajtási élettartamának. A hatókörrel rendelkező szolgáltatások végrehajtáskor egyszer jönnek létre. A szolgáltatás későbbi kérelmei a végrehajtás során újra felhasználják a meglévő szolgáltatást.
-- **Egyszeres**: az egyszeres szolgáltatás élettartama megegyezik a gazdagép élettartamával, és az adott példányon végrehajtott függvények végrehajtása során újra felhasználja őket. Az egyedi élettartamú szolgáltatások a kapcsolatok és az ügyfelek számára ajánlottak, például `SqlConnection` vagy `HttpClient` példányok esetén.
+- **Átmeneti**: A szolgáltatás minden egyes kérésére átmeneti szolgáltatások jönnek létre.
+- **Hatókörrel:** A hatókörrel tartozó szolgáltatás élettartama megegyezik a függvény végrehajtási élettartama. A hatókörrel létrehozott szolgáltatások végrehajtásonként egyszer jönnek létre. A szolgáltatás későbbi kérései a végrehajtás során újrafelhasználják a meglévő szolgáltatáspéldányt.
+- **Singleton:** A singleton szolgáltatás élettartama megegyezik a gazdagép élettartama, és újra fel kell használni a függvény-végrehajtások az adott példányon. Singleton élettartam-szolgáltatások ajánlott kapcsolatok és `SqlConnection` az `HttpClient` ügyfelek, például vagy példányok.
 
-A GitHubon megtekintheti és letöltheti a [különböző szolgáltatási élettartamokat tartalmazó mintát](https://aka.ms/functions/di-sample) .
+Tekintse meg vagy töltse le [a githubon a különböző szolgáltatásélettartamok mintáját.](https://aka.ms/functions/di-sample)
 
 ## <a name="logging-services"></a>Naplózási szolgáltatások
 
-Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni típust `ILoggerProvider` példányként. A Application Insights Azure Functions automatikusan hozzáadja.
+Ha saját naplózási szolgáltatóra van szüksége, `ILoggerProvider` regisztráljon egy egyéni típust példányként. Az Application Insights automatikusan hozzáadódik az Azure Functions hez.
 
 > [!WARNING]
-> - Ne vegyen fel `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteménybe, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
-> - Ha beépített Application Insights funkciót használ, ne regisztráljon saját `TelemetryConfiguration` vagy `TelemetryClient`. Ha a saját `TelemetryClient`-példányát kell konfigurálnia, hozzon létre egyet a befecskendezett `TelemetryConfiguration`, ahogyan az [Azure functions figyelése](./functions-monitoring.md#version-2x-and-later-2)című részen látható.
+> - Ne adja `AddApplicationInsightsTelemetry()` hozzá a szolgáltatásgyűjteményhez, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
+> - Ne regisztrálja `TelemetryConfiguration` a `TelemetryClient` saját, vagy ha a beépített Application Insights funkciót használ. Ha saját `TelemetryClient` példányt kell konfigurálnia, `TelemetryConfiguration` hozzon létre egyet az injektált módon, ahogy az [az Azure Functions figyelőjében](./functions-monitoring.md#version-2x-and-later-2)látható.
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> és ILoggerFactory
 
-A gazdagép beadja `ILogger<T>` és `ILoggerFactory` szolgáltatásokat a konstruktoroknak.  Alapértelmezés szerint azonban ezeket az új naplózási szűrőket a rendszer kiszűri a függvények naplóiból.  A további szűrők és kategóriák kiválasztásához módosítania kell a `host.json` fájlt.  Az alábbi minta azt mutatja be, hogyan adhat hozzá egy `ILogger<HttpTrigger>` a gazdagép által elérhető naplókhoz.
+A gazdagép `ILogger<T>` `ILoggerFactory` befecskendezi és szolgáltatásokat nyújt a konstruktorokba.  Alapértelmezés szerint azonban ezek az új naplózási szűrők kilesznek szűrve a függvénynaplókból.  A további szűrők `host.json` és kategóriák beállításához módosítania kell a fájlt.  A következő minta `ILogger<HttpTrigger>` bemutatja egy a gazdagép által elérhetővé tett naplók hozzáadását.
 
 ```csharp
 namespace MyNamespace
@@ -159,7 +160,7 @@ namespace MyNamespace
 }
 ```
 
-És egy `host.json` fájl, amely hozzáadja a napló szűrőjét.
+És `host.json` egy fájl, amely hozzáadja a naplószűrőt.
 
 ```json
 {
@@ -178,28 +179,28 @@ namespace MyNamespace
 }
 ```
 
-## <a name="function-app-provided-services"></a>A függvény által biztosított szolgáltatások
+## <a name="function-app-provided-services"></a>A függvényalkalmazás által nyújtott szolgáltatások
 
-A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
+A függvényállomás számos szolgáltatást regisztrál. A következő szolgáltatások biztonságosan figyelembe függőségaz alkalmazásban:
 
-|Szolgáltatás típusa|Élettartama|Leírás|
+|Szolgáltatástípus|Életre|Leírás|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdapéldány azonosítójának megadásáért felelős|
 
-Ha vannak olyan szolgáltatások, amelyeknek függőségi viszonyra van szüksége, [hozzon létre egy problémát, és javasolja őket a githubon](https://github.com/azure/azure-functions-host).
+Ha vannak más szolgáltatások is, amelyektől függőséget szeretne igénybe venni, [hozzon létre egy problémát, és javasoljon azokat a GitHubon.](https://github.com/azure/azure-functions-host)
 
-### <a name="overriding-host-services"></a>Gazdagép-szolgáltatások felülbírálása
+### <a name="overriding-host-services"></a>A gazdaszolgáltatások felülbírálása
 
-A gazdagép által nyújtott szolgáltatások felülbírálása jelenleg nem támogatott.  Ha vannak olyan szolgáltatások, amelyeket felül szeretne bírálni, [hozzon létre egy problémát, és javasolja őket a githubon](https://github.com/azure/azure-functions-host).
+A gazdagép által nyújtott felülbírálási szolgáltatások jelenleg nem támogatottak.  Ha vannak olyan szolgáltatások, amelyeket felül szeretne bírni, [hozzon létre egy problémát, és javasoljon azokat a GitHubon.](https://github.com/azure/azure-functions-host)
 
-## <a name="working-with-options-and-settings"></a>Beállítások és beállítások használata
+## <a name="working-with-options-and-settings"></a>A beállítások és beállítások használata
 
-Az [Alkalmazásbeállítások](./functions-how-to-use-azure-function-app-settings.md#settings) által meghatározott értékek egy `IConfiguration` példányban érhetők el, amely lehetővé teszi az Alkalmazásbeállítások értékének olvasását az indítási osztályban.
+Az [alkalmazásbeállításokban](./functions-how-to-use-azure-function-app-settings.md#settings) definiált értékek `IConfiguration` egy példányban érhetők el, amely lehetővé teszi az alkalmazásbeállítási értékek olvasását az indítási osztályban.
 
-Az `IConfiguration` példány értékeit egyéni típusba is kinyerheti. Ha az Alkalmazásbeállítások értékeit egyéni típusra másolja, a szolgáltatás egyszerűen tesztelhető, így ezek az értékek injektálható. A konfigurációs példányba beolvasott beállításoknak egyszerű kulcs/érték pároknak kell lenniük.
+A `IConfiguration` példány értékeit egyéni típusba bonthatja ki. Az alkalmazásbeállítási értékek egyéni típusba másolása megkönnyíti a szolgáltatások tesztelését azáltal, hogy ezeket az értékeket injektálóvá teszi. A konfigurációs példányba beolvasott beállításoknak egyszerű kulcs-/értékpároknak kell lenniük.
 
-Vegye figyelembe a következő osztályt, amely egy konzisztens nevű tulajdonságot tartalmaz egy alkalmazás-beállítással:
+Vegye figyelembe a következő osztályt, amely egy alkalmazásbeállítással megegyező nevű tulajdonságot tartalmaz:
 
 ```csharp
 public class MyOptions
@@ -208,7 +209,7 @@ public class MyOptions
 }
 ```
 
-Valamint egy `local.settings.json`-fájl, amely a következőképpen strukturálhatja az egyéni beállítást:
+És `local.settings.json` egy fájl, amely az egyéni beállítást a következőképpen strukturálhatja:
 ```json
 {
   "IsEncrypted": false,
@@ -218,7 +219,7 @@ Valamint egy `local.settings.json`-fájl, amely a következőképpen strukturál
 }
 ```
 
-A `Startup.Configure` metódusból kinyerheti a `IConfiguration` példány értékeit az egyéni típusba a következő kód használatával:
+A `Startup.Configure` metóduson belül a következő `IConfiguration` kód használatával kinyerheti a példány értékeit az egyéni típusba:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -228,9 +229,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-A rendszer meghívja a konfigurációban szereplő, az egyéni példányba tartozó tulajdonságokat tartalmazó `Bind`-példányok értékeit. A beállítások példány mostantól elérhető a NOB-tárolóban egy függvénybe való behelyezéshez.
+A `Bind` hívás olyan értékeket másol, amelyek a konfigurációból egyező tulajdonságnevekkel rendelkeznek az egyéni példányba. A beállítások példánya már elérhető az IoC-tárolóban egy függvény befecskendezéséhez.
 
-A Options objektumot az általános `IOptions` felület példánya fecskendezi a függvénybe. A konfigurációban található értékek eléréséhez használja a `Value` tulajdonságot.
+A beállítások objektuma az általános `IOptions` felület példányaként kerül a függvénybe. A `Value` tulajdonság segítségével érheti el a konfigurációban található értékeket.
 
 ```csharp
 using System;
@@ -247,14 +248,14 @@ public class HttpTrigger
 }
 ```
 
-A beállításokkal kapcsolatos további részletekért tekintse meg a [ASP.net Core beállítások mintáját](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) .
+A beállításokkal kapcsolatos további részletekért tekintse meg [ASP.NET A ASP.NET Core beállítási mintáját.](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)
 
 > [!WARNING]
-> Kerülje az értékek olvasását olyan fájlokból, mint például a *Local. Settings. JSON* vagy a *appSettings. { Environment}. JSON* a használati tervben. Az elindító kapcsolatokhoz kapcsolódó fájlokból beolvasott értékek nem érhetők el az alkalmazás skálázása miatt, mert az üzemeltetési infrastruktúra nem fér hozzá a konfigurációs adatokhoz.
+> Ne próbáljon értékeket olvasni olyan fájlokból, mint *a local.settings.json* vagy *az appsettings.{ environment}.json* a felhasználási tervben. Az eseményindító kapcsolatokhoz kapcsolódó fájlokból beolvasott értékek nem érhetők el, mivel az alkalmazás méretezi, mert a gazdainfrastruktúra nem fér hozzá a konfigurációs adatokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 
-- [A Function-alkalmazás figyelése](functions-monitoring.md)
-- [Ajánlott eljárások a functions szolgáltatáshoz](functions-best-practices.md)
+- [A függvényalkalmazás figyelése](functions-monitoring.md)
+- [A függvények gyakorlati tanácsai](functions-best-practices.md)

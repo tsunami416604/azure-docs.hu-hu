@@ -1,6 +1,6 @@
 ---
-title: A Azure App Service webalkalmazások és API-k elleni védelem
-description: Ez a cikk segít megkezdeni a Azure App Service webalkalmazások és API-k védelmét Azure Security Centerban.
+title: Az Azure App Service-alapú webalkalmazások és API-k védelme
+description: Ez a cikk segítséget nyújt az Azure App Service-webalkalmazások és API-k védelmének megkezdéséhez az Azure Security Centerben.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
 ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616483"
 ---
-# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>A Azure App Service webalkalmazások és API-k elleni védelem
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Az Azure App Service-alapú webalkalmazások és API-k védelme
 
-A Azure App Service egy teljes körűen felügyelt platform a webalkalmazások és API-k létrehozásához és üzemeltetéséhez anélkül, hogy az infrastruktúrát kellene kezelnie. Felügyeleti, monitorozási és üzemeltetési megállapításokat biztosít a vállalati szintű teljesítmény-, biztonsági és megfelelőségi követelmények teljesítéséhez. További információ: [Azure app Service](https://azure.microsoft.com/services/app-service/).
+Az Azure App Service egy teljes körűen felügyelt platform a webalkalmazások és API-k létrehozásához és üzemeltetéséhez anélkül, hogy aggódnia kellene az infrastruktúra kezelése miatt. Felügyeleti, figyelési és működési elemzéseket biztosít a nagyvállalati szintű teljesítmény-, biztonsági és megfelelőségi követelmények teljesítéséhez. További információ: [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
-A Azure App Service-csomag komplex veszélyforrások elleni védelmének engedélyezéséhez a következőket kell tennie:
+Az Azure App Service-csomag speciális veszélyforrások elleni védelmének engedélyezéséhez a következőket kell tennie:
 
-* Előfizetés a Azure Security Center Standard díjszabási szintjére
-* Engedélyezze a App Service tervet az alább látható módon. A Security Center natív módon van integrálva a App Serviceval, így nincs szükség az üzembe helyezésre és a bevezetésre – az integráció átlátható.
-* A dedikált gépekhez társított App Service terv. A támogatott csomagok a következők: alapszintű, standard, prémium, elkülönített vagy Linux. A Security Center nem támogatja az ingyenes, közös vagy felhasználási terveket. További információ: App Service- [csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
+* Előfizetés az Azure Security Center standard díjszabási csomagra
+* Engedélyezze az App Service-csomagot az alábbiak szerint. A Security Center natív módon integrálva van az App Service szolgáltatással, így nincs szükség üzembe helyezésre és bevezetésre – az integráció átlátható.
+* Rendelkeznie kell egy App Service-csomag, amely dedikált gépek társított. Támogatott csomagok: Alapszintű, Standard, Prémium, Elkülönített vagy Linux. A Security Center nem támogatja az ingyenes, megosztott vagy a felhasználási csomagokat. További információ: [App Service Plans](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
-Ha a App Servicei terv engedélyezve van, Security Center értékeli a App Service-csomag által érintett erőforrásokat, és a megállapításai alapján biztonsági javaslatokat hoz létre. Security Center védi a virtuális gép azon példányát, amelyben a App Service fut, és a felügyeleti felületet. Emellett figyeli a App Service-ban futó alkalmazásaitól érkező és onnan érkező kérelmeket és válaszokat.
+Ha az App Service-csomag engedélyezve van, a Security Center felméri az App Service-csomag által lefedett erőforrásokat, és a megállapításai alapján biztonsági javaslatokat készít. A Security Center védi a virtuális gép példányát, amelyben az App Service fut, és a felügyeleti felület. Emellett figyeli az App Service-ben futó alkalmazásokba küldött kérelmeket és válaszokat.
 
-A Security Center kihasználja a felhő méretezését, és azt, hogy az Azure hogyan rendelkezik felhőalapú szolgáltatóként, hogy figyelje a gyakori webalkalmazás-támadásokat. A Security Center képes észlelni az alkalmazásai támadásait, és azonosítani a feltörekvő támadásokat – még a felderítési fázisban is, miközben a támadók a biztonsági réseket több Azure által üzemeltetett alkalmazásban azonosítják. Az Azure-natív szolgáltatásként a Security Center egy egyedi pozícióban is elérhető, amely lehetővé teszi, hogy a gazdagépen alapuló biztonsági elemzések is elérhetők legyenek, amelyek a kihasználatlan számítási csomópontokra vonatkoznak, így Security Center a már kiaknázott webalkalmazások elleni támadások észlelésére. További részletek: [Azure app Service veszélyforrások elleni védelme](threat-protection.md#app-services).
+A Security Center kihasználja a felhő méretét, valamint az Azure felhőszolgáltatóként való láthatóságát a gyakori webalkalmazás-támadások figyeléséhez. A Security Center felderítheti az alkalmazások elleni támadásokat, és azonosíthatja a felmerülő támadásokat – még akkor is, ha a támadók a felderítési fázisban vannak, és több Azure által üzemeltetett alkalmazás biztonsági résének azonosítását is vizsgálja. Azure-natív szolgáltatásként a Security Center is egyedülálló helyzetben van, hogy gazdagép-alapú biztonsági elemzéseket kínáljon a PaaS alapjául szolgáló számítási csomópontokra, lehetővé téve a Security Center számára a már kiaknázott webalkalmazások elleni támadások észlelését. További részletek: [Fenyegetésvédelem az Azure App Service.for](threat-protection.md#app-services)more details, see Threat Protection for Azure App Service.
 
 
-## <a name="enabling-monitoring-and-protection-of-app-service"></a>A App Service monitorozásának és védelmének engedélyezése
+## <a name="enabling-monitoring-and-protection-of-app-service"></a>Az App Service figyelésének és védelmének engedélyezése
 
-1. A Azure Portal válassza a Security Center lehetőséget.
-2. Lépjen a **díjszabás & beállítások** elemre, és válasszon egy előfizetést.
-3. Az **árképzési**csomag alatt az **app Service** -sorban állítsa be a csomagot az **engedélyezett**értékre.
+1. Az Azure Portalon válassza a Security Center lehetőséget.
+2. Nyissa meg **az Árképzési & beállításokat,** és válasszon egy előfizetést.
+3. A **Tarifacsomag**csoportban az **App Service-sorban** kapcsolja be a csomagot **engedélyezve.**
 
-    [![az App Services engedélyezése a standard szintű előfizetésben](media/security-center-app-services/app-services-toggle.png)](media/security-center-app-services/app-services-toggle.png#lightbox)
+    [![Alkalmazásszolgáltatások engedélyezése a standard szintű előfizetésben](media/security-center-app-services/app-services-toggle.png)](media/security-center-app-services/app-services-toggle.png#lightbox)
 
 
 >[!NOTE]
-> Az **erőforrás-mennyiséghez** felsorolt példányok száma a számítási példányok teljes számát jelöli az előfizetés összes app Service csomagjában, amely az árképzési rétegek paneljének megnyitásakor fut.
+> Az **erőforrás-mennyiséghez** felsorolt példányok száma az előfizetés összes App Service-csomagjában a számítási példányok teljes számát jelenti, amely abban a pillanatban fut, amikor megnyitotta a tarifacsomag panelt.
 >
-> Azure App Service számos különböző csomagot kínál. A App Service terv meghatározza a futtatandó webalkalmazás számítási erőforrásainak készletét. Ezek egyenértékűek a hagyományos webes üzemeltetésű kiszolgáló-farmokkal. Egy vagy több alkalmazás úgy konfigurálható, hogy ugyanazon a számítási erőforrásokon (vagy ugyanabban a App Service tervben) fusson.
+> Az Azure App Service számos csomaglehetőséget kínál. Az App Service-csomag határozza meg a webalkalmazás futtatásához szükséges számítási erőforrások készletét. Ezek egyenértékűek a szerver gazdaságok hagyományos web hosting. Egy vagy több alkalmazás konfigurálható úgy, hogy ugyanazon a számítási erőforráson (vagy ugyanabban az App Service-csomagban) fusson.
 >
->A darabszám ellenőrzéséhez lépjen az Azure Portalon a "App Service csomagok" elemre, ahol megtekintheti az egyes csomagokban használt számítási példányok számát. 
+>A számláló érvényesítéséhez tekintse meg az "App Service-csomagok" az Azure Portalon, ahol láthatja az egyes csomagok által használt számítási példányok számát. 
 
 
 
 
 
 
-Ha le szeretné tiltani a App Service figyelését és javaslatait, ismételje meg ezt a folyamatot, és kapcsolja ki a **app Service** tervet a **letiltáshoz**.
+Ha le szeretné tiltani az App Service figyelését és ajánlásait, ismételje meg ezt a folyamatot, és kapcsolja be az **App Service-csomagot** **letiltva.**
 
 
 
 ## <a name="see-also"></a>Lásd még
-Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Ha többet szeretne megtudni a Azure Security Centerről, tekintse meg a következő cikkeket:
+Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Ha többet szeretne megtudni az Azure Security Centerről, olvassa el az alábbi cikkeket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
-* [App Services](security-center-virtual-machine-protection.md#app-services): Tekintse meg az App Service-környezetek listáját az állapot összegzésével.
+* [Alkalmazásszolgáltatások:](security-center-virtual-machine-protection.md#app-services)Tekintse meg az Alkalmazásszolgáltatási környezetek listáját az állapotösszefoglalókkal.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

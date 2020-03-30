@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Identity platform Java-webalkalmazásának rövid útmutatója | Azure
-description: Ismerje meg, hogyan implementálhatja a Microsoft bejelentkezést egy Java-webalkalmazásban az OpenID Connect használatával
+title: Microsoft identity platform Java webapp rövid útmutató | Azure
+description: A Microsoft Bejelentkezés java webalkalmazáson történő megvalósítása az OpenID Connect használatával
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,81 +11,81 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 3bfcc1ef8c58f71811af604fbc07736a13102e83
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c2f3272beb463a16f9488139b6c3a45febae6493
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249084"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79529634"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
+# <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy Java webalkalmazáshoz
 
-Ebből a rövid útmutatóból megtudhatja, hogyan integrálhat egy Java-webalkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához, és kérelmet küld a Microsoft Graph API-nak.
+Ebben a rövid útmutatóban megtudhatja, hogyan integrálhat egy Java webalkalmazást a Microsoft identitáskezelési platformjával. Az alkalmazás bejelentkezik egy felhasználóba, kap egy hozzáférési jogkivonatot a Microsoft Graph API hívásához, és kérést küld a Microsoft Graph API-hoz.
 
-A rövid útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
+A rövid útmutató befejezése után az alkalmazás elfogadja a személyes Microsoft-fiókok (beleértve a outlook.com, live.com és másokat) és az Azure Active Directoryt használó vállalatok vagy szervezetek munkahelyi vagy iskolai fiókjainak bejelentkezését. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta futtatásához a következőkre lesz szüksége:
+A minta futtatásához a következőkre lesz szükség:
 
-- A [Java Development Kit (JDK)](https://openjdk.java.net/) 8 vagy újabb, valamint a [Maven](https://maven.apache.org/).
+- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 vagy nagyobb, és [Maven](https://maven.apache.org/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
-> A gyors üzembe helyezési alkalmazás elindításához két lehetőség közül választhat: Express (1. lehetőség) vagy manuális (2. lehetőség)
+> A rövid útmutató elindításához két lehetőség közül választhat: expressz (1. lehetőség) vagy manuális (2. lehetőség)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
 >
-> 1. Nyissa meg a [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
+> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztrációk.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
-> 1. Az új alkalmazás letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
+> 1. Kövesse az utasításokat az új alkalmazás letöltéséhez és automatikus konfigurálásához.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
 >
-> #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
+> #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 >
-> Az alkalmazás regisztrálásához és a megoldáshoz az alkalmazás regisztrációs adatainak manuális hozzáadásához kövesse az alábbi lépéseket:
+> Az alkalmazás regisztrálásához és az alkalmazás regisztrációs adatainak manuális hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 >
-> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](/azure/active-directory/develop/) oldalára.
-> 1. Válassza az **új regisztráció**lehetőséget.
+> 1. Keresse meg a Microsoft identity platform ot a fejlesztőknek [Alkalmazásregisztrációk](/azure/active-directory/develop/) lapon.
+> 1. Válassza **az Új regisztráció lehetőséget.**
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `java-webapp`).
->    - Hagyja üresen az **átirányítási URI** -t, majd válassza a **regisztráció**lehetőséget.
-> 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
-> 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Az **átirányítási URI**-k területen adja hozzá a `https://localhost:8080/msal4jsample/secure/aad` és `https://localhost:8080/msal4jsample/graph/me`.
+>    - Egyelőre hagyja üresen az **Átirányítás URI-t,** és válassza a **Regisztráció gombot.**
+> 1. Az **Áttekintés** lapon keresse meg az **alkalmazás (ügyfél) azonosítóját** és az alkalmazás **címtár (bérlői)** azonosítóértékeit. Másolja ezeket az értékeket későbbre.
+> 1. Válassza ki a **hitelesítést** a menüből, majd adja meg a következő adatokat:
+>    - Az **Átirányítás URI-k ban**adja hozzá és `https://localhost:8080/msal4jsample/secure/aad` `https://localhost:8080/msal4jsample/graph/me`adja hozzá a.
 >    - Kattintson a **Mentés** gombra.
-> 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
+> 1. Válassza ki a **tanúsítványok & titkos kulcsokat** a menüből, és az **Ügyfél titkos kulcsok** szakaszban kattintson az **Új ügyféltitok**elemre:
 >
->    - Írja be a kulcs leírását (például az alkalmazás titkos kulcsaként).
->    - Válassza ki a kulcs időtartamát **1 év**múlva.
->    - A kulcs értéke a **Hozzáadás**gombra kattintva fog megjelenni.
->    - Másolja később a kulcs értékét. Ez a kulcs nem jelenik meg újra, és semmilyen más módon nem kérhető le, ezért jegyezze fel, amint a Azure Portal látható.
+>    - Írja be a kulcs leírását (például alkalmazástitkos ítmény).
+>    - Válasszon egy kulcs **időtartamot egy év alatt.**
+>    - A kulcs értéke akkor jelenik meg, ha a Hozzáadás lehetőséget **választja.**
+>    - Másolja a kulcs értékét későbbre. Ez a kulcsérték nem jelenik meg újra, és nem visszakereshető más módon, így rögzítse, amint látható az Azure Portalon.
 >
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1\. lépés: az alkalmazás konfigurálása a Azure Portalban
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 >
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
+> A rövid útmutató működéséhez a kódmintához a következőket kell elvégeznie:
 >
-> 1. Adja hozzá a válasz URL-címeket `https://localhost:8080/msal4jsample/secure/aad` és `https://localhost:8080/msal4jsample/graph/me`ként.
-> 1. Hozzon létre egy ügyfél titkot.
+> 1. VálaszURL-címek hozzáadása `https://localhost:8080/msal4jsample/secure/aad` `https://localhost:8080/msal4jsample/graph/me`a és a néven
+> 1. Ügyféltitok létrehozása.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítások elvégzése]()
+> > [Hajtsa végre ezeket a módosításokat nekem]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-aspnet-webapp/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-the-code-sample"></a>2\. lépés: a mintakód letöltése
+#### <a name="step-2-download-the-code-sample"></a>2. lépés: A kódminta letöltése
 > [!div renderon="docs"]
-> [A mintakód letöltése](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+> [A kódminta letöltése](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Töltse le a projektet, és bontsa ki a zip-fájlt egy helyi mappába a gyökérkönyvtárhoz közelebb – például **C:\Azure-Samples**
+> Töltse le a projektet, és bontsa ki a zip fájlt egy helyi mappába, amely közelebb van a gyökérmappához - például **C:\Azure-Samples**
 > 
-> Ha a HTTPS-t a localhost használatával szeretné használni, töltse ki a Server. SSL. Key tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) eszköz segédprogramját.
+> A https és a localhost használatához töltse ki a server.ssl.key tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) kulcseszköz segédprogramot.
 >
 >  ```
 >   Example:
@@ -96,16 +96,16 @@ A minta futtatásához a következőkre lesz szüksége:
 >   server.ssl.key-store-password=password  
 >   server.ssl.key-alias=testCert
 >   ```
->   Helyezze a generált rendszertároló fájlt a "Resources" (erőforrások) mappába.
+>   Helyezze a létrehozott keystore fájlt az "erőforrások" mappába.
    
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [A mintakód letöltése]()
+> [A kódminta letöltése](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-the-code-sample"></a>3\. lépés: a mintakód konfigurálása
-> 1. Bontsa ki a zip-fájlt egy helyi mappába.
-> 1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
-> 1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId*, *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító**, a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
+> #### <a name="step-3-configure-the-code-sample"></a>3. lépés: A kódminta konfigurálása
+> 1. Csomagolja ki a zip-fájlt egy helyi mappába.
+> 1. Ha integrált fejlesztői környezetet használ, nyissa meg a mintát a kedvenc IDE-ben (nem kötelező).
+> 1. Nyissa meg az application.properties fájlt, amely megtalálható az src/main/resources/ mappában, és cserélje le az *aad.clientId,* *aad.authority* és *aad.secretKey* mezők értékét az **Alkalmazásazonosító**, **a bérlőazonosító** és az **ügyféltitok** megfelelő értékeivel a következőképpen:
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -118,9 +118,9 @@ A minta futtatásához a következőkre lesz szüksége:
 > Az elemek magyarázata:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
-> - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
-> - `Enter_the_Tenant_Info_Here` – a regisztrált alkalmazás **címtár-(bérlői) azonosítójának** értéke.
-> 1. Ha a HTTPS-t a localhost használatával szeretné használni, töltse ki a Server. SSL. Key tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) eszköz segédprogramját.
+> - `Enter_the_Client_Secret_Here`- az **ügyféltitok,** amelyet a **tanúsítványokban & titokban** hozott létre a regisztrált alkalmazáshoz.
+> - `Enter_the_Tenant_Info_Here`- a regisztrált alkalmazás **címtár-azonosítóértéke.**
+> 1. A https és a localhost használatához töltse ki a server.ssl.key tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) kulcseszköz segédprogramot.
 >
 >  ```
 >   Example:
@@ -131,43 +131,43 @@ A minta futtatásához a következőkre lesz szüksége:
 >   server.ssl.key-store-password=password  
 >   server.ssl.key-alias=testCert
 >   ```
->   Helyezze a generált rendszertároló fájlt a "Resources" (erőforrások) mappába.
+>   Helyezze a létrehozott keystore fájlt az "erőforrások" mappába.
 
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-run-the-code-sample"></a>3\. lépés: a kód mintájának futtatása
+> #### <a name="step-3-run-the-code-sample"></a>3. lépés: A kódminta futtatása
 > [!div renderon="docs"]
-> #### <a name="step-4-run-the-code-sample"></a>4\. lépés: a kód mintájának futtatása
+> #### <a name="step-4-run-the-code-sample"></a>4. lépés: A kódminta futtatása
 
-A projekt futtatásához a következők közül választhat:
+A projekt futtatásához a következőket teheti:
 
-Futtassa közvetlenül az IDE-ből a beágyazott rugós rendszerindítási kiszolgáló használatával, vagy csomagolja ki egy háborús fájlba a [Maven](https://maven.apache.org/plugins/maven-war-plugin/usage.html) használatával, és telepítse azt egy J2EE-tároló megoldásba, például az [Apache Tomcat](http://tomcat.apache.org/)-be.
+Futtassa közvetlenül az IDE segítségével a beágyazott tavaszi boot szerver vagy a csomag, hogy egy WAR fájlt [maven](https://maven.apache.org/plugins/maven-war-plugin/usage.html) és telepíteni egy J2EE konténer megoldás, mint az [Apache Tomcat](http://tomcat.apache.org/).
 
-##### <a name="running-from-ide"></a>Futtatás IDE-ből
+##### <a name="running-from-ide"></a>Futás IDE-ről
 
-Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keresse meg a projekt kezdőlapját. Ehhez a mintához a szabványos Kezdőlap URL-címe https://localhost:8080.
+Ha a webalkalmazást IDE-ből futtatja, kattintson a futtatásra, majd keresse meg a projekt kezdőlapját. Ebben a példában a kezdőlap https://localhost:8080szokásos URL-címe .
 
-1. A kezdőlapon kattintson a **Bejelentkezés** gombra a Azure Active Directory átirányításához, és kérje meg a felhasználót a hitelesítő adataik megadására.
+1. A főoldalon válassza a **Bejelentkezés** gombot az Azure Active Directoryra való átirányításhoz, és kérje meg a felhasználónak a hitelesítő adatait.
 
-1. A felhasználó hitelesítése után a rendszer átirányítja *https://localhost:8080/msal4jsample/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
-    - *Kijelentkezés*: aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
-    - *Felhasználói információk megjelenítése*: jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
+1. A felhasználó hitelesítése után a rendszer *https://localhost:8080/msal4jsample/secure/aad*átirányítja őket a rendszerbe. Most már be vannak jelentkezve, és a lapon megjelennek a bejelentkezett fiókkal kapcsolatos információk. A minta felhasználói felülete a következő gombokkal rendelkezik:
+    - *Kijelentkezés:* Kijelentkezés: Kijelentkezteti az aktuális felhasználót az alkalmazásból, és átirányítja a kezdőlapra.
+    - *Felhasználói adatok megjelenítése*: Jogkivonat beszerzése a Microsoft Graph számára, és meghívja a Microsoft Graph-ot a jogkivonatot tartalmazó kéréssel, amely a bejelentkezett felhasználó alapvető adatait adja vissza.
 
 
    
 > [!IMPORTANT]
-> Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel a rendszer az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a projektfájlok számára, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatáról a [tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)című témakörben olvashat bővebben.
+> Ez a rövid útmutató alkalmazás egy ügyféltitkos kulcsot használ, hogy bizalmas ügyfélként azonosítsa magát. Mivel az ügyféltitkos kulcsot egyszerű szövegként adja hozzá a projektfájlokhoz, biztonsági okokból ajánlott az alkalmazás éles alkalmazásként való felhasználása előtt az ügyféltitok helyett tanúsítványt használni. A tanúsítványok használatáról a [Tanúsítványhitelesítő adatok az alkalmazás hitelesítéséhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)című témakörben talál további információt.
 
 ## <a name="more-information"></a>További információ
 
 ### <a name="how-the-sample-works"></a>A minta működése
-![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-java-webapp/java-quickstart.svg)
+![Megmutatja, hogyan működik az ez a rövid útmutató által létrehozott mintaalkalmazás](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-### <a name="getting-msal"></a>MSAL beolvasása
+### <a name="getting-msal"></a>Első MSAL
 
-A MSAL for Java (MSAL4J) a Microsoft Identity platform által védett API-hoz való hozzáféréshez használt Java-könyvtár.
+Az MSAL java (MSAL4J) a Felhasználók bejelentkezésére és a Microsoft identity Platform által védett API-k eléréséhez használt jogkivonatok igénylésére használt Java-könyvtár.
 
-Vegyen fel MSAL4J az alkalmazásba a Maven vagy a Gradle használatával a függőségek kezeléséhez azáltal, hogy az alkalmazás Pom. XML (Maven) vagy Build. Gradle (Gradle) fájljában módosítja a következő módosításokat.
+Adja hozzá az MSAL4J-t az alkalmazáshoz a Maven vagy a Gradle használatával a függőségek kezeléséhez az alkalmazás pom.xml (Maven) vagy build.gradle (Gradle) fájljának következő módosításával.
 
 ```XML
 <dependency>
@@ -183,27 +183,27 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása
 
-Vegyen fel egy hivatkozást a Java-MSAL a következő kód hozzáadásával a fájl elejére, ahol a MSAL4J fogja használni:
+Hivatkozás hozzáadása az MSAL for Java alkalmazáshoz a következő kód hozzáadásával a fájl tetejéhez, ahol az MSAL4J-t fogja használni:
 
 ```Java
 import com.microsoft.aad.msal4j.*;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az engedélyekről és a beleegyezik:
-
-> [!div class="nextstepaction"]
-> [Engedélyek és beleegyezik](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
-
-Ha többet szeretne megtudni a forgatókönyv hitelesítési folyamatáról, tekintse meg a OAuth 2,0 engedélyezési kód folyamatát:
+További információ az engedélyekről és a hozzájárulásról:
 
 > [!div class="nextstepaction"]
-> [Engedélyezési kód OAuth folyamata](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [Engedélyek és hozzájárulás](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
 
-Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+Ha többet szeretne tudni az ebben a forgatókönyvben szereplő hitelesítési folyamatról, olvassa el az Oauth 2.0 engedélyezési kód folyamatát:
 
 > [!div class="nextstepaction"]
-> [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Engedélyezési kód Oauth-folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+
+Segítsen nekünk a Microsoft identitásplatformjának fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdésű felmérés kitöltésével.
+
+> [!div class="nextstepaction"]
+> [Microsoft-identitásplatform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

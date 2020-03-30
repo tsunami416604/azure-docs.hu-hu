@@ -1,57 +1,57 @@
 ---
-title: Azure-beli virtuális gépek teljesítményének figyelése – Azure Application Insights
-description: Alkalmazások teljesítményének figyelése Azure-beli virtuális gépekhez és Azure-beli virtuálisgép-méretezési csoportokhoz. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
+title: Teljesítmény figyelése az Azure virtuális gépeken – Azure Application Insights
+description: Alkalmazásteljesítmény-figyelés az Azure Virtuálisgép és az Azure virtuálisgép-méretezési készletek. A diagram terhelési és válaszideje, a függőségi információk és a teljesítményre vonatkozó riasztások beállítása.
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661328"
 ---
-# <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>A Azure Monitor Application Insights-ügynök üzembe helyezése Azure-beli virtuális gépeken és Azure-beli virtuálisgép-méretezési csoportokban
+# <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Az Azure Monitor Application Insights Agent üzembe helyezése Azure-beli virtuális gépeken és Azure virtuálisgép-méretezési csoportokban
 
-Az [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) szolgáltatásban és az [Azure virtuálisgép-méretezési csoportokon](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) futó .NET-alapú webalkalmazások figyelésének engedélyezése mostantól minden eddiginél egyszerűbb. A kód módosítása nélkül érheti el a Application Insights használatának összes előnyét.
+Az [Azure virtuális gépeken](https://azure.microsoft.com/services/virtual-machines/) és [az Azure virtuálisgép-méretezési csoportjain](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) futó .NET alapú webalkalmazások figyelésének engedélyezése most minden eddiginél egyszerűbb. Az Application Insights használatának minden előnyét a kód módosítása nélkül is élvezheti.
 
-Ez a cikk bemutatja, hogyan engedélyezheti Application Insights monitorozását a Application Insights ügynökkel, és előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
+Ez a cikk bemutatja az Application Insights-figyelő kontise az Application Insights-ügynök használatával, és előzetes útmutatást nyújt a folyamat gyorsan a nagy méretű központi telepítések.
 
 > [!IMPORTANT]
-> A .NET-hez készült Azure Application Insights-ügynök jelenleg nyilvános előzetes verzióban érhető el.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. Előfordulhat, hogy egyes funkciók nem támogatottak, és egyes szolgáltatások korlátozott képességekkel rendelkeznek.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Application Insights Agent for .
+> Ez az előzetes verzió szolgáltatásszintű szerződés nélkül érhető el, és nem javasoljuk éles számítási feladatokhoz. Előfordulhat, hogy egyes szolgáltatások nem támogatottak, és néhány korlátozott képességgel rendelkezik.
+> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
-Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure Virtual Machines szolgáltatásban és az Azure-beli virtuálisgép-méretezési csoportokban üzemeltetett alkalmazások:
+Kétféleképpen engedélyezheti az alkalmazások figyelését az Azure virtuális gépeihez és az Azure virtuálisgép-méretezési készleteihez:
 
-* **Kódolás** Application Insights ügynökön keresztül
-    * Ez a módszer a legkönnyebben engedélyezhető, és nincs szükség speciális konfigurációra. Ezt gyakran "futtatókörnyezet"-figyelőnek nevezzük.
+* **Kódnélküli** az Application Insights-ügynökön keresztül
+    * Ez a módszer a legkönnyebben engedélyezve, és nincs szükség speciális konfigurációra. Gyakran nevezik "futásidejű" figyelés.
 
-    * Az Azure-beli virtuális gépek és az Azure virtuálisgép-méretezési csoportok esetében ajánlott minimálisan engedélyezni ezt a monitorozási szintet. Ezt követően az adott forgatókönyv alapján kiértékelheti, hogy szükség van-e a manuális rendszerállapotra.
+    * Az Azure virtuális gépek és az Azure virtuálisgép-méretezési készletek azt javasoljuk, hogy legalább ezt a felügyeleti szintet. Ezt követően, az adott forgatókönyv alapján, kiértékelheti, hogy manuális műszerezés re van szükség.
 
-    * A Application Insights ügynök automatikusan összegyűjti az azonos függőségi jeleket a .NET SDK-val. További információért lásd: [függőségek automatikus gyűjteménye](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) .
+    * Az Application Insights-ügynök automatikusan ugyanazokat a függőségi jeleket gyűjti a .NET SDK-val. További [információ: Függőség automatikus gyűjtése.](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net)
         > [!NOTE]
-        > Jelenleg csak a .NET IIS által üzemeltetett alkalmazások támogatottak. Az SDK-val egy Azure-beli virtuális gépeken és virtuálisgép-méretezési csoportokon üzemeltetett ASP.NET Core, Java és Node. js-alkalmazásokat használhat.
+        > Jelenleg csak a .Net IIS által üzemeltetett alkalmazások támogatottak. SDK használatával ASP.NET Core, Java és Node.js alkalmazások at egy Azure virtuális gépek és a virtuális gép méretezési csoportok.
 
-* SDK **-n alapuló kód**
+* **Kódalapú SDK-n** keresztül
 
-    * Ez a megközelítés sokkal testreszabható, de a [Application INSIGHTS SDK NuGet-csomagokhoz való függőség hozzáadását](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)igényli. Ez a módszer azt is jelenti, hogy a frissítéseket a csomagok legújabb verziójára kell kezelnie.
+    * Ez a megközelítés sokkal testreszabhatóbb, de az [Application Insights SDK NuGet-csomagoktól való függőség et](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)igényel. Ez a módszer azt is jelenti, hogy saját maga kell kezelnie a csomagok legújabb verziójának frissítéseit.
 
-    * Ha egyéni API-hívásokat kell megadnia az ügynök-alapú figyeléssel alapértelmezés szerint nem rögzített események/függőségek nyomon követéséhez, ezt a metódust kell használnia. További információért tekintse meg az [Egyéni események és mérőszámok API](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) -ját ismertető cikket.
-
-> [!NOTE]
-> Ha mind az ügynök-alapú figyelés, mind a manuális SDK-alapú rendszerállapotot észleli, a rendszer csak a manuális rendszerállapot-beállításokat veszi figyelembe. Ez megakadályozza az ismétlődő adatok küldését. Ha többet szeretne megtudni erről, tekintse meg az alábbi [hibaelhárítási szakaszt](#troubleshooting) .
-
-## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Azure-beli virtuális gépeken futó .NET-alkalmazások Application Insights ügynökének kezelése a PowerShell használatával
+    * Ha egyéni API-hívásokat kell kezdeményeznie az alapértelmezetten nem rögzített események/függőségek nyomon követéséhez az ügynökalapú figyeléssel, akkor ezt a módszert kell használnia. További információért tekintse meg az [EGYÉNI események és metrikák API-ját.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)
 
 > [!NOTE]
-> A Application Insights-ügynök telepítése előtt szüksége lesz egy kapcsolódó karakterláncra. [Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) , vagy másolja a kapcsolatok karakterláncát egy meglévő Application ininsight-erőforrásból.
+> Ha mind az ügynök alapú figyelés, mind a manuális SDK-alapú műszerezés csak a manuális műszerezési beállítások at észleli. Ezzel megakadályozhatja az ismétlődő adatok küldését. Ha többet szeretne megtudni erről, olvassa el az alábbi [hibaelhárítási szakaszt.](#troubleshooting)
+
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Application Insights-ügynök kezelése .NET-alkalmazásokhoz Azure-beli virtuális gépeken a PowerShell használatával
 
 > [!NOTE]
-> Újdonság a PowerShellben? Tekintse meg az [első lépéseket ismertető útmutatót](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0).
+> Az Application Insights-ügynök telepítése előtt szüksége lesz egy kapcsolati karakterláncra. [Hozzon létre egy új Application Insights-erőforrást,](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) vagy másolja a kapcsolati karakterláncot egy meglévő application insights-erőforrásból.
 
-A Application Insights-ügynök telepítése vagy frissítése Azure-beli virtuális gépekhez bővítményként
+> [!NOTE]
+> Még nem vagy itt? Tekintse meg az [Első lépések útmutatót.](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)
+
+Az Application Insights-ügynök telepítése vagy frissítése az Azure virtuális gépek bővítményeként
 ```powershell
 $publicCfgJsonString = '
 {
@@ -77,19 +77,19 @@ Set-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" 
 ```
 
 > [!NOTE]
-> A Application Insights-ügynököt telepítheti vagy frissítheti kiterjesztésként több Virtual Machines, egy PowerShell-hurok használatával.
+> Az Application Insights-ügynök egy bővítmény ként több virtuális gépek egy Powershell-ciklus használatával telepítheti vagy frissítheti az Application Insights Agent bővítményként.
 
-Application Insights ügynök bővítmény eltávolítása az Azure-beli virtuális gépről
+Az Application Insights Ügynök bővítmény eltávolítása az Azure virtuális gépről
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name "ApplicationMonitoring"
 ```
 
-Lekérdezés Application Insights ügynök bővítményének állapota az Azure-beli virtuális gépen
+A Query Application Insights Ügynök bővítményének állapota az Azure virtuális géphez
 ```powershell
 Get-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name ApplicationMonitoring -Status
 ```
 
-Az Azure-beli virtuális géphez telepített bővítmények listájának beolvasása
+Az Azure virtuális gép telepített bővítményeinek listájának beszereznie
 ```powershell
 Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions"
 
@@ -99,14 +99,14 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-A telepített bővítmények a portál Azure-beli [virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) paneljén is megtekinthetők.
+A telepített bővítményeket az [Azure virtuálisgép-panelen](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) is megtekintheti a portálon.
 
 > [!NOTE]
-> A telepítés ellenőrzéséhez kattintson a Élő metrikastream elemre az Application Insights-ügynök bővítményének telepítéséhez használt kapcsolódási karakterlánchoz tartozó Application Insights erőforráson belül. Ha több Virtual Machinesról küld adatokat, válassza ki a cél Azure-beli virtuális gépeket a kiszolgáló neve alatt. Az adatforgalom megkezdése akár egy percet is igénybe vehet.
+> A telepítés takarásban való ellenőrzésével ellenőrizze az Alkalmazáselemzési ügynökbővítmény üzembe helyezéséhez használt kapcsolati karakterlánchoz társított Application Insights Erőforrás-erőforrás élő metrikák streamre való kattintással. Ha több virtuális gépről küld adatokat, válassza ki a cél Azure virtuális gépek a Kiszolgáló neve csoportban. Az adatok áramlásának megkezdése akár egy percet is igénybe vehet.
 
-## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>.NET-alkalmazások Application Insights ügynökének kezelése Azure-beli virtuálisgép-méretezési csoportokkal a PowerShell használatával
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>Application Insights-ügynök kezelése .NET-alkalmazásokhoz az Azure virtuálisgép-méretezési csoportjain a PowerShell használatával
 
-A Application Insights-ügynök telepítése vagy frissítése Azure-beli virtuálisgép-méretezési csoport kiterjesztéseként
+Az Application Insights-ügynök telepítése vagy frissítése az Azure virtuálisgép-méretezési készletbővítményeként
 ```powershell
 $publicCfgHashtable =
 @{
@@ -136,7 +136,7 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-Alkalmazás-figyelési bővítmény eltávolítása az Azure virtuálisgép-méretezési csoportokból
+Alkalmazásfigyelési bővítmény eltávolítása az Azure virtuálisgép-méretezési készleteiből
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName "<myResourceGroup>" -VMScaleSetName "<myVmssName>"
 
@@ -147,12 +147,12 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-Alkalmazás-figyelési bővítmény állapotának lekérdezése Azure-beli virtuálisgép-méretezési csoportokhoz
+Lekérdezési alkalmazásfigyelési bővítmény állapota az Azure virtuálisgép-méretezési készleteihez
 ```powershell
 # Not supported by extensions framework
 ```
 
-Azure-beli virtuálisgép-méretezési csoportokhoz tartozó telepített bővítmények listájának beolvasása
+Az Azure virtuálisgép-méretezési készleteinek telepített bővítményeinek listájának beszereznie
 ```powershell
 Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions
 
@@ -163,18 +163,18 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions/ApplicationMonitoringWindows
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-Hibaelhárítási tippek az Azure-beli virtuális gépeken és virtuálisgép-méretezési csoportokon futó .NET-alkalmazások Application Insights monitorozási ügynökének bővítményéhez.
+Hibaelhárítási tippek az Application Insights Monitoring Agent Extension for . NET-alkalmazások hoz, amelyek Azure virtuális gépeken és virtuálisgép-méretezési csoportokon futnak.
 
 > [!NOTE]
-> A .NET Core, a Java és a Node. js alkalmazások csak az Azure Virtual Machines és az Azure virtuálisgép-méretezési csoportok esetében támogatottak a manuális SDK-alapú rendszerállapotok használatával, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
+> A .NET Core, a Java és a Node.js alkalmazások csak az Azure virtuális gépeken és az Azure virtuálisgép-méretezési csoportokon keresztül támogatottak manuális SDK-alapú instrumentation-en keresztül, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
 
-A bővítmény-végrehajtás kimenete a következő címtárakban található fájlokra van naplózva:
+A bővítmény-végrehajtási kimenet a következő könyvtárakban található fájlokba kerül:
 ```Windows
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* Ismerje meg, hogyan [helyezhet üzembe egy alkalmazást egy Azure-beli virtuálisgép-méretezési csoporton](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md).
-* [Állítsa be a rendelkezésre állási webes tesztek](monitor-web-app-availability.md) riasztását, ha a végpont le van állítva.
+## <a name="next-steps"></a>További lépések
+* Ismerje meg, hogyan [helyezhet üzembe egy alkalmazást egy Azure virtuálisgép-méretezési csoportba.](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)
+* [Állítsa be a rendelkezésre állási webes teszteket,](monitor-web-app-availability.md) hogy riasztást kapjon, ha a végpont nem érhető el.

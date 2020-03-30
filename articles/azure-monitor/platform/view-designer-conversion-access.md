@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor tervező átalakítása munkafüzetekbe konverzió összegzése és elérése
+title: Az Azure Monitor nézet tervezője a munkafüzetek konverziós összegzéséhez és eléréséhez
 description: ''
 author: austonli
 ms.author: aul
@@ -7,44 +7,44 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658846"
 ---
-# <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Tervező megtekintése a munkafüzetek átalakításának összegzéséhez és eléréséhez
-A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan kiváltja és lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk részletesen ismerteti, hogyan hozhat létre áttekintés-összefoglalást és a munkafüzetek eléréséhez szükséges engedélyeket.
+# <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>A tervező és a munkafüzetek konverziós összegzésének és elérésének megtekintése
+[A View designer](view-designer.md) az Azure Monitor egyik szolgáltatása, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti az adatokat a Log Analytics-munkaterületen, diagramokkal, listákkal és ütemtervekkel. Ezeket fokozatosan megszüntetik, és munkafüzetekre cserélik, amelyek további funkciókat biztosítanak. Ez a cikk bemutatja, hogyan hozhat létre áttekintést és a munkafüzetek eléréséhez szükséges engedélyeket.
 
-## <a name="creating-your-workspace-summary-from-azure-dashboard"></a>A munkaterület összefoglalásának létrehozása az Azure irányítópultról
-A tervező felhasználók megtekinthetik, hogy az áttekintő csempék nézeteket képviselnek-e. A vizualizációk áttekintéséhez, például a Designer-munkaterület összefoglalásához, a munkafüzetek rögzített lépéseket biztosítanak, amelyek rögzíthető a [Azure Portal irányítópultján](../../azure-portal/azure-portal-dashboards.md). Akárcsak az Áttekintés csempék a munkaterület összefoglalásakor, a rögzített munkafüzet-elemek közvetlenül a munkafüzet nézethez fognak hivatkozni.
+## <a name="creating-your-workspace-summary-from-azure-dashboard"></a>A munkaterület összegzésének létrehozása az Azure Irányítópultról
+Előfordulhat, hogy a tervezői felhasználók ismerik a nézetek egy készletének ábrázolására létrehozott áttekintő csempével. A vizuális áttekintés, például a nézettervezői munkaterület összegzése érdekében a munkafüzetek rögzített lépéseket kínálnak, amelyek rögzíthetők az [Azure Portal irányítópultján.](../../azure-portal/azure-portal-dashboards.md) A Munkaterület összegzése című témaköráttekintő csempékhez hasonlóan a rögzített munkafüzetelemek is közvetlenül a munkafüzet nézetre hivatkoznak.
 
-Kihasználhatja az Azure-irányítópultok magas szintű testreszabási funkcióinak előnyeit, amelyek lehetővé teszik a rögzített elemek és vizualizációk automatikus frissítését, áthelyezését, méretezését és további szűrését. 
+Kihasználhatja az Azure irányítópultjaihoz tartozó magas szintű testreszabási funkciókat, amelyek lehetővé teszik az automatikus frissítést, a áthelyezést, a méretezést és a rögzített elemek és vizualizációk további szűrését. 
 
 ![Irányítópult](media/view-designer-conversion-access/dashboard.png)
 
 Hozzon létre egy új Azure-irányítópultot, vagy válasszon ki egy meglévő irányítópultot a munkafüzet-elemek rögzítésének megkezdéséhez.
 
-Az egyes elemek rögzítéséhez engedélyeznie kell a PIN-kód ikont az adott lépéshez. Ehhez válassza ki a lépéshez tartozó **Szerkesztés** gombot, majd válassza a fogaskerék ikont a **Speciális beállítások**megnyitásához. Győződjön meg arról, hogy a **lépéshez mindig megjelenjen a rögzítés ikon**, és a lépés jobb felső sarkában megjelenik egy PIN-ikon. Ez a PIN-kód lehetővé teszi adott vizualizációk rögzítését az irányítópulton, például az áttekintő csempéket.
+Az egyes elemek rögzítéséhez engedélyeznie kell az adott lépés pin ikonját. Ehhez válassza ki a **lépéshez** tartozó Szerkesztés gombot, majd a fogaskerék ikont a **Speciális beállítások**megnyitásához. Jelölje be a Beállításlehetőséget, hogy **mindig megjelenjen a pin ikon ezen a lépésen,** és egy pin ikon jelenik meg a lépés jobb felső sarkában. Ez a pin lehetővé teszi, hogy adott vizualizációkat rögzítsen az irányítópulton, például az áttekintő csempékre.
 
-![Rögzítési lépés](media/view-designer-conversion-access/pin-step.png)
+![Pin lépés](media/view-designer-conversion-access/pin-step.png)
 
 
-A munkafüzetből vagy a munkafüzet teljes tartalmából is rögzíthet több vizualizációt az irányítópulton. A teljes munkafüzet rögzítéséhez válassza a **Szerkesztés** lehetőséget a felső eszköztáron a **szerkesztési mód**váltásához. Ekkor megjelenik egy PIN-kód ikon, amely lehetővé teszi, hogy rögzítse a munkafüzet teljes elemét vagy az összes egyéni lépést és vizualizációt.
+A munkafüzetből vagy a munkafüzet teljes tartalmából több vizualizációt is rögzíthet egy irányítópulton. A teljes munkafüzet rögzítéséhez a felső eszköztár **Szerkesztés gombjára** kattintva kapcsolja be a **Szerkesztési módot**. Megjelenik egy pin ikon, amely lehetővé teszi a teljes munkafüzetelem, illetve a munkafüzet ben lévő összes egyes lépés és vizualizáció rögzítését.
 
-![Összes rögzítése](media/view-designer-conversion-access/pin-all.png)
+![Az összes rögzítése](media/view-designer-conversion-access/pin-all.png)
 
 
 
 ## <a name="sharing-and-viewing-permissions"></a>Engedélyek megosztása és megtekintése 
-A munkafüzetek előnye, hogy magán-vagy közös dokumentumok. Alapértelmezés szerint a mentett munkafüzetek a **saját jelentések**alatt lesznek mentve, ami azt jelenti, hogy csak a létrehozó tekintheti meg ezt a munkafüzetet.
+A munkafüzetek előnye, hogy magánjellegűek vagy megosztott dokumentumok. Alapértelmezés szerint a mentett munkafüzetek a **Saját jelentések**csoportban kerülnek mentésre, ami azt jelenti, hogy csak a készítő tekintheti meg ezt a munkafüzetet.
 
-A munkafüzetek megosztásához válassza a felső eszköztár **megosztás** ikonját **szerkesztési módban**. A rendszer arra kéri, hogy helyezze át a munkafüzetet a **megosztott jelentésekre**, ami egy olyan hivatkozást fog eredményezni, amely közvetlen hozzáférést biztosít a munkafüzethez.
+A munkafüzeteket úgy oszthatja meg, hogy a felső eszköztár **Megosztás** ikonját **választja a Szerkesztés idomában**. A program kéri, hogy helyezze át a munkafüzetet a **Megosztott jelentések**mappába, amely olyan hivatkozást hoz létre, amely közvetlen hozzáférést biztosít a munkafüzethez.
 
-Ahhoz, hogy egy felhasználó megtekinthesse a megosztott munkafüzeteket, hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez és erőforráscsoporthoz, amelybe a munkafüzetet menti.
+Ahhoz, hogy a felhasználó megtekinthessen egy közös munkafüzetet, hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez és erőforráscsoporthoz, amely alatt a munkafüzet et menti.
 
 ![Előfizetés-alapú hozzáférés](media/view-designer-conversion-access/subscription-access.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyakori feladatok](view-designer-conversion-tasks.md)

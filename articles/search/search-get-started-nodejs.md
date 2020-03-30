@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: keresési index létrehozása a Node. js-ben REST API-k használatával'
+title: 'Rövid útmutató: Keresési index létrehozása a Node.js-ben a REST API-k használatával'
 titleSuffix: Azure Cognitive Search
-description: Ebben a Node. js-útmutatóban megtudhatja, hogyan hozhat létre indexet, tölthet be és hogyan futtathat lekérdezéseket az Azure Cognitive Search a JavaScript és a REST API-k használatával.
+description: Ebben a Node.js rövid útmutatóban megtudhatja, hogyan hozhat létre indexet, tölthet be adatokat, és futtathat lekérdezéseket az Azure Cognitive Search-en JavaScript és a REST API-k használatával.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -10,80 +10,80 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77623997"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Node. js-ben REST API-k használatával
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Rövid útmutató: Hozzon létre egy Azure Cognitive Search indexet a Node.js-ben a REST API-k használatával
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
-> * [C#](search-get-started-dotnet.md)
-> * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [Javascript](search-get-started-nodejs.md)
+> * [C #](search-get-started-dotnet.md)
+> * [Portál](search-get-started-portal.md)
+> * [Powershell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Hozzon létre egy Node. js-alkalmazást, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le. Ez a cikk bemutatja, hogyan hozhatja létre az alkalmazást lépésről lépésre. Azt is megteheti, hogy [letölti a forráskódot és](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) az adatforrást, és futtatja az alkalmazást a parancssorból.
+Hozzon létre egy Node.js alkalmazást, amely létrehoz, betölt és lekérdezi az Azure Cognitive Search indexét. Ez a cikk bemutatja, hogyan hozhat létre az alkalmazást lépésről-lépésre. Másik lehetőségként [letöltheti a forráskódot és az adatokat,](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) és futtathatja az alkalmazást a parancssorból.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató összeállításához és teszteléséhez a következő szoftvereket és szolgáltatásokat használtuk:
+A következő szoftvereket és szolgáltatásokat használtuk a rövid útmutató létrehozásához és teszteléséhez:
 
 + [Node.js](https://nodejs.org)
 
-+ A [NPM](https://www.npmjs.com) a Node. js-ben kell telepíteni
++ [Az NPM-et](https://www.npmjs.com) a Node.js-nek kell telepítenie
 
-+ Ebben a cikkben a minta index struktúrája és a megfelelő dokumentumok szerepelnek, vagy a tárház [ **Gyorsindítás** könyvtárából](https://github.com/Azure-Samples/azure-search-javascript-samples/)
++ A cikk ben vagy a [tártár **rövid útmutatókönyvtárából** mintaindex-struktúra és egyező dokumentumok találhatók.](https://github.com/Azure-Samples/azure-search-javascript-samples/)
 
-+ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást,](search-create-service-portal.md) vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. A rövid útmutatóhoz ingyenes szolgáltatást használhat.
 
 Ajánlott:
 
-* [Visual Studio Code](https://code.visualstudio.com)
+* [Visual Studio kód](https://code.visualstudio.com)
 
-* A VSCode [szebb](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) és [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) bővítményei.
+* [Szebb](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) és [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) kiterjesztések a VSCode-hoz.
 
 <a name="get-service-info"></a>
 
-## <a name="get-keys-and-urls"></a>Kulcsok és URL-címek lekérése
+## <a name="get-keys-and-urls"></a>Kulcsok és URL-címek beszerezni
 
-A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési kulcsot igényelnek minden kérelemben. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+A szolgáltatás hívásai minden kéréshez url-végpontot és hozzáférési kulcsot igényelnek. A keresési szolgáltatás mindkettővel jön létre, így ha hozzáadta az Azure Cognitive Search-et az előfizetéséhez, kövesse az alábbi lépéseket a szükséges információk beszerezéséhez:
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL-címe `https://mydemo.search.windows.net`volt, a szolgáltatás neve `mydemo`.
+1. [Jelentkezzen be az Azure Portalra](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont `https://mydemo.search.windows.net`URL-címe lenne, `mydemo`a szolgáltatás neve a .
 
-2. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **Beállítások** > **kulcsok**párbeszédpanelen szerezzen be egy rendszergazdai kulcsot a szolgáltatás teljes jogához. Két cserélhető rendszergazdai kulcs van, amelyek az üzletmenet folytonosságát biztosítják arra az esetre, ha át kell görgetnie egyet. Az elsődleges vagy másodlagos kulcsot objektumok hozzáadására, módosítására és törlésére irányuló kérelmeken használhatja.
 
-    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
+    A lekérdezési kulcs beszerezése is. Ajánlott csak olvasási hozzáféréssel rendelkező lekérdezési kérelmeket kiadni.
 
-![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
+![A szolgáltatás névének, a rendszergazdai és lekérdezési kulcsoknak a beszereznie](media/search-get-started-nodejs/service-name-and-keys.png)
 
-Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kérelem fejlécében. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
+Minden kérelemhez api-kulcs szükséges a szolgáltatásnak küldött minden kérés fejlécében. Az érvényes kulcs kérésenként megbízhatóságot hoz létre a kérelmet küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="set-up-your-environment"></a>A környezet kialakítása
 
-Először nyisson meg egy PowerShell-konzolt vagy más környezetet, amelyben telepítette a Node. js-t.
+Először nyisson meg egy Powershell-konzolt vagy más olyan környezetet, amelyben telepítette a Node.js-t.
 
-1. Hozzon létre egy fejlesztői könyvtárat, amely a `quickstart` nevet adja meg:
+1. Hozzon létre egy fejlesztési `quickstart` könyvtárat, amely a következő nevet adja neki:
 
     ```powershell
     mkdir quickstart
     cd quickstart
     ```
 
-2. `npm init`futtatásával inicializáljon egy üres projektet a NPM. Fogadja el az alapértelmezett értékeket, kivéve a licencet, amelyet a "MIT" értékre kell beállítani. 
+2. Üres projekt inicializálása `npm init`az NPM programmal a futtással. Fogadja el az alapértelmezett értékeket, kivéve a Licencet, amelyet "MIT" értékre kell állítania. 
 
-1. Adja hozzá azokat a csomagokat, amelyeket a kód és a fejlesztéshez nyújtott támogatás is függ:
+1. Add csomagok, amelyek függ a kód és a támogatás a fejlesztés:
 
     ```powershell
     npm install nconf node-fetch
     npm install --save-dev eslint eslint-config-prettier eslint-config-airbnb-base eslint-plugin-import prettier
     ```
 
-4. Győződjön meg arról, hogy konfigurálta a projekteket és annak függőségeit, és ellenőrizze, hogy a **Package. JSON** fájl a következőhöz hasonlóan néz ki:
+4. Ellenőrizze, hogy konfigurálta-e a projekteket és annak függőségeit, ellenőrizve, hogy a **package.json** fájl hasonló-e a következőhöz:
 
     ```json
     {
@@ -114,7 +114,7 @@ Először nyisson meg egy PowerShell-konzolt vagy más környezetet, amelyben te
     }
     ```
 
-5. Hozzon létre egy **azure_search_config. JSON** fájlt a keresési szolgáltatás adatai tárolásához:
+5. Hozzon létre egy fájlt **azure_search_config.json** fájllal a keresési szolgáltatás adatainak tárolására:
 
     ```json
     {
@@ -125,13 +125,13 @@ Először nyisson meg egy PowerShell-konzolt vagy más környezetet, amelyben te
     }
     ```
 
-Cserélje le a `[SERVICE_NAME]` értéket a keresési szolgáltatás nevére. Cserélje le a `[ADMIN_KEY]` és a `[QUERY_KEY]` értéket a korábban feljegyzett kulcsokra. 
+Cserélje `[SERVICE_NAME]` le az értéket a keresési szolgáltatás nevére. Cserélje `[ADMIN_KEY]` `[QUERY_KEY]` le és helyezze vissza a korábban rögzített kulcsértékeket. 
 
-## <a name="1---create-index"></a>1 – index létrehozása 
+## <a name="1---create-index"></a>1 - Index létrehozása 
 
-Hozzon létre egy fájlt **hotels_quickstart_index. JSON**fájlban.  Ez a fájl határozza meg, hogyan működik az Azure Cognitive Search a következő lépésben betöltés alatt álló dokumentumokkal. Minden mezőt egy `name` azonosít, és egy megadott `type`rendelkezik. Az egyes mezőkben index attribútumok is megadhatók, amelyek meghatározzák, hogy az Azure Cognitive Search kereshet, szűrhető, rendezhető és kategorizálható a mező alapján. A mezők többsége egyszerű adattípusú, néhány például a `AddressType` összetett típus, amely lehetővé teszi, hogy az indexben gazdag adatstruktúrákat hozzon létre.  További információt a [támogatott adattípusokról](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) és az [index attribútumairól](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)itt olvashat. 
+Fájl létrehozása **hotels_quickstart_index.json fájlhoz.**  Ez a fájl határozza meg, hogyan működik az Azure Cognitive Search a következő lépésben betöltendő dokumentumokkal. Minden mezőt egy `name` azonosít, és `type`rendelkezik egy megadott . Minden mező indexattribútumok sorozatával is rendelkezik, amelyek meghatározzák, hogy az Azure Cognitive Search kereshet-e, szűrhet, rendezhet és a mezőt. A legtöbb mező egyszerű adattípus, de `AddressType` néhány, például összetett típusok, amelyek lehetővé teszik, hogy gazdag adatstruktúrákat hozzon létre az indexben.  A [támogatott adattípusokról](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) és [indexattribútumokról](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)olvashat bővebben. 
 
-Adja hozzá a következőt a **hotels_quickstart_index. JSON** [fájlhoz, vagy töltse le a fájlt](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
+Adja hozzá a következőket **a hotels_quickstart_index.json** fájlhoz, vagy [töltse le a fájlt.](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json) 
 
 ```json
 {
@@ -266,9 +266,9 @@ Adja hozzá a következőt a **hotels_quickstart_index. JSON** [fájlhoz, vagy t
 ```
     
 
-Célszerű elkülöníteni egy adott forgatókönyv sajátosságait a széles körben alkalmazandó kódból. A **AzureSearchClient. js** fájlban definiált `AzureSearchClient` osztály tudni fogja, hogyan kell létrehozni a kérelem URL-címeit, a beolvasás API használatával kérelmet készíteni, és reagálni a válasz állapotkódot.
+Célszerű elkülöníteni egy adott forgatókönyv sajátosságait a kódtól, amely tágan alkalmazható lesz. Az `AzureSearchClient` **AzureSearchClient.js** fájlban definiált osztály tudni fogja, hogyan hozhat létre kérési URL-címeket, hogyan kérhet kérelmet a Fetch API használatával, és reagál a válasz állapotkódjára.
 
-Kezdjen el dolgozni a **AzureSearchClient. js** -ben a **Node-Fetch** csomag importálásával és egy egyszerű osztály létrehozásával. Különítse el a `AzureSearchClient` osztály cserélhető részeit úgy, hogy átadja a konstruktornak a különböző konfigurációs értékeket:
+Kezdje nőbb az **AzureSearchClient.js** fájlon a **csomópontlehívási** csomag importálásával és egy egyszerű osztály létrehozásával. Az osztály cserélhető részeinek elkülönítése a `AzureSearchClient` konstruktornak átadva a különböző konfigurációs értékeket:
 
 ```javascript
 const fetch = require('node-fetch');
@@ -289,16 +289,16 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Az osztály első feladata, hogy megtudja, hogyan hozhat létre olyan URL-címeket, amelyekhez a különböző kéréseket küldeni szeretné. Ezeket az URL-címeket olyan példány-metódusokkal hozza létre, amelyek az osztály konstruktorának átadott konfigurációs adathalmazt használják. Figyelje meg, hogy az általuk létrehozott URL-cím egy API-verzióra vonatkozik, és rendelkeznie kell egy olyan argumentummal, amely megadja az adott verziót (ebben az alkalmazásban `2019-05-06`). 
+Az osztály első feladata, hogy tudja, hogyan kell létrehozni URL-eket, amelyekre a különböző kéréseket küldeni lehet. Ezeket az URL-címeket olyan példánymetódusokkal hozhatja létre, amelyek az osztálykonstruktornak átadott konfigurációs adatokat használják. Figyelje meg, hogy az általuk készített URL-cím egy API-verzióra `2019-05-06`jellemző, és rendelkeznie kell egy argumentumkal, amely megadja az adott verziót (ebben az alkalmazásban). 
 
-Az első ilyen módszer az index URL-címét fogja visszaadni. Adja hozzá a következő metódust az osztály törzsében:
+Az első ilyen módszer adja vissza az index URL-címét is. Adja hozzá a következő módszert az osztálytörzsbe:
 
 ```javascript
 getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
 
 ```
 
-`AzureSearchClient` következő feladata aszinkron kérelmet készít a beolvasási API-val. Az aszinkron statikus metódus `request` egy URL-címet, egy karakterláncot, amely megadja a HTTP-metódust ("GET", "PUT", "POST", "DELETE"), a kérelemben használandó kulcsot, valamint egy opcionális JSON-objektumot. A `headers` változó leképezi a `queryKey` (akár a rendszergazdai kulcsot, akár az írásvédett lekérdezési kulcsot) az "API-Key" HTTP-kérelem fejlécére. A kérések beállításai mindig tartalmazzák a használni kívánt `method` és a `headers`. Ha `bodyJson` nem `null`, a HTTP-kérelem törzse `bodyJson`karakterlánc-ábrázolására van beállítva. A `request` metódus a beolvasás API meghívását adja vissza a HTTP-kérelem végrehajtásához.
+A következő `AzureSearchClient` feladata, hogy egy aszinkron kérelmet a Fetch API-t. Az aszinkron statikus metódus `request` egy URL-t, egy HTTP metódust meghatározó karakterláncot ("GET", "PUT", "POST", "DELETE"), a kérelemben használandó kulcsot és egy választható JSON-objektumot vesz fel. A `headers` változó `queryKey` leképezi a (akár a felügyeleti kulcs, akár az írásvédett lekérdezési kulcs) az "api-key" HTTP-kérelem fejlécéhez. A kérelem beállításai `method` mindig tartalmazzák `headers`a használandó és a . Ha `bodyJson` `null`nem, akkor a HTTP-kérelem törzse a `bodyJson`karakterlánc-ábrázolásra van állítva. A `request` metódus visszaadja a Fetch API a HTTP-kérelem végrehajtására vonatkozó ígéretét.
 
 ```javascript
 static async request(url, method, apiKey, bodyJson = null) {
@@ -330,7 +330,7 @@ static async request(url, method, apiKey, bodyJson = null) {
 }
 ```
 
-Bemutató céljára csak akkor dobjon kivételt, ha a HTTP-kérelem nem sikeres. Egy valós alkalmazásban valószínűleg elvégezheti a HTTP-állapotkód naplózását és diagnosztizálását a `response` a keresési szolgáltatási kérelemben. 
+A demo célokra, csak dobjon kivételt, ha a HTTP-kérelem nem sikeres. Egy valós alkalmazás, akkor valószínűleg néhány naplózási és diagnosztikai `response` a HTTP-állapotkód a keresési szolgáltatás kérelmet. 
     
 ```javascript
 static throwOnHttpError(response) {
@@ -342,13 +342,13 @@ static throwOnHttpError(response) {
 }
 ```
 
-Végül adja hozzá a metódusokat az Azure Cognitive Search index észleléséhez, törléséhez és létrehozásához. Ezek a metódusok mind ugyanazzal a struktúrával rendelkeznek:
+Végül adja hozzá az Azure Cognitive Search index észlelési, törlési és létrehozási módszereit. Ezek a módszerek mind ugyanazt a struktúrát:
 
-* Szerezze be azt a végpontot, amelyhez a kérést el szeretné végezni.
-* A kérést a megfelelő végponttal, HTTP-művelettel, API-kulccsal, és ha szükséges, egy JSON-törzstel kell előállítani. `indexExistsAsync()` és `deleteIndexAsync()` nem rendelkezik JSON-törzstel, de `createIndexAsync(definition)`.
-* `await` a kérelemre adott válasz.  
-* A válasz állapotkód alapján járjon el.
-* Egy megfelelő érték (logikai, `this`vagy lekérdezési eredmények) ígéretének visszaadása. 
+* A végpont bekérése, amelyre a kérelem kerül sor.
+* A kérelem létrehozása a megfelelő végpont, HTTP-művelet, API-kulcs, és adott esetben egy JSON-törzs. `indexExistsAsync()`és `deleteIndexAsync()` nincs JSON szervezet, `createIndexAsync(definition)` de nem.
+* `await`a kérésre adott választ.  
+* Cselekedjen a válasz állapotkódján.
+* Visszaad egy megfelelő értékű ígéretet `this`(logikai értéket vagy a lekérdezés eredményét). 
 
 ```javascript
 async indexExistsAsync() { 
@@ -377,7 +377,7 @@ async createIndexAsync(definition) {
 }
 ```
 
-Győződjön meg arról, hogy a metódusok az osztályban belül vannak, és hogy az osztályt exportálja. A **AzureSearchClient. js** legkülső hatókörének a következőket kell tartalmaznia:
+Ellenőrizze, hogy a metódusok az osztályon belül vannak-e, és hogy exportálja-e az osztályt. Az **AzureSearchClient.js** legkülső hatókörének a következőnek kell lennie:
 
 ```javascript
 const fetch = require('node-fetch');
@@ -389,12 +389,12 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Egy objektumorientált osztály jó választás volt az esetlegesen újrafelhasználható **AzureSearchClient. js** -modulhoz, de a főprogramhoz nem szükséges, amelyet az **index. js**nevű fájlba kell helyezni. 
+Az objektumorientált osztály jó választás volt a potenciálisan újrafelhasználható **AzureSearchClient.js** modulhoz, de nem szükséges a fő programhoz, amelyet **egy index.js**nevű fájlba kell helyezni. 
 
-Hozza létre az **index. js fájlt** , és kezdje a következőket:
+Hozzon létre **index.js,** és kezdjük azzal, hogy az:
 
-* A **NConf** csomag, amely rugalmasságot biztosít a JSON-, környezeti változók vagy parancssori argumentumok konfigurációjának megadásához.
-* A **hotels_quickstart_index. JSON** fájlból származó adatok.
+* Az **nconf** csomag, amely rugalmasságot biztosít a JSON, a környezeti változók vagy a parancssori argumentumok konfigurációjának megadásához.
+* A **hotels_quickstart_index.json** fájlból származó adatok.
 * Az `AzureSearchClient` modult.
 
 ```javascript
@@ -404,7 +404,7 @@ const indexDefinition = require('./hotels_quickstart_index.json');
 const AzureSearchClient = require('./AzureSearchClient.js');
 ```
 
-A [ **NConf** csomag](https://github.com/indexzero/nconf) lehetővé teszi, hogy különböző formátumokban (például környezeti változókban vagy a parancssorban) megadhatja a konfigurációs adatmennyiséget. Ez a példa alapszintű **NConf** használ a **azure_search_config. JSON** fájl olvasásához és a fájl tartalmának szótárként való visszaküldéséhez. A **nconf**`get(key)` funkciójának használatával gyorsan megtekintheti, hogy a konfigurációs adatok megfelelően vannak-e testreszabva. Végül a függvény a konfigurációt adja vissza:
+Az [ **nconf** csomag](https://github.com/indexzero/nconf) lehetővé teszi a konfigurációs adatok megadását különböző formátumokban, például környezeti változókban vagy a parancssorban. Ez a minta az **nconf-ot** alapmódon használja a **azure_search_config.json** fájl olvasásához és a fájl tartalmának szótárként való visszaküldéséhez. Az **nconf** `get(key)` függvény használatával gyorsan ellenőrizheti, hogy a konfigurációs adatok megfelelően testre lettek-e szabva. Végül a függvény a konfigurációt adja vissza:
 
 ```javascript
 function getAzureConfiguration() {
@@ -416,7 +416,7 @@ function getAzureConfiguration() {
 }
 ```
 
-A `sleep` függvény egy olyan `Promise` hoz létre, amely a megadott idő után oldódik fel. A függvény használata lehetővé teszi, hogy az alkalmazás szüneteltethető legyen, miközben várakozik az aszinkron indexelési műveletek befejezésére, és elérhetővé válik. Ilyen késleltetés hozzáadására általában csak a demók, tesztek és példák esetében van szükség.
+A `sleep` függvény `Promise` létrehoz egy olyan függvényt, amely egy megadott idő elteltével feloldódik. Ezzel a funkcióval az alkalmazás szüneteltetheti az aszinkron indexműveletek befejezését és elérhetővé válását. Ilyen késleltetés hozzáadása általában csak demók, tesztek és mintaalkalmazások esetén szükséges.
 
 ```javascript
 function sleep(ms) {
@@ -428,12 +428,12 @@ function sleep(ms) {
 }
 ```
 
-Végül a fő aszinkron `run` függvényt kell megadnia és meghívnia. Ez a függvény sorrendben hívja meg a többi függvényt, és a `Promise`s feloldásához szükséges.
+Végül adja meg és hívja meg `run` a fő aszinkron függvényt. Ez a függvény sorrendben hívja meg a `Promise`többi függvényt, és az s feloldásához szükséges ideig vár.
 
-* A konfiguráció beolvasása a korábban írt `getAzureConfiguration()`
-* Új `AzureSearchClient`-példány létrehozása a konfigurációban szereplő értékek átadásával
+* A korábban `getAzureConfiguration()` írt konfiguráció beolvasása
+* Új `AzureSearchClient` példány létrehozása, értékek átadása a konfigurációból
 * Ellenőrizze, hogy az index létezik-e, és ha igen, törölje
-* Index létrehozása a **hotels_quickstart_index. JSON** fájlból betöltött `indexDefinition` használatával
+* Index létrehozása a `indexDefinition` **hotels_quickstart_index.json-ból** betöltött használatával
 
 ```javascript
 const run = async () => {
@@ -454,37 +454,37 @@ const run = async () => {
 run();
 ```
 
-Ne feledkezzen meg arról, hogy a végső hívás `run()`! A következő lépésben `node index.js` futtatásakor a program beléptetési pontja.
+Ne felejtsd el az `run()`utolsó hívást! Ez a program bejárata, amikor `node index.js` a következő lépésben futsz.
 
-Figyelje meg, hogy `AzureSearchClient.indexExistsAsync()` és `AzureSearchClient.deleteIndexAsync()` nem végez paramétereket. Ezek a függvények `bodyJson` argumentum nélkül hívja meg a `AzureSearchClient.request()`t. `AzureSearchClient.request()`belül, mivel `bodyJson === null` `true`, a `init` struktúra úgy van beállítva, hogy csak a HTTP-művelet ("GET" a `indexExistsAsync()` és a "Törlés" a `deleteIndexAsync()`) és a fejlécek, amelyek meghatározzák a kérés kulcsát.  
+Figyelje `AzureSearchClient.indexExistsAsync()` `AzureSearchClient.deleteIndexAsync()` meg ezt, és ne vegyen figyelembe paramétereket. Ezek a `AzureSearchClient.request()` függvények argumentum nélkül `bodyJson` hívnak. A `AzureSearchClient.request()`, `bodyJson === null` `true`mivel `init` a szerkezet csak a HTTP-ige ("GET" `indexExistsAsync()` és `deleteIndexAsync()`"DELETE" ) és a fejlécek, amelyek meghatározzák a kérelemkulcsot.  
 
-Ezzel szemben a _`AzureSearchClient.createIndexAsync(indexDefinition)` metódus egy_ paramétert hajt végre. A `index.js``run` függvénye átadja a **hotels_quickstart_index. JSON** fájl tartalmát a `AzureSearchClient.createIndexAsync(indexDefinition)` metódusnak. A `createIndexAsync()` metódus átadja ezt a definíciót `AzureSearchClient.request()`nak. `AzureSearchClient.request()`, mivel a `bodyJson === null` mostantól `false`, a `init` struktúra nem csak a HTTP-műveletet ("PUT") és a fejléceket tartalmazza, de a `body` az index definíciós adatra állítja be.
+Ezzel szemben `AzureSearchClient.createIndexAsync(indexDefinition)` a módszer _nem_ vesz egy paramétert. A `run` függvény `index.js`a alkalmazásban átadja a fájl tartalmát **hotels_quickstart_index.json** fájlnak a `AzureSearchClient.createIndexAsync(indexDefinition)` metódusnak. A `createIndexAsync()` metódus átadja ezt `AzureSearchClient.request()`a definíciót a alkalmazásnak. A `AzureSearchClient.request()` `bodyJson === null` rendszerben, `false`mivel `init` jelenleg is, a struktúra nem csak a HTTP-igét `body` ("PUT") és a fejléceket tartalmazza, hanem az indexdefiníciós adatokat is beállítja.
 
 ### <a name="prepare-and-run-the-sample"></a>A minta előkészítése és futtatása
 
-A következő parancsokhoz használjon egy terminál-ablakot.
+A következő parancsokhoz használjon terminálablakot.
 
-1. Navigáljon ahhoz a mappához, amely tartalmazza a **Package. JSON** fájlt és a kód többi részét.
-1. Telepítse a minta csomagjait `npm install`.  Ez a parancs letölti a csomagokat, amelyeken a kód függ.
-1. Futtassa a programot a `node index.js`.
+1. Nyissa meg a **package.json** fájlt tartalmazó mappát és a kód többi részét.
+1. Telepítse a minta csomagjait a segítségével. `npm install`  Ez a parancs letölti azokat a csomagokat, amelyektől a kód függ.
+1. Futtassa `node index.js`a programot a segítségével.
 
-A program által végrehajtott műveleteket ismertető üzenetnek kell megjelennie. Ha szeretné megtekinteni a kérések részletesebb ismertetését, a **AzureSearchClient. js**fájlban a [`AzureSearchClient.request()` módszer https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27)] elején található [sorok lehetőséggel törölheti a megjegyzéseket. 
+A program által végrehajtott műveleteket leíró üzenetek sorozatának kell megtekintenie. Ha a kérelmek részletesebb enciklijének megtekintését szeretné látni, `AzureSearchClient.request()` azhttps://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) **AzureSearchClient.js**alkalmazásban a [metódus elején lévő sorokat] megjegyzésnélkül ítheti. 
 
-Nyissa meg a keresési szolgáltatás **áttekintését** a Azure Portal. Válassza ki az **indexek** lapot. A következőhöz hasonlónak kell megjelennie:
+Nyissa meg a keresési szolgáltatás **áttekintése** az Azure Portalon. Válassza az **Indexek** lapot. A következőhez hasonlót kell látnia:
 
-![Képernyőkép a Azure Portalről, a keresési szolgáltatás áttekintése, indexek lap](media/search-get-started-nodejs/create-index-no-data.png)
+![Képernyőkép az Azure Portalról, keresési szolgáltatás áttekintése, Indexek lap](media/search-get-started-nodejs/create-index-no-data.png)
 
-A következő lépésben hozzá kell adnia az adatindexhez. 
+A következő lépésben adatokat fog hozzáadni az indexhez. 
 
-## <a name="2---load-documents"></a>2 – dokumentumok betöltése 
+## <a name="2---load-documents"></a>2 - Dokumentumok betöltése 
 
-Az Azure Cognitive Searchban a dokumentumok olyan adatstruktúrák, amelyek mind a lekérdezések indexeléséhez, mind pedig a kimenetekhez tartoznak. Ezeket az adatsorokat az indexbe kell ELKÜLDENI. Ez egy másik végpontot használ, mint az előző lépésben végzett műveletek. Nyissa meg a **AzureSearchClient. js fájlt** , és adja hozzá a következő metódust `getIndexUrl()`után:
+Az Azure Cognitive Search, dokumentumok olyan adatstruktúrák, amelyek mind bemenetek indexelés és a lekérdezések kimenetek. Az ilyen adatokat közzé kell tennie az indexben. Ez az előző lépésben végzett műveleteknél eltérő végpontot használ. Nyissa meg **az AzureSearchClient.js-t,** és adja hozzá a következő `getIndexUrl()`módszert:
 
 ```javascript
  getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
 ```
 
-A `AzureSearchClient.createIndexAsync(definition)`hoz hasonlóan olyan függvényre van szükség, amely meghívja a `AzureSearchClient.request()`, és a szállodai adatban továbbítja a törzsének. A **AzureSearchClient. js** fájlban adja hozzá a `postDataAsync(hotelsData)` `createIndexAsync(definition)`után:
+Mint `AzureSearchClient.createIndexAsync(definition)`, szüksége van `AzureSearchClient.request()` egy funkció, amely felhívja és átadja a szállodai adatokat, hogy a szervezet. Az **AzureSearchClient.js** add `postDataAsync(hotelsData)` után: `createIndexAsync(definition)`
 
 ```javascript
 async postDataAsync(hotelsData) {
@@ -496,7 +496,7 @@ async postDataAsync(hotelsData) {
 }
 ```
 
- A dokumentumok bemenetei lehetnek egy adatbázisban lévő sorok, a blob Storage-ban található Blobok, vagy a példában szereplő JSON-dokumentumok a lemezen. Töltse le a [Hotels. JSON](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) fájlt, vagy hozzon létre saját **Hotels. JSON** fájlt a következő tartalommal:
+ A dokumentumbemenetek lehetnek egy adatbázis, a Blob storage-ban lévő blobok, vagy mint ebben a példában, json-dokumentumok a lemezen. Letöltheti [a hotels.json fájlt,](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) vagy létrehozhat saját **hotels.json** fájlt a következő tartalommal:
 
 ```json
 {
@@ -574,7 +574,7 @@ async postDataAsync(hotelsData) {
 
 ```
 
-Az adatgyűjtés programba való betöltéséhez módosítsa az **index. js fájlt** úgy, hogy hozzáadja a `hotelData` közelében található sort a felső részhez:
+Ha ezeket az adatokat be szeretné tölteni a programba, módosítsa az **index.js-t** a felső `hotelData` oldal közelében lévő sor hozzáadásával:
 
 ```javascript
 const nconf = require('nconf');
@@ -583,7 +583,7 @@ const hotelData = require('./hotels.json');
 const indexDefinition = require('./hotels_quickstart_index.json');
 ```
 
-Most módosítsa a `run()` függvényt az **index. js**fájlban. Az index elérhetővé válása néhány másodpercig is eltarthat, így a `AzureSearchClient.postDataAsync(hotelData)`meghívása előtt vegyen fel egy 2 másodperces szüneteltetést:
+Most módosítsa `run()` a függvényt **index.js**. Az index elérhetővé válása néhány másodpercet is igénybe vehet, `AzureSearchClient.postDataAsync(hotelData)`ezért a hívás előtt adjon hozzá egy 2 másodperces szünetet:
 
 ```javascript
 const run = async () => {
@@ -605,13 +605,13 @@ const run = async () => {
 }
 ```
 
-Futtassa újra a programot `node index.js`ával. Az 1. lépésben látott, némileg eltérő üzeneteket kell látnia. Ebben az esetben _az index létezik_ , és az alkalmazás törlésével kapcsolatos üzenetnek kell megjelennie, mielőtt az alkalmazás létrehozza az új indexet, és az adatait közzéteszi. 
+Futtassa újra `node index.js`a programot a programmal Az 1. Ez alkalommal az index _létezik,_ és meg kell jelennie üzenetet törlése, mielőtt az alkalmazás létrehozza az új index et, és közzéteszi az adatokat. 
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Térjen vissza az **indexek** lapra a Azure Portal keresési szolgáltatásának **áttekintésében** . Az index most négy dokumentumot tartalmaz, és bizonyos mennyiségű tárterületet használ (ez eltarthat néhány percig, amíg a felhasználói felület megfelelően tükrözi az index mögöttes állapotát). Kattintson az index nevére a **keresési tallózóhoz**. Ez a lap lehetővé teszi az adatlekérdezésekkel való kísérletezést. Próbálkozzon `*&$count=true` lekérdezési karakterláncával, és az összes dokumentumot és az eredmények számát vissza kell kérnie. Próbálja ki a lekérdezési karakterláncot `historic&highlight=Description&$filter=Rating gt 4` és egyetlen dokumentumot kell visszakapnia, amelynek a "régi" szó `<em></em>` címkékbe van csomagolva. További információ az [Azure Cognitive Search-beli lekérdezések összeállításáról](https://docs.microsoft.com/azure/search/search-query-overview). 
+Térjen vissza az **Indexek** lapra az Azure Portalon a keresési szolgáltatás **áttekintése** lapon. Az index most már négy dokumentumot tartalmaz, és bizonyos mennyiségű tárhelyet használ fel (eltarthat néhány percig, amíg a felhasználói felület megfelelően tükrözi az index mögöttes állapotát). Kattintson az index nevére, hogy a **Search Explorer**. Ezen a lapon kísérletezhet az adatlekérdezésekkel. Próbáljon meg rákeresni `*&$count=true` egy lekérdezési karakterláncra, és vissza kell kapnia az összes dokumentumot és az eredmények számát. Próbálja ki a `historic&highlight=Description&$filter=Rating gt 4` lekérdezési karakterláncot, és vissza kell kapnia `<em></em>` egy dokumentumot, a "történelmi" szó címkékbe csomagolva. További információ [a lekérdezések összeállításáról az Azure Cognitive Search szolgáltatásban.](https://docs.microsoft.com/azure/search/search-query-overview) 
 
-A lekérdezéseket a kódban az **index. js** megnyitásával, majd a kód felülre történő hozzáadásával reprodukálhatja.
+Reprodukálja ezeket a lekérdezéseket kódolva az **index.js** megnyitásával és a kód tetejének közelében történő hozzáadásával:
 
 ```javascript
 const queries = [
@@ -620,7 +620,7 @@ const queries = [
 ];
 ```
 
-Az **index. js** fájlban írja be az alább látható `doQueriesAsync()` függvényt. Ez a függvény egy `AzureSearchClient` objektumot vesz igénybe, és a `AzureSearchClient.queryAsync` metódust alkalmazza a `queries` tömb egyes értékeire. A `Promise.all()` függvény használatával egyetlen `Promise` ad vissza, amely csak akkor oldódik fel, ha az összes lekérdezés megoldódott. A `JSON.stringify(body, null, 4)` meghívása, hogy a lekérdezés eredménye olvashatóbb legyen.
+Ugyanebben az **index.js** fájlban írja be az `doQueriesAsync()` alábbi függvényt. Ez a `AzureSearchClient` függvény egy `AzureSearchClient.queryAsync` objektumot vesz fel, `queries` és a metódust alkalmazza a tömb minden értékére. A függvény `Promise.all()` segítségével egyetlen, `Promise` amely csak akkor oldja fel, ha az összes lekérdezés megoldódott. A lekérdezés `JSON.stringify(body, null, 4)` eredményének formázása olvashatóbb.
 
 ```javascript
 async function doQueriesAsync(client) {
@@ -635,7 +635,7 @@ async function doQueriesAsync(client) {
 }
 ```
 
-Módosítsa az `run()` függvényt, hogy az indexelő működjön, majd hívja meg a `doQueriesAsync(client)` függvényt:
+Módosítsa `run()` a függvényt úgy, hogy az indexelő működjön, majd hívja meg a `doQueriesAsync(client)` függvényt:
 
 ```javascript
 const run = async () => {
@@ -660,13 +660,13 @@ const run = async () => {
 }
 ```
 
-`AzureSearchClient.queryAsync(query)`megvalósításához szerkessze a **AzureSearchClient. js**fájlt. A kereséshez eltérő végpontra van szükség, és a keresési kifejezések URL-argumentumok lesznek, ezért a függvényt a `getIndexUrl()` és a már megírt `getPostDataUrl()` módszerek mellett adja hozzá `getSearchUrl(searchTerm)`.
+A `AzureSearchClient.queryAsync(query)`megvalósításhoz szerkesztse az **AzureSearchClient.js**fájlt. A kereséshez más végpontra van szükség, és a keresési `getSearchUrl(searchTerm)` kifejezések `getIndexUrl()` URL-argumentumokká válnak, ezért adja hozzá a függvényt a már megírt és `getPostDataUrl()` metódusok mellé.
 
 ```javascript
 getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
  ```
 
-A `queryAsync(searchTerm)` függvény a **AzureSearchClient. js** fájlban is szerepel, és ugyanazt a struktúrát követi, mint `postDataAsync(data)` és a többi lekérdezési funkció: 
+A `queryAsync(searchTerm)` függvény az **AzureSearchClient.js-ben is megjelenik,** és ugyanazt a struktúrát követi, mint `postDataAsync(data)` a többi lekérdezési függvény: 
 
 ```javascript
 async queryAsync(searchTerm) {
@@ -678,31 +678,31 @@ async queryAsync(searchTerm) {
 }
 ```
 
-A keresés a "GET" művelettel és a törzs nélkül történik, mivel a keresési kifejezés az URL részét képezi. Figyelje meg, hogy a `queryAsync(searchTerm)` a `this.queryKey`használja, a többi olyan függvénytől eltérően, amely a felügyeleti kulcsot használta. A lekérdezési kulcsok, ahogy a név is jelenti, csak az index lekérdezésére használható, és nem használható az index bármilyen módon történő módosítására. A lekérdezési kulcsok ezért biztonságosabbá tétele az ügyfélalkalmazások számára történő terjesztéshez.
+A keresés a "GET" igével történik, és nincs törzse, mivel a keresési kifejezés az URL része. Figyelje `queryAsync(searchTerm)` `this.queryKey`meg, hogy a , ellentétben a többi funkciót, amely a rendszergazdai kulcsot használta. A lekérdezési kulcsok, ahogy a neve is mutatja, csak az index lekérdezésére használhatók, és semmilyen módon nem használhatók az index módosítására. A lekérdezési kulcsok ezért biztonságosabban terjeszthetők az ügyfélalkalmazások között.
 
-Futtassa a programot a `node index.js`. Az előző lépéseken kívül a rendszer elküldi a lekérdezéseket és a konzolra írt eredményeket.
+Futtassa `node index.js`a programot a programmal Most, amellett, hogy az előző lépéseket, a lekérdezések lesznek elküldve, és az eredményeket írt a konzolra.
 
-### <a name="about-the-sample"></a>A minta ismertetése
+### <a name="about-the-sample"></a>A mintáról
 
-A minta kis mennyiségű szállodai adat használatát mutatja be, amely elegendő az Azure Cognitive Search index létrehozásának és lekérdezésének alapjaihoz.
+A minta egy kis mennyiségű szállodai adatokat használ, amelyek elegendőek az Azure Cognitive Search-index létrehozásának és lekérdezésének alapjainak bemutatásához.
 
-A **AzureSearchClient** osztály a keresési szolgáltatás konfigurációját, URL-címeit és alapszintű http-kéréseit ágyazza be. Az **index. js** fájl betölti az Azure Cognitive Search szolgáltatás konfigurációs adatait, az indexeléshez feltöltött szállodai adatok, valamint a `run` függvényében megrendeléseket, és végrehajtja a különböző műveleteket.
+Az **AzureSearchClient** osztály magában foglalja a konfigurációt, az URL-címeket és a keresési szolgáltatás alapvető HTTP-kéréseit. Az **index.js** fájl betölti az Azure Cognitive Search szolgáltatás konfigurációs adatait, az indexeléshez feltöltendő szállodai adatokat, és a `run` funkciójában lerendeli és végrehajtja a különböző műveleteket.
 
-A `run` függvény általános viselkedése az Azure Cognitive Search index törlése, ha létezik, hozza létre az indexet, adjon hozzá néhány adathoz, és hajtson végre néhány lekérdezést.  
+A függvény általános `run` viselkedése az Azure Cognitive Search index törlése, ha létezik, az index létrehozása, néhány adat hozzáadása és bizonyos lekérdezések végrehajtása.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
-A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
+Az erőforrásokat a portálon keresheti meg és kezelheti a bal oldali navigációs ablak **Minden erőforrás** vagy **Erőforráscsoport** hivatkozásával.
 
-Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
+Ha ingyenes szolgáltatást használ, ne feledje, hogy három indexelésre, indexelőre és adatforrásra van korlátozva. Törölheti az egyes elemeket a portálon, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a Node. js-útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Bizonyos lépések, például a konfiguráció olvasása és a lekérdezések meghatározása a lehető legegyszerűbb módon történt. Egy valós alkalmazásban ezeket a problémákat külön modulokban érdemes elhelyezni, amelyek rugalmasságot és beágyazást tesznek lehetővé. 
+Ebben a Node.js rövid útmutatóban számos feladatot végzett egy index létrehozásához, a dokumentumokba való betöltéséhez és lekérdezések futtatásához. Bizonyos lépéseket tettünk, például a konfiguráció olvasását és a lekérdezések meghatározását a lehető legegyszerűbb módon. Egy valós alkalmazásban ezeket az aggályokat külön modulokba szeretné helyezni, amelyek rugalmasságot és beágyazást biztosítanak. 
  
-Ha már rendelkezik valamilyen háttérrel az Azure Cognitive Search-ban, ezt a mintát használhatja kiindulópontként a kipróbálási javaslatok (típus-vagy automatikus kiegészítés), a szűrők és a csiszolt navigáció érdekében. Ha még nem ismeri az Azure Cognitive Searcht, javasoljuk, hogy más oktatóanyagokat próbáljon meg létrehozni, hogy megértsük, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. 
+Ha már rendelkezik némi háttérrel az Azure Cognitive Search, használhatja ezt a mintát ugródeszkaként a javaslatjavasolók (típus-előre vagy automatikus kiegészítés lekérdezések), szűrők és a sokoldalú navigáció. Ha most ismeri az Azure Cognitive Search szolgáltatást, javasoljuk, hogy próbáljon ki más oktatóanyagokat is, hogy jobban megértse, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. 
 
 > [!div class="nextstepaction"]
-> [Azure-Cognitive Search meghívása weboldalról JavaScript használatával](https://github.com/liamca/azure-search-javascript-samples)
+> [Az Azure Cognitive Search hívása weblapról Javascript használatával](https://github.com/liamca/azure-search-javascript-samples)

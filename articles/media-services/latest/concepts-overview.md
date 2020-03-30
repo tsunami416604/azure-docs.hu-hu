@@ -1,7 +1,8 @@
 ---
-title: Azure Media Services terminológia és fogalmak – Azure | Microsoft Docs
-description: Ez a témakör rövid áttekintést nyújt Azure Media Services terminológiáról és fogalmakról, és további részletekre mutató hivatkozásokat tartalmaz.
-services: media-services
+title: A Media Services terminológiája és fogalmai
+titleSuffix: Azure Media Services
+description: Ismerje meg az Azure Media Services terminológiáját és fogalmait.
+services: media-servicesgit
 documentationcenter: ''
 author: Juliako
 manager: femila
@@ -12,54 +13,55 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: bdc0af39e3f3a06da6c06ddc384efe44dd678ea3
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 02d0897774261a25a2fccb70a31d0f264c458740
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500084"
 ---
-# <a name="media-services-concepts"></a>Media Services fogalmak
+# <a name="media-services-terminology-and-concepts"></a>A Media Services terminológiája és fogalmai
 
-Ez a témakör rövid áttekintést nyújt Azure Media Services terminológiáról és fogalmakról. A cikk a cikkekre mutató hivatkozásokat is tartalmaz, amelyek részletesen ismertetik a Media Services v3 fogalmakat és funkciókat. 
+Ez a témakör rövid áttekintést nyújt az Azure Media Services terminológiájáról és fogalmairól. A cikk a Media Services v3-as fogalmainak és funkcióinak részletes magyarázatával rendelkező cikkekre mutató hivatkozásokat is tartalmaz.
 
-A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismertetett alapvető fogalmakat.
+Az ezekben a témakörökben leírt alapvető fogalmakat a fejlesztés megkezdése előtt felül kell vizsgálni.
 
 > [!NOTE]
-> Jelenleg a [Azure Portal](https://portal.azure.com/) használható a következőhöz: Media Services v3 [élő események](live-events-outputs-concept.md), View (nem felügyelt) v3- [eszközök](assets-concept.md)kezelése, az API-k [elérésére vonatkozó információk lekérése](access-api-portal.md). Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+> Jelenleg az Azure [Portal](https://portal.azure.com/) segítségével: kezelheti a Media Services v3 [Élő események](live-events-outputs-concept.md), megtekintése (nem kezeli) v3 [assets](assets-concept.md), és [az API-k elérésével kapcsolatos információk.](access-api-portal.md)
+> Minden más felügyeleti feladathoz (például [átalakítások és feladatok](transforms-jobs-concept.md) és [tartalomvédelem)](content-protection-overview.md)használja a [REST API-t,](https://aka.ms/ams-v3-rest-ref)a [CLI-t](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK-k egyikét.](media-services-apis-overview.md#sdks)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3 terminológia
 
-|Időszak|Leírás|
+|Időtartam|Leírás|
 |---|---|
-|Élő esemény|Egy **élő esemény** a betöltéshez, az átkódoláshoz (opcionálisan) és a videó-, hang-és valós idejű metaadatokból álló élő streamek csomagolásához szükséges folyamatokat jelöli.<br/><br/>Media Services v2 API-kból áttelepítést igénylő ügyfelek esetében az **élő esemény** a **Channel** entitást a v2-ben váltja fel. További információ: [Migrálás v2-ről v3](migrate-from-v2-to-v3.md)-ra.|
-|Folyamatos átviteli végpont/csomagolás/forrás|A **folyamatos átviteli végpontok** egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelentenek, amely az élő és az igény szerinti tartalmat közvetlenül egy ügyfél-lejátszó alkalmazás számára teszi elérhetővé az egyik Common Streaming Media Protocol (HLS vagy Dash) használatával. Emellett az adatfolyam- **végpont** dinamikus (igény szerinti) titkosítást biztosít az iparág vezető DRMs.<br/><br/>A Media Streaming Industry szolgáltatásban ezt a szolgáltatást általában **csomagolónak** vagy **forrásnak**nevezzük.  Az iparág egyéb általános használati feltételei közé tartozik például a JITP (Just-in-time-becsomagolás) vagy a JITE (Just-in-time-Encryption). 
+|Élő esemény|Az **élő esemény** a video-, hang- és valós idejű metaadatok betöltési, átkódolási (opcionálisan) és csomagolási élő adatfolyamainak folyamatát jelöli.<br/><br/>A Media Services v2 API-król átkelő ügyfelek számára az **élő esemény** felváltja a **csatorna** entitást a 2-es v2-ben. További információ: [Áttelepítés a v2-ről a v3-ra.](migrate-from-v2-to-v3.md)|
+|Folyamatos átvitelvégpont/csomagolás/eredet|A **streamelési végpont** egy dinamikus (just-in-time) csomagolási és származási szolgáltatást jelent, amely az élő és igény szerinti tartalmat közvetlenül az ügyféllejátszó-alkalmazásnak juttatja el. Ez használ egy -ból mindennapi folyó média protokoll (HLS vagy KÖTŐJEL). Emellett a **streamelési végpont** dinamikus (just-in-time) titkosítást biztosít az iparágvezető digitális jogkezelő rendszerek (DRM-ek) számára.<br/><br/>A médiaadatfolyam-továbbítási iparágban ezt a szolgáltatást általában **Packager** vagy **Origin**néven emlegetik.  Más gyakori kifejezések az iparágban ez a képesség közé tartozik a JITP (just-in-time-packager) vagy JITE (just-in-time-encryption).
 
-## <a name="media-services-v3-concepts"></a>Media Services v3 fogalmak
+## <a name="media-services-v3-concepts"></a>A Media Services v3-as fogalmai
 
 |Alapelvek|Leírás|Hivatkozások|
 |---|---|---|
-|Eszközök és tartalom feltöltése|Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és fel kell töltenie a digitális fájlokat az **eszközökbe**.|[Felhőbe történő feltöltés és tárolás](storage-account-concept.md)<br/><br/>[Eszközök koncepciója](assets-concept.md)|
-|Tartalom kódolása|Miután feltölti a kiváló minőségű digitális médiafájlokat az eszközökbe, kódolhatja azokat formátumokba, amelyek számos böngészőben és eszközön játszhatók le. <br/>Az Media Services v3 kódoláshoz **átalakításokat** és **feladatokat**kell létrehoznia.|[Átalakítások és feladatok](transforms-jobs-concept.md)<br/><br/>[Kódolás Media Services](encoding-concept.md)|
-|Tartalomelemzés (Video Indexer)|A Media Services v3 lehetővé teszi a videó-és hangfájlokból származó elemzések kinyerését Media Services v3-es beállításkészlet használatával. Ha Media Services v3-es előkészletekből szeretné elemezni a tartalmat, létre kell hoznia **átalakításokat** és **feladatokat**.<br/><br/>Ha részletesebb információkra van szüksége, használja a [video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) közvetlenül.|[Videó-és hangfájlok elemzése](analyzing-video-audio-files-concept.md)|
-|Csomagolás és kézbesítés|A tartalom kódolása után igénybe veheti a **dinamikus csomagolás**előnyeit. Media Services a **folyamatos átviteli végpont** az a dinamikus csomagolási szolgáltatás, amellyel a médiatartalom kézbesíthető az ügyfélszámítógépek számára. Ahhoz, hogy a kimeneti eszközön a videók elérhetők legyenek az ügyfelek számára a lejátszáshoz, létre kell hoznia egy **adatfolyam-keresőt** , majd streaming URL-címeket kell létrehoznia. <br/><br/>A **folyamatos átviteli lokátor**létrehozásakor az eszköz neve mellett meg kell adnia a **folyamatos átviteli házirendet**. A **folyamatos átviteli szabályzatok** lehetővé teszik a folyamatos átviteli protokollok és a titkosítási beállítások (ha vannak) definiálását a **streaming-lokátorok**számára. A dinamikus csomagolás a tartalom élő vagy igény szerinti továbbítására szolgál. <br/><br/>Media Services **dinamikus jegyzékfájlok** használatával csak a videó egy adott kiadatását vagy alklipeit továbbíthatja.|[Dinamikus csomagolás](dynamic-packaging-overview.md)<br/><br/>[Streamvégpontok](streaming-endpoint-concept.md)<br/><br/>[Streamelési lokátorok](streaming-locators-concept.md)<br/><br/>[Streamelési szabályzatok](streaming-policy-concept.md)<br/><br/>[Dinamikus jegyzékek](filters-dynamic-manifest-overview.md)<br/><br/>[Filters](filters-concept.md) (Szűrők)|
-|Tartalomvédelem|A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy/és a három jelentős digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. <br/><br/>Ha az adatfolyamban titkosítási beállításokat ad meg, hozza létre a **tartalmi kulcs házirendjét** , és társítsa azt a **folyamatos átviteli lokátorhoz**. A **tartalmi kulcs házirendje** lehetővé teszi annak konfigurálását, hogy a rendszer hogyan továbbítsa a tartalmi kulcsot a végfelhasználók számára.<br/><br/> Próbálja meg újból felhasználni a szabályzatokat, amikor ugyanazok a beállítások szükségesek.| [Tartalomkulcs-szabályzatok](content-key-policy-concept.md)<br/><br/>[Tartalomvédelem](content-protection-overview.md)|
-|Live streaming (Élő adatfolyam)|A Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügyfeleknek az Azure-felhőben. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. Ha **élő eseményt**hoz létre, a rendszer létrehoz egy bemeneti végpontot, amelynek használatával élő jeleket küldhet egy távoli kódolóból. Ha a stream az **élő eseménybe**áramlik, megkezdheti a folyamatos átviteli eseményt egy **eszköz**, egy **élő kimenet**és a **folyamatos átviteli lokátor**létrehozásával. Az **élő kimenet** archiválja a streamet az objektumba **, és** elérhetővé teszi a nézők számára a **folyamatos átviteli végponton**keresztül. Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). |[Élő közvetítés – áttekintés](live-streaming-overview.md)<br/><br/>[Élő események és élő kimenetek](live-events-outputs-concept.md)|
-|Figyelés Event Grid|A feladatok előrehaladásának megtekintéséhez **Event Gridt**kell használnia. A Media Services az élő események típusát is kibocsátja. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. |[Event Grid események feldolgozása](reacting-to-media-services-events.md)<br/><br/>[Sémák](media-services-event-schemas.md)|
-|Figyelés Azure Monitor|Figyelje a metrikákat és a diagnosztikai naplókat, amelyek segítségével megismerheti, hogy az alkalmazások hogyan működnek együtt a Azure Monitorokkal.|[Metrikák és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md)<br/><br/>[Diagnosztikai naplók sémái](media-services-diagnostic-logs-schema.md)|
-|Lejátszóügyfelek|A Azure Media Player használatával a különböző böngészők és eszközök Media Services által továbbított médiatartalom lejátszását is elvégezheti. A Azure Media Player az iparági szabványokat, például a HTML5-t, a Media Source Extensions (MSE) és a titkosított adathordozó-bővítményeket (EME) használja a dúsított Adaptív átviteli élmény biztosításához. |[Az Azure Media Player áttekintése](use-azure-media-player.md)|
+|Eszközök és tartalom feltöltése|A médiatartalmak Azure-beli kezelésének, titkosításának, elemzésének és streamelésének megkezdéséhez létre kell hoznia egy Media Services-fiókot, és fel kell töltenie digitális fájljait az **Assets**programba.|[Felhőbe történő feltöltés és tárolás](storage-account-concept.md)<br/><br/>[Eszközök koncepciója](assets-concept.md)|
+|Tartalom kódolása|Miután feltöltötte kiváló minőségű digitális médiafájljait az Eszközök be, olyan formátumokba kódolhatja őket, amelyek sokféle böngészőben és eszközön lejátszhatók. <br/><br/>A Media Services v3-as számmal való kódoláshoz létre kell **hoznia az Átalakításokat** és **a Feladatokat.**|[Átalakítások és feladatok](transforms-jobs-concept.md)<br/><br/>[Kódolás a Media Services szolgáltatással](encoding-concept.md)|
+|Tartalomelemzés (Video Indexer)|A Media Services v3 funkcióval betekintést nyerhet a video- és hangfájlokból a Media Services v3-as készletei vel. A Media Services v3-as készleteivel végzett tartalom elemzéséhez létre kell **hoznia az Átalakításokat** és **a Feladatok at.**<br/><br/>Ha részletesebb elemzéseket szeretne, használja közvetlenül [a Video Indexer t.](https://docs.microsoft.com/azure/media-services/video-indexer/)|[Video- és hangfájlok elemzése](analyzing-video-audio-files-concept.md)|
+|Csomagolás és kézbesítés|A tartalom kódolása után kihasználhatja a **dinamikus csomagolás**előnyeit. A Media Services szolgáltatásban a **streamelési végpont** az a dinamikus csomagolási szolgáltatás, amely a médiatartalom ügyféllejátszóknak történő kézbesítésére szolgál. Ahhoz, hogy a kimeneti eszközben lévő videókat elérhetővé tegye az ügyfelek számára a lejátszáshoz, létre kell hoznia egy **streamelési lokátort,** majd létre kell hoznia a streamelési URL-címeket. <br/><br/>A **streamelési lokátor**létrehozásakor az eszköz neve mellett meg kell adnia a **streamelési szabályzatot.** **A streamelési házirendek** lehetővé teszik a streamelési protokollok és a titkosítási beállítások (ha vannak **ilyenek) meghatározását a streamelési lokátorokhoz.** A dinamikus csomagolást akár élőben, akár igény szerint közvetíti. <br/><br/>A Media Services **dinamikus jegyzékfájljai** segítségével csak a videó egy adott interpretációját vagy részklipjeit streamelheti.|[Dinamikus csomagolás](dynamic-packaging-overview.md)<br/><br/>[Végpontok streamelése](streaming-endpoint-concept.md)<br/><br/>[Streamelési lokátorok](streaming-locators-concept.md)<br/><br/>[Streamelési szabályzatok](streaming-policy-concept.md)<br/><br/>[Dinamikus jegyzékek](filters-dynamic-manifest-overview.md)<br/><br/>[Szűrők](filters-concept.md)|
+|Tartalomvédelem|A Media Services segítségével az Advanced Encryption Standard (AES-128) vagy/és a három fő DRM-rendszer bármelyikével dinamikusan titkosított élő és igény szerinti tartalmakat is kézbesíthet: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek hivatalos ügyfelek nek történő kézbesítéséhez. <br/><br/>Ha titkosítási beállításokat ad meg az adatfolyamon, hozza létre a **tartalomkulcs-házirendet,** és társítsa azt a **streamelési lokátorral.** A **tartalomkulcs-házirend** lehetővé teszi a tartalomkulcs végfelhasználói kézbesítésének konfigurálását.<br/><br/> Próbálja meg újra felhasználni a házirendeket, ha ugyanazokra a beállításokra van szükség.| [Tartalomkulcs-szabályzatok](content-key-policy-concept.md)<br/><br/>[Tartalomvédelem](content-protection-overview.md)|
+|Live streaming (Élő adatfolyam)|A Media Services lehetővé teszi, hogy élő eseményeket biztosítson ügyfeleinek az Azure-felhőben. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. **Élő esemény**létrehozásakor létrejön egy bemeneti végpont, amely segítségével élő jelet küldhet egy távoli kódolótól. Miután az adatfolyam beáramlott az **élő eseménybe,** megkezdheti a streamelési eseményt **egy eszköz**, az **élő kimenet**és a **streamelési lokátor**létrehozásával. **Az Élő kimenet** archiválja az adatfolyamot az **eszközbe,** és elérhetővé teszi a megtekintők számára a **streamvégponton**keresztül. Az élő esemény beállítható *áthaladásra* (egy helyszíni élő kódoló több bitráta-adatfolyamot küld) vagy *élő kódolásra* (a helyszíni élő kódoló egyetlen átviteli adatfolyamot küld). |[Élő közvetítés – áttekintés](live-streaming-overview.md)<br/><br/>[Élő események és élő kimenetek](live-events-outputs-concept.md)|
+|Figyelés eseményrácsgal|A feladat előrehaladásának megtekintéséhez használja az **Event Grid**et. A Media Services az élő eseménytípusokat is kibocsátja. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. |[Event Grid-események kezelése](reacting-to-media-services-events.md)<br/><br/>[Sémák](media-services-event-schemas.md)|
+|Figyelés az Azure Monitorral|Az Azure Monitor segítségével figyelheti a metrikákat és a diagnosztikai naplókat, amelyek segítenek megérteni, hogyan teljesítenek az alkalmazások.|[Metrikák és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md)<br/><br/>[Diagnosztikai naplók sémái](media-services-diagnostic-logs-schema.md)|
+|Lejátszóügyfelek|Az Azure Media Player segítségével lejátszhatja a Media Services által streamelt médiatartalmakat a legkülönbözőbb böngészőkben és eszközökön. Az Azure Media Player az iparági szabványokat, például a HTML5-öt, a Médiaforrás-bővítményeket (MSE) és a titkosított médiabővítményeket (EME) használja a bővített adaptív streamelési élmény biztosításához. |[Az Azure Media Player áttekintése](use-azure-media-player.md)|
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdéseket tehet fel, visszajelzést adhat, frissítéseket kaphat
 
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
+Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Távoli fájl és stream-videó kódolása – REST](stream-files-tutorial-with-rest.md)
-* [A feltöltött fájl és a Stream video-.NET kódolása](stream-files-tutorial-with-api.md)
-* [Stream Live – .NET](stream-live-tutorial-with-api.md)
-* [A videó elemzése – .NET](analyze-videos-tutorial-with-api.md)
+* [Távoli fájl kódolása és videó streamelése – REST](stream-files-tutorial-with-rest.md)
+* [Feltöltött fájl kódolása és videó streamelése – .NET](stream-files-tutorial-with-api.md)
+* [Élő stream – .NET](stream-live-tutorial-with-api.md)
+* [Videó elemzése – .NET](analyze-videos-tutorial-with-api.md)
 * [AES-128 dinamikus titkosítás – .NET](protect-with-aes128.md)
-* [Dinamikus titkosítás a multi-DRM-.NET használatával](protect-with-drm.md) 
+* [Dinamikus titkosítás több DRM-mel - .NET](protect-with-drm.md)

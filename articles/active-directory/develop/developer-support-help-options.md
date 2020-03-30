@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD App Developers támogatási és Súgó lehetőségei | Microsoft Docs
-description: Ismerje meg, hogyan szerezhet segítséget és támogatást a fejlesztéssel kapcsolatos kérdésekre és problémákról a Microsoft-identitásokkal integrálható alkalmazások létrehozásakor (Azure Active Directory és Microsoft-fiók)
+title: Támogatási és súgólehetőségek az Azure AD alkalmazásfejlesztők számára | Microsoft dokumentumok
+description: Ismerje meg, hogyan kaphat segítséget és támogatást a fejlesztéssel kapcsolatos kérdésekhez és problémákhoz a Microsoft identitásokkal (Azure Active Directoryval és Microsoft-fiókkal) integráló alkalmazások létrehozásakor
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,80 +14,80 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160967"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
-Ha most kezdi az integrációt a Azure Active Directory (Azure AD), a Microsoft-identitásokkal vagy a Microsoft Graph API-val, vagy ha új funkciót valósít meg az alkalmazáshoz, akkor a Közösség segítségére van szüksége, vagy megismerheti a a fejlesztőknek nyújtott támogatási lehetőségek. Ez a cikk segít megismerni ezeket a lehetőségeket, beleértve a következőket:
+Ha csak most kezdi el integrálni az Azure Active Directoryt (Azure AD), a Microsoft identitásokat vagy a Microsoft Graph API-t, vagy amikor új funkciót valósít meg az alkalmazásában, vannak esetek, amikor segítséget kell kérnie a közösségtől, vagy támogatási lehetőségeket, amelyeket fejlesztőként rendelkezik. Ez a cikk segít megérteni ezeket a lehetőségeket, többek között:
 
 > [!div class="checklist"]
-> * Hogyan lehet megkeresni a kérdést, hogy a Közösség nem válaszolt-e, vagy ha már létezik a megvalósítani kívánt szolgáltatás meglévő dokumentációja
-> * Bizonyos esetekben csak azt szeretné, hogy támogatási eszközeink segítségével hibakeresést végezzen egy adott probléma esetén
-> * Ha nem találja a szükséges választ, felteheti kérdéseit *stack overflow*
-> * Ha a hitelesítési kódtárak egyikével kapcsolatos problémát talál, akkor adjon meg egy *GitHub* -problémát
-> * Végül, ha valakivel szeretne kommunikálni, érdemes lehet egy támogatási kérést megnyitni
+> * Hogyan kereshető meg, hogy a közösség nem válaszolt-e a kérdésére, vagy hogy létezik-e már meglévő dokumentáció a végrehajtani kívánt funkcióhoz.
+> * Bizonyos esetekben csak támogatási eszközeinkkel szeretné használni egy adott probléma hibakeresését
+> * Ha nem találja a szükséges választ, feltehet egy kérdést a *Stack Overflow-ról*
+> * Ha problémát talál az egyik hitelesítési kódtárakban, emeljefel a *GitHub-problémát*
+> * Végül, ha beszélni szeretne valakivel, érdemes megnyitnia egy támogatási kérelmet
 
 ## <a name="search"></a>Keresés
 
-Ha a fejlesztéssel kapcsolatos kérdése van, előfordulhat, hogy megtalálja a választ a dokumentációban, a GitHub- [mintákat](https://github.com/azure-samples), vagy választ [stack overflow](https://www.stackoverflow.com) kérdéseire.
+Ha fejlesztési kérdéssel kapcsolatos kérdése van, előfordulhat, hogy megtalálja a választ a dokumentációban, a [GitHub-mintákban](https://github.com/azure-samples), vagy a [Stack Overflow](https://www.stackoverflow.com) kérdésekre adott válaszokban.
 
-### <a name="scoped-search"></a>Hatókörön belüli keresés
+### <a name="scoped-search"></a>Hatóköralapú keresés
 
-A gyorsabb eredmény érdekében a keresés hatókörét Stack Overflow, a dokumentációt és a kód mintákat a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
+A gyorsabb eredmények érdekében a keresés hatóköre a Veremtúlcsordulás, a dokumentáció és a kódmintákra a következő lekérdezés használatával a kedvenc keresőmotorjában:
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-Ahol *{a keresési kifejezések}* megfelelnek a keresési kulcsszavaknak.
+Ahol *{A keresési feltételek}* megfelelnek a keresési kulcsszavakat.
 
-## <a name="use-the-development-support-tools"></a>A fejlesztői támogatási eszközök használata
+## <a name="use-the-development-support-tools"></a>A fejlesztési támogatási eszközök használata
 
 | Eszköz  | Leírás  |
 |---------|---------|
-| [jwt.ms](https://jwt.ms) | A jogcímek nevének és értékének dekódolásához illesszen be egy azonosítót vagy hozzáférési tokent. |
-| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmek elfogadását és a válaszok megtekintését a Microsoft Graph API-ra. |
+| [jwt.ms](https://jwt.ms) | Illessze be az azonosítót vagy a hozzáférési jogkivonatot a jogcímek nevének és értékeinek dekódolásához. |
+| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Olyan eszköz, amely lehetővé teszi a kérések és a válaszok megtekintését a Microsoft Graph API-val szemben. |
 
-## <a name="post-a-question-to-stack-overflow"></a>Kérdés közzététele Stack Overflow
+## <a name="post-a-question-to-stack-overflow"></a>Kérdés feladása a Veremtúlcsorduláshoz
 
-Stack Overflow a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. Itt a fejlesztői közösség és a Microsoft csapattagok tagjai közvetlenül részt vesznek a problémák megoldásában.
+Stack túlcsordulás az előnyben részesített csatorna a fejlesztéssel kapcsolatos kérdésekre. Itt a fejlesztői közösség és a Microsoft csapatának tagjai közvetlenül részt vesznek a problémák megoldásában.
 
-Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést Stack Overflow. A következő címkék egyikével teheti fel a kérdést, hogy a Közösség könnyebben azonosítsa és válaszolja meg a kérdést:
+Ha nem talál választ a kérdésére a kereséssorán, küldjön be egy új kérdést a Veremtúlcsordulás mezőbe. Az alábbi címkék egyikével tehet fel kérdéseket, hogy a közösség gyorsabban azonosíthassa és megválaszolhassa a kérdést:
 
-|Összetevő/régió  | Címkék |
+|Összetevő/terület  | Címkék |
 |---------|---------|
-| ADAL-könyvtár | [adal](https://stackoverflow.com/questions/tagged/adal) |
-| MSAL-könyvtár     | [msal](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN middleware  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-ad-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| A hitelesítési vagy engedélyezési témakörökhöz kapcsolódó egyéb területek | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| ADAL-könyvtár | [- Nem, nem, nem, nem, nem, nem, nem](https://stackoverflow.com/questions/tagged/adal) |
+| MSAL könyvtár     | [Nem, nem, nem, nem, nem, nem, nem,](https://stackoverflow.com/questions/tagged/msal) |
+| OWIN köztes szoftver  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azúr-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azúr-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| A hitelesítéssel vagy engedélyezéssel kapcsolatos bármely más terület | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
-A következő bejegyzések Stack Overflow tartalmaznak tippeket, hogyan tehet fel kérdéseket és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje a közösségi tagok számára a kérdés gyors értékelését és megválaszolását:
+A Stack Overflow következő bejegyzései tippeket tartalmaznak arra vonatkozóan, hogyan tehet fel kérdéseket, és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje annak esélyét, hogy a közösség tagjai gyorsan értékeljék és válaszoljanak a kérdésére:
 
-* [Hogyan tegyen fel egy jó kérdést](https://stackoverflow.com/help/how-to-ask)
-* [Minimális, teljes és ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
+* [Hogyan tudok feltenni egy jó kérdést](https://stackoverflow.com/help/how-to-ask)
+* [Hogyan hozzunk létre egy minimális, teljes és ellenőrizhető példa](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
 
-Ha a kódtárakkal kapcsolatos hibát vagy problémát talál, akkor a GitHub-adattárakban probléma merülhet fel. Mivel a kódtárak nyílt forráskódúak, lekéréses kérelmet is küldhet.
+Ha hibát vagy problémát talál a könyvtárainkkal kapcsolatban, felvet egy problémát a GitHub-adattárakban. Mivel könyvtáraink nyílt forráskódúak, lekéréses kérelmet is benyújthat.
 
-A kódtárak és a GitHub-adattárak listáját a következő témakörben találja:
+A tárak és a GitHub-adattárak listáját az alábbi témakörben tetszetős:
 
-* [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) kódtárak és GitHub-adattárak
-* [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) kódtárak és GitHub-adattárak
+* [Azure Active Directory hitelesítési könyvtár (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) kódtárai és GitHub-adattárak
+* [Microsoft authentication library (MSAL)](reference-v2-libraries.md) tárak és GitHub-adattárak
 
 ## <a name="open-a-support-request"></a>Támogatási kérelem megnyitása
 
-Ha valakivel szeretne kommunikálni, nyisson meg egy támogatási kérést. Ha Ön Azure-ügyfél, számos támogatási lehetőség közül választhat. A csomagok összehasonlításához tekintse meg [ezt a lapot](https://azure.microsoft.com/support/plans/). A fejlesztői támogatás az Azure-ügyfelek számára is elérhető. A fejlesztői támogatási csomagok megvásárlásával kapcsolatos információkért tekintse meg [ezt a lapot](https://azure.microsoft.com/support/plans/developer/).
+Ha beszélni szeretne valakivel, megnyithat egy támogatási kérelmet. Ha Ön Azure-ügyfél, számos támogatási lehetőség áll rendelkezésre. A tervek összehasonlításához tekintse meg [ezt az oldalt.](https://azure.microsoft.com/support/plans/) Fejlesztői támogatás is elérhető az Azure-ügyfelek számára. A fejlesztői támogatási csomagok megvásárlásáról az ezen az oldalon olvashat [bővebben.](https://azure.microsoft.com/support/plans/developer/)
 
-* Ha már rendelkezik Azure-támogatási csomaggal, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+* Ha már rendelkezik Azure-támogatási csomaggal, [itt nyisson meg egy támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-* Ha Ön nem Azure-ügyfél, akkor a Microsoft [kereskedelmi támogatási szolgálatán](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)keresztül is megnyithatja a támogatási kérést.
+* Ha Ön nem Azure-ügyfél, a Microsoftnál is megnyithat egy támogatási kérelmet [a kereskedelmi támogatásunkon](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)keresztül.
 
-Egy [virtuális ügynököt](https://support.microsoft.com/contactus/?ws=support) is kipróbálhat, hogy támogatást kapjon vagy kérdéseket tegyen fel.
+Megpróbálhat egy [virtuális ügynököt](https://support.microsoft.com/contactus/?ws=support) is, hogy támogatást szerezzen, vagy kérdéseket tegyen fel.

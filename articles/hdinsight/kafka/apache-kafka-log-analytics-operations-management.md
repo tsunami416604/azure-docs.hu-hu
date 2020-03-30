@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka-Azure-HDInsight Azure Monitor naplófájljai
-description: Megtudhatja, hogyan elemezheti Azure Monitor naplókat az Azure HDInsight lévő Apache Kafka-fürtök naplófájljainak elemzéséhez.
+title: Az Azure Monitor naplói az Apache Kafka számára – Azure HDInsight
+description: Ismerje meg, hogyan elemezheti az Azure-figyelő naplóival az Apache Kafka-fürt naplóit az Azure HDInsightban.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,48 +9,48 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471180"
 ---
-# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka naplók elemzése a HDInsight
+# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight-naplók elemzése
 
-Megtudhatja, hogyan használhatja a Azure Monitor naplókat a HDInsight Apache Kafka által generált naplók elemzéséhez.
+Ismerje meg, hogyan elemezheti az Apache Kafka által a HDInsighton létrehozott naplókat az Azure Monitor-naplók használatával.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="logs-location"></a>Naplók helye
 
-A fürt Apache Kafka naplófájljai a következő helyen találhatók: `/var/log/kafka`. A kafka-naplók nem tárolódnak és nem maradnak meg a fürt életciklusa között, függetlenül attól, hogy a rendszer felügyelt lemezeket használ-e. A következő táblázat az elérhető naplókat mutatja be.
+Apache Kafka naplók a fürtben `/var/log/kafka`található . A Kafka-naplók nem kerülnek mentésre vagy a fürt életciklusa során megőrzött állapotba, függetlenül attól, hogy felügyelt lemezeket használnak-e. Az alábbi táblázat a rendelkezésre álló naplókat mutatja be.
 
 |Napló |Leírás |
 |---|---|
-|Kafka. out|a Kafka-folyamat stdout és stderr. Ebben a fájlban megtalálja a Kafka indítási és leállítási naplóit.|
-|Server. log|A Kafka-kiszolgáló fő naplója. A Kafka-átvitelszervező összes naplója itt fejeződik be.|
-|vezérlő. log|A vezérlő naplófájljai, ha a közvetítő vezérlőként működik.|
-|statechange. log|A rendszer naplózza a fájlban lévő összes állapotváltozás-eseményt.|
-|Kafka-GC. log|Kafka-Garbage gyűjtemény statisztikái.|
+|kafka.out|a Kafka-folyamat stdout és stderr. Ebben a fájlban megtalálja a Kafka indítási és leállítási naplóit.|
+|kiszolgáló.log|A fő Kafka szerver napló. Minden Kafka bróker napló ja.|
+|vezérlő.log|Controller naplók, ha a bróker jár, mint vezérlő.|
+|statechange.log|A fájlban a brókerek állapotmódosítási eseményeit is naplózza a rendszer.|
+|kafka-gc.log|Kafka Garbage Collection statisztika.|
 
-## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor naplók engedélyezése Apache Kafka számára
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Az Azure Monitor-naplók engedélyezése az Apache Kafka számára
 
-A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lépések megegyeznek az összes HDInsight-fürtön. Az alábbi hivatkozások segítségével megismerheti, hogyan hozhatja létre és konfigurálhatja a szükséges szolgáltatásokat:
+Az Azure Monitor-naplók HDInsight-naplóinak engedélyezéséhez az összes HDInsight-fürt esetében ugyanazok. Az alábbi hivatkozások segítségével megtudhatja, hogyan hozhat létre és konfigurálhat a szükséges szolgáltatásokat:
 
-1. Log Analytics munkaterület létrehozása. További információkért tekintse meg a [naplókat Azure monitor](../../azure-monitor/platform/data-platform-logs.md) dokumentumban.
+1. Hozzon létre egy Log Analytics-munkaterületet. További információkért tekintse meg a Naplók az [Azure Monitorban](../../azure-monitor/platform/data-platform-logs.md) dokumentum.
 
-2. Hozzon létre egy Kafka-t a HDInsight-fürtön. További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md) Document.
+2. Hozzon létre egy Kafka a HDInsight-fürtön. További információ: [Start with Apache Kafka on HDInsight](apache-kafka-get-started.md) document.
 
-3. Konfigurálja a Kafka-fürtöt Azure Monitor naplók használatára. További információ: [Azure monitor naplók használata a HDInsight-dokumentumok figyeléséhez](../hdinsight-hadoop-oms-log-analytics-tutorial.md) .
+3. Konfigurálja a Kafka-fürt az Azure Monitor naplók használatára. További információ: [Az Azure Monitor naplók használata hdinsight-dokumentum figyeléséhez.](../hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
 > [!IMPORTANT]  
-> Előfordulhat, hogy a rendszer körülbelül 20 percet vesz igénybe, mielőtt Azure Monitor naplók számára elérhetővé válik az adatnapló.
+> Az Azure Monitor-naplókhoz az adatok elérhetővé nem válik, körülbelül 20 percet is igénybe vehet.
 
 ## <a name="query-logs"></a>Lekérdezési naplók
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki log Analytics munkaterületét.
+1. Az [Azure Portalon](https://portal.azure.com)válassza ki a Log Analytics-munkaterületet.
 
-2. A bal oldali menü **általános**területén válassza a **naplók**lehetőséget. Itt kereshet a Kafkaből gyűjtött adatok között. Adjon meg egy lekérdezést a lekérdezési ablakban, majd válassza a **Futtatás**lehetőséget. Az alábbiakban néhány példát keresünk:
+2. A bal oldali menü **Általános**területén válassza **a Naplók**lehetőséget. Innen kereshet a Kafka-tól gyűjtött adatokközött. Írjon be egy lekérdezést a lekérdezési ablakba, majd válassza a **Futtatás lehetőséget.** Az alábbiakban néhány példa keres:
 
 * Lemezhasználat:
 
@@ -68,7 +68,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Bejövő üzenetek másodpercenként: (cserélje `your_kafka_cluster_name`t a fürt nevére.)
+* Bejövő üzenetek másodpercenként: (Cserélje le `your_kafka_cluster_name` a fürt nevét.)
 
     ```kusto
     metrics_kafka_CL 
@@ -76,7 +76,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Bejövő bájtok másodpercenként: (`wn0-kafka` cseréje a munkavégző csomópont állomásneve.)
+* Bejövő bájt másodpercenként: (Csere `wn0-kafka` egy munkavégző csomópont állomásnevére.)
 
     ```kusto
     metrics_kafka_CL 
@@ -84,7 +84,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Kimenő bájtok másodpercenként: (cserélje le a `your_kafka_cluster_name`t a fürt nevére.)
+* Kimenő bájt másodpercenként: (Cserélje `your_kafka_cluster_name` le a fürt nevét.)
 
     ```kusto
     metrics_kafka_CL 
@@ -92,23 +92,23 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    Az összes naplózott típus kereséséhez `*` is megadhat. Jelenleg a következő naplók érhetők el a lekérdezésekhez:
+    Azt is `*` megadhatja, hogy keressen az összes naplózott típus. Jelenleg a következő naplók érhetők el a lekérdezésekhez:
 
     | Napló típusa | Leírás |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Kafka Broker Server. log |
-    | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
-    | mérőszámok\_Kafka-\_CL | Kafka JMX metrics |
+    | napló\_kafkaserver\_CL | Kafka bróker server.log |
+    | log\_kafkacontroller\_CL | Kafka bróker controller.log |
+    | mérőszámok\_kafka\_CL | Kafka JMX mérőszámok |
 
-    ![Apache Kafka log Analytics CPU-használat](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+    ![Apache kafka log analytics cpu használat](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Azure Monitorről: [Azure monitor áttekintés](../../log-analytics/log-analytics-get-started.md)és [Azure monitor naplók lekérdezése a HDInsight-fürtök figyeléséhez](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Az Azure Monitorról az [Azure Monitor áttekintése](../../log-analytics/log-analytics-get-started.md)című témakörben, valamint a [HDInsight-fürtök figyeléséhez az Azure-figyelő naplóiban olvashat bővebben.](../hdinsight-hadoop-oms-log-analytics-use-queries.md)
 
-A Apache Kafka használatáról az alábbi dokumentumokban talál további információt:
+Az Apache Kafka együttműködésével kapcsolatos további információkért tekintse meg az alábbi dokumentumokat:
 
-* [Tükrözött Apache Kafka HDInsight-fürtök között](apache-kafka-mirroring.md)
-* [Növelje Apache Kafka méretét a HDInsight](apache-kafka-scalability.md)
-* [Apache Spark streaming (DStreams) használata a Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
-* [Apache Spark strukturált adatfolyam használata Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Az Apache Kafka tükrözése a HDInsight-fürtök között](apache-kafka-mirroring.md)
+* [Az Apache Kafka méretének növelése a HDInsighton](apache-kafka-scalability.md)
+* [Az Apache Spark streamelésének (DStreams) használata az Apache Kafka segítségével](../hdinsight-apache-spark-with-kafka.md)
+* [Az Apache Spark strukturált streamelésének használata az Apache Kafka segítségével](../hdinsight-apache-kafka-spark-structured-streaming.md)

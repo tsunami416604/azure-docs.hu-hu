@@ -1,73 +1,73 @@
 ---
-title: Mi az Azure Service Health Notifications?
-description: A szolgáltatás állapotával kapcsolatos értesítések segítségével megtekintheti Microsoft Azure által közzétett szolgáltatás-egészségügyi üzeneteket.
+title: Mik azok az Azure-szolgáltatás állapotára vonatkozó értesítések?
+description: A szolgáltatásállapot-értesítések lehetővé teszik a Microsoft Azure által közzétett szolgáltatásállapot-üzenetek megtekintését.
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77653968"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
 
-A szolgáltatás állapotával kapcsolatos értesítéseket az Azure közzétette, és az előfizetésében található erőforrásokra vonatkozó információkat tartalmaz. Ezek az értesítések a műveletnapló eseményeinek alosztálya, és a tevékenység naplójában is megtalálhatók. A szolgáltatás állapotával kapcsolatos értesítések az osztálytól függően tájékoztató vagy végrehajthatóak lehetnek.
+A szolgáltatásállapot-értesítéseket az Azure teszi közzé, és az előfizetése alatti erőforrásokra vonatkozó információkat tartalmaznak. Ezek az értesítések a tevékenységnapló-események alosztályai, és a tevékenységnaplóban is megtalálhatók. A szolgáltatásállapot-értesítések az osztálytól függően lehetnek tájékoztató vagy perelhető kérhetőek.
 
-A Service Health értesítéseinek különböző osztályai vannak:  
+A szolgáltatásállapot-értesítéseknek különböző osztályai vannak:  
 
-- **Szükséges művelet:** Előfordulhat, hogy az Azure valami szokatlant észlelt a fiókjával kapcsolatban, és ezzel segít Önnek a megoldásában. Az Azure értesítést küld Önnek, vagy részletezi az Azure Engineering vagy support szolgáltatással való kapcsolatfelvételhez szükséges műveleteket.  
-- **Incidens:** Egy esemény, amely hatással van a szolgáltatásra, jelenleg egy vagy több erőforrást érint az előfizetésében.  
-- **Karbantartás:** Egy tervezett karbantartási tevékenység, amely hatással lehet egy vagy több erőforrásra az előfizetés alatt.  
-- **Információ:** Lehetséges optimalizálások, amelyek segíthetnek az erőforrások használatának javításában. 
-- **Biztonság:** Sürgős biztonsággal kapcsolatos információk az Azure-on futó megoldásokkal kapcsolatban.
+- **Szükséges művelet:** Előfordulhat, hogy az Azure valami szokatlan történik a fiókjában, és önnel együttműködve orvosolja ezt. Az Azure értesítést küld Önnek, amely részletezi a végrehajtandó műveleteket, vagy azt, hogy miként léphet kapcsolatba az Azure mérnöki vagy támogatási tevékenységével.  
+- **Esemény:** Egy esemény, amely hatással van a szolgáltatás jelenleg hatással van egy vagy több erőforrás az előfizetésben.  
+- **Karbantartás:** Tervezett karbantartási tevékenység, amely hatással lehet egy vagy több erőforrás az előfizetés ben.  
+- **Információ:** Lehetséges optimalizálások, amelyek segíthetnek az erőforrás-használat javításában. 
+- **Biztonság:** Sürgős, biztonsággal kapcsolatos információk az Azure-ban futó megoldásokkal kapcsolatban.
 
-Az egyes szolgáltatások állapotáról szóló értesítések a hatókörről és az erőforrások hatásáról tartalmaznak részleteket. A részletek a következők:
+Minden szolgáltatás állapotértesítés e hatókörés az erőforrásokra gyakorolt hatás részleteit tartalmazza. Részletek a következők:
 
 Tulajdonság neve | Leírás
 -------- | -----------
-csatornák | A következő értékek egyike: **rendszergazda** vagy **művelet**.
-correlationId | Általában egy GUID formátumú karakterlánc. Az ugyanahhoz a művelethez tartozó események általában ugyanazt a correlationId használják.
+Csatornák | A következő értékek egyike: **Rendszergazda** vagy **Operation**.
+correlationId | Általában a GUID a karakterlánc formátumban. Az azonos művelethez tartozó események általában azonos korrelációsazonosítóval rendelkeznek.
 eventDataId | Egy esemény egyedi azonosítója.
 eventName | Egy esemény címe.
-szint | Egy esemény szintje
-resourceProviderName | Az érintett erőforráshoz tartozó erőforrás-szolgáltató neve.
-resourceType| Az érintett erőforrás erőforrás-típusa.
-Részállapot | Általában a megfelelő REST-hívás HTTP-állapotkód, de tartalmazhat más, alállapotot leíró karakterláncokat is. Például: OK (HTTP-állapotkód: 200), létrehozva (HTTP-állapotkód: 201), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapotkód: 204), hibás kérés (HTTP-állapotkód: 400), nem található (http-állapotkód: 404), ütközés (HTTP-állapotkód: 409), belső kiszolgáló Hiba (HTTP-állapotkód: 500), a szolgáltatás nem érhető el (HTTP-állapotkód: 503) és az átjáró időtúllépése (HTTP-állapotkód: 504).
-eventTimestamp | Időbélyeg, amikor az Azure-szolgáltatás létrehozta az eseményt az eseménynek megfelelő kérelem feldolgozásakor.
-submissionTimestamp | Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez.
-subscriptionId | Az Azure-előfizetés, amelyben az esemény naplózva lett.
-status | A művelet állapotát leíró karakterlánc. Néhány gyakori érték: **elindítva**, **folyamatban**, **sikeres**, **sikertelen**, **aktív**és **megoldott**.
+szint | Az esemény szintje
+resourceProviderName | Az érintett erőforrás erőforrás-szolgáltatójának neve.
+resourceType| Az érintett erőforrás erőforrásának típusa.
+alállapot | Általában a megfelelő REST-hívás HTTP-állapotkódja, de tartalmazhat más karakterláncokat is, amelyek egy alállapotot írnak le. Például: OK (HTTP állapotkód: 200), Létrehozva (HTTP-állapotkód: 201), Elfogadva (HTTP-állapotkód: 202), Nincs tartalom (HTTP-állapotkód: 204), Rossz kérés (HTTP-állapotkód: 400), Nem található (HTTP állapotkód: 404), Ütközés (HTTP-állapotkód: 409), Belső kiszolgáló Hiba (HTTP-állapotkód: 500), Szolgáltatás nem érhető el (HTTP-állapotkód: 503) és átjáró időkiírása (HTTP-állapotkód: 504).
+eventTimestamp | Időbélyeg, amikor az eseményt az Azure szolgáltatás hozta létre az eseménynek megfelelő kérés feldolgozása.
+beküldésIdőbélyeg | Időbélyeg, amikor az esemény elérhetővé vált a lekérdezéshez.
+subscriptionId | Az Az Azure-előfizetés, amelyben ez az esemény naplózásra került.
+status | A művelet állapotát leíró karakterlánc. Néhány gyakori érték: **Elindítva,** **Folyamatban,** **Sikeresen**, **Sikertelen**, **Aktív**és **Megoldva.**
 operationName | A művelet neve.
 category | Ez a tulajdonság mindig **ServiceHealth**.
-resourceId | Az érintett erőforrás erőforrás-azonosítója.
-Tulajdonságok. cím | A kommunikáció honosított címe. Az alapértelmezett érték az angol.
-Tulajdonságok. kommunikáció | A HTML-jelöléssel folytatott kommunikáció honosított adatai. Az alapértelmezett érték az angol.
-Properties.incidentType | A következő értékek egyike: **beavatkozás szükséges**, **tájékoztató**, **incidens**, **karbantartás**vagy **Biztonság**.
-Properties.trackingId | Az az incidens, amellyel ez az esemény társítva van. Ezzel a művelettel korrelálhatja az incidensekhez kapcsolódó eseményeket.
-Properties.impactedServices | Egy Escape-JSON-blob, amely leírja az incidens által érintett szolgáltatásokat és régiókat. A tulajdonság tartalmazza azon szolgáltatások listáját, amelyek mindegyike **szolgáltatásnév**, valamint az érintett régiók listája, amelyek mindegyike rendelkezik **RegionName**.
-Properties.defaultLanguageTitle | Az angol nyelvű kommunikáció.
-Properties.defaultLanguageContent | Az angol nyelvű kommunikáció HTML-kódban vagy egyszerű szövegként.
-Tulajdonságok. fázis | Az **incidens**lehetséges értékei, valamint a **Biztonság** **aktív,** **megoldott** vagy **RCA**. A **beavatkozás szükséges** vagy a **tájékoztatási** szolgáltatás esetében az egyetlen érték **aktív.** A **karbantartáshoz** a következők tartoznak: **aktív**, **tervezett**, **befejezetlen**, **megszakított**, **újraütemezett**, **megoldott**vagy **befejezett**.
-Properties. communicationId | Az a kommunikáció, amellyel ez az esemény társítva van.
+resourceId | Az érintett erőforrás erőforrásazonosítója.
+Tulajdonságok.cím | A kommunikáció honosított címe. Az alapértelmezett beállítás az angol.
+Tulajdonságok.kommunikáció | A HTML-jelöléssel való kommunikáció honosított részletei. Az alapértelmezett beállítás az angol.
+Tulajdonságok.incidenstípus | A következő értékek egyike: **ActionRequired**, **Informational**, **Incident**, **Maintenance**vagy **Security**.
+Properties.trackingId | Az az incidens, amelyhez az esemény társítva van. Ezzel korrelálhat az incidenshez kapcsolódó eseményekkel.
+Properties.impactedServices | Egy szökött JSON blob, amely leírja az incidens által érintett szolgáltatásokat és régiókat. A tulajdonság tartalmazza a szolgáltatások listáját, amelyek mindegyike rendelkezik **ServiceName**, és egy listát az érintett régiók, amelyek mindegyike rendelkezik **regionname**.
+Properties.defaultLanguageTitle | A kommunikáció angolul.
+Properties.defaultLanguageContent | A kommunikáció angol nyelven HTML-jelölésként vagy egyszerű szövegként.
+Tulajdonságok.szakasz | Az Incidens és a Biztonság lehetséges értékei **aktívak,** **megoldottak** vagy **RCA.The**possible values for **Incident**, and **Security** are Active, Resolved or RCA . **ActionRequired** vagy **Informational** esetén az egyetlen érték **aktív.** **Karbantartás esetén** ezek a következők: **Aktív,** **Tervezett**, **Folyamatban,** **Visszavont,** **Átütemezett**, **Feloldva**vagy **Kész.**
+Tulajdonságok.communicationId | Az a kommunikáció, amelyhez ez az esemény társítva van.
 
-### <a name="details-on-service-health-level-information"></a>A szolgáltatás állapotára vonatkozó információk részletei
+### <a name="details-on-service-health-level-information"></a>A szolgáltatási szintű információk részletei
 
-**Szükséges művelet** (Properties. incidentType = = beavatkozás szükséges)
-- Tájékoztatás – rendszergazdai beavatkozás szükséges a meglévő szolgáltatások hatásának megelőzése érdekében.
+**Szükséges művelet** (properties.incidentType == ActionRequired)
+- Információs – Rendszergazdai műveletre van szükség a meglévő szolgáltatásokra gyakorolt hatás megelőzése érdekében.
     
-**Karbantartás** (Properties. incidentType = = karbantartás)
-- Figyelmeztetés – vészhelyzeti karbantartás
-- Tájékoztató – szabványos tervezett karbantartás
+**Karbantartás** (properties.incidentType == Karbantartás)
+- Figyelmeztetés - Vészhelyzeti karbantartás
+- Tájékoztató - Szabványos tervezett karbantartás
 
-**Információ** (tulajdonságok. incidentType = = információ)
-- Tájékoztatás – a rendszergazdának szükség lehet a meglévő szolgáltatások hatásának megelőzésére.
+**Információ** (properties.incidentType == Információ)
+- Tájékoztató – Előfordulhat, hogy a rendszergazda a meglévő szolgáltatásokra gyakorolt hatás megelőzése érdekében szükséges.
 
-**Biztonság** (Properties. incidentType = = biztonság)
-- Figyelmeztetés – biztonsági tanácsadó, amely hatással van a meglévő szolgáltatásokra, és rendszergazdai beavatkozást igényelhet.
-- Tájékoztató – biztonsági tanácsadó, amely hatással van a meglévő szolgáltatásokra.
+**Biztonság** (properties.incidentType == Biztonság)
+- Figyelmeztetés – Biztonsági tanácsadó, amely hatással van a meglévő szolgáltatásokra, és rendszergazdai beavatkozást igényelhet.
+- Információs – A meglévő szolgáltatásokat érintő biztonsági tanácsadó.
 
-**Szolgáltatási problémák** (Properties. incidentType = = incidens)
-- Hiba – a több régióban több szolgáltatáshoz való hozzáférés általános problémái nagy mennyiségű ügyfelet érintenek.
-- Figyelmeztetés – az egyes szolgáltatásokhoz és/vagy meghatározott régióokhoz való hozzáférésre vonatkozó problémák az ügyfelek egy részhalmazát érintik.
-- Tájékoztató – a szolgáltatás rendelkezésre állását nem befolyásoló felügyeleti műveleteket és/vagy késést érintő problémák.
+**Szolgáltatásproblémák** (properties.incidentType == Incidens)
+- Hiba – A több szolgáltatás több régióban való elérésével kapcsolatos széles körű problémák az ügyfelek széles körét érintik.
+- Figyelmeztetés – Az adott szolgáltatásokhoz és/vagy régiókhoz való hozzáféréssel kapcsolatos problémák hatással vannak az ügyfelek egy részhalmazára.
+- Információs – a felügyeleti műveleteket és/vagy a késést befolyásoló problémák, amelyek nem befolyásolják a szolgáltatás rendelkezésre állását.

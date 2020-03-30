@@ -1,46 +1,49 @@
 ---
 title: Ajánlott biztonsági eljárások
-description: Az Azure-beli delegált erőforrás-kezelés használatakor fontos figyelembe venni a biztonsági és hozzáférés-vezérlést.
-ms.date: 07/11/2019
+description: Az Azure delegált erőforrás-kezelése során fontos figyelembe venni a biztonság és a hozzáférés-vezérlés.
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270705"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246908"
 ---
 # <a name="recommended-security-practices"></a>Ajánlott biztonsági eljárások
 
-Az Azure-beli delegált erőforrás-kezelés használatakor fontos figyelembe venni a biztonsági és hozzáférés-vezérlést. A bérlő felhasználóinak közvetlen hozzáférésük lesz az ügyfél-előfizetésekhez és az erőforráscsoportokhoz, ezért a bérlő biztonságának fenntartásához lépéseket kell végrehajtania. Azt is érdemes biztosítani, hogy csak az ügyfelek erőforrásainak hatékony kezeléséhez szükséges hozzáférést engedélyezze. Ez a témakör ajánlásokat nyújt a segítségére.
+Az [Azure delegált erőforrás-kezelése](azure-delegated-resource-management.md)során fontos figyelembe venni a biztonság és a hozzáférés-vezérlés. A bérlő felhasználói közvetlen hozzáféréssel rendelkeznek az ügyfél-előfizetésekhez és erőforráscsoportokhoz, ezért lépéseket kell tennie a bérlő biztonságának fenntartása érdekében. Győződjön meg arról is, hogy csak az ügyfelek erőforrásainak hatékony kezeléséhez szükséges hozzáférést engedélyezi. Ez a témakör javaslatokat tartalmaz az erre vonatkozó anameddig.
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication szükséges
+## <a name="require-azure-multi-factor-authentication"></a>Azure többtényezős hitelesítésének megkövetelése
 
-Az [Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (más néven kétlépéses ellenőrzés) segít megakadályozni, hogy a támadók több hitelesítési lépés megkövetelésével hozzáférjenek a fiókokhoz. A szolgáltatói bérlő összes felhasználója számára szükséges Multi-Factor Authentication, beleértve az ügyfelek erőforrásaihoz hozzáférő felhasználókat is.
+[Az Azure többtényezős hitelesítés](../../active-directory/authentication/concept-mfa-howitworks.md) (más néven kétlépéses ellenőrzés) segít megakadályozni, hogy a támadók hozzáférjenek egy fiókhoz több hitelesítési lépés megkövetelésével. A szolgáltató bérlőjének minden felhasználójához többtényezős hitelesítést kell igényelnie, beleértve azügyfeleket is, akik hozzáférnek az ügyfélerőforrásokhoz.
 
-Javasoljuk, hogy kérje ügyfeleit, hogy az Azure-Multi-Factor Authentication is implementálják a bérlők számára.
+Azt javasoljuk, hogy kérje meg ügyfeleit, hogy valósítsák meg az Azure többtényezős hitelesítést a bérlőkis.
 
-## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Engedélyek társítása csoportokhoz a legalacsonyabb jogosultsági szint elve alapján
+## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Engedélyek hozzárendelése csoportokhoz a minimális jogosultság elve alapján
 
-A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az ügyfelek erőforrásainak kezeléséhez szükséges minden egyes szerepkörhöz. Ez lehetővé teszi, hogy az egyes felhasználókat szükség szerint vegye fel vagy távolítsa el a csoportba ahelyett, hogy közvetlenül az adott felhasználóhoz rendeljen engedélyeket.
+A felügyelet megkönnyítése érdekében azt javasoljuk, hogy az Azure AD felhasználói csoportok használata minden szerepkör kezeléséhez szükséges az ügyfelek erőforrásait. Ez lehetővé teszi, hogy szükség szerint egyéni felhasználókat vegyen fel vagy távolítson el a csoporthoz, ahelyett, hogy közvetlenül az adott felhasználóhoz rendelné az engedélyeket.
 
-Az engedélyezési struktúra létrehozásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladat elvégzéséhez szükséges engedélyekkel rendelkezzenek, ami segít csökkenteni a véletlen hibák esélyét.
+> [!IMPORTANT]
+> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoporttípusnak** **biztonságnak,** nem pedig **Office 365-nek**kell lennie. Ez a beállítás a csoport létrehozásakor van bejelölve. További információ: [Hozzon létre egy alapszintű csoportot, és adjon hozzá tagokat az Azure Active Directory használatával.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-Előfordulhat például, hogy a következőhöz hasonló struktúrát szeretne használni:
+Az engedélystruktúra létrehozásakor ügyeljen arra, hogy kövesse a minimális jogosultság elvét, hogy a felhasználók csak a feladat uk elvégzéséhez szükséges engedélyekkel rendelkezhessenek, így csökkentve a véletlen hibák esélyét.
 
-|Csoport neve  |Típus  |principalId  |Szerepkör-definíció  |Szerepkör-definíció azonosítója  |
+Előfordulhat például, hogy egy ilyen struktúrát szeretne használni:
+
+|Csoport neve  |Típus  |principalId között  |Szerepkör-definíció  |Szerepkör-definíció azonosítója  |
 |---------|---------|---------|---------|---------|
-|Építészek     |Felhasználói csoport         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Értékelés     |Felhasználói csoport         |\<principalId\>         |Olvasó         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|VM-szakemberek     |Felhasználói csoport         |\<principalId\>         |VIRTUÁLIS gépek közreműködője         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automatizálás     |Egyszerű szolgáltatásnév (SPN)         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Építészek     |Felhasználói csoport         |\<principalId között\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Értékelés     |Felhasználói csoport         |\<principalId között\>         |Olvasó         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|Virtuális gép specialistái     |Felhasználói csoport         |\<principalId között\>         |Virtuális gép közreműködője         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automation     |Egyszerű szolgáltatásnév (SPN)         |\<principalId között\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
-Miután létrehozta ezeket a csoportokat, igény szerint rendelhet hozzá felhasználókat. Csak azokat a felhasználókat adja hozzá, akiknek valóban szükségük van a hozzáférésre. Mindenképpen tekintse át a csoporttagság rendszeres áttekintését, és távolítsa el azokat a felhasználókat, akik már nem megfelelőek vagy szükségesek a belefoglalásához.
+Miután létrehozta ezeket a csoportokat, szükség szerint hozzárendelhet felhasználókat. Csak azokkal a felhasználókkal adjon hozzá, akiknek valóban szükségük van a hozzáférésre. Ügyeljen arra, hogy rendszeresen ellenőrizze a csoporttagságot, és távolítsa el azon felhasználókat, akik et már nem megfelelőek vagy szükségesek a felvételhez.
 
-Ne feledje, hogy ha az [ügyfeleket nyilvános felügyelt szolgáltatáson keresztül](../how-to/publish-managed-services-offers.md)kívánja bevezetni, az Ön által kínált összes csoport (vagy felhasználó vagy szolgáltatásnév) ugyanazokkal az engedélyekkel fog rendelkezni minden olyan ügyfélnél, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkavégzéshez, közzé kell tennie egy külön privát csomagot, amely kizárólag az egyes ügyfelekre vonatkozik, vagy egyénileg, Azure Resource Manager-sablonok használatával készíti elő az ügyfeleket. Közzétehet például egy nagyon korlátozott hozzáféréssel rendelkező nyilvános csomagot, majd a felhasználóval közvetlenül is felhasználhatja az erőforrásait a további hozzáféréshez egy testreszabott Azure-erőforrás-sablon használatával, igény szerint további hozzáférést biztosítva.
+Ne feledje, hogy ha [nyilvános szolgáltatásajánlaton keresztül vonja be az ügyfeleket,](../how-to/publish-managed-services-offers.md)a benne lévő bármely csoport (vagy felhasználó vagy egyszerű szolgáltatás) minden olyan ügyfél számára azonos engedélyekkel fog rendelkezni, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkához, külön privát csomagot kell közzétennie, amely kizárólag az egyes ügyfelek számára, vagy a fedélzeti ügyfelek egyénileg az Azure Resource Manager-sablonok használatával. Közzétehet például egy nyilvános csomagot, amely nagyon korlátozott hozzáféréssel rendelkezik, majd az ügyféllel együttműködve közvetlenül az erőforrások fedélzeti beszervezéséhez további hozzáférést biztosít egy testre szabott Azure-erőforrássablon használatával, amely szükség szerint további hozzáférést biztosít.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Az [Azure multi-Factor Authentication üzembe helyezése](../../active-directory/authentication/howto-mfa-getstarted.md).
-- További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
+- [Telepítse az Azure többtényezős hitelesítést.](../../active-directory/authentication/howto-mfa-getstarted.md)
+- További információ a [bérlők közötti felügyeleti élményekről.](cross-tenant-management-experience.md)

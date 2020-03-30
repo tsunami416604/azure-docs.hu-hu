@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Table API a Pythonnal – Azure Cosmos DB használatával'
+title: 'Rövid útmutató: Table API pythonnal – Azure Cosmos DB'
 description: Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Table API alkalmazások létrehozására az Azure Portal és a Python használatával
 author: SnehaGunda
 ms.service: cosmos-db
@@ -10,10 +10,10 @@ ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77212708"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Python és az Azure Cosmos DB használatával
@@ -25,12 +25,12 @@ ms.locfileid: "77212708"
 > * [Python](create-table-python.md)
 > 
 
-Ebben a rövid útmutatóban egy Azure Cosmos DB Table API fiókot hoz létre és felügyel a Azure Portalból és a Visual studióból a GitHubról klónozott Python-alkalmazással. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban hozzon létre és kezeljen egy Azure Cosmos DB Table API-fiókot az Azure Portalról, és a Visual Studióból a GitHubról klónozott Python-alkalmazással. Az Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, a tábla, a kulcsérték és a grafikonadatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is `https://localhost:8081` URI-ja és a kulcs `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/), a telepítés során kiválasztott **Azure-fejlesztési** és **Python-fejlesztési** munkaterhelésekkel. 
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Vagy [próbálja ki az Azure Cosmos DB-t ingyenesen](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés nélkül. Az [Azure Cosmos DB emulátort](https://aka.ms/cosmosdb-emulator) is `https://localhost:8081` használhatja `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`a kulcs URI-jával és a kulccsal.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/), az **Azure fejlesztési** és **Python fejlesztési** számítási feladatok a telepítés során kiválasztott. 
 - [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -51,9 +51,9 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB Table API fiókot hoz létre é
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -65,7 +65,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
     cd "C:\git-samples"
     ```
 
-3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-python-getting-started.git
@@ -77,13 +77,13 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
+1. Az Azure Cosmos DB-fiókjában az [Azure Portalon](https://portal.azure.com/)válassza a **Kapcsolati karakterlánc**lehetőséget. 
 
-    ![A kapcsolatok karakterláncának megtekintése és másolása a kapcsolatok karakterláncának beállításaiban](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
+    ![A KAPCSOLATi karakterlánc megtekintése és másolása a Kapcsolati karakterlánc beállításai között](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. Másolja az ACCOUNT NAME (Fiók neve) értékét a jobb oldalon található gombbal.
 
-3. Nyissa meg a *config.py* fájlt, és illessze be a fiók nevét a portálról a 19. sorban lévő STORAGE_ACCOUNT_NAME értékre.
+3. Nyissa *meg* a config.py fájlt, és illessze be a SZÁMLANEVET a portálról a STORAGE_ACCOUNT_NAME 19-es sorbeli értékbe.
 
 4. Lépjen vissza a portálra, és másolja a vágólapra a PRIMARY KEY (Elsődleges kulcs) értékét.
 
@@ -93,17 +93,17 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-1. A Visual Studióban kattintson a jobb gombbal a projektre **megoldáskezelő**.
+1. A Visual Studióban kattintson a jobb gombbal a projektre a **Megoldáskezelőben.**
 
 2. Válassza ki az aktuális Python-környezetet, majd kattintson a jobb gombbal.
 
-2. Válassza a **Python-csomag telepítése**lehetőséget, majd adja meg az *Azure-Storage-Table*értéket.
+2. Válassza **a Python-csomag telepítése**lehetőséget, majd írja be az *azure-storage-table értéket.*
 
 3. Az alkalmazás futtatásához nyomja le az F5 billentyűt. Az alkalmazás megjelenik a böngészőben. 
 
-Is most visszaléphet az Adatkezelőbe, és tekintse meg, lekérdezése, módosítása és az új adatokkal dolgozni. 
+Most már visszatérhet az Adatkezelőhöz, és megtekintheti, lekérdezheti, módosíthatja és dolgozhat ezekkel az új adatokkal. 
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -111,9 +111,9 @@ Is most visszaléphet az Adatkezelőbe, és tekintse meg, lekérdezése, módos�
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Cosmos DB fiókot, hogyan hozhat létre táblát a Adatkezelő használatával, és hogyan futtathat Python-alkalmazást a Visual Studióban a tábla adatai hozzáadásához.  Most már le tudja kérdezni adatait a Table API segítségével.  
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB-fiókot, hogyan hozhat létre egy táblát az Adatkezelő vel, és futtathatja a Visual Studióban a Python-alkalmazást a táblaadatok hozzáadásához.  Most már le tudja kérdezni adatait a Table API segítségével.  
 
 > [!div class="nextstepaction"]
 > [Táblaadatok importálása a Table API-ba](table-import.md)

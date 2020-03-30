@@ -1,90 +1,90 @@
 ---
-title: Fogalmak – biztonság az Azure Kubernetes Servicesben (ak)
-description: Ismerje meg az Azure Kubernetes szolgáltatással (ak) kapcsolatos biztonságot, beleértve a Master és Node kommunikációt, a hálózati házirendeket és a Kubernetes titkokat.
+title: Fogalmak – Biztonság az Azure Kubernetes-szolgáltatásokban (AKS)
+description: Ismerje meg az Azure Kubernetes-szolgáltatás (AKS) biztonságát, beleértve a fő és a csomópont kommunikációját, a hálózati szabályzatokat és a Kubernetes-titkokat.
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595943"
 ---
-# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai
+# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) alkalmazás- és fürtkészletei biztonsági fogalmai
 
-Ha az alkalmazás számítási feladatait az Azure Kubernetes szolgáltatásban (ak) futtatja, a fürt biztonsága kulcsfontosságú szempont. A Kubernetes olyan biztonsági összetevőket tartalmaz, mint például a *hálózati házirendek* és a *titkos kulcsok*. Az Azure ezután olyan összetevőket hoz létre, mint például a hálózati biztonsági csoportok és a előkészített fürtök frissítése. Ezek a biztonsági összetevők a legújabb operációs rendszer biztonsági frissítéseit és Kubernetes, valamint a biztonságos Pod-forgalmat és a bizalmas hitelesítő adatokhoz való hozzáférést biztosító AK-fürt megtartására szolgálnak.
+Az ügyféladatok védelme érdekében az Azure Kubernetes-szolgáltatás (AKS) alkalmazás-számítási feladatainak futtatásakor a fürt biztonsága kulcsfontosságú szempont. A Kubernetes olyan biztonsági összetevőket tartalmaz, mint a *hálózati házirendek* és *a Titkos kulcsok*. Az Azure ezután hozzáadja az összetevőket, például a hálózati biztonsági csoportok és a hangszerelt fürtfrissítéseket. Ezek a biztonsági összetevők kombinálva tartják az AKS-fürt a legújabb operációs rendszer biztonsági frissítéseit és a Kubernetes-kiadásokat, valamint a biztonságos pod forgalmat és a bizalmas hitelesítő adatokhoz való hozzáférést.
 
-Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá teheti alkalmazásait az AK-ban:
+Ez a cikk bemutatja azokat az alapfogalmakat, amelyek biztosítják az alkalmazásokat az AKS-ben:
 
-- [Fő összetevők biztonsága](#master-security)
+- [Főösszetevők biztonsága](#master-security)
 - [Csomópont biztonsága](#node-security)
-- [Fürt frissítései](#cluster-upgrades)
+- [Fürtfrissítések](#cluster-upgrades)
 - [Hálózati biztonság](#network-security)
-- [Kubernetes titkai](#kubernetes-secrets)
+- [A Kubernetes titkos kódjai](#kubernetes-secrets)
 
-## <a name="master-security"></a>Fő biztonság
+## <a name="master-security"></a>Főbiztonság
 
-Az AK-ban a Kubernetes fő összetevői a Microsoft által biztosított felügyelt szolgáltatás részét képezik. Mindegyik AK-fürt saját, egyetlen bérlős, dedikált Kubernetes-főkiszolgálóval rendelkezik az API-kiszolgáló, a ütemező stb. biztosításához. Ezt a főkiszolgálót a Microsoft felügyeli és tartja karban.
+Az AKS-ben a Kubernetes fő összetevői a Microsoft által nyújtott felügyelt szolgáltatás részét képezik. Minden AKS-fürt rendelkezik saját egybérlős, dedikált Kubernetes-főkiszolgálóval az API-kiszolgáló, az ütemező stb. Ezt a főkiszolgálót a Microsoft kezeli és karbantartja.
 
-Alapértelmezés szerint a Kubernetes API-kiszolgáló egy nyilvános IP-címet és egy teljesen minősített tartománynevet (FQDN) használ. Az API-kiszolgálóhoz való hozzáférést az Kubernetes szerepköralapú hozzáférés-vezérlés és a Azure Active Directory használatával szabályozhatja. További információ: [Azure ad-integráció az AK][aks-aad]-nal.
+Alapértelmezés szerint a Kubernetes API-kiszolgáló nyilvános IP-címet és egy teljesen minősített tartománynevet (FQDN) használ. Az API-kiszolgálóhoz való hozzáférést a Kubernetes szerepköralapú hozzáférés-vezérlésés az Azure Active Directory használatával szabályozhatja. További információ: [Azure AD integráció az AKS-sel.][aks-aad]
 
 ## <a name="node-security"></a>Csomópont biztonsága
 
-Az AK-csomópontok az Ön által kezelt és karbantartott Azure-beli virtuális gépek. A Linux-csomópontok optimalizált Ubuntu-disztribúciót futtatnak a Moby Container Runtime használatával. A Windows Server-csomópontok (jelenleg előzetes verzióban) egy optimalizált Windows Server 2019 kiadást futtatnak, és a Moby Container runtimet is használják. Egy AK-fürt létrehozásakor vagy skálázásakor a rendszer automatikusan telepíti a csomópontokat a legújabb biztonsági frissítésekkel és konfigurációkkal.
+Az AKS-csomópontok olyan Azure virtuális gépek, amelyeket ön kezel és karbantart. A Linux-csomópontok optimalizált Ubuntu disztribúciót futtatnak a Moby-tároló futásidejével. A Windows Server-csomópontok (jelenleg előzetes verzióban az AKS-ben) optimalizált Windows Server 2019-kiadást futtatnak, és a Moby-tároló futásidejét is használják. Amikor egy AKS-fürt jön létre, vagy felskálázott, a csomópontok automatikusan telepíti a legújabb operációs rendszer biztonsági frissítéseit és konfigurációit.
 
-Az Azure platform automatikusan alkalmazza az operációs rendszer biztonsági javításait Linux-csomópontokra. Ha a Linux operációs rendszer biztonsági frissítése a gazdagép újraindítását igényli, a rendszer nem hajtja végre automatikusan az újraindítást. A Linux-csomópontokat manuálisan is újraindíthatja, vagy közös megközelítéssel használhatja a [Kured][kured], egy nyílt forráskódú újraindítási démont a Kubernetes. A Kured [daemonset elemet][aks-daemonsets] fut, és figyeli az egyes csomópontokat egy olyan fájl jelenléte esetén, amely azt jelzi, hogy újraindítás szükséges. A rendszer az újraindításokat a fürtön keresztül felügyeli a fürt frissítésével megegyező [Kordon és kiürítési folyamat](#cordon-and-drain) használatával.
+Az Azure platform automatikusan alkalmazza az operációs rendszer biztonsági javításait a Linux-csomópontokra éjszakánként. Ha egy Linux operációs rendszer biztonsági frissítése gazdagép újraindítását igényli, az újraindítás nem történik meg automatikusan. Manuálisan újraindíthatja a Linux-csomópontokat, vagy gyakori megközelítés a [Kured][kured], a Kubernetes nyílt forráskódú újraindításdémonjának használata. Kured [daemonSet][aks-daemonsets] néven fut, és figyeli az egyes csomópontok egy fájl jelenlétét, jelezve, hogy újraindításra van szükség. Az újraindítások kezelése a fürtön keresztül a fürt frissítésével azonos [kordon- és csatornafolyamat](#cordon-and-drain) használatával lesz kezelve.
 
-A Windows Server-csomópontok (jelenleg előzetes verzióban az AK-ban) Windows Update nem futtatja automatikusan, és alkalmazza a legújabb frissítéseket. A Windows Update kiadási ciklus és a saját ellenőrzési folyamata körüli rendszeres ütemterv esetén frissíteni kell a Windows Server Node-készlet (ek) et az AK-fürtben. Ez a frissítési folyamat olyan csomópontokat hoz létre, amelyek a legújabb Windows Server-lemezképet és-javításokat futtatják, majd eltávolítja a régebbi csomópontokat. További információ erről a folyamatról: [Node-készlet frissítése az AK-ban][nodepool-upgrade].
+Windows Server-csomópontok esetén (jelenleg előzetes verzióban az AKS-ben) a Windows Update nem futtatja automatikusan és nem alkalmazza a legújabb frissítéseket. A Windows Update kiadási ciklusa és a saját ellenőrzési folyamat körüli rendszeres ütemezés szerint frissítenie kell az AKS-fürt Windows Server csomópontkészlete(i) rendszert. Ez a frissítési folyamat olyan csomópontokat hoz létre, amelyek a legújabb Windows Server-lemezképet és javításokat futtatják, majd eltávolítja a régebbi csomópontokat. Erről a folyamatról további információt az [AKS csomópontkészletének frissítése című témakörben talál.][nodepool-upgrade]
 
-A csomópontok magánhálózati virtuális hálózati alhálózatba vannak telepítve, és nincsenek hozzárendelve nyilvános IP-címek. Hibaelhárítási és felügyeleti célokra az SSH alapértelmezés szerint engedélyezve van. Ez az SSH-hozzáférés csak a belső IP-cím használatával érhető el.
+A csomópontok egy privát virtuális hálózati alhálózatba vannak telepítve, nyilvános IP-címek hozzárendelése nélkül. Hibaelhárítási és felügyeleti célokra az SSH alapértelmezés szerint engedélyezve van. Ez az SSH-hozzáférés csak a belső IP-cím használatával érhető el.
 
-A tárolók biztosításához a csomópontok az Azure Managed Disks használják. A virtuálisgép-csomópontok többségének mérete esetén ezek a nagy teljesítményű SSD-k által támogatott prémium lemezek. A felügyelt lemezeken tárolt adatok automatikusan titkosítva maradnak az Azure platformon belül. A redundancia javítása érdekében ezeket a lemezeket az Azure-adatközpontban is biztonságosan replikálja a rendszer.
+A tárolás biztosításához a csomópontok azure felügyelt lemezek et használnak. A legtöbb virtuálisgép-csomópont mérete, ezek prémium szintű lemezek nagy teljesítményű SSD-k által támogatott. A felügyelt lemezeken tárolt adatok automatikusan titkosítva vannak az Azure platformon belül. A redundancia javítása érdekében ezek a lemezek is biztonságosan replikálódik az Azure adatközpontban.
 
-A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonságosak az ellenséges, több-bérlős használatra. További biztonsági funkciók, például a *Pod biztonsági házirendek* , vagy a csomópontok részletes, szerepköralapú hozzáférés-vezérlése (RBAC) nehezebbé teszik a kihasználat. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
+Kubernetes környezetek, az AKS vagy máshol, jelenleg nem teljesen biztonságos az ellenséges több-bérlős használat. További biztonsági funkciók, például *pod biztonsági házirendek* vagy részletesebb szerepkör-alapú hozzáférés-vezérlés (RBAC) a csomópontok megnehezítik a biztonsági réseket. Azonban a valódi biztonság ellenséges több-bérlős számítási feladatok futtatásakor, a hipervizor az egyetlen biztonsági szint, amelyben meg kell bíznia. A Kubernetes biztonsági tartománya a teljes fürtlesz, nem egy adott csomópont. Az ilyen típusú ellenséges több-bérlős számítási feladatok, fizikailag elkülönített fürtök használata kell használnia. A munkaterhelések elkülönítésének módjairól az [AKS-ben a fürtelkülönítésgyakorlati tanácsok című témakörben talál][cluster-isolation]további információt.
 
-## <a name="cluster-upgrades"></a>Fürt frissítései
+## <a name="cluster-upgrades"></a>Fürtfrissítések
 
-A biztonság és a megfelelőség szempontjából, illetve a legújabb funkciók használatához az Azure eszközöket biztosít az AK-fürtök és-összetevők frissítésének előkészítéséhez. Ez a frissítési előkészítés magában foglalja a Kubernetes fő-és ügynök-összetevőit is. A [rendelkezésre álló Kubernetes-verziók listáját](supported-kubernetes-versions.md) az AK-fürthöz tekintheti meg. A frissítési folyamat elindításához meg kell adnia az elérhető verziók egyikét. Az Azure ezután biztonságosan látja el és üríti az egyes AK-csomópontokat, és végrehajtja a frissítést.
+A biztonság és a megfelelőség érdekében, vagy a legújabb funkciók használatához az Azure eszközöket biztosít az AKS-fürt és -összetevők frissítésének koordinálására. Ez a frissítés vezénylési tartalmazza a Kubernetes fő- és ügynök-összetevőket is. Megtekintheti az AKS-fürthöz [rendelkezésre álló Kubernetes-verziók listáját.](supported-kubernetes-versions.md) A frissítési folyamat elindításához meg kell adnia az alábbi verziók egyikét. Az Azure ezután biztonságosan kordonok és kiüríti az egyes AKS-csomópontok, és végrehajtja a frissítést.
 
-### <a name="cordon-and-drain"></a>Cordon és Drain
+### <a name="cordon-and-drain"></a>Kordon és lefolyó
 
-A frissítési folyamat során az AK-csomópontok külön vannak kiképezve a fürtből, így az új hüvelyek nem lesznek ütemezve. A csomópontokat ezután a következőképpen kell kiüríteni és frissíteni:
+A frissítési folyamat során az AKS-csomópontok külön-külön kordonnal vannak elzárva a fürtből, így az új podok nincsenek ütemezve. A csomópontokezután lecsapolt és korszerűsített az alábbiak szerint:
 
-- A rendszer egy új csomópontot telepít a csomópont-készletbe. Ez a csomópont a legújabb operációsrendszer-lemezképet és-javításokat futtatja.
-- A rendszer a meglévő csomópontok egyikét azonosítja a frissítéshez. A csomóponton található hüvelyek szabályosan leállnak, és a csomópont többi csomópontján vannak ütemezve.
-- Ez a meglévő csomópont törölve lett az AK-fürtből.
-- A fürtben a következő csomópontot a rendszer kiüríti és kiüríti ugyanazon folyamattal, amíg az összes csomópontot a frissítési folyamat részeként nem sikerült lecserélni.
+- Egy új csomópont van telepítve a csomópontkészletben. Ez a csomópont a legújabb operációsrendszer-lemezképet és javításokat futtatja.
+- A meglévő csomópontok egyike frissítésre van azonosítva. A csomópontpodjai szabályosan levannak állítva, és a csomópontkészlet többi csomópontján vannak ütemezve.
+- Ez a meglévő csomópont törlődik az AKS-fürtből.
+- A fürt következő csomópontja kordonnal van elkerítve és kiürítve ugyanazzal a folyamattal, amíg az összes csomópontot a frissítési folyamat részeként sikeresen le nem cseréli.
 
-További információ: AK- [fürt frissítése][aks-upgrade-cluster].
+További információt az [AKS-fürt frissítése című témakörben talál.][aks-upgrade-cluster]
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-A helyszíni hálózatokkal létesített kapcsolat és biztonság érdekében az AK-fürtöt meglévő Azure-beli virtuális hálózati alhálózatokra is telepítheti. Ezek a virtuális hálózatok rendelkezhetnek Azure-helyek közötti VPN-vagy Express Route-kapcsolattal a helyszíni hálózathoz. A Kubernetes bemenő vezérlőket privát, belső IP-címekkel lehet meghatározni, hogy a szolgáltatások csak ezen a belső hálózati kapcsolaton keresztül legyenek elérhetők.
+A helyszíni hálózatokkal való kapcsolat és biztonság érdekében telepítheti Az AKS-fürtöt meglévő Azure virtuális hálózati alhálózatokba. Ezek a virtuális hálózatok előfordulhat, hogy egy Azure-hely-hely VPN vagy express route kapcsolat vissza a helyszíni hálózathoz. Kubernetes ingress vezérlők lehet definiálni a magán-, belső IP-címeket, így a szolgáltatások csak ezen a belső hálózati kapcsolaton keresztül érhető el.
 
-### <a name="azure-network-security-groups"></a>Azure hálózati biztonsági csoportok
+### <a name="azure-network-security-groups"></a>Azure-beli hálózati biztonsági csoportok
 
-A virtuális hálózatok forgalmának szűréséhez az Azure hálózati biztonsági csoportokra vonatkozó szabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyező vagy megtagadott forrás-és cél IP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok úgy jönnek létre, hogy engedélyezzék a TLS-forgalmat a Kubernetes API-kiszolgálónak. Amikor terheléselosztó, port-hozzárendelés vagy bejövő útvonalak használatával hoz létre szolgáltatásokat, az AK automatikusan módosítja a hálózati biztonsági csoportot a megfelelő forgalomra.
+A virtuális hálózatok forgalmának szűréséhez az Azure hálózati biztonsági csoportszabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyezett vagy megtagadott forrás- és célIP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok a Kubernetes API-kiszolgálóra irányuló TLS-forgalom engedélyezéséhez jönnek létre. Amikor terheléselosztókkal, portleképezésekkel vagy bejövő útvonalakkal hoz létre szolgáltatásokat, az AKS automatikusan módosítja a hálózati biztonsági csoportot, hogy a forgalom megfelelően folyjon.
 
 ## <a name="kubernetes-secrets"></a>A Kubernetes titkos kódjai
 
-A *titkos* Kubernetes a bizalmas adatok hüvelybe való beadására, például a hozzáférési hitelesítő adatokra vagy kulcsokra használják. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy az üzembe helyezés megadásakor a rendszer egy adott titkot kérhet. A titkos kulcsokat csak olyan csomópontok számára biztosítjuk, amelyekhez szükség van egy ütemezett Pod-re, és a titkot a *tmpfs*tárolja, nem lemezre írva. Ha a titkos kulcsot tartalmazó csomópont utolsó podét törli, a titkos kulcsot a rendszer törli a csomópont tmpfs. A titkos kulcsok tárolása egy adott névtéren belül történik, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
+A Kubernetes *titkos kulcsot* bizalmas adatok podok, például a hozzáférési hitelesítő adatok vagy kulcsok. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy a központi telepítés definiálásakor egy adott titkos kulcsot lehet kérni. A titkos kulcsok csak olyan csomópontok számára vannak megadva, amelyekhez szükség van egy ütemezett podra, és a titkos kulcsot *tmpfs*tárolja, nem lemezre írva. Amikor az utolsó pod egy csomóponton, amely megköveteli a titkos kulcsot törlődik, a titkos kulcs törlődik a csomópont tmpfs törlődik. A titkos kulcsok egy adott névtérben tárolódnak, és csak az ugyanazon a névtéren belül lévő podok férhetnek hozzá.
 
-A titkok használata csökkenti a pod vagy a Service YAML-jegyzékben definiált bizalmas adatokat. Ehelyett a Kubernetes API-kiszolgálón tárolt titkos kulcsot a YAML-jegyzék részeként kell megkérnie. Ez a megközelítés csak a titkos kulcshoz megadott Pod-hozzáférést biztosítja. Megjegyzés: a titkos titkos jegyzékfájl fájljai Base64 formátumban tartalmazzák a titkos adatokat (további részleteket a [hivatalos dokumentációban][secret-risks] talál). Ezért ezt a fájlt bizalmas információként kell kezelni, és soha nem kell véglegesíteni a verziókövetés előtt.
+A titkos kulcsok használata csökkenti a podban vagy a szolgáltatás YAML-jegyzékfájlban definiált bizalmas információkat. Ehelyett a YAML-jegyzékfájl részeként a Kubernetes API-kiszolgálón tárolt titkos kulcsot kéri. Ez a megközelítés csak az adott pod hozzáférést biztosít a titkos. Kérjük, vegye figyelembe: a nyers titkos jegyzékfájlok tartalmazzák a titkos adatokat base64 formátumban (további részletekért lásd a [hivatalos dokumentációt).][secret-risks] Ezért ezt a fájlt bizalmas információként kell kezelni, és soha nem kell elkötelezettnek lennie a forrásellenőrzés iránt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az AK-fürtök biztonságossá tételének megkezdéséhez tekintse meg [az AK-fürt frissítését][aks-upgrade-cluster]ismertető témakört.
+Az AKS-fürtök védelmének első lépései az [AKS-fürt frissítése][aks-upgrade-cluster].
 
-A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a fürt biztonságához és a frissítésekhez az AK][operator-best-practices-cluster-security] -ban, valamint [ajánlott eljárások a pod BIZTONSÁGhoz az AK-ban][developer-best-practices-pod-security].
+A kapcsolódó gyakorlati tanácsok értése: [Gyakorlati tanácsok a fürtbiztonságés az AKS-frissítések][operator-best-practices-cluster-security] és [az AKS pod-biztonsággal kapcsolatos gyakorlati tanácsok című témakörben.][developer-best-practices-pod-security]
 
-Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
+A Kubernetes és az AKS alapfogalmairól az alábbi cikkekben talál további információt:
 
-- [Kubernetes/AK-fürtök és-munkaterhelések][aks-concepts-clusters-workloads]
-- [Kubernetes/AK-identitás][aks-concepts-identity]
-- [Kubernetes/AK virtuális hálózatok][aks-concepts-network]
-- [Kubernetes/AK-tároló][aks-concepts-storage]
-- [Kubernetes/AK-skála][aks-concepts-scale]
+- [Kubernetes / AKS-fürtök és munkaterhelések][aks-concepts-clusters-workloads]
+- [Kubernetes / AKS identitás][aks-concepts-identity]
+- [Kubernetes / AKS virtuális hálózatok][aks-concepts-network]
+- [Kubernetes / AKS tároló][aks-concepts-storage]
+- [Kubernetes / AKS skála][aks-concepts-scale]
 
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured

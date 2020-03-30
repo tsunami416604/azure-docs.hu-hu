@@ -1,39 +1,39 @@
 ---
-title: Az Azure Application Insights Agent API-referenciája
-description: Application Insights Agent API-referenciája. Az Enable-InstrumentationEngine. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: Az Azure Application Insights Ügynök API-hivatkozása
+description: Application Insights Ügynök API-referencia. Enable-InstrumentationEngine. A webhely teljesítményének figyelése a webhely újratelepítése nélkül. Együttműködik ASP.NET helyszíni, virtuális gépeken vagy az Azure-ban üzemeltetett webalkalmazásokkal.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: b3f298ac31cc584cd16553186359c87f69f27aad
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671356"
 ---
-# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights ügynök API: Enable-InstrumentationEngine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights-ügynök API: Enable-InstrumentationEngine
 
-Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
+Ez a cikk az [Az.ApplicationMonitor PowerShell modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagjaként készült parancsmalapot ismerteti.
 
 ## <a name="description"></a>Leírás
 
-A rendszerállapot-kezelő motor egyes kulcsainak beállításával engedélyezhető.
+Néhány beállításkulcs beállításával engedélyezi a műszerezési motort.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
-A kialakítási motor a .NET SDK-k által gyűjtött adatokat is kiegészítheti.
-Olyan eseményeket és üzeneteket gyűjt, amelyek leírják a felügyelt folyamat végrehajtását. Ezek az események és üzenetek függőségi eredmény kódokat, HTTP-műveleteket és [SQL-parancsok szövegét](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)tartalmazzák.
+A műszerezési motor kiegészítheti a .
+Olyan eseményeket és üzeneteket gyűjt, amelyek egy felügyelt folyamat végrehajtását írják le. Ezek az események és üzenetek közé tartoznak a függőségi eredménykódok, a HTTP-műveletek és [az SQL parancsszöveg.](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)
 
-A rendszerállapot-kezelő motor engedélyezése, ha:
-- Már engedélyezte a figyelést az Enable parancsmaggal, de nem engedélyezte a kialakítási motort.
-- Manuálisan alakította ki az alkalmazást a .NET SDK-val, és további telemetria szeretne gyűjteni.
+Engedélyezze a műszermotort, ha:
+- Már engedélyezte a figyelést a Parancsmag engedélyezése, de nem engedélyezte a műszermotort.
+- Manuálisan instrumented az alkalmazást a .NET SDK-k, és szeretné összegyűjteni további telemetriai adatokat.
 
 > [!IMPORTANT] 
 > Ehhez a parancsmaghoz rendszergazdai engedélyekkel rendelkező PowerShell-munkamenet szükséges.
 
 > [!NOTE] 
-> - Ehhez a parancsmaghoz meg kell vizsgálni és el kell fogadnia a licenc-és adatvédelmi nyilatkozatot.
-> - A Instrumentation-motor további terhelést hoz létre, és alapértelmezés szerint ki van kapcsolva.
+> - Ez a parancsmag megköveteli, hogy tekintse át és fogadja el licencünket és adatvédelmi nyilatkozatunkat.
+> - A műszerezési motor további többletterhelést jelent, és alapértelmezés szerint ki van kapcsolva.
 
 ## <a name="examples"></a>Példák
 
@@ -44,35 +44,35 @@ PS C:\> Enable-InstrumentationEngine
 ## <a name="parameters"></a>Paraméterek
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**Választható.** Ezzel a kapcsolóval fogadhatja el a fej nélküli telepítések licencét és adatvédelmi nyilatkozatát.
+**Választható.** Ezzel a kapcsolóval elfogadhatja a licencet és az adatvédelmi nyilatkozatot a fej nélküli telepítésekben.
 
 ### <a name="-verbose"></a>-Részletes
-**Általános paraméter.** Ezt a kapcsolót használja a részletes naplók kinyomtatásához.
+**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat kell kiadnia.
 
 ## <a name="output"></a>Kimenet
 
 
-#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Példa a Instrumentation-motor sikeres engedélyezésének eredményére
+#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Példa kimenet a műszerezési motor sikeres engedélyezéséből
 
 ```
 Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
   A telemetriai adatok megtekintése:
- - [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
-- [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez használja az [elemzést](../../azure-monitor/app/analytics.md) .
+ - [Fedezze fel a teljesítmény](../../azure-monitor/app/metrics-explorer.md) és a használat figyeléséhez.
+- [Keresés események és naplók](../../azure-monitor/app/diagnostic-search.md) diagnosztizálására problémákat.
+- Speciális [lekérdezésekhez használjon analitikát.](../../azure-monitor/app/analytics.md)
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
  
  További telemetriai funkciók hozzáadása:
- - [Létrehozhat webes teszteket](monitor-web-app-availability.md) annak biztosításához, hogy a hely élőben maradjon.
-- [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
-- [Adja hozzá a Application INSIGHTS SDK-t a kódhoz](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el.
+ - [Létrehozhat webes teszteket](monitor-web-app-availability.md) annak biztosításához, hogy a hely elérhető maradjon.
+- [Webes ügyfél telemetriai adatok](../../azure-monitor/app/javascript.md) hozzáadásával megtekintheti a weblapkódból származó kivételeket, és engedélyezheti a nyomkövetési hívásokat.
+- [Adja hozzá az Application Insights SDK-t a kódhoz,](../../azure-monitor/app/asp-net.md) így nyomkövetési és naplóhívásokat szúrhat be.
  
- Több Application Insights-ügynökkel:
- - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
- - [A konfiguráció beszerzésével](status-monitor-v2-api-get-config.md) ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
- - A figyelés ellenőrzésének [állapotának beolvasása](status-monitor-v2-api-get-status.md) .
+ További információk az Application Insights-ügynökkel:
+ - Útmutatónk segítségével [elháríthatja](status-monitor-v2-troubleshoot.md) az Application Insights-ügynök hibáit.
+ - A beállítások helyes rögzítésének ellenőrzése a [konfigurációs eszközre.](status-monitor-v2-api-get-config.md)
+ - [Kap az állapot,](status-monitor-v2-api-get-status.md) hogy vizsgálja meg a megfigyelést.

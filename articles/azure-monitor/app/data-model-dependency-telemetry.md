@@ -1,51 +1,51 @@
 ---
-title: Application Insights függőségi adatmodell Azure Monitor
-description: Application Insights adatmodell a függőségi telemetria
+title: Azure Monitor Application Insights függőségi adatmodell
+description: Application Insights-adatmodell a függőségi telemetriai adatokhoz
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671919"
 ---
-# <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights adatmodell
+# <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights-adatmodell
 
-A függőségi telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a figyelt összetevő és egy távoli összetevő, például az SQL vagy egy http-végpont interakcióját jelöli.
+Függőségi telemetriai adatok (az [Application Insights)](../../azure-monitor/app/app-insights-overview.md)a figyelt összetevő egy távoli összetevővel, például SQL-sel vagy HTTP-végpontdal való interakcióját jelöli.
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Név
 
-A függőségi hívással kezdeményezett parancs neve. Alacsony kardinális érték. Ilyenek például a tárolt eljárás neve és az URL-cím elérési útja sablon.
+A függőségi hívással kezdeményezett parancs neve. Alacsony számossági érték. Ilyenek például a tárolt eljárásnév és URL-elérési út sablon.
 
 ## <a name="id"></a>ID (Azonosító)
 
-A függőségi hívás példányának azonosítója. A függőségi híváshoz tartozó telemetria-elemmel való korrelációhoz használatos. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
+Egy függőségi híváspéldány azonosítója. A függőségi hívásnak megfelelő kérelem telemetriai elemével való korrelációhoz használható. További információ: [Korrelációs](../../azure-monitor/app/correlation.md) oldal.
 
 ## <a name="data"></a>Adatok
 
-A függőségi hívás által kezdeményezett parancs. Ilyenek például az SQL-utasítások és a HTTP URL-címek az összes lekérdezési paraméterrel.
+A függőségi hívás által kezdeményezett parancs. Ilyenek például az SQL utasítás és a HTTP URL-cím az összes lekérdezési paraméterrel.
 
 ## <a name="type"></a>Típus
 
-Függőségi típus neve A függőségek logikai csoportosításának és más mezők, például a commandName és a resultCode értelmezésének alacsony kardinális értéke. Ilyenek például az SQL, az Azure Table és a HTTP.
+Függőségtípus neve. Alacsony számossági érték a függőségek logikai csoportosításához és más mezők, például a commandName és a resultCode értelmezéséhez. Ilyenek például az SQL, az Azure-tábla és a HTTP.
 
 ## <a name="target"></a>Cél
 
-A függőségi hívás célhelye. Ilyenek például a kiszolgáló neve, a gazdagép címe. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
+Függőségi hívás célhelye. Ilyenpéldául a kiszolgáló neve, az állomáscíme. További információ: [Korrelációs](../../azure-monitor/app/correlation.md) oldal.
 
 ## <a name="duration"></a>Időtartam
 
-Kérelem időtartama (formátum: `DD.HH:MM:SS.MMMMMM`). `1000` napnál rövidebbnek kell lennie.
+A kérelem időtartama `DD.HH:MM:SS.MMMMMM`formátumban: . . Kevesebb, mint `1000` napok.
 
-## <a name="result-code"></a>Eredmény kódja
+## <a name="result-code"></a>Eredménykód
 
-A függőségi hívás eredményének kódja. Ilyenek például az SQL-hibakódok és a HTTP-állapotkód.
+Függőségi hívás eredménykódja. Ilyenek például az SQL hibakód és a HTTP-állapotkód.
 
 ## <a name="success"></a>Sikeres
 
-A sikeres vagy sikertelen hívás megjelölése.
+A sikeres vagy sikertelen hívás jelzése.
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
@@ -56,10 +56,10 @@ A sikeres vagy sikertelen hívás megjelölése.
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Függőségi követés beállítása a [.net](../../azure-monitor/app/asp-net-dependencies.md)-hez.
-- A függőség nyomon követésének beállítása a [Javához](../../azure-monitor/app/java-agent.md).
-- [Egyéni függőségi telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .
+- Függőségkövetés beállítása a [.NET](../../azure-monitor/app/asp-net-dependencies.md)rendszerhez.
+- Függőségkövetés beállítása [Java](../../azure-monitor/app/java-agent.md)beállításhoz.
+- [Egyéni függőségi telemetriai adatok írása](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
+- Tekintse meg az Application Insights-típusok és adatmodell [adatmodelljét.](data-model.md)
+- Tekintse meg az Application Insights által támogatott [platformokat.](../../azure-monitor/app/platforms.md)

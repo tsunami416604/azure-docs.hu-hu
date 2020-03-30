@@ -1,132 +1,132 @@
 ---
-title: Egyéni naplók gyűjtése a Azure Monitorban | Microsoft Docs
-description: A Azure Monitor a Windows és Linux rendszerű számítógépeken is gyűjthet eseményeket a szöveges fájlokból.  Ez a cikk azt ismerteti, hogyan határozható meg az új egyéni napló és a Azure Monitorban létrehozott rekordok részletei.
+title: Egyéni naplók gyűjtése az Azure Monitorban | Microsoft dokumentumok
+description: Az Azure Monitor eseményeket gyűjthet szöveges fájlokból windowsos és Linux os számítógépeken.  Ez a cikk ismerteti, hogyan definiálhatja az új egyéni napló és az Azure Monitorban létrehozott rekordok részleteit.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
 ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670593"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók a Azure Monitorban
+# <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure Monitorban
 
-Az egyéni naplók adatforrása Azure Monitor lehetővé teszi, hogy a Windows és Linux rendszerű számítógépeken lévő szövegfájlokból is gyűjtsön eseményeket. Számos alkalmazás a szabványos naplózási szolgáltatások, például a Windows-Eseménynapló vagy a syslog helyett szöveges fájlokba naplóz adatokat. Az adatgyűjtés után elemezheti az adatokat a lekérdezések egyes mezőibe, vagy kinyerheti az adatokat a gyűjteménybe az egyes mezőkbe.
+Az Egyéni naplók adatforrás az Azure Monitorban lehetővé teszi, hogy eseményeket gyűjtsön szöveges fájlokból windowsos és Linux os számítógépeken. Számos alkalmazás naplózza az adatokat szöveges fájlokba a szabványos naplózási szolgáltatások, például a Windows eseménynapló vagy a Syslog helyett. Az adatgyűjtést követően elemezheti az adatokat a lekérdezések egyes mezőiben, vagy kinyerheti az adatokat az egyes mezőkbe történő adatgyűjtés során.
 
-![Egyéni naplók gyűjtése](media/data-sources-custom-logs/overview.png)
+![Egyéni naplógyűjtés](media/data-sources-custom-logs/overview.png)
 
-A gyűjteni kívánt naplófájloknak meg kell egyezniük a következő feltételekkel.
+Az összegyűjtendő naplófájloknak meg kell felelniük az alábbi feltételeknek.
 
-- A naplónak soronként vagy egyetlen bejegyzéssel kell rendelkeznie, vagy az egyes bejegyzések elején az alábbi formátumok valamelyikének megfelelő időbélyeget kell használnia.
+- A naplónak soronként egyetlen bejegyzéssel kell rendelkeznie, vagy minden bejegyzés elején az alábbi formátumok egyikének megfelelő időbélyeget kell használnia.
 
-    ÉÉÉÉ-HH-NN ÓÓ: PP: MM<br>M/D/ÉÉÉÉ ÓÓ: PP: SS AM/DU<br>Mon DD, éééé óó: PP: SS<br />ÉÉHHNN óó: PP: mm<br />nnhhéé óó: PP: mm<br />MMM d óó: PP: SS<br />dd/MMM/éééé: óó: PP: SS ZZZ<br />éééé-hh-NNTóó: PP: ssK
+    YYYY-MM-DD ÓÓ:MM:SS<br>M/D/ÉÉÉÉ ÓÓP:PP:SS AM/PM<br>H DD, ÉÉÉÓÓÓ ÓCÉ:MM:SS<br />yyMMdd ÓÓ:pp:ss<br />ddMyy ÓÓ:mm:ss<br />MMM d hh:pp:ss<br />dd/MMM/ééééé:ÓÓ:pp:sS zzz<br />yyyy-MM-ddTHH:mm:sSK
 
-- A naplófájl nem engedheti meg a körkörös naplózást vagy a napló elforgatását, ahol a fájl felülírása új bejegyzésekkel történik.
+- A naplófájl nem engedélyezheti a körkörös naplózást vagy a napló elforgatását, ha a fájlt új bejegyzésekkel felülírja.
 - A naplófájlnak ASCII vagy UTF-8 kódolást kell használnia.  Más formátumok, például az UTF-16 nem támogatottak.
 
 >[!NOTE]
-> Ha duplikált bejegyzések vannak a naplófájlban, akkor a Azure Monitor begyűjti őket. A lekérdezés eredményei azonban inkonzisztensek lesznek, ha a szűrő eredményei több eseményt mutatnak, mint az eredmények száma. Fontos, hogy ellenőrizze a naplót annak megállapításához, hogy az azt létrehozó alkalmazás okozza-e ezt a viselkedést, és ha lehetséges, adja meg az egyéni napló-gyűjtemény definíciójának létrehozása előtt.  
+> Ha ismétlődő bejegyzések vannak a naplófájlban, az Azure Monitor gyűjti azokat. A lekérdezés eredményei azonban inkonzisztensek lesznek, ha a szűrő eredményei több eseményt jelenítenek meg, mint az eredmények száma. Fontos, hogy ellenőrizze a naplót annak megállapítására, hogy az azt létrehozó alkalmazás okozza-e ezt a viselkedést, és ha lehetséges, az egyéni naplógyűjtemény-definíció létrehozása előtt foglalkozzon vele.  
 >
 
 >[!NOTE]
-> A Log Analytics munkaterület a következő korlátokat támogatja:
+> A Log Analytics-munkaterület a következő korlátokat támogatja:
 > 
 > * Csak 500 egyéni napló hozható létre.
-> * A táblák legfeljebb 500 oszlopot támogatnak. 
-> * Az oszlop neve legfeljebb 500 karakter hosszú lehet. 
+> * Egy táblázat legfeljebb 500 oszlopot támogat. 
+> * Az oszlopnév legfeljebb 500 karakterből állhat. 
 >
 
 >[!IMPORTANT]
->Az egyéni naplók gyűjteménye megköveteli, hogy az alkalmazás a naplófájlt írásban kiürítse a napló tartalmát a lemezre. Ennek az az oka, hogy az egyéni napló-gyűjtemény a nyomon követett naplófájl fájlrendszer-változási értesítéseire támaszkodik.
+>Az egyéni naplógyűjteményhez a naplófájlt író alkalmazásnak rendszeresen ürölnie kell a naplótartalmat a lemezre. Ennek az az oka, hogy az egyéni naplógyűjtemény a nyomon követett naplófájl fájlrendszer-módosítási értesítéseitől függ.
 
 ## <a name="defining-a-custom-log"></a>Egyéni napló definiálása
-Egyéni naplófájl definiálásához használja az alábbi eljárást.  Görgessen a cikk végére egy egyéni napló hozzáadására szolgáló minta áttekintéséhez.
+Egyéni naplófájl definiálása az alábbi eljárással.  Görgessen a cikk végére az egyéni napló hozzáadásának mintájának forgatókönyvéhez.
 
-### <a name="step-1-open-the-custom-log-wizard"></a>1\. lépés Az egyéni napló varázsló megnyitása
-Az egyéni napló varázsló a Azure Portal fut, és lehetővé teszi, hogy megadjon egy új egyéni naplót a gyűjtéshez.
+### <a name="step-1-open-the-custom-log-wizard"></a>1. lépés Az Egyéni napló varázsló megnyitása
+Az egyéni napló varázsló fut az Azure Portalon, és lehetővé teszi, hogy egy új egyéni napló t.
 
-1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások**lehetőséget.
-2. Kattintson az **adat > ** **egyéni naplók**elemre.
-3. Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt. Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.
-4. Kattintson a **Hozzáadás +** elemre az egyéni napló varázsló megnyitásához.
+1. Az Azure Portalon válassza a **Log Analytics-munkaterületeket,** > a munkaterületet > **a speciális beállításokat.**
+2. Kattintson az **Egyéni adatok** > **naplói gombra.**
+3. Alapértelmezés szerint az összes konfigurációs módosítás automatikusan lekerül az összes ügyintézőre. Linux-ügynökök esetében a rendszer konfigurációs fájlt küld a Fluentd adatgyűjtőnek.
+4. Az Egyéni napló varázsló megnyitásához kattintson a **Hozzá+** gombra.
 
-### <a name="step-2-upload-and-parse-a-sample-log"></a>2\. lépés Minta napló feltöltése és elemzése
-Először töltse fel az egyéni napló mintáját.  A varázsló elemzi és megjeleníti a fájlban szereplő bejegyzéseket az érvényesítéshez.  Azure Monitor a megadott határolójelet fogja használni az egyes rekordok azonosításához.
+### <a name="step-2-upload-and-parse-a-sample-log"></a>2. lépés Mintanapló feltöltése és elemzése
+Először töltsön fel egy mintát az egyéni naplóból.  A varázsló elemzi és megjeleníti a fájlban lévő bejegyzéseket, hogy érvényesítse.  Az Azure Monitor a megadott határolójel használatával azonosítja az egyes rekordokat.
 
-Az **új sor** az alapértelmezett elválasztó, és a naplófájlok, amelyek soronként egy bejegyzést használnak.  Ha a sor a rendelkezésre álló formátumok egyikében egy dátummal és időponttal kezdődik, akkor megadhat egy **időbélyeg** -elválasztó karaktert, amely támogatja a több sorban átnyúló bejegyzéseket.
+**Az új sor** az alapértelmezett határolójel, és olyan naplófájlokhoz használatos, amelyek soronként egyetlen bejegyzéssel rendelkeznek.  Ha a sor a rendelkezésre álló formátumok egyikében dátummal és idővel kezdődik, akkor megadhat egy **időbélyeg-határolót,** amely támogatja az egynél több sort átölelő bejegyzéseket.
 
-Időbélyeg-elválasztó használata esetén a Azure Monitorban tárolt egyes rekordok TimeGenerated tulajdonsága a naplófájlban a bejegyzéshez megadott dátummal és idővel lesz feltöltve.  Ha új elválasztó sort használ, akkor a TimeGenerated a bejegyzést Azure Monitor begyűjtött dátummal és időponttal tölti fel.
+Ha időbélyeg-határolót használ, akkor az Azure Monitorban tárolt egyes rekordok TimeGenerated tulajdonsága a naplófájlban megadott dátummal/idővel lesz feltöltve.  Ha egy új sorhatároló t használja, majd timegenerated feltölti a dátumot és az időt, amikor az Azure Monitor összegyűjtötte a bejegyzést.
 
-1. Kattintson a **Tallózás** gombra, és tallózással keresse meg a mintát.  Vegye figyelembe, hogy előfordulhat, hogy a gomb címkéje egyes böngészőkben a **fájl kiválasztása** .
+1. Kattintson **a Tallózás gombra,** és keresse meg a mintafájlt.  Ne feledje, hogy ez a gomb egyes böngészőkben **a Fájl kiválasztása** feliratú lehet.
 2. Kattintson a **Tovább** gombra.
-3. Az egyéni napló varázsló feltölti a fájlt, és felsorolja az általa azonosított rekordokat.
-4. Módosítsa az új rekord azonosításához használt elválasztó karaktert, és válassza ki a naplófájlban a rekordokat legjobban azonosító elválasztót.
+3. Az Egyéni napló varázsló feltölti a fájlt, és felsorolja az általa azonosított rekordokat.
+4. Módosítsa az új rekord azonosítására használt határolójelet, és válassza ki azt a határolójelet, amely a legjobban azonosítja a naplófájlrekordjait.
 5. Kattintson a **Tovább** gombra.
 
-### <a name="step-3-add-log-collection-paths"></a>3\. lépés Napló-gyűjtemény elérési útjának hozzáadása
-Meg kell adnia egy vagy több elérési utat az ügynökön, ahol megtalálhatja az egyéni naplót.  Megadhat egy adott elérési utat és nevet a naplófájlhoz, vagy megadhat egy elérési utat, amely helyettesítő karaktert tartalmaz a névhez. Ez olyan alkalmazásokat támogat, amelyek naponta új fájlt hoznak létre, vagy amikor egy fájl elér egy adott méretet. Egyetlen naplófájlhoz több elérési utat is megadhat.
+### <a name="step-3-add-log-collection-paths"></a>3. lépés Naplógyűjtési útvonalak hozzáadása
+Meg kell határoznia egy vagy több elérési utat az ügynökön, ahol megtalálhatja az egyéni naplót.  Megadhatja a naplófájl adott elérési útját és nevét, vagy megadhat egy helyettesítő karaktert a névhez. Ez azokat az alkalmazásokat támogatja, amelyek minden nap új fájlt hoznak létre, vagy amikor egy fájl elér egy bizonyos méretet. Egyetlen naplófájlhoz több elérési utat is megadhat.
 
-Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófájlt a névben szereplő dátummal a log20100316. txt fájlban. Az ilyen naplók mintája lehet például a *log\*. txt* fájl, amely az alkalmazás elnevezési sémáját követő minden naplófájlra vonatkozni fog.
+Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófájlt a 20100316.txt naplóban szereplő névvel. Az ilyen napló mintája lehet *log\*.txt,* amely az alkalmazás elnevezési sémáját követő naplófájlokra vonatkozna.
 
-A következő táblázat példákat tartalmaz a különböző naplófájlok megadására szolgáló érvényes mintákra.
+Az alábbi táblázat példákat mutat be a különböző naplófájlok megadásához szükséges érvényes mintákra.
 
 | Leírás | Útvonal |
 |:--- |:--- |
-| A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa\\\*. txt |
-| A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\log\*. txt |
-| A */var/log/audit* összes fájlja. txt kiterjesztéssel a Linux-ügynökön |/var/log/audit/*.txt |
-| A */var/log/audit* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel Linux-ügynökön |/var/log/audit/log\*. txt |
+| A *C:\Logs* fájl .txt kiterjesztésű összes fájlja Windows-ügynökön |C:\Naplók\\\*.txt |
+| A *C:\Logs* összes fájlja naplóval kezdődő névvel és .txt kiterjesztéssel windowsos ügynökön |C:\Logs\log\*.txt |
+| A */var/log/audit* összes fájlja .txt kiterjesztéssel Linux ügynökön |/var/log/audit/*.txt |
+| A */var/log/audit* összes fájlja naplóval kezdődő névvel és .txt kiterjesztéssel Linux ügynökön |/var/log/audit/log\*.txt |
 
-1. Válassza a Windows vagy a Linux lehetőséget a hozzáadni kívánt elérési út megadásához.
-2. Írja be az elérési utat, majd kattintson a **+** gombra.
-3. Ismételje meg a folyamatot bármilyen további elérési útra.
+1. Válassza a Windows vagy a Linux lehetőséget a hozzáadni kívánt elérési út formátumának megadásához.
+2. Írja be a görbét, és kattintson a **+** gombra.
+3. Ismételje meg a folyamatot minden további elérési úton.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4\. lépés Adja meg a napló nevét és leírását
-A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leírtak szerint.  A szolgáltatás mindig _CL, hogy egyéni naplóként megkülönböztesse azt.
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés Adja meg a napló nevét és leírását
+A megadott nevet a fent leírt naplótípushoz fogja használni a rendszer.  Ez mindig a _CL végződik, hogy megkülönböztesse egyéni naplóként.
 
-1. Írja be a napló nevét.  A rendszer automatikusan megadja a **\_CL** -utótagot.
-2. Adjon hozzá egy opcionális **leírást**.
-3. Az egyéni napló definíciójának mentéséhez kattintson a **tovább** gombra.
+1. Írja be a napló nevét.  A ** \_CL** utótag automatikusan meg lesz adva.
+2. Adjon hozzá egy nem kötelező **leírást.**
+3. Az egyéni naplódefiníció mentéséhez kattintson a **Tovább** gombra.
 
-### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>5\. lépés Annak ellenőrzése, hogy az egyéni naplók gyűjtése folyamatban van-e
-Akár egy órát is igénybe vehet, hogy egy új egyéni naplóból származó kezdeti adatok megjelenjenek Azure Monitorban.  Megkezdi a bejegyzések gyűjtését az egyéni naplót definiált pontról megadott elérési úton található naplókból.  A rendszer nem őrzi meg az egyéni napló létrehozásakor feltöltött bejegyzéseket, de a már meglévő bejegyzéseket gyűjti a megtalált naplófájlokban.
+### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>5. lépés Az egyéni naplók gyűjtésének ellenőrzése
+Akár egy órát is igénybe vehet, amíg az új egyéni naplóból származó kezdeti adatok megjelennek az Azure Monitorban.  Megkezdi a bejegyzések gyűjtését a megadott elérési útból található naplókból az egyéni napló definiálásának pontjáról.  Nem őrzi meg az egyéni napló létrehozása során feltöltött bejegyzéseket, de összegyűjti a már meglévő bejegyzéseket a megtalált naplófájlokban.
 
-Miután Azure Monitor elkezdi a gyűjtést az egyéni naplóból, a rekordjai a napló lekérdezésével lesznek elérhetők.  Használja azt a nevet, amelyet az egyéni naplóhoz adott a lekérdezésben szereplő **típusként** .
+Amint az Azure Monitor elkezdi gyűjteni az egyéni naplóból, a rekordok lesz elérhető egy naplólekérdezés.  Használja az egyéni naplót megadott nevet **típusként** a lekérdezésben.
 
 > [!NOTE]
-> Ha a lekérdezésből hiányzik a RawData tulajdonság, előfordulhat, hogy be kell állítania és újra meg kell nyitnia a böngészőt.
+> Ha a RawData tulajdonság hiányzik a lekérdezésből, előfordulhat, hogy be kell zárnia, majd újra meg kell nyitnia a böngészőt.
 
-### <a name="step-6-parse-the-custom-log-entries"></a>6\. lépés Az egyéni naplóbejegyzések értelmezése
-A teljes naplóbejegyzés egyetlen, **RawData**nevű tulajdonságban lesz tárolva.  Valószínűleg el szeretné különíteni az egyes bejegyzések különböző adatait az egyes rekordok egyedi tulajdonságaiba. A **RawData** több tulajdonságba való elemzésének lehetőségeiről a [Azure monitorban található szöveges fájlok](../log-query/parse-text.md) elemzése című témakörben talál további információt.
+### <a name="step-6-parse-the-custom-log-entries"></a>6. lépés Az egyéni naplóbejegyzések elemzése
+A teljes naplóbejegyzés egyetlen RawData nevű tulajdonságban lesz **tárolva.**  Akkor valószínűleg szeretné elkülöníteni a különböző információkat minden egyes bejegyzés az egyes tulajdonságok minden rekordot. Az [Azure Monitor ban található szöveges adatok elemzési](../log-query/parse-text.md) adataiból megtudhatja, hogy miként elemezheti a **RawData-adatokat** több tulajdonságra.
 
 ## <a name="removing-a-custom-log"></a>Egyéni napló eltávolítása
-A Azure Portal az alábbi eljárással távolíthatja el a korábban definiált egyéni naplókat.
+Használja a következő folyamatot az Azure Portalon egy korábban definiált egyéni napló eltávolításához.
 
-1. A munkaterület **speciális beállításainak** **adatok** menüjében válassza az **egyéni naplók** lehetőséget az összes egyéni napló listázásához.
-2. Az eltávolításhoz kattintson az egyéni napló melletti **Eltávolítás** elemre.
+1. A munkaterület Speciális **beállításai** **menüjében** válassza az **Egyéni naplók** lehetőséget az összes egyéni napló listázásához.
+2. Az eltávolításhoz kattintson az egyéni napló melletti **Eltávolítás** gombra.
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Azure Monitor minden egyéni naplóból körülbelül 5 percenként gyűjt új bejegyzéseket.  Az ügynök rögzíti a helyét minden olyan naplófájlban, amelyről gyűjt.  Ha az ügynök egy ideig offline állapotba kerül, akkor a Azure Monitor begyűjti azokat a bejegyzéseket, amelyekből az utolsó lemaradt, még akkor is, ha az ügynök offline állapotban van.
+Az Azure Monitor körülbelül 5 percenként gyűjti az új bejegyzéseket az egyes egyéni naplókból.  Az ügynök rögzíti a helyét minden naplófájlban, amelyből gyűjt.  Ha az ügynök egy ideig offline állapotba kerül, majd az Azure Monitor gyűjtbejegyzéseket onnan, ahol az utolsó abbahagyta, még akkor is, ha ezeket a bejegyzéseket akkor hozták létre, amikor az ügynök offline állapotban volt.
 
-A naplóbejegyzés teljes tartalma egyetlen, **RawData**nevű tulajdonságba íródik.  Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
+A naplóbejegyzés teljes tartalma egyetlen **RawData**nevű tulajdonságba van írva.  Tekintse meg [a szöveges adatok elemzése az Azure Monitorban](../log-query/parse-text.md) az egyes importált naplóbejegyzések több tulajdonságba történő elemzési módszereit.
 
-## <a name="custom-log-record-properties"></a>Egyéni naplózási rekord tulajdonságai
-Az egyéni naplók egy olyan típussal rendelkeznek, amely tartalmazza a megadott napló nevét, valamint az alábbi táblázatban szereplő tulajdonságokat.
+## <a name="custom-log-record-properties"></a>Egyéni naplórekord tulajdonságai
+Az egyéni naplórekordok típusa a megadott naplónévvel és az alábbi táblázatban szereplő tulajdonságokkal rendelkezik.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| TimeGenerated |A rekord Azure Monitor általi gyűjtésének dátuma és időpontja.  Ha a napló időalapú határolójelet használ, akkor ez a bejegyzésből begyűjtött idő. |
-| SourceSystem |Az ügynök típusa, amelyet a rendszer a rekordból gyűjtött. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy System Center Operations Manager <br> Linux – minden Linux-ügynök |
-| RawData |Az összegyűjtött bejegyzés teljes szövege. Valószínűleg ezeket az adatelemzéseket az [egyes tulajdonságokkal szeretné elemezni](../log-query/parse-text.md). |
-| ManagementGroupName |A System Center-műveletek felügyeleti csoportjának neve, ügynökök kezelése.  Más ügynökök esetében ez az AOI-\<munkaterület-azonosító\> |
+| TimeGenerated |A rekord Azure Monitor általi gyűjtésének dátuma és időpontja.  Ha a napló időalapú határolót használ, akkor ez a bejegyzésből begyűjtött idő. |
+| SourceSystem |A rekord által gyűjtött ügynök típusa. <br> OpsManager – Windows ügynök, közvetlen csatlakozás vagy System Center Operations Manager <br> Linux – Minden Linux ügynök |
+| Nyers adatok |Az összegyűjtött bejegyzés teljes szövege. Valószínűleg [ezeket az adatokat egyedi tulajdonságokra](../log-query/parse-text.md)szeretné elemezni. |
+| ManagementGroupName |A System Center műveleti műveletek kezelése ügynökök felügyeleti csoportjának neve.  Más ügynökök esetében ez az\<AOI-munkaterület-azonosító\> |
 
 
-## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Példa egyéni napló hozzáadására
-Az alábbi szakasz végigvezeti egy egyéni napló létrehozásának példáján.  A begyűjtött minta naplója egyetlen bejegyzést tartalmaz minden egyes sorban egy dátummal és időponttal kezdődően, majd vesszővel tagolt mezőket a kód, az állapot és az üzenet számára.  Alább több minta bejegyzés látható.
+## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Egyéni napló hozzáadásának forgatókönyve
+A következő szakasz egy példa az egyéni napló létrehozására.  Az összegyűjtött mintanapló minden sorban egyetlen bejegyzéssel rendelkezik, amely egy dátummal és idővel kezdődik, majd vesszővel tagolt mezőkkel a kódhoz, az állapothoz és az üzenethez.  Az alábbiakban több mintabejegyzés látható.
 
     2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
     2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
@@ -134,39 +134,39 @@ Az alábbi szakasz végigvezeti egy egyéni napló létrehozásának példáján
     2019-08-27 01:38:22 302,Error,Application could not connect to database
     2019-08-27 01:31:34 303,Error,Application lost connection to database
 
-### <a name="upload-and-parse-a-sample-log"></a>Minta napló feltöltése és elemzése
-A naplófájlok egyikét biztosítjuk, és láthatjuk, hogy milyen események lesznek összegyűjtve.  Ebben az esetben az új sor megfelelő elválasztó karakter.  Ha a napló egyetlen bejegyzése több sorra is terjedhet, akkor az időbélyeg-elválasztót is használni kell.
+### <a name="upload-and-parse-a-sample-log"></a>Mintanapló feltöltése és elemzése
+Mi biztosítja az egyik naplófájlokat, és láthatjuk az eseményeket, hogy lesz gyűjtése.  Ebben az esetben az Új sor elegendő határolójel.  Ha a napló egyetlen bejegyzése több sorra is kiterjedhet, akkor időbélyeg-határolót kell használni.
 
-![Minta napló feltöltése és elemzése](media/data-sources-custom-logs/delimiter.png)
+![Mintanapló feltöltése és elemzése](media/data-sources-custom-logs/delimiter.png)
 
-### <a name="add-log-collection-paths"></a>Napló-gyűjtemény elérési útjának hozzáadása
-A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log*nevű mintát.  Ehhez a naplóhoz megfelelő mintát kell *C:\MyApp\Logs\\\*. log*.
+### <a name="add-log-collection-paths"></a>Naplógyűjtési útvonalak hozzáadása
+A naplófájlok a *C:\MyApp\Logs mappában*találhatók.  Minden nap új fájl jön létre egy névvel, amely tartalmazza a dátumot a minta *appYYYYYMMDD.log*.  A napló megfelelő mintája a *C:\MyApp\Logs\\\*.log*.
 
-![Napló gyűjteményének elérési útja](media/data-sources-custom-logs/collection-path.png)
+![Naplógyűjtési útvonal](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>Adja meg a napló nevét és leírását
-Az *MyApp_CL* nevet használjuk, és a **leírást**beírhatjuk.
+A MyApp_CL nevet *használjuk,* és beírjuk a **Leírást.**
 
 ![Napló neve](media/data-sources-custom-logs/log-name.png)
 
-### <a name="validate-that-the-custom-logs-are-being-collected"></a>Annak ellenőrzése, hogy az egyéni naplók gyűjtése folyamatban van-e
-Az összegyűjtött naplóból származó összes rekord visszaküldéséhez a *MyApp_CL* egyszerű lekérdezését használjuk.
+### <a name="validate-that-the-custom-logs-are-being-collected"></a>Az egyéni naplók gyűjtésének ellenőrzése
+Az összegyűjtött naplóból származó összes rekord visszaadásához *MyApp_CL* egyszerű lekérdezését használjuk.
 
-![Egyéni mezők nélküli naplózási lekérdezés](media/data-sources-custom-logs/query-01.png)
+![Lekérdezés naplózása egyéni mezők nélkül](media/data-sources-custom-logs/query-01.png)
 
 
-## <a name="alternatives-to-custom-logs"></a>Egyéni naplók alternatívái
-Míg az egyéni naplók akkor hasznosak, ha az adatai megfelelnek a felsorolt feltételeknek, de vannak olyan esetek, mint például a következő, amikor szüksége van egy másik stratégiára:
+## <a name="alternatives-to-custom-logs"></a>Az egyéni naplók alternatívái
+Bár az egyéni naplók akkor hasznosak, ha az adatok megfelelnek a felsorolt feltételeknek, de vannak olyan esetek, mint például a következő, ahol egy másik stratégiára van szükség:
 
-- Az adat nem felel meg a szükséges szerkezetnek, például az időbélyeg eltérő formátumú.
-- A naplófájl nem felel meg a követelményeknek, például a fájlok kódolásának vagy a nem támogatott mappák struktúrájának.
-- Az adatgyűjtési folyamat előtt az adatfeldolgozásra vagy-szűrésre van szükség. 
+- Az adatok nem felelnek meg a szükséges struktúrának, például az időbélyeg más formátumban.
+- A naplófájl nem felel meg az olyan követelményeknek, mint a fájlkódolás vagy a nem támogatott mappastruktúra.
+- Az adatok gyűjtése előtt előfeldolgozást vagy szűrést igényelnek. 
 
-A következő alternatív stratégiákat kell figyelembe venni abban az esetben, ha az adatok nem gyűjthetők össze az egyéni naplókkal:
+Azokban az esetekben, amikor az adatok nem gyűjthetők egyéni naplókkal, fontolja meg a következő alternatív stratégiákat:
 
-- Egyéni parancsfájl vagy más módszer használatával adatokat írhat a Windows- [eseményekre](data-sources-windows-events.md) vagy a [syslog](data-sources-syslog.md) -re, amelyeket a Azure monitor gyűjt. 
-- Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](data-collector-api.md)használatával. 
+- Egyéni parancsfájl vagy más módszer használatával adatokat írhat a [Windows-események](data-sources-windows-events.md) vagy [a Syslog,](data-sources-syslog.md) amelyek az Azure Monitor által gyűjtött. 
+- Küldje el az adatokat közvetlenül az Azure Monitorhttp [Data Collector API használatával.](data-collector-api.md) 
 
-## <a name="next-steps"></a>Következő lépések
-* Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
-* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .
+## <a name="next-steps"></a>További lépések
+* Tekintse meg [a szöveges adatok elemzése az Azure Monitorban](../log-query/parse-text.md) az egyes importált naplóbejegyzések több tulajdonságba történő elemzési módszereit.
+* Ismerje meg a [naplólekérdezéseket](../log-query/log-query-overview.md) az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez.

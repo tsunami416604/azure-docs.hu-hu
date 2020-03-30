@@ -1,7 +1,7 @@
 ---
-title: 'Gyorsított döntési fa regresszió: modul referenciája'
+title: 'Kiemelt döntési fa regressziója: Modul hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre a regressziós fák kombinációját a Azure Machine Learning a kihasználható döntési fa regressziós modullal a növeléssel.
+description: Ismerje meg, hogyan használhatja a kiemelt döntési fa regressziós modul az Azure Machine Learning regressziós fák növelése használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,91 +9,91 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 79a2ccae31fac31d8d10bb643c35a41a3d7cb5d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919957"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456726"
 ---
-# <a name="boosted-decision-tree-regression-module"></a>A döntési fa regressziós moduljának növelése
+# <a name="boosted-decision-tree-regression-module"></a>Kiemelt döntési fa regressziós modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-Ezzel a modullal a regressziós fák együttesét hozhatja létre a boosting használatával. A *kiemelés* azt jelenti, hogy az egyes faszerkezetek az előző fáktől függenek. Az algoritmus az előtte lévő fák maradékának beépítésével tanul. Így a döntési fazenekarban egyre nagyobb a pontosság, és kisebb a lefedettségük.  
+Ezzel a modullal hozzon létre egy együttest a regressziós fák segítségével fellendítése. *A kiemelés* azt jelenti, hogy minden fa a korábbi fáktól függ. Az algoritmus megtanulja felszerelésével a maradék a fák, hogy megelőzte azt. Így, fellendítése a döntés fa együttes e jellemzően javítja a pontosságot néhány kis kockázata kevesebb lefedettség.  
   
-Ez a regressziós módszer egy felügyelt tanulási módszer, ezért *címkével ellátott adatkészletet*igényel. A Label oszlopnak numerikus értékeket kell tartalmaznia.  
+Ez a regressziós módszer felügyelt tanulási módszer, ezért *egy címkézett adatkészletet*igényel. A feliratoszlopnak numerikus értékeket kell tartalmaznia.  
 
 > [!NOTE]
-> Ezt a modult csak numerikus változókat használó adatkészletekkel használhatja.  
+> Ezt a modult csak numerikus változókat használó adatkészletekkel használja.  
 
-A modell meghatározása után betaníthatja azt a betanítási [modell](./train-model.md)használatával.
+Miután definiálta a modellt, tanítsa be a [Vonatmodell használatával.](./train-model.md)
 
   
-## <a name="more-about-boosted-regression-trees"></a>További információ a regressziós fák növeléséről  
+## <a name="more-about-boosted-regression-trees"></a>További információk a kiemelt regressziós fákról  
 
-A boosting számos klasszikus módszer az Ensemble-modellek létrehozásához, valamint a csomagok, a véletlenszerű erdők és így tovább.  Azure Machine Learning a megnövelt döntési fák a MART gradiens-növelő algoritmus hatékony megvalósítását használják. A színátmenet-növelés a gépi tanulási módszer a regressziós problémákhoz. Az egyes regressziós faszerkezeteket egy lépésenkénti, előre definiált Loss függvénnyel méri, hogy az egyes lépésekben a hibát megmérjük, és a következőben javítsa. Így az előrejelzési modell tulajdonképpen a gyengébb előrejelző modellek együttese.  
+Növelése az egyik a számos klasszikus módszerek létrehozására együttes modellek, valamint zsákolás, véletlenszerű erdők, és így tovább.  Az Azure Machine Learningben a kiemelt döntési fák a MART gradienskiemelési algoritmus hatékony megvalósítását használják. A gradiens kiemelés egy gépi tanulási technika a regressziós problémákhoz. Minden regressziós fát lépésenként épít, egy előre definiált veszteségfüggvényt használva az egyes lépésekben lévő hibák mérésére, és a következőben helyesbítheti azt. Így az előrejelzési modell valójában egy együttese gyengébb előrejelzési modellek.  
   
-A regressziós problémák esetében a kibővíti a fák egy sorozatát egy részletesen megjelenő módon, majd kiválasztja az optimális fát egy tetszőleges differentiable Loss függvény használatával.  
+A regressziós problémák, fellendítése épít egy sor fák egy lépésenként, majd kiválasztja az optimális fa segítségével tetszőleges differenciálható veszteség funkció.  
   
-További információkért tekintse meg a következő cikkeket:  
+További információt az alábbi cikkekben talál:  
   
 + [https://wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting](https://wikipedia.org/wiki/Gradient_boosting)
 
-    Ez a wikipedia-cikk a színátmenet-növeléssel kapcsolatban nyújt némi hátteret a felerősített fákat illetően. 
+    Ez a Wikipedia cikk a gradiens növelése nyújt némi háttér a felturbózott fák. 
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Microsoft Research: a RankNet-ről a LambdaRank-re a LambdaMART-be: áttekintés. J.C. szerint Burges.
+    Microsoft Research: A RankNet a LambdaRank a LambdaMART: Áttekintés. Készítette: J.C. Burges, ez az.
 
-A színátmenet-növelési módszer a besorolási problémákhoz is használható, ha csökkenti a regressziót egy megfelelő veszteség-függvénnyel. A besorolási feladatokhoz kapcsolódó felerősített fák megvalósításával kapcsolatos további információkért lásd: [kétosztályos megnövelt döntési fa](./two-class-boosted-decision-tree.md).  
+A gradiens kiemelési módszer osztályozási problémákra is használható, ha megfelelő veszteségfunkcióval regresszióvá csökkenti azokat. A kiemelt fák besorolási feladatokhoz való megvalósításáról további információt a [Kétosztályos kiemelt döntési fa című témakörben](./two-class-boosted-decision-tree.md)talál.  
 
-## <a name="how-to-configure-boosted-decision-tree-regression"></a>A megnövelt döntési fa regressziójának konfigurálása
+## <a name="how-to-configure-boosted-decision-tree-regression"></a>A kiemelt döntési fa regressziójának beállítása
 
-1.  Adja hozzá a **megnövelt döntési fa** modult a folyamathoz. Ezt a modult **Machine learning**, **inicializálás**, a **regressziós** kategória alatt találja. 
+1.  Adja hozzá a **Kiemelt döntési fa** modult a folyamathoz. Ez a modul a **Machine Learning**, Initialize ( **Inicicia**) csoportban található a **Regresszió kategóriában.** 
   
-2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
+2.  Adja meg, hogyan szeretné betanítani a modellt az **Oktatói mód létrehozása** beállítás beállításával.  
   
-    -   **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg egy adott értékeket argumentumként. 
+    -   **Egyetlen paraméter**: Akkor válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és argumentumként megadott értékkészletet adjon meg. 
      
-    -   **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.    
+    -   **Paramétertartomány**: Akkor válassza ezt a lehetőséget, ha nem biztos a legjobb paraméterekben, és paraméterkeresést szeretne futtatni. Válasszon ki egy értéktartományt, amely felett iterálni, és a [Tune Model Hyperparameters](tune-model-hyperparameters.md) iterálja az összes lehetséges kombinációa a megadott beállítások meghatározásához a hiperparaméterek, amelyek az optimális eredményt.    
    
   
-3. A **kihagyható levelek maximális száma faszerkezetben**: a bármely fában létrehozható terminál-csomópontok (levelek) maximális számát jelzi.  
+3. **A levelek maximális száma egy fán:** Adja meg a bármely fán létrehozható terminálcsomópontok (levelek) maximális számát.  
 
-    Ennek az értéknek a növelésével lehetőség van a fa méretének növelésére és jobb pontosságra, ha a túlillesztés és a hosszú betanítási idő fennáll.  
+    Ennek az értéknek a növelésével potenciálisan növelheti a fa méretét, és jobb pontosságot kap, a túlszerelés és a hosszabb képzési idő kockázatával.  
 
-4. **Minták minimális száma a levél csomópontjain**: azt jelzi, hogy az esetek minimális száma szükséges ahhoz, hogy minden terminál-csomópont (levél) a fában legyen létrehozva.
+4. **A minták minimális száma levélcsomópontonként**: Adja meg a fa terminálcsomóinak (levéltörzsének) létrehozásához szükséges esetek minimális számát.
 
-    Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább 5 olyan esetet kell tartalmaznia, amely ugyanazokat a feltételeket teljesíti.
+    Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, még egyetlen eset is új szabály létrehozását okozhatja. Ha az értéket 5-re növeli, a betanítási adatoknak legalább 5 olyan esetet kell tartalmazniuk, amelyek megfelelnek az azonos feltételeknek.
 
-5. **Tanulási arány**: adjon meg egy 0 és 1 közötti számot, amely meghatározza a lépés méretét a tanulás során. A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassabban konvergál az optimális megoldáson. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldáshoz közeledik.
+5. **Tanulási sebesség:** Írjon be egy 0 és 1 közötti számot, amely tanulási közben meghatározza a lépésméretet. A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassúan közelít az optimális megoldáshoz. Ha a lépés mérete túl nagy, előfordulhat, hogy túllépi az optimális megoldást. Ha a lépés mérete túl kicsi, a betanítás hosszabb időt vesz igénybe a legjobb megoldás hoz.
 
-6. **Felépített fák száma**: az Ensemble-ben létrehozandó döntési fák teljes számát jelzi. További döntési fák létrehozásával jobb lefedettséget érhet el, de a képzési idő növekszik.
+6. **Épített fák száma**: Adja meg az együttesben létrehozandó döntési fák teljes számát. Azáltal, hogy több döntés ifák, akkor potenciálisan jobb lefedettséget, de a képzési idő növekszik.
 
-    Ez az érték a betanított modell megjelenítésekor megjelenő fák számát is szabályozza. Ha egyetlen fát szeretne megtekinteni vagy kinyomtatni, az értéket 1-re állíthatja. a rendszer azonban csak egy fát állít elő (a kezdeti paraméterekkel rendelkező fát), és nem végez további iterációt.
+    Ez az érték azt is szabályozza, hogy a betanított modell megjelenítésekor hány fa jelenik meg. Ha egyetlen fát szeretne látni vagy nyomtatni, az értéket 1-re állíthatja; azonban csak egy fa keletkezik (a fa a paraméterek kezdeti készletével), és nem történik további ismétlés.
 
-7. **Véletlenszerű számú mag**: adjon meg egy nem negatív, nem negatív egész számot, amelyet véletlenszerű mag értékként kíván használni. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.
+7. **Véletlenszám-vetőmag**: Írjon be egy választható nem negatív egész számot, amelyet véletlenszerű magértékként szeretne használni. A vetőmag megadása biztosítja a reprodukálhatóságot az azonos adatokkal és paraméterekkal rendelkező futtatások között.
 
-    Alapértelmezés szerint a véletlenszerű mag értéke 0, ami azt jelenti, hogy a kezdeti mag értékét a rendszer órája szerzi be.
+    Alapértelmezés szerint a véletlenszerű mag értéke 0, ami azt jelenti, hogy a kezdeti magérték a rendszerórából származik.
   
 
-9. Vegyen fel egy betanítási adatkészletet és egy betanítási modult:
+9. Adjon hozzá egy betanítási adatkészletet és az egyik betanítási modult:
 
-    - Ha az **oktatói mód létrehozása** lehetőséget állítja be **egyetlen paraméterként**, használja a [Train Model](train-model.md) modult.  
+    - Ha az **Oktatói mód létrehozása** beállítást egy **paraméterre állítja**be, használja a [Betanítási modell](train-model.md) modult.  
   
     
 
-10. A folyamat futtatása.  
+10. Küldje el a folyamatot.  
   
 ## <a name="results"></a>Results (Eredmények)
 
-A betanítás befejezése után:
+A képzés befejezése után:
 
-+ Ha a modellt a pontozáshoz szeretné használni, kapcsolja össze a [pontszám modellel](./score-model.md), hogy megjósolja az új bemeneti példák értékeit.
++ A modell pontozási használatához csatlakoztassa a [Score Model](./score-model.md), új bemeneti példák értékeinek előrejelzéséhez.
 
-+ A betanított modell pillanatképének mentéséhez a **betanított modell** jobb oldali paneljén válassza a **kimenetek** fület, majd kattintson az **adatkészlet regisztrálása** ikonra. A betanított modell másolata modulként lesz mentve a modul fájában, és a folyamat egymást követő futtatása során nem lesz frissítve.
++ A betanított modell pillanatképének mentéséhez válassza a **Kimenetek** lapot a **Betanított modell** jobb oldali paneljén, és kattintson az **Adatkészlet ikonregisztrálása** gombra. A betanított modell másolata modulként lesz mentve a modulfába, és nem frissül a folyamat egymást követő futtatásaikor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

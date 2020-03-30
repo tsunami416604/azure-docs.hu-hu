@@ -1,10 +1,10 @@
 ---
-title: 'Oktatóanyag: az RDS PostgreSQL online átmigrálása a Azure Database for PostgreSQLba'
+title: 'Oktatóanyag: Az RDS PostgreSQL áttelepítése online a PostgreSQL Azure-adatbázisába'
 titleSuffix: Azure Database Migration Service
-description: Megtudhatja, hogyan hajthat végre egy online áttelepítést az RDS PostgreSQL-ből Azure Database for PostgreSQL a Azure Database Migration Service használatával.
+description: Ismerje meg, hogyan hajthat végre online áttelepítést az RDS PostgreSQL-ről a PostgreSQL-adatbázisba az Azure Database Migration Service használatával.
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,101 +12,101 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: 33d39be071591071d88bb5a95c3cfcbb458d85a8
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 12aa11aa5064b3a0a2ff18f88161f44f37208aec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255710"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240697"
 ---
-# <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Oktatóanyag: az RDS PostgreSQL átmigrálása az Azure DB for PostgreSQL online-ba a DMS használatával
+# <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Oktatóanyag: Az RDS PostgreSQL áttelepítése az Azure DB-be a PostgreSQL-hez online a DMS használatával
 
-A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy RDS PostgreSQL-példányból, hogy [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) , amíg a forrásadatbázis online állapotban marad az áttelepítés során. Más szóval a Migrálás az alkalmazás minimális állásidővel is elérhető. Ebben az oktatóanyagban áttelepíti a **DVD-kölcsönzési** minta adatbázisát az RDS PostgreSQL 9,6 egy példányáról, hogy Azure Database for PostgreSQL a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
+Az Azure Database Migration Service segítségével adatbázisokat telepíthet át egy RDS PostgreSQL-példányból az [Azure Database for PostgreSQL-be,](https://docs.microsoft.com/azure/postgresql/) miközben a forrásadatbázis online marad az áttelepítés során. Más szóval az áttelepítés minimális állásidővel érhető el az alkalmazáshoz. Ebben az oktatóanyagban az RDS PostgreSQL 9.6 egy példányából telepíti át a **DVD-kölcsönzési** mintaadatbázist az Azure Database Migration Service online áttelepítési tevékenységének használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
-> * Telepítse át a minta sémát a pg_dump segédprogram használatával.
-> * Azure Database Migration Service-példány létrehozása.
-> * Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
+> * Telepítse át a mintasémát a pg_dump segédprogrammal.
+> * Hozzon létre egy Azure Database Migration Service-példányt.
+> * Hozzon létre egy áttelepítési projektet az Azure Database Migration Service használatával.
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
-> * Hajtsa végre az áttelepítési átváltás.
+> * Az áttelepítés átállásának végrehajtása.
 
 > [!NOTE]
-> Az online áttelepítés végrehajtásához a Azure Database Migration Service használatával egy példányt kell létrehozni a prémium szintű díjszabás alapján. További információkért tekintse meg a Azure Database Migration Service [díjszabását](https://azure.microsoft.com/pricing/details/database-migration/) ismertető oldalt.
+> Az Azure Database Migration Service online áttelepítés végrehajtásához létre kell adnia egy példányt a prémium díjszabási szint alapján. További információkért tekintse meg az Azure Database Migration Service [díjszabási](https://azure.microsoft.com/pricing/details/database-migration/) lap. Titkosítjuk a lemezt, hogy megakadályozzuk az adatlopást az áttelepítés során.
 
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Ez a cikk bemutatja, hogyan végezhető el az online áttelepítés a PostgreSQL helyszíni példányáról a Azure Database for PostgreSQLba.
+Ez a cikk ismerteti, hogyan hajthatja végre az online áttelepítés egy helyszíni példányát a PostgreSQL az Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Töltse le és telepítse a [PostgreSQL Community edition](https://www.postgresql.org/download/) 9,5, 9,6 vagy 10 verziót. A forrás PostgreSQL-kiszolgáló verziójának 9.5.11, 9.6.7, 10 vagy újabbnak kell lennie. További információkért lásd a [PostgreSQL-adatbázisok támogatott verzióit](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)ismertető cikket.
+* Töltse le és telepítse a PostgreSQL 9.5, 9.6 vagy 10 [közösségi kiadását.](https://www.postgresql.org/download/) A forrás PostgreSQL Server verziónak 9.5.11, 9.6.7, 10 vagy újabb lehet. További információt a [Támogatott PostgreSQL adatbázis-verziók](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)című cikkben talál.
 
-    Emellett az RDS PostgreSQL-verziónak meg kell egyeznie a Azure Database for PostgreSQL verziójával. Például az RDS PostgreSQL 9.5.11.5 csak Azure Database for PostgreSQL 9.5.11, és nem a 9.6.7 verzióra tud áttérni.
+    Ezenkívül az RDS PostgreSQL-verziónak meg kell egyeznie az Azure Database for PostgreSQL verziójával. Az RDS PostgreSQL 9.5.11.5 például csak a PostgreSQL 9.5.11 Azure Database adatbázisába tud áttérni, a 9.6.7-es verzióra nem.
 
-* Hozzon létre [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) vagy [Azure Database for PostgreSQL-nagy kapacitású (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)egy példányát. A pgAdmin segítségével a PostgreSQL-kiszolgálóhoz való kapcsolódással kapcsolatos részletekért tekintse meg a dokumentum ezen [szakaszát](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) .
-* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
-* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő bejövő kommunikációs portokat a Azure Database Migration Service: 443, 53, 9354, 445 és 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
+* Hozzon létre egy példányt az [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) vagy [az Azure Database for PostgreSQL - Hyperscale (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)számára. A cikk ezen [részében](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) részletesen tájékot megtudhatja, hogyan csatlakozhat a PostgreSQL Kiszolgálóhoz a pgAdmin használatával.
+* Hozzon létre egy Microsoft Azure virtuális hálózatot az Azure adatbázis-áttelepítési szolgáltatáshoz az Azure Resource Manager telepítési modelljével, amely az [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával biztosít helyek közötti kapcsolatot a helyszíni forráskiszolgálókhoz. A virtuális hálózat létrehozásáról további információt a [Virtuális hálózati dokumentációban](https://docs.microsoft.com/azure/virtual-network/)és különösen a részletes en című rövid útmutatóban talál.
+* Győződjön meg arról, hogy a virtuális hálózati biztonsági csoport szabályai nem blokkolják a következő bejövő kommunikációs portokat az Azure Database Migration Service szolgáltatásba: 443, 53, 9354, 445 és 12000. A virtuális hálózati NSG-forgalom szűrésével kapcsolatos további részleteket a [Hálózati forgalom szűrése hálózati biztonsági csoportokkal című témakörben olvashat.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)
 * Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Nyissa meg a Windows tűzfalat, hogy a Azure Database Migration Service hozzáférhessen a forrás PostgreSQL-kiszolgálóhoz, amely alapértelmezés szerint a 5432-es TCP-port.
+* Nyissa meg a Windows tűzfalat, hogy az Azure Database Migration Service hozzáférhessen a Forrás PostgreSQL-kiszolgálóhoz, amely alapértelmezés szerint az 5432-es TCP-port.
 * Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
-* Hozzon létre egy kiszolgálói szintű [Tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a Azure Database for PostgreSQL kiszolgáló számára, amely lehetővé teszi Azure Database Migration Service hozzáférést a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
+* Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure Database for PostgreSQL-kiszolgálóhoz, amely lehetővé teszi az Azure Database Migration Service hozzáférését a céladatbázisokhoz. Adja meg az Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
 
-### <a name="set-up-aws-rds-postgresql-for-replication"></a>AWS RDS PostgreSQL beállítása replikáláshoz
+### <a name="set-up-aws-rds-postgresql-for-replication"></a>Az AWS RDS PostgreSQL beállítása replikációra
 
-1. Új paraméterérték létrehozásához kövesse az AWS által az [adatbázis-paraméter-csoportok használata](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)című cikkben ismertetett utasításokat.
-2. A fő felhasználónevet használva kapcsolódjon a forráshoz Azure Database Migration Service. Ha a fő felhasználói fióktól eltérő fiókot használ, a fióknak a rds_superuser szerepkörrel és a rds_replication szerepkörrel kell rendelkeznie. A rds_replication szerepkör a logikai tárolóhelyek kezeléséhez és az adatstreamek logikai tárolóhelyek használatával történő továbbításához biztosít engedélyeket.
-3. Hozzon létre egy új paraméter-csoportot a következő konfigurációval:
+1. Új paramétercsoport létrehozásához kövesse az AWS utasításait a [Db parameter groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)című cikkben.
+2. A fő felhasználónév segítségével csatlakozzon a forráshoz az Azure Database Migration Service.Use the master user name to connect to the source from Azure Database Migration Service. Ha a fő felhasználói fióktól eltérő fiókot használ, a fióknak rds_superuser szerepkörrel és rds_replication szerepkörrel kell rendelkeznie. A rds_replication szerepkör engedélyeket ad a logikai tárolóhelyek kezeléséhez és az adatok logikai tárolóhelyek használatával történő streameléséhez.
+3. Hozzon létre egy új paramétercsoportot a következő konfigurációval:
 
-    a. Állítsa az RDS. logical_replication paramétert az DB-paraméter csoportjába az 1 értékre.
+    a. Állítsa az rds.logical_replication paramétert a DB paramétercsoportban 1-re.
 
-    b. max_wal_senders = [egyidejű feladatok száma] – a max_wal_senders paraméter a futtatott egyidejű feladatok számát állítja be, 10 feladatot ajánl fel.
+    b. max_wal_senders =[egyidejű feladatok száma] - A max_wal_senders paraméter beállítja a futtatható egyidejű feladatok számát, 10 feladatot ajánl.
 
-    c. max_replication_slots – = [bővítőhelyek száma], ajánlott öt bővítőhelyre beállítani.
+    c. max_replication_slots – = [bővítőhelyek száma], javasoljuk, hogy öt bővítőhely.
 
-4. Rendelje hozzá a létrehozott típusparaméter-csoportot az RDS PostgreSQL-példányhoz.
+4. Társítsa a létrehozott paramétercsoportot az RDS PostgreSQL-példányhoz.
 
-## <a name="migrate-the-schema"></a>A séma migrálása
+## <a name="migrate-the-schema"></a>A séma áttelepítése
 
-1. Bontsa ki a sémát a forrás-adatbázisból, és alkalmazza a célként megadott adatbázisra az összes adatbázis-objektum, például a táblázat sémái, indexek és tárolt eljárások áttelepítésének befejezéséhez.
+1. Bontsa ki a sémát a forrásadatbázisból, és alkalmazza a céladatbázisra az összes adatbázis-objektum, például táblasémák, indexek és tárolt eljárások áttelepítésének befejezéséhez.
 
-    Csak a séma áttelepítésének legegyszerűbb módja a pg_dump használata az-s kapcsolóval. További információ: [példák](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) a postgres pg_dump oktatóanyagban.
+    Csak a sémát telepítheti át, ha pg_dump használja az -s kapcsolóval. További információkért tekintse meg a [példákat](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) a Postgres pg_dump oktatóanyag.
 
     ```
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
     ```
 
-    Például a **dvdrental** -adatbázishoz tartozó sémafájl kiírásához használja a következő parancsot:
+    Ha például a **dvdrental** adatbázis sémafájljának kiírásához a következő parancsot használja:
 
     ```
     pg_dump -o -h localhost -U postgres -d dvdrental -s  > dvdrentalSchema.sql
     ```
 
-2. Hozzon létre egy üres adatbázist a cél szolgáltatásban, amely Azure Database for PostgreSQL. Az adatbázisok összekapcsolásához és létrehozásához tekintse meg az alábbi cikkek egyikét:
+2. Hozzon létre egy üres adatbázist a célszolgáltatásban, amely a PostgreSQL Azure Database. Adatbázis csatlakoztatásához és létrehozásához olvassa el az alábbi cikkek egyikét:
 
-    * [Azure Database for PostgreSQL-kiszolgáló létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)
-    * [Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgáló létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)
+    * [Azure-adatbázis létrehozása postgreSQL-kiszolgálóhoz az Azure Portal használatával](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)
+    * [Azure-adatbázis létrehozása a PostgreSQL - Hyperscale (Citus) kiszolgálóhoz az Azure Portal használatával](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)
 
-3. Importálja a sémát a cél szolgáltatásba, amely Azure Database for PostgreSQL. A séma memóriaképfájl-fájljának visszaállításához futtassa a következő parancsot:
+3. Importálja a sémát a célszolgáltatásba, amely a PostgreSQL Azure Database. A sémamemória-fájl visszaállításához futtassa a következő parancsot:
 
     ```
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Például:
+    Példa:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
     ```
 
-4. Ha a sémában idegen kulcsok szerepelnek, a migrálás első betöltése és folyamatos szinkronizálása sikertelen lesz. A drop Foreign Key parancsfájl kibontásához és a külső kulcsú parancsfájl hozzáadásához a célhelyen (Azure Database for PostgreSQL) futtassa a következő parancsfájlt a PgAdmin vagy a psql:
+4. Ha a sémában idegen kulcsok szerepelnek, a migrálás első betöltése és folyamatos szinkronizálása sikertelen lesz. A drop foreign key parancsfájl kibontásához és az idegen kulcs parancsfájljának a célállomáson való hozzáadásához (Azure Database for PostgreSQL) futtassa a következő parancsfájlt a PgAdmin vagy a psql rendszerben:
   
     ```
     SELECT Queries.tablename
@@ -134,11 +134,11 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       GROUP BY Queries.tablename;
     ```
 
-5. A külső kulcs eldobásához futtassa a legördülő idegen kulcsot (amely a második oszlop) a lekérdezési eredményben.
+5. Futtassa a drop idegen kulcsot (amely a második oszlop) a lekérdezés eredményében az idegen kulcs eldobásához.
 
-6. Ha az adatokban eseményindítók (INSERT vagy Update trigger) szerepelnek, akkor az adatok a forrásból való replikálása előtt kényszerítve lesznek az adatok integritására a célhelyen. Javasoljuk, hogy az áttelepítés során tiltsa le az eseményindítókat a *célhelyen* lévő összes táblában, majd engedélyezze az eseményindítókat az áttelepítés befejeződése után.
+6. Ha az adatokban eseményindítók (beszúrásvagy frissítés) vannak, a forrásból származó adatok replikálása előtt kényszeríti ki a cél adatintegritását. A javaslat az, hogy tiltsa le az eseményindítók a cél összes *táblájában az* áttelepítés során, majd engedélyezze az eseményindítók áttelepítés után befejeződött.
 
-    Eseményindítók letiltása a céladatbázisben:
+    Az eseményindítók letiltása a céladatbázisban:
 
     ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
@@ -150,15 +150,15 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
    ![Portál-előfizetések megtekintése](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-subscription1.png)
 
-2. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a Azure Database Migration Service példányát, majd válassza az **erőforrás-szolgáltatók**lehetőséget.
+2. Válassza ki azt az előfizetést, amelyben létre szeretné hozni az Azure Database Migration Service példányát, majd válassza **az Erőforrás-szolgáltatók**lehetőséget.
 
     ![Erőforrás-szolgáltatók megtekintése](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-resource-provider.png)
 
-3. Keressen a „migration” kifejezésre, majd a **Microsoft.DataMigration** jobb oldalán válassza a **Regisztrálás** elemet.
+3. Keresse meg az áttelepítést, majd jobbra a **Microsoft.DataMigration**programtól, és válassza a **Regisztráció**lehetőséget.
 
     ![Erőforrás-szolgáltató regisztrálása](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-register-resource-provider.png)
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure Database Migration Service-példány létrehozása
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Az Azure Database Migration Service példányának létrehozása
 
 1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
@@ -170,15 +170,15 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
   
 3. **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
-4. Válassza ki azt a helyet, amelyben létre szeretné hozni a Azure Database Migration Service példányát.
+4. Válassza ki azt a helyet, ahol létre szeretné hozni az Azure Database Migration Service példányát.
 
-5. Válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
+5. Jelöljön ki egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
 
-    A virtuális hálózat Azure Database Migration Service hozzáférést biztosít a forrás PostgreSQL-példányhoz és a cél Azure Database for PostgreSQL példányhoz.
+    A virtuális hálózat hozzáférést biztosít az Azure Database Migration Service számára a forrás PostgreSQL-példányhoz és a PostgreSQL-példány cél Azure-adatbázisához.
 
-    Ha további információt szeretne arról, hogyan hozhat létre virtuális hálózatot a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
+    A virtuális hálózat Azure Portalon való létrehozásáról további információt a Virtuális hálózat létrehozása az Azure Portal használatával című témakörben [talál.](https://aka.ms/DMSVnet)
 
-6. Válasszon árképzési szintet; az online áttelepítés esetében ügyeljen arra, hogy a prémium: 4vCores díjszabási szintet válassza.
+6. Válasszon ki egy tarifacsomagot; az online áttelepítéshez válassza ki a Prémium: 4vCores tarifacsomagot.
 
     ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings5.png)
 
@@ -192,40 +192,40 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
       ![Az Azure Database Migration Service minden példányának megkeresése](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-search.png)
 
-2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service példány nevét, válassza ki a példányt, majd válassza az + **új áttelepítési projekt**lehetőséget.
-3. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza ki az **AWS RDS for PostgreSQL**elemet, majd a **célkiszolgáló típusa** szövegmezőben válassza a **Azure Database for PostgreSQL**lehetőséget.
-4. A **tevékenység típusának** kiválasztása szakaszban válassza az **online adatáttelepítés**lehetőséget.
+2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service-példány nevét, jelölje ki a példányt, majd válassza a + **Új áttelepítési projekt**lehetőséget.
+3. Az **Új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **Forráskiszolgáló típusa** mezőben válassza az **AWS RDS for PostgreSQL**lehetőséget, majd a **Célkiszolgáló típusa** mezőbe válassza az Azure Database for **PostgreSQL**lehetőséget.
+4. A **Tevékenység típusának kiválasztása** csoportban válassza az **Online adatáttelepítés**lehetőséget.
 
     > [!IMPORTANT]
-    > Ügyeljen arra, hogy **online adatáttelepítést**válasszon; az offline áttelepítések nem támogatottak ebben a forgatókönyvben.
+    > Ügyeljen arra, hogy válassza **az online adatok áttelepítése**; offline áttelepítések nem támogatottak ebben a forgatókönyvben.
 
     ![Azure Database Migration Service-projekt létrehozása](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-create-project5.png)
 
     > [!NOTE]
-    > Másik lehetőségként választhatja a **projekt létrehozása** lehetőséget az áttelepítési projekt létrehozásához, és később végrehajthatja az áttelepítést.
+    > Másik lehetőségként **választhatja** a Projekt létrehozása csak az áttelepítési projekt most, és az áttelepítés későbbi végrehajtásához lehetőséget.
 
 5. Kattintson a **Mentés** gombra.
 
 6. Válassza a **Tevékenység létrehozása és futtatása** lehetőséget a projekt létrehozásához és a migrálási művelet lefuttatásához.
 
     > [!NOTE]
-    > Jegyezze fel az online áttelepítés beállításához szükséges előfeltételeket a projekt létrehozása panelen.
+    > Kérjük, jegyezze fel az online áttelepítés beállításához szükséges előfeltételeket a projektlétrehozási panelen.
 
 ## <a name="specify-source-details"></a>Forrás adatainak megadása
 
-* A **forrás hozzáadása részletek** képernyőn adja meg a forrás PostgreSQL-példány kapcsolati adatait.
+* A **Forrás részleteinek hozzáadása** képernyőn adja meg a postgreSQL-példány kapcsolatának részleteit.
 
    ![Forrás részletei](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-source-details5.png)
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 
-1. Válassza a **Mentés**lehetőséget, majd a **cél részletei** képernyőn adja meg a cél Azure Database for PostgreSQL-kiszolgáló kapcsolati adatait, amely előre kiépített, és a DVD- **kölcsönzési** sémát a pg_dump használatával telepíti.
+1. Válassza a **Mentés**lehetőséget, majd a **Cél részletei** képernyőn adja meg a postgreSQL-kiszolgálóhoz használt azure-adatbázis kapcsolatának részleteit, amely előre ki van építve, és a **DVD Rentals** sémát pg_dump használatával telepíti.
 
     ![Cél részletei](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-target-details.png)
 
 2. Válassza a **Mentés** lehetőséget, majd a **Leképezés céladatbázisokra** képernyőn képezze le a forrás- és a céladatbázist a migráláshoz.
 
-    Ha a céladatbázis ugyanazt az adatbázisnevet tartalmazza, mint a forrás-adatbázis, akkor a Azure Database Migration Service alapértelmezés szerint kiválasztja a céladatbázis-adatbázist.
+    Ha a céladatbázis ugyanazt az adatbázisnevet tartalmazza, mint a forrásadatbázis, az Azure Database Migration Service alapértelmezés szerint kiválasztja a céladatbázist.
 
     ![Leképezés céladatbázisokra](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-map-target-databases.png)
 
@@ -243,32 +243,32 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 1. A migrálás műveletének ablakában válassza a **Frissítés** lehetőséget a megjelenítés frissítéséhez addig, amíg a migrálás **Állapota** át nem vált **Fut** értékre.
 
-    ![Tevékenység állapota – fut](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-activity-status3.png)
+    ![Tevékenység állapota - futás](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-activity-status3.png)
 
-2. Az **adatbázis neve**területen válasszon ki egy adott adatbázist, amely a **teljes adatterhelés** és a **növekményes adatszinkronizálási** műveletek áttelepítési állapotát adja meg.
+2. A **DATABASE NAME csoportban**válasszon ki egy adott adatbázist a **Teljes adatbetöltés** és a **Növekményes adatszinkronizálási** műveletek áttelepítési állapotának megkerüléséhez.
 
-    A **teljes adatterhelés** megjeleníti a kezdeti betöltési áttelepítés állapotát, míg a **növekményes adatszinkronizálás** megjeleníti az adatváltozások rögzítésére (CDC) vonatkozó állapotot.
+    **A teljes adatterhelés** a kezdeti betöltési áttelepítés állapotát mutatja, míg **a Növekményes adatszinkronizálás** a változásadat-rögzítési (CDC) állapotot mutatja.
 
-    ![Leltár képernyő – teljes adatterhelés](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-full-load.png)
+    ![Leltár képernyő - teljes adatterhelés](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-full-load.png)
 
-    ![Leltár képernyő – növekményes adatszinkronizálás](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-incremental.png)
+    ![Leltár képernyő - növekményes adatszinkronizálás](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-incremental.png)
 
 ## <a name="perform-migration-cutover"></a>Átállásos áttelepítés végrehajtása
 
-A kezdeti teljes terhelés befejezése után az adatbázisok **készen**állnak a átváltás.
+A kezdeti teljes terhelés befejezése után az adatbázisok **Ready to Cutover (Ready to Cutover)** jelöléssel vannak ellátva.
 
 1. Ha készen áll az adatbázis migrálásának befejezésére, kattintson az **Átállás indítása** gombra.
 
-2. Várjon, amíg a **függőben lévő változások** számlálója **0-ra** mutat, hogy a forrásadatbázis összes bejövő tranzakciója le legyen állítva, jelölje be a Confirm ( **megerősítés** ) jelölőnégyzetet, majd kattintson az **alkalmaz**gombra.
+2. Várjon, amíg a **Függőben lévő módosítások** számláló **0-t** jelenít meg annak érdekében, hogy a forrásadatbázisba beérkező összes tranzakció lelegyen állítva, jelölje be a **Megerősítés** jelölőnégyzetet, majd kattintson az **Alkalmaz gombra.**
 
-    ![Teljes átváltás képernyő](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-complete-cutover.png)
+    ![Teljes átvágási képernyő](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-complete-cutover.png)
 
-3. Ha az adatbázis-áttelepítési **állapot megjelenik,** az alkalmazásokat az új cél Azure Database for PostgreSQL adatbázishoz kapcsolja.
+3. Ha az adatbázis-áttelepítésállapota **befejezett,** csatlakoztassa az alkalmazásokat az új cél Azure Database for PostgreSQL adatbázishoz.
 
-A rendszer most befejezte az RDS PostgreSQL helyszíni példányának Azure Database for PostgreSQL való online áttelepítését.
+Az RDS PostgreSQL helyszíni példányának online áttelepítése a PostgreSQL Azure Database for PostgreSQL-re befejeződött.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* További információ a Azure Database for PostgreSQLről: mi a [Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
-* Ha további kérdése van, küldjön e-mailt az [Azure Database áttelepítési](mailto:AskAzureDatabaseMigrations@service.microsoft.com) aliasra.
+* A PostgreSQL Azure Database for-ról a [Mi az Azure Database for PostgreSQL című](https://docs.microsoft.com/azure/postgresql/overview)cikkben olvashat.
+* További kérdések esetén küldjön e-mailt az [Azure-adatbázis-áttelepítések ask](mailto:AskAzureDatabaseMigrations@service.microsoft.com) aliasának.

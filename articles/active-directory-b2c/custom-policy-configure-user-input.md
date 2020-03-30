@@ -1,55 +1,58 @@
 ---
-title: Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendekben
+title: Jogcímek hozzáadása és felhasználói bevitel testreszabása az egyéni házirendekben
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan szabhatja testre a felhasználói adatokat, és hogyan adhat hozzá jogcímeket a regisztrálási vagy bejelentkezési utazáshoz Azure Active Directory B2C.
+description: Megtudhatja, hogyan szabhatja testre a felhasználói bevitelt, és hogyan adhat hozzá jogcímeket a regisztrációs vagy bejelentkezési utazáshoz az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
-ms.translationtype: HT
+ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473676"
 ---
-#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C
+#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Jogcímek hozzáadása és felhasználói bevitel testreszabása egyéni szabályzatok használatával az Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ebben a cikkben egy új attribútumot gyűjt a regisztráció során Azure Active Directory B2C (Azure AD B2C). Megszerezheti a felhasználók városát, legördülőként konfigurálhatja, és meghatározhatja, hogy meg kell-e adni.
+Ebben a cikkben egy új attribútumot gyűjt az Azure Active Directory B2C (Azure AD B2C) előfizetési folyamat során. Beszerzi a felhasználók városát, legördülő menüként konfigurálja, és meghatározza, hogy szükséges-e a megadása.
 
-A felhasználóktól származó kezdeti adatokat a regisztrációs vagy bejelentkezési felhasználói úton gyűjtheti be. A további jogcímek később is összegyűjthetők, ha a felhasználói úton szerkeszti a profilt. A bármikor Azure AD B2C az adatokat közvetlenül a felhasználótól gyűjti össze interaktív módon, az Identity Experience Framework saját [maga által megadott műszaki profilt](self-asserted-technical-profile.md)használja. Ebben a példában a következőket látja:
+> [!NOTE]
+> Ez a minta a beépített "város" követelést használja. Ehelyett választhat a támogatott [Azure AD B2C beépített attribútumok](user-profile-attributes.md) vagy egy egyéni attribútum. Egyéni attribútum használatához engedélyezze az [egyéni attribútumokat a házirendben.](custom-policy-custom-attributes.md) Ha egy másik beépített vagy egyéni attribútumot szeretne használni, cserélje le a "város" szót az Ön által választott attribútumra, például a beépített *jobTitle* attribútumra vagy egy olyan egyéni attribútumra, mint *extension_loyaltyId*.  
 
-1. Adja meg a "város" jogcímet.
-1. Kérje meg a felhasználót a városra.
-1. A Azure AD B2C könyvtárban maradjon a város a felhasználói profilhoz.
-1. Olvassa el a városi jogcímet az Azure AD B2C könyvtárából minden bejelentkezéskor.
-1. A bejelentkezés vagy a regisztráció után adja vissza a várost a függő entitás alkalmazásához.  
+A felhasználóktól kezdeti adatokat gyűjthet a regisztrációs vagy bejelentkezési felhasználói úton. További jogcímek később is összegyűjthetők egy profil szerkesztése felhasználói út használatával. Bármikor, amikor az Azure AD B2C interaktív módon közvetlenül a felhasználótól gyűjt információkat, az Identitásélmény-keretrendszer az [önérvényesítő technikai profilját](self-asserted-technical-profile.md)használja. Ebben a példában a következők:
+
+1. "Város" jogcím definiálása. 
+1. Kérdezze meg a felhasználót a városát.
+1. A város az Azure AD B2C címtárban a felhasználói profil t.
+1. Olvassa el a városi jogcímet az Azure AD B2C címtárból minden bejelentkezéskor.
+1. A bejelentkezés vagy a regisztráció után küldje vissza a várost a függő entitás alkalmazásába.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című témakör lépéseit. A közösségi és helyi fiókokkal való bejelentkezéshez és a bejelentkezéshez egy működő egyéni szabályzatot kell használnia.
+Hajtsa végre az Egyéni házirendek – Első lépések című [lépéseit.](custom-policy-get-started.md) Rendelkeznie kell egy működő egyéni szabályzat a regisztrációhoz és a bejelentkezéshez a közösségi és helyi fiókok.
 
 ## <a name="define-a-claim"></a>Jogcím definiálása
 
-A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárolást biztosít. A [jogcím-séma](claimsschema.md) az a hely, ahol deklarálja a jogcímeket. A jogcím definiálásához a következő elemek használhatók:
+A jogcím az Adatok ideiglenes tárolását biztosítja az Azure AD B2C-szabályzat végrehajtása során. A [jogcímséma](claimsschema.md) az a hely, ahol deklarálja a jogcímeket. A jogcím meghatározásához a következő elemek et használjuk:
 
-- **DisplayName** – a felhasználó felé irányuló címkét meghatározó karakterlánc.
-- [Adattípus](claimsschema.md#datatype) – a jogcím típusa.
-- **UserHelpText** – segít a felhasználónak megérteni, hogy mi szükséges.
-- [UserInputType](claimsschema.md#userinputtype) – a beviteli vezérlőelem típusa, például a szövegmező, a választógomb, a legördülő lista vagy több lehetőség.
+- **DisplayName** - A felhasználó felé néző címkét meghatározó karakterlánc.
+- [DataType](claimsschema.md#datatype) - A jogcím típusa.
+- **UserHelpText** - Segít a felhasználónak megérteni, mi szükséges.
+- [UserInputType](claimsschema.md#userinputtype) - A beviteli vezérlő típusa, például szövegdoboz, rádiókijelölés, legördülő lista vagy többszörös kijelölés.
 
-Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
 
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
-1. Adja hozzá a város jogcímet a **ClaimsSchema** elemhez.  
+1. Adja hozzá a városjogcíma a **ClaimsSchema** elem.  
 
 ```xml
 <ClaimType Id="city">
@@ -66,13 +69,13 @@ Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em>`S
 
 ## <a name="add-a-claim-to-the-user-interface"></a>Jogcím hozzáadása a felhasználói felülethez
 
-A következő műszaki profilok [önmagukban vannak érvényesítve](self-asserted-technical-profile.md), amikor a felhasználónak meg kell adnia a bemenetet:
+A következő technikai profilok [saját érvényesítésre](self-asserted-technical-profile.md)kerülnek, akkor hívnak meg, ha a felhasználónak bemenetet kell megadnia:
 
-- **LocalAccountSignUpWithLogonEmail** – helyi fiók regisztrálási folyamata.
-- **SelfAsserted – közösségi** összevont fiók – az első alkalommal bejelentkezett felhasználói bejelentkezés.
-- **SelfAsserted-ProfileUpdate** – a profil folyamatának szerkesztése.
+- **LocalAccountSignUpWithLogonEmail** – Helyi fiók regisztrációs folyamata.
+- **SelfAsserted-Social** - Federated fiók első alkalommal a felhasználó bejelentkezés.
+- **SelfAsserted-ProfileUpdate** - Profilfolyamat szerkesztése.
 
-Ahhoz, hogy regisztrálni lehessen a városi jogcímet a regisztráció során, kimeneti jogcímként hozzá kell adni a `LocalAccountSignUpWithLogonEmail` technikai profilhoz. Bírálja felül ezt a technikai profilt a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
+A városjogcím beszedéséhez a regisztráció során hozzá kell `LocalAccountSignUpWithLogonEmail` adni a technikai profil kimeneti jogcímként. Felülbírálja ezt a technikai profilt a bővítményfájlban. Adja meg a kimeneti jogcímek teljes listáját a jogcímek képernyőn megjelenő sorrendjének szabályozásához. Keresse meg a **ClaimsProviders** elemet. Adjon hozzá új kárrendezési szolgáltatókat az alábbiak szerint:
 
 ```xml
 <ClaimsProvider>
@@ -95,7 +98,7 @@ Ahhoz, hogy regisztrálni lehessen a városi jogcímet a regisztráció során, 
 <ClaimsProvider>
 ```
 
-A városi jogcímek összevont fiókkal való első bejelentkezés után történő összegyűjtéséhez hozzá kell adni a `SelfAsserted-Social` technikai profil kimeneti jogcímeként. Ahhoz, hogy a helyi és összevont fiókok a felhasználók később szerkesszék a profiljaikat, adja hozzá a kimeneti jogcímet a `SelfAsserted-ProfileUpdate` technikai profilhoz. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
+A város jogcímének összegyűjtése után a kezdeti bejelentkezés egy összevont fiókkal, `SelfAsserted-Social` hozzá kell adni, mint egy kimeneti jogcím a technikai profilhoz. Ahhoz, hogy a helyi és összevont fiók felhasználók később szerkeszthessék `SelfAsserted-ProfileUpdate` a profiladataikat, adja hozzá a kimeneti jogcímet a technikai profilhoz. Felülbírálja ezeket a technikai profilokat a bővítményfájlban. Adja meg a kimeneti jogcímek teljes listáját a jogcímek képernyőn megjelenő sorrendjének szabályozásához. Keresse meg a **ClaimsProviders** elemet. Adjon hozzá új kárrendezési szolgáltatókat az alábbiak szerint:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -124,10 +127,10 @@ A városi jogcímek összevont fiókkal való első bejelentkezés után törté
 
 ## <a name="read-and-write-a-claim"></a>Jogcím olvasása és írása
 
-A következő műszaki profilok [Active Directory műszaki profilok](active-directory-technical-profile.md), amelyek az Azure Active Directoryba való adatolvasást és-írást írják le.  
-A `PersistedClaims` használatával írhat adatbevitelt a felhasználói profilba, és `OutputClaims` a megfelelő Active Directory technikai profilokban lévő felhasználói profilból beolvasott adatok beolvasásához.
+A következő technikai profilok [az Active Directory technikai profiljai,](active-directory-technical-profile.md)amelyek adatokat olvasnak és írnak az Azure Active Directoryba.  
+Adatok `PersistedClaims` írása a felhasználói `OutputClaims` profilba, valamint az adott Active Directory technikai profilon belüli felhasználói profiladatainak olvasása.
 
-Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Keresse meg a **ClaimsProviders** elemet.  Vegyen fel egy új ClaimsProviders a következőképpen:
+Felülbírálja ezeket a technikai profilokat a bővítményfájlban. Keresse meg a **ClaimsProviders** elemet.  Adjon hozzá új kárrendezési szolgáltatókat az alábbiak szerint:
 
 ```xml
 <ClaimsProvider>
@@ -167,9 +170,9 @@ Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Keress
 </ClaimsProvider>
 ```
 
-## <a name="include-a-claim-in-the-token"></a>Jogcím belefoglalása a jogkivonatba 
+## <a name="include-a-claim-in-the-token"></a>Jogcím felvétele a jogkivonatba 
 
-Ha vissza szeretné állítani a város jogcímet a függő entitás alkalmazásba, adjon hozzá egy kimeneti jogcímet a <em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> fájlhoz. A kimeneti jogcím a sikeres felhasználói út után lesz hozzáadva a jogkivonathoz, és a rendszer elküldi az alkalmazásnak. Módosítsa a technikai profil elemet a függő entitás szakaszban a város kimeneti jogcímként való hozzáadásához.
+Ha vissza szeretné küldeni a városjogcímeket a függő <em> `SocialAndLocalAccounts/` </em> entitás alkalmazásnak, adjon hozzá egy kimeneti jogcímet a fájlhoz. A kimeneti jogcím sikeres felhasználói út után hozzáadódik a jogkivonathoz, és az alkalmazásnak kerül elküldésre. Módosítsa a technikai profil elem a függő entitás szakaszban, hogy adja hozzá a várost, mint egy kimeneti jogcím.
  
 ```xml
 <RelyingParty>
@@ -192,21 +195,21 @@ Ha vissza szeretné állítani a város jogcímet a függő entitás alkalmazás
 </RelyingParty>
 ```
 
-## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
+## <a name="test-the-custom-policy"></a>Az egyéni házirend tesztelése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
-4. Válassza az **identitási élmény keretrendszert**.
-5. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított két házirendet.
-2. Válassza ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
-3. Regisztrálnia kell egy e-mail-cím használatával.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja az Azure AD-bérlőt tartalmazó könyvtárat.
+3. Válassza az **Összes szolgáltatás lehetőséget** az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Alkalmazásregisztrációk lehetőséget.**
+4. Válassza **az Identitáskezelési keretrendszert**.
+5. Válassza **az Egyéni házirend feltöltése**lehetőséget, majd töltse fel a két módosított házirendfájlt.
+2. Jelölje ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, és kattintson a **Futtatás gombra.**
+3. Önnek képesnek kell lennie arra, hogy iratkozzon fel egy e-mail címet.
 
 A regisztrációs képernyőnek az alábbi képernyőképhez hasonlóan kell kinéznie:
 
-![A módosított regisztrációs lehetőség képernyőképe](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
+![Képernyőkép a módosított előfizetési lehetőségről](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
-Az alkalmazásnak visszaadott jogkivonat tartalmazza a `city` jogcímet.
+Az alkalmazásnak küldött jogkivonat `city` tartalmazza a jogcímet.
 
 ```json
 {
@@ -234,5 +237,5 @@ Az alkalmazásnak visszaadott jogkivonat tartalmazza a `city` jogcímet.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [ClaimsSchema](claimsschema.md) elemről a IEF-hivatkozásban.
-- Megtudhatja, hogyan használhatja az egyéni [attribútumokat egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md).
+- További információ a [ClaimsSchema](claimsschema.md) elemről az IEF-hivatkozásban.
+- Megtudhatja, hogy [miként használhatja az egyéni attribútumokat egyéni profilszerkesztési házirendben.](custom-policy-custom-attributes.md)

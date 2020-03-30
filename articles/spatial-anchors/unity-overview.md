@@ -1,6 +1,6 @@
 ---
-title: Az Azure térbeli horgonyok egységének áttekintése
-description: Ismerje meg, hogyan használhatók az Azure térbeli horgonyok az Unity-alkalmazásokon belül.
+title: Az Azure Spatial Anchors Unity – áttekintés
+description: Ismerje meg, hogyan használhatók az Azure Spatial Anchors a Unity-alkalmazásokban. Tekintse át a Unity for HoloLens, a Unity for Android és a Unity for iOS rövid útmutatóit.
 author: rgarcia
 ms.author: rgarcia
 manager: vriveras
@@ -8,25 +8,25 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea2d57c708bd3563625d6f9da19ac043b604888
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: df28fc6b5e3a1ddd9813919c8afbf21f65d731b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471086"
 ---
-# <a name="building-in-unity-with-azure-spatial-anchors"></a>Összefogás az Azure térbeli Horgonyokkal
+# <a name="building-in-unity-with-azure-spatial-anchors"></a>Egységépítés az Azure térbeli horgonyokkal
 
-A fejlesztők az Azure térbeli horgonyokat használó vegyes valóságú alkalmazások létrehozására és üzembe helyezésére is kiválaszthatják az egységet. A következő platformok támogatottak:
+A fejlesztők választhatnak unity létrehozására és üzembe helyezésére vegyes valóság alkalmazások, amelyek az Azure Spatial Anchors. A következő platformok támogatottak:
 
-**HoloLens egység**
+**A HoloLens egysége**
 
-[Gyors útmutató: Azure térbeli horgonyokat használó Unity HoloLens-alkalmazás létrehozása](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
+[Rövid útmutató: Hozzon létre egy Unity HoloLens alkalmazást, amely az Azure Spatial Anchors-t használja](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
 
-**Egység az Androidhoz**
+**Unity androidos használatra**
 
-[Gyors útmutató: Azure térbeli horgonyokat használó Unity Android-alkalmazás létrehozása](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
+[Rövid útmutató: Hozzon létre egy Unity Android-alkalmazást, amely az Azure Spatial Anchors alkalmazást használja](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
 
-**Az iOS egysége**
+**Egység az iOS számára**
 
-[Rövid útmutató: Azure térbeli horgonyokat használó Unity iOS-alkalmazás létrehozása](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)
+[Rövid útmutató: Hozzon létre egy Unity iOS-alkalmazást, amely az Azure Spatial Anchors-t használja](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)

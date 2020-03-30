@@ -1,7 +1,7 @@
 ---
-title: 'Adatexportálás: modul-hivatkozás'
+title: 'Adatok exportálása: modul hivatkozási'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja az adatok exportálása modult a Azure Machine Learning az eredmények, a köztes adatok és a munkafolyamatok munkafolyamatainak a Azure Machine Learningokon kívüli Felhőbeli tárolási célhelyekre való mentéséhez.
+description: Megtudhatja, hogyan használhatja az Adatok exportálása modult az Azure Machine Learningben az eredmények, köztes adatok és munkaadatok mentéséhez a folyamatokból az Azure Machine Learningen kívüli felhőalapú tárolási célállomásokra.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,51 +9,51 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456301"
 ---
-# <a name="export-data-module"></a>Adatmodul exportálása
+# <a name="export-data-module"></a>Adatok exportálása modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-Ezzel a modullal mentheti az eredményeket, a köztes adatok és a munkafolyamatok adatait a Felhőbeli tárolási célhelyekre. 
+Ezzel a modullal eredményeket, köztes adatokat és munkaadatokat menthet a folyamatokból a felhőalapú tárolási célhelyekre. 
 
-Ez a modul támogatja az adatexportálást a következő felhőalapú adatszolgáltatásokban:
+Ez a modul támogatja az adatok exportálását a következő felhőalapú adatszolgáltatásokba:
 
 - Azure Blob-tároló
 - Azure-fájlmegosztás
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Az adatexportálás előtt először regisztrálnia kell egy adattárt a Azure Machine Learning munkaterületen. További információ: [hozzáférés az Azure Storage-szolgáltatásokban tárolt adatokhoz](../how-to-access-data.md).
+Az adatok exportálása előtt először regisztrálnia kell egy adattaboltot az Azure Machine Learning-munkaterületen. További információt az [Access-adatok az Azure storage-szolgáltatásokban című témakörben talál.](../how-to-access-data.md)
 
-## <a name="how-to-configure-export-data"></a>Az exportálási beállítások konfigurálása
+## <a name="how-to-configure-export-data"></a>Az adatok exportálásának beállítása
 
-1. Adja hozzá az **adatexportálási** modult a folyamathoz a tervezőben. Ez a modul a **bemeneti és a kimeneti** kategóriában található.
+1. Adja hozzá az **Adatok exportálása** modult a tervező folyamatához. Ez a modul a **Bemenet és kimenet** kategóriában található.
 
-1. Az exportálni kívánt adategységeket tartalmazó modulba csatlakoztasson **adatexportálást** .
+1. Csatlakoztassa **az Adatok exportálását** az exportálni kívánt adatokat tartalmazó modulhoz.
 
-1. Válassza az **adatexportálás** lehetőséget a **Tulajdonságok** ablaktábla megnyitásához.
+1. Válassza **az Adatok exportálása** lehetőséget a **Tulajdonságok** ablaktábla megnyitásához.
 
-1. Az **adattár**mezőben válasszon ki egy meglévő adattárt a legördülő listából. Létrehozhat egy új adattárt is. Tekintse át, hogyan [érheti el az Azure Storage-szolgáltatásokban tárolt Access-adatbázisokat](../how-to-access-data.md).
+1. **Az Adattár**ban válasszon ki egy meglévő adattalapot a legördülő listából. Új adattatente is létrehozhat. Az [Access-adatok az Azure storage-szolgáltatásokban](../how-to-access-data.md)való felkeresésével ellenőrizheti, hogyan.
 
-1. A **kimenet újragenerált**jelölőnégyzete határozza meg, hogy végrehajtja-e a modult a kimenet újralétrehozásához a futási időben. 
+1. A jelölőnégyzet, **Újragenerálása kimenet**, dönti el, hogy végre a modult, hogy újragenerálja a kimenetet a működési idő. 
 
-    Alapértelmezés szerint nincs kiválasztva, ami azt jelenti, hogy ha a modult korábban ugyanazokkal a paraméterekkel hajtották végre, a rendszer a legutóbbi futtatásból a futási idő csökkentése érdekében újra fogja használni a kimenetet. 
+    Alapértelmezés szerint nincs bejelölve, ami azt jelenti, hogy ha a modult korábban ugyanazokat a paramétereket hajtották végre, a rendszer újra felhasználja az utolsó futtatás kimenetét a futási idő csökkentése érdekében. 
 
-    Ha be van jelölve, a rendszer ismét végrehajtja a modult a kimenet újralétrehozásához.
+    Ha be van jelölve, a rendszer újra végrehajtja a modult a kimenet újragenerálásához.
 
-1. Adja meg az elérési utat abban az adattárban, ahol az adattároló található. Az elérési út relatív elérési út. Az üres elérési utak vagy URL-elérési utak nem engedélyezettek.
+1. Adja meg az elérési utat abban az adattárban, ahol az adatok vannak. Az elérési út relatív elérési út. Az üres elérési utak vagy URL-elérési utak nem engedélyezettek.
 
 
-1. **Fájlformátum**esetén válassza ki azt a formátumot, amelyben tárolni szeretné az adattárolást.
+1. **A Fájlformátum mezőben**válassza ki azt a formátumot, amelyben az adatokat tárolni szeretné.
  
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
