@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: egyetlen adatbázis hozzáadása egy feladatátvételi csoporthoz'
-description: A Azure Portal, a PowerShell vagy az Azure CLI használatával vegyen fel egy Azure SQL Database önálló adatbázist egy feladatátvételi csoportba.
+title: 'Oktatóanyag: Egyetlen adatbázis hozzáadása feladatátvételi csoporthoz'
+description: Adjon hozzá egy Azure SQL Database egyetlen adatbázist egy feladatátvételi csoporthoz az Azure Portalon, a PowerShellen vagy az Azure CLI-n keresztül.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,88 +11,88 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: b88557468c386bc07c2432e154a82fd1f4fcb438
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c5ce6a1c2f231d372a2a8113eb9043a236090388
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79255794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061698"
 ---
-# <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database önálló adatbázis hozzáadása feladatátvételi csoporthoz
+# <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database egyetlen adatbázis hozzáadása feladatátvételi csoporthoz
 
-A feladatátvételi csoportot konfigurálhatja egy Azure SQL Database önálló adatbázishoz, és feladatátvételi tesztet hajthat végre a Azure Portal, a PowerShell vagy az Azure CLI használatával.  Az oktatóanyag során a következőket fogja elsajátítani:
+A [feladatátvételi csoport](sql-database-auto-failover-group.md) egy deklaratív absztrakciós réteg, amely lehetővé teszi a többmint földhöz kötött georeplikált adatbázisok csoportosítását. Ismerje meg, hogyan konfigurálhat feladatátvételi csoportot egy Azure SQL Database egyetlen adatbázishoz, és tesztelje a feladatátvételt az Azure Portalon, a PowerShellen vagy az Azure CLI-n keresztül.  Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> - Hozzon létre egy Azure SQL Database önálló adatbázist.
-> - Hozzon létre egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) egyetlen adatbázishoz két logikai SQL-kiszolgáló között.
-> - Feladatátvételi teszt.
+> - Hozzon létre egy Azure SQL Database egyetlen adatbázist.
+> - Feladatátvételi csoport létrehozása két logikai SQL-kiszolgáló közötti egyetlen adatbázishoz.
+> - Feladatátvétel tesztelése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel: 
 
-- Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+- Azure-előfizetés. [Hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) ha még nem rendelkezik ilyen.
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Az oktatóanyag befejezéséhez győződjön meg arról, hogy a következő elemekkel rendelkezik:
 
-- Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+- Azure-előfizetés. [Hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) ha még nem rendelkezik ilyen.
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
+Az oktatóanyag befejezéséhez győződjön meg arról, hogy a következő elemekkel rendelkezik:
 
-- Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
-- Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)legújabb verziója. 
+- Azure-előfizetés. [Hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) ha még nem rendelkezik ilyen.
+- Az Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)legújabb verziója. 
 
 ---
 
-## <a name="1---create-a-single-database"></a>1 – önálló adatbázis létrehozása 
+## <a name="1---create-a-single-database"></a>1 - Egyetlen adatbázis létrehozása 
 
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
-## <a name="2---create-the-failover-group"></a>2 – a feladatátvételi csoport létrehozása 
-Ebben a lépésben létre fog hozni egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) egy meglévő Azure SQL Server-kiszolgáló és egy másik régióban lévő új Azure SQL Server között. Ezután adja hozzá a mintaadatbázis a feladatátvételi csoporthoz. 
+## <a name="2---create-the-failover-group"></a>2 - A feladatátvételi csoport létrehozása 
+Ebben a lépésben egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) hoz létre egy meglévő Azure SQL-kiszolgáló és egy másik régióban lévő új Azure SQL-kiszolgáló között. Ezután adja hozzá a mintaadatbázist a feladatátvételi csoporthoz. 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbázisát a Azure Portal használatával. 
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Hozza létre a feladatátvételi csoportot, és adja hozzá az egyetlen adatbázist az Azure Portalhasználatával. 
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
-1. Válassza ki az 1. szakaszban létrehozott önálló adatbázist, például `mySampleDatabase`. 
-1. A kiszolgáló beállításainak megnyitásához válassza a **kiszolgáló neve alatt lévő** kiszolgáló nevét.
+1. Válassza az **Azure SQL** lehetőséget az [Azure](https://portal.azure.com)Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **Minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. (Nem kötelező) Válassza ki az **Azure SQL** melletti csillagot a kedvencként, és adja hozzá elemként a bal oldali navigációs sávban. 
+1. Válassza ki az `mySampleDatabase`1. 
+1. A feladatátvételi csoportok kiszolgálószinten konfigurálhatók. A **kiszolgáló beállításainak** megnyitásához a Kiszolgáló neve csoportban válassza ki a kiszolgáló nevét.
 
    ![Kiszolgáló megnyitása egyetlen adatbázishoz](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. Válassza a **Beállítások** ablaktábla **feladatátvételi csoportok** elemét, majd válassza a **Csoport hozzáadása** lehetőséget egy új feladatátvételi csoport létrehozásához. 
+1. Válassza a **Feladatátvételi csoportok** lehetőséget a **Beállítások** ablaktáblán, majd a **Csoport hozzáadása lehetőséget** új feladatátvételi csoport létrehozásához. 
 
     ![Új feladatátvételi csoport hozzáadása](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a következő értékeket, majd válassza a **Létrehozás**lehetőséget:
-    - **Feladatátvételi csoport neve**: adjon meg egy egyedi feladatátvételi csoport nevét, például `failovergrouptutorial`. 
-    - **Másodlagos kiszolgáló**: válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása**lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. A következő értékek beírása után válassza a **kiválasztás**lehetőséget. 
-        - **Kiszolgáló neve**: írjon be egy egyedi nevet a másodlagos kiszolgálónak, például `mysqlsecondary`. 
-        - **Kiszolgáló-rendszergazdai bejelentkezés**: típus `azureuser`
-        - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
-        - **Hely**: válasszon ki egy helyet a legördülő menüből, például `East US`. Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
+1. A **Feladatátvevő csoport** lapon adja meg vagy jelölje ki a következő értékeket, majd válassza a **Létrehozás**lehetőséget:
+    - **Feladatátvételi csoport neve**: Írjon be `failovergrouptutorial`egy egyedi feladatátvételi csoport nevét, például . 
+    - **Másodlagos kiszolgáló**: Válassza ki a *kívánt beállítások konfigurálásának* lehetőségét, majd válassza **az Új kiszolgáló létrehozása**lehetőséget. Másik lehetőségként másodlagos kiszolgálóként választhat egy már meglévő kiszolgálót. A következő értékek megadása után válassza a **Kijelölés lehetőséget.** 
+        - **Kiszolgáló neve**: Írja be a másodlagos kiszolgáló `mysqlsecondary`egyedi nevét, például . 
+        - **Kiszolgálórendszergazdai bejelentkezés:** Írja be a típust`azureuser`
+        - **Jelszó**: Írjon be egy összetett jelszót, amely megfelel a jelszókövetelményeknek.
+        - **Hely**: Válasszon egy helyet a `East US`legördülő menüből, például . Ez a hely nem lehet ugyanaz a hely, mint az elsődleges kiszolgáló.
 
     > [!NOTE]
-    > A kiszolgáló bejelentkezési és tűzfalbeállítások meg kell egyeznie az elsődleges kiszolgálóval. 
+    > A kiszolgáló bejelentkezési és tűzfalbeállításainak meg kell egyezniük az elsődleges kiszolgáló beállításaival. 
     
-      ![Másodlagos kiszolgáló létrehozása a feladatátvételi csoport számára](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
+      ![Másodlagos kiszolgáló létrehozása a feladatátvételi csoportszámára](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
-   - **Adatbázisok a csoporton belül**: Ha egy másodlagos kiszolgáló van kiválasztva, akkor ez a beállítás fel lesz oldva. Válassza ki a **hozzáadni kívánt adatbázisokat** , majd válassza ki az 1. szakaszban létrehozott adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot. 
+   - **A csoporton belüli adatbázisok**: Ha egy másodlagos kiszolgáló tikket, ez a beállítás feloldva lesz. Jelölje ki **a Hozzáadni kívánt adatbázisok kiválasztása** lehetőséget, majd válassza ki az 1. Az adatbázis hozzáadása a feladatátvételi csoporthoz automatikusan elindítja a georeplikációs folyamatot. 
         
-    ![SQL-adatbázis hozzáadása a feladatátvételi csoporthoz](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![SQL DB hozzáadása feladatátvételi csoporthoz](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázisát a PowerShell használatával. 
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Hozza létre a feladatátvételi csoportot, és adja hozzá az egyetlen adatbázist a PowerShell használatával. 
 
    > [!NOTE]
-   > A kiszolgáló bejelentkezési és tűzfalbeállítások meg kell egyeznie az elsődleges kiszolgálóval. 
+   > A kiszolgáló bejelentkezési és tűzfalbeállításainak meg kell egyezniük az elsődleges kiszolgáló beállításaival. 
 
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
@@ -159,18 +159,18 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
-| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabály létrehozása logikai kiszolgálóhoz. | 
-| [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy új Azure SQL Database önálló adatbázist. | 
-| [Új – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Létrehoz egy új feladatátvételi csoportot. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Egy vagy több SQL-adatbázis beolvasása. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis egy feladatátvételi csoportba való hozzáadására szolgál. |
+| [Új-AzsqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database-kiszolgálót, amely egyetlen adatbázisokat és rugalmas készleteket üzemeltet. |
+| [Új-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabályt hoz létre egy logikai kiszolgálóhoz. | 
+| [Új-AzsqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Új Azure SQL Database egyetlen adatbázist hoz létre. | 
+| [Új-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Új feladatátvételi csoportot hoz létre. |
+| [Get-AzSqlDatabase adatbázis](/powershell/module/az.sql/get-azsqldatabase) | Beggyelelt egy vagy több SQL-adatbázist. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis hozzáadása egy feladatátvételi csoporthoz. |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázisát az AZ CLI használatával. 
+Hozza létre a feladatátvételi csoportot, és adja hozzá az egyetlen adatbázist az AZ CLI használatával. 
 
    > [!NOTE]
-   > A kiszolgáló bejelentkezési és tűzfalbeállítások meg kell egyeznie az elsődleges kiszolgálóval. 
+   > A kiszolgáló bejelentkezési és tűzfalbeállításainak meg kell egyezniük az elsődleges kiszolgáló beállításaival. 
 
    ```azurecli-interactive
    #!/bin/bash
@@ -186,46 +186,46 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázis�
    az sql failover-group create --name $failoverGroup --partner-server $failoverServer --resource-group $resourceGroup --server $server --add-db $database --failover-policy Automatic
    ```
 
-Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
+Az oktatóanyag ezen része a következő Az CLI-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
-| [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Létrehoz egy kiszolgáló tűzfalszabály-szabályait. | 
-| [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Létrehoz egy feladatátvételi csoportot. | 
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database-kiszolgálót, amely egyetlen adatbázisokat és rugalmas készleteket üzemeltet. |
+| [az sql server tűzfal-szabály létrehozása](/cli/azure/sql/server/firewall-rule) | Létrehozza a kiszolgáló tűzfalszabályait. | 
+| [az sql feladatátvételi csoport létrehozása](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Feladatátvételi csoportot hoz létre. | 
 
 ---
 
-## <a name="3---test-failover"></a>3 – feladatátvételi teszt 
-Ebben a lépésben a feladatátvételi csoportot a másodlagos kiszolgálóra fogja felvenni, majd a Azure Portal használatával hajtja végre a feladatokat. 
+## <a name="3---test-failover"></a>3 - Feladatátvétel tesztje 
+Ebben a lépésben sikertelen lesz a feladatátvételi csoport a másodlagos kiszolgálóra, majd az Azure Portal használatával. 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Feladatátvételi teszt a Azure Portal használatával. 
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Feladatátvétel tesztelése az Azure Portalhasználatával. 
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
-1. Válassza ki a 2. szakaszban létrehozott önálló adatbázist, például `mySampleDatbase`. 
-1. A kiszolgáló beállításainak megnyitásához válassza a **kiszolgáló neve alatt lévő** kiszolgáló nevét.
+1. Válassza az **Azure SQL** lehetőséget az [Azure](https://portal.azure.com)Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **Minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. (Nem kötelező) Válassza ki az **Azure SQL** melletti csillagot a kedvencként, és adja hozzá elemként a bal oldali navigációs sávban. 
+1. Válassza ki a `mySampleDatbase`2. 
+1. A **kiszolgáló beállításainak** megnyitásához a Kiszolgáló neve csoportban válassza ki a kiszolgáló nevét.
 
    ![Kiszolgáló megnyitása egyetlen adatbázishoz](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. Válassza a **Beállítások** ablaktábla **feladatátvételi csoportok** elemét, majd válassza ki a 2. szakaszban létrehozott feladatátvételi csoportot. 
+1. Válassza a **Feladatátvételi csoportok lehetőséget** a **Beállítások** ablaktáblán, majd válassza ki a 2. 
   
-   ![Válassza ki a feladatátvételi csoportot a portálon](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
+   ![Válassza ki a feladatátvételi csoportot a portálról](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
-1. Ellenőrizze, hogy melyik kiszolgáló elsődleges, és melyik kiszolgáló a másodlagos. 
-1. Válassza a **feladatátvétel** lehetőséget a feladat ablaktáblán a minta önálló adatbázist tartalmazó feladatátvételi csoport feladatátvételéhez. 
-1. Válassza az **Igen** lehetőséget arra a figyelmeztetésre, amely értesíti, hogy a TDS-munkamenetek le lesznek választva. 
+1. Tekintse át, hogy melyik kiszolgáló az elsődleges és melyik másodlagos kiszolgáló. 
+1. Válassza **a feladatátvétel** lehetőséget a munkaablakból, ha feladatátvételi a minta egyetlen adatbázist tartalmazó feladatátvételi csoport. 
+1. Válassza az **Igen** lehetőséget a figyelmeztetésen, amely értesíti, hogy a TDS-munkamenetek megszakadnak. 
 
-   ![Az SQL-adatbázist tartalmazó feladatátvételi csoport feladatátvétele](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
+   ![Feladatátvétel az SQL-adatbázist tartalmazó feladatátvételi csoport felett](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
-1. Tekintse át, hogy melyik kiszolgáló legyen az elsődleges, és melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie. 
-1. Válassza újra a **feladatátvételt** , hogy a kiszolgálókat visszaállítsa az eredeti szerepköreire. 
+1. Tekintse át, hogy melyik kiszolgáló az elsődleges, és melyik másodlagos kiszolgáló. Ha a feladatátvétel sikeres volt, a két kiszolgálónak szerepkört kellett cserélnie. 
+1. Válassza **a Feladatátvétel** lehetőséget, ha a kiszolgálók visszaállnak az eredeti szerepkörükbe. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Feladatátvételi teszt a PowerShell használatával. 
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Feladatátvétel tesztelése a PowerShell használatával. 
 
 
-Vizsgálja meg a másodlagos replika szerepkörét: 
+Ellenőrizze a másodlagos replika szerepét: 
 
    ```powershell-interactive
    # Set variables
@@ -241,7 +241,7 @@ Vizsgálja meg a másodlagos replika szerepkörét:
       -ServerName $drServerName).ReplicationRole
    ```
 
-Feladatátvétel a másodlagos kiszolgálóra: 
+Feladatátvétel a másodlagos kiszolgálónak: 
 
    ```powershell-interactive
    # Set variables
@@ -258,7 +258,7 @@ Feladatátvétel a másodlagos kiszolgálóra:
    Write-host "Failed failover group successfully to" $drServerName 
    ```
 
-A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
+Feladatátvételi csoport visszaállítása vissza az elsődleges kiszolgálóra:
 
    ```powershell-interactive
    # Set variables
@@ -279,13 +279,13 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Lekérdezi vagy felsorolja Azure SQL Database feladatátvételi csoportokat. |
-| [Kapcsoló – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Database feladatátvételi csoport feladatátvételét hajtja végre. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Leésezése vagy listázása Az Azure SQL Database feladatátvételi csoportok. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Egy Azure SQL Database feladatátvételi csoport feladatátvételt hajt végre. |
 
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Feladatátvételi teszt az az CLI használatával. 
+Az AZ CLI használatával a feladatátvétel tesztelése. 
 
 Ellenőrizze, hogy melyik kiszolgáló a másodlagos:
 
@@ -295,7 +295,7 @@ Ellenőrizze, hogy melyik kiszolgáló a másodlagos:
    az sql failover-group list --server $server --resource-group $resourceGroup
    ```
 
-Feladatátvétel a másodlagos kiszolgálóra: 
+Feladatátvétel a másodlagos kiszolgálónak: 
 
    ```azurecli-interactive
    echo "Failing over group to the secondary server..."
@@ -303,7 +303,7 @@ Feladatátvétel a másodlagos kiszolgálóra:
    echo "Successfully failed failover group over to" $failoverServer
    ```
 
-A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
+Feladatátvételi csoport visszaállítása vissza az elsődleges kiszolgálóra:
 
    ```azurecli-interactive
    echo "Failing over group back to the primary server..."
@@ -311,26 +311,26 @@ A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
    echo "Successfully failed failover group back to" $server
    ```
 
-Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
+Az oktatóanyag ezen része a következő Az CLI-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Felsorolja a kiszolgálók feladatátvételi csoportjait. |
-| [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. | 
+| [az sql feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | A kiszolgáló feladatátvételi csoportjainak listája. |
+| [az sql feladatátvételi csoport set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődleges beállítását az aktuális elsődleges kiszolgáló összes adatbázisának feladatátvételével. | 
 
 ---
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Törölje az erőforrásokat az erőforráscsoport törlésével. 
+Az erőforráscsoport törlésével törölje az erőforrásokat. 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Törölje az erőforráscsoportot a Azure Portal használatával. 
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Törölje az erőforráscsoportot az Azure Portal használatával. 
 
-1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
-1. Válassza az **erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint maga az erőforráscsoport törléséhez. 
-1. Írja be az erőforráscsoport nevét, `myResourceGroup`, a szövegmezőbe, majd válassza a **Törlés** lehetőséget az erőforráscsoport törléséhez.  
+1. Nyissa meg az erőforráscsoportot az [Azure Portalon.](https://portal.azure.com)
+1. Válassza **az Erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint magának az erőforráscsoportnak a törléséhez. 
+1. Írja be az erőforráscsoport `myResourceGroup`nevét , a mezőbe, majd válassza a **Törlés** gombot az erőforráscsoport törléséhez.  
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 Törölje az erőforráscsoportot a PowerShell használatával. 
 
@@ -361,7 +361,7 @@ Törölje az erőforráscsoportot az AZ CLI használatával.
    echo "Successfully removed resource group" $resourceGroup
    ```
 
-Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
+Az oktatóanyag ezen része a következő Az CLI-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
@@ -371,12 +371,12 @@ Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
 
 
 > [!IMPORTANT]
-> Ha meg kívánja őrizni az erőforráscsoportot, de törölni szeretné a másodlagos adatbázist, akkor a törlés előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat. 
+> Ha meg szeretné tartani az erőforráscsoportot, de törölni szeretné a másodlagos adatbázist, törlés előtt távolítsa el azt a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, az kiszámíthatatlan viselkedést okozhat. 
 
 
-## <a name="full-scripts"></a>Teljes parancsfájlok
+## <a name="full-scripts"></a>Teljes szkriptek
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
@@ -385,14 +385,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
-| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabály létrehozása logikai kiszolgálóhoz. | 
-| [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy új Azure SQL Database önálló adatbázist. | 
-| [Új – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Létrehoz egy új feladatátvételi csoportot. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Egy vagy több SQL-adatbázis beolvasása. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis egy feladatátvételi csoportba való hozzáadására szolgál. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Lekérdezi vagy felsorolja Azure SQL Database feladatátvételi csoportokat. |
-| [Kapcsoló – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Database feladatátvételi csoport feladatátvételét hajtja végre. |
+| [Új-AzsqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database-kiszolgálót, amely egyetlen adatbázisokat és rugalmas készleteket üzemeltet. |
+| [Új-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabályt hoz létre egy logikai kiszolgálóhoz. | 
+| [Új-AzsqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Új Azure SQL Database egyetlen adatbázist hoz létre. | 
+| [Új-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Új feladatátvételi csoportot hoz létre. |
+| [Get-AzSqlDatabase adatbázis](/powershell/module/az.sql/get-azsqldatabase) | Beggyelelt egy vagy több SQL-adatbázist. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis hozzáadása egy feladatátvételi csoporthoz. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Leésezése vagy listázása Az Azure SQL Database feladatátvételi csoportok. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Egy Azure SQL Database feladatátvételi csoport feladatátvételt hajt végre. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Erőforráscsoport eltávolítása | 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -403,33 +403,33 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Egy előfizetést állít be az aktuális aktív előfizetésre. | 
+| [az számlakészlet](/cli/azure/account?view=azure-cli-latest#az-account-set) | Beállítja az előfizetést az aktuális aktív előfizetésre. | 
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
-| [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Létrehoz egy kiszolgáló tűzfalszabály-szabályait. | 
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database-kiszolgálót, amely egyetlen adatbázisokat és rugalmas készleteket üzemeltet. |
+| [az sql server tűzfal-szabály létrehozása](/cli/azure/sql/server/firewall-rule) | Létrehozza a kiszolgáló tűzfalszabályait. | 
 | [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Létrehoz egy adatbázist. | 
-| [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Létrehoz egy feladatátvételi csoportot. | 
-| [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Felsorolja a kiszolgálók feladatátvételi csoportjait. |
-| [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. | 
+| [az sql feladatátvételi csoport létrehozása](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Feladatátvételi csoportot hoz létre. | 
+| [az sql feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | A kiszolgáló feladatátvételi csoportjainak listája. |
+| [az sql feladatátvételi csoport set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődleges beállítását az aktuális elsődleges kiszolgáló összes adatbázisának feladatátvételével. | 
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Nincsenek elérhető parancsfájlok a Azure Portal számára. 
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Nincsenek elérhető parancsfájlok az Azure Portalon. 
  
 ---
 
-További Azure SQL Database szkriptek itt találhatók: [Azure PowerShell](sql-database-powershell-samples.md) és [Azure CLI](sql-database-cli-samples.md). 
+Az Azure SQL Database-parancsfájlokat itt találja: [Az Azure PowerShell](sql-database-powershell-samples.md) és az [Azure CLI.](sql-database-cli-samples.md) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure SQL Database önálló adatbázist adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megismerte, hogyan végezheti el az alábbi műveleteket: 
+Ebben az oktatóanyagban egy Azure SQL Database egyetlen adatbázist adott hozzá egy feladatátvételi csoporthoz, és teszteltfeladat-átvételt. Megismerte, hogyan végezheti el az alábbi műveleteket: 
 
 > [!div class="checklist"]
-> - Hozzon létre egy Azure SQL Database önálló adatbázist. 
-> - Hozzon létre egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) egyetlen adatbázishoz két logikai SQL-kiszolgáló között.
-> - Feladatátvételi teszt.
+> - Hozzon létre egy Azure SQL Database egyetlen adatbázist. 
+> - [Feladatátvételi csoport](sql-database-auto-failover-group.md) létrehozása két logikai SQL-kiszolgáló közötti egyetlen adatbázishoz.
+> - Feladatátvétel tesztelése.
 
-Folytassa a következő oktatóanyaggal, amely bemutatja, hogyan adhat hozzá rugalmas készletet egy feladatátvételi csoporthoz. 
+Ugrás a következő oktatóanyag, hogyan adja hozzá a rugalmas készlet egy feladatátvételi csoporthoz. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása egy feladatátvételi csoporthoz](sql-database-elastic-pool-failover-group-tutorial.md)
+> [Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz](sql-database-elastic-pool-failover-group-tutorial.md)

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a PostgreSQL-ből Azure Data Factory használatával
-description: Megtudhatja, hogyan másolhat adatok a PostgreSQL-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
+title: Adatok másolása a PostgreSQL-ből az Azure Data Factory használatával
+description: Megtudhatja, hogyan másolhatja az adatokat a PostgreSQL-ből a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,60 +12,60 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: 38cab21fb38fe171992ec8ce6c48b07f2ea94e9a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471142"
 ---
-# <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Adatok másolása a PostgreSQL-ből Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+# <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Adatok másolása a PostgreSQL-ből az Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-onprem-postgresql-connector.md)
 > * [Aktuális verzió](connector-postgresql.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban adatok másolásához egy PostgreSQL-adatbázisból. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása egy PostgreSQL-adatbázisból. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez a PostgreSQL-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az adatok a PostgreSQL-adatbázisból bármilyen támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+A PostgreSQL adatbázisból adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
-Ez a PostgreSQL-összekötő támogatja a PostgreSQL **7,4-es vagy újabb verzióját**.
+Pontosabban, ez a PostgreSQL csatlakozó támogatja a PostgreSQL **7.4-es és újabb verzióját.**
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-A Integration Runtime a 3,7-es verziótól kezdve egy beépített PostgreSQL-illesztőprogramot biztosít, így nem kell manuálisan telepítenie az illesztőprogramokat.
+Az Integrációs futásidő a 3.7-es verziótól kezdve beépített PostgreSQL-illesztőprogramot biztosít, ezért nem kell manuálisan telepítenie egyetlen illesztőprogramot sem.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek a PostgreSQL-összekötőhöz tartozó Data Factory-entitások definiálására szolgálnak.
+A következő szakaszok a PostgreSQL-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-A PostgreSQL-hez társított szolgáltatás a következő tulajdonságokat támogatja:
+A PostgreSQL csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **PostgreSql** | Igen |
-| connectionString | Az ODBC kapcsolati karakterlánc csatlakozás az Azure Database for postgresql-hez. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| connectVia | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| type | A típustulajdonságot a következőre kell állítani: **PostgreSql** | Igen |
+| connectionString (kapcsolati karakterlánc) | ODBC-kapcsolati karakterlánc a PostgreSQL Azure Database for PostgreSQL-hez való csatlakozáshoz. <br/>Az Azure Key Vaultban is felhelyezhet idúra, és kihúzhatja a `password` konfigurációt a kapcsolati karakterláncból. További részleteket az [Azure Key Vault-cikkben](store-credentials-in-key-vault.md) a következő minták és áruházi hitelesítő adatok című cikkben talál. | Igen |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 
-Egy tipikus `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`a kapcsolatok karakterlánca. További tulajdonságok beállíthatja, hogy az eset száma:
+Egy tipikus kapcsolati karakterlánc a `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. További tulajdonságok, amelyeket a tokszerint állíthat be:
 
 | Tulajdonság | Leírás | Beállítások | Kötelező |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| A metódus az illesztőprogram az illesztőprogram és az adatbázis-kiszolgáló közötti adatforgalom titkosítására használja. Például `EncryptionMethod=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** /1 (SSL)/6 (RequestSSL) | Nem |
-| ValidateServerCertificate (VSC) | Meghatározza, hogy az illesztőprogram érvényesíti a tanúsítványt, ha az SSL-titkosítás engedélyezve van az adatbázis-kiszolgáló által küldött (titkosítási módszer = 1). Például `ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** /1 (engedélyezve) | Nem |
+| EncryptionMethod (EM)| Az illesztőprogram által az illesztőprogram és az adatbázis-kiszolgáló között küldött adatok titkosítására használt módszer. Pl.`EncryptionMethod=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** / 1 (SSL) / 6 (RequestSSL) | Nem |
+| ValidateServerCertificate (VSC) | Azt határozza meg, hogy az illesztőprogram érvényesítse-e az adatbázis-kiszolgáló által küldött tanúsítványt, ha az SSL-titkosítás engedélyezve van (Titkosítási módszer=1). Pl.`ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** / 1 (engedélyezve) | Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -83,7 +83,7 @@ Egy tipikus `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Pass
 }
 ```
 
-**Példa: a Jelszó tárolása Azure Key Vault**
+**Példa: jelszó tárolása az Azure Key Vaultban**
 
 ```json
 {
@@ -109,9 +109,9 @@ Egy tipikus `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Pass
 }
 ```
 
-Ha a PostgreSQL-hez társított szolgáltatást használta a következő hasznos adattartalommal, akkor továbbra is támogatott, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha a PostgreSQL kapcsolt szolgáltatást a következő hasznos adattal használta, akkor továbbra is támogatott, miközben azt javasoljuk, hogy az újat használja a jövőben.
 
-**Korábbi hasznos adatok:**
+**Előző hasznos teher:**
 
 ```json
 {
@@ -137,16 +137,16 @@ Ha a PostgreSQL-hez társított szolgáltatást használta a következő hasznos
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a PostgreSQL-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [adatkészletekről](concepts-datasets-linked-services.md) szóló cikkben olvashatja. Ez a szakasz a PostgreSQL adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok PostgreSQL-ből való másolásához a következő tulajdonságok támogatottak:
+Adatok postgreSQL-ből történő másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PostgreSqlTable** | Igen |
-| schema | A séma neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
-| table | A tábla neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
-| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **PostgreSqlTable** | Igen |
+| Séma | A séma neve. |Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva)  |
+| tábla | A tábla neve. |Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva)  |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság a visszamenőleges kompatibilitás érdekében támogatott. Használja `schema` `table` és új munkaterheléshez. | Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva) |
 
 **Példa**
 
@@ -166,25 +166,25 @@ Az adatok PostgreSQL-ből való másolásához a következő tulajdonságok tám
 }
 ```
 
-Ha `RelationalTable` típusos adatkészletet használ, a rendszer továbbra is támogatja a-t, míg a javasolt az új továbbítása.
+Ha gépelt adatkészletet használt, `RelationalTable` továbbra is támogatott, amíg van, miközben javasoljuk, hogy használja az újat a jövőben.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a PostgreSQL-forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a PostgreSQL-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="postgresql-as-source"></a>PostgreSQL forrásként
+### <a name="postgresql-as-source"></a>PostgreSQL mint forrás
 
-Az adatok PostgreSQL-ből való másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+A PostgreSQL adatainak másolásához a másolási tevékenység **forrásszakaszában** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PostgreSqlSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| type | A másolási tevékenység forrásának típustulajdonságát a következőre kell állítani: **PostgreSqlSource** | Igen |
+| lekérdezés | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nem (ha az adatkészletben a "tableName" van megadva) |
 
 > [!NOTE]
-> A séma és a tábla neve megkülönbözteti a kis-és nagybetűket. A lekérdezésben `""` (idézőjelek között) tegye őket.
+> A séma- és táblanevekben a kis- és nagybetűket nem lehet figyelembe. A lekérdezésbe `""` (dupla idézőjelek) mellékeljük őket.
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -216,12 +216,12 @@ Az adatok PostgreSQL-ből való másolásához a másolási tevékenység **forr
 ]
 ```
 
-Ha `RelationalSource` gépelt forrást használ, a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha gépelt forrást használt, `RelationalSource` akkor továbbra is támogatott, amíg az újat a jövőben is használhatja.
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.

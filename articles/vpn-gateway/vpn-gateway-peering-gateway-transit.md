@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161885"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
@@ -48,7 +48,7 @@ A dokumentumban szereplő példához az alábbi erőforrásokat kell létrehozni
 2. [Ugyanazon üzemi modellel működő virtuális hálózatok közötti társviszony-létesítés](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [Eltérő üzemi modellel működő virtuális hálózatok közötti társviszony-létesítés](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a>Engedélyek
+## <a name="permissions"></a><a name="permissions"></a>Engedélyek
 
 A virtuális hálózatok közötti társviszony létrehozásához használt fiókoknak rendelkezniük kell a megfelelő szerepkörökkel és engedélyekkel. Az alábbi példában, ha a Hub-RM (központi RM-alapú) és a Spoke-Classic (küllőn elhelyezkedő klasszikus) nevű virtuális hálózatokat kapcsolja össze, a fióknak az alábbi szerepkörökkel vagy engedélyekkel kell rendelkeznie az egyes virtuális hálózatokon:
     
@@ -153,7 +153,7 @@ Add-AzVirtualNetworkPeering `
   -AllowGatewayTransit
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg alaposabban a [virtuális hálózatok közötti társviszony-létesítés korlátozásaival és működésével](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints), valamint a [virtuális hálózatok közötti társviszonyok beállításaival](../virtual-network/virtual-network-manage-peering.md#create-a-peering), mielőtt virtuális hálózatok közötti társviszonyt hozna létre éles környezetben való használatra.
 * Megtudhatja, [hogyan hozhat létre küllős hálózati topológiát](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) virtuális hálózatok közötti társviszony-létesítéssel és átjáróval történő átvitellel.

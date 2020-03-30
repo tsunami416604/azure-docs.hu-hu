@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform & OAuth 2.0-ban – meghatalmazott folyamat | Azure
-description: Ez a cikk azt ismerteti, hogyan használhatók a HTTP-üzenetek a szolgáltatás és a szolgáltatás hitelesítésének megvalósításához a OAuth 2.0-s verziójának használatával.
+title: A Microsoft identitásplatformja & OAuth2.0 A folyamat nevében | Azure
+description: Ez a cikk azt ismerteti, hogy miként valósítható meg a HTTP-üzenetek a szolgáltatás hitelesítéséhez az OAuth2.0 a folyamat nevében történő megvalósításához.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,67 +18,67 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159642"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft identity platform és OAuth 2.0 A folyamat nevében
 
 
-Az OAuth 2,0-es adatforgalom (OBO) arra szolgál, hogy az alkalmazás hogyan hívja meg a szolgáltatás/webes API-t, ami viszont egy másik szolgáltatást vagy webes API-t hív meg. Az a cél, hogy a delegált felhasználói identitást és engedélyeket a kérési láncon keresztül propagálja. Ahhoz, hogy a középső szintű szolgáltatás hitelesített kéréseket továbbítson az alárendelt szolgáltatásnak, a felhasználó nevében védenie kell egy hozzáférési jogkivonatot a Microsoft Identity platformon.
+Az OAuth 2.0 A folyamat nevében (OBO) szolgál a használati eset, amikor egy alkalmazás meghívja a szolgáltatás/web API-t, amely viszont meg kell hívnia egy másik szolgáltatás/webes API-t. Az ötlet a delegált felhasználói identitás és engedélyek propagálása a kérelemláncon keresztül. Ahhoz, hogy a középső rétegbeli szolgáltatás hitelesített kérelmeket küldjön az alsóbb rétegbeli szolgáltatásnak, a felhasználó nevében biztosítania kell egy hozzáférési jogkivonatot a Microsoft identitásplatformról.
 
-Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját.  Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
+Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen.  Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
 
 > [!NOTE]
 >
-> - A Microsoft Identity platform végpontja nem támogatja az összes forgatókönyvet és funkciót. Annak megállapításához, hogy a Microsoft Identity platform-végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt. 
-> - A 2018-as számú, implicit folyamatból származtatott `id_token` nem használható az OBO flow-hoz. Az egyoldalas alkalmazások (Gyógyfürdők) **hozzáférési** jogkivonatot továbbítanak egy közepes szintű bizalmas ügyfélnek az OBO-folyamatok elvégzéséhez. További információ arról, hogy mely ügyfelek végezhetnek OBO-hívásokat: [korlátozások](#client-limitations).
+> - A Microsoft identity platform végpontja nem támogatja az összes forgatókönyvet és szolgáltatást. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md) 
+> - 2018 májusátként néhány implicit `id_token` áramlásszármazott nem használható obo-folyamathoz. Az egyoldalas alkalmazásoknak (SpA-knak) **hozzáférési** jogkivonatot kell átadniuk egy középső rétegbeli bizalmas ügyfélnek, hogy helyette obo-folyamatokat hajtsanak végre. Ha többet szeretne tudni arról, hogy mely ügyfelek végezhetnek OBO-hívásokat, olvassa el a [korlátozásokat.](#client-limitations)
 
-## <a name="protocol-diagram"></a>Protokoll diagramja
+## <a name="protocol-diagram"></a>Protokolldiagram
 
-Tegyük fel, hogy a felhasználó hitelesítése megtörtént egy olyan alkalmazáson, amely a [OAuth 2,0 engedélyező kódot](v2-oauth2-auth-code-flow.md) vagy egy másik bejelentkezési folyamatot használ. Ezen a ponton az alkalmazás rendelkezik egy hozzáférési jogkivonattal *az API* -hoz (A token a) a felhasználó jogcímeivel és a középső rétegbeli webes API (a API) eléréséhez szükséges engedélyekkel. Most az API-nak hitelesített kérést kell tennie az alárendelt webes API-nak (B API).
+Tegyük fel, hogy a felhasználó hitelesített egy alkalmazáson az [OAuth 2.0 engedélyezési kód engedélyezési folyamat](v2-oauth2-auth-code-flow.md) vagy más bejelentkezési folyamat használatával. Ezen a ponton az alkalmazás rendelkezik egy hozzáférési jogkivonatot *api A* (A jogkivonat) a felhasználó jogcímek és a hozzájárulás a középső rétegbeli webes API (API A) eléréséhez. Most az API A kell, hogy egy hitelesített kérelmet az alsóbb rétegbeli webes API (Api B).
 
-A követendő lépések az OBO-folyamatot alkotják, és az alábbi ábra segítségével magyarázható.
+Az alábbi lépések alkotják az OBO-folyamatot, és a következő ábra segítségével kerülnek magyarázatra.
 
-![A OAuth 2.0-alapú meghatalmazott folyamat megjelenítése](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Az OAuth2.0 a folyamat nevében](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
-1. Az ügyfélalkalmazás kérelmet küld az a API-nak az a token (az a API `aud` jogcímével).
-1. Az API A hitelesíti a Microsoft Identity platform jogkivonat-kiállítási végpontját, és tokent kér a B API eléréséhez.
-1. A Microsoft Identity platform token kiállítási végpontja ellenőrzi az API A hitelesítő adatait az A jogkivonattal együtt, és kiadja a B API (token B) hozzáférési jogkivonatát az A API-nak.
-1. A "B" tokent az API-nak a B API-ra irányuló kérelem engedélyezési fejlécében a következő értékre állítja be.
-1. A biztonságos erőforrás adatait a B API adja vissza az A API-hoz, és onnan az ügyfélnek.
+1. Az ügyfélalkalmazás az A jogkivonattal (API `aud` A jogcímekkel) az API A-ra irányuló kérelmet küld.
+1. Az A API hitelesíti magát a Microsoft identity platform tokenkiállítási végpontján, és jogkivonatot kér a B API eléréséhez.
+1. A Microsoft identity platform token kiállítási végpont érvényesíti az API A hitelesítő adatait az A jogkivonattal együtt, és kiadja a b API (B token) hozzáférési jogkivonatát az API A számára.
+1. A B jogkivonatot az API A állítja be a B API-nak küldött kérelem engedélyezési fejlécében.
+1. A biztonságos erőforrásból származó adatokat az API B adja vissza az A API-nak, és onnan az ügyfélnek.
 
 > [!NOTE]
-> Ebben az esetben a középső rétegbeli szolgáltatás nem rendelkezik felhasználói beavatkozással, hogy a felhasználó beleegyezik az alsóbb rétegbeli API eléréséhez. Ezért az alsóbb rétegbeli API-hoz való hozzáférés engedélyezésének lehetősége előzetesen megjelenik a jóváhagyás lépés részeként a hitelesítés során. Ha meg szeretné tudni, hogyan állíthatja be ezt az alkalmazásra, tekintse meg [a a középső rétegbeli alkalmazáshoz](#gaining-consent-for-the-middle-tier-application)való hozzájárulások beszerzése című témakört.
+> Ebben a forgatókönyvben a középső rétegbeli szolgáltatás nem rendelkezik felhasználói beavatkozással a felhasználó beleegyezését az alsóbb rétegbeli API eléréséhez. Ezért a lehetőséget, hogy hozzáférést biztosítson az alsóbb rétegbeli API-t a hitelesítés során a hozzájárulási lépés részeként jelenik meg. Ha tudni szeretné, hogyan állíthatja be ezt az alkalmazáshoz, olvassa el [A középső rétegbeli alkalmazás hozzájárulásának megszerzése](#gaining-consent-for-the-middle-tier-application)című témakört.
 
-## <a name="service-to-service-access-token-request"></a>Szolgáltatás-szolgáltatás hozzáférési jogkivonat kérése
+## <a name="service-to-service-access-token-request"></a>Szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem
 
-Hozzáférési jogkivonat igényléséhez a következő paraméterekkel hozzon végre egy HTTP-BEJEGYZÉST a bérlő-specifikus Microsoft Identity platform token-végponton.
+Hozzáférési jogkivonat kéréséhez készítsen HTTP-postát a bérlő-specifikus Microsoft-identitásplatform-token végpontjára a következő paraméterekkel.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 ```
 
-Két eset attól függően, hogy az ügyfélalkalmazás egy megosztott titok vagy egy tanúsítvány által védett-e.
+Két eset attól függően, hogy az ügyfélalkalmazás úgy dönt, hogy egy közös titkos kulcsot vagy egy tanúsítványt.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: hozzáférési jogkivonat-kérelem közös titokkal
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: Hozzáférési jogkivonat-kérelem megosztott titkos titokkal
 
-Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
+Megosztott titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek `urn:ietf:params:oauth:grant-type:jwt-bearer`nak kell lennie. |
-| `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
-| `client_secret` | Kötelező | Az Azure Portal-Alkalmazásregisztrációk lapon az alkalmazáshoz generált ügyfél-titkos kulcs. |
-| `assertion` | Kötelező | A kérelemben használt jogkivonat értéke.  Ennek a tokennek rendelkeznie kell az ehhez az OBO-kérelemhez tartozó alkalmazás célközönségével (ezt az alkalmazást a `client-id` mező jelöli). |
-| `scope` | Kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md). |
-| `requested_token_use` | Kötelező | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket `on_behalf_of`értékre kell beállítani. |
+| `grant_type` | Kötelező | A tokenkérelem típusa. JWT-t használó kérelmek esetén az `urn:ietf:params:oauth:grant-type:jwt-bearer`értéknek . |
+| `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amely [az Azure Portal – App regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap az alkalmazáshoz rendelt. |
+| `client_secret` | Kötelező | Az alkalmazáshoz az Azure Portalon létrehozott ügyféltitok – Alkalmazásregisztrációk lap. |
+| `assertion` | Kötelező | A kérelemben használt jogkivonat értéke.  Ennek a jogkivonatnak rendelkeznie kell az OBO-kérelmet `client-id` készítő alkalmazás közönségével (a mezőáltal jelölt alkalmazással). |
+| `scope` | Kötelező | A jogkivonat-kérelem hatóköreinek szóközt választott listája. További információt a hatókörök című [témakörben talál.](v2-permissions-and-consent.md) |
+| `requested_token_use` | Kötelező | Itt adható meg, hogyan kell a kérelmet feldolgozni. Az OBO-folyamatban az értéket a `on_behalf_of`értékértékre kell állítani. |
 
 #### <a name="example"></a>Példa
 
-A következő HTTP POST egy hozzáférési jogkivonatot és frissítési jogkivonatot kér `user.read` hatókörrel a https://graph.microsoft.com webes API-hoz.
+A következő HTTP POST hozzáférési jogkivonatot kér, és frissíti a `user.read` https://graph.microsoft.com webes API hatókörét.
 
 ```
 //line breaks for legibility only
@@ -95,25 +95,25 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: hozzáférési jogkivonat kérése tanúsítvánnyal
+### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat-kérelem tanúsítvánnyal
 
-Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
+A szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem tanúsítvánnyal a következő paramétereket tartalmazza:
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek `urn:ietf:params:oauth:grant-type:jwt-bearer`nak kell lennie. |
-| `client_id` | Kötelező |  Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
-| `client_assertion_type` | Kötelező | Az értéknek `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`nak kell lennie. |
-| `client_assertion` | Kötelező | Egy, az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező (JSON webes jogkivonat). A tanúsítvány regisztrálásának és az állítás formátumának megismeréséhez lásd: [tanúsítvány hitelesítő adatai](active-directory-certificate-credentials.md). |
+| `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT-t használó kérelmek esetén az `urn:ietf:params:oauth:grant-type:jwt-bearer`értéknek . |
+| `client_id` | Kötelező |  Az alkalmazás (ügyfél) azonosítója, amely [az Azure Portal – App regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap az alkalmazáshoz rendelt. |
+| `client_assertion_type` | Kötelező | Az értéknek `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Kötelező | Egy állítás (egy JSON-webtoken), amelyet létre kell hoznia, és alá kell írnia az alkalmazás hitelesítő adataiként regisztrált tanúsítvánnyal. A tanúsítvány regisztrálásáról és a feltétel formátumáról a tanúsítvány hitelesítő adatai című [témakörben](active-directory-certificate-credentials.md)olvashat. |
 | `assertion` | Kötelező | A kérelemben használt jogkivonat értéke. |
-| `requested_token_use` | Kötelező | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket `on_behalf_of`értékre kell beállítani. |
-| `scope` | Kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md).|
+| `requested_token_use` | Kötelező | Itt adható meg, hogyan kell a kérelmet feldolgozni. Az OBO-folyamatban az értéket a `on_behalf_of`értékértékre kell állítani. |
+| `scope` | Kötelező | A jogkivonat-kérelem hatóköreinek térelválasztott listája. További információt a hatókörök című [témakörben talál.](v2-permissions-and-consent.md)|
 
-Figyelje meg, hogy a paraméterek majdnem ugyanazok, mint a közös titok által benyújtott kérelem esetében, kivéve, ha a `client_secret` paramétert két paraméter helyettesíti: egy `client_assertion_type` és `client_assertion`.
+Figyelje meg, hogy a paraméterek majdnem ugyanazok, mint a `client_secret` kérelem megosztott titok, azzal a `client_assertion_type` `client_assertion`kivételével, hogy a paraméter helyébe két paraméter: a és .
 
 #### <a name="example"></a>Példa
 
-A következő HTTP-bejegyzés olyan hozzáférési jogkivonatot kér, amelynek `user.read` hatóköre van a https://graph.microsoft.com webes API-hoz egy tanúsítvánnyal.
+A következő HTTP POST kér `user.read` egy https://graph.microsoft.com hozzáférési jogkivonatot a webes API hatókörét egy tanúsítvánnyal.
 
 ```
 // line breaks for legibility only
@@ -131,21 +131,21 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Szolgáltatás és szolgáltatás hozzáférési jogkivonat válasza
+## <a name="service-to-service-access-token-response"></a>Szolgáltatás szolgáltatás-hozzáférési jogkivonat válasza
 
-A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel.
+A sikeres válasz egy JSON OAuth 2.0 válasz a következő paraméterekkel.
 
 | Paraméter | Leírás |
 | --- | --- |
-| `token_type` | Megadja a jogkivonat típusának értékét. Az egyetlen típus, amelyet a Microsoft Identity platform támogat, `Bearer`. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg a [OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| `scope` | A jogkivonatban megadott hozzáférési hatókör. |
-| `expires_in` | Az az időtartam (másodpercben), ameddig a hozzáférési jogkivonat érvényes. |
-| `access_token` | A kért hozzáférési jogkivonat. A hívó szolgáltatás ezt a tokent használhatja a fogadó szolgáltatásban való hitelesítéshez. |
-| `refresh_token` | A kért hozzáférési jogkivonat frissítési jogkivonata. A hívó szolgáltatás ezzel a jogkivonattal kérhet egy másik hozzáférési tokent az aktuális hozzáférési jogkivonat lejárta után. A frissítési token csak akkor van megadva, ha a `offline_access` hatókört kérték. |
+| `token_type` | A token típusának értékét jelzi. A Microsoft identity platform csak `Bearer`a programot támogatja. A tulajdonosi jogkivonatokról további információt az [OAuth 2.0 engedélyezési keretrendszerében talál: tulajdonosi token használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `scope` | A jogkivonatban megadott hozzáférési tartomány. |
+| `expires_in` | A hozzáférési jogkivonat érvényességi ideje másodpercben. |
+| `access_token` | A kért hozzáférési jogkivonat. A hívó szolgáltatás ezt a jogkivonatot használhatja a fogadó szolgáltatás hitelesítéséhez. |
+| `refresh_token` | A kért hozzáférési jogkivonat frissítési jogkivonata. A hívó szolgáltatás használhatja ezt a jogkivonatot, hogy kérjen egy másik hozzáférési jogkivonatot az aktuális hozzáférési jogkivonat lejárta után. A frissítési jogkivonat `offline_access` csak akkor érhető el, ha a hatókört kérték. |
 
-### <a name="success-response-example"></a>Sikeres válasz – példa
+### <a name="success-response-example"></a>Példa sikerválaszra
 
-Az alábbi példa egy, a https://graph.microsoft.com webes API hozzáférési jogkivonatára vonatkozó kérelemre adott sikeres választ mutat be.
+A következő példa sikeres választ mutat a https://graph.microsoft.com webes API-hoz egy hozzáférési jogkivonatra vonatkozó kérelemre.
 
 ```
 {
@@ -159,11 +159,11 @@ Az alábbi példa egy, a https://graph.microsoft.com webes API hozzáférési jo
 ```
 
 > [!NOTE]
-> A fenti hozzáférési jogkivonat egy v 1.0-formázott jogkivonat. Ennek az az oka, hogy a token az elérni kívánt **erőforrás** alapján van megadva. A Microsoft Graph a 1.0-s verziójú tokenek elfogadására van beállítva, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Csak az alkalmazásoknak kell megkeresniük a hozzáférési jogkivonatokat. Az ügyfeleknek **nem kell** megvizsgálniuk azokat.
+> A fenti hozzáférési jogkivonat egy v1.0-formátumú jogkivonat. Ennek az az oka, hogy a jogkivonat az elérésalatt álló **erőforrás** alapján érhető el. A Microsoft Graph úgy van beállítva, hogy elfogadja a v1.0-s jogkivonatokat, így a Microsoft identity platform v1.0-s hozzáférési jogkivonatokat hoz létre, amikor egy ügyfél jogkivonatokat kér a Microsoft Graph számára. Csak az alkalmazások nak kell megtekinteniük a hozzáférési jogkivonatokat. Az ügyfelek **nem vizsgálhatják** meg őket.
 
-### <a name="error-response-example"></a>Hiba-válasz példa
+### <a name="error-response-example"></a>Példa hibaválaszra
 
-A jogkivonat-végpont egy hibaüzenetet ad vissza, amikor hozzáférési tokent próbál beszerezni az alsóbb rétegbeli API számára, ha az alsóbb rétegbeli API feltételes hozzáférési szabályzattal (például többtényezős hitelesítéssel) van beállítva. A középső rétegbeli szolgáltatásnak ezt a hibát fel kell vennie az ügyfélalkalmazás számára, hogy az ügyfélalkalmazás meg tudja adni a felhasználói beavatkozást a feltételes hozzáférési szabályzat teljesítése érdekében.
+Egy hibaválaszt ad vissza a jogkivonat-végpont, amikor megpróbál megszerezni egy hozzáférési jogkivonatot az alsóbb rétegbeli API-t, ha az alsóbb rétegbeli API feltételes hozzáférési szabályzat (például többtényezős hitelesítés) van beállítva. A középső rétegbeli szolgáltatásnak felszínre kell írnia ezt a hibát az ügyfélalkalmazásban, hogy az ügyfélalkalmazás biztosítani tudja a felhasználói beavatkozást a feltételes hozzáférési házirend kielégítéséhez.
 
 ```
 {
@@ -177,9 +177,9 @@ A jogkivonat-végpont egy hibaüzenetet ad vissza, amikor hozzáférési tokent 
 }
 ```
 
-## <a name="use-the-access-token-to-access-the-secured-resource"></a>A biztonságos erőforrás eléréséhez használja a hozzáférési jogkivonatot.
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>A hozzáférési jogkivonat használata a védett erőforrás eléréséhez
 
-Most a középső rétegbeli szolgáltatás a fentiekben ismertetett token használatával hitelesítő kéréseket hozhat az alárendelt webes API-nak, ha a tokent a `Authorization` fejlécében állítja be.
+Most a középső rétegbeli szolgáltatás használhatja a fent beszerzett jogkivonatot, hogy hitelesített `Authorization` kérelmeket az alsóbb rétegbeli webes API-t, a jogkivonat a fejlécben beállításával.
 
 ### <a name="example"></a>Példa
 
@@ -189,37 +189,37 @@ Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
 
-## <a name="gaining-consent-for-the-middle-tier-application"></a>Beleegyezik a középső rétegbeli alkalmazásra
+## <a name="gaining-consent-for-the-middle-tier-application"></a>Hozzájárulás megszerzése a középszintű alkalmazáshoz
 
-Az alkalmazás architektúrájának vagy használati módjától függően különböző stratégiákat tekinthet meg az OBO-folyamat sikerességének biztosításához. Minden esetben a végső cél a megfelelő hozzájárulás biztosítása, hogy az ügyfélalkalmazás meghívja a középső rétegbeli alkalmazást, és a középső rétegbeli alkalmazás jogosult legyen a háttérbeli erőforrás meghívására. 
+Az alkalmazás architektúrájától vagy használatától függően különböző stratégiákat is figyelembe vehet annak biztosítására, hogy az OBO-folyamat sikeres legyen. A végső cél minden esetben a megfelelő hozzájárulás biztosítása, hogy az ügyfélalkalmazás megtudja hívni a középső rétegbeli alkalmazást, és a középső rétegbeli alkalmazás jogosult a háttér-erőforrás hívására. 
 
 > [!NOTE]
-> Korábban a Microsoft-fiók rendszer (személyes fiókok) nem támogatta az "ismert ügyfélalkalmazás" mezőt, és nem tudta megjeleníteni a kombinált hozzájárulásukat.  Ez a szolgáltatás hozzáadva, és a Microsoft Identity platformon futó összes alkalmazás használhatja az gettign-beleegyezett az OBO-hívásokhoz. 
+> Korábban a Microsoft-fiókrendszer (személyes fiókok) nem támogatta az "Ismert ügyfélalkalmazás" mezőt, és nem tudta megjeleníteni az egyesített hozzájárulást.  Ez lett hozzáadva, és a Microsoft identity platform összes alkalmazása használhatja az ismert ügyfélalkalmazás-megközelítést az OBO-hívások hoz. 
 
-### <a name="default-and-combined-consent"></a>/.default és kombinált engedély
+### <a name="default-and-combined-consent"></a>/.alapértelmezett és kombinált hozzájárulás
 
-A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájljában, majd az ügyfél egyszerre több és a középső rétegbeli alkalmazáshoz is elindíthat egy kombinált engedélyezési folyamatot. A Microsoft Identity platform végpontján ez a [`/.default` hatókör](v2-permissions-and-consent.md#the-default-scope)használatával végezhető el. Ha ismert ügyfélalkalmazások és `/.default`használatával indítja el a beleegyezési képernyőt, a beleegyezési képernyő a középső rétegbeli API- **ra vonatkozó engedélyeket** is megjeleníti, valamint a középső rétegbeli API számára szükséges engedélyeket is kéri. A felhasználó mindkét alkalmazáshoz hozzájárul, majd az OBO-folyamat működik.
+A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájlban, majd az ügyfél kombinált jóváhagyási folyamatot indíthat el saját maga és a középső rétegbeli alkalmazás számára is. A Microsoft identity platform végpontján ez [ `/.default` ](v2-permissions-and-consent.md#the-default-scope)a hatókör használatával történik. Amikor egy hozzájárulási képernyőt indít `/.default`el az ismert ügyfélalkalmazások használatával, és a jóváhagyási képernyőn megjelennek **az** ügyfél engedélyei a középső réteg API-hoz, és a középső réteg API-hoz szükséges engedélyeket is kérnek. A felhasználó mindkét alkalmazáshoz beleegyezést ad, majd az OBO-folyamat működik.
 
-### <a name="pre-authorized-applications"></a>Előzetesen jóváhagyott alkalmazások
+### <a name="pre-authorized-applications"></a>Előre engedélyezett alkalmazások
 
-Az erőforrások azt jelezhetik, hogy egy adott alkalmazásnak mindig van engedélye bizonyos hatókörök fogadására. Ez elsősorban akkor hasznos, ha az előtér-ügyfél és a háttérbeli erőforrás közötti kapcsolat zökkenőmentesebb. Egy erőforrás több előre engedélyezett alkalmazást is deklarálhat – bármely ilyen alkalmazás kérheti ezeket az engedélyeket egy OBO-folyamatba, és a felhasználó belefoglalása nélkül fogadhatja azokat.
+Az erőforrások jelezhetik, hogy egy adott alkalmazás mindig rendelkezik engedéllyel bizonyos hatókörök fogadására. Ez elsősorban akkor hasznos, ha az előtér-ügyfél és a háttér-erőforrás közötti kapcsolatok zökkenőmentesebbé teszik. Egy erőforrás deklarálhat több előre engedélyezett alkalmazást – bármely ilyen alkalmazás kérheti ezeket az engedélyeket egy OBO-folyamatban, és a felhasználó beleegyezése nélkül fogadhatja őket.
 
 ### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
 
-A bérlői rendszergazda garantálhatja, hogy az alkalmazások jogosultak legyenek a szükséges API-k meghívására a középső szintű alkalmazás rendszergazdai beleegyezésének biztosításával. Ehhez a rendszergazda megkeresheti a középső rétegű alkalmazást a bérlőben, megnyithatja a szükséges engedélyek lapot, és engedélyt adhat az alkalmazás számára. Ha többet szeretne megtudni a rendszergazdai jogosultságokról, tekintse meg a [beleegyezett és az engedélyek dokumentációját](v2-permissions-and-consent.md).
+A bérlői rendszergazda garantálhatja, hogy az alkalmazások engedélyt kapnak a szükséges API-k hívásához a középső rétegbeli alkalmazás rendszergazdai hozzájárulásának megadásával. Ehhez a rendszergazda megtalálhatja a középső rétegbeli alkalmazást a bérlőben, megnyithatja a szükséges engedélyeket tartalmazó lapot, és engedélyt adhat az alkalmazásnak. Ha többet szeretne megtudni a rendszergazdai jóváhagyásról, olvassa el a [hozzájárulási és engedélydokumentációt.](v2-permissions-and-consent.md)
 
 ### <a name="use-of-a-single-application"></a>Egyetlen alkalmazás használata
 
-Bizonyos helyzetekben csak a középső rétegbeli és az előtér-ügyfél egyetlen párosítása lehet. Ebben a forgatókönyvben könnyebben lehet ezt egy alkalmazást létrehozni, és nem kell megtagadni a középső rétegbeli alkalmazás szükségességét. Az előtér-és a webes API-k közötti hitelesítéshez használhat cookie-kat, id_token vagy az alkalmazáshoz igényelt hozzáférési tokent. Ezt követően a kérelem beleegyezik az adott alkalmazástól a háttér-erőforráshoz.
+Bizonyos esetekben előfordulhat, hogy csak egy párosítás a középső rétegbeli és az előtér-ügyfél. Ebben a forgatókönyvben előfordulhat, hogy könnyebb, hogy ez egy alkalmazás, a középső rétegbeli alkalmazás teljes körű szükségességét. Az előtér és a webes API közötti hitelesítéshez használhat cookie-kat, id_token vagy hozzáférési jogkivonatot, amelyet magához az alkalmazáshoz kell kérni. Ezután kérje a jóváhagyást az egyetlen alkalmazás a háttér-erőforrás.
 
-## <a name="client-limitations"></a>Ügyfél korlátozásai
+## <a name="client-limitations"></a>Ügyfél korlátozások
 
-Ha az ügyfél az implicit folyamattal id_token kap, és az ügyfél a válasz URL-címében helyettesítő karaktereket is tartalmaz, akkor a id_token nem használható OBO-folyamathoz.  Az implicit engedélyezési folyamaton keresztül beszerzett hozzáférési tokenek azonban továbbra is beválthatók egy bizalmas ügyfél számára, még akkor is, ha a kezdeményező ügyfélhez a helyettesítő karakteres válasz URL-címe van regisztrálva.
+Ha egy ügyfél az implicit folyamat ot használja egy id_token lekérni, és az ügyfél helyettesítő karaktereket is használ a válasz URL-címében, a id_token nem használható obo-folyamathoz.  Az implicit támogatási folyamaton keresztül beszerzett hozzáférési jogkivonatokat azonban egy bizalmas ügyfél akkor is beválthatja, ha a fogadó ügyfél rendelkezik regisztrált helyettesítő karakteres válasz URL-címmel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a OAuth 2,0 protokollról, valamint a szolgáltatás és a szolgáltatás hitelesítésének másik módja ügyfél-hitelesítő adatok használatával.
+További információ az OAuth 2.0 protokollról, valamint az ügyfél hitelesítő adataival történő szolgáltatásszolgáltatás végrehajtásának másik módja.
 
-* [OAuth 2,0 ügyfél-hitelesítő adatok megadása a Microsoft Identity platformon](v2-oauth2-client-creds-grant-flow.md)
-* [OAuth 2,0-programkód a Microsoft Identity platformon](v2-oauth2-auth-code-flow.md)
+* [OAuth 2.0 ügyfél hitelesítő adatok megadása a Microsoft identitásplatformján](v2-oauth2-client-creds-grant-flow.md)
+* [OAuth 2.0-s kódáramlás a Microsoft identitásplatformján](v2-oauth2-auth-code-flow.md)
 * [A `/.default` hatókör használata](v2-permissions-and-consent.md#the-default-scope)

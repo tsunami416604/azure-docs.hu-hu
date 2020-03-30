@@ -1,16 +1,16 @@
 ---
 title: Android-alkalmazás létrehozása
-description: Ezt az oktatóanyagot követve megismerheti Azure mobile app háttérrendszer használatát az Android-alkalmazások fejlesztéséhez.
+description: Az Azure mobilalkalmazás-háttérrendszerek Android-fejlesztéshez való használatának megkezdéséhez kövesse ezt az oktatóanyagot.
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34a9
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 9be9402bff1a1263de3c6f21b78899464c50c823
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459566"
 ---
 # <a name="create-an-android-app"></a>Android-alkalmazás létrehozása
@@ -31,7 +31,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Új Azure Mobile Apps-háttéralkalmazás létrehozása
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolatok létrehozása és az ügyfél és a kiszolgáló projekt konfigurálása
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolat létrehozása és az ügyfél- és kiszolgálóprojekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="run-the-android-app"></a>Az Android-alkalmazás futtatása

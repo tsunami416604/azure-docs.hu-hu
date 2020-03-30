@@ -1,6 +1,6 @@
 ---
-title: Azure-beli virtuálisgép-méretek – optimalizált számítás | Microsoft Docs
-description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző számítási optimalizált méreteket. A vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózat sávszélességével kapcsolatos információkat sorolja fel ebben a sorozatban.
+title: Azure virtuális gépek méretei – Optimalizált számítás | Microsoft dokumentumok
+description: Az Azure-ban a virtuális gépekhez elérhető különböző számítási optimalizált méretek. A vCPU-k, adatlemezek és hálózati adapterek számával, valamint a tárolóátviteli és hálózati sávszélességgel kapcsolatos információkat sorolja fel a sorozat méreteihez.
 services: virtual-machines
 documentationcenter: ''
 author: jonbeck7
@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: d709d621341ef14ec158ed5af1c2df4297d66b8b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77493630"
 ---
-# <a name="compute-optimized-virtual-machine-sizes"></a>Számítási optimalizált virtuálisgép-méretek
+# <a name="compute-optimized-virtual-machine-sizes"></a>Optimalizált virtuális gépméretek számítása
 
-A számítási optimalizált virtuálisgép-méretek magas CPU-memória aránnyal rendelkeznek. Ezek a méretek kiválóan alkalmasak a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazások kiszolgálói számára. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számáról nyújt információt. Emellett a tárolási teljesítményre és a hálózati sávszélességre vonatkozó információkat is tartalmaz ebben a csoportosításban.
+A számítási optimalizált virtuálisgép-méretek nagy processzor-memória aránnyal rendelkeznek. Ezek a méretek közepes forgalmú webkiszolgálók, hálózati készülékek, kötegelt folyamatok és alkalmazáskiszolgálók esetén is megfelelőek. Ez a cikk a vCPU-k, adatlemezek és hálózati adapterek számáról tartalmaz tájékoztatást. A csoportosítás minden egyes méretére vonatkozó anamnézisre vonatkozó információkat is tartalmaz.
 
-A [Fsv2 sorozat](fsv2-series.md) az Intel® Xeon® Platinum 8168 processzoron alapul. A szolgáltatás egy tartós, 3,4 GHz-es, a Turbo órajelét és a 3,7 GHz-es max. Intel® AVX-512 utasítások az Intel skálázható processzorok újdonságai. Ezek az utasítások akár kétszeres teljesítmény-növekedést is biztosítanak a vektoros feldolgozási feladatokhoz egy-és dupla pontosságú lebegőpontos műveletekben. Más szóval a számítási feladatokhoz nagyon gyorsak.
+Az [Fsv2 sorozat](fsv2-series.md) az Intel® Xeon® Platinum 8168 processzoron alapul. Ez jellegét meghatározza egy tartós minden magtok Turbo órajel -ból 3.4 GHz és egy legfelső határ egymagos turbó frekvencia -ból 3.7 GHz. Intel® AVX-512 utasítások újak az Intel skálázható processzorok. Ezek az utasítások akár kétszeres teljesítménynövekedést biztosítanak a vektoros feldolgozási számítási feladatokhoz mind az egy- és kétszeres pontosságú lebegőpontos műveleteken. Más szóval, ezek nagyon gyors a számítási számítási feladatokhoz.
 
-A Fsv2 sorozat a legjobb ár-teljesítmény az Azure-portfólióban, amely az Azure-beli számítási egység (ACU) alapján vCPU.
+Alacsonyabb óránkénti listaáron az Fsv2-sorozat a legjobb ár-teljesítmény az Azure-portfólióban az Azure Compute Unit (ACU) vCPU-nként.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -38,6 +38,6 @@ A Fsv2 sorozat a legjobb ár-teljesítmény az Azure-portfólióban, amely az Az
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.

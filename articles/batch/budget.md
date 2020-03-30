@@ -1,6 +1,6 @@
 ---
-title: Cost Analysis and Budget – Azure Batch
-description: Ismerje meg, hogyan hozhatja létre a költségek elemzését, és hogyan állíthat be költségvetést a Batch számítási feladatainak futtatásához használt számítási erőforrások és szoftverlicenc számára.
+title: Költségelemzés és költségkeret – Azure Batch
+description: Megtudhatja, hogyan kaphat költségelemzést, és hogyan állíthat be költségvetést a Batch-számítási feladatok futtatásához használt számítási erőforrásokhoz és szoftverlicencekhez.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,86 +11,86 @@ ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: labrenne
 ms.openlocfilehash: 819b5e16f4730e9a1998234288e181772f7c1996
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022715"
 ---
-# <a name="cost-analysis-and-budgets-for-azure-batch"></a>Cost Analysis és költségvetések Azure Batch
+# <a name="cost-analysis-and-budgets-for-azure-batch"></a>Költségelemzés és költségkeret az Azure Batch-hez
 
-Magáért a Azure Batchért nem számítunk fel díjat, csak a számítási erőforrások és a Batch-munkaterhelések futtatására szolgáló szoftverlicenc. Magas szinten a virtuális gépek (VM-EK) egy készleten, a virtuális gépről érkező adatátvitel, illetve a felhőben tárolt bemeneti vagy kimeneti adatok alapján merülnek fel. Vessünk egy pillantást a Batch egyes kulcsfontosságú összetevőire, hogy megértsük, a költségek honnan származnak, hogyan lehet költségvetést beállítani egy készlethez vagy fiókhoz, valamint néhány olyan technikát, amellyel a Batch számítási feladatok költséghatékonysága költséghatékony.
+Az Azure Batch nem számít fel díjat, csak az alapul szolgáló számítási erőforrások és szoftverlicencek futtatásához használt Batch számítási feladatok. Magas szinten a költségek merülnek fel a virtuális gépek (Virtuális gépek) egy készletben, adatátvitel a virtuális gépről, vagy a felhőben tárolt bemeneti vagy kimeneti adatok. Vessünk egy pillantást a Batch néhány kulcsfontosságú összetevőjére, hogy megértsük, honnan származnak a költségek, hogyan állíthat be egy készletvagy fiók költségvetését, és milyen technikákat lehet a Batch-munkaterhelések költséghatékonyabbá tételére.
 
-## <a name="batch-resources"></a>Batch-erőforrások
+## <a name="batch-resources"></a>Kötegelt erőforrások
 
-A virtuális gépek a legjelentősebb erőforrás a kötegelt feldolgozáshoz. A virtuális gépeknek a Batchhez való használatának költségeit a típus, a mennyiség és a használat időtartama alapján számítjuk ki. A virtuális gépek számlázási [lehetőségei közé tartozik az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású vagy a [foglalás](../cost-management-billing/reservations/save-compute-costs-reservations.md) (előre fizetve). A számítási feladattól függően mindkét fizetési lehetőség különböző előnyökkel jár, és mindkét fizetési modell eltérő hatással lesz a számlára.
+A virtuális gépek a kötegelt feldolgozáshoz használt legjelentősebb erőforrások. A virtuális gépek kötegelt használatának költségét a típus, a mennyiség és a használat időtartama alapján számítja ki a rendszer. A virtuális gép számlázási lehetőségei közé tartozik [a csak annyit, hogy az önrendelkezésre álló](https://azure.microsoft.com/offers/ms-azr-0003p/) fizetés vagy a [foglalás](../cost-management-billing/reservations/save-compute-costs-reservations.md) (előre fizetendő). Mindkét fizetési lehetőség a számítási munkaterheléstől függően különböző előnyökkel jár, és mindkét fizetési modell eltérő hatással lesz a számlára.
 
-Ha az alkalmazások batch-csomópontokra (VM) vannak telepítve [alkalmazáscsomag](batch-application-packages.md)használatával, akkor az alkalmazás csomagjai által felhasznált Azure Storage-erőforrásokért kell fizetnie. A rendszer a bemeneti és kimeneti fájlok, például az erőforrások fájljainak és egyéb naplófájljainak tárolását is kiszámlázza. Általánosságban elmondható, hogy a Batch szolgáltatáshoz kapcsolódó tárolási adatok ára sokkal alacsonyabb, mint a számítási erőforrások díja. A **VirtualMachineConfiguration** -mel létrehozott készletekben található minden virtuális gépnek van egy társított operációsrendszer-lemeze, amely az Azure által felügyelt lemezeket használja. Az Azure által felügyelt lemezek további költségekkel járnak, és a többi lemez teljesítmény-szintjei is eltérő költségekkel rendelkeznek.
+Amikor alkalmazások at telepítenek a Batch-csomópontok (VM-ek) [alkalmazáscsomagok](batch-application-packages.md)használatával, az Azure Storage-erőforrások, amelyek az alkalmazáscsomagok felhasználása. A rendszer díjat is számláz a bemeneti vagy kimeneti fájlok, például az erőforrásfájlok és egyéb naplóadatok tárolásáért. A Batch-hez társított tárolási adatok költsége általában sokkal alacsonyabb, mint a számítási erőforrások költsége. A **VirtualMachineConfiguration** szolgáltatással létrehozott készlet minden egyes virtuális gépe rendelkezik egy Azure által felügyelt lemezeket használó operációs rendszerrel. Az Azure által felügyelt lemezek további költségekkel járnak, és más lemezteljesítményszintek nek is eltérő költségei vannak.
 
-A Batch-készletek hálózati erőforrásokat használnak. Különösen a **VirtualMachineConfiguration** -készletek standard Load Balancer használata szükséges, amelyek statikus IP-címeket igényelnek. A Batch által használt terheléselosztó a **felhasználói előfizetési** fiókok esetében látható, de a **Batch** -szolgáltatásfiókok esetében nem láthatók. A standard Load Balancer a Batch-készletben lévő virtuális gépekről átadott összes adatforrásra vonatkozó díjat számít fel. Válassza ki azokat a Batch API-kat, amelyek adatokat kérdeznek le a készlet csomópontjairól (például a feladat-és csomópont-fájlok lekérése), a feladathoz tartozó csomagok, az erőforrás/kimeneti fájlok és a tárolók képei
+A kötegkészletek hálózati erőforrásokat használnak. Különösen a **VirtualMachineConfiguration** készletek szabványos terheléselosztók, amelyek statikus IP-címeket igényelnek. A Batch által használt terheléselosztók láthatók a **Felhasználói előfizetési** fiókoknál, de a **Batch Service-fiókoknál** nem láthatók. A standard terheléselosztók díjat számítanak fel a batch készlet virtuális gépeinek átadott összes adatért; válassza ki azokat a batch API-kat, amelyek adatokat kérnek le a készletcsomópontokból (például A Feladat/csomópont fájl beolvasása), a feladatalkalmazás-csomagokból, az erőforrás-/kimeneti fájlokból és a tárolóképekből.
 
-### <a name="additional-services"></a>Kiegészítő szolgáltatások
+### <a name="additional-services"></a>További szolgáltatások
 
-A virtuális gépeket és tárhelyet nem tartalmazó szolgáltatások a Batch-fiókjuk költségeit is figyelembe vehetik.
+Virtuális gépeket és a tárolást nem magában foglaló szolgáltatások is figyelembe vehetik a Batch-fiók költségét.
 
-A Batch szolgáltatással gyakran használt egyéb szolgáltatások a következők lehetnek:
+A Batch szolgáltatással általánosan használt egyéb szolgáltatások a következők lehetnek:
 
 - Application Insights
 - Data Factory
 - Azure Monitor
-- Virtual Network (Virtuális hálózat)
+- Virtual Network
 - Grafikus alkalmazásokkal rendelkező virtuális gépek
 
-Attól függően, hogy milyen szolgáltatásokat használ a Batch-megoldáshoz, további díjakat is igényelhet. Tekintse át a [díjszabási számológépet](https://azure.microsoft.com/pricing/calculator/) , és határozza meg az egyes szolgáltatások költségeit.
+Attól függően, hogy milyen szolgáltatásokat használ a Batch-megoldással, további díjakmerülhetnek fel. Az egyes további szolgáltatások költségét a [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) ban találja.
 
-## <a name="cost-analysis-and-budget-for-a-pool"></a>Készletre vonatkozó költségek elemzése és költségvetés
+## <a name="cost-analysis-and-budget-for-a-pool"></a>Költségelemzés és költségkeret egy készlethez
 
-A Azure Portal segítségével költségvetéseket hozhat létre, és elköltheti a Batch-készlet (ek) vagy a Batch-fiókra vonatkozó riasztásokat. A költségvetések és a riasztások akkor hasznosak, ha az érintett feleket a túlhasználattal kapcsolatos kockázatokról értesítik. Előfordulhat, hogy a riasztások elköltése és a költségvetés valamivel nagyobb késése van. Ebben a példában egy különálló batch-készlet költséghatékonyságát fogjuk megtekinteni.
+Az Azure Portalon keresztül költségkereteket és költési riasztásokat hozhat létre a Batch-készlet(ek) vagy a Batch-fiók számára. A költségvetések és a riasztások hasznosak, ha az érdekelt feleket értesíti a túlköltekezés kockázatáról. Lehetséges, hogy a kiadási riasztások késnek, és kissé meghaladják a költségvetést. Ebben a példában egy adott kötegkészlet költségelemzését tekintjük meg.
 
-1. A Azure Portal válassza a **Cost Management + számlázás** lehetőséget a bal oldali navigációs sávon.
-1. Előfizetés kiválasztása a **saját előfizetések** szakaszból
-1. A bal oldali navigációs sáv **Cost Management** szakaszában kattintson a **Cost Analysis** elemre, amely a következőképpen jelenik meg:
-1. Válassza a **szűrő hozzáadása**lehetőséget. Az első legördülő menüben válassza az **erőforrás** lehetőséget ![válassza ki az erőforrás-szűrőt](./media/batch-budget/resource-filter.png)
-1. A második legördülő menüben válassza ki a Batch-készletet. A készlet kiválasztása után a Cost Analysis a következő elemzéshez hasonlóan fog kinézni.
-    a készlet ![ának elemzése](./media/batch-budget/pool-cost-analysis.png)
+1. Az Azure Portalon válassza **a Költségkezelés + Számlázás** lehetőséget a bal oldali navigációs sávon.
+1. Válassza ki az előfizetést a **Saját előfizetések** szakaszból
+1. Lépjen **a Költségelemzés** re a bal oldali navigációs sáv **Költségkezelés** szakaszában, amely az ehhez hasonló nézetet jeleníti meg:
+1. Válassza **a Szűrő hozzáadása**lehetőséget. Az első legördülő menüben válassza az **Erőforrás** ![válassza az Erőforrás szűrő kiválasztása lehetőséget.](./media/batch-budget/resource-filter.png)
+1. A második legördülő menüben válassza ki a Kötegkészletet. A készlet kiválasztásakor a költségelemzés a következő elemzéshez hasonlóan fog kinézni.
+    ![Egy készlet költségelemzése](./media/batch-budget/pool-cost-analysis.png)
 
-Az eredményül kapott Cost Analysis megjeleníti a készlet költségeit, valamint az ehhez a díjakhoz hozzájáruló erőforrásokat. Ebben a példában a készletben használt virtuális gépek a legdrágább erőforrások.
+Az eredményül kapott költségelemzés a készlet költségét, valamint a költséghez hozzájáruló erőforrásokat mutatja. Ebben a példában a készletben használt virtuális gépek a legköltségesebb erőforrás.
 
-Ha költségvetést szeretne létrehozni a készlethez, válassza a **költségvetés: nincs**lehetőséget, majd válassza az **új költségvetési > létrehozása**lehetőséget. Most az ablak használatával konfigurálhat egy költségvetést kifejezetten a készlethez.
+Ha költségvetést szeretne létrehozni a készlethez, válassza a **Költségvetés: nincs**lehetőséget, majd válassza **az Új költségvetés létrehozása >** lehetőséget. Most az ablak segítségével konfigurálja a költségvetés kifejezetten a készlet.
 
-A költségvetés konfigurálásával kapcsolatos további információkért lásd: [Azure-költségvetések létrehozása és kezelése](../cost-management-billing/costs/tutorial-acm-create-budgets.md).
+A költségvetés konfigurálásáról az [Azure-költségvetések létrehozása és kezelése](../cost-management-billing/costs/tutorial-acm-create-budgets.md)című témakörben talál további információt.
 
 > [!NOTE]
-> Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológiára épül. Ha **Cloud Services konfigurációt**választ, a Cloud Services díjszabási struktúra alapján kell fizetnie. A **virtuális gép konfigurációjának**kiválasztásakor a Virtual Machines díjszabási struktúra alapján kell fizetnie. Az oldalon található példa a **virtuális gép konfigurációját**használja.
+> Az Azure Batch az Azure Cloud Services és az Azure Virtual Machines technológiára épül. Ha a Cloud Services Configuration lehetőséget **választja,** a Felhőszolgáltatások díjszabási struktúrája alapján számítunk fel díjat. Ha a **Virtuálisgép-konfiguráció lehetőséget választja,** a virtuális gépek díjszabási struktúrája alapján kell fizetnie. A lap példái a **Virtuálisgép-konfigurációt (Virtuálisgép-konfiguráció)** használja.
 
-## <a name="minimize-cost"></a>Csökkentse a költségeket
+## <a name="minimize-cost"></a>A költségek minimalizálása
 
-Több virtuális gép és Azure-szolgáltatás használata hosszabb ideig költséges lehet. Szerencsére vannak olyan szolgáltatások, amelyek segítenek csökkenteni a kiadásokat, valamint stratégiákat a számítási feladatok hatékonyságának maximalizálása érdekében.
+Több virtuális gép és Az Azure-szolgáltatások használata hosszabb ideig költséges lehet. Szerencsére vannak olyan szolgáltatások, amelyek segítenek csökkenteni a kiadásokat, valamint stratégiák a munkaterhelés hatékonyságának maximalizálására.
 
 ### <a name="low-priority-virtual-machines"></a>Alacsony prioritású virtuális gépek
 
-Az alacsony prioritású virtuális gépek csökkentik a Batch-munkaterhelések költségeit azáltal, hogy kihasználják a felesleges számítási kapacitást az Azure-ban. Ha alacsony prioritású virtuális gépeket ad meg a készletekben, a Batch ezt a többletet használja a számítási feladatok futtatásához. Az alacsony prioritású virtuális gépek használata jelentős költségmegtakarítást biztosít a dedikált virtuális gépek helyett.
+Az alacsony prioritású virtuális gépek csökkentik a Batch-számítási feladatok költségeit azáltal, hogy kihasználják az Azure-ban a többlet számítási kapacitást. Ha alacsony prioritású virtuális gépeket ad meg a készletekben, a Batch ezt a többletet használja a számítási feladatok futtatásához. Jelentős költségmegtakarítás érhető el az alacsony prioritású virtuális gépek használatával a dedikált virtuális gépek helyett.
 
-Ismerje meg, hogyan állíthat be alacsony prioritású virtuális gépeket a számítási feladathoz, ha [alacsony prioritású virtuális gépeket használ a Batch használatával](batch-low-pri-vms.md).
+További információ arról, hogyan állíthat be alacsony prioritású virtuális gépeket a számítási feladatokhoz [az Alacsony prioritású virtuális gépek használata a Batch-el.](batch-low-pri-vms.md)
 
-### <a name="virtual-machine-os-disk-type"></a>Virtuális gép operációsrendszer-lemezének típusa
+### <a name="virtual-machine-os-disk-type"></a>Virtuálisgép operációsrendszer-lemeztípusa
 
-Több [virtuális gép operációsrendszer-lemeze](../virtual-machines/windows/disks-types.md)van. A legtöbb virtuálisgép-sorozat a prémium és a standard szintű tárolást egyaránt támogató méretekkel rendelkezik. Ha egy készlethez a virtuális gép mérete van kiválasztva, a Batch a prémium szintű SSD operációsrendszer-lemezeket konfigurálja. Ha a "nem s" virtuálisgép-méret van kiválasztva, akkor a rendszer az olcsóbb, standard szintű HDD-lemez típusát használja. A prémium szintű SSD operációsrendszer-lemezek például a `Standard_D2s_v3` és a standard HDD operációsrendszer-lemezekhez használatosak `Standard_D2_v3`hoz.
+Több [Virtuálisgép-operációs rendszer lemeztípusa van.](../virtual-machines/windows/disks-types.md) A legtöbb VM-sorozat mérete támogatja a prémium és a standard szintű tárolást. Ha egy "s" virtuális gép mérete van kiválasztva egy készlethez, a Batch prémium szintű SSD operációs rendszer lemezek konfigurálása. Ha a "nem s" virtuális gép mérete van kiválasztva, majd az olcsóbb, szabványos HDD-lemez típusát használja. Prémium szintű SSD operációs rendszerlemezeket `Standard_D2s_v3` használnak például, és szabványos `Standard_D2_v3`HDD operációs rendszerlemezeket használnak a számára.
 
-Prémium SSD operációsrendszer-lemezek drágábbak, de a nagyobb teljesítmény és a prémium szintű lemezekkel rendelkező virtuális gépek valamivel gyorsabban elkezdődhetnek, mint a standard HDD operációsrendszer-lemezekkel rendelkező virtuális gépek. A Batch használata esetén az operációsrendszer-lemez gyakran nincs használatban, mivel az alkalmazások és a feladatok fájljai a virtuális gépek ideiglenes SSD-lemezén találhatók. Ezért számos esetben nem kell fizetnie a prémium SSD számára, amelyet a virtuális gép méretének megadásakor kell kiépíteni.
+A prémium szintű SSD-operációs rendszer lemezek drágábbak, de nagyobb teljesítményűek, és a prémium szintű lemezekkel rendelkező virtuális gépek valamivel gyorsabban indulnak el, mint a szabványos HDD operációs rendszerlemezeket tartalmazó virtuális gépek. A Batch, az operációs rendszer lemeze gyakran nem használják sokat, mint az alkalmazások és a feladat fájlok találhatók a virtuális gépek ideiglenes SSD-lemez. Ezért sok esetben nincs szükség a prémium szintű SSD megnövekedett költségének megfizetésére, amely az "s" virtuális gép méretének megadása esetén van kiépítve.
 
 ### <a name="reserved-virtual-machine-instances"></a>Fenntartott virtuálisgép-példányok
 
-Ha hosszú ideig kívánja használni a köteget, a munkaterhelések [Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) használatával mentheti a virtuális gépek költségeit. A foglalások díja jelentősen alacsonyabb, mint az utólagos elszámolású díjszabás. A foglalás nélkül használt virtuálisgép-példányokat utólagos elszámolású díjszabással számoljuk el. Foglalás megvásárlása esetén a foglalási kedvezményt a rendszer az utólagos elszámolású díjszabás szerint számítja fel.
+Ha hosszú ideig kívánja használni a Batch-et, megtakaríthatja a virtuális gépek költségét az [Azure-foglalások](../cost-management-billing/reservations/save-compute-costs-reservations.md) használatával a számítási feladatokhoz. A foglalási arány lényegesen alacsonyabb, mint a felosztó-kiosztó díj. A foglalás nélkül használt virtuálisgép-példányok díja használatalapú díjfizetéssel jár. Ha foglalást vásárol, a foglalási kedvezmény tanusíthatja, és a továbbiakban nem számítunk fel díjat a felosztó-kirovó árakon.
 
 ### <a name="automatic-scaling"></a>Automatikus skálázás
 
-Az [automatikus skálázás](batch-automatic-scaling.md) dinamikusan méretezi a Batch-készletben lévő virtuális gépek számát az aktuális feladatokhoz tartozó igények alapján. Ha a készletet a feladatok élettartama alapján méretezi, az automatikus skálázás biztosítja, hogy a virtuális gépek méretezése és használata csak akkor történjen, amikor feladatot hajt végre. Ha a feladat befejeződött, vagy nincsenek feladatok, a virtuális gépek automatikusan le lesznek méretezve a számítási erőforrások mentéséhez. A skálázás lehetővé teszi, hogy csak a szükséges erőforrások használatával csökkentse a Batch-megoldás teljes költségeit.
+[Az automatikus méretezés](batch-automatic-scaling.md) dinamikusan méretezi a kötegkészletben lévő virtuális gépek számát az aktuális feladat igényei alapján. A készlet egy feladat élettartama alapján történő méretezésével az automatikus skálázás biztosítja, hogy a virtuális gépek csak akkor legyenek felskálázva, és csak akkor használhatók, ha van egy feladat, amelyet végre kell hajtani. Ha a feladat befejeződött, vagy nincsenek feladatok, a virtuális gépek automatikusan leskálázódik a számítási erőforrások mentése érdekében. A skálázás lehetővé teszi a Batch-megoldás teljes költségének csökkentését, ha csak a szükséges erőforrásokat használja.
 
-További információ az automatikus skálázásról: [számítási csomópontok automatikus méretezése egy Azure batch készletben](batch-automatic-scaling.md).
+Az automatikus skálázásról további információt az [Azure Batch-készlet számítási csomópontjainak automatikus méretezése](batch-automatic-scaling.md)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a Batch-megoldások létrehozásához és figyeléséhez elérhető [Batch API-król és eszközökről](batch-apis-tools.md) .  
+- További információ a [Batch API-król és](batch-apis-tools.md) a Batch-megoldások létrehozásához és figyeléséhez rendelkezésre álló eszközökről.  
 
-- Ismerkedjen meg az [alacsony prioritású virtuális gépekkel a Batch segítségével](batch-low-pri-vms.md).
+- Ismerje meg az [alacsony prioritású virtuális gépek et a Batch.](batch-low-pri-vms.md)

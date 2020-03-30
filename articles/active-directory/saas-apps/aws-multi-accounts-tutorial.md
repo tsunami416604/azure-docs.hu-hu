@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Amazon Web Services (AWS) szolgáltatással több fiók összekapcsolásához | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést az Azure AD és a Amazon Web Services (AWS) több fiókja között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az Amazon Web Services (AWS) szolgáltatással több fiók csatlakoztatásához | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure AD és az Amazon Web Services (AWS) több fiókja között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,271 +17,271 @@ ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368002"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Oktatóanyag: Azure Active Directory integráció több Amazon Web Services (AWS) fiókkal
+# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Oktatóanyag: Az Azure Active Directory integrációja több Amazon Web Services (AWS) fiókkal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja Azure Active Directory (Azure AD) Amazon Web Services (AWS) több fiókkal.
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Azure Active Directoryt (Azure AD) az Amazon Web Services (AWS) több fiókjával.
 
-Az Amazon Web Services (AWS) és az Azure AD integrálásával a következő előnyöket nyújtja:
+Az Amazon Web Services (AWS) integrálása az Azure AD-vel a következő előnyökkel jár:
 
-- Az Azure AD-ben beállíthatja, hogy ki férhet hozzá Amazon Web Services (AWS) szolgáltatáshoz.
-- Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkeznek a Amazon Web Servicesba (AWS) (egyszeri bejelentkezés) az Azure AD-fiókjával.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+- Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá az Amazon Web Services (AWS) szolgáltatáshoz.
+- Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve az Amazon Web Services (AWS) (Single Sign-On) az Azure AD-fiókok.
+- Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, tekintse meg, [hogy mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval.](../manage-apps/what-is-single-sign-on.md)
 
-![Amazon Web Services (AWS) az eredmények listájában](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
+![Amazon Web Services (AWS) az eredménylistában](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 >[!NOTE]
->Vegye figyelembe, hogy egyetlen AWS-alkalmazás csatlakoztatása az összes AWS-fiókhoz nem az ajánlott módszer. Ehelyett azt javasoljuk, hogy [ezt](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) a módszert használva több AWS-fiók több példányát konfigurálja az Azure ad-ben az AWS-alkalmazások több példányára.
+>Kérjük, vegye figyelembe, hogy egy AWS alkalmazás csatlakoztatása az összes AWS-fiókjához nem az ajánlott megközelítésünk. Ehelyett azt javasoljuk, hogy [használja ezt a](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) módszert az AWS-fiók több példányának konfigurálásához az Azure AD-ben az AWS-alkalmazások több példányához.
 
-**Vegye figyelembe, hogy a következő okok miatt nem ajánlott ezt a módszert használni:**
+**Kérjük, vegye figyelembe, hogy nem javasoljuk, hogy ezt a megközelítést a következő okok miatt:**
 
-* Az alkalmazás összes szerepkörének javításához a Microsoft Graph Explorer megközelítését kell használnia. A manifest file megközelítést nem ajánlott használni.
+* A Microsoft Graph Explorer módszert kell használnia az összes szerepkör alkalmazáshoz való javításához. Nem javasoljuk a jegyzékfájl-megközelítés használatát.
 
-* Láttuk ügyfeleinket, hogy egy AWS-alkalmazáshoz hozzáadott ~ 1200 alkalmazási Szerepkörök hozzáadása után az alkalmazás minden művelete megkezdte a mérettel kapcsolatos hibák ledobását. Az Application objektumon rögzített méret van korlátozva.
+* Láttuk, hogy az ügyfelek arról számoltak be, hogy miután ~1200 alkalmazásszerepkört adtak hozzá egyetlen AWS alkalmazáshoz, az alkalmazás minden művelete elkezdte eldobni a mérethez kapcsolódó hibákat. Az alkalmazásobjektum mérete szigorú.
 
-* Manuálisan kell frissítenie a szerepkört, mivel a szerepkörök bármely fiókban hozzá lettek adva, ami egy lecserélt módszer, és nem fűzhet hozzá sajnos. Emellett ha a fiókok egyre növekednek, akkor ez n x n kapcsolat lesz a fiókokkal és szerepkörökkel.
+* Manuálisan kell frissítenie a szerepkört, mivel a szerepkörök hozzáadódnak a fiókok bármelyikéhez, ami egy Csere megközelítés, és nem sajnos hozzáfűzése. Akkor is, ha a fiókok növekszik, akkor ez lesz n x n kapcsolat számlák és szerepek.
 
-* Az összes AWS-fiók ugyanazt az összevonási metaadatokat tartalmazó XML-fájlt fogja használni, és a tanúsítvány-átváltáskor el kell végeznie ezt a nagy gyakorlatot, hogy az összes AWS-fiókon egyidejűleg frissítse a tanúsítványt
+* Az összes AWS-fiók ugyanazt az összevonási metaadat-XML-fájlt fogja használni, és a tanúsítványváltás időpontjában meg kell hajtania ezt a tömeges gyakorlatot, hogy egyszerre frissítse a tanúsítványt az összes AWS-fiókon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Amazon Web Services (AWS) szolgáltatással való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához az Amazon Web Services (AWS) szolgáltatással a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
 * Amazon Web Services (AWS) egyszeri bejelentkezésre engedélyezett előfizetés
 
 > [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
+> Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi ajánlásokat:
 
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik Azure AD-próbaverzióval, egy [hónapos próbaverziót is beszerezhet](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetet, kivéve, ha ez szükséges.
+- Ha nem rendelkezik Egy Azure AD próbakörnyezettel, [egy hónapos próbaverziót kaphat.](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Amazon Web Services (AWS) támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO-t
+* Az Amazon Web Services (AWS) támogatja az **SP-t és az IDP** által kezdeményezett SSO-t
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Amazon Web Services (AWS) hozzáadása a gyűjteményből
+## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Amazon Web Services (AWS) hozzáadása a galériából
 
-Amazon Web Services (AWS) Azure AD-be való integrálásának konfigurálásához hozzá kell adnia Amazon Web Services (AWS) szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az Amazon Web Services (AWS) Azure AD-be való integrációjának konfigurálásához hozzá kell adnia az Amazon Web Services (AWS) szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Amazon Web Services (AWS) a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**Ha az Amazon Web Services (AWS) szolgáltatást a gyűjteményből szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Amazon Web Services (AWS)** kifejezést, válassza a **Amazon Web Services (AWS)** elemet az eredmény panelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **Amazon Web Services (AWS) kifejezést,** válassza az **Amazon Web Services (AWS)** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Amazon Web Services (AWS) az eredmények listájában](common/search-new-app.png)
+     ![Amazon Web Services (AWS) az eredménylistában](common/search-new-app.png)
 
-5. Az alkalmazás hozzáadása után lépjen a **Tulajdonságok** lapra, és másolja az **objektumazonosítót**.
+5. Az alkalmazás hozzáadása után lépjen a **Tulajdonságok** lapra, és másolja az **Objektumazonosítót**.
 
-    ![Amazon Web Services (AWS) az eredmények listájában](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_properties.png)
+    ![Amazon Web Services (AWS) az eredménylistában](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_properties.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli Amazon Web Services (AWS) egy "Britta Simon" nevű teszt felhasználó alapján.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését az Amazon Web Services (AWS) szolgáltatással a "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD-nek tudnia kell, hogy a Amazon Web Services (AWS) felhasználói a felhasználó az Azure AD-ben. Más szóval az Azure AD-felhasználó és a Amazon Web Services (AWS) kapcsolódó felhasználó közötti kapcsolati kapcsolat létesítése szükséges.
+Egyszeri bejelentkezés a munka, az Azure AD tudnia kell, hogy mi a megfelelő felhasználó az Amazon Web Services (AWS) az Azure AD-ben. Más szóval létre kell hozni egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó az Amazon Web Services (AWS) létre kell hozni.
 
-Amazon Web Services (AWS) esetében rendelje hozzá a Felhasználónév értékét az Azure AD **-ben a** kapcsolati kapcsolat létrehozásához használt **Felhasználónév** értékeként.
+Az Amazon Web Services (AWS) szolgáltatásban rendelje hozzá a **felhasználónév** értékét az Azure AD-ben a **felhasználónév** értékeként a kapcsolat létrehozásához.
 
-Az Azure AD egyszeri bejelentkezés Amazon Web Services (AWS) szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az Amazon Web Services (AWS) szolgáltatással a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Amazon Web Services (AWS) egyszeri bejelentkezés konfigurálása](#configure-amazon-web-services-aws-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja az Amazon Web Services (AWS) egyszeri bejelentkezést](#configure-amazon-web-services-aws-single-sign-on)** – az egyszeri bejelentkezés i beállításainak konfigurálásához az alkalmazás oldalon.
+3. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfigurálhatja az egyszeri bejelentkezést az Amazon Web Services (AWS) alkalmazásban.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon, és konfigurálja az egyszeri bejelentkezést az Amazon Web Services (AWS) alkalmazásban.
 
-**Az Azure AD egyszeri bejelentkezés Amazon Web Services (AWS) szolgáltatással való konfigurálásához hajtsa végre a következő lépéseket:**
+**Az Azure AD egyszeri bejelentkezésének az Amazon Web Services (AWS) szolgáltatással történő konfigurálásához hajtsa végre az alábbi lépéseket:**
 
-1. A [Azure Portal](https://portal.azure.com/) **Amazon Web Services (AWS)** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)az **Amazon Web Services (AWS)** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
+4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania semmilyen lépést, mivel az alkalmazás már előre integrálva van az Azure-ral.
 
     ![image](common/preintegrated.png)
 
-5. A Amazon Web Services (AWS) alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Ezen attribútumok értékeit az alkalmazás-integráció lapon lévő **felhasználói attribútumok & jogcímek** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok & jogcímek** párbeszédpanel megnyitásához.
+5. Az Amazon Web Services (AWS) alkalmazás az SAML-állításokat egy adott formátumban várja. Konfigurálja az alkalmazás következő jogcímeket. Ezeknek az attribútumoknak az értékeit az alkalmazásintegrációs lap **Felhasználói attribútumok & jogcímek** szakaszában kezelheti. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** gombra **a Felhasználói attribútumok & jogcímek** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
+6. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában konfigurálja az SAML token attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név)  | Forrás attribútum  | Névtér |
+    | Név  | Forrás attribútuma  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | Szerepkör            | User. assignedroles |  https://aws.amazon.com/SAML/Attributes |
-    | SessionDuration             | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket adjon meg" |  https://aws.amazon.com/SAML/Attributes |
+    | Szerepkör            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | SessionDuration (Munkamenet időtartama)             | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket ad meg" |  https://aws.amazon.com/SAML/Attributes |
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    a. Kattintson **az Új jogcím hozzáadása** gombra a Felhasználói **jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
+    b. A **Név** mezőbe írja be a sor attribútumnevét.
 
-    c. A **névtér** szövegmezőbe írja be az adott sorhoz megjelenő névtér értékét.
+    c. A **Névtér** mezőbe írja be a sorhoz megjelenített Névtér értéket.
 
-    d. Válassza a forrás **attribútumként**lehetőséget.
+    d. Válassza a Forrás **attribútumként lehetőséget.**
 
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+    e. A **Forrás attribútumlistában** írja be a sor attribútumértékét.
 
-    f. Kattintson **az OK** gombra
+    f. Kattintson **az Ok gombra**
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    g. Kattintson a **Mentés** gombra.
 
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-fájljának** letöltéséhez és a számítógépre mentéséhez.
+7. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** kattintson a **Letöltés** gombra az **összevonási metaadat-XML** letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Amazon Web Services (AWS) egyszeri bejelentkezés konfigurálása
+### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Az Amazon Web Services (AWS) egyszeri bejelentkezésének konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Amazon Web Services (AWS) vállalati webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be az Amazon Web Services (AWS) vállalati webhelyére rendszergazdaként.
 
-2. Kattintson az **AWS Kezdőlap**elemre.
+2. Kattintson **az AWS Kezdőlap ikonjára.**
 
-    ![Egyszeri bejelentkezés konfigurálása][11]
+    ![Egyszeri bejelentkezés otthoni konfigurálása][11]
 
-3. Kattintson **az identitás-és hozzáférés-kezelés**elemre.
+3. Kattintson **az Identitás- és hozzáférés-kezelés gombra.**
 
-    ![Egyszeri bejelentkezés identitásának konfigurálása][12]
+    ![Egyszeri bejelentkezési identitás konfigurálása][12]
 
-4. Kattintson az **identitás-szolgáltatók**elemre, majd a **szolgáltató létrehozása**elemre.
+4. Kattintson **az Identitásszolgáltatók**, majd **a Szolgáltató létrehozása**parancsra.
 
-    ![Egyszeri bejelentkezési szolgáltató konfigurálása][13]
+    ![Egyszeri bejelentkezésszolgáltató konfigurálása][13]
 
-5. A **szolgáltató konfigurálása** párbeszédpanelen hajtsa végre a következő lépéseket:
+5. A **Szolgáltató konfigurálása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezési párbeszédpanel konfigurálása][14]
+    ![Egyszeri bejelentkezés párbeszédpanel konfigurálása][14]
 
-    a. **Szolgáltató típusaként**válassza az **SAML**lehetőséget.
+    a. **Szolgáltatótípusként**válassza az **SAML**lehetőséget.
 
-    b. A **szolgáltató neve** szövegmezőbe írja be a szolgáltató nevét (például: *WAAD*).
+    b. A **Szolgáltató neve** mezőbe írja be a szolgáltató nevét (például *WAAD*).
 
-    c. A letöltött metaadat- **fájl** Azure Portalból való feltöltéséhez kattintson a **fájl kiválasztása**lehetőségre.
+    c. Ha fel szeretné tölteni a letöltött **metaadatfájlt** az Azure Portalról, kattintson **a Fájl kiválasztása gombra.**
 
-    d. Kattintson a **következő lépés**gombra.
+    d. Kattintson a **Következő lépés gombra.**
 
-6. A **szolgáltatói adatok ellenőrzése** párbeszédpanelen kattintson a **Létrehozás**gombra.
+6. A **Szolgáltató adatainak ellenőrzése** párbeszédpanelen kattintson a **Létrehozás gombra.**
 
-    ![Egyszeri bejelentkezés konfigurálása – ellenőrzés][15]
+    ![Egyszeri bejelentkezés ellenőrzésének konfigurálása][15]
 
-7. Kattintson a **szerepkörök**elemre, majd kattintson a **szerepkör létrehozása**lehetőségre.
+7. Kattintson **a Szerepkörök**, majd **a Szerepkör létrehozása**parancsra.
 
     ![Egyszeri bejelentkezési szerepkörök konfigurálása][16]
 
-8. A **szerepkör létrehozása** oldalon hajtsa végre a következő lépéseket:  
+8. A **Szerepkör létrehozása** lapon hajtsa végre az alábbi lépéseket:  
 
-    ![Egyszeri bejelentkezéses megbízhatóság konfigurálása][19]
+    ![Egyszeri bejelentkezési megbízhatóságkonfigurálás konfigurálása][19]
 
-    a. Válassza ki az **SAML 2,0-összevonás** elemet **a megbízható entitás típusa**területen.
+    a. Válassza **az SAML 2.0 összevonás** lehetőséget **a Megbízható entitás típusának kiválasztása**csoportban.
 
-    b. Az **saml 2,0-szolgáltató kiválasztása szakaszban**válassza ki a korábban létrehozott **SAML-szolgáltatót** (például: *WAAD*)
+    b. Az **SAML 2.0 szolgáltató kiválasztása csoportban**válassza ki a korábban létrehozott **SAML-szolgáltatót** (például *WAAD)*
 
-    c. Válassza **a programozott és AWS felügyeleti konzol hozzáférésének engedélyezése**lehetőséget.
+    c. Válassza **az Programozott és Az AWS Felügyeleti konzol elérésének engedélyezése**lehetőséget.
   
-    d. Kattintson a **Tovább gombra: engedélyek**.
+    d. Kattintson a **Tovább gombra: Engedélyek**.
 
-9. Az **engedélyek csatolása** párbeszédpanelen adja meg a megfelelő szabályzatot a szervezete számára. Kattintson a **Tovább gombra: felülvizsgálat**.  
+9. Az **Engedélyek csatolása házirendek** párbeszédpanelen csatolja a megfelelő házirendet a szervezetnek megfelelően. Kattintson a **Tovább gombra: Véleményezés**.  
 
-    ![Egyszeri bejelentkezési szabályzat konfigurálása][33]
+    ![Egyszeri bejelentkezési házirend konfigurálása][33]
 
-10. A **felülvizsgálati** párbeszédpanelen hajtsa végre a következő lépéseket:
+10. A **Véleményezés** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés felülvizsgálatának konfigurálása][34]
+    ![Egyszeri bejelentkezési ellenőrzés konfigurálása][34]
 
-    a. A **szerepkör neve** szövegmezőbe írja be a szerepkör nevét.
+    a. A **Szerepkör név** mezőbe írja be a szerepkör nevét.
 
-    b. A **szerepkör leírása** szövegmezőbe írja be a leírást.
+    b. A **Szerepkör leírásának** mezőbe írja be a leírást.
 
-    c. Kattintson a **szerepkör létrehozása**lehetőségre.
+    c. Kattintson **a Szerepkör létrehozása gombra.**
 
-    d. Szükség szerint hozzon létre annyi szerepkört, és rendelje őket az identitás-szolgáltatóhoz.
+    d. Hozzon létre annyi szerepkört, amennyi szükséges, és rendelje hozzá juk az identitásszolgáltatóhoz.
 
-11. Jelentkezzen ki az aktuális AWS-fiókból, és jelentkezzen be olyan fiókkal, ahol egyszeri bejelentkezést szeretne konfigurálni az Azure AD-vel.
+11. Jelentkezzen ki az aktuális AWS-fiókból, és jelentkezzen be más fiókkal, ahol az Azure AD-vel szeretné konfigurálni az egyszeri bejelentkezést.
 
-12. A fiókhoz beállítani kívánt több szerepkör létrehozásához hajtsa végre a 2. lépést a 10. lépéssel. Ha kettőnél több fiókkal rendelkezik, hajtsa végre ugyanezeket a lépéseket az összes fiókhoz a szerepkörök létrehozásához.
+12. A 2. Ha kettőnél több fiókkal rendelkezik, hajtsa végre ugyanazokat a lépéseket az összes fiókesetében, hogy szerepköröket hozzon létre számukra.
 
-13. Miután az összes szerepkört létrehozta a fiókokban, azok megjelennek a **szerepkörök** listájában ezekhez a fiókokhoz.
+13. Miután az összes szerepkör létrejött a fiókokban, megjelennek a **fiókok Szerepkörök** listájában.
 
     ![Szerepkörök beállítása](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_listofroles.png)
 
-14. Az összes fiók összes szerepköre számára az ARN és a megbízható entitások összes szerepkörét rögzíteni kell, amelyet manuálisan kell leképezni az Azure AD-alkalmazással.
+14. Meg kell örökíteni az összes szerepkör ARN és megbízható entitások az összes szerepkör az összes fiók, amelyet manuálisan kell leképezni az Azure AD-alkalmazással.
 
-15. Kattintson a szerepkörökre az **ARN szerepkör** és a **Megbízható entitások** értékének másolásához. Ezekre az értékekre szüksége lesz az Azure AD-ben létrehozandó összes szerepkörhöz.
+15. Kattintson a szerepkörökre az **ARN** és **a Megbízható entitások** értékek másolásához. Ezekre az értékekre az Azure AD-ben létrehozandó összes szerepkörhöz szüksége van.
 
     ![Szerepkörök beállítása](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_role_summary.png)
 
-16. Hajtsa végre a fenti lépést az összes fiókban lévő összes szerepkörhöz, és tárolja őket a Jegyzettömbben található **Megbízható entitások** formátumban.
+16. Hajtsa végre a fenti lépést az összes fiók összes szerepköre számára, és tárolja őket **a Szerepkör ARN, Megbízható entitások** formátumban egy jegyzettömbben.
 
-17. Nyissa meg [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
+17. Nyissa meg a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) t egy másik ablakban.
 
-    a. Jelentkezzen be a Graph Explorer-webhelyre a bérlőhöz tartozó globális rendszergazdai vagy társ-rendszergazdai hitelesítő adatok használatával.
+    a. Jelentkezzen be a Graph Explorer webhelyére a bérlő globális rendszergazdai/társrendszergazdai hitelesítő adataival.
 
-    b. Megfelelő engedélyekkel kell rendelkeznie a szerepkörök létrehozásához. A szükséges engedélyek beszerzéséhez kattintson az **engedélyek módosítása** elemre.
+    b. A szerepkörök létrehozásához megfelelő engedélyekkel kell rendelkeznie. Kattintson a **módosítási engedélyeket,** hogy a szükséges engedélyeket.
 
-    ![Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+    ![A Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. Válassza ki az alábbi engedélyeket a listából (ha még nem rendelkezik ezekkel), és kattintson az "engedélyek módosítása" elemre. 
+    c. Válassza ki a következő engedélyeket a listából (ha még nem rendelkezik ilyenekkel), majd kattintson az "Engedélyek módosítása" gombra. 
 
-    ![Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+    ![A Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. Ekkor ismét be kell jelentkeznie, és el kell fogadnia az engedélyt. A beleegyezés elfogadása után ismét bejelentkezett a Graph Explorerben.
+    d. Ez megkéri, hogy jelentkezzen be újra, és fogadja el a hozzájárulást. A hozzájárulás elfogadása után ismét be jelentkezik a Graph Explorerbe.
 
-    e. Módosítsa a verzió legördülő menüjét a **bétaverzióra**. Az összes egyszerű szolgáltatásnév beolvasásához használja a következő lekérdezést:
+    e. Módosítsa a verzió legördülő **béta**. Az összes szolgáltatásnévkérés a bérlőből, használja a következő lekérdezést:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Ha több könyvtárat használ, akkor a következő mintát használhatja, amely az elsődleges tartománya `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több könyvtárat használ, akkor használhatja a következő mintát, amely az elsődleges tartománybenne`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
+    ![A Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    f. A beolvasott egyszerű szolgáltatások listájából szerezze be a módosítandó elemet. A CTRL + F billentyűkombinációval is megkeresheti az alkalmazást az összes felsorolt ServicePrincipals. A következő lekérdezést használhatja az Azure AD tulajdonságlapról másolt **objektumazonosító** használatával, hogy megkapja a megfelelő szolgáltatásnevet.
+    f. A rendszernévi tagok listájából olvassa be a módosítani kívánt szolgáltatást. A Ctrl+F billentyűkombinációval is kereshet az alkalmazásban az összes felsorolt ServicePrincipals elemből. A következő lekérdezést használhatja az **Objektum-azonosító,** amely az Azure AD tulajdonságai lapról másolt a megfelelő egyszerű szolgáltatás.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    ![Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    ![A Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    g. Bontsa ki a appRoles tulajdonságot az egyszerű szolgáltatásnév objektumból.
+    g. Az appRoles tulajdonság kinyerése az egyszerű szolgáltatásobjektumból.
 
-    ![Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    ![A Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
     h. Most új szerepköröket kell létrehoznia az alkalmazáshoz. 
 
-    i. Az alábbi JSON egy példa a appRoles objektumra. Hozzon létre egy hasonló objektumot az alkalmazáshoz használni kívánt szerepkörök hozzáadásához.
+    i. A JSON alatt egy példa appRoles objektum. Hozzon létre egy hasonló objektumot az alkalmazáshoz kívánt szerepkörök hozzáadásához.
 
     ```
     {
@@ -323,48 +323,48 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
     ```
 
     > [!Note]
-    > A javítási művelet **msiam_access** után csak új szerepköröket adhat hozzá. Azt is megteheti, hogy annyi szerepkört ad hozzá, amennyit csak szeretne, ha a szervezetnek szüksége van rá. Az Azure AD a következő szerepkörök **értékét** küldi el az SAML-válaszban szereplő jogcím-értékként.
+    > Csak a **javítási** művelet msiam_access után adhat hozzá új szerepköröket. Emellett annyi szerepkört adhat hozzá, amennyit csak akar a szervezet igénye szerint. Az Azure AD elküldi ezeknek a szerepköröknek az **értékét** az SAML-válasz jogcímértékeként.
 
-    j. Lépjen vissza Microsoft Graph Explorer-re, és módosítsa a metódust a **Get** to **patch**elemre. Az egyszerű szolgáltatásnév objektumának javításához a appRoles tulajdonság frissítésével a példában láthatóhoz hasonló módon frissítse a kívánt szerepköröket. A javítási művelet végrehajtásához kattintson a **lekérdezés futtatása** elemre. A sikeres üzenet megerősíti a Amazon Web Services alkalmazás szerepkörének létrehozását.
+    j. Lépjen vissza a Microsoft Graph Explorer programhoz, és módosítsa a módszert **GET-ről** **PATCH-re.** Javítsa ki a Szolgáltatásegyszerű objektumot a kívánt szerepkörökkel az appRoles tulajdonság nak a példában fent láthatóhoz hasonló frissítésével. A javítás végrehajtásához kattintson a **Lekérdezés futtatása** gombra. A sikeres üzenet megerősíti a szerepkör létrehozását az Amazon Web Services alkalmazáshoz.
 
-    ![Microsoft Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![A Microsoft Graph Explorer párbeszédpanelje](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
-18. Ha a szolgáltatásnév több szerepkörrel is rendelkezik, akkor felhasználókat és csoportokat rendelhet hozzá a megfelelő szerepkörökhöz. Ezt a portálon teheti meg, és megnyithatja a Amazon Web Services alkalmazást. Kattintson a felül található **felhasználók és csoportok** fülre.
+18. Miután a szolgáltatásegyszerű javítást kapott több szerepkörrel, felhasználókat/csoportokat rendelhet a megfelelő szerepkörökhöz. Ezt úgy teheti meg, hogy a portálra megy, és az Amazon Web Services alkalmazásba navigál. Kattintson a felső sarokban a **Felhasználók és csoportok** fülre.
 
-19. Javasoljuk, hogy hozzon létre új csoportokat minden AWS-szerepkörhöz, hogy az adott szerepkört hozzá lehessen rendelni a csoporthoz. Vegye figyelembe, hogy ez az egyik egy adott csoport egy szerepkörhöz való hozzárendelése. Ezután hozzáadhatja a csoporthoz tartozó tagokat.
+19. Javasoljuk, hogy hozzon létre új csoportokat minden AWS szerepkörhöz, hogy hozzárendelhesse az adott szerepkört az adott csoporthoz. Ne feledje, hogy ez egy egy csoport egy szerepkörhöz. Ezután hozzáadhatja a csoporthoz tartozó tagokat.
 
-20. A csoportok létrehozása után válassza ki a csoportot, és rendelje hozzá az alkalmazáshoz.
+20. A csoportok létrehozása után jelölje ki a csoportot, és rendelje hozzá az alkalmazáshoz.
 
-    ![Egyszeri bejelentkezéses Hozzáadás konfigurálása](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
-
-    > [!Note]
-    > A beágyazott csoportok nem támogatottak csoportok hozzárendeléséhez.
-
-21. Ha a szerepkört hozzá szeretné rendelni a csoporthoz, válassza ki a szerepkört, majd kattintson az oldal alján található **hozzárendelés** gombra.
-
-    ![Egyszeri bejelentkezéses Hozzáadás konfigurálása](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
+    ![Egyszeri bejelentkezés hozzáadása konfigurálása](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
     > [!Note]
-    > Vegye figyelembe, hogy az új szerepkörök megjelenítéséhez frissítenie kell a munkamenetét Azure Portalban.
+    > A beágyazott csoportok nem támogatottak csoportok hozzárendelésekénte.
+
+21. Ha hozzá szeretné rendelni a szerepkört a csoporthoz, jelölje ki a szerepkört, és kattintson a lap alján található **Hozzárendelés** gombra.
+
+    ![Egyszeri bejelentkezés hozzáadása konfigurálása](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
+
+    > [!Note]
+    > Kérjük, vegye figyelembe, hogy frissítenie kell a munkamenetet az Azure Portalon az új szerepkörök megtekintéséhez.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Amazon Web Services (AWS) csempére kattint, akkor a szerepkör kiválasztásához be kell szereznie a Amazon Web Services (AWS) alkalmazás lapot.
+Ha az Amazon Web Services (AWS) csempére kattint a Hozzáférési panelen, az Amazon Web Services (AWS) alkalmazáslapját a szerepkör kiválasztásához kell kapnia.
 
-![Egyszeri bejelentkezéses Hozzáadás konfigurálása](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_screen.png)
+![Egyszeri bejelentkezés hozzáadása konfigurálása](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_screen.png)
 
-Azt is ellenőrizheti, hogy az SAML-válasz a jogcímek szerint átadott szerepköröket tekinti-e meg.
+Ellenőrizheti az SAML választ is, hogy a jogcímként átadott szerepkörök et láthassa.
 
-![Egyszeri bejelentkezéses Hozzáadás konfigurálása](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
+![Egyszeri bejelentkezés hozzáadása konfigurálása](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
 
-További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../active-directory-saas-access-panel-introduction.md).
+A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](../active-directory-saas-access-panel-introduction.md)
 
 ## <a name="additional-resources"></a>További források
 
-* [Kiépítés konfigurálása Microsoft Graph API-k használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
-* [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](tutorial-list.md)
+* [A kiépítés konfigurálása a Microsoft Graph API-k használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

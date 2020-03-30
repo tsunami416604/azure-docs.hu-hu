@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: felhasználói kiépítés a ThousandEyes – Azure AD'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a ThousandEyes.
+title: 'Oktatóanyag: A ThousandEyes felhasználói kiépítése – Azure AD'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a ThousandEyes felhasználói fiókok automatikus kiépítésére és kiépítésének kiépítésének kiépítésével.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,87 +16,87 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d87cffce636146eac3e557670ffc4fb2fc34ae38
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062880"
 ---
-# <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ThousandEyes konfigurálása
+# <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Oktatóanyag: A ThousandEyes konfigurálása automatikus felhasználói kiépítéshez
 
-Ennek az oktatóanyagnak a célja, hogy megmutassa a ThousandEyes és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a ThousandEyes. 
+Ez az oktatóanyag célja, hogy megmutassa a ThousandEyes és az Azure AD által végrehajtandó lépéseket a felhasználói fiókok automatikus kiépítéséhez és a felhasználói fiókok azure-ad-ról ThousandEyes-ra történő automatikus kiépítéséhez és kiépítésének kiteljesítéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
-* Azure Active Directory-bérlő
-* Egy ThousandEyes-bérlő a [standard csomaggal](https://www.thousandeyes.com/pricing) vagy jobb engedélyezéssel 
-* Rendszergazdai jogosultságokkal rendelkező ThousandEyes felhasználói fiók 
+* Egy Azure Active Directory-bérlő
+* A ThousandEyes bérlő a [Standard terv](https://www.thousandeyes.com/pricing) vagy jobban engedélyezve 
+* A ThousandEyes rendszergazdai engedélyekkel rendelkező felhasználói fiókja 
 
 > [!NOTE]
-> Az Azure AD-kiépítés integrációja a [THOUSANDEYES scim API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK)-ra támaszkodik, amely ThousandEyes-csapatok számára érhető el a standard csomag vagy jobb.
+> Az Azure AD-kiépítési integráció a [ThousandEyes SCIM](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK)API-t, amely elérhető a ThousandEyes csapatok a standard csomag vagy annál jobb.
 
-## <a name="assigning-users-to-thousandeyes"></a>Felhasználók kiosztása a ThousandEyes
+## <a name="assigning-users-to-thousandeyes"></a>Felhasználók hozzárendelése a ThousandEyes-hoz
 
-Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek. 
+Az Azure Active Directory a "hozzárendelések" nevű koncepciót használja annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói fiók kiépítése, csak a felhasználók és csoportok, amelyek "hozzárendelt" egy alkalmazás az Azure AD-ben szinkronizálva van. 
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a ThousandEyes alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a ThousandEyes-alkalmazáshoz:
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-ben mely felhasználók és/vagy csoportok képviselik azon felhasználókat, akiknek hozzáférésre van szükségük a ThousandEyes alkalmazáshoz. Miután úgy döntött, akkor hozzá ezeket a felhasználókat a ThousandEyes app az alábbi utasításokat itt:
 
-[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+[Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-thousandeyes"></a>Fontos Tippek a felhasználók ThousandEyes való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-thousandeyes"></a>Fontos tippek a felhasználók ThousandEyes-hoz való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a ThousandEyes a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van hozzárendelve ThousandEyes a létesítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor ThousandEyes rendel hozzá egy felhasználóhoz, ki kell választania a **felhasználói** szerepkört vagy egy másik érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkör nem működik a kiépítés során, és ezek a felhasználók kimaradnak.
+* Amikor egy felhasználót a ThousandEyes-hoz rendel, ki kell **választania** a Felhasználói szerepkört, vagy egy másik érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkör nem működik a kiépítéshez, és ezek a felhasználók kimaradnak.
 
-## <a name="configuring-user-provisioning-to-thousandeyes"></a>A felhasználók üzembe helyezésének beállítása a ThousandEyes 
+## <a name="configuring-user-provisioning-to-thousandeyes"></a>Felhasználói kiépítés konfigurálása a ThousandEyes rendszerbe 
 
-Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók létesítési API-hoz való csatlakoztatásának és a kiépítési szolgáltatás konfigurálásának az Azure AD-beli felhasználó-és ThousandEyes alapján történő létrehozásához, frissítéséhez és letiltásához. .
+Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók létesítési API-jával való csatlakoztatásán, valamint a hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához az Azure-fiókok hozásához, frissítéséhez és letiltásához az Azure AD-ben a felhasználó- és csoporthozzárendelés alapján. .
 
 > [!TIP]
-> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a ThousandEyes, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Az [Azure Portalon](https://portal.azure.com)található utasításokat követve engedélyezheti az SAML-alapú egyszeri bejelentkezést a ThousandEyes számára. Egyszeri bejelentkezés konfigurálható az automatikus kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
 
-### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása az Azure AD-beli ThousandEyes
+### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>A Felhasználói fiókok automatikus kiépítésének konfigurálása a ThousandEyes szolgáltatásba az Azure AD-ben
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg az **Azure Active Directory > Vállalati alkalmazások > az összes alkalmazás** szakaszt.
 
-2. Ha már konfigurálta a ThousandEyes az egyszeri bejelentkezéshez, keresse meg a ThousandEyes-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **ThousandEyes** az alkalmazás-gyűjteményben. Válassza a ThousandEyes lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
+2. Ha már beállította ThousandEyes egyszeri bejelentkezés, keresse meg a példány thousandEyes a keresési mezőben. Ellenkező esetben válassza **a Hozzáadás** és keresés **thousandEyes** az alkalmazás galériában. Válassza ki ThousandEyes a keresési eredmények között, és add hozzá a listát az alkalmazások.
 
-3. Válassza ki a ThousandEyes példányát, majd válassza a **kiépítés** lapot.
+3. Válassza ki a ThousandEyes példányát, majd válassza **a Kiépítés** lapot.
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![ThousandEyes kiépítés](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a ThousandEyes fiókja által generált **OAuth tulajdonosi jogkivonatot** (a ThousandEyes fiók **profilja** szakaszban találhatja meg és generálhatja a jogkivonatot).
+5. Az **Admin Hitelesítő adatok** szakaszban adja meg a ThousandEyes fiókja által létrehozott **OAuth Bearer Token-t** (megtalálhatja és vagy létrehozhat egy tokent a ThousandEyes **fiókprofil** szakaszában).
 
     ![ThousandEyes kiépítés](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
-6. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a ThousandEyes-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a ThousandEyes-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra az 5. lépéssel.
+6. Az Azure Portalon kattintson a **Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a ThousandEyes alkalmazáshoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a ThousandEyes fiók rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra az 5.
 
-7. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az értesítő e-mail-értesítéseket az **értesítési e-mail** mezőben, és jelölje be az "e-mail-értesítés küldése hiba esetén" jelölőnégyzetet.
+7. Írja be annak a személynek vagy csoportnak az e-mail címét, akinek kiépítési hibaértesítéseket kell kapnia az **Értesítési e-mail** mezőben, és jelölje be a "E-mail értesítés küldése hiba esetén" jelölőnégyzetet.
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
-9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a ThousandEyes**lehetőséget.
+9. A Leképezések csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a ThousandEyes szolgáltatással**lehetőséget.
 
-10. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az ThousandEyes-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ThousandEyes felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+10. Az **Attribútum-leképezések** szakaszban tekintse át az Azure AD és ThousandEyes között szinkronizált felhasználói attribútumokat. Az **egyező** tulajdonságokként kiválasztott attribútumok a ThousandEyes felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások véglegesítéséhez kattintson a Mentés gombra.
 
-11. Az Azure AD-kiépítési szolgáltatás ThousandEyes való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
+11. Az Azure AD-létesítési szolgáltatás engedélyezéséhez thousandEyes, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban
 
-12. Kattintson a **Save** (Mentés) gombra.
+12. Kattintson a **Mentés** gombra.
 
-Ez a művelet elindítja a felhasználók és csoportok szakaszban ThousandEyes rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz használatával figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által végrehajtott összes műveletet leírják.
+Ez a művelet elindítja a felhasználók és/vagy csoportok hozrendelt ThousandEyes a felhasználók és csoportok szakaszban a kezdeti szinkronizálást. A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg a szolgáltatás fut. A Szinkronizálás **részletei** szakasz ban figyelheti az előrehaladást, és követheti a kiépítési tevékenységnaplókra mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)

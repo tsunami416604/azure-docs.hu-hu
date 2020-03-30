@@ -1,6 +1,6 @@
 ---
-title: Zeppelin notebookok & Apache Spark cluster – Azure HDInsight
-description: Részletes útmutató a Apache Spark-fürtökkel rendelkező Zeppelin notebookok Azure HDInsight való használatához.
+title: Zeppelin notebookok & Apache Spark-fürt – Azure HDInsight
+description: Részletes útmutatást a Zeppelin-jegyzetfüzetek Apache Spark-fürtökkel való használatához az Azure HDInsightban.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598272"
 ---
-# <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin notebookok használata Apache Spark-fürttel az Azure HDInsight
+# <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebookok használata Apache Spark-fürtökön az Azure HDInsight rendszerében
 
-A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppelin.apache.org/) notebookok, amelyek [Apache Spark](https://spark.apache.org/) feladatok futtatására használhatók. Ebből a cikkből megtudhatja, hogyan használhatja a Zeppelin notebookot egy HDInsight-fürtön.
+A HDInsight Spark-fürtök [apache Zeppelin-jegyzetfüzeteket](https://zeppelin.apache.org/) tartalmaznak, amelyek segítségével [Apache Spark-feladatokat](https://spark.apache.org/) futtathat. Ebben a cikkben megtudhatja, hogyan használhatja a Zeppelin-jegyzetfüzetet egy HDInsight-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* A fürtök elsődleges tárolójának URI-sémája. Ez `wasb://` az Azure Blob Storage, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` számára Azure Data Lake Storage Gen1. Ha a biztonságos átvitel engedélyezve van a Blob Storage számára, akkor az URI `wasbs://`.  További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../../storage/common/storage-require-secure-transfer.md) .
+* A fürtök elsődleges tárolóURI-séma. Ez az `wasb://` Azure Blob `abfs://` Storage, az Azure Data `adl://` Lake Storage Gen2 vagy az Azure Data Lake Storage Gen1 esetében lesz. Ha a blob storage biztonságos átvitele `wasbs://`engedélyezve van, az URI lesz.  További információ: [Biztonságos átvitel megkövetelése az Azure Storage-ban.](../../storage/common/storage-require-secure-transfer.md)
 
-## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin-jegyzetfüzet elindítása
+## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin notebook indítása
 
-1. A Spark-fürt **áttekintése**lapon válassza ki a **Zeppelin jegyzetfüzet** elemet a **fürt irányítópultján**. Adja meg a fürt rendszergazdai hitelesítő adatait.  
+1. A Spark-fürt **áttekintése területen**válassza a **Zeppelin-jegyzetfüzetet** **a Fürt irányítópultjai**között. Adja meg a fürt rendszergazdai hitelesítő adatait.  
 
    > [!NOTE]  
-   > A következő URL-címet a böngészőben is elérheti, ha megnyithatja a Zeppelin jegyzetfüzetet a fürthöz. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
+   > A fürtzeppelin-jegyzetfüzetét úgy is elérheti, hogy megnyitja a következő URL-címet a böngészőben. Cserélje le a **CLUSTERNAME-t** a fürt nevére:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Hozzon létre új notebookot. A fejléc panelen navigáljon a **jegyzetfüzet** > **új Megjegyzés létrehozása**elemre.
+2. Hozzon létre új notebookot. A fejlécablakban keresse meg a Jegyzetfüzet Új jegyzet létrehozása című **elemet.** > **Create new note**
 
-    ![Új Zeppelin-jegyzetfüzet létrehozása](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Új Zeppelin-jegyzetfüzet létrehozása")
+    ![Új Zeppelin notebook létrehozása](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Új Zeppelin notebook létrehozása")
 
-    Adja meg a jegyzetfüzet nevét, majd válassza a **Megjegyzés létrehozása**lehetőséget.
+    Adja meg a jegyzetfüzet nevét, majd válassza a **Jegyzet létrehozása**lehetőséget.
 
-3. Győződjön meg arról, hogy a jegyzetfüzet fejléce csatlakoztatott állapotot mutat. Ezt a jobb felső sarokban található zöld pont jelöli.
+3. Győződjön meg arról, hogy a jegyzetfüzet fejlécében látható a csatlakoztatott állapot. Egy zöld pont jelöli a jobb felső sarokban.
 
     ![Zeppelin notebook állapota](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin notebook állapota")
 
-4. Töltse be a mintaadatokat egy ideiglenes táblába. Amikor létrehoz egy Spark-fürtöt a HDInsight-ben, a rendszer átmásolja a minta adatfájlt (`hvac.csv`) a `\HdiSamples\SensorSampleData\hvac`alatt található társított Storage-fiókba.
+4. Töltse be a mintaadatokat egy ideiglenes táblába. Amikor létrehoz egy Spark-fürtöt a HDInsightban, `hvac.csv`a mintaadatfájl `\HdiSamples\SensorSampleData\hvac`a rendszer a társított tárfiókba másolja a programot.
 
-    Illessze be a következő kódrészletet az új jegyzetfüzetben alapértelmezés szerint létrehozott üres bekezdésbe.
+    Az új jegyzetfüzetben alapértelmezés szerint létrehozott üres bekezdésbe illessze be a következő kódrészletet.
 
     ```scala
     %livy2.spark
@@ -71,99 +71,99 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
     hvac.registerTempTable("hvac")
     ```
 
-    Nyomja le a **SHIFT + ENTER** billentyűkombinációt, vagy kattintson a bekezdés **Lejátszás** gombjára a kódrészlet futtatásához. A bekezdés jobb oldali sarkában lévő állapotnak a kész, FÜGGŐben lévő, befejezett értékűre kell mutatnia. A kimenet az azonos bekezdés alján jelenik meg. A képernyőkép a következőhöz hasonlóan néz ki:
+    Nyomja **le a SHIFT + ENTER billentyűkombinációt,** vagy válassza a szövegkódrészlet futtatásához a bekezdés **Lejátszás** gombját. A bekezdés jobb sarkában lévő állapotnak a READY, PENDING, RUNNING-ról BEFEJEZETT állapotba kell lépnie. A kimenet ugyanannak a bekezdésnek az alján jelenik meg. A képernyőkép a következőképpen néz ki:
 
     ![Ideiglenes tábla létrehozása nyers adatokból](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Ideiglenes tábla létrehozása nyers adatokból")
 
-    Az egyes bekezdésekhez címet is megadhat. A bekezdés jobb oldali sarkában válassza a **Beállítások** ikont (lánckerék), majd válassza a **title (cím megjelenítése**) lehetőséget.  
+    Az egyes bekezdések hez címet is megadhat. A bekezdés jobb sarkában válassza a **Beállítások** ikont (lánckerék), majd a **Cím megjelenítése**lehetőséget.  
 
     > [!NOTE]  
-    > % spark2-értelmező nem támogatott a Zeppelin jegyzetfüzetekben az összes HDInsight-verzióban, és a (z)% sh tolmács nem támogatott a HDInsight 4,0-től kezdődően.
+    > A(z) %spark2 értelmező nem támogatott a Zeppelin-jegyzetfüzetekben az összes HDInsight-verzióban, és a HDInsight 4.0-tól kezdve a%sh értelmező nem támogatott.
 
-5. Most már futtathatja a Spark SQL-utasításokat a `hvac` táblán. Illessze be a következő lekérdezést egy új bekezdésbe. A lekérdezés lekérdezi az építési azonosítót, valamint a cél és a tényleges hőmérséklet közötti különbséget egy adott dátumon. Nyomja le a **SHIFT + ENTER**billentyűkombinációt.
+5. Most már futtathatja a Spark `hvac` SQL-utasítások az asztalon. Illessze be a következő lekérdezést egy új bekezdésbe. A lekérdezés lekéri az épület azonosítóját és a cél és a tényleges hőmérséklet közötti különbséget az egyes épületek egy adott napon. Nyomja **le a SHIFT + ENTER billentyűkombinációt.**
 
     ```sql
     %sql
     select buildingID, (targettemp - actualtemp) as temp_diff, date from hvac where date = "6/1/13"
     ```  
 
-    Az elején található **% SQL** -utasítás azt jelzi, hogy a jegyzetfüzet a Livy Scala tolmácsot használja.
+    A **%sql** utasítás az elején megmondja a jegyzetfüzetnek, hogy használja a Livy Scala értelmezőt.
 
-6. Válassza a **oszlopdiagram** ikont a Megjelenítés módosításához.  a **menüsáv**kiválasztása után megjelenő **Beállítások**lehetővé teszik a **kulcsok**és **értékek**kiválasztását.  Az alábbi képernyőfelvételen a kimenet látható.
+6. A **sávdiagram** ikonra a megjelenítés módosításához kattintson.  **beállítások**, amelyek a **Sávdiagram**kiválasztása után jelennek meg , lehetővé teszi a **Billentyűk**és **az Értékek**lehetőséget.  A következő képernyőkép a kimenetet mutatja.
 
-    ![Spark SQL-utasítás futtatása a notebook1 használatával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spark SQL-utasítás futtatása a notebook1 használatával")
+    ![Spark SQL-utasítás futtatása a notebookhasználatával1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spark SQL-utasítás futtatása a notebookhasználatával1")
 
-7. A Spark SQL-utasításokat a lekérdezésben szereplő változók használatával is futtathatja. A következő kódrészletből megtudhatja, hogyan definiálhat egy változót a lekérdezésben a lekérdezésben szereplő lehetséges értékekkel `Temp`. A lekérdezés első futtatásakor a legördülő menü automatikusan kitöltődik a változóhoz megadott értékekkel.
+7. Spark SQL-utasítások is futtathatók a lekérdezés változói használatával. A következő kódrészlet bemutatja, hogyan `Temp`definiáljon egy változót a lekérdezésben azokkal a lehetséges értékekkel, amelyekkel le szeretne kérdezni. A lekérdezés első futtatásakor a rendszer automatikusan feltölt egy legördülő menüt a változóhoz megadott értékekkel.
 
     ```sql
     %sql  
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    Illessze be ezt a kódrészletet egy új bekezdésbe, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt. Ezután válassza a **65** elemet a **temp** legördülő listából.
+    Illessze be ezt a kódrészletet egy új bekezdésbe, és nyomja **le a SHIFT + ENTER billentyűkombinációt.** Ezután válassza a **65-öt** a **Temp** legördülő listából.
 
-8. Válassza a **oszlopdiagram** ikont a Megjelenítés módosításához.  Ezután válassza a **Beállítások** lehetőséget, és végezze el a következő módosításokat:
+8. A **sávdiagram** ikonra a megjelenítés módosításához kattintson.  Ezután válassza ki a **beállításokat,** és hajtsa végre a következő módosításokat:
 
-   * **Csoportok:**  **Targettemp**hozzáadása.  
-   * **Értékek:** 1. Törlés **dátuma**.  2. **Temp_diff**hozzáadása.  3.  Módosítsa a gyűjtőt az **összegből** az **AVG**értékre.  
+   * **Csoportok:**  Adja hozzá **a targettemp**ot.  
+   * **Értékek:** 1. A **dátum**eltávolítása.  2. Adja hozzá **temp_diff.**  3.  Módosítsa a beszerzési szolgáltatót **SZUM-ról** **AVG-re.**  
 
-     Az alábbi képernyőfelvételen a kimenet látható.
+     A következő képernyőkép a kimenetet mutatja.
 
-     ![Spark SQL-utasítás futtatása a notebook2 használatával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Spark SQL-utasítás futtatása a notebook2 használatával")
+     ![Spark SQL-utasítás futtatása a notebookhasználatával2](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Spark SQL-utasítás futtatása a notebookhasználatával2")
 
-## <a name="how-do-i-use-external-packages-with-the-notebook"></a>A Hogyan külső csomagokat használ a jegyzetfüzettel?
+## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Hogyan használhatom a külső csomagokat a notebookkal?
 
-A HDInsight Apache Spark-fürtben lévő Zeppelin notebookot úgy is konfigurálhatja, hogy olyan külső, Közösség által biztosított csomagokat használjon, amelyek nem szerepelnek a fürtben. A [Maven-tárházban](https://search.maven.org/) megkeresheti a rendelkezésre álló csomagok teljes listáját. Lekérheti az egyéb forrásokból származó elérhető csomagok listáját is. A közösségi hozzájárulású csomagok teljes listája például a [Spark-csomagokban](https://spark-packages.org/)érhető el.
+A Zeppelin-jegyzetfüzetet a HDInsight-alapú Apache Spark-fürtben konfigurálhatja olyan külső, közösség által készített csomagok használatára, amelyek nem szerepelnek a fürtben. A [Maven-tárházban](https://search.maven.org/) megkeresheti a rendelkezésre álló csomagok teljes listáját. Más forrásokból is beszerezheti a rendelkezésre álló csomagok listáját. Például a közösség által készített csomagok teljes listája elérhető a [Spark-csomagokban.](https://spark-packages.org/)
 
-Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot a Jupyter notebook használatával.
+Ebben a cikkben láthatja, hogyan használhatja a [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot a Jupyter notebook.
 
-1. Nyissa meg a tolmács beállításait. A jobb felső sarokban válassza ki a bejelentkezett felhasználó nevét, majd válassza a **tolmács**lehetőséget.
+1. Nyissa meg a tolmácsbeállításokat. A jobb felső sarokban jelölje ki a bejelentkezett felhasználónevet, majd válassza a **Tolmács**lehetőséget.
 
-    ![Tolmács elindítása](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Struktúra kimenete")
+    ![Tolmács indítása](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive kimenet")
 
-2. Görgessen a **livy2**, majd válassza a **Szerkesztés**lehetőséget.
+2. Görgessen **livy2**lapul, majd válassza **a szerkesztés**lehetőséget.
 
-    ![Tolmács beállításai1 módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Tolmács beállításai1 módosítása")
+    ![Értelmező beállításainak módosítása1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Értelmező beállításainak módosítása1")
 
-3. Navigáljon a Key `livy.spark.jars.packages`elemre, és állítsa be az értékét a következő formátumban: `group:id:version`. Ha tehát a [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot szeretné használni, a kulcs értékét `com.databricks:spark-csv_2.10:1.4.0`értékre kell állítania.
+3. Lépjen a `livy.spark.jars.packages`billentyűre, és állítsa `group:id:version`be az értékét a formátumban. Tehát, ha a [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot szeretné használni, a kulcs `com.databricks:spark-csv_2.10:1.4.0`értékét a értékére kell állítania.
 
-    ![Tolmács settings2 módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Tolmács settings2 módosítása")
+    ![Értelmező beállításainak módosítása2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Értelmező beállításainak módosítása2")
 
-    Válassza a **Mentés** lehetőséget, majd kattintson az **OK gombra** a Livy-értelmező újraindításához.
+    Válassza a **Mentés,** majd az **OK gombot** a Livy-értelmező újraindításához.
 
-4. Ha szeretné megismerni, hogyan lehet megérkezni a fent megadott kulcs értékeként, itt találja a következőt:.
+4. Ha meg szeretné érteni, hogyan lehet megérkezni a fent megadott kulcs értékét, itt van, hogyan.
 
-    a. Keresse meg a csomagot a Maven-tárházban. Ehhez a cikkhez a [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)fájlt használtuk.
+    a. Keresse meg a csomagot a Maven repositoryban. Ehhez a cikkhez [használtunk spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
 
-    b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId**és a **verzió**értékeit.
+    b. A tárházból gyűjtse össze a **GroupId**, **ArtifactId**és **Version**értékét.
 
-    ![Külső csomagok használata Jupyter notebooktal](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Külső csomagok használata Jupyter notebooktal")
+    ![Külső csomagok használata a Jupyter notebookkal](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Külső csomagok használata a Jupyter notebookkal")
 
-    c. Összefűzi a három értéket kettősponttal elválasztva ( **:** ).
+    c. A három érték összefűzése kettősponttal (**: )** elválasztva
 
         com.databricks:spark-csv_2.10:1.4.0
 
-## <a name="where-are-the-zeppelin-notebooks-saved"></a>Hol lesznek mentve a Zeppelin jegyzetfüzetek?
+## <a name="where-are-the-zeppelin-notebooks-saved"></a>Hol vannak a Zeppelin notebookok mentve?
 
-A Zeppelin jegyzetfüzetek a fürt átjárócsomópontokkal lesznek mentve. Tehát ha törli a fürtöt, a jegyzetfüzetek is törlődnek. Ha szeretné megőrizni a jegyzetfüzeteket a későbbi használat érdekében más fürtökön, exportálnia kell azokat a feladatok futtatása után. Jegyzetfüzet exportálásához válassza ki az **Exportálás** ikont az alábbi képen látható módon.
+A Zeppelin notebookok a fürt fejnokba kerülnek. Így ha törli a fürtöt, a jegyzetfüzetek is törlődnek. Ha meg szeretné őrizni a jegyzetfüzeteket későbbi használatra más fürtökön, a feladatok futtatása után exportálnia kell őket. Jegyzetfüzet exportálásához jelölje ki az **Exportálás** ikont az alábbi képen látható módon.
 
 ![Jegyzetfüzet letöltése](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "A jegyzetfüzet letöltése")
 
-Ekkor a rendszer a jegyzetfüzetet JSON-fájlként menti a letöltési helyen.
+Ezzel a jegyzetfüzetet JSON-fájlként menti a letöltési helyre.
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>A Shiro használata a Zeppelin-tolmácsokhoz való hozzáférés konfigurálásához Enterprise Security Package (ESP) fürtökben
-A fentiekben leírtaknak megfelelően a `%sh` tolmács nem támogatott a HDInsight 4,0-től kezdődően. Továbbá, mivel `%sh` értelmező olyan biztonsági problémákat is bevezet, mint például a parancssori felületi parancsok használatával történő hozzáférés-vezérlés, a HDInsight 3,6 ESP-fürtökből is el lett távolítva. Ez azt jelenti, hogy `%sh` tolmács nem érhető el, ha az **új Megjegyzés létrehozása** vagy a tolmács felhasználói felülete alapértelmezés szerint lehetőségre kattint. 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>A Zeppelin-tolmácsok hozzáférésének konfigurálása a vállalati biztonsági csomag (ESP) fürtjein shiro használatával
+Ahogy fentebb `%sh` említettük, a HDInsight 4.0-tól nem támogatott a tolmács. Továbbá, mivel `%sh` az értelmező potenciális biztonsági problémákat vet be, például a parancsrendszeri parancsokat használó kulcslapok elérését, a HDInsight 3.6 ESP-fürtökből is eltávolították. Ez `%sh` azt jelenti, hogy az értelmező nem érhető el, ha az **Új jegyzet létrehozása** gombra vagy alapértelmezés szerint a Tolmács felhasználói felületére kattint. 
 
-A Kiemelt jogosultságú tartományi felhasználók a `Shiro.ini` fájlt használhatják a tolmács felhasználói felületéhez való hozzáférés szabályozására. Így csak ezek a felhasználók hozhatnak létre új `%sh` tolmácsokat, és engedélyeket állíthatnak be az egyes új `%sh` tolmácsok számára. A `shiro.ini` fájl használatával történő hozzáférés vezérléséhez kövesse az alábbi lépéseket:
+A kiemelt jogosultságú `Shiro.ini` tartományi felhasználók a fájl segítségével szabályozhatják a értelmező felhasználói felületéhez való hozzáférést. Így csak ezek a `%sh` felhasználók hozhatnak létre új `%sh` tolmácsokat, és állíthatnak be engedélyeket minden egyes új értelmezőhöz. A fájllal `shiro.ini` való hozzáférés szabályozásához kövesse az alábbi lépéseket:
 
-1. Adjon meg egy új szerepkört egy meglévő tartományi csoport neve alapján. A következő példában `adminGroupName` a Kiemelt felhasználók csoportja a HRE-ben. Ne használjon speciális karaktereket vagy szóközöket a csoport nevében. Azok a karakterek, amelyek után a `=` megadja a szerepkör engedélyeit. `*` azt jelenti, hogy a csoport teljes körű engedélyekkel rendelkezik.
+1. Új szerepkör definiálása meglévő tartománycsoport név használatával. A következő példában `adminGroupName` az AAD kiemelt felhasználók csoportja. Ne használjon speciális karaktereket vagy szóközöket a csoport nevében. Az utána `=` lévő karakterek adják meg a szerepkörhöz szükséges engedélyeket. `*`azt jelenti, hogy a csoport teljes engedélyekkel rendelkezik.
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. Adja hozzá az új szerepkört a Zeppelin-tolmácsokhoz való hozzáféréshez. A következő példában a `adminGroupName` összes felhasználója hozzáférést kap a Zeppelin-tolmácsokhoz, és új tolmácsokat tud létrehozni. `roles[]`zárójelek között több szerepkört is beállíthat, vesszővel elválasztva. Ezután a szükséges engedélyekkel rendelkező felhasználók hozzáférhetnek a Zeppelin-tolmácsokhoz.
+2. Adja hozzá a Zeppelin tolmácsokhoz való hozzáférés új szerepét. A következő példában minden `adminGroupName` felhasználó hozzáférést kap a Zeppelin tolmácsokhoz, és új tolmácsokat hozhat létre. Több szerepkört is elhelyezhet `roles[]`a zárójelek között, vesszővel elválasztva. Ezután a szükséges engedélyekkel rendelkező felhasználók hozzáférhetnek a Zeppelin tolmácsokhoz.
 
     ```
     [urls]
@@ -172,76 +172,76 @@ A Kiemelt jogosultságú tartományi felhasználók a `Shiro.ini` fájlt haszná
 
 ## <a name="livy-session-management"></a>Livy munkamenet-kezelés
 
-Ha a Zeppelin-jegyzetfüzet első kód bekezdését futtatja, a rendszer egy új Livy-munkamenetet hoz létre a HDInsight Spark-fürtben. Ez a munkamenet az összes később létrehozott Zeppelin-jegyzetfüzetben meg van osztva. Ha valamilyen oknál fogva a Livy-munkamenetet elveszik (a fürt újraindítása stb.), nem fog tudni futtatni feladatokat a Zeppelin jegyzetfüzetből.
+Amikor futtatja az első kódbekezdést a Zeppelin-jegyzetfüzetben, egy új Livy-munkamenet jön létre a HDInsight Spark-fürtben. Ez a munkamenet meg van osztva az összes Zeppelin-jegyzetfüzetközött, amelyet később létrehoz. Ha valamilyen okból a Livy-munkamenet meghal (fürt újraindítása, és így tovább), akkor nem fogja tudni futtatni a feladatokat a Zeppelin notebook.
 
-Ilyen esetben az alábbi lépéseket kell elvégeznie, mielőtt elkezdené a feladatok futtatását egy Zeppelin-jegyzetfüzetből.  
+Ebben az esetben a következő lépéseket kell végrehajtania, mielőtt megkezdené a feladatok futtatását egy Zeppelin notebookból.  
 
-1. Indítsa újra a Livy-tolmácsot a Zeppelin jegyzetfüzetből. Ehhez nyissa meg a tolmács beállításait úgy, hogy kiválasztja a bejelentkezett felhasználó nevét a jobb felső sarokban, majd kiválasztja a **tolmács**elemet.
+1. Indítsa újra a Livy értelmezőt a Zeppelin notebookból. Ehhez nyissa meg a tolmácsbeállításokat a bejelentkezett felhasználónév kiválasztásával a jobb felső sarokban, majd válassza a **Tolmács**lehetőséget.
 
-    ![Tolmács elindítása](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Struktúra kimenete")
+    ![Tolmács indítása](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive kimenet")
 
-2. Görgessen a **livy2**, majd válassza az **Újraindítás**lehetőséget.
+2. Görgessen **livy2,** majd válassza **az újraindítás**lehetőséget.
 
-    ![A Livy-értelmező újraindítása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "A Zeppelin-tolmács újraindítása")
+    ![A Livy-értelmező újraindítása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Indítsa újra a Zeppelin tolmácsot")
 
-3. Kód cellájának futtatása meglévő Zeppelin-jegyzetfüzetből. Ez létrehoz egy új Livy-munkamenetet a HDInsight-fürtben.
+3. Futtasson egy kódcellát egy meglévő Zeppelin notebookból. Ez létrehoz egy új Livy-munkamenetet a HDInsight-fürtben.
 
 ## <a name="general-information"></a>Általános információk
 
 ### <a name="validate-service"></a>Szolgáltatás ellenőrzése
 
-A szolgáltatás Ambari való ellenőrzéséhez navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, ahol a CLUSTERNAME a fürt neve.
+Az Ambari szolgáltatásának érvényesítéséhez `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` keresse meg a CLUSTERNAME fürtnevét.
 
-A szolgáltatás parancssorból való érvényesítéséhez az SSH-t a fő csomóponthoz kell bejelentkeznie. Váltson a felhasználóra a Zeppelin-re a Command `sudo su zeppelin`használatával. Állapot parancsai:
+A szolgáltatás parancssorból történő érvényesítéséhez az SSH a főcsomópontra. Váltson a felhasználóra `sudo su zeppelin`zeppelinre a parancs segítségével. Állapotparancsok:
 
 |Parancs |Leírás |
 |---|---|
-|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|A szolgáltatás állapota.|
-|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Szolgáltatás verziója.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Szolgáltatás állapota.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|A szolgáltatás verziója.|
 |`ps -aux | grep zeppelin`|Azonosítsa a PID-t.|
 
-### <a name="log-locations"></a>Naplók helye
+### <a name="log-locations"></a>Naplóhelyek
 
 |Szolgáltatás |Útvonal |
 |---|---|
-|Zeppelin – kiszolgáló|/usr/hdp/current/zeppelin-server/|
+|zeppelin-szerver|/usr/hdp/current/zeppelin-server/|
 |Kiszolgálói naplók|/var/log/zeppelin|
-|Konfiguráció-értelmező, Shiro, site. XML, log4j|/usr/HDP/current/Zeppelin-Server/conf vagy/etc/Zeppelin/conf|
+|Konfigurációs értelmező, Shiro, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf or /etc/zeppelin/conf|
 |PID-könyvtár|/var/run/zeppelin|
 
-### <a name="enable-debug-logging"></a>A hibakeresési naplózást engedélyező
+### <a name="enable-debug-logging"></a>Hibakeresési naplózás engedélyezése
 
-1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, ahol a CLUSTERNAME a fürt neve.
+1. Keresse `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` meg, ahol a CLUSTERNAME a fürt neve.
 
-1. Navigáljon a **konfigurációk** > **Advanced Zeppelin-log4j-Properties** > **log4j_properties_content**.
+1. Keresse meg a **CONFIGS** > **Advanced zeppelin-log4j-properties** > **log4j_properties_content.**
 
-1. `log4j.appender.dailyfile.Threshold = INFO` módosítása `log4j.appender.dailyfile.Threshold = DEBUG`re.
+1. Módosítás `log4j.appender.dailyfile.Threshold = INFO` `log4j.appender.dailyfile.Threshold = DEBUG`a következőre.
 
-1. `log4j.logger.org.apache.zeppelin.realm=DEBUG`hozzáadása.
+1. Adja `log4j.logger.org.apache.zeppelin.realm=DEBUG`hozzá a bővítményt.
 
 1. Mentse a módosításokat, és indítsa újra a szolgáltatást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
-* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark bi-val: Interaktív adatelemzés a Spark használatával a HDInsightban az üzletiintelligencia-eszközökkel](apache-spark-use-bi-tools.md)
+* [Apache Spark gépi tanulással: Használja a Sparkot a HDInsightban az épület hőmérsékletének elemzéséhez a fűtés- és légtechnikai adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learningsegítségével: A Spark használata a HDInsightban az élelmiszer-ellenőrzési eredmények előrejelzéséhez](apache-spark-machine-learning-mllib-ipython.md)
+* [Webhelynapló-elemzés az Apache Spark használatával a HDInsightban](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 
-* [A IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Apache Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Az Apache Spark Scala alkalmazások létrehozásához és elküldéséhez használja az IntelliJ IDEA HDInsight eszközök beépülő modulját](apache-spark-intellij-tool-plugin.md)
+* [Az IntelliJ IDEA HDInsight eszközök beépülő moduljával távolról debugelje az Apache Spark alkalmazásokat](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [A Jupyter notebookhoz elérhető kernelek az Apache Spark-fürtHDInsighthoz](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

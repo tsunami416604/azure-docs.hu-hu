@@ -1,6 +1,6 @@
 ---
-title: Üzenet-átadási felület beállítása HPC-Azure Virtual Machineshoz | Microsoft Docs
-description: Ismerje meg, hogyan állíthatja be az MPI-t a HPC számára az Azure-ban.
+title: Üzenetátadási felület beállítása HPC-hez – Azure virtuális gépek | Microsoft dokumentumok
+description: Ismerje meg, hogyan állíthatja be az MPI-t a HPC-hez az Azure-ban.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023990"
 ---
-# <a name="set-up-message-passing-interface-for-hpc"></a>Üzenet küldési felületének beállítása HPC-hez
+# <a name="set-up-message-passing-interface-for-hpc"></a>Üzenetátadási felület beállítása a HPC-hez
 
-A Message Passing Interface (MPI) számítási feladatok a hagyományos HPC-munkaterhelések jelentős részét képezik. Az SR-IOV-kompatibilis VM-méretek az Azure-ban szinte bármilyen típusú MPI-t használhatnak. 
+Az MPI-számítási feladatok a hagyományos HPC-munkaterhelések jelentős részét képezik. Az SR-IOV lehetővé tette a virtuális gép méreteit az Azure-ban lehetővé teszi az MPI szinte bármilyen ízét használni. 
 
-Az MPI-feladatok virtuális gépeken való futtatásához partíciós kulcsokat (p-Keys) kell beállítani a bérlők között. A p-Key értékek meghatározásával kapcsolatos részletekért kövesse a [partíciós kulcsok felderítése](#discover-partition-keys) című szakasz lépéseit.
+MpI-feladatok futtatásához a virtuális gépeken partíciókulcsok (p-kulcsok) a bérlőn keresztül. Kövesse a [partíciókulcsok felderítése](#discover-partition-keys) szakaszban a p-kulcs értékek meghatározásával kapcsolatos részleteket.
 
 ## <a name="ucx"></a>UCX
 
-A [UCX](https://github.com/openucx/ucx) a legjobb teljesítményt nyújtja az IB-ben, és EGYÜTTMŰKÖDIK a MPICH és a OpenMPI.
+[Az UCX](https://github.com/openucx/ucx) a legjobb teljesítményt nyújtja az IB-n, és az MPICH-vel és az OpenMPI-vel működik.
 
 ```bash
 wget https://github.com/openucx/ucx/releases/download/v1.4.0/ucx-1.4.0.tar.gz
@@ -39,13 +39,13 @@ make -j 8 && make install
 
 ## <a name="openmpi"></a>OpenMPI
 
-Telepítse a UCX az előzőekben leírtak szerint.
+Telepítse az UCX-et a korábban leírtak szerint.
 
 ```bash
 sudo yum install –y openmpi
 ```
 
-OpenMPI létrehozása.
+Build OpenMPI.
 
 ```bash
 wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz
@@ -55,19 +55,19 @@ cd openmpi-4.0.0
 make -j 8 && make install
 ```
 
-Futtassa a OpenMPI.
+Futtasd le az OpenMPI-t.
 
 ```bash
 <ompi-install-path>/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
 ```
 
-Tekintse meg a fentiekben említett partíciós kulcsot.
+Ellenőrizze a partíció kulcsot, mint már említettük.
 
-## <a name="mpich"></a>MPICH
+## <a name="mpich"></a>MPICH KÖZÖTT
 
-Telepítse a UCX az előzőekben leírtak szerint.
+Telepítse az UCX-et a korábban leírtak szerint.
 
-MPICH létrehozása.
+Build MPICH.
 
 ```bash
 wget https://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz
@@ -83,11 +83,11 @@ MPICH futtatása.
 <mpich-install-path>/bin/mpiexec -n 2 -hostfile ~/hostfile -env UCX_IB_PKEY=0x0003 -bind-to hwthread ./osu_latency
 ```
 
-Tekintse meg a fentiekben említett partíciós kulcsot.
+Ellenőrizze a partíció kulcsot, mint már említettük.
 
 ## <a name="mvapich2"></a>MVAPICH2
 
-MVAPICH2 létrehozása.
+Build MVAPICH2.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
@@ -97,15 +97,15 @@ cd mvapich2-2.3
 make -j 8 && make install
 ```
 
-MVAPICH2 futtatása.
+Az MVAPICH2 futtatása.
 
 ```bash
 <mvapich2-install-path>/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
 ```
 
-## <a name="platform-mpi-community-edition"></a>Platform MPI Community Edition
+## <a name="platform-mpi-community-edition"></a>Platform MPI közösségi kiadás
 
-Telepítse a szükséges csomagokat a platform MPI-hez.
+Telepítse a platform MPI-hez szükséges csomagokat.
 
 ```bash
 sudo yum install libstdc++.i686
@@ -118,15 +118,15 @@ Kövesse a telepítési folyamatot.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[Töltse le az Intel MPI](https://software.intel.com/mpi-library/choose-download)-t.
+[Letöltés Intel MPI](https://software.intel.com/mpi-library/choose-download).
 
-Módosítsa a I_MPI_FABRICS környezeti változót a verziótól függően. Az Intel MPI 2018 esetén használja a `I_MPI_FABRICS=shm:ofa` és a 2019-es `I_MPI_FABRICS=shm:ofi`.
+A I_MPI_FABRICS-környezet változójának módosítása a verziótól függően. Az Intel MPI 2018,use `I_MPI_FABRICS=shm:ofa` és 2019 esetén használja a használatát. `I_MPI_FABRICS=shm:ofi`
 
-A folyamat kitűzése alapértelmezés szerint 15, 30 és 60 PPN megfelelően működik.
+A folyamatrögzítés alapértelmezés szerint megfelelően működik a 15, 30 és 60 PPN esetén.
 
-## <a name="osu-mpi-benchmarks"></a>OSU MPI-referenciaértékek
+## <a name="osu-mpi-benchmarks"></a>OSU MPI referenciaértékek
 
-[Töltse le a OSU MPI-referenciaértékeket](http://mvapich.cse.ohio-state.edu/benchmarks/) és a untar.
+[Letöltés OSU MPI benchmarkok](http://mvapich.cse.ohio-state.edu/benchmarks/) és untar.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -134,26 +134,26 @@ tar –xvf osu-micro-benchmarks-5.5.tar.gz
 cd osu-micro-benchmarks-5.5
 ```
 
-Teljesítménytesztek létrehozása egy adott MPI-könyvtár használatával:
+Teljesítménymutatók létrehozása egy adott MPI-könyvtár használatával:
 
 ```bash
 CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure 
 make
 ```
 
-Az MPI-referenciaértékek `mpi/` mappában találhatók.
+Az MPI-referenciaértékek a mappák alatt `mpi/` találhatók.
 
 
-## <a name="discover-partition-keys"></a>Partíciós kulcsok felderítése
+## <a name="discover-partition-keys"></a>Partíciókulcsok felderítése
 
-Az azonos bérlőn (rendelkezésre állási csoport vagy virtuálisgép-méretezési csoport) belüli más virtuális gépekkel való kommunikációhoz használható partíciós kulcsok (p-Keys) felderítése.
+Partíciókulcsok (p-kulcsok) a kommunikáció más virtuális gépekkel ugyanazon a bérlőn belül (availability set vagy virtuális gép méretezési csoport).
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 ```
 
-A kettő közül a nagyobb a bérlői kulcs, amelyet MPI-vel kell használni. Példa: Ha a következő a p-Keys, a 0x800b-t MPI-vel kell használni.
+A kettő közül a nagyobb a bérlői kulcs, amelyet mpi-vel kell használni. Példa: Ha a p-billentyűk a következők, akkor a 0x800b-t kell használni az MPI-vel.
 
 ```bash
 cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -162,14 +162,14 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 0x7fff
 ```
 
-Használja az alapértelmezett (0x7fff) partíciós kulcstól eltérő partíciót. A UCX a p-Key MSB törlését igényli. Például állítsa be a UCX_IB_PKEY as 0x000b for 0x800b.
+Használja az alapértelmezett (0x7fff) partíciókulcstól eltérő partíciókulcsot. Az UCX megköveteli a p-kulcs MSB-jének törlését. Állítsa be például UCX_IB_PKEY 0x000b-ként a 0x800b-hez.
 
-Azt is vegye figyelembe, hogy ha a bérlő (AVSet vagy VMSS) létezik, a PKEYs változatlan marad. Ez akkor is igaz, ha csomópontok lettek hozzáadva/törölve. Az új bérlők különböző PKEYs kapnak.
+Azt is vegye figyelembe, hogy mindaddig, amíg a bérlő (AVSet vagy VMSS) létezik, a PKEYs ugyanaz marad. Ez akkor is igaz, ha csomópontokat adnak hozzá/törölnek. Az új bérlők különböző PKEY-ket kapnak.
 
 
-## <a name="set-up-user-limits-for-mpi"></a>Felhasználói korlátok beállítása MPI-re
+## <a name="set-up-user-limits-for-mpi"></a>Felhasználói korlátok beállítása mpi-hez
 
-Felhasználói korlátok beállítása MPI-re.
+Felhasználói korlátok beállítása az MPI-hez.
 
 ```bash
 cat << EOF | sudo tee -a /etc/security/limits.conf
@@ -181,9 +181,9 @@ EOF
 ```
 
 
-## <a name="set-up-ssh-keys-for-mpi"></a>SSH-kulcsok beállítása MPI-hez
+## <a name="set-up-ssh-keys-for-mpi"></a>SSH-kulcsok beállítása mpi-hez
 
-Állítsa be az SSH-kulcsokat az azt igénylő MPI-típusokhoz.
+SSH-kulcsok beállítása az azt igénylő MPI-típusokhoz.
 
 ```bash
 ssh-keygen -f /home/$USER/.ssh/id_rsa -t rsa -N ''
@@ -196,8 +196,8 @@ chmod 600 /home/$USER/.ssh/authorized_keys
 chmod 644 /home/$USER/.ssh/config
 ```
 
-A fenti szintaxis azt feltételezi, hogy egy megosztott kezdőkönyvtár, más. ssh könyvtárat kell átmásolni az egyes csomópontokra.
+A fenti szintaxis megosztott kezdőkönyvtárat feltételez, különben az .ssh könyvtárat minden csomópontra át kell másolni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure-beli [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) -ről.
+További információ az Azure-beli [HPC-ről.](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)

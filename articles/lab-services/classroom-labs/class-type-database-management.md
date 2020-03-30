@@ -1,6 +1,6 @@
 ---
-title: Tesztkörnyezet létrehozása a kapcsolódó adatbázisok adatbázis-kezelésének megtanításához | Microsoft Docs
-description: Ismerje meg, hogyan állíthat be egy labort a viszonyítási adatbázisok kezelésének tanításához.
+title: Labor létrehozása a relációs adatbázisok adatbázis-kezelésének oktatására | Microsoft dokumentumok
+description: Ismerje meg, hogyan állíthat be egy labort a relációs adatbázisok kezelésének tanítására.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -14,65 +14,65 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
 ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469918"
 ---
-# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Tesztkörnyezet létrehozása a kapcsolódó adatbázisok adatbázis-kezelésének megtanításához
+# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Labor beállítása a relációs adatbázisok adatbázis-kezelésének tanítására
 
-Ez a cikk bemutatja, hogyan állíthat be egy labort egy alapszintű adatbázis-felügyeleti osztályhoz Azure Lab Servicesban. Az adatbázisok fogalmai az egyetemen bevezető tanfolyamok egyike. A Structured Query Language (SQL) egy nemzetközi szabvány. Az SQL a kapcsolatok adatbázis-kezelésének szabványos nyelve, beleértve az adatbázisok tartalmának hozzáadását, elérését és kezelését.  A legtöbb esetben a gyors feldolgozás, a bevált megbízhatóság, a könnyű használat és a rugalmasság jellemzi.
+Ez a cikk ismerteti, hogyan állíthat be egy tesztkörnyezet egy alapszintű adatbázisok felügyeleti osztály az Azure Lab Services. Adatbázisok fogalmak egyike a bevezető tanfolyamok tanított a legtöbb Computer Science osztályok az egyetemen. A strukturált lekérdezési nyelv (SQL) egy nemzetközi szabvány. Az SQL a kapcsolat-adatbázis-kezelés szabványos nyelve, beleértve az adatbázis tartalmának hozzáadását, elérését és kezelését.  Ez leginkább megjegyezte, a gyors feldolgozás, bizonyított megbízhatóság, könnyű, és a rugalmasság a használat.
 
-Ebben a cikkben bemutatjuk, hogyan állíthat be egy virtuálisgép-sablont egy olyan laborban, amely a MySQL adatbázis-kiszolgálóval és a SQL Server 2019-kiszolgálóval is rendelkezik.  A [MySQL](https://www.mysql.com/) egy szabadon elérhető, nyílt forráskódú, összehasonlítható adatbázis-kezelő rendszer (RDBMS).  A [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) a Microsoft RDBMS legújabb verziója.
+Ebben a cikkben bemutatjuk, hogyan állíthat be egy virtuálisgép-sablont egy laborban a MySQL Database Server és az SQL Server 2019 server segítségével.  [MySQL](https://www.mysql.com/) egy szabadon elérhető nyílt forráskódú relációs adatbázis-kezelő rendszer (RDBMS).  [Az SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) a Microsoft RDBMS legújabb verziója.
 
-## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
+## <a name="lab-configuration"></a>Labor konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
+A tesztkörnyezet beállításához azure-előfizetésre és laborfiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené. Miután megkapja az Azure-előfizetést, létrehozhat egy új laborfiókot az Azure Lab Servicesben. Az új tesztkörnyezet-fiók létrehozásáról az [Oktatóanyag a Laborfiók beállítása](tutorial-setup-lab-account.md)című témakörben talál további információt.  Meglévő tesztkörnyezet-fiókot is használhat.
 
-### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
+### <a name="lab-account-settings"></a>Laborfiók beállításai
 
-Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért lásd: a [piactér-rendszerképek elérhetővé tétele a labor-készítők](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)számára.
+Engedélyezze az alábbi táblázatban leírt beállításokat a tesztkörnyezet-fiókhoz. A marketplace-lemezképek engedélyezéséről a [Piactér-képek megadása a laborkészítők számára elérhető képtárban](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)című témakörben talál további információt.
 
-| Tesztkörnyezet-fiók beállítása | Utasítások |
+| Laborfiók beállítása | Utasítások |
 | ------------------- | ------------ |
-|Piactéri rendszerkép| Engedélyezze a "SQL Server 2019 standard on Windows Server 2019" rendszerképet a labor-fiókjában való használatra.|
+|Piactér képe| Engedélyezze az "SQL Server 2019 Standard on Windows Server 2019" lemezképet a laborfiókban való használatra.|
 
-### <a name="lab-settings"></a>Tesztkörnyezet beállításai
+### <a name="lab-settings"></a>Labor beállításai
 
-A tantermi labor beállításakor használja az alábbi táblázatban szereplő beállításokat.  A tantermi laborok létrehozásával kapcsolatos további információkért tekintse [meg a tanterem Lab-oktatóanyagának beállítása](tutorial-setup-classroom-lab.md)című témakört.
+Az alábbi táblázatbeállításait használhatja az osztálytermi labor beállításakor.  Az osztálytermi labor létrehozásáról további információt az [osztálytermi laboroktatói bemutató beállítása című](tutorial-setup-classroom-lab.md)témakörben talál.
 
-| Tesztkörnyezet beállításai | Érték/utasítások |
+| Labor beállításai | Érték/utasítások |
 | ------------ | ------------------ |
-|Virtuális gép mérete| Közepes. Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.|
-|Virtuálisgép-rendszerkép| SQL Server 2019 standard Windows Server 2019 rendszeren|
+|Virtuális gép mérete| Közepes. Ez a méret a legalkalmasabb relációs adatbázisokhoz, memórián belüli gyorsítótárazáshoz és elemzésekhez.|
+|Virtuális gép képe| Sql Server 2019 szabvány Windows Server 2019 rendszeren|
 
-## <a name="template-machine-configuration"></a>Sablon Számítógép-konfigurációja
+## <a name="template-machine-configuration"></a>Sablongép konfigurációja
 
-Ha a MySQL-t Windows Server 2019-re szeretné telepíteni, kövesse a [MySQL közösségi kiszolgáló telepítése és futtatása virtuális gépen](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)című témakörben leírt lépéseket.
+A MySQL Windows Server 2019 rendszeren való telepítéséhez kövesse a [MySQL Community Server telepítése és futtatása virtuális gépen](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)című témakörben említett lépéseket.
 
-A SQL Server 2019 előre telepítve van az új tesztkörnyezet létrehozásakor választott virtuálisgép-rendszerképben.
+Az SQL Server 2019 előre telepítve van az általunk az új tesztkörnyezet létrehozásakor kiválasztott virtuálisgép-lemezképben.
 
 ## <a name="cost-estimate"></a>Költségbecslés
 
-Az osztályra vonatkozó lehetséges költségbecslés.  25 tanulós osztályt fogunk használni.  20 órányi ütemezett idő van.  Emellett minden tanuló 10 órás kvótát kap a házi feladat vagy az ütemezett osztályon kívüli hozzárendelések számára.  A kiválasztott virtuálisgép-méret közepes, ami 42 labor egység.
+Fedjük le az osztály lehetséges költségbecslését.  Egy 25 tanulóból álló osztályt fogunk használni.  20 óra ütemezett óra van.  Emellett minden tanuló 10 óra kvótát kap a házi feladatra vagy a feladatokra az ütemezett óraidőn kívül.  Az általunk választott virtuális gépméret közepes volt, ami 42 laboregység.
 
-Az alábbi példa egy lehetséges költségbecslés erre az osztályra vonatkozóan:
+Íme egy példa az osztály lehetséges költségbecslésére:
 
-25 tanuló \* (20 ütemezett óra + 10 kvóta óra) \* 0,42 USD/óra = 315,00 USD
+25 \* diák (20 menetrend szerinti óra + \* 10 kvótaóra) 0,42 USD/óra = 315,00 USD
 
-További részletek a díjszabásról: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
+További részletek a díjszabásról az [Azure Lab Services díjszabása.](https://azure.microsoft.com/pricing/details/lab-services/)
 
 ## <a name="conclusion"></a>Összegzés
 
-Ez a cikk végigvezeti a tesztkörnyezet létrehozásához szükséges lépéseken, valamint a MySQL-t és a SQL Servert egyaránt használó alapszintű adatbázis-kezelési fogalmakhoz. Hasonló beállításokat használhat más adatbázisok osztályaihoz is.
+Ez a cikk végigjárta a metszőfájl és az SQL Server használatával az alapvető adatbázis-kezelési fogalmak létrehozásához szükséges lépéseket. Más adatbázisosztályokhoz is használhat hasonló beállításokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő lépések közösek a laborok beállításához.
+A következő lépések gyakoriak a tesztkörnyezet beállításában.
 
 - [Sablon létrehozása és kezelése](how-to-create-manage-template.md)
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kvóta beállítása](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Ütemterv beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [E-mail-regisztrációs hivatkozások a tanulók számára](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Ütemezés beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail regisztrációs linkek diákok](how-to-configure-student-usage.md#send-invitations-to-users)

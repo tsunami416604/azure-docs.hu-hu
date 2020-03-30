@@ -1,6 +1,6 @@
 ---
-title: A SharePoint felhasználói profil szolgáltatás engedélyezése az Azure AD DS segítségével | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat egy Azure Active Directory Domain Services felügyelt tartományt a SharePoint Server-profilok szinkronizálásának támogatásához
+title: SharePoint felhasználói profil szolgáltatás engedélyezése az Azure AD DS szolgáltatással | Microsoft dokumentumok
+description: Megtudhatja, hogy miként konfigurálhat azure Active Directory tartományi szolgáltatásokat felügyelt tartomány a SharePoint Server profilszinkronizálásának támogatására
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613868"
 ---
-# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services konfigurálása a SharePoint Server felhasználói profilok szinkronizálásának támogatásához
+# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Az Azure Active Directory tartományi szolgáltatások konfigurálása a SharePoint Server felhasználói profilszinkronizálásának támogatására
 
-A SharePoint-kiszolgáló tartalmaz egy szolgáltatást a felhasználói profilok szinkronizálásához. Ez a funkció lehetővé teszi, hogy a felhasználói profilok központi helyen legyenek tárolva, és elérhetők legyenek több SharePoint-hely és-Farm között. A SharePoint Server felhasználói profil szolgáltatás konfigurálásához meg kell adni a megfelelő engedélyeket egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományban. További információ: [felhasználói profil szinkronizálása a SharePoint-kiszolgálón](https://technet.microsoft.com/library/hh296982.aspx).
+A SharePoint Server tartalmaz egy szolgáltatást a felhasználói profilok szinkronizálásához. Ez a funkció lehetővé teszi a felhasználói profilok központi helyen való tárolását, és több SharePoint-webhelyen és -farmon is elérhető. A SharePoint Server felhasználói profilszolgáltatás konfigurálásához a megfelelő engedélyeket meg kell adni egy Azure Active Directory tartományi szolgáltatások (Azure AD DS) felügyelt tartományban. További információt a [Felhasználói profil szinkronizálása a SharePoint Server ben című témakörben talál.](https://technet.microsoft.com/library/hh296982.aspx)
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure AD DSt a SharePoint Server felhasználói profil szinkronizálási szolgáltatásának engedélyezéséhez.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure AD DS-t a SharePoint Server felhasználói profil szinkronizálási szolgáltatásának engedélyezéséhez.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
+A cikk végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
-* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
-* Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm].
-* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
-* Egy SharePoint-szolgáltatásfiók a felhasználói profil szinkronizálási szolgáltatásához.
-    * Ha szükséges, tekintse [meg a felügyeleti és szolgáltatási fiókok tervezése a SharePoint-kiszolgálón][sharepoint-service-account]című témakört.
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
+    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
+* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
+    * Szükség esetén töltse ki az oktatóanyagot [az Azure Active Directory tartományi szolgáltatások példányának létrehozásához és konfigurálásához.][create-azure-ad-ds-instance]
+* Az Azure AD DS felügyelt tartományához csatlakozott Windows Server felügyeleti virtuális gép.
+    * Szükség esetén fejezze be az [oktatóanyagot egy felügyeleti virtuális gép létrehozásához.][tutorial-create-management-vm]
+* Egy felhasználói fiók, amely az *Azure AD DC rendszergazdák* csoportjának tagja az Azure AD-bérlőben.
+* SharePoint-szolgáltatásfiók a felhasználói profil szinkronizálási szolgáltatásához.
+    * Szükség esetén olvassa el [a SharePoint Server felügyeleti és szolgáltatásfiókjainak megtervezése témakört.][sharepoint-service-account]
 
-## <a name="service-accounts-overview"></a>Szolgáltatásfiókok áttekintése
+## <a name="service-accounts-overview"></a>Szolgáltatásfiókok – áttekintés
 
-Az Azure AD DS felügyelt tartományokban az **HRE DC szolgáltatásfiókok** nevű biztonsági csoport a *felhasználók* szervezeti egység (OU) részeként létezik. A biztonsági csoport tagjai a következő jogosultságokat delegálják:
+Egy Azure AD DS felügyelt tartományban egy **AAD DC szolgáltatásfiókok** nevű biztonsági csoport létezik a *felhasználók* szervezeti egység (OU) részeként. A biztonsági csoport tagjai a következő jogosultságokat delegálják:
 
-- **Replikálja a címtár-módosítási** jogosultságot a gyökérszintű dse.
-- A címtár-módosítások jogosultságának **replikálása** a *konfiguráció* névhasználati környezetében (`cn=configuration` tároló).
+- **Címtármódosítási jogosultság replikálása** a gyökér DSE-n.
+- **Címtármódosítási jogosultság replikálása** a *konfigurációs* névhasználati környezetben (tároló).`cn=configuration`
 
-A **HRE DC Service accounts** biztonsági csoport tagja a beépített **Windows 2000-kompatibilis hozzáférésnek**is.
+Az **AAD DC szolgáltatásfiókok** biztonsági csoport a Windows **2000 előtti windows 2000-kompatibilis hozzáférés**beépített csoportjának is tagja.
 
-Ha hozzáadja ezt a biztonsági csoportot, a SharePoint Server felhasználói profil szinkronizálási szolgáltatásának szolgáltatási fiókja megkapja a szükséges jogosultságokat a megfelelő működéshez.
+Ha hozzáadja ezt a biztonsági csoportot, a SharePoint Server felhasználói profil szinkronizálási szolgáltatásának szolgáltatásfiókja megkapja a megfelelő munkához szükséges jogosultságokat.
 
-## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>A SharePoint Server felhasználói profiljának szinkronizálásának engedélyezése
+## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>A SharePoint Server felhasználói profil szinkronizálásának támogatásának engedélyezése
 
-A SharePoint Server szolgáltatási fiókjának megfelelő jogosultságokkal kell rendelkeznie a címtár változásainak replikálásához, és lehetővé kell tennie a SharePoint Server felhasználói profilok szinkronizálásának megfelelő működését. A jogosultságok megadásához adja hozzá a SharePoint felhasználói profil szinkronizálásához használt szolgáltatásfiókot a **HRE DC szolgáltatásfiók** csoporthoz.
+A SharePoint Server szolgáltatásfiókjának megfelelő jogosultságokkal kell rendelkeznie a módosítások könyvtárba történő replikálásához és a SharePoint Server felhasználói profil szinkronizálásának megfelelő működéséhez. Ezen jogosultságok biztosításához adja hozzá a SharePoint felhasználói profil szinkronizálásához használt szolgáltatásfiókot az **AAD DC szolgáltatásfiókok** csoporthoz.
 
-Az Azure AD DS felügyeleti virtuális gépről hajtsa végre a következő lépéseket:
+Az Azure AD DS felügyeleti virtuális gép, hajtsa végre az alábbi lépéseket:
 
 > [!NOTE]
-> Egy Azure AD DS felügyelt tartományban lévő csoporttagság szerkesztéséhez be kell jelentkeznie egy olyan felhasználói fiókba, amely az *HRE DC-rendszergazdák* csoport tagja.
+> Az Azure AD DS felügyelt tartományban lévő csoporttagság szerkesztéséhez be kell jelentkeznie egy olyan felhasználói fiókba, amely az *AAD DC rendszergazdák* csoport tagja.
 
-1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
-1. A csoporttagság kezeléséhez válassza a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
-1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aaddscontoso.com*. Megjelenik a meglévő szervezeti egységek és erőforrások listája.
-1. Válassza ki a **felhasználók** szervezeti egységet, majd válassza a *HRE DC szolgáltatásfiók* biztonsági csoportot.
-1. Válassza a **tagok**lehetőséget, majd válassza a **Hozzáadás...** lehetőséget.
-1. Adja meg a SharePoint-szolgáltatásfiók nevét, majd kattintson az **OK gombra**. A következő példában a SharePoint-szolgáltatásfiók neve *SPAdmin*:
+1. A kezdőképernyőn válassza a **Felügyeleti eszközök lehetőséget.** Megjelenik az oktatóanyagban telepített elérhető felügyeleti eszközök listája a [felügyeleti virtuális gép létrehozásához.][tutorial-create-management-vm]
+1. A csoporttagság kezeléséhez válassza az **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
+1. A bal oldali ablaktáblában válassza ki az Azure AD DS felügyelt tartományát, például *a aaddscontoso.com.* Megjelenik a meglévő o-k és erőforrások listája.
+1. Válassza a **Felhasználók** szervezeti egységet, majd válassza az *AAD DC szolgáltatásfiókok* biztonsági csoportot.
+1. Válassza a **Tagok**lehetőséget, majd válassza **a Hozzáadás...** lehetőséget.
+1. Írja be a SharePoint szolgáltatásfiók nevét, majd kattintson az **OK gombra.** A következő példában a SharePoint szolgáltatásfiók neve *spadmin*:
 
-    ![Adja hozzá a SharePoint-szolgáltatásfiókot a HRE DC szolgáltatásfiók biztonsági csoportjához.](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
+    ![A SharePoint szolgáltatásfiók hozzáadása az AAD tartományvezérlő szolgáltatásfiókok biztonsági csoporthoz](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ: [Active Directory tartományi szolgáltatások engedélyek megadása a SharePoint-kiszolgálón a profilok szinkronizálásához](https://technet.microsoft.com/library/hh296982.aspx)
+További információ: [Grant Active Directory Tartományi szolgáltatások engedélyei a SharePoint Server profilszinkronizálásához](https://technet.microsoft.com/library/hh296982.aspx)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -1,55 +1,55 @@
 ---
-title: Ajánlott eljárások operátor - tároló rendszerképek kezelése az Azure Kubernetes-szolgáltatások (AKS)
-description: A fürt operátor ajánlott eljárások az kezelését és biztonságos tárolórendszerképek az Azure Kubernetes Service (AKS)
+title: Operátori gyakorlati tanácsok – Tárolórendszerkép-kezelés az Azure Kubernetes-szolgáltatásokban (AKS)
+description: Ismerje meg a fürtoperátorok ajánlott eljárásokat az Azure Kubernetes-szolgáltatás (AKS) tárolólemezképek kezeléséhez és biztonságossá tétele érdekében
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594744"
 ---
-# <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások tárolókezelés kép és a biztonság az Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a tárolórendszerkép-kezeléshez és -biztonsághoz az Azure Kubernetes-szolgáltatásban (AKS)
 
-Fejlesztés és alkalmazások futtatásához az Azure Kubernetes Service (AKS), a tárolók és a tárolórendszerképek biztonságát egy fő szempont. Elavult tartalmazó lemezképek kiinduló vagy veszéllyel alkalmazás modulok bevezetni egy biztonsági kockázatokat és a lehetséges támadási felület. Ez a kockázat minimalizálása érdekében integrálnia kell keresése, és a tárolókat a problémák elhárítására összeállítás, valamint a futásidejű eszközöket. A korábban az a folyamat a biztonsági rés vagy elavult alaplemezkép történt annál biztonságosabb a fürtöt. Ebben a cikkben a *tárolók* a tároló-beállításjegyzékben tárolt tároló-lemezképeket és a futó tárolókat jelentik.
+Az Azure Kubernetes-szolgáltatás (AKS) alkalmazások fejlesztése és futtatása során a tárolók és a tárolórendszerképek biztonsága kulcsfontosságú szempont. Az elavult alaprendszerképeket vagy nem javított alkalmazás-futási időszakokat tartalmazó tárolók biztonsági kockázatot és lehetséges támadási vektort jelentenek. Ezek a kockázatok minimalizálása érdekében integrálnia kell azokat az eszközöket, amelyek a tárolókban a build és a futásidejű problémákat keresik és orvosolják. Minél korábban a folyamat a biztonsági rés vagy elavult alaprendszerkép fogott, annál biztonságosabb a fürt. Ebben a *cikkben a tárolók* a tárolóbeállításjegyzékben tárolt tárolórendszerképeket és a futó tárolókat is jelentik.
 
-Ez a cikk foglalkozik, hogyan teheti biztonságossá a tárolókat az aks-ben a. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez a cikk az AKS-ben lévő tárolók védelmére összpontosít. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Keressen és a kép a biztonsági rések
-> * Automatikus aktiválása és ismételt üzembe helyezése tárolórendszerképek, amikor frissül egy alaplemezkép
+> * Képbiztonsági rések felderítése és kiújítása
+> * Tárolórendszerkép automatikus aktiválása és újratelepítése az alaprendszerkép frissítésekor
 
-Emellett elolvashatja a [fürt biztonságával][best-practices-cluster-security] és a [Pod biztonsággal][best-practices-pod-security]kapcsolatos ajánlott eljárásokat is.
+A [fürtbiztonsággal][best-practices-cluster-security] és a [podbiztonsággal][best-practices-pod-security]kapcsolatos gyakorlati tanácsokat is elolvashatja.
 
-A [tárolók biztonsága Security Center][security-center-containers] is használható a tárolók biztonsági rések vizsgálatához.  Az Security Center- [integrációval is Azure Container Registry][security-center-acr] , hogy megvédje a lemezképeket és a beállításjegyzéket a biztonsági rések ellen.
+A Security [Center tárolóbiztonság szolgáltatásával][security-center-containers] a tárolók biztonsági réseit is átkezheti.  Az [Azure Container Registry integráció][security-center-acr] a Security Centerrel is létezik, amely segít megvédeni a rendszerképeket és a beállításjegyzéket a biztonsági résektől.
 
-## <a name="secure-the-images-and-run-time"></a>A képek biztonságos, és a futási idő
+## <a name="secure-the-images-and-run-time"></a>Biztosítsa a képeket és a futási időt
 
-**Ajánlott eljárási útmutató** – a biztonsági rések beolvasása a tárolók rendszerképein, és csak az ellenőrzésen átadott lemezképek telepítése. Rendszeresen frissítse az alaprendszerképek lekéréshez és az alkalmazás futtatókörnyezete, majd ismételt üzembe helyezés az AKS-fürtöt a számítási feladatokat.
+**Ajánlott eljárások –** A tárolórendszerképek biztonsági rései után késést keres, és csak az érvényesítésen átadott lemezképeket telepíthet. Rendszeresen frissítse az alaplemezképeket és az alkalmazás futási idejét, majd telepítse újra a számítási feladatokat az AKS-fürtben.
 
-Tárolóalapú számítási feladatok a bevezetésével egy potenciálisan veszélyes ellenőrzi, lemezképek és a futtatókörnyezet segítségével hozhatók létre a saját alkalmazások biztonságát. Hogyan, arról is, hogy, hogy nem indít-e biztonsági réseket, az üzemelő példányokat? Az üzembe helyezési munkafolyamatnak tartalmaznia kell egy olyan folyamatot, amely a [Twistlock][twistlock] vagy az [Aqua][aqua]használatával olyan eszközökkel vizsgálja meg a tárolók lemezképeit, amelyek csak az ellenőrzött lemezképek telepítését teszik lehetővé.
+A tárolóalapú számítási feladatok bevezetésének egyik problémája a saját alkalmazások létrehozásához használt lemezképek és futásidejű alkalmazások biztonságának ellenőrzése. Hogyan győződheti meg arról, hogy nem vezet be biztonsági réseket a központi telepítések? A telepítési munkafolyamatnak tartalmaznia kell egy folyamatot a tárolóképek beszaporítására olyan eszközökkel, mint a [Twistlock][twistlock] vagy [az Aqua,][aqua]és csak ellenőrzött lemezképek telepítését kell engedélyeznie.
 
-![Vizsgálat és javíthatja a tárolórendszerképek, ellenőrzésének és üzembe helyezése](media/operator-best-practices-container-security/scan-container-images-simplified.png)
+![Tárolórendszerképek bekéselése és kijavítása, ellenőrzés és üzembe helyezés](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
-Egy való életből vett példában használhatja egy folyamatos integrációs és folyamatos üzembe helyezés (CI/CD) folyamatokat a lemezkép vizsgálatok, ellenőrzési és központi telepítések automatizálásához. Az Azure Container Registry tartalmazza a képességek ellenőrzése a biztonsági rések.
+Egy valós példában a folyamatos integráció és a folyamatos üzembe helyezési (CI/CD) folyamat segítségével automatizálhatja a lemezképek, -ellenőrzés és -üzembe helyezés. Az Azure Container Registry tartalmazza ezeket a biztonsági réseket szkennelési képességek.
 
-## <a name="automatically-build-new-images-on-base-image-update"></a>Automatikusan hozhat létre az új képek a rendszerkép alapszintű frissítésének
+## <a name="automatically-build-new-images-on-base-image-update"></a>Új képek automatikus létrehozása az alapkép frissítésén
 
-**Ajánlott eljárási útmutató** – az alaplemezképek alkalmazás-lemezképekhez való használatakor az Automation használatával új rendszerképeket hozhat létre az alaprendszerkép frissítésekor. Ezen alaplemezképek általában biztonsági javításokat tartalmaznak, frissítse minden olyan alárendelt alkalmazás tárolórendszerképek.
+**Ajánlott eljárásokra vonatkozó útmutatás** – Alaplemezképek alkalmazásképek használatakor az automatizálás segítségével új lemezképeket hozhat létre az alaplemezkép frissítésekor. Mivel ezek az alaplemezképek általában biztonsági javításokat tartalmaznak, frissítse az alsóbb rétegbeli alkalmazástároló-rendszerképeket.
 
-Minden alkalommal, amikor egy alaplemezkép frissül, bármely alsóbb rétegbeli tárolórendszerképek is frissíteni kell. Ezt az összeállítási folyamatot integrálni kell az ellenőrzési és üzembe helyezési folyamatokkal, például az [Azure][azure-pipelines] -folyamatokba vagy a jenkinsbe. Ezek a folyamatok gondoskodik arról, hogy az alkalmazások továbbra is futtassa a frissített alapján képeken. Után az alkalmazás tárolórendszerképek érvényesíti, az AKS-telepítések majd frissíthető a legújabb, biztonságos képek futtatásához.
+Minden alkalommal, amikor egy alaprendszerkép frissül, az alsóbb rétegbeli tárolórendszerképeket is frissíteni kell. Ezt a buildelési folyamatot integrálni kell az érvényesítési és üzembe helyezési folyamatokba, például az [Azure-folyamatokba][azure-pipelines] vagy a Jenkinsbe. Ezek a folyamatok gondoskodnak arról, hogy az alkalmazások továbbra is futnak a frissített alapú lemezképeken. Az alkalmazástároló-rendszerképek ellenőrzése után az AKS-telepítések ezután frissíthetők a legújabb, biztonságos lemezképek futtatásához.
 
-Az Azure Container Registry feladatok is automatikusan frissítheti tárolórendszerképek az alaprendszerképet frissítésekor. Ez a funkció lehetővé teszi, hogy hozhat létre alaplemezképek kis számú, és rendszeresen tartsa a hibajavításokat és biztonsági javításokat frissítését.
+Az Azure Container Registry Tasks is automatikusan frissítheti a tárolórendszerképeket, amikor az alaprendszerkép frissül. Ez a funkció lehetővé teszi, hogy kis számú alaplemezképet hozzon létre, és rendszeresen folyamatosan frissítse őket a hiba- és biztonsági javításokkal.
 
-További információ az alapszintű rendszerkép frissítéseiről: [a rendszerkép-buildek automatizálása az alapszintű rendszerkép frissítése Azure Container Registry feladatokkal][acr-base-image-update].
+Az alaprendszerkép-frissítésekről az [Automatikus lemezképek alaplemezkép-frissítésre][acr-base-image-update]épülaz Azure Container Registry Tasks című témakörben talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk biztonságossá tétele a tárolókat összpontosít. Néhány ilyen területet végrehajtásához a következő cikkekben talál:
+Ez a cikk a tárolók védelmére összpontosított. Az alábbi témakörcikkekben az alábbi cikkekben valósíthatja meg a területeket:
 
-* [Rendszerkép-buildek automatizálása Azure Container Registry feladatokkal az alapszintű rendszerkép frissítése során][acr-base-image-update]
+* [Az Azure Container beállításjegyzék-feladatokkal az alaprendszerkép-frissítésre épülő lemezképek automatizálása][acr-base-image-update]
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts

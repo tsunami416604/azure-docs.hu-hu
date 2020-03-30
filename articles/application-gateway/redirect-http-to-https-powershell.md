@@ -1,6 +1,6 @@
 ---
-title: HTTP – HTTPS-átirányítás a PowerShell használatával – Azure Application Gateway
-description: Megtudhatja, hogyan hozhat létre olyan Application Gateway-t, amely átirányított forgalmat használ HTTP-ről HTTPS-re a Azure PowerShell használatával.
+title: HTTP-RŐL HTTPS-re történő átirányítás a PowerShell használatával – Azure Application Gateway
+description: Ismerje meg, hogyan hozhat létre egy alkalmazásátjáró átirányított forgalmat HTTP-ről HTTPS-re az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77251719"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure PowerShell használatával
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása HTTP-HTTPS átirányítással az Azure PowerShell használatával
 
-Az Azure PowerShell használatával létrehozhat egy olyan [Application Gateway](overview.md) -t, amely SSL-leállításra szolgáló tanúsítvánnyal rendelkezik. Átirányítja a HTTPS-portot az application gateway HTTP-forgalom-útválasztási szabály szolgál. Ebben a példában létrehozunk egy virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is az Application Gateway két virtuálisgép-példányát tartalmazó, a backend-készlethez. 
+Az Azure PowerShell segítségével hozzon létre egy [alkalmazásátjáró](overview.md) t SSL-megszüntetési tanúsítvánnyal. Az útválasztási szabály segítségével átirányítják a HTTP-forgalmat az alkalmazásátjáró HTTPS-portjára. Ebben a példában egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is létrehozhat az alkalmazásátjáró háttérkészletéhez, amely két virtuálisgép-példányt tartalmaz. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -24,18 +24,18 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Önaláírt tanúsítvány létrehozása
 > * Hálózat beállítása
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * Egy figyelő és átirányítási szabály hozzáadása
+> * Figyelő és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az oktatóanyagban szereplő parancsok futtatásához a `Login-AzAccount` futtatását is futtatnia kell az Azure-beli kapcsolatok létrehozásához.
+Ez az oktatóanyag az Azure PowerShell-modul 1.0.0-s vagy újabb verzióját igényli. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az oktatóanyag parancsainak futtatásához is `Login-AzAccount` futtatnia kell az Azure-ral való kapcsolat létrehozásához.
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben az oktatóanyagban egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaggal. Az [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
+Éles használatra egy megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia. Ebben az oktatóanyagban egy önaláírt tanúsítványt hoz létre a [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaggal. Az [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) parancsmagot a visszaadott ujjlenyomattal futtatva egy PFX-fájlt exportálhat a tanúsítványból.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -73,7 +73,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-Hozza létre a *myBackendSubnet* és a *myAGSubnet* alhálózat-konfigurációit a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)használatával. Hozza létre a *myVNet* nevű virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) és az alhálózati konfigurációk használatával. Végül pedig hozza létre a *myAGPublicIPAddress* nevű nyilvános IP-címet a [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)használatával. Ezek az erőforrások biztosítják az alkalmazásátjáró és a hozzá kapcsolódó erőforrások hálózati kapcsolatát.
+Hozza létre a *myBackendSubnet* és *a myAGSubnet* alhálózati konfigurációit a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)használatával. Hozza létre a *myVNet* nevű virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) használatával az alhálózati konfigurációkkal. És végül hozza létre a *myAGPublicIPAddress* nevű nyilvános IP-címet a [New-AzPublicIpAddress használatával.](/powershell/module/az.network/new-azpublicipaddress) Ezek az erőforrások biztosítják az alkalmazásátjáró és a hozzá kapcsolódó erőforrások hálózati kapcsolatát.
 
 ```powershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -99,7 +99,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
-Rendelje hozzá az Application gatewayhez korábban létrehozott *myAGSubnet* a [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)használatával. Rendeljen *myAGPublicIPAddress* az Application gatewayhez a [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)használatával. Ezután létrehozhatja a HTTPS-portot a [New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport)használatával.
+Társítsa a korábban létrehozott *myAGSubnet-et* az alkalmazásátjáróhoz a [New-AzApplicationGatewayIPConfiguration használatával.](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) Rendelje hozzá *a myAGPublicIPAddress címet* az alkalmazásátjáróhoz a [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)használatával. Ezután létrehozhatja a HTTPS-portot a [New-AzApplicationGatewayFrontendPort használatával.](/powershell/module/az.network/new-azapplicationgatewayfrontendport)
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -119,7 +119,7 @@ $frontendPort = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>A háttérkészlet létrehozása és beállítása
 
-Hozza létre a *appGatewayBackendPool* nevű háttér-készletet az Application gatewayhez a [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)használatával. Konfigurálja a háttér-készlet beállításait a [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)használatával.
+Hozza létre az *appGatewayBackendPool* nevű háttérkészletet az alkalmazásátjáróhoz a [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)használatával. Adja meg a háttérkészlet beállításait a [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)használatával.
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -136,7 +136,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben a példában egy alapszintű figyelőt hoz létre, amely a gyökér URL-cím HTTPS-forgalmát figyeli. 
 
-Hozzon létre egy tanúsítvány [-](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) objektumot a New-AzApplicationGatewaySslCertificate használatával, majd hozzon létre egy *appGatewayHttpListener* nevű figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) használatával az előtér-konfigurációval, a frontend-porttal és a korábban létrehozott tanúsítvánnyal. A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *rule1* nevű alapszintű szabályt a [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)használatával.
+Hozzon létre egy tanúsítványobjektumot a [New-AzApplicationGatewaySslCertificate használatával,](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) majd hozzon létre egy *appGatewayHttpListener* nevű figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) használatával a korábban létrehozott előtér-konfigurációval, előtér-porttal és tanúsítvánnyal. A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *1.* [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -163,7 +163,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Most, hogy létrehozta a szükséges támogatási erőforrásokat, adja meg a *myAppGateway* nevű Application Gateway paramétereit a [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)használatával, majd hozza létre a tanúsítványt a [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) használatával.
+Most, hogy létrehozta a szükséges támogató erőforrásokat, adja meg a paramétereket az alkalmazás átjáró nevű *myAppGateway* a [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku), majd hozza létre a [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) a tanúsítvánnyal.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku `
@@ -185,11 +185,11 @@ $appgw = New-AzApplicationGateway `
   -SslCertificates $cert
 ```
 
-## <a name="add-a-listener-and-redirection-rule"></a>Egy figyelő és átirányítási szabály hozzáadása
+## <a name="add-a-listener-and-redirection-rule"></a>Figyelő és átirányítási szabály hozzáadása
 
-### <a name="add-the-http-port"></a>A HTTP-Port hozzáadása
+### <a name="add-the-http-port"></a>A HTTP-port hozzáadása
 
-Adja hozzá a HTTP-portot az Application gatewayhez a [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)használatával.
+Adja hozzá a HTTP-portot az alkalmazásátjáróhoz az [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)használatával.
 
 ```powershell
 $appgw = Get-AzApplicationGateway `
@@ -203,7 +203,7 @@ Add-AzApplicationGatewayFrontendPort `
 
 ### <a name="add-the-http-listener"></a>A HTTP-figyelő hozzáadása
 
-Adja hozzá a *myListener* nevű http-figyelőt az Application gatewayhez a [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)használatával.
+Adja hozzá a *myListener* nevű HTTP-figyelőt az alkalmazásátjáróhoz az [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)használatával.
 
 ```powershell
 $fipconfig = Get-AzApplicationGatewayFrontendIPConfig `
@@ -220,9 +220,9 @@ Add-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw
 ```
 
-### <a name="add-the-redirection-configuration"></a>Az átirányítás konfigurációjának hozzáadása
+### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
 
-Adja hozzá a HTTP-t a HTTPS-átirányítási konfigurációhoz az Application gatewayhez a [Add-AzApplicationGatewayRedirectConfiguration](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration)használatával.
+Adja hozzá a HTTP-HTTPS átirányítási konfigurációt az alkalmazásátjáróhoz az [Add-AzApplicationGatewayRedirectConfiguration](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration)használatával.
 
 ```powershell
 $defaultListener = Get-AzApplicationGatewayHttpListener `
@@ -238,7 +238,7 @@ Add-AzApplicationGatewayRedirectConfiguration -Name httpToHttps `
 
 ### <a name="add-the-routing-rule"></a>Útválasztási szabály hozzáadása
 
-Adja hozzá az útválasztási szabályt az átirányítási konfigurációval az Application gatewayhez az [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule)használatával.
+Adja hozzá az átirányítási konfigurációval rendelkező útválasztási szabályt az alkalmazásátjáróhoz az [Add-AzApplicationGatewayRequestRoutingRule használatával.](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule)
 
 ```powershell
 $myListener = Get-AzApplicationGatewayHttpListener `
@@ -258,7 +258,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
-Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, amely kiszolgálókat biztosít a háttérkészlet számára az alkalmazásátjáróban. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
+Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, amely kiszolgálókat biztosít a háttérkészlet számára az alkalmazásátjáróban. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -318,9 +318,9 @@ Update-AzVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
+## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-A [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) használatával lekérheti az Application Gateway nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: http://52.170.203.149
+A [Get-AzPublicIPAddress használatával](/powershell/module/az.network/get-azpublicipaddress) lejuthat az alkalmazásátjáró nyilvános IP-címével. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: http://52.170.203.149
 
 ```powershell
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -332,7 +332,7 @@ Ha önaláírt tanúsítványt használt, a biztonsági figyelmeztetés elfogad�
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -340,5 +340,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Önaláírt tanúsítvány létrehozása
 > * Hálózat beállítása
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * Egy figyelő és átirányítási szabály hozzáadása
+> * Figyelő és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel

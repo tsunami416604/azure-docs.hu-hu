@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása Azure Table Storage-ba és-ból
-description: Megtudhatja, hogyan másolhatja át a támogatott forrásokból származó adatok adatait az Azure Table Storage-ba vagy a Table Storage-ból a támogatott fogadó áruházakba Data Factory használatával.
+title: Adatok másolása az Azure Table tárolóba és onnan
+description: Megtudhatja, hogyan másolhatja az adatokat a támogatott forrástárolókból az Azure Table storage-ba, vagy a Table storage-ból a támogatott fogadótárolókba a Data Factory használatával.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,55 +12,55 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: cf79a670db4e2729c6e0a5fb7112cdc6114f465a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77460705"
 ---
-# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-ba és onnan az Azure Data Factory használatával
+# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table storage-ba és onnan az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-azure-table-connector.md)
 > * [Aktuális verzió](connector-azure-table-storage.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban adatok másolásához az Azure Table Storage-ba és az-ból. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása az Azure Table storage-ba és onnan. A [Tevékenység másolása áttekintéscímű](copy-activity-overview.md) cikkre épül, amely a Másolási tevékenység általános áttekintését mutatja be.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Ez az Azure Table Storage-összekötő a következő tevékenységek esetében támogatott:
+Ez az Azure Table storage-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Bármilyen támogatott forrás adattárból másolhat adatokat a Table Storage-ba. Az adatok a Table Storage-ból bármely támogatott fogadó adattárba is másolhatók. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+Bármely támogatott forrásadattárból adatokat másolhat table storage-ba. A Table storage-ból is másolhat adatokat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában láthatja.
 
-Pontosabban, ez az Azure Table Connector támogatja az adatok másolását a fiók kulcsa és a szolgáltatás közös hozzáférésű aláírásának hitelesítése használatával.
+Pontosabban ez az Azure Table-összekötő támogatja az adatok másolását a fiókkulcs és a szolgáltatás megosztott hozzáférés-aláírás-hitelesítések használatával.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek a Table Storage-hoz kapcsolódó Data Factory definiálásához használatosak.
+A következő szakaszok a Table storage-ra jellemző Data Factory-entitások definiálására használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-### <a name="use-an-account-key"></a>Fiók kulcsának használata
+### <a name="use-an-account-key"></a>Fiókkulcs használata
 
-Létrehozhat egy Azure Storage-beli társított szolgáltatást a fiók kulcsa alapján. Az adatelőállítót globális hozzáféréssel látja el a tárolóhoz. A következő tulajdonságok támogatottak.
+Azure Storage-alapú szolgáltatás a fiókkulcs használatával hozhat létre. Globális hozzáférést biztosít az adatgyár számára a Storage szolgáltatáshoz. A következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot **AzureTableStorage**értékre kell beállítani. |Igen |
-| connectionString | Adja meg a connectionString tulajdonság tárolási való csatlakozáshoz szükséges információk. <br/>A Azure Key Vault is elhelyezheti a fiók kulcsát, és lekérheti a `accountKey` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. |Igen |
-| connectVia | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| type | A típustulajdonságot **az AzureTableStorage**tulajdonságra kell állítani. |Igen |
+| connectionString (kapcsolati karakterlánc) | Adja meg a connectionString tulajdonság storage-hoz való csatlakozásához szükséges adatokat. <br/>Fiókkulcsot is helyezhet el az Azure `accountKey` Key Vaultban, és kihúzhatja a konfigurációt a kapcsolati karakterláncból. További részleteket az [Azure Key Vault-cikkben](store-credentials-in-key-vault.md) a következő minták és áruházi hitelesítő adatok című cikkben talál. |Igen |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Használhatja az Azure-integrációs runtime vagy saját üzemeltetésű integrációs runtime (ha az adattár található egy magánhálózat). Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 
 >[!NOTE]
->Ha a "AzureStorage" típusú társított szolgáltatást használta, akkor továbbra is támogatott, míg a rendszer ezt az új "AzureTableStorage" társított szolgáltatástípus használatát javasolja.
+>Ha az "AzureStorage" típusú kapcsolt szolgáltatás használata, továbbra is támogatott, ahogy van, miközben azt javasoljuk, hogy használja ezt az új "AzureTableStorage" csatolt szolgáltatástípus megy előre.
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -78,7 +78,7 @@ Létrehozhat egy Azure Storage-beli társított szolgáltatást a fiók kulcsa a
 }
 ```
 
-**Példa: fiók kulcsának tárolása Azure Key Vault**
+**Példa: fiókkulcs tárolása az Azure Key Vaultban**
 
 ```json
 {
@@ -104,32 +104,32 @@ Létrehozhat egy Azure Storage-beli társított szolgáltatást a fiók kulcsa a
 }
 ```
 
-### <a name="use-shared-access-signature-authentication"></a>Közös hozzáférésű aláírás-hitelesítés használata
+### <a name="use-shared-access-signature-authentication"></a>Megosztott hozzáférésű aláírás-hitelesítés használata
 
-Létrehozhat egy megosztott elérési aláírással rendelkező Storage-beli társított szolgáltatást is. Az adat-előállítót a tárolóban lévő összes/meghatározott erőforráshoz korlátozott/időhöz kötött hozzáféréssel biztosítja.
+A storage-hoz csatolt szolgáltatást megosztott hozzáférésű aláírással is létrehozhatja. Az adat-előállító számára korlátozott/időhöz kötött hozzáférést biztosít a tárolóösszes/specifikus erőforrásához.
 
-Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. Ezzel a beállítással engedélyezheti az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó korlátozott engedélyeket egy adott időtartamra és a megadott engedélyekkel. Nem kell megosztani a fiók hozzáférési kulcsait. A közös hozzáférésű jogosultságkód URI, amely a lekérdezési paraméterek magában foglalja a tárolási erőforrásokhoz való hitelesített hozzáférés szükséges összes információt. A közös hozzáférésű jogosultságkód-adattároló erőforrások elérésére, az ügyfél csak kell a megfelelő konstruktor vagy a metódus a közös hozzáférésű jogosultságkód adja át. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: közös hozzáférésű aláírások [: a közös hozzáférésű aláírás modelljének megismerése](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+A megosztott hozzáférésű aláírás delegált hozzáférést biztosít a tárfiókban lévő erőforrásokhoz. Segítségével korlátozott engedélyeket adhat az ügyfélnek a tárfiókban lévő objektumokhoz egy adott ideig és egy megadott engedélykészlettel. Nem kell megosztania a fiókhozzáférési kulcsokat. A megosztott hozzáférésű aláírás olyan URI, amely a lekérdezési paraméterekben a tárolási erőforrás hitelesített eléréséhez szükséges összes információt magában foglalja. A megosztott hozzáférésű aláírással rendelkező tárolóerőforrások eléréséhez az ügyfélnek csak a megosztott hozzáférésű aláírást kell átadnia a megfelelő konstruktornak vagy metódusnak. A megosztott hozzáférésű aláírásokról a [Megosztott hozzáférésű aláírások: A közös hozzáférésű aláírásmodell ismertetése](../storage/common/storage-dotnet-shared-access-signature-part-1.md)című témakörben talál további információt.
 
 > [!NOTE]
-> A Data Factory mostantól a **szolgáltatás közös hozzáférési aláírásait** és a **fiók közös hozzáférési aláírásait**is támogatja. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../storage/common/storage-sas-overview.md). 
+> A Data Factory mostantól támogatja a **szolgáltatás megosztott hozzáférési aláírásait** és **a fiók megosztott hozzáférési aláírásait is.** A megosztott hozzáférésű aláírásokról további információt az [Azure Storage-erőforrásokhoz való korlátozott hozzáférés megadása megosztott hozzáférésű aláírások (SAS) használatával](../storage/common/storage-sas-overview.md)című témakörben talál. 
 
 > [!TIP]
-> A tárfiók szolgáltatás közös hozzáférési aláírásokat létrehozni, hajtsa végre a következő PowerShell-parancsokat. Cserélje le a zárójelben, és a szükséges engedélyeket.
+> Ha egy szolgáltatás megosztott hozzáférési aláírását a tárfiókhoz, a következő PowerShell-parancsokat hajthatja végre. Cserélje le a helyőrzőket, és adja meg a szükséges engedélyt.
 > `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-A közös hozzáférésű aláírás-hitelesítés használatához a következő tulajdonságok támogatottak.
+A megosztott hozzáférésű aláírás-hitelesítés használatához a következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot **AzureTableStorage**értékre kell beállítani. |Igen |
-| sasUri | A megosztott hozzáférési aláírás URI azonosítójának SAS URI azonosítójának megadása a táblához. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A Azure Key Vault SAS-tokent is helyezhet el az automatikus elforgatás kihasználása és a jogkivonat-rész eltávolításához. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| connectVia | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| type | A típustulajdonságot **az AzureTableStorage**tulajdonságra kell állítani. |Igen |
+| sasUri között | Adja meg a közös hozzáférésű aláírás URI-jának SAS URI-ját a táblához. <br/>Jelölje meg ezt a mezőt SecureStringként, hogy biztonságosan tárolhatja a Data Factory-ban. SAS-jogkivonatot is helyezhet az Azure Key Vaultban az automatikus rotáció kihasználásához és a jogkivonat-rész eltávolításához. További részleteket az [Azure Key Vault-cikkben](store-credentials-in-key-vault.md) a következő minták és áruházi hitelesítő adatok című cikkben talál. | Igen |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Használhatja az Azure-integrációs runtime vagy a saját üzemeltetésű integrációs runtime (ha az adattár található egy magánhálózat). Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 
 >[!NOTE]
->Ha a "AzureStorage" típusú társított szolgáltatást használta, akkor továbbra is támogatott, míg a rendszer ezt az új "AzureTableStorage" társított szolgáltatástípus használatát javasolja.
+>Ha az "AzureStorage" típusú kapcsolt szolgáltatás használata, továbbra is támogatott, ahogy van, miközben azt javasoljuk, hogy használja ezt az új "AzureTableStorage" csatolt szolgáltatástípus megy előre.
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -150,7 +150,7 @@ A közös hozzáférésű aláírás-hitelesítés használatához a következő
 }
 ```
 
-**Példa: fiók kulcsának tárolása Azure Key Vault**
+**Példa: fiókkulcs tárolása az Azure Key Vaultban**
 
 ```json
 {
@@ -179,24 +179,24 @@ A közös hozzáférésű aláírás-hitelesítés használatához a következő
 }
 ```
 
-Amikor létrehoz egy közös hozzáférésű jogosultságkód URI Azonosítójának, vegye figyelembe a következőket:
+Amikor közös hozzáférésű hozzáférési kód URI-t hoz létre, vegye figyelembe a következő pontokat:
 
-- A társított szolgáltatás (olvasási, írási, olvasási/írási) használatának módja a következőben az adat-előállító alapján objektumok megfelelő írási/olvasási engedélyeket.
-- Megfelelő **lejárati idő** beállítása. Győződjön meg arról, hogy a tároló objektumok elérése le nem jár, a folyamat aktív időszakon belül.
-- Az URI-t a megfelelő tábla szintjén kell létrehozni a szükséges érték alapján.
+- Állítsa be a megfelelő olvasási/írási engedélyeket az objektumokhoz a csatolt szolgáltatás (olvasás, írás, írás/írás) adat-előállítóban való használatával.
+- Megfelelően állítsa be **a lejárati időt.** Győződjön meg arról, hogy a storage-objektumokhoz való hozzáférés nem jár le a folyamat aktív időszakán belül.
+- Az URI-t a megfelelő táblaszinten kell létrehozni az igény alapján.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az Azure Table adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek](concepts-datasets-linked-services.md) című cikkben olvashatja. Ez a szakasz az Azure Table adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok Azure-táblába való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **AzureTable**értékre. A következő tulajdonságok támogatottak.
+Az Azure Table-be és az Azure Table-ből történő másoláshoz állítsa az adatkészlet típustulajdonságát az **AzureTable beállításra.** A következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát **AzureTable**értékre kell állítani. |Igen |
-| tableName |Annak a táblának a neve, amely a társított szolgáltatás által hivatkozott Table Storage-adatbázis példányában található. |Igen |
+| type | Az adatkészlet típustulajdonságát **az AzureTable**beállításra kell állítani. |Igen |
+| tableName |A tábla neve a tábla tároló adatbázispéldányában, amelyre a csatolt szolgáltatás hivatkozik. |Igen |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -216,61 +216,61 @@ Az adatok Azure-táblába való másolásához állítsa az adatkészlet Type (t
 }
 ```
 
-### <a name="schema-by-data-factory"></a>Adat-előállítók által séma
+### <a name="schema-by-data-factory"></a>Séma adatgyár szerint
 
-A séma nélküli adattárak, például az Azure Table Data Factory a következő módszerek egyikével következtetik ki a sémát:
+Sémamentes adattárak, például az Azure Table esetében a Data Factory az alábbi módokon következtet a sémából:
 
-* Ha a másolási tevékenységben megadja az oszlop leképezését, Data Factory a forrás oldali oszlopok listáját használja az adat lekéréséhez. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, a rendszer null értéket ad meg.
-* Ha nem ad meg oszlop-hozzárendelést a másolási tevékenységben, Data Factory a séma kikövetkezteti a sémát az adathalmaz első sorának használatával. Ebben az esetben, ha az első sor nem tartalmazza a teljes sémát (például egyes oszlopokban Null érték van), a másolási művelet eredményeképpen egyes oszlopok kimaradnak.
+* Ha az oszlopleképezést másolási tevékenységben adja meg, a Data Factory a forrásoldali oszloplista segítségével olvassa be az adatokat. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, null értéket ad meg.
+* Ha nem adja meg az oszlopleképezést a másolási tevékenységben, a Data Factory az adatok első sorának használatával következtet a sémából. Ebben az esetben, ha az első sor nem tartalmazza a teljes sémát (pl. néhány oszlop null értékkel rendelkezik), néhány oszlop kimarad a másolási művelet eredményében.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz az Azure Table forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz az Azure Table forrás és fogadó által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="azure-table-as-a-source-type"></a>Az Azure Table forrás típusa
+### <a name="azure-table-as-a-source-type"></a>Az Azure Table forrástípusként
 
-Az adatok Azure-táblázatból való másolásához állítsa a forrás típusát a másolás tevékenység **AzureTableSource**. A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
+Ha adatokat szeretne másolni az Azure Table programból, állítsa be a forrástípust az **AzureTableSource**másolási tevékenységben. A következő tulajdonságokat a másolási tevékenység **forrása** szakasz támogatja.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát **AzureTableSource**értékre kell állítani. |Igen |
-| azureTableSourceQuery |Az egyéni tábla-tárolási lekérdezéssel olvashatja el az adatolvasást. Tekintse meg a példákat a következő szakaszban. |Nem |
-| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivételének engedélyezése nem létezik-e.<br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). |Nem |
+| type | A másolási tevékenységforrás típustulajdonságát **az AzureTableSource**mezőre kell állítani. |Igen |
+| azureTableSourceQuery |Az adatok olvasásához használja az egyéni táblatárolási lekérdezést. Tekintse meg a következő szakaszban található példákat. |Nem |
+| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy engedélyezi-e a tábla kivételének nem létezését.<br/>Az engedélyezett **értékek: Igaz** és **Hamis** (alapértelmezett). |Nem |
 
-### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery examples
+### <a name="azuretablesourcequery-examples"></a>példák az azureTableSourceQuery
 
 >[!NOTE]
->Az Azure Table lekérdezési művelet az [azure Table Service által kényszerített](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)30 másodpercen belül időtúllépést okoz. Megtudhatja, hogyan optimalizálhatja a lekérdezést a [tervezésből a lekérdezési](../storage/tables/table-storage-design-for-query.md) cikkbe.
+>Az Azure Table lekérdezési művelet e-egy időadatát 30 másodperc alatt [kikényszeríti az Azure Table szolgáltatás.](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations) Megtudhatja, hogy miként optimalizálhatja a lekérdezést a Design ból a cikk [lekérdezéséhez.](../storage/tables/table-storage-design-for-query.md)
 
-Ha Azure Data Factory, ha az adattípust datetime típusú oszlopra szeretné szűrni, tekintse meg a következő példát:
+Az Azure Data Factoryban, ha az adatokat egy datetime típusú oszlophoz szeretné szűrni, olvassa el ezt a példát:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
 
-Ha az adattípust karakterlánc típusú oszlopra szeretné szűrni, tekintse meg a következő példát:
+Ha az adatokat karakterlánctípus-oszlopra szeretné szűrni, olvassa el ezt a példát:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
 ```
 
-Ha a folyamat paramétert használja, a DateTime értéket az előző minták szerint a megfelelő formátumba öntötte.
+Ha a folyamat paramétert használja, a datetime értéket az előző mintáknak megfelelő formátumba adja.
 
-### <a name="azure-table-as-a-sink-type"></a>Azure Table fogadó típusa
+### <a name="azure-table-as-a-sink-type"></a>Az Azure Table mint fogadótípus
 
-Az Azure Table-be való másoláshoz állítsa a fogadó típust a másolás tevékenység **AzureTableSink**. A másolási tevékenység fogadója szakaszban a következő tulajdonságok támogatottak.
+Az Azure Table adatok másolásához állítsa be a fogadó típusát a másolási tevékenységben az **AzureTableSink**elemre. A következő tulajdonságokat a másolási tevékenység **fogadó** szakasza támogatja.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadójának Type tulajdonságát **AzureTableSink**értékre kell állítani. |Igen |
-| azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Nem |
-| azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a "AzureTableDefaultPartitionKeyValue" paramétert használja a partíciós kulcsként. |Nem |
-| azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |Nem |
-| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be. Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Az engedélyezett értékek **egyesítése** (alapértelmezett) és **Csere**. <br/><br> Ez a beállítás a tábla szintjén nem szereplő sorra vonatkozik. Egyik lehetőség sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. Az egyesítési és a lecserélési beállítások működésének megismeréséhez lásd: [entitás beszúrása vagy egyesítése](https://msdn.microsoft.com/library/azure/hh452241.aspx) és az [entitás beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Nem |
-| writeBatchSize |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
-| writeBatchTimeout |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek a TimeSpan. Ilyen például a "00:20:00" (20 perc). |Nem (az alapértelmezett érték 90 másodperc, a Storage-ügyfél alapértelmezett időtúllépése) |
+| type | A másolási tevékenység fogadójának típustulajdonságát **az AzureTableSink**beállításra kell állítani. |Igen |
+| azureTableDefaultPartitionKeyValue érték |A fogadó által használható alapértelmezett partíciókulcs-érték. |Nem |
+| azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciókulcsként használják. Ha nincs megadva, az "AzureTableDefaultPartitionKeyValue" lesz a partíciókulcs. |Nem |
+| azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek oszlopértékeit sorkulcsként használják. Ha nincs megadva, minden sorhoz használjon GUID azonosítót. |Nem |
+| azureTableInsertType |Az Azure Table-be beillesztendő mód. Ez a tulajdonság azt szabályozza, hogy a kimeneti tábla egyező partícióval és sorkulcsokkal rendelkező meglévő sorai tették-e lecserélve vagy egyesítve a kimeneti tábla meglévő sorait. <br/><br/>Az engedélyezett értékek **az egyesítés** (alapértelmezett) és **a csere**. <br/><br> Ez a beállítás a sor szintjén, nem pedig a táblázat szintjén érvényes. Egyik lehetőség sem törli azokat a sorokat a kimeneti táblából, amelyek nem léteznek a bemenetben. A beállításegyesítési és cserebeállítások működéséről az [Entitás beszúrása vagy egyesítése,](https://msdn.microsoft.com/library/azure/hh452241.aspx) valamint az [Entitás beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx)című témakörben olvashat. |Nem |
+| writeBatchSize |Adatokat szúr be az Azure Table-be, ha writeBatchSize vagy writeBatchTimeout találat.<br/>Az engedélyezett értékek egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
+| writeBatchTimeout |Adatokat szúr be az Azure Table-be, ha writeBatchSize vagy writeBatchTimeout találat.<br/>Az engedélyezett értékek időtartomány. Erre példa a "00:20:00" (20 perc). |Nem (az alapértelmezett érték 90 másodperc, a tárolóügyfél alapértelmezett időtúlszáma) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -305,9 +305,9 @@ Az Azure Table-be való másoláshoz állítsa a fogadó típust a másolás tev
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 
-A **"Translator"** tulajdonság használatával rendelje hozzá a forrás oszlopot a cél oszlophoz, mielőtt a azureTablePartitionKeyName használja a Destination (cél) oszlopot.
+Rendeljen hozzá egy forrásoszlopot egy céloszlophoz a **"translator"** tulajdonság használatával, mielőtt a céloszlopot azureTablePartitionKeyName néven használhatna.
 
-A következő példában a forrás oszlop DivisionID a DivisionID a cél oszlopra van leképezve:
+A következő példában a DivisionID forrásoszlop a DivisionID céloszlophoz van rendelve:
 
 ```json
 "translator": {
@@ -316,7 +316,7 @@ A következő példában a forrás oszlop DivisionID a DivisionID a cél oszlopr
 }
 ```
 
-A "DivisionID" paraméter a partíciós kulcsként van megadva.
+A "DivisionID" a partíciókulcs.
 
 ```json
 "sink": {
@@ -325,26 +325,26 @@ A "DivisionID" paraméter a partíciós kulcsként van megadva.
 }
 ```
 
-## <a name="data-type-mapping-for-azure-table"></a>Adattípusok leképezése az Azure Table szolgáltatáshoz
+## <a name="data-type-mapping-for-azure-table"></a>Adattípus-leképezés az Azure Table-hez
 
-Amikor Adatmásolást végez az Azure Table-be, az Azure Table adattípusokból az alábbi leképezéseket használja az ideiglenes adattípusok Data Factoryához. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
+Amikor adatokat másol az Azure Table-ből és az Azure Table-be, a következő leképezéseket használja a rendszer az Azure Table adattípusaiból a Data Factory köztes adattípusokba. Ha többet szeretne tudni arról, hogy a másolási tevékenység hogyan rendeli le a forrássémát és az adattípust a fogadóhoz, olvassa el a [Séma- és adattípus-hozzárendelések című témakört.](copy-activity-schema-and-type-mapping.md)
 
-Amikor az Azure Table-be vagy az-ba helyezi át az adatátvitelt, az [Azure Table által definiált következő leképezések](https://msdn.microsoft.com/library/azure/dd179338.aspx) az Azure Table OData típusaitól a .net-be és fordítva is használhatók.
+Amikor adatokat helyez át az Azure Table-be és onnan, az Azure Table által meghatározott alábbi [leképezések](https://msdn.microsoft.com/library/azure/dd179338.aspx) az Azure Table OData-típusokból .NET típusúak, és fordítva.
 
-| Az Azure Table adattípusa | Data Factory közbenső adattípus | Részletek |
+| Azure Table adattípusa | Adatgyár köztes adattípusa | Részletek |
 |:--- |:--- |:--- |
-| Edm.Binary |bájt [] |Legfeljebb 64 KB méretű bájtok tömbje. |
-| Edm.Boolean |bool |Logikai érték. |
-| Edm.DateTime |DateTime |64 bites érték, amely egyezményes világidő (UTC) szerint van kifejezve. A támogatott DateTime tartomány kezdete éjfél, január 1-től 1601 A.D. (CE), UTC. A tartomány 9999. december 31-ig ér véget. |
+| Edm.Bináris |bájt[] |Legfeljebb 64 KB bájtok ból álló tömb. |
+| Edm.Boolean |Bool |Logikai érték. |
+| Edm.DateTime |DateTime |64 bites érték koordinált világidőben (UTC) kifejezve. A támogatott DateTime tartomány 1601. (C.E.), UTC. A tartomány 9999. |
 | Edm.Double |double |64 bites lebegőpontos érték. |
-| Edm.Guid |Guid |Egy 128 bites globálisan egyedi azonosító. |
-| Edm.Int32 |Int32 |32 bites egész szám. |
-| Edm.Int64 |Int64 |64 bites egész szám. |
-| Edm.String |Sztring |Egy UTF-16 kódolású érték. A karakterláncok értéke legfeljebb 64 KB lehet. |
+| Edm.Guid |Guid |128 bites globálisan egyedi azonosító. |
+| Edm.Int32 |Int32 |Egy 32 bites egész szám. |
+| Edm.Int64 |Int64 |Egy 64 bites egész szám. |
+| Edm.String |Sztring |UTF-16 kódolású érték. A karakterlánc-értékek legfeljebb 64 KB-ot tehetnek ki. |
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
-## <a name="next-steps"></a>Következő lépések
-A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A Data Factory másolási tevékenysége által forrásként és fogadóként támogatott adattárak listáját a Támogatott adattárak című témakörben [tetszését.](copy-activity-overview.md#supported-data-stores-and-formats)

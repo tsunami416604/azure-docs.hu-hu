@@ -1,6 +1,6 @@
 ---
-title: Az Azure DS tartományi szolgáltatások engedélyezése a PowerShell használatával | Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja és engedélyezheti Azure Active Directory Domain Services az Azure AD PowerShell és a Azure PowerShell használatával.
+title: Az Azure DS tartományi szolgáltatások engedélyezése a PowerShell használatával | Microsoft dokumentumok
+description: Megtudhatja, hogyan konfigurálhatja és engedélyezheti az Azure Active Directory tartományi szolgáltatásokat az Azure AD PowerShell és az Azure PowerShell használatával.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
 ms.openlocfilehash: ee85002aea962dfa675ac6c09a6bfbaeba8e9e79
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613236"
 ---
-# <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services engedélyezése a PowerShell használatával
+# <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Az Azure Active Directory tartományi szolgáltatások engedélyezése a PowerShell használatával
 
-Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Ezeket a tartományi szolgáltatásokat a tartományvezérlők üzembe helyezése, kezelése és javítása nélkül használhatja fel. Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel. Ez az integráció lehetővé teszi, hogy a felhasználók a vállalati hitelesítő adataikkal jelentkezzenek be, és meglévő csoportokat és felhasználói fiókokat is használhatnak az erőforrásokhoz való hozzáférés biztosításához.
+Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM-hitelesítés, amelyek teljes mértékben kompatibilisek a Windows Server Active Directoryval. Ezeket a tartományi szolgáltatásokat a tartományvezérlők telepítése, kezelése és javítása nélkül használhatja fel. Az Azure AD DS integrálható a meglévő Azure AD-bérlővel. Ez az integráció lehetővé teszi a felhasználók számára, hogy a vállalati hitelesítő adataikkal jelentkezzenek be, és a meglévő csoportok és felhasználói fiókok segítségével biztosíthatja az erőforrásokhoz való hozzáférést.
 
-Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD DSt a PowerShell használatával.
+Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD DS-t a PowerShell használatával.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -31,29 +31,29 @@ Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD DSt a PowerShell haszná
 A cikk végrehajtásához a következő erőforrásokra van szükség:
 
 * Az Azure PowerShell telepítése és konfigurálása.
-    * Ha szükséges, kövesse az utasításokat a [Azure PowerShell modul telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz](/powershell/azure/install-az-ps).
-    * Győződjön meg róla, hogy bejelentkezik az Azure-előfizetésbe a [AzAccount][Connect-AzAccount] parancsmag használatával.
-* Az Azure AD PowerShell telepítése és konfigurálása.
-    * Ha szükséges, kövesse az [Azure ad PowerShell-modul telepítésére és az Azure ad-hez való kapcsolódásra](/powershell/azure/active-directory/install-adv2)vonatkozó utasításokat.
-    * Győződjön meg arról, hogy bejelentkezik az Azure AD-bérlőbe a [AzureAD][Connect-AzureAD] parancsmag használatával.
-* Az Azure AD DS engedélyezéséhez *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
-* Az Azure-előfizetésben *közreműködő* jogosultságokkal kell rendelkeznie a szükséges Azure AD DS-erőforrások létrehozásához.
+    * Szükség esetén kövesse az utasításokat [az Azure PowerShell-modul telepítéséhez és az Azure-előfizetéshez való csatlakozáshoz.](/powershell/azure/install-az-ps)
+    * Győződjön meg arról, hogy a [Connect-AzAccount][Connect-AzAccount] parancsmag használatával jelentkezik be az Azure-előfizetésbe.
+* Telepítse és konfigurálja az Azure AD PowerShellt.
+    * Szükség esetén kövesse az utasításokat [az Azure AD PowerShell-modul telepítéséhez és az Azure AD-hez való csatlakozáshoz.](/powershell/azure/active-directory/install-adv2)
+    * Győződjön meg arról, hogy a [Connect-AzureAD-parancsmag][Connect-AzureAD] használatával bejelentkezik az Azure AD-bérlőbe.
+* Az Azure AD DS engedélyezéséhez *globális rendszergazdai* jogosultságokra van szüksége az Azure AD-bérlőben.
+* A szükséges Azure AD DS-erőforrások létrehozásához *közreműködői* jogosultságokra van szüksége az Azure-előfizetésben.
 
-## <a name="create-required-azure-ad-resources"></a>Szükséges Azure AD-erőforrások létrehozása
+## <a name="create-required-azure-ad-resources"></a>A szükséges Azure AD-erőforrások létrehozása
 
-Az Azure AD DS használatához egy egyszerű szolgáltatásnév és egy Azure AD-csoport szükséges. Ezek az erőforrások lehetővé teszik, hogy az Azure AD DS felügyelt tartomány szinkronizálja az adatokat, és meghatározhatja, hogy mely felhasználók rendelkeznek rendszergazdai jogosultságokkal a felügyelt tartományban.
+Az Azure AD DS használatához egyszerű szolgáltatásra és egy Azure AD-csoportra van szükség. Ezek az erőforrások lehetővé teszik, hogy az Azure AD DS felügyelt tartomány adatokat szinkronizáljon, és meghatározza, hogy mely felhasználók rendelkeznek rendszergazdai engedélyekkel a felügyelt tartományban.
 
-Először hozzon létre egy Azure AD-szolgáltatásnevet az Azure AD DS számára a kommunikációhoz és a hitelesítéshez. A rendszer egy adott alkalmazásspecifikus azonosítót használ a *2565BD9D-DA50-47D4-8B85-4C97F669DC36*azonosítóval rendelkező *tartományvezérlői szolgáltatások* névvel. Ne módosítsa az alkalmazás AZONOSÍTÓját.
+Először hozzon létre egy Azure AD szolgáltatás névszerint az Azure AD DS kommunikálni és hitelesíteni magát. Egy adott alkalmazásazonosítót használ nevű *tartományvezérlő szolgáltatások* azonosítója *2565bd9d-da50-47d4-8b85-4c97f669dc36*. Ne módosítsa az alkalmazásazonosítót.
 
-Hozzon létre egy Azure AD-szolgáltatásnevet a [New-azureadserviceprincipal parancsmagot][New-AzureADServicePrincipal] parancsmag használatával:
+Hozzon létre egy Azure AD szolgáltatásnév a [New-AzureADServicePrincipal][New-AzureADServicePrincipal] parancsmag használatával:
 
 ```powershell
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Most hozzon létre egy *HRE DC-rendszergazdák*nevű Azure ad-csoportot. A csoportba felvett felhasználók engedélyt kapnak az adminisztrációs feladatok végrehajtására az Azure AD DS felügyelt tartományon.
+Most hozzon létre egy *AAD DC rendszergazdák*nevű Azure AD-csoportot. A csoporthoz hozzáadott felhasználók ezután engedélyt kapnak felügyeleti feladatok végrehajtására az Azure AD DS felügyelt tartományban.
 
-Hozza létre a *HRE DC rendszergazdák* csoportot a [New-AzureADGroup][New-AzureADGroup] parancsmag használatával:
+Hozza létre az *AAD DC rendszergazdák* csoportot az [Új-AzureADGroup][New-AzureADGroup] parancsmag használatával:
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -62,9 +62,9 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -MailNickName "AADDCAdministrators"
 ```
 
-Ha létrehozta a *HRE DC-rendszergazdák* csoportot, adjon hozzá egy felhasználót a csoporthoz az [Add-AzureADGroupMember][Add-AzureADGroupMember] parancsmag használatával. Először a Get [-AzureADGroup][Get-AzureADGroup] parancsmaggal szerezheti be a *HRE DC rendszergazdák* csoportjának azonosítóját, majd a kívánt felhasználó objektumazonosítót a [Get-AzureADUser][Get-AzureADUser] parancsmag használatával.
+Az *AAD DC rendszergazdák* csoport létrehozása, hozzá egy felhasználót a csoporthoz az [Add-AzureADGroupMember][Add-AzureADGroupMember] parancsmag használatával. Először az *AAD DC rendszergazdák* csoportobjektum-azonosítót a [Get-AzureADGroup][Get-AzureADGroup] parancsmag használatával kapja meg, majd a kívánt felhasználói objektumazonosítót a [Get-AzureADUser][Get-AzureADUser] parancsmag használatával.
 
-A következő példában a fiók felhasználói objektumának azonosítója a `admin@aaddscontoso.onmicrosoft.com`egyszerű felhasználónevével. Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
+A következő példában a felhasználói objektum azonosítója a `admin@aaddscontoso.onmicrosoft.com`fiók hoz egy. Cserélje le ezt a felhasználói fiókot annak a felhasználónak az upn-jára, akit hozzá szeretne adni az *AAD DC Rendszergazdák* csoporthoz:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -83,13 +83,13 @@ Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjec
 
 ## <a name="create-supporting-azure-resources"></a>Támogató Azure-erőforrások létrehozása
 
-Először regisztrálja a Azure AD Domain Services erőforrás-szolgáltatót a [Register-AzResourceProvider][Register-AzResourceProvider] parancsmag használatával:
+Először regisztrálja az Azure AD tartományi szolgáltatások erőforrás-szolgáltatót a [Register-AzResourceProvider][Register-AzResourceProvider] parancsmag használatával:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Ezután hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][New-AzResourceGroup] parancsmag használatával. A következő példában az erőforráscsoport neve *myResourceGroup* , és a *westus* régióban jön létre. Saját név és kívánt régió használata:
+Ezután hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][New-AzResourceGroup] parancsmag használatával. A következő példában az erőforráscsoport neve *myResourceGroup,* és a *westus* régióban jön létre. Használja a saját nevét és a kívánt régiót:
 
 ```powershell
 $ResourceGroupName = "myResourceGroup"
@@ -101,9 +101,9 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-Hozza létre a virtuális hálózatot és az alhálózatokat a Azure AD Domain Serviceshoz. Két alhálózat jön létre – egy a *DomainServices*, egy pedig a számítási *feladatok*számára. Az Azure AD DS üzembe helyezése a dedikált *DomainServices* alhálózaton történik. Ne helyezzen üzembe más alkalmazásokat vagy munkaterheléseket ebbe az alhálózatba. A többi virtuális gép esetében használja a különálló *munkaterheléseket* vagy más alhálózatokat.
+Hozza létre a virtuális hálózatot és az alhálózatokat az Azure AD tartományi szolgáltatásokhoz. Két alhálózat jön létre - egy a *DomainServices*és egy a *számítási feladatokhoz.* Az Azure AD DS a dedikált *DomainServices-alhálózatba* van telepítve. Ne telepítsen más alkalmazásokat vagy számítási feladatokat ebbe az alhálózatba. Használja a külön *számítási feladatok* vagy más alhálózatok a többi virtuális gépek.
 
-Hozza létre az alhálózatokat a [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] parancsmaggal, majd hozza létre a virtuális hálózatot a [New-AzVirtualNetwork][New-AzVirtualNetwork] parancsmag használatával.
+Hozza létre az alhálózatokat a [New-AzVirtualSubnetConfig][New-AzVirtualNetworkSubnetConfig] parancsmag használatával, majd hozza létre a virtuális hálózatot a [New-AzVirtualNetwork][New-AzVirtualNetwork] parancsmag használatával.
 
 ```powershell
 $VnetName = "myVnet"
@@ -126,15 +126,15 @@ $Vnet= New-AzVirtualNetwork `
   -Subnet $AaddsSubnet,$WorkloadSubnet
 ```
 
-## <a name="create-an-azure-ad-ds-managed-domain"></a>Azure AD DS felügyelt tartomány létrehozása
+## <a name="create-an-azure-ad-ds-managed-domain"></a>Azure AD DS felügyelt tartomány ának létrehozása
 
-Most hozzunk létre egy Azure AD DS felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
+Most hozzon létre egy Azure AD DS felügyelt tartományt. Állítsa be az Azure-előfizetés-azonosítóját, majd adja meg a felügyelt tartomány nevét, például *aaddscontoso.com.* Az előfizetés-azonosítóa a [Get-AzSubscription][Get-AzSubscription] parancsmag használatával szerezhető be.
 
-Ha olyan régiót választ, amely támogatja az Availability Zones-t, az Azure AD DS erőforrásai a további redundancia érdekében a zónák között oszlanak meg.
+Ha olyan régiót választ, amely támogatja a rendelkezésre állási zónákat, az Azure AD DS-erőforrások zónák között vannak elosztva a további redundancia érdekében.
 
-A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban.
+A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében legalább három különálló zóna van az összes engedélyezett régióban.
 
-Nem kell konfigurálnia az Azure AD DS a zónák közötti elosztására. Az Azure platform automatikusan kezeli az erőforrások zónájának eloszlását. További információért és a régiók rendelkezésre állásának megtekintéséhez lásd: [Mi a Availability Zones az Azure-ban?][availability-zones].
+Nincs mit beállítani az Azure AD DS zónák között elosztott. Az Azure platform automatikusan kezeli az erőforrások zónaelosztását. További információért és a régió elérhetőségéről a [Mik azok a rendelkezésre állási zónák az Azure-ban?][availability-zones]
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -148,22 +148,22 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. Az Azure AD DS felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. Az Azure Portal az Azure AD DS felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
+Néhány percet vesz igénybe az erőforrás létrehozása, és adja vissza a vezérlést a PowerShell-parancssorba. Az Azure AD DS felügyelt tartomány továbbra is kivan építve a háttérben, és akár egy órát is igénybe vehet a központi telepítés befejezéséhez. Az Azure Portalon az Azure AD DS felügyelt tartomány **áttekintése** lap mutatja az aktuális állapotot ebben a telepítési szakaszban.
 
-Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befejeződött, a következő feladatokat kell elvégezni:
+Ha az Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartomány a kiépítés befejeződött, a következő feladatokat kell végrehajtani:
 
-* A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
-    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
-* Ha olyan régióban hozott létre Azure AD DS felügyelt tartományt, amely támogatja a Availability Zones, hozzon létre egy hálózati biztonsági csoportot az Azure AD DS felügyelt tartományhoz tartozó virtuális hálózat forgalmának korlátozására. Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez.
-    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza és konfigurálja a hálózati biztonsági csoportot.
-* [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
+* Frissítse a virtuális hálózat DNS-beállításait, hogy a virtuális gépek megtalálják a tartományhoz való csatlakozáshoz vagy hitelesítéshez szükséges felügyelt tartományt.
+    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományát a portálon. Az **Áttekintés ablakban** a rendszer kéri, hogy automatikusan konfigurálja ezeket a DNS-beállításokat.
+* Ha létrehozott egy Azure AD DS felügyelt tartományt egy olyan régióban, amely támogatja a rendelkezésre állási zónákat, hozzon létre egy hálózati biztonsági csoportot az Azure AD DS felügyelt tartomány virtuális hálózatának forgalom korlátozására. Létrejön egy Azure-szabvány terheléselosztó, amely megköveteli, hogy ezeket a szabályokat kell elhelyezni. Ez a hálózati biztonsági csoport biztonságossá teszi az Azure AD DS-t, és a felügyelt tartomány megfelelő működéséhez szükséges.
+    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki az Azure AD DS felügyelt tartományát a portálon. Az **Áttekintés ablakban** a rendszer kéri, hogy automatikusan hozza létre és konfigurálja a hálózati biztonsági csoportot.
+* [Engedélyezze a jelszó-szinkronizálást az Azure AD tartományi szolgáltatásokkal,](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) hogy a végfelhasználók vállalati hitelesítő adataikkal bejelentkezhessenek a felügyelt tartományba.
 
-## <a name="complete-powershell-script"></a>PowerShell-parancsfájl befejezése
+## <a name="complete-powershell-script"></a>Teljes PowerShell-parancsfájl
 
-A következő teljes PowerShell-parancsfájl ötvözi a cikkben látható összes feladatot. Másolja a szkriptet, és mentse egy `.ps1` kiterjesztésű fájlba. Futtassa a szkriptet egy helyi PowerShell-konzolon vagy a [Azure Cloud Shell][cloud-shell].
+A következő teljes PowerShell-parancsfájl egyesíti a cikkben látható összes feladatot. Másolja a parancsfájlt a parancsfájlba, és mentse egy kiterjesztésű `.ps1` fájlba. Futtassa a parancsfájlt egy helyi PowerShell-konzolon vagy az [Azure Cloud Shellben.][cloud-shell]
 
 > [!NOTE]
-> Az Azure AD DS engedélyezéséhez globális rendszergazdának kell lennie az Azure AD-bérlő számára. Emellett az Azure-előfizetésben legalább *közreműködő* jogosultsággal is rendelkeznie kell.
+> Az Azure AD DS engedélyezéséhez az Azure AD-bérlő globális rendszergazdájának kell lennie. Emellett legalább *közreműködői* jogosultságokat is meg kell tudnia az Azure-előfizetésben.
 
 ```powershell
 # Change the following values to match your deployment.
@@ -235,19 +235,19 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. Az Azure AD DS felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. Az Azure Portal az Azure AD DS felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
+Néhány percet vesz igénybe az erőforrás létrehozása, és adja vissza a vezérlést a PowerShell-parancssorba. Az Azure AD DS felügyelt tartomány továbbra is kivan építve a háttérben, és akár egy órát is igénybe vehet a központi telepítés befejezéséhez. Az Azure Portalon az Azure AD DS felügyelt tartomány **áttekintése** lap mutatja az aktuális állapotot ebben a telepítési szakaszban.
 
-Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befejeződött, a következő feladatokat kell elvégezni:
+Ha az Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartomány a kiépítés befejeződött, a következő feladatokat kell végrehajtani:
 
-* A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
-    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
-* Ha olyan régióban hozott létre Azure AD DS felügyelt tartományt, amely támogatja a Availability Zones, hozzon létre egy hálózati biztonsági csoportot az Azure AD DS felügyelt tartományhoz tartozó virtuális hálózat forgalmának korlátozására. Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez.
-    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza és konfigurálja a hálózati biztonsági csoportot.
-* [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
+* Frissítse a virtuális hálózat DNS-beállításait, hogy a virtuális gépek megtalálják a tartományhoz való csatlakozáshoz vagy hitelesítéshez szükséges felügyelt tartományt.
+    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományát a portálon. Az **Áttekintés ablakban** a rendszer kéri, hogy automatikusan konfigurálja ezeket a DNS-beállításokat.
+* Ha létrehozott egy Azure AD DS felügyelt tartományt egy olyan régióban, amely támogatja a rendelkezésre állási zónákat, hozzon létre egy hálózati biztonsági csoportot az Azure AD DS felügyelt tartomány virtuális hálózatának forgalom korlátozására. Létrejön egy Azure-szabvány terheléselosztó, amely megköveteli, hogy ezeket a szabályokat kell elhelyezni. Ez a hálózati biztonsági csoport biztonságossá teszi az Azure AD DS-t, és a felügyelt tartomány megfelelő működéséhez szükséges.
+    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki az Azure AD DS felügyelt tartományát a portálon. Az **Áttekintés ablakban** a rendszer kéri, hogy automatikusan hozza létre és konfigurálja a hálózati biztonsági csoportot.
+* [Engedélyezze a jelszó-szinkronizálást az Azure AD tartományi szolgáltatásokkal,](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) hogy a végfelhasználók vállalati hitelesítő adataikkal bejelentkezhessenek a felügyelt tartományba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure AD DS felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakozhat egy Windows rendszerű virtuális géphez][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatolási szinkronizálást][tutorial-phs].
+Az Azure AD DS felügyelt tartományának működés közbeni megtekintéséhez [tartományban csatlakozhat egy Windows virtuális géphez,][windows-join] [konfigurálhatja a biztonságos LDAP-t][tutorial-ldaps], és beállíthatja a [jelszókivonat-szinkronizálást.][tutorial-phs]
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

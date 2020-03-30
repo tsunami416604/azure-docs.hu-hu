@@ -1,100 +1,100 @@
 ---
-title: A Istio áttekintése
-description: A Istio áttekintésének beszerzése
+title: Istio áttekintése
+description: Az Istio áttekintése
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593900"
 ---
-# <a name="istio"></a>Istio
+# <a name="istio"></a>Istio között
 
 ## <a name="overview"></a>Áttekintés
 
-A [Istio][istio] egy teljes funkcionalitású, testreszabható és bővíthető szolgáltatás háló.
+[Istio][istio] egy teljes funkcionalitású, testreszabható, és bővíthető szolgáltatás háló.
 
 ## <a name="architecture"></a>Architektúra
 
-A Istio egy, a [megbízottat][envoy-proxy]-alapú oldalkocsiból álló adatsíkokat biztosít. Ezek az intelligens proxyk a hálózott alkalmazások és munkaterhelések összes hálózati forgalmát vezérlik.
+Istio biztosít egy adatsík, amely áll [követ-alapú][envoy-proxy]oldalkocsik. Ezek az intelligens proxyk szabályozzák az összes hálózati forgalmat az egybeesített alkalmazásokban és számítási feladatokban.
 
-A vezérlő síkja a következő [összetevőkön][what-is-istio]keresztül kezeli a konfigurációt, a szabályzatot és a telemetria:
+A vezérlősík a következő összetevőkön keresztül kezeli a konfigurációt, a házirendet és a telemetriai [adatokat:][what-is-istio]
 
-- **Keverő** – a hozzáférés-vezérlési és használati szabályzatok betartatása. A telemetria gyűjti a [Prometheus][prometheus]-ba leküldett proxykat.
+- **Mixer** – Hozzáférés-vezérlési és -használati házirendek kényszerítése. A [Prometheusba][prometheus]telemetriai adatokat gyűjt.
 
-- **Pilot** – szolgáltatás-felderítési és forgalomirányítási házirend/konfiguráció a proxyk számára.
+- **Próba –** Szolgáltatásfelderítési és forgalomkezelési házirendet/-konfigurációt biztosít a proxykszámára.
 
-- A **Citadella** olyan identitás-és biztonsági képességeket biztosít, amelyek lehetővé teszik a szolgáltatások közötti mTLS.
+- **Citadel -** Biztosítja az identitás és a biztonsági képességek, amelyek lehetővé teszik az mTLS szolgáltatások között.
 
-- **Hasáb** – absztrakt és konfigurációt biztosít az összetevők számára.
+- **Hasáb** – Absztrakt, és konfigurációt biztosít az összetevőkhöz.
 
-A következő architektúra-diagram azt mutatja be, hogy az adatsíkon és a vezérlési síkon lévő különböző összetevők hogyan hatnak egymásra.
-
-
-![A Istio összetevőinek és architektúrájának áttekintése.](media/servicemesh/istio/about-architecture.png)
+Az alábbi architektúradiagram bemutatja, hogy az adatsíkon és a vezérlősíkon belüli különböző összetevők hogyan hatnak egymásra.
 
 
-## <a name="selection-criteria"></a>Kiválasztási feltételek
+![Istio-összetevők és architektúra áttekintése.](media/servicemesh/istio/about-architecture.png)
 
-Fontos megérteni és figyelembe venni a következő területeket a számítási feladatok Istio kiértékelése során:
+
+## <a name="selection-criteria"></a>Kiválasztási kritériumok
+
+Fontos, hogy az Istio számítási feladatainak értékelésekor megértse és vegye figyelembe a következő területeket:
 
 - [Tervezési célok](#design-goals)
-- [Képességek](#capabilities)
+- [Funkciók](#capabilities)
 - [Forgatókönyvek](#scenarios)
 
 
 ### <a name="design-goals"></a>Tervezési célok
 
-A következő tervezési célok a Istio projektet [ismertetik][design-goals] :
+A következő tervezési célok [irányítják][design-goals] az Istio projektet:
 
-- Az **átláthatóság maximalizálása** – lehetővé teszi, hogy a rendszerből valós érték beszerzéséhez minimálisan szükséges mennyiségű munkát fogadjanak el.
+- **Átláthatóság maximalizálása** – Lehetővé teszi az elfogadást a minimális munkamennyiséggel, hogy valódi értéket kapjon a rendszerből.
 
-- **Bővíthetőség** – képesnek kell lennie növelni és alkalmazkodni a változó igényekhez.
+- **Bővíthetőség** - Képesnek kell lennie arra, hogy növekedjen és alkalmazkodjon a változó igényekhez.
 
-- **Hordozhatóság** – könnyen futtatható különböző típusú környezetekben – a felhőben, a helyszínen.
+- **Hordozhatóság** – Egyszerűen futtatható különböző környezetekben – felhőalapú, helyszíni környezetekben.
 
-- **Házirend-egységesség** – a házirend-definíció konzisztenciája számos különböző erőforrásban.
+- **Házirend egységessége** – a házirend-definíció konzisztenciája az erőforrások sokféleségében.
 
 
 ### <a name="capabilities"></a>Funkciók
 
-A Istio a következő funkciókat biztosítja:
+Az Istio a következő képességeket biztosítja:
 
-- **Mesh** – átjárók (több fürt), virtuális gépek (mesh-bővítés)
+- **Háló** – átjárók (többfürtös), virtuális gépek (hálóbővítés)
 
-- **Traffic Management** – útválasztás, felosztás, időtúllépés, áramkör-megszakítók, újrapróbálkozások, bejövő és kimenő forgalom
+- **Forgalomirányítás** – útválasztás, felosztás, időmegosztás, megszakítók, újrapróbálkozások, bejutás, kijutás
 
-- **Házirend** – hozzáférés-vezérlés, díjszabási korlát, kvóta, egyéni házirend-adapterek
+- **Házirend** – hozzáférés-vezérlés, sebességkorlát, kvóta, egyéni házirend-adapterek
 
-- **Biztonság** – hitelesítés (JWT), engedélyezés, titkosítás (mTLS), külső hitelesítésszolgáltató (HashiCorp-tároló)
+- **Biztonság** – hitelesítés (jwt), engedélyezés, titkosítás (mTLS), külső hitelesítésszolgáltató (HashiCorp Vault)
 
-- **Megfigyelhetőség** – arany mérőszámok, tükrözés, nyomkövetés, egyéni adapterek, Prometheus, grafana
+- **Megfigyelhetőség** – arany mérőszámok, tükör, nyomkövetés, egyedi adapterek, prometheus, grafana
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
-A Istio kiválóan alkalmas a következő helyzetekben:
+Istio kiválóan alkalmas, és javasolt a következő forgatókönyvek:
 
-- Bővíthetőség és a képességek gazdag készletének megkövetelése
+- Bővíthetőség és gazdag képességek megkövetelése
 
-- A háló bővítése virtuális gépeken alapuló számítási feladatokkal
+- Hálóbővítés virtuálisgép-alapú számítási feladatokhoz
 
-- Több fürtből álló szolgáltatás hálója
+- Többfürtös szolgáltatásháló
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az alábbi dokumentáció ismerteti, hogyan telepítheti a Istio-t az Azure Kubernetes Service-ben (ak):
+A következő dokumentáció ismerteti, hogyan telepítheti az Istio-t az Azure Kubernetes szolgáltatásra (AKS):
 
 > [!div class="nextstepaction"]
-> [A Istio telepítése az Azure Kubernetes szolgáltatásban (ak)][istio-install]
+> [Istio telepítése az Azure Kubernetes szolgáltatásban (AKS)][istio-install]
 
-A Istio-fogalmakat és a további üzembe helyezési modelleket továbbra is megismerheti:
+Az Istio-fogalmakat és további telepítési modelleket is felfedezheti:
 
 - [Istio fogalmak][what-is-istio]
-- [Istio üzembe helyezési modellek][deployment-models]
+- [Istio telepítési modellek][deployment-models]
 
 <!-- LINKS - external -->
 [istio]: https://istio.io

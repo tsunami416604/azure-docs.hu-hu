@@ -1,6 +1,6 @@
 ---
-title: LDAP-szinkronizálás a Ranger és az Apache Ambari az Azure HDInsight
-description: Foglalkozzon az LDAP-szinkronizálással a Ranger-és Ambari, és adjon meg általános irányelveket.
+title: LDAP-szinkronizálás a Rangerben és az Apache Ambariban az Azure HDInsightban
+description: Cím zsinat a LDAP szinkronizál -ban Őrszem és Ambari és beszerez általános irányelvek.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,75 +8,75 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77463218"
 ---
-# <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>LDAP-szinkronizálás a Ranger és az Apache Ambari az Azure HDInsight
+# <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>LDAP-szinkronizálás a Rangerben és az Apache Ambariban az Azure HDInsightban
 
-A HDInsight Enterprise Security Package (ESP) fürtök a Rangert használják az engedélyezéshez. Az Apache Ambari és a Ranger egymástól függetlenül szinkronizálja a felhasználókat és a csoportokat, és egy kicsit másképp működik. Ebből a cikkből megtudhatja, hogyan kell kezelni az LDAP-szinkronizálást a Rangerben és a Ambari.
+A HDInsight Enterprise Security Package (ESP) fürtök rangert használnak az engedélyezéshez. Az Apache Ambari és a Ranger egymástól függetlenül szinkronizálja a felhasználókat és a csoportokat, és egy kicsit másképp működik. Ez a cikk célja, hogy foglalkozzon az LDAP-szinkronizálás ranger és Ambari.
 
 ## <a name="general-guidelines"></a>Általános irányelvek
 
-* A fürtöket mindig a csoportokkal telepítse.
-* A Ambari és a Rangerben lévő csoportok szűrőinek módosítása helyett próbálja meg felügyelni ezeket az Azure AD-ben, és használjon beágyazott csoportokat a szükséges felhasználók bevonásához.
-* A felhasználó szinkronizálása után a rendszer nem távolítja el, még akkor sem, ha a felhasználó nem tagja a csoportnak.
-* Ha közvetlenül módosítania kell az LDAP-szűrőket, először a felhasználói felületet kell használnia, mivel néhány érvényesítést tartalmaz.
+* A fürtöket mindig csoportoksegítségével telepítse.
+* Ahelyett, hogy az Ambari és a Ranger csoportszűrőit módosítaná, próbálja meg kezelni ezeket az Azure AD-ben, és egymásba ágyazott csoportok használatával hozza be a szükséges felhasználókat.
+* A felhasználó szinkronizálása után a rendszer akkor sem távolítja el, ha a felhasználó nem tagja a csoportoknak.
+* Ha közvetlenül kell módosítania az LDAP-szűrőket, először használja a felhasználói felületet, mivel az bizonyos érvényesítéseket tartalmaz.
 
-## <a name="users-are-synced-separately"></a>A felhasználók szinkronizálása külön történik
+## <a name="users-are-synced-separately"></a>A felhasználók szinkronizálása külön-külön
 
-A Ambari és a Ranger nem osztja meg a felhasználói adatbázist, mert két különböző célt szolgálnak. Ha a felhasználónak a Ambari felhasználói felületét kell használnia, a felhasználónak szinkronizálnia kell a Ambari. Ha a felhasználó nincs szinkronizálva a Ambari, a Ambari UI/API elutasítja, de a rendszer más részei is működni fognak (a Ranger vagy a Resource Manager által védett, és nem Ambari). Ha azt szeretné, hogy a felhasználó egy Ranger-szabályzatba kerüljön, szinkronizálja a felhasználót a Rangervel.
+Az Ambari és a Ranger nem osztják meg a felhasználói adatbázist, mert két különböző célt szolgálnak. Ha a felhasználónak az Ambari felhasználói felületét kell használnia, akkor a felhasználót szinkronizálni kell az Ambari-val. Ha a felhasználó nincs szinkronizálva ambari, Ambari UI / API elutasítja, de más részein a rendszer működni fog (ezek által őrzött Ranger vagy Resource Manager, és nem Ambari). Ha azt szeretné, hogy a felhasználó egy Ranger-szabályzat, majd szinkronizálja a felhasználót ranger.
 
-Biztonságos fürt telepítésekor a csoporttagok szinkronizálva vannak a Ambari és a Ranger tranzitívnak (az összes alcsoporttal és azok tagjaival). 
+Biztonságos fürt telepítésekor a csoporttagok (az összes alcsoport és azok tagjai) az Ambari és a Ranger között is szinkronizálódnak.When a secure cluster is deployed, group members are sync transitively (all the algroups and their members) to both ambari and Ranger. 
 
-## <a name="ambari-user-sync-and-configuration"></a>Ambari-felhasználó szinkronizálása és konfigurálása
+## <a name="ambari-user-sync-and-configuration"></a>Ambari felhasználói szinkronizálás és konfiguráció
 
-A fő csomópontok egy cron-feladatot (`/opt/startup_scripts/start_ambari_ldap_sync.py`) futtatnak óránként, hogy ütemezik a felhasználói szinkronizálást. A cron-feladatok meghívja a Ambari REST API-kat a szinkronizálás végrehajtásához. A parancsfájl elküldi a szinkronizálandó felhasználók és csoportok listáját (mivel előfordulhat, hogy a felhasználók nem tartoznak a megadott csoportokhoz, mindkettő külön van megadva). A Ambari a sAMAccountName a Felhasználónév és az összes csoporttagok tranzitívnak szinkronizálja.
+A fő csomópontokból óránként futtat `/opt/startup_scripts/start_ambari_ldap_sync.py`egy cron-feladatot a felhasználói szinkronizálás ütemezéséhez. A cron feladat meghívja az Ambari rest API-kat a szinkronizálás végrehajtásához. A parancsfájl elküldi a szinkronizálandó felhasználók és csoportok listáját (mivel a felhasználók nem tartoznak a megadott csoportokhoz, mindkettő külön van megadva). Az Ambari a sAMAccountName-t felhasználónévként és a csoport összes tagjaként szinkronizálja, tranzitív módon.
 
-A naplóknak `/var/log/ambari-server/ambari-server.log`kell lennie. További információ: a [Ambari naplózási szintjének konfigurálása](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
+A naplókat a `/var/log/ambari-server/ambari-server.log`ban kell lennie. További információ: [Ambari naplózási szint konfigurálása](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
 
-Data Lake-fürtökön a felhasználó létrehozás utáni hookja a szinkronizált felhasználók otthoni mappáinak létrehozására szolgál, amelyek a Kezdőlap mappák tulajdonosaként vannak beállítva. Ha a felhasználó nincs megfelelően szinkronizálva a Ambari, akkor a felhasználó az átmeneti és az egyéb ideiglenes mappák elérésével kapcsolatos hibákba ütközne.
+A Data Lake-fürtökben a felhasználó létrehozása utáni hook a szinkronizált felhasználók kezdőmappáinak létrehozására szolgál, és a kezdőmappák tulajdonosaiként vannak beállítva. Ha a felhasználó nincs megfelelően szinkronizálva az Ambari-val, akkor a felhasználó nak hibákkal kell szembenéznie az átmeneti és egyéb ideiglenes mappák elérésében.
 
-### <a name="update-groups-to-be-synced-to-ambari"></a>A Ambari szinkronizálandó csoportok frissítése
+### <a name="update-groups-to-be-synced-to-ambari"></a>Az Ambari-val szinkronizálandó csoportok frissítése
 
-Ha nem tudja kezelni a csoportok tagságait az Azure AD-ben, két lehetőség közül választhat:
+Ha nem tudja kezelni a csoporttagságokat az Azure AD-ben, két lehetősége van:
 
-* Hajtson végre egy egyszeri szinkronizálást az [LDAP-felhasználók és-csoportok szinkronizálása](https://docs.cloudera.com/HDPDocuments/HDP3/latest/ambari-authentication-ldap-ad/content/authe_ldapad_synchronizing_ldap_users_and_groups.html)című részben leírtak szerint. Ha a csoporttagság megváltozik, újra kell végeznie ezt a szinkronizálást.
+* Egyszeri szinkronizálás végrehajtása az [LDAP-felhasználók és -csoportok szinkronizálása](https://docs.cloudera.com/HDPDocuments/HDP3/latest/ambari-authentication-ldap-ad/content/authe_ldapad_synchronizing_ldap_users_and_groups.html)című alkalommal teljesebb mértékben. Amikor a csoporttagság megváltozik, újra el kell végeznie ezt a szinkronizálást.
 
-* Írjon egy cron-feladatot, és rendszeresen hívja meg a [AMBARI API](https://community.cloudera.com/t5/Support-Questions/How-do-I-automate-the-Ambari-LDAP-sync/m-p/96634) -t az új csoportokkal.
+* Írjon egy cron feladatot, hívja meg az [Ambari API-t rendszeresen](https://community.cloudera.com/t5/Support-Questions/How-do-I-automate-the-Ambari-LDAP-sync/m-p/96634) az új csoportokkal.
 
-## <a name="ranger-user-sync-and-configuration"></a>A Ranger felhasználói szinkronizálása és konfigurálása
+## <a name="ranger-user-sync-and-configuration"></a>Ranger felhasználó szinkronizálása és konfigurálása
 
-A Ranger egy beépített szinkronizálási motorral rendelkezik, amely óránként fut a felhasználók szinkronizálásához. Nem osztja meg a felhasználói adatbázist a Ambari. A HDInsight úgy konfigurálja a keresési szűrőt, hogy szinkronizálja a rendszergazda felhasználót, a watchdog felhasználót és a csoportnak a fürt létrehozásakor megadott tagjait. A csoporttagok szinkronizálva lesznek a tranzitívnak:
+A Ranger beépített szinkronizálási motorral rendelkezik, amely óránként fut a felhasználók szinkronizálásához. Nem osztja meg a felhasználói adatbázist az Ambari-val. A HDInsight úgy konfigurálja a keresési szűrőt, hogy szinkronizálja a rendszergazdai felhasználót, a figyelőt és a fürt létrehozása során megadott csoporttagokat. A csoport tagok lesz szinkronizált tranzitíven:
 
-* A növekményes szinkronizálás letiltása.
-* A felhasználói csoport szinkronizálási térképének engedélyezése.
-* Adja meg a keresési szűrőt a tranzitív csoporttagok belefoglalásához.
-* A csoportok felhasználóinak és sAMAccountName szinkronizálása.
+* Tiltsa le a növekményes szinkronizálást.
+* Felhasználói csoport szinkronizálási leképezésének engedélyezése.
+* Adja meg a keresési szűrőt a tranzitív csoport tagok felvételéhez.
+* Szinkronizálás sAMAccountName a felhasználók és a név attribútum csoportok.
 
-### <a name="group-or-incremental-sync"></a>Csoport-vagy növekményes szinkronizálás
+### <a name="group-or-incremental-sync"></a>Csoport vagy növekményes szinkronizálás
 
-A Ranger támogatja a csoportos szinkronizálási lehetőséget, de a felhasználói szűrővel való metszéspontként működik. Nem a csoporttagság és a felhasználói szűrő közötti Unió. A Ranger csoport-szinkronizálási szűrő tipikus használati esete a-Group Filter: (DN = clusteradmingroup), felhasználói szűrő: (város = Seattle).
+A Ranger támogatja a csoportszinkronizálási beállítást, de a felhasználói szűrővel való metszéspontként működik. Nem egy unió a csoporttagságok és a felhasználói szűrő között. A Ranger csoportszinkronizálási szűrőjének tipikus használati esete - csoportszűrő: (dn=clusteradmingroup), felhasználói szűrő: (city=seattle).
 
-A növekményes szinkronizálás csak azokra a felhasználókra működik, akik már szinkronizálva vannak (az első alkalommal). A növekményes szinkronizálás nem szinkronizálja a csoportokhoz hozzáadott új felhasználókat a kezdeti szinkronizálás után.
+A növekményes szinkronizálás csak a már szinkronizált felhasználóknál működik (az első alkalommal). A növekményes nem szinkronizálja a csoportokhoz a kezdeti szinkronizálás után hozzáadott új felhasználókat.
 
-### <a name="update-ranger-sync-filter"></a>A Ranger szinkronizálási szűrő frissítése
+### <a name="update-ranger-sync-filter"></a>A Ranger-szinkronizálási szűrő frissítése
 
-Az LDAP-szűrő a Ambari felhasználói FELÜLETén, a Ranger felhasználó – szinkronizálás konfigurálása szakaszban található. A meglévő szűrő a `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))`formában jelenik meg. Győződjön meg arról, hogy a predikátumot a végén adja hozzá, majd tesztelje a szűrőt `net ads` keresési parancs vagy az Ldp. exe használatával, vagy valamilyen hasonló módon.
+Az LDAP-szűrő az Ambari felhasználói felületén, a Ranger felhasználószinkronizáláskonfigurációs szakaszban található. A meglévő szűrő a `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))`képernyőn jelenik meg. Győződjön meg arról, hogy predikátumot `net ads` ad hozzá a végén, és tesztelje a szűrőt a keresési parancs vagy az ldp.exe vagy valami hasonló használatával.
 
-## <a name="ranger-user-sync-logs"></a>A Ranger felhasználói szinkronizálási naplói
+## <a name="ranger-user-sync-logs"></a>Ranger felhasználói szinkronizálási naplók
 
-A Ranger felhasználói szinkronizálása a átjárócsomópontokkal közül bármelyikből kiléphet. A naplók `/var/log/ranger/usersync/usersync.log`találhatók. A naplók részletességének növeléséhez hajtsa végre a következő lépéseket:
+Ranger felhasználói szinkronizálás történhet ki bármelyik headnodes. A naplók a `/var/log/ranger/usersync/usersync.log`. A naplók részletességének növeléséhez tegye a következő lépéseket:
 
-1. Jelentkezzen be a Ambari.
-1. Lépjen a Ranger-konfiguráció szakaszra.
-1. Lépjen a speciális **usersync-log4j** szakaszra.
-1. Módosítsa a `log4j.rootLogger` `DEBUG` szintre (a módosítás után a következőhöz hasonlóan kell kinéznie: `log4j.rootLogger = DEBUG,logFile,FilterLog`).
-1. Mentse a konfigurációt, és indítsa újra a Rangert.
+1. Jelentkezzen be az Ambariba.
+1. Nyissa meg a Ranger konfigurációs szakaszt.
+1. Nyissa meg a Speciális **usersync-log4j szakaszt.**
+1. Változtassa `log4j.rootLogger` meg `DEBUG` a szintet (Változás `log4j.rootLogger = DEBUG,logFile,FilterLog`után meg kell kinéznie ).
+1. Mentse a konfigurációt, és indítsa újra a rangert.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Hitelesítési problémák az Azure HDInsight](./domain-joined-authentication-issues.md)
+* [Hitelesítési problémák az Azure HDInsightban](./domain-joined-authentication-issues.md)
 * [Azure AD-felhasználók szinkronizálása HDInsight-fürttel](../hdinsight-sync-aad-users-to-cluster.md)

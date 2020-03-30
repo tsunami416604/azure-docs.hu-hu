@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8931ba97cf72891c78e20389be10178dd2c0317a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594258"
 ---
-A Windows PowerShell-alapú rendszerhéjában a `Invoke-WebRequest` segítségével töltse le a Consul Helm chart kiadást, majd bontsa ki a `Expand-Archive` a következő módon:
+A Windows PowerShell-alapú rendszerhéjában töltse `Invoke-WebRequest` le a Consul Helm `Expand-Archive` diagram kiadását, majd bontsa ki az alábbiak szerint:
 
 ```powershell
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

@@ -1,5 +1,5 @@
 ---
-title: GlusterFS az Azure-beli virtuális gépeken a RHEL for SAP NetWeaver szolgáltatáshoz | Microsoft Docs
+title: GlusterFS az Azure-beli virtuális gépeken RHEL-en AZ SAP NetWeaver számára | Microsoft dokumentumok
 description: Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
 ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77591914"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
@@ -27,14 +27,14 @@ ms.locfileid: "77591914"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -42,93 +42,93 @@ ms.locfileid: "77591914"
 
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
-Ez a cikk leírja, hogyan telepítheti a virtuális gépeket, konfigurálhatja a virtuális gépeket, valamint telepítheti a GlusterFS-fürtöt, amely egy magasan elérhető SAP-rendszer megosztott adattárolására használható.
-Ez az útmutató a két SAP-rendszer, a NW1 és a NW2 által használt GlusterFS beállítását ismerteti. A példában szereplő erőforrások nevei (például a virtuális gépek, a virtuális hálózatok) feltételezik, hogy az [SAP fájlkiszolgáló sablont][template-file-server] használta a **glust**erőforrás-előtaggal.
+Ez a cikk ismerteti, hogyan telepítheti a virtuális gépeket, konfigurálhatja a virtuális gépeket, és telepíthet egy GlusterFS-fürtöt, amely egy magas rendelkezésre állású SAP-rendszer megosztott adatainak tárolására használható.
+Ez az útmutató bemutatja, hogyan lehet beállítani a GlusterFS-t, amelyet két SAP-rendszer, az NW1 és az NW2 használ. A példában szereplő erőforrások (például virtuális gépek, virtuális hálózatok) neve feltételezi, hogy az [SAP fájlkiszolgáló sablont][template-file-server] a **glust**erőforráselőtaggal használta.
 
-Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat
+Olvassa el először a következő SAP-megjegyzéseket és dokumentumokat
 
-* SAP-Megjegyzés [1928533], amely a következőket tartalmazta:
-  * Az SAP-szoftverek üzembe helyezéséhez támogatott Azure-beli virtuálisgép-méretek listája
-  * Fontos kapacitási információk Azure-beli virtuális gépek méreteihez
-  * Támogatott SAP-szoftverek és operációs rendszerek (OS) és adatbázis-kombinációk
-  * A Windows és a Linux rendszerhez szükséges SAP kernel verziója Microsoft Azure
+* Az SAP Note [1928533,]amely:
+  * Az SAP-szoftverek telepítéséhez támogatott Azure virtuális gépméretek listája
+  * Fontos kapacitásadatok az Azure virtuális gépek méretéhez
+  * Támogatott SAP szoftverek, operációs rendszer (OS) és adatbázis-kombinációk
+  * Szükséges SAP kernel verzió Windows és Linux rendszeren a Microsoft Azure-ban
 
-* Az SAP Note [2015553] az SAP által támogatott SAP-szoftverek Azure-beli üzembe helyezésének előfeltételeit sorolja fel.
-* Az SAP Megjegyzés [2002167] ajánlott operációsrendszer-beállításokkal Red Hat Enterprise Linux
-* A [2009879] -es SAP-Megjegyzés SAP HANA irányelvek a Red Hat Enterprise Linux
-* Az [2178632] -es SAP-Megjegyzés részletes információkat tartalmaz az Azure-beli SAP-ban jelentett összes figyelési mérőszámról.
-* A [2191498] -es SAP-Megjegyzés a szükséges SAP-gazdagép ügynökének verziója az Azure-ban linuxos.
-* Az [2243692] -es SAP-Megjegyzés az Azure-beli Linuxon futó SAP-licenceléssel kapcsolatos információkat tartalmaz.
-* Az SAP Megjegyzés [1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure Enhanced monitoring bővítménnyel kapcsolatban.
-* Az [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik minden szükséges SAP-megjegyzéssel a Linux rendszerhez.
-* [Azure Virtual Machines tervezése és implementálása Linux rendszeren az SAP-ban][planning-guide]
-* [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren (ez a cikk)][deployment-guide]
-* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
-* [A Red Hat Gluster Storage termék dokumentációja](https://access.redhat.com/documentation/red_hat_gluster_storage/)
+* Az SAP Note [2015553] felsorolja az SAP által támogatott SAP-szoftvertelepítések előfeltételeit az Azure-ban.
+* Az SAP Note [2002167] ajánlott a Red Hat Enterprise Linux operációs rendszerbeállításaihoz
+* Az SAP Note [2009879] SAP HANA irányelveket készített a Red Hat Enterprise Linux-hoz
+* Az SAP Note [2178632] részletes információkat tartalmaz az Azure-ban az SAP-hoz jelentett összes figyelési metrikáról.
+* Az SAP Note [2191498] rendelkezik a szükséges SAP Host Agent linuxos verzióval az Azure-ban.
+* Az SAP Note [2243692] információkat tartalmaz az Sap-licencelésről az Azure-ban.
+* Az SAP Note [1999351] további hibaelhárítási információkat tartalmaz az SAP-hoz kiadott Azure továbbfejlesztett figyelési bővítményhez.
+* [Az SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) minden szükséges SAP-jegyzetet igényel Linuxhoz.
+* [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz Linuxon][planning-guide]
+* [Az Azure virtuális gépek üzembe helyezése az SAP Linux on Linux (ez a cikk)][deployment-guide]
+* [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz Linuxon][dbms-guide]
+* [A Red Hat Gluster Storage termékdokumentációja](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * Általános RHEL dokumentáció
   * [Magas rendelkezésre állású bővítmény – áttekintés](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Magas rendelkezésre állású bővítmények felügyelete](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Magas rendelkezésre állású bővítmények leírása](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-* Az Azure-specifikus RHEL dokumentációja:
-  * [A RHEL magas rendelkezésre állású fürtökre vonatkozó támogatási szabályzatok – Microsoft Azure Virtual Machines a fürt tagjai](https://access.redhat.com/articles/3131341)
-  * [Red Hat Enterprise Linux 7,4 (és újabb) magas rendelkezésre állású fürt telepítése és konfigurálása Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Magas rendelkezésre állású bővítmény felügyelete](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Magas rendelkezésre állású bővítményhivatkozás](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+* Az Azure-specifikus RHEL dokumentáció:
+  * [Az RHEL magas rendelkezésre állású fürtjeinek támogatási szabályzatai – Microsoft Azure virtuális gépek fürttagként](https://access.redhat.com/articles/3131341)
+  * [Red Hat Enterprise Linux 7.4 (és újabb) magas rendelkezésre állású fürt telepítése és konfigurálása a Microsoft Azure-ban](https://access.redhat.com/articles/3252491)
 
 ## <a name="overview"></a>Áttekintés
 
-A magas rendelkezésre állás elérése érdekében az SAP NetWeaver megosztott tárterületet igényel. A GlusterFS külön fürtben van konfigurálva, és több SAP-rendszer is használható.
+A magas rendelkezésre állás eléréséhez az SAP NetWeaver megosztott tárolást igényel. A GlusterFS egy külön fürtben van konfigurálva, és több SAP-rendszer is használható.
 
-![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-rhel-glusterfs/rhel-glusterfs.png)
+![SAP NetWeaver magas rendelkezésre állás – áttekintés](./media/high-availability-guide-rhel-glusterfs/rhel-glusterfs.png)
 
-## <a name="set-up-glusterfs"></a>GlusterFS beállítása
+## <a name="set-up-glusterfs"></a>A GlusterFS beállítása
 
-A githubról származó Azure-sablonok használatával üzembe helyezheti az összes szükséges Azure-erőforrást, beleértve a virtuális gépeket, a rendelkezésre állási készletet és a hálózati adaptereket, vagy manuálisan is üzembe helyezheti az erőforrásokat.
+Használhatja a Github Azure-sablonját az összes szükséges Azure-erőforrás üzembe helyezéséhez, beleértve a virtuális gépeket, a rendelkezésre állási készletet és a hálózati felületeket, vagy manuálisan is telepítheti az erőforrásokat.
 
-### <a name="deploy-linux-via-azure-template"></a>Linux telepítése Azure-sablon használatával
+### <a name="deploy-linux-via-azure-template"></a>Linux telepítése az Azure-sablonon keresztül
 
-Az Azure Marketplace egy Red Hat Enterprise Linux rendszerképet tartalmaz, amely az új virtuális gépek üzembe helyezéséhez használható.
-Az összes szükséges erőforrás üzembe helyezéséhez használhatja a githubon a rövid útmutató sablonjait. A sablon üzembe helyezi a virtuális gépeket, a rendelkezésre állási készletet stb. A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
+Az Azure Piactér tartalmaz egy lemezképet a Red Hat Enterprise Linux, amely segítségével új virtuális gépek üzembe helyezéséhez.
+A githubon lévő rövid útmutató sablonok egyikével üzembe helyezheti az összes szükséges erőforrást. A sablon telepíti a virtuális gépeket, a rendelkezésre állási készletet stb. A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [SAP fájlkiszolgáló sablonját][template-file-server] a Azure Portal
+1. Az [SAP-fájlkiszolgálósablon megnyitása][template-file-server] az Azure Portalon
 1. Adja meg a következő paramétereket
    1. Erőforrás-előtag  
-      Adja meg a használni kívánt előtagot. Az értéket a rendszer az üzembe helyezett erőforrások előtagjaként használja.
-   2. Az SAP-rendszer száma mezőben adja meg a fájlkiszolgáló által használt SAP-rendszerek számát. Ezzel a szükséges számú lemezt telepíti stb.
-   3. Operációs rendszer típusa  
-      Válassza ki a Linux-disztribúciók egyikét. Ebben a példában válassza a RHEL 7 elemet.
-   4. Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs  
-      Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
-   5. Alhálózat azonosítója  
-      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /Subnets/ **&lt;alhálózat neve&gt;**
+      Adja meg a használni kívánt előtagot. Az érték az üzembe helyezett erőforrások előtagjaként használatos.
+   2. SAP-rendszerszám Adja meg a fájlkiszolgálót használó SAP-rendszerek számát. Ez telepíti a szükséges számú lemezt stb.
+   3. Os típus  
+      Válassza ki az egyik Linux disztribúciók. Ebben a példában válassza az RHEL 7
+   4. Rendszergazdai felhasználónév, rendszergazdai jelszó vagy SSH-kulcs  
+      Új felhasználó jön létre, amely a számítógépre való bejelentkezéshez használható.
+   5. Alhálózati azonosító  
+      Ha azt szeretné, hogy a virtuális gép egy meglévő virtuális hálózat, ahol a virtuális gép definiált alhálózat a virtuális gép kell hozzárendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint a /subscription/**&lt;&gt;subscription ID**/resourceGroups/**&lt;erőforráscsoport neve&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;virtuális hálózat neve&gt;**/alhálózatok/**&lt;alhálózat neve&gt; **
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
+### <a name="deploy-linux-manually-via-azure-portal"></a>Linux manuális üzembe helyezése az Azure Portalon keresztül
 
-Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)használatát javasoljuk.  
+Először létre kell hoznia a fürt virtuális gépeit. Ezután hozzon létre egy terheléselosztót, és használja a háttérkészletekben lévő virtuális gépeket. Normál [terheléselosztót](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)ajánlunk.  
 
 1. Erőforráscsoport létrehozása
-1. Virtual Network létrehozása
-1. Rendelkezésre állási csoport létrehozása  
+1. Virtuális hálózat létrehozása
+1. Rendelkezésre állási készlet létrehozása  
    Maximális frissítési tartomány beállítása
-1. 1\. virtuális gép létrehozása  
-   Használjon legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7,4 rendszerképet <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   Válassza ki a korábban létrehozott rendelkezésre állási készletet  
-1. 2\. virtuális gép létrehozása  
-   Használjon legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7,4 rendszerképet <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   Válassza ki a korábban létrehozott rendelkezésre állási készletet  
-1. Mindegyik SAP-rendszerhez adjon hozzá egy adatlemezt mindkét virtuális géphez.
+1. Virtuális gép létrehozása 1  
+   Használja legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7.4 kép<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Korábbian létrehozott elérhetőségi készlet kiválasztása  
+1. Virtuális gép létrehozása 2  
+   Használja legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7.4 kép<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Korábbian létrehozott elérhetőségi készlet kiválasztása  
+1. Adjon hozzá egy adatlemezt minden SAP-rendszerhez mindkét virtuális géphez.
 
 ### <a name="configure-glusterfs"></a>GlusterFS konfigurálása
 
-A következő elemek előtaggal vannak ellátva a **[a]** típussal – az összes csomópontra érvényes, **[1]** – csak az 1 **.,** **[2]** csomópontra vonatkozik – csak a 3. csomópontra alkalmazható.
+A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópontra vonatkozóan,[1] - csak az 1-es csomópontra vonatkozik, **[1]** **[2]** - csak a 2-es csomópontra vonatkozik, **[3]** - csak a 3-as csomópontra vonatkozik.
 
-1. **[A]** telepítési állomásnév feloldása
+1. **[A]** Állomásnév feloldása
 
-   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
-   Cserélje le az IP-címet és a gazdagépet a következő parancsokra
+   Használhatja a DNS-kiszolgálót, vagy módosíthatja az /etc/hosts kapcsolót az összes csomóponton. Ez a példa az /etc/hosts fájl használatát mutatja be.
+   Cserélje le az IP-címet és az állomásnevet a következő parancsokban
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
+   Szúrja be a következő sorokat az /etc/hosts könyvtárba. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>
@@ -136,9 +136,9 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    <b>10.0.0.42 glust-2</b>
    </code></pre>
 
-1. **[A]** regisztráció
+1. **[A]** Nyilvántartás
 
-   Regisztrálja a virtuális gépeket, és csatolja azt egy olyan készlethez, amely a RHEL 7 és a GlusterFS tárházait tartalmazza
+   Regisztrálja virtuális gépeit, és csatolja egy készlethez, amely rhel 7 és GlusterFS tárolóit tartalmazza
 
    <pre><code>sudo subscription-manager register
    sudo subscription-manager attach --pool=&lt;pool id&gt;
@@ -153,18 +153,18 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo subscription-manager repos --enable=rh-gluster-3-for-rhel-7-server-rpms
    </code></pre>
   
-1. **[A]** GlusterFS-csomagok telepítése
+1. **[A]** GlusterFS csomagok telepítése
 
-   A csomagok telepítése az összes GlusterFS-csomóponton
+   Telepítse ezeket a csomagokat az összes GlusterFS csomópontra
 
    <pre><code>sudo yum -y install redhat-storage-server
    </code></pre>
 
-   A telepítés után indítsa újra a csomópontokat.
+   Indítsa újra a csomópontokat a telepítés után.
 
-1. **[A]** tűzfal módosítása
+1. **[A]** Tűzfal módosítása
 
-   Tűzfalszabályok hozzáadásával engedélyezheti az ügyfelek forgalmát a GlusterFS-csomópontok számára.
+   Adja meg a tűzfalszabályokat, hogy az ügyfélforgalmat a GlusterFS-csomópontokhoz engedélyezze.
 
    <pre><code># list the available zones
    firewall-cmd --get-active-zones
@@ -173,7 +173,7 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo firewall-cmd --zone=public --add-service=glusterfs
    </code></pre>
 
-1. **[A] a** GlusterFS szolgáltatás engedélyezése és elindítása
+1. **[A]** GlusterFS szolgáltatás engedélyezése és indítása
 
    Indítsa el a GlusterFS szolgáltatást az összes csomóponton.
 
@@ -183,7 +183,7 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
 
 1. **[1]** GluserFS létrehozása
 
-   Futtassa a következő parancsokat a GlusterFS-fürt létrehozásához.
+   A GlusterFS-fürt létrehozásához futtassa a következő parancsokat
 
    <pre><code>sudo gluster peer probe glust-1
    sudo gluster peer probe glust-2
@@ -202,9 +202,9 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    # State: Accepted peer request (Connected)
    </code></pre>
 
-1. **[2]** a társak állapotának tesztelése
+1. **[2]** Társállapot ának tesztelése
 
-   A társ állapotának tesztelése a második csomóponton
+   A társállapot tesztelése a második csomóponton
 
    <pre><code>sudo gluster peer status
    # Number of Peers: 2
@@ -218,9 +218,9 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    # State: Peer in Cluster (Connected)
    </code></pre>
 
-1. **[3]** a társ állapotának tesztelése
+1. **[3]** Társállapot ának tesztelése
 
-   A társ állapotának tesztelése a harmadik csomóponton
+   A társállapot tesztelése a harmadik csomóponton
 
    <pre><code>sudo gluster peer status
    # Number of Peers: 2
@@ -236,9 +236,9 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
 
 1. **[A]** LVM létrehozása
 
-   Ebben a példában a GlusterFS két SAP-rendszer, a NW1 és a NW2 esetében használatos. Az alábbi parancsokkal LVM-konfigurációkat hozhat létre ezekhez az SAP-rendszerekhez.
+   Ebben a példában a GlusterFS két SAP-rendszerhez, az NW1-hez és az NW2-hez használatos. A következő parancsokkal lvm-konfigurációkat hozhat létre ezekhez az SAP-rendszerekhez.
 
-   NW1-parancsok használata
+   Használja ezeket a parancsokat az NW1-hez
 
    <pre><code>sudo pvcreate --dataalignment 1024K /dev/disk/azure/scsi1/lun0
    sudo pvscan
@@ -277,7 +277,7 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo mount -a
    </code></pre>
 
-   NW2-parancsok használata
+   Használja ezeket a parancsokat az NW2-hez
 
    <pre><code>sudo pvcreate --dataalignment 1024K /dev/disk/azure/scsi1/lun1
    sudo pvscan
@@ -316,9 +316,9 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo mount -a
    </code></pre>
 
-1. **[1]** az elosztott kötet létrehozása
+1. **[1]** Az elosztott kötet létrehozása
 
-   A következő parancsokkal hozza létre a GlusterFS-kötetet a NW1, és indítsa el.
+   Az alábbi parancsokkal hozza létre a GlusterFS kötetet az NW1-hez, és indítsa el.
 
    <pre><code>sudo gluster vol create <b>NW1</b>-sapmnt replica 3 glust-0:/rhs/<b>NW1</b>/sapmnt glust-1:/rhs/<b>NW1</b>/sapmnt glust-2:/rhs/<b>NW1</b>/sapmnt force
    sudo gluster vol create <b>NW1</b>-trans replica 3 glust-0:/rhs/<b>NW1</b>/trans glust-1:/rhs/<b>NW1</b>/trans glust-2:/rhs/<b>NW1</b>/trans force
@@ -333,7 +333,7 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo gluster volume start <b>NW1</b>-aers
    </code></pre>
 
-   A következő parancsokkal hozza létre a GlusterFS-kötetet a NW2, és indítsa el.
+   Az alábbi parancsokkal hozza létre a GlusterFS kötetet az NW2-hez, és indítsa el.
 
    <pre><code>sudo gluster vol create <b>NW2</b>-sapmnt replica 3 glust-0:/rhs/<b>NW2</b>/sapmnt glust-1:/rhs/<b>NW2</b>/sapmnt glust-2:/rhs/<b>NW2</b>/sapmnt force
    sudo gluster vol create <b>NW2</b>-trans replica 3 glust-0:/rhs/<b>NW2</b>/trans glust-1:/rhs/<b>NW2</b>/trans glust-2:/rhs/<b>NW2</b>/trans force
@@ -348,11 +348,11 @@ A következő elemek előtaggal vannak ellátva a **[a]** típussal – az össz
    sudo gluster volume start <b>NW2</b>-aers
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az SAP-ASCS és-adatbázis telepítése](high-availability-guide-rhel.md)
-* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
-* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
-* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
-* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)
-* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]
+* [Az SAP ASCS és az adatbázis telepítése](high-availability-guide-rhel.md)
+* [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz][planning-guide]
+* [Az Azure virtuális gépek üzembe helyezése az SAP-hoz][deployment-guide]
+* [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz][dbms-guide]
+* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure-ban (nagy példányok), tekintse meg az [SAP HANA (nagy példányok) magas rendelkezésre állású és vész-helyreállítási az Azure-ban.](hana-overview-high-availability-disaster-recovery.md)
+* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure virtuális gépeken, olvassa el [az SAP HANA magas rendelkezésre állását az Azure virtuális gépeken (VM-ek) című témakört.][sap-hana-ha]

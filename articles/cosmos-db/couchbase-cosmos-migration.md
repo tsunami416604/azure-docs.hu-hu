@@ -1,42 +1,42 @@
 ---
-title: Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
-description: Részletes útmutató a CouchBase-ről Azure Cosmos DB SQL API-ra való áttelepítéshez
+title: Áttelepítés a CouchBase szolgáltatásról az Azure Cosmos DB SQL API-ra
+description: Részletes útmutatás a CouchBase szolgáltatásból az Azure Cosmos DB SQL API-ba való áttelepítéshez
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210943"
 ---
-# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
+# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Áttelepítés a CouchBase szolgáltatásról az Azure Cosmos DB SQL API-ra
 
-A Azure Cosmos DB egy méretezhető, globálisan elosztott, teljes körűen felügyelt adatbázis. Garantáltan alacsony késésű hozzáférést biztosít az adataihoz. Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg az [áttekintő](introduction.md) cikket. Ez a cikk útmutatást nyújt a Couchbase-hez kapcsolódó Java-alkalmazások áttelepítéséhez Azure Cosmos DB-ben egy SQL API-fiókhoz.
+Az Azure Cosmos DB egy méretezhető, globálisan terjeszthető, teljes körűen felügyelt adatbázis. Garantáltan alacsony késésű hozzáférést biztosít az adatokhoz. Ha többet szeretne megtudni az Azure Cosmos DB-ről, tekintse meg az [áttekintő](introduction.md) cikket. Ez a cikk utasításokat tartalmaz a Couchbase-hez az Azure Cosmos DB SQL API-fiókjához kapcsolódó Java-alkalmazások áttelepítéséhez.
 
-## <a name="differences-in-nomenclature"></a>Különbségek a nómenklatúrában
+## <a name="differences-in-nomenclature"></a>A nómenklatúra eltérései
 
-Az alábbi főbb funkciók a Couchbase képest eltérő módon működnek Azure Cosmos DBban:
+Az alábbiakban azokat a legfontosabb funkciókat, amelyek eltérően működnek az Azure Cosmos DB-ben a Couchbase-hez képest:
 
 |   Couchbase     |   Azure Cosmos DB   |
 | ---------------|-------------------|
-|Couchbase-kiszolgáló| Fiók       |
-|Gyűjtő           | Adatbázis      |
-|Gyűjtő           | Tároló/gyűjtemény |
-|JSON-dokumentum    | Tétel/dokumentum |
+|Couchbase szerver| Fiók       |
+|Vödör           | Adatbázis      |
+|Vödör           | Konténer/gyűjtemény |
+|JSON dokumentum    | Cikk / bizonylat |
 
 ## <a name="key-differences"></a>Fő eltérések
 
-* Azure Cosmos DB rendelkezik egy "ID" mezővel a dokumentumban, míg a Couchbase a gyűjtő részeként rendelkezik AZONOSÍTÓval. Az "ID" mező a partíción belül egyedi.
+* Az Azure Cosmos DB egy "ID" mezőa a dokumentumon belül, míg a Couchbase rendelkezik az azonosítót a gyűjtő részeként. Az "Azonosító" mező egyedi a partíción keresztül.
 
-* A skálázási vagy horizontális Felskálázási módszerrel Azure Cosmos DB a skálákat. Ez azt jelenti, hogy az adatmegosztás több szegmensre vagy partícióra történik. Ezek a partíciók/szegmensek a megadott Partition Key tulajdonság alapján jönnek létre. Kiválaszthatja a partíciós kulcsot az olvasási és írási műveletek optimalizálására, illetve a megfelelő írási/olvasási műveletekre is. További információért lásd a [particionálással](./partition-data.md) foglalkozó cikket.
+* Az Azure Cosmos DB skálázható a particionálási vagy horizontális eljárás használatával. Ami azt jelenti, hogy az adatokat több szegmensre/partícióra osztja fel. Ezek a partíciók/szegmensek a megadott partíciókulcs-tulajdonság alapján jönnek létre. Kiválaszthatja a partíció kulcsot, hogy optimalizálja az olvasási műveleteket, valamint az írási/írási műveleteket is. További információ: a [particionálási](./partition-data.md) cikk.
 
-* Azure Cosmos DB nem szükséges, hogy a legfelső szintű hierarchia szerepeljen a gyűjteményben, mert a gyűjtemény neve már létezik. Ez a funkció sokkal egyszerűbbé teszi a JSON-struktúrát. Az alábbi példa az adatmodellben a Couchbase és a Azure Cosmos DB közötti különbségeket mutatja:
+* Az Azure Cosmos DB-ben nem szükséges, hogy a legfelső szintű hierarchia a gyűjteményt jelöljön, mert a gyűjtemény neve már létezik. Ez a funkció sokkal egyszerűbbé teszi a JSON-struktúrát. Az alábbiakban egy példa látható, amely bemutatja a Couchbase és az Azure Cosmos DB közötti adatmodell közötti különbségeket:
 
-   **Couchbase**: dokumentum azonosítója = "99FF4444"
+   **Kanapé**: Dokumentumazonosító = "99FF4444"
 
     ```json
     {
@@ -66,7 +66,7 @@ Az alábbi főbb funkciók a Couchbase képest eltérő módon működnek Azure 
     }
    ```
 
-   **Azure Cosmos db**: Tekintse meg az "azonosító" kifejezést a dokumentumban az alább látható módon
+   **Azure Cosmos DB**: "ID" hivatkozás a dokumentumon belül az alábbiak szerint
 
     ```json
     {
@@ -98,18 +98,18 @@ Az alábbi főbb funkciók a Couchbase képest eltérő módon működnek Azure 
          
 ## <a name="java-sdk-support"></a>Java SDK-támogatás
 
-Azure Cosmos DB a következő SDK-kat támogatja a különböző Java-keretrendszerek támogatásához:
+Az Azure Cosmos DB a következő SDK-k a különböző Java-keretrendszerek támogatásához:
 
 * Aszinkron SDK
-* Spring boot SDK
+* Tavaszi csomagtartó SDK
 
-A következő szakaszok ismertetik, hogy mikor kell használni ezeket az SDK-kat. Vegyünk például egy olyan példát, amelyben háromféle számítási feladat létezik:
+A következő szakaszok ismertetik, hogy mikor kell használni ezeket az SDK-kat. Vegyünk egy példát, amikor háromféle számítási feladatot látunk el:
 
-## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>Couchbase & Spring adatalapú egyéni lekérdezések
+## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>Couchbase mint dokumentumtár & tavaszi adatalapú egyéni lekérdezések
 
-Ha az áttelepíteni kívánt munkaterhelés a Spring boot-alapú SDK-ra épül, akkor a következő lépéseket hajthatja végre:
+Ha az áttelepíti az áttelepített munkaterhelés a tavaszi rendszerindítás alapú SDK-n alapul, akkor a következő lépéseket használhatja:
 
-1. Szülő hozzáadása a POM. xml fájlhoz:
+1. Szülő hozzáadása a POM.xml fájlhoz:
 
    ```java
    <parent>
@@ -120,13 +120,13 @@ Ha az áttelepíteni kívánt munkaterhelés a Spring boot-alapú SDK-ra épül,
    </parent>
    ```
 
-1. Tulajdonságok hozzáadása a POM. xml fájlhoz:
+1. Tulajdonságok hozzáadása a POM.xml fájlhoz:
 
    ```java
    <azure.version>2.1.6</azure.version>
    ```
 
-1. Függőségek hozzáadása a POM. xml fájlhoz:
+1. Függőségek hozzáadása a POM.xml fájlhoz:
 
    ```java
    <dependency>
@@ -136,7 +136,7 @@ Ha az áttelepíteni kívánt munkaterhelés a Spring boot-alapú SDK-ra épül,
    </dependency>
    ```
 
-1. Adja hozzá az alkalmazás tulajdonságait az erőforrások területen, és adja meg a következőket. Ügyeljen rá, hogy cserélje le az URL-címet, a kulcsot és az adatbázis neve paramétert:
+1. Adja hozzá az alkalmazástulajdonságokat az erőforrások hoz, és adja meg a következőket. Győződjön meg arról, hogy lecseréli az URL-cím, a kulcs és az adatbázis nevének paramétereit:
 
    ```java
       azure.cosmosdb.uri=<your-cosmosDB-URL>
@@ -144,7 +144,7 @@ Ha az áttelepíteni kívánt munkaterhelés a Spring boot-alapú SDK-ra épül,
       azure.cosmosdb.database=<your-cosmosDB-dbName>
    ```
 
-1. Adja meg a gyűjtemény nevét a modellben. További megjegyzéseket is megadhat. Például azonosító, partíciós kulcs, amely explicit módon megjelöli őket:
+1. Adja meg a gyűjtemény nevét a modellben. További jegyzeteket is megadhat. Például, Azonosító, partíciógombot jelöli őket explicit módon:
 
    ```java
    @Document(collection = "mycollection")
@@ -157,50 +157,50 @@ Ha az áttelepíteni kívánt munkaterhelés a Spring boot-alapú SDK-ra épül,
        }
    ```
 
-A következő kódrészletek a szifilisz-műveletekhez használhatók:
+A CRUD-műveletek kódkódjai a következők:
 
 ### <a name="insert-and-update-operations"></a>Műveletek beszúrása és frissítése
 
-Ahol a *_repo* a tárház objektuma, a *doc* pedig a POJO osztály objektuma. A `.save` használatával szúrhat be vagy upsert (ha megtalálható a megadott AZONOSÍTÓJÚ dokumentum). A következő kódrészlet bemutatja, hogyan szúrhat be vagy frissíthet egy doc-objektumot:
+Ahol *_repo* a tárház tárgya, és a *dokumentum* a POJO osztály objektuma. Beszúrhatja `.save` vagy upsert et szúrhat be (ha a dokumentum megadott azonosítóval van elhelyezve). A következő kódrészlet bemutatja, hogyan szúrhat be vagy frissíthető kititasztóobjektum:
 
 ```_repo.save(doc);```
 
-### <a name="delete-operation"></a>Művelet törlése
+### <a name="delete-operation"></a>Törlési művelet
 
-Vegye figyelembe a következő kódrészletet, ahol a doc objektum azonosító és partíciós kulcs kötelező az objektum megkereséséhez és törléséhez:
+Vegye figyelembe a következő kódrészletet, ahol a doc objektum azonosítója és partíciókulcsa kötelező az objektum megkereséséhez és törléséhez:
 
 ```_repo.delete(doc);```
 
 ### <a name="read-operation"></a>Olvasási művelet
 
-A dokumentumot a partíciós kulcs megadásával vagy anélkül is elolvashatja. Ha nem adja meg a partíciós kulcsot, akkor a rendszer több partíciós lekérdezésként kezeli. Vegye figyelembe a következő mintakód-mintákat, az első az azonosító és a partíció kulcsa mező használatával hajtja végre a műveletet. A második példa egy normál mezőt használ & a Partition Key mező meghatározása nélkül.
+A dokumentum a partíciókulcs megadásával vagy anélkül is elolvasható. Ha nem adja meg a partíciókulcsot, akkor a rendszer partícióközi lekérdezésként kezeli. Vegye figyelembe a következő kódmintákat, az első az azonosító és a partíciókulcs mező használatával hajtja végre a műveletet. A második példa egy normál mezőt használ & a partíciókulcs mező megadása nélkül.
 
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-Így már használhatja az alkalmazást Azure Cosmos DB használatával. Az ebben a dokumentációban ismertetett példában a [CouchbaseToCosmosDB-SpringCosmos GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) tárházban elérhető kód minta szerepel.
+Ennyi, most már használhatja az alkalmazást az Azure Cosmos DB-vel. A dokumentumban ismertetett példa teljes kódmintája a [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub tárházban érhető el.
 
-## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase & N1QL-lekérdezések használatával
+## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase dokumentumtárként & N1QL-lekérdezések használatával
 
-A N1QL lekérdezések a lekérdezéseknek a Couchbase való definiálásának módja.
+N1QL lekérdezések a módja annak, hogy a lekérdezések a Couchbase.
 
-|N1QL-lekérdezés | Azure CosmosDB-lekérdezés|
+|N1QL lekérdezés | Azure CosmosDB-lekérdezés|
 |-------------------|-------------------|
-|Válassza ki a META (`TravelDocument`). ID azonosítót, `TravelDocument`. * értéket a `TravelDocument`, ahol a `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" és az ország = "India" és a vízumok m. típusa = = "Multi-Entry" és m. Country ["India", Bhután "] ORDER BY ` Validity` DESC LIMIT 25 ELTOLÁS 0   | Válassza a c elemet. azonosító, c – c csatlakozás m-ben c. Country = "India", ahol c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" és c. ország = "India" és m. type = "Multi-Entry" és m. Country IN ("India", "Bhután") ORDER BY c |
+|SELECT`TravelDocument`META( .id AS `TravelDocument`id, .* HONNAN `TravelDocument` `_type` = "com.xx.xx.xxx.xxx.xxxx" és ország = "India" és bármely m a vízumok megfelel m.type == "Multi-Entry" és m.Country IN ['India', Bhután'] MEGRENDELÉSE ` Validity` DESC LIMIT 25 OFFSET 0   | SELECT c.id,c FROM c JOIN m in c.country='India' WHERE c._type = " com.xx.xx.xxx.xxx.xxxx" és c.country = "India" és m.type = "Multi-Entry" és m.Country IN ('India', 'Bhután') ORDER BY c.Validity DESC OFFSET 0 LIMIT 25 |
 
-A N1QL-lekérdezésekben a következő változások láthatók:
+Az N1QL lekérdezésekben a következő változásokat láthatja:
 
-* Nem kell használnia a META kulcsszót, vagy az első szintű dokumentumra kell hivatkoznia. Ehelyett saját hivatkozást hozhat létre a tárolóhoz. Ebben a példában a "c"-ként tekintjük meg (ez bármi lehet). Ez a hivatkozás az összes első szintű mező előtagjaként szolgál. Fr példa: c.id, c. ország stb.
+* Nem kell használni a META kulcsszót, vagy nézze meg az első szintű dokumentumot. Ehelyett létrehozhatja a saját hivatkozást a tárolóra. Ebben a példában úgy tekintettük, hogy "c" (bármi lehet). Ez a hivatkozás az összes első szintű mező előtagjaként használatos. Fr például c.id, c.ország stb.
 
-* Az "ANY" helyett most már csatlakozhat az aldokumentumhoz, és egy dedikált aliassal (például "m") hivatkozhat. Miután létrehozott egy aliast az aldokumentumhoz, aliast kell használnia. Például: m. Country.
+* Ahelyett, hogy "ANY" most meg tudod csinálni egy illesztésaldokumentum, és utalja azt egy dedikált alias, mint az "m". Miután létrehozta az aldokumentum aliasát, aliast kell használnia. Például, m.Country.
 
-* Az ELTOLÁSi folyamat különbözik Azure Cosmos DB lekérdezésben, először meg kell adnia az ELTOLÁSt, majd a KORLÁTot. Javasoljuk, hogy ne használja a Spring adatsdk-t, ha maximálisan definiált egyéni lekérdezéseket használ, mivel az ügyfél oldalán szükségtelen terhelést okozhat, miközben a lekérdezés átadása Azure Cosmos DB. Ehelyett egy közvetlen aszinkron Java SDK-t használunk, amely ebben az esetben sokkal hatékonyabban használható.
+* Az ELTOLÁS sorrendje eltér az Azure Cosmos DB lekérdezésben, először meg kell adnia az ELTOLÁS, majd a LIMIT értéket. Javasoljuk, hogy ne használja a tavaszi adatok SDK-t, ha maximális egyéni definiált lekérdezéseket használ, mivel felesleges többletterhelést okozhat az ügyféloldalon, miközben átadja a lekérdezést az Azure Cosmos DB-nek. Ehelyett van egy közvetlen Async Java SDK, amely lehet használni sokkal hatékonyan ebben az esetben.
 
 ### <a name="read-operation"></a>Olvasási művelet
 
-Használja az aszinkron Java SDK-t a következő lépésekkel:
+Használja az Async Java SDK-t a következő lépésekkel:
 
-1. Konfigurálja a következő függőséget a POM. XML fájlra:
+1. Konfigurálja a következő függőséget a POM.xml fájlra:
 
    ```java
    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb -->
@@ -211,7 +211,7 @@ Használja az aszinkron Java SDK-t a következő lépésekkel:
    </dependency>
    ```
 
-1. A következő példában látható módon hozzon létre egy Azure Cosmos DBhoz tartozó, a `ConnectionBuilder` metódussal létesített kapcsolatok objektumát. Ügyeljen arra, hogy a deklarációt a beanbe helyezze, hogy a következő kód csak egyszer legyen végrehajtva:
+1. Hozzon létre egy kapcsolatobjektumot az `ConnectionBuilder` Azure Cosmos DB számára a következő példában látható módszer használatával. Győződjön meg róla, hogy ezt a nyilatkozatot a bab úgy, hogy a következő kódot kell kapni végre csak egyszer:
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -234,7 +234,7 @@ Használja az aszinkron Java SDK-t a következő lépésekkel:
    Flux<FeedResponse<CosmosItemProperties>> objFlux= container.queryItems(query, fo);
    ```
 
-Most a fenti módszer segítségével több lekérdezést is átadhat, és problémamentesen végrehajthatja a végrehajtást. Ha egy nagyméretű lekérdezés végrehajtására van szükség, amely több lekérdezésre is bontható, akkor az előző helyett próbálja meg a következő kódrészletet:
+Most a fenti módszer segítségével több lekérdezést adhat át, és gond nélkül végrehajthatja. Abban az esetben, ha egy nagy lekérdezés végrehajtására van szükség, amely több lekérdezésre osztható, próbálkozzon a következő kódrészletkel az előző helyett:
 
 ```java
 for(SqlQuerySpec query:queries)
@@ -258,9 +258,9 @@ for(SqlQuerySpec query:queries)
 }
 ```
 
-Az előző kóddal párhuzamosan futtathat lekérdezéseket, és növelheti az elosztott végrehajtást az optimalizáláshoz. Ezen túl az INSERT és a Update művelet is futtatható:
+Az előző kóddal párhuzamosan futtathat lekérdezéseket, és optimalizálhatja az elosztott végrehajtásokat. Továbbá futtathatja a beszúrási és frissítési műveleteket is:
 
-### <a name="insert-operation"></a>Művelet beszúrása
+### <a name="insert-operation"></a>Beszúrási művelet
 
 A dokumentum beszúrásához futtassa a következő kódot:
 
@@ -268,7 +268,7 @@ A dokumentum beszúrásához futtassa a következő kódot:
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-Ezután fizessen elő a Mono-ra:
+Akkor iratkozz fel Mono, mint:
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -286,31 +286,31 @@ latch.await();
 
 ### <a name="upsert-operation"></a>Upsert művelet
 
-A Upsert művelet végrehajtásához meg kell adnia a frissíteni kívánt dokumentumot. A teljes dokumentum beolvasásához használja az olvasási művelet fejléc alatt említett kódrészletet, majd módosítsa a kötelező mező (ka) t. A következő kódrészlet upsert a dokumentumot:
+A upsert művelet megköveteli, hogy megadja a frissítendő dokumentumot. A teljes dokumentum beolvasásához használhatja az olvasási művelet alatt említett kódrészletet, majd módosíthatja a szükséges mező(ke)t. A következő kódrészlet upserts a dokumentumot:
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-Ezután fizessen elő a Mono-ra. Tekintse meg a Mono előfizetési kódrészletet a beszúrási műveletben.
+Akkor iratkozz fel a mono. Tekintse meg a monó előfizetési kódrészletet a beszúrási műveletben.
 
-### <a name="delete-operation"></a>Művelet törlése
+### <a name="delete-operation"></a>Törlési művelet
 
-A következő kódrészlet végrehajtja a törlési műveletet:
+A következő kódrészlet törlési műveletet tesz:
 
 ```java     
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet a beszúrási műveletben. A teljes mintakód a [CouchbaseToCosmosDB-AsyncInSpring GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) tárházban érhető el.
+Ezután iratkozzon fel a monóra, olvassa el a mono előfizetési kódrészletet a beszúrási műveletben. A teljes kódminta a [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub tárházban érhető el.
 
-## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase kulcs/érték párokként
+## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase billentyű/értékpárként
 
-Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési műveleteket hajthat végre. Használja a következő lépéseket a kulcs/érték párokhoz:
+Ez egy egyszerű típusú számítási feladatok, amelyben lekérdezések helyett lekérdezéseket hajthat végre. Kulcs-/értékpárok esetében kövesse az alábbi lépéseket:
 
-1. Ügyeljen arra, hogy a "/ID" elsődleges kulcs legyen, amely biztosítja, hogy a keresési művelet közvetlenül az adott partíción legyen végrehajtva. Hozzon létre egy gyűjteményt, és válassza a "/ID" lehetőséget partíciós kulcsként.
+1. Fontolja meg a "/ID" elsődleges kulcsként való megsegítést, amely biztosítja, hogy a kérdésműveletet közvetlenül az adott partíción hajthassa végre. Hozzon létre egy gyűjteményt, és adja meg a "/ID" partíciókulcsot.
 
-1. Az indexelést teljesen ki kell kapcsolni. Mivel keresési műveleteket hajt végre, nincs olyan pont, amely az indexelési terhelést hordozza. Az indexelés kikapcsolásához jelentkezzen be Azure Portal, goto Azure Cosmos DB-fiókkal. Nyissa meg a **adatkezelőt**, válassza ki az **adatbázist** és a **tárolót**. Nyissa meg a **méretezési & beállítások** lapot, és válassza ki az **indexelési házirendet**. Az indexelési szabályzat jelenleg a következőhöz hasonlít:
+1. Kapcsolja ki teljesen az indexelést. Mivel a kiírási műveleteket végre fogja hajtani, nincs értelme indexelési többletterhelést végezni. Az indexelés kikapcsolásához jelentkezzen be az Azure Portalra, és nyissa meg az Azure Cosmos DB-fiókját. Nyissa meg az **Adatkezelőt**, jelölje ki az **adatbázist** és a **tárolót**. Nyissa meg **a Méretezés & beállítások** lapot, és válassza az **Indexelési házirend et**. Az indexelési házirend jelenleg a következőképpen néz ki:
     
    ```json
    {
@@ -348,7 +348,7 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
    }
    ````
 
-   Cserélje le a fenti indexelési házirendet a következő szabályzatra:
+   Cserélje le a fenti indexelési házirendet a következő házirendre:
 
    ```json
    {
@@ -356,7 +356,7 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
    }
    ```
 
-1. A kapcsolódási objektum létrehozásához használja az alábbi kódrészletet. Kapcsolódási objektum (@Bean vagy statikusan kell elhelyezni):
+1. A kapcsolatobjektum létrehozásához használja a következő kódrészletet. Kapcsolatobjektum (behelyezés @Bean vagy statikussá tenni):
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -373,11 +373,11 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
 
-Most a következő módon hajthatja végre a szifilisz-műveleteket:
+Most már a CRUD műveleteket a következőképpen hajthatja végre:
 
 ### <a name="read-operation"></a>Olvasási művelet
 
-Az elem olvasásához használja a következő kódrészletet:
+Az elem elolvasásához használja a következő kódrészletet:
 
 ```java        
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
@@ -398,15 +398,15 @@ objMono .subscribeOn(Schedulers.elastic())
 latch.await();
 ```
 
-### <a name="insert-operation"></a>Művelet beszúrása
+### <a name="insert-operation"></a>Beszúrási művelet
 
-Egy elem beszúrásához hajtsa végre a következő kódot:
+Elem beszúrásához a következő kódot hajthatja végre:
 
 ```java 
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-Ezután fizessen elő a Mono-ra:
+Akkor iratkozz fel a mono, mint:
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -424,14 +424,14 @@ latch.await();
 
 ### <a name="upsert-operation"></a>Upsert művelet
 
-Egy elem értékének frissítéséhez tekintse meg az alábbi kódrészletet:
+Egy elem értékének frissítéséhez olvassa el az alábbi kódrészletet:
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet a beszúrási műveletben.
+Ezután iratkozzon fel a monóra, olvassa el a mono előfizetési kódrészletet a beszúrási műveletben.
 
-### <a name="delete-operation"></a>Művelet törlése
+### <a name="delete-operation"></a>Törlési művelet
 
 A törlési művelet végrehajtásához használja a következő kódrészletet:
 
@@ -440,18 +440,18 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet a beszúrási műveletben. A teljes mintakód a [CouchbaseToCosmosDB-AsyncKeyValue GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) tárházban érhető el.
+Ezután iratkozzon fel a monóra, olvassa el a mono előfizetési kódrészletet a beszúrási műveletben. A teljes kódminta a [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub tárházban érhető el.
 
 ## <a name="data-migration"></a>Adatok áttelepítése
 
-Az adatmigrálás kétféleképpen végezhető el.
+Az adatok áttelepítése kétféleképpen történik.
 
-* **Azure Data Factory használata:** Ez az ajánlott módszer az adatáttelepítésre. Konfigurálja a forrást Couchbase és fogadóként Azure Cosmos DB SQL API-ként a részletes lépésekért tekintse meg az Azure [Cosmos DB Data Factory-összekötőt](../data-factory/connector-azure-cosmos-db.md) ismertető cikket.
+* **Használja az Azure Data Factory:** Ez az adatok áttelepítésének legajánlottabb módszere. Konfigurálja a forrást Couchbase és a fogadó azure Cosmos DB SQL API-ként, tekintse meg az Azure [Cosmos DB Data Factory összekötő](../data-factory/connector-azure-cosmos-db.md) cikket a részletes lépéseket.
 
-* **Használja a Azure Cosmos db adatimportálási eszközt:** Ez a beállítás ajánlott a kisebb mennyiségű adattal rendelkező virtuális gépek használatával történő áttelepítésre. A részletes lépésekért lásd az [adatimportálót](./import-data.md) ismertető cikket.
+* **Használja az Azure Cosmos DB adatimportálási eszközét:** Ez a beállítás kisebb mennyiségű adattal rendelkező virtuális gépek használatával történő áttelepítése ajánlott. A részletes lépéseket az [Adatimportőr](./import-data.md) cikkben olvashatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A teljesítmény teszteléséhez lásd: [teljesítmény-és méretezési tesztelés Azure Cosmos db](./performance-testing.md) cikkel.
-* A kód optimalizálásához tekintse meg [Azure Cosmos db cikk teljesítményével kapcsolatos tippeket](./performance-tips-async-java.md) .
-* Ismerkedjen meg a Java aszinkron v3 SDK-val, az [SDK-referenciával](https://github.com/Azure/azure-cosmosdb-java/tree/v3) .
+* A teljesítménytesztelés elvégzéséhez tekintse [teljesítmény- és méretezési tesztelés az Azure Cosmos DB cikkében.](./performance-testing.md)
+* A kód optimalizálása, [lásd: Teljesítmény tippek az Azure Cosmos DB](./performance-tips-async-java.md) cikket.
+* Fedezze fel a Java Async V3 SDK, [SDK referencia](https://github.com/Azure/azure-cosmosdb-java/tree/v3) GitHub tárhét.

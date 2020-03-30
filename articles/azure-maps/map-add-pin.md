@@ -1,6 +1,6 @@
 ---
-title: Szimbólum-réteg hozzáadása térképhez | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan szabhatja testre a szimbólumokat a Symbol réteggel, és hogyan adhat hozzá szimbólumokat a térképen a Microsoft Azure Maps web SDK használatával.
+title: Szimbólumréteg hozzáadása térképhez | Microsoft Azure Maps
+description: Ebből a cikkből megtudhatja, hogyan szabhatja testre a Szimbólum réteget egy szimbólum testreszabásához, és hogyan adhat hozzá szimbólumokat a térképhez a Microsoft Azure Maps Web SDK használatával.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,34 +10,34 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77209698"
 ---
-# <a name="add-a-symbol-layer-to-a-map"></a>Szimbólum réteg hozzáadása térképhez
+# <a name="add-a-symbol-layer-to-a-map"></a>Szimbólumréteg hozzáadása térképhez
 
-Csatlakoztasson egy szimbólumot egy adatforráshoz, és használja egy ikon vagy szöveg megjelenítésére egy adott ponton. 
+Szimbólum csatlakoztatása adatforráshoz, és egy ikon vagy szöveg megjelenítésére használható egy adott ponton. 
 
-A szimbólumok rétegei a WebGL használatával jelennek meg. A térképen a pontok nagy gyűjteményének megjelenítéséhez használjon szimbólum réteget. A HTML-jelölőhöz képest a szimbólum réteg nagy számú pontot jelenít meg a térképen a jobb teljesítmény érdekében. A szimbólum réteg azonban nem támogatja a hagyományos CSS-és HTML-elemeket a stílushoz.  
+A szimbólumrétegek a WebGL segítségével jelennek meg. Szimbólumréteg használatával nagy pontgyűjteményeket jeleníthet meg a térképen. A HTML-jelölőhöz képest a szimbólumréteg nagyszámú pontadatot jelenít meg a térképen, jobb teljesítménnyel. A szimbólumréteg azonban nem támogatja a hagyományos CSS és HTML elemeket a formázáshoz.  
 
 > [!TIP]
-> A szimbólumok alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha korlátozni szeretné a réteget úgy, hogy az csak a pont geometriai funkcióit jelenítse meg, állítsa a réteg `filter` tulajdonságát `['==', ['geometry-type'], 'Point']`re vagy `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`ra, ha kívánja, a multipoint-funkciókat is befoglalhatja.
+> A szimbólumrétegek alapértelmezés szerint az adatforrás összes geometriájának koordinátáit jelenítik meg. Ha úgy szeretné korlátozni a réteget, hogy `filter` az csak a `['==', ['geometry-type'], 'Point']` `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` pontgeometriai jellemzőket jelenítse meg, a réteg tulajdonságát a réteg revagy ra állíthatja be, multipoint funkciókat is megadhat.
 
-A Maps Image sprite Manager betölti a szimbólum réteg által használt egyéni lemezképeket. A következő képformátumokat támogatja:
+A térképek kép sprite manager betölti az egyéni képek által használt szimbólum réteg. A következő képformátumokat támogatja:
 
-- JPEG
+- Jpeg
 - PNG
-- SVG
+- Svg
 - BMP
-- GIF (nincs animáció)
+- GIF (animációk nélkül)
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
-Ahhoz, hogy hozzá lehessen adni egy szimbólum réteget a térképhez, néhány lépést végre kell hajtania. Először hozzon létre egy adatforrást, és adja hozzá a térképhez. Hozzon létre egy szimbólum réteget. Ezután továbbítsa az adatforrást a szimbólum rétegbe az adatoknak az adatforrásból való lekéréséhez. Végül vegyen fel egy adatforrást az adatforrásba, hogy valami legyen megjelenítve. 
+Mielőtt szimbólumréteget adhatna a térképhez, néhány lépést kell tennie. Először hozzon létre egy adatforrást, és adja hozzá a térképhez. Hozzon létre egy szimbólumréteget. Ezután adja át az adatforrást a szimbólumrétegnek, hogy lekérje az adatokat az adatforrásból. Végül adjon hozzá adatokat az adatforráshoz, hogy legyen valami renderelésre. 
 
-Az alábbi kód azt mutatja be, hogy mit kell hozzáadni a térképhez a betöltését követően. Ez a minta egy pontot jelenít meg a térképen egy szimbólum réteg használatával. 
+Az alábbi kód bemutatja, hogy mit kell hozzáadni a térképhez a betöltés után. Ez a minta egyetlen pontot jelenít meg a térképen egy szimbólumréteg használatával. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -54,85 +54,85 @@ map.layers.add(layer);
 dataSource.add(new atlas.data.Point([0, 0]));
 ```
 
-A térképhez négy különböző típusú pont-adattípust lehet hozzáadni:
+A térképhez négy különböző típusú pontadat adható hozzá:
 
-- GeoJSON pont geometriája – ez az objektum csak egy pont koordinátáit tartalmazza, semmi más. Az `atlas.data.Point` Helper osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- GeoJSON multipoint geometria – Ez az objektum több pont koordinátáit tartalmazza, és semmi mást nem. Az `atlas.data.MultiPoint` Helper osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- GeoJSON funkció – ez az objektum bármilyen GeoJSON geometriát és olyan tulajdonságokat tartalmaz, amelyek a geometriához társított metaadatokat tartalmaznak. Az `atlas.data.Feature` Helper osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- `atlas.Shape` osztály hasonló a GeoJSON szolgáltatáshoz. Mindkettő egy GeoJSON geometriából és a geometriai metaadatokat tartalmazó készletből áll. Ha egy GeoJSON objektumot ad hozzá egy adatforráshoz, akkor könnyen megjeleníthető egy rétegben. Ha azonban a GeoJSON objektum koordináták tulajdonsága frissül, az adatforrás és a leképezés nem változik. Ennek az az oka, hogy a JSON-objektumban nincs olyan mechanizmus, amely egy frissítést indít el. Az Shape osztály a benne található adatok frissítésére szolgáló függvényeket biztosít. Módosítás esetén az adatforrás és a Térkép automatikusan értesítést kap és frissül. 
+- GeoJSON-pont geometriája – Ez az objektum csak egy pont koordinátáját tartalmazza, semmi mást. A `atlas.data.Point` segítő osztály segítségével könnyen létre ezeket az objektumokat.
+- GeoJSON MultiPoint geometria – Ez az objektum több pont koordinátáit tartalmazza, semmi mást. A `atlas.data.MultiPoint` segítő osztály segítségével könnyen létre ezeket az objektumokat.
+- GeoJSON-szolgáltatás – Ez az objektum bármely GeoJSON geometriából és a geometriához társított metaadatokat tartalmazó tulajdonságokból áll. A `atlas.data.Feature` segítő osztály segítségével könnyen létre ezeket az objektumokat.
+- `atlas.Shape`osztály hasonló a GeoJSON funkcióhoz. Mindkettő GeoJSON geometriából és a geometriához társított metaadatokat tartalmazó tulajdonságokból áll. Ha egy GeoJSON-objektumot hozzáad egy adatforráshoz, könnyen renderelhető egy rétegben. Ha azonban a GeoJSON objektum koordináta-tulajdonsága frissül, az adatforrás és a térkép nem változik. Ez azért van, mert nincs mechanizmus a JSON objektumban a frissítés indításához. Az alakzatosztály funkciókat biztosít a benne lévő adatok frissítéséhez. A módosítás kor a rendszer automatikusan értesíti és frissíti az adatforrást és a térképet. 
 
-Az alábbi mintakód egy GeoJSON pontot hoz létre, és átadja a `atlas.Shape` osztálynak, hogy könnyen frissíthető legyen. A Térkép középpontja kezdetben egy szimbólum megjelenítésére szolgál. A térképhez egy kattintást jelző eseményt adnak hozzá, amely az egér koordinátáit használja a SHAPES `setCoordinates` függvénnyel. Az egér koordinátáit a click esemény időpontjában rögzítjük. Ezután a `setCoordinates` frissíti a szimbólum helyét a térképen.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='PIN-kód helyének váltása' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>switch PIN-kód helyét</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-> [!TIP]
-> Alapértelmezés szerint a szimbólum-rétegek az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. A nagyításhoz a rejtett szimbólumok láthatóvá válnak. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa a `iconOptions` beállítások `allowOverlap` tulajdonságát `true`értékre.
-
-## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Egyéni ikon hozzáadása egy szimbólum réteghez
-
-A szimbólumok rétegei a WebGL használatával jelennek meg. Ennek megfelelően az összes erőforrást, például ikonokat be kell tölteni a WebGL-környezetbe. Ez a minta bemutatja, hogyan adhat hozzá egyéni ikont a Térkép erőforrásaihoz. Ezt az ikont ezután a rendszer a Térkép egyéni szimbólumával jeleníti meg. A szimbólum réteg `textField` tulajdonságához meg kell adni egy kifejezést. Ebben az esetben a hőmérséklet tulajdonságot szeretnénk megjeleníteni. Mivel a hőmérséklet egy szám, azt karakterlánccá kell konvertálni. Emellett szeretnénk hozzáfűzni a "°F" kifejezést. Ehhez az összefűzéshez kifejezés használható. `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+A következő kódminta létrehoz egy GeoJSON-pont `atlas.Shape` geometriát, és átadja azt az osztálynak, hogy megkönnyítse a frissítést. A térkép közepét kezdetben egy szimbólum megjelenítésére használják. A térképhez kattintási esemény kerül a térképre, így az egér koordinátái az alakzatok `setCoordinates` funkcióval lesznek használatba. Az egér koordinátáit a rendszer a kattintási esemény időpontjában rögzíti. Ezután `setCoordinates` a frissítések helyét a szimbólum a térképen.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Egyéni szimbólum képe ikon' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Egyéni szimbóluma ikont</a> a <a href='https://codepen.io'>CodePen</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>).
+<iframe height='500' scrolling='no' title='Pin helyének váltása' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>Tollváltó</a> pin<a href='https://codepen.io/azuremaps'>@azuremaps</a>helyét az Azure Maps ( ) szerint a <a href='https://codepen.io'>CodePen-en.</a>
 </iframe>
 
 > [!TIP]
-> A Azure Maps web SDK számos testreszabható képsablont biztosít, amelyeket a szimbólum rétegben használhat. További információ: a [képsablonokkal](how-to-use-image-templates-web-sdk.md) kapcsolatos dokumentum használata.
+> Alapértelmezés szerint a szimbólumrétegek optimalizálják a szimbólumok megjelenítését az átfedő szimbólumok elrejtésével. Nagyítás közben a rejtett szimbólumok láthatóvá válnak. Ha le szeretné tiltani ezt a funkciót, `allowOverlap` és mindig `iconOptions` az `true`összes szimbólumot meg szeretné jelenni, állítsa a beállítások tulajdonságát a-ra.
 
-## <a name="customize-a-symbol-layer"></a>Szimbólum réteg testreszabása 
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Egyéni ikon hozzáadása szimbólumréteghez
 
-A szimbólum rétegben számos lehetőség áll rendelkezésre. Az alábbi eszköz segítségével tesztelheti ezeket a különböző stílusokat.
+A szimbólumrétegek a WebGL segítségével jelennek meg. Így minden erőforrást, például az ikonképeket be kell tölteni a WebGL környezetbe. Ez a minta bemutatja, hogyan adhat hozzá egyéni ikont a térképerőforrásokhoz. Ezt az ikont használja a pontadatok renderelése egyéni szimbólummal a térképen. A `textField` szimbólumréteg tulajdonsága kifejezés megírásához szükséges. Ebben az esetben szeretnénk, hogy a hőmérséklet tulajdonság. Mivel a hőmérséklet egy szám, azt karakterláncsá kell alakítani. Továbbá azt akarjuk, hogy csatolja "° F" hozzá. Az összefűzéshez kifejezés használható; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Szimbólum réteg beállításai' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/PxVXje/'>szimbólum réteg beállításait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Egyéni szimbólum képikonja' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Egyéni szimbólumkép ikonját</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen-en.</a>
 </iframe>
 
 > [!TIP]
-> Ha csak szimbólum réteget szeretne megjeleníteni, elrejtheti a ikont úgy, hogy az ikon beállításainak `image` tulajdonságát `'none'`értékre állítja.
+> Az Azure Maps webes SDK számos testreszabható képsablont biztosít, amelyeket a szimbólumréteggel használhat. További információt a [Képsablonok használata](how-to-use-image-templates-web-sdk.md) című dokumentumban talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="customize-a-symbol-layer"></a>Szimbólumréteg testreszabása 
+
+A szimbólumréteg számos formázási lehetőséggel rendelkezik. Itt van egy eszköz, hogy teszteljék ezeket a különböző stílus lehetőségeket.
+
+<br/>
+
+<iframe height='700' scrolling='no' title='Szimbólumréteg beállításai' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Toll <a href='https://codepen.io/azuremaps/pen/PxVXje/'>szimbólumréteg beállításait</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen-en.</a>
+</iframe>
+
+> [!TIP]
+> Ha csak a szimbólumréteget tartalmazó szöveget szeretné megjeleníteni, `image` elrejtheti az ikont, ha az ikon beállítások tulajdonságát a számára állítja be. `'none'`
+
+## <a name="next-steps"></a>További lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
+> [Szimbólumréteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
+> [Ikonopciók](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
+> [TextOptions (Szövegbeállításai)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
-Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
+További kódmintákat a térképekhez további kódmintákért tekintse meg:
 
 > [!div class="nextstepaction"]
 > [Adatforrás létrehozása](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Felugró ablak hozzáadása](map-add-popup.md)
+> [Előugró ablak hozzáadása](map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [Adatvezérelt stílusú kifejezések használata](data-driven-style-expressions-web-sdk.md)
+> [Adatvezérelt stíluskifejezések használata](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [A képsablonok használata](how-to-use-image-templates-web-sdk.md)
+> [Rendszerképsablonok használata](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+> [Vonalréteg hozzáadása](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Sokszög réteg hozzáadása](map-add-shape.md)
+> [Sokszögréteg hozzáadása](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Buborék réteg hozzáadása](map-add-bubble-layer.md)
+> [Buborékréteg hozzáadása](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
 > [HTML-készítők hozzáadása](map-add-bubble-layer.md)

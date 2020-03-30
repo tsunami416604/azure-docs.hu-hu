@@ -1,6 +1,6 @@
 ---
-title: Szimulált X. 509 eszköz kiépítése az Azure IoT Hub a Python használatával
-description: Rövid útmutató – szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Python Device SDK-val (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
+title: Szimulált X.509-es eszköz kiépítése az Azure IoT Hubba a Python használatával
+description: Rövid útmutató – hozzon létre és hozzon létre egy szimulált X.509-es eszközt a Python-eszköz SDK-val az IoT Hub-eszközlétesítési szolgáltatás (DPS) használatával. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,35 +10,35 @@ services: iot-dps
 ms.devlang: python
 ms.custom: mvc
 ms.openlocfilehash: 44f1a2cd3336eeae87878c333fb05d2e6b1f88e8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77605388"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Python Device SDK-val
+# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: Szimulált X.509-es eszköz létrehozása és kiépítése Python-eszköz SDK-val az IoT Hub-eszközkiépítési szolgáltatáshoz
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Ebben a rövid útmutatóban egy szimulált X. 509 eszközt hoz létre egy Windows rendszerű számítógépen. A szimulált eszközt az IoT hub használatával a Device kiépítési szolgáltatással (DPS) való egyéni regisztrációval csatlakoztathatja az eszközhöz.
+Ebben a rövid útmutatóban egy szimulált X.509-es eszközt hoz létre Windows rendszerű számítógépen. Az eszközminta Python-kódot használja a szimulált eszköz és az IoT hub összekapcsolásához az eszközkiépítési szolgáltatás (DPS) egyéni regisztrációjával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [automatikus kiépítési fogalmak](concepts-auto-provisioning.md)áttekintése.
-- [A IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Visual Studio 2015 +](https://visualstudio.microsoft.com/vs/) asztali fejlesztéssel a C++rel.
-- A [CMAK-Build rendszere](https://cmake.org/download/).
+- Az [automatikus kiépítés fogalmainak áttekintése](concepts-auto-provisioning.md).
+- Az [IoT Hub-eszközkiépítési szolgáltatás beállítása az Azure Portalon.](./quick-setup-auto-provision.md)
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/) asztali fejlesztéssel C++-al.
+- [CMake build rendszer](https://cmake.org/download/).
 - [Git](https://git-scm.com/download/).
 
 > [!IMPORTANT]
-> Ez a cikk csak az elavult v1 Python SDK-ra vonatkozik. Az IOT hub Device kiépítési szolgáltatáshoz tartozó eszközök és szolgáltatások ügyfelei még nem érhetők el a v2-ben. A csapat jelenleg nem működik, hogy a v2-et a szolgáltatás paritására hozza.
+> Ez a cikk csak az elavult V1 Python SDK vonatkozik. Az Iot Hub-eszközkiépítési szolgáltatás eszköz- és szolgáltatásügyfelei még nem érhetők el a V2-ben. A csapat jelenleg keményen dolgozik, hogy v2-funkció paritás.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése 
 
-1. Győződjön meg arról, hogy telepítette a [Visual studio](https://visualstudio.microsoft.com/vs/) 2015-es C++vagy újabb verzióját, és a Visual Studio telepítéséhez engedélyezve van az "asztali fejlesztés" munkaterhelése.
+1. Győződjön meg arról, hogy telepítette a [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015-ös vagy újabb verzióit, és engedélyezve van az "Asztali fejlesztés C++" munkaterheléssel a Visual Studio telepítéséhez.
 
 2. Töltse le és telepítse a [CMake buildelési rendszert](https://cmake.org/download/).
 
@@ -77,9 +77,9 @@ Az Azure IoT C SDK mintakódját használja majd a szimulált eszköz egyéni re
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
 
 - [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): egyetlen eszköz regisztrálására szolgál.
+- [Egyéni regisztrációk:](concepts-service.md#individual-enrollment)Egyetlen eszköz regisztrálására használható.
 
-Ez a cikk az egyéni regisztrációkat mutatja be.
+Ez a cikk bemutatja az egyes regisztrációk.
 
 1. Nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és építse fel azt a Visual Studióban.
 
@@ -101,26 +101,26 @@ Ez a cikk az egyéni regisztrációkat mutatja be.
  
 4. Hozzon létre egy **_X509testcertificate.pem_** nevű fájlt a Windows rendszerű gépén, nyissa meg egy tetszőleges szövegszerkesztővel, és másolja bele a vágólapra kimásolt szöveget. Mentse a fájlt. 
 
-5. Jelentkezzen be a Azure Portalba, majd a bal oldali menüben kattintson a **minden erőforrás** gombra, és nyissa meg a kiépítési szolgáltatást.
+5. Jelentkezzen be az Azure Portalon, válassza a bal oldali menü **Minden erőforrás** gombját, és nyissa meg a létesítési szolgáltatást.
 
-6. Az eszközök kiépítési szolgáltatásának menüjében válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
+6. Az Eszközkiépítési szolgáltatás menüben válassza **a Regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** lapot, és felül válassza az **Egyéni beléptetés hozzáadása** gombot. 
 
-7. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
+7. A **Beiktatás hozzáadása** panelen adja meg a következő adatokat:
    - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
-   - Az *elsődleges tanúsítvány. PEM vagy. cer fájlban*válassza a *fájl kiválasztása* lehetőséget az előző lépésekben létrehozott **x509testcertificate tanúsítványfájlt. PEM** fájl kiválasztásához.
+   - Az *Elsődleges tanúsítvány .pem vagy .cer fájlban*válassza *a Fájl kijelölése lehetőséget* az előző lépésekben létrehozott **X509testcertificate.pem** tanúsítványfájl kijelöléséhez.
    - Ha kívánja, megadhatja az alábbi információkat is:
      - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
      - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor. 
      - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
-   - Ha elkészült, kattintson a **Save (Mentés** ) gombra. 
+   - Miután elkészült, nyomja meg a **Mentés** gombot. 
 
-     [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/python-quick-create-simulated-device-x509/device-enrollment.png)](./media/python-quick-create-simulated-device-x509/device-enrollment.png#lightbox)
+     [![Egyéni regisztráció hozzáadása az X.509-es tanúsítványhoz a portálon](./media/python-quick-create-simulated-device-x509/device-enrollment.png)](./media/python-quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
    Sikeres beléptetés esetén az X.509-eszköz **riot-device-cert** azonosítóval megjelenik a *Regisztrációs azonosító* oszlopban az *Egyéni beléptetések* lapon. 
 
 ## <a name="simulate-the-device"></a>Az eszköz szimulálása
 
-1. Az eszközök kiépítési szolgáltatásának menüjében válassza az **Áttekintés**lehetőséget. Jegyezze fel az _Azonosító hatóköre_ és a _Globális szolgáltatásvégpont_ értékeit.
+1. Az Eszközkiépítési szolgáltatás menüben válassza **az Áttekintés parancsot.** Jegyezze fel az _azonosítóhatókört_ és _a globális szolgáltatásvégpontot._
 
     ![Szolgáltatás adatai](./media/python-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -159,7 +159,7 @@ Ez a cikk az egyéni regisztrációkat mutatja be.
 
     ![sikeres regisztráció](./media/python-quick-create-simulated-device-x509/enrollment-success.png)
 
-8. A portálon lépjen a kiépítési szolgáltatáshoz csatolt IoT hubhoz, és nyissa meg a **Device Explorer** (Eszközkereső) panelt. Ha sikeresen kiépíti a szimulált X.509-eszközt a hubon, az eszköz azonosítója megjelenik a **Device Explorer** panelen, a hozzá tartozó *ÁLLAPOT* pedig **engedélyezett** lesz. Előfordulhat, hogy a felső **frissítés** gombra kell kattintania, ha már megnyitotta a panelt a minta eszköz futtatása előtt. 
+8. A portálon lépjen a kiépítési szolgáltatáshoz csatolt IoT hubhoz, és nyissa meg a **Device Explorer** (Eszközkereső) panelt. Ha sikeresen kiépíti a szimulált X.509-eszközt a hubon, az eszköz azonosítója megjelenik a **Device Explorer** panelen, a hozzá tartozó *ÁLLAPOT* pedig **engedélyezett** lesz. Előfordulhat, hogy meg kell **nyomnia** a frissítés gombot a tetején, ha már kinyitotta a panelt a mintaeszköz-alkalmazás futtatása előtt. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/python-quick-create-simulated-device-x509/registration.png) 
 
@@ -169,15 +169,15 @@ Ez a cikk az egyéni regisztrációkat mutatja be.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldali mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
+Ha azt tervezi, hogy folytatja a munkát, és vizsgálja meg az eszköz ügyfél minta, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem tervezi a folytatást, az alábbi lépésekkel törölje az összes olyan erőforrást, amelyet ez a rövid útmutató hozott létre.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
-2. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációk kezelése** paneljét, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
-3. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközök** panelt, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
+2. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** t, majd válassza ki az Eszközkiépítési szolgáltatást. Nyissa meg a **szolgáltatás Regisztrációk kezelése** panelt, majd válassza az Egyéni **regisztrációk** lapot. *REGISTRATION ID* **Delete** 
+3. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** lehetőséget, majd válassza ki az IoT-központot. Nyissa meg az **IoT-eszközök** panelt a hubhoz, jelölje be a rövid útmutatóban regisztrált eszköz *eszközazonosítója* melletti jelölőnégyzetet, majd nyomja meg a **Törlés** gombot az ablaktábla tetején.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozta a szimulált X. 509 eszközt a Windows rendszerű gépen, és kiépíti azt az IoT hubhoz a portálon elérhető Azure IoT Hub Device Provisioning Service használatával. Az X. 509 eszköz programozott módon történő regisztrálásának megismeréséhez folytassa az X. 509 eszközök programozott regisztrálására szolgáló rövid útmutatóval. 
+Ebben a rövid útmutatóban létrehozott egy szimulált X.509-es eszközt a Windows-gépen, és kiépítette azt az IoT hubba az Azure IoT Hub-eszközkiépítési szolgáltatás használatával a portálon. Az X.509-es eszköz programozott regisztrálásához folytassa az X.509-es eszközök programozott regisztrációjának rövid útmutatójával. 
 
 > [!div class="nextstepaction"]
-> [Azure rövid útmutató – X. 509 eszközök regisztrálása az Azure-ba IoT Hub Device Provisioning Service](quick-enroll-device-x509-python.md)
+> [Azure-gyorsútmutató – X.509-es eszközök regisztrálása az Azure IoT Hub-eszközkiépítési szolgáltatásra](quick-enroll-device-x509-python.md)
