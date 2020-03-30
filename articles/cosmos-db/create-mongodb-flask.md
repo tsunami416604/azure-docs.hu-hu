@@ -1,6 +1,6 @@
 ---
-title: Python-lombik Webalkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
-description: Egy Python-beli mintakód-mintát tartalmaz, amellyel csatlakozhat a Azure Cosmos DB API-MongoDB való kapcsolódáshoz és lekérdezésekhez.
+title: Python Flask webalkalmazás létrehozása az Azure Cosmos DB MongoDB-hoz való API-jával
+description: Bemutatja a Python Flask-kód minta segítségével csatlakozhat, és lekérdezésaz Azure Cosmos DB API-mongoDB használatával.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77061743"
 ---
-# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Python-alkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
+# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rövid útmutató: Python-alkalmazás létrehozása az Azure Cosmos DB MongoDB-hoz való API-jával
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,19 +26,19 @@ ms.locfileid: "77061743"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Ebben a rövid útmutatóban egy Azure Cosmos DBt használ a Mongo DB API-fiókhoz vagy a Azure Cosmos DB emulátorhoz, amellyel a GitHubról klónozott Python-lombikot futtathat webalkalmazásként. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban egy Azure Cosmos DB Mongo DB API-fiókhoz vagy az Azure Cosmos DB-emulátort használ a GitHubról klónozott Python Flask To-Do webalkalmazás futtatásához. Az Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, a tábla, a kulcsérték és a grafikonadatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Vagy használhatja a [Azure Cosmos db emulatort](local-emulator.md)is. 
-- [Python 3.6 +](https://www.python.org/downloads/)
-- [Visual Studio Code](https://code.visualstudio.com/Download) a [Python bővítménnyel](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python).
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Vagy [próbálja ki az Azure Cosmos DB-t ingyenesen](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés nélkül. Vagy használhatja az [Azure Cosmos DB-emulátort.](local-emulator.md) 
+- [Python 3.6+](https://www.python.org/downloads/)
+- [Visual Studio-kód](https://code.visualstudio.com/Download) a [Python kiterjesztéssel.](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most hozzon létre egy MongoDB alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Ilyen egyszerű az adatokkal programozott módon dolgozni.
+Most klónozzunk egy Flask-MongoDB alkalmazást a GitHubról, állítsuk be a kapcsolati karakterláncot, és futtassuk. Ilyen egyszerű az adatokkal programozott módon dolgozni.
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -50,7 +50,7 @@ Most hozzon létre egy MongoDB alkalmazást a GitHubról, állítsa be a kapcsol
     cd "C:\git-samples"
     ```
 
-3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git
@@ -66,7 +66,7 @@ Most hozzon létre egy MongoDB alkalmazást a GitHubról, állítsa be a kapcsol
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben áttérhet [A webalkalmazás futtatása](#run-the-web-app) című szakaszra. 
 
-A következő kódrészletek mind a *app.py* fájlból származnak, és a helyi Azure Cosmos db emulátorhoz tartozó kapcsolatok karakterláncot használják. A jelszót az alább látható módon kell felosztani a máshogy nem elemezhető perjelek befogadásához.
+Az alábbi kódrészletek mind a *app.py* fájlból származnak, és a helyi Azure Cosmos DB-emulátor kapcsolati karakterláncát használja. A jelszót az alább látható módon kell felosztani a máshogy nem elemezhető perjelek befogadásához.
 
 * Inicializálja a MongoDB-ügyfelet, kérje le az adatbázist, és hitelesítsen.
 
@@ -96,37 +96,37 @@ A következő kódrészletek mind a *app.py* fájlból származnak, és a helyi 
 
 2. Nyisson meg egy terminálablakot és a `cd` paranccsal lépjen arra a könyvtárra, amelyben az alkalmazás mentve van.
 
-3. Ezután állítsa be a környezeti változót a lombik alkalmazáshoz `set FLASK_APP=app.py`, `$env:FLASK_APP = app.py` a PowerShell-szerkesztőkhöz, vagy ha Mac-et használ, `export FLASK_APP=app.py`. 
+3. Ezután állítsa be a Flask `set FLASK_APP=app.py` `$env:FLASK_APP = app.py` alkalmazás környezeti változóját `export FLASK_APP=app.py` a , PowerShell-szerkesztők höz, vagy ha Mac et használ. 
 
-4. Futtassa az alkalmazást `flask run` és keresse meg a *http:\//127.0.0.1:5000/* .
+4. Futtassa `flask run` az alkalmazást, és keresse meg *a\/http: /127.0.0.1:5000/*.
 
 5. Adjon hozzá és távolítson el feladatokat, és figyelje meg, ahogyan változnak a gyűjteményben.
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
-Ha a kódot egy élő Azure Cosmos DB-fiókkal szeretné tesztelni, a fiók létrehozásához nyissa meg a Azure Portal.
+Ha egy élő Azure Cosmos DB-fiókkal szeretné tesztelni a kódot, az Azure Portalon létrehozhat egy fiókot.
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-Ha tesztelni szeretné a kódot az élő Azure Cosmos DB fiókkal, szerezze be a kapcsolódási karakterlánc adatait. Ezután másolja azokat az alkalmazásba.
+A kód az élő Azure Cosmos DB-fiókkal szemben, a kapcsolati karakterlánc adatait. Ezután másolja azokat az alkalmazásba.
 
-1. A Azure Portal Azure Cosmos DB-fiókjában a bal oldali navigációs sávon válassza a **kapcsolatok karakterlánc**lehetőséget, majd válassza az **írási/olvasási kulcsok**elemet. A Felhasználónév, a kapcsolódási karakterlánc és a jelszó másolásához a képernyő jobb oldalán található másolási gombokat fogja használni. 
+1. Az Azure Cosmos DB-fiókjában az Azure Portalon a bal oldali navigációs sávon válassza a **Kapcsolati karakterlánc**lehetőséget, majd válassza **az Olvasási és írási kulcsok lehetőséget.** A képernyő jobb oldalán található másolási gombokkal másolhatja a felhasználónevet, a kapcsolati karakterláncot és a jelszót. 
 
 2. Nyissa meg a gyökérkönyvtárban lévő *app.py* fájlt.
 
 3. A másolási gomb használatával másolja ki a **username** érteket a Portalból, és azt adja meg a **name** értékeként az *app.py* fájlban.
 
-4. Ezután másolja a **kapcsolatok karakterlánc** értékét a portálról, és adja meg a **MongoClient** értékét a *app.py* -fájlban.
+4. Ezután másolja a **kapcsolati karakterlánc** értékét a portálról, és tegye a **mongoclient** értékére a *app.py* fájlban.
 
 5. Végül másolja ki a **jelszó** értékét a Portalból, és azt adja meg a **password** értékeként az *app.py* fájlban.
 
-Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. Ugyanúgy futtathatja, mint előtte.
+Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. Ugyanúgy futtathatja, mint előtte.
 
 ## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
 
-Az alkalmazás üzembe helyezéséhez létrehozhat egy új webalkalmazást az Azure-ban, és engedélyezheti a folyamatos üzembe helyezést a GitHub-tárház villájának használatával. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) követve folyamatos üzembe helyezést állíthat be a GitHub használatával az Azure-ban.
+Az alkalmazás üzembe helyezéséhez létrehozhat egy új webalkalmazást az Azure-ban, és engedélyezheti a folyamatos üzembe helyezést a GitHub-tárcsa elírásával. Az [oktatóanyagból](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) folyamatos üzembe helyezést állíthat be a GitHubon az Azure-ban.
 
 Amikor az Azure-ba végez üzembe helyezést, el kell távolítania az alkalmazáskulcsokat, és ellenőriznie kell, hogy az alábbi szakasz ne megjegyzésként szerepeljen:
 
@@ -138,16 +138,16 @@ Amikor az Azure-ba végez üzembe helyezést, el kell távolítania az alkalmaz�
 
 Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket az alkalmazásbeállításokhoz. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) követve további információkat tudhat meg az Azure-webalkalmazások alkalmazásbeállításairól.
 
-Ha nem szeretne elágazást létrehozni ebből a tárházból, válassza az alábbi **üzembe helyezés az Azure-** ban gombot. Ezután be kell lépnie az Azure-ba, és be kell állítania az Alkalmazásbeállítások beállításait a Azure Cosmos DB fiókjának adataival.
+Ha nem szeretne villát létrehozni ebből a tárhétből, az alábbi **Üzembe helyezés az Azure-ba** gombot is választhatja. Ezután az Azure-ba kell lépnie, és be kell állítania az alkalmazásbeállításokat az Azure Cosmos DB-fiók adataival.
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
 <img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
 </a>
 
 > [!NOTE]
-> Ha a kódot a GitHubon vagy más verziókövetés-beállításokban szeretné tárolni, ne felejtse el törölni a kapcsolódási karakterláncokat a kódból. Ehelyett a webalkalmazás alkalmazásbeállításaival állíthatók be.
+> Ha azt tervezi, hogy tárolja a kódot a GitHubon vagy más forrásvezérlési beállításokban, kérjük, távolítsa el a kapcsolati karakterláncokat a kódból. Ehelyett a webalkalmazás alkalmazásbeállításaival állíthatók be.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -155,9 +155,9 @@ Ha nem szeretne elágazást létrehozni ebből a tárházból, válassza az alá
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB a Mongo DB API-fiókhoz, és hogyan futtathat egy Python-lombikot Azure Cosmos DB a GitHubról klónozott webalkalmazáshoz. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB-t a Mongo DB API-fiókhoz, és az Azure Cosmos DB-emulátor használatával futtathat egy GitHubról klónozott Python Flask To-Do webalkalmazást. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)

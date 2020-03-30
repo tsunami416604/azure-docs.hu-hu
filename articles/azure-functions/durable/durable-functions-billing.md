@@ -1,56 +1,56 @@
 ---
-title: Tartós függvények számlázása – Azure Functions
-description: Ismerje meg a Durable Functions belső viselkedését, valamint azt, hogy azok hogyan hatnak a Azure Functions számlázására.
+title: Tartós funkciók számlázása – Azure Functions
+description: Ismerje meg a tartós függvények belső viselkedését, és hogyan befolyásolják az Azure Functions számlázását.
 author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74233015"
 ---
-# <a name="durable-functions-billing"></a>Durable Functions számlázás
+# <a name="durable-functions-billing"></a>Tartós funkciók számlázása
 
-[Durable functions](durable-functions-overview.md) számlázása ugyanúgy történik, mint Azure functions. További információ: [Azure functions díjszabása](https://azure.microsoft.com/pricing/details/functions/).
+[A tartós függvények](durable-functions-overview.md) számlázása ugyanúgy történik, mint az Azure Functions. További információ: [Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/).
 
-Azure Functions használati [tervben](../functions-scale.md#consumption-plan)szereplő Orchestrator-függvények végrehajtásakor figyelembe kell venni néhány számlázási viselkedést. A következő szakaszok részletesen ismertetik ezeket a viselkedéseket és azok hatását.
+Az Azure [Functions-felhasználási tervben](../functions-scale.md#consumption-plan)az orchestrator-függvények végrehajtásakor tisztában kell lennie néhány számlázási viselkedéssel. A következő szakaszok részletesebben ismertetik ezeket a viselkedéseket és azok hatását.
 
-## <a name="orchestrator-function-replay-billing"></a>Orchestrator függvény újrajátszása számlázás
+## <a name="orchestrator-function-replay-billing"></a>Orchestrator függvény visszajátszása számlázás
 
-A [Orchestrator függvények](durable-functions-orchestrations.md) többször is visszaállhatnak egy előkészítési időszak alatt. A rendszer minden egyes visszajátszás esetében az Azure Functions futtatókörnyezetet tekinti meg külön függvény meghívásakor. Emiatt a Azure Functions fogyasztási tervben egy Orchestrator-függvény minden újrajátszása után számítunk fel díjat. Az egyéb Orchestrator nem számítanak fel díjat a funkció újrajátszása esetén.
+[Az Orchestrator-függvények](durable-functions-orchestrations.md) többször is újrajátszhatók a vezénylés iményezési élettartama során. Minden visszajátszást az Azure Functions futásidejű külön függvénymeghívásként tekint meg. Ebből az okból az Azure Functions-felhasználási tervben egy orchestrator-függvény minden egyes visszajátszásáért számlázunk. Más csomagtípusok nem számítanak fel díjat az orchestrator függvény visszajátszásáért.
 
-## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Várakozás és hozam a Orchestrator functions szolgáltatásban
+## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Várakozás és engedés az orchestrator függvényekben
 
-Ha egy Orchestrator-függvény megvárja, amíg egy aszinkron művelet befejeződik a JavaScriptben való **várakozás** C# vagy **hozam** használatával, a futtatókörnyezet úgy véli, hogy az adott végrehajtás befejeződött. A Orchestrator függvény számlázása ezen a ponton leáll. Ez a művelet csak a következő Orchestrator függvény újrajátszása után folytatódik. Nem számítunk fel díjat a Orchestrator-függvény várakozási ideje vagy hozamának elköltése során.
+Amikor egy orchestrator függvény megvárja, amíg egy aszinkron művelet befejeződik **a C#** vagy a JavaScript **hozamhasználatával,** a futásidejű úgy véli, hogy az adott végrehajtás befejeződött. Az orchestrator függvény számlázása ezen a ponton leáll. Nem folytatódik, amíg a következő orchestrator függvény visszajátszás. Nem kell fizetnie az orchestrator függvényre való várakozással vagy engedéssel töltött időért.
 
 > [!NOTE]
-> A más függvényeket meghívó függvényeket a rendszer úgy tekinti, hogy egy minta. Ennek oka a _kettős számlázási_megoldás. Ha egy függvény közvetlenül hív meg egy másik függvényt, akkor mindkettő egyszerre fut. A hívott függvény aktívan fut a kódban, miközben a hívó függvény választ vár. Ebben az esetben meg kell fizetnie, hogy a hívási függvény Mikor vár a meghívott függvény futtatására.
+> Funkciók hívása más funkciók tartják néhány an antipattern. Ennek oka a _kettős számlázásnak_nevezett probléma. Amikor egy függvény közvetlenül hív meg egy másik függvényt, mindkettő egyszerre fut. A hívott függvény aktívan futtatja a kódot, miközben a hívó függvény választ vár. Ebben az esetben meg kell fizetnie az időt a hívás függvény tölt várja a hívott függvény futtatásához.
 >
-> A Orchestrator függvények nem rendelkeznek dupla számlázással. A Orchestrator függvény számlázása leáll, miközben egy tevékenységi függvény vagy alfolyamat eredményét várja.
+> Az orchestrator-függvényekben nincs kettős számlázás. Az orchestrator függvény számlázási leáll, amíg megvárja egy tevékenységfüggvény vagy al-vezénylési eredménye.
 
 ## <a name="durable-http-polling"></a>Tartós HTTP-lekérdezés
 
-A Orchestrator függvények a [http-szolgáltatások című cikkben](durable-functions-http-features.md)leírtak szerint hosszan futó http-hívásokat végezhetnek külső végpontokra. A **CallHttpAsync** metódusa C# és a JavaScript **callHttp** metódusa BELSŐLEG is lekérdezheti a HTTP-végpontot az [aszinkron 202-mintázatot](durable-functions-http-features.md#http-202-handling)követve.
+Az Orchestrator függvények hosszú ideig futó HTTP-hívásokat kezdeményezhetnek a külső végpontokhoz a [HTTP-szolgáltatások ról szóló cikkben](durable-functions-http-features.md)leírtak szerint. A **C# híváshttpAsync** metódusa és a JavaScript-ben lévő **CallHttpHttp** metódus belsőleg lekérdezett egy HTTP-végpontot az [aszinkron 202 minta](durable-functions-http-features.md#http-202-handling)követése közben.
 
-Jelenleg nincs közvetlen számlázás a belső HTTP-lekérdezési műveletekhez. A belső lekérdezés azonban azt eredményezheti, hogy a Orchestrator függvény rendszeresen újrajátszható. Ezeknek a belső függvényeknek a díjait a standard díjszabás szerint számítjuk fel.
+Jelenleg nincs közvetlen számlázás a belső HTTP-lekérdezési műveletek. A belső lekérdezés azonban az orchestrator függvény rendszeres visszajátszását okozhatja. Ezeknek a belső függvényvisszajátszásoknak a szokásos díjait számítjuk ki.
 
 ## <a name="azure-storage-transactions"></a>Azure Storage-tranzakciók
 
-Az Durable Functions alapértelmezés szerint az Azure Storage-t használja az állapot állandó, az üzenetek feldolgozásához és a partíciók blob-bérleteken keresztüli kezeléséhez. Mivel Ön a Storage-fiók tulajdonosa, az Azure-előfizetésében minden tranzakciós költséget számlázunk. Az Durable Functions által használt Azure Storage-összetevőkkel kapcsolatos további információkért tekintse meg a [feladatok hubok című cikket](durable-functions-task-hubs.md).
+A Durable Functions alapértelmezés szerint az Azure Storage-t használja az állandó állapot megőrzéséhez, az üzenetek feldolgozásához és a partíciók blobbérleteken keresztüli kezeléséhez. Mivel ön a tárfiók a tulajdonában van, a tranzakciós költségeket az Azure-előfizetése számlája alapján számlázunk. A durable functions által használt Azure Storage-összetevőkről a Feladatközpontok ról olvashat [bővebben.](durable-functions-task-hubs.md)
 
-Számos tényező járul hozzá a Durable Functions-alkalmazásban felmerülő tényleges Azure Storage-költségekhez:
+Számos tényező járul hozzá a Durable Functions alkalmazás tényleges Azure Storage-költségeihez:
 
-* Egyetlen Function-alkalmazás van társítva egyetlen feladati hubhoz, amely az Azure Storage-erőforrások készletét osztja meg. Ezeket az erőforrásokat a Function app összes tartós funkciója használja. A Function alkalmazásban a függvények tényleges száma nem befolyásolja az Azure Storage tranzakciós költségeit.
-* Minden Function App-példány belsőleg több várólistát kérdez le a Storage-fiókban egy exponenciális leállítási lekérdezési algoritmus használatával. Az inaktív alkalmazások példányai ritkábban kérdezik le a várólistákat, mint az aktív alkalmazások, ami kevesebb tranzakciós költséget eredményez. A Durable Functions üzenetsor – lekérdezési viselkedéssel kapcsolatos további információkért tekintse meg a [teljesítmény-és méretezési cikk üzenetsor-lekérdezési szakaszát](durable-functions-perf-and-scale.md#queue-polling).
-* A Azure Functions-használat vagy a prémium csomagok futtatásakor a [Azure functions skálázási vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) rendszeresen lekérdezi a háttérben lévő összes Task hub-várólistát. Ha a Function alkalmazás enyhe és közepes méretű, akkor csak egyetlen méretezési vezérlő példány fogja lekérdezni ezeket a várólistákat. Ha a Function alkalmazás nagy mennyiségű példányra méretezhető, több méretezési vezérlő példány is felvehető. Ezek a további skálázási vezérlő-példányok növelhetik az összes üzenetsor-tranzakciós költségeket.
-* Minden Function App-példány blob-bérletek egy készletére verseng. Ezek a példányok rendszeresen kezdeményezik az Azure Blob service a megújított bérletek megújítására vagy új bérletek megvásárlására. A Task hub konfigurált partícióinak száma határozza meg a blob bérletek számát. A nagyobb számú Function app-példányra való horizontális felskálázás valószínűleg megnöveli az Azure Storage-tranzakcióhoz kapcsolódó, a bérleti műveletekkel kapcsolatos költségeket.
+* Egyetlen függvényalkalmazás egyetlen feladatközponthoz van társítva, amely megosztja az Azure Storage-erőforrások készletét. Ezeket az erőforrásokat egy függvényalkalmazás összes tartós függvénye használja. A függvényalkalmazás funkcióinak tényleges száma nincs hatással az Azure Storage tranzakciós költségeire.
+* Minden egyes függvényalkalmazás-példány belsőleg lekérdezi a tárfiók több várólistáját egy exponenciális-visszaegyszeri lekérdezési algoritmus használatával. Egy tétlen alkalmazáspéldány ritkábban kérdezi le a várólistákat, mint egy aktív alkalmazás, ami kevesebb tranzakciós költséget eredményez. A Tartós függvények várólista-lekérdezési viselkedéséről a [Teljesítmény és méretezés című cikk várólista-lekérdezési szakaszában olvashat bővebben.](durable-functions-perf-and-scale.md#queue-polling)
+* Az Azure Functions Consumption vagy a Premium-csomagokban való futtatáskor az [Azure Functions méretezési vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) rendszeresen lekérdezi az összes feladatközpont-várólistát a háttérben. Ha egy függvényalkalmazás könnyű vagy közepes méretű, csak egy méretezési vezérlő példány a feladatsorok lekérdezése. Ha a függvényalkalmazás nagy számú példányra skálázódik, további méretezési vezérlőpéldányok adhatók hozzá. Ezek a további méretezési vezérlő példányok növelhetik a teljes várólista-tranzakció költségeit.
+* Minden függvényalkalmazás-példány verseng a blobbérletek készletével. Ezek a példányok rendszeres időközönként hívásokat kezdeményeznek az Azure Blob szolgáltatáshoz a birtokolt bérletek megújítása vagy új bérletek beszerzése érdekében. A feladatközpont konfigurált partíciószáma határozza meg a blobbérletek számát. Horizontális felskálázás nagyobb számú függvény alkalmazáspéldányok valószínűleg növeli az Azure Storage tranzakciós költségek ezekkel a bérleti műveletekkel kapcsolatos.
 
-Az Azure Storage díjszabásával kapcsolatos további információkért tekintse meg az [Azure Storage díjszabási](https://azure.microsoft.com/pricing/details/storage/) dokumentációját. 
+Az Azure Storage díjszabásáról az [Azure Storage díjszabási](https://azure.microsoft.com/pricing/details/storage/) dokumentációjában talál további információt. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a Azure Functions díjszabásáról](https://azure.microsoft.com/pricing/details/functions/)
+> [További információ az Azure Functions díjszabásáról](https://azure.microsoft.com/pricing/details/functions/)

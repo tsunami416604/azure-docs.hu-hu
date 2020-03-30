@@ -1,131 +1,131 @@
 ---
-title: Azure Active Directory-Azure Database for PostgreSQL – egyetlen kiszolgáló használata
-description: Ismerje meg, hogyan állíthat be Azure Active Directory (HRE) a Azure Database for PostgreSQL – egyetlen kiszolgálóval történő hitelesítéshez
+title: Azure Active Directory használata – Azure Database for PostgreSQL – Single Server
+description: Tudnivalók az Azure Active Directory (AAD) beállításáról az Azure Database for PostgreSQL – Single Server használatával való hitelesítéshez
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: aacffbfdec67d7faa58cb8bd08f99963fb78263a
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299277"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384398"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
+# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Az Azure Active Directory használata a PostgreSQL-rel való hitelesítéshez
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Active Directory hozzáférését Azure Database for PostgreSQL és hogyan csatlakozhat Azure AD-jogkivonat használatával.
+Ez a cikk bemutatja az Azure Active Directory-hozzáférés konfigurálásának lépéseit a PostgreSQL Azure Database használatával, és hogyan csatlakozhat egy Azure AD-jogkivonat használatával.
 
 > [!IMPORTANT]
-> A Azure Database for PostgreSQL Azure AD-hitelesítése jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure AD-hitelesítés az Azure Database for PostgreSQL jelenleg nyilvános előzetes verzióban.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda felhasználó beállítása
+## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda imassa beállítása
 
-Csak az Azure AD-rendszergazda felhasználó hozhat létre/engedélyezhet felhasználókat az Azure AD-alapú hitelesítéshez. Az Azure AD-rendszergazda felhasználó létrehozásához kövesse az alábbi lépéseket
+Csak egy Azure AD-rendszergazdai felhasználó hozhat létre/engedélyezhet felhasználókat az Azure AD-alapú hitelesítéshez. Az Azure AD-rendszergazdai felhasználók létrehozásához kövesse az alábbi lépéseket
 
-1. A Azure Portal válassza ki a Azure Database for PostgreSQL azon példányát, amelyet engedélyezni kíván az Azure AD-ben.
-2. A beállítások területen válassza a Active Directory rendszergazda elemet:
+1. Az Azure Portalon válassza ki az Azure Database for PostgreSQL, amely engedélyezni szeretné az Azure AD példányát.
+2. A Beállítások csoportban válassza az Active Directory rendszergazdája lehetőséget:
 
-![Az Azure ad-rendszergazda beállítása][2]
+![az Azure ad administrator beállítása][2]
 
-3. Válasszon ki egy érvényes Azure AD-felhasználót az ügyfél-bérlőben az Azure AD-rendszergazdaként.
+3. Válasszon ki egy érvényes Azure AD-felhasználót az ügyfél-bérlőben, hogy az Azure AD-rendszergazda legyen.
 
 > [!IMPORTANT]
-> A rendszergazda beállításakor a rendszer új felhasználót ad hozzá a Azure Database for PostgreSQL-kiszolgálóhoz teljes körű rendszergazdai engedélyekkel. Az Azure AD rendszergazdai felhasználója Azure Database for PostgreSQL a szerepkör `azure_ad_admin`.
+> A rendszergazda beállításakor egy új felhasználó kerül az Azure Database for PostgreSQL kiszolgáló teljes rendszergazdai engedélyekkel. Az Azure AD-rendszergazdai felhasználó az Azure Database `azure_ad_admin`for PostgreSQL lesz a szerepkör.
 
-PostgreSQL-Kiszolgálónként csak egy Azure AD-rendszergazda hozható létre, és a másik lehetőség kiválasztása esetén a rendszer felülírja a kiszolgálóhoz konfigurált meglévő Azure AD-rendszergazdát. Egy Azure AD-csoportot az egyes felhasználók helyett több rendszergazdával is megadhat. Vegye figyelembe, hogy ezt követően a csoport nevét kell bejelentkeznie adminisztrációs célokra.
+PostgreSQL-kiszolgálónként csak egy Azure AD-rendszergazda hozható létre, és egy másik kiválasztása felülírja a kiszolgálóhoz konfigurált meglévő Azure AD-rendszergazdát. Megadhat egy Azure AD-csoportot az egyes felhasználók helyett, hogy több rendszergazdais legyen. Vegye figyelembe, hogy ezután adminisztrációs célokra a csoport nevével jelentkezik be.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure AD-felhasználók létrehozása a Azure Database for PostgreSQLban
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure AD-felhasználók létrehozása a PostgreSQL Azure Database szolgáltatásában
 
-Ha Azure AD-felhasználót szeretne hozzáadni a Azure Database for PostgreSQL-adatbázishoz, hajtsa végre a következő lépéseket a csatlakozás után (lásd: a kapcsolódási útmutató későbbi szakasza):
+Ha azure AD-felhasználót szeretne hozzáadni az Azure Database for PostgreSQL-adatbázishoz, a csatlakozás után hajtsa végre a következő lépéseket (lásd a további szakaszt a csatlakozásról):
 
-1. Először győződjön meg arról, hogy az Azure AD-felhasználó `<user>@yourtenant.onmicrosoft.com` érvényes felhasználó az Azure AD-bérlőben.
-2. Jelentkezzen be az Azure Database for PostgreSQL-példányba az Azure AD-rendszergazda felhasználóként.
-3. Szerepkör-`<user>@yourtenant.onmicrosoft.com` létrehozása a Azure Database for PostgreSQLban.
-4. Hozzon `<user>@yourtenant.onmicrosoft.com` a szerepkör azure_ad_user tagjaként. Ezt csak az Azure AD-felhasználók kapják meg.
+1. Először győződjön meg `<user>@yourtenant.onmicrosoft.com` arról, hogy az Azure AD-felhasználó egy érvényes felhasználó az Azure AD-bérlőben.
+2. Jelentkezzen be az Azure Database for PostgreSQL-példány, mint az Azure AD-rendszergazdai felhasználó.
+3. Hozzon `<user>@yourtenant.onmicrosoft.com` létre szerepkört a PostgreSQL Azure Database-ben.
+4. Legyen `<user>@yourtenant.onmicrosoft.com` tagja a szerepnek azure_ad_user. Ezt csak az Azure AD-felhasználóknak kell megadni.
 
-**Példa**
+**Példa:**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
 > [!NOTE]
-> Egy felhasználó Azure AD-n keresztüli hitelesítése nem biztosít semmilyen engedélyt a felhasználónak a Azure Database for PostgreSQL-adatbázisban lévő objektumok eléréséhez. A szükséges engedélyeket manuálisan kell megadnia a felhasználónak.
+> A felhasználó hitelesítése az Azure AD-n keresztül nem ad a felhasználónak semmilyen engedélyt az Azure Database for PostgreSQL adatbázisobjektumainak eléréséhez. A felhasználónak manuálisan kell megadnia a szükséges engedélyeket.
 
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure AD-csoportok létrehozása a Azure Database for PostgreSQLban
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure AD-csoportok létrehozása a PostgreSQL Azure Database szolgáltatásában
 
-Ha engedélyezni szeretné az Azure AD-csoport számára az adatbázishoz való hozzáférést, használja ugyanazt a mechanizmust, mint a felhasználók számára, hanem adja meg a csoport nevét:
+Ha engedélyezni szeretné az Azure AD-csoportot az adatbázishoz való hozzáféréshez, használja ugyanazt a mechanizmust, mint a felhasználók esetében, de adja meg a csoport nevét:
 
-**Példa**
+**Példa:**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
-Bejelentkezéskor a csoport tagjai a személyes hozzáférési jogkivonatokat fogják használni, de a felhasználónévként megadott csoport nevével jelentkezhetnek be.
+Bejelentkezéskor a csoport tagjai a személyes hozzáférési jogkivonataikat fogják használni, de a felhasználónévként megadott csoportnévvel jelentkeznek.
 
-## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Csatlakozás az Azure Database for PostgreSQLhoz az Azure AD használatával
+## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Csatlakozás a PostgreSQL Azure-adatbázisához az Azure AD használatával
 
-A következő magas szintű diagram összefoglalja az Azure AD-hitelesítés Azure Database for PostgreSQL használatával történő használatának munkafolyamatát:
+Az alábbi magas szintű diagram összefoglalja az Azure AD-hitelesítés azure-beli Azure Database for PostgreSQL használatával kapcsolatos munkafolyamatot:
 
-![Hitelesítési folyamat][1]
+![hitelesítési folyamat][1]
 
-Az Azure AD-integrációt úgy terveztük, hogy közös PostgreSQL-eszközökkel (például psql) működjön együtt, amelyek nem ismerik az Azure AD-t, és csak a Felhasználónév és a jelszó megadását támogatják a PostgreSQL-hez való csatlakozáskor. Az Azure AD-tokent jelszóként adjuk át a fenti képen látható módon.
+Úgy terveztük meg az Azure AD-integrációt, hogy olyan gyakori PostgreSQL-eszközökkel működjön, mint a psql, amelyek nem azure AD-tudatosak, és csak a felhasználónév és a jelszó megadását támogatják a PostgreSQL-hez való csatlakozáskor. Az Azure AD-tokent jelszóként adjuk át, ahogy az a fenti képen látható.
 
 Jelenleg a következő ügyfeleket teszteltük:
 
-- psql commandline (használja a PGPASSWORD változót a jogkivonat átadásához, lásd alább)
-- Azure Data Studio (a PostgreSQL bővítmény használatával)
-- Más libpq-alapú ügyfelek (például közös alkalmazás-keretrendszerek és ORMs)
+- psql parancssor (használja a PGPASSWORD változóát, hogy átadja a tokent, lásd alább)
+- Azure Data Studio (a PostgreSQL kiterjesztéssel)
+- Libpq-alapú egyéb ügyfelek (pl. közös alkalmazási keretrendszerek és ORM-ok)
 
 > [!NOTE]
-> Vegye figyelembe, hogy az Azure AD-jogkivonat a pgAdmin-mel való használata jelenleg nem támogatott, mivel a jelszavakra vonatkozó 256 karakteres korlátozást tartalmaz (a jogkivonat mérete meghaladja a tokent).
+> Kérjük, vegye figyelembe, hogy az Azure AD-token pgAdmin használatával jelenleg nem támogatott, mivel a jelszó kódolható 256 karakter (amely a jogkivonat meghaladja) kódolva van.
 
-Ezek a lépések, amelyekkel egy felhasználónak/alkalmazásnak a következőkben ismertetett Azure AD-hitelesítéssel kell rendelkeznie:
+Ezek azok a lépések, amelyeket egy felhasználónak/alkalmazásnak az alábbiakban ismertetett Azure AD-vel kell végeznie:
 
-### <a name="step-1-authenticate-with-azure-ad"></a>1\. lépés: hitelesítés az Azure AD-vel
+### <a name="step-1-authenticate-with-azure-ad"></a>1. lépés: Hitelesítés az Azure AD-vel
 
-Győződjön meg arról, hogy az [Azure CLI telepítve](/cli/azure/install-azure-cli)van.
+Győződjön meg arról, hogy telepítve van az [Azure CLI.](/cli/azure/install-azure-cli)
 
-Hívja meg az Azure CLI eszközt az Azure AD-vel való hitelesítéshez. Ehhez meg kell adnia az Azure AD-beli felhasználói azonosítót és a jelszót.
+Az Azure CLI eszköz meghívása az Azure AD-vel való hitelesítéshez. Az Azure AD felhasználói azonosítóját és jelszavát meg kell adnia.
 
-```
+```azurecli-interactive
 az login
 ```
 
-Ezzel a paranccsal megnyílik egy böngészőablak az Azure AD-hitelesítés lapra.
+Ez a parancs egy böngészőablakot indít el az Azure AD hitelesítési lapjára.
 
 > [!NOTE]
-> Ezen lépések végrehajtásához Azure Cloud Shell is használhatja.
-> Vegye figyelembe, hogy amikor az Azure AD hozzáférési jogkivonatot a Azure Cloud Shell beolvassa, explicit módon meg kell hívnia `az login` és újra be kell jelentkeznie (a külön ablakban a kóddal). A bejelentkezés után a `get-access-token` parancs a várt módon fog működni.
+> Az Azure Cloud Shell segítségével is végrehajthatja ezeket a lépéseket.
+> Kérjük, vegye figyelembe, hogy az Azure AD-hozzáférési jogkivonat beolvasásakor az Azure Cloud Shellben explicit módon kell hívnia, `az login` és újra be kell jelentkeznie (a külön ablakban egy kóddal). Ezt követően `get-access-token` a jel a parancs fog működni a várt módon.
 
-### <a name="step-2-retrieve-azure-ad-access-token"></a>2\. lépés: az Azure AD hozzáférési jogkivonatának beolvasása
+### <a name="step-2-retrieve-azure-ad-access-token"></a>2. lépés: Az Azure AD-hozzáférési jogkivonat lekérése
 
-Hívja meg az Azure CLI eszközt az 1. lépésben az Azure AD hitelesített felhasználó hozzáférési jogkivonatának beszerzéséhez az Azure Database for PostgreSQL eléréséhez.
+Az Azure CLI eszköz meghívásához az Azure AD által hitelesített felhasználó hozzáférési jogkivonatot szerezzen be az 1.
 
-Példa (nyilvános felhő esetén):
+Példa (nyilvános felhőesetén):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
-A fenti erőforrás-értéket pontosan az ábrán látható módon kell megadni. Más felhők esetében az erőforrás értéke a következő használatával kereshető fel:
+A fenti erőforrásértéket pontosan a látható módon kell megadni. Más felhők esetén az erőforrás-érték a következők használatával kereshető ki:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
-Az Azure CLI 2.0.71-es és újabb verziói esetén a parancs a következő kényelmesebb verzióban adható meg az összes felhőhöz:
+Az Azure CLI 2.0.71-es és újabb verziójához a parancs az alábbi, kényelmesebb verzióban adható meg az összes felhőhöz:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
-A sikeres hitelesítés után az Azure AD egy hozzáférési jogkivonatot fog visszaadni:
+A hitelesítés sikeres befejezése után az Azure AD egy hozzáférési jogkivonatot ad vissza:
 
 ```json
 {
@@ -137,18 +137,18 @@ A sikeres hitelesítés után az Azure AD egy hozzáférési jogkivonatot fog vi
 }
 ```
 
-A jogkivonat egy alapszintű 64 karakterlánc, amely kódolja a hitelesített felhasználóra vonatkozó összes információt, és amely a Azure Database for PostgreSQL szolgáltatásra irányul.
+A jogkivonat egy Base 64 karakterlánc, amely kódolja a hitelesített felhasználó összes információt, és amely az Azure Database for PostgreSQL szolgáltatás.
 
 > [!NOTE]
-> A hozzáférési jogkivonat érvényessége 5 perc és 60 perc között lehet. Javasoljuk, hogy közvetlenül a bejelentkezés megkezdése előtt szerezze be a hozzáférési jogkivonatot a Azure Database for PostgreSQL.
+> A hozzáférési jogkivonat érvényessége 5 perc és 60 perc között van. Azt javasoljuk, hogy a hozzáférési jogkivonatot közvetlenül a PostgreSQL Azure Database-be való bejelentkezés megkezdése előtt kapja meg.
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>3\. lépés: a token használata jelszóként a PostgreSQL-ben való bejelentkezéshez
+### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>3. lépés: Token használata jelszóként a PostgreSQL-rel való bejelentkezéshez
 
-Kapcsolódáskor a hozzáférési tokent a PostgreSQL felhasználói jelszavának kell használnia.
+Csatlakozáskor a hozzáférési jogkivonatot postgreSQL felhasználói jelszóként kell használnia.
 
-Ha a `psql` parancssori ügyfelet használja, a hozzáférési tokent át kell adni a `PGPASSWORD` környezeti változón keresztül, mivel a hozzáférési jogkivonat meghaladja azt a jelszót, amelyet a `psql` közvetlenül el tud fogadni:
+A `psql` parancssori ügyfél használatakor a hozzáférési jogkivonatot át kell adni a `PGPASSWORD` környezeti `psql` változón, mivel a hozzáférési jogkivonat meghaladja a közvetlenül elfogadható jelszóhosszt:
 
-Windows-példa:
+Windows példa:
 
 ```shell
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
@@ -160,50 +160,50 @@ Linux/macOS példa:
 export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```
 
-Mostantól a következőhöz hasonló módon kezdeményezheti a kapcsolatokat Azure Database for PostgreSQLhoz:
+Most már kezdeményezhet kapcsolatot az Azure Database for PostgreSQL-lel, ahogy általában tenné:
 
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
-Most már hitelesítve van a PostgreSQL-kiszolgálón az Azure AD-hitelesítéssel.
+Most már hitelesítve van a PostgreSQL-kiszolgálón az Azure AD-hitelesítés használatával.
 
-## <a name="token-validation"></a>Jogkivonat ellenőrzése
+## <a name="token-validation"></a>Token érvényesítése
 
-Azure Database for PostgreSQL Azure AD-hitelesítés biztosítja, hogy a felhasználó létezik a PostgreSQL-kiszolgálón, és ellenőrzi a jogkivonat érvényességét a jogkivonat tartalmának ellenőrzésével. A rendszer a következő jogkivonat-ellenőrzési lépéseket hajtja végre:
+Az Azure AD-hitelesítés az Azure Database for PostgreSQL biztosítja, hogy a felhasználó létezik a PostgreSQL-kiszolgálón, és ellenőrzi a jogkivonat érvényességét a jogkivonat tartalmának ellenőrzésével. A következő jogkivonat-érvényesítési lépések hajtják végre:
 
--   Az Azure AD aláírja a tokent, és nem módosították
--   A tokent az Azure AD adta ki a kiszolgálóhoz társított bérlőhöz
--   A jogkivonat nem járt le
--   Token a Azure Database for PostgreSQL erőforráshoz (és nem egy másik Azure-erőforráshoz)
+- A jogkivonatot az Azure AD írta alá, és nem módosították
+- A jogkivonatot az Azure AD adta ki a kiszolgálóhoz társított bérlőszámára
+- A token nem járt le
+- A token az Azure Database for PostgreSQL erőforráshoz tartozik (és nem egy másik Azure-erőforráshoz)
 
-## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>Meglévő PostgreSQL-felhasználók áttelepítése Azure AD-alapú hitelesítésre
+## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>Meglévő PostgreSQL-felhasználók áttelepítése Az Azure AD-alapú hitelesítésre
 
-Engedélyezheti az Azure AD-hitelesítést a meglévő felhasználók számára. Két esetet érdemes figyelembe venni:
+Engedélyezheti az Azure AD-hitelesítést a meglévő felhasználók számára. Két esetet kell figyelembe venni:
 
-### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>1\. eset: a PostgreSQL felhasználóneve megegyezik az Azure AD egyszerű felhasználónevével
+### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>1. eset: A PostgreSQL felhasználónév megegyezik az Azure AD egyszerű felhasználónévvel
 
-Abban az esetben, ha a meglévő felhasználók már megfelelnek az Azure AD-beli felhasználóneveknek, a `azure_ad_user` szerepkört megadhatja számukra az Azure AD-hitelesítés engedélyezéséhez:
+Abban a valószínűtlen esetben, ha a meglévő felhasználók már megfelelnek `azure_ad_user` az Azure AD-felhasználóneveknek, a szerepkört megadhatják nekik, hogy engedélyezze őket az Azure AD-hitelesítéshez:
 
 ```sql
 GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";
 ```
 
-Mostantól képesek lesznek bejelentkezni az Azure AD hitelesítő adataival ahelyett, hogy a korábban konfigurált PostgreSQL felhasználói jelszavukat használják.
+Mostantól az Azure AD hitelesítő adataival is bejelentkezhetnek a korábban konfigurált PostgreSQL felhasználói jelszó használata helyett.
 
-### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>2\. eset: a PostgreSQL felhasználóneve eltér az Azure AD egyszerű Felhasználónevetől
+### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>2. eset: A PostgreSQL felhasználónév eltér az Azure AD egyszerű felhasználónévétól
 
-Ha egy PostgreSQL-felhasználó vagy nem létezik az Azure AD-ben, vagy más felhasználóneve van, akkor az Azure AD-csoportok használatával hitelesítheti magát a PostgreSQL-felhasználóként. A meglévő Azure Database for PostgreSQL felhasználókat áttelepítheti az Azure AD-ba úgy, hogy létrehoz egy olyan nevű Azure AD-csoportot, amelynek a neve megegyezik a PostgreSQL-felhasználóval, majd megadhatja a szerepkört azure_ad_user a meglévő PostgreSQL-felhasználónak:
+Ha egy PostgreSQL-felhasználó vagy nem létezik az Azure AD-ben, vagy más felhasználónévvel rendelkezik, az Azure AD-csoportok segítségével hitelesítheti magát postgreSQL-felhasználóként. A PostgreSQL-felhasználók meglévő Azure-adatbázisát áttelepítheti az Azure AD-be úgy, hogy létrehoz egy Azure AD-csoportot a PostgreSQL-felhasználónak megfelelő névvel, majd szerepkört ad azure_ad_user a meglévő PostgreSQL-felhasználónak:
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";
 ```
 
-Ez azt feltételezi, hogy létrehozott egy "DBReadUser" csoportot az Azure AD-ben. Az adott csoportba tartozó felhasználók mostantól a felhasználóként bejelentkezhetnek az adatbázisba.
+Ez feltételezi, hogy létrehozott egy "DBReadUser" csoportot az Azure AD-ben. Az adott csoporthoz tartozó felhasználók mostantól ezzel a felhasználóval jelentkezhetnek be az adatbázisba.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [Azure Database for PostgreSQL – egyetlen kiszolgálóval Azure Active Directory hitelesítéssel](concepts-aad-authentication.md) kapcsolatos általános fogalmakat
+* Tekintse át az Azure Active Directory-hitelesítés általános fogalmait az [Azure Database for PostgreSQL - Single Server szolgáltatással](concepts-aad-authentication.md)
 
 <!--Image references-->
 

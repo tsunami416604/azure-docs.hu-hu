@@ -1,6 +1,6 @@
 ---
-title: Több bérlő kezelése Video Indexer-Azure-val
-description: Ez a cikk különböző integrációs lehetőségeket javasol több bérlő Video Indexer-nal való kezeléséhez.
+title: Több bérlő kezelése a Video Indexer rel – Azure
+description: Ez a cikk különböző integrációs lehetőségeket javasol több bérlő videoindexelővel való kezeléséhez.
 services: media-services
 documentationcenter: ''
 author: ika-microsoft
@@ -14,69 +14,69 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76990504"
 ---
 # <a name="manage-multiple-tenants"></a>Több bérlő kezelése
 
-Ez a cikk a több bérlő Video Indexer-vel való felügyeletének különböző lehetőségeit tárgyalja. Válasszon egy módszert, amely a legmegfelelőbb a forgatókönyvhöz:
+Ez a cikk ismerteti a különböző beállítások kezelésére több bérlő videoindexelő. Válassza ki a forgatókönyvnek leginkább megfelelő módszert:
 
-* Video Indexer fiók/bérlő
-* Egyetlen Video Indexer fiók az összes bérlőhöz
-* Azure-előfizetés/bérlő
+* Videoindexer-fiók bérlőnként
+* Egyvideós indexelő-fiók az összes bérlőhöz
+* Azure-előfizetés bérlőnként
 
-## <a name="video-indexer-account-per-tenant"></a>Video Indexer fiók/bérlő
+## <a name="video-indexer-account-per-tenant"></a>Videoindexer-fiók bérlőnként
 
-Ezen architektúra használatakor létrejön egy Video Indexer fiók az egyes bérlők számára. A bérlők teljes elkülönítéssel rendelkeznek az állandó és a számítási rétegben.  
+Az architektúra használatakor minden bérlőhöz létrejön egy videoindexer-fiók. A bérlők teljes elkülönítéssel rendelkeznek az állandó és számítási rétegben.  
 
-![Video Indexer fiók/bérlő](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
+![Videoindexer-fiók bérlőnként](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-* Az ügyfelek nem osztják meg a Storage-fiókokat (kivéve, ha az ügyfél manuálisan konfigurálta).
-* Az ügyfelek nem osztják meg a számítási feladatokat (fenntartott egységeket), és nem befolyásolják egymást a feladatok feldolgozásának időpontját.
-* A Video Indexer fiók törlésével könnyedén eltávolíthatja a bérlőt a rendszerből.
-* A bérlők között nincs lehetőség egyéni modellek megosztására.
+* Az ügyfelek nem osztanak meg tárfiókokat (kivéve, ha az ügyfél manuálisan konfigurálja).
+* Az ügyfelek nem osztják meg a számítási (fenntartott egységeket), és nem befolyásolják egymás feldolgozási feladatainak idejét.
+* A Video Indexer-fiók törlésével könnyedén eltávolíthatja a bérlőt a rendszerből.
+* Nincs képes megosztani az egyéni modellek bérlők között.
 
-    Győződjön meg arról, hogy az egyéni modellek megosztására nincs üzleti követelmény.
-* A több Video Indexer (és a társított Media Services) fiókokat bérlők miatt nehezebb kezelni.
+    Győződjön meg arról, hogy nincs üzleti követelmény az egyéni modellek megosztásához.
+* Nehezebb encikba kezelni a bérlőnkénti több videoindexelő (és a kapcsolódó Media Services) fiókok miatt.
 
 > [!TIP]
-> Hozzon létre egy rendszergazdai felhasználót a rendszeréhez [video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/) , és az engedélyezési API segítségével adja meg a bérlők számára a megfelelő [fiók hozzáférési tokenjét](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token).
+> Hozzon létre egy rendszergazdai felhasználót a rendszerhez a [Video Indexer Developer Portal webhelyen,](https://api-portal.videoindexer.ai/) és az Engedélyezési API segítségével biztosítsa a bérlőknek a megfelelő [fiók-hozzáférési jogkivonatot.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)
 
-## <a name="single-video-indexer-account-for-all-users"></a>Egyetlen Video Indexer fiók az összes felhasználó számára
+## <a name="single-video-indexer-account-for-all-users"></a>Egyvideós indexelő-fiók az összes felhasználó számára
 
-Ha ezt az architektúrát használja, az ügyfél felelős a bérlők elkülönítésében. Minden bérlőnek egyetlen, egyetlen Azure Media Service-fiókkal rendelkező Video Indexer fiókot kell használnia. Tartalom feltöltésekor, keresésekor vagy törlésekor az ügyfélnek szűrnie kell a bérlő megfelelő eredményét.
+Az architektúra használatakor az ügyfél felelős a bérlők elkülönítéséért. Minden bérlőnek egyetlen Video Indexer-fiókot kell használnia egyetlen Azure Media Service-fiókkal. Tartalom feltöltésekor, keresésekor vagy törlésekor az ügyfélnek ki kell szűrnie az adott bérlő megfelelő eredményeit.
 
-![Egyetlen Video Indexer fiók az összes felhasználó számára](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
+![Egyvideós indexelő-fiók az összes felhasználó számára](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
 
-Ezzel a beállítással a különböző testreszabási modellek (személy, nyelv és márkák) megoszthatók és elkülöníthetők a bérlők között a modellek bérlő szerinti szűrésével.
+Ezzel a beállítással testreszabási modellek (személy, nyelv és márkák) megoszthatók vagy elkülöníthetők a bérlők között a modellek bérlő szerinti szűrésével.
 
-[Videók feltöltésekor](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)egy másik Partition attribútumot is megadhat bérlőként. Ez lehetővé teszi az elkülönítést a [keresési API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)-ban. A Search API-ban a Partition attribútum megadásával csak a megadott partíció eredményei lesznek elérhetők. 
+[Videók feltöltésekor](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)megadhat egy másik partícióattribútumot bérlőnként. Ez lehetővé teszi az elkülönítést a [keresési API-ban.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?) A partícióattribútum megadásával a keresési API-ban csak a megadott partíció eredményeit kapja meg. 
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-* A tartalom és a testreszabási modellek megosztása a bérlők között.
-* Az egyik bérlő más bérlők teljesítményére is hatással van.
-* Az ügyfélnek összetett felügyeleti réteget kell létrehoznia Video Indexer-on felül.
+* Tartalom- és testreszabási modellek megosztása a bérlők között.
+* Az egyik bérlő hatással van a többi bérlő teljesítményére.
+* Az ügyfélnek összetett felügyeleti réteget kell építenie a Video Indexer tetejére.
 
 > [!TIP]
-> A [prioritás](upload-index-videos.md) attribútum használatával rangsorolhatja a bérlők feladatait.
+> A [prioritásattribútum](upload-index-videos.md) segítségével rangsorolhatja a bérlők feladatait.
 
-## <a name="azure-subscription-per-tenant"></a>Azure-előfizetés/bérlő 
+## <a name="azure-subscription-per-tenant"></a>Azure-előfizetés bérlőnként 
 
-Ha ezt az architektúrát használja, minden bérlő saját Azure-előfizetéssel fog rendelkezni. Minden felhasználóhoz létre kell hoznia egy új Video Indexer fiókot a bérlői előfizetésben.
+Az architektúra használatakor minden bérlő saját Azure-előfizetéssel rendelkezik. Minden felhasználó hoz létre egy új videoindexer-fiókot a bérlői előfizetésben.
 
-![Azure-előfizetés/bérlő](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
+![Azure-előfizetés bérlőnként](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-* Ez az egyetlen olyan lehetőség, amely lehetővé teszi a számlázás elkülönítését.
-* Ez az integráció több felügyeleti terheléssel rendelkezik, mint a Video Indexer-fiók. Ha a számlázás nem követelmény, javasoljuk, hogy használja az ebben a cikkben ismertetett egyéb lehetőségek egyikét.
+* Ez az egyetlen lehetőség, amely lehetővé teszi a számlázási elkülönítést.
+* Ez az integráció több felügyeleti többletterheléssel rendelkezik, mint a bérlőnkénti Video Indexer-fiók. Ha a számlázás nem követelmény, javasoljuk, hogy használja a cikkben ismertetett egyéb lehetőségek egyikét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Áttekintés](video-indexer-overview.md)

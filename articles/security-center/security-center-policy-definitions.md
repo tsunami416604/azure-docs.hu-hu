@@ -1,6 +1,6 @@
 ---
-title: A Azure Security Centerban figyelt Azure Policy-definíciók | Microsoft Docs
-description: Ez a cikk azokat a Azure Policy-definíciókat sorolja fel, amelyeket a Azure Security Center figyelheti.
+title: Az Azure Policy definícióit az Azure Security Center figyeli | Microsoft dokumentumok
+description: Ez a cikk az Azure Security Centerben figyelhető Azure-szabályzat-definíciók listáját tartalmazza.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: memildin
 ms.openlocfilehash: 72f16463c7dfcd3d76db2d99e1805b0159261a55
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603696"
 ---
-# <a name="azure-security-policies-monitored-by-security-center"></a>Security Center által figyelt Azure biztonsági szabályzatok
+# <a name="azure-security-policies-monitored-by-security-center"></a>A Security Center által figyelt Azure biztonsági szabályzatai
 
-Ez a cikk felsorolja azokat a [Azure Policy](../governance/policy/overview.md) -definíciókat és-kezdeményezéseket, amelyeket nyomon követheti a Azure Security Centerban. További információ a biztonsági házirendekről: [a biztonsági házirendek használata](tutorial-security-policy.md).
+Ez a cikk az [Azure-szabályzat](../governance/policy/overview.md) definícióinak és kezdeményezéseknek a listáját tartalmazza, amelyeket az Azure Security Centerben figyelhet. A biztonsági házirendekről a [Biztonsági házirendek használata](tutorial-security-policy.md)című témakörben talál további információt.
 
-## <a name="built-in-policy-definitions"></a>Beépített szabályzat-definíciók
+## <a name="built-in-policy-definitions"></a>Beépített házirend-definíciók
 
-Ha többet szeretne megtudni a Security Center által figyelt beépített szabályzatokról, tekintse meg a következő táblázatot:
+A Security Center által figyelt beépített házirendekről az alábbi táblázatban olvashat:
 
 [!INCLUDE [azure-policy-samples-policies-security-center](../../includes/azure-policy-samples-policies-security-center.md)]
 
-## <a name="built-in-policy-initiatives"></a>Beépített házirend-kezdeményezések
+## <a name="built-in-policy-initiatives"></a>Beépített szakpolitikai kezdeményezések
 
-Az Security Center által figyelt beépített kezdeményezésekről a következő táblázatban talál további információt:
+A Security Center által figyelt beépített kezdeményezésekről az alábbi táblázatban olvashat:
 
 [!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/azure-policy-samples-policyset-security-center.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan Azure Policy biztonsági házirend-definíciókat Security Center. További információt a következő cikkekben talál.
+Ebben a cikkben az Azure Policy biztonsági házirend-definícióiról a Security Centerben szerzett tudomást. További információ: a következő cikkek.
 
-* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md): megtudhatja, hogyan tervezhet és megismerheti a tervezési szempontokat Azure Security Centerokban.
+* [Az Azure Security Center tervezési és üzemeltetési útmutatója:](security-center-planning-and-operations-guide.md)Ismerje meg, hogyan tervezheti meg és ismerheti meg a tervezési szempontokat az Azure Security Centerben.
 * [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md): Útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
-* [Azure Policy](../governance/policy/overview.md): megismerheti az Azure-erőforrások naplózását és szabályozását.
+* [Azure-szabályzat:](../governance/policy/overview.md)Ismerje meg az Azure-erőforrások naplózását és szabályozását.

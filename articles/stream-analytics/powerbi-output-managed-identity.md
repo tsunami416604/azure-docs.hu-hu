@@ -1,54 +1,54 @@
 ---
-title: Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI kimenetre
-description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások a Azure Stream Analytics-feladatok hitelesítéséhez Power BI kimenetre.
+title: Az Azure Stream Analytics-feladat Power BI-kimenetre való hitelesítéséhez használja a Felügyelt identitást
+description: Ez a cikk ismerteti, hogyan használhatja a felügyelt identitások az Azure Stream Analytics-feladat power BI-kimenethitelesítésére.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086327"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Az Azure Stream Analytics-feladat Power BI-ba való hitelesítéséhez használja a Felügyelt identitást
 
-A Power BI kimenetének [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) stream Analytics feladatok közvetlen elérését teszi lehetővé Power bi fiókjában lévő munkaterülethez. Ez a funkció lehetővé teszi Stream Analytics feladatok teljes körű automatizálását, mivel már nem szükséges, hogy a felhasználó interaktív módon jelentkezzen be a Power BIba a Azure Portal használatával. Emellett a hosszú ideig futó, Power BI írást végző feladatok már jobban támogatottak, mivel nem kell rendszeresen újraengedélyezni a feladatot.
+A Power BI-ba történő kimenet [felügyelt identitáshitelesítése](../active-directory/managed-identities-azure-resources/overview.md) közvetlen hozzáférést biztosít a Stream Analytics-feladatoknak a Power BI-fiókon belüli munkaterülethez. Ez a funkció lehetővé teszi a Stream Analytics-feladatok központi telepítésének teljes körű automatizáltságát, mivel a felhasználónak már nincs szüksége arra, hogy interaktívan jelentkezzen be a Power BI-ba az Azure Portalon keresztül. Emellett a Power BI-ba író, hosszú ideig futó feladatok mostantól jobban támogatottak, mivel nem kell rendszeres időközönként újra engedélyeznie a feladatot.
 
-Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást egy Stream Analytics-feladatokhoz tartozó Power BI kimenet (ek) számára a Azure Portalon és egy Azure Resource Manager-telepítésen keresztül.
+Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást a Stream Analytics-feladat Power BI-kimenete(i)t az Azure Portalon és az Azure Resource Manager központi telepítésén keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A funkció használatához a következők szükségesek:
+A szolgáltatás használatához a következők szükségesek:
 
-- Egy [Pro-licenccel](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)rendelkező Power bi-fiók.
+- [Pro licenccel](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)rendelkező Power BI-fiók .
 
-- Egy frissített munkaterület a Power BI fiókjában. További részletekért tekintse [meg Power bi a funkció bejelentését](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/) .
+- Frissített munkaterület a Power BI-fiókban. További részletekért olvassa el a Power BI ezen funkcióról tett [bejelentését.](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/)
 
-## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Stream Analytics-feladatok létrehozása a Azure Portal használatával
+## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Stream Analytics-feladat létrehozása az Azure Portalhasználatával
 
-1. Hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás**) alatt található **felügyelt identitás** elemet. Győződjön meg arról, hogy a "rendszerhez rendelt felügyelt identitás használata" beállítás ki van választva, majd kattintson a képernyő alján található **Save (Mentés** ) gombra.
+1. Hozzon létre egy új Stream Analytics-feladatot, vagy nyisson meg egy meglévő feladatot az Azure Portalon. A képernyő bal oldalán található menüsorban válassza a **Konfigurálás**csoportban a **Felügyelt identitás** lehetőséget. Győződjön meg arról, hogy a "Rendszeráltal hozzárendelt felügyelt identitás használata" lehetőség van kiválasztva, majd válassza a **Mentés** gombot a képernyő alján.
 
-   ![Stream Analytics felügyelt identitás konfigurálása](./media/common/stream-analytics-enable-managed-identity.png)
+   ![A Stream Analytics felügyelt identitásának konfigurálása](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. A kimenet konfigurálása előtt adja meg a Stream Analytics-feladatot a Power BI-munkaterülethez a jelen cikk [Power bi munkaterülethez való hozzáférésének megadása a stream Analyticsi feladatok számára](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) című szakaszának utasításait követve.
+2. A kimenet konfigurálása előtt adjon hozzáférést a Stream Analytics-feladatnak a Power BI-munkaterülethez a cikk [Power BI-munkaterülethez való hozzáférésének a Stream Analytics-feladathoz való hozzáférése](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) című témakör utasításait követve.
 
-3. Navigáljon a stream Analytics-feladatok **kimenetek** szakaszába, válassza a **+ Hozzáadás**lehetőséget, majd válassza a **Power bi**lehetőséget. Ezután válassza az **Engedélyezés** gombot, és jelentkezzen be Power bi-fiókjával.
+3. Nyissa meg a Stream Analitikus **feladatának Kimenetek** szakaszát, válassza a **+ Hozzáadás**lehetőséget, majd válassza a **Power BI**lehetőséget. Ezután válassza az **Engedélyezés** gombot, és jelentkezzen be a Power BI-fiókjával.
 
-   ![Engedélyezés Power BI fiókkal](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
+   ![Engedélyezés Power BI-fiókkal](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 
-4. Az engedélyezést követően a legördülő lista minden olyan munkaterülettel feltöltve lesz, amelyhez hozzáfér. Válassza ki azt a munkaterületet, amelyet az előző lépésben engedélyezett. Ezután válassza a **felügyelt identitás** "hitelesítési mód" lehetőséget. Végül kattintson a **Save (Mentés** ) gombra.
+4. Az engedélyezést követően a legördülő lista fel lesz töltve az összes olyan munkaterülettel, amelyhez hozzáférése van. Válassza ki az előző lépésben engedélyezett munkaterületet. Ezután válassza **a Felügyelt identitás lehetőséget** a "Hitelesítési módként". Végül kattintson a **Mentés** gombra.
 
-   ![Power BI kimenet konfigurálása felügyelt identitással](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-configure-powerbi-with-managed-id.png)
+   ![Power BI-kimenet konfigurálása felügyelt identitással](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-configure-powerbi-with-managed-id.png)
 
 ## <a name="azure-resource-manager-deployment"></a>Az Azure Resource Manager üzembe helyezése
 
-Azure Resource Manager lehetővé teszi, hogy teljes mértékben automatizálja Stream Analytics feladatainak üzembe helyezését. A Resource Manager-sablonokat Azure PowerShell vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával is telepítheti. Az alábbi példák az Azure CLI-t használják.
+Az Azure Resource Manager lehetővé teszi, hogy teljes mértékben automatizálja a Stream Analytics-feladat üzembe helyezését. A Resource Manager-sablonokat az Azure PowerShell vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával telepítheti. Az alábbi példák az Azure CLI használatával.
 
 
-1. A felügyelt identitással rendelkező **Microsoft. StreamAnalytics/streamingjobs-** erőforrások létrehozásához a Resource Manager-sablon Resource (erőforrás) szakaszában a következő tulajdonságot is használhatja:
+1. **Microsoft.StreamAnalytics/streamingjobs** erőforrást felügyelt identitással úgy hozhat létre, hogy a következő tulajdonságot építi fel az Erőforrás-kezelő sablon erőforrásszakaszában:
 
     ```json
     "identity": {
@@ -56,7 +56,7 @@ Azure Resource Manager lehetővé teszi, hogy teljes mértékben automatizálja 
     }
     ```
 
-   Ez a tulajdonság azt jelzi, Azure Resource Manager a Stream Analytics feladatokhoz tartozó identitás létrehozása és kezelése. Az alábbi példa egy olyan Resource Manager-sablont mutat be, amely a felügyelt identitással rendelkező Stream Analytics feladatot helyez üzembe, valamint egy olyan Power BI kimeneti fogadót, amely felügyelt identitást használ:
+   Ez a tulajdonság arra utasítja az Azure Resource Managert, hogy hozza létre és kezelje a Stream Analytics-feladat identitását. Az alábbiakban egy példa: Resource Manager-sablon, amely egy Stream Analytics-feladatot telepít felügyelt identitással és felügyelt identitást használó Power BI-kimeneti fogadóval:
 
     ```json
     {
@@ -97,19 +97,19 @@ Azure Resource Manager lehetővé teszi, hogy teljes mértékben automatizálja 
     }
     ```
 
-    Telepítse a fenti feladatot az erőforráscsoport **ExampleGroup** az alábbi Azure CLI-parancs használatával:
+    Telepítse a fenti feladatot az **ExampleGroup** erőforráscsoportba az alábbi Azure CLI-parancs használatával:
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
-2. A feladatot a létrehozás után a Azure Resource Manager használatával kérheti le a feladatok teljes definícióját.
+2. A feladat létrehozása után az Azure Resource Manager segítségével olvassa be a feladat teljes definícióját.
 
     ```azurecli
     az resource show --ids /subscriptions/<subsription-id>/resourceGroups/<resource-group>/providers/Microsoft.StreamAnalytics/StreamingJobs/<resource-name>
     ```
 
-    A fenti parancs a következőhöz hasonló választ ad vissza:
+    A fenti parancs az alábbihoz hasonló választ ad vissza:
 
     ```json
     {
@@ -148,56 +148,56 @@ Azure Resource Manager lehetővé teszi, hogy teljes mértékben automatizálja 
     }
     ```
 
-    Ha azt tervezi, hogy Power BI REST API használatával hozzáadja a Stream Analytics feladatot a Power BI munkaterülethez, jegyezze fel a visszaadott "principalId" értéket.
+    Ha a Power BI REST API-jával szeretné hozzáadni a Stream Analytics-feladatot a Power BI-munkaterülethez, jegyezze fel a visszaadott "principalId"-ot.
 
-3. Most, hogy létrehozta a feladatot, folytassa a jelen cikk [stream Analyticsi feladatok elérésének biztosítása a Power bi munkaterülethez](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) című szakaszát.
+3. Most, hogy a feladat létrejött, folytassa [a Cikk Power BI-munkaterületi elérésének a Stream Analytics-feladathoz való hozzáféréssel](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) című szakaszával.
 
 
-## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>A Stream Analytics-feladatok elérésének biztosítása a Power BI-munkaterülethez
+## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>A Stream Analytics-feladat hozzáférésének leengedése a Power BI-munkaterülethez
 
-Most, hogy létrehozta a Stream Analytics feladatot, hozzáférést biztosíthat egy Power BI-munkaterülethez.
+Most, hogy a Stream Analytics-feladat létrejött, hozzáférést kaphat egy Power BI-munkaterülethez.
 
 ### <a name="use-the-power-bi-ui"></a>A Power BI felhasználói felületének használata
 
    > [!Note]
-   > Ahhoz, hogy a felhasználói felületen hozzá tudja adni a Stream Analytics feladatot a Power BI munkaterülethez, a Power BI felügyeleti portál **fejlesztői beállításainál** engedélyeznie kell a szolgáltatás egyszerű hozzáférését is. További részletekért tekintse meg az első [lépések a szolgáltatással](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal) című témakört.
+   > Ahhoz, hogy a Stream Analytics-feladatot a Felhasználói felület használatával hozzáadja a Power BI-munkaterülethez, a Power BI felügyeleti **portálfejlesztői beállításaiban** is engedélyeznie kell a szolgáltatásegyszerű hozzáférést. További részletekért olvassa el az [Első lépések szolgáltatástaggal.](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal)
 
-1. Navigáljon a munkaterület hozzáférési beállításaihoz. További részletekért tekintse meg ezt a cikket: [hozzáférés biztosítása a munkaterülethez](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
+1. Nyissa meg a munkaterület hozzáférési beállításait. Ebben a cikkben további részleteket talál: [Adjon hozzáférést a munkaterülethez.](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)
 
-2. Írja be a Stream Analyticsi feladatainak nevét a szövegmezőbe, és válassza a **közreműködő** lehetőséget a hozzáférési szint mezőben.
+2. Írja be a Stream Analytics-feladat nevét a szövegmezőbe, és válassza a **Közreműködő** lehetőséget hozzáférési szintként.
 
-3. Válassza a **Hozzáadás** lehetőséget, majd a panel bezárásához.
+3. Válassza **a Hozzáadás** és az ablaktábla bezárása lehetőséget.
 
-   ![Stream Analytics-feladatok hozzáadása Power BI munkaterülethez](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
+   ![Stream Analytics-feladat hozzáadása a Power BI-munkaterülethez](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
 ### <a name="use-the-power-bi-powershell-cmdlets"></a>A Power BI PowerShell-parancsmagok használata
 
-1. Telepítse a Power BI `MicrosoftPowerBIMgmt` PowerShell-parancsmagokat.
+1. Telepítse a `MicrosoftPowerBIMgmt` Power BI PowerShell-parancsmagjait.
 
    > [!Important]
-   > Győződjön meg arról, hogy a parancsmagok 1.0.821 vagy újabb verzióját használja.
+   > Győződjön meg arról, hogy a parancsmagok 1.0.821-es vagy újabb verzióját használja.
 
 ```powershell
 Install-Module -Name MicrosoftPowerBIMgmt
 ```
 
-2. Jelentkezzen be Power BIba.
+2. Jelentkezzen be a Power BI-ba.
 
 ```powershell
 Login-PowerBI
 ```
 
-3. Adja hozzá a Stream Analytics feladatot közreműködőként a munkaterülethez.
+3. Adja hozzá a Stream Analytics-feladatot közreműködőként a munkaterülethez.
 
 ```powershell
 Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
 ```
 
-### <a name="use-the-power-bi-rest-api"></a>Használja a Power BI REST API
+### <a name="use-the-power-bi-rest-api"></a>A Power BI REST API használata
 
-A Stream Analytics feladatot felveheti közreműködőként a munkaterülethez a "felhasználói csoport hozzáadása" REST API közvetlen használatával. Az API teljes dokumentációja itt található: [csoportok – csoport hozzáadása felhasználó](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
+A Stream Analytics-feladat a "Csoportfelhasználó hozzáadása" REST API közvetlen használatával is hozzáadható a munkaterület közreműködőjeként. Az API teljes dokumentációja itt található: [Csoportok - Csoportfelhasználó hozzáadása](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
 
-**Példa a kérelemre**
+**Kérésminta**
 ```http
 POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
 ```
@@ -211,17 +211,17 @@ A kérelem törzse
 ```
 
 ## <a name="limitations"></a>Korlátozások
-A szolgáltatás korlátai a következők:
+Az alábbiakban a korlátozások ezt a funkciót:
 
 - A klasszikus Power BI-munkaterületek nem támogatottak.
 
-- Azure-fiókok Azure Active Directory nélkül.
+- Azure-fiókok Az Azure Active Directory nélkül.
 
-- A több-bérlős hozzáférés nem támogatott. Az adott Stream Analytics feladathoz létrehozott egyszerű szolgáltatásnak ugyanabban a Azure Active Directory-bérlőben kell lennie, amelyben a feladatot létrehozták, és nem használható olyan erőforrással, amely egy másik Azure Active Directory bérlőben található.
+- A több-bérlős hozzáférés nem támogatott. Egy adott Stream Analytics-feladathoz létrehozott egyszerű szolgáltatásnak ugyanabban az Azure Active Directory-bérlőben kell lennie, amelyben a feladatot létrehozták, és nem használható egy másik Azure Active Directory-bérlőben található erőforrással.
 
-- A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy nem tudja beírni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz kíván használni. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
+- [A felhasználó hozrendelt identitása](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy nem adhatja meg a saját egyszerű szolgáltatását, amelyet a Stream Analytics-feladat használ. Az egyszerű szolgáltatást az Azure Stream Analytics-nek kell létrehoznia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Irányítópult-integráció Power BI Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)
+* [A Power BI irányítópultjának integrációja az Azure Stream Analytics szolgáltatással](./stream-analytics-power-bi-dashboard.md)
+* [Az Azure Stream Analytics kimeneteinek megismerése](./stream-analytics-define-outputs.md)

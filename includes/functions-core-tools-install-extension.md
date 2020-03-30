@@ -9,35 +9,35 @@ ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75564816"
 ---
 ## <a name="register-extensions"></a>Bővítmények regisztrálása
 
-A HTTP-és időzítő-eseményindítók kivételével a függvények kötései a 2. x vagy újabb verziókban bővítmény-csomagokként vannak implementálva. A 2. x verzióban és a Azure Functions futtatókörnyezeten túl explicit módon regisztrálnia kell a függvényekben használt kötési típusok kiterjesztéseit. Ez alól kivételt képeznek a HTTP-kötések és az időzítő eseményindítók, amelyek nem igényelnek bővítményeket.
+A HTTP és időzítő eseményindítók kivételével a 2.x-es és újabb sorozatban futóidő-verzióban lévő függvénykötések bővítménycsomagokként vannak megvalósítva. Az Azure Functions futásidejű 2.x-es verziójában és azon túl explicit módon regisztrálnia kell a bővítményeket a függvényekben használt kötési típusokhoz. Ez alól kivételt képeznek a HTTP-kötések és az időzítő-eseményindítók, amelyek nem igényelnek bővítményeket.
 
-Dönthet úgy is, hogy külön telepíti a kötési bővítményeket, vagy hozzáadhat egy bővítményi csomagot a Host. JSON projektfájl-fájlhoz. A bővítményi csomagok több kötési típus használata esetén is megszüntetik a csomagok kompatibilitási problémáinak esélyét. A kötési bővítmények regisztrálásának ajánlott módja. A bővítményi csomagok szintén megszüntetik a .NET Core 2. x SDK telepítésének követelményét. 
+Választhat, hogy a kötésbővítményeket egyenként telepíti, vagy hozzáadhat egy bővítményköteg-hivatkozást a host.json projektfájlhoz. A bővítménykötegek megszüntetik annak az esélyét, hogy több kötési típus használata esetén is problémamerüljön a csomagkompatibilitási problémák. Ez az ajánlott megközelítés a kötési kiterjesztések regisztrálásához. A bővítőcsomagok a .NET Core 2.x SDK telepítésének követelményét is megszüntetik. 
 
-### <a name="extension-bundles"></a>Kiterjesztési csomagok
+### <a name="extension-bundles"></a>Hosszabbító csomagok
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-További információ: [Azure functions kötési bővítmények regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles). A function. JSON fájlhoz tartozó kötések hozzáadása előtt adja hozzá a kiterjesztési csomagokat a Host. JSON fájlhoz.
+További információ: [Az Azure Functions kötésbővítmények regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Mielőtt kötéseket ad hozzá a function.json fájlhoz, bővítménykötegeket kell hozzáadnia a host.json fájlhoz.
 
-### <a name="register-individual-extensions"></a>Egyéni bővítmények regisztrálása
+### <a name="register-individual-extensions"></a>Egyedi bővítmények regisztrálása
 
-Ha olyan bővítményeket kell telepítenie, amelyek nem egy csomagban vannak, akkor manuálisan is regisztrálhat egyes bővítményeket a kötésekhez. 
+Ha olyan bővítményeket kell telepítenie, amelyek nem egy csomagban vannak, manuálisan regisztrálhatja az egyes bővítménycsomagokat az egyes kötésekhez. 
 
 > [!NOTE]
-> A bővítmények `func extensions install`használatával történő manuális regisztrálásához telepíteni kell a .NET Core 2. x SDK-t.
+> A bővítmények manuális regisztrálásához `func extensions install`a .
 
-Miután frissítette a *function. JSON* fájlt, hogy tartalmazza a függvény által igényelt összes kötést, futtassa a következő parancsot a Project mappában.
+Miután frissítette a *function.json* fájlt, hogy tartalmazza a függvény összes kötését, futtassa a következő parancsot a projekt mappában.
 
 ```bash
 func extensions install
 ```
 
-A parancs beolvassa a *function. JSON* fájlt, amelyből megtudhatja, hogy mely csomagok szükségesek, telepíti őket, és újraépíti a bővítmények projektjét. Az új kötéseket a jelenlegi verzióban adja hozzá, de nem frissíti a meglévő kötéseket. Az `--force` lehetőséggel frissítheti a meglévő kötéseket a legújabb verzióra új telepítések telepítésekor.
+A parancs beolvassa a *function.json* fájlt, hogy lássa, mely csomagokra van szüksége, telepíti őket, és újraépíti a bővítmények projektet. Hozzáadja az új kötéseket az aktuális verzióhoz, de nem frissíti a meglévő kötéseket. Ezzel `--force` a beállítással frissítheti a meglévő kötéseket a legújabb verzióra az újak telepítésekor.

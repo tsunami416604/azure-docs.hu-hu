@@ -1,60 +1,60 @@
 ---
-title: HTTP nyers naplók Azure CDN
-description: Ez a cikk a Azure CDN HTTP nyers naplókat ismerteti.
+title: Azure CDN HTTP nyers naplók
+description: Ez a cikk ismerteti az Azure CDN HTTP nyers naplók.
 services: cdn
-author: asudbring
-manager: KumudD
+author: sohamnchatterjee
+manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2020
-ms.author: allensu
-ms.openlocfilehash: 79ced4df8df12bf2ef1fbe0075b53d02fafb2aff
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.date: 03/23/2020
+ms.author: sohamnc
+ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129847"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371631"
 ---
-# <a name="azure-cdn-http-raw-logs"></a>HTTP nyers naplók Azure CDN
-A nyers naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A nyers naplók eltérnek a tevékenység naplóitól. A Tevékenységnaplók biztosítják az Azure-erőforrásokon végzett műveletek láthatóságát. A nyers naplók az erőforrás műveleteinek rekordját adják meg.
+# <a name="azure-cdn-http-raw-logs"></a>Azure CDN HTTP nyers naplók
+A nyers naplók gazdag információkat nyújtanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A nyers naplók eltérnek a tevékenységnaplóktól. A tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekbe. A nyers naplók rögzítik az erőforrás műveleteit.
 
 > [!IMPORTANT]
-> A HTTP nyers naplók szolgáltatás a Microsoft Azure CDN számára érhető el.
+> A HTTP nyers naplók funkció érhető el az Azure CDN a Microsofttól.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
 ## <a name="configuration"></a>Konfiguráció
 
-Nyers naplók konfigurálása a Azure CDNhoz a Microsoft profilból: 
+Az Azure CDN nyers naplóinak konfigurálása a Microsoft-profilból: 
 
-1. A Azure Portal menüben válassza ki az **összes erőforrást** >>  **\<a-CDN-Profile >** .
+1. Az Azure Portal menüben válassza az **Összes erőforrás** >> **\<a CDN-profil>. **
 
-2. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
+2. A **Figyelés**csoportban válassza a **Diagnosztikai beállítások lehetőséget.**
 
-3. Válassza a **+ diagnosztikai beállítások hozzáadása**elemet.
+3. Válassza **a + Diagnosztikai beállítás hozzáadása lehetőséget**.
 
     ![CDN diagnosztikai beállítás](./media/cdn-raw-logs/raw-logs-01.png)
 
     > [!IMPORTANT]
-    > A nyers naplók csak a profil szintjén érhetők el, míg az összesített HTTP-állapotkódok naplói a végpont szintjén érhetők el.
+    > A nyers naplók csak a profil szinten érhetők el, míg az összesített http állapotkód naplók a végpont szintjén érhetők el.
 
-4. A **diagnosztikai beállítások**területen adja meg a diagnosztikai **beállítások neve**alatt a diagnosztikai beállítás nevét.
+4. A **Diagnosztikai beállítások csoportban**adja meg a diagnosztikai beállítás nevét a **Diagnosztikai beállítások neve területen.**
 
-5. Válassza ki a **naplót** , és állítsa be a megőrzési napokat.
+5. Válassza ki a **naplót,** és állítsa be a megőrzési napokban.
 
-6. Válassza ki a **célhely részleteit**. A cél beállításai a következők:
-    * **Küldés Log Analytics**
-        * Válassza ki az **előfizetést** és a **log Analytics munkaterületet**.
-    * **Archiválás egy Storage-fiókba**
-        * Válassza ki az **előfizetést** és a **Storage-fiókot**.
-    * **Stream az Event hub-ba**
-        * Válassza ki az **előfizetést**, az **Event hub-névteret**, az **Event hub nevét (nem kötelező)** és az **Event hub-szabályzat nevét**.
+6. Válassza ki a **Cél részleteit**. A céllehetőségek a következők:
+    * **Küldés a Log Analyticsnek**
+        * Válassza ki az **Előfizetés és** a Log **Analytics munkaterületet.**
+    * **Archiválás tárfiókba**
+        * Válassza ki az **Előfizetés** és a **Tárfiók lehetőséget.**
+    * **Streamelés eseményközpontba**
+        * Válassza az **Előfizetés**, **Az eseményközpont névtere**, **az Eseményközpont neve (nem kötelező)** és **az Eseményközpont házirendjének nevét.**
 
     ![CDN diagnosztikai beállítás](./media/cdn-raw-logs/raw-logs-02.png)
 
@@ -62,35 +62,40 @@ Nyers naplók konfigurálása a Azure CDNhoz a Microsoft profilból:
 
 ## <a name="raw-logs-properties"></a>Nyers naplók tulajdonságai
 
-A Microsoft szolgáltatásból Azure CDN jelenleg a nyers naplókat (óránként kötegelt feldolgozással) biztosítja. A nyers naplók egyedi API-kérelmeket biztosítanak minden egyes bejegyzéshez a következő sémával: 
+Az Azure CDN a Microsoft Service jelenleg nyers naplókat biztosít. A nyers naplók egyedi API-kérelmeket biztosítanak minden olyan bejegyzéshez, amely a következő sémával rendelkezik: 
 
 | Tulajdonság              | Leírás                                                                                                                                                                                          |
 |-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| TrackingReference     | A bejárati ajtó által kiszolgált kérést azonosító egyedi hivatkozási sztring, amely az ügyfélnek X-Azure-ref fejlécként is elküldve. Egy adott kérelem hozzáférési naplóiban található adatok kereséséhez szükséges. |
-| HttpMethod            | A kérelem által használt HTTP-metódus.                                                                                                                                                                     |
-| httpVersion           | A kérelem vagy a kapcsolatok típusa.                                                                                                                                                                   |
-| RequestUri            | A fogadott kérelem URI-ja.                                                                                                                                                                         |
-| RequestBytes          | A HTTP-kérelem üzenetének mérete bájtban, beleértve a kérések fejléceit és a kérelem törzsét.                                                                                                   |
-| ResponseBytes         | A háttér-kiszolgáló által válaszként küldött bájtok.                                                                                                                                                    |
-| UserAgent             | Az ügyfél által használt böngésző típusa.                                                                                                                                                               |
-| Ügyfélip              | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte.                                                                                                                                                  |
-| Eltelt idő             | A művelet végrehajtásának időtartama (ezredmásodpercben).                                                                                                                                            |
-| SecurityProtocol      | A kérelem által használt TLS/SSL protokoll verziója vagy Null, ha nincs titkosítás.                                                                                                                           |
-| Végpont              | A CDN-végpont gazdagépe a szülő CDN-profil alatt van konfigurálva.                                                                                                                                   |
-| Háttérbeli gazdagép neve     | Annak a háttér-gazdagépnek vagy-forrásnak a neve, ahol a kérelmeket küldik.                                                                                                                                |
-| Elküldve a Origin shieldbe | Ha az értéke igaz, az azt jelenti, hogy a rendszer a lekérést a peremhálózati pop helyett a forrás pajzs gyorsítótárából választta. A Origin Shield egy szülő gyorsítótár, amely a gyorsítótár találati arányának növelésére szolgál.                                       |
-| HttpStatusCode        | A proxy által visszaadott HTTP-állapotkód.                                                                                                                                                        |
-| HttpStatusDetails     | Az eredményül kapott állapot a kérelemben. A karakterlánc értékének jelentése az állapot-hivatkozási táblában található.                                                                                              |
-| Pop                   | A felhasználói kérésre válaszoló Edge-pop. A pop-rövidítések a megfelelő metrók repülőtéri kódjai.                                                                                   |
-| Gyorsítótár állapota          | Azt jelzi, hogy az objektumot a gyorsítótárból adták-e vissza, vagy a forrásból származik-e.                                                                                                             |
+| Követési hivatkozás     | Az egyedi hivatkozási karakterlánc, amely azonosítja a Bejárati ajtó által kiszolgált kérelmet, amelyet X-Azure-Ref fejlécként is küldött az ügyfélnek. Egy adott kérelem hozzáférési naplóiban a részletek kereséséhez szükséges. |
+| HttpMódszer            | A kérelem által használt HTTP-módszer.                                                                                                                                                                     |
+| HttpVerzió           | A kérelem vagy kapcsolat típusa.                                                                                                                                                                   |
+| RequestUri (Kérés)            | A fogadott kérelem URI-ja.                                                                                                                                                                         |
+| Kérésbájt          | A HTTP-kérelem üzenet mérete bájtban, beleértve a kérelem fejlécek és a kérelem törzse.                                                                                                   |
+| Válaszbájt         | A háttérkiszolgáló által válaszként küldött bájtok.                                                                                                                                                    |
+| Useragent             | Az ügyfél által használt böngészőtípusa.                                                                                                                                                               |
+| ClientIp (Ügyfél IP-címe)              | A kérést küldő ügyfél IP-címe.                                                                                                                                                  |
+| Időtaken             | A művelet időtartama ezredmásodpercben.                                                                                                                                            |
+| SecurityProtocol (Biztonsági protokoll)      | A kérés által használt TLS/SSL protokollverzió, vagy null, ha nincs titkosítás.                                                                                                                           |
+| Végpont              | A CDN-végpontállomás a szülő CDN-profil alatt konfigurált.                                                                                                                                   |
+| Háttérállomás neve     | Annak a háttérállomásnak vagy eredetnek a neve, amelybe a kérelmeket küldik.                                                                                                                                |
+| Elküldve a forráspajzsra | Ha ez igaz, az azt jelenti, hogy a kérést az eredeti pajzs gyorsítótárából válaszolták meg a peremhálózati pop helyett. Az originális pajzs egy szülőgyorsítótár, amely a gyorsítótár találati arányának javítására szolgál.                                       |
+| httpstatuskód        | A proxytól visszaadott HTTP-állapotkód.                                                                                                                                                        |
+| httpStatusDetails     | A kérelem eredményül kapott állapota. Ennek a karakterlánc-értéknek a jelentése egy Állapothivatkozás-táblában található.                                                                                              |
+| Pop                   | A peremhálózati pop, amely válaszolt a felhasználói kérelemre. A POP-ok rövidítései a megfelelő metrók repülőtéri kódjai.                                                                                   |
+| Gyorsítótár állapota          | Azt jelzi, hogy az objektum a gyorsítótárból lett-e visszaadva, vagy az eredeti forrásból származik.                                                                                                             |
+> [!IMPORTANT]
+> A HTTP Raw naplók funkció automatikusan elérhető minden olyan profilhoz, amelyet **2020.** A korábban létrehozott CDN-profilok esetében a naplózás beállítása után frissíteni kell a CDN-végpontot. Például lehet navigálni a geoszűrés alatt CDN-végpontok és blokkolja bármely ország nem releváns a munkaterhelés és a mentés találatot. 
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> A naplók a Log Analytics-profil alatt tekinthető kontle. A mintalekérdezés úgy nézne ki, mint az AzureDiagnostics | ahol kategória == "AzureCdnAccessLog"
+
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben engedélyezte a HTTP nyers naplókat a Microsoft CDN szolgáltatáshoz.
 
-A Azure CDNről és a jelen cikkben említett egyéb Azure-szolgáltatásokról további információt a következő témakörben talál:
+Az Azure CDN-ről és a cikkben említett egyéb Azure-szolgáltatásokról a következő témakörben olvashat bővebben:
 
-* [Elemzés](cdn-log-analysis.md) Azure CDN használati minták.
+* [Elemzés](cdn-log-analysis.md) Azure CDN-használati minták.
 
-* További információ a [Azure monitorról](https://docs.microsoft.com/azure/azure-monitor/overview).
+* További információ az [Azure Monitorról.](https://docs.microsoft.com/azure/azure-monitor/overview)
 
-* [Log Analytics konfigurálása Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+* [A Log Analytics konfigurálása az Azure Monitorban.](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)

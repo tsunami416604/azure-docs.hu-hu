@@ -1,90 +1,90 @@
 ---
-title: Intelligens Útválasztás és Kanári-kiadások a Istio az Azure Kubernetes szolgáltatásban (ak)
-description: Ismerje meg, hogyan használható a Istio az intelligens útválasztás biztosításához és a Kanári-kiadások üzembe helyezéséhez egy Azure Kubernetes Service (ak) fürtben
+title: Intelligens útválasztási és kanári-kiadások az Istio szolgáltatással az Azure Kubernetes szolgáltatásban (AKS)
+description: Ismerje meg, hogyan használhatja az Istio-t intelligens útválasztási és kanári-kiadások üzembe helyezésére egy Azure Kubernetes-szolgáltatás (AKS) fürtben
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273006"
 ---
-# <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens Útválasztás és Kanári-kiadások használata az Azure Kubernetes Service (Istio) szolgáltatásban (ak)
+# <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens útválasztási és kanári-kiadások használata az Istio szolgáltatással az Azure Kubernetes szolgáltatásban (AKS)
 
-A [Istio][istio-github] egy nyílt forráskódú szolgáltatás rácsvonala, amely a Kubernetes-fürtökön futó összes szolgáltatás egyik kulcsfontosságú készletét biztosítja. Ezek a szolgáltatások közé tartoznak a forgalomirányítás, a szolgáltatások identitása és a biztonság, a házirendek betartatása és a Megfigyelhetőség. A Istio kapcsolatos további információkért tekintse meg a hivatalos [Mi az Istio?][istio-docs-concepts] dokumentációt.
+[Az Istio][istio-github] egy nyílt forráskódú szolgáltatásháló, amely egy Kubernetes-fürt mikroszolgáltatásaiközött kulcsfontosságú funkciókat biztosít. Ezek közé tartozik a forgalomkezelés, a szolgáltatás identitása és biztonsága, a házirendek betartatása és a megfigyelhetőség. További információ az Istio, lásd a hivatalos [Mi istio?][istio-docs-concepts] dokumentáció.
 
-Ez a cikk bemutatja, hogyan használhatja a Istio forgalomirányítási funkcióit. A rendszer egy AK-beli szavazási alkalmazást használ az intelligens Útválasztás és a Kanári-kiadások megismerésére.
+Ez a cikk bemutatja, hogyan használhatja az Istio forgalomkezelési funkcióit. A minta AKS szavazási alkalmazás intelligens útválasztási és kanárikiadások feltárására szolgál.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Az alkalmazás központi telepítése
 > * Az alkalmazás frissítése
-> * Az alkalmazás Kanári-kiadásának kiépítése
-> * Bevezetés véglegesítése
+> * Az alkalmazás kanárikiadásának bevezetése
+> * A bevezetés véglegesítése
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 > [!NOTE]
-> Ezt a forgatókönyvet `1.3.2`Istio-verzióval tesztelték.
+> Ez a forgatókönyv tesztelték ellen `1.3.2`Istio verzió .
 
-A cikkben ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb rendszerű, RBAC engedélyezve), és létrehozta a fürttel létesített `kubectl`-kapcsolatokat. Emellett a fürtben telepített Istio is szüksége lesz.
+A cikkben ismertetett lépések feltételezik, hogy létrehozott egy AKS-fürtöt (Kubernetes `1.13` `kubectl` és újabb, az RBAC engedélyezve), és kapcsolatot létesített a fürttel. Istio telepítve is lesz a fürtben.
 
-Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart] -gyors útmutatót, és [telepítse az Istio-t az AK-][istio-install] útmutatóban.
+Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, olvassa el az [AKS rövid útmutatóját][aks-quickstart] és [az Istio telepítése című témakört az AKS-útmutatóban.][istio-install]
 
-## <a name="about-this-application-scenario"></a>Az alkalmazással kapcsolatos forgatókönyv
+## <a name="about-this-application-scenario"></a>Az alkalmazásforgatókönyv ről
 
-A minta**AK-** szavazási alkalmazás két szavazati lehetőséget biztosíta felhasználóknak. Létezik egy tárolási összetevő, amely megőrzi a szavazatok számát az egyes lehetőségeknél. Emellett van egy analitikai összetevő, amely részletesen ismerteti az egyes lehetőségekhez leadott szavazatok körét.
+A minta AKS szavazás app szolgáltat kettő szavazás választások (**macskák** vagy **Kutyák)**-hoz használók. Van egy tárolási összetevő, amely megőrzi az egyes beállításokra vonatkozó szavazatok számát. Emellett van egy elemzési összetevő, amely részletezi az egyes beállításokleadott szavazatok körül.
 
-Ebben az alkalmazási forgatókönyvben először telepítenie kell az analitikai összetevő szavazási alkalmazásának és verziójának `1.0` verzióját `1.0`. Az analitikai összetevő a szavazatok számának egyszerű számát tartalmazza. A szavazati alkalmazás és az elemzési összetevő a Redis által támogatott tárolási összetevő `1.0` verziójával kommunikál.
+Ebben az alkalmazásban a szavazási `1.0` alkalmazás és az `1.0` elemzési összetevő verziójának üzembe helyezésével kezdi. Az elemzési összetevő egyszerű számokat biztosít a szavazatok számához. A szavazó alkalmazás és az `1.0` elemzési összetevő a Redis által támogatott tárolóösszetevő verziójával lép kölcsönhatásba.
 
-Az elemzési összetevőt a (`1.1`) verzióra frissíti, amely a Counts és a Now összegeket és a százalékokat is tartalmazza.
+Az elemzési összetevőt `1.1`verzióra frissíti, amely számlálókat, és most összesítéseket és százalékokat biztosít.
 
-A felhasználók egy része az alkalmazás egy Kanári-kiadáson keresztül `2.0` tesztelési verzióját. Ez az új verzió egy MySQL-adatbázis által támogatott tárolási összetevőt használ.
+A felhasználók egy részhalmaza az alkalmazás kanári-kiadáson keresztüli tesztelését `2.0` teszteli. Ez az új verzió egy Olyan tárolási összetevőt használ, amelyet egy MySQL-adatbázis támogat.
 
-Ha biztos abban, hogy a (z) `2.0` verziója a vártnak megfelelően működik a felhasználók részhalmazában, akkor az összes felhasználója számára elérhetővé kell tennie a `2.0` verzióját.
+Ha biztos abban, `2.0` hogy a verzió a felhasználók részhalmazán `2.0` az elvárt módon működik, akkor a verziót az összes felhasználó számára is bekell adnia.
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 
-Kezdjük azzal, hogy üzembe helyezi az alkalmazást az Azure Kubernetes-szolgáltatás (ak) fürtjében. A következő ábra azt mutatja be, hogy mit futtat a szakasz vége: az összes olyan összetevő verziójának `1.0` verziója, amely a bejövő kérelmeket a Istio beáramló átjárón keresztül szervizeli:
+Kezdjük azzal, hogy az alkalmazást az Azure Kubernetes-szolgáltatás (AKS) fürtbe telepíti. Az alábbi ábra bemutatja, hogy mi `1.0` fut a szakasz végéig – az Istio ingress átjárón keresztül kiszolgált bejövő kéréseket tartalmazó összes összetevő verziója:
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-01.png)
+![Az AKS voting alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-01.png)
 
-A cikkben ismertetett összetevők az [Azure-Samples/AK-szavazó-alkalmazás][github-azure-sample] GitHub-tárházban érhetők el. A következő módon töltheti le az összetevőket vagy klónozott a tárházat:
+A cikket követő összetevők az [Azure-Samples/aks-voting-app][github-azure-sample] GitHub-tárházban érhetők el. Letöltheti a műtermékeket, vagy klónozhatja a tárta az alábbiak szerint:
 
 ```console
 git clone https://github.com/Azure-Samples/aks-voting-app.git
 ```
 
-Váltson a letöltött/klónozott tárház következő mappájára, és futtassa az összes további lépést ebből a mappából:
+Váltson a következő mappára a letöltött / klónozott tárházban, és futtassa az összes további lépést ebből a mappából:
 
 ```console
 cd aks-voting-app/scenarios/intelligent-routing-with-istio
 ```
 
-Először hozzon létre egy névteret az AK-fürtben a `voting` nevű AK-beli szavazási alkalmazáshoz a következőképpen:
+Először hozzon létre egy névteret az AKS-fürtben `voting` a minta AKS szavazási alkalmazás hoz létre a következőképpen:
 
 ```console
 kubectl create namespace voting
 ```
 
-A névtér címkéje `istio-injection=enabled`. Ez a címke arra utasítja a Istio-t, hogy a névtérben lévő összes hüvelybe automatikusan adja a Istio-proxykat az oldalkocsiként.
+Címkézze fel `istio-injection=enabled`a névteret a segítségével. Ez a címke arra utasítja istio automatikusan adja be az istio-proxyk oldalkocsiként az összes podebben a névtérben.
 
 ```console
 kubectl label namespace voting istio-injection=enabled
 ```
 
-Most hozzuk létre az AK-szavazási alkalmazás összetevőit. Hozza létre ezeket az összetevőket az előző lépésben létrehozott `voting` névtérben.
+Most hozzuk létre az AKS voting alkalmazás összetevőit. Hozza létre ezeket `voting` az összetevőket az előző lépésben létrehozott névtérben.
 
 ```console
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
-A következő példa kimenete a létrehozandó erőforrásokat mutatja:
+A következő példa kimenete a létrehozás alatt álló erőforrásokat mutatja:
 
 ```output
 deployment.apps/voting-storage-1-0 created
@@ -96,15 +96,15 @@ service/voting-app created
 ```
 
 > [!NOTE]
-> A Istio bizonyos követelményeket támaszt a hüvelyek és a szolgáltatások körül. További információ: a [Istio követelményei a hüvelyek és a szolgáltatások dokumentációjában][istio-requirements-pods-and-services].
+> Istio van néhány speciális követelmények körül podok és szolgáltatások. További információt a [Podok és szolgáltatások istio követelményeinek dokumentációjában][istio-requirements-pods-and-services]talál.
 
-A létrehozott hüvelyek megjelenítéséhez használja a [kubectl Get hüvely][kubectl-get] parancsot az alábbi módon:
+A létrehozott podok megtekintéséhez használja a [kubectl get pods][kubectl-get] parancsot az alábbiak szerint:
 
 ```console
 kubectl get pods -n voting --show-labels
 ```
 
-A következő példa kimenetében a `voting-app` Pod és a `voting-analytics` és a `voting-storage` hüvely egyetlen példánya látható. A hüvelyek mindegyike két tárolóval rendelkezik. Ezen tárolók egyike az összetevő, a másik a `istio-proxy`:
+A következő példa kimeneti azt mutatja, három példánya van a `voting-app` pod, és egy példánya mind a és `voting-analytics` `voting-storage` a podok. Mindegyik hüvelynek két tartálya van. Az egyik ilyen tartály az alkatrész, `istio-proxy`a másik pedig a következő:
 
 ```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
@@ -115,7 +115,7 @@ voting-app-1-0-956756fd-wsxvt           2/2       Running   0          39s   app
 voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app=voting-storage,pod-template-hash=5d8fcc89c4,version=1.0
 ```
 
-Ha szeretné megtekinteni a pod-ról szóló információkat, a [kubectl a pod paranccsal írja le][kubectl-describe] a `voting-analytics` Pod kiválasztásához. A kimenet szűrésével megjelenítheti a pod-ban található két tároló részleteit:
+A podkal kapcsolatos információk megtekintéséhez a [kubectl írja le][kubectl-describe] pod parancsot `voting-analytics` címkeválasztókkal a pod kiválasztásához. Szűrjük a kimenetet, hogy megmutassuk a podban lévő két tartály részleteit:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -135,73 +135,73 @@ Ha szeretné megtekinteni a pod-ról szóló információkat, a [kubectl a pod p
 
 ::: zone-end
 
-Addig nem tud csatlakozni a szavazati alkalmazáshoz, amíg létre nem hozza a Istio- [átjárót][istio-reference-gateway] és a [virtuális szolgáltatást][istio-reference-virtualservice]. Ezek a Istio-erőforrások átirányítják az adatokat az alapértelmezett Istio bemenő átjáróról az alkalmazásba.
+Nem tud csatlakozni a szavazó alkalmazáshoz, amíg létre nem hozza az Istio [átjárót][istio-reference-gateway] és a [virtuális szolgáltatást.][istio-reference-virtualservice] Ezek az Istio-erőforrások az alapértelmezett Istio ingress átjáróról irányítják a forgalmat az alkalmazásunkhoz.
 
 > [!NOTE]
-> Az **átjáró** a szolgáltatás rácsvonalának szélén lévő összetevő, amely bejövő vagy kimenő http-és TCP-forgalmat fogad.
+> Az **átjáró** a szolgáltatásháló szélén található összetevő, amely bejövő vagy kimenő HTTP- és TCP-forgalmat fogad.
 > 
-> A **virtuális szolgáltatások** egy vagy több cél szolgáltatás útválasztási szabályait határozzák meg.
+> A **virtuális szolgáltatás** egy vagy több célszolgáltatás útválasztási szabályait határozza meg.
 
-Az átjáró és a virtuális szolgáltatás YAML üzembe helyezéséhez használja a `kubectl apply` parancsot. Ne felejtse el megadni azt a névteret, amelyre ezek az erőforrások telepítve vannak.
+Használja `kubectl apply` a parancsot az átjáró és a virtuális szolgáltatás yaml üzembe helyezéséhez. Ne felejtse el megadni azt a névteret, amelybe ezek az erőforrások telepítve vannak.
 
 ```console
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
-A következő példa kimenete a létrehozandó új átjárót és virtuális szolgáltatást mutatja:
+A következő példa kimenete az új átjáró és virtuális szolgáltatás létrehozása látható:
 
 ```output
 virtualservice.networking.istio.io/voting-app created
 gateway.networking.istio.io/voting-app-gateway created
 ```
 
-Szerezze be a Istio beáramló átjáró IP-címét a következő parancs használatával:
+Szerezze be az Istio Ingress Gateway IP-címét a következő paranccsal:
 
 ```output
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
-A következő példa kimenete a bejövő átjáró IP-címét jeleníti meg:
+A következő példa kimenete a be- és énemi átjáró IP-címét mutatja:
 
 ```output
 20.188.211.19
 ```
 
-Nyisson meg egy böngészőt, és illessze be az IP-címet. Megjelenik a minta AK-beli szavazási alkalmazás.
+Nyisson meg egy böngészőt, és illessze be az IP-címet. Megjelenik a minta AKS szavazási alkalmazás.
 
-![A Istio-kompatibilis AK-fürtön futó AK-beli szavazási alkalmazás.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
+![Az Istio-ban futó AKS voting alkalmazás engedélyezte az AKS-fürtöt.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
-A képernyő alján található információk azt mutatják, hogy az alkalmazás a `voting-storage` (Redis) `voting-app` és `1.0` verziójának `1.0` verzióját használja.
+A képernyő alján található információk azt mutatják, `voting-app` hogy `1.0` `voting-storage` az alkalmazás a (Redis) verzióját `1.0` és verzióját használja.
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
-Végezzük el az analitikai összetevő új verziójának üzembe helyezését. Ez az új verzió `1.1` megjeleníti az egyes kategóriák száma melletti összegeket és százalékokat is.
+Telepítsük az elemzési összetevő új verzióját. Ez az `1.1` új verzió az egyes kategóriák száma mellett az összegeket és a százalékokat is megjeleníti.
 
-A következő ábra azt mutatja be, hogy mi fog futni a szakasz végén, a `voting-analytics`-összetevőnek csak `1.1` verziója rendelkezik a `voting-app` összetevőtől érkező forgalommal. Bár a `voting-analytics`-összetevő verziójának `1.0` továbbra is fut, és a `voting-analytics` szolgáltatás hivatkozik rá, a Istio-proxyk nem engedélyezik a felé irányuló és onnan érkező forgalmat.
+A következő ábra azt mutatja, hogy mi fog `1.1` futni `voting-analytics` a szakasz végén - `voting-app` csak az összetevő verziójának van forgalom irányítva az összetevőből. Annak ellenére, `voting-analytics` hogy az összetevő verziója `voting-analytics` `1.0` továbbra is fut, és a szolgáltatás hivatkozik rá, az Istio proxyk lehetővé teszik a forgalmat.
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-02.png)
+![Az AKS voting alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-02.png)
 
-Telepítse a `voting-analytics` összetevő `1.1` verzióját. Hozza létre ezt az összetevőt a `voting` névtérben:
+Telepítsük az `1.1` `voting-analytics` összetevő verzióját. Hozza létre ezt `voting` az összetevőt a névtérben:
 
 ```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
-A következő példa kimenete a létrehozandó erőforrásokat mutatja:
+A következő példa kimenete a létrehozás alatt álló erőforrásokat mutatja:
 
 ```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
-Nyissa meg újra a minta AK-beli szavazó alkalmazást egy böngészőben, az előző lépésben beszerzett Istio beléptetési átjáró IP-címének használatával.
+Nyissa meg a minta AKS szavazási alkalmazást egy böngészőben, az előző lépésben kapott Istio Ingress Gateway IP-címével.
 
-A böngésző az alább látható két nézet között váltakozik. Mivel Kubernetes [szolgáltatást][kubernetes-service] használ a `voting-analytics` összetevőhöz, amely csak egyetlen címkéző választóval (`app: voting-analytics`) rendelkezik, a Kubernetes a ciklikus időszeletelés alapértelmezett viselkedését használja a választónak megfelelő hüvelyek között. Ebben az esetben az `voting-analytics`-hüvelyek `1.0` és `1.1` is.
+A böngésző felváltva a két nézet alább látható. Mivel a Kubernetes [szolgáltatást][kubernetes-service] csak `voting-analytics` egyetlen címkeválasztóval (`app: voting-analytics`) rendelkező összetevőhöz használja, a Kubernetes a ciklikus multiplexelés alapértelmezett viselkedését használja a választónak megfelelő podok között. Ebben az esetben ez `1.0` mind `1.1` a `voting-analytics` verzió, és a podok.
 
-![Az 1,0-es verzió, amely egy, az AK-beli szavazási alkalmazásban futó analitikai összetevő.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
+![Az AKS voting alkalmazásban futó elemzési összetevő 1.0-s verziója.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
-![Az 1,1-es verzió, amely egy, az AK-beli szavazási alkalmazásban futó analitikai összetevő.](media/servicemesh/istio/scenario-routing-update-app-01.png)
+![Az AKS voting alkalmazásunkban futó elemzési összetevő 1.1-es verziója.](media/servicemesh/istio/scenario-routing-update-app-01.png)
 
-A `voting-analytics` összetevő két verziója közötti váltást az alábbi módon jelenítheti meg. Ne felejtse el használni a saját Istio bejövő átjárójának IP-címét.
+Az összetevő két verziója közötti váltást `voting-analytics` az alábbiak szerint jelenítheti meg. Ne felejtse el használni a saját Istio Ingress Gateway IP-címét.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -221,7 +221,7 @@ A `voting-analytics` összetevő két verziója közötti váltást az alábbi m
 
 ::: zone-end
 
-A következő példa kimenete a visszaadott webhely megfelelő részét mutatja, mivel a hely a verziók között vált:
+A következő példa kimeneta a visszaadott webhely megfelelő részét mutatja, amikor a webhely átvált a verziók között:
 
 ```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
@@ -231,24 +231,24 @@ A következő példa kimenete a visszaadott webhely megfelelő részét mutatja,
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-### <a name="lock-down-traffic-to-version-11-of-the-application"></a>Az alkalmazás 1,1-es verziójára vonatkozó forgalom zárolása
+### <a name="lock-down-traffic-to-version-11-of-the-application"></a>Forgalom zárolása az alkalmazás 1.1-es verziójára
 
-Most pedig zárja be a forgalmat a `voting-analytics`-összetevő és a `voting-storage`-összetevő `1.0` verziójának csak `1.1` verziójára. Ezután megadhatja az összes többi összetevő útválasztási szabályait.
+Most zárjuk le a forgalmat `1.1` `voting-analytics` csak az `1.0` összetevő `voting-storage` és az összetevő verziója. Ezután az összes többi összetevőhöz útválasztási szabályokat kell megadnia.
 
-> * A **virtuális szolgáltatások** egy vagy több cél szolgáltatás útválasztási szabályait határozzák meg.
-> * A **célként megadott szabályok** határozzák meg a forgalmi házirendeket és a verzióra vonatkozó házirendeket.
-> * A **szabályzat** meghatározza, hogy milyen hitelesítési módszerek fogadhatók el a munkaterhelés (ok) ban.
+> * A **virtuális szolgáltatás** egy vagy több célszolgáltatás útválasztási szabályait határozza meg.
+> * A **célszabály** határozza meg a forgalmi szabályzatokat és a verzióspecifikus házirendeket.
+> * A **szabályzat** határozza meg, hogy milyen hitelesítési módszerek fogadhatók el a számítási feladatok(ak)on.
 
-A `kubectl apply` parancs használatával cserélje le a virtuális szolgáltatás definícióját a `voting-app`, és adja hozzá a többi összetevőhöz a [célként megadott szabályokat][istio-reference-destinationrule] és [virtuális szolgáltatásokat][istio-reference-virtualservice] . A `voting` névtérhez hozzá kell adnia egy [házirendet][istio-reference-policy] , amely biztosítja, hogy a szolgáltatások közötti kommunikáció kölcsönös TLS-és Ügyféltanúsítványok használatával biztosítva legyen.
+A `kubectl apply` paranccsal cserélje le a `voting-app` virtuális szolgáltatás definícióját a másik összetevőhöz, és adja hozzá a [célszabályokat][istio-reference-destinationrule] és a [virtuális szolgáltatásokat.][istio-reference-virtualservice] A `voting` névtérhez [házirendet][istio-reference-policy] fog hozzáadni annak érdekében, hogy a szolgáltatások közötti kommunikáció kölcsönös TLS- és ügyféltanúsítványok használatával biztonságos legyen.
 
-* A szabályzat `peers.mtls.mode` úgy van beállítva, hogy `STRICT`, hogy a kölcsönös TLS a `voting` névtérben lévő szolgáltatások között legyen érvényesítve.
-* A `trafficPolicy.tls.mode` is beállítjuk, hogy az összes célként megadott szabályban `ISTIO_MUTUAL`. A Istio erős identitásokkal biztosítja a szolgáltatásokat, és biztosítja a kommunikációt a szolgáltatások között a kölcsönös TLS-vel és az Istio transzparens módon felügyelt Ügyféltanúsítványok használatával.
+* A szabályzat `peers.mtls.mode` célja `STRICT` annak biztosítása, hogy a `voting` közös TLS a névtéren belüli szolgáltatások között érvényesítve legyen.
+* Azt is `trafficPolicy.tls.mode` meg `ISTIO_MUTUAL` a, hogy az összes rendeltetési szabály. Az Istio erős identitással rendelkező szolgáltatásokat nyújt, és biztosítja a szolgáltatások közötti kommunikációt a kölcsönös TLS és az Istio által transzparens módon kezelt ügyféltanúsítványok használatával.
 
 ```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
-A következő példa kimenete az új szabályzatot, a célhely szabályait és a virtuális szolgáltatások frissítésének/létrehozásának eredményét mutatja be:
+A következő példa kimenetaz új szabályzatot, a célszabályokat és a virtuális szolgáltatásokat frissíti/hozlétre mutatja be:
 
 ```output
 virtualservice.networking.istio.io/voting-app configured
@@ -260,11 +260,11 @@ destinationrule.networking.istio.io/voting-storage created
 virtualservice.networking.istio.io/voting-storage created
 ```
 
-Ha újra megnyitja az AK-szavazási alkalmazást egy böngészőben, akkor a `voting-app` összetevő csak az `voting-analytics` összetevő új verzióját használja `1.1`.
+Ha ismét megnyitja az AKS voting alkalmazást egy `1.1` böngészőben, az `voting-analytics` `voting-app` összetevő csak az összetevő új verzióját használja.
 
-![Az 1,1-es verzió, amely egy, az AK-beli szavazási alkalmazásban futó analitikai összetevő.](media/servicemesh/istio/scenario-routing-update-app-01.png)
+![Az AKS voting alkalmazásunkban futó elemzési összetevő 1.1-es verziója.](media/servicemesh/istio/scenario-routing-update-app-01.png)
 
-Az alábbi módon jelenítheti meg, hogy most már csak a `voting-analytics` összetevő verziójának `1.1` van átirányítva. Ne felejtse el használni a saját Istio bejövő átjárójának IP-címét:
+Láthatja, hogy most már csak az `1.1` `voting-analytics` összetevő verziójához van irányítva az alábbiak szerint. Ne felejtse el használni a saját Istio Ingress Gateway IP-címét:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -284,7 +284,7 @@ Az alábbi módon jelenítheti meg, hogy most már csak a `voting-analytics` ös
 
 ::: zone-end
 
-A következő példa kimenete a visszaadott webhely megfelelő részét mutatja:
+A következő példa kimeneta a visszaadott webhely megfelelő részét mutatja be:
 
 ```output
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -294,13 +294,13 @@ A következő példa kimenete a visszaadott webhely megfelelő részét mutatja:
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-Most erősítse meg, hogy a Istio kölcsönös TLS-t használ az egyes szolgáltatások közötti kommunikáció biztonságossá tételéhez. Ehhez a [authn TLS-pipa][istioctl-authn-tls-check] parancsot használjuk a `istioctl` ügyfél bináris fájlján, amely a következő űrlapot veszi igénybe.
+Most erősítsük meg, hogy Istio kölcsönös TLS-t használ az egyes szolgáltatásaink közötti kommunikáció biztosítására. Ehhez az `istioctl` ügyfél bináris fájlján az [authn tls-check][istioctl-authn-tls-check] parancsot fogjuk használni, amely a következő formát ölti.
 
 ```console
 istioctl authn tls-check <pod-name[.namespace]> [<service>]
 ```
 
-Ezek a parancsok a megadott szolgáltatásokhoz való hozzáférésről, a névtérben lévő összes hüvelyről és a címkék egy csoportjának megfelelő információkat biztosítanak:
+Ez a parancskészlet információt nyújt a megadott szolgáltatásokhoz való hozzáférésről a névtérben lévő és címkék nek megfelelő összes podról:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -320,7 +320,7 @@ Ezek a parancsok a megadott szolgáltatásokhoz való hozzáférésről, a névt
 
 ::: zone-end
 
-A következő példa kimenete azt mutatja, hogy a fenti lekérdezésekben a kölcsönös TLS kényszerítve van. A kimenet a házirend és a cél szabályait is megjeleníti, amelyek kikényszerítik a kölcsönös TLS-t:
+Ez a következő példa kimenet azt mutatja, hogy a kölcsönös TLS a fenti lekérdezéseink mindegyikére érvényes. A kimenet a kölcsönös TLS-t érvényesítő szabályzati és célszabályokat is megjeleníti:
 
 ```output
 # mTLS configuration between istio ingress pods and the voting-app service
@@ -348,27 +348,27 @@ HOST:PORT                                        STATUS     SERVER     CLIENT   
 voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS       default/voting     voting-storage/voting
 ```
 
-## <a name="roll-out-a-canary-release-of-the-application"></a>Az alkalmazás Kanári-kiadásának kiépítése
+## <a name="roll-out-a-canary-release-of-the-application"></a>Az alkalmazás kanárikiadásának bevezetése
 
-Most telepítse a `voting-app`, a `voting-analytics`és a `voting-storage` összetevők új verzióját `2.0`. Az új `voting-storage` összetevő a Redis helyett MySQL-t használ, és a `voting-app` és `voting-analytics` összetevők frissülnek, hogy az új `voting-storage` összetevőt használják.
+Most telepítse `2.0` a `voting-app`, `voting-analytics`és `voting-storage` az összetevők új verzióját. Az `voting-storage` új összetevő a MySQL-t `voting-app` használja `voting-analytics` a Redis helyett, és `voting-storage` a és az összetevők frissülnek, hogy lehetővé tegyék számukra az új összetevő használatát.
 
-A `voting-app` összetevő mostantól támogatja a funkció-jelölő funkciót. Ez a funkció lehetővé teszi, hogy tesztelje a Istio Kanári kiadási képességeit a felhasználók egy részhalmaza számára.
+Az `voting-app` összetevő mostantól támogatja a funkciójelző funkcióit. Ez a szolgáltatásjelző lehetővé teszi az Istio kanárikiadási képességének tesztelését a felhasználók egy részhalmaza számára.
 
-Az alábbi ábrán látható, hogy mit fog futni a szakasz végén.
+Az alábbi ábra azt mutatja, hogy mi lesz a szakasz végén.
 
-* A `voting-app` összetevő `1.0` verziója, a `voting-analytics` összetevő `1.1` verziója és a `1.0` összetevő `voting-storage` verziója képes kommunikálni egymással.
-* A `voting-app` összetevő `2.0` verziója, a `voting-analytics` összetevő `2.0` verziója és a `2.0` összetevő `voting-storage` verziója képes kommunikálni egymással.
-* A `voting-app` összetevő `2.0` verziója csak olyan felhasználók számára érhető el, akiknek van beállított szolgáltatás-jelölője. Ezt a változást a szolgáltatás jelölője egy cookie-n keresztül kezeli.
+* Az `1.0` `voting-app` összetevő verziója, `1.1` az `voting-analytics` összetevő `1.0` verziója `voting-storage` és az összetevő verziója képes kommunikálni egymással.
+* Az `2.0` `voting-app` összetevő verziója, `2.0` az `voting-analytics` összetevő `2.0` verziója `voting-storage` és az összetevő verziója képes kommunikálni egymással.
+* Az `2.0` összetevő `voting-app` verziója csak azok számára érhető el, akik egy adott szolgáltatásjelző készlettel rendelkeznek. Ezt a módosítást egy szolgáltatásjelző segítségével kezelik egy cookie-n keresztül.
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-03.png)
+![Az AKS voting alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-03.png)
 
-Először frissítse a Istio-cél szabályait és a virtuális szolgáltatásokat az új összetevők kiszolgálásához. Ezek a frissítések biztosítják, hogy a forgalom ne legyen helytelen az új összetevőkre irányítva, és a felhasználók nem kapnak váratlan hozzáférést:
+Először frissítse az Istio célszabályokat és a virtuális szolgáltatásokat, hogy azok az új összetevők et kielégítse. Ezek a frissítések biztosítják, hogy a forgalmat ne irányítsa helytelenül az új összetevőkhöz, és a felhasználók nem kapnak váratlan hozzáférést:
 
 ```console
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
-A következő példa kimenetében a célként megadott szabályok és virtuális szolgáltatások láthatók:
+A következő példa kimeneta a frissítés alatt áll a célszabályok és a virtuális szolgáltatások frissítése közben:
 
 ```output
 destinationrule.networking.istio.io/voting-app configured
@@ -379,13 +379,13 @@ destinationrule.networking.istio.io/voting-storage configured
 virtualservice.networking.istio.io/voting-storage configured
 ```
 
-Ezután adja hozzá a Kubernetes objektumokat az új verzióhoz `2.0` összetevőket. Emellett frissíti a `voting-storage` szolgáltatást, hogy tartalmazza a MySQL-hez készült `3306` portot:
+Ezután adjuk hozzá a Kubernetes objektumokat `2.0` az új verzió-összetevőkhöz. Azt is `voting-storage` frissíti a `3306` szolgáltatást, hogy tartalmazza a port a MySQL:
 
 ```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
 ```
 
-A következő példa kimenete a Kubernetes objektumok sikeres frissítését vagy létrehozását mutatja be:
+A következő példakimenet a Kubernetes-objektumok sikeres enfrissítésre vagy létrehozásra kerül:
 
 ```output
 service/voting-storage configured
@@ -396,51 +396,51 @@ deployment.apps/voting-analytics-2-0 created
 deployment.apps/voting-app-2-0 created
 ```
 
-Várjon, amíg az összes verzió `2.0` hüvely fut. A [kubectl Get hüvely][kubectl-get] paranccsal a `-w` Watch kapcsolóval tekintheti meg a `voting` névtér összes hüvelyének változásait:
+Várjon, amíg az összes verziópod `2.0` fut. Használja a [kubectl get pods][kubectl-get] parancsot az `-w` óra kapcsolóval, `voting` hogy figyelje a változásokat az összes poda a névtérben:
 
 ```console
 kubectl get pods --namespace voting -w
 ```
 
-Most már képesnek kell lennie váltani a szavazási alkalmazás `1.0` és Version `2.0` (Canary) verziójában. A képernyő alján lévő funkció-jelölő váltógomb beállítja a cookie-t. Ezt a cookie-t a `voting-app` virtuális szolgáltatás használja arra, hogy a felhasználókat az új verzióra irányítsa `2.0`.
+Most már képesnek kell lennie `1.0` arra, hogy váltson a szavazási alkalmazás verziója és változata `2.0` (kanári) között. A képernyő alján lévő funkciójelző beállítja a cookie-t. Ezt a cookie-t a `voting-app` virtuális szolgáltatás arra `2.0`használja, hogy a felhasználókat az új verzióra irányítsa.
 
-![NINCS beállítva az 1,0-es verzióra vonatkozó szavazási app-Feature jelző.](media/servicemesh/istio/scenario-routing-canary-release-01.png)
+![Az AKS Voting alkalmazás 1.0-s verziója - a funkciójelző nincs beállítva.](media/servicemesh/istio/scenario-routing-canary-release-01.png)
 
-![A 2,0-es verzióra van beállítva az AK-beli szavazási alkalmazás-funkció jelzője.](media/servicemesh/istio/scenario-routing-canary-release-02.png)
+![Az AKS Voting alkalmazás 2.0-s verziója - funkciójelző is beállítva.](media/servicemesh/istio/scenario-routing-canary-release-02.png)
 
-A szavazatok száma eltér az alkalmazás verziójától. Ez a különbség kiemeli, hogy két különböző tárolási hátteret használ.
+A szavazatok száma eltér az alkalmazás verziói között. Ez a különbség kiemeli, hogy két különböző tároló háttérrendszereket használ.
 
-## <a name="finalize-the-rollout"></a>Bevezetés véglegesítése
+## <a name="finalize-the-rollout"></a>A bevezetés véglegesítése
 
-Miután sikeresen tesztelte a Kanári-kiadást, frissítse a `voting-app` Virtual Service-t, hogy átirányítsa az összes forgalmat az `voting-app` összetevő `2.0` verziójára. Az összes felhasználó ekkor megtekintheti az alkalmazás `2.0` verziószámát, függetlenül attól, hogy a szolgáltatás jelölője be van-e állítva, vagy sem:
+Miután sikeresen tesztelte a kanári-kiadást, frissítse a virtuális szolgáltatást, `voting-app` hogy az összes forgalmat az `2.0` `voting-app` összetevő verziójához irányítsa. Ezután minden `2.0` felhasználó látja az alkalmazás verzióját, függetlenül attól, hogy a szolgáltatásjelző be van-e állítva vagy sem:
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-04.png)
+![Az AKS voting alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-04.png)
 
-A már nem kívánt összetevők verzióinak eltávolításához frissítse az összes célhely-szabályt. Ezután frissítse az összes virtuális szolgáltatást, hogy ne hivatkozzon a verziókra.
+Frissítse az összes célszabályt, hogy eltávolítsa azoknak az összetevőknek a verzióit, amelyeket már nem kíván aktívnak. Ezután frissítse az összes virtuális szolgáltatást, hogy ne hivatkozzezekre a verziókra.
 
-Mivel az összetevők valamelyik régebbi verziójára már nincs forgalom, mostantól biztonságosan törölheti az összetevők összes központi telepítését.
+Mivel már nincs forgalom az összetevők egyik régebbi verzióihoz sem, most már biztonságosan törölheti az összetevők összes központi telepítését.
 
-![Az AK szavazási alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-05.png)
+![Az AKS voting alkalmazás összetevői és útválasztása.](media/servicemesh/istio/scenario-routing-components-05.png)
 
-Mostantól sikeresen bevezette az AK szavazó alkalmazás új verzióját.
+Most sikeresen kivezették az AKS voting alkalmazás új verzióját.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
 
-Az ebben a forgatókönyvben használt AK-szavazati alkalmazást eltávolíthatja az AK-fürtből a `voting` névtér törlésével a következőképpen:
+Az ebben a forgatókönyvben használt AKS szavazási alkalmazást a névtér törlésével az alábbiak szerint távolíthatja el az `voting` AKS-fürtből:
 
 ```console
 kubectl delete namespace voting
 ```
 
-A következő példa kimenete azt mutatja, hogy az AK szavazó alkalmazás összes összetevője el lett távolítva az AK-fürtből.
+A következő példa kimenetazt mutatja, hogy az AKS szavazási alkalmazás összes összetevője el lett távolítva az AKS-fürtből.
 
 ```output
 namespace "voting" deleted
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A [Istio Bookinfo Application example][istio-bookinfo-example]használatával további forgatókönyveket is megvizsgálhat.
+További forgatókönyveket is megvizsgálhat az [Istio Bookinfo alkalmazás példával.][istio-bookinfo-example]
 
 <!-- LINKS - external -->
 [github-azure-sample]: https://github.com/Azure-Samples/aks-voting-app

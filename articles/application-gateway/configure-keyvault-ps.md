@@ -1,35 +1,35 @@
 ---
-title: Az SSL-lezárás konfigurálása Key Vault-tanúsítványokkal – PowerShell
+title: SSL-végződés konfigurálása Key Vault-tanúsítványokkal – PowerShell
 titleSuffix: Azure Application Gateway
-description: Ismerje meg, hogyan integrálhatja az Azure Application Gatewayt a Key Vaultval a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz.
+description: Megtudhatja, hogyan integrálhatja az Azure Application Gateway-t a Key Vault-tal a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 2f7eafc6fc1533bd837fae60dd3b9673f6f97aa8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913021"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371227"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Az SSL-lezárás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
+# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>SSL-megszüntetés konfigurálása Key Vault-tanúsítványokkal az Azure PowerShell használatával
 
-A [Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely a titkok, kulcsok és SSL-tanúsítványok védelmére használható. Az Azure Application Gateway támogatja a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault-integrációját. Ez a támogatás a Application Gateway v2 SKU-ra korlátozódik.
+[Az Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely segítségével titkos kulcsok, kulcsok és SSL-tanúsítványok védelme. Az Azure Application Gateway támogatja a Key Vaultdal való integrációt a HTTPS-kompatibilis figyelőkhöz csatlakoztatott kiszolgálói tanúsítványok esetében. Ez a támogatás az Application Gateway v2 termékváltozatra korlátozódik.
 
-További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
+További információt az [SSL-végződtetés key vault-tanúsítványokkal című témakörben talál.](key-vault-certs.md)
 
-Ez a cikk bemutatja, hogyan használható egy Azure PowerShell-szkript a kulcstartó és az Application Gateway integrálásához az SSL-leállítási tanúsítványokhoz.
+Ez a cikk bemutatja, hogyan azure PowerShell-parancsfájl használatával integrálhatja a key vault az alkalmazás átjáró SSL-végződési tanúsítványok.
 
-Ehhez a cikkhez Azure PowerShell-modul 1.0.0-es vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A cikkben szereplő parancsok futtatásához a `Connect-AzAccount`futtatásával is létre kell hoznia egy, az Azure-nal való kapcsolódást.
+Ez a cikk az Azure PowerShell-modul 1.0.0-s vagy újabb verzióját igényli. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A cikkben szereplő parancsok futtatásához kapcsolatot kell létrehoznia `Connect-AzAccount`az Azure-ral a futtatásával.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, telepítenie kell a ManagedServiceIdentity modult:
+Mielőtt elkezdené, telepítve kell lennie a ManagedServiceIdentity modulnak:
 
 ```azurepowershell
 Install-Module -Name Az.ManagedServiceIdentity
@@ -56,7 +56,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
 ```
 
-### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Az Application Gateway által használandó kulcstartó, szabályzat és tanúsítvány létrehozása
+### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Az alkalmazásátjáró által használandó kulcstartó, házirend és tanúsítvány létrehozása
 
 ```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> A-EnableSoftDelete jelzőt az SSL-lezárás megfelelő működéséhez kell használni.
+> Az -EnableSoftDelete jelzőt az SSL-végződéshez kell használni a megfelelő működéshez. Ha a Key [Vault helyreállítható törlést konfigurál ja a portálon keresztül,](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)a megőrzési időszakot 90 napig kell tartani, ami az alapértelmezett érték. Az Application Gateway még nem támogatja az eltérő megőrzési időszakot. 
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -82,14 +82,14 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-a-static-public-virtual-ip-vip-address"></a>Statikus nyilvános virtuális IP-cím (VIP) létrehozása
+### <a name="create-a-static-public-virtual-ip-vip-address"></a>Statikus nyilvános virtuális IP-cím (IP) létrehozása
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-front-end-ports"></a>Készlet és előtér-portok létrehozása
+### <a name="create-pool-and-front-end-ports"></a>Készlet- és előtér-portok létrehozása
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -102,13 +102,13 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Az SSL-tanúsítvány átirányítása a kulcstartóra
+### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Az SSL-tanúsítvány rámutatása a kulcstartóra
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
 ```
 
-### <a name="create-listeners-rules-and-autoscale"></a>Figyelők, szabályok és autoskálázás létrehozása
+### <a name="create-listeners-rules-and-autoscale"></a>Figyelők, szabályok és automatikus skálázás létrehozása
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Https `
@@ -125,7 +125,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>A felhasználó által felügyelt identitás társítása az Application gatewayhez
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>A felhasználó által felügyelt identitás hozzárendelése az alkalmazásátjáróhoz
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
@@ -142,6 +142,6 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
   -SslCertificates $sslCert01 -AutoscaleConfiguration $autoscaleConfig
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[További információ az SSL-lezárásról](ssl-overview.md)
+[További információ az SSL-megszüntetésről](ssl-overview.md)

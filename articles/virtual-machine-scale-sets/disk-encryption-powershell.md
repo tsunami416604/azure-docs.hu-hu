@@ -1,6 +1,6 @@
 ---
-title: Lemezek titkosítása Azure-beli méretezési csoportokhoz Azure PowerShell
-description: Ismerje meg, hogyan titkosíthatja a virtuálisgép-példányokat és a csatlakoztatott lemezeket a Azure PowerShell használatával a Windowsos virtuálisgép-méretezési csoportokban
+title: Az Azure PowerShell használatával az Azure Scale-készletek lemezeinek titkosítása
+description: Megtudhatja, hogy az Azure PowerShell használatával hogyan titkosíthatja a virtuálisgép-példányokat és a csatlakoztatott lemezeket egy Windows virtuálisgép-méretezési csoportban
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bd7f92c104e06896f4b3c8bb2adef45983cf5d4d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278985"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Operációs rendszer és csatlakoztatott adatlemezek titkosítása virtuálisgép-méretezési csoportokban Azure PowerShell
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Az operációs rendszer és a csatlakoztatott adatlemezek titkosítása egy virtuálisgép-méretezési csoportban az Azure PowerShell használatával
 
-Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.  Ez a cikk bemutatja, hogyan hozhat létre és titkosíthat virtuálisgép-méretezési csoportokat a Azure PowerShell használatával. A virtuálisgép-méretezési csoportokra Azure Disk Encryption alkalmazásával kapcsolatos további információkért lásd: [Azure Disk Encryption Virtual Machine Scale sets](disk-encryption-overview.md).
+Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.  Ez a cikk bemutatja, hogyan azure PowerShell használatával hozzon létre és titkosítson egy virtuális gép méretezési csoport. Az Azure Disk Encryption virtuálisgép-méretezési csoportra történő alkalmazásáról az [Azure Lemezesítés a virtuálisgép-méretezési készletekhez című témakörben talál](disk-encryption-overview.md)további információt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Lemezes titkosításhoz engedélyezett Azure Key Vault létrehozása
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Lemeztitkosításhoz engedélyezett Azure Key Vault létrehozása
 
-A Azure Key Vault képes tárolni a kulcsokat, titkokat vagy jelszavakat, amelyek lehetővé teszik az alkalmazások és szolgáltatások biztonságos megvalósítását. A titkosítási kulcsokat a szoftveres védelem Azure Key Vault tárolja, vagy importálhatja vagy létrehozhatja a kulcsokat az FIPS 140-2 2. szintű standard minősítésű hardveres biztonsági modulokban (HSM). Ezek a titkosítási kulcsok a virtuális GÉPHEZ csatolt virtuális lemezek titkosítására és visszafejtésére szolgálnak. Megőrzi a titkosítási kulcsok felügyeletét, és naplózhatja a használatukat.
+Az Azure Key Vault olyan kulcsokat, titkos kulcsokat vagy jelszavakat tárolhat, amelyek lehetővé teszik azok biztonságos megvalósítását az alkalmazásokban és a szolgáltatásokban. A kriptográfiai kulcsok at az Azure Key Vault szoftvervédelemmel tárolja, vagy importálhatja vagy létrehozhatja a kulcsokat a HARDVERbiztonsági modulok (HSM) FIPS 140-2 szintű 2 szabványoknak megfelelően hitelesített hardverbiztonsági modulokban.Cryptographic keys are stored in Azure Key Vault using software-protection, or you can import or generate your keys in Hardware Security Modules (HSM) certified to FIPS 140-2 level 2 standards. Ezek a kriptográfiai kulcsok a virtuális géphez csatlakoztatott virtuális lemezek titkosítására és visszafejtésére szolgálnak. Ön megtartja a titkosítási kulcsok feletti ellenőrzést, és naplózhatja azok használatát.
 
-Hozzon létre egy Key Vaultt a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Ha engedélyezni szeretné a Key Vault a lemezes titkosításhoz, állítsa be a *EnabledForDiskEncryption* paramétert. Az alábbi példa az erőforráscsoport neve, a Key Vault neve és a hely változóit is meghatározza. Adja meg a saját egyedi Key Vault nevét:
+Hozzon létre egy key vault [new-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Ha engedélyezni szeretné a Key Vault lemeztitkosításhoz való használatát, állítsa be az *EnabledForDiskEncryption* paramétert. A következő példa az erőforráscsoport nevének, a kulcstároló nevének és helyének változóit is meghatározza. Adja meg saját egyedi Key Vault-nevét:
 
 ```azurepowershell-interactive
 $rgName="myResourceGroup"
@@ -36,11 +36,11 @@ New-AzResourceGroup -Name $rgName -Location $location
 New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>Meglévő Key Vault használata
+### <a name="use-an-existing-key-vault"></a>Meglévő kulcstartó használata
 
-Ez a lépés csak akkor szükséges, ha rendelkezik egy meglévő Key Vault, amelyet lemezes titkosítással szeretne használni. Hagyja ki ezt a lépést, ha az előző szakaszban létrehozott egy Key Vault.
+Ez a lépés csak akkor szükséges, ha rendelkezik egy meglévő Key Vault, amely lemeztitkosítással használni kívánt. Hagyja ki ezt a lépést, ha az előző szakaszban létrehozott egy key vaultot.
 
-Engedélyezheti egy meglévő Key Vault ugyanabban az előfizetésben és régióban, mint a [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-AzKeyVaultAccessPolicy)használatával történő lemezes titkosítás méretezési csoportját. Adja meg a meglévő Key Vault nevét a *$vaultName* változóban a következőképpen:
+A [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-AzKeyVaultAccessPolicy)segítségével engedélyezheti a meglévő Kulcstartót ugyanabban az előfizetésben és régióban, mint a lemeztitkosítás méretezési készletét. Adja meg a meglévő Key Vault nevét a *$vaultName* változóban az alábbiak szerint:
 
 
 ```azurepowershell-interactive
@@ -56,7 +56,7 @@ Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1
 $cred = Get-Credential
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss). A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó olyan szabályokat tartalmaz, amelyek elosztják a 80-as TCP-porton beérkező forgalmat, valamint lehetővé teszi a távoli asztali forgalmat a 3389-es TCP-porton és a PowerShell távoli eljáráshívást az 5985-ös TCP-porton:
+Most hozzon létre egy virtuális gép méretezési készlet [New-AzVmss](/powershell/module/az.compute/new-azvmss). A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó olyan szabályokat tartalmaz, amelyek elosztják a 80-as TCP-porton beérkező forgalmat, valamint lehetővé teszi a távoli asztali forgalmat a 3389-es TCP-porton és a PowerShell távoli eljáráshívást az 5985-ös TCP-porton:
 
 ```azurepowershell-interactive
 $vmssName="myScaleSet"
@@ -75,7 +75,7 @@ New-AzVmss `
 
 ## <a name="enable-encryption"></a>Titkosítás engedélyezése
 
-A méretezési csoportokban lévő virtuálisgép-példányok titkosításához először szerezzen be néhány információt a [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault)Key Vault URI és erőforrás-azonosítóval kapcsolatban. A rendszer ezeket a változókat használja a titkosítási folyamat elindításához a [set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/Set-AzVmssDiskEncryptionExtension):
+A virtuálisgép-példányok méretezési csoportban való titkosításához először szerezzen be néhány információt a Key Vault URI-jával és az erőforrás-azonosítóról a [Get-AzKeyVault segítségével.](/powershell/module/az.keyvault/Get-AzKeyVault) Ezek a változók a [Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/Set-AzVmssDiskEncryptionExtension)segítségével indítják el a titkosítási folyamatot:
 
 
 ```azurepowershell-interactive
@@ -86,11 +86,11 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType "All"
 ```
 
-Ha a rendszer kéri, írja be az *y karaktert* a méretezési csoport virtuálisgép-példányain a lemez titkosítási folyamat folytatásához.
+Amikor a rendszer kéri, írja be *az y* beírását a lemeztitkosítási folyamat folytatásához a méretezési csoport virtuálisgép-példányain.
 
-### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Titkosítás engedélyezése a KEK használatával a kulcs becsomagolásához
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Titkosítás engedélyezése a KEK használatával a kulcs burkolórendszeréhez
 
-A virtuálisgép-méretezési csoport titkosításakor a titkosítási kulcs is használható a további biztonsághoz.
+A virtuálisgép-méretezési csoport titkosításakor kulcstitkosítási kulcsot is használhat a nagyobb biztonság érdekében.
 
 ```azurepowershell-interactive
 $diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
@@ -103,21 +103,21 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 ```
 
 > [!NOTE]
->  A Disk-Encryption-kulcstartó paraméter értékének szintaxisa a teljes azonosító sztring:</br>
-/Subscriptions/[előfizetés-azonosító-GUID]/resourceGroups/[erőforrás-csoport-név]/providers/Microsoft.KeyVault/vaults/[kulcstartó-name]</br></br>
-> A kulcs-encryption-Key paraméter értékének szintaxisa a KEK teljes URI-ja, a következőhöz hasonlóan:</br>
-https://[kulcstartó-név]. Vault. Azure. net/Keys/[kekname]/[KEK-Unique-id]
+>  A lemeztitkosítás-keyvault paraméter értékének szintaxisa a teljes azonosító karakterlánc:</br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
+> A kulcstitkosítási kulcs paraméter értékének szintaxisa a KEK teljes URI-ja, mint például:</br>
+https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
-## <a name="check-encryption-progress"></a>Titkosítási folyamat ellenőrzésének állapota
+## <a name="check-encryption-progress"></a>Titkosítási folyamat ellenőrzése
 
-A lemezes titkosítás állapotának vizsgálatához használja a [Get-AzVmssDiskEncryption](/powershell/module/az.compute/Get-AzVmssDiskEncryption):
+A lemeztitkosítás állapotának ellenőrzéséhez használja a [Get-AzVmssDiskEncryption titkosítást:](/powershell/module/az.compute/Get-AzVmssDiskEncryption)
 
 
 ```azurepowershell-interactive
 Get-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
-Ha a virtuálisgép-példányok titkosítva vannak, a *EncryptionSummary* -kód a következő példában látható módon *ProvisioningState/sikeresnek* tekinti a jelentést:
+Ha a vm-példányok titkosítva vannak, a *EncryptionSummary* kódjelentések *ProvisioningState/succeeded* a következő példa kimeneti:
 
 ```powershell
 ResourceGroupName            : myResourceGroup
@@ -139,14 +139,14 @@ EncryptionExtensionInstalled : True
 
 ## <a name="disable-encryption"></a>Titkosítás letiltása
 
-Ha már nem kíván titkosított virtuálisgép-példányokat használni, letilthatja a titkosítást a [disable-AzVmssDiskEncryption](/powershell/module/az.compute/Disable-AzVmssDiskEncryption) használatával, a következőképpen:
+Ha a továbbiakban nem kíván titkosított virtuálisgép-példánylemezeket használni, az [Disable-AzVmssDiskEncryption](/powershell/module/az.compute/Disable-AzVmssDiskEncryption) titkosítással az alábbi műveleteket tilthatja le:
 
 
 ```azurepowershell-interactive
 Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ebben a cikkben egy virtuálisgép-méretezési csoport titkosításához Azure PowerShell használt. Használhatja az [Azure CLI](disk-encryption-cli.md) -t vagy [Azure Resource Manager-sablonokat](disk-encryption-azure-resource-manager.md)is.
-- Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény kiépítés után is alkalmazza, használhatja a [bővítmények sorrendjét](virtual-machine-scale-sets-extension-sequencing.md).
+- Ebben a cikkben az Azure PowerShell használatával titkosítja a virtuális gép méretezési csoport. Az [Azure CLI](disk-encryption-cli.md) vagy az Azure Resource Manager sablonokat is [használhatja.](disk-encryption-azure-resource-manager.md)
+- Ha azt szeretné, hogy az Azure Disk Encryption egy másik bővítmény kiépítése után alkalmazva legyen, [használhatja a bővítmény-szekvenálást.](virtual-machine-scale-sets-extension-sequencing.md)

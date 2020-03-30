@@ -1,6 +1,6 @@
 ---
-title: Integráció a Azure Active Directory használatával | Microsoft Docs
-description: Ismerje meg az alkalmazások Azure Active Directoryokkal való integrálásának előnyeit, és szerezzen be erőforrásokat olyan funkciókhoz, mint például az egyszerűsített bejelentkezés, az Identitáskezelés, a többtényezős hitelesítés és a hozzáférés-vezérlés.
+title: Integrálás az Azure Active Directoryval | Microsoft dokumentumok
+description: Ismerje meg az alkalmazás Azure Active Directoryval való integrálásának előnyeit, és szerezzen be erőforrásokat olyan funkciókhoz, mint az egyszerűsített bejelentkezés, az identitáskezelés, a többtényezős hitelesítés és a hozzáférés-vezérlés.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,83 +14,83 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300112"
 ---
-# <a name="integrating-with-azure-active-directory"></a>Integráció a Azure Active Directory
+# <a name="integrating-with-azure-active-directory"></a>Integráció az Azure Active Directoryval
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Ebből a cikkből megtudhatja, milyen előnyökkel jár az alkalmazás integrálása Azure Active Directory (Azure AD) és erőforrások beszerzése az integrációhoz. Az Azure AD nagyvállalati szintű Identitáskezelés-kezelést kínál a felhőalapú alkalmazásokhoz. Az Azure AD-integráció lehetővé teszi a felhasználók számára, hogy zökkenőmentes bejelentkezési élményt biztosítson, és segít az alkalmazásnak megfelelni az informatikai szabályzatoknak.
+Ebben a cikkben megismerheti az alkalmazás azure Active Directoryval (Azure AD) való integrálásának előnyeit, és erőforrásokat kaphat az integrációhoz. Az Azure AD nagyvállalati szintű identitáskezelést biztosít a szervezetek számára a felhőalapú alkalmazásokszámára. Az Azure AD-integráció leegyszerűsíti a felhasználók bejelentkezési élményét, és segít az alkalmazásnak az informatikai szabályzatnak való megfelelésben.
 
 ## <a name="how-to-integrate"></a>Az integrálás menete
 
-Az alkalmazás az Azure AD-vel való integrálásának számos módja van. Használja ki az alkalmazásának megfelelő számos vagy több ilyen forgatókönyvet.
+Az alkalmazás számos módon integrálható az Azure AD-vel. Használja ki a lehető legtöbb vagy néhány ilyen forgatókönyvek, mint az alkalmazás megfelelő.
 
-### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Az Azure AD támogatása az alkalmazásba való bejelentkezéshez
+### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Az Azure AD támogatása az alkalmazásba való bejelentkezés hez
 
-**Csökkentse a bejelentkezés súrlódását, és csökkentse a támogatási költségeket.** Ha az Azure AD-vel bejelentkezik az alkalmazásba, a felhasználók nem fognak tudni még egy nevet és jelszót használni. Fejlesztőként egy kevesebb jelszót fog tárolni és védelemmel ellátni. Az elfelejtett jelszó-visszaállítások kezelésének mellőzése önmagában jelentős megtakarítás lehet. Az Azure AD-ben a világ legnépszerűbb felhőalapú alkalmazásai, például az Office 365 és a Microsoft Azure is bejelentkezhetnek. A felhasználók milliói több száz millió felhasználót érintenek, így a felhasználó már be van jelentkezve az Azure AD-be. További információ [Az Azure ad-bejelentkezés támogatásának hozzáadásáról](authentication-scenarios.md).
+**Csökkentse a bejelentkezési súrlódást és csökkentse a támogatási költségeket.** Az Azure AD használatával jelentkezzen be az alkalmazásba, a felhasználók nem lesz több nevet és jelszót megjegyezni. Fejlesztőként eggyel kevesebb jelszót kell tárolnia és védenie. Nem kell kezelni elfelejtett jelszó alaphelyzetbe lehet jelentős megtakarítást egyedül. Az Azure AD a világ legnépszerűbb felhőalkalmazásaihoz, köztük az Office 365-höz és a Microsoft Azure-hoz jelentkezik be. Több millió szervezet több százmillió felhasználójával valószínű, hogy a felhasználó már be van jelentkezve az Azure AD-be. További információ az [Azure AD-bejelentkezés támogatásának hozzáadásáról.](authentication-scenarios.md)
 
-**Egyszerűsítse az alkalmazás regisztrálását.**  Az alkalmazásra való regisztráció során az Azure AD alapvető információkat küldhet a felhasználóról, így előre kitöltheti a regisztrációs űrlapot, vagy teljesen megszüntetheti a regisztrációt. A felhasználók az Azure AD-fiókjával regisztrálhatnak az alkalmazásra, mint a közösségi médiában és a mobil alkalmazásokban található, ismerős hozzájárulással. Bármely felhasználó regisztrálhat, és bejelentkezhet az Azure AD-be integrált alkalmazásba anélkül, hogy ez bevonást igényel. További információ az [alkalmazás Azure ad-fiókba való bejelentkezésének regisztrálásáról](../../app-service/configure-authentication-provider-aad.md).
+**Egyszerűsítse a regisztrációt a jelentkezésére.**  Az alkalmazásra való feliratkozás során az Azure AD alapvető információkat küldhet egy felhasználóról, így előre kitöltheti a regisztrációs űrlapot, vagy teljesen megszüntetheti azt. A felhasználók az Azure AD-fiókjuk használatával regisztrálhatnak az alkalmazásra a közösségi médiában és a mobilalkalmazásokban találhatóakhoz hasonló ismerős hozzájárulási élményen keresztül. Bármely felhasználó regisztrálhat, és bejelentkezhet egy olyan alkalmazásba, amely integrálva van az Azure AD-vel informatikai beavatkozás nélkül. További információ [az alkalmazás Azure AD-fiókra való regisztrációjáról.](../../app-service/configure-authentication-provider-aad.md)
 
-### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Felhasználók tallózása, felhasználók üzembe helyezésének kezelése és az alkalmazáshoz való hozzáférés szabályozása
+### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Felhasználók keresése, a felhasználók kiépítésének kezelése és az alkalmazáshoz való hozzáférés szabályozása
 
-**Tallózással keresse meg a címtárban lévő felhasználókat.**  A Microsoft Graph API segítségével a felhasználók megkereshetik és böngészhetik más személyeket a szervezeten belül, amikor meghívja másokat vagy hozzáférést biztosítanak, ahelyett, hogy e-mail-címeket kellene beírniuk. A felhasználók megkereshetik az ismerős címjegyzék stílusának felületét, beleértve a szervezeti hierarchia részletes adatainak megtekintését is. További információ a [Microsoft Graph API](https://docs.microsoft.com/graph/overview)-ról.
+**Keresse meg a felhasználókat a címtárban.**  A Microsoft Graph API segítségével a felhasználók a szervezetmás személyek et kereshetnek és kereshetnek, amikor másokat hívnak meg vagy hozzáférést adnak, ahelyett, hogy e-mail-címek megadását kellene megkövetelniük tőlük. A felhasználók egy ismerős címjegyzék-stílus felülethasználatával böngészhetnek, beleértve a szervezeti hierarchia részleteinek megtekintését is. További információ a [Microsoft Graph API-ról.](https://docs.microsoft.com/graph/overview)
 
-**Active Directory csoportok és terjesztési listák újbóli használata az ügyfél már felügyelet alatt áll.**  Az Azure AD azokat a csoportokat tartalmazza, amelyeket az ügyfél már használ az e-mailek terjesztéséhez és a hozzáférések kezeléséhez. A Microsoft Graph API használatával használja újra ezeket a csoportokat ahelyett, hogy az ügyfélnek külön csoportokat kellene létrehoznia és kezelnie az alkalmazásban. A csoport adatai a bejelentkezési jogkivonatokban is elküldhetők az alkalmazásnak. További információ a [Microsoft Graph API](https://docs.microsoft.com/graph/overview)-ról.
+**Használja újra az Active Directory-csoportokat és terjesztési listákat, amelyeket az ügyfél már kezel.**  Az Azure AD tartalmazza azokat a csoportokat, amelyeket az ügyfél már használ az e-mailek terjesztéséhez és a hozzáférés kezeléséhez. A Microsoft Graph API használatával használja újra ezeket a csoportokat ahelyett, hogy az ügyfélnek külön csoportokat kellene létrehoznia és kezelnie az alkalmazásban. A csoportadatok is elküldhetők az alkalmazás bejelentkezési jogkivonatai. További információ a [Microsoft Graph API-ról.](https://docs.microsoft.com/graph/overview)
 
-**Az Azure AD használatával szabályozhatja, hogy ki férhet hozzá az alkalmazáshoz.**  Az Azure AD-rendszergazdák és az alkalmazások tulajdonosai az adott felhasználókhoz és csoportokhoz is hozzárendelhet hozzáférést az alkalmazásokhoz. A Microsoft Graph API használatával elolvashatja ezt a listát, és használhatja az erőforrások kiépítés, valamint az alkalmazáson belüli hozzáférés kiépítés szabályozására.
+**Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá az alkalmazáshoz.**  Az Azure AD rendszergazdái és alkalmazástulajdonosai hozzáférést rendelhetnek az alkalmazásokhoz adott felhasználókhoz és csoportokhoz. A Microsoft Graph API használatával elolvashatja ezt a listát, és használhatja az erőforrások kiépítésének és az alkalmazáson belüli hozzáférésnek a szabályozására.
 
-**Az Azure AD használata szerepkörökön alapuló Access Control.**  A rendszergazdák és az alkalmazások tulajdonosai felhasználókat és csoportokat rendelhetnek hozzá az alkalmazás Azure AD-ben való regisztrálásakor meghatározott szerepkörökhöz. A szerepkör-információkat a rendszer a bejelentkezési jogkivonatokban elküldi az alkalmazásnak, és a Microsoft Graph API használatával is olvasható. További információ az [Azure ad engedélyezésének használatáról](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Használja az Azure AD szerepköralapú hozzáférés-vezérlés.**  A rendszergazdák és az alkalmazástulajdonosok felhasználókat és csoportokat rendelhetnek az Azure AD-ben az alkalmazás regisztrálásakor megadott szerepkörökhöz. A szerepköradatokat a rendszer elküldi az alkalmazás bejelentkezési jogkivonatainak, és a Microsoft Graph API-val is olvasható. További információ az [Azure AD engedélyezési használatáról.](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)
 
-### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Hozzáférés a felhasználói profilhoz, a naptárhoz, az e-mailekhez, a névjegyekhez és a fájlokhoz
+### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Hozzáférés a felhasználói profilhoz, a naptárhoz, az e-mailhez, a névjegyekhez, a fájlokhoz és egyebekhez
 
-**Az Azure AD az Office 365 és más Microsoft üzleti szolgáltatások engedélyezési kiszolgálója.**  Ha támogatja az Azure AD-t, hogy bejelentkezzen az alkalmazásba, vagy támogassa a jelenlegi felhasználói fiókjainak az Azure AD felhasználói fiókjaihoz való összekapcsolását a OAuth 2,0 használatával, olvasási és írási hozzáférést kérhet a felhasználó profiljához, naptárához, e-mailekhez, névjegyekhez, fájlokhoz és egyéb információkhoz. Az eseményeket zökkenőmentesen is megírhatja a felhasználó naptárába, és fájlokat olvashat vagy írhat a OneDrive. További információ [az Office 365 API-k eléréséről](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
+**Az Azure AD az Office 365 és más Microsoft-üzleti szolgáltatások engedélyezési kiszolgálója.**  Ha támogatja az Azure AD-t az alkalmazásba való bejelentkezéshez, vagy támogatja az aktuális felhasználói fiókok összekapcsolását az Azure AD felhasználói fiókjaival az OAuth 2.0 használatával, olvasási és írási hozzáférést kérhet egy felhasználó profiljához, naptárához, e-mailhez, névjegyekhez, fájlokhoz és egyéb információkhoz. Zökkenőmentesen írhat eseményeket a felhasználó naptárába, és fájlokat írhat vagy írhat a OneDrive-ra. További információ [az Office 365 API-k eléréséről.](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)
 
-### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Népszerűsítse alkalmazását az Azure-ban és az Office 365-piactéren
+### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Az alkalmazás népszerűsítése az Azure-ban és az Office 365 piactereken
 
-**Népszerűsítse alkalmazását az Azure AD-t már használó több millió szervezet számára.**  Azok a felhasználók, akik ezeket a piactéreket keresik és böngészhetik, már egy vagy több felhőalapú szolgáltatást használnak, így azok a felhőalapú szolgáltatás ügyfelei számára is elérhetővé válnak. További információ az alkalmazás előléptetéséről [Az Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/)-en.
+**Népszerűsítse alkalmazását az Azure AD-t már használó szervezetek milliói számára.**  Azok a felhasználók, akik ezekben a piactereken keresik és böngészik, már egy vagy több felhőszolgáltatást használnak, így minősített felhőszolgáltatási ügyfelek. További információ az alkalmazás [azure-piactéren](https://azure.microsoft.com/marketplace/partner-program/)való népszerűsítéséről.
 
-**Amikor a felhasználók regisztrálnak az alkalmazásra, az az Azure AD hozzáférési paneljén és az Office 365 app launcherben fog megjelenni.**  A felhasználók a későbbiekben gyorsan és egyszerűen visszatérhetnek az alkalmazáshoz, ami javítja a felhasználói szerepvállalást. További információ az [Azure ad hozzáférési paneljéről](../user-help/active-directory-saas-access-panel-introduction.md).
+**Amikor a felhasználók regisztrálnak az alkalmazásra, az megjelenik az Azure AD hozzáférési panelen és az Office 365 alkalmazásindítójában.**  A felhasználók később gyorsan és egyszerűen visszatérhetnek az alkalmazáshoz, javítva a felhasználói aktivitást. További információ az [Azure AD hozzáférési panelről.](../user-help/active-directory-saas-access-panel-introduction.md)
 
-### <a name="secure-device-to-service-and-service-to-service-communication"></a>Biztonságos eszköz-szolgáltatás és szolgáltatások közötti kommunikáció
+### <a name="secure-device-to-service-and-service-to-service-communication"></a>Biztonságos eszköz-szolgáltatás és szolgáltatás-szolgáltatás kommunikáció
 
-**Az Azure AD használata a szolgáltatások és eszközök személyazonosságának kezeléséhez csökkenti az íráshoz szükséges kódot, és lehetővé teszi a hozzáférés kezelését.**  A szolgáltatások és eszközök megkapják az Azure AD-jogkivonatokat az OAuth használatával, és ezeket a jogkivonatokat használhatják a webes API-k eléréséhez. Az Azure AD használatával elkerülhető az összetett hitelesítési kód írása. Mivel a szolgáltatások és az eszközök identitása az Azure AD-ben van tárolva, a kulcsokat és a visszavonást egy helyen kezelheti ahelyett, hogy ezt külön kellene elvégeznie az alkalmazásban.
+**Az Azure AD használatával a szolgáltatások és eszközök identitáskezelése csökkenti a kódot kell írni, és lehetővé teszi az informatikai hozzáférés kezeléséhez.**  A szolgáltatások és az eszközök az OAuth használatával kaphatnak jogkivonatokat az Azure AD-ből, és ezeket a jogkivonatokat használhatják a webes API-k eléréséhez. Az Azure AD használatával elkerülheti az összetett hitelesítési kód írását. Mivel a szolgáltatások és eszközök identitásai az Azure AD-ben tárolódnak, az informatikai szolgáltatások egy helyen kezelhetik a kulcsokat és a visszavonást ahelyett, hogy ezt külön kellene megtennie az alkalmazásban.
 
 ## <a name="benefits-of-integration"></a>Az integráció előnyei
 
-Az Azure AD-val való integráció olyan előnyökkel jár, amelyek nem igénylik további kódok megírását.
+Az Azure AD-vel való integráció olyan előnyökkel jár, amelyek nem igényelnek további kódot.
 
-### <a name="integration-with-enterprise-identity-management"></a>Integráció a vállalati identitások kezelésével
+### <a name="integration-with-enterprise-identity-management"></a>Integráció a vállalati identitáskezeléssel
 
-**Segítsen az alkalmazásnak az informatikai szabályzatoknak való megfelelésben.**  A szervezetek az Azure AD-vel integrálják vállalati Identitáskezelés-felügyeleti rendszerüket, így amikor egy személy elhagyja a szervezetet, automatikusan elveszíti az alkalmazáshoz való hozzáférést anélkül, hogy további lépéseket kellene elvégeznie. Felügyelheti, hogy ki férhet hozzá az alkalmazáshoz, és meghatározhatja, hogy milyen hozzáférési házirendekre van szükség – például a többtényezős hitelesítésnél –, amely csökkenti az összetett vállalati házirendeknek való megfeleléshez szükséges kód írását. Az Azure AD részletes naplót biztosít a rendszergazdáknak, hogy kik bejelentkezett az alkalmazásba, hogy nyomon kövessék a használatot.
+**Segítse az alkalmazást az informatikai irányelveknek való megfelelésben.**  A szervezetek integrálják a vállalati identitáskezelő rendszereket az Azure AD-vel, így amikor egy személy elhagyja a szervezetet, automatikusan elveszíti az alkalmazáshoz való hozzáférést anélkül, hogy az informatikai informatikai szükséges további lépéseket kellene tennie. Az informatikai rendszer kezelheti, hogy ki férhet hozzá az alkalmazáshoz, és meghatározhatja, hogy milyen hozzáférési szabályzatok szükségesek – például a többtényezős hitelesítés –, így csökkenteni kell a kód írásának szükségességét az összetett vállalati házirendeknek való megfelelés érdekében. Az Azure AD részletes naplót biztosít a rendszergazdák számára, hogy ki jelentkezett be az alkalmazásba, így az informatikai környezet nyomon követheti a használatot.
 
-**Az Azure AD kiterjeszti Active Directory a felhőbe, hogy az alkalmazás integrálható legyen az AD-vel.**  A világ számos szervezete a Active Directory elsődleges bejelentkezési és Identitáskezelés-felügyeleti rendszereként használja, és megköveteli, hogy alkalmazásaikat az AD-vel működjenek. Az Azure AD-val való integráció az alkalmazást Active Directorytel integrálja.
+**Az Azure AD kiterjeszti az Active Directoryt a felhőre, hogy az alkalmazás integrálható az AD-vel.**  Világszerte számos szervezet használja az Active Directoryt fő bejelentkezési és identitáskezelő rendszerként, és megköveteli, hogy alkalmazásaik együttműködjenek az AD-vel. Az Azure AD-vel való integráció integrálja az alkalmazást az Active Directoryval.
 
 ### <a name="advanced-security-features"></a>Speciális biztonsági funkciók
 
-**Multi-Factor Authentication.**  Az Azure AD natív multi-Factor Authentication szolgáltatást nyújt. A rendszergazdák megkövetelhetik a többtényezős hitelesítés használatát az alkalmazáshoz való hozzáféréshez, így Önnek nem kell ezt a támogatást leírnia. További információ a [multi-Factor Authenticationról](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
+**Többtényezős hitelesítés.**  Az Azure AD natív többtényezős hitelesítést biztosít. A rendszergazdák nak többtényezős hitelesítésre lehet szükségük az alkalmazás eléréséhez, így nem kell saját magának kódolnia ezt a támogatást. További információ a [többtényezős hitelesítésről.](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
-**Rendellenes bejelentkezési észlelés.**  Az Azure AD naponta több mint egy milliárd bejelentkezést dolgoz fel, a gépi tanulási algoritmusok használatával pedig észlelheti a gyanús tevékenységeket, és értesíti a rendszergazdákat a lehetséges problémákról. Az Azure AD-bejelentkezés támogatásával az alkalmazás megkapja a védelem előnyeit. További információ a [Azure Active Directory Access-jelentés megtekintéséről](../active-directory-view-access-usage-reports.md).
+**Rendellenes bejelentkezés észlelés.**  Az Azure AD naponta több mint egymilliárd bejelentkezést dolgoz fel, miközben gépi tanulási algoritmusokat használ a gyanús tevékenységek észlelésére és a rendszergazdák értesítésére a lehetséges problémákról. Az Azure AD-bejelentkezés támogatásával az alkalmazás a védelem előnyeit élvezi. További információ az [Azure Active Directory hozzáférési jelentés megtekintéséről.](../active-directory-view-access-usage-reports.md)
 
-**Feltételes hozzáférés.**  A többtényezős hitelesítésen kívül a rendszergazdáknak bizonyos feltételek teljesülése szükséges ahhoz, hogy a felhasználók bejelentkezhetnek az alkalmazásba. A beállítható feltételek közé tartozik az ügyféleszközök IP-címtartomány, a megadott csoportok tagsága és a hozzáféréshez használt eszköz állapota. További információ a [Azure Active Directory feltételes hozzáférésről](../active-directory-conditional-access-azure-portal.md).
+**Feltételes hozzáférés.**  A többtényezős hitelesítés mellett a rendszergazdák megkövetelhetik, hogy bizonyos feltételek teljesüljenek, mielőtt a felhasználók bejelentkezhetnek az alkalmazásba. A beállítható feltételek közé tartozik az ügyféleszközök IP-címtartománya, a megadott csoportokban való tagság és a hozzáféréshez használt eszköz állapota. További információ az [Azure Active Directory feltételes hozzáféréséről.](../active-directory-conditional-access-azure-portal.md)
 
-### <a name="easy-development"></a>Könnyű fejlesztés
+### <a name="easy-development"></a>Egyszerű fejlesztés
 
-**Iparági szabványnak megfelelő protokollok.**  A Microsoft elkötelezett az iparági szabványok támogatásában. A Microsoft Identity platform támogatja az iparági szabványnak megfelelő OAuth 2,0 és az OpenID Connect 1,0 protokollokat. További információ a [Microsoft Identity platform hitelesítési protokolljairól](active-directory-v2-protocols.md).
+**Iparági szabványprotokollok.**  A Microsoft elkötelezett az iparági szabványok támogatása mellett. A Microsoft identity platform támogatja az iparági szabványnak megfelelő OAuth 2.0 és OpenID Connect 1.0 protokollokat. További információ a [Microsoft identity platform hitelesítési protokolljairól.](active-directory-v2-protocols.md)
 
-**Nyílt forráskódú kódtárak.**  A Microsoft teljes körűen támogatott nyílt forráskódú kódtárakat biztosít népszerű nyelvekhez és platformokhoz a gyorsabb fejlesztés érdekében. A forráskód az Apache 2,0 alatt van, és Ön szabadon elvégezheti az elágazást, és hozzájárulhat a projektekhez. További információ a [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md)szolgáltatásról.
+**Nyílt forráskódú könyvtárak.**  A Microsoft teljes mértékben támogatott nyílt forráskódú könyvtárakat biztosít a népszerű nyelvekhez és platformokhoz a fejlesztés felgyorsítása érdekében. A forráskód az Apache 2.0 alatt van licencelve, és ön szabadon elágazhat, és hozzájárulhat a projektekhez. További információ a [Microsoft authentication library (MSAL)](reference-v2-libraries.md)könyvtárról.
 
-### <a name="worldwide-presence-and-high-availability"></a>Globális jelenlét és magas rendelkezésre állás
+### <a name="worldwide-presence-and-high-availability"></a>Világszerte jelenlét és magas rendelkezésre állás
 
-**Az Azure AD a világ különböző pontjain üzemelő adatközpontokban van üzembe helyezve, és az óra körül felügyelhető és figyelhető.**  Az Azure AD a Microsoft Azure és az Office 365 Identity Management rendszer, amely a világ 28 adatközpontjában van üzembe helyezve. A címtáradatok legalább három adatközpontba való replikálásra vannak garantálva. A globális Load Balancer biztosítja, hogy a felhasználók hozzáférjenek az Azure AD legközelebbi példányához, amely tartalmazza az adatmennyiséget, és ha problémát észlel, automatikusan átirányítja a kéréseket más adatközpontokhoz.
+**Az Azure AD világszerte adatközpontokban van telepítve, és éjjel-nappal felügyelet alatt áll.**  Az Azure AD a Microsoft Azure és az Office 365 identitáskezelő rendszere, amely világszerte 28 adatközpontban van telepítve. A címtáradatok replikálása garantáltan legalább három adatközpontba történik. A globális terheléselosztók biztosítják, hogy a felhasználók hozzáférjenek az Azure AD az adataikat tartalmazó legközelebbi példányához, és probléma észlelése esetén automatikusan átirányítsák a kérelmeket más adatközpontokba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A [kód írásának megkezdése](v2-overview.md#getting-started).
+[Kezdje el írni a kódot](v2-overview.md#getting-started).
 
-[Felhasználók aláírása a Microsoft Identity platform használatával](authentication-scenarios.md)
+[Felhasználók bejelentkezése a Microsoft identity platform használatával](authentication-scenarios.md)
 

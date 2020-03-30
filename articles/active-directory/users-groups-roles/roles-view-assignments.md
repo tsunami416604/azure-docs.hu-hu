@@ -1,6 +1,6 @@
 ---
-title: Egyéni szerepkör-hozzárendelések megtekintése az Azure AD-portálon | Microsoft Docs
-description: Most már megtekintheti és kezelheti az Azure ad rendszergazdai szerepkör tagjait az Azure AD felügyeleti központban.
+title: Egyéni szerepkör-hozzárendelések megtekintése az Azure AD portálon | Microsoft dokumentumok
+description: Most már megtekintheti és kezelheti az Azure AD-rendszergazdai szerepkör tagjait az Azure AD felügyeleti központban.
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,45 +14,45 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259707"
 ---
-# <a name="view-custom-role-assignments-in-azure-active-directory"></a>Egyéni szerepkör-hozzárendelések megtekintése Azure Active Directory
+# <a name="view-custom-role-assignments-in-azure-active-directory"></a>Egyéni szerepkör-hozzárendelések megtekintése az Azure Active Directoryban
 
-Ez a cikk azt ismerteti, hogyan lehet megtekinteni a Azure Active Directoryhoz rendelt egyéni szerepköröket (Azure AD). Azure Active Directory (Azure AD) esetében a szerepköröket szervezetre kiterjedő hatókörben vagy egyetlen alkalmazási hatókörben lehet hozzárendelni.
+Ez a cikk ismerteti, hogyan tekintheti meg az Azure Active Directoryban (Azure AD) hozzárendelt egyéni szerepköröket. Az Azure Active Directoryban (Azure AD) szerepkörök szervezeti szintű hatókörrel vagy egyalkalmazásos hatókörrel rendelhetők hozzá.
 
-- A szerepkör-hozzárendelések a szervezetre kiterjedő hatókörben hozzáadódnak a szolgáltatáshoz, és az egyetlen alkalmazás szerepkör-hozzárendelések listájában láthatók.
-- Az Egyalkalmazásos hatókörhöz tartozó szerepkör-hozzárendelések nem jelennek meg, és nem láthatók a szervezetre kiterjedő hatókörű hozzárendelések listájában.
+- A szervezeti szintű szerepkör-hozzárendelések hozzáadódnak az egyalkalmazásos szerepkör-hozzárendelések listájához, és láthatók azok között.
+- Az egyetlen alkalmazáshatókörszerepkör-hozzárendelések nem kerülnek hozzáadásra, és nem láthatók a szervezeti szintű hatókör-hozzárendelések listájában.
 
-## <a name="view-role-assignments-in-the-azure-portal"></a>Szerepkör-hozzárendelések megtekintése a Azure Portal
+## <a name="view-role-assignments-in-the-azure-portal"></a>Szerepkör-hozzárendelések megtekintése az Azure Portalon
 
-Ez az eljárás azt ismerteti, hogyan kell megtekinteni egy szerepkör hozzárendeléseit az egész szervezetre kiterjedő hatókörrel.
+Ez az eljárás egy szerepkör hozzárendeléseinek megtekintését ismerteti szervezeti szintű hatókörrel.
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza a **Azure Active Directory**lehetőséget, válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válasszon ki egy szerepkört a megnyitásához, és tekintse meg a tulajdonságait.
-1. Válassza a **hozzárendelések** lehetőséget a szerepkör hozzárendeléseinek megtekintéséhez.
+1. Jelentkezzen be az [Azure AD felügyeleti központba](https://aad.portal.azure.com) kiemelt szereppel rendelkező szerepkör-rendszergazdai vagy globális rendszergazdai engedélyekkel az Azure AD-szervezetben.
+1. Válassza az **Azure Active Directory**lehetőséget, válassza a **Szerepkörök és rendszergazdák**lehetőséget, majd válasszon ki egy szerepkört a megnyitásához és a tulajdonságainak megtekintéséhez.
+1. **Válassza a Hozzárendelések** lehetőséget a szerepkör hozzárendelései megtekintéséhez.
 
     ![Szerepkör-hozzárendelések és engedélyek megtekintése, amikor megnyit egy szerepkört a listából](./media/roles-view-assignments/role-assignments.png)
 
-## <a name="view-role-assignments-using-azure-ad-powershell"></a>Szerepkör-hozzárendelések megtekintése az Azure AD PowerShell-lel
+## <a name="view-role-assignments-using-azure-ad-powershell"></a>Szerepkör-hozzárendelések megtekintése az Azure AD PowerShell használatával
 
-Ez a szakasz azt ismerteti, hogyan tekintheti meg egy szerepkör hozzárendeléseit a szervezetre kiterjedő hatókörrel. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modulját használja. Ha az Egyalkalmazásos hatókör-hozzárendeléseket a PowerShell használatával szeretné megtekinteni, használja a parancsmagokat az [Egyéni szerepkörök hozzárendelése a PowerShell](roles-assign-powershell.md)-lel című részhez.
+Ez a szakasz egy szerepkör hozzárendeléseinek megtekintését ismerteti szervezeti szintű hatókörrel. Ez a cikk az [Azure Active Directory PowerShell 2-es verziómodulját](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) használja. Az egyalkalmazásos hatókör-hozzárendelések PowerShell használatával történő megtekintéséhez használhatja az [egyéni szerepkörök hozzárendelése a PowerShell-lel](roles-assign-powershell.md)parancsmagokat.
 
-### <a name="prepare-powershell"></a>A PowerShell előkészítése
+### <a name="prepare-powershell"></a>PowerShell előkészítése
 
-Először [le kell töltenie az Azure ad Preview PowerShell-modult](https://www.powershellgallery.com/packages/AzureAD/).
+Először le kell [töltenie az Azure AD előzetes PowerShell-modult.](https://www.powershellgallery.com/packages/AzureAD/)
 
-Az Azure AD PowerShell-modul telepítéséhez használja az alábbi parancsokat:
+Az Azure AD PowerShell-modul telepítéséhez használja a következő parancsokat:
 
 ``` PowerShell
 install-module azureadpreview
 import-module azureadpreview
 ```
 
-A következő parancs használatával ellenőrizheti, hogy a modul használatra kész-e:
+Annak ellenőrzéséhez, hogy a modul készen áll-e a használatra, használja a következő parancsot:
 
 ``` PowerShell
 get-module azuread
@@ -76,11 +76,11 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="view-role-assignments-using-microsoft-graph-api"></a>Szerepkör-hozzárendelések megtekintése Microsoft Graph API használatával
+## <a name="view-role-assignments-using-microsoft-graph-api"></a>Szerepkör-hozzárendelések megtekintése a Microsoft Graph API használatával
 
-Ez a szakasz azt ismerteti, hogyan tekintheti meg egy szerepkör hozzárendeléseit a szervezetre kiterjedő hatókörrel.  Ha Graph API használatával szeretné megtekinteni az alkalmazásra vonatkozó hatókör-hozzárendeléseket, akkor az [Egyéni szerepkörök hozzárendelése a Graph APIhoz](roles-assign-graph.md)című részében ismertetett műveleteket használhatja.
+Ez a szakasz egy szerepkör hozzárendeléseinek megtekintését ismerteti szervezeti szintű hatókörrel.  Az egyalkalmazásos hatókör-hozzárendelések Graph API használatával történő megtekintéséhez használhatja az [egyéni szerepkörök hozzárendelése a Graph API-val](roles-assign-graph.md)műveletet.
 
-HTTP-kérelem egy adott szerepkör-definícióhoz tartozó szerepkör-hozzárendelés beszerzéséhez.
+HTTP-kérelem egy adott szerepkör-definíció szerepkör-hozzárendelésének lekéréséhez.
 
 GET
 
@@ -102,23 +102,23 @@ HTTP/1.1 200 OK
 
 ## <a name="view-assignments-of-single-application-scope"></a>Egyalkalmazásos hatókör hozzárendeléseinek megtekintése
 
-Ez a szakasz azt ismerteti, hogyan tekintheti meg egy szerepkör hozzárendeléseit egy adott alkalmazási hatókörrel. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+Ez a szakasz az egyalkalmazásos hatókörrel rendelkező szerepkör-hozzárendelések megtekintését ismerteti. Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki az alkalmazás regisztrációját a tulajdonságainak megtekintéséhez. Előfordulhat, hogy az **összes alkalmazás** lehetőséget kell választania az Azure ad-szervezetben az alkalmazások regisztrálásának teljes listájának megtekintéséhez.
+1. Jelentkezzen be az [Azure AD felügyeleti központba](https://aad.portal.azure.com) kiemelt szereppel rendelkező szerepkör-rendszergazdai vagy globális rendszergazdai engedélyekkel az Azure AD-szervezetben.
+1. Válassza **az Alkalmazásregisztrációk**lehetőséget, majd az alkalmazásregisztráció t a tulajdonságainak megtekintéséhez. Előfordulhat, hogy az Azure AD-szervezetben az alkalmazásregisztrációk teljes listájának megtekintéséhez minden **alkalmazás** kiválasztásához válassza.
 
-    ![Alkalmazások regisztrálásának létrehozása vagy szerkesztése a Alkalmazásregisztrációk lapon](./media/roles-create-custom/appreg-all-apps.png)
+    ![Alkalmazásregisztrációk létrehozása vagy szerkesztése az Alkalmazásregisztrációk lapon](./media/roles-create-custom/appreg-all-apps.png)
 
-1. Az alkalmazás regisztrálása területen válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válasszon egy szerepkört a tulajdonságainak megtekintéséhez.
+1. Az alkalmazásregisztrációban válassza a **Szerepkörök és rendszergazdák**lehetőséget, majd jelöljön ki egy szerepkört a tulajdonságainak megtekintéséhez.
 
-    ![Alkalmazás-regisztrációs szerepkör-hozzárendelések megtekintése a Alkalmazásregisztrációk lapról](./media/roles-view-assignments/appreg-assignments.png)
+    ![Alkalmazásregisztrációs szerepkör-hozzárendelések megtekintése az Alkalmazásregisztrációk lapon](./media/roles-view-assignments/appreg-assignments.png)
 
-1. Válassza a **hozzárendelések** lehetőséget a szerepkör hozzárendeléseinek megtekintéséhez. Ha megnyitja a hozzárendelések nézetet az alkalmazás regisztrációján belül, megjelenik az erre az Azure AD-erőforrásra hatókört képező hozzárendelések.
+1. **Válassza a Hozzárendelések** lehetőséget a szerepkör hozzárendelései megtekintéséhez. A hozzárendelések nézet megnyitása az alkalmazás regisztrációján belül megmutatja az Azure AD-erőforrás hatókörét.
 
-    ![Alkalmazás-regisztrációs szerepkör-hozzárendelések megtekintése az alkalmazások regisztrációjának tulajdonságaiból](./media/roles-view-assignments/appreg-assignments-2.png)
+    ![Alkalmazásregisztrációs szerepkör-hozzárendelések megtekintése az alkalmazásregisztráció tulajdonságaiból](./media/roles-view-assignments/appreg-assignments-2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).
-* Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](../fundamentals/users-default-permissions.md).
+* Nyugodtan ossza meg velünk az [Azure AD felügyeleti szerepkörök fórum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* A szerepkörökről és a Rendszergazdai szerepkör-hozzárendelésről a [Rendszergazdai szerepkörök hozzárendelése című témakörben](directory-assign-admin-roles.md)van további témakör.
+* Az alapértelmezett felhasználói engedélyeket [az alapértelmezett vendég- és tagjogosultságok összehasonlítása](../fundamentals/users-default-permissions.md)című témakörben olvashatja.

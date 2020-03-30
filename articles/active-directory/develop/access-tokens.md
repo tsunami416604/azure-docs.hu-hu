@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform – hozzáférési tokenek referenciája | Azure
-description: Ismerje meg az Azure AD v 1.0 és a Microsoft Identity platform (v 2.0) végpontok által kibocsátott hozzáférési jogkivonatokat.
+title: Microsoft identity platform hozzáférési jogkivonatok hivatkozása | Azure
+description: Az Azure AD 1.0-s és a Microsoft Identity platform (2.0-s verzió) végpontjai által kibocsátott hozzáférési jogkivonatok.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,112 +8,112 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/2/2020
+ms.date: 3/27/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 752e8745a1cf2965d2dc88eaeee9404cf596547a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 417829389a4b3a6bb55dcff9bfe59c2bc8693ca0
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263243"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383208"
 ---
-# <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
+# <a name="microsoft-identity-platform-access-tokens"></a>Microsoft-identitásplatform-hozzáférési jogkivonatok
 
-A hozzáférési tokenek lehetővé teszik az ügyfelek számára az Azure által védett API-k biztonságos hívását. A Microsoft Identity platform hozzáférési jogkivonatai [JWTs](https://tools.ietf.org/html/rfc7519), Base64 kódolású JSON-objektumok, amelyek az Azure-ban vannak aláírva. Az ügyfeleknek a hozzáférési jogkivonatokat átlátszatlan karakterláncként kell kezelniük, mivel a jogkivonat tartalma csak az erőforráshoz készült. Az érvényesítési és hibakeresési célokra a fejlesztők a [JWT.MS](https://jwt.ms)-t használó webhelyekről is JWTs dekódolni. Az ügyfél elérheti a v 1.0 vagy a v 2.0 végpontok hozzáférési tokenjét különböző protokollok használatával.
+A hozzáférési jogkivonatok lehetővé teszik az ügyfelek számára, hogy biztonságosan hívhassák meg az Azure által védett API-kat. A Microsoft identity platform hozzáférési jogkivonatok [JWTs](https://tools.ietf.org/html/rfc7519), Base64 kódolt JSON-objektumok az Azure által aláírt. Az ügyfelek nek a hozzáférési jogkivonatokat átlátszatlan karakterláncként kell kezelniük, mivel a jogkivonat tartalma csak az erőforrásra szolgál. Az érvényesítés és a hibakeresés érdekében a fejlesztők dekódolhatják a JWT-ket egy olyan webhely használatával, mint [a jwt.ms.](https://jwt.ms) Az ügyfél kaphat egy hozzáférési jogkivonatot a v1.0 végpont vagy a v2.0-végpont segítségével a különböző protokollok.
 
-Ha az ügyfél hozzáférési jogkivonatot kér, az Azure AD az alkalmazás fogyasztásának hozzáférési jogkivonatával kapcsolatos metaadatokat is ad vissza. Ez az információ tartalmazza a hozzáférési jogkivonat lejárati idejét, valamint azokat a hatóköröket, amelyekhez érvényes. Ezek az adatmennyiség lehetővé teszi, hogy az alkalmazás a hozzáférési tokenek elemzése nélkül végezzen intelligens gyorsítótárazást a hozzáférési jogkivonatok használatával.
+Amikor az ügyfél hozzáférési jogkivonatot kér, az Azure AD is visszaad néhány metaadatot a hozzáférési jogkivonatról az alkalmazás felhasználása esetén. Ez az információ tartalmazza a hozzáférési jogkivonat lejárati idejét és azokat a hatóköröket, amelyekre érvényes. Ezek az adatok lehetővé teszik, hogy az alkalmazás a hozzáférési jogkivonatok intelligens gyorsítótárazását anélkül végezze el, hogy magát a hozzáférési jogkivonatot kellene elemeznie.
 
-Ha az alkalmazás olyan erőforrás (webes API), amelyet az ügyfelek igényelhetnek, a hozzáférési tokenek hasznos információkat biztosítanak a hitelesítéshez és az engedélyezéshez, például a felhasználóhoz, az ügyfélhez, a kibocsátóhoz, az engedélyekhez és más szolgáltatásokhoz.
+Ha az alkalmazás olyan erőforrás (webes API), amelyhez az ügyfelek hozzáférést kérhetnek, a hozzáférési jogkivonatok hasznos információkat nyújtanak a hitelesítéshez és az engedélyezéshez, például a felhasználó, az ügyfél, a kibocsátó, az engedélyek és egyebek.
 
-A következő részekben megtudhatja, hogyan ellenőrizheti és használhatja az erőforrás a jogcímeket egy hozzáférési jogkivonatban.
+Tekintse meg a következő szakaszokat, amelyek ből megtudhatja, hogy egy erőforrás hogyan érvényesítheti és használhatja a hozzáférési jogkivonaton belüli jogcímeket.
 
 > [!IMPORTANT]
-> A hozzáférési jogkivonatok létrehozása a jogkivonat *célközönsége* alapján történik, ami azt jelenti, hogy a jogkivonatban lévő hatóköröket birtokló alkalmazás.  Az [alkalmazás jegyzékfájljában](reference-app-manifest.md#manifest-reference) `accessTokenAcceptedVersion` erőforrás-beállítással `2` lehetővé teszi, hogy az ügyfél a v 1.0 végpontot hívja meg a v 2.0 hozzáférési jogkivonatok fogadására.  Hasonlóképpen, ezért a hozzáférési jogkivonat [választható jogcímeinek](active-directory-optional-claims.md) az ügyfélhez való módosítása nem módosítja a kapott hozzáférési jogkivonatot, amikor a rendszer jogkivonatot kér `user.read`hoz, amely az erőforrás tulajdonában van.
-> Ugyanezen okból az ügyfélalkalmazás személyes fiókkal (például hotmail.com vagy outlook.com) történő tesztelésekor előfordulhat, hogy az ügyfél által fogadott hozzáférési jogkivonat átlátszatlan karakterlánc. Ennek az az oka, hogy az elérni kívánt erőforrás örökölt MSA (Microsoft-fiók), és az ügyfél által nem értelmezhető jegyeket kért.
+> Access-jogkivonatok a jogkivonat *közönsége* alapján jönnek létre, ami azt jelenti, hogy a jogkivonat hatóköreit birtokló alkalmazás.  Így egy erőforrás-beállítás `accessTokenAcceptedVersion` az [alkalmazásjegyzékben,](reference-app-manifest.md#manifest-reference) amely lehetővé teszi, hogy `2` a v1.0-végpontot hívó ügyfél egy v2.0-s hozzáférési jogkivonatot kapjon.  Hasonlóképpen ez az oka annak, hogy az ügyfél [nem kötelező jogcímének](active-directory-optional-claims.md) módosítása `user.read`nem módosítja a jogkivonat kérésének időpontjában kapott hozzáférési jogkivonatot, amely az erőforrás tulajdonában van.
+> Ugyanebből az okból, miközben az ügyfélalkalmazás tesztelése egy személyes fiók (például hotmail.com vagy outlook.com), előfordulhat, hogy az ügyfél által fogadott hozzáférési jogkivonat egy átlátszatlan karakterlánc. Ennek az az oka, hogy az elérni kívánt erőforrás olyan örökölt MSA (Microsoft-fiók) jegyeket kért, amelyek titkosítottak, és amelyeket az ügyfél nem ért.
 
-## <a name="sample-tokens"></a>Mintául szolgáló tokenek
+## <a name="sample-tokens"></a>Mintatokenek
 
-a 1.0-s és a 2.0-s verzióbeli tokenek hasonlóak, és számos azonos jogcímet tartalmaznak. Itt talál példát.
+az 1.0-s és a 2.0-s számú tokenek hasonlóak, és ugyanazokat a jogcímeket tartalmazzák. Egy példa az egyes itt található.
 
-### <a name="v10"></a>1\.0-s verzió
+### <a name="v10"></a>1.0-s verzió
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiJlZjFkYTlkNC1mZjc3LTRjM2UtYTAwNS04NDBjM2Y4MzA3NDUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTUyMjIyOS8iLCJpYXQiOjE1MzcyMzMxMDYsIm5iZiI6MTUzNzIzMzEwNiwiZXhwIjoxNTM3MjM3MDA2LCJhY3IiOiIxIiwiYWlvIjoiQVhRQWkvOElBQUFBRm0rRS9RVEcrZ0ZuVnhMaldkdzhLKzYxQUdyU091TU1GNmViYU1qN1hPM0libUQzZkdtck95RCtOdlp5R24yVmFUL2tES1h3NE1JaHJnR1ZxNkJuOHdMWG9UMUxrSVorRnpRVmtKUFBMUU9WNEtjWHFTbENWUERTL0RpQ0RnRTIyMlRJbU12V05hRU1hVU9Uc0lHdlRRPT0iLCJhbXIiOlsid2lhIl0sImFwcGlkIjoiNzVkYmU3N2YtMTBhMy00ZTU5LTg1ZmQtOGMxMjc1NDRmMTdjIiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJBYmVMaUBtaWNyb3NvZnQuY29tIiwiZmFtaWx5X25hbWUiOiJMaW5jb2xuIiwiZ2l2ZW5fbmFtZSI6IkFiZSAoTVNGVCkiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMjIyNDcvIiwiaXBhZGRyIjoiMjIyLjIyMi4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJvaWQiOiIwMjIyM2I2Yi1hYTFkLTQyZDQtOWVjMC0xYjJiYjkxOTQ0MzgiLCJyaCI6IkkiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJsM19yb0lTUVUyMjJiVUxTOXlpMmswWHBxcE9pTXo1SDNaQUNvMUdlWEEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6ImFiZWxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJGVnNHeFlYSTMwLVR1aWt1dVVvRkFBIiwidmVyIjoiMS4wIn0.D3H6pMUtQnoJAGq6AHd
 ```
 
-Tekintse meg ezt az 1.0-s tokent a [JWT.MS](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiJlZjFkYTlkNC1mZjc3LTRjM2UtYTAwNS04NDBjM2Y4MzA3NDUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTUyMjIyOS8iLCJpYXQiOjE1MzcyMzMxMDYsIm5iZiI6MTUzNzIzMzEwNiwiZXhwIjoxNTM3MjM3MDA2LCJhY3IiOiIxIiwiYWlvIjoiQVhRQWkvOElBQUFBRm0rRS9RVEcrZ0ZuVnhMaldkdzhLKzYxQUdyU091TU1GNmViYU1qN1hPM0libUQzZkdtck95RCtOdlp5R24yVmFUL2tES1h3NE1JaHJnR1ZxNkJuOHdMWG9UMUxrSVorRnpRVmtKUFBMUU9WNEtjWHFTbENWUERTL0RpQ0RnRTIyMlRJbU12V05hRU1hVU9Uc0lHdlRRPT0iLCJhbXIiOlsid2lhIl0sImFwcGlkIjoiNzVkYmU3N2YtMTBhMy00ZTU5LTg1ZmQtOGMxMjc1NDRmMTdjIiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJBYmVMaUBtaWNyb3NvZnQuY29tIiwiZmFtaWx5X25hbWUiOiJMaW5jb2xuIiwiZ2l2ZW5fbmFtZSI6IkFiZSAoTVNGVCkiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMjIyNDcvIiwiaXBhZGRyIjoiMjIyLjIyMi4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJvaWQiOiIwMjIyM2I2Yi1hYTFkLTQyZDQtOWVjMC0xYjJiYjkxOTQ0MzgiLCJyaCI6IkkiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJsM19yb0lTUVUyMjJiVUxTOXlpMmswWHBxcE9pTXo1SDNaQUNvMUdlWEEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6ImFiZWxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJGVnNHeFlYSTMwLVR1aWt1dVVvRkFBIiwidmVyIjoiMS4wIn0.D3H6pMUtQnoJAGq6AHd)-ben.
+Tekintse meg ezt a v1.0 token [JWT.ms](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiJlZjFkYTlkNC1mZjc3LTRjM2UtYTAwNS04NDBjM2Y4MzA3NDUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTUyMjIyOS8iLCJpYXQiOjE1MzcyMzMxMDYsIm5iZiI6MTUzNzIzMzEwNiwiZXhwIjoxNTM3MjM3MDA2LCJhY3IiOiIxIiwiYWlvIjoiQVhRQWkvOElBQUFBRm0rRS9RVEcrZ0ZuVnhMaldkdzhLKzYxQUdyU091TU1GNmViYU1qN1hPM0libUQzZkdtck95RCtOdlp5R24yVmFUL2tES1h3NE1JaHJnR1ZxNkJuOHdMWG9UMUxrSVorRnpRVmtKUFBMUU9WNEtjWHFTbENWUERTL0RpQ0RnRTIyMlRJbU12V05hRU1hVU9Uc0lHdlRRPT0iLCJhbXIiOlsid2lhIl0sImFwcGlkIjoiNzVkYmU3N2YtMTBhMy00ZTU5LTg1ZmQtOGMxMjc1NDRmMTdjIiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJBYmVMaUBtaWNyb3NvZnQuY29tIiwiZmFtaWx5X25hbWUiOiJMaW5jb2xuIiwiZ2l2ZW5fbmFtZSI6IkFiZSAoTVNGVCkiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMjIyNDcvIiwiaXBhZGRyIjoiMjIyLjIyMi4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJvaWQiOiIwMjIyM2I2Yi1hYTFkLTQyZDQtOWVjMC0xYjJiYjkxOTQ0MzgiLCJyaCI6IkkiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJsM19yb0lTUVUyMjJiVUxTOXlpMmswWHBxcE9pTXo1SDNaQUNvMUdlWEEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6ImFiZWxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJGVnNHeFlYSTMwLVR1aWt1dVVvRkFBIiwidmVyIjoiMS4wIn0.D3H6pMUtQnoJAGq6AHd).
 
-### <a name="v20"></a>2\.0-s verzió
+### <a name="v20"></a>2.0-s verzió
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiI2ZTc0MTcyYi1iZTU2LTQ4NDMtOWZmNC1lNjZhMzliYjEyZTMiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE1MzcyMzEwNDgsIm5iZiI6MTUzNzIzMTA0OCwiZXhwIjoxNTM3MjM0OTQ4LCJhaW8iOiJBWFFBaS84SUFBQUF0QWFaTG8zQ2hNaWY2S09udHRSQjdlQnE0L0RjY1F6amNKR3hQWXkvQzNqRGFOR3hYZDZ3TklJVkdSZ2hOUm53SjFsT2NBbk5aY2p2a295ckZ4Q3R0djMzMTQwUmlvT0ZKNGJDQ0dWdW9DYWcxdU9UVDIyMjIyZ0h3TFBZUS91Zjc5UVgrMEtJaWpkcm1wNjlSY3R6bVE9PSIsImF6cCI6IjZlNzQxNzJiLWJlNTYtNDg0My05ZmY0LWU2NmEzOWJiMTJlMyIsImF6cGFjciI6IjAiLCJuYW1lIjoiQWJlIExpbmNvbG4iLCJvaWQiOiI2OTAyMjJiZS1mZjFhLTRkNTYtYWJkMS03ZTRmN2QzOGU0NzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhYmVsaUBtaWNyb3NvZnQuY29tIiwicmgiOiJJIiwic2NwIjoiYWNjZXNzX2FzX3VzZXIiLCJzdWIiOiJIS1pwZmFIeVdhZGVPb3VZbGl0anJJLUtmZlRtMjIyWDVyclYzeERxZktRIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidXRpIjoiZnFpQnFYTFBqMGVRYTgyUy1JWUZBQSIsInZlciI6IjIuMCJ9.pj4N-w_3Us9DrBLfpCt
 ```
 
-Tekintse meg ezt a v 2.0-tokent a [JWT.MS](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiI2ZTc0MTcyYi1iZTU2LTQ4NDMtOWZmNC1lNjZhMzliYjEyZTMiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE1MzcyMzEwNDgsIm5iZiI6MTUzNzIzMTA0OCwiZXhwIjoxNTM3MjM0OTQ4LCJhaW8iOiJBWFFBaS84SUFBQUF0QWFaTG8zQ2hNaWY2S09udHRSQjdlQnE0L0RjY1F6amNKR3hQWXkvQzNqRGFOR3hYZDZ3TklJVkdSZ2hOUm53SjFsT2NBbk5aY2p2a295ckZ4Q3R0djMzMTQwUmlvT0ZKNGJDQ0dWdW9DYWcxdU9UVDIyMjIyZ0h3TFBZUS91Zjc5UVgrMEtJaWpkcm1wNjlSY3R6bVE9PSIsImF6cCI6IjZlNzQxNzJiLWJlNTYtNDg0My05ZmY0LWU2NmEzOWJiMTJlMyIsImF6cGFjciI6IjAiLCJuYW1lIjoiQWJlIExpbmNvbG4iLCJvaWQiOiI2OTAyMjJiZS1mZjFhLTRkNTYtYWJkMS03ZTRmN2QzOGU0NzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhYmVsaUBtaWNyb3NvZnQuY29tIiwicmgiOiJJIiwic2NwIjoiYWNjZXNzX2FzX3VzZXIiLCJzdWIiOiJIS1pwZmFIeVdhZGVPb3VZbGl0anJJLUtmZlRtMjIyWDVyclYzeERxZktRIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidXRpIjoiZnFpQnFYTFBqMGVRYTgyUy1JWUZBQSIsInZlciI6IjIuMCJ9.pj4N-w_3Us9DrBLfpCt)-ben.
+Tekintse meg ezt a v2.0 token [JWT.ms.](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiI2ZTc0MTcyYi1iZTU2LTQ4NDMtOWZmNC1lNjZhMzliYjEyZTMiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE1MzcyMzEwNDgsIm5iZiI6MTUzNzIzMTA0OCwiZXhwIjoxNTM3MjM0OTQ4LCJhaW8iOiJBWFFBaS84SUFBQUF0QWFaTG8zQ2hNaWY2S09udHRSQjdlQnE0L0RjY1F6amNKR3hQWXkvQzNqRGFOR3hYZDZ3TklJVkdSZ2hOUm53SjFsT2NBbk5aY2p2a295ckZ4Q3R0djMzMTQwUmlvT0ZKNGJDQ0dWdW9DYWcxdU9UVDIyMjIyZ0h3TFBZUS91Zjc5UVgrMEtJaWpkcm1wNjlSY3R6bVE9PSIsImF6cCI6IjZlNzQxNzJiLWJlNTYtNDg0My05ZmY0LWU2NmEzOWJiMTJlMyIsImF6cGFjciI6IjAiLCJuYW1lIjoiQWJlIExpbmNvbG4iLCJvaWQiOiI2OTAyMjJiZS1mZjFhLTRkNTYtYWJkMS03ZTRmN2QzOGU0NzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhYmVsaUBtaWNyb3NvZnQuY29tIiwicmgiOiJJIiwic2NwIjoiYWNjZXNzX2FzX3VzZXIiLCJzdWIiOiJIS1pwZmFIeVdhZGVPb3VZbGl0anJJLUtmZlRtMjIyWDVyclYzeERxZktRIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidXRpIjoiZnFpQnFYTFBqMGVRYTgyUy1JWUZBQSIsInZlciI6IjIuMCJ9.pj4N-w_3Us9DrBLfpCt)
 
-## <a name="claims-in-access-tokens"></a>Hozzáférési jogkivonatokban lévő jogcímek
+## <a name="claims-in-access-tokens"></a>Jogcímek a hozzáférési jogkivonatokban
 
-A JWTs három darabra oszlanak:
+A JWT-k három részre vannak osztva:
 
-* **Fejléc** – információt nyújt [a jogkivonat érvényesítéséről](#validating-tokens) , beleértve a jogkivonat típusával és aláírásával kapcsolatos információkat.
-* **Hasznos** adat – tartalmazza a felhasználóval vagy alkalmazással kapcsolatos összes fontos adatot, amely a szolgáltatás hívását kísérli meg.
-* **Aláírás** – a jogkivonat érvényesítéséhez használt nyersanyag.
+* **Fejléc** – A [jogkivonat érvényesítésével](#validating-tokens) kapcsolatos információkat tartalmaz, beleértve a jogkivonat típusát és az aláírás módját.
+* **Hasznos tartalom** – Tartalmazza a szolgáltatás hívását megkísérlő felhasználó vagy alkalmazás összes fontos adatát.
+* **Aláírás** – A token érvényesítéséhez használt nyersanyag.
 
-Minden egyes darabot egy pont (`.`) és külön Base64 kódolás választja el egymástól.
+Minden darabot egy pont`.`( ) választ el egymástól, és külön-külön Base64 kódolással.
 
-A jogcímek csak akkor jelennek meg, ha egy érték van kitöltve. Tehát az alkalmazásnak nem kell függőséget kialakítania egy jogcímet illetően. Ilyenek például a `pwd_exp` (nem minden bérlő igényli a jelszavak lejáratát) vagy `family_name` (az ügyfél hitelesítő adatai ([1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) az alkalmazások nevében találhatók, amelyek nem rendelkeznek névvel). A hozzáférési jogkivonat érvényesítéséhez használt jogcímek mindig jelen lesznek.
+A jogcímek csak akkor vannak jelen, ha létezik érték a kitöltéshez. Így az alkalmazás nem vehet függőséget a jogcím jelen. Példák `pwd_exp` közé tartozik (nem minden bérlő `family_name` jelszó lejár) vagy (ügyfél hitelesítő adatok ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) folyamatok az alkalmazások nevében, amelyek nem rendelkeznek névvel). A hozzáférési jogkivonat érvényesítéséhez használt jogcímek mindig jelen lesznek.
 
 > [!NOTE]
-> Egyes jogcímek segítségével az Azure AD biztonságos tokeneket használhat újbóli használat esetén. Ezeket a rendszer a leírásban nem a nyilvános felhasználáshoz, hanem "átlátszatlan" jelöléssel jelölte meg. Ezek a jogcímek esetleg nem jelenhetnek meg a jogkivonatokban, és az újakat értesítés nélkül lehet felvenni.
+> Egyes jogcímek segítségével azure AD biztonságos jogkivonatok újbóli felhasználás esetén. Ezeket a leírásban "Átlátszatlan" néven jelölik meg, hogy azok nem nyilvános fogyasztásra szolgálnak. Ezek a jogcímek megjelenhetnek vagy nem jelennek meg egy jogkivonatban, és újak is hozzáadhatók értesítés nélkül.
 
-### <a name="header-claims"></a>Fejléc jogcímei
+### <a name="header-claims"></a>Fejlécjogcímek
 
 |Jogcím | Formátum | Leírás |
 |--------|--------|-------------|
-| `typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT.|
-| `nonce` | Sztring | A jogkivonat-Visszajátszási támadások elleni védelemhez használt egyedi azonosító. Az erőforrás rögzítheti ezt az értéket a visszajátszás elleni védelemhez. |
-| `alg` | Sztring | Megadja a token aláírásához használt algoritmust (például "RS256"). |
-| `kid` | Sztring | Megadja a jogkivonat aláírásához használt nyilvános kulcs ujjlenyomatát. Az 1.0-s és a v 2.0-s hozzáférési jogkivonatokban lett kibocsátva. |
-| `x5t` | Sztring | A functions (használatban és értékben) ugyanaz, mint `kid`. `x5t` egy örökölt jogcím, amely csak a v 1.0 hozzáférési jogkivonatokban lett kibocsátva kompatibilitási célból. |
+| `typ` | String - mindig "JWT" | Azt jelzi, hogy a token jwt.|
+| `nonce` | Sztring | A token-visszajátszásos támadások elleni védelemre használt egyedi azonosító. Az erőforrás rögzítheti ezt az értéket a visszajátszások elleni védelem érdekében. |
+| `alg` | Sztring | A token aláírásához használt algoritmust jelzi, például "RS256" |
+| `kid` | Sztring | A jogkivonat aláírásához használt nyilvános kulcs ujjlenyomatát adja meg. A 1.0-s és a 2.0-s és a 2.0-s jelű hozzáférési jogkivonatokban is kibocsátott. |
+| `x5t` | Sztring | Ugyanúgy működik (használatban és `kid`értékben), mint a . `x5t`egy örökölt jogcím, amelyet csak az 1.0-s verzióbeli hozzáférési jogkivonatokban bocsátanak ki kompatibilitási célokra. |
 
-### <a name="payload-claims"></a>Hasznos adatokhoz tartozó jogcímek
+### <a name="payload-claims"></a>Hasznos teherre vonatkozó igények
 
 | Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
-| `aud` | Karakterlánc, alkalmazás-azonosító URI | Azonosítja a jogkivonat kívánt címzettjét. Az azonosító jogkivonatokban a célközönség az alkalmazáshoz rendelt alkalmazásspecifikus azonosító, amely a Azure Portalban van hozzárendelve az alkalmazáshoz. Az alkalmazásnak ellenőriznie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
-| `iss` | Karakterlánc, STS URI | Azonosítja azt a biztonságijogkivonat-szolgáltatást (STS), amely létrehozza és visszaadja a tokent, valamint azt az Azure AD-bérlőt, amelyben a felhasználó hitelesítése megtörtént. Ha a kiállított jogkivonat egy v 2.0-token (lásd a `ver` jogcímet), akkor az URI-ja `/v2.0`végződik. Az a GUID, amely azt jelzi, hogy a felhasználó egy Microsoft-fiók fogyasztó felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazásnak a jogcím GUID részét kell használnia, hogy korlátozza azon bérlők készletét, amelyek be tudnak jelentkezni az alkalmazásba, ha vannak ilyenek. |
-|`idp`| Karakterlánc, általában egy STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállítói jogcímek értékével, kivéve, ha a felhasználói fiók nem ugyanabban a bérlőben található, mint a kiállító – vendég. Ha a jogcím nem létezik, az azt jelenti, hogy a `iss` értéke használható helyette.  A szervezeti környezetben használt személyes fiókok esetében (például egy Azure AD-bérlőhöz meghívott személyes fiók) a `idp` jogcím a következő lehet: "live.com" vagy egy STS URI, amely tartalmazza a Microsoft-fiók bérlő `9188040d-6c67-4c5b-b112-36a304b66dad`. |
-| `iat` | int, egy UNIX timestamp | A "kiállító" érték azt jelzi, hogy a jogkivonat hitelesítése mikor történt. |
-| `nbf` | int, egy UNIX timestamp | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz. |
-| `exp` | int, egy UNIX timestamp | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra. Fontos megjegyezni, hogy egy erőforrás még a token elutasítása előtt is elutasítja a jogkivonatot, például ha a hitelesítés megváltozása vagy jogkivonat-visszavonás észlelhető. |
-| `aio` | Átlátszatlan karakterlánc | Az Azure AD által az adatok a jogkivonat újrafelhasználásához használt belső jogcímek. Az erőforrások nem használhatják ezt a jogcímet. |
-| `acr` | Karakterlánc, "0" vagy "1" | Csak a v 1.0 jogkivonatokban jelennek meg. A "hitelesítési környezet osztálya" jogcím. A "0" érték azt jelzi, hogy a végfelhasználói hitelesítés nem felelt meg az ISO/IEC 29115 követelményeinek. |
-| `amr` | Karakterláncok JSON-tömbje | Csak a v 1.0 jogkivonatokban jelennek meg. Azt határozza meg, hogy a jogkivonat tárgya hogyan lett hitelesítve. További részletekért tekintse meg [az AMR-jogcím szakaszt](#the-amr-claim) . |
-| `appid` | Karakterlánc, GUID | Csak a v 1.0 jogkivonatokban jelennek meg. A tokent használó ügyfél alkalmazás-azonosítója. Az alkalmazás önállóan vagy egy felhasználó nevében működhet. Az alkalmazás azonosítója általában egy Application objektumot jelöl, de az Azure AD-ben egy egyszerű szolgáltatásnév-objektumot is jelenthet. |
-| `appidacr` | "0", "1" vagy "2" | Csak a v 1.0 jogkivonatokban jelennek meg. Azt jelzi, hogy az ügyfél hogyan lett hitelesítve. Nyilvános ügyfél esetén az érték "0". Ha az ügyfél-azonosító és az ügyfél titkos kulcsa van használatban, az érték "1". Ha ügyféltanúsítvány lett használva a hitelesítéshez, az érték a következő: "2". |
-| `azp` | Karakterlánc, GUID | Csak a v 2.0-tokenekben szerepel, `appid`helyettesíti. A tokent használó ügyfél alkalmazás-azonosítója. Az alkalmazás önállóan vagy egy felhasználó nevében működhet. Az alkalmazás azonosítója általában egy Application objektumot jelöl, de az Azure AD-ben egy egyszerű szolgáltatásnév-objektumot is jelenthet. |
-| `azpacr` | "0", "1" vagy "2" | Csak a v 2.0-tokenekben szerepel, `appidacr`helyettesíti. Azt jelzi, hogy az ügyfél hogyan lett hitelesítve. Nyilvános ügyfél esetén az érték "0". Ha az ügyfél-azonosító és az ügyfél titkos kulcsa van használatban, az érték "1". Ha ügyféltanúsítvány lett használva a hitelesítéshez, az érték a következő: "2". |
-| `preferred_username` | Sztring | A felhasználót jelölő elsődleges Felhasználónév. Ez lehet egy e-mail-cím, telefonszám vagy egy általános Felhasználónév megadott formátum nélkül. Az értéke változtatható, és idővel változhat. Mivel ez az érték változhat, nem használható az engedélyezési döntések elvégzéséhez.  Ez a Felhasználónév-útmutatók esetében is használható. A jogcím megszerzéséhez a `profile` hatókörre van szükség. |
-| `name` | Sztring | Egy ember által olvasható értéket biztosít, amely azonosítja a jogkivonat tárgyát. Az érték nem garantált, hogy egyedi, megváltoztathatatlan, és kizárólag megjelenítési célokra való használatra készült. A jogcím megszerzéséhez a `profile` hatókörre van szükség. |
-| `scp` | Karakterlánc, a hatókörök szóközzel tagolt listája | Annak az alkalmazásnak a hatóköre, amelyhez az ügyfélalkalmazás kérelmezte (és fogadta) a hozzájárulásukat. Az alkalmazásnak ellenőriznie kell, hogy ezek a hatókörök érvényesek-e az alkalmazás számára, és a hatókörök értéke alapján kell-e engedélyezési döntéseket hoznia. Csak a [felhasználói jogkivonatok](#user-and-application-tokens)részeként. |
-| `roles` | Karakterláncok tömbje, engedélyek listája | Az alkalmazás által a kérelmező alkalmazásnak vagy felhasználónak megadott engedélyekkel rendelkező engedélyek készlete. Az [alkalmazás-jogkivonatok](#user-and-application-tokens)esetében ez az ügyfél-hitelesítő adatok ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) felhasználói hatókörök helyett használatos.  [Felhasználói jogkivonatok](#user-and-application-tokens) esetén ez a felhasználó által a célalkalmazás számára hozzárendelt szerepkörökkel van feltöltve. |
-| `wids` | [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID-azonosítók tömbje | Az ehhez a felhasználóhoz rendelt bérlői szintű szerepköröket jelöli a [rendszergazdai szerepkörök lapon](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)lévő szerepkörök szakasza alapján.  Ez a jogcím alkalmazáson alapul, az [alkalmazás jegyzékfájljának](reference-app-manifest.md)`groupMembershipClaims` tulajdonságán keresztül.  Az "all" vagy a "DirectoryRole" beállítás megadása kötelező.  Előfordulhat, hogy a jogkivonat-hossz miatti implicit folyamat során beszerzett jogkivonatok nem jelennek meg. |
-| `groups` | GUID-azonosítók JSON-tömbje | A tulajdonos csoportjának tagságát képviselő objektumazonosítók benyújtása. Ezek az értékek egyediek (lásd: objektumazonosító), és biztonságosan használhatók a hozzáférés felügyeletéhez, például az erőforrásokhoz való hozzáférés engedélyezésének kényszerítéséhez. A csoportok jogcímben szereplő csoportok alkalmazáson belüli alapon vannak konfigurálva, az [alkalmazás jegyzékfájljának](reference-app-manifest.md)`groupMembershipClaims` tulajdonságán keresztül. A Null érték kizárja az összes csoportot, a "SecurityGroup" érték pedig csak Active Directory biztonsági csoportba tartozó tagságot tartalmaz, az "all" érték pedig a biztonsági csoportokat és az Office 365 terjesztési listáját is tartalmazza. <br><br>Tekintse meg az alábbi `hasgroups`-jogcímet, amely részletesen ismerteti a `groups` jogcím használatát az implicit támogatással. <br>Más folyamatok esetében, ha a felhasználó által birtokolt csoportok száma meghaladja a határértéket (150 az SAML, 200 for JWT esetében), a rendszer felvesz egy túllépési jogcímet a felhasználóhoz tartozó csoportok listáját tartalmazó Microsoft Graph végpontra. |
-| `hasgroups` | Logikai | Ha van, mindig `true`, amely azt jelöli, hogy a felhasználó legalább egy csoportban van. Az JWTs implicit engedélyezési folyamatokban használt `groups`-jogcím helyett, ha a teljes csoportokra vonatkozó jogcím kiterjeszti az URI-töredéket az URL-cím hosszán túl (jelenleg 6 vagy több csoport). Azt jelzi, hogy az ügyfélnek a Microsoft Graph API-t kell használnia a felhasználó csoportjainak (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`) meghatározásához. |
-| `groups:src1` | JSON-objektum | A nem hosszúságú jogkivonat-kérelmek esetében (lásd a fenti `hasgroups`), de még mindig túl nagy a tokenhez, a rendszer a felhasználó teljes csoportok listájára mutató hivatkozást tartalmaz. Elosztott jogcímként az SAML esetében új jogcímként JWTs az `groups` jogcím helyett. <br><br>**Példa JWT értékre**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
-| `sub` | Karakterlánc, GUID | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az engedélyezési ellenőrzések biztonságos végrehajtásához használható, például ha a jogkivonat egy erőforrás elérésére szolgál, és kulcsként használható az adatbázis tábláiban. Mivel a tulajdonos mindig szerepel az Azure AD által felmerülő jogkivonatokban, javasoljuk, hogy használja ezt az értéket egy általános célú engedélyezési rendszeren. A tulajdonos azonban egy páros-azonosító – egyedi egy adott alkalmazás-AZONOSÍTÓhoz. Ezért ha egyetlen felhasználó két különböző alkalmazásba jelentkezik be két különböző ügyfél-azonosítóval, akkor ezek az alkalmazások két különböző értéket kapnak a tulajdonos jogcímek számára. Az architektúrától és az adatvédelmi követelményektől függően előfordulhat, hogy ez nem szükséges. Lásd még a `oid`-jogcím (amely a bérlőn belüli alkalmazások esetében is megmarad). |
-| `oid` | Karakterlánc, GUID | Egy objektum megváltoztathatatlan azonosítója a Microsoft Identity platformon, ebben az esetben egy felhasználói fiók. Emellett az engedélyezési ellenőrzések biztonságos elvégzésére, valamint az adatbázis tábláiban lévő kulcsra is felhasználható. Ez az azonosító egyedileg azonosítja a felhasználót az alkalmazások között – két különböző alkalmazás, amely ugyanazon a felhasználón jelentkezik be, ugyanazokat az értékeket kapja meg az `oid` jogcímben. Így `oid` a Microsoft online szolgáltatások, például a Microsoft Graph lekérdezése során is használható. A Microsoft Graph egy adott [felhasználói fiók](/graph/api/resources/user)`id` tulajdonságának adja vissza ezt az azonosítót. Mivel a `oid` lehetővé teszi több alkalmazás számára a felhasználók korrelációját, a jogcímek fogadásához a `profile` hatókörre van szükség. Vegye figyelembe, hogy ha egyetlen felhasználó több bérlőn is létezik, akkor a felhasználó minden bérlőn egy másik objektumazonosítót fog tartalmazni – ezeket a rendszer akkor is eltérő fióknak tekinti, ha a felhasználó ugyanazzal a hitelesítő adatokkal jelentkezik be az egyes fiókokba. |
-| `tid` | Karakterlánc, GUID | Azt az Azure AD-bérlőt jelöli, amelyhez a felhasználó származik. Munkahelyi és iskolai fiókok esetén a GUID az a szervezet, amelyhez a felhasználó tartozik. A személyes fiókok esetében az érték `9188040d-6c67-4c5b-b112-36a304b66dad`. A jogcím megszerzéséhez a `profile` hatókörre van szükség. |
-| `unique_name` | Sztring | Csak a v 1.0 jogkivonatokban jelennek meg. A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált, hogy a bérlőn belül egyediek legyenek, és csak megjelenítési célokra használhatók. |
-| `uti` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Az erőforrások nem használhatják ezt a jogcímet. |
-| `rh` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Az erőforrások nem használhatják ezt a jogcímet. |
-| `ver` | Karakterlánc, `1.0` vagy `2.0` | Megadja a hozzáférési jogkivonat verzióját. |
+| `aud` | String, egy alkalmazásazonosító URI-ja | A jogkivonat címzettjét azonosítja. Az azonosítójogtokban a közönség az alkalmazás alkalmazásazonosítója, amely az Azure Portalon van hozzárendelve az alkalmazáshoz. Az alkalmazásnak érvényesítenie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
+| `iss` | Karakterlánc, STS URI | Azonosítja a biztonsági jogkivonat-szolgáltatás (STS), amely a jogkivonatot létrehozó és visszaadja, és az Azure AD-bérlő, amelyben a felhasználó hitelesítése. Ha a kibocsátott jogkivonat egy v2.0-s jogkivonat (lásd a `ver` jogcímet), az URI a `/v2.0`. A GUID, amely azt jelzi, hogy a felhasználó `9188040d-6c67-4c5b-b112-36a304b66dad`egy microsoftos fiók fogyasztói felhasználója, a . Az alkalmazásnak a jogcím GUID-részét kell használnia az alkalmazásba bejelentkező bérlők készletének korlátozására, ha van ilyen. |
+|`idp`| Karakterlánc, általában STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a Kiállító jogcím értékével, kivéve, ha a felhasználói fiók nem ugyanabban a bérlőben van, mint a kibocsátó - például a vendégek. Ha a jogcím nincs jelen, az `iss` azt jelenti, hogy helyette az érték használható.  A szervezeti környezetben használt személyes fiókok (például egy Azure AD-bérlőnek `idp` meghívott személyes fiók) esetében a jogcím lehet "live.com" vagy a Microsoft-fiók bérlőjét `9188040d-6c67-4c5b-b112-36a304b66dad`tartalmazó STS URI. |
+| `iat` | int, UNIX időbélyeg | A "Issued At" azt jelzi, hogy a token hitelesítése mikor történt. |
+| `nbf` | int, UNIX időbélyeg | Az "nbf" (nem korábban) állítás azonosítja azt az időt, amely előtt a JWT nem fogadható el feldolgozásra. |
+| `exp` | int, UNIX időbélyeg | Az "exp" (lejárati idő) jogcím azonosítja a lejárati időt, vagy amely után a JWT nem fogadható el feldolgozásra. Fontos megjegyezni, hogy egy erőforrás elutasíthatja a jogkivonatot, mielőtt ez az idő is, például ha a hitelesítés módosítása szükséges, vagy egy jogkivonat visszavonása észlelése. |
+| `aio` | Átlátszatlan karakterlánc | Az Azure AD által használt belső jogcím a jogkivonat újrafelhasználása adatok rögzítésére. Az erőforrások nem használhatják ezt a jogcímet. |
+| `acr` | Karakterlánc, "0" vagy "1" | Csak az 1.0-s kulcsban jelen van. A "Hitelesítési környezet osztály" jogcím. A "0" érték azt jelzi, hogy a végfelhasználói hitelesítés nem felelt meg az ISO/IEC 29115 követelményeinek. |
+| `amr` | JSON karakterláncok tömbje | Csak az 1.0-s kulcsban jelen van. Azonosítja, hogy a jogkivonat tárgya hogyan lett hitelesítve. További részleteket [az amr-igénylési részben](#the-amr-claim) talál. |
+| `appid` | Karakterlánc, GUID | Csak az 1.0-s kulcsban jelen van. Az ügyfél alkalmazásazonosítója a jogkivonathasználatával. Az alkalmazás önmagát vagy a felhasználó nevében járhat el. Az alkalmazásazonosító általában egy alkalmazásobjektumot jelöl, de az Azure AD-ben is képviselhet egy egyszerű szolgáltatásobjektumot. |
+| `appidacr` | "0", "1" vagy "2" | Csak az 1.0-s kulcsban jelen van. Azt jelzi, hogy az ügyfél hogyan lett hitelesítve. Nyilvános ügyfél esetén az érték "0". Ha ügyfélazonosítót és ügyféltitkos kulcsot használ, az érték "1". Ha a hitelesítéshez ügyféltanúsítványt használtak, az érték "2". |
+| `azp` | Karakterlánc, GUID | Csak a 2.0-s v2.0-s tokenekben van jelen, ami helyettesíti a programot. `appid` Az ügyfél alkalmazásazonosítója a jogkivonathasználatával. Az alkalmazás önmagát vagy a felhasználó nevében járhat el. Az alkalmazásazonosító általában egy alkalmazásobjektumot jelöl, de az Azure AD-ben is képviselhet egy egyszerű szolgáltatásobjektumot. |
+| `azpacr` | "0", "1" vagy "2" | Csak a 2.0-s v2.0-s tokenekben van jelen, ami helyettesíti a programot. `appidacr` Azt jelzi, hogy az ügyfél hogyan lett hitelesítve. Nyilvános ügyfél esetén az érték "0". Ha ügyfélazonosítót és ügyféltitkos kulcsot használ, az érték "1". Ha a hitelesítéshez ügyféltanúsítványt használtak, az érték "2". |
+| `preferred_username` | Sztring | A felhasználót jelképező elsődleges felhasználónév. Ez lehet egy e-mail cím, telefonszám, vagy egy általános felhasználónév nélkül megadott formátumban. Értéke változékony, és idővel változhat. Mivel ez az érték módosítható, ezt az értéket nem szabad engedélyezési döntések meghozatalához használni.  Ezt fel lehet használni a felhasználónév tippeket mégis. A `profile` kérelem megszerzéséhez a hatály szükséges. |
+| `name` | Sztring | Egy ember által olvasható értéket ad, amely azonosítja a jogkivonat tárgyát. Az érték nem garantált, hogy egyedi, változékony, és úgy tervezték, hogy csak megjelenítési célokra használható. A `profile` kérelem megszerzéséhez a hatály szükséges. |
+| `scp` | Karakterlánc, a hatókörök szóközt választott listája | Az alkalmazás által elérhetővé tett hatókörök készlete, amelyhez az ügyfélalkalmazás beleegyezést kért (és kapott). Az alkalmazásnak ellenőriznie kell, hogy ezek a hatókörök érvényesek-e az alkalmazás által elérhetővé téve, és a hatókörök értéke alapján kell engedélyezési döntéseket hoznia. Csak a [felhasználói jogkivonatokhoz](#user-and-application-tokens)tartozik. |
+| `roles` | Karakterláncok tömbje, engedélyek listája | Az alkalmazás által elérhetővé tett engedélyek készlete, amelynek hívására a kérelmező alkalmazás vagy felhasználó engedélyt kapott. Az [alkalmazásjogkivonatok](#user-and-application-tokens)esetében ezt használja az ügyfél hitelesítő adatáramlása ([1.0- as](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) [, 2.0-s](v2-oauth2-client-creds-grant-flow.md)érték ) a felhasználói hatókörök helyett.  Felhasználói [jogkivonatok](#user-and-application-tokens) esetén ez a rendszer azokat a szerepköröket tölti fel, amelyekhez a felhasználó a célalkalmazásban hozzá volt rendelve. |
+| `wids` | [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID-azonosítók tömbje | A felhasználóhoz rendelt bérlői szerepköröket [jelöli a rendszergazdai szerepkörök lapján](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)található szerepkörök szakaszából.  Ez a jogcím alkalmazásonként, az `groupMembershipClaims` [alkalmazásjegyzék](reference-app-manifest.md)tulajdonságán keresztül van konfigurálva.  Az "All" vagy a "DirectoryRole" beállítás szükséges.  Előfordulhat, hogy a tokenhossz-problémák miatt az implicit folyamaton keresztül kapott jogkivonatokban nincs jelen. |
+| `groups` | GUID-tömb JSON-tömbje | Olyan objektumazonosítókat tartalmaz, amelyek a tulajdonos csoporttagságait jelölik. Ezek az értékek egyediek (lásd: Objektumazonosító), és biztonságosan használhatók a hozzáférés kezeléséhez, például az erőforrás-hozzáférés engedélyezésének érvényesítéséhez. A csoportok jogcímében szereplő csoportok alkalmazásonként, az `groupMembershipClaims` [alkalmazásjegyzék](reference-app-manifest.md)tulajdonságán keresztül vannak konfigurálva. A null érték kizárja az összes csoportot, a "SecurityGroup" érték csak az Active Directory biztonsági csoport tagságait tartalmazza, a "Minden" érték pedig a biztonsági csoportokat és az Office 365 terjesztési listákat is tartalmazza. <br><br>A `hasgroups` `groups` jogcím implicit támogatással való használatával kapcsolatos részleteket lásd az alábbi jogcímben. <br>Más folyamatok esetén, ha a felhasználó által megadott csoportok száma túllép egy korlátot (150 az SAML, 200 a JWT esetében), akkor a rendszer egy túllépési jogcímet ad hozzá a Microsoft Graph végpontjára mutató jogcímforrásokhoz, amelyek a felhasználó csoportjainak listáját tartalmazzák. |
+| `hasgroups` | Logikai | Ha jelen `true`van, mindig, a felhasználó legalább egy csoportban van. A jwt-k `groups` igénye helyett implicit támogatási folyamatokban használatos, ha a teljes csoportjogcím kiterjesztené az URI-töredéket az URL-hossz korlátokon (jelenleg 6 vagy több csoporton) túlis. Azt jelzi, hogy az ügyfélnek a Microsoft Graph API-t kell használnia a felhasználó csoportjainak ( meghatározásához ).`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` |
+| `groups:src1` | JSON-objektum | A token kérelmek, amelyek nem `hasgroups` hosszú korlátozott (lásd fent), de még mindig túl nagy a jogkivonat, a felhasználó teljes csoportlistájára mutató hivatkozást. A JWT-k esetében, mint elosztott követelés, az SAML esetében mint új követelés a `groups` követelés helyett. <br><br>**Példa JWT Érték**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
+| `sub` | Karakterlánc, GUID | Az a főtag, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra és nem használható fel újra. Az engedélyezési ellenőrzések biztonságos végrehajtására használható, például amikor a jogkivonatot egy erőforrás eléréséhez használják, és kulcsként használható az adatbázistáblákban. Mivel a tulajdonos mindig jelen van a jogkivonatok, amelyek az Azure AD-problémák, azt javasoljuk, hogy ezt az értéket egy általános célú engedélyezési rendszer. A téma azonban egy páronkénti azonosító – egy adott alkalmazásazonosító egyedi. Ezért ha egy felhasználó két különböző ügyfélazonosítóhasználatával jelentkezik be két különböző alkalmazásba, ezek az alkalmazások két különböző értéket kapnak a tulajdonosjogcímhez. Ez lehet, hogy nem kívánatos, attól függően, hogy az architektúra és az adatvédelmi követelmények. Lásd még `oid` a jogcím (amely nem ugyanaz marad a bérlőn belüli alkalmazások között). |
+| `oid` | Karakterlánc, GUID | A Microsoft identitásplatformon lévő objektum, ebben az esetben egy felhasználói fiók nem módosítható azonosítója. Az engedélyezési ellenőrzések biztonságos és az adatbázistáblák kulcsaként is használható. Ez az azonosító egyedileg azonosítja a felhasználót az alkalmazások között – két `oid` különböző alkalmazás, amelyek ugyanabban a felhasználóban jelentkeznek be, ugyanazt az értéket kapják a jogcímben. Így `oid` lehet használni, amikor lekérdezéseket a Microsoft online szolgáltatások, mint például a Microsoft Graph. A Microsoft Graph ezt az `id` azonosítót adja vissza egy adott felhasználói fiók [tulajdonságaként.](/graph/api/resources/user) Mivel `oid` a lehetővé teszi, hogy `profile` több alkalmazás korrelálja a felhasználókat, a hatókör szükséges a jogcím fogadásához. Vegye figyelembe, hogy ha egy felhasználó több bérlőben is létezik, a felhasználó minden bérlőben más-más objektumazonosítót fog tartalmazni – azok különböző fiókoknak minősülnek, még akkor is, ha a felhasználó minden fiókba ugyanazzal a hitelesítő adatokkal jelentkezik be. |
+| `tid` | Karakterlánc, GUID | Az Azure AD-bérlő, amely a felhasználó a. Munkahelyi és iskolai fiókok esetén a GUID annak a szervezetnek a nem módosítható bérlői azonosítója, amelyhez a felhasználó tartozik. Személyes fiókok esetén az `9188040d-6c67-4c5b-b112-36a304b66dad`érték . A `profile` kérelem megszerzéséhez a hatály szükséges. |
+| `unique_name` | Sztring | Csak az 1.0-s kulcsban jelen van. A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált, hogy egyedi a bérlőn belül, és csak megjelenítési célokra használható. |
+| `uti` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraérvényesítéséhez használt belső jogcím. Az erőforrások nem használhatják ezt a jogcímet. |
+| `rh` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraérvényesítéséhez használt belső jogcím. Az erőforrások nem használhatják ezt a jogcímet. |
+| `ver` | String, `1.0` vagy vagy`2.0` | A hozzáférési jogkivonat verzióját jelzi. |
 
-**Csoporton túli jogcímek**
+**Csoportok túlórajogigénye**
 
-Annak biztosítása érdekében, hogy a jogkivonat mérete ne haladja meg a HTTP-fejlécek méretének korlátait, az Azure AD korlátozza a csoportok jogcímeben foglalt objektumazonosítók számát. Ha a felhasználó több csoport tagja, mint a túlhasználati korlát (SAML-tokenek esetében 150, 200 JWT-token esetében), akkor az Azure AD nem bocsátja ki a groups jogcímet a jogkivonatban. Ehelyett a jogkivonat olyan túlhasználati jogcímet tartalmaz, amely azt jelzi, hogy az alkalmazás lekérdezi a Microsoft Graph API-t a felhasználó csoporttagság beolvasásához.
+Annak érdekében, hogy a jogkivonat mérete ne haladja meg a HTTP-fejléc méretkorlátait, az Azure AD korlátozza a csoportok jogcímében található objektumazonosítók számát. Ha egy felhasználó több csoport tagja, mint a túlterhelési korlát (150 SAML-jogkivonatok, 200 JWT-jogkivonatok), majd az Azure AD nem bocsátja ki a csoportok jogcíma a jogkivonatban. Ehelyett tartalmaz egy túllépési jogcímet a jogkivonatban, amely jelzi az alkalmazásnak a Microsoft Graph API lekérdezését a felhasználó csoporttagságának lekéréséhez.
 
 ```JSON
 {
@@ -132,53 +132,53 @@ Annak biztosítása érdekében, hogy a jogkivonat mérete ne haladja meg a HTTP
  }
  ```
 
-Az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) mappában megadott `BulkCreateGroups.ps1` segítségével tesztelheti a túlhasználatos forgatókönyveket.
+Használhatja a `BulkCreateGroups.ps1` megadott [az Alkalmazáslétrehozása parancsfájlok](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) mappában, hogy segítsen teszt túlterhelés forgatókönyvek.
 
-#### <a name="v10-basic-claims"></a>v 1.0 alapszintű jogcímek
+#### <a name="v10-basic-claims"></a>1.0-s alapvető követelések
 
-A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak ilyenek, de alapértelmezés szerint nem szerepelnek a 2.0-s jogkivonatokban. Ha a 2.0-s verzióját használja, és szüksége van ezekre a jogcímek egyikére, kérje meg őket az [opcionális jogcímek](active-directory-optional-claims.md)használatával.
+A következő jogcímek szerepelni fognak az 1.0-s vtokenekben, ha vannak ilyenek, de alapértelmezés szerint nem szerepelnek a 2.0-s jogkivonatokban. Ha a 2.0-s vagyos ta-s vagyonkezelési csomaghasználata esetén a jogcímek valamelyikére van szüksége, kérje őket [a választható jogcímek](active-directory-optional-claims.md)használatával.
 
 | Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
-| `ipaddr`| Sztring | A felhasználó által hitelesített IP-cím. |
-| `onprem_sid`| Karakterlánc, [SID-formátumban](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, amikor a felhasználó helyszíni hitelesítéssel rendelkezik, ez a jogcím a biztonsági azonosítóját adja meg. A `onprem_sid` az engedélyezéshez használhatja az örökölt alkalmazásokban.|
-| `pwd_exp`| int, egy UNIX timestamp | Azt jelzi, hogy a felhasználó jelszava lejár-e. |
-| `pwd_url`| Sztring | Egy URL-cím, amelyben a felhasználók elküldhetik a jelszavukat alaphelyzetbe. |
-| `in_corp`| logikai | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet. |
-| `nickname`| Sztring | A felhasználó további neve, amely az utónévtől és az utónévtől elválasztva.|
-| `family_name` | Sztring | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. |
-| `given_name` | Sztring | A felhasználó első vagy megadott nevét adja meg a felhasználói objektumra vonatkozóan. |
-| `upn` | Sztring | A felhasználó felhasználóneve. Lehet telefonszám, e-mail-cím vagy formázatlan karakterlánc. Csak megjelenítési célokra kell használni, és a Felhasználónév-emlékeztetőket is meg kell adni az újrahitelesítési helyzetekben. |
+| `ipaddr`| Sztring | Az az IP-cím, amelyről a felhasználó hitelesített. |
+| `onprem_sid`| Karakterlánc [SID formátumban](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, amikor a felhasználó rendelkezik egy helyszíni hitelesítés, ez a jogcím biztosítja a biztonsági azonosítót. Az örökölt `onprem_sid` alkalmazásokban engedélyezésre használható.|
+| `pwd_exp`| int, UNIX időbélyeg | Azt jelzi, hogy a felhasználó jelszava mikor jár le. |
+| `pwd_url`| Sztring | Olyan URL-cím, amelynek a felhasználók a jelszó alaphelyzetbe állításához küldhetők. |
+| `in_corp`| logikai | Jelzi, ha az ügyfél a vállalati hálózatról jelentkezik be. Ha nem, a követelés nem szerepel. |
+| `nickname`| Sztring | A felhasználó további neve, a vezeték- vagy utónévtől elkülönítve.|
+| `family_name` | Sztring | Megadja a felhasználó vezetéknevét, vezetéknevét vagy családnevét a felhasználói objektumban meghatározottak szerint. |
+| `given_name` | Sztring | Megadja a felhasználó első vagy megadott nevét a felhasználói objektumon beállítottan. |
+| `upn` | Sztring | A felhasználó felhasználóneve. Lehet telefonszám, e-mail cím vagy formázatlan karakterlánc. Csak megjelenítési célokra és felhasználónév-emlékeztetők megadásával használható újrahitelesítési forgatókönyvekben. |
 
-#### <a name="the-amr-claim"></a>Az `amr` jogcím
+#### <a name="the-amr-claim"></a>Az `amr` állítás
 
-A Microsoft-identitások különböző módokon hitelesíthetők, ami az alkalmazás szempontjából fontos lehet. Az `amr` jogcím egy olyan tömb, amely több elemet is tartalmazhat, például a `["mfa", "rsa", "pwd"]`t olyan hitelesítéshez, amely a jelszót és a hitelesítő alkalmazást egyaránt használta.
+A Microsoft-identitások különböző módokon hitelesíthetik magukat, ami az alkalmazás szempontjából releváns lehet. A `amr` jogcím egy olyan tömb, amely `["mfa", "rsa", "pwd"]`több elemet is tartalmazhat, például egy jelszót és a Hitelesítő alkalmazást egyaránt használó hitelesítéshez.
 
 | Érték | Leírás |
 |-----|-------------|
-| `pwd` | Jelszó-hitelesítés, vagy egy felhasználó Microsoft-jelszava vagy egy alkalmazás ügyfél-titka. |
-| `rsa` | A hitelesítés egy RSA-kulcs igazolásán alapul, például a [Microsoft Authenticator alkalmazással](https://aka.ms/AA2kvvu). Ez azt is magában foglalja, hogy a hitelesítés egy önaláírt JWT történt, amely egy szolgáltatás tulajdonában álló X509 tanúsítvánnyal rendelkezik. |
-| `otp` | Egyszeri jelszó, amely e-mailt vagy szöveges üzenetet használ. |
-| `fed` | A rendszer összevont hitelesítési állítást (például JWT vagy SAML) használt. |
-| `wia` | Integrált Windows-hitelesítés |
-| `mfa` | A többtényezős hitelesítés használatban volt. Ha ez jelen van, a többi hitelesítési módszer is szerepelni fog. |
-| `ngcmfa` | A `mfa`egyenértékű, bizonyos speciális hitelesítőadat-típusok kiépítés céljából. |
-| `wiaormfa`| A felhasználó Windows vagy MFA hitelesítő adatokat használt a hitelesítéshez. |
+| `pwd` | Jelszó-hitelesítés, a felhasználó Microsoft-jelszava vagy egy alkalmazás ügyféltkatitkára. |
+| `rsa` | A hitelesítés egy RSA-kulcs igazolásán alapult, például a [Microsoft Authenticator alkalmazással.](https://aka.ms/AA2kvvu) Ez magában foglalja azt is, ha a hitelesítést egy önaláírt JWT végezte egy szolgáltatás tulajdonában lévő X509 tanúsítvánnyal. |
+| `otp` | Egyszeri jelkód e-mailben vagy szöveges üzenetben. |
+| `fed` | Összevont hitelesítési feltételt (például JWT vagy SAML) használt. |
+| `wia` | Windows integrált hitelesítés |
+| `mfa` | Többtényezős hitelesítést használt. Ha ez jelen van, a többi hitelesítési módszer is szerepelni fog. |
+| `ngcmfa` | Egyenértékű `mfa`a bizonyos speciális hitelesítő adatok kiépítéséhez használt. |
+| `wiaormfa`| A felhasználó a Windows vagy az MFA hitelesítő adatait használta a hitelesítéshez. |
 | `none` | Nem történt hitelesítés. |
 
-## <a name="validating-tokens"></a>Tokenek ellenőrzése
+## <a name="validating-tokens"></a>Jogkivonatok érvényesítése
 
-Id_token vagy access_token érvényesítéséhez az alkalmazásnak a jogkivonat aláírását és a jogcímeket is ellenőriznie kell. A hozzáférési jogkivonatok érvényesítéséhez az alkalmazásnak ellenőriznie kell a kibocsátót, a célközönséget és az aláíró jogkivonatokat is. Ezeket érvényesíteni kell az OpenID-felderítési dokumentum értékeivel. A dokumentum bérlőtől független verziója például a következő helyen található: [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration).
+Egy id_token vagy egy access_token érvényesítéséhez az alkalmazásnak ellenőriznie kell a jogkivonat aláírását és a jogcímeket. A hozzáférési jogkivonatok érvényesítéséhez az alkalmazásnak a kibocsátót, a közönséget és az aláíró jogkivonatokat is ellenőriznie kell. Ezeket az OpenID felderítési dokumentum értékei alapján kell érvényesíteni. A dokumentum bérlőtől független verziója például [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)a helyen található.
 
-Az Azure AD-alapú middleware beépített funkciókat biztosít a hozzáférési jogkivonatok érvényesítéséhez, és böngészhet a [minták](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) között, és megkeresheti az Ön által választott nyelven.
+Az Azure AD köztes szoftver beépített képességekkel rendelkezik a hozzáférési jogkivonatok érvényesítéséhez, és a [minták](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) között böngészve megtalálhatja az Ön által választott nyelvet.
 
-Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. Az alábbi információk azokra a felhasználókra vonatkoznak, akik meg szeretnék ismerni a mögöttes folyamatot. A JWT ellenőrzéséhez több harmadik féltől származó nyílt forráskódú kódtár is rendelkezésre áll – legalább egy lehetőség van a szinte minden platformra és nyelvre. Az Azure AD-hitelesítési kódtárakkal és a kódokkal kapcsolatos további információkért tekintse meg a [1.0](../azuread-dev/active-directory-authentication-libraries.md) -s és a [2.0](reference-v2-libraries.md)-s hitelesítési kódtárakat ismertető témakört.
+Könyvtárakat és kódmintákat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. Az alábbi információk azok számára, akik szeretnék megérteni az alapul szolgáló folyamatot. Vannak is több harmadik- csapat nyit- forrás könyvtárak elérhető részére JWT érvényesítés - van legalább egy választás részére majdnem mind emelvény és nyelv odakinn. Az Azure AD hitelesítést árak és kódminták további információt a [1.0-s hitelesítési kódtárak](../azuread-dev/active-directory-authentication-libraries.md) és [a 2.0-s hitelesítési kódtárak című témakörben talál.](reference-v2-libraries.md)
 
-### <a name="validating-the-signature"></a>Az aláírás ellenőrzése
+### <a name="validating-the-signature"></a>Az aláírás érvényesítése
 
-A JWT három szegmenst tartalmaz, amelyeket a `.` karakter választ el egymástól. Az első szegmens a **fejléc**, a második a **törzs**, a harmadik pedig az **aláírás**. Az aláírási szegmens használatával ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen.
+A JWT három szegmenst tartalmaz, amelyeket a `.` karakter választ el egymástól. Az első szegmenst **fejlécnek**, a másodikat **törzsnek**, a harmadikat **aláírásnak nevezik**. Az aláírási szegmens segítségével ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen.
 
-Az Azure AD által kiállított jogkivonatok az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusokkal (például RS256) vannak aláírva. A JWT fejléce a jogkivonat aláírásához használt kulcs-és titkosítási módszerről tartalmaz információkat:
+Az Azure AD által kiadott jogkivonatok alá vannak írva az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például az RS256 használatával. A JWT fejléce a jogkivonat aláírásához használt kulcsra és titkosítási módszerre vonatkozó információkat tartalmazza:
 
 ```json
 {
@@ -189,88 +189,88 @@ Az Azure AD által kiállított jogkivonatok az iparági szabványnak megfelelő
 }
 ```
 
-Az `alg` jogcím a jogkivonat aláírásához használt algoritmust jelzi, míg a `kid` jogcím azt a nyilvános kulcsot jelzi, amelyet a jogkivonat érvényesítéséhez használt.
+A `alg` jogcím azt az algoritmust jelzi, amely `kid` et a jogkivonat aláírásához használták, míg a jogcím a jogkivonat érvényesítéséhez használt nyilvános kulcsot jelzi.
 
-Az Azure AD bármely adott időpontban aláírhat egy id_token a nyilvános titkos kulcsok egy adott készletének egyikével. Az Azure AD rendszeres időközönként elforgatja a kulcsok lehetséges készletét, így az alkalmazást úgy kell megírni, hogy a kulcs módosításait automatikusan kezeljék. Az Azure AD által használt nyilvános kulcsok frissítéseinek ellenőrzéséhez szükséges ésszerű gyakoriság 24 óránként.
+Az Azure AD egy adott időpontban aláírhat egy id_token a nyilvános és titkos kulcspárok egy bizonyos készletének használatával. Az Azure AD rendszeres időközönként elforgatja a kulcsok lehetséges készletét, ezért az alkalmazást úgy kell megírni, hogy automatikusan kezelje ezeket a kulcsmódosításokat. Az Azure AD által használt nyilvános kulcsok frissítéseinek ésszerű gyakorisága 24 óránként.
 
-Az aláírás ellenőrzéséhez szükséges aláíró kulcs adatokat a következő helyen található [OpenID Connect metaadat-dokumentum](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) használatával érheti el:
+Az aláírás érvényesítéséhez szükséges aláíró kulcs adatait az [OpenID Connect metaadat-dokumentum](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) segítségével szerezheti be, amely a következő helyen található:
 
 ```
 https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Próbálja ki ezt az [URL-címet](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) egy böngészőben!
+> Próbálja ki ezt az [URL-t](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) a böngészőben!
 
 Ez a metaadat-dokumentum:
 
-* A egy JSON-objektum, amely számos hasznos információt tartalmaz, például az OpenID Connect hitelesítéshez szükséges különböző végpontok helyét.
-* `jwks_uri`tartalmaz, amely megadja a jogkivonatok aláírásához használt nyilvános kulcsok helyét. A `jwks_uri` található JSON-webkulcs (JWK) tartalmazza az adott pillanatban használatban lévő összes nyilvános kulcsra vonatkozó információt.  A JWK formátumot a 7517- [es RFC-dokumentum](https://tools.ietf.org/html/rfc7517)írja le.  Az alkalmazás a JWT-fejlécben lévő `kid` jogcímet használva kiválaszthatja, hogy a dokumentum melyik nyilvános kulcsát használták egy adott token aláírására. Ezt követően az aláírás érvényesítése a helyes nyilvános kulccsal és a jelzett algoritmussal végezhető el.
+* Egy JSON-objektum, amely számos hasznos információt tartalmaz, például az OpenID Connect hitelesítéshez szükséges különböző végpontok helyét.
+* Tartalmaz `jwks_uri`egy , amely megadja a tokenek aláírásához használt nyilvános kulcsok készletének helyét. A json webkulcs (JWK) `jwks_uri` található tartalmazza az összes nyilvános kulcs információt használatban az adott pillanatban.  A JWK formátumleírása az [RFC 7517 ..](https://tools.ietf.org/html/rfc7517)  Az alkalmazás használhatja a `kid` jogcímet a JWT fejlécében annak kiválasztásához, hogy ebben a dokumentumban melyik nyilvános kulcs lett használva egy adott jogkivonat aláírásához. Ezután a megfelelő nyilvános kulcs és a jelzett algoritmus használatával elvégezheti az aláírás-ellenőrzést.
 
 > [!NOTE]
-> A v 1.0 végpont a `x5t` és `kid` jogcímeket is visszaadja, míg a v 2.0-végpont csak a `kid` jogcímet válaszolja meg. A továbbításhoz javasoljuk, hogy a jogkivonatának érvényesítéséhez használja a `kid` jogcímet.
+> A v1.0-végpont a `x5t` `kid` jogcímeket és a jogcímeket is visszaadja, míg a v2.0 végpont csak a `kid` jogcímekkel válaszol. A jövőben azt javasoljuk, hogy a `kid` jogcím használatával érvényesítse a jogkivonatot.
 
-Az aláírás-ellenőrzés a dokumentum hatókörén kívül esik – számos nyílt forráskódú függvénytár érhető el, amely segítséget nyújt, ha szükséges.  A Microsoft Identity platformnak azonban van egy jogkivonat-aláíró kiterjesztése a Standards-Custom aláíró kulcsokra.
+Az aláírás-ellenőrzés nem tartozik a dokumentum hatálya alá – számos nyílt forráskódú tár áll rendelkezésre, amelyek szükség esetén segítenek önnek.  A Microsoft Identity platform azonban rendelkezik egy jogkivonat-aláíró kiterjesztéssel a szabványokhoz – egyéni aláíró kulcsok.
 
-Ha az alkalmazás a [jogcímek leképezése](active-directory-claims-mapping.md) funkciójának eredményeként egyéni aláíró kulcsokkal rendelkezik, akkor az alkalmazás `jwks_uri` azonosítóját tartalmazó `appid` lekérdezési paramétert kell hozzáfűzni, amely az alkalmazás aláíró kulcsára vonatkozó információkra mutat, amelyeket az ellenőrzéshez kell használni. Például: a `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`tartalmaz.
+Ha az alkalmazás a [jogcím-leképezési](active-directory-claims-mapping.md) funkció használata miatt rendelkezik egyéni aláírási kulcsokkal, hozzá kell fűznie egy `appid` lekérdezési paramétert, amely tartalmazza az alkalmazás azonosítóazonosítóját, hogy `jwks_uri` mutasson az alkalmazás aláírási kulcsának adataira, amelyeket az érvényesítéshez kell használni. Például: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` a `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`részét tartalmazza.
 
-### <a name="claims-based-authorization"></a>Jogcím-alapú hitelesítés
+### <a name="claims-based-authorization"></a>Jogcímalapú engedélyezés
 
-Az alkalmazás üzleti logikája ezt a lépést fogja megállapítani, néhány gyakori engedélyezési módszert az alábbiakban talál.
+Az alkalmazás üzleti logikája határozza meg ezt a lépést, néhány közös engedélyezési módszerek az alábbiakban lefektetett.
 
-* Jelölje be a `scp` vagy `roles` jogcímet annak ellenőrzéséhez, hogy az összes jelen hatókör megfelel-e az API által közzétettnek, és engedélyezze az ügyfélnek a kért műveletet.
-* Győződjön meg arról, hogy a hívó ügyfél számára engedélyezett az API meghívása az `appid` jogcím használatával.
-* A hívó ügyfél hitelesítési állapotának ellenőrzése `appidacr` használatával – nem lehet 0, ha a nyilvános ügyfelek nem hívhatják meg az API-t.
-* Tekintse át a korábbi `nonce` jogcímek listáját, és ellenőrizze, hogy a jogkivonat nincs-e újrajátszva.
-* Győződjön meg arról, hogy a `tid` megfelel egy olyan bérlőnek, amely számára engedélyezett az API meghívása.
-* Az `acr` jogcím használatával ellenőrizze, hogy a felhasználó végezte-e az MFA-t. Ezt a [feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)használatával kell kikényszeríteni.
-* Ha a hozzáférési jogkivonatban kérte a `roles` vagy `groups` jogcímeket, ellenőrizze, hogy a felhasználó jogosult-e a művelet végrehajtására.
-  * Az implicit folyamattal lekért tokenek esetében valószínűleg le kell kérdezni az ilyen [adatMicrosoft Grapht](https://developer.microsoft.com/graph/) , mivel gyakran túl nagy ahhoz, hogy illeszkedjen a tokenhez.
+* Ellenőrizze `scp` a `roles` vagy a jogcím, hogy ellenőrizze, hogy az összes jelen hatókörök egyeznek-e az API által elérhetővé tett, és lehetővé teszi az ügyfél számára, hogy a kért műveletet.
+* Győződjön meg arról, hogy a `appid` hívó ügyfél a jogcím használatával hívhatja meg az API-t.
+* Ellenőrizze a hívó ügyfél hitelesítési állapotát a használatával `appidacr` – nem lehet 0, ha a nyilvános ügyfelek nem hívhatják meg az API-t.
+* Ellenőrizze a korábbi `nonce` jogcímek listájával, hogy ellenőrizze, hogy a token nem kerül-e visszajátszásra.
+* Ellenőrizze, `tid` hogy a bérlő, amely az API-t hívhatja.
+* A `acr` jogcím segítségével ellenőrizze, hogy a felhasználó végrehajtotta-e az MFA-t. Ezt a feltételes hozzáférés sel kell [érvényesíteni.](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Ha a hozzáférési `roles` jogkivonatban kért vagy `groups` jogcímeket kért, ellenőrizze, hogy a felhasználó a művelethez engedélyezett csoportban van-e.
+  * Az implicit folyamat használatával lekért jogkivonatok esetében valószínűleg le kell kérdeznie a [Microsoft Graph-ot](https://developer.microsoft.com/graph/) ezekhez az adatokhoz, mivel gyakran túl nagy ahhoz, hogy elférjen a jogkivonatban.
 
-## <a name="user-and-application-tokens"></a>Felhasználói és alkalmazási jogkivonatok
+## <a name="user-and-application-tokens"></a>Felhasználói és alkalmazásjogkivonatok
 
-Az alkalmazás a felhasználó nevében (a szokásos folyamat) vagy közvetlenül egy alkalmazásból (az ügyfél hitelesítő adataival ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) keresztül kaphat jogkivonatokat. Ezek az alkalmazási tokenek azt jelzik, hogy ez a hívás egy alkalmazásból származik, és nem rendelkezik a felhasználó biztonsági mentésével. Ezek a jogkivonatok nagyjából azonosak, néhány különbséggel:
+Az alkalmazás jogkivonatokat kaphat egy felhasználó (a szokásos folyamat) nevében vagy közvetlenül egy alkalmazástól (az ügyfél hitelesítő adatfolyamatán keresztül ([1.0,](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) [2.0- es érték).](v2-oauth2-client-creds-grant-flow.md) Ezek az csak alkalmazásjogkivonatok azt jelzik, hogy ez a hívás egy alkalmazástól érkezik, és nem rendelkezik a felhasználó által támogatott. Ezek a tokenek kezelése nagyjából azonos, néhány különbséggel:
 
-* Az alkalmazáshoz tartozó jogkivonatok nem rendelkeznek `scp` jogcímevel, és ehelyett `roles` jogcímet is tartalmazhatnak. Ebben az esetben a rendszer rögzíti az alkalmazás engedélyét (a delegált engedélyekkel szemben). A delegált és az alkalmazásra vonatkozó engedélyekkel kapcsolatos további információkért lásd: engedély és hozzájárulás ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).
-* Számos emberi jogcíme hiányzik, például `name` vagy `upn`.
-* A `sub` és `oid` jogcímek azonosak lesznek.
+* A csak alkalmazásjogkivonatokkal `scp` nem lesz jogcím, `roles` és ehelyett jogcímük is lehet. Ez az a pont, ahol az alkalmazásengedélyek rögzítésre kerülnek (a delegált engedélyekkel szemben). A delegált és alkalmazásengedélyekről további információt az Engedély és hozzájárulás című témakörben talál ([1.0,](../azuread-dev/v1-permissions-consent.md) [2.0- es érték](v2-permissions-and-consent.md)).
+* Sok ember-specifikus állítások hiányoznak, `name` `upn`mint például a vagy .
+* A `sub` `oid` és a követelések ugyanaz lesz.
 
-## <a name="token-revocation"></a>Jogkivonat visszavonása
+## <a name="token-revocation"></a>Token visszavonása
 
-A frissítési tokeneket a rendszer bármikor, különböző okok miatt érvénytelenítheti vagy visszavonhatja. Ezek két fő kategóriába sorolhatók: időtúllépések és visszavonások.
+A frissítési jogkivonatok bármikor érvényteleníthetők vagy visszavonhatók, különböző okok miatt. Ezek két fő kategóriába sorolhatók: időkérés és visszavonás.
 
-### <a name="token-timeouts"></a>Jogkivonat-időtúllépések
+### <a name="token-timeouts"></a>Token időmegtatulásai
 
-A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-token-lifetimes.md)használatával megváltoztatható a frissítési tokenek élettartama.  Normális és várható, hogy egyes tokenek használata nélkül megy (például a felhasználó nem nyitja meg az alkalmazást 3 hónapig), ezért lejár.  Az alkalmazások olyan forgatókönyveket fognak tapasztalni, amelyekben a bejelentkezési kiszolgáló elutasítja a frissítési jogkivonatot a kora miatt. 
+A [token élettartamának konfigurálása](active-directory-configurable-token-lifetimes.md)használatával a frissítési jogkivonatok élettartama módosítható.  Ez normális, és várható, hogy egyes tokenek használat nélkül menjenek (pl. a felhasználó 3 hónapig nem nyitja meg az alkalmazást), ezért lejár.  Az alkalmazások olyan esetekben találkoznak, amikor a bejelentkezési kiszolgáló a kora miatt elutasítja a frissítési jogkivonatot. 
 
-* MaxInactiveTime: Ha a frissítési token nem lett használva a MaxInactiveTime által diktált időn belül, a frissítési token többé nem lesz érvényes.
-* MaxSessionAge: Ha a MaxAgeSessionMultiFactor vagy a MaxAgeSessionSingleFactor értéke nem az alapértelmezett (a visszavonás után) értékre van állítva, akkor az újrahitelesítésre akkor van szükség, amikor a MaxAgeSession * eltelik.
+* MaxInactiveTime: Ha a frissítési jogkivonatot nem használták a MaxInactiveTime által diktált időn belül, a frissítési jogkivonat már nem lesz érvényes.
+* MaxSessionAge: Ha a MaxAgeSessionMultiFactor vagy a MaxAgeSessionSingleFactor az alapértelmezetttől eltérő (A visszavonásig) beállításra van beállítva, akkor a MaxAgeSession* munkamenetben beállított idő elteltével újra hitelesítésre lesz szükség.
 * Példák:
-  * A bérlőnek öt napja van egy MaxInactiveTime, és a felhasználó egy hétig ment a vakáción, így az Azure AD nem kapott új jogkivonat-kérelmet a felhasználótól 7 napon belül. Amikor a felhasználó legközelebb új jogkivonatot kér, megtalálják a frissítési jogkivonatot, és újra meg kell adniuk a hitelesítő adataikat.
-  * Egy bizalmas alkalmazásnak egy nap MaxAgeSessionSingleFactor kell lennie. Ha a felhasználó hétfőn és kedden (25 óra elteltével) bejelentkezik, újra kell hitelesítenie.
+  * A bérlő egy MaxInactiveTime öt nap, és a felhasználó ment nyaralni egy hétig, és így az Azure AD nem látott új jogkivonat-kérelmet a felhasználó tól 7 nap. A következő alkalommal, amikor a felhasználó új jogkivonatot kér, meg fogja találni a frissítési jogkivonatot visszavonták, és újra meg kell adnia a hitelesítő adatait.
+  * Egy bizalmas alkalmazás egy nap MaxAgeSessionSingleFactor rendelkezik. Ha a felhasználó hétfőn és kedden (25 óra eltelte után) bejelentkezik, újra kell hitelesítenie magát.
 
-### <a name="revocation"></a>Visszavont
+### <a name="revocation"></a>Visszavonási
 
-A frissítési tokeneket a kiszolgáló visszavonhatja a hitelesítő adatok módosítása, illetve a használati vagy rendszergazdai műveletek miatt.  A frissítési tokenek két osztályba sorolhatók – ezek a bizalmas ügyfelek (a jobb szélső oszlop) és a nyilvános ügyfelek számára kiállítottak (az összes többi oszlop).   
+A frissítési jogkivonatokat a kiszolgáló visszavonhatja a hitelesítő adatok változása, illetve a használat vagy a rendszergazdai művelet miatt.  A frissítési jogkivonatok két osztályba tartoznak : a bizalmas ügyfeleknek (a jobb szélső oszlopnak) és a nyilvános ügyfeleknek (az összes többi oszlopnak) kiadott tokenek.   
 
-|   | Jelszó alapú cookie | Jelszó alapú jogkivonat | Nem jelszó alapú cookie | Nem jelszó alapú jogkivonat | Bizalmas ügyfél jogkivonata |
+|   | Jelszóalapú cookie | Jelszóalapú jogkivonat | Nem jelszóalapú cookie | Nem jelszóalapú jogkivonat | Bizalmas ügyféltoken |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | A jelszó lejár | Életben marad | Életben marad | Életben marad | Életben marad | Életben marad |
-| Jelszó módosítva felhasználó által | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
+| A felhasználó által módosított jelszó | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
 | A felhasználó nem SSPR | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
-| Rendszergazdai jelszó alaphelyzetbe állítása | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
-| A felhasználó visszavonja a frissítési jogkivonatokat a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) használatával | Revoked | Revoked | Revoked | Revoked | Revoked |
-| A rendszergazda visszavonja a bérlő összes frissítési jogkivonatát a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) használatával | Revoked | Revoked |Revoked | Revoked | Revoked |
-| Egyszeri kijelentkezés ([v 1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v 2.0](v2-protocols-oidc.md#single-sign-out) ) a weben | Revoked | Életben marad | Revoked | Életben marad | Életben marad |
+| Rendszergazda alaphelyzetbe állítja a jelszót | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
+| A felhasználó visszavonja a frissítési jogkivonatokat a [PowerShellen keresztül](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Revoked | Revoked | Revoked | Revoked | Revoked |
+| A rendszergazda visszavonja a felhasználó összes frissítési jogkivonatát a [PowerShellen keresztül](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Revoked | Revoked |Revoked | Revoked | Revoked |
+| Egyszeri kijelentkezés ([1.0- as](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [2.0-s )](v2-protocols-oidc.md#single-sign-out) a weben | Revoked | Életben marad | Revoked | Életben marad | Életben marad |
 
 > [!NOTE]
-> A "nem jelszó alapú" bejelentkezési azonosító olyan eset, amikor a felhasználó nem adott meg jelszót a letöltéshez. Például a Windows Hello, egy FIDO2-kulcs vagy egy PIN-kód használatával.
+> A "Nem jelszó alapú" bejelentkezés olyan bejelentkezés, ahol a felhasználó nem írt be jelszót a beírásához. Például az arc használata a Windows Hello, a FIDO2 kulcs vagy a PIN-kódot.
 >
-> A Windows 10-es elsődleges frissítési tokenek (PRT) a hitelesítő adatok alapján elkülönülnek. A Windows Hello és a Password például a saját PRT-vel rendelkeznek, és egymástól elszigetelten vannak. Ha a felhasználó Hello hitelesítő adatokkal (PIN-kóddal vagy biometrikus azonosítóval) jelentkezik be, majd módosítja a jelszót, a rendszer visszavonja a korábban beszerzett jelszó-alapú PRT-t. A jelszó megadásával visszaigazolja a régi PRT-t, és egy újat kér.
+> A Windows 10 elsődleges frissítési tokenjei (PRT) a hitelesítő adatok alapján vannak elkülönítve. Például a Windows Hello és a jelszó saját PRT-k, egymástól elkülönítve. Amikor egy felhasználó hello hitelesítő adattal (PIN-kóddal vagy biometrikus adatokkal) jelentkezik be, majd módosítja a jelszót, a korábban beszerzett jelszóalapú PRT-t visszavonják. Ha jelszóval jelentkezik be, azzal érvényteleníti a régi PRT-t, és újat kér.
 >
-> A frissítési tokenek nem lettek érvénytelenítve vagy visszavonva, ha új hozzáférési jogkivonatot és frissítési jogkivonatot kívánnak beolvasni.  Azonban az alkalmazásnak el kell vetnie a régit, amint a használatban van, és lecseréli az újat, mert az új jogkivonat új lejárati ideje van. 
+> A frissítési jogkivonatok nem érvénytelenítve vagy visszavonva, ha egy új hozzáférési jogkivonat lekéréséhez és a frissítési jogkivonat frissítéséhez használják.  Azonban az alkalmazás nak el kell vetnie a régit, amint azt használják, és cserélje le az újat, mivel az új jogkivonat új lejárati idővel rendelkezik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg az [Azure ad-`id_tokens`okkal](id-tokens.md).
-* További információ az engedélyekről és a hozzájárulásról ( [1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).
+* További információ [ `id_tokens` az Azure AD-ben.](id-tokens.md)
+* További információ az engedélyről és a hozzájárulásról ( [1.0 ,](../azuread-dev/v1-permissions-consent.md) [2.0).](v2-permissions-and-consent.md)
