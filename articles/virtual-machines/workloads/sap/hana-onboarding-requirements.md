@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli SAP HANA bevezetési követelményei (nagyméretű példányok) | Microsoft Docs
-description: Az Azure-beli SAP HANA bevezetési követelményei (nagyméretű példányok).
+title: Bevezetési követelmények az SAP HANA az Azure-ban (nagy példányok) | Microsoft dokumentumok
+description: Bevezetési követelmények az SAP HANA az Azure-ban (nagy példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,73 +14,73 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617000"
 ---
 # <a name="onboarding-requirements"></a>Előkészítési követelmények
 
-Ez a lista a SAP HANA Azure-ban (nagyobb példányokon) való futtatásához szükséges követelményeket állítja össze.
+Ez a lista az SAP HANA Azure-on (nagyobb példányok) futtatásához vonatkozó követelményeket gyűjti.
 
 **Microsoft Azure**
 
-- Azure-előfizetés, amely az Azure-beli SAP HANAhoz (nagyméretű példányok) kapcsolható.
-- A Microsoft Premier szintű támogatási szerződése. Az SAP Azure-ban való futtatásával kapcsolatos konkrét információk: [SAP-támogatás megjegyzés #2015553 – SAP on Microsoft Azure: az előfeltételek támogatása](https://launchpad.support.sap.com/#/notes/2015553). Ha HANA nagyméretű példányokat használ 384 és több processzorral, akkor a Premier támogatási szerződést is ki kell terjesztenie, hogy tartalmazza a Azure Rapid Response.
-- Az SAP-méretezési gyakorlat elvégzése után a HANA nagy példányszámú SKU-ra vonatkozó adatok ismerete szükséges.
+- Egy Azure-előfizetés, amely az Azure-beli SAP HANA-hoz (nagy példányok) kapcsolható.
+- Microsoft Premier támogatási szerződés. Az SAP Azure-beli futtatásával kapcsolatos konkrét információkért tekintse meg az [SAP támogatási megjegyzését #2015553 – SAP a Microsoft Azure-ban: Támogatási előfeltételek.](https://launchpad.support.sap.com/#/notes/2015553) Ha a HANA nagy példány egységek 384 és több CPU-k, akkor is ki kell terjesztenie a Premier szintű támogatási szerződést, hogy az Azure Rapid Response.
+- A HANA nagypéldány-skus, amire szüksége van, miután az SAP méretezési gyakorlat végrehajtása után szükséges.
 
 **Hálózati kapcsolat**
 
-- ExpressRoute a helyszínről az Azure-ba: Ha a helyszíni adatközpontot az Azure-hoz szeretné csatlakoztatni, ügyeljen arra, hogy legalább 1 GB/s-os kapcsolatot rendeljen az INTERNETSZOLGÁLTATÓtól. A HANA nagyméretű példány-egységek és az Azure közötti kapcsolat a ExpressRoute technológiát is használja. Ez a ExpressRoute-kapcsolat a HANA nagyméretű példány-egységek és az Azure között szerepel a HANA nagyméretű példányainak díjszabásában, beleértve az adott ExpressRoute-áramkörre vonatkozó összes adatbevitelt és kimenő díjat is. Ezért ügyfeleinknek a helyszíni és az Azure közötti ExpressRoute-kapcsolaton túli többletköltségek nem merülnek fel.
+- ExpressRoute a helyszíni Azure között: A helyszíni adatközpont azure-hoz való csatlakoztatásához rendeljen legalább 1 Gbit/s-os kapcsolatot az isp-től. A HANA large Instance egységek és az Azure közötti kapcsolat ExpressRoute-technológiát is használ. Ez az ExpressRoute-kapcsolat a HANA nagy példány egységek és az Azure között a HANA nagy példány egységek ára, beleértve az összes adat-bejövő és kimenő díjak at adott ExpressRoute-kapcsolat. Ezért Ön, mint ügyfél, nem ütközik további költségeket a helyszíni és az Azure közötti ExpressRoute-kapcsolaton kívül.
 
 **Operációs rendszer**
 
-- SUSE Linux Enterprise Server 12 licence az SAP-alkalmazásokhoz.
+- Licencek a SUSE Linux Enterprise Server 12 SAP-alkalmazásokhoz.
 
    > [!NOTE] 
-   > A Microsoft által szállított operációs rendszer nincs regisztrálva a SUSE-ben. Nincs csatlakoztatva az előfizetés-kezelő eszköz példányához.
+   > A Microsoft által szállított operációs rendszer nincs regisztrálva a SUSE-nál. Nem kapcsolódik előfizetés-kezelő eszköz példányhoz.
 
-- SUSE Linux előfizetés-kezelési eszköz üzembe helyezése az Azure-ban egy virtuális gépen. Ez az eszköz lehetővé teszi az Azure-beli (nagyméretű példányok) SAP HANAának regisztrálását és frissítését a SUSE használatával. (Nincs internet-hozzáférés a HANA nagyméretű példány adatközpontjában.) 
-- A SAP HANA Red Hat Enterprise Linux 6,7 vagy 7. x licence.
+- Az Azure-ban virtuális gépen üzembe helyezett SUSE Linux-előfizetés-kezelő eszköz. Ez az eszköz lehetővé teszi az SAP HANA az Azure-ban (nagy példányok) a SUSE által regisztrálott és megfelelően frissített. (A HANA nagy példány adatközpontjában nincs internet-hozzáférés.) 
+- Licencek a Red Hat Enterprise Linux 6.7 vagy 7.x SAP HANA.
 
    > [!NOTE]
-   > A Microsoft által szállított operációs rendszer nincs regisztrálva a Red Hat-ban. Nem csatlakozik egy Red Hat Subscription Manager-példányhoz.
+   > A Microsoft által szállított operációs rendszer nincs regisztrálva a Red Hat rendszerben. Nem csatlakozik red hat előfizetés-kezelői példányhoz.
 
-- Red Hat előfizetés-kezelő üzembe helyezése az Azure-ban egy virtuális gépen. A Red Hat előfizetés-kezelője lehetővé teszi az Azure-beli (nagyméretű példányok) SAP HANAának regisztrálását és a Red Hat által történő frissítését. (Nincs közvetlen internet-hozzáférés az Azure nagyméretű példány-bélyegzőn üzembe helyezett bérlőn belülről.)
-- Az SAP megköveteli, hogy a Linux-szolgáltatóval is rendelkezzen támogatási szerződéssel. Ezt a követelményt nem távolítja el a HANA nagyméretű példány megoldása, vagy az a tény, hogy az Azure-ban futtatja a Linuxot. A linuxos Azure Gallery-rendszerképektől eltérően a szolgáltatás díját *nem* tartalmazza a HANA nagyméretű példány megoldási ajánlata. A Linux-terjesztővel a támogatási szerződésekre vonatkozó SAP követelményeinek teljesítése az Ön felelőssége. 
-   - SUSE Linux esetén tekintse meg a támogatási szerződések követelményeit az [SAP-megjegyzésekben #1984787-SUSE Linux Enterprise Server 12: telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787) és [sap-Megjegyzés #1056161 – SUSE prioritás támogatása SAP-alkalmazásokhoz](https://launchpad.support.sap.com/#/notes/1056161).
-   - A Red Hat Linux esetén a megfelelő előfizetési szintnek kell lennie, amely a HANA nagyméretű példány operációs rendszereinek támogatását és szolgáltatásait is tartalmazza. A Red Hat az SAP-megoldás Red Hat Enterprise Linux-előfizetését javasolja. Tekintse át https://access.redhat.com/solutions/3082481. 
+- A Red Hat Subscription Manager az Azure-ban virtuális gépen van telepítve. A Red Hat-előfizetés-kezelő lehetővé teszi, hogy az SAP HANA az Azure-ban (nagy példányok) regisztrálható, és megfelelően a Red Hat által ilegezve. (Nincs közvetlen internet-hozzáférés a bérlőn belül telepített az Azure nagy példány bélyegző.)
+- Az SAP megköveteli, hogy a Linux-szolgáltatóval is támogatási szerződést kössön. Ezt a követelményt nem távolítja el a HANA nagy példány megoldása vagy az a tény, hogy Linuxot futtat az Azure-ban. A Linux Azure-katalógus lemezképeivel ellentétben a szolgáltatási díj *nem* szerepel a HANA nagy példány megoldásajánlatában. Az Ön felelőssége, hogy teljesítse az SAP követelményeit a Linux forgalmazóval kötött támogatási szerződések tekintetében. 
+   - SUSE Linux esetén keresse meg a támogatási szerződések követelményeit az [SAP Note #1984787 - SUSE Linux Enterprise Server 12: Telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787) és az SAP Note #1056161 - [SUSE prioritás támogatása az SAP alkalmazásokhoz](https://launchpad.support.sap.com/#/notes/1056161).
+   - A Red Hat Linux esetében a megfelelő előfizetési szintekkel kell rendelkeznie, amelyek tartalmazzák a HANA Large Instance operációs rendszereinek támogatását és szolgáltatásfrissítéseit. A Red Hat a Red Hat Enterprise Linux előfizetést ajánlja az SAP-megoldáshoz. Lásd https://access.redhat.com/solutions/3082481a hivatkozást. 
 
-A különböző Linux-verziókkal rendelkező különböző SAP HANA verziók támogatási mátrixa: [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
+A különböző SAP HANA-verziók különböző Linux-verziókkal rendelkező támogatási mátrixáról az [SAP Note #2235581.](https://launchpad.support.sap.com/#/notes/2235581)
 
-Az operációs rendszer és a HLI belső vezérlőprogram/illesztőprogram-verzióinak kompatibilitási mátrixa esetén tekintse át az [operációs rendszer verziófrissítése a HLI](os-upgrade-hana-large-instance.md)-ben című témakört.
+Az operációs rendszer kompatibilitási mátrixát és a HLI firmware/illesztőprogram verzióit lásd [az OS Upgrade for HLI](os-upgrade-hana-large-instance.md).
 
 
 > [!IMPORTANT] 
-> A II. típusú egységeknél ezen a ponton csak a SLES 12 SP2 operációsrendszer-verziója támogatott. 
+> Típus II egységek csak az SLES 12 SP2 operációs rendszer verziója támogatott ezen a ponton. 
 
 
 **Adatbázis**
 
-- A SAP HANA (platform vagy Enterprise Edition) licencei és szoftvertelepítési összetevői.
+- Licencek és szoftvertelepítési összetevők az SAP HANA (platform vagy vállalati kiadás).
 
 **Alkalmazások**
 
-- Licencek és szoftvertelepítési összetevők minden olyan SAP-alkalmazáshoz, amely SAP HANA és kapcsolódó SAP-támogatási szerződésekhez csatlakozik.
-- Licencek és szoftvertelepítési összetevők minden olyan nem SAP-alkalmazáshoz, amelyet a SAP HANA Azure-beli (nagyméretű példányos) környezetekben és a kapcsolódó támogatási szerződésekben használtak.
+- Licencek és szoftvertelepítési összetevők minden SAP-alkalmazások, amelyek csatlakoznak az SAP HANA és a kapcsolódó SAP támogatási szerződések.
+- Licencek és szoftvertelepítési összetevők az SAP HANA-val azure-beli (nagy példányok) környezetekben és a kapcsolódó támogatási szerződésekben használt nem SAP-alkalmazásokhoz.
 
-**Ismereteit**
+**Készségek**
 
-- Az Azure IaaS és összetevőinek megismerése és ismerete.
-- Az SAP-munkaterhelések Azure-ban való üzembe helyezésének és megismerésének tapasztalatai.
-- SAP HANA a telepítés hitelesített személyes.
-- SAP-építészi ismeretek az SAP HANA magas rendelkezésre állásának és vész-helyreállítási megoldásának kialakításához.
+- Az Azure IaaS és összetevőivel kapcsolatos tapasztalatok és ismeretek.
+- Az SAP-számítási feladatok Azure-beli üzembe helyezésének és ismerete.
+- SAP HANA telepítés minősített személyes.
+- SAP-tervezői képességek tervezése magas rendelkezésre állású és vész-helyreállítási körül SAP HANA.
 
 **SAP**
 
-- A várt érték az, hogy Ön SAP-ügyfél, és rendelkezik az SAP-vel kötött támogatási szerződéssel.
-- A HANA nagyméretű példányos SKU-k Type II osztályának megvalósításához különösen a SAP HANA és a nagyméretű Felskálázási hardverek végleges konfigurációit kell megkeresni.
+- Elvárás az, hogy Ön egy SAP-ügyfél, és támogatási szerződést kötött az SAP-val.
+- Különösen a HANA nagypéldány-skus II típusú osztályának implementációihoz konzultáljon az SAP-val az SAP HANA verzióiról és a nagy méretű skálázású hardver ek végleges konfigurációiról.
 
-**Következő lépések**
-- Tekintse át [SAP HANA (nagyméretű példányok) architektúráját az Azure-](hana-architecture.md) ban
+**További lépések**
+- SAP [HANA (nagy példányok) architektúrájának ajánlása az Azure-ban](hana-architecture.md)

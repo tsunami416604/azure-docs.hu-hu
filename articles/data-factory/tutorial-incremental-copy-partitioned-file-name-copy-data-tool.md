@@ -1,6 +1,6 @@
 ---
-title: Az új fájlok növekményes másolása az idő particionált fájlneve alapján
-description: Hozzon létre egy Azure-beli adatelőállítót, majd a Adatok másolása eszközzel fokozatosan töltse be az új fájlokat csak az idő particionált fájlnév alapján.
+title: Új fájlok növekményes másolása az idő particionált fájlneve alapján
+description: Hozzon létre egy Azure-adat-előállítót, majd az Adatok másolása eszközzel csak az idő particionált fájlneve alapján tölthetbe be új fájlokat.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 1/24/2019
-ms.openlocfilehash: 38e0028efd7fbda8aa5bee497836ce1161109e03
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 3/17/2020
+ms.openlocfilehash: 50e82362f39da2d3f3ecfad2de1ed07b68f8a6a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982626"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501660"
 ---
-# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Az új fájlok növekményes másolása a Adatok másolása eszköz használatával, az időparticionált fájl neve alapján
+# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Új fájlok növekményes másolása az idő particionált fájlneve alapján az Adatok másolása eszközzel
 
-Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezt követően a Adatok másolása eszközzel létrehozhat egy folyamatot, amely Növekményesen átmásolja az új fájlokat az Azure Blob Storage-ból az Azure Blob Storage-ba történő időpartíciós fájlnév alapján.
+Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután az Adatok másolása eszközzel hozzon létre egy folyamatot, amely növekményesen másolja az új fájlokat az Azure Blob storage-ból az Azure Blob storage-ból az Azure Blob storage-ba történő particionált fájlnév alapján.
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
@@ -37,24 +37,24 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure Storage** _-_ fiók: a blob Storage használata _forrásként_ és fogadó adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-account-create.md) ismertető cikkben találja.
+* **Azure storage-fiók:** Használja blob storage _forrásként_ és _fogadó_ adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-account-create.md) ismertető cikkben találja.
 
-### <a name="create-two-containers-in-blob-storage"></a>Két tároló létrehozása a blob Storage-ban
+### <a name="create-two-containers-in-blob-storage"></a>Hozzon létre két tárolót a Blob storage-ban
 
-Készítse elő a blob Storage-t az oktatóanyaghoz az alábbi lépések végrehajtásával.
+Készítse elő a Blob storage az oktatóanyag ezekkel a lépésekkel.
 
-1. Hozzon létre egy **forrás**nevű tárolót.  Hozzon létre egy mappa elérési útját **2019/02/26/14** -ként a tárolóban. Hozzon létre egy üres szövegfájlt, és nevezze el **file1. txt**néven. Töltse fel a file1. txt fájlt a Storage-fiókjában lévő **forrás/2019/02/26/14** mappa elérési útjára.  Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
+1. Hozzon létre egy **forrás**nevű tárolót.  Hozzon létre egy mappa elérési útját **2020/03/17/03** néven a tárolóban. Hozzon létre egy üres szövegfájlt, és nevezze el **fájlnak1.txt fájlként.** Töltse fel a file1.txt fájlt a tárfiókban lévő mappaelérési út **forrására/2020/03/17/03.**  Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
     ![fájlok feltöltése](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
 
     > [!NOTE]
-    > Állítsa be a mappa nevét az UTC időpontra.  Ha például az aktuális UTC-idő 2:03 PM, 2019, a mappa elérési útja **forrás/2019/02/26/14/** a **forrás/{év}/{hónap}/{Day}/{Hour}/** értékkel hozható létre.
+    > Állítsa be a mappa nevét az UTC-idővel.  Ha például az aktuális UTC-idő **source/2020/03/17/03/** 2020. **source/{Year}/{Month}/{Day}/{Hour}/**
 
-2. Hozzon létre egy **célhely**nevű tárolót. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
+2. **Hozzon**létre egy cél nevű tárolót. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása** > **adatok és Analitika** > **Data Factory**:
+1. A bal oldali menüben válassza az > **Erőforrás-adatok létrehozása + Analytics** > **Data Factory** **lehetőséget:**
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -64,144 +64,117 @@ Készítse elő a blob Storage-t az oktatóanyaghoz az alábbi lépések végreh
 
    ![Új adat-előállító hibaüzenete](./media/doc-common-process/name-not-available-error.png)
 
-   Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_ **ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_**ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 3. Válassza ki az Azure-**előfizetést** az új adat-előállító létrehozásához.
 4. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
-    a. Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot.
+    a. Válassza **a Meglévő használata**lehetőséget, és válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
 
-    b. Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét. 
+    b. Válassza **az Új létrehozása**lehetőséget, és írja be egy erőforráscsoport nevét. 
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket.
 
 5. A **Verzió** résznél válassza a **V2** értéket.
 6. A **Hely** alatt válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például Azure Storage és SQL Database) és számítási erőforrások (például Azure HDInsight) más helyeken/régiókban is lehetnek.
-7. Válassza a **Rögzítés az irányítópulton** lehetőséget.
-8. Kattintson a **Létrehozás** gombra.
-9. Az irányítópulton a folyamat állapotát az **Adat-előállító üzembe helyezése** csempe jelzi.
-
-    ![Adat-előállító üzembe helyezése csempe](media/tutorial-copy-data-tool/deploying-data-factory.png)
-10. A létrehozás befejezése után a **Data Factory** kezdőlapja jelenik meg.
+7. Kattintson a **Létrehozás** gombra.
+8. A létrehozás befejezése után a **Data Factory** kezdőlapja jelenik meg.
+9. Az Azure Data Factory felhasználói felületének (UI) külön lapon történő megnyitásához kattintson a **Tartalomkészítés és monitorozás** csempére.
 
     ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
-11. Az Azure Data Factory felhasználói felületének (UI) külön lapon történő megnyitásához kattintson a **Tartalomkészítés és monitorozás** csempére.
+
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Folyamat létrehozása az Adatok másolása eszközzel
 
-1. Az **első lépések** lapon válassza ki a **Adatok másolása** címet a adatok másolása eszköz elindításához.
+1. A **Let's get started (Az adatok másolása)** lapon válassza az **Adatok másolása** eszközt.
 
    ![Az Adatok másolása eszköz csempéje](./media/doc-common-process/get-started-page.png)
 
-2. A **Tulajdonságok** oldalon hajtsa végre a következő lépéseket:
+2. A **Tulajdonságok** lapon tegye a következő lépéseket:
 
-    a. A **feladat neve**alatt adja meg a **DeltaCopyFromBlobPipeline**.
+    a. A **Feladat neve mezőbe**írja be a **DeltaCopyFromBlobPipeline parancsot.**
 
-    b. A **feladat lépésszám vagy a feladat ütemezés**alatt válassza **a rendszeres Futtatás ütemezés**szerint lehetőséget.
+    b. A **Tevékenység lépésszám vagy a Tevékenység ütemezése csoportban**válassza **a Futtatás rendszeresen ütemezés szerint**lehetőséget.
 
-    c. Az **trigger típusa**területen válassza a **kiesési ablak**lehetőséget.
+    c. Az **Eseményindító típusa csoportban**válassza **a Bukdácsoló ablak lehetőséget.**
 
-    d. Az **Ismétlődés**alatt adja meg az **1 óra**értéket.
+    d. Az **Ismétlődés**csoportban adja meg **az 1 óra(ok)** értéket.
 
-    e. Kattintson a **Tovább** gombra.
+    e. Válassza a **Tovább lehetőséget.**
 
     A Data Factory felhasználói felülete létrehoz egy folyamatot a megadott feladatnéven.
 
     ![Tulajdonságok lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
 3. A **Forrásadattár** oldalon hajtsa végre az alábbi lépéseket:
 
-    a. A kapcsolatok hozzáadásához kattintson az **+ új kapcsolatok létrehozása**lehetőségre.
-
-    ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page.png)
-
-    b. Válassza ki az **Azure Blob Storage** elemet a katalógusból, majd kattintson a **Folytatás**gombra.
-
-    ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-blob.png)
-
-    c. Az **új társított szolgáltatás** lapon válassza ki a Storage-fiók nevét a **Storage-fiók neve** listáról, majd kattintson a **Befejezés**gombra.
+    a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
+    
+    b. Válassza ki az Azure Blob Storage a gyűjteményből, majd válassza a Folytatás lehetőséget.
+    
+    c. Az **új csatolt szolgáltatás (Azure Blob Storage)** lapon adja meg a csatolt szolgáltatás nevét. Válassza ki az Azure-előfizetést, és válassza ki a tárfiókot a **Storage-fiók** névlistájából. Tesztelje a kapcsolatot, és válassza a **Létrehozás lehetőséget.**
 
     ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-linkedservice.png)
 
-    d. Válassza ki az újonnan létrehozott társított szolgáltatást, majd kattintson a **tovább**gombra.
+    d. Jelölje ki az újonnan létrehozott csatolt szolgáltatást a **Forrás adattár** lapon, majd kattintson a **Tovább**gombra.
 
-   ![Forrásadattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-linkedservice.png)
 4. **A bemeneti fájl vagy mappa kiválasztása** oldalon kövesse az alábbi lépéseket:
 
-    a. Tallózással keresse meg és válassza ki a **forrás** tárolót, majd válassza **a kiválasztás lehetőséget.**
+    a. Tallózással **source** és válassza ki a forrástárolót, majd válassza **a Választás gombot.**
 
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
 
-    b. A **fájl betöltése viselkedés**területen válassza a **növekményes betöltés: idő particionált mappák/fájlnevek**lehetőséget.
+    b. A **Fájlbetöltési viselkedés**csoportban válassza **a Növekményes betöltés: időpartidott mappa-/fájlnevek**lehetőséget.
 
-    ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
-
-    c. Írja be a dinamikus mappa elérési útját **forrás/{év}/{hónap}/{nap}/{Hour}/** , és módosítsa a formátumot a következőképpen:
-
-    ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
-
-    d. Győződjön meg a **bináris másolásról** , majd kattintson a **tovább**gombra.
+    c. Írja be a dinamikus mappa elérési útját **forrásként/{year}/{month}/{day}/{hour}/** és módosítsa a formátumot a következő képernyőképen látható módon. Jelölje be **a Bináris másolás jelölőnégyzetet,** és kattintson a **Tovább**gombra.
 
     ![A bemeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
-5. A **cél adattár** lapon válassza ki a **AzureBlobStorage**, amely ugyanaz a Storage-fiók, mint az adatforrás-tároló, majd kattintson a **tovább**gombra.
+
+5. A **Cél adattár** lapon válassza ki az **AzureBlobStorage**-, amely ugyanaz a tárfiók, mint az adatforrás-tároló, majd kattintson a **Tovább**gombra.
 
     ![Céladattár lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png)
-6. A **kimeneti fájl vagy mappa kiválasztása** lapon hajtsa végre a következő lépéseket:
+6. A **Kimeneti fájl vagy mappa kiválasztása** lapon tegye a következő lépéseket:
 
-    a. Tallózással keresse meg és jelölje ki a **célmappát** , majd kattintson a **kiválasztás**elemre.
+    a. Tallózással **destination** és kijelöléssel, majd kattintson a **Választás gombra.**
 
-    ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-output-file-folder.png)
+    b. Írja be a dinamikus mappa elérési útját **célként/{year}/{month}/{day}/{hour}/** és módosítsa a formátumot a következők szerint:
 
-    b. Írja be a dinamikus mappa elérési útját **forrás/{év}/{hónap}/{nap}/{Hour}/** , és módosítsa a formátumot a következőképpen:
-
-    ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name2.png)
+    ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
 
     c. Kattintson a **Tovább** gombra.
 
     ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
 7. A **Beállítások** lapon kattintson a **Tovább** gombra.
 
-    ![Beállítások lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/settings-page.png)
 8. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább** gombra.
 
     ![Összefoglaló lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
 
 9. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre.
-    ![üzembe helyezési oldal](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
+    ![Üzembe helyezés lap](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
 
-10. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva.  Várnia kell, amíg a folyamat automatikusan elindul (körülbelül egy óra elteltével).  A művelet futtatásakor a **műveletek** oszlop hivatkozásokat tartalmaz a tevékenység futtatási részleteinek megtekintéséhez és a folyamat újrafuttatásához. A lista frissítéséhez kattintson a **frissítés** gombra, majd a **műveletek** oszlopban válassza a **tevékenység futtatása hivatkozás megjelenítése** hivatkozást.
+10. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva.  Meg kell várnia a folyamat futtatását, amikor automatikusan aktiválódik (körülbelül egy óra elteltével). Futtatásakor kattintson a folyamat névkapcsolatára, a **DeltaCopyFromBlobPipeline-ra** a tevékenységfuttatásrészleteinek megtekintéséhez vagy a folyamat újbóli futtatásához. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
-11. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Láthatja, hogy a forrásfájl (file1. txt) át lett másolva a **forrás/2019/02/26/14/** **cél/2019/02/26/14** /között ugyanazzal a fájlnévvel.  
+11. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Állítsa be a **forrás-** és **céloszlopok** oszlopszélességét (ha szükséges), hogy további részleteket jelenítsen meg, láthatja, hogy a forrásfájlt (file1.txt) a *forrásból/2020/03/17/03/* a *cél/2020/03/17/03/* fájlnévvel másolta. 
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
 
-    Ugyanezt a Azure Storage Explorer használatával is ellenőrizheti (https://storageexplorer.com/) a fájlok vizsgálatához.
+    Ugyanezt az Azure Storage Explorer (ahttps://storageexplorer.com/) fájlok benézésével) segítségével is ellenőrizheti.
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
-12. Hozzon létre egy másik üres szövegfájlt az új névvel a **fájl2. txt**néven. Töltse fel a fájl2. txt fájlt a Storage-fiókjában lévő **forrás/2019/02/26/15** mappa elérési útjára.   Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
-    ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
+12. Hozzon létre egy másik üres szövegfájlt, amelynek új neve **fájl2.txt**. Töltse fel a file2.txt fájlt a tárfiók **2020/03/17/04** mappaelérési útjára. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
     > [!NOTE]
-    > Előfordulhat, hogy az új mappa elérési útjának létrehozására van szükség. Állítsa be a mappa nevét az UTC időpontra.  Ha például az aktuális UTC-idő 3:20 PM, 2019. február 26-án a mappa elérési útja a következőképpen hozható létre: **forrás/2019/02/26/15/** a (z) **{Year}/{month}/{Day}/{Hour}/** szabálya.
+    > Előfordulhat, hogy tudnia kell, hogy új mappaelérési utat kell létrehozni. Állítsa be a mappa nevét az UTC-idővel.  Ha például az aktuális UTC-idő 2020. **source/2020/03/17/04/** **{Year}/{Month}/{Day}/{Hour}/**
 
-13. Ha vissza szeretne térni a **folyamat futási** nézetéhez, válassza a **minden folyamat fut**lehetőséget, és várjon, amíg egy másik óra elteltével a folyamat automatikusan újraindul.  
+13. Ha vissza szeretne lépni a **Folyamatfuttatások** nézetbe, válassza az **Összes folyamat futtatása**lehetőséget, és várja meg, amíg ugyanaz a folyamat automatikusan újra aktiválódik egy óra elteltével.  
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
-14. A második folyamat futásakor válassza a **Megtekintés tevékenység futtatása** lehetőséget, és végezze el a részletek áttekintését.  
-
-    ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs6.png)
-
-    Láthatja, hogy a forrásfájl (fájl2. txt) át lett másolva a **forrás/2019/02/26/15/** **cél/2019/02/** 26/15/között, ugyanazzal a fájlnévvel.
-
-    ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png)
-
-    Ugyanezt a Azure Storage Explorer használatával is ellenőrizheti (https://storageexplorer.com/) **a tárolóban** lévő fájlok vizsgálatához.
-
-    ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
+14. Válassza ki az új **DeltaCopyFromBlobPipeline** kapcsolatot a második folyamat futtatásához, amikor jön, és ugyanezt a részleteket. Látni fogja, hogy a forrásfájlt (file2.txt) a **forrás/2020/03/17/04/** forrásból a **cél/2020/03/17/04/** célhelyre másolta ugyanazzal a fájlnévvel. Ugyanezt az Azure Storage Explorer (ahttps://storageexplorer.com/) **céltárolóban** lévő fájlok beolvasásával is ellenőrizheti.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folytassa a következő oktatóanyaggal, amelyben az adatok Azure Spark-fürtök használatával való átalakítását ismerheti meg:
 
 > [!div class="nextstepaction"]

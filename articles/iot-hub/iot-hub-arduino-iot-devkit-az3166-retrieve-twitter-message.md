@@ -1,6 +1,6 @@
 ---
-title: Az Azure Functions Twitter-üzenet lekérdezése |} A Microsoft Docs
-description: Mozgásérzékelő segítségével észlelheti, miközben és a egy Ön által megadott hashtaggel véletlenszerű tweet keresése az Azure Functions használatával
+title: Twitter-üzenet lekérése az Azure Functions szolgáltatással | Microsoft dokumentumok
+description: A mozgásérzékelő vel észlelheti a remegést, és az Azure Functions segítségével véletlenszerű enyveskezhet egy általa megadott hashtaggel
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -10,168 +10,168 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60779835"
 ---
-# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy tweetet rázza meg – az Azure Functions Twitter-üzenet lekérdezése
+# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Shake, Shake egy Tweet - Lekérés egy Twitter üzenetet az Azure Functions
 
-Ebben a projektben elsajátíthatja az Azure Functions szolgáltatással esemény aktiválása a mozgásérzékelő használatával. Az alkalmazás lekéri az Arduino rajz konfigurál egy #hashtag véletlenszerű tweet közzététele. A tweet DevKit képernyőjén jeleníti meg.
+Ebben a projektben megtudhatja, hogyan használhatja a mozgásérzékelőt egy esemény aktiválásához az Azure Functions használatával. Az alkalmazás letölti a véletlenszerű csipog egy #hashtag konfigurálja a Arduino vázlatot. A tweet megjelenik a DevKit képernyőn.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-Fejezze be a [– első lépések útmutató](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) való:
+Az [első lépések útmutatójának](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) befejezése:
 
-* A fejlesztői készlet Wi-Fi csatlakozik.
-* A fejlesztési környezet előkészítését.
+* A DevKit wi-fi hálózathoz csatlakoztatva.
+* Készítse elő a fejlesztői környezetet.
 
-Aktív Azure-előfizetés. Ha még nincs fiókja, ezek a módszerek egyike segítségével regisztrálhatja:
+Aktív Azure-előfizetés. Ha még nem rendelkezik ilyen, az alábbi módszerek egyikével regisztrálhat:
 
-* Aktiválja a [ingyenes 30 napos próbafiókra Microsoft Azure](https://azure.microsoft.com/free/)
-* Jogcím a [Azure-kredit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) MSDN vagy a Visual Studio-előfizetők
+* [Ingyenes, 30 napos próbaverziós Microsoft Azure-fiók](https://azure.microsoft.com/free/) aktiválása
+* [Igényelje Azure-kreditjét,](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ha Ön MSDN- vagy Visual Studio-előfizető
 
-## <a name="open-the-project-folder"></a>A projektmappa fájllistájának megnyitásához.
+## <a name="open-the-project-folder"></a>A projektmappa megnyitása
 
-Először nyissa meg a projektmappában. 
+Először nyissa meg a projektmappát. 
 
-### <a name="start-vs-code"></a>Indítsa el a VS Code
+### <a name="start-vs-code"></a>Vs-kód indítása
 
-* Ellenőrizze, hogy a számítógép csatlakozik a fejlesztői készlet.
+* Győződjön meg arról, hogy a DevKit csatlakozik a számítógéphez.
 
-* Indítsa el a VS Code.
+* Indítsa el a VS Code-ot.
 
-* A fejlesztői készlet csatlakoztatása a számítógéphez.
+* Csatlakoztassa a DevKit-et a számítógéphez.
 
    > [!NOTE]
-   > A VS Code elindításához, is megjelenhet egy hibaüzenet, amely nem lehet az Arduino IDE vagy kapcsolódó tábla csomag található. Ha ez a hiba akkor fordul elő, zárja be a VS Code, és indítsa újra az Arduino IDE. Megfelelően a VS Code most kell megkeresheti az Arduino IDE elérési utat.
+   > A VS Code indításakor hibaüzenet jelenhet meg, hogy az Arduino IDE vagy a kapcsolódó táblacsomag nem található. Ha ez a hiba jelentkezik, zárja be a VS Code-ot, és indítsa el újra az Arduino IDE-t. Vs kód most keresse meg az Arduino IDE elérési út helyesen.
 
-### <a name="open-the-arduino-examples-folder"></a>Az Arduino példák mappa megnyitása
+### <a name="open-the-arduino-examples-folder"></a>Az Arduino Examples mappa megnyitása
 
-Bontsa ki a bal oldali **ARDUINO példák** területén keresse meg a **példák az MXCHIP AZ3166 > AzureIoT**, és válassza ki **ShakeShake**. Megnyílik egy új VS Code-ablak, a projektmappa fájllistájának megjelenítése. Ha nem látja az MXCHIP AZ3166 szakaszban, győződjön meg arról, hogy az eszköz megfelelően csatlakoztatva van, és indítsa újra a Visual Studio Code.  
-a ![mini-solution-példák](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
+Bontsa ki a bal oldali **ARDUINO EXAMPLES szakaszt,** keresse meg **az MXCHIP AZ3166 > Az AzureIoT példái című szakaszt,** és válassza a **ShakeShake**lehetőséget. Megnyílik egy új VS-kód ablak, amely a projekt mappát jeleníti meg. Ha nem látja az MXCHIP AZ3166 szakaszt, ellenőrizze, hogy az eszköz megfelelően van-e csatlakoztatva, és indítsa újra a Visual Studio-kódot.  
+a ![mini-megoldás-példák](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-A mintaprojekt a parancskatalógus is megnyithatja. Kattintson a `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) a parancskatalógus megnyitásához, írja be a **Arduino**, keresse meg és válassza a **Arduino: Példák**.
+A mintaprojektet a parancspalettáról is megnyithatja. Kattintson a `Ctrl+Shift+P` `Cmd+Shift+P`(macOS: ) gombra a parancspaletta megnyitásához írja be az **Arduino**parancsot, majd keresse meg és válassza az **Arduino: Examples lehetőséget.**
 
-## <a name="provision-azure-services"></a>Azure-szolgáltatások üzembe helyezése
+## <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
-A megoldás ablakban futtassa a feladat `Ctrl+P` (macOS: `Cmd+P`) megadásával `task cloud-provision`.
+A megoldásablakban futtassa `Ctrl+P` a feladatot `Cmd+P`(macOS: ) a beírásával. `task cloud-provision`
 
-A VS Code terminálban egy interaktív parancssori végigvezeti Önt a szükséges Azure-szolgáltatások kiépítése:
+A VS Code terminálon egy interaktív parancssor végigvezeti a szükséges Azure-szolgáltatások kiépítésén:
 
-![cloud-provision](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
+![felhő-ellátás](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Ha az oldal lefagy a betöltés állapota, amikor megpróbál bejelentkezni Azure-ba, olvassa el a ["bejelentkezési oldal lefagy" lépés a IoT DevKit – gyakori kérdések a](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
+> Ha az oldal betöltési állapotban van, amikor megpróbál bejelentkezni az Azure-ba, olvassa el az [IoT DevKit gyakori kérdések "bejelentkezési oldal lefagy" című lépését.](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure)
  
 ## <a name="modify-the-hashtag"></a>A #hashtag módosítása
 
-Nyissa meg `ShakeShake.ino` , és keresse a sor kódot:
+Nyissa `ShakeShake.ino` meg és keresse meg ezt a kódsort:
 
 ```cpp
 static const char* iot_event = "{\"topic\":\"iot\"}";
 ```
 
-Cserélje le a karakterláncot `iot` belül az előnyben részesített hashtaggel kapcsos zárójeleket kell használni. A fejlesztői készlet később egy véletlenszerű tweet, amely tartalmazza az ebben a lépésben megadott hashtaggel kérdezi le.
+Cserélje le `iot` a kapcsos zárójelek karakterláncát a kívánt hashtagre. A DevKit később lekéri a véletlenszerű tweet, amely tartalmazza a hashtag megadott ebben a lépésben.
 
 ## <a name="deploy-azure-functions"></a>Az Azure Functions üzembe helyezése
 
-Használat `Ctrl+P` (macOS: `Cmd+P`) futtatásához `task cloud-deploy` üzembe helyezése az Azure Functions kódjaiba elindításához:
+Használja `Ctrl+P` (macOS: `Cmd+P`) `task cloud-deploy` az Azure Functions-kód üzembe helyezésének megkezdéséhez:
 
-![cloud-deploy](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![felhőalapú telepítés](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
-> Néha előfordul az Azure-függvény nem működik megfelelően. Ez akkor fordul elő, ha a probléma megoldásához ellenőrizze a ["lekérdezésfordítási hiba" szakaszában az IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function).
+> Előfordulhat, hogy az Azure-függvény nem működik megfelelően. A probléma megoldásához, amikor ez bekövetkezik, tekintse meg [az IoT DevKit gyIK "fordítási hiba" című részét.](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function)
 
-## <a name="build-and-upload-the-device-code"></a>Hozhat létre és töltse fel az eszköz kódot
+## <a name="build-and-upload-the-device-code"></a>Az eszközkód összeállítása és feltöltése
 
-Ezután hozhat létre, és töltse fel az eszköz kódot.
+Ezután építse fel és töltse fel az eszközkódját.
 
 ### <a name="windows"></a>Windows
 
-1. Használat `Ctrl+P` futtatásához `task device-upload`.
+1. A `Ctrl+P` futtatásához `task device-upload`használható.
 
-2. A terminálban kéri, hogy adja meg a konfigurációs mód. Ehhez tegye a következőket:
+2. A terminál kéri, hogy lépjen be a konfigurációs módba. Ehhez tegye a következőket:
 
-   * A gombot lenyomva
+   * A gomb lenyomva tartása
 
-   * Leküldéses és engedje el a Visszaállítás gombra.
+   * Nyomja meg és engedje fel a reset gombot.
 
-3. A képernyőn megjelenik a fejlesztői készlet azonosítója és a "Konfiguráció".
+3. A képernyőn megjelenik a DevKit-azonosító és a "Konfiguráció".
 
 ### <a name="macos"></a>macOS
 
-1. A fejlesztői készlet elhelyezi a konfigurációs mód:
+1. A DevKit konfigurációs módba való alakítása:
 
-   A gombot lenyomva, majd küldje le, és engedje a Visszaállítás gombra. A képernyőn megjelenik a "Konfiguráció".
+   Tartsa lenyomva az A gombot, majd nyomja meg és engedje fel a reset gombot. A képernyőn a "Configuration" (Konfiguráció) látható.
 
-2. Használat `Cmd+P` futtatásához `task device-upload` , beállítjuk a kapcsolati karakterláncot, amely a rendszer beolvassa a `task cloud-provision` . lépés.
+2. A `Cmd+P` futtatáshoz `task device-upload` állíthatja be a `task cloud-provision` lépésből beolvasott kapcsolati karakterláncot.
 
-### <a name="verify-upload-and-run"></a>Győződjön meg arról, töltse fel és futtatása
+### <a name="verify-upload-and-run"></a>Ellenőrzés, feltöltés és futtatás
 
-Most a kapcsolati karakterlánc beállítása, azt ellenőrzi, és feltölti az alkalmazást, majd futtatja. 
+Most a kapcsolati karakterlánc be van állítva, ellenőrzi és feltölti az alkalmazást, majd futtatja. 
 
-1. A VS Code ellenőrzése és az Arduino rajz tölt fel a DevKit kezdődik:
+1. A VS Code megkezdi az Arduino vázlat ellenőrzését és feltöltését a DevKitbe:
 
-   ![eszköz-feltöltést](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
+   ![eszköz-feltöltés](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
-2. A fejlesztői készlet újraindul, és elindítja a kód futtatása.
+2. A DevKit újraindul, és elindítja a kód futtatását.
 
-Előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag"hibaüzenet jelenik meg. Ez a hiba akkor fordul elő, ha a tábla csomagindexet nem frissül megfelelően. A probléma elhárítása érdekében ellenőrizze a ["Ismeretlen csomag" hiba a IoT DevKit – gyakori kérdések a](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+A "Hiba: AZ3166: Ismeretlen csomag" hibaüzenet jelenhet meg. Ez a hiba akkor fordul elő, ha a táblacsomag indexe nem frissül megfelelően. A probléma megoldásához ellenőrizze az ["ismeretlen csomag" hibaüzenetet az IoT DevKit GYIK-ben.](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
-Alkalmazás inicializálása, után kattintson a gombra A kiadási, majd óvatosan rázza meg az DevKit üzenőfal. Ez a művelet lekérdezi egy véletlenszerű tweet, amely tartalmazza a korábban megadott hashtaggel. Néhány másodpercen belül egy tweetet a DevKit képernyőn jelenik meg:
+Az alkalmazás inicializálása után kattintson az A gombra, majd óvatosan rázza meg a DevKit táblát. Ez a művelet egy véletlenszerű tweetet kér le, amely a korábban megadott hashtaget tartalmazza. Néhány másodpercen belül megjelenik egy tweet a DevKit képernyőjén:
 
 ### <a name="arduino-application-initializing"></a>Arduino alkalmazás inicializálása...
 
-![Arduino-application-initializing](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
+![Arduino-alkalmazás-inicializálás](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
 
-### <a name="press-a-to-shake"></a>Nyomja le a rázza meg A...
+### <a name="press-a-to-shake"></a>Nyomja meg az A gombot a rázkódáshoz...
 
-![Nyomja le – egy-az-rázó](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
+![Nyomja meg az A-to-shake](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
 
-### <a name="ready-to-shake"></a>Készen áll a rázza meg...
+### <a name="ready-to-shake"></a>Készen állok a rázásra...
 
-![Kész – rázó](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
+![Rázkódásra kész](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
 
-### <a name="processing"></a>Feldolgozása...
+### <a name="processing"></a>Feldolgozás...
 
 ![Feldolgozás](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
 
-### <a name="press-b-to-read"></a>Nyomja meg a B olvasható...
+### <a name="press-b-to-read"></a>Nyomja meg a B olvasni ...
 
-![Nyomja meg B-olvasható](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-5.png)
+![Nyomja meg a-B-olvasni](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-5.png)
 
-### <a name="display-a-random-tweet"></a>Egy véletlenszerű tweet megjelenítése...
+### <a name="display-a-random-tweet"></a>Véletlenszerű tweet megjelenítése...
 
-![Display-a-random-tweet](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
+![Kijelző-a-random-csipog](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
 
-- Nyomja meg ismét gombra, majd egy új tweetet rázza meg.
-- Görgessen végig a Twitter-üzenetet a többi B gomb megnyomásával.
+- Nyomja meg ismét az A gombot, majd rázza meg az új tweetet.
+- Nyomja meg a B gombot, hogy végiggörgetje a tweet többi részét.
 
 ## <a name="how-it-works"></a>Működés
 
-![Diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
-Az Arduino rajz eseményt küld az Azure IoT hubra. Ezt az eseményt akkor indítja az Azure Functions-alkalmazás. Az Azure Functions-alkalmazás a Twitter API-hoz csatlakozhat, és beolvasni egy tweetet logikát tartalmaz. Azt a C2D, majd burkolja a tweet szövege (felhőből az eszközre irányuló) üzenet, és küld vissza az eszközön.
+Az Arduino-vázlat egy eseményt küld az Azure IoT Hubnak. Ez az esemény elindítja az Azure Functions alkalmazást. Az Azure Functions alkalmazás tartalmazza a Twitter API-jához való csatlakozás és a tweet lekérésének logikáját. Ezután a tweet szövegét egy C2D (Felhő-eszköz) üzenetbe csomagolja, és visszaküldi az eszközre.
 
-## <a name="optional-use-your-own-twitter-bearer-token"></a>Nem kötelező: A saját Twitter-tulajdonosi jogkivonat használata
+## <a name="optional-use-your-own-twitter-bearer-token"></a>Nem kötelező: Használja a saját Twitter bemutatóra token
 
-A mintaprojekt tesztelési célokra használja az előre konfigurált Twitter tulajdonosi jogkivonattal. Van azonban egy [sávszélesség-korlátjának](https://dev.twitter.com/rest/reference/get/search/tweets) minden Twitter-fiók. Ha azt szeretné, érdemes megfontolnia a saját token használatát, kövesse az alábbi lépéseket:
+Tesztelési célokra ez a mintaprojekt egy előre konfigurált Twitter-tulajdonosi jogkivonatot használ. Azonban van egy [arány határ](https://dev.twitter.com/rest/reference/get/search/tweets) minden Twitter számla. Ha meg szeretné fontolni a saját jogkivonat használatát, kövesse az alábbi lépéseket:
 
-1. Lépjen a [Twitter-fejlesztői portál](https://dev.twitter.com/) Twitteren új alkalmazás regisztrálásához.
+1. Az új Twitter-alkalmazás regisztrálásához látogasson el a [Twitter fejlesztői portáljára.](https://dev.twitter.com/)
 
-2. [Fogyasztói kulcs és a fogyasztói titkos kódok lekérése](https://support.yapsody.com/hc/en-us/articles/360003291573-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) az alkalmazás.
+2. Az alkalmazás [fogyasztói kulcs- és fogyasztói titkainak beszerezése.](https://support.yapsody.com/hc/en-us/articles/360003291573-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-)
 
-3. Használat [néhány segédprogram](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) használatával hozzon létre egy Twitter-tulajdonosi jogkivonat ezen két kulcsot.
+3. Használja [néhány segédprogram](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) ot, hogy létrehoz egy Twitter bemutatóra tokent ebből a két kulcsból.
 
-4. Az a [az Azure portal](https://portal.azure.com/){: target = "_blank"}, kaphat a **erőforráscsoport** , és keresse meg az Azure-függvény (típusa: App Service-ben) a "Rázó, rázó" projekt. A név mindig tartalmazza a "rázó..." karakterlánc.
+4. Az [Azure Portalon](https://portal.azure.com/){:target="_blank"}, bekerüljön az **erőforráscsoportba,** és keresse meg az Azure-függvényt (Típus: App Service) a "Shake, Shake" projekthez. A név mindig tartalmazza a "shake..." Karakterlánc.
 
-   ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![azúr-függvény](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
-5. A kód frissítése `run.csx` belül **Funkciók > shakeshake-cs** saját jogkivonattal:
+5. Frissítse a `run.csx` **Functions > shakeshake-cs** kódját a saját jogkivonatával:
 
    ```csharp
    string authHeader = "Bearer " + "[your own token]";
@@ -179,33 +179,33 @@ A mintaprojekt tesztelési célokra használja az előre konfigurált Twitter tu
   
    ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. Mentse a fájlt, majd kattintson a **futtatása**.
+6. Mentse a fájlt, és kattintson a **Futtatás gombra.**
 
-## <a name="problems-and-feedback"></a>Problémák és visszajelzés
+## <a name="problems-and-feedback"></a>Problémák és visszajelzések
 
-Hogyan kapcsolatos hibák elhárítása, vagy visszajelzést. 
+Problémák elhárítása vagy visszajelzés küldése. 
 
 ### <a name="problems"></a>Problémák
 
-Az egyik probléma láthatóvá teheti, ha a képernyő "No Tweetek" jelenít meg, amíg minden lépés végrehajtása sikeresen befejeződött. Ez az állapot általában akkor fordul elő, üzembe helyezése, és futtassa a mintát, mert a függvényalkalmazáshoz szükséges bárhol a néhány másodperc a hidegindítás kevesebb mint egy perc alatt az alkalmazás első alkalommal. 
+Az egyik probléma, amit lehetett látni, ha a képernyőn megjelenik a "No Tweets", miközben minden lépés sikeresen futott. Ez a feltétel általában akkor fordul elő, amikor először telepíti és futtatja a mintát, mert a függvényalkalmazás igényel bárhol néhány másodperctől akár egy perc ig hidegindítással az alkalmazás. 
 
-Vagy a kód futtatásakor vannak bizonyos jelekből, amely egy, az alkalmazás újraindítása miatt. Ez az állapot akkor fordul elő, amikor az eszköz alkalmazás kérheti le a tweet beolvasása közben időtúllépés. Ebben az esetben megpróbálhatja újból az egyik vagy mindkét módszer a probléma megoldásához:
+Vagy a kód futtatásakor vannak olyan blips, amelyek az alkalmazás újraindítását okozzák. Ha ez a feltétel bekövetkezik, az eszközalkalmazás időtúltöltést kaphat a tweet letöltéséhez. Ebben az esetben megpróbálhatja az egyik vagy mindkét módszert a probléma megoldásához:
 
-1. A Visszaállítás gombra a DevKit újra futtatni az eszközalkalmazáshoz.
+1. Kattintson a visszaállítás gombra a DevKit az eszköz alkalmazás ismételt futtatásához.
 
-2. Az a [az Azure portal](https://portal.azure.com/), az Azure Functions-alkalmazás hozott létre, és indítsa újra:
+2. Az [Azure Portalon](https://portal.azure.com/)keresse meg a létrehozott Azure Functions alkalmazást, és indítsa újra:
 
    ![azure-function-restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 ### <a name="feedback"></a>Visszajelzés
 
-Ha más problémákat tapasztal, tekintse meg a [IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) , vagy lépjen kapcsolatba velünk a kapcsolatot a következő csatornákon:
+Ha egyéb problémákat tapasztal, olvassa el az [IoT DevKit GYIK-et,](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy lépjen kapcsolatba velünk a következő csatornákon:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik egy DevKit eszköz csatlakoztatása az Azure IoT távoli figyelési megoldásgyorsító és beolvasni egy tweetet, Íme a javasolt következő lépések:
+Most, hogy megtanulta, hogyan csatlakoztathat egy DevKit-eszközt az Azure IoT Remote Monitoring megoldásgyorsítóhoz, és hogyan kérhet le egy tweetet, az alábbi lépéseket ismertetheti:
 
-* [Az Azure IoT távoli figyelési megoldásgyorsító áttekintése](https://docs.microsoft.com/azure/iot-suite/)
+* [Az Azure IoT remote monitoring megoldásgyorsító – áttekintés](https://docs.microsoft.com/azure/iot-suite/)

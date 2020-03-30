@@ -1,7 +1,7 @@
 ---
 title: JavaScript-minták
 titleSuffix: Azure AD B2C
-description: Ismerje meg az Azure Active Directory B2C JavaScript használatával.
+description: Ismerje meg a JavaScript használatát az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,42 +12,42 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187661"
 ---
-# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták az Azure Active Directory B2C használata
+# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták az Azure Active Directory B2C-ben való használatra
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) alkalmazásaihoz saját JavaScript-ügyféloldali kódot adhat hozzá.
+Saját JavaScript ügyféloldali kódot adhat hozzá az Azure Active Directory B2C (Azure AD B2C) alkalmazásokhoz.
 
-JavaScript engedélyezése az alkalmazásokhoz:
+A JavaScript engedélyezése az alkalmazásokhoz:
 
-* Elem hozzáadása az [Egyéni szabályzathoz](custom-policy-overview.md)
-* [Lapelrendezés kiválasztása](page-layout.md)
-* [B2clogin.com](b2clogin.md) használata a kérésekben
+* Elem hozzáadása az [egyéni házirendhez](custom-policy-overview.md)
+* [Oldalelrendezés kijelölése](page-layout.md)
+* [A b2clogin.com](b2clogin.md) használata a kérésekben
 
 Ez a cikk azt ismerteti, hogyan módosíthatja az egyéni házirendet a parancsfájlok végrehajtásának engedélyezéséhez.
 
 > [!NOTE]
-> Ha engedélyezni szeretné a JavaScriptet a felhasználói folyamatokhoz, tekintse [meg a JavaScript-és lapelrendezés-verziókat a Azure Active Directory B2C](user-flow-javascript-overview.md).
+> Ha engedélyezni szeretné a JavaScriptet a felhasználói folyamatokhoz, olvassa el [a JavaScript és a lapelrendezés verziói című témakört az Azure Active Directory B2C-ben.](user-flow-javascript-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="select-a-page-layout"></a>Lapelrendezés kiválasztása
+### <a name="select-a-page-layout"></a>Oldalelrendezés kijelölése
 
-* Válassza ki az alkalmazás felhasználói felületi elemeinek [lapelrendezés](contentdefinitions.md#select-a-page-layout) elemet.
+* Válassza ki az alkalmazás felhasználói felületének elemeinek [lapelrendezését.](contentdefinitions.md#select-a-page-layout)
 
-    Ha a JavaScriptet szeretné használni, meg kell [adnia egy](contentdefinitions.md#migrating-to-page-layout) lapelrendezés-verziót, amely az egyéni szabályzat *összes* tartalmi definíciójának `contract` verzióját használja.
+    Ha JavaScriptet kíván használni, meg kell [határoznia egy lapelrendezési verziót](contentdefinitions.md#migrating-to-page-layout) az egyéni házirend `contract` *összes* tartalomdefiníciójának verzióverziójával.
 
-## <a name="add-the-scriptexecution-element"></a>Adja hozzá a ScriptExecution elemet
+## <a name="add-the-scriptexecution-element"></a>A ScriptExecution elem hozzáadása
 
-A szkriptek végrehajtásának engedélyezéséhez adja hozzá a **ScriptExecution** elemet a [RelyingParty](relyingparty.md) elemhez.
+A parancsfájl-végrehajtásengedélyezéséhez adja hozzá a **ScriptExecution** elemet a [RelyingParty](relyingparty.md) elemhez.
 
-1. Nyissa meg az egyéni házirend-fájlt. Például: *SignUpOrSignin. XML*.
+1. Nyissa meg az egyéni házirendfájlt. Például *SignUpOrSignin.xml*.
 2. Adja hozzá a **ScriptExecution** elemet a **RelyingParty** **UserJourneyBehaviors** eleméhez:
 
     ```XML
@@ -59,15 +59,15 @@ A szkriptek végrehajtásának engedélyezéséhez adja hozzá a **ScriptExecuti
       ...
     </RelyingParty>
     ```
-3. Mentse, és töltse fel a fájlt.
+3. Mentse és töltse fel a fájlt.
 
 [!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript-minták
 
-### <a name="show-or-hide-a-password"></a>Megjelenítése vagy elrejtése a jelszóval
+### <a name="show-or-hide-a-password"></a>Jelszó megjelenítése vagy elrejtése
 
-Egy közös segít az ügyfeleknek a regisztráció sikeres módja, hogy mi ezek adta a jelszavát, megtekintheti őket. A funkció lehetővé teszi a felhasználók regisztráljanak engedélyezésével, egyszerűen és a jelszavát, ha a szükséges javításokat. A jelszó típusú mezőknél megjelenik egy jelölőnégyzet a **jelszó megjelenítése** címkével.  Ez lehetővé teszi a felhasználó számára a jelszót egyszerű szövegként. Ez a kódrészlet a regisztrálási vagy bejelentkezési sablonhoz önellenőrzött laphoz a következők:
+Az ügyfelek nek a regisztráció sikerességében való segítésének gyakori módja, ha lehetővé teszi számukra, hogy megtekinthessék, mit adtak meg jelszóként. Ez a beállítás segít a felhasználóknak a regisztrációban azáltal, hogy lehetővé teszi számukra, hogy szükség esetén könnyen láthassák és javíthassák a jelszavukat. Minden jelszótípusú mezőnek van egy **jelölőnégyzetje** a Jelszó megjelenítése címkével.  Ez lehetővé teszi, hogy a felhasználó egyszerű szövegként lássa a jelszót. A kódrészlet felvétele a regisztrációs vagy bejelentkezési sablonba egy önérvényesítő laphoz:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -113,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>Használati feltételek hozzáadása
 
-Adja meg a következő kódot az oldalra, ahol használni szeretné a használati **feltételeket** jelölőnégyzetet. Ezt a jelölőnégyzetet az helyi fiók regisztrációs és a közösségi fiók regisztrációs lapok általában szükség lesz.
+Adja meg a következő kódot az oldalába, ahol a **Használati feltételek** jelölőnégyzetet szeretné megadni. Erre a jelölőnégyzetre általában a helyi fiók regisztrációs és közösségi fiókregisztrációs oldalain van szükség.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -138,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-A kódban cserélje le a `termsOfUseUrl` kifejezést a használati feltételekre mutató hivatkozással. A címtárhoz hozzon létre egy **termsOfUse** nevű új felhasználói attribútumot, majd adja hozzá a **termsOfUse** felhasználói attribútumként.
+A kódban `termsOfUseUrl` cserélje le a használati feltételekre mutató hivatkozást. A címtárhoz hozzon létre egy új felhasználói attribútumot, a **"termsOfUse"-t,** majd adja meg **a termsOfUse-t** felhasználói attribútumként.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogyan szabhatja testre az alkalmazásai felhasználói felületét az [alkalmazás felhasználói felületének testreszabásával az Azure Active Directory B2C egyéni házirendjének használatával](custom-policy-ui-customization.md).
+További információ arról, hogyan szabhatja testre az alkalmazások felhasználói felületét [az alkalmazás felhasználói felületének testreszabása az Azure Active Directory B2C egyéni házirendjével című részében.](custom-policy-ui-customization.md)

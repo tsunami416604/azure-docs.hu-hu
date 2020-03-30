@@ -1,124 +1,124 @@
 ---
-title: Sablonok létrehozása a Visual Studio Code használatával
-description: Ismerje meg a Visual Studio Code és a Azure Resource Manager Tools bővítmény telepítését és használatát.
+title: Sablonok létrehozása a Visual Studio-kód dal
+description: Ismerje meg, hogyan telepítheti és használhatja a Visual Studio-kódot és az Azure Resource Manager Tools bővítményt.
 author: mumian
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
 ms.openlocfilehash: 585e2773ea5d6af184f85e65b63d39b60d632146
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273630"
 ---
-# <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
+# <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok létrehozása a Visual Studio-kód dal
 
-A Visual Studio Code egy egyszerű, többplatformos, nyílt forráskódú szerkesztő. A Azure Resource Manager sablon-eszközök bővítmény a Resource Manager-sablonok fejlesztéséhez készült beépülő modul. A bővítmény nyelvi támogatást biztosít a sablonokhoz az IntelliSense, a Szintaxiskiemelés, a beágyazott Súgó és számos más nyelvi funkció biztosításához. Együttesen biztosítják a sablonok ajánlott fejlesztési élményét.
+Visual Studio Code egy könnyű, többplatformos, nyílt forráskódú szerkesztő. Az Azure Resource Manager sabloneszközök bővítmény egy plugin a Resource Manager sablon fejlesztés. A kiterjesztés nyelvi támogatást ad a sablonokhoz, hogy intellisense-t, szintaxiskiemelést, in-line segítséget és sok más nyelvi funkciót biztosítson. Együtt biztosítják az ajánlott sablonfejlesztési élményt.
 
 ## <a name="install-visual-studio-code"></a>A Visual Studio Code telepítése
 
-A Visual Studio Code támogatja a MacOS, a Windows és a Linux rendszert.  A [Visual Studio Code](https://code.visualstudio.com/)-ból is telepíthető.
+A Visual studio Code támogatja a MacOS, a Windows és a Linux rendszert.  A [Visual Studio Code](https://code.visualstudio.com/)programból telepíthető.
 
-## <a name="install-resource-manager-tools-extension"></a>Resource Manager-eszközök bővítményének telepítése
+## <a name="install-resource-manager-tools-extension"></a>Az Erőforráskezelő eszközök bővítmény telepítése
 
 1. Nyissa meg a Visual Studio Code-ot.
-1. A bal oldali menüben válassza a **bővítmények** lehetőséget. Vagy a **nézet** menüben válassza a **bővítmények** lehetőséget a bővítmények panel megnyitásához.
+1. Válassza a bal oldali menü **Bővítmények parancsát.** Vagy a **Nézet** menüben válassza a **Bővítmények** lehetőséget a Bővítmények ablaktábla megnyitásához.
 
-    ![A Visual Studio Code Resource Manager Tools bővítmény telepítése](./media/use-vs-code-to-create-template/resource-manager-visual-studio-code-tools-extension.png)
-1. Keresse meg a **Resource Managert**.
-1. **Azure Resource Manager eszközök**területen válassza a **telepítés** lehetőséget.
+    ![A Visual Studio Code Resource Manager Tools bővítményének telepítése](./media/use-vs-code-to-create-template/resource-manager-visual-studio-code-tools-extension.png)
+1. **Erőforrás-kezelő**keresése .
+1. Válassza **a Telepítés** lehetőséget az Azure Resource Manager Tools **csoportban.**
 
 ## <a name="the-extension-features"></a>A bővítmény funkciói
 
-### <a name="colorization-for-template-language-expressions"></a>A sablon nyelvi kifejezései színezése
+### <a name="colorization-for-template-language-expressions"></a>Sablonnyelvi kifejezések színezése
 
-A paraméterek, változók, függvények, nevek és kifejezések színe a következő képernyőképen látható módon történik:
+A paraméterek, változók, függvények, nevek és kifejezések színkóddal vannak elhangolva, ahogy az a következő képernyőképen látható:
 
-![Visual Studio Code Resource Manager-eszközök bővítményeinek színezése](./media/use-vs-code-to-create-template/resource-manager-tools-extension-colorization.png)
+![Visual Studio Code Resource Manager eszközök kiterjesztések színezés](./media/use-vs-code-to-create-template/resource-manager-tools-extension-colorization.png)
 
-A sablon vázlat nézete megkönnyíti a nagyméretű sablonok közötti átjárást.
+A sablon vázlatnézete megkönnyíti a nagy sablonok közötti navigálást.
 
-### <a name="intellisense"></a>IntelliSense
+### <a name="intellisense"></a>Intellisense
 
-A Resource Manager-sablon kiterjesztése a függvények neveinek, paramétereinek, változóinak és hivatkozásainak a lehetséges befejezését tudja. A beírt IntelliSense-javaslatok beírásakor. Ha folytatja a karakterek beírását, a rendszer szűri a tagok (változók, metódusok stb.) listáját úgy, hogy csak a beírt karaktereket tartalmazó tagokat tartalmazza. Nyomja le a **Tab** billentyűt, vagy **adja meg** a kijelölt tag beszúrását.
+Az Erőforrás-kezelő sablonbővítmény ismeri a függvénynevek, paraméterek, változók és hivatkozások lehetséges befejezéséit. Az IntelliSense javaslatok gépelés közben jelennek meg. Ha folytatja a karakterek beírását, a tagok listája (változók, metódusok stb.) csak a beírt karaktereket tartalmazó tagokat tartalmazza. **A Tab** vagy az Enter billentyű **lenyomásával** a kijelölt tagot szúrja be.
 
-- Beépített függvények nevei
+- Beépített függvénynevek
 
-    ![Visual Studio Code Resource Manager Tools Extensions IntelliSense-függvények](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-functions.png)
+    ![Visual Studio Code Resource Manager eszközök kiterjesztések intellisense funkciók](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-functions.png)
 
-- Paraméterek referenciái
+- Paraméterhivatkozások
 
-    ![Visual Studio Code Resource Manager Tools Extensions IntelliSense-paraméterek](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-parameters.png)
+    ![Visual Studio Code Resource Manager eszközök kiterjesztések intellisense paraméterek](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-parameters.png)
 
-- Változó referenciái
+- Változó hivatkozások
 
-    ![Visual Studio Code Resource Manager Tools Extensions IntelliSense-változók](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-variables.png)
+    ![Visual Studio Code Resource Manager eszközök kiterjesztések intellisense változók](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-variables.png)
 
-- resourceGroup () tulajdonságai
+- resourceGroup() tulajdonságai
 
-    ![Visual Studio Code Resource Manager Tools Extensions IntelliSense-függvények](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-resourcegroup.png)
+    ![Visual Studio Code Resource Manager eszközök kiterjesztések intellisense funkciók](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-resourcegroup.png)
 
-Emellett az IntelliSense az előfizetés () tulajdonságaival és az objektumok változóinak tulajdonságaival is működik.
+Ezen túlmenően, intellisense is működik subscription() tulajdonságok és a tulajdonságok referenciák változók, amelyek objektumok.
 
-### <a name="signature-help-for-function-parameters"></a>A függvény paramétereinek aláírása – Súgó
+### <a name="signature-help-for-function-parameters"></a>Aláírási súgó a függvényparaméterekhez
 
-Ha a függvények neve fölé mutat, a bővítmény az aláírás súgóját jeleníti meg a függvények paramétereinek megjelenítéséhez.
+Ha a függvénynevek fölé viszi az egérmutatót, a bővítmény megjeleníti a függvényparaméterek aláírási súgóját.
 
-![A Visual Studio Code Resource Manager Tools Extensions Signature függvénye](./media/use-vs-code-to-create-template/resource-manager-tools-extension-signature-function.png)
+![Visual Studio Code Resource Manager eszközök kiterjesztések aláírás funkció](./media/use-vs-code-to-create-template/resource-manager-tools-extension-signature-function.png)
 
-### <a name="go-to-definition-for-variable-and-parameter-references"></a>Ugrás a változó és a paraméterek hivatkozásainak definíciója
+### <a name="go-to-definition-for-variable-and-parameter-references"></a>Ugrás a definícióra változó- és paraméterhivatkozások esetén
 
-A definícióra ugorhat a **Ctrl + kattintással**, vagy a helyi menüben, ahogy az a képernyőképen is látható: ![Visual Studio Code Resource Manager-eszközök bővítmények pont a definíció](./media/use-vs-code-to-create-template/resource-manager-tools-extension-context-menu.png)
+A definícióra a **Ctrl+Click**billentyűkombinációval vagy a képernyőképen látható ![helyi menü használatával ugorhat a definícióra: A Visual Studio Code Resource Manager eszközbővítményei a definícióra lépnek.](./media/use-vs-code-to-create-template/resource-manager-tools-extension-context-menu.png)
 
-A definíciót a **Ctrl + Alt + kattintás billentyűkombinációval**is megnyithatja.
+A definíciót a **Ctrl+Alt+Click**billentyűkombinációval nyithatja meg.
 
-### <a name="peek-for-variable-and-parameter-definitions"></a>A változók és paraméterek definícióinak betekintése
+### <a name="peek-for-variable-and-parameter-definitions"></a>Betekintés változó- és paraméterdefiníciókba
 
-A bepillantott szerkesztő megnyitásához használja a helyi menüt az előző képernyőképen látható módon.
+A betekintő szerkesztő megnyitásához használja a helyi menüt az előző képernyőképen látható módon.
 
-Az alábbi képernyőfelvételen a betekintési szerkesztő látható:
+A következő képernyőképen a betekintő szerkesztő látható:
 
-![Visual Studio Code Resource Manager-eszközök bővítményei betekintés szerkesztő](./media/use-vs-code-to-create-template/resource-manager-tools-extension-peek-editor.png)
+![Visual Studio Code Resource Manager eszközök bővítmények peek szerkesztő](./media/use-vs-code-to-create-template/resource-manager-tools-extension-peek-editor.png)
 
-### <a name="find-all-references-for-variables-and-parameters"></a>A változók és paraméterek összes hivatkozásának megkeresése
+### <a name="find-all-references-for-variables-and-parameters"></a>A változókra és paraméterekre vonatkozó összes hivatkozás megkeresése
 
 Az összes hivatkozás megkereséséhez használja a helyi menüt az előző képernyőképen látható módon.
 
-Az alábbi képernyőfelvételen a hivatkozások kiemelése látható:
+A következő képernyőkép bemutatja, hogyan vannak kiemelve a hivatkozások:
 
-![A Visual Studio Code Resource Manager-eszközök bővítményei megkeresik az összes hivatkozást](./media/use-vs-code-to-create-template/resource-manager-tools-extension-find-all-references.png)
+![A Visual Studio Kóderőforrás-kezelő eszközbővítményei az összes hivatkozást megtalálják](./media/use-vs-code-to-create-template/resource-manager-tools-extension-find-all-references.png)
 
-### <a name="rename-all-references-for-variables-and-parameters"></a>A változók és paraméterek összes hivatkozásának átnevezése
+### <a name="rename-all-references-for-variables-and-parameters"></a>Változók és paraméterek összes hivatkozásának átnevezése
 
-A változók és paraméterek összes hivatkozásának átnevezéséhez használja a helyi menüt az előző képernyőképen látható módon.
+A változókra és paraméterekre vonatkozó összes hivatkozás átnevezéséhez használja a helyi menüt az előző képernyőképen látható módon.
 
-### <a name="hover-for-parameter-description"></a>A paraméter leírásának mutatója
+### <a name="hover-for-parameter-description"></a>Rámutatás a paraméter leírására
 
-![Visual Studio Code Resource Manager-eszközök bővítményei hover-definíció](./media/use-vs-code-to-create-template/resource-manager-tools-extension-hover-parameters.png)
+![Visual Studio Code Resource Manager eszközök kiterjesztések hover definition](./media/use-vs-code-to-create-template/resource-manager-tools-extension-hover-parameters.png)
 
-### <a name="brace-matching"></a>Zárójel egyeztetése
+### <a name="brace-matching"></a>Kapcsos zárójel egyeztetés
 
-Ha a kurzor közel van az egyikhez, az egyező zárójelek ki vannak emelve. Ha egy kapcsos zárójelre kattint, a hozzá tartozó kapcsos zárójel is ki van emelve, ahogy az alábbi képernyőképen is látható:
+A megfelelő zárójelek kiemelve jelennek meg, amint a kurzor az egyik közelébe kerül. Amikor egy kapcsos zárójelre kattint, a megfelelő kapcsos zárójel is kilesz emelve az alábbi képernyőképen látható módon:
 
-![Visual Studio Code Resource Manager-eszközök bővítményeinek megfeleltetése](./media/use-vs-code-to-create-template/resource-manager-tools-extension-brace-matching.png)
+![Visual Studio Code Resource Manager eszközök kiterjesztések kapcsos zárójel megfelelő](./media/use-vs-code-to-create-template/resource-manager-tools-extension-brace-matching.png)
 
 ### <a name="show-errors-and-warnings"></a>Hibák és figyelmeztetések megjelenítése
 
-A bővítmény által azonosított hibák a következők:
+A kiterjesztés által azonosított hibák a következők:
 
-- Nem definiált paraméterek hivatkozásai
-- Nem definiált változó referenciái
-- Ismeretlen függvények nevei
-- a Reference () függvény használata a változó definíciójában
-- Helytelen számú argumentum a függvényekben
+- Nem definiált paraméterhivatkozások
+- Nem definiált változóhivatkozások
+- Ismeretlen függvénynevek
+- reference() függvényhasználat a változó definíciójában
+- A függvényekben lévő argumentumok helytelen száma
 
-A figyelmeztetések a következők:
+A figyelmeztetések a következőket tartalmazzák:
 
 - Nem használt paraméterek
 - Nem használt változók
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Azure Resource Manager sablonok létrehozásáról az [oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md)című témakörben olvashat bővebben.
-- A Visual Studio Code használatával a gyors útmutatóban a következő témakörben talál további információt [: Azure Resource Manager sablonok létrehozása Visual Studio Code használatával](quickstart-create-templates-use-visual-studio-code.md)
+- Az Azure Resource Manager-sablonok létrehozásáról az [Oktatóanyag: Az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md)című témakörben olvashat.
+- A Visual Studio-kód használatával történő rövid útmutató t, olvassa el a [rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio-kód használatával című témakört.](quickstart-create-templates-use-visual-studio-code.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Hiányzó adatértékek: modulok leírása'
+title: 'Hiányzó adatok tisztítása: modulhivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan távolíthatja el, cserélheti vagy következtetheti ki a hiányzó értékeket a Azure Machine Learning tiszta hiányzó adatmoduljának használatával.
+description: Ismerje meg, hogyan használhatja a Hiányzó adatok tisztítása modult az Azure Machine Learningben a hiányzó értékek eltávolítására, cseréjére vagy kikövetkeztetésére.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,137 +9,137 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 14c3bc968da9d398fbc14eda74378047cf28277b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477697"
 ---
-# <a name="clean-missing-data-module"></a>Hiányzó adatmodul törlése
+# <a name="clean-missing-data-module"></a>Hiányzó adatok modul tisztítása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-Ezzel a modullal törölheti, lecserélheti vagy következtetheti ki a hiányzó értékeket. 
+Ezzel a modullal eltávolíthatja, kicserélheti vagy kikövetkeztetheti a hiányzó értékeket. 
 
-Az adatszakértők gyakran tekintik meg a hiányzó értékek adatait, majd különböző műveleteket hajtanak végre az adatok kijavításához vagy új értékek beszúrásához. Az ilyen tisztítási műveletek célja, hogy megakadályozza a modell betanításakor felmerülő hiányzó adatok által okozott problémákat. 
+Az adatszakértők gyakran ellenőrzik a hiányzó értékeket, majd különböző műveleteket hajtanak végre az adatok rögzítéséhez vagy új értékek beszúrásához. Az ilyen tisztítási műveletek célja, hogy megelőzzék a hiányzó adatok által okozott problémákat, amelyek a modell betanítása során merülhetnek fel. 
 
-Ez a modul több típusú műveletet támogat a "tisztítás" hiányzó értékekhez, beleértve a következőket:
+Ez a modul támogatja a hiányzó értékek "tisztítására" szolgáló műveletek több típusát, többek között a következőket:
 
-+ Hiányzó értékek cseréje helyőrző, középérték vagy más értékre
-+ A hiányzó értékeket tartalmazó sorok és oszlopok teljes eltávolítása
-+ Statisztikai módszerek alapján kikövetkeztetett értékek
++ A hiányzó értékek cseréje helyőrzővel, középértékkel vagy más értékkel
++ Hiányzó értékeket tartalmazó sorok és oszlopok teljes eltávolítása
++ Statisztikai módszereken alapuló kiferring értékek
 
 
-A modul használata nem módosítja a forrás adatkészletet. Ehelyett létrehoz egy új adatkészletet a munkaterületen, amelyet a következő munkafolyamatban használhat. Azt is megteheti, hogy újra felhasználja az új, megtisztított adatkészletet.
+A modul használata nem módosítja a forrásadatkészletet. Ehelyett létrehoz egy új adatkészletet a munkaterületen, amelyet a későbbi munkafolyamatban használhat. Az új, megtisztított adatkészletet is mentheti újrafelhasználásra.
 
-Ez a modul a hiányzó értékek tisztításához használt átalakítás definícióját is megjeleníti. Ezt az átalakítást újrahasználhatja más, azonos sémával rendelkező adatkészleteken az [átalakítási modul alkalmazása](./apply-transformation.md) lehetőség használatával.  
+Ez a modul a hiányzó értékek tisztításához használt transzformáció definícióját is kiadja. Ezt az átalakítást más, ugyanazzal a sémával rendelkező adatkészleteken is használhatja az [Átalakítás alkalmazása](./apply-transformation.md) modul használatával.  
 
-## <a name="how-to-use-clean-missing-data"></a>A tiszta hiányzó adatértékek használata
+## <a name="how-to-use-clean-missing-data"></a>A Hiányzó adatok tisztítása
 
-Ez a modul lehetővé teszi a tisztítási művelet definiálását. A tisztítási műveletet úgy is mentheti, hogy később új adatként is alkalmazható legyen. A takarítási folyamat létrehozásáról és mentéséhez a következő részekben talál további információt: 
+Ez a modul lehetővé teszi a tisztítási művelet meghatározását. A tisztítási műveletet mentheti is, hogy később alkalmazhassa az új adatokra. A tisztítási folyamat létrehozásáról és mentéséről a következő szakaszokban található: 
  
-+ [Hiányzó értékek cseréje](#replace-missing-values)
++ [A hiányzó értékek cseréje](#replace-missing-values)
   
-+ [Takarítási átalakítás alkalmazása új adatértékekre](#apply-a-saved-cleaning-operation-to-new-data)
++ [Tisztítási átalakítás alkalmazása új adatokra](#apply-a-saved-cleaning-operation-to-new-data)
  
 > [!IMPORTANT]
-> A hiányzó értékek kezelésére használt tisztítási módszer jelentősen befolyásolhatja az eredményeket. Javasoljuk, hogy kísérletezzen különböző módszerekkel. Vegye fontolóra egy adott módszer használatának indoklását, valamint az eredmények minőségét.
+> A hiányzó értékek kezelésére használt tisztítási módszer jelentősen befolyásolhatja az eredményeket. Azt javasoljuk, hogy kísérletezzen különböző módszerekkel. Vegye figyelembe egy adott módszer használatának indoklását és az eredmények minőségét.
 
 ### <a name="replace-missing-values"></a>Hiányzó értékek cseréje  
 
-Minden alkalommal, amikor a [tiszta hiányzó](./clean-missing-data.md) adatmodult alkalmazza egy adathalmazra, a rendszer az összes kiválasztott oszlopra alkalmazza ugyanazt a tisztítási műveletet. Ezért ha eltérő módszerekkel kell megtisztítani a különböző oszlopokat, használja a modul különálló példányait.
+Minden alkalommal, amikor a [Hiányzó adatok tisztítása modult](./clean-missing-data.md) alkalmazza egy adathalmazra, ugyanazt a tisztítási műveletet alkalmazza a program az összes kijelölt oszlopra. Ezért ha különböző oszlopokat kell tisztítania különböző módszerekkel, használja a modul külön példányait.
 
-1.  Vegye fel a [tiszta hiányzó](./clean-missing-data.md) adatmodult a folyamatba, és kapcsolja össze a hiányzó értékeket tartalmazó adatkészletet.  
+1.  Adja hozzá a [Hiányzó adatok tisztítása modult](./clean-missing-data.md) a folyamathoz, és csatlakoztassa a hiányzó értékeket tartalmazó adatkészletet.  
   
-2.  A **tisztítani kívánt oszlopok**esetében válassza ki azokat az oszlopokat, amelyek tartalmazzák a hiányzó értékeket. Több oszlopot is kiválaszthat, de az összes kijelölt oszlopban ugyanazt a helyettesítő metódust kell használnia. Ezért általában a sztring oszlopokat és a numerikus oszlopokat külön kell megtisztítani.
+2.  Az **Oszlopok tisztításához**válassza ki a módosítani kívánt hiányzó értékeket tartalmazó oszlopokat. Több oszlopot is választhat, de minden kijelölt oszlopban ugyanazt a cseremódszert kell használnia. Ezért általában külön kell tisztítani a karakterláncoszlopokat és a numerikus oszlopokat.
 
-    Például a hiányzó értékek kereséséhez az összes numerikus oszlopban:
+    Például a hiányzó értékek ellenőrzése az összes numerikus oszlopban:
 
-    1. Válassza ki a **tiszta hiányzó** adatmodult, majd kattintson a modul jobb oldali paneljén található **Szerkesztés oszlopra** .
+    1. Válassza a **Hiányzó adatok tisztítása modult,** és kattintson a modul jobb oldali panelén található **Oszlop szerkesztése** elemre.
 
-    3. A **include (Belefoglalás**) mezőben válassza ki az **oszlopok típusai** elemet a legördülő listából, majd válassza a **numerikus**lehetőséget. 
+    3. A **Belefoglalás**csoportban válassza az **Oszloptípusok elemet** a legördülő listából, majd válassza a **Numerikus**lehetőséget. 
   
-    Minden kiválasztott tisztítási vagy helyettesítési módszernek a kijelölés **összes** oszlopára érvényesnek kell lennie. Ha valamelyik oszlopban lévő adatok nem kompatibilisek a megadott művelettel, a modul hibát ad vissza, és leállítja a folyamatot.
+    A választott tisztítási vagy cseremódszernek a kiválasztás **minden** oszlopára vonatkoznia kell. Ha valamelyik oszlopban lévő adatok nem kompatibilisek a megadott művelettel, a modul hibát ad vissza, és leállítja a folyamatot.
   
-3.  A **minimális hiányzó érték aránynál**határozza meg a művelet végrehajtásához szükséges hiányzó értékek minimális számát.  
+3.  A **Minimális hiányzó értékarány**esetében adja meg a végrehajtandó művelethez szükséges minimális hiányzó értékek számát.  
   
-    Ezt a kapcsolót a **hiányzó értékek maximális arányával** együtt használva definiálhatja azokat a feltételeket, amelyekben a tisztítási művelet elvégzése történik az adatkészleten. Ha túl sok vagy túl kevés sor hiányzik az értékek közül, a művelet nem hajtható végre. 
+    Ezzel a beállítással a **Maximális hiányzó értékaránynal** kombinálva határozhatja meg, hogy milyen feltételek mellett hajtson végre tisztítási műveletet az adatkészleten. Ha túl sok vagy túl kevés sor hiányzik az értékből, a művelet nem hajtható végre. 
   
-    A beírt szám a hiányzó értékek **arányát** jelöli az oszlopban lévő összes értékre. Alapértelmezés szerint a **hiányzó érték arány** tulajdonság értéke 0. Ez azt jelenti, hogy a hiányzó értékek akkor is törlődnek, ha csak egy hiányzó érték van megadva. 
+    A beírt szám a hiányzó értékek és az oszlop összes értékének **arányát** jelöli. Alapértelmezés szerint a **Minimális hiányzó értékarány** tulajdonság értéke 0. Ez azt jelenti, hogy a hiányzó értékek akkor is törlődnek, ha csak egy hiányzik érték. 
 
     > [!WARNING]
-    > Ezt az állapotot minden egyes oszlopnak teljesítenie kell ahhoz, hogy a megadott művelet vonatkozzon. Tegyük fel például, hogy három oszlopot jelölt ki, majd a hiányzó értékek minimális arányát .2 (20%) értékre állítja, de csak egy oszlop ténylegesen 20% hiányzó értéket tartalmaz. Ebben az esetben a karbantartási művelet csak az oszlopra vonatkozik, amely több mint 20% hiányzó értéket tartalmaz. Ezért a többi oszlop változatlan marad.
+    > A megadott művelet alkalmazásához ezt a feltételt minden egyes oszlopnak teljesítenie kell. Tegyük fel például, hogy három oszlopot választott ki, majd a hiányzó értékek minimális arányát 0,2-re (20%) állította be, de valójában csak egy oszlopban van 20% hiányzó érték. Ebben az esetben a tisztítási művelet csak a 20% -ot hiányzó értékekkel rendelkező oszlopra vonatkozna. Ezért a többi oszlop változatlan marad.
     > 
-    > Ha kétségei vannak, hogy a hiányzó értékek módosultak-e, válassza a **hiányzó érték jelző oszlop létrehozása**lehetőséget. Az adatkészlethez egy oszlop kerül, amely jelzi, hogy az egyes oszlopok megfelelnek-e a minimális és a maximális tartományhoz megadott feltételeknek.  
+    > Ha bármilyen kétsége van azzal kapcsolatban, hogy a hiányzó értékek módosultak-e, válassza a **Hiányzó értékjelző oszlop létrehozása lehetőséget.** A program egy oszlopot fűz az adatkészlethez annak jelzésére, hogy az egyes oszlopok megfelelnek-e a minimális és maximális tartományokra meghatározott feltételeknek.  
   
-4. A **hiányzó érték maximális arányához**határozza meg a művelet végrehajtásához szükséges hiányzó értékek maximális számát.   
+4. A **Hiányzó érték arány maximális mezőben**adja meg a végrehajtandó művelethez megjelenítendő hiányzó értékek maximális számát.   
   
-    Előfordulhat például, hogy a hiányzó érték-helyettesítést csak akkor szeretné végrehajtani, ha a sorok 30%-a vagy annál kevesebb értéket tartalmaz, de az értékeket a következőképpen hagyja, ha a sorok több mint 30%-a hiányzó értékkel rendelkezik.  
+    Előfordulhat például, hogy csak akkor szeretné végrehajtani a hiányzó értékhelyettesítést, ha a sorok 30%-a vagy kevesebb esetben tartalmaz hiányzó értékeket, de az értékeket úgy kell hagyni, ahogy van, ha a sorok több mint 30%-a hiányzik.  
   
-    A számot a hiányzó értékek arányát adja meg az oszlopban lévő összes értékhez. Alapértelmezés szerint a **hiányzó értékek maximális arányának** értéke 1. Ez azt jelenti, hogy a hiányzó értékek akkor is törlődnek, ha az oszlopban szereplő értékek 100%-a hiányzik.  
+    A számot úgy kell megadni, mint a hiányzó értékek és az oszlop összes értékének arányát. Alapértelmezés szerint a Hiányzó érték maximális aránya 1.Default, the **Maximum missing value ratio** is set to 1. Ez azt jelenti, hogy a hiányzó értékek akkor is törlődnek, ha az oszlopban lévő értékek 100%-a hiányzik.  
   
    
   
-5. A **tisztítási mód**beállításnál válassza a következő lehetőségek egyikét a hiányzó értékek lecseréléséhez vagy eltávolításához:  
+5. **Tisztítási módban**az alábbi lehetőségek közül választhat a hiányzó értékek cseréjére vagy eltávolítására:  
   
   
-    + **Egyéni helyettesítési érték**: ezzel a beállítással megadhat egy helyőrző értéket (például 0 vagy na), amely az összes hiányzó értékre vonatkozik. A helyettesítőként megadott értéknek kompatibilisnek kell lennie az oszlop adattípusával.
+    + **Egyéni helyettesítési érték:** Ezzel a beállítással olyan helyőrző értéket (például 0 vagy NA) adhat meg, amely az összes hiányzó értékre vonatkozik. A csereként megadott értéknek kompatibilisnek kell lennie az oszlop adattípusával.
   
-    + **Csere az Mean kifejezéssel**: kiszámítja az oszlop középértékét, és a középértéket használja az oszlopban szereplő összes hiányzó értékhez tartozó helyettesítő értékként.  
+    + **Csere átlaggal**: Kiszámítja az oszlop átlagát, és az átlagot használja az oszlop ban hiányzó értékek helyettesítésére.  
   
-        Csak olyan oszlopokra vonatkozik, amelyek egész, dupla vagy logikai adattípussal rendelkeznek.  
+        Csak egész, dupla vagy logikai adattípusokkal rendelkező oszlopokra vonatkozik.  
   
-    + **Lecserélés közepes**értékre: kiszámítja az oszlop középértékét, és a középértéket használja az oszlopban szereplő hiányzó értékek pótlására.  
+    + **Csere mediánértékkel:** Kiszámítja az oszlop mediánértékét, és a medián értéket használja az oszlopban hiányzó értékek helyettesítésére.  
   
-        Csak olyan oszlopokra vonatkozik, amelyek egész vagy dupla adattípussal rendelkeznek. 
+        Csak egész vagy dupla adattípust tartalmazó oszlopokra vonatkozik. 
   
-    + **Csere**a következő módra: kiszámítja az oszlop módját, és a módot használja helyettesítő értékként az oszlopban szereplő összes hiányzó értékhez.  
+    + **Csere móddal:** Kiszámítja az oszlop módját, és az oszlop minden hiányzó értékének helyettesítő értékeként a módot használja.  
   
-        Egész, dupla, logikai vagy kategorikus adattípusú oszlopokra vonatkozik. 
+        Egész, dupla, logikai vagy kategorikus adattípusokkal rendelkező oszlopokra vonatkozik. 
   
-    + **Teljes sor eltávolítása**: teljesen eltávolítja az adatkészlet bármely olyan sorát, amely egy vagy több hiányzó értéket tartalmaz. Ez akkor lehet hasznos, ha a hiányzó érték véletlenszerűen van megadva.  
+    + **Teljes sor eltávolítása**: Teljesen eltávolítja az adatkészlet egy vagy több hiányzó értékével rendelkező sorokat. Ez akkor hasznos, ha a hiányzó érték véletlenszerűen hiányzónak tekinthető.  
   
-    + **Teljes oszlop eltávolítása**: teljesen eltávolítja az adatkészlet minden olyan oszlopát, amely egy vagy több hiányzó értékkel rendelkezik.  
+    + **Teljes oszlop eltávolítása:** Teljesen eltávolítja az adatkészlet egy vagy több hiányzó értékével rendelkező oszlopokat.  
   
     
   
-6. Ha a beállítás, az **Egyéni helyettesítési**érték lehetőség van kiválasztva, a lehetőség **helyettesítő értéke** elérhető. Írjon be egy új értéket, amelyet helyettesítő értékként kíván használni az oszlopban található összes hiányzó értékhez.  
+6. A **Csere érték lehetőség** akkor érhető el, ha az **Egyéni helyettesítési érték lehetőséget**választotta. Írjon be egy új értéket, amelyet az oszlopban lévő összes hiányzó érték helyettesítő értékeként használ.  
   
-    Vegye figyelembe, hogy ezt a beállítást csak egész számmal, dupla, logikai vagy sztring típusú oszlopokban használhatja.
+    Ne feledje, hogy ezt a beállítást csak olyan oszlopokban használhatja, amelyek egész, dupla, logikai vagy karakterláncú.
   
-7. **Hiányzó érték jelző oszlop létrehozása**: válassza ezt a beállítást, ha azt szeretné, hogy az oszlopban szereplő értékek megfelelnek a hiányzó érték tisztításának feltételeinek. Ez a beállítás különösen akkor hasznos, ha új tisztítási műveletet állít be, és szeretné meggyőződni arról, hogy az a tervezett módon működik-e.
+7. **Hiányzó értékjelző oszlop létrehozása:** Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy az oszlopban szereplő értékek megfeleljenek-e a hiányzó értéktisztítás feltételeinek. Ez a beállítás különösen akkor hasznos, ha új tisztítási műveletet állít be, és biztos szeretne lenni abban, hogy az a tervezettnek megfelel.
   
-8. A folyamat futtatása.
+8. Küldje el a folyamatot.
 
 ### <a name="results"></a>Results (Eredmények)
 
 A modul két kimenetet ad vissza:  
 
--   **Tisztított adatkészlet**: a kijelölt oszlopokból álló adatkészlet, amely a megadott módon kezelt, hiányzó értékekkel, valamint egy kijelző oszlopával együtt, ha ezt a beállítást választotta.  
+-   **Tisztított adatkészlet**: A kijelölt oszlopokból álló adatkészlet, amelynek hiányzó értékei a megadott módon vannak kezelve, egy jelzőoszloppal együtt, ha ezt a beállítást választotta.  
 
-    A tisztításra kijelölt oszlopok is áthaladnak.  
+    A tisztításra nem kiválasztott oszlopok is "áthaladnak".  
   
--  **Tisztító transzformáció**: a tisztításhoz használt adatátalakítás, amely a munkaterületre menthető, és később is alkalmazható az új adataira.
+-  **Tisztítási átalakítás**: A tisztításhoz használt adatátalakítás, amely a munkaterületre menthető és később új adatokra alkalmazható.
 
-### <a name="apply-a-saved-cleaning-operation-to-new-data"></a>Mentett tisztítási művelet alkalmazása új adatértékre  
+### <a name="apply-a-saved-cleaning-operation-to-new-data"></a>Mentett tisztítási művelet alkalmazása új adatokra  
 
-Ha gyakran kell megismételni a tisztítási műveleteket, javasoljuk, hogy mentse a receptet Adattisztításra *átalakításként*, hogy újra ugyanazzal az adatkészlettel használja fel őket. A takarítási transzformáció mentése különösen akkor hasznos, ha gyakran újra kell importálni, majd törölni kell az azonos sémával rendelkező információkat.  
+Ha gyakran kell megismételnie a tisztítási műveleteket, javasoljuk, hogy az adattisztításreceptjét *átalakításként mentse,* hogy ugyanazt az adatkészletet újra felhasználhassa. A tisztítási átalakítás mentése különösen akkor hasznos, ha gyakran újra kell importálnia, majd meg kell tisztítania az azonos sémával rendelkező adatokat.  
       
-1.  Adja hozzá az [átalakítási modul alkalmazása](./apply-transformation.md) a folyamathoz lehetőséget.  
+1.  Adja hozzá az [Átalakítás alkalmazása](./apply-transformation.md) modult a folyamathoz.  
   
-2.  Adja hozzá a tisztítani kívánt adatkészletet, és kapcsolja össze az adatkészletet a jobb oldali bemeneti porthoz.  
+2.  Adja hozzá a tisztára szeretne menni, és csatlakoztassa az adatkészletet a jobb oldali bemeneti porthoz.  
   
-3.  Bontsa ki az **átalakítások** csoportot a tervező bal oldali paneljén. Keresse meg a mentett átalakítást, és húzza a folyamatba.  
+3.  Bontsa ki az **Átalakítások** csoportot a tervező bal oldali ablaktáblájában. Keresse meg a mentett átalakítást, és húzza a folyamatba.  
 
-4.  Kapcsolja össze a mentett átalakítást az [alkalmazás átalakításának](./apply-transformation.md)bal oldali bemeneti portjával. 
+4.  Csatlakoztassa a mentett átalakítást az [Átalakítás alkalmazása bal](./apply-transformation.md)oldali bemeneti portjához. 
 
-    Ha mentett transzformációt alkalmaz, nem választhatja ki azokat az oszlopokat, amelyekre az átalakítást alkalmazni szeretné. Ennek oka, hogy a transzformáció már definiálva van, és automatikusan az eredeti műveletben megadott oszlopokra vonatkozik.
+    Mentett átalakítás alkalmazásakor nem választhatja ki azokat az oszlopokat, amelyekre az átalakítás vonatkozik. Ennek az az oka, hogy az átalakítás már definiálva van, és automatikusan vonatkozik az eredeti műveletben megadott oszlopokra.
 
-    Tegyük fel azonban, hogy létrehozott egy átalakítást a numerikus oszlopok egy részhalmazán. Ezt az átalakítást alkalmazhatja vegyes oszlop típusú adathalmazra anélkül, hogy hibát kellene felvennie, mert a hiányzó értékek csak a megfelelő numerikus oszlopokban változnak.
+    Tegyük fel azonban, hogy a numerikus oszlopok egy részhalmazán hozott létre átalakítást. Ezt az átalakítást vegyes oszloptípusok adatkészletére is alkalmazhatja hiba kiváltása nélkül, mert a hiányzó értékek csak a megfelelő numerikus oszlopokban módosulnak.
 
-6.  A folyamat futtatása.  
+6.  Küldje el a folyamatot.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

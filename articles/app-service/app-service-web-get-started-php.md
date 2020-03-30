@@ -1,16 +1,16 @@
 ---
-title: 'Gyors útmutató: PHP-alapú Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első PHP-"Helló világ!" alkalmazás Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
+title: 'Rövid útmutató: PHP webalkalmazás létrehozása'
+description: Percek alatt üzembe helyezheti első PHP Hello World szolgáltatását az Azure App Service szolgáltatásba. A Git használatával telepíti, amely az egyik módja az App Service üzembe helyezésének.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
-ms.custom: seodec18
-ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 2813d96fdd9fcd588b78cbfb58fe57bf58a4fe68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500143"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047356"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -18,7 +18,7 @@ ms.locfileid: "77500143"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [PHP-webalkalmazás létrehozása a Linuxon futó App Service-ben](./containers/quickstart-php.md).
 >
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy PHP-alkalmazást Azure App Service. A Cloud Shellben az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozza a webalkalmazást, a Gittel pedig üzembe helyezi a PHP-mintakódot a webalkalmazásban.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan telepíthet egy PHP-alkalmazást az Azure App Service-be. A Cloud Shellben az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozza a webalkalmazást, a Gittel pedig üzembe helyezi a PHP-mintakódot a webalkalmazásban.
 
 ![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -28,10 +28,10 @@ Ezeket a lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követ
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
-* <a href="https://php.net/manual/install.php" target="_blank">A PHP telepítése</a>
+* <a href="https://php.net/manual/install.php" target="_blank">PHP telepítése</a>
 
 ## <a name="download-the-sample-locally"></a>Minta helyi letöltése
 
@@ -68,9 +68,9 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az `myAppServicePlan`[`az webapp create` paranccsal hozzon létre egy webalkalmazást a ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) App Service-csomagban. 
+A Cloud Shellben az [](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy webalkalmazást`az webapp create` a `myAppServicePlan` App Service-csomagban. 
 
-A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) parancsot. 
+A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futásidő [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)megtekintéséhez futtassa a futtassa a futtassa a futtassa a futtassa a futtass 
 
 ```azurecli-interactive
 # Bash
@@ -95,13 +95,13 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
   < JSON data removed for brevity. >
 }
 ```
-Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő példánnyal.
+Létrehozott egy üres új webalkalmazást, amelyengedélyezve van a git-telepítés.
 
 > [!NOTE]
 > A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.
 >
 
-Tallózással keresse meg az újonnan létrehozott webalkalmazást. Az _&lt;app name>_ helyett adja meg az előző lépés során létrehozott alkalmazás egyedi nevét.
+Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje _ &lt;_ le az alkalmazás nevét>az előző lépésben létrehozott egyedi alkalmazásnévre.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -150,7 +150,7 @@ A PHP mintakód az Azure App Service webalkalmazásban fut.
 
 ![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
-**Gratulálunk!** Elvégezte az első PHP-webapp üzembe helyezését az App Service-ben.
+**Gratulálok!** Elvégezte az első PHP-webapp üzembe helyezését az App Service-ben.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
@@ -173,23 +173,23 @@ Az üzembe helyezés befejezését követően térjen vissza **Az alkalmazás me
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-1. A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>. Keresse meg és válassza ki a **app Services**.
+1. A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>. Keresse meg és válassza **az App Services**lehetőséget.
 
-    ![App Services keresése, Azure Portal, PHP-alapú Webalkalmazás létrehozása](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
+    ![Az App Services, az Azure Portal keresése, PHP webalkalmazás létrehozása](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
 2. Válassza ki az Azure-alkalmazás nevét.
 
     ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-    Ekkor megjelenik a webalkalmazás **áttekintő** lapja. Itt olyan alapszintű felügyeleti feladatokat hajthat végre, mint a **Tallózás**, **Leállítás**, **Újraindítás**és **Törlés**.
+    Megjelenik a webalkalmazás **áttekintése** lapja. Itt olyan alapvető felügyeleti feladatokat hajthat végre, mint a **Tallózás,** **a Leállítás,** **az Újraindítás**és **a Törlés**.
 
     ![Az App Service lap az Azure Portalon](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
-    A webalkalmazás menü különböző beállításokat biztosít az alkalmazás konfigurálásához. 
+    A webalkalmazás menüje különböző beállításokat biztosít az alkalmazás konfigurálásához. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [PHP és MySQL](app-service-web-tutorial-php-mysql.md)

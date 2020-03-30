@@ -1,6 +1,6 @@
 ---
-title: Virtuálisgép-rendszerkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-ban tárolt fájlok eléréséhez (előzetes verzió)
-description: Hozzon létre egy virtuálisgép-rendszerképet az Azure rendszerkép-készítővel, amely az Azure Storage-ban tárolt fájlokat felhasználó által hozzárendelt felügyelt identitás használatával érheti el.
+title: Virtuálisgép-lemezkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-fájlok eléréséhez (előzetes verzió)
+description: Hozzon létre virtuálisgép-lemezképet az Azure Image Builder használatával, amely a felhasználó által hozzárendelt felügyelt identitás használatával hozzáférhet az Azure Storage-ban tárolt fájlokhoz.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
@@ -8,40 +8,40 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
-ms.openlocfilehash: f3990037d75f9f77eaedc7ec4049f14814216d9c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 27f4073efc8647d331faa14afbda0e15f92b8d50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944961"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060753"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Rendszerkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-beli fájlokhoz való hozzáféréshez 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Lemezkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-fájlok eléréséhez 
 
-Az Azure rendszerkép-szerkesztő támogatja a parancsfájlok használatát, illetve a fájlok több helyről történő másolását, például a GitHub és az Azure Storage stb. Ezeknek az adatoknak a használatához külsőleg elérhetőnek kell lenniük az Azure-rendszerkép-készítő számára, de az Azure Storage-blobokat SAS-jogkivonatok használatával lehet védelemmel ellátni.
+Az Azure Image Builder támogatja a parancsfájlok használatát, vagy fájlok másolása több helyről, például a GitHub és az Azure storage stb. Ezek használatához külsőleg elérhetőnek kell lennie az Azure Image Builder számára, de megvédheti az Azure Storage-blobokat a SAS-jogkivonatok használatával.
 
-Ez a cikk bemutatja, hogyan hozhat létre testreszabott rendszerképeket az Azure VM rendszerkép-készítő használatával, ahol a szolgáltatás egy [felhasználó által hozzárendelt felügyelt identitással](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) fér hozzá az Azure Storage-ban található fájlokhoz a rendszerkép testreszabásához, anélkül, hogy nyilvánosan elérhetővé kellene tennie a fájlokat, vagy sas-jogkivonatokat kell beállítania.
+Ez a cikk bemutatja, hogyan hozhat létre egy testreszabott lemezképet az Azure VM Image Builder használatával, ahol a szolgáltatás egy [felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) fog használni a fájlok eléréséhez az Azure storage-ban a lemezkép testreszabásához, anélkül, hogy a fájlokat nyilvánosan hozzáférhetővé kellene tenni, vagy SAS-jogkivonatok beállítása.
 
-Az alábbi példában két erőforráscsoport jön létre, amelyeket az egyéni rendszerképhez fog használni, a másik pedig egy, a parancsfájlt tartalmazó Azure Storage-fiókot fog üzemeltetni. Ez valós helyzetet szimulál, ahol előfordulhat, hogy a rendszerkép-szerkesztőn kívül különböző tárolási fiókokban található összetevők vagy képfájlok is létrehozhatók. Létre kell hoznia egy felhasználó által hozzárendelt identitást, majd meg kell adnia az olvasási engedélyeket a parancsfájlhoz, de a fájlhoz nem fog nyilvános hozzáférést adni. Ezután a rendszerhéj-testreszabó használatával letöltheti és futtathatja a szkriptet a Storage-fiókból.
+Az alábbi példában két erőforráscsoportot hoz létre, az egyik et az egyéni lemezképhez használja, a másik pedig egy Azure Storage-fiókot, amely egy parancsfájlt tartalmaz. Ez szimulálja a valós forgatókönyv, ahol lehet, hogy a build összetevők, vagy a képfájlok at különböző tárfiókok, az Image Builder kívül. Létre fog hozni egy felhasználó által hozzárendelt identitást, majd megadja az olvasási engedélyeket a parancsfájlhoz, de nem állít be nyilvános hozzáférést a fájlhoz. Ezután a Shell-testreszabó segítségével letöltheti és futtathatja a parancsfájlt a tárfiókból.
 
 
 > [!IMPORTANT]
-> Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Image Builder jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-## <a name="register-the-features"></a>A szolgáltatások regisztrálása
-Ha az előzetes verzióban szeretné használni az Azure képszerkesztőt, regisztrálnia kell az új szolgáltatást.
+## <a name="register-the-features"></a>A funkciók regisztrálása
+Az Azure Image Builder az előzetes verzióban való használatához regisztrálnia kell az új funkciót.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-A szolgáltatás regisztrációjának állapotát vizsgálja meg.
+Ellenőrizze a szolgáltatás regisztrációjának állapotát.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Győződjön meg a regisztrációról.
+Ellenőrizze a regisztrációját.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -49,7 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Ha nem mondják a regisztrációt, futtassa a következőt:
+Ha nem mondják, hogy regisztrált, futtassa a következőket:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -58,12 +58,12 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni.
+Mi lesz használ néhány információt többször, így hozunk létre néhány változótárolják ezt az információt.
 
 
-```azurecli-interactive
+```console
 # Image resource group name 
 imageResourceGroup=aibmdimsi
 # storage resource group
@@ -76,15 +76,15 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a `az account show | grep id`használatával érheti el.
+Hozzon létre egy változót az előfizetés-azonosítóhoz. Tudod kap ez `az account show | grep id`használ .
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
-Hozza létre az erőforráscsoportot a rendszerképhez és a parancsfájl-tárolóhoz is.
+Hozza létre az erőforráscsoportokat a lemezképhez és a parancsfájltárolóhoz is.
 
-```azurecli-interactive
+```console
 # create resource group for image template
 az group create -n $imageResourceGroup -l $location
 # create resource group for the script storage
@@ -92,7 +92,7 @@ az group create -n $strResourceGroup -l $location
 ```
 
 
-Hozza létre a tárolót, és másolja a minta parancsfájlt a GitHubról.
+Hozza létre a tárolót, és másolja a mintaparancsfájlt a GitHubról.
 
 ```azurecli-interactive
 # script storage account
@@ -119,7 +119,7 @@ az storage blob copy start \
 
 
 
-Adja meg a rendszerkép-készítő engedélyt a rendszerkép-erőforráscsoport erőforrásainak létrehozásához. A `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
+Adjon engedélyt a Képszerkesztőnek erőforrások létrehozására a képerőforrás-csoportban. Az `--assignee` érték a Képszerkesztő szolgáltatás alkalmazásregisztrációs azonosítója. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -131,7 +131,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
 
-Hozza létre az identitást, és rendeljen engedélyeket a script Storage-fiókhoz. További információ: [felhasználó által hozzárendelt felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Hozza létre az identitást, és rendeljen hozzá engedélyeket a parancsfájltár-fiókhoz. További információ: [User-Assigned Managed Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
 ```azurecli-interactive
 # Create the user assigned identity 
@@ -148,11 +148,11 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 ```
 
 
-## <a name="modify-the-example"></a>Példa módosítása
+## <a name="modify-the-example"></a>A példa módosítása
 
-Töltse le a example. JSON fájlt, és konfigurálja a létrehozott változókkal.
+Töltse le a példát .json fájlt, és konfigurálja a létrehozott változókkal.
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
@@ -165,7 +165,7 @@ sed -i -e "s%<runOutputName>%$runOutputName%g" helloImageTemplateMsi.json
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-Küldje be a rendszerkép konfigurációját az Azure rendszerkép-szerkesztő szolgáltatásba.
+Küldje el a lemezkép konfigurációját az Azure Image Builder szolgáltatásba.
 
 ```azurecli-interactive
 az resource create \
@@ -176,7 +176,7 @@ az resource create \
     -n helloImageTemplateMsi01
 ```
 
-Indítsa el a rendszerkép buildjét.
+Indítsa el a kép felépítését.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -186,13 +186,13 @@ az resource invoke-action \
      --action Run 
 ```
 
-Várjon, amíg a Build befejeződik. Ez körülbelül 15 percet vesz igénybe.
+Várja meg, amíg befejeződik a build. Ez körülbelül 15 percet is igénybe vehet.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet a rendszerképből. 
+Hozzon létre egy virtuális gép a lemezképből. 
 
-```bash
+```azurecli
 az vm create \
   --resource-group $imageResourceGroup \
   --name aibImgVm00 \
@@ -202,15 +202,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása után indítson el egy SSH-munkamenetet a virtuális géppel.
+A virtuális gép létrehozása után indítsa el az SSH-munkamenetet a virtuális géppel.
 
-```azurecli-interactive
+```console
 ssh aibuser@<publicIp>
 ```
 
-A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása után a nap egy üzenete legyen.
+Látnia kell, hogy a kép a nap üzenetével lett testreszabva, amint az SSH kapcsolat létrejött!
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -221,7 +221,7 @@ A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása u
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha elkészült, akkor törölheti az erőforrásokat, ha már nincs rájuk szükség.
+Ha végzett, törölheti az erőforrásokat, ha már nincs rájuk szükség.
 
 ```azurecli-interactive
 az identity delete --ids $imgBuilderId
@@ -235,4 +235,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ha bármilyen probléma merül fel az Azure rendszerkép-készítővel való együttműködés során, olvassa el a [hibaelhárítást](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)ismertető témakört.
+Ha problémái vannak az Azure Image Builder használatával, olvassa el a [Hibaelhárítás című témakört.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)

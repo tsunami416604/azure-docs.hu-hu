@@ -1,33 +1,32 @@
 ---
-title: Az SAS URL-címével kapcsolatos gyakori problémák és javítások az Azure Marketplace-en
-description: Gyakori problémák listázása a közös hozzáférésű aláírási URI-k és a lehetséges megoldások használatával.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Gyakori SAS-URL-címproblémák és -javítások az Azure Piactérhez
+description: Sorolja fel a közös hozzáférésű uri-k és a lehetséges megoldások használatával kapcsolatos gyakori problémákat.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 502ba1a65f9b0740a51c7a4da219cc87af494f27
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 47702959474a352a8e13710ec850f789dee4d517
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813316"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278161"
 ---
-# <a name="common-sas-url-issues-and-fixes"></a>Az SAS URL-címével kapcsolatos gyakori problémák és javítások
+# <a name="common-sas-url-issues-and-fixes"></a>Gyakori SAS-URL-problémák és -javítások
 
-A következő táblázat a közös hozzáférésű aláírások (amelyek a megoldáshoz feltöltött virtuális merevlemezek azonosítására és megosztására használatos), valamint a javasolt megoldások mellett előforduló gyakori problémákat ismertetik.
+Az alábbi táblázat a megosztott hozzáférésű aláírások (amelyek a megoldáshoz feltöltött virtuális gépek azonosítására és megosztására) való munka során felmerülő gyakori problémákat, valamint a javasolt megoldásokat sorolja fel.
 
-| **Kérdés** | **Sikertelen üzenet** | **Javítsa ki** | 
+| **Probléma** | **Hibaüzenet** | **Hibajavítás** | 
 | --------- | ------------------- | ------- | 
-| &emsp;*hiba a képek másolásakor* |  |  |
-| a "?" nem található az SAS URL-címben | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | A SAS URL-cím frissítése a javasolt eszközök használatával. |
-| a "St" és az "se" paraméterek nem az SAS URL-címben | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Frissítse a SAS URL-címet a megfelelő **kezdő** és **befejező dátum** értékekkel. | 
-| "SP = RL" not in SAS URL-cím | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Frissítse a SAS URL-címet `Read` és `List`engedélyekkel. | 
-| Az SAS URL-címe szóközökkel rendelkezik a VHD-névben | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Frissítse a SAS URL-címét a szóközök eltávolításához. |
-| SAS URL-hitelesítési hiba | `Failure: Copying Images. Not able to download blob due to authorization error` | Tekintse át és javítsa ki az SAS URI formátumát. Szükség esetén újragenerált. |
-| A SAS URL-cím (St) és az "se" paraméterek nem rendelkeznek teljes dátum-idő specifikációval | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | Az SAS URL-cím **kezdő dátumának** és **befejezési dátumának** paraméterei (`st` és `se` alkarakterláncok) teljes datetime formátumot kell megadni, például `11-02-2017T00:00:00Z`. A rövidített verziók nem érvényesek. (Egyes parancsok az Azure CLI-ben lerövidített értékeket hozhatnak alapértelmezésben.) | 
+| &emsp;  *Hiba a képek másolásakor* |  |  |
+| "?" nem található a SAS URL-címében | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Frissítse a SAS URL-címét az ajánlott eszközökkel. |
+| "st" és "se" paraméterek nem a SAS URL-ben | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Frissítse a SAS URL-címét a megfelelő **kezdési dátum** és **záró dátum** értékekkel. | 
+| Az "sp=rl" nem a SAS URL-címében | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Frissítse a SAS URL-címét `List`a készletével, és. `Read` | 
+| A SAS URL-cím virtuális merevlemez-névvel rendelkezik szóközzel | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Frissítse a SAS URL-címét az üres helyek eltávolításához. |
+| SAS URL-engedélyezési hiba | `Failure: Copying Images. Not able to download blob due to authorization error` | Tekintse át és javítsa ki a SAS URI formátumot. Szükség esetén regenerálja. |
+| A SAS URL "st" és "se" paraméterei nem rendelkeznek teljes dátum-idő specifikációval | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | A SAS URL **kezdő dátuma** `se` és záró `11-02-2017T00:00:00Z` **dátumparaméterei** (`st` és részkarakterláncai) teljes datetime formátummal rendelkeznek, például . A rövidített verziók érvénytelenek. (Az Azure CLI egyes parancsai alapértelmezés szerint rövidített értékeket generálhatnak.) | 
 |  |  |  |
 
-További információ: [Shared Access Signatures (SAS) használata](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/).
+További információ: [A megosztott hozzáférésű aláírások (SAS) használata.](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)

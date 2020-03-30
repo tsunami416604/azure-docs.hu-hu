@@ -1,7 +1,7 @@
 ---
-title: Mi az az automatizált ML/AutoML
+title: Mi az automatizált ML / AutoML
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhatja ki a Azure Machine Learning automatikusan egy algoritmust, és létrehoz egy modellt, hogy időt takarítson meg az Ön által megadott paraméterek és feltételek használatával, hogy kiválassza a modellhez legmegfelelőbb algoritmust.
+description: Ismerje meg, hogy az Azure Machine Learning hogyan tud automatikusan kiválasztani egy algoritmust az Ön számára, és hogyan hozhat létre belőle egy modellt, hogy időt takarítson meg a modellnek leginkább megfelelő algoritmus kiválasztásához megadott paraméterek és feltételek használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,63 +10,67 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283887"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383191"
 ---
-# <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
+# <a name="what-is-automated-machine-learning"></a>Mi az automatizált gépi tanulás?
 
-Az automatizált gépi tanulás, más néven automatizált ML, az időigényes automatizálási folyamat, a gépi tanulási modellek fejlesztésének ismétlődő feladatai. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. Az automatikus ML a [Microsoft kutatási részlegének](https://arxiv.org/abs/1705.05355)áttörésén alapul.
+Az automatizált gépi tanulás, más néven automatizált gépi tanulási modell a gépi tanulási modell fejlesztés időigényes, iteratív feladatainak automatizálása. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy magas méretű, hatékonyságú és termelékenységű ML-modelleket építsenek, miközben fenntartják a modell minőséget. Az automatizált ML a [Microsoft Research részlegünk](https://arxiv.org/abs/1705.05355)áttörésén alapul.
 
-A hagyományos gépi tanulási modell fejlesztése erőforrás-igényes, és jelentős tartományi ismereteket és időt igényel, hogy több tucat modellt hozzon létre és hasonlítson össze. Alkalmazzon automatikus ML-t, ha azt szeretné, hogy a Azure Machine Learning egy modell betanítását és finomhangolását a megadott cél metrika használatával. A szolgáltatás ezután megismétli az ML-algoritmusokat a funkciók kiválasztásával párosítva, ahol minden egyes iteráció egy modellt hoz létre egy képzési pontszámmal. Minél magasabb a pontszám, annál jobb lesz a modellnek az adataihoz igazodni.
+A hagyományos gépi tanulási modell fejlesztése erőforrás-igényes, jelentős tartománytudást és időt igényel több tucat modell előállításához és összehasonlításához. Az automatizált gépi tanulással felgyorsíthatja a gyártásra kész GÉPI modellek nagy könnyedségével és hatékonysággal történő leküzdéséhez szükséges időt.
 
-Az automatizált gépi tanulással felgyorsíthatja az éles használatra kész ML-modellek gyors és hatékony beszerzéséhez szükséges időt.
+ 
 
-## <a name="when-to-use-automated-ml"></a>Mikor kell használni az automatikus ML-t
 
-A gépi tanulási modell fejlesztési folyamata automatizált ML-ezáltal demokratikussá teszi, és lehetővé teszi a felhasználók számára, hogy az adatelemzési szakértelmük alapján minden probléma esetén azonosíthatók legyenek a teljes gépi tanulási folyamatok.
+## <a name="when-to-use-automated-ml"></a>Mikor kell használni az automatikus ml-t?
 
-Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automatizált ML-ket használhatják:
+Automatikus ml alkalmazása, ha azt szeretné, hogy az Azure Machine Learning betanítson és hangoljon be egy modellt a megadott célmetrika használatával. Az automatizált ml demokratizálja a gépi tanulási modell fejlesztési folyamatát, és lehetővé teszi a felhasználók számára, hogy adatelemzési szakértelmüktől függetlenül azonosítsák a végpontok között lévő gépi tanulási folyamatot bármilyen probléma esetén.
 
-+ Gépi tanulási megoldások megvalósítása kiterjedt programozási ismeretek nélkül
-+ Időt és erőforrásokat takaríthat meg
-+ Az adatelemzési ajánlott eljárások kihasználása
-+ Gyors problémamegoldás
+Az adatszakértők, elemzők és fejlesztők a különböző iparágakban automatizált ml-t használhatnak a következőkre:
 
-Az alábbi táblázat a gyakori automatikus ML-használati eseteket sorolja fel. 
++ Gépi tanulási megoldások megvalósítása széles körű programozási ismeretek nélkül
++ Takarítson meg időt és erőforrásokat
++ Az adatelemzés bevált módszereinek kihasználása
++ Agilis problémamegoldás biztosítása
+
+Az alábbi táblázat a gyakori automatikus pénzmosási használati eseteket sorolja fel. 
 
 Osztályozás| Idősorozat-előrejelzés | Regresszió
 ---|---|---
-[Csalások észlelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[Értékesítések előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)|[CPU-teljesítmény előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)
-|[Marketing-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[Kereslet-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
-|[Hírcsoport-adatbesorolás](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)|[Italok üzemi előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)|
+[Csalás felderítése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[Értékesítési előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)|[Cpu teljesítményének előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)
+|[Marketing előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[Igény-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
+|[Hírcsoport-adatok besorolása](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)|[Italgyártás előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)|
 
-## <a name="how-automated-ml-works"></a>Az automatizált ML működése
+## <a name="design-automated-ml-experiments"></a>Automatikus ml-kísérletek tervezése
 
-A **Azure Machine learning**használatával a következő lépésekkel megtervezheti és futtathatja az automatizált ml-betanítási kísérleteket:
+Az **Azure Machine Learning**használatával az alábbi lépésekkel tervezheti meg és futtathatja az automatikus ml-es betanítási kísérleteket:
 
-1. **Azonosítsa a megoldandó problémát** : besorolás, előrejelzés vagy regresszió
+1. **Azonosítsa a** megoldandó ml-problémát: osztályozás, előrejelzés vagy regresszió
 
-1. A **címkézett betanítási adatmennyiség forrásának és formátumának meghatározása**: NumPy tömbök vagy pandák dataframe
+1. **Adja meg a címkézett betanítási adatok forrását és formátumát:** Numpy tömbök vagy Pandas adatkeret
 
-1. **Konfigurálja a számítási célt a modell betanításához**, például a [helyi számítógép, a Azure Machine learning számítások, a távoli virtuális gépek vagy a Azure Databricks](how-to-set-up-training-targets.md).  Ismerje meg a [távoli erőforrások](how-to-auto-train-remote.md)automatizált képzését.
+1. **Konfigurálja a számítási célt a modellbetanításhoz,** például a [helyi számítógéphez, az Azure Machine Learning Computes-hoz, a távoli virtuális gépekhez vagy az Azure Databrickshez.](how-to-set-up-training-targets.md)  További információ [a távoli erőforrásokon történő](how-to-auto-train-remote.md)automatikus képzésről.
 
-1. **Konfigurálja az automatikus gépi tanulás paramétereit** , amelyek meghatározzák, hogy a különböző modellek, a hiperparaméter-beállítások, a speciális előfeldolgozási/featurization, valamint a legjobb modell meghatározásakor milyen mérőszámokat kell megvizsgálni.  Megadhatja az automatikus betanítási kísérlet beállításait [Azure Machine learning Studióban](https://ml.azure.com)vagy [az SDK-val](how-to-configure-auto-train.md). 
+1. **Konfigurálja az automatikus gépi tanulási paramétereket,** amelyek meghatározzák, hogy hány ismétlések különböző modellek, hiperparaméter-beállítások, speciális előfeldolgozás/featurization, és milyen metrikákat kell tekinteni, amikor meghatározzák a legjobb modell.  Az Automatikus betanítási kísérlet beállításait az [Azure Machine Learning stúdióban](https://ml.azure.com)vagy [az SDK-ban](how-to-configure-auto-train.md)konfigurálhatja. 
 
     [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-1. **A betanítási Futtatás elküldése.**
+1. **Küldje el a betanítási futtatást.**
+
+## <a name="how-automated-ml-works"></a>Az automatizált ml működése
+
+A betanítás során az Azure Machine Learning számos párhuzamos folyamatot hoz létre, amelyek különböző algoritmusokat és paramétereket próbálnak ki. A szolgáltatás iterálja a szolgáltatás-beállításokkal párosított ml-algoritmusokon keresztül, ahol minden egyes ismétlés egy betanítási pontszámmal rendelkező modellt hoz létre. Minél magasabb a pontszám, annál jobb a modell tekinthető "illeszkedik" az adatokat.  Leáll, amint eléri a kísérletben meghatározott kilépési feltételeket. Az alábbi ábra ezt a folyamatot mutatja be. 
 
   ![Automatizált gépi tanulás](./media/concept-automated-ml/automl-concept-diagram2.png)
 
-A betanítás során Azure Machine Learning több párhuzamos folyamatot hoz létre, amelyek különböző algoritmusokat és paramétereket próbálnak ki. Ekkor leáll, ha eléri a kísérletben meghatározott kilépési feltételeket.
 
-Megvizsgálhatja a naplózott futtatási adatokat is, amelyek a Futtatás során összegyűjtött [mérőszámokat tartalmazzák](how-to-understand-automated-ml.md) . A betanítási kísérlet egy Python szerializált objektumot (`.pkl` fájlt) hoz létre, amely tartalmazza a modellt és az adatfeldolgozást.
+Azt is megvizsgálhatja a naplózott futtatási információk, amely tartalmazza a futtatás során összegyűjtött [metrikák.](how-to-understand-automated-ml.md) A betanítási futtatás egy`.pkl` Python szerializált objektumot (fájlt) hoz létre, amely tartalmazza a modellt és az adatok előfeldolgozását.
 
-A modell létrehozása automatizálható, és azt is [megtudhatja, milyen fontos vagy releváns funkciók vannak](how-to-configure-auto-train.md#explain) a generált modellekhez.
+Míg a modellépület automatizált, azt is [megtudhatja, hogy milyen fontos vagy releváns funkciók](how-to-configure-auto-train.md#explain) a generált modellek.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
@@ -74,223 +78,144 @@ A modell létrehozása automatizálható, és azt is [megtudhatja, milyen fontos
 
 ## <a name="preprocessing"></a>Előfeldolgozás
 
-Minden automatizált gépi tanulási kísérlet során az adatai az alapértelmezett módszerekkel és opcionálisan a speciális előfeldolgozással vannak feldolgozva.
+Minden automatizált gépi tanulási kísérletben az adatok at az alapértelmezett módszerekkel és opcionálisan a fejlett előfeldolgozással dolgozzuk fel.
 
 > [!NOTE]
-> Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
+> Az automatizált gépi tanulás előfeldolgozási lépései (funkciónormalizálás, hiányzó adatok kezelése, szöveg átalakítása numerikussá stb.) az alapul szolgáló modell részévé válnak. Ha a modell t használja az előrejelzések, ugyanazokat az előzetes feldolgozási lépéseket alkalmazott betanítása során automatikusan alkalmazza a bemeneti adatokat.
 
-### <a name="automatic-preprocessing-standard"></a>Automatikus előfeldolgozás (standard)
+### <a name="automatic-preprocessing-standard"></a>Automatikus előfeldolgozás (szabványos)
 
-Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek.  A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre.
+Minden automatizált gépi tanulási kísérletben az adatok automatikusan méretezve vagy normalizálva lesznek, hogy az algoritmusok jól teljesítsenek.  A modell betanítása során az alábbi skálázási vagy normalizálási technikák egyikét alkalmazza az egyes modellek.
 
-|Méretezés&nbsp;&&nbsp;normalizálás| Leírás |
+|Normalizálás méretezése&nbsp;&&nbsp;| Leírás |
 | ------------- | ------------- |
-| [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
-| [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
-| [MaxAbsScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MaxAbsScaler.html#sklearn.preprocessing.MaxAbsScaler) |Az egyes szolgáltatások méretezése a maximális abszolút értékkel |
-| [RobustScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html) |A skálázási funkciók a quantile-tartomány szerint |
-| [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) |Lineáris dimenzióját-csökkentés az adatértékek számának kibontásával a projekthez egy alacsonyabb dimenziós területre |
-| [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Ez a transzformátor lineáris dimenzióját-csökkentést végez a csonkolt számú érték lebomlásával (SVD). A PCA-vel ellentétben ez a kalkulátor nem helyezi középpontba az adatmennyiséget, mielőtt feldolgozza az egyes SciPy. a ritka mátrixok hatékonyan működnek. |
-| [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | A rendszer minden mintát (azaz az Adatmátrix minden sorát) legalább egy nullától eltérő összetevővel együtt átméretezi, hogy a norma (L1 vagy L2) eggyel egyenlő legyen. |
+| [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | A jellemzők szabványosítása az átlag eltávolításával és az egységvarianciára való méretezéssel  |
+| [MinMaxSkalár](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Átalakítja a funkciókat úgy, hogy az egyes funkciókat az adott oszlop minimális és maximális értékével skálázhatja  |
+| [MaxAbsScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MaxAbsScaler.html#sklearn.preprocessing.MaxAbsScaler) |Az egyes funkciók méretezése a maximális abszolút értékkel |
+| [RobusztusSkalár](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html) |Ez a Scaler a kvantilis tartományuk szerint |
+| [Pem](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) |Lineáris méretcsökkentés az adatok egyedi érték szerinti felbontásával, hogy azt egy kisebb dimenziós térbe vetítse ki |
+| [CsonkaSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Ez a transzformátor lineáris méretcsökkentést hajt végre csonkolt egyedi érték-bomlással (SVD). A PCA-val ellentétben ez a becslés nem állítja az adatokat az egyes számú érték-bomlás kiszámítása előtt, ami azt jelenti, hogy hatékonyan tud dolgozni a scipy.sparse mátrixokkal |
+| [Ritkanormálító](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | Minden egyes minta (azaz az adatmátrix minden egyes sora) legalább egy nem nulla összetevővel a többi mintától függetlenül átméreteződik, hogy a normája (l1 vagy l2) egynek feleljemeg. |
 
-### <a name="advanced-preprocessing-optional-featurization"></a>Speciális előfeldolgozás: opcionális featurization
+### <a name="advanced-preprocessing-optional-featurization"></a>Speciális előfeldolgozás: opcionális funkció
 
-További speciális előfeldolgozási és featurization is elérhetők, például az adatguardrails, a kódolás és az átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-use-automated-ml-for-ml-models.md#featurization). A beállítás engedélyezése a következővel:
+További speciális előfeldolgozás és funkciók is rendelkezésre állnak, például adatkorlátok, kódolás és átalakítások. [További információ arról, hogy mi a csomag.](how-to-use-automated-ml-for-ml-models.md#featurization) Engedélyezze ezt a beállítást a következőkkel:
 
-+ Azure Machine Learning Studio: engedélyezze az **automatikus featurization** a **további konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
++ Azure Machine Learning studio: **Engedélyezze az automatikus featurization** a **További konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel.](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)
 
-+ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` megadása a [`AutoMLConfig` osztályhoz](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
-
-## <a name="prevent-over-fitting"></a>Túlterhelések megakadályozása
-
-A gépi tanulás túlterhelése akkor fordul elő, ha egy modell túl jól illeszkedik a betanítási adathoz, ezért nem lehet pontosan előre jelezni a láthatatlan tesztelési eredményeket. Más szóval a modell egyszerűen megjegyezte a betanítási adatmintákat és a zajt, de nem elég rugalmas ahhoz, hogy valós adatelemzéseket készítsen. A legtöbbször is felmerülő esetekben a túlterhelt modell azt feltételezi, hogy a betanítás során a funkció értékének kombinációja mindig ugyanazt a kimenetet eredményezi a célhoz. 
-
-A túlzott méretezés elkerülésének legjobb módja, ha a következő módszerekkel kapcsolatos ajánlott eljárásokat követi:
-
-* Több betanítási információ használata és a statisztikai torzulások kiküszöbölése
-* Cél szivárgásának megelőzése
-* Kevesebb funkció használata
-* **Regularizációs és hiperparaméter optimalizálás**
-* **A modell összetettségi korlátai**
-* **Több ellenőrzés**
-
-Az automatikus ML-ben a fenti első három elem az Ön által **megvalósított legjobb gyakorlat**. Az utolsó három félkövérrel szedett elem az ajánlott eljárás, amely az automatizált, a túlterhelések elleni védelem érdekében alapértelmezés szerint **megvalósítható** . Az automatizált ML-től eltérő beállításokban mind a hat ajánlott eljárás a következő lehet, hogy elkerülje a túlzottan illeszkedő modelleket.
-
-### <a name="best-practices-you-implement"></a>Az Ön által megvalósított ajánlott eljárások
-
-A **több adat** használata a legegyszerűbb és a lehető legjobb módszer a túlzott méretezés megelőzésére, és a hozzáadott bónusz általában növeli a pontosságot. Ha több adathalmazt használ, a modell nehezebbé válik a pontos mintázatok memorizálása érdekében, és olyan megoldások elérésére kényszerül, amelyek rugalmasabbak a további feltételek kielégítéséhez. Fontos továbbá a **statisztikai torzulások**felismerése is, hogy a betanítási adatai ne tartalmazzanak olyan elszigetelt mintákat, amelyek nem léteznek az élő előrejelzési adataiban. Ez a forgatókönyv nehezen oldható meg, mert előfordulhat, hogy nem lehet túlságosan összekapcsolni a vonat-és a tesztelési készletek között, de az élő tesztelési adathoz képest előfordulhat, hogy túl is illik.
-
-A célzott szivárgás egy hasonló probléma, ahol előfordulhat, hogy nem jelenik meg a betanítási és a tesztelési készletek közötti túlterhelés, hanem az előrejelzési időpontban jelenik meg. A cél szivárgás akkor fordul elő, ha a "Cheats" modell a betanítás során olyan információhoz fér hozzá, amelyeknek általában nem kell előrejelzési időpontban lennie. Ha például a probléma a hétfő alapján várhatóan megjósolható, hogy Mennyibe kerül az áru díja, de az egyik funkció, amely véletlenül a csütörtöki adatokból származik, a modellnek nem lesz előrejelzési ideje, mert nem látja a jövőben. A cél szivárgás egyszerű tévedés, de gyakran a probléma szokatlanul nagy pontossága jellemzi. Ha a készlet árának előrejelzését és a modell 95%-os pontosságú betanítását kísérli meg, akkor valószínű, hogy valahol a funkciók között kell elszivárogni.
-
-A funkciók eltávolítása a túlzottan illeszkedő megoldásokkal is segíthet, mivel megakadályozza, hogy a modell túl sok mezőt használjon a konkrét minták memorizálása érdekében, ami rugalmasabb lehet. A mennyiségi mérés nehéz lehet, de ha eltávolíthatja a funkciókat, és megtarthatja ugyanazt a pontosságot, valószínűleg rugalmasabban tette a modellt, és csökkentette a túlzott méretezés kockázatát.
-
-### <a name="best-practices-automated-ml-implements"></a>Ajánlott eljárások automatizált ML-eszközökhöz
-
-A regularizációs egy költséghatékony funkció minimalizálása a komplex és a túlzottan felszerelt modellek szankcionálására. A regularizációs függvények különböző típusai vannak, de általánosságban mind a modellnek, valamint az eltérésnek és a bonyolultságnak a büntetése. Az automatikus ML az L1 (lasszó), az L2 (Ridge) és a ElasticNet (L1 és L2) kombinációt használja különböző kombinációkban különböző modell-hiperparaméter beállításokkal, amelyek szabályozzák a terhelést. Egyszerű feltételek esetén az automatikus ML változó a modell szabályozása és a legjobb eredmény kiválasztásával változhat.
-
-Az automatikus ML emellett explicit módon meggátolja a modell bonyolultságának korlátozását, hogy megakadályozza a túlzott méretezést. A legtöbb esetben ez a megvalósítás kifejezetten a döntési fa-vagy erdő-algoritmusokhoz tartozik, ahol az egyes faszerkezetek maximális mélysége korlátozott, és az erdőben vagy az Ensemble-technikákban felhasznált fák teljes száma korlátozott.
-
-A többszörös ellenőrzés (CV) a teljes betanítási adat több részhalmazának betanítása, valamint az egyes alkészleteken található modellek képzésének folyamata. Az elképzelés az, hogy egy modell "szerencsés" lehet, és nagy pontossággal rendelkezik egy részhalmazsal, de a modell számos részhalmazának használatával nem éri el ezt a nagy pontosságot minden alkalommal. Az önéletrajz használatakor meg kell adnia egy érvényesítési Holdout adatkészletet, meg kell adnia az önéletrajz betöltését (az alkészletek számát) és az automatikus ML-t, majd a modell betanításával és a hiperparaméterek beállítása finomhangolásával csökkentheti az ellenőrzési csoport hibáját Az egyik CV-dobás túl nagy méretű lehet, de a sok közül többen is csökkenti annak a valószínűségét, hogy a végső modellje túlterhelt. A kompromisszum az, hogy az önéletrajz hosszabb időt és így nagyobb költségeket eredményez, mivel a modell betanítása helyett egyszer betanítjuk az egyes *n* CV-alkészletekre.
-
-> [!NOTE]
-> Alapértelmezés szerint nincs engedélyezve a kereszt-ellenőrzés. az automatikus ML-beállításokban kell konfigurálni. Ha azonban az önéletrajz konfigurálva van, és egy érvényesítési adatkészletet adtak meg, a folyamat automatizálható.
-
-### <a name="identifying-over-fitting"></a>Túlillesztés azonosítása
-
-Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolódó betanítási és tesztelési pontosság.
-
-| Modell | Vonat pontossága | Teszt pontossága |
-|-------|----------------|---------------|
-| A | 99.9% | 95% |
-| B | 87% | 87% |
-| C | 99.9% | 45% |
-
-Az **a**modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
-
-Az **a** és **B**modellek összehasonlításakor a Model **a** jobb modell, mert a teszt pontossága nagyobb, és bár a tesztelési pontosság valamivel alacsonyabb, mint 95%, nem jelent jelentős különbséget, amely a túlzottan illeszkedő megoldásra utal. Nem választhatja a **B** modellt egyszerűen azért, mert a vonat és a teszt pontosság egymáshoz közelednek.
-
-A **C** modell a túlzott illesztések egyértelmű esetét jelöli. a betanítás pontossága nagyon magas, de a teszt pontossága nem a magashoz közel van. Ez a különbségtétel szubjektív, de a probléma és az adatok ismerete, valamint a hibák számának elfogadható. 
++ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` Az [ `AutoMLConfig` osztály](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)megadása. 
 
 ## <a name="classification--regression"></a>Besorolás & regresszió
 
-A besorolás és a regresszió a gépi tanulási feladatok leggyakoribb típusai. Mindkettő olyan felügyelt tanulás típusai, amelyekben a modellek bemutatják a betanítási információkat, és ezeket a tanulókat az új adatmennyiségre alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-use-automated-ml-for-ml-models.md#featurization). 
+A besorolás és a regresszió a gépi tanulási feladatok leggyakoribb típusai. Mindkettő felügyelt tanulás, amelyben a modellek a betanítási adatok használatával tanulnak, és ezeket a tanulságokat alkalmazzák az új adatokra. Az Azure Machine Learning kifejezetten ezekhez a feladatokhoz kínál, például a mély neurális hálózati szövegfeaturizers besoroláshoz. További információ a [jellemzőbeállításokról.](how-to-use-automated-ml-for-ml-models.md#featurization) 
 
-A besorolási modellek fő célja, hogy megjósolja, hogy az új adatok milyen kategóriákba esnek a betanítási adatokból származó tanulások alapján. Gyakori besorolási példák például a csalások észlelése, a kézírás-felismerés és az objektumok észlelése.  További információk: az [automatikus gépi tanulásra vonatkozó besorolási](tutorial-train-models-with-aml.md)példa.
+A besorolási modellek fő célja annak előrejelzése, hogy mely kategóriákba kerülnek az új adatok a betanítási adatokból származó tanulságok alapján. A gyakori besorolási példák közé tartozik a csalások észlelése, a kézírás-felismerés és az objektumfelismerés.  Tudjon meg többet, és tekintse meg az [automatizált gépi tanulás osztályozásának példáját.](tutorial-train-models-with-aml.md)
 
-Eltér a besorolástól, ahol az előre jelzett kimeneti értékek kategorikusak, a regressziós modellek előre jelezik a numerikus kimeneti értékeket a független előrejelzők alapján. A regresszió során a cél az, hogy segítsen a független prediktív változók közötti kapcsolat kialakításában azzal, hogy megbecsüli, hogyan befolyásolja a többi változó. Például az autó árát a (z), a gáz kilométer, a biztonsági minősítés stb. jellemzői alapján. További információ: a [regressziós példa a gépi tanulás](tutorial-auto-train-models.md)automatizálására.
+Eltérő besorolás, ahol az előre jelzett kimeneti értékek kategorikus, regressziós modellek előre numerikus kimeneti értékek független előrejelzők alapján. A regresszió, a cél az, hogy segítsen létrehozni a kapcsolatot a független előrejelző változók becslésével, hogy egy változó hatással van a többiek. Például, autó ára alapján funkciók, mint például, gáz kilométer, biztonsági minősítés, stb További információ, és példa a [regresszió az automatizált gépi tanulás](tutorial-auto-train-models.md).
 
 ## <a name="time-series-forecasting"></a>Idősorozat-előrejelzés
 
-Az előrejelzések az üzleti tevékenység szerves részét képezik, függetlenül attól, hogy bevételi, leltározási, értékesítési vagy vevői igények. Az automatikus ML-vel kombinálhatja a technikákat és a megközelítéseket, és egy ajánlott, magas színvonalú idősorozat-előrejelzést is igénybe vehet.
+Az előrejelzések létrehozása minden vállalkozás szerves része, legyen szó bevételről, készletről, értékesítésről vagy vevői igényről. Az automatizált ml segítségével kombinálhatja a technikákat és a megközelítéseket, és ajánlott, kiváló minőségű idősorozat-előrejelzést kaphat.
 
-Az automatikus idősorozat-kísérletet többváltozós regressziós problémaként kezeli a rendszer. A korábbi idősorozat-értékek "Pivotal", hogy további dimenziókat regressor a többi előrejelzővel együtt. Ez a klasszikus idősorozat-módszerekkel ellentétben az egyik előnye, hogy természetesen több kontextusos változót is magában foglal, és a képzés során egymáshoz fűződő kapcsolataikat. Az automatizált ML egyetlen, de gyakran belsőleg elágazó modellt tanul az adatkészlet összes eleméhez és előrejelzési horizontokhoz. Így több adat érhető el a modell paramétereinek becsléséhez és az általánosításhoz, hogy a láthatatlan adatsorozatok elérhetővé válnak.
+Az automatizált idősorozat-kísérleteket többváltozós regressziós problémaként kezeli a rendszer. A múltbeli idősorok értékei "elfordulnak", hogy a regresszor további dimenzióivá váljanak más előrejelzőkkel együtt. Ez a megközelítés, ellentétben a klasszikus idősorozat módszerek, van egy előnye, természetesen magában foglalja a több kontextuális változók és azok kapcsolatát egymással a képzés során. Az automatikus ml egyetlen, de gyakran belsőleg elágazó modellt tanul az adatkészlet és az előrejelzési horizontok összes eleméhez. Így több adat áll rendelkezésre a modellparamétereinek becsléséhez, és lehetővé válik a láthatatlan adatsorok általánosítása.
 
-További információ: az [automatikus gépi tanulásra vonatkozó példa az idősorozat-előrejelzéshez](how-to-auto-train-forecast.md). Vagy tekintse meg az [energia igényét bemutató jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) részletes kód példákkal a speciális előrejelzési konfigurációhoz, beleértve a következőket:
+Tudjon meg többet, és tekintse meg az automatikus gépi tanulás az [idősorozat-előrejelzés.](how-to-auto-train-forecast.md) Vagy tekintse meg az [energiaigény-jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) a speciális előrejelzési konfiguráció részletes kódpéldáiért, beleértve a következőket:
 
-* üdülés észlelése és featurization
-* idősorozat-és DNN-tanulók (Auto-ARIMA, próféta, ForecastTCN)
+* ünnep felismerése és featurization
+* idő- és DNN tanulók (Auto-ARIMA, Prophet, ForecastTCN)
 * számos modell támogatja a csoportosítást
-* gördülő-eredetű kereszt-ellenőrzés
+* gördülő eredetű keresztérvényesítés
 * konfigurálható késések
-* a gördülő ablak összesített funkciói
+* gördülőablak összesítő szolgáltatásai
 
-## <a name="ensemble"></a>Ensemble-modellek
+## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble modellek
 
-Az automatizált gépi tanulás támogatja az Ensemble-modelleket, amelyek alapértelmezés szerint engedélyezve vannak. A Ensemble learning a gépi tanulási eredmények és a prediktív teljesítmény növelésével több modellt kombinálhat egyetlen modell használatával. Az együttes ismétlések a Futtatás utolsó ismétlései jelennek meg. Az automatizált gépi tanulás mind a szavazási, mind a halmozási módszert használja a modellek kombinálásával:
+Az automatikus gépi tanulás támogatja az együttes modelleket, amelyek alapértelmezés szerint engedélyezve vannak. Az ensemble learning javítja a gépi tanulási eredményeket és a prediktív teljesítményt azáltal, hogy több modellt kombinál, nem pedig egyetlen modelleket. Az együttes iterációk jelennek meg, mint a végső iterációk a távon. Az automatizált gépi tanulás szavazási és halmozási együttesmódszereket is használ a modellek kombinálásához:
 
-* **Szavazás**: előre jelezhető az előrejelzett osztály valószínűségének súlyozott átlaga (besorolási feladatoknál) vagy előrejelzett regressziós célok alapján (regressziós feladatokhoz).
-* **Halmozás**: a halmozás kombinálja a különböző-modelleket, és az egyes modellek kimenete alapján egy meta-modellt is betanít. A jelenlegi alapértelmezett meta-modellek a besorolási feladatokhoz és a ElasticNet a regresszió/előrejelzési feladatokhoz LogisticRegression.
+* **Szavazás**: az előre jelzett osztályvalószínűségek (besorolási feladatok esetén) vagy az előre jelzett regressziós célok (regressziós feladatok esetén) súlyozott átlaga alapján előrejelez.
+* **Egymásra**rakható: egymásra egyesíti a heterogén modellek és a vonatok egy meta-modell alapján a kimenet az egyes modellek. A jelenlegi alapértelmezett metamodellek a logisztikairegresszió besorolási feladatokés ElasticNet a regressziós/előrejelzési feladatok.
 
-A rendezett Ensemble inicializálásával eldöntheti, hogy mely modelleket kívánja használni az Ensemble-ban, a [Caruana Ensemble kiválasztási algoritmusa](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) . Ez az algoritmus magas szinten inicializálja az összevonást akár öt modellel a legjobb egyéni pontszámokkal, és ellenőrzi, hogy ezek a modellek a legjobb pontszámot követő 5%-os küszöbértéken belül vannak-e a gyenge kezdeti együttesek elkerüléséhez. Ezután minden egyes Ensemble-iterációhoz új modellt adnak hozzá a meglévő együtteshez, az eredményül kapott pontszámot pedig kiszámítjuk. Ha egy új modell javította a meglévő Ensemble-pontszámot, a rendszer frissíti az Ensemble-t, hogy tartalmazza az új modellt.
+A [Caruana együttes kiválasztási algoritmus](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) a rendezett együttes inicializálása használják annak eldöntésére, hogy mely modelleket használja az együttesen belül. Magas szinten ez az algoritmus inicializálja az együttest legfeljebb öt modellel, a legjobb egyéni pontszámokkal, és ellenőrzi, hogy ezek a modellek a legjobb pontszám 5%-os küszöbértékén belül vannak-e, hogy elkerüljék a gyenge kezdeti együttest. Ezután minden egyes együttes iterációhoz egy új modellt adnak hozzá a meglévő együtteshez, és kiszámítják a kapott pontszámot. Ha egy új modell javította a meglévő együttes pontszám, az együttes frissül, hogy tartalmazza az új modell.
 
-Lásd: [útmutató](how-to-configure-auto-train.md#ensemble) az alapértelmezett Ensemble beállításainak módosításához az automatikus gépi tanulásban.
+Tekintse meg [az](how-to-configure-auto-train.md#ensemble) automatikus gépi tanulás alapértelmezett együttesbeállításainak módosításához.
 
-## <a name="imbalance"></a>Kiegyensúlyozatlan adathalmazok
+## <a name="use-with-onnx-in-c-apps"></a>Használata az ONNX-szel a C# alkalmazásokban
 
-A rendszer a gépi tanulási besorolási forgatókönyvek esetében általában az adatokon alapuló, nem kiegyensúlyozott adatokra hivatkozik, és olyan adatokra utal, amelyek az egyes osztályokba tartozó megfigyelések aránytalan arányát tartalmazzák. Ez az egyensúlyhiány a modell pontosságának hamisan érzékelt pozitív hatását eredményezheti, mivel a bemeneti adatok az egyik osztályhoz képest elfogultak, ami azt eredményezi, hogy a betanított modell a torzítást utánozza. 
+Az Azure Machine Learning segítségével automatikus ML-t hozhat létre egy Python-modell, és az ONNX formátumba konvertálható. Az ONNX futásidejű támogatja a C#, így a c# alkalmazásokban automatikusan beépített modellt használhatja anélkül, hogy újra kellene kódolnia, vagy a REST-végpontok által bevezetett hálózati késéseket. Próbáljon meg egy példát erre a [folyamatra ebben a Jupyter notebookban.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)
 
-A Machine learning-munkafolyamatok egyszerűsítésének céljaként az automatikus ML beépített képességekkel rendelkezik, amelyek segítenek a kiegyensúlyozatlan adatmennyiségek, például a 
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatizált ML az Azure Machine Learningben
 
-- Egy **súlyozási oszlop**: az automatikus ml a súlyozott oszlopot bemenetként támogatja, ami az adatokban lévő sorok súlyozását eredményezi, ami akár több vagy kevesebb "fontos" osztályt is tehet.
+Az Azure Machine Learning két élményt kínál az automatizált ml-es nyelvkörnyezethez
 
-- Az automatikus ML által használt algoritmusok megfelelően kezelhetik az akár 20:1-es egyensúlyhiányt, ami azt jelenti, hogy a leggyakoribb osztály 20 alkalommal több sort tartalmaz az adatmennyiségnél, mint a legkisebb közös osztály.
+* A kód tapasztalt ügyfelek, [az Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
-### <a name="identify-models-with-imbalanced-data"></a>A kiegyensúlyozatlan adattal rendelkező modellek azonosítása
+* A korlátozott/nincs kódélményben az ügyfelek számára az Azure Machine Learning[https://ml.azure.com](https://ml.azure.com/)  
 
-Mivel a besorolási algoritmusokat általában pontossággal értékelik ki, a modell pontossági pontszámának ellenőrzése jó módszer annak azonosítására, hogy az érintett adatok nem egyensúlyban vannak-e. Valóban nagy pontossággal vagy nagyon alacsony pontossággal rendelkezett bizonyos osztályok esetében?
-
-Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
-
-Diagram| Leírás
----|---
-[Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
-[Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 
-[ROC-görbék](how-to-understand-automated-ml.md#roc)| Kiértékeli a helyes feliratok arányát a hamis pozitív feliratok arányával.
-
-### <a name="handle-imbalanced-data"></a>Kiegyensúlyozatlan adatmennyiség kezelése 
-
-Az alábbi módszerek további lehetőségeket biztosítanak az automatikus ML-n kívüli, kiegyensúlyozatlan adatmennyiség kezelésére. 
-
-- Újramintavételezés még az osztályra is, akár a kisebb osztályok mintavételezésével vagy a nagyobb osztályok mintavételezésével. Ezek a módszerek szaktudást igényelnek a feldolgozáshoz és az elemzéshez.
-
-- Használjon olyan teljesítmény-mérőszámot, amely jobban bánik a kiegyensúlyozatlan adatokkal. Az F1 pontszám például a precizitás és a visszahívás súlyozott átlaga. A pontosság mértéke az osztályozó pontossága – az alacsony pontosság azt jelzi, hogy a téves pozitív érték nagy számú hamis pozitív--,, míg a visszahívási mérték egy osztályozó teljessége – az alacsony visszahívás nagy számú hamis negatív értéket jelez. 
-
-## <a name="use-with-onnx-in-c-apps"></a>Használat a ONNX C# alkalmazásokban
-
-A Azure Machine Learning használatával a Python-modell létrehozásához és a ONNX-formátumra való átalakításához használhatja az automatikus ML-t. Az ONNX Runtime támogatja C#, így az C# alkalmazásokban automatikusan létrehozott modell újrakódolás vagy a REST-végpontok által bevezethető hálózati késések nélkül is használható. Próbálja ki ezt a folyamatot ebben a [Jupyter-jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
-
-## <a name="automated-ml-in-azure-machine-learning"></a>Automatizált ML Azure Machine Learning
-
-A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez
-
-* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -t 
-
-* A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning studiót [https://ml.azure.com](https://ml.azure.com/)  
-
-A következő összefoglalja az egyes élményekben támogatott magas szintű automatizált ML-funkciókat.
+A következő összegzi az egyes tapasztalatok által támogatott magas szintű automatizált gépi tanulási képességeket.
 
 <a name="parity"></a>
 
-### <a name="experiment-settings"></a>Kísérletezési beállítások 
+### <a name="experiment-settings"></a>Kísérlet beállításai 
 
-A következő beállítások lehetővé teszik az automatikus ML-kísérlet konfigurálását. 
+A következő beállítások lehetővé teszik az automatikus gépelési kísérlet konfigurálását. 
 
 | | Python SDK| Studio
 ----|:----:|:----:
-Adat felosztása a betanítási/ellenőrzési készletekbe| ✓|✓
-A ML-feladatok támogatása: besorolás, regresszió és előrejelzés| ✓| ✓
-Optimalizálás az elsődleges metrika alapján| ✓| ✓
-A pénzmosás-számítást számítási célként támogatja | ✓|✓
-Az előrejelzési horizont konfigurálása, a cél késleltetése & gördülő ablak|✓|✓
-Kilépési feltételek beállítása |✓|✓ 
+Adatok felosztása vonatra/érvényesítési készletekre| ✓|✓
+Támogatja a pénzmosási feladatokat: osztályozás, regresszió és előrejelzés| ✓| ✓
+Optimalizálás az elsődleges mutató alapján| ✓| ✓
+Támogatja az AML-számítást számítási célként | ✓|✓
+Előrejelzési horizont konfigurálása, célkésések & gördülő ablak|✓|✓
+Kilépési feltételek megadása |✓|✓ 
 Egyidejű ismétlések beállítása| ✓|✓
 Oszlopok eldobása| ✓|✓
-Algoritmusok letiltása|✓|✓
+Blokk algoritmusok|✓|✓
 Keresztellenőrzés |✓|✓
-A Azure Databricks-fürtökön betanítást támogatja| ✓|
-Megjelenő szolgáltatások nevének megtekintése|✓|
-Featurization összegzése| ✓|
-Üdülési featurization|✓|
+Támogatja az Azure Databricks-fürtök betanítását| ✓|
+Tervezett szolgáltatásnevek megtekintése|✓|
+Felvázolás összegzése| ✓|
+Ünnepi featurization|✓|
 Naplófájlok részletességi szintje| ✓|
 
-### <a name="model-settings"></a>Modell beállításai
+### <a name="model-settings"></a>Modellbeállítások
 
-Ezek a beállítások a legjobb modellre alkalmazhatók az automatikus ML-kísérlet eredményeképpen.
+Ezek a beállítások az automatikus gépi tanulási kísérlet eredményeképpen a legjobb modellre alkalmazhatók.
 
 ||Python SDK|Studio
 ----|:----:|:----:
-A legjobb modell regisztrációja| ✓|✓
-A legjobb modell üzembe helyezése| ✓| ✓
-A legjobb modell magyarázata| ✓|✓
-Szavazói Ensemble & stack Ensemble-modellek engedélyezése| ✓|✓
-A legjobb modell megjelenítése a nem elsődleges metrika alapján|✓|ONNX-modell kompatibilitásának engedélyezése/letiltása|✓|
+A legjobb modell regisztráció| ✓|✓
+A legjobb modell telepítés| ✓| ✓
+A legjobb modell megmagyarázhatósága| ✓|✓
+Szavazási együttes engedélyezése & veremegyüttes modellekhez| ✓|✓
+A legjobb modell megjelenítése nem elsődleges mutató alapján|✓|
+AZ ONNX-modell kompatibilitásának engedélyezése/letiltása|✓|
 A modell tesztelése | ✓| |
 
-### <a name="run-control-settings"></a>Vezérlési beállítások futtatása
+### <a name="run-control-settings"></a>Vezérlőbeállítások futtatása
 
-Ezekkel a beállításokkal áttekintheti és szabályozhatja a kísérlet futtatását és a gyermeke futtatását. 
+Ezek a beállítások lehetővé teszik a kísérletfuttatások és a gyermek futtatások áttekintését és vezérlését. 
 
 ||Python SDK| Studio
 ----|:----:|:----:
-Összegző táblázat futtatása| ✓|✓
+Összegző tábla futtatása| ✓|✓
 Futtatás megszakítása| ✓|✓
-Gyermek futtatásának megszakítása| ✓| ✓
-Guardrails beolvasása| ✓|✓
-Futtatás szüneteltetése| ✓| 
-Futtatás folytatása| ✓| 
+Gyermekfuttatás megszakítása| ✓| ✓
+Get védőkorlát| ✓|✓
+Szünetfuttatás| ✓| 
+Folytatás futtatása| ✓| 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
+Tekintse meg a példákat, és ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulással:
 
-+ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning](tutorial-auto-train-models.md)
++ Kövesse az [oktatóanyagot: Regressziós modell automatikus betanítása az Azure Machine Learning segítségével](tutorial-auto-train-models.md)
 
-+ Konfigurálja az automatikus betanítási kísérlet beállításait:
-  + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-use-automated-ml-for-ml-models.md).
-  + A Python SDK használatával hajtsa [végre az alábbi lépéseket](how-to-configure-auto-train.md).
++ Az automatikus betanítási kísérlet beállításainak konfigurálása:
+  + Az Azure Machine Learning stúdióban [kövesse ezeket a lépéseket.](how-to-use-automated-ml-for-ml-models.md)
+  + A Python SDK-val [kövesse ezeket a lépéseket.](how-to-configure-auto-train.md)
 
-+ Ismerje meg, hogyan [végezheti](how-to-auto-train-forecast.md)el az automatikus betanítást az idősorozat-adatkészletek használatával.
++ Ismerje meg, hogyan lehet automatikusan betanítási idősorozat-adatok használatával, [kövesse ezeket a lépéseket.](how-to-auto-train-forecast.md)
 
-+ Próbálja ki [Jupyter notebook mintákat az automatizált gépi tanuláshoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
++ Próbálja ki a [Jupyter Notebook-mintákat az automatizált gépi tanuláshoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
 
-* Az automatikus ML más Microsoft-megoldásokban is elérhető, például:, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
+* Az automatikus ml más Microsoft-megoldásokban is elérhető, például [ML.NET,](https://docs.microsoft.com/dotnet/machine-learning/automl-overview) [HDInsightban,](../hdinsight/spark/apache-spark-run-machine-learning-automl.md) [Power BI-ban](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és [SQL Serverben](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

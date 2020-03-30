@@ -1,7 +1,7 @@
 ---
-title: Felhasználói Migrálás módszerei
+title: Felhasználói áttelepítési megközelítések
 titleSuffix: Azure AD B2C
-description: Áttelepítheti a felhasználói fiókokat egy másik identitás-szolgáltatótól a tömeges importálás vagy a zökkenőmentes áttelepítési módszerek használatával Azure AD B2C.
+description: Felhasználói fiókok áttelepítése egy másik identitásszolgáltatótól az Azure AD B2C-be a tömeges importálási vagy zökkenőmentes áttelepítési módszerek használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,96 +11,96 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ef9402e0891915be4ed6bb89573eced546c59a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183142"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332334"
 ---
-# <a name="migrate-users-to-azure-ad-b2c"></a>Felhasználók migrálása Azure AD B2Cre
+# <a name="migrate-users-to-azure-ad-b2c"></a>Felhasználók áttelepítése az Azure AD B2C szolgáltatásba
 
-A másik identitás-szolgáltatóról Azure Active Directory B2C (Azure AD B2C) való Migrálás a meglévő felhasználói fiókok áttelepítését is szükségessé teheti. Itt két áttelepítési módszert tárgyalunk, a *tömeges importálást* és a *zökkenőmentes áttelepítést*. Mindkét módszer esetében olyan alkalmazást vagy parancsfájlt kell írnia, amely a [Microsoft Graph API](manage-user-accounts-graph-api.md) -t használja a felhasználói fiókok létrehozásához Azure ad B2Cban.
+Más identitásszolgáltatóról az Azure Active Directory B2C -be (Azure AD B2C) való áttelepítése a meglévő felhasználói fiókok áttelepítését is szükségessé teheti. Itt két áttelepítési módszert vitatunk meg, *a tömeges importálást* és *a zökkenőmentes áttelepítést.* Mindkét megközelítés, akkor kell írni egy alkalmazást vagy parancsfájlt, amely a [Microsoft Graph API-t](manage-user-accounts-graph-api.md) használja felhasználói fiókok létrehozásához az Azure AD B2C.With either approach, you're required to write an application or script that uses the Microsoft Graph API to create user accounts in Azure AD B2C.
 
 ## <a name="bulk-import"></a>Tömeges importálás
 
-A tömeges importálási folyamat során az áttelepítési alkalmazás végrehajtja ezeket a lépéseket minden felhasználói fiókhoz:
+A tömeges importálási folyamat során az áttelepítési alkalmazás minden felhasználói fiókhoz végrehajtja a következő lépéseket:
 
-1. Olvassa el a felhasználói fiókot a régi identitás-szolgáltatótól, beleértve az aktuális hitelesítő adatait (Felhasználónév és jelszó).
-1. Hozzon létre egy megfelelő fiókot a Azure AD B2C címtárban az aktuális hitelesítő adatokkal.
+1. Olvassa el a felhasználói fiókot a régi identitásszolgáltatótól, beleértve az aktuális hitelesítő adatokat (felhasználónév és jelszó).
+1. Hozzon létre egy megfelelő fiókot az Azure AD B2C címtárban az aktuális hitelesítő adatokkal.
 
-A tömeges importálási folyamat mindkét esetben a következő két helyzetben használható:
+A tömeges importforgalmat a következő két helyzet valamelyikében használja:
 
-- Hozzáférése van a felhasználó egyszerű szöveges hitelesítő adataihoz (a felhasználónevet és a jelszót).
-- A hitelesítő adatok titkosítva vannak, de visszafejtheti őket.
+- Hozzáférhet a felhasználó egyszerű szöveges hitelesítő adataihoz (a felhasználónevükhöz és a jelszavukhoz).
+- A hitelesítő adatok titkosítva vannak, de visszafejthetők.
 
-További információ a felhasználói fiókok programozott létrehozásáról: [Azure ad B2C felhasználói fiókok kezelése Microsoft Graph](manage-user-accounts-graph-api.md)használatával.
+A felhasználói fiókok programozott létrehozásáról az [Azure AD B2C felhasználói fiókok kezelése a Microsoft Graph programmal című témakörben talál.](manage-user-accounts-graph-api.md)
 
 ## <a name="seamless-migration"></a>Zökkenőmentes áttelepítés
 
-Ha a régi identitás-szolgáltató szöveges jelszavai nem érhetők el, használja a zökkenőmentes áttelepítési folyamatot. Például:
+Használja a zökkenőmentes áttelepítési folyamatot, ha a régi identitásszolgáltató egyszerű szöveges jelszavai nem érhetők el. Például, ha:
 
-- A jelszót egy egyirányú titkosított formátumban, például egy kivonatoló függvénnyel tárolja a rendszer.
-- A jelszót a régi identitás-szolgáltató tárolja oly módon, hogy nem férhet hozzá. Ha például az identitás-szolgáltató egy webszolgáltatás meghívásával érvényesíti a hitelesítő adatokat.
+- A jelszó egyirányú titkosított formátumban, például kivonatoló funkcióval van tárolva.
+- A jelszót az örökölt identitásszolgáltató tárolja úgy, hogy nem érhető el. Például, ha az identitásszolgáltató ellenőrzi hitelesítő adatok at egy webszolgáltatás hívásával.
 
-A zökkenőmentes áttelepítési folyamat továbbra is a felhasználói fiókok tömeges áttelepítését igényli, azonban egy [Egyéni szabályzattal](restful-technical-profile.md) kérdez le egy [REST API](rest-api-claims-exchange-dotnet.md) (amelyet létrehoz) az egyes felhasználók jelszavának az első bejelentkezéskor történő megadásához.
+A zökkenőmentes áttelepítési folyamat továbbra is a felhasználói fiókok tömeges áttelepítését igényli, de ezután egy [egyéni házirend et](custom-policy-get-started.md) használ a REST [API](custom-policy-rest-api-intro.md) lekérdezéséhez (amelyet létrehoz), hogy beállítsa az egyes felhasználók jelszavát az első bejelentkezéskor.
 
-A zökkenőmentes áttelepítési folyamatnak két fázisa van: a *tömeges importálás* és a *hitelesítő adatok beállítása*.
+A zökkenőmentes áttelepítési folyamat nak tehát két fázisa van: *tömeges importálás* és hitelesítő *adatok beállítása.*
 
-### <a name="phase-1-bulk-import"></a>1\. fázis: tömeges importálás
+### <a name="phase-1-bulk-import"></a>1. fázis: Tömeges importálás
 
-1. Az áttelepítési alkalmazás beolvassa a felhasználói fiókokat a régi identitás-szolgáltatótól.
-1. Az áttelepítési alkalmazás a megfelelő felhasználói fiókokat hozza létre a Azure AD B2C könyvtárban, de *nem állítja be a jelszavakat*.
+1. Az áttelepítési alkalmazás beolvassa a felhasználói fiókokat a régi identitásszolgáltatótól.
+1. Az áttelepítési alkalmazás létrehozza a megfelelő felhasználói fiókokat az Azure AD B2C könyvtárban, de *nem állít be jelszavakat.*
 
-### <a name="phase-2-set-credentials"></a>2\. fázis: hitelesítő adatok beállítása
+### <a name="phase-2-set-credentials"></a>2. fázis: Hitelesítő adatok beállítása
 
-A fiókok tömeges áttelepítése után az egyéni házirend és a REST API akkor hajtsa végre a következőket, amikor egy felhasználó bejelentkezik:
+A fiókok tömeges áttelepítése után az egyéni házirend és a REST API a következőműveleteket hajtsa végre, amikor a felhasználó bejelentkezik:
 
-1. Olvassa el a megadott e-mail-címre vonatkozó Azure AD B2C felhasználói fiókot.
-1. A logikai bővítmény attribútum kiértékelésével győződjön meg arról, hogy a fiók az áttelepítésre van-e megjelölve.
-    - Ha a bővítmény attribútum `True`ad vissza, hívja meg a REST API, hogy érvényesítse a jelszót az örökölt identitás-szolgáltatón.
-      - Ha a REST API határozza meg, hogy a jelszó helytelen, egy felhasználóbarát hibát ad vissza a felhasználónak.
-      - Ha a REST API határozza meg a jelszót, írja be a jelszót a Azure AD B2C-fiókba, és módosítsa a logikai bővítmény attribútumát `False`re.
-    - Ha a logikai bővítmény attribútuma `False`ad vissza, folytassa a bejelentkezési folyamatot a szokásos módon.
+1. Olvassa el az Azure AD B2C felhasználói fiókot, amely megfelel a megadott e-mail-címnek.
+1. Ellenőrizze, hogy a fiók meg van-e jelölve az áttelepítéshez egy logikai bővítményattribútum kiértékelésével.
+    - Ha a bővítmény `True`attribútum visszaadja, hívja meg a REST API-t a jelszó érvényesítéséhez az örökölt identitásszolgáltatóval szemben.
+      - Ha a REST API megállapítja, hogy a jelszó helytelen, rövid hibát ad vissza a felhasználónak.
+      - Ha a REST API helyesnek találja a jelszót, írja be a jelszót az Azure AD `False`B2C-fiókba, és módosítsa a logikai bővítmény attribútumát .
+    - Ha a logikai bővítmény `False`attribútum a szokásos módon folytatja a bejelentkezési folyamatot.
 
-Az egyéni szabályzatok és REST APIek megjelenítéséhez tekintse meg a [zökkenőmentes felhasználói áttelepítési mintát](https://aka.ms/b2c-account-seamless-migration) a githubon.
+Egy példa egyéni szabályzat és a REST API megtekintéséhez tekintse meg a [zökkenőmentes felhasználói áttelepítési minta](https://aka.ms/b2c-account-seamless-migration) a GitHubon.
 
-a felhasználók áttelepítésének zökkenőmentes áttelepítési módszerét ![folyamatábra-diagram](./media/user-migration/diagram-01-seamless-migration.png)<br />*Ábra: zökkenőmentes áttelepítési folyamat*
+![Folyamatábra a felhasználók áttelepítésének zökkenőmentes áttelepítési megközelítéséről](./media/user-migration/diagram-01-seamless-migration.png)<br />*Diagram: Zökkenőmentes áttelepítési folyamat*
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
 ### <a name="security"></a>Biztonság
 
-A zökkenőmentes áttelepítési módszer a saját egyéni REST API használatával érvényesíti a felhasználó hitelesítő adatait az örökölt identitás-szolgáltatón.
+A zökkenőmentes áttelepítési megközelítés a saját egyéni REST API-t használja a felhasználó hitelesítő adatainak érvényesítéséhez az örökölt identitásszolgáltatóval szemben.
 
-**Meg kell védenie REST API a találgatásos támadásokkal szemben.** A támadók több jelszót is elküldhetnek abban a reményben, hogy végül kitalálják a felhasználó hitelesítő adatait. Az ilyen támadások legyőzéséhez állítsa le a kérések kézbesítését a REST API, ha a bejelentkezési kísérletek száma egy bizonyos küszöbértéket eredményez. A Azure AD B2C és a REST API közötti kommunikációt is biztonságossá teheti az [ügyféltanúsítvány](secure-rest-api-dotnet-certificate-auth.md)használatával.
+**Meg kell védenie a REST API-t a találgatásos támadások ellen.** A támadó több jelszót is beküldhet annak reményében, hogy végül kitalálja a felhasználó hitelesítő adatait. Az ilyen támadások elleni vereség érdekében állítsa le a rest API-nak érkező kérelmek kiszolgálását, ha a bejelentkezési kísérletek száma egy bizonyos küszöbértéket halad meg. Emellett biztonságossá kell tenni az Azure AD B2C és a REST API közötti kommunikációt. A RESTful API-k éles környezetben való védelméről a [Biztonságos RESTful API című témakörben](secure-rest-api.md)olvashat.
 
 ### <a name="user-attributes"></a>Felhasználói attribútumok
 
-A régi identitás-szolgáltató összes adatát át kell telepíteni a Azure AD B2C könyvtárba. Az áttelepítés előtt azonosítsa a Azure AD B2C tárolandó felhasználói attribútumok megfelelő készletét.
+Nem minden információt az örökölt identitásszolgáltató át kell telepíteni az Azure AD B2C könyvtárba. Az áttelepítés előtt azonosítsa az Azure AD B2C-ben tárolandó felhasználói attribútumok megfelelő készletét.
 
-- **Tároló Azure ad B2C**
-  - Felhasználónév, jelszó, e-mail-cím, telefonszámok, tagsági számok/azonosítók.
-  - Az adatvédelmi szabályzat és a Végfelhasználói licencszerződések megjelölése.
-- **Ne tárolja a** Azure ad B2C
-  - Bizalmas adatok, például hitelkártyaszám, társadalombiztosítási számok (SSN), orvosi nyilvántartások vagy egyéb, kormányzati vagy iparági megfelelőségi szervek által szabályozott adatok.
-  - Marketing-vagy kommunikációs beállítások, felhasználói viselkedés és bepillantást nyerhet.
+- **DO** áruház az Azure AD B2C-ben
+  - Felhasználónév, jelszó, e-mail címek, telefonszámok, tagsági számok/azonosítók.
+  - Hozzájárulási jelölők az adatvédelmi irányelvekhez és a végfelhasználói licencszerződésekhez.
+- **NE** tárolja az Azure AD B2C-ben
+  - Érzékeny adatok, például hitelkártyaszámok, társadalombiztosítási számok (SSN), orvosi feljegyzések vagy a kormányzati vagy iparági megfelelőségi szervek által szabályozott egyéb adatok.
+  - Marketing- vagy kommunikációs beállítások, felhasználói viselkedések és elemzések.
 
-### <a name="directory-clean-up"></a>Címtár törlése
+### <a name="directory-clean-up"></a>Könyvtár karbantartása
 
-Az áttelepítési folyamat megkezdése előtt végezze el a könyvtár törlésének lehetőségét.
+Az áttelepítési folyamat megkezdése előtt vegye ki az alkalmat a címtár karbantartására.
 
-- Azonosítsa a Azure AD B2C tárolandó felhasználói attribútumok készletét, és csak azt telepítse át, amire szüksége van. Ha szükséges, létrehozhat [Egyéni attribútumokat](custom-policy-custom-attributes.md) a felhasználóval kapcsolatos további információk tárolásához.
-- Ha több hitelesítési forrásból származó környezetről végez áttelepítést (például az egyes alkalmazások saját felhasználói címtárral rendelkeznek), telepítse át a Azure AD B2C egyesített fiókjába.
-- Ha több alkalmazásnak eltérő felhasználóneve van, akkor az identitások gyűjtemény használatával egy Azure AD B2C felhasználói fiókban tárolhatók. A jelszóval kapcsolatban hagyja, hogy a felhasználó válasszon egyet, és állítsa be a könyvtárba. A zökkenőmentes áttelepítéssel például csak a kiválasztott jelszót kell tárolni a Azure AD B2C fiókban.
+- Azonosítsa az Azure AD B2C-ben tárolandó felhasználói attribútumokat, és csak azt telepítse át, amire szüksége van. Szükség esetén egyéni [attribútumokat](custom-policy-custom-attributes.md) hozhat létre a felhasználótovábbi adatainak tárolásához.
+- Ha több hitelesítési forrással rendelkező környezetből (például minden alkalmazás saját felhasználói könyvtárral rendelkezik) telepít át egy egyesített fiókba az Azure AD B2C-ben.
+- Ha több alkalmazás különböző felhasználónévvel rendelkezik, az identitásgyűjtemény használatával tárolhatja az összeset egy Azure AD B2C felhasználói fiókban. Ami a jelszót, hagyja, hogy a felhasználó válasszon egyet, és állítsa be a könyvtárban. Például a zökkenőmentes áttelepítés, csak a kiválasztott jelszót kell tárolni az Azure AD B2C-fiókban.
 - Távolítsa el a nem használt felhasználói fiókokat az áttelepítés előtt, vagy ne telepítse át az elavult fiókokat.
 
 ### <a name="password-policy"></a>Jelszóházirend
 
-Ha az áttelepíteni kívánt fiókok gyengébb jelszóval rendelkeznek, mint az Azure AD B2C által kényszerített [erős jelszó](../active-directory/authentication/concept-sspr-policy.md) erőssége, letilthatja a jelszó erős követelményét. További információ: [jelszóházirend tulajdonsága](manage-user-accounts-graph-api.md#password-policy-property).
+Ha az áttelepíti a fiókokat gyengébb jelszóerősséget, mint az Azure AD B2C által kényszerített [erős jelszóerősséget,](../active-directory/authentication/concept-sspr-policy.md) letilthatja az erős jelszókövetelményt. További információt a [Jelszóházirend tulajdonságcímű témakörben talál.](manage-user-accounts-graph-api.md#password-policy-property)
 
 ## <a name="next-steps"></a>További lépések
 
-Az [Azure-ad-B2C/felhasználó-áttelepítési](https://github.com/azure-ad-b2c/user-migration) adattár a githubon egy zökkenőmentes áttelepítési egyéni házirendet tartalmaz, és REST API a kód minta:
+Az [azure-ad-b2c/user-migration](https://github.com/azure-ad-b2c/user-migration) repository a GitHubon egy zökkenőmentes áttelepítési egyéni szabályzatpéldát és REST API-kódmintát tartalmaz:
 
-[Zökkenőmentes felhasználói áttelepítési egyéni házirend & REST API mintakód](https://aka.ms/b2c-account-seamless-migration)
+[Zökkenőmentes felhasználói áttelepítésegyéni házirend & REST API-kódminta](https://aka.ms/b2c-account-seamless-migration)

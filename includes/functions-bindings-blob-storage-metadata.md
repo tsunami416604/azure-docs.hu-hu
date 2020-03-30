@@ -10,22 +10,22 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 3788fdb954917f28f64a0dfe035bed4ded0932d5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69642135"
 ---
-A blob trigger számos metaadat-tulajdonságot biztosít. Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezeknek az értékeknek ugyanazok a szemantikai értékei, mint a [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) típusa.
+A blob eseményindító számos metaadat-tulajdonságot biztosít. Ezek a tulajdonságok más kötésekben lévő kötési kifejezések részeként vagy a kódban paraméterekként használhatók. Ezek az értékek ugyanazt a szemantikát, mint a [CloudBlob-típus.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet)
 
 |Tulajdonság  |Típus  |Leírás  |
 |---------|---------|---------|
-|`BlobTrigger`|`string`|Az indító blob elérési útja.|
-|`Uri`|`System.Uri`|A blob URI-ja az elsődleges helyen.|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|A blob rendszertulajdonságai. |
-|`Metadata` |`IDictionary<string,string>`|A blobhoz tartozó felhasználó által definiált metaadatok.|
+|`BlobTrigger`|`string`|Az aktiváló blob elérési útja.|
+|`Uri`|`System.Uri`|A blob URI az elsődleges hely.|
+|`Properties` |[BlobTulajdonságai](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|A blob rendszertulajdonságai. |
+|`Metadata` |`IDictionary<string,string>`|A blob felhasználó által definiált metaadatai.|
 
-Az alábbi C# szkriptek és JavaScript-példák például az indító blob elérési útját naplózzák, beleértve a tárolót:
+Például a következő C# parancsfájl és javaScript példák naplóaz elérési utat az aktiváló blob, beleértve a tárolót:
 
 ```csharp
 public static void Run(string myBlob, string blobTrigger, ILogger log)

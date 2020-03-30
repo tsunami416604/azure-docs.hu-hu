@@ -1,6 +1,6 @@
 ---
-title: Késési hibák Storage Analytics naplók használatával
-description: Azonosíthatja és elháríthatja az Azure Storage analitikai naplóival kapcsolatos késési problémákat, és optimalizálhatja az ügyfélalkalmazás használatát.
+title: Késési problémák elhárítása Storage Analytics-naplók használatával
+description: Azonosítsa és hárítsa el a késési problémákat az Azure Storage analitikus naplóival, és optimalizálja az ügyfélalkalmazást.
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -11,25 +11,25 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74196506"
 ---
-# <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Késési hibák Storage Analytics naplók használatával
+# <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Késési problémák elhárítása Storage Analytics-naplók használatával
 
-A diagnosztizálás és a hibaelhárítás kulcsfontosságú képesség az ügyfélalkalmazások Azure Storage szolgáltatással történő létrehozásához és támogatásához.
+Diagnosztizálása és hibaelhárítás a kulcsfontosságú készség az azure storage-beli ügyfélalkalmazások létrehozásához és támogatásához.
 
-Az Azure-alkalmazások elosztott jellegéből adódóan a hibák és a teljesítménnyel kapcsolatos problémák diagnosztizálása és hibaelhárítása összetettebb lehet, mint a hagyományos környezetekben.
+Az Azure-alkalmazások elosztott jellege miatt a hibák és a teljesítményproblémák diagnosztizálása és hibaelhárítása összetettebb lehet, mint a hagyományos környezetekben.
 
-Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a késéssel kapcsolatos problémákat az Azure Storage analitikus naplóival, és hogyan optimalizálhatja az ügyfélalkalmazás használatát.
+Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a késési problémákat az Azure Storage analitikus naplóival, és hogyan optimalizálhatja az ügyfélalkalmazást.
 
 ## <a name="recommended-steps"></a>Javasolt lépések
 
-1. Töltse le a [Storage Analytics naplókat](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Töltse le a [Storage Analytics naplókat.](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)
 
-2. A következő PowerShell-parancsfájl használatával alakítsa át a nyers formátumú naplókat táblázatos formátumba:
+2. A következő PowerShell-parancsfájl segítségével konvertálja a nyers formátumú naplókat táblázatos formátumba:
 
    ```Powershell
    $Columns = 
@@ -70,99 +70,99 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
 
-3. A szkript elindít egy grafikus felhasználói felületet tartalmazó ablakot, amelyen az alábbi ábrán látható módon szűrheti az adatokat oszlopok alapján.
+3. A szkript indít egy GUI ablak, ahol szűrheti az információkat oszlopok, az alábbiak szerint.
 
-   ![Storage analitikus napló elemző ablaka](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
+   ![Tároló elemző eszköz tárolóablak](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
  
-4. Szűkítse le a naplóbejegyzéseket a "művelet típusa" alapján, és keresse meg a probléma időbeli keretében létrehozott naplóbejegyzést.
+4. Szűkítse le a naplóbejegyzéseket a "művelettípus" alapján, és keresse meg a probléma időkerete alatt létrehozott naplóbejegyzést.
 
-   ![Művelet típusú naplóbejegyzések](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
+   ![Művelettípusú naplóbejegyzések](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
 5. A probléma bekövetkezésének ideje alatt a következő értékek fontosak:
 
-   * Művelet – típus = GetBlob
-   * kérelem – állapot = SASNetworkError
-   * Végpontok közötti késleltetés – ms = 8453
-   * Kiszolgáló – késés – MS = 391
+   * Művelet típusa = GetBlob
+   * request-status = SASNetworkError
+   * Vége-to-End-Latency-In-Ms = 8453
+   * Kiszolgáló-késleltetés-Múlva = 391
 
-   A végpontok közötti késleltetés kiszámítása a következő egyenlet használatával történik:
+   A végpontok késését a következő egyenlet telíti ki:
 
-   * Végpontok közötti késés = kiszolgáló-késés + ügyfél késése
+   * Végpontok utáni késés = Kiszolgáló-késés + Ügyfélkésés
 
-   Az ügyfél késésének kiszámítása a naplóbejegyzés használatával:
+   Számítsa ki az ügyfél késését a naplóbejegyzés segítségével:
 
-   * Ügyfél késése = végpontok közötti késés – kiszolgáló – késés
+   * Ügyfélkésés = végpontok közötti késés – kiszolgáló-késés
 
           * Example: 8453 – 391 = 8062ms
 
-   A következő táblázat a nagy késleltetésű OperationType és a RequestStatus eredményekkel kapcsolatos információkat tartalmaz:
+   Az alábbi táblázat az OperationType és a RequestStatus eredmények nagy késleltetésű eredményeiről tartalmaz tájékoztatást:
 
-   |   |RequestStatus =<br>Sikeres|RequestStatus =<br>Sas NetworkError|Ajánlás|
+   |   |RequestStatus=<br>Sikeres|RequestStatus=<br>(SAS) Hálózati hiba|Ajánlás|
    |---|---|---|---|
-   |GetBlob|Igen|Nem|[**GetBlob művelet:** RequestStatus = sikeres](#getblob-operation-requeststatus--success)|
-   |GetBlob|Nem|Igen|[**GetBlob művelet:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Igen|Nem|[**Put művelet:** RequestStatus = sikeres](#put-operation-requeststatus--success)|
-   |PutBlob|Nem|Igen|[**Put művelet:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob (GetBlob)|Igen|Nem|[**GetBlob művelet:** RequestStatus = Sikeres](#getblob-operation-requeststatus--success)|
+   |GetBlob (GetBlob)|Nem|Igen|[**GetBlob művelet:** RequestStatus = (SAS)Hálózati hiba](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob (PutBlob)|Igen|Nem|[**Put Operation:** RequestStatus = Sikeres](#put-operation-requeststatus--success)|
+   |PutBlob (PutBlob)|Nem|Igen|[**Put Operation:** RequestStatus = (SAS)Hálózati hiba](#put-operation-requeststatus--sasnetworkerror)|
 
-## <a name="status-results"></a>Állapot eredményei
+## <a name="status-results"></a>Állapoteredmények
 
-### <a name="getblob-operation-requeststatus--success"></a>GetBlob művelet: RequestStatus = sikeres
+### <a name="getblob-operation-requeststatus--success"></a>GetBlob művelet: RequestStatus = Sikeres
 
-A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
+Ellenőrizze az "Ajánlott lépések" szakasz 5.
 
-* Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Végpontok utáni késés
+* Kiszolgáló-késés
+* Ügyfél-késés
 
-A **RequestStatus = sikerrel**rendelkező **GetBlob-műveletben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, ez azt jelzi, hogy az Azure Storage nagy mennyiségű időt tölt ki az ügyfélnek az adatírás során. Ez a késleltetés ügyféloldali problémát jelez.
+A **GetBlob-művelet** **RequestStatus = Sikeres,** ha **a maximális idő** az **ügyfél-késés,** ez azt jelzi, hogy az Azure Storage tölt nagy mennyiségű időt adatok írása az ügyfélnek. Ez a késleltetés ügyféloldali problémát jelez.
 
-**Ajánlás**
+**Ajánlás:**
 
-* Vizsgálja meg a kódot az ügyfélen.
-* A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával vizsgálja meg az ügyfél hálózati kapcsolati problémáit. 
+* Vizsgálja meg a kódot az ügyfél.
+* A Wireshark, a Microsoft Message Analyzer vagy a Tcping segítségével vizsgálja meg az ügyfél hálózati kapcsolati problémáit. 
 
-### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob művelet: RequestStatus = (SAS) NetworkError
+### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob művelet: RequestStatus = (SAS)Hálózati hiba
 
-A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
+Ellenőrizze az "Ajánlott lépések" szakasz 5.
 
-* Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Végpontok utáni késés
+* Kiszolgáló-késés
+* Ügyfél-késés
 
-A **RequestStatus = (SAS) NetworkError**rendelkező **GetBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
+A **GetBlob operation** with **RequestStatus = (SAS)NetworkError**( GetBlob operation , ha **a maximális idő** az **ügyfél-késésben**van töltve , a leggyakoribb probléma az, hogy az ügyfél bontja a kapcsolatot, mielőtt az időtúltöltés lejár a storage szolgáltatásban.
 
-**Ajánlás**
+**Ajánlás:**
 
-* Vizsgálja meg az ügyfél kódját, hogy megtudja, miért és mikor szakad meg az ügyfél a Storage szolgáltatással.
-* A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával vizsgálja meg az ügyfél hálózati kapcsolati problémáit. 
+* Vizsgálja meg a kódot az ügyfél, hogy tudja, miért és mikor az ügyfél bontja a kapcsolatot a tárolási szolgáltatás.
+* A Wireshark, a Microsoft Message Analyzer vagy a Tcping segítségével vizsgálja meg az ügyfél hálózati kapcsolati problémáit. 
 
-### <a name="put-operation-requeststatus--success"></a>Put művelet: RequestStatus = sikeres
+### <a name="put-operation-requeststatus--success"></a>Put Operation: RequestStatus = Sikeres
 
-A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
+Ellenőrizze az "Ajánlott lépések" szakasz 5.
 
-* Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Végpontok utáni késés
+* Kiszolgáló-késés
+* Ügyfél-késés
 
-Ha a **RequestStatus = sikerrel**rendelkező **put művelet** során a **maximális idő** az **ügyfél-késésben**van, akkor ez azt jelzi, hogy az ügyfél több időt vesz igénybe az Azure Storage-ba való adatküldéshez. Ez a késleltetés ügyféloldali problémát jelez.
+A **Put Operation** with **RequestStatus = Success**, ha a maximális **idő** **az ügyfél-késésben**van töltve, ez azt jelzi, hogy az ügyfél több időt vesz igénybe az adatok küldése az Azure Storage-ba. Ez a késleltetés ügyféloldali problémát jelez.
 
-**Ajánlás**
+**Ajánlás:**
 
-* Vizsgálja meg a kódot az ügyfélen.
-* A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával vizsgálja meg az ügyfél hálózati kapcsolati problémáit. 
+* Vizsgálja meg a kódot az ügyfél.
+* A Wireshark, a Microsoft Message Analyzer vagy a Tcping segítségével vizsgálja meg az ügyfél hálózati kapcsolati problémáit. 
 
-### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put művelet: RequestStatus = (SAS) NetworkError
+### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put Operation: RequestStatus = (SAS)NetworkError
 
-A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
+Ellenőrizze az "Ajánlott lépések" szakasz 5.
 
-* Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Végpontok utáni késés
+* Kiszolgáló-késés
+* Ügyfél-késés
 
-A **RequestStatus = (SAS) NetworkError**rendelkező **PutBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
+A **PutBlob-művelet** **RequestStatus = (SAS)NetworkError,** ha **a maximális idő** töltött **ügyfél-késés,** a leggyakoribb probléma az, hogy az ügyfél leválasztja, mielőtt egy időtúltöltés lejár a storage szolgáltatásban.
 
-**Ajánlás**
+**Ajánlás:**
 
-* Vizsgálja meg az ügyfél kódját, hogy megtudja, miért és mikor szakad meg az ügyfél a Storage szolgáltatással.
-* A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával vizsgálja meg az ügyfél hálózati kapcsolati problémáit.
+* Vizsgálja meg a kódot az ügyfél, hogy tudja, miért és mikor az ügyfél bontja a kapcsolatot a tárolási szolgáltatás.
+* A Wireshark, a Microsoft Message Analyzer vagy a Tcping segítségével vizsgálja meg az ügyfél hálózati kapcsolati problémáit.
 

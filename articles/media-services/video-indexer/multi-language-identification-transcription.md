@@ -1,7 +1,7 @@
 ---
-title: Többnyelvű tartalom automatikus azonosítása és átírása Video Indexer
+title: Többnyelvű tartalom automatikus azonosítása és átírása a Video Indexelő vel
 titleSuffix: Azure Media Services
-description: Ez a témakör bemutatja, hogyan lehet automatikusan azonosítani és átírni a többnyelvű tartalmakat Video Indexer használatával.
+description: Ez a témakör bemutatja, hogyan lehet automatikusan azonosítani és átírni a többnyelvű tartalmat a Video Indexer segítségével.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72968743"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Többnyelvű tartalom automatikus azonosítása és átírása (előzetes verzió)
 
-A Video Indexer támogatja az automatikus nyelvi azonosítást és a többszörös nyelvi tartalomban való átírást. Ezzel a folyamattal automatikusan azonosítható a beszélt nyelv különböző szegmensekben a hanganyagból, elküldve a médiafájl minden egyes szegmensét, és az átírást egyesítheti egy egységes átírással. 
+A Video Indexer támogatja az automatikus nyelvi azonosítást és átírást a többnyelvű tartalmakban. Ez a folyamat magában foglalja a beszélt nyelv automatikus azonosítását a különböző szegmensekben a hangból, elküldve a médiafájl minden egyes szegmensét átírni, és egyesíteni az átírást egy egységes átiratra. 
 
-## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Többnyelvű azonosítás kiválasztása az indexeléshez a portálon
+## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Többnyelvű azonosítás kiválasztása a portállal történő indexeléskor
 
-A videó feltöltésekor és indexelése során a **többnyelvű észlelést** is választhatja. Azt is megteheti, hogy a videó újbóli indexelése során kiválaszthatja a **többnyelvű észlelést** is. Az alábbi lépések az újraindexelést ismertetik:
+A videó feltöltésekénél és indexelésekéneknél **többnyelvű észlelést** is választhatsz. Másik lehetőségként választhatja a **többnyelvű észlelést** a videó újraindexelésekénél. Az alábbi lépések az újraindexelést ismertetik:
 
 1. Nyissa meg a [Video Indexer](https://vi.microsoft.com/) webhelyét, és jelentkezzen be.
-1. Nyissa meg a **könyvtár** lapot, és vigye a kurzort az újraindexelni kívánt videó nevére. 
-1. A jobb alsó sarokban kattintson a **videó újraindexelése** gombra. 
-1. A **videó újraindexelése** párbeszédpanelen válassza a **többnyelvű felismerés** lehetőséget a **videó forrása nyelv** legördülő listából.
+1. Nyissa meg a **Könyvtár** lapot, és mutasson az újraindexelni kívánt videó nevére. 
+1. A jobb alsó sarokban kattintson a **Videó újraindexelése** gombra. 
+1. A **Videó újraindexelése** párbeszédpanelen válassza a **többnyelvű észlelést** a **Videó forrásnyelv** legördülő listaából.
 
-    * Ha egy videó több nyelvként van indexelve, a betekintési oldal tartalmazza ezt a lehetőséget, és megjelenik egy további betekintési típus, amely lehetővé teszi a felhasználó számára, hogy megtekintse, melyik szegmenst írja le a rendszer a "beszélt nyelv" nyelvre.
-    * Az összes nyelvre való fordítás teljes mértékben elérhető a többnyelvű átiratból.
-    * A rendszer az összes többi elemzést a fő nyelven fogja észlelni – ez az a nyelv, amely a legtöbb hangon megjelent.
-    * A lejátszón a kódolt feliratok is elérhetők a több nyelven is.
+    * Ha egy videót többnyelvűként indexel, az insight oldal tartalmazza ezt a lehetőséget, és egy további betekintési típus jelenik meg, amely lehetővé teszi a felhasználó számára, hogy megtekintse, melyik szegmens tanusított a "Beszélt nyelv" nyelven.
+    * Az összes nyelvre történő fordítás teljes mértékben elérhető a többnyelvű átiratból.
+    * Minden más betekintést fog megjelenni a mester nyelv észlelt - ez az a nyelv, amely megjelent leginkább a hang.
+    * A játékoson a feliratozás többnyelven is elérhető.
 
 ![Portal-felület](./media/multi-language-identification-transcription/portal-experience.png)
 
-## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Többnyelvű azonosítás kiválasztása API-val való indexeléshez
+## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Többnyelvű azonosítás kiválasztása az API-val történő indexeléskor
 
-Amikor az API használatával indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót, válassza a `multi-language detection` lehetőséget a `sourceLanguage` paraméterben.
+Amikor indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót `multi-language detection` az API-val, válassza ki a lehetőséget a `sourceLanguage` paraméterben.
 
-### <a name="model-output"></a>Modell kimenete
+### <a name="model-output"></a>A modell kimenete
 
-A modell lekéri az összes, a videóban észlelt nyelvet egy listában
+A modell egy listában letölti a videóban észlelt összes nyelvet
 
 ```json
 "sourceLanguage": null,
@@ -53,7 +53,7 @@ A modell lekéri az összes, a videóban észlelt nyelvet egy listában
 ],
 ```
 
-Emellett az átírási szakasz minden példánya tartalmazza azt a nyelvet, amelyben az átirata szerepelt
+Ezenkívül az átírási szakasz minden egyes példánya tartalmazni fogja azt a nyelvet, amelyen átírták
 
 ```json
 {
@@ -76,19 +76,19 @@ Emellett az átírási szakasz minden példánya tartalmazza azt a nyelvet, amel
 ## <a name="guidelines-and-limitations"></a>Irányelvek és korlátozások
 
 * Támogatott nyelvek készlete: angol, francia, német, spanyol.
-* Többnyelvű tartalom támogatása legfeljebb három támogatott nyelvvel.
-* Ha a hang a fenti támogatott listán kívül más nyelveket is tartalmaz, az eredmény nem várt.
-* A szegmens minimális hossza az egyes nyelvek észleléséhez – 15 másodperc.
-* A nyelvfelismerés eltolása 3 másodperc az átlagnál.
-* A beszédfelismerésnek várhatóan folyamatosnak kell lennie. A nyelvek közötti gyakori váltakozás hatással lehet a modellek teljesítményére.
-* A nem natív hangszórókról szóló beszéd hatással lehet a modell teljesítményére (például ha a hangszórók a natív nyelvüket használják, és más nyelvre váltanak).
-* A modell úgy lett kialakítva, hogy felismerje az ésszerű hang-akusztikai (nem hangparancsokat, éneklést stb.) hangvezérelt beszédet.
-* A projekt létrehozása és szerkesztése jelenleg nem érhető el többnyelvű videókhoz.
-* A többnyelvű észlelés használata esetén az egyéni nyelvi modellek nem érhetők el.
+* Többnyelvű tartalom támogatása legfeljebb három támogatott nyelven.
+* Ha a hang a fenti támogatott listátaktól eltérő nyelveket tartalmaz, az eredmény nem várt.
+* Minimális szegmenshossz az egyes nyelvek észleléséhez – 15 másodperc.
+* A nyelvfelismerés eltolása átlagosan 3 másodperc.
+* A beszéd várhatóan folyamatos lesz. A nyelvek közötti gyakori váltások befolyásolhatják a modellek teljesítményét.
+* A nem anyanyelvi beszélők beszéde befolyásolhatja a modell teljesítményét (például amikor a hangszórók az anyanyelvüket használják, és más nyelvre váltanak).
+* A modell célja, hogy ismerje el a spontán társalgási beszéd ésszerű audio akusztika (nem hangutasítások, éneklés, stb.)
+* A többnyelvű videók hozása és szerkesztése jelenleg nem érhető el.
+* Többnyelvű észlelés használata esetén az egyéni nyelvi modellek nem érhetők el.
 * A kulcsszavak hozzáadása nem támogatott.
-* A lezárt képaláírás-fájlok exportálásakor a nyelvi jelzés nem fog megjelenni.
-* A frissítési átirat API nem támogatja több nyelvi fájl használatát.
+* A feliratfájlok exportálásakor a nyelvi jelzés nem jelenik meg.
+* A frissítési átirat API nem támogat több nyelvű fájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

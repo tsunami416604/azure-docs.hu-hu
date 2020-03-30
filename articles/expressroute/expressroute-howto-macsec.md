@@ -1,6 +1,6 @@
 ---
-title: 'Azure-ExpressRoute: a MACsec konfigurálása'
-description: Ez a cikk segítséget nyújt a MACsec konfigurálásában a peremhálózati útválasztók és a Microsoft peremhálózati útválasztói közötti kapcsolatok biztonságossá tételéhez.
+title: 'Azure ExpressRoute: MACsec konfigurálása'
+description: Ez a cikk segít a MACsec konfigurálásában a peremhálózati útválasztók és a Microsoft peremhálózati útválasztói közötti kapcsolatok védelmére.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,46 +8,46 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083549"
 ---
-# <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec konfigurálása a ExpressRoute Direct portokon
+# <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec konfigurálása ExpressRoute Direct portokon
 
-Ez a cikk segítséget nyújt a MACsec konfigurálásához a peremhálózati útválasztók és a Microsoft peremhálózati útválasztói közötti kapcsolatok biztonságossá tételéhez a PowerShell használatával.
+Ez a cikk segít konfigurálni MACsec a kapcsolatot a peremhálózati útválasztók és a Microsoft peremhálózati útválasztók a PowerShell használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A konfigurálás megkezdése előtt erősítse meg a következőket:
+A konfiguráció megkezdése előtt erősítse meg a következőket:
 
-* Megérti a [ExpressRoute közvetlen kiépítési munkafolyamatait](expressroute-erdirect-about.md).
-* Létrehozott egy [ExpressRoute Direct port-erőforrást](expressroute-howto-erdirect.md).
-* Ha helyileg szeretné futtatni a PowerShellt, ellenőrizze, hogy a Azure PowerShell legújabb verziója van-e telepítve a számítógépen.
+* Az [ExpressRoute Direct létesítési munkafolyamatait](expressroute-erdirect-about.md)ismeri.
+* Létrehozott egy [ExpressRoute Direct porterőforrást.](expressroute-howto-erdirect.md)
+* Ha helyileg szeretné futtatni a PowerShellt, ellenőrizze, hogy az Azure PowerShell legújabb verziója telepítve van-e a számítógépen.
 
-### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-### <a name="sign-in-and-select-the-right-subscription"></a>Jelentkezzen be, és válassza ki a megfelelő előfizetést
+### <a name="sign-in-and-select-the-right-subscription"></a>Bejelentkezés és a megfelelő előfizetés kiválasztása
 
 A konfiguráció elindításához jelentkezzen be az Azure-fiókjába, és válassza ki a használni kívánt előfizetést.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. hozzon létre Azure Key Vault, MACsec titkokat és felhasználói identitást
+## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. Hozzon létre Azure Key Vault, MACsec titkos kulcsok, és a felhasználói identitás
 
-1. Hozzon létre egy Key Vault példányt egy új erőforráscsoport MACsec-titkainak tárolására.
+1. Hozzon létre egy Key Vault-példányt a MACsec titkos kulcsok egy új erőforráscsoportban tárolásához.
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name "your_resource_group" -Location "resource_location"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Ha már rendelkezik kulcstartóval vagy erőforráscsoporthoz, újra felhasználhatja őket. Azonban fontos, hogy engedélyezze a [ **Soft-delete** funkciót](../key-vault/key-vault-ovw-soft-delete.md) a meglévő kulcstartóban. Ha a Soft-delete nincs engedélyezve, a következő parancsokkal engedélyezheti a használatát:
+    Ha már rendelkezik egy key vault vagy egy erőforráscsoport, újra felhasználhatja őket. Fontos azonban, hogy engedélyezze a [ **helyreállítható törlési** funkciót](../key-vault/key-vault-ovw-soft-delete.md) a meglévő kulcstartóban. Ha a helyreállítható törlés nincs engedélyezve, a következő parancsokkal engedélyezheti azt:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
@@ -59,12 +59,12 @@ A konfiguráció elindításához jelentkezzen be az Azure-fiókjába, és vála
     $identity = New-AzUserAssignedIdentity  -Name "identity_name" -Location "resource_location" -ResourceGroupName "your_resource_group"
     ```
 
-    Ha a New-AzUserAssignedIdentity nem ismerhető fel érvényes PowerShell-parancsmagként, telepítse a következő modult (rendszergazdai módban), majd futtassa újra a fenti parancsot.
+    Ha a New-AzUserAssignedIdentity nem ismeri fel érvényes PowerShell-parancsmagként, telepítse a következő modult (rendszergazdai módban), és futtassa újra a fenti parancsot.
 
     ```azurepowershell-interactive
     Install-Module -Name Az.ManagedServiceIdentity
     ```
-3. Hozzon létre egy kapcsolati társítási kulcsot (CAK) és egy kapcsolati társítási kulcs nevét (CKN), és tárolja őket a kulcstartóban.
+3. Hozzon létre egy kapcsolattársítási kulcsot (CAK) és egy kapcsolattársi kulcsnevet (CKN), és tárolja őket a kulcstartóban.
 
     ```azurepowershell-interactive
     $CAK = ConvertTo-SecureString "your_key" -AsPlainText -Force
@@ -78,20 +78,20 @@ A konfiguráció elindításához jelentkezzen be az Azure-fiókjába, és vála
     Set-AzKeyVaultAccessPolicy -VaultName "your_key_vault_name" -PermissionsToSecrets get -ObjectId $identity.PrincipalId
     ```
 
-   Ez az identitás mostantól a Key vaultról szerezheti be a titkokat, például a CAK és a CKN.
-5. A ExpressRoute által használandó felhasználói identitás beállítása.
+   Most ez az identitás letudja kérni a titkos kulcsokat, például a CAK és a CKN, a key vault.
+5. Állítsa be az ExpressRoute által használandó felhasználói identitást.
 
     ```azurepowershell-interactive
     $erIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentityId $identity.Id
     ```
  
-## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. a MACsec konfigurálása a ExpressRoute közvetlen portjain
+## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. MACsec konfigurálása ExpressRoute Direct portokon
 
 ### <a name="to-enable-macsec"></a>A MACsec engedélyezése
 
-Minden ExpressRoute közvetlen példány két fizikai porttal rendelkezik. Dönthet úgy is, hogy egyszerre engedélyezi a MACsec mindkét porton, vagy egyszerre engedélyezi a MACsec egy porton. Ha a ExpressRoute Direct szolgáltatás már használatban van, a lehető legkevesebb időt vesz igénybe (ha a forgalmat egy aktív portra irányítja, miközben a másik portot szervizeli).
+Minden ExpressRoute Direct-példány két fizikai porttal rendelkezik. Engedélyezheti a MACsec-et mindkét porton egyszerre, vagy egyszerre csak egy porton engedélyezi a MACsec-et. Ha egyszerre egy portot csinál (a forgalmat egy aktív portra váltja a másik port karbantartása közben), az expressroute direct már szolgálatban van.
 
-1. Állítsa be a MACsec titkokat és a titkosítást, és társítsa a felhasználói identitást a porthoz, hogy a ExpressRoute-felügyeleti kód szükség esetén hozzáférhessen a MACsec-titkokhoz.
+1. Állítsa be a MACsec titkos kulcsokat és rejtjelezést, és társítsa a felhasználói identitást a porthoz, hogy az ExpressRoute felügyeleti kód szükség esetén hozzáférhessen a MACsec titkos kulcsokhoz.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -104,7 +104,7 @@ Minden ExpressRoute közvetlen példány két fizikai porttal rendelkezik. Dönt
     $erDirect.identity = $erIdentity
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
-2. Választható Ha a portok felügyeleti állapotban vannak, a következő parancsok futtatásával állíthatja be a portokat.
+2. (Nem kötelező) Ha a portok felügyeleti le állapotban vannak, a következő parancsokfuttatásával hozhatja létre a portokat.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -113,11 +113,11 @@ Minden ExpressRoute közvetlen példány két fizikai porttal rendelkezik. Dönt
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
 
-    Ezen a ponton a MACsec engedélyezve van a ExpressRoute Direct portokon a Microsoft oldalon. Ha még nem konfigurálta a peremhálózati eszközökön, akkor folytathatja a konfigurálását ugyanazzal a MACsec-titokkal és-titkosítással.
+    Ezen a ponton a MACsec engedélyezve van a Microsoft oldalán lévő ExpressRoute Direct portokon. Ha még nem konfigurálta a peremhálózati eszközökön, folytathatja a konfigurálásukat ugyanazzal a MACsec-titkosítási titkokkal és titkosítással.
 
 ### <a name="to-disable-macsec"></a>A MACsec letiltása
 
-Ha a MACsec már nem kívánja használni a ExpressRoute Direct-példányon, a következő parancsokat futtathatja a letiltásához.
+Ha a MACsec már nem kívánatos az ExpressRoute Direct példányon, a következő parancsokkal letilthatja azt.
 
 ```azurepowershell-interactive
 $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -129,12 +129,12 @@ $erDirect.identity = $null
 Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
-Ezen a ponton a MACsec le van tiltva a ExpressRoute Direct-portok között a Microsoft oldalon.
+Ezen a ponton a MACsec le van tiltva a Microsoft oldalán lévő ExpressRoute Direct portokon.
 
 ### <a name="test-connectivity"></a>Kapcsolat tesztelése
-Miután konfigurálta a MACsec (beleértve a MACsec kulcs frissítését) a ExpressRoute Direct-portok esetében, [ellenőrizze](expressroute-troubleshooting-expressroute-overview.md) , hogy az áramkör BGP-munkamenetei futnak-e. Ha még nem rendelkezik a portok egyetlen áramkörével sem, hozzon létre egyet először, és állítsa be az Azure-beli privát társat vagy a Microsoft-partnert. Ha a MACsec helytelenül van konfigurálva, beleértve a MACsec, a hálózati eszközök és a Microsoft hálózati eszközei között, a 3. rétegben nem jelenik meg az ARP-feloldás a 2. rétegben és a BGP-ben. Ha minden megfelelően van konfigurálva, akkor a BGP-útvonalakat a megfelelő módon kell meghirdetni mindkét irányban és az alkalmazás adatfolyamatában, ennek megfelelően a ExpressRoute.
+Miután konfigurálta a MACsec-et (beleértve a MACsec kulcsfrissítést) az ExpressRoute Direct portokon, [ellenőrizze,](expressroute-troubleshooting-expressroute-overview.md) hogy az áramkörök BGP-munkamenetei működnek-e. Ha még nincs kapcsolat a portokon, hozzon létre egyet először, és állítsa be az Azure privát társviszonylétesítést vagy a microsoftos társviszony-létesítést a kapcsolatcsoportban. Ha a MACsec helytelenül van konfigurálva, beleértve a MACsec-kulcs eltérését a hálózati eszközök és a Microsoft hálózati eszközei között, a 3. Ha minden megfelelően van konfigurálva, mindkét irányban helyesen kell hirdetnie a BGP-útvonalakat, és ennek megfelelően kell látnia az alkalmazás-adatfolyamot az ExpressRoute-on keresztül.
 
-## <a name="next-steps"></a>Következő lépések
-1. [ExpressRoute-kör létrehozása a ExpressRoute Direct-on](expressroute-howto-erdirect.md)
-2. [ExpressRoute-áramkör összekapcsolása egy Azure-beli virtuális hálózattal](expressroute-howto-linkvnet-arm.md)
-3. [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
+## <a name="next-steps"></a>További lépések
+1. [ExpressRoute-kapcsolat létrehozása az ExpressRoute Directen](expressroute-howto-erdirect.md)
+2. [ExpressRoute-kapcsolat egy Azure virtuális hálózattal](expressroute-howto-linkvnet-arm.md)
+3. [ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)

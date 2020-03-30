@@ -1,6 +1,6 @@
 ---
-title: Riasztásokat állíthat be az Azure VPN Gateway-metrikák
-description: A VPN-átjáró metrikák riasztások konfigurálásának lépései
+title: Riasztások beállítása az Azure VPN-átjáró metrikáiban
+description: A VPN-átjáró metrikáira vonatkozó riasztások konfigurálásának lépései
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67605234"
 ---
-# <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Riasztásokat állíthat be a VPN Gateway-metrikák
+# <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Riasztások beállítása a VPN-átjáró mérőszámain
 
-Ez a cikk segít az Azure VPN Gateway metrikákhoz riasztásokat állíthat be. Az Azure Monitor lehetővé teszi az Azure-erőforrások riasztásokat állíthat be. Beállíthat riasztásokat a "VPN" típusú virtuális hálózati átjárókhoz.
+Ez a cikk segít riasztások beállításával az Azure VPN-átjáró metrikák. Az Azure Monitor lehetővé teszi az Azure-erőforrások riasztási beállítását. A "VPN" típusú virtuális hálózati átjárókhoz riasztásokat állíthat be.
 
 
-|**Metrika**   | **Egység** | **Részletessége** | **Leírás** | 
+|**Metrika**   | **Egység** | **Részletesség** | **Leírás** | 
 |---       | ---        | ---       | ---            | ---       |
-|**AverageBandwidth**| Bájt/mp  | 5 perc| Átlagos összesített sávszélesség kihasználtsága az összes hely – hely kapcsolat az átjárón.     |
-|**P2SBandwidth**| Bájt/mp  | 1 perc  | Átlagos összesített sávszélesség-használata minden pont – hely kapcsolat az átjárón.    |
-|**P2SConnectionCount**| Count  | 1 perc  | Az átjáró a pont – hely kapcsolatok száma.   |
-|**TunnelAverageBandwidth** | Bájt/mp    | 5 perc  | Átlagos alagutak létre az átjáró a sávszélesség használata. |
-|**TunnelEgressBytes** | Bájt | 5 perc | Az átjáró a létrehozott alagúton kimenő forgalmat.   |
-|**TunnelEgressPackets** | Count | 5 perc | Az átjáró a létrehozott alagúton kimenő csomagok száma.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 perc | Kimenő csomagok száma forgalomválasztó eltérés által okozott alagúton eldobva. |
-|**TunnelIngressBytes** | Bájt | 5 perc | Az átjáró a létrehozott alagúton bejövő forgalmat.   |
-|**TunnelIngressPackets** | Count | 5 perc | Az átjáró a létrehozott alagúton bejövő csomagok száma.   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 perc | Forgalomválasztó eltérés által okozott alagúton eldobott bejövő csomagok száma. |
+|**Átlagos sávszélesség**| Bájt/s  | 5 perc| Az átjáróösszes hely-hely kapcsolatának átlagos kombinált sávszélesség-kihasználtsága.     |
+|**P2SBandwidth (P2SBandwidth)**| Bájt/s  | 1 perc  | Az átjáró összes pont-hely kapcsolatának átlagos kombinált sávszélesség-kihasználtsága.    |
+|**P2SConnectioncount között**| Darabszám  | 1 perc  | Az átjáró pont-hely kapcsolatainak száma.   |
+|**TunnelAverageBandwidth (CsatornaÁtlagos sávszélessége)** | Bájt/s    | 5 perc  | Az átjárón létrehozott alagutak átlagos sávszélesség-kihasználása. |
+|**TunnelEgressBytes** | Bájt | 5 perc | Az átjárón létrehozott alagutak kimenő forgalma.   |
+|**TunnelEgressPackets** | Darabszám | 5 perc | Az átjárón létrehozott alagutak kimenő csomagok száma.   |
+|**TunnelEgressPacketDropTSMismatch** | Darabszám | 5 perc | A forgalomválasztó eltérése által az alagutakban eldobott kimenő csomagok száma. |
+|**TunnelIngressBytes** | Bájt | 5 perc | Bejövő forgalom az átjárón létrehozott alagutakban.   |
+|**TunnelIngressPacketsCsomagok** | Darabszám | 5 perc | Az átjárón létrehozott alagutakbejövő csomagok száma.   |
+|**TunnelIngressPacketDropTSMismatch** | Darabszám | 5 perc | A forgalomválasztó eltérése miatt az alagutakban eldobott bejövő csomagok száma. |
 
 
-## <a name="setup"></a>Állítsa be az Azure Monitor riasztások metrikák alapján az Azure portal használatával
+## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Az Azure Monitor-riasztások beállítása metrikák alapján az Azure Portal használatával
 
-A következő példa lépései egy adott átjáróhoz tartozó riasztás hozza létre:
+A következő példalépések riasztást hoznak létre egy átjárón:
 
-- **Metrika:** TunnelAverageBandwidth
-- **Feltétel:** A sávszélesség > 10 bájt / s
-- **Window:** 5 perc
-- **Értesítési művelet:** Email
+- **Mérőszám:** TunnelAverageBandwidth (CsatornaÁtlagos sávszélessége)
+- **Feltétel:** Sávszélesség > 10 bájt/másodperc
+- **Ablak:** 5 perc
+- **Riasztási művelet:** E-mail
 
 
 
-1. Nyissa meg a virtuális hálózati átjáró erőforrás, és válassza ki **riasztások** származó a **figyelés** fülre. Ezután hozzon létre egy új riasztási szabályt, vagy egy meglévő riasztási szabály szerkesztése.
+1. Nyissa meg a virtuális hálózati átjáró erőforrást, és válassza a **Figyelés** lapon a **Riasztások** lehetőséget. Ezután hozzon létre egy új riasztási szabályt, vagy szerkesztsen egy meglévő riasztási szabályt.
 
-   ![Riasztási szabály létrehozására vonatkozó beállításokat](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "létrehozása")
+   ![Kijelölés a figyelmeztetési szabály létrehozásához](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "Létrehozás")
 
-2. Válassza ki a VPN-átjáró és az erőforrásnak.
+2. Válassza ki a VPN-átjárót erőforrásként.
 
-   ![A Kijelölés gombra, és a VPN-átjárót az erőforrások listájához a](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "kiválasztása")
+   ![A Kijelölés gomb és a VPN-átjáró az erőforrások listájában](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Válassza ezt:")
 
-3. Válassza ki a riasztás konfigurálása egy metrikát.
+3. Válassza ki a riasztáshoz konfigurálandó metrikát.
 
-   ![Kiválasztott metrika mérőszámok listája](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "kiválasztása")
-4. A jellogika konfigurálása. Ez a három összetevőből áll:
+   ![Kiválasztott mérőszám a mérőszámok listájában](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Válassza ezt:")
+4. Állítsa be a jellogikát. Három összetevője van:
 
-    a. **Méretek**: Ha a metrika dimenziókat, kiválaszthatja megadott dimenzió értékeit, úgy, hogy a riasztást kiértékeli az adott dimenzió csak adatokat. Ezek a nem kötelező.
+    a. **Dimenziók:** Ha a metrika dimenziókkal rendelkezik, kiválaszthat bizonyos dimenzióértékeket, hogy a riasztás csak az adott dimenzió adatait értékelje ki. Ezek nem kötelezőek.
 
-    b. **A feltétel**: Ez a metrika értéke kiértékelheti, hogy a műveletet.
+    b. **Feltétel**: Ez a metrikaérték kiértékelésére alkalmas művelet.
 
-    c. **Idő**: Adja meg a metrikaadatok granularitásán, és azt az időszakot, a riasztás kiértékeléséhez.
+    c. **Idő**: Adja meg a metrikaadatok részletességét és a riasztás kiértékelésének időtartamát.
 
-   ![Konfigurálása jel logikájának](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "kiválasztása")
+   ![A jellogika konfigurálásának részletei](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Válassza ezt:")
 
-5. A konfigurált szabályok megtekintéséhez jelölje ki **riasztási szabályok kezelése**.
+5. A beállított szabályok megtekintéséhez válassza a **Riasztási szabályok kezelése**lehetőséget.
 
-   ![Riasztási szabályok kezelésére szolgáló gomb](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "kiválasztása")
+   ![A riasztási szabályok kezeléséhez szolgáló gomb](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Válassza ezt:")
 
 ## <a name="next-steps"></a>További lépések
 
-Riasztások beállítása az alagutat a diagnosztikai naplók: [állítsa be a VPN-átjáró diagnosztikai naplók](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).
+A bújtatási diagnosztikai naplókriasztási beállításokkonfigurálása a [VPN-átjáró diagnosztikai naplóihoz](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)való riasztások beállítása című témakörben található.

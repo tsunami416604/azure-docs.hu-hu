@@ -3,21 +3,38 @@ title: fájl belefoglalása
 titleSuffix: Azure
 description: fájl belefoglalása
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: include
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 149ac1caf7085a48396129408826b7ef35bc25a9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 3/18/2020
+ms.author: derekol
+ms.openlocfilehash: 60752cf1b3c05ab7817083e70310ba7b40227dec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129967"
 ---
-1. Kattintson a társ-létesítési szolgáltatás számára engedélyezni kívánt társi kapcsolatok elemre, majd kattintson a **...**  > a **Kapcsolódás szerkesztése** gombra.
+1. Kattintson egy társviszony-létesítési kapcsolat ra szeretné engedélyezni a társviszony-létesítési szolgáltatás, majd kattintson a **...**  >  **Kapcsolat szerkesztése** gomb.
     > [!div class="mx-imgBorder"]
-    > ![társ-létrehozási kapcsolatok szerkesztése](../media/setup-direct-modify-editconnection.png)
-1. A szakasz **társítása** ***szolgáltatáshoz***szakaszban kattintson az engedélyezve és a **Mentés**elemre.
+    > ![Társviszony-létesítési kapcsolat szerkesztése](../media/setup-direct-modify-editconnection.png)
+1. A ***Társviszony-létesítési szolgáltatás használata***csoportban kattintson az **Engedélyezve** és a **Mentés gombra.**
     > [!div class="mx-imgBorder"]
-    > ![társ-létrehozási kapcsolatot engedélyező társ-létesítési szolgáltatás](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
+    > ![Társviszony-létesítés engedélyezése társviszony-létesítési szolgáltatás](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
+1. Az áttekintő képernyőn láthatja a központi telepítés részleteit. Miután a telepítés befejeződött, kattintson a **Go to resource**.
+    > [!div class="mx-imgBorder"]
+    > ![A telepítés befejeződött](../media/setup-direct-modify-overview-deployment-complete.png)
+
+1. Ekkor megjelenik a **Beállítások regisztrált előtagok**területen. Kattintson a **Regisztrált előtag hozzáadása gombra.**
+    > [!div class="mx-imgBorder"]
+    > ![Regisztrált előtagok és kapcsolatok](../media/setup-direct-modify-add-registered-prefix.png)
+1. Előtag regisztrálása **egy név** és egy **előtag** kiválasztásával, majd kattintson a **Mentés** gombra.
+    > [!div class="mx-imgBorder"]
+    >  ![Előtag regisztrálása](../media/setup-direct-modify-register-a-prefix.png) 
+
+1. Az előtag létrehozása után megjelenik a regisztrált előtagok listájában. További részletekért kattintson az előtag **nevére.**
+    > [!div class="mx-imgBorder"]
+    > ![Regisztrált előtagok és kapcsolatok](../media/setup-direct-modify-registered-prefixes.png)
+1. A regisztrált előtag lapon az egyes **előtagok előtagkulcsának** teljes részletei jelennek meg. Ezt a kulcsot meg kell adni annak az ügyfélnek, aki ezt az előtagot a szolgáltatójától osztotta ki. Az ügyfél ezután regisztrálhatja előtagot az előfizetésében ezzel a kulccsal.
+    > [!div class="mx-imgBorder"]
+    > ![Előtag előtaggal](../media/setup-direct-modify-registered-prefix-detail.png)

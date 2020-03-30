@@ -1,6 +1,6 @@
 ---
-title: Ügyfél virtuális gép által felügyelt példányának összekötése
-description: Kapcsolódjon Azure SQL Database felügyelt példányhoz egy Azure-beli virtuális gép SQL Server Management Studio használatával.
+title: Ügyfél virtuális gépének csatlakoztatása – felügyelt példány
+description: Csatlakozzon egy Azure SQL Database felügyelt példányhoz az SQL Server Management Studio használatával egy Azure virtuális gépről.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,62 +12,62 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839044"
 ---
-# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: az Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való kapcsolódásra
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Rövid útmutató: Konfigurálja az Azure VM-et egy Azure SQL-adatbázis felügyelt példányához való csatlakozáshoz
 
-Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy Azure-beli virtuális gépet egy Azure SQL Database felügyelt példányhoz való kapcsolódáshoz SQL Server Management Studio (SSMS) használatával. A pont – hely kapcsolattal rendelkező helyszíni ügyfélszámítógépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md)
+Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy Azure virtuális gépet egy Azure SQL Database Felügyelt példányhoz az SQL Server Management Studio (SSMS) használatával. A helyi ügyfélszámítógépekről a helyek közötti kapcsolat használatával történő csatlakozás rövid útmutatóját a [pont-hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md) című témakörben tismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) kiindulási pontként létrehozott erőforrásokat használja.
+Ez a rövid útmutató a [Felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) című csoportban létrehozott erőforrásokat használja kiindulási pontként.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Hozzon létre egy új alhálózatot a felügyelt példány VNet
+## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Új alhálózat létrehozása a felügyelt példány virtuális hálózatában
 
-A következő lépések új alhálózatot hoznak létre a felügyelt példány VNet, így egy Azure-beli virtuális gép csatlakozhat a felügyelt példányhoz. A felügyelt példány alhálózata felügyelt példányokhoz van hozzárendelve. Ebben az alhálózatban nem hozhatók létre más erőforrások, például az Azure Virtual machines.
+A következő lépések hozzon létre egy új alhálózatot a felügyelt példány virtuális hálózatában, így egy Azure virtuális gép csatlakozhat a felügyelt példányhoz. A felügyelt példány alhálózat felügyelt példányok számára van lerendelve. Az alhálózatban nem hozhat létre más erőforrásokat, például az Azure virtuális gépeket.
 
-1. Nyissa meg a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában létrehozott felügyelt példányhoz tartozó erőforráscsoportot. Válassza ki a felügyelt példány virtuális hálózatát.
+1. Nyissa meg a Felügyelt példány létrehozásához létrehozott erőforráscsoportot a [Felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatóban. Válassza ki a felügyelt példány virtuális hálózatát.
 
    ![Felügyelt példány erőforrásai](./media/sql-database-managed-instance-configure-vm/resources.png)
 
-2. Válassza az **alhálózatok** lehetőséget, majd válassza az **+ alhálózat** lehetőséget egy új alhálózat létrehozásához.
+2. Válassza **az Alhálózatok lehetőséget,** majd **a + Alhálózat** lehetőséget új alhálózat létrehozásához.
 
-   ![Felügyelt példányok alhálózatai](./media/sql-database-managed-instance-configure-vm/subnets.png)
+   ![Felügyelt példány alhálózatai](./media/sql-database-managed-instance-configure-vm/subnets.png)
 
-3. Töltse ki az űrlapot a táblázatban található információk alapján:
+3. Töltse ki az űrlapot a táblázatban szereplő információk alapján:
 
    | Beállítás| Ajánlott érték | Leírás |
    | ---------------- | ----------------- | ----------- |
-   | **Name (Név)** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
+   | **Név** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
    | **Címtartomány (CIDR-blokk)** | Érvényes tartomány | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
    | **Hálózati biztonsági csoport** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
    | **Útvonaltábla** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Szolgáltatásvégpontok** | 0 kiválasztva | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Szolgáltatásvégpontok** | 0 kijelölve | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
    | **Alhálózat delegálása** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
 
-   ![Új felügyelt példány alhálózata az ügyfél virtuális géphez](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
+   ![Új felügyelt példány alhálózat az ügyfél virtuális gépéhez](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
-4. Kattintson az **OK** gombra a további alhálózat létrehozásához a felügyelt példány VNet.
+4. Válassza **az OK lehetőséget** a további alhálózat létrehozásához a felügyelt példány virtuális hálózatában.
 
 ## <a name="create-a-virtual-machine-in-the-new-subnet-in-the-vnet"></a>Virtuális gép létrehozása a VNet új alhálózatában
 
-A következő lépések bemutatják, hogyan hozhat létre virtuális gépet az új alhálózatban a felügyelt példányhoz való kapcsolódáshoz.
+A következő lépések bemutatják, hogyan hozhat létre egy virtuális gépet az új alhálózatban a felügyelt példányhoz való csatlakozáshoz.
 
-## <a name="prepare-the-azure-virtual-machine"></a>Az Azure-beli virtuális gép előkészítése
+## <a name="prepare-the-azure-virtual-machine"></a>Az Azure virtuális gép előkészítése
 
-Mivel az SQL felügyelt példánya a privát Virtual Networkba kerül, létre kell hoznia egy Azure-beli virtuális gépet egy telepített SQL Client eszközzel, például SQL Server Management Studio vagy Azure Data Studio. Ez az eszköz lehetővé teszi a felügyelt példányhoz való kapcsolódást és a lekérdezések végrehajtását. Ez a rövid útmutató SQL Server Management Studiot használ.
+Mivel az SQL felügyelt példány a privát virtuális hálózatban van elhelyezve, létre kell hoznia egy Azure virtuális gépet egy telepített SQL-ügyféleszközzel, például az SQL Server Management Studio vagy az Azure Data Studio használatával. Ez az eszköz lehetővé teszi, hogy csatlakozzon a felügyelt példányhoz, és lekérdezéseket hajtson végre. Ez a rövid útmutató az SQL Server Management Studio eszközt használja.
 
-Az ügyfél virtuális gépnek az összes szükséges eszközzel való létrehozásának legegyszerűbb módja a Azure Resource Manager-sablonok használata.
+Az összes szükséges eszközzel rendelkező ügyfélvirtuális gépek létrehozásának legegyszerűbb módja az Azure Resource Manager-sablonok használata.
 
-1. Győződjön meg arról, hogy be van jelentkezve a Azure Portal egy másik böngésző lapon. Ezután válassza a következő gombot egy ügyfél virtuális gép létrehozásához és a SQL Server Management Studio telepítéséhez:
+1. Győződjön meg arról, hogy be van jelentkezve az Azure Portalon egy másik böngészőlapon. Ezután válassza ki a következő gombot egy ügyfél virtuális gép létrehozásához és az SQL Server Management Studio telepítéséhez:
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -75,29 +75,29 @@ Az ügyfél virtuális gépnek az összes szükséges eszközzel való létrehoz
 
    | Beállítás| Ajánlott érték | Leírás |
    | ---------------- | ----------------- | ----------- |
-   | **Előfizetés** | Érvényes előfizetés | Olyan előfizetésnek kell lennie, amelyben jogosult új erőforrások létrehozására. |
-   | **Erőforráscsoport** |A [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában megadott erőforráscsoport.|Ez az erőforráscsoport a VNet létezésének egyike.|
-   | **Hely** | Az erőforráscsoport helye | Ez az érték a kiválasztott erőforráscsoport alapján van feltöltve. |
+   | **Előfizetés** | Érvényes előfizetés | Olyan előfizetésnek kell lennie, amelyben új erőforrások létrehozására vonatkozó engedéllyel rendelkezik. |
+   | **Erőforráscsoport** |A [Felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatóban megadott erőforráscsoport.|Ennek az erőforráscsoportnak annak az erőforráscsoportnak kell lennie, amelyben a virtuális hálózat létezik.|
+   | **Helyen** | Az erőforráscsoport helye | Ez az érték a kiválasztott erőforráscsoport alapján kerül feltöltésre. |
    | **Virtuális gép neve**  | Bármely érvényes név | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
-   |**Rendszergazdai Felhasználónév**|Bármilyen érvényes Felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. Ne használja a "ServerAdmin" kulcsszót, mert ez egy fenntartott kiszolgálói szintű szerepkör.<br>Ezt a felhasználónevet akkor használja, amikor [csatlakozik a virtuális géphez](#connect-to-virtual-machine).|
-   |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Ezt a jelszót bármikor használhatja [a virtuális géphez való kapcsolódáskor](#connect-to-virtual-machine).|
-   | **Virtuális gép mérete** | Bármilyen érvényes méret | A **Standard_B2s** ebben a sablonban szereplő alapértelmezett értéke elegendő ehhez a rövid útmutatóhoz. |
-   | **Hely**|[resourceGroup (). location].| Ne módosítsa ezt az értéket. |
-   | **Virtual Network neve**|Az a virtuális hálózat, amelyben létrehozta a felügyelt példányt.|
-   | **Alhálózat neve**|Az előző eljárásban létrehozott alhálózat neve| Ne válassza ki azt az alhálózatot, amelyben a felügyelt példányt létrehozta.|
-   | **összetevők helye** | [központi telepítés (). properties. templateLink. URI] | Ne módosítsa ezt az értéket. |
-   | **összetevők helye sas-token** | hagyja üresen | Ne módosítsa ezt az értéket. |
+   |**Rendszergazdai felhasználónév**|Bármely érvényes felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. Ne használja a "serveradmin" kifejezést, mivel az fenntartott kiszolgálószintű szerepkör.<br>Ezt a felhasználónevet mindig használhatja, amikor [a virtuális géphez csatlakozik.](#connect-to-virtual-machine)|
+   |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Ezt a jelszót mindig használhatja, amikor [a virtuális géphez csatlakozik.](#connect-to-virtual-machine)|
+   | **Virtuális gép mérete** | Bármilyen érvényes méret | Az alapértelmezett ebben a sablonban a **Standard_B2s** elegendő ehhez a rövid útmutatóhoz. |
+   | **Helyen**|[resourceGroup(.location].| Ne változtassa meg ezt az értéket. |
+   | **Virtuális hálózat neve**|Az a virtuális hálózat, amelyben létrehozta a felügyelt példányt.|
+   | **Alhálózat neve**|Az előző eljárásban létrehozott alhálózat neve| Ne válassza ki azt az alhálózatot, amelyben létrehozta a felügyelt példányt.|
+   | **összetevők helye** | [deployment().properties.templateLink.uri] | Ne változtassa meg ezt az értéket. |
+   | **összetevők Hely Sas token** | hagyja üresen | Ne változtassa meg ezt az értéket. |
 
    ![ügyféloldali virtuális gép létrehozása](./media/sql-database-managed-instance-configure-vm/create-client-sql-vm.png)
 
-   Ha a javasolt VNet-nevet és az alapértelmezett alhálózatot használta a [felügyelt példány létrehozásához](sql-database-managed-instance-get-started.md), nem kell módosítania az utolsó két paramétert. Ellenkező esetben módosítsa ezeket az értékeket a hálózati környezet beállításakor megadott értékekre.
+   Ha a javasolt virtuális hálózat nevét és az alapértelmezett alhálózatot használta [a felügyelt példány létrehozásához,](sql-database-managed-instance-get-started.md)nem kell módosítania az utolsó két paramétert. Ellenkező esetben ezeket az értékeket a hálózati környezet beállításakor megadott értékekre kell módosítania.
 
-3. Jelölje be az **Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet.
-4. Válassza a **vásárlás** lehetőséget az Azure-beli virtuális gép üzembe helyezéséhez a hálózaton.
-5. A telepítés állapotának megtekintéséhez kattintson az **értesítések** ikonra.
+3. Válassza az **Elfogadom a fenti feltételeket** jelölőnégyzetet.
+4. Válassza **a Vásárlás** lehetőséget az Azure virtuális gép hálózati üzembe helyezéséhez.
+5. A telepítés állapotának megtekintéséhez kattintson az **Értesítések** ikonra.
 
 > [!IMPORTANT]
-> Ha a virtuális gép létrehozása után körülbelül 15 percet vesz igénybe, hogy időt adjon a létrehozás utáni parancsfájloknak SQL Server Management Studio telepítéséhez.
+> Ne folytassa a virtuális gép létrehozása után körülbelül 15 perccel, hogy időt adjon a létrehozás utáni parancsfájlok számára az SQL Server Management Studio telepítéséhez.
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
@@ -109,31 +109,31 @@ Az alábbi lépések bemutatják, hogyan csatlakozhat az újonnan létrehozott v
 
 2. Kattintson a **Csatlakozás** gombra.
 
-   A virtuális gép nyilvános IP-címét és portszámát tartalmazó RDP protokoll fájl (. rdp fájl) űrlap jelenik meg.
+   A távoli asztali protokollfájl (.rdp fájl) űrlapja megjelenik a virtuális gép nyilvános IP-címével és portszámával.
 
-   ![RDP-űrlap](./media/sql-database-managed-instance-configure-vm/rdp.png)  
+   ![RDP képernyő](./media/sql-database-managed-instance-configure-vm/rdp.png)  
 
-3. Válassza az **RDP-fájl letöltése**lehetőséget.
+3. Válassza **az RDP-fájl letöltése lehetőséget.**
 
    > [!NOTE]
    > Az SSH használatával is csatlakozhat a virtuális géphez.
 
-4. Zárjuk be a **Kapcsolódás virtuális géphez** űrlapot.
+4. Zárja be a **Csatlakozás a virtuális géphez** űrlapot.
 5. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz.
-6. Ha a rendszer kéri, válassza a **Csatlakozás**lehetőséget. Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12).
+6. Amikor a rendszer kéri, válassza a **Csatlakozás lehetőséget.** Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12).
 
-7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd kattintson **az OK gombra**.
+7. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd válassza az **OK gombot.**
 
-8. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza az **Igen** vagy a **Folytatás** lehetőséget a kapcsolódás folytatásához.
+8. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A kapcsolat folytatásához válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 A Kiszolgálókezelő irányítópultján csatlakozik a virtuális géphez.
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>A SSMS használata a felügyelt példányhoz való kapcsolódáshoz
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>A felügyelt példányhoz való csatlakozás hoz az SSMS használatával
 
-1. A virtuális gépen nyissa meg SQL Server Management Studio (SSMS).
+1. A virtuális gépen nyissa meg az SQL Server Management Studio (SSMS) alkalmazást.
 
-   A konfiguráció befejezéséhez néhány pillanatot kell megnyitnia, mivel ez az első alkalom, hogy a SSMS megkezdődött.
-2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a felügyelt példány teljes **állomásnevét** a **kiszolgáló neve** mezőben. Válassza ki **SQL Server hitelesítést**, adja meg felhasználónevét és jelszavát, majd válassza a **kapcsolat**lehetőséget.
+   Néhány percet vesz igénybe a megnyitása, mivel be kell fejeznie a konfigurációját, mivel ez az első alkalom, hogy az SSMS elindult.
+2. A **Csatlakozás kiszolgálóhoz** párbeszédpanelen írja be a felügyelt példány teljesen minősített **állomásnevét** a **Kiszolgáló neve** mezőbe. Válassza **az SQL Server Hitelesítés**lehetőséget, adja meg felhasználónevét és jelszavát, majd válassza a **Csatlakozás**lehetőséget.
 
     ![ssms connect](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
@@ -141,6 +141,6 @@ A csatlakozás után megtekintheti a rendszer- és felhasználói adatbázisokat
 
 ## <a name="next-steps"></a>További lépések
 
-- A pont – hely kapcsolattal rendelkező helyszíni ügyfélszámítógépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
-- Az alkalmazások csatlakozási lehetőségeinek áttekintéséért lásd: [Alkalmazások csatlakoztatása felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
-- Ha egy meglévő SQL Server adatbázist szeretne visszaállítani a helyszíni rendszerből egy felügyelt példányra, az [áttelepítéshez használhatja a Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) vagy a [T-SQL Restore parancsot](sql-database-managed-instance-get-started-restore.md) az adatbázis biztonságimásolat-fájljából való visszaállításhoz.
+- A pont-hely kapcsolat [konfigurálása](sql-database-managed-instance-configure-p2s.md)című témakörben rövid útmutatót, amely bemutatja, hogyan lehet helyszíni ügyfélszámítógépről csatlakozni egy pont-hely kapcsolaton keresztül.
+- Az alkalmazások csatlakozási lehetőségeinek áttekintéséért lásd: [Alkalmazások csatlakoztatása egy felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
+- Meglévő SQL Server-adatbázis visszaállítása a helyszíni felügyelt példányból, az [Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) segítségével az áttelepítéshez vagy a [T-SQL RESTORE paranccsal](sql-database-managed-instance-get-started-restore.md) visszaállíthatja az adatbázis biztonsági másolatfájlját.

@@ -1,6 +1,6 @@
 ---
-title: A Content-Aware kódoláshoz beállított beállításkészlet – Azure Media Services
-description: Ez a cikk az Microsoft Azure Media Services v3 tartalommal kompatibilis kódolását ismerteti.
+title: Tartalombarát kódolás készlete - Azure Media Services
+description: Ez a cikk a Microsoft Azure Media Services 3-as verzióban található tartalomérzékeny kódolást ismerteti.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,50 +13,50 @@ ms.date: 01/24/2020
 ms.author: juliako
 ms.custom: ''
 ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772097"
 ---
-# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet
+# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>A tartalomérzékeny kódolási készlet segítségével keresse meg egy adott felbontás optimális bitrátaértékét
 
-A tartalom [adaptív sávszélességű adatfolyamként](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)történő továbbításához a videót több átviteli sebességre kell kódolni (magasról alacsonyra). Ez biztosítja a minőség kedvező romlását, mivel a bitrátát csökkenti, így a videó felbontása is megtörténik. Az ilyen több átviteli sebességű kódolás egy úgynevezett kódolási létrát használ, amely a felbontások és a bitráták táblázatát tartalmazza, a Media Services [beépített kódolási előkészleteket](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+Annak érdekében, hogy a tartalom [adaptív sávszélességű streameléssel](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)készüljön fel, a videót több átviteli sebességű (magastól alacsonyig) kódolásra kell kódolni. Ez biztosítja a minőség kecses romlását, mivel a bitráta csökken, így a videó felbontása is. Az ilyen többszörös átviteli sebességű kódolás egy úgynevezett kódolási létrát használ – egy felbontások és bitráták táblázatát, lásd a Media Services [beépített kódolási készleteit.](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)
 
-Vegye figyelembe, hogy milyen tartalmat dolgoz fel, és testreszabhatja/hangolhatja a kódolási létrát az egyes videók összetettsége érdekében. Minden egyes megoldásnál van egy bitráta, amelyen kívül a minőség növekedése nem érzékelhető – a kódoló ebben az optimális bitráta-értékben működik. A következő optimalizálási szint a tartalomon alapuló felbontások kiválasztására szolgál, például egy PowerPoint-bemutató videója nem éri el a 720p-t. Továbbra is a kódoló feladata, hogy optimalizálja a videón belüli egyes lövések beállításait. 
+Tisztában kell lennie a feldolgozás alatt álló tartalommal, és testre kell szabnia / be kell hangolnia a kódolási létrát az egyes videók összetettségére. Minden felbontásnál van egy bitráta, amelyen túl a minőség növekedése nem észlelhető – a kódoló ezen az optimális bitráta-értéken működik. Az optimalizálás következő szintje a felbontások kiválasztása a tartalom alapján – például egy PowerPoint-bemutató videója nem előnyös a 720p alá. Tovább haladva a kódoló feladata lehet, hogy optimalizálja a beállításokat minden lövés a videó. 
 
-A Microsoft [adaptív streaming](autogen-bitrate-ladder.md) -készlete részben a forrás videók minőségének és megoldásának változékonyságával foglalkozik. Ügyfeleink többféle tartalommal rendelkeznek, néhányat 1080p-ra, másokat pedig 720p-ra, és néhányat SD és alacsonyabb felbontásban. Továbbá, nem minden tartalomforrás kiváló minőségű, film-vagy TV-stúdiókból származó. Az adaptív adatfolyam-készlet ezeket a problémákat úgy oldja meg, hogy a bitráta-létrán soha nem haladja meg a bemeneti időpontok felbontását vagy az átlagos bitrátát. Ez az előre definiált beállítás azonban nem vizsgálja meg a forrás tulajdonságait a felbontás és a bitráta helyett.
+A Microsoft [Adaptive Streaming](autogen-bitrate-ladder.md) készlete részben megoldja a forrásvideók minőségének és felbontásának változékonyságának problémáját. Ügyfeleink különböző összetételű tartalom, néhány 1080p, mások 720p, és néhány SD és alacsonyabb állásfoglalások. Továbbá, nem minden forrás tartalom kiváló minőségű mezzanines a film-vagy TV-stúdiók. Az Adaptive Streaming készlet úgy oldja meg ezeket a problémákat, hogy biztosítja, hogy a bitráta létra soha ne lépje túl a bemeneti mezzanine felbontását vagy átlagos bitráját. Ez a készlet azonban nem vizsgálja meg a felbontáson és a bitrátonon kívül más forrástulajdonságokat.
 
-## <a name="the-content-aware-encoding"></a>A Content-Aware kódolás 
+## <a name="the-content-aware-encoding"></a>A tartalombarát kódolás 
 
-A Content-Aware kódolási beállításkészlet kiterjeszti az "adaptív sávszélességű adatfolyam" mechanizmust olyan egyéni logika beépítésével, amely lehetővé teszi, hogy a kódoló egy adott megoldás optimális sebességének megadását, de nem igényel kiterjedt számítási elemzést. Ez a beállításkészlet GOP-igazítású MP4 állít elő. A szolgáltatás a bemeneti tartalom kezdeti könnyű elemzését, valamint az eredmények használatával határozza meg a rétegek optimális számát, a megfelelő bitrátát és a megoldási beállításokat az adaptív adatfolyam-továbbítással. Ez a beállításkészlet különösen alacsony és közepes komplexitású videók esetében érvényes, ahol a kimeneti fájlok alacsonyabb sávszélességű lesznek, mint az adaptív adatfolyam-készlet, de olyan minőségben, amely továbbra is jó élményt nyújt a nézők számára. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni
+A tartalomérzékeny kódolási készlet kiterjeszti az "adaptív sávszélességű streamelési" mechanizmust azáltal, hogy olyan egyéni logikát tartalmaz, amely lehetővé teszi a kódoló számára, hogy egy adott felbontásoptimális bitráta-értékét keresse, de anélkül, hogy kiterjedt számítási elemzést igényelne. Ez az előre beállított létrehoz egy sor GOP-igazított MP4s. Bármilyen bemeneti tartalom esetén a szolgáltatás elvégzi a bemeneti tartalom kezdeti könnyű elemzését, és az eredmények alapján határozza meg a rétegek optimális számát, a megfelelő sávszélesség-átviteli és felbontási beállításokat az adaptív streameléshez. Ez az előre beállított beállítás különösen hatékony az alacsony és közepes összetettségű videók esetében, ahol a kimeneti fájlok alacsonyabb bitsebességgel lesznek, mint az Adaptive Streaming készlet, de olyan minőségben, amely még mindig jó élményt nyújt a nézőknek. A kimenet MP4 fájlokat tartalmaz video- és audioátközi
 
-A következő minta-diagramok az összehasonlítást a minőségi mérőszámok, például a [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) és a [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)használatával mutatják be. A forrást úgy hozták létre, hogy összefűzött néhány rövid klipet a nagy komplexitású felvételektől a filmek és a TÉVÉMŰSORok alapján, hogy kihangsúlyozzák a kódolót. A definíció szerint ez a készlet olyan eredményeket hoz létre, amelyek a tartalomtól a tartalomtól függően változnak – ez azt is jelenti, hogy egyes tartalmak esetében nem lehet jelentős mértékben csökkenteni a bitrátát vagy javítani a minőséget.
+Az alábbi mintagrafikonok az összehasonlítást olyan minőségi mutatók kal kitaszatot, mint a [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) és a [VMAF.](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion) A forrás jött létre összefűzése rövid klipek nagy komplexitás felvételek filmek és tv-műsorok, célja, hogy hangsúlyozzák a kódoló. Definíció szerint ez az előre beállított eredményeket hoz létre, amelyek tartalomról tartalomra változnak – ez azt is jelenti, hogy egyes tartalmak esetében előfordulhat, hogy a bitráta vagy a minőség javulása nem csökken jelentősen.
 
-![A torzítás (RD) görbéje a PSNR használatával](media/content-aware-encoding/msrv1.png)
+![Sebességtorzítás (RD) görbe PSNR használatával](media/content-aware-encoding/msrv1.png)
 
-**1. ábra: a ráta-torzítás (RD) görbe használata a PSNR metrikával a nagy komplexitású forráshoz**
+**1. ábra: Sebességtorzítási (RD) görbe PSNR-mérőszám használatával a nagy összetettségű forráshoz**
 
-![A torzítás (RD) görbéje a VMAF használatával](media/content-aware-encoding/msrv2.png)
+![Sebességtorzítás (RD) görbe vmaf használatával](media/content-aware-encoding/msrv2.png)
 
-**2. ábra: a ráta-torzítás (RD) görbe használata a VMAF metrikával a nagy komplexitású forráshoz**
+**2. ábra: Sebességtorzítási (RD) görbe VMAF-metrikával a nagy összetettségű forráshoz**
 
-Az alábbiakban láthatók a tartalomforrás egy másik kategóriájára vonatkozó eredmények, ahol a kódoló meghatározta, hogy a bemenet gyenge minőségű-e (az alacsony sávszélesség miatt sok tömörítési összetevő). Vegye figyelembe, hogy a "Content-Aware" készlettel a kódoló úgy döntött, hogy csak egy kimeneti réteget hoz létre – egy elég alacsony bitráta mellett, így a legtöbb ügyfél nem fog tudni lejátszani az adatfolyamot.
+Az alábbiakban a forrástartalom egy másik kategóriájának eredményeit találjuk, ahol a kódoló meg tudta állapítani, hogy a bemenet gyenge minőségű volt (sok tömörítési összetevő az alacsony bitráta miatt). Ne feledje, hogy a tartalomérzékeny készlettel a kódoló úgy döntött, hogy csak egy kimeneti réteget hoz létre – elég alacsony bitsebességgel, hogy a legtöbb ügyfél az elakadás nélkül játszhassa le az adatfolyamot.
 
-![Távoli asztali görbe a PSNR használatával](media/content-aware-encoding/msrv3.png)
+![Távoli asztali kapcsolat görbéje PSNR használatával](media/content-aware-encoding/msrv3.png)
 
-**3. ábra: távoli asztali görbe a PSNR használatával alacsony színvonalú bevitelhez (1080p)**
+**3. ábra: Távoli asztali görbe PSNR-t használ a gyenge minőségű bevitelhez (1080p-nél)**
 
 ![Távoli asztali görbe a VMAF használatával](media/content-aware-encoding/msrv4.png)
 
-**4. ábra: távoli asztali görbe a VMAF használatával alacsony színvonalú bevitelhez (1080p)**
+**4. ábra: Távoli asztali görbe VMAF használatával gyenge minőségű bevitelhez (1080p-nél)**
 
-## <a name="how-to-use-the-content-aware-encoding-preset"></a>A Content-Aware kódolási beállításkészlet használata 
+## <a name="how-to-use-the-content-aware-encoding-preset"></a>A tartalombarát kódolási készlet használata 
 
-A következő módon hozhat létre olyan átalakításokat, amelyek ezt az beállításkészletet használják. 
+Létrehozhat olyan átalakításokat, amelyek ezt a készletet a következőképpen használják. 
 
 > [!TIP]
-> A át-kimeneteket használó oktatóanyagokat a [következő lépések](#next-steps) szakaszban találja. A kimeneti eszköz az olyan protokollok Media Services streaming végpontokból is elérhető, mint például az MPEG-DASH és a HLS (az oktatóanyagokban látható).
+> A transzformkimeneteket használó oktatóanyagokról a [Következő lépések](#next-steps) című szakaszban található. A kimeneti eszköz a Media Services streamelési végpontjaiból is kézbesíthető olyan protokollokban, mint az MPEG-DASH és a HLS (ahogy az oktatóanyagok ban látható).
 
 
 ```csharp
@@ -76,12 +76,12 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> A `ContentAwareEncoding` beállításkészletet használó kódolási feladatok számlázása a kimeneti percek alapján történik. 
+> Az `ContentAwareEncoding` előre beállított kódolási feladatok számlázása a kimeneti percek alapján kerül számlázásra. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével](stream-files-tutorial-with-api.md)
-* [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST](stream-files-tutorial-with-rest.md)
-* [Oktatóanyag: távoli fájl kódolása URL-cím alapján és a videó továbbítása – parancssori felület](stream-files-cli-quickstart.md)
-* [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET](stream-files-dotnet-quickstart.md)
-* [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-Node. js-hez](stream-files-nodejs-quickstart.md)
+* [Oktatóanyag: Videók feltöltése, kódolása és streamelése a Media Services v3-as számával](stream-files-tutorial-with-api.md)
+* [Oktatóanyag: Távoli fájl kódolása URL alapján és streamelés - REST](stream-files-tutorial-with-rest.md)
+* [Oktatóanyag: Egy távoli fájl kódolása URL alapján és a videó streamelése - CLI](stream-files-cli-quickstart.md)
+* [Oktatóanyag: Távoli fájl kódolása URL alapján és a videó streamelése - .NET](stream-files-dotnet-quickstart.md)
+* [Oktatóanyag: Egy távoli fájl kódolása URL alapján és a videó streamelése - Node.js](stream-files-nodejs-quickstart.md)

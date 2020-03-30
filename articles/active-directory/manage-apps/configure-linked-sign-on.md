@@ -1,6 +1,6 @@
 ---
-title: Csatolt bejelentkezés az Azure AD-alkalmazásokhoz – Microsoft Identity platform
-description: Társított egyszeri bejelentkezés (SSO) konfigurálása az Azure AD vállalati alkalmazásokhoz a Microsoft Identity platformon (Azure AD)
+title: Csatolt bejelentkezés az Azure AD-alkalmazásokhoz – Microsoft identitásplatform
+description: Összekapcsolt egyszeri bejelentkezés (SSO) konfigurálása az Azure AD nagyvállalati alkalmazásaihoz a Microsoft identity platformon (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,41 +13,41 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063543"
 ---
 # <a name="configure-linked-sign-on"></a>Csatolt bejelentkezés konfigurálása
 
-Katalógus vagy nem katalógusos webalkalmazás hozzáadásakor az egyik elérhető egyszeri bejelentkezési lehetőség a [csatolt bejelentkezés](what-is-single-sign-on.md). Ezzel a beállítással adhat hozzá hivatkozást az alkalmazáshoz a szervezet Azure AD hozzáférési paneljén vagy az Office 365-portálon. Ezzel a módszerrel olyan egyéni webalkalmazásokra mutató hivatkozásokat adhat hozzá, amelyek jelenleg Active Directory összevonási szolgáltatások (AD FS) (vagy más összevonási szolgáltatást) használnak az Azure AD helyett a hitelesítéshez. Vagy hozzáadhat olyan mély hivatkozásokat is bizonyos SharePoint-lapokhoz vagy más weblapokhoz, amelyeket csak szeretne megjeleníteni a felhasználó hozzáférési panelén.
+Amikor hozzáad egy galériát vagy nem galéria alapú webalkalmazást, az egyszeri bejelentkezési lehetőségek egyike a [csatolt bejelentkezés.](what-is-single-sign-on.md) Válassza ezt a lehetőséget, ha a szervezet Azure AD Access Panelvagy office 365-ös portálján szeretne egy hivatkozást hozzáadni az alkalmazáshoz. Ezzel a módszerrel az Azure AD helyett az Active Directory összevonási szolgáltatásokat (vagy más összevonási szolgáltatást) használó egyéni webalkalmazásokhoz adhat hozzá hivatkozásokat. Másik lehetőségként hozzáadhat mélyhivatkozásokat bizonyos SharePoint-lapokhoz vagy más weblapokhoz, amelyeket csak meg szeretne jelenadni a felhasználó hozzáférési paneljein.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a Gallery-alkalmazás hozzáadása](add-gallery-app.md) vagy [a nem Gallery-alkalmazás hozzáadása](add-non-gallery-app.md)című témakört.
+Ha az alkalmazás még nem lett hozzáadva az Azure AD-bérlőhöz, olvassa el [a Katalógusalkalmazás hozzáadása](add-gallery-app.md) vagy a Nem galériaalkalmazás hozzáadása című [témakört.](add-non-gallery-app.md)
 
-### <a name="open-the-app-and-select-linked-sign-on"></a>Nyissa meg az alkalmazást, és válassza a csatolt bejelentkezés lehetőséget.
+### <a name="open-the-app-and-select-linked-sign-on"></a>Az alkalmazás megnyitása és a csatolt bejelentkezés kiválasztása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) egy felhőalapú alkalmazás-rendszergazdaként, vagy egy alkalmazás-rendszergazda az Azure AD-bérlő.
 
-1. Navigáljon **Azure Active Directory** > **vállalati alkalmazások**elemre. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
+1. Nyissa meg az **Azure Active Directory** > **Enterprise alkalmazásokat.** Az Azure AD-bérlőben lévő alkalmazások véletlenszerű mintája jelenik meg. 
 
-1. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
+1. Az **Alkalmazás típusa** menüben válassza a **Minden alkalmazás**lehetőséget, majd az **Alkalmaz parancsot.**
 
-1. Adja meg az alkalmazás nevét a keresőmezőbe, majd válassza ki az alkalmazást az eredmények közül.
+1. Írja be az alkalmazás nevét a keresőmezőbe, majd válassza ki az alkalmazást az eredmények közül.
 
-1. A **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget. 
+1. A **Kezelés csoportban** válassza az **Egyszeri bejelentkezés**lehetőséget. 
 
-1. Válassza a **csatolt**lehetőséget.
+1. Válassza a **Csatolt**lehetőséget.
 
-1. Adja meg az alkalmazáshoz csatolni kívánt URL-címet. Írja be az URL-címet, majd válassza a **Mentés**lehetőséget. 
+1. Adja meg annak az alkalmazásnak az URL-címét, amelyre hivatkozni szeretne. Írja be az URL-címet, és válassza a **Mentés lehetőséget.** 
  
-1. A felhasználókat és csoportokat hozzárendelhet az alkalmazáshoz, ami azt eredményezi, hogy az alkalmazás az [Office 365 app launcherben](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy az [Azure ad hozzáférési paneljén](end-user-experiences.md) jelenik meg a felhasználók számára.
+1. Felhasználókat és csoportokat rendelhet az alkalmazáshoz, ami azt eredményezi, hogy az alkalmazás megjelenik az [Office 365 alkalmazásindítójában](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy az [Azure AD hozzáférési panelen](end-user-experiences.md) ezekhez a felhasználókhoz.
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
-- [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [Felhasználók vagy csoportok hozzárendelése az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
+- [A felhasználói fiókok automatikus kiépítésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)

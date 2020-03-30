@@ -1,18 +1,18 @@
 ---
-title: Felügyelt alkalmazás definíciójának létrehozása
+title: Felügyelt alkalmazásdefiníció létrehozása
 description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650344"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473047"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>Azure-beli felügyelt alkalmazásdefiníció közzététele
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>Rövid útmutató: Azure-beli felügyelt alkalmazás definíciójának közzététele
 
 Ebben a rövid útmutatóban a felügyelt alkalmazások használatával ismerkedhet meg. Először hozzáad egy felügyeltalkalmazás-definíciót a szervezete felhasználóinak belső katalógusához. A bevezetés megkönnyítése érdekében előre létrehoztuk a felügyelt alkalmazás fájljait. Ezek a fájlok a GitHubon érhetők el. A fájlok létrehozását a [szolgáltatáskatalógus-alkalmazás létrehozását ismertető](publish-service-catalog-app.md) oktatóanyagból tanulhatja meg.
 
@@ -69,7 +69,7 @@ A parancs befejeződésekor egy felügyeltalkalmazás-definíció található az
 * **authorizations**: A felügyelt erőforráscsoporthoz való engedély biztosításához használt résztvevő-azonosítót és szerepkördefiníció-azonosítót ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Az értékeket szóközzel kell elválasztani egymástól.
 * **package-file-uri**: A szükséges fájlokat tartalmazó .zip csomag helye. A csomagnak tartalmaznia kell a **mainTemplate.json** és a **createUiDefinition.json** fájlt. A **mainTemplate.json** határozza meg a felügyelt alkalmazás részeként létrehozott Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon. A **createUiDefinition.json** hozza létre a felhasználói felületet a felügyelt alkalmazást a portálon keresztül létrehozó felhasználók számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen közzétette a felügyelt alkalmazás definícióját. Most megismerheti, hogyan helyezheti üzembe a definíció egyik példányát.
 

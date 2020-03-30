@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a RingCentral konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a RingCentral.
+title: 'Oktatóanyag: A RingCentral konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Ismerje meg, hogyan lehet automatikusan kiépíteni és kiépíteni a felhasználói fiókokat az Azure AD-ről a RingCentral-ra.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,149 +16,149 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 052223f69fc1c1d59ec5f1bcbeb3746ef7122c86
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087041"
 ---
-# <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés RingCentral konfigurálása
+# <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Oktatóanyag: A RingCentral konfigurálása automatikus felhasználói kiépítéshez
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a RingCentral és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [RingCentral](https://www.ringcentral.com/office/plansandpricing.html) . A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md). 
+Ez az oktatóanyag ismerteti azokat a lépéseket, amelyeket a RingCentral és az Azure Active Directoryban (Azure AD) kell végrehajtaniaz automatikus felhasználói kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan rendelkezik a felhasználók és csoportok [a RingCentral](https://www.ringcentral.com/office/plansandpricing.html) az Azure AD-kiépítési szolgáltatás használatával. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../manage-apps/user-provisioning.md) 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
-> * Felhasználók létrehozása a RingCentral-ben
-> * Felhasználók eltávolítása a RingCentral-ben, ha már nincs szükség hozzáférésre
+> * Felhasználók létrehozása a RingCentral ban
+> * Felhasználók eltávolítása a RingCentral-ban, ha már nincs szükségük hozzáférésre
 > * Felhasználói attribútumok szinkronizálása az Azure AD és a RingCentral között
-> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial) a RingCentral-be (ajánlott)
+> * [Egyszeri bejelentkezés a RingCentral-ba](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial) (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Az Azure AD-ben a kiépítés konfigurálására [vonatkozó engedéllyel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) rendelkező felhasználói fiók (pl. alkalmazásrendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
 * [RingCentral-bérlő](https://www.ringcentral.com/office/plansandpricing.html)
-* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a RingCentral-ben.
+* A RingCentral rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1\. lépés A kiépítési üzembe helyezés megtervezése
-1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
-2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Határozza meg, hogy az [Azure ad és a RingCentral között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési telepítés megtervezése
+1. További információ [a kiépítési szolgáltatás működéséről.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+2. Határozza meg, hogy ki lesz a [kiépítés hatóköre.](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)
+3. Határozza meg, hogy milyen adatokat szeretne [leképezni az Azure AD és a RingCentral között.](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 
 
-## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>2\. lépés RingCentral konfigurálása az Azure AD-vel való kiépítés támogatásához
+## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>2. lépés A RingCentral konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-1. Jelentkezzen be a [RingCentral felügyeleti konzolra](https://login.ringcentral.com/sw.html). Navigáljon az **eszközök > címtár-integráció**elemre.
+1. Jelentkezzen be a [RingCentral Felügyeleti konzolra](https://login.ringcentral.com/sw.html). Nyissa meg **az Eszközök > a címtár-integrációt.**
 
     ![RingCentral felügyeleti konzol](media/ringcentral-provisioning-tutorial/admin.png)
 
-2.  Válassza a **scim** lehetőséget a **címtár-szolgáltató kiválasztása**területen. (A jövőben egy Azure Active Directory nevű lehetőség lesz). Kattintson a **scim szolgáltatás engedélyezése**lehetőségre.
+2.  Válassza az **SCIM** elemet a **Címtárszolgáltató kiválasztása**csoportban. (A jövőben lesz egy lehetőség nevű Azure Active Directory). Kattintson **az SciM-szolgáltatás engedélyezése gombra.**
 
-    ![RingCentral-SCIM hozzáadása](media/ringcentral-provisioning-tutorial/scim.png)
+    ![RingCentral hozzáadása SCIM](media/ringcentral-provisioning-tutorial/scim.png)
 
-3.  A **scim hitelesítési tokenért**forduljon a RingCentral támogatási csapatához a következő címen: matthew.hunt@ringcentral.com. Ez az érték a RingCentral alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében jelenik meg a Azure Portal.
+3.  Lépjen kapcsolatba a matthew.hunt@ringcentral.com RingCentral támogatási csapatával az **SCIM hitelesítési jogkivonatért.** Ezt az értéket a Titkos jogkivonat mezőben adja meg a RingCentral alkalmazás Kiépítés lapján az Azure Portalon.
 
 > [!NOTE]
-> A licencek felhasználókhoz rendeléséhez tekintse meg a videó hivatkozást [itt](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language).
+> Ha licenceket szeretne hozzárendelni a felhasználókhoz, olvassa el a videolinket [itt](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language).
 
-## <a name="step-3-add-ringcentral-from-the-azure-ad-application-gallery"></a>3\. lépés RingCentral hozzáadása az Azure AD Application Galleryből
+## <a name="step-3-add-ringcentral-from-the-azure-ad-application-gallery"></a>3. lépés RingCentral hozzáadása az Azure AD alkalmazásgyűjteményből
 
-Vegyen fel RingCentral az Azure AD-alkalmazás-katalógusból a RingCentral való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a RingCentral az SSO-hoz, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
+Add RingCentral az Azure AD alkalmazáskatalógusból a RingCentral kiépítésének megkezdéséhez. Ha korábban már beállította a RingCentral for SSO-t, használhatja ugyanazt az alkalmazást. Azonban ajánlott, hogy hozzon létre egy külön alkalmazást, amikor az integráció tesztelése kezdetben. További információ az alkalmazások hozzáadásáról a galériából [itt.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4\. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
+Az Azure AD-létesítési szolgáltatás lehetővé teszi, hogy a hatókör, aki ki lesz építve az alkalmazáshoz való hozzárendelés és vagy a felhasználó /csoport attribútumai alapján. Ha úgy dönt, hogy hatókör, aki ki lesz építve az alkalmazás hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) felhasználókat és csoportokat rendelhet az alkalmazáshoz. Ha úgy dönt, hogy a hatókört, aki kilesz építve alapján kizárólag attribútumok a felhasználó vagy csoport, akkor egy hatókörszűrő az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint . 
 
-* Felhasználók és csoportok RingCentral való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
+* Amikor felhasználókat és csoportokat rendel a RingCentral szolgáltatáshoz, az Alapértelmezett hozzáférés szolgáltatástól eltérő szerepkört kell **kijelölnie.** Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből, és a kiépítési naplókban nem megfelelőként lesznek megjelölve. Ha az alkalmazáson elérhető egyetlen szerepkör az alapértelmezett hozzáférési szerepkör, [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) további szerepkörök hozzáadásához. 
 
-* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Kezdjük kicsiben. Tesztelje a felhasználók és csoportok egy kis csoportját, mielőtt mindenki számára kivezetne. Ha a kiépítési hatókör hozzárendelt felhasználókra és csoportokra van beállítva, ezt szabályozhatja egy vagy két felhasználó vagy csoport hozzárendelésével az alkalmazáshoz. Ha a hatókör az összes felhasználóra és csoportra van beállítva, megadhat egy [attribútumalapú hatókörszűrőt.](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-ringcentral"></a>5\. lépés Automatikus felhasználó-kiépítés beállítása a RingCentral 
+## <a name="step-5-configure-automatic-user-provisioning-to-ringcentral"></a>5. lépés Automatikus felhasználói kiépítés konfigurálása a RingCentral rendszerbe 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a TestApp-ben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
-### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a RingCentral az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>A RingCentral automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **RingCentral**lehetőséget.
+2. Az alkalmazások listájában válassza a **RingCentral**lehetőséget.
 
-    ![Az RingCentral hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A RingCentral hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://platform.ringcentral.com/scim/v2` a **bérlői URL-címben**. Adja meg a **scim-hitelesítési jogkivonat** értékét a **titkos tokenben**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a RingCentral. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a RingCentral-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **Rendszergazdai hitelesítő** adatok `https://platform.ringcentral.com/scim/v2` csoportban adja meg a **bérlői URL-címet.** Adja meg a **titkos jogkivonat**korábbi, beolvasott **SCIM hitelesítési token** értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a RingCentral hoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a RingCentral-fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
 
     ![Kiépítés lap](./media/ringcentral-provisioning-tutorial/provisioning.png)
 
-6. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
+6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be az **E-mail értesítés küldése hiba esetén jelölőnégyzetet.**
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a RingCentral**lehetőséget.
+8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a RingCentral szolgáltatással**lehetőséget.
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő RingCentral. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a RingCentral felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a RingCentral API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ről a RingCentral szolgáltatásra szinkronizált felhasználói attribútumokat az **Attribútum-leképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a RingCentral felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. Ha úgy dönt, hogy módosítja az [egyező célattribútumot,](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)gondoskodnia kell arról, hogy a RingCentral API támogatja-e a felhasználók szűrését az adott attribútum alapján. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
    |Attribútum|Típus|
    |---|---|
-   |userName|Sztring|
-   |externalId|Sztring|
-   |aktív|Logikai|
+   |userName (Felhasználónév)|Sztring|
+   |külső azonosító|Sztring|
+   |Aktív|Logikai|
    |displayName|Sztring|
-   |Cím|Sztring|
-   |e-mailek [típus eq "work"] .value|Sztring|
-   |címek [type EQ "work"]. Country|Sztring|
-   |címek [típus EQ "work"]. régió|Sztring|
-   |címek [típus EQ "work"]. helység|Sztring|
-   |.postalCode címek [típus eq "work"]|Sztring|
-   |.streetAddress címek [típus eq "work"]|Sztring|
+   |cím|Sztring|
+   |e-mailek[típus eq "work"].value|Sztring|
+   |addresses[type eq "work"].country|Sztring|
+   |addresses[type eq "work"].region|Sztring|
+   |addresses[type eq "work"].locality|Sztring|
+   |addresses[type eq "work"].postalCode|Sztring|
+   |addresses[type eq "work"].streetAddress|Sztring|
    |name.givenName|Sztring|
    |name.familyName|Sztring|
-   |phoneNumbers [típus eq "mobileszköz"] .value|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+   |phoneNumbers[type eq "mobile"].value|Sztring|
+   |urn:ietf:params:scim:sémák:kiterjesztés:enterprise:2.0:Felhasználó:részleg|Sztring|
+   |urn:ietf:params:scim:sémák:kiterjesztés:enterprise:2.0:Felhasználó:menedzser|Referencia|
 
-10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-11. Az Azure AD-kiépítési szolgáltatás RingCentral való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+11. Az Azure AD-kiépítési szolgáltatás engedélyezéséhez a RingCentral, módosítsa a **kiépítés állapota** **be a** **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg a RingCentral kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni a RingCentral-ba a kívánt értékek kiválasztásával a **Beállítások** szakasz **hatókörében.**
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-13. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+13. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
+Ez a művelet elindítja a Beállítások szakasz **Hatókör szakaszában** definiált összes felhasználó és csoport kezdeti szinkronizálási **ciklusát.** A kezdeti ciklus végrehajtása hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. 
 
-## <a name="step-6-monitor-your-deployment"></a>6\. lépés Az üzemelő példány figyelése
-Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Miután konfigurálta a kiépítést, a következő erőforrásoksegítségével figyelheti a központi telepítést:
 
-1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
-2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
-3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. A [létesítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen vagy sikertelenül kiépítve
+2. Ellenőrizze a [folyamatjelzőt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) a kiépítési ciklus állapotának és a befejezéshez szükséges közelségnek a megtekintéséhez.
+3. Ha a létesítési konfiguráció úgy tűnik, hogy sérült állapotban van, az alkalmazás karanténba kerül. A karanténállapotokról itt olvashat [bővebben.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../manage-apps/check-status-user-account-provisioning.md)

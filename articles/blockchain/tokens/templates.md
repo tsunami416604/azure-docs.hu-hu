@@ -1,91 +1,91 @@
 ---
-title: Azure Blockchain-tokenek sablonjai
-description: Az Azure Blockchain-tokenek sablonjai szabványosított és újrafelhasználható sablonok, amelyek leegyszerűsítik a Főkönyv-alapú jogkivonatok létrehozását és üzembe helyezését.
+title: Azure Blockchain tokenek sablonjai
+description: Az Azure Blockchain tokenek sablonjai szabványosított és újrafelhasználható sablonok, amelyek leegyszerűsítik a főkönyvalapú tokenek létrehozását és üzembe helyezését.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252206"
 ---
-# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain-tokenek sablonjai
+# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain tokenek sablonjai
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Az Azure Blockchain-tokenek sablonja egy szabványosított és újrahasznosítható sablon, amely leegyszerűsíti a Főkönyv-alapú jogkivonatok létrehozását és üzembe helyezését. A sablon egy olyan képletből áll, amely a [jogkivonat-taxonómiai keretrendszer (TTF)](overview.md#token-taxonomy-framework) nyelvtanán alapul. A nyelvtan magában foglalja az alapszintű jogkivonat típusát és a token viselkedési készletét.  
+Az Azure Blockchain Tokens sablon egy szabványosított és újrafelhasználható sablon, amely leegyszerűsíti a főkönyvalapú tokenek létrehozását és üzembe helyezését. A sablon egy képletből áll, amely a [Token Taxonómiai Keretrendszer (TTF)](overview.md#token-taxonomy-framework) nyelvtanán alapul. A nyelvtan magában foglalja az alap jogkivonat típusát és a jogkivonat viselkedéskészletét.  
 
-Például a **τϜ {d, m, b, r}** token sablon egy olyan helyettesíthető alaptokent ír le, amely alméretű, felmenthető és írható, és szerepkör-támogatással rendelkezik.
+Például **a τ,m,b,r}** tokensablon egy helyettesíthető alaptokent ír le, amely továbbosztható, menthető, égethető és szerepkör-támogatással rendelkezik.
   
-## <a name="base-token-types"></a>Alapjogkivonat-típusok
+## <a name="base-token-types"></a>Alaptokentípusok
 
-Az adott eszközhöz tartozó Főkönyv-token meghatározásakor és létrehozásakor fontos figyelembe venni, hogy milyen alaptokent kell használni.
+Az adott eszköz főkönyvi alapú jogkivonatának meghatározásakor és létrehozásakor fontos figyelembe venni, hogy milyen alapjogkivonatot kell használnia.
 
 ### <a name="fungible"></a>Helyettesíthető
 
-A helyettesíthető tokenek (τF-EK) felcserélhető értékkel rendelkeznek egymással, feltéve, hogy ugyanabban az osztályban vagy sorozatban találhatók. Egy jogkivonat ugyanazzal az értékkel rendelkezik, mint egy másik jogkivonat, vagy a tokenek egy adott mennyisége azonos értékkel rendelkezik, mint egy másik azonos mennyiség. A dollár például egy helyettesíthető jogkivonat. Ha két személy van egy dollár számlán, akkor az ilyen Dollar-számlákat a következmények nélkül cserélhetik be. A dollár számláinak értéke egyenlő. 
+A helyettesíthető tokenek (τF) felcserélhető értékkel rendelkeznek egymással, amennyiben ugyanabba az osztályba vagy sorozatba tartoznak. Egy jogkivonat értéke megegyezik egy másik jogkivonat, vagy egy adott mennyiségű jogkivonatok ugyanaz tanusíta, mint egy másik azonos mennyiség. Például, egy dollár egy helyettesíthető token. Ha két ember minden gazdaság egy dollár számlát, akkor lehet cserélni ezeket a dollár számlák következmények nélkül. A dollár számlák egyenlő értékűek. 
 
 ### <a name="non-fungible"></a>Nem helyettesíthető
 
-A nem helyettesíthető tokenek (τN-EK) nem cserélhetők az azonos típusú más jogkivonatokkal, mivel általában eltérő értékekkel rendelkeznek. Egy tulajdonság címe például egy nem helyettesíthető jogkivonat. Az apartmankomplexum két különböző lakásához tartozó tulajdonságok címei nem szükségszerűen egyenlőek, mert az egység helye, vagy az a szint, amelyen az egység található. A két tulajdonság címe jogkivonatok érzékelt értéke nem egyenlő.
+A nem helyettesíthető tokenek (τN) nem cserélhetők fel más azonos típusú tokenekkel, mivel általában eltérő értékekkel rendelkeznek. Például egy tulajdonság cím egy nem helyettesíthető jogkivonat. Ingatlan cím két különböző apartman egy apartman komplexum nem feltétlenül azonos értékű, mivel sem a helyét az egység, vagy melyik emeleten az egység. A két tulajdonságcím-token vélt értéke nem egyenlő.
 
 ### <a name="hybrid"></a>Hibrid
 
-A hibrid jogkivonatok olyan tokenek, amelyekben a helyettesíthető tokenek és a nem helyettesíthető tokenek összetevői is vannak. A hibrid jogkivonat olyan alapjogkivonat-típus, amely a másik jogkivonat-típus osztályának tulajdonosa.
+A hibrid jogkivonatok olyan tokenek, amelyek egyaránt helyettesíthető tokenek és nem helyettesíthető tokenek összetevői. A hibrid jogkivonat egy alapjogkivonat-típus, amely rendelkezik egy osztály a másik jogkivonat-típus.
 
-#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hibrid, nem helyettesíthető, helyettesíthető szegmensekkel rendelkező talp
+#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hibrid, nem helyettesíthető alap helyettesíthető szegmensekkel
 
-A helyettesíthető szegmensek tokenjét tartalmazó hibrid, nem helyettesíthető kiindulási alap nem helyettesíthető jogkivonat-szegmensekkel rendelkezik.
-Egy koncert jegy például egy hibrid token, amelyben a koncert dátuma és időpontja a nem helyettesíthető alapjogkivonat. Az adott koncert különböző ülőhelyeit tartalmazó jegyek a szegmensek, amelyek helyettesített tokenekkel rendelkeznek. A jegyek a különálló ülőhelyek között, de nem több különböző szakaszban is cserélhetők.
+A hibrid nem helyettesíthető alap helyettesíthető szegmensek token egy nem helyettesíthető alap helyettesíthető token szegmensek.
+Például egy koncertjegy egy hibrid jogkivonat, ahol a koncert dátuma és időpontja a nem helyettesíthető alaptoken. A jegyek különböző ülésszakaszokaz adott koncert a szegmensek helyettesíthető tokenek. A jegyek az egyes ülésszakaszokon cserélhetők, de nem a szakaszokközött.
 
-#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Nem helyettesíthető szegmensekkel rendelkező hibrid helyettesíthető alap
+#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hibrid helyettesíthető alap nem helyettesíthető szegmensekkel
 
-A nem helyettesíthető szegmensek tokenjét tartalmazó hibrid helyettesíthető alapértékek nem helyettesíthető jogkivonat-szegmensekkel rendelkeznek. A jelzálog által támogatott biztonság például egy hibrid token, amelyben több tulajdonos a több tulajdonos között felosztott helyettesíthető alap. A biztonság felcserélhető. Az egyéni jelzálog a nem helyettesíthető szegmensek, amelyek az adott jelzálog-alapú biztonsági mentést jelölik.
+A nem helyettesíthető szegmensek tokenjével rendelkező hibrid helyettesíthető alap nem helyettesíthető tokenszegmensekkel rendelkezik. Például a jelzálog alapú biztonság egy hibrid jogkivonat, ahol több tulajdonos a sok tulajdonos között felosztott helyettesíthető bázis. A biztonság felcserélhető. Az egyes jelzálog a nem helyettesíthető szegmensek, amelyek képviselik az adott jelzálog-fedezetű értékpapír.
 
-## <a name="token-behaviors"></a>Jogkivonat-viselkedések
+## <a name="token-behaviors"></a>Token viselkedések
 
-A jogkivonat viselkedése a jogkivonat képességeit vagy korlátozásait határozza meg. A viselkedés magában foglalja a jogkivonat-definíció részét képező támogató tulajdonságokat is. A viselkedésmódok az összes jogkivonat-típusra vagy csak egy alkalmazásra alkalmazhatók. A viselkedés a viselkedés hatásaitól függően belső vagy külső lehet. A belső viselkedés lehetővé teszi, hogy maga a jogkivonat tulajdonságait is engedélyezi vagy korlátozza. A külső viselkedés lehetővé teszi vagy korlátozza egy külső szereplő viselkedésének meghívását.
+A jogkivonat viselkedése határozza meg a jogkivonat képességeit vagy korlátozásait. A viselkedés magában foglalja a jogkivonat-definíció részét tartalmazó támogató tulajdonságokat. Viselkedések lehet alkalmazni az összes jogkivonat-típusok, vagy csak egy. Viselkedések lehetnek belső vagy külső attól függően, hogy milyen a viselkedés hatások. A belső viselkedés engedélyezi vagy korlátozza a token tulajdonságait. A külső viselkedés lehetővé teszi vagy korlátozza a viselkedés külső aktorból történő meghívását.
 
-További információ az Azure Blockchain tokenek által támogatott jogkivonat-besorolási keretrendszer (TTF) token-viselkedéséről: [token-megkomponálás](composability.md).
+Az Azure Blockchain tokenek által támogatott token taxonómiai keretrendszer (TTF) tokenviselkedésekről a [tokenek komponálhatósága](composability.md)című témakörben talál további információt.
 
-## <a name="pre-built-token-templates"></a>Előre elkészített jogkivonat-sablonok
+## <a name="pre-built-token-templates"></a>Előre elkészített tokensablonok
 
-Az Azure Blockchain-tokenek négy előre elkészített jogkivonat-sablont biztosítanak, amelyek módosítás nélkül használhatók. A legtöbb felhasználási esethez meghívhatja ezeket az előre elkészített sablonokat a tokenek gyors létrehozásának, üzembe helyezésének és kezelésének megkezdéséhez.
+Az Azure Blockchain tokenek négy előre elkészített jogkivonat-sablont biztosít, amelyek módosítás nélkül használhatók. Ezeket az előre elkészített sablonokat a legtöbb használati esetekben a tokenek létrehozásának megkezdéséhez, üzembe helyezéséhez és kezeléséhez.
 
-### <a name="commodity-tokens"></a>Nyersanyag-tokenek
+### <a name="commodity-tokens"></a>Árucikk tokenek
 
-A nyersanyag-tokenek konzisztens értékkel rendelkeznek, és átruházhatók. Például egy hordó olaj vagy egy energia egység.
+Az árualapú tokenek konzisztens értékkel rendelkeznek, és átruházhatók. Például egy hordó olaj vagy egy energiaegység.
 
-**τF {~ d, t, m, b, r}** – helyettesíthető, teljes, átvihető, felmenthető, írható és szerepkör-támogatás
+**τF {~d, t,m, b, r}** - helyettesíthető, egész, átruházható, menthető, égethető, és szereptámogatással rendelkezik
 
-Számos blockchain-forgatókönyv esetében átláthatóságra és láthatóságra van szükség az ellátási láncban vagy több szervezeten belül. A nyersanyag-tokenek ezen gyakori használati esetektől függenek. A tokenek felcserélhetők és konzisztensek. A nyersanyag-jogkivonat sablonja rugalmas és testreszabható metaadatokkal.
+Számos blokklánc-forgatókönyv átláthatóságot és láthatóságot igényel az ellátási láncban vagy több szervezetben. Az árualapú tokenek ezeken a gyakori használati eseteken alapulnak. A tokenek felcserélhetők és konzisztensek. Az árujogkivonat-sablon rugalmas és metaadatokkal testreszabható.
 
-### <a name="qualified-tokens"></a>Minősített jogkivonatok
+### <a name="qualified-tokens"></a>Minősített tokenek
 
-A minősített jogkivonatok egy adott személyt jelképeznek, és általában egy entitáshoz vannak társítva, és nem vihetők át. Például egy oklevél vagy egy parkoló megsértése.
+A minősített tokenek jelentenek valamit szerzett, és általában társított egy entitás, és nem lehet átvinni. Például egy oklevél vagy egy parkolási szabálysértés.
 
-**τN {s, ~ t}** – nem helyettesíthető, egyedi és nem átvihető
+**τN{s,~t}** - nem helyettesíthető, szingli és nem átruházható
 
-A különböző naplózási és igazolási forgatókönyvek megkövetelik, hogy a jogkivonat tulajdonjoga nem módosítható. Vannak olyan használati esetek, amelyeknek szükségük van egy minősített jogkivonat megadására, hogy a társítás jó vagy rossz.
+Különböző naplózási és tanúsítvány-forgatókönyvek megkövetelik, hogy a jogkivonat tulajdonjoga nem módosítható. Van egy sor használati esetek, amelyek szükség van, hogy egy minősített jogkivonatot, hogy a társítás jó vagy rossz.
 
-### <a name="asset-tokens"></a>Eszközök jogkivonatai
+### <a name="asset-tokens"></a>Eszköztokenek
 
-Az objektum-tokenek egyedi értéktől függenek az elemtől, és nem commoditized. Például egy múzeumi összetevő vagy egy tulajdonság neve.
+Az eszköztokenek egyedi értéke a cikktől függ, és nem árucikké váltak. Például egy múzeumi műtárgy vagy egy tulajdon címe.
 
-**τN {s, t}** – nem helyettesíthető, egyszeres és átvihető
+**τN{s,t}** - nem helyettesíthető, szingli és átruházható
 
-Előfordulhat, hogy az eszköz jogkivonatai összetévesztik a jogkivonatokat. A két jogkivonat közötti fő különbség az, hogy az eszközök jogkivonatai eredendően egyediek, és az érték független a jogkivonat típusától. Egy olyan műalkotás például, amely egy kialakult művész által készített olajfestmény, egy eszköz tokenje. A Mona Lisa művészi nyomtatása azonban egy árucikk-tokennek tekintendő. Hasonlóképpen, a tulajdonság címe egy eszköz jogkivonata, mivel az érték a tulajdonság szubjektív tulajdonságaiban szerepel.
+Az eszköztokenek összetéveszthetők az árualapú tokenekkel. A fő különbség a két jogkivonat között az, hogy az eszköztokenek eredendően egyediek, és az érték független a jogkivonat típusától. Például egy műalkotás, mint egy olajfestmény egy elismert művész egy eszköz token. Azonban a Mona Lisa művészeti nyomata árukincsnek számít. Hasonlóképpen a tulajdonság jogkivonat egy eszköz token, mivel az érték létezik a tulajdonság szubjektív tulajdonságai.
 
-### <a name="ticket-tokens"></a>Jegyek jogkivonatai
+### <a name="ticket-tokens"></a>Jegytokenek
 
-A jegyek tokenje konzisztens értékkel rendelkezik, de általában lejár. Például egy repülőjegy.
+A jegytokenek konzisztens értékkel rendelkeznek, de általában lejárnak. Például egy repülőjegy.
 
-**τN {m, b, r}** – nem helyettesíthető, felmenthető, írható és szerepkör-támogatással rendelkezik.
+**τN{m,b,r}** - nem helyettesíthető, menthető, égethető és szerepkör-támogatással rendelkezik.
 
-A Ticket tokenek jellemzően lejárati dátummal rendelkeznek, amely eltér a normál, a szokásostól eltérő jogkivonattól. A repülőjegyek, a koncert jegyek vagy a sportfogadási jegyek például az adott időponthoz rendelt ülőhelyekkel rendelkeznek. Nem lehet egyszerűen átváltani a jegyeket a dátumok vagy az ülőhelyek között.
+A jegytokenek általában lejárati dátummal rendelkeznek, amely megkülönbözteti őket a normál árualapú tokentől. Például egy repülőjegy, koncertjegy vagy sportjegy mindegyikének van lehetősége a kijelölt ülőhelyekre, meghatározott felhasználási dátumokkal. Nem lehet könnyen átváltani a jegyeket a dátumok vagy az ülőhelyek között.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nagyobb rugalmasságra van szüksége a forgatókönyvhöz, Ismerje meg, hogyan hozhat létre saját jogkivonat-sablonokat a [jogkivonat-megkomponálás](composability.md)használatával.
+Ha nagyobb rugalmasságra van szüksége a forgatókönyvhöz, ismerje meg, hogyan hozhat létre saját tokensablonokat a [tokenek kompolhatóságának](composability.md)használatával.

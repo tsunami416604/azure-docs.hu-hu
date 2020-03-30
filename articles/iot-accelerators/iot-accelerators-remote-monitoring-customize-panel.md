@@ -1,6 +1,6 @@
 ---
-title: A panel ad hozzá a távoli figyelési megoldás felhasználói felület – Azure |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan adhat hozzá egy új panel az irányítópulton, a távoli figyelési megoldás gyorsító webes felhasználói felületen.
+title: Panel hozzáadása a távfigyelési megoldás felhasználói felületéhez – Azure | Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan vehet fel új panelt az irányítópultra a távfigyelési megoldásgyorsító webes felhasználói felületén.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,57 +9,57 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447063"
 ---
-# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Egy egyéni panel hozzáadása az irányítópulthoz, a távoli figyelési megoldás gyorsító webes felhasználói felületen
+# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni panel hozzáadása az irányítópulthoz a távfigyelési megoldásgyorsító webes felhasználói felületén
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy új panel, egy irányítópult lapra a távoli figyelési megoldás gyorsító webes felhasználói felületen. A cikk ismerteti:
+Ez a cikk bemutatja, hogyan vehet fel új panelt egy irányítópult-lapra a Távoli figyelési megoldásgyorsító webes felhasználói felületén. A cikk a következőket írja le:
 
-- Hogyan készítheti elő a helyi fejlesztési környezetet.
-- Hogyan adhat hozzá egy új panel a webes felhasználói felületének egy irányítópult-oldalon.
+- Hogyan készítsünk egy helyi fejlesztési környezetben.
+- Új panel hozzáadása az irányítópult-laphoz a webes felhasználói felületen.
 
-Ebben a cikkben a példa panel megjeleníti a meglévő irányítópult-oldalon.
+A cikk példapanelje a meglévő irányítópult-lapon jelenik meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató a lépések végrehajtásához szüksége van a következő szoftvereknek telepítve a helyi fejlesztői gépen:
+Az útmutató lépéseinek végrehajtásához a következő szoftverre van szükség a helyi fejlesztői gépen:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Hajtsa végre a lépéseket a [egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-page.md) a cikk a folytatás előtt.
+A folytatás előtt hajtsa végre az [Egyéni lap hozzáadása a távoli figyelési megoldásgyorsító webes felhasználói felületének](iot-accelerators-remote-monitoring-customize-page.md) cikkében található lépéseket.
 
 ## <a name="add-a-panel"></a>Panel hozzáadása
 
-A webes felhasználói felületen ad hozzá egy panel, szüksége adhat hozzá a forrásfájlokat, amelyek meghatározzák a panelen, majd a panelen megjelennek az irányítópulton.
+Ha panelt szeretne hozzáadni a webes felhasználói felülethez, hozzá kell adnia a panelt meghatározó forrásfájlokat, majd módosítania kell az irányítópultot a panel megjelenítéséhez.
 
-### <a name="add-the-new-files-that-define-the-panel"></a>Adja hozzá az új fájlokat, amelyek meghatározzák a panel
+### <a name="add-the-new-files-that-define-the-panel"></a>A panelt meghatározó új fájlok hozzáadása
 
-Az első lépésekhez, a **src/forgatókönyv/összetevők/oldalak és irányítópult/panelek/examplePanel** mappa tartalmazza a fájlokat, amelyek meghatározzák egy panel, többek között:
+A kezdéshez az **src/walkthrough/components/pages/dashboard/panels/examplePanel** mappa tartalmazza a panelt meghatározó fájlokat, többek között a következőket:
 
 **examplePanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
-Másolás a **src/forgatókönyv/összetevők/oldalak és irányítópult/panelek/examplePanel** mappát a **src/összetevők/oldalak és irányítópult/panelek** mappát.
+Másolja az **src/walkthrough/components/pages/dashboard/panels/examplePanel** mappát az **src/components/pages/dashboard/panels** mappába.
 
-Adja hozzá az alábbi adatok exportálása az **src/walkthrough/components/pages/dashboard/panels/index.js** fájlt:
+Adja hozzá a következő exportálást az **src/walkthrough/components/pages/dashboard/panels/panels/index.js** fájlhoz:
 
 ```js
 export * from './examplePanel';
 ```
 
-### <a name="add-the-panel-to-the-dashboard"></a>A Vezérlőpult hozzáadása az irányítópulthoz
+### <a name="add-the-panel-to-the-dashboard"></a>A panel hozzáadása az irányítópulthoz
 
-Módosítsa a **src/components/pages/dashboard/dashboard.js** hozzáadása a panelen.
+A panel hozzáadásához módosítsa az **src/components/pages/dashboard/dashboard.js kapcsolót.**
 
-A példa panelen adhat import listája a panelek:
+Adja hozzá a példapanelt a panelekről származó behozatalok listájához:
 
 ```js
 import {
@@ -74,7 +74,7 @@ import {
 } from './panels';
 ```
 
-Adja hozzá a következő cella definíciójának az oldal tartalmát a rács:
+Adja hozzá a következő celladefiníciót az oldaltartalom rácsához:
 
 ```js
           <Cell className="col-2">
@@ -82,18 +82,18 @@ Adja hozzá a következő cella definíciójának az oldal tartalmát a rács:
           </Cell>
 ```
 
-## <a name="test-the-flyout"></a>Tesztelje a úszó menü
+## <a name="test-the-flyout"></a>Az úszó panel tesztelése
 
-Ha a webes felhasználói felület még nem fut helyi, futtassa a következő parancsot a tárház helyi példányának gyökérmappájában:
+Ha a webes felhasználói felület még nem fut helyileg, futtassa a következő parancsot a tárház helyi példányának gyökerében:
 
 ```cmd/sh
 npm start
 ```
 
-Az előző parancs futtatása helyileg, a felhasználói felület [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Keresse meg a **irányítópult** lap használatával jeleníthetők meg az új panelen.
+Az előző parancs helyileg futtatja a felhasználói felületet a ban. [http://localhost:3000/dashboard](http://localhost:3000/dashboard) Az **irányítópult** lapon megtekintheti az új panelt.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedett az erőforrások segíteni fog hozzáadni, vagy alakítsa az irányítópultot a távoli figyelési megoldásgyorsító a webes felhasználói felületen.
+Ebben a cikkben megismerkedhet a távoli figyelési megoldás gyorsítójában a webes felhasználói felület irányítópultjainak hozzáadásához vagy testreszabásához rendelkezésre álló erőforrásokról.
 
-További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+A távfigyelési megoldásgyorsítóról a [Távoli figyelési architektúra című témakörben](iot-accelerators-remote-monitoring-sample-walkthrough.md)talál további általános tudnivalókat.

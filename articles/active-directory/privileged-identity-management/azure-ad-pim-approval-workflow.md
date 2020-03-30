@@ -1,6 +1,6 @@
 ---
-title: Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben – Azure AD | Microsoft Docs
-description: Megtudhatja, hogyan hagyhatja jóvá vagy tilthatja le a Azure AD Privileged Identity Management (PIM) Azure AD-szerepköreire vonatkozó kérelmeket.
+title: Azure AD-szerepkörök kéréseinek jóváhagyása vagy elutasítása a PIM-ben – Azure AD | Microsoft dokumentumok
+description: Ismerje meg, hogyan hagyhatja jóvá vagy tagadhatja meg az Azure AD-szerepkörök kéréseit az Azure AD emelt szintű identitáskezelés (PIM) szolgáltatásában.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,129 +16,129 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b39336591e9939d0e5200304cbeced2d9831979
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 73ccfd1ad270072989e9b575fda538b94fd8927c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498769"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049019"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kéréseinek jóváhagyása vagy megtagadása a kiemelt identitáskezelésben
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával konfigurálhatja a szerepköröket az aktiválás jóváhagyásához, és egy vagy több felhasználót vagy csoportot delegált jóváhagyóként választhat ki. A delegált jóváhagyók 24 órával a kérelmek jóváhagyására jogosultak. Ha a kérést 24 órán belül nem hagyták jóvá, a jogosult felhasználónak újra be kell küldenie egy új kérelmet. A 24 órás jóváhagyási idő ablak nem konfigurálható.
+Az Azure Active Directory (Azure AD) privilegizált identitáskezelés (PIM) segítségével konfigurálhatja a szerepköröket az aktiválás jóváhagyásának megkövetelésére, és egy vagy több felhasználót vagy csoportot delegált jóváhagyóként választhat. A delegált jóváhagyóknak 24 órájuk van a kérelmek jóváhagyására. Ha egy kérelmet 24 órán belül nem hagynak jóvá, akkor a jogosult felhasználónak újra be kell nyújtania egy új kérelmet. A 24 órás jóváhagyási időablak nem konfigurálható.
 
 ## <a name="determine-your-version-of-pim"></a>A PIM verziójának meghatározása
 
-A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szerepkörök részét egy új verzióra frissíti a rendszer, amely megfelel az Azure-szerepkörökkel kapcsolatos élményeknek. Ez további funkciókat hoz létre, valamint [a meglévő API módosításait](azure-ad-roles-features.md#api-changes)is. Az új verzió bevezetését követően a cikkben ismertetett eljárások a jelenleg használt Privileged Identity Management verziójától függenek. Az ebben a szakaszban ismertetett lépéseket követve meghatározhatja, hogy a Privileged Identity Management melyik verzióját kell megadnia. A Privileged Identity Management-verziójának megismerése után kiválaszthatja a jelen cikkben szereplő, az adott verziónak megfelelő eljárásokat.
+2019 novemberétől kezdődően a kiemelt identitáskezelés Azure AD-szerepkörök része frissül egy új verzióra, amely megfelel az Azure-szerepkörök élményének. Ez további funkciókat, valamint [a meglévő API-t is módosítja.](azure-ad-roles-features.md#api-changes) Az új verzió bevezetés alatt, hogy mely eljárásokat követi ebben a cikkben attól függ, hogy a kiemelt identitáskezelés jelenleg rendelkezik-e. Ebben a szakaszban ismertetett lépéseket követve határozza meg, hogy a Kiemelt identitáskezelés melyik verzióját használja. Miután ismeri a kiemelt identitáskezelés verzióját, kiválaszthatja a cikkben az adott verziónak megfelelő eljárásokat.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
-1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) egy olyan felhasználóval, aki a [kiemelt szerepkör-rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörben van.
+1. Nyissa meg **az Azure AD kiemelt identitáskezelés .** Ha az áttekintő oldal tetején szalaghirdetés található, kövesse a cikk **Új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **Előző verzió** lap utasításait.
 
     [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyásához vagy elutasításához.
+Kövesse a cikkben leírt lépéseket az Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyásához vagy elutasításához.
 
 # <a name="new-version"></a>[Új verzió](#tab/new)
 
-## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
+## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
 
-Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
+Delegált jóváhagyóként e-mailben értesítést kap, ha egy Azure AD-szerepkör-kérelem jóváhagyásra vár. Ezeket a függőben lévő kérelmeket a Kiemelt identitáskezelés.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-1. Nyissa meg **Azure ad Privileged Identity Management**.
+1. Nyissa meg **az Azure AD kiemelt identitáskezelés .**
 
-1. Válassza a **kérelmek jóváhagyása**lehetőséget.
+1. Válassza **a Kérelmek jóváhagyása**lehetőséget.
 
-    ![Kérelmek jóváhagyása – az Azure AD-szerepkörök felülvizsgálatára vonatkozó kérést megjelenítő lap](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![Kérések jóváhagyása – az Azure AD-szerepkörök véleményezésére irányuló kérést megjelenítő lap](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
-    A **szerepkör-aktiválási kérések** szakaszban megtekintheti a jóváhagyásra váró kérelmek listáját.
+    A **Szerepkör-aktiváláskérések csoportban** megjelenik a jóváhagyásra váró kérelmek listája.
 
 ## <a name="approve-requests"></a>Kérések jóváhagyása
 
-1. Keresse meg és válassza ki a jóváhagyni kívánt kérelmet. A jóváhagyás vagy megtagadás lap jelenik meg.
+1. Keresse meg és jelölje ki a jóváhagyni kívánt kérelmet. Megjelenik egy jóváhagyó vagy megtagadási lap.
 
-    ![Kérelmek jóváhagyása – jóváhagyás vagy megtagadás ablaktábla részletekkel és indoklással](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![Kérelmek jóváhagyása – a részletekkel és az Indoklás mezővel rendelkező ablaktábla jóváhagyása vagy megtagadása](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
-1. Az **indoklás** mezőben adja meg az üzleti indoklást.
+1. Az **Indoklás** mezőbe írja be az üzleti indoklást.
 
-1. Válassza a **jóváhagyás**lehetőséget. A jóváhagyásról Azure-értesítést fog kapni.
+1. Válassza **a Jóváhagyás**lehetőséget. A jóváhagyásról értesítést fog kapni az Azure-ban.
 
-    ![A kérelem jóváhagyását jelző értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
+    ![A kérelem jóváhagyásáról szóló értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
-## <a name="deny-requests"></a>Kérelmek megtagadása
+## <a name="deny-requests"></a>Kérések megtagadása
 
-1. Keresse meg és válassza ki a megtagadni kívánt kérelmet. A jóváhagyás vagy megtagadás lap jelenik meg.
+1. Keresse meg és jelölje ki a megtagadni kívánt kérést. Megjelenik egy jóváhagyó vagy megtagadási lap.
 
-    ![Kérelmek jóváhagyása – jóváhagyás vagy megtagadás ablaktábla részletekkel és indoklással](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Kérelmek jóváhagyása – a részletekkel és az Indoklás mezővel rendelkező ablaktábla jóváhagyása vagy megtagadása](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. Az **indoklás** mezőben adja meg az üzleti indoklást.
+1. Az **Indoklás** mezőbe írja be az üzleti indoklást.
 
-1. Válassza a **Megtagadás**lehetőséget. Megjelenik egy értesítés az elutasítással.
+1. Válassza **a Megtagadás**lehetőséget. Megjelenik egy értesítés a megtagadással együtt.
 
 ## <a name="workflow-notifications"></a>Munkafolyamat-értesítések
 
 Íme néhány információ a munkafolyamat-értesítésekről:
 
-- E-mailben értesítjük a jóváhagyókat, ha a szerepkörre vonatkozó kérések a felülvizsgálattól függőben vannak. Az e-mail-értesítések közé tartozik egy közvetlen hivatkozás a kérésre, ahol a jóváhagyó jóváhagyhatja vagy megtagadhatja a kérelmet.
-- A kérelmeket az első jóváhagyó, aki jóváhagyja vagy megtagadja.
-- Ha egy jóváhagyó válaszol a kérelemre, az összes jóváhagyó értesítést kap a műveletről.
-- A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák értesítést kapnak, ha egy jóváhagyott felhasználó aktív lesz a szerepkörében.
+- A jóváhagyók e-mailben kapnak értesítést, ha egy szerepkörre vonatkozó kérelem felülvizsgálatra vár. Az e-mail értesítések közvetlen hivatkozást tartalmaznak a kérelemre, ahol a jóváhagyó jóváhagyhatja vagy megtagadhatja.
+- A kérelmeket az első jóváhagyó oldja meg, aki jóváhagyja vagy elutasítja azokat.
+- Amikor egy jóváhagyó válaszol a kérésre, minden jóváhagyó értesítést kap a műveletről.
+- A globális rendszergazdák és a kiemelt szerepkör-rendszergazdák értesítést kapnak, ha egy jóváhagyott felhasználó aktívvá válik a szerepkörükben.
 
 >[!NOTE]
->Globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, aki úgy véli, hogy egy jóváhagyott felhasználó nem lehet aktív, távolítsa el az aktív szerepkör-hozzárendelést Privileged Identity Management. Bár a rendszergazdák nem kapnak értesítést a függőben lévő kérelmekről, hacsak nem jóváhagyók, megtekinthetik és megtörölhetik az összes felhasználóra vonatkozó függőben lévő kéréseket a Privileged Identity Management függőben lévő kérelmek megtekintésével.
+>A globális rendszergazda vagy kiemelt szerepkör-rendszergazda, aki úgy véli, hogy egy jóváhagyott felhasználó nem lehet aktív eltávolíthatja az aktív szerepkör-hozzárendelés kiemelt identitáskezelés. Bár a rendszergazdák nem kapnak értesítést a függőben lévő kérelmekről, kivéve, ha jóváhagyó, megtekinthetik és visszavonhatják az összes felhasználó függőben lévő kérelmeit a függőben lévő kérelmek megtekintésével a Kiemelt identitáskezelés ben.
 
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
-## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
+## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
 
-Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
+Delegált jóváhagyóként e-mailben értesítést kap, ha egy Azure AD-szerepkör-kérelem jóváhagyásra vár. Ezeket a függőben lévő kérelmeket a Kiemelt identitáskezelés.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-1. Nyissa meg **Azure ad Privileged Identity Management**.
+1. Nyissa meg **az Azure AD kiemelt identitáskezelés .**
 
-1. Kattintson az **Azure ad-szerepkörök**elemre.
+1. Kattintson **az Azure AD-szerepkörök**elemre.
 
-1. Kattintson a **kérelmek jóváhagyása**gombra.
+1. Kattintson **a Kérelmek jóváhagyása gombra.**
 
-    ![Azure AD-szerepkörök – kérelmek jóváhagyása](./media/azure-ad-pim-approval-workflow/approve-requests.png)
+    ![Azure AD-szerepkörök – kérések jóváhagyása](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
-    Ekkor megjelenik a jóváhagyásra váró kérelmek listája.
+    Megjelenik a jóváhagyásra váró kérelmek listája.
 
 ## <a name="approve-requests"></a>Kérések jóváhagyása
 
-1. Válassza ki a jóváhagyni kívánt kéréseket, majd kattintson a **jóváhagyás** gombra a kijelölt kérések jóváhagyása panel megnyitásához.
+1. Jelölje ki a jóváhagyni kívánt kérelmeket, majd kattintson a **Jóváhagyás** gombra a Kijelölt kérelmek jóváhagyása ablaktábla megnyitásához.
 
-    ![A kérelmek jóváhagyása a jóváhagyás lehetőség kijelölve](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+    ![Kérelmek listájának jóváhagyása kiemelt Jóváhagyás beállítással](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-1. A **jóváhagyás oka** mezőbe írjon be egy okot.
+1. Az **Ok jóváhagyása** mezőbe írjon be egy okot.
 
-    ![A kijelölt kérések jóváhagyása a jóváhagyás indoklásával](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+    ![Kijelölt kérelmek ablaktábla jóváhagyása okokkal](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Kattintson a **jóváhagyás**gombra.
+1. Kattintson az **Approve** (Jóváhagyás) elemre.
 
-    Az állapotjelző szimbólumot a rendszer a jóváhagyással frissíti.
+    Az Állapot szimbólum az Ön jóváhagyásával frissül.
 
-    ![Kijelölt kérelmek jóváhagyása ablaktábla jóváhagyása után gombra kattintás](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+    ![A kijelölt kérelmek ablaktábla jóváhagyása a Jóváhagyás gombra kattintás után](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
-## <a name="deny-requests"></a>Kérelmek megtagadása
+## <a name="deny-requests"></a>Kérések megtagadása
 
-1. Válassza ki a megtagadni kívánt kéréseket, majd kattintson a **Megtagadás** gombra a kiválasztott kérelmek megtagadása ablaktábla megnyitásához.
+1. Jelölje ki az elutasítandó kérelmeket, majd kattintson a **Megtagadás gombra** a Kijelölt kérelmek megtagadása ablaktábla megnyitásához.
 
-    ![Megtagadási lehetőséggel rendelkező kérelmek listájának jóváhagyása kijelölve](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+    ![Kérelmek listájának jóváhagyása kiemelt Megtagadás beállítással](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
-1. A **Megtagadás oka** mezőbe írjon be egy okot.
+1. Az **Ok megtagadása** mezőbe írjon be egy okot.
 
-    ![A kijelölt kérések ablaktábla megtagadása megtagadás miatt](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+    ![A kijelölt kérelmek panelmegtagadási okból megtagadva](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Válassza a **Megtagadás**lehetőséget.
+1. Válassza **a Megtagadás**lehetőséget.
 
-    A rendszer a megtagadásával frissíti az állapotjelző szimbólumot.
+    Az Állapot szimbólum frissül a tagadással.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [E-mail-értesítések Privileged Identity Management](pim-email-notifications.md)
-- [Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](pim-resource-roles-approval-workflow.md)
+- [E-mail értesítések a kiemelt identitáskezelésben](pim-email-notifications.md)
+- [Azure-erőforrás-szerepkörök kéréseinek jóváhagyása vagy megtagadása a kiemelt identitáskezelésben](pim-resource-roles-approval-workflow.md)

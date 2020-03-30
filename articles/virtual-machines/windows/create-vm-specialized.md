@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális gép létrehozása speciális virtuális merevlemezről az Azure-ban
-description: Hozzon létre egy új Windowsos virtuális gépet úgy, hogy a Resource Manager-alapú üzemi modell használatával egy speciális felügyelt lemezt csatlakoztat az operációsrendszer-lemezként.
+title: Windows virtuális gép létrehozása speciális virtuális merevlemezből az Azure-ban
+description: Hozzon létre egy új Windows virtuális gép csatlakoztatásával egy speciális felügyelt lemez, mint az operációs rendszer lemez segítségével az Erőforrás-kezelő telepítési modell.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -14,32 +14,32 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243366"
 ---
-# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása speciális lemezről a PowerShell használatával
+# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása speciális lemezről PowerShell-lel
 
-Hozzon létre egy új virtuális gépet egy speciális felügyelt lemez csatlakoztatásával operációsrendszer-lemezként. A speciális lemezek a virtuális merevlemezek (VHD-k) másolata egy meglévő virtuális gépről, amely tartalmazza az eredeti virtuális gépről származó felhasználói fiókokat, alkalmazásokat és egyéb állapotinformációkat. 
+Hozzon létre egy új virtuális gép csatlakoztatásával egy speciális felügyelt lemez, mint az operációs rendszer lemeze. A speciális lemez egy virtuális merevlemez (VHD) másolata egy meglévő virtuális gépről, amely tartalmazza a felhasználói fiókokat, alkalmazásokat és az eredeti virtuális gép egyéb állapotadatait. 
 
-Ha speciális virtuális merevlemezt használ egy új virtuális gép létrehozásához, az új virtuális gép megőrzi az eredeti virtuális gép számítógépnevét. Más számítógépekre vonatkozó információk is megmaradnak, és bizonyos esetekben ez a duplikált információ problémákat okozhat. A virtuális gépek másolásakor vegye figyelembe, hogy az alkalmazásai milyen típusú számítógép-specifikus információkat használnak.
+Ha egy speciális virtuális merevlemez t egy új virtuális gép létrehozásához, az új virtuális gép megtartja az eredeti virtuális gép számítógépnevét. A rendszer más számítógép-specifikus információkat is tárol, és bizonyos esetekben ez az ismétlődő információ problémákat okozhat. Virtuális gép másolásakor vegye figyelembe, hogy milyen típusú számítógép-specifikus információkat az alkalmazások támaszkodnak.
 
 Erre számos lehetősége van:
-* [Meglévő felügyelt lemez használata](#option-1-use-an-existing-disk). Ez a beállítás akkor hasznos, ha olyan virtuális géppel rendelkezik, amely nem megfelelően működik. Törölheti a virtuális gépet, majd újra felhasználhatja a felügyelt lemezt egy új virtuális gép létrehozásához. 
+* [Meglévő felügyelt lemez használata](#option-1-use-an-existing-disk). Ez a beállítás akkor hasznos, ha egy virtuális gép, amely nem működik megfelelően. Törölheti a virtuális gép, majd újra a felügyelt lemezt, hogy hozzon létre egy új virtuális gép. 
 * [VHD feltöltése](#option-2-upload-a-specialized-vhd) 
-* [Meglévő Azure-beli virtuális gép másolása Pillanatképek használatával](#option-3-copy-an-existing-azure-vm)
+* [Meglévő Azure-virtuális gép másolása pillanatképek használatával](#option-3-copy-an-existing-azure-vm)
 
-A Azure Portal használatával [egy új virtuális gépet is létrehozhat egy speciális VHD-ből](create-vm-specialized-portal.md).
+Az Azure Portalon [is létrehozhat egy új virtuális gép egy speciális virtuális merevlemez.](create-vm-specialized-portal.md)
 
-Ez a cikk bemutatja, hogyan használhatja a felügyelt lemezeket. Ha olyan örökölt központi telepítéssel rendelkezik, amely Storage-fiók használatát igényli, tekintse meg a [virtuális gép létrehozása egy speciális VHD-ből a Storage-fiókban](sa-create-vm-specialized.md)című témakört.
+Ez a cikk bemutatja a felügyelt lemezek használatát. Ha olyan örökölt központi telepítéssel rendelkezik, amelytárfiókot igényel, olvassa el a [Virtuális gép létrehozása egy speciális virtuális merevlemezből egy tárfiókban című témakört.](sa-create-vm-specialized.md)
 
-Azt javasoljuk, hogy az egyidejű központi telepítések számát legfeljebb 20 virtuális gépre korlátozza egyetlen VHD-fájlból vagy pillanatképből. 
+Azt javasoljuk, hogy korlátozza az egyidejű központi telepítések számát 20 virtuális gépre egyetlen virtuális merevlemezről vagy pillanatképből. 
 
-## <a name="option-1-use-an-existing-disk"></a>1\. lehetőség: meglévő lemez használata
+## <a name="option-1-use-an-existing-disk"></a>1. lehetőség: Meglévő lemez használata
 
-Ha már törölt egy virtuális gépet, és újra szeretné használni az operációsrendszer-lemezt egy új virtuális gép létrehozásához, használja a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
+Ha törölt virtuális gépe volt, és az operációs rendszer lemezét újra fel szeretné használni egy új virtuális gép létrehozásához, használja a [Get-AzDisk programot.](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -48,33 +48,33 @@ $osDisk = Get-AzDisk `
 -ResourceGroupName $resourceGroupName `
 -DiskName $osDiskName
 ```
-Most már csatlakoztathatja ezt a lemezt az operációsrendszer-lemezként egy [új virtuális géphez](#create-the-new-vm).
+Most már csatolhatja ezt a lemezt, mint az operációs rendszer lemezegy [új virtuális gép](#create-the-new-vm).
 
-## <a name="option-2-upload-a-specialized-vhd"></a>2\. lehetőség: speciális VHD feltöltése
+## <a name="option-2-upload-a-specialized-vhd"></a>2. lehetőség: Speciális virtuális merevlemez feltöltése
 
-Feltöltheti a virtuális merevlemezt egy helyszíni virtualizációs eszközzel, például a Hyper-V-vel létrehozott speciális virtuális gépről, vagy egy másik felhőből exportált virtuális gépre.
+Feltöltheti a virtuális merevlemezt egy speciális virtuális gépről, amelyet egy helyszíni virtualizációs eszközzel, például a Hyper-V-vel vagy egy másik felhőből exportált virtuális géptel hoztak létre.
 
 ### <a name="prepare-the-vm"></a>A virtuális gép előkészítése
-Egy új virtuális gép létrehozásához használja a virtuális merevlemezt. 
+Használja a virtuális merevlemezt, ahogy van egy új virtuális gép létrehozásához. 
   
-  * [Készítse elő a Windows VHD-t az Azure-ba való feltöltéshez](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Ne általánosítsa** a virtuális gépet a Sysprep használatával.
-  * Távolítsa el a virtuális gépre telepített összes vendég virtualizációs eszközt és ügynököt (például a VMware-eszközökre).
-  * Győződjön meg arról, hogy a virtuális gép konfigurálva van a DHCP IP-címének és DNS-beállításainak lekérésére. Ez biztosítja, hogy a kiszolgáló az indításkor megszerezze a virtuális hálózaton belüli IP-címet. 
+  * [Készítsen elő egy Windows vHD-t az Azure-ba való feltöltéshez.](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) **Ne** általánosítsa a virtuális gép segítségével Sysprep.
+  * Távolítsa el a virtuális gépre telepített vendégvirtualizációs eszközöket és ügynököket (például a VMware-eszközöket).
+  * Győződjön meg arról, hogy a virtuális gép úgy van beállítva, hogy megkapja az IP-címet és a DNS-beállításokat a DHCP-től. Ez biztosítja, hogy a kiszolgáló indításkor megkapja a virtuális hálózaton belüli IP-címet. 
 
 
-### <a name="upload-the-vhd"></a>A VHD feltöltése
+### <a name="upload-the-vhd"></a>A virtuális merevlemez feltöltése
 
-Most már közvetlenül is feltölthet egy virtuális merevlemezt egy felügyelt lemezre. Útmutatásért lásd: [virtuális merevlemez feltöltése az Azure-ba Azure PowerShell használatával](disks-upload-vhd-to-managed-disk-powershell.md).
+Most már feltöltheti a Virtuális merevlemezt közvetlenül egy felügyelt lemezre. További információt a [VHD feltöltése az Azure-ba az Azure PowerShell használatával (VHD feltöltése) témakörben talál.](disks-upload-vhd-to-managed-disk-powershell.md)
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>3\. lehetőség: meglévő Azure-beli virtuális gép másolása
+## <a name="option-3-copy-an-existing-azure-vm"></a>3. lehetőség: Meglévő Azure-virtuális gép másolása
 
-Létrehozhat egy, a felügyelt lemezeket használó virtuális gép másolatát a virtuális gép pillanatképének elkészítésével, majd a pillanatkép használatával új felügyelt lemez és új virtuális gép létrehozásához.
+Létrehozhat egy virtuális gép másolatát, amely felügyelt lemezeket használ a virtuális gép pillanatképének elkészítésével, majd a pillanatkép használatával hozzon létre egy új felügyelt lemezt és egy új virtuális gép.
 
-Ha egy meglévő virtuális gépet egy másik régióba szeretne másolni, érdemes lehet a azcopy használatával [másolatot készíteni egy lemezről egy másik régióban](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
+Ha egy meglévő virtuális gép másolása egy másik régióba, érdemes lehet az azcopy használatával [másolatot készíteni egy másik régióban lévő lemezről.](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) 
 
-### <a name="take-a-snapshot-of-the-os-disk"></a>Pillanatkép készítése az operációsrendszer-lemezről
+### <a name="take-a-snapshot-of-the-os-disk"></a>Pillanatkép készítése az operációs rendszer lemezéről
 
-Pillanatképet készíthet egy teljes virtuális gépről (beleértve az összes lemezt is), vagy csak egyetlen lemezről. A következő lépések bemutatják, hogyan készíthet pillanatképet a virtuális gép operációsrendszer-lemezéről a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) parancsmaggal. 
+Pillanatképet készíthet egy teljes virtuális gépről (beleértve az összes lemezt is) vagy csak egyetlen lemezről. A következő lépések bemutatják, hogyan készíthet pillanatképet a virtuális gép operációs rendszerlemezéről az Új AzSnapshot-parancsmaggal. [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) 
 
 Először állítson be néhány paramétert. 
 
@@ -85,20 +85,20 @@ $location = 'westus'
 $snapshotName = 'mySnapshot'  
 ```
 
-Szerezze be a virtuálisgép-objektumot.
+A virtuális gép objektumának leigazolása.
 
 ```powershell
 $vm = Get-AzVM -Name $vmName `
    -ResourceGroupName $resourceGroupName
 ```
-Szerezze be az operációsrendszer-lemez nevét.
+Az operációs rendszer lemezének nevének beszerezése.
 
  ```powershell
 $disk = Get-AzDisk -ResourceGroupName $resourceGroupName `
    -DiskName $vm.StorageProfile.OsDisk.Name
 ```
 
-Hozza létre a pillanatkép-konfigurációt. 
+Hozza létre a pillanatkép konfigurációját. 
 
  ```powershell
 $snapshotConfig =  New-AzSnapshotConfig `
@@ -108,7 +108,7 @@ $snapshotConfig =  New-AzSnapshotConfig `
    -Location $location 
 ```
 
-Készítsen pillanatképet.
+Vegyük a pillanatképet.
 
 ```powershell
 $snapShot = New-AzSnapshot `
@@ -118,11 +118,11 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Ha ezt a pillanatképet szeretné használni a nagy teljesítményt igénylő virtuális gépek létrehozásához, adja hozzá a `-AccountType Premium_LRS` paramétert a New-AzSnapshotConfig parancshoz. Ez a paraméter hozza létre a pillanatképet, hogy az a prémium szintű felügyelt lemezként legyen tárolva. A prémium szintű Managed Disks drágábbak, mint a standard, ezért a paraméter használata előtt győződjön meg róla, hogy prémiumra van szüksége.
+Ha ezzel a pillanatképpel hozzon létre egy virtuális gép, amely nek nagy teljesítményűnek kell lennie, adja hozzá a paramétert `-AccountType Premium_LRS` a New-AzSnapshotConfig parancshoz. Ez a paraméter úgy hozza létre a pillanatképet, hogy prémium szintű felügyelt lemezként legyen tárolva. A prémium szintű felügyelt lemezek drágábbak, mint a Standard, ezért győződjön meg róla, hogy szüksége lesz a Prémium verzióra, mielőtt ezt a paramétert használná.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Új lemez létrehozása a pillanatképből
 
-Hozzon létre egy felügyelt lemezt a pillanatképből a [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)használatával. Ez a példa a *myOSDisk* használja a lemez neveként.
+Felügyelt lemez létrehozása a pillanatképből a [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)segítségével. Ez a példa *a myOSDisk-et* használja a lemez nevéhez.
 
 Hozzon létre egy új erőforráscsoportot az új virtuális géphez.
 
@@ -132,7 +132,7 @@ New-AzResourceGroup -Location $location `
    -Name $destinationResourceGroup
 ```
 
-Állítsa be az operációsrendszer-lemez nevét. 
+Állítsa be az operációs rendszer lemezének nevét. 
 
 ```powershell
 $osDiskName = 'myOsDisk'
@@ -150,13 +150,13 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
 
 ## <a name="create-the-new-vm"></a>Az új virtuális gép létrehozása 
 
-Hozzon létre hálózatkezelést és más virtuálisgép-erőforrásokat, amelyeket az új virtuális gép használni fog.
+Hozzon létre hálózati és egyéb virtuális gép erőforrásokat az új virtuális gép által használandó.
 
 ### <a name="create-the-subnet-and-virtual-network"></a>Az alhálózat és a virtuális hálózat létrehozása
 
 Hozza létre a [virtuális hálózatot](../../virtual-network/virtual-networks-overview.md) és az alhálózatot a virtuális géphez.
 
-1. Hozza létre az alhálózatot. Ez a példa létrehoz egy *mySubNet*nevű alhálózatot az erőforráscsoport *myDestinationResourceGroup*, és az alhálózati címnek az *10.0.0.0/24*értékre állítja az előtagot.
+1. Hozza létre az alhálózatot. Ez a példa létrehoz egy *mySubNet*nevű alhálózatot a *sajkaerőforráscsoportban,* és az alhálózati cím előtagot *10.0.0.0/24-re állítja.*
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -165,7 +165,7 @@ Hozza létre a [virtuális hálózatot](../../virtual-network/virtual-networks-o
        -AddressPrefix 10.0.0.0/24
     ```
     
-2. Hozza létre a virtuális hálózatot. Ebben a példában a virtuális hálózat nevét *myVnetName*, az *USA nyugati*régióját és a virtuális hálózat *10.0.0.0/16*-ra való helyét állítja be. 
+2. Hozza létre a virtuális hálózatot. Ez a példa a virtuális hálózat nevét *myVnetName-re*, a helyet *usa nyugati részére,* a virtuális hálózat címelőtagját pedig *10.0.0.0/16-ra állítja.* 
    
     ```powershell
     $vnetName = "myVnetName"
@@ -178,9 +178,9 @@ Hozza létre a [virtuális hálózatot](../../virtual-network/virtual-networks-o
     
 
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és egy RDP-szabály létrehozása
-Ahhoz, hogy be tudja jelentkezni a virtuális gépre a Remote Desktop Protocol (RDP) használatával, rendelkeznie kell egy olyan biztonsági szabállyal, amely engedélyezi az RDP-hozzáférést a 3389-es porton. A példánkban az új virtuális gép virtuális merevlemeze egy meglévő speciális virtuális gépről lett létrehozva, így olyan fiókot használhat, amely a forrás virtuális gépen létezett RDP-hez.
+Ahhoz, hogy a virtuális géptávoli asztali protokoll (RDP) segítségével, szüksége lesz egy biztonsági szabály, amely lehetővé teszi az RDP hozzáférést a 3389-es porton. A példában a virtuális merevlemez az új virtuális gép egy meglévő speciális virtuális gép, így használhatja a fiók, amely létezett a forrás virtuális gépen rdp.
 
-Ez a példa beállítja a hálózati biztonsági csoport (NSG) nevét a *myNsg* és az RDP-szabály nevét a *myRdpRule*értékre.
+Ez a példa a hálózati biztonsági csoport (NSG) nevét *myNsg-re,* az RDP-szabály nevét pedig *myRdpRule-re állítja.*
 
 ```powershell
 $nsgName = "myNsg"
@@ -196,12 +196,12 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-További információ a végpontokról és a NSG-szabályokról: [portok megnyitása az Azure-beli virtuális](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)gépekhez a PowerShell használatával.
+A végpontokról és az NSG-szabályokról további információt a [Portok megnyitása az Azure-ban a PowerShell használatával című témakörben talál.](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és hálózati adapter létrehozása
-Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel való kommunikációt, szüksége lesz egy [nyilvános IP-címére](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapterre.
+A virtuális hálózat ban lévő virtuális géppel való kommunikáció engedélyezéséhez [nyilvános IP-címre](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és hálózati adapterre van szükség.
 
-1. Hozza létre a nyilvános IP-címet. Ebben a példában a nyilvános IP-cím neve *myIP*értékre van állítva.
+1. Hozza létre a nyilvános IP-címet. Ebben a példában a nyilvános IP-cím neve myIP .In this example, the public IP address name is set to *myIP*.
    
     ```powershell
     $ipName = "myIP"
@@ -211,7 +211,7 @@ Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel v
        -AllocationMethod Dynamic
     ```       
     
-2. Hozza létre a hálózati adaptert. Ebben a példában a hálózati adapter neve *myNicName*értékre van állítva.
+2. Hozza létre a hálózati adaptert. Ebben a példában a hálózati adapter neve *myNicName*.
    
     ```powershell
     $nicName = "myNicName"
@@ -226,7 +226,7 @@ Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel v
 
 ### <a name="set-the-vm-name-and-size"></a>A virtuális gép nevének és méretének beállítása
 
-Ebben a példában a virtuális gép nevét *myVM* értékre állítja, a virtuális gép mérete pedig *Standard_A2*.
+Ez a példa a virtuális gép nevét *a myVM-re* állítja, a virtuális gép méretét pedig *Standard_A2.*
 
 ```powershell
 $vmName = "myVM"
@@ -240,9 +240,9 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
 
-### <a name="add-the-os-disk"></a>Az operációsrendszer-lemez hozzáadása 
+### <a name="add-the-os-disk"></a>Az operációs rendszer lemezének hozzáadása 
 
-Adja hozzá az operációsrendszer-lemezt a konfigurációhoz a [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)használatával. Ez a példa a lemez méretét *128 GB* -ra állítja, és a felügyelt lemezt *Windows* operációsrendszer-lemezként csatolja.
+Adja hozzá az operációs rendszer lemezét a konfigurációhoz a [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)segítségével. Ez a példa a lemez méretét *128 GB-ra* állítja, és a felügyelt lemezt *Windows* operációs rendszer lemezeként csatlakoztatja.
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -251,13 +251,13 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>A virtuális gép befejezése 
 
-Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) használatával az imént létrehozott konfigurációk alapján.
+Hozza létre a virtuális gép használatával [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) az imént létrehozott konfigurációk.
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
 ```
 
-Ha a parancs sikeres, a következőhöz hasonló kimenetet fog látni:
+Ha ez a parancs sikeres, a következő hez hasonló kimenet jelenik meg:
 
 ```powershell
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -266,14 +266,14 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Az újonnan létrehozott virtuális gépet a [Azure Portal](https://portal.azure.com) **Tallózás** > **virtuális gépek**alatt, vagy a következő PowerShell-parancsok használatával kell látnia.
+### <a name="verify-that-the-vm-was-created"></a>A virtuális gép létrehozásának ellenőrzése
+Az újonnan létrehozott virtuális gépet vagy az [Azure Portalon](https://portal.azure.com) a**Virtuális gépek** **tallózása** > csoportban, vagy a következő PowerShell-parancsok használatával kell látnia.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md).
+## <a name="next-steps"></a>További lépések
+Jelentkezzen be az új virtuális gépre. További információt a [Csatlakozás és bejelentkezés Windows rendszerű Azure-alapú virtuális gépre](connect-logon.md)című témakörben talál.
 

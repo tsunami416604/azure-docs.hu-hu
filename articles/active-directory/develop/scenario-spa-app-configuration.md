@@ -1,6 +1,6 @@
 ---
-title: Egyoldalas alkalmazás konfigurálása – Microsoft Identity platform | Azure
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (az alkalmazás kódjának konfigurációja)
+title: Egyoldalas alkalmazás konfigurálása – Microsoft identitásplatform | Azure
+description: További információ egyoldalas alkalmazás létrehozásáról (az alkalmazás kódkonfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,30 +15,30 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f1e0bf44515aab18019b19b4f0a6f84183e5aac3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160083"
 ---
-# <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: kód konfigurálása
+# <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: Kód konfigurációja
 
-Megtudhatja, hogyan konfigurálhatja az egyoldalas alkalmazás (SPA) kódját.
+További információ az egyoldalas alkalmazás (SPA) kódjának konfigurálásáról.
 
-## <a name="msal-libraries-that-support-implicit-flow"></a>Az implicit folyamatot támogató MSAL-kódtárak
+## <a name="msal-libraries-that-support-implicit-flow"></a>Implicit folyamatot támogató MSAL-függvénytárak
 
-A Microsoft Identity platform a következő Microsoft Authentication Library-(MSAL-) kódtárakat biztosítja az implicit folyamat támogatásához az iparág által ajánlott biztonsági eljárások használatával:  
+A Microsoft identity platform a következő Microsoft Authentication Library (MSAL) tárakat biztosítja az implicit folyamat támogatásához az iparág által ajánlott biztonsági eljárások alkalmazásával:  
 
-| MSAL-könyvtár | Leírás |
+| MSAL könyvtár | Leírás |
 |--------------|--------------|
-| ![MSAL. js](media/sample-v2-code/logo_js.png) <br/> [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Egyszerű JavaScript-függvénytár bármely olyan ügyféloldali webalkalmazásban, amelyet JavaScript vagy SPA keretrendszerek, például a szögletes, a Vue. js és a reakciós. js használatával építettek. |
-| ![MSAL szögletes](media/sample-v2-code/logo_angular.png) <br/> [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Az alapszintű MSAL. js függvénytár burkolója, amely egyszerűbbé teszi a szögletes keretrendszeren alapuló egyoldalas alkalmazásokban való használatát. Ez a könyvtár előzetes verzióban érhető el, és [ismert hibákat](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) tartalmaz bizonyos szögletes verziók és böngészők esetében. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Egyszerű JavaScript-kódtár bármely olyan ügyféloldali webalkalmazásban, amely JavaScript- vagy SPA-keretrendszereken keresztül készült, például az Angular, a Vue.js és a React.js. |
+| ![MSAL szögletes](media/sample-v2-code/logo_angular.png) <br/> [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Burkolja a core MSAL.js könyvtár, hogy egyszerűsítse a használatát egyoldalas alkalmazásokban, amelyek az Angular keretrendszeren keresztül épülnek. Ez a könyvtár előzetes verzióban érhető el, és [ismert problémákat tartalmaz](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) bizonyos Szögletes verziókkal és böngészőkkel. |
 
-## <a name="application-code-configuration"></a>Alkalmazás kódjának konfigurálása
+## <a name="application-code-configuration"></a>Alkalmazáskód-konfiguráció
 
-Egy MSAL-könyvtárban a könyvtár inicializálásakor az alkalmazás regisztrációs adatai a konfigurációnak megfelelően továbbítódnak.
+Az MSAL-tárban az alkalmazás regisztrációs adatai a tár inicializálása során konfigurációként lesznek átadhatók.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 // Configuration object constructed.
@@ -53,9 +53,9 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-A konfigurálható beállításokkal kapcsolatos további információkért lásd: [alkalmazás inicializálása a MSAL. js-szel](msal-js-initializing-client-applications.md).
+A konfigurálható beállításokról az [Alkalmazás inicializálása az MSAL.js alkalmazással](msal-js-initializing-client-applications.md)című témakörben talál további információt.
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -72,7 +72,7 @@ import { MsalModule } from '@azure/msal-angular';
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bejelentkezés és kijelentkezés](scenario-spa-sign-in.md)
+> [Be- és kijelentkezés](scenario-spa-sign-in.md)

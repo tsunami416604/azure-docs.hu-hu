@@ -2,67 +2,67 @@
 title: Áttekintés
 description: Ismerteti, hogyan használja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure portálon.
 ms.topic: overview
-ms.date: 08/29/2019
-ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/25/2020
+ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240323"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80258141"
 ---
-# <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
+# <a name="what-is-azure-resource-manager"></a>Mi az Azure Resource Manager?
 
-Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. A felügyeleti funkciókat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket használhatja az erőforrások biztonságossá tételéhez és rendszerezéséhez az üzembe helyezés után.
+Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetéserőforrásainak létrehozását, frissítését és törlését. A felügyeleti funkciókat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket az erőforrások üzembe helyezés utáni védelmére és rendszerezésére használhatja.
 
-Azure Resource Manager-sablonokkal kapcsolatos további tudnivalókért tekintse meg a [template Deployment áttekintése](../templates/overview.md)című témakört.
+Az Azure Resource Manager-sablonokról a [Sablon üzembe helyezése – áttekintés című témakörben](../templates/overview.md)olvashat.
 
 ## <a name="consistent-management-layer"></a>Konzisztens felügyeleti réteg
 
-Ha a felhasználó bármely Azure-eszközből, API-ból vagy SDK-ból küld kérelmet, a Resource Manager megkapja a kérelmet. Hitelesíti és engedélyezi a kérést. A Resource Manager elküldi a kérést az Azure szolgáltatásnak, amely végrehajtja a kért műveletet. Mivel az összes kérelem kezelése ugyanazon az API-n keresztül történik, a különböző eszközök konzisztens eredményei és képességei láthatók.
+Amikor egy felhasználó az Azure-eszközök, API-k vagy SDK-k bármelyikéből küld kérelmet, az Erőforrás-kezelő megkapja a kérést. Hitelesíti és engedélyezi a kérelmet. Az Erőforrás-kezelő elküldi a kérelmet az Azure-szolgáltatásnak, amely végrehajtja a kért műveletet. Mivel az összes kérelmet ugyanazon az API-n keresztül kezeli, egységes eredményeket és képességeket láthat a különböző eszközökben.
 
-Az alábbi képen látható, hogy milyen szerepkör Azure Resource Manager játszik az Azure-kérelmek kezelésére. 
+Az alábbi képen látható, hogy az Azure Resource Manager milyen szerepet játszik az Azure-kérések kezelésében.
 
 ![A Resource Manager kérelmi modellje](./media/overview/consistent-management-layer.png)
 
-A portálon elérhető összes funkció a PowerShell, az Azure CLI, a REST API-k és az ügyféloldali SDK-k segítségével is elérhető. Az eredetileg API-kon keresztül kiadott funkciók a kezdeti kiadástól számított 180 napig jelennek meg a portálon.
+A portálon elérhető összes funkció a PowerShellen, az Azure CLI-n, a REST API-kon és az ügyfél SDK-kon keresztül is elérhető. Az eredetileg API-kon keresztül kiadott funkciók a kezdeti kiadástól számított 180 napig jelennek meg a portálon.
 
 ## <a name="terminology"></a>Terminológia
 
 Ha új felhasználója az Azure Resource Managernek, találkozhat néhány olyan kifejezéssel, amelyet még nem ismer.
 
-* **erőforrás** – Egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. A virtuális gépek, a Storage-fiókok, a webalkalmazások, az adatbázisok és a virtuális hálózatok példák az erőforrásokra.
-* **erőforráscsoport** – Egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazza azokat az erőforrásokat, amelyeket csoportként szeretne kezelni. Ön dönti el, hogy mely erőforrások tartoznak egy erőforráscsoporthoz az alapján, hogy mi a legmegfelelőbb a szervezet számára. Lásd: [erőforráscsoportok](#resource-groups).
-* **erőforrás-szolgáltató** – az Azure-erőforrásokat ellátó szolgáltatás. Egy általános erőforrás-szolgáltató például a Microsoft. számítás, amely a virtuális gép erőforrását adja meg. A Microsoft. Storage egy másik gyakori erőforrás-szolgáltató. Lásd: [erőforrás-szolgáltatók és-típusok](resource-providers-and-types.md).
-* **Resource Manager-sablon** – egy JavaScript Object Notation (JSON) fájl, amely egy vagy több erőforrást ad meg egy erőforráscsoport vagy előfizetés számára történő üzembe helyezéshez. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó. Lásd: [template Deployment áttekintése](../templates/overview.md).
-* **deklaratív szintaxis** – Egy olyan szintaxis, amellyel anélkül határozhatja meg, mit szeretne létrehozni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablon a deklaratív szintaxis egy példája. A fájlban meghatározhatja az Azure-ra telepíteni kívánt infrastruktúra tulajdonságait.  Lásd: [template Deployment áttekintése](../templates/overview.md).
+* **erőforrás** – Egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. A virtuális gépek, a tárfiókok, a webalkalmazások, az adatbázisok és a virtuális hálózatok példák az erőforrásokra.
+* **erőforráscsoport** – Egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport a csoportként kezelni kívánt erőforrásokat tartalmazza. A cég szempontjai alapján Ön döntheti el, hogy mely erőforrások tartozzanak ugyanahhoz az erőforráscsoporthoz. Lásd: [erőforráscsoportok](#resource-groups).
+* **erőforrás-szolgáltató** – Olyan szolgáltatás, amely Azure-erőforrásokat biztosít. Egy közös erőforrás-szolgáltató például a Microsoft.Compute, amely a virtuálisgép-erőforrást látja el. A Microsoft.Storage egy másik gyakori erőforrás-szolgáltató. Lásd: [Erőforrás-szolgáltatók és -típusok](resource-providers-and-types.md).
+* **Resource Manager-sablon** – Egy JavaScript-objektumjelölési (JSON) fájl, amely egy vagy több erőforrást határoz meg egy erőforráscsoportba vagy előfizetésbe való üzembe helyezéshez. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó. Lásd: [Sablon üzembe helyezése – áttekintés.](../templates/overview.md)
+* **deklaratív szintaxis** – Egy olyan szintaxis, amellyel anélkül határozhatja meg, mit szeretne létrehozni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablon a deklaratív szintaxis egy példája. A fájlban meghatározhatja az Azure-ra telepíteni kívánt infrastruktúra tulajdonságait.  Lásd: [Sablon üzembe helyezése – áttekintés.](../templates/overview.md)
 
 ## <a name="the-benefits-of-using-resource-manager"></a>A Resource Manager használatának előnyei
 
-A Resource Managerrel a következőket teheti:
+Az Erőforrás-kezelővel a következőket teheti:
 
-* Az infrastruktúrát nem szkriptek, hanem deklaratív sablonok segítségével kezelheti.
+* Az infrastruktúrát parancsfájlok helyett deklaratív sablonokkal kezelheti.
 
-* A megoldáshoz tartozó összes erőforrást egy csoportként telepítheti, kezelheti és figyelheti, ahelyett, hogy ezeket az erőforrásokat külön kezeli.
+* A megoldás hozadékát, kezelése és figyelése csoportot, és nem külön-külön kezeli ezeket az erőforrásokat.
 
-* A megoldás újbóli üzembe helyezése a fejlesztési életciklus során, és az erőforrások biztonságos üzembe helyezése konzisztens állapotban.
+* Telepítse újra a megoldást a fejlesztési életciklus teljes életciklusa során, és bízzon abban, hogy az erőforrások konzisztens állapotban vannak üzembe helyezve.
 
-* Definiálja az erőforrások közötti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
+* Határozza meg az erőforrások közötti függőségeket, hogy a megfelelő sorrendben legyenek üzembe helyezve.
 
-* A hozzáférés-vezérlés alkalmazása az erőforráscsoport összes szolgáltatására, mivel a szerepköralapú Access Control (RBAC) natív módon integrálva van a felügyeleti platformba.
+* Hozzáférés-vezérlés alkalmazása az erőforráscsoport összes szolgáltatására, mert a szerepköralapú hozzáférés-vezérlés (RBAC) natív módon integrálva van a felügyeleti platformba.
 
-* Címkék alkalmazása az erőforrásokra az előfizetésben lévő összes erőforrás logikus rendszerezéséhez.
+* Címkék alkalmazása az erőforrásokra az előfizetés összes erőforrásának logikai rendezéséhez.
 
-* A szervezet számlázásának tisztázásához tekintse meg az azonos címkével rendelkező erőforrások egy csoportjának költségeit.
+* Tisztázza a szervezet számlázását az azonos címkével megegyező címkével megegyező erőforráscsoport költségeinek megtekintésével.
 
-## <a name="understand-scope"></a>A hatókör megismerése
+## <a name="understand-scope"></a>A hatókör bemutatása
 
-Az Azure a hatókör négy szintjét biztosítja: [felügyeleti csoportok](../../governance/management-groups/overview.md), előfizetések, [erőforráscsoportok](#resource-groups)és erőforrások. Az alábbi ábra ezekre a rétegekre mutat egy példát.
+Az Azure négy hatóköri szintet biztosít: [felügyeleti csoportokat,](../../governance/management-groups/overview.md)előfizetéseket, [erőforráscsoportokat](#resource-groups)és erőforrásokat. Az alábbi ábra ezekre a rétegekre mutat egy példát.
 
 ![Hatókör](./media/overview/scope-levels.png)
 
-Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Ha például alkalmaz egy [szabályzatot](../../governance/policy/overview.md) az előfizetésre, a rendszer az előfizetésben lévő összes erőforráscsoport és erőforrás esetében alkalmazza a szabályzatot. Ha az erőforráscsoport házirendjét alkalmazza, a házirend az erőforráscsoportot és annak összes erőforrását alkalmazza. Egy másik erőforráscsoport azonban nem rendelkezik ezzel a szabályzat-hozzárendeléssel.
+Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Ha például egy [szabályzatot](../../governance/policy/overview.md) alkalmaz az előfizetésre, a szabályzat az előfizetés összes erőforráscsoportjára és erőforrására vonatkozik. Amikor házirendet alkalmaz az erőforráscsoportra, akkor a házirend az erőforráscsoportot és annak összes erőforrását alkalmazza. Egy másik erőforráscsoport azonban nem rendelkezik ezzel a házirend-hozzárendelésel.
 
-A sablonokat felügyeleti csoportokra, előfizetésekre vagy erőforráscsoportokre is telepítheti.
+Sablonokat felügyeleti csoportokba, előfizetésekbe vagy erőforráscsoportokba helyezhet.
 
 ## <a name="resource-groups"></a>Erőforráscsoportok
 
@@ -76,38 +76,34 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 
 * Az erőforrásokat áthelyezheti az egyik erőforráscsoportból a másikba. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](move-resource-group-and-subscription.md).
 
-* Az erőforráscsoportok különböző régiókban található erőforrásokat is tartalmazhatnak.
+* Az erőforráscsoportok tartalmazhatnak különböző régiókban található erőforrásokat.
 
 * Az erőforráscsoport segítségével meghatározhatja a hozzáférés-vezérlési hatókört felügyeleti műveletekhez.
 
 * Egy erőforrás más erőforráscsoportok erőforrásaival is interakcióba tud lépni. Ez az interakció gyakori, amikor a két erőforrás kapcsolódik, de nem ugyanaz az életciklusuk (például amikor egy webalkalmazás csatlakozik egy adatbázishoz).
 
-Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport helyét. Most felmerülhet Önben a kérdés, hogy „Miért van szüksége egy erőforráscsoportnak helyre? Ha pedig az erőforrások rendelkezhetnek az erőforrástól eltérő hellyel, akkor miért számít egyáltalán az erőforráscsoport helye?” Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor megad egy helyet az erőforráscsoporthoz, meg kell adnia, hogy hol tárolja a metaadatokat. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
+Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport helyét. Most felmerülhet Önben a kérdés, hogy „Miért van szüksége egy erőforráscsoportnak helyre? Ha pedig az erőforrások rendelkezhetnek az erőforrástól eltérő hellyel, akkor miért számít egyáltalán az erőforráscsoport helye?” Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor megadja az erőforráscsoport helyét, megadja a metaadatok tárolási helyét. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
-Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A megbízható alkalmazások létrehozásával kapcsolatos további információkért lásd: [megbízható Azure-alkalmazások tervezése](/azure/architecture/checklist/resiliency-per-service).
+Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A többi régió erőforrásai továbbra is a várt módon fognak működni, de nem frissíthetők. A megbízható alkalmazások létrehozásáról a [Megbízható Azure-alkalmazások tervezése](/azure/architecture/checklist/resiliency-per-service)című témakörben talál további információt.
 
-## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager rugalmassága
+## <a name="resiliency-of-azure-resource-manager"></a>Az Azure Resource Manager rugalmassága
 
-A Azure Resource Manager szolgáltatás a rugalmasság és a folyamatos rendelkezésre állás érdekében lett kialakítva. A REST API az erőforrás-kezelő és a vezérlési sík műveletei (management.azure.com küldött kérelmek) a következők:
+Az Azure Resource Manager szolgáltatás rugalmasságra és folyamatos rendelkezésre állásra lett tervezve. Az erőforrás-kezelő és a vezérlősík-műveletek (a MANAGEMENT.AZURE.COM-nek küldött kérelmek) a REST API-ban a következők:
 
 * Régiók között elosztva. Egyes szolgáltatások regionálisak.
 
-* Több Availability Zones rendelkező helyen Availability Zones (valamint régiókban) elosztva.
+* Rendelkezésre állási zónák (valamint régiók) között elosztva olyan helyeken, amelyek több rendelkezésre állási zónával rendelkeznek.
 
-* Egyetlen logikai adatközponttól sem függ.
+* Nem függ egyetlen logikai adatközponttól.
 
-* A karbantartási tevékenységekhez soha nem került sor.
+* Soha nem vették le a karbantartási tevékenységek.
 
-Ez a rugalmasság olyan szolgáltatásokra vonatkozik, amelyek a Resource Manageren keresztül kapják meg a kérelmeket. Például Key Vault a rugalmasság előnyeit.
+Ez a rugalmasság azokra a szolgáltatásokra vonatkozik, amelyek az Erőforrás-kezelőn keresztül fogadnak kéréseket. Például a Key Vault előnyeit ez a rugalmasság előnyeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az erőforrás-szolgáltatók által kínált összes műveletnél tekintse meg az [Azure REST API-kat](/rest/api/azure/).
+* Az erőforrások áthelyezéséről az [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe (Erőforrások áthelyezése)](move-resource-group-and-subscription.md)témakörben olvashat.
 
-* További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
+* Az erőforrások címkézéséről az [Azure-erőforrások rendszerezéséhez címkék használata.](tag-resources.md)
 
-* Az erőforrások címkézésével kapcsolatos további tudnivalókért lásd: [címkék használata az Azure-erőforrások rendszerezéséhez](tag-resources.md).
-
-* Az erőforrások zárolásának megismeréséhez lásd: [erőforrások zárolása a váratlan változtatások megelőzése érdekében](lock-resources.md).
-
-* További információ sablonok létrehozásáról a központi telepítésekhez: [template Deployment áttekintése](../templates/overview.md).
+* Az erőforrások zárolásáról az [Erőforrások zárolásának megakadályozása a váratlan változások megelőzése című](lock-resources.md)témakörben olvashat.

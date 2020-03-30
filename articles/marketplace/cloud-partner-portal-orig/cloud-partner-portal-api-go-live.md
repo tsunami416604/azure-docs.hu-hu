@@ -1,49 +1,48 @@
 ---
-title: Go élő | Azure piactér
-description: A Go Live API elindítja az ajánlat élő listázási folyamatát.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Élő adás | Azure Piactér
+description: A Go Live API elindítja az ajánlat élő tőzsdei eljárását.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 30500e9dfae9411563fc727290d0569998ba3550
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288580"
 ---
-<a name="go-live"></a>Élő indítás
+<a name="go-live"></a>Élő adás
 =======
 
-Ez az API elindítja az alkalmazás éles környezetben való továbbításának folyamatát. Ez a művelet általában hosszú ideig fut. Ez a hívás az értesítési e-mailek listáját használja a [közzétételi](./cloud-partner-portal-api-publish-offer.md) API-műveletből.
+Ez az API elindítja az alkalmazás éles környezetbe való lenyomásának folyamatát. Ez a művelet általában hosszú ideig fut. Ez a hívás az [API-közzétételi](./cloud-partner-portal-api-publish-offer.md) műveletértesítési e-mail listáját használja.
 
  `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/golive?api-version=2017-10-31` 
 
 <a name="uri-parameters"></a>URI-paraméterek
 --------------
 
-|  **Name (Név)**      |   **Leírás**                                                           | **Adattípus** |
+|  **Név**      |   **Leírás**                                                           | **Adattípus** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | A lekérdezni kívánt ajánlat közzétevő-azonosítója, például `contoso`       |  Sztring       |
-| OfferId        | A lekérdezni kívánt ajánlat azonosítója                                   |  Sztring       |
-| API-Version    | Az API legújabb verziója                                                   |  Dátum         |
+| publisherId    | A lekérni ajánlott közzétevői azonosítója, például`contoso`       |  Sztring       |
+| offerId        | A lekérni ajánlott ajánlat azonosítója                                   |  Sztring       |
+| api-verzió    | Az API legújabb verziója                                                   |  Dátum         |
 |  |  |  |
 
 
 <a name="header"></a>Fejléc
 ------
 
-|  **Name (Név)**       |     **Érték**       |
+|  **Név**       |     **Érték**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
 | Engedélyezés   | `Bearer YOUR_TOKEN` |
 |  |  |
 
 
-<a name="body-example"></a>Példa szövegtörzsre
+<a name="body-example"></a>Példa törzsre
 ------------
 
 ### <a name="response"></a>Válasz
@@ -53,17 +52,17 @@ Ez az API elindítja az alkalmazás éles környezetben való továbbításának
 
 ### <a name="response-header"></a>Válaszfejléc
 
-|  **Name (Név)**             |      **Érték**                                                            |
+|  **Név**             |      **Érték**                                                            |
 |  --------             |      ----------                                                           |
-| Művelet – hely    |  A művelet aktuális állapotának meghatározására szolgáló lekérdezési URL-cím            |
+| Művelet-hely    |  A művelet aktuális állapotának meghatározásához lekérdező URL-cím            |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Válasz-állapotkódok
+### <a name="response-status-codes"></a>Válasz állapotkódjai
 
 | **Kód** |  **Leírás**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted` – a kérés elfogadása sikeres volt. A válasz a művelet állapotának nyomon követésére szolgáló helyet tartalmaz. |
-|  400     | `Bad/Malformed request` – további hibaüzenetek találhatók a válasz törzsében. |
-|  404     |  `Not found` – a megadott entitás nem létezik.                                       |
+|  202     | `Accepted`- A kérés sikeresen elfogadásra került. A válasz tartalmaz egy helyet a művelet állapotának nyomon követéséhez. |
+|  400     | `Bad/Malformed request`- További hibainformáció található a válaszszervezetben. |
+|  404     |  `Not found`- A megadott entitás nem létezik.                                       |
 |  |  |

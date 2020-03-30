@@ -1,5 +1,5 @@
 ---
-title: Azure-beli adatelőállító létrehozása a .NET SDK-val
+title: Azure-adatgyár létrehozása a .NET SDK használatával
 description: Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage-beli helyről egy másik helyre történő másolásához.
 services: data-factory
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
 ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241555"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Gyors útmutató: adatfeldolgozó és-folyamat létrehozása a .NET SDK használatával
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a .NET SDK használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-dot-net.md)
 
-Ez a rövid útmutató bemutatja, hogyan használható a .NET SDK egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő **átalakításának** útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](tutorial-transform-data-spark-portal.md).
+Ez a rövid útmutató bemutatja, hogyan használható a .NET SDK egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az Azure Data Factory használatával az adatok **átalakításáról** az [Oktatóanyag: Adatok átalakítása a Spark használatával](tutorial-transform-data-spark-portal.md)című témakörben található.
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -35,7 +35,7 @@ Ez a rövid útmutató bemutatja, hogyan használható a .NET SDK egy Azure-beli
 
 ### <a name="visual-studio"></a>Visual Studio
 
-A jelen cikkben található útmutató a Visual Studio 2019-et használja. A Visual Studio 2013, 2015 vagy 2017 eljárása némileg eltér.
+A cikkforgatókönyv a Visual Studio 2019-et használja. A Visual Studio 2013, 2015 vagy 2017 eljárásai némileg eltérnek egymástól.
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
 
@@ -43,26 +43,26 @@ Töltse le és telepítse az [Azure .NET SDK](https://azure.microsoft.com/downlo
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
 
-A How to: című részből megtudhatja, *hogyan hozhat létre az erőforrásokhoz hozzáférő Azure ad-alkalmazást és egyszerű szolgáltatást*, a feladatok végrehajtásához kövesse az alábbi utasításokat:
+A *szakaszok hogyan: A portál használatával hozzon létre egy Azure AD-alkalmazás és egyszerű szolgáltatás, amely képes hozzáférni az erőforrásokhoz,* kövesse az utasításokat az alábbi feladatok elvégzéséhez:
 
-1. A [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)területen hozzon létre egy alkalmazást, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
-2. A beléptetési [értékek beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)területen szerezze be az **alkalmazás azonosítóját** és a **bérlő azonosítóját**, és jegyezze fel ezeket az értékeket, amelyeket az oktatóanyag későbbi részében használ. 
-3. A [tanúsítványok és titkok](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)területen szerezze be a **hitelesítési kulcsot**, és jegyezze fel ezt az értéket, amelyet az oktatóanyag későbbi részében használ.
-4. Az [alkalmazás szerepkörhöz való hozzárendeléséhez](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás létre tudja hozni az adat-előállítókat az előfizetésben.
+1. Az [Azure Active Directory-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)csoportban hozzon létre egy alkalmazást, amely az oktatóanyagban létrehozott .NET alkalmazást jelöli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
+2. A [Bejelentkezési értékek beszerezni,](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)az **alkalmazás azonosítóját** és a **bérlői azonosítót,** és jegyezze fel ezeket az értékeket, amelyeket később az oktatóanyagban használ. 
+3. A [Tanúsítványok és titkos kulcsok](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets), leszerez a **hitelesítési kulcsot**, és jegyezze fel ezt az értéket, amelyet később az oktatóanyagban használ.
+4. Az [alkalmazás hozzárendelése egy szerepkörhöz,](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)rendelje hozzá az alkalmazást a **közreműködői** szerepkör az előfizetés szintjén, hogy az alkalmazás hozhat létre adatgyárak az előfizetésben.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-Következő lépésként hozzon létre egy C# .net-konzol alkalmazást a Visual Studióban:
+Ezután hozzon létre egy C# .NET konzolalkalmazást a Visual Studióban:
 
 1. Indítsa el a **Visual Studiót**.
-2. A Start ablakban válassza az **új projekt létrehozása** > **Console app (.NET-keretrendszer)** lehetőséget. A lépések elvégzéséhez a .NET 4.5.2-es vagy újabb verziója szükséges.
-3. A **Project Name (projekt neve**) mezőben adja meg a **ADFv2QuickStart**.
+2. A Start ablakban válassza **az Új projekt konzolalkalmazás** > **(.NET Framework)** létrehozása lehetőséget. A lépések elvégzéséhez a .NET 4.5.2-es vagy újabb verziója szükséges.
+3. A **Project neve**mezőbe írja be az **ADFv2QuickStart értéket.**
 4. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-1. Válassza az **eszközök** > **NuGet Package Manager** > **csomagkezelő konzolt**.
-2. A **Package Manager konzol** ablaktábláján futtassa a következő parancsokat a csomagok telepítéséhez. További információ: [Microsoft. Azure. Management. DataFactory nuget csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
+1. Válassza **az Eszközök** > **NuGet Csomagkezelő csomagkezelő** > **konzolt.**
+2. A **Csomagkezelő konzol** ablaktábláján futtassa a következő parancsokat a csomagok telepítéséhez. További információt a [Microsoft.Azure.Management.DataFactory nuget csomagban](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)talál.
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -85,7 +85,7 @@ Következő lépésként hozzon létre egy C# .net-konzol alkalmazást a Visual 
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Adja hozzá az alábbi kódot a **Main** metódushoz, amely beállítja a változókat. Cserélje le a helyőrzőket a saját értékeire. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adattárolók (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight és mások) más régiókban is lehetnek.
+2. Adja hozzá az alábbi kódot a **Main** metódushoz, amely beállítja a változókat. Cserélje le a helyőrzőket a saját értékeire. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adattárak (Azure Storage, Azure SQL Database, és több) és a számítási (HDInsight és mások) által használt adatgyár lehet más régiókban.
 
    ```csharp
    // Set variables
@@ -113,7 +113,7 @@ Következő lépésként hozzon létre egy C# .net-konzol alkalmazást a Visual 
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
 
-3. Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy **DataFactoryManagementClient** osztályú példányt. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és adatcsatornát is létrehozhat. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható.
+3. Adja hozzá a következő kódot a **Fő** metódushoz, amely létrehozza a **DataFactoryManagementClient** osztály egy példányát. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és adatcsatornát is létrehozhat. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -153,7 +153,7 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy **Azure Storage-beli társított szolgáltatást**.
 
-Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a rövid útmutatóban csak egy Azure Storage-beli társított szolgáltatást kell létrehoznia mind a másolási forrás, mind a fogadó tároló számára. a minta "AzureStorageLinkedService" néven szerepel.
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a rövid útmutatóban csak egy Azure Storage-kapcsolt szolgáltatást kell létrehoznia mind a másolási forráshoz, mind a fogadótárolóhoz; a minta "AzureStorageLinkedService" nevű.
 
 ```csharp
 // Create an Azure Storage linked service
@@ -175,9 +175,9 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 ## <a name="create-a-dataset"></a>Adatkészlet létrehozása
 
-Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy **Azure Blob-adatkészletet**.
+Adja hozzá a következő kódot a **fő** metódushoz, amely létrehoz egy **Azure blob adatkészletet.**
 
-Megadhat egy adatkészletet, amely a forrásból a fogadóba másolt adatokat jelöli. Ebben a példában a blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik. Az adatkészlethez egy olyan paraméter szükséges, amelynek az értéke az adatkészletet feldolgozó tevékenységben van beállítva. A paraméter a "folderPath", amely arra mutat, hogy az adott adat hol található/legyen tárolva.
+Megadhat egy adatkészletet, amely a forrásból a fogadóba másolt adatokat jelöli. Ebben a példában a blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik. Az adatkészlethez egy olyan paraméter szükséges, amelynek az értéke az adatkészletet feldolgozó tevékenységben van beállítva. A paraméter a "folderPath" létrehozásához használható, amely az adatok tárolási helyére/tárolására mutat.
 
 ```csharp
 // Create an Azure Blob dataset
@@ -206,7 +206,7 @@ Console.WriteLine(
 
 Adja hozzá a következő kódot a **Main** metódushoz, amely létrehozza a **másolási tevékenységet tartalmazó folyamatot**.
 
-Ebben a példában ez a folyamat egy tevékenységet tartalmaz, és két paramétert vesz igénybe: a bemeneti blob elérési útja és a kimeneti blob elérési útja. A paraméterek értékei a folyamat indításakor/futtatásakor lesznek beállítva. A másolási tevékenység az előző lépésben kimenetként és bemenetként létrehozott blob-adatkészletre hivatkozik. Ha az adatkészlet bemeneti adatkészletként van használatban, a bemeneti elérési út van megadva. Ha az adatkészlet kimeneti adatkészletként van használatban, a kimeneti elérési út van megadva. 
+Ebben a példában ez a folyamat egy tevékenységet tartalmaz, és két paramétert vesz igénybe: a bemeneti blob elérési útját és a kimeneti blob elérési útját. A paraméterek értékei a folyamat indításakor/futtatásakor lesznek beállítva. A másolási tevékenység az előző lépésben kimenetként és bemenetként létrehozott blob-adatkészletre hivatkozik. Ha az adatkészlet bemeneti adatkészletként van használatban, a bemeneti elérési út van megadva. Ha az adatkészlet kimeneti adatkészletként van használatban, a kimeneti elérési út van megadva. 
 
 ```csharp
 // Create a pipeline with a copy activity
@@ -258,7 +258,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 Adja hozzá a következő kódot a **Main** metódushoz, amely **elindítja a folyamat futását**.
 
-A kód a **inputPath** és a **outputPath** paraméterek értékeit is beállítja a folyamat során a forrás és a fogadó blob elérési útjának tényleges értékeivel.
+Ez a kód a folyamatban megadott **inputPath** és **outputPath** paraméterek értékeit is beállítja a forrás- és fogadóblob-útvonalak tényleges értékeivel.
 
 ```csharp
 // Create a pipeline run
@@ -294,7 +294,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    }
    ```
 
-2. Adja hozzá a következő kódot a **Main** metódushoz, amely lekéri a másolási tevékenység futtatási részleteit, például az olvasott vagy írt adatok méretét.
+2. Adja hozzá a következő kódot a **Fő** metódushoz, amely lekéri a másolási tevékenység futtatásának részleteit, például az olvasott vagy írt adatok méretét.
 
    ```csharp
    // Check the copy activity run details
@@ -316,7 +316,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Állítsa össze és indítsa el az alkalmazást, majd ellenőrizze a folyamat-végrehajtást.
 
-A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozási állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg megjelenik a másolási tevékenység futtatási adatai az olvasási/írási adatok méretével. Ezt követően az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával tekintse meg a blob (ok) t a "InputBlobPath" outputBlobPath a változók között megadott módon.
+A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozási állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg meg nem jelenik a másolási tevékenység futtatási részletei az olvasási/írási adatok méretével. Ezután az eszközök, például az [Azure Storage explorer](https://azure.microsoft.com/features/storage-explorer/) segítségével ellenőrizze a blob(ok) másolja a "outputBlobPath" a "inputBlobPath", aváltozókban megadott módon.
 
 ### <a name="sample-output"></a>Példa kimenet
 
@@ -428,15 +428,15 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
 
-A folyamat automatikusan létrehozza a kimeneti mappát a **adftutorial** blob-tárolóban. Ezután átmásolja az **EMP. txt** fájlt a bemeneti mappából a kimeneti mappába. 
+A folyamat automatikusan létrehozza a kimeneti mappát az **adftutorial** blob tárolóban. Ezután másolja az **emp.txt** fájlt a bemeneti mappából a kimeneti mappába. 
 
-1. A Azure Portal az **adftutorial** -tároló lapon, amelyet a fenti [blob-tárolóhoz tartozó bemeneti mappa és fájl hozzáadása](#add-an-input-folder-and-file-for-the-blob-container) szakaszban állított le, válassza a **frissítés** lehetőséget a kimeneti mappa megtekintéséhez. 
-2. A mappák listájában válassza a **kimenet**elemet.
+1. Az Azure Portalon az **adftutorial** tároló lapon, amely megállt a [bemeneti mappa hozzáadása és fájl a blob tároló](#add-an-input-folder-and-file-for-the-blob-container) szakasz felett, válassza a **Frissítés** a kimeneti mappa megtekintéséhez. 
+2. A mappalistában válassza a **kimenet**lehetőséget.
 3. Ellenőrizze, hogy az **emp.txt** fájl bekerült-e a kimeneti mappába. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az adatelőállító programozott törléséhez adja hozzá a következő sornyi kódot a programhoz: 
+Az adatsalóprogram programozott törléséhez adja hozzá a következő kódsorokat a programhoz: 
 
 ```csharp
 Console.WriteLine("Deleting the data factory");

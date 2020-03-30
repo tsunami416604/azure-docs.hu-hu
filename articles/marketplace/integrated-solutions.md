@@ -1,53 +1,52 @@
 ---
-title: Integrált megoldások – Azure Marketplace
-description: Integrált megoldások az Azure Marketplace-en és a AppSource-ben
-services: Azure, Marketplace, Compute, Storage, Networking
-author: ChJenk
+title: Integrált megoldások - Azure Piactér
+description: Integrált megoldások az Azure Marketplace-en és az AppSource-ban
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/16/2019
-ms.author: v-chjen
-ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: d99b061b57beb003cc47b2d809f493d5a9c66888
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427177"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286166"
 ---
-# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrált megoldások a Microsoft AppSource és az Azure Marketplace-en
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrált megoldások a Microsoft AppSource és az Azure Piactéren
 
-Az integrált megoldás a Microsoft partnerei által nyújtott legjobb technológiákat, valamint a szakértői szolgáltatások partnerei által biztosított konzultációt, üzembe helyezést és támogatást is magában foglal.
+Az integrált megoldás a Microsoft-partnerek legjobb technológiáit, valamint a szakértői szolgáltatási partnerek által biztosított konzultációkat, üzembe helyezéseket és támogatást egyesíti.
 
-Két vagy több Microsoft-partner integrálja technológiáját és szolgáltatásait egy egységes, zökkenőmentes és ismételhető üzembe helyezési élmény létrehozásához, hogy az ügyfelek gyorsan és gyorsabban fussanak.  A megoldásban lévő vezető partner (általában a szolgáltatási partner) egyetlen kapcsolódási pontot biztosít az ügyfél számára, és biztosítja a megoldáshoz kapcsolódó testreszabási, tanácsadási és támogatási lehetőségeket.
+Két vagy több Microsoft-partner integrálja technológiáját és szolgáltatásait, hogy egységes, zökkenőmentes és megismételhető telepítési élményt hozzon létre az ügyfelek gyors üzembe helyezése érdekében.  A megoldás vezető partnere (általában a szolgáltatási partner) egyetlen kapcsolattartási pontot biztosít az ügyfél számára, amely releváns testreszabást, tanácsadást és támogatást biztosít a megoldás körül.
 
-Más esetekben a partnerek közösen eladják vagy közösen forgalmazzák a megoldásaikat, míg az integrált megoldás egy közösen létrehozott új megoldás, amely integrálja a technológiát és a szolgáltatásokat a partnerek között.
+Más forgatókönyvek ben a partnerek közösen értékesítik vagy közösen forgalmazják a megoldásukat, míg az integrált megoldás egy közösen felépített új megoldás, amely integrálja a technológiát és a szolgáltatásokat a partnerek között.
 
 ## <a name="advantages"></a>Előnyök
 
 Az integrált megközelítés előnyei a következők:
 
-* *Iparági szakértelem*: az iparág-specifikus megoldásokat és ismereteket biztosító szolgáltatási partnerek
-* *Az érték*: integrált üzembe helyezési megközelítés, amely segít az azonnali előnyök megvalósításában
-* *Legjobb megoldási megoldások*: az integrált vásárlási és megvalósítási élmény észlelése
+* *Iparági szakértelem*: Ágazatspecifikus megoldásokat és tudást nyújtó szolgáltató partnerek
+* *Az értékhez való idő*: Integrált telepítési megközelítés, amely segít megvalósítani az azonnali előnyöket
+* *Best-of-breed megoldások*: Fedezze fel az integrált vásárlási és megvalósítási élmény egyszerűségét
 
-További információ: [integrált megoldás közzététele](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
+További információt az Integrált megoldás közzététele című témakörben [talál.](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers)
 
-## <a name="submit-a-nomination"></a>Jelölés beküldése
+## <a name="submit-a-nomination"></a>Nevezés beküldése
 
-A programban részt vevő partnereknek meg kell határozniuk más partnereket, akikkel dolgozni kívánnak. Az [integrált megoldások jelölési formáját](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)kell végrehajtaniuk. Az integrált megoldási program csapata a jelölést a 10 munkanapon belül követi. A csapat jóváhagyást és további lépéseket is biztosít.
+Azoknak a partnereknek, akik részt kívánnak venni a programban, azonosítaniuk kell azokat a partnereket, akikkel együtt kívánnak dolgozni. Ki kell tölteniük az [Integrált Megoldások jelölési űrlapot.](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx) Az Integrated Solutions program csapata áttekinti a jelölést, és 10 munkanapon belül nyomon követi. A csapat jóváhagyást és a következő lépéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az alábbi értékes partnerekkel is felfedezheti az integrált megoldásokat:
+Az integrált megoldásokat és az értékes partnerekkel való kapcsolattartást a szálláshelyeik ellátogatásával fedezheti fel:
 
-* [Ügyfél 360-alapú Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Ügyfél 360 Powered by Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
 * [Gyors kereskedelem](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
-* [Hitel portfolió-elemzés](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
-* [Egészségügyi Felhőbeli biztonsági verem](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
-* [DevOps gyorsítási motor](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [A Windows Server támogatásának vége](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
-* [Gyors adatközpont-konszolidációs Jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
-* [DeviceTone IoT a csatlakoztatott mező szolgáltatáshoz](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
-* [Egyszólamú: egységes marketing-kezelési megoldás](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
-* [Intelligens M & egy átvilágítás](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)
+* [Hitelportfólió-elemzés](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Egészségügyi felhőbiztonsági verem](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [DevOps gyorsító motor](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [A Windows Server támogatás megszűnése](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [Gyors adatközpont konszolidáció jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
+* [DeviceTone IoT csatlakoztatott mezőszolgáltatáshoz](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
+* [Unison: Egységes marketingmenedzsment megoldás](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
+* [Intelligens M&a kellő gondosság](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)

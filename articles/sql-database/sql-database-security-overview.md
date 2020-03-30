@@ -1,6 +1,6 @@
 ---
-title: Biztonsági áttekintés
-description: Ismerje meg Azure SQL Database és SQL Server biztonságot, beleértve a Felhőbeli és a helyszíni SQL Server közötti különbségeket.
+title: Biztonság – áttekintés
+description: Ismerje meg az Azure SQL Database és az SQL Server biztonságát, beleértve a felhő és a helyszíni SQL Server közötti különbségeket.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,147 +11,147 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 348b8fc44628437cbbcfbcd39a26d048284aa60e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2a4c6dd3dd6f1bb2f15e31226086c73fb8e63521
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79208856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124829"
 ---
-# <a name="an-overview-of-azure-sql-database-security-capabilities"></a>A Azure SQL Database biztonsági képességeinek áttekintése
+# <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Az Azure SQL Database biztonsági képességeinek áttekintése
 
-Ez a cikk ismerteti az alkalmazások adatszintjének Azure SQL Database használatával történő biztonságossá tételének alapjait. A leírt biztonsági stratégia az alábbi képen látható, többrétegű védelem részletes megközelítését követi, és a következőn kívülről lép:
+Ez a cikk ismerteti az azure-beli SQL Database-alkalmazás adatrétegének védelmének alapjait. A leírt biztonsági stratégia követi a réteges védelmi mélyreható megközelítést, amint az az alábbi képen látható, és kívülről mozog:
 
 ![sql-security-layer.png](media/sql-database-security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-A Microsoft Azure SQL Database a Felhőbeli és a vállalati alkalmazások számára biztosít egy kapcsolódó adatbázis-szolgáltatást. Az ügyféladatok védelme érdekében a tűzfalak meggátolják a hálózati hozzáférést az adatbázis-kiszolgálóhoz, amíg az IP-cím vagy az Azure Virtual Network-forgalom forrása alapján explicit módon hozzáférést nem kapnak.
+A Microsoft Azure SQL Database relációs adatbázis-szolgáltatást biztosít felhőalapú és nagyvállalati alkalmazásokszámára. Az ügyféladatok védelme érdekében a tűzfalak megakadályozzák az adatbázis-kiszolgáló hálózati hozzáférését, amíg a hozzáférés explicit módon nem érhető el az IP-cím vagy az Azure virtuális hálózati forgalom eredete alapján.
 
-### <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
+### <a name="ip-firewall-rules"></a>IP tűzfalszabályai
 
-Az IP-tűzfalszabályok az egyes kérések származó IP-címe alapján biztosítanak hozzáférést az adatbázisokhoz. További információ: [Azure SQL Database és SQL Data Warehouse tűzfalszabályok áttekintése](sql-database-firewall-configure.md).
+Az IP-tűzfal szabályai hozzáférést biztosítanak az adatbázisokhoz az egyes kérelmek eredeti IP-címe alapján. További információt az [Azure SQL Database és az SQL Data Warehouse tűzfalszabályainak áttekintése](sql-database-firewall-configure.md)című témakörben talál.
 
 ### <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
 
-A [virtuális hálózati szolgáltatás végpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kiterjesztik a virtuális hálózati kapcsolatot az Azure-gerinc fölé, és lehetővé teszik Azure SQL Database azon virtuális hálózati alhálózat azonosítását, amelyből a forgalom származik. Ha engedélyezni szeretné, hogy a forgalom elérje a Azure SQL Database, használja az SQL- [szolgáltatás címkéit](../virtual-network/security-overview.md) , hogy engedélyezze a kimenő forgalmat a hálózati biztonsági csoportokon keresztül.
+[A virtuális hálózati szolgáltatás végpontjai kiterjesztik](../virtual-network/virtual-network-service-endpoints-overview.md) a virtuális hálózati kapcsolatot az Azure gerinchálózatán keresztül, és lehetővé teszik az Azure SQL Database számára, hogy azonosítsa a virtuális hálózati alhálózatot, amelyből a forgalom származik. Ahhoz, hogy a forgalom elérje az Azure SQL Database-t, használja az SQL [szolgáltatás címkék](../virtual-network/security-overview.md) et a hálózati biztonsági csoportokon keresztül érkező kimenő forgalom engedélyezéséhez.
 
-A [virtuális hálózati szabályok](sql-database-vnet-service-endpoint-rule-overview.md) lehetővé teszik, hogy a Azure SQL Database csak a virtuális hálózaton belüli kijelölt alhálózatokból továbbított kommunikációt fogadják.
+[A virtuális hálózati szabályok](sql-database-vnet-service-endpoint-rule-overview.md) lehetővé teszik, hogy az Azure SQL Database csak a virtuális hálózaton belül kiválasztott alhálózatokról küldött kommunikációt fogadja el.
 
 > [!NOTE]
-> A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik **a felügyelt példányokra**. További információ a szükséges hálózati konfigurációról: [Csatlakozás felügyelt példányhoz](sql-database-managed-instance-connect-app.md)
+> A hozzáférés tűzfalszabályokkal való szabályozása *nem* vonatkozik **a felügyelt példányokra.** A szükséges hálózati konfigurációról további információt a [felügyelt példányhoz való csatlakozás](sql-database-managed-instance-connect-app.md) című témakörben talál.
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
 > [!IMPORTANT]
-> Az adatbázisok és az adatbázis-kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. További információ erről a cikkről: [szerepköralapú hozzáférés-vezérlés Azure Portalban](../role-based-access-control/overview.md).
+> Az Azure-on belüli adatbázisok és adatbázis-kiszolgálók kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései szabályozzák. Erről a cikkről további információt az [Azure Portal szerepköralapú hozzáférés-vezérlése című témakörben talál.](../role-based-access-control/overview.md)
 
 ### <a name="authentication"></a>Hitelesítés
 
-A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. Azure SQL Database két hitelesítési típust támogat:
+A hitelesítés azt a folyamatot, amely bizonyítja, hogy a felhasználó az, akinek állítja magát. Az Azure SQL Database kétféle hitelesítést támogat:
 
 - **SQL-hitelesítés**:
 
-    Az SQL Database-hitelesítés a felhasználó hitelesítésére utal, amikor a felhasználónévvel és a jelszóval csatlakozik [Azure SQL Databasehoz](sql-database-technical-overview.md) . Az adatbázis-kiszolgáló létrehozásakor meg kell adni a "kiszolgáló rendszergazdája" felhasználónevét és jelszavát. Ezekkel a hitelesítő adatokkal a "kiszolgáló rendszergazdája" hitelesítheti az adatbázis-kiszolgáló bármely adatbázisát az adatbázis tulajdonosaként. Ezt követően további SQL-bejelentkezéseket és felhasználókat hozhat létre a kiszolgáló rendszergazdája, amely lehetővé teszi a felhasználók számára a Felhasználónév és a jelszó használatával történő kapcsolódást.
+    AZ SQL-adatbázis hitelesítése a felhasználó hitelesítésére utal, amikor felhasználónév vel és jelszóval csatlakozik az [Azure SQL Database-hez.](sql-database-technical-overview.md) Az adatbázis-kiszolgáló létrehozása során meg kell adni egy "Kiszolgáló-rendszergazda" bejelentkezést felhasználónévvel és jelszóval. Ezekkel a hitelesítő adatokkal a "kiszolgáló rendszergazdája" az adatbázis-kiszolgáló bármely adatbázisában hitelesíthető az adatbázis tulajdonosaként. Ezt követően további SQL bejelentkezéseket és felhasználókat hozhat létre a kiszolgáló rendszergazdája, amely lehetővé teszi a felhasználók számára, hogy felhasználónévvel és jelszóval csatlakozzanak.
 
-- **Azure Active Directory hitelesítés**:
+- **Azure Active Directory-hitelesítés:**
 
-    Azure Active Directory a hitelesítés olyan mechanizmus, amellyel [Azure SQL Database](sql-database-technical-overview.md) és [SQL Data Warehousehoz](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) csatlakozhat az Azure Active Directory (Azure ad) identitások használatával. Az Azure AD-hitelesítés lehetővé teszi, hogy a rendszergazdák központilag kezeljék az adatbázis-felhasználók identitásait és engedélyeit, valamint a Microsoft más szolgáltatásait egy központi helyen. Ez magában foglalja a jelszó-tárolás minimalizálása és a központosított jelszó-rotációs házirendek használatát.
+    Az Azure Active Directory-hitelesítés az [Azure ACTIVE Database](sql-database-technical-overview.md) és az SQL Data [Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitások használatával az Azure Active Directoryban (Azure AD) való csatlakozás mechanizmusa. Az Azure AD-hitelesítés lehetővé teszi a rendszergazdák számára, hogy központilag kezeljék az adatbázis-felhasználók identitásait és engedélyeit más Microsoft-szolgáltatásokkal együtt egy központi helyen. Ez magában foglalja a jelszótárolás minimalizálását, és lehetővé teszi a központi jelszóelforgatási házirendeket.
 
-     Az Azure AD-hitelesítés SQL Database használatával való használatához létre kell hozni egy **Active Directory rendszergazdának** nevezett kiszolgáló-rendszergazdát. További információ: [csatlakozás SQL Databasehoz Azure Active Directory hitelesítés használatával](sql-database-aad-authentication.md). Az Azure AD-hitelesítés mind a felügyelt, mind az összevont fiókokat támogatja. Az összevont fiókok támogatják a Windows-felhasználókat és-csoportokat az Azure AD-vel összevont ügyfél-tartományokhoz.
+     Az **Active Directory-rendszergazdának** létre kell hozniaz Azure AD-hitelesítés SQL-adatbázissal való használatához. További információt az [Sql Database-hez való csatlakozás az Azure Active Directory-hitelesítés használatával című témakörben talál.](sql-database-aad-authentication.md) Az Azure AD-hitelesítés támogatja a felügyelt és összevont fiókokat is. Az összevont fiókok támogatják a Windows-felhasználókat és az Azure AD-vel összevont ügyféltartomány csoportjait.
 
-    Az elérhető további Azure AD-hitelesítési lehetőségek a SQL Server Management Studio-kapcsolatokhoz [Active Directory univerzális hitelesítés,](sql-database-ssms-mfa-authentication.md) például [multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) és [feltételes hozzáférés](sql-database-conditional-access.md).
+    További Elérhető Azure AD-hitelesítési lehetőségek: [Active Directory univerzális hitelesítés sql server management studio kapcsolatokhoz,](sql-database-ssms-mfa-authentication.md) beleértve a [többtényezős hitelesítést](../active-directory/authentication/concept-mfa-howitworks.md) és [a feltételes hozzáférést.](sql-database-conditional-access.md)
 
 > [!IMPORTANT]
-> Az adatbázisok és kiszolgálók Azure-beli kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései vezérlik. További információ erről a cikkről: [szerepköralapú hozzáférés-vezérlés Azure Portalban](../role-based-access-control/overview.md). A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik **a felügyelt példányokra**. Ha további információkra van szüksége a hálózati konfigurációval kapcsolatban, tekintse meg a következő cikket a [felügyelt példányhoz való csatlakozásról](sql-database-managed-instance-connect-app.md) .
+> Az Azure-on belüli adatbázisok és kiszolgálók kezelését a portál felhasználói fiókjának szerepkör-hozzárendelései szabályozzák. Erről a cikkről további információt az [Azure Portal szerepköralapú hozzáférés-vezérlése című témakörben talál.](../role-based-access-control/overview.md) A hozzáférés tűzfalszabályokkal való szabályozása *nem* vonatkozik **a felügyelt példányokra.** A szükséges hálózati konfigurációról további információt a [felügyelt példányhoz való csatlakozásról](sql-database-managed-instance-connect-app.md) szóló alábbi cikkben talál.
 
 ## <a name="authorization"></a>Engedélyezés
 
-Az engedélyezés egy Azure SQL Databaseon belüli felhasználóhoz rendelt engedélyekre utal, és meghatározza, hogy a felhasználó mit tehet. Az engedélyek szabályozása úgy történik, hogy felhasználói fiókokat ad hozzá az [adatbázis szerepköreihez](/sql/relational-databases/security/authentication-access/database-level-roles) , és adatbázis-szintű engedélyeket rendel hozzájuk ezekhez a szerepkörökhöz, vagy ha a felhasználó számára bizonyos [objektum-szintű engedélyeket](/sql/relational-databases/security/permissions-database-engine)ad meg. További információ: [bejelentkezések és felhasználók](sql-database-manage-logins.md)
+Az engedélyezés az Azure SQL-adatbázison belül egy felhasználóhoz rendelt engedélyekre vonatkozik, és meghatározza, hogy a felhasználó mit tehet. Az engedélyeket úgy szabályozzák, hogy felhasználói fiókokat adnak [az adatbázisszerepkörökhöz,](/sql/relational-databases/security/authentication-access/database-level-roles) és adatbázisszintű engedélyeket rendelnek ezekhez a szerepkörökhöz, vagy bizonyos [objektumszintű engedélyeket](/sql/relational-databases/security/permissions-database-engine)adnak a felhasználónak. További információ: [Bejelentkezések és felhasználók](sql-database-manage-logins.md)
 
-Ajánlott eljárásként hozzon létre egyéni szerepköröket, ha szükséges. Vegyen fel felhasználókat a szerepkörbe a feladat funkciójának végrehajtásához szükséges legalacsonyabb jogosultságokkal. Ne rendeljen engedélyeket közvetlenül a felhasználóknak. A kiszolgálói rendszergazdai fiók tagja a beépített db_owner szerepkörnek, amely kiterjedt engedélyekkel rendelkezik, és csak néhány rendszergazdai feladattal rendelkező felhasználónak kell megadnia. Azure SQL Database alkalmazások esetében a [végrehajtás másként](/sql/t-sql/statements/execute-as-clause-transact-sql) beállítással adhatja meg a hívott modul végrehajtási környezetét, vagy használjon korlátozott engedélyekkel rendelkező [alkalmazás-szerepköröket](/sql/relational-databases/security/authentication-access/application-roles) . Ez a gyakorlat biztosítja, hogy az adatbázishoz csatlakozó alkalmazáshoz az alkalmazás által igényelt legalacsonyabb jogosultságok szükségesek. Az alábbi ajánlott eljárások a feladatok elkülönítését is támogatják.
+Ajánlott eljárásként szükség esetén hozzon létre egyéni szerepköröket. Felhasználók hozzáadása a szerepkörhöz a feladatfunkciójuk hoz szükséges legkevesebb jogosultsággal. Ne rendeljen engedélyeket közvetlenül a felhasználókhoz. A kiszolgálófelügyeleti fiók a beépített db_owner szerepkör tagja, amely kiterjedt engedélyekkel rendelkezik, és csak néhány rendszergazdai feladattal rendelkező felhasználó számára adható meg. Az Azure SQL Database-alkalmazások, az [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) használatával adja meg a hívott modul végrehajtási környezetében, vagy használja [alkalmazási szerepkörök](/sql/relational-databases/security/authentication-access/application-roles) korlátozott engedélyekkel. Ez a gyakorlat biztosítja, hogy az adatbázishoz csatlakozó alkalmazás az alkalmazás által szükséges legkevesebb jogosultsággal rendelkezzen. Ezen bevált gyakorlatok követése elősegíti a feladatok szétválasztását is.
 
 ### <a name="row-level-security"></a>Sorszintű biztonság
 
-A sor szintű biztonság lehetővé teszi az ügyfelek számára, hogy a lekérdezést végrehajtó felhasználó jellemzői alapján szabályozzák az adatbázistábla soraihoz való hozzáférést (például csoporttagság vagy végrehajtási környezet). A sor szintű biztonság egyéni címkézett biztonsági fogalmak megvalósítására is használható. További információkat a [sorszintű biztonsággal kapcsolatos](/sql/relational-databases/security/row-level-security) részben találhat.
+A Sorszintű biztonság lehetővé teszi az ügyfelek számára, hogy a lekérdezést végrehajtó felhasználó (például csoporttagság vagy végrehajtási környezet) jellemzői alapján szabályozzák az adatbázistábla soraihoz való hozzáférést. A sorszintű biztonság egyéni címkealapú biztonsági fogalmak megvalósítására is használható. További információkat a [sorszintű biztonsággal kapcsolatos](/sql/relational-databases/security/row-level-security) részben találhat.
 
-![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
+![azúr-adatbázis-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Fenyegetések elleni védelem
 
-A SQL Database a naplózási és veszélyforrás-észlelési képességek biztosításával gondoskodik az ügyféladatok biztonságáról.
+Az SQL Database naplózási és fenyegetésészlelési lehetőségek biztosításával biztosítja az ügyféladatokat.
 
-### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>SQL-naplózás Azure Monitor naplókban és Event Hubs
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>SQL-naplózás az Azure Monitor naplóiban és az Eseményközpontokban
 
-SQL Database naplózás nyomon követi az adatbázis-tevékenységeket, és segít a biztonsági szabványoknak való megfelelés fenntartásában azáltal, hogy adatbázis-eseményeket rögzít az ügyfél által birtokolt Azure Storage-fiókban lévő naplóba. A naplózás lehetővé teszi a felhasználók számára a folyamatos adatbázis-tevékenységek figyelését, valamint a múltbeli tevékenységek elemzését és kivizsgálását a potenciális fenyegetések vagy a gyanús visszaélések és biztonsági szabálysértések azonosítása érdekében. További információ: Ismerkedés a [SQL Database naplózással](sql-database-auditing.md).  
+Az SQL Database naplózása nyomon követi az adatbázis-tevékenységeket, és segít fenntartani a biztonsági szabványoknak való megfelelést azáltal, hogy az adatbázis-eseményeket egy ügyfél tulajdonában lévő Azure-tárfiók naplójába rögzíti. A naplózás lehetővé teszi a felhasználók számára a folyamatban lévő adatbázis-tevékenységek nyomon követését, valamint a korábbi tevékenységek elemzését és kivizsgálását a potenciális fenyegetések vagy feltételezett visszaélések és a biztonsági jogsértések azonosítása érdekében. További információt az [SQL-adatbázis-naplózás –](sql-database-auditing.md)első lépések című témakörben talál.  
 
 ### <a name="advanced-threat-protection"></a>Fejlett fenyegetésvédelem
 
-A komplex veszélyforrások elleni védelem a SQL Server naplók elemzésével vizsgálja a szokatlan viselkedést és a potenciálisan ártalmas kísérleteket az adatbázisok eléréséhez vagy kiaknázásához. A riasztások olyan gyanús tevékenységekhez jönnek létre, mint például az SQL-injektálás, a lehetséges adatszivárgások és a találgatásos támadások, illetve a hozzáférési mintákban mutatkozó rendellenességek a jogosultság-eszkalációs és a megsértett hitelesítő adatok használata esetén. A riasztásokat a [Azure Security Center](https://azure.microsoft.com/services/security-center/)tekintik meg, ahol a gyanús tevékenységek részletei megtalálhatók, valamint a fenyegetést enyhítő műveletekkel kapcsolatos javaslatok a további vizsgálathoz. A komplex veszélyforrások elleni védelem felár ellenében engedélyezhető kiszolgálónként. További információ: Ismerkedés [a SQL Database komplex veszélyforrások elleni védelemmel](sql-database-threat-detection.md).
+A Komplex veszélyforrások elleni védelem elemzi az SQL Server naplóit a szokatlan viselkedés és az adatbázisok elérésére vagy kihasználására irányuló potenciálisan káros kísérletek észlelése érdekében. Riasztások jönnek létre a gyanús tevékenységek, például az SQL-injektálás, a potenciális adatok beszivárgása, és a találgatásos kényszerítési támadások, vagy a hozzáférési minták anomáliák a jogosultságeszkalációk és a megsértett hitelesítő adatok használata. Riasztások az Azure [Security Center,](https://azure.microsoft.com/services/security-center/)ahol a gyanús tevékenységek részleteit, és javaslatokat a további vizsgálatra adott műveleteket a fenyegetés csökkentésére. A komplex veszélyforrások elleni védelem kiszolgálónként további díj ellenében engedélyezhető. További információ: [Az SQL Database Komplex veszélyforrások elleni védelem – első lépések](sql-database-threat-detection.md)című témakörben található.
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
-## <a name="information-protection-and-encryption"></a>Adatvédelem és titkosítás
+## <a name="information-protection-and-encryption"></a>Információvédelem és titkosítás
 
-### <a name="transport-layer-security-tls-encryption-in-transit"></a>Transport Layer Security TLS (titkosítás átvitele)
+### <a name="transport-layer-security-tls-encryption-in-transit"></a>Átviteli réteg biztonsági TLS (titkosítás-in-transit)
 
-A SQL Database a [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)használatával a mozgásban lévő adattitkosítással biztosítja az ügyféladatok védelmét.
+Az SQL Database a [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)segítségével titkosítja a mozgásban lévő adatokat.
 
-Az SQL Server minden kapcsolathoz mindig kikényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az összes adatforgalom titkosítva legyen az ügyfél és a kiszolgáló között, függetlenül attól, hogy a **titkosítás** vagy a **TrustServerCertificate** a kapcsolati sztringben van-e beállítva.
+Az Sql Server minden kapcsolatesetében mindig kényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az ügyfél és a kiszolgáló közötti összes adat "átvitel közben" titkosítva legyen, függetlenül a ttól, hogy a **kapcsolati** karakterláncban a Titkosítás vagy a **TrustServerCertificate** van-e.
 
-Ajánlott eljárásként javasoljuk, hogy az alkalmazás kapcsolati karakterláncában adja meg a titkosított kapcsolatot, és _**ne**_ Bízzon meg a kiszolgálói tanúsítványban. Ez arra kényszeríti az alkalmazást, hogy ellenőrizze a kiszolgáló tanúsítványát, így megakadályozza, hogy az alkalmazás sebezhető legyen a középső típusú támadásokban lévő ember számára.
+Ajánlott eljárásként azt javasoljuk, hogy az alkalmazás kapcsolati karakterláncában adjon meg egy titkosított kapcsolatot, és _**ne**_ bízzon meg a kiszolgáló tanúsítványában. Ez arra kényszeríti az alkalmazást, hogy ellenőrizze a kiszolgáló tanúsítványát, és így megakadályozza, hogy az alkalmazás sebezhető az ember a középső típusú támadások.
 
-Például a ADO.NET-illesztőprogram használata esetén ez a **titkosítás = True** és a **TrustServerCertificate = false**használatával valósítható meg. Ha a Azure Portalból szerzi be a kapcsolatok karakterláncát, akkor a megfelelő beállításokkal fog rendelkezni.
+Ha például a ADO.NET illesztőprogramot használja, ez az **Encrypt=True** és a **TrustServerCertificate=False**. Ha a kapcsolati karakterláncot az Azure Portalon kapja meg, akkor a megfelelő beállításokat fogja kapni.
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy egyes nem Microsoft-illesztőprogramok nem használhatják a TLS-t alapértelmezés szerint, vagy a TLS (< 1.2) régebbi verzióját használják a működéshez. Ebben az esetben SQL Server továbbra is lehetővé teszi az adatbázishoz való kapcsolódást. Javasoljuk azonban, hogy értékelje a biztonsági kockázatokat, amelyek lehetővé teszik, hogy az ilyen illesztőprogramok és alkalmazások csatlakozzanak a SQL Databasehoz, különösen ha bizalmas adatokat tárol.
+> Előfordulhat, hogy egyes nem microsoftos illesztőprogramok alapértelmezés szerint nem használják a TLS-t, vagy a TLS (<1.2) régebbi verziójára támaszkodnak a működéshez. Ebben az esetben az SQL Server továbbra is lehetővé teszi az adatbázishoz való csatlakozást. Azonban azt javasoljuk, hogy értékelje ki a biztonsági kockázatokat, amelyek lehetővé teszik az ilyen illesztőprogramok és alkalmazások csatlakozhatnak az SQL Database-hez, különösen, ha bizalmas adatokat tárol.
 >
-> A TLS-vel és a kapcsolattal kapcsolatos további információkért lásd: [TLS-megfontolások](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+> A TLS-ről és a kapcsolatról a [TLS-ekkel kapcsolatos szempontok](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity) című témakörben talál további információt.
 
-### <a name="transparent-data-encryption-encryption-at-rest"></a>Transzparens adattitkosítás (titkosítás – REST)
+### <a name="transparent-data-encryption-encryption-at-rest"></a>Transzparens adattitkosítás (inaktív titkosítás)
 
-[Transzparens adattitkosítás (TDE) for Azure SQL Database](transparent-data-encryption-azure-sql.md) egy biztonsági réteget biztosít, amellyel megvédheti az inaktív adatokat a nyers fájlokhoz vagy biztonsági másolatokhoz való jogosulatlan vagy offline hozzáféréstől. Gyakori forgatókönyvek például a Datacenter-lopás vagy a hardver vagy adathordozó nem biztonságos ártalmatlanítása, például a lemezmeghajtók és a biztonsági mentési szalagok. A TDE egy AES titkosítási algoritmussal titkosítja a teljes adatbázist, amely nem igényli, hogy az alkalmazás fejlesztői ne kelljen módosítaniuk a meglévő alkalmazásokat.
+[Az Azure SQL Database transzparens adattitkosítása (TDE)](transparent-data-encryption-azure-sql.md) egy biztonsági réteget ad hozzá, amely segít megvédeni az inaktív adatokat a nyers fájlokhoz vagy biztonsági mentésekhöz való jogosulatlan vagy offline hozzáféréssel szemben. Gyakori esetek közé tartozik az adatközpontok lopása vagy a hardver vagy adathordozó, például a lemezmeghajtók és a biztonsági másolatkazetták nem biztonságos ártalmatlanítása.A TDE a teljes adatbázist a teljes AES titkosítási algoritmussal titkosítja, amely nem követeli meg az alkalmazásfejlesztőktől a meglévő alkalmazások módosítását.
 
-Az Azure-ban az összes újonnan létrehozott SQL-adatbázis alapértelmezés szerint titkosítva van, és az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi.  A tanúsítvány-karbantartási és-rotációs szolgáltatást a szolgáltatás felügyeli, és nem igényel bemenetet a felhasználótól. A titkosítási kulcsok felügyeletét előnyben részesített ügyfelek a [Azure Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md)kezelhetik a kulcsokat.
+Az Azure-ban az összes újonnan létrehozott SQL-adatbázis alapértelmezés szerint titkosítva van, és az adatbázis-titkosítási kulcsot egy beépített kiszolgálói tanúsítvány védi.  A tanúsítvány karbantartását és rotációját a szolgáltatás kezeli, és nem igényel a felhasználó tól származó adatokat. Azok az ügyfelek, akik szívesebben veszik át az irányítást a titkosítási kulcsok felett, kezelhetik a kulcsokat az [Azure Key Vaultban.](../key-vault/key-vault-secure-your-key-vault.md)
 
-### <a name="key-management-with-azure-key-vault"></a>Kulcskezelő Azure Key Vault
+### <a name="key-management-with-azure-key-vault"></a>Kulcskezelés az Azure Key Vault segítségével
 
-A [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) [bring your own Key](transparent-data-encryption-byok-azure-sql.md) (BYOK) támogatása lehetővé teszi, hogy az ügyfelek a [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), az Azure felhőalapú külső kulcskezelő rendszerének használatával magukénak vállaljanak a kulcskezelő és a rotációs szolgáltatásban. Ha az adatbázis a kulcstartóhoz való hozzáférését visszavonja, az adatbázist nem lehet visszafejteni és a memóriába beolvasni. A Azure Key Vault egy központi kulcskezelő platformot biztosít, amely szorosan felügyelt hardveres biztonsági modulokat (HSM-ket) használ, és lehetővé teszi a kulcsok és adatok kezelése közötti feladatok elkülönítését a biztonsági megfelelőségi követelmények kielégítése érdekében.
+[Hozza el saját kulcsa](transparent-data-encryption-byok-azure-sql.md) (BYOK) támogatja [az átlátszó adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) lehetővé teszi az ügyfelek számára, hogy átvegye a kulcskezelés és a rotáció az [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), az Azure felhőalapú külső kulcskezelő rendszer használatával. Ha az adatbázis hozzáférése a key vault vissza van vonva, az adatbázis nem fejthető vissza, és olvassa be a memóriába. Az Azure Key Vault központi kulcskezelési platformot biztosít, kihasználja a szigorúan ellenőrzött hardveres biztonsági modulokat (HSM-ek), és lehetővé teszi a kulcsok és az adatok kezelése közötti feladatok elkülönítését a biztonsági megfelelőségi követelmények teljesítése érdekében.
 
-### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (titkosítás használatban)
+### <a name="always-encrypted-encryption-in-use"></a>Mindig titkosított (használat közbeni titkosítás)
 
-![azure-database-ae.png](media/sql-database-security-overview/azure-database-ae.png)
+![azúr-adatbázis-ae.png](media/sql-database-security-overview/azure-database-ae.png)
 
-A [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) az adott adatbázis-oszlopokban tárolt bizalmas adatok hozzáférésének (például a hitelkártya-számok, a nemzeti azonosító számok vagy az adatok _ismerete_ alapján) való védelme. Ebbe beletartozik az adatbázis-rendszergazdák vagy más, jogosultsággal rendelkező felhasználók, akik jogosultak az adatbázis elérésére a felügyeleti feladatok elvégzéséhez, de nincs szükségük üzleti tevékenységre a titkosított oszlopokban lévő adatok eléréséhez. A rendszer mindig titkosítja az adattitkosítást, ami azt jelenti, hogy a titkosított adatforgalom csak olyan ügyfélalkalmazások általi feldolgozásra van visszafejtve, amelyek hozzáférnek a titkosítási kulcshoz.  A titkosítási kulcs soha nem érhető el az SQL-ben, és a [Windows tanúsítványtárolóban](sql-database-always-encrypted.md) vagy [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)tárolható.
+[A Mindig titkosítva](/sql/relational-databases/security/encryption/always-encrypted-database-engine) egy olyan szolgáltatás, amely megvédi az egyes adatbázisoszlopokban tárolt bizalmas adatokat a hozzáféréstől (például hitelkártyaszámok, nemzeti azonosító számok vagy _a szükséges ismeret_ alapján). Ez magában foglalja az adatbázis-rendszergazdák vagy más kiemelt jogosultsággal rendelkező felhasználók, akik jogosultak hozzáférni az adatbázisfelügyeleti feladatok, de nem üzleti kell hozzáférni az adott adatokat a titkosított oszlopok. Az adatok mindig titkosítva vannak, ami azt jelenti, hogy a titkosított adatokat csak a titkosítási kulcshoz hozzáféréssel rendelkező ügyfélalkalmazások feldolgozása érdekében fejti vissza.  A titkosítási kulcs soha nem érhető el az SQL-ben, és a [Windows tanúsítványtárolóban](sql-database-always-encrypted.md) vagy az [Azure Key Vaultban](sql-database-always-encrypted-azure-key-vault.md)tárolható.
 
 ### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás
 
-![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
+![azúr-adatbázis-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-SQL Database dinamikus adatmaszkolás korlátozza a bizalmas adatokkal való érintkezést azáltal, hogy a nem Kiemelt felhasználók számára maszkolást végez. A dinamikus adatmaszkolás automatikusan felfedi a Azure SQL Database potenciálisan bizalmas adatokat, és gyakorlati ajánlásokat biztosít ezen mezők maszkolásához, minimális hatással az alkalmazási rétegre. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információ: Ismerkedés [a SQL Database dinamikus adatmaszkolásával](sql-database-dynamic-data-masking-get-started.md).
+Az SQL Database dinamikus adatmaszkolása korlátozza a bizalmas adatok nak való kitettséget azáltal, hogy nem emelt szintű jogosultsággal rendelkező felhasználók számára maszkolja azt. A dinamikus adatmaszkolás automatikusan felderíti a potenciálisan bizalmas adatokat az Azure SQL Database-ben, és végrehajtható javaslatokat nyújt a mezők maszkolásához, minimális hatással az alkalmazásrétegre. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információ: [Az SQL Database dinamikus adatmaszkolásának első lépései](sql-database-dynamic-data-masking-get-started.md)című témakörben talál.
 
 ## <a name="security-management"></a>Biztonság kezelése
 
 ### <a name="vulnerability-assessment"></a>Sebezhetőségi felmérés
 
-A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket azzal a céllal, hogy proaktív módon javítsa a teljes adatbázis-biztonságot. A biztonsági rések felmérése (VA) a fejlett adatbiztonsági (ADS) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. A sebezhetőségi felmérés a központi SQL ADS portálon keresztül érhető el és kezelhető.
+[A biztonsági rés felmérése](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni, nyomon követni és javítani az adatbázis esetleges biztonsági réseit azzal a céllal, hogy proaktív módon javítsa az adatbázis általános biztonságát. A biztonsági rés felmérése (VA) része a fejlett adatbiztonsági (ADS) ajánlatnak, amely egy egységes csomag a fejlett SQL biztonsági képességekhez. A biztonsági rés felmérése a központi SQL ADS portálon keresztül érhető el és kezelhető.
 
 ### <a name="data-discovery--classification"></a>Adatfelderítés és besorolás
 
-Az adatfelderítési & besorolása (jelenleg előzetes verzióban érhető el) olyan speciális képességeket biztosít, amelyek a Azure SQL Database beépített, a bizalmas adatok felderítéséhez, besorolásához, címkézéséhez és védelméhez szükségesek. A rendkívül bizalmas adatok (üzleti/pénzügyi, egészségügyi, személyes adatok stb.) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
+Az adatok felderítése & besorolás (jelenleg előzetes verzióban) speciális funkciókat biztosít az Azure SQL Database-be beépített adatokfelderítéséhez, besorolásához, címkézéséhez és az adatbázisokbizalmas adatainak védelméhez. A legérzékenyebb adatok (üzleti/pénzügyi, egészségügyi, személyes adatok stb.) felfedezése és osztályozása döntő szerepet játszhat a szervezeti információvédelem ben. Infrastruktúraként alkalmas lehet az alábbiakra:
 
-- Különböző biztonsági forgatókönyvek, például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása.
-- A szigorúan bizalmas adatokat tartalmazó adatbázisok hozzáférésének szabályozása, és a biztonság megerősítése.
-- Az adatvédelmi szabványoknak és a szabályozási megfelelőségi követelményeknek való megfelelés elősegítése.
+- Különböző biztonsági forgatókönyvek, például figyelése (naplózása) és riasztása a rendellenes hozzáférést a bizalmas adatokhoz.
+- A rendkívül bizalmas adatokat tartalmazó adatbázisokhoz való hozzáférés szabályozása és biztonságának szigorítása.
+- Segíthet megfelelni az adatvédelmi szabványoknak és a szabályozási megfelelőség követelményeinek.
 
-További információ: Ismerkedés [az adatfelderítési & besorolással](sql-database-data-discovery-and-classification.md).
+További információ: [Az adatok felderítésének & besorolásának első lépései](sql-database-data-discovery-and-classification.md)című témakörben található.
 
 ### <a name="compliance"></a>Megfelelőség
 
-A fenti szolgáltatások és funkciók mellett, amelyek segíthetnek az alkalmazásnak a különböző biztonsági követelmények teljesítésében, Azure SQL Database is részt vesz a rendszeres auditálásokban, és számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
+A fenti funkciók és funkciók mellett, amelyek segítségével az alkalmazás megfelel a különböző biztonsági követelményeknek, az Azure SQL Database is részt vesz a rendszeres naplózás, és számos megfelelőségi szabványok igazolt. További információt a [Microsoft Azure Adatvédelmi központban](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) talál, ahol megtalálhatja az SQL Database megfelelőségi tanúsítványainak legfrissebb listáját.
 
 ## <a name="next-steps"></a>További lépések
 
-- A bejelentkezések, a felhasználói fiókok, az adatbázis-szerepkörök és a SQL Databaseban lévő engedélyek használatának megvitatására a [bejelentkezések és a felhasználói fiókok kezelése](sql-database-manage-logins.md)című témakörben olvashat.
-- Az adatbázis-naplózással kapcsolatos megbeszélések: [SQL Database naplózás](sql-database-auditing.md).
-- A veszélyforrások észlelésével kapcsolatban lásd: [SQL Database veszélyforrások észlelése](sql-database-threat-detection.md).
+- A bejelentkezések, a felhasználói fiókok, az adatbázis-szerepkörök és az engedélyek SQL Database-ben való használatáról a [Bejelentkezések és felhasználói fiókok kezelése című](sql-database-manage-logins.md)témakörben található.
+- Az adatbázis-naplózásról az [SQL Database naplózása](sql-database-auditing.md)című témakörben lehet előbeszélni.
+- A fenyegetések észleléséről az [SQL Database fenyegetésészleléscímű](sql-database-threat-detection.md)témakörében lehet előbeszélni.

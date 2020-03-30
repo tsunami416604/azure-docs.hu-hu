@@ -1,6 +1,6 @@
 ---
-title: Töltse le a számítógép - az Azure Media Services objektumai |} A Microsoft Docs
-description: Megtudhatja, hogyan eszközök letöltése a számítógépre. Kódminták nyelven írták C# , és használja a Media Services SDK a .NET-hez.
+title: A Media Services-kellékek letöltése a számítógépre - Azure | Microsoft dokumentumok
+description: További információ arról, hogy miként tölthet le kellékeket a számítógépre. A kódminták C# nyelven íródnak, és a Media Services SDK-t használják a .NET-hez.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61465660"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: Továbbítás letöltésen adategység keresztül  
-Ez a cikk ismerteti a médiatartalmak ellátásához feltöltése Media Services-továbbításának beállítások. A Media Services tartalomkézbesítés az számos olyan alkalmazási esetekben. Kódolás, után töltse le a létrehozott médiatartalmak ellátásához, vagy a streamelési lokátorok használatával érheti el őket. A jobb teljesítmény és méretezhetőség érdekében hogy is tartalmat továbbít egy Content Delivery Network (CDN) használatával.
+# <a name="how-to-deliver-an-asset-by-download"></a>Hogyan: Eszköz kézbesítése letöltéssel  
+Ez a cikk a Media Servicesszolgáltatásba feltöltött médiaeszközök kézbesítésének lehetőségeit ismerteti. A Media Services-tartalmakat számos alkalmazási forgatókönyvben is kézbesítheti. Kódolás után töltse le a létrehozott médiaeszközöket, vagy érje el őket egy streamelési lokátor használatával. A jobb teljesítmény és méretezhetőség érdekében tartalomkézbesítési hálózat (CDN) használatával is kézbesíthet tartalmakat.
 
-Ez a példa bemutatja, hogyan töltheti le a médiatartalmak ellátásához a Media Services szolgáltatásból a helyi számítógépen. A kód a feladatok Feladatazonosító és hozzáfér a Media Services-fiókjához társított lekérdezi a **OutputMediaAssets** gyűjteményt (amely az eredmények feladat futtatása közül egy vagy több kimeneti médiatartalmak készletét). Ez a példa bemutatja, hogyan töltheti le a feladat kimeneti médiatartalmak, de ugyanezzel a módszerrel, más eszközök letöltésére is alkalmazhat.
+Ez a példa bemutatja, hogyan tölthet le médiaeszközöket a Media Services szolgáltatásból a helyi számítógépre. A kód lekérdezi a Media Services-fiókhoz társított feladatokat feladatazonosító szerint, és hozzáfér az **OutputMediaAssets** gyűjteményéhez (amely egy vagy több kimeneti adathordozó-eszköz készlete, amely egy feladat futtatásából származik). Ez a példa bemutatja, hogyan tölthet le kimeneti médiaelemeket egy feladatból, de ugyanazt a megközelítést alkalmazhatja más eszközök letöltéséhez.
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Az ugyanazon házirend-azonosító akkor használja, ha Ön mindig ugyanazokat a napokat / hozzáférési engedélyeket, például olyan továbbra is helyben hosszú ideje (nem feltöltött szabályzatokat) keresők szabályzatai. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Használja ugyanazt a házirend-azonosítót, ha mindig ugyanazokat a napokat / hozzáférési engedélyeket használja, például a helymeghatározókra vonatkozó házirendeket, amelyek hosszú ideig a helyükön maradnak (nem feltöltési házirendek). További információt [ebben a cikkben](media-services-dotnet-manage-entities.md#limit-access-policies) talál.
 
 ```csharp
     // Download the output asset of the specified job to a local folder.
@@ -81,12 +81,12 @@ Ez a példa bemutatja, hogyan töltheti le a médiatartalmak ellátásához a Me
 ```
 
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Tartalomközvetítés](media-services-deliver-streaming-content.md)
+[Streamelési tartalom biztosítása](media-services-deliver-streaming-content.md)
 

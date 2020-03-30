@@ -1,6 +1,6 @@
 ---
-title: Renderelési képességek – Azure Batch
-description: A standard Azure Batch funkciói a renderelési munkaterhelések és alkalmazások futtatására szolgálnak. A Batch speciális funkciókat tartalmaz a renderelési feladatok támogatásához.
+title: Renderelési lehetőségek - Azure Batch
+description: A szabványos Azure Batch-képességek a renderelési számítási feladatok és alkalmazások futtatására szolgálnak. A Batch speciális funkciókat tartalmaz a renderelési számítási feladatok támogatásához.
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,91 +8,91 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75449722"
 ---
-# <a name="azure-batch-rendering-capabilities"></a>Renderelési képességek Azure Batch
+# <a name="azure-batch-rendering-capabilities"></a>Az Azure Batch leképezési képességei
 
-A standard Azure Batch funkciói a renderelési munkaterhelések és alkalmazások futtatására szolgálnak. A Batch a renderelési munkaterhelések támogatásához is tartalmaz bizonyos funkciókat.
+A szabványos Azure Batch-képességek a renderelési számítási feladatok és alkalmazások futtatásához használatosak. A Batch a renderelési számítási feladatok támogatásához speciális funkciókat is tartalmaz.
 
-A Batch-fogalmak, például a készletek, a feladatok és a feladatok áttekintését [ebben a cikkben](https://docs.microsoft.com/azure/batch/batch-api-basics)találja.
+A Kötegfogalmak áttekintését, beleértve a készleteket, a feladatokat és a feladatokat, olvassa el [ezt a cikket.](https://docs.microsoft.com/azure/batch/batch-api-basics)
 
-## <a name="batch-pools"></a>Batch-készletek
+## <a name="batch-pools"></a>Kötegkészletek
 
-### <a name="rendering-application-installation"></a>Alkalmazás telepítésének megjelenítése
+### <a name="rendering-application-installation"></a>Renderelési alkalmazás telepítése
 
-Ha csak az előre telepített alkalmazásokat kell használni, az Azure piactéren megjelenített virtuálisgép-rendszerkép is megadható a készlet konfigurációjában.
+Az Azure Marketplace-en renderelés virtuális gép lemezképe megadható a készlet konfigurációjában, ha csak az előre telepített alkalmazásokat kell használni.
 
-Van egy Windows 2016-rendszerkép és egy CentOS-rendszerkép.  Az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en a virtuálisgép-lemezképek a "batch rendering" kifejezésre kereshetnek.
+Van egy Windows 2016-lemezkép és egy CentOS-lemezkép.  Az [Azure Piactéren](https://azuremarketplace.microsoft.com)a virtuális gép lemezképek találhatók a "batch renderelés" keres.
 
-Példa a készlet konfigurálására: az [Azure CLI renderelési oktatóanyaga](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  A Azure Portal és a Batch Explorer GUI-eszközöket biztosítanak egy renderelési virtuálisgép-rendszerkép kiválasztásához a készlet létrehozásakor.  Ha batch API-t használ, adja meg a következő tulajdonságértékeket a [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) a készlet létrehozásakor:
+Például készlet konfiguráció, tekintse meg az [Azure CLI renderelés i. bemutató.](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)  Az Azure Portal és a Batch Explorer gui eszközöket biztosít a renderelési virtuálisgép-lemezkép kiválasztásához készlet létrehozásakor.  Batch API használata esetén adja meg a következő tulajdonságértékeket az [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) számára készlet létrehozásakor:
 
-| Gyártó/kiadó | Ajánlat | Termékváltozat | Verzió |
+| Közzétevő | Ajánlat | SKU | Verzió |
 |---------|---------|---------|--------|
-| batch | renderelés – centos73 | renderelési | legutóbbi |
-| batch | renderelés – windows2016 | renderelési | legutóbbi |
+| kötegelt | renderelés-centos73 | Renderelés | legújabb |
+| kötegelt | renderelés-windows2016 | Renderelés | legújabb |
 
-Egyéb beállítások is elérhetők, ha további alkalmazásokra van szükség a készletben lévő virtuális gépeken:
+További lehetőségek akkor érhetők el, ha további alkalmazásokra van szükség a készlet virtuális gépein:
 
-* Egy egyéni rendszerkép a megosztott rendszerkép-katalógusból:
-  * így pontosan azokkal az alkalmazásokkal és verziókkal konfigurálhatja a virtuális gépet, amelyekre szüksége van. További információt [a készlet létrehozása a megosztott rendszerkép](batch-sig-images.md)-katalógusban című témakörben talál. Az Autodesk és a Chaos csoport módosította az Arnold és a V-Ray-t, hogy érvényesítse a Azure Batch licencelési szolgáltatását. Győződjön meg arról, hogy ezen alkalmazások verziói rendelkeznek ezzel a támogatással, ellenkező esetben a használaton kívüli licencelés nem fog működni. A Maya vagy a 3ds Max jelenlegi verzióiban nem szükséges a licenckiszolgáló a fej (batch/parancssori mód) futtatásakor. Ha nem tudja, hogyan folytassa ezt a lehetőséget, forduljon az Azure ügyfélszolgálatához.
-* [Alkalmazáscsomag](https://docs.microsoft.com/azure/batch/batch-application-packages):
-  * Csomagolja az alkalmazás fájljait egy vagy több ZIP-fájl használatával, töltse fel a Azure Portalon keresztül, és a csomag a készlet konfigurációjában legyen megadva. A készletben lévő virtuális gépek létrehozásakor a rendszer letölti a ZIP-fájlokat, és Kinyeri a fájlokat.
-* Erőforrások fájljai:
-  * Az alkalmazásfájlok az Azure Blob Storage-ba lesznek feltöltve, és a [készlet indítási tevékenységében](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)a fájlokra mutató hivatkozások is megadhatók. A készletben lévő virtuális gépek létrehozásakor az erőforrás-fájlok minden virtuális gépre letöltődnek.
+* Egyéni kép a Megosztott képtárból:
+  * így pontosan azokkal az alkalmazásokkal és verziókkal konfigurálhatja a virtuális gépet, amelyekre szüksége van. További információt a [Készlet létrehozása a Megosztott képtárral című témakörben talál.](batch-sig-images.md) Az Autodesk és a Chaos Group módosította az Arnoldot, illetve a V-Rayt, hogy érvényesítse az Azure Batch licencelési szolgáltatással szemben. Győződjön meg arról, hogy rendelkezik ezen alkalmazások verzióival ezzel a támogatással, különben a használatalapú licencelés nem fog működni. A Maya vagy a 3ds Max jelenlegi verziói nem igényelnek licenckiszolgálót fej nélküli futtatásesetén (kötegelt/parancssori módban). Lépjen kapcsolatba az Azure-támogatással, ha nem biztos abban, hogy miként kell eljárnia ezzel a beállítással.
+* [Alkalmazáscsomagok:](https://docs.microsoft.com/azure/batch/batch-application-packages)
+  * Csomagolja be az alkalmazásfájlokat egy vagy több ZIP-fájl használatával, töltse fel az Azure Portalon keresztül, és adja meg a csomagot a készlet konfigurációjában. A készletvirtuális gépek létrehozásakor a ZIP-fájlok letöltése és a kibontás.
+* Erőforrásfájlok:
+  * Az alkalmazásfájlok feltöltése az Azure blob storage-ba, és fájlhivatkozásokat a [készlet indítási feladat.](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) Készlet virtuális gépek létrehozásakor az erőforrásfájlok minden virtuális gépre letöltődnek.
 
-### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Használaton kívüli licencelés az előre telepített alkalmazásokhoz
+### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Használatalapú licencelés előre telepített alkalmazásokhoz
 
-A használni kívánt alkalmazásokat és a licencelési díjat meg kell adni a készlet konfigurációjában.
+A használni kívánt alkalmazásokat, és a licencelési díjat meg kell adni a készlet konfigurációjában.
 
-* [Készlet létrehozásakor](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)a `applicationLicenses` tulajdonság megadása.  A következő értékek megadhatók a karakterláncok tömbben: "Ray", "Arnold", "3dsmax", "Maya".
-* Egy vagy több alkalmazás megadásakor a rendszer hozzáadja az alkalmazások költségeit a virtuális gépekhez.  Az alkalmazások árai a [Azure batch díjszabási oldalon](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)találhatók.
+* Adja `applicationLicenses` meg a [tulajdonságot készlet létrehozásakor](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  A következő értékeket lehet megadni a tömb karakterláncok - "vray", "arnold", "3dsmax", "maya".
+* Ha egy vagy több alkalmazást ad meg, akkor ezeknek az alkalmazásoknak a költsége hozzáadódik a virtuális gépek költségéhez.  Az alkalmazásárak az [Azure Batch díjszabási oldalán](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)jelennek meg.
 
 > [!NOTE]
-> Ha ehelyett egy licenckiszolgálóra csatlakozik a renderelési alkalmazások használatához, ne határozza meg a `applicationLicenses` tulajdonságot.
+> Ha ehelyett licenckiszolgálóhoz csatlakozik a renderelési `applicationLicenses` alkalmazások használatához, ne adja meg a tulajdonságot.
 
-Az Azure Portal vagy Batch Explorer használatával kiválaszthatja az alkalmazásokat, és megjelenítheti az alkalmazások árát.
+Az Azure Portalon vagy a Batch Explorerben kiválaszthatja az alkalmazásokat, és megjelenítheti az alkalmazás árakat.
 
-Ha egy alkalmazás használatára történt kísérlet, de az alkalmazás nem lett megadva a készlet konfigurációjának `applicationLicenses` tulajdonságában, vagy nem éri el a licenckiszolgálót, akkor az alkalmazás végrehajtása licencelési hiba és nem nulla értékű kilépési kóddal meghiúsul.
+Ha megkísérli egy alkalmazás használatát, de az alkalmazás nincs `applicationLicenses` megadva a készletkonfiguráció tulajdonságában, vagy nem éri el a licenckiszolgálót, akkor az alkalmazás végrehajtása licencelési hibával és nem nulla kilépési kóddal sikertelen.
 
-### <a name="environment-variables-for-pre-installed-applications"></a>Az előre telepített alkalmazások környezeti változói
+### <a name="environment-variables-for-pre-installed-applications"></a>Környezeti változók az előre telepített alkalmazásokhoz
 
-Ahhoz, hogy létre tudja hozni a parancssort a renderelési feladatokhoz, meg kell adni a renderelési alkalmazás végrehajtható fájljainak telepítési helyét.  A rendszerkörnyezet változói az Azure Marketplace virtuálisgép-rendszerképein lettek létrehozva, és nem kell tényleges elérési utakat megadni.  Ezek a környezeti változók az egyes feladatokhoz létrehozott [szabványos batch környezeti változók](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) mellett vannak.
+A renderelési feladatok parancssorának létrehozásához meg kell adni a renderelési alkalmazás végrehajtható fájljainak telepítési helyét.  Rendszerkörnyezeti változók jöttek létre az Azure Marketplace virtuális gép rendszerképek, amely a tényleges elérési utak megadása helyett használható.  Ezek a környezeti változók az egyes feladatokhoz létrehozott [szabványos Batch környezeti változókon](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) kívül találhatók.
 
-|Jelentkezés|Alkalmazás végrehajtható fájlja|Környezeti változó|
+|Alkalmazás|Alkalmazás végrehajtható fájlja|Környezeti változó|
 |---------|---------|---------|
-|Autodesk 3ds Max 2018|3dsmaxcmdio. exe|3DSMAX_2018_EXEC|
-|Autodesk 3ds Max 2019|3dsmaxcmdio. exe|3DSMAX_2019_EXEC|
-|Autodesk Maya 2017|Render. exe|MAYA_2017_EXEC|
-|Autodesk Maya 2018|Render. exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray önálló|Ray. exe|VRAY_3.60.4_EXEC|
-Arnold 2017 parancssor|kick. exe|ARNOLD_2017_EXEC|
-|Arnold 2018 parancssor|kick. exe|ARNOLD_2018_EXEC|
-|Blender|Blender. exe|BLENDER_2018_EXEC|
+|Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
+|Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
+|Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
+|Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
+|Káosz Csoport V-Ray Önálló|vray.exe|VRAY_3.60.4_EXEC|
+Arnold 2017 parancssor|kick.exe|ARNOLD_2017_EXEC|
+|Arnold 2018 parancssor|kick.exe|ARNOLD_2018_EXEC|
+|Turmixgép|turmixgép.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM-családok
+### <a name="azure-vm-families"></a>Azure virtuálisgép-családok
 
-Más számítási feladatokhoz hasonlóan a renderelési alkalmazások rendszerkövetelményei eltérőek, és a teljesítményre vonatkozó követelmények a feladatok és a projektek esetében eltérőek.  Számos virtuálisgép-család elérhető az Azure-ban a követelményektől függően – a legalacsonyabb költség, a legjobb ár/teljesítmény, a legjobb teljesítmény és így tovább.
-Egyes renderelési alkalmazások, például Arnold, CPU-alapúak; mások, például a V-Ray és a Blender ciklusok a processzorokat és/vagy a GPU-t is használhatják.
-A rendelkezésre álló virtuálisgép-családok és a virtuálisgép-méretek leírását [lásd: VM-típusok és-méretek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+Más számítási feladatokhoz is az alkalmazásrendszer követelményei eltérőek, a teljesítménykövetelmények pedig eltérőek a feladatok és a projektek esetében.  A virtuálisgép-családok széles választéka érhető el az Azure-ban az Ön igényeitől függően – a legalacsonyabb költség, a legjobb ár/teljesítmény, a legjobb teljesítmény és így tovább.
+Egyes renderelési alkalmazások, például az Arnold, CPU-alapúak; más, például a V-Ray és a Blender Cycles processzorokat és/vagy GPU-kat használhat.
+Az elérhető virtuálisgép-családok és virtuálisgép-méretek leírását [a Virtuálisgép-típusok és -méretek ismerteti.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 
 ### <a name="low-priority-vms"></a>Alacsony prioritású virtuális gépek
 
-Más számítási feladatokhoz hasonlóan az alacsony prioritású virtuális gépek is használhatók a rendereléshez a Batch-készletekben.  Az alacsony prioritású virtuális gépek ugyanúgy teljesítik a normál dedikált virtuális gépeket, mint a felesleges Azure-kapacitást, és nagy kedvezményekhez is elérhetők.  Az alacsony prioritású virtuális gépek használatának kompromisszuma az, hogy ezek a virtuális gépek nem érhetők el, vagy bármikor előzik, a rendelkezésre álló kapacitástól függően. Emiatt az alacsony prioritású virtuális gépek nem lesznek megfelelőek az összes renderelési feladathoz. Ha például a képek több órát is igénybe vesznek, akkor valószínű, hogy a képek megjelenítését megszakították, és a virtuális gépek előzik miatt újraindulnak.
+Más számítási feladatokhoz is csak úgy, alacsony prioritású virtuális gépek is használhatók a kötegkészletekben a rendereléshez.  Az alacsony prioritású virtuális gépek ugyanazt a teljesítményt hajtják végre, mint a normál dedikált virtuális gépek, de kihasználja a felesleges Azure-kapacitást, és nagy kedvezményesetén érhetők el.  Az alacsony prioritású virtuális gépek használatának kompromisszumos használata az, hogy ezek a virtuális gépek nem lehet lefoglalni, vagy lehet, hogy a rendelkezésre álló kapacitás. Emiatt az alacsony prioritású virtuális gépek nem lesznek alkalmasak minden renderelési feladathoz. Például ha a képek megjelenítése több órát vesz igénybe, akkor valószínű, hogy a képek renderelése megszakadt és újraindult a virtuális gépek előzetes használata miatt nem lenne elfogadható.
 
-Az alacsony prioritású virtuális gépek jellemzőivel és a Batch használatával történő konfigurálásának különböző módjaival kapcsolatos további információkért lásd: [alacsony prioritású virtuális gépek használata a Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)szolgáltatással.
+Az alacsony prioritású virtuális gépek jellemzőiről és a Batch használatával történő konfigurálásuk különböző módjairól az [Alacsony prioritású virtuális gépek használata a Batch használatával](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)című témakörben talál további információt.
 
 ## <a name="jobs-and-tasks"></a>Feladatok és feladatok
 
-A feladatokhoz és a feladatokhoz nem szükségesek megjelenítésre vonatkozó támogatás.  A fő konfigurációs elem a feladat parancssora, amelynek a szükséges alkalmazásra kell hivatkoznia.
-Az Azure Marketplace virtuálisgép-rendszerképeinek használatakor az ajánlott eljárás az, hogy a környezeti változók használatával adja meg az elérési utat és az alkalmazás végrehajtható fájlját.
+A feladatokhoz és feladatokhoz nincs szükség renderelésspecifikus támogatásra.  A fő konfigurációs elem a feladat parancssora, amelynek hivatkoznia kell a szükséges alkalmazásra.
+Az Azure Marketplace virtuálisgép-lemezképek használata kor, majd az ajánlott eljárás a környezeti változók használatával adja meg az elérési utat és az alkalmazás végrehajtható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Batch rendering példái között próbálja ki a két oktatóanyagot:
+A Batch renderelés példáit próbálja ki a két oktatóanyag:
 
-* [Megjelenítés az Azure CLI használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Megjelenítés Batch Explorer használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Renderelés az Azure CLI használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Renderelés a Batch Explorer használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
