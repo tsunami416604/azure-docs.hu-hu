@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Azure Adatkezelő-fürt létrehozása & DB-ben'
+title: 'Rövid útmutató: Hozzon létre egy Azure Data Explorer-fürt& DB'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure Data Explorer-fürtöt és -adatbázist, és töltheti fel adatokkal.
 author: orspod
 ms.author: orspodek
@@ -7,37 +7,37 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ed0c570449a0c21e9eace1273228539db7c208da
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199852"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80238644"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rövid útmutató: Azure Data Explorer-fürt és -adatbázis létrehozása
 
 > [!div class="op_single_selector"]
-> * [Portal](create-cluster-database-portal.md)
-> * [Parancssori felület](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [Portál](create-cluster-database-portal.md)
+> * [parancssori felület](create-cluster-database-cli.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [ARM-sablon](create-cluster-database-resource-manager.md)
+> * [ARM sablon](create-cluster-database-resource-manager.md)
 
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer használatához először egy fürtöt hozunk létre, majd egy vagy több adatbázist a fürtben. Ezután adatokat töltünk be az adatbázisba, hogy lekérdezéseket futtathassunk rajta. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-Hozzon létre egy Azure Adatkezelő-fürtöt egy Azure-erőforráscsoport számítási és tárolási erőforrásainak meghatározott készletével.
+Hozzon létre egy Azure Data Explorer-fürtegy meghatározott számítási és tárolási erőforrások egy Azure-erőforráscsoportban.
 
-1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
+1. Válassza a **+ Erőforrás létrehozása** gombot a portál bal felső sarkában.
 
 1. Keressen az *Azure Data Explorer* kifejezésre.
 
@@ -45,7 +45,7 @@ Hozzon létre egy Azure Adatkezelő-fürtöt egy Azure-erőforráscsoport szám�
 
 1. Az **Azure Data Explorer** területen, a képernyő alján válassza a **Létrehozás** elemet.
 
-1. Töltse ki az alapszintű fürt részleteit a következő információkkal.
+1. Töltse ki az alapvető fürt adatait a következő információkkal.
 
    ![Fürt létrehozása űrlap](media/create-cluster-database-portal/create-cluster-form2.png)
 
@@ -53,15 +53,15 @@ Hozzon létre egy Azure Adatkezelő-fürtöt egy Azure-erőforráscsoport szám�
     |---|---|---|
     | Előfizetés | Az Ön előfizetése | Válassza ki a fürthöz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | Az erőforráscsoport | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
-    | Fürt neve | A fürt egyedi neve | Válasszon egy egyedi nevet a fürt azonosításához. A rendszer hozzáfűzi a *[régiónév].kusto.windows.net* tartománynevet a megadott fürtnévhez. A név csak kisbetűket és számokat tartalmazhat, 4 – 22 karakterből kell állnia.
-    | Régió | USA *nyugati* régiója vagy *USA 2. nyugati* régiója | Válassza az *USA nyugati* régiója vagy az *USA nyugati* régiója (ha rendelkezésre állási zónák használata) lehetőséget ehhez a rövid útmutatóhoz. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
-    | Rendelkezésre állási zónák | *1*, *2*és/vagy *3* | Helyezze a fürt példányait a különböző rendelkezésre állási zónákba ugyanabban a régióban (opcionális). [Azure Availability Zones](/azure/availability-zones/az-overview) az azonos Azure-régióban található egyedi fizikai helyszínek. Egy Azure Adatkezelő-fürtöt és a részleges régió meghibásodásának adatait védik. A fürtcsomópontok alapértelmezés szerint ugyanabban az adatközpontban jönnek létre. Több rendelkezésre állási zóna kiválasztásával egyetlen meghibásodási pontot törölheti, és biztosíthatja a magas rendelkezésre állást. A rendelkezésre állási zónákra történő központi telepítés csak a fürt létrehozása során lehetséges, és később nem módosítható.
+    | Fürt neve | A fürt egyedi neve | Válasszon egy egyedi nevet a fürt azonosításához. A rendszer hozzáfűzi a *[régiónév].kusto.windows.net* tartománynevet a megadott fürtnévhez. A név csak kisbetűket és számokat tartalmazhat, 4 és 22 karakter között kell lennie.
+    | Régió | *USA nyugati* vagy *usa nyugati 2* | Válassza az *USA nyugati* vagy az USA nyugati *felé 2* (ha rendelkezésre állási zónákat) lehetőséget ehhez a rövid útmutatóhoz. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
+    | Rendelkezésre állási zónák | *1,* *2*és/vagy *3* | Helyezze el a fürtpéldányokat az ugyanabban a régióban található különböző rendelkezésre állási zónákban (nem kötelező). [Az Azure rendelkezésre állási zónái](/azure/availability-zones/az-overview) egyedi fizikai helyek ugyanabban az Azure-régióban. Egy Azure Data Explorer-fürt és az adatok részleges régióhiba elleni védelmét. A fürtcsomópontok alapértelmezés szerint ugyanabban az adatközpontban jönnek létre. Több rendelkezésre állási zóna kiválasztásával kiküszöbölheti az egyetlen meghibásodási pontot, és magas rendelkezésre állást biztosíthat. A rendelkezésre állási zónákba való telepítés csak a fürt létrehozása során lehetséges, és később nem módosítható.
     | Számítási specifikációk | *D13_v2* | Ehhez az útmutatóhoz válassza a legalacsonyabb díjszabást. Éles üzemben az igényeinek leginkább megfelelő díjszabást válassza.
     | | | |
 
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a fürt adatainak áttekintéséhez, és **hozzon létre** a fürt kiépítéséhez. A kiépítés általában körülbelül 10 percet vesz igénybe.
+1. Válassza **a Véleményezés + létrehozás** lehetőséget a fürt részleteinek áttekintéséhez, és a **Létrehozás lehetőséget** a fürt kiépítéséhez. Kiépítése általában körülbelül 10 percet vesz igénybe.
 
-1. Ha a telepítés befejeződött, válassza az **Ugrás erőforráshoz**lehetőséget.
+1. Amikor a központi telepítés befejeződött, válassza **az Ugrás az erőforrásra**lehetőséget.
 
     ![Erőforrás megnyitása](media/create-cluster-database-portal/notification-resource.png)
 
@@ -71,7 +71,7 @@ Most már készen áll a folyamat második lépésének, az adatbázis létrehoz
 
 1. Az **Áttekintés** lapon válassza az **Adatbázis létrehozása** lehetőséget.
 
-    ![2\. lépés: adatbázis létrehozása](media/create-cluster-database-portal/database-creation.png)
+    ![2. lépés: adatbázis létrehozása](media/create-cluster-database-portal/database-creation.png)
 
 1. Adja meg az alábbi adatokat az űrlapon.
 
@@ -80,23 +80,23 @@ Most már készen áll a folyamat második lépésének, az adatbázis létrehoz
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Adatbázis neve | *TestDatabase* | Az adatbázis nevének egyedinek kell lennie a fürtön belül.
-    | Megőrzési időszak | *3650* | Az az időtartam (nap), ameddig garantált, hogy az adat a lekérdezés számára elérhető marad. Az időtartam az adatok betöltésének időpontjával kezdődik.
-    | Gyorsítótárazási időszak | *31* | Az az időtartam (napban megadva), ameddig a gyakran lekérdezett adatmennyiséget SSD-tárolóban vagy RAM-ban szeretné tárolni, nem pedig hosszabb távú tárolás esetén.
+    | Megőrzési időszak | *3650* | Az az időtartam (napokban), amelyhez garantált, hogy az adatok lekérdezésre rendelkezésre állnak. Az időtartam az adatok betöltésének időpontjával kezdődik.
+    | Gyorsítótárazási időszak | *31* | Az az időtartam (napokban), amelynél a gyakran lekérdezett adatok elérhetők maradnak az SSD-tárolóban vagy a RAM-ban, nem pedig a hosszabb távú tárolóban.
     | | | |
 
-1. A **Létrehozás** gombra kattintva hozza létre az adatbázist. Az adatbázis létrehozása általában kevesebb mint egy percet vesz igénybe. Amikor a folyamat befejeződött, a rendszer visszalép a fürt **Áttekintés** lapjára.
+1. Az adatbázis létrehozásához válassza a **Létrehozás** gombot. Az adatbázis létrehozása általában kevesebb mint egy percet vesz igénybe. Amikor a folyamat befejeződött, a rendszer visszalép a fürt **Áttekintés** lapjára.
 
 ## <a name="run-basic-commands-in-the-database"></a>Alapvető parancsok futtatása az adatbázison
 
 Most, hogy rendelkezik egy fürttel és egy adatbázissal, lekérdezéseket és parancsokat futtathat. Az adatbázisban még nincsenek adatok, mindazonáltal már áttekinthető az eszközök működése.
 
-1. A fürt alatt válassza a **Lekérdezés** lehetőséget. Illessze be a parancsot `.show databases` a lekérdezési ablakba, majd válassza a **Futtatás**lehetőséget.
+1. A fürt alatt válassza a **Lekérdezés** lehetőséget. Illessze `.show databases` be a parancsot a lekérdezési ablakba, majd válassza a **Futtatás lehetőséget.**
 
     ![Adatbázisparancsok megjelenítése](media/create-cluster-database-portal/show-databases.png)
 
     Az eredményhalmaz a **TestDatabase** találatot tartalmazza, amely az egyetlen adatbázis a fürtben.
 
-1. Illessze be a parancsot `.show tables` a lekérdezési ablakba, és válassza a **Futtatás**lehetőséget.
+1. Illessze `.show tables` be a parancsot a lekérdezési ablakba, és válassza a **Futtatás lehetőséget.**
 
     Ez a parancs egy üres eredményhalmazt ad vissza, mivel még nem rendelkezik táblákkal. A sorozat következő cikkében felveszünk egy táblát.
 
@@ -110,15 +110,15 @@ A fürtöt az üzleti igényektől függően bármikor leállíthatja és újrai
 
 1. A fürt újraindításához válassza az **Áttekintés** oldalon az **Indítás** lehetőséget.
 
-    A fürt újraindítása után körülbelül 10 percet vesz igénybe ahhoz, hogy elérhető legyen (például amikor eredetileg kiosztották). További időt vesz igénybe, mire az adatok a gyakori elérésű gyorsítótárba is betöltődnek.  
+    A fürt újraindítása után körülbelül 10 percet vesz igénybe, amíg elérhetővé válik (például amikor eredetileg kiépítésre került). További időt vesz igénybe, mire az adatok a gyakori elérésű gyorsítótárba is betöltődnek.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha más rövid útmutatók és oktatóanyagok követését tervezi, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben szüntesse meg az erőforráscsoport tisztítását, hogy elkerülje a költségek felmerülését.
+Ha más rövid útmutatókat és oktatóanyagokat is követni kíván, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben tisztítsa meg az erőforráscsoportot, hogy elkerülje a költségeket.
 
-1. A Azure Portal válassza ki a bal szélen az **erőforráscsoportok** elemet, majd válassza ki a adatkezelő fürtöt tartalmazó erőforráscsoportot.  
+1. Az Azure Portalon válassza ki az **erőforráscsoportokat** a bal szélen, majd válassza ki az adatkezelő-fürtöt tartalmazó erőforráscsoportot.  
 
-1. Válassza az **erőforráscsoport törlése** elemet a teljes erőforráscsoport törléséhez. Ha meglévő erőforráscsoportot használ, dönthet úgy, hogy csak a Adatkezelő-fürtöt törli.
+1. Válassza **az Erőforráscsoport törlése** lehetőséget a teljes erőforráscsoport törléséhez. Meglévő erőforráscsoport használata esetén csak az Adatkezelő-fürtet törölheti.
 
 ## <a name="next-steps"></a>További lépések
 

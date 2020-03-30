@@ -1,6 +1,6 @@
 ---
-title: Használja az eseményközpont alkalmazásból Apache kafka platformmal – Azure Event Hubs |} A Microsoft Docs
-description: Ez a cikk az Azure Event Hubs által az Apache Kafka támogatási információkat biztosít.
+title: Az Apache Kafka alkalmazás eseményközpontjának használata – Azure Event Hubs | Microsoft dokumentumok
+description: Ez a cikk az Azure Event Hubs Apache Kafka-támogatásáról nyújt tájékoztatást.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -10,25 +10,25 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: fc81226e754178ad0edfff96a494dd7522662261
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264894"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283650"
 ---
-# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Az Azure Event Hubs használata az Apache Kafka-alkalmazásokból
-Az Event Hubs egy Kafka-végpontot, amely segítségével biztosít a meglévő által a Kafka-alapú alkalmazások futtatása a saját Kafka-fürt helyett. Event Hubs támogatja a [1,0-es és újabb verziójú Apache Kafka protokollt](https://kafka.apache.org/documentation/), és együttműködik a meglévő Kafka-alkalmazásokkal, beleértve a MirrorMaker is.  
+# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Azure Event Hubs használata Apache Kafka-alkalmazásokból
+Az Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Kafka alapú alkalmazások a saját Kafka-fürt futtatása alternatívájaként használhatnak. Az Event Hubs támogatja [az Apache Kafka 1.0-s és újabb protokollt,](https://kafka.apache.org/documentation/)és együttműködik a meglévő Kafka alkalmazásokkal, beleértve a MirrorMakert is.  
 
-## <a name="what-does-event-hubs-for-kafka-provide"></a>Mit nyújt a Kafka az Event Hubs?
+## <a name="what-does-event-hubs-for-kafka-provide"></a>Mit biztosít a Kafka eseményközpontja?
 
-Az Event Hubs, Kafka szolgáltatáshoz biztosít egy protokoll a fő Azure Event Hubs, Kafka 1.0-s verziójával, és később a olvasása és írása a Kafka-témakörökhöz bináris kompatibilis felett. Nincs kód megváltoztatására, de a minimális konfigurációs változást előfordulhat, hogy a Kafka-végpont az alkalmazások használatához. Frissítse a kapcsolati karakterláncot a konfigurációk, a Kafka-végpontra mutat a Kafka-fürt helyett az eseményközpont által elérhetővé tett mutasson. Ezt követően megkezdheti az Event hubsba a Kafka-protokollt használó alkalmazások az események streamelése. Ez az integráció olyan keretrendszereket is támogat, mint a [Kafka-csatlakozás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect), amely jelenleg előzetes verzióban érhető el. 
+A Kafka Eseményközpontok szolgáltatás egy protokollfejet biztosít az Azure Event Hubs tetején, amely binárisan kompatibilis a Kafka 1.0-s és újabb verzióival a Kafka-témakörökből való olvasáshoz és íráshoz. Előfordulhat, hogy elkezdi használni a Kafka-végpontot az alkalmazásokkód módosítása nélkül, de minimális konfigurációs változás. A konfigurációkban frissíti a kapcsolati karakterláncot, hogy az eseményközpont által elérhetővé tett Kafka végpontra mutasson, ahelyett, hogy a Kafka-fürtre mutatna. Ezután megkezdheti az események streamelését az alkalmazásokból, amelyek a Kafka protokollt használják az Event Hubs-ba. Ez az integráció támogatja a keretrendszerek, mint [a Kafka Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect), amely jelenleg előzetes verzióban érhető el. 
 
-Elméletileg Kafka és Event Hubs közel azonosak: ezek mind a folyamatos átviteli adattovábbításra épülő particionált naplók. Az alábbi táblázat a fogalmak közötti Kafka és az Event Hubs képezi le.
+Fogalmilag Kafka és Event Hubs közel azonosak: mindkettő particionált naplók streamelési adatokhoz készült. Az alábbi táblázat leképezi a Kafka és az Event Hubs közötti fogalmakat.
 
-### <a name="kafka-and-event-hub-conceptual-mapping"></a>A Kafka és az Eseményközpont elméleti leképezését
+### <a name="kafka-and-event-hub-conceptual-mapping"></a>Kafka és az Event Hub fogalmi leképezése
 
-| A Kafka fogalom | Event Hubs fogalma|
+| Kafka koncepció | Eseményközpontok – koncepció|
 | --- | --- |
 | Fürt | Névtér |
 | Témakör | Eseményközpont |
@@ -36,22 +36,22 @@ Elméletileg Kafka és Event Hubs közel azonosak: ezek mind a folyamatos átvit
 | Fogyasztói csoport | Fogyasztói csoport |
 | Eltolás | Eltolás|
 
-### <a name="key-differences-between-kafka-and-event-hubs"></a>A Kafka és az Event Hubs közötti fő különbségeket
+### <a name="key-differences-between-kafka-and-event-hubs"></a>A Kafka és az Event Hubs közötti legfontosabb különbségek
 
-A [Apache Kafka](https://kafka.apache.org/) egy szoftver, amelyet bárhol kiválasztva futtathat, Event Hubs az Azure Blob Storagehoz hasonló felhőalapú szolgáltatás. Nincsenek kiszolgálók vagy hálózatok kezelése és konfigurálása nélkül közvetítők. Hozzon létre egy névteret, amely egy teljes Tartománynevet, amelyben a témakörök élő, és hozzon létre az Event Hubs vagy az adott névtérben témakörök. További információ a Event Hubs és a névterekről: [Event Hubs szolgáltatások](event-hubs-features.md#namespace). Felhőalapú szolgáltatásként Event Hubs a végpontként egyetlen stabil virtuális IP-címet használ, így az ügyfeleknek nem kell tudniuk a fürtön belüli közvetítőket vagy gépeket. 
+Bár az [Apache Kafka](https://kafka.apache.org/) szoftver, amelyet bárhol futtathat, az Event Hubs az Azure Blob Storage-hoz hasonló felhőszolgáltatás. Nincsenek kezelhetkiszolgálók vagy hálózatok, és nincsenek konfigurálható brókerek. Hozzon létre egy névteret, amely egy teljes tartománynév, amelyben a témakörök élnek, majd hozzon létre Event Hubs vagy témakörök belül, hogy a névtérben. Az Event Hubs-ról és a névterekről az [Event Hubs szolgáltatásai című](event-hubs-features.md#namespace)témakörben talál további információt. Felhőszolgáltatásként az Event Hubs egyetlen stabil virtuális IP-címet használ végpontként, így az ügyfeleknek nem kell tudniuk a fürtön belüli brókerekről vagy gépekről. 
 
-Az Event Hubs méretezhető szabályozott szerint hány átviteli egységet vásárol, az egyes kapacitásegységek, amely feljogosítja arra, 1 MB / másodperc, vagy 1000 esemény szolgálhat. Alapértelmezés szerint a Event Hubs az átviteli egységeket méretezi, amikor eléri a korlátot az [automatikus](event-hubs-auto-inflate.md) feltöltési funkcióval. Ez a funkció a Kafka szolgáltatás Event Hubs is működik. 
+Az Event Hubs méretezését a megvásárolt átviteli egységek száma szabályozza, és minden átviteli egység másodpercenként 1 MB-ra, vagy 1000 bejövő kapcsolat másodpercenként1000 eseményre jogosít. Alapértelmezés szerint az Event Hubs felskálázi az átviteli egységeket, amikor eléri a korlátot az [Automatikus felfújás](event-hubs-auto-inflate.md) funkcióval; ez a funkció a Kafka eseményközpontok funkciójával is működik. 
 
 ### <a name="security-and-authentication"></a>Biztonság és hitelesítés
-Minden alkalommal, amikor eseményeket tesz közzé vagy használ fel egy Event Hubs a Kafka számára, az ügyfél megpróbál hozzáférni a Event Hubs erőforrásokhoz. Biztosítani szeretné, hogy az erőforrások elérhetők legyenek egy jogosult entitás használatával. Ha Apache Kafka protokollt használ az ügyfelekkel, beállíthatja a konfigurációt a hitelesítéshez és a titkosításhoz a SASL mechanizmusok használatával. A Event Hubs for Kafka használatához TLS-titkosításra van szükség (mivel az Event Hubs TLS-alapú adatforgalom titkosítva van). Ezt megteheti a konfigurációs fájlban lévő SASL_SSL beállítás megadásával. 
+Minden alkalommal, amikor eseményeket tesz közzé vagy használ fel a Kafka eseményközpontokból, az ügyfél megpróbál hozzáférni az Event Hubs-erőforrásokhoz. Biztosítani szeretné, hogy az erőforrások egy engedélyezett entitás használatával érhetők el. Ha Apache Kafka protokollt használ az ügyfelekkel, beállíthatja a konfigurációt a hitelesítéshez és a titkosításhoz a SASL mechanizmusok használatával. Ha a Kafka Eseményközpontok használata kor a TLS-titkosítást igényli (mivel az Event Hubs-szal való átvitel során minden adat TLS-titkosítással van eltikelve). Meg lehet tenni, amely megadja a SASL_SSL opciót a konfigurációs fájlban. 
 
-Az Azure Event Hubs több lehetőséget kínál a biztonságos erőforrásokhoz való hozzáférés engedélyezésére. 
+Az Azure Event Hubs több lehetőséget biztosít a biztonságos erőforrásokhoz való hozzáférés engedélyezéséhez. 
 
-- OAuth
+- Oauth
 - Közös hozzáférésű jogosultságkód (SAS)
 
-#### <a name="oauth"></a>OAuth
-A Event Hubs a Azure Active Directory (Azure AD) szolgáltatással integrálódik, amely egy **OAuth** 2,0-kompatibilis központi engedélyezési kiszolgálót biztosít. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) segítségével részletesen megadhatja az ügyfelek identitásait. Ezt a funkciót a Kafka-ügyfelekkel a mechanizmus protokoll-és **OAUTHBEARER** **SASL_SSL** megadásával veheti igénybe. További információk a RBAC szerepköreiről és szintjeiről: hozzáférés [engedélyezése az Azure ad-vel](authorize-access-azure-active-directory.md).
+#### <a name="oauth"></a>Oauth
+Az Event Hubs integrálható az Azure Active Directoryval (Azure AD), amely egy **OAuth** 2.0-nak megfelelő központi engedélyezési kiszolgálót biztosít. Az Azure AD használatával szerepköralapú hozzáférés-vezérlés (RBAC) segítségével részletes engedélyeket adhat az ügyfélidentitások. Ezt a funkciót a Kafka-ügyfelekkel használhatja, ha megadja a **protokoll SASL_SSL** és az **OAUTHBEARER-t** a mechanizmushoz. Az RBAC-szerepkörökről és a hozzáférés hatókörének szintjéről a [Hozzáférés engedélyezése az Azure AD-vel](authorize-access-azure-active-directory.md)című témakörben talál.
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -61,8 +61,8 @@ sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginMo
 sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 ```
 
-#### <a name="shared-access-signature-sas"></a>Közös hozzáférésű aláírás (SAS)
-A Event Hubs a **közös hozzáférésű aláírásokat (SAS)** is biztosítja a Event Hubs számára a Kafka-erőforrásokhoz való delegált hozzáféréshez. Az OAuth 2,0 token-alapú mechanizmus használatával történő hozzáférés engedélyezése a biztonsági és a könnyű használatot lehetővé teszi az SAS használatával. A beépített szerepkörök kihasználhatják az ACL-alapú hitelesítés szükségességét is, amelyet a felhasználónak kell karbantartani és felügyelni. Ezt a funkciót a Kafka-ügyfelekkel úgy használhatja, hogy megadta **SASL_SSL** a protokollhoz, és **egyszerű** a mechanizmus számára. 
+#### <a name="shared-access-signature-sas"></a>Közös hozzáférésű jogosultságkód (SAS)
+Az Event Hubs a kafka-erőforrások eseményelosztóihoz való delegált hozzáféréshez is biztosítja a **megosztott hozzáférés-aláírásokat (SAS).** Az OAuth 2.0 token alapú mechanizmussal történő hozzáférés engedélyezése kiváló biztonságot és egyszerű használatot biztosít a SAS-on keresztül. A beépített szerepkörök is szükségtelenné teheti az ACL-alapú engedélyezés, amelyet a felhasználónak kell karbantartania és kezelnie. Ezt a szolgáltatást a Kafka-ügyfelekkel használhatja, ha megadja a **protokoll SASL_SSL** és a **PLAIN-t** a mechanizmushoz. 
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -72,38 +72,38 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ```
 
 #### <a name="samples"></a>Példák 
-**A Kafka** -kompatibilis Event hub létrehozásához és Sas-vagy OAuth-alapú eléréséhez szükséges részletes utasításokért lásd: gyors üzembe helyezés [Event Hubs a Kafka protokoll használatával](event-hubs-quickstart-kafka-enabled-event-hubs.md).
+Az **tutorial** eseményközpont létrehozásához és a SAS vagy az OAuth használatával történő eléréséhez részletes útmutatót a [Rövid útmutató: Adatfolyam-továbbítás a Kafka protokollhasználatával című témakörben](event-hubs-quickstart-kafka-enabled-event-hubs.md)talál.
 
-A OAuth és az Event Hubs for Kafka használatát bemutató **példákért** lásd: [minták a githubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
+További **minták,** amelyek bemutatják, hogyan kell használni az OAuth a Kafka Eseményközpontok, tekintse meg [a mintákat a GitHubon.](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)
 
-## <a name="other-event-hubs-features-available-for-kafka"></a>Más Kafka elérhető Event Hubs-szolgáltatásokról
+## <a name="other-event-hubs-features-available-for-kafka"></a>A Kafka egyéb Eseményközpontok funkciói
 
-Az Event Hubs, Kafka funkció lehetővé teszi egy protokoll írása, és a egy másik, olvassa el, hogy az aktuális Kafka gyártók továbbra is a közzététel a Kafka-n keresztül, és az Event hubs szolgáltatással, például az Azure Stream Analytics vagy az Azure Functions olvasók is hozzáadhat. Emellett Event Hubs funkciók, mint például a [Capture](event-hubs-capture-overview.md) és a [geo-alapú katasztrófa-helyreállítás](event-hubs-geo-dr.md) is együttműködik a Kafka-szolgáltatás Event Hubsával.
+A Kafka eseményközpontok funkció lehetővé teszi, hogy írjon egy protokollal, és olvassa el a másikkal, hogy a jelenlegi Kafka-gyártók továbbra is közzé teheti a Kafka-n keresztül, és hozzáadhat olvasókat az Event Hubs, például az Azure Stream Analytics vagy az Azure Functions. Emellett az Event Hubs szolgáltatásai, például [a rögzítés](event-hubs-capture-overview.md) és a [geokatasztrófa-helyreállítás](event-hubs-geo-dr.md) is együttműködnek a Kafka eseményközpontok funkciójával.
 
-## <a name="features-that-are-not-yet-supported"></a>Még nem támogatott funkciók 
+## <a name="features-that-are-not-yet-supported"></a>Még nem támogatott szolgáltatások 
 
-Itt látható a listában, a Kafka-funkciók még nem támogatottak:
+Itt van a lista a Kafka funkciók, amelyek még nem támogatott:
 
-*   Idempotens producer
+*   Idempotens gyártó
 *   Tranzakció
 *   Tömörítés
-*   Méret-alapú megőrzése
-*   Tömörítési naplózása
-*   A partíciók hozzáadása egy meglévő témakörhöz
-*   HTTP Kafka API támogatása
-*   A Kafka Streams
+*   Méretalapú megőrzés
+*   Naplótömörítés
+*   Partíciók hozzáadása meglévő témakörhöz
+*   HTTP Kafka API-támogatás
+*   Kafka patakok
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk az Event Hubs bemutatása Kafka biztosítunk. További információkért lásd az alábbi hivatkozásokat:
+Ez a cikk a Kafka eseményközpontok című bemutatkozását ismerteti. További információ: az alábbi hivatkozások:
 
-- [Kafka-kompatibilis eseményközpont létrehozása](event-hubs-create-kafka-enabled.md)
+- [Eseményközpont létrehozása](event-hubs-create.md)
 - [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka-közvetítő tükrözése egy Kafka-kompatibilis eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Az Apache Spark csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
-- [Az Apache Flink csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
-- [A Kafka Connect integrálása egy Kafka-kompatibilis eseményközponttal](event-hubs-kafka-connect-tutorial.md)
-- [Az Akka Streams csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
+- [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
+- [A Kafka Connect integrálása egy eseményközponttal](event-hubs-kafka-connect-tutorial.md)
+- [Akka-adatfolyamok csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
 
 

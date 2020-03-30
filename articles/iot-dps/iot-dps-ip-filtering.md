@@ -1,6 +1,6 @@
 ---
-title: Azure IoT DPS IP-kapcsolatok szűrői | Microsoft Docs
-description: Az IP-szűrés használatával blokkolhatja az adott IP-címek kapcsolatait az Azure IoT DPS-példánnyal. Letilthatja az egyes vagy IP-címtartományok kapcsolatait.
+title: Azure IoT DPS IP-kapcsolatszűrők | Microsoft dokumentumok
+description: IP-szűrés használatával blokkolja a kapcsolatokat az adott IP-címek az Azure IoT DPS-példány. Letilthatja az IP-címek egyéni vagy tartományaiból származó kapcsolatokat.
 author: wesmc7777
 ms.author: wesmc
 ms.service: iot-dps
@@ -8,79 +8,79 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284914"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
-A biztonság minden IoT-megoldás fontos aspektusa. Időnként explicit módon meg kell adnia azokat az IP-címeket, amelyekről az eszközök a biztonsági konfiguráció részeként csatlakozni tudnak. Az Azure IoT Hub Device Provisioning Service (DPS) *IP-szűrési* funkciója lehetővé teszi szabályok konfigurálását az egyes IPv4-címekről érkező forgalom elutasításához vagy fogadásához.
+A biztonság minden IoT-megoldás fontos szempontja. Néha explicit módon meg kell adnia azokat az IP-címeket, amelyekről az eszközök a biztonsági konfiguráció részeként csatlakozhatnak. Az Azure IoT Hub-eszközlétesítési szolgáltatás (DPS) *IP-szűrő* szolgáltatása lehetővé teszi, hogy szabályokat konfiguráljon az adott IPv4-címekről érkező forgalom elutasítására vagy fogadására.
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
-Két konkrét használati eset van, ahol hasznos blokkolni egy DPS-végpont kapcsolatait bizonyos IP-címekről:
+Két konkrét felhasználási eset létezik, ahol hasznos blokkolni a DPS-végponthoz való kapcsolatokat bizonyos IP-címekről:
 
-* A DPS csak a megadott IP-címtartományból érkező forgalmat fogadja, és minden mást visszautasít. Tegyük fel például, hogy a DPS-t az [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) használatával hozza létre magánhálózati kapcsolatot a DPS és az eszközei között.
+* A DPS csak egy megadott IP-címtartományból fogadhat forgalmat, és minden mást elutasíthat. A DPS-t például az [Azure Express Route-szal](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) használja a DPS és az eszközök közötti privát kapcsolatok létrehozásához.
 
-* El kell utasítania a forgalmat olyan IP-címekről, amelyeket a DPS rendszergazdája gyanúsnak talált.
+* El kell utasítania a DPS-rendszergazda által gyanúsnak minősített IP-címekről érkező forgalmat.
 
-## <a name="how-filter-rules-are-applied"></a>Szűrési szabályok alkalmazása
+## <a name="how-filter-rules-are-applied"></a>A szűrőszabályok alkalmazásának szabályai
 
-Az IP-szűrési szabályok a DPS-példány szintjén lesznek alkalmazva. Ezért az IP-szűrési szabályok az eszközök és a háttérbeli alkalmazások összes kapcsolatára érvényesek bármely támogatott protokoll használatával.
+Az IP-szűrőszabályok a DPS-példány szintjén kerülnek alkalmazásra. Ezért az IP-szűrőszabályok az eszközökről és a támogatott protokollt használó háttéralkalmazásokból származó összes kapcsolatra vonatkoznak.
 
-A DPS-példány elutasító IP-szabályának megfelelő IP-címről érkező kapcsolódási kísérletek jogosulatlan 401-as állapotkódot és leírást kapnak. A válaszüzenet nem említi az IP-szabályt.
+A DPS-példányban egy elutasító IP-szabálynak megfelelő IP-címről érkező csatlakozási kísérlet jogosulatlan 401-es állapotkódot és -leírást kap. A válaszüzenet nem említi az IP-szabályt.
 
 ## <a name="default-setting"></a>Alapértelmezett beállítás
 
-Alapértelmezés szerint a DPS-portálon található **IP-szűrő** rács üres. Ez az alapértelmezett beállítás azt jelenti, hogy a DPS bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás megegyezik egy szabályt, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
+Alapértelmezés szerint a DPS **portálip-szűrőrácsa** üres. Ez az alapértelmezett beállítás azt jelenti, hogy a DPS bármely IP-címről fogadja a kapcsolatokat. Ez az alapértelmezett beállítás megegyezik a 0.0.0.0/0 IP-címtartományt elfogadó szabállyal.
 
-![IoT DPS alapértelmezett IP-szűrési beállítások](./media/iot-dps-ip-filtering/ip-filter-default.png)
+![IoT DPS alapértelmezett IP-szűrőbeállításai](./media/iot-dps-ip-filtering/ip-filter-default.png)
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>IP-szűrési szabály hozzáadása vagy szerkesztése
+## <a name="add-or-edit-an-ip-filter-rule"></a>IP-szűrőszabály hozzáadása vagy szerkesztése
 
-IP-szűrési szabály hozzáadásához válassza az **+ IP-szűrési szabály hozzáadása**lehetőséget.
+IP-szűrőszabály hozzáadásához válassza a **+ IP-szűrőszabály hozzáadása**lehetőséget .
 
-![IP-szűrési szabály hozzáadása IoT DPS-hez](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
+![IP-szűrőszabály hozzáadása IoT DPS-hez](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
 
-Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően töltse ki a mezőket.
+Miután az **IP-szűrőszabály hozzáadása**lehetőséget választotta, töltse ki a mezőket.
 
-![Az IP-szűrési szabály hozzáadása lehetőség kiválasztását követően](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
+![Ip-szűrőszabály hozzáadása lehetőség kiválasztása után](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` fogadja el.
+* Adja meg az IP-szűrő szabály **nevét.** Ennek egyedi, kis- és nagybetűket nem megkülönböztető, legfeljebb 128 karakter hosszú alfanumerikus karakterláncnak kell lennie. Csak az ASCII 7 bites alfanumerikus karakterek plusz `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` fogadnak el.
 
-* Adjon meg egyetlen IPv4-címet vagy IP-címet a CIDR-jelölésben. Például a CIDR 192.168.100.0/22 jelölése 1024 a 192.168.100.0 és a 192.168.103.255 közötti IPv4-címeket jelöli.
+* Adjon meg egyetlen IPv4-címet vagy IP-címblokkot CIDR jelöléssel. A CIDR 192.168.100.0/22 jelölésében például a 1024 IPv4-cím 192.168.100.0-tól 192.168.103.255-ig.
 
-* Válassza az **Engedélyezés** vagy a **Letiltás** lehetőséget az IP-szűrési szabály **művelete** elemnél.
+* Az IP-szűrőszabály műveleteként válassza az **Engedélyezés** vagy a **Letiltás** **lehetőséget.**
 
-A mezők kitöltése után kattintson a **Mentés** gombra a szabály mentéséhez. Megjelenik egy riasztás, amely értesíti, hogy a frissítés folyamatban van.
+A mezők kitöltése után válassza a **Mentés** gombot a szabály mentéséhez. Megjelenik egy figyelmeztetés, amely arról tájékoztatja, hogy a frissítés folyamatban van.
 
-![Értesítés IP-szűrési szabály mentéséről](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
+![Értesítés az IP-szűrőszabály mentéséről](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-A **Hozzáadás** lehetőség le van tiltva, amikor eléri a legfeljebb 10 IP-szűrési szabályt.
+A **Hozzáadás** beállítás le van tiltva, ha eléri a legfeljebb 10 IP-szűrőszabályt.
 
-Meglévő szabály szerkesztéséhez válassza ki a módosítani kívánt adatait, végezze el a módosítást, majd válassza a **Mentés** lehetőséget a Szerkesztés mentéséhez.
+Meglévő szabály szerkesztéséhez jelölje ki a módosítani kívánt adatokat, módosítsa, majd a **Szerkesztés gombra** a szerkesztés mentéséhez.
 
 > [!NOTE]
-> Az IP-címek elutasításával megakadályozható, hogy más Azure-szolgáltatások a DPS-példánnyal kommunikálva legyenek.
+> Az IP-címek elutasítása megakadályozhatja, hogy más Azure-szolgáltatások kölcsönhatásba lépjenek a DPS-példánnyal.
 
-## <a name="delete-an-ip-filter-rule"></a>IP-szűrési szabály törlése
+## <a name="delete-an-ip-filter-rule"></a>IP-szűrőszabály törlése
 
-Ha törölni szeretne egy IP-szűrési szabályt, válassza a Kuka ikont az adott sorban, majd válassza a **Mentés**lehetőséget. A szabály el lett távolítva, és a módosítás mentve lesz.
+IP-szűrőszabály törléséhez jelölje ki a kuka ikont a sorban, majd kattintson a **Mentés gombra.** A rendszer eltávolítja a szabályt, és menti a módosítást.
 
-![IoT DPS IP-szűrési szabály törlése](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
+![IoT DPS IP-szűrőszabály törlése](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
 
 
-## <a name="update-ip-filter-rules-in-code"></a>IP-szűrési szabályok frissítése a kódban
+## <a name="update-ip-filter-rules-in-code"></a>IP-szűrőszabályok frissítése a kódban
 
-A DPS IP-szűrőt az Azure erőforrás-szolgáltató REST-végpontjának használatával kérheti le és módosíthatja. Lásd: `properties.ipFilterRules` a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
+A DPS IP-szűrő t az Azure resource Provider REST-végponthasználatával kérheti le és módosíthatja. Lásd `properties.ipFilterRules` a [createorupdate metódusban.](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate)
 
-A DPS IP-szűrési szabályok frissítése jelenleg nem támogatott az Azure CLI-ben vagy Azure PowerShell, de Azure Resource Manager-sablonokkal is elvégezhető. A Resource Manager-sablonok használatával kapcsolatos útmutatásért lásd: [Azure Resource Manager sablonok](../azure-resource-manager/templates/overview.md) . Az alábbi példák azt mutatják be, hogyan hozhatja létre, szerkesztheti és törölheti a DPS IP-szűrési szabályait.
+A DPS IP-szűrőszabályainak frissítése jelenleg nem támogatott az Azure CLI vagy az Azure PowerShell számára, de az Azure Resource Manager-sablonokkal megvalósítható. Lásd: [Az Azure Resource Manager-sablonok](../azure-resource-manager/templates/overview.md) útmutatást a Resource Manager-sablonok használatával kapcsolatos útmutatást. Az alábbi sablonpéldák bemutatják a DPS IP-szűrőszabályok létrehozását, szerkesztését és törlését.
 
-### <a name="add-an-ip-filter-rule"></a>IP-szűrési szabály hozzáadása
+### <a name="add-an-ip-filter-rule"></a>IP-szűrőszabály hozzáadása
 
-A következő sablon egy "AllowAll" nevű új IP-szűrési szabályt hoz létre, amely fogadja az összes forgalmat.
+A következő sablonpélda létrehoz egy új IP-szűrőszabályt "AllowAll" néven, amely elfogadja az összes forgalmat.
 
 ```json
 {
@@ -131,18 +131,18 @@ A következő sablon egy "AllowAll" nevű új IP-szűrési szabályt hoz létre,
 }
 ```
 
-Frissítse a sablon IP-szűrési szabályának attribútumait a követelmények alapján.
+Frissítse a sablon IP-szűrőszabály-attribútumait a követelmények alapján.
 
 | Attribútum                | Leírás |
 | ------------------------ | ----------- |
-| **FilterName**           | Adja meg az IP-szűrési szabály nevét. Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karakterek ({"-", ":", "/", "\',". "," + ","% "," _ "," # "," * ","? "),"! ", a (z)" (",") ",", "," = "," @ ","; ","} "és"} "is elfogadva. |
-| **Művelet**               | Az elfogadott értékek **elfogadják** vagy **visszautasítják** az IP-szűrési szabály művelete során. |
-| **ipMask**               | Adjon meg egyetlen IPv4-címet vagy IP-címet a CIDR-jelölésben. Például a CIDR 192.168.100.0/22 jelölése 1024 a 192.168.100.0 és a 192.168.103.255 közötti IPv4-címeket jelöli. |
+| **Szűrőnév**           | Adja meg az IP-szűrő szabály nevét. Ennek egyedi, kis- és nagybetűket nem megkülönböztető, legfeljebb 128 karakter hosszú alfanumerikus karakterláncnak kell lennie. Csak az ASCII 7 bites alfanumerikus karaktereket és {'-,",\'":",'/', '.',',',',','+','%,','''''''''''''''''''''''''''''''",'""""",""","@",';',',',',',',','',''',''}, ''}} elfogadják. |
+| **Művelet**               | Az elfogadott értékek az **Elfogadás** vagy az **Elutasítás** az IP-szűrőszabály műveleteként. |
+| **ipMaszk**               | Adjon meg egyetlen IPv4-címet vagy IP-címblokkot CIDR jelöléssel. A CIDR 192.168.100.0/22 jelölésében például a 1024 IPv4-cím 192.168.100.0-tól 192.168.103.255-ig. |
 
 
-### <a name="update-an-ip-filter-rule"></a>IP-szűrési szabály frissítése
+### <a name="update-an-ip-filter-rule"></a>IP-szűrőszabály frissítése
 
-A következő sablon például a "AllowAll" nevű IP-szűrési szabályt frissíti, amely az összes forgalom elutasítása érdekében látható.
+A következő sablon példa frissíti a korábban bemutatott "AllowAll" NEVŰ IP-szűrőszabályt, hogy az összes forgalmat elutasítsa.
 
 ```json
 { 
@@ -193,9 +193,9 @@ A következő sablon például a "AllowAll" nevű IP-szűrési szabályt frissí
 }
 ```
 
-### <a name="delete-an-ip-filter-rule"></a>IP-szűrési szabály törlése
+### <a name="delete-an-ip-filter-rule"></a>IP-szűrőszabály törlése
 
-A következő sablon például törli a DPS-példány összes IP-szűrési szabályát.
+A következő sablonpélda törli a DPS-példány összes IP-szűrőszabályát.
 
 ```json
 { 
@@ -241,22 +241,22 @@ A következő sablon például törli a DPS-példány összes IP-szűrési szab�
 
 
 
-## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály értékelése
+## <a name="ip-filter-rule-evaluation"></a>IP-szűrőszabály kiértékelése
 
-Az IP-szűrési szabályok a sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
+Az IP-szűrőszabályok sorrendben kerülnek alkalmazásra, és az IP-címnek megfelelő első szabály határozza meg az elfogadási vagy elutasítási műveletet.
 
-Ha például a 192.168.100.0/22-es tartományba szeretne címeket fogadni, és minden mást visszautasít, a rács első szabályának el kell fogadnia a 192.168.100.0/22 címtartományt. A következő szabályt kell utasítania összes címet a tartomány 0.0.0.0/0 használatával.
+Ha például a 192.168.100.0/22 tartományban lévő címeket szeretné elfogadni, és minden mást el szeretne utasítani, a rács első szabályának a 192.168.100.0/22 címtartományt kell elfogadnia. A következő szabálynak a 0.0.0.0/0 tartomány használatával el kell utasítania az összes címet.
 
-Az IP-szűrési szabályok sorrendjét megváltoztathatja a rácson úgy, hogy a sorok elején lévő három függőleges pontra kattint, és a drag and drop parancsot használja.
+Az IP-szűrőszabályok sorrendjét úgy módosíthatja a rácsban, hogy a sor elején a három függőleges elemre kattint, és húzással lehúzhatja a készüléket.
 
-Az új IP-szűrési szabály sorrendjének mentéséhez kattintson a **Mentés**gombra.
+Az új IP-szűrőszabály-sorrend mentéséhez kattintson a **Mentés gombra.**
 
-![A DPS IP-szűrési szabályok sorrendjének módosítása](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
+![A DPS IP-szűrőszabályok sorrendjének módosítása](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő témakörben talál további információt:
+Az irányító DPS további megismeréséhez lásd:
 
-* [A IoT DPS IP-címeinek ismertetése](iot-dps-understand-ip-address.md)
+* [Az IoT DPS IP-címeinek ismertetése](iot-dps-understand-ip-address.md)
 * [A DPS konfigurálása az Azure CLI használatával](how-to-manage-dps-with-cli.md)
-* [A DPS elérésének vezérlése](how-to-control-access.md)
+* [A DPS-hez való hozzáférés szabályozása](how-to-control-access.md)

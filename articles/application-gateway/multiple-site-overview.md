@@ -1,31 +1,31 @@
 ---
-title: Több webhely üzemeltetése az Azure Application Gateway
-description: Ez a cikk áttekintést nyújt az Azure Application Gateway többhelyes támogatásáról.
+title: Több webhely üzemeltetése az Azure Application Gateway-en
+description: Ez a cikk áttekintést nyújt az Azure Application Gateway többhelyes támogatás.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: c43ac0923e0d3d76c25657f4870a0a0431bc8b6e
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096432"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257410"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
-Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A következő példában az Application Gateway a Contososerverpoolhoz és a Fabrikamserverpoolhoz irányítja nevű, két háttér-kiszolgáló készletből származó forgalmat szolgál `contoso.com` és `fabrikam.com` számára.
+Több helyüzemeltetési lehetővé teszi, hogy több webalkalmazás konfigurálása ugyanazon a porton egy alkalmazás átjáró. Ez a szolgáltatás lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon a központi telepítésekhez, ha legfeljebb 100 webhelyet ad hozzá egy alkalmazásátjáróhoz. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A következő példában az alkalmazásátjáró két ContosoServerPool `contoso.com` és `fabrikam.com` FabrikamServerPool nevű háttérkiszolgáló-készlet forgalmat szolgál ki.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> A szabályok feldolgozása a v1 SKU-ban található portálon megjelenő sorrendben történik. A v2 SKU esetében a pontos egyezések magasabb prioritással rendelkeznek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
+> A szabályok feldolgozása abban a sorrendben kerül feldolgozásra, ahogy a v1 Termékváltozat portálján vannak felsorolva. A v2 Termékváltozat esetében a pontos egyezések elsőbbsége magasabbak. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
 
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
-Hasonlóképpen ugyanazon szülőtartomány több altartományát is üzemeltetheti ugyanazon az Application Gateway-példányon. Például a `http://blog.contoso.com` és a `http://app.contoso.com` egyetlen Application Gateway-telepítésben is üzemeltethető.
+Hasonlóképpen ugyanannak a szülőtartománynak több altartományát is üzemeltetheti ugyanazon az alkalmazásátjáró-telepítésen. Például üzemeltetheti, `http://blog.contoso.com` `http://app.contoso.com` és egyetlen alkalmazásátjáró központi telepítése.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
 
@@ -35,17 +35,17 @@ Három elterjedt mechanizmus létezik az ugyanazon az infrastruktúrán történ
 2. Állomásnév használata több webalkalmazás ugyanazon az IP-címen való üzemeltetésére.
 3. Különböző portok használata több webalkalmazás ugyanazon az IP-címen való üzemeltetésére.
 
-A Application Gateway jelenleg egyetlen nyilvános IP-címet támogat, ahol a forgalmat figyeli. Így a saját IP-címmel rendelkező több alkalmazás használata jelenleg nem támogatott. 
+Jelenleg az Application Gateway egyetlen nyilvános IP-címet támogat, ahol figyeli a forgalmat. Így több alkalmazás, mindegyik saját IP-címmel jelenleg nem támogatott. 
 
-Application Gateway több, különböző portokon figyelt alkalmazást támogat, de ehhez a forgatókönyvhöz az szükséges, hogy az alkalmazások a nem szabványos portokon fogadják a forgalmat. Ez gyakran nem a kívánt konfiguráció.
+Az Application Gateway több alkalmazást támogat, amelyek különböző portokon figyelnek, de ebben a forgatókönyvben az alkalmazásoknak nem szabványos portokon kell fogadniuk a forgalmat. Ez gyakran nem a kívánt konfiguráció.
 
-Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet egynél több webhelyet ugyanarról a nyilvános IP-címről és portról. Az alkalmazásátjárón üzemeltetett webhelyek ezenkívül támogathatják az SSL-alapú kiszervezést SNI (Kiszolgálónév jelzése) TLS-bővítménnyel. Ebben az esetben az RFC 6066 szabványban meghatározottak szerint az ügyfélböngészőnek és a háttérwebfarmnak támogatnia kell a HTTP/1.1-et és a TLS-bővítményt.
+Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet egynél több webhelyet ugyanarról a nyilvános IP-címről és portról. Az alkalmazásátjárón tárolt helyek a TLS-kiszervezést is támogathatják a Kiszolgálónév-jelzési (SNI) TLS-bővítménysel. Ebben az esetben az RFC 6066 szabványban meghatározottak szerint az ügyfélböngészőnek és a háttérwebfarmnak támogatnia kell a HTTP/1.1-et és a TLS-bővítményt.
 
 ## <a name="listener-configuration-element"></a>Figyelő konfigurációs elem
 
-A meglévő HTTPListener-konfigurációs elemek támogatják az állomásnév és a kiszolgálónév-jelző elemek támogatását. A Application Gateway használja a forgalom a megfelelő háttér-készletbe való irányításához. 
+A meglévő HTTPListener konfigurációs elemek javítva vannak az állomásnév és a kiszolgáló névjelző elemeinek támogatásához. Az Application Gateway a megfelelő háttérkészlethez irányítja a forgalmat. 
 
-A következő kódrészlet egy sablonfájl HttpListeners elemének kódrészlete:
+A következő példa egy sablonfájlból származó HttpListeners-elem kódrészlete:
 
 ```json
 "httpListeners": [
@@ -126,7 +126,7 @@ Nincs szükség módosításra az útválasztási szabályban. Az alapszintű ú
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután megismerte a többhelyes üzemeltetést, látogasson el a [Create an application gateway using multiple site hosting](tutorial-multiple-sites-powershell.md) (Alkalmazásátjáró létrehozása többhelyes üzemeltetéssel) weboldalra, ahonnan megtudhatja, hogyan hozhat létre egynél több webalkalmazást támogató alkalmazásátjárót.
 

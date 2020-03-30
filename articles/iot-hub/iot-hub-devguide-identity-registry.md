@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub Identity Registry ismertetése | Microsoft Docs
-description: Fejlesztői útmutató – a IoT Hub Identity Registry leírása és az eszközök kezelésének módja. Az eszköz-identitások tömeges importálásával és exportálásával kapcsolatos információkat tartalmaz.
+title: Ismerje meg az Azure IoT Hub identitásbeállítási nyilvántartását | Microsoft dokumentumok
+description: Fejlesztői útmutató – az IoT Hub identitásbeállítás-jegyzékének leírása, valamint az eszközök kezeléséhez való használata. Az eszközidentitások tömeges importálásával és exportálásával kapcsolatos információkat tartalmazza.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,118 +8,118 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: d43ad2ce88108a728b26e10eecc7082262a4b637
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ccb840caea5d28975daaf8cbf6f0d4985bdf006d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499141"
 ---
-# <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
+# <a name="understand-the-identity-registry-in-your-iot-hub"></a>Ismerje meg az IoT hub identitásbeállítás-beállításjegyzékét
 
-Minden IoT hub rendelkezik egy azonosítóval, amely az IoT hubhoz való kapcsolódáshoz engedélyezett eszközökről és modulokról tartalmaz információkat. Ahhoz, hogy egy eszköz vagy modul csatlakozni tudjanak egy IoT hubhoz, az IoT hub azonosító-beállításjegyzékében szerepelnie kell egy bejegyzésnek az adott eszközhöz vagy modulhoz. Az eszköznek vagy modulnak a IoT hub-ban is hitelesítenie kell magát az Identity registryben tárolt hitelesítő adatok alapján.
+Minden IoT hub rendelkezik egy identitás-beállításjegyzék, amely tárolja az adatokat az eszközök és modulok számára engedélyezett csatlakozni az IoT hub. Ahhoz, hogy egy eszköz vagy modul csatlakozhatna egy IoT-központhoz, az adott eszközhöz vagy modulhoz bejegyzést kell lennie az IoT hub identitásbeállítási jegyzékében. Egy eszköz vagy modul is hitelesítenie kell az IoT hub az identitás-beállításjegyzékben tárolt hitelesítő adatok alapján.
 
-Az Identity registryben tárolt eszköz vagy modul azonosítója megkülönbözteti a kis-és nagybetűket.
+Az identitás-beállításjegyzékben tárolt eszköz- vagy modulazonosító nem különérel el a kis- és nagybetűket.
 
-Magas szinten az Identity Registry az eszköz-vagy modul-identitás erőforrásainak REST-kompatibilis gyűjteménye. Ha hozzáad egy bejegyzést az identitás-beállításjegyzékben, a IoT Hub eszközönkénti erőforrások, például a felhőből az eszközre irányuló üzeneteket tartalmazó várólista-készletet hoz létre.
+Magas szinten az identitás-beállításjegyzék eszköz- vagy modulidentitás-erőforrások REST-képes gyűjteménye. Amikor hozzáad egy bejegyzést az identitás-beállításjegyzékben, az IoT Hub létrehoz egy eszközenkénti erőforrásokat, például a várólistát, amely a repülés közbeni felhőből az eszközre irányuló üzeneteket tartalmazza.
 
-Ha a következőkre van szüksége, használja az Identity registryt:
+Használja az identitásjegyzéket, ha a következőkre van szüksége:
 
-* Az IoT hub-hoz csatlakozó eszközök vagy modulok kiépítése.
-* Eszközön vagy modulon keresztüli hozzáférés vezérlése a hub eszközéhez vagy modulhoz kapcsolódó végpontokhoz.
+* Az IoT-központhoz kapcsolódó eszközök vagy modulok kiépítése.
+* Eszközenként/modulonkénti hozzáférés vezérlése a hub eszközéhez vagy modulnéző végpontjaihoz.
 
 > [!NOTE]
-> * Az Identity Registry nem tartalmaz alkalmazásspecifikus metaadatokat.
-> * A modul identitása és a Twin modul nyilvános előzetes verzióban érhető el. Az alábbi funkciót a rendszer a modul identitásán fogja támogatni, ha általánosan elérhető.
+> * Az identitásjegyzék nem tartalmaz alkalmazásspecifikus metaadatokat.
+> * A modul identitása és az ikermodul nyilvános előzetes verzióban érhető el. Az alábbiakban a funkció támogatja a modul identitását, ha általánosan elérhető.
 >
 
 ## <a name="identity-registry-operations"></a>Identitásjegyzék műveletei
 
-A IoT Hub Identity Registry a következő műveleteket teszi elérhetővé:
+Az IoT Hub identitásjegyzéke a következő műveleteket teszi elérhetővé:
 
-* Eszköz vagy modul identitásának létrehozása
-* Eszköz vagy modul identitásának frissítése
-* Eszköz vagy modul identitásának beolvasása azonosító alapján
-* Eszköz vagy modul identitásának törlése
-* Legfeljebb 1000 identitások listázása
-* Eszköz identitásának exportálása az Azure Blob Storage-ba
-* Eszköz identitások importálása az Azure Blob Storage-ból
+* Eszköz- vagy modulidentitás létrehozása
+* Eszköz- vagy modulidentitás frissítése
+* Eszköz- vagy modulidentitás lekérése azonosítóval
+* Eszköz- vagy modulidentitás törlése
+* Akár 1000 identitás listázása
+* Eszközidentitások exportálása az Azure blobstorageba
+* Eszközidentitások importálása az Azure blob storage-ból
 
-Ezek a műveletek optimista párhuzamosságot használhatnak a [RFC7232](https://tools.ietf.org/html/rfc7232)-ben megadott módon.
-
-> [!IMPORTANT]
-> Az IoT hub identitás-beállításjegyzékének egyetlen módja az [exportálási](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) funkció használata.
-
-Egy IoT Hub Identity Registry:
-
-* Nem tartalmaz alkalmazás-metaadatokat.
-* A (z) a **deviceId** vagy a **moduleId** kulcsként való használatával érhető el a szótárhoz.
-* A nem támogatja az kifejező lekérdezéseket.
-
-Az IoT-megoldás általában egy külön, alkalmazásspecifikus metaadatokat tartalmazó megoldás-specifikus tárolóval rendelkezik. Például egy intelligens építési megoldás megoldás-specifikus tárolója rögzíti azt a termet, amelyben a hőmérséklet-érzékelő üzembe lett helyezve.
+Mindezek a műveletek az [RFC7232-ben](https://tools.ietf.org/html/rfc7232)meghatározott optimista egyidejűséget használhatnak.
 
 > [!IMPORTANT]
-> Csak az Identitáskezelés és a kiépítési műveletek esetében használja az Identity registryt. A nagy átviteli sebességű műveletek futási időben való végrehajtása nem függhet az Identity registryben végrehajtott műveletektől. Például egy eszköz kapcsolódási állapotának ellenőrzése a parancsok elküldése előtt nem támogatott minta. Ügyeljen arra, hogy ellenőrizze az azonosító-beállításjegyzék [szabályozási sebességét](iot-hub-devguide-quotas-throttling.md) , valamint az [eszköz szívverési](iot-hub-devguide-identity-registry.md#device-heartbeat) mintáját.
+> Az IoT-központ identitásbeállítási jegyzékében lévő összes identitás lekérésének egyetlen módja az [Exportálás](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) funkció használata.
+
+IoT Hub-identitásbeállításjegyzék:
+
+* Nem tartalmaz alkalmazásmetaadatokat.
+* Az **eszközazonosító** vagy **a moduleId** kulcsként való használatával elérhető, mint egy szótár.
+* Nem támogatja a kifejező lekérdezéseket.
+
+Az IoT-megoldás általában rendelkezik egy külön megoldás-specifikus tároló, amely tartalmazza az alkalmazás-specifikus metaadatokat. Például a megoldás-specifikus tárolja egy intelligens épület megoldás rögzíti a helyiségben, ahol a hőmérséklet-érzékelő telepítve van.
+
+> [!IMPORTANT]
+> Csak eszközkezelési és kiépítési műveletekhez használja az identitás-beállításjegyzéket. A nagy átviteli sebességű műveletek futási időben nem függhet az identitásjegyzékben végzett műveletek től. Például egy eszköz kapcsolati állapotának ellenőrzése a parancs elküldése előtt nem támogatott minta. Győződjön meg arról, hogy ellenőrizze az identitás-beállításjegyzék [szabályozási díjait](iot-hub-devguide-quotas-throttling.md) és az [eszköz szívverési](iot-hub-devguide-identity-registry.md#device-heartbeat) mintáját.
 
 ## <a name="disable-devices"></a>Eszközök letiltása
 
-Az eszközöket letilthatja az identitás beállításjegyzékében lévő identitás **állapot** tulajdonságának frissítésével. Ezt a tulajdonságot általában két forgatókönyvben kell használni:
+Az eszközök letiltásához frissítse az identitás **állapottulajdonságát** az identitásjegyzékben. Ezt a tulajdonságot általában két esetben használja:
 
-* Üzembe helyezési folyamat során. További információ: [Device kiépítés](iot-hub-devguide-identity-registry.md#device-provisioning).
+* Egy kiépítési vezénylési folyamat során. További információ: [Device Provisioning](iot-hub-devguide-identity-registry.md#device-provisioning).
 
-* Ha bármilyen okból kifolyólag, azt gondolja, hogy az eszköz biztonsága sérül vagy jogosulatlanul lett kitéve.
+* Ha bármilyen okból úgy gondolja, hogy egy eszköz biztonsága sérült vagy illetéktelenné vált.
 
 Ez a funkció modulok esetén nem érhető el.
 
-## <a name="import-and-export-device-identities"></a>Eszköz identitásának importálása és exportálása
+## <a name="import-and-export-device-identities"></a>Eszközidentitások importálása és exportálása
 
-Az [IoT hub erőforrás-szolgáltató végpontján](iot-hub-devguide-endpoints.md) aszinkron műveletekkel exportálhatja az eszköz-identitásokat egy IoT hub azonosító-beállításjegyzékének tömeges használatával. Az Exportálás olyan hosszan futó feladatok, amelyek ügyfél által megadott blob-tárolóval mentik az eszköz azonosító adatait az identitás-beállításjegyzékből.
+Aszinkron műveletek az [IoT Hub erőforrás-szolgáltató végponton](iot-hub-devguide-endpoints.md) az eszközök identitások tömeges exportálása az IoT hub identitás-beállításjegyzék. Az exportálás olyan hosszú ideig futó feladat, amely az ügyfél által megadott blobtárolót használja az identitásjegyzékből beolvasott eszközidentitás-adatok mentéséhez.
 
-Használjon aszinkron műveleteket a [IoT hub erőforrás-szolgáltató végponton](iot-hub-devguide-endpoints.md) az eszköz-identitások tömeges importálásához egy IoT hub azonosítójának beállításjegyzékében. Az Importálások olyan hosszan futó feladatok, amelyek az ügyfél által megadott blob-tárolóban tárolt adatokkal írják le az eszköz azonosító adatait az Identity registrybe.
+Aszinkron műveletek az [IoT Hub erőforrás-szolgáltató végponton](iot-hub-devguide-endpoints.md) az eszközök identitásainak importálása tömegesen egy IoT hub identitás-beállításjegyzékbe. Az importálás olyan hosszú ideig futó feladatok, amelyek az ügyfél által megadott blobtárolóban lévő adatokat használják az eszközidentitás-adatok írásához az identitásjegyzékbe.
 
-További információ az importálási és exportálási API-król: [IoT hub erőforrás-szolgáltató REST API](/rest/api/iothub/iothubresource)-k. Ha többet szeretne megtudni az importálási és exportálási feladatok futtatásáról, tekintse meg [a IoT hub-eszköz identitások tömeges kezelése](iot-hub-bulk-identity-mgmt.md)című témakört.
+Az importálási és exportálási API-król további információt az [IoT Hub erőforrás-szolgáltató REST API-jai című](/rest/api/iothub/iothubresource)témakörben talál. Az importálási és exportálási feladatok futtatásáról az [IoT Hub-eszközidentitások tömeges kezelése.](iot-hub-bulk-identity-mgmt.md)
 
-Az eszközök identitásai a Service API-n keresztül is exportálhatók és importálhatók IoT Hub a [REST API](/rest/api/iothub/service/createimportexportjob) vagy a IoT hub [Service SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)-k egyikével.
+Az eszközidentitások exportálhatók és importálhatók egy IoT Hubról a Service API-n keresztül a [REST API-n](/rest/api/iothub/service/jobclient/createimportexportjob) vagy az IoT [Hub-szolgáltatás SDK-n](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)keresztül.
 
-## <a name="device-provisioning"></a>Eszköz kiépítés
+## <a name="device-provisioning"></a>Eszközkiépítés
 
-Az adott IoT-megoldás által tárolt adatok a megoldás konkrét követelményeitől függenek. Azonban a megoldásnak legalább az eszköz-identitásokat és a hitelesítési kulcsokat kell tárolnia. Az Azure IoT Hub tartalmaz egy azonosító beállításjegyzéket, amely az egyes eszközök, például azonosítók, hitelesítési kulcsok és állapotkódok értékeit képes tárolni. Egy megoldás más Azure-szolgáltatásokat is használhat, például a Table Storage-t, a blob Storage-t vagy a Cosmos DB a további eszközbeállítások tárolására.
+Az adott IoT-megoldás által tárolott eszközadatok a megoldás konkrét követelményeitől függenek. De a megoldásnak legalább az eszközidentitásokat és a hitelesítési kulcsokat kell tárolnia. Az Azure IoT Hub tartalmaz egy identitás-beállításjegyzéket, amely képes tárolni az egyes eszközök értékeit, például azonosítók, hitelesítési kulcsok és állapotkódok. A megoldások más Azure-szolgáltatások, például a table storage, blob storage vagy a Cosmos DB használatával további eszközadatok tárolására.
 
-Az *eszköz kiépítés* során a rendszer a kezdeti eszköz adatait hozzáadja a megoldásban lévő üzletekhez. Ahhoz, hogy egy új eszköz csatlakozhasson a központhoz, hozzá kell adnia egy eszköz AZONOSÍTÓját és kulcsait a IoT Hub Identity registryhez. A kiépítési folyamat részeként előfordulhat, hogy más megoldás-tárolókban is inicializálnia kell az eszközre vonatkozó adatmennyiséget. Az Azure IoT Hub Device Provisioning Service használatával az emberi beavatkozás nélkül is engedélyezheti a nulla érintéses, igény szerinti üzembe helyezést egy vagy több IoT-hubhoz. További információt a [kiépítési szolgáltatás dokumentációjában](https://azure.microsoft.com/documentation/services/iot-dps)talál.
+*Az eszközkiépítés* a kezdeti eszközadatok hozzáadása a megoldás tárolóihoz. Ahhoz, hogy egy új eszköz csatlakozzon a hubhoz, hozzá kell adnia egy eszközazonosítót és kulcsokat az IoT Hub identitásbeállításjegyzékhez. A kiépítési folyamat részeként előfordulhat, hogy más megoldástárolókban inicializálnia kell az eszközspecifikus adatokat. Az Azure IoT Hub-eszközkiépítési szolgáltatás sal is engedélyezheti a nulla érintéses, just-in-time kiépítést egy vagy több IoT-központba emberi beavatkozás nélkül. További információ: [a kiépítési szolgáltatás dokumentációja.](https://azure.microsoft.com/documentation/services/iot-dps)
 
 ## <a name="device-heartbeat"></a>Eszköz szívverése
 
-A IoT Hub Identity Registry tartalmaz egy **connectionState**nevű mezőt. A fejlesztés és a hibakeresés során csak a **connectionState** mezőt használja. A IoT-megoldásoknak futási időben nem kell lekérdezni a mezőt. Ne kérdezje le például, hogy az eszköz csatlakoztatva van-e, mielőtt egy felhőből eszközre irányuló üzenetet vagy SMS-t küld a **connectionState** . Azt javasoljuk, hogy a riasztások lekérése és az eszköz kapcsolati állapotának figyelése érdekében a [ **leválasztott eszközre** ](iot-hub-event-grid.md#event-types) való feliratkozást Event Grid. Ebből az [oktatóanyagból](iot-hub-how-to-order-connection-state-events.md) megtudhatja, hogyan integrálhatja a csatlakoztatott eszközök és az eszközök kapcsolatait a IoT-megoldás IoT hub.
+Az IoT Hub identitásjegyzéke egy **connectionState**nevű mezőt tartalmaz. Csak a **connectionState** mezőt használja a fejlesztés és a hibakeresés során. Az IoT-megoldások nem kell lekérdezni a mezőt futási időben. Például ne kérdezze le a **connectionState** mezőt, hogy ellenőrizze, hogy egy eszköz csatlakoztatva van-e, mielőtt felhőből eszközre irányuló üzenetet vagy SMS-t küldene. Javasoljuk, hogy az [ **eseményhálózaton az eszközleválasztott** eseményre](iot-hub-event-grid.md#event-types) való feliratkozással értesítéseket kapjon, és figyelje az eszköz kapcsolatának állapotát. Ebből az [oktatóanyagból](iot-hub-how-to-order-connection-state-events.md) megtudhatja, hogyan integrálhatja az IT Hubról az Eszközkapcsolt és az eszközleválasztott eseményeket az IoT-megoldásban.
 
-Ha a IoT-megoldásnak tudnia kell, hogy az eszköz csatlakoztatva van-e, megadhatja a *szívverési mintát*.
-A szívverési mintában az eszköz legalább egyszer elküldi az eszközről a felhőbe irányuló üzeneteket (például legalább óránként egyszer). Ezért még akkor is, ha az eszközön nincs olyan adat, amelyet el szeretne küldeni, továbbra is egy üres, az eszközről a felhőbe irányuló üzenetet küld (általában egy olyan tulajdonsággal, amely szívverésként azonosítja azt). A szolgáltatás oldalán a megoldás egy térképet tart fenn az egyes eszközökön fogadott utolsó szívveréssel. Ha a megoldás nem kap szívverési üzenetet az eszköztől várt időn belül, feltételezi, hogy probléma merült fel az eszközön.
+Ha az IoT-megoldásnak tudnia kell, hogy egy eszköz csatlakoztatva van-e, megvalósíthatja a *szívverésmintát.*
+A szívverésmintában az eszköz minden meghatározott idő alatt legalább egyszer (például óránként legalább egyszer) küld idáig az eszközről a felhőbe irányuló üzeneteket. Ezért még akkor is, ha egy eszköz nem rendelkezik adatokkal, hogy küldjön, akkor is küld egy üres eszköz-felhő üzenet (általában egy tulajdonság, amely azonosítja azt a szívverés). A szolgáltatási oldalon a megoldás egy térképet tart fenn az egyes eszközökhöz fogadott utolsó szívveréssel. Ha a megoldás nem kap szívverési üzenetet az eszköztől várt időn belül, azt feltételezi, hogy probléma van az eszközzel.
 
-Az összetettebb implementációk közé tartozhatnak a [Azure monitorból](../azure-monitor/index.yml) származó információk, és [Azure Resource Health](../service-health/resource-health-overview.md) a csatlakozni próbáló vagy a sikertelenül kommunikáló eszközök azonosítására, a [figyelő diagnosztikai](iot-hub-monitor-resource-health.md) útmutatóval való ellenőrzéséhez. A szívverési minta megvalósításakor ellenőrizze, hogy [IoT hub kvóták és szabályozások](iot-hub-devguide-quotas-throttling.md)szerepelnek-e.
+Egy összetettebb megvalósítási tartalmazhat adatokat az [Azure Monitor](../azure-monitor/index.yml) és az Azure [Resource Health](../service-health/resource-health-overview.md) azonosítására eszközök, amelyek próbálnak csatlakozni, vagy kommunikálni, de nem sikerül, ellenőrizze a [figyelő diagnosztikai](iot-hub-monitor-resource-health.md) útmutató. A szívveréses minta megvalósításakor győződjön meg arról, hogy ellenőrizze az [IoT Hub-kvóták és a szabályozások.](iot-hub-devguide-quotas-throttling.md)
 
 > [!NOTE]
-> Ha egy IoT-megoldás csak a kapcsolódási állapotot használja a felhőből az eszközre irányuló üzenetek küldéséhez, és az üzenetek nem küldhetők el nagy mennyiségű eszközre, érdemes lehet az egyszerűbb *rövid lejárati időt* használni. Ez a minta ugyanazt az eredményt éri el, mint az eszköz-kapcsolódási állapot beállításjegyzékének megtartása a szívverési minta használatával, miközben hatékonyabb. Ha üzenet-visszaigazolást kér, IoT Hub értesítést kaphat arról, hogy mely eszközök fogadhatnak üzeneteket, és melyek nem.
+> Ha egy IoT-megoldás a kapcsolat állapotát kizárólag annak meghatározására használja, hogy küldjön felhőből az eszközre üzeneteket, és az üzenetek et nem sugározzák nagy eszközcsoportoknak, fontolja meg az egyszerűbb *rövid lejárati idő* minta használatát. Ez a minta ugyanazt az eredményt éri el, mint az eszközkapcsolati állapot beállításjegyzékének karbantartása a szívverésminta használatával, miközben hatékonyabb. Ha üzenetnyugtázást kér, az IoT Hub értesítheti, hogy mely eszközök fogadhatnak üzeneteket, és melyek nem.
 
-## <a name="device-and-module-lifecycle-notifications"></a>Eszközök és modulok életciklusára vonatkozó értesítések
+## <a name="device-and-module-lifecycle-notifications"></a>Eszköz- és moduléletciklus-értesítések
 
-A IoT Hub értesítéseket küldhet a IoT-megoldásról, amikor egy identitást hoz létre vagy töröl az életciklus-értesítések elküldésével. Ehhez a IoT-megoldásnak létre kell hoznia egy útvonalat, és az adatforrást a *DeviceLifecycleEvents* vagy a *ModuleLifecycleEvents*értékkel kell beállítania. Alapértelmezés szerint a rendszer nem küld életciklus-értesítéseket, azaz nem léteznek ilyen útvonalak. Az értesítési üzenet tartalmazza a tulajdonságokat és a szövegtörzset.
+Az IoT Hub értesítheti az IoT-megoldást, ha egy identitást hoz létre vagy töröl életciklus-értesítések küldésével. Ehhez az IoT-megoldásnak létre kell hoznia egy útvonalat, és az adatforrást a *DeviceLifecycleEvents* vagy *a ModuleLifecycleEvents*értékűnek kell beállítania. Alapértelmezés szerint nem küld életciklus-értesítéseket, azaz nincsenek ilyen útvonalak előre léteznek. Az értesítési üzenet tulajdonságokat és törzset tartalmaz.
 
-Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `$` szimbólummal.
+Tulajdonságok: Az üzenetrendszer tulajdonságai `$` a szimbólummal vannak előrögzítve.
 
 Értesítési üzenet az eszközhöz:
 
-| Name (Név) | Érték |
+| Név | Érték |
 | --- | --- |
-|$content típusa | application/json |
-|$iothub-enqueuedtime |  Az értesítés elküldésének ideje |
-|$iothub-message-source | deviceLifecycleEvents |
-|$content – kódolás | utf-8 |
-|opType | **createDeviceIdentity** vagy **deleteDeviceIdentity** |
-|hubName | IoT Hub neve |
+|$content típusú | application/json |
+|$iothub-enqueuedtime |  Az értesítés elküldésének időpontja |
+|$iothub-üzenet-forrás | eszközLifecycleEvents |
+|$content kódolás | utf-8 |
+|opType (típus) | **createDeviceIdentity** vagy **deleteDeviceIdentity** |
+|hubName | Az IoT Hub neve |
 |deviceId | Az eszköz azonosítója |
-|operationTimestamp | A művelet ISO8601 időbélyege |
-|iothub-message-schema | deviceLifecycleNotification |
+|operationTimestamp művelet | ISO8601 működési időbélyeg |
+|iothub-üzenet-séma | eszközÉletciklusÉrtesítés |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ikerét jelöli. Például:
+Törzs: Ez a szakasz JSON formátumban, és a létrehozott eszközidentitás ikertestvérét jelöli. Például:
 
 ```json
 {
@@ -143,19 +143,19 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ike
 ```
 Értesítési üzenet a modulhoz:
 
-| Name (Név) | Érték |
+| Név | Érték |
 | --- | --- |
-$content típusa | application/json |
-$iothub-enqueuedtime |  Az értesítés elküldésének ideje |
-$iothub-message-source | moduleLifecycleEvents |
-$content – kódolás | utf-8 |
-opType | **createModuleIdentity** vagy **deleteModuleIdentity** |
-hubName | IoT Hub neve |
+$content típusú | application/json |
+$iothub-enqueuedtime |  Az értesítés elküldésének időpontja |
+$iothub-üzenet-forrás | modulLifecycleEvents |
+$content kódolás | utf-8 |
+opType (típus) | **createModuleIdentity** vagy **deleteModuleIdentity** |
+hubName | Az IoT Hub neve |
 moduleId | A modul azonosítója |
-operationTimestamp | A művelet ISO8601 időbélyege |
-iothub-message-schema | moduleLifecycleNotification |
+operationTimestamp művelet | ISO8601 működési időbélyeg |
+iothub-üzenet-séma | modulÉletciklusÉrtesítés |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás ikerét jelöli. Például:
+Törzs: Ez a szakasz JSON formátumban, és képviseli a két létrehozott modul identitás. Például:
 
 ```json
 {
@@ -179,82 +179,82 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás iker�
 }
 ```
 
-## <a name="device-identity-properties"></a>Eszköz identitásának tulajdonságai
+## <a name="device-identity-properties"></a>Eszközidentitás-tulajdonságok
 
-Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
-
-| Tulajdonság | Beállítások | Leírás |
-| --- | --- | --- |
-| deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterek és bizonyos speciális karakterek: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
-| etag |kötelező, csak olvasható |Egy olyan karakterlánc, amely az eszköz identitásának gyenge ETag jelöli, mint [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| Auth |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
-| Auth. symkey |választható |Base64 formátumban tárolt elsődleges és másodlagos kulcsot tartalmazó összetett objektum. |
-| status |szükséges |Egy hozzáférési mutató. **Engedélyezhető** vagy **letiltható**. Ha **engedélyezve**van, az eszköz csatlakozhat. Ha **le van tiltva**, az eszköz nem fér hozzá az eszközre irányuló végpontokhoz. |
-| statusReason |választható |Egy 128 karakter hosszú karakterlánc, amely az eszköz identitási állapotának okát tárolja. Minden UTF-8 karakter engedélyezett. |
-| statusUpdateTime |csak olvasható |Egy időbeli jelző, amely a legutóbbi állapot frissítésének dátumát és időpontját mutatja. |
-| connectionState |csak olvasható |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva**. Ez a mező az eszköz-kapcsolatok állapotának IoT Hub nézetét jelöli. **Fontos**: Ez a mező csak fejlesztési/hibakeresési célokra használható. A MQTT vagy AMQP használó eszközök esetén a rendszer csak a kapcsolatok állapotát frissíti. Emellett a protokoll szintű pingeléseken (MQTT pingelések vagy AMQP pingek) alapul, és legfeljebb 5 percet vehet igénybe. Ezen okok miatt hamis pozitívak lehetnek, például a csatlakoztatottként jelentett, de leválasztott eszközök. |
-| connectionStateUpdatedTime |csak olvasható |Egy időbeli jelző, amely a dátumot és a kapcsolatok állapotának legutóbbi frissítését mutatja. |
-| lastActivityTime |csak olvasható |Egy időbeli jelző, amely azt mutatja, hogy az eszköz Mikor kapcsolódott, illetve mikor érkezett, illetve mikor küldött üzenetet. |
-
-> [!NOTE]
-> A kapcsolási állapot csak a kapcsolatok állapotának IoT Hub nézetét jelenítheti meg. Az állapot frissítései a hálózati feltételektől és konfigurációktól függően késleltetve lehetnek.
-
-> [!NOTE]
-> Az eszköz-SDK-k jelenleg nem támogatják a `+` és a `#` karakter használatát a **deviceId**-ben.
-
-## <a name="module-identity-properties"></a>Modul identitásának tulajdonságai
-
-A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
+Az eszközidentitások JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
 | Tulajdonság | Beállítások | Leírás |
 | --- | --- | --- |
-| deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterek és bizonyos speciális karakterek: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterek és bizonyos speciális karakterek: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
-| etag |kötelező, csak olvasható |Egy olyan karakterlánc, amely az eszköz identitásának gyenge ETag jelöli, mint [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| Auth |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
-| Auth. symkey |választható |Base64 formátumban tárolt elsődleges és másodlagos kulcsot tartalmazó összetett objektum. |
-| status |szükséges |Egy hozzáférési mutató. **Engedélyezhető** vagy **letiltható**. Ha **engedélyezve**van, az eszköz csatlakozhat. Ha **le van tiltva**, az eszköz nem fér hozzá az eszközre irányuló végpontokhoz. |
-| statusReason |választható |Egy 128 karakter hosszú karakterlánc, amely az eszköz identitási állapotának okát tárolja. Minden UTF-8 karakter engedélyezett. |
-| statusUpdateTime |csak olvasható |Egy időbeli jelző, amely a legutóbbi állapot frissítésének dátumát és időpontját mutatja. |
-| connectionState |csak olvasható |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva**. Ez a mező az eszköz-kapcsolatok állapotának IoT Hub nézetét jelöli. **Fontos**: Ez a mező csak fejlesztési/hibakeresési célokra használható. A MQTT vagy AMQP használó eszközök esetén a rendszer csak a kapcsolatok állapotát frissíti. Emellett a protokoll szintű pingeléseken (MQTT pingelések vagy AMQP pingek) alapul, és legfeljebb 5 percet vehet igénybe. Ezen okok miatt hamis pozitívak lehetnek, például a csatlakoztatottként jelentett, de leválasztott eszközök. |
-| connectionStateUpdatedTime |csak olvasható |Egy időbeli jelző, amely a dátumot és a kapcsolatok állapotának legutóbbi frissítését mutatja. |
-| lastActivityTime |csak olvasható |Egy időbeli jelző, amely azt mutatja, hogy az eszköz Mikor kapcsolódott, illetve mikor érkezett, illetve mikor küldött üzenetet. |
+| deviceId |szükséges, csak olvasható a frissítések |Az ASCII 7 bites alfanumerikus karakterek ből és bizonyos speciális karakterekből álló `- . + % _ # * ? ! ( ) , = @ $ '`kis- és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) . |
+| generationId |szükséges, csak olvasható |Egy IoT hub által generált, kis- és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú. Ez az érték az azonos **eszközazonosítóval**rendelkező eszközök megkülönböztetésére szolgál, ha törölték és újra létrehozták őket. |
+| Etag |szükséges, csak olvasható |Az eszköz identitásának gyenge ETag-jét képviselő karakterlánc az [RFC7232](https://tools.ietf.org/html/rfc7232)szerint. |
+| Auth |választható |Hitelesítési információkat és biztonsági anyagokat tartalmazó összetett objektum. |
+| auth.symkey |választható |Elsődleges és másodlagos kulcsot tartalmazó összetett objektum, base64 formátumban tárolva. |
+| status |kötelező |Egy hozzáférési jelző. **Engedélyezhető** vagy **letiltható.** Ha **engedélyezve**van, az eszköz csatlakozhat. Ha **le van tiltva,** az eszköz nem tud hozzáférni egyetlen eszközfelé néző végponthoz sem. |
+| statusReason (ok) |választható |Egy 128 karakterhosszú karakterlánc, amely tárolja az eszköz identitásállapotának okát. Minden UTF-8 karakter megengedett. |
+| statusUpdateTime |írásvédett |Egy időbeli mutató, amely az utolsó állapotfrissítés dátumát és időpontját mutatja. |
+| connectionState |írásvédett |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva.** Ez a mező az eszközkapcsolat állapotának IoT Hub nézetét jelöli. **Fontos:** Ez a mező csak fejlesztési/hibakeresési célokra használható. A kapcsolat állapota csak az MQTT vagy AMQP-t használó eszközök esetében frissül. Emellett protokollszintű pingeken (MQTT pingek en vagy AMQP-pingeken) is alapul, és legfeljebb 5 perces késleltetéssel rendelkezhet. Ezen okok miatt lehetnek hamis pozitív, például csatlakoztatottként jelentett, de leválasztott eszközök. |
+| connectionStateUpdatedTime |írásvédett |Időbeli jelző, amely a kapcsolat állapotának dátumát és utolsó dátumát mutatja. |
+| lastActivityTime |írásvédett |Időbeli jelző, amely az eszköz csatlakoztatásának, fogadásának vagy üzenetküldésének dátumát és utolsó időpontját mutatja. |
 
 > [!NOTE]
-> Az eszköz SDK-k jelenleg nem támogatják a `+` és a `#` karaktert a **deviceId** és a **moduleId**.
+> A kapcsolat állapota csak a kapcsolat állapotának IoT Hub nézetét képviselheti. A hálózati feltételektől és konfigurációktól függően az állapot frissítései késhetnek.
+
+> [!NOTE]
+> Jelenleg az eszköz SDK-k `+` nem `#` támogatják a és a karakterek a **deviceId**.
+
+## <a name="module-identity-properties"></a>Modul identitástulajdonságai
+
+A modulidentitások JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
+
+| Tulajdonság | Beállítások | Leírás |
+| --- | --- | --- |
+| deviceId |szükséges, csak olvasható a frissítések |Az ASCII 7 bites alfanumerikus karakterek ből és bizonyos speciális karakterekből álló `- . + % _ # * ? ! ( ) , = @ $ '`kis- és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) . |
+| moduleId |szükséges, csak olvasható a frissítések |Az ASCII 7 bites alfanumerikus karakterek ből és bizonyos speciális karakterekből álló `- . + % _ # * ? ! ( ) , = @ $ '`kis- és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) . |
+| generationId |szükséges, csak olvasható |Egy IoT hub által generált, kis- és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú. Ez az érték az azonos **eszközazonosítóval**rendelkező eszközök megkülönböztetésére szolgál, ha törölték és újra létrehozták őket. |
+| Etag |szükséges, csak olvasható |Az eszköz identitásának gyenge ETag-jét képviselő karakterlánc az [RFC7232](https://tools.ietf.org/html/rfc7232)szerint. |
+| Auth |választható |Hitelesítési információkat és biztonsági anyagokat tartalmazó összetett objektum. |
+| auth.symkey |választható |Elsődleges és másodlagos kulcsot tartalmazó összetett objektum, base64 formátumban tárolva. |
+| status |kötelező |Egy hozzáférési jelző. **Engedélyezhető** vagy **letiltható.** Ha **engedélyezve**van, az eszköz csatlakozhat. Ha **le van tiltva,** az eszköz nem tud hozzáférni egyetlen eszközfelé néző végponthoz sem. |
+| statusReason (ok) |választható |Egy 128 karakterhosszú karakterlánc, amely tárolja az eszköz identitásállapotának okát. Minden UTF-8 karakter megengedett. |
+| statusUpdateTime |írásvédett |Egy időbeli mutató, amely az utolsó állapotfrissítés dátumát és időpontját mutatja. |
+| connectionState |írásvédett |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva.** Ez a mező az eszközkapcsolat állapotának IoT Hub nézetét jelöli. **Fontos:** Ez a mező csak fejlesztési/hibakeresési célokra használható. A kapcsolat állapota csak az MQTT vagy AMQP-t használó eszközök esetében frissül. Emellett protokollszintű pingeken (MQTT pingek en vagy AMQP-pingeken) is alapul, és legfeljebb 5 perces késleltetéssel rendelkezhet. Ezen okok miatt lehetnek hamis pozitív, például csatlakoztatottként jelentett, de leválasztott eszközök. |
+| connectionStateUpdatedTime |írásvédett |Időbeli jelző, amely a kapcsolat állapotának dátumát és utolsó dátumát mutatja. |
+| lastActivityTime |írásvédett |Időbeli jelző, amely az eszköz csatlakoztatásának, fogadásának vagy üzenetküldésének dátumát és utolsó időpontját mutatja. |
+
+> [!NOTE]
+> Jelenleg az eszköz SDK-k `+` nem `#` támogatják a és a karakterek a **deviceId** és **moduleId**.
 
 ## <a name="additional-reference-material"></a>További referenciaanyagok
 
-A IoT Hub Fejlesztői útmutatóban található további témakörök a következők:
+Az IoT Hub fejlesztői útmutatójának további referenciatémakörei a következők:
 
-* [IoT hub végpontok](iot-hub-devguide-endpoints.md) ismertetik a különböző végpontokat, amelyeket az egyes IoT hub a futásidejű és a felügyeleti műveletek számára tesz elérhetővé.
+* [Az IoT Hub-végpontok](iot-hub-devguide-endpoints.md) ismerteti a különböző végpontok, amelyek az egyes IoT-központok elérhetővé teszi a futásidejű és felügyeleti műveletek.
 
-* A [szabályozás és a kvóták](iot-hub-devguide-quotas-throttling.md) a IoT hub szolgáltatásra vonatkozó kvótákat és szabályozási viselkedéseket ismertetik.
+* [A sávszélesség-szabályozás és](iot-hub-devguide-quotas-throttling.md) a kvóták az IoT Hub-szolgáltatásra vonatkozó kvótákat és szabályozási viselkedéseket ismertetik.
 
-* Az [Azure IoT-eszközök és-szolgáltatások SDK](iot-hub-devguide-sdks.md) -k felsorolja azokat a különböző nyelvi SDK-kat, amelyek a IoT hub használatával kommunikáló eszköz-és szolgáltatás-alkalmazások fejlesztéséhez használhatók.
+* [Az Azure IoT-eszközök és szolgáltatások SDK-k](iot-hub-devguide-sdks.md) felsorolja a különböző nyelvi SDK-k segítségével, ha az IoT Hub-szolgáltatást használó eszköz- és szolgáltatásalkalmazásokat is fejleszt.
 
-* [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md) leírja a lekérdezési nyelvet, amellyel információkat kérhet le az eszközökről, és feladatairól IoT hub.
+* [Az IoT Hub lekérdezési nyelve](iot-hub-devguide-query-language.md) leírja a lekérdezési nyelvet, amelysegítségével információkat kérhet le az IoT Hubról az eszköztwins és a feladatok használatával.
 
-* [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
+* [Az IoT Hub MQTT-támogatása](iot-hub-mqtt-support.md) további információt nyújt az MQTT protokoll IoT Hub-támogatásáról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan használhatja a IoT Hub Identity registryt, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
+Most, hogy megtanulta az IoT Hub identitásbeállítás-beállításjegyzékének használatát, érdekelheti képpen az IoT Hub következő fejlesztői útmutatótémaköreit:
 
 * [IoT Hub-hozzáférés szabályozása](iot-hub-devguide-security.md)
 
-* [Az állapot és a konfigurációk szinkronizálása az eszközök ikrek használatával](iot-hub-devguide-device-twins.md)
+* [Az állapot és a konfigurációk szinkronizálása eszköztwins használatával](iot-hub-devguide-device-twins.md)
 
-* [Közvetlen metódus meghívása egy eszközön](iot-hub-devguide-direct-methods.md)
+* [Közvetlen metódus meghívása eszközön](iot-hub-devguide-direct-methods.md)
 
 * [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
 
-A cikkben ismertetett fogalmak némelyikének kipróbálásához tekintse meg a következő IoT Hub oktatóanyagot:
+A cikkben ismertetett fogalmak némelyikének kipróbálásához tekintse meg az IoT Hub következő oktatóanyagát:
 
 * [Ismerkedés az Azure IoT Hub szolgáltatással](quickstart-send-telemetry-dotnet.md)
 
-Ha szeretné megtekinteni a IoT Hub Device Provisioning Service használatát a nulla érintéses, igény szerinti kiépítés engedélyezéséhez, olvassa el a következő témakört: 
+Az IoT Hub-eszközkiépítési szolgáltatás használatával a nulla érintéses, just-in-time kiépítés engedélyezéséről a következő témakört kell ismertennie: 
 
 * [Azure IoT Hub Device Provisioning Service](https://azure.microsoft.com/documentation/services/iot-dps)

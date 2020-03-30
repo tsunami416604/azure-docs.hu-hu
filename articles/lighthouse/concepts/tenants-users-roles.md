@@ -1,48 +1,51 @@
 ---
-title: Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben
-description: Megismerheti Azure Active Directory bérlők, a felhasználók és a szerepkörök fogalmait, valamint azt, hogy miként használhatók az Azure Lighthouse-forgatókönyvekben.
-ms.date: 01/16/2020
+title: Bérlők, szerepkörök és felhasználók az Azure Világítótorony-forgatókönyvekben
+description: Ismerje meg az Azure Active Directory-bérlők, -felhasználók és szerepkörök fogalmait, valamint azt, hogy miként használhatók az Azure Lighthouse-forgatókönyvekben.
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7540e17fd80f9a1d8e996295000c126614b838d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156335"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246891"
 ---
-# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben
+# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Bérlők, szerepkörök és felhasználók az Azure Világítótorony-forgatókönyvekben
 
-Az Azure-beli [delegált erőforrás-kezeléshez szükséges ügyfelek bevezetéséhez](azure-delegated-resource-management.md)fontos tisztában lennie azzal, hogyan működnek a Azure Active Directory (Azure ad) bérlők, a felhasználók és a szerepkörök, valamint hogyan használhatók az Azure Lighthouse-forgatókönyvekben.
+Mielőtt az [Azure delegált erőforrás-kezeléséhez](azure-delegated-resource-management.md)ügyfeleket alkalmazna, fontos megérteni, hogyan működnek az Azure Active Directory (Azure AD) bérlői, felhasználói és szerepkörei, valamint hogyan használhatók az Azure Lighthouse-forgatókönyvekben.
 
-A *bérlő* az Azure ad dedikált és megbízható példánya. Az egyes bérlők általában egyetlen szervezetnek felelnek meg. Az Azure-beli delegált erőforrás-kezelés lehetővé teszi az erőforrások logikai kivetítését az egyik bérlőről egy másik bérlőre. Ez lehetővé teszi a bérlők felügyeletét (például egy szolgáltatóhoz tartozót) a delegált erőforrások elérésére az ügyfél bérlője számára, vagy lehetővé teszi, hogy [több Bérlővel rendelkező vállalatok központosítsák a felügyeleti műveleteiket](enterprise.md).
+A *bérlő* az Azure AD dedikált és megbízható példánya. Általában minden bérlő egyetlen szervezetet képvisel. Az Azure delegált erőforrás-kezelés lehetővé teszi az erőforrások logikai vetülete az egyik bérlőről a másikra. Ez lehetővé teszi a kezelőbérlő (például egy szolgáltatóhoz tartozó) felhasználók számára, hogy hozzáférjenek az ügyfél bérlőjében lévő delegált erőforrásokhoz, vagy lehetővé teszik a több bérlővel rendelkező vállalatok számára [a felügyeleti műveletek központosítását.](enterprise.md)
 
-Ahhoz, hogy ez a logikai leképezés elérhető legyen, előfizetést (vagy egy vagy több, előfizetésen belüli erőforráscsoportot) kell előkészíteni az ügyfél bérlője *számára az* Azure-beli delegált erőforrás-kezeléshez. Ez a [bevezetési folyamat Azure Resource Manager-sablonokkal](../how-to/onboard-customer.md) vagy [nyilvános vagy privát ajánlat Azure Marketplace-en való közzétételével](../how-to/publish-managed-services-offers.md)végezhető el.
+A logikai vetület elérése érdekében egy előfizetést (vagy egy előfizetésen belüli egy vagy több erőforráscsoportot) az ügyfél-bérlőben az Azure delegált erőforrás-kezeléséhez kell *beszállni.* Ez a bevezetési folyamat az [Azure Resource Manager-sablonokon keresztül,](../how-to/onboard-customer.md) vagy [egy nyilvános vagy privát ajánlat azure piactéren való közzétételével](../how-to/publish-managed-services-offers.md)végezhető el.
 
-Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket*. Az egyes engedélyek egy felhasználói fiókot határoznak meg a bérlők kezelése szolgáltatásban, amely hozzáfér a delegált erőforrásokhoz, valamint egy beépített szerepkört, amely megadja, hogy az egyes felhasználók milyen engedélyeket kapnak ezekhez az erőforrásokhoz.
+Bármelyik bevezetési módszert is választja, meg kell *határoznia az engedélyeket.* Minden engedélyezés egy felhasználói fiókot határoz meg a kezelő bérlőben, amely hozzáfér a delegált erőforrásokhoz, és egy beépített szerepkört, amely beállítja az egyes felhasználók engedélyeit ezekhez az erőforrásokhoz.
 
-## <a name="role-support-for-azure-delegated-resource-management"></a>Szerepkör-támogatás az Azure-beli delegált erőforrás-kezeléshez
+## <a name="role-support-for-azure-delegated-resource-management"></a>Szerepkör-támogatás az Azure delegált erőforrás-kezeléséhez
 
-Az engedélyezés meghatározásakor minden felhasználói fiókhoz hozzá kell rendelni a [szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)egyikét. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
+Az engedélyezés meghatározásakor minden felhasználói fiókhoz hozzá kell rendelni egy [szerepköralapú hozzáférés-vezérlési (RBAC) beépített szerepkört.](../../role-based-access-control/built-in-roles.md) Egyéni szerepkörök és [a klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 
-Az Azure-beli delegált erőforrás-kezelés jelenleg az összes [beépített szerepkört](../../role-based-access-control/built-in-roles.md) támogatja, a következő kivételekkel:
+Az Azure delegált erőforrás-kezelése jelenleg minden [beépített szerepkört](../../role-based-access-control/built-in-roles.md) támogat, a következő kivételekkel:
 
-- A [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör nem támogatott.
+- A [tulajdonos](../../role-based-access-control/built-in-roles.md#owner) szerepkör nem támogatott.
 - A [DataActions](../../role-based-access-control/role-definitions.md#dataactions) engedéllyel rendelkező beépített szerepkörök nem támogatottak.
-- A [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) beépített szerepköre támogatott, de csak azzal a korlátozott céllal, [hogy szerepköröket rendeljen hozzá egy felügyelt identitáshoz az ügyfél bérlője](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)számára. Ehhez a szerepkörhöz általában nem érvényesek más engedélyek. Ha megad egy felhasználót a szerepkörhöz, meg kell adnia azokat a beépített szerepkör (eke) t, amelyeket a felhasználó a felügyelt identitásokhoz hozzárendelhet.
+- A [Felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) beépített szerepkör támogatott, de csak korlátozott célból, [hogy szerepköröket rendel egy felügyelt identitáshoz az ügyfél-bérlőben.](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) A szerepkör által általában megadott egyéb engedélyek nem lesznek érvényesek. Ha ezzel a szerepkörrel rendelkező felhasználót határoz meg, meg kell adnia azokat a beépített szerepköröket is, amelyeket a felhasználó a felügyelt identitásokhoz rendelhet.
 
 > [!NOTE]
-> Miután hozzáadta a megfelelő új beépített szerepkört az Azure-hoz, hozzá lehet rendelni [egy ügyfelet Azure Resource Manager-sablonok használatával](../how-to/onboard-customer.md). A [felügyelt szolgáltatásokra vonatkozó ajánlat közzétételekor](../how-to/publish-managed-services-offers.md)előfordulhat, hogy az újonnan hozzáadott szerepkör Cloud Partner Portal elérhetővé válik.
+> Miután egy megfelelő új beépített szerepkört hozzáadott az Azure-hoz, hozzárendelhető, amikor [az Azure Resource Manager-sablonok használatával egy ügyfél reszelője.](../how-to/onboard-customer.md) Előfordulhat, hogy a [felügyelt szolgáltatásajánlat közzétételekor](../how-to/publish-managed-services-offers.md)az újonnan hozzáadott szerepkör elérhetővé válik a Cloud Partner Portal webhelyen.
 
-## <a name="best-practices-for-defining-users-and-roles"></a>Ajánlott eljárások felhasználók és szerepkörök definiálásához
+## <a name="best-practices-for-defining-users-and-roles"></a>Gyakorlati tanácsok a felhasználók és szerepkörök meghatározásához
 
-Az engedélyek létrehozásakor javasoljuk a következő ajánlott eljárásokat:
+Az engedélyek létrehozásakor a következő gyakorlati tanácsokat javasoljuk:
 
-- A legtöbb esetben egy Azure AD-felhasználói csoporthoz vagy egyszerű szolgáltatáshoz kell engedélyeket rendelni, nem pedig egyéni felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet.
-- Ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek, ami segít csökkenteni a véletlen hibák esélyét. További információ: [ajánlott biztonsági eljárások](../concepts/recommended-security-practices.md).
-- Vegyen fel egy felhasználót a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörével](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) , így szükség esetén később is [eltávolíthatja a delegáláshoz való hozzáférést](../how-to/onboard-customer.md#remove-access-to-a-delegation) . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
-- Győződjön meg arról, hogy minden olyan felhasználónak, akinek meg kell [tekintenie a saját ügyfelek lapot a Azure Portal](../how-to/view-manage-customers.md) rendelkezik az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkörrel (vagy egy másik beépített szerepkörrel, amely olvasói hozzáféréssel rendelkezik).
+- A legtöbb esetben érdemes engedélyeket rendelni egy Azure AD felhasználói csoporthoz vagy egyszerű szolgáltatáshoz, nem pedig egyéni felhasználói fiókok sorozatához. Ez lehetővé teszi, hogy az egyes felhasználók hozzáférését anélkül adja hozzá vagy távolítsa el, hogy a hozzáférési követelmények változásakor frissítenie kellene és újra közzé kellene tennie a tervet.
+- Ügyeljen arra, hogy kövesse a minimális jogosultság elvét, hogy a felhasználók csak a feladat uk elvégzéséhez szükséges engedélyekkel rendelkezhessenek, így csökkentve a véletlen hibák esélyét. További információ: [Ajánlott biztonsági eljárások](../concepts/recommended-security-practices.md).
+- A [felügyelt szolgáltatások regisztrációs hozzárendelésének törlése szerepkörrel](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) rendelkező felhasználót is felvehet, így szükség esetén később [eltávolíthatja a delegáláshoz való hozzáférést.](../how-to/onboard-customer.md#remove-access-to-a-delegation) Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak az ügyfél bérlőjében lévő felhasználó távolíthatja el.
+- Győződjön meg arról, hogy minden olyan felhasználó, akinek meg kell [tekintenie az Ügyfelek lapot az Azure Portalon,](../how-to/view-manage-customers.md) rendelkezik az [Olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör (vagy egy másik beépített szerepkör, amely magában foglalja a Reader-hozzáférést).
 
-## <a name="next-steps"></a>Következő lépések
+> [!IMPORTANT]
+> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoporttípusnak** **biztonságnak,** nem pedig **Office 365-nek**kell lennie. Ez a beállítás a csoport létrehozásakor van bejelölve. További információ: [Hozzon létre egy alapszintű csoportot, és adjon hozzá tagokat az Azure Active Directory használatával.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-- Ismerje meg [Az Azure-beli delegált erőforrás-kezelés ajánlott biztonsági eljárásait](recommended-security-practices.md).
-- Az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
+## <a name="next-steps"></a>További lépések
+
+- Ismerje meg [az Azure delegált erőforrás-kezeléséhez ajánlott biztonsági eljárásokat.](recommended-security-practices.md)
+- Az azure-beli delegált erőforrás-kezeléshez az [Azure Resource Manager-sablonjainak használatával,](../how-to/onboard-customer.md) vagy [egy privát vagy nyilvánosan felügyelt szolgáltatások azure Piactérre való közzétételével.](../how-to/publish-managed-services-offers.md)

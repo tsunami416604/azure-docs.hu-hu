@@ -1,50 +1,49 @@
 ---
-title: A tárolók az Azure Marketplace-hez készült közzétételi útmutatót nyújtanak
-description: Ez a cikk a tárolók a piactéren való közzétételének követelményeit ismerteti
+title: A tárolók közzétételi útmutatót kínálnak az Azure Piactérszámára
+description: Ez a cikk ismerteti a tárolók közzétételének követelményeit a Marketplace-en
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: ffdc6b22209c1d334ac7b75c7079e755a7405154
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822998"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277306"
 ---
-# <a name="containers-offer-publishing-guide"></a>A tárolók közzétételi útmutatót biztosítanak
+# <a name="containers-offer-publishing-guide"></a>A tárolók közzétételi útmutatót kínálnak
 
-A Container segítségével közzéteheti a tároló-rendszerképet az Azure Marketplace-en. Az útmutató segítségével megismerheti az ajánlat követelményeit. 
+A tárolóajánlatok segítségével közzéteheti a tárolólemezképet az Azure Piactéren. Ebben az útmutatóban megismerheti az ajánlat követelményeit. 
 
-Ezek olyan tranzakciós ajánlatok, amelyek üzembe helyezése és számlázása a piactéren történik. A felhasználó által megjelenő művelet hívása "Letöltés most".
+Ezek olyan tranzakciós ajánlatok, amelyek a Marketplace-en keresztül vannak telepítve és számlázva. A felhasználó által látott cselekvésre való felhívás a "Get It Now" (Get It Now) (Get It Now) (Get It Now) (Get It Now) (Get It Now) (Get It Now)
 
-Ha a megoldás egy, a Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép, akkor használja a Container ajánlat típusát.
+Használja a Container-ajánlat típusát, ha a megoldás egy Kubernetes-alapú Azure-tárolószolgáltatásként kiépített Docker-tárolórendszerkép.
 
 >[!NOTE]
->Például egy Kubernetes-alapú Azure Container szolgáltatás, például az Azure Kubernetes Service vagy a Azure Container Instances, az Azure-ügyfelek választhatnak a Kubernetes-alapú tárolók futtatásához.  
+>Például egy Kubernetes-alapú Azure-tároló szolgáltatás, például az Azure Kubernetes-szolgáltatás vagy az Azure Container Instances, az Azure-ügyfelek kiválasztása egy Kubernetes-alapú tároló futásidejű.  
 
-A Microsoft jelenleg támogatja az ingyenes és a saját licencű (BYOL) licencelési modelleket.
+A Microsoft jelenleg támogatja az ingyenes és bring-your-own-license (BYOL) licencelési modelleket.
 
-## <a name="containers-offer"></a>Tárolók ajánlat
+## <a name="containers-offer"></a>Konténerajánlat
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-| Számlázás és mérés | Az ingyenes vagy a BYOL számlázási modellt is támogatja. |  
-| Docker-ből készített rendszerkép | A tároló lemezképeit a Docker-rendszerkép specifikációja alapján kell létrehozni, és a Docker kell létrehozni.<ul> <li>A Docker-rendszerképek létrehozásával kapcsolatos további információkért tekintse meg a használati szakaszt, amely a következő helyen található: [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
-| Üzemeltetés az ACR-ben | A tároló lemezképeit Azure Container Registry (ACR) tárházban kell tárolni.<ul> <li>Az ACR használatával kapcsolatos további információkért látogasson el a rövid útmutató: tároló-beállításjegyzék létrehozása a [docs.microsoft.com/Azure/Container-Registry/Container-Registry-Get-Started-Portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)címen található Azure Portal oldalon.</li> </ul> |  
-| Képek címkézése | A tárolók képeinek legalább 1 címkét kell tartalmazniuk (maximális Címkék: 16).<ul> <li>A képek címkézésével kapcsolatos további információkért látogasson el a Docker tag oldalára, amely a következő címen található: [docs.Docker.com/Engine/Reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
+| Számlázás és mérés | Támogassa az ingyenes vagy byol számlázási modellt. |  
+| A Dockerfile-ból készült lemezkép | A tárolórendszerképeknek a Docker-lemezkép specifikációján kell alapulniuk, és egy Docker-fájlból kell épülniük.<ul> <li>A docker-lemezképek létrehozásáról a [használat](https://docs.docker.com/engine/reference/builder/#usage)docs.docker.com/engine/reference/builder/#usage című szakaszban talál további információt.</li> </ul> |  
+| Tárhely az ACR-ben | A tárolórendszerképeket egy Azure Container Registry (ACR) tárházban kell üzemeltetni.<ul> <li>Az ACR használatáról további információt a rövid útmutató: Tároló beállításjegyzék létrehozása az [Azure](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)Portal docs.microsoft.com/azure/container-registry/container-registry-get-started-portal.</li> </ul> |  
+| Képcímkézés | A tárolóképeknek legalább 1 címkét kell tartalmazniuk (maximális címkék: 16).<ul> <li>A kép címkézésével kapcsolatos további információkért látogasson el a [docker](https://docs.docker.com/engine/reference/commandline/tag)címke oldalára, amely a docs.docker.com/engine/reference/commandline/tag .</li> </ul> |  
 
 ## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piactéren.
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piacon.
 
-Ha regisztrálva van, és új ajánlatot hoz létre, vagy dolgozik egy meglévőn,
+Ha regisztrált, és új ajánlatot hoz létre, vagy egy meglévőn dolgozik,
 
-- Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a Cloud Partner Portalba](https://cloudpartner.azure.com) .
-- További információkért lásd: [tárolók](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) .
+- [Jelentkezzen be a Cloud Partner Portalszolgáltatásba](https://cloudpartner.azure.com) az ajánlat létrehozásához vagy teljesítéséhez.
+- További információt a [Tárolók](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) című témakörben talál.

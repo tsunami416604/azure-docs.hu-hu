@@ -1,5 +1,5 @@
 ---
-title: Azure MFA-kiszolgáló és Active Directory-Azure Active Directory
+title: Azure MFA Server és Active Directory – Azure Active Directory
 description: Az Azure Multi-Factor Authentication-kiszolgáló integrálása az Active Directoryval a címtárak szinkronizálása érdekében.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51c6284c0d7ee21f67d37465100f84d4b2f5ae2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480980"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 
 Az Azure MFA-kiszolgáló Címtár-integráció szakaszának használatával integrálhatja a címtárat az Active Directoryval vagy egy másik LDAP-címtárral. Konfigurálhatja az attribútumokat, hogy megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását.
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> 2019. július 1-jéig a Microsoft a továbbiakban nem ajánlja fel az MFA Server alkalmazást az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták az MFA-kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
 
 ## <a name="settings"></a>Beállítások
 
@@ -33,7 +33,7 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-(MFA-) kiszolgál�
 ![LDAP-konfiguráció szerkesztése az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> A címtár-integráció nem garantált, hogy a Active Directory tartományi szolgáltatásokon kívüli címtárakkal is működjön.
+> A címtár-integráció nem garantált, hogy az Active Directory tartományi szolgáltatásoktól eltérő könyvtárakkal is együttműködik.
 
 | Szolgáltatás | Leírás |
 | --- | --- |
@@ -47,7 +47,7 @@ A következő táblázat az LDAP-konfigurációs beállításokat ismerteti.
 
 | Szolgáltatás | Leírás |
 | --- | --- |
-| Kiszolgáló |Megadhatja az LDAP-címtárat futtató kiszolgáló állomásnevét vagy IP-címét.  Tartalékkiszolgálót is megadhat pontosvesszővel elválasztva. <br>Megjegyzés: Ha a kötés SSL típusú, teljes állomásnévre van szükség. |
+| Kiszolgáló |Megadhatja az LDAP-címtárat futtató kiszolgáló állomásnevét vagy IP-címét.  Tartalékkiszolgálót is megadhat pontosvesszővel elválasztva. <br>Megjegyzés: Ha a Bind type SSL (TLS) típusú, teljesen minősített állomásnév szükséges. |
 | Alap DN |Megadhatja az alap címtárobjektum megkülönböztető nevét, ahonnan az összes címtárlekérdezés indul.  Például dc=abc,dc=com. |
 | Kötéstípus – Lekérdezések |Válassza ki az LDAP-címtár kereséséhez használandó kötés megfelelő kötéstípusát.  Ezt a rendszer az importálásokhoz, a szinkronizáláshoz és a felhasználónevek feloldásához használja. <br><br>  Névtelen – A rendszer névtelen kötést hajt végre.  Nem használ kötési DN-t és kötésjelszót.  Ez csak akkor működik, ha az LDAP-címtár engedélyezi a névtelen kötést, és az engedélyek lehetővé teszik a megfelelő rekordok és attribútumok lekérdezését.  <br><br> Egyszerű – A kötési DN-t és a kötésjelszót a rendszer egyszerű szövegként adja át az LDAP-címtárhoz való kötéshez.  Ez tesztelési célokra való, annak ellenőrzésére, hogy a kiszolgáló elérhető-e, és a kötési fiók megfelelő hozzáféréssel rendelkezik-e. A megfelelő tanúsítvány telepítése után ehelyett SSL-t használjon.  <br><br> SSL – A kötési DN-t és a kötésjelszót a rendszer SSL-lel titkosítja az LDAP-címtárhoz való kötéshez.  Ehhez telepítsen helyileg egy tanúsítványt, amelyet az LDAP-címtár megbízhatónak tart.  <br><br> Windows – A kötési DN-nel és a kötésjelszóval a rendszer biztonságos kapcsolatot létesít egy Active Directory-tartományvezérlővel vagy ADAM-címtárral.  Ha a Kötési felhasználónév mezőt üresen hagyja, a kötéshez a rendszer a bejelentkezett felhasználó fiókját használja. |
 | Kötéstípus – Hitelesítések |Válassza ki az LDAP-kötés hitelesítéséhez használandó megfelelő kötéstípust.  A kötéstípusok leírását a Kötéstípus – Lekérdezések témakörben találja.  Például ez lehetővé teszi, hogy a lekérdezésekhez Névtelen kötést, míg az LDAP-kötések hitelesítésének védelméhez SSL-kötést használjon. |
@@ -60,7 +60,7 @@ A következő táblázat az LDAP-konfigurációs beállításokat ismerteti.
 
 A szűrőkkel feltételeket adhat meg a rekordok minősítéséhez címtárkeresések végrehajtásakor.  Szűrők beállításával korlátozhatja a szinkronizálni kívánt objektumok körét.  
 
-![A címtár-szűrés konfigurálása az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint2.png)
+![Címtárszűrés konfigurálása az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Az Azure Multi-Factor Authentication az alábbi három szűrőbeállítással rendelkezik:
 
@@ -70,17 +70,17 @@ Az Azure Multi-Factor Authentication az alábbi három szűrőbeállítással re
 
 ## <a name="attributes"></a>Attribútumok
 
-Az attribútumok igény szerint testreszabhatók egy adott címtárhoz.  Ez lehetővé teszi egyéni attribútumok hozzáadását és a szinkronizálás finomhangolását csak a szükséges attribútumokra. Használja a címtár sémájában definiált attribútum nevét az egyes attribútumok mező értékéhez. Az alábbi táblázatban további információkat talál az egyes szolgáltatásokról.
+Az attribútumok igény szerint testreszabhatók egy adott címtárhoz.  Ez lehetővé teszi egyéni attribútumok hozzáadását és a szinkronizálás finomhangolását csak a szükséges attribútumokra. Használja az attribútum nevét a címtársémában meghatározottak szerint az egyes attribútummezők értékéhez. Az alábbi táblázatban további információkat talál az egyes szolgáltatásokról.
 
 Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attribútumlistán szereplő attribútumokkal.
 
-![A címtár-integrációs attribútumok testreszabása az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint3.png)
+![Címtár-integrációs attribútumok testreszabása az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | Szolgáltatás | Leírás |
 | --- | --- |
 | Egyedi azonosító |Megadhatja a tároló-, biztonságicsoport- és felhasználórekordok egyedi azonosítójaként szolgáló attribútum nevét.  Az Active Directoryban ez általában az objectGUID. Egyéb LDAP-megvalósításokban az entryUUID vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték az objectGUID. |
 | Egyedi azonosító típusa |Válassza ki az egyedi azonosító attribútum típusát.  Az Active Directoryban az objectGUID attribútum típusa GUID. Egyéb LDAP-megvalósításokban az ASCII bájttömb vagy Sztring típusok is előfordulhatnak.  Az alapértelmezett érték a GUID. <br><br>Fontos, hogy ezt a típust helyesen adja meg, mivel a rendszer a szinkronizált elemekre az egyedi azonosítójuk alapján hivatkozik. Az objektumok a címtárban közvetlenül az egyedi azonosítótípusuk segítségével kereshetők meg.  Ha a típust Sztringre állítja, miközben a címtár valójában ASCII-karakterek bájttömbjeként tárolja az értéket, a szinkronizálás nem fog megfelelően működni. |
-| Megkülönböztető név |Megadhatja azon attribútum nevét, amely az egyes rekordok megkülönböztető nevét tartalmazza.  Active Directoryban ez általában a distinguishedName. Egyéb LDAP-megvalósításokban az entryDN vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték a distinguishedName. <br><br>Ha a csak a megkülönböztető nevet tartalmazó attribútum nem létezik, akkor a ADS Path attribútum használható.  Az elérési út „LDAP://\<server\>/” részét a rendszer automatikusan leválasztja, csak az objektum megkülönböztető nevét hagyja meg. |
+| Megkülönböztető név |Megadhatja azon attribútum nevét, amely az egyes rekordok megkülönböztető nevét tartalmazza.  Active Directoryban ez általában a distinguishedName. Egyéb LDAP-megvalósításokban az entryDN vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték a distinguishedName. <br><br>Ha nem létezik olyan attribútum, amely csak a megkülönböztető nevet tartalmazza, a hirdetési elérési út attribútum használható.  Az elérési út „LDAP://\<server\>/” részét a rendszer automatikusan leválasztja, csak az objektum megkülönböztető nevét hagyja meg. |
 | Tárolónév |Megadhatja azon attribútum nevét, amely a nevet egy tárolórekordban tárolja.  Az attribútum értéke megjelenik a tárolóhierarchiában az Active Directoryból való importáláskor vagy szinkronizált elemek hozzáadásakor.  Az alapértelmezett érték a name. <br><br>Ha a különböző tárolók különböző attribútumokat használnak a neveikhez, akkor az egyes tárolónév-attribútumokat pontosvesszővel válassza el.  A rendszer a tárolóobjektumokban található első tárolónév-attribútumot használja az objektumok nevének megjelenítéséhez. |
 | Biztonsági csoport neve |Megadhatja azon attribútum nevét, amely a nevet egy biztonságicsoport-rekordban tárolja.  Az attribútum értéke megjelenik a Biztonsági csoport listában az Active Directoryból való importáláskor vagy szinkronizált elemek hozzáadásakor.  Az alapértelmezett érték a name. |
 | Felhasználónév |Megadhatja azon attribútum nevét, amely a felhasználónevet egy felhasználórekordban tárolja.  A rendszer az attribútum értékét a Multi-Factor Auth-kiszolgáló felhasználóneveként használja fel.  Egy második attribútumot is megadhat tartalékként.  A második attribútumot a rendszer csak akkor használja, ha az első attribútum nem tartalmaz értéket a felhasználóhoz.  Az alapértelmezett érték a userPrincipalName és az sAMAccountName. |
@@ -103,9 +103,9 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 | Mellék |Megadhatja azon attribútum nevét, amely a telefonszámhoz tartozó melléket egy felhasználórekordban tárolja.  A mellék mező értékét a rendszer csak az elsődleges telefonszám mellékeként használja.  Alapértelmezés szerint ez a mező üres. <br><br>Ha a Mellék attribútum nincs meghatározva, a mellékek megadhatók a telefonattribútum részeként. Ebben az esetben a mellék elé tegyen egy „x” karaktert, hogy a rendszer megfelelően tudja elemezni.  Például az 555-123-4567 x890 érték az 555-123-4567-es telefonszámot jelöli 890-es mellékkel. |
 | Alapértelmezések visszaállítása gomb |Kattintson az **Alapértelmezések visszaállítása** gombra, hogy az összes attribútum visszaálljon az alapértelmezett értékre.  Az alapértelmezett értékek megfelelően működnek a normál Active Directory- vagy ADAM-sémával. |
 
-Az attribútumok szerkesztéséhez kattintson a **Szerkesztés** gombra az attribútumok lapon.  Ekkor megjelenik egy ablak, ahol szerkesztheti az attribútumokat. Bármely attribútum mellett a **...** elemet kiválasztva megnyílik egy ablak, ahol kiválaszthatja, hogy mely attribútumok jelenjenek meg.
+Az attribútumok szerkesztéséhez kattintson az Attribútumok lapon a **Szerkesztés** gombra.  Ez egy olyan ablakot hoz létre, ahol szerkesztheti az attribútumokat. Bármely attribútum mellett a **...** elemet kiválasztva megnyílik egy ablak, ahol kiválaszthatja, hogy mely attribútumok jelenjenek meg.
 
-![Címtár-attribútum hozzárendelésének szerkesztése az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint4.png)
+![Könyvtárattribútum-hozzárendelés szerkesztése az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>Szinkronizálás
 
@@ -117,7 +117,7 @@ A Multi-Factor Auth ADSync szolgáltatás a Microsoft által biztosított DirSyn
 
 Ha az LDAP-címtár támogatja a DirSync vezérlőt és ahhoz van konfigurálva, akkor a felhasználók és biztonsági csoportok változásainak lekérdezése ugyanúgy fog működni, mint az Active Directoryval.  Ha az LDAP-címtár nem támogatja a DirSync vezérlőt, akkor a rendszer minden ciklusban teljes szinkronizálást hajt végre.
 
-![Címtár-objektumok szinkronizálása az MFA-kiszolgálóval](./media/howto-mfaserver-dir-ad/dirint5.png)
+![Címtárobjektumok szinkronizálása az MFA-kiszolgálóval](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 Az alábbi táblázat további információkat tartalmaz a Szinkronizálás lap egyes beállításairól.
 
@@ -143,8 +143,8 @@ A Feljebb és Lejjebb gombbal a rendszergazda módosíthatja a szinkronizált el
 > [!TIP]
 > Szinkronizált elemek eltávolítása után teljes szinkronizálást kell végrehajtani.  Szinkronizált elemek átrendezése után teljes szinkronizálást kell végrehajtani.  Kattintson a **Szinkronizálás most** gombra a teljes szinkronizálás elindításához.
 
-## <a name="multi-factor-authentication-servers"></a>Kiszolgálók Multi-Factor Authentication
+## <a name="multi-factor-authentication-servers"></a>Többtényezős hitelesítési kiszolgálók
 
-További Multi-Factor Authentication-kiszolgálók állíthatók be úgy, hogy biztonsági mentési RADIUS-proxyként, LDAP-proxyként vagy IIS-hitelesítésként szolgálnak. A szinkronizálási konfiguráció az összes ügynökre érvényes. Azonban csak az egyik ügynök rendelkezhet a Multi-Factor Authentication Server szolgáltatással. Ezen a lapon kiválaszthatja a szinkronizáláshoz engedélyezni kívánt Multi-Factor Authentication-kiszolgálót.
+További többtényezős hitelesítési kiszolgálók is beállíthatók tartalék RADIUS-proxyként, LDAP-proxyként vagy IIS-hitelesítésként. A szinkronizálási konfiguráció az összes ügynökre érvényes. Előfordulhat azonban, hogy csak az egyik ilyen ügynök fut a többtényezős hitelesítési kiszolgálószolgáltatással. Ezen a lapon kiválaszthatja azt a többtényezős hitelesítési kiszolgálót, amelyet engedélyezni kell a szinkronizáláshoz.
 
-![Kapcsolódó Multi-Factor Authentication-kiszolgálók](./media/howto-mfaserver-dir-ad/dirint6.png)
+![Kapcsolódó többtényezős hitelesítési kiszolgálók](./media/howto-mfaserver-dir-ad/dirint6.png)

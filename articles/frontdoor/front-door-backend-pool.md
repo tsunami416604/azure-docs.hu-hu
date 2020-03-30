@@ -1,6 +1,6 @@
 ---
-title: A háttérrendszer és a háttérbeli készletek az Azure bejárati ajtó szolgáltatásában | Microsoft Docs
-description: Ez a cikk ismerteti, hogy milyen háttér-és háttér-készletek találhatók az előtérben lévő konfigurációban.
+title: Háttérrendszerek és háttérkészletek az Azure Bejárati ajtajában| Microsoft dokumentumok
+description: Ez a cikk ismerteti, milyen háttérrendszerek és háttérkészletek vannak a bejárati ajtó konfigurációjában.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,85 +11,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79272850"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293468"
 ---
-# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>A háttérrendszer és a háttérbeli készletek az Azure bejárati ajtó szolgáltatásában
-Ez a cikk bemutatja, hogyan képezhető le az alkalmazás üzembe helyezése az Azure bevezetési szolgáltatásával. Emellett ismerteti a különböző használati feltételeket is az alkalmazási háttérrendszer-konfigurációban.
+# <a name="backends-and-backend-pools-in-azure-front-door"></a>Háttérrendszerek és háttérkészletek az Azure bejárati ajtajában
+Ez a cikk ismerteti, hogyan képezheti le az alkalmazás üzembe helyezését az Azure Bejárati ajtajával. Azt is ismerteti a különböző kifejezések et frontdoor konfiguráció körül app háttérrendszerek.
 
 ## <a name="backends"></a>Háttérrendszerek
-A háttérrendszer egy adott régióban található alkalmazás telepítési példányával egyenlő. A bejárati ajtós szolgáltatás az Azure-t és a nem Azure-beli háttereket is támogatja, így a régió nem csak az Azure-régiókra korlátozódik. Emellett lehet a helyszíni adatközpont vagy egy másik Felhőbeli alkalmazás-példány is.
+A háttér-háttérszabály egy adott régióban az alkalmazás központi telepítési példánya. A Bejárati ajtó támogatja az Azure-t és a nem Azure-beli háttérrendszereket is, így a régió nem csak az Azure-régiókra korlátozódik. Emellett lehet a helyszíni adatközpont vagy egy alkalmazáspéldány egy másik felhőben.
 
-A bejárati ajtó szolgáltatásának háttere az alkalmazás állomásneve vagy nyilvános IP-címe, amely az ügyfelek kérelmeit szolgálja ki. A háttérrendszer nem tévesztendő össze az adatbázis szintjével, a tárolási szintjével és így tovább. A háttereket az alkalmazás-háttér nyilvános végpontjának kell tekinteni. Amikor felvesz egy hátteret egy előtérben található háttér-készletbe, a következőket is hozzá kell adnia:
+A bejárati ajtó háttérrendszereinek az alkalmazás állomásnevére vagy nyilvános IP-címére hivatkoznak, amely ügyfélkéréseket képes kiszolgálni. Háttérrendszerek nem szabad összetéveszteni az adatbázisréteg, tárolási szint, és így tovább. Háttérrendszerek kell tekinteni, mint az alkalmazás háttérszámítógép nyilvános végpontja. Ha háttér- egy ház hoz a frontajtó-háttérkészlethez ad hozzá, a következőket is hozzá kell adnia:
 
-- **Háttérbeli gazdagép típusa** A hozzáadni kívánt erőforrás típusa. A bejárati ajtós szolgáltatás az App Service, a Cloud Service vagy a Storage szolgáltatásból támogatja az alkalmazási hátterek automatikus észlelését. Ha egy másik erőforrást szeretne használni az Azure-ban, vagy akár egy nem Azure-beli hátteret is, válassza az **Egyéni gazdagép**lehetőséget.
+- **Háttérállomás típusa**. A hozzáadni kívánt erőforrás típusa. A Bejárati ajtó támogatja az alkalmazás háttérrendszereinek automatikus felfedezését az alkalmazásszolgáltatásból, a felhőszolgáltatásból vagy a tárolóból. Ha egy másik erőforrást szeretne az Azure-ban, vagy akár egy nem Azure-beli háttérrendszer, válassza az **Egyéni állomás**lehetőséget.
 
     >[!IMPORTANT]
-    >A konfiguráció során az API-k nem ellenőrzik, hogy a háttérrendszer nem érhető-e el az ajtós környezetekben. Győződjön meg arról, hogy a bejárati ajtó elérheti a hátteret.
+    >A konfiguráció során az API-k nem ellenőrzik, hogy a háttérrendszer nem érhető-e el a Bejárati ajtajával környezetben. Győződjön meg róla, hogy a bejárati ajtó eléri a háttér.
 
-- **Az előfizetés és a háttérbeli gazdagép neve**. Ha nem választotta ki az **Egyéni gazdagép** a háttérbeli gazdagéphez lehetőséget, válassza ki a megfelelő előfizetést, és a megfelelő háttér-gazdagép nevét a felhasználói felületen.
+- **Előfizetés és háttérállomás neve**. Ha még nem választotta ki **az egyéni állomást** a háttérállomás típusához, válassza ki a háttérrendszert a megfelelő előfizetés és a megfelelő háttérállomás nevének kiválasztásával a felhasználói felületen.
 
-- **Háttérbeli állomásfejléc**. A gazdagép fejlécének értéke minden kérelem esetében a háttérbe kerül. További információ: [backend Host header](#hostheader).
+- **Háttérállomás fejléce**. Az egyes kérelmek háttérrendszerének küldött gazdafejléc-érték. További információ: [Backend host header](#hostheader).
 
-- **Prioritás**. Rendeljen prioritásokat a különböző háttérekhez, ha az elsődleges szolgáltatási hátteret szeretné használni az összes forgalomhoz. Adja meg a biztonsági mentést is, ha az elsődleges vagy a biztonsági mentési háttérrendszer nem érhető el. További információ: Priority ( [prioritás](front-door-routing-methods.md#priority)).
+- **Prioritás**. Rendeljen prioritásokat a különböző háttérrendszerekhez, ha elsődleges szolgáltatás háttérszolgáltatást szeretne használni az összes forgalomhoz. Is, biztonsági másolatot, ha az elsődleges vagy a biztonsági mentési háttérrendszerek nem érhetők el. További információ: [Priority](front-door-routing-methods.md#priority).
 
-- **Súlyozás**. Súlyok hozzárendelésével a különböző háttérrendszer-adatokkal terjesztheti a forgalmat a különféle háttérrendszer-csoportokon belül, akár egyenletesen, akár súlyozási együtthatók alapján. További információ: [súlyok](front-door-routing-methods.md#weighted).
+- **Súly**. Súlyokat rendelhet a különböző háttérrendszerekhez, hogy a forgalmat egyenletesen vagy súlyegyütthatók szerint ossza el a háttérrendszerek között. További információ: [Súlyok](front-door-routing-methods.md#weighted).
 
-### <a name = "hostheader"></a>Háttérbeli gazdagép fejléce
+### <a name="backend-host-header"></a><a name = "hostheader"></a>Háttér-állomás fejléce
 
-A háttérben a háttérbe továbbított kérések közé tartozik egy állomásfejléc mező, amelyet a háttér a célként megadott erőforrás lekérésére használ. A mező értéke általában a háttér-URI-ból származik, és a gazdagép és a port.
+A Bejárati ajtó által egy háttérrendszernek továbbított kérelmek tartalmaznak egy állomásfejléc-mezőt, amelyet a háttérrendszer a megcélzott erőforrás lekéréséhez használ. A mező értéke általában a háttérURI-ból származik, és rendelkezik az állomással és a porttal.
 
-Például a www\.contoso.com-ra vonatkozó kérelemben a gazdagép fejléce www\.contoso.com lesz. Ha Azure Portalt használ a háttér konfigurálásához, a mező alapértelmezett értéke a háttér állomásneve. Ha a háttérrendszer contoso-westus.azurewebsites.net, a Azure Portal a háttérbeli állomásfejléc automatikusan kitöltött értéke contoso-westus.azurewebsites.net lesz. Ha azonban Azure Resource Manager sablonokat vagy más módszert használ a mező explicit beállítása nélkül, a bejárati ajtó szolgáltatás a beérkező állomásnév értékét a gazdagép fejlécének értékeként fogja elküldeni. Ha a kérés a www\.contoso.com, és a háttér olyan contoso-westus.azurewebsites.net, amely üres fejléc mezővel rendelkezik, a bekapcsolási szolgáltatás a gazdagép fejlécét a www\.contoso.com fogja beállítani.
+Például egy kérelmet `www.contoso.com` a fogadó fejléc www.contoso.com. Ha az Azure Portal segítségével konfigurálja a háttérrendszert, a mező alapértelmezett értéke a háttérrendszer állomásneve. Ha a háttérrendszer contoso-westus.azurewebsites.net, az Azure Portalon a háttérrendszer gazdagépfejlécének automatikusan feltöltött értéke lesz contoso-westus.azurewebsites.net. Ha azonban az Azure Resource Manager-sablonokat vagy más módszert használja anélkül, hogy kifejezetten beállítaná ezt a mezőt, a Bejárati ajtó a bejövő állomásnevet küldi az állomásfejléc értékeként. Ha a kérés a\.www contoso.com, és a háttércontoso-westus.azurewebsites.net, amely egy üres fejléc mező,\.Bejárati ajtó fogja állítani a fogadó fejléc www contoso.com.
 
-A legtöbb alkalmazás-háttér (az Azure Web Apps, a blob Storage és a Cloud Services) megköveteli, hogy a gazdagép fejléce megfeleljen a háttér tartományának. Ugyanakkor a háttér-gazdagép, amely a háttérre irányítja, egy másik állomásnevet fog használni, például a www\.contoso.azurefd.net.
+A legtöbb alkalmazás-háttérrendszerek (Azure Web Apps, Blob storage és a Cloud Services) megkövetelik a gazdagép fejlécének, hogy megfeleljen a háttérrendszer tartományának. Azonban az előtér-gazdagép, amely a háttérkiszolgálóra irányítja egy másik állomásnevet, például www.contoso.net.
 
-Ha a háttérrendszer számára szükséges, hogy a gazdagép fejléce megfeleljen a háttérbeli állomásnévnek, győződjön meg arról, hogy a háttérbeli állomásfejléc tartalmazza az állomásnév-háttér nevet.
+Ha a háttérkiszolgálómegköveteli, hogy az állomásfejléc megfeleljen a háttérállomás nevének, győződjön meg arról, hogy a háttérállomás-fejléc tartalmazza az állomásnév-háttérkiszolgálót.
 
-#### <a name="configuring-the-backend-host-header-for-the-backend"></a>A háttérrendszer-állomásfejléc konfigurálása a háttérrendszer számára
+#### <a name="configuring-the-backend-host-header-for-the-backend"></a>A háttérállomás fejlécének konfigurálása a háttérkiszolgálóhoz
 
-A háttérbeli **gazdagép fejlécének** beállítása a háttérrendszer-készletben:
+A **háttér-állomás fejlécmezőjének** konfigurálása egy háttértartalék-szakaszhoz:
 
-1. Nyissa meg az előtérben található erőforrást, és válassza ki a háttérrendszer-készletet a konfiguráláshoz.
+1. Nyissa meg a bejárati ajtaját erőforrást, és válassza ki a konfigurálni kívánt háttérkészletet.
 
-2. Ha még nem tette meg, vegyen fel egy hátteret, vagy szerkesszen egy meglévőt.
+2. Ha még nem tette meg, adjon hozzá egy háttérrendszert, vagy szerkesztsen egy meglévőt.
 
-3. Állítsa a háttérbeli állomásfejléc mezőt egyéni értékre, vagy hagyja üresen. A rendszer a bejövő kérelem állomásneveként fogja használni a gazdagép fejlécének értékét.
+3. Állítsa be a háttérállomás fejlécmezőjét egyéni értékre, vagy hagyja üresen. A bejövő kérelem állomásneve lesz az állomásfejléc értéke.
 
-## <a name="backend-pools"></a>Háttér-készletek
-A bejárati ajtón a háttérrendszer-készlet az alkalmazáshoz hasonló adatforgalmat fogadó háttérrendszer-készletre hivatkozik. Ez azt jelenti, hogy az alkalmazás példányainak logikai csoportosítása a világon, amely ugyanazt a forgalmat kapja, és a várt működésre reagál. Ezek a hátterek különböző régiókban vagy ugyanazon a régión belül vannak telepítve. Az összes háttér aktív/aktív üzembe helyezési módban lehet, vagy az aktív/passzív konfigurációként van meghatározva.
+## <a name="backend-pools"></a>Háttérmedencék
+A háttérkészlet a bejárati ajtajában az alkalmazásukhoz hasonló forgalmat kapó háttérrendszerek készletére utal. Más szóval, ez egy logikai csoportosítása az alkalmazáspéldányok szerte a világon, amelyek ugyanazt a forgalmat kapják, és reagálnak a várt viselkedést. Ezek a háttérrendszerek különböző régiókban vagy ugyanazon a régión belül vannak telepítve. Az összes háttérrendszer lehet aktív/aktív központi telepítési módban, vagy mi az aktív/passzív konfiguráció.
 
-A háttér-készletek határozzák meg, hogy a különböző háttérrendszer milyen módon legyen kiértékelve az állapot-ellenőrzéseken keresztül. Azt is meghatározza, hogyan történik a terheléselosztás a közöttük.
+A háttérkészlet határozza meg, hogyan kell kiértékelni a különböző háttérrendszereket állapotminta segítségével. Azt is meghatározza, hogyan történik közöttük a terheléselosztás.
 
 ### <a name="health-probes"></a>Állapotminták
-A bejárati ajtó szolgáltatás rendszeres HTTP/HTTPS mintavételi kérelmeket küld az egyes konfigurált háttérrendszer-példányokhoz. A mintavételi kérelmek meghatározzák az egyes háttérrendszer közelségét és állapotát a végfelhasználói kérelmek elosztása érdekében. A háttérbeli készlet állapot-mintavételi beállításai határozzák meg, hogy az alkalmazás-háttérrendszer állapotának lekérdezése hogyan történjen. A terheléselosztási konfigurációhoz a következő beállítások érhetők el:
+Bejárati ajtó küld időszakos HTTP/HTTPS mintavételi kérelmek et a konfigurált háttérrendszerek. A mintavételi kérelmek határozzák meg az egyes háttérrendszer ek közelségét és állapotát a végfelhasználói kérelmek terheléselosztása érdekében. A háttérkészlet állapotminta-beállításai határozzák meg, hogyan végezzük le az alkalmazás háttérrendszerek állapotának lekérdezését. A terheléselosztási konfigurációhoz a következő beállítások érhetők el:
 
-- **Elérési út**. A háttér-készletben található összes háttérrendszer mintavételi kérelméhez használt URL-cím. Ha például az egyik háttérrendszer a contoso-westus.azurewebsites.net, és az elérési út a/Probe/test.aspx értékre van állítva, akkor a bevezető üzemi környezetek, feltéve, hogy a protokoll HTTP-értékre van állítva, az állapot-mintavételi kérelmeket a http\://contoso-westus.azurewebsites.net/probe/test.aspx küldi.
+- **Elérési**út : A háttérkészlet összes háttér-tartalékának mintavételi kérelmeihez használt URL-cím. Ha például az egyik háttérrendszer contoso-westus.azurewebsites.net, és az elérési út /probe/test.aspx, akkor a Bejárati ajtó környezetek, feltéve, hogy a protokoll HTTP-re van állítva, állapotminta-kérelmeket küld a http\://contoso-westus.azurewebsites.net/probe/test.aspx.
 
-- **Protokoll**. Meghatározza, hogy a rendszer elküldje-e az állapot-mintavételi kérelmeket az első ajtós szolgáltatástól a háttérben HTTP vagy HTTPS protokollal.
+- **Protokoll**: Azt határozza meg, hogy az állapotminta-kérelmeket a Bejárati ajtóról küldje-e a háttérrendszereknek HTTP vagy HTTPS protokollal.
 
-- **Időköz (másodperc)** . Meghatározza az állapot-mintavételek gyakoriságát a háttérrendszer számára, illetve azokat az intervallumokat, amelyekben az egyes bejárati környezetek egy mintavételt küldenek.
+- **Metódus**:Az állapotminta küldéséhez használt HTTP-módszer. A lehetőségek közé tartozik a GET vagy a HEAD (alapértelmezett).
+    > [!NOTE]
+    > Az alacsonyabb terhelés és a költségek a háttérrendszereken, bejárati ajtó azt javasolja, hogy head kérelmek et az egészségügyi szondák.
+
+- **Időköz (másodperc)**: Meghatározza az állapotpróbák gyakoriságát a háttérrendszerekhez, vagy azokat az intervallumokat, amelyekben az egyes bejárati ajtó környezetek egy mintavételt küld.
 
     >[!NOTE]
-    >A gyorsabb feladatátvétel érdekében állítsa az intervallumot alacsonyabb értékre. Minél alacsonyabb az érték, annál nagyobb az állapot mintavételi mennyisége, amelyet a hátterek kapnak. Ha például az intervallum 30 másodpercre van beállítva, és 90 bejárati ajtót, vagy globálisan jelenik meg, az egyes háttérrendszer a 3-5 mintavételi kérelmek másodpercenkénti számát fogja kapni.
+    >A gyorsabb feladatátvétel érdekében állítsa az intervallumot alacsonyabb értékre. Minél alacsonyabb az érték, annál nagyobb az állapotminta köteta háttérrendszerek kap. Ha például az időköz 30 másodpercre van állítva, és mondjuk 100 bejárati ajtó POP globálisan, minden háttérrendszer körülbelül 200 mintavételi kérelmet kap percenként.
 
-További információ: [Health](front-door-health-probes.md)mintavétel.
+További információ: [Health probes](front-door-health-probes.md).
 
 ### <a name="load-balancing-settings"></a>Terheléselosztási beállítások
-A háttér-készlet terheléselosztási beállításai határozzák meg, hogyan értékeljük ki az állapotadatok kiértékelését. Ezek a beállítások határozzák meg, hogy a háttér állapota Kifogástalan-e. Azt is bemutatják, hogyan kell terheléselosztást alkalmazni a különböző háttérrendszer-adatforgalom között a háttér-készletben. A terheléselosztási konfigurációhoz a következő beállítások érhetők el:
+A háttérkészlet terheléselosztási beállításai határozzák meg, hogyan értékeljük az állapotmintákat. Ezek a beállítások határozzák meg, hogy a háttér-háttérszolgáltatás kifogástalan vagy nem kifogástalan. Azt is ellenőrzik, hogyan terhelheti ki a különböző háttérrendszerek közötti forgalmat a háttérkészletben. A terheléselosztási konfigurációhoz a következő beállítások érhetők el:
 
-- **Minta mérete** Meghatározza, hogy a háttér-állapot kiértékeléséhez hány mintát kell figyelembe venni.
+- **A minta mérete**. Azonosítja, hogy hány mintát az állapotminták at meg kell vizsgálni a háttér-állapot értékelése.
 
-- A **minta mérete sikeres**. Meghatározza a korábban említett minta méretét, a háttér kifogástalan meghívásához szükséges sikeres minták számát. Tegyük fel például, hogy a bejárati ajtó állapotának mintavételi intervalluma 30 másodperc, a minta mérete 5, a sikeres minta mérete pedig 3. Minden alkalommal, amikor kiértékeljük a háttérrendszer állapotát, megvizsgáljuk az utolsó öt mintát 150 másodpercnél (5 x 30). Legalább három sikeres mintavételre van szükség ahhoz, hogy a hátteret Kifogástalan állapotba lehessen nyilvánítani.
+- **Sikeres mintaméret**. A korábban említett mintaméretet határozza meg, a háttérrendszer kifogástalan hívásához szükséges sikeres minták számát. Tegyük fel például, hogy a Bejárati ajtó állapotpróba-időköze 30 másodperc, a minta mérete 5, a sikeres mintaméret pedig 3. Minden alkalommal, amikor kiértékeljük az állapotszondák a háttér-, megnézzük az utolsó öt minta több mint 150 másodperc (5 x 30). Legalább három sikeres mintavételszükséges a háttérterület kifogástalanállapotúként való deklarálni.
 
-- **Késési érzékenység (további késés)** . Azt határozza meg, hogy a bejárati ajtón szeretné-e elküldeni a kérést a háttérrendszer-mérési érzékenységi tartományon belül, vagy továbbítsa a kérést a legközelebbi háttérbe.
+- **Késés érzékenysége (további késés).** Azt határozza meg, hogy a Bejárati ajtó küldje-e a kérést a késésmérési érzékenységi tartományon belüli háttérrendszereknek, vagy továbbítsa a kérelmet a legközelebbi háttérrendszernek.
 
-További információ: a [minimális késésen alapuló útválasztási módszer](front-door-routing-methods.md#latency).
+További információ: [Least latency based routing method](front-door-routing-methods.md#latency).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
-- [Az előtérben működik](front-door-routing-architecture.md)
+- [Bejárati ajtó profil létrehozása](quickstart-create-front-door.md)
+- [A bejárati ajtó működése](front-door-routing-architecture.md)

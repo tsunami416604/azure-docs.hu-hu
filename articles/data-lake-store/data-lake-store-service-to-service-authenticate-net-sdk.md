@@ -1,6 +1,6 @@
 ---
-title: 'Szolgáltatások közötti hitelesítés: .NET SDK és Azure Data Lake Storage Gen1 a Azure Active Directory használatával | Microsoft Docs'
-description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 használatával Azure Active Directory .NET SDK használatával
+title: 'Szolgáltatás-szolgáltatás hitelesítés: .NET SDK az Azure Data Lake Storage Gen1 használatával az Azure Active Directory használatával | Microsoft dokumentumok'
+description: Megtudhatja, hogy miként valósítható meg a szolgáltatás-szolgáltatás hitelesítés az Azure Data Lake Storage Gen1 használatával az Azure Active Directory használatával a .NET SDK használatával
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 96c496ef67e26a3079577bf52e9d019d963467b8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265531"
 ---
-# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 .NET SDK használatával
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Szolgáltatás-szolgáltatás hitelesítés az Azure Data Lake Storage Gen1 használatával a .NET SDK használatával
 > [!div class="op_single_selector"]
 > * [A Java használata](data-lake-store-service-to-service-authenticate-java.md)
 > * [A .NET SDK használata](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,30 +27,30 @@ ms.locfileid: "79265531"
 >
 >
 
-Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t a szolgáltatások közötti hitelesítésre Azure Data Lake Storage Gen1 használatával. A .NET SDK használatával Data Lake Storage Gen1 végfelhasználói hitelesítéshez lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .net SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
+Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK szolgáltatás-szolgáltatás hitelesítést az Azure Data Lake Storage Gen1 használatával. A .NET SDK használatával a Data Lake Storage Gen1 segítségével történő végfelhasználói hitelesítést a [Data Lake Storage Gen1 használatával a .NET SDK használatával című](data-lake-store-end-user-authenticate-net-sdk.md)témakörben található.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A **Visual Studio 2013-es vagy újabb**verzióját. Az alábbi utasítások a Visual Studio 2019-et használják.
+* **Visual Studio 2013-as vagy újabb.** Az alábbi utasítások a Visual Studio 2019-et használják.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Hozzon létre egy Azure Active Directory "web" alkalmazást**. A Data Lake Storage Gen1 Azure Active Directory használatával kell végrehajtania a [szolgáltatások közötti hitelesítéshez](data-lake-store-service-to-service-authenticate-using-active-directory.md)szükséges lépéseket.
+* **Hozzon létre egy Azure Active Directory "web" alkalmazást.** Az Azure Active Directory használatával el kell végeznie a Szolgáltatás-szolgáltatás hitelesítés lépéseit a [Data Lake Storage Gen1 szolgáltatással.](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
-1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
-2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-3. A **projekt neve**mezőbe írja be `CreateADLApplication`, majd válassza a **Létrehozás**lehetőséget.
+1. A Visual Studio programban válassza a **Fájl** menü **Új**, majd **A Project**parancsot.
+2. Válassza **a Console App (.NET Framework)** lehetőséget, majd a **Tovább**gombot.
+3. A Project név `CreateADLApplication` **mezőbe**írja be a beírt lehetőséget, majd válassza a **Létrehozás lehetőséget.**
 
 4. Adja hozzá a NuGet-csomagokat a projekthez.
 
    1. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
-   2. Győződjön meg arról, hogy a **NuGet Package Manager** (NuGet-csomagkezelő) lapon a **Package source** (Csomag forrása) értéke **nuget.org**, és az **Include prerelease** (Előzetes verzió belefoglalása) jelölőnégyzet be van jelölve.
+   2. A **NuGet csomagkezelő** lapon győződjön meg arról, hogy **a Csomagforrás** **nuget.org,** és hogy **a Kiadás előtti belefoglalás** jelölőnégyzet be van jelölve.
    3. Keresse meg és telepítse az alábbi NuGet-csomagokat:
 
       * `Microsoft.Azure.Management.DataLake.Store` – Ez az oktatóanyag a 2.1.3-as előzetes verziót használja.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez az oktatóanyag a 2.2.12-es verziót használja.
 
-        ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Új Azure Data Lake fiók létrehozása")
+        ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Új Azure Data Lake-fiók létrehozása")
    4. Zárja be a **NuGet-csomagkezelőt**.
 
 5. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
@@ -71,8 +71,8 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-## <a name="service-to-service-authentication-with-client-secret"></a>Szolgáltatások közötti hitelesítés az ügyfél titkos kódjával
-Adja hozzá ezt a kódrészletet a .NET-ügyfélalkalmazás alkalmazásához. Cserélje le a helyőrző értékeket egy Azure AD-webalkalmazásból beolvasott értékekre (előfeltételként felsorolva). Ez a kódrészlet lehetővé teszi, hogy az alkalmazást **nem interaktív módon** hitelesítse az Azure ad-webalkalmazáshoz tartozó ügyfél-titkos kulcs és az Data Lake Storage Gen1 használatával.
+## <a name="service-to-service-authentication-with-client-secret"></a>Szolgáltatás-szolgáltatás hitelesítés ügyféltitkossszal
+Adja hozzá ezt a kódrészletet a .NET ügyfélalkalmazáshoz. Cserélje le a helyőrző értékeket az Azure AD webalkalmazásból beolvasott értékekre (előfeltételként szerepel). Ez a kódrészlet lehetővé teszi, hogy **az azure-beli** AD-webalkalmazás ügyféltitkos/kulcs használatával nem interaktív módon hitelesítse az alkalmazást a Data Lake Storage Gen1 használatával.
 
 ```csharp
 private static void Main(string[] args)
@@ -89,11 +89,11 @@ private static void Main(string[] args)
 }
 ```
 
-Az előző kódrészlet egy segítő függvényt használ `GetCreds_SPI_SecretKey`. Ennek a segítő függvénynek a kódja itt érhető el a [githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+Az előző kódrészlet egy segítő `GetCreds_SPI_SecretKey`függvényt használ. A segítő funkció kódja itt érhető el [a GitHubon.](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey)
 
-## <a name="service-to-service-authentication-with-certificate"></a>Szolgáltatások közötti hitelesítés tanúsítvánnyal
+## <a name="service-to-service-authentication-with-certificate"></a>Szolgáltatás-szolgáltatás hitelesítés tanúsítvánnyal
 
-Adja hozzá ezt a kódrészletet a .NET-ügyfélalkalmazás alkalmazásához. Cserélje le a helyőrző értékeket egy Azure AD-webalkalmazásból beolvasott értékekre (előfeltételként felsorolva). Ez a kódrészlet lehetővé teszi, hogy az alkalmazást **nem interaktív módon** hitelesítse a Data Lake Storage Gen1 egy Azure ad-webalkalmazáshoz tartozó tanúsítvány használatával. Az Azure AD-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [egyszerű szolgáltatásnév létrehozása tanúsítványokkal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
+Adja hozzá ezt a kódrészletet a .NET ügyfélalkalmazáshoz. Cserélje le a helyőrző értékeket az Azure AD webalkalmazásból beolvasott értékekre (előfeltételként szerepel). Ez a kódrészlet lehetővé teszi, hogy az alkalmazás **nem interaktív an-** és azure AD-webalkalmazás tanúsítványának használatával hitelesítse az alkalmazást. Az Azure AD-alkalmazások létrehozásáról az Egyszerű [szolgáltatás létrehozása tanúsítványokkal című](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)témakörben talál.
 
 ```csharp
 private static void Main(string[] args)
@@ -110,10 +110,10 @@ private static void Main(string[] args)
 }
 ```
 
-Az előző kódrészlet egy segítő függvényt használ `GetCreds_SPI_Cert`. Ennek a segítő függvénynek a kódja itt érhető el a [githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+Az előző kódrészlet egy segítő `GetCreds_SPI_Cert`függvényt használ. A segítő funkció kódja itt érhető el [a GitHubon.](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK-val történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használhatja a .NET SDK-t a Data Lake Storage Gen1-vel való együttműködésre.
+Ebben a cikkben megtanulta, hogyan használhatja a szolgáltatás-szolgáltatás hitelesítést a Data Lake Storage Gen1 használatával a .NET SDK használatával. Most már tekintse meg a következő cikkeket, amelyek arról beszélnek, hogyan használhatja a .NET SDK-t a Data Lake Storage Gen1 használatához.
 
-* [Fiókkezelés Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
-* [Az adatműveletek Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
+* [A Data Lake Storage Gen1 számlakezelési műveletei a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
+* [Adatműveletek a Data Lake Storage Gen1-en a .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)

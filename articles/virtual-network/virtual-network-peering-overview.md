@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Network-társítás
+title: Az Azure virtuális hálózat társviszony-létesítése
 titlesuffix: Azure Virtual Network
 description: Tudnivalók az Azure-beli virtuális hálózatok közötti társviszony-létesítésről
 services: virtual-network
@@ -13,110 +13,110 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
 ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279545"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-A virtuális hálózatok társításával zökkenőmentesen csatlakoztathatók az [Azure Virtual Network](virtual-networks-overview.md)-beli hálózatok. A virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az azonos hálózatban lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalmat csak a Microsoft *magánhálózati* hálózata irányítja át.
+A virtuális hálózati társviszony-létesítés lehetővé teszi a hálózatok zökkenőmentes csatlakoztatását az [Azure virtuális hálózatban.](virtual-networks-overview.md) A virtuális hálózatok kapcsolódási célokra egyként jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinchálózati infrastruktúráját használja. Az ugyanazon a hálózaton lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalom csak a Microsoft *magánhálózatán* keresztül történik.
 
-Az Azure a következő típusú társításokat támogatja:
+Az Azure a következő típusú társviszony-létesítést támogatja:
 
-* Virtuális hálózati társítás: virtuális hálózatok összekötése ugyanazon az Azure-régión belül.
-* Globális virtuális hálózati társítás: virtuális hálózatok összekapcsolása az Azure-régiók között.
+* Virtuális hálózati társviszony-létesítés: Virtuális hálózatok csatlakoztatása ugyanabban az Azure-régióban.
+* Globális virtuális hálózati társviszony-létesítés: Virtuális hálózatok összekapcsolása az Azure-régiók között.
 
 A virtuális társhálózatok akár helyi, akár globális létesítésének előnyei:
 
 * Kis késésű, nagy sávszélességű kapcsolat jön létre eltérő virtuális hálózatokba tartozó erőforrások között.
-* Az egyik virtuális hálózat erőforrásai egy másik virtuális hálózat erőforrásaival való kommunikációra képesek.
-* Az Azure-előfizetések, Azure Active Directory-bérlők, üzembe helyezési modellek és Azure-régiók közötti adatátvitel lehetősége a virtuális hálózatok között.
-* A Azure Resource Manageron keresztül létrehozott virtuális hálózatok társ-létrehozási képessége.
-* A Resource Manager használatával létrehozott virtuális hálózatokat a klasszikus üzemi modellen keresztül létrehozhatja. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Az egyetlen virtuális hálózat erőforrásainak lehetősége, hogy kommunikáljanak egy másik virtuális hálózat erőforrásaival.
+* A virtuális hálózatok közötti adatátvitel lehetősége az Azure-előfizetések, az Azure Active Directory-bérlők, a telepítési modellek és az Azure-régiók között.
+* Az Azure Resource Manager en keresztül létrehozott virtuális hálózatok társviszony-létesítése.
+* Az a képesség, hogy az Erőforrás-kezelőn keresztül létrehozott virtuális hálózatot a klasszikus üzembe helyezési modellen keresztül létrehozott virtuális hálózatra létesítsen. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Ez nem okoz leállást egyik virtuális hálózat erőforrásaiban sem a társításkor és azt követően sem.
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 
-## <a name="connectivity"></a>Csatlakozás
+## <a name="connectivity"></a>Kapcsolatok
 
-A egyenrangú virtuális hálózatok esetében bármelyik virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a virtuális hálózatban lévő erőforrásokhoz.
+Társviszony-létesített virtuális hálózatok esetén a virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a társviszonyba adott virtuális hálózat erőforrásaihoz.
 
 Az azonos régióban lévő virtuális társhálózaton belüli virtuális gépek közötti hálózati késés megegyezik az egyetlen virtuális hálózaton belüli hálózati késéssel. A hálózat átbocsátóképessége attól függ, hogy milyen, a virtuális gépek méretével arányos sávszélesség van engedélyezve. A társviszonyon belül más korlátozás nem vonatkozik a sávszélességre.
 
 A virtuális társhálózatokon belüli virtuális gépek közötti forgalom közvetlenül a Microsoft gerincinfrastruktúráján halad át, nem pedig átjárón vagy a nyilvános interneten.
 
-Bármelyik virtuális hálózaton hálózati biztonsági csoportokat is alkalmazhat, hogy letiltsa a hozzáférést más virtuális hálózatokhoz vagy alhálózatokhoz.
-A virtuális hálózati kapcsolatok konfigurálásakor nyissa meg vagy zárjunk be a hálózati biztonsági csoport szabályait a virtuális hálózatok között. Ha megnyitja a teljes kapcsolatot a kihelyezett virtuális hálózatok között, akkor a hálózati biztonsági csoportok alkalmazásával blokkolhatja vagy megtagadhatja a megadott hozzáférést. A teljes kapcsolat az alapértelmezett beállítás. A hálózati biztonsági csoportokkal kapcsolatos további tudnivalókért tekintse meg a [biztonsági csoportok](security-overview.md)című témakört.
+A virtuális hálózatban hálózati biztonsági csoportokat alkalmazhat más virtuális hálózatokhoz vagy alhálózatokhoz való hozzáférés letiltására.
+A virtuális hálózati társviszony-létesítés konfigurálásakor nyissa meg vagy zárja be a hálózati biztonsági csoport szabályait a virtuális hálózatok között. Ha teljes kapcsolatot nyit meg a társviszony-létesített virtuális hálózatok között, hálózati biztonsági csoportokat alkalmazhat adott hozzáférés letiltására vagy megtagadására. A teljes kapcsolat az alapértelmezett beállítás. A hálózati biztonsági csoportokról a [Biztonsági csoportok](security-overview.md)ról olvashat bővebben.
 
 ## <a name="service-chaining"></a>Szolgáltatásláncolás
 
-A szolgáltatás-láncolás lehetővé teszi, hogy az egyik virtuális hálózatról egy virtuális készülékre vagy átjáróra irányítsa át a forgalmat a felhasználó által megadott útvonalakon keresztül.
+A szolgáltatásláncolás lehetővé teszi, hogy a felhasználó által meghatározott útvonalakon keresztül irányítsa a forgalmat egy virtuális hálózatról egy virtuális berendezésre vagy átjáróra egy társviszony-létesített hálózaton keresztül.
 
-A szolgáltatások láncolásának engedélyezéséhez olyan felhasználó által megadott útvonalakat konfigurálhat, amelyek a *következő ugrás* IP-címének megfelelően a virtuális gépekre mutatnak. A felhasználó által megadott útvonalak a virtuális hálózati átjáróra is rámutatnak a szolgáltatások láncolásának engedélyezéséhez.
+A szolgáltatásláncolás engedélyezéséhez konfigurálja a felhasználó által definiált útvonalakat, amelyek a társviszony-létesített virtuális hálózatokban lévő virtuális gépekre mutatnak a *következő ugrási* IP-címként. A felhasználó által definiált útvonalak a virtuális hálózati átjárókra is mutathatnak a szolgáltatásláncolás engedélyezéséhez.
 
-Központi és küllős hálózatokat is telepíthet, ahol a hub virtuális hálózat infrastruktúra-összetevőket, például hálózati virtuális berendezést vagy VPN-átjárót üzemeltet. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. A forgalom a hub virtuális hálózatán keresztül áramlik a hálózati virtuális berendezéseken vagy a VPN-átjárón keresztül.
+Központi és küllős hálózatokat telepíthet, ahol a központi virtuális hálózat infrastruktúra-összetevőket, például hálózati virtuális berendezést vagy VPN-átjárót üzemeltet. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. A forgalom a központi virtuális hálózat hálózati virtuális készülékein vagy VPN-átjáróin keresztül áramlik.
 
-A virtuális hálózatok közötti társviszony-létesítéssel a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének vagy egy VPN-átjárónak az IP-címe beállítható a következő ugrás IP-címeként. A virtuális hálózatok között nem lehet átirányítani egy olyan felhasználó által megadott útvonallal, amely a következő ugrási típusként ad meg egy Azure ExpressRoute-átjárót. A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md#user-defined). A sugaras hálózati topológia létrehozásával kapcsolatos információkért lásd: [sugaras hálózati topológia az Azure-ban](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuális hálózatok közötti társviszony-létesítéssel a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének vagy egy VPN-átjárónak az IP-címe beállítható a következő ugrás IP-címeként. Nem lehet olyan virtuális hálózatok között, amelyekben egy felhasználó által definiált útvonal, amely megadja az Azure ExpressRoute-átjárót a következő ugrástípusként. A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md#user-defined). Ha tudni szeretné, hogyan hozhat létre központi és küllős hálózati topológiát, olvassa el [a Hub spoke hálózati topológiáját az Azure-ban.](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Átjárók és kapcsolat helyszíni rendszerekkel
 
-Minden virtuális hálózatnak, beleértve a társ virtuális hálózatot, saját átjáróval is rendelkezhet. A virtuális hálózatok használhatják az átjárót a helyszíni hálózathoz való kapcsolódáshoz. Az átjárók használatával is konfigurálhat [virtuális hálózat – virtuális hálózati kapcsolatokat](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , még a egyenrangú virtuális hálózatok esetében is.
+Minden virtuális hálózat, beleértve a társviszony-létesített virtuális hálózat, saját átjáróval rendelkezhet. A virtuális hálózat az átjáró segítségével csatlakozhat a helyszíni hálózathoz. A virtuális [hálózat és a virtuális hálózatok](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) között is konfigurálhat átjárókat, még társviszony-létesített virtuális hálózatok esetén is.
 
-Ha mindkét lehetőséget konfigurálja a virtuális hálózat összekapcsolására, a virtuális hálózatok közötti forgalom a társítási konfiguráción keresztül folyik. A forgalom az Azure-gerincet használja.
+Ha a virtuális hálózatok összekapcsolhatóságának mindkét beállítását konfigurálja, a virtuális hálózatok közötti forgalom a társviszony-létesítési konfiguráción keresztül áramlik. A forgalom az Azure gerinchálózatát használja.
 
-Azt is megteheti, hogy az átjárót a társ virtuális hálózatban is konfigurálhatja egy helyszíni hálózatra irányuló továbbítási pontként. Ebben az esetben a távoli átjárót használó virtuális hálózatnak nem lehet saját átjárója. Egy virtuális hálózatnak csak egy átjárója van. Az átjáró vagy egy helyi vagy távoli átjáró a társ virtuális hálózaton, az alábbi ábrán látható módon:
+Az átjáróa társviszony-létesített virtuális hálózatban is konfigurálható a helyszíni hálózat tranzitpontjaként. Ebben az esetben a távoli átjárót használó virtuális hálózat nem rendelkezhet saját átjáróval. A virtuális hálózatnak csak egy átjárója van. Az átjáró a társviszony-létesített virtuális hálózat helyi vagy távoli átjárója, ahogy az az alábbi ábrán látható:
 
 ![virtuális társhálózatok közötti átvitel](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
-A virtuális hálózatok és a globális virtuális hálózatok egymáshoz való továbbítása is támogatja az átjárót.
+Virtuális hálózati társviszony-létesítés és a globális virtuális hálózati társviszony-létesítés i átjáró átviteli támogatása.
 
-A különböző üzembe helyezési modelleken keresztül létrehozott virtuális hálózatok közötti átjáró átvitele támogatott. Az átjárónak a Resource Manager-modellben lévő virtuális hálózatban kell lennie. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A különböző telepítési modelleken keresztül létrehozott virtuális hálózatok közötti átjáró-átvitel támogatott. Az átjárónak az Erőforrás-kezelő modell ben lévő virtuális hálózatban kell lennie. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Ha egyetlen Azure ExpressRoute-kapcsolattal rendelkező társ virtuális hálózattal rendelkezik, a közöttük zajló forgalom a társítási kapcsolaton halad át. Ez a forgalom az Azure gerinc hálózatot használja. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Ellenkező esetben használhat megosztott átjárót, és konfigurálhatja az átvitelt a helyszíni kapcsolathoz.
+Ha egyetlen Azure ExpressRoute-kapcsolaton osztozó virtuális hálózatokat létesít, a köztük lévő forgalom a társviszony-létesítési kapcsolaton megy keresztül. Ez a forgalom az Azure gerinchálózatát használja. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Ellenkező esetben használhatja a megosztott átjárót, és konfigurálhatja az átvitelt a helyszíni kapcsolathoz.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Annak ellenőrzéséhez, hogy a virtuális hálózatok egyenrangúak-e, ellenőrizheti a hatályos útvonalakat. A virtuális hálózat bármely alhálózatán lévő hálózati adapter útvonalait vizsgálja meg. Ha létezik a virtuális hálózatok közötti társviszony, a virtuális hálózat összes alhálózata *Virtuális hálózatok közötti társviszony* következő ugrási típusú útvonalakkal rendelkezik minden virtuális társhálózat minden címterében. További információ: [a virtuális gép útválasztási problémáinak diagnosztizálása](diagnose-network-routing-problem.md).
+Annak ellenőrzéséhez, hogy a virtuális hálózatok társviszonyban vannak-e, ellenőrizheti a hatékony útvonalakat. Ellenőrizze, hogy a virtuális hálózat bármely alhálózatában található-e hálózati illesztőútvonal. Ha létezik a virtuális hálózatok közötti társviszony, a virtuális hálózat összes alhálózata *Virtuális hálózatok közötti társviszony* következő ugrási típusú útvonalakkal rendelkezik minden virtuális társhálózat minden címterében. További információt a [Virtuálisgép-útválasztási probléma diagnosztizálása](diagnose-network-routing-problem.md)című témakörben talál.
 
-Az Azure Network Watcher használatával a virtuális gépekhez való kapcsolódást is elháríthatja egy társ virtuális hálózaton. A kapcsolat ellenőrzése lehetőséggel megtekintheti, hogyan irányítja a rendszer a forgalmat a forrás virtuális gép hálózati adapteréről a célként megadott virtuális gép hálózati adapteréhez. További információkért lásd: [Az Azure Network Watcher kapcsolatok hibáinak megoldása a Azure Portal használatával](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
+Az Azure Network Watcher használatával a társviszony-létesített virtuális hálózat ban lévő virtuális gépekkel való kapcsolódás hibaelhárítása is elháríthatja a kapcsolatot. A kapcsolatellenőrzése lehetővé teszi, hogy lássa, hogyan történik a forgalom a forrásvirtuális gép hálózati illesztője és a célvirtuális gép hálózati illesztője között. További információt az [Azure Network Watcher rel az Azure Portal használatával kapcsolatos kapcsolatok elhárítása című témakörben](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine)talál.
 
-Kipróbálhatja a [virtuális hálózati problémák elhárításával kapcsolatos problémákat](virtual-network-troubleshoot-peering-issues.md)is.
+Próbálkozhat a [Virtuális hálózati társviszony-létesítési problémák elhárítása is.](virtual-network-troubleshoot-peering-issues.md)
 
-## Megkötések a társ virtuális hálózatokhoz<a name="requirements-and-constraints"></a>
+## <a name="constraints-for-peered-virtual-networks"></a>Társviszony-létesített virtuális hálózatok korlátai<a name="requirements-and-constraints"></a>
 
-A következő megkötések csak akkor érvényesek, ha a virtuális hálózatok globálisan vannak kiképezve:
+A következő megkötések csak akkor érvényesek, ha a virtuális hálózatok globális társviszonyban vannak:
 
-* Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni egy alapszintű belső Load Balancer (ILB) előtér-IP-címével egy globálisan összetartozó virtuális hálózaton.
-* Az alapszintű Load balancert használó szolgáltatások nem működnek a globális virtuális hálózati kapcsolaton keresztül. További információ: [Mik a globális VNet-társítással és-terheléselosztóokkal kapcsolatos korlátozások?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+* Egy virtuális hálózat erőforrásai nem tudnak kommunikálni egy globálisan társviszonyba helyezett virtuális hálózat ban lévő alapszintű belső terheléselosztó (ILB) előtér-IP-címével.
+* Egyes, alapszintű terheléselosztót használó szolgáltatások nem működnek a globális virtuális hálózati társviszony-létesítésen. További információ: [Mik a globális virtuális társviszony-létesítési és terheléselosztók kapcsolatos korlátozások.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). .
 
-További információ: [követelmények és megkötések](virtual-network-manage-peering.md#requirements-and-constraints). Ha többet szeretne megtudni a támogatott számú társáról, tekintse meg a [hálózati korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)című témakört.
+További információ: [Követelmények és korlátozások](virtual-network-manage-peering.md#requirements-and-constraints). A társviszony-létesítések támogatott számáról a [Hálózati korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)című témakörben olvashat bővebben.
 
 ## <a name="permissions"></a>Engedélyek
 
-A virtuális hálózati társítások létrehozásához szükséges engedélyekkel kapcsolatos további információkért lásd: [engedélyek](virtual-network-manage-peering.md#permissions).
+A virtuális hálózati társviszony-létesítés hez szükséges engedélyekről az [Engedélyek című témakörben olvashat.](virtual-network-manage-peering.md#permissions)
 
 ## <a name="pricing"></a>Díjszabás
 
-A virtuális hálózatokat összekapcsoló kapcsolatot használó bejövő és kimenő forgalom névleges díja. További információ: [Virtual Network díjszabása](https://azure.microsoft.com/pricing/details/virtual-network).
+A virtuális hálózati társviszony-létesítési kapcsolatot használó kimenő és kimenő forgalom névleges díja van. További információ: [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Az átjáró-átvitel egy olyan társítási tulajdonság, amely lehetővé teszi, hogy a virtuális hálózatok a VPN/ExpressRoute átjárót használják egy társ virtuális hálózatban. Az átjárók közötti átvitel mind a létesítmények, mind a hálózat és a hálózat közötti kapcsolat esetében működik. Az átjáróra (bejövő vagy kimenő forgalomra) irányuló forgalmat a virtuális hálózatban található, a küllős VNet (vagy nem átjáró VNet) tartozó virtuális hálózati társítási díjak jelentik. További információkért VPN Gateway tekintse meg a ExpressRoute-átjáró díjainak [díjszabását](https://azure.microsoft.com/pricing/details/vpn-gateway/) a VPN Gateway díjaival és a ExpressRoute-átjáró díjszabásával kapcsolatban.
+A Gateway Transit egy társviszony-létesítési tulajdonság, amely lehetővé teszi, hogy a virtuális hálózat VPN/ExpressRoute átjárót használjon egy társviszonyt létesített virtuális hálózatban. Az átjáró-átvitel mind a több helyiség, mind a hálózat és a hálózat közötti kapcsolat esetén működik. Az átjáró (bejövő vagy kimenő) a társviszony-létesített virtuális hálózat virtuális hálózati forgalom merül fel a küllővirtuális hálózat (vagy nem átjáró virtuális hálózat) virtuális hálózati társviszony-létesítési díjakat. További információ: [VPN-átjáró díjszabása](https://azure.microsoft.com/pricing/details/vpn-gateway/) a VPN-átjáró díjaihoz és az ExpressRoute-átjáró díjai az ExpressRoute-átjáró díjaihoz.
 
 >[!NOTE]
-> A dokumentum egy korábbi verziója azt állapította meg, hogy a virtuális hálózati társítási díjak nem vonatkoznak a küllős VNet (vagy nem átjáró VNet) az átjáró-Átvitelsel. Mostantól a díjszabási oldalon a pontos díjszabást tükrözi.
+> A dokumentum egy korábbi verziója azt állította, hogy a virtuális hálózati társviszony-létesítési díjak nem vonatkoznak a küllővirtuális hálózatra (vagy nem átjáró virtuális hálózatra) a Gateway Transit használatával. Most tükrözi a pontos árképzési egy az árképzési oldalon.
 
 ## <a name="next-steps"></a>További lépések
 
-* Két virtuális hálózat közötti társítást hozhat létre. A hálózatok ugyanahhoz az előfizetéshez, különböző üzembe helyezési modellekhez tartozhatnak ugyanabban az előfizetésben, vagy eltérő előfizetésekben is. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
+* Két virtuális hálózat között társviszony-létesítést hozhat létre. A hálózatok ugyanahhoz az előfizetéshez, különböző üzembe helyezési modellekhez vagy különböző előfizetésekhez tartozhatnak. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-    |Azure üzembehelyezési modell             | -előfizetés  |
+    |Azure üzembehelyezési modell             | Előfizetés  |
     |---------                          |---------|
     |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Különböző](create-peering-different-subscriptions.md)|
     |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
     |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
 
-* A sugaras hálózati topológia létrehozásával kapcsolatos információkért lásd: [sugaras hálózati topológia az Azure-ban](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* Az összes virtuális hálózati társítási beállítással kapcsolatos további tudnivalókért lásd: [virtuális hálózati társak létrehozása, módosítása vagy törlése](virtual-network-manage-peering.md).
-* A gyakori virtuális hálózati és a globális virtuális hálózati kérdéseket érintő kérdésekre adott válaszokért lásd: [VNet peering](virtual-networks-faq.md#vnet-peering).
+* Ha tudni szeretné, hogyan hozhat létre központi és küllős hálózati topológiát, olvassa el [a Hub spoke hálózati topológiáját az Azure-ban.](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* A virtuális hálózati társviszony-létesítési beállításokról a [Virtuális hálózati társviszony-létesítés létrehozása, módosítása és törlése](virtual-network-manage-peering.md)című témakörben olvashat.
+* A virtuális hálózati társviszony-létesítésre és a globális virtuális hálózati társviszony-létesítésre vonatkozó gyakori kérdésekre a [VNet-társviszony-létesítés](virtual-networks-faq.md#vnet-peering)i.

@@ -1,5 +1,5 @@
 ---
-title: A Azure Automation hitelesítésének bemutatása
+title: Bevezetés a hitelesítésbe az Azure Automationben
 description: Ez a cikk az Automation biztonságáról és az Azure Automation-fiókok számára elérhető különböző hitelesítési módszerekről nyújt áttekintést.
 keywords: automation-biztonság, automation biztonságossá tétele; automation-hitelesítés
 services: automation
@@ -8,10 +8,10 @@ ms.date: 03/19/2018
 ms.topic: conceptual
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278570"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Bevezetés a hitelesítési folyamatba az Azure Automationben  
@@ -41,8 +41,8 @@ A következő táblázat összefoglalja az Azure Automation által támogatott �
 | Módszer | Környezet | Cikk |
 | --- | --- | --- |
 | Azure AD felhasználói fiók |Az Azure Resource Manager és a klasszikus Azure |[Runbookok hitelesítése Azure AD-felhasználói fiókkal](automation-create-aduser-account.md) |
-| Azure-futtatófiók |Azure Resource Manager |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
-| Klasszikus Azure-futtatófiók |Klasszikus Azure portál |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
+| Azure-futtatófiók |Azure Resource Manager |[Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
+| Klasszikus Azure-futtatófiók |Klasszikus Azure portál |[Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
 | Windows-hitelesítés |Helyszíni adatközpont |[Runbookok hitelesítése hibrid runbook-feldolgozókhoz](automation-hybrid-runbook-worker.md) |
 | AWS hitelesítő adatok |Amazon webszolgáltatások |[Runbookok hitelesítése az Amazon webszolgáltatásokkal (AWS)](automation-config-aws-account.md) |
 

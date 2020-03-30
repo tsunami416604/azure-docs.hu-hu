@@ -1,77 +1,93 @@
 ---
-title: Adatfolyam-keresés átalakításának leképezése
-description: Azure Data Factory leképezési adatfolyam keresési transzformációja
+title: A felkéselés átalakítása az adatfolyam leképezésében
+description: Hivatkozási adatok egy másik forrásból a keresgő átalakítás használatával az adatfolyam leképezésében.
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2020
-ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 03/23/2020
+ms.openlocfilehash: 78c6c1363af011a90865770d88c0037e50e958c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240412"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory leképezési adatfolyam keresési transzformációja
+# <a name="lookup-transformation-in-mapping-data-flow"></a>A felkéselés átalakítása az adatfolyam leképezésében
 
-A lookup használatával adjon meg egy másik forrásból származó referenciát az adatfolyamathoz. A keresési átalakításhoz olyan definiált forrásra van szükség, amely a hivatkozási táblára mutat, és megfelel a kulcs mezőinek.
+A lookup transzformáció segítségével hivatkozzon az adatfolyam egy másik forrásából származó adatokra. A keresés átalakítása oszlopokat fűz az egyező adatokból a forrásadatokhoz.
 
-![Keresési transzformáció](media/data-flow/lookup1.png "Keresés")
+A keresgélés átalakítása hasonlít a bal külső illesztéshez. Az elsődleges adatfolyam minden sora a kimeneti adatfolyamban fog létezni, és további oszlopok jelennek meg a felkereshető adatfolyamból. 
 
-Válassza ki azokat a legfontosabb mezőket, amelyeknek meg kell egyeznie a bejövő adatfolyam mezői és a hivatkozási forrás mezői között. Először létre kell hoznia egy új forrást az adatfolyam-tervezési vászonon, hogy az a keresés jobb oldalán legyen.
+## <a name="configuration"></a>Konfiguráció
 
-A egyezések megtalálása esetén a hivatkozási forrásból származó sorok és oszlopok lesznek hozzáadva az adatfolyamhoz. Kiválaszthatja, hogy mely érdekes mezőket kívánja felvenni a fogadóba az adatfolyam végén. Azt is megteheti, hogy a keresés után egy kiválasztott átalakítót használ a mezőlista törléséhez, hogy csak a megőrizni kívánt streamek mezőit tartsa meg.
+![A keresgazba– átalakítás](media/data-flow/lookup1.png "Keresés")
 
-A keresési átalakítás a bal oldali külső illesztés megfelelőjét hajtja végre. Így a bal oldali forrásból származó összes sor megjelenik a jobb oldaláról származó egyezések kombinálásával. Ha a Keresés több egyező értékkel rendelkezik, vagy ha testre szeretné szabni a keresési kifejezést, érdemes átváltani egy JOIN átalakításra, és használhat keresztes illesztést is. Ezzel elkerülhető az esetleges Descartes-féle hibák végrehajtása a végrehajtás során.
+**Elsődleges adatfolyam:** A bejövő adatfolyam. Ez az adatfolyam megegyezik az illesztés bal oldalával.
 
-## <a name="match--no-match"></a>Egyezés/nincs egyezés
+**A következő keresgélő adatfolyam:** Az elsődleges adatfolyamhoz hozzáfűzött adatok. A hozzáadott adatokat a kapcsolati feltételek határozzák meg. Ez az adatfolyam megegyezik az illesztés jobb oldalával.
 
-A keresési átalakítás után a következő átalakításokkal vizsgálhatja meg az egyes egyeztetési sorok eredményét, ha a kifejezés függvény `isMatch()` használatával további döntéseket szeretne tenni a logikában attól függően, hogy a keresés sor egyezést eredményezett-e, vagy sem.
+**Több sor egyeztetése:** Ha engedélyezve van, az elsődleges adatfolyamban több egyezést tartalmazó sor több sort ad vissza. Ellenkező esetben csak egy sor kerül visszaadásra a "Match on" feltétel alapján.
 
-![Keresési minta](media/data-flow/lookup111.png "Keresési minta")
+**Meccs bekapcsolva:** Csak akkor látható, ha a "Több sor egyeztetése" engedélyezve van. Válassza ki, hogy bármelyik sorban, az első egyezésben vagy az utolsó egyezésben van-e. Minden sor ajánlott, mivel végrehajtja a leggyorsabb. Ha az első vagy az utolsó sor van kijelölve, meg kell adnia a rendezési feltételeket.
 
-A keresési transzformáció használata után hozzáadhat egy feltételes felosztású átalakítási felosztást a ```isMatch()``` függvényhez. A fenti példában a sorok egyeztetése a felső streamen és a nem egyező sorokon halad végig a ```NoMatch``` adatfolyamon.
+**A következő keresgaszínállapotok:** Válassza ki, hogy mely oszlopokon szeretne egyeződni. Ha az egyenlőség feltétele teljesül, akkor a sorok egyeznek. Az alkalmazás rámutatása és a "Számított oszlop" lehetőséget választva az [adatfolyam-kifejezés nyelvével](data-flow-expression-functions.md)kinyerheti az értéket.
 
-## <a name="first-or-last-value"></a>Első vagy utolsó érték
+A keresgab-átalakítás csak az egyenlőségi egyezéseket támogatja. Ha úgy szeretné testreszabni a keresgabkifejezést, hogy az más operátorokat is tartalmazzon, például nagyobbakat, ajánlott [keresztillesztést használni az illesztéstranszformációban.](data-flow-join.md#custom-cross-join) A keresztillesztés elkerüli az esetleges descartes-i termékhibákat a végrehajtássorán.
 
-A keresési transzformáció a bal oldali külső illesztésként van megvalósítva. Ha a Keresés több egyezést is tartalmaz, érdemes lehet csökkenteni a több egyező sort úgy, hogy kiveszi az első egyező sort, az utolsó egyezést vagy bármely véletlenszerű sort.
+Mindkét adatfolyam összes oszlopa szerepel a kimeneti adatokban. Ismétlődő vagy nem kívánt oszlopok eldobásához vegyen fel egy [kijelölési átalakítást](data-flow-select.md) a keresett átalakítás után. Az oszlopok eldobhatók vagy átnevezhetők a fogadó átalakítása során is.
 
-### <a name="option-1"></a>1\. lehetőség
+## <a name="analyzing-matched-rows"></a>Egyező sorok elemzése
 
-![Egysoros keresés](media/data-flow/singlerowlookup.png "Egysoros keresés")
+A keresés átalakítása után `isMatch()` a függvény segítségével ellenőrizheti, hogy a keresés megfelelt-e az egyes soroknak.
 
-* Több sor egyeztetése: hagyja üresen, hogy egy sor egyezését adja vissza
-* Egyezés: válassza az első, az utolsó vagy a bármely egyezés lehetőséget
-* Rendezési feltételek: Ha az első vagy az utolsó lehetőséget választja, az ADF-nek meg kell rendelnie az adatait, hogy az első és az utolsó mögöttes logika legyen.
+![Keress minta](media/data-flow/lookup111.png "Keress minta")
 
-> [!NOTE]
-> Csak az első vagy utolsó beállítást használja az egysoros választónál, ha meg kell határoznia, hogy melyik értéket kell visszaadnia a keresésből. Az "any" vagy a többsoros keresések használata gyorsabban elvégezhető.
+Egy példa erre a mintára a feltételes `isMatch()` felosztástranszformáció használatával a függvény felosztásához. A fenti példában az egyező sorok a felső adatfolyamon haladnak át, és a nem egyező sorok végigfolynak az ```NoMatch``` adatfolyamon.
 
-### <a name="option-2"></a>2\. lehetőség
+## <a name="testing-lookup-conditions"></a>Vizsgálati vizsgálati feltételek
 
-Ezt a keresés után is elvégezheti egy összesített transzformáció használatával. Ebben az esetben egy ```PickFirst``` nevű összesített átalakítás használatos a keresési egyezések első értékének kiválasztásához.
+Ha a keresési átalakítást adatelőnézettel teszteli hibakeresési módban, használjon ismert adatok egy kis készletét. Amikor sorokat mintavételez egy nagy adatkészletből, nem tudja előre, hogy mely sorok és kulcsok lesznek beolvasva tesztelésre. Az eredmény nem determinisztikus, ami azt jelenti, hogy a csatlakozási feltételek nem adnak vissza egyezést.
 
-![Keresési összesítés](media/data-flow/lookup333.png "Keresési összesítés")
+## <a name="broadcast-optimization"></a>Közvetítés optimalizálása
 
-![Első keresés](media/data-flow/lookup444.png "Első keresés")
+Az Azure Data Factory leképezési adatfolyamok horizontális an-kimenő Spark-környezetekben hajthatók végre. Ha az adatkészlet elfér a munkavégző csomópont memóriaterületére, a műsorszórás engedélyezésével optimalizálható a keresmény teljesítménye.
 
-## <a name="optimizations"></a>Optimalizálás
+![Közvetítési csatlakozás](media/data-flow/broadcast.png "Közvetítési csatlakozás")
 
-Data Factory az adatfolyamatok kibővített Spark-környezetekben futnak. Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja a keresési teljesítményt.
+A műsorszórás engedélyezése a teljes adatkészletet a memóriába löki. A csak néhány ezer sort tartalmazó kisebb adatkészletek esetében a műsorszórás nagyban javíthatja a keresett teljesítményt. Nagy adatkészletek esetén ez a beállítás memóriakiesést okozhat.
 
-![Szórásos csatlakozás](media/data-flow/broadcast.png "Szórásos csatlakozás")
+## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="broadcast-join"></a>Szórásos csatlakozás
+### <a name="syntax"></a>Szintaxis
 
-Válassza ki a bal oldali és/vagy jobb oldali szórásos illesztést, hogy az ADF kérése után a teljes adatkészletet a keresési kapcsolat egyik oldaláról a memóriába küldje. A kisebb adatkészletek esetében ez nagy mértékben növelheti a keresési teljesítményt.
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>Példa
 
-### <a name="data-partitioning"></a>Adatparticionálás
+![A keresgazba– átalakítás](media/data-flow/lookup-dsl-example.png "Keresés")
 
-Az adatparticionálást úgy is megadhatja, ha a keresési átalakítás optimalizálása lapján a "particionálás beállítása" lehetőséget választja, és olyan adatkészleteket hoz létre, amelyek jobban illeszkednek a memóriába egy munkavégző számára.
+A fenti kapcsolatkövetési konfiguráció adatfolyam-parancsfájlja az alábbi kódrészletben található.
 
-## <a name="next-steps"></a>Következő lépések
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'none')~> LookupKeys
+```
+## 
+További lépések
 
-* A [Csatlakozás](data-flow-join.md) és a [meglévő](data-flow-exists.md) átalakítások hasonló feladatokat hajtanak végre az ADF-leképezési adatforgalomban. Tekintse meg a következő átalakításokat.
-* [Feltételes felosztás](data-flow-conditional-split.md) és ```isMatch()``` használata sorok felosztásához a megfeleltetési és a nem egyező értékekhez
+* Az [illesztés](data-flow-join.md) és [az már létező](data-flow-exists.md) átalakítások több adatfolyam-bemenetet is bevesznek
+* Feltételes [felosztásos](data-flow-conditional-split.md) átalakítás ```isMatch()``` használata sorok felosztásához az egyező és nem egyező értékeken

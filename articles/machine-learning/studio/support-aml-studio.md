@@ -1,7 +1,7 @@
 ---
-title: Támogatási & képzés beszerzése
+title: Támogatás & képzés
 titleSuffix: ML Studio (classic) - Azure
-description: Támogatás és képzés és visszajelzés a Azure Machine Learning Studio (klasszikus)
+description: Támogatás és képzés kérése, valamint visszajelzés küldése az Azure Machine Learning Studio-hoz (klasszikus)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,38 +9,38 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: f7146db33368877b8eb029e106559477376c5953
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5529d09d71eb9f4ef1d9b4d8185cafb11f644bc8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217909"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501320"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Támogatás és képzés a Azure Machine Learning Studio (klasszikus)
+# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Támogatás és képzés az Azure Machine Learning Studio-hoz (klasszikus)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Ez a cikk a Azure Machine Learning Studio (klasszikus) és a problémák és kérdések támogatásával kapcsolatos tudnivalókat ismerteti.
+Ez a cikk arról nyújt tájékoztatást, hogy miként tudhat meg többet az Azure Machine Learning Studio (klasszikus) című albumról, és hogyan kaphat támogatást a problémákhoz és a kérdésekhez.
 
-## <a name="learn-more-about-studio-classic"></a>További információ a studióról (klasszikus)
+## <a name="learn-more-about-studio-classic"></a>További információ a Studio -ról (klasszikus)
 
-Tekintse meg a tanulási segédanyagokat:
-+ [Oktatóanyagok és útmutatók](../studio/index.yml) 
+Tekintse meg tanulási forrásainkat:
++ [Oktatóanyagok és útmutatócikkek](../studio/index.yml) 
 + [Kezdő adatelemzési videók](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
-+ [Algoritmus – Cheat Sheets](../studio/algorithm-cheat-sheet.md) 
++ [Algoritmus megcsal lapok](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md) 
 
-## <a name="submit-doc-feedback"></a>Doc visszajelzés elküldése
+## <a name="submit-doc-feedback"></a>Dokumentum-visszajelzés küldése
 
-Az egyes cikkek végén található **tartalom-visszajelzési** gombbal további tanulási anyagokra vonatkozó **kéréseket küldhet** .
+További tananyagokra **vonatkozó kérelmeket** az egyes cikkek végén található **Tartalom-visszajelzés** gomb segítségével küldhet.
 
-## <a name="get-service-support"></a>Szolgáltatás támogatásának beolvasása
+## <a name="get-service-support"></a>Szolgáltatástámogatás beszereznie
 
-Tekintse meg ezeket erőforrások támogatása:
+Tekintse meg a támogatási forrásokat:
 
-+ **Technikai támogatás Azure-ügyfelek számára**: [támogatási kérések elküldése és kezelése](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) a Azure Portalon keresztül.
++ **Technikai támogatás az Azure-ügyfelek számára:** [Támogatási kérelmek küldése és kezelése](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) az Azure Portalon keresztül.
 
-+ **Felhasználói fórum**: tegye fel kérdéseit, válaszoljon a kérdésekre, és kapcsolódjon más felhasználókkal a [Azure Machine learning Studio (klasszikus) támogatási fórumon az MSDN webhelyen](https://aka.ms/aml-forum-studio).
++ **Felhasználói fórum**: Kérdéseket tehet fel, kérdéseket tehet fel, és kapcsolatba léphet más felhasználókkal az [MsDN Azure Machine Learning Studio (klasszikus) támogatási fórumán.](https://aka.ms/aml-forum-studio)
 
-+ **Stack overflow**: látogasson el a Azure Machine learning Közösségbe az "Azure-Machine-learning" címkével ellátott [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) .
++ **Stack túlcsordulás:** Keresse fel az Azure Machine Learning közösség [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) "Azure-Machine-Learning" címkével ellátott.
 
-+ **Ossza meg a termékkel kapcsolatos javaslatokat** és a szolgáltatásra vonatkozó kéréseket [Azure Machine learning visszajelzési csatornán](https://feedback.azure.com/forums/257792-machine-learning). A visszajelzések megosztásához válassza az egyes cikkek végén található **termék-visszajelzés** gombot.
++ **Termékjavaslatokat** és szolgáltatáskéréseket oszthat meg [az Azure Machine Learning visszajelzési csatornáján.](https://feedback.azure.com/forums/257792-machine-learning) A visszajelzések megosztásához válassza a **Termékvisszajelzés gombot** az egyes cikkek végén.

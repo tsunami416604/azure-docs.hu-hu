@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Connect Health GYIK – Azure | Microsoft Docs
-description: Ez a gyakori kérdések a Azure AD Connect Health kapcsolatos kérdésekre adnak választ. Ez a GYIK a szolgáltatás használatával kapcsolatos kérdéseket fedi le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
+title: Azure Active Directory – Gyakori kérdések az állapothoz – Azure | Microsoft dokumentumok
+description: Ez a gyIK megválaszolja az Azure AD Connect Health szolgáltatással kapcsolatos kérdéseket. Ez a GYIK a szolgáltatás használatával kapcsolatos kérdéseket fedi le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,154 +16,154 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e6c490ee9d8b6f7f07f52e70ceb8c7c49d699b6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897023"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331084"
 ---
-# <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
-Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati állapotával kapcsolatos gyakori kérdésekre (GYIK). Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket foglalják magukban, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
+# <a name="azure-ad-connect-health-frequently-asked-questions"></a>Az Azure AD Connect Health gyakori kérdései
+Ez a cikk az Azure Active Directory (Azure AD) Connect Health szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket ismertetik, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
 
 ## <a name="general-questions"></a>Általános kérdések
-**K: több Azure AD-címtárat is kezelhetek. Hogyan váltson a prémium szintű Azure Active Directoryra?**
+**K: Több Azure AD-könyvtárat kezelek. Hogyan válthatok az Azure Active Directory Premium szolgáltatással rendelkezőre?**
 
-A különböző Azure AD-bérlők közötti váltáshoz válassza ki a jelenleg bejelentkezett **felhasználónevet** a jobb felső sarokban, majd válassza ki a megfelelő fiókot. Ha a fiók nem szerepel a listán, válassza a kijelentkezés **lehetőséget, majd**használja a bejelentkezéshez prémium szintű Azure Active Directory engedélyezett könyvtár globális rendszergazdai hitelesítő adatait.
+A különböző Azure AD-bérlők közötti váltáshoz válassza ki a jobb felső sarokban az aktuálisan bejelentkezett **felhasználónevet,** majd válassza ki a megfelelő fiókot. Ha a fiók nem szerepel itt, válassza a **Kijelentkezés**lehetőséget, majd használja annak a könyvtárnak a globális rendszergazdai hitelesítő adatait, amelyen engedélyezve van az Azure Active Directory Premium a bejelentkezéshez.
 
-**K: az Azure AD Connect Health által támogatott identitás-szerepkörök verziója?**
+**K: Az Azure AD Connect Health támogatja az identitásszerepkörök melyik verzióját támogatja?**
 
-A következő táblázat felsorolja a szerepköröket és az operációs rendszer támogatott verzióit.
+Az alábbi táblázat a szerepköröket és a támogatott operációsrendszer-verziókat sorolja fel.
 
-|Szerepkör| Operációs rendszer/verzió|
+|Szerepkör| Operációs rendszer / verzió|
 |--|--|
-|Active Directory összevonási szolgáltatások (AD FS) (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|Azure AD Connect | 1\.0.9125 vagy újabb verzió|
-|Active Directory tartományi szolgáltatások (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory összevonási szolgáltatások (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Azure AD Connect | 1.0.9125-ös vagy újabb verzió|
+|Active Directory tartományi szolgáltatások (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
-Vegye figyelembe, hogy a szolgáltatás által biztosított szolgáltatások a szerepkörtől és az operációs rendszertől függően eltérőek lehetnek. Más szóval az összes funkció nem érhető el az operációs rendszer összes verziójához. A részletekért tekintse meg a szolgáltatás leírását.
+Vegye figyelembe, hogy a szolgáltatás által nyújtott szolgáltatások a szerepkörtől és az operációs rendszertől függően eltérőek lehetnek. Más szóval előfordulhat, hogy az összes szolgáltatás nem érhető el az összes operációs rendszer verzióhoz. A részleteket lásd a funkcióleírásokban.
 
-**K: hány licencre van szükségem az infrastruktúra figyeléséhez?**
+**K: Hány licencre van szükségem az infrastruktúrám figyeléséhez?**
 
-* Az első összekapcsolási ügynökhöz legalább egy prémium szintű Azure AD licenc szükséges.
-* Minden további regisztrált ügynökhöz 25 további prémium szintű Azure AD licenc szükséges.
-* Az ügynökök száma megegyezik az összes figyelt szerepkörben (AD FS, Azure AD Connect és/vagy AD DS) regisztrált ügynökök teljes számával.
-* A HRE-kapcsolat licencelése nem igényli, hogy a licencet meghatározott felhasználókhoz rendelje. Csak a szükséges számú érvényes licenc szükséges.
+* Az első Connect Health Agent legalább egy Azure AD Premium-licencet igényel.
+* Minden további regisztrált ügynökhöz 25 további Azure AD Premium-licenc szükséges.
+* Az ügynökök száma megegyezik az összes figyelt szerepkör (AD FS, Azure AD Connect és/vagy AD DS) regisztrált ügynökök teljes számával.
+* Az AAD Connect Health licencelése nem követeli meg, hogy a licencet adott felhasználókhoz rendelje. Csak a szükséges számú érvényes licenccel kell rendelkeznie.
 
-A licencelési információk az [Azure ad díjszabási oldalán](https://aka.ms/aadpricing)is megtalálhatók.
+A licencelési információk az [Azure AD díjszabási lapján](https://aka.ms/aadpricing)is megtalálhatók.
 
 Példa:
 
-| Regisztrált ügynökök | Szükséges licencek | Példa figyelési konfigurációra |
+| Bejegyzett ügynökök | Szükséges licencek | Példa figyelési konfigurációra |
 | ------ | --------------- | --- |
 | 1 | 1 | 1 Azure AD Connect kiszolgáló |
 | 2 | 26| 1 Azure AD Connect kiszolgáló és 1 tartományvezérlő |
-| 3 | 51 | 1 Active Directory összevonási szolgáltatások (AD FS) (AD FS) kiszolgáló, 1 AD FS proxy és 1 tartományvezérlő |
-| 4 | 76 | 1 AD FS kiszolgáló, 1 AD FS proxy és 2 tartományvezérlő |
-| 5 | 101 | 1 Azure AD Connect kiszolgáló, 1 AD FS kiszolgáló, 1 AD FS proxy és 2 tartományvezérlő |
+| 3 | 51 | 1 Active Directory összevonási szolgáltatások (AD FS) kiszolgáló, 1 AD FS-proxy és 1 tartományvezérlő |
+| 4 | 76 | 1 AD FS-kiszolgáló, 1 AD FS-proxy és 2 tartományvezérlő |
+| 5 | 101 | 1 Azure AD Connect-kiszolgáló, 1 AD FS-kiszolgáló, 1 AD FS-proxy és 2 tartományvezérlő |
 
-**K: Azure AD Connect Health támogatja az Azure Germany Cloud-ot?**
+**K: Támogatja az Azure AD Connect Health az Azure Germany Cloud-ot?**
 
-A Azure AD Connect Health a németországi felhőben nem támogatott, kivéve a [szinkronizálási hibák jelentési funkcióját](how-to-connect-health-sync.md#object-level-synchronization-error-report).
+Az Azure AD Connect Health nem támogatott a Germany Cloud szolgáltatásban, kivéve a [szinkronizálási hibák jelentési funkcióját.](how-to-connect-health-sync.md#object-level-synchronization-error-report)
 
-| Szerepkörök | Jellemzők | Támogatott a német felhőben |
+| Szerepkörök | Szolgáltatások | Német felhőben támogatott |
 | ------ | --------------- | --- |
-| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | Nem |
+| Az állapot összekapcsolása szinkronizáláshoz | Monitoring / Insight / Figyelmeztetések / Elemzés | Nem |
 |  | Szinkronizálási hibajelentés | Igen |
-| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | Nem |
-| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | Nem |
+| Az ADFS állapotának összekapcsolása | Monitoring / Insight / Figyelmeztetések / Elemzés | Nem |
+| Az állapot összeadáshoz való csatlakoztatása | Monitoring / Insight / Figyelmeztetések / Elemzés | Nem |
 
-Annak érdekében, hogy az ügynök kapcsolatba lépjen a csatlakozás állapota szinkronizáláshoz, a [telepítési követelményt](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) ennek megfelelően konfigurálja.
+A Connect Health szinkronizáláshoz szükséges ügynöki kapcsolatának biztosításához ennek megfelelően konfigurálja a [telepítési követelményt.](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)
 
 ## <a name="installation-questions"></a>Telepítési kérdések
 
-**K: milyen hatással van a Azure AD Connect Health-ügynök telepítése az egyes kiszolgálókra?**
+**K: Milyen hatással van az Azure AD Connect health Agent telepítése az egyes kiszolgálókra?**
 
-A Microsoft Azure AD csatlakozási állapotfigyelő ügynök, AD FS, webalkalmazás-proxy kiszolgálók, Azure AD Connect (szinkronizáló) kiszolgálók telepítésének következményei a tartományvezérlők minimálisan vonatkoznak a CPU, a memóriahasználat, a hálózati sávszélesség és a tárterület tekintetében.
+A Microsoft Azure AD Connect Health Agent, Az AD FS, a webalkalmazás-proxykiszolgálók, az Azure AD Connect (szinkronizálási) kiszolgálók, a tartományvezérlők telepítésének hatása minimális a processzor, a memóriafelhasználás, a hálózati sávszélesség és a tárhely tekintetében.
 
-A következő számok közelítenek meg:
+A következő számok közelítést jelentenek:
 
-* CPU-felhasználás: ~ 1-5%-kal nő.
-* Memóriahasználat: a teljes rendszermemória 10%-a.
+* CPU-fogyasztás: ~1-5%-os növekedés.
+* Memóriafelhasználás: A teljes rendszermemória akár 10 %-a.
 
 > [!NOTE]
-> Ha az ügynök nem tud kommunikálni az Azure-ban, az ügynök helyileg tárolja az adatkészletet a megadott maximális korláthoz. Az ügynök felülírja a "legutóbb kiszolgált" típusú "gyorsítótárazott" adatértékeket.
+> Ha az ügynök nem tud kommunikálni az Azure-ral, az ügynök tárolja az adatokat helyileg egy meghatározott maximális korlát. Az ügynök felülírja a "gyorsítótárazott" adatokat a "legutolsóként szervizelt" alapon.
 >
 >
 
-* Helyi puffer tároló a Azure AD Connect Health-ügynökökhöz: ~ 20 MB.
-* AD FS-kiszolgálók esetében ajánlott egy 1 024 MB (1 GB) lemezterületet kiépíteni a Azure AD Connect Health ügynökök AD FS naplózási csatornája számára, hogy a rendszer felülírja az összes naplózási adat feldolgozását.
+* Helyi puffertároló az Azure AD Connect állapotügynökei számára: ~20 MB.
+* AD FS-kiszolgálók esetén azt javasoljuk, hogy 1024 MB (1 GB) lemezterületet létesítsen az AD FS naplózási csatornához az Azure AD Connect health Agents számára, hogy az összes naplózási adatot feldolgozza, mielőtt felülírná.
 
-**K: újra kell indítanunk a kiszolgálókat a Azure AD Connect Health-ügynökök telepítésekor?**
+**K: Újra kell indítanom a kiszolgálóimat az Azure AD Connect állapotügynökök telepítése során?**
 
-Nem. Az ügynökök telepítése nem igényli a kiszolgáló újraindítását. Néhány előfeltételként szükséges lépés telepítéséhez azonban szükség lehet a kiszolgáló újraindítására.
+Nem. Az ügynökök telepítéséhez nem szükséges újraindítani a kiszolgálót. Egyes előfeltétel-lépések telepítése azonban a kiszolgáló újraindítását teheti szükségessé.
 
-Windows Server 2008 R2 rendszeren például a .NET 4,5 Framework telepítése a kiszolgáló újraindítását igényli.
+A Windows Server 2008 R2 rendszerben például a .NET 4.5 Framework telepítéséhez a kiszolgáló újraindítása szükséges.
 
-**K: a Azure AD Connect Health egy átmenő HTTP-proxyn keresztül működik?**
+**K: Működik az Azure AD Connect Health egy átmenő HTTP-proxyn keresztül?**
 
-Igen. A folyamatban lévő műveletek esetében beállíthatja, hogy az állapotfigyelő ügynök HTTP-proxy használatával továbbítsa a kimenő HTTP-kéréseket.
-További információ a [http-proxy állapot-ügynökökhöz való konfigurálásáról](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
+Igen. A folyamatban lévő műveletek, konfigurálhatja az állapotügynök egy HTTP-proxy a kimenő HTTP-kérelmek továbbítása.
+További információ [a HTTP-proxy konfigurálásáról az állapotügynökök számára.](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)
 
-Ha proxyt kell konfigurálnia az ügynök regisztrálása során, előfordulhat, hogy előzőleg módosítania kell az Internet Explorer-proxy beállításait.
+Ha az ügynök regisztrációja során proxyt kell konfigurálnia, előfordulhat, hogy előzetesen módosítania kell az Internet Explorer proxybeállításait.
 
-1. Nyissa meg az Internet Explorer > **beállításait** > **internet Options** > **Connections** > **LAN-beállítások**lehetőséget.
-2. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
-3. Válassza a **speciális** lehetőséget, ha különböző proxy portokkal rendelkezik a http és a https/Secure szolgáltatáshoz.
+1. Nyissa meg az Internet Explorer > **Internetbeállítások** > **Internetbeállítások** > **– kapcsolatok** > **LAN-beállításait.**
+2. Válassza **a Proxykiszolgáló használata a helyi hálózathoz**lehetőséget.
+3. Válassza **a Speciális** lehetőséget, ha különböző proxyportokkal rendelkezik a HTTP és a HTTPS/Secure protokollhoz.
 
-**K: Azure AD Connect Health támogatja az alapszintű hitelesítést a HTTP-proxykkal való csatlakozáskor?**
+**K: Támogatja az Azure AD Connect Health alapszintű hitelesítést HTTP-proxykhoz való csatlakozáskor?**
 
-Nem. Az egyszerű hitelesítéshez használt tetszőleges Felhasználónév és jelszó megadására szolgáló mechanizmus jelenleg nem támogatott.
+Nem. Az egyszerű hitelesítéshez tetszőleges felhasználónév és jelszó megadására szolgáló mechanizmus jelenleg nem támogatott.
 
-**K: milyen tűzfal-portokat kell megnyitni a Azure AD Connect Health ügynök működéséhez?**
+**K: Milyen tűzfalportokat kell megnyitni az Azure AD Connect health agent működéséhez?**
 
-A tűzfalak és egyéb kapcsolódási követelmények listáját a [követelmények című szakaszban](how-to-connect-health-agent-install.md#requirements) találja.
+Tekintse meg a tűzfalportok listáját és az egyéb kapcsolódási követelményeket tartalmazó [követelményeket.](how-to-connect-health-agent-install.md#requirements)
 
-**K: Miért látok két kiszolgálót ugyanazzal a névvel a Azure AD Connect Health-portálon?**
+**K: Miért jelenik meg két azonos nevű kiszolgáló az Azure AD Connect Health portálon?**
 
-Ha eltávolít egy ügynököt egy kiszolgálóról, a rendszer nem távolítja el automatikusan a kiszolgálót a Azure AD Connect Health-portálról. Ha manuálisan távolítja el az ügynököt egy kiszolgálóról, vagy magát a kiszolgálót távolítja el, akkor manuálisan kell törölnie a kiszolgálói bejegyzést a Azure AD Connect Health-portálról.
+Amikor eltávolít egy ügynököt egy kiszolgálóról, a kiszolgáló nem törlődik automatikusan az Azure AD Connect Health portálról. Ha manuálisan eltávolít egy ügynököt egy kiszolgálóról, vagy magát a kiszolgálót, manuálisan kell törölnie a kiszolgálóbejegyzést az Azure AD Connect Health portalról.
 
-Előfordulhat, hogy egy kiszolgáló rendszerképét alaphelyzetbe állítja, vagy egy új kiszolgálót hoz létre ugyanazzal a részletekkel (például a számítógépnévvel). Ha nem távolítja el a már regisztrált kiszolgálót a Azure AD Connect Health-portálról, és az ügynököt az új kiszolgálóra telepítette, akkor előfordulhat, hogy két azonos nevű bejegyzés jelenik meg.
+Előfordulhat, hogy újraképez egy kiszolgálót, vagy létrehoz egy új kiszolgálót ugyanazzal a részlettel (például a számítógép nevével). Ha nem távolította el a már regisztrált kiszolgálót az Azure AD Connect health portálról, és telepítette az ügynököt az új kiszolgálóra, előfordulhat, hogy két bejegyzés jelenik meg ugyanazzal a névvel.
 
-Ebben az esetben manuálisan törölje a régebbi kiszolgálóhoz tartozó bejegyzést. A kiszolgáló adatának elavultnak kell lennie.
+Ebben az esetben manuálisan törölje a régebbi kiszolgálóhoz tartozó bejegyzést. A kiszolgáló adatainak elavultnak kell lenniük.
 
-## <a name="health-agent-registration-and-data-freshness"></a>Az állapotadatok regisztrálása és az adatfrissesség
+## <a name="health-agent-registration-and-data-freshness"></a>Az egészségügyi ügynök regisztrálása és az adatok frissessége
 
-**K: milyen gyakori okai vannak az állapotadatok regisztrálási hibáinak, és hogyan lehet elhárítani a problémákat?**
+**K: Milyen gyakori okai vannak az állapotfigyelő regisztrációs hibáinak, és hogyan háríthatók el a problémák?**
 
-Az állapotfigyelő ügynök a következő lehetséges okok miatt nem tud regisztrálni:
+Az egészségügyi ügynök a következő lehetséges okok miatt sikertelenül regisztrálhat:
 
-* Az ügynök nem tud kommunikálni a szükséges végpontokkal, mert a tűzfal blokkolja a forgalmat. Ez különösen gyakori a webalkalmazás-proxy kiszolgálókon. Győződjön meg arról, hogy engedélyezett-e a kimenő kommunikáció a szükséges végpontokkal és portokkal. Részletekért tekintse meg a [követelmények szakaszt](how-to-connect-health-agent-install.md#requirements) .
-* A kimenő kommunikációra a hálózati réteg SSL-ellenőrzése vonatkozik. Ez azt eredményezi, hogy az ügynök által használt tanúsítvány lecserélhető az ellenőrzési kiszolgáló/entitás számára, és az ügynök regisztrációjának befejezéséhez szükséges lépések sikertelenek lesznek.
-* A felhasználónak nincs hozzáférése az ügynök regisztrációjának elvégzéséhez. A globális rendszergazdák alapértelmezés szerint rendelkeznek hozzáféréssel. A [szerepkörön alapuló Access Control](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) használatával delegálhatja a hozzáférést más felhasználóknak.
+* Az ügynök nem tud kommunikálni a szükséges végpontokkal, mert a tűzfal blokkolja a forgalmat. Ez különösen gyakori a webalkalmazás-proxykiszolgálókon. Győződjön meg arról, hogy engedélyezte a kimenő kommunikációt a szükséges végpontokkal és portokkal. A [részleteket](how-to-connect-health-agent-install.md#requirements) lásd a követelmények részben.
+* A kimenő kommunikációt a hálózati réteg TLS-vizsgálatnak veti alá. Ennek hatására az ügynök által használt tanúsítványt a felügyeleti kiszolgáló/entitás cseréli le, és az ügynök regisztrációjának befejezéséhez szükséges lépések sikertelenek.
+* A felhasználó nak nincs hozzáférése az ügynök regisztrációjához. A globális rendszergazdák alapértelmezés szerint hozzáférhetnek. A [szerepköralapú hozzáférés-vezérléssel](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) más felhasználók hozzáférését delegálhatja.
 
-**K: értesítést kapok arról, hogy "Állapotfigyelő szolgáltatás adatok nem naprakészek." Hogyan a probléma megoldásához?**
+**K: Kapok figyelmeztetést, hogy "Az egészségügyi szolgáltatás adatai nem naprakészek." Hogyan háríthatók el a probléma?**
 
-Azure AD Connect Health akkor hozza létre a riasztást, ha nem kapja meg az összes adatpontot a kiszolgálóról az elmúlt két órában. [További információk](how-to-connect-health-data-freshness.md).
+Az Azure AD Connect Health akkor hozza létre a riasztást, ha az elmúlt két órában nem kapja meg az összes adatpontot a kiszolgálóról. [Tovább](how-to-connect-health-data-freshness.md)- tovább .
 
-## <a name="operations-questions"></a>Üzemeltetési kérdések
-**K: engedélyezni kell a naplózást a webalkalmazás-proxy kiszolgálókon?**
+## <a name="operations-questions"></a>Működési kérdések
+**K: Engedélyeznem kell a naplózást a webalkalmazás proxykiszolgálóin?**
 
-Nem, a naplózást nem kell engedélyezni a webalkalmazás-proxy kiszolgálókon.
+Nem, a naplózást nem kell engedélyezni a webalkalmazás-proxykiszolgálókon.
 
-**K: Hogyan oldható fel Azure AD Connect Health-riasztások?**
+**K: Hogyan oldhatók meg az Azure AD Connect állapotriasztásai?**
 
-Azure AD Connect Health riasztások megoldódott a sikeres feltételhez. Azure AD Connect Health ügynökök rendszeresen azonosítják és bejelentik a szolgáltatás sikerességi feltételeit. Néhány riasztás esetén a letiltási idő alapú. Más szóval, ha ugyanazt a hibát a riasztások keletkezésének 72 órán belül nem észlelik, a rendszer automatikusan feloldja a riasztást.
+Az Azure AD Connect health riasztások sikeres állapotban oldhatók meg. Az Azure AD Connect állapotügynökök észleli és rendszeresen jelentia sikeres feltételeit a szolgáltatásnak. Néhány riasztás esetén a letiltás időalapú. Más szóval, ha ugyanazt a hibafeltételt nem figyeli meg a riasztás generálásától számított 72 órán belül, a riasztás automatikusan megoldódik.
 
-**K: értesítést kapok arról, hogy a "teszt hitelesítési kérelem (szintetikus tranzakció) nem tudott beolvasni egy jogkivonatot." Hogyan a probléma megoldásához?**
+**K: Kapok figyelmeztetést, hogy "Teszt hitelesítési kérelem (szintetikus tranzakció) nem tudott megszerezni egy jogkivonatot." Hogyan háríthatók el a probléma?**
 
-A AD FS Azure AD Connect Health akkor hozza létre ezt a riasztást, ha egy AD FS kiszolgálóra telepített állapotfigyelő ügynök nem tud jogkivonatot beszerezni az állapotfigyelő ügynök által kezdeményezett szintetikus tranzakció részeként. Az állapotfigyelő szolgáltatás a helyi rendszerkörnyezetet használja, és megkísérli lekérni egy saját függő entitás jogkivonatát. Ez egy mindenre kiterjedő teszt, amely biztosítja, hogy AD FS jogkivonatok kibocsátásának állapotában legyen.
+Az Azure AD Connect Health for AD FS akkor hozza létre ezt a riasztást, ha az AD FS-kiszolgálón telepített állapotügynök nem tud tokenbejutni az állapotügynök által kezdeményezett szintetikus tranzakció részeként. Az egészségügyi ügynök a helyi rendszer környezetében, és megpróbálja lekérni egy jogkivonatot egy saját falánk entitás. Ez egy catch-all teszt annak biztosítására, hogy az AD FS jogkivonatok kibocsátása állapotban van.
 
-Ez a teszt általában sikertelen, mert az állapotfigyelő ügynök nem tudja feloldani a AD FS farm nevét. Ez akkor fordulhat elő, ha a AD FS-kiszolgálók hálózati terheléselosztó mögött vannak, és a rendszer a terheléselosztó mögött lévő csomóponttól kezdeményezi a kérést (a terheléselosztó előtt lévő normál ügyfél helyett). Ez a "C:\Windows\System32\drivers\etc" alatt található "hosts" fájl frissítésével oldható meg, amely tartalmazza a AD FS-kiszolgáló IP-címét vagy egy visszacsatolási IP-címet (127.0.0.1) a AD FS Farm neveként (például sts.contoso.com). A gazda fájl hozzáadása a hálózati hívás rövid összekapcsolását teszi lehetővé, így az állapotfigyelő ügynök beolvashatja a tokent.
+Ez a teszt leggyakrabban sikertelen, mert az állapotügynök nem tudja feloldani az AD FS farm nevét. Ez akkor fordulhat elő, ha az AD FS-kiszolgálók egy hálózati terheléselosztó mögött vannak, és a kérést egy olyan csomópontról kezdeményezi, amely a terheléselosztó mögött van (szemben a rendszeres ügyféllel, amely a terheléselosztó előtt van). Ez javítható a "C:\Windows\System32\drivers\etc" alatt található "hosts" fájl frissítésével, amely tartalmazza az AD FS-kiszolgáló IP-címét vagy az AD FS farm sts.contoso.com nevének visszacsatolási IP-címét (127.0.0.1). A gazdafájl hozzáadása rövidre zárja a hálózati hívást, így lehetővé teszi az egészségügyi ügynök számára a jogkivonat beírását.
 
-**K: kaptam egy e-mailt, amely azt jelzi, hogy a gépek nem a legutóbbi ransomware támadásokkal kapcsolatosak. Miért kaptam ezt az e-mailt?**
+**K: Kaptam egy e-mailt, amely jelzi, hogy a gépeim nem foltozottak a legutóbbi zsarolóprogramok támadásaihoz. Miért kaptam meg ezt az e-mailt?**
 
-Azure AD Connect Health szolgáltatás megvizsgálta az összes általa felügyelt gépet a szükséges javítások telepítésének biztosítása érdekében. A rendszer elküldte az e-mailt a bérlői rendszergazdáknak, ha legalább egy gép nem rendelkezik a kritikus javításokkal. Ezt a döntést a következő logikával használták.
-1. A számítógépen telepített összes gyorsjavítás megkeresése.
-2. Ellenőrizze, hogy létezik-e legalább egy gyorsjavítás a definiált listából.
-3. Ha igen, a gép védett. Ha nem, a gép veszélyben van a támadás ellen.
+Az Azure AD Connect Health szolgáltatás ellenőrizte az összes általa figyelt gépet, hogy megbizonyosodjon aszükséges javítások telepítéséről. Az e-mailt a bérlői rendszergazdák küldték el, ha legalább egy gép nem rendelkezik a kritikus javításokkal. A meghatározáshoz a következő logikát használták.
+1. Keresse meg a számítógépre telepített összes gyorsjavítást.
+2. Ellenőrizze, hogy a definiált listából legalább egy gyorsjavítás található-e.
+3. Ha igen, a gép védett. Ha nem, a gép veszélyben van a támadás.
 
-Az alábbi PowerShell-szkripttel manuálisan is végrehajthatja ezt az ellenőrzést. Ez megvalósítja a fenti logikát.
+Az ellenőrzés manuális végrehajtásához a következő PowerShell-parancsfájl t használhatja. A fenti logikát valósítja meg.
 
 ```powershell
 Function CheckForMS17-010 ()
@@ -186,23 +186,23 @@ CheckForMS17-010
 
 ```
 
-**K: Miért jelenik meg a <i>Get-MsolDirSyncProvisioningError PowerShell-</i> parancsmag kevesebb szinkronizálási hiba az eredményben?**
+**K: Miért a PowerShell-parancsmag <i>Get-MsolDirSyncProvisioningError</i> kevesebb szinkronizálási hibákat jelenít meg az eredményben?**
 
-A <i>Get-MsolDirSyncProvisioningError</i> csak az rsync kiépítési hibáit fogja visszaadni. Ezen kívül a csatlakozási állapot portálon más szinkronizálási hibák is láthatók, például az exportálási hibák. Ez konzisztens Azure AD Connect különbözeti eredménysel. További információ [Azure ad Connect szinkronizálási hibákról](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+<i>A Get-MsolDirSyncProvisioningError</i> csak dirSync kiépítési hibákat ad vissza. Emellett a Connect Health portal más szinkronizálási hibatípusokat is megjelenít, például exportálási hibákat. Ez összhangban van az Azure AD Connect különbözeti eredményével. További információ az [Azure AD Connect Sync hibáiról.](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
 
-**K: Miért nem jönnek létre az ADFS-naplózások?**
+**K: Miért nem jönnek létre az ADFS-auditok?**
 
-Használja a <i>Get-AdfsProperties-AuditLevel PowerShell-</i> parancsmagot annak biztosítására, hogy a naplók nem letiltott állapotban legyenek. További információ az [ADFS-naplókkal](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)kapcsolatban. Figyelje meg, hogy vannak-e leküldve speciális naplózási beállítások az ADFS-kiszolgálón. a Auditpol. exe fájl módosításai felül lesznek írva (esemény, ha az alkalmazás létrehozva nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirendet, hogy naplózza az alkalmazás által generált hibákat és sikereket.
+Használja a <i>Get-AdfsProperties -AuditLevel</i> PowerShell-parancsmaggal annak biztosításához, hogy a naplónaplók nincsenek letiltva állapotban. További információ az [ADFS naplóiról](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Figyelje meg, ha speciális naplózási beállítások vannak az ADFS-kiszolgálóra, az auditpol.exe fájlban végrehajtott módosítások felülíródnak (esemény, ha az alkalmazás által létrehozott alkalmazás nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirendet az alkalmazás által generált hibák és a siker naplózásához.
 
-**K: Mikor kerül sor az ügynök tanúsítványának automatikus megújítására a lejárat előtt?**
-Az ügynök minősítése a lejárat napja előtt **6 hónappal** automatikusan megújul. Ha nem újítják meg, gondoskodjon arról, hogy az ügynök hálózati kapcsolatai stabilak legyenek. A probléma megoldásához indítsa újra az ügynök szolgáltatásait, vagy frissítsen a legújabb verzióra.
+**K: Mikor lesz az ügyintézői tanúsítvány automatikus megújítása a lejárat előtt?**
+Az ügynöki tanúsítvány automatikusan megújul **6 hónappal** a lejárati dátum előtt. Ha nem újítja meg, győződjön meg arról, hogy az ügynök hálózati kapcsolata stabil. Indítsa újra az ügynökszolgáltatásokat, vagy frissítsen a legújabb verzióra, ami szintén megoldhatja a problémát.
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)
-* [Az Azure AD Connect Health műveletei](how-to-connect-health-operations.md)
+* [Az Azure AD Connect állapotügynök telepítése](how-to-connect-health-agent-install.md)
+* [Az Azure AD Connect állapotműveletei](how-to-connect-health-operations.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)
-* [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](how-to-connect-health-sync.md)
+* [Az Azure AD Connect Health használata szinkronizáláshoz](how-to-connect-health-sync.md)
 * [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md)
 * [Az Azure AD Connect Health verzióelőzményei](reference-connect-health-version-history.md)

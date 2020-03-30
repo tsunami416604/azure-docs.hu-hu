@@ -1,59 +1,59 @@
 ---
-title: Az Azure Cosmos DB etcd API bemutatása
-description: Ez a cikk ismerteti az Azure Cosmos DB API etcd áttekintése és főbb előnyei
+title: Bevezetés az Azure Cosmos DB etcd API-ba
+description: Ez a cikk áttekintést és az etcd API legfontosabb előnyeit tartalmazza az Azure Cosmos DB-ben
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acd87fac5ec2edc40d27d98f073e13c0acae8d8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498596"
 ---
-# <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Az Azure Cosmos DB etcd API (előzetes verzió) bemutatása
+# <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Bevezetés az Azure Cosmos DB etcd API-ba (előzetes verzió)
 
-Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatás alapvető fontosságú alkalmazásokhoz. Kulcsrakész globális disztribúciót, rugalmas átviteli sebesség és tárterület, egyszámjegyű ezredmásodperces késés 99 százalékon méretezést biztosít, és azt magas rendelkezésre állású, piacvezető SLA által garantált.
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Kulcsrakész globális disztribúciót, az átviteli és tárolási műveletek rugalmas méretezését, a 99. percentilis egyszámjegyű ezredmásodperces késéseit és a garantált magas rendelkezésre állást kínálja, amelyeket az iparágvezető SLA-k támogatnak.
 
-[Etcd](https://github.com/etcd-io/etcd) egy elosztott kulcs/érték tároló. A [Kubernetes](https://kubernetes.io/), etcd állapota és a Kubernetes-fürtök konfigurációjának tárolására szolgál. Biztosítja a rendelkezésre állási, megbízhatóságát és teljesítményét etcd elengedhetetlen az általános fürt állapotát, méretezhetőség, rugalmasság rendelkezésre állási és Kubernetes-fürt teljesítményét. 
+[Etcd](https://github.com/etcd-io/etcd) egy elosztott kulcs/érték tároló. A [Kubernetes,](https://kubernetes.io/)etcd tárolja az állam és a konfiguráció a Kubernetes fürtök. Az etcd rendelkezésre állásának, megbízhatóságának és teljesítményének biztosítása elengedhetetlen a fürt általános állapotához, méretezhetőségéhez, rugalmasságához és a Kubernetes-fürtök teljesítményéhez. 
 
-A etcd API az Azure Cosmos DB lehetővé teszi, hogy a háttérrendszer tárolóként az Azure Cosmos DB [Azure-beli Kubernetes](../aks/index.yml). az Azure Cosmos DB API etcd jelenleg előzetes verzióban érhető el. Az Azure Cosmos DB a etcd protokoll valósítja meg. Etcd API az Azure Cosmos DB, az automatikusan a fejlesztőket magas megbízhatóságú [elérhető](high-availability.md), [globálisan elosztott](distribute-data-globally.md) Kubernetes. Ez az API lehetővé teszi, hogy a Kubernetes állapot-felügyeleti méretezhetők egy teljes körűen felügyelt felhőbeli natív PaaS-szolgáltatás a fejlesztők számára. 
+Az Azure Cosmos DB etcd API-ja lehetővé teszi, hogy az Azure Cosmos DB-t használja az [Azure Kubernetes háttértárolójaként.](../aks/index.yml) etcd API az Azure Cosmos DB jelenleg előzetes verzióban. Az Azure Cosmos DB megvalósítja az etcd vezetékes protokollt. Az Azure Cosmos DB etcd API-jával a fejlesztők automatikusan rendkívül megbízható, [elérhető](high-availability.md), [globálisan elosztott](distribute-data-globally.md) Kubernetes-t kapnak. Ez az API lehetővé teszi a fejlesztők számára a Kubernetes állapotfelügyeletének méretezését egy teljes körűen felügyelt natív PaaS-szolgáltatáson. 
 
 > [!NOTE]
-> Ellentétben más az Azure Cosmos DB API etcd API-fiók az Azure Portalon, parancssori felület vagy az SDK-k nem használhatók. Csak a Resource Manager-sablon üzembe helyezésével helyezheti üzembe a etcd API-fiók részletes lépéseiért lásd: [kiépítéséről Azure-beli Kubernetes az Azure Cosmos DB](bootstrap-kubernetes-cluster.md) cikk. Az Azure Cosmos DB etcd API jelenleg korlátozott előzetes verzióban érhető el. Is [regisztráljon az előzetes verzióra](https://aka.ms/cosmosetcdapi-signup), bejelentkezési űrlap kitöltésével.
+> Az Azure Cosmos DB más API-któl eltérően nem hozhat létre egy etcd API-fiókot az Azure Portalon, CLI-n vagy SDK-kon keresztül. Egy etcd API-fiók kiépítése csak az Erőforrás-kezelő sablon telepítésével; Részletes lépések: [Azure Kubernetes kiépítése az Azure Cosmos DB cikkével.](bootstrap-kubernetes-cluster.md) Az Azure Cosmos DB etcd API jelenleg korlátozott előzetes verzióban érhető el. Az [előzetes verzióra](https://aka.ms/cosmosetcdapi-signup)a regisztrációs űrlap kitöltésével regisztrálhat.
 
-## <a name="wire-level-compatibility"></a>Átviteli szintű kompatibilitása
+## <a name="wire-level-compatibility"></a>Vezetékszint-kompatibilitás
 
-Az Azure Cosmos DB valósítja meg a 3-as verziójú etcd vonalprotokollt, és lehetővé teszi a [fő csomóponttal](https://kubernetes.io/docs/concepts/overview/components/) API-kiszolgálók által használt Azure Cosmos DB, ugyanúgy, mint a helyileg telepített etcd környezetben tenné azt. A etcd API támogatja a TLS kölcsönös hitelesítést. 
+Az Azure Cosmos DB megvalósítja az etcd 3-as verzió vezetékprotokollját, és lehetővé teszi, hogy a [fő csomópont](https://kubernetes.io/docs/concepts/overview/components/) API-kiszolgálói ugyanúgy használják az Azure Cosmos DB-t, mint egy helyileg telepített etcd környezetben. Az etcd API támogatja a TLS kölcsönös hitelesítést. 
 
-Az alábbi diagram egy Kubernetes-fürt összetevői láthatók. A fürt mester az API-kiszolgáló használ az Azure Cosmos DB etcd API, helyileg telepített etcd helyett. 
+Az alábbi ábra egy Kubernetes-fürt összetevőit mutatja be. A fürtfőkiszolgálón az API-kiszolgáló az Azure Cosmos DB etcd API-t használja a helyileg telepített etcd helyett. 
 
-![Az Azure Cosmos DB a etcd-protokoll megvalósítása](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+![Az Azure Cosmos DB megvalósítja az etcd vezetékprotokollt](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
 ### <a name="no-etcd-operations-management"></a>Nincs etcd műveletek kezelése
 
-Teljes körűen felügyelt natív felhőalapú szolgáltatásként az Azure Cosmos DB szükségtelenné beállítása és kezelése etcd Kubernetes fejlesztők számára. Az Azure Cosmos DB a etcd API méretezhető, magas rendelkezésre állású, hibatűrő, és nagy teljesítményt tesz elérhetővé. Több csomóponton, a működés közbeni végrehajtása a replikáció beállítása járó többletterhelést frissíti, a biztonsági javítások, és a etcd állapotának monitorozása az Azure Cosmos DB által kezelt.
+Teljes körűen felügyelt natív felhőszolgáltatásként az Azure Cosmos DB szükségtelenné teszi a Kubernetes-fejlesztők számára a beállításés a kezelés stb. Az Azure Cosmos DB etcd API-ja méretezhető, magas rendelkezésre állású, hibatűrő, és nagy teljesítményt nyújt. A több csomópont on-felelek, a folyamatos frissítések, a biztonsági javítások és az etcd állapotának figyelése az Azure Cosmos DB által felügyelt többletterhelést.
 
-### <a name="global-distribution--high-availability"></a>Globális terjesztés és magas rendelkezésre állás 
+### <a name="global-distribution--high-availability"></a>Globális disztribúció & magas rendelkezésre állás 
 
-Etcd API használatával az Azure Cosmos DB 99,99 %-os rendelkezésre állást garantál az adatok olvasásokhoz, és ír egy egyetlen régióban, valamint 99,999 %-os rendelkezésre állást több régióban. 
+Az etcd API használatával az Azure Cosmos DB 99,99%-os rendelkezésre állást garantál az adatok egyetlen régióban történő olvasásához és írásához, és 99,999%-os rendelkezésre állást több régióban. 
 
 ### <a name="elastic-scalability"></a>Rugalmas méretezhetőség
 
-Az Azure Cosmos DB rugalmas méretezhetőséget kínál olvasási és írási kérelmeket a különböző régiók között.
-A Kubernetes-fürt növekedésével a etcd API-fiókot az Azure Cosmos DB rugalmasan méretezhető állásidő nélkül. Etcd adatok tárolására az Azure Cosmos DB helyett a fő Kubernetes-csomópontokon is lehetővé teszi több rugalmas méretezés fő csomóponttal. 
+Az Azure Cosmos DB rugalmas méretezhetőséget biztosít a különböző régiók olvasási és írási kérelmeihez.
+A Kubernetes-fürt növekedésével az Azure Cosmos DB etcd API-fiókja rugalmasan, állásidő nélkül skálázódik. Etcd-adatok tárolása az Azure Cosmos DB, a Kubernetes fő csomópontok helyett is lehetővé teszi a rugalmasabb fő csomópontok méretezése is lehetővé teszi, hogy rugalmasabb fő csomópont méretezése is lehetővé teszi. 
 
-### <a name="security--enterprise-readiness"></a>A biztonság és a vállalati készültségi
+### <a name="security--enterprise-readiness"></a>A vállalati biztonság & a vállalati készenlét
 
-Etcd adatokat az Azure Cosmos DB tárolja, amikor Kubernetes fejlesztők automatikusan megkapja a [beépített titkosítás inaktív állapotban](database-encryption-at-rest.md), [tanúsítványok és -megfelelőségi](compliance.md), és [biztonsági mentése és visszaállítása képességek](online-backup-and-restore.md) Azure Cosmos DB által támogatott. 
+Ha az etcd-adatokat az Azure Cosmos DB tárolja, a Kubernetes fejlesztői automatikusan leállítják a [beépített titkosítást ,](database-encryption-at-rest.md)a [tanúsítványokat és a megfelelőséget,](compliance.md)valamint az Azure Cosmos DB által támogatott [biztonsági mentési és visszaállítási funkciókat.](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure-beli Kubernetes az Azure Cosmos DB használatával](bootstrap-kubernetes-cluster.md)
-* [Az Azure Cosmos DB előnyei](introduction.md)
-* [Az AKS motor a rövid útmutató](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md)
+* [Az Azure Kubernetes használata az Azure Cosmos DB-vel](bootstrap-kubernetes-cluster.md)
+* [Az Azure Cosmos DB legfontosabb előnyei](introduction.md)
+* [Útmutató az AKS-motor rövid útmutatójának](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md)

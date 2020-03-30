@@ -1,7 +1,7 @@
 ---
-title: Magas rendelkezésre állású portok áttekintő lapján az Azure-ban
+title: Magas rendelkezésre állású portok áttekintése az Azure-ban
 titleSuffix: Azure Load Balancer
-description: Tudnivalók a magas rendelkezésre állású portok terheléselosztási egy belső terheléselosztón.
+description: Ismerje meg a magas rendelkezésre állású portok terheléselosztás a belső terheléselosztó.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,95 +13,94 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: c6529e2585a7fca2d160d093d303afa02e6f9379
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5ada709350802344bfa65cce269735baa416edf6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234451"
 ---
-# <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintő lapján
+# <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
-Az Azure Standard Load Balancer segítségével összes porton a TCP és UDP-folyamatok terheléselosztás egyszerre egy belső load balancer használatakor. 
+Az Azure Standard Load Balancer segítségével a terheléselosztást és az UDP-t egyszerre minden porton forgalmazhatja, amikor belső terheléselosztót használ. 
 
-A magas rendelkezésre állású (HA) portok terheléselosztási szabálya egy belső standard Load Balancer konfigurált terheléselosztási szabály egy változata. Terheléselosztás egyetlen szabállyal egy belső Standard Load Balancer-az összes porton érkező összes TCP és UDP-folyamatok biztosításával egyszerűsítheti a terheléselosztó használatát. A terheléselosztás döntési folyamat kiszolgálónként történik. Ez a művelet a következő öt rekordos kapcsolaton alapul: forrás IP-címe, forrásport, cél IP-címe, célport és protokoll
+A magas rendelkezésre állású (HA) portok terheléselosztási szabály egy változata a terheléselosztási szabály, konfigurálva egy belső standard terheléselosztó. Egyszerűsítheti a terheléselosztó használatát, ha egyetlen szabályt biztosít a belső standard terheléselosztó összes portjára érkező összes TCP- és UDP-folyamat terheléselosztásához. A terheléselosztási döntés folyamatonként történik. Ez a művelet a következő öthangú kapcsolaton alapul: forrás IP-cím, forrásport, cél IP-cím, célport és protokoll
 
-A HA-portok terheléselosztási szabályai segítenek a kritikus forgatókönyvek, például a magas rendelkezésre állás és a virtuális hálózatokon belüli hálózati virtuális berendezések (NVA-EK) méretezése terén. A funkció segíthet is, ha nagy számú portok kell lennie, elosztott terhelésű. 
+A HA portok terheléselosztási szabályai segítenek a kritikus forgatókönyvekben, például a virtuális hálózatokon belüli hálózati virtuális készülékek (NVA-k) magas rendelkezésre állásában és méretezésében. A szolgáltatás akkor is segíthet, ha nagy számú portnak kell terheléselosztással rendelkeznie. 
 
-Ha az előtér-portok terheléselosztási szabályait úgy konfigurálja, hogy az előtérbeli és a háttérbeli portok **0-ra** és az **összes**protokollra legyenek beállítva. A belső terheléselosztó erőforrás ezután kiegyenlíti az összes TCP-és UDP-folyamatot, a portszámtól függetlenül.
+A HA portok terheléselosztási szabályai akkor vannak konfigurálva, ha az előtér- és háttérportokat **0-ra,** a protokollt pedig az **Összes**értékre állítja. A belső terheléselosztó erőforrás kiegyenlíti az összes TCP- és UDP-folyamatot, a portszámtól függetlenül.
 
-## <a name="why-use-ha-ports"></a>Magas rendelkezésre ÁLLÁSÚ portok miért érdemes használni?
+## <a name="why-use-ha-ports"></a>Miért érdemes ha portokat használni?
 
-### <a name="nva"></a>Hálózati virtuális berendezések
+### <a name="network-virtual-appliances"></a><a name="nva"></a>Hálózati virtuális berendezések
 
-Használhatja az nva-k védelme érdekében az Azure számítási feladatban a biztonsági fenyegetések többféle típusával szemben. Ezekben az esetekben az nva-k használatakor, megbízható és magas rendelkezésre állású kell lenniük, és azok kell horizontális felskálázása az igény szerinti.
+Az NVA-k segítségével biztosíthatja az Azure-számítási feladatok at többféle biztonsági fenyegetések. Ha nva-kat használ ezekben a forgatókönyvekben, azok megbízhatónak és magas rendelkezésre állásúnak kell lenniük, és az igény szerint horizontális felskálázást kell végezniük.
 
-Ezen célok érhet el egyszerűen NVA-példányok hozzáadásával a belső terheléselosztó háttérbeli készletéhez, és konfigurálása egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályt.
+Ezeket a célokat egyszerűen elérheti, ha NVA-példányokat ad hozzá a belső terheléselosztó háttérkészletéhez, és konfigurál egy HA port terheléselosztó szabályt.
 
-Az NVA magas rendelkezésre ÁLLÁS forgatókönyvek magas rendelkezésre ÁLLÁSÚ portok a következő előnyöket nyújtják:
-- Adja meg a megfelelő példányokhoz hasonlóan a gyors feladatátvétel az állapot-mintavételei példányonként
-- Nagyobb teljesítmény biztosítása a kibővített és az *n*-aktív példányok között
-- *N*-aktív és aktív-passzív forgatókönyvek megadása
-- Szükségtelenné teszi összetett megoldások, például az Apache ZooKeeper-csomópont monitorozáshoz készülékek
+NVA HA-forgatókönyvek esetén a HA portok a következő előnyöket kínálják:
+- Gyors feladatátvétel biztosítása a kifogástalan állapotú példányok számára, példányonkénti állapotpróbákkal
+- Nagyobb teljesítmény biztosítása az *n-aktív*példányokra való kibővített verzióval
+- *N*-aktív és aktív-passzív forgatókönyvek biztosítása
+- Nincs szükség olyan összetett megoldásokra, mint például az Apache ZooKeeper csomópontok a készülékek figyeléséhez
 
-Az alábbi ábrán egy Központ-küllő virtuális hálózat üzembe helyezési mutat be. A küllők kényszerített bújtatás forgalmukat a központi virtuális hálózaton, és az nva-n, mielőtt a megbízható területet. Az nva-k, amelyek egy magas rendelkezésre ÁLLÁSÚ portok konfigurációval egy belső Standard terheléselosztó mögött találhatók. Minden forgalmat is feldolgozott és továbbított ennek megfelelően. Ha a következő ábrán látható módon van konfigurálva, akkor egy HA-portok terheléselosztási szabálya emellett a bejövő és a kimenő forgalomhoz is biztosít flow-szimmetriát.
+Az alábbi ábrán egy küllős virtuális hálózati központi telepítés látható. A küllők a hub virtuális hálózatra és az NVA-n keresztül kényszerítik a forgalmat, mielőtt elhagyják a megbízható helyet. Az NVA-k egy belső standard terheléselosztó mögött vannak, ha portkonfigurációval. Minden forgalom ennek megfelelően feldolgozható és továbbítható. Ha a következő ábrán láthatóként van konfigurálva, a HA ports terheléselosztási szabály emellett folyamatszimmetriát biztosít a bejövő és kimenő forgalom számára.
 
 <a node="diagram"></a>
-![a sugaras virtuális hálózat NVA, HA az üzembe helyezési módban van](./media/load-balancer-ha-ports-overview/nvaha.png)
+![A küllős virtuális hálózat diagramja, HA módban telepített NVA-kkal](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
-> Ha nva-kat használ, erősítse meg a szolgáltatók leginkább a magas rendelkezésre ÁLLÁSÚ portok használatára, és ismerje meg, hogy mely forgatókönyvek támogatottak.
+> Ha nva-kat használ, erősítse meg a szolgáltatóikkal, hogyan lehet a legjobban használni a HA-portokat, és hogy megtudja, mely forgatókönyvek támogatottak.
 
-### <a name="load-balancing-large-numbers-of-ports"></a>Terheléselosztás – nagy számú portok
+### <a name="load-balancing-large-numbers-of-ports"></a>Nagy számú port terheléselosztása
 
-Magas rendelkezésre ÁLLÁSÚ portok nagy számú portok terheléselosztást igénylő alkalmazásokhoz is használható. Ezeket a forgatókönyveket belső [standard Load Balancer](load-balancer-standard-overview.md) és ha portok használatával egyszerűsítheti le. Egyetlen terheléselosztási szabály több egyéni terheléselosztási szabályok, minden egyes porthoz egy váltja fel.
+Ha portokat is használhat olyan alkalmazásokhoz, amelyek nagy számú port terheléselosztását igénylik. Ezeket a forgatókönyveket leegyszerűsítheti egy belső [standard terheléselosztó](load-balancer-standard-overview.md) HA-portokkal. Egyetlen terheléselosztási szabály több egyedi terheléselosztási szabályt vált fel, mindegyik porthoz egyet.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Minden a globális Azure-régióban a magas rendelkezésre ÁLLÁSÚ portok funkció érhető el.
+A HA portok funkció az összes globális Azure-régióban elérhető.
 
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
 
-### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Egy önálló, nem fix (nem - közvetlen kiszolgálói válasz) IP-portok konfigurálása belső Standard Load Balancer
+### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Egyetlen, nem lebegő IP-cím (nem direct server return) HA-port konfiguráció egy belső standard terheléselosztón
 
-Ez a konfiguráció az alapkonfiguráció magas rendelkezésre ÁLLÁSÚ portok. Beállíthatja, hogy egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályának egyetlen előtér-IP-címet az alábbiak szerint:
-1. Standard Load Balancer konfigurálásakor jelölje be a **Ha portok** jelölőnégyzetet az Load Balancer szabály konfigurációjában.
-2. A **lebegőpontos IP**esetében válassza a **Letiltva**lehetőséget.
+Ez a konfiguráció egy alapvető HA portkonfiguráció. Egyetlen előtér-IP-címre konfigurálhat egy HA-port terheléselosztási szabályt az alábbi módon:
+1. A Standard Load Balancer konfigurálása közben jelölje be a **HA portok** jelölőnégyzetet a Terheléselosztó szabály konfigurációjában.
+2. **Lebegő IP esetén**válassza **a Letiltva**lehetőséget.
 
-Ez a konfiguráció nem engedélyezése semmilyen más terheléselosztási szabály konfigurálását a jelenlegi terheléselosztó-erőforráshoz. Azt is lehetővé teszi, hogy nincs más belső terheléselosztó erőforrás konfigurációját a háttér-példányok adott halmazát.
+Ez a konfiguráció nem teszi lehetővé az aktuális terheléselosztó erőforrás on-ra vonatkozó más terheléselosztási szabály konfigurációját. Azt is lehetővé teszi, hogy nincs más belső terheléselosztó erőforrás-konfiguráció a megadott háttérpéldányok adott készletéhez.
 
-Azonban konfigurálhatja úgy a magas rendelkezésre ÁLLÁSÚ portok szabály mellett a háttér-példányok nyilvános Standard Load Balancer.
+Azonban a HA-portszabály mellett konfigurálhat egy nyilvános standard terheléselosztót a háttérpéldányokhoz.
 
-### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Egy egyetlen, nem fix (közvetlen kiszolgálói válasz) IP-portok konfigurálása belső Standard Load Balancer
+### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Egyetlen, lebegő IP-cím (Direct Server Return) HA-port konfiguráció egy belső standard terheléselosztón
 
-Hasonlóképpen beállíthatja, hogy a terheléselosztó olyan terheléselosztási szabályt használjon, amely egyetlen előtér- **porttal** rendelkezik, ha a **lebegő IP-címet** **engedélyezve**értékre állítja. 
+Hasonlóképpen beállíthatja a terheléselosztót úgy, hogy a **haporttal** rendelkező terheléselosztási szabályt használja egyetlen előtérrel, ha a **lebegő IP-címet** **engedélyezve állítja.** 
 
-Ez a konfiguráció használatával adhat hozzá további nem fix IP-terheléselosztási szabályok és/vagy egy nyilvános terheléselosztó. Nem használhatja azonban a nem fix IP portok terheléselosztási konfigurációs felül ezt a konfigurációt.
+Ezzel a konfigurációval további lebegő IP-terheléselosztási szabályokat és/vagy nyilvános terheléselosztót adhat hozzá. Azonban nem használhat nem lebegő IP-, HA-portok terheléselosztási konfigurációt ezen a konfiguráción felül.
 
-### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>A belső Standard Load Balancer több portok – konfiguráció
+### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Több HA-port konfiguráció egy belső standard terheléselosztón
 
-Ha, hogy konfigurálja-e egynél több magas rendelkezésre ÁLLÁSÚ port kezelőfelület ugyanazt a háttér-készletet, a következőket teheti: 
-- Egynél több előtér-privát IP-cím konfigurálása egy adott belső Standard Load Balancer-erőforrás.
-- Több terheléselosztási szabályt, ahol minden egyes szabály egy egyedi előtér-IP-címmel rendelkezik kiválasztott konfigurálása.
-- Válassza a **Ha portok** lehetőséget, majd állítsa be a **lebegőpontos IP-címet** **az összes** terheléselosztási szabályhoz.
+Ha a forgatókönyv ben egynél több HA-port előtér-kiszolgálót kell konfigurálnia ugyanahhoz a háttérkészlethez, a következőket teheti: 
+- Konfiguráljon egynél több előtér-privát IP-címet egyetlen belső standard terheléselosztó erőforráshoz.
+- Konfiguráljon több terheléselosztási szabályt, ahol minden szabályhoz egyetlen egyedi előtér-IP-cím van kiválasztva.
+- Válassza ki a **HA portok** beállítást, majd állítsa **a lebegő IP-címet** **engedélyezve** az összes terheléselosztási szabályhoz.
 
-### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>A magas rendelkezésre ÁLLÁSÚ portok és a egy nyilvános terheléselosztó a háttér-példányt a belső terheléselosztó
+### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Belső terheléselosztó HA portokkal és nyilvános terheléselosztó ugyanazon a háttérpéldányon
 
-Beállíthat *egy* nyilvános standard Load Balancer erőforrást a háttér-erőforrásokhoz, valamint egyetlen belső standard Load BALANCER, ha portokkal rendelkezik.
+*Egyetlen* nyilvános standard terheléselosztó erőforrást konfigurálhat a háttérerőforrásokhoz, valamint egyetlen belső standard terheléselosztót HA-portokkal.
 
 >[!NOTE]
->Ez a funkció jelenleg elérhető az Azure Resource Manager-sablonok, de az Azure Portalon nem érhető el.
+>Ez a funkció jelenleg elérhető az Azure Resource Manager-sablonokon keresztül, de nem érhető el az Azure Portalon keresztül.
 
 ## <a name="limitations"></a>Korlátozások
 
-- HA a portok terheléselosztási szabályai csak belső standard Load Balancer esetén érhetők el.
-- A csoportba foglalása az egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály és a egy nem magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály nem támogatott.
-- A meglévő IP-töredékeket a HEKTÁRos portok terheléselosztási szabályai továbbítják az első csomaggal megegyező célra.  Az UDP-vagy TCP-csomagok IP-darabolása nem támogatott.
-- Az IF ports terheléselosztási szabályai nem érhetők el az IPv6-hoz.
-- A flow-szimmetria (elsősorban a NVA-forgatókönyvek esetében) a háttér-példány és egyetlen hálózati adapter (és egy IP-konfiguráció) esetében csak akkor támogatott, ha a fenti ábrán látható módon használja, és a HA portok terheléselosztási szabályait használja. Semmilyen más esetben nincs megadva. Ez azt jelenti, hogy két vagy több Load Balancer erőforrás és a hozzájuk tartozó szabályok független döntéseket hoznak, és soha nem koordinálják őket. Tekintse meg a [hálózati virtuális berendezések](#nva)leírását és ábráját. Ha több hálózati adaptert használ, vagy a NVA egy nyilvános és belső Load Balancer között használja, a flow-szimmetria nem érhető el.  Ezt megteheti, ha a forrás NAT'ing a bejövő forgalmat a készülék IP-címére, hogy a válaszok ugyanarra a NVA érkezzenek.  Javasoljuk azonban, hogy egyetlen hálózati adaptert használjon, és használja a fenti ábrán látható hivatkozási architektúrát.
+- A HA portok terheléselosztási szabályai csak a belső standard terheléselosztóhoz érhetők el.
+- A HA-portok terheléselosztási szabályának és a nem HA-portok terheléselosztási szabályának kombinálása nem támogatott.
+- A meglévő IP-töredékeket a HA Ports terheléselosztási szabályai továbbítják ugyanarra a célhelyre, mint az első csomag.  UdP- vagy TCP-csomag IP-töredezettsége nem támogatott.
+- A folyamatszimmetria (elsősorban nva-forgatókönyvek esetén) csak akkor támogatott háttérpéldányés egyetlen hálózati adapter (és egyetlen IP-konfiguráció) alkalmazással, ha a fenti ábrán látható módon és a HA-portok terheléselosztási szabályainak használatával használható. Más forgatókönyv nem áll rendelkezésre. Ez azt jelenti, hogy két vagy több terheléselosztó erőforrás és azok szabályai független döntéseket hoznak, és soha nem koordináltak. Lásd a hálózati virtuális készülékek leírását és [diagramját.](#nva) Ha több hálózati adaptert használ, vagy az NVA-t egy nyilvános és belső terheléselosztó között szendvicsezi, az áramlási szimmetria nem érhető el.  Lehet, hogy a munka körül ezt a forrás NAT'ing a beáramló áramlás az IP a készülék, hogy a válaszok érkeznek az azonos NVA.  Azonban azt javasoljuk, hogy egyetlen hálózati adapter t, és a fenti ábrán látható referenciaarchitektúra használatát.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [HA portok konfigurálása belső standard Load Balancer](load-balancer-configure-ha-ports.md)
-- [Tudnivalók a standard Load Balancer](load-balancer-standard-overview.md)
+- [HA-portok konfigurálása belső standard terheléselosztón](load-balancer-configure-ha-ports.md)
+- [További információ a standard terheléselosztóról](load-balancer-standard-overview.md)

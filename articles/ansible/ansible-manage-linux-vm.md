@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Linux rendszerű virtuális gépek kezelése az Azure-ban az Ansible használatával
-description: Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a Linux rendszerű virtuális gépeket az Azure-ban a Ansible használatával
+title: Rövid útmutató – Linuxos virtuális gépek kezelése az Azure-ban az Ansible használatával
+description: Ebben a rövid útmutatóban megtudhatja, hogyan kezelheti a Linux virtuális gépeket az Azure-ban az Ansible használatával
 keywords: ansible, azure, devops, bash, cloudshell, forgatókönyv, bash
 ms.topic: quickstart
 ms.service: ansible
@@ -8,16 +8,16 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 90113373535c835e5cddf707bcb520789e596aec
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: d94858391951aaf9387394afeb5ad2ae373fa7b5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202402"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239535"
 ---
-# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Gyors útmutató: Linux rendszerű virtuális gépek kezelése az Azure-ban a Ansible használatával
+# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Rövid útmutató: Linuxos virtuális gépek kezelése az Azure-ban az Ansible használatával
 
-Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebben a cikkben egy Linux rendszerű virtuális gép elindítására és leállítására szolgáló Ansible használ. 
+Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebben a cikkben egy Ansible forgatókönyv segítségével indítsa el és állítsa le a Linux virtuális gép. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,15 +26,15 @@ Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfi
 
 ## <a name="stop-a-virtual-machine"></a>Virtuális gép leállítása
 
-Ebben a szakaszban egy Azure-beli virtuális gép felszabadítására (leállítására) vonatkozó Ansible használ.
+Ebben a szakaszban az Ansible használatával felszabadíthatja (leállítja) az Azure virtuális gépet.
 
-1. Jelentkezzen be az [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
 
 1. Nyissa meg a [Cloud Shellt](/azure/cloud-shell/overview).
 
-1. Hozzon létre egy `azure-vm-stop.yml`nevű fájlt, és nyissa meg a szerkesztőben:
+1. Hozzon létre `azure-vm-stop.yml`egy nevű fájlt, és nyissa meg a szerkesztőben:
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-stop.yml
     ```
 
@@ -52,11 +52,11 @@ Ebben a szakaszban egy Azure-beli virtuális gép felszabadítására (leállít
             allocated: no
     ```
 
-1. Cserélje le a `{{ resource_group_name }}`t, és `{{ vm_name }}` helyőrzőket az értékekkel.
+1. Cserélje `{{ resource_group_name }}` le `{{ vm_name }}` a és a helyőrzőket az ön értékeire.
 
 1. Mentse a fájlt, és zárja be a szerkesztőt.
 
-1. Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+1. Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
     ```bash
     ansible-playbook azure-vm-stop.yml
@@ -77,17 +77,17 @@ Ebben a szakaszban egy Azure-beli virtuális gép felszabadítására (leállít
     localhost                  : ok=2    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="start-a-virtual-machine"></a>Virtuális gép indítása
+## <a name="start-a-virtual-machine"></a>Virtuális gép elindítása
 
-Ebben a szakaszban a Ansible használatával elindít egy delefoglalt (leállított) Azure-beli virtuális gépet.
+Ebben a szakaszban az Ansible használatával indíthat el egy felszabadított (leállított) Azure virtuális gépet.
 
-1. Jelentkezzen be az [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
 
 1. Nyissa meg a [Cloud Shellt](/azure/cloud-shell/overview).
 
-1. Hozzon létre egy `azure-vm-start.yml`nevű fájlt, és nyissa meg a szerkesztőben:
+1. Hozzon létre `azure-vm-start.yml`egy nevű fájlt, és nyissa meg a szerkesztőben:
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-start.yml
     ```
 
@@ -104,11 +104,11 @@ Ebben a szakaszban a Ansible használatával elindít egy delefoglalt (leállít
             name: {{ vm_name }}
     ```
 
-1. Cserélje le a `{{ resource_group_name }}`t, és `{{ vm_name }}` helyőrzőket az értékekkel.
+1. Cserélje `{{ resource_group_name }}` le `{{ vm_name }}` a és a helyőrzőket az ön értékeire.
 
 1. Mentse a fájlt, és zárja be a szerkesztőt.
 
-1. Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+1. Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
     ```bash
     ansible-playbook azure-vm-start.yml
@@ -129,7 +129,7 @@ Ebben a szakaszban a Ansible használatával elindít egy delefoglalt (leállít
     localhost                  : ok=2    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Oktatóanyag: Azure dinamikus leltározások kezelése a Ansible használatával](./ansible-manage-azure-dynamic-inventories.md)
+> [Oktatóanyag: Az Azure dinamikus készleteinek kezelése az Ansible használatával](./ansible-manage-azure-dynamic-inventories.md)

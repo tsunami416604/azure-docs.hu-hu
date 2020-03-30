@@ -1,145 +1,144 @@
 ---
-title: Marketplace-elemzések irányítópultja a kereskedelmi piactéren a partner Centerben
-description: Hozzáférés a piactér webes elemzési szolgáltatásához, amely lehetővé teszi a kiadók számára, hogy a AppSource és az Azure piactéren kirakatokban is mérjék az ügyfelek részvételét.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Marketplace Insights irányítópult a Kereskedelmi piactér elemzésében a Partnerközpontban
+description: A marketplace-webanalitika összegzése, amely lehetővé teszi a közzétevők számára az ügyfelek elkötelezettségének mérését az AppSource és az Azure Marketplace kirakataiban.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: edfdf7bbfaa5fa5abb00aa7efcb35bfbcd6e68a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a547ced9df98298361360ecab88036599cd86027
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480540"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275849"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace-elemzések irányítópultja a kereskedelmi piactéren
+# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights irányítópult a Kereskedelmi piactér elemzésében
 
-Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a piactér webes elemzési szolgáltatásának összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a piactéren kirakatokban felsorolt termék részletes oldalain mérjék fel az ügyfelek részvételét: AppSource és Azure Marketplace.
+Ez a cikk a Partnerközpont Marketplace Insights irányítópultjáról nyújt tájékoztatást. Ez az irányítópult a marketplace-webanalitika összegzését jeleníti meg, amely lehetővé teszi a közzétevők számára, hogy mérjék az ügyfelek elkötelezettségét a marketplace-kirakatokban felsorolt termékadattárlapokon: AppSource és Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace Insights irányítópult
 
-A Marketplace-elemzések **irányítópultjának** a partner Centerben való eléréséhez nyissa meg az **[elemzés lapot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a kereskedelmi piactéren.
+A **Partnerközpont Marketplace Insights irányítópultjának** eléréséhez nyissa meg az **[Elemzés lapot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a Kereskedelmi piactér csoportban.
 
 A következő elemek grafikus ábrázolásait tekintheti meg:  
 
-- [Marketplace-információk összegzése](#marketplace-insights-summary)
-- [Oldalak látogatása földrajz szerint](#page-visits-by-geography)  
-- [Oldal-látogatások és egyedi látogatói trend](#page-visits-versus-unique-visitors-trend)
-- [A CTAs-szel rendelkező egyedi látogatók és a művelet meghívása](#call-to-action-versus-unique-visitors-with-ctas)
-- [Oldalak látogatása és a művelet meghívása ajánlatok alapján](#page-visits-and-calls-to-action-by-offers)
-- [A művelet százalékos trendjeinek meghívása](#call-to-action-percentage-trend)
-- [Az átirányítási tartományok által felkeresett és kezdeményezett műveletek](#page-visits-and-calls-to-action-by-referral-domains)
-- [Marketplace-információk részleteinek táblázata](#marketplace-insights-details-table)
+- [Marketplace Insights összefoglaló](#marketplace-insights-summary)
+- [Oldallátogatások földrajzi adatok szerint](#page-visits-by-geography)  
+- [Oldallátogatások és egyedi látogatók tendenciája](#page-visits-versus-unique-visitors-trend)
+- [Felhívás az egyedi látogatókkal szemben cta-kkal](#call-to-action-versus-unique-visitors-with-ctas)
+- [Oldallátogatások és felhívás ajánlatok szerint](#page-visits-and-calls-to-action-by-offers)
+- [Cselekvésre szólító százalékos trend](#call-to-action-percentage-trend)
+- [Oldallátogatások és cselekvésre való felhívások hivatkozási tartományok szerint](#page-visits-and-calls-to-action-by-referral-domains)
+- [Marketplace Insights részletek táblázat](#marketplace-insights-details-table)
 
 >[!NOTE]
-> Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
+> Az elemzési terminológia részletes meghatározását a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.
 
-### <a name="insights-dashboard-layout"></a>Az áttekintések irányítópultjának elrendezése
+### <a name="insights-dashboard-layout"></a>Az Insights irányítópult-elrendezése
 
-A piactér metrikáit többféleképpen is megtekintheti:
+A Marketplace-mutatókat többféleképpen tekintheti meg:
 
-- Kirakat lapok
-- Oldal szűrők
+- Kirakatlapok
+- Oldalszűrők
 - Dátumszűrők
 
-**Kirakat lapok**: az ajánlatok metrikáit külön tekintheti meg a AppSource & Azure Marketplace lapjain keresztül. Válassza ki az ajánlat (oka) t a jobb oldalon található ajánlat legördülő listából, és tekintse meg a kijelölt ajánlat (ok) metrikáinak vizualizációját. Alapértelmezés szerint az összes ajánlat ki van választva.
+**Kirakati lapok:** Az AppSource & Azure Piactér lapon külön tekintheti meg az ajánlatok metrikákat. Válassza ki az ajánlat(oka)t a jobb oldali ajánlat legördülő listából a kiválasztott ajánlat(ok) metrikáinak vizualizációjának megtekintéséhez. Alapértelmezés szerint az összes ajánlat ki van jelölve.
 
-![A partner Center-bepillantást tartalmazó irányítópult ajánlat legördülő lista](./media/insights-offer-dropdown.png)
+![Partner Center Insights irányítópult-ajánlatlegördülő lista](./media/insights-offer-dropdown.png)
 
-Az információk kiértékelése – **szűrők**: ezeket a szűrőket az ajánlat (Product Details oldal) szintjén kell alkalmazni. A megtekinteni kívánt feltételekhez több szűrőt is kiválaszthat. Ez a szűrő a teljes Piactéri információk szakaszra vonatkozik, beleértve a diagramokat és a részleteket is.
+**Insights oldalszűrők:** Ezek a szűrők az ajánlat (termékinformációs oldal) szintjén kerülnek alkalmazásra. A megtekinteni kívánt feltételekhez több szűrőt is kiválaszthat. Ez a szűrő a Marketplace Insights teljes szakaszára vonatkozik, beleértve a diagramokat és a részleteket is.
 
-![A partner Center-adatáttekintések irányítópultjának szűrői](./media/insights-page-filter.png)
+![Partnerközpont elemzési adatainak irányítópult-szűrői](./media/insights-page-filter.png)
 
-- Az ajánlatok nevei csak azokra az ajánlatokra vannak felsorolva, amelyeknek a kijelölt dátumtartomány a lapjainak látogatása.  
-- Az alapértelmezett kijelölés az összes szűrési lehetőség esetében az "all".
-- Az alkalmazott szűrők megjelenítik a kiválasztott beállítások (ok) számát. Az alkalmazott szűrők nem jelennek meg az alapértelmezett "all" (összes) kijelölésnél.
+- Az ajánlatnevek csak a kiválasztott dátumtartományban oldallátogatásokat tartalmazó ajánlatokesetében jelennek meg.  
+- Az alapértelmezett beállítás az "Összes" az egyes szűrési beállításokhoz
+- Az alkalmazott szűrők a kiválasztott beállítások (kiválasztás) számát jelenítik meg. Az alkalmazott szűrők nem jelennek meg az alapértelmezett "Mind" beállításnál.
 
-![A partner Center-beli bepillantást alkalmazó szűrők](./media/insights-page-filter-two.png)
+![A Partner központ elemzési szűrői alkalmazva](./media/insights-page-filter-two.png)
 
-**Bepillantások dátum szűrői**: Ez a szűrő a teljes Piactéri adatokra vonatkozó szakaszra vonatkozik. A szűrők tartalmazhatnak előre meghatározott dátumtartományt vagy egyéni dátumtartományt is.
+**Insights dátumszűrői:** Ez a szűrő a teljes Marketplace Insights szakaszra vonatkozik. A szűrők tartalmazhatnak előre meghatározott dátumtartományokat vagy egyéni dátumtartományokat.
 
-![A partneri központ bepillantást a szűrők dátumára](./media/insights-date-range.png)
+![Partnerközpont elemzési dátumszűrői](./media/insights-date-range.png)
 
-## <a name="marketplace-insights-summary"></a>Marketplace-információk összegzése
+## <a name="marketplace-insights-summary"></a>Marketplace Insights összefoglaló
 
-A Piactéri elemzések összegzése szakasz megjeleníti a **látogatások**számát, a **végrehajtandó hívásokat**és a kijelölt dátumtartomány **egyedi látogatóit** .
+A Marketplace-elemzések összegzése szakasz megjeleníti az **oldallátogatások,** **a cselekvésre felhívások**és az **Egyedi látogatók** számát a kiválasztott dátumtartományhoz.
 
-### <a name="page-visits"></a>Oldalak meglátogatása
+### <a name="page-visits"></a>Oldallátogatások
 
-Ez a szám a kiválasztott dátumtartomány esetében az ajánlat oldalon (a termék részletei lapon) lévő különböző felhasználói munkamenetek számát jelöli. A piros/zöld százalékos mutató a lapok közötti látogatások növekedési arányát jelöli. A trend diagram a látogatások hónap és hónap közötti számát jelöli.
+Ez a szám a kiválasztott dátumtartomány ajánlati oldalán (termékadatlapon) található különböző felhasználói munkamenetek számát jelöli. A piros/zöld százalékos mutató az oldallátogatások növekedési %-át jelenti. A trenddiagram az oldallátogatások havi számát mutatja.
 
 ### <a name="unique-visitors"></a>Egyedi látogatók
 
-Ez a szám az oldal szűrőben kiválasztott ajánlat (ok) esetében a kiválasztott dátumtartomány esetében a különböző látogatók számát jelöli. Egy vagy több termékspecifikus oldalt felkereső látogató egy egyedi látogatónak számít.
+Ez a szám az oldalszűrőben kiválasztott ajánlat(ok) kiválasztott dátumtartományában lévő látogatók számát jelöli. Az a látogató, aki egy vagy több termékinformációs oldalt látogatott meg, egy egyedi látogatónak számít.
 
-### <a name="call-to-action"></a>Művelet meghívása
+### <a name="call-to-action"></a>Cselekvésre való felhívás
 
-Ez a szám azt jelzi, **hogy a művelet meghívása** gombra kattintások száma az ajánlat oldalon (a termék részletes lapján) befejeződött. A **művelet meghívása** akkor számít, ha a **Letöltés most**, az **ingyenes próbaverzió**, a **Kapcsolatfelvétel**és a **Test Drive** gomb van kiválasztva.
+Ez a szám az **Call to Action** ajánlati oldalon (termékinformációs oldalon) végrehajtott felhívásgombkattintások számát jelöli. **A cselekvésre irányuló hívásokat** a Rendszer a **Get it now**, Az ingyenes **próbaverzió**, **a Kapcsolatfelvétel**és a **Tesztmeghajtó** gombok kiválasztásakor számolja.
 
-![A partner Center-elemzések hívása a művelet összegzésére](./media/insights-summary.png)
+![Partnerközpont elemzési felhívása műveletösszehívása](./media/insights-summary.png)
 
-## <a name="page-visits-by-geography"></a>Oldalak látogatása földrajz szerint
+## <a name="page-visits-by-geography"></a>Oldallátogatások földrajzi adatok szerint
 
-Az alábbi hő a **látogatások**számát, a **művelet meghívását**és az **ügyfelek országa szerinti egyedi látogatókat**jeleníti meg. A nagyobb lapokon megjelenő látogatások a sötétebb leképezési színek és az alacsonyabb oldal-látogatások a világosabb Térkép színeiben jelennek meg.
+Az alábbi hőtérkép az **oldallátogatások**, **a cselekvésre felhívások**és az Egyedi látogatók számát jeleníti meg az **ügyfélország szerint**. A magasabb oldallátogatásokat sötétebb térképszínek, az alacsonyabb oldallátogatásokat pedig a világosabb térképszínek jelölik.
 
-![A partneri központ bepillantást nyújt a földrajzi eloszlásra](./media/insights-geography.png)
+![PartnerKözpont-elemzés földrajzi eloszlása](./media/insights-geography.png)
 
-A hő a következő képességeket tartalmazza:
+A hőtérkép a következő képességeket tartalmazza:
 
-- A hő egy kiegészítő rácstal rendelkezik, ahol megtekintheti a **látogatások**részleteit, a **műveleti hívásokat** és az **egyedi látogatókat** egy adott helyen. Ha kívánja, nagyíthat egy adott helyet.  
-- Az **országok spreadje** az összes olyan ország számát jelenti, amelyből az ügyfelek a kiválasztott Dátumtartomány alapján jelentettek oldal-látogatásokat.
-- Megkeresheti és kiválaszthatja a rács egyik országát, hogy nagyítani lehessen a térképen található helyet. A Térkép **kezdőlapjának** kiválasztásával visszaállíthatja az eredeti nézetet.
+- A hőtérkép egy kiegészítő rács megtekintéséhez részleteit **oldal látogatások**, **cselekvésre felhívások** és egyedi **látogatók** egy adott helyen; szükség esetén ránagyíthat egy adott helyre.  
+- **Az országok elosztva** azon országok száma, ahonnan az ügyfelek oldallátogatásokat jelentettek a kiválasztott dátumtartományban.
+- Kereshet és kiválaszthat egy országot a rácsban a térképen lévő hely nagyításához. Visszatérés az eredeti nézetre a térkép **Kezdőlap** parancsára kattintva.
 
-## <a name="page-visits-versus-unique-visitors-trend"></a>Oldal-látogatások és egyedi látogatói trend
+## <a name="page-visits-versus-unique-visitors-trend"></a>Oldallátogatások és egyedi látogatók tendenciája
 
-Az alábbi oszlopok a havi oldal meglátogatások számát jelölik, amelyek az Y tengelyen jelennek meg (tengely a diagram bal oldalán). A trendvonal az egyedi látogatók havi trendjét jelöli, amely a másodlagos Y tengelyen (a diagram jobb oldalán található tengely) jelenik meg, a kirakatokban közzétett ajánlatokhoz: az Azure Marketplace és a AppSource.
+Az alábbi oszlopok a havi oldallátogatások számát jelölik, amelyek az Y tengelyen (a diagram bal oldalán lévő tengelyen) jelennek meg. A trendvonal az egyedi látogatók havi trendjét jelöli, amely a másodlagos Y tengelyen (a diagram jobb oldalán lévő tengelyen) jelenik meg a kirakatokban közzétett ajánlatokhoz: Azure Marketplace és AppSource.
 
-![A partneri központ bepillantást nyerhet az egyedi látogatói trendekkel szemben](./media/insights-page-vists-unique-visitors.png)
+![Partnerközpont elemzési oldallátogatásai az egyedi látogatók trendjével szemben](./media/insights-page-vists-unique-visitors.png)
 
-## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>A CTAs-szel rendelkező egyedi látogatók és a művelet meghívása
+## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>Felhívás az egyedi látogatókkal szemben cta-kkal
 
-A halmozott oszlopok a művelet (CTA) által lebontott havi hívásokat jelentik, amelyeket a CTA-típusok (**azonnali letöltés**, **Kapcsolatfelvétel**és **ingyenes próbaverzió**) alapján rajzolnak, és az Y tengelyen (a lap bal oldalán található tengely) ábrázolják. A trendvonal a CTAs rendelkező egyedi látogatók havi trendjét jelöli, amely a másodlagos Y tengelyen (a diagram jobb oldalán található tengely) jelenik meg, az Azure Marketplace-en és a AppSource-ben közzétett ajánlatokban.
+A halmozott oszlopok a havi cselekvésre irányuló felhívásokat (CTA) jelölik, amelyek CTA-típusok szerint vannak lebontva (**Get it now**, **Kapcsolat,** és **Ingyenes próbaverzió**), és az Y tengelyen ábrázolva (az oldal bal oldalán lévő tengely). A trendvonal az Egyedi látogatók havi trendjét képviseli a CTA-kkal, amely a másodlagos Y tengelyen (a diagram jobb oldalán lévő tengelyen) jelenik meg az Azure Marketplace-en és az AppSource-ban közzétett ajánlatokhoz.
 
-![A partner Center-elemzések a CTAs-vel való egyedi látogatók ellen](./media/insights-call-to-action-unique-visitors.png)
+![A Partnerközpont elemzési adatai cselekvésre szólítanak fel a CTA-kkal rendelkező egyedi látogatókkal szemben](./media/insights-call-to-action-unique-visitors.png)
 
-## <a name="page-visits-and-calls-to-action-by-offers"></a>Oldalak látogatásai és az ajánlatok műveletre irányuló hívások
+## <a name="page-visits-and-calls-to-action-by-offers"></a>Oldallátogatások és felhívások ajánlatok szerint
 
-A külső tortadiagram a piactéren közzétett és a szűrőben kiválasztott ajánlatok alapján jeleníti meg az **oldalakon végzett látogatások** részletezését. A belső diagram az azonos ajánlatokra vonatkozó műveletek lebontására irányuló **hívásokat** jelöli.
+A külső kördiagram az **oldallátogatások** bontását mutatja a piactéren közzétett és a szűrőben kiválasztott ajánlatok alapján. A belső diagram az ugyanazon ajánlatok **cselekvésre felhívások** bontását jelöli.
 
-![A partneri központ bepillantást nyerhet, és meghívja az ajánlatokat](./media/insights-page-visits-and-cta-by-offer.png)
+![A Partnerközpont elemzési adatainak oldalai látogatások és felhívások ajánlatok szerint](./media/insights-page-visits-and-cta-by-offer.png)
 
-## <a name="call-to-action-percentage-trend"></a>A művelet százalékos trendjeinek meghívása
+## <a name="call-to-action-percentage-trend"></a>Cselekvésre szólító százalékos trend
 
-A **művelet százalékos trendjeinek meghívása** a piactéren közzétett ajánlatok CTA-százalékos arányát mutatja be. CTA% = (CTAs/oldal-látogatások) * 100.
+A **cselekvésre való felhívás százalékos tendenciája** a piacon közzétett ajánlatok CTA-százalékos arányát mutatja be. CTA % = (CTA/oldallátogatások) * 100.
 
-![A partner Center-elemzések meghívása a művelet százalékos trendjeire](./media/insights-call-to-action-percentage-trend.png)
+![Partnerközpont elemzési felhívása cselekvésszázalékos trendre](./media/insights-call-to-action-percentage-trend.png)
 
-## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Az átirányítási tartományok által felkeresett és kezdeményezett műveletek
+## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Oldallátogatások és cselekvésre való felhívások hivatkozási tartományok szerint
 
-Az alábbi gráf a legfontosabb 50 hivatkozó tartományokat mutatja be. Egy adott hivatkozó tartomány kiválasztásakor a diagramon a jobb oldalon található oldal-látogatások és a műveletekre irányuló hívások havi trendje látható.
+Az alábbi grafikon bemutatja a top 50 átirányítási domaint. Egy adott hivatkozási tartomány kiválasztása az oldallátogatások és a cselekvésre való felhívások havi trendjét mutatja a jobb oldali diagramon.
 
-![A partneri központ bepillantást nyerhet az átirányítási tartományok és kampányok által végrehajtott műveletekre](./media/insights-page-visits-call-to-actions.png)
+![A Partnerközpont elemzési adatainak oldalai meglátogatása és cselekvésre való felhívása hivatkozási tartományok és kampányok szerint](./media/insights-page-visits-call-to-actions.png)
 
-## <a name="marketplace-insights-details-table"></a>Marketplace-információk részleteinek táblázata
+## <a name="marketplace-insights-details-table"></a>Marketplace Insights részletek táblázat
 
-Ez a táblázat a látogatások oldalának listáját, valamint a kiválasztott ajánlatok műveletének meghívását dátum szerint rendezve jeleníti meg.
+Ez a táblázat a kijelölt ajánlatok dátum szerint rendezve lévő oldallátogatások és cselekvésre irányuló felhívások listáját tartalmazza.
 
-![A partner Center-információk részleteinek táblázata](./media/insights-details-page.png)
+![Partnerközpont elemzési adataitáblázat](./media/insights-details-page.png)
 
-- Az adatokat CSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
-- Ha a rekordok száma meghaladja a 1000-et, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
-- A szűrők alkalmazhatók az Önt érdeklő információk megjelenítésére. Az adathalmazok az ajánlatok nevei és a kampányok neve alapján szűrhetők.  
+- Az adatok csv-fájlba nyerhetők ki, ha a rekordok száma kevesebb, mint 1000.
+- Ha a rekordok száma több mint 1000, az exportált adatok aszinkron módon kerülnek a letöltési oldalra a következő 30 napra.
+- Szűrők alkalmazhatók az Önt érdeklő adatok megjelenítésére. Az adatok az ajánlatnevek és a kampánynevek szerint szűrhetők.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
-- Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
-- További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).
-- A virtuális gép (VM) használati és mért számlázási mérőszámokat kínál, lásd [a használati irányítópultot a kereskedelmi piactér elemzésében](./usage-dashboard.md).
-- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket, lásd [a kereskedelmi piactér elemzésének ügyfél-irányítópultját](./customer-dashboard.md).
-- Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./downloads-dashboard.md).
-- Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a [kereskedelmi piactér elemzésének minősítések és értékelések irányítópultját](./ratings-reviews.md)
-- A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekre, valamint az adatkifejezések átfogó szótárát lásd: [Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez](./faq-terminology.md).
+- A Partnerközpont kereskedelmi piactéren elérhető elemzési jelentéseinek áttekintését [a Partnerközpont Kereskedelmi piactér Analytics szolgáltatása című témakörben találja.](./analytics.md)
+- Az ajánlat marketplace-tevékenységét összegző összesített adatok grafikonjait, trendjeit és értékeit lásd: [Összefoglaló irányítópult a Kereskedelmi piactér elemzésében.](./summary-dashboard.md)
+- A megrendelésekgrafikus és letölthető formátumban című témakörben talál további információt a [Rendelések irányítópultja a Kereskedelmi piactér elemzésében.](./orders-dashboard.md)
+- A virtuális gép (VM) kínál használati és forgalmi díjas számlázási metrikák, lásd: [Használati irányítópult a Kereskedelmi Piactér analytics.](./usage-dashboard.md)
+- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket is, az [Ügyfél irányítópultja a Kereskedelmi piactér elemzésében](./customer-dashboard.md)című témakörben talál.
+- Az elmúlt 30 nap letöltési kérelmeinek listáját a [Letöltések irányítópultja a Kereskedelmi piactér elemzésében című témakörben található.](./downloads-dashboard.md)
+- Az Azure Marketplace-en és az AppSource-on az ajánlatokra vonatkozó ügyfél-visszajelzések összevont nézetét a [Kereskedelmi piactér elemzése minősítések és vélemények irányítópultja című témakörben tekintheti meg.](./ratings-reviews.md)
+- A Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekről és az adatkifejezések átfogó szótáráról a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.

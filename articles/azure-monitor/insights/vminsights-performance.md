@@ -1,133 +1,127 @@
 ---
-title: A teljesítmény diagramon való Azure Monitor for VMs (előzetes verzió) | Microsoft Docs
-description: A teljesítmény a Azure Monitor for VMs szolgáltatása, amely automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan használhatja azt különböző helyzetekben.
+title: Teljesítménydiagram az Azure Monitor szolgáltatással a virtuális gépekhez
+description: A teljesítmény az Azure Monitor virtuális gépekhez szolgáltatása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan kell használni a különböző forgatókönyvek.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 245d5c0fb0a54a6d129a193deaa9445bc8fefbfb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283718"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>A teljesítmény diagramon Azure Monitor for VMs (előzetes verzió)
+# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Teljesítménydiagram az Azure Monitor szolgáltatással a virtuális gépekhez
 
-Azure Monitor for VMs olyan teljesítménymutatókat tartalmaz, amelyek több fő teljesítménymutatót (KPI-ket) céloznak meg, amelyek segítségével meghatározhatja, hogy a virtuális gép milyen jól van végrehajtva. A diagramok egy adott időszakon belül jelenítik meg az erőforrás-használatot, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy átválthat az egyes gépekre mutató perspektívára, hogy megtekintse az erőforrás-kihasználtságot a kiválasztott metrika alapján. Noha a teljesítmény kezelése során számos szempontot figyelembe kell venni, Azure Monitor for VMs figyeli a processzorral, a memóriával, a hálózati adapterrel és a lemez kihasználtságával kapcsolatos fő operációsrendszer-teljesítménymutatókat. A teljesítmény kiegészíti az állapotfigyelő funkciót, és segít a lehetséges rendszerösszetevő-meghibásodást jelző problémák megoldásában, a hatékonyság növelését és optimalizálását, illetve a kapacitás tervezésének támogatását.  
+Az Azure Monitor virtuális gépekhez tartalmaz egy teljesítménydiagramok, amelyek célja több fő teljesítménymutatók (KPI-k) segítségével határozza meg, hogy milyen jól teljesít a virtuális gép. A diagramok egy adott időszakon keresztül mutatják az erőforrás-kihasználtságot, így azonosíthatja a szűk keresztmetszeteket, anomáliákat, vagy átválthat egy perspektivikus nézetre, amely felsorolja az egyes gépeket az erőforrás-kihasználtság megtekintéséhez a kiválasztott metrika alapján. Bár számos olyan elem van, amelyet figyelembe kell venni a teljesítmény kezelése során, az Azure Monitor virtuális gépek figyeli a processzorhoz, a memóriához, a hálózati adapterhez és a lemezkihasználtsághoz kapcsolódó kulcsfontosságú operációsrendszer-teljesítménymutatókat. A teljesítmény kiegészíti az állapotfigyelési funkciót, és segít feltárni azokat a problémákat, amelyek a rendszerösszetevő esetleges meghibásodását jelzik, a hatékonyság elérése érdekében támogatja a hangolást és az optimalizálást, vagy támogatja a kapacitástervezést.  
 
-## <a name="multi-vm-perspective-from-azure-monitor"></a>Több virtuális gépre kiterjedő perspektíva Azure Monitor
+## <a name="multi-vm-perspective-from-azure-monitor"></a>Többvirtuális gépes perspektíva az Azure Monitorból
 
-Azure Monitor a teljesítmény szolgáltatás az előfizetésben vagy a környezetben lévő munkacsoportokban üzembe helyezett összes figyelt virtuális gép nézetét tartalmazza. A Azure Monitorhoz való hozzáféréshez hajtsa végre az alábbi lépéseket. 
+Az Azure Monitor, a Teljesítmény funkció az összes figyelt virtuális gépek között telepített munkacsoportok az előfizetések vagy a környezetben. Az Azure Monitor ból való hozzáféréshez hajtsa végre a következő lépéseket. 
 
-1. A Azure Portal válassza a **figyelő**elemet. 
-2. A **megoldások** szakaszban válassza a **Virtual Machines (előzetes verzió)** lehetőséget.
-3. Válassza a **teljesítmény** fület.
+1. Az Azure Portalon válassza a **Figyelő**lehetőséget. 
+2. Válassza a **Virtuális gépek lehetőséget** a **Megoldások** szakaszban.
+3. Válassza a **Teljesítmény** lapot.
 
-![A VM-elemzések teljesítménye a legfontosabb N lista nézet](./media/vminsights-performance/vminsights-performance-aggview-01.png)
+![VM-betekintésteljesítmény top N-lista nézet](media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Ha egynél több Log Analytics munkaterülettel rendelkezik, a **felső N diagramok** lapon válassza ki azt a munkaterületet, amelyet a megoldás az oldal tetején lévő **munkaterület** -választóval engedélyez. A **csoport** választója előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../platform/computer-groups.md)és virtuálisgép-méretezési csoportokat ad vissza a kiválasztott munkaterülethez kapcsolódó számítógépeken, amelyeket az ezen a lapon és a többi oldalon található diagramokon megjelenített eredmények további szűréséhez használhat. A kijelölés csak a teljesítmény szolgáltatásra vonatkozik, és nem végez átadást az állapotra vagy a térképre.  
+A **Felső N diagramok** lapon, ha egynél több Log Analytics-munkaterülettel rendelkezik, válassza ki a megoldással engedélyezett munkaterületet a lap tetején található Munkaterület-választóból. **Workspace** A **Csoportválasztó** a kijelölt munkaterülethez kapcsolódó előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../platform/computer-groups.md)és virtuálisgép-méretezési csoportokat ad vissza, amelyek segítségével tovább szűrheti az ezen a lapon és a többi oldalon megjelenő diagramokon megjelenő eredményeket. A kijelölés csak a Teljesítmény funkcióra vonatkozik, és nem kerül át az Állapot vagy a Térkép alkalmazásba.  
 
-Alapértelmezés szerint a diagramok az elmúlt 24 órában láthatók. A **TimeRange** -választó használatával akár 30 napig is lekérdezheti a korábbi időtartományokat, hogy megmutassa, hogyan nézett ki a teljesítmény a múltban.
+Alapértelmezés szerint a diagramok az elmúlt 24 órát jelenítik meg. A **TimeRange** választó használatával lekérdezheti a legfeljebb 30 napos előzményidőtartományokat, hogy megmutassa, hogyan nézett ki a teljesítmény a múltban.
 
-A lapon látható öt kapacitás-kihasználtsági diagram a következő:
+Az oldalon látható öt kapacitáskihasználtsági diagram a következő:
 
-* CPU-kihasználtság (%) – az első öt gépet mutatja, amelynek a legmagasabb az átlagos processzor-kihasználtsága 
-* Rendelkezésre álló memória – megjeleníti az első öt gépet a rendelkezésre álló memória legkisebb átlagos mennyiségétől számítva. 
-* Használt logikai lemezterület (%) – az első öt gépet mutatja, amely a legnagyobb átlagos lemezterületet használja az összes lemez kötetén. 
-* Elküldési sebesség (bájt) – megjeleníti az első öt gépet, amely a legtöbb elküldési bájtos átlagot mutatja 
-* Bájtok fogadásának aránya – az első öt, a maximálisan fogadott bájtot tartalmazó gépet mutatja. 
+* CPU-kihasználtság % - a legmagasabb átlagos processzorkihasználtsú öt gépet mutatja 
+* Rendelkezésre álló memória - az első öt gépet mutatja, amelyek a legalacsonyabb átlagos rendelkezésre álló memóriával 
+* Használt logikai lemezterület – az összes lemezköteten a legnagyobb átlagos lemezterülettel rendelkező öt gép megjelenítése % 
+* Küldött bájtok aránya – az első öt gépet jeleníti meg, ahol a legmagasabb az elküldött bájtok átlaga 
+* Bájt fogadási arány – az első öt gépet jeleníti meg, ahol a legmagasabb a fogadott bájtok átlaga 
 
-Az öt diagram jobb felső sarkában található rögzítés ikonra kattintva rögzítheti a kiválasztott diagramot az utolsó megtekintett Azure-irányítópulton.  Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, a rendszer átirányítja Azure Monitor for VMs és betölti a helyes hatókört és nézetet.  
+Ha az öt diagram egyikének jobb felső sarkában lévő pin ikonra kattint, a kiválasztott diagramot az utoljára megtekintett Azure-irányítópultra rögzítheti.  Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, átirányítja az Azure Monitor virtuális gépekhez, és betölti a megfelelő hatókört és nézetet.  
 
-Ha az öt diagram egyikén a rögzítés ikontól balra található ikonra kattint, megnyílik a **legfontosabb N listanézet** .  Itt láthatja az adott teljesítmény-mérőszámhoz tartozó erőforrás-felhasználást az egyes virtuális gépeknél a listanézetban, és hogy melyik gép a legmagasabb trendet eredményezi.  
+Az öt diagram bármelyikén a pin ikontól balra található ikonra kattintva megnyílik a **Felső N lista** nézet.  Itt láthatja az erőforrás-kihasználtságot az adott teljesítménymetrika egyéni virtuális gép egy listanézetben, és melyik gép a legmagasabb trend.  
 
-![A kijelölt teljesítmény metrikájának legfontosabb N listanézet](./media/vminsights-performance/vminsights-performance-topnlist-01.png)
+![Felső N lista nézet a kiválasztott teljesítménymérőhez](media/vminsights-performance/vminsights-performance-topnlist-01.png)
 
-Ha a virtuális gépre kattint, a **Tulajdonságok** ablaktábla ki van bontva a jobb oldalon, hogy megjelenjenek a kiválasztott elem tulajdonságai, például az operációs rendszer által jelentett rendszerinformációk, az Azure-beli virtuális gép tulajdonságai stb. A **gyors hivatkozások** szakaszban található egyik lehetőségre kattintva közvetlenül a kiválasztott virtuális gépről irányítja át a szolgáltatást.  
+Ha a virtuális gépre kattint, a **tulajdonságok** ablaktábla ki van bontva a jobb oldalon a kiválasztott elem tulajdonságainak megjelenítéséhez, például az operációs rendszer által jelentett rendszeradatok, az Azure virtuális gép tulajdonságai stb. A **Gyorshivatkozások** szakasz egyik beállítására kattintva közvetlenül a kiválasztott virtuális gépről irányítja át az adott funkcióra.  
 
-![Virtuális gép tulajdonságai ablaktábla](./media/vminsights-performance/vminsights-properties-pane-01.png)
+![A Virtuális gép tulajdonságai ablaktábla](./media/vminsights-performance/vminsights-properties-pane-01.png)
 
-Váltson az **összesített diagramok** lapra, ahol megtekintheti az átlagos vagy a percentilis mértékek alapján szűrt teljesítménymutatókat.  
+Váltson az **Összesített diagramok** lapra az átlagos vagy százalékos mérték szerint szűrt teljesítménymutatók megtekintéséhez.  
 
-![Virtuálisgép-betekintő teljesítmény összesített nézete](./media/vminsights-performance/vminsights-performance-aggview-02.png)
+![Virtuális gép elemzési adatai – Teljesítményösszesítés nézet](./media/vminsights-performance/vminsights-performance-aggview-02.png)
 
-A következő kapacitás-kihasználtsági diagramok vannak megadva:
+A következő kapacitáskihasználtsági diagramok állnak rendelkezésre:
 
-* CPU-kihasználtság (%) – az átlagos és legfelső 95. százalékos értékeit jelző alapértelmezett értékek 
-* Rendelkezésre álló memória – az alapértelmezett értékek az átlagot, az első 5. és a 10. százalékos értéket mutatják 
-* Felhasznált logikai lemezterület (%) – az átlag és a 95. százalékos értékeit jelző alapértelmezett értékek 
-* Elküldhető bájtok aránya – az alapértelmezett értékek az elküldés átlagos bájtjait mutatják 
-* Bájtok fogadásának aránya – az alapértelmezett érték a fogadott bájtok átlagos számát mutatja.
+* CPU-kihasználtság % - az átlagos és a felső 95 százalékos értéket megjelenítő alapértelmezett értékek 
+* Rendelkezésre álló memória - az átlagos, a top 5. 
+* Használt logikai lemezterület – az átlagot és a 95. 
+* Elküldött bájtok díja – az elküldött átlagos bájtok alapértelmezett értéke 
+* Fogadott bájtok – a beérkezett átlagos bájtok alapértelmezett értékeinek megjelenítése
 
-A diagramok részletességét az időtartományon belül is módosíthatja, ha az **AVG**, a **min**, a **Max**, az **50**, a **90**és a **95.** lehetőséget választja a percentilis-választóban.
+A diagramok részletességét az időtartományon belül is módosíthatja, ha a percentilis választóban az **Átlag**, **Min**, **Max**, **50th**, **90th**és **95 értéket** választja.
 
-Ha szeretné megtekinteni az egyes virtuális gépek erőforrás-felhasználását egy lista nézetben, és megtekintheti, hogy melyik gép a legmagasabb kihasználtsággal rendelkezik, válassza az **első N lista** fület.  A **felső N lista** oldal az első 20 gépet mutatja, amelyet a legtöbbet a 95. percentilis használ a metrikus *CPU-kihasználtság%* -ban.  Ha több gépet szeretne látni, válassza a **Betöltés**lehetőséget, és az eredmények kibontásával jelenítse meg a legfontosabb 500-es gépeket. 
+Ha meg szeretné tekinteni az egyes virtuális gépek erőforrás-kihasználtságát egy listanézetben, és meg szeretné tekinteni, hogy melyik számítógép a legnagyobb kihasználtsítással, válassza a **Felső N lista** lapot.  A **Felső N lista** oldalon látható a top 20 gép a leggyakrabban használt 95 percentilis a metrikus *CPU-kihasználtság %*.  Több gépet láthat, ha kiválasztja az **Egyebek betöltése**lehetőséget, és az eredmények kibővülnek az első 500 gép megjelenítéséhez. 
 
 >[!NOTE]
 >A lista egyszerre legfeljebb 500 gépet tud megjeleníteni.  
 >
 
-![Legfelső N lista oldalának példája](./media/vminsights-performance/vminsights-performance-topnlist-01.png)
+![Példa a legnépszerűbb N-lista oldalára](./media/vminsights-performance/vminsights-performance-topnlist-01.png)
 
-Ha egy adott virtuális gépen szeretné szűrni az eredményeket a listában, adja meg a számítógép nevét a **Keresés név alapján** szövegmezőbe.  
+Ha a listában szereplő adott virtuális gépen lévő találatokat szeretné szűrni, írja be a számítógép nevét a **Keresés név szerint** mezőbe.  
 
-Ha inkább a kihasználtságot szeretné megtekinteni egy másik teljesítménymutató alapján, a **metrika** legördülő listából válassza ki a **rendelkezésre álló memóriát**, a **használt logikai lemezterületet (%)** , a **hálózat fogadott bájt/mp**vagy a **hálózat által küldött bájt/mp** elemet, valamint a lista frissítéseit, hogy megjelenjenek az adott metrika hatókörének kihasználtsága.  
+Ha inkább egy másik teljesítménymérőszámból szeretné megtekinteni a kihasználtságot, a **Metrika** legördülő listából válassza a **Rendelkezésre álló memória**, **a Használt logikai lemezterület %**, a hálózati fogadott **bájt/s**vagy a **hálózati küldött bájt/s** lehetőséget, és a listafrissítéseket az adott mutatóhoz tartozó kihasználtsági hatókör megjelenítéséhez.  
 
-Ha kiválasztja a virtuális gépet a listából, megnyílik a **Tulajdonságok** panel a lap jobb oldalán, és Itt választhatja ki a **teljesítmény részleteit**.  Megnyílik a **virtuális gép részletei** lap, és az adott virtuális gépre van kiterjedően, ami a virtuálisgép-elemzések teljesítményének közvetlenül az Azure-beli virtuális gépről való elérésekor is hasonló élményt nyújt.  
+Ha egy virtuális gépet választ a listából, megnyílik a **tulajdonságok** panel a lap jobb oldalán, és innen kiválaszthatja a **Teljesítmény részletei**lehetőséget.  A **virtuális gép részletei** lap megnyílik, és hatóköre, hogy a virtuális gép, hasonló tapasztalattal, amikor a virtuális gép Insights-teljesítmény közvetlenül az Azure virtuális gép elérésekor.  
 
-## <a name="view-performance-directly-from-an-azure-vm"></a>Teljesítmény megtekintése közvetlenül egy Azure-beli virtuális gépről
+## <a name="view-performance-directly-from-an-azure-vm"></a>Teljesítmény megtekintése közvetlenül egy Azure virtuális gépről
 
-Közvetlenül egy virtuális gépről való hozzáféréshez hajtsa végre az alábbi lépéseket.
+Ha közvetlenül virtuális gépről szeretne hozzáférni, hajtsa végre a következő lépéseket.
 
-1. A Azure Portal válassza a **Virtual Machines**lehetőséget. 
-2. A listából válassza ki a virtuális gépet, és a **figyelés** területen válassza az adatok **(előzetes verzió)** lehetőséget.  
-3. Válassza a **teljesítmény** fület. 
+1. Az Azure Portalon válassza a **Virtuális gépek**lehetőséget. 
+2. A listából válasszon egy virtuális gép, és a **figyelési** szakaszban válassza **insights.**  
+3. Válassza a **Teljesítmény** lapot. 
 
-Ez a lap nem csak a teljesítmény-kihasználtsági diagramokat tartalmazza, hanem egy táblázatot is, amely minden felderített logikai lemezhez, annak kapacitásához, kihasználtságához és teljes átlagához tartozik.  
+Ez az oldal nem csak a teljesítménykihasználási diagramokat tartalmazza, hanem egy táblázatot is, amely minden egyes felfedezett logikai lemezhez, kapacitásához, kihasználtságához és az egyes mértékekkel átlaghoz viszonyítva jeleníti meg.  
 
-A következő kapacitás-kihasználtsági diagramok vannak megadva:
+A következő kapacitáskihasználtsági diagramok állnak rendelkezésre:
 
-* CPU-kihasználtság (%) – az átlagos és legfelső 95. százalékos értékeit jelző alapértelmezett értékek 
-* Rendelkezésre álló memória – az alapértelmezett értékek az átlagot, az első 5. és a 10. százalékos értéket mutatják 
-* Felhasznált logikai lemezterület (%) – az átlag és a 95. százalékos értékeit jelző alapértelmezett értékek 
-* Logikai lemez IOPS – az átlag és a 95. százalékos értékeit jeleníti meg
-* Logikai lemez MB/s – alapértelmezett érték, amely az átlagos és a 95. percentilis értéket jeleníti meg
-* A felhasznált logikai lemez maximális száma (%) – az alapértelmezett érték az átlagos és a 95. százalékos értéket mutatja.
-* Elküldhető bájtok aránya – az alapértelmezett értékek az elküldés átlagos bájtjait mutatják 
-* Bájtok fogadásának aránya – az alapértelmezett érték a fogadott bájtok átlagos számát mutatja.
+* CPU-kihasználtság % - az átlagos és a felső 95 százalékos értéket megjelenítő alapértelmezett értékek 
+* Rendelkezésre álló memória - az átlagos, a top 5. 
+* Használt logikai lemezterület – az átlagot és a 95. 
+* Logikai lemez IOPS - alapértelmezett mutató az átlagos és 95 percentilis
+* Logikai lemez MB/s – az átlagot és a 95.
+* Maximális logikai lemez használt % - az átlagot és a 95.
+* Elküldött bájtok díja – az elküldött átlagos bájtok alapértelmezett értéke 
+* Fogadott bájtok – a beérkezett átlagos bájtok alapértelmezett értékeinek megjelenítése
 
-Az egyik diagram jobb felső sarkában található rögzítés ikonra kattintva a kiválasztott diagramot a legutóbbi Azure-irányítópultra koppintva láthatja. Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, azzal átirányítja Azure Monitor for VMs és betölti a teljesítmény részletes nézetét a virtuális géphez.  
+Ha bármelyik diagram jobb felső sarkában lévő pin ikonra kattint, a kijelölt diagramot az utoljára megtekintett Azure-irányítópultra rögzíti. Az irányítópultról átméretezheti és áthelyezheti a diagramot. A diagram kiválasztása az irányítópultról átirányítja önt az Azure Monitor virtuális gépekhez, és betölti a virtuális gép teljesítményrészletességi nézetét.  
 
-![VIRTUÁLIS gépek teljesítményének közvetlen kimutatása a virtuálisgép-nézetből](./media/vminsights-performance/vminsights-performance-directvm-01.png)
+![Virtuálisgép-elemzési teljesítmény közvetlenül a Virtuálisgép nézetből](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
-## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Teljesítmény megtekintése közvetlenül egy Azure virtuálisgép-méretezési csoportból
+## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Teljesítmény megtekintése közvetlenül az Azure virtuálisgép-méretezési csoportból
 
-Ha közvetlenül egy Azure virtuálisgép-méretezési csoportból szeretne hozzáférni, hajtsa végre a következő lépéseket.
+Közvetlenül egy Azure virtuálisgép-méretezési csoportból való hozzáféréshez hajtsa végre a következő lépéseket.
 
-1. A Azure Portal válassza a **virtuálisgép-méretezési**csoportok lehetőséget.
-2. A listából válassza ki a virtuális gépet, és a **figyelés** területen válassza az adatok **(előzetes verzió)** lehetőséget a **teljesítmény** lap megtekintéséhez.
+1. Az Azure Portalon válassza a **Virtuálisgép-méretezési csoportok lehetőséget.**
+2. A listából válasszon egy virtuális gép, és a **figyelési** szakaszban válassza **insights** a **Teljesítmény** lap megtekintéséhez.
 
-Ezen az oldalon betöltődik a Azure Monitor teljesítmény nézet, amely a kijelölt méretezési csoportra terjed ki. Ez lehetővé teszi, hogy megtekintse a méretezési csoport legfontosabb N példányait a figyelt metrikák készletében, megtekintheti a méretezési csoport összesített teljesítményét, és megtekintheti az egyes példányok N a méretezési csoporton belül a kiválasztott mérőszámok tendenciáit. Ha kiválaszt egy példányt a listanézet segítségével, betöltheti a térképet, vagy megtekintheti az adott példány részletes teljesítmény nézetét.
+Ez a lap betölti az Azure Monitor teljesítménynézetét, amely a kijelölt méretezési készletre van kitéve. Ez lehetővé teszi, hogy a top N példányok a méretezési csoportban a figyelt metrikák készletében, tekintse meg az összesített teljesítményt a méretezési csoportban, és tekintse meg a kiválasztott metrikák trendjeit az egyes példányok n a méretezési csoportban. Ha kiválaszt egy példányt a listanézetből, betöltheti a térképet, vagy részletes teljesítménynézetbe navigálhat az adott példányhoz.
 
-Az egyik diagram jobb felső sarkában található rögzítés ikonra kattintva a kiválasztott diagramot a legutóbbi Azure-irányítópultra koppintva láthatja. Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, azzal átirányítja Azure Monitor for VMs és betölti a teljesítmény részletes nézetét a virtuális géphez.  
+Ha bármelyik diagram jobb felső sarkában lévő pin ikonra kattint, a kijelölt diagramot az utoljára megtekintett Azure-irányítópultra rögzíti. Az irányítópultról átméretezheti és áthelyezheti a diagramot. A diagram kiválasztása az irányítópultról átirányítja önt az Azure Monitor virtuális gépekhez, és betölti a virtuális gép teljesítményrészletességi nézetét.  
 
-![Virtuális gépek teljesítményének beállítása közvetlenül a virtuálisgép-méretezési csoport nézetből](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
+![Virtuálisgép-elemzési teljesítmény közvetlenül a virtuálisgép-méretezési csoport nézetéből](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
 >[!NOTE]
->A méretezési csoport példányai nézetében egy adott példányhoz is elérheti a részletes teljesítmény nézetet. A **Beállítások** szakaszban keresse meg a **példányok** elemet, majd válassza az **áttekintés (előzetes verzió)** lehetőséget.
+>Egy adott példány részletes teljesítménynézetét is elérheti a méretezési csoport példányai nézetből. Keresse meg a **Példányok lapot** a **Beállítások** szakaszban, és válassza az **Elemzések**lehetőséget.
 
-## <a name="alerts"></a>Riasztások  
 
-A Azure Monitor for VMs részeként engedélyezett teljesítmény-mérőszámok nem tartalmaznak előre konfigurált riasztási szabályokat. Az Azure-beli virtuális gépen észlelt teljesítményproblémák (például a nagy CPU-kihasználtság, a kevés memória, a kevés lemezterület stb.) megfelelő [állapotú riasztások](vminsights-health.md#alerts) tartoznak.  Ezek az állapot-riasztások azonban csak a Azure Monitor for VMs számára engedélyezett összes virtuális gépre érvényesek. 
 
-A Log Analytics munkaterületen azonban csak a szükséges teljesítmény-mérőszámok egy részhalmazát gyűjthetjük és tároljuk. Ha a figyelési stratégia olyan elemzést vagy riasztást igényel, amely más teljesítménymutatókat is tartalmaz a virtuális gép kapacitásának vagy állapotának hatékony kiértékeléséhez, vagy ha rugalmasságra van szüksége a saját riasztási feltételeinek vagy logikájának megadásához, konfigurálhatja a [teljesítményszámlálók gyűjteményét](../platform/data-sources-performance-counters.md) log Analytics, és meghatározhatja a [naplók riasztásait](../platform/alerts-log.md). Míg a Log Analytics lehetővé teszi, hogy összetett elemzéseket végezzen más adattípusokkal, és hogy továbbra is megmaradjon a trend-elemzések támogatása, a metrikák pedig a közel valós idejű forgatókönyvek támogatása érdekében. Ezeket az [Azure diagnosztikai ügynök](../../virtual-machines/windows/monitor.md) gyűjti, és a Azure monitor metrikai tárolóban tárolja, így a riasztások alacsonyabb késéssel és alacsonyabb áron hozhatók létre.
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a [metrikák és naplók összegyűjtésének](../platform/data-platform.md) áttekintését Azure monitor segítségével, hogy jobban megértse az alapvető különbségeket és egyéb szempontokat a további mérőszámok és riasztási szabályok gyűjtésének konfigurálása előtt.  
+- Ismerje meg, hogyan [használhatja az](vminsights-workbooks.md) Azure Monitor szolgáltatás a virtuális gépekhez, a munkafüzetek használatával a teljesítmény és a hálózati metrikák további elemzéséhez.  
 
-## <a name="next-steps"></a>Következő lépések
-
-- Ismerje meg, hogyan használhatók a Azure Monitor for VMsban található [munkafüzetek](vminsights-workbooks.md) a teljesítmény-és hálózati metrikák további elemzéséhez.  
-
-- Az észlelt alkalmazások függőségeivel kapcsolatos további tudnivalókért lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).
+- A felderített alkalmazásfüggőségekről az [Azure-figyelő szolgáltatás virtuális gépek leképezésének megtekintése.](vminsights-maps.md)

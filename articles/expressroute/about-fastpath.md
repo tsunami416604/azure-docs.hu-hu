@@ -1,60 +1,50 @@
 ---
-title: Tudnivalók az Azure ExpressRoute FastPath
-description: Tudnivalók az Azure ExpressRoute FastPath hálózati forgalom küldéséhez az átjáró megkerülésével
+title: Az Azure ExpressRoute FastPath be
+description: Ismerje meg az Azure ExpressRoute FastPath szolgáltatást, amelynek célja a hálózati forgalom küldése az átjáró megkerülésével
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 265004b1171d1df95b3090676d5836b951c28a28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437096"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282851"
 ---
 # <a name="about-expressroute-fastpath"></a>Az ExpressRoute FastPath ismertetése
 
-A ExpressRoute virtuális hálózati átjáró a hálózati útvonalak cseréjére és a hálózati forgalom irányítására szolgál. A FastPath úgy lett kialakítva, hogy javítsa a helyszíni hálózat és a virtuális hálózat adatelérési útjainak teljesítményét. Ha engedélyezve van, a FastPath közvetlenül a virtuális hálózatban lévő virtuális gépekre küldi a hálózati forgalmat, megkerülve az átjárót.
+Az ExpressRoute virtuális hálózati átjárója hálózati útvonalak cseréjére és hálózati forgalom irányítására szolgál. A FastPath célja, hogy javítsa az adatelérési út teljesítményét a helyszíni hálózat és a virtuális hálózat között. Ha engedélyezve van, a FastPath közvetlenül a virtuális hálózat virtuális gépeinek küldi a hálózati forgalmat, megkerülve az átjárót.
 
 ## <a name="requirements"></a>Követelmények
 
-### <a name="circuits"></a>Kapcsolatcsoportok
+### <a name="circuits"></a>Áramkörök
 
-A FastPath az összes ExpressRoute-áramkörön elérhető.
+A FastPath minden ExpressRoute-kapcsolatcsoporton elérhető.
 
 ### <a name="gateways"></a>Átjárók
 
-A FastPath továbbra is létre kell hoznia egy virtuális hálózati átjárót a virtuális hálózat és a helyszíni hálózat közötti útvonalak cseréjéhez. A virtuális hálózati átjárókkal és ExpressRoute kapcsolatos további információk, beleértve a teljesítménnyel kapcsolatos információkat és az átjárók SKU-ját lásd: [ExpressRoute virtuális hálózati átjárók](expressroute-about-virtual-network-gateways.md).
+A FastPath használatához továbbra is létre kell hozni egy virtuális hálózati átjárót a virtuális hálózat és a helyszíni hálózat közötti útvonalak cseréjéhez. A virtuális hálózati átjárókról és az ExpressRoute-ról, beleértve a teljesítményadatokat és az átjáró-skus-okat, további információt az [ExpressRoute virtuális hálózati átjárói című témakörben talál.](expressroute-about-virtual-network-gateways.md)
 
-A FastPath konfigurálásához a virtuális hálózati átjárónak a következőknek kell lennie:
+A FastPath konfigurálásához a virtuális hálózati átjárónak a következőnek kell lennie:
 
-* Ultranagy teljesítmény
-* ErGw3AZ
-
-#### <a name="aggthroughput"></a>Az átjárói SKU becsült teljesítménye
-A következő táblázat az átjárók típusát és a becsült teljesítményt mutatja be. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.
-
-[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
-
-> [!IMPORTANT]
-> Az alkalmazás teljesítménye több tényezőtől függ, például a végpontok közötti késéstől, valamint az alkalmazás által megnyitott adatforgalom számától. A táblázatban szereplő számok azt a felső korlátot jelentik, amelyet az alkalmazás elméletileg érhet el ideális környezetben.
->
->
+* Ultra teljesítmény
+* Ergw3AZ
 
 ## <a name="supported-features"></a>Támogatott funkciók
 
-Míg a FastPath támogatja a legtöbb konfigurációt, nem támogatja a következő funkciókat:
+Bár a FastPath a legtöbb konfigurációt támogatja, a következő szolgáltatásokat nem támogatja:
 
-* UDR az átjáró alhálózatán: Ha UDR alkalmaz a virtuális hálózat átjáró-alhálózatára, a helyszíni hálózatról érkező hálózati forgalom továbbra is a virtuális hálózati átjárónak lesz elküldve.
+* UDR az átjáró alhálózaton: Ha udr-t alkalmaz a virtuális hálózat átjáróalhálózatára, a helyszíni hálózatról érkező hálózati forgalom továbbra is a virtuális hálózati átjáróra kerül.
 
-* VNet-társítás: Ha más, a ExpressRoute-hoz csatlakoztatott virtuális hálózatokkal rendelkezik, a helyszíni hálózatról a másik virtuális hálózatra irányuló hálózati forgalmat (azaz az úgynevezett "küllős" virtuális hálózatok) továbbra is a virtuális hálózatra küldi a rendszer. átjáró. A megkerülő megoldás az összes virtuális hálózat közvetlen összekapcsolása a ExpressRoute-áramkörrel.
+* Virtuális hálózati társviszony-létesítés: Ha más virtuális hálózatok koncettingetaz ExpressRoute-hoz kapcsolódó, a hálózati forgalmat a helyszíni hálózat a többi virtuális hálózatok (azaz az úgynevezett "Küllő" virtuális hálózatok) továbbra is küldött a virtuális hálózat Átjáró. A megoldás az, hogy az összes virtuális hálózatot közvetlenül csatlakoztatja az ExpressRoute-kapcsolathoz.
 
-* Alapszintű Load Balancer: Ha alapszintű belső terheléselosztó üzembe helyezését végzi a virtuális hálózatban, vagy a virtuális hálózatban üzembe helyezett Azure Pásti szolgáltatás alapszintű belső terheléselosztó, a helyszíni hálózatról a hálózati forgalom a (z) rendszerben üzemeltetett virtuális IP-címekre A rendszer az alapszintű Load balancert a virtuális hálózati átjárónak küldi el. A megoldás az alapszintű Load Balancer [standard Load balancerre](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)való frissítése.
+* Alapszintű terheléselosztó: Ha egy alapszintű belső terheléselosztót telepít a virtuális hálózatban, vagy a virtuális hálózatban üzembe helyezett Azure PaaS-szolgáltatás egy alapszintű belső terheléselosztót használ, a helyszíni hálózatból a virtuális IP-khez vezető hálózati forgalmat a Az alapszintű terheléselosztó a virtuális hálózati átjárónak lesz elküldve. A megoldás az alapterhelés-elosztó [standard terheléselosztóra](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)való frissítése.
 
-* Privát hivatkozás: Ha a virtuális hálózatban lévő [privát végponthoz](../private-link/private-link-overview.md) csatlakozik a helyszíni hálózatról, a kapcsolat a virtuális hálózati átjárón keresztül fog haladni.
+* Privát kapcsolat: Ha a virtuális hálózat [egyik privát végpontjához](../private-link/private-link-overview.md) csatlakozik a helyszíni hálózatról, a kapcsolat a virtuális hálózati átjárón keresztül fog menni.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A FastPath engedélyezéséhez lásd: [virtuális hálózat összekapcsolása a ExpressRoute](expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).
+A FastPath engedélyezéséhez olvassa el [A virtuális hálózat összekapcsolása az ExpressRoute-hoz .to enable FastPath,](expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)see Link a a virtual network to ExpressRoute .

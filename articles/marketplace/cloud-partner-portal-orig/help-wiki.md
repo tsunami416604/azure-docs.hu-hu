@@ -1,25 +1,23 @@
 ---
-title: A Dynamics 365 for Operations Súgó wiki
-description: A cikk elavult, és a PC-cikkhez van csatolva; a "Dynamics 365 for Operations Súgó wiki információs lapja"
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+title: Dynamics 365 for Operations Súgó Wiki
+description: A cikk elavulttal és pc-cikkhez kapcsolódik; "Dynamics 365 for Operations Help Wiki információs lap" volt.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 27680824a4586a8bd3174eb28ce2ddb3604c014b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 19043397cc31e089cc77e732485ade61ef4b4e30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275985"
 ---
-# <a name="dynamics-365-for-operations-help-wiki"></a>A Dynamics 365 for Operations Súgó wiki
+# <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 for Operations Súgó Wiki
 
-A Microsoft Dynamics 365 for Operations a Microsoft üzleti alkalmazása vállalatoknak. Lehetővé teszi a felhasználók számára, hogy a valós idejű elemzésekhez és adatszolgáltatásokhoz hozzáférést biztosító intelligensebb felhasználói felületen gyorsan, intelligensebb döntéseket hozzanak. Lehetővé teszi a vállalatok számára az átalakítást és innovációt azáltal, hogy bizonyított üzleti logikát biztosítanak, amely lehetővé teszi az üzleti folyamatok gyorsabb újratervezését. Lehetővé teszi a vállalatok számára, hogy a rugalmasságot a saját ütemben fejlesszenek, és szinte bárhol és bármikor üzleti tevékenységet végezzenek, hogy az üzleti igényeknek megfelelően méretezhetők legyenek a műveleteik.
+A Microsoft Dynamics 365 for Operations a Microsoft vállalati üzleti alkalmazása. Lehetővé teszi az emberek számára, hogy gyorsan okosabb döntéseket hozzanak egy intelligens felhasználói felületen keresztül, amely hozzáférést biztosít a valós idejű elemzésekhez és adatokhoz. Lehetővé teszi a vállalkozások számára az átalakulást és az innovációt azáltal, hogy bevált üzleti logikát biztosít, amely lehetővé teszi számukra, hogy gyorsabban tervezzék meg üzleti folyamataikat. Rugalmasságot biztosít a vállalkozások számára, hogy saját tempójukban növekedjenek, és szinte bárhol, bármikor üzleti tevékenységet folytathassanak, lehetővé téve számukra, hogy globálisan méretezzék tevékenységüket az üzleti igények kielégítése érdekében.
 
-Ez a felhasználói útmutató segítséget nyújt a Dynamics 365 for Operations működésének elsajátításához a vállalat számára.
+Ez a felhasználói útmutató segítséget nyújt annak elsajátításához, hogyan teheti a Dynamics 365 for Operations-t a vállalkozása számára.
 
-További információért lásd: [Dynamics 365 for Operations Súgó wiki](https://docs.microsoft.com/dynamics365/operations/) .
+További [információ: Dynamics 365 for Operations Help Wiki.](https://docs.microsoft.com/dynamics365/operations/)

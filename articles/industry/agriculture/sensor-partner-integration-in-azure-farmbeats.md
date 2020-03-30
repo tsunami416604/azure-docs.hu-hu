@@ -1,67 +1,67 @@
 ---
 title: Érzékelői partner integrációja
-description: Ez a cikk az érzékelő partner integrációját ismerteti.
+description: Ez a cikk az érzékelőpartnerek integrációját ismerteti.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298733"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
-Ez a cikk az érzékelő partner-integrációt lehetővé tevő Azure FarmBeats **Translator** összetevővel kapcsolatos információkat tartalmaz.
+Ez a cikk az Azure FarmBeats **Translator** összetevőről tartalmaz információt, amely lehetővé teszi az érzékelőpartnerek integrációját.
 
-Ennek az összetevőnek a használatával a partnerek a FarmBeats Datahub API-k segítségével integrálhatók a FarmBeats, és az ügyfél-eszköz adatai és a telemetria FarmBeats Datahub. Ha az adatok elérhetők a FarmBeats-ben, a rendszer a FarmBeats-gyorsító használatával, valamint a gépi tanulási/mesterséges intelligencia-modellek létrehozásához használható.
+Ezzel az összetevővel a partnerek integrálhatók a FarmBeats-rel a FarmBeats Datahub API-k használatával, és ügyféleszköz-adatokat és telemetriát küldhetnek a FarmBeats Datahub-nak. Miután az adatok elérhetők a FarmBeats-ben, a FarmBeats gyorsító használatával láthatóvá válnak, és felhasználhatók az adatok fúziójára és a gépi tanulás/mesterséges intelligencia modellek készítésére.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A Translator összetevő fejlesztéséhez a következő hitelesítő adatokra lesz szüksége, amelyek engedélyezik a hozzáférést a FarmBeats API-khoz.
+A Translator-összetevő fejlesztéséhez a következő hitelesítő adatokra lesz szüksége, amelyek lehetővé teszik a FarmBeats API-k elérését.
 
 - API-végpont
 - Bérlőazonosító
 - Ügyfél-azonosító
 - Titkos ügyfélkulcs
-- EventHub-kapcsolatok karakterlánca
+- EventHub-kapcsolati karakterlánc
 
-Tekintse meg ezt a szakaszt a fenti hitelesítő adatok beszerzéséhez: az [eszközök integrálásának engedélyezése](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)
+Ebben a szakaszban a fenti hitelesítő adatok: [Eszközintegráció engedélyezése](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)
 
-## <a name="translator-development"></a>Fordítói fejlesztés
+## <a name="translator-development"></a>Fordítófejlesztés
 
 **REST API-alapú integráció**
 
-A FarmBeats érzékelő-adatintegrációs képességei elérhetők a REST APIon keresztül. A képességek közé tartozik a metaadatok definíciója, az eszközök és az érzékelők üzembe helyezése, valamint az eszközök és az érzékelők kezelése.
+A FarmBeats érzékelőadatok-integrációs képességei a REST API-n keresztül vannak elérhetővé téve. A képességek közé tartozik a metaadat-definíció, az eszköz- és érzékelőkiépítés, valamint az eszköz- és érzékelőkezelés.
 
-**Telemetria betöltése**
+**Telemetriai betöltés**
 
-A telemetria-adatainak feldolgozásra az Azure Event Hubs közzétett kanonikus üzenetre van leképezve. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból.
+A telemetriai adatok egy olyan kanonikus üzenethez vannak leképezve, amely feldolgozásra az Azure Event Hubs-on van közzétéve. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adat -(telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokról.
 
 **API-fejlesztés**
 
-Az API-k a hencegés műszaki dokumentációját tartalmazzák. További információ az API-król és a hozzájuk kapcsolódó kérésekről vagy válaszokról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
+Az API-k swagger műszaki dokumentációt tartalmaznak. Az API-król és a hozzájuk tartozó kérésekről vagy válaszokról a [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)című témakörben talál további információt.
 
 **Hitelesítés**
 
-A FarmBeats Microsoft Azure Active Directory hitelesítést használ. A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít.
+A FarmBeats a Microsoft Azure Active Directory-hitelesítést használja.Az Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít.
 
 További információ: [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
 
-A FarmBeats Datahub tulajdonosi hitelesítést használ, amelynek a következő hitelesítő adatokra van szüksége:
+A FarmBeats Datahub bemutatóra szóló hitelesítést használ, amelyhez a következő hitelesítő adatokra van szükség:
    - Ügyfél-azonosító
    - Titkos ügyfélkulcs
    - Bérlőazonosító
 
-Ezen hitelesítő adatok használatával a hívó hozzáférési jogkivonatot kérhet. A tokent a következő API-kérelmekben kell elküldeni a fejléc szakaszban a következő módon:
+Ezekkel a hitelesítő adatokkal a hívó kérhet egy hozzáférési jogkivonatot. A jogkivonatot a következő API-kérelmekben kell elküldeni a fejlécszakaszban, az alábbiak szerint:
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-A következő Python-kód megadja a hozzáférési jogkivonatot, amely a következő API-hívásokhoz használható a FarmBeats.
+A következő python-kódmintát adja a hozzáférési jogkivonatot, amely a FarmBeats későbbi API-hívásaihoz használható.
 
 ```python
 import azure 
@@ -83,31 +83,31 @@ access_token = token_response.get('accessToken') 
 ```
 
 
-**HTTP-kérelmek fejlécei**
+**HTTP-kérelem fejlécei**
 
-Itt láthatja a leggyakoribb kérelmek fejléceit, amelyeket meg kell adni, amikor API-hívást végez a FarmBeats Datahub.
+Az alábbiakban a leggyakoribb kérésfejléceket kell megadni, amikor API-hívást kezdeményez a FarmBeats Datahub-ra.
 
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Content-Type | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
-Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos < hozzáférés-token >
-Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Elfogadás: alkalmazás/JSON
+Content-Type | A kérelem formátuma (Content-Type: application/<format>). A FarmBeats Datahub API-k esetében a formátum JSON. Tartalom-típus: alkalmazás/json
+Engedélyezés | Megadja az API-híváshoz szükséges hozzáférési jogkivonatot. Engedélyezés: a tulajdonos <hozzáférési>
+Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k esetében a formátum JSON. Elfogadás: alkalmazás/json
 
 **API-kérelmek**
 
-REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, vagy PUT) metódust, az API szolgáltatás URL-címét, a Uniform Resource Identifier (URI) egy erőforráshoz a lekérdezéshez, az adatküldés frissítéséhez vagy törléséhez, valamint egy vagy több HTTP-kérelem fejlécéhez. Az API-szolgáltatás URL-címe az Ön által megadott API-végpont. Íme egy példa: https://\<yourdatahub-website-Name >. azurewebsites. net
+REST API-kérelem benyújtásához kombinálja a HTTP (GET, POST vagy PUT) metódust, az API-szolgáltatás URL-címét, az egységes erőforrás-azonosítót (URI) egy erőforrásba, amely lekérdezheti, adatokat küldhet, frissít vagy törölhet, valamint egy vagy több HTTP-kérelemfejlécet. Az API-szolgáltatás URL-címe a megadott API-végpont. Íme egy példa:\<https:// yourdatahub-website-name>.azurewebsites.net
 
-Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korlátozhatja az adatok méretét, és rendezheti a válaszokat.
+Szükség esetén lekérdezési paramétereket is megadhat a GET-hívásokhoz, korlátozhatja a válaszok ban lévő adatok méretét, és rendezheti az adatokat.
 
-Az alábbi példa az eszközök listájának beszerzésére szolgál.
+A következő mintakérelem az eszközök listájának bekérése.
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
-A legtöbb GET, POST és PUT híváshoz JSON-kérést tartalmazó törzs szükséges.
+A legtöbb GET, POST és PUT hívások igényel JSON kérelem törzs.
 
-Az alábbi példa egy eszköz létrehozását kéri. (Ez a minta egy bemeneti JSON-t tartalmaz a kérés Törzsével.)
+A következő mintakérelem egy eszköz létrehozása. (Ez a minta rendelkezik egy bemeneti JSON a kérelem törzse.)
 
 ```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
@@ -115,90 +115,90 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 
 ## <a name="data-format"></a>Adatformátum
 
-A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatstruktúrák egyszerű szöveges ábrázolását teszi lehetővé. További információ: [JSON.org](http://json.org).
+A JSON egy közös, nyelvfüggetlen adatformátum, amely egyszerű szövegábrázolást biztosít tetszőleges adatstruktúrákról. További információ: [json.org](http://json.org).
 
-## <a name="metadata-specifications"></a>Metaadatok specifikációi
+## <a name="metadata-specifications"></a>Metaadatok specifikációk
 
-A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszközök partnerei számára az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét.
+A FarmBeats Datahub a következő API-kat kínál, amelyek lehetővé teszik az eszközpartnerek számára az eszköz- vagy érzékelőmetaadatok létrehozását és kezelését.
 
-- /**DeviceModel**: a DeviceModel az eszköz metaadatait, például a gyártót és az eszköz típusát adja meg, amely átjáró vagy csomópont lehet.
-- /**eszköz**: az eszköz a farmon lévő fizikai eszköznek felel meg.
-- /**SensorModel**: a SensorModel az érzékelő metaadatait, például a gyártót, az analóg vagy digitális érzékelő típusát, valamint az érzékelő mértékét (például a környezeti hőmérsékletet és a nyomást) felel meg.
-- /**érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
+- /**DeviceModel**: DeviceModel megfelel a metaadatok az eszköz, például a gyártó és az eszköz típusát, amely vagy átjáró vagy csomópont.
+- /**Eszköz**: Az eszköz a gazdaságban lévő fizikai eszköznek felel meg.
+- /**SensorModel**: SensorModel megfelel az érzékelő metaadatainak, például a gyártónak, az analóg vagy digitális érzékelő típusának, valamint az érzékelő mértékének, például a környezeti hőmérsékletnek és a nyomásnak.
+- /**Érzékelő**: Az érzékelő egy fizikai érzékelőnek felel meg, amely rögzíti az értékeket. Az érzékelő általában eszközazonosítóval rendelkező eszközhöz csatlakozik.
 
   **DeviceModel** |  |
   --- | ---
-  Típus (csomópont, átjáró)  | Az eszköz – csomópont vagy átjáró típusa |
+  Típus (csomópont, átjáró)  | Az eszköz típusa - Csomópont vagy átjáró |
   Gyártó  | A gyártó neve |
-  ProductCode  | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
-  Portok  | A port neve és típusa, amely digitális vagy analóg.  |
-  Név  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
-  Leírás  | Adjon meg egy értelmes leírást a modellről. |
-  Tulajdonságok  | További tulajdonságok a gyártótól. |
+  Termékkód  | Eszköztermék-kódja vagy modellneve vagy száma. Például EnviroMonitor#6800. |
+  Portok  | Port neve és típusa, amely digitális vagy analóg.  |
+  Név  | Az erőforrás azonosítására szolgáló név. Például a modell vagy a termék neve. |
+  Leírás  | Adja meg a modell értelmes leírását. |
+  Tulajdonságok  | A gyártó további tulajdonságai. |
   **Eszköz** |  |
-  DeviceModelId  |A társított eszköz-modell azonosítója. |
-  HardwareId   |Az eszköz egyedi azonosítója, például egy MAC-címe.  |
-  ReportingInterval |Jelentéskészítési időköz (másodperc). |
-  Hely    |Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
-  ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Ha például egy csomópont átjáróhoz csatlakozik, a csomópont parentDeviceID van. |
-  Név  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
+  DeviceModelId  |A társított eszközmodell azonosítója. |
+  Hardverazonosító   |Az eszköz egyedi azonosítója, például EGY MAC-cím.  |
+  ReportingInterval |Jelentési időköz másodpercben. |
+  Hely    |Az eszköz szélességi foka (-90 és +90 között), hosszúság (-180-180) és magasság (méterben). |
+  ParentDeviceId azonosító | Annak a szülőeszköznek az azonosítója, amelyhez az eszköz csatlakozik. Ha például egy csomópont csatlakozik egy átjáróhoz, a csomópont rendelkezik parentDeviceID átjáróként. |
+  Név  | Az erőforrás azonosítására szolgáló név. Az eszközpartnereknek olyan nevet kell küldeniük, amely megfelel az eszköz partneroldalán lévő eszköznevének. Ha az eszköznév felhasználó által definiált az eszközpartner oldalán, ugyanazt a felhasználó által definiált nevet kell terjeszteni a FarmBeats-re.  |
   Leírás  | Adjon meg egy értelmes leírást.  |
-  Tulajdonságok  |További tulajdonságok a gyártótól.  |
-  **SensorModel** |  |
-  Típus (analóg, digitális)  |Említi az analóg vagy a digitális érzékelőt.|
+  Tulajdonságok  |A gyártó további tulajdonságai.  |
+  **Érzékelőmodell** |  |
+  Típus (analóg, digitális)  |Említse meg az analóg vagy digitális érzékelőt.|
   Gyártó  | A gyártó neve. |
-  ProductCode  | Termékkód vagy modell neve vagy száma. Például RS-CO2-N01.  |
-  SensorMeasures > neve  | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységű mérések esetében határozza meg a mélységet. Például soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetria-adattal. |
-  SensorMeasures > adattípus  | Az telemetria adattípusa. Jelenleg a Double támogatott. |
-  SensorMeasures > típusa  | Az érzékelő telemetria-adattípusának mértékegysége A rendszer által definiált típusok a következők: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t.
-  SensorMeasures > egység | Az érzékelő telemetria-adategysége. A következő rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, Meter, hüvelyk, láb, Mile, km, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond és InchesPerHour. További részletekért tekintse meg a/ExtendedType API-t.
-  SensorMeasures > AggregationType  | Egyik sem, átlagos, maximális, minimum vagy StandardDeviation.
-  SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
-  SensorMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről.
-  Név  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
-  Leírás  | Adjon meg egy értelmes leírást a modellről.
-  Tulajdonságok  | További tulajdonságok a gyártótól.
+  Termékkód  | Termékkód vagy modellnév vagy -szám. Például RS-CO2-N01.  |
+  SensorMeasures > név  | Az érzékelőmérték neve. Csak kisbetűs támogatott. A különböző mélységből történő mérésekhez adja meg a mélységet. Például soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetriai adatokkal. |
+  SensorMeasures > DataType  | Telemetriai adattípus. Jelenleg a dupla támogatott. |
+  SensorMeasures > Típus  | Az érzékelő telemetriai adatainak mérési típusa. A rendszer által meghatározott típusok: AmbientTemperature, CO2, Depth, ElectricalConducttivity, LeafWetness, Length, LiquidLevel, Nitrát, O2, PH, foszfát, PointInTime, Kálium, Nyomás, RainGauge, RelativeHumidity, Sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. To add more, refer to the /ExtendedType API.
+  SensorMeasures > egység | Érzékelő telemetriai adatok egysége. A következők a rendszer által meghatározott egységek: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milliméter, CentiMéter, Méter, Inch, Láb, Mérföld, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MéterperSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricionContent, Liter, Milliliter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond és InchesPerHour. To add more, refer to the /ExtendedType API.
+  SensorMeasures > AggregationType  | Vagy nincs, átlagos, maximális, minimális vagy StandardDeviation.
+  SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a mérésa nedvesség 10 cm a föld alatt.
+  SensorMeasures > leírás  | Adja meg a mérés értelmes leírását.
+  Név  | Az erőforrás azonosítására szolgáló név. Például a modell vagy a termék neve.
+  Leírás  | Adja meg a modell értelmes leírását.
+  Tulajdonságok  | A gyártó további tulajdonságai.
   **Érzékelő**  |  |
-  HardwareId  | A gyártó által beállított érzékelő egyedi azonosítója.
-  SensorModelId  | A társított érzékelő modell azonosítója.
-  Hely  | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).
-  Port > neve  |Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.
+  Hardverazonosító  | A gyártó által beállított érzékelő egyedi azonosítója.
+  SensorModelId  | A társított érzékelőmodell azonosítója.
+  Hely  | Az érzékelő szélességi foka (-90 és +90 között), hosszúság (-180-180) és magasság (méterben).
+  Port > neve  |Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközön. Ennek meg kell egyeznie az eszközmodellben meghatározott névvel.
   DeviceId  | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.
-  Név  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
+  Név  | Az erőforrás azonosítására szolgáló név. Például az érzékelő neve vagy a termék neve és a modell száma vagy a termékkód.
   Leírás  | Adjon meg egy értelmes leírást.
-  Tulajdonságok  | További tulajdonságok a gyártótól.
+  Tulajdonságok  | A gyártó további tulajdonságai.
 
- Az egyes objektumokra és azok tulajdonságaira vonatkozó információkért lásd: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
+ Az egyes objektumokról és azok tulajdonságairól a [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)című témakörben talál további információt.
 
  > [!NOTE]
- > Az API-k egyedi azonosítókat adnak vissza minden létrehozott példányhoz. Ezt az azonosítót a fordítónak meg kell őriznie az eszközkezelés és a metaadatok szinkronizálása érdekében.
+ > Az API-k egyedi azonosítókat adnak vissza minden létrehozott példányhoz. Ezt az azonosítót a Fordítónak meg kell őriznie az eszközkezeléshez és a metaadatok szinkronizálásához.
 
 
 **Metaadatok szinkronizálása**
 
-A fordítónak frissítéseket kell küldenie a metaadatokon. A frissítési forgatókönyvek például az eszköz vagy az érzékelő nevének módosítása, valamint az eszköz vagy az érzékelő helyének módosítása.
+A fordítónak frissítéseket kell küldenie a metaadatokról. A frissítési forgatókönyvek például az eszköz vagy az érzékelő nevének és az eszköz vagy az érzékelő helyének megváltoztatása.
 
-A fordítónak képesnek kell lennie olyan új eszközök vagy érzékelők hozzáadására, amelyeket a FarmBeats felhasználó utáni csatolása telepített. Hasonlóképpen, ha egy eszközt vagy érzékelőt a felhasználó frissített, ugyanezt a megfelelő eszköz vagy érzékelő FarmBeats kell frissíteni. Az eszköz vagy az érzékelő frissítését igénylő jellemző forgatókönyvek az eszköz helyének változása vagy egy csomóponton lévő érzékelők hozzáadása.
+A fordítónak képesnek kell lennie arra, hogy új eszközöket vagy érzékelőket adjon hozzá, amelyeket a FarmBeats felhasználói bejegyzése ily ként telepített. Hasonlóképpen, ha a felhasználó egy eszközt vagy érzékelőt frissített, akkor a farmbeats-ben is frissíteni kell a megfelelő eszközt vagy érzékelőt. Az eszköz vagy érzékelő frissítését igénylő tipikus forgatókönyvek az eszköz helyének módosítása vagy érzékelők hozzáadása egy csomópontban.
 
 
 > [!NOTE]
-> Az eszköz vagy az érzékelő metaadatai nem támogatják a törlést.
+> Az eszköz- vagy érzékelőmetaadatok nem támogatottak a törlés.
 >
-> A metaadatok frissítéséhez meg kell hívnia az/Get/{ID} az eszközön vagy az érzékelőn, frissítenie kell a módosított tulajdonságokat, majd el kell végeznie egy/Put/{ID}, hogy a felhasználó által megadott tulajdonságok ne vesszenek el.
+> A metaadatok frissítéséhez kötelező meghívni a /Get/{id} kapcsolót az eszközön vagy az érzékelőn, frissíteni a módosított tulajdonságokat, majd a /Put/{id} parancsot, hogy a felhasználó által beállított tulajdonságok ne vesszenek el.
 
 ### <a name="add-new-types-and-units"></a>Új típusok és egységek hozzáadása
 
-A FarmBeats támogatja az új szenzor mértékének típusát és egységeit. További információ a/ExtendedType API-ról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
+A FarmBeats támogatja az új érzékelőmérték-típusok és -egységek hozzáadását. Az /ExtendedType API-ról további információt a [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)című témakörben talál.
 
-## <a name="telemetry-specifications"></a>Telemetria-specifikációk
+## <a name="telemetry-specifications"></a>Telemetriai specifikációk
 
-A telemetria-adatainak feldolgozásra az Azure Event Hubs közzétett kanonikus üzenetre van leképezve. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból.
+A telemetriai adatok egy olyan kanonikus üzenethez vannak leképezve, amely feldolgozásra az Azure Event Hubs-on van közzétéve. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adat -(telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokról.
 
-## <a name="send-telemetry-data-to-farmbeats"></a>Telemetria-FarmBeats küldése
+## <a name="send-telemetry-data-to-farmbeats"></a>Telemetriai adatok küldése a FarmBeats-nek
 
-Ha telemetria-adatokat szeretne küldeni a FarmBeats, hozzon létre egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hubhoz. További információ a telemetria-adatokról: [telemetria küldése az Event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)-ba.
+Telemetriai adatok küldéséhez a FarmBeats, hozzon létre egy ügyfelet, amely üzeneteket küld egy eseményközpont farmbeats. A telemetriai adatokról a [Telemetriai adatok küldése egy eseményközpontba című](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)témakörben talál további információt.
 
-Itt található egy Python-kód, amely a telemetria ügyfélként küldi el a megadott Event hub-nak.
+Az alábbiakban egy python-kódmintát talál, amely ügyfélként telemetriai adatokat küld egy adott eseményközpontba.
 
 ```python
 import azure
@@ -217,7 +217,7 @@ write_client.stop()
 
 ```
 
-A Canonical üzenet formátuma a következő:
+A gyűjtőüzenet formátuma a következő:
 
 ```json
 {
@@ -241,9 +241,9 @@ A Canonical üzenet formátuma a következő:
  ]
 }
 ```
-A telemetria JSON-ban szereplő összes kulcsnévnek kisbetűsnek kell lennie. Ilyenek például az DeviceID és a sensordata.
+A JSON telemetriai adatokban szereplő összes kulcsnévnek kisbetűsnek kell lennie. Ilyenek például a deviceid és sensordata.
 
-Például itt van egy telemetria-üzenet:
+Például az alábbiakban egy telemetriai üzenetet olvashat:
 
 
 ```json
@@ -284,65 +284,65 @@ Például itt van egy telemetria-üzenet:
 ```
 
 > [!NOTE]
-> A következő fejezetek más változásokhoz kapcsolódnak (például Felhasználói felület, hibakezelés stb.) az érzékelő partnere a fordítói összetevő fejlesztésében is hivatkozhat.
+> A következő szakaszok kapcsolódnak más változások (pl. Felhasználói felület, hibakezelés stb.) hogy az érzékelő partner utalhat a Fordító komponens fejlesztése során.
 
 
 ## <a name="link-a-farmbeats-account"></a>FarmBeats-fiók csatolása
 
-Miután az ügyfelek megvásárolták és telepítették az eszközöket vagy érzékelőket, hozzáférhetnek az eszköz-és telemetria az eszköz-partnerek szolgáltatott szoftver (SaaS) portálon. Az eszköz partnerei lehetővé tehetik, hogy az ügyfelek az Azure-beli FarmBeats-példánnyal összekapcsolják a fiókját, hogy megadják a következő hitelesítő adatok bevitelének módját:
+Miután az ügyfelek megvásárolták és telepítették az eszközöket vagy érzékelőket, hozzáférhetnek az eszközadatokhoz és a telemetriai adatokhoz az eszközpartnerek szoftverén szolgáltatásként (SaaS) portálként. Az eszközpartnerek lehetővé tehetik az ügyfelek számára, hogy összekapcsolják fiókjukat az Azure-beli FarmBeats-példányukkal azáltal, hogy a következő hitelesítő adatok megadását biztosítják:
 
-   - Megjelenítendő név (egy választható mező, amellyel a felhasználók megadhatják az integráció nevét)
+   - Megjelenítendő név (az integráció nevének definiálására szolgáló választható mező)
    - API-végpont
    - Bérlőazonosító
    - Ügyfél-azonosító
    - Titkos ügyfélkulcs
-   - EventHub-kapcsolatok karakterlánca
+   - EventHub-kapcsolati karakterlánc
    - Kezdő dátum
 
    > [!NOTE]
-   > A kezdő dátum lehetővé teszi, hogy a korábbi adatcsatorna, azaz a felhasználó által megadott dátummal rendelkező adatok legyenek.
+   > A kezdő dátum engedélyezi az előzményadatcsatornát, azaz a felhasználó által megadott dátumadatait.
 
 ## <a name="unlink-farmbeats"></a>FarmBeats leválasztása
 
-Az eszközök partnerei lehetővé teszik az ügyfelek számára egy meglévő FarmBeats-integráció leválasztását. A FarmBeats leválasztása nem törli a FarmBeats Datahub-ben létrehozott összes eszközt vagy érzékelő metaadatot. A Leválasztás a következő műveleteket végzi el:
+Az eszközpartnerek lehetővé tehetik az ügyfelek számára, hogy leváltsák a meglévő FarmBeats-integrációt. A FarmBeats leválasztása nem törölhet idovel vagy érzékelőmetaadatokkal, amelyeket a FarmBeats Datahub-ban hoztak létre. A leválasztás a következő:
 
-   - Leállítja a telemetria folyamatot.
-   - Törli és törli az integrációs hitelesítő adatokat az eszköz partnerén.
+   - Leállítja a telemetriai folyamatot.
+   - Törli és törli az eszközpartner integrációs hitelesítő adatait.
 
 ## <a name="edit-farmbeats-integration"></a>FarmBeats-integráció szerkesztése
 
-Az eszközök partnerei lehetővé teszik az ügyfeleknek, hogy szerkesszék a FarmBeats integrációs beállításait, ha az ügyfél titka vagy a kapcsolódási karakterlánc megváltozik. Ebben az esetben csak a következő mezők szerkeszthetők:
+Az eszközpartnerek lehetővé tehetik az ügyfelek számára a FarmBeats-integrációs beállítások szerkesztését, ha az ügyféltitkos vagy kapcsolati karakterlánc megváltozik. Ebben az esetben csak a következő mezők szerkeszthetők:
 
    - Megjelenítendő név (ha van ilyen)
-   - Az ügyfél titka (a "2x8 * * * * * * * * * * * * *" vagy a "
-   - Kapcsolati karakterlánc (a "2x8 * * * * * * * * * * * * * *"
+   - Ügyféltitkos adat (a tiszta szöveg helyett "2x8*********** " formátumban vagy a Megjelenítés/elrejtés funkcióban kell megjelennie)
+   - Kapcsolati karakterlánc (a tiszta szöveg helyett "2x8*********** " formátumban vagy Megjelenítés/elrejtés funkcióban kell megjelennie)
 
-## <a name="view-the-last-telemetry-sent"></a>Az utoljára eljuttatott telemetria megtekintése
+## <a name="view-the-last-telemetry-sent"></a>Az utoljára elküldött telemetriai adatok megtekintése
 
-Az eszközök partnerei lehetővé teszik az ügyfeleknek, hogy megtekintsék az elindított utolsó telemetria időbélyegét, amely a **telemetria elküldése**alatt található. Ez az az idő, amikor a legújabb telemetria sikeresen elküldtük a FarmBeats.
+Az eszközpartnerek lehetővé tehetik az ügyfelek számára, hogy megtekintsék az utoljára elküldött telemetriai adatok időbélyegét, amely az **Elküldött telemetriai**adatok alatt található. Ez az az időpont, amikor a legutóbbi telemetriai adatok sikeresen elküldésre kerültek a FarmBeats-nek.
 
-## <a name="troubleshooting-and-error-management"></a>Hibaelhárítás és hibák kezelése
+## <a name="troubleshooting-and-error-management"></a>Hibaelhárítás és hibakezelés
 
-**A beállítások vagy a támogatás hibáinak megoldása**
+**Hibaelhárítási lehetőség vagy támogatás**
 
-Ha az ügyfél nem tudja fogadni az eszköz vagy a telemetria a megadott FarmBeats-példányban, az eszköz partnerének támogatást és egy hibaelhárítási mechanizmust kell biztosítania.
+Ha az ügyfél nem tudja fogadni az eszközadatokat vagy a telemetriai adatokat a megadott FarmBeats-példányban, az eszközpartnernek támogatást és hibaelhárítási mechanizmust kell biztosítania.
 
-**Telemetria adatok megőrzése**
+**Telemetriai adatmegőrzés**
 
-A telemetria-információkat egy előre meghatározott időszakra vonatkozóan is meg kell őrizni, hogy a hiba vagy adatvesztés esetén hasznos legyen a telemetria hibakeresése vagy újraküldése.
+A telemetriai adatokat is meg kell őrizni egy előre meghatározott ideig, hogy hasznos lehet a hibakeresés, vagy újraküldése a telemetriai hiba vagy adatvesztés bekövetkezése esetén.
 
-**Hiba kezelése vagy hiba miatti értesítés**
+**Hibakezelés vagy hibaértesítés**
 
-Ha egy hiba hatással van az eszköz vagy az érzékelő metaadataira, illetve az adatintegrációs vagy telemetria-adatfolyamra az eszköz-partneri rendszeren, az ügyfélnek értesítést kell kapnia. A hibák megoldására szolgáló mechanizmust is meg kell tervezni és megvalósítani.
+Ha egy hiba befolyásolja az eszköz vagy érzékelő metaadatait, vagy az adatintegrációs vagy telemetriai adatfolyam az eszköz partnerrendszerben, az ügyfél értesítést kell kapnia. A hibák megoldására szolgáló mechanizmust is meg kell tervezni és végre kell hajtani.
 
-**A kapcsolatok ellenőrzőlistája**
+**Kapcsolat-ellenőrzőlista**
 
-Az eszközök gyártói vagy partnerei az alábbi ellenőrzőlista segítségével ellenőrizhetik, hogy az ügyfél által biztosított hitelesítő adatok pontosak-e:
+Az eszközgyártók vagy -partnerek az alábbi ellenőrzőlistát használhatják annak biztosítására, hogy az ügyfél által megadott hitelesítő adatok pontosak legyenek:
 
-   - Ellenőrizze, hogy kapott-e hozzáférési jogkivonatot a megadott hitelesítő adatokkal.
-   - Ellenőrizze, hogy az API-hívás sikeres-e a kapott hozzáférési jogkivonattal.
-   - Ellenőrizze, hogy létrejött-e a EventHub-ügyfélkapcsolat.
+   - Ellenőrizze, hogy a megadott hitelesítő adatokkal kap-e hozzáférési jogkivonatot.
+   - Ellenőrizze, hogy egy API-hívás sikeres-e a kapott hozzáférési jogkivonattal.
+   - Ellenőrizze, hogy létrejött-e az EventHub-ügyfélkapcsolat.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a REST APIről: [REST API](rest-api-in-azure-farmbeats.md).
+A REST API-ról további információt a [REST API című témakörben](rest-api-in-azure-farmbeats.md)talál.

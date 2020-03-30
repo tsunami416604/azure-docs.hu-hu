@@ -1,84 +1,84 @@
 ---
 title: Hibaelhárítás rendszerállapot-jelentések segítségével
-description: Az Azure Service Fabric Components által elküldett, a fürthöz vagy az alkalmazásokkal kapcsolatos problémák elhárítására szolgáló állapotjelentést ismerteti
+description: Az Azure Service Fabric-összetevők által küldött állapotjelentések, valamint a fürt- vagy alkalmazásproblémák elhárítására szolgáló használatuk
 author: oanapl
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282015"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
-Az Azure Service Fabric-összetevők rendszerállapot-jelentéseket biztosítanak a fürtben lévő összes entitáshoz, közvetlenül a jelölőnégyzetből. A [Health Store](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hozza létre és törli az entitásokat. Azt is megszervezi egy hierarchiában, amely rögzíti az entitások interakcióit.
+Az Azure Service Fabric-összetevők azonnal rendszerállapot-jelentéseket biztosítanak a fürt összes entitásáról. Az [állapottároló](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hoz létre és töröl entitásokat. Az entitásokkal folytatott interakciókat rögzítő hierarchiába is rendszerezi őket.
 
 > [!NOTE]
-> Az állapottal kapcsolatos fogalmak megismeréséhez tekintse meg a [Service Fabric Health Model](service-fabric-health-introduction.md)című témakört.
+> Az egészséggel kapcsolatos fogalmak megértéséhez olvassa el a [Service Fabric állapotmodelljének](service-fabric-health-introduction.md)további tudnivalóit.
 > 
 > 
 
-A rendszerállapot-jelentések a fürt és az alkalmazás funkcióinak láthatóságát, valamint a problémák megjelölését teszik lehetővé. Alkalmazások és szolgáltatások esetén a rendszerállapot-jelentések ellenőrzik, hogy az entitások implementálva vannak-e, és megfelelően viselkednek-e a Service Fabric perspektívában. A jelentések nem biztosítják a szolgáltatás üzleti logikájának vagy a nem válaszoló folyamatok észlelésének állapotát. A felhasználói szolgáltatások az állapotadatokat az adott logikával kapcsolatos adatokkal gazdagítják.
+A rendszerállapot-jelentések betekintést nyújtanak a fürt- és alkalmazásfunkciókba, valamint megjelölik a problémákat. Alkalmazások és szolgáltatások esetén a rendszerállapot-jelentések ellenőrzik, hogy az entitások vannak-e megvalósítva, és megfelelően viselkednek-e a Service Fabric szempontból. A jelentések nem biztosítanak állapotfigyelést a szolgáltatás üzleti logikájának vagy a nem válaszoló folyamatok észlelésének. A felhasználói szolgáltatások az állapotadatokat a logikájukra jellemző információkkal gazdagíthatják.
 
 > [!NOTE]
-> A felhasználói watchdogok által elküldett állapotjelentés csak akkor láthatók, *Ha* a rendszerösszetevők létrehoznak egy entitást. Ha töröl egy entitást, az állapotfigyelő szolgáltatás automatikusan törli az összes hozzá tartozó állapotjelentést. Ugyanez érvényes az entitás új példányának létrehozásakor. Ilyen például, amikor létrejön egy új állapot-nyilvántartó megőrzött szolgáltatás másodpéldány-példánya. A régi példányhoz társított összes jelentés törlődik, és a rendszer törli az áruházból.
+> A felhasználói figyelők által küldött állapotjelentések csak akkor láthatók, *ha* a rendszerösszetevők létrehoznak egy entitást. Egy entitás törlésekor az állapottároló automatikusan törli a hozzá társított összes állapotjelentést. Ugyanez igaz az entitás új példányának létrehozásakor is. Egy példa, ha egy új állapotalapú, megőrzött szolgáltatás replikapéldány jön létre. A régi példányhoz társított összes jelentés törlődik, és törlődik a tárolóból.
 > 
 > 
 
-A rendszerösszetevő-jelentéseket a forrás azonosítja, amely a "rendszer" kifejezéssel kezdődik **.** előtag. A watchdog nem használhatja ugyanazt az előtagot a forrásaihoz, mert a rendszer visszautasítja az érvénytelen paraméterekkel rendelkező jelentéseket.
+A rendszerösszetevő-jelentéseket a forrás azonosítja, amely a "**rendszerrel**kezdődik." előtagot. A figyelők nem használhatják ugyanazt az előtagot a forrásaikhoz, mivel az érvénytelen paraméterekkel rendelkező jelentéseket a rendszer elutasítja.
 
-Tekintse át a rendszerjelentéseket, amelyekből megtudhatja, hogy mi váltja ki, és hogy miként lehet kijavítani az általuk képviselt lehetséges problémákat.
+Nézzünk meg néhány rendszerjelentést, hogy megértsük, mi váltja ki őket, és hogyan lehet kijavítani az általuk képviselt potenciális problémákat.
 
 > [!NOTE]
-> Service Fabric folytatja a jelentések hozzáadását olyan feltételekkel, amelyek segítségével megtekintheti, hogy mi történik a fürtben és az alkalmazásokban. A meglévő jelentések további részletekkel is kijavíthatók, hogy gyorsabban lehessen elhárítani a problémát.
+> A Service Fabric továbbra is jelentéseket ad hozzá az érdeklődési feltételekről, amelyek javítják a fürtben és az alkalmazásokban zajló események láthatóságát. A meglévő jelentések további részletekkel javíthatók a probléma gyorsabb elhárításához.
 > 
 > 
 
-## <a name="cluster-system-health-reports"></a>Fürt rendszerállapot-jelentései
-A rendszer automatikusan létrehozza a fürt állapota entitást az állapotfigyelő tárolóban. Ha minden megfelelően működik, nem rendelkezik rendszerjelentéssel.
+## <a name="cluster-system-health-reports"></a>Fürtrendszer állapotjelentései
+A fürt állapotentitása automatikusan létrejön az állapottárolóban. Ha minden megfelelően működik, nincs rendszerjelentése.
 
-### <a name="neighborhood-loss"></a>Környék elvesztése
-A **System. Federation** hibát jelez, amikor a környék elvesztését észleli. A jelentés az egyes csomópontokból származik, és a csomópont-azonosítót a tulajdonság neve tartalmazza. Ha az egyik környék elvész a teljes Service Fabric ringben, akkor általában két olyan eseményt várhat, amely a Gap-jelentés mindkét oldalát képviseli. Ha több környék is elvész, több esemény is van.
+### <a name="neighborhood-loss"></a>A környék elvesztése
+**System.Federation** hibát jelez, ha a környék elvesztését észleli. A jelentés különálló csomópontokból származik, és a csomópontazonosító szerepel a tulajdonság nevében. Ha egy szomszédság elvész a teljes Service Fabric-gyűrű, általában számíthat két esemény, amely a gap jelentés mindkét oldalát képviseli. Ha több környék is elvész, több esemény is van.
 
-A jelentés az élettartam (TTL) globális címbérleti időtúllépését határozza meg. A jelentést a rendszer a TTL időtartamának minden felében újra elküldi, amíg a feltétel aktív marad. A rendszer automatikusan eltávolítja az eseményt, amikor lejár. A Remove-when-lejárt viselkedés biztosítja, hogy a jelentés megfelelően legyen megtisztítva az állapotfigyelő tárolóból, még akkor is, ha a jelentéskészítési csomópont nem működik.
+A jelentés a globális lízing időtúltöltését az élő idő (TTL) ként határozza meg. A jelentés a TTL időtartamának minden felében resent, amíg a feltétel aktív marad. Az esemény automatikusan törlődik, amikor lejár. Eltávolítás-mikor-lejárt viselkedés biztosítja, hogy a jelentés megfelelően törlődik a health Store, akkor is, ha a jelentési csomópont nem érhető el.
 
-* **SourceId forrásazonosító**: System. Federation
-* **Tulajdonság**: a **szomszédsággal** kezdődik, és csomópont-információkat tartalmaz.
-* **Következő lépések**: vizsgálja meg, miért elveszett a környék. Például vizsgálja meg a fürtcsomópontok közötti kommunikációt.
+* **SourceId**: System.Federation
+* **Tulajdonság**: **A Szomszédsággal kezdődik,** és tartalmazza a csomópontadatait.
+* **Következő lépések**: Vizsgálja meg, miért veszett el a környék. Ellenőrizze például a fürtcsomópontok közötti kommunikációt.
 
-### <a name="rebuild"></a>Újraépítése
+### <a name="rebuild"></a>Újraépítés
 
-A Feladatátvételi felügyelő (FM) szolgáltatás kezeli a fürtcsomópontok információit. Ha az FM elveszti az adatait, és adatvesztéssel jár, nem tudja garantálni, hogy a fürt csomópontjaival kapcsolatos legnaprakészebb információval rendelkezik. Ebben az esetben a rendszer egy Újraépítés útján halad át, a System.FM pedig a fürt összes csomópontjának adatait gyűjti az állapotának újbóli létrehozásához. A hálózati vagy csomóponti problémák miatt előfordulhat, hogy az Újraépítés elakad, vagy leáll. Ugyanez a Feladatátvételi felügyelő Master (FMM) szolgáltatással is történhet. A FMM olyan állapot nélküli rendszerszolgáltatás, amely nyomon követi, hogy az összes FMs a fürtben legyen. A FMM elsődleges értéke mindig a 0 értékhez legközelebbi AZONOSÍTÓJÚ csomópont. Ha a csomópont eldobásra kerül, egy Újraépítés aktiválódik.
-Ha az előző feltételek egyike történik, a **System.FM** vagy a **System. FMM** egy hibajelentésen keresztül jelzőt jelez. Az Újraépítés a két fázis egyikében elakadhat:
+A Feladatátvevő-kezelő (FM) szolgáltatás kezeli a fürtcsomópontok adatait. Amikor az FM elveszíti az adatait, és adatvesztésbe kerül, nem tudja garantálni, hogy a fürtcsomópontoklegfrissebb információival rendelkezik. Ebben az esetben a rendszer egy újraépítésen megy keresztül, és System.FM adatokat gyűjt a fürt összes csomópontjáról az állapot újraépítése érdekében. Néha hálózati vagy csomóponti problémák miatt az újraépítés elakadhat vagy elakadhat. Ugyanez történhet a Feladatátvevő kezelő főkiszolgáló (FMM) szolgáltatással is. Az FMM egy állapotnélküli rendszerszolgáltatás, amely nyomon követi, hogy az összes fm-ek hol vannak a fürtben. Az FMM elsődleges mindig a 0-hoz legközelebb eső azonosítóval rendelkező csomópont. Ha a csomópont megszakad, az újraépítés aktiválódik.
+Ha az előző feltételek valamelyike megtörténik, **System.FM** vagy **system.FMM** megjelöli azt egy hibajelentésen keresztül. Az újraépítés a következő két fázis egyikében ragadhat meg:
 
-* **Várakozás a szórásra**: az FM/FMM megvárja a szórási üzenet válaszát a többi csomóponttól.
+* **Várakozás az adásra**: Fm/FMM várja a többi csomópont tól érkező adásüzenet-választ.
 
-  * **Következő lépések**: vizsgálja meg, hogy van-e hálózati kapcsolati probléma a csomópontok között.
-* **Várakozás a csomópontokra**: az FM/FMM már fogadott egy szórási választ a többi csomóponttól, és az adott csomópontok válaszára vár. Az állapotjelentés felsorolja azokat a csomópontokat, amelyekhez az FM/FMM választ vár.
-   * **Következő lépések**: vizsgálja meg az FM/FMM és a felsorolt csomópontok közötti hálózati kapcsolatot. Vizsgálja meg az egyes felsorolt csomópontokat a lehetséges problémákkal kapcsolatban.
+  * **Következő lépések**: Vizsgálja meg, hogy van-e hálózati kapcsolati probléma a csomópontok között.
+* **Várakozás a csomópontokra**: Az FM/FMM már kapott egy közvetítési választ a többi csomóponttól, és bizonyos csomópontok válaszára vár. Az állapotjelentés felsorolja azokat a csomópontokat, amelyekre az FM/FMM választ vár.
+   * **Következő lépések:** Vizsgálja meg az FM/FMM és a felsorolt csomópontok közötti hálózati kapcsolatot. Vizsgálja meg az egyes felsorolt csomópontokat más lehetséges problémák ra.
 
-* **SourceId forrásazonosító**: System.FM vagy System. FMM
+* **SourceID**: System.FM vagy System.FMM
 * **Tulajdonság**: Újraépítés.
-* **Következő lépések**: vizsgálja meg a csomópontok közötti hálózati kapcsolatot, valamint az állapotjelentés leírásában felsorolt adott csomópontok állapotát.
+* **Következő lépések:** Vizsgálja meg a csomópontok közötti hálózati kapcsolatot, valamint az állapotjelentés leírásában felsorolt csomópontok állapotát.
 
-### <a name="seed-node-status"></a>Mag csomópontjának állapota
-A **System.FM** figyelmeztetést küld, ha egyes magok csomópontja nem kifogástalan állapotú. A magok csomópontjai a mögöttes fürt rendelkezésre állását fenntartó csomópontok. Ezek a csomópontok biztosítják, hogy a fürt a többi csomóponttal való bérletek létrehozásával, valamint bizonyos hálózati meghibásodások során tiebreakers szolgáljon. Ha a vetőmag-csomópontok többsége le van állítva a fürtben, és nem hozzák vissza, a fürt automatikusan leáll. 
+### <a name="seed-node-status"></a>Magotcsomópont állapota
+**System.FM** fürtszintű figyelmeztetést jelent, ha egyes magcsomópontok nem kifogástalanállapotúak. A kezdő csomópontok azok a csomópontok, amelyek fenntartják az alapul szolgáló fürt rendelkezésre állását. Ezek a csomópontok segítenek annak biztosításában, hogy a fürt továbbra is fel, mert más csomópontokkal bérleteket hoz létre, és bizonyos típusú hálózati hibák esetén tiebreakerként szolgál. Ha a magcsomópontok többsége nem található meg a fürtben, és nem hozzák vissza őket, a fürt automatikusan leáll. 
 
-A magok csomópontja nem kifogástalan állapotú, ha a csomópont állapota leállt, el lett távolítva vagy ismeretlen.
-A vetőmag-csomópont állapotára vonatkozó figyelmeztetési jelentés felsorolja az összes nem kifogástalan állapotú vetőmag-csomópontot, részletes információkkal.
+A magozott csomópont nem kifogástalan, ha a csomópont állapota Le, Eltávolítva vagy Ismeretlen.
+A figyelmeztető jelentés a mag csomópont állapota felsorolja az összes nem megfelelő állapotú mag csomópontok részletes információkat.
 
-* **SourceId forrásazonosító**: System.FM
-* **Tulajdonság**: SeedNodeStatus
-* **Következő lépések**: Ha ez a figyelmeztetés a fürtben jelenik meg, kövesse az alábbi utasításokat a kijavításához: Service Fabric 6,5-es vagy újabb verzióját futtató fürt esetén: az Azure-beli Service Fabric-fürtön a magok csomópontjának leállása után a Service Fabric megkísérli a nem magot futtató csomópontok automatikus módosítását. Ennek elvégzéséhez győződjön meg arról, hogy az elsődleges csomópont típusában lévő nem Seed csomópontok száma nagyobb vagy egyenlő a lefelé irányuló mag csomópontjainak számával. Ha szükséges, vegyen fel további csomópontokat az elsődleges csomópont-típusba ennek eléréséhez.
-A fürt állapotától függően eltarthat egy ideig a probléma megoldásában. Ha ez megtörtént, a rendszer automatikusan törli a figyelmeztetési jelentést.
+* **Forrásazonosító**: System.FM
+* **Ingatlan**: SeedNodeStatus
+* **Következő lépések:** Ha ez a figyelmeztetés a fürtben jelenik meg, kövesse az alábbi utasításokat a javításhoz: A Service Fabric 6.5-ös vagy újabb verzióját futtató fürt: Az Azure-beli Service Fabric-fürt, miután a magcsomópont leáll, a Service Fabric automatikusan megpróbálja módosítani azt egy nem magos csomópontra. Ehhez győződjön meg arról, hogy az elsődleges csomóponttípus nem magozott csomópontjainak száma nagyobb vagy egyenlő a Le magcsomópontok számával. Ha szükséges, adjon hozzá további csomópontokat az elsődleges csomóponttípushoz ennek eléréséhez.
+A fürt állapotától függően eltarthat egy ideig a probléma megoldása. Ha ez megtörtént, a figyelmeztető jelentés automatikusan törlődik.
 
-Service Fabric önálló fürt esetében a figyelmeztetési jelentés törléséhez az összes vetőmag-csomópontnak Kifogástalan állapotba kell állítania. Attól függően, hogy a magok miért nem kifogástalanok, különböző műveleteket kell végrehajtania: Ha a mag csomópontja nem működik, a felhasználóknak be kell állítania a mag csomópontot; Ha a vetőmag-csomópont el van távolítva vagy ismeretlen, akkor ezt a vetőmag-csomópontot [el kell távolítani a fürtből](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
-A figyelmeztetési jelentés automatikusan törlődik, amikor az összes vetőmag-csomópont Kifogástalan állapotba kerül.
+A Service Fabric önálló fürt, a figyelmeztetési jelentés törléséhez az összes magcsomópontok kell kifogástalan állapotúvá válnia kell. Attól függően, hogy miért nem kifogástalan a magcsomópontok, különböző műveleteket kell végezni: ha a magcsomópont le, a felhasználóknak fel kell hozniuk a magcsomópontot; ha a magcsomópont Eltávolítva vagy Ismeretlen, ezt a magcsomópontot [el kell távolítani a fürtből](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+A figyelmeztetési jelentés automatikusan törlődik, ha az összes magcsomópont kifogástalanállapotba kerül.
 
-A 6,5-nál régebbi Service Fabric verziót futtató fürtök esetében: ebben az esetben a figyelmeztetési jelentést manuálisan kell törölni. **A jelentés törlése előtt győződjön meg arról, hogy az összes mag-csomópont kifogástalan**állapotba kerül: Ha a magok csomópontja nem működik, a felhasználóknak el kell érniük a mag csomópontot; ha a vetőmag-csomópontot eltávolítja vagy ismeretlen, a vetőmag-csomópontot el kell távolítani a fürtből.
-Miután az összes vetőmag-csomópont Kifogástalan állapotba került, a Powershellből a következő parancs használatával [törölje a figyelmeztetési jelentést](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
+A Service Fabric 6.5-nél régebbi verzióját futtató fürt esetén: Ebben az esetben a figyelmeztetési jelentést manuálisan kell törölni. **A felhasználóknak meg kell győződniük arról, hogy az összes magcsomópont kifogástalan állapotba kerül a jelentés törlése előtt:** ha a magcsomópont le, a felhasználóknak fel kell hozniuk a magcsomópontot;ha a magcsomópont eltávolítva vagy ismeretlen, akkor a magcsomópontot el kell távolítani a fürtből.
+Miután az összes magcsomópontok kifogástalanná válnak, használja a következő parancsot a Powershell [törölje a figyelmeztető jelentést:](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
@@ -116,37 +116,37 @@ HealthEvents          :
 
 
 ### <a name="certificate-expiration"></a>Tanúsítvány lejárata
-A **System. FabricNode** figyelmeztetést küld, ha a csomópont által használt tanúsítványok közelében lejárnak. Egy csomóponton három tanúsítvány van: **Certificate_cluster**, **Certificate_server**és **Certificate_default_client**. Ha a lejárat legalább két hét múlva lejár, a jelentés állapota OK. Ha a lejárat két héten belül van, a jelentés típusa figyelmeztetés. Az események ÉLETTARTAMa végtelen, és akkor törlődnek, ha egy csomópont elhagyja a fürtöt.
+**System.FabricNode** figyelmeztetést jelent, ha a csomópont által használt tanúsítványok lejárati idő közelében vannak. Csomópontonként három tanúsítvány létezik: **Certificate_cluster**, **Certificate_server**és **Certificate_default_client**. Ha a lejárati legalább két hét múlva, a jelentés állapota rendben van. Ha a lejárat két héten belül, a jelentés típusa egy figyelmeztetés. Ezeknek az eseményeknek a TTL-je végtelen, és eltávolításra kerülnek, amikor egy csomópont elhagyja a fürtöt.
 
-* **SourceId forrásazonosító**: System. FabricNode
-* **Tulajdonság**: a **tanúsítvánnyal** kezdődik, és további információkat tartalmaz a tanúsítvány típusáról.
-* **Következő lépések**: frissítse a tanúsítványokat, ha a közeljövőben lejárnak.
+* **SourceId**: System.FabricNode
+* **Tulajdonság**: **A tanúsítványlal kezdődik,** és további információkat tartalmaz a tanúsítvány típusáról.
+* **Következő lépések**: Frissítse a tanúsítványokat, ha azok a lejárat közelében vannak.
 
-### <a name="load-capacity-violation"></a>Teherbírás megsértése
-A Service Fabric Load Balancer figyelmeztetést küld, ha a csomópont kapacitása megsértését észleli.
+### <a name="load-capacity-violation"></a>Kapacitás terhelési megsértése
+A Service Fabric terheléselosztó figyelmeztetést jelent, ha egy csomópont kapacitásának megsértését észleli.
 
-* **SourceId forrásazonosító**: System. PLB
-* **Tulajdonság**: a **kapacitással**kezdődik.
-* **Következő lépések**: Tekintse át a megadott metrikákat, és tekintse meg az aktuális kapacitást a csomóponton.
+* **SourceId**: System.PLB
+* **Tulajdonság**: **Kapacitással**kezdődik.
+* **Következő lépések:** Ellenőrizze a megadott metrikákat, és tekintse meg az aktuális kapacitást a csomóponton.
 
-### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Csomópont-kapacitás nem egyezik az erőforrás-irányítási mérőszámok esetében
-A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában definiált csomópont-kapacitások nagyobbak, mint az erőforrás-irányítási metrikák (memória és CPU-magok) valódi csomópont-kapacitása. Egy állapotjelentés jelenik meg, ha az első olyan szolgáltatáscsomag, amely egy adott csomóponton [erőforrás-irányítási](service-fabric-resource-governance.md) regisztereket használ.
+### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Csomópontkapacitás-eltérés az erőforrás-irányítási mérőszámokhoz
+A System.Hosting figyelmeztetést jelent, ha a fürtjegyzékben meghatározott csomópontkapacitások nagyobbak, mint az erőforrás-irányítási metrikák (memória- és cpumagok) valós csomópontkapacitásai. Egy állapotjelentés jelenik meg, amikor az első szolgáltatáscsomag, amely [erőforrás-szabályozás](service-fabric-resource-governance.md) regisztrál egy adott csomóponton.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: **ResourceGovernance**.
-* **Következő lépések**: Ez a probléma problémát jelenthet, mert a szolgáltatási csomagok szabályozása nem kényszerített a várt módon, és az [erőforrás-szabályozás](service-fabric-resource-governance.md) nem működik megfelelően. Frissítse a fürt jegyzékfájlját a metrikák megfelelő csomópont-kapacitásával, vagy ne határozza meg, és hagyja Service Fabric az elérhető erőforrások automatikus észlelését.
+* **SourceId**: System.Hosting
+* **Ingatlan**: **ResourceGovernance**.
+* **Következő lépések:** Ez a probléma problémát okozhat, mert a szolgáltatáscsomagok szabályozása nem a várt módon történik, és [az erőforrás-szabályozás](service-fabric-resource-governance.md) nem működik megfelelően. Frissítse a fürtjegyzéket a metrikák megfelelő csomópontkapacitásával, vagy ne adja meg őket, és hagyja, hogy a Service Fabric automatikusan észlelje a rendelkezésre álló erőforrásokat.
 
-## <a name="application-system-health-reports"></a>Alkalmazásrendszer állapotáról készült jelentések
-A Fürtfelügyelő szolgáltatást jelképező System.CM az alkalmazással kapcsolatos információkat kezelő szolgáltató.
+## <a name="application-system-health-reports"></a>Az alkalmazásrendszer állapotjelentései
+System.CM, amely a Fürtkezelő szolgáltatást jelöli, az alkalmazással kapcsolatos információkat kezelő hatóság.
 
-### <a name="state"></a>State
-A System.CM-jelentések az alkalmazás létrehozásakor vagy frissítésekor OKként jelennek meg. A szolgáltatás törli az állapot-tárolót az alkalmazás törlésekor, hogy az eltávolítható legyen az áruházból.
+### <a name="state"></a>Állapot
+System.CM az alkalmazás létrehozásakor vagy frissítésekor rendben lévő jelentéseket. Tájékoztatja a health Store-t, amikor az alkalmazást törlik, így eltávolítható az üzletből.
 
-* **SourceId forrásazonosító**: System.cm
-* **Tulajdonság**: állapot.
-* **Következő lépések**: Ha az alkalmazást létrehozták vagy frissítették, tartalmaznia kell a Fürtfelügyelő állapotjelentést. Ellenkező esetben egy lekérdezés kiadásával vizsgálja meg az alkalmazás állapotát. Használja például a **Get-ServiceFabricApplication-ApplicationName** *ApplicationName*PowerShell-parancsmagot.
+* **SourceId**: System.CM
+* **Tulajdonság**: állam.
+* **Következő lépések:** Ha az alkalmazást létrehozták vagy frissítették, tartalmaznia kell a Fürtkezelő állapotjelentését. Ellenkező esetben ellenőrizze az alkalmazás állapotát lekérdezés kibocsátásával. Használja például a **Get-ServiceFabricApplication -ApplicationName** *alkalmazásnév*PowerShell-parancsmalapot.
 
-Az alábbi példa a **Fabric:/WordCount** alkalmazás állapotjelző eseményét mutatja be:
+A következő példa a **fabric:/WordCount** alkalmazás állapoteseményét mutatja be:
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
@@ -169,16 +169,16 @@ HealthEvents                    :
                                   Transitions           : Error->Ok = 7/13/2017 5:57:05 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-## <a name="service-system-health-reports"></a>Szolgáltatási rendszerállapot-jelentések
-A Feladatátvételi felügyelő szolgáltatást jelképező System.FM a szolgáltatásokkal kapcsolatos információkat kezelő szolgáltató.
+## <a name="service-system-health-reports"></a>Szolgáltatási rendszer állapotjelentései
+System.FM, amely a Feladatátvevő-kezelő szolgáltatást képviseli, az a hatóság, amely a szolgáltatásokkal kapcsolatos információkat kezeli.
 
-### <a name="state"></a>State
-A System.FM jelentések a szolgáltatás létrehozásakor rendben vannak. A szolgáltatás törlése után törli az entitást az állapotfigyelő tárolóból.
+### <a name="state"></a>Állapot
+System.FM a szolgáltatás létrehozásakor rendben lévő ként jelent. Törli az entitást az állapottárolóból, amikor a szolgáltatás törlődik.
 
-* **SourceId forrásazonosító**: System.FM
-* **Tulajdonság**: állapot.
+* **SourceId**: System.FM
+* **Tulajdonság**: állam.
 
-Az alábbi példa a Service **Fabric:/WordCount/wordcountwebservice szolgáltatásé viszont**:
+A következő példa a **szolgáltatásháló állapoteseményét mutatja be:/WordCount/WordCountWebService:**
 
 ```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
@@ -205,35 +205,35 @@ HealthEvents          :
 ```
 
 ### <a name="service-correlation-error"></a>Szolgáltatás korrelációs hibája
-A **System. PLB** hibát jelez, amikor azt észleli, hogy egy szolgáltatás frissítése összefügg egy másik szolgáltatással, amely affinitási láncot hoz létre. A jelentés törlődik, amikor sikeres frissítés történik.
+**A System.PLB** hibát jelez, ha azt észleli, hogy egy szolgáltatás frissítése korrelál egy másik szolgáltatással, amely affinitási láncot hoz létre. A jelentés törlődik, ha sikeres frissítés történik.
 
-* **SourceId forrásazonosító**: System. PLB
-* **Tulajdonság**: **ServiceDescription leírásban**.
-* **Következő lépések**: Tekintse meg a korrelált szolgáltatás leírását.
+* **SourceId**: System.PLB
+* **Tulajdonság**: **ServiceDescription**.
+* **Következő lépések**: Ellenőrizze a kapcsolódó szolgáltatásleírásokat.
 
-## <a name="partition-system-health-reports"></a>Partíció rendszerállapot-jelentései
-A Feladatátvételi felügyelő szolgáltatást jelölő System.FM az a szolgáltató, amely a szolgáltatási partíciókkal kapcsolatos információkat kezeli.
+## <a name="partition-system-health-reports"></a>A partirendszer állapotjelentései
+System.FM, amely a Feladatátvevő-kezelő szolgáltatást képviseli, az a hatóság, amely a szolgáltatáspartíciókkal kapcsolatos információkat kezeli.
 
-### <a name="state"></a>State
-A System.FM-jelentések a partíció létrehozásakor és kifogástalan állapotában is rendben vannak. A partíció törlése után törli az entitást az állapotfigyelő tárolóból.
+### <a name="state"></a>Állapot
+System.FM jelentéseket rendben, ha a partíció létrejött, és kifogástalan állapotú. Törli az entitást a jogalanyból a partíció törlésekor.
 
-Ha a partíció a replikák minimális száma alatt van, hibát jelez. Ha a partíció nem a replika minimális száma alá esik, de a cél replikák száma alá esik, a rendszer figyelmeztetést jelenít meg. Ha a partíció kvórum elvesztése miatt következik be, a System.FM hibát jelez.
+Ha a partíció a minimális replikaszám alatt van, hibát jelez. Ha a partíció nem éri el a minimális replikaszáma, de ez nem éri el a cél replika száma, figyelmeztetést jelent. Ha a partíció kvórumveszteségben van, System.FM hibát jelez.
 
-További jelentős események esetén figyelmeztetés jelenik meg, ha az újrakonfigurálás a vártnál hosszabb időt vesz igénybe, és ha a Build a vártnál tovább tart. A build és az újrakonfigurálás várható időpontja a szolgáltatási forgatókönyvek alapján konfigurálható. Ha például egy szolgáltatás egy terabájtos állapottal rendelkezik (például Azure SQL Database), akkor a Build hosszabb időt vesz igénybe, mint egy kis mennyiségű szolgáltatásnál.
+További említésre méltó események közé tartozik egy figyelmeztetés, ha az újrakonfigurálás a vártnál tovább tart, és ha a build a vártnál tovább tart. A létrehozás és az újrakonfigurálás várható időpontjai a szolgáltatási forgatókönyvek alapján konfigurálhatók. Ha például egy szolgáltatás egy terabájtállapottal rendelkezik, például az Azure SQL Database, a build hosszabb időt vesz igénybe, mint egy kis mennyiségű állapotú szolgáltatás.
 
-* **SourceId forrásazonosító**: System.FM
-* **Tulajdonság**: állapot.
-* **Következő lépések**: Ha az állapot nem megfelelő, lehetséges, hogy egyes replikák nem lettek létrehozva, megnyitva vagy előléptetve az elsődleges vagy a másodlagos helyesen. 
+* **SourceId**: System.FM
+* **Tulajdonság**: állam.
+* **Következő lépések:** Ha az állapot nem rendben van, lehetséges, hogy egyes replikák nem hoztak létre, nem nyitottak meg, vagy előléptetett elsődleges vagy másodlagos helyesen. 
 
-Ha a Leírás leírja a kvórum elvesztését, és megvizsgálta, hogy a replikák milyen részletesen jelennek meg, és biztonsági másolatot készít róluk, a partíció ismét online állapotba kerül.
+Ha a leírás ismerteti a kvórum elvesztése, majd megvizsgálja a részletes állapotjelentés replikák, amelyek nem, és hozza vissza őket segít, hogy a partíció újra online állapotba.
 
-Ha a leírás egy olyan partíciót ír le, amely az [újrakonfigurálás](service-fabric-concepts-reconfiguration.md)során beragadt, akkor az elsődleges replikán található állapotjelentés további információkat tartalmaz.
+Ha a leírás az [újrakonfigurálásban](service-fabric-concepts-reconfiguration.md)ragadt partíciót írja le, akkor az elsődleges replika állapotjelentése további információkat tartalmaz.
 
-Más System.FM-jelentések esetén a replikák, illetve a partíció vagy a szolgáltatás más rendszerösszetevőkből is készíthető jelentés. 
+Más System.FM állapotjelentések esetén a replikákról, a partícióról vagy a szolgáltatásról más rendszerösszetevőkről származó jelentések lesznek. 
 
-Az alábbi példák a jelentések némelyikét írják le. 
+Az alábbi példák néhány ilyen jelentést mutatnak be. 
 
-Az alábbi példa egy kifogástalan partíciót mutat be:
+A következő példa egy kifogástalan állapotú partíciót mutat be:
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
@@ -255,7 +255,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-A következő példa egy olyan partíció állapotát jeleníti meg, amely a cél replikáinak száma alatt van. A következő lépés a partíció leírásának beolvasása, amely a konfigurálásának módját mutatja: a **MinReplicaSetSize** három, a **TargetReplicaSetSize** pedig hét. Ezután szerezze be a fürtben lévő csomópontok számát, ami ebben az esetben öt. Így ebben az esetben két replika nem helyezhető el, mert a replikák megcélzott száma nagyobb, mint a rendelkezésre álló csomópontok száma.
+A következő példa egy olyan partíció állapotát mutatja be, amely a célreplikaszáma alatt van. A következő lépés a partíció leírása, amely megmutatja, hogyan van konfigurálva: **MinReplicaSetSize** három és **TargetReplicaSetSize** hét. Ezután kapja meg a csomópontok számát a fürtben, amely ebben az esetben öt. Ebben az esetben két replikát nem lehet elhelyezni, mert a replikák célszáma magasabb, mint a rendelkezésre álló csomópontok száma.
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
@@ -333,7 +333,7 @@ PS C:\> @(Get-ServiceFabricNode).Count
 5
 ```
 
-Az alábbi példa egy olyan partíció állapotát mutatja, amely az újrakonfigurálás során beragadt, mivel a felhasználó nem tartja tiszteletben a **RunAsync** metódusban található lemondási tokent. Az elsődleges (P) jelölésű replika állapotáról szóló jelentés kivizsgálása segíthet a probléma további részletezésében.
+A következő példa egy olyan partíció állapotát mutatja be, amely az újrakonfigurálásban ragadt, mivel a felhasználó nem tartja tiszteletben a törlési jogkivonatot a **RunAsync** metódusban. Az elsődlegesként (P) megjelölt replika állapotjelentésének vizsgálata segíthet a probléma további részletezésében.
 
 ```powershell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
@@ -365,7 +365,7 @@ HealthEvents          :
                         IsExpired             : False
                         Transitions           : Ok->Warning = 8/27/2017 3:43:32 AM, LastError = 1/1/0001 12:00:00 AM
 ```
-Ez az állapotjelentés az újrakonfigurálás alatt álló partíció replikáinak állapotát jeleníti meg: 
+Ez az állapotjelentés az újrakonfigurálás alatt álló partíció replikáinak állapotát mutatja: 
 
 ```
   P/S Ready Node1 131482789658160654
@@ -373,31 +373,31 @@ Ez az állapotjelentés az újrakonfigurálás alatt álló partíció replikái
   S/S Ready Node3 131482789688598468
 ```
 
-Az állapotjelentés az egyes replikák esetében az alábbiakat tartalmazza:
+Az állapotjelentés minden egyes kópiához a következőket tartalmazza:
 - Előző konfigurációs szerepkör
-- Aktuális konfigurációs szerepkör
+- Jelenlegi konfigurációs szerepkör
 - [Replika állapota](service-fabric-concepts-replica-lifecycle.md)
-- A csomópont, amelyen a replika fut
+- Az a csomópont, amelyen a replika fut
 - Replika azonosítója
 
-A példához hasonló esetben további vizsgálatra van szükség. Vizsgálja meg az egyes replikák állapotát az előző példában `Primary` és `Secondary` (131482789658160654 és 131482789688598467) jelölésű replikákkal kezdődően.
+Egy példához hasonló esetben további vizsgálatra van szükség. Vizsgálja meg az egyes replika állapotát, `Primary` `Secondary` kezdve a replikák jelölt és (131482789658160654 és 131482789688598467) az előző példában.
 
-### <a name="replica-constraint-violation"></a>Replika megkötésének megsértése
-A **System. PLB** figyelmeztetést küld, ha a replika korlátozásának megsértését észleli, és nem helyezi el az összes partíció replikáját. A jelentés részletei megmutatják, hogy mely megkötések és tulajdonságok akadályozzák meg a replika elhelyezését.
+### <a name="replica-constraint-violation"></a>Replikamegkötés megsértése
+**A System.PLB** figyelmeztetést jelent, ha replikamegkötés-megsértést észlel, és nem tudja elhelyezni az összes partícióreplikát. A jelentés részletei azt mutatják, hogy mely korlátozások és tulajdonságok akadályozzák meg a replika elhelyezését.
 
-* **SourceId forrásazonosító**: System. PLB
-* **Tulajdonság**: a **ReplicaConstraintViolation**-vel kezdődik.
+* **SourceId**: System.PLB
+* **Tulajdonság**: A **ReplicaConstraintViolation**kezdetével kezdődik.
 
-## <a name="replica-system-health-reports"></a>Replika rendszerállapot-jelentései
-Az újrakonfigurálási ügynök összetevőjét képviselő **System. ra**, a replika állapotának szolgáltatója.
+## <a name="replica-system-health-reports"></a>Replikarendszer állapotjelentései
+**System.RA**, amely az újrakonfigurációs ügynök összetevő, a hatóság a replika állapota.
 
-### <a name="state"></a>State
-A System. RA-jelentések a replika létrehozásakor rendben vannak.
+### <a name="state"></a>Állapot
+A System.RA a kópia létrehozásakor rendben van.
 
-* **SourceId forrásazonosító**: System. ra
-* **Tulajdonság**: állapot.
+* **SourceId**: System.RA
+* **Tulajdonság**: állam.
 
-Az alábbi példa egy kifogástalan replikát mutat be:
+A következő példa egy kifogástalan állapotú replikát mutat be:
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
@@ -420,15 +420,15 @@ HealthEvents          :
 ```
 
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus, ReplicaCloseStatus, ReplicaChangeRoleStatus
-Ez a tulajdonság a replikák megnyitása, a replika lezárása vagy egy replika egyik szerepkörből egy másikba való átváltásakor a figyelmeztetések és hibák jelzésére szolgál. További információ: [replika életciklusa](service-fabric-concepts-replica-lifecycle.md). Ebben az időszakban a meghibásodások az API-hívásoktól vagy a szolgáltatási gazdagép összeomlásával kapcsolatos kivételek lehetnek. A kódból származó C# API-hívások miatti hibák esetén Service Fabric hozzáadja a kivételt és a verem nyomkövetését az állapotjelentés-jelentéshez.
+Ez a tulajdonság figyelmeztetéseket vagy hibákat jelez, amikor megpróbál megnyitni egy replikát, vagy átvált egy kópiát egyik szerepkörből a másikba. További információ: [Replika életciklusa](service-fabric-concepts-replica-lifecycle.md). A hibák lehetnek kivételek az API-hívások vagy összeomlik a szolgáltatás gazdagép folyamat ez idő alatt. A C# kódból érkező API-hívások miatti hibák esetén a Service Fabric hozzáadja a kivételt és a veremkövetési nyomkövetést az állapotjelentéshez.
 
-Ezek az állapot-figyelmeztetések akkor következnek be, amikor a művelet a házirendtől függően bizonyos számú alkalommal újra helyire próbálkozik. Service Fabric újrapróbálkozik a művelettel a maximális küszöbértékig. A maximális küszöbérték elérésekor előfordulhat, hogy a rendszer megpróbálta kijavítani a helyzetet. Ez a kísérlet azt eredményezheti, hogy ezek a figyelmeztetések törölve lettek, mivel a művelet ezen a csomóponton is elérhető. Ha például egy replika nem tud megnyitni egy csomóponton, a Service Fabric állapot figyelmeztetést vált ki. Ha a replika továbbra sem fog megnyílni, Service Fabric önálló javítást hajt végre. Előfordulhat, hogy ez a művelet egy másik csomóponton próbálkozik. Ez a kísérlet azt eredményezi, hogy a rendszer törli a replika figyelmeztetését. 
+Ezek az állapotfigyelmeztetések a művelet helyi újbóli megkísérlése után jelennek meg néhány alkalommal (a házirendtől függően). A Service Fabric újrapróbálkozik a művelettel egy maximális küszöbértékig. A maximális küszöbérték elérése után megpróbálhat cselekedni a helyzet javítása érdekében. Ez a kísérlet a figyelmeztetések törlődéséhez vezethet, mivel feladja a csomóponton végzett műveletet. Ha például egy replika nem nyitja meg a csomóponton, a Service Fabric állapotfigyelmeztetést ad ki. Ha a replika továbbra sem nyílik meg, a Service Fabric önjavítási jár el. Ez a művelet magában foglalhatja ugyanazt a műveletet egy másik csomóponton. Ez a kísérlet okozza a replika számára előadott figyelmeztetés törlését. 
 
-* **SourceId forrásazonosító**: System. ra
+* **SourceId**: System.RA
 * **Tulajdonság**: **ReplicaOpenStatus**, **ReplicaCloseStatus**és **ReplicaChangeRoleStatus**.
-* **Következő lépések**: vizsgálja meg a szolgáltatási kódot vagy az összeomlási memóriaképeket, hogy megtudja, miért sikertelen a művelet.
+* **Következő lépések:** Vizsgálja meg a szolgáltatáskódot vagy az összeomlási memóriaképeket, hogy megállapítsa, miért a művelet sikertelen.
 
-Az alábbi példa egy olyan replika állapotát mutatja, amely a nyitott metódusból `TargetInvocationException`. A leírás tartalmazza a meghibásodási pontot, a **IStatefulServiceReplica. Open**, a kivétel típusát **TargetInvocationException**és a verem nyomkövetését.
+A következő példa egy olyan replika `TargetInvocationException` állapotát mutatja be, amely a nyílt módszerből jelenik meg. A leírás tartalmazza a hibapontot, **az IStatefulServiceReplica.Open**, a **TargetInvocationException**kivételtípust és a veremnyomkövetést.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -479,7 +479,7 @@ Exception has been thrown by the target of an invocation.
                         Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM                        
 ```
 
-Az alábbi példa egy olyan replikát mutat be, amely állandóan összeomlik a bezáráskor:
+A következő példa egy olyan replikát mutat be, amely a zárás során folyamatosan összeomlik:
 
 ```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
@@ -510,21 +510,21 @@ HealthEvents          :
 ```
 
 ### <a name="reconfiguration"></a>Reconfiguration
-Ezzel a tulajdonsággal jelezhető, hogy egy [újrakonfigurálást](service-fabric-concepts-reconfiguration.md) végző replika esetén az újrakonfigurálás megrekedt vagy megakadt. Ez az állapotjelentés azon a replikán lehet, amelynek a jelenlegi szerepköre elsődleges, kivéve a swap elsődleges újrakonfigurálásának eseteit, ahol a replika az elsődlegesről az aktív másodlagosra van lefokozni.
+Ez a tulajdonság jelzi, ha egy [újrakonfigurálást](service-fabric-concepts-reconfiguration.md) végző replika észleli, hogy az újrakonfigurálás leállt vagy beragadt. Ez az állapotjelentés lehet a replika, amelynek jelenlegi szerepkörelsődleges, kivéve a swap elsődleges újrakonfigurálása esetén, ahol lehet, hogy a replika, amely lefokozták az elsődleges aktív másodlagos.
 
-Az újrakonfigurálás a következő okok egyike miatt elakadhat:
+Az újrakonfigurálás a következő okok valamelyike miatt ragadhat meg:
 
-- A helyi replika egyik művelete, az újrakonfigurálást végző replika, nem fejeződik be. Ebben az esetben az ezen a replikán lévő, más összetevőkből, a System. RAP-ból vagy a System.RE származó állapotjelentés kivizsgálása további információkat is biztosíthat.
+- Nem hajt végre egy művelet a helyi kópián, ugyanaz a kópia, mint az újrakonfigurálást végző kópia. Ebben az esetben a más összetevők, a System.RAP vagy a System.RE kópiájának állapotjelentései további információkat nyújthatnak.
 
-- Egy művelet nem fejeződik be távoli replikán. A függőben lévő műveletek replikái a Health jelentésben vannak felsorolva. Ezen távoli replikák esetében további vizsgálatot kell végezni. A csomópont és a távoli csomópont között kommunikációs problémák is előfordulhatnak.
+- A művelet nem történik meg egy távoli kópián. Azok a replikák, amelyekhez műveletek vannak függőben, az állapotjelentésben vannak felsorolva. További vizsgálatot kell végezni az egészségügyi jelentések e távoli replikák. Kommunikációs problémák is lehetnek a csomópont és a távoli csomópont között.
 
-Ritka esetekben az újrakonfigurálás az adott csomópont és a Feladatátvételi felügyelő szolgáltatás közötti kommunikáció vagy egyéb problémák miatt beragadható.
+Ritka esetekben az újrakonfigurálás a csomópont és a feladatátvételi kezelő szolgáltatás közötti kommunikáció vagy egyéb problémák miatt beragadhat.
 
-* **SourceId forrásazonosító**: System. ra
-* **Tulajdonság**: újrakonfigurálás.
-* **Következő lépések**: vizsgálja meg a helyi vagy a távoli replikákat az állapotjelentés leírásának függvényében.
+* **SourceId**: System.RA
+* **Tulajdonság**: Újrakonfigurálás.
+* **Következő lépések:** Vizsgálja meg a helyi vagy távoli replikák leírásától függően az állapotjelentés.
 
-Az alábbi példa egy olyan állapotjelentést mutat be, amelyben az újrakonfigurálás megakad a helyi replikán. Ebben a példában egy olyan szolgáltatás okozza, amely nem tartja tiszteletben a lemondási jogkivonatot.
+A következő példa egy állapotjelentést mutat be, amelyben az újrakonfigurálás beragadt a helyi replika. Ebben a példában ez annak köszönhető, hogy a szolgáltatás nem tartja tiszteletben a lemondási jogkivonatot.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
@@ -553,7 +553,7 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 2:13:57 AM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-Az alábbi példa egy olyan állapotjelentést mutat be, amelyben az újrakonfigurálás megakad a két távoli replika válaszára való várakozáskor. Ebben a példában három replika van a partícióban, beleértve a jelenlegi elsődlegest is. 
+A következő példa egy állapotjelentést mutat be, amelyben az újrakonfigurálás két távoli kópia válaszára vár. Ebben a példában három replikák a partíción, beleértve az aktuális elsődleges. 
 
 ```Powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId  579d50c6-d670-4d25-af70-d706e4bc19a2 -ReplicaOrInstanceId 131483956274977415
@@ -585,32 +585,32 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 12:07:37 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-Ez az állapotjelentés azt mutatja, hogy az újrakonfigurálás megakadt a két replika válaszára való várakozáskor: 
+Ez az állapotjelentés azt mutatja, hogy az újrakonfigurálás két kópia válaszára vár: 
 
 ```
     P/I Down 40 131483956244554282
     S/S Down 20 131483956274972403
 ```
 
-Az egyes replikák esetében az alábbi információk szerepelnek:
+Minden egyes kópiára a következő információk állnak rendelkezésre:
 - Előző konfigurációs szerepkör
-- Aktuális konfigurációs szerepkör
+- Jelenlegi konfigurációs szerepkör
 - [Replika állapota](service-fabric-concepts-replica-lifecycle.md)
-- Csomópont-azonosító
+- Csomópont azonosítója
 - Replika azonosítója
 
-Az újrakonfigurálás feloldása:
-- A **lefelé** replikált replikákat fel kell vinni. 
-- A **kiépített** replikáknak készen kell állnia a build és az áttérés befejezésére.
+Az újrakonfigurálás feloldásához:
+- A **le** replikákat fel kell hozni. 
+- Az **inbuild** replikák befejezéséhez kell fejeznie a build és az átmenet kész.
 
-### <a name="slow-service-api-call"></a>Lassú szolgáltatás API-hívása
-A **System. rap** és a **System. replikátor** figyelmeztetést küld, ha a felhasználói szolgáltatás kódjának meghívása a beállított időpontnál hosszabb időt vesz igénybe. A rendszer törli a figyelmeztetést, ha a hívás befejeződik.
+### <a name="slow-service-api-call"></a>Lassú szolgáltatás API-hívás
+**A System.RAP** és a **System.Replicator** figyelmeztetést jelent, ha a felhasználói szolgáltatás kódjának hívása a beállított időnél tovább tart. A hívás befejezésekor a rendszer törli a figyelmeztetést.
 
-* **SourceId forrásazonosító**: System. rap vagy System. replikátor
-* **Tulajdonság**: a lassú API neve. A Leírás további részleteket tartalmaz arról, hogy az API Mikor van függőben.
-* **Következő lépések**: vizsgálja meg, hogy a hívás miért tart a vártnál tovább.
+* **SourceId**: System.RAP vagy System.Replicator
+* **Tulajdonság**: A lassú API neve. A leírás további részleteket tartalmaz az API függőben lévő időpontjáról.
+* **Következő lépések:** Vizsgálja meg, hogy a hívás miért tart tovább a vártnál.
 
-Az alábbi példa a System. RAP rendszerállapot-eseményét mutatja be egy megbízható szolgáltatáshoz, amely nem tartja tiszteletben a lemondási tokent a **RunAsync**-ben:
+A következő példa a System.RAP állapoteseményét mutatja be egy olyan megbízható szolgáltatás esetén, amely nem tartja tiszteletben a **RunAsync**lemondási jogkivonatát:
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
@@ -637,58 +637,58 @@ HealthEvents          :
                         
 ```
 
-A tulajdonság és a szöveg jelzi, hogy melyik API ragadt. A különböző beragadt API-kkal kapcsolatos következő lépések eltérnek. A *IStatefulServiceReplica* vagy *IStatelessServiceInstance* lévő API-k általában egy hiba a szolgáltatás kódjában. A következő szakasz ismerteti, hogyan fordítja le ezeket a [Reliable Services modellre](service-fabric-reliable-services-lifecycle.md):
+A tulajdonság és a szöveg jelzi, hogy melyik API ragadt meg. A következő lépések, hogy a különböző beragadt API-k eltérőek. Az *IStatefulServiceReplica* vagy az *IStatelessServiceInstance* bármely API-ja általában hiba a szolgáltatáskódban. A következő szakasz bemutatja, hogyan fordítanak ezek a [Megbízható szolgáltatások modellre:](service-fabric-reliable-services-lifecycle.md)
 
-- **IStatefulServiceReplica. Open**: Ez a figyelmeztetés azt jelzi, hogy `CreateServiceInstanceListeners`, `ICommunicationListener.OpenAsync`vagy felülbírált hívás, `OnOpenAsync` megakadt.
+- **IStatefulServiceReplica.Open**: Ez a figyelmeztetés `CreateServiceInstanceListeners`azt `ICommunicationListener.OpenAsync`jelzi, hogy a `OnOpenAsync` , vagy ha felülbírált hívás a beragadt.
 
-- **IStatefulServiceReplica. Bezárás** és **IStatefulServiceReplica. megszakítás**: a leggyakoribb eset egy olyan szolgáltatás, amely nem tartja tiszteletben a `RunAsync`ba átadott törlési tokent. Az is előfordulhat, hogy `ICommunicationListener.CloseAsync`, vagy ha felülbírálja, `OnCloseAsync` beragadt.
+- **IStatefulServiceReplica.Close** és **IStatefulServiceReplica.Abort**: A leggyakoribb eset egy olyan szolgáltatás, `RunAsync`amely nem tartja tiszteletben a . Az is lehet, hogy `ICommunicationListener.CloseAsync`, vagy `OnCloseAsync` ha felülírják, beragadt.
 
-- **IStatefulServiceReplica. changerole művelet (S)** és **IStatefulServiceReplica. changerole művelet (N)** : a leggyakoribb eset egy olyan szolgáltatás, amely nem tartja tiszteletben a `RunAsync`ba átadott törlési tokent. Ebben az esetben a legjobb megoldás a replika újraindítása.
+- **IStatefulServiceReplica.ChangeRole(S)** és **IStatefulServiceReplica.ChangeRole(N)**: A leggyakoribb eset egy olyan szolgáltatás, `RunAsync`amely nem tartja tiszteletben a . Ebben a forgatókönyvben a legjobb megoldás a replika újraindítása.
 
-- **IStatefulServiceReplica. changerole művelet (P)** : a leggyakoribb eset az, hogy a szolgáltatás nem adott vissza feladatot a `RunAsync`ból.
+- **IStatefulServiceReplica.ChangeRole(P)**: A leggyakoribb eset az, hogy a `RunAsync`szolgáltatás nem adott vissza feladatot.
 
-A beragadható egyéb API-hívások a **IReplicator** felületen találhatók. Például:
+Más API-hívások, amelyek elakadnak, az **IReplicator** felületen találhatók. Példa:
 
-- **IReplicator. CatchupReplicaSet**: Ez a figyelmeztetés két dolog egyikét jelzi. Nincsenek elegendő replikák. Ha meg szeretné tekinteni, hogy ez a helyzet-e, tekintse meg a partíció replikáinak replika állapotát, vagy a System.FM állapotáról szóló jelentést egy beragadt újrakonfiguráláshoz. Vagy a replikák nem ismerik fel a műveleteket. A PowerShell-parancsmag `Get-ServiceFabricDeployedReplicaDetail` használható az összes replika előrehaladásának meghatározásához. A probléma olyan replikákkal rendelkezik, amelyek `LastAppliedReplicationSequenceNumber` értéke az elsődleges `CommittedSequenceNumber` érték mögött van.
+- **IReplicator.CatchupReplicaSet**: Ez a figyelmeztetés két dolgot jelez. Nincs elegendő replikák. Ha meg szeretné tudni, hogy ez a helyzet, tekintse meg a replika állapotát a replikák a partíción, vagy a System.FM állapotjelentés egy beragadt újrakonfigurálás. Vagy a replikák nem ismerik el a műveleteket. A PowerShell-parancsmag `Get-ServiceFabricDeployedReplicaDetail` az összes kópia állapotának meghatározására használható. A probléma a replikák, amelyek `LastAppliedReplicationSequenceNumber` értéke `CommittedSequenceNumber` az elsődleges értéke mögött van.
 
-- **IReplicator. BuildReplica (\<távoli ReplicaId >)** : Ez a figyelmeztetés problémát jelez a fordítási folyamat során. További információ: [replika életciklusa](service-fabric-concepts-replica-lifecycle.md). Ennek oka lehet a replikátor-címek helytelen konfigurációja. További információ: állapot- [nyilvántartó Reliable Services konfigurálása](service-fabric-reliable-services-configuration.md) és [erőforrások megadása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md). A távoli csomóponton is lehet probléma.
+- **IReplicator.BuildReplica(\<Távoli replikálid>) ) :** Ez a figyelmeztetés a létrehozási folyamat problémájára utal. További információ: [Replika életciklusa](service-fabric-concepts-replica-lifecycle.md). Ennek oka lehet a replikátor cím helytelen konfigurálása. További információ: [Állapotalapú megbízható szolgáltatások konfigurálása](service-fabric-reliable-services-configuration.md) és [erőforrások megadása a szolgáltatásjegyzékben.](service-fabric-service-manifest-resources.md) Ez a távoli csomóponton is problémát jelenthet.
 
-### <a name="replicator-system-health-reports"></a>Replikátor rendszerállapot-jelentései
-A **replikációs várólista megtelt:** 
-**System. replikátor** figyelmeztetést küld, ha a replikációs várólista megtelt. Az elsődlegesen a replikációs várólista általában megtelik, mert egy vagy több másodlagos replika lassú a művelet elfogadásához. A másodlagosnál ez általában akkor fordul elő, ha a szolgáltatás lassan alkalmazza a műveleteket. A figyelmeztetés törlődik, ha a várólista már nem teljes.
+### <a name="replicator-system-health-reports"></a>Replikátor rendszer állapotjelentései
+**A replikációs várólista megtelt:**
+**A System.Replicator** figyelmeztetést jelent, ha a replikációs várólista megtelt. Az elsődleges, a replikációs várólista általában megtelik, mert egy vagy több másodlagos replikák lassan nyugtázza a műveleteket. A másodlagos, ez általában akkor történik, ha a szolgáltatás lassan alkalmazza a műveleteket. A figyelmeztetés törlődik, ha a várólista már nem teljes.
 
-* **SourceId forrásazonosító**: System. replikátor
-* **Tulajdonság**: **PrimaryReplicationQueueStatus** vagy **SecondaryReplicationQueueStatus**, a replika szerepkörtől függően.
-* **Következő lépések**: Ha a jelentés az elsődleges, ellenőrizze a fürt csomópontjai közötti kapcsolatot. Ha az összes kapcsolat kifogástalan állapotú, akkor lehet, hogy legalább egy lassú másodlagos értékkel rendelkezik, és nagy lemezterületet alkalmaz a műveletekre. Ha a jelentés a másodlagos oldalon található, először ellenőrizze a lemez használatát és teljesítményét a csomóponton. Ezután jelölje be a lassú csomópontról az elsődlegesre irányuló kimenő kapcsolatokat.
+* **SourceId**: System.Replicator
+* **Tulajdonság**: **PrimaryReplicationQueueStatus** vagy **SecondaryReplicationQueueStatus**, a replikaszerepkörtől függően.
+* **Következő lépések**: Ha a jelentés az elsődleges, ellenőrizze a kapcsolatot a csomópont a fürtben. Ha az összes kapcsolat kifogástalan, előfordulhat, hogy legalább egy lassú másodlagos magas lemezkésés a műveletek alkalmazása. Ha a jelentés a másodlagos, ellenőrizze a lemezhasználat és a teljesítmény a csomóponton először. Ezután ellenőrizze a kimenő kapcsolatot a lassú csomóponttól az elsődlegesig.
 
-**RemoteReplicatorConnectionStatus:** 
-**System. replikátor** az elsődleges replikán figyelmeztetést küld, ha a másodlagos (távoli) replikátorhoz való kapcsolódás nem kifogástalan állapotú. A távoli replikátor címe a jelentés üzeneteiben jelenik meg, így könnyebben észlelhető, ha a hibás konfigurációt átadták, vagy ha hálózati problémák vannak a replikálók között.
+**RemoteReplicatorConnectionStatus:**
+**System.Replicator** az elsődleges replika jelenti a figyelmeztetést, ha a kapcsolat egy másodlagos (távoli) replikátor nem kifogástalan. A távoli replikátor címe megjelenik a jelentés üzenetében, így kényelmesebb felismerni, ha a rossz konfiguráció tért át, vagy ha hálózati problémák vannak a replikátorok között.
 
-* **SourceId forrásazonosító**: System. replikátor
+* **SourceId**: System.Replicator
 * **Tulajdonság**: **RemoteReplicatorConnectionStatus**.
-* **Következő lépések**: Ellenőrizze a hibaüzenetet, és győződjön meg arról, hogy a távoli replikátor címe megfelelően van-e konfigurálva. Ha például a távoli replikátor a "localhost" figyelési címhez van megnyitva, az nem érhető el a kívülről. Ha a címnek helyesnek tűnik, ellenőrizze az elsődleges csomópont és a távoli címe közötti kapcsolatot, hogy megtalálja a lehetséges hálózati problémákat.
+* **Következő lépések:** Ellenőrizze a hibaüzenetet, és győződjön meg arról, hogy a távoli replikátor cím megfelelően van konfigurálva. Ha például a távoli replikátor a "localhost" figyelési címmel nyílik meg, kívülről nem érhető el. Ha a cím helyesnek tűnik, ellenőrizze az elsődleges csomópont és a távoli cím közötti kapcsolatot, hogy megtalálja az esetleges hálózati problémákat.
 
 ### <a name="replication-queue-full"></a>A replikációs várólista megtelt
-A **System. replikátor** figyelmeztetést küld, ha a replikációs várólista megtelt. Az elsődlegesen a replikációs várólista általában megtelik, mert egy vagy több másodlagos replika lassú a művelet elfogadásához. A másodlagosnál ez általában akkor fordul elő, ha a szolgáltatás lassan alkalmazza a műveleteket. A figyelmeztetés törlődik, ha a várólista már nem teljes.
+**A System.Replicator** figyelmeztetést jelent, ha a replikációs várólista megtelt. Az elsődleges, a replikációs várólista általában megtelik, mert egy vagy több másodlagos replikák lassan nyugtázza a műveleteket. A másodlagos, ez általában akkor történik, ha a szolgáltatás lassan alkalmazza a műveleteket. A figyelmeztetés törlődik, ha a várólista már nem teljes.
 
-* **SourceId forrásazonosító**: System. replikátor
-* **Tulajdonság**: **PrimaryReplicationQueueStatus** vagy **SecondaryReplicationQueueStatus**, a replika szerepkörtől függően.
+* **SourceId**: System.Replicator
+* **Tulajdonság**: **PrimaryReplicationQueueStatus** vagy **SecondaryReplicationQueueStatus**, a replikaszerepkörtől függően.
 
 ### <a name="slow-naming-operations"></a>Lassú elnevezési műveletek
-A **System. NamingService** az elsődleges replikájának állapotát jelzi, ha az elnevezési művelet hosszabb időt vesz igénybe. Példák az elnevezési műveletekre: [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) vagy [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). További módszerek találhatók a FabricClient alatt. Ezek lehetnek például a [Service Management metódusok](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) vagy a [Tulajdonságok felügyeleti módszerei](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)alatt.
+**A System.NamingService** az elsődleges replikán jelenti az állapotot, ha egy elnevezési művelet az elfogadhatónál hosszabb időt vesz igénybe. Elnevezési műveletek például [a CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) vagy [a DeleteServiceAsync.](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) További módszerek találhatók a FabricClient alatt. Például a [szolgáltatáskezelési módszerek](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) vagy [a vagyonkezelési módszerek](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)alatt találhatók.
 
 > [!NOTE]
-> Az elnevezési szolgáltatás a fürt egyik helyére oldja fel a szolgáltatás nevét. A felhasználók a szolgáltatás nevét és tulajdonságait kezelhetik. Ez egy Service Fabric particionált megőrzött szolgáltatás. Az egyik partíció a *hatóság tulajdonosát*jelöli, amely a Service Fabric nevekkel és szolgáltatásokkal kapcsolatos metaadatokat tartalmaz. A Service Fabric neveket a rendszer a különböző partíciók, *nevük tulajdonosa* partíciók néven rendeli hozzá, így a szolgáltatás bővíthető. További információ az [elnevezési szolgáltatásról](service-fabric-architecture.md).
+> Az elnevezési szolgáltatás feloldja a szolgáltatásneveket a fürt egy helyére. A felhasználók a szolgáltatásnevek és -tulajdonságok kezelésére használhatják. Ez egy Service Fabric particionált-tartósan szolgáltatás. Az egyik partíció a *Hatóság tulajdonosa,* amely metaadatokat tartalmaz az összes Service Fabric nevek és szolgáltatások. A Service Fabric-nevek vannak leképezve *Name Owner* a különböző partíciók, az úgynevezett névtulajdonos-partíciók, így a szolgáltatás bővíthető. További információ az [elnevezési szolgáltatásról.](service-fabric-architecture.md)
 > 
 > 
 
-Ha egy elnevezési művelet a vártnál hosszabb időt vesz igénybe, a művelet egy figyelmeztetési jelentéssel van megjelölve a műveletet kiszolgáló névhasználati szolgáltatás partíciójának elsődleges replikáján. Ha a művelet sikeresen befejeződik, a figyelmeztetés törlődik. Ha a művelet hibával fejeződött be, az állapotjelentés a hibával kapcsolatos részleteket tartalmaz.
+Ha egy elnevezési művelet a vártnál tovább tart, a művelet a műveletet kiszolgáló elnevezési szolgáltatáspartíció elsődleges replikájára vonatkozó figyelmeztető jelentéssel van megjelölve. Ha a művelet sikeresen befejeződik, a figyelmeztetés törlődik. Ha a művelet egy hibával fejeződik be, az állapotjelentés a hiba részleteit tartalmazza.
 
-* **SourceId forrásazonosító**: System. NamingService
-* **Tulajdonság**: a (z) "**Duration_** " előtaggal kezdődik, és azonosítja a lassú műveletet, valamint azt a Service Fabric-nevet, amelyen a művelet alkalmazva van. Ha például a name **Fabric:/SajátPr/MyService** nevű szolgáltatás létrehozása túl hosszú időt vesz igénybe, a tulajdonság **Duration_AOCreateService. Fabric:/SajátPr/MyService**. Az "AO" a név és a művelet elnevezési partíciójának szerepkörére mutat.
-* **További lépések**: Ellenőrizze, hogy az elnevezési művelet miért sikertelen. Minden művelethez különböző kiváltó okok tartozhatnak. Előfordulhat például, hogy a DELETE szolgáltatás beragadt. Lehet, hogy a szolgáltatás el van ragadva, mert az alkalmazás-gazdagép a szolgáltatási kódban szereplő felhasználói hiba miatt összeomlik a csomóponton.
+* **SourceId**: System.NamingService
+* **Tulajdonság**: A " Duration_ " előtaggal**kezdődik,** és azonosítja a lassú működést és a Service Fabric nevét, amelyre a műveletet alkalmazza. Ha például a **fabric:/MyApp/MyService** névvel létrehozott szolgáltatás túl sokáig tart, a tulajdonság **Duration_AOCreateService.fabric:/MyApp/MyService .** Az "AO" a név és a művelet elnevezési partíciójának szerepkörére utal.
+* **Következő lépések**: Ellenőrizze, hogy miért nem sikerül az elnevezési művelet. Minden műveletnek különböző kiváltó okai lehetnek. Előfordulhat például, hogy a törlési szolgáltatás beragadt. Előfordulhat, hogy a szolgáltatás elakad, mert az alkalmazásgazda folyamatosan összeomlik egy csomóponton a szolgáltatáskódban lévő felhasználói hiba miatt.
 
-A következő példa egy szolgáltatás-létrehozási műveletet mutat be. A művelet a beállított időtartamnál hosszabb ideig tartott. Az "AO" újrapróbálkozik, és a "nem" értékre küldi a munkát. "Nem" történt az utolsó művelet IDŐTÚLLÉPÉSsel. Ebben az esetben ugyanaz a replika elsődleges az "AO" és a "NO" szerepkörök esetében is.
+A következő példa egy létrehozási szolgáltatás műveletet mutat be. A művelet hosszabb időt vett igénybe, mint a beállított időtartam. Az "AO" újrapróbálkozik, és a munkát "NEM" számra küldi. A "NO" az utolsó műveletet a TIMEOUT-mal végezte. Ebben az esetben ugyanaz a replika elsődleges az "AO" és a "NO" szerepkörökhöz.
 
 ```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
@@ -735,17 +735,17 @@ HealthEvents          :
                         Transitions           : Error->Warning = 4/29/2016 8:39:38 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-## <a name="deployedapplication-system-health-reports"></a>DeployedApplication rendszerállapot-jelentések
-A **System. hosting** a központilag telepített entitások felügyelete.
+## <a name="deployedapplication-system-health-reports"></a>Telepített Alkalmazás rendszerállapot-jelentései
+**System.Hosting** a hatóság telepített entitások.
 
 ### <a name="activation"></a>Aktiválás
-A System. hosting jelentések OK, amikor egy alkalmazás sikeresen aktiválva lett a csomóponton. Ellenkező esetben hibát jelez.
+A System.Hosting rendben van, ha egy alkalmazás sikeresen aktiválva van a csomóponton. Ellenkező esetben hibát jelez.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: **aktiválás**, beleértve a bevezetési verziót.
-* **Következő lépések**: Ha az alkalmazás nem kifogástalan állapotú, vizsgálja meg, miért nem sikerült az aktiválás.
+* **SourceId**: System.Hosting
+* **Tulajdonság**: **Aktiválás**, beleértve a bevezetési verziót is.
+* **Következő lépések**: Ha az alkalmazás nem kifogástalan, vizsgálja meg, hogy miért nem sikerült az aktiválás.
 
-A következő példa egy sikeres aktiválást mutat be:
+A következő példa sikeres aktiválást mutat be:
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
@@ -774,35 +774,35 @@ HealthEvents                       :
 ```
 
 ### <a name="download"></a>Letöltés
-A System. hosting hibát jelez, ha az alkalmazáscsomag letöltése sikertelen.
+A System.Hosting hibát jelez, ha az alkalmazáscsomag letöltése sikertelen.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: **Letöltés**, beleértve a bevezetés verzióját is.
-* **Következő lépések**: vizsgálja meg, miért nem sikerült a letöltés a csomóponton.
+* **SourceId**: System.Hosting
+* **Tulajdonság**: **Letöltés**, beleértve a bevezetési verziót is.
+* **Következő lépések:** Vizsgálja meg, hogy miért nem sikerült a letöltés a csomóponton.
 
-## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage rendszerállapot-jelentések
-A **System. hosting** a központilag telepített entitások felügyelete.
+## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage rendszer állapotjelentései
+**System.Hosting** a hatóság telepített entitások.
 
-### <a name="service-package-activation"></a>Szolgáltatáscsomag aktiválása
-A System. hosting jelentések OK, ha a szolgáltatási csomag aktiválása sikeres a csomóponton. Ellenkező esetben hibát jelez.
+### <a name="service-package-activation"></a>Szolgáltatási csomag aktiválása
+A System.Hosting rendben van, ha a szolgáltatáscsomag aktiválása sikeres. Ellenkező esetben hibát jelez.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: aktiválás.
-* **Következő lépések**: vizsgálja meg, miért nem sikerült az aktiválás.
+* **SourceId**: System.Hosting
+* **Tulajdonság**: Aktiválás.
+* **Következő lépések**: Vizsgálja meg, hogy miért nem sikerült az aktiválás.
 
-### <a name="code-package-activation"></a>Csomag aktiválása
-A rendszer. az aktiválás sikeressége esetén az egyes kódokhoz a System. hosting jelentéseket kell megtekintenie. Ha az aktiválás sikertelen, a rendszer a konfigurált figyelmeztetést jeleníti meg. Ha a **CodePackage** nem tudja aktiválni vagy leállítani a konfigurált **CodePackageHealthErrorThreshold**meghaladó hibát, akkor a szolgáltató hibát jelez. Ha egy szolgáltatáscsomag több csomagot tartalmaz, a rendszer aktiválási jelentést hoz létre mindegyikhez.
+### <a name="code-package-activation"></a>Kódcsomag aktiválása
+A System.Hosting minden kódcsomag esetében rendben van, ha az aktiválás sikeres. Ha az aktiválás sikertelen, a beállított módon figyelmeztetést jelent. Ha **a CodePackage** nem tudja aktiválni vagy leállítani a beállított **CodePackageHealthErrorThreshold-nál**nagyobb hibával, a rendszer hibát jelez. Ha egy szolgáltatáscsomag több kódcsomagot tartalmaz, mindegyikhez aktiválási jelentés jön létre.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: a **CodePackageActivation** előtagot használja, és a kód és a belépési pont nevét tartalmazza *CodePackageActivation: CodePackageName: SetupEntryPoint/BelépésiPont*. Például **CodePackageActivation: code: SetupEntryPoint**.
+* **SourceId**: System.Hosting
+* **Tulajdonság**: A **CodePackageActivation** előtagot használja, és tartalmazza a kódcsomag nevét és a belépési pontot *CodePackageActivation:CodePackageName:SetupEntryPoint/EntryPoint néven.* Például **CodePackageActivation:Code:SetupEntryPoint**.
 
-### <a name="service-type-registration"></a>Szolgáltatás típusának regisztrálása
-A System. hosting jelentések OK, ha a szolgáltatástípus regisztrálása sikeresen megtörtént. Hibát jelez, ha a regisztráció nem történt meg időben, ahogy a **ServiceTypeRegistrationTimeout**használatával konfigurálták. Ha a futtatókörnyezet be van zárva, a szolgáltatás nem regisztrálja a csomópontot, és egy figyelmeztetést küld a jelentésekről.
+### <a name="service-type-registration"></a>Szolgáltatástípus regisztrálása
+A System.Hosting rendben van, ha a szolgáltatástípus regisztrálva van. Hibát jelez, ha a regisztráció nem történt meg időben, **aserviceTypeRegistrationTimeout**használatával konfigurálva. Ha a futásidő le van zárva, a szolgáltatás típusa nem regisztrált a csomópontról, és az üzemeltetési jelentések egy figyelmeztetést.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: a **ServiceTypeRegistration** előtagot használja, és a szolgáltatástípus nevét tartalmazza. Például **ServiceTypeRegistration: FileStoreServiceType**.
+* **SourceId**: System.Hosting
+* **Tulajdonság**: A **ServiceTypeRegistration** előtagot használja, és tartalmazza a szolgáltatástípus nevét. Például **ServiceTypeRegistration:FileStoreServiceType**.
 
-A következő példa egy kifogástalan állapotú üzembe helyezési csomagot mutat be:
+A következő példa egy kifogástalan állapotú üzembe helyezett szolgáltatáscsomagot mutat be:
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
@@ -852,32 +852,32 @@ HealthEvents               :
 ```
 
 ### <a name="download"></a>Letöltés
-A System. hosting hibát jelez, ha a szervizcsomag letöltése sikertelen.
+A System.Hosting hibát jelez, ha a szolgáltatáscsomag letöltése sikertelen.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: **Letöltés**, beleértve a bevezetés verzióját is.
-* **Következő lépések**: vizsgálja meg, miért nem sikerült a letöltés a csomóponton.
+* **SourceId**: System.Hosting
+* **Tulajdonság**: **Letöltés**, beleértve a bevezetési verziót is.
+* **Következő lépések:** Vizsgálja meg, hogy miért nem sikerült a letöltés a csomóponton.
 
-### <a name="upgrade-validation"></a>Frissítés ellenőrzése
-A System. hosting hibát jelez, ha az érvényesítés a frissítés során meghiúsul, vagy ha a frissítés sikertelen a csomóponton.
+### <a name="upgrade-validation"></a>Frissítés érvényesítése
+A System.Hosting hibát jelez, ha a frissítés során az érvényesítés sikertelen, vagy ha a frissítés sikertelen lesz a csomóponton.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: a **FabricUpgradeValidation** előtagot használja, és a frissítési verziót tartalmazza.
-* **Leírás**: a hibára mutat.
+* **SourceId**: System.Hosting
+* **Tulajdonság**: A **FabricUpgradeValidation** előtagot használja, és tartalmazza a frissítési verziót.
+* **Leírás**: A felmerült hibára mutat.
 
-### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Nem definiált csomópont-kapacitás erőforrás-irányítási mérőszámokhoz
-A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában nincs definiálva csomópont-kapacitás, és az automatikus észlelés konfigurációja ki van kapcsolva. A Service Fabric állapottal kapcsolatos figyelmeztetést jelenít meg, ha az [erőforrás-szabályozást](service-fabric-resource-governance.md) használó szervizcsomag egy adott csomóponton regisztrálja a szolgáltatást.
+### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Nem definiált csomópontkapacitás az erőforrás-irányítási mérőszámokhoz
+A System.Hosting figyelmeztetést jelent, ha a csomópont kapacitása nincs definiálva a fürtjegyzékben, és az automatikus észlelési konfiguráció ki van kapcsolva. A Service Fabric állapotjelzőt ad ki, ha a szolgáltatáscsomag, amely [erőforrás-cégirányítási](service-fabric-resource-governance.md) regiszterek egy adott csomóponton.
 
-* **SourceId forrásazonosító**: System. hosting
-* **Tulajdonság**: **ResourceGovernance**.
-* **Következő lépések**: a probléma megoldásának előnyben részesített módja a fürt jegyzékfájljának módosítása az elérhető erőforrások automatikus észlelésének engedélyezéséhez. Egy másik lehetőség a fürt jegyzékfájljának frissítése a metrikák megfelelően megadott csomópont-kapacitása alapján.
+* **SourceId**: System.Hosting
+* **Ingatlan**: **ResourceGovernance**.
+* **Következő lépések:** A probléma megoldásának előnyben részesített módja a fürtjegyzék módosítása a rendelkezésre álló erőforrások automatikus észlelésének lehetővé tétele érdekében. Egy másik módja a fürtjegyzék frissítése helyesen megadott csomópont kapacitásokkal ezekhez a metrikákhoz.
 
 ## <a name="next-steps"></a>További lépések
-* [Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
+* [A Service Fabric állapotjelentésének megtekintése](service-fabric-view-entities-aggregated-health.md)
 
-* [A szolgáltatás állapotának jelentése és ellenõrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+* [A szolgáltatás állapotának jelentése és ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-* [Szolgáltatások helyi monitorozása és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+* [A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-* [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
+* [A Service Fabric alkalmazásfrissítése](service-fabric-application-upgrade.md)
 

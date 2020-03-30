@@ -1,52 +1,52 @@
 ---
-title: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel (előzetes verzió)
-description: Hozzon létre egy Windows rendszerű virtuális gépet az Azure rendszerkép-szerkesztővel.
+title: Windows virtuális gép létrehozása az Azure Image Builder segítségével (előzetes verzió)
+description: Hozzon létre egy Windows virtuális gép az Azure Image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 9dc4909db5560be6eb082dbad85d4b2d42113bdd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e82d82dac833f7455e3d83d7e11c0c57c4eea816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238807"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Előzetes verzió: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel
+# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Előzetes verzió: Hozzon létre egy Windows virtuális gép az Azure Image Builder
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre testreszabott Windows-rendszerképeket az Azure VM rendszerkép-készítő használatával. A cikkben szereplő példa testreszabók [](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) használatával testreszabja a rendszerképet:
+Ez a cikk bemutatja, hogyan hozhat létre egy testreszabott Windows-lemezképet az Azure VM Image Builder használatával. A cikkben szereplő példa [testreszabókat](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) használ a kép testreszabásához:
 - PowerShell (ScriptUri) – [PowerShell-parancsfájl](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)letöltése és futtatása.
-- Windows újraindítása – újraindítja a virtuális gépet.
-- PowerShell (beágyazott) – adott parancs futtatása. Ebben a példában egy könyvtárat hoz létre a virtuális gépen a használatával `mkdir c:\\buildActions`.
-- Fájl – másolja a fájlt a GitHubról a virtuális gépre. Ez a példa [](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) a index.MD `c:\buildArtifacts\index.html` másolja a virtuális gépre.
+- Windows Restart - újraindítja a virtuális gép.
+- PowerShell (inline) – egy adott parancs futtatása. Ebben a példában létrehoz egy könyvtárat `mkdir c:\\buildActions`a virtuális gép használatával.
+- Fájl – másolja a fájlt a GitHubról a virtuális gépre. Ez a példa `c:\buildArtifacts\index.html` a [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) másolja a virtuális gépre.
 
-A `buildTimeoutInMinutes`is megadható. Az alapértelmezett érték 240 perc, és növelheti a felépítési időt, így a már futó buildek is elérhetővé válik.
+Megadhat egy `buildTimeoutInMinutes`. Az alapértelmezett érték 240 perc, és növelheti a buildelési időt, hogy lehetővé tegye a hosszabb ideig futó buildek.
 
-A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateWin. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+A lemezkép konfigurálásához egy .json mintasablont fogunk használni. Az általunk használt .json fájl itt van: [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
-> Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Image Builder jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 
-## <a name="register-the-features"></a>A szolgáltatások regisztrálása
+## <a name="register-the-features"></a>A funkciók regisztrálása
 
-Ha az előzetes verzióban szeretné használni az Azure képszerkesztőt, regisztrálnia kell az új szolgáltatást.
+Az Azure Image Builder az előzetes verzióban való használatához regisztrálnia kell az új funkciót.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-A szolgáltatás regisztrációjának állapotát vizsgálja meg.
+Ellenőrizze a szolgáltatás regisztrációjának állapotát.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Győződjön meg a regisztrációról.
+Ellenőrizze a regisztrációját.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -54,7 +54,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Ha nem mondják a regisztrációt, futtassa a következőt:
+Ha nem mondják, hogy regisztrált, futtassa a következőket:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -64,7 +64,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="set-variables"></a>Változók beállítása
 
-Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni.
+Mi lesz használ néhány információt többször, így hozunk létre néhány változótárolják ezt az információt.
 
 
 ```azurecli-interactive
@@ -80,24 +80,24 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel `az account show | grep id`érheti el:.
+Hozzon létre egy változót az előfizetés-azonosítóhoz. Tudod kap ez `az account show | grep id`használ .
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Ez az erőforráscsoport a rendszerkép-konfigurációs sablon és a rendszerkép tárolására szolgál.
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+Ez az erőforráscsoport a lemezképkonfigurációs sablon összetevőjének és a lemezképnek a tárolására szolgál.
 
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Az erőforráscsoport engedélyeinek beállítása
+## <a name="set-permissions-on-the-resource-group"></a>Engedélyek beállítása az erőforráscsoporthoz
 
-Adja meg a rendszerkép-készítő "közreműködő" engedélyt a rendszerkép létrehozásához az erőforráscsoporthoz. Enélkül a rendszerkép létrehozása sikertelen lesz. 
+Adjon a Képszerkesztő "közreműködő" számára a lemezkép létrehozásához az erőforráscsoportban. Enélkül a lemezkép összeállítása sikertelen lesz. 
 
-Az `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
+Az `--assignee` érték a Képszerkesztő szolgáltatás alkalmazásregisztrációs azonosítója. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -107,9 +107,9 @@ az role assignment create \
 ```
 
 
-## <a name="download-the-image-configuration-template-example"></a>Példa a rendszerkép konfigurációs sablonjának letöltésére
+## <a name="download-the-image-configuration-template-example"></a>Példa a képkonfigurációs sablon letöltése
 
-Egy paraméteres rendszerkép-konfigurációs sablon lett létrehozva a kipróbáláshoz. Töltse le a example. JSON fájlt, és konfigurálja a korábban beállított változókkal.
+Egy paraméterezett képkonfigurációs sablont hoztak létre, hogy megpróbálja. Töltse le a példát .json fájlt, és konfigurálja a korábban beállított változókkal.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
@@ -122,19 +122,19 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
 
 ```
 
-Ezt a példát módosíthatja a terminálon egy szövegszerkesztővel, például `vi`a paranccsal.
+Ezt a példát a terminálon is `vi`módosíthatja egy szövegszerkesztő vel, például a .
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> A forrás rendszerkép esetében mindig [meg kell adnia egy verziót](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), amelyet nem használhat `latest`.
-> Ha hozzáadja vagy megváltoztatja azt az erőforráscsoportot, amelyben a rendszerkép el van terjesztve, meg kell adnia az [engedélyeket](#set-permissions-on-the-resource-group) az erőforráscsoporthoz.
+> A forrásképhez mindig meg kell adni a `latest` [verziót,](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)amelyet nem használhat.
+> Ha hozzáadja vagy módosítja azt az erőforráscsoportot, ahová a lemezképet terjesztik, akkor az [engedélyeket be](#set-permissions-on-the-resource-group) kell állítaniaz erőforráscsoportra.
  
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A rendszerkép konfigurációjának elküldése a VM rendszerkép-készítő szolgáltatásnak
+Küldje el a lemezkép konfigurációját a VM Image Builder szolgáltatás
 
 ```azurecli-interactive
 az resource create \
@@ -145,16 +145,16 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Ha elkészült, a rendszer visszaküldi a sikert jelző üzenetet a-konzolra `Image Builder Configuration Template` , és `$imageResourceGroup`létrehoz egy-t a alkalmazásban. Ezt az erőforrást az erőforráscsoport Azure Portalban tekintheti meg, ha engedélyezi a "rejtett típusok megjelenítése" beállítását.
+Ha elkészült, ez egy sikeres üzenetet küld vissza `Image Builder Configuration Template` a `$imageResourceGroup`konzolra, és létrehoz egy a ban. Ez az erőforrás az erőforráscsoportban az Azure Portalon, ha engedélyezi a "Rejtett típusok megjelenítése" engedélyezés.
 
-A háttérben a rendszerkép-szerkesztő létrehoz egy átmeneti erőforráscsoportot is az előfizetésében. Ez az erőforráscsoport a rendszerkép létrehozásához használatos. Ez a következő formátumban fog megjelenni:`IT_<DestinationResourceGroup>_<TemplateName>`
+A háttérben az Image Builder egy átmeneti erőforráscsoportot is létrehoz az előfizetésében. Ez az erőforráscsoport a lemezkép létrehozásához használatos. Ez lesz ebben a formátumban:`IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
-> Az átmeneti erőforráscsoportot nem szabad közvetlenül törölni. Először törölje a rendszerkép-sablon összetevőt, így az átmeneti erőforrás-csoport törölve lesz.
+> Az átmeneti erőforráscsoportot nem törölheti közvetlenül. Először törölje a képsablon-összetevőt, így az átmeneti erőforráscsoport törlődik.
 
-Ha a szolgáltatás hibát jelez a rendszerkép-konfigurációs sablon beküldésekor:
--  Tekintse [](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) át ezeket a hibaelhárítási lépéseket. 
-- A Küldés megkísérlése előtt törölnie kell a sablont a következő kódrészlet használatával.
+Ha a szolgáltatás hibát jelent a lemezképkonfigurációs sablon beküldése során:
+-  Tekintse át ezeket [a hibaelhárítási](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) lépéseket. 
+- A küldés újbóli megkísérlése előtt törölnie kell a sablont a következő kódrészlet használatával.
 
 ```azurecli-interactive
 az resource delete \
@@ -163,8 +163,8 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-## <a name="start-the-image-build"></a>A rendszerkép létrehozásának elindítása
-A rendszerkép-létrehozási folyamat elindítása az [az Resource meghívása-Action](/cli/azure/resource#az-resource-invoke-action)paranccsal.
+## <a name="start-the-image-build"></a>A kép összeállításának megkezdése
+Indítsa el a lemezkép-építési folyamatot [az erőforrás-meghívási művelet](/cli/azure/resource#az-resource-invoke-action)használatával.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -174,14 +174,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-Várjon, amíg a Build befejeződik. Ez körülbelül 15 percet vesz igénybe.
+Várjon, amíg a build befejeződik. Ez körülbelül 15 percet is igénybe vehet.
 
-Ha bármilyen hibát tapasztal, tekintse át ezeket [](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) a hibaelhárítási lépéseket.
+Ha bármilyen hibát észlel, olvassa el ezeket [a hibaelhárítási](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) lépéseket.
 
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Hozza létre a virtuális gépet a létrehozott rendszerkép használatával. Cserélje le  *\<a jelszó >* a `aibuser` saját jelszavával a virtuális gépre.
+Hozza létre a virtuális gép a létrehozott lemezkép használatával. Cserélje * \<* le a jelszót>`aibuser` a saját jelszavával a virtuális gépen.
 
 ```azurecli-interactive
 az vm create \
@@ -193,23 +193,24 @@ az vm create \
   --location $location
 ```
 
-## <a name="verify-the-customization"></a>A Testreszabás ellenőrzése
+## <a name="verify-the-customization"></a>A testreszabás ellenőrzése
 
-Hozzon létre egy Távoli asztal-csatlakozást a virtuális géphez a virtuális gép létrehozásakor beállított Felhasználónév és jelszó használatával. A virtuális gépen nyisson meg egy parancssort, és írja be a következőt:
+Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel a virtuális gép létrehozásakor megadott felhasználónév és jelszó használatával. A virtuális gépbelsejében nyisson meg egy cmd-s kérdést, és írja be a következőt:
 
 ```console
 dir c:\
 ```
 
-A rendszerkép testreszabása során létrehozott két könyvtárat kell látnia:
-- buildActions
-- buildArtifacts
+A kép testreszabása során létrehozott két könyvtárnak meg kell jelennie:
+- buildActions (buildActions)
+- buildArtifacts (műtárgyak)
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Ha elkészült, törölje az erőforrásokat.
 
-### <a name="delete-the-image-builder-template"></a>A rendszerkép-szerkesztő sablonjának törlése
+### <a name="delete-the-image-builder-template"></a>A képszerkesztő sablon törlése
+
 ```azurecli-interactive
 az resource delete \
     --resource-group $imageResourceGroup \
@@ -217,7 +218,8 @@ az resource delete \
     -n helloImageTemplateWin01
 ```
 
-### <a name="delete-the-image-resource-group"></a>A rendszerkép-erőforráscsoport törlése
+### <a name="delete-the-image-resource-group"></a>A képerőforrás-csoport törlése
+
 ```azurecli-interactive
 az group delete -n $imageResourceGroup
 ```
@@ -225,4 +227,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A cikkben használt .json fájl összetevőiről a [Képszerkesztő sablon hivatkozása című témakörben olvashat bővebben.](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -1,48 +1,48 @@
 ---
-title: Horizontális felskálázás Azure Stream Analytics feladatokban
-description: Ez a cikk azt ismerteti, hogyan méretezhető a Stream Analytics feladatok a bemeneti adatok particionálásával, a lekérdezés finomhangolásával és a feladatok folyamatos átviteli egységének beállításával.
+title: Felskálázás és kiáramlás az Azure Stream Analytics-feladatokban
+description: Ez a cikk ismerteti, hogyan skálázhat egy Stream Analytics-feladat a bemeneti adatok particionálása, a lekérdezés finomhangolása és a feladat streamelési egységek beállítása.
 author: JSeb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 4f89fb07fbbff3beee66f80675bb5c3a32136807
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458756"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257546"
 ---
-# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében
-Ez a cikk bemutatja, hogyan lehet Stream Analytics-lekérdezést hangolni a streaming Analytics-feladatok átviteli sebességének növeléséhez. A következő útmutató segítségével méretezheti a feladatokat nagyobb terhelés kezelésére, és kihasználhatja a több rendszererőforrást (például több sávszélességet, több processzor-erőforrást, több memóriát).
-Előfeltételként előfordulhat, hogy a következő cikkeket kell elolvasnia:
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics-feladat méretezése az átviteli forgalom növelése érdekében
+Ez a cikk bemutatja, hogyan hangolhatja be a Stream Analytics-lekérdezéseket a Streaming Analytics-feladatok átviteli golfkapcsolatának növelése érdekében. A következő útmutató segítségével skálázhatja a feladatot a nagyobb terhelés kezeléséhez, és kihasználhatja a több rendszererőforrás (például nagyobb sávszélesség, több CPU-erőforrás, több memória) előnyeit.
+Előfeltételként előfordulhat, hogy el kell olvasnia a következő cikkeket:
 -   [A streamelési egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md)
--   [Párhuzamosítható-feladatok létrehozása](stream-analytics-parallelization.md)
+-   [Párhuzamosítható feladatok létrehozása](stream-analytics-parallelization.md)
 
-## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>1\. eset – a lekérdezés eredendően teljesen párhuzamosítható a bemeneti partíciók között
+## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>1. eset – A lekérdezés eredendően teljesen párhuzamosítható a bemeneti partíciók között
 Ha a lekérdezés eredendően teljesen párhuzamosítható a bemeneti partíciók között, kövesse az alábbi lépéseket:
-1.  Készítse el a lekérdezést zavaróan párhuzamosan a **Partition by** kulcsszó használatával. További részletekért tekintse meg a zavaró párhuzamos feladatok című szakaszt [ezen az oldalon](stream-analytics-parallelization.md).
-2.  A lekérdezésben használt kimeneti típusoktól függően előfordulhat, hogy egyes kimenetek nem párhuzamosítható, vagy további konfigurációra van szükségük, hogy zavaróan párhuzamos legyen. Az SQL, az SQL DW és a PowerBI kimenetek például nem párhuzamosítható. A kimenetek mindig össze lesznek fésülve a kimeneti fogadóba való küldés előtt. A Blobok, táblák, ADLS, Service Bus és Azure függvények automatikusan párhuzamosak. A CosmosDB és az Event hub esetében a PartitionKey konfigurációjának meg kell egyeznie a **Partition by** mezővel (általában PartitionID). Az Event hub esetében külön figyelmet kell fordítani a partíciók számának megadására az összes bemenetnél és az összes kimenetnél, hogy elkerülje a partíciók közti átkelést. 
-3.  Futtassa a lekérdezést a **6 Su** -vel (amely egy számítástechnikai csomópont teljes kapacitása) a maximálisan elérhető átviteli sebesség méréséhez, és ha **Group By**-t használ, mérje fel, hogy hány csoport (kardinális) kezelésére van lehetőség. A rendszererőforrás-korlátokat ütő feladat általános tünetei a következők.
-    - A SU% kihasználtsági metrika meghaladja a 80%-ot. Ez azt jelzi, hogy a memóriahasználat magas. A mérőszám növeléséhez hozzájáruló tényezők leírása [itt](stream-analytics-streaming-unit-consumption.md)található. 
-    -   A kimeneti időbélyeg a falióra időpontjával kapcsolatos. A lekérdezési logikától függően előfordulhat, hogy a kimeneti időbélyeg a fal órajelének időpontjához képest logikai eltolással rendelkezik. Azonban nagyjából azonos sebességgel kell haladni. Ha a kimeneti időbélyeg további és további mögött van, akkor azt jelzi, hogy a rendszer túlműködik-e. Ez lehet az alsóbb rétegbeli kimeneti sávszélesség-szabályozás vagy a nagy CPU-kihasználtság eredménye. Jelenleg nem biztosítunk CPU-kihasználtsági mérőszámot, ezért nehéz lehet különbséget tenni a kettőnél.
-        - Ha a probléma a fogadó általi szabályozás miatt lehetséges, akkor szükség lehet a kimeneti partíciók számának növelésére (és a bemeneti partíciók megtartására is, hogy a feladatok teljes mértékben párhuzamosítható), vagy növelje a fogadó erőforrásainak mennyiségét (például a CosmosDB vonatkozó kérelmek száma).
-    - A Job ábrán az egyes adatbevitelek esetében a partíciók száma minden esetben az esemény metrikája. Ha a várakozó események mérőszáma továbbra is növekszik, azt is jelzi, hogy a rendszererőforrás korlátozott (a kimeneti fogadó szabályozása vagy a nagy CPU miatt).
-4.  Miután meghatározta a 6 SU-feladatok elérésének korlátait, lineárisan kikövetkeztetheti a feladatokhoz tartozó feldolgozási kapacitást, ha további SUs-t ad hozzá, feltéve, hogy nincs olyan adattorzítása, amely bizonyos partíciókat "gyors" állapotba helyez.
+1.  Szerző a lekérdezést, hogy kínosan párhuzamos segítségével **PARTITION BY** kulcsszó. További részleteket a Kínosan párhuzamos feladatok szakaszban [talál ezen az oldalon.](stream-analytics-parallelization.md)
+2.  A lekérdezésben használt kimeneti típusoktól függően előfordulhat, hogy egyes kimenetek nem párhuzamosíthatók, vagy további konfigurációra van szükség ahhoz, hogy kínosan párhuzamosak legyenek. A PowerBI-kimenet például nem párhuzamosítható. A kimenetek mindig egyesülnek, mielőtt a kimeneti fogadóba küldenék. Blobok, táblák, ADLS, Service Bus és az Azure-függvény automatikusan párhuzamos. Sql és SQL DW kimenetek egy lehetőség a párhuzamosítás. Az Event Hubnak rendelkeznie kell a PartitionKey konfigurációjával, hogy megfeleljen a **PARTITION BY** mezőnek (általában PartitionId). Az Event Hub esetében is fordítson különös figyelmet az összes bemenet és az összes kimenet partícióinak számának egyeztetésére, hogy elkerülje a partíciók közötti keresztirányú átfutást. 
+3.  Futtassa a lekérdezést **6 SU-val** (amely egyetlen számítási csomópont teljes kapacitása) a maximális elérhető átviteli teljesítmény mérésére, és ha **GROUP BY-t**használ, mérje meg, hogy a feladat hány csoportot (számosságot) képes kezelni. A rendszererőforrás-korlátokat elérő feladat általános tünetei a következők.
+    - Su % kihasználtsági metrika több mint 80%. Ez azt jelzi, hogy a memóriahasználat magas. A mérőszám növekedéséhez hozzájáruló tényezőket [itt](stream-analytics-streaming-unit-consumption.md)ismertetjük . 
+    -   A kimeneti időbélyeg a falióra idejéhez képest elmarad. A lekérdezési logikától függően a kimeneti időbélyeg logikai eltolása lehet a falióra idő. Ugyanakkor nagyjából azonos ütemben kell előrehaladniuk. Ha a kimeneti időbélyeg egyre inkább lemarad, az azt jelzi, hogy a rendszer túlműködik. Ez lehet az alsóbb rétegbeli kimeneti fogadó szabályozásának eredménye, vagy magas CPU-kihasználtság. Jelenleg nem biztosítunk CPU-kihasználtsági metrikát, így nehéz lehet megkülönböztetni a kettőt.
+        - Ha a probléma miatt a süllyedés szabályozása, előfordulhat, hogy növelnie kell a kimeneti partíciók számát (és a bemeneti partíciókat, hogy a feladat teljesen párhuzamosítható), vagy növelje az erőforrások mennyiségét a fogadó (például a CosmosDB kérelemegységek száma).
+    - A feladatdiagramon minden bemenethez partíciónkénti hátralék eseménymetrika található. Ha a hátralék esemény metrikája folyamatosan növekszik, ez is azt jelzi, hogy a rendszererőforrás korlátozott (vagy a kimeneti fogadó szabályozása miatt, vagy a magas CPU miatt).
+4.  Miután meghatározta a 6 SU-feladat korlátait, lineárisan extrapolálhatja a feladat feldolgozási kapacitását, ahogy további SUs-okat ad hozzá, feltételezve, hogy nincs olyan adatdöntés, amely bizonyos partíciókat "forróvá" tesz.
 
 > [!NOTE]
-> Válassza ki a folyamatos átviteli egységek számát: mivel Stream Analytics létrehoz egy feldolgozási csomópontot minden egyes hozzáadott 6 SU számára, a legjobb, ha a csomópontok számát a bemeneti partíciók számának osztója, így a partíciók egyenletesen eloszthatók a csomópontok között.
-> Például megmérte 6 SU-feladatát, így 4 MB/s feldolgozási sebességet érhet el, és a bemeneti partíciók száma 4. Kiválaszthatja, hogy a feladatainak futtatásához 12 SU, körülbelül 8 MB/s feldolgozási sebességet, vagy 24 SU-t érhet el 16 MB/s eléréséhez. Ezután eldöntheti, hogy mikor növelje a feladathoz tartozó SU számát a bemeneti arány függvényében.
+> Válassza ki a megfelelő számú streamelési egységek: Mivel a Stream Analytics létrehoz egy feldolgozási csomópont minden 6 SU hozzáadott, a legjobb, ha a csomópontok száma a bemeneti partíciók száma, így a partíciók egyenletesen elosztható a csomópontok között.
+> Például mérte a 6 SU-feladat képes elérni 4 MB/s feldolgozási sebesség, és a bemeneti partíció száma 4. Választhat, hogy a feladat futtatásához 12 SU eléréséhez nagyjából 8 MB/s feldolgozási sebesség, vagy 24 SU eléréséhez 16 MB/ s. Ezután eldöntheti, hogy mikor növelje a feladat SU-számát, milyen értékre, a bemeneti sebesség függvényében.
 
 
-## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>2\. eset – Ha a lekérdezés nem zavaróan párhuzamos.
-Ha a lekérdezés nem zavaróan párhuzamos, kövesse az alábbi lépéseket.
-1.  Először egy olyan lekérdezéssel kezdjen el, **amely nem particionálja az** összetettséget, és az [1. esetben](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions)a maximális terhelés méréséhez 6 Su értékű lekérdezést futtat.
-2.  Ha elérheti a várható terhelést az átviteli sebesség időtartama alatt, készen áll. Azt is megteheti, hogy ugyanazt a feladatot használja, amely a 3 SU és 1 SU értéknél fut, hogy megtudja, milyen minimális számú SU működik a forgatókönyvben.
-3.  Ha nem tudja elérni a kívánt átviteli sebességet, próbálja meg megszakítani a lekérdezést több lépésre, ha lehetséges, ha nem rendelkezik több lépéssel, és legfeljebb 6 SU-t foglal le a lekérdezés egyes lépéseihez. Ha például 3 lépésből áll, foglalja le 18 SU-t a "Scale" beállításban.
-4.  Ha egy ilyen feladatot futtat, Stream Analytics a saját csomópontján helyezi el az egyes lépéseket, dedikált 6 SU-erőforrásokkal. 
-5.  Ha még nem érte el a terhelési célt, megpróbálhatja a **partíció** használatát a bemenethez közelebbi lépésekkel. Ha **az operátor nem** lehet természetesen particionálható, a helyi/globális összesítési minta használatával particionált **csoportokat** hajthat végre, amelyet a nem particionált **csoportok**követnek. Ha például azt szeretné megszámolni, hogy hány autó halad végig 3 percenként az egyes autópályadíj-standokon, és az adatmennyiség meghaladja a 6 SU által kezelhető mennyiséget.
+## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>2. eset - Ha a lekérdezés nem kínosan párhuzamos.
+Ha a lekérdezés nem kínosan párhuzamos, kövesse az alábbi lépéseket.
+1.  Kezdje egy PARTITION **BY nélküli** lekérdezéssel, hogy elkerülje a particionálás összetettségét, és futtassa a lekérdezést 6 SU-val a maximális terhelés mérésére az [1.](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions)
+2.  Ha el tudja érni a várható terhelést az átviteli ciklusban, akkor kész. Másik lehetőségként dönthet úgy, hogy ugyanazt a feladatot mérje 3 SU és 1 SU, hogy megtudja, a minimális számú SU, amely működik a forgatókönyv.
+3.  Ha nem tudja elérni a kívánt átviteli, próbálja meg felbontani a lekérdezést több lépésben, ha lehetséges, ha nem rendelkezik több lépéssel már, és lefoglalni akár 6 SU minden lépés a lekérdezésben. Például, ha 3 lépésben, lefoglalja 18 SU a "Méretezés" opciót.
+4.  Egy ilyen feladat futtatásakor a Stream Analytics minden lépést a saját csomópontján helyez el dedikált 6 SU-erőforrással. 
+5.  Ha még mindig nem érte el a terhelési célt, megpróbálhatja használni **a PARTITION-t** a bemenethez közelebbi lépésekből indulva. A **csoport által** operátor, amely nem feltétlenül particionálható, használhatja a helyi /globális összesítő minta elvégzésére particionált GROUP **BY** majd egy nem particionált GROUP **BY**. Ha például 3 percenként hány autó megy keresztül az egyes fizetős fülkékön, és az adatok mennyisége meghaladja a 6 SU által kezelhetőt.
 
 Lekérdezés:
 
@@ -56,34 +56,34 @@ Lekérdezés:
  FROM Step1
  GROUP BY TumblingWindow(minute, 3), TollBoothId
  ```
-A fenti lekérdezésben partícióként számítja fel a személygépkocsik számát, majd a darabszámot az összes partícióból együtt adja hozzá.
+A fenti lekérdezésben partíciónként számolja az autókat fizetőfülkénként, majd összeadja az összes partíció számát.
 
-A particionálás után a lépés minden partíciója esetében akár 6 SU-t is lefoglalhat, és mindegyik partíció 6 SU értékkel rendelkezik, így minden partíció a saját feldolgozó csomópontjára helyezhető el.
+Particionálás után a lépés minden egyes partíciója esetén legfeljebb 6 SU-t foglal le, minden partíció, amelynek 6 SU-ja a maximális, így minden partíció a saját feldolgozási csomópontjára helyezhető.
 
 > [!Note]
-> Ha a lekérdezés nem particionálható, a több lépésből álló lekérdezésben további SU hozzáadásával előfordulhat, hogy nem mindig javítja az átviteli sebességet. A teljesítmény megszerzésének egyik módja a kezdeti lépések kötetének csökkentése a helyi/globális aggregált minta használatával, az 5. lépésben leírtak szerint.
+> Ha a lekérdezés nem particionálható, további SU hozzáadása egy többlépéses lekérdezésnem mindig javítja az átviteli kapacitást. A teljesítmény megszerzésének egyik módja a hangerő csökkentése a kezdeti lépésekben a helyi/globális aggreggregátumminta használatával, az 5.
 
-## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>3\. eset: sok független lekérdezést futtat egy feladatokban.
-Bizonyos ISV-használati esetek esetében, ahol a több bérlőről származó adatok feldolgozását egyetlen feladatban, külön bemenetek és kimenetek használatával végezheti el az egyes bérlők számára, így az egyes feladatokhoz tartozó önálló lekérdezéseket (például 20) is futtathatja. A feltételezés az egyes allekérdezések terhelése viszonylag kicsi. Ebben az esetben kövesse az alábbi lépéseket.
-1.  Ebben az esetben ne használja a **particionálást** a lekérdezésben.
-2.  Ha az Event hub-t használja, csökkentse a bemeneti partíciók számát a 2 legalacsonyabb értékre.
-3.  Futtassa a lekérdezést 6 SU-val. Az egyes allekérdezések várható terhelésének megfelelően adja hozzá a lehető legtöbb allekérdezést, amíg a feladat el nem éri a rendszererőforrás-korlátokat. Ha ez történik, tekintse meg az [1. esetet](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) .
-4.  Miután elindította a lekérdezett allekérdezési korlátot, kezdje el hozzáadni az allekérdezést egy új feladatokhoz. A független lekérdezések számának függvényében futtatandó feladatok számának viszonylag lineárisnak kell lennie, feltéve, hogy nem rendelkezik terhelési döntéssel. Ezután előre megtudhatja, hány 6 SU feladatot kell futtatnia a kiszolgálni kívánt bérlők számának függvényében.
-5.  Ha az ilyen lekérdezésekkel való hivatkozással csatlakozik, egyesítse a bemeneti adatokat, mielőtt ugyanahhoz a hivatkozási adatokhoz csatlakozna. Ezt követően bontsa ki az eseményeket, ha szükséges. Ellenkező esetben az egyes hivatkozási adatok összekapcsolása a memóriában tárolja a hivatkozási adatokat, valószínűleg szükségtelenül felrobban a memóriahasználat.
+## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>3. eset – Sok független lekérdezést futtat egy feladatban.
+Bizonyos független független ítő használati esetekben, ahol költséghatékonyabb az adatok feldolgozása több bérlőtől egy feladatban, külön bemenetek és kimenetek használatával minden bérlő, előfordulhat, hogy a végén fut jó néhány (például 20) független lekérdezések egyetlen feladatban. A feltételezés az, hogy minden ilyen segédlekérdezés terhelése viszonylag kicsi. Ebben az esetben az alábbi lépéseket hajthatja végre.
+1.  Ebben az esetben ne használja a **PARTITION BY-t** a lekérdezésben
+2.  Az Event Hub használata esetén csökkentse a bemeneti partíciók számát a lehető legalacsonyabb 2 értékre.
+3.  Futtassa a lekérdezést 6 SU-val. Az egyes segédlekérdezések várható terhelésével adjon hozzá annyi ilyen segédlekérdezést, amennyit csak lehet, amíg a feladat eléri a rendszererőforrás-korlátokat. Az [1.](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions)
+4.  Ha elérte a fent mért segédlekérdezési korlátot, kezdje el hozzáadni a segédlekérdezést egy új feladathoz. A független lekérdezések számának függvényében futtatandó feladatok számának meglehetősen lineárisnak kell lennie, feltéve, hogy nincs terhelési döntés. Ezután előre jelezheti, hogy hány SU-feladatot kell futtatnia a kiszolgálni kívánt bérlők számának függvényében.
+5.  Amikor referenciaadatokat használ, egyesítse a bemeneteket, mielőtt ugyanazokhoz a referenciaadatokhoz csatlakozna. Ezután ossza szét az eseményeket, ha szükséges. Ellenkező esetben minden referenciaadat-illesztés a hivatkozási adatok másolatát a memóriában tartja, ami valószínűleg feleslegesen felfújja a memóriahasználatot.
 
 > [!Note] 
-> Hány bérlőt helyez el az egyes feladatokban?
-> Ez a lekérdezési minta gyakran nagy számú allekérdezéssel rendelkezik, és nagyon nagy és összetett topológiát eredményez. Előfordulhat, hogy a feladatokhoz tartozó vezérlő nem tud kezelni egy ilyen nagy topológiát. Az általános szabály, hogy 1 SU feladathoz 40-bérlőt tart fenn, és 60-es bérlőt biztosít 3 SU és 6 SU feladathoz. Ha túllépi a vezérlő kapacitását, a feladatot a rendszer nem indítja el sikeresen.
+> Hány bérlőt kell berakni az egyes feladatba?
+> Ez a lekérdezési minta gyakran nagy számú allekérdezést tartalmaz, és nagyon nagy és összetett topológiát eredményez. Előfordulhat, hogy a feladat vezérlője nem képes kezelni egy ilyen nagy topológiát. Általános szabály, hogy maradjon 40 bérlő alatt 1 SU-feladat, és 60 bérlők 3 SU és 6 SU-feladatok. Ha túllépi a vezérlő kapacitását, a feladat nem indul el sikeresen.
 
 
 
-## <a name="get-help"></a>Segítség
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítségkérés
+További segítségért próbálja ki [az Azure Stream Analytics fórumunkat.](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Következő lépések
-* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
+## <a name="next-steps"></a>További lépések
+* [Bevezetés az Azure Stream Analytics szolgáltatásba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

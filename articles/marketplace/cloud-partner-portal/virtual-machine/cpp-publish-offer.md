@@ -1,41 +1,40 @@
 ---
-title: Virtuálisgép-ajánlat közzététele az Azure Marketplace-en
-description: Felsorolja azokat a lépéseket, amelyek szükségesek egy meglévő virtuálisgép-ajánlat közzétételéhez az Azure Marketplace-en.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Virtuálisgép-ajánlat közzététele az Azure Piactéren
+description: Egy meglévő virtuálisgép-ajánlat azure piactéren való közzétételéhez szükséges lépések.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
-ms.author: pabutler
-ms.openlocfilehash: 1b07f3f3edab47f8f75835dffd4cc3f89f17ab63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c35f721131b997dcfdb0f23a91a39329168b757c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277344"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>Virtuálisgép-ajánlat közzététele
 
- Az utolsó lépés, miután meghatározta az ajánlatot a portálon, és létrehozta a kapcsolódó technikai eszközöket, a közzétételhez küldje el az ajánlatot. A következő ábra a közzétételi folyamat fő lépéseit ábrázolja a "Go Live" kifejezésre:
+ Az utolsó lépés, miután definiálta az ajánlatot a portálon, és létrehozta a kapcsolódó technikai eszközöket, az ajánlat közzététele. Az alábbi ábra a közzétételi folyamat főbb lépéseit ábrázolja a "go live" számára:
 
-![A virtuális gép ajánlatának közzétételi lépései](./media/publishvm_013.png)
+![Közzétételi lépések a virtuálisgép-ajánlathoz](./media/publishvm_013.png)
 
-A következő táblázat ismerteti ezeket a lépéseket, és a befejezésük maximális becsült idejét biztosítja:
+Az alábbi táblázat ismerteti ezeket a lépéseket, és a befejezésük maximális időbecslését tartalmazza:
 <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **Közzétételi lépés**           | **Idő**    | **Leírás**                                                            |
+|  **Közzétételi lépés**           | **Time**    | **Leírás**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Előfeltételek ellenőrzése         | 15 perc   | Az ajánlatra vonatkozó információk és az ajánlat beállításainak ellenőrzése.                        |
-| Tesztelési meghajtó ellenőrzése (nem kötelező) | 2 óra | Ha a tesztvezetés engedélyezését választotta, a Microsoft ellenőrzi a tesztelési meghajtó konfigurációját, a telepítést és a replikálást a kiválasztott régiókban. |
-| Tanúsítvány                  | 3 nap | Az ajánlatot az Azure minősítési csapat elemzi. Ez a lépés a vírusok, a kártevők, a biztonsági megfelelőség és a biztonsági problémák vizsgálatát végzi. A rendszer visszajelzést küld, ha problémát talál. |
-| Kiépítés                   | 4 nap   | A virtuálisgép-ajánlat a piactér éles rendszereiben van replikálva.               |
-| Csomagolás és vezető generáció regisztrációja | \< 1 óra  | Az ajánlat technikai eszközei az ügyfelek általi használatra vannak csomagolva, és a vezető rendszerek konfigurálva vannak és konfigurálhatók. |
-|  Közzétevő PM             |  -        | A kiadó végleges felülvizsgálata és megerősítése az ajánlat életbe lépését megelőzően. Az ajánlatot a kiválasztott előfizetésekben is üzembe helyezheti (az ajánlati információk lépéseiben) annak ellenőrzéséhez, hogy az megfelel-e az összes követelménynek.  |
-| Kiépítés                   | 4 nap | A véglegesített virtuálisgép-ajánlat a piactér éles rendszereiben és régióiban replikálódik. | 
-| Élő                           | 4 nap | A VM-ajánlat megjelent, replikálva van a szükséges régiókban, és elérhetővé válik a nyilvánosság számára. |
+| Előfeltételek érvényesítése         | 15 min   | Az ajánlati információk és az ajánlatbeállítások érvényesítve vannak.                        |
+| Tesztvezetés érvényesítése (nem kötelező) | 2 óra | Ha a Test Drive engedélyezését választotta, a Microsoft ellenőrzi a Test Drive konfigurációját, a telepítést és a replikációt a kiválasztott régiókon keresztül. |
+| Tanúsítvány                  | 3 nap | Az ajánlatot az Azure certification team elemzi. Ez a lépés vírusokat, rosszindulatú programokat, biztonsági megfelelőséget és biztonsági problémákat keres. A probléma esetén visszajelzést kap. |
+| Kiépítés                   | 4 nap   | Virtuális gép ajánlat replikálódik a piactér éles rendszerekben.               |
+| Csomagolás és ólomtermelés regisztrációja | \<1 óra  | Az ajánlat technikai eszközei taszanak az ügyfelek használatára, az érdeklődőrendszerek konfigurálása és beállítása. |
+|  Kiadói kijelentkezés             |  -        | Végső megjelenítői áttekintés és megerősítés az ajánlat élesedése előtt. Az ajánlat üzembe helyezhető a kiválasztott előfizetések (az ajánlatinformációs lépésekben), annak ellenőrzéséhez, hogy megfelel-e az összes követelménynek.  |
+| Kiépítés                   | 4 nap | A véglegesített virtuális gép ajánlata a piactér éles rendszereiben és régióiban replikálódik. | 
+| Élő                           | 4 nap | Virtuális gép ajánlat a kiadott, replikálódik a szükséges régiókban, és a nyilvánosság számára elérhetővé. |
 |  |  |
 
-A folyamat befejezéséhez legfeljebb 16 napig engedélyezze a műveletet.  A közzétételi lépések elvégzése után a virtuálisgép-ajánlat megjelenik a [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). 
+A folyamat befejezéséhez legfeljebb 16 napot kell hagyni.  Miután végigment ezeken a közzétételi lépéseken, a virtuális gép ajánlata megjelenik a [Microsoft Azure Piactéren.](https://azuremarketplace.microsoft.com/marketplace/) 
 
