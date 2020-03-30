@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT SDK-k ismertetése | Microsoft Docs
-description: Fejlesztői útmutató – a különböző Azure IoT-eszközökre és-szolgáltatásokra mutató hivatkozásokat tartalmaz, amelyek segítségével eszközöket és háttérbeli alkalmazásokat hozhat létre.
+title: Ismerje meg az Azure IoT SDK-kat | Microsoft dokumentumok
+description: Fejlesztői útmutató – információk és hivatkozások a különböző Azure IoT-eszközökés szolgáltatás SDK-k, amelyek segítségével eszközalkalmazások és háttéralkalmazások.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,173 +9,173 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284589"
 ---
-# <a name="understand-and-use-azure-iot-hub-sdks"></a>Az Azure IoT Hub SDK-k megismerése és használata
+# <a name="understand-and-use-azure-iot-hub-sdks"></a>Az Azure IoT Hub SDK-k ismertetése és használata
 
-A szoftverfejlesztői készletek (SDK-k) két kategóriába sorolhatók a IoT Hub:
+Az IoT Hubbal való együttműködéshez a szoftverfejlesztői készletek (SDK-k) két kategóriába sorolhatók:
 
-* A **IoT hub eszköz SDK** -k lehetővé teszik a IoT-eszközökön futó alkalmazások kiépítését az ügyfél vagy a modul ügyfélprogramjának használatával. Ezek az alkalmazások telemetriát küldenek az IoT Hubnak, és opcionálisan üzeneteket, feladatokat, metódusokat vagy ikereszköz-frissítéseket fogadhatnak az IoT Hubból.  A modul-ügyfél használatával [Azure IoT Edge futtatókörnyezethez](../iot-edge/about-iot-edge.md)is készíthet [modulokat](../iot-edge/iot-edge-modules.md) .
+* **Az IoT Hub-eszköz SDK-k** lehetővé teszik, hogy olyan alkalmazásokat hozzon létre, amelyek az IoT-eszközökön futnak az eszközügyfél vagy a modulügyfél használatával. Ezek az alkalmazások telemetriát küldenek az IoT Hubnak, és opcionálisan üzeneteket, feladatokat, metódusokat vagy ikereszköz-frissítéseket fogadhatnak az IoT Hubból.  A modulügyfél segítségével [modulokat](../iot-edge/iot-edge-modules.md) is létrehozhat az [Azure IoT Edge futásidejű rendszeréhez.](../iot-edge/about-iot-edge.md)
 
-* A **IoT hub Service SDK** -k lehetővé teszik, hogy háttérbeli alkalmazásokat építsen ki az IoT hub felügyeletéhez, és szükség esetén üzeneteket küldjön, feladatokat ütemezzen, közvetlen metódusokat kérjen, vagy a kívánt tulajdonságokat a IoT-eszközökre vagy-modulokra küldje el.
+* **Az IoT Hub-szolgáltatás SDK-i** lehetővé teszik, hogy háttéralkalmazásokat hozzon létre az IoT hub kezeléséhez, és szükség esetén üzeneteket küldjön, feladatokat ütemezzen, közvetlen metódusokat hívjana meg, vagy küldje el a kívánt tulajdonságfrissítéseket az IoT-eszközökre vagy -modulokra.
 
-Emellett az [eszközök kiépítési szolgáltatásával](../iot-dps/about-iot-dps.md)való együttműködéshez is biztosítunk SDK-kat.
-* Az **eszköz SDK** -k kiépítése lehetővé teszi a IoT-eszközökön futó alkalmazások kiépítését az eszköz kiépítési szolgáltatásával való kommunikációra.
+Emellett sdk-k készletét is biztosítjuk az [eszközkiépítési szolgáltatással](../iot-dps/about-iot-dps.md)való munkához.
+* **Az eszköz SDK-k kiépítése** lehetővé teszi, hogy az IoT-eszközökön futó alkalmazásokat hozzon létre az eszközkiépítési szolgáltatással való kommunikációhoz.
 
-* A **kiépítési szolgáltatás SDK** -k lehetővé teszik, hogy háttérbeli alkalmazásokat építsen ki a regisztrációk kezeléséhez az eszköz kiépítési szolgáltatásában.
+* **A kiépítési szolgáltatás SDK-k** lehetővé teszik, hogy háttéralkalmazásokat hozzon létre az eszközkiépítési szolgáltatásban történő regisztrációk kezeléséhez.
 
-Ismerje meg az [Azure IoT SDK-k használatával történő fejlesztés előnyeit](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/).
+Ismerje meg az [Azure IoT SDK-k fejlesztésének előnyeit.](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 
-### <a name="os-platform-and-hardware-compatibility"></a>Operációs rendszer platformja és hardveres kompatibilitása
+### <a name="os-platform-and-hardware-compatibility"></a>Operációs rendszer platform- és hardverkompatibilitása
 
-Az SDK-k által támogatott platformok az [Azure IoT SDK-platform támogatásában](iot-hub-device-sdk-platform-support.md)találhatók.
+Az SDK-k támogatott platformjai az [Azure IoT SDK platformtámogatásban](iot-hub-device-sdk-platform-support.md)találhatók.
 
-Az SDK-kompatibilitással kapcsolatos további információkért tekintse meg az [Azure Certified for IoT Device Catalog](https://catalog.azureiotsolutions.com/) vagy az egyes Tárházak című témakört.
+Az SDK adott hardvereszközökkel való kompatibilitásáról az [Azure Certified for IoT eszközkatalógusban](https://catalog.azureiotsolutions.com/) vagy az egyes tárházban talál további információt.
 
-## <a name="azure-iot-hub-device-sdks"></a>Azure IoT Hub eszköz SDK-k
+## <a name="azure-iot-hub-device-sdks"></a>Az Azure IoT Hub-eszköz SDK-k
 
-A Microsoft Azure IoT Device SDK-k olyan kódot tartalmaznak, amely megkönnyíti az Azure IoT Hub Services által felügyelt és az által kezelt alkalmazások kiépítése.
+A Microsoft Azure IoT-eszköz SDK-k olyan kódot tartalmaznak, amely megkönnyíti az Azure IoT Hub-szolgáltatásokhoz kapcsolódó és azok által felügyelt alkalmazások készítését.
 
-Azure IoT Hub-eszköz SDK a .NET-hez: 
+Azure IoT Hub-eszköz SDK a .NET: 
 
-* Letöltés a [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  A névtér a Microsoft. Azure. Devices. clients, amely IoT Hub eszköz-ügyfeleket (DeviceClient, ModuleClient) tartalmaz.
+* Letöltés [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  A névtér a Microsoft.Azure.Devices.Clients, amely IoT Hub-eszközügyfeleket (DeviceClient, ModuleClient) tartalmaz.
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API-leírások](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
-* [Modul-hivatkozás](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
+* [Modul hivatkozása](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
 
-Azure IoT Hub Device SDK C-hez (ANSI C-C99):
+Az Azure IoT Hub C-hez (ANSI C – C99) eszközSDK-je:
 
-* Telepítés [apt-get, MBED, ARDUINO ide vagy iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries) rendszerből
+* Telepítés [apt-get, MBED, Arduino IDE vagy iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-c)
-* [A C Device SDK fordítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#compiling-the-c-device-sdk)
+* [A C-eszköz SDK fordítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#compiling-the-c-device-sdk)
 * [API-leírások](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-* [Modul-hivatkozás](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
+* [Modul hivatkozása](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
 * [A C SDK portolása más platformokra](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
-* [Fejlesztői dokumentáció](https://github.com/Azure/azure-iot-sdk-c/tree/master/doc) a fordítással, a különböző platformokon való ismerkedéssel kapcsolatos információkért stb.
-* [Azure IoT Hub C SDK erőforrás-felhasználási információk](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)
+* [Fejlesztői dokumentáció](https://github.com/Azure/azure-iot-sdk-c/tree/master/doc) a keresztfordításról, a különböző platformokon való indulásról stb.
+* [Az Azure IoT Hub C SDK erőforrás-felhasználási adatai](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)
 
-A Javához készült Azure IoT Hub Device SDK: 
+Azure IoT Hub-eszköz SDK Java-hoz: 
 
 * Hozzáadás a [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) projekthez
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-java)
 * [API-leírások](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device)
-* [Modul-hivatkozás](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
+* [Modul hivatkozása](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
 
-Azure IoT Hub-eszköz SDK a Node. js-hez: 
+Azure IoT Hub-eszköz SDK node.js: 
 
-* Telepítés a [NPM](https://www.npmjs.com/package/azure-iot-device)
+* Telepítés [npm-től](https://www.npmjs.com/package/azure-iot-device)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-node)
 * [API-leírások](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest)
-* [Modul-hivatkozás](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
+* [Modul hivatkozása](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
 
-A Pythonhoz készült Azure IoT Hub Device SDK: 
+Azure IoT Hub-eszköz SDK Pythonhoz: 
 
-* Telepítés a [pip](https://pypi.org/project/azure-iot-device/) -ből
+* Telepítés [pip-ből](https://pypi.org/project/azure-iot-device/)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-python)
 * [API-leírások](https://docs.microsoft.com/python/api/azure-iot-device)
 
-Azure IoT Hub iOS-eszközökhöz készült SDK: 
+Az Azure IoT Hub-eszköz SDK-iOS-hez: 
 
-* Telepítés a [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient)
+* Telepítés a [CocoaPod-ról](https://cocoapods.org/pods/AzureIoTHubClient)
 * [Minták](https://github.com/Azure-Samples/azure-iot-samples-ios)
-* API-hivatkozás: lásd a [C API-referenciát](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+* API-hivatkozás: lásd: [C API-hivatkozás](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
-## <a name="azure-iot-hub-service-sdks"></a>Azure IoT Hub Service SDK-k
+## <a name="azure-iot-hub-service-sdks"></a>Az Azure IoT Hub szolgáltatás SDK-i
 
-Az Azure IoT Service SDK-k olyan kódot tartalmaznak, amely megkönnyíti az olyan alkalmazások létrehozását, amelyek az eszközök és a biztonság kezeléséhez IoT Hub közvetlenül kommunikálnak.
+Az Azure IoT szolgáltatás SDK-k olyan kódot tartalmaznak, amely megkönnyíti az olyan alkalmazások készítését, amelyek közvetlenül együttműködnek az IoT Hubbal az eszközök és a biztonság kezeléséhez.
 
-Azure IoT Hub Service SDK a .NET-hez:
+Az Azure IoT Hub sdk szolgáltatása a .NET-hez:
 
-* Letöltés a [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/).  A névtér a Microsoft. Azure. Devices, amely IoT Hub szolgáltatás-ügyfeleket (RegistryManager, ServiceClients) tartalmaz.
+* Letöltés [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/).  A névtér a Microsoft.Azure.Devices, amely az IoT Hub szolgáltatásügyfeleit (RegistryManager, ServiceClients) tartalmazza.
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API-leírások](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
-A Javához készült Azure IoT Hub Service SDK: 
+Az Azure IoT Hub szolgáltatás SDK Java-hoz: 
 
 * Hozzáadás a [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) projekthez
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-java)
 * [API-leírások](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service)
 
-Azure IoT Hub Service SDK a Node. js-hez: 
+Az Azure IoT Hub szolgáltatás SDK-ja a Node.js-hez: 
 
-* Letöltés a [NPM](https://www.npmjs.com/package/azure-iothub)
+* Letöltés [az npm-től](https://www.npmjs.com/package/azure-iothub)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-node)
 * [API-leírások](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-iot-typescript-latest)
 
-Azure IoT Hub Service SDK a Pythonhoz: 
+Az Azure IoT Hub szolgáltatás SDK pythonhoz: 
 
-* Letöltés a [pip](https://pypi.python.org/pypi/azure-iot-hub/) -ből
+* Letöltés [pip](https://pypi.python.org/pypi/azure-iot-hub/)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
-Azure IoT Hub Service SDK a C-hez: 
+Az Azure IoT Hub szolgáltatás SDK C-hez: 
 
-* Letöltés [apt-get, MBED, ARDUINO ide vagy Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
+* Letöltés [az apt-get, MBED, Arduino IDE vagy Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-c)
 
-Azure IoT Hub Service SDK iOS rendszerhez: 
+Az Azure IoT Hub szolgáltatás SDK iOS-hez: 
 
-* Telepítés a [CocoaPod](https://cocoapods.org/pods/AzureIoTHubServiceClient)
+* Telepítés a [CocoaPod-ról](https://cocoapods.org/pods/AzureIoTHubServiceClient)
 * [Minták](https://github.com/Azure-Samples/azure-iot-samples-ios)
 
 > [!NOTE]
-> Tekintse meg a GitHub-Tárházak readme-fájljait a nyelvi és platform-specifikus csomagkezelő használatával a bináris fájlok és függőségek telepítéséhez a fejlesztői gépen.
+> Tekintse meg a readme fájlokat a GitHub-adattárak ban a nyelvi és platformspecifikus csomagkezelők használatával kapcsolatos információkért a bináris fájlok és a fejlesztői gép függőségei telepítéséhez.
 
-## <a name="microsoft-azure-provisioning-sdks"></a>Microsoft Azure SDK-k üzembe helyezése
+## <a name="microsoft-azure-provisioning-sdks"></a>Microsoft Azure kiépítési SDK-k
 
-Az **Microsoft Azure kiépítési SDK** -k lehetővé teszik az eszközök kiépítését a IoT hub az [eszköz kiépítési szolgáltatásával](../iot-dps/about-iot-dps.md).
+A **Microsoft Azure-kiépítési SDK-k** lehetővé teszik, hogy eszközöket létesítsen az IoT Hubba az [eszközkiépítési szolgáltatás](../iot-dps/about-iot-dps.md)használatával.
 
-Azure kiépítési eszköz és szolgáltatás SDK-k C#a következőhöz:
+Azure kiépítési eszköz és szolgáltatás SDK-k a C#:
 
-* Töltse le az [eszköz SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/) -ból és a [Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) -ból a NuGet-ból.
+* Töltse le az [Eszköz SDK-ból](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/) és [a Service SDK-ból](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a NuGet-től.
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-csharp/)
 * [API-leírások](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.provisioning.client?view=azure-dotnet)
 
-Azure-beli kiépítési eszköz és szolgáltatás SDK-k a C-hez:
+Azure Provisioning device and service SDKs for C:
 
-* Telepítés [apt-get, MBED, ARDUINO ide vagy iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries) rendszerből
+* Telepítés [apt-get, MBED, Arduino IDE vagy iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client)
 * [API-leírások](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
-Azure-beli üzembe helyezési eszköz és szolgáltatás SDK-k Javához:
+Azure Provisioning device and service SDKs for Java:
 
 * Hozzáadás a [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) projekthez
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)
 * [API-leírások](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.provisioning.device?view=azure-java-stable)
 
-Azure-beli kiépítési eszköz és szolgáltatás SDK-k Node. js-hez:
+Azure kiépítési eszköz és szolgáltatás SDK-k node.js:
 
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)
 * [API-leírások](https://docs.microsoft.com/javascript/api/overview/azure/iothubdeviceprovisioning?view=azure-node-latest)
-* Az eszközoldali [SDK](https://badge.fury.io/js/azure-iot-provisioning-device) és a [Service SDK](https://badge.fury.io/js/azure-iot-provisioning-service) letöltése a NPM-ből
+* [Eszköz SDK](https://badge.fury.io/js/azure-iot-provisioning-device) és [Service SDK](https://badge.fury.io/js/azure-iot-provisioning-service) letöltése npm-től
 
-Azure-beli kiépítési eszköz és szolgáltatás SDK-k a Pythonhoz:
+Azure kiépítési eszköz és szolgáltatás SDK-k python:
 
 * [Forráskód](https://github.com/Azure/azure-iot-device)
-* Az [eszköz SDK](https://pypi.org/project/azure-iot-device/) és a [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) letöltése a pip-ből
+* [Eszköz SDK](https://pypi.org/project/azure-iot-device/) és [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) letöltése pip-ből
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure IoT SDK-k olyan eszközöket is biztosítanak, amelyek segítik a fejlesztést:
-* [iothub-Diagnostics](https://github.com/Azure/iothub-diagnostics): többplatformos parancssori eszköz a IoT Hubsal való kapcsolattal kapcsolatos problémák diagnosztizálásához.
-* [Azure-IOT-Explorer](https://github.com/Azure/azure-iot-explorer): többplatformos asztali alkalmazás a IoT hubhoz való kapcsolódáshoz, valamint az IOT-eszközökkel való hozzáadáshoz/felügyelethez/kommunikációhoz.
+Az Azure IoT SDK-k a fejlesztéshez szükséges eszközöket is biztosítják:
+* [iothub-diagnosztika:](https://github.com/Azure/iothub-diagnostics)egy platformfüggetlen parancssori eszköz, amely segít az IoT Hubbal való kapcsolattal kapcsolatos problémák diagnosztizálására.
+* [azure-iot-explorer:](https://github.com/Azure/azure-iot-explorer)egy platformfüggetlen asztali alkalmazás, amely csatlakozik az IoT Hubhoz, és hozzáadó/kezel/kommunikál az IoT-eszközökkel.
 
-Az Azure IoT SDK-k használatával történő fejlesztéshez kapcsolódó releváns docs:
-* Ismerje meg [, hogyan kezelheti a kapcsolatot és a megbízható üzenetkezelést](iot-hub-reliability-features-in-sdks.md) az IoT hub SDK-k használatával.
-* Ismerje meg, hogyan [fejleszthet a mobil platformokra](iot-hub-how-to-develop-for-mobile-devices.md) , például az iOS-re és az Androidra.
-* [Azure IoT SDK-platform támogatása](iot-hub-device-sdk-platform-support.md)
+Az Azure IoT SDK-k használatával történő fejlesztéssel kapcsolatos releváns dokumentumok:
+* Ismerje [meg, hogyan kezelheti a kapcsolatot és a megbízható üzenetküldést](iot-hub-reliability-features-in-sdks.md) az IoT Hub SDK-k használatával.
+* További információ [arról, hogyan fejleszthet mobilplatformokra,](iot-hub-how-to-develop-for-mobile-devices.md) például iOS-re és Androidra.
+* [Az Azure IoT SDK platformtámogatása](iot-hub-device-sdk-platform-support.md)
 
 
-A IoT Hub Fejlesztői útmutatóban szereplő további témakörök a következők:
+Az IoT Hub fejlesztői útmutatójának további referenciatémakörei a következők:
 
 * [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)
-* [Az ikrek, a feladatok és az üzenet-útválasztás IoT Hub lekérdezési nyelve](iot-hub-devguide-query-language.md)
+* [Az IoT Hub lekérdezési nyelve az ikereszközök, feladatok és az üzenetek útválasztása](iot-hub-devguide-query-language.md)
 * [Kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md)
-* [IoT Hub MQTT-támogatás](iot-hub-mqtt-support.md)
-* [IoT Hub REST API-hivatkozás](/rest/api/iothub/)
+* [Az IoT Hub MQTT támogatása](iot-hub-mqtt-support.md)
+* [IoT Hub REST API-referencia](/rest/api/iothub/)

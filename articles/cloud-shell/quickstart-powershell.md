@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell rövid útmutató – PowerShell
-description: Megtudhatja, hogyan használhatja a PowerShellt a böngészőben a Azure Cloud Shell használatával.
+title: Az Azure Cloud Shell rövid útmutatója – PowerShell
+description: Ismerje meg, hogyan használhatja a PowerShellt a böngészőjében az Azure Cloud Shell segítségével.
 author: maertendmsft
 ms.author: damaerte
 tags: azure-resource-manager
@@ -10,32 +10,32 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273006"
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>A PowerShell rövid útmutatója Azure Cloud Shell
+# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rövid útmutató a PowerShellhez az Azure Cloud Shellben
 
-Ez a dokumentum részletesen ismerteti, hogyan használható a PowerShell a [Azure Portal](https://portal.azure.com/)Cloud Shellban.
+Ez a dokumentum részletezi, hogyan használhatja a PowerShellt a Cloud Shellben az [Azure Portalon.](https://portal.azure.com/)
 
 > [!NOTE]
-> Azure Cloud Shell rövid útmutatóban is elérhető [bash](quickstart.md) .
+> A [Bash az Azure Cloud Shell](quickstart.md) rövid útmutató is elérhető.
 
-## <a name="start-cloud-shell"></a>Kezdés Cloud Shell
+## <a name="start-cloud-shell"></a>Cloud Shell indítása
 
-1. Kattintson **Cloud Shell** gombra a Azure Portal felső navigációs sávján.
+1. Kattintson a **Cloud Shell** gombra az Azure Portal felső navigációs sávján
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. Válassza ki a PowerShell-környezetet a legördülő menüből, és az Azure Drive `(Azure:)`
+2. Válassza ki a PowerShell-környezetet a legördülő menüből, és az Azure Drive-on lesz`(Azure:)`
 
    ![](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>PowerShell-parancsok futtatása
 
-Futtasson rendszeres PowerShell-parancsokat a Cloud Shellban, például:
+Futtassa a normál PowerShell-parancsokat a Cloud Shellben, például:
 
 ```azurepowershell-interactive
 PS Azure:\> Get-Date
@@ -53,24 +53,24 @@ MyResourceGroup         MyVM1       eastus            Standard_DS1  Windows    S
 MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    Succeeded           deallocated
 ```
 
-## <a name="navigate-azure-resources"></a>Azure-erőforrások navigálása
+## <a name="navigate-azure-resources"></a>Navigálás az Azure-erőforrásokban
 
- 1. `Azure` meghajtóról származó összes előfizetés listázása
+ 1. Az összes előfizetés `Azure` listázása a drive-ról
 
     ```azurepowershell-interactive
     PS Azure:\> dir
     ```
 
- 2. `cd` az előnyben részesített előfizetéshez
+ 2. `cd`a kívánt előfizetéshez
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
     PS Azure:\MySubscriptionName>
     ```
 
- 3. Az összes Azure-erőforrás megtekintése a jelenlegi előfizetésben
+ 3. Az összes Azure-erőforrás megtekintése az aktuális előfizetésben
 
-    Írja be a `dir`t az Azure-erőforrások több nézetének listázásához.
+    Írja `dir` be az Azure-erőforrások több nézetének listázásához.
 
     ```azurepowershell-interactive
     PS Azure:\MySubscriptionName> dir
@@ -88,15 +88,15 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>AllResources nézet
 
-Az Azure-erőforrások megtekintéséhez írja be a `dir` `AllResources` könyvtár alatt.
+Írja `dir` `AllResources` be a könyvtár alá az Azure-erőforrások megtekintéséhez.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources
 ```
 
-### <a name="explore-resource-groups"></a>Erőforráscsoportok megismerése
+### <a name="explore-resource-groups"></a>Erőforráscsoportok felfedezése
 
- Megtekintheti a `ResourceGroups` könyvtárat, és egy adott erőforráscsoporthoz is megtalálhatja a virtuális gépeket.
+ A címtárban, `ResourceGroups` és egy adott erőforráscsoporton belül virtuális gépek találhatók.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -114,13 +114,13 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> Megfigyelheti, hogy a `dir`beírásakor a második alkalommal a Cloud Shell sokkal gyorsabban képes megjeleníteni az elemeket.
-> Ennek az az oka, hogy a gyermek elemeket a rendszer a memóriában gyorsítótárazza a jobb felhasználói élmény érdekében.
-Azonban mindig a `dir -Force` használatával kérheti le a friss adatgyűjtést.
+> Előfordulhat, hogy a második gépeléskor `dir`a Cloud Shell sokkal gyorsabban tudja megjeleníteni az elemeket.
+> Ennek az az oka, hogy a gyermekelemek a jobb felhasználói élmény érdekében a memóriában vannak gyorsítótárazva.
+Azonban mindig használhatja `dir -Force` a friss adatok beszerezhető.
 
-### <a name="navigate-storage-resources"></a>Tárolási erőforrások navigálása
+### <a name="navigate-storage-resources"></a>Navigálás a tárolási erőforrásokban
 
-Ha beírja a `StorageAccounts` könyvtárat, könnyedén megtekintheti az összes tárolási erőforrást
+A `StorageAccounts` könyvtárba való belépéssel könnyedén navigálhat az összes tárolási erőforrásban
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -134,15 +134,15 @@ MyFileShare2  \\MyStorageAccountName.file.core.windows.net\MyFileShare2;AccountN
 MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountName=MyStorageAccountName AccountKey=<key>
 ```
 
-A kapcsolódási karakterlánccal a következő parancs használatával csatlakoztathatja a Azure Files-megosztást.
+A kapcsolati karakterlánc, a következő paranccsal csatlakoztathatja az Azure Files share.
 
 ```azurepowershell-interactive
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-Részletekért lásd: [Azure Files-megosztás csatlakoztatása és a megosztás elérése a Windowsban][azmount].
+További információt az [Azure-fájlok megosztásának csatlakoztatása és a Windows-megosztás elérése című témakörben talál.][azmount]
 
-A Azure Files megosztás alatt lévő címtárakat a következőképpen is megtekintheti:
+Az Azure Files-megosztás alatt a könyvtárakban az alábbiak szerint navigálhat:
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> cd .\MyFileShare1\
@@ -154,9 +154,9 @@ Mode  Name
 .     hello.ps1
 ```
 
-### <a name="interact-with-virtual-machines"></a>Kommunikáció a virtuális gépekkel
+### <a name="interact-with-virtual-machines"></a>Interakció a virtuális gépekkel
 
-A jelenlegi előfizetéshez tartozó összes virtuális gép `VirtualMachines` Directoryn keresztül található.
+Az összes virtuális gépet az aktuális `VirtualMachines` előfizetés könyvtáron keresztül találja.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\VirtualMachines> dir
@@ -171,19 +171,19 @@ TestVm2    MyResourceGroup1   westus    Standard_DS1_v2 Windows          jpstest
 TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest         Succeeded     running
 ```
 
-#### <a name="invoke-powershell-script-across-remote-vms"></a>PowerShell-parancsfájl meghívása távoli virtuális gépek között
+#### <a name="invoke-powershell-script-across-remote-vms"></a>PowerShell-parancsfájl meghívása távoli virtuális gépeken
 
  > [!WARNING]
- > Tekintse meg az Azure-beli [virtuális gépek távoli felügyeletének hibaelhárítását ismertető témakört](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
+ > Tekintse meg az [Azure virtuális gépek távoli kezelésének hibaelhárítása című témakört.](troubleshooting.md#troubleshooting-remote-management-of-azure-vms)
 
-  Feltételezve, hogy rendelkezik egy virtuális géppel, a MyVM1 `Invoke-AzVMCommand` használatával meghívja a távoli gépen a PowerShell-szkriptek blokkját.
+  Feltételezve, hogy egy virtuális gép, MyVM1, használjuk `Invoke-AzVMCommand` meghívni a PowerShell-parancsfájl blokk a távoli gépen.
 
   ```azurepowershell-interactive
   Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
   Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
-  Először is megnyithatja a VirtualMachines könyvtárat, és a következőképpen futtathatja `Invoke-AzVMCommand`.
+  Azt is keresse meg a VirtualMachines `Invoke-AzVMCommand` könyvtárat először, és fuss az alábbiak szerint.
 
   ```azurepowershell-interactive
   PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
@@ -204,23 +204,23 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
    ...
   ```
 
-#### <a name="interactively-log-on-to-a-remote-vm"></a>Interaktív bejelentkezés egy távoli virtuális gépre
+#### <a name="interactively-log-on-to-a-remote-vm"></a>Interaktív bejelentkezés távoli virtuális gépre
 
-Az Azure-ban futó virtuális gépeken való interaktív bejelentkezéshez `Enter-AzVM`t használhat.
+Interaktívan `Enter-AzVM` bejelentkezhet az Azure-ban futó virtuális gépbe.
 
   ```azurepowershell-interactive
   PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
-Először is megnyithatja a `VirtualMachines` könyvtárat, és a következőképpen futtathatja `Enter-AzVM`
+Először a könyvtárhoz is navigálhat, és a `VirtualMachines` következőképpen futtatható: `Enter-AzVM`
 
   ```azurepowershell-interactive
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
-### <a name="discover-webapps"></a>WebApps felderítése
+### <a name="discover-webapps"></a>WebApps felfedezése
 
-Ha beírja a `WebApps` könyvtárat, könnyedén navigálhat a Web Apps-erőforrásokhoz
+A `WebApps` címtárba való belépéssel könnyedén navigálhat a webalkalmazások erőforrásaiközött
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -254,16 +254,16 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-Ha SSH-val szeretne hitelesítést végezni a kiszolgálókon vagy virtuális gépeken, hozza a nyilvános titkos kulcspár Cloud Shell, és tegye közzé a nyilvános kulcsot a távoli gépen `authorized_keys`, például `/home/user/.ssh/authorized_keys`.
+Ha SSH-t használó kiszolgálókon vagy virtuális gépeken szeretne hitelesíteni magát, `authorized_keys` hozza létre a `/home/user/.ssh/authorized_keys`nyilvános és titkos kulcspárt a Cloud Shellben, és tegye közzé a nyilvános kulcsot a távoli számítógépen, például .
 
 > [!NOTE]
-> Az SSH nyilvános kulcsokat a `ssh-keygen` segítségével hozhatja létre, és közzéteheti őket a Cloud Shell `$env:USERPROFILE\.ssh`.
+> SSH nyilvános kulcsokat hozhat `ssh-keygen` létre a `$env:USERPROFILE\.ssh` Cloud Shell használatával, és közzéteheti őket.
 
 ### <a name="using-ssh"></a>Az SSH használata
 
-Az új [virtuálisgép-konfiguráció](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) Azure PowerShell parancsmagokkal történő létrehozásához kövesse az alábbi utasításokat.
-Mielőtt megkezdi az üzembe helyezést a `New-AzVM` a telepítés elindításához, adjon hozzá egy nyilvános SSH-kulcsot a virtuális gép konfigurációjához.
-Az újonnan létrehozott virtuális gép a `~\.ssh\authorized_keys` helyen található nyilvános kulcsot fogja tartalmazni, ami lehetővé teszi a hitelesítő adatokkal való ingyenes SSH-munkamenetet a virtuális géphez.
+Kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) található utasításokat egy új virtuálisgép-konfiguráció létrehozásához az Azure PowerShell-parancsmagok használatával.
+`New-AzVM` Az üzembe helyezés megkezdése előtt adja hozzá az SSH nyilvános kulcsot a virtuális gép konfigurációjához.
+Az újonnan létrehozott virtuális gép tartalmazza `~\.ssh\authorized_keys` a nyilvános kulcsot a helyen, ezáltal lehetővé téve a hitelesítő adatok nélküli SSH-munkamenetet a virtuális gépszámára.
 
 ```azurepowershell-interactive
 # Create VM config object - $vmConfig using instructions on linked page above
@@ -282,33 +282,33 @@ New-AzVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmCo
 ssh azureuser@MyVM.Domain.Com
 ```
 
-## <a name="list-available-commands"></a>Elérhető parancsok listázása
+## <a name="list-available-commands"></a>Az elérhető parancsok listázása
 
-A `Azure` meghajtó alatt írja be a `Get-AzCommand` parancsot a környezetfüggő Azure-parancsok beszerzéséhez.
+A `Azure` meghajtó `Get-AzCommand` alatt írja be a környezetspecifikus Azure-parancsok beírásához.
 
-Azt is megteheti, hogy az elérhető Azure-parancsok megkereséséhez mindig `Get-Command *az* -Module Az.*` használ.
+Azt is megteheti, `Get-Command *az* -Module Az.*` hogy mindig a rendelkezésre álló Azure-parancsok at.
 
 ## <a name="install-custom-modules"></a>Egyéni modulok telepítése
 
-`Install-Module` futtatásával modulokat telepíthet a [PowerShell-galériaból][gallery].
+Futtathatja `Install-Module` a modulok telepítéséhez a [PowerShell-galériából.][gallery]
 
-## <a name="get-help"></a>Get-Help
+## <a name="get-help"></a>Segítség
 
-Írja be a `Get-Help`t a PowerShell-lel kapcsolatos információk beszerzéséhez Azure Cloud Shellban.
+Írja `Get-Help` be a PowerShell az Azure Cloud Shell ben.
 
 ```azurepowershell-interactive
 Get-Help
 ```
 
-Egy adott parancs esetében továbbra is `Get-Help`, majd egy parancsmag követhető.
+Egy adott parancs esetén továbbra `Get-Help` is megteheti egy parancsmag követését.
 
 ```azurepowershell-interactive
 Get-Help Get-AzVM
 ```
 
-## <a name="use-azure-files-to-store-your-data"></a>Az adattároláshoz használjon Azure Files
+## <a name="use-azure-files-to-store-your-data"></a>Adatok tárolása azure-fájlok használatával
 
-Létrehozhat egy parancsfájlt, például `helloworld.ps1`t, és mentheti a `clouddrive` a rendszerhéj-munkamenetek közötti használathoz.
+Létrehozhat egy parancsfájlt, `helloworld.ps1`például , `clouddrive` és mentheti azt a shell munkamenetek közötti használatra.
 
 ```azurepowershell-interactive
 cd $HOME\clouddrive
@@ -321,18 +321,18 @@ code .\helloworld.ps1
 Hello World!
 ```
 
-Amikor legközelebb a PowerShellt használja Cloud Shellban, a `helloworld.ps1` fájl az `$HOME\clouddrive` könyvtár alatt található, amely a Azure Files-megosztást csatlakoztatja.
+Legközelebb, amikor a PowerShellt használja `helloworld.ps1` a Cloud `$HOME\clouddrive` Shellben, a fájl az Azure Files-megosztást csatlakoztató könyvtár alatt fog létezni.
 
 ## <a name="use-custom-profile"></a>Egyéni profil használata
 
-A PowerShell-környezet testreszabásához PowerShell-profil (ok) létrehozásával – `profile.ps1` (vagy `Microsoft.PowerShell_profile.ps1`) hozható létre.
-Mentse azt `$profile.CurrentUserAllHosts` (vagy `$profile.CurrentUserAllHosts`) alá, hogy az Cloud Shell-munkamenetben lévő összes PowerShellben betölthető legyen.
+Testreszabhatja a PowerShell-környezetet, a PowerShell-profil(ok) - `profile.ps1` (vagy) `Microsoft.PowerShell_profile.ps1`létrehozásával.
+Mentse el `$profile.CurrentUserAllHosts` a `$profile.CurrentUserAllHosts`(vagy ), hogy a Cloud Shell-munkamenet minden PowerShell-munkamenetében betölthető legyen.
 
-A profilok létrehozásával kapcsolatban tekintse meg a [About Profiles című témakört][profile].
+A profil létrehozásáról a Profilok – ismertetés című lap ban [tájékozódhat.][profile]
 
-## <a name="use-git"></a>A git használata
+## <a name="use-git"></a>A Git használata
 
-Git-tárház klónozásához a Cloud Shell létre kell hoznia egy [személyes hozzáférési jogkivonatot][githubtoken] , és azt felhasználónévként kell használni. Ha rendelkezik a jogkivonattal, a következő módon klónozott a tárházat:
+Git-tárház klónozásához a Felhőrendszerhéjban létre kell hoznia egy [személyes hozzáférési jogkivonatot,][githubtoken] és felhasználónévként kell használnia. Miután rendelkezik a jogkivonatkal, klónozza a tárházat az alábbiak szerint:
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git
@@ -340,7 +340,7 @@ Git-tárház klónozásához a Cloud Shell létre kell hoznia egy [személyes ho
 
 ## <a name="exit-the-shell"></a>Kilépés a rendszerhéjból
 
-A munkamenet megszakításához írja be a `exit`.
+Írja `exit` be a munkamenet leállítását.
 
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/

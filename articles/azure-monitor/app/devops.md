@@ -1,163 +1,163 @@
 ---
-title: Webalkalmazások teljesítményének monitorozása – Azure Application Insights
-description: Hogyan illeszkedik a Application Insights a devOps ciklusba
+title: Webalkalmazás teljesítményfigyelése – Azure Application Insights
+description: Hogyan illeszkedik az Application Insights a devOps-ciklusba?
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669692"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
-## <a name="why-do-i-need-application-insights"></a>Miért van szükség a Application Insightsre?
-Application Insights figyeli a futó webalkalmazást. Ismerteti a hibákat és a teljesítménnyel kapcsolatos problémákat, és segít elemezni, hogyan használják az ügyfelek az alkalmazást. A sok platformon (ASP.NET, Java EE, Node. js,...) futó alkalmazások esetében működik, és a felhőben vagy a helyszínen is üzemeltethető. 
+## <a name="why-do-i-need-application-insights"></a>Miért van szükségem Az Application Insightsra?
+Az Application Insights figyeli a futó webalkalmazást. Ismerteti a hibákat és a teljesítménnyel kapcsolatos problémákat, és segít elemezni, hogy az ügyfelek hogyan használják az alkalmazást. Számos platformon (ASP.NET, Java EE, Node.js, ...) futó alkalmazásokesetében működik, és a felhőben vagy a helyszínen található. 
 
-![A webalkalmazások kézbesítésének bonyolultsági szempontjai](./media/devops/010.png)
+![A webalkalmazások szolgáltatásának összetettségével kapcsolatos szempontok](./media/devops/010.png)
 
-Alapvető fontosságú a modern alkalmazások figyelése a futás közben. A legfontosabb, hogy az ügyfelek többsége előtt észlelni fogja a hibákat. Emellett érdemes felderíteni és elhárítani a teljesítménnyel kapcsolatos problémákat is, amelyek nem katasztrofálisak, talán lassítják a dolgokat, vagy valamilyen kényelmetlenséget okoznak a felhasználóknak. Ha a rendszer megfelel az Ön elégedettségének, tudni szeretné, hogy mit csinálnak a felhasználók? a legújabb szolgáltatást használják? Sikerül?
+Fontos, hogy egy modern alkalmazást futás közben figyelhet. A legfontosabb, hogy a hibákat előbb szeretné észlelni, mint a legtöbb ügyfél. Azt is szeretné, hogy felfedezzék és kijavítsák a teljesítmény problémákat, amelyek, bár nem katasztrofális, talán lelassítja a dolgokat, vagy némi kényelmetlenséget okoz a felhasználóknak. És amikor a rendszer teljesít az Ön megelégedésére, szeretné tudni, hogy mit csinálnak vele a felhasználók: A legújabb funkciót használják? Sikerrel járnak?
 
-A modern webalkalmazások folyamatos kézbesítési ciklusban lettek kifejlesztve: új funkció vagy fejlesztés kiadása; Figyelje meg, hogy milyen jól működik a felhasználók számára; az ismeret alapján tervezze meg a fejlesztés következő lépését. A ciklus egyik kulcsfontosságú része a megfigyelési fázis. A Application Insights a webalkalmazások teljesítményének és használatának figyelésére szolgáló eszközöket biztosít.
+Modern webes alkalmazások fejlesztése a ciklus folyamatos szállítás: mentesít egy új funkció vagy javítása; figyeljük meg, hogy milyen jól működik a felhasználók számára; megtervezheti a fejlődés következő növekményét ezen ismeretek alapján. Ennek a ciklusnak a kulcsfontosságú része a megfigyelési szakasz. Az Application Insights eszközöket biztosít egy webes alkalmazás teljesítmény és használat figyeléséhez.
 
-Ennek a folyamatnak a legfontosabb aspektusa a diagnosztika és a diagnosztika. Ha az alkalmazás meghibásodik, akkor az üzlet elvész. A figyelési keretrendszer elsődleges szerepe ezért a hibák megbízható észlelése, azonnali értesítés, valamint a probléma diagnosztizálásához szükséges információk benyújtása. Pontosan ez a Application Insights.
+Ennek a folyamatnak a legfontosabb szempontja a diagnosztika és a diagnózis. Ha az alkalmazás meghibásodik, akkor az üzleti veszti. A figyelési keretrendszer elsődleges feladata ezért a hibák megbízható észlelése, azonnali értesítése, valamint a probléma diagnosztizálásához szükséges információk bemutatása. Pontosan ez az, amit az Application Insights csinál.
 
-### <a name="where-do-bugs-come-from"></a>Honnan származnak a hibák?
-A webrendszerekben előforduló hibák jellemzően a konfigurációs problémákból vagy a sok összetevője közötti rossz interakcióból származnak. Az élő hely bekövetkezésekor felmerülő első feladat ezért a probléma irányának megállapítása: melyik összetevő vagy kapcsolat okozza a problémát?
+### <a name="where-do-bugs-come-from"></a>Honnan származnak a bogarak?
+A webes rendszerek hibái általában konfigurációs problémákból vagy a számos összetevő közötti rossz interakciókból erednek. Az élő webhely-incidens kezelésének első feladata tehát a probléma helyszínének azonosítása: melyik összetevő vagy kapcsolat az oka?
 
-Néhány minket, akik szürke hajjal rendelkeznek, megjegyezhető egy egyszerűbb korszak, amelyben egy számítógép programja egy számítógépen futott le. A fejlesztők alaposan tesztelik a szállítás előtt; és elküldte azt, ritkán tekinti vagy gondolja újra. A felhasználóknak sok évig kellene megtenniük a fennmaradó hibákat. 
+Néhányan közülünk, azok, akik ősz haj, emlékszik egy egyszerűbb korszak, amelyben egy számítógépes program futott egy számítógépen. A fejlesztők alaposan tesztelnék, mielőtt elszállítanák; és miután szállított, ritkán látni, vagy gondolni rá újra. A felhasználóknak évekig el kellett tolniuk a maradék hibákat. 
 
-A dolgok mostantól nagyon különbözőek. Az alkalmazás számos különböző eszközön fut, és nehéz lehet garantálni, hogy mindegyiken ugyanaz a viselkedés. Az alkalmazások felhőben történő üzemeltetése azt jelenti, hogy a hibák gyorsan megoldhatók, de a folyamatos verseny és az új funkciók várhatóan gyakori időközönként is megmaradnak. 
+A dolgok most nagyon megváltoztak. Az alkalmazás számos különböző eszközön futtatható, és nehéz lehet garantálni, hogy pontosan ugyanazt a viselkedést mindegyik. Az alkalmazások felhőben való üzemeltetése azt jelenti, hogy a hibák gyorsan javíthatók, de folyamatos versenyt és az új funkciók gyakori időközönkénti elvárását is jelenti. 
 
-Ezekben a feltételekben a hibák számának megtartása egyetlen módja az automatizált egység tesztelése. Nem lehet manuálisan újra tesztelni minden kézbesítést. Az egység tesztelése mostantól a felépítési folyamat egy általános része. Az eszközök, például a Xamarin Test Cloud segítséget nyújtanak, ha automatizált felhasználói felületi tesztelést biztosít több böngészős verzióban. Ezek a tesztelési rendszerek lehetővé teszik, hogy reméljük, hogy az alkalmazáson belül talált hibák aránya minimálisan megtartható.
+Ilyen körülmények között az egyetlen módja annak, hogy a hibaszám on-re erősen szabályozhassa az automatikus egységtesztelést. Lehetetlen lenne manuálisan újra tesztelni mindent minden szállításnál. Az egységteszt ma már a létrehozási folyamat általános része. Az olyan eszközök, mint például a Xamarin Test Cloud, segítenek az automatikus felhasználói felület tesztelésének biztosításában több böngészőverzióban. Ezek a tesztelési rendszerek lehetővé teszik számunkra, hogy reméljük, hogy az alkalmazásbelsejében található hibák aránya minimálisra tartható.
 
-A tipikus webalkalmazások sok élő összetevővel rendelkeznek. Az ügyfélen (egy böngészőben vagy egy eszköz alkalmazásban) és a webkiszolgálón kívül valószínűleg jelentős a háttér-feldolgozás. Lehet, hogy a háttér az összetevők egyik folyamata, vagy egy olyan lazább gyűjtemény, amely összegyűjti a közös elemeket. És ezek közül sokan nem lesznek a vezérlőben – ezek olyan külső szolgáltatások, amelyektől függ.
+Tipikus webes alkalmazások sok élő összetevők. Az ügyfél (böngészőben vagy eszközalkalmazásban) és a webkiszolgáló mellett valószínűleg jelentős háttérfeldolgozás ra is szükség lehet. Lehet, hogy a háttérrendszer egy folyamat az összetevők, vagy egy lazább gyűjteménye együttműködő darabok. És sokan közülük nem lesz az Ön ellenőrzése - ezek a külső szolgáltatások, amelyektől függ.
 
-A hasonló konfigurációk esetében nehéz és gazdaságtalan lehet a teszteléshez, vagy az összes lehetséges meghibásodási mód tesztelése, mint a maga az élő rendszer. 
+Az ilyen konfigurációkban nehéz és gazdaságtalan lehet minden lehetséges hibamódot tesztelni vagy előre látni, kivéve magát az élő rendszert. 
 
 ### <a name="questions-"></a>Kérdések...
-Néhány kérdés, amelyet a webes rendszer fejlesztésekor kérünk:
+Néhány kérdés, amit felteszünk, amikor webes rendszert fejlesztünk:
 
-* Összeomlik az alkalmazás? 
-* Pontosan mi történt? – Ha sikertelen volt egy kérelem, szeretném tudni, hogy van-e itt. Az események nyomkövetésére van szükség...
-* Elég gyors az alkalmazásom? Mennyi ideig tart a tipikus kérelmekre való reagálás?
-* Képes a kiszolgáló kezelni a terhelést? Ha a kérések aránya növekszik, a válaszidő stabilan tart?
-* A függőségi viszonyok – a REST API-k, adatbázisok és az alkalmazás által meghívást más összetevők. Különösen, ha a rendszer lassú, a saját összetevő, vagy kapok lassú válaszokat valakitől?
-* Fel vagy le van-e az alkalmazásom? A világ minden tájáról látható? Tudassa velem, ha leáll...
-* Mi a kiváltó ok? Hiba történt az összetevőben vagy a függőségben? Kommunikációs probléma?
-* Hány felhasználót érint a rendszer? Ha egynél több problémát kell megoldani, ami a legfontosabb?
+* Összeomlik az alkalmazásom? 
+* Pontosan mi történt? - Ha megbukott egy kérés, tudni akarom, hogy került oda. Szükségünk van az események nyomára...
+* Elég gyors az alkalmazásom? Mennyi ideig tart a tipikus kérések megválaszolása?
+* Tudja a szerver kezelni a terhelést? Amikor a kérelmek száma emelkedik, a válaszidő állandó marad?
+* Mennyire reagálnak a függőségeim – a REST API-k, adatbázisok és egyéb összetevők, amelyeket az alkalmazás hív. Különösen, ha a rendszer lassú, ez az én komponens, vagy kapok lassú válaszokat valaki más?
+* Az alkalmazásom felvan, vagy nem? Látható a világ minden tájáról? Hadd tudjam meg, ha megáll ....
+* Mi a kiváltó oka? A hiba az összetevőben vagy függőségként történt? Ez egy kommunikációs kérdés?
+* Hány felhasználót érint? Ha egynél több problémával kell foglalkoznom, melyik a legfontosabb?
 
 ## <a name="what-is-application-insights"></a>Mi az Application Insights?
-![Application Insights alapszintű munkafolyamata](./media/devops/020.png)
+![Az Application Insights alapvető munkafolyamata](./media/devops/020.png)
 
-1. Application Insightsi az alkalmazást, és az alkalmazás futása közben telemetria küld róla. Vagy felépítheti az Application Insights SDK-t az alkalmazásba, vagy a rendszerállapot-készítést is alkalmazhatja futásidőben. A korábbi módszer rugalmasabb, hiszen saját telemetria is hozzáadhat a normál modulokhoz.
-2. A rendszer elküldi a telemetria a Application Insights-portálra, ahol a tároló és a feldolgozás történik. (Bár a Application Insights a Microsoft Azureban található, a webalkalmazások nem csak Azure-alkalmazások figyelésére használhatók.)
-3. A telemetria diagramokat és eseményeket tartalmazó táblázatok formájában jelenik meg.
+1. Az Application Insights instrumenteli az alkalmazást, és telemetriai adatokat küld róla, miközben az alkalmazás fut. Vagy hozhat létre az Application Insights SDK az alkalmazásba, vagy alkalmazhatja a műszerek futásidőben. Az előbbi módszer rugalmasabb, mivel hozzáadhatja a saját telemetriai adatokat a rendszeres modulokhoz.
+2. A telemetriai adatok at az Application Insights-portálra küldi, ahol tárolja és feldolgozza. (Bár az Application Insights a Microsoft Azure-ban található, bármilyen webalkalmazást figyelhet – nem csak az Azure-alkalmazásokat.)
+3. A telemetriai adatok diagramok és események táblázatainak formájában jelennek meg.
 
-A telemetria két fő típusa létezik: összesített és nyers példányok. 
+A telemetriai adatoknak két fő típusa van: összesített és nyers példányok. 
 
-* A példányok adatai tartalmazzák például a webalkalmazás által fogadott kérelem jelentését. A Application Insights portál keresési eszközével megkeresheti és megvizsgálhatja a kérelmek részleteit. A példány olyan adatmennyiséget foglal magában, mint például az, hogy mennyi ideig tartott az alkalmazás válasza a kérésre, valamint a kért URL-cím, az ügyfél hozzávetőleges helye és más adat.
-* Az összesített adatmennyiségek az egyes időegységek számát tartalmazzák, így összehasonlíthatja a kérelmek arányát a válaszadási idővel. Emellett olyan mérőszámok átlagait is tartalmazza, mint a kérelmek válaszideje.
+* A példányadatok közé tartozik például egy jelentés egy kérelemről, amelyet a webalkalmazás kapott. Az Application Insights portál keresési eszközével megkeresheti és megvizsgálhatja a kérelmek részleteit. A példány olyan adatokat tartalmazna, mint például az alkalmazás kérésének megválaszolása, valamint a kért URL-cím, az ügyfél hozzávetőleges helye és egyéb adatok.
+* Az összesített adatok tartalmazzák az események számát egységnyi időszerint, így összehasonlíthatja a kérelmek arányát a válaszidővel. Azt is tartalmazza a metrikák átlagait, például a kérelem válaszidejét.
 
-A fő adatkategóriák a következők:
+Az adatok fő kategóriái a következők:
 
-* Kérelmek az alkalmazáshoz (általában HTTP-kérelmek), az URL-cím, a válaszidő, valamint a sikeres vagy sikertelen műveletekhez.
-* Függőségek – az alkalmazás által végrehajtott REST-és SQL-hívások, valamint URI-, válaszidő-és sikerességi műveletek
-* Kivételek, beleértve a verem nyomkövetését.
-* Az oldal nézetének adatait, amelyek a felhasználók böngészőből származnak.
-* Metrikák, például teljesítményszámlálók, valamint a saját maga által írt mérőszámok. 
-* Az üzleti események nyomon követésére használható egyéni események
-* Hibakereséshez használt nyomkövetési naplók.
+* Az alkalmazásnak (általában HTTP-kérelmeknek) szóló kérések, amelyek az URL-adatokra, a válaszidőre, valamint a sikerre vagy a sikertelenségre vonatkozó adatokkal szolgálnak.
+* Függőségek – Az alkalmazás által kezdeményezett REST- és SQL-hívások, uri-val, válaszidővel és sikerrel is
+* Kivételek, beleértve a veremnyomkövetéseket is.
+* Oldalnézet-adatok, amelyek a felhasználók böngészőiből származnak.
+* Metrikák, például a teljesítményszámlálók, valamint a saját maga által írt mérőszámok. 
+* Egyéni események, amelyek segítségével nyomon követheti az üzleti eseményeket
+* A hibakereséshez használt naplónyomkövetések.
 
-## <a name="case-study-real-madrid-fc"></a>Esettanulmány: Real Madrid FC
-A [Real Madrid Football Club](https://www.realmadrid.com/) webszolgáltatása körülbelül 450 000 000 rajongót szolgál ki világszerte. A szurkolók a webböngészőkben és a Club Mobile apps szolgáltatásban is hozzáférnek. A rajongók nem csak jegyeket vásárolhatnak, de az eredmények, a játékosok és a közelgő játékok adataihoz és videoklipekhez is hozzáférhetnek. Kereshetnek szűrőkkel, például a gólok számával. A közösségi médiára is hivatkozik. A felhasználói élmény nagyon személyre szabott, és úgy van kialakítva, hogy kétirányú kommunikációt folytasson a rajongókkal.
+## <a name="case-study-real-madrid-fc"></a>Esettanulmány: Real Madrid F.C.
+A Real [Madrid Football Club](https://www.realmadrid.com/) webszolgáltatása világszerte mintegy 450 millió rajongót szolgál ki. A rajongók mind a webböngészőkön, mind a klub mobilalkalmazásain keresztül érhetik el. A rajongók nem csak jegyet foglalhatnak, hanem információkhoz és videoklipekhez is hozzáférhetnek az eredményekről, a játékosokról és a közelgő játékokról. Olyan szűrőkkel kereshetnek, mint a szerzett gólok száma. Vannak linkek a közösségi médiára is. A felhasználói élmény rendkívül személyre szabott, és úgy tervezték, mint egy kétirányú kommunikáció, hogy vegyenek részt a rajongók.
 
-A megoldás a [Microsoft Azure szolgáltatások és alkalmazások rendszere](https://www.microsoft.com/inculture/sports/real-madrid/). A skálázhatóság kulcsfontosságú követelmény: a forgalom változó, és a találatok között nagyon nagy mennyiségeket érhet el.
+A megoldás [a Microsoft Azure szolgáltatásainak és alkalmazásainak rendszere.](https://www.microsoft.com/inculture/sports/real-madrid/) A méretezhetőség kulcsfontosságú követelmény: a forgalom változó, és nagyon nagy mennyiségben érhető el a mérkőzések során és környékén.
 
-A Real Madrid esetében elengedhetetlen a rendszer teljesítményének figyelése. Az Azure Application Insights átfogó áttekintést nyújt a rendszerről, biztosítva a megbízható és magas szintű szolgáltatást. 
+A Real Madrid számára létfontosságú a rendszer teljesítményének figyelemmel kísérése. Az Azure Application Insights átfogó képet nyújt a rendszerről, amely megbízható és magas szintű szolgáltatást biztosít. 
 
-A klub emellett részletesen ismerteti a rajongóit is: ahol (csak 3% van Spanyolországban), milyen érdeklődéssel rendelkeznek a játékosok, a korábbi eredmények és a közelgő játékok esetében, és hogyan reagálnak a találatokra.
+A klub is kap mélyreható megértése a rajongók: hol vannak (csak 3%, Spanyolországban), milyen érdeklődést mutatnak a játékosok, a történelmi eredmények, és a közelgő játékok, és hogyan reagálnak a mérkőzés eredményeket.
 
-A telemetria-adatok nagy részét automatikusan gyűjti a rendszer a hozzáadott kód nélkül, ami leegyszerűsíti a megoldást, és csökkenti a működési bonyolultságot.  A Real Madrid esetében Application Insights havonta 3 800 000 000 telemetria ponttal foglalkozik.
+A telemetriai adatok nagy része automatikusan gyűjti a hozzáadott kód nélkül, ami egyszerűsítette a megoldást és csökkentette a működési összetettséget.  A Real Madrid esetében az Application Insights havonta 3,8 milliárd telemetriai ponttal foglalkozik.
 
-A Real Madrid a Power BI modult használja a telemetria megtekintéséhez.
+A Real Madrid a Power BI modul segítségével tekinti meg a telemetriai adatokat.
 
-![Application Insights telemetria Power BI nézete](./media/devops/080.png)
+![Az Application Insights telemetriai adatainak Power BI nézete](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>Intelligens észlelés
-A [proaktív diagnosztika](../../azure-monitor/app/proactive-diagnostics.md) egy közelmúltbeli szolgáltatás. A speciális beállítások nélkül a Application Insights automatikusan észleli és riasztást küld arról, hogy az alkalmazásban előforduló meghibásodási arányok szokatlanul növekednek. Elég okos ahhoz, hogy figyelmen kívül hagyják az alkalmi hibák hátterét, és a kérések növekedésével arányos mértékben is emelkedni lehessen. Így például, ha az egyik olyan szolgáltatás meghibásodik, amelytől függ, vagy ha az imént üzembe helyezett új Build nem működik megfelelően, akkor az e-mail-cím megkeresése után azonnal tudni fogja. (És vannak webhookok, amelyekkel más alkalmazásokat indíthat el.)
+[A proaktív diagnosztika](../../azure-monitor/app/proactive-diagnostics.md) egy újabb funkció. Az Ön által speciális konfiguráció nélkül az Application Insights automatikusan észleli és figyelmezteti önt az alkalmazás sikertelenségi arányának szokatlan növekedéséről. Elég okos ahhoz, hogy figyelmen kívül hagyja az alkalmi hibák hátterét, és olyan emelkedéseket is, amelyek egyszerűen arányosak a kérelmek számának növekedésével. Így például, ha van egy hiba az egyik szolgáltatás, amelytől függ, vagy ha az új build, amit csak telepített nem működik olyan jól, akkor tudni fog róla, amint megnézed az e-mail. (És vannak webhooks, így kiváltó más alkalmazásokat.)
 
-A szolgáltatás egy másik aspektusa a telemetria naponta részletes elemzését végzi, amely a nehezen felderíthető, szokatlan teljesítményű mintákat keresi. Például megtalálhatja az adott földrajzi területhez tartozó lassú teljesítményt vagy egy adott böngésző verziószámát.
+A szolgáltatás egy másik aspektusa napi részletes elemzést végez a telemetriai adatokról, és olyan szokatlan teljesítménymintákat keres, amelyeket nehéz felfedezni. Például egy adott földrajzi területhez vagy egy adott böngészőverzióhoz kapcsolódó lassú teljesítményt találhat.
 
-Mindkét esetben a riasztás nem csupán a felderített tüneteket jelzi, hanem a probléma diagnosztizálásához szükséges adatokat is megadja, például a vonatkozó kivételekről szóló jelentéseket.
+Mindkét esetben a riasztás nem csak azt jelzi, hogy a tünetek a felfedezett, hanem olyan adatokat is ad, amelyek a probléma diagnosztizálásához szükséges adatokat, például a vonatkozó kivételjelentések.
 
-![Az proaktív diagnosztika e-mail-címe](./media/devops/030.png)
+![E-mail a proaktív diagnosztikától](./media/devops/030.png)
 
-A Customer Samtec azt mondta, hogy "a közelmúltban a szolgáltatás átváltás egy olyan, az erőforrás-korlátokat és az időtúllépéseket kiváltó, alulra méretezett adatbázist találtunk. A proaktív észlelési riasztások a szó szoros értelmében osztályozásakor a problémát, nagyon közel valós időben, ahogy meghirdették. Ez a riasztás az Azure platform-riasztásokkal párosulva gyakorlatilag azonnal kijavította a problémát. A teljes állásidő < 10 percet vesz igénybe. "
+Ügyfél Samtec azt mondta: "Egy újabb funkció cutover, találtunk egy alulméretezett adatbázis, amely üti az erőforrás-korlátok at, ami időtúllépés. Proaktív észlelési riasztások jött át a szó szoros értelmében voltunk triaging a kérdést, nagyon közel valós időben hirdetett. Ez a riasztás az Azure platform riasztásaival együtt szinte azonnal segített a probléma megoldásában. A teljes állásidő 10 perc <."
 
 ## <a name="live-metrics-stream"></a>Élő metrikastream
-A legújabb buildek üzembe helyezése ideges élmény lehet. Ha bármilyen probléma merül fel, azonnal érdemes tudni róluk, hogy szükség esetén biztonsági mentést végezzen. A Élő metrikastream egy másodperces késéssel rendelkező fő mérőszámokat biztosít.
+A legújabb build telepítése lehet egy aggódó élmény. Ha bármilyen probléma merül fel, azonnal szeretne tudni róluk, hogy szükség esetén kihátrálhass. Élő metrikák stream ad kulcsfontosságú metrikák egy késés körülbelül egy másodperc.
 
-![Élő metrikák](./media/devops/0040.png)
+![Élő mutatók](./media/devops/0040.png)
 
-És lehetővé teszi, hogy azonnal megvizsgálja a hibák vagy kivételek mintáját.
+És lehetővé teszi, hogy azonnal vizsgálja meg a mintát az esetleges hibák vagy kivételek.
 
-![Élő hibák eseményei](./media/devops/002-live-stream-failures.png)
+![Élő hibaesemények](./media/devops/002-live-stream-failures.png)
 
 ## <a name="application-map"></a>Alkalmazástérkép
-Az alkalmazás-hozzárendelés automatikusan felderíti az alkalmazás-topológiát, és rámutat a teljesítményre, és lehetővé teszi, hogy könnyedén azonosítsa a teljesítmény szűk keresztmetszeteit és a problémás folyamatokat az elosztott környezetben. Lehetővé teszi az alkalmazások függőségeinek felderítését az Azure-szolgáltatásokban. A probléma osztályozása a kód és a függőség összekapcsolása, valamint a kapcsolódó diagnosztika felhasználói felületének egyhelyes részletezése alapján. Előfordulhat például, hogy az alkalmazás meghibásodik az SQL-szinten a teljesítmény romlása miatt. Az Application Map használatával azonnal megtekintheti az SQL Index Advisor vagy a lekérdezési elemzések élményét.
+Az Application Map automatikusan felderíti az alkalmazás topológiáját, és a teljesítményadatokat felülírja, így könnyen azonosíthatja a teljesítménybeli szűk keresztmetszeteket és a problémás folyamatokat az elosztott környezetben. Lehetővé teszi az Azure Services alkalmazásfüggőségének felderítését. A probléma osztályozása a kódhoz kapcsolódó vagy függőségi kapcsolatos, és egy helyen a kapcsolódó diagnosztikai élményt. Előfordulhat például, hogy az alkalmazás az SQL-szint teljesítményromlása miatt meghibásodik. Az alkalmazástérkép segítségével azonnal láthatja, és az SQL Index Advisor vagy a Query Insights-élmény beáshatja.
 
 ![Alkalmazástérkép](./media/devops/0050.png)
 
-## <a name="application-insights-analytics"></a>Application Insights Analitika
-Az [Analytics](../../azure-monitor/app/analytics.md)segítségével tetszőleges lekérdezéseket írhat egy hatékony SQL-szerű nyelven.  A teljes alkalmazás-verembe való Diagnosztizálás számos különböző perspektívát biztosít, és a szolgáltatás teljesítményének az üzleti metrikákkal és az ügyfelekkel való összekapcsolásával kapcsolatos kérdéseket is megteheti. 
+## <a name="application-insights-analytics"></a>Application Insights-statisztika
+Az [Analytics](../../azure-monitor/app/analytics.md)segítségével tetszőleges lekérdezéseket írhat egy hatékony SQL-szerű nyelven.  A teljes alkalmazásverem diagnosztizálása egyszerűvé válik, ahogy a különböző perspektívák összekapcsolódnak, és felteheti a megfelelő kérdéseket a szolgáltatás teljesítményének és az üzleti mutatóknak és az ügyfélélménynek a korrelációjához. 
 
-A portálon tárolt összes telemetria-példány és metrikus nyers adat lekérdezhető. A nyelv magában foglalja a szűrést, a csatlakozást, az összesítést és az egyéb műveleteket. Kiszámíthatja a mezőket és statisztikai elemzéseket végezhet. Táblázatos és grafikus megjelenítés is használható.
+Lekérdezheti az összes telemetriai példány és metrika nyers tárolt adatok a portálon. A nyelv magában foglalja a szűrőt, az illesztést, az összesítést és az egyéb műveleteket. Kiszámíthatja a mezőket, és statisztikai elemzést végezhet. Vannak táblázatos és grafikus vizualizációk.
 
-![Elemzési lekérdezés és eredmények diagramja](./media/devops/0025.png)
+![Analytics-lekérdezési és eredménydiagram](./media/devops/0025.png)
 
-Például egyszerűen:
+Például, ez könnyen:
 
-* Az alkalmazásra vonatkozó kérelmek teljesítményadatokat az ügyfél szintjei szerint szegmentálhatja, hogy megértse a felhasználói élményt.
-* Adott hibakódok vagy egyéni események nevének keresése az élő hely vizsgálata során.
-* A szolgáltatások beszerzésének és elfogadásának megismeréséhez részletezheti az egyes ügyfelek alkalmazás-használati feladatait.
-* A munkamenetek és a válaszadási idő nyomon követésével adott felhasználók számára engedélyezheti a támogatási és az operatív csapatokat, hogy azonnali támogatást nyújtsanak.
-* Határozza meg a gyakran használt alkalmazások funkcióit a funkciók rangsorolásával kapcsolatos kérdések megválaszolásához.
+* Szegmentálja az alkalmazás teljesítményadatok at ügyfélszintek szerint, hogy megismerjék a felhasználói élményt.
+* Keressen konkrét hibakódokat vagy egyéni eseményneveket az élő webhely-vizsgálatok során.
+* Részletezze az egyes ügyfelek alkalmazáshasználatát, hogy megértse, hogyan szerzi be és fogadja el a funkciókat.
+* Nyomon követheti az adott felhasználók munkameneteit és válaszidejét, hogy a támogatási és üzemeltetési csapatok azonnali ügyfélszolgálatot nyújthassanak.
+* Határozza meg a gyakran használt alkalmazásfunkciókat a funkciók rangsorolási kérdéseinek megválaszolásához.
 
-A Customer DNN azt mondta, hogy "Application Insights megadta nekünk az egyenlet hiányzó részét, hogy szükség szerint lehessen egyesíteni, rendezni, lekérdezni és szűrni az adatmennyiséget. A csapatunk lehetővé teszi, hogy a saját találékonyságát és tapasztalatait egy hatékony lekérdezési nyelven megtalálják, és lehetővé tettük az elemzések megkeresését és a problémák megoldását. Sok érdekes választ kaphat a *"kíváncsi vagyok, ha..* ." kezdetű kérdésekről.
+Ügyfél DNN mondta: "Application Insights biztosította számunkra a hiányzó része az egyenlet, hogy képes kombinálni, rendezni, lekérdezés, és a szűrő adatok szükség szerint. Lehetővé teszi a csapatunk, hogy használja a saját találékonyság és a tapasztalat, hogy megtalálja az adatokat egy hatékony lekérdezési nyelv lehetővé tette számunkra, hogy betekintést találni, és megoldani a problémákat, mi nem is tudom, mi volt. Sok érdekes válasz érkezik a kérdésekből kezdve *"Kíváncsi vagyok, ha ....""*
 
-## <a name="development-tools-integration"></a>Fejlesztői eszközök integrációja
-### <a name="configuring-application-insights"></a>Application Insights konfigurálása
-A Visual Studio és az Eclipse eszközeivel konfigurálhatja a fejlesztés alatt álló projekthez megfelelő SDK-csomagokat. Application Insights hozzáadására szolgáló menüparancs van.
+## <a name="development-tools-integration"></a>Fejlesztési eszközök integrációja
+### <a name="configuring-application-insights"></a>Az Application Insights konfigurálása
+A Visual Studio és az Eclipse rendelkezik eszközökkel a megfelelő SDK-csomagok konfigurálásához a fejlesztés alatt álló projekthez. Van egy menüparancs az Application Insights hozzáadásához.
 
-Ha olyan nyomkövetési naplózási keretrendszert használ, mint például a Log4N, a NLog vagy a System. Diagnostics. Trace, akkor a naplókat a többi telemetria együtt is elküldheti Application Insights, így könnyen korrelálhatja a kérelmekkel, függőséggel hívások és kivételek.
+Ha történetesen egy nyomkövetési naplózási keretrendszert használ, például a Log4N, az NLog vagy a System.Diagnostics.Trace, akkor lehetősége van arra, hogy a naplókat a többi telemetriai adatokkal együtt küldje el az Application Insightsnak, így könnyen korrelálhatja a nyomkövetéseket kérésekkel, függőséggel hívásokat és kivételeket.
 
-### <a name="search-telemetry-in-visual-studio"></a>Telemetria keresése a Visual Studióban
-Egy szolgáltatás fejlesztése és hibakeresése során közvetlenül a Visual Studióban tekintheti meg és keresheti meg a telemetria, ugyanúgy, mint a webes portálon.
+### <a name="search-telemetry-in-visual-studio"></a>Telemetriai adatok keresése a Visual Studióban
+Egy szolgáltatás fejlesztése és hibakeresése közben megtekintheti és kereshet a telemetriai adatokat közvetlenül a Visual Studio-ban, ugyanazokat a keresési lehetőségeket használva, mint a webportálon.
 
-Ha Application Insights naplóz egy kivételt, megtekintheti az adatpontot a Visual Studióban, és közvetlenül a megfelelő kódra ugorhat.
+Amikor az Application Insights kivételt naplóz, megtekintheti az adatpontot a Visual Studióban, és egyenesen a megfelelő kódra ugorhat.
 
-![Visual Studio-keresés](./media/devops/060.png)
+![Visual Studio keresés](./media/devops/060.png)
 
-A hibakeresés során megtarthatja a telemetria a fejlesztői gépen, megtekintheti azt a Visual Studióban, de anélkül, hogy elküldené a portálra. Ezzel a helyi lehetőséggel elkerülhető a hibakeresés a termelési telemetria.
+A hibakeresés során lehetősége van arra, hogy a telemetriai adatokat a fejlesztői gépen tartsa, a Visual Studióban való megtekintése, de anélkül, hogy elszeretné küldeni a portálra. Ez a helyi beállítás elkerüli a hibakeresést az éles telemetriai adatokkal.
 
 ### <a name="work-items"></a>Munkaelemek
-Ha riasztást vált ki, Application Insights automatikusan létrehozhat egy munkaelemet a munkahelyi követési rendszeren.
+Ha egy riasztás tavást, az Application Insights automatikusan létrehozhat egy munkaelemet a munkakövetési rendszerben.
 
-## <a name="but-what-about"></a>De mi a helyzet...?
-* [Adatvédelem és tárolás](../../azure-monitor/app/data-retention-privacy.md) – a telemetria az Azure biztonságos kiszolgálókon tároljuk.
-* Teljesítmény – a hatás nagyon alacsony. A telemetria kötegelt.
-* [Díjszabás](../../azure-monitor/app/pricing.md) – megkezdheti az ingyenes használatot, ami továbbra is kis mennyiségű.
+## <a name="but-what-about"></a>De mi a helyzet a...?
+* [Adatvédelem és tárolás](../../azure-monitor/app/data-retention-privacy.md) – A telemetriai adatok az Azure biztonságos kiszolgálóin vannak tárolva.
+* Teljesítmény - a hatás nagyon alacsony. A telemetria imitátria kötegelve van el.
+* [Árképzés](../../azure-monitor/app/pricing.md) – Ingyenesen kezdheti el, és ez akkor is folytatódik, ha kis mennyiségben van.
 
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Következő lépések
-A Application Insights első lépései egyszerűek. A fő lehetőségek a következők:
+## <a name="next-steps"></a>További lépések
+Az Application Insights első lépések egyszerű. A fő lehetőségek a következők:
 
-* [IIS-kiszolgálók](../../azure-monitor/app/monitor-performance-live-website-now.md)és [Azure app Service](../../azure-monitor/app/app-insights-overview.md)esetén is.
-* A projekt fejlesztése a fejlesztés során. Ezt megteheti a [ASP.net](../../azure-monitor/app/asp-net.md) és a [Java](../../azure-monitor/app/java-get-started.md) -alkalmazások, valamint a [Node. js](../../azure-monitor/app/nodejs.md) és [más típusú](../../azure-monitor/app/platforms.md)állomások esetében is. 
-* [Bármely weblap](../../azure-monitor/app/javascript.md) egy rövid kódrészlet hozzáadásával.
+* [Az IIS-kiszolgálókat](../../azure-monitor/app/monitor-performance-live-website-now.md)és az [Azure App Service szolgáltatást](../../azure-monitor/app/app-insights-overview.md)is.
+* A fejlesztés során műszerezheti a projektet. Ezt [megteheti ASP.NET](../../azure-monitor/app/asp-net.md) vagy [Java](../../azure-monitor/app/java-get-started.md) alkalmazások, valamint [node.js](../../azure-monitor/app/nodejs.md) és számos [más típusú](../../azure-monitor/app/platforms.md). 
+* Instrument [bármely weboldal](../../azure-monitor/app/javascript.md) hozzáadásával egy rövid kódrészlet.
 

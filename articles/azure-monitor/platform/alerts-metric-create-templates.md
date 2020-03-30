@@ -1,6 +1,6 @@
 ---
 title: Metrikariasztás létrehozása Resource Manager-sablonnal
-description: Megtudhatja, hogyan hozhat létre metrikus riasztásokat Resource Manager-sablonok használatával.
+description: Ismerje meg, hogyan hozhat létre egy Erőforrás-kezelő sablont metrikariasztás létrehozásához.
 author: harelbr
 ms.author: harelbr
 services: azure-monitor
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274982"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
+Ez a cikk bemutatja, hogyan használhatja az [Azure Resource Manager-sablont](../../azure-resource-manager/templates/template-syntax.md) [újabb metrikariasztások](../../azure-monitor/platform/alerts-metric-near-real-time.md) konfigurálásához az Azure Monitorban. Az Erőforrás-kezelő sablonjai lehetővé teszik a riasztások programozott beállítását konzisztens és reprodukálható módon a környezetekben. Újabb metrikariasztások jelenleg elérhetők [ezen erőforrástípusok ezen készletén.](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
 
 > [!IMPORTANT]
-> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrás típusa: Azure Log Analytics munkaterület (például) `Microsoft.OperationalInsights/workspaces`, további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
+> Erőforrás-sablon az erőforrástípus metrikariasztáseinek létrehozásához: Az `Microsoft.OperationalInsights/workspaces`Azure Log Analytics Workspace (azaz) további lépéseket igényel. További információt a [Naplók metrikariasztása – erőforrássablon című cikkben talál.](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)
 
-Az alapszintű lépések a következők:
+Az alapvető lépések a következők:
 
-1. Használja az alábbi sablonok egyikét egy olyan JSON-fájlként, amely leírja, hogyan kell létrehozni a riasztást.
-2. Szerkessze és használja a megfelelő paramétereket tartalmazó fájlt JSON-ként a riasztás testreszabásához.
-3. A `metricName` paraméternél tekintse meg [Azure monitor támogatott mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)elérhető metrikáit.
-4. A sablon üzembe helyezése [bármely üzembe helyezési módszer](../../azure-resource-manager/templates/deploy-powershell.md)használatával.
+1. Használja az alábbi sablonok egyikét JSON-fájlként, amely leírja a riasztás létrehozásának módját.
+2. A riasztás testreszabásához szerkesztse és használja a megfelelő paraméterfájlt JSON-ként.
+3. A `metricName` paraméter, tekintse meg a rendelkezésre álló metrikák az [Azure Monitor támogatott metrikák.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)
+4. Telepítse a sablont [bármilyen telepítési módszerrel.](../../azure-resource-manager/templates/deploy-powershell.md)
 
-## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
+## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Sablon egy egyszerű statikus küszöbértékmetriariasztáshoz
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy `Microsoft.Insights/metricAlerts` típusú erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha erőforrás-kezelő sablonnal szeretne riasztást létrehozni, `Microsoft.Insights/metricAlerts` hozzon létre egy típusú erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbiakban egy mintasablon, amely létrehoz egy metrika riasztási szabályt.
 
-Mentse az alábbi JSON-t simplestaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi jsont simplestaticmetricalert.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -204,11 +204,11 @@ Mentse az alábbi JSON-t simplestaticmetricalert. JSON néven az útmutató cél
 }
 ```
 
-A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el.](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)
 
-A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál.
+A paraméterek értékeit a parancssorban vagy egy paraméterfájlon keresztül állíthatja be. Az alábbiakban egy mintaparaméter-fájl található.
 
-Mentse az alábbi JSON-t simplestaticmetricalert. Parameters. JSON néven, és módosítsa a szükséges módon.
+Mentse az alábbi jsont simplestaticmetricalert.parameters.json néven, és szükség szerint módosítsa azt.
 
 ```json
 {
@@ -250,7 +250,7 @@ Mentse az alábbi JSON-t simplestaticmetricalert. Parameters. JSON néven, és m
 ```
 
 
-A metrikai riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával.
+A metrikariasztást a powershell vagy az Azure CLI használatával a sablon és a paraméterek fájl használatával hozhatja létre.
 
 Az Azure PowerShell használata
 
@@ -277,13 +277,13 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Míg a metrika riasztása egy másik erőforráscsoporthoz hozható létre a célként megadott erőforráshoz, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célként megadott erőforrás.
+> Bár a metrikariasztás a célerőforráshoz képest egy másik erőforráscsoportban hozható létre, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célerőforrás.
 
-## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Egyszerű dinamikus küszöbértékek metrikai riasztásának sablonja
+## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Sablon egy egyszerű dinamikus küszöbértékek metrika riasztáshoz
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy `Microsoft.Insights/metricAlerts` típusú erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha erőforrás-kezelő sablonnal szeretne riasztást létrehozni, `Microsoft.Insights/metricAlerts` hozzon létre egy típusú erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbiakban egy mintasablon, amely létrehoz egy metrika riasztási szabályt.
 
-Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi jsont simpledynamicmetricalert.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -477,11 +477,11 @@ Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató cé
 }
 ```
 
-A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el.](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)
 
-A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál. 
+A paraméterek értékeit a parancssorban vagy egy paraméterfájlon keresztül állíthatja be. Az alábbiakban egy mintaparaméter-fájl található. 
 
-Mentse az alábbi JSON-t simpledynamicmetricalert. Parameters. JSON néven, és módosítsa a szükséges módon.
+Mentse az alábbi jsont simpledynamicmetricalert.parameters.json néven, és szükség szerint módosítsa azt.
 
 ```json
 {
@@ -532,7 +532,7 @@ Mentse az alábbi JSON-t simpledynamicmetricalert. Parameters. JSON néven, és 
 ```
 
 
-A metrikai riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával.
+A metrikariasztást a powershell vagy az Azure CLI használatával a sablon és a paraméterek fájl használatával hozhatja létre.
 
 Az Azure PowerShell használata
 
@@ -559,20 +559,20 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Míg a metrika riasztása egy másik erőforráscsoporthoz hozható létre a célként megadott erőforráshoz, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célként megadott erőforrás.
+> Bár a metrikariasztás a célerőforráshoz képest egy másik erőforráscsoportban hozható létre, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célerőforrás.
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>A statikus küszöbértékek metrikai riasztásának sablonja, amely több feltételt figyel
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Sablon egy statikus küszöbérték-metrikariasztáshoz, amely több feltételt figyel
 
-Az újabb metrikai riasztások támogatják a többdimenziós metrikák riasztásait, valamint a több feltétel támogatását. A következő sablonnal további speciális metrikai riasztási szabályt hozhat létre a dimenziós mérőszámokra vonatkozóan, és több feltételt is megadhat.
+Újabb metrikariasztások támogatják a többdimenziós metrikák riasztását, valamint több feltétel támogatását. A következő sablon segítségével hozhat létre egy speciális metrikariasztási szabályt a méretmérő kretrikákon, és több feltételt adhat meg.
 
-Vegye figyelembe a következő korlátozásokat, amikor dimenziókat használ egy több feltételt tartalmazó riasztási szabályban:
-- Minden egyes feltételhez csak egy értéket lehet kijelölni.
-- A "\*" nem használható dimenzió értékként.
-- Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon be kell állítani az összes ilyen metrika esetében (a vonatkozó feltételben).
-    - Az alábbi példában, mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája **ApiName** dimenzióval rendelkezik, és a *criterion1* meghatározza a **ApiName** dimenzió *"GetBlob"* értékét, akkor a *criterion2* **a GetBlob** dimenzió *"ApiName"* értékét is be kell állítania.
+Kérjük, vegye figyelembe a következő korlátozásokat, ha dimenziókat használ egy több feltételt tartalmazó riasztási szabályban:
+- Dimenziónként csak egy értéket választhat ki az egyes feltételeken belül.
+- A "\*" " nem használható dimenzióértékként.
+- Ha a különböző feltételekben konfigurált metrikák ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzióértéket explicit módon kell beállítani az összes ilyen mutatóhoz (a megfelelő feltételben).
+    - Az alábbi példában, mivel mind a **tranzakciók** és a **SuccessE2ELatency** metrikák **apiname** dimenzióval rendelkeznek, és *a criterion1* megadja az **ApiName** dimenzió *"GetBlob"* értékét, majd a *2. feltételnek* is be kell állítania egy *"GetBlob"* értéket az **ApiName** dimenzióhoz.
 
 
-Mentse az alábbi JSON-t advancedstaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi jsont advancedstaticmetricalert.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -705,9 +705,9 @@ Mentse az alábbi JSON-t advancedstaticmetricalert. JSON néven az útmutató c�
 }
 ```
 
-A fenti sablonnal együtt használhatja az alább megadott paramétert. 
+A fenti sablont az alábbi paraméterfájllal együtt használhatja. 
 
-Mentse és módosítsa az alábbi JSON-t advancedstaticmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi jsont advancedstaticmetricalert.parameters.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -774,7 +774,7 @@ Mentse és módosítsa az alábbi JSON-t advancedstaticmetricalert. Parameters. 
 ```
 
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 ```powershell
@@ -800,23 +800,23 @@ az group deployment create \
 ```
 
 
-## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Több dimenziót figyelő statikus metrikai riasztás sablonja
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Sablon egy több dimenziót figyelő statikus metrikariasztáshoz
 
-A következő sablon használatával statikus metrikai riasztási szabályt hozhat létre a dimenziós mérőszámokra vonatkozóan.
+A következő sablon segítségével statikus metrikariasztási szabályt hozhat létre a méretmérőkön.
 
-Egyetlen riasztási szabály egyszerre több metrikai idősorozat figyelésére is képes, így kevesebb riasztási szabályt kell kezelni.
+Egyetlen riasztási szabály egyszerre több metrika-idősorozatot is figyelhet, ami kevesebb riasztási szabályt eredményez.
 
-Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenzió értékeit figyeli a **tranzakciók** metrikája esetében:
-1. **ResponsType** – a "\*" helyettesítő karakter azt jelenti, hogy a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket is, egy másik idősorozatot külön kell figyelni.
-2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
+Az alábbi példában a riasztási szabály a **ResponseType** és az **ApiName** dimenziók dimenziókombinációit figyeli a Tranzakciók metrika: **Transactions**
+1. **ResponsType** - A "\*" helyettesítő karakter használata azt jelenti, hogy a **ResponseType** dimenzió minden egyes értékéhez, beleértve a jövőbeli értékeket is, egy másik idősorozatot külön-külön figyel a rendszer.
+2. **ApiName** – Egy másik idősorozat csak a **GetBlob** és **putBlob** dimenzióértékek figyelt.
 
-Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
+Például néhány a lehetséges idősorok, amelyek figyelik ezt a riasztási szabály:
+- Metric = *Transactions*, ResponseType = *Sikeresség*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Sikeres*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Kiszolgáló időkiírása*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Kiszolgáló időkiírása*, ApiName = *PutBlob*
 
-Mentse az alábbi JSON-t multidimensionalstaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi jsont többdimenziósstaticmetricalert.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -941,9 +941,9 @@ Mentse az alábbi JSON-t multidimensionalstaticmetricalert. JSON néven az útmu
 }
 ```
 
-A fenti sablonnal együtt használhatja az alább megadott paramétert. 
+A fenti sablont az alábbi paraméterfájllal együtt használhatja. 
 
-Mentse és módosítsa az alábbi JSON-t multidimensionalstaticmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi jsont többdimenziósstaticetria.parameters.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -994,7 +994,7 @@ Mentse és módosítsa az alábbi JSON-t multidimensionalstaticmetricalert. Para
 ```
 
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 ```powershell
@@ -1020,23 +1020,23 @@ az group deployment create \
 ```
 
 
-## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>A dinamikus küszöbértékek metrikus riasztásának sablonja, amely több dimenzió figyelésére használható
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Sablon egy dinamikus küszöbértékek metrika riasztáshoz, amely több dimenziót figyel
 
-A következő sablonnal létrehozhat egy fejlettebb dinamikus küszöbértékek metrikus riasztási szabályt a dimenziós mérőszámokon.
+A következő sablon segítségével hozhat létre egy fejlettebb dinamikus küszöbértékek metrika riasztási szabályt a méretmérő kretrikákon.
 
-Egyetlen dinamikus küszöbértékek riasztási szabálya képes egyéni küszöbértékeket létrehozni több száz metrikus idősorozathoz (akár különböző típusokhoz is), így kevesebb riasztási szabályt kell kezelni.
+Egyetlen dinamikus küszöbértékek riasztási szabály hozhat létre testre szabott küszöbértékek több száz metrika idősorok (még a különböző típusú) egy időben, ami kevesebb riasztási szabályok kezelésére.
 
-Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenzió értékeit figyeli a **tranzakciók** metrikája esetében:
-1. **ResponsType** – a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket, egy másik idősorozatot külön kell figyelni.
-2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
+Az alábbi példában a riasztási szabály a **ResponseType** és az **ApiName** dimenziók dimenziókombinációit figyeli a Tranzakciók metrika: **Transactions**
+1. **ResponsType** – A **ResponseType** dimenzió minden egyes értékéhez, beleértve a jövőbeli értékeket is, egy másik idősorozatot külön-külön figyel a rendszer.
+2. **ApiName** – Egy másik idősorozat csak a **GetBlob** és **putBlob** dimenzióértékek figyelt.
 
-Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
-- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
+Például néhány a lehetséges idősorok, amelyek figyelik ezt a riasztási szabály:
+- Metric = *Transactions*, ResponseType = *Sikeresség*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Sikeres*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Kiszolgáló időkiírása*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Kiszolgáló időkiírása*, ApiName = *PutBlob*
 
-Mentse az alábbi JSON-t advanceddynamicmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi jsont advanceddynamicmetricalert.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -1156,9 +1156,9 @@ Mentse az alábbi JSON-t advanceddynamicmetricalert. JSON néven az útmutató c
 }
 ```
 
-A fenti sablonnal együtt használhatja az alább megadott paramétert. 
+A fenti sablont az alábbi paraméterfájllal együtt használhatja. 
 
-Mentse és módosítsa az alábbi JSON-t advanceddynamicmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi jsont advanceddynamicmetricalert.parameters.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -1214,7 +1214,7 @@ Mentse és módosítsa az alábbi JSON-t advanceddynamicmetricalert. Parameters.
 ```
 
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 ```powershell
@@ -1241,18 +1241,18 @@ az group deployment create \
 
 >[!NOTE]
 >
-> A dinamikus küszöbértékeket használó metrikus riasztási szabályok esetében jelenleg nem támogatott több feltétel.
+> Jelenleg nem támogatott több feltétel a dinamikus küszöbértékeket használó metrikariasztási szabályok esetében.
 
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Egyéni metrikát figyelő statikus küszöbértékű metrikai riasztás sablonja
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Sablon egy statikus küszöbérték-metrika riasztáshoz, amely egy egyéni metrikát figyel
 
-Az alábbi sablonnal speciális statikus küszöbértéket tartalmazó metrikai szabályt hozhat létre egyéni metrika esetén.
+A következő sablon segítségével hozhat létre egy speciális statikus küszöbértéket metrika riasztási szabályt egy egyéni metrikán.
 
-Ha többet szeretne megtudni az Azure Monitor lévő egyéni metrikákkal kapcsolatban, tekintse meg [a Azure monitor egyéni metrikáit](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Ha többet szeretne megtudni az egyéni metrikák az Azure Monitorban, olvassa el [az Egyéni metrikák az Azure Monitorban.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)
 
-Ha egyéni metrika esetén riasztási szabályt hoz létre, meg kell adnia a metrika nevét és a metrikai névteret is. Győződjön meg arról is, hogy az egyéni metrika már be van jelentkezve, mivel nem hozható létre riasztási szabály olyan egyéni metrika esetében, amely még nem létezik.
+Amikor riasztási szabályt hoz létre egy egyéni metrikán, meg kell adnia a metrika nevét és a metrika névteret is. Azt is meg kell győződnie arról, hogy az egyéni metrika már jelentés alatt áll, mivel nem hozhat létre riasztási szabályt egy egyéni metrika, amely még nem létezik.
 
-Mentse az alábbi JSON-t customstaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi jsont customstaticmetricalert.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -1430,9 +1430,9 @@ Mentse az alábbi JSON-t customstaticmetricalert. JSON néven az útmutató cél
 }
 ```
 
-A fenti sablonnal együtt használhatja az alább megadott paramétert. 
+A fenti sablont az alábbi paraméterfájllal együtt használhatja. 
 
-Mentse és módosítsa az alábbi JSON-t customstaticmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi jsont customstaticasztetria.parameters.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -1477,7 +1477,7 @@ Mentse és módosítsa az alábbi JSON-t customstaticmetricalert. Parameters. JS
 ```
 
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 ```powershell
@@ -1504,26 +1504,26 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Egy adott egyéni metrika metrikai névterét megkeresheti az [Egyéni metrikák a Azure Portal használatával történő tallózásával](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal) .
+> Egy adott egyéni metrika metrikanévterét az [egyéni metrikák böngészésével](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal) az Azure Portalon keresztül találhatja meg.
 
 
-## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Több erőforrást figyelő metrikai riasztás sablonja
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Sablon egy több erőforrást figyelő metrikariasztáshoz
 
-Az előző szakaszokban a minta Azure Resource Manager sablonokat, amelyek egyetlen erőforrást figyelő metrikai riasztásokat hoznak létre. Azure Monitor mostantól támogatja több, egyazon típusú erőforrás figyelését egyetlen metrikai riasztási szabállyal az azonos Azure-régióban található erőforrások esetében. Ez a funkció jelenleg csak az Azure nyilvános felhőben támogatott, csak virtuális gépek, SQL Server-adatbázisok, SQL Server rugalmas készletek és Databox Edge-eszközök esetén. Ez a funkció csak a platform metrikái esetében érhető el, és az egyéni metrikák esetében nem támogatott.
+Az előző szakaszok leírt minta Azure Resource Manager sablonok metrikariasztások, amelyek egyetlen erőforrást figyel. Az Azure Monitor mostantól támogatja több (azonos típusú) erőforrás figyelését egyetlen metrikariasztási szabállyal az azonos Azure-régióban található erőforrások esetében. Ez a funkció jelenleg csak az Azure nyilvános felhőben, és csak a virtuális gépek, SQL-kiszolgáló adatbázisok, SQL-kiszolgáló rugalmas készletek és Databox peremhálózati eszközök. Emellett ez a funkció csak platformmetrikák, és egyéni metrikák nem támogatott.
 
-A dinamikus küszöbértékek riasztási szabálya segítséget nyújt a testre szabott küszöbértékek létrehozásához egyszerre több száz metrikus adatsorozathoz (akár különböző típusokhoz is), így kevesebb riasztási szabályt kell kezelni.
+A dinamikus küszöbértékek riasztási szabály is segíthet létrehozni testre szabott küszöbértékek több száz metrikasorozat (még különböző típusú) egy időben, ami kevesebb riasztási szabályok kezelésére.
 
-Ebből a szakaszból megtudhatja, hogy három forgatókönyv esetén hogyan figyelheti meg a több erőforrás egyetlen szabállyal való figyelésére Azure Resource Manager sablonokat.
+Ez a szakasz ismerteti az Azure Resource Manager sablonok három forgatókönyv egyetlen szabály figyelése több erőforrásfigyeléséhez.
 
-- Egy vagy több erőforráscsoport összes virtuális gép (egy Azure-régióban) figyelése.
-- Egy előfizetésben lévő összes virtuális gép (egy Azure-régióban) figyelése.
-- A virtuális gépek listájának figyelése (egy Azure-régióban) egy előfizetésben.
+- Az összes virtuális gép figyelése (egy Azure-régióban) egy vagy több erőforráscsoportban.
+- Az összes virtuális gép figyelése (egy Azure-régióban) egy előfizetésben.
+- Virtuális gépek listájának figyelése (egy Azure-régióban) egy előfizetésben.
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statikus küszöbérték riasztása egy vagy több erőforráscsoport összes virtuális gépen
+### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statikus küszöbérték riasztás egy vagy több erőforráscsoport összes virtuális gépén
 
-Ez a sablon egy statikus küszöbérték-metrikai riasztási szabályt hoz létre, amely egy vagy több erőforráscsoport esetében az összes virtuális gép százalékos PROCESSZORát figyeli (egy Azure-régióban).
+Ez a sablon létrehoz egy statikus küszöbértéket metrika riasztási szabályt, amely egy vagy több erőforráscsoportban az összes virtuális gép (egy Azure-régióban) százalékos processzorát figyeli.
 
-Mentse az alábbi JSON-t az All-VM-in-Resource-Group-static. JSON néven az útmutató céljára.
+Mentse az alábbi jsont, mint az erőforrás-csoport-csoport-static.json az alábbi végigjárás céljából.
 
 ```json
 {
@@ -1755,8 +1755,8 @@ Mentse az alábbi JSON-t az All-VM-in-Resource-Group-static. JSON néven az útm
 }
 ```
 
-A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-csoport-statikus. Parameters. JSON néven az útmutató céljára.
+A fenti sablont az alábbi paraméterfájllal használhatja.
+Mentse és módosítsa az alábbi jsont, mint minden virtuális-erőforrás-csoport-static.parameters.json a forgatókönyv céljából.
 
 ```json
 {
@@ -1806,7 +1806,7 @@ Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-
 }
 ```
 
-A statikus metrikai riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A statikus metrikariasztást a sablon és a paraméterek fájl segítségével a PowerShell vagy az Azure CLI a jelenlegi munkakönyvtárból.
 
 Az Azure PowerShell használata
 
@@ -1831,11 +1831,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Dinamikus küszöbértékek riasztása egy vagy több erőforráscsoport összes virtuális gépen
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Dinamikus küszöbértékek riasztás egy vagy több erőforráscsoport összes virtuális gépén
 
-Ez a sablon egy dinamikus küszöbértékek mérőszámának riasztási szabályát fogja létrehozni, amely egy vagy több erőforráscsoport esetében az összes virtuális gép százalékos PROCESSZORát figyeli (egy Azure-régióban).
+Ez a sablon létrehoz egy dinamikus küszöbértékek riasztási szabályt, amely egy vagy több erőforráscsoportban az összes virtuális gép (egy Azure-régióban) százalékos processzorát figyeli.
 
-Mentse az alábbi JSON-t az All-VM-in-Resource-Group-Dynamic. JSON néven az útmutató céljára.
+Mentse az alábbi jsont az erőforrás-csoport-dynamic.json all-vms-in-resource-group-dynamic.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -2084,8 +2084,8 @@ Mentse az alábbi JSON-t az All-VM-in-Resource-Group-Dynamic. JSON néven az út
 }
 ```
 
-A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-csoport-dinamikus. Parameters. JSON néven az útmutató céljára.
+A fenti sablont az alábbi paraméterfájllal használhatja.
+Mentse és módosítsa az alábbi jsont, mint az erőforrás-csoport-dynamic.parameters.json összes virtuális gépét a forgatókönyv céljából.
 
 ```json
 {
@@ -2141,7 +2141,7 @@ Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-
 }
 ```
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 
@@ -2166,11 +2166,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-dynamic.parameters.json
 ```
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Statikus küszöbérték riasztása egy előfizetésben lévő összes virtuális gépen
+### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Statikus küszöbérték riasztás az előfizetés összes virtuális gépén
 
-Ez a sablon egy statikus küszöbérték-metrikai riasztási szabályt hoz létre, amely figyeli az előfizetésben lévő összes virtuális gép százalékos PROCESSZORát (egy Azure-régióban).
+Ez a sablon létrehoz egy statikus küszöbértéket metrika riasztási szabályt, amely egy előfizetésben az összes virtuális gép (egy Azure-régióban) százalékos processzorát figyeli.
 
-Mentse az alábbi JSON-t az All-VM-in-előfizetés-static. JSON néven az útmutató céljára.
+Mentse az alábbi jsont, mint all-vms-in-subscription-static.json a forgatókönyv céljából.
 
 ```json
 {
@@ -2403,8 +2403,8 @@ Mentse az alábbi JSON-t az All-VM-in-előfizetés-static. JSON néven az útmut
 }
 ```
 
-A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-static. Parameters. JSON az útmutató céljára.
+A fenti sablont az alábbi paraméterfájllal használhatja.
+Mentse és módosítsa az alábbi jsont, mint minden virtuális gép az előfizetésben-static.parameters.json a forgatókönyv céljából.
 
 ```json
 {
@@ -2451,7 +2451,7 @@ Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-static
 }
 ```
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 
@@ -2476,11 +2476,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription.parameters-static.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Dinamikus küszöbértékek riasztása egy előfizetésben lévő összes virtuális gépen
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Dinamikus küszöbértékek riasztás az előfizetés összes virtuális gépén
 
-Ez a sablon egy dinamikus küszöbértékek mérőszámának riasztási szabályát fogja létrehozni, amely figyeli az előfizetésben lévő összes virtuális gép százalékos PROCESSZORát (egy Azure-régióban).
+Ez a sablon létrehoz egy dinamikus küszöbértékek metrika riasztási szabályt, amely egy előfizetésben az összes virtuális gép (egy Azure-régióban) százalékos processzorát figyeli.
 
-Mentse az alábbi JSON-t az All-VM-in-előfizetés-Dynamic. JSON néven az útmutató céljára.
+Mentse az alábbi jsont az előfizetésben lévő összes virtuális-dinamikus.json néven a walk-through céljából.
 
 ```json
 {
@@ -2729,8 +2729,8 @@ Mentse az alábbi JSON-t az All-VM-in-előfizetés-Dynamic. JSON néven az útmu
 }
 ```
 
-A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-Dynamic. Parameters. JSON az útmutató céljára.
+A fenti sablont az alábbi paraméterfájllal használhatja.
+Mentse és módosítsa az alábbi jsont, mint az előfizetésben lévő összes-virtuális-dynamic.parameters.json a forgatókönyv céljából.
 
 ```json
 {
@@ -2783,7 +2783,7 @@ Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-Dynami
 }
 ```
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 
@@ -2808,11 +2808,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription-dynamic.parameter-dynamics.json
 ```
 
-### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Statikus küszöbérték riasztása a virtuális gépek listájáról
+### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Statikus küszöbérték-riasztás a virtuális gépek listájában
 
-Ez a sablon létrehoz egy statikus küszöbérték-metrikai riasztási szabályt, amely figyeli a százalékos CPU-t az előfizetésben található virtuális gépek (egy Azure-régióban) listájához.
+Ez a sablon létrehoz egy statikus küszöbértéket metrika riasztási szabályt, amely figyeli a százalékos CPU egy előfizetésben lévő virtuális gépek listájának (egy Azure-régióban).
 
-Mentse az alábbi JSON-t a-VM-static. JSON néven az útmutató céljára.
+Mentse el az alábbi json-list-of-vms-static.json e walk-through céljából.
 
 ```json
 {
@@ -3045,8 +3045,8 @@ Mentse az alábbi JSON-t a-VM-static. JSON néven az útmutató céljára.
 }
 ```
 
-A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t a-VM-static. Parameters. JSON néven a jelen útmutató céljára.
+A fenti sablont az alábbi paraméterfájllal használhatja.
+Mentse és módosítsa az alábbi json-list-of-vms-static.parameters.json a forgatókönyv céljából.
 
 ```json
 {
@@ -3096,7 +3096,7 @@ Mentse és módosítsa az alábbi JSON-t a-VM-static. Parameters. JSON néven a 
 }
 ```
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 
@@ -3121,11 +3121,11 @@ az group deployment create \
     --parameters @list-of-vms-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Dinamikus küszöbértékek riasztása a virtuális gépek listájáról
+### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Dinamikus küszöbértékek riasztás a virtuális gépek listájában
 
-Ez a sablon létrehoz egy dinamikus küszöbértékek metrikus riasztási szabályt, amely figyeli a százalékos CPU-t egy előfizetésben lévő virtuális gépek (egy Azure-régióban) listájához.
+Ez a sablon létrehoz egy dinamikus küszöbértékek metrika riasztási szabályt, amely figyeli a százalékos CPU egy előfizetésben lévő virtuális gépek listájának (egy Azure-régióban).
 
-Mentse az alábbi JSON-t a-VM-Dynamic. JSON néven az útmutató céljára.
+Mentse el az alábbi json-list-of-vms-dynamic.json céljából ez a walk-through.
 
 ```json
 {
@@ -3374,8 +3374,8 @@ Mentse az alábbi JSON-t a-VM-Dynamic. JSON néven az útmutató céljára.
 }
 ```
 
-A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t a virtuális gép-dinamikus. Parameters. JSON néven a jelen útmutató céljára.
+A fenti sablont az alábbi paraméterfájllal használhatja.
+Mentse és módosítsa az alábbi json-list-of-vms-dynamic.parameters.json a forgatókönyv céljából.
 
 ```json
 {
@@ -3431,7 +3431,7 @@ Mentse és módosítsa az alábbi JSON-t a virtuális gép-dinamikus. Parameters
 }
 ```
 
-A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
+A metrikariasztást a sablon és a paraméterek fájl használatával a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból hozhatja létre.
 
 Az Azure PowerShell használata
 
@@ -3456,12 +3456,12 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>A rendelkezésre állási teszthez tartozó sablon, valamint metrikus riasztás
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Sablon egy rendelkezésre állási teszthez és egy metrikariasztáshoz
 
-[Application Insights rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek.
-A rendelkezésre állási tesztekkel kapcsolatos riasztások ugyanazzal az erőforrással, mint a metrikai riasztások (Microsoft. bepillantások/metricAlerts). A következő minta Azure Resource Manager sablonnal egy egyszerű rendelkezésre állási teszt és egy kapcsolódó riasztás állítható be.
+[Az Application Insights rendelkezésre állási tesztjei](../../azure-monitor/app/monitor-web-app-availability.md) segítségével figyelheti a webhely/alkalmazás elérhetőségét a világ különböző pontjairól. A rendelkezésre állási tesztriasztások értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről nem sikerülnek.
+Rendelkezésre állási teszt riasztások azonos erőforrástípusmetrika riasztások (Microsoft.Insights/metricAlerts). A következő minta Azure Resource Manager sablon segítségével egy egyszerű rendelkezésre állási teszt és a kapcsolódó riasztás.
 
-Mentse az alábbi JSON-t availabilityalert. JSON néven az útmutató céljára.
+Mentse el az alábbi jsont elérhetőségalert.json néven a forgatókönyv céljából.
 
 ```json
 {
@@ -3563,14 +3563,14 @@ Mentse az alábbi JSON-t availabilityalert. JSON néven az útmutató céljára.
 }
 ```
 
-A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál.
+A paraméterek értékeit a parancssorban vagy egy paraméterfájlon keresztül állíthatja be. Az alábbiakban egy mintaparaméter-fájl található.
 
 
 > [!NOTE]
 >
-> `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: "`&amp`;"
+> `&amp`; a & HTML-entitáshivatkozása. Az URL-paramétereket továbbra is egyetlen & választja el egymástól, de ha html formátumban említi az URL-t, akkor kódolnia kell azt. Tehát, ha bármilyen "&" a pingURL paraméter értéke, meg`&amp`kell menekülni, hogy a " ;"
 
-Mentse az alábbi JSON-t availabilityalert. Parameters. JSON néven, és módosítsa a szükséges módon.
+Mentse az alábbi jsont availabilityalert.parameters.json néven, és szükség szerint módosítsa azt.
 
 ```json
 {
@@ -3593,7 +3593,7 @@ Mentse az alábbi JSON-t availabilityalert. Parameters. JSON néven, és módos�
 }
 ```
 
-A rendelkezésre állási tesztet és a hozzá tartozó riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával.
+A rendelkezésre állási teszt és a társított riasztás a sablon és a paraméterek fájl powershell vagy az Azure CLI használatával.
 
 Az Azure PowerShell használata
 
@@ -3618,8 +3618,8 @@ az group deployment create \
     --parameters @availabilityalert.parameters.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ [Az Azure-beli riasztásokról](alerts-overview.md)
-- Megtudhatja, hogyan [hozhat létre műveleti csoportot Resource Manager-sablonokkal](action-groups-create-resource-manager-template.md)
-- A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. metricAlerts/](/azure/templates/microsoft.insights/metricalerts) a sablon referenciája.
+- További információ [az Azure-beli riasztásokról](alerts-overview.md)
+- Útmutató [az Erőforrás-kezelő sablonokkal rendelkező műveletcsoportok létrehozásához](action-groups-create-resource-manager-template.md)
+- A JSON szintaxis és tulajdonságok: [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) sablon referencia.

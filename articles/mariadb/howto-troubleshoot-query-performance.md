@@ -1,20 +1,20 @@
 ---
 title: Lekérdezési teljesítmény – Azure Database for MariaDB
-description: Megtudhatja, hogyan használhatja a MAGYARÁZATot a Azure Database for MariaDB lekérdezési teljesítményének hibakereséséhez.
+description: Megtudhatja, hogy miként háríthatja el a EXPLAIN segítségével a lekérdezési teljesítmény hibaelhárítását a MariaDB Azure Database szolgáltatásában.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 36571cc1ac4fbdcd5c0c6a4007a6c43858c97193
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770985"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530053"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>A profil lekérdezési teljesítményének ismertetése a Azure Database for MariaDB
-A **magyarázat** egy praktikus eszköz a lekérdezések optimalizálásához. A magyarázó utasítás használatával információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy példát mutat be a magyarázó utasítások végrehajtásához.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>A EXPLAIN használata a Profillekérdezés teljesítményének profilteljesítményéhez a MariaDB Azure Database-ben
+**EXPLAIN** egy praktikus eszköz, hogy optimalizálja lekérdezések. A EXPLAIN utasítás segítségével információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy EXPLAIN utasítás végrehajtására mutat be példát.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Ahogy az ebben a példában is látható, a *kulcs* értéke null. Ez a kimeneti érték azt jelenti, hogy a MariaDB nem talál a lekérdezésre optimalizált indexeket, és teljes táblázatos vizsgálatot végez. A lekérdezés optimalizálásához adjon hozzá egy indexet az **azonosító** oszlophoz.
+Amint az ebben a példában látható, a *kulcs* értéke NULL. Ez a kimenet azt jelenti, hogy a MariaDB nem talál a lekérdezésre optimalizált indexeket, és teljes táblavizsgálatot hajt végre. Optimalizáljuk ezt a lekérdezést egy index hozzáadásával az **Azonosító** oszlopban.
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-Az új magyarázat azt mutatja, hogy a MariaDB mostantól index használatával korlátozza a sorok számát az 1 értékre, ami jelentősen lerövidíti a keresési időt.
+Az új MAGYARÁZAT azt mutatja, hogy a MariaDB most egy indexet használ a sorok számának 1-re való korlátozására, ami viszont drámaian lerövidítette a keresési időt.
  
-## <a name="covering-index"></a>Borító indexe
-A lefedési index az indexben található lekérdezés összes oszlopát tartalmazza az adattáblákból való lekérések csökkentése érdekében. Íme egy illusztráció a következő **Group By** utasításban.
+## <a name="covering-index"></a>Az index lefedése
+A fedőindex az indexben lévő lekérdezés összes oszlopát foglalja magában, hogy csökkentse az adattáblákérték-lekérését. Itt egy illusztráció a következő **GROUP BY** utasítást.
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Ahogy a kimenet is látható, a MariaDB nem használ indexeket, mert nem állnak rendelkezésre megfelelő indexek. Emellett *az ideiglenes használatot is mutatja; Ha a file sort használja*, ami azt jelenti, hogy a MariaDB létrehoz egy ideiglenes táblázatot, amely kielégíti a **Group By** záradékot.
+Amint az a kimenetből is látható, a MariaDB nem használ indexeket, mert nincsenek megfelelő indexek. Azt is mutatja *használata ideiglenes; A fájlrendezés használatával*a MariaDB ideiglenes táblát hoz létre a **GROUP BY** záradék teljesítéséhez.
  
-A **C2** -es oszlop indexének létrehozása önmagában nem tesz különbséget, és a MariaDB továbbra is létre kell hoznia egy ideiglenes táblát:
+Az index létrehozása csak a **c2** oszlopban nem számít, és a MariaDB-nek továbbra is létre kell hoznia egy ideiglenes táblát:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Ebben az esetben a **C1** -es és a **C2** -es kezelt **index** is létrehozható, amelynek során a rendszer a **C2**-es értéket közvetlenül az indexben adja hozzá a további adatkeresések eltávolításához.
+Ebben az esetben **létrehozható** egy fedett index mind a **c1,** mind a **c2** esetében, amely a **c2**" értékét közvetlenül az indexben adja hozzá a további adatkeresés kiküszöbölése érdekében.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Ahogy a fenti magyarázat mutatja, a MariaDB mostantól a kezelt indexet használja, és nem hoz létre ideiglenes táblát. 
+Amint azt a fenti EXPLAIN mutatja, a MariaDB most antól a fedett indexet használja, és nem hoz létre ideiglenes táblát. 
 
 ## <a name="combined-index"></a>Kombinált index
-A kombinált index több oszlopból álló értékeket tartalmaz, és az Indexelt oszlopok értékeinek összefűzésével rendezhető sorok tömbje lehet. Ez a metódus a **Group By** utasításban lehet hasznos.
+A kombinált index több oszlop értékeiből áll, és sorok tömbjének tekinthető, amelyek az indexelt oszlopok értékeinek összefűzése szerint vannak rendezve.Ez a módszer hasznos lehet a **GROUP BY** utasításban.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-A MariaDB olyan *rendezési* műveletet hajt végre, amely meglehetősen lassú, különösen, ha sok sort kell rendeznie. A lekérdezés optimalizálásához összevont index hozható létre mindkét sorba rendezett oszlopon.
+A MariaDB meglehetősen lassú *fájlrendezési* műveletet hajt végre, különösen akkor, ha sok sort kell rendeznie. A lekérdezés optimalizálása érdekében a rendszer mindkét rendezendő oszlopban létrehozható kombinált indexet.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,11 +159,11 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-A magyarázat azt mutatja, hogy a MariaDB képes a kombinált index használatára, hogy elkerülje a további rendezést, mivel az index már rendezve van.
+A MAGYARÁZAT most azt mutatja, hogy a MariaDB képes kombinált indexet használni a további rendezés elkerülésére, mivel az index már rendezve van.
  
 ## <a name="conclusion"></a>Összegzés
  
-A magyarázat és a különböző típusú indexek használata jelentősen növelheti a teljesítményt. A tábla indexe nem feltétlenül jelenti azt, hogy a MariaDB használni tudná a lekérdezésekhez. Az indexek használatával mindig érvényesítse a feltételezéseket a lekérdezések MAGYARÁZATával és optimalizálásával.
+A EXPLAIN és a különböző típusú indexek használata jelentősen növelheti a teljesítményt. Az index a táblázatban nem feltétlenül jelenti azt, hogy a MariaDB használhatja azt a lekérdezésekhez. Mindig érvényesítse a feltételezéseket az EXPLAIN használatával, és optimalizálja a lekérdezéseket indexek használatával.
 
-## <a name="next-steps"></a>Következő lépések
-- Ha a leginkább érintett kérdésekre ad választ, vagy új kérdést/választ tesz közzé, látogasson el az [MSDN fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) vagy a [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mariadb).
+## <a name="next-steps"></a>További lépések
+- Ha szeretné megtalálni a társak válaszait a leginkább érintett kérdésekre, vagy tegye az új kérdés / válasz, látogasson el [MSDN fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

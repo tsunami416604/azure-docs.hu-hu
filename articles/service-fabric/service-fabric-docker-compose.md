@@ -1,65 +1,65 @@
 ---
-title: Azure Service Fabric Docker-összeállítás – előzetes verzió
-description: Az Azure Service Fabric a Docker-összeállítás formátumát, így megkönnyíti a meglévő tárolók összehangolása Service Fabric használatával. Ez a támogatás jelenleg előzetes verzióban érhető el.
+title: Az Azure Service Fabric Docker írása – telepítési előzetes verzió
+description: Az Azure Service Fabric elfogadja a Docker Compose formátumot, hogy megkönnyítse a meglévő tárolók vezénylése a Service Fabric használatával. Ez a támogatás jelenleg előzetes verzióban érhető el.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282457"
 ---
-# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-összeállítás támogatása az Azure Service Fabric (előzetes verzió)
+# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>A Docker Compose üzembe helyezési támogatása az Azure Service Fabricben (előzetes verzió)
 
-A Docker a [Docker-compose. YML](https://docs.docker.com/compose) fájlt használja több tárolós alkalmazások definiálásához. Annak érdekében, hogy az ügyfelek könnyen megismerjék a Docker-t, hogy az Azure-Service Fabric meglévő tároló-alkalmazásaikat hangolják össze, a platformon natív módon elérhetővé tettük a Docker-összeállítás üzembe helyezésének előzetes támogatását. A Service Fabric a `docker-compose.yml` fájlok 3. vagy újabb verzióját is elfogadhatja. 
+A Docker a [docker-compose.yml](https://docs.docker.com/compose) fájlt használja a többtárolós alkalmazások definiálására. Annak érdekében, hogy a Docker-t ismerő ügyfelek könnyebben vezényeljék a meglévő tárolóalkalmazásokat az Azure Service Fabric-en, a Docker Compose üzembe helyezésének előzetes támogatásával a platformon is elérhetővé tettük. A Service Fabric képes elfogadni `docker-compose.yml` a fájlok 3-as és újabb verzióját. 
 
-Mivel ez a támogatás előzetes verzióban érhető el, csak az összeállítási irányelvek egy részhalmaza támogatott.
+Mivel ez a támogatás előzetes verzióban érhető el, a Compose direktíváknak csak egy részhalmaza támogatott.
 
-Az előzetes verzió használatához hozza létre a 5,7-es vagy újabb verziójú fürtöt a Service Fabric futtatókörnyezettel együtt a Azure Portal és a hozzá tartozó SDK használatával. 
+Az előzetes verzió használatához hozza létre a fürtöt a Service Fabric futásidejű 5.7-es vagy újabb verziójával az Azure Portalon keresztül a megfelelő SDK-val együtt. 
 
 > [!NOTE]
 > Ez a funkció előzetes verzióban érhető el, és éles környezetben nem támogatott.
-> Az alábbi példák az 6,0-es és az SDK 2,8-es verzióján alapulnak.
+> Az alábbi példák a 6.0-s és az SDK 2.8-as verzióján alapulnak.
 
-## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Docker-összeállítási fájl üzembe helyezése Service Fabric
+## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Docker-írási fájl üzembe helyezése a Service Fabric en
 
-A következő parancsok létrehoznak egy Service Fabric alkalmazást (`fabric:/TestContainerApp`nevű), amelyet a többi Service Fabric alkalmazáshoz hasonlóan figyelheti és kezelheti. Használhatja a megadott alkalmazásnév állapot-lekérdezéseket.
-Service Fabric felismeri a "DeploymentName" kifejezést az összeállítási telepítés azonosítójaként.
+A következő parancsok hozzon létre `fabric:/TestContainerApp`egy Service Fabric-alkalmazást (named), amely figyelheti és kezelheti, mint bármely más Service Fabric-alkalmazás. Az állapotlekérdezésekhez használhatja a megadott alkalmazásnevet.
+A Service Fabric a "DeploymentName" azonosítót ismeri fel a Compose központi telepítés azonosítójaként.
 
 ### <a name="use-powershell"></a>A PowerShell használata
 
-Hozzon létre egy Service Fabric összeállítási telepítést egy Docker-compose. YML fájlból a következő parancs futtatásával a PowerShellben:
+Hozzon létre egy Service Fabric compose központi telepítést egy docker-compose.yml fájlból a következő parancs futtatásával a PowerShellben:
 
 ```powershell
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName` és `RegistryPassword` tekintse meg a tároló beállításjegyzékének felhasználónevét és jelszavát. Az üzembe helyezés befejezése után a következő paranccsal ellenőrizhető az állapota:
+`RegistryUserName`és `RegistryPassword` olvassa el a tároló rendszerleíró felhasználónevét és jelszavát. A telepítés befejezése után a következő paranccsal ellenőrizheti az állapotát:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
 ```
 
-A következő paranccsal törölheti az összeállítási telepítést a PowerShell használatával:
+A Compose központi telepítés t a PowerShellen keresztültörténő törléséhez használja a következő parancsot:
 
 ```powershell
 Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
 ```
 
-Az összeállítások PowerShell használatával történő frissítésének elindításához használja a következő parancsot:
+A Compose központi telepítési frissítés PowerShellen keresztüli indításához használja a következő parancsot:
 
 ```powershell
 Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
 ```
 
-Az összeállítási telepítés a PowerShell használatával történő visszaállításához használja a következő parancsot:
+A Compose központi telepítési frissítés powershellen keresztüli visszaállításához használja a következő parancsot:
 
 ```powershell
 Start-ServiceFabricComposeDeploymentRollback -DeploymentName TestContainerApp
 ```
 
-A frissítés elfogadása után a frissítési folyamat nyomon követhető a következő parancs használatával:
+A frissítés elfogadása után a frissítés folyamata a következő paranccsal követhető nyomon:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
@@ -67,90 +67,90 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>Az Azure Service Fabric CLI (sfctl) használata
 
-Másik lehetőségként használhatja a következő Service Fabric CLI-parancsot:
+Másik lehetőségként használhatja a következő Service Fabric CLI parancsot:
 
 ```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
-A központi telepítés létrehozása után a következő paranccsal ellenőrizhető az állapota:
+A központi telepítés létrehozása után a következő paranccsal ellenőrizheti az állapotát:
 
 ```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Az összeállítási telepítés törléséhez használja a következő parancsot:
+A Compose központi telepítés törléséhez használja a következő parancsot:
 
 ```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Az összeállítás-telepítési frissítés elindításához használja a következő parancsot:
+A Compose központi telepítési frissítés elindításához használja a következő parancsot:
 
 ```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
-Az összeállítási telepítés frissítésének visszaállításához használja a következő parancsot:
+A Compose központi telepítési frissítés visszaállításához használja a következő parancsot:
 
 ```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
-A frissítés elfogadása után a frissítési folyamat nyomon követhető a következő parancs használatával:
+A frissítés elfogadása után a frissítés folyamata a következő paranccsal követhető nyomon:
 
 ```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
-## <a name="supported-compose-directives"></a>Támogatott összeállítási irányelvek
+## <a name="supported-compose-directives"></a>Támogatott írási irányelvek
 
-Ez az előzetes verzió az összeállítás 3 formátumában lévő konfigurációs beállítások egy részhalmazát támogatja, beleértve a következő primitíveket:
+Ez az előzetes verzió a 3-as verzió összeállítása formátumban lévő konfigurációs beállítások egy részét támogatja, beleértve a következő primitíveket:
 
-* Szolgáltatások > > replikák központi telepítése
-* Szolgáltatások > > elhelyezési > megkötések üzembe helyezése
-* Szolgáltatások > > erőforrások > korlátozásai
-    * -CPU-megosztások
-    * – memória
-    * – memória – swap
+* Szolgáltatások > > replikák telepítése
+* Szolgáltatások > üzembe helyezése > elhelyezési > megkötések
+* Szolgáltatások > > erőforrások telepítése > korlátok
+    * -cpu-részvények
+    * -memória
+    * -memória-swap
 * Szolgáltatások > parancsok
 * Szolgáltatások > környezet
 * Szolgáltatások > portok
-* Szolgáltatások > rendszerkép
-* Szolgáltatások > elkülönítése (csak Windows esetén)
-* Szolgáltatások > naplózási > illesztőprogram
-* Szolgáltatások > naplózás > illesztőprogram > beállításai
-* Kötet & > kötet központi telepítése
+* Szolgáltatások > kép
+* Szolgáltatások > elkülönítés (csak Windows esetén)
+* Szolgáltatások naplózási > illesztőprogram>
+* Szolgáltatások naplózási > illesztőprogram-beállítások > >
+* Kötet & > kötet telepítése
 
-Állítsa be úgy a fürtöt, hogy az erőforrás-korlátokat érvényesítse a [Service Fabric erőforrás-szabályozás](service-fabric-resource-governance.md)című témakörben leírtak szerint. Ez az előzetes verzió nem támogatja az összes többi Docker-összeállítási direktívát.
+Állítsa be a fürterőforrás-korlátok érvényesítéséhez, a [Service Fabric erőforrás-szabályozás.](service-fabric-resource-governance.md) Az összes többi Docker Compose direktíva nem támogatott ehhez az előzetes verzióhoz.
 
 ### <a name="ports-section"></a>Portok szakasz
 
-A portok szakaszban adjon meg http-vagy HTTPS-protokollt, amelyet a Service Fabric Service-figyelő fog használni. Ezzel biztosíthatja, hogy a végponti protokoll megfelelően legyen közzétéve az elnevezési szolgáltatással, hogy a fordított proxy engedélyezze a kérelmek továbbítását:
-* A nem biztonságos Service Fabric összeállítási szolgáltatásokhoz való átirányításhoz válassza a **/http**lehetőséget. Például **:-"80:80/http"** .
-* A biztonságos Service Fabric összeállításához válassza a **/https**lehetőséget. Például **:-"443:443/https"** .
+Adja meg a http vagy https protokollt a Portok szakaszban, amelyet a Service Fabric szolgáltatás figyelője fog használni. Ez biztosítja, hogy a végpontprotokoll megfelelően legyen közzétéve az elnevezési szolgáltatással, hogy a fordított proxy továbbíthassa a kérelmeket:
+* A nem biztonságos Service Fabric compose szolgáltatásokhoz való átirányításhoz adja meg a **/http**kapcsolót. Például - **"80:80/http"**.
+* A Service Fabric compose szolgáltatások biztonságos sáválasztásához adja meg a **/https**kapcsolót. Például - **"443:443/https"**.
 
 > [!NOTE]
-> A/http és a/https portok szakaszának szintaxisa Service Fabric a megfelelő Service Fabric figyelő URL-címének regisztrálásához.  Ha a Docker-összeállítási fájl szintaxisa programozott módon van érvényesítve, az érvényesítési hibát eredményezhet.
+> A /http és /https Ports szakasz szintaxisa a Service Fabric a megfelelő Service Fabric figyelő URL-cím regisztrálásához.  Ha a Docker-fájl szintaxisa programozott módon érvényesítve van, az érvényesítési hibát okozhat.
 
-## <a name="servicednsname-computation"></a>ServiceDnsName kiszámítása
+## <a name="servicednsname-computation"></a>ServiceDnsName számítás
 
-Ha az összeállítási fájlban megadott szolgáltatásnév teljes tartománynév (azaz egy pont [.]), a Service Fabric által regisztrált DNS-név `<ServiceName>` (beleértve a pontot). Ha nem, akkor az alkalmazás nevének minden egyes elérésiút-szegmense a szolgáltatás DNS-neve tartomány címkéjévé válik, és az első elérésiút-szegmens lesz a legfelső szintű tartomány címkéje.
+Ha a Compose fájlban megadott szolgáltatásnév teljesen minősített tartománynév (azaz egy pont [.]) tartalmazza, akkor `<ServiceName>` a Service Fabric által regisztrált DNS-név (a pontmal együtt). Ha nem, akkor az alkalmazás névben minden elérési útszegmens tartománycímkévé válik a szolgáltatás DNS-nevében, és az első elérési útszegmens lesz a legfelső szintű tartománycímke.
 
-Ha például a megadott alkalmazásnév `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` lenne a regisztrált DNS-név.
+Ha például a megadott alkalmazásnév `<ServiceName>.MyComposeApp.SampleApp` , `fabric:/SampleApp/MyComposeApp`akkor a regisztrált DNS-név lesz.
 
-## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Üzembe helyezés (példány definíciója) és Service Fabric alkalmazás modellje (típus definíciója)
+## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Központi telepítés (példánydefiníció) és service fabric alkalmazásmodell (típusdefiníció) írása
 
-A Docker-compose. YML fájl a tárolók telepíthető készletét írja le, beleértve azok tulajdonságait és konfigurációit.
-A fájl például környezeti változókat és portokat tartalmazhat. A Docker-compose. YML fájlban is megadhat központi telepítési paramétereket, például elhelyezési megkötéseket, erőforrás-korlátokat és DNS-neveket.
+A docker-compose.yml fájl a telepíthető tárolók készletét írja le, beleértve azok tulajdonságait és konfigurációit.
+A fájl tartalmazhat például környezeti változókat és portokat. A docker-compose.yml fájlban telepítési paramétereket is megadhat, például elhelyezési megkötéseket, erőforráskorlátokat és DNS-neveket.
 
-A [Service Fabric alkalmazás-modell](service-fabric-application-model.md) a szolgáltatások típusát és az alkalmazások típusát használja, ahol több azonos típusú alkalmazás-példány is lehet. Megadhatja például, hogy ügyfélként egy alkalmazás példánya legyen. Ez a típus-alapú modell a futtatókörnyezetben regisztrált azonos típusú alkalmazások több verzióját támogatja.
+A [Service Fabric alkalmazásmodell](service-fabric-application-model.md) szolgáltatástípusokat és alkalmazástípusokat használ, ahol számos azonos típusú alkalmazáspéldányt használhat. Például vevőnként egy alkalmazáspéldány is lehet. Ez a típusalapú modell támogatja az azonos típusú, a futásidejű több verziót.
 
-Például az A ügyfél rendelkezhet olyan alkalmazással, amely a AppTypeA 1,0 típussal lett létrehozva, és a B ügyfél egy másik alkalmazással is rendelkezhet ugyanazzal a típussal és verzióval. Az alkalmazás-jegyzékfájlokban definiálhatja az alkalmazás típusát, és az alkalmazás létrehozásakor meg kell adnia az alkalmazás nevét és a telepítési paramétereket.
+Például az "A" vevő rendelkezhet egy AppTypeA 1.0-s típussal példányosított alkalmazással, és "B" vevő egy másik alkalmazás sal rendelkezhet ugyanazzal a típussal és verzióval. Az alkalmazástípusokat az alkalmazásjegyzékekben definiálja, és az alkalmazás neve és telepítési paramétereit az alkalmazás létrehozásakor adja meg.
 
-Bár ez a modell rugalmasságot biztosít, azt is tervezzük, hogy egy egyszerűbb, példány-alapú üzembe helyezési modellt is támogatunk, ahol a típusok implicitek a manifest-fájlból. Ebben a modellben minden alkalmazás saját független jegyzékfájlt kap. A Docker-compose. YML, amely egy példány-alapú központi telepítési formátum támogatása.
+Bár ez a modell rugalmasságot biztosít, azt is tervezi, hogy támogatja az egyszerűbb, példányalapú telepítési modell, ahol a típusok implicit a jegyzékfájlból. Ebben a modellben minden alkalmazás saját független jegyzékfájlt kap. Ezt az erőfeszítést a docker-compose.yml, amely egy példányalapú telepítési formátum támogatásával tekintjük meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A [Service Fabric alkalmazás modelljének](service-fabric-application-model.md) olvasása
+* Olvassa el a [Service Fabric alkalmazásmodell](service-fabric-application-model.md)
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

@@ -1,24 +1,24 @@
 ---
 title: Egyéni Linux-tároló konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egyéni Linux-tárolókat a Azure App Serviceban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+description: Ismerje meg, hogyan konfigurálhat egy egyéni Linux-tárolót az Azure App Service-ben. Ez a cikk a leggyakoribb konfigurációs feladatokat mutatja be.
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280143"
 ---
-# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tároló konfigurálása Azure App Servicehoz
+# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tároló konfigurálása az Azure App Service-hez
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat egy egyéni Linux-tárolót, hogy Azure App Serviceon fusson.
+Ez a cikk bemutatja, hogyan konfigurálhat egy egyéni Linux-tárolót az Azure App Service-en való futtatáshoz.
 
-Ez az útmutató a Linux-alkalmazások App Service-ben történő tárolókra bontás kapcsolatos főbb fogalmakat és útmutatásokat tartalmazza. Ha még soha nem használta Azure App Servicet, először kövesse az [Egyéni tároló](quickstart-docker-go.md) rövid [útmutatóját és az oktatóanyagot](tutorial-custom-docker-image.md) . A [multi-Container app](quickstart-multi-container.md) rövid [útmutatója és oktatóanyaga](tutorial-multi-container-app.md)is rendelkezésre áll.
+Ez az útmutató a legfontosabb fogalmakat és utasításokat a Linux-alkalmazások az App Service-ben. Ha még soha nem használta az Azure App Service-t, kövesse először az [egyéni tároló rövid útmutatóját](quickstart-docker-go.md) és [oktatóanyagát.](tutorial-custom-docker-image.md) Van is egy [több tárolós alkalmazás gyorsindítás](quickstart-multi-container.md) és [bemutató](tutorial-multi-container-app.md).
 
 ## <a name="configure-port-number"></a>Portszám konfigurálása
 
-Az egyéni rendszerképben található webkiszolgáló a 80-től eltérő portot is használhat. Tájékoztassa az Azure-t arról, hogy az egyéni tároló milyen portot használ a `WEBSITES_PORT` alkalmazás-beállítás használatával. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. A Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával állíthatja be. Például:
+Az egyéni lemezkép webkiszolgálója 80-tól eltérő portot is használhat. Az egyéni tároló által használt portról az `WEBSITES_PORT` alkalmazásbeállítás használatával tájékoztassa az Azure-t. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. Beállíthatja, hogy [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) fut parancs a Cloud Shell. Példa:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -26,46 +26,46 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
-Az egyéni tároló olyan környezeti változókat használhat, amelyeket külsőleg kell megadni. A Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával adhatja át azokat. Például:
+Az egyéni tároló használhat olyan környezeti változókat, amelyeket külsőleg kell megadni. A Cloud Shell parancs [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) futtatásával adhatja át őket. Példa:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
 ```
 
-Ez a módszer egytárolós alkalmazások vagy többtárolós alkalmazások esetén is működik, ahol a környezeti változók a *Docker-compose. YML* fájlban vannak megadva.
+Ez a módszer egytárolós alkalmazásokhoz vagy többtárolós alkalmazásokhoz is működik, ahol a környezeti változók a *docker-compose.yml* fájlban vannak megadva.
 
 ## <a name="use-persistent-shared-storage"></a>Állandó megosztott tároló használata
 
-Az alkalmazás fájlrendszerében a */Home* Directory használatával megtarthatja a fájlokat az újraindítások között, és megoszthatja azokat a példányok között. Az alkalmazásban lévő `/home` lehetővé teszi, hogy a tároló alkalmazás hozzáférjen az állandó tárterülethez.
+Az alkalmazás fájlrendszerében található */home* könyvtár segítségével megőrizheti a fájlokat az újraindítások során, és megoszthatja őket példányok között. Az `/home` alkalmazás ban biztosított, hogy a tároló alkalmazás eléréséhez állandó tároló.
 
-Ha az állandó tárterület le van tiltva, akkor a `/home` könyvtárba való írások nem maradnak meg az alkalmazás újraindítása vagy több példány között. Az egyetlen kivétel a Docker és a tároló naplóinak tárolására szolgáló `/home/LogFiles` könyvtár. Ha az állandó tárterület engedélyezve van, a `/home` könyvtárba való összes írás megmarad, és a kibővített alkalmazás összes példánya elérhetővé válik.
+Ha az állandó tároló le van `/home` tiltva, majd a címtárba írt írások nem maradnak meg az alkalmazás újraindítása vagy több példány között. Az egyetlen kivétel `/home/LogFiles` a könyvtár, amely a Docker- és tárolónaplók tárolására szolgál. Ha az állandó tároló engedélyezve `/home` van, a címtárba írt összes írás megmarad, és egy kibővített alkalmazás összes példánya elérhető.
 
-Alapértelmezés szerint az állandó tárterület *engedélyezve* van, és a beállítás nem érhető el az alkalmazás beállításaiban. A letiltásához állítsa be a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállítását [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs futtatásával a Cloud shell. Például:
+Alapértelmezés szerint az állandó tároló *engedélyezve* van, és a beállítás nem érhető el az alkalmazás beállításai között. A letiltáshoz `WEBSITES_ENABLE_APP_SERVICE_STORAGE` állítsa be [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) az alkalmazásbeállítást a Cloud Shell parancs futtatásával. Példa:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]
-> [Saját állandó tárterületet is beállíthat](how-to-serve-content-from-azure-storage.md).
+> Saját [állandó tárolót](how-to-serve-content-from-azure-storage.md)is konfigurálhat.
 
 ## <a name="enable-ssh"></a>SSH engedélyezése
 
-Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Ahhoz, hogy egy egyéni tároló támogassa az SSH-t, fel kell vennie azt a Docker.
+Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Annak érdekében, hogy egy egyéni tároló támogatja az SSH-t, hozzá kell adnia magát a Dockerfile-hoz.
 
 > [!TIP]
-> Az összes beépített Linux-tároló hozzá lett adva az SSH-utasításokhoz a rendszerkép-tárházban. A [Node. js 10,14 adattárral](https://github.com/Azure-App-Service/node/blob/master/10.14) a következő utasításokat követve megtekintheti, hogyan engedélyezhető ott.
+> Az összes beépített Linux-tároló hozzáadta az SSH-utasításokat a rendszerkép-tárolókhoz. A [Node.js 10.14 tárházsegítségével](https://github.com/Azure-App-Service/node/blob/master/10.14) a következő utasításokat is megtekintheti, hogyan van engedélyezve.
 
-- A [futtatási](https://docs.docker.com/engine/reference/builder/#run) utasítással telepítse az SSH-kiszolgálót, és állítsa be a rendszergazdai fiók jelszavát `"Docker!"`. Az [alpesi Linux](https://hub.docker.com/_/alpine)-alapú rendszerképekhez például a következő parancsokat kell megadnia:
+- A [RUN](https://docs.docker.com/engine/reference/builder/#run) utasítással telepítse az SSH-kiszolgálót, és `"Docker!"`állítsa a gyökérfiók jelszavát a-ra. Az [Alpine Linux](https://hub.docker.com/_/alpine)on alapuló lemezképhez például a következő parancsokra van szükség:
 
     ```Dockerfile
     RUN apk add openssh \
          && echo "root:Docker!" | chpasswd 
     ```
 
-    Ez a konfiguráció nem engedélyezi a külső kapcsolatokat a tárolóval. Az SSH csak `https://<app-name>.scm.azurewebsites.net` és a közzétételi hitelesítő adatokkal hitelesített hitelesítéssel érhető el.
+    Ez a konfiguráció nem engedélyezi a külső kapcsolatokat a tárolóhoz. Az SSH csak `https://<app-name>.scm.azurewebsites.net` a közzétételi hitelesítő adatokon keresztül érhető el, és a közzétételi hitelesítő adatokkal hitelesíthető.
 
-- Adja hozzá [ezt a sshd_config fájlt](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) a rendszerkép-tárházhoz, és a [másolási](https://docs.docker.com/engine/reference/builder/#copy) utasítás használatával másolja a fájlt a */etc/ssh/* könyvtárba. *Sshd_config* fájlokról további információt az [OpenBSD dokumentációjában](https://man.openbsd.org/sshd_config)talál.
+- Adja hozzá [ezt a sshd_config fájlt](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) a képtárhoz, és a [COPY](https://docs.docker.com/engine/reference/builder/#copy) utasítással másolja a fájlt az */etc/ssh/* könyvtárba. A *sshd_config* fájlokról az [OpenBSD dokumentációjában](https://man.openbsd.org/sshd_config)olvashat bővebben.
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -76,7 +76,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
     > - A `Ciphers` beállításnak tartalmaznia kell legalább egy elemet a következő listából: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - A `MACs` beállításnak tartalmaznia kell legalább egy elemet a következő listából: `hmac-sha1,hmac-sha1-96`.
 
-- A következő [utasítás használatával](https://docs.docker.com/engine/reference/builder/#expose) nyissa meg a tárolóban az 2222-es portot. Bár a gyökér jelszava ismert, a 2222-es port nem érhető el az internetről. A szolgáltatás csak a privát virtuális hálózat híd hálózatán lévő tárolók számára érhető el.
+- Az [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) utasítással nyissa meg a 2222-es portot a tárolóban. Bár a gyökérjelszó ismert, a 2222-es port nem érhető el az internetről. Csak egy privát virtuális hálózat hídhálózatán belüli tárolók érhetők el.
 
     ```Dockerfile
     EXPOSE 80 2222
@@ -88,7 +88,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
     /usr/sbin/sshd
     ```
 
-    Példaként tekintse meg, hogyan indítja el az alapértelmezett [Node. js 10,14-tároló](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) az SSH-kiszolgálót.
+    Például tekintse meg, hogyan indítja el az alapértelmezett [Node.js 10.14 tároló](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) az SSH-kiszolgálót.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
@@ -96,23 +96,23 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 ## <a name="configure-multi-container-apps"></a>Többtárolós alkalmazások konfigurálása
 
-- [Állandó tároló használata a Docker-összeállításban](#use-persistent-storage-in-docker-compose)
-- [Előzetes verzió korlátozásai](#preview-limitations)
-- [Docker-összeállítás beállításai](#docker-compose-options)
+- [Állandó tároló használata a Docker Compose-ben](#use-persistent-storage-in-docker-compose)
+- [Előnézeti korlátozások](#preview-limitations)
+- [Docker-írási beállítások](#docker-compose-options)
 
-### <a name="use-persistent-storage-in-docker-compose"></a>Állandó tároló használata a Docker-összeállításban
+### <a name="use-persistent-storage-in-docker-compose"></a>Állandó tároló használata a Docker Compose-ben
 
-A többtárolós alkalmazások, például a WordPress esetében állandó tárterületre van szükség a megfelelő működéshez. Az engedélyezéshez a Docker-összeállítás konfigurációjának a tárolón *kívüli* tárolási helyre kell mutatnia. A tárolón belüli tárolóhelyek nem tartanak fenn módosításokat az alkalmazás újraindítása után.
+Több-konténer alkalmazások, mint a WordPress kell tartós tárolás megfelelő működéséhez. Az engedélyezéshez a Docker Compose konfigurációnak a *tárolón kívüli* tárolóhelyre kell mutatnia. A tárolón belüli tárolási helyek nem maradnak meg az alkalmazás újraindítása után.
 
-Engedélyezze az állandó tárterületet a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállításának beállításával az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) paranccsal a Cloud Shellban.
+Engedélyezze az állandó `WEBSITES_ENABLE_APP_SERVICE_STORAGE` tárolást az alkalmazásbeállítás beállításával, a Cloud Shell [azaz webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsával.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-A *Docker-compose. YML* fájlban rendelje hozzá a `${WEBAPP_STORAGE_HOME}`hoz a `volumes` lehetőséget. 
+A *docker-compose.yml* fájlban `volumes` rendelje `${WEBAPP_STORAGE_HOME}`hozzá a lehetőséget a számára. 
 
-A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Például:
+A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Példa:
 
 ```yaml
 wordpress:
@@ -123,16 +123,16 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
 ```
 
-### <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+### <a name="preview-limitations"></a>Előnézeti korlátozások
 
-A multi-Container jelenleg előzetes verzióban érhető el. A következő App Service platform-funkciók nem támogatottak:
+A többtárolós tároló jelenleg előzetes verzióban érhető el. Az App Service platform alábbi funkciói nem támogatottak:
 
-- Hitelesítés/engedélyezés
+- Hitelesítés / engedélyezés
 - Felügyelt identitások
 
-### <a name="docker-compose-options"></a>Docker-összeállítás beállításai
+### <a name="docker-compose-options"></a>Docker-írási beállítások
 
-Az alábbi listában a támogatott és nem támogatott Docker-összeállítási beállítások láthatók:
+Az alábbi listák a Docker Compose támogatott és nem támogatott konfigurációs beállításait mutatják:
 
 #### <a name="supported-options"></a>Támogatott beállítások
 
@@ -151,21 +151,21 @@ Az alábbi listában a támogatott és nem támogatott Docker-összeállítási 
 - depends_on (figyelmen kívül hagyva)
 - networks (figyelmen kívül hagyva)
 - secrets (figyelmen kívül hagyva)
-- 80 és 8080 közötti (figyelmen kívül hagyott) portok
+- portok nem 80 és 8080 (figyelmen kívül hagyva)
 
 > [!NOTE]
-> A rendszer figyelmen kívül hagyja a nem kifejezetten kinevezett egyéb beállításokat a nyilvános előzetes verzióban.
+> A nyilvános előzetes verzió figyelmen kívül hagyja a kifejezetten nem kifejezetten megnevezett egyéb beállításokat.
 
-## <a name="configure-vnet-integration"></a>VNet-integráció konfigurálása
+## <a name="configure-vnet-integration"></a>Virtuálishálózat-integráció konfigurálása
 
-Ha egyéni tárolót használ a VNet-integrációval, további tároló-konfigurációra lehet szükség. Lásd: [az alkalmazás integrálása Azure-Virtual Networkokkal](../web-sites-integrate-with-vnet.md).
+Virtuálishálózat-integrációval rendelkező egyéni tároló használata további tárolókonfigurációt igényelhet. Lásd: [Az alkalmazás integrálása egy Azure virtuális hálózattal.](../web-sites-integrate-with-vnet.md)
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: üzembe helyezés Private Container adattárból](tutorial-custom-docker-image.md)
+> [Oktatóanyag: Üzembe helyezés a privát tárolótárból](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Multi-Container WordPress-alkalmazás](tutorial-multi-container-app.md)
+> [Bemutató: Többtárolós WordPress alkalmazás](tutorial-multi-container-app.md)

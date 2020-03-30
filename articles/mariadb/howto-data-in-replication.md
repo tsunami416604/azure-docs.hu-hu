@@ -1,89 +1,89 @@
 ---
-title: Az adatreplikálás konfigurálása – Azure Database for MariaDB
-description: Ez a cikk bemutatja, hogyan állíthatja be a felhőbe irányuló replikálást a Azure Database for MariaDBban.
+title: Az adatreplikáció konfigurálása – Azure-adatbázis a MariaDB-hez
+description: Ez a cikk bemutatja, hogyan állíthatja be az adatok replikációját a MariaDB Azure Database-ben.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 0dbbc9b09d5d4770296223db9dc909c17f574fe8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 51b800dde140affd222f2bdb341c0fbf3a57d8cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767024"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530155"
 ---
-# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
+# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Az adatok replikációjának konfigurálása a MariaDB Azure-adatbázisában
 
-Ez a cikk azt ismerteti, hogyan állíthatja be a felhőbe irányuló replikálás a Azure Database for MariaDBban a fő-és a replika-kiszolgálók konfigurálásával. Ez a cikk azt feltételezi, hogy a MariaDB-kiszolgálókkal és-adatbázisokkal kapcsolatban némi korábbi tapasztalat van.
+Ez a cikk bemutatja, hogyan állíthatja be az adatok replikációját az Azure Database for MariaDB-ben a fő- és replikakiszolgálók konfigurálásával. Ez a cikk feltételezi, hogy van néhány korábbi tapasztalata a MariaDB-kiszolgálókkal és -adatbázisokkal.
 
-Ahhoz, hogy replikát hozzon létre a Azure Database for MariaDB szolgáltatásban, felhőbe irányuló replikálás szinkronizálja a helyszíni, a virtuális gépeken vagy a Cloud Database Servicesben lévő fő MariaDB-kiszolgáló adatait.
+Az Azure Database for MariaDB szolgáltatás ban egy replika létrehozásához a Data-in Replication szinkronizálja az adatokat a fő MariaDB-kiszolgálóról a helyszínen, a virtuális gépeken (VMs) vagy a felhőalapú adatbázis-szolgáltatásokban.
 
 > [!NOTE]
-> Ha a főkiszolgáló 10,2-es vagy újabb verziójú, javasoljuk, hogy a [globális tranzakció-azonosítóval](https://mariadb.com/kb/en/library/gtid/)állítsa be a felhőbe irányuló replikálás.
+> Ha a főkiszolgáló 10.2-es vagy újabb verziójú, azt javasoljuk, hogy globális [tranzakcióazonosítóval](https://mariadb.com/kb/en/library/gtid/)állítsa be az Adatreplikációt.
 
 
-## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Replikaként használandó MariaDB-kiszolgáló létrehozása
+## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Kópiaként használandó MariaDB-kiszolgáló létrehozása
 
-1. Hozzon létre egy új Azure Database for MariaDB-kiszolgálót (például replica.mariadb.database.azure.com). A kiszolgáló a felhőbe irányuló replikálás található replika-kiszolgáló.
+1. Hozzon létre egy új Azure-adatbázist a MariaDB-kiszolgálóhoz (például replica.mariadb.database.azure.com). A kiszolgáló a replikálási kiszolgáló az adatreplikációban.
 
-    A kiszolgálók létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Database for MariaDB kiszolgáló létrehozása a Azure Portal használatával](quickstart-create-mariadb-server-database-using-azure-portal.md).
+    A kiszolgálók létrehozásáról az [Azure Database for MariaDB-kiszolgáló létrehozása az Azure Portal használatával című témakörben](quickstart-create-mariadb-server-database-using-azure-portal.md)olvashat.
 
    > [!IMPORTANT]
-   > A Azure Database for MariaDB-kiszolgálót a általános célú vagy a memória optimalizált díjszabási szintjein kell létrehoznia.
+   > Létre kell hoznia az Azure Database for MariaDB-kiszolgálót az általános cél vagy a memória optimalizált tarifacsomagokban.
 
-2. Hozzon létre azonos felhasználói fiókokat és megfelelő jogosultságokat.
+2. Hozzon létre azonos felhasználói fiókokat és a megfelelő jogosultságokat.
     
-    A felhasználói fiókok nem replikálódnak a főkiszolgálóról a másodpéldány-kiszolgálóra. A replika-kiszolgálóhoz való felhasználói hozzáférés biztosításához manuálisan kell létrehoznia az összes fiókot és a megfelelő jogosultságokat az újonnan létrehozott Azure Database for MariaDB-kiszolgálón.
+    A felhasználói fiókok nem replikálódnak a főkiszolgálóról a replikakiszolgálóra. A replikakiszolgáló felhasználói hozzáférésének biztosításához manuálisan kell létrehoznia az összes fiókot és a megfelelő jogosultságokat az újonnan létrehozott Azure Database for MariaDB-kiszolgálón.
 
 ## <a name="configure-the-master-server"></a>A főkiszolgáló konfigurálása
 
-A következő lépések előkészítik és konfigurálja a helyszínen üzemeltetett MariaDB-kiszolgálót egy virtuális gépen vagy egy felhőalapú adatbázis-szolgáltatásban felhőbe irányuló replikálás számára. A MariaDB-kiszolgáló a felhőbe irányuló replikálás főkiszolgálója.
+A következő lépések előkészítik és konfigurálják a mariadb-kiszolgálót, amely a helyszínen, a virtuális gépben vagy egy felhőalapú adatbázis-szolgáltatásban üzemelteti az adatreplikációt. A MariaDB-kiszolgáló az adatreplikáció főkiszolgálója.
 
-1. A bináris naplózás bekapcsolása.
+1. Kapcsolja be a bináris naplózást.
     
-    Ha szeretné megtekinteni, hogy engedélyezve van-e a bináris naplózás a főkiszolgálón, írja be a következő parancsot:
+    Ha meg szeretné tudni, hogy engedélyezve van-e a bináris naplózás a főoldalon, írja be a következő parancsot:
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Ha az [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) változó a `ON`értéket adja vissza, akkor a bináris naplózás engedélyezve van a kiszolgálón.
+   Ha a [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) változó `ON`az értéket adja vissza, a bináris naplózás engedélyezve van a kiszolgálón.
 
-   Ha `log_bin` a `OFF`értéket adja vissza, szerkessze a **My. cnf** fájlt, hogy a `log_bin=ON` bekapcsolja a bináris naplózást. Indítsa újra a kiszolgálót a módosítás érvénybe léptetéséhez.
+   Ha `log_bin` az `OFF`értéket adja vissza, akkor szerkesztheti `log_bin=ON` a **my.cnf** fájlt úgy, hogy bekapcsolja a bináris naplózást. A módosítás életbe léptetéséhez indítsa újra a kiszolgálót.
 
 2. A főkiszolgáló beállításainak konfigurálása.
 
-    Felhőbe irányuló replikálás megköveteli, hogy a paraméter `lower_case_table_names` konzisztens legyen a fő-és a replika-kiszolgálók között. A `lower_case_table_names` paraméter alapértelmezés szerint `1`re van állítva Azure Database for MariaDB.
+    Az adatreplikáció megköveteli, `lower_case_table_names` hogy a paraméter konzisztens legyen a fő- és a replikakiszolgálók között. A `lower_case_table_names` paraméter `1` alapértelmezés szerint a MariaDB Azure Database-ben van beállítva.
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Hozzon létre egy új replikációs szerepkört, és állítson be engedélyeket.
+3. Hozzon létre egy új replikációs szerepkört, és állítsa be az engedélyeket.
 
-   Hozzon létre egy felhasználói fiókot a fő kiszolgálón, amely replikációs jogosultságokkal van konfigurálva. Az SQL-parancsok vagy a MySQL Workbench használatával hozhat létre fiókot. Ha az SSL-sel való replikálást tervezi, ezt a felhasználói fiók létrehozásakor kell megadnia.
+   Hozzon létre egy felhasználói fiókot a replikációs jogosultságokkal konfigurált főkiszolgálón. Létrehozhat egy fiókot SQL-parancsokkal vagy a MySQL Workbench használatával. Ha SSL-lel szeretne replikálni, ezt a felhasználói fiók létrehozásakor meg kell adnia.
    
-   Ha szeretné megtudni, hogyan adhat hozzá felhasználói fiókokat a főkiszolgálón, tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/create-user/).
+   Ha tudni szeretné, hogyan vehet fel felhasználói fiókokat a főkiszolgálóra, olvassa el a [MariaDB dokumentációját.](https://mariadb.com/kb/en/library/create-user/)
 
-   Az alábbi parancsok használatával az új replikációs szerepkör bármely gépről elérheti a főkiszolgálót, nem csak a főkiszolgálót üzemeltető gépet. Ehhez a hozzáféréshez a **(z) "%" syncuser\@** a parancsban a felhasználó létrehozásához.
+   A következő parancsok használatával az új replikációs szerepkör bármely gépről elérheti a főkiszolgálót, nem csak a főkiszolgálót tartalmazó gépről. Ehhez a hozzáféréshez adja meg a **(%'\@szinkronizálási felhasználót** a parancsban a felhasználó létrehozásához).
    
-   A MariaDB-dokumentációval kapcsolatos további tudnivalókért tekintse [meg a fiókok nevének megadásával](https://mariadb.com/kb/en/library/create-user/#account-names)foglalkozó témakört.
+   A MariaDB dokumentációjáról a [Fióknevek megadása](https://mariadb.com/kb/en/library/create-user/#account-names)..
 
-   **SQL-parancs**
+   **SQL parancs**
 
-   - Replikáció SSL használatával
+   - Replikáció SSL-lel
 
-       Ha az SSL használatát szeretné megkövetelni az összes felhasználói kapcsolathoz, adja meg a következő parancsot egy felhasználó létrehozásához:
+       Ha az összes felhasználói kapcsolathoz SSL-t szeretne megkövetelni, írja be a következő parancsot a felhasználó létrehozásához:
 
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
        GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%' REQUIRE SSL;
        ```
 
-   - Replikáció SSL nélkül
+   - SSL nélküli replikáció
 
-       Ha az SSL nem szükséges minden kapcsolathoz, adja meg a következő parancsot egy felhasználó létrehozásához:
+       Ha az SSL nem szükséges minden kapcsolathoz, írja be a következő parancsot a felhasználó létrehozásához:
     
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -92,22 +92,22 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
    **MySQL Workbench**
 
-   A MySQL Workbench replikációs szerepkörének létrehozásához a **felügyelet** ablaktáblán válassza a **felhasználók és jogosultságok**lehetőséget. Ezután válassza a **fiók hozzáadása**lehetőséget.
+   A replikációs szerepkör létrehozásához a MySQL Workbench alkalmazásban a **Kezelés** ablaktáblán válassza a **Felhasználók és jogosultságok**lehetőséget. Ezután válassza **a Fiók hozzáadása**lehetőséget.
  
    ![Felhasználók és jogosultságok](./media/howto-data-in-replication/users_privileges.png)
 
-   Adjon meg egy felhasználónevet a **bejelentkezési név** mezőben.
+   Írjon be egy felhasználónevet a **Bejelentkezési név** mezőbe.
 
    ![Felhasználó szinkronizálása](./media/howto-data-in-replication/syncuser.png)
  
-   Válassza ki a **felügyeleti szerepkörök** panelt, majd a **globális jogosultságok**listájában válassza ki a **replikálási Slave**elemet. A replikációs szerepkör létrehozásához kattintson az **alkalmaz** gombra.
+   Jelölje ki a **Felügyeleti szerepkörök** panelt, majd a **globális jogosultságok**listájában válassza a **Replikációs szolga**lehetőséget. A replikációs szerepkör létrehozásához válassza az **Alkalmaz** lehetőséget.
 
-   ![Replikálási Slave](./media/howto-data-in-replication/replicationslave.png)
+   ![Replikációs szolga](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Állítsa a főkiszolgálót csak olvasható módra.
+4. Állítsa a főkiszolgálót írásvédett módba.
 
-   Az adatbázisok kiírása előtt a kiszolgálót csak olvasható módban kell elhelyezni. Amíg csak olvasható módban van, a főkiszolgáló nem dolgozhat fel írási tranzakciókat. Az üzleti hatás elkerülése érdekében ütemezze a csak olvasási időszakot egy off-Peak idő alatt.
+   Az adatbázis kiírása előtt a kiszolgálót írásvédett módban kell elhelyezni. Írásvédett módban a főkiszolgáló nem tudja feldolgozni az írási tranzakciókat. Az üzleti hatások elkerülése érdekében ütemezze az írásvédett ablakot csúcsidőn kívül.
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
@@ -116,20 +116,20 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 5. Az aktuális bináris naplófájl nevének és eltolásának beolvasása.
 
-   Az aktuális bináris naplófájl nevének és eltolásának meghatározásához futtassa a következő parancsot: [`show master status`](https://mariadb.com/kb/en/library/show-master-status/).
+   Az aktuális bináris naplófájl nevének és [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)eltolásának meghatározásához futtassa a parancsot.
     
    ```sql
    show master status;
    ```
-   Az eredmények az alábbi táblázathoz hasonlóak:
+   Az eredményeknek hasonlónak kell lenniük a következő táblázathoz:
    
-   ![Fő állapot eredményei](./media/howto-data-in-replication/masterstatus.png)
+   ![Főkiszolgáló állapotának eredményei](./media/howto-data-in-replication/masterstatus.png)
 
-   Jegyezze fel a bináris fájl nevét, mert a későbbi lépésekben lesz használva.
+   Jegyezze fel a bináris fájl nevét, mert a későbbi lépésekben fogja használni.
    
-6. A GTID pozíciójának beolvasása (nem kötelező, a GTID való replikáláshoz szükséges).
+6. Szerezd meg a GTID pozíciót (nem kötelező, a GTID-vel történő replikációhoz szükséges).
 
-   Futtassa a [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) függvényt a megfelelő BinLog-fájlnév és eltolás GTID pozíciójának lekéréséhez.
+   Futtassa [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) a függvényt a megfelelő binlog fájlnév és eltolás GTID pozíciójának lehívásához.
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
@@ -140,32 +140,32 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 1. Az összes adatbázis kiírása a főkiszolgálóról.
 
-   A mysqldump használatával az összes adatbázist kihasználhatja a főkiszolgálóról. Nem szükséges a MySQL-függvénytár és a tesztelési könyvtár kiírása.
+   A mysqldump segítségével a főkiszolgálóról kikérdezésre az összes adatbázist kiszeretné önteni. Nem szükséges a MySQL könyvtár és a tesztkönyvtár kiírása.
 
-    További információ: [memóriakép és visszaállítás](howto-migrate-dump-restore.md).
+    További információt a [Kiírás és visszaállítás](howto-migrate-dump-restore.md)című témakörben talál.
 
-2. A főkiszolgáló beállítása írási/olvasási módra.
+2. Állítsa a főkiszolgálót olvasási/írási módra.
 
-   Az adatbázis kiírása után állítsa vissza a fő MariaDB-kiszolgálót olvasási/írási módra.
+   Az adatbázis kiírása után módosítsa a fő MariaDB-kiszolgálót olvasási/írási módra.
 
    ```sql
    SET GLOBAL read_only = OFF;
    UNLOCK TABLES;
    ```
 
-3. Állítsa vissza a memóriakép fájlját az új kiszolgálóra.
+3. Állítsa vissza a memóriaképfájlt az új kiszolgálóra.
 
-   Állítsa vissza a memóriakép-fájlt a Azure Database for MariaDB szolgáltatásban létrehozott kiszolgálóra. A dump-fájlok MariaDB-kiszolgálóra való visszaállításával kapcsolatban lásd: [dump & Restore](howto-migrate-dump-restore.md) .
+   Állítsa vissza a memóriaképfájlt az Azure Database for MariaDB szolgáltatásban létrehozott kiszolgálóra. A [Kiírás & visszaállítása](howto-migrate-dump-restore.md) a Kiírásfájl MariaDB-kiszolgálóra való visszaállításáról.
 
-   Ha a memóriakép nagy méretű, töltse fel azt egy Azure-beli virtuális gépre, amely a replika-kiszolgálóval azonos régióban található. Állítsa vissza a Azure Database for MariaDB-kiszolgálóra a virtuális gépről.
+   Ha a memóriaképfájl nagy, töltse fel egy virtuális gépre az Azure-ban, ugyanabban a régióban, mint a replika-kiszolgáló. Állítsa vissza az Azure Database for MariaDB-kiszolgálóa virtuális gépről.
 
-## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>A fő-és a replika-kiszolgálók összekapcsolása a felhőbe irányuló replikálás indításához
+## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>A fő- és a replikakiszolgálók csatolása az adatreplikáció elindításához
 
 1. Állítsa be a főkiszolgálót.
 
-   Az összes felhőbe irányuló replikálás függvényt tárolt eljárások hajtják végre. Az összes eljárást [felhőbe irányuló replikálás tárolt eljárásokban](reference-data-in-stored-procedures.md)találja. A tárolt eljárások a MySQL-rendszerhéjban vagy a MySQL Workbenchben is futtathatók.
+   A replikációs adatok összes funkciója tárolt eljárásokkal történik. Az összes eljárást megtalálja a [Tárolt adatreplikációs eljárások oldalon.](reference-data-in-stored-procedures.md) A tárolt eljárások futtathatók a MySQL rendszerhéjban vagy a MySQL Workbench-ben.
 
-   Két kiszolgáló összekapcsolásához és a replikáció megkezdéséhez jelentkezzen be a cél másodpéldány-kiszolgálóra az Azure DB for MariaDB szolgáltatásban. Ezután állítsa a külső példányt főkiszolgálóként a `mysql.az_replication_change_master` vagy `mysql.az_replication_change_master_with_gtid` tárolt eljárással a MariaDB-kiszolgálóhoz készült Azure-ADATBÁZISon.
+   Két kiszolgáló összekapcsolására és a replikáció indítására jelentkezzen be a cél replikakiszolgálóra az Azure DB for MariaDB szolgáltatásban. Ezután állítsa be a külső példányt `mysql.az_replication_change_master` `mysql.az_replication_change_master_with_gtid` főkiszolgálóként az Azure DB mariaDB-kiszolgálón az Azure DB-kiszolgálón tárolt eljárással.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
@@ -177,91 +177,91 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
-   - master_host: a fő kiszolgáló állomásneve
-   - master_user: a fő kiszolgáló felhasználóneve
+   - master_host: a főkiszolgáló állomásneve
+   - master_user: a főkiszolgáló felhasználóneve
    - master_password: a főkiszolgáló jelszava
-   - master_log_file: bináris naplófájl neve a futtatási `show master status`
-   - master_log_pos: bináris naplózási pozíció futtatása `show master status`
-   - master_gtid_pos: a GTID pozíciója fut `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
-   - master_ssl_ca: HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezete. Ha nem használ SSL-t, adjon meg egy üres karakterláncot. *
+   - master_log_file: a bináris naplófájl neve futásból`show master status`
+   - master_log_pos: a bináris napló pozíciója a futástól`show master status`
+   - master_gtid_pos: GTID pozíció futása`select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
+   - master_ssl_ca: A hitelesítésszolgáltatói tanúsítvány környezete. Ha nem SSL-t használ, adja át üres karakterláncot.*
     
     
-    \* Javasoljuk, hogy a master_ssl_ca paramétert változóként adja át. További információkért tekintse meg az alábbi példákat.
+    *Azt javasoljuk, hogy a master_ssl_ca paramétert változóként adja át. További információt az alábbi példákban talál.
 
    **Példák**
 
-   - Replikáció SSL használatával
+   - Replikáció SSL-lel
 
-       Hozza létre a `@cert` változót a következő parancsok futtatásával:
+       Hozza létre `@cert` a változót a következő parancsok futtatásával:
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE’S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 
-       Az SSL-sel történő replikáció beállítása a tartományi companya.com üzemeltetett főkiszolgálók és a Azure Database for MariaDBban üzemeltetett replika-kiszolgáló között történik. Ez a tárolt eljárás fut a replikán.
+       Az SSL-lel való replikáció a tartományban üzemeltetett companya.com és a MariaDB Azure Database-ben üzemeltetett replikakiszolgáló között van beállítva. Ez a tárolt eljárás a replikán fut.
     
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, @cert);
        ```
-   - Replikáció SSL nélkül
+   - SSL nélküli replikáció
 
-       Az SSL nélküli replikáció beállítása a tartomány companya.com üzemeltetett főkiszolgálók és a Azure Database for MariaDBban üzemeltetett replika-kiszolgáló között történik. Ez a tárolt eljárás fut a replikán.
+       Az SSL nélküli replikáció a tartományban üzemeltetett companya.com és a MariaDB Azure Database-ben üzemeltetett replikakiszolgáló között van beállítva. Ez a tárolt eljárás a replikán fut.
 
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, '');
        ```
 
-2. Replikáció elindítása.
+2. Indítsa el a replikációt.
 
-   A replikáció indításához hívja meg a `mysql.az_replication_start` tárolt eljárást.
+   A `mysql.az_replication_start` replikáció elindításához hívja meg a tárolt eljárást.
 
    ```sql
    CALL mysql.az_replication_start;
    ```
 
-3. Replikáció állapotának bejelölése.
+3. Ellenőrizze a replikáció állapotát.
 
-   A replikálási állapot megtekintéséhez hívja meg a [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) parancsot a replika kiszolgálóján.
+   Hívja [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) meg a parancsot a replikakiszolgálón a replikáció állapotának megtekintéséhez.
     
    ```sql
    show slave status;
    ```
 
-   Ha `Slave_IO_Running` és `Slave_SQL_Running` állapota `yes`, és a `Seconds_Behind_Master` értéke `0`, a replikálás működik. `Seconds_Behind_Master` jelzi, hogy a replika milyen későn van. Ha az érték nem `0`, akkor a replika frissíti a frissítéseket.
+   Ha `Slave_IO_Running` `Slave_SQL_Running` és az `yes`állapot , és `Seconds_Behind_Master` `0`az értéke, replikáció működik. `Seconds_Behind_Master`azt jelzi, hogy a replika milyen későn van. Ha az érték `0`nem, akkor a replika a frissítések feldolgozása.
 
-4. Frissítse a megfelelő kiszolgálói változókat az adatreplikálás biztonságosabbá tételéhez (csak a GTID nélküli replikáláshoz szükséges).
+4. Frissítse a megfelelő kiszolgálóváltozókat, hogy biztonságosabbá tegye az adatreplikációt (csak a GTID nélküli replikációhoz szükséges).
     
-    A MariaDB natív replikációjának korlátozása miatt a GTID-forgatókönyv nélkül be kell állítania [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) és [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) változókat a replikálásban.
+    A MariaDB natív replikációs korlátozása [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) miatt a GTID-forgatókönyv nélkül kell beállítania a replikáción és a változókat.
 
-    Ellenőrizze a Slave-kiszolgáló `sync_master_info` és `sync_relay_log_info` változóit, hogy az adatreplikáció stabil legyen, és állítsa be a változókat `1`re.
+    Ellenőrizze a slave `sync_master_info` kiszolgáló `sync_relay_log_info` és a változók, hogy az adat-a replikáció `1`stabil, és állítsa a változók .
     
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 
 ### <a name="stop-replication"></a>Replikáció leállítása
 
-A fő-és a replika-kiszolgáló közötti replikáció leállításához használja a következő tárolt eljárást:
+A főkiszolgáló és a replikakiszolgáló közötti replikáció leállításához kövesse a következő tárolt eljárást:
 
 ```sql
 CALL mysql.az_replication_stop;
 ```
 
-### <a name="remove-the-replication-relationship"></a>Replikációs kapcsolat eltávolítása
+### <a name="remove-the-replication-relationship"></a>A replikációs kapcsolat eltávolítása
 
-A fő-és a replika-kiszolgáló közötti kapcsolat eltávolításához használja a következő tárolt eljárást:
+A főkiszolgáló és a replikakiszolgáló közötti kapcsolat eltávolításához kövesse a következő tárolt eljárást:
 
 ```sql
 CALL mysql.az_replication_remove_master;
 ```
 
-### <a name="skip-the-replication-error"></a>A replikálási hiba kihagyása
+### <a name="skip-the-replication-error"></a>A replikációs hiba kihagyása
 
-A replikálási hibák kihagyásához és a replikáció engedélyezéséhez használja a következő tárolt eljárást:
+A replikációs hiba kihagyásához és a replikáció engedélyezéséhez kövesse a következő tárolt eljárást:
     
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Következő lépések
-További információ a Azure Database for MariaDB [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .
+## <a name="next-steps"></a>További lépések
+További információ az Azure Database for MariaDB [adatreplikációjáról.](concepts-data-in-replication.md)

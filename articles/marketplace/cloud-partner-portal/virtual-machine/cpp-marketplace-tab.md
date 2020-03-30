@@ -1,69 +1,68 @@
 ---
-title: A virtuális gép Marketplace lapja az Azure Marketplace Cloud Partner Portal
-description: Ismerteti az Azure Marketplace virtuálisgép-ajánlat létrehozásához használt piactér lapot.
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+title: Virtuálisgép-piactér lap az Azure Piactér felhőpartneri portálján
+description: Ismerteti az Azure Marketplace virtuális gép ajánlatának létrehozásához használt Piactér lapon.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: dsindona
+ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762892"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277721"
 ---
-# <a name="virtual-machine-marketplace-tab"></a>A virtuális gép Marketplace lapja
+# <a name="virtual-machine-marketplace-tab"></a>Virtuálisgép Piactér lap
 
-Az **új ajánlat** oldal **piactér** lapján megadhatja a potenciális ügyfeleket marketing-, értékesítési és jogi információkkal és szerződésekkel, és kezelheti a piactéren generált érdeklődőket. Ez a hosszú űrlap négy szakaszra oszlik: **Áttekintés**, **marketing**-összetevők, **vezető felügyelet**és **jogi**.
+Az **Új ajánlat** lap **Piactér** lapja lehetővé teszi, hogy a leendő ügyfelek számára marketinget, értékesítést és jogi információkat és megállapodásokat biztosítson, és kezelje a piactérről generált érdeklődőket. Ez a hosszú forma négy részből áll: **Áttekintés**, **Marketing leletek**, **Ólommenedzsment**és **Jogi**.
 
 
 ## <a name="overview-section"></a>Áttekintő szakasz
-Ebben a szakaszban az Azure Marketplace-ajánlat általános adatait adja meg.  A mező neve mezőben a hozzáfűzött csillag (*) érték azt jelzi, hogy szükség van rá.
+Ebben a szakaszban adja meg az Azure Piactér-ajánlat általános adatait.  A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá.
 
-![A virtuális gépek Marketplace lapjának áttekintés szakasza](./media/publishvm_008.png)
+![A Virtuális gépek Piactér lapjának áttekintése szakasza](./media/publishvm_008.png)
 
-A következő táblázat a mezők célját és tartalmát ismerteti. A kötelező mezőket csillag (*) alapján vádoljuk.
+Az alábbi táblázat a mezők célját és tartalmát ismerteti. A kötelező mezőket csillag (*) vádolja.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Cím\***                 | Az ajánlat címe, gyakran a hosszú, formális név. Ez a cím kiemelten jelenik meg a piactéren.  Legfeljebb 50 karakter hosszú lehet. |
-| **Összefoglalás\***               | A megoldás rövid célja vagy funkciója.  Legfeljebb 100 karakter hosszú lehet. |
-| **Hosszú összefoglalás\***          | A megoldás célja vagy funkciója.  Legfeljebb 256 karakter hosszú lehet. |
-| **Leírás\***           | A megoldás leírása.  Legfeljebb 3000 karakter hosszú lehet, és támogatja az egyszerű HTML-formázást. |
-| **Microsoft CSP viszonteladói csatorna\*** | A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](../../cloud-solution-providers.md) című témakört. |
-| **Marketing-azonosító\***  | Az ajánlathoz társítandó egyedi URL-cím, amely jellemzően a szervezet és a megoldás nevét, a maximális hossz 50 karaktert tartalmazza.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **Előfizetési azonosítók\*** | Adja hozzá az előnézetek egy 100 előfizetés-azonosítóját. Ezek a felsorolt előfizetések a közzétételük előtt hozzáférhetnek az ajánlathoz, mielőtt a szolgáltatás elérhetővé válik. |
-| **Hasznos hivatkozások**          | URL-címeket adhat hozzá a dokumentumokhoz, a kibocsátási megjegyzésekhez, a GYIK-hoz stb. |
-| **Javasolt kategóriák\*** | Válasszon legfeljebb két (2) kategóriát, beleértve az elsődleges és a másodlagos kategóriát is (opcionális). Válasszon legfeljebb két (2) alkategóriát az egyes elsődleges és/vagy másodlagos kategóriákhoz. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető. |
+| **Cím\***                 | Az ajánlat címe, gyakran a hosszú, hivatalos név. Ez a cím jól láthatóan jelenik meg a piacon.  Legfeljebb 50 karakter hosszú. |
+| **Összefoglaló\***               | A megoldás rövid célja vagy funkciója.  Legfeljebb 100 karakter hosszú. |
+| **Hosszú összegzés\***          | A megoldás célja vagy funkciója.  Legfeljebb 256 karakter hosszú. |
+| **Leírás\***           | A megoldás leírása.  A maximális hossza 3000 karakter, támogatja az egyszerű HTML-formázást. |
+| **Microsoft CSP viszonteladói csatorna\*** | A felhőszolgáltatók (CSP) partnercsatorna-opt-in már elérhető.  Az ajánlat microsoftos CSP-partnercsatornákon keresztül történő marketingről további információt a [felhőszolgáltatók](../../cloud-solution-providers.md) ban talál. |
+| **Marketing azonosító\***  | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Előfizetés-azonosítók előzetes verzió\*** | Adjon hozzá egy-100 előfizetés-azonosítót az előzetesekhez. Ezek a fehérlistán szereplő előfizetések hozzáférhetnek az ajánlathoz, miután közzétették, mielőtt élesben lépne. |
+| **Hasznos linkek**          | Url-címeket adhat a dokumentációkhoz, a kibocsátási megjegyzésekhez, a gyakori kérdésekhez és így tovább. |
+| **Javasolt kategóriák\*** | Legfeljebb két (2) kategóriát választhat ki, beleértve az elsődleges és a másodlagos kategóriát (nem kötelező). Minden elsődleges és/vagy másodlagos kategóriához legfeljebb két (2) alkategóriát választhat ki. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető. |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>Marketing-összetevők szakasz
+## <a name="marketing-artifacts-section"></a>Marketingösszetevők szakasz
 
-Ez a második szakasz három alszakaszra oszlik: **logók**, **képernyőképek**és **videók**. A logók az egyetlen szükséges marketing-összetevők, azonban a legjobb ügyfelek számára ajánlott. 
+Ez a második rész három alrészből áll: **Emblémák**, **Képernyőkép**és **Videók**. Logók az egyetlen szükséges marketing leletek, de minden erősen ajánlott a legjobb ügyfél fellebbezést. 
 
-![Marketing-összetevők szakasz a piactér lap új ajánlat űrlapján a virtuális gépekhez](./media/publishvm_009.png)
+![A Piactér lap Marketingösszetevők szakasza a virtuális gépek új ajánlatűrlapján](./media/publishvm_009.png)
 
-A következő táblázat a mezők célját és tartalmát ismerteti. A kötelező mezőket csillag (*) alapján vádoljuk.
+Az alábbi táblázat a mezők célját és tartalmát ismerteti. A kötelező mezőket csillag (*) vádolja.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
 | *Logók*  |  |
-| **Kis\***                 | 40x40cm képpont. ico bitkép                                                      |
-| **Közepes\***                | 90x90 képpont. ico bitkép                                                      |
-| **Nagyméretű\***                 | 115x115 képpont. ico bitkép                                                   |
-| **Széles\***                  | 255x115 képpont. ico bitkép                                                    |
-| **Hero**                  | 815x290 bitkép.  Nem kötelező, de feltöltés után a Hero ikon nem törölhető. |
-| *Képernyőképek*  | Nem kötelező, de SKU-onként legfeljebb öt képernyőkép. |
-| **Name (Név)**                  | Név vagy cím <!-- TODO - max char length? none specified in UI -->                               |
-| **Rendszerkép**                 | Képernyőfelvétel, 533x324 képpont                                         |
+| **Kicsi\***                 | 40x40 pixeles .ico bitkép                                                      |
+| **Közepes\***                | 90x90 pixeles .ico bitkép                                                      |
+| **Nagy\***                 | 115x115 pixeles .ico bitkép                                                   |
+| **Széles\***                  | 255x115 pixeles .ico bitkép                                                    |
+| **Hős**                  | 815x290 bitkép.  Nem kötelező, azonban a feltöltés után a hős ikon nem törölhető. |
+| *Képernyőképek*  | Nem kötelező, de termékváltozatonként legfeljebb öt képernyőkép. |
+| **Név**                  | Név vagy cím <!-- TODO - max char length? none specified in UI -->                               |
+| **Kép**                 | Képernyőfelvétel kép, 533x324 képpont                                         |
 | *Videók*  |  |
-| **Name (Név)**                  | Név vagy cím  <!-- TODO - max char length? -->                              |
-| **Hivatkozás**                  | Videó URL-címe, amelyet a YouTube vagy a Vimeo tárol                                        |
-| **Miniatűr**             | 533x324 bitkép                                                               |
+| **Név**                  | Név vagy cím  <!-- TODO - max char length? -->                              |
+| **Hivatkozás**                  | Videó URL, házigazdája a YouTube-on vagy Vimeo                                        |
+| **Miniatűr**             | 533x324 bites kép                                                               |
 |   |   |
 
 ### <a name="logo-guidelines"></a>Emblémával kapcsolatos irányelvek
@@ -71,62 +70,62 @@ A következő táblázat a mezők célját és tartalmát ismerteti. A kötelez�
 <!-- TD: It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
-A Cloud Partner Portal feltöltött összes emblémának a következő irányelveket kell követnie:
+A Cloud Partner Portálra feltöltött összes emblémának követnie kell az alábbi irányelveket:
 
-*  Az Azure arculata egyszerű színpalettát használ. Tartsa meg az elsődleges és a másodlagos színek számát a logón.
-*  A Azure Portal téma színei fehérek és feketeok. Ezért ne használja ezeket a színeket a logók háttérszínéhez. Használjon olyan színt, amely a Azure Portalban Kiemelt emblémát tesz elérhetővé. Javasoljuk az egyszerű alapszínek használatát. Ha transzparens hátteret használ, ügyeljen arra, hogy a logók/szöveg ne legyen fehér vagy fekete vagy kék.
+*  Az Azure arculata egyszerű színpalettát használ. Alacsonyan tartsa az embléma elsődleges és másodlagos színeinek számát.
+*  Az Azure Portal témaszínei fehérek és feketék. Ezért ne használja ezeket a színeket, mint a háttér színe a logók. Használjon olyan színt, amely az emblémákat kiemelkedővé tenné az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát. Ha átlátszó hátteret használ, győződjön meg arról, hogy az emblémák/szövegek nem fehérek, nem feketék vagy kékek.
 *  Ne használjon színátmenetes hátteret az emblémán.
-*  A logón ne helyezzen el szöveget – még a vállalat vagy a márka nevét is –. Az embléma megjelenésének és működésének "Flat" típusúnak kell lennie, és el kell kerülnie a színátmeneteket.
-*  Ne nyújtsa az emblémát.
+*  Ne helyezzen szöveget – még a vállalatát vagy a márkanevét is – az emblémára. A logó megjelenésének és érzetének "laposnak" kell lennie, és kerülnie kell a színátmeneteket.
+*  Ne nyújtsa ki a logót.
 
 #### <a name="hero-logo"></a>Főképembléma
 
-A Hero embléma nem kötelező; feltöltés után azonban a Hero ikon nem törölhető.  A Hero embléma ikonjának a következő irányelveket kell követnie:
+A Hero embléma nem kötelező; a feltöltés után azonban a hős ikonja nem törölhető.  A Hero embléma ikonnak az alábbi irányelveket kell követnie:
 
-*  A fekete, fehér és transzparens hátterek nem engedélyezettek a Hero-ikonokhoz.
-*  Ne használjon világos színeket a Hero ikon hátterének.  A közzétevő megjelenítendő neve, a terv címe és az ajánlat hosszú összegzése fehér színű betűtípussal jelenik meg, és a háttérben kell állnia.
-*  Kerülje a legtöbb szöveg használatát a Hero embléma tervezésekor.  A közzétevő neve, a csomag címe, az ajánlat hosszú összegzése és a létrehozás gomb programozott módon van beágyazva a Hero ikonon belül az ajánlatok listájának megjelenítésekor. 
-* Vegyen fel egy fel nem használt téglalapot a hős ikon jobb oldalán, a méret 415x100 pixel és az eltolás 370 px a bal oldalon.  
+*  A hősikonok nem feltétlenül szerepelnek fekete, fehér és átlátszó hátterek.
+*  Ne használjon semmilyen világos színt a hős ikonjának háttereként.  A Publisher megjelenítendő neve, a terv címe és az ajánlat hosszú összegzése fehér betűszínnel jelenik meg, és a háttérben kell kitűnnie.
+*  A legtöbb szöveg et ne használja a hősembléma tervezése közben.  A közzétevő neve, a terv címe, az ajánlat hosszú összegzése és a létrehozás gomb programozott módon van beágyazva a hős ikonba, amikor az ajánlat felsorolja. 
+* A hős ikonjobb oldalán egy 415x100 képpont méretű, balról eltolású, 370 px-es eltolású téglalapot is felkell tüntetni.  
 
-A következő hős ikon például a Azure Container Service.  <!-- TD: It would be nice to have the raw bitmap, e.g.before and after embedding. -->
+Például a következő hős ikon az Azure Container Service.  <!-- TD: It would be nice to have the raw bitmap, e.g.before and after embedding. -->
 
-![Példa a Azure Container Service hős ikonjára](./media/publishvm_010.png)
-
-
-### <a name="marketing-information-example"></a>Marketing információ – példa 
-
-Az alábbi képen látható, hogyan jelennek meg a marketing adatai a Microsoft Windows Server fő termék lapján.
-
-![A Microsoft Windows Server termékének példája](./media/publishvm_011.png)
+![Példa az Azure Container Service hősikonjára](./media/publishvm_010.png)
 
 
-## <a name="lead-management-section"></a>Érdeklődői felügyelet szakasz
+### <a name="marketing-information-example"></a>Példa marketinginformációkra 
 
-A harmadik szakasz lehetővé teszi, hogy összegyűjtse az Azure Marketplace-ajánlatokból előállított ügyfeleket. A következő tárolási lehetőségeket kínálja (legördülő listából) ehhez az érdeklődői információhoz.
+Az alábbi kép bemutatja, hogyan jelennek meg a marketingadatok a Microsoft Windows Server fő terméklapján.
 
-* **Nincs** – az alapértékek nem lesznek begyűjtve.
-* Azure Table – a kapcsolódási karakterlánc által megadott Azure-táblába írva.
-* Dynamics CRM Online – az URL-cím és a hitelesítő adatok által megadott [Microsoft Dynamics 365 online](https://dynamics.microsoft.com/) példányra íródott.
-* HTTPS-végpont – a megadott HTTPS-végpontba írt JSON-adattartalomként.
-* Marketo – a megadott [Marketo](https://www.marketo.com/) -példányra íródik, amely a kiszolgáló azonosítója, a Munchkin azonosítója és az űrlap azonosítója alapján van megadva.
-* Salesforce – egy objektumazonosító által megadott [Salesforce](https://www.salesforce.com/) -adatbázisba írt.
+![Példa terméklap a Microsoft Windows Server rendszerhez](./media/publishvm_011.png)
 
-Az ajánlat sikeres közzététele után a rendszer érvényesíti az érdeklődői kapcsolatokat, és automatikusan elvégzi a tesztelési érdeklődők küldését a konfigurált célhelyre. Az érdeklődői adatokat folyamatosan kell felügyelni, és ezeket a beállításokat azonnal frissíteni kell, amikor módosításokat végeznek az ügyfél-felügyeleti architektúrán.
+
+## <a name="lead-management-section"></a>Érdeklődőkezelés szakasz
+
+A harmadik szakasz lehetővé teszi, hogy összegyűjtse az Azure Marketplace-ajánlatokból generált ügyfelek érdeklődőket. A következő tárolási lehetőségeket kínálja (legördülő listából) az érdeklődők adatait.
+
+* **Nincs** – az alapértelmezett érdeklődőadatok gyűjtése nem történik meg.
+* Azure Table – egy kapcsolati karakterlánc által meghatározott Azure-táblába írva.
+* Dynamics CRM Online – a [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/) példányba írva, url-cím és hitelesítési hitelesítő adatok által megadva.
+* HTTPS-végpont – json-tartalomként a megadott HTTPS-végpontra íródott.
+* Marketo - a megadott [Marketo](https://www.marketo.com/) példányra írva, amelyet a kiszolgálóazonosító, a munchkin-azonosító és az űrlapazonosító határoz meg.
+* Salesforce – egy objektumazonosítóval megadott [Salesforce-adatbázisba](https://www.salesforce.com/) írva.
+
+Az ajánlat sikeres közzététele után a rendszer érvényesíti az érdeklődőkapcsolatot, és automatikusan elküldi a tesztérdeklődőt a beállított célhelyre. Az érdeklődőadatokat folyamatosan kell kezelni, és ezeket a beállításokat azonnal frissíteni kell, amikor az ügyfélkezelési architektúrán módosításokat hajt végre.
 
 <!-- TD: For more info, see [Need a topic on lead information and processing that mimics the Appendix of the VM Pub Guide]. -->
 
 ## <a name="legal-section"></a>Jogi szakasz
 
-Ez az utolsó szakasz lehetővé teszi az egyes ajánlatokhoz szükséges jogi dokumentumok megadását.  
+Ez az utolsó szakasz lehetővé teszi, hogy az egyes ajánlathoz szükséges jogi dokumentumokat biztosítsa.  
 
 |  **Mező**                    |     **Leírás**                                        |
 |  ---------                    |     ---------------                                        |
-| **Adatvédelmi szabályzat URL-címe\***      | A közzétett adatvédelmi szabályzat URL-címe                          |
-| **Standard szintű szerződést használ?\***  |   |
-| **Használati feltételek\***            | házirend egyszerű szövegként vagy egyszerű HTML-ként.                       |
+| **Adatvédelmi irányelvek URL-címe\***      | A közzétett adatvédelmi irányelvek URL-címe                          |
+| **Használja a normál szerződést?\***  |   |
+| **Használati feltételek\***            | egyszerű szövegként vagy egyszerű HTML-kódként.                       |
 |  |  |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő [támogatás](./cpp-support-tab.md) lapon technikai és felhasználói támogatási forrásokat fog biztosítani az ajánlatához.
+A következő [Támogatás](./cpp-support-tab.md) lapon technikai és felhasználói támogatási erőforrásokat biztosít az ajánlathoz.

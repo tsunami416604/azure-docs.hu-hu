@@ -12,17 +12,17 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47bd3b5da79bdb9c7dca75d521aa39d3652ab1ab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282120"
 ---
-# <a name="what-are-managed-identities-for-azure-resources"></a>Mik azok az Azure-erőforrások felügyelt identitásai?
+# <a name="what-are-managed-identities-for-azure-resources"></a>Mik az Azure-erőforrások felügyelt identitások?
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -37,20 +37,20 @@ Az Azure-erőforrások felügyelt identitásai szolgáltatás ingyenesen haszná
 
 ## <a name="terminology"></a>Terminológia
 
-Az Azure-erőforrások dokumentációs készletének összes felügyelt identitása a következő feltételekkel használható:
+A következő kifejezések et az Azure-erőforrások dokumentációkészletének felügyelt identitásai ban használjuk:
 
-- **Ügyfél-azonosító** – az Azure ad által generált egyedi azonosító, amely egy alkalmazáshoz és egyszerű szolgáltatáshoz van kötve a kezdeti kiépítés során.
-- **Elsődleges azonosító** – a felügyelt identitáshoz tartozó egyszerű szolgáltatásnév, amely az Azure-erőforrásokhoz való szerepköralapú hozzáférés biztosítására szolgál.
-- **Azure instance metadata Service (IMDS)** – egy Rest-végpont elérhető minden, a Azure Resource Manager használatával létrehozott IaaS-virtuális gép számára. A végpont egy jól ismert, nem irányítható IP-címen (169.254.169.254) érhető el, amely csak a virtuális gépről érhető el.
+- **Ügyfélazonosító** – az Azure AD által létrehozott egyedi azonosító, amely a kezdeti kiépítés során egy alkalmazáshoz és egyszerű szolgáltatáshoz van kötve.
+- **Egyszerű azonosító** – a felügyelt identitás egyszerű szolgáltatásobjektumának objektumazonosítója, amely szerepköralapú hozzáférést biztosít egy Azure-erőforráshoz.
+- **Azure Instance metaadat-szolgáltatás (IMDS)** – egy REST-végpont érhető el az Azure Resource Manager en keresztül létrehozott összes IaaS virtuális gépek. A végpont egy jól ismert, nem irányítható IP-címen érhető el (169.254.169.254), amely csak a virtuális gépen belül érhető el.
 
-## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Hogyan működik az Azure-erőforrások felügyelt identitásai?
+## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Hogyan működnek az Azure-erőforrások felügyelt identitásai?
 
 A felügyelt identitásoknak két típusa létezik:
 
 - A **rendszer által hozzárendelt felügyelt identitás** közvetlenül egy Azure-beli szolgáltatáspéldányon van engedélyezve. Az identitás engedélyezésekor az Azure létrehoz egy identitást a példány számára a példány előfizetése által megbízhatónak tekintett Azure AD-bérlőn. Az identitás létrehozása után a rendszer hozzárendeli a hitelesítő adatokat a példányon. A rendszer által hozzárendelt identitás életciklusa közvetlenül kötődik ahhoz az Azure-beli szolgáltatáspéldányhoz, amelyen engedélyezve van. A példány törlésekor az Azure automatikusan törli a hitelesítő adatokat és az identitást az Azure AD-ben.
 - A **felhasználó által hozzárendelt felügyelt identitás** különálló Azure-erőforrásként jön létre. Egy létrehozási folyamaton keresztül az Azure létrehoz egy identitást a használt előfizetés által megbízhatónak tekintett Azure AD-bérlőn. Az identitás a létrehozását követően hozzárendelhető egy vagy több Azure-beli szolgáltatáspéldányhoz. A felhasználó által hozzárendelt identitások életciklusa külön van kezelve azon Azure-beli szolgáltatáspéldányokétól, amelyekhez hozzá lettek rendelve.
 
-Belsőleg a felügyelt identitások olyan speciális típusú szolgáltatások, amelyek csak az Azure-erőforrásokkal való használatra vannak zárolva. A felügyelt identitás törlése után a rendszer automatikusan eltávolítja a megfelelő egyszerű szolgáltatást.
+Belsőleg felügyelt identitások egy speciális típusú szolgáltatásnév, amely zárolva van, hogy csak azure-erőforrásokkal használható. A felügyelt identitás törlésekor a megfelelő egyszerű szolgáltatás automatikusan törlődik.
 
 A kód a felügyelt identitások használatával hozzáférési jogkivonatokat igényelhet az Azure AD-hitelesítést támogató szolgáltatásokhoz. Az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok biztosításáról.
 
@@ -58,12 +58,12 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 ![Felügyeltszolgáltatás-identitások és Azure-beli virtuális gépek](media/overview/data-flow.png)
 
-|  Tulajdonság    | Rendszer által hozzárendelt felügyelt identitás | Felhasználó által hozzárendelt felügyelt identitás |
+|  Tulajdonság    | Rendszerhez rendelt felügyelt identitás | Felhasználó által hozzárendelt felügyelt identitás |
 |------|----------------------------------|--------------------------------|
-| Létrehozása |  Azure-erőforrás részeként létrehozva (például egy Azure-beli virtuális gép vagy Azure App Service) | Önálló Azure-erőforrásként létrehozva |
-| Életciklus | Megosztott életciklus az Azure-erőforrással, amelyet a felügyelt identitás létrehoz. <br/> A fölérendelt erőforrás törlésekor a felügyelt identitás is törlődik. | Független életciklus. <br/> Explicit módon törölni kell. |
-| Megosztás az Azure-erőforrások között | Nem osztható meg. <br/> Csak egyetlen Azure-erőforráshoz társítható. | Megosztható <br/> Ugyanaz a felhasználó által hozzárendelt felügyelt identitás több Azure-erőforráshoz is társítható. |
-| Gyakori használati helyzetek | Egyetlen Azure-erőforráson belül található munkaterhelések <br/> Olyan munkaterhelések, amelyekhez független identitásokra van szükség. <br/> Például egyetlen virtuális gépen futó alkalmazás | Több erőforráson futó munkaterhelések, amelyek egyetlen identitást is megoszthatnak. <br/> Olyan munkaterhelések, amelyeknek a létesítési folyamat részeként meg kell adni a biztonságos erőforráshoz való előzetes engedélyezést. <br/> Olyan munkaterhelések, amelyekben az erőforrások gyakran újrahasznosíthatók, de az engedélyek konzisztensek maradnak. <br/> Például egy olyan munkaterhelés, amelyben több virtuális gépnek is hozzá kell férnie ugyanahhoz az erőforráshoz |
+| Létrehozás |  Egy Azure-erőforrás (például egy Azure-virtuális gép vagy az Azure App Service) részeként létrehozva | Önálló Azure-erőforrásként létrehozva |
+| Életciklus | Megosztott életciklus az Azure-erőforrással, amelyhez a felügyelt identitás létrejön. <br/> A szülőerőforrás törlésekor a felügyelt identitás is törlődik. | Független életciklus. <br/> Explicit módon törölni kell. |
+| Megosztás az Azure-erőforrások között | Nem osztható meg. <br/> Csak egyetlen Azure-erőforrással társítható. | Megosztható <br/> Ugyanazt a felhasználó által hozzárendelt felügyelt identitást több Azure-erőforráshoz is társíthatja. |
+| Gyakori használati helyzetek | Egyetlen Azure-erőforrásban található számítási feladatok <br/> Olyan számítási feladatok, amelyekhez független identitásokra van szükség. <br/> Például egy egyetlen virtuális gépen futó alkalmazás | Olyan számítási feladatok, amelyek több erőforráson futnak, és amelyek egyetlen identitást oszthatnak meg. <br/> Olyan számítási feladatok, amelyek egy kiépítési folyamat részeként előzetes engedélyezést igényelnek egy biztonságos erőforráshoz. <br/> Olyan számítási feladatok, ahol az erőforrásokat gyakran újrahasznosítják, de az engedélyeknek konzisztenseknek kell maradniuk. <br/> Például egy olyan számítási feladat, ahol több virtuális gépnek kell elérnie ugyanazt az erőforrást |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Hogyan működnek együtt a rendszer által hozzárendelt felügyelt identitások az Azure-beli virtuális gépekkel?
 
@@ -71,11 +71,11 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 2. Az Azure Resource Manager létrehoz egy szolgáltatásnevet az Azure AD-ben a virtuális gép identitása számára. A szolgáltatásnév az előfizetés által megbízhatónak tekintett Azure AD-bérlőn jön létre.
 
-3. Azure Resource Manager úgy konfigurálja az identitást a virtuális gépen, hogy az Azure Instance Metadata Service Identity végpontot az egyszerű szolgáltatás ügyfél-azonosítójával és tanúsítvánnyal frissíti.
+3. Az Azure Resource Manager konfigurálja az identitást a virtuális gép en az Azure Instance metaadat-szolgáltatás identitásvégpontjának frissítésével az egyszerű szolgáltatásügyfél-azonosítóval és tanúsítvánnyal.
 
 4. Miután a virtuális gép már rendelkezik identitással, a szolgáltatásnév-adatok használatával biztosítson hozzáférést a virtuális gépnek az Azure-erőforrásokhoz. Az Azure Resource Manager meghívásához szerepköralapú hozzáférés-vezérlés (RBAC) használatával rendelje hozzá a megfelelő szerepkört a virtuális gép szolgáltatásnevéhez az Azure AD-ben. A Key Vault meghívásához adjon hozzáférést a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
 
-5. A virtuális gépen futó kód az Azure-példány metaadatainak szolgáltatási végpontján igényelhet tokent, amely csak a virtuális gépről érhető el: `http://169.254.169.254/metadata/identity/oauth2/token`
+5. A virtuális gépen futó kód jogkivonatot kérhet az Azure Instance metaadatszolgáltatás-végpontjáról, amely csak a virtuális gépből érhető el:`http://169.254.169.254/metadata/identity/oauth2/token`
     - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Az Azure Resource Manager hitelesítéséhez használja a `resource=https://management.azure.com/` paramétert.
     - Az API version (API-verzió) paraméter adja meg az IMDS-verziót – használja az api-version=2018-02-01, vagy egy nagyobb értéket.
 
@@ -89,14 +89,14 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 2. Az Azure Resource Manager létrehoz egy szolgáltatásnevet az Azure AD-ben a felhasználó által hozzárendelt felügyelt identitás számára. A szolgáltatásnév az előfizetés által megbízhatónak tekintett Azure AD-bérlőn jön létre.
 
-3. A Azure Resource Manager kérést kap a felhasználó által hozzárendelt felügyelt identitás konfigurálására egy virtuális gépen, és frissíti az Azure Instance Metadata Service Identity végpontot a felhasználó által hozzárendelt felügyelt identitási szolgáltatás egyszerű ügyfelének azonosítójával és tanúsítványával.
+3. Az Azure Resource Manager kap egy kérést, hogy konfigurálja a felhasználó által kijelölt felügyelt identitás egy virtuális gép, és frissíti az Azure-példány metaadat-szolgáltatás identitásvégponta a felhasználó által hozzárendelt felügyelt identitásszolgáltatás első ügyfélazonosítóés tanúsítvány.
 
 4. Miután a felhasználó által hozzárendelt felügyelt identitás létrejött, a szolgáltatásnév-adatok használatával biztosítson hozzáférést az identitásnak az Azure-erőforrásokhoz. Az Azure Resource Manager meghívásához szerepköralapú hozzáférés-vezérlés (RBAC) használatával rendelje hozzá a megfelelő szerepkört a felhasználó által hozzárendelt identitás szolgáltatásnevéhez az Azure AD-ben. A Key Vault meghívásához adjon hozzáférést a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
 
    > [!Note]
    > Ezt a lépést a 3. lépés előtt is végrehajthatja.
 
-5. A virtuális gépen futó kód az Azure Instance Metadata Service Identity végponttól kérhet jogkivonatot, amely csak a virtuális gépről érhető el: `http://169.254.169.254/metadata/identity/oauth2/token`
+5. A virtuális gépen futó kód jogkivonatot kérhet az Azure Instance metaadat-szolgáltatás identitásának végpontjáról, amely csak a virtuális gépről érhető el:`http://169.254.169.254/metadata/identity/oauth2/token`
     - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Az Azure Resource Manager hitelesítéséhez használja a `resource=https://management.azure.com/` paramétert.
     - A client ID (ügyfél-azonosító) paraméter határozza meg azt az identitást, amely számára a hozzáférési jogkivonat kérvényezve lett. Ez az érték akkor szükséges egyértelműsítés céljából, ha egyazon virtuális gépen több felhasználó által hozzárendelt identitás is létezik.
     - Az API version (API verziója) paraméter az Azure Instance Metadata szolgáltatás verzióját adja meg. Használja a(z) `api-version=2018-02-01` vagy újabb verziót.
@@ -109,7 +109,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 A különféle Azure-erőforrások felügyelt identitással való elérésének megismeréséért tekintse át az alábbi oktatóanyagokat.
 
 > [!NOTE]
-> Tekintse át a [felügyelt identitások megvalósítása a Microsoft Azure erőforrásokhoz](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing) című témakört, ahol további információt talál a felügyelt identitásokról, beleértve a számos támogatott forgatókönyv részletes videós bemutatóit.
+> A felügyelt identitásokról, köztük számos támogatott forgatókönyv részletes videóforgatókönyvéről a Microsoft Azure Resources-hez felügyelt [identitások megvalósítása](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing) tanfolyamcímű webhelyen talál további információt.
 
 Útmutató a felügyelt identitások használatához Windows rendszerű virtuális gépeken:
 
@@ -122,7 +122,7 @@ A különféle Azure-erőforrások felügyelt identitással való elérésének 
 
 Útmutató a felügyelt identitások használatához Linux rendszerű virtuális gépeken:
 
-* [Hozzáférés Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
+* [Hozzáférés az Azure Container Registryhez](../../container-registry/container-registry-authentication-managed-identity.md)
 * [Az Azure Data Lake Store elérése](tutorial-linux-vm-access-datalake.md)
 * [Az Azure Resource Manager elérése](tutorial-linux-vm-access-arm.md)
 * [Az Azure Storage elérése hozzáférési kulcs használatával](tutorial-linux-vm-access-storage.md)
@@ -134,16 +134,16 @@ A különféle Azure-erőforrások felügyelt identitással való elérésének 
 * [Azure App Service](/azure/app-service/overview-managed-identity)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
-* [Azure Container Registry feladatok](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
+* [Azure Container Registry Tasks](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
 * [Azure Event Hubs](../../event-hubs/authenticate-managed-identity.md)
 * [Azure Functions](/azure/app-service/overview-managed-identity)
 * [Azure Kubernetes Service](/azure/aks/use-managed-identity)
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
 * [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure Data Factory](../../data-factory/data-factory-service-identity.md)
+* [Azure-adatgyár](../../data-factory/data-factory-service-identity.md)
 
 
-## Mely Azure-szolgáltatások támogatják a szolgáltatást?<a name="which-azure-services-support-managed-identity"></a>
+## <a name="what-azure-services-support-the-feature"></a>Mely Azure-szolgáltatások támogatják a szolgáltatást?<a name="which-azure-services-support-managed-identity"></a>
 
 Az Azure-erőforrások felügyelt identitásai használatával hitelesítést végezhet az Azure AD-hitelesítést támogató szolgáltatásokban. Az Azure-erőforrások felügyelt identitásai szolgáltatást támogató Azure-szolgáltatások listájáért lásd [az Azure-erőforrások felügyelt identitásait támogató szolgáltatásokkal](services-support-msi.md) foglalkozó részt.
 

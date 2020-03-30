@@ -1,81 +1,80 @@
 ---
-title: Technikai eszközök létrehozása virtuálisgép-ajánlathoz az Azure Marketplace-en
-description: A cikk azt ismerteti, hogyan hozhat létre egy virtuálisgép-ajánlathoz tartozó technikai eszközöket az Azure piactéren.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Technikai eszközök létrehozása az Azure Piactér virtuálisgép-ajánlatához
+description: Bemutatja, hogyan hozhat létre technikai eszközöket egy virtuálisgép-ajánlathoz az Azure Marketplace-en.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: pabutler
-ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824515"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278024"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Technikai eszközök létrehozása virtuálisgép-ajánlathoz
 
-Ez a szakasz végigvezeti az Azure Marketplace-hez készült virtuálisgép-(VM-) ajánlat technikai eszközeinek létrehozásán és konfigurálásán.  A virtuális gép két összetevőt tartalmaz: a megoldás virtuális merevlemezét (VHD) és opcionálisan kapcsolódó adatlemezeket.  
+Ez a szakasz bemutatja az Azure Piactér virtuális gép (VM) technikai eszközeinek létrehozását és konfigurálását.  A virtuális gép két összetevőt tartalmaz: a megoldás virtuális merevlemez (VHD) és a választható kapcsolódó adatlemezek.  
 
-- A *virtuális merevlemezek (VHD-k)* , amely tartalmazza az operációs rendszert és a megoldást, amelyet az Azure Marketplace-ajánlatával fog üzembe helyezni. A VHD előkészítési folyamata attól függően eltérő, hogy Linux-alapú, Windows-alapú vagy egyéni virtuális gép-e.
-- Az *adatlemezek* dedikált, állandó tárterületet jelentenek a virtuális gépek számára. Ne *használja a* megoldás VHD-jét (például a `C:` meghajtót) az állandó információk tárolásához.
+- *Virtuális merevlemezek (VHDs),* amely tartalmazza az operációs rendszer és a megoldás, amely az Azure Marketplace-ajánlattal telepíti. A virtuális merevlemez előkészítésének folyamata attól függően változik, hogy Linux-alapú, Windows-alapú vagy egyéni virtuális gépről van-e szó.
+- *Az adatlemezek* dedikált, állandó tárolót jelentenek egy virtuális gép számára. *Ne* használja a megoldás Virtuális merevlemez `C:` (például a meghajtó) tartós adatok tárolására.
 
-A virtuálisgép-lemezképek egy operációsrendszer-lemezt és nulla vagy több adatlemezt tartalmaznak. Lemezenként egy virtuális merevlemezre van szükség. Még az üres adatlemezek létrehozásához virtuális merevlemez szükséges.
-Konfigurálnia kell a virtuális gép operációs rendszerét, a virtuális gép méretét, a megnyitni kívánt portokat és legfeljebb 15 csatlakoztatott adatlemezt.
+A virtuális géplemez egy operációsrendszer-lemezt és nulla vagy több adatlemezt tartalmaz. Lemezenként egy virtuális merevlemezszükséges. Még az üres adatlemezek hez is létre kell hozni egy virtuális merevlemezt.
+Konfigurálnia kell a virtuális gép operációs rendszert, a virtuális gép méretét, a megnyitáshoz a portokat és legfeljebb 15 csatolt adatlemezt.
 
 > [!TIP] 
-> A használt operációs rendszertől függetlenül csak a minimális számú adatlemez szükséges a termékváltozathoz. Az ügyfelek nem tudják eltávolítani a rendszerkép részét képező lemezeket az üzembe helyezéskor, de mindig hozzáadhatnak lemezeket az üzembe helyezés során vagy azt követően is. 
+> Függetlenül attól, hogy melyik operációs rendszert használja, csak a termékváltozat számára szükséges minimális adatlemezek et adja hozzá. Az ügyfelek nem tudják eltávolítani azokat a lemezeket, amelyek a lemezkép részét képezik a telepítés időpontjában, de a telepítés során vagy azt követően bármikor hozzáadhatnak lemezeket. 
 
 > [!IMPORTANT]
-> *Ne változtassa meg a lemezek darabszámát egy új rendszerkép-verzióban.* Ha újra kell konfigurálnia az adatlemezeket a rendszerképben, adjon meg egy új SKU-t. A különböző lemezekkel rendelkező új lemezképek közzétételének lehetősége lesz az új központi telepítés feltörésére az új lemezkép verziója alapján, az automatikus skálázás, a megoldások automatikus központi telepítése Azure Resource Manager sablonokon és más forgatókönyveken keresztül.
+> *Ne módosítsa a lemezszámot új lemezverzióban.* Ha újra kell konfigurálnia az adatlemezeket a lemezképben, adjon meg egy új termékváltozatot. Egy új lemezszámmal rendelkező új lemezverzió közzététele az új lemezverzión alapuló új központi telepítés megbontásával járhat automatikus skálázás, a megoldások Azure Resource Manager-sablonokon és más forgatókönyveken keresztül történő automatikus üzembe helyezése esetén.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="fundamental-technical-knowledge"></a>Alapvető műszaki ismeretek
 
-Ezeknek az eszközöknek a tervezése, fejlesztése és tesztelése időt vesz igénybe, és technikai ismeretekre van szüksége az Azure platformról és az ajánlat létrehozásához használt technológiákról. A megoldás tartományán kívül a mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat: 
--   Az Azure- [szolgáltatások](https://azure.microsoft.com/services/) alapszintű ismertetése 
--   [Azure-alkalmazások tervezése és Architect](https://azure.microsoft.com/solutions/architecture/)
--   Az [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), az [Azure Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking](https://azure.microsoft.com/services/?filter=networking) együttműködésének ismerete
--   [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) működésének ismerete
--   A [JSON](https://www.json.org/) működésének ismerete
+Ezeknek az eszközöknek a tervezése, létrehozása és tesztelése időt vesz igénybe, és mind az Azure platform, mind az ajánlat létrehozásához használt technológiák műszaki ismerete szükséges. A megoldástartománymellett a mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat: 
+-   Az [Azure-szolgáltatások](https://azure.microsoft.com/services/) alapvető ismerete 
+-   [Azure-alkalmazások tervezése és megtervezése](https://azure.microsoft.com/solutions/architecture/)
+-   Az [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), az Azure [Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking munkaismerete](https://azure.microsoft.com/services/?filter=networking)
+-   Az [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) munkaismerete
+-   A [JSON](https://www.json.org/) munkaismerete
 
 
 ## <a name="suggested-tools"></a>Javasolt eszközök 
 
-A VHD-k és virtuális gépek kezeléséhez a következő parancsfájl-környezetek közül választhat:
+Válassza ki az alábbi parancsfájlok futtatásához tervezett környezetek egyikét vagy mindkettőt a virtuális gépek és a virtuális gépek kezeléséhez:
 -   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 -   [Azure CLI](https://docs.microsoft.com/cli/azure)
 
-Emellett javasoljuk a következő eszközök hozzáadását a fejlesztői környezethez: 
+Ezenkívül azt javasoljuk, hogy adja hozzá a következő eszközöket a fejlesztői környezethez: 
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Kiterjesztés: [SZÉPÍT JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-   [Visual Studio kód](https://code.visualstudio.com/)
+    *   Bővítmény: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Kiterjesztés: [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Kiterjesztés: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-Javasoljuk továbbá, hogy tekintse át az [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/) oldalon elérhető eszközöket, és ha a Visual studiót használja, a [Visual Studio Marketplace](https://marketplace.visualstudio.com/)-en.
+Javasoljuk továbbá, hogy tekintse át a rendelkezésre álló eszközöket az [Azure Developer Tools](https://azure.microsoft.com/tools/) lapon, és ha a Visual Studio t használja, a Visual Studio [Piacteret.](https://marketplace.visualstudio.com/)
 
 
 ## <a name="next-steps"></a>További lépések
 
-A jelen szakasz következő cikkei végigvezetik a virtuálisgép-eszközök létrehozásának és regisztrálásának lépésein:
+Ebben a szakaszban az alábbi cikkek végigvezeti kutatja a virtuális gép eszközök létrehozásának és regisztrálásának lépéseit:
 
-1. [Azure-kompatibilis virtuális merevlemez létrehozása](./cpp-create-vhd.md) azt ismerteti, hogyan hozható létre az Azure-kompatibilis Linux-vagy Windows-alapú vhd-fájl.  Ide tartozik az ajánlott eljárások, például a méretezés, a javítások és a virtuális gép előkészítése a feltöltéshez.
+1. [Hozzon létre egy Azure-kompatibilis virtuális merevlemezt,](./cpp-create-vhd.md) amely bemutatja, hogyan hozhat létre az Azure-ral kompatibilis Linux- vagy Windows-alapú virtuális merevlemezt.  Ez magában foglalja az ajánlott eljárásokat, például a méretezés, javítás és a virtuális gép feltöltésre való előkészítése.
 
-2. [A virtuális géphez való kapcsolódás](./cpp-connect-vm.md) elmagyarázza, hogyan csatlakozhat távolról az újonnan létrehozott virtuális géphez, és hogyan jelentkezhet be.  A cikk azt is ismerteti, hogyan állíthatja le a virtuális gépet a használati költségekre való mentéshez.
+2. [Csatlakozzon a virtuális géphez](./cpp-connect-vm.md) elmagyarázza, hogyan csatlakozhat távolról az újonnan létrehozott virtuális géphez, és jelentkezzen be.  Ez a cikk azt is ismerteti, hogyan állíthatja le a virtuális gép a használati költségek megtakarítása érdekében.
 
-3. [A virtuális gép konfigurálása](./cpp-configure-vm.md) elmagyarázza, hogyan válassza ki a megfelelő VHD-méretet, általánosítsa a lemezképet, alkalmazza a legutóbbi frissítéseket (javítások), és ütemezze az egyéni konfigurációkat.
+3. [Konfigurálja a virtuális gépet,](./cpp-configure-vm.md) amely bemutatja, hogyan kell kiválasztani a megfelelő virtuális merevlemez méretét, általánosítani a lemezképet, alkalmazni a legújabb frissítéseket (javításokat) és egyéni konfigurációkat ütemezni.
 
-4. [Virtuális gép üzembe helyezése virtuális merevlemezről](./cpp-deploy-vm-vhd.md) : elmagyarázza, hogyan regisztrálhat egy virtuális gépet egy Azure-beli üzembe helyezett VHD-ről.  Felsorolja a szükséges eszközöket, valamint azt, hogy miként használhatók a felhasználói virtuálisgép-lemezképek létrehozásához, majd az [Microsoft Azure Portal](https://ms.portal.azure.com/) -vagy PowerShell-parancsfájlok használatával üzembe helyezhetők az Azure-ban. 
+4. [Virtuális gép üzembe helyezése virtuális merevlemezről](./cpp-deploy-vm-vhd.md) elmagyarázza, hogyan regisztrálhat virtuális gépet egy Azure által telepített virtuális merevlemezről.  Felsorolja a szükséges eszközöket, és hogyan használhatja őket egy felhasználói virtuálisgép-lemezkép létrehozásához, majd üzembe helyezheti azt az Azure-ba a [Microsoft Azure Portalon](https://ms.portal.azure.com/) vagy a PowerShell-parancsfájlok használatával. 
 
-5. [A virtuális gép rendszerképének](./cpp-certify-vm.md) tanúsítása elmagyarázza, hogyan tesztelheti és küldheti el az Azure Marketplace minősítéshez készült virtuálisgép-rendszerképet. Ismerteti, hogy hol szerezhető be a *minősítési teszt eszköz az Azure Certified* eszközhöz, és hogyan használható az eszköz a virtuálisgép-rendszerkép tanúsítására. 
+5. [A virtuálisgép-lemezkép hitelesítése](./cpp-certify-vm.md) ismerteti, hogyan tesztelheti és küldheti el a virtuális géplemezképét az Azure Marketplace-tanúsítványhoz. Bemutatja, hogy hol szerezheti be az Azure Certified eszköz *minősítési teszteszközét,* és hogyan használhatja ezt az eszközt a virtuális gép lemezképének hitelesítéséhez. 
 
-6. Az [sas URI beszerzése](./cpp-get-sas-uri.md) című cikk azt ismerteti, hogyan kérhető le a virtuálisgép-rendszerkép (ek) közös hozzáférésű aláírási (SAS) URI-ja.
+6. [A SAS URI-k lekérnie](./cpp-get-sas-uri.md) a közös hozzáférésű hozzáférési aláírás (SAS) URI-ját a virtuális gép lemezkép(ek) számára.
  
-A [közös hozzáférés-aláírási URL-címmel kapcsolatos gyakori](./cpp-common-sas-url-issues.md) problémák felsorolják az SAS URI-k és a hozzájuk tartozó lehetséges megoldások használata során felmerülő gyakori problémákat.
+Támogató cikkként [a közös megosztott hozzáférésű aláírás URL-címével kapcsolatos problémák](./cpp-common-sas-url-issues.md) felsorolnak néhány gyakori problémát, amelyekkel a SAS URI-k és a megfelelő lehetséges megoldások használatával találkozhat.
 
-Az összes lépés elvégzése után készen áll a VM- [ajánlat közzétételére](./cpp-publish-offer.md) az Azure Marketplace-en.
+Miután elvégezte ezeket a lépéseket, készen áll a [virtuális gép ajánlatának közzétételére](./cpp-publish-offer.md) az Azure Marketplace-en.

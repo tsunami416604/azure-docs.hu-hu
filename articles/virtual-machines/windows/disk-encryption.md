@@ -1,6 +1,6 @@
 ---
-title: Az Azure Managed Disks kiszolgálóoldali titkosítása – PowerShell
-description: Az Azure Storage védi az adatait úgy, hogy titkosítja a nyugalmát, mielőtt megőrzi azt a Storage-fürtökön. A felügyelt lemezek titkosításához a Microsoft által felügyelt kulcsokat használhatja, vagy az ügyfél által felügyelt kulcsokkal kezelheti a titkosítást a saját kulcsaival.
+title: Az Azure felügyelt lemezeinek kiszolgálóoldali titkosítása – PowerShell
+description: Az Azure Storage védi az adatokat az inaktív titkosítással, mielőtt a Storage-fürtök. A felügyelt lemezek titkosításához a Microsoft által felügyelt kulcsokra támaszkodhat, vagy az ügyfél által felügyelt kulcsok segítségével kezelheti a titkosítást a saját kulcsaival.
 author: roygara
 ms.date: 03/12/2020
 ms.topic: conceptual
@@ -8,55 +8,55 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: 0541b12d73cc5b5f7fdf713c759069e2ecbd8c18
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299631"
 ---
-# <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
+# <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure által kezelt lemezek kiszolgálóoldali titkosítása
 
-Az Azure Managed Disks szolgáltatás alapértelmezés szerint automatikusan titkosítja az adatait, amikor a felhőbe tart. A kiszolgálóoldali titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure Managed Disks szolgáltatásban tárolt adatforgalom transzparens módon, 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), az egyik legerősebb blokk titkosítási algoritmussal, valamint az FIPS 140-2-kompatibilis.
+Az Azure által kezelt lemezek alapértelmezés szerint automatikusan titkosítják az adatokat, amikor a felhőben megőrzik azokat. A kiszolgálóoldali titkosítás védi az adatokat, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure-ban kezelt lemezeken lévő adatok transzparens módon vannak titkosítva 256 bites [AES titkosítással,](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)amely az egyik legerősebb rendelkezésre álló blokktitkosítás, és fips 140-2-kompatibilis.
 
-A titkosítás nem befolyásolja a felügyelt lemezek teljesítményét. A titkosításhoz nem jár további díj.
+A titkosítás nincs hatással a felügyelt lemezek teljesítményére. A titkosításnak nincs további költsége.
 
-Az Azure Managed Disks mögöttes titkosítási modulokkal kapcsolatos további információkért lásd: a [kriptográfiai API: következő generáció](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+Az Azure által felügyelt lemezek alapjául szolgáló kriptográfiai modulokról a [Kriptográfiai API: Következő generáció című](https://docs.microsoft.com/windows/desktop/seccng/cng-portal) témakörben talál további információt.
 
-## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
+## <a name="about-encryption-key-management"></a>Titkosítási kulcs kezelése –
 
-A felügyelt lemez titkosításához a platform által felügyelt kulcsokat használhatja, vagy a titkosítást saját kulcsok használatával is kezelheti. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhat egy *ügyfél által felügyelt kulcsot* , amelyet a felügyelt lemezeken lévő összes érték titkosítására és visszafejtésére használhat. 
+A felügyelt lemez titkosításához platformáltal kezelt kulcsokra támaszkodhat, vagy saját kulcsokkal kezelheti a titkosítást. Ha úgy dönt, hogy a titkosítást saját kulcsaival kezeli, megadhatja az *ügyfél által felügyelt kulcsot,* amelyet a felügyelt lemezek összes adatának titkosításához és visszafejtéséhez használhat. 
 
-A következő szakaszok részletesebben ismertetik a kulcskezelő lehetőségeit.
+A következő szakaszok részletesebben ismertetik a kulcskezelés egyes lehetőségeit.
 
-## <a name="platform-managed-keys"></a>Platform által felügyelt kulcsok
+## <a name="platform-managed-keys"></a>Platform által kezelt kulcsok
 
-Alapértelmezés szerint a felügyelt lemezek platform által felügyelt titkosítási kulcsokat használnak. 2017. június 10-én a meglévő felügyelt lemezekre írt összes új felügyelt lemez, pillanatkép, kép és új adatok automatikusan titkosítva vannak a platform által felügyelt kulcsokkal.
+Alapértelmezés szerint a felügyelt lemezek platformáltal felügyelt titkosítási kulcsokat használnak. 2017. június 10-ig minden új felügyelt lemez, pillanatkép, lemezkép és új, meglévő felügyelt lemezekre írt adat automatikusan titkosítva lesz a platform által felügyelt kulcsokkal.
 
 ## <a name="customer-managed-keys"></a>Felhasználó által kezelt kulcsok
 
-Az egyes felügyelt lemezek szintjén is kezelheti a titkosítást a saját kulcsaival. Az ügyfél által felügyelt kulcsokkal rendelkező felügyelt lemezek kiszolgálóoldali titkosítása integrált élményt nyújt a Azure Key Vault. Importálhatja az [RSA-kulcsokat](../../key-vault/key-vault-hsm-protected-keys.md) a Key Vault, vagy LÉTREHOZHAT új RSA-kulcsokat Azure Key Vault. Az Azure Managed Disks a titkosítást és a visszafejtést teljes mértékben átlátható módon kezeli a [boríték-titkosítás](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)használatával. Titkosítja az adatait egy [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256-alapú adattitkosítási kulccsal (adattitkosítási kulcsot), amely viszont a kulcsok használatával védett. Hozzáférést kell biztosítania a Key Vault felügyelt lemezéhez, hogy a kulcsokat a ADATTITKOSÍTÁSI kulcsot titkosítására és visszafejtésére használja. Ez lehetővé teszi, hogy teljes körűen vezérelje adatait és kulcsait. Bármikor letilthatja a kulcsokat, vagy visszavonhatja a hozzáférést a felügyelt lemezekhez. A titkosítási kulcs használatát Azure Key Vault figyeléssel is naplózhatja, így biztosítva, hogy csak a felügyelt lemezek vagy más megbízható Azure-szolgáltatások férhessenek hozzá a kulcsokhoz.
+A titkosítást kezelheti az egyes felügyelt lemezek szintjén, a saját kulcsaival. Az ügyfél által felügyelt kulcsokkal rendelkező felügyelt lemezek kiszolgálóoldali titkosítása integrált élményt nyújt az Azure Key Vault szolgáltatással. Importálhatja [az RSA-kulcsokat a](../../key-vault/key-vault-hsm-protected-keys.md) Key Vaultba, vagy új RSA-kulcsokat hozhat létre az Azure Key Vaultban. Az Azure által kezelt lemezek a titkosítást és a visszafejtést teljes mértékben átlátható módon kezelik [a borítéktitkosítás használatával.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Az adatokat [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 alapú adattitkosítási kulccsal (DEK) titkosítja, amely viszont a kulcsokkal védett. A dek titkosításához és visszafejtéséhez hozzáférést kell biztosítania a key vaultban lévő felügyelt lemezekhez. Ez lehetővé teszi az adatok és kulcsok teljes körű vezérlését. Bármikor letilthatja a kulcsokat, vagy visszavonhatja a felügyelt lemezekhez való hozzáférést. A titkosítási kulcs használatát az Azure Key Vault figyelésével is naplózhatja, így biztosíthatja, hogy csak felügyelt lemezek vagy más megbízható Azure-szolgáltatások férnek hozzá a kulcsokhoz.
 
-Prémium SSD-k, standard SSD-k és standard HDD-k esetén: Ha letiltja vagy törli a kulcsot, a kulcsot használó virtuális gépek automatikusan le lesznek állítva. Ezt követően a virtuális gépek nem lesznek használhatók, kivéve, ha a kulcs ismét engedélyezve van, vagy új kulcsot rendel hozzá.
+Prémium szintű SSD-k, szabványos SSD-k és szabványos HDD-k esetén: Ha letiltja vagy törli a kulcsot, az adott kulccsal rendelkező virtuális gépek automatikusan leállnak. Ezt követően a virtuális gépek nem lesz használható, kivéve, ha a kulcs újra engedélyezve van, vagy hozzá egy új kulcsot.
 
-Az ultra lemezek esetében a kulcs letiltásával vagy törlésével a kulcsot használó, ultra lemezzel rendelkező virtuális gépek nem állnak le automatikusan. Ha felszabadítja és újraindítja a virtuális gépeket, akkor a lemezek nem fogják tudni használni a kulcsot, és a virtuális gépek nem fognak ismét online állapotba állni. Ahhoz, hogy a virtuális gépek ismét online állapotba kerüljenek, hozzá kell rendelnie egy új kulcsot, vagy engedélyeznie kell a meglévő kulcsot.
+Az ultralemezek esetében, ha letiltja vagy törli a kulcsot, a kulccsal ultralemezzel rendelkező virtuális gépek nem állnak le automatikusan. Miután felszabadítja, és indítsa újra a virtuális gépeket, majd a lemezek leáll a kulcs használata, és majd a virtuális gépek nem jön vissza online. A virtuális gépek online állapotba hozásához új kulcsot kell hozzárendelnie, vagy engedélyeznie kell a meglévő kulcsot.
 
-A következő ábra azt mutatja be, hogy a felügyelt lemezek hogyan használják a Azure Active Directory és Azure Key Vault a kérelmeket az ügyfél által felügyelt kulcs használatával:
+Az alábbi ábra bemutatja, hogy a felügyelt lemezek hogyan használják az Azure Active Directoryt és az Azure Key Vaultot az ügyfél által felügyelt kulcs használatával történő kéréskérésekhez:
 
-![Felügyelt lemez és ügyfél által felügyelt kulcsok munkafolyamata. A rendszergazda létrehoz egy Azure Key Vault, majd létrehoz egy lemezes titkosítási készletet, és beállítja a lemez titkosítási készletét. A készlet egy virtuális géphez van társítva, amely lehetővé teszi, hogy a lemez használhassa az Azure AD-t a hitelesítéshez](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Felügyelt lemez- és ügyféláltal kezelt kulcsok munkafolyamata. Egy rendszergazda létrehoz egy Azure Key Vault, majd létrehoz egy lemeztitkosítási készletet, és beállítja a lemeztitkosítási készlet. A készlet egy virtuális géphez van társítva, amely lehetővé teszi, hogy a lemez az Azure AD-t használja a hitelesítéshez](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
-A következő lista részletesebben ismerteti a diagramot:
+Az alábbi lista részletesebben ismerteti a diagramot:
 
-1. A Azure Key Vault rendszergazdája létrehoz egy Key Vault-erőforrásokat.
-1. A Key Vault rendszergazdája importálja az RSA-kulcsokat, hogy Key Vault vagy új RSA-kulcsokat generáljon a Key Vaultban.
-1. A rendszergazda a lemez titkosítási készletének erőforrásának egy példányát hozza létre, amely egy Azure Key Vault azonosítót és egy kulcs URL-címet ad meg. A lemezes titkosítási készlet egy új erőforrás, amely leegyszerűsíti a felügyelt lemezek kulcsfontosságú felügyeletét. 
-1. Lemezes titkosítási csoport létrehozásakor a [rendszer hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md) hoz létre Azure Active Directory (ad) és a lemez titkosítási készletéhez társítva. 
-1. Az Azure Key Vault rendszergazdája ezt követően engedélyt ad a felügyelt identitásnak a kulcstartó műveleteinek elvégzésére.
-1. A virtuálisgép-felhasználók lemezek létrehozásával társítják őket a lemezes titkosítási készlettel. A virtuális gép felhasználója a meglévő erőforrások ügyfél által felügyelt kulcsaival is engedélyezheti a kiszolgálóoldali titkosítást, ha a lemezes titkosítási készlettel társítja őket. 
-1. A felügyelt lemezek a felügyelt identitás használatával küldenek kéréseket a Azure Key Vault.
-1. Az adatok olvasásához vagy írásához a felügyelt lemezek kéréseket küldenek Azure Key Vaultnek az adatok titkosításához és visszafejtéséhez (tördeléséhez), valamint az adattitkosítási kulcs visszafejtéséhez (kicsomagolásához). 
+1. Az Azure Key Vault rendszergazdája key vault-erőforrásokat hoz létre.
+1. A key vault rendszergazdája vagy importálja az RSA-kulcsokat a Key Vaultba, vagy új RSA-kulcsokat hoz létre a Key Vaultban.
+1. Ez a rendszergazda létrehoz egy példányt a lemeztitkosítási készlet erőforrás, megadva egy Azure Key Vault-azonosító t és egy kulcs URL-címet. A lemeztitkosítási készlet egy új erőforrás, amelya felügyelt lemezek kulcskezelésének egyszerűsítésére szolgáló új erőforrás. 
+1. Lemeztitkosítási készlet létrehozásakor létrejön egy [rendszeráltal hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) az Azure Active Directoryban (AD), és a lemeztitkosítási készlethez társítva. 
+1. Az Azure key vault rendszergazdája majd megadja a felügyelt identitás engedélyt a key vaultban műveletek végrehajtásához.
+1. A virtuális gép felhasználó lemezeket hoz létre a lemeztitkosítási készlettel társítva. A virtuális gép felhasználó is engedélyezheti a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulcsokkal a meglévő erőforrásokhoz, társítva őket a lemeztitkosítási készlettel. 
+1. A felügyelt lemezek a felügyelt identitás használatával küldési kérelmeket az Azure Key Vault.
+1. Az adatok olvasása vagy írása, felügyelt lemezek küld kéréseket az Azure Key Vault titkosítására (wrap) és visszacsomagolja (csomagolja ki) az adattitkosítási kulcs végrehajtása érdekében az adatok titkosítása és visszafejtése érdekében. 
 
-Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához lásd: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) és [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Storage-fiókban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs nem érhető el az Azure Storage-ban.
+Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásáról az [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) és [az Azure Key Vault CLI.](https://docs.microsoft.com/cli/azure/keyvault) A hozzáférés visszavonása hatékonyan blokkolja a hozzáférést a tárfiókban lévő összes adathoz, mivel a titkosítási kulcs nem érhető el az Azure Storage számára.
 
 ### <a name="supported-regions"></a>Támogatott régiók
 
@@ -64,28 +64,28 @@ Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához l
 
 ### <a name="restrictions"></a>Korlátozások
 
-Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások vonatkoznak:
+Egyelőre az ügyfél által felügyelt kulcsok a következő korlátozásokkal rendelkeznek:
 
-- Ha ez a funkció engedélyezve van a lemezen, nem tiltható le.
-    Ha ennek megkerülésére van szüksége, az összes olyan felügyelt lemezre [át kell másolnia az összes](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) olyan felügyelt lemezt, amely nem használja az ügyfél által felügyelt kulcsokat.
-- Csak a 2080 méretű ["Soft" és "Hard" RSA-kulcsok](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) támogatottak, nincsenek más kulcsok vagy méretek.
-- A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni rendszerképekből létrehozott lemezeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani, és ugyanahhoz az előfizetéshez kell tartoznia.
-- A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított lemezekről létrehozott pillanatképeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani.
-- A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni lemezképek nem használhatók a megosztott lemezképek gyűjteményében.
-- Az ügyfél által felügyelt kulcsokhoz (Azure Key Vaultok, lemez titkosítási készletek, virtuális gépek, lemezek és Pillanatképek) kapcsolódó összes erőforrásnak ugyanabban az előfizetésben és régióban kell lennie.
-- Az ügyfél által felügyelt kulcsokkal titkosított lemezek, Pillanatképek és lemezképek nem helyezhetők át másik előfizetésbe.
-- Ha a Azure Portal használatával hozza létre a lemez titkosítási készletét, a pillanatképek jelenleg nem használhatók.
-- Az ügyfél által felügyelt kulcsokkal titkosított felügyelt lemezek nem titkosíthatók Azure Disk Encryptionval.
+- Ha ez a szolgáltatás engedélyezve van a lemezen, nem lehet letiltani.
+    Ha meg kell kerülnie ezt, az összes adatot át kell [másolnia](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) egy teljesen más felügyelt lemezre, amely nem ügyfél által felügyelt kulcsokat használ.
+- Csak a 2080 méretű ["puha" és "kemény" RSA-kulcsok](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) támogatottak, más billentyűk és méretek nem támogatottak.
+- A kiszolgálóoldali titkosítással és ügyfél által kezelt kulcsokkal titkosított egyéni lemezképekből létrehozott lemezeket ugyanazzal az ügyfél által felügyelt kulccsal kell titkosítani, és ugyanabban az előfizetésben kell lenniük.
+- A kiszolgálóoldali titkosítással és ügyféláltal kezelt kulcsokkal titkosított lemezekről létrehozott pillanatképeket ugyanazzal az ügyfél által kezelt kulccsal kell titkosítani.
+- A kiszolgálóoldali titkosítással és az ügyfél által kezelt kulcsokkal titkosított egyéni lemezképek nem használhatók a megosztott képtárban.
+- Az ügyfél által felügyelt kulcsokhoz kapcsolódó összes erőforrásnak (Azure Key Vaults, lemeztitkosítási készletek, virtuális gépek, lemezek és pillanatképek) ugyanabban az előfizetésben és régióban kell lennie.
+- Az ügyfél által felügyelt kulccsal titkosított lemezek, pillanatképek és képek nem helyezhető át egy másik előfizetésre.
+- Ha az Azure Portalon a lemeztitkosítási készlet létrehozásához, nem használhatja a pillanatképek egyelőre.
+- Az ügyfél által kezelt kulcsokkal titkosított felügyelt lemezek nem titkosíthatók az Azure Disk Encryption segítségével is.
 
 ### <a name="powershell"></a>PowerShell
 
-#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>A Azure Key Vault és a DiskEncryptionSet beállítása
+#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Az Azure Key Vault és a DiskEncryptionSet beállítása
 
-1. Győződjön meg arról, hogy telepítette a legújabb [Azure PowerShell-verziót](/powershell/azure/install-az-ps), és be van jelentkezve egy Azure-fiókba a következővel: kapcsolat-AzAccount
+1. Győződjön meg arról, hogy telepítette a legújabb [Azure PowerShell-verziót,](/powershell/azure/install-az-ps)és be van jelentkezve egy Azure-fiókba a Connect-AzAccount szolgáltatással
 
-1. Hozzon létre egy Azure Key Vault és egy titkosítási kulcs egy példányát.
+1. Hozzon létre egy példányt az Azure Key Vault és a titkosítási kulcs.
 
-    A Key Vault-példány létrehozásakor engedélyeznie kell a Soft delete és a kiürítési védelmet. A helyreállítható törlés biztosítja, hogy a Key Vault a megadott megőrzési időtartam (90 nap alapértelmezett értéke) törölt kulcsát tárolja. A védelem kiürítése biztosítja, hogy a törölt kulcsok ne legyenek véglegesen törölve, amíg a megőrzési időszak megszűnik. Ezek a beállítások a véletlen törlés miatt védik az adatok elvesztését. Ezek a beállítások akkor kötelezőek, ha Key Vault használ a felügyelt lemezek titkosításához.
+    A Key Vault-példány létrehozásakor engedélyeznie kell a helyreállítható törlést és a védelem kiürítését. A helyreállítható törlés biztosítja, hogy a Key Vault egy adott megőrzési időszakban törölt kulcsot tartalmaz (90 napos alapértelmezett). A kiürítési védelem biztosítja, hogy a törölt kulcs nem törölhető véglegesen, amíg a megőrzési időszak le nem áll. Ezek a beállítások megvédik önt a véletlen törlés miatti adatvesztéstől. Ezek a beállítások kötelezőek, ha a felügyelt lemezek titkosításához key vaultot használ.
 
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
@@ -100,7 +100,7 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
     $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
     ```
 
-1.    Hozzon létre egy DiskEncryptionSet egy példányát. 
+1.    DiskEncryptionSet példányának létrehozása. 
     
         ```powershell
         $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName -SourceVaultId $keyVault.ResourceId -KeyUrl $key.Key.Kid -IdentityType SystemAssigned
@@ -108,10 +108,10 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
         $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
         ```
 
-1.    Adja meg a DiskEncryptionSet-erőforrás hozzáférését a kulcstartóhoz.
+1.    Adja meg a DiskEncryptionSet erőforrás-hozzáférést a key vaulthoz.
 
         > [!NOTE]
-        > Eltarthat néhány percig, amíg az Azure létrehozza a DiskEncryptionSet identitását a Azure Active Directoryban. Ha a következő parancs futtatásakor a "nem találja a Active Directory objektumot" hibaüzenet jelenik meg, várjon néhány percet, és próbálkozzon újra.
+        > Az Azure-nak néhány percig is eltarthat, amíg létrehozza a DiskEncryptionSet identitását az Azure Active Directoryban. Ha a következő parancs futtatásakor a következő parancs futtatásakor a következő hibaüzenet jelenik meg, várjon néhány percet, majd próbálkozzon újra.
         
         ```powershell
         $identity = Get-AzADServicePrincipal -DisplayName myDiskEncryptionSet1  
@@ -121,7 +121,7 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
         New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
         ```
 
-#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Virtuális gép létrehozása Piactéri rendszerkép használatával, az operációs rendszer és az adatlemezek titkosítása az ügyfél által felügyelt kulcsokkal
+#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Virtuális gép létrehozása Piactér-lemezkép használatával, az operációs rendszer és az adatlemezek titkosítása ügyfél által kezelt kulcsokkal
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -159,7 +159,7 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítással titkosított üres lemez létrehozása, amely egy virtuális géphez csatolható
+#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Kiszolgálóoldali titkosítással titkosított üres lemez létrehozása ügyfél által kezelt kulcsokkal, és csatolása virtuális géphez
 
 ```PowerShell
 $vmName = "yourVMName"
@@ -184,7 +184,7 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 #### <a name="encrypt-existing-unattached-managed-disks"></a>Meglévő, nem csatlakoztatott felügyelt lemezek titkosítása 
 
-A meglévő lemezeket nem lehet egy futó virtuális géphez csatolni ahhoz, hogy a következő parancsfájl használatával titkosítani lehessen őket:
+A meglévő lemezeknem csatolhatók egy futó virtuális géphez, hogy titkosíthassa őket a következő parancsfájl használatával:
 
 ```PowerShell
 $rgName = "yourResourceGroupName"
@@ -196,7 +196,7 @@ $diskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $d
 New-AzDiskUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $diskEncryptionSet.Id | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
 ```
 
-#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Virtuálisgép-méretezési csoport létrehozása Piactéri rendszerkép használatával, az operációs rendszer és az adatlemezek titkosítása az ügyfél által felügyelt kulcsokkal
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Virtuálisgép-méretezési csoport létrehozása Piactér-lemezkép használatával, az operációs rendszer és az adatlemezek titkosítása ügyfél által kezelt kulcsokkal
 
 ```PowerShell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -241,21 +241,21 @@ New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -
 ```
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+> Az ügyfél által felügyelt kulcsok az Azure Active Directory (Azure AD) egyik szolgáltatásának felügyelt identitásaira támaszkodnak. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel idáig az erőforrásokhoz a feldolgozási jog alatt. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt az egyik Azure AD-könyvtárból egy másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok már nem működnek. További információ: [Előfizetés átvitele az Azure AD-könyvtárak között.](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
 
 [!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+> Az ügyfél által felügyelt kulcsok az Azure Active Directory (Azure AD) egyik szolgáltatásának felügyelt identitásaira támaszkodnak. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel idáig az erőforrásokhoz a feldolgozási jog alatt. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt az egyik Azure AD-könyvtárból egy másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok már nem működnek. További információ: [Előfizetés átvitele az Azure AD-könyvtárak között.](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
 
-## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Kiszolgálóoldali titkosítás és az Azure Disk Encryption
+## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Kiszolgálóoldali titkosítás és az Azure lemeztitkosítás
 
-[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) kihasználja a Windows [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcióját, hogy a felügyelt lemezeket a vendég virtuális gépen lévő, az ügyfél által felügyelt kulcsokkal titkosítsa.  Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t, mivel lehetővé teszi a virtuális gépekhez tartozó operációsrendszer-típusok és-lemezképek használatát a Storage szolgáltatásban tárolt adattitkosítással.
+[Az Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) a Windows [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) szolgáltatását és a Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatását használja a felügyelt lemezek titkosításához a vendég virtuális gépügyfél által felügyelt kulcsokkal.  Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t azáltal, hogy lehetővé teszi a virtuális gépek operációsrendszer-típusainak és lemezképeinek használatát a Storage szolgáltatásban lévő adatok titkosításával.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az ügyfél által felügyelt kulcsokkal rendelkező titkosított lemezek létrehozásához Azure Resource Manager-sablonok megismerése](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [Fedezze fel az Azure Resource Manager sablonjait titkosított lemezek ügyfél által kezelt kulcsokkal való létrehozásához](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
-- [Gépek replikálása az ügyfél által felügyelt kulcsokkal rendelkező lemezekkel](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
-- [A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és a Azure Resource Manager használatával](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [Gépek replikálása ügyfél által kezelt kulcsokáltal engedélyezett lemezekkel](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
+- [A VMware virtuális gépek vészutáni helyreállításának beállítása az Azure-ba a PowerShell segítségével](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
+- [Vészhelyreállítás beállítása az Azure-ba a PowerShell és az Azure Resource Manager használatával az Azure-ban a Virtuális-gépekkel](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

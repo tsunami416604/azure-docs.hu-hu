@@ -1,6 +1,6 @@
 ---
-title: Felhasználói engedélyek megadása meghatározott labor-házirendekhez | Microsoft Docs
-description: Megtudhatja, hogyan adhat felhasználói engedélyeket a DevTest Labs adott labor-házirendjeihez az egyes felhasználói igények alapján
+title: Felhasználói engedélyek megadása adott tesztkörnyezet-házirendekhez | Microsoft dokumentumok
+description: Megtudhatja, hogy miként adhat felhasználói engedélyeket a DevTest Labs adott laborszabályzataihoz az egyes felhasználók igényei alapján
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284212"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Felhasználói engedélyek megadása adott tesztkörnyezet-házirendekhez
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan lehet a PowerShell használatával engedélyeket adni a felhasználóknak egy adott tesztkörnyezet-házirendhez. Így az engedélyek az egyes felhasználók igényei alapján alkalmazhatók. Előfordulhat például, hogy egy adott felhasználó számára engedélyezni szeretné a virtuális gép házirend-beállításainak módosítását, de a költségeket nem.
+Ez a cikk bemutatja, hogyan használhatja a PowerShellt egy adott tesztkörnyezet-szabályzathoz adott engedélyek megadására. Így az engedélyek az egyes felhasználók igényei alapján alkalmazhatók. Előfordulhat például, hogy egy adott felhasználónak lehetővé szeretné tenni a virtuális gép házirend-beállításainak módosítását, de a költségházirendeket nem.
 
-## <a name="policies-as-resources"></a>Szabályzatok erőforrásként
-Az [Azure szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md) cikkében leírtaknak megfelelően a RBAC lehetővé teszi az erőforrások részletes hozzáférés-kezelését az Azure-hoz. A RBAC segítségével elkülönítheti a feladatokat a DevOps-csapaton belül, és csak a felhasználók számára biztosíthatja a feladatok elvégzéséhez szükséges hozzáférést.
+## <a name="policies-as-resources"></a>Politikák mint erőforrások
+Az [Azure szerepköralapú hozzáférés-vezérlési](../role-based-access-control/role-assignments-portal.md) cikkben tárgyalt a RBAC lehetővé teszi az Azure-erőforrások részletes hozzáférés-kezelését. Az RBAC használatával elkülönítheti a feladatokat a DevOps-csapaton belül, és csak annyi hozzáférést biztosíthat a felhasználóknak, amelyeka feladataik elvégzéséhez szükségük van.
 
-A DevTest Labs szolgáltatásban a szabályzat olyan erőforrástípus, amely engedélyezi a **Microsoft. segédösszetevője/Labs/policySets/policies/** RBAC műveletet. Az egyes tesztkörnyezet-házirendek a házirend-erőforrástípus egyik erőforrása, amely hatókörként is hozzárendelhető egy RBAC-szerepkörhöz.
+A DevTest Labs egy olyan erőforrástípus, amely engedélyezi a **Microsoft.DevTestLab/labs/policySets/policies/** rbac műveletet. Minden egyes laborházirend egy erőforrás a házirend erőforrás típusában, és lehet rendelni egy RBAC-szerepkör hatóköre.
 
-Például ahhoz, hogy a felhasználók olvasási/írási engedélyt adjanak az engedélyezett virtuálisgép- **méretek** házirendjéhez, létre kell hoznia egy egyéni szerepkört, amely együttműködik a **Microsoft. segédösszetevője/Labs/policySets/** policys/Action szolgáltatással, majd hozzárendeli a megfelelő felhasználókat az egyéni szerepkörhöz a **Microsoft. segédösszetevője/Labs/policySets/policies/AllowedVmSizesInLab**hatókörében.
+Ha például olvasási/írási engedélyt szeretne adni a felhasználóknak az **Engedélyezett virtuálisgép-méretek** házirendhez, hozzon létre egy egyéni szerepkört, amely együttműködik a **Microsoft.DevTestLab/labs/policySets/policies/** művelettel, majd hozzárendeli a megfelelő felhasználókat ehhez az egyéni szerepkörhöz a **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**hatókörében.
 
-Ha többet szeretne megtudni a RBAC található egyéni szerepkörökről, tekintse meg az [Egyéni szerepkörök hozzáférés-vezérlését](../role-based-access-control/custom-roles.md)ismertető témakört.
+Ha többet szeretne tudni az egyéni szerepkörökről az RBAC-ban, olvassa el az [Egyéni szerepkörök hozzáférés-vezérlését.](../role-based-access-control/custom-roles.md)
 
-## <a name="creating-a-lab-custom-role-using-powershell"></a>Tesztkörnyezet egyéni szerepkörének létrehozása a PowerShell használatával
-Az első lépésekhez [telepítenie kell Azure PowerShell](/powershell/azure/install-az-ps). 
+## <a name="creating-a-lab-custom-role-using-powershell"></a>Tesztkörnyezet egyéni szerepkör létrehozása a PowerShell használatával
+Az első lépésekhez telepítenie kell az [Azure PowerShellt.](/powershell/azure/install-az-ps) 
 
-A Azure PowerShell-parancsmagok beállítása után a következő feladatokat végezheti el:
+Miután beállította az Azure PowerShell-parancsmagokat, a következő feladatokat hajthatja végre:
 
-* Erőforrás-szolgáltató összes műveletének és műveletének listázása
-* Egy adott szerepkör műveleteinek listázása:
+* Erőforrás-szolgáltató összes műveletének/műveletének listázása
+* Adott szerepkörben lévő műveletek felsorolása:
 * Egyéni szerepkör létrehozása
 
-A következő PowerShell-parancsfájl példákat mutat be ezeknek a feladatoknak a végrehajtásához:
+Az alábbi PowerShell-parancsfájl példákat mutat be a feladatok végrehajtására:
 
     # List all the operations/actions for a resource provider.
     Get-AzProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
@@ -61,10 +61,10 @@ A következő PowerShell-parancsfájl példákat mutat be ezeknek a feladatoknak
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
 
-## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Engedélyek kiosztása egy felhasználóhoz egy adott szabályzathoz egyéni szerepkörök használatával
-Miután definiálta az egyéni szerepköröket, hozzárendelheti azokat a felhasználókhoz. Ha egyéni szerepkört szeretne hozzárendelni egy felhasználóhoz, először be kell szereznie az adott felhasználót jelképező **ObjectId** . Ehhez használja a **Get-AzADUser** parancsmagot.
+## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Engedélyek hozzárendelése egy felhasználóhoz egy adott házirendhez egyéni szerepkörök használatával
+Miután definiálta az egyéni szerepköröket, hozzárendelheti őket a felhasználókhoz. Ahhoz, hogy egyéni szerepkört rendeljen egy felhasználóhoz, először be kell szereznie az adott felhasználót képviselő **ObjectId azonosítót.** Ehhez használja a **Get-AzADUser** parancsmagát.
 
-A következő példában a *SomeUser* felhasználó **ObjectId** 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
+A következő példában a *SomeUser* felhasználó **ObjectId** azonosítója 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
 
     PS C:\>Get-AzADUser -SearchString "SomeUser"
 
@@ -72,11 +72,11 @@ A következő példában a *SomeUser* felhasználó **ObjectId** 05DEFF7B-0AC3-4
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Miután megkapta a **ObjectId** a felhasználóhoz és egy egyéni szerepkör nevét, hozzárendelheti az adott szerepkört a felhasználóhoz a **New-AzRoleAssignment** parancsmag használatával:
+Miután rendelkezik a felhasználó **ObjectId** azonosítójával és egy egyéni szerepkörnevével, a szerepkört hozzárendelheti a felhasználóhoz az **Új-AzRoleAssignment** parancsmaggal:
 
     PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
-Az előző példában a rendszer a **AllowedVmSizesInLab** szabályzatot használja. A következő házirendek bármelyike használható:
+Az előző példában az **AllowedVmSizesInLab-házirend** használatos. Az alábbi rendőri műveletek bármelyikét használhatja:
 
 * MaxVmsAllowedPerUser
 * MaxVmsAllowedPerLab
@@ -85,12 +85,12 @@ Az előző példában a rendszer a **AllowedVmSizesInLab** szabályzatot haszná
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
-Ha meghatározott labor-házirendekhez adott meg felhasználói engedélyeket, a következő lépéseket érdemes figyelembe vennie:
+## <a name="next-steps"></a>További lépések
+Miután megadta a felhasználói engedélyeket az adott tesztkörnyezet-házirendekhez, az alábbi lépéseket érdemes figyelembe venni:
 
-* [Biztonságos hozzáférés a laborokhoz](devtest-lab-add-devtest-user.md)
-* [Laborszabályzatok megadása](devtest-lab-set-lab-policy.md)
+* [Biztonságos hozzáférés a laborhoz](devtest-lab-add-devtest-user.md)
+* [Laborházirendek beállítása](devtest-lab-set-lab-policy.md)
 * [Laborsablon létrehozása](devtest-lab-create-template.md)
-* [Egyéni összetevők létrehozása a virtuális géphez](devtest-lab-artifact-author.md)
+* [Egyéni összetevők létrehozása a virtuális gépekhez](devtest-lab-artifact-author.md)
 * [Virtuális gép hozzáadása laborhoz](devtest-lab-add-vm.md)
 

@@ -1,33 +1,33 @@
 ---
-title: A 2. x függvények kimeneti kötésének Azure Cosmos DB
-description: Megtudhatja, hogyan használhatja a Azure Functions Azure Cosmos DB kimeneti kötését.
+title: Az Azure Cosmos DB kimeneti kötése a Functions 2.x-hez
+description: Ismerje meg az Azure Cosmos DB kimeneti kötés használatát az Azure Functionsben.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277764"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Functions 2. x kimeneti kötésének Azure Cosmos DB
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Az Azure Cosmos DB kimeneti kötése az Azure Functions 2.x-hez
 
-Az Azure Cosmos DB kimeneti kötés lehetővé teszi, hogy egy Azure Cosmos DB-adatbázishoz az SQL API használatával írhat egy új dokumentumot.
+Az Azure Cosmos DB kimeneti kötés lehetővé teszi, hogy írjon egy új dokumentumot egy Azure Cosmos DB adatbázis az SQL API használatával.
 
-További információ a telepítésről és a konfigurációról: [Áttekintés](./functions-bindings-cosmosdb-v2.md).
+A beállítással és a konfigurációval kapcsolatos részletekről az [áttekintésben](./functions-bindings-cosmosdb-v2.md)olvashat.
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Ez a szakasz tartalmazza az alábbi példák:
+Ez a szakasz a következő példákat tartalmazza:
 
-* [Üzenetsor-trigger, egy doc írása](#queue-trigger-write-one-doc-c)
-* [Üzenetsor-trigger, dokumentumok írása a IAsyncCollector használatával](#queue-trigger-write-docs-using-iasynccollector-c)
+* [Várólista-eseményindító, egy dokumentum írása](#queue-trigger-write-one-doc-c)
+* [Várólista-eseményindító, írási dokumentumok az IAsyncCollector használatával](#queue-trigger-write-docs-using-iasynccollector-c)
 
-A példák egy egyszerű `ToDoItem` típusra vonatkoznak:
+A példák egy `ToDoItem` egyszerű típusra hivatkoznak:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -42,9 +42,9 @@ namespace CosmosDBSamplesV2
 
 <a id="queue-trigger-write-one-doc-c"></a>
 
-### <a name="queue-trigger-write-one-doc"></a>Üzenetsor eseményindító írási egy dokumentumot
+### <a name="queue-trigger-write-one-doc"></a>Várólista-eseményindító, egy dokumentum írása
 
-Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy dokumentumot ad hozzá egy adatbázishoz, a várólista-tárolóból származó adatok felhasználásával.
+A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy dokumentumot ad hozzá az adatbázishoz a Várólista-tárolóból származó üzenetben megadott adatok felhasználásával.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -76,9 +76,9 @@ namespace CosmosDBSamplesV2
 
 <a id="queue-trigger-write-docs-using-iasynccollector-c"></a>
 
-### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Üzenetsor eseményindító írási docs IAsyncCollector használatával
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Várólista-eseményindító, írási dokumentumok az IAsyncCollector használatával
 
-Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely dokumentumok gyűjteményét adja hozzá egy adatbázishoz egy üzenetsor-üzenet JSON-fájljában megadott adat használatával.
+A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely dokumentumok gyűjteményét adja hozzá egy adatbázishoz a JSON üzenetben megadott adatok használatával.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -112,19 +112,19 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
 
-Ez a szakasz tartalmazza az alábbi példák:
+Ez a szakasz a következő példákat tartalmazza:
 
-* [Üzenetsor-trigger, egy doc írása](#queue-trigger-write-one-doc-c-script)
-* [Üzenetsor-trigger, dokumentumok írása a IAsyncCollector használatával](#queue-trigger-write-docs-using-iasynccollector-c-script)
+* [Várólista-eseményindító, egy dokumentum írása](#queue-trigger-write-one-doc-c-script)
+* [Várólista-eseményindító, írási dokumentumok az IAsyncCollector használatával](#queue-trigger-write-docs-using-iasynccollector-c-script)
 
 
 <a id="queue-trigger-write-one-doc-c-script"></a>
 
-### <a name="queue-trigger-write-one-doc"></a>Üzenetsor eseményindító írási egy dokumentumot
+### <a name="queue-trigger-write-one-doc"></a>Várólista-eseményindító, egy dokumentum írása
 
-Az alábbi példa egy Azure Cosmos db kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
+A következő példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function.json* fájlban és egy [C# parancsfájl függvényt,](functions-reference-csharp.md) amely a kötést használja. A függvény várólista bemeneti kötést használ egy olyan várólistához, amely a JSON-t a következő formátumban fogadja:
 
 ```json
 {
@@ -134,7 +134,7 @@ Az alábbi példa egy Azure Cosmos db kimeneti kötést mutat be egy *function. 
 }
 ```
 
-A függvény minden egyes rekord a következő formátumban hozza létre az Azure Cosmos DB-dokumentumot:
+A függvény az Azure Cosmos DB-dokumentumokat a következő formátumban hozza létre az egyes rekordokhoz:
 
 ```json
 {
@@ -145,7 +145,7 @@ A függvény minden egyes rekord a következő formátumban hozza létre az Azur
 }
 ```
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.json* fájlban a kötési adatok:
 
 ```json
 {
@@ -159,9 +159,9 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
+A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
 
-Íme a C#-szkriptkódot:
+Itt a C# script kód:
 
 ```cs
     #r "Newtonsoft.Json"
@@ -187,11 +187,11 @@ A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 <a id="queue-trigger-write-docs-using-iasynccollector-c-script"></a>
 
-### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Üzenetsor eseményindító írási docs IAsyncCollector használatával
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Várólista-eseményindító, írási dokumentumok az IAsyncCollector használatával
 
-Több dokumentum létrehozásához kötni `ICollector<T>` vagy `IAsyncCollector<T>`, ahol a `T` a támogatott típusok egyike.
+Több dokumentum létrehozásához kötésre `ICollector<T>` `IAsyncCollector<T>` lehet, vagy ahol `T` az egyik támogatott típus található.
 
-Ez a példa egy egyszerű `ToDoItem` típusra hivatkozik:
+Ez a példa egy `ToDoItem` egyszerű típusra vonatkozik:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -204,7 +204,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Íme a function.json fájlban:
+Itt a function.json fájl:
 
 ```json
 {
@@ -229,7 +229,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Íme a C#-szkriptkódot:
+Itt a C# script kód:
 
 ```cs
 using System;
@@ -247,9 +247,9 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Az alábbi példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
+A következő példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function.json* fájlban és egy [JavaScript-függvényt,](functions-reference-node.md) amely a kötést használja. A függvény várólista bemeneti kötést használ egy olyan várólistához, amely a JSON-t a következő formátumban fogadja:
 
 ```json
 {
@@ -259,7 +259,7 @@ Az alábbi példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function. 
 }
 ```
 
-A függvény minden egyes rekord a következő formátumban hozza létre az Azure Cosmos DB-dokumentumot:
+A függvény az Azure Cosmos DB-dokumentumokat a következő formátumban hozza létre az egyes rekordokhoz:
 
 ```json
 {
@@ -270,7 +270,7 @@ A függvény minden egyes rekord a következő formátumban hozza létre az Azur
 }
 ```
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.json* fájlban a kötési adatok:
 
 ```json
 {
@@ -284,9 +284,9 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
+A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
 
-A következő JavaScript-kódot:
+Itt a JavaScript-kód:
 
 ```javascript
     module.exports = function (context) {
@@ -304,9 +304,9 @@ A következő JavaScript-kódot:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa azt mutatja be, hogyan írhat dokumentumokat egy Azure CosmosDB-adatbázisba egy függvény kimenete.
+A következő példa bemutatja, hogyan írhat egy dokumentumot egy Azure CosmosDB-adatbázisba egy függvény kimeneteként.
 
-A kötési definíció a *function. JSON* fájlban van definiálva, ahol a *Type* értéke `cosmosDB`.
+A kötésdefiníció a *function.json* *type* ban van `cosmosDB`definiálva, ahol a típus a .
 
 ```json
 {
@@ -340,7 +340,7 @@ A kötési definíció a *function. JSON* fájlban van definiálva, ahol a *Type
 }
 ```
 
-Az adatbázisba való íráshoz adjon át egy dokumentum-objektumot az adatbázis-paraméter `set` metódusának.
+Ha írni szeretne az adatbázisba, `set` adja át a dokumentumobjektumot az adatbázis-paraméter metódusának.
 
 ```python
 import azure.functions as func
@@ -356,17 +356,17 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-* [Üzenetsor-trigger, üzenet mentése az adatbázisba visszatérési érték használatával](#queue-trigger-save-message-to-database-via-return-value-java)
-* [HTTP-trigger, egy dokumentum mentése az adatbázisba visszatérési érték használatával](#http-trigger-save-one-document-to-database-via-return-value-java)
-* [HTTP-trigger, egy dokumentum mentése az adatbázisba a OutputBinding használatával](#http-trigger-save-one-document-to-database-via-outputbinding-java)
-* [HTTP-trigger, több dokumentum mentése az adatbázisba a OutputBinding használatával](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+* [Várólista-eseményindító, üzenet mentése az adatbázisba visszatérési értéken keresztül](#queue-trigger-save-message-to-database-via-return-value-java)
+* [HTTP-eseményindító, egy dokumentum mentése adatbázisba visszatérési értéken keresztül](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [HTTP-eseményindító, egy dokumentum mentése adatbázisba a OutputBinding segítségével](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [HTTP-eseményindító, több dokumentum mentése adatbázisba az OutputBinding segítségével](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
 
 
 <a id="queue-trigger-save-message-to-database-via-return-value-java"></a>
 
-### <a name="queue-trigger-save-message-to-database-via-return-value"></a>Üzenetsor-trigger, üzenet mentése az adatbázisba visszatérési érték használatával
+### <a name="queue-trigger-save-message-to-database-via-return-value"></a>Várólista-eseményindító, üzenet mentése az adatbázisba visszatérési értéken keresztül
 
-Az alábbi példa egy Java-függvényt mutat be, amely egy dokumentumot hoz létre egy, a várólista-tárolóban lévő üzenetből származó adatokkal rendelkező adatbázishoz.
+A következő példa egy Java-függvényt mutat be, amely egy dokumentumot ad hozzá egy adatbázishoz a Várólista tárolójában lévő üzenetből származó adatokkal.
 
 ```java
 @FunctionName("getItem")
@@ -385,9 +385,9 @@ public String cosmosDbQueryById(
 ```
 <a id="http-trigger-save-one-document-to-database-via-return-value-java"></a>
 
-#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>HTTP-trigger, egy dokumentum mentése az adatbázisba visszatérési érték használatával
+#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>HTTP-eseményindító, egy dokumentum mentése adatbázisba visszatérési értéken keresztül
 
-Az alábbi példa egy Java-függvényt mutat be, amelynek aláírása ```@CosmosDBOutput```, és ```String```típusú visszatérési értékkel rendelkezik. A függvény által visszaadott JSON-dokumentum automatikusan a megfelelő CosmosDB-gyűjteménybe lesz írva.
+A következő példa egy Java-függvényt mutat ```@CosmosDBOutput``` be, amelynek ```String```aláírásával van elvan tévik, és visszatérési értéke . A függvény által visszaadott JSON-dokumentum automatikusan a megfelelő CosmosDB-gyűjteménybe kerül.
 
 ```java
     @FunctionName("WriteOneDoc")
@@ -424,9 +424,9 @@ Az alábbi példa egy Java-függvényt mutat be, amelynek aláírása ```@Cosmos
 
 <a id="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>
 
-### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP-trigger, egy dokumentum mentése az adatbázisba a OutputBinding használatával
+### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP-eseményindító, egy dokumentum mentése adatbázisba a OutputBinding segítségével
 
-Az alábbi példa egy Java-függvényt mutat be, amely egy ```OutputBinding<T>``` kimeneti paraméter használatával ír egy dokumentumot a CosmosDB. Ebben a példában a ```outputItem``` paramétert ```@CosmosDBOutput```, nem pedig a függvény aláírásával kell megadnia. A ```OutputBinding<T>``` használata lehetővé teszi, hogy a függvény kihasználhassa a dokumentumot a CosmosDB, miközben lehetővé teszi, hogy más értéket adjanak vissza a függvény hívójának, például egy JSON-vagy XML-dokumentumnak.
+A következő példa egy Java függvényt mutat be, ```OutputBinding<T>``` amely egy kimeneti paraméteren keresztül írja a dokumentumot a CosmosDB-nek. Ebben a példában a paramétert ```outputItem``` a, ```@CosmosDBOutput```a paraméterrel kell eljegyzetálni, nem pedig a függvény aláírásával. Használata ```OutputBinding<T>``` lehetővé teszi, hogy a függvény kihasználhatja a kötés a dokumentum írása a CosmosDB, miközben lehetővé teszi, hogy egy másik értéket a függvény hívó, például egy JSON vagy XML-dokumentum.
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -470,9 +470,9 @@ Az alábbi példa egy Java-függvényt mutat be, amely egy ```OutputBinding<T>``
 
 <a id="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>
 
-### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP-trigger, több dokumentum mentése az adatbázisba a OutputBinding használatával
+### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP-eseményindító, több dokumentum mentése adatbázisba az OutputBinding segítségével
 
-Az alábbi példa egy Java-függvényt mutat be, amely egy ```OutputBinding<T>``` kimeneti paraméterrel több dokumentumot ír a CosmosDB. Ebben a példában a ```outputItem``` paraméter ```@CosmosDBOutput```, nem pedig a függvény aláírásával van megjegyzetve. A kimeneti paraméter a ```outputItem``` ```ToDoItem``` objektumok listáját tartalmazza, mint a sablon paraméterének típusa. A ```OutputBinding<T>``` használata lehetővé teszi, hogy a függvény kihasználhassa a dokumentumokat a CosmosDB, miközben lehetővé teszi, hogy más értéket adjanak vissza a függvény hívójának, például egy JSON-vagy XML-dokumentumnak.
+A következő példa egy Java függvényt mutat be, ```OutputBinding<T>``` amely több dokumentumot ír a CosmosDB-nek egy kimeneti paraméteren keresztül. Ebben a példában a ```outputItem``` paraméter a, a paraméterrel ```@CosmosDBOutput```van elhangzva, nem pedig a függvény aláírásával. A kimeneti ```outputItem``` paraméter sablonparaméter-típusa az ```ToDoItem``` objektumok listájával rendelkezik. Használata ```OutputBinding<T>``` lehetővé teszi, hogy a függvény kihasználhatja a kötés a dokumentumok írása a CosmosDB, miközben lehetővé teszi, hogy egy másik értéket a függvény hívó, például egy JSON vagy XML-dokumentum.
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -519,17 +519,17 @@ Az alábbi példa egy Java-függvényt mutat be, amely egy ```OutputBinding<T>``
     }
 ```
 
-A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@CosmosDBOutput` megjegyzéseket a Cosmos DBba írandó paraméterekhez.  A Megjegyzés paraméterének típusának ```OutputBinding<T>```nak kell lennie, ahol a T egy natív Java-típus vagy egy POJO.
+A [Java függvények futásidejű könyvtárában](/java/api/overview/azure/functions/runtime)használja a `@CosmosDBOutput` Cosmos DB-nek írt paraméterek jegyzetelését.  A jegyzetparaméter típusának ```OutputBinding<T>```a legyen , ahol T vagy natív Java-típus vagy POJO.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot.
+A [C# osztálykönyvtárakban](functions-dotnet-class-library.md)használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot.
 
-Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtemény nevét. További információ ezekről a beállításokról és a konfigurálható egyéb tulajdonságokról: [kimeneti konfiguráció](#configuration). Példa `CosmosDB` attribútumra a metódus-aláírásban:
+Az attribútum konstruktora felveszi az adatbázis nevét és a gyűjtemény nevét. A beállításokkal és a konfigurálható egyéb tulajdonságokkal kapcsolatos további tudnivalókért olvassa el [a Kimenet - konfiguráció](#configuration)című témakört. Íme egy `CosmosDB` attribútum példa egy metódus aláírás:
 
 ```csharp
     [FunctionName("QueueToDocDB")]
@@ -541,62 +541,62 @@ Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtem�
     }
 ```
 
-# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
 
-Az C# attribútumokat a parancsfájl nem támogatja.
+Az attribútumokat a C# script nem támogatja.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Python nem támogatja az attribútumokat.
+Az attribútumokat a Python nem támogatja.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A `CosmosDBOutput` jegyzet elérhető az adatCosmos DBba való íráshoz. A jegyzetet alkalmazhatja a függvényre vagy egy bizonyos Function paraméterre. A Function metódus használata esetén a függvény visszatérési értéke a Cosmos DBba írt érték. Ha a jegyzetet paraméterrel használja, a paraméter típusát olyan `OutputBinding<T>` kell deklarálni, amelyben `T` egy natív Java-típust vagy egy POJO.
+A `CosmosDBOutput` jegyzet a Cosmos DB-nek történő adatok írásához érhető el. A jegyzetet alkalmazhatja a függvényre vagy egy egyedi függvényparaméterre. A függvénymetódus, a függvény visszatérési értéke, amit a Cosmos DB írása. Ha a jegyzetet paraméterrel használja, a paraméter típusát olyan `OutputBinding<T>` helyként `T` kell deklarálni, ahol natív Java-típus vagy POJO.
 
 ---
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és a `CosmosDB` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function.json* fájlban és az `CosmosDB` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.json tulajdonság | Attribútum tulajdonság |Leírás|
 |---------|---------|----------------------|
-|**type**     | n/a | `cosmosDB`értékre kell állítani.        |
-|**direction**     | n/a | `out`értékre kell állítani.         |
-|**név**     | n/a | A kötési paraméter, amely a dokumentumot, a függvény neve.  |
-|**databaseName** | **DatabaseName**|Az a gyűjtemény, amelyben létrehozza a dokumentumban tartalmazó adatbázis.     |
-|**collectionName** |**CollectionName**  | A gyűjtemény, amelyben létrehozza a dokumentumban neve. |
-|**Createifnotexists metódust**  |**Createifnotexists metódust**    | Logikai érték jelzi, hogy a gyűjtemény létrehozásakor a rendszer még nem létezik. Az alapértelmezett érték a *false (hamis* ), mert az új gyűjtemények fenntartott átviteli sebességgel jönnek létre, ami a költségeket is érinti. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/cosmos-db/) olvasható.  |
-|**partitionKey**|**PartitionKey** |Ha a `CreateIfNotExists` értéke TRUE (igaz), akkor a létrehozott gyűjtemény partíciós kulcsának elérési útját határozza meg.|
-|**collectionThroughput**|**CollectionThroughput**| Ha a `CreateIfNotExists` értéke igaz, meghatározza a létrehozott gyűjtemény [átviteli sebességét](../cosmos-db/set-throughput.md) .|
-|**connectionStringSetting**    |**ConnectionStringSetting** |Az Azure Cosmos DB kapcsolati sztringjét tartalmazó alkalmazásbeállítás neve.        |
-|**preferredLocations**| **PreferredLocations**| Választható Meghatározza a földrajzilag replikált adatbázis-fiókok előnyben részesített helyét (régióit) a Azure Cosmos DB szolgáltatásban. Az értékeket vesszővel kell elválasztani. Például: "az USA keleti régiója, az USA déli középső régiója, Észak-Európa". |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Választható Ha a beállítás értéke `true` és `PreferredLocations`, akkor a Azure Cosmos DB szolgáltatásban [több régiót](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) is használhat. |
+|**Típus**     | n/a | A beállításnak `cosmosDB`a beállítására kell beállítható.        |
+|**direction**     | n/a | A beállításnak `out`a beállítására kell beállítható.         |
+|**név**     | n/a | A függvényben lévő dokumentumot jelölő kötési paraméter neve.  |
+|**adatbázisneve** | **DatabaseName**|A dokumentumot létrehozó gyűjteményt tartalmazó adatbázis.     |
+|**Lekérdezés_neve** |**CollectionName**  | Annak a gyűjteménynek a neve, amelyben a dokumentumot létrehozták. |
+|**createIfNotExists**  |**CreateIfNotExists**    | Logikai érték, amely azt jelzi, hogy a gyűjtemény akkor jön-e létre, ha nem létezik. Az alapértelmezett *hamis,* mert az új gyűjtemények jönnek létre a fenntartott átviteli, amelynek költségvonzatai vannak. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/cosmos-db/) olvasható.  |
+|**partíciókulcs**|**PartitionKey** |Ha `CreateIfNotExists` igaz, meghatározza a létrehozott gyűjtemény partíciókulcs elérési útját.|
+|**kollekcióThroughput**|**CollectionThroughput (Gyűjteményátmenő)**| Ha `CreateIfNotExists` igaz, meghatározza a létrehozott gyűjtemény [átviteli.](../cosmos-db/set-throughput.md)|
+|**connectionStringSetting**    |**ConnectionStringSetting (Kapcsolatkarakterlánc-beállítás)** |Az Azure Cosmos DB kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve.        |
+|**preferredLocations (elsődleges helyek)**| **PreferredLocations (PreferredLocations)**| (Nem kötelező) Az Azure Cosmos DB szolgáltatás georeplikált adatbázis-fiókjainak előnyben részesített helyeit (régióit) határozza meg. Az értékeket vesszővel kell elválasztani. Például: "USA keleti régiója, USA déli középső régiója, Észak-Európa". |
+|**useMultipleWriteLocations (Többwrite–helyek használata)**| **UseMultipleWriteLocations (Többwrite–hely használata)**| (Nem kötelező) Ha a `true` beállítás `PreferredLocations`a használatával együtt, akkor az Azure Cosmos DB szolgáltatás [többrégiós írási](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) műveleteket is kihasználhatja. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Használat
 
-Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy dokumentum létrehozása az adatbázisban. Ebben a dokumentumban az automatikusan előállított GUID Azonosítóhoz megegyezik a dokumentum azonosítója. A kimeneti dokumentumhoz tartozó dokumentum AZONOSÍTÓjának megadásához adja meg a kimeneti paraméternek átadott JSON-objektum `id` tulajdonságát.
+Alapértelmezés szerint, amikor a függvény kimeneti paraméterére ír, egy dokumentum jön létre az adatbázisban. Ez a dokumentum automatikusan létrehozott GUID azonosítóval rendelkezik. A kimeneti dokumentum dokumentumazonosítóját a kimeneti `id` paraméternek átadott JSON-objektum tulajdonságának megadásával adhatja meg.
 
 > [!Note]
-> Létező dokumentum Azonosítóját adja meg, ha azt az új kimeneti dokumentum szerint felülíródik.
+> Amikor megadja egy meglévő dokumentum azonosítóját, az új kimeneti dokumentum felülírja azt.
 
-## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
+## <a name="exceptions-and-return-codes"></a>Kivételek és visszaküldési kódok
 
-| Kötés | Leírások |
+| Kötés | Referencia |
 |---|---|
-| CosmosDB | [CosmosDB-hibakódok](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| CosmosDB | [CosmosDB hibakódok](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 <a name="host-json"></a>
 
-## <a name="hostjson-settings"></a>Host.JSON-beállítások
+## <a name="hostjson-settings"></a>host.json beállítások
 
-Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](functions-host-json.md).
+Ez a szakasz a kötéshez a 2.x-es verzióban elérhető globális konfigurációs beállításokat ismerteti. A 2.x-es verzió globális konfigurációs beállításairól az [Azure Functions 2.x-es verziójának host.json-referencia című témakörében](functions-host-json.md)olvashat bővebben.
 
 ```json
 {
@@ -615,11 +615,11 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|GatewayMode|Átjáró-|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek `Direct` és `Gateway`|
-|Protokoll|Https|A függvény által a Azure Cosmos DB szolgáltatáshoz való kapcsolódáskor használt kapcsolati protokoll.  A [két mód magyarázata itt](../cosmos-db/performance-tips.md#networking) olvasható|
-|leasePrefix|n/a|Az alkalmazás összes függvényében használandó bérlet-előtag.|
+|GatewayMode (Átjáró mód)|Átjáró|A függvény által az Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt csatlakozási mód. A `Direct` lehetőségek a következők: és`Gateway`|
+|Protocol (Protokoll)|Https (https)|A függvény által használt kapcsolati protokoll, amikor az Azure Cosmos DB szolgáltatáshoz való csatlakozáskor.  Olvassa el [itt a magyarázata mindkét mód](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|n/a|Az alkalmazás összes függvényében használható bérletelőtag.|
 
 ## <a name="next-steps"></a>További lépések
 
-- [Függvény futtatása Azure Cosmos DB dokumentum létrehozásakor vagy módosításakor (trigger)](./functions-bindings-cosmosdb-v2-trigger.md)
-- [Azure Cosmos DB dokumentum olvasása (bemeneti kötés)](./functions-bindings-cosmosdb-v2-input.md)
+- [Egy függvény futtatása, ha egy Azure Cosmos DB-dokumentum jön létre vagy módosul (Trigger)](./functions-bindings-cosmosdb-v2-trigger.md)
+- [Azure Cosmos DB-dokumentum olvasása (bemeneti kötés)](./functions-bindings-cosmosdb-v2-input.md)

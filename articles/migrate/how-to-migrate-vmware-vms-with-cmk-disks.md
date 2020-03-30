@@ -1,6 +1,6 @@
 ---
-title: VMware virtuális gépek migrálása az Azure-ba kiszolgálóoldali titkosítással (SSE) és az ügyfél által felügyelt kulcsokkal (CMK) Azure Migrate kiszolgáló áttelepítésével
-description: Ismerje meg, hogyan telepítheti át a VMware virtuális gépeket az Azure-ba kiszolgálóoldali titkosítással (SSE) és az ügyfél által felügyelt kulcsokkal (CMK) Azure Migrate kiszolgáló áttelepítésével
+title: VMware virtuális gépek áttelepítése az Azure-ba kiszolgálóoldali titkosítással (SSE) és ügyfél által felügyelt kulcsokkal (CMK) az Azure Áttelepítési Kiszolgáló áttelepítése használatával
+description: Ismerje meg, hogyan telepítheti át a VMware virtuális gépeket az Azure-ba kiszolgálóoldali titkosítással (SSE) és ügyféláltal felügyelt kulcsokkal (CMK) az Azure Áttelepítési Kiszolgáló áttelepítésével
 author: bsiva
 ms.service: azure-migrate
 ms.manager: carmonm
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269483"
 ---
-# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware virtuális gépek migrálása a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal rendelkező Azure virtuális gépekre
+# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Virtuális gépvirtuális gépek áttelepítése az Azure-beli virtuális gépekre kiszolgálóoldali titkosítással és ügyféláltal kezelt kulcsokkal engedélyezve
 
-Ez a cikk azt ismerteti, hogyan telepíthetők a VMware virtuális gépek az Azure Virtual Machines szolgáltatásba a kiszolgálóoldali titkosítással (SSE) titkosított, ügyfél által felügyelt kulcsokkal (CMK) rendelkező lemezekkel, Azure Migrate Server Migration (ügynök nélküli replikáció) használatával.
+Ez a cikk ismerteti, hogyan telepítheti át a VMware virtuális gépeket az Azure virtuális gépekre a kiszolgálóoldali titkosítással (SSE) ügyfél által felügyelt kulcsokkal (CMK) titkosított lemezekkel, az Azure Áttelepítési kiszolgáló áttelepítése (ügynök nélküli replikáció) használatával.
 
-Az Azure Migrate Server Migration Portal felülete lehetővé teszi a [VMWare virtuális gépek áttelepítését az Azure-ba ügynök nélküli replikálással.](tutorial-migrate-vmware.md) A portál jelenleg nem teszi lehetővé az SSE bekapcsolását az Azure-ban lévő replikált lemezek CMK. Az SSE és a replikált lemezek CMK való bekapcsolásának lehetősége jelenleg csak REST APIon keresztül érhető el. Ebből a cikkből megtudhatja, hogyan hozhat létre és helyezhet üzembe egy [Azure Resource Manager-sablont](../azure-resource-manager/templates/overview.md) egy VMware virtuális gép replikálásához, és konfigurálja a replikált lemezeket az Azure-ban az SSE és a CMK használatával.
+Az Azure Migrate Server Migration portal felület lehetővé teszi [a VMware virtuális gépek áttelepítését az Azure-ba ügynök nélküli replikációval.](tutorial-migrate-vmware.md) A portálélmény jelenleg nem teszi lehetővé az SSE bekapcsolását cmk-rel az Azure-ban replikált lemezekhez. Az SSE cmk-rel történő bekapcsolásának lehetősége a replikált lemezekhez jelenleg csak a REST API-n keresztül érhető el. Ebben a cikkben megtudhatja, hogyan hozhat létre és helyezhet üzembe egy [Azure Resource Manager-sablont](../azure-resource-manager/templates/overview.md) egy VMware virtuális gép replikálásához, és konfigurálhatja a replikált lemezeket az Azure-ban az SSE cmk használatával.
 
-A cikkben szereplő példák a Resource Manager-sablon létrehozásához és üzembe helyezéséhez szükséges feladatok elvégzéséhez [Azure PowerShell](/powershell/azure/new-azureps-module-az) használnak.
+Ebben a cikkben szereplő példák az [Azure PowerShell](/powershell/azure/new-azureps-module-az) használatával hajtsák végre az Erőforrás-kezelő sablon létrehozásához és üzembe helyezéséhez szükséges feladatokat.
 
-[További](../virtual-machines/windows/disk-encryption.md) információ a felügyelt lemezekkel rendelkező, ügyfél által felügyelt kulcsokkal (CMK) rendelkező kiszolgálóoldali titkosításról.
+[További információ](../virtual-machines/windows/disk-encryption.md) a felügyelt lemezek ügyfél által felügyelt kulcsaival (CMK) rendelkező kiszolgálóoldali titkosításról (SSE).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Tekintse át a](tutorial-migrate-vmware.md) VMWare virtuális gépek Azure-ba történő áttelepítéséről szóló oktatóanyagot az ügynök nélküli replikációval az eszközre vonatkozó követelmények megismeréséhez.
-- Az [alábbi utasításokat követve](how-to-add-tool-first-time.md) hozzon létre egy Azure Migrate projektet, és adja hozzá a **Azure Migrate: Server áttelepítési** eszközt a projekthez.
-- [Kövesse ezeket az utasításokat](how-to-set-up-appliance-vmware.md) a VMware-hez készült Azure Migrate berendezés beállításához a helyszíni környezetben, és fejezze be a felderítést.
+- Tekintse át a VMware virtuális gépek Azure-ba való migrálásáról szóló [oktatóanyagot](tutorial-migrate-vmware.md) ügynök nélküli replikációval az eszközkövetelmények megértéséhez.
+- [Kövesse az alábbi utasításokat](how-to-add-tool-first-time.md) egy Azure Migrate projekt létrehozásához, és adja hozzá az **Azure Migrate: Server Migration** eszközt a projekthez.
+- [Kövesse ezeket](how-to-set-up-appliance-vmware.md) az utasításokat az Azure Migrate-készülék beállítása vmware a helyszíni környezetben, és a teljes felderítés.
 
-## <a name="prepare-for-replication"></a>Felkészülés a replikálásra
+## <a name="prepare-for-replication"></a>Felkészülés a replikációra
 
-Miután befejeződött a virtuális gép felderítése, a kiszolgáló áttelepítési csempén lévő felderített kiszolgálók sorban megjelennek a készülék által felderített VMware virtuális gépek száma.
+A virtuális gép felderítésének befejezése után a kiszolgálóáttelepítési csempe felderített kiszolgálói sora a készülék által felderített vmware virtuális gépek számát jeleníti meg.
 
 A virtuális gépek replikálásának megkezdése előtt elő kell készíteni a replikációs infrastruktúrát.
 
-1. Hozzon létre egy Service Bus példányt a célként megadott régióban. A helyszíni Azure Migrate berendezés a Service Bus használja a kiszolgáló áttelepítési szolgáltatásával való kommunikációra a replikáció és az áttelepítés koordinálásához.
-2. Hozzon létre egy Storage-fiókot, amellyel átviheti a műveleti naplókat a replikációból.
-3. Hozzon létre egy Storage-fiókot, amelyet a Azure Migrate berendezés a replikációs adatok feltöltésére.
-4. Hozzon létre egy Key Vault, és konfigurálja a Key Vaultt a megosztott hozzáférési aláírási jogkivonatok kezeléséhez a blob-hozzáféréshez a 3. és 4. lépésben létrehozott Storage-fiókok esetében.
-5. Hozzon létre egy közös hozzáférési aláírási tokent az 1. lépésben létrehozott Service Bus számára, és hozzon létre egy titkot a tokenhez az előző lépésben létrehozott Key Vault.
-6. Hozzon létre egy Key Vault hozzáférési szabályzatot, amely a helyszíni Azure Migrate berendezést (a Appliance HRE alkalmazás használatával) és a kiszolgáló áttelepítési szolgáltatásának hozzáférést biztosít a Key Vaulthoz.
-7. Hozzon létre egy replikációs házirendet, és konfigurálja a kiszolgáló áttelepítési szolgáltatását az előző lépésben létrehozott replikációs infrastruktúra részleteivel.
+1. Hozzon létre egy Service Bus-példányt a célrégióban. A Service Bus a helyszíni Azure Áttelepítési készülék a kiszolgálóáttelepítési szolgáltatással való kommunikációhoz a replikáció és az áttelepítés koordinálására.
+2. Hozzon létre egy tárfiókot a replikációból származó műveleti naplók átviteléhez.
+3. Hozzon létre egy tárfiókot, amelyaz Azure Migrate appliance replikációs adatokat tölt fel.
+4. Hozzon létre egy Key Vault és konfigurálja a Key Vault kezelésére megosztott hozzáférés aláírás tokenek blob hozzáférés a storage-fiókok létrehozott 3 és 4 lépésben.
+5. Hozzon létre egy megosztott hozzáférésű aláírás-jogkivonatot az 1.
+6. Hozzon létre egy Key Vault hozzáférési szabályzatot, amely lejáratja a helyszíni Azure Migrate-készülék (a készülék AAD alkalmazás használatával) és a kiszolgálóáttelepítési szolgáltatás hozzáférést a Key Vault.
+7. Hozzon létre egy replikációs házirendet, és konfigurálja a Kiszolgálóáttelepítési szolgáltatást az előző lépésben létrehozott replikációs infrastruktúra részleteivel.
 
-A replikációs infrastruktúrát létre kell hozni a cél Azure-régióban az áttelepítéshez és azon a célként megadott Azure-előfizetésben, amelyben a virtuális gépek migrálva vannak.
+A replikációs infrastruktúrát létre kell hozni a cél Azure-régióban az áttelepítéshez és a cél Azure-előfizetés, amely a virtuális gépek áttelepítése.
 
-A kiszolgálói áttelepítési portál felülete megkönnyíti a replikációs infrastruktúra előkészítését azáltal, hogy automatikusan elvégzi ezt a műveletet, amikor egy projektben először replikálja a virtuális gépet. Ez a cikk azt feltételezi, hogy már replikált egy vagy több virtuális gépet a portál felületén, és a replikációs infrastruktúra már létrejött. Megvizsgáljuk, hogyan derítheti fel a meglévő replikációs infrastruktúra részleteit, és hogyan használhatja ezeket a részleteket olyan Resource Manager-sablon bemenetként, amelyet a CMK-vel történő replikáció beállításához fog használni.
+A kiszolgálóáttelepítési portál szolgáltatása leegyszerűsíti a replikációs infrastruktúra előkészítését azáltal, hogy automatikusan ezt teszi, amikor először replikál egy virtuális gép egy projektben. Ebben a cikkben azt feltételezzük, hogy már replikált egy vagy több virtuális gépet a portállal, és hogy a replikációs infrastruktúra már létre van hozva. Megvizsgáljuk, hogyan fedezheti fel a meglévő replikációs infrastruktúra részleteit, és hogyan használhatja ezeket az adatokat bemenetként az Erőforrás-kezelő sablonba, amely et a cmk replikáció beállításához használ.
 
-### <a name="identifying-replication-infrastructure-components"></a>Replikációs infrastruktúra összetevőinek azonosítása
+### <a name="identifying-replication-infrastructure-components"></a>Replikációs infrastruktúra-összetevők azonosítása
 
-1. A Azure Portal lépjen az erőforráscsoportok lapra, és válassza ki azt az erőforráscsoportot, amelyben a Azure Migrate projektet létrehozták.
-2. Válassza a bal oldali menüben a **központi telepítések** elemet, majd keressen rá a *"Microsoft. MigrateV2. VMwareV2EnableMigrate"* karakterlánccal kezdődő központi telepítési névre. Megjelenik a portál felhasználói felülete által létrehozott Resource Manager-sablonok listája, amelyekkel beállíthatja a virtuális gépek replikálását ebben a projektben. Egy ilyen sablont töltünk le, amelyet a sablonnak a CMK-vel való replikáláshoz való előkészítéséhez használunk.
-3. A sablon letöltéséhez jelölje ki az előző lépésben szereplő karakterlánc-mintának megfelelő központi telepítést > válassza a bal oldali menüben a **sablon** kiválasztása lehetőséget > kattintson a felső menüben a **Letöltés** lehetőségre. Mentse helyileg a template. JSON fájlt. Ez a sablonfájl az utolsó lépésben lesz módosítva.
+1. Az Azure Portalon nyissa meg az erőforráscsoportok lapot, és válassza ki azt az erőforráscsoportot, amelyben az Azure Migrate projekt létrejött.
+2. Válassza a Bal oldali menü **Központi telepítések parancsát,** és keressen egy központi telepítési nevet a *"Microsoft.MigrateV2.VMwareV2EnableMigrate"* karakterlánccal kezdődően. A portálfelület által létrehozott Erőforrás-kezelő-sablonok listája jelenik meg a projektben lévő virtuális gépek replikációjának beállításához. Letöltünk egy ilyen sablont, és ezt használjuk bázisként a sablon cmk-rel történő replikációra való előkészítéséhez.
+3. A sablon letöltéséhez válassza ki az előző lépés karakterlánc-mintájának megfelelő központi telepítést, > válassza a **Sablon parancsot** a bal oldali menüből, > kattintson a letöltés **gombra** a felső menüből. Mentse a template.json fájlt helyileg. Ezt a sablonfájlt az utolsó lépésben fogja szerkeszteni.
 
-## <a name="create-a-disk-encryption-set"></a>Lemezes titkosítási csoport létrehozása
+## <a name="create-a-disk-encryption-set"></a>Lemeztitkosítási készlet létrehozása
 
-A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza. A virtuális gépek CMK való replikálásához létre kell hoznia egy lemezes titkosítási készletet, és bemenetként kell továbbítania a replikálási művelethez.
+A lemeztitkosítási készlet objektum a felügyelt lemezeket egy key vaulthoz rendeli hozzá, amely tartalmazza az SSE-hez használandó CMK-t. Virtuális gépek replikálása a CMK-vel, hozzon létre egy lemeztitkosítási készletet, és adja át azt a replikációs művelet bemeneteként.
 
-[A következő példa alapján](../virtual-machines/windows/disk-encryption.md#powershell) hozzon létre egy lemezes titkosítási készletet Azure PowerShell használatával. Győződjön meg arról, hogy a lemez titkosítási készlete a cél előfizetésben jön létre, amelyben a virtuális gépek migrálva vannak, illetve az áttelepítéshez a cél Azure-régióban.
+Kövesse az [alábbi](../virtual-machines/windows/disk-encryption.md#powershell) példát egy lemeztitkosítási készlet létrehozásához az Azure PowerShell használatával. Győződjön meg arról, hogy a lemeztitkosítási készlet jön létre a cél-előfizetés, amely a virtuális gépek áttelepítése, és a cél Azure-régióban az áttelepítés.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 
@@ -81,12 +81,12 @@ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ObjectId $des.Identity.Prin
 New-AzRoleAssignment -ResourceName $KeyVaultName -ResourceGroupName $TargetResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader"
 ```
 
-## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Az áttelepíteni kívánt VMware virtuális gép részleteinek beolvasása
+## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Az áttelepítendő VMware vm részletei
 
-Ebben a lépésben Azure PowerShell fogja használni az áttelepíteni kívánt virtuális gép részleteit. Ezeket a részleteket a Resource Manager-sablon a replikáláshoz való létrehozásához fogjuk használni. A két érdekes tulajdonság a következők egyike:
+Ebben a lépésben az Azure PowerShell használatával szerezheti be az áttelepítendő virtuális gép részleteit. Ezeket az adatokat fogja használni a replikációhoz használt Erőforrás-kezelő sablon létrehozásához. Pontosabban, a két tulajdonság a következő:
 
-- A felderített virtuális gépekhez tartozó gépi erőforrás azonosítója.
-- A virtuális gép lemezeinek és a lemezük azonosítóinak listája.
+- A gép erőforrás-azonosítója a felderített virtuális gépek.
+- A virtuális gép lemezeinek listája és lemezazonosítói.
 
 ```azurepowershell
 
@@ -105,7 +105,7 @@ ApplianceName  SiteId
 VMwareApplianc /subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite
 ```
 
-Másolja a virtuális gép által felderített Azure Migrate berendezésnek megfelelő SiteId karakterlánc értékét. A fenti példában látható, hogy a SiteId *"/Subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/Providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite"* .
+Másolja a SiteId-karakterlánc értékét, amely megfelel az Azure Migrate berendezésnek, amelyen keresztül a virtuális gép felderített. A fenti példában a SiteId a *"/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite"*
 
 ```azurepowershell
 
@@ -120,7 +120,7 @@ PS /home/bharathram> $machine = $Discoveredmachines | where {$_.Properties.displ
 PS /home/bharathram> $machine.count   #Validate that only 1 VM was found matching this name.
 ```
 
-Másolja az áttelepíteni kívánt gép ResourceId, nevének és lemezének UUID-értékeit.
+Másolja az áttelepítendő számítógép ResourceId-, név- és lemezazonosító-értékeit.
 ```Output
 PS > $machine.Name
 10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50098f99-f949-22ca-642b-724ec6595210
@@ -137,12 +137,12 @@ uuid                                 label       name    maxSizeInBytes
 
 ```
 
-## <a name="create-resource-manager-template-for-replication"></a>Resource Manager-sablon létrehozása a replikáláshoz
+## <a name="create-resource-manager-template-for-replication"></a>Erőforrás-kezelő sablon létrehozása replikációhoz
 
-- Nyissa meg az Ön által választott szerkesztőben a **replikációs infrastruktúra összetevőinek azonosítása** lépésben letöltött Resource Manager-sablonfájlt.
-- Távolítsa el az összes erőforrás-definíciót a sablonból, kivéve a *"Microsoft. recoveryservices szolgáltatónál/Vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems"* típusú erőforrásokat.
-- Ha a fenti típus több erőforrás-definícióval is rendelkezik, távolítsa el az összeset, de csak egyet. Távolítsa el az összes **dependsOn** tulajdonság-definíciót az erőforrás-definícióból.
-- Ennek a lépésnek a végén egy olyan fájlnak kell lennie, amely az alábbi példához hasonlóan néz ki, és ugyanazokkal a tulajdonságokkal rendelkezik.
+- Nyissa meg az Erőforrás-kezelő sablonfájlját, amelyet az Ön által választott szerkesztő ben letöltött **A replikációs infrastruktúra összetevőinek azonosítása** lépésben töltött le.
+- Az összes erőforrás-definíció eltávolítása a sablonból, kivéve a *"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems" típusú erőforrásokat.*
+- Ha a fenti típusú erőforrás-definíciók száma több, egy kivételével távolítsa el az összeset. Távolítsa el a **dependsOn** tulajdonságdefiníciókat az erőforrás-definícióból.
+- A lépés végén rendelkeznie kell egy fájllal, amely az alábbi példához hasonlóan néz ki, és ugyanazokkal a tulajdonságokkal rendelkezik.
 
 ```
 {
@@ -182,14 +182,14 @@ uuid                                 label       name    maxSizeInBytes
 }
 ```
 
-- Szerkessze a **Name** tulajdonságot az erőforrás-definícióban. Cserélje le azt a karakterláncot, amely az utolsó "/" értéket követi a Name (név) tulajdonságban $machine értékével *. Név*(az előző lépésből).
-- Módosítsa a **Properties. providerSpecificDetails. vmwareMachineId** tulajdonság értékét $Machine értékkel *. ResourceId*(az előző lépésből).
-- Állítsa be a **targetResourceGroupId**, a **targetNetworkId**, a **targetSubnetName** értéket a cél erőforráscsoport-azonosítóra, a CÉLKÉNT megadott virtuális hálózati erőforrás-azonosítóra, illetve a célként megadott alhálózat nevére.
-- Állítsa a **licenseType** értékét "windowsserver" értékre a virtuális gép Azure Hybrid Benefit alkalmazásához. Ha a virtuális gép nem jogosult Azure Hybrid Benefitre, állítsa a **licenseType** értékét NoLicenseType értékre.
-- Módosítsa a **targetVmName** tulajdonság értékét az áttelepített virtuális gép kívánt Azure-beli virtuálisgép-nevére.
-- Opcionálisan hozzáadhat egy **targetVmSize** nevű tulajdonságot a **targetVmName** tulajdonság alatt. Állítsa a **targetVmSize** tulajdonság értékét az áttelepített virtuális gép kívánt Azure-beli virtuálisgép-méretére.
-- A **disksToInclude** tulajdonság a replikáláshoz használt lemezek listája, amely egy helyszíni lemezt jelképező minden listaelemet jelöl. Hozzon létre több listaelemet a helyszíni virtuális gépen lévő lemezek számának megfelelően. Cserélje le a listaelemben lévő **Beskid** tulajdonságot az előző lépésben azonosított lemezek UUID-ra. Állítsa a **isOSDisk** értékét "true" értékre a virtuális gép operációsrendszer-lemezén, és a "false" értéket az összes többi lemez esetében. A **logStorageAccountId** és a **logStorageAccountSasSecretName** tulajdonságok változatlanok maradnak. Állítsa a **lemeztípus** értéket a lemezhez használni kívánt Azure felügyelt lemez típusára (*Standard_LRS, Premium_LRS, StandardSSD_LRS*). A CMK-mel titkosítani kívánt lemezekhez vegyen fel egy **diskEncryptionSetId** nevű tulajdonságot, és állítsa be az értéket a létrehozott lemezes titkosítási csoport erőforrás-azonosítójához ( **$des. Azonosító**) a *lemez titkosítási készletének létrehozása* lépésben
-- Mentse a szerkesztett sablonfájl fájlt. A fenti példában a szerkesztett sablonfájl a következőképpen néz ki:
+- A **névtulajdonság** szerkesztése az erőforrás-definícióban. Cserélje le a névtulajdonság utolsó "/" karakterét követő karakterláncot *$machine értékre. Név*( az előző lépésből).
+- Módosítsa a **properties.providerSpecificDetails.vmwareMachineId** tulajdonság értékét *$machine értékkel. ResourceId*( az előző lépésből).
+- Állítsa be a **targetResourceGroupId**, **targetNetworkId**, **targetSubnetName** értékeket a célerőforrás-csoport azonosítójára, a célvirtuális hálózati erőforrás azonosítójára és a cél alhálózat nevére.
+- Állítsa be a **licenseType** értékét "WindowsServer" értékre az Azure Hybrid Benefit alkalmazásához ehhez a virtuális géphez. Ha ez a virtuális gép nem jogosult az Azure Hybrid Benefit használatára, állítsa a **licenseType** értékét NoLicenseType értékre.
+- Módosítsa a **targetVmName** tulajdonság értékét az áttelepített virtuális gép kívánt Azure virtuálisgép-nevére.
+- Tetszés szerint adjon hozzá egy **targetVmSize** nevű tulajdonságot a **targetVmName** tulajdonság alatt. Állítsa be a **targetVmSize** tulajdonság értékét a kívánt Azure virtuálisgép-méretre az áttelepített virtuális géphez.
+- A **disksToInclude** tulajdonság a replikációhoz szükséges lemezbemenetek listája, amelynek minden olyan listaelem, amely egy helyszíni lemezt jelöl. Hozzon létre annyi listaelemet, mint a helyszíni virtuális gép lemezeinek száma. Cserélje le a listaelemben lévő **diskId** tulajdonságot az előző lépésben azonosított lemezek uuidazonosítójára. Állítsa az **isOSDisk** értéket "true" értékre a virtuális gép operációs rendszerlemezéhez, és "hamis" értéket az összes többi lemezhez. Hagyja változatlanul a **logStorageAccountId** és a **logStorageAccountSasSecretName** tulajdonságokat. Állítsa be a **diskType** értéket az Azure Managed Disk típusra (*Standard_LRS, Premium_LRS, StandardSSD_LRS)* a lemezhez való használatra. A CMK-vel titkosítani kívánt lemezekhez adjon hozzá egy **diskEncryptionSetId nevű tulajdonságot,** és állítsa be az értéket a létrehozott lemeztitkosítási készlet( $des erőforrásazonosítójára.** Id**) a *Lemeztitkosítási készlet létrehozása* lépésben
+- Mentse a szerkesztett sablonfájlt. A fenti példában a szerkesztett sablonfájl a következőképpen néz ki:
 
 ```
 {
@@ -249,7 +249,7 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="set-up-replication"></a>Replikáció beállítása
 
-Most már üzembe helyezheti a szerkesztett Resource Manager-sablont a projekt erőforráscsoporthoz a virtuális gép replikálásának beállításához. Megtudhatja, hogyan [helyezhet üzembe erőforrást Azure Resource Manager sablonokkal és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+Most már telepítheti a szerkesztett Erőforrás-kezelő sablont a projekt erőforráscsoporthoz a virtuális gép replikációjának beállításához. Megtudhatja, hogyan [helyezhet üzembe erőforrásokat az Azure Resource Manager-sablonokkal és az Azure PowerShelllel](../azure-resource-manager/templates/deploy-powershell.md)
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $ProjectResourceGroup -TemplateFile "C:\Users\Administrator\Downloads\template.json"
@@ -268,6 +268,6 @@ DeploymentDebugLogLevel :
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A [replikációs állapot figyelése](tutorial-migrate-vmware.md#track-and-monitor) a portálon keresztül, valamint a tesztek áttelepítése és áttelepítése.
+[Figyelje](tutorial-migrate-vmware.md#track-and-monitor) a replikáció állapotát a portálon keresztül, és hajtsa végre a tesztáttelepítéseket és az áttelepítéseket.

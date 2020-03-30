@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub hibáinak elhárítása 401003 IoTHubUnauthorized
-description: Ismerje meg, hogyan javíthatja a 401003-es hibát a IoTHubUnauthorized
+title: Az Azure IoT Hub 401003-as hibahiba
+description: Ismerje meg, hogyan lehet kijavítani a 401003-as IoTHubUnauthorized hibát
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,64 +9,64 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: d0a9f643516af5945037acb3dd1da24b06944171
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284407"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
-Ez a cikk a **401003 IoTHubUnauthorized** -hibák okait és megoldásait ismerteti.
+Ez a cikk a **401003 IoTHubUnauthorized** hibák okait és megoldásait ismerteti.
 
 ## <a name="symptoms"></a>Probléma
 
-### <a name="symptom-1"></a>1\. tünet
+### <a name="symptom-1"></a>1. tünet
 
-A diagnosztikai naplókban megtekintheti az **401003 IoTHubUnauthorized**és a **404104 DeviceConnectionClosedRemotely**, majd a röviddel később sikeresen összekapcsoló eszközök mintáját.
+A diagnosztikai naplókban megjelenik a **401003 IoTHubUnauthorized**kapcsolattal leválasztott eszközök mintája, majd **a 404104 DeviceConnectionClosedRemotely**, majd röviddel ezután sikeresen csatlakozik.
 
-### <a name="symptom-2"></a>2\. tünet
+### <a name="symptom-2"></a>2. tünet
 
-A következő hibaüzenetek egyikével sikertelen IoT Hub kérelmek:
+Az IoT Hubra irányuló kérelmek sikertelenek az alábbi hibaüzenetek egyikével:
 
-* Az engedélyezési fejléc hiányzik
-* A (z) "\*" IotHub nem tartalmazza a megadott "\*" eszközt
-* A (z) "\*" engedélyezési szabály nem engedélyezi a hozzáférést a következőhöz: "\*"
-* Az eszköz hitelesítése nem sikerült, a jogkivonat vagy tanúsítvány megújítása és újracsatlakoztatás
-* Az ujjlenyomat nem felel meg a konfigurációnak: ujjlenyomat: SHA1Hash =\*, SHA2Hash =\*; Konfiguráció: PrimaryThumbprint =\*, SecondaryThumbprint =\*
+* Hiányzik az engedélyezési fejléc
+* Az IotHub '\*' nem tartalmazza\*a megadott eszközt '
+* Az engedélyezési\*szabály " '\*nem engedélyezi a hozzáférést '
+* A hitelesítés nem sikerült az eszközön, megújult a jogkivonat vagy a tanúsítvány, és újra csatlakozhat
+* Az ujjlenyomat nem felel meg a konfigurációnak:\*Ujjlenyomat: SHA1Hash= , SHA2Hash=\*; Konfiguráció: PrimaryThumbprint=\*, SecondaryThumbprint=\*
 
 ## <a name="cause"></a>Ok
 
-### <a name="cause-1"></a>OK: 1
+### <a name="cause-1"></a>1. ok
 
-A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a leválasztást, amikor az SAS-token lejár a frissítéshez. Így 
+Az MQTT egyes SDK-k az IoT Hub-ra támaszkodnak a sas-jogkivonat lejártakor történő kapcsolatbontás esetén, hogy tudják, mikor kell frissíteni. Szóval 
 
-1. Az SAS-token lejár
-1. IoT Hub észleli a lejáratot, és leválasztja az eszközt a **401003 IoTHubUnauthorized**
-1. Az eszköz befejezi a leválasztást a **404104 DeviceConnectionClosedRemotely**
-1. A IoT SDK új SAS-jogkivonatot hoz létre
-1. Az eszköz újrakapcsolódik IoT Hub sikeresen
+1. A SAS-token lejár
+1. Az IoT Hub észleli a lejárati időt, és leválasztja az eszközt a **401003 IoTHubUnauthorized**
+1. Az eszköz befejezi a **404104 DeviceConnectionClosedWithLeLeglezárva**
+1. Az IoT SDK új SAS-jogkivonatot hoz létre
+1. Az eszköz sikeresen csatlakozik az IoT Hubhoz
 
-### <a name="cause-2"></a>OK 2
+### <a name="cause-2"></a>2. ok
 
-A IoT Hub nem tudta hitelesíteni az Auth fejlécét, szabályát vagy kulcsát.
+Az IoT Hub nem tudta hitelesíteni az auth fejlécet, szabályt vagy kulcsot.
 
 ## <a name="solution"></a>Megoldás
 
-### <a name="solution-1"></a>1\. megoldás
+### <a name="solution-1"></a>1. megoldás
 
-Nincs szükség beavatkozásra, ha az IoT SDK-t használja az eszköz kapcsolati karakterláncával való kapcsolathoz. A IoT SDK újragenerálta az új tokent az SAS-jogkivonat lejáratának újrakapcsolódásához. 
+Nincs szükség műveletre, ha az IoT SDK-t használja az eszköz kapcsolati karakterláncát használó kapcsolathoz. Az IoT SDK újragenerálja az új jogkivonatot a SAS-jogkivonat lejárati újracsatlakozásához. 
 
-Ha a hibák mennyisége aggodalomra ad okot, váltson a C SDK-ra, amely megújítja az SAS-jogkivonatot a lejárat előtt. Emellett a AMQP az SAS-jogkivonat a kapcsolat leválasztása nélkül is frissíthető.
+Ha a hibák mennyisége aggodalomra ad okot, váltson a C SDK-ra, amely megújítja a SAS-jogkivonatot a lejárat előtt. Emellett az AMQP esetében a SAS-jogkivonat leválasztás nélkül is frissíthető.
 
-### <a name="solution-2"></a>2\. megoldás
+### <a name="solution-2"></a>2. megoldás
 
-Általánosságban elmondható, hogy a hibaüzenet kijavításának módját a következő üzenet ismerteti:. Ha valamilyen okból nem fér hozzá a hibaüzenet részleteihez, ügyeljen a következőre:
+A bemutatott hibaüzenetnek általában el kell magyaráznia, hogyan lehet kijavítani a hibát. Ha valamilyen okból nem fér hozzá a hibaüzenet részleteihez, győződjön meg arról, hogy:
 
-- Az SAS vagy más használt biztonsági jogkivonat nem járt le. 
-- Az engedélyezési hitelesítő adat jól formázott a használt protokollhoz. További információ: [IoT hub hozzáférés-vezérlés](iot-hub-devguide-security.md).
-- A használt engedélyezési szabály jogosult a kért műveletre.
+- A SAS vagy más biztonsági jogkivonat használata nem járt le. 
+- Az engedélyezési hitelesítő adatok jól formázott a használt protokollhoz. További információ: [IoT Hub access control](iot-hub-devguide-security.md).
+- A használt engedélyezési szabály rendelkezik a kért művelet engedélyével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ahhoz, hogy könnyebben IoT Hub a hitelesítés, javasoljuk, hogy az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat használja.
+Az IoT Hub hitelesítésének megkönnyítése érdekében javasoljuk az [Azure IoT SDK-k](iot-hub-devguide-sdks.md)használatát.

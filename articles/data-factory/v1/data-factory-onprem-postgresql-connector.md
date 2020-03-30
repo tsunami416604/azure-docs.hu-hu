@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése a PostgreSQL-ből a Azure Data Factory használatával
-description: Ismerje meg, hogyan helyezheti át adatait a PostgreSQL-adatbázisból a Azure Data Factory használatával.
+title: Adatok áthelyezése a PostgreSQL-ből az Azure Data Factory használatával
+description: Ismerje meg, hogyan helyezhetát át az adatokat a PostgreSQL adatbázisból az Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,120 +13,120 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281235"
 ---
-# <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a PostgreSQL-ből a Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+# <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a PostgreSQL-ből az Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-onprem-postgresql-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-postgresql.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [PostgreSQL-összekötőt a v2-ben](../connector-postgresql.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a [PostgreSQL-összekötő t a V2 alkalmazásban.](../connector-postgresql.md)
 
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok helyszíni PostgreSQL-adatbázisból való áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok áthelyezése egy helyszíni PostgreSQL-adatbázisból. Az [adatmozgatási tevékenységek](data-factory-data-movement-activities.md) cikkre épül, amely általános áttekintést nyújt az adatmozgásról a másolási tevékenységgel.
 
-Az adatok egy helyszíni PostgreSQL-adattárból másolhatók bármely támogatott fogadó adattárba. A másolási tevékenység által mosogatóként támogatott adattárak listáját lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A adatfeldolgozó jelenleg támogatja az adatok egy PostgreSQL-adatbázisból más adattárakba való áthelyezését, az adatok más adattárakból egy PostgreSQL-adatbázisba való áthelyezését azonban nem.
+A helyszíni PostgreSQL-adattárból adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját a [támogatott adattárak című témakörben tetszésszerint.](data-factory-data-movement-activities.md#supported-data-stores-and-formats) A Data factory jelenleg támogatja az adatok PostgreSQL adatbázisból más adattárolókba való áthelyezését, de nem azt, hogy az adatokat más adattárakból postgreSQL adatbázisba helyezjék át.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Data Factory szolgáltatás támogatja a helyszíni PostgreSQL-forrásokhoz való kapcsolódást a adatkezelés átjáró használatával. Az átjáró beállításával adatkezelés kapcsolatos további információkért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) .
+A Data Factory szolgáltatás támogatja a helyszíni PostgreSQL-forrásokhoz való csatlakozást az adatkezelési átjáró használatával. Tekintse meg [az adatok áthelyezését a helyszíni helyek és a felhőalapú](data-factory-move-data-between-onprem-and-cloud.md) cikk között, és ismerje meg az Adatkezelési átjárót és az átjáró beállításának lépésenkénti útmutatóját.
 
-Az átjáróra akkor is szükség van, ha a PostgreSQL-adatbázist egy Azure IaaS virtuális gépen üzemeltetik. Az átjárót ugyanarra a IaaS virtuális gépre telepítheti, mint az adattár vagy egy másik virtuális gép, feltéve, hogy az átjáró csatlakozni tud az adatbázishoz.
+Átjáró akkor is szükség van, ha a PostgreSQL-adatbázis üzemelteti az Azure IaaS virtuális gép. Az átjárót telepítheti ugyanazon az IaaS virtuális gépre, mint az adattárban, vagy egy másik virtuális gépre, amíg az átjáró csatlakozhat az adatbázishoz.
 
 > [!NOTE]
-> A kapcsolat/átjáróval kapcsolatos problémák elhárításához kapcsolódó tippekért lásd: [átjárókkal kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
+> A kapcsolatokkal/átjáróval kapcsolatos problémák elhárításával kapcsolatos tippek az [átjáróval kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) című témakörben olvashat.
 
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
-Ha adatkezelés átjárót a PostgreSQL-adatbázishoz való kapcsolódáshoz, telepítse a [PostgreSQL-hez készült Ngpsql-adatszolgáltatót](https://go.microsoft.com/fwlink/?linkid=282716) a 2.0.12 és a 3.1.9 között, a adatkezelés átjáróval megegyező rendszeren. A PostgreSQL 7,4-es és újabb verziója támogatott.
+Ahhoz, hogy az Adatkezelési átjáró csatlakozzon a PostgreSQL adatbázishoz, telepítse a [PostgreSQL Ngpsql adatszolgáltatóját](https://go.microsoft.com/fwlink/?linkid=282716) a 2.0.12 és 3.1.9 közötti verzióval ugyanarra a rendszerre, mint az adatkezelési átjáró. PostgreSQL 7.4-es és újabb verzió támogatott.
 
-## <a name="getting-started"></a>Bevezetés
-Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni PostgreSQL-adattárból származó adatokkal.
+## <a name="getting-started"></a>Első lépések
+Létrehozhat egy folyamatot egy másolási tevékenységgel, amely különböző eszközök/API-k használatával áthelyezi az adatokat egy helyszíni PostgreSQL-adattárból.
 
-- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
-- A folyamat létrehozásához a következő eszközöket is használhatja:
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Olvassa el [az oktatóanyagot: Folyamat létrehozása a Másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakörben egy gyors útmutatót a folyamat másolása az adatok másolása varázslóval történő létrehozásához.
+- A következő eszközökkel is létrehozhat egy folyamatot:
   - Visual Studio
   - Azure PowerShell
   - Azure Resource Manager-sablon
   - .NET API
   - REST API
 
-    A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+    Lásd: [Tevékenység-oktatóanyag másolása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című témakörben részletes útmutatást talál egy másolási tevékenységgel rendelkező folyamat létrehozásához.
 
-Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépéseket hajthatja végre egy olyan folyamat létrehozásához, amely adatokat helyezi át a forrásadattárból a fogadó adattárába:
 
-1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
-2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához.
-3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges.
+1. **Összekapcsolt szolgáltatások** létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására.
+2. **Adatkészletek** létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására.
+3. Hozzon létre egy **folyamatot** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, egy adatkészletet pedig kimenetként vesz fel.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia. A helyszíni PostgreSQL-adattárakból származó adatok másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében lásd a [JSON-példa: adatok másolása a PostgreSQL-ből az Azure blobba](#json-example-copy-data-from-postgresql-to-azure-blob) című szakaszt a jelen cikkből.
+A varázsló használatakor a Data Factory entitásokhoz (csatolt szolgáltatások, adatkészletek és a folyamat) json-definíciók automatikusan létrejönnek. Eszközök/API-k használatakor (a .NET API kivételével) ezeket a Data Factory entitásokat a JSON formátum használatával definiálhatja. A helyszíni PostgreSQL-adattatárolóból adatok másolására használt Data Factory-entitások JSON-definícióival rendelkező minta a [JSON-példában: Adatok másolása a PostgreSQL-ből](#json-example-copy-data-from-postgresql-to-azure-blob) az Azure Blob szakaszba című témakörben.
 
-A következő szakaszokban részletesen ismertetjük a PostgreSQL-adattárra jellemző Data Factory entitások definiálásához használt JSON-tulajdonságokat:
+A következő szakaszok a PostgreSQL-adattára jellemző Data Factory-entitások definiálására használt JSON-tulajdonságok részleteit ismertetik:
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-A következő táblázat a PostgreSQL-hez társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+Az alábbi táblázat a PostgreSQL-hez csatolt szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesPostgreSql** |Igen |
-| kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
-| database |A PostgreSQL-adatbázis neve. |Igen |
-| schema |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |Nem |
-| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
-| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
-| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Igen |
+| type |A típustulajdonságnak a következő re van állítva: **OnPremisesPostgreSql** |Igen |
+| kiszolgáló |A PostgreSQL kiszolgáló neve. |Igen |
+| adatbázis |A PostgreSQL adatbázis neve. |Igen |
+| Séma |A séma neve az adatbázisban. A sémaneve a kis- és nagybetűket nem figyelembe. |Nem |
+| authenticationType |A PostgreSQL adatbázishoz való csatlakozáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, Egyszerű és Windows. |Igen |
+| felhasználónév |Adja meg a felhasználónevet, ha alapfokú vagy Windows-hitelesítést használ. |Nem |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
+| átjárónév |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak a helyszíni PostgreSQL-adatbázishoz való csatlakozáshoz kell használnia. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak.
+Az adatkészletek definiálására szolgáló & tulajdonságok teljes listáját az [Adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben olvashat. A JSON adatkészletek szerkezete, rendelkezésre állása és házirendje minden adatkészlettípushoz hasonlóak.
 
-A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú (PostgreSQL-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
+A typeProperties szakasz az adatkészlet egyes típusainál eltérő, és tájékoztatást nyújt az adatok helyéről az adattárban. A **RelationalTable** típusú adatkészlet typeProperties szakasza (amely a PostgreSQL adatkészletet is tartalmazza) a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Annak a PostgreSQL-adatbázisnak a neve, amelyre a társított szolgáltatás hivatkozik. A táblanév megkülönbözteti a kis-és nagybetűket. |Nem (ha meg van adva a **RelationalSource** **lekérdezése** ) |
+| tableName |A tábla neve a PostgreSQL adatbázis-példányban, amelyre a csatolt szolgáltatás hivatkozik. A táblanév a kis- és nagybetűk et is figyelembe nem egyezteti. |Nem (ha a **RelationalSource** **lekérdezése** meg van adva) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
+A tevékenységek definiálására rendelkezésre álló szakaszok & tulajdonságok teljes listáját a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben olvashat. Tulajdonságok, például név, leírás, bemeneti és kimeneti táblák és házirend állnak rendelkezésre minden típusú tevékenységek.
 
-Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
+Mivel a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusoktól függően változnak. Másolási tevékenység esetén a források és a fogadók típusától függően változnak.
 
-Ha a forrás típusa **RelationalSource** (beleértve a PostgreSQL-t is), a következő tulajdonságok érhetők el a typeProperties szakaszban:
+Ha a forrás **RelationalSource** típusú (amely tartalmazza a PostgreSQL-t is), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
+| lekérdezés |Az adatok olvasásához használja az egyéni lekérdezést. |SQL lekérdezési karakterlánc. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (ha **a tableName** of **dataset** meg van adva) |
 
 > [!NOTE]
-> A séma és a tábla neve megkülönbözteti a kis-és nagybetűket. A lekérdezésben `""` (idézőjelek között) tegye őket.
+> A séma- és táblanevekben a kis- és nagybetűket nem lehet figyelembe. A lekérdezésbe `""` (dupla idézőjelek) mellékeljük őket.
 
-**Példa**
+**Példa:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
-## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-példa: adatok másolása a PostgreSQL-ből az Azure-Blobba
-Ez a példa JSON-definíciókat tartalmaz, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Bemutatják, hogyan másolhatók adatok a PostgreSQL-adatbázisból az Azure Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
+## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-példa: Adatok másolása a PostgreSQL-ről az Azure Blobba
+Ebben a példában minta JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy az [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával. Ezek azt mutatják, hogyan másolhatja az adatokat a PostgreSQL-adatbázisból az Azure Blob Storage-ba. Azonban az adatok átmásolhatók az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott fogadók bármelyikébe az Azure Data Factory másolási tevékenység használatával.
 
 > [!IMPORTANT]
-> Ez a példa JSON-kódrészleteket biztosít. Nem tartalmaz részletes útmutatást az adatelőállító létrehozásához. Részletes útmutatásért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhőalapú cikkek között](data-factory-move-data-between-onprem-and-cloud.md) .
+> Ez a minta JSON-kódrészleteket biztosít. Nem tartalmazza az adat-előállító létrehozásának lépésenkénti útmutatóit. Tekintse meg [az adatok áthelyezését a helyszíni helyek és](data-factory-move-data-between-onprem-and-cloud.md) a felhőalapú cikk között, és részletes útmutatást talál.
 
-A minta a következő adatgyári entitásokat tartalmazhatja:
+A minta a következő adatfeldolgozó entitásokkal rendelkezik:
 
-1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties)típusú társított szolgáltatás.
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
-3. [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
-5. A [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
+1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties)típusú összekapcsolt szolgáltatás.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
+3. [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties)típusú bemeneti [adatkészlet.](data-factory-create-datasets.md)
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet.](data-factory-create-datasets.md)
+5. A [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) és [a BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)programot használó másolási tevékenységet használó [folyamat.](data-factory-create-pipelines.md)
 
-A minta minden órában átmásolja a PostgreSQL-adatbázis lekérdezési eredményét egy blobba. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
+A minta óránként másolja az adatokat egy lekérdezéseredményből a PostgreSQL-adatbázisból egy blobba. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszok ismertetik.
 
-Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a helyszíni [helyszínek és a felhő közötti adatáthelyezést](data-factory-move-data-between-onprem-and-cloud.md) ismertetik.
+Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a helyszíni helyek és a felhőalapú cikk [közötti átmozgatási](data-factory-move-data-between-onprem-and-cloud.md) adatokban találhatók.
 
-**PostgreSQL társított szolgáltatás:**
+**PostgreSQL kapcsolt szolgáltatás:**
 
 ```json
 {
@@ -145,7 +145,7 @@ Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a h
     }
 }
 ```
-**Azure Blob Storage társított szolgáltatás:**
+**Azure Blob storage-hoz csatolt szolgáltatás:**
 
 ```json
 {
@@ -158,11 +158,11 @@ Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a h
     }
 }
 ```
-**PostgreSQL bemeneti adatkészlete:**
+**PostgreSQL bemeneti adatkészlet:**
 
-A minta feltételezi, hogy létrehozott egy "Sajáttábla" táblát a PostgreSQL-ben, és egy "Timestamp" nevű oszlopot tartalmaz az idősorozat-adatsorokhoz.
+A minta feltételezi, hogy létrehozott egy "MyTable" táblát a PostgreSQL-ben, és tartalmaz egy "időbélyeg" nevű oszlopot az idősorozat-adatokhoz.
 
-A beállítás `"external": true` tájékoztatja a Data Factory szolgáltatást arról, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
+A `"external": true` beállítás tájékoztatja a Data Factory szolgáltatást, hogy az adatkészlet az adat-előállítón kívül található, és nem az adat-előállító tevékenység által előállított.
 
 ```json
 {
@@ -187,9 +187,9 @@ A beállítás `"external": true` tájékoztatja a Data Factory szolgáltatást 
 }
 ```
 
-**Azure-Blob kimeneti adatkészlete:**
+**Azure Blob kimeneti adatkészlet:**
 
-A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1). A blob mappa elérési útját és fájlnevét a feldolgozás alatt álló szelet kezdési időpontja alapján dinamikusan értékeli a rendszer. A mappa elérési útja a kezdési idő év, hónap, nap és óra részét használja.
+Az adatok óránként egy új blobba (gyakoriság: óra, időköz: 1) kerül beírásra. A blob mappaelérési útja és fájlneve dinamikusan kiértékelésre kerül a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési időpont év-, hónap-, nap- és órarészeit használja.
 
 ```json
 {
@@ -247,9 +247,9 @@ A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, i
 }
 ```
 
-**Másolási tevékenységgel rendelkező folyamat:**
+**Folyamat másolási tevékenységgel:**
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **lekérdezés** tulajdonsághoz megadott SQL-lekérdezés kiválasztja a PostgreSQL-adatbázis Public. usstates táblájának adatait.
+A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és az óránkénti futtatásra van ütemezve. A folyamat JSON-definíciójában a **forrástípus** **RelationalSource** lesz állítva, **a fogadó** típusa pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a PostgreSQL-adatbázis public.usstates táblájából választja ki az adatokat.
 
 ```json
 {
@@ -294,62 +294,62 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kime
     }
 }
 ```
-## <a name="type-mapping-for-postgresql"></a>Típus leképezése PostgreSQL-hez
-Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben említettek szerint a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokra:
+## <a name="type-mapping-for-postgresql"></a>A PostgreSQL típusleképezése
+Az [adatmozgatási tevékenységek](data-factory-data-movement-activities.md) cikkben említettek szerint a Másolástevékenység automatikus típuskonverziókat hajt végre a forrástípusokról a fogadótípusokra a következő kétlépéses megközelítéssel:
 
-1. Konvertálás natív forrásokból .NET-típusra
-2. Konvertálás .NET-típusról natív fogadó típusra
+1. Konvertálás natív forrástípusokból .NET-típussá
+2. Konvertálás .NET típusból natív fogadótípussá
 
-Az adatok PostgreSQL-be való áthelyezésekor a rendszer a következő leképezéseket használja a PostgreSQL típusról a .NET típusra.
+Amikor adatokat helyez át a PostgreSQL-be, a következő leképezéseket használja a PostgreSQL típusról a .NET típusra.
 
-| PostgreSQL-adatbázis típusa | PostgresSQL aliasok | .NET-keretrendszer típusa |
+| PostgreSQL adatbázis típusa | PostgresSQL aliasok | .NET keretrendszer típusa |
 | --- | --- | --- |
-| abstime | |Dátum és idő |
+| abstime | |Datetime |
 | bigint |int8 |Int64 |
-| bigserial |serial8 |Int64 |
-| bit [(n)] | |Bájt [], karakterlánc |
-| bit változó [(n)] |varbit |Bájt [], karakterlánc |
-| logikai |bool |Logikai |
-| párbeszédpanel | |Bájt [], karakterlánc |
-| bytea | |Bájt [], karakterlánc |
-| karakter [(n)] |char [(n)] |Sztring |
-| változó karakter [(n)] |varchar [(n)] |Sztring |
-| CID | |Sztring |
-| CIDR | |Sztring |
-| Kör | |Bájt [], karakterlánc |
-| dátum | |Dátum és idő |
-| DateRange | |Sztring |
-| dupla pontosság |FLOAT8 |Dupla |
-| inet | |Bájt [], karakterlánc |
-| intarr | |Sztring |
+| bigsoros között |soros8 |Int64 |
+| bit [(n)] | |Bájt[], karakterlánc |
+| bit változó [ (n) ] |varbit között |Bájt[], karakterlánc |
+| logikai |Bool |Logikai |
+| Doboz | |Bájt[], karakterlánc |
+| bájt | |Bájt[], karakterlánc |
+| karakter [(n)] |karakter [(n)] |Sztring |
+| karakter változó [(n)] |varchar [(n)] |Sztring |
+| Cid | |Sztring |
+| cidr | |Sztring |
+| kör | |Bájt[], karakterlánc |
+| dátum | |Datetime |
+| dátumtartomány | |Sztring |
+| dupla pontosság |úszó8 |Double |
+| inet | |Bájt[], karakterlánc |
+| intarry (intarry) | |Sztring |
 | int4range | |Sztring |
 | int8range | |Sztring |
 | egész szám |int, int4 |Int32 |
 | intervallum [mezők] [(p)] | |Időtartomány |
-| JSON | |Sztring |
-| jsonb | |Byte[] |
-| parancssori | |Bájt [], karakterlánc |
-| lseg | |Bájt [], karakterlánc |
-| macaddr | |Bájt [], karakterlánc |
-| money | |tizedes tört |
-| numerikus [(p, s)] |decimális [(p, s)] |tizedes tört |
-| numrange | |Sztring |
-| oid | |Int32 |
-| elérési út | |Bájt [], karakterlánc |
+| json | |Sztring |
+| jsonb között | |Bájt[] |
+| vonal | |Bájt[], karakterlánc |
+| lseg között | |Bájt[], karakterlánc |
+| macaddr között | |Bájt[], karakterlánc |
+| Pénzt | |Decimal |
+| numerikus [(p, s)] |decimális [(p, s)] |Decimal |
+| numrange (számtartomány) | |Sztring |
+| Oid | |Int32 |
+| path | |Bájt[], karakterlánc |
 | pg_lsn | |Int64 |
-| pont | |Bájt [], karakterlánc |
-| Sokszög | |Bájt [], karakterlánc |
-| real |float4 |Single |
+| Pont | |Bájt[], karakterlánc |
+| Sokszög | |Bájt[], karakterlánc |
+| real |úszó4 |Egyirányú |
 | smallint |int2 |Int16 |
-| smallserial |serial2 |Int16 |
-| sorozatszám |serial4 |Int32 |
+| smallserial között |soros2 |Int16 |
+| Sorozat |soros4 |Int32 |
 | szöveg | |Sztring |
 
-## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
-A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Forrás leképezése oszlopokhoz
+Ha többet szeretne tudni arról, hogy a forrásadatkészlet oszlopait a fogadó adatkészlet oszlopaihoz szeretné-e leképezni, olvassa [el az Adatkészletoszlopok leképezése az Azure Data Factoryban című témakört.](data-factory-map-columns.md)
 
-## <a name="repeatable-read-from-relational-sources"></a>Megismételhető olvasás a rokon forrásokból
-Az adatok a kapcsolódó adattárakból való másolása során érdemes megismételni a nem kívánt eredmények elkerülését. Azure Data Factory a szeleteket manuálisan is újra futtathatja. Az újrapróbálkozási szabályzatot is konfigurálhatja egy adatkészlethez, hogy a rendszer hiba esetén újrafuttassa a szeleteket. Ha egy szeletet mindkét módon újrafuttat, meg kell győződnie arról, hogy a szeletek hányszor futnak. Lásd: [megismételhető olvasás a rokon forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Relációs forrásokból ismételhető olvasmony
+Ha relációs adattárakból másolja az adatokat, tartsa szem előtt az ismételhetőséget a nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryban manuálisan futtathatja a szeletet. Az adatkészlet újrapróbálkozási házirendje is konfigurálható, így a szelet újrafut, ha hiba történik. Ha egy szeletet mindkét irányban újrafuttat, meg kell győződnie arról, hogy ugyanazokat az adatokat olvassa el, függetlenül attól, hogy hányszor fut egy szelet. Lásd: [Ismételhető olvasás relációs forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
-A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
+A [Tevékenység teljesítményének másolása & hangolási útmutatóban](data-factory-copy-activity-performance.md) megismerést talál az adatok (másolási tevékenység) azure Data Factory ban az adatmozgatás (másolási tevékenység) teljesítményét befolyásoló legfontosabb tényezőkről, valamint az optimalizálás különböző módjairól.

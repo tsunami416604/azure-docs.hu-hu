@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép hozzáadása laborhoz Azure DevTest Labsban | Microsoft Docs
-description: Megtudhatja, hogyan adhat hozzá virtuális gépeket laborhoz Azure DevTest Labs
+title: Virtuális gép hozzáadása egy tesztkörnyezethez az Azure DevTest Labs ben | Microsoft dokumentumok
+description: Megtudhatja, hogyan adhat hozzá virtuális gépet egy laborhoz az Azure DevTest Labsben
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,111 +15,111 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284251"
 ---
-# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Virtuális gép hozzáadása laborhoz Azure DevTest Labs
-Ha már [létrehozta az első virtuális gépet](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), akkor valószínű, hogy egy előre betöltött [Piactéri rendszerképből](devtest-lab-configure-marketplace-images.md)származik. Most, ha további virtuális gépeket szeretne hozzáadni a laborhoz, kiválaszthat egy [Egyéni rendszerképet](devtest-lab-create-template.md) vagy egy [képletet](devtest-lab-manage-formulas.md)tartalmazó *alapot* is. Ez az oktatóanyag végigvezeti a virtuális gép DevTest Labs-beli laborban való hozzáadásának Azure Portal használatával.
+# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Virtuális gép hozzáadása egy laborhoz az Azure DevTest Labsben
+Ha már [létrehozta az első virtuális gépét,](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)valószínűleg egy előre betöltött [piactéri lemezképből](devtest-lab-configure-marketplace-images.md)hozta létre. Most, ha további virtuális gépeket szeretne hozzáadni a tesztkörnyezethez, választhat egy *olyan bázist* is, amely [egyéni lemezkép](devtest-lab-create-template.md) vagy [képlet.](devtest-lab-manage-formulas.md) Ez az oktatóanyag végigvezeti az Azure Portal használatával egy virtuális gép hozzáadása a DevTest Labs egy laborban.
 
-A cikk azt is bemutatja, hogyan kezelheti a virtuális gép összetevőit a laborban.
+Ez a cikk azt is bemutatja, hogyan kezelheti a virtuális gép összetevőit a laborban.
 
-## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>A virtuális gép tesztkörnyezetben való hozzáadásának lépései Azure DevTest Labs
-1. Jelentkezzen be az [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a **DEVOPS** szakaszban. Ha a * (csillag) lehetőséget választja a **DevTest Labs** mellett a **DEVOPS** szakaszban. Ez a művelet hozzáadja a **DevTest Labs** szolgáltatást a bal oldali navigációs menühöz, hogy a következő alkalommal könnyen elérhető legyen. Ezután kiválaszthatja a bal oldali navigációs menü **DevTest Labs** elemét.
+## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Virtuális gép hozzáadása az Azure DevTest Labs laborjába
+1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
+1. Válassza az **Összes szolgáltatás**lehetőséget, majd a **DEVOPS** szakasz **DevTest Labs** lehetőséget. Ha a DEVOPS szakasz **DevTest Labs** mellett a * (csillag) lehetőséget **választja.** Ez a művelet hozzáadja a **DevTest Labs-t** a bal oldali navigációs menühöz, így a következő alkalommal könnyen elérheti azt. Ezután kiválaszthatja **a DevTest Labs** a bal oldali navigációs menüben.
 
-    ![Minden szolgáltatás – válassza a DevTest Labs lehetőséget](./media/devtest-lab-create-lab/all-services-select.png)
-1. A Labs listából válassza ki azt a labort, amelyben létre szeretné hozni a virtuális gépet.
-2. A labor **Áttekintés** lapján válassza a **+ Hozzáadás**lehetőséget.
+    ![Minden szolgáltatás - válassza a DevTest Labs lehetőséget](./media/devtest-lab-create-lab/all-services-select.png)
+1. A laborok listájából válassza ki azt a tesztkörnyezetet, amelyben létre szeretné hozni a virtuális gép.
+2. A tesztkörnyezet **áttekintése** lapon válassza a **+ Hozzáadás**lehetőséget.
 
     ![Virtuális gép hozzáadása gomb](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
-1. A **kiinduló** kiválasztása lapon válasszon ki egy Piactéri rendszerképet a virtuális géphez.
-1. A **virtuális gép** lap **alapbeállítások** lapján hajtsa végre a következő műveleteket:
-    1. A virtuális gép neve szövegmezőben adjon meg egy nevet a **virtuális gépnek** . A szövegmező előre ki van töltve egy egyedi, automatikusan létrehozott névvel. A név az e-mail-címen belüli felhasználónévnek felel meg, amelyet egy egyedi 3 számjegyű szám követ. Ezzel a funkcióval megtakaríthatja a gép nevét, és minden egyes számítógép létrehozásakor begépelheti azt. Ha kívánja, felülbírálhatja ezt az automatikusan kitöltött mezőt az Ön által választott névvel. A virtuális gép automatikusan kitöltött nevének felülbírálásához írjon be egy nevet a virtuálisgép- **név** szövegmezőbe.
-    2. Adjon meg egy **felhasználónevet** , amely rendszergazdai jogosultságokat kap a virtuális gépen. A gép **felhasználóneve** előre ki van töltve egy egyedi, automatikusan létrehozott névvel. A név az e-mail-címen belüli felhasználónévnek felel meg. Ezzel a funkcióval időt takaríthat meg, hogy minden új gép létrehozásakor eldöntse a felhasználónevet. Ezt követően felülbírálhatja ezt az automatikusan kitöltött mezőt az Ön által választott felhasználónévvel, ha szeretné. A felhasználónévhez tartozó automatikusan kitöltött érték felülbírálásához írjon be egy értéket a **Felhasználónév** szövegmezőbe. Ez a felhasználó **rendszergazdai** jogosultságokat kap a virtuális gépen.
-    3. Ha az első virtuális gépet a laborban hozza létre, adjon meg egy **jelszót** a felhasználó számára. Ha ezt a jelszót alapértelmezett jelszóként szeretné menteni a laborhoz társított Azure Key vaultban, válassza a **Mentés alapértelmezett jelszóként**lehetőséget. Az alapértelmezett jelszót a Key Vault menti a Name: **VmPassword**. Amikor további virtuális gépeket próbál létrehozni a tesztkörnyezetben, a rendszer automatikusan kiválasztja a **jelszót**a **VmPassword** . Az érték felülbírálásához törölje a jelet a **mentett titkos kód használata** jelölőnégyzetből, és adjon meg egy jelszót.
+1. A **Válasszon ki egy alaplapot,** válasszon ki egy piactéri lemezképet a virtuális géphez.
+1. A **Virtuálisgép** lap **Alapbeállítások** lapján hajtsa végre a következő műveleteket:
+    1. Adja meg a virtuális gép nevét a **virtuális gép neve** mezőbe. A szövegdoboz előre ki van töltve egy egyedi, automatikusan generált névvel. A név megfelel az e-mail címben lévő felhasználónévnek, amelyet egy egyedi 3 jegyű szám követ. Ez a funkció időt takarít meg, hogy gondoljon egy gép nevére, és írja be minden alkalommal, amikor létrehoz egy gépet. Ezt az automatikusan kitöltött mezőt felülírhatja egy ön által választott névvel, ha szeretné. A virtuális gép automatikuskitöltésű nevének felülbírálásához írjon be egy nevet a **Virtuálisgép neve** mezőbe.
+    2. Adjon meg egy rendszergazdai jogosultságokkal rendelkező **felhasználónevet** a virtuális gépen. A számítógép **felhasználóneve** előre ki van töltve egy egyedi, automatikusan generált névvel. A név az e-mail címben szereplő felhasználónévnek felel meg. Ezzel a funkcióval időt takaríthat meg, hogy minden alkalommal döntsön a felhasználónévről, amikor új gépet hoz létre. Ismét felülbírálhatja ezt az automatikusan kitöltött mezőt egy ön által választott felhasználónévvel, ha szeretné. A felhasználónév automatikus kitöltési értékének felülbírálásához írjon be egy értéket a **Felhasználónév** mezőbe. Ez a felhasználó **rendszergazdai** jogosultságokat kap a virtuális gépen.
+    3. Ha az első virtuális gép létrehozása a laborban, adja meg a **jelszót** a felhasználó számára. Ha ezt a jelszót alapértelmezett jelszóként szeretné menteni a laborhoz társított Azure-kulcstartóba, válassza a **Mentés alapértelmezett jelszóként**lehetőséget. Az alapértelmezett jelszót a program a következő névvel menti a key vaultba: **VmPassword**. Amikor megpróbálja létrehozni a következő virtuális gépeket a tesztkörnyezetben, a **VmPassword** automatikusan kiválasztódik a **jelszóhoz.** Az érték felülbírálásához törölje a jelet a **Mentett titkos titok használata** jelölőnégyzetből, és adjon meg egy jelszót.
 
         ![Alap kiválasztása](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
-        Először a Key vaultban is mentheti a titkos kulcsokat, majd használhatja azt a laborban található virtuális gép létrehozásakor. További információ: a [titkos kulcsok tárolása a kulcstartóban](devtest-lab-store-secrets-in-key-vault.md). A Key vaultban tárolt jelszó használatához válassza a **mentett titkos kód használata**lehetőséget, és adjon meg egy olyan kulcsot, amely megfelel a titkos kulcsnak (jelszó).
-    4. A **További beállítások** szakaszban válassza a **méret módosítása**lehetőséget. Válassza ki az előre definiált elemek egyikét, amely meghatározza a processzor magjait, a RAM méretét és a létrehozandó virtuális gép merevlemezének méretét.
-    5. Válassza az összetevők **hozzáadása vagy eltávolítása**lehetőséget. Válassza ki és konfigurálja azokat az összetevőket, amelyeket hozzá szeretne adni az alaprendszerképhez.
-    **Megjegyzés:** Ha most ismerkedik a DevTest Labs szolgáltatással vagy az összetevők konfigurálásával, tekintse meg a [meglévő összetevő hozzáadása virtuális géphez](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) című szakaszt, és ha elkészült, térjen vissza ide.
-2. Váltson a felül található **Speciális beállítások** lapra, és végezze el a következő műveleteket:
-    1. Ha módosítani szeretné azt a virtuális hálózatot, amelyen a virtuális gép található, válassza a **VNet módosítása**lehetőséget.
-    2. Az alhálózat módosításához válassza az **alhálózat módosítása**lehetőséget.
-    3. Annak megadása, hogy a virtuális gép IP-címe **nyilvános, magánjellegű vagy megosztott**.
-    4. A virtuális gép automatikus törléséhez határozza meg a **lejárat dátumát és időpontját**.
-    5. Ahhoz, hogy a virtuális gép számára elérhető legyen egy labor-felhasználó, válassza az **Igen** lehetőséget a **gép igény** szerinti beállításának megköveteléséhez.
-    6. Adja meg a tesztkörnyezet felhasználói számára elérhetővé tenni kívánt **virtuális gép példányainak** számát.
+        A titkos kulcsokat is mentheti a key vault először, majd használja, miközben egy virtuális gép a laborban létrehozása közben. További információ: [Titkos kulcsok tárolása a kulcstartóban](devtest-lab-store-secrets-in-key-vault.md)című témakörben talál. A kulcstartóban tárolt jelszó használatához jelölje be a **Mentett titkos kulcs használata**lehetőséget, és adjon meg egy, a titkos kulcsnak (jelszónak) megfelelő kulcsértéket.
+    4. A **További beállítások** csoportban válassza a **Méret módosítása**lehetőséget. Válassza ki az egyik előre definiált elemeket, amelyek meghatározzák a processzormagok, RAM-méret, és a merevlemez mérete a virtuális gép létrehozásához.
+    5. Válassza **az Összetevők hozzáadása vagy eltávolítása**lehetőséget. Jelölje ki és konfigurálja az alaplemezképhez hozzáadni kívánt összetevőket.
+    **Megjegyzés:** Ha most ismerkedik a DevTest Labs vagy az összetevők konfigurálása, olvassa el a [meglévő műtermék hozzáadása egy virtuális géphez](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) szakaszban, majd térjen vissza ide, ha kész.
+2. Váltson a felső **speciális beállítások** lapra, és hajtsa végre a következő műveleteket:
+    1. A virtuális hálózat módosításához, amelyben a virtuális gép található, válassza a **Virtuális hálózat módosítása**lehetőséget.
+    2. Az alhálózat módosításához válassza az **Alhálózat módosítása**lehetőséget.
+    3. Adja meg, hogy a virtuális gép IP-címe **nyilvános, privát vagy megosztott.**
+    4. A virtuális gép automatikus törléséhez adja meg a **lejárati dátumot és az időt.**
+    5. Ha azt szeretné, hogy a virtuális gép igény szerint egy tesztkörnyezet-felhasználó, válassza az **Igen** a **gép igény alá vehető** beállítás lehetőséget.
+    6. Adja meg a **virtuális gép azon példányainak** számát, amelyeket elérhetővé szeretne tenni a tesztkörnyezet felhasználói számára.
 
         ![Alap kiválasztása](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
-1. Válassza a **Létrehozás** lehetőséget a megadott virtuális gép laborhoz való hozzáadásához.
+1. Válassza **a Létrehozás** lehetőséget a megadott virtuális gép hozzáadása a laborhoz.
 
-   A labor lapon megjelenik a virtuális gép létrehozásának állapota – elsőként a **Létrehozás**után, majd a virtuális gép elindítása után **futtatva** .
+   A laborlap megjeleníti a virtuális gép létrehozásának állapotát – először **létrehozás,** majd a virtuális gép indítása után **futó állapot.**
 
     ![Virtuális gép létrehozásának állapota](./media/tutorial-create-custom-lab/vm-creation-status.png)
 
-## <a name="add-an-existing-artifact-to-a-vm"></a>Meglévő összetevő hozzáadása egy virtuális géphez
-A virtuális gépek létrehozása során meglévő összetevőket is hozzáadhat. Az egyes laborok a nyilvános DevTest Labs összetevő-tárházból, valamint a létrehozott és a saját összetevő-tárházba felvett összetevőkből álló összetevőket tartalmaznak.
+## <a name="add-an-existing-artifact-to-a-vm"></a>Meglévő műtermék hozzáadása virtuális géphez
+Virtuális gép létrehozása közben meglévő összetevők et adhat hozzá. Minden egyes tesztkörnyezet tartalmazza a nyilvános devtest labs műtermék-tárházból származó összetevőket, valamint a saját műtermék-tárházhoz hozzáadott és hozzáadott összetevőket.
 
-* Azure DevTest Labs *az* összetevők lehetővé teszik a virtuális gép üzembe helyezésekor végrehajtandó *műveletek* megadását, például a Windows PowerShell-parancsfájlok futtatását, a bash-parancsok futtatását és a szoftverek telepítését.
-* Az összetevő- *Paraméterek* lehetővé teszik az adott forgatókönyvhöz tartozó összetevők testreszabását
+* Az Azure DevTest Labs összetevői lehetővé *teszik* a virtuális gép kiépítésekor végrehajtott *műveletek,* például a Windows PowerShell-parancsfájlok futtatása, a Bash-parancsok futtatása és a szoftverek telepítése.
+* A *műtermék-paraméterek* segítségével testreszabhatja az összetevőt az adott forgatókönyvhöz
 
-Az összetevők létrehozásával kapcsolatos információkért tekintse meg a cikket, [amelyből megtudhatja, hogyan hozhat létre saját összetevőket a DevTest Labs használatával](devtest-lab-artifact-author.md).
+Az összetevők létrehozásáról a Következő témakörben [olvashat: Ismerje meg, hogyan készíthet saját műtermékeket a DevTest Labs alkalmazáshoz.](devtest-lab-artifact-author.md)
 
-1. Jelentkezzen be az [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
-1. A laborok listájából válassza ki azt a labort, amely a használni kívánt virtuális gépet tartalmazza.
-1. Válassza **a saját virtuális gépek**lehetőséget.
-1. Válassza ki a kívánt virtuális gépet.
-1. Válassza az összetevők **kezelése**lehetőséget.
-1. Válassza az összetevők **alkalmazása**lehetőséget.
-1. Az összetevők **alkalmazása** ablaktáblán válassza ki azt az összetevőt, amelyet hozzá szeretne adni a virtuális géphez.
-1. Az összetevő **hozzáadása** panelen adja meg a szükséges paramétereket, valamint az esetlegesen szükséges paramétereket.
-1. A **Hozzáadás** gombra kattintva vegye fel az összetevőt, és térjen vissza az összetevők **alkalmazása** ablaktáblára.
-1. Folytassa az összetevők hozzáadását a virtuális géphez szükséges módon.
-1. Az összetevők hozzáadása után [megváltoztathatja az összetevők futtatásának sorrendjét](#change-the-order-in-which-artifacts-are-run). Visszatérhet az összetevők [megtekintéséhez vagy módosításához](#view-or-modify-an-artifact)is.
-1. Ha elkészült az összetevők hozzáadásával, kattintson az **alkalmaz** gombra.
+1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
+1. Válassza az **Összes szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
+1. A laborok listájából válassza ki azt a tesztkörnyezetet, amely a kívánt virtuális gép kívánt dolgozni.
+1. Válassza **a Saját virtuális gépek**lehetőséget .
+1. Válassza ki a kívánt virtuális gép.
+1. Válassza **az Összetevők kezelése**lehetőséget.
+1. Válassza **az Összetevők alkalmazása**lehetőséget.
+1. Az **Összetevők alkalmazása** ablaktáblán jelölje ki a virtuális géphez hozzáadni kívánt összetevőt.
+1. A **Műtermék hozzáadása** ablaktáblán adja meg a szükséges paraméterértékeket és a szükséges választható paramétereket.
+1. Válassza a **Hozzáadás** lehetőséget a műtermék hozzáadásához és a **Műtermékek alkalmazása** ablaktáblához való visszatéréshez.
+1. Folytassa az összetevők hozzáadását a virtuális géphez szükség szerint.
+1. Miután hozzáadta az összetevőket, [módosíthatja az összetevők futtatásának sorrendjét.](#change-the-order-in-which-artifacts-are-run) Visszatérhet az összetevő [megtekintéséhez vagy módosításához](#view-or-modify-an-artifact)is.
+1. Ha végzett az összetevők hozzáadásával, válassza **az Alkalmaz lehetőséget.**
 
-## <a name="change-the-order-in-which-artifacts-are-run"></a>Az összetevők futtatási sorrendjének módosítása
-Alapértelmezés szerint az összetevők műveletei a virtuális géphez való hozzáadásuk sorrendjében hajthatók végre.
-Az alábbi lépések bemutatják, hogyan módosíthatja az összetevők futtatásának sorrendjét.
+## <a name="change-the-order-in-which-artifacts-are-run"></a>Az összetevők futtatásának sorrendjének módosítása
+Alapértelmezés szerint az összetevők műveletek végrehajtása abban a sorrendben, amelyben hozzáadódnak a virtuális géphez.
+A következő lépések bemutatják, hogyan módosíthatja az összetevők futtatásának sorrendjét.
 
-1. Az összetevők **alkalmazása** ablaktábla felső részén válassza ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
+1. Az **Összetevők alkalmazása** ablaktábla tetején jelölje ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
 
     ![A virtuális géphez hozzáadott összetevők száma](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. A **kiválasztott** összetevők panelen húzza az összetevőket a kívánt sorrendbe. **Megjegyzés:** Ha nem sikerül áthúzni az összetevőt, győződjön meg róla, hogy az összetevő bal oldaláról húzza az elemet.
+1. A **Kijelölt összetevők** ablaktáblán húzza az összetevőket a kívánt sorrendbe. **Megjegyzés:** Ha nem tudja áthúzni a műtárgyat, győződjön meg arról, hogy a műtermék bal oldaláról húzza.
 1. Kattintson az **OK** gombra, amikor végzett.
 
-## <a name="view-or-modify-an-artifact"></a>Összetevő megtekintése és módosítása
-Az alábbi lépések bemutatják, hogyan lehet megtekinteni vagy módosítani egy összetevő paramétereit:
+## <a name="view-or-modify-an-artifact"></a>Műtermék megtekintése vagy módosítása
+A következő lépések bemutatják, hogyan tekintheti meg vagy módosíthatja egy műtermék paramétereit:
 
-1. Az összetevők **alkalmazása** ablaktábla felső részén válassza ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
+1. Az **Összetevők alkalmazása** ablaktábla tetején jelölje ki a virtuális géphez hozzáadott összetevők számát jelző hivatkozást.
 
     ![A virtuális géphez hozzáadott összetevők száma](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. A **kiválasztott** összetevők ablaktáblán válassza ki a megtekinteni vagy szerkeszteni kívánt összetevőt.
-1. Az összetevő **hozzáadása** panelen végezze el a szükséges módosításokat, majd kattintson az **OK** gombra az összetevők **hozzáadása** ablaktábla bezárásához.
-1. A **kijelölt** összetevők ablaktábla bezárásához kattintson **az OK gombra** .
+1. A **Kijelölt összetevők** ablaktáblán jelölje ki a megtekinteni vagy szerkesztni kívánt műterméket.
+1. A **Műtermék hozzáadása** ablaktáblán hajtsa végre a szükséges módosításokat, és az **OK** gombra a **Műtermék hozzáadása** ablaktábla bezárásához.
+1. A Kijelölt összetevők ablaktábla bezárásához válassza az **OK** **gombot.**
 
-## <a name="save-azure-resource-manager-template"></a>Azure Resource Manager sablon mentése
-Az Azure Resource Manager-sablonok deklaratív módszert biztosítanak egy ismételhető telepítés megadására.
-A következő lépések azt ismertetik, hogyan menthetők a létrehozandó virtuális géphez Azure Resource Manager sablon.
-A mentés után a Azure Resource Manager sablonnal [telepítheti az új virtuális gépeket Azure PowerShell](../azure-resource-manager/templates/overview.md)használatával.
+## <a name="save-azure-resource-manager-template"></a>Az Azure Resource Manager sablon mentése
+Az Azure Resource Manager-sablon deklaratív módon határozza meg az ismételhető központi telepítést.
+Az alábbi lépések bemutatják, hogyan mentheti az Azure Resource Manager sablont a létrehozott virtuális géphez.
+Mentés után az Azure Resource Manager sablon használatával új virtuális gépeket helyezhet üzembe az [Azure PowerShell használatával.](../azure-resource-manager/templates/overview.md)
 
-1. A **virtuális gép** ablaktáblán válassza a **Azure Resource Manager sablon megtekintése**lehetőséget.
-2. A **Azure Resource Manager sablon megtekintése** panelen válassza ki a sablon szövegét.
-3. A kijelölt szöveg másolása a vágólapra.
-4. Kattintson az **OK** gombra a **nézet Azure Resource Manager sablon paneljének**bezárásához.
+1. A **Virtuálisgép** ablaktáblán válassza az **Azure Resource Manager-sablon megtekintése**lehetőséget.
+2. Az **Azure Resource Manager megtekintése sablon** ablaktáblán jelölje ki a sablon szövegét.
+3. A kijelölt szöveg másolása a vágólapra
+4. Az **AZURE Resource Manager-sablon ablaktábla**bezárásához válassza az **OK gombot.**
 5. Nyisson meg egy szövegszerkesztőt.
-6. Illessze be a sablon szövegét a vágólapra.
+6. Illessze be a sablon szövegét a vágólapról.
 7. Mentse a fájlt későbbi használatra.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
-* A virtuális gép létrehozása után a virtuális gép paneljén a **Kapcsolódás** lehetőségre kattintva csatlakozhat a virtuális géphez.
-* Ismerje meg, hogyan [hozhat létre egyéni összetevőket a DevTest Labs virtuális géphez](devtest-lab-artifact-author.md).
-* Ismerkedjen meg a [DevTest Labs Azure Resource Manager a rövid útmutató sablonjának galériájában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+## <a name="next-steps"></a>További lépések
+* A virtuális gép létrehozása után csatlakozhat a virtuális géphez a **Virtuálisgép** ablaktábláján a Csatlakozás lehetőség kiválasztásával.
+* Ismerje meg, hogyan [hozhat létre egyéni összetevőket a DevTest Labs virtuális géphez.](devtest-lab-artifact-author.md)
+* Fedezze fel a [DevTest Labs Azure Resource Manager QuickStart sablongyűjteményét.](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

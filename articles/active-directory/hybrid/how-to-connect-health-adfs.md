@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261566"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
-Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. A Azure AD Connect (Sync) Azure AD Connect Health használatával történő figyelésével kapcsolatos információkért lásd: a [Azure ad Connect Health szinkronizálásának használata](how-to-connect-health-sync.md). Továbbá a Azure AD Connect Health Active Directory tartományi szolgáltatások figyelésével kapcsolatos további információkért lásd: a [Azure ad Connect Health használata AD DS használatával](how-to-connect-health-adds.md).
+Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. Az Azure AD Connect (Sync) és az Azure AD Connect Health figyeléséről az [Azure AD Connect állapotának használata szinkronizáláshoz című](how-to-connect-health-sync.md)témakörben talál további információt. Az Active Directory tartományi szolgáltatások és az Azure AD Connect Health figyeléséről az [Azure AD Connect Health használata az Active Directory tartományi szolgáltatásokkal című](how-to-connect-health-adds.md)témakörben talál további információt.
 
 ## <a name="alerts-for-ad-fs"></a>AD FS-riasztások
 Az aktív riasztások listáját az Azure AD Connect Health-riasztások szakaszban láthatja. Minden egyes riasztás tartalmazza a fontos információkat, a megoldás lépéseit, valamint a kapcsolódó dokumentációra mutató hivatkozásokat.
@@ -110,7 +110,7 @@ A jelentésben az alábbi információk találhatók:
 
 | Jelentéselem | Leírás |
 | --- | --- |
-| Felhasználói azonosító |A használt felhasználóazonosítót mutatja. Ez a felhasználó által begépelt érték, ami bizonyos esetekben a rossz felhasználóazonosító. |
+| Felhasználóazonosító |A használt felhasználóazonosítót mutatja. Ez a felhasználó által begépelt érték, ami bizonyos esetekben a rossz felhasználóazonosító. |
 | Sikertelen próbálkozások |A sikertelen bejelentkezések teljes számát mutatja az adott felhasználóazonosítóhoz. A táblázat a sikertelen bejelentkezések mennyisége alapján van rendezve csökkenő sorrendben. |
 | Utolsó sikertelen kísérlet |Az utolsó sikertelen kísérlet időpontjának időbélyegét mutatja. |
 | Legutóbbi sikertelen kísérlet IP-címe |A legutóbbi sikertelen kérelemhez tartozó IP-címet jeleníti meg. Ha ebben az értékben egynél több IP-címet lát, lehet, hogy az érték magában foglalja a továbbított ügyfél IP-címét és a felhasználó utoljára megkísérelt kéréséhez tartozó IP-címet.  |

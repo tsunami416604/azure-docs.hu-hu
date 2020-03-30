@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások végfelhasználói élményei – Azure Active Directory
-description: Azure Active Directory (Azure AD) számos testreszabható módszert kínál az alkalmazások végfelhasználók számára történő központi telepítéséhez a szervezetben.
+title: Végfelhasználói élmény alkalmazásokhoz – Azure Active Directory
+description: Az Azure Active Directory (Azure AD) számos testreszabható módon telepítheti az alkalmazásokat a szervezet végfelhasználói számára.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,69 +13,69 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266623"
 ---
-# <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>A Azure Active Directory alkalmazások végfelhasználói élményei
+# <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Végfelhasználói élmény az Azure Active Directoryban lévő alkalmazásokszámára
 
-Azure Active Directory (Azure AD) számos testreszabható módszert kínál az alkalmazások végfelhasználók számára történő központi telepítéséhez a szervezetben:
+Az Azure Active Directory (Azure AD) számos testreszabható módot kínál az alkalmazások telepítésére a szervezet végfelhasználói számára:
 
-* Azure AD-hozzáférési panel
-* Office 365 Application Launcher
+* Az Azure AD hozzáférési panelje
+* Az Office 365 alkalmazásindítója
 * Közvetlen bejelentkezés az összevont alkalmazásokba
 * Mélyhivatkozások az összevont, jelszóalapú vagy meglévő alkalmazásokhoz
 
-Saját belátása szerint melyik módszer (ek) et szeretné üzembe helyezni a szervezetében.
+A szervezetben üzembe helyezett metódus(ok) a saját belátása szerint telepíthetők.
 
-## <a name="azure-ad-access-panel"></a>Azure AD-hozzáférési panel
+## <a name="azure-ad-access-panel"></a>Az Azure AD hozzáférési panelje
 
-https://myapps.microsoft.com a hozzáférési panel egy webalapú portál, amely lehetővé teszi, hogy a végfelhasználók a Azure Active Directory szervezeti fiókkal megtekinthessék és elindítsák azokat az alkalmazásokat, amelyekre az Azure AD-rendszergazda hozzáférést kapott. Ha Ön a [prémium szintű Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)felhasználója, akkor a hozzáférési panelen is használhatja az önkiszolgáló csoportok kezelésére szolgáló képességeket.
+A Hozzáférési https://myapps.microsoft.com panel egy webalapú portál, amely lehetővé teszi, hogy az Azure Active Directoryban egy szervezeti fiókkal rendelkező végfelhasználó megtekinthesse és elindíthatja azokat az alkalmazásokat, amelyekhez az Azure AD-rendszergazda hozzáférést kapott. Ha Ön az [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/)végfelhasználója, önkiszolgáló csoportkezelési képességeket is használhat a Hozzáférési panelen keresztül.
 
-![Képernyőfelvétel – az Azure AD hozzáférési paneljének portálja](media/what-is-single-sign-on/azure-ad-access-panel.png)
+![A képernyőkép az Azure AD Access Panel portálját jeleníti meg](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
-Alapértelmezés szerint az összes alkalmazás egyetlen oldalon jelenik meg. Azonban a gyűjtemények segítségével csoportosíthatja a kapcsolódó alkalmazásokat, és egy külön lapon is bemutathatja őket, így könnyebben megtalálhatja őket. A gyűjtemények segítségével például létrehozhat logikai csoportosításokat az alkalmazások számára adott feladatok, feladatok, projektek és így tovább. További információkért lásd: [az alkalmazások gyűjteményének használata a felhasználói hozzáférési panelek testreszabásához](access-panel-collections.md). 
+Alapértelmezés szerint az összes alkalmazás egy oldalon jelenik meg. A gyűjtemények segítségével azonban csoportosíthatja a kapcsolódó alkalmazásokat, és külön lapon mutathatja be őket, így könnyebben megtalálhatja őket. A gyűjtemények segítségével például logikai csoportokat hozhat létre alkalmazásokból adott szerepkörökhöz, feladatokhoz, projektekhez és így tovább. További információt a [Saját alkalmazások gyűjtemények használata a felhasználói hozzáférési panelek testreszabása című témakörben talál.](access-panel-collections.md) 
 
-A hozzáférési panel el van különítve a Azure Portaltól, és nem igényli, hogy a felhasználók Azure-előfizetéssel vagy Office 365-előfizetéssel rendelkezzenek.
+A Hozzáférési panel elkülönül az Azure Portaltól, és nem követeli meg a felhasználóktól, hogy Azure-előfizetéssel vagy Office 365-előfizetéssel rendelkezjenek.
 
-Az Azure AD hozzáférési paneljével kapcsolatos további információkért tekintse meg a [hozzáférési panel bevezetését](../user-help/active-directory-saas-access-panel-introduction.md).
+Az Azure AD hozzáférési panelről további információt a [hozzáférési panel bevezetet című témakörben talál.](../user-help/active-directory-saas-access-panel-introduction.md)
 
-## <a name="office-365-application-launcher"></a>Office 365 Application Launcher
+## <a name="office-365-application-launcher"></a>Az Office 365 alkalmazásindítója
 
-Az Office 365-et üzembe helyező szervezetek esetében az Azure AD-n keresztül a felhasználókhoz rendelt alkalmazások az Office 365 portálon is megjelennek [https://portal.office.com/myapps](https://portal.office.com/myapps)címen. Így egyszerűen és kényelmesen elindíthatja az alkalmazásait anélkül, hogy második portált kellene használnia, és az Office 365-et használó szervezetek számára ajánlott alkalmazás-indítási megoldás.
+Az Office 365-öt üzembe helyező szervezetek esetében az Azure AD-n keresztül a [https://portal.office.com/myapps](https://portal.office.com/myapps)felhasználókhoz rendelt alkalmazások az Office 365 portálon is megjelennek a webhelyen. Ez megkönnyíti és kényelmessé teszi a szervezet felhasználói számára, hogy egy második portál használata nélkül indítsák el alkalmazásaikat, és ez az ajánlott alkalmazásindítási megoldás az Office 365-öt használó szervezetek számára.
 
-![A képernyőképen az Office 365 portál látható](./media/end-user-experiences/microsoft-365-portal-office-com.png)
+![A képernyőkép az Office 365 portált mutatja](./media/end-user-experiences/microsoft-365-portal-office-com.png)
 
-Az Office 365 Application Launcher szolgáltatással kapcsolatos további információkért tekintse [meg az alkalmazás megjelenése az office 365 app launcherben](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)című témakört.
+Az Office 365 alkalmazásindítójáról további információt A [bapp megjelenése az Office 365 alkalmazásindítójában](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)című témakörben talál.
 
 ## <a name="direct-sign-on-to-federated-apps"></a>Közvetlen bejelentkezés az összevont alkalmazásokba
 
-Az SAML 2,0, a WS-Federation vagy az OpenID Connect szolgáltatást támogató legtöbb összevont alkalmazás támogatja a felhasználók számára az alkalmazások indításának lehetőségét, majd az Azure AD-be való bejelentkezést az automatikus átirányítás vagy egy hivatkozásra kattintva. Ezt a szolgáltatást szolgáltató által kezdeményezett bejelentkezésnek nevezik, és az Azure AD-alkalmazás-katalógusban található legtöbb összevont alkalmazás támogatja ezt (lásd az alkalmazás egyszeri bejelentkezési konfigurációs varázslójával csatolt dokumentációt a részletekért Azure Portal).
+Az SAML 2.0, WS-Federation vagy OpenID connect szolgáltatást támogató legtöbb összevont alkalmazás szintén támogatja a felhasználók számára az alkalmazás indítását, majd az Azure AD-n keresztül imitálással vagy a bejelentkezéshez való hivatkozásra kattintva. Ezt nevezzük szolgáltató által kezdeményezett bejelentkezésnek, és az Azure AD-alkalmazásgyűjteményben található legtöbb összevont alkalmazás támogatja ezt (a részleteket az alkalmazás egyszeri bejelentkezési konfigurációs varázslójából csatolt dokumentációban találja).
 
-![Példa a Mobile apps bejelentkezési oldalára](./media/end-user-experiences/workdaymobile.png)
+![Példa mobilalkalmazás bejelentkezési lapjára](./media/end-user-experiences/workdaymobile.png)
 
 ## <a name="direct-sign-on-links"></a>Közvetlen bejelentkezési hivatkozások
 
-Az Azure AD Emellett támogatja a közvetlen egyszeri bejelentkezést a jelszó-alapú egyszeri bejelentkezést, a csatolt egyszeri bejelentkezést és az összevont egyszeri bejelentkezést támogató egyes alkalmazásokra.
+Az Azure AD is támogatja a közvetlen egyszeri bejelentkezési hivatkozásokat az egyes alkalmazások, amelyek támogatják a jelszóalapú egyszeri bejelentkezés, a kapcsolódó egyszeri bejelentkezés, és bármilyen formában az összevont egyszeri bejelentkezés.
 
-Ezek a hivatkozások kifejezetten olyan URL-címek, amelyek az Azure AD bejelentkezési folyamatán keresztül küldenek felhasználót egy adott alkalmazáshoz anélkül, hogy a felhasználónak el kellene indítania azokat az Azure AD hozzáférési paneljéről vagy az Office 365-ből. Ezek a **felhasználói hozzáférési URL-címek** az elérhető vállalati alkalmazások tulajdonságai alatt találhatók. A Azure Portal válassza a **Azure Active Directory** > **vállalati alkalmazások**lehetőséget. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok**lehetőséget.
+Ezek a hivatkozások kifejezetten kialakított URL-címek, amelyek egy felhasználót az Azure AD bejelentkezési folyamaton keresztül küldenek egy adott alkalmazáshoz anélkül, hogy a felhasználónak el kellene indítania őket az Azure AD hozzáférési panelről vagy az Office 365-ből. Ezek **a felhasználói hozzáférési URL-címek** a rendelkezésre álló vállalati alkalmazások tulajdonságai alatt találhatók. Az Azure Portalon válassza az **Azure Active Directory** > **Enterprise-alkalmazások**lehetőséget. Jelölje ki az alkalmazást, majd válassza **a Tulajdonságok lehetőséget.**
 
-![Felhasználói hozzáférési URL-cím – példa a Twitter tulajdonságaiban](media/end-user-experiences/direct-sign-on-link.png)
+![Példa a Felhasználói hozzáférés URL-címére a Twitter tulajdonságaiban](media/end-user-experiences/direct-sign-on-link.png)
 
-Ezeket a hivatkozásokat bárhol másolhatja és beillesztheti, ha bejelentkezési hivatkozást szeretne megadni a kijelölt alkalmazáshoz. Ez lehet egy e-mailben vagy bármely olyan egyéni webalapú portálon, amelyet a felhasználói alkalmazás eléréséhez beállított. Íme egy példa az Azure AD Direct egyszeri bejelentkezési URL-címére a Twitteren:
+Ezek a hivatkozások bárhol másolhatók és beilleszthetők, ahol bejelentkezési hivatkozást szeretne biztosítani a kijelölt alkalmazáshoz. Ez lehet egy e-mailben, vagy bármely egyéni webalapú portálon, amelyet a felhasználói alkalmazások eléréséhez állított be. Íme egy példa egy Azure AD közvetlen egyszeri bejelentkezési URL-cím re:
 
 `https://myapps.microsoft.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
-A hozzáférési panel szervezeti URL-címeihez hasonlóan az URL-cím további testreszabásához a myapps.microsoft.com tartomány után hozzá kell férnie az adott címtárhoz tartozó aktív vagy ellenőrzött tartományok valamelyikéhez. Ez biztosítja, hogy a céges védjegyezés azonnal betöltődik a bejelentkezési oldalon anélkül, hogy a felhasználónak először meg kell adnia a felhasználói azonosítót:
+A hozzáférési panel szervezetspecifikus URL-címéhez hasonlóan ezt az URL-címet is testreszabhatja, ha a myapps.microsoft.com tartomány után hozzáadja a címtár egyik aktív vagy ellenőrzött tartományát. Ez biztosítja, hogy a szervezeti márkajelzés azonnal betöltődjön a bejelentkezési oldalra anélkül, hogy a felhasználónak először meg kellene adnia a felhasználói azonosítóját:
 
 `https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
-Ha egy jogosult felhasználó rákattint az adott alkalmazásra vonatkozó hivatkozások egyikére, először a szervezeti bejelentkezési oldalt látják (feltéve, hogy még nincsenek bejelentkezve), és a bejelentkezés után a rendszer átirányítja az alkalmazásba a hozzáférési panelen való leállítás nélkül. Ha a felhasználó nem rendelkezik az alkalmazás eléréséhez szükséges előfeltételekkel, például a jelszó-alapú egyszeri bejelentkezés böngésző bővítményével, akkor a hivatkozás arra kéri a felhasználót, hogy telepítse a hiányzó bővítményt. A hivatkozás URL-címe szintén állandó marad, ha az alkalmazás egyszeri bejelentkezési konfigurációja megváltozik.
+Amikor egy jogosult felhasználó rákattint az egyik ilyen alkalmazás-specifikus hivatkozások, először látni a szervezeti bejelentkezési oldalon (feltéve, hogy még nincs bejelentkezve), és miután a bejelentkezés után átirányítja az alkalmazásba megállás nélkül a hozzáférési panelen először. Ha a felhasználónak hiányoznak az alkalmazás eléréséhez szükséges előfeltételek, például a jelszóalapú egyjelű böngészőbővítmény, akkor a hivatkozás a hiányzó bővítmény telepítését kéri. A hivatkozás URL-címe is állandó marad, ha az alkalmazás egyszeri bejelentkezési konfigurációja megváltozik.
 
-Ezek a hivatkozások ugyanazokat a hozzáférés-vezérlési mechanizmusokat használják, mint a hozzáférési panel és az Office 365, és csak azok a felhasználók vagy csoportok fognak tudni sikeres hitelesítést végezni, akik hozzá lettek rendelve az alkalmazáshoz a Azure Portal. Azonban minden jogosulatlan felhasználó számára megjelenik egy üzenet, amely arról tájékoztatja, hogy nem kaptak hozzáférést, és a hozzáférési panel betöltésére szolgáló hivatkozásra kattintva megtekintheti azokat az elérhető alkalmazásokat, amelyekhez hozzáférése van.
+Ezek a hivatkozások ugyanazokat a hozzáférés-vezérlési mechanizmusokat használják, mint a hozzáférési panel és az Office 365, és csak azok a felhasználók vagy csoportok, akik az Azure Portalon az alkalmazáshoz vannak rendelve, sikeresen hitelesíthetik magukat. Azonban minden olyan felhasználó, aki nem jogosult, egy üzenetet fog látni, amely elmagyarázza, hogy nem kaptak hozzáférést, és kapnak egy hivatkozást a hozzáférési panel betöltéséhez, hogy megtekinthesse azokat az elérhető alkalmazásokat, amelyekhez hozzáféréssel rendelkeznek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Központi telepítési csomagok: [Azure Active Directory telepítési tervek](../fundamentals/active-directory-deployment-plans.md)
+A központi telepítési csomagokról az [Azure Active Directory telepítési terveiben](../fundamentals/active-directory-deployment-plans.md) talál részt.

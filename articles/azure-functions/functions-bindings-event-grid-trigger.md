@@ -1,33 +1,33 @@
 ---
-title: Azure Functions Azure Event Grid trigger
-description: Megtudhatja, hogyan futtathat programkódot, ha a Azure Functions Event Grid eseményeit elküldi a rendszer.
+title: Az Azure Event Grid eseményindítója az Azure Functionshez
+description: Ismerje meg, hogy kódot futtatni, amikor Event Grid események az Azure Functions küldik.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277725"
 ---
-# <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions Azure Event Grid trigger
+# <a name="azure-event-grid-trigger-for-azure-functions"></a>Az Azure Event Grid eseményindítója az Azure Functionshez
 
-A függvény eseményindítójának használatával válaszolhat egy Event Grid témakörbe küldött eseményre.
+A függvényesemény-eseményindító val válaszolhat egy Eseményrács-témakörbe küldött eseményre.
 
-További információ a telepítésről és a konfigurációról: [Áttekintés](./functions-bindings-event-grid.md).
+A beállítással és a konfigurációval kapcsolatos részletekről az [áttekintésben](./functions-bindings-event-grid.md)olvashat.
 
 ## <a name="example"></a>Példa
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-HTTP-trigger esetén például az [események fogadása http-végpontra](../event-grid/receive-events.md)című témakörben talál további információt.
+Http-eseményindító példát [lásd: Események fogadása HTTP-végpontra című témakörben.](../event-grid/receive-events.md)
 
-### <a name="c-2x-and-higher"></a>C#(2. x és újabb)
+### <a name="c-2x-and-higher"></a>C# (2.x és újabb)
 
-Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely a `EventGridEvent`hoz kötődik:
+A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely a következőkhöz `EventGridEvent`kötődik:
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -49,11 +49,11 @@ namespace Company.Function
 }
 ```
 
-További információ: csomagok, [attribútumok](#attributes-and-annotations), [konfiguráció](#configuration)és [használat](#usage).
+További információ: Csomagok, [Attribútumok,](#attributes-and-annotations) [Konfiguráció](#configuration)és [Használat](#usage).
 
-### <a name="version-1x"></a>1\. x verzió
+### <a name="version-1x"></a>1.x verzió
 
-Az alábbi példa egy 1. x [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely a `JObject`hoz kötődik:
+A következő példa egy Functions 1.x [C# függvényt](functions-dotnet-class-library.md) mutat be, amely a következőkhöz `JObject`kötődik:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -76,11 +76,11 @@ namespace Company.Function
 }
 ```
 
-# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja.
+A következő példa egy trigger kötést mutat be egy *function.json* fájlban, és egy [C# parancsfájl függvényt,](functions-reference-csharp.md) amely a kötést használja.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.json* fájlban a kötési adatok:
 
 ```json
 {
@@ -95,9 +95,9 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-### <a name="version-2x-and-higher"></a>2\. x vagy újabb verzió
+### <a name="version-2x-and-higher"></a>2.x-es vagy újabb verzió
 
-Íme egy példa, amely a `EventGridEvent`hoz kötődik:
+Íme egy példa, amely `EventGridEvent`kötődik:
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -110,11 +110,11 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-További információ: csomagok, [attribútumok](#attributes-and-annotations), [konfiguráció](#configuration)és [használat](#usage).
+További információ: Csomagok, [Attribútumok,](#attributes-and-annotations) [Konfiguráció](#configuration)és [Használat](#usage).
 
-### <a name="version-1x"></a>1\. x verzió
+### <a name="version-1x"></a>1.x verzió
 
-A következő functions 1. C# x parancsfájl-kód, amely a `JObject`hoz kötődik:
+Itt funkciók 1.x C # script kódot, amely kötődik: `JObject`
 
 ```cs
 #r "Newtonsoft.Json"
@@ -128,11 +128,11 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
+A következő példa egy *function.json* fájlban lévő eseményindító-kötést és egy [JavaScript-függvényt](functions-reference-node.md) mutat be, amely a kötést használja.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.json* fájlban a kötési adatok:
 
 ```json
 {
@@ -147,7 +147,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-A következő JavaScript-kódot:
+Itt a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, eventGridEvent) {
@@ -161,9 +161,9 @@ module.exports = function (context, eventGridEvent) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja.
+A következő példa egy trigger kötést mutat be egy *function.json* fájlban és egy [Python-függvényt,](functions-reference-python.md) amely a kötést használja.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.json* fájlban a kötési adatok:
 
 ```json
 {
@@ -179,7 +179,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-Itt látható a Python-kód:
+Itt a Python kód:
 
 ```python
 import json
@@ -202,14 +202,14 @@ def main(event: func.EventGridEvent):
 
 # <a name="java"></a>[Java](#tab/java)
 
-Ez a szakasz tartalmazza az alábbi példák:
+Ez a szakasz a következő példákat tartalmazza:
 
-* [Event Grid trigger, karakterlánc-paraméter](#event-grid-trigger-string-parameter)
-* [Event Grid trigger, POJO paraméter](#event-grid-trigger-pojo-parameter)
+* [Eseményrács eseményindítója, Karakterlánc-paraméter](#event-grid-trigger-string-parameter)
+* [Eseményrács eseményindítója, POJO paraméter](#event-grid-trigger-pojo-parameter)
 
-Az alábbi példák olyan eseményindító-kötést mutatnak be a [javában](functions-reference-java.md) , amely a kötést használja, és kinyomtat egy eseményt, először az eseményt `String` és másodikként fogadja el POJO.
+A következő példák bemutatják trigger kötés [Java,](functions-reference-java.md) amelyek a kötést, és nyomtassa ki az eseményt, először az esemény fogadása, `String` mint a POJO.
 
-### <a name="event-grid-trigger-string-parameter"></a>Event Grid trigger, karakterlánc-paraméter
+### <a name="event-grid-trigger-string-parameter"></a>Eseményrács eseményindítója, Karakterlánc-paraméter
 
 ```java
   @FunctionName("eventGridMonitorString")
@@ -223,9 +223,9 @@ Az alábbi példák olyan eseményindító-kötést mutatnak be a [javában](fun
   }
 ```
 
-### <a name="event-grid-trigger-pojo-parameter"></a>Event Grid trigger, POJO paraméter
+### <a name="event-grid-trigger-pojo-parameter"></a>Eseményrács eseményindítója, POJO paraméter
 
-Ez a példa a következő POJO használja, amely egy Event Grid esemény legfelső szintű tulajdonságait jelöli:
+Ez a példa a következő POJO-t használja, amely egy Event Grid-esemény legfelső szintű tulajdonságait jelöli:
 
 ```java
 import java.util.Date;
@@ -245,7 +245,7 @@ public class EventSchema {
 }
 ```
 
-Érkezéskor az esemény JSON-tartalma deszerializálható az ```EventSchema``` POJO a függvény általi használatra. Ez a folyamat lehetővé teszi, hogy a függvény objektumorientált módon hozzáférhessen az esemény tulajdonságaihoz.
+Érkezéskor az esemény JSON-hasznos adata a ```EventSchema``` POJO-ban a függvény általi használatra leépül. Ez a folyamat lehetővé teszi, hogy a függvény objektumorientált módon férjen hozzá az esemény tulajdonságaihoz.
 
 ```java
   @FunctionName("eventGridMonitor")
@@ -263,17 +263,17 @@ public class EventSchema {
   }
 ```
 
-A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `EventGridTrigger` Megjegyzés azon paramétereket, amelyek értéke a EventGrid származik. Az ezekkel a megjegyzésekkel rendelkező paraméterek a függvény futását okozzák, amikor egy esemény érkezik.  Ezt a jegyzetet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel lehet használni `Optional<T>`használatával.
+A [Java függvények futásidejű függvénytárában](/java/api/overview/azure/functions/runtime)használja a jegyzetet azon `EventGridTrigger` paramétereken, amelyek értéke az EventGridből származna. Az ezekkel a jegyzetekkel rendelkező paraméterek hatására a függvény akkor fog futni, amikor egy esemény megérkezik.  Ez a jegyzet használható natív Java-típusok, POJOs vagy `Optional<T>`nullable értékek segítségével.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) attribútumot.
+A [C# osztálytárakban](functions-dotnet-class-library.md)használja az [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) attribútumot.
 
-Itt egy `EventGridTrigger` attribútum szerepel a metódus-aláírásban:
+A metódusaláírás `EventGridTrigger` egyik attribútuma:
 
 ```csharp
 [FunctionName("EventGridTest")]
@@ -283,83 +283,83 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 }
 ```
 
-Teljes példa: C# példa.
+Egy teljes példa, lásd: C# példa.
 
-# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
 
-Az C# attribútumokat a parancsfájl nem támogatja.
+Az attribútumokat a C# script nem támogatja.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Python nem támogatja az attribútumokat.
+Az attribútumokat a Python nem támogatja.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) jegyzet lehetővé teszi a Event Grid kötések deklaratív konfigurálását a konfigurációs értékek megadásával. További részletekért tekintse meg a [példa](#example) és a [konfigurációs](#configuration) szakaszt.
+Az [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) jegyzet lehetővé teszi az Event Grid-kötés deklaratív konfigurálását konfigurációs értékek megadásával. További részletekért tekintse meg a [példát](#example) és a [konfigurációs](#configuration) szakaszokat.
 
 ---
 
 ## <a name="configuration"></a>Konfiguráció
 
-A következő táblázat a *function. JSON* fájlban beállított kötési konfigurációs tulajdonságokat ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok a `EventGridTrigger` attribútumban.
+Az alábbi táblázat a *function.json* fájlban beállított kötési konfigurációs tulajdonságokat ismerteti. Nincsenek konstruktorparaméterek vagy `EventGridTrigger` tulajdonságok, amelyeket az attribútumban be kell állítani.
 
-|Function.JSON tulajdonság |Leírás|
+|function.json tulajdonság |Leírás|
 |---------|---------|
-| **type** | Kötelező – `eventGridTrigger`értékre kell állítani. |
-| **direction** | Kötelező – `in`értékre kell állítani. |
-| **név** | Kötelező – a függvény kódjában használt változó neve az esemény-adatfogadási paraméterhez. |
+| **Típus** | Kötelező - a `eventGridTrigger`beállításnak a beállítására kell. |
+| **direction** | Kötelező - a `in`beállításnak a beállítására kell. |
+| **név** | Kötelező – az eseményadatokat fogadó paraméter függvénykódjában használt változónév. |
 
 ## <a name="usage"></a>Használat
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Azure Functions 1. x esetén a következő paramétereket használhatja a Event Grid triggerhez:
-
-* `JObject`
-* `string`
-
-Azure Functions 2. x vagy újabb verzióban a következő paraméter-típust is használhatja a Event Grid triggerhez:
-
-* `Microsoft.Azure.EventGrid.Models.EventGridEvent`– az összes eseménytípus közös mezőinek tulajdonságait határozza meg.
-
-> [!NOTE]
-> Ha `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`hoz próbál kötni a functions v1-ben, a fordító egy "elavult" üzenetet jelenít meg, és azt tanácsoljuk, hogy a `Microsoft.Azure.EventGrid.Models.EventGridEvent` használja helyette. Az újabb típus használatához hivatkozzon a [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet-csomagra, és teljes mértékben kihasználja a `EventGridEvent` típus nevét `Microsoft.Azure.EventGrid.Models`használatával.
-
-# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
-
-Azure Functions 1. x esetén a következő paramétereket használhatja a Event Grid triggerhez:
+Az Azure Functions 1.x-ben a következő paramétertípusokat használhatja az Event Grid eseményindítóhoz:
 
 * `JObject`
 * `string`
 
-Azure Functions 2. x vagy újabb verzióban a következő paraméter-típust is használhatja a Event Grid triggerhez:
+Az Azure Functions 2.x-ben és újabb verzióban a következő paramétertípust is használhatja az Event Grid eseményindítóhoz:
 
-* `Microsoft.Azure.EventGrid.Models.EventGridEvent`– az összes eseménytípus közös mezőinek tulajdonságait határozza meg.
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent`- Az összes eseménytípusközös mezők tulajdonságait határozza meg.
 
 > [!NOTE]
-> Ha `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`hoz próbál kötni a functions v1-ben, a fordító egy "elavult" üzenetet jelenít meg, és azt tanácsoljuk, hogy a `Microsoft.Azure.EventGrid.Models.EventGridEvent` használja helyette. Az újabb típus használatához hivatkozzon a [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet-csomagra, és teljes mértékben kihasználja a `EventGridEvent` típus nevét `Microsoft.Azure.EventGrid.Models`használatával. További információ a NuGet-csomagok C# parancsfájl-függvényekben való hivatkozásáról: [NuGet-csomagok használata](functions-reference-csharp.md#using-nuget-packages)
+> A Functions v1 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`játékban, ha a hozzá szeretne kötni, a fordító egy "elavult" üzenetet jelenít meg, és azt javasolja, hogy helyette használja. `Microsoft.Azure.EventGrid.Models.EventGridEvent` Az újabb típus használatához hivatkozzon a [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet `EventGridEvent` csomagra, és `Microsoft.Azure.EventGrid.Models`teljes mértékben minősítse a típusnevet a alkalmazással.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
 
-A Event Grid példány a *function. JSON* fájl `name` tulajdonságában konfigurált paraméterrel érhető el.
+Az Azure Functions 1.x-ben a következő paramétertípusokat használhatja az Event Grid eseményindítóhoz:
+
+* `JObject`
+* `string`
+
+Az Azure Functions 2.x-ben és újabb verzióban a következő paramétertípust is használhatja az Event Grid eseményindítóhoz:
+
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent`- Az összes eseménytípusközös mezők tulajdonságait határozza meg.
+
+> [!NOTE]
+> A Functions v1 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`játékban, ha a hozzá szeretne kötni, a fordító egy "elavult" üzenetet jelenít meg, és azt javasolja, hogy helyette használja. `Microsoft.Azure.EventGrid.Models.EventGridEvent` Az újabb típus használatához hivatkozzon a [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet `EventGridEvent` csomagra, és `Microsoft.Azure.EventGrid.Models`teljes mértékben minősítse a típusnevet a alkalmazással. A NuGet csomagok C# parancsfájlfüggvényben való hivatkozásáról a [NuGet-csomagok használata című](functions-reference-csharp.md#using-nuget-packages) témakörben talál további információt.
+
+# <a name="javascript"></a>[Javascript](#tab/javascript)
+
+Az Event Grid-példány a *function.json* fájl `name` tulajdonságában konfigurált paraméteren keresztül érhető el.
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Event Grid-példány elérhető a *function. JSON* fájl `name` tulajdonságában megadott paraméterrel, amelyet `func.EventGridEvent`ként kell beírni.
+Az Event Grid példány a *function.json* fájl `name` tulajdonságában konfigurált paraméteren keresztül érhető el, amelyet a `func.EventGridEvent`.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az Event Grid-esemény a `EventGridTrigger` attribútumhoz társított paraméterrel érhető el, `EventSchema`ként beírva. További részletekért tekintse meg a [példát](#example) .
+Az Event Grid eseménypéldány az `EventGridTrigger` attribútumhoz társított paraméteren keresztül `EventSchema`érhető el, amelyet egy . Lásd a [példát](#example) további részletekért.
 
 ---
 
 ## <a name="event-schema"></a>Eseményséma
 
-Egy Event Grid eseményhez tartozó adatmennyiség egy HTTP-kérelem törzsében JSON-objektumként érkezik. A JSON a következő példához hasonlóan néz ki:
+Az Event Grid-események adatai JSON-objektumként érkeznek egy HTTP-kérelem törzsébe. A JSON a következő példához hasonlóan néz ki:
 
 ```json
 [{
@@ -387,49 +387,49 @@ Egy Event Grid eseményhez tartozó adatmennyiség egy HTTP-kérelem törzsében
 }]
 ```
 
-A megjelenített példa egy elem tömbje. Event Grid mindig egy tömböt küld, és több eseményt is küldhet a tömbben. A futtatókörnyezet minden egyes tömb elemnél egyszer meghívja a függvényt.
+A bemutatott példa egy elem tömbje. Az Event Grid mindig egy tömböt küld, és egynél több eseményt is küldhet a tömbben. A futásidejű minden tömbelemhez egyszer hívja meg a függvényt.
 
-Az Event JSON-adattípusok legfelső szintű tulajdonságai megegyeznek az összes eseménytípus között, míg a `data` tulajdonság tartalma minden eseménytípus esetében egyedi. A példa egy blob Storage-eseményre mutat.
+A legfelső szintű tulajdonságok abban az esetben, ha a JSON-adatok `data` megegyeznek az összes eseménytípus között, míg a tulajdonság tartalma az egyes eseménytípusokra jellemző. A példa látható egy blob tárolási esemény.
 
-A Common és az Event-specifikus tulajdonságok magyarázatát az Event Grid [dokumentációjában találja.](../event-grid/event-schema.md#event-properties)
+A gyakori és eseményspecifikus tulajdonságok magyarázatát az [Eseményrács dokumentációjának Eseménytulajdonságai](../event-grid/event-schema.md#event-properties) című témakörben találja.
 
-A `EventGridEvent` típus csak a legfelső szintű tulajdonságokat definiálja, a `Data` tulajdonság egy `JObject`.
+A `EventGridEvent` típus csak a legfelső szintű tulajdonságokat határozza meg; az `Data` ingatlan `JObject`egy .
 
 ## <a name="create-a-subscription"></a>Előfizetés létrehozása
 
 Event Grid HTTP-kérelmek fogadásának megkezdéséhez hozzon létre egy Event Grid-előfizetést, amely megadja a függvényt meghívó végpont URL-címét.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
-Az Event Grid triggerrel Azure Portalban fejlesztett függvények esetében válassza az **Event Grid előfizetés hozzáadása**lehetőséget.
+Az Azure Portalon az Eseményrács eseményindítójával kifejlesztett függvények esetén válassza az **Event Grid-előfizetés hozzáadása**lehetőséget.
 
 ![Előfizetés létrehozása a portálon](media/functions-bindings-event-grid/portal-sub-create.png)
 
-Ha ezt a hivatkozást választja, a portál megnyitja az **esemény-előfizetés létrehozása** lapot az előtöltött végpont URL-címével.
+Ha ezt a hivatkozást választja, a portál megnyitja az **Esemény-előfizetés létrehozása** lapot, amelynek végponti URL-címe előre ki van töltve.
 
-![Végpont URL-címe előtöltve](media/functions-bindings-event-grid/endpoint-url.png)
+![A végpont URL-címe előre kivan töltve](media/functions-bindings-event-grid/endpoint-url.png)
 
-Az előfizetések Azure Portal használatával történő létrehozásával kapcsolatos további információkért tekintse meg az [egyéni esemény-Azure Portal létrehozása](../event-grid/custom-event-quickstart-portal.md) a Event Grid dokumentációjában.
+Az Azure Portal használatával előfizetések létrehozásáról az [Egyéni esemény – Azure portal létrehozása](../event-grid/custom-event-quickstart-portal.md) az Event Grid dokumentációjában című témakörben olvashat bővebben.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ha [Az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával szeretne előfizetést létrehozni, használja az az [eventgrid Event-előfizetés Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) parancsot.
+Előfizetés létrehozása az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával használja az [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) parancsot.
 
-A parancshoz meg kell adni a végpont URL-címét, amely meghívja a függvényt. A következő példa a verzióra jellemző URL-mintát mutatja:
+A parancs megköveteli a végpont URL-címét, amely meghívja a függvényt. A következő példa a verzióspecifikus URL-mintát mutatja be:
 
-#### <a name="version-2x-and-higher-runtime"></a>Version 2. x (és újabb) futtatókörnyezet
+#### <a name="version-2x-and-higher-runtime"></a>2.x-es (és újabb) verziójú futásidejű
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
-#### <a name="version-1x-runtime"></a>1\. x verzió futtatókörnyezete
+#### <a name="version-1x-runtime"></a>1.x-es verziófutási idő
 
     https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
-A rendszerkulcs egy olyan engedélyezési kulcs, amely egy Event Grid trigger végponti URL-címében szerepelnie kell. A következő szakasz ismerteti, hogyan kérheti le a rendszerkulcsot.
+A rendszerkulcs egy olyan engedélyezési kulcs, amelyet az Eseményrács eseményindítójának végponti URL-címében kell szerepeltetni. A következő szakasz bemutatja, hogyan szerezheti be a rendszerkulcsot.
 
-Az alábbi példa egy blob Storage-fiókra való előfizetést mutat be (a rendszerkulcs helyőrzője):
+Íme egy példa, amely előfizet egy blob tárfiók (a helyőrző a rendszerkulcs):
 
-#### <a name="version-2x-and-higher-runtime"></a>Version 2. x (és újabb) futtatókörnyezet
+#### <a name="version-2x-and-higher-runtime"></a>2.x-es (és újabb) verziójú futásidejű
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -440,7 +440,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 --endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
 ```
 
-#### <a name="version-1x-runtime"></a>1\. x verzió futtatókörnyezete
+#### <a name="version-1x-runtime"></a>1.x-es verziófutási idő
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -451,27 +451,27 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 --endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
 ```
 
-Az előfizetés létrehozásával kapcsolatos további információkért tekintse meg [a blob Storage](../storage/blobs/storage-blob-event-quickstart.md#subscribe-to-your-storage-account) rövid útmutatóját vagy a többi Event Grid rövid útmutatót.
+Az előfizetések létrehozásáról további információt [a blob storage rövid útmutatójában](../storage/blobs/storage-blob-event-quickstart.md#subscribe-to-your-storage-account) vagy az Event Grid többi rövid útmutatójában talál.
 
-### <a name="get-the-system-key"></a>A rendszerkulcs beszerzése
+### <a name="get-the-system-key"></a>A rendszerkulcs beszerezése
 
-A rendszerkulcs a következő API-val (HTTP GET) szerezhető be:
+A rendszerkulcsot a következő API (HTTP GET) használatával szerezheti be:
 
-#### <a name="version-2x-and-higher-runtime"></a>Version 2. x (és újabb) futtatókörnyezet
+#### <a name="version-2x-and-higher-runtime"></a>2.x-es (és újabb) verziójú futásidejű
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
 ```
 
-#### <a name="version-1x-runtime"></a>1\. x verzió futtatókörnyezete
+#### <a name="version-1x-runtime"></a>1.x-es verziófutási idő
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-Ez egy felügyeleti API, ezért a Function app [főkulcsát](functions-bindings-http-webhook-trigger.md#authorization-keys)igényli. Ne tévesszük össze a rendszerkulcsot (egy Event Grid trigger függvény meghívásához) a főkulccsal (a Function alkalmazás felügyeleti feladatainak végrehajtásához). Amikor előfizet egy Event Grid témakörre, ügyeljen arra, hogy a rendszerkulcsot használja.
+Ez egy rendszergazdai API, ezért a függvényalkalmazás [főkulcsát](functions-bindings-http-webhook-trigger.md#authorization-keys)igényli. Ne keverje össze a rendszerkulcsot (az Event Grid eseményindító függvény meghívásához) a főkulival (felügyeleti feladatok végrehajtásához a függvényalkalmazásban). Amikor feliratkozik egy Event Grid-témakörre, mindenképpen használja a rendszerkulcsot.
 
-Íme egy példa a rendszerkulcsot biztosító válaszra:
+Íme egy példa a rendszerkulcsot megadó válaszra:
 
 ```
 {
@@ -486,29 +486,29 @@ Ez egy felügyeleti API, ezért a Function app [főkulcsát](functions-bindings-
 }
 ```
 
-A Function alkalmazás főkulcsát a portál **Function app Settings** lapján szerezheti be.
+A függvényalkalmazás főkulcsát a **függvényalkalmazás beállításai** lapon szerezheti be a portálon.
 
 > [!IMPORTANT]
-> A főkulcs rendszergazdai hozzáférést biztosít a Function alkalmazáshoz. Ne ossza meg ezt a kulcsot harmadik felekkel, vagy terjessze azt natív ügyfélalkalmazásokba.
+> A főkulcs rendszergazdai hozzáférést biztosít a függvényalkalmazáshoz. Ne ossza meg ezt a kulcsot harmadik felekkel, és ne terjessze natív ügyfélalkalmazásokban.
 
-További információ: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys) a http-trigger dokumentációjában.
+További információ: [Engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys) a HTTP-eseményindító referenciacikkben.
 
-Azt is megteheti, hogy HTTP-PUT-t küld a kulcs értékének megadásához.
+Másik lehetőségként elküldheti a HTTP PUT-t a kulcsérték saját személyének megadásához.
 
-## <a name="local-testing-with-viewer-web-app"></a>Helyi tesztelés a megjelenítői webalkalmazással
+## <a name="local-testing-with-viewer-web-app"></a>Helyi tesztelés a megjelenítő webalkalmazásával
 
-Event Grid-trigger helyi teszteléséhez be kell szereznie Event Grid HTTP-kéréseket a felhőből a helyi gépre. Ennek egyik módja a kérelmek online rögzítésének és manuális újraküldése a helyi gépen:
+Az Event Grid-eseményindító helyi teszteléséhez az Event Grid HTTP-kérelmeit a felhőből a helyi gépre kell leadnia. Ennek egyik módja a kérelmek online rögzítése és a helyi számítógépen történő manuális újraküldése:
 
-1. [Hozzon létre egy megjelenítői webalkalmazást](#create-a-viewer-web-app) , amely rögzíti az események üzeneteit.
-1. [Hozzon létre egy Event Grid-előfizetést](#create-an-event-grid-subscription) , amely eseményeket küld a megjelenítői alkalmazásnak.
-1. [Kérelem létrehozása](#generate-a-request) és a kérelem törzsének másolása a megjelenítői alkalmazásból.
-1. [Manuálisan tegye közzé a kérést](#manually-post-the-request) a Event Grid trigger függvény localhost URL-címére.
+1. [Hozzon létre egy megjelenítő webalkalmazást,](#create-a-viewer-web-app) amely rögzíti az eseményüzeneteket.
+1. [Hozzon létre egy Event Grid-előfizetést,](#create-an-event-grid-subscription) amely eseményeket küld a megjelenítő alkalmazásnak.
+1. [Hozzon létre egy kérelmet,](#generate-a-request) és másolja a kérelem törzsét a megjelenítő alkalmazásból.
+1. [Manuálisan tegye fel a kérelmet](#manually-post-the-request) az Event Grid eseményindító funkciójának localhost URL-címére.
 
-Ha végzett a teszteléssel, a végpont frissítésével ugyanazt az előfizetést használhatja éles környezethez. Használja az az [eventgrid Event-előfizetés Update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI parancsot.
+Ha befejezte a tesztelést, használhatja ugyanazt az előfizetést éles környezetben a végpont frissítésével. Használja az [az eventgrid esemény-előfizetés frissítés](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI parancsot.
 
-### <a name="create-a-viewer-web-app"></a>Megjelenítői Webalkalmazás létrehozása
+### <a name="create-a-viewer-web-app"></a>Megjelenítő webalkalmazás létrehozása
 
-Az üzenetek rögzítésének egyszerűbbé tétele érdekében üzembe helyezhet egy [előre elkészített webalkalmazást](https://github.com/Azure-Samples/azure-event-grid-viewer) , amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
+Az eseményüzenetek rögzítésének egyszerűsítése érdekében telepíthet egy [előre elkészített webalkalmazást,](https://github.com/Azure-Samples/azure-event-grid-viewer) amely megjeleníti az eseményüzeneteket. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
 
 A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. Az Azure Portalon adjon meg értékeket a paraméterekhez.
 
@@ -522,52 +522,52 @@ A hely látható, de még nem lett közzétéve esemény.
 
 ### <a name="create-an-event-grid-subscription"></a>Event Grid-előfizetés létrehozása
 
-Hozzon létre egy Event Grid-előfizetést a tesztelni kívánt típushoz, és adja meg a webalkalmazás URL-címét az eseményekről szóló értesítés végpontja. A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia. Tehát a teljes URL-cím `https://<your-site-name>.azurewebsites.net/api/updates`
+Hozzon létre egy eseményrács-előfizetést a tesztelni kívánt típussal, és adja meg neki a webalkalmazás URL-címét az eseményértesítés végpontjaként. A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia. Tehát a teljes URL`https://<your-site-name>.azurewebsites.net/api/updates`
 
-További információ az előfizetések létrehozásáról a Azure Portal használatával: [Egyéni Event-Azure Portal létrehozása](../event-grid/custom-event-quickstart-portal.md) a Event Grid dokumentációjában.
+Az Azure Portal használatával előfizetések létrehozásáról az [Egyéni esemény – Azure portal létrehozása](../event-grid/custom-event-quickstart-portal.md) az Event Grid dokumentációjában című témakörben olvashat.
 
 ### <a name="generate-a-request"></a>Kérelem létrehozása
 
-Indítson el egy eseményt, amely a webalkalmazás-végpontra HTTP-forgalmat fog előállítani.  Ha például létrehozta a blob Storage-előfizetést, feltölt vagy töröl egy blobot. Ha egy kérelem megjelenik a webalkalmazásban, másolja a kérelem törzsét.
+Olyan eseményt indít el, amely HTTP-forgalmat generál a webalkalmazás végpontjára.  Ha például létrehozott egy blob storage-előfizetést, töltsön fel vagy töröljön egy blobot. Amikor egy kérelem megjelenik a webalkalmazásban, másolja a kérelem törzsét.
 
-A rendszer először az előfizetés-ellenőrzési kérelmet kapja meg; hagyja figyelmen kívül az érvényesítési kérelmeket, és másolja az eseményre vonatkozó kérelmet.
+Először az előfizetés-érvényesítési kérelem érkezik meg; figyelmen kívül hagyja az érvényesítési kérelmeket, és másolja az eseménykérelmet.
 
-![Kérelem törzsének másolása a webalkalmazásból](media/functions-bindings-event-grid/view-results.png)
+![Kérelemtörzs másolása a webalkalmazásból](media/functions-bindings-event-grid/view-results.png)
 
-### <a name="manually-post-the-request"></a>A kérelem manuális közzététele
+### <a name="manually-post-the-request"></a>A kérelem manuális feladása
 
-Futtassa helyileg a Event Grid függvényt.
+Futtassa az Event Grid funkciót helyileg.
 
-HTTP POST-kérelem létrehozásához használjon olyan eszközt, mint például a [Poster](https://www.getpostman.com/) vagy a [curl](https://curl.haxx.se/docs/httpscripting.html) :
+Http POST-kérelem létrehozásához használjon egy eszközt, például [a Postman](https://www.getpostman.com/) t vagy a [Curl-t:](https://curl.haxx.se/docs/httpscripting.html)
 
-* `Content-Type: application/json` fejlécének beállítása
-* `aeg-event-type: Notification` fejlécének beállítása
-* Illessze be a RequestBin a kérelem törzsébe.
-* Tegye közzé a Event Grid trigger függvény URL-címét.
-  * A 2. x és újabb verziók esetében használja a következő mintát:
+* Fej `Content-Type: application/json` beállítása.
+* Fej `aeg-event-type: Notification` beállítása.
+* Illessze be a RequestBin-adatokat a kérelem törzsébe.
+* Tegye közzé az Eseményrács eseményindító funkciójának URL-címét.
+  * 2.x és magasabb esetén használja a következő mintát:
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 1\. x esetén használja a következőt:
+  * 1.x alkalmazás esetén:
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
     ```
 
-A `functionName` paraméternek a `FunctionName` attribútumban megadott névvel kell rendelkeznie.
+A `functionName` paraméternek az `FunctionName` attribútumban megadott névnek kell lennie.
 
-A következő Képernyőképek a Poster fejléceit és a kérelem törzsét mutatják be:
+A következő képernyőképek a postás fejléceit és a kérelemtörzset mutatják be:
 
-![Fejlécek a Poster-ban](media/functions-bindings-event-grid/postman2.png)
+![Fejlécek a postásban](media/functions-bindings-event-grid/postman2.png)
 
-![Kérelem törzse a Poster-ban](media/functions-bindings-event-grid/postman.png)
+![Kérelem szervezet postás](media/functions-bindings-event-grid/postman.png)
 
-A Event Grid trigger függvény végrehajtja és megjeleníti a következő példához hasonló naplókat:
+Az Event Grid eseményindító függvény a következő példához hasonló naplókat hajt végre és jelenít meg:
 
-![Minta Event Grid trigger-függvények naplói](media/functions-bindings-event-grid/eg-output.png)
+![Mintaeseményrács eseményindító függvénynaplói](media/functions-bindings-event-grid/eg-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Event Grid esemény elküldése](./functions-bindings-event-grid-trigger.md)
+* [Eseményrács-esemény feladása](./functions-bindings-event-grid-trigger.md)

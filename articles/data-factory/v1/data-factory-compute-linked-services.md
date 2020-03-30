@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory által támogatott számítási környezetek
-description: Ismerje meg azokat a számítási környezeteket, amelyeket Azure Data Factory folyamatokban (például Azure HDInsight) használhat az adatok átalakításához és feldolgozásához.
+title: Az Azure Data Factory által támogatott számítási környezetek
+description: Ismerje meg az Azure Data Factory-folyamatokban (például az Azure HDInsightban) használható számítási környezeteket az adatok átalakításához vagy feldolgozásához.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,88 +12,88 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281547"
 ---
-# <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
+# <a name="compute-environments-supported-by-azure-data-factory"></a>Az Azure Data Factory által támogatott számítási környezetek
 > [!NOTE]
-> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a következőt: a [társított szolgáltatások számítása a](../compute-linked-services.md)alkalmazásban.
+> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a Csatolt szolgáltatások számítása a alkalmazásban című [témakört.](../compute-linked-services.md)
 
-Ez a cikk az adatok feldolgozásához és átalakításához használható számítási környezeteket ismerteti. Emellett részletesen ismerteti a különböző konfigurációkat (igény szerint és saját maga is), amelyet a Data Factory támogat, ha olyan társított szolgáltatásokat konfigurál, amelyek összekapcsolják ezeket a számítási környezeteket egy Azure-beli adat-előállítóval.
+Ez a cikk ismerteti a számítási környezetek, amelyek segítségével az adatok feldolgozásához vagy átalakításához. Emellett részletesen ismerteti a Data Factory által támogatott különböző konfigurációkat (igény szerinti és saját bring-your-own) is, amikor olyan összekapcsolt szolgáltatásokat konfigurál, amelyek ezeket a számítási környezeteket egy Azure-adat-előállítóhoz kapcsolják.
 
-Az alábbi táblázat felsorolja a Data Factory által támogatott számítási környezeteket, valamint a rajtuk futó tevékenységeket. 
+Az alábbi táblázat a Data Factory által támogatott számítási környezetek és az azokon futtatható tevékenységek listáját tartalmazza. 
 
 | Számítási környezet                      | Tevékenységek                               |
 | ---------------------------------------- | ---------------------------------------- |
-| [Igény szerinti Azure HDInsight-fürt](#azure-hdinsight-on-demand-linked-service) vagy [saját HDInsight-fürt](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [kaptár](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop streaming](data-factory-hadoop-streaming-activity.md) |
+| [Igény szerinti Azure HDInsight-fürt](#azure-hdinsight-on-demand-linked-service) vagy [saját HDInsight-fürt](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és az erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](#azure-sql-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md) |
+| [Azure SQL](#azure-sql-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), SQL [Server](#sql-server-linked-service) | [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md) |
 
-## <a name="supported-hdinsight-versions-in-azure-data-factory"></a>A Data Factory támogatott HDInsight-verziók
-Az Azure HDInsight egyszerre több Hadoop-fürt verzióját is támogatja. Minden támogatott verzió a Hortonworks adatplatform (HDP) terjesztésének egy adott verzióját, valamint az elosztásban található összetevőket is létrehoz. 
+## <a name="hdinsight-versions-supported-in-data-factory"></a><a name="supported-hdinsight-versions-in-azure-data-factory"></a>A Data Factory által támogatott HDInsight-verziók
+Az Azure HDInsight több Hadoop-fürtverziót is támogat, amelyeket bármikor üzembe helyezhet. Minden támogatott verzió létrehoz egy adott verzióját a Hortonworks Data Platform (HDP) disztribúcióés egy sor összetevőt a disztribúcióban. 
 
-A Microsoft frissíti a támogatott HDInsight-verziók listáját a legújabb Hadoop-ökoszisztéma-összetevőkkel és-javításokkal. Részletes információkért lásd: [támogatott HDInsight-verziók](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions).
+A Microsoft frissíti a támogatott HDInsight-verziók listáját a legújabb Hadoop ökoszisztéma-összetevőkkel és -javításokkal. Részletes információt a [Támogatott HDInsight-verziók című témakörben](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)talál.
 
 > [!IMPORTANT]
-> A Linux-alapú HDInsight 3,3-es verziójának kivonulása 2017. július 31-én megszűnt. A HDInsight újabb verziójának teszteléséhez és frissítéséhez az 1. verziójú, igény szerinti HDInsight társított szolgáltatások ügyfeleinket 2017. december 15-én adták meg. Data Factory A Windows-alapú HDInsight 2018. július 31-én megszűnik.
+> 2017. július 31-én a Linux-alapú HDInsight 3.3-as verzióját megszüntették. 2017. december 15-ig a Data Factory 1-es verziója HDInsight-szolgáltatásokkal kapcsolatos ügyfeleket kaptak a HDInsight egy későbbi verziójának teszteléséhez és frissítéséhez. 2018. július 31-én a Windows-alapú HDInsight megszűnik.
 >
 > 
 
-### <a name="after-the-retirement-date"></a>A kivonulási dátum után 
+### <a name="after-the-retirement-date"></a>A nyugdíjazási dátum után 
 
-2017. december 15. után:
+2017. december 15.-e után:
 
-- Már nem hozhat létre a Linux-alapú HDInsight 3,3-es (vagy korábbi verziójú) fürtöket egy igény szerinti HDInsight társított szolgáltatás használatával Data Factory az 1. verzióban. 
-- Ha a [ **osType** és a **verzió** tulajdonságai](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincsenek explicit módon meghatározva egy meglévő Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatáshoz, az alapértelmezett érték a **verzió = 3.1, OSTYPE = Windows** verzió **=\<legújabb HDI alapértelmezett verziója\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType = Linux**.
+- A Data Factory 1-es verziójában igény szerinti HDInsight-csatolt szolgáltatás használatával már nem hozhat létre Linux-alapú HDInsight 3.3-as (vagy korábbi verziójú) fürtöket. 
+- Ha az [ **osType** és **a Version** tulajdonságai](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincsenek kifejezetten megadva a JSON-definícióban egy meglévő Data Factory 1-es verziójú HDInsight csatolt szolgáltatáshoz, az alapértelmezett érték **Version=3.1, osType=Windows** **to Version=\<legújabb HDI alapértelmezett verzióra\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux**.
 
-2018. július 31-ig:
+2018. július 31.-e után:
 
-- A Windows-alapú HDInsight-fürtöket már nem hozhatja létre egy igény szerinti HDInsight társított szolgáltatás használatával Data Factory az 1. verzióban. 
+- A Data Factory 1-es verziójában igény szerinti HDInsight-csatolt szolgáltatás használatával már nem hozhat létre Windows-alapú HDInsight-fürtök et. 
 
-### <a name="recommended-actions"></a>Javasolt teendők 
+### <a name="recommended-actions"></a>Ajánlott műveletek 
 
-- Annak érdekében, hogy a legújabb Hadoop ökoszisztéma-összetevőket és-javításokat is használhassa, frissítse az érintett Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatási definíciók [ **OsType** és **verziójának** tulajdonságait](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) az újabb Linux-alapú HDInsight-verzióra (HDInsight 3,6). 
-- 2017. december 15. előtt Data Factory tesztelje az 1. verziójú kaptár, a Pig, a MapReduce és a Hadoop streaming tevékenységeket, amelyek az érintett társított szolgáltatásra hivatkoznak. Győződjön meg arról, hogy kompatibilisek az új **osType** és a **verzió** alapértelmezett értékeivel (**Version = 3.6**, **OsType = Linux**) vagy a explicit HDInsight-verzióval és az operációs rendszer típusával, amelyre frissíteni szeretne. 
-  További információ a kompatibilitásról: [áttelepítés Windows-alapú HDInsight-fürtről Linux-alapú fürtre](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) , valamint [a HDInsight-hez elérhető Hadoop-összetevők és-verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions). 
-- Ha **a Windows-** alapú HDInsight-2017 fürtök létrehozásához Data Factory egy igény szerinti HDInsight **társított szolgáltatással** kívánja tovább használni az 1 Javasoljuk, hogy 2018. július 31-ig telepítsen Linux-alapú HDInsight-fürtökre. 
-- Ha igény szerinti HDInsight társított szolgáltatást használ a (z) Data Factory 1. verziójú DotNet egyéni tevékenység végrehajtásához, akkor frissítse a DotNet egyéni tevékenység JSON-definícióját, hogy ehelyett egy Azure Batch társított szolgáltatást használjon. További információ: [egyéni tevékenységek használata Data Factory folyamatokban](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
+- Annak érdekében, hogy a legújabb Hadoop ökoszisztéma-összetevőket és javításokat használhassa, frissítse az érintett Data Factory 1-es verziójú 1-es verziójának [ **osType** és **verzió** tulajdonságait](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) az újabb Linux-alapú HDInsight-verziókra (HDInsight 3.6). 
+- 2017. december 15., 15. Győződjön meg arról, hogy azok kompatibilisek az új **osType** és **Version** alapértelmezett értékekkel (**Version=3.6**, **osType=Linux**) vagy a hdinsight-verzióval és operációs rendszer típusával, amelyre frissít. 
+  A kompatibilitásról az [Áttelepítés Windows-alapú HDInsight-fürtről Linux alapú fürtre](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) című témakörben olvashat bővebben, és [milyen Hadoop-összetevők és -verziók érhetők el a HDInsight szolgáltatással?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions) 
+- Ha továbbra is használni szeretné a Data Factory 1-es verzióját igény szerinti HDInsight-alapú szolgáltatással windowsos HDInsight-fürtök létrehozásához, explicit módon állítsa be **az osType-ot** **Windows-ra** 2017. 2018. július 31-e előtt javasoljuk, hogy migráljon Linux-alapú HDInsight-fürtökre. 
+- Ha igény szerinti HDInsight-csatolt szolgáltatást használ a Data Factory 1-es verziójú DotNet egyéni tevékenység végrehajtásához, frissítse a DotNet egyéni tevékenység JSON-definícióját, hogy ehelyett egy Azure Batch-kapcsolt szolgáltatást használjon. További információ: [Egyéni tevékenységek használata adatfeldolgozó folyamatokban.](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) 
 
 > [!Note]
-> Ha meglévő, saját fürthöz tartozó HDInsight társított eszközt használ a Data Factory 1. vagy egy saját és igény szerinti HDInsight társított szolgáltatást Azure Data Factoryban, nincs szükség beavatkozásra. Ezekben az esetekben a HDInsight-fürtök legújabb támogatási szabályzata már érvényben van. 
+> Ha a meglévő, bring-your-own fürt HDInsight csatolt eszköz a Data Factory 1-es verzió, vagy egy bring-your-own és az igény szerinti HDInsight csatolt szolgáltatás az Azure Data Factory, nincs szükség műveletre. Ezekben az esetekben a HDInsight-fürtök legújabb verziótámogatási házirendje már érvényben van. 
 >
 > 
 
 
 ## <a name="on-demand-compute-environment"></a>Igény szerinti számítási környezet
-Az igény szerinti konfigurációban Data Factory teljes mértékben felügyeli a számítási környezetet. A Data Factory automatikusan létrehozza a számítási környezetet, mielőtt a rendszer elküld egy feladatot az adatok feldolgozásához. Ha a feladatot elvégezte, Data Factory eltávolítja a számítási környezetet. 
+Igény szerinti konfigurációban a Data Factory teljes mértékben kezeli a számítási környezetet. A Data Factory automatikusan létrehozza a számítási környezetet, mielőtt egy feladat adatok feldolgozására kerül elküldésre. A feladat befejezése után a Data Factory eltávolítja a számítási környezetet. 
 
-Egy igény szerinti számítási környezethez társított szolgáltatást is létrehozhat. A társított szolgáltatással konfigurálhatja a számítási környezetet, és szabályozhatja a feladatok végrehajtásához, a fürtözéshez és a rendszerindítási műveletekhez tartozó részletes beállításokat.
+Igény szerinti számítási környezethez összekapcsolt szolgáltatást hozhat létre. A csatolt szolgáltatás segítségével konfigurálhatja a számítási környezetet, és szabályozhatja a feladatvégrehajtás, a fürtkezelés és a rendszerindítási műveletek részletes beállításait.
 
 > [!NOTE]
 > Jelenleg az igény szerinti konfiguráció csak HDInsight-fürtök esetén támogatott.
 > 
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight igény szerinti társított szolgáltatás
-A Data Factory képes automatikusan létrehozni egy Windows-alapú vagy Linux-alapú igény szerinti HDInsight-fürtöt az adatfeldolgozáshoz. A fürt ugyanabban a régióban jön létre, mint a fürthöz társított Storage-fiók. A fürt létrehozásához használja a JSON **linkedServiceName** tulajdonságot.
+A Data Factory automatikusan létrehozhat egy Windows-alapú vagy Linux alapú HDInsight-fürtöt az adatok feldolgozásához. A fürt ugyanabban a régióban jön létre, mint a fürthöz társított tárfiók. A fürt létrehozásához használja a JSON **linkedServiceName** tulajdonságot.
 
-Vegye figyelembe az igény szerinti HDInsight társított szolgáltatással kapcsolatos következő *főbb* pontokat:
+Vegye figyelembe az alábbi *kulcsfontosságú* pontokat az igény szerinti HDInsight-hivatkozott szolgáltatással kapcsolatban:
 
-* Az igény szerinti HDInsight-fürt nem jelenik meg az Azure-előfizetésében. A Data Factory szolgáltatás felügyeli az igény szerinti HDInsight-fürtöt az Ön nevében.
-* Az igény szerinti HDInsight-fürtön futó feladatok naplóit a rendszer a HDInsight-fürthöz társított Storage-fiókba másolja. A naplók eléréséhez nyissa meg a Azure Portal a **tevékenység futtatása részletek** ablaktáblán. További információ: [folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md).
-* Csak arra az időre számítunk fel díjat, ameddig a HDInsight-fürt működik.
+* Az igény szerinti HDInsight-fürt nem jelenik meg az Azure-előfizetésben. A Data Factory szolgáltatás kezeli az igény szerinti HDInsight-fürtöt az Ön nevében.
+* Az igény szerinti HDInsight-fürtön futó feladatok naplói a HDInsight-fürthöz társított tárfiókba kerülnek. Ezek a naplók eléréséhez az Azure Portalon nyissa meg a **Tevékenység futtatása részletei** ablakot. További információt a [Folyamatok figyelése és kezelése című témakörben talál.](data-factory-monitor-manage-pipelines.md)
+* Csak azért az időért számítunk fel díjat, amikor a HDInsight-fürt működik és működik.
 
 > [!IMPORTANT]
-> Az igény szerinti HDInsight-fürt kiépítése általában *20 percet* vesz igénybe.
+> Az igény szerinti HDInsight-fürt kiépítése általában *20 percet* vagy annál többet vesz igénybe.
 >
 > 
 
 ### <a name="example"></a>Példa
-A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolgáltatást definiál. Az Data Factory automatikusan létrehoz egy *Linux-alapú HDInsight-* fürtöt, amikor adatszeletet dolgoz fel. 
+A következő JSON egy Linux-alapú HDInsight-kapcsolt szolgáltatást határoz meg. A Data Factory automatikusan létrehoz egy *Linux-alapú* HDInsight-fürtöt, amikor egy adatszeletet dolgoz fel. 
 
 ```json
 {
@@ -112,23 +112,23 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ```
 
 > [!IMPORTANT]
-> A HDInsight-fürt létrehoz egy *alapértelmezett tárolót* a JSON **linkedServiceName** tulajdonságban megadott Azure Blob Storage-tárolóban. A HDInsight nem törli ezt a tárolót a fürt törlése után. Egy igény szerinti HDInsight társított szolgáltatás esetén a rendszer minden alkalommal létrehoz egy HDInsight-fürtöt, amikor egy szeletet fel kell dolgozni, kivéve, ha van meglévő élő fürt (**TimeToLive**). A rendszer törli a fürtöt a feldolgozás befejezésekor. 
+> A HDInsight-fürt létrehoz egy *alapértelmezett tárolót* az Azure Blob storage-ban, amelyet a JSON **linkedServiceName** tulajdonságban ad meg. A HDInsight a fürt törlésekor a hdinsight nem törli ezt a tárolót. Egy igény szerinti HDInsight-kapcsolt szolgáltatásban egy HDInsight-fürt jön létre minden alkalommal, amikor egy szeletet fel kell dolgozni, kivéve, ha létezik egy meglévő élő fürt **(timeToLive).** A fürt a feldolgozás befejezésekor törlődik. 
 >
-> Ahogy egyre több szeletet dolgoz fel, a blob Storage-ban sok tároló jelenik meg. Ha nincs szüksége a tárolók hibaelhárítási feladatokhoz, érdemes törölni a tárolókat a tárolási díjak csökkentése érdekében. A tárolók neve a következő mintát követi: `adf<your Data Factory name>-<linked service name>-<date and time>`. A blob Storage-ban a tárolók törléséhez használhatja a [Microsoft Storage Explorer](https://storageexplorer.com/) eszközt is.
+> A hogy több szeletet dolgoz fel a rendszer, sok tárolót láthat a Blob storage-ban. Ha nincs szüksége a tárolók hibaelhárítási feladatok, érdemes törölni a tárolók a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf<your Data Factory name>-<linked service name>-<date and time>`. A Microsoft Storage [Explorerhez](https://storageexplorer.com/) hasonló eszközökkel törölheti a tárolókat a Blob storage-ban.
 >
 > 
 
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság                     | Leírás                              | Kötelező |
 | ---------------------------- | ---------------------------------------- | -------- |
-| type                         | Állítsa a Type (típus) tulajdonságot **HDInsightOnDemand**értékre. | Igen      |
-| clusterSize                  | A fürtben található feldolgozó és adatcsomópontok száma. A HDInsight-fürt két fő csomóponttal jön létre a tulajdonsághoz megadott munkavégző csomópontok száma mellett. A csomópontok mérete Standard_D3, amely 4 magot tartalmaz. A 4 munkavégző csomópont-fürt 24 magot (4\*4 = 16 magot biztosít a feldolgozó csomópontok számára, valamint 2\*4 = 8 maggal a fő csomópontok számára). A Standard_D3 szintjével kapcsolatos további információkért lásd: [Linux-alapú Hadoop-fürtök létrehozása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Igen      |
-| timeToLive                   | Az igény szerinti HDInsight-fürt számára engedélyezett üresjárati idő. Meghatározza, hogy az igény szerinti HDInsight-fürt mennyi ideig maradjon életben, ha a tevékenység futtatása befejeződött, ha nincsenek más aktív feladatok a fürtben.<br /><br />Ha például egy tevékenység futása 6 percet vesz igénybe, és a **TimeToLive** 5 percre van állítva, a fürt a tevékenység futtatásának 6 perce után 5 perccel továbbra is életben marad. Ha egy másik tevékenység futtatása a 6 perces ablakban történik, akkor azt ugyanazon fürt dolgozza fel.<br /><br />Egy igény szerinti HDInsight-fürt létrehozása költséges művelet (eltarthat egy darabig). Ezt a beállítást igény szerint használhatja az adat-előállító teljesítményének növeléséhez egy igény szerinti HDInsight-fürt újrafelhasználásával.<br /><br />Ha a **TimeToLive** értéket **0-ra**állítja, akkor a rendszer a tevékenység futtatása után azonnal törli a fürtöt. Ha azonban magas értéket állít be, előfordulhat, hogy a fürt tétlen maradhat, ami szükségtelenül magas költségekkel jár. Fontos, hogy az igényeinek megfelelően állítsa be a megfelelő értéket.<br /><br />Ha a **TimeToLive** értéke megfelelően van beállítva, több folyamat is megoszthatja az igény szerinti HDInsight-fürt példányát. | Igen      |
-| version                      | A HDInsight-fürt verziója. Az engedélyezett HDInsight-verziók esetében lásd: [támogatott HDInsight-verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ha ez az érték nincs megadva, a rendszer a [legújabb HDI alapértelmezett verziót](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) használja. | Nem       |
-| linkedServiceName            | Az Azure Storage társított szolgáltatása, amelyet az igény szerinti fürt az adattároláshoz és-feldolgozáshoz használ. A HDInsight-fürt ugyanabban a régióban jön létre, mint a Storage-fiók.<p>Jelenleg nem hozhat létre Azure Data Lake Store tárolóként használó igény szerinti HDInsight-fürtöt. Ha az HDInsight feldolgozásból származó eredményeket szeretné tárolni Data Lake Storeban, a másolási tevékenység használatával másolja át az adatait a blob Storage-ból a Data Lake Storeba. </p> | Igen      |
-| additionalLinkedServiceNames | További Storage-fiókok megadása a HDInsight társított szolgáltatáshoz. Data Factory regisztrálja a Storage-fiókokat az Ön nevében. Ezeknek a tárolási fiókoknak ugyanabban a régióban kell lenniük, mint a HDInsight-fürtnek. A HDInsight-fürt ugyanabban a régióban jön létre, mint a **linkedServiceName** tulajdonság által megadott Storage-fiók. | Nem       |
-| osType                       | Az operációs rendszer típusa. Az engedélyezett értékek a **Linux** és a **Windows**. Ha ez az érték nincs megadva, a rendszer a **Linux** -t használja.  <br /><br />A Linux-alapú HDInsight-fürtök használatát javasoljuk. A Windows HDInsight kivonulási dátuma 2018. július 31-ig tart. | Nem       |
-| hcatalogLinkedServiceName    | Annak az Azure SQL társított szolgáltatásnak a neve, amely a HCatalog-adatbázisra mutat. Az igény szerinti HDInsight-fürt létrehozásához az SQL Database-t használja metaadattár. | Nem       |
+| type                         | Állítsa a típustulajdonságot **HDInsightOnDemand tulajdonságra.** | Igen      |
+| clusterSize                  | A dolgozó és az adatcsomópontok száma a fürtben. A HDInsight-fürt kétfej-csomóponttal jön létre, a tulajdonsághoz megadott munkavégző csomópontok száma mellett. A csomópontok mérete Standard_D3, amely 4 maggal rendelkezik. Egy 4 munkavégző csomópontfürt 24 magból áll (4\*4 = 16\*mag a munkavégző csomópontokhoz, plusz 2 4 = 8 mag a főcsomópontokhoz). A Standard_D3 rétegről a [Linux-alapú Hadoop-fürtök létrehozása a HDInsightban című témakörben talál.](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | Igen      |
+| timeToLive                   | Az igény szerinti HDInsight-fürt engedélyezett szabad ideje. Itt adható meg, hogy az igény szerinti HDInsight-fürt mennyi ideig maradjon életben, amikor egy tevékenység futtatása befejeződik, ha nincs más aktív feladat a fürtben.<br /><br />Ha például egy tevékenység futtatása 6 percet vesz igénybe, és az **időToLive** 5 percre van állítva, a fürt a tevékenység futtatásának 6 percután 5 percig életben marad. Ha egy másik tevékenységfuttatása a 6 perces ablakban történik, azt ugyanaz a fürt dolgozza fel.<br /><br />Egy igény szerinti HDInsight-fürt létrehozása költséges művelet (eltarthat egy ideig). Ezt a beállítást szükség szerint használhatja az adat-előállító teljesítményének növeléséhez egy igény szerinti HDInsight-fürt újrafelhasználásával.<br /><br />Ha az **timeToLive** értéket **0-ra**állítja, a fürt törlődik, amint a tevékenység futása befejeződik. Ha azonban magas értéket állít be, a fürt tétlen maradhat, szükségtelenül magas költségeket eredményezve. Fontos, hogy a megfelelő értéket az ön igényei nek megfelelően állítsa be.<br /><br />Ha az **timeToLive** érték megfelelően be van állítva, több folyamat is megoszthatja az igény szerinti HDInsight-fürt példányát. | Igen      |
+| version                      | A HDInsight-fürt verziója. Az engedélyezett HDInsight-verziókról a [Támogatott HDInsight-verziók című témakörben lehet.](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions) Ha ez az érték nincs megadva, a rendszer a [legújabb HDI alapértelmezett verziót](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) használja. | Nem       |
+| linkedServiceName            | Az Azure Storage-hoz kapcsolódó szolgáltatás, amelyet az igény szerinti fürt az adatok tárolására és feldolgozására használ. A HDInsight-fürt ugyanabban a régióban jön létre, mint ez a tárfiók.<p>Jelenleg nem hozhat létre olyan igény szerinti HDInsight-fürtöt, amely az Azure Data Lake Store-t használja tárolóként. Ha a HDInsight-feldolgozás ból származó eredményadatokat a Data Lake Store-ban szeretné tárolni, a Másolási tevékenység segítségével másolja az adatokat a Blob storage-ból a Data Lake Store-ba. </p> | Igen      |
+| továbbiLinkedServiceNames | A HDInsight-csatolt szolgáltatás további tárfiókokat határoz meg. A Data Factory regisztrálja a tárfiókokat az Ön nevében. Ezek a tárfiókok kell ugyanabban a régióban, mint a HDInsight-fürt. A HDInsight-fürt ugyanabban a régióban jön létre, mint a **linkedServiceName** tulajdonság által megadott tárfiók. | Nem       |
+| osType típus                       | Az operációs rendszer típusa. Az engedélyezett értékek **linuxos** és windowsosak. **Windows** Ha ez az érték nincs megadva, a **Linux** használatos.  <br /><br />Javasoljuk, hogy linuxos HDInsight-fürtöket használjon. A HDInsight windowsos nyugdíjazási dátuma 2018. | Nem       |
+| hcatalogLinkedServiceName    | Az Azure SQL-hez csatolt szolgáltatás neve, amely a HCatalog-adatbázisra mutat. Az igény szerinti HDInsight-fürt az SQL-adatbázis metatárolóként való használatával jön létre. | Nem       |
 
 #### <a name="example-linkedservicenames-json"></a>Példa: LinkedServiceNames JSON
 
@@ -140,20 +140,20 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ```
 
 ### <a name="advanced-properties"></a>Speciális tulajdonságok
-Az igény szerinti HDInsight-fürt részletes konfigurálásához a következő tulajdonságokat adhatja meg:
+Az igény szerinti HDInsight-fürt részletes konfigurációjához a következő tulajdonságokadhatók meg:
 
 | Tulajdonság               | Leírás                              | Kötelező |
 | :--------------------- | :--------------------------------------- | :------- |
-| coreConfiguration      | Meghatározza a létrehozandó HDInsight-fürt alapvető konfigurációs paramétereit (Core-site. xml). | Nem       |
-| hBaseConfiguration     | Megadja a HDInsight-fürt HBase-konfigurációs paramétereit (hbase-site. xml). | Nem       |
-| hdfsConfiguration      | Megadja a HDInsight-fürt HDFS-konfigurációs paramétereit (hdfs-site. xml). | Nem       |
-| hiveConfiguration      | Meghatározza a HDInsight-fürthöz tartozó struktúra konfigurációs paramétereit (Hive-site. xml). | Nem       |
-| mapReduceConfiguration | Megadja a HDInsight-fürt MapReduce-konfigurációs paramétereit (mapred-site. xml). | Nem       |
-| oozieConfiguration     | Megadja a HDInsight-fürt Oozie-konfigurációs paramétereit (oozie-site. xml). | Nem       |
-| stormConfiguration     | Megadja a HDInsight-fürt Storm konfigurációs paramétereit (Storm-site. xml). | Nem       |
-| yarnConfiguration      | Megadja a HDInsight-fürthöz tartozó fonal-konfigurációs paramétereket (yarn-site. xml). | Nem       |
+| coreConfiguration (magkonfiguráció)      | Megadja a létrehozandó HDInsight-fürt alapvető konfigurációs paramétereit (core-site.xml). | Nem       |
+| hBaseConfiguration     | Megadja a HDInsight-fürt HBase konfigurációs paramétereit (hbase-site.xml). | Nem       |
+| hdfsConfiguration      | Megadja a HDInsight-fürt HDFS konfigurációs paramétereit (hdfs-site.xml). | Nem       |
+| struktúrakonfiguráció      | Megadja a HIVe konfigurációs paramétereit (hive-site.xml) a HDInsight-fürthöz. | Nem       |
+| mapReduceConfiguration | Megadja a HDInsight-fürt MapReduce konfigurációs paramétereit (mapred-site.xml). | Nem       |
+| oozieConfiguration     | Megadja a HDInsight-fürt Oozie konfigurációs paramétereit (oozie-site.xml). | Nem       |
+| viharConfiguration     | Megadja a Storm konfigurációs paramétereit (storm-site.xml) a HDInsight-fürthöz. | Nem       |
+| fonalkonfiguráció      | Megadja a YARN konfigurációs paramétereit (yarn-site.xml) a HDInsight-fürthöz. | Nem       |
 
-#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Példa: igény szerinti HDInsight-fürt speciális tulajdonságokkal
+#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Példa: Igény szerinti HDInsight-fürtkonfiguráció speciális tulajdonságokkal
 
 ```json
 {
@@ -192,19 +192,19 @@ Az igény szerinti HDInsight-fürt részletes konfigurálásához a következő 
 }
 ```
 
-### <a name="node-sizes"></a>Csomópontok méretei
-A fej-, az adatés a ZooKeeper-csomópontok méretének megadásához használja a következő tulajdonságokat: 
+### <a name="node-sizes"></a>Csomópontméretek
+A fej-, adat- és ZooKeeper-csomópontok méretének megadásához használja a következő tulajdonságokat: 
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Beállítja a fő csomópont méretét. Az alapértelmezett érték **Standard_D3**. Részletekért lásd a [csomópontok méretének megadása](#specify-node-sizes)című témakört. | Nem       |
-| dataNodeSize      | Az adatcsomópont méretének beállítása. Az alapértelmezett érték **Standard_D3**. | Nem       |
-| zookeeperNodeSize | Beállítja a ZooKeeper-csomópont méretét. Az alapértelmezett érték **Standard_D3**. | Nem       |
+| headNodeMéret      | Beállítja a fejcsomópont méretét. Az alapértelmezett érték **a Standard_D3**. További információt a [Csomópontméretek megadása .](#specify-node-sizes) | Nem       |
+| dataNodeSize (dataNodeSize)      | Az adatcsomópont méretét állítja be. Az alapértelmezett érték **a Standard_D3**. | Nem       |
+| zookeeperNodeMéret | A ZooKeeper csomópont méretét állítja be. Az alapértelmezett érték **a Standard_D3**. | Nem       |
 
-#### <a name="specify-node-sizes"></a>Csomópontok méretének meghatározása
-Az előző szakaszban ismertetett tulajdonságokkal megadható karakterlánc-értékekhez lásd: [virtuális gépek méretei](../../virtual-machines/linux/sizes.md). Az értékeknek meg kell felelniük a [virtuális gépek méreteiben](../../virtual-machines/linux/sizes.md)hivatkozott parancsmagoknak és API-knak. A nagyméretű (alapértelmezett) adatcsomópont-méret 7 GB memóriával rendelkezik. Előfordulhat, hogy ez nem elegendő a forgatókönyvhöz. 
+#### <a name="specify-node-sizes"></a>Csomópontméretek megadása
+Az előző szakaszban ismertetett tulajdonságokhoz megadandó karakterláncértékekről a [Virtuális gép méretei](../../virtual-machines/linux/sizes.md)című témakörben található. Az értékeknek meg kell felelniük a [virtuális gép méretekben](../../virtual-machines/linux/sizes.md)hivatkozott parancsmagoknak és API-knak. A Nagy (alapértelmezett) adatcsomópont mérete 7 GB memóriával rendelkezik. Ez nem feltétlenül elegendő a forgatókönyvhöz. 
 
-Ha D4 méretű főcsomópontokat és munkavégző csomópontokat szeretne létrehozni, akkor a **headNodeSize** és a **dataNodeSize** tulajdonságok értékének megadásához a **Standard_D4** értéket kell megadnia: 
+Ha D4-es méretű fejcsomópontokat és munkavégző csomópontokat szeretne létrehozni, adja meg **Standard_D4** a **headNodeSize** és **dataNodeSize** tulajdonságok értékeként: 
 
 ```json
 "headNodeSize": "Standard_D4",    
@@ -215,16 +215,16 @@ Ha helytelen értéket állít be ezekhez a tulajdonságokhoz, a következő üz
 
   Nem sikerült létrehozni a fürtöt. Kivétel: Nem sikerült befejezni a fürt létrehozásának műveletét. A művelet 400-as kóddal meghiúsult. A fürt állapota: „hiba”. Üzenet: "PreClusterCreationValidationFailure". 
   
-Ha ezt az üzenetet látja, győződjön meg róla, hogy a parancsmagot és az API-neveket használja a táblából a [virtuális gépek méreteiben](../../virtual-machines/linux/sizes.md).  
+Ha ez az üzenet jelenik meg, győződjön meg arról, hogy a tábla parancsmag- és API-neveit használja [a virtuális gép méretekben.](../../virtual-machines/linux/sizes.md)  
 
 > [!NOTE]
-> A Data Factory jelenleg nem támogatja a Data Lake Store elsődleges tárolóként használó HDInsight-fürtöket. Használja az Azure Storage-t elsődleges tárolóként a HDInsight-fürtökhöz. 
+> Jelenleg a Data Factory nem támogatja a HDInsight-fürtöket, amelyek a Data Lake Store-t használják elsődleges tárolóként. Használja az Azure Storage-t a HDInsight-fürtök elsődleges tárolójaként. 
 >
 > 
 
 
-## <a name="bring-your-own-compute-environment"></a>Saját számítási környezet
-A Data Factory-ben társított szolgáltatásként regisztrálhat egy meglévő számítási környezetet. A számítási környezet kezelése. A Data Factory szolgáltatás a számítási környezetet használja a tevékenységek végrehajtásához.
+## <a name="bring-your-own-compute-environment"></a>Hozza magával saját számítási környezetét
+A Data Factory ban egy meglévő számítási környezetet összekapcsolt szolgáltatásként regisztrálhat. Ön kezeli a számítási környezetet. A Data Factory szolgáltatás a számítási környezetet használja a tevékenységek végrehajtásához.
 
 Az ilyen típusú konfiguráció a következő számítási környezetekben támogatott:
 
@@ -232,10 +232,10 @@ Az ilyen típusú konfiguráció a következő számítási környezetekben tám
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL Database, Azure SQL Data Warehouse, SQL Server
+* Azure SQL Adatbázis, Azure SQL Adattárház, SQL Server
 
-## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight társított szolgáltatás
-Létrehozhat egy HDInsight társított szolgáltatást, hogy regisztrálja a saját HDInsight-fürtöt Data Factory használatával.
+## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight-kapcsolt szolgáltatás
+Létrehozhat egy HDInsight-csatolt szolgáltatást, amely regisztrálja saját HDInsight-fürtjeit a Data Factory szolgáltatással.
 
 ### <a name="example"></a>Példa
 
@@ -257,20 +257,20 @@ Létrehozhat egy HDInsight társított szolgáltatást, hogy regisztrálja a saj
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | Állítsa a Type (típus) tulajdonságot **HDInsight**értékre. | Igen      |
+| type              | Állítsa a típustulajdonságot **HDInsight**tulajdonságra. | Igen      |
 | clusterUri        | A HDInsight-fürt URI-ja.        | Igen      |
-| felhasználónév          | A meglévő HDInsight-fürthöz való kapcsolódáshoz használandó felhasználói fiók neve. | Igen      |
+| felhasználónév          | A meglévő HDInsight-fürthöz való csatlakozáshoz használandó felhasználói fiók neve. | Igen      |
 | jelszó          | A felhasználói fiók jelszava.   | Igen      |
-| linkedServiceName | A HDInsight-fürt által használt BLOB-tárolóra hivatkozó Storage társított szolgáltatás neve. <p>Jelenleg nem adhat meg Data Lake Store társított szolgáltatást ehhez a tulajdonsághoz. Ha a HDInsight-fürt hozzáfér a Data Lake Storehoz, akkor a struktúra vagy a Pig parancsfájlok Data Lake Store adatait is elérheti. </p> | Igen      |
+| linkedServiceName | A tárolóhoz csatolt szolgáltatás neve, amely a HDInsight-fürt által használt Blob-tárolóra hivatkozik. <p>Jelenleg nem adhat meg Data Lake Store-hoz csatolt szolgáltatást ehhez a tulajdonsághoz. Ha a HDInsight-fürt hozzáfér a Data Lake Store-hoz, előfordulhat, hogy a Data Lake Store-beli adatokhoz hive vagy Pig parancsfájlokból fér hozzá. </p> | Igen      |
 
-## <a name="azure-batch-linked-service"></a>Társított szolgáltatás Azure Batch
-Létrehozhat egy batch-társított szolgáltatást, amely a virtuális gépek (VM-EK) batch-készletét egy adatgyárba regisztrálja. Microsoft .NET egyéni tevékenységeket a Batch vagy a HDInsight használatával is futtathatja.
+## <a name="azure-batch-linked-service"></a>Azure Batch-alapú szolgáltatás
+Létrehozhat egy Batch-hez csatolt szolgáltatást a virtuális gépek (VM-ek) kötegkészletének adat-előállítóba történő regisztrálásához. A Microsoft .NET egyéni tevékenységeket a Batch vagy a HDInsight használatával is futtathatja.
 
-Ha új a Batch szolgáltatás használatához:
+Ha még nem használja a Batch szolgáltatást:
 
-* Ismerkedjen meg [Azure batch alapjaival](../../batch/batch-technical-overview.md).
-* A [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) parancsmag megismerése. Ezzel a parancsmaggal hozhat létre batch-fiókot. A Batch-fiókot a [Azure Portal](../../batch/batch-account-create-portal.md)használatával is létrehozhatja. A parancsmag használatával kapcsolatos részletes információkért lásd: a [Batch-fiók kezelése a PowerShell használatával](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
-* A [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) parancsmag megismerése. Ezzel a parancsmaggal hozhat létre batch-készletet.
+* Ismerje meg az [Azure Batch alapjait.](../../batch/batch-technical-overview.md)
+* Ismerje meg a [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) parancsmag. Ezzel a parancsmagból batch-fiókot hozhat létre. Vagy létrehozhatja a Batch-fiókot az [Azure Portal](../../batch/batch-account-create-portal.md)használatával. A parancsmag használatáról a [PowerShell használata kötegfiók kezeléséhez](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)című témakörben talál részletes információt.
+* Ismerje meg a [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) parancsmag. Ezzel a parancsmagból kötegkészletet hozhat létre.
 
 ### <a name="example"></a>Példa
 
@@ -289,13 +289,13 @@ Ha új a Batch szolgáltatás használatához:
 }
 ```
 
-A **accountName** tulajdonsághoz fűzze a **.\<régió nevét\>** a Batch-fiókja nevére. Például:
+Az **accountName** tulajdonsághoz fűzzék hozzá **a\< . régió\> nevét** a kötegszámla nevéhez. Példa:
 
 ```json
 "accountName": "mybatchaccount.eastus"
 ```
 
-Egy másik lehetőség, hogy megadja a **batchUri** -végpontot. Például:
+Egy másik lehetőség a **batchUri-végpont** biztosítása. Példa:
 
 ```json
 "accountName": "adfteam",
@@ -305,14 +305,14 @@ Egy másik lehetőség, hogy megadja a **batchUri** -végpontot. Például:
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | Állítsa a Type (típus) tulajdonságot **AzureBatch**értékre. | Igen      |
+| type              | Állítsa a típustulajdonságot **az AzureBatch tulajdonságra.** | Igen      |
 | accountName       | A Batch-fiók neve.         | Igen      |
-| accessKey         | A Batch-fiók elérési kulcsa.  | Igen      |
-| poolName          | A virtuális gépek készletének neve.    | Igen      |
-| linkedServiceName | Az ehhez a kötegelt társított szolgáltatáshoz társított Storage társított szolgáltatás neve. Ez a társított szolgáltatás a tevékenység futtatásához szükséges átmeneti fájlokra, valamint a tevékenység-végrehajtási naplók tárolására szolgál. | Igen      |
+| accessKey (accessKey)         | A Batch-fiók hozzáférési kulcsa.  | Igen      |
+| készletneve          | A virtuális gépek készletének neve.    | Igen      |
+| linkedServiceName | A Batch-alapú szolgáltatáshoz társított tárolókapcsolt szolgáltatás neve. Ez a csatolt szolgáltatás a tevékenység futtatásához és a tevékenységvégrehajtási naplók tárolásához szükséges átmeneti fájlokhoz használatos. | Igen      |
 
-## <a name="azure-machine-learning-linked-service"></a>Társított szolgáltatás Azure Machine Learning
-Machine Learning társított szolgáltatás létrehozásával regisztrálhat egy Machine Learning batch-pontozási végpontot egy adatgyárba.
+## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning csatolt szolgáltatás
+Létrehozhat egy Machine Learning-hez kapcsolt szolgáltatást a Machine Learning-kötegpontozási végpont regisztrálásához egy adat-előállítóba.
 
 ### <a name="example"></a>Példa
 
@@ -332,41 +332,41 @@ Machine Learning társított szolgáltatás létrehozásával regisztrálhat egy
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság   | Leírás                              | Kötelező |
 | ---------- | ---------------------------------------- | -------- |
-| Típus       | Állítsa a Type (típus) tulajdonságot **AzureML**értékre. | Igen      |
-| mlEndpoint | A Batch-pontozási URL-cím.                   | Igen      |
-| apiKey     | A közzétett munkaterület-modell API-ját.     | Igen      |
+| Típus       | Állítsa be a típustulajdonságot **Az AzureML**. | Igen      |
+| mlVégpont | A kötegelt pontozási URL-cím.                   | Igen      |
+| apiKey (apiKey)     | A közzétett munkaterületi modell API-ja.     | Igen      |
 
-## <a name="azure-data-lake-analytics-linked-service"></a>Társított szolgáltatás Azure Data Lake Analytics
-Létrehozhat egy Data Lake Analytics társított szolgáltatást egy Data Lake Analytics számítási szolgáltatás Azure-beli adatgyárhoz való összekapcsolásához. A folyamat Data Lake Analytics U-SQL tevékenysége erre a társított szolgáltatásra hivatkozik. 
+## <a name="azure-data-lake-analytics-linked-service"></a>Az Azure Data Lake Analytics kapcsolt szolgáltatása
+Létrehozhat egy Data Lake Analytics-alapú szolgáltatást, amely egy Data Lake Analytics-számítási szolgáltatást egy Azure-adatfeldolgozóhoz kapcsol. A Data Lake Analytics U-SQL tevékenység a folyamatban hivatkozik erre a csatolt szolgáltatás. 
 
-A következő táblázat a JSON-definícióban használt általános tulajdonságokat ismerteti:
+Az alábbi táblázat a JSON-definícióban használt általános tulajdonságokat ismerteti:
 
 | Tulajdonság                 | Leírás                              | Kötelező                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| type                 | Állítsa a Type (típus) tulajdonságot **AzureDataLakeAnalytics**értékre. | Igen                                      |
-| accountName          | A Data Lake Analytics fiók neve.  | Igen                                      |
-| dataLakeAnalyticsUri | A Data Lake Analytics URI-ja.           | Nem                                       |
-| subscriptionId       | Az Azure-előfizetés azonosítója.                    | Nem<br /><br />(Ha nincs megadva, a rendszer az adatgyár-előfizetést használja.) |
-| resourceGroupName    | Az Azure-erőforráscsoport neve.                | Nem<br /><br /> (Ha nincs megadva, a rendszer az adatgyári erőforráscsoportot használja.) |
+| type                 | Állítsa be a típustulajdonságot **az AzureDataLakeAnalytics**tulajdonságra. | Igen                                      |
+| accountName          | A Data Lake Analytics-fiók neve.  | Igen                                      |
+| dataLakeAnalyticsUri | A Data Lake Analytics URI.           | Nem                                       |
+| subscriptionId       | Az Azure-előfizetés azonosítója.                    | Nem<br /><br />(Ha nincs megadva, a rendszer az adat-előállító előfizetést használja.) |
+| resourceGroupName    | Az Azure erőforráscsoport neve.                | Nem<br /><br /> (Ha nincs megadva, a rendszer az adat-előállító erőforráscsoportot használja.) |
 
 ### <a name="authentication-options"></a>Hitelesítési lehetőségek
-A Data Lake Analytics társított szolgáltatás esetében a hitelesítés egy egyszerű szolgáltatásnév vagy egy felhasználói hitelesítő adatok használatával választható.
+A Data Lake Analytics csatolt szolgáltatás, választhat a hitelesítés egyszerű szolgáltatás vagy egy felhasználói hitelesítő adatok használatával.
 
-#### <a name="service-principal-authentication-recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)
-Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás-entitást Azure Active Directory (Azure AD). Ezután engedélyezze az Azure AD-hozzáférést Data Lake Storehoz. A részletes lépésekért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+#### <a name="service-principal-authentication-recommended"></a>Egyszerű szolgáltatáshitelesítés (ajánlott)
+Az egyszerű szolgáltatáshitelesítés használatához regisztráljon egy alkalmazásentitást az Azure Active Directoryban (Azure AD). Ezután adjon hozzáférést az Azure AD-nek a Data Lake Store-hoz. A részletes lépéseket a [Szolgáltatás-szolgáltatás hitelesítése című témakörben található.](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md) Jegyezze fel a következő értékeket, amelyek segítségével definiálja a csatolt szolgáltatást:
 * Alkalmazásazonosító
 * Alkalmazáskulcs 
 * Bérlőazonosító
 
-Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megadásával használhatja:
+A szolgáltatásegyszerű hitelesítés használata a következő tulajdonságok megadásával:
 
 | Tulajdonság                | Leírás                              | Kötelező |
 | :---------------------- | :--------------------------------------- | :------- |
-| servicePrincipalId  | Az alkalmazás ügyfél-azonosítója.     | Igen      |
+| servicePrincipalId  | Az alkalmazás ügyfélazonosítója.     | Igen      |
 | servicePrincipalKey | Az alkalmazás kulcsa.           | Igen      |
-| tenant              | A bérlői információ (tartománynév vagy bérlő azonosítója), ahol az alkalmazás található. Ezen információk beszerzéséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen      |
+| Bérlő              | A bérlői adatok (tartománynév vagy bérlőazonosító), ahol az alkalmazás található. Ezen információk leése érdekében vigye az egeret az Azure Portal jobb felső sarkába. | Igen      |
 
-**Példa: egyszerű szolgáltatásnév hitelesítése**
+**Példa: Egyszerű szolgáltatáshitelesítés**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -386,14 +386,14 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 ```
 
 #### <a name="user-credential-authentication"></a>Felhasználói hitelesítő adatok hitelesítése
-A Data Lake Analytics felhasználói hitelesítő adatainak hitelesítéséhez a következő tulajdonságokat kell megadnia:
+A Data Lake Analytics felhasználói hitelesítő adatainak hitelesítéséhez adja meg a következő tulajdonságokat:
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
-| authorization | Data Factory szerkesztőben kattintson az **Engedélyezés** gombra. Adja meg azt a hitelesítő adatot, amely az automatikusan generált engedélyezési URL-címet rendeli hozzá ehhez a tulajdonsághoz. | Igen      |
-| sessionId     | A OAuth munkamenet-azonosítója a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. A beállítás automatikusan létrejön, amikor Data Factory szerkesztőt használ. | Igen      |
+| engedélyezés | A Data Factory Editor alkalmazásban válassza az **Engedélyezés** gombot. Adja meg az automatikusan létrehozott engedélyezési URL-címet hozzárendelt hitelesítő adatokat ehhez a tulajdonsághoz. | Igen      |
+| Munkamenet     | Az OAuth-munkamenet azonosítója az OAuth engedélyezési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használható. Ez a beállítás automatikusan létrejön a Data Factory Editor használatakor. | Igen      |
 
-**Példa: felhasználói hitelesítő adatok hitelesítése**
+**Példa: Felhasználói hitelesítő adatok hitelesítése**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -411,21 +411,21 @@ A Data Lake Analytics felhasználói hitelesítő adatainak hitelesítéséhez a
 }
 ```
 
-#### <a name="token-expiration"></a>Jogkivonat lejárata
-Az **Engedélyezés** gomb kiválasztásával létrehozott engedélyezési kód egy megadott intervallum lejárta után lejár. 
+#### <a name="token-expiration"></a>Token lejárata
+Az **Engedélyezés** gomb kiválasztásával létrehozott engedélyezési kód egy meghatározott időköz után lejár. 
 
-A hitelesítési jogkivonat lejárta után a következő hibaüzenet jelenhet meg: 
+A hitelesítési jogkivonat lejártakor a következő hibaüzenet jelenhet meg: 
 
-  Hitelesítő adatok műveleti hibája: invalid_grant-AADSTS70002: hiba történt a hitelesítő adatok érvényesítése során. AADSTS70008: a megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosítója: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 timestamp: 2015-12-15 21:09:31Z
+  Hitelesítő adatok működési hibája: invalid_grant - AADSTS70002: Hiba a hitelesítő adatok érvényesítése közben. AADSTS70008: A megadott hozzáférési támogatás lejárt vagy visszavonásra került. Nyomazonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelációs azonosító: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Időbélyeg: 2015-12-15 21:09:31Z
 
-A következő táblázat a felhasználói fiók típusa szerint jár le: 
+Az alábbi táblázat a lejáratokat mutatja a felhasználói fiók típusa szerint: 
 
-| Felhasználó típusa                                | Lejárat után lejár                            |
+| Felhasználó típusa                                | Lejárat után                            |
 | :--------------------------------------- | :--------------------------------------- |
-| Az Azure AD által *nem* kezelt felhasználói fiókok (Hotmail, élő stb.) | 12 óra.                                 |
-| Az Azure AD *által kezelt felhasználói* fiókok | 14 nappal az utolsó szelet futtatása után. <br /><br />90 nap, ha egy OAuth-alapú társított szolgáltatáson alapuló szelet 14 naponta legalább egyszer fut. |
+| Az Azure AD által *nem* kezelt felhasználói fiókok (Hotmail, Live és így tovább) | 12 órája.                                 |
+| Az Azure AD által *kezelt* felhasználói fiókok | 14 nappal az utolsó szelet futtatása után. <br /><br />90 nap, ha egy oauth-alapú csatolt szolgáltatáson alapuló szelet 14 naponta legalább egyszer fut. |
 
-A hiba elkerüléséhez vagy megoldásához engedélyezze az **Engedélyezés** gombot, ha a jogkivonat lejár. Ezután telepítse újra a társított szolgáltatást. A **munkamenet** -azonosító és az **engedélyezési** tulajdonságok értékeit programozott módon is létrehozhatja a következő kód használatával:
+A hiba elkerülése vagy megoldása érdekében engedélyezze újra az **Engedélyezés** gombot, amikor a token lejár. Ezután telepítse újra a csatolt szolgáltatást. A **munkamenetazonosító** és az **engedélyezési** tulajdonságokhoz programozott módon is létrehozhat értékeket a következő kód használatával:
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -452,19 +452,19 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Az ebben a kódban használt Data Factory osztályok részleteiért lásd:
+A példában szereplő Data Factory-osztályokról a következő témakörökben talál részleteket:
 * [AzureDataLakeStoreLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
 * [AzureDataLakeAnalyticsLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
 * [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)
 
-Adjon hozzá egy hivatkozást a Microsoft. IdentityModel. clients. ActiveDirectory. WindowsForms. dll fájlhoz a **WindowsFormsWebAuthenticationDialog** osztályhoz. 
+Hivatkozás hozzáadása a Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll fájlhoz a **WindowsFormsWebAuthenticationDialog** osztályhoz. 
 
-## <a name="azure-sql-linked-service"></a>Azure SQL társított szolgáltatás
-Létrehozhat egy SQL társított szolgáltatást, és használhatja a [tárolt eljárási tevékenységgel](data-factory-stored-proc-activity.md) egy tárolt eljárás meghívásához egy Data Factory folyamatból. További információ: [Azure SQL Connector](data-factory-azure-sql-connector.md#linked-service-properties).
+## <a name="azure-sql-linked-service"></a>Azure SQL Database társított szolgáltatás
+Sql-csatolt szolgáltatást hozhat létre, és a [Tárolt eljárási tevékenységgel használhatja](data-factory-stored-proc-activity.md) a data factory-folyamatból tárolt eljárás meghívásához. További információ: [Azure SQL connector.](data-factory-azure-sql-connector.md#linked-service-properties)
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Társított szolgáltatás Azure SQL Data Warehouse
-Létrehozhat egy SQL Data Warehouse társított szolgáltatást, és használhatja a [tárolt eljárási tevékenységgel](data-factory-stored-proc-activity.md) egy tárolt eljárás meghívásához egy Data Factory folyamatból. További információ: Azure SQL Data Warehouse- [összekötő](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties).
+## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse kapcsolt szolgáltatás
+Létrehozhat egy SQL Data Warehouse csatolt szolgáltatást, és a [tárolt eljárási tevékenységgel](data-factory-stored-proc-activity.md) együtt meghívhat egy tárolt eljárást egy Data Factory-folyamatból. További információ: [Azure SQL Data Warehouse connector.](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)
 
-## <a name="sql-server-linked-service"></a>Társított szolgáltatás SQL Server
-Létrehozhat egy SQL Server társított szolgáltatást, és használhatja a [tárolt eljárási tevékenységgel](data-factory-stored-proc-activity.md) egy tárolt eljárás meghívásához egy Data Factory folyamatból. További információ: SQL Server- [összekötő](data-factory-sqlserver-connector.md#linked-service-properties).
+## <a name="sql-server-linked-service"></a>SQL Server csatolt szolgáltatás
+Létrehozhat egy SQL Server-csatolt szolgáltatást, és a [Tárolt eljárási tevékenységgel](data-factory-stored-proc-activity.md) együtt meghívhat egy tárolt eljárást egy Data Factory-folyamatból. További információt az [SQL Server-összekötő című témakörben talál.](data-factory-sqlserver-connector.md#linked-service-properties)
 

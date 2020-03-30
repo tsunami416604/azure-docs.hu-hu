@@ -1,6 +1,6 @@
 ---
-title: A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider programhoz
-description: Áttekintés a StorSimple-partnerek StorSimple és CSP-ről.
+title: StorSimple virtuális tömb telepítése a felhőalapú megoldásszolgáltatói programhoz
+description: Áttekintés a StorSimple és a StorSimple-partnerek kripta- alkalmazásáról.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,93 +15,93 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77466909"
 ---
-# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider programhoz
+# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>StorSimple virtuális tömb telepítése a felhőalapú megoldásszolgáltatói programhoz
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Virtual Array a Cloud Solution Provider (CSP) partnerei által is üzembe helyezhető az ügyfeleiknek. A CSP-partnerek létrehozhatnak egy StorSimple Eszközkezelő szolgáltatást. Ez a szolgáltatás ezután a StorSimple virtuális tömb, valamint a hozzájuk tartozó megosztások, kötetek és biztonsági másolatok üzembe helyezésére és kezelésére használható.
+A StorSimple virtuális tömbet a felhőszolgáltató (CSP) partnerei telepíthetik ügyfeleik számára. A csp-partner létrehozhat egy StorSimple Eszközkezelő szolgáltatást. Ez a szolgáltatás ezután a StorSimple virtuális tömb és a kapcsolódó megosztások, kötetek és biztonsági mentések üzembe helyezésére és kezelésére használható.
 
-Ez a cikk azt ismerteti, hogy a CSP-partner hogyan adhat hozzá ügyfelet vagy új előfizetést egy meglévő ügyfélhez, majd létrehozhat egy szolgáltatást a StorSimple virtuális tömb telepítéséhez a CSP-ben.
+Ez a cikk azt ismerteti, hogy a csp-partner hogyan adhat hozzá ügyfelet vagy új előfizetést egy meglévő ügyfélhez, majd hozhat létre egy szolgáltatást a StorSimple virtuális tömb központi telepítéséhez a csp-ben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg a következőket:
+Mielőtt elkezdené, győződjön meg arról, hogy:
 
-- A CSP program keretében regisztrálva van.
-- Érvényes a [partner Center](https://partnercenter.microsoft.com/) bejelentkezési hitelesítő adatai. A hitelesítő adatok lehetővé teszik, hogy bejelentkezzen a partner portálra új ügyfelek hozzáadásához, ügyfelek kereséséhez, vagy a partner irányítópultján navigáljon egy felhasználói fiókhoz. A CSP működhet StorSimple-rendszergazdaként az ügyfél nevében a Azure Portalban.
+- Ön beiratkozott a KP programba.
+- Érvényes [Partnerközpont](https://partnercenter.microsoft.com/) bejelentkezési hitelesítő adataival rendelkezik. A hitelesítő adatok lehetővé teszik, hogy jelentkezzen be a Partner portálon új ügyfelek hozzáadásához, ügyfelek kereséséhez, vagy egy ügyfélfiókhoz való navigáláshoz a Partner irányítópultjáról. A csp storsimple-rendszergazdaként működhet az ügyfél nevében az Azure Portalon.
                              
-## <a name="add-a-customer"></a>Ügyfél hozzáadása
+## <a name="add-a-customer"></a>Vevő hozzáadása
 
-Ha hozzáad egy ügyfelet, a rendszer automatikusan létrehoz egy előfizetést. Ha szeretne hozzáadni egy ügyfelet (és automatikusan létrehoz egy előfizetést), hajtsa végre a következő lépéseket a partner portálon.
+Ha vevőt ad hozzá, a rendszer automatikusan létrehoz egy előfizetést. Ügyfél hozzáadásához (és előfizetés automatikus létrehozásához) hajtsa végre a következő lépéseket a Partner portálon.
 
-1. Lépjen a [partner központba](https://partnercenter.microsoft.com/) , és jelentkezzen be a CSP hitelesítő adataival. Kattintson az **irányítópult**elemre.
+1. Nyissa meg a [Partnerközpontot,](https://partnercenter.microsoft.com/) és jelentkezzen be a kripta-hitelesítő adatokkal. Kattintson **az Irányítópult gombra.**
 
-     ![Irányítópult a partner Centerben](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Irányítópult a Partnerközpontban](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. A bal oldali ablaktáblán kattintson az **ügyfelek**elemre. A jobb oldali ablaktáblában kattintson az **ügyfelek hozzáadása**lehetőségre. Adja meg az ügyfél adatait. Kattintson a **Tovább gombra: előfizetések** egy ügyfél-előfizetés létrehozásához.
+2. A bal oldali ablaktáblában kattintson a **Vevők**elemre. A jobb oldali ablaktáblában kattintson a **Vevők hozzáadása**elemre. Adja meg a vevő adatait. Kattintson a **Tovább: Előfizetések** elemre az ügyfél-előfizetés létrehozásához.
 
-    ![Ügyfél hozzáadása](./media/storsimple-partner-csp-deploy/image2.png)
+    ![Vevő hozzáadása](./media/storsimple-partner-csp-deploy/image2.png)
 
-3.  Válassza ki **Microsoft Azure** ajánlatot. Görgessen a lap aljára, és kattintson az **Áttekintés**elemre.
+3.  Válassza a **Microsoft Azure-ajánlat** lehetőséget. Görgessen a lap aljára, és kattintson a **Véleményezés**gombra.
 
-    ![Előfizetés adatainak áttekintése](./media/storsimple-partner-csp-deploy/image3.png)
+    ![Előfizetési adatok áttekintése](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. Tekintse át az információkat, és kattintson a **Küldés**gombra.
+4. Tekintse át az információkat, és kattintson a **Küldés gombra.**
 
     ![Előfizetés beküldése](./media/storsimple-partner-csp-deploy/image4.png)
 
-5. Mentse a megerősítő információkat későbbi referenciául.
+5. Mentse a megerősítési információkat későbbi használatra.
 
-    ![Jóváhagyás mentése](./media/storsimple-partner-csp-deploy/image5.png)
+    ![Megerősítés mentése](./media/storsimple-partner-csp-deploy/image5.png)
 
-6. Keresse meg vagy navigáljon az imént hozzáadott ügyfélhez. Kattintson a **vállalat nevére** a részletek részletezéséhez.
+6. Keresse meg vagy keresse meg az imént felvett ügyfelet. Kattintson a **Vállalat nevére** a részletek részletezéséhez.
 
     ![Az ügyfél keresése](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. A bal oldali ablaktáblán válassza a **Service Management**elemet. A jobb oldali ablaktáblában, a **szolgáltatások felügyelete**területen kattintson a **a Microsoft Azure felügyeleti portálja** elemre, és jelentkezzen be az ügyfél Azure-rendszergazdájaként.
+7. A bal oldali ablaktáblában válassza a **Szolgáltatáskezelés**lehetőséget. A jobb oldali ablaktáblában a **Szolgáltatások felügyelete**csoportban kattintson a **Microsoft Azure Management Portal** elemre, ha azure-rendszergazdaként szeretne bejelentkezni az ügyfél számára.
 
     ![Bejelentkezés az Azure Portalra](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple-Eszközkezelő létrehozásához kattintson az **+ új** elemre, és keressen rá, vagy keresse meg a **StorSimple virtuális eszköz sorozatát**. További információért látogasson el a [StorSimple Eszközkezelő szolgáltatás üzembe helyezése](storsimple-virtual-array-manage-service.md)című témakörre.
+8. StorSimple eszközkezelő létrehozásához kattintson **a + Új** gombra, és keresse meg a **StorSimple virtuális eszközsorozatot,** vagy keresse meg azt. További információ: [Deploy a StorSimple Device Manager szolgáltatás.](storsimple-virtual-array-manage-service.md)
 
-    ![StorSimple-Eszközkezelő szolgáltatás létrehozása](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Eszközkezelő szolgáltatás létrehozása](./media/storsimple-partner-csp-deploy/image8.png)
 
 
 ## <a name="add-a-subscription"></a>Előfizetés hozzáadása
 
-Bizonyos esetekben előfordulhat, hogy van egy meglévő ügyfele, és hozzá kell adnia egy előfizetést. Ha egy meglévő ügyfélhez szeretne előfizetést hozzáadni, hajtsa végre a következő lépéseket a partner portálon.
+Bizonyos esetekben előfordulhat, hogy egy meglévő ügyfél, és hozzá kell adnia egy előfizetést. Ha előfizetést szeretne hozzáadni egy meglévő ügyfélhez, hajtsa végre az alábbi lépéseket a Partner portálon.
 
-1. Lépjen a [partner központba](https://partnercenter.microsoft.com/) , és jelentkezzen be a CSP hitelesítő adataival. Kattintson az **irányítópult**elemre.
+1. Nyissa meg a [Partnerközpontot,](https://partnercenter.microsoft.com/) és jelentkezzen be a kripta-hitelesítő adatokkal. Kattintson **az Irányítópult gombra.**
 
-     ![Irányítópult a partner Centerben](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Irányítópult a Partnerközpontban](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. A bal oldali ablaktáblán kattintson az **ügyfelek**elemre. Keresse meg vagy Navigáljon arra az ügyfélre, amelyhez előfizetést szeretne hozzáadni. Kattintson a ![kibontása a pipa ikonra](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) ikonra, hogy kibontsa az ügyfélhez tartozó vállalat nevét. A Részletek területen kattintson az **előfizetések hozzáadása**lehetőségre.
+2. A bal oldali ablaktáblában kattintson a **Vevők**elemre. Keresse meg vagy keresse meg azt az ügyfelet, akihez előfizetést szeretne hozzáadni. Kattintson ![a](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) Csekk kibontása ikonra a vevő cégnevének sorának kibontásához. A részletekben kattintson az **Előfizetések hozzáadása gombra.**
 
     ![Ügyfelek](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. Jelölje be a **Microsoft Azure** az előfizetésben szereplő **legjobb ajánlatokat** , majd kattintson a **Submit (Küldés**) gombra. Ez létrehoz egy új előfizetést.
+3. Ellenőrizze a **Microsoft Azure-ban** az előfizetés **legnépszerűbb ajánlatait,** és kattintson a **Küldés**gombra. Ez létrehoz egy új előfizetést.
 
     ![Új előfizetés hozzáadása](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. Miután létrehozta az új előfizetést, kattintson a **< – ügyfelek** elemre a bal oldali ablaktáblán, és térjen vissza az **ügyfelek** lapra. Keresse meg azt az ügyfelet, akivel nemrég létrehozott egy előfizetést. Kattintson a **vállalat nevére** a részletek részletezéséhez.
+6. Új előfizetés létrehozása után kattintson **a< – A** bal oldali ablaktáblában lévő ügyfelek **gombra** kattintva térjen vissza az Ügyfelek lapra. Keresse meg azt az ügyfelet, akinek az imént létrehozott egy előfizetést. Kattintson a **Vállalat nevére** a részletek részletezéséhez.
 
     ![Az ügyfél keresése](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. A bal oldali ablaktáblán válassza a **Service Management**elemet. A jobb oldali ablaktáblában, a **szolgáltatások felügyelete**területen kattintson a **a Microsoft Azure felügyeleti portálja** elemre, és jelentkezzen be az ügyfél Azure-rendszergazdájaként.
+7. A bal oldali ablaktáblában válassza a **Szolgáltatáskezelés**lehetőséget. A jobb oldali ablaktáblában a **Szolgáltatások felügyelete**csoportban kattintson a **Microsoft Azure Management Portal** elemre, ha azure-rendszergazdaként szeretne bejelentkezni az ügyfél számára.
 
     ![Bejelentkezés az Azure Portalra](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple-Eszközkezelő létrehozásához kattintson az **+ új** elemre, és keressen rá, vagy keresse meg a **StorSimple virtuális eszköz sorozatát**. További információért látogasson el a [StorSimple Eszközkezelő szolgáltatás üzembe helyezése](storsimple-virtual-array-manage-service.md)című témakörre.
+8. StorSimple eszközkezelő létrehozásához kattintson **a + Új** gombra, és keresse meg a **StorSimple virtuális eszközsorozatot,** vagy keresse meg azt. További információ: [Deploy a StorSimple Device Manager szolgáltatás.](storsimple-virtual-array-manage-service.md)
 
-    ![StorSimple-Eszközkezelő szolgáltatás létrehozása](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Eszközkezelő szolgáltatás létrehozása](./media/storsimple-partner-csp-deploy/image8.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ha további kérdései vannak a CSP-StorSimple kapcsolatban, lépjen a [StorSimple a CSP-ben: gyakori kérdések](storsimple-partner-csp-faq.md).
-- Ha készen áll a StorSimple üzembe helyezésére, lépjen a [StorSimple üzembe helyezése a CSP-ben](storsimple-partner-csp-deploy.md)című lépésre.
+- Ha további kérdései vannak a StorSimple-vel kapcsolatban a kriptagépben, látogasson el a [StorSimple webhelyre a KTP-ben: Gyakori kérdések](storsimple-partner-csp-faq.md).
+- Ha készen áll a StorSimple üzembe helyezésére, nyissa [meg a StorSimple központi telepítését a CSP-ben.](storsimple-partner-csp-deploy.md)

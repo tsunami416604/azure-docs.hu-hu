@@ -1,7 +1,7 @@
 ---
 title: Lekérdezések figyelése
 titleSuffix: Azure Cognitive Search
-description: A teljesítmény és az átviteli sebesség lekérdezési metrikáinak figyelése. Lekérdezési karakterlánc bemenetének összegyűjtése és elemzése a diagnosztikai naplókban.
+description: Lekérdezési metrikák figyelése a teljesítmény és az átviteli teljesítmény. A diagnosztikai naplókban lekérdezési karakterlánc-bemenetek gyűjtése és elemzése.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,120 +9,120 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462521"
 ---
-# <a name="monitor-query-requests-in-azure-cognitive-search"></a>Lekérdezési kérelmek figyelése az Azure Cognitive Search
+# <a name="monitor-query-requests-in-azure-cognitive-search"></a>Lekérdezéskérések figyelése az Azure Cognitive Search szolgáltatásban
 
-Ez a cikk azt ismerteti, hogyan mérhető a lekérdezés teljesítménye és mennyisége a metrikák és a diagnosztikai naplózás használatával. Emellett azt is ismerteti, hogyan kell összegyűjteni a lekérdezésekben használt beviteli kifejezéseket, ha az eszköz értékelése és a keresési Corpus hatékonysága szükséges.
+Ez a cikk bemutatja, hogyan mérhető a lekérdezési teljesítmény és a kötet metrikák és diagnosztikai naplózás használatával. Azt is elmagyarázza, hogyan kell gyűjteni a lekérdezésekben használt bemeneti kifejezéseket - a szükséges információkat, amikor fel kell mérnie a keresési korpusz hasznosságát és hatékonyságát.
 
-A metrikákat tartalmazó korábbi adatok 30 napig őrződnek meg. A hosszú megőrzéshez, illetve az operatív adatok és a lekérdezési karakterláncok jelentéséhez mindenképpen engedélyezzen egy olyan [diagnosztikai beállítást](search-monitor-logs.md) , amely a naplózott események és metrikák megőrzésére szolgáló tárolási lehetőséget határozza meg.
+A metrikákba betápláló előzményadatok 30 napig megőrződnek. Hosszabb megőrzési, vagy a működési adatok és a lekérdezési karakterláncok jelentéséhez győződjön meg arról, hogy engedélyezze a [diagnosztikai beállítást,](search-monitor-logs.md) amely megadja a tárolási lehetőséget a naplózott események és metrikák megőrzéséhez.
 
-Az adatmérés integritását maximalizáló feltételek a következők:
+Az adatmérés integritását maximalizálni a következő feltételeket:
 
-+ Használjon számlázható szolgáltatást (az alapszintű vagy a standard szinten létrehozott szolgáltatás). Az ingyenes szolgáltatást több előfizető is megosztja, ami egy bizonyos mértékű volatilitást vezet be, amely terhelési elmozdulást mutat be.
++ Számlázható szolgáltatás használata (az alapszintű vagy a standard szinten létrehozott szolgáltatás). Az ingyenes szolgáltatást több előfizető osztja meg, ami bizonyos mértékű volatilitást vezet be, mivel a terhelések eltolódnak.
 
-+ Egy replika és egy partíció használata, ha lehetséges, egy foglalt és elkülönített környezet létrehozásához. Ha több replikát használ, a lekérdezési mérőszámok átlaga több csomópont között történik, ami csökkentheti az eredmények pontosságát. Hasonlóképpen, a több partíció azt is jelenti, hogy az adatmegosztás történik, és a lehetséges, hogy egyes partíciók eltérő adattal rendelkezhetnek, ha az indexelés is folyamatban van. A lekérdezési teljesítmény finomhangolása esetén egyetlen csomópont és partíció a teszteléshez stabilabb környezetet biztosít.
++ Ha lehetséges, használjon egyetlen replika és partíció, zárt és elszigetelt környezet létrehozásához. Ha több replikát használ, a lekérdezési metriák átlaga több csomópontközött, ami csökkentheti az eredmények pontosságát. Hasonlóképpen több partíció azt jelenti, hogy az adatok vannak osztva, azzal a potenciállal, hogy egyes partíciók különböző adatokat, ha indexelés is folyamatban van. A lekérdezési teljesítmény finomhangolásakor egyetlen csomópont és partíció stabilabb környezetet biztosít a teszteléshez.
 
 > [!Tip]
-> A további ügyféloldali kóddal és Application Insightsekkel a mélyebb betekintéshez is rögzítheti az átkattintási adatait, hogy mi vonzza az alkalmazás felhasználóinak érdeklődését. További információ: [Search Traffic Analytics](search-traffic-analytics.md).
+> További ügyféloldali kód és az Application Insights segítségével is rögzítheti az átkattintási adatokat, hogy mélyebb betekintést nyerjen abba, hogy mi vonzza az alkalmazás felhasználóinak érdeklődését. További információt a [Keresés forgalomelemzés című témakörben talál.](search-traffic-analytics.md)
 
 ## <a name="query-volume-qps"></a>Lekérdezési kötet (QPS)
 
-A kötet a **másodpercenkénti keresési lekérdezések** (QPS) alapján mérhető, amely egy egyperces időszakon belül végrehajtható lekérdezések átlagos, darabszámbeli, minimális vagy maximális értékének jelentésére szolgál. A metrikák esetében az egyperces időközök (TimeGrain = "PT1M") a rendszeren belül vannak kijavítva.
+A kötetet **a másodpercenkénti keresési lekérdezések** (QPS) alapján mérik, amely egy beépített metrika, amely egy egyperces időszakon belül végrehajtott lekérdezések átlagos, darabszám, minimum vagy maximális értékként jelenthető. A mérőszámok egyperces intervallumai (TimeGrain = "PT1M") a rendszeren belül vannak rögzítve.
 
-A lekérdezések végrehajtása általában ezredmásodpercben történik, ezért a mérőszámokban csak a másodpercben lekérdezett lekérdezések jelennek meg.
+Gyakori, hogy a lekérdezések ezredmásodpercben futnak, így csak a másodpercként mérhető lekérdezések jelennek meg a metrikákban.
 
 | Aggregáció típusa | Leírás |
 |------------------|-------------|
-| Átlag | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
-| Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
-| Maximum | Egy percen belül másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma. |
-| Minimális | Egy perc alatt másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma.  |
-| Összeg | A percen belül végrehajtott lekérdezések összege.  |
+| Átlag | Az átlagos másodpercek száma egy percen belül, amely alatt a lekérdezés végrehajtása történt.|
+| Darabszám | Az egyperces időközön belül a naplóba kibocsátott metrikák száma. |
+| Maximum | Az egy perc alatt regisztrált keresési lekérdezések másodpercenkénti száma. |
+| Minimális | Az egy perc alatt regisztrált keresési lekérdezések másodpercenkénti száma.  |
+| Összeg | A percben végrehajtott összes lekérdezés összege.  |
 
-Előfordulhat például, hogy egy percen belül egy ilyen mintázattal rendelkezik: egy másodperces magas terhelés, amely a SearchQueriesPerSecond maximális értéke, majd az átlagos terhelés 58 másodperce, végül egy másodperc csak egy lekérdezéssel, amely a minimum.
+Egy percen belül például előfordulhat, hogy egy ilyen minta: egy másodperc a nagy terhelés, amely a maximális SearchQueriesPerSecond, majd 58 másodperc átlagos terhelés, és végül egy másodperc csak egy lekérdezés, amely a minimális.
 
-Egy másik példa: Ha egy csomópont 100 mérőszámot bocsát ki, ahol az egyes mérőszámok értéke 40, akkor a "Count" a 100, az "összeg" értéke 4000, az "átlag" pedig a 40, a "Max" pedig az 40.
+Egy másik példa: ha egy csomópont 100 metrikát bocsát ki, ahol az egyes metrikák értéke 40, akkor a "Darab" értéke 100, a "Sum" értéke 400, az "Átlag" 40, a "Max" pedig 40.
 
 ## <a name="query-performance"></a>Lekérdezési teljesítmény
 
-Az egész szolgáltatásra kiterjedő lekérdezési teljesítmény a keresési késés (a lekérdezés befejezésének időtartama) és az erőforrás-tartalom miatt eldobott szabályozott lekérdezések esetében mérhető.
+Az egész szolgáltatásra kiterjedő lekérdezési teljesítményt a keresési késés (a lekérdezés befejezéséhez szükséges mennyi ideig tart) és az erőforrás-versengés eredményeként eldobott szabályozott lekérdezések mérhető.
 
-### <a name="search-latency"></a>Keresési késés
+### <a name="search-latency"></a>Keresés késése
 
 | Aggregáció típusa | Késés | 
 |------------------|---------|
-| Átlag | Lekérdezés átlagos időtartama ezredmásodpercben. | 
-| Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
-| Maximum | Leghosszabb ideig futó lekérdezés a mintában. | 
+| Átlag | A lekérdezés átlagos időtartama ezredmásodpercben. | 
+| Darabszám | Az egyperces időközön belül a naplóba kibocsátott metrikák száma. |
+| Maximum | A leghosszabb ideig futó lekérdezés a mintában. | 
 | Minimális | A legrövidebb futó lekérdezés a mintában.  | 
-| Összesen | A mintában lévő összes lekérdezés teljes végrehajtási ideje (egy perc) az intervallumon belül.  |
+| Összesen | A mintában lévő összes lekérdezés teljes végrehajtási ideje, amely az időtartamon belül (egy perc) hajt végre.  |
 
-Vegye figyelembe a következő példát a **keresési késési** mérőszámokra: 86 lekérdezés lett mintavétel alatt, átlagosan 23,26 ezredmásodperc. Legalább 0 érték azt jelzi, hogy néhány lekérdezés el lett dobva. A leghosszabb ideig futó lekérdezés 1000 ezredmásodpercet vett igénybe. A végrehajtási idő összesen 2 másodperc volt.
+Vegye figyelembe a következő példát a **keresési késés** metrikák: 86 lekérdezések mintavételezett, átlagos időtartama 23,26 ezredmásodperc. A legalább 0 azt jelzi, hogy néhány lekérdezés elmaradt. A leghosszabb ideig futó lekérdezés 1000 ezredmásodpercet vett igénybe. A teljes végrehajtási idő 2 másodperc volt.
 
-![Késések összesítései](./media/search-monitor-usage/metrics-latency.png "Késések összesítései")
+![Késés összesítései](./media/search-monitor-usage/metrics-latency.png "Késés összesítései")
 
 ### <a name="throttled-queries"></a>Szabályozott lekérdezések
 
-A szabályozott lekérdezések a folyamat helyett eldobott lekérdezésekre vonatkoznak. A legtöbb esetben a szabályozás a szolgáltatás futtatásának normális része.  Nem feltétlenül jelzi, hogy valami nem megfelelő.
+A szabályozott lekérdezések olyan lekérdezésekre hivatkoznak, amelyek a folyamat helyett eldobva vannak. A legtöbb esetben a szabályozás a szolgáltatás futtatásának normális része.  Ez nem feltétlenül azt jelzi, hogy valami baj van.
 
-A szabályozás akkor fordul elő, ha a jelenleg feldolgozott kérelmek száma meghaladja a rendelkezésre álló erőforrásokat. Előfordulhat, hogy megnövekszik a szabályozott kérelmek száma, ha a replika kikerül a rotációs vagy az indexelés során. A lekérdezési és indexelési kérelmeket ugyanazon erőforrások kezelik.
+Szabályozás akkor történik, ha a kérelmek száma jelenleg feldolgozott meghaladja a rendelkezésre álló erőforrásokat. Előfordulhat, hogy a szabályozott kérelmek növekedése, ha egy replika kikerülése vagy indexelés közben. A lekérdezési és az indexelési kérelmeket is ugyanazok az erőforrások kezelik.
 
-A szolgáltatás meghatározza, hogy az erőforrások felhasználása alapján kell-e eldobnia a kérelmeket. A memóriában, a PROCESSZORban és a lemez IO-ban felhasznált erőforrások százalékos aránya átlagosan egy adott időszakra terjed ki. Ha ez a százalék meghaladja a küszöbértéket, a rendszer az indexre irányuló összes kérelmet szabályozza, amíg a kérelmek mennyisége nem csökken. 
+A szolgáltatás határozza meg, hogy az erőforrás-felhasználás alapján el kell-e dobni a kérelmeket. A memória, a processzor és a lemez I/o-n felhasznált erőforrások százalékos aránya egy adott időszakra átlagolt. Ha ez a százalék túllépegy küszöbértéket, az indexhez érkező összes kérelem szabályozása a kérelmek mennyiségének csökkentéséig. 
 
-Az ügyféltől függően a rendszer a következő módokon jelezheti a szabályozott kérelmeket:
+Az ügyféltől függően a szabályozott kérelem a következő módokon jelezhető:
 
-+ A szolgáltatás egy hibaüzenetet ad vissza, ha túl sok kérelmet küld. Próbálkozzon újra később.” 
-+ A szolgáltatás egy 503-es hibakódot ad vissza, amely azt jelzi, hogy a szolgáltatás jelenleg nem érhető el. 
-+ Ha a portált (például a keresési Explorert) használja, a lekérdezés csendesen törlődik, és a Keresés elemre kell kattintania.
++ A szolgáltatás "Túl sok kérést küld" hibaüzenetet ad vissza. Próbálkozzon újra később.” 
++ Egy szolgáltatás egy 503-as hibakódot ad vissza, amely azt jelzi, hogy a szolgáltatás jelenleg nem érhető el. 
++ Ha a portált (például a Search Explorert) használja, a lekérdezés csendben megszakad, és újra a Keresés gombra kell kattintania.
 
-A szabályozott lekérdezések megerősítéséhez használja a **szabályozott keresési lekérdezések** mérőszámát. A mérőszámokat megtekintheti a portálon, vagy létrehozhat egy riasztási metrikát a jelen cikkben leírtak szerint. A mintavételi intervallumon belül eldobott lekérdezések esetében a *Total (teljes* ) értéket használja a nem végrehajtott lekérdezések százalékos arányának lekéréséhez.
+A szabályozott lekérdezések megerősítéséhez használja **a szabályozott keresési lekérdezések** metrikáját. A portálon lévő metrikákat is megismerheti, vagy létrehozhat egy riasztási metrikát az ebben a cikkben leírtak szerint. A mintavételi időközön belül eldobott lekérdezések esetén használja az *Összesen* a nem végrehajtott lekérdezések százalékos arányát.
 
-| Aggregáció típusa | Szabályozás |
+| Aggregáció típusa | Throttling |
 |------------------|-----------|
 | Átlag | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
-| Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
+| Darabszám | Az egyperces időközön belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Az intervallumon belül eldobott lekérdezések százalékos aránya.|
 | Minimális | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 | Összesen | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 
-A **szabályozott keresési lekérdezések aránya**, a minimum, a maximum, az átlag és az összes érték azonos értékű: a megadott keresési lekérdezések százalékos aránya, a keresési lekérdezések teljes száma egy percen belül.
+A **szabályozott keresési lekérdezések százaléka,** minimális, maximális, átlagos és összes, mind ugyanazt az értéket: a százalékos keresési lekérdezések, amelyek szabályozták, a keresési lekérdezések teljes száma egy perc alatt.
 
-Az alábbi képernyőképen az első szám a darabszám (vagy a naplóba eljuttatott metrikák száma). További összesítések, amelyek felül jelennek meg, vagy amikor a metrika fölé mutatnak, a következők: átlag, maximum és összeg. Ebben a példában egyetlen kérelem sem lett elvetve.
+A következő képernyőképen az első szám a naplóba küldött mérőszámok száma (vagy a metrikák száma). További összesítések, amelyek megjelennek a tetején, vagy ha az egérmutatót a metrika felett, tartalmazza az átlagos, maximális és összesen. Ebben a példában egyetlen kérés sem esett el.
 
 ![Szabályozott összesítések](./media/search-monitor-usage/metrics-throttle.png "Szabályozott összesítések")
 
-## <a name="explore-metrics-in-the-portal"></a>A metrikák megismerése a portálon
+## <a name="explore-metrics-in-the-portal"></a>Tárj fel mutatókat a portálon
 
-A jelenlegi számok gyors áttekintéséhez a szolgáltatás áttekintő lapjának **figyelés** lapja három mérőszámot jelenít meg (**keresési késés**, **keresési lekérdezések másodpercenként (keresési egység alapján)** , a **szabályozott keresési lekérdezések százalékos aránya**) a rögzített intervallumok között óra, nap és hét szerint, az Összesítés típusának módosításához.
+Az aktuális számok gyors áttekintéséhez a szolgáltatás áttekintése lap **Figyelés** lapján három metrika látható (**Keresési késés**, **Keresési lekérdezések másodpercenként (keresési egységenként)**, **szabályozott keresési lekérdezések százaléka**) az órákban, napokban és hetekben mért rögzített időközönként, az összesítéstípus módosításának lehetőségével.
 
-A mélyebb feltáráshoz nyissa meg a metrikák Explorert a **figyelés** menüből, hogy a trendek és rendellenességek feltárásához a rétegek, a nagyítás és az adatok megjelenítése is megtörténjen. További információ a metrikák Explorerrel: az oktatóanyag elvégzése [a metrikák diagram létrehozásához](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer).
+Mélyebb feltáráshoz nyissa meg a metrikák kezelőjét a **Figyelés** menüből, hogy rétegezhesse, nagyíthassa és vizualizálhassa az adatokat a trendek vagy anomáliák feltárásához. A metrikakezelőről a [metrikadiagram létrehozásáról szóló oktatóanyag](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)kitöltésével tudhat meg többet.
 
-1. A figyelés szakaszban válassza a **metrikák** lehetőséget, hogy megnyissa a metrikák Explorert a keresési szolgáltatás hatókörével.
+1. A Figyelés csoportban **válassza a Metrikák** lehetőséget a metrikakezelő megnyitásához a keresési szolgáltatás hatókörkészletével.
 
-1. A metrika területen válasszon egyet a legördülő listából, és tekintse át az elérhető összesítések listáját egy előnyben részesített típushoz. Az Összesítés azt határozza meg, hogy az összegyűjtött értékek hogyan legyenek mintavételezés alatt az egyes időintervallumokban.
+1. A Metrika csoportban válasszon egyet a legördülő listából, és tekintse át az előnyben részesített típus elérhető összesítéseinek listáját. Az összesítés határozza meg, hogy az összegyűjtött értékek hogyan mintavételezése az egyes időintervallumokban.
 
-   ![Metrikák Intéző QPS metrikához](./media/search-monitor-usage/metrics-explorer-qps.png "Metrikák Intéző QPS metrikához")
+   ![Metrikakezelő a QPS-metrika számára](./media/search-monitor-usage/metrics-explorer-qps.png "Metrikakezelő a QPS-metrika számára")
 
 1. A jobb felső sarokban állítsa be az időintervallumot.
 
-1. Válasszon egy vizualizációt. Az alapértelmezett érték egy vonalas diagram.
+1. Válasszon egy vizualizációt. Az alapértelmezett érték egy vonaldiagram.
 
-1. A további összesítések réteg **hozzáadásához válassza a metrika hozzáadása** elemet, és válassza a különböző összesítések lehetőséget.
+1. További összesítések rétegezése a **Metrika hozzáadása** és a különböző összesítések kiválasztásával.
 
-1. Nagyítás egy fontos területre a vonalas diagramon. Vigye az egérmutatót a terület elejére, kattintson és tartsa nyomva a bal egérgombot, húzza a terület másik oldalára, és szabadítsa fel a gombot. A diagram az adott időtartományon nagyítja fel.
+1. Nagyítson rá egy érdekes területre a vonaldiagramon. Helyezze az egérmutatót a terület elejére, kattintson a bal egérgombbal, húzza a mutatót a terület másik oldalára, és engedje fel a gombot. A diagram ráközelít az adott időtartományra.
 
 ## <a name="identify-strings-used-in-queries"></a>A lekérdezésekben használt karakterláncok azonosítása
 
-A diagnosztikai naplózás engedélyezésekor a rendszeren a **AzureDiagnostics** táblában rögzíti a lekérdezési kérelmeket. Előfeltételként engedélyezni kell a [diagnosztikai naplózást](search-monitor-logs.md), meg kell adnia egy log Analytics-munkaterületet vagy egy másik tárolási lehetőséget.
+Diagnosztikai naplózás engedélyezésekor a rendszer rögzíti a lekérdezési kérelmeket az **AzureDiagnostics** táblában. Előfeltételként már engedélyeznie kell [a diagnosztikai naplózást,](search-monitor-logs.md)meg kell adnia egy naplóelemzési munkaterületet vagy egy másik tárolási lehetőséget.
 
-1. A figyelés szakaszban válassza a **naplók** lehetőséget a log Analytics egy üres lekérdezési ablak megnyitásához.
+1. A Figyelés csoportban válassza **a Naplók** lehetőséget egy üres lekérdezési ablak megnyitásához a Log Analytics alkalmazásban.
 
-1. Futtassa a következő kifejezést a lekérdezés kereséséhez. keresési műveletek, táblázatos eredményhalmaz visszaadása, amely a művelet nevét, a lekérdezési karakterláncot, a lekérdezett indexet és a talált dokumentumok számát tartalmazza. Az utolsó két utasítás kizárja a lekérdezési karakterláncokat, amelyek egy üres vagy nem meghatározott keresésből állnak, mint egy minta index, amely csökkenti az eredményekben lévő zajt.
+1. Futtassa a következő kifejezést a Query.Search műveletek kereséséhez, és adja vissza a művelet nevét, a lekérdezési karakterláncot, a lekérdezett indexet és a talált dokumentumok számát. Az utolsó két utasítás kizárja az üres vagy meghatározatlan keresésből álló lekérdezési karakterláncokat egy mintaindexen keresztül, amely csökkenti a zajt az eredményekben.
 
    ```
    AzureDiagnostics
@@ -132,19 +132,19 @@ A diagnosztikai naplózás engedélyezésekor a rendszeren a **AzureDiagnostics*
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. Szükség esetén beállíthat egy oszlop szűrőt *Query_s* egy adott szintaxis vagy karakterlánc kereséséhez. Előfordulhat például, hogy a szűrést a `?api-version=2019-05-06&search=*&%24filter=HotelName`*értékkel egyenlővé* teszi.
+1. Szükség esetén állítson be oszlopszűrőt *Query_s,* ha egy adott szintaxison vagy karakterláncon szeretne keresni. Szűrhet például *egyenlő nek megfelelő).* `?api-version=2019-05-06&search=*&%24filter=HotelName`
 
    ![Naplózott lekérdezési karakterláncok](./media/search-monitor-usage/log-query-strings.png "Naplózott lekérdezési karakterláncok")
 
-Habár ez a technika ad hoc vizsgálathoz működik, a jelentések készítése lehetővé teszi, hogy a lekérdezési karakterláncokat egy adott elrendezésben jobban áttekintse az elemzéshez.
+Bár ez a technika ad hoc vizsgálathoz működik, a jelentés létrehozása lehetővé teszi a lekérdezési karakterláncok konszolidálását és bemutatását az elemzéshez jobban elősegítő elrendezésben.
 
 ## <a name="identify-long-running-queries"></a>Hosszú ideig futó lekérdezések azonosítása
 
-Adja hozzá az időtartam oszlopot az összes lekérdezés számának lekéréséhez, nem csak azokat, amelyek mérőszámként lettek kiválasztva. Az Adatrendezés során megtekintheti, hogy mely lekérdezések a leghosszabb ideig tartó lekérdezéseket hajtják végre.
+Adja hozzá az időtartam oszlopot az összes lekérdezés számának lekérni, nem csak azokat, amelyeket metrikaként vesznek fel. Az adatok rendezése azt mutatja, hogy mely lekérdezések végrehajtásához kell a leghosszabb.
 
-1. A figyelés szakaszban válassza a **naplók** lehetőséget a naplózási adatok lekérdezéséhez.
+1. A Figyelés csoportban válassza **a Naplók** lekérdezéséhez naplóadatok lekérdezéséhez lehetőséget.
 
-1. Futtassa a következő lekérdezést a lekérdezések visszaadásához, időtartam szerint, ezredmásodpercben rendezve. A leghosszabb ideig futó lekérdezések felül vannak.
+1. Futtassa a következő lekérdezést a lekérdezések visszaadásához, időtartam szerint rendezve ezredmásodpercben. A leghosszabb ideig futó lekérdezések a tetején vannak.
 
    ```
    AzureDiagnostics
@@ -155,41 +155,41 @@ Adja hozzá az időtartam oszlopot az összes lekérdezés számának lekérés�
 
    ![Lekérdezések rendezése időtartam szerint](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Lekérdezések rendezése időtartam szerint")
 
-## <a name="create-a-metric-alert"></a>Metrikai riasztás létrehozása
+## <a name="create-a-metric-alert"></a>Metrikariasztás létrehozása
 
-A metrikai riasztások egy küszöbértéket határoznak meg, amelyen értesítést kap, vagy egy előre meghatározott javítási műveletet indít el. 
+A metrikariasztás egy küszöbértéket hoz létre, amelyen vagy értesítést kap, vagy előre meghatározott korrekciós műveletet indít el. 
 
-Egy keresési szolgáltatás esetében gyakori, hogy metrikai riasztást hozzon létre a keresési késés és a szabályozott lekérdezések esetében. Ha ismeri a lekérdezések eldobását, megkeresheti a terhelést csökkentő vagy a kapacitás növelését okozó jogorvoslatokat. Ha például a szabályozott lekérdezések az indexelés során növekednek, akkor elhalaszthatja a lekérdezési tevékenységig.
+Egy keresési szolgáltatás gyakori, hogy hozzon létre egy metrika riasztást a keresési késés és a szabályozott lekérdezések. Ha tudja, hogy a lekérdezések eldobásakor olyan megoldásokat kereshet, amelyek csökkentik a terhelést vagy növelik a kapacitást. Ha például a szabályozott lekérdezések növekedése az indexelés során, elhalaszthatja, amíg a lekérdezési tevékenység le nem csökken.
 
-Egy adott replika-partíciós konfiguráció korlátainak leküldésekor a rendszer a lekérdezési mennyiségi küszöbértékekhez (QPS) tartozó riasztások beállítását is hasznosnak tekinti.
+Egy adott replikapartíció-konfiguráció korlátainak lekérésekor a lekérdezési kötetküszöbértékek (QPS) riasztásainak beállítása is hasznos.
 
-1. A figyelés szakaszban válassza a **riasztások** elemet, majd kattintson az **+ új riasztási szabály**elemre. Győződjön meg arról, hogy a keresési szolgáltatás az erőforrásként van kiválasztva.
+1. A Figyelés csoportban válassza a **Riasztások** lehetőséget, majd kattintson **a + Új riasztási szabály**elemre. Győződjön meg arról, hogy a keresési szolgáltatás van kiválasztva erőforrásként.
 
-1. A feltétel területen kattintson a **Hozzáadás**gombra.
+1. A Feltétel csoportban kattintson a **Hozzáadás**gombra.
 
-1. Adja meg a jel logikáját. A jel típusa mezőben válassza a **metrikák** lehetőséget, majd válassza ki a jelet.
+1. A jellogika konfigurálása. A jel típus, válassza **ki a metrikákat,** majd válassza ki a jelet.
 
-1. A jel kiválasztása után egy diagram segítségével megjelenítheti a korábbi, tájékozott döntést a feltételek beállításának folytatásáról.
+1. A jel kiválasztása után egy diagram segítségével megjelenítheti a korábbi adatokat, hogy megalapozott döntést hozzon a feltételek beállításának folytatásáról.
 
-1. Ezután görgessen le a riasztási logikához. A megvalósíthatóság érdekében mesterségesen alacsony értéket adhat meg tesztelési célokra.
+1. Ezután görgessen le az Értesítési logika elemre. A proof-of-concept, megadhat egy mesterségesen alacsony értékű tesztelési célokra.
 
    ![Riasztási logika](./media/search-monitor-usage/alert-logic-qps.png "Riasztási logika")
 
-1. Ezután egy műveleti csoportot kell megadnia vagy létrehoznia. Ez a válasz a küszöbérték teljesülésekor való meghívására. Lehet, hogy leküldéses értesítés vagy automatikus válasz.
+1. Ezután adjon meg vagy hozzon létre egy műveletcsoportot. Ez a válasz, hogy hívja meg, ha a küszöbérték teljesül. Lehet, hogy egy leküldéses értesítés vagy egy automatikus válasz.
 
-1. Utolsó, a riasztás részleteinek megadása. Nevezze el és írja le a riasztást, rendeljen hozzá egy súlyossági értéket, és adja meg, hogy engedélyezett vagy letiltott állapotban szeretné-e létrehozni a szabályt.
+1. Végül adja meg a riasztás részleteit. Nevezze el és írja le a riasztást, rendeljen hozzá egy súlyossági értéket, és adja meg, hogy a szabályt engedélyezett vagy letiltott állapotban hozza-e létre.
 
    ![Riasztás részletei](./media/search-monitor-usage/alert-details.png "Riasztás részletei")
 
-Ha e-mailes értesítést adott meg, a "Microsoft Azure" üzenet jelenik meg az "Azure: aktivált súlyosság: 3 `<your rule name>`" tárgy sorával.
+Ha megadott egy e-mail értesítést, e-mailt fog kapni a "Microsoft Azure"-tól `<your rule name>`az "Azure: Aktivált súlyosság: 3" tárgysorú e-mailt.
 
 <!-- ## Report query data
 
 Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha még nem tette meg, tekintse át a keresési szolgáltatás figyelésének alapjait, és ismerkedjen meg a teljes körű felügyeleti funkciókkal.
+Ha még nem tette meg, tekintse át a keresési szolgáltatások figyelésének alapjait, és ismerje meg a felügyeleti képességek teljes skáláját.
 
 > [!div class="nextstepaction"]
-> [Műveletek és tevékenységek figyelése az Azure Cognitive Search](search-monitor-usage.md)
+> [Műveletek és tevékenységek figyelése az Azure Cognitive Search szolgáltatásban](search-monitor-usage.md)

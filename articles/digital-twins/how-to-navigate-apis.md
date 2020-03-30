@@ -1,6 +1,6 @@
 ---
-title: Az API-k navigálása – Azure digitális Twins | Microsoft Docs
-description: Ismerje meg, hogyan lehet az Azure digitális Twins felügyeleti API-k lekérdezésének gyakori mintáit lekérdezni.
+title: Navigálás az API-k között – Azure Digital Twins | Microsoft dokumentumok
+description: Ismerje meg, hogyan lehet az Azure Digital Twins felügyeleti API-k lekérdezésének közös mintáit.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,99 +9,99 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e9cdfd40a9672d19ef32dede0baadcdd56266bab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265167"
 ---
-# <a name="how-to-use-azure-digital-twins-management-apis"></a>Az Azure digitális Twins felügyeleti API-k használata
+# <a name="how-to-use-azure-digital-twins-management-apis"></a>Az Azure Digital Twins felügyeleti API-k használata
 
-Az Azure Digital Twins felügyeleti API-k hatékony funkciókat biztosítanak a IoT-alkalmazásokhoz. Ez a cikk bemutatja, hogyan navigálhat az API-struktúrán.  
+Az Azure Digital Twins felügyeleti API-k hatékony funkciókat biztosítanak az IoT-alkalmazásokhoz. Ez a cikk bemutatja, hogyan navigálhat az API-struktúra között.  
 
 ## <a name="api-summary"></a>API összefoglaló
 
-Az alábbi listában a digitális Twins API-k összetevői láthatók.
+Az alábbi lista a digitális twins API-k összetevőit tartalmazza.
 
-* [/Spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): ezek az API-k a telepítő fizikai helyeivel működnek együtt. Ezek segítenek a fizikai helyeknek a [térbeli gráf](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)formájában történő digitális hozzárendelésének létrehozását, törlését és kezelését.
+* [/szóközök:](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces)Ezek az API-k a beállított fizikai helyekkel kommunikálnak. Ezek segítségével [térbeli grafikon](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)formájában hozhatja létre, törölheti és kezelheti a fizikai helyek digitális leképezését.
 
-* [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): ezek az API-k a telepítő eszközeivel működnek együtt. Ezek az eszközök egy vagy több érzékelőt is kezelhetnek. Előfordulhat például, hogy egy eszköz lehet a telefonja, vagy egy málna PI szenzor Pod vagy egy Lora-átjáró, és így tovább.
+* [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Ezek az API-k a beállításban lévő eszközökkel működnek. Ezek az eszközök egy vagy több érzékelőt képesek kezelni. Például egy eszköz lehet a telefon, vagy egy Raspberry Pi érzékelő pod, vagy egy Lora átjáró, és így tovább.
 
-* [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): ezek az API-k segítenek az eszközökhöz és a fizikai helyekhez kapcsolódó érzékelőkkel való kommunikációban. Az érzékelők rögzítik és elküldik a környezeti értékeket, amelyek ezután a térbeli környezet kezelésére használhatók.  
+* [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Ezek az API-k segítenek kommunikálni az eszközökhöz társított érzékelőkkel és a fizikai helyekkel. Az érzékelők rögzítik és elküldik a környezeti értékeket, amelyek segítségével a térbeli környezetet is manipulálhatja.  
 
-* [/Resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): ezek az API-k segítenek a digitális Twins-példányokhoz tartozó erőforrások, például egy IoT hub beállításában.
+* [/resources:](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources)Ezek az API-k segítségével erőforrásokat, például egy IoT-központot állíthat be a digital Twins-példányhoz.
 
-* [/types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): ezek az API-k lehetővé teszik, hogy a kibővített típusokat a digitális Twins-objektumokkal társítsa, hogy adott tulajdonságokat adjon hozzá az objektumokhoz. Ezek a típusok lehetővé teszik az objektumok egyszerű szűrését és csoportosítását a felhasználói felületen, valamint a telemetria-adatok feldolgozására szolgáló egyéni függvényeket. Kibővített típusok például a következők: *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType*, *SpaceBlobType*, *SpaceResourceType*stb.
+* [/types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Ezek az API-k lehetővé teszik, hogy kiterjesztett típusokat társítson a digitális Twins objektumokhoz, hogy adott jellemzőket adjon ezekhez az objektumokhoz. Ezek a típusok lehetővé teszik az objektumok egyszerű szűrését és csoportosítását a felhasználói felületen és a telemetriai adatokat feldolgozó egyéni függvényekben. Kiterjesztett típusok például a *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceBlobType*, *SpaceResourceType*és így tovább. *SpaceBlobType*
 
-* [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): ezek az API-k segítenek a ontológiákat kezelésében, amely kibővített típusok gyűjteménye. Ontológiákat adja meg az Objektumtípusok nevét az általuk képviselt fizikai térben. Például a *BACnet* ontológia speciális neveket biztosít az *érzékelők típusaihoz*, az *adattípusokhoz*, a *datasubtypes*és a *dataunittypes*. A ontológiákat a szolgáltatás felügyeli és hozza létre. A felhasználók betölthetik és kitölthetik a ontológiákat. Az ontológia betöltését követően az összes társított típus neve engedélyezve van, és készen áll a térbeli gráfban való üzembe helyezésre. 
+* [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Ezek az API-k segítenek az ontológiák kezelésében, amelyek kiterjesztett típusú gyűjtemények. Az ontológiák az általuk képviselt fizikai térnek megfelelően adják meg az objektumtípusok nevét. A *BACnet* ontológia például egyedi neveket ad az *érzékelőtípusoknak,* *adattípusoknak*, *adataltípusoknak*és *adategységtípusoknak.* Az ontológiákat a szolgáltatás kezeli és létrehozza. A felhasználók betölthetik és eltávolíthatják az ontológiákat. Ha egy ontológia be van töltve, az összes társított típusnév engedélyezve van, és készen áll a térbeli grafikonon való kiépítésre. 
 
-* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): ezekkel az API-kkal egyéni tulajdonságokat hozhat létre a *tárhelyekhez*, *eszközökhöz*, *felhasználókhoz*és *érzékelőkhöz*. Ezek a tulajdonságok kulcs/érték párokként jönnek létre. Ezeknek a tulajdonságoknak az adattípusa a *PrimitiveDataType*beállításával adható meg. Megadhat például egy *BasicTemperatureDeltaProcessingRefreshTime* típusú *uint* az érzékelőkhöz, majd hozzárendelheti a tulajdonság értékét az egyes érzékelőkhöz. Ezekhez az értékekhez korlátozásokat is hozzáadhat a tulajdonság létrehozásakor, például a *min* és a *Max* tartományt, valamint az engedélyezett értékeket *ValidationData*.
+* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): Ezekkel az API-kkal egyéni tulajdonságokat hozhat létre a *terekhez*, *eszközökhez*, *felhasználókhoz*és *érzékelőkhöz.* Ezek a tulajdonságok kulcs-/értékpárokként jönnek létre. Ezeknek a tulajdonságoknak az adattípusát a *PrimitiveDataType*beállításával határozhatja meg. Például megadhat egy *BasicTemperatureDeltaProcessingRefreshTime* nevű tulajdonságot *uint* típusú az érzékelőkhöz, majd hozzárendelhet egy értéket ehhez a tulajdonsághoz az egyes érzékelőkhöz. A tulajdonság létrehozásakor is hozzáadhat kényszereket ezekhez az értékekhez, például *a Min* és *a Max* tartományokat, valamint az engedélyezett értékeket, *például ValidationData*.
 
-* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): ezek az API-k lehetővé teszik a beérkező eszközök adatainak kiértékeléséhez használandó feltételek megadását. További információt [ebben a cikkben](concepts-user-defined-functions.md#matchers) talál. 
+* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Ezek az API-k lehetővé teszik, hogy adja meg a feltételeket, amelyeket ki szeretne értékelni a bejövő eszköz adatait. További információkért tekintse meg [ezt a cikket](concepts-user-defined-functions.md#matchers). 
 
-* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): ezek az API-k lehetővé teszik egy egyéni függvény létrehozását, törlését vagy frissítését, amely akkor fut le, ha az *egyeztetések* által meghatározott feltételek alapján történik a telepítésből származó adatok feldolgozása. [Ebből a cikkből](concepts-user-defined-functions.md#user-defined-functions) megtudhatja, hogyan használhatja ezeket az egyéni függvényeket, más néven a *felhasználó által definiált függvényeket*. 
+* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Ezek az API-k lehetővé teszik egy egyéni függvény létrehozását, törlését vagy frissítését, amely akkor fog működni, amikor a *matchers* által meghatározott feltételek történnek, a telepítőből származó adatok feldolgozásához. Ebben [a cikkben](concepts-user-defined-functions.md#user-defined-functions) további információt talál ezekről az egyéni függvényekről, más néven a *felhasználó által definiált függvényekről.* 
 
-* [/endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints): ezek az API-k lehetővé teszik a végpontok létrehozását, így a digitális Twins-megoldás más Azure-szolgáltatásokkal is képes kommunikálni az adattárolással és az elemzéssel. További információért olvassa el [ezt a cikket](concepts-events-routing.md) . 
+* [/endpoints:](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints)Ezek az API-k lehetővé teszik, hogy végpontokat hozzon létre, így a Digital Twins megoldás kommunikálhat más Azure-szolgáltatásokadat-tárolás és elemzés. További információt ebben a [cikkben](concepts-events-routing.md) talál. 
 
-* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): ezek az API-k lehetővé teszik a tárhelyek biztonsági kulcs-tárolóinak kezelését. Ezek a tárolók biztonsági kulcsok gyűjteményét tárolják, és lehetővé teszik a legújabb érvényes kulcsok lekérését.
+* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): Ezek az API-k lehetővé teszik a biztonsági kulcs tárolóinak kezelését a terekhez. Ezek az üzletek biztonsági kulcsok gyűjteményét tárolhatják, és lehetővé teszik a legújabb érvényes kulcsok egyszerű beolvasását.
 
-* [/Users](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): ezek az API-k lehetővé teszik, hogy a felhasználókat a saját tárhelyéhez társítsa, ha szükséges, megkeresheti ezeket a személyeket. 
+* [/users](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Ezek az API-k lehetővé teszik a felhasználók társítására a terekhez, hogy szükség esetén megkeresse ezeket a személyeket. 
 
-* [/System](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): ezek az API-k lehetővé teszik a rendszerszintű beállítások kezelését, például a szóközök és érzékelők alapértelmezett típusait. 
+* [/system](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Ezek az API-k lehetővé teszik a rendszerszintű beállítások, például az alapértelmezett szóközök és érzékelők kezelését. 
 
-* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): ezek az API-k lehetővé teszik szerepkörök hozzárendelését olyan entitásokhoz, mint például a felhasználói azonosító, a felhasználó által definiált függvény azonosítója stb. Minden szerepkör-hozzárendelés tartalmazza a társítani kívánt entitás AZONOSÍTÓját, az entitás típusát, a társítani kívánt szerepkör AZONOSÍTÓját, a bérlő AZONOSÍTÓját, valamint egy elérési utat, amely meghatározza azon erőforrás felső határát, amelyet az entitás elérhet az adott társítással. További információért olvassa el [ezt a cikket](security-role-based-access-control.md) .
+* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Ezek az API-k lehetővé teszik, hogy szerepköröket társítson olyan entitásokhoz, mint a felhasználói azonosító, a felhasználó által definiált függvényazonosító stb. Minden szerepkör-hozzárendelés tartalmazza a társítandó entitás azonosítóját, az entitás típusát, a társítandó szerepkör azonosítóját, a bérlőazonosítót, valamint egy elérési utat, amely meghatározza az erőforrás felső határát, amelyet az entitás az adott társítással elérhet. További információt ebben a [cikkben](security-role-based-access-control.md) talál.
 
 
 ## <a name="api-navigation"></a>API-navigáció
 
-A digitális Twins API-k támogatják a térbeli gráf szűrését és navigálását a következő paraméterek használatával:
+A Digital Twins API-k támogatják a szűrést és a navigációt a térbeli grafikonon a következő paraméterek használatával:
 
-- **spaceId**: az API a megadott lemezterület-azonosító alapján fogja szűrni az eredményeket. Emellett a logikai jelző **useParentSpace** is alkalmazható a [/Spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) API-kra, ami azt jelzi, hogy a megadott hely azonosítója az aktuális terület helyett a szülő területre hivatkozik. 
+- **spaceId**: Az API az eredményeket az adott területazonosító szerint szűri. Ezenkívül a **useParentSpace** logikai jelző alkalmazható a [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) API-kra, ami azt jelzi, hogy a megadott területazonosító az aktuális terület helyett a szülőterületre utal. 
 
-- **minLevel** és **maxLevel**: a gyökérszintű szóközök az 1. szinten tekinthetők meg. Az *n* szintű szülő szóközzel rendelkező szóközök *n + 1*szinten vannak. Ezekkel az értékekkel meghatározott szinteken szűrheti az eredményeket. Ezek befogadó értékek, ha be van állítva. Az eszközök, érzékelők és egyéb objektumok ugyanazon a szinten lesznek, mint a legközelebbi helyük. Egy adott szinten lévő összes objektum lekéréséhez állítsa a **minLevel** és a **maxLevel** értéket ugyanarra az értékre.
+- **minLevel** és **maxLevel**: A gyökérterek az 1. Az *n* szintű szülőtérrel rendelkező szóközök *az n+1*szinten vannak. Ha ezek az értékek be vannak állítva, az eredményeket adott szinteken szűrheti. Ezek inkluzív értékek, ha be van állítva. Az eszközök, érzékelők és egyéb objektumok a legközelebbi térrel azonos szinten vannak. Ha az összes objektumot egy adott szinten szeretné letenni, állítsa a **minLevel** és a **maxLevel értéket** is ugyanarra az értékre.
 
-- **minRelative** és **maxRelative**: ha ezek a szűrők meg vannak adva, a megfelelő szint a megadott hely azonosítójának szintjéhez képest:
-   - A *0* . relatív szint megegyezik a megadott lemezterület-azonosítóval.
-   - Az *1* . relatív szint a megadott hely azonosítójának gyermekeivel megegyező szinten lévő szóközöket jelöli. Az *n* relatív szint azt jelenti, hogy az *n* szintnél kevesebb szóköz van a megadott helynél.
-   - A relatív szint *-1* érték a megadott terület fölérendelt területével azonos szinten lévő szóközöket jelöli.
+- **minRelatív** és **maxRelatív**: Ha ezek a szűrők meg vannak adva, a megfelelő szint az adott térazonosító szintjéhez viszonyítva van:
+   - A *0* relatív szint megegyezik az adott térazonosítóval.
+   - Az *1-es* relatív szint az adott térazonosító gyermekeivel azonos szinten lévő szóközöket jelöli. Az *n* relatív szint a megadott térnél alacsonyabb szóközöket *jelöli n* szintek szerint.
+   - A *-1* relatív szint a megadott tér szülőterével azonos szintű szóközöket jelöl.
 
-- **bejárás**: lehetővé teszi, hogy a következő értékek alapján egy adott hely azonosítójának bármelyik irányában bejárjon.
-   - **Nincs**: ez az alapértelmezett érték a megadott lemezterület-azonosítóra szűri.
-   - Leállt: ezt a szűrőt a megadott lemezterület-azonosító és annak leszármazottai határozzák **meg**. 
-   - **Up**: ezt a szűrőt a megadott lemezterület-azonosító és az őseik jelentik. 
-   - **Span**: Ez a térbeli gráf vízszintes részét szűri, a megadott lemezterület-azonosítóval megegyező szinten. Ehhez a **minRelative** vagy a **maxRelative** True értékre kell állítani. 
+- **sokszögelés**: Lehetővé teszi, hogy egy adott térazonosítóból bármelyik irányban áthaladjon a következő értékek szerint.
+   - **Nincs**: Ez az alapértelmezett érték az adott területazonosítóra szűr.
+   - **Le**: Ez a szűrő az adott térazonosító és leszármazottai szerint. 
+   - **Fel**: Ez a szűrő az adott térazonosító és ősei szerint. 
+   - **Span**: Ez szűri a térbeli grafikon vízszintes részét, ugyanazon a szinten, mint az adott térazonosító. Ehhez a **minRelative** vagy a **maxRelative** értékre van szükség. 
 
 
 ### <a name="examples"></a>Példák
 
-Az alábbi lista néhány példát mutat be a [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API-kon keresztül történő navigálásra. Vegye figyelembe, hogy a helyőrző `YOUR_MANAGEMENT_API_URL` a digitális Twins API-k URI-JÁT adja meg `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`formátumban, ahol a `YOUR_INSTANCE_NAME` az Azure Digital Twins-példány neve, a `YOUR_LOCATION` pedig az a régió, ahol a példány üzemeltetve van.
+Az alábbi lista néhány példát mutat be az [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API-kon való navigálásra. Vegye figyelembe, `YOUR_MANAGEMENT_API_URL` hogy a helyőrző a digitális twins API-k URI-jára hivatkozik a formátumban, `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`ahol `YOUR_INSTANCE_NAME` az Azure Digital Twins-példány neve, és `YOUR_LOCATION` az a régió, ahol a példány található.
 
-- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1` a legfelső szintű helyekhez csatolt összes eszközt visszaadja.
-- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4` a 2., 3. és 4. szintű szóközökhöz csatolt összes eszközt adja vissza.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId` visszaadja az összes olyan eszközt, amely közvetlenül a mySpaceId van csatolva.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` visszaadja a mySpaceId csatolt összes eszközt vagy annak valamelyik leszármazottját.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true` visszaadja a mySpaceId leszármazottai számára csatolt összes eszközt, kivéve a mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true` a mySpaceId közvetlen gyermekeihez csatolt összes eszközt visszaadja.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true` a mySpaceId egyik elődje számára csatolt összes eszközt visszaadja.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5` visszaadja az összes olyan eszközt, amely az 5 értéknél kisebb vagy azzal egyenlő mySpaceId leszármazottai számára van csatolva.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true` visszaadja a mySpaceId azonos szinten lévő szóközökhez csatolt összes eszközt.
+- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1`visszaadja a gyökérterekhez csatlakoztatott összes eszközt.
+- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4`a 2., 3.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId`visszaadja a mySpaceId-hez közvetlenül csatlakoztatott összes eszközt.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down`visszaadja a mySpaceId-hez vagy annak egyik leszármazottjához csatolt összes eszközt.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true`visszaadja a mySpaceId leszármazottaihoz csatolt összes eszközt, kivéve a mySpaceId-et.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true`visszaadja a mySpaceId közvetlen gyermekeihez csatlakoztatott összes eszközt.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true`visszaadja a mySpaceId egyik őséhez csatlakoztatott összes eszközt.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5`visszaadja a mySpaceId leszármazottaihoz csatolt összes eszközt, amelyek 5-nél kisebb vagy azzal egyenlő szinten vannak.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true`visszaadja a mySpaceId-vel azonos szinten lévő szóközökhöz csatlakoztatott összes eszközt.
 
 
 ## <a name="odata-support"></a>OData-támogatás
 
-A gyűjteményeket visszaadó API-k többsége, mint például a GET Call on/Spaces, az általános [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) rendszer-lekérdezési lehetőségek következő részhalmazát támogatja:  
+A gyűjteményeket visszaadó API-k többsége, például a /spaces GET hívása, az általános [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) rendszerlekérdezési beállítások következő részhalmazát támogatja:  
 
 * **$filter**
 * **$orderby** 
 * **$top**
-* **$skip** – ha a teljes gyűjteményt szeretné megjeleníteni, egyetlen hívásban teljes készletként kell igényelnie, majd az alkalmazásban lapozást kell végrehajtania. 
+* **$skip** – Ha a teljes gyűjteményt meg kívánja jeleníteni, azt egyetlen hívásban kell lekérnie, majd az alkalmazásban végre kell hajtania a lapozást. 
 
 > [!NOTE]
-> Bizonyos OData lehetőségek (például a lekérdezési beállítások **$Count**, a **$expand**és a **$Search**) nem támogatottak.
+> Egyes OData-beállítások (például a lekérdezési beállítások **$count,** **$expand**és **$search)** jelenleg nem támogatottak.
 
 ### <a name="examples"></a>Példák
 
-Az alábbi lista számos, érvényes OData szintaxissal rendelkező lekérdezést ábrázol:
+Az alábbi lista több, érvényes OData-szintaxissal rendelkező lekérdezést ábrázol:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
 - `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,'space')`
@@ -110,10 +110,10 @@ Az alábbi lista számos, érvényes OData szintaxissal rendelkező lekérdezés
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az API-lekérdezések gyakori mintáinak megismeréséhez olvassa el [Az Azure Digital Twins API-k lekérdezése gyakori feladatokhoz című témakört](./how-to-query-common-apis.md).
+Ha megismerheti a gyakori API-lekérdezési mintákat, olvassa el [az Azure Digital Twins API-k lekérdezése gyakori feladatokhoz](./how-to-query-common-apis.md)című elolvasását.
 
-Ha többet szeretne megtudni az API-végpontokról, olvassa el a [digitális Twins hencegés használatát](./how-to-use-swagger.md)ismertető témakört.
+Ha többet szeretne megtudni az API-végpontokról, olvassa el [a Digitális twins swagger használata](./how-to-use-swagger.md)című.
 
-A OData szintaxis és a rendelkezésre álló összehasonlító operátorok áttekintéséhez olvassa el [a OData-összehasonlító operátorokat az Azure Cognitive Searchban](../search/search-query-odata-comparison-operators.md).
+Az OData szintaxisés a rendelkezésre álló összehasonlító operátorok áttekintéséhez olvassa el [az OData-összehasonlító operátorok az Azure Cognitive Search alkalmazásban.](../search/search-query-odata-comparison-operators.md)

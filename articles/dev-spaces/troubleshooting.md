@@ -1,84 +1,84 @@
 ---
-title: Hibakeresés
+title: Hibaelhárítás
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
-description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
-keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: af6577684af559b7e152a53fbe4293740d676e6e
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+description: Megtudhatja, hogy miként háríthatja el és oldhatja meg a gyakori problémákat az Azure Dev Spaces engedélyezése és használata során
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s '
+ms.openlocfilehash: c12dfd385962d8dd7de8239a0d4ecd46746499c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239766"
 ---
-# <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
+# <a name="azure-dev-spaces-troubleshooting"></a>Az Azure Dev Spaces hibaelhárítása
 
-Ez az útmutató az Azure fejlesztési tárolóhelyek használata esetén előfordulhat, hogy rendelkezik kapcsolatos gyakori problémák információkat tartalmaz.
+Ez az útmutató az Azure Dev Spaces használata során felmerülő gyakori problémákkal kapcsolatos információkat tartalmazza.
 
-Ha problémába ütközik az Azure dev Spaces használata során, hozzon létre egy [problémát az Azure dev Spaces GitHub-tárházban](https://github.com/Azure/dev-spaces/issues).
+Ha problémája van az Azure Dev Spaces használatakor, hozzon létre egy [problémát az Azure Dev Spaces GitHub-tárházban.](https://github.com/Azure/dev-spaces/issues)
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha hatékonyabban szeretné elhárítani a problémákat, érdemes lehet részletesebb naplókat létrehozni a felülvizsgálathoz.
+A problémák hatékonyabb elhárításához segíthet részletesebb naplók at létrehozni ellenőrzésre.
 
-A Visual Studio bővítménynél állítsa a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változó értékét 1-re. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Ha engedélyezve van, a részletes naplók a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtárba íródnak.
+A Visual Studio bővítmény `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` esetén állítsa a környezeti változót 1-re. Mindenképpen indítsa újra a Visual Studio alkalmazást, hogy a környezeti változó érvénybe lépjen. Ha engedélyezve van, részletes `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` naplók at írt a könyvtárba.
 
-A CLI-ben további információkat adhat meg a parancs végrehajtása során a `--verbose` kapcsoló használatával. `%TEMP%\Azure Dev Spaces`részletesebb naplókat is kereshet. Mac gépen a *temp* könyvtár a `echo $TMPDIR` futtatásával érhető el egy terminál-ablakban. A Linux rendszerű számítógépeken általában a *temp* könyvtár `/tmp`. Továbbá ellenőrizze, hogy a naplózás engedélyezve van-e az [Azure CLI konfigurációs fájljában](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
+A CLI-ben a parancs végrehajtása során további `--verbose` információkat adhat ki a kapcsoló használatával. A alkalmazásban is böngészhet `%TEMP%\Azure Dev Spaces`részletesebb naplók között. Mac en a *TEMP* könyvtár terminálablakból való futtatással `echo $TMPDIR` érhető el. Linux rendszerű számítógépen *TEMP* a TEMP `/tmp`könyvtár általában . Ellenőrizze továbbá, hogy engedélyezve van-e a naplózás az [Azure CLI konfigurációs fájljában.](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)
 
-Az Azure dev Spaces is működik a legjobban, ha egyetlen példányt vagy Pod-t tesz elérhetővé. A `azds.yaml` fájl egy *replicaCount*-beállítást tartalmaz, amely megadja, hogy a Kubernetes hány hüvelyt futtat a szolgáltatásban. Ha úgy módosítja a *replicaCount* , hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
+Az Azure Dev Spaces is működik a legjobban, ha egyetlen példány vagy pod hibakeresés. A `azds.yaml` fájl tartalmaz egy beállítást, *replicaCount*, amely azt jelzi, hogy a Kubernetes a szolgáltatáshoz futtatott podok számát. Ha módosítja a *replicaCount* konfigurálása az alkalmazás több podok egy adott szolgáltatás hoz, a hibakereső csatolja az első pod, ha betűrendben felsorolt. A hibakereső egy másik podhoz csatlakozik, amikor az eredeti pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
 
-## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Az Azure dev Spaces engedélyezésekor felmerülő gyakori problémák
+## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Gyakori problémák az Azure Dev Spaces engedélyezésekor
 
-### <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Hiba: "nem sikerült létrehozni az Azure dev Spaces Controllert"
+### <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Hiba: "Nem sikerült létrehozni az Azure dev spaces vezérlőjét"
 
-Előfordulhat, hogy ezt a hibaüzenetet, ha probléma merül fel a vezérlő létrehozása. Ha átmeneti hiba történt, törölje, majd hozza létre újra a vezérlőt a javításhoz.
+Ez a hibaüzenet akkor jelenhet meg, ha valami elromlik a vezérlő létrehozásával. Ha átmeneti hiba történt, törölje, majd hozza létre újra a vezérlőt a javításhoz.
 
-A vezérlőt is törölheti:
+Megpróbálhatja a vezérlő törlését is:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
 ```
 
-Vezérlő törléséhez használja az Azure dev Spaces CLI-t. A vezérlőt nem lehet törölni a Visual studióból. Nem telepítheti az Azure dev Spaces CLI-t a Azure Cloud Shell, így nem törölhet vezérlőt a Azure Cloud Shellból.
+Az Azure Dev Spaces CLI segítségével törölheti a vezérlőt. Nem lehet vezérlőt törölni a Visual Studio alkalmazásból. Az Azure Dev Spaces CLI-t nem telepítheti az Azure Cloud Shellben, így nem törölhet vezérlőket az Azure Cloud Shellből.
 
-Ha nem telepítette az Azure dev Spaces CLI-t, először telepítse azt a következő parancs használatával, majd törölje a vezérlőt:
+Ha nincs telepítve az Azure Dev Spaces CLI, először telepítheti a következő paranccsal, majd törölheti a vezérlőt:
 
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-A vezérlő újbóli létrehozása a parancssori felület vagy a Visual Studio elvégezhető. Példákért tekintse meg a [csapat fejlesztését](quickstart-team-development.md) , vagy [fejlesszen a .net Core](quickstart-netcore-visualstudio.md) gyors útmutatókkal.
+A vezérlő újbóli létrehozása a CLI-ből vagy a Visual Studio-ból végezhető el. Tekintse meg a [csapatfejlesztést](quickstart-team-development.md) vagy a [fejlesztést a .NET Core rövid útmutatókkal.](quickstart-netcore-visualstudio.md)
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>A vezérlő létrehozása sikertelen a vezérlő nevének hossza miatt
 
-Az Azure dev Spaces-vezérlő neve nem lehet 31 karakternél hosszabb. Ha a vezérlő neve meghaladja a 31 karaktert, amikor egy AK-fürtön engedélyezi a dev Spaces-t, vagy létrehoz egy vezérlőt, hibaüzenet jelenik meg. Például:
+Az Azure Dev Spaces-vezérlő neve nem lehet hosszabb 31 karakternél. Ha a vezérlő neve meghaladja a 31 karaktert, amikor engedélyezi a fejlesztői szóközöket egy AKS-fürtön, vagy létrehoz egy vezérlőt, hibaüzenetet fog kapni. Példa:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-A probléma megoldásához hozzon létre egy másik nevű vezérlőt. Például:
+A probléma megoldásához hozzon létre egy másik nevű vezérlőt. Példa:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
 
-### <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>A fejlesztői szóközök engedélyezése a Windows-csomópontok AK-fürthöz való hozzáadásakor
+### <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>A fejlesztői tárolóhelyek sikertelensítése, ha AKS-fürthöz hozzáadja a Windows csomópontkészleteket
 
-Jelenleg az Azure dev Spaces kizárólag Linux-hüvelyeken és-csomópontokon futtatható. Ha egy AK-fürthöz Windows-csomópont tartozik, akkor biztosítania kell, hogy az Azure dev Spaces hüvelyek csak Linux-csomópontokon legyenek ütemezve. Ha egy Azure dev Spaces Pod Windows-csomóponton való futtatásra van ütemezve, a pod nem indul el, és a fejlesztői szóközök engedélyezése sikertelen lesz.
+Jelenleg az Azure Dev Spaces célja, hogy csak Linux-podokon és csomópontokon fusson. Ha egy Windows-csomópontkészlettel rendelkező AKS-fürttel rendelkezik, biztosítania kell, hogy az Azure Dev Spaces podok csak Linux-csomópontokon legyenek ütemezve. Ha egy Azure Dev Spaces pod a tervek szerint egy Windows-csomóponton fut, hogy a pod nem indul el, és a fejlesztői terek engedélyezése sikertelen lesz.
 
-A probléma megoldásához [vegyen fel egy Taint](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AK-fürtbe, hogy a Linux-hüvelyek ne legyenek ütemezve Windows-csomóponton való futtatásra.
+A probléma megoldásához [adjon hozzá egy romlottakat](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AKS-fürthöz, hogy a Linux-podok ne fussanak Windows-csomóponton.
 
-### <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Hiba: nem található a fürtön kész állapotú, nem fertőzött Linux-csomópontok. A hüvelyek "azds" névtérben való üzembe helyezéséhez kész állapotban kell lennie legalább egy nem fertőzött linuxos csomópontnak. "
+### <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Hiba: "Nem található romlatlan Linux-csomópont a fürt Ready állapotában. A podok "azds" névtérben történő üzembe helyezéséhez ready állapotban legalább egy romlatlan Linux-csomópontnak kell lennie."
 
-Az Azure dev Spaces nem tudta létrehozni a vezérlőt az AK-fürtön, mert nem talált egy nem fertőzött csomópontot *készenléti* állapotban a hüvelyek ütemezett beléptetéséhez. Az Azure dev Spaces-ben legalább egy Linux-csomópontra *kész* állapotban kell lennie, amely lehetővé teszi a hüvelyek ütemezését a tolerancia megadása nélkül.
+Az Azure dev spaces nem tudott létrehozni egy vezérlőt az AKS-fürtön, mert nem talált egy romlatlan csomópontot *kész* állapotban a podok ütemezéséhez. Az Azure Dev Spaces legalább egy Linux-csomópontot igényel *egy Ready* állapotban, amely lehetővé teszi a podok ütemezését a tűrések megadása nélkül.
 
-A probléma megoldásához [frissítse a szennyező konfigurációt](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AK-fürtön, hogy legalább egy Linux-csomópont lehetővé tegye a hüvelyek ütemezését a tolerancia megadása nélkül. Győződjön meg arról is, hogy legalább egy Linux-csomópont, amely lehetővé teszi a hüvelyek ütemezését, a tolerálás nélkül *kész* állapotban van. Ha a csomópont hosszú időt vesz elérhetővé a *kész* állapot elérése érdekében, próbálja meg újraindítani a csomópontot.
+A probléma megoldásához [frissítse a romlott konfigurációt](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AKS-fürtön annak érdekében, hogy legalább egy Linux-csomópont lehetővé tegye a podok ütemezését a tűrések megadása nélkül. Győződjön meg arról is, hogy legalább egy Linux-csomópont, amely lehetővé teszi a podok ütemezését a tűrések megadása nélkül, *készen áll.* Ha a csomópont hosszú időt vesz igénybe, hogy elérje a *Ready* állapotot, megpróbálhatja újraindítani a csomópontot.
 
-### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Hiba: az "Azure dev Spaces CLI nincs megfelelően telepítve" az az AK use-dev-Spaces futtatásakor
+### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Hiba az "Azure Dev Spaces CLI nincs megfelelően telepítve" hiba az aks use-dev-spaces futtatásakor
 
-Az Azure dev Spaces parancssori felületének frissítése megváltoztatta a telepítési útvonalat. Ha a 2.0.63-nél korábbi Azure CLI-verziót használja, akkor ez a hiba látható. Az Azure CLI verziójának megjelenítéséhez használja a `az --version`.
+Az Azure Dev Spaces CLI frissítése megváltoztatta a telepítési útvonalát. Ha az Azure CLI 2.0.63-nál korábbi verzióját használja, ez a hiba jelenhet meg. Az Azure CLI verziójának megjelenítéséhez használja a használatát. `az --version`
 
 ```azurecli
 az --version
@@ -89,44 +89,44 @@ azure-cli                         2.0.60 *
 ...
 ```
 
-Annak ellenére, hogy a `az aks use-dev-spaces` fut az Azure CLI egy verziójával a 2.0.63 előtt, a telepítés sikeres lesz. A `azds`t továbbra is használhatja problémák nélkül.
+Annak ellenére, `az aks use-dev-spaces` hogy a hibaüzenet az Azure CLI 2.0.63 előtti verziójával való futtatáskor hibaüzenetet tartalmaz, a telepítés sikeres. Továbbra is használhatja `azds` gond nélkül.
 
-A probléma megoldásához frissítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítését 2.0.63 vagy újabb verzióra. Ez a frissítés a `az aks use-dev-spaces`futtatásakor kapott hibaüzenetet fogja feloldani. Másik lehetőségként továbbra is használhatja az Azure CLI aktuális verzióját és az Azure dev Spaces CLI-t.
+A probléma megoldásához frissítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítését 2.0.63-as vagy újabb verzióra. A frissítés megoldja a futás során `az aks use-dev-spaces`kapott hibaüzenetet. Azt is megteheti, hogy továbbra is használja az Azure CLI és az Azure Dev Spaces CLI aktuális verzióját.
 
-### <a name="error-unable-to-reach-kube-apiserver"></a>Hiba: "nem sikerült elérni a Kube-apiserver"
+### <a name="error-unable-to-reach-kube-apiserver"></a>Hiba: "Nem érhető el a kube-apiserver"
 
-Ez a hiba akkor fordulhat elő, ha az Azure dev Spaces nem tud csatlakozni az AK-fürt API-kiszolgálójához. 
+Ez a hiba akkor jelenhet meg, ha az Azure Dev Spaces nem tud csatlakozni az AKS-fürt API-kiszolgálójához. 
 
-Ha az AK-alapú fürt API-kiszolgálójához való hozzáférés le van tiltva, vagy ha az AK-fürthöz engedélyezve van az [API-kiszolgáló által engedélyezett IP-címtartományok](../aks/api-server-authorized-ip-ranges.md) , akkor a fürtön a [régión alapuló további tartományokat](https://github.com/Azure/dev-spaces/tree/master/public-ips)is [létre kell hoznia](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) vagy [frissítenie](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) kell.
+Ha az AKS-fürt API-kiszolgálójához való hozzáférés zárolva van, vagy ha az [API-kiszolgáló által engedélyezett IP-címtartományok](../aks/api-server-authorized-ip-ranges.md) engedélyezve vannak az AKS-fürthöz, [akkor a fürtöt](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) is létre kell hoznia vagy [frissítenie](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) kell, hogy [a régión alapuló további tartományokat engedélyezhessen.](https://github.com/Azure/dev-spaces/tree/master/public-ips)
 
-A kubectl parancsok futtatásával győződjön meg arról, hogy az API-kiszolgáló elérhető. Ha az API-kiszolgáló nem érhető el, forduljon az AK-támogatáshoz, és próbálkozzon újra, ha az API-kiszolgáló működik.
+Győződjön meg arról, hogy az API-kiszolgáló elérhető a kubectl parancsok futtatásával. Ha az API-kiszolgáló nem érhető el, forduljon az AKS ügyfélszolgálatához, és próbálkozzon újra, amikor az API-kiszolgáló működik.
 
-## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Gyakori problémák a projekt előkészítésekor az Azure dev Spaces szolgáltatásban
+## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Gyakori problémák a projekt Azure Dev Spaces-re való előkészítésekor
 
-### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Figyelmeztetés: "a Docker nem hozható létre a nem támogatott nyelv miatt"
-Az Azure fejlesztési tárolóhelyek C# és Node.js natív támogatást biztosít. Ha a `azds prep`t egy olyan könyvtárban futtatja, amelyben az egyik nyelven írt kód szerepel, az Azure dev Spaces automatikusan létrehoz egy megfelelő Docker.
+### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Figyelmeztetés: "A Dockerfile nem érhető el a nem támogatott nyelv miatt"
+Az Azure Dev Spaces natív támogatást nyújt a C# és node.js. Amikor egy `azds prep` ilyen nyelven írt kóddal rendelkező könyvtárban fut, az Azure Dev Spaces automatikusan létrehoz egy megfelelő Docker-fájlt.
 
-Továbbra is használhatja az Azure dev Spaces szolgáltatást más nyelveken írt kóddal, de a `azds up` első futtatása előtt manuálisan kell létrehoznia a Docker.
+Továbbra is használhatja az Azure Dev Spaces más nyelveken írt kóddal, `azds up` de manuálisan kell létrehoznia a Docker-fájlt, mielőtt először futna.
 
-Ha az alkalmazás olyan nyelven íródott, amelyet az Azure dev Spaces nem támogat, meg kell adnia egy megfelelő Docker a kódot futtató tároló-rendszerkép létrehozásához. A Docker egy [listát biztosít a Dockerfiles írásához ajánlott eljárásokról](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) és egy olyan [Docker-hivatkozásról](https://docs.docker.com/engine/reference/builder/) , amely segíthet az igényeinek megfelelő Docker írására.
+Ha az alkalmazás olyan nyelven íródott, amelyet az Azure Dev Spaces natív módon nem támogat, meg kell adnia egy megfelelő Dockerfile-t a kódot futtató tárolórendszerkép létrehozásához. A Docker a [Docker-fájlok írásával kapcsolatos gyakorlati tanácsok listáját](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) és egy [Docker-fájlhivatkozást](https://docs.docker.com/engine/reference/builder/) tartalmaz, amely segítséget nyújt az igényeinek megfelelő Docker-fájl írásában.
 
-Ha megfelelő Docker rendelkezik, a `azds up` futtatásával futtathatja az alkalmazást az Azure dev Spaces szolgáltatásban.
+Miután rendelkezik egy megfelelő Docker-fájllal, futtathatja `azds up` az alkalmazást az Azure Dev Spaces-ben.
 
-## <a name="common-issues-when-starting-or-stopping-services-with-azure-dev-spaces"></a>Gyakori problémák az Azure dev Spaces szolgáltatás indításakor vagy leállításakor
+## <a name="common-issues-when-starting-or-stopping-services-with-azure-dev-spaces"></a>Gyakori problémák a szolgáltatások indításakor és leállításakor az Azure Dev Spaces szolgáltatással
 
-### <a name="error-config-file-not-found"></a>Hiba "a konfigurációs fájl nem található:"
+### <a name="error-config-file-not-found"></a>Hiba: "A konfigurációs fájl nem található:"
 
-`azds up`futtatásakor a következő hibaüzenet jelenhet meg:. Mind a `azds up`, mind a `azds prep` a fejlesztői térben futtatni kívánt projekt gyökérkönyvtárában kell futnia.
+A `azds up`futás során ez a hibaüzenet jelenhet meg. `azds up` Mindkettő, `azds prep` és a fejlesztői területen futtatni kívánt projekt gyökérkönyvtárából kell futtatni.
 
 A probléma megoldása:
-1. Módosítsa az aktuális könyvtár a legfelső szintű mappát, amely tartalmazza a szolgáltatás kódot. 
-1. Ha nem rendelkezik _azds. YAML_ fájllal a Code mappában, futtassa a `azds prep` eszközt a Docker, a Kubernetes és az Azure dev Spaces-eszközök létrehozásához.
+1. Módosítsa az aktuális könyvtárat a szolgáltatáskódot tartalmazó gyökérmappára. 
+1. Ha nincs _azds.yaml_ fájl a kódmappában, `azds prep` futtassa a Docker, a Kubernetes és az Azure Dev Spaces-eszközök létrehozásához.
 
-### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Időtúllépés: "Várakozás a tároló rendszerképének összeállítására..." lépés AK virtuális csomópontokkal
+### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Időhívás a "Várakozás a tárolókép felépítésére..." lépés AKS virtuális csomópontokkal
 
-Ez az időkorlát akkor fordul elő, ha a fejlesztői szóközök használatával futtat olyan szolgáltatást, amely egy AK-beli [virtuális csomóponton](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)való futtatásra van konfigurálva. A dev Spaces jelenleg nem támogatja a virtuális csomópontokon futó szolgáltatások létrehozását vagy hibakeresését.
+Ez az időkorlát akkor fordul elő, amikor a fejlesztői tárolóhelyek használatával olyan szolgáltatást próbál futtatni, amely [egy AKS virtuális csomóponton](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)való futtatásra van konfigurálva. A fejlesztői tárolóhelyek jelenleg nem támogatják a virtuális csomópontokon lévő szolgáltatások kiépítését vagy hibakeresését.
 
-Ha a `--verbose` kapcsolóval `azds up` futtat, vagy engedélyezi a részletes naplózást a Visual Studióban, további részleteket láthat:
+Ha a `azds up` kapcsolóval fut, vagy engedélyezi a `--verbose` részletes naplózást a Visual Studióban, további részletek jelennek meg:
 
 ```cmd
 azds up --verbose
@@ -138,31 +138,31 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-A fenti parancs azt mutatja, hogy a szolgáltatás Pod hozzá lett rendelve a *virtuális csomópont-ACI-Linux*rendszerhez, amely egy virtuális csomópont.
+A fenti parancs azt mutatja, hogy a szolgáltatás pod volt rendelve *a virtuális-csomópont-aci-linux*, amely egy virtuális csomópont.
 
-A probléma megoldásához frissítse a szolgáltatás Helm diagramját, és távolítsa el azokat a *nodeSelector* vagy *toleráló* értékeket, amelyek lehetővé teszik, hogy a szolgáltatás virtuális csomóponton fusson. Ezek az értékek általában a diagram `values.yaml` fájljában vannak meghatározva.
+A probléma megoldásához frissítse a Helm diagramot a szolgáltatásszámára, hogy eltávolítson minden olyan *csomópontválasztó* vagy *tűrésjelet,* amely lehetővé teszi a szolgáltatás virtuális csomóponton való futtatását. Ezek az értékek általában a diagram `values.yaml` fájljában vannak definiálva.
 
-Továbbra is használhat olyan AK-fürtöt, amelyen engedélyezve van a virtuális csomópontok funkciója, ha a fejlesztéshez és a hibakereséshez használni kívánt szolgáltatás egy virtuálisgép-csomóponton fut. A szolgáltatás egy virtuálisgép-csomóponton található fejlesztői szóközökkel való futtatása az alapértelmezett konfiguráció.
+Továbbra is használhatja az AKS-fürt, amely a virtuális csomópontok funkció engedélyezve van, ha a fejlesztői terek en keresztül létre kívánt szolgáltatás vagy hibakeresés virtuálisgép-csomóponton fut. A szolgáltatás virtuálisgép-csomóponton fejlesztői szóközökkel való futtatása az alapértelmezett konfiguráció.
 
-### <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>Hiba: "nem található a Ready up Pod" a dev Spaces indításakor
+### <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>Hiba "Nem található a kész talajművelő pod" indításakor dev spaces
 
-Ez a hiba akkor fordul elő, ha a Helm-ügyfél már nem képes kommunikálni a tiller valóban pod a fürtben futó.
+Ez a hiba akkor fordul elő, ha a Helm-ügyfél már nem tud beszélni a tiller pod a fürtben futó.
 
-A probléma megoldásához indítsa újra a fürtben lévő ügynökök csomópontjait.
+A probléma megoldásához indítsa újra a fürt ügynökcsomópontjait.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Hiba "kiadás azds-\<azonosító\>-\<spacename\>-\<szolgáltatásnév\> sikertelen: a (z)"\<szolgáltatásnév\>"már létezik" vagy "lekéréses hozzáférés megtagadva a \<szolgáltatásnév\>, adattár nem létezik, vagy a" Docker bejelentkezhessen "szükséges.
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Hiba :"release azds-\>-\<\>-\<\<identifier\> spacename servicename failed: services\<' servicename ' 'servicename'\>already exists' or "Pull access denied for \<servicename\>, repository does not exist or may require 'docker login'"
 
-Ezek a hibák akkor fordulhatnak elő, ha összekeveri a Direct Helm-parancsokat (például `helm install`, `helm upgrade`vagy `helm delete`) a dev Spaces parancsokkal (például `azds up` és `azds down`) ugyanazon a fejlesztői területen belül. Ezek azért történnek, mert a dev Spaces saját kormányrúd-példánnyal rendelkezik, ami ütközik a saját, azonos fejlesztői térben futó példányával.
+Ezek a hibák akkor fordulhatnak elő, `helm install`ha `helm upgrade`a `helm delete`közvetlen Helm parancsokat `azds up` (például a , vagy ) a fejlesztői szóközök parancsokkal (például és `azds down`) ugyanazon a fejlesztői területen belül keveri. Ezek azért fordulnak elő, mert a Fejlesztői zel-tároló saját Tiller-példány, amely ütközik a saját Tiller példány fut ugyanabban a fejlesztői térben.
 
-A Helm-parancsok és a dev Spaces-parancsok is használhatók ugyanazon az AK-fürtön, de az egyes fejlesztői szóközöket használó névtereknek vagy az egyiket kell használniuk.
+A Helm parancsok és a fejlesztői terek parancsok használata ugyanazon AKS-fürt ellen, de minden fejlesztői tér-engedélyezésű névtér kell használni az egyik vagy a másik.
 
-Tegyük fel például, hogy egy Helm parancs használatával futtatja a teljes alkalmazást egy szülő fejlesztői térben. A gyermek fejlesztési területeit kikapcsolhatja a szülőtől, a fejlesztői szóközök használatával egyéni szolgáltatásokat futtathat a gyermek-fejlesztési területeken belül, és tesztelheti a szolgáltatásokat. Ha készen áll a módosítások beadására, a Helm parancs használatával telepítse a frissített kódot a szülő fejlesztői területére. Ne használja a `azds up` a frissített szolgáltatás futtatására a szülő fejlesztői térben, mert az ütközik a Helm használatával futtatott szolgáltatással.
+Tegyük fel például, hogy egy Helm paranccsal futtatja a teljes alkalmazást egy szülő fejlesztési területen. Gyermekfejlesztői tereket hozhat létre az adott szülőből, a fejlesztői tárolók használatával futtathatja az egyes szolgáltatásokat a gyermekfejlesztői tereken belül, és együtt tesztelheti a szolgáltatásokat. Ha készen áll a módosítások beadására, a Helm paranccsal telepítse a frissített kódot a szülő fejlesztési területre. Ne használja `azds up` a frissített szolgáltatás futtatásához a szülő fejlesztési területen, mert ütközik a helm használatával eredetileg futtatott szolgáltatással.
 
-### <a name="existing-dockerfile-not-used-to-build-a-container"></a>Meglévő Docker nem használatos tároló létrehozásához
+### <a name="existing-dockerfile-not-used-to-build-a-container"></a>A meglévő Docker-fájl nem használható tároló létrehozásához
 
-Az Azure dev Spaces konfigurálható úgy, hogy a projekt egy adott _Docker_ mutasson. Ha úgy tűnik, hogy az Azure dev Spaces nem a tárolók felépítésére várt _Docker_ használja, akkor előfordulhat, hogy explicit módon meg kell adnia az Azure dev Spaces-Docker, amelyeket használni kíván. 
+Az Azure dev spaces konfigurálható, hogy pont egy adott _Docker-fájl_ a projektben. Ha úgy tűnik, hogy az Azure Dev Spaces nem használja a tárolók létrehozásához várt _Docker-fájlt,_ előfordulhat, hogy explicit módon meg kell mondania az Azure Dev Spaces-nek, hogy melyik Dockerfile melyik Dockerfile-t használja. 
 
-A probléma megoldásához nyissa meg az _azds. YAML_ fájlt, amelyet az Azure dev Spaces hozott létre a projektben. Frissítési *konfigurációk: fejlesztés: build: Docker* , hogy a használni kívánt Docker mutasson. Például:
+A probléma megoldásához nyissa meg az Azure Dev Spaces által a projektben létrehozott _azds.yaml_ fájlt. Konfigurációk *frissítése: fejlesztés: build: dockerfile* a használni kívánt Docker-fájlra mutat. Példa:
 
 ```yaml
 ...
@@ -172,13 +172,13 @@ configurations:
       dockerfile: Dockerfile.develop
 ```
 
-### <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>"Jogosulatlan: hitelesítés szükséges" hibaüzenet, ha Docker-rendszerképet szeretne használni egy privát beállításjegyzékből
+### <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>Hiba "jogosulatlan: hitelesítés szükséges" amikor docker-lemezképet próbál használni egy privát beállításjegyzékből
 
-Olyan Docker-rendszerképet használ, amely hitelesítést igénylő privát beállításjegyzékből áll.
+Egy hitelesítést igénylő magánbeállítás-nyilvántartásból származó Docker-lemezképet használ.
 
-A probléma megoldásához engedélyezheti a fejlesztői terek számára, hogy a [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)használatával hitelesítsék és lehívhatják a képeket ebből a privát beállításjegyzékből. A imagePullSecrets használatához [hozzon létre egy Kubernetes titkot](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) abban a névtérben, amelyben a rendszerképet használja. Ezután adja meg a titkot `azds.yaml`imagePullSecret.
+A probléma megoldásához engedélyezheti, hogy a fejlesztői tárolók hitelesítsék és lekérik a képeket ebből a privát beállításjegyzékből [az imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)használatával. Az imagePullSecrets használatához [hozzon létre egy Kubernetes-titkot](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) a névtérben, ahol a lemezképet használja. Ezután adja meg a titkot imagePullSecret néven a rendszerben. `azds.yaml`
 
-Alább látható egy példa a imagePullSecrets megadására a `azds.yaml`ban.
+Az alábbiakban egy példa egy meghatározó `azds.yaml`imagePullSecrets a.
 
 ```yaml
 kind: helm-release
@@ -203,28 +203,28 @@ install:
 ```
 
 > [!IMPORTANT]
-> A `azds.yaml` imagePullSecrets beállítása felülírja a `values.yaml`megadott imagePullSecrets.
+> Az imagePullSecrets `azds.yaml` beállítása felülírja a `values.yaml`.
 
-### <a name="error-service-cannot-be-started"></a>Hiba: a szolgáltatás nem indítható el.
+### <a name="error-service-cannot-be-started"></a>Hiba: "A szolgáltatás nem indítható el."
 
-Előfordulhat, hogy ezt a hibaüzenetet, ha a szolgáltatás kód nem indul el. Oka általában a felhasználói kódban. További diagnosztikai adatok megjelenítéséhez engedélyezze a szolgáltatás indításakor részletesebb naplózást.
+Ez a hiba akkor jelenhet meg, ha a szolgáltatáskód nem indul el. Az ok gyakran a felhasználói kódban van. További diagnosztikai információk, engedélyezze a részletesebb naplózás a szolgáltatás indításakor.
 
-A parancssorban használja a `--verbose` a részletesebb naplózás engedélyezéséhez. `--output`használatával kimeneti formátumot is megadhat. Például:
+A parancssorból használja `--verbose` a részletesebb naplózást. A használatával `--output`kimeneti formátumot is megadhat. Példa:
 
 ```cmd
 azds up --verbose --output json
 ```
 
-A Visual Studióban:
+A Visual Studio-ban:
 
-1. Nyissa meg az **eszközök > lehetőségeket** , és a **projektek és megoldások**területen válassza a **Létrehozás és Futtatás**lehetőséget.
-2. Az MSBuild-projekt beállításainak módosításához adja meg a **kimeneti részletességet** **részletes** vagy **diagnosztikai**értékre.
+1. Nyissa **meg az Eszközök > beállításokat,** és a Projektek és **megoldások**csoportban válassza a Build and **Run (Létrehozás és futtatás) lehetőséget.**
+2. Módosítsa az **MSBuild projektbuild-kimeneti részletességének** beállításait **Részletes** vagy **Diagnosztikai**beállításra.
 
-    ![Képernyőkép a beállítások panel](media/common/VerbositySetting.PNG)
+    ![Képernyőkép az Eszközök beállításai párbeszédpanelről](media/common/VerbositySetting.PNG)
 
-### <a name="rerunning-a-service-after-controller-re-creation"></a>Szolgáltatás újrafuttatása a vezérlő ismételt létrehozása után
+### <a name="rerunning-a-service-after-controller-re-creation"></a>Szolgáltatás újrafuttatása a vezérlő újbóli létrehozása után
 
-A szolgáltatás *nem indítható el* , ha a szolgáltatás újrafuttatására tett kísérletet követően eltávolította a szolgáltatást, majd újból létrehozta az ehhez a fürthöz társított Azure dev Spaces-vezérlőt. Ebben az esetben a részletes kimenet a következő szöveget tartalmazza:
+Szolgáltatás nem *indítható el* hiba, amikor megpróbálja újrafuttatni a szolgáltatást, miután eltávolította, majd újra létrehozta a fürthöz társított Azure Dev Spaces-vezérlőt. Ebben az esetben a részletes kimenet a következő szöveget tartalmazza:
 
 ```output
 Installing Helm chart...
@@ -234,13 +234,13 @@ Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" do
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
 ```
 
-Ez a hiba azért fordul elő, mert a dev Spaces vezérlő eltávolítása nem távolítja el a vezérlő által korábban telepített szolgáltatásokat. A vezérlő újbóli létrehozását, és ezután megpróbálja futtatni a szolgáltatásokat az új vezérlőt használó meghiúsul, mert a régi szolgáltatások helyükön vannak.
+Ez a hiba azért fordul elő, mert a fejlesztői tárolóhelyek vezérlő eltávolítása nem távolítja el az adott vezérlő által korábban telepített szolgáltatásokat. A vezérlő újbóli létrehozása, majd a szolgáltatások futtatásának megkísérlése az új vezérlőhasználatával sikertelen, mert a régi szolgáltatások még mindig érvényben vannak.
 
-A probléma megoldásához a `kubectl delete` parancs használatával távolítsa el manuálisan a régi szolgáltatásokat a fürtből, majd futtassa újra a dev Spaces szolgáltatást az új szolgáltatások telepítéséhez.
+A probléma megoldásához `kubectl delete` a paranccsal manuálisan távolítsa el a régi szolgáltatásokat a fürtből, majd futtassa újra a fejlesztői szóközöket az új szolgáltatások telepítéséhez.
 
-### <a name="error-service-cannot-be-started-when-using-multi-stage-dockerfiles"></a>Hiba: a szolgáltatás nem indítható el. többfázisú Dockerfiles használata esetén
+### <a name="error-service-cannot-be-started-when-using-multi-stage-dockerfiles"></a>Hiba: "A szolgáltatás nem indítható el." többfokozatú Docker-fájlok használata esetén
 
-Egy *szolgáltatás nem indítható el* , ha többfázisú Docker használ. Ebben az esetben a részletes kimenet a következő szöveget tartalmazza:
+Szolgáltatás nem *indítható el* hiba többlépcsős Docker-fájl használataesetén. Ebben az esetben a részletes kimenet a következő szöveget tartalmazza:
 
 ```cmd
 $ azds up -v
@@ -255,112 +255,112 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Ez a hiba azért fordul elő, mert az Azure dev Spaces jelenleg nem támogatja a többfázisú buildeket. A többfázisú buildek elkerüléséhez írja át a Docker.
+Ez a hiba azért fordul elő, mert az Azure Dev Spaces jelenleg nem támogatja a többlépcsős buildek. A többlépcsős buildek elkerülése érdekében írja át a Docker-fájlt.
 
-### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>A hálózati forgalmat nem továbbítja a rendszer az AK-fürthöz a fejlesztői gép csatlakoztatásakor
+### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>A hálózati forgalom nem lesz továbbítva az AKS-fürthöz a fejlesztői gép csatlakoztatásakor
 
-Ha [Az Azure dev Spaces használatával csatlakozik az AK-fürthöz a fejlesztői géphez](how-to/connect.md), előfordulhat, hogy olyan problémába ütközik, amelyben a hálózati forgalom nem továbbítódik a fejlesztési gép és az AK-fürt között.
+Ha az Azure Dev Spaces használatával [csatlakoztatja az AKS-fürta fejlesztői géphez,](how-to/connect.md)előfordulhat, hogy a hálózati forgalom nem továbbító dörgésa a fejlesztői gép és az AKS-fürt között.
 
-Ha a fejlesztési gépet az AK-fürthöz csatlakoztatja, az Azure dev Spaces a fejlesztési gép `hosts` fájljának módosításával továbbítja a hálózati forgalmat az AK-fürt és a fejlesztői számítógép között. Az Azure dev Spaces létrehoz egy bejegyzést a `hosts`ban annak a Kubernetes-szolgáltatásnak a címeként, amelyet állomásnévként cserél. Ez a bejegyzés a port továbbításával használható a fejlesztői gép és az AK-fürt közötti közvetlen hálózati forgalomhoz. Ha a fejlesztési gépen lévő szolgáltatás ütközik a cserélni kívánt Kubernetes szolgáltatás portjával, az Azure dev Spaces nem tudja továbbítani a Kubernetes szolgáltatás hálózati forgalmát. Például a *Windows BranchCache* szolgáltatás általában *0.0.0.0:80*-ra van kötve, amely ütközést okoz a 80-es port összes helyi IP-címeinél.
+Amikor a fejlesztői gép az AKS-fürthöz csatlakozik, az Azure Dev Spaces továbbítja a hálózati forgalmat az AKS-fürt és a fejlesztői gép között a fejlesztői gép fájljának `hosts` módosításával. Az Azure Dev Spaces `hosts` létrehoz egy bejegyzést a kubernetes szolgáltatás címét, amelyet állomásnévként helyettesít. Ez a bejegyzés porttovábbítással irányítja a fejlesztői gép és az AKS-fürt közötti hálózati forgalmat. Ha a fejlesztői gépen egy szolgáltatás ütközik a kubernetes szolgáltatás által helyettesített portjával, az Azure Dev Spaces nem továbbíthatja a Kubernetes szolgáltatás hálózati forgalmát. A Windows *BranchCache* szolgáltatás például általában *a 0.0.0:80-hoz*van kötve, ami ütközést okoz a 80-as portnál az összes helyi IP-n.
 
-A probléma megoldásához le kell állítania minden olyan szolgáltatást vagy folyamatot, amely ütközik a cserélni kívánt Kubernetes szolgáltatás portjával. Az eszközök, például a *netstat*segítségével megvizsgálhatja, hogy a fejlesztői gépen milyen szolgáltatások és folyamatok ütköznek.
+A probléma megoldásához le kell állítania minden olyan szolgáltatást vagy folyamatot, amely ütközik a cserélni kívánt Kubernetes szolgáltatás portjával. Az eszközök, például *a netstat*segítségével megvizsgálhatja, hogy a fejlesztői gépen milyen szolgáltatások vagy folyamatok ütköznek.
 
 Például a *Windows BranchCache* szolgáltatás leállításához és letiltásához:
-* Futtassa `services.msc` parancsot a parancssorból.
-* Kattintson a jobb gombbal a *BranchCache* elemre, és válassza a *Tulajdonságok*lehetőséget.
-* Kattintson a *Leállítás*gombra.
-* Igény szerint letilthatja azt az *indítási típus* *letiltásának beállításával.*
+* Futtassa `services.msc` a parancssorból.
+* Kattintson a jobb gombbal a *BranchCache elemre,* és válassza *a Tulajdonságok parancsot.*
+* Kattintson *a Leállítás gombra.*
+* Szükség esetén letilthatja azt, ha az *Indítás típusát* Letiltott értékre *állítja.*
 * Kattintson az *OK* gombra.
 
-## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>A Visual Studio és a Visual Studio Code együttes használata az Azure dev Spaces használatával – gyakori problémák
+## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Gyakori problémák a Visual Studio és a Visual Studio kódhasználatával az Azure Dev Spaces szolgáltatással
 
-### <a name="error-required-tools-and-configurations-are-missing"></a>Hiba: a szükséges eszközök és konfigurációk hiányoznak.
+### <a name="error-required-tools-and-configurations-are-missing"></a>Hiba : "A szükséges eszközök és konfigurációk hiányoznak"
 
-Ez a hiba akkor fordulhat elő, a VS Code elindításához: "[Azure fejlesztési tárolóhelyek] szükséges eszközök és konfigurációk fejlesztése és hibakeresése a"[projekt neve]"hiányoznak."
-A hiba azt jelenti, hogy adott azds.exe nem szerepel a PATH környezeti változóhoz, a VS Code-ban látható módon.
+Ez a hiba a VS-kód indításakor fordulhat elő: "[Azure Dev Spaces] A "[projektnév] létrehozásához és hibakereséséhez szükséges eszközök és konfigurációk hiányoznak."
+A hiba azt jelenti, hogy az azds.exe nem szerepel a PATH környezeti változóban, ahogy az a VS-kódban látható.
 
-Próbálkozzon a VS Code indításával egy parancssorban, ahol a PATH környezeti változó helyesen van beállítva.
+Próbálja meg a VS Code parancssorból elindítani, ahol a PATH környezeti változó megfelelően van beállítva.
 
-### <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Hiba: a "projektnév" létrehozásához és hibakereséséhez szükséges eszközök elavultak. "
+### <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>A "Projektnév létrehozásához és hibakereséséhez szükséges eszközök" hiba elavult."
 
-Ez a hibaüzenet akkor jelenik meg a Visual Studio Code-ban, ha az Azure dev Spaces-hez a VS Code bővítmény újabb verziója van telepítve, de az Azure dev Spaces CLI egy régebbi verziója.
+Ez a hiba a Visual Studio-kód, ha az Azure Dev Spaces VS-kódbővítmény újabb verzióját használja, de az Azure Dev Spaces CLI régebbi verzióját.
 
-Próbálja meg letölteni és telepíteni az Azure dev Spaces CLI legújabb verzióját:
+Próbálja meg letölteni és telepíteni az Azure Dev Spaces CLI legújabb verzióját:
 
 * [Windows](https://aka.ms/get-azds-windows)
 * [Mac](https://aka.ms/get-azds-mac)
 * [Linux](https://aka.ms/get-azds-linux)
 
-### <a name="error-failed-to-find-debugger-extension-for-typecoreclr"></a>Hiba: "a hibakereső bővítmény nem található a következő típushoz: coreclr"
+### <a name="error-failed-to-find-debugger-extension-for-typecoreclr"></a>Hiba: "Nem sikerült megtalálni a hibakereső bővítményt a type:coreclr-hez"
 
-Ez a hiba a Visual Studio Code Debugger futtatásakor fordulhat elő. Lehet, hogy nincs C# telepítve a vs Code bővítmény a fejlesztői gépen. A C# bővítmény a .net Core (CoreCLR) hibakeresési támogatását is tartalmazza.
+Ez a hiba a Visual Studio kódhiba-keresőjének futtatásakor jelenhet meg. Előfordulhat, hogy a fejlesztői gépen nincs telepítve a C# VS code bővítménye. A C# kiterjesztés tartalmazza a .NET Core (CoreCLR) hibakeresési támogatását.
 
-A probléma megoldásához telepítse a [vs Code-bővítményt C#a következőhöz: ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
+A probléma megoldásához telepítse a [VS Code bővítményt a C# értékre.](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
-### <a name="error-configured-debug-type-coreclr-is-not-supported"></a>Hiba: a "coreclr" konfigurált hibakeresési típus nem támogatott "
+### <a name="error-configured-debug-type-coreclr-is-not-supported"></a>Hiba "Configured debug type 'coreclr' is not supported"
 
-Ez a hiba a Visual Studio Code Debugger futtatásakor fordulhat elő. Előfordulhat, hogy a fejlesztői gépen nincs telepítve a VS Code bővítmény az Azure dev Spaces szolgáltatáshoz.
+Ez a hiba a Visual Studio kódhiba-keresőjének futtatásakor jelenhet meg. Előfordulhat, hogy a vs kód bővítmény az Azure Dev Spaces telepítve van a fejlesztői gépen.
 
-A probléma megoldásához telepítse a [vs Code-bővítményt az Azure dev Spaces szolgáltatáshoz](get-started-netcore.md).
+A probléma megoldásához telepítse a [VS Code bővítményt az Azure Dev Spaces szolgáltatáshoz.](get-started-netcore.md)
 
-### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Hiba "Érvénytelen" CWD "/src" érték. A rendszer nem találja a megadott fájlt." vagy "indítása: program"/ src / [projekt bináris elérési út]"nem létezik."
+### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Hiba : "Érvénytelen " cwd' érték '/src'. A rendszer nem találja a megadott fájlt." vagy "launch: program "/src/[path to project binary]" nem létezik"
 
-Ez a hiba a Visual Studio Code Debugger futtatásakor fordulhat elő. Alapértelmezés szerint a VS Code bővítmény a tárolóban lévő projekt munkakönyvtáraként `src` használja. Ha frissítette a `Dockerfile` egy másik munkakönyvtár megadására, akkor ez a hiba látható.
+Ez a hiba a Visual Studio kódhiba-keresőjének futtatásakor jelenhet meg. Alapértelmezés szerint a VS-kód bővítmény a tárolón lévő projekt munkakönyvtáraként szolgál. `src` Ha frissítette a `Dockerfile` számítógépet, hogy másik munkakönyvtárat adjon meg, akkor ez a hiba jelenhet meg.
 
-A probléma megoldásához frissítse a `launch.json` fájlt a Project mappa `.vscode` alkönyvtárában. Módosítsa úgy a `configurations->cwd` direktívát, hogy ugyanarra a könyvtárba mutasson, mint a projekt `Dockerfile`ban definiált `WORKDIR`. Előfordulhat, hogy frissítenie kell az `configurations->program` direktívát is.
+A probléma megoldásához `launch.json` frissítse a `.vscode` fájlt a projektmappa alkönyvtára alatt. Módosítsa `configurations->cwd` az utasítást úgy, hogy `WORKDIR` ugyanarra a könyvtárra mutasson, mint a projektben `Dockerfile`definiált könyvtár. Előfordulhat, hogy az `configurations->program` irányelvet is frissítenie kell.
 
-### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Hiba: a "azds" pipe program váratlanul kilépett a 126 kóddal. "
+### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Hiba "A cső program "azds" váratlanul kilépett a kód 126."
 
-Ez a hiba a Visual Studio Code Debugger futtatásakor fordulhat elő.
+Ez a hiba a Visual Studio kódhiba-keresőjének futtatásakor jelenhet meg.
 
-A probléma megoldásához zárjuk be és nyissa meg újra a Visual Studio Code-ot. Indítsa újra a hibakeresőt.
+A probléma megoldásához zárja be és nyissa meg újra a Visual Studio-kódot. Indítsa újra a hibakeresőt.
 
-### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Hiba "a belső figyelés sikertelen: ENOSPC megtekintése" egy Node. js-alkalmazás hibakeresésének csatolásakor
+### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Hiba :"A belső óra nem sikerült: watch ENOSPC" hibakeresés kor egy Node.js alkalmazáshoz
 
-Ez a hiba akkor fordul elő, ha a pod-t futtató csomópont a hibakeresőhöz csatlakoztatni kívánt Node. js-alkalmazással túllépte az *FS. inotify. max_user_watches* értéket. Bizonyos esetekben előfordulhat, [hogy az *FS. inotify. max_user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül egy Pod-hez csatolja](https://github.com/Azure/AKS/issues/772).
+Ez a hiba akkor fordul elő, ha a podot futtató csomópont a hibakeresővel csatolni kívánt Node.js alkalmazással túllépte az *fs.inotify.max_user_watches* értéket. Bizonyos esetekben előfordulhat, hogy [az *fs.inotify.max_user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül a podhoz csatolja.](https://github.com/Azure/AKS/issues/772)
 
-A probléma ideiglenes megkerülő megoldásként növelje az *FS. inotify. max_user_watches* értékét a fürt mindegyik csomópontján, majd indítsa újra a csomópontot a módosítások érvénybe léptetéséhez.
+A probléma ideiglenes megoldása az *fs.inotify.max_user_watches* értékének növelése a fürt minden csomópontján, és a módosítások életbe léptetéséhez indítsa újra a csomópontot.
 
 ## <a name="other-common-issues"></a>Egyéb gyakori problémák
 
-### <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>A "azds" hiba nem ismerhető fel belső vagy külső parancsként, futtatható programként vagy batch-fájlként.
+### <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Az "azds" hiba nem ismerhető fel belső vagy külső parancsként, működőképes programként vagy kötegfájlként
 
-Ez a hiba akkor fordulhat elő, ha `azds.exe` nincs telepítve vagy nem megfelelően van konfigurálva.
+Ez a hiba `azds.exe` akkor fordulhat elő, ha nincs megfelelően telepítve vagy konfigurálva.
 
 A probléma megoldása:
 
-1. Keresse meg a (z)% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI-t a `azds.exe`. Ha nincs, adott helyen hozzáadása a PATH környezeti változóhoz.
+1. Ellenőrizze a helyet %ProgramFiles%/Microsoft SDKs\Azure\Azure `azds.exe`Dev Spaces CLI for. Ha ott van, adja hozzá ezt a helyet a PATH környezeti változóhoz.
 2. Ha `azds.exe` nincs telepítve, futtassa a következő parancsot:
 
     ```azurecli
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
 
-### <a name="authorization-error-microsoftdevspacesregisteraction"></a>"Microsoft. DevSpaces/regisztráció/művelet" engedélyezési hiba
+### <a name="authorization-error-microsoftdevspacesregisteraction"></a>"Microsoft.DevSpaces/register/action" engedélyezési hiba
 
-Az Azure fejlesztői tárhelyek kezeléséhez *tulajdonosi* vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ha a fejlesztői helyeket szeretné kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez, akkor egy engedélyezési hiba jelenhet meg. Például:
+Az Azure Dev Spaces kezeléséhez *tulajdonosi* vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ha fejlesztői tárolókat próbál kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez, előfordulhat, hogy engedélyezési hiba jelenik meg. Példa:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
-A probléma megoldásához az Azure-előfizetéshez *tulajdonosi* vagy *közreműködői* hozzáféréssel rendelkező fiók használatával manuálisan regisztrálja az `Microsoft.DevSpaces` névteret:
+A probléma megoldásához az Azure-előfizetés *tulajdonosi* vagy *közreműködői* hozzáféréssel rendelkező fiók használatával manuálisan regisztrálja a `Microsoft.DevSpaces` névteret:
 
 ```azurecli
 az provider register --namespace Microsoft.DevSpaces
 ```
 
-### <a name="new-pods-arent-starting"></a>Az új hüvelyek nem indulnak el
+### <a name="new-pods-arent-starting"></a>Nem indulnak el az új kapszulák
 
-A Kubernetes inicializáló nem tudja alkalmazni a PodSpec az új hüvelyek esetében, mert a fürtben a *fürt-rendszergazdai* szerepkör RBAC engedélyei változnak. Az új Pod is rendelkezhet érvénytelen PodSpec, például a pod-hoz társított szolgáltatásfiók már nem létezik. Az inicializálási probléma miatt *függőben* lévő állapotban lévő hüvelyek megtekintéséhez használja a `kubectl get pods` parancsot:
+A Kubernetes inicializáló nem tudja alkalmazni a PodSpec új podok miatt RBAC engedély változások a *fürt-felügyeleti* szerepkör a fürtben. Előfordulhat, hogy az új pod is rendelkezik egy érvénytelen PodSpec, például a podhoz társított szolgáltatásfiók már nem létezik. Az inicializáló miatt *függőben lévő* állapotban lévő `kubectl get pods` podok megtekintéséhez használja a következő parancsot:
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
 ```
 
-Ez a probléma a fürt *összes névterében* hatással lehet a hüvelyekre, beleértve azokat a névtereket is, amelyekben nincs engedélyezve az Azure dev Spaces.
+Ez a probléma hatással lehet a podok a fürt *összes névtere,* beleértve a névterek, ahol az Azure Dev Spaces nincs engedélyezve.
 
-A probléma megoldásához [frissítse a dev Spaces CLI-t a legújabb verzióra](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) , majd törölje a *Azds InitializerConfiguration* az Azure dev Spaces vezérlőből:
+A probléma megoldásához [frissítse a fejlesztői tereket CLI-t a legújabb verzióra,](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) majd törölje az *azds InitializerConfiguration-t* az Azure Dev Spaces vezérlőből:
 
 ```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
@@ -370,97 +370,97 @@ az aks get-credentials --resource-group <resource group name> --name <cluster na
 kubectl delete InitializerConfiguration azds
 ```
 
-Miután eltávolította a azds- *InitializerConfiguration* az Azure dev Spaces-vezérlőből, a `kubectl delete` használatával távolítsa el a *függő* állapotú hüvelyeket. Miután az összes függőben lévő hüvely el lett távolítva, telepítse újra a hüvelyeket.
+Miután eltávolította az *azds InitializerConfiguration* az `kubectl delete` Azure Dev Spaces vezérlő, segítségével távolítsa el a podok *egy függőben lévő* állapotban. Miután az összes függőben lévő podok el lettek távolítva, telepítse újra a podok.
 
-Ha az új hüvelyek továbbra is *függőben* vannak egy újratelepítést követően, a `kubectl delete` használatával távolíthatja el a *függő* állapotú hüvelyeket. Miután az összes függőben lévő hüvely el lett távolítva, törölje a vezérlőt a fürtből, és telepítse újra:
+Ha az új podok továbbra is *függőben* lévő `kubectl delete` állapotban vannak az átcsoportosítás után, távolítsa el a *függőben lévő* állapotban lévő podokat. Miután az összes függőben lévő podot eltávolította, törölje a vezérlőt a fürtből, és telepítse újra:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
 azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
 ```
 
-A vezérlő újratelepítése után telepítse újra a hüvelyeket.
+A vezérlő újratelepítése után telepítse újra a podokat.
 
-### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Helytelen RBAC engedélyek a dev Spaces-vezérlő és API-k hívásához
+### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Helytelen RBAC-engedélyek a fejlesztői tárolóhelyek vezérlőjének és API-knak a hívására
 
-Az Azure dev Spaces-vezérlőhöz hozzáférő felhasználónak hozzáféréssel kell rendelkeznie az AK-fürt rendszergazdai *kubeconfig* olvasásához. Ez az engedély például a [beépített Azure Kubernetes szolgáltatás-fürt rendszergazdai szerepkörében](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)érhető el. Az Azure dev Spaces-vezérlőhöz hozzáférő felhasználónak a vezérlő *közreműködői* vagy *tulajdonosi* RBAC szerepkörével is rendelkeznie kell. A felhasználó egy AK-fürtre vonatkozó engedélyeinek frissítéséről [itt talál](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)további információt.
+Az Azure Dev Spaces-vezérlőhöz hozzáférő felhasználónak hozzáféréssel kell rendelkeznie az AKS-fürt *adminkubeconfig* olvasásához. Ez az engedély például a [beépített Azure Kubernetes-szolgáltatásfürt felügyeleti szerepkörében](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)érhető el. Az Azure Dev Spaces-vezérlőeléréséhez hozzáférő felhasználónak is rendelkeznie kell a *közreműködői* vagy *tulajdonosi* RBAC szerepkörrel a vezérlőhöz. Az AKS-fürthöz tartozó felhasználói engedélyek frissítésével kapcsolatos további részletek [itt](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)találhatók.
 
 A felhasználó RBAC szerepkörének frissítése a vezérlőhöz:
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-1. Navigáljon a vezérlőt tartalmazó erőforráscsoporthoz, amely általában ugyanaz, mint az AK-fürt.
-1. Engedélyezze a *rejtett típusok megjelenítése* jelölőnégyzetet.
+1. Keresse meg a vezérlőt tartalmazó erőforráscsoportot, amely általában megegyezik az AKS-fürttel.
+1. Engedélyezze a *Rejtett típusok megjelenítése* jelölőnégyzetet.
 1. Kattintson a vezérlőre.
-1. Nyissa meg a *Access Control (iam)* ablaktáblát.
-1. Kattintson a *szerepkör-hozzárendelések* fülre.
-1. Kattintson a *Hozzáadás* , majd a *szerepkör-hozzárendelés hozzáadása*lehetőségre.
-    * A *szerepkör*területen válassza a *közreműködő* vagy a *tulajdonos*lehetőséget.
-    * A *hozzáférésének hozzárendeléséhez*válassza az *Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév*lehetőséget.
-    * A *Select (kiválasztás*) lehetőségnél keresse meg azt a felhasználót, akinek engedélyeket szeretne adni.
-1. Kattintson a *Save* (Mentés) gombra.
+1. Nyissa meg a *hozzáférés-vezérlési (IAM)* ablaktáblát.
+1. Kattintson a *Szerepkör-hozzárendelések* fülre.
+1. Kattintson a *Hozzáadás,* majd *a Szerepkör-hozzárendelés hozzáadása gombra.*
+    * A *Szerepkör csoportban*válassza a *Közreműködő* vagy *a Tulajdonos*lehetőséget.
+    * A *Hozzáférés hozzárendelése a területen*válassza az Azure *AD felhasználó, csoport vagy egyszerű szolgáltatás*lehetőséget.
+    * A *Select területen*keresse meg az engedélyeket adni kívánt felhasználót.
+1. Kattintson a *Mentés* gombra.
 
-### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS-névfeloldás nem sikerül, egy fejlesztői tárolóhelyek szolgáltatással társított nyilvános URL-cím
+### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>A DNS-névfeloldás sikertelen a fejlesztői tárolóhelyek szolgáltatáshoz társított nyilvános URL-cím esetén
 
-A szolgáltatáshoz egy nyilvános URL-végpontot is beállíthat, ha megadja a `--enable-ingress` kapcsolót a `azds prep` parancsra, vagy ha a Visual Studióban a `Publicly Accessible` jelölőnégyzetet választja. A nyilvános DNS-nevet a rendszer automatikusan regisztrálja, amikor a szolgáltatást a fejlesztői tárhelyeken futtatja. Ha ez a DNS-név nincs regisztrálva, akkor egy *lap nem jeleníthető meg* , vagy a webböngészőben *nem érhető el* hibaüzenet, ha a nyilvános URL-címhez csatlakozik.
+A szolgáltatás nyilvános URL-végpontját a `--enable-ingress` `azds prep` parancsra való váltás megadásával vagy `Publicly Accessible` a Visual Studio jelölőnégyzetének bejelölésével állíthatja be. A nyilvános DNS-név automatikusan regisztrálva lesz, amikor a szolgáltatás fejlesztői tárolóhelyeken futtatja. Ha ez a DNS-név nincs regisztrálva, akkor azt látja, hogy *a lap nem jeleníthető meg,* vagy a *Webhely nem érhető el* hiba a webböngészőben, amikor a nyilvános URL-hez csatlakozik.
 
 A probléma megoldása:
 
-* Győződjön meg arról, hogy a dev Spaces szolgáltatáshoz társított összes URL-cím állapota:
+* Ellenőrizze a fejlesztői terek szolgáltatásaihoz társított összes URL állapotát:
 
   ```console
   azds list-uris
   ```
 
-* Ha egy URL-cím *függő* állapotban van, a dev Spaces továbbra is vár a DNS-regisztráció befejeződésére. Egyes esetekben regisztráció befejezése néhány percet vesz igénybe. Fejlesztői szóközöket is megnyílik a localhost alagút minden egyes szolgáltatás, amellyel DNS-regisztráció történő várakozás során.
-* Ha egy URL-cím 5 percnél hosszabb ideig marad a *függőben* lévő állapotban, akkor a külső DNS-Pod-mel kapcsolatos problémát jelezhet, amely létrehozza a nyilvános végpontot vagy az Nginx bemenő vezérlő Pod-t, amely a nyilvános végpontot szerzi be. A következő parancsokkal törölheti ezeket a hüvelyeket, és engedélyezheti, hogy az AK automatikusan újra létrehozza őket:
+* Ha egy URL *függőben lévő* állapotban van, a fejlesztői tárolóhelyek továbbra is a DNS-regisztráció befejezésére várnak. Néha néhány percet vesz igénybe a regisztráció befejezéséhez. A Fejlesztői tárolóhelyek is megnyit egy localhost-alagutat minden szolgáltatáshoz, amelyet a DNS-regisztrációra való várakozás közben használhat.
+* Ha egy URL-cím 5 percnél hosszabb *ideig függőben* marad, az a nyilvános végpontot létrehozó külső DNS-poddal vagy a nyilvános végpontot beszerző nginx-vezérlőpodtal kapcsolatos problémára utalhat. A következő parancsokkal törölheti ezeket a podokat, és engedélyezheti, hogy az AKS automatikusan újra létrehozza őket:
   ```console
   kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
   kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
   ```
 
-### <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Hiba: "felsőbb rétegbeli kapcsolódási hiba vagy leválasztás/visszaállítás a fejlécek előtt"
+### <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Hiba "upstream connect error or disconnect/reset before headers"
 
-Ez a hiba jelenhet meg a szolgáltatás elérésére tett kísérlet során. Például ha, nyissa meg a szolgáltatás URL-címét egy böngészőben. Ez a hiba azt jelenti, hogy a tároló portja nem érhető el. Ez a következő okok miatt lehetséges:
+Ez a hibaüzenet akkor jelenhet meg, amikor a szolgáltatás elérésére próbál. Ha például a szolgáltatás URL-címére lép egy böngészőben. Ez a hiba azt jelenti, hogy a tárolóport nem érhető el. Ennek okai a következők lehetnek:
 
-* A tároló továbbra is a beépített és a telepített folyamatban van. Ez a probléma akkor fordulhat elő, ha `azds up` futtat, vagy elindítja a hibakeresőt, majd megpróbál hozzáférni a tárolóhoz a sikeres üzembe helyezése előtt.
-* A port konfigurációja nem konzisztens a _Docker_, a Helm diagramon és bármely olyan kiszolgáló kódján, amely egy portot nyit meg.
-
-A probléma megoldása:
-
-1. Ha a tároló folyamatban létrehozott és üzembe helyezése folyamatban van, várjon 2-3 másodpercet, és próbálkozzon újra a szolgáltatás elérésével. 
-1. A port konfigurációjának ellenőrzését a következő eszközökön találja:
-    * **[Helm-diagram](https://docs.helm.sh):** A `service.port` és `deployment.containerPort` értékekben adja meg a Values. YAML `azds prep` paranccsal.
-    * Az alkalmazás kódjában megnyitott portok, például a Node. js-ben: `var server = app.listen(80, function () {...}`
-
-### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Nem található a következő típus vagy névtér neve: "MyLibrary".
-
-Az Ön által használt függvénytár-projekt nem található. A fejlesztői szóközökkel a Build környezet alapértelmezés szerint a projekt/szolgáltatás szintjén van.  
+* A tároló még mindig folyamatban van a létrehozás és üzembe helyezés. Ez a probléma akkor `azds up` merülhet fel, ha futtatja vagy elindítja a hibakeresőt, majd megpróbálja elérni a tárolót, mielőtt az sikeresen üzembe helyezné.
+* A portkonfiguráció nem konzisztens a _Docker-fájlban,_ a Helm-diagramban és a portot megnyitó kiszolgálókódokban.
 
 A probléma megoldása:
 
-1. Módosítsa a `azds.yaml` fájlt úgy, hogy a felépítési környezetet a megoldás szintjére állítsa.
-2. Módosítsa a `Dockerfile` és `Dockerfile.develop` fájlokat úgy, hogy azok a projektfájlok, például `.csproj`, megfelelően az új Build-környezethez képest legyenek átirányítva.
-3. Vegyen fel egy `.dockerignore`t a `.sln` fájllal megegyező könyvtárba.
-4. Szükség szerint frissítse a `.dockerignore` további bejegyzésekkel.
+1. Ha a tároló épül/üzembe helyezve van, 2-3 másodpercet várhat, és megpróbálhatja újra elérni a szolgáltatást. 
+1. Ellenőrizze a portkonfigurációt a következő eszközökben:
+    * **[Helm diagram](https://docs.helm.sh):** A `deployment.containerPort` `azds prep` `service.port` parancs által állványozott és értékben megadott.
+    * Az alkalmazáskódban megnyitott portok, például a Node.js-ben:`var server = app.listen(80, function () {...}`
 
-[Itt](https://github.com/sgreenmsft/buildcontextsample)talál egy példát.
+### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>A "MyLibrary" típus- vagy névtérnév nem található.
 
-### <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>A horizontális Pod automatikus skálázás nem működik a fejlesztői térben
+A használt könyvtárprojekt nem található. A fejlesztői tárolók, a build környezet alapértelmezés szerint a projekt/szolgáltatás szintjén.  
 
-Ha egy fejlesztési térben futtat egy szolgáltatást, a szolgáltatás Pod-je [további tárolókkal van befecskendezve](how-dev-spaces-works.md#prepare-your-aks-cluster) , és a pod összes tárolójának erőforrás-korláttal és kérelmekkel kell rendelkeznie a vízszintes Pod automatikus skálázáshoz.
+A probléma megoldása:
 
-A probléma megoldásához alkalmazzon egy erőforrás-kérelmet, és korlátozza a befecskendezett dev Spaces-tárolókat. A befecskendezett tárolóhoz (devspaces) az erőforrás-kérelmeket és a korlátozásokat a `azds.io/proxy-resources` jegyzetnek a pod spechez való hozzáadásával lehet alkalmazni. Az értéket egy olyan JSON-objektumra kell beállítani, amely a proxyhoz tartozó tároló specifikációjának erőforrások szakaszát jelképezi.
+1. Módosítsa `azds.yaml` a fájlt úgy, hogy a buildkörnyezet a megoldás szintjére állítsa.
+2. Módosítsa `Dockerfile` a `Dockerfile.develop` és a fájlokat, hogy `.csproj`a projektfájlokra hivatkozzon, például helyesen az új buildkörnyezethez képest.
+3. Adjon `.dockerignore` hozzá egy fájlt `.sln` ugyanabban a könyvtárban, mint a fájlt.
+4. Szükség `.dockerignore` szerint frissítse a további bejegyzésekkel.
 
-Alább látható egy példa arra a proxy-erőforrások jegyzetre, amelyet alkalmazni kell a pod spec-ra.
+Itt talál egy [példát.](https://github.com/sgreenmsft/buildcontextsample)
+
+### <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>A vízszintes pod automatikus skálázása nem működik a fejlesztői térben
+
+Amikor egy szolgáltatás futtatásához egy fejlesztői térben, hogy a szolgáltatás pod [injektált további tárolók műszerek](how-dev-spaces-works-cluster-setup.md#prepare-your-aks-cluster) és a pod minden tárolók kell rendelkeznie erőforrás-korlátok és a kérelmek horizontális pod automatikus skálázás.
+
+A probléma megoldásához alkalmazzon erőforrás-kérelmet, és korlátozza a beadott fejlesztői tárolók. Erőforrás-kérelmek és korlátok a injektált tároló (devspaces-proxy) a jegyzet hozzáadása a `azds.io/proxy-resources` pod spec. Az értéket egy JSON-objektumra kell állítani, amely a proxy tárolóspecifikációjának erőforrásszakaszát képviseli.
+
+Az alábbiakban egy példa egy proxy-erőforrások jegyzet, amely a pod spec kell alkalmazni.
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
 
-### <a name="enable-azure-dev-spaces-on-an-existing-namespace-with-running-pods"></a>Az Azure dev Spaces használatának engedélyezése meglévő névterek futtatásával
+### <a name="enable-azure-dev-spaces-on-an-existing-namespace-with-running-pods"></a>Az Azure Dev Spaces engedélyezése meglévő névtérben futó podokkal
 
-Lehet, hogy van egy meglévő AK-fürt és-névtér, amelyen fut a hüvely, ahol engedélyezni szeretné az Azure dev Spaces szolgáltatást.
+Előfordulhat, hogy egy meglévő AKS-fürt és névtér futó podok, ahol engedélyezni szeretné az Azure Dev Spaces.
 
-Ha engedélyezni szeretné az Azure dev Spaces-t egy meglévő névtérben egy AK-fürtben, futtassa `use-dev-spaces` és a `kubectl` használatával indítsa újra az összes hüvelyt a névtérben.
+Az Azure Dev Spaces engedélyezéséhez egy AKS-fürt `use-dev-spaces` meglévő `kubectl` névterén futtassa és használja az adott névtérben lévő összes pod újraindítását.
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -471,33 +471,33 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
 kubectl -n my-namespace delete pod --all
 ```
 
-A hüvely újraindítása után megkezdheti a meglévő névtér használatát az Azure dev Spaces használatával.
+Miután a podok újraindult, megkezdheti a meglévő névtér használatával az Azure Dev Spaces használatával.
 
-### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Az Azure dev-szóközök engedélyezése az AK-fürtökön a fürt csomópontjainak korlátozott kimenő forgalmával
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Az Azure dev spaces engedélyezése az AKS-fürtön korlátozott kimenő forgalommal a fürtcsomópontok számára
 
-Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást egy AK-fürtön, amelynél a fürtcsomópontok kimenő forgalmának korlátozása korlátozott, akkor engedélyeznie kell a következő teljes tartományneveket:
+Ha engedélyezni szeretné az Azure dev spaces-t egy Olyan AKS-fürtön, amelynél a fürtcsomópontokból érkező kimenő forgalom korlátozott, a következő teljes tartománynokat kell engedélyeznie:
 
-| TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
+| FQDN                                    | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
-| cloudflare.docker.com | HTTPS:443 | A Linux Alpine és más Azure dev Spaces-lemezképek lekérése |
-| gcr.io | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
-| storage.googleapis.com | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
-| azds –<guid>.<location>. azds.io | HTTPS:443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A pontos FQDN a (z) "dataplaneFqdn" elemben található a következőben:% felhasználói név%\.azds\settings.JSON|
+| cloudflare.docker.com | HTTPS:443 | Linux alpine és más Azure Dev Spaces-képek lekérése |
+| gcr.io | HTTP:443 | Helm/kormányrúd képek húzása|
+| storage.googleapis.com | HTTP:443 | Helm/kormányrúd képek húzása|
+| azds-<guid>. <location>azds.io | HTTPS:443 | Kommunikáció az Azure Dev Spaces háttérszolgáltatásokkal a vezérlőhöz. A pontos teljes tartománykapcsolati szint a "userprofile%\.azds\settings.json" "dataplaneFqdn" területen található.|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hiba: "nem található a fürt \<a fürt\> az előfizetésben \<subscriptionId\>"
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hiba: "Nem található \<\> a \<fürtfürt\>az előfizetési azonosítóban"
 
-Ez a hiba akkor fordulhat elő, ha a kubeconfig-fájl egy másik fürtöt vagy előfizetést céloz meg, mint amennyit az Azure dev Spaces ügyféloldali eszközeivel szeretne használni. Az Azure dev Spaces ügyféloldali eszközkészlete replikálja a *kubectl*viselkedését, amely [egy vagy több kubeconfig-fájlt](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) használ a fürt kiválasztásához és az azokkal való kommunikációhoz.
+Ez a hiba akkor jelenhet meg, ha a kubeconfig fájl egy másik fürtöt vagy előfizetést céloz meg, mint amelyet az Azure Dev Spaces ügyféloldali eszközhasználatával próbál használni. Az Azure Dev Spaces ügyféloldali eszközhasználat replikálja a *kubectl*viselkedését, amely [egy vagy több kubeconfig fájlt](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) használ a fürt kiválasztásához és a fürttel való kommunikációhoz.
 
 A probléma megoldása:
 
-* Az aktuális környezet frissítéséhez használja a `az aks use-dev-spaces -g <resource group name> -n <cluster name>`. Ez a parancs azt is lehetővé teszi, hogy az Azure dev-helyek az AK-fürtön legyenek, ha még nincs engedélyezve. Azt is megteheti, hogy a `kubectl config use-context <cluster name>` segítségével frissíti az aktuális környezetet.
-* A `az account show` használatával jelenítse meg az aktuálisan megcélzott Azure-előfizetést, és ellenőrizze, hogy helyes-e. Megváltoztathatja `az account set`használatával megcélzott előfizetést.
+* Az `az aks use-dev-spaces -g <resource group name> -n <cluster name>` aktuális környezet frissítéséhez használható. Ez a parancs is engedélyezi az Azure Dev Spaces az AKS-fürtön, ha még nincs engedélyezve. Azt is megteheti, `kubectl config use-context <cluster name>` hogy frissíti az aktuális környezetet.
+* A `az account show` célzás jelenlegi Azure-előfizetésének megjelenítésére és annak ellenőrzésére használható, hogy helyes-e. A segítségével módosíthatja a célzást megcélzó előfizetést. `az account set`
 
-### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>Hiba történt a fejlesztői szóközök használatával az AK-tanúsítványok elforgatása után
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>Hiba a fejlesztői tárolók használatakor az AKS-tanúsítványok elforgatása után
 
-Miután [elforgatta a tanúsítványokat az AK-fürtben](../aks/certificate-rotation.md), bizonyos műveletek, például a `azds space list` és a `azds up` sikertelenek lesznek. Emellett frissítenie kell a tanúsítványokat az Azure dev Spaces-vezérlőn a fürtön lévő tanúsítványok elforgatása után.
+Az [AKS-fürt tanúsítványainak elforgatása](../aks/certificate-rotation.md)után bizonyos `azds space list` műveletek, például a műveletek `azds up` sikertelenek lesznek. Az Azure Dev Spaces-vezérlő tanúsítványait is frissítenie kell, miután elforgatta a tanúsítványokat a fürtön.
 
-A probléma megoldásához ellenőrizze, hogy a *kubeconfig* rendelkezik-e a frissített tanúsítványokkal `az aks get-credentials` majd futtassa a `azds controller refresh-credentials` parancsot. Például:
+A probléma megoldásához győződjön meg arról, `az aks get-credentials` hogy a `azds controller refresh-credentials` *kubeconfig* rendelkezik a frissített tanúsítványokkal, majd futtassa a parancsot. Példa:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

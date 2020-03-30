@@ -1,6 +1,6 @@
 ---
-title: Az Azure-IoT Hub állapotának monitorozása | Microsoft Docs
-description: A Azure Monitor és a Azure Resource Health segítségével figyelheti a IoT Hubeket, és gyorsan diagnosztizálhatja a problémákat
+title: Az Azure IoT Hub állapotának figyelése | Microsoft dokumentumok
+description: Az Azure Monitor és az Azure Resource Health segítségével figyelheti az IoT Hubot, és gyorsan diagnosztizálhatja a problémákat
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271082"
 ---
-# <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure-IoT Hub állapotának monitorozása és a problémák gyors diagnosztizálása
+# <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása
 
-Az Azure IoT Hubt megvalósító vállalkozások megbízható teljesítményt várnak erőforrásaik számára. A IoT Hub teljes mértékben integrálva van a [Azure monitor](../azure-monitor/index.yml) és a [Azure Resource Health](../service-health/resource-health-overview.md)használatával, hogy segítsen a szoros figyelésben. Ez a két szolgáltatás a IoT-megoldások kifogástalan állapotú fenntartásához szükséges adatmennyiség biztosítására szolgál.
+Az Azure IoT Hubot megvalósító vállalkozások megbízható teljesítményt várnak az erőforrásaiktól. A műveletek szoros figyelemmel kísérése érdekében az IoT Hub teljes mértékben integrálva van az [Azure Monitor](../azure-monitor/index.yml) és az [Azure Resource Health szolgáltatással.](../service-health/resource-health-overview.md) Ez a két szolgáltatás az IoT-megoldások kifogástalan állapotban tartásához szükséges adatokkal szolgál.
 
-Azure Monitor az összes Azure-szolgáltatás figyelésének és naplózásának egyetlen forrása. Elküldheti azokat a diagnosztikai naplókat, amelyeket Azure Monitor hoz létre az egyéni feldolgozáshoz Azure Monitor naplók, Event Hubs vagy Azure Storage számára. Azure Monitor metrikái és diagnosztikai beállításai megtekinthetik az erőforrások teljesítményét. Folytassa a cikk olvasásával, hogy megtudja, hogyan [használhatja a Azure monitort](#use-azure-monitor) az IoT hub használatával. 
+Az Azure Monitor egyetlen forrása a figyelés és a naplózás az összes Azure-szolgáltatások. Az Azure Monitor által létrehozott diagnosztikai naplókat elküldheti az Azure Monitor-naplókba, az Event Hubs-ba vagy az Azure Storage-ba egyéni feldolgozásra. Az Azure Monitor metrikák és diagnosztikai beállítások segítségével betekintést nyerhet az erőforrások teljesítményébe. Olvassa el ezt a cikket, és ismerje meg, hogyan használhatja az [Azure Monitort](#use-azure-monitor) az IoT-központtal. 
 
 > [!IMPORTANT]
-> A IoT Hub szolgáltatás által a Azure Monitor diagnosztikai naplók használatával kibocsátott események nem garantáltak megbízhatónak vagy rendezettnek. Előfordulhat, hogy egyes események elvesznek, vagy kézbesítésük megtörtént. A diagnosztikai naplók nem valódi időpontot jelentenek, és több percet is igénybe vehet, hogy az események a választott célhelyre legyenek naplózva.
+> Az IoT Hub szolgáltatás által az Azure Monitor diagnosztikai naplók használatával kibocsátott események nem garantáltan megbízhatóak vagy rendezettek. Előfordulhat, hogy egyes események elvesznek vagy nem sorrendben kézbesítik őket. Diagnosztikai naplók is nem azt jelentette, hogy valós idejű, és több percig is eltarthat, amíg az események et naplózza a választott cél.
 
-Azure Resource Health segítséget nyújt a diagnosztizálásban és a támogatásban, ha egy Azure-probléma hatással van az erőforrásaira. Az irányítópultok az egyes IoT-hubok aktuális és múltbeli állapotát biztosítják. Folytassa a cikk alján található szakasztal, hogy megtudja, hogyan [használhatja a Azure Resource Healtht](#use-azure-resource-health) az IoT hub használatával. 
+Az Azure Resource Health segítségével diagnosztizálhatja és kaphat támogatást, ha egy Azure-probléma hatással van az erőforrásokra. Az irányítópult az egyes IoT-központok aktuális és múltbeli állapotát biztosítja. Folytassa a cikk alján található szakaszban, hogy megtudja, hogyan [használhatja az Azure Resource Health](#use-azure-resource-health) az IoT-központ használatával. 
 
-A IoT Hub saját mérőszámokat is biztosít, amelyek segítségével megismerheti a IoT-erőforrások állapotát. További információ: [IoT hub mérőszámok ismertetése](iot-hub-metrics.md).
+Az IoT Hub saját metrikákat is biztosít, amelyek segítségével megismerheti az IoT-erőforrások állapotát. További információ: [Az IoT Hub-metrikák megismerése.](iot-hub-metrics.md)
 
 ## <a name="use-azure-monitor"></a>Az Azure Monitor használata
 
-A Azure Monitor diagnosztikai adatokat biztosít az Azure-erőforrásokhoz, ami azt jelenti, hogy nyomon követheti az IoT hub-ban elvégezhető műveleteket.
+Az Azure Monitor diagnosztikai információkat biztosít az Azure-erőforrásokhoz, ami azt jelenti, hogy figyelheti az IoT-központon belül végzett műveleteket.
 
-Azure Monitor diagnosztikai beállításai felváltják a IoT Hub Operations monitort. Ha jelenleg a műveletek figyelését használja, akkor át kell telepítenie a munkafolyamatokat. További információ: [áttelepítés az Operations monitoring és a diagnosztikai beállítások között](iot-hub-migrate-to-diagnostics-settings.md).
+Az Azure Monitor diagnosztikai beállításai felülírják az IoT Hub műveleti figyelője. Ha jelenleg a műveletek figyelését használja, át kell telepítenie a munkafolyamatokat. További információ: [Áttelepítés a műveletek figyeléséről diagnosztikai beállításokra.](iot-hub-migrate-to-diagnostics-settings.md)
 
-Ha többet szeretne megtudni az órákat Azure Monitor kapcsolódó mérőszámokról és eseményekről, tekintse meg a [támogatott mérőszámokat Azure monitor](../azure-monitor/platform/metrics-supported.md) és [támogatott szolgáltatásokkal, sémákkal és kategóriákkal az Azure diagnosztikai naplókhoz](../azure-monitor/platform/diagnostic-logs-schema.md).
+Ha többet szeretne megtudni az Azure Monitor által figyelt konkrét metrikákról és eseményekről, olvassa [el a Támogatott metrikák az Azure Monitor](../azure-monitor/platform/metrics-supported.md) és a Támogatott [szolgáltatások, sémák és az Azure diagnosztikai naplók kategóriái című témakört.](../azure-monitor/platform/diagnostic-logs-schema.md)
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
-### <a name="understand-the-logs"></a>A naplók ismertetése
+### <a name="understand-the-logs"></a>A naplók értelmezése
 
-A Azure Monitor a IoT Hubban előforduló különböző műveleteket követi nyomon. Minden kategória tartalmaz egy sémát, amely meghatározza, hogy az adott kategóriában milyen eseményeket kell jelenteni.
+Az Azure Monitor az IoT Hubban előforduló különböző műveleteket követi nyomon. Minden kategóriában van egy séma, amely meghatározza, hogyan események ebben a kategóriában kell jelenteni.
 
 #### <a name="connections"></a>Kapcsolatok
 
-A kapcsolatok kategória nyomon követi az eszköz csatlakoztatását, és leválasztja az eseményeket egy IoT-hubhoz, valamint a hibákat. Ez a kategória hasznos lehet a jogosulatlan kapcsolódási kísérletek azonosításához, illetve az eszközökhöz való csatlakozás elvesztésével kapcsolatos riasztásokhoz.
+A kapcsolatok kategória nyomon követi az eszköz csatlakoztatása és leválasztása események egy IoT hub, valamint a hibák. Ez a kategória akkor hasznos, ha azonosítani tudja a jogosulatlan csatlakozási kísérleteket, és riasztást ad, ha megszakad az eszközkapcsolat.
 
 > [!NOTE]
-> Az eszközök megbízható kapcsolatok állapotának ellenõrzéséhez az [eszköz szívverését](iot-hub-devguide-identity-registry.md#device-heartbeat)kell megadnia.
+> Az eszközök megbízható kapcsolati állapotához ellenőrizze [az eszköz szívverését.](iot-hub-devguide-identity-registry.md#device-heartbeat)
 
 ```json
 {
@@ -66,15 +66,15 @@ A kapcsolatok kategória nyomon követi az eszköz csatlakoztatását, és levá
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>A felhőből az eszközre irányuló parancsok
+#### <a name="cloud-to-device-commands"></a>Felhőből az eszközre parancsok
 
-A felhőből az eszközre irányuló parancsok kategóriája nyomon követi az IoT-központban előforduló hibákat, és a felhőből az eszközre irányuló üzenet folyamatához kapcsolódik. Ez a kategória olyan hibákat tartalmaz, amelyek a következő esetekben jelentkeznek:
+A felhőből az eszközre irányuló parancsok kategória nyomon követi az IoT hubon előforduló és a felhőből az eszközre irányuló üzenetfolyamathoz kapcsolódó hibákat. Ez a kategória a következő hibákat tartalmazza:
 
-* A felhőből az eszközre irányuló üzenetek küldése (például jogosulatlan feladói hibák),
-* A felhőből az eszközre irányuló üzenetek fogadása (például a kézbesítések száma túllépte a hibákat) és
-* A felhőből az eszközre irányuló üzenetek visszajelzésének fogadása (például a visszajelzések lejárt hibái).
+* Felhőből az eszközre irányuló üzenetek küldése (például illetéktelen feladói hibák),
+* Felhőből az eszközre irányuló üzenetek fogadása (például a kézbesítési szám túllépte a hibákat), és
+* Felhőből az eszközre irányuló üzenetekvisszajelzésfogadása (például lejárt visszajelzési hibák).
 
-Ez a kategória nem fog hibákat észlelni, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítésre kerül, de az eszköz nem megfelelően kezeli őket.
+Ez a kategória nem észleli a hibákat, ha a felhőből az eszközre küldött üzenet sikeresen kézbesítése, de majd az eszköz nem megfelelően kezeli.
 
 ```json
 {
@@ -95,9 +95,9 @@ Ez a kategória nem fog hibákat észlelni, ha a felhőből az eszközre irányu
 }
 ```
 
-#### <a name="device-identity-operations"></a>Eszköz-identitási műveletek
+#### <a name="device-identity-operations"></a>Eszközidentitás-műveletek
 
-Az Eszközállapot-üzemeltetési kategória azokat a hibákat követi, amelyek akkor jelentkeznek, amikor megpróbál létrehozni, frissíteni vagy törölni egy bejegyzést az IoT hub Identity registryben. A kategória követése hasznos lehet a kiépítési forgatókönyvek esetében.
+Az eszközidentitás-műveletek kategóriában nyomon követi azokat a hibákat, amelyek akkor fordulnak elő, amikor megpróbál létrehozni, frissíteni vagy törölni egy bejegyzést az IoT hub identitás-beállításjegyzékében. Ez a kategória nyomon követése hasznos a kiépítési forgatókönyvek.
 
 ```json
 {
@@ -120,13 +120,13 @@ Az Eszközállapot-üzemeltetési kategória azokat a hibákat követi, amelyek 
 
 #### <a name="routes"></a>Útvonalak
 
-Az üzenet-útválasztási kategória nyomon követi az üzenetek útvonalának kiértékelése és a végpont állapota során az IoT Hub által észlelt hibákat. Ez a kategória olyan eseményeket tartalmaz, mint például:
+Az üzenetút-küldési kategória nyomon követi az üzenetútvonal-kiértékelés és a végpont állapota során az IoT Hub által érzékelt hibákat. Ebbe a kategóriába tartoznak az olyan események, mint például:
 
-* Egy szabály "nem definiált" értékre értékeli ki a következőt:
-* IoT Hub a végpontot Holtként jelöli meg, vagy
-* A végponttól érkezett hibák. 
+* A szabály "meghatározatlan" értéket ad ki,
+* Az IoT Hub egy végpontot halottként jelöl meg, vagy
+* A végpontról kapott hibák. 
 
-Ez a kategória nem tartalmaz konkrét hibákat az üzenetekről (például az eszköz-szabályozási hibákról), amelyek az "eszköz telemetria" kategóriában vannak bejelentve.
+Ez a kategória nem tartalmazza az üzenetekkel kapcsolatos konkrét hibákat (például az eszköz szabályozási hibáit), amelyek az "eszköz telemetriai adatok" kategóriában vannak jelentve.
 
 ```json
 {
@@ -145,9 +145,9 @@ Ez a kategória nem tartalmaz konkrét hibákat az üzenetekről (például az e
 }
 ```
 
-#### <a name="device-telemetry"></a>Eszköz telemetria
+#### <a name="device-telemetry"></a>Eszköztelemetria
 
-Az eszköz telemetria kategóriája nyomon követi az IoT hub-ban előforduló hibákat, és a telemetria-folyamathoz kapcsolódik. Ez a kategória olyan hibákat tartalmaz, amelyek a telemetria-események (például a szabályozás) és a telemetria-események (például a jogosulatlan olvasók) küldésekor fordulnak elő. Ez a kategória nem képes az eszközön futó kód által okozott hibák megfogására.
+Az eszköz telemetriai kategóriában nyomon követi az IoT hubon előforduló és a telemetriai folyamathoz kapcsolódó hibákat. Ez a kategória tartalmazza a telemetriai események (például a szabályozás) és a telemetriai események (például a jogosulatlan olvasó) küldésekor előforduló hibákat. Ez a kategória nem tudja észlelni az eszközön futó kód által okozott hibákat.
 
 ```json
 {
@@ -170,15 +170,15 @@ Az eszköz telemetria kategóriája nyomon követi az IoT hub-ban előforduló h
 
 #### <a name="file-upload-operations"></a>Fájlfeltöltési műveletek
 
-A fájlfeltöltés kategóriája nyomon követi az IoT-központban előforduló hibákat, és a fájlfeltöltés funkcióhoz kapcsolódik. Ez a kategória a következőket tartalmazza:
+A fájlfeltöltési kategória nyomon követi az IoT hubon előforduló és a fájlfeltöltési funkcióval kapcsolatos hibákat. Ez a kategória a következőket tartalmazza:
 
-* A SAS URI-val kapcsolatos hibák, például amikor lejárnak, mielőtt egy eszköz értesíti a befejezett feltöltési központ központi telepítéséről.
+* Hibák, amelyek a SAS URI-val, például amikor lejár, mielőtt egy eszköz értesíti a hub egy befejezett feltöltés.
 
-* Az eszköz által jelentett feltöltések sikertelenek.
+* Az eszköz által jelentett sikertelen feltöltések.
 
-* Hibák, amelyek akkor jelentkeznek, ha egy fájl nem található a tárolóban IoT Hub értesítési üzenet létrehozásakor.
+* Hibák, amelyek akkor fordulnak elő, ha egy fájl nem található a tárolóban az IoT Hub értesítési üzenetek létrehozása során.
 
-Ez a kategória nem tudja felfogni azokat a hibákat, amelyek közvetlenül bekövetkeznek, miközben az eszköz feltölt egy fájlt a tárolóba.
+Ez a kategória nem tudja észlelni azolyan hibákat, amelyek közvetlenül akkor fordulnak elő, amikor az eszköz feltölt egy fájlt a tárolóba.
 
 ```json
 {
@@ -200,9 +200,9 @@ Ez a kategória nem tudja felfogni azokat a hibákat, amelyek közvetlenül bek�
 }
 ```
 
-#### <a name="cloud-to-device-twin-operations"></a>A felhőből az eszközre irányuló kettős műveletek
+#### <a name="cloud-to-device-twin-operations"></a>Felhőből az eszközre irányuló ikerműveletek
 
-A felhő – eszköz kettős műveletek kategóriája nyomon követi a szolgáltatás által kezdeményezett eseményeket az eszköz Twins-on. Ezek a műveletek magukban foglalhatják a Get Twin, a Update vagy a Replace címkéket, valamint a kívánt tulajdonságok frissítését vagy cseréjét.
+A felhőből az eszközre ikerműveletek kategória nyomon követi a szolgáltatás által kezdeményezett események et az eszköz twins.The cloud-to-device twin operations category tracks service-initiated events on device twins. Ezek a műveletek magukban foglalhatják a két személyes rendszer bekéselése, a címkék frissítése vagy cseréje, valamint a kívánt tulajdonságok frissítése vagy cseréje.
 
 ```json
 {
@@ -222,9 +222,9 @@ A felhő – eszköz kettős műveletek kategóriája nyomon követi a szolgált
 }
 ```
 
-#### <a name="device-to-cloud-twin-operations"></a>Az eszközről a felhőbe irányuló kettős művelet
+#### <a name="device-to-cloud-twin-operations"></a>Az eszközök közötti ikerműveletek
 
-Az eszközről a felhőbe irányuló kettős műveletek kategóriája az eszköz által kezdeményezett eseményeket követi nyomon az eszközökön. Ezek a műveletek magukban foglalhatják a Get Twin, a frissített jelentett tulajdonságokat, és előfizethetnek a kívánt tulajdonságokra.
+Az eszközről a felhőbe ikerműveletek kategória nyomon követi az eszköz által kezdeményezett események eszköz twins. Ezek a műveletek lehetnek ikerbek, frissítse a jelentett tulajdonságokat, és iratkozzon fel a kívánt tulajdonságokra.
 
 ```json
 {
@@ -244,9 +244,9 @@ Az eszközről a felhőbe irányuló kettős műveletek kategóriája az eszköz
 }
 ```
 
-#### <a name="twin-queries"></a>Dupla lekérdezés
+#### <a name="twin-queries"></a>Ikerlekérdezések
 
-A Twin querys kategória jelentést készít a felhőben kezdeményezett Device Twins-lekérdezési kérelmekről.
+A kettős lekérdezések kategória jelentések a felhőben kezdeményezett ikereszközök lekérdezési kérelmek lekérdezési kérelmekről.
 
 ```json
 {
@@ -268,7 +268,7 @@ A Twin querys kategória jelentést készít a felhőben kezdeményezett Device 
 
 #### <a name="jobs-operations"></a>Feladatműveletek
 
-A feladatok műveleti kategóriánként jelentéseket készítenek az eszköz-ikrek frissítéséhez vagy közvetlen metódusok meghívásához több eszközön. Ezeket a kérelmeket a felhőben kezdeményezték.
+A feladatok műveletek kategória jelentések feladatkérelmek eszköz twins frissítésére vagy közvetlen metódusok meghívására több eszközön. Ezek a kérelmek a felhőben kezdeményezett.
 
 ```json
 {
@@ -288,9 +288,9 @@ A feladatok műveleti kategóriánként jelentéseket készítenek az eszköz-ik
 }
 ```
 
-#### <a name="direct-methods"></a>Közvetlen metódusok
+#### <a name="direct-methods"></a>Közvetlen módszerek
 
-A közvetlen metódusok kategória az egyes eszközökre küldött kérelem-válasz interakciókat követi nyomon. Ezeket a kérelmeket a felhőben kezdeményezték.
+A közvetlen módszerek kategória nyomon követi az egyes eszközökre küldött kérés-válasz interakciókat. Ezek a kérelmek a felhőben kezdeményezett.
 
 ```json
 {
@@ -312,13 +312,13 @@ A közvetlen metódusok kategória az egyes eszközökre küldött kérelem-vál
 
 #### <a name="distributed-tracing-preview"></a>Elosztott nyomkövetés (előzetes verzió)
 
-Az elosztott nyomkövetési kategória a nyomkövetési környezet fejlécét tartalmazó üzenetek korrelációs azonosítóit követi nyomon. A naplók teljes körű engedélyezéséhez az ügyféloldali kódot a következő elemzéssel kell frissíteni, [és diagnosztizálni kell a IoT-alkalmazásokat végpontok közötti IoT hub elosztott nyomkövetéssel (előzetes verzió)](iot-hub-distributed-tracing.md).
+Az elosztott nyomkövetési kategória a nyomkövetési környezet fejlécét tartalmazó üzenetek korrelációs azonosítóit követi nyomon. A naplók teljes engedélyezéséhez az ügyféloldali kódot frissíteni kell az [IoT-alkalmazások elemzésével és diagnosztizálásával, az IoT Hub elosztott nyomkövetésével (előzetes verzió)](iot-hub-distributed-tracing.md)követve.
 
-Vegye figyelembe, hogy `correlationId` megfelel a [W3C-nyomkövetési kontextusra](https://github.com/w3c/trace-context) vonatkozó javaslatnak, ahol `trace-id` és `span-id`tartalmaz.
+Vegye `correlationId` figyelembe, hogy megfelel a [W3C Trace](https://github.com/w3c/trace-context) `trace-id` Context javaslatnak, ahol egy és egy `span-id`.
 
-##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (eszközről a felhőbe irányuló) naplók
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (eszközről felhőbe) naplók
 
-IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságokat tartalmazó üzenet érkezik a IoT Hub.
+Az IoT Hub rögzíti ezt a naplót, ha érvényes nyomkövetési tulajdonságokat tartalmazó üzenet érkezik az IoT Hubhoz.
 
 ```json
 {
@@ -341,18 +341,18 @@ IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságok
 }
 ```
 
-A `durationMs` nem számítja ki, mert a IoT Hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Javasoljuk, hogy a logikát a `properties` szakaszban található időbélyegek használatával rögzítse az eszközről a felhőbe irányuló késésben lévő tüskéket.
+Itt `durationMs` nem számítjuk ki, mivel az IoT Hub órája nem lehet szinkronban az eszköz órájával, így az időtartam számítása félrevezető lehet. Azt javasoljuk, hogy a szakasz `properties` időbélyegei használatával írja a logikát az eszközről a felhőbe irányuló késés csúcsai rögzítéséhez.
 
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
-| **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | Az eszköz identitása |
-| **callerLocalTimeUtc** | UTC timestamp | Az üzenet létrehozásának ideje, amelyet az eszköz helyi órája jelentett. |
-| **calleeLocalTimeUtc** | UTC timestamp | A IoT Hub átjárójának a IoT Hub szolgáltatás által jelzett óra által jelentett időpontja |
+| **messageSize (üzenetmérete)** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
+| **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | A készülék azonossága |
+| **callerLocalTimeUtc** | UTC időbélyeg | Az üzenet létrehozási ideje az eszköz helyi órája szerint |
+| **calleeLocalTimeUtc** | UTC időbélyeg | Az Üzenetek érkezésének időpontja az IoT Hub átjárójára az IoT Hub szolgáltatás oldali órája szerint |
 
-##### <a name="iot-hub-ingress-logs"></a>Bejövő IoT Hubi naplók
+##### <a name="iot-hub-ingress-logs"></a>Az IoT Hub be- és visszafektusai
 
-IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságokat tartalmazó üzenet belső vagy beépített Event hub-ba ír.
+Az IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságokat tartalmazó üzenet a belső vagy a beépített Event Hubba ír.
 
 ```json
 {
@@ -375,16 +375,16 @@ IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságoka
 }
 ```
 
-A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
+A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek be- és beviteléről.
 
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | Sztring | Igaz vagy hamis érték esetén azt jelzi, hogy engedélyezve van-e az üzenet-útválasztás a IoT Hub |
-| **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely ebben az esetben a D2C-üzenet nyomkövetése lenne |
+| **isRoutingEnabled** | Sztring | Igaz vagy hamis, azt jelzi, hogy az üzenetek útválasztása engedélyezve van-e az IoT Hubban |
+| **parentSpanId** | Sztring | A [szülőüzenet span-id-je,](https://w3c.github.io/trace-context/#parent-id) amely ebben az esetben a D2C üzenet nyomkövetése lenne |
 
-##### <a name="iot-hub-egress-logs"></a>IoT Hub kimenő naplók
+##### <a name="iot-hub-egress-logs"></a>IoT-központ kimenő naplók
 
-IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-messages-d2c.md) engedélyezve van, és az üzenet egy [végpontba](iot-hub-devguide-endpoints.md)íródik. Ha az Útválasztás nincs engedélyezve, IoT Hub nem rögzíti ezt a naplót.
+Az IoT Hub akkor rögzíti ezt a naplót, ha az [útválasztás](iot-hub-devguide-messages-d2c.md) engedélyezve van, és az üzenet [egy végpontra van](iot-hub-devguide-endpoints.md)írva. Ha az útválasztás nincs engedélyezve, az IoT Hub nem rögzíti ezt a naplót.
 
 ```json
 {
@@ -407,17 +407,17 @@ IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-message
 }
 ```
 
-A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
+A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek be- és beviteléről.
 
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **Végpontneve** | Sztring | Az útválasztási végpont neve |
-| **endpointType** | Sztring | Az útválasztási végpont típusa |
-| **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely a IoT hub bejövő üzenet nyomkövetése lenne ebben az esetben |
+| **végpontneve** | Sztring | Az útválasztási végpont neve |
+| **végponttípusa** | Sztring | Az útválasztási végpont típusa |
+| **parentSpanId** | Sztring | A [szülőüzenet span-idazonosítója,](https://w3c.github.io/trace-context/#parent-id) amely ebben az esetben az IoT Hub bejövő üzenetek nyomon követését jelenti |
 
 #### <a name="configurations"></a>Konfigurációk
 
-IoT Hub konfigurációs naplók nyomon követi az eseményeket és a hibát az automatikus Eszközkezelő szolgáltatás számára.
+Az IoT Hub konfigurációs naplói nyomon követik az automatikus eszközkezelés szolgáltatáskészlet eseményeit és hibáit.
 
 ```json
 {
@@ -439,9 +439,9 @@ IoT Hub konfigurációs naplók nyomon követi az eseményeket és a hibát az a
 }
 ```
 
-### <a name="device-streams-preview"></a>Eszköz streamek (előzetes verzió)
+### <a name="device-streams-preview"></a>Eszközadatfolyamok (előzetes verzió)
 
-Az eszköz Streams kategória nyomon követi az egyes eszközökre küldött kérelem-válasz interakciókat.
+Az eszközadatfolyamok kategória nyomon követi az egyes eszközökre küldött kérés-válasz interakciókat.
 
 ```json
 {
@@ -463,9 +463,9 @@ Az eszköz Streams kategória nyomon követi az egyes eszközökre küldött ké
 }
 ```
 
-### <a name="read-logs-from-azure-event-hubs"></a>Naplók beolvasása az Azure Event Hubs
+### <a name="read-logs-from-azure-event-hubs"></a>Naplók olvasása az Azure Event Hubs-ból
 
-Miután beállította az eseménynaplózást a diagnosztikai beállításokon, létrehozhat olyan alkalmazásokat, amelyek beolvasják a naplókat, így a bennük található információk alapján műveleteket hajthat végre. Ez a mintakód egy Event hub naplóit kérdezi le:
+Miután beállította az eseménynaplózást a diagnosztikai beállításokon keresztül, létrehozhat olyan alkalmazásokat, amelyek felolvassák a naplókat, így a bennük lévő információk alapján műveleteket hajthat végre. Ez a mintakód egy eseményközpontból olvassa be a naplókat:
 
 ```csharp
 class Program
@@ -532,23 +532,23 @@ class Program
 }
 ```
 
-## <a name="use-azure-resource-health"></a>Azure Resource Health használata
+## <a name="use-azure-resource-health"></a>Az Azure-erőforrások állapotának használata
 
-Azure Resource Health segítségével figyelje meg, hogy az IoT hub működik-e. Azt is megtudhatja, hogy a regionális leállás hatással van-e az IoT hub állapotára. Ha meg szeretné ismerni az Azure-IoT Hub állapotával kapcsolatos konkrét adatokat, javasoljuk, hogy [használja a Azure monitor](#use-azure-monitor).
+Az Azure Resource Health használatával figyelheti, hogy az IoT hub működik-e és működik-e. Azt is megtudhatja, hogy egy regionális kimaradás hatással van-e az IoT hub állapotára. Az Azure IoT Hub állapotának konkrét részleteinek megértéséhez azt javasoljuk, hogy [használja az Azure Monitort.](#use-azure-monitor)
 
-Az Azure IoT Hub regionális szinten jelzi az állapotot. Ha a regionális leállás hatással van az IoT hub-ra, az állapot **ismeretlenként**jelenik meg. További információ: [erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben](../service-health/resource-health-checks-resource-types.md).
+Az Azure IoT Hub regionális szintű állapotot jelez. Ha egy regionális kimaradás hatással van az IoT hub, az állapot ismeretlen jelenik **meg.** További információ: [Erőforrástípusok és állapot-ellenőrzések az Azure-erőforrások állapotában.](../service-health/resource-health-checks-resource-types.md)
 
-Az IoT-hubok állapotának vizsgálatához kövesse az alábbi lépéseket:
+Az IoT-központok állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-2. Navigáljon **Service Health** > **Erőforrás-állapot**elemre.
+2. Nyissa meg a **Szolgáltatás-egészségügyi** > **erőforrás állapotát.**
 
-3. A legördülő listából válassza ki az előfizetést, majd válassza az **IoT hub** lehetőséget az erőforrástípus mezőben.
+3. A legördülő mezőkből válassza ki az előfizetést, majd válassza az **IoT Hub** erőforrás-típusként.
 
-Az állapotadatok értelmezésével kapcsolatos további tudnivalókért tekintse meg az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md)című témakört.
+Az állapotadatok értelmezéséről az [Azure-erőforrások állapotának áttekintése című témakörben olvashat bővebben.](../service-health/resource-health-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [IoT Hub mérőszámok ismertetése](iot-hub-metrics.md)
-* [IoT távoli figyelés és értesítések Azure Logic Apps az IoT hub és a postaláda csatlakoztatásával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [Az IoT Hub-metrikák ismertetése](iot-hub-metrics.md)
+* [IoT-távfigyelés és értesítések az IoT-központés postaláda összekötő Azure Logic Apps alkalmazásokkal](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

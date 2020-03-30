@@ -1,6 +1,6 @@
 ---
-title: Automatikus felhasználói fiók kiépítés az SaaS-alkalmazásokba
-description: Megtudhatja, hogyan ellenőrizhető a felhasználói fiókok automatikus kiépítési feladatainak állapota, és hogyan lehet elhárítani az egyes felhasználók kiépítési feladatait.
+title: Automatikus felhasználói fiók-kiépítés jelentése SaaS-alkalmazásokba
+description: Ismerje meg, hogyan ellenőrizheti az automatikus felhasználói fiók kiépítési feladatok állapotát, és hogyan háríthatja el az egyes felhasználók kiépítésének hibáit.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,65 +15,65 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 289347474189d1fb57d95a2f424cf381e1e37875
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 19d76f69669ffa13d1d55ffa807e6c4818b8840c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282188"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: jelentéskészítés a felhasználói fiókok automatikus üzembe helyezéséhez
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: A felhasználói fiókok automatikus kiépítéséről szóló jelentés
 
-Azure Active Directory (Azure AD) olyan [felhasználói fiók létesítési szolgáltatását](user-provisioning.md) tartalmazza, amely segít automatizálni az SaaS-alkalmazásokban és más rendszerekben lévő felhasználói fiókok üzembe helyezését a teljes körű identitások életciklusának kezelése céljából. Az Azure AD az [Azure ad Application Gallery](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)"Kiemelt" szakaszában található összes alkalmazáshoz és rendszerhez támogatja az előre integrált felhasználó-kiépítési összekötőket.
+Az Azure Active Directory (Azure AD) tartalmaz egy [felhasználói fiók kiépítési szolgáltatást,](user-provisioning.md) amely segít automatizálni a felhasználói fiókok kiépítésének kiépítését a SaaS-alkalmazásokban és más rendszerekben, a végpontok között identitáséletciklus-kezelés céljából. Az Azure AD támogatja az előre integrált felhasználói kiépítési összekötők az összes alkalmazás és rendszer a felhasználói kiépítési oktatóanyagok [itt.](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
-Ez a cikk azt ismerteti, hogyan ellenőrizhető a kiépítési feladatok állapota a beállításuk után, valamint az egyes felhasználók és csoportok üzembe helyezésének hibaelhárítása.
+Ez a cikk bemutatja, hogyan ellenőrizheti a kiépítési feladatok állapotát a beállítás uk után, és hogyan háríthatja el az egyes felhasználók és csoportok kiépítésének elhárítását.
 
 ## <a name="overview"></a>Áttekintés
 
-A kiépítési összekötők a [Azure Portal](https://portal.azure.com)használatával állíthatók be és konfigurálhatók, a támogatott alkalmazáshoz mellékelt [dokumentáció](../saas-apps/tutorial-list.md) alapján. A konfigurálás és a Futtatás után a kiépítési feladatok a következő két módszer egyikének használatával adhatók meg:
+Az összekötők kiépítése az Azure [Portal](https://portal.azure.com)használatával van beállítva és konfigurálva, a támogatott alkalmazás [által megadott dokumentáció](../saas-apps/tutorial-list.md) tkövetően. Konfigurálás és futtatás után a létesítési feladatok a következő két módszer egyikével jelenthetők:
 
-* **Azure Portal** – ez a cikk elsősorban azt ismerteti, hogyan kell beolvasni a jelentési adatokat a [Azure Portalból](https://portal.azure.com), amely egyszerre egy kiépítési összegző jelentést is biztosít, valamint egy adott alkalmazás részletes kiépítési naplóit.
-* A **audit API** -Azure Active Directory egy olyan naplózási API-t is biztosít, amely lehetővé teszi a részletes kiépítési naplók programozott lekérését. Tekintse meg az API használatára vonatkozó dokumentáció [Azure Active Directory naplózási API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . Habár ez a cikk nem fedi le az API használatát, részletesen ismerteti a naplóban rögzített kiépítési események típusait.
+* **Azure Portal** – Ez a cikk elsősorban ismerteti a jelentésadatok lekérése az [Azure Portalról,](https://portal.azure.com)amely egy kiépítési összefoglaló jelentést, valamint egy adott alkalmazás részletes kiépítési naplózási naplóit is tartalmazza.
+* **Naplózási API** – Az Azure Active Directory egy naplózási API-t is biztosít, amely lehetővé teszi a részletes kiépítési naplózási naplók programozott lekérdezését. Az [Azure Active Directory naplózási API-hivatkozása](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) az API használatára vonatkozó dokumentációt tartalmazza. Bár ez a cikk nem kifejezetten az API használatát, részletesen ismerteti a naplózási események a naplóban rögzített típusú létesítési események.
 
 ### <a name="definitions"></a>Meghatározások
 
-Ez a cikk az alábbi, az alábbiakban meghatározott kifejezéseket használja:
+Ez a cikk az alábbi kifejezéseket használja:
 
-* **Forrásoldali rendszer** – az Azure ad kiépítési szolgáltatás által szinkronizált felhasználók tárháza. A Azure Active Directory az előre integrált létesítési összekötők többségének a forrása, azonban bizonyos kivételek (például: munkaidőn belüli bejövő szinkronizálás).
-* **Célrendszer** – az Azure ad-kiépítési szolgáltatás által szinkronizált felhasználók tárháza. Ez általában egy SaaS-alkalmazás (például: Salesforce, ServiceNow, G Suite, Dropbox for Business), de bizonyos esetekben olyan helyszíni rendszer is lehet, mint például a Active Directory (például: munkanapokon bejövő szinkronizálás Active Directory).
+* **Forrásrendszer** – A felhasználók tárháza, amelyből az Azure AD-kiépítési szolgáltatás szinkronizálja. Az Azure Active Directory az előre integrált létesítési összekötők többségének forrásrendszere, azonban vannak kivételek (például: Munkanap bejövő szinkronizálás).
+* **Célrendszer** – A felhasználók tárháza, amelyhez az Azure AD-kiépítési szolgáltatás szinkronizálja. Ez általában egy SaaS-alkalmazás (például: Salesforce, ServiceNow, G Suite, Dropbox for Business), de bizonyos esetekben lehet egy helyszíni rendszer, például az Active Directory (például: Workday Bejövő szinkronizálás az Active Directoryval).
 
-## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Kiépítési jelentések beolvasása a Azure Portalból
+## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Jelentések beszerzése az Azure Portalról
 
-Ha egy adott alkalmazáshoz szeretne kiépíteni egy jelentést, először indítsa el a [Azure Portal](https://portal.azure.com) és **Azure Active Directory** &gt; **vállalati alkalmazásokat** &gt; **kiépítési naplókat (előzetes verzió)** a **tevékenység** szakaszban. Azt is megteheti, hogy megkeresi azt a vállalati alkalmazást, amelyhez a kiépítés konfigurálva van. Ha például a felhasználókat a LinkedIn jogosultságszint-emeléssel kívánja kiépíteni, az alkalmazás adatainak navigációs útvonala a következő:
+Egy adott alkalmazás kiépítési jelentésadatainak beszerezéséhez indítsa el az [Azure Portal](https://portal.azure.com) és az **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **létesítési naplók (előzetes verzió)** **elindításával** a Tevékenység szakaszban. Azt a vállalati alkalmazást is tallózhatja, amelyhez a kiépítés konfigurálva van. Ha például a LinkedIn-elevate szolgáltatásba épít ki felhasználókat, az alkalmazás részleteinek navigációs elérési útja a következő:
 
-**Azure Active Directory > vállalati alkalmazások > minden alkalmazás > LinkedIn emelt szintű**
+**Az Azure Active Directory > Vállalati alkalmazások > az összes > LinkedIn-verzió**
 
-Innen elérheti a kiépítési folyamatjelző sávot és a kiépítési naplókat is, amelyeket az alábbiakban ismertetünk.
+Itt is elérheti a kiépítési folyamatjelző és a létesítési naplók, az alábbiakban ismertetett.
 
-## <a name="provisioning-progress-bar"></a>Kiépítés folyamatjelző sáv
+## <a name="provisioning-progress-bar"></a>Kiépítés folyamatjelző
 
-A [kiépítési folyamatjelző sáv](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) az adott alkalmazás **létesítés** lapján látható. Az aktuális **állapot** szakaszban a **Beállítások**alatt található, és az aktuális kezdeti vagy növekményes ciklus állapotát jeleníti meg. Ez a szakasz a következőket is tartalmazza:
+A [kiépítési folyamatjelző látható](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) a **kiépítés** lapon adott alkalmazáshoz. Az Aktuális **állapot** szakaszban található a **Beállítások**alatt, és az aktuális kezdeti vagy növekményes ciklus állapotát mutatja. Ez a rész a következőket is mutatja:
 
-* A szinkronizált felhasználók és/csoportok teljes száma, amelyek jelenleg a forrásrendszer és a célként megadott rendszer közötti kiépítés hatókörében vannak.
-* A szinkronizálás legutóbbi futtatásakor. A szinkronizálások jellemzően 20-40 percenként történnek, a [kezdeti ciklus](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) befejeződése után.
-* Azt határozza meg, hogy befejeződött-e a [kezdeti ciklus](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) .
-* Azt határozza meg, hogy a kiépítési folyamat karanténba helyezése megtörtént-e, és hogy a karantén milyen okból áll fenn (például érvénytelen rendszergazdai hitelesítő adatok miatt nem lehet kommunikálni a megcélzott rendszerrel).
+* A szinkronizált és jelenleg hatókörben lévő felhasználók és/csoportok teljes száma a forrásrendszer és a célrendszer között.
+* A szinkronizálás legutóbbi futtatásakor. A szinkronizálásáltalában 20-40 percenként történik, miután a [kezdeti ciklus](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) befejeződött.
+* Azt jelzi, hogy befejeződött-e a [kezdeti ciklus.](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental)
+* Függetlenül attól, hogy a létesítési folyamat karanténba került-e, és mi az oka a karantén állapotának (például érvénytelen rendszergazdai hitelesítő adatok miatt a célrendszerrel való kommunikáció sikertelen).
 
-Az **aktuális állapotnak** az első hely rendszergazdáinak kell megkeresnie a kiépítési feladatok működési állapotát.
+Az **aktuális állapot** legyen az első hely, ahol a rendszergazdák a kiépítési feladat működési állapotát ellenőrzik.
 
- ![Összegző jelentés](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Összefoglaló jelentés](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
-## <a name="provisioning-logs-preview"></a>Kiépítési naplók (előzetes verzió)
+## <a name="provisioning-logs-preview"></a>Naplók kiépítése (előzetes verzió)
 
-A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD- [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)rögzítik. A Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplók (előzetes verzió)** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Naplózott tevékenység típusú események a következők:
+A kiépítési szolgáltatás által végrehajtott összes tevékenység et az Azure AD [létesítési naplók rögzítik.](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) Az Azure-portálon a létesítési naplók eléréséhez válassza az **Azure Active Directory** &gt; **Vállalati alkalmazások** &gt; **kiépítése naplók (előzetes verzió)** a **tevékenység** szakaszban. A kiépítési adatok ban a felhasználó neve vagy az azonosító alapján kereshet a forrásrendszerben vagy a célrendszerben. További információt a [Naplók kiépítése (előzetes verzió) című témakörben talál.](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) A naplózott tevékenységesemény-típusok a következők:
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-A kiépítési összefoglalás és a kiépítési naplók kulcsszerepet játszanak a rendszergazdáknak a különböző felhasználói fiókok üzembe helyezésével kapcsolatos problémák elhárításában.
+A kiépítési összefoglaló jelentés és a kiépítési naplók kulcsszerepet játszanak abban, hogy a rendszergazdák elhárítsák a különböző felhasználói fiókok kiépítési problémáit.
 
-Az automatikus felhasználó-kiépítés hibaelhárításával kapcsolatos forgatókönyv-alapú útmutatásért tekintse meg a [felhasználók egy alkalmazáshoz való konfigurálásával és](../app-provisioning/application-provisioning-config-problem.md)kikapcsolásával kapcsolatos problémákat.
+Az automatikus felhasználói kiépítés elhárításával kapcsolatos forgatókönyv-alapú útmutatásért olvassa el [A felhasználók konfigurálása és kiépítése az alkalmazásba című témakört.](../app-provisioning/application-provisioning-config-problem.md)
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
