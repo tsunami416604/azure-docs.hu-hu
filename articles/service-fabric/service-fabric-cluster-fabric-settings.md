@@ -1,917 +1,922 @@
 ---
-title: Az Azure Service Fabric-fürt beállításainak módosítása
-description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
+title: Az Azure Service Fabric fürtbeállításainak módosítása
+description: Ez a cikk ismerteti a háló beállításait és a háló frissítési szabályzatok, amelyek testre szabhatók.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 01f8eb861a1fc53ad95a95d7695df8e4b5b8a2ab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a4e64a4db70d419a3ef6441545d53abd298c85bb
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258836"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346796"
 ---
-# <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
-Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
+# <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
+Ez a cikk ismerteti a különböző háló beállításait a Service Fabric-fürt, amely testre szabható. Az Azure-ban üzemeltetett fürtök esetében testreszabhatja a beállításokat az [Azure Portalon](https://portal.azure.com) keresztül vagy egy Azure Resource Manager-sablon használatával. További információ: [Az Azure-fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md)című témakörben talál. Önálló fürtök esetén a *fürtökConfig.json* fájl frissítésével és a fürt konfigurációs frissítésével testreszabhatja a beállításokat. További információt [az Önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakörben talál.
 
 Három különböző frissítési szabályzat létezik:
 
-- **Dinamikus** – a dinamikus konfiguráció módosításai nem okozzák a Service Fabric folyamatok vagy a szolgáltatás-gazdagép folyamatainak újraindítását. 
-- **Statikus** – a statikus konfiguráció módosításai a Service Fabric csomópont újraindítását eredményezik a módosítás felhasználása érdekében. A csomópontok szolgáltatásai újra lesznek indítva.
-- Nincs feldolgozva **– ezek** a beállítások nem módosíthatók. Ezeknek a beállításoknak a módosításához a fürtöt meg kell semmisíteni, és létre kell hozni egy új fürtöt. 
+- **Dinamikus** – a dinamikus konfiguráció módosításai nem okoznak folyamat-újraindítást sem a Service Fabric-folyamatok, sem a szolgáltatásgazda folyamatok. 
+- **Statikus** – a statikus konfiguráció módosításai hatására a Service Fabric-csomópont újraindul a módosítás felhasználása érdekében. A csomópontok szolgáltatásai újraindulnak.
+- **Nem Engedélyezett** – Ezek a beállítások nem módosíthatók. A beállítások módosításához a fürt meg semmisítése és egy új fürt létrehozása szükséges. 
 
-Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-beállításokat sorolja fel.
+Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz szerint rendezve.
 
 ## <a name="applicationgatewayhttp"></a>ApplicationGateway/http
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|karakterlánc, az alapértelmezett érték a "None"|Statikus| Ez nem ellenőrzi a kiszolgáló tanúsítványát; a kérelem sikeres. A fordított proxy által megbízhatónak tartott távoli tanúsítványok ujjlenyomatai megfelelnek vesszővel tagolt listáját a config ServiceCertificateThumbprints találja. A fordított proxy által megbízhatónak ítélt távoli tanúsítványok tulajdonos neve és kiállítói ujjlenyomata ServiceCommonNameAndIssuer tekintse meg a következőt:. További információért lásd a [biztonságos kapcsolatok fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)kapcsolatos témakört. |
-|BodyChunkSize |Uint, alapértelmezett érték 16384 |Dinamikus| Megadja a méretet a törzs olvasásához használt bájtokban. |
-|CrlCheckingFlag|uint, alapértelmezett érték a 0x40000000 |Dinamikus| Az alkalmazás/szolgáltatás-tanúsítványlánc érvényesítésének jelzői; például: CRL-ellenőrzés 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY beállítás értéke 0 letiltja a CRL-ellenőrzés a támogatott értékek teljes listáját a dwFlags CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
-|DefaultHttpRequestTimeout |Az idő másodpercben. alapértelmezett értéke 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan.  Megadja az alapértelmezett kérelem időtúllépését a http-alkalmazás átjárójában feldolgozott HTTP-kérelmek esetében. |
-|ForwardClientCertificate|bool, az alapértelmezett érték FALSE|Dinamikus|Ha false értékre van állítva, akkor a fordított proxy nem kéri az ügyféltanúsítványt. Ha igaz értékre van állítva, a fordított proxy az SSL-kézfogás során kérni fogja az ügyféltanúsítványt, és továbbítja a Base64 kódolású PEM formátumú karakterláncot a szolgáltatásnak egy X-Client-Certificate nevű fejlécben. a szolgáltatás a kérést a megfelelő állapotkóddal tudja elmulasztani. a tanúsítványra vonatkozó adatellenőrzés után. Ha ez igaz, és az ügyfél nem tartalmaz tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és lehetővé teszi, hogy a szolgáltatás kezelje az esetet. A fordított proxy transzparens rétegként fog működni. További információt az ügyféltanúsítvány- [alapú hitelesítés beállítása](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)című témakörben talál. |
-|GatewayAuthCredentialType |karakterlánc, az alapértelmezett érték a "None" |Statikus| Azt jelzi, hogy milyen típusú biztonsági hitelesítő adatokat kell használni a http app Gateway-végpont érvényes értékei: none/X509. |
-|GatewayX509CertificateFindType |string (alapértelmezett érték: "FindByThumbprint") |Dinamikus| Azt jelzi, hogyan lehet a GatewayX509CertificateStoreName által megadott tárolóban megkeresni a tanúsítványokat a következő támogatott érték szerint: FindByThumbprint; FindBySubjectName. |
-|GatewayX509CertificateFindValue | karakterlánc, az alapértelmezett érték: "" |Dinamikus| Keresési szűrő értéke a http app Gateway-tanúsítvány megkereséséhez. Ez a tanúsítvány a https-végponton van konfigurálva, és az alkalmazás identitásának ellenőrzésére is használható, ha a szolgáltatások szükségesek. A FindValue először megkeresve; és ha ez nem létezik, A FindValueSecondary megkeresve. |
-|GatewayX509CertificateFindValueSecondary | karakterlánc, az alapértelmezett érték: "" |Dinamikus|Keresési szűrő értéke a http app Gateway-tanúsítvány megkereséséhez. Ez a tanúsítvány a https-végponton van konfigurálva, és az alkalmazás identitásának ellenőrzésére is használható, ha a szolgáltatások szükségesek. A FindValue először megkeresve; és ha ez nem létezik, A FindValueSecondary megkeresve.|
-|GatewayX509CertificateStoreName |karakterlánc, az alapértelmezett érték a "My" |Dinamikus| A http-alkalmazás átjárójának tanúsítványát tartalmazó X. 509 tanúsítványtároló neve. |
-|HttpRequestConnectTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (5)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan.  Megadja a http-alkalmazás átjáróján küldött HTTP-kérések csatlakozási időtúllépését.  |
-|IgnoreCrlOfflineError|bool, az alapértelmezett érték TRUE (igaz)|Dinamikus|Azt jelzi, hogy a CRL-t figyelmen kívül hagyják-e az alkalmazás/szolgáltatás tanúsítványának ellenőrzésekor. |
-|IsEnabled |Bool, az alapértelmezett érték false |Statikus| Engedélyezi vagy letiltja a HttpApplicationGateway. A HttpApplicationGateway alapértelmezés szerint le van tiltva, és ezt a konfigurációt be kell állítani az engedélyezéshez. |
-|NumberOfParallelOperations | Uint, alapértelmezett érték 5000 |Statikus|A HTTP-kiszolgáló várólistáján közzétenni kívánt olvasási műveletek száma. Ezzel a beállítással megadható, hogy a HttpGateway milyen egyidejű kérelmeket tud kielégíteni. |
-|RemoveServiceResponseHeaders|karakterlánc, az alapértelmezett érték a "date; Server|Statikus|Pontosvesszővel/vesszővel elválasztott lista a válasz fejlécekről, amelyek el lesznek távolítva a szolgáltatás válaszáról; az ügyfélnek való továbbítás előtt. Ha a beállítás üres karakterláncra van beállítva; a szolgáltatás által visszaadott összes fejléc továbbítása. azaz ne írja felül a dátumot és a kiszolgálót |
-|ResolveServiceBackoffInterval |Az idő másodpercben, az alapértelmezett érték 5 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan.  Az alapértelmezett visszatartási időközt adja meg, mielőtt újrapróbálkozik a nem sikerült megoldani a szolgáltatási műveletet. |
-|SecureOnlyMode|bool, az alapértelmezett érték FALSE|Dinamikus| SecureOnlyMode: True: a fordított proxy csak a biztonságos végpontokat közzétevő szolgáltatásokra fog továbbítani. hamis: a fordított proxy továbbítja a kéréseket a biztonságos/nem biztonságos végpontoknak. További információ: [fordított proxy végpont kiválasztási logikája](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
-|ServiceCertificateThumbprints|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A fordított proxy által megbízhatónak tartott távoli tanúsítványok ujjlenyomatai megfelelnek vesszővel tagolt listája. További információért lásd a [biztonságos kapcsolatok fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)kapcsolatos témakört. |
+|ApplicationCertificateValidationPolicy (ApplicationCertificateValidationPolicy)|karakterlánc, az alapértelmezett érték "Nincs"|Statikus| Ez nem érvényesíti a kiszolgálótanúsítványt; sikeres legyen a kérés. Tekintse meg a config ServiceCertificateThumbprints a vesszővel elválasztott listáját ujjlenyomatok a távoli tanúsítványok, hogy a fordított proxy megbízhat. A fordított proxy által megbízhat távoli tanúsítvány tulajdonosnevét és kiállítói ujjlenyomatát a config ServiceCommonNameAndIssuer című dokumentumból olvassa el. További információ: [Proxy biztonságos kapcsolat visszakapcsolása](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+|BodyChunkMéret |Uint, alapértelmezett érték: 16384 |Dinamikus| Megadja a test olvasásához használt adattömb méretét bájtban. |
+|CrlCheckingFlag|uint, az alapértelmezett érték: 0x40000000 |Dinamikus| Jelzők az alkalmazás/szolgáltatás tanúsítványlánc érvényesítéséhez; pl. crl-ellenőrzés 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY A 0-ra állítás letiltja a visszavont tanúsítványok listájának ellenőrzését A támogatott értékek teljes listáját a CertGetCertificateChain dwFlagjei dokumentálják:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
+|AlapértelmezettHttpRequestTimeout |Idő másodpercben. alapértelmezett 120 |Dinamikus|Adja meg az időtartományt másodpercben.  Megadja az alapértelmezett kérelem időmeghosszabbítása a http-kérelmek feldolgozása a http app átjáró. |
+|ForwardClientCertificate (Továbbítügyfél-tanúsítvány)|az alapértelmezett érték HAMIS|Dinamikus|Ha hamis, a fordított proxy nem kér az ügyféltanúsítványt. Ha értéke igaz, a fordított proxy az SSL-kézfogás során kéri az ügyféltanúsítványt, és továbbítja a base64 kódolású PEM formátumú karakterláncot a szolgáltatásnak egy X-Client-Certificate nevű fejlécben. a tanúsítvány adatainak vizsgálata után. Ha ez igaz, és az ügyfél nem mutat be tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és hagyja, hogy a szolgáltatás kezelje az esetet. Fordított proxy fog működni, mint egy átlátszó réteg. További információ: [Ügyféltanúsítvány-hitelesítés beállítása.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
+|GatewayAuthCredentialType típus |karakterlánc, az alapértelmezett érték "Nincs" |Statikus| A http-alkalmazásátjáró végpontja in használandó biztonsági hitelesítő adatok típusát jelzi: Az érvényes értékek: Nincs/X509. |
+|GatewayX509CertificateFindType |karakterlánc, az alapértelmezett érték a "FindByThumbprint" |Dinamikus| Azt jelzi, hogy miként kereshet tanúsítványt a GatewayX509CertificateStoreName Supported value: FindByThumbprint érték által megadott tárolóban; FindBySubjectName. |
+|GatewayX509CertificateFindValue | karakterlánc, az alapértelmezett a "" |Dinamikus| A http-alkalmazásátjáró-tanúsítvány megkereséséhez használt keresési szűrőérték. Ez a tanúsítvány a https-végponton van konfigurálva, és az alkalmazás identitásának ellenőrzésére is használható, ha a szolgáltatások szükséges. Először a FindValue értéket keresse meg; és ha ez nem létezik; A FindValueSecondary keresett. |
+|GatewayX509CertificateFindValueMásodlagos | karakterlánc, az alapértelmezett a "" |Dinamikus|A http-alkalmazásátjáró-tanúsítvány megkereséséhez használt keresési szűrőérték. Ez a tanúsítvány a https-végponton van konfigurálva, és az alkalmazás identitásának ellenőrzésére is használható, ha a szolgáltatások szükséges. Először a FindValue értéket keresse meg; és ha ez nem létezik; A FindValueSecondary keresett.|
+|GatewayX509CertificateStoreName |karakterlánc, az alapértelmezett érték "Saját" |Dinamikus| A http app átjáró tanúsítványát tartalmazó X.509 tanúsítványtároló neve. |
+|httpRequestConnectTimeout|TimeSpan, az alapértelmezett érték common::TimeSpan::FromSeconds(5)|Dinamikus|Adja meg az időtartományt másodpercben.  Megadja a http-átjáróról küldött http-kérelmek csatlakozási időmedését.  |
+|IgnoreCrlOfflineError|bool, az alapértelmezett érték IGAZ|Dinamikus|A visszavont tanúsítványok listájának offline hibáját figyelmen kívül hagyja-e az alkalmazás/szolgáltatás tanúsítványának ellenőrzéséhez. |
+|IsEnabled |Bool, az alapértelmezett érték hamis |Statikus| A HttpApplicationGateway engedélyezése/letiltása. A HttpApplicationGateway alapértelmezés szerint le van tiltva, és ezt a konfigurációt be kell állítani az engedélyezéséhez. |
+|NumberOfParallelOperations | Uint, az alapértelmezett érték 5000 |Statikus|A http-kiszolgálóvárólistába felkönyvelni utolesztő olvasmányok száma. Ez határozza meg a HttpGateway által teljesíthető egyidejű kérelmek számát. |
+|RemoveServiceResponseHeaders|karakterláncot, az alapértelmezett a "Dátum; Kiszolgáló"|Statikus|A szolgáltatásválaszból eltávolítandó válaszfejlécek pontosvesszővel vagy vesszővel tagolt listája; mielőtt továbbítana az ügyfélnek. Ha ez üres karakterláncra van állítva; adja át a szolgáltatás által visszaadott összes fejlécet. Azaz ne írja felül a dátumot és a kiszolgálót |
+|ResolveServiceBackoffInterval |Idő másodpercben, az alapértelmezett érték 5 |Dinamikus|Adja meg az időtartományt másodpercben.  Megadja az alapértelmezett biztonsági szünet időközt, mielőtt újra megpróbálna egy sikertelen feloldási szolgáltatási műveletet. |
+|SecureOnlyMode (BiztonságosCsak mód)|az alapértelmezett érték HAMIS|Dinamikus| SecureOnlyMode: true: Reverse Proxy csak továbbítja a biztonságos végpontokat közzé. false: Reverse Proxy továbbíthatja kérelmek biztonságos / nem biztonságos végpontok. További információ: [Proxyvégpont-kijelölési logika megfordítása.](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints)  |
+|ServiceCertificateThumbprints|karakterlánc, az alapértelmezett a ""|Dinamikus|A fordított proxy által megbízhat távoli certs ujjlenyomatainak vesszővel elválasztott listája. További információ: [Proxy biztonságos kapcsolat visszakapcsolása](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus| A fordított proxy által megbízhatónak ítélt távoli tanúsítványok tulajdonosának neve és kiállítói ujjlenyomata. További információért lásd a [biztonságos kapcsolatok fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)kapcsolatos témakört. |
+|Tulajdonságcsoport|X509NameMap, az alapértelmezett érték Nincs|Dinamikus| A fordított proxy által megbízhat távoli certs tulajdonosneve és kiállítóujjlenyomata. További információ: [Proxy biztonságos kapcsolat visszakapcsolása](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, az alapértelmezett érték 0|Statikus|A BackupRestoreService MinReplicaSetSize |
-|PlacementConstraints|karakterlánc, az alapértelmezett érték: ""|Statikus|  A BackupRestore szolgáltatás PlacementConstraints |
-|SecretEncryptionCertThumbprint|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A titkos titkosítási X509 tanúsítványának ujjlenyomata |
-|SecretEncryptionCertX509StoreName|karakterlánc, az alapértelmezett érték a "My"|   Dinamikus|    Ez azt a tanúsítványt jelzi, amelyet a rendszer a Backup Restore Service által használt hitelesítő adatok visszafejtéséhez használt X. 509 tanúsítványtároló titkosításához és visszafejtéséhez használ. |
-|TargetReplicaSetSize|int, az alapértelmezett érték 0|Statikus| A BackupRestoreService TargetReplicaSetSize |
+|MinReplicaSetMéret|int, az alapértelmezett érték 0|Statikus|A MinReplicaSetSize for BackupRestoreService |
+|Elhelyezési kényszerek|karakterlánc, az alapértelmezett a ""|Statikus|  A BackupRestore szolgáltatás elhelyezési kényszerei |
+|SecretEncryptionCertThumbprint|karakterlánc, az alapértelmezett a ""|Dinamikus|A titkos titkosítási X509 tanúsítvány ujjlenyomata |
+|SecretEncryptionCertX509StoreName|karakterlánc, az alapértelmezett érték "Saját"|   Dinamikus|    Ez azt a tanúsítványt jelzi, amelyet a creds titkosításához és visszafejtéséhez használ Az X.509 tanúsítványtároló neve, amelyet a Biztonsági másolat-visszaállítás szolgáltatás által használt tárolóhitelesítő adatok titkosítására használnak |
+|CélReplicaSetMéret|int, az alapértelmezett érték 0|Statikus| A TargetReplicaSetSize for BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AllowCustomUpgradeSortPolicies | Bool, az alapértelmezett érték false |Dinamikus|Azt határozza meg, hogy engedélyezett-e az egyéni frissítési rendezési házirendek használata. Ezt a funkciót a kétfázisú verziófrissítés végrehajtásához használhatja. A Service Fabric 6,5 a fürt vagy az alkalmazások frissítése során a frissítési tartományokra vonatkozó rendezési házirend megadásának támogatását adja meg. A támogatott házirendek a következők: numerikus, Lexicographical, ReverseNumeric és ReverseLexicographical. Az alapértelmezett érték a numerikus. Ahhoz, hogy használhassa ezt a funkciót, a ClusterManager/AllowCustomUpgradeSortPolicies nevű fürt jegyzékfájlját igaz értékre kell állítani, ha az SF 6,5-kód frissítését követően egy második konfigurációs verziófrissítési lépésre van szükség. Fontos, hogy ez két fázison történjen, ellenkező esetben a kód frissítése megzavarhatja a frissítési sorrendet az első frissítés során.|
-|EnableDefaultServicesUpgrade | Bool, az alapértelmezett érték false |Dinamikus|Az alapértelmezett szolgáltatások verziófrissítésének engedélyezése az alkalmazás frissítése során. A frissítés után felülírják az alapértelmezett szolgáltatások leírását. |
-|FabricUpgradeHealthCheckInterval |Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Az állapot-ellenőrzés gyakorisága a figyelt háló frissítése közben |
-|FabricUpgradeStatusPollInterval |Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|A háló frissítési állapotának lekérdezési gyakorisága. Ez az érték határozza meg az egyes GetFabricUpgradeProgress-hívások frissítési sebességét |
-|ImageBuilderTimeoutBuffer |Az idő másodpercben, alapértelmezés szerint 3 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, ameddig a rendszerkép-készítő adott időtúllépési hibája visszatérhet az ügyfélnek. Ha a puffer túl kicsi; Ezután az ügyfél időtúllépést okoz a kiszolgáló előtt, és általános időtúllépési hibát jelez. |
-|InfrastructureTaskHealthCheckRetryTimeout | Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az újrapróbálkozások sikertelen állapotának ellenőrzése az infrastruktúra feladatainak feldolgozása közben. Az átadott állapot-ellenőrzés betartásával az időzítő alaphelyzetbe áll. |
-|InfrastructureTaskHealthCheckStableDuration | Az idő másodpercben, az alapértelmezett érték: 0|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az egymást követő átadott állapot-ellenőrzéseknek az infrastruktúra-feladatok utólagos feldolgozását megelőzően bekövetkező idő elteltével sikeresen befejeződik. A sikertelen állapot-ellenőrzések megfigyelése visszaállítja ezt az időzítőt. |
-|InfrastructureTaskHealthCheckWaitDuration |Az idő másodpercben, az alapértelmezett érték: 0|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, ameddig az állapot-ellenőrzések megkezdése előtt meg kell várni az infrastruktúra-feladat utólagos feldolgozását. |
-|InfrastructureTaskProcessingInterval | Az idő másodpercben, az alapértelmezett érték 10 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az infrastrukturális feladatok feldolgozásának állapotára szolgáló számítógép által használt feldolgozási időköz. |
-|MaxCommunicationTimeout |Az idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager és más rendszerszolgáltatások közötti belső kommunikáció maximális időtúllépése (pl.: Elnevezési szolgáltatás; Feladatátvételi felügyelő és stb.). Ennek az időkorlátnak kisebbnek kell lennie, mint a globális MaxOperationTimeout (mivel előfordulhat, hogy több kommunikációra van szükség az egyes ügyfél-műveletek rendszerösszetevői között). |
-|MaxDataMigrationTimeout |Az idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A háló frissítése után a rendszer az adatáttelepítés helyreállítási műveleteinek maximális időtúllépését hajtja végre. |
-|MaxOperationRetryDelay |Az idő másodpercben, az alapértelmezett érték 5|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A belső újrapróbálkozások maximális késleltetése, ha a rendszer hibákat észlel. |
-|MaxOperationTimeout |Az idő másodpercben, az alapértelmezett érték a MaxValue |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager belüli belső feldolgozási műveletek maximális globális időtúllépése. |
-|MaxTimeoutRetryBuffer | Az idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A maximális művelet időtúllépése, ha az időtúllépések miatt belsőleg próbálkozik `<Original Time out> + <MaxTimeoutRetryBuffer>`. A MinOperationTimeout-növekmények további időtúllépést adnak hozzá. |
-|MinOperationTimeout | Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager belüli belső feldolgozási műveletek minimális globális időtúllépése. |
-|MinReplicaSetSize |int, az alapértelmezett érték 3 |Nem engedélyezett|A ClusterManager MinReplicaSetSize. |
-|PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Nem engedélyezett|A ClusterManager PlacementConstraints. |
-|QuorumLossWaitDuration |Az idő másodpercben, az alapértelmezett érték a MaxValue |Nem engedélyezett| Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager QuorumLossWaitDuration. |
-|ReplicaRestartWaitDuration |Idő másodpercben, alapértelmezett érték (60,0 \* 30)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager ReplicaRestartWaitDuration. |
-|ReplicaSetCheckTimeoutRollbackOverride |Az idő másodpercben, az alapértelmezett érték 1200 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Ha a ReplicaSetCheckTimeout a DWORD maximális értékre van beállítva; ezt követően felülbírálja a konfiguráció értékét a visszaállítás céljára. A rendszer soha nem bírálja felül a továbbításhoz használt értéket. |
-|SkipRollbackUpdateDefaultService | Bool, az alapértelmezett érték false |Dinamikus|A CM kihagyja a frissített alapértelmezett szolgáltatások visszaállítását az alkalmazás verziófrissítésének visszaállítása során. |
-|StandByReplicaKeepDuration | Idő másodpercben, alapértelmezett érték (3600,0 \* 2)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. A ClusterManager StandByReplicaKeepDuration. |
-|TargetReplicaSetSize |Int, az alapértelmezett érték 7 |Nem engedélyezett|A ClusterManager TargetReplicaSetSize. |
-|UpgradeHealthCheckInterval |Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|A figyelt alkalmazások frissítésének gyakorisága az állapot ellenőrzésekor |
-|UpgradeStatusPollInterval |Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Az alkalmazás frissítési állapotának lekérdezési gyakorisága. Ez az érték határozza meg az egyes GetApplicationUpgradeProgress-hívások frissítési sebességét |
-|CompleteClientRequest | Bool, az alapértelmezett érték false |Dinamikus| Az ügyfél kérelmének befejezése, ha a CM fogadja el. |
+|AllowCustomUpgradeSortPolicies | Bool, az alapértelmezett érték hamis |Dinamikus|Azt jelzi, hogy az egyéni frissítésrendezési házirendek engedélyezettek-e. Ezzel a funkció kétfázisú frissítéssel végezhető el. A Service Fabric 6.5 támogatja a fürt- vagy alkalmazásfrissítések során a frissítési tartományok rendezési házirendjének megadását. A támogatott házirendek a numerikus, lexikografikus, a reversenumeric és a reverselexicographic. Az alapértelmezett érték a Numerikus. A szolgáltatás használatához a ClusterManager/ AllowCustomUpgradeSortPolicies fürtjegyzék-beállítást az SF 6.5-ös kód frissítése után második konfigurációs frissítési lépésként Igaz értékre kell állítani. Fontos, hogy ez két fázisban történik, ellenkező esetben a kódfrissítés összezavarodhat a frissítési sorrenddel kapcsolatban az első frissítés során.|
+|EnableDefaultServicesUpgrade | Bool, az alapértelmezett érték hamis |Dinamikus|Engedélyezze az alapértelmezett szolgáltatások frissítését az alkalmazás frissítése során. Az alapértelmezett szolgáltatásleírások felülíródnak a frissítés után. |
+|FabricUpgradeHealthCheckInterval |Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Az állapotellenőrzés gyakorisága a figyelt Fabric frissítés során |
+|FabricUpgradeStatusPollInterval |Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|A Fabric frissítési állapotlekérdezésének gyakorisága. Ez az érték határozza meg a GetFabricUpgradeProgress-hívásfrissítési arányt |
+|ImageBuilderTimeoutBuffer |Idő másodpercben, az alapértelmezett érték 3 |Dinamikus|Adja meg az időtartományt másodpercben. Az az idő, amerre az Image Builder adott időmegadási hibák visszatérhetnek az ügyfélhez. Ha ez a puffer túl kicsi; ezután az ügyfél időtúljár a kiszolgáló előtt, és általános időtúlfutási hibát kap. |
+|InfrastructureTaskHealthCheckRetryTimeout | Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Adja meg az időtartományt másodpercben. A sikertelen állapot-ellenőrzések újrapróbálkozásával töltött idő az infrastruktúra-feladat utófeldolgozása közben. Az átadott állapot-ellenőrzés megfigyelése visszaállítja ezt az időzítőt. |
+|InfrastructureTaskHealthCheckStableDuration | Idő másodpercben, az alapértelmezett érték 0|Dinamikus| Adja meg az időtartományt másodpercben. Az egymást követő állapot-ellenőrzések megfigyelésére az infrastruktúra-feladat utófeldolgozása sikeres befejezése előtt eltelt idő. A sikertelen állapot-ellenőrzés megfigyelése alaphelyzetbe állítja ezt az időzítőt. |
+|InfrastructureTaskHealthCheckWaitDuration |Idő másodpercben, az alapértelmezett érték 0|Dinamikus| Adja meg az időtartományt másodpercben. Az infrastruktúra-feladat utófeldolgozása után az állapotellenőrzések megkezdése előtt várakoznivaló idő. |
+|InfrastructureTaskProcessingInterval infrastruktúra | Idő másodpercben, az alapértelmezett érték 10 |Dinamikus|Adja meg az időtartományt másodpercben. Az infrastruktúra-feladatfeldolgozó állapotgép által használt feldolgozási időköz. |
+|MaxCommunicationTimeout |Idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Adja meg az időtartományt másodpercben. A ClusterManager és más rendszerszolgáltatások (azaz a) közötti belső kommunikáció maximális időtúlára Elnevezési szolgáltatás; Feladatátvétel-kezelő stb.). Ennek az időtúltöltésnek kisebbnek kell lennie, mint a globális MaxOperationTimeout (mivel az egyes ügyfélműveletekhez több kommunikáció is lehet a rendszerösszetevők között). |
+|MaxDataMigrationTimeout |Idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Adja meg az időtartományt másodpercben. Az adatáttelepítési helyreállítási műveletek maximális időhahez való meghosszabbítása a Fabric-frissítés után. |
+|MaxOperationRetryDelay |Idő másodpercben, az alapértelmezett érték 5|Dinamikus| Adja meg az időtartományt másodpercben. A belső újrapróbálkozások maximális késleltetése hibák esetén. |
+|MaxOperationTimeout |Idő másodpercben, az alapértelmezett érték MaxValue |Dinamikus| Adja meg az időtartományt másodpercben. A Fürtkezelő belső feldolgozási műveleteinek maximális globális időhamon. |
+|MaxTimeoutRetryBuffer | Idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Adja meg az időtartományt másodpercben. Az időoutok miatti belső újrapróbálkozások esetén `<Original Time out> + <MaxTimeoutRetryBuffer>`a maximális működési időout a . További időmeghosszabbítás a MinOperationTimeout lépésekben hozzáadódik. |
+|MinOperationTimeout | Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Adja meg az időtartományt másodpercben. A Fürtkezelő belső feldolgozási műveleteinek minimális globális időmeghosszabbítása. |
+|MinReplicaSetMéret |Int, az alapértelmezett érték 3 |Nem engedélyezett|A MinReplicaSetSize for ClusterManager. |
+|Elhelyezési kényszerek | karakterlánc, az alapértelmezett a "" |Nem engedélyezett|A ClusterManager elhelyezési kényszerei. |
+|QuorumLossWaitDuration |Idő másodpercben, az alapértelmezett érték MaxValue |Nem engedélyezett| Adja meg az időtartományt másodpercben. A ClusterManager QuorumLossWaitDuration. |
+|ReplicaRestartWaitDuration |Idő másodpercben, az alapértelmezett érték \* (60,0 30)|Nem engedélyezett|Adja meg az időtartományt másodpercben. A ReplicaRestartWaitDuration for ClusterManager. |
+|ReplicaSetCheckTimeoutRollbackOverride |Idő másodpercben, az alapértelmezett érték 1200 |Dinamikus| Adja meg az időtartományt másodpercben. Ha a ReplicaSetCheckTimeout értéke a Duplaszó maximális értéke; akkor ez felülbírálta az értéke ennek a config céljából visszaállítás. A görgetéshez használt értéket soha nem bírálja felül a függvény. |
+|SkipRollbackUpdateDefaultService | Bool, az alapértelmezett érték hamis |Dinamikus|A főkiszolgáló kihagyja a frissített alapértelmezett szolgáltatások visszaállítását az alkalmazásfrissítés visszaállítása során. |
+|Készenléti replikálási időtartam | Idő másodpercben, az alapértelmezett érték (3600,0 \* 2)|Nem engedélyezett|Adja meg az időtartományt másodpercben. A ClusterManager standByReplicaKeepDuration szolgáltatása. |
+|CélReplicaSetMéret |Int, az alapértelmezett érték 7 |Nem engedélyezett|A ClusterManager targetReplicaSetSize szolgáltatása. |
+|UpgradeHealthCheckInterval |Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Az állapotellenőrzések gyakorisága a figyelt alkalmazásfrissítések során |
+|UpgradeStatusPollInterval |Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Az alkalmazásfrissítési állapot lekérdezésének gyakorisága. Ez az érték határozza meg a GetApplicationUpgradeProgress hívásfrissítési arányát |
+|CompleteClientRequest | Bool, az alapértelmezett érték hamis |Dinamikus| Teljes ügyfélkérés, ha a cm elfogadja. |
 
 ## <a name="common"></a>Közös
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PerfMonitorInterval |Az idő másodpercben, az alapértelmezett érték 1 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Teljesítmény figyelési időköze A 0 vagy negatív értékre való beállítás letiltja a figyelést. |
+|PerfMonitorInterval |Idő másodpercben, az alapértelmezett érték 1 |Dinamikus|Adja meg az időtartományt másodpercben. Teljesítményfigyelési időköz. A 0 vagy negatív érték beállítása letiltja a figyelést. |
 
-## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+## <a name="defragmentationemptynodedistributionpolicy"></a>TöredezettségmentesítésEmptyNodeDistributionPolicy
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyIntegerValueMap, alapértelmezés szerint nincs|Dinamikus|Meghatározza, hogy a házirend-Töredezettségmentesítés a csomópontok kiürítése után következik-e. Az adott metrikus 0 érték azt jelzi, hogy az SF a frissítési és a tartalék között egyenletesen kell próbálkoznia a csomópontok töredezettségmentesítésével. 1 azt jelzi, hogy a csomópontok töredezettségmentesítése szükséges |
+|Tulajdonságcsoport|KeyIntegerValueMap, az alapértelmezett érték: Nincs|Dinamikus|Itt adható meg, hogy a csomópontok kiürítésekekénül a házirend töredezettségmentesítése következik.Specifies the policy töredezettségmentesítés következik, amikor kiüríti a csomópontokat. Egy adott metrika 0 azt jelzi, hogy sf meg kell próbálnia töredezettségmentesítéscsomópontok egyenletesen az UD-k és FDs; 1 csak azt jelzi, hogy a csomópontokat töredezettségmentesítésre kell |
 
-## <a name="defragmentationmetrics"></a>DefragmentationMetrics
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+## <a name="defragmentationmetrics"></a>TöredezettségmentesítésMetrimek
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyBoolValueMap, alapértelmezés szerint nincs|Dinamikus|Meghatározza azt a metrikát, amelyet a töredezettségmentesítéshez kell használni, nem pedig a terheléselosztáshoz. |
+|Tulajdonságcsoport|KeyBoolValueMap, az alapértelmezett érték Nincs|Dinamikus|Meghatározza a töredezettségmentesítéshez és nem a terheléselosztáshoz használandó metrikák készletét. |
 
-## <a name="defragmentationmetricspercentornumberofemptynodestriggeringthreshold"></a>DefragmentationMetricsPercentOrNumberOfEmptyNodesTriggeringThreshold
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+## <a name="defragmentationmetricspercentornumberofemptynodestriggeringthreshold"></a>TöredezettségmentesítésMetricsPercentOrNumberOfNodesTriggeringThreshold
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, alapértelmezés szerint nincs|Dinamikus|Meghatározza, hogy hány szabad csomópontra van szükség a fürt detöredezettségének megadásához, ha a százalékot a [0,0-1,0] tartományban vagy üres csomópontok száma mezőben adja meg, > = 1,0 |
+|Tulajdonságcsoport|KeyDoubleValueMap, az alapértelmezett érték: Nincs|Dinamikus|A fürt töredezettségmentesítésének mérlegeléséhez szükséges szabad csomópontok számát határozza meg a tartományban lévő százalék [0,0 - 1,0] vagy az üres csomópontok száma >= 1,0 számként történő megadásával. |
 
 ## <a name="diagnostics"></a>Diagnosztika
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AdminOnlyHttpAudit |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus | Zárja ki azokat a HTTP-kérelmeket, amelyek nem befolyásolják a fürt állapotát a naplózásból. Jelenleg a rendszer csak a "GET" típusú kérelmeket zárja ki; Ez azonban változhat. |
-|AppDiagnosticStoreAccessRequiresImpersonation |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus |Azt határozza meg, hogy szükséges-e megszemélyesítés, ha a diagnosztikai tárolókat az alkalmazás nevében éri el. |
-|AppEtwTraceDeletionAgeInDays |int, az alapértelmezett érték 3 | Dinamikus |Ennyi nap elteltével töröljük az Application ETW-nyomkövetést tartalmazó régi ETL-fájlokat. |
-|ApplicationLogsFormatVersion |int, az alapértelmezett érték 0 | Dinamikus |Az Application logs formátumának verziója. A támogatott értékek: 0 és 1. Az 1. verzió több mezőt is tartalmaz a ETW-esemény rekordjából, mint a 0. verzió. |
-|AuditHttpRequests |Bool, az alapértelmezett érték false | Dinamikus | A HTTP-naplózás be-és kikapcsolása. A naplózás célja, hogy megtekintse a fürtön végrehajtott tevékenységeket. beleértve a kérelmet kezdeményező személyeket is. Vegye figyelembe, hogy ez a legjobb kísérlet a naplózásra; és a nyomkövetés elvesztése is előfordulhat. A "user" hitelesítéssel rendelkező HTTP-kérelmek nincsenek rögzítve. |
-|CaptureHttpTelemetry|Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus | A HTTP-telemetria be-vagy kikapcsolása. A Service Fabric telemetria célja, hogy a telemetria-adat rögzíthető legyen a jövőbeli munka megtervezése és a problémás területek azonosítása érdekében. A telemetria nem rögzíti a személyes adatok vagy a kérés törzsét. A telemetria csak akkor rögzíti az összes HTTP-kérelmet, ha másként van konfigurálva. |
-|ClusterId |Sztring | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
-|ConsumerInstances |Sztring | Dinamikus |A DCA-fogyasztói példányok listája. |
-|DiskFullSafetySpaceInMB |Int, alapértelmezett érték 1024 | Dinamikus |A fennmaradó lemezterület MB-ban, a DCA általi használat elleni védelem érdekében. |
-|EnableCircularTraceSession |Bool, az alapértelmezett érték false | Statikus |A jelző jelzi, hogy a körkörös nyomkövetési munkameneteket kell-e használni. |
-|EnablePlatformEventsFileSink |Bool, az alapértelmezett érték false | Statikus |A lemezre írt platform eseményeinek engedélyezése/letiltása |
-|EnableTelemetry |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus |A telemetria engedélyezése vagy letiltása folyamatban van. |
-|FailuresOnlyHttpTelemetry | Bool, az alapértelmezett érték false | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a sikertelen kérelmek rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
-|HttpTelemetryCapturePercentage | Int, alapértelmezett érték 50 | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a kérések véletlenszerű százalékos arányának rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
-|MaxDiskQuotaInMB |Int, alapértelmezett érték 65536 | Dinamikus |Windows Fabric naplófájlok esetében a lemezkvóta MB-ban. |
-|ProducerInstances |Sztring | Dinamikus |A DCA-előállító példányainak listája. |
+|Csak adminhttpAudit |Bool, az alapértelmezett igaz | Dinamikus | Zárja ki azokat a HTTP-kérelmeket, amelyek nem befolyásolják a fürt állapotát a naplózásból. Jelenleg; csak a "GET" típusú kérelmek nem tartoznak ide; de ez változhat. |
+|AppDiagnosticStoreAccessMegegyezést igényel |Bool, az alapértelmezett igaz | Dinamikus |Az, hogy szükség van-e a megszemélyesítésre, amikor az alkalmazás nevében hozzáfér a diagnosztikai tárolókhoz. |
+|AppEtwTraceDeletionAgeInDays |Int, az alapértelmezett érték 3 | Dinamikus |Azon napok száma, amely után töröljük a régi ETL fájlokat tartalmazó alkalmazás ETW nyomokat. |
+|ApplicationLogsFormatVersion |Int, az alapértelmezett érték 0 | Dinamikus |Alkalmazásnaplók formátumának verziója. A támogatott értékek 0 és 1. Az 1-es verzió több mezőt tartalmaz az ETW eseményrekordból, mint a 0-s verzió. |
+|NaplózáshttpRequests |Bool, az alapértelmezett érték hamis | Dinamikus | A HTTP-naplózás be- és kikapcsolása. A naplózás célja a fürtön végrehajtott tevékenységek megtekintése; beleértve azt is, hogy ki kezdeményezte a kérelmet. Ne feledje, hogy ez a legjobb kísérlet naplózás; és nyomvesztés léphet fel. A "Felhasználó" hitelesítéssel rendelkező HTTP-kérelmek nem kerülnek rögzítésre. |
+|RögzítéshttpTelemetria|Bool, az alapértelmezett igaz | Dinamikus | A HTTP-telemetria be- és kikapcsolása. A telemetriai cél az, hogy a Service Fabric képes rögzíteni telemetriai adatokat, hogy segítsen megtervezni a jövőbeli munka és a problémás területek azonosítása. A telemetriai adatok nem rögzítenek személyes adatokat vagy a kérelem törzsét. Telemetriai rögzíti az összes HTTP-kérelmek, kivéve, ha másképp van konfigurálva. |
+|Fürtazonosító |Sztring | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
+|Fogyasztói instances |Sztring | Dinamikus |A DCA-fogyasztói példányok listája. |
+|DiskFullSafetySpaceInMB |Int, alapértelmezett érték: 1024 | Dinamikus |Hátralévő lemezterület MB-ban a DCA általi használat elleni védelem érdekében. |
+|EnableCircularTraceSession |Bool, az alapértelmezett érték hamis | Statikus |A jelző azt jelzi, hogy kell-e körkörös nyomkövetési munkameneteket használni. |
+|EnablePlatformEventsFileSink |Bool, az alapértelmezett érték hamis | Statikus |Lemezre írt platformesemények engedélyezése/letiltása |
+|EnableTelemetry |Bool, az alapértelmezett igaz | Dinamikus |Ez engedélyezi vagy letiltja a telemetriai adatokat. |
+|Csak hibákhttpTelemetry | Bool, az alapértelmezett érték hamis | Dinamikus | Ha a HTTP-telemetriai adatok rögzítése engedélyezve van; csak a sikertelen kérelmeket rögzítse. Ez segít csökkenteni a telemetriai adatokhoz létrehozott események számát. |
+|HttpTelemetryCapturePercentage | int, az alapértelmezett érték 50 | Dinamikus | Ha a HTTP-telemetriai adatok rögzítése engedélyezve van; a kérelmeknek csak egy véletlenszerű százalékát rögzíti. Ez segít csökkenteni a telemetriai adatokhoz létrehozott események számát. |
+|MaxDiskQuotaInMB |Int, alapértelmezett: 65536 | Dinamikus |Lemezkvóta MB-ban a Windows Fabric naplófájlokhoz. |
+|Termelői példák |Sztring | Dinamikus |A DCA-gyártó példányainak listája. |
 
-## <a name="dnsservice"></a>DnsService
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+## <a name="dnsservice"></a>DnsService szolgáltatás
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|EnablePartitionedQuery|bool, az alapértelmezett érték FALSE|Statikus|A particionált szolgáltatásokra vonatkozó DNS-lekérdezések támogatásának engedélyezésére szolgáló jelző. A szolgáltatás alapértelmezés szerint ki van kapcsolva. További információ: [Service FABRIC DNS szolgáltatás.](service-fabric-dnsservice.md)|
-|InstanceCount|int, az alapértelmezett érték-1|Statikus|Az alapértelmezett érték a-1, ami azt jelenti, hogy a DnsService minden csomóponton fut. Ahhoz, hogy a DnsService jól ismert 53-as portot használjon, a beépített-nek 1-re kell állítania, így nem lehet több példánya ugyanazon a gépen.|
-|IsEnabled|bool, az alapértelmezett érték FALSE|Statikus|Engedélyezi vagy letiltja a DnsService. A DnsService alapértelmezés szerint le van tiltva, és ezt a konfigurációt be kell állítani az engedélyezéshez. |
-|PartitionPrefix|karakterlánc, az alapértelmezett érték a "--"|Statikus|A particionált szolgáltatásokhoz tartozó DNS-lekérdezésekben megadja a partíció-előtag karakterláncának értékét. Az érték: <ul><li>RFC-kompatibilisnek kell lennie, mert egy DNS-lekérdezés része lesz.</li><li>A nem tartalmazhat pontot ("."), mert a pont nem zavarja a DNS-utótag viselkedését.</li><li>Nem lehet hosszabb 5 karakternél.</li><li>Nem lehet üres karakterlánc.</li><li>Ha a PartitionPrefix beállítás felülbírálva van, akkor a PartitionSuffix felülbírálva kell lennie, és fordítva.</li></ul>További információ: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md).|
-|PartitionSuffix|karakterlánc, az alapértelmezett érték: ""|Statikus|A particionált szolgáltatások DNS-lekérdezései esetében szabályozza a partíció utótagjának karakterlánc-értékét. Az érték: <ul><li>RFC-kompatibilisnek kell lennie, mert egy DNS-lekérdezés része lesz.</li><li>A nem tartalmazhat pontot ("."), mert a pont nem zavarja a DNS-utótag viselkedését.</li><li>Nem lehet hosszabb 5 karakternél.</li><li>Ha a PartitionPrefix beállítás felülbírálva van, akkor a PartitionSuffix felülbírálva kell lennie, és fordítva.</li></ul>További információ: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md). |
+|EnablePartitionedQuery|az alapértelmezett érték HAMIS|Statikus|A particionált szolgáltatások DNS-lekérdezéseinek támogatásának engedélyezésére szolgáló jelző. A szolgáltatás alapértelmezés szerint ki van kapcsolva. További információ: [Service Fabric DNS Service.](service-fabric-dnsservice.md)|
+|InstanceCount (Példányszám)|int, az alapértelmezett érték -1|Statikus|Az alapértelmezett érték -1, ami azt jelenti, hogy a DnsService minden csomóponton fut. A OneBox-nak 1-re van szüksége, mivel a DnsService jól ismert 53-as portot használ, így nem lehet több példány ugyanazon a gépen.|
+|IsEnabled|az alapértelmezett érték HAMIS|Statikus|Engedélyezi/letiltja a DnsService szolgáltatást. A DnsService alapértelmezés szerint le van tiltva, és ezt a konfigurációt be kell állítani az engedélyezéséhez. |
+|PartitionPrefix|karakterlánc, az alapértelmezett a "--"|Statikus|A particionált szolgáltatások DNS-lekérdezéseiben szabályozza a partícióelőtag karakterláncának értékét. Az érték: <ul><li>RFC-kompatibilisnek kell lennie, mivel egy DNS-lekérdezés része lesz.</li><li>Nem tartalmazhat ".' dot, mivel a dot zavarja a DNS-utótag viselkedését.</li><li>Nem lehet hosszabb 5 karakternél.</li><li>Nem lehet üres karakterlánc.</li><li>Ha a PartitionPrefix beállítás felülbírálva van, akkor a PartitionSuffix-et felül kell írni, és fordítva.</li></ul>További információt a [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md).|
+|PartitionSutófix|karakterlánc, az alapértelmezett a ""|Statikus|A particionált szolgáltatások DNS-lekérdezéseiben szabályozza a partícióutótag karakterláncának értékét. Az érték: <ul><li>RFC-kompatibilisnek kell lennie, mivel egy DNS-lekérdezés része lesz.</li><li>Nem tartalmazhat ".' dot, mivel a dot zavarja a DNS-utótag viselkedését.</li><li>Nem lehet hosszabb 5 karakternél.</li><li>Ha a PartitionPrefix beállítás felülbírálva van, akkor a PartitionSuffix-et felül kell írni, és fordítva.</li></ul>További információt a [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md). |
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, az alapértelmezett érték 0|Statikus|A EventStore szolgáltatás MinReplicaSetSize |
-|PlacementConstraints|karakterlánc, az alapértelmezett érték: ""|Statikus|  A EventStore szolgáltatás PlacementConstraints |
-|TargetReplicaSetSize|int, az alapértelmezett érték 0|Statikus| A EventStore szolgáltatás TargetReplicaSetSize |
+|MinReplicaSetMéret|int, az alapértelmezett érték 0|Statikus|A MinReplicaSetSize for EventStore szolgáltatás |
+|Elhelyezési kényszerek|karakterlánc, az alapértelmezett a ""|Statikus|  Az EventStore szolgáltatás elhelyezési kényszerei |
+|CélReplicaSetMéret|int, az alapértelmezett érték 0|Statikus| Az EventStore szolgáltatás TargetReplicaSetSize szolgáltatása |
 
-## <a name="fabricclient"></a>FabricClient
+## <a name="fabricclient"></a>FabricClient (Hálóclient)
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ConnectionInitializationTimeout |Az idő másodpercben, az alapértelmezett érték 2 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A kapcsolat időtúllépési intervalluma minden alkalommal, amikor az ügyfél megpróbál megnyitni egy kapcsolódást az átjáróhoz.|
-|HealthOperationTimeout |Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az Health Managernek elküldött jelentési üzenet időtúllépése. |
-|HealthReportRetrySendInterval |Az idő másodpercben, az alapértelmezett érték 30, minimum 1 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, amikor a jelentéskészítési összetevő újraküldi a halmozott állapot-jelentéseket az Health Managernek. |
-|HealthReportSendInterval |Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időköz, amelyen a jelentéskészítő összetevő halmozott állapotú jelentéseket küld az Health Managernek. |
-|KeepAliveIntervalInSeconds |int, az alapértelmezett érték 20 |Statikus|Az a időköz, amikor a FabricClient-átvitel életben tartási üzeneteket küld az átjárónak. 0; esetén a életben tartás le van tiltva. Pozitív értéknek kell lennie. |
-|MaxFileSenderThreads |Uint, az alapértelmezett érték 10 |Statikus|A párhuzamosan továbbított fájlok maximális száma. |
-|NodeAddresses |karakterlánc, az alapértelmezett érték: "" |Statikus|Különböző csomópontokon található címek (kapcsolódási karakterláncok) gyűjteménye, amelyek a elnevezési szolgáltatás való kommunikációhoz használhatók. Az ügyfél kezdetben véletlenszerűen választja ki az egyik címet. Ha egynél több kapcsolati sztring van megadva, és a kapcsolat meghiúsul egy kommunikációs vagy időtúllépési hiba miatt; az ügyfél a következő címnek egymás utáni használatára vált. Az újrapróbálkozási szemantika részleteiért tekintse meg a elnevezési szolgáltatás-újrapróbálkozási szakaszt. |
-|PartitionLocationCacheLimit |Int, alapértelmezett érték 100000 |Statikus|A szolgáltatás-feloldáshoz gyorsítótárazott partíciók száma (legfeljebb 0 értékre van állítva). |
-|RetryBackoffInterval |Az idő másodpercben, alapértelmezés szerint 3 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A művelet újbóli megkísérlése előtt a visszatartási időköz. |
-|ServiceChangePollInterval |Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az egymást követő lekérdezésekben az ügyfél és az átjáró közötti adatváltozások közötti időköz a regisztrált szolgáltatások változási értesítéseinek visszahívása esetén. |
+|ConnectionInitializationTimeout |Idő másodpercben, az alapértelmezett érték 2 |Dinamikus|Adja meg az időtartományt másodpercben. A kapcsolat időtúllépési időköze minden alkalommal, amikor az ügyfél megpróbál kapcsolatot nyitni az átjáróval.|
+|HealthOperationTimeout |Idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Adja meg az időtartományt másodpercben. Az Állapotkezelőnek küldött jelentésüzenet időmegadása. |
+|HealthReportRetrySendInterval |Idő másodpercben, alapértelmezett 30, minimum 1 |Dinamikus|Adja meg az időtartományt másodpercben. Az az időszak, amikor a jelentéskészítő összetevő újraküldi a halmozott állapotjelentéseket az állapotkezelőnek. |
+|HealthReportSendInterval |Idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Adja meg az időtartományt másodpercben. Az az időszak, amikor a jelentéskészítő összetevő elküldi a halmozott állapotjelentéseket az állapotkezelőnek. |
+|KeepAliveIntervalinseconds (KeepAliveIntervalInseconds) |Int, alapértelmezett érték 20 |Statikus|Az az időtartam, amikor a FabricClient átvitel e-t is megtartó üzeneteket küld az átjárónak. 0 esetében; a keepAlive le van tiltva. Pozitív értéknek kell lennie. |
+|MaxFileSenderThreads |Uint, az alapértelmezett érték 10 |Statikus|A párhuzamosan átvitt fájlok maximális száma. |
+|NodeAddresses (Csomópontcímek) |karakterlánc, az alapértelmezett a "" |Statikus|Az elnevezési szolgáltatással való kommunikációhoz használható különböző csomópontokon lévő címek (kapcsolati karakterláncok) gyűjteménye. Kezdetben az ügyfél véletlenszerűen csatlakozik az egyik cím kiválasztásához. Ha egynél több kapcsolati karakterlánc van megadva, és a kapcsolat kommunikációs vagy időtúllépési hiba miatt megszakad; az Ügyfél a következő cím szekvenciális használatára vált. Az újrapróbálkozások szemantikájával kapcsolatos részleteket az Újrapróbálkozások című szakaszban találja. |
+|PartitionLocationCacheLimit |Int, alapértelmezett érték: 100000 |Statikus|A szolgáltatásfeloldáshoz gyorsítótárazott partíciók száma (a nincs korlátozás esetén 0-ra van állítva). |
+|ÚjratryBackoffInterval |Idő másodpercben, az alapértelmezett érték 3 |Dinamikus|Adja meg az időtartományt másodpercben. A művelet újbóli megkísérlése előtt a visszalépési időköz. |
+|ServiceChangePollInterval |Idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Adja meg az időtartományt másodpercben. A szolgáltatás egymást követő szavazások közötti időköz az ügyfélről az átjáróra változik a regisztrált szolgáltatásváltozási értesítések visszahívásához. |
 
-## <a name="fabrichost"></a>Hálóbeli
+## <a name="fabrichost"></a>FabricHost között
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ActivationMaxFailureCount |Int, az alapértelmezett érték 10 |Dinamikus|Ez a maximális szám, amely után a rendszer újrapróbálkozik a sikertelen aktiválással. |
-|ActivationMaxRetryInterval |Az idő másodpercben, az alapértelmezett érték 300 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az aktiválás maximális újrapróbálkozási időköze. Minden folyamatos hiba esetén az újrapróbálkozási időköz kiszámítása percben (ActivationMaxRetryInterval; Folyamatos meghibásodások száma * ActivationRetryBackoffInterval). |
-|ActivationRetryBackoffInterval |Az idő másodpercben, az alapértelmezett érték 5 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Leállítási időköz minden aktiválási hiba esetén; minden folyamatos aktiválási hiba esetén a rendszer újra megkísérli az aktiválást a MaxActivationFailureCount. Az újrapróbálkozási időköz minden próbálkozáskor a folyamatos aktiválási hiba és az aktiválási visszatartási időköz szorzata. |
-|EnableRestartManagement |Bool, az alapértelmezett érték false |Dinamikus|Ez a kiszolgáló újraindításának engedélyezése. |
-|EnableServiceFabricAutomaticUpdates |Bool, az alapértelmezett érték false |Dinamikus|A háló automatikus frissítésének engedélyezése Windows Updateon keresztül. |
-|EnableServiceFabricBaseUpgrade |Bool, az alapértelmezett érték false |Dinamikus|Ez a kiszolgáló alapszintű frissítésének engedélyezése. |
-|FailureReportingExpeditedReportingIntervalEnabled | Bool, az alapértelmezett érték TRUE (igaz) | Statikus | Gyorsabb feltöltési sebességet tesz lehetővé a DCA, ha a Hálóbeli nem jelentési módban van. |
-|FailureReportingTimeout | TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60) | Statikus |Másodpercek alatt meg kell adni a TimeSpan. A DCA sikertelen jelentéskészítésének időtúllépése az esetben, ha a Hálóbeli korai fázisú indítási hibát észlel. | 
-|RunDCAOnStartupFailure | Bool, az alapértelmezett érték TRUE (igaz) | Statikus |Meghatározza, hogy el kell-e indítani a DCA a naplók feltöltéséhez, amikor a Hálóbeli indításakor problémák léptek fel. | 
-|StartTimeout |Az idő másodpercben, az alapértelmezett érték 300 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a fabricactivationmanager indításakor. |
-|StopTimeout |Az idő másodpercben, az alapértelmezett érték 300 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az üzemeltetett szolgáltatás aktiválásának időtúllépése; inaktiválás és frissítés. |
+|ActivationMaxFailureCount |Int, az alapértelmezett érték 10 |Dinamikus|Ez az a maximális szám, amelynek rendszerújra próbálkozása sikertelen aktiválás előtt feladja. |
+|AktiválásMaxRetryInterval |Idő másodpercben, az alapértelmezett érték 300 |Dinamikus|Adja meg az időtartományt másodpercben. Az aktiválás maximális újrapróbálkozási időköze. Minden folyamatos hiba esetén az újrapróbálkozási időköz min( ActivationMaxRetryInterval; Folyamatos hibák száma * ActivationRetryBackoffInterval). |
+|ActivationRetryBackoffInterval |Idő másodpercben, az alapértelmezett érték 5 |Dinamikus|Adja meg az időtartományt másodpercben. Visszalépési időköz minden aktiválási hiba esetén;Minden folyamatos aktiválási hiba esetén a rendszer újra megpróbálja az aktiválást a MaxActivationFailureCount-ig. Az újrapróbálkozási időköz minden próbálkozáskor a folyamatos aktiválási hiba és az aktiválási visszalépési időköz eredménye. |
+|EnableRestartManagement |Bool, az alapértelmezett érték hamis |Dinamikus|Ez a kiszolgáló újraindításának engedélyezésére szolgál. |
+|EnableServiceFabricAutomaticUpdates |Bool, az alapértelmezett érték hamis |Dinamikus|Ez lehetővé teszi a háló automatikus frissítését a Windows Update-en keresztül. |
+|EnableServiceFabricBaseUpgrade |Bool, az alapértelmezett érték hamis |Dinamikus|Ez a kiszolgáló alapfrissítésének engedélyezésére szolgál. |
+|FailureReportingExpeditedReportingIntervalEnabled | Bool, az alapértelmezett igaz | Statikus | Gyorsabb feltöltési sebességet tesz lehetővé a DCA-ban, ha a FabricHost hibajelentési módban van. |
+|FailureReportingTimeout | TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(60) | Statikus |Adja meg az időtartományt másodpercben. A DCA hibajelentésidő-elállása abban az esetben, ha a FabricHost korai indítási hibába ütközik. | 
+|RunDCAOnStartupFailure | Bool, az alapértelmezett igaz | Statikus |Azt határozza meg, hogy el kell-e indítani a DCA-t a naplók feltöltéséhez, amikor indítási problémákkal szembesülnek a FabricHost-ban. | 
+|StartTimeout (Kezdési idő) |Idő másodpercben, az alapértelmezett érték 300 |Dinamikus|Adja meg az időtartományt másodpercben. A fabricaktivációskezelő indítási ideje. |
+|StopTimeout (StopTimeout) |Idő másodpercben, az alapértelmezett érték 300 |Dinamikus|Adja meg az időtartományt másodpercben. A szolgáltatott szolgáltatás aktiválásának időmeghosszabbítása; kikapcsolása és frissítése. |
 
-## <a name="fabricnode"></a>FabricNode
+## <a name="fabricnode"></a>FabricNode között
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ClientAuthX509FindType |string (alapértelmezett érték: "FindByThumbprint") |Dinamikus|Azt jelzi, hogyan lehet a ClientAuthX509StoreName által megadott tárolóban megkeresni a tanúsítványokat a következő támogatott érték szerint: FindByThumbprint; FindBySubjectName. |
-|ClientAuthX509FindValue |karakterlánc, az alapértelmezett érték: "" | Dinamikus|Keresési szűrő értéke, amely az alapértelmezett rendszergazdai szerepkör FabricClient tartozó tanúsítvány megkeresésére szolgál. |
-|ClientAuthX509FindValueSecondary |karakterlánc, az alapértelmezett érték: "" |Dinamikus|Keresési szűrő értéke, amely az alapértelmezett rendszergazdai szerepkör FabricClient tartozó tanúsítvány megkeresésére szolgál. |
-|ClientAuthX509StoreName |karakterlánc, az alapértelmezett érték a "My" |Dinamikus|Annak az X. 509 tanúsítványtárolónak a neve, amely az alapértelmezett rendszergazdai szerepkör FabricClient tanúsítványát tartalmazza. |
-|ClusterX509FindType |string (alapértelmezett érték: "FindByThumbprint") |Dinamikus|Azt jelzi, hogyan lehet a ClusterX509StoreName által megadott tárolóban megkeresni a fürt tanúsítványát: "FindByThumbprint"; "FindBySubjectName" és "FindBySubjectName"; Ha több egyezés van; a rendszer a legtávolabbi lejáratú egyet használja. |
-|ClusterX509FindValue |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A fürt tanúsítványának megkereséséhez használt keresési szűrő értéke. |
-|ClusterX509FindValueSecondary |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A fürt tanúsítványának megkereséséhez használt keresési szűrő értéke. |
-|ClusterX509StoreName |karakterlánc, az alapértelmezett érték a "My" |Dinamikus|Az X. 509 tanúsítványtároló neve, amely a fürtön belüli kommunikáció biztonságossá tételére szolgáló fürtözött tanúsítványt tartalmaz. |
-|EndApplicationPortRange |int, az alapértelmezett érték 0 |Statikus|Az üzemeltetési alrendszer által kezelt alkalmazás-portok végpontja (nincs befogadó). Kötelező, ha a EndpointFilteringEnabled a gazdagépen igaz. |
-|ServerAuthX509FindType |string (alapértelmezett érték: "FindByThumbprint") |Dinamikus|Azt jelzi, hogyan kereshet meg a kiszolgálói tanúsítvány a ServerAuthX509StoreName által megadott tárolóban, a következő támogatott értékkel: FindByThumbprint; FindBySubjectName. |
-|ServerAuthX509FindValue |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A kiszolgálói tanúsítvány megkereséséhez használt keresési szűrő értéke. |
-|ServerAuthX509FindValueSecondary |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A kiszolgálói tanúsítvány megkereséséhez használt keresési szűrő értéke. |
-|ServerAuthX509StoreName |karakterlánc, az alapértelmezett érték a "My" |Dinamikus|Annak az X. 509 tanúsítványtárolónak a neve, amely a főétel szolgáltatás kiszolgálói tanúsítványát tartalmazza. |
-|StartApplicationPortRange |int, az alapértelmezett érték 0 |Statikus|Az üzemeltetési alrendszer által kezelt alkalmazás-portok kezdete. Kötelező, ha a EndpointFilteringEnabled a gazdagépen igaz. |
-|StateTraceInterval |Az idő másodpercben, az alapértelmezett érték 300 |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A csomópontok állapotának nyomkövetési időköze az egyes csomópontokon és az FM/FMM csomópontokon. |
-|UserRoleClientX509FindType |string (alapértelmezett érték: "FindByThumbprint") |Dinamikus|Azt jelzi, hogyan lehet a UserRoleClientX509StoreName által megadott tárolóban megkeresni a tanúsítványokat a következő támogatott érték szerint: FindByThumbprint; FindBySubjectName. |
-|UserRoleClientX509FindValue |karakterlánc, az alapértelmezett érték: "" |Dinamikus|Keresési szűrő értéke, amely az alapértelmezett felhasználói szerepkör FabricClient tartozó tanúsítvány megkeresésére szolgál. |
-|UserRoleClientX509FindValueSecondary |karakterlánc, az alapértelmezett érték: "" |Dinamikus|Keresési szűrő értéke, amely az alapértelmezett felhasználói szerepkör FabricClient tartozó tanúsítvány megkeresésére szolgál. |
-|UserRoleClientX509StoreName |karakterlánc, az alapértelmezett érték a "My" |Dinamikus|Annak az X. 509 tanúsítványtárolónak a neve, amely az alapértelmezett felhasználói szerepkör FabricClient tanúsítványát tartalmazza. |
+|ÜgyfélAuthX509FindType |karakterlánc, az alapértelmezett érték a "FindByThumbprint" |Dinamikus|Azt jelzi, hogy miként kereshet tanúsítványt az ÜgyfélAuthX509StoreName Supported érték: FindByThumbprint érték által megadott tárolóban; FindBySubjectName. |
+|ClientAuthX509FindValue |karakterlánc, az alapértelmezett a "" | Dinamikus|Keresési szűrő értéke a FabricClient alapértelmezett rendszergazdai szerepkör tanúsítványának megkereséséhez. |
+|ClientAuthX509FindValueMásodlagos |karakterlánc, az alapértelmezett a "" |Dinamikus|Keresési szűrő értéke a FabricClient alapértelmezett rendszergazdai szerepkör tanúsítványának megkereséséhez. |
+|ClientAuthX509StoreName |karakterlánc, az alapértelmezett érték "Saját" |Dinamikus|Az Alapértelmezett hálózati szerepkör FabricClient tanúsítványát tartalmazó X.509 tanúsítványtároló neve. |
+|ClusterX509FindType típus |karakterlánc, az alapértelmezett érték a "FindByThumbprint" |Dinamikus|Azt jelzi, hogy miként kereshet fürttanúsítványt a ClusterX509StoreName Supported values: "FindByThumbprint" által megadott tárolóban; "FindBySubjectName" with "FindBySubjectName"; ha több találat van; a legtávolabbi lejárati állságú t használja. |
+|ClusterX509FindValue |karakterlánc, az alapértelmezett a "" |Dinamikus|A fürttanúsítvány megkereséséhez használt keresési szűrőérték. |
+|ClusterX509FindValueMásodlagos |karakterlánc, az alapértelmezett a "" |Dinamikus|A fürttanúsítvány megkereséséhez használt keresési szűrőérték. |
+|ClusterX509Storename |karakterlánc, az alapértelmezett érték "Saját" |Dinamikus|A fürtön belüli kommunikáció biztosításához fürttanúsítványt tartalmazó X.509 tanúsítványtároló neve. |
+|EndApplicationPortRange |Int, az alapértelmezett érték 0 |Statikus|Az alrendszer üzemeltetése által kezelt alkalmazásportok vége (nincs bezárólag). Szükséges, ha az EndpointFilteringEnabled igaz a tárhelyen. |
+|ServerAuthX509FindType |karakterlánc, az alapértelmezett érték a "FindByThumbprint" |Dinamikus|Azt jelzi, hogy miként kereshetkiszolgálói tanúsítványt a ServerAuthX509StoreName Supported érték: FindByThumbprint érték által megadott tárolóban; FindBySubjectName. |
+|ServerAuthX509FindValue |karakterlánc, az alapértelmezett a "" |Dinamikus|A kiszolgálótanúsítvány kereséséhez használt keresési szűrőérték. |
+|ServerAuthX509FindValueMásodlagos |karakterlánc, az alapértelmezett a "" |Dinamikus|A kiszolgálótanúsítvány kereséséhez használt keresési szűrőérték. |
+|ServerAuthX509StoreName |karakterlánc, az alapértelmezett érték "Saját" |Dinamikus|Az első tárcsai kiszolgálói tanúsítványt tartalmazó X.509 tanúsítványtároló neve. |
+|StartApplicationPortRange |Int, az alapértelmezett érték 0 |Statikus|Az alrendszer üzemeltetése által kezelt alkalmazásportok kezdete. Szükséges, ha az EndpointFilteringEnabled igaz a tárhelyen. |
+|StateTraceInterval |Idő másodpercben, az alapértelmezett érték 300 |Statikus|Adja meg az időtartományt másodpercben. A csomópont állapotának nyomon követésének időköze az FM/FMM egyes csomópontjain és csomópontjaiban. |
+|UserRoleClientX509FindType |karakterlánc, az alapértelmezett érték a "FindByThumbprint" |Dinamikus|Azt jelzi, hogy miként kereshet tanúsítványt a UserRoleClientX509StoreName Supported érték: FindByThumbprint érték által megadott tárolóban; FindBySubjectName. |
+|UserRoleClientX509FindValue |karakterlánc, az alapértelmezett a "" |Dinamikus|A FabricClient alapértelmezett felhasználói szerepkör tanúsítványának kereséséhez használt keresési szűrőérték. |
+|UserRoleClientX509FindValueMásodlagos |karakterlánc, az alapértelmezett a "" |Dinamikus|A FabricClient alapértelmezett felhasználói szerepkör tanúsítványának kereséséhez használt keresési szűrőérték. |
+|UserRoleClientX509Áruházneve |karakterlánc, az alapértelmezett érték "Saját" |Dinamikus|A FabricClient alapértelmezett felhasználói szerepkörhöz tanúsítványt tartalmazó X.509 tanúsítványtároló neve. |
 
-## <a name="failovermanager"></a>FailoverManager
+## <a name="failovermanager"></a>Feladatátvétel-kezelő
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AllowNodeStateRemovedForSeedNode|bool, az alapértelmezett érték FALSE |Dinamikus|Annak jelzése, hogy engedélyezett-e a csomópont állapotának eltávolítása a magok csomópontja számára |
-|BuildReplicaTimeLimit|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (3600)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Állapot-nyilvántartó replika létrehozásának határideje; a figyelmeztetési állapot jelentésének elindítását követően |
-|ClusterPauseThreshold|int, az alapértelmezett érték 1|Dinamikus|Ha a rendszer csomópontjainak száma az alábbi érték alá kerül, akkor az elhelyezés; terheléselosztás; és a feladatátvétel le van állítva. |
-|CreateInstanceTimeLimit|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (300)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Állapot nélküli példány létrehozásának határideje; a figyelmeztetési állapot jelentésének elindítását követően |
-|ExpectedClusterSize|int, az alapértelmezett érték 1|Dinamikus|A fürt első indításakor; az FM megvárja, amíg a több csomópont jelentést készít a többi szolgáltatás megkezdése előtt. például a rendszerszolgáltatások, például a Névadás. Ennek az értéknek a növelésével megnövekszik a fürt elindításához szükséges idő. azonban megakadályozza, hogy a korai csomópontok túlterhelve legyenek, és a további átlépések is szükségesek lesznek, ahogy a további csomópontok online állapotba kerülnek. Ezt az értéket általában úgy kell beállítani, hogy a fürt kezdeti méretének néhány kis hányada legyen. |
-|ExpectedNodeDeactivationDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az a várható időtartam, amikor egy csomópont inaktiválást végez a ben. |
-|ExpectedNodeFabricUpgradeDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A csomópontnak a Windows Fabric frissítése során történő frissítésének várható időtartama. |
-|ExpectedReplicaUpgradeDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az az időtartam, ameddig az összes replikát frissíteni kell egy csomóponton az alkalmazás frissítése során. |
-|IsSingletonReplicaMoveAllowedDuringUpgrade|bool, az alapértelmezett érték TRUE (igaz)|Dinamikus|Ha True értékre van állítva; a cél másodpéldány-készlet 1. méretével rendelkező replikák a frissítés közben is áthelyezhetők. |
-|MinReplicaSetSize|int, az alapértelmezett érték 3|Nem engedélyezett|Ez a replikakészlet minimális mérete az FM számára. Ha az aktív FM-replikák száma ezen érték alá csökken; az FM elutasítja a fürt változásait egészen addig, amíg a replikák minimális száma helyre nem kerül. |
-|PlacementConstraints|karakterlánc, az alapértelmezett érték: ""|Nem engedélyezett|A feladatátvételi kezelő replikáinak elhelyezésére vonatkozó korlátozások |
-|PlacementTimeLimit|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (600)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A cél replikák számának elérésére vonatkozó időkorlát; a figyelmeztetési állapot jelentésének elindítását követően |
-|QuorumLossWaitDuration |Az idő másodpercben, az alapértelmezett érték a MaxValue |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez a maximális időtartam, amellyel a partíciók kvórum elvesztésének állapotában engedélyezhető. Ha a partíció továbbra is a kvórum elvesztése után következik be az időtartam után; a partíció helyreállítása a kvórum elvesztésével történik azáltal, hogy a leállított replikák elvesznek. Vegye figyelembe, hogy ez adatvesztést eredményezhet. |
-|ReconfigurationTimeLimit|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (300)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az újrakonfigurálás határideje; a figyelmeztetési állapot jelentésének elindítását követően |
-|ReplicaRestartWaitDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. Ez a FMService ReplicaRestartWaitDuration |
-| SeedNodeQuorumAdditionalBufferNodes | int, az alapértelmezett érték 0 | Dinamikus | A felvenni kívánt mag-csomópontok puffere (a vetőmag-csomópontok kvórumával együtt) az FM-nek lehetővé kell tennie, hogy legfeljebb (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) vetőmag-csomópont álljon le. |
-|StandByReplicaKeepDuration|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (3600.0 \* 24 \* 7)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. Ez a FMService StandByReplicaKeepDuration |
-|TargetReplicaSetSize|Int, az alapértelmezett érték 7|Nem engedélyezett|A Windows Fabric által karbantartott FM-replikák száma. A nagyobb szám nagyobb megbízhatóságot eredményez az FM-adatmennyiségnél; kis teljesítményű kompromisszummal. |
-|UserMaxStandByReplicaCount |int, az alapértelmezett érték 1 |Dinamikus|A rendszer által a felhasználói szolgáltatások számára megmaradó készenléti replikák alapértelmezett maximális száma. |
-|UserReplicaRestartWaitDuration |Az idő másodpercben, az alapértelmezett érték 60,0 \* 30 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ha egy megőrzött replika leáll; Windows Fabric vár erre az időtartamra a replika számára, hogy új helyettesítő replikák létrehozása előtt készítsen biztonsági mentést (ami az állapot másolatát igényli). |
-|UserStandByReplicaKeepDuration |Az idő másodpercben, az alapértelmezett érték 3600,0 \* 24 \* 7 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ha egy megőrzött replika vissza fog térni a leállási állapotból; lehetséges, hogy már lecserélték. Ez az időzítő azt határozza meg, hogy az FM mennyi ideig tart a készenléti replika számára az eldobás előtt. |
+|AllowNodeStateRemovedForSeedNode|Bool, az alapértelmezett érték HAMIS |Dinamikus|Megjelölés, amely jelzi, hogy engedélyezett-e a csomópont állapotának eltávolítása egy magcsomóponthoz |
+|BuildReplicaTimeLimit|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(3600)|Dinamikus|Adja meg az időtartományt másodpercben. Az állapotalapú replika létrehozásának határideje; amely után figyelmeztető egészségügyi jelentést indítanak |
+|ClusterPauseThreshold|int, az alapértelmezett érték 1|Dinamikus|Ha a rendszerben lévő csomópontok száma ez az érték alá csökken, akkor az elhelyezés; terheléselosztás; és a feladatátvétel leáll. |
+|CreateInstanceTimeLimit|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(300)|Dinamikus|Adja meg az időtartományt másodpercben. A stateless példány létrehozásának határideje; amely után figyelmeztető egészségügyi jelentést indítanak |
+|Várt fürtméret|int, az alapértelmezett érték 1|Dinamikus|Amikor a fürt kezdetben elindult; az FM megvárja, amíg ez a sok csomópont jelenti magát, mielőtt más szolgáltatásokat helyezne el; beleértve a rendszerszolgáltatásokat, például az elnevezést. Ennek az értéknek a növelésével megnő a fürt indításához szükséges idő; de megakadályozza, hogy a korai csomópontok túlterheltté váljanak, és a további lépések is, amelyek szükségesek lesznek, mivel több csomópont jön létre. Ezt az értéket általában a kezdeti fürtméret egy kis hányadára kell beállítani. |
+|Várt NodedeactivationDuration|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 \* 30)|Dinamikus|Adja meg az időtartományt másodpercben. Ez a csomópont várható időtartama az inaktiválás befejezéséhez. |
+|ExpectedNodeFabricUpgradeDuration|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 \* 30)|Dinamikus|Adja meg az időtartományt másodpercben. Ez a Windows Fabric-frissítés során frissítendő csomópont várható időtartama. |
+|VártReplicaUpgradeDuration|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 \* 30)|Dinamikus|Adja meg az időtartományt másodpercben. Ez a várt időtartam a csomóponton frissítendő összes replikának az alkalmazás frissítése során. |
+|IsSingletonReplicaMoveAllowedKözbenfrissítés közben|bool, az alapértelmezett érték IGAZ|Dinamikus|Ha igaz ra van állítva; az 1-es célreplikával rendelkező replikák a frissítés során áthelyezhetők. |
+|MinReplicaSetMéret|int, az alapértelmezett érték 3|Nem engedélyezett|Ez az FM minimális replikakészlet-mérete. Ha az aktív FM-replikák száma ez az érték alá csökken; az FM mindaddig elutasítja a fürt módosításait, amíg legalább a replikák maz száma helyre nem áll |
+|Elhelyezési kényszerek|karakterlánc, az alapértelmezett a ""|Nem engedélyezett|A feladatátvevő-kezelő replikáinak elhelyezési megkötései |
+|ElhelyezésTimeLimit|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(600)|Dinamikus|Adja meg az időtartományt másodpercben. A célreplikaszám elérésének határideje; amely után figyelmeztető egészségügyi jelentést indítanak |
+|QuorumLossWaitDuration |Idő másodpercben, az alapértelmezett érték MaxValue |Dinamikus|Adja meg az időtartományt másodpercben. Ez az a maximális időtartam, amelynek esetében lehetővé tesszük, hogy egy partíció kvórumveszteség állapotban legyen. Ha a partíció ezen időtartam után is kvórumveszteségben van; a partíció helyreáll a kvórum vesztesége, figyelembe véve a lefelé replikák elveszett. Vegye figyelembe, hogy ez adatvesztést okozhat. |
+|ÚjrakonfigurálásTimeLimit|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(300)|Dinamikus|Adja meg az időtartományt másodpercben. Az újrakonfigurálás határideje; amely után figyelmeztető egészségügyi jelentést indítanak |
+|ReplicaRestartWaitDuration|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 \* 30)|Nem engedélyezett|Adja meg az időtartományt másodpercben. Ez az FMService ReplicaRestartWaitDuration |
+| SeedNodeQuorumAdditionalBufferNodes | int, az alapértelmezett érték 0 | Dinamikus | Puffer vetőmag csomópontok, hogy szükség van fel (együtt kvóruma mag csomópontok) FM lehetővé kell tennie a maximális (totalNumSeedNodes - (seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) vetőmag csomópontok lemegy. |
+|Készenléti replikálási időtartam|Timespan, az alapértelmezett érték Common::TimeSpan::FromSeconds(3600.0 \* 24 \* 7)|Nem engedélyezett|Adja meg az időtartományt másodpercben. Ez az FMService StandByReplicaKeepDuration |
+|CélReplicaSetMéret|int, az alapértelmezett érték 7|Nem engedélyezett|Ez a Windows Fabric által karbantartható FM-replikák célszáma. A nagyobb szám az FM-adatok nagyobb megbízhatóságát eredményezi; egy kis teljesítmény kompromisszumot. |
+|UsermaxStandByReplicaCount (FelhasználómaxStandByReplicaCount) |Int, az alapértelmezett érték 1 |Dinamikus|A rendszer által a felhasználói szolgáltatásokhoz megőrzött standby replikák alapértelmezett maximális száma. |
+|UserReplicaRestartWaitDuration |Idő másodpercben, az alapértelmezett \* érték 60,0 30 |Dinamikus|Adja meg az időtartományt másodpercben. Ha egy megőrzött replika leáll; A Windows Fabric megvárja ezt az időtartamot, amíg a replika biztonsági másolatot készít, mielőtt új cserereplikákat hozna létre (ami az állapot másolatát igényelné). |
+|UserStandByReplicaKeepDuration |Idő másodpercben, alapértelmezett: 3600.0 \* 24 \* 7 |Dinamikus|Adja meg az időtartományt másodpercben. Ha egy megőrzött replika lefelé állapotból tér vissza; lehet, hogy már kicserélték. Ez az időzítő határozza meg, hogy az FM mennyi ideig tartja a készenléti replikát, mielőtt elveti azt. |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|CompletedActionKeepDurationInSeconds | Int, alapértelmezett érték 604800 |Statikus| Ez körülbelül ennyi ideig tart a terminál-állapotú műveletek megőrzése. Ez a StoredActionCleanupIntervalInSeconds is függ; mivel a tisztítási munkák csak ezen az intervallumon hajthatók végre. 604800 7 nap. |
-|DataLossCheckPollIntervalInSeconds|int, az alapértelmezett érték 5|Statikus|Ez az idő az ellenőrzések között, amelyet a rendszer végrehajt, miközben adatvesztésre vár. Az adatvesztési számnak a belső iteráción belüli ellenőrzése DataLossCheckWaitDurationInSeconds/ez. |
-|DataLossCheckWaitDurationInSeconds|int, az alapértelmezett érték 25|Statikus|A teljes időtartam; másodpercek alatt; a rendszer megvárja, amíg az adatvesztés történik. Ez belsőleg használatos a StartPartitionDataLossAsync () API meghívásakor. |
-|MinReplicaSetSize |int, az alapértelmezett érték 0 |Statikus|A FaultAnalysisService MinReplicaSetSize. |
-|PlacementConstraints | karakterlánc, az alapértelmezett érték: ""|Statikus| A FaultAnalysisService PlacementConstraints. |
-|QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A FaultAnalysisService QuorumLossWaitDuration. |
-|ReplicaDropWaitDurationInSeconds|int, alapértelmezett érték 600|Statikus|Ezt a paramétert az adatvesztési API meghívásakor használja a rendszer. Azt határozza meg, hogy a rendszer mennyi ideig várjon, amíg egy replika el fog dobni az eltávolítás után a replika belső meghívása után. |
-|ReplicaRestartWaitDuration |Az idő másodpercben, az alapértelmezett érték 60 perc|Statikus|Másodpercek alatt meg kell adni a TimeSpan. A FaultAnalysisService ReplicaRestartWaitDuration. |
-|StandByReplicaKeepDuration| Az idő másodpercben, az alapértelmezett érték (60*24*7) perc |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A FaultAnalysisService StandByReplicaKeepDuration. |
-|StoredActionCleanupIntervalInSeconds | Int, alapértelmezett érték 3600 |Statikus|Ez azt mutatja, hogy a tároló milyen gyakran lesz törölve. Csak a terminál állapotában lévő műveletek; és ez legalább CompletedActionKeepDurationInSeconds ezelőtt elvégezhető. |
-|StoredChaosEventCleanupIntervalInSeconds | Int, alapértelmezett érték 3600 |Statikus|Milyen gyakran naplózzák a rendszer a tárolót a tisztításhoz. Ha az események száma meghaladja a 30000-et; a tisztítás beindul. |
-|TargetReplicaSetSize |int, az alapértelmezett érték 0 |Statikus|NOT_PLATFORM_UNIX_START a FaultAnalysisService TargetReplicaSetSize. |
+|completedActionKeepdurationinseconds | Int, alapértelmezett: 604800 |Statikus| Ez körülbelül mennyi ideig tarthatja a terminálállapotban lévő műveleteket. Ez a StoredActionCleanupIntervalInSeconds- től is függ; mivel a tisztítási munka csak ezen az intervallumon történik. 604800 az 7 nap. |
+|DataLossCheckPollIntervalinszundum|int, az alapértelmezett érték 5|Statikus|Ez az az idő között, az ellenőrzések a rendszer végez, miközben várja az adatvesztés bekövetkezése. Az adatvesztés idotartamánkénti ellenőrzésének száma DataLossCheckWaitDurationInSeconds/this. |
+|DatalossCheckWaitdurationinszekundumban|int, az alapértelmezett érték 25|Statikus|A teljes idő; másodpercben; hogy a rendszer megvárja az adatvesztést. Ez a startpartitiondatalossasync() api hívása esetén belsőleg használatos. |
+|MinReplicaSetMéret |Int, az alapértelmezett érték 0 |Statikus|A MinReplicaSetSize for FaultAnalysisService. |
+|Elhelyezési kényszerek | karakterlánc, az alapértelmezett a ""|Statikus| A FaultAnalysisService elhelyezési kényszerei. |
+|QuorumLossWaitDuration | Idő másodpercben, az alapértelmezett érték MaxValue |Statikus|Adja meg az időtartományt másodpercben. A QuorumLossWaitDuration for FaultAnalysisService. |
+|ReplicaDropDropWaitdurationinszek|int, az alapértelmezett érték 600|Statikus|Ez a paraméter az adatvesztési API hívásakor használatos. Azt szabályozza, hogy a rendszer mennyi ideig fog várni a replika eldobására, miután a replika eltávolítása belső meghívásra kerül. |
+|ReplicaRestartWaitDuration |Idő másodpercben, az alapértelmezett érték 60 perc|Statikus|Adja meg az időtartományt másodpercben. A ReplicaRestartWaitDuration for FaultAnalysisService. |
+|Készenléti replikálási időtartam| Idő másodpercben, az alapértelmezett érték (60*24*7) perc |Statikus|Adja meg az időtartományt másodpercben. A FaultAnalysisService StandByReplicaKeepDuration szolgáltatása. |
+|StoredActionCleanupIntervalInSeconds | Int, az alapértelmezett érték 3600 |Statikus|Ez az, hogy milyen gyakran a bolt lesz tisztítani. Csak a terminálállapotban végrehajtott műveletek; és hogy a befejezett legalább CompletedActionKeepDurationInSeconds ezelőtt el lesz távolítva. |
+|StoredChaosEventCleanupIntervalInSeconds | Int, az alapértelmezett érték 3600 |Statikus|Ez az, hogy milyen gyakran a bolt lesz auditált a razzia; ha az események száma meghaladja a 30000-et; A razzia beindul. |
+|CélReplicaSetMéret |Int, az alapértelmezett érték 0 |Statikus|NOT_PLATFORM_UNIX_START a TargetReplicaSetSize for FaultAnalysisService. |
 
 ## <a name="federation"></a>Összevonás
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|LeaseDuration |Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Az időtartam, ameddig egy bérlet egy csomópont és a szomszédai között tart. |
-|LeaseDurationAcrossFaultDomain |Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Az az időtartam, ameddig egy bérlet a csomópontok és szomszédaik között a tartalék tartományok között tart. |
+|LeaseDuration (Címbérlet Időtartama) |Idő másodpercben, az alapértelmezett érték 30 |Dinamikus|A bérlet időtartama a csomópont és a szomszédai között. |
+|LeaseDurationAcrossFaultTartomány |Idő másodpercben, az alapértelmezett érték 30 |Dinamikus|A bérlet időtartama a csomópont és a szomszédok között a tartalék tartományok között. |
 
-## <a name="filestoreservice"></a>FileStoreService
+## <a name="filestoreservice"></a>FileStoreService szolgáltatás
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AcceptChunkUpload|bool, az alapértelmezett érték TRUE (igaz)|Dinamikus|A konfigurációs beállítással meghatározhatja, hogy a file Store szolgáltatás elfogadja-e a darabolásos fájl feltöltését, vagy nem a másolási alkalmazáscsomag során. |
-|AnonymousAccessEnabled | Bool, az alapértelmezett érték TRUE (igaz) |Statikus|A FileStoreService-megosztások névtelen hozzáférésének engedélyezése/letiltása. |
-|CommonName1Ntlmx509CommonName|karakterlánc, az alapértelmezett érték: ""|Statikus| Az NTLM-hitelesítés használatakor a CommonName1NtlmPasswordSecret HMAC létrehozásához használt X509-tanúsítvány köznapi neve |
-|CommonName1Ntlmx509StoreLocation|string (alapértelmezett érték: "LocalMachine")|Statikus|A CommonName1NtlmPasswordSecret HMAC létrehozásához használt X509-tanúsítvány tárolási helye az NTLM-hitelesítés használatakor |
-|CommonName1Ntlmx509StoreName|karakterlánc, az alapértelmezett érték a "MY"| Statikus|Az NTLM-hitelesítés használatakor a CommonName1NtlmPasswordSecret HMAC létrehozásához használt X509-tanúsítvány tárolójának neve |
-|CommonName2Ntlmx509CommonName|karakterlánc, az alapértelmezett érték: ""|Statikus|Az NTLM-hitelesítés használatakor a CommonName2NtlmPasswordSecret HMAC létrehozásához használt X509-tanúsítvány köznapi neve |
-|CommonName2Ntlmx509StoreLocation|string (alapértelmezett érték: "LocalMachine")| Statikus|A CommonName2NtlmPasswordSecret HMAC létrehozásához használt X509-tanúsítvány tárolási helye az NTLM-hitelesítés használatakor |
-|CommonName2Ntlmx509StoreName|karakterlánc, az alapértelmezett érték a "MY"|Statikus| Az NTLM-hitelesítés használatakor a CommonName2NtlmPasswordSecret HMAC létrehozásához használt X509-tanúsítvány tárolójának neve |
-|CommonNameNtlmPasswordSecret|SecureString, az alapértelmezett érték a common:: SecureString ("")| Statikus|Az NTLM-hitelesítés használatakor ugyanazt a jelszót használó, a mag által létrehozott jelszó titkos kulcsa |
-|DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromMinutes (5)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A lemezterület ellenőrzésének időintervalluma a jelentéskészítési állapot eseményeihez, ha a lemez nincs elég szabad terület. |
-|DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromMinutes (15)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A lemezterület ellenőrzésének időintervalluma a jelentéskészítési állapot eseményeihez, ha elegendő lemezterület van a lemezen. |
-|EnableImageStoreHealthReporting |bool, az alapértelmezett érték TRUE (igaz) |Statikus|Annak megállapítása, hogy a file Store szolgáltatásnak jelentenie kell-e az állapotát. |
-|FreeDiskSpaceNotificationSizeInKB|Int64, az alapértelmezett érték 25\*1024 |Dinamikus|Annak a szabad lemezterületnek a mérete, amely alatt az állapot figyelmeztetése megjelenhet. A konfiguráció és a FreeDiskSpaceNotificationThresholdPercentage-konfiguráció minimális értéke az állapot-figyelmeztetés küldésének meghatározására szolgál. |
-|FreeDiskSpaceNotificationThresholdPercentage|dupla, alapértelmezett érték 0,02 |Dinamikus|A szabad lemezterület százalékos aránya, amely alatt az állapotra vonatkozó figyelmeztetés jelenhet meg. A konfiguráció és a FreeDiskSpaceNotificationInMB konfiguráció minimális értéke az állapot-figyelmeztetés küldésének meghatározására szolgál. |
-|GenerateV1CommonNameAccount| bool, az alapértelmezett érték TRUE (igaz)|Statikus|Megadja, hogy a rendszer létrehozzon-e egy fiókot a Felhasználónév v1 generálási algoritmussal. A Service Fabric 6,1-es verziótól kezdődően; mindig létrejön egy v2-generációval rendelkező fiók. A v1-fiók a v2-generációt nem támogató verziókról/verzióról történő frissítéshez szükséges (6,1 előtt).|
-|MaxCopyOperationThreads | Uint, az alapértelmezett érték 0 |Dinamikus| A másodlagos által az elsődlegestől másolható párhuzamos fájlok maximális száma. "0" = = magok száma. |
-|MaxFileOperationThreads | Uint, alapértelmezett érték 100 |Statikus| Az elsődlegesen a FileOperations (másolás/áthelyezés) végrehajtásához engedélyezett párhuzamos szálak maximális száma. "0" = = magok száma. |
-|MaxRequestProcessingThreads | Uint, alapértelmezett érték 200 |Statikus|Az elsődlegesen a kérelmek feldolgozására jogosult párhuzamos szálak maximális száma. "0" = = magok száma. |
-|MaxSecondaryFileCopyFailureThreshold | Uint, az alapértelmezett érték 25|Dinamikus|A másoláskor a rendszer a másodpéldány-újrapróbálkozások maximális számát adja meg a másodlagos feladás előtt. |
-|MaxStoreOperations | Uint, alapértelmezett érték 4096 |Statikus|Az elsődlegesen engedélyezett párhuzamos tárolási tranzakciós műveletek maximális száma. "0" = = magok száma. |
-|NamingOperationTimeout |Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az elnevezési művelet végrehajtása időtúllépéssel. |
-|PrimaryAccountNTLMPasswordSecret | SecureString, az alapértelmezett érték üres |Statikus| Az NTLM-hitelesítés használatakor a magot használó, azonos jelszót generáló jelszó titkos kulcsa. |
-|PrimaryAccountNTLMX509StoreLocation | string (alapértelmezett érték: "LocalMachine")|Statikus| Az X509-tanúsítvány tárolási helye, amely az NTLM-hitelesítés használatakor a PrimaryAccountNTLMPasswordSecret HMAC létrehozásához használatos. |
-|PrimaryAccountNTLMX509StoreName | karakterlánc, az alapértelmezett érték a "MY"|Statikus| Az X509-tanúsítvány tárolójának neve, amely az NTLM-hitelesítés használatakor a PrimaryAccountNTLMPasswordSecret HMAC létrehozásához használatos. |
-|PrimaryAccountNTLMX509Thumbprint | karakterlánc, az alapértelmezett érték: ""|Statikus|Az X509-Tanúsítvány ujjlenyomata, amely az NTLM-hitelesítés használatakor a PrimaryAccountNTLMPasswordSecret HMAC létrehozásához használatos. |
-|PrimaryAccountType | karakterlánc, az alapértelmezett érték: "" |Statikus|A rendszerbiztonsági tag elsődleges AccountType az FileStoreService-megosztások ACL-jéhez. |
-|PrimaryAccountUserName | karakterlánc, az alapértelmezett érték: "" |Statikus|Az FileStoreService-megosztások ACL-jéhez tartozó elsődleges fiók felhasználóneve. |
-|PrimaryAccountUserPassword | SecureString, az alapértelmezett érték üres |Statikus|Az FileStoreService-megosztások ACL-címe a rendszerbiztonsági tag elsődleges fiókjának jelszava. |
-|QueryOperationTimeout | Az idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A lekérdezési művelet végrehajtása közbeni időtúllépés. |
-|SecondaryAccountNTLMPasswordSecret | SecureString, az alapértelmezett érték üres |Statikus| Az NTLM-hitelesítés használatakor a magot használó, azonos jelszót generáló jelszó titkos kulcsa. |
-|SecondaryAccountNTLMX509StoreLocation | string (alapértelmezett érték: "LocalMachine") |Statikus|Az X509-tanúsítvány tárolási helye, amely az NTLM-hitelesítés használatakor a SecondaryAccountNTLMPasswordSecret HMAC létrehozásához használatos. |
-|SecondaryAccountNTLMX509StoreName | karakterlánc, az alapértelmezett érték a "MY" |Statikus|Az X509-tanúsítvány tárolójának neve, amely az NTLM-hitelesítés használatakor a SecondaryAccountNTLMPasswordSecret HMAC létrehozásához használatos. |
-|SecondaryAccountNTLMX509Thumbprint | karakterlánc, az alapértelmezett érték: ""| Statikus|Az X509-Tanúsítvány ujjlenyomata, amely az NTLM-hitelesítés használatakor a SecondaryAccountNTLMPasswordSecret HMAC létrehozásához használatos. |
-|SecondaryAccountType | karakterlánc, az alapértelmezett érték: ""|Statikus| A rendszerbiztonsági tag másodlagos AccountType az FileStoreService-megosztások ACL-jéhez. |
-|SecondaryAccountUserName | karakterlánc, az alapértelmezett érték: ""| Statikus|A FileStoreService-megosztások ACL-címe a rendszerbiztonsági tag másodlagos fiókjának felhasználóneve. |
-|SecondaryAccountUserPassword | SecureString, az alapértelmezett érték üres |Statikus|A FileStoreService-megosztások ACL-címe a rendszerbiztonsági tag másodlagos fiókjának jelszava. |
-|SecondaryFileCopyRetryDelayMilliseconds|uint, alapértelmezett érték 500|Dinamikus|A fájlmásolás újrapróbálkozási késleltetése (ezredmásodpercben).|
-|UseChunkContentInTransportMessage|bool, az alapértelmezett érték TRUE (igaz)|Dinamikus|A v 6.4-ben bevezetett, a feltöltési protokoll új verziójának használatára vonatkozó jelző. Ez a protokoll-verzió a Service Fabric Transport használatával fájlokat tölt fel a rendszerkép-tárolóba, amely jobb teljesítményt nyújt, mint a korábbi verziókban használt SMB protokoll. |
+|AcceptChunkUpload|Bool, az alapértelmezett érték IGAZ|Dinamikus|Konfigurációs adatok kal, amelyek meghatározzák, hogy a fájltároló szolgáltatás elfogadja-e az adattömbalapú fájlfeltöltést az alkalmazáscsomag másolása során. |
+|AnonymousAccessEnabled | Bool, az alapértelmezett igaz |Statikus|Névtelen hozzáférés engedélyezése/letiltása a FileStoreService megosztásokhoz. |
+|CommonName1Ntlmx509Közösnév|karakterlánc, az alapértelmezett a ""|Statikus| A HMAC generálásához használt XMAC köznapi neve a CommonName1NtlmPasswordSecret rendszeren NTLM-hitelesítés esetén |
+|CommonName1Ntlmx509StoreLocation|karakterlánc, az alapértelmezett érték "LocalMachine"|Statikus|A HMAC generálásához használt XMAC tárolóhelye a CommonName1NtlmPasswordSecret rendszeren NTLM-hitelesítés használata esetén |
+|CommonName1Ntlmx509StoreName|karakterlánc, az alapértelmezett érték "MY"| Statikus|A HMAC generálásához használt XMAC tárolóneve a CommonName1NtlmPasswordSecret rendszeren NTLM-hitelesítés használata esetén |
+|CommonName2Ntlmx509Közösnév|karakterlánc, az alapértelmezett a ""|Statikus|A HMAC generálásához használt XMAC köznapi neve a CommonName2NtlmPasswordSecret rendszeren NTLM-hitelesítés esetén |
+|CommonName2Ntlmx509StoreLocation|karakterlánc, az alapértelmezett érték "LocalMachine"| Statikus|A HMAC generálásához használt XMAC tárolóhelye a CommonName2NtlmPasswordSecret rendszeren NTLM-hitelesítés használata esetén |
+|CommonName2Ntlmx509StoreName|karakterlánc, az alapértelmezett érték "MY"|Statikus| A HMAC generálásához használt XMAC tárolóneve a CommonName2NtlmPasswordSecret rendszeren NTLM-hitelesítés használata esetén |
+|CommonNameNtlmPasswordSecret|SecureString, az alapértelmezett érték: Common::SecureString("")| Statikus|A jelszó titok, amely magként használt, hogy ugyanazt a jelszót hozza létre NTLM-hitelesítés használatakor |
+|DiskSpaceHealthReportingintervalWhenCloseToOutOfDiskspace |TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(5)|Dinamikus|Adja meg az időtartományt másodpercben. Az állapotesemény jelentéséhez szükséges lemezterület ellenőrzése között eltelt idő, ha a lemez közel van a területhez. |
+|DiskSpaceHealthReportingIntervalWhenenoughDiskSpace |TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(15)|Dinamikus|Adja meg az időtartományt másodpercben. Az állapotesemény jelentéséhez szükséges lemezterület ellenőrzése között eltelt idő, ha van elég hely a lemezen. |
+|EnableImageStoreHealthReporting |bool, az alapértelmezett érték IGAZ |Statikus|Konfigurációs adatokkal határozhatja meg, hogy a fájltároló szolgáltatás nak jelentenie kell-e az állapotát. |
+|FreeDiskspaceNotificationSizeInKB|int64, az alapértelmezett\*érték 25 1024 |Dinamikus|Az a szabad lemezterület mérete, amely alatt egészségügyi figyelmeztetés fordulhat elő. A konfiguráció minimális értéke és a FreeDiskSpaceNotificationThresholdPercentage konfiguráció az állapotfigyelmeztetés elküldésének meghatározásához használatos. |
+|FreeDiskSpaceNotificationThresholdpercentage|dupla, az alapértelmezett érték 0,02 |Dinamikus|A szabad lemezterület azon százaléka, amely alatt állapotfigyelmeztetés fordulhat elő. A konfiguráció minimális értéke és a FreeDiskSpaceNotificationInMB konfiguráció az állapotfigyelmeztetés elküldésének meghatározásához használatos. |
+|GenerateV1CommonNameAccount| bool, az alapértelmezett érték IGAZ|Statikus|Itt adható meg, hogy létre kell-e hozni egy v1-es létrehozási algoritmussal rendelkező fiókot. A Service Fabric 6.1-es verziójával kezdve; egy fiókot v2 generáció mindig létre. A V1-fiók olyan verziókról/verziókra való frissítéshez szükséges, amelyek nem támogatják a V2-generációt (6.1 előtt).|
+|MaxCopyOperationThreads | Uint, az alapértelmezett érték 0 |Dinamikus| A másodlagos párhuzamos fájlok maximális száma, amelyeket másodlagos az elsődlegesfájlból másolhat. '0' == magok száma. |
+|MaxFileOperationThreads | Uint, az alapértelmezett érték 100 |Statikus| A FileOperations (Másolás/áthelyezés) végrehajtásához engedélyezett párhuzamos szálak maximális száma az elsődleges en. '0' == magok száma. |
+|MaxRequestProcessingThreads | Uint, az alapértelmezett érték 200 |Statikus|A kérelmek feldolgozására engedélyezett párhuzamos szálak maximális száma az elsődlegesen. '0' == magok száma. |
+|MaxSecondaryFileCopyFailureThreshold | Uint, alapértelmezett érték 25|Dinamikus|A másodlagos fájlmásolási újrapróbálkozások maximális száma a feladás előtt. |
+|MaxStoreOperations (MaxStoreOperations) | Uint, alapértelmezett érték: 4096 |Statikus|Az elsődlegesen engedélyezett párhuzamos tárolótranzakció-műveletek maximális száma. '0' == magok száma. |
+|NamingOperationTimeout |Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Adja meg az időtartományt másodpercben. Az elnevezési művelet végrehajtásának időtúlidőpontja. |
+|ElsődlegesaccountNTLMPasswordSecret | SecureString, az alapértelmezett érték üres |Statikus| A jelszótitok, amely az NTLM-hitelesítés használatakor ugyanazt a jelszót hozta létre. |
+|PrimaryAccountNTLMX509StoreLocation | karakterlánc, az alapértelmezett érték "LocalMachine"|Statikus| A HMAC létrehozásához használt X509 tanúsítvány tárolóhelye a PrimaryAccountNTLMPasswordSecret rendszeren NTLM-hitelesítés használata esetén. |
+|PrimaryAccountNTLMX509Üzletnév | karakterlánc, az alapértelmezett érték "MY"|Statikus| A HMAC létrehozásához használt X509 tanúsítvány tárolóneve a PrimaryAccountNTLMPasswordSecret rendszeren NTLM-hitelesítés használata esetén. |
+|PrimaryAccountNTLMX509Ujjnyomat | karakterlánc, az alapértelmezett a ""|Statikus|Az X509 tanúsítvány ujjlenyomata, amely a HMAC generálására szolgál a PrimaryAccountNTLMPasswordSecret rendszeren NTLM-hitelesítés használata esetén. |
+|ElsődlegesAccountType | karakterlánc, az alapértelmezett a "" |Statikus|A FileStoreService-megosztások a kulcstag elsődleges AccountType-ja. |
+|PrimaryAccountUserName | karakterlánc, az alapértelmezett a "" |Statikus|A FileStoreService-megosztások a kulcstag elsődleges felhasználóneve. |
+|PrimaryAccountUserPassword | SecureString, az alapértelmezett érték üres |Statikus|A FileStoreService-megosztások a főtag elsődleges fiókjelszava. |
+|QueryOperationTimeout | Idő másodpercben, az alapértelmezett érték 60 |Dinamikus|Adja meg az időtartományt másodpercben. A lekérdezési művelet végrehajtásának időtúlidőpontja. |
+|MásodlagosaccountNTLMPasswordSecret | SecureString, az alapértelmezett érték üres |Statikus| A jelszótitok, amely az NTLM-hitelesítés használatakor ugyanazt a jelszót hozta létre. |
+|Másodlagos accountntLMX509StoreLocation | karakterlánc, az alapértelmezett érték "LocalMachine" |Statikus|A HMAC létrehozásához használt X509 tanúsítvány tárolóhelye a SecondaryAccountNTLMPasswordSecret rendszeren NTLM-hitelesítés használata esetén. |
+|SecondaryaccountNTLMX509Üzletnév | karakterlánc, az alapértelmezett érték "MY" |Statikus|A HMAC létrehozásához használt X509 tanúsítvány tárolóneve a SecondaryAccountNTLMPasswordSecret rendszeren NTLM-hitelesítés használata esetén. |
+|SecondaryAccountNTLMX509Ujjnyomat | karakterlánc, az alapértelmezett a ""| Statikus|Az X509 tanúsítvány ujjlenyomata, amely a HMAC generálására szolgál a SecondaryAccountNTLMPasswordSecret szolgáltatásban NTLM-hitelesítés használata esetén. |
+|Másodlagos AccountType | karakterlánc, az alapértelmezett a ""|Statikus| A FileStoreService-megosztások a főtag másodlagos AccountType-ja. |
+|SecondaryAccountUserName | karakterlánc, az alapértelmezett a ""| Statikus|A FileStoreService-megosztások a főtag másodlagos felhasználóneve. |
+|MásodlagosAccountUserPassword | SecureString, az alapértelmezett érték üres |Statikus|A FileStoreService-megosztások a főtag másodlagos fiókjelszava. |
+|SecondaryFileCopyRetryDelayMillimásodperc|uint, az alapértelmezett érték 500|Dinamikus|A fájl másolásának újrapróbálkozási késleltetése (ezredmásodpercben).|
+|UseChunkContentInTransportMessage|bool, az alapértelmezett érték IGAZ|Dinamikus|A 6.4-es verzióban bevezetett feltöltési protokoll új verziójának használatára szolgáló jelző. Ez a protokollverzió a service fabric átvitele segítségével fájlokat tölt fel a képtárba, amely jobb teljesítményt nyújt, mint a korábbi verziókban használt SMB protokoll. |
 
-## <a name="healthmanager"></a>HealthManager
+## <a name="healthmanager"></a>HealthManager (Egészségmenedzser)
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|EnableApplicationTypeHealthEvaluation |Bool, az alapértelmezett érték false |Statikus|A fürt állapotának kiértékelésére szolgáló házirend: az alkalmazás típusának kiértékelésének engedélyezése. |
-|MaxSuggestedNumberOfEntityHealthReports|Int, alapértelmezett érték 100 |Dinamikus|Azon állapot-jelentések maximális száma, amelyekkel az entitások felvehetik a figyelmet a watchdog állapot-jelentési logikája miatt. Minden egyes Health-entitásnak viszonylag kis számú állapotjelentést kell megtörténnie. Ha a jelentések száma túllépi ezt a számot, problémák merülhetnek fel a watchdog megvalósításával kapcsolatban. Az entitás kiértékelése során a túl sok jelentést tartalmazó entitás figyelmeztetési állapotú jelentéssel van megjelölve. |
+|EnableApplicationTypeHealthEvaluation |Bool, az alapértelmezett érték hamis |Statikus|Fürtállapot-értékelési házirend: engedélyezze alkalmazástípusonkénti állapotkiértékelés. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, az alapértelmezett érték 100 |Dinamikus|Az entitás által a figyelő állapotjelentési logikájával kapcsolatos aggályok felvetése előtt kaphatnak állapotjelentések maximális számát. Minden egészségügyi entitás állítólag egy viszonylag kis számú egészségügyi jelentések. Ha a jelentésszám meghaladja ezt a számot; problémák merülhetnek fel a házőrző végrehajtásával kapcsolatban. A túl sok jelentéssel rendelkező entitást egy Figyelmeztetés állapotjelentésben jelöli meg az entitás kiértékelésekor. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ConsiderWarningAsError |Bool, az alapértelmezett érték false |Statikus|A fürt állapotának kiértékelésére szolgáló házirend: a figyelmeztetések hibákként vannak kezelve. |
-|MaxPercentUnhealthyApplications | int, az alapértelmezett érték 0 |Statikus|A fürt állapotának kiértékelésére szolgáló házirend: a fürt kifogástalan állapotának maximális százaléka. |
-|MaxPercentUnhealthyNodes | int, az alapértelmezett érték 0 |Statikus|A fürt állapotának kiértékelésére szolgáló házirend: a fürt kifogástalan állapotának maximális százaléka. |
+|ConsiderWarningAsError (Figyelemfigyelmeztesse- |Bool, az alapértelmezett érték hamis |Statikus|Fürtállapot-értékelési házirend: a figyelmeztetéseket a rendszer hibaként kezeli. |
+|MaxPercentUnhealthyApplications alkalmazások | Int, az alapértelmezett érték 0 |Statikus|Fürtállapot-kiértékelési házirend: a sérült alkalmazások maximális százaléka lehetővé tette, hogy a fürt kifogástalan állapotú legyen. |
+|MaxPercentUnhealthyNodes | Int, az alapértelmezett érték 0 |Statikus|Fürtállapot-értékelési házirend: a nem megfelelő állapotú csomópontok maximális százaléka lehetővé tette a fürt kifogástalan állapotú. |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|MaxPercentDeltaUnhealthyNodes|Int, az alapértelmezett érték 10|Statikus|A fürt frissítése állapotának kiértékelésére szolgáló házirend: a fürt kifogástalan állapotának megfelelő különbözeti csomópontok maximális százaléka |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, az alapértelmezett érték 15|Statikus|A fürt frissítése állapotának kiértékelésére szolgáló házirend: a nem kifogástalan állapotú csomópontok különbözetének maximális százaléka egy frissítési tartományban, amely lehetővé teszi, hogy a fürt állapota Kifogástalan legyen. |
+|MaxPercentDeltaUnhealthyNodes|int, az alapértelmezett érték 10|Statikus|Fürtfrissítési állapotértékelési házirend: a különbözeti állapotjelző csomópontok maximális százaléka lehetővé tette a fürt kifogástalan állapotának megőrzését |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, az alapértelmezett érték 15|Statikus|Fürtfrissítési állapotkiértékelési házirend: a nem megfelelő állapotú csomópontok különbözetének maximális százaléka egy frissítési tartományban lehetővé tette a fürt kifogástalan állapotának megőrzését |
 
-## <a name="hosting"></a>Üzemeltetés
+## <a name="hosting"></a>Hosting
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ActivationMaxFailureCount |Egész szám, alapértelmezés szerint 10 |Dinamikus|Ennyi alkalommal próbálkozik újra a sikertelen aktiválás a rendszeren, mielőtt feladja |
-|ActivationMaxRetryInterval |Az idő másodpercben, az alapértelmezett érték 300 |Dinamikus|A rendszer minden folyamatos aktiválási hiba esetén újrapróbálkozik az aktiválással akár ActivationMaxFailureCount. A ActivationMaxRetryInterval a várakozási idő intervallumát adja meg az újrapróbálkozás előtt, az összes aktiválási hiba után |
-|ActivationRetryBackoffInterval |Az idő másodpercben, az alapértelmezett érték 5 |Dinamikus|Leállítási időköz minden aktiválási hiba esetén; A rendszer minden folyamatos aktiválási hiba esetén újra megkísérli az aktiválást a MaxActivationFailureCount. Az újrapróbálkozási időköz minden próbálkozáskor a folyamatos aktiválási hiba és az aktiválási visszatartási időköz szorzata. |
-|ActivationTimeout| TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (180)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az alkalmazás aktiválásának időtúllépése; inaktiválás és frissítés. |
-|ApplicationHostCloseTimeout| TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (120)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Ha a háló kilépését egy önaktivált folyamat észleli, A FabricRuntime lezárja a felhasználó gazdagépének (applicationHost) folyamatában lévő összes replikát. Ez a bezárási művelet időtúllépése. |
-| CnsNetworkPluginCnmUrlPort | wstring, alapértelmezett érték: L "48080" | Statikus | Azure CNM API URL-port |
-| CnsNetworkPluginCnsUrlPort | wstring, alapértelmezett érték: L "10090" | Statikus | Azure CNS URL-port |
-|ContainerServiceArguments|karakterlánc, az alapértelmezett érték a "-H localhost: 2375-H npipe://"|Statikus|Service Fabric (SF) a Docker-démont (kivéve a Windows-ügyfélszámítógépeken, például a Win10) kezeli. Ez a konfiguráció lehetővé teszi, hogy a felhasználó olyan egyéni argumentumokat határozzon meg, amelyeket a Docker-démonnak át kell adni a indításakor. Ha egyéni argumentumok vannak megadva, Service Fabric ne adjon át más argumentumot a Docker-motornak a "--Pidfile" argumentum kivételével. Ezért a felhasználóknak nem szabad a "--Pidfile" argumentumot megadniuk az ügyfél argumentumai részeként. Emellett az egyéni argumentumoknak biztosítaniuk kell, hogy a Docker-démon figyelje az alapértelmezett Name pipe-ot a Windowsban (vagy Linux-alapú tartomány socket on Linux rendszeren) ahhoz, hogy a Service Fabric kommunikálni tudjon.|
-|ContainerServiceLogFileMaxSizeInKb|int, alapértelmezett érték 32768|Statikus|A Docker-tárolók által generált naplófájl maximális fájlmérete.  Csak Windows.|
-|Containerimagedownloadtimeout attribútummal állítható|int, másodpercek száma, alapértelmezett érték 1200 (20 perc)|Dinamikus|A rendszerkép letöltésének időkorlátja másodpercben.|
-|ContainerImagesToSkip|karakterlánc, a képek neve függőleges vonallal elválasztva, alapértelmezett érték: ""|Statikus|Egy vagy több olyan tároló-rendszerkép neve, amely nem törölhető.  A PruneContainerImages paraméterrel együtt használható.|
-|ContainerServiceLogFileNamePrefix|string (alapértelmezett érték: "sfcontainerlogs")|Statikus|A Docker-tárolók által létrehozott naplófájlok fájlnevének előtagja.  Csak Windows.|
-|ContainerServiceLogFileRetentionCount|Int, az alapértelmezett érték 10|Statikus|A Docker-tárolók által generált naplófájlok száma a naplófájlok felülírása előtt.  Csak Windows.|
-|CreateFabricRuntimeTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (120)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A szinkronizálási FabricCreateRuntime hívásának időtúllépési értéke |
-|DefaultContainerRepositoryAccountName|karakterlánc, az alapértelmezett érték: ""|Statikus|A ApplicationManifest. xml fájlban megadott hitelesítő adatok helyett használt alapértelmezett hitelesítő adatok |
-|DefaultContainerRepositoryPassword|karakterlánc, az alapértelmezett érték: ""|Statikus|A ApplicationManifest. xml fájlban megadott hitelesítő adatok helyett használt alapértelmezett jelszavas hitelesítő adatok|
-|DefaultContainerRepositoryPasswordType|karakterlánc, az alapértelmezett érték: ""|Statikus|Ha nem üres karakterláncot használ, az érték "titkosított" vagy "SecretsStoreRef" lehet.|
-|DefaultDnsSearchSuffixEmpty|bool, az alapértelmezett érték FALSE|Statikus|Alapértelmezés szerint a szolgáltatás nevét a rendszer a Container Services SF DNS-neveként fűzi hozzá. Ez a funkció leállítja ezt a viselkedést, így a megoldási útvonalon alapértelmezés szerint semmi sem lesz hozzáfűzve az SF DNS-névhez.|
-|DeploymentMaxFailureCount|int, az alapértelmezett érték 20| Dinamikus|Az alkalmazás központi telepítése újra próbálkozik a DeploymentMaxFailureCount, mielőtt az alkalmazás telepítése a csomóponton meghiúsul.| 
-|DeploymentMaxRetryInterval| TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (3600)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az üzemelő példány maximális újrapróbálkozási időköze. Minden folyamatos hiba esetén az újrapróbálkozási időköz kiszámítása percben (DeploymentMaxRetryInterval; Folyamatos meghibásodások száma * DeploymentRetryBackoffInterval) |
-|DeploymentRetryBackoffInterval| TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (10)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az üzembe helyezési hiba időkorlátja. A rendszer minden folyamatos üzembe helyezési hiba esetén újra megkísérli az üzembe helyezést a MaxDeploymentFailureCount. Az újrapróbálkozási időköz a folyamatos üzembe helyezési hiba és a központi telepítési leállítási intervallumának szorzata. |
-|DisableContainers|bool, az alapértelmezett érték FALSE|Statikus|A tárolók letiltására szolgáló konfiguráció a DisableContainerServiceStartOnContainerActivatorOpen helyett, amely elavult konfiguráció |
-|DisableDockerRequestRetry|bool, az alapértelmezett érték FALSE |Dinamikus| Alapértelmezés szerint az SF a DD-vel (Docker Dameon) és a (z) "DockerRequestTimeout" időtúllépéssel kommunikál a hozzájuk küldött összes http-kérelemnél. Ha a DD nem válaszol az adott időszakon belül; Az SF újraküldi a kérést, ha a legfelső szintű művelet továbbra is hátralévő ideig tart.  HyperV-tárolóval; A DD időnként sokkal több időt vesz igénybe, hogy felvegye a tárolót, vagy inaktiválja azt. Ilyen esetekben a DD-kérelmek időtúllépése az SF perspektívából, az SF pedig újrapróbálkozik a művelettel. Néha úgy tűnik, hogy a DD-ra nagyobb nyomást okoz. Ez a konfiguráció lehetővé teszi az újrapróbálkozások letiltását, és várjon, amíg a DD válaszol. |
-|DnsServerListTwoIps | bool, az alapértelmezett érték FALSE | Statikus | Ez a jelző kétszer hozzáadja a helyi DNS-kiszolgálót az időszakos megoldási problémák enyhítése érdekében. |
-| DoNotInjectLocalDnsServer | bool, az alapértelmezett érték FALSE | Statikus | Megakadályozza, hogy a futtatókörnyezet a helyi IP-címet a tárolók DNS-kiszolgálójának beinjektálja. |
-|EnableActivateNoWindow| bool, az alapértelmezett érték FALSE|Dinamikus| Az aktivált folyamat a háttérben, konzol nélkül jön létre. |
-|EnableContainerServiceDebugMode|bool, az alapértelmezett érték TRUE (igaz)|Statikus|A Docker-tárolók naplózásának engedélyezése/letiltása.  Csak Windows.|
-|EnableDockerHealthCheckIntegration|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Lehetővé teszi a Docker HEALTHCHECK-események integrálását Service Fabric rendszerállapot-jelentéssel |
-|EnableProcessDebugging|bool, az alapértelmezett érték FALSE|Dinamikus| Lehetővé teszi az alkalmazás-gazdagépek indítását a hibakeresőben |
-|EndpointProviderEnabled| bool, az alapértelmezett érték FALSE|Statikus| Lehetővé teszi a végponti erőforrások hálón keresztüli kezelését. A FabricNode-ben a kezdő és a záró alkalmazás-porttartomány meghatározását igényli. |
-|FabricContainerAppsEnabled| bool, az alapértelmezett érték FALSE|Statikus| |
-|FirewallPolicyEnabled|bool, az alapértelmezett érték FALSE|Statikus| Engedélyezi a tűzfal portjainak megnyitását a végponti erőforrásokhoz a ServiceManifest megadott explicit portokkal. |
-|GetCodePackageActivationContextTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (120)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A CodePackageActivationContext-hívások időtúllépési értéke. Ez nem alkalmazható az ad hoc szolgáltatásokra. |
-|GovernOnlyMainMemoryForProcesses|bool, az alapértelmezett érték FALSE|Statikus|Az erőforrás-szabályozás alapértelmezett viselkedése az, hogy a MemoryInMB megadott korlátot a folyamat által használt teljes memória (RAM + swap) mennyisége határozza meg. Ha túllépi a korlátot; a folyamat OutOfMemory-kivételt fog kapni. Ha a paraméter értéke TRUE (igaz). a korlát csak a folyamat által használt RAM memória mennyiségére lesz alkalmazva. Ha túllépi a korlátot; Ha a beállítás értéke TRUE (igaz); Ezután az operációs rendszer a fő memóriát a lemezre fogja cserélni. |
-|IPProviderEnabled|bool, az alapértelmezett érték FALSE|Statikus|Engedélyezi az IP-címek kezelését. |
-|IsDefaultContainerRepositoryPasswordEncrypted|bool, az alapértelmezett érték FALSE|Statikus|Azt jelzi, hogy a DefaultContainerRepositoryPassword titkosítva van-e.|
-|LinuxExternalExecutablePath|string (alapértelmezett érték: "/usr/bin/") |Statikus|A csomóponton található külső végrehajtható parancsok elsődleges könyvtára.|
-|NTLMAuthenticationEnabled|bool, az alapértelmezett érték FALSE|Statikus| Lehetővé teszi az NTLM használatát a más felhasználóként futó kód-csomagok esetében, hogy a számítógépek folyamatai biztonságosan kommunikálhassanak. |
-|NTLMAuthenticationPasswordSecret|SecureString, az alapértelmezett érték a common:: SecureString ("")|Statikus|A titkosított, amely az NTLM-felhasználók jelszavának előállítására szolgál. Ha a NTLMAuthenticationEnabled értéke TRUE (igaz), be kell állítani. A telepítő érvényesíti. |
-|NTLMSecurityUsersByX509CommonNamesRefreshInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromMinutes (3)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Környezet-specifikus beállítások azt az időszakot, amikor a gazdagép a FileStoreService NTLM-konfigurációhoz használt új tanúsítványokat keres. |
-|NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromMinutes (4)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A tanúsítvány köznapi neveit használó NTLM-felhasználók konfigurálásának időtúllépése. Az NTLM-felhasználók a FileStoreService-megosztásokhoz szükségesek. |
-|PruneContainerImages|bool, az alapértelmezett érték FALSE|Dinamikus| Távolítsa el a nem használt alkalmazás-tároló lemezképeit a csomópontokból. Ha egy alkalmazásban (törölnek a Service Fabric-fürtről, az alkalmazás által használt tároló-lemezképek el lesznek távolítva azokon a csomópontokon, amelyeken a Service Fabric letöltötte. A metszés óránként fut, így akár egy órát is igénybe vehet, amíg a lemezképek el lesznek távolítva a fürtből.<br>Service Fabric soha nem tölti le és nem távolítja el az alkalmazáshoz nem kapcsolódó képeket.  A manuálisan letöltött, nem kapcsolódó rendszerképeket explicit módon el kell távolítani.<br>A ContainerImagesToSkip paraméterben meg lehet adni azokat a lemezképeket, amelyeket nem szabad törölni.| 
-|RegisterCodePackageHostTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (120)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A FabricRegisterCodePackageHost-szinkronizálási hívás időtúllépési értéke. Ez csak a többcsomagos csomagok alkalmazás-gazdagépekre vonatkozik, például a FWP |
-|requestTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (30)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Ez a felhasználó alkalmazás-gazdagépe és a háló folyamata közötti, különböző üzemeltetési műveletekhez, például a gyári regisztrációhoz való kommunikáció időtúllépését jelenti. futtatókörnyezet regisztrálása. |
-|RunAsPolicyEnabled| bool, az alapértelmezett érték FALSE|Statikus| Lehetővé teszi a programkódok futtatását a felhasználótól eltérő helyi felhasználóként, amely a háló folyamatát futtatja. Ennek a házirend-hálónak az engedélyezéséhez RENDSZERként vagy SeAssignPrimaryTokenPrivilege rendelkező felhasználóként kell futnia. |
-|ServiceFactoryRegistrationTimeout| TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (120)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A szinkronizálási regiszter időtúllépési értéke (állapot nélküli/állapot-nyilvántartó) ServiceFactory hívása |
-|ServiceTypeDisableFailureThreshold |Egész szám, alapértelmezés szerint 1 |Dinamikus|Ez a küszöbérték, amely után a rendszer értesíti a FailoverManager (FM), hogy letiltsa a szolgáltatás típusát a csomóponton, és egy másik csomópontot próbál meg elhelyezésre. |
-|ServiceTypeDisableGraceInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, amely után a szolgáltatástípus le lehet tiltani |
-|ServiceTypeRegistrationTimeout |Az idő másodpercben, az alapértelmezett érték 300 |Dinamikus|A ServiceType számára engedélyezett maximális idő a hálóban |
-|UseContainerServiceArguments|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Ez a konfiguráció azt adja meg, hogy a gazdagép a Docker Daemon-hoz tartozó argumentumokat (a config ContainerServiceArguments-ben megadva) hagyja ki.|
+|ActivationMaxFailureCount |Egész szám, az alapértelmezett érték 10 |Dinamikus|Azon alkalmak száma, amikor a rendszer újrapróbálkozása sikertelen volt az aktiválás során, mielőtt feladta volna |
+|AktiválásMaxRetryInterval |Idő másodpercben, az alapértelmezett érték 300 |Dinamikus|Minden folyamatos aktiválási hiba esetén a rendszer újrapróbálkozik az aktiválással az AktiválásMaxFailureCount-ig. Az ActivationMaxRetryInterval minden aktiválási hiba után a Várakozási idő intervallumát adja meg az újrapróbálkozás előtt |
+|ActivationRetryBackoffInterval |Idő másodpercben, az alapértelmezett érték 5 |Dinamikus|Visszalépési időköz minden aktiválási hibán; Minden folyamatos aktiválási hiba esetén a rendszer újrapróbálkozik az aktiválással a MaxActivationFailureCount értékig. Az újrapróbálkozási időköz minden próbálkozáskor a folyamatos aktiválási hiba és az aktiválási visszalépési időköz eredménye. |
+|Aktiválási időout| TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(180)|Dinamikus| Adja meg az időtartományt másodpercben. Az alkalmazás aktiválásának időmeghosszabbítása; kikapcsolása és frissítése. |
+|ApplicationHostCloseTimeout| TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus| Adja meg az időtartományt másodpercben. Amikor a Fabric kilépését egy önaktivált folyamatok észlelik; FabricRuntime bezárja az összes replikák a felhasználó gazdagép (applicationhost) folyamat. Ez a szoros művelet időhatora. |
+| CnsNetworkPluginCnmUrlPort | wstring, az alapértelmezett érték L"48080" | Statikus | Azure cnm api URL-port |
+| CnsNetworkPluginCnsUrlPort | wstring, az alapértelmezett érték L"10090" | Statikus | Azure cns URL-port |
+|ContainerServiceArguments|karakterlánc, az alapértelmezett érték :"-H localhost:2375 -H npipe://"|Statikus|A Service Fabric (SF) kezeli a docker démont (kivéve a Windows ügyfélgépeken, például a Win10-en). Ez a konfiguráció lehetővé teszi a felhasználó számára, hogy adja meg az egyéni argumentumokat, amelyeket át kell adni a docker démon indításakor. Ha egyéni argumentumok vannak megadva, a Service Fabric nem adja át a Docker-motornak semmilyen más argumentumot, kivéve a "--pidfile" argumentumot. Ezért a felhasználók nak nem szabad megadniuk a "--pidfile" argumentumot az ügyfélargumentumaik részeként. Emellett az egyéni argumentumok biztosítania kell, hogy a docker démon figyeli az alapértelmezett névcsövet a Windows (vagy unix domain socket Linux) a Service Fabric, hogy képes legyen kommunikálni vele.|
+|ContainerServiceLogFileMaxSizeInKb|int, az alapértelmezett érték 32768|Statikus|A docker-tárolók által létrehozott naplófájl maximális fájlmérete.  Csak Windows.|
+|ContainerImageDownloadTimeout|int, másodpercek száma, alapértelmezett 1200 (20 mins)|Dinamikus|A kép letöltése előtti másodpercek száma időtúljár.|
+|ContainerImagesToSkip (Konténerképek – Ugrás|karakterlánc, képnevek függőleges vonalkarakterrel elválasztva, az alapértelmezett ""|Statikus|Egy vagy több olyan tárolórendszerkép neve, amelyet nem szabad törölni.  A PruneContainerImages paraméterrel használható.|
+|ContainerServiceNaplóFájlnév-előtag|karakterlánc, az alapértelmezett érték "sfcontainerlogs"|Statikus|A docker-tárolók által létrehozott naplófájlok fájlnév-előtagja.  Csak Windows.|
+|ContainerServiceServiceFileRetentionCount|int, az alapértelmezett érték 10|Statikus|A docker-tárolók által a naplófájlok felülírása előtt létrehozott naplófájlok száma.  Csak Windows.|
+|FabricRuntimetimeout létrehozása|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus| Adja meg az időtartományt másodpercben. A sync FabricCreateRuntime hívás időtúlértéke |
+|DefaultContainerRepositoryAccountName|karakterlánc, az alapértelmezett a ""|Statikus|Az ApplicationManifest.xml fájlban megadott hitelesítő adatok helyett használt alapértelmezett hitelesítő adatok |
+|DefaultContainerRepositoryPassword|karakterlánc, az alapértelmezett a ""|Statikus|Az ApplicationManifest.xml fájlban megadott hitelesítő adatok helyett használt alapértelmezett jelszóhitelesítő adatok|
+|DefaultContainerRepositoryPasswordType típus|karakterlánc, az alapértelmezett a ""|Statikus|Ha nem üres karakterlánc, az érték lehet "Titkosított" vagy "SecretsStoreRef".|
+|DefaultDnsSearchSuffixEmpty|az alapértelmezett érték HAMIS|Statikus|Alapértelmezés szerint a szolgáltatás neve hozzávan fűzve a tárolószolgáltatások SF DNS-nevéhez. Ez a szolgáltatás leállítja ezt a viselkedést, így a megoldási útvonalban alapértelmezés szerint semmi sem fűzi hozzá az SF DNS-nevét.|
+|TelepítésMaxFailureCount|int, az alapértelmezett érték 20| Dinamikus|Az alkalmazás központi telepítése a TelepítésMaxFailureCount alkalommal újra meglesz kísérelve, mielőtt az alkalmazás központi telepítése a csomóponton megbukna.| 
+|TelepítésMaxRetryInterval| TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(3600)|Dinamikus| Adja meg az időtartományt másodpercben. A telepítés maximális újrapróbálkozási időköze. Minden folyamatos hiba esetén az újrapróbálkozási időköz min( DeploymentMaxRetryInterval; Folyamatos hibák száma * DeploymentRetryBackoffInterval) |
+|DeploymentRetryBackoffInterval| TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(10)|Dinamikus|Adja meg az időtartományt másodpercben. A központi telepítési hiba visszalépési időköze. Minden folyamatos üzembe helyezési hiba esetén a rendszer újra megpróbálja a központi telepítést a MaxDeploymentFailureCount-ig. Az újrapróbálkozási időköz a folyamatos üzembe helyezési hiba és a központi telepítési visszalépési időköz eredménye. |
+|DisableContainers (Letiltási tárolók|az alapértelmezett érték HAMIS|Statikus|Konfiguráció a tárolók letiltásához - a DisableContainerServiceStartOnContainerActivatorOpen helyett használatos, amely elavult konfigurációs |
+|DisableDockerRequestRetry|az alapértelmezett érték HAMIS |Dinamikus| Alapértelmezés szerint az SF kommunikál a DD-vel (docker dameon) a "DockerRequestTimeout" időtúloldalán minden hozzá küldött http-kérelemhez. Ha a DD nem válaszol ezen az időszakon belül; Az SF újraküldi a kérelmet, ha a legfelső szintű műveletnek még hátra van.  A hyperv konténer; A DD néha sokkal több időt vesz igénybe a tároló felhozásához vagy inaktiválásához. Ilyen esetekben a DD kérelem időbeli ki az SF szempontjából, és SF újrapróbálkozik a műveletet. Néha ez úgy tűnik, hogy növeli a nyomást a DD. Ez a konfiguráció lehetővé teszi, hogy tiltsa le ezt az újrapróbálkozást, és várja meg, amíg a DD válaszol. |
+|DnsServerListTwoIps | Bool, az alapértelmezett érték HAMIS | Statikus | Ez a jelzők kétszer adják hozzá a helyi dns-kiszolgálót, hogy enyhítsék a problémák időszakos megoldását. |
+| DoNotInjectLocalDnsserver | az alapértelmezett érték HAMIS | Statikus | Megakadályozza, hogy a futásidő a helyi IP-címet dns-kiszolgálóként adja be a tárolókhoz. |
+|EnableActivateNoWindow| az alapértelmezett érték HAMIS|Dinamikus| Az aktivált folyamat jön létre a háttérben konzol nélkül. |
+|EnableContainerServiceDebugMode|bool, az alapértelmezett érték IGAZ|Statikus|A docker-tárolók naplózásának engedélyezése/letiltása.  Csak Windows.|
+|EnableDockerHealthCheckIntegráció|bool, az alapértelmezett érték IGAZ|Statikus|Lehetővé teszi a docker HEALTHCHECK események integrálását a Service Fabric rendszerállapot-jelentésével |
+|EnableProcessDebugging|az alapértelmezett érték HAMIS|Dinamikus| Lehetővé teszi az alkalmazásállomások indítását a hibakereső alatt |
+|Végpontszolgáltató engedélyezve| az alapértelmezett érték HAMIS|Statikus| Lehetővé teszi a végponti erőforrások kezelése a Fabric által. A FabricNode kezdő és záró alkalmazásporttartományának specifikációja szükséges. |
+|FabricContainerAppsEnabled| az alapértelmezett érték HAMIS|Statikus| |
+|FirewallPolicyEnabled|az alapértelmezett érték HAMIS|Statikus| Tűzfalportok megnyitásának engedélyezése a ServiceManifest-ben megadott explicit portokkal rendelkező végponti erőforrások számára |
+|GetCodePackageActivationContextTimeout|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus|Adja meg az időtartományt másodpercben. A CodePackageActivationContext hívások időtúlértéke. Ez nem vonatkozik az ad hoc szolgáltatásokra. |
+|GovernOnlyMainMemoryForFolyamatok|az alapértelmezett érték HAMIS|Statikus|Az erőforrás-szabályozás alapértelmezett viselkedése a MemoryInMB-ben megadott korlát ot a folyamat által használt teljes memória (RAM + swap) mennyiségére korlátozza. Ha túllépik a határértéket; a folyamat outOfmemory kivételt kap. Ha ez a paraméter igaz értékre van állítva; a korlát csak arra a RAM-memóriára lesz alkalmazva, amelyet egy folyamat használni fog. Ha ezt a korlátot túllépik; és ha ez a beállítás igaz; akkor os akarat cserél a fő memória -hoz korong. |
+|IPProviderEnabled|az alapértelmezett érték HAMIS|Statikus|Lehetővé teszi az IP-címek kezelését. |
+|IsDefaultContainerRepositoryPasswordEncrypted|az alapértelmezett érték HAMIS|Statikus|Azt jelzi, hogy a DefaultContainerRepositoryPassword titkosítva van-e vagy sem.|
+|LinuxExternalExecutablePath|karakterlánc, az alapértelmezett érték : "/usr/bin/" |Statikus|A csomópont külső végrehajtható parancsainak elsődleges könyvtára.|
+|NTLMAuthenticationenabled|az alapértelmezett érték HAMIS|Statikus| Lehetővé teszi az NTLM használatát a más felhasználókként futó kódcsomagok által, hogy a gépek közötti folyamatok biztonságosan kommunikálhassanak. |
+|NTLMAuthenticationpasswordSecret|SecureString, az alapértelmezett érték: Common::SecureString("")|Statikus|Van egy titkosított van, hogy létrehozásához használt jelszót NTLM felhasználók számára. Be kell állítani, ha az NTLMAuthenticationEnabled értéke igaz. A deployer érvényesítette. |
+|NTLMSecurityusersbyX509CommonNamesRefreshInterval|TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(3)|Dinamikus|Adja meg az időtartományt másodpercben. Környezetspecifikus beállítások Az a rendszeres időköz, amelyen a Tárhely a FileStoreService NTLM konfigurációhoz használandó új tanúsítványokat vizsgálja. |
+|NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(4)|Dinamikus| Adja meg az időtartományt másodpercben. Az NTLM-felhasználók tanúsítványokkal közös nevek használatával történő konfigurálásának időmeghosszabbítása. Az NTLM-felhasználókszükségesek a FileStoreService-megosztásokhoz. |
+|MetszenivalóContainerImages|az alapértelmezett érték HAMIS|Dinamikus| Távolítsa el a nem használt alkalmazástároló-lemezképeket a csomópontokból. Ha egy ApplicationType nincs regisztrálva a Service Fabric-fürtből, az alkalmazás által használt tárolólemezképek törlődnek azokon a csomópontokon, ahol a Service Fabric letöltötte. A metszés óránként fut, így akár egy órát is igénybe vehet (plusz a lemezkép metszéséhez eltelt idő) a lemezképek fürtből való eltávolításához.<br>A Service Fabric soha nem fogja letölteni vagy eltávolítani az alkalmazáshoz nem kapcsolódó képeket.  A manuálisan vagy más módon letöltött, nem kapcsolódó képeket explicit módon el kell távolítani.<br>A nem törölni kívánt lemezképek megadhatók a ContainerImagesToSkip paraméterben.| 
+|RegisterCodePackageHostTimeout|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus| Adja meg az időtartományt másodpercben. A FabricRegisterCodePackageHost szinkronizálási hívásának időtúlértéke. Ez csak a többkódos csomagalkalmazások gazdagépeire vonatkozik, például az FWP-re |
+|Kérésidő-out|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(30)|Dinamikus| Adja meg az időtartományt másodpercben. Ez a felhasználó alkalmazásgazda és a Fabric folyamata közötti kommunikáció időtúljelentkezését jelenti különböző üzemeltetési műveletekhez, például a gyári regisztrációhoz; futásidejű regisztráció. |
+|Runaspolicyenabled| az alapértelmezett érték HAMIS|Statikus| Engedélyezi a futó kódcsomagokat helyi felhasználóként, nem pedig azt a felhasználót, amely alatt a hálófolyamat fut. Annak érdekében, hogy ez a házirend Fabric kell futtatni a RENDSZER vagy a felhasználó, aki SeAssignPrimaryTokenPrivilege. |
+|ServiceFactoryRegistrationTimeout| TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus|Adja meg az időtartományt másodpercben. A szinkronizálási register(Állapotnélküli/Állapotalapú)ServiceFactory hívás időtúlértéke |
+|ServiceTypeDisableFailureThreshold |Egész szám, az alapértelmezett érték 1 |Dinamikus|Ez a hibaszám küszöbértéke, amely után a FailoverManager (FM) értesítést kap arról, hogy tiltsa le a szolgáltatás típusát az adott csomóponton, és próbáljon meg egy másik csomópontot az elhelyezéshez. |
+|ServiceTypeDisableGraceInterval|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(30)|Dinamikus|Adja meg az időtartományt másodpercben. Időintervallum, amely után a szolgáltatástípus letiltható |
+|ServiceTypeRegistrationTimeout |Idő másodpercben, az alapértelmezett érték 300 |Dinamikus|A ServiceType hálóval való regisztrálásának maximális ideje |
+|UseContainerServiceArguments|bool, az alapértelmezett érték IGAZ|Statikus|Ez a konfiguráció azt mondja az üzemeltetési nek, hogy hagyja ki a (config ContainerServiceArguments) átadási argumentumokat a docker démonnak.|
 
-## <a name="httpgateway"></a>HttpGateway
+## <a name="httpgateway"></a>HttpÁtjáró
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ActiveListeners |Uint, alapértelmezett érték 50 |Statikus| A HTTP-kiszolgáló várólistáján közzétenni kívánt olvasási műveletek száma. Ezzel a beállítással megadható, hogy a HttpGateway milyen egyidejű kérelmeket tud kielégíteni. |
-|HttpGatewayHealthReportSendInterval |Az idő másodpercben, az alapértelmezett érték 30 |Statikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, amikor a http-átjáró halmozott állapotú jelentéseket küld az állapotfigyelő kezelőnek. |
-|HttpStrictTransportSecurityHeader|karakterlánc, az alapértelmezett érték: ""|Dinamikus| A HttpGateway által küldött összes válaszban szerepeltetni kívánt HTTP-alapú szigorú átviteli biztonsági fejléc értékének megadása. Ha üres sztringre van beállítva; Ez a fejléc nem fog szerepelni az átjáró válaszában.|
-|IsEnabled|Bool, az alapértelmezett érték false |Statikus| Engedélyezi vagy letiltja a HttpGateway. A HttpGateway alapértelmezés szerint le van tiltva. |
-|MaxEntityBodySize |Uint, alapértelmezett érték 4194304 |Dinamikus|A http-kérésből várható törzs maximális méretét adja meg. Az alapértelmezett érték a 4MB nál. A Httpgateway sikertelen lesz, ha a mérete > Ez az érték. A minimális olvasási méret 4096 bájt. Ezért ennek > = 4096-nek kell lennie. |
+|ActiveListeners |Uint, az alapértelmezett érték 50 |Statikus| A http-kiszolgálóvárólistába felkönyvelni utolesztő olvasmányok száma. Ez határozza meg a HttpGateway által teljesíthető egyidejű kérelmek számát. |
+|HttpGatewayHealthReportSendInterval |Idő másodpercben, az alapértelmezett érték 30 |Statikus|Adja meg az időtartományt másodpercben. Az az időköz, amely en a Http Gateway elküldi a felhalmozott állapotjelentéseket az állapotkezelőnek. |
+|httpStrictTransportSecurityfejléc|karakterlánc,az alapértelmezett ""|Dinamikus| Adja meg a Http Strict Transport Security fejlécértékét, amelyet a HttpGateway által küldött minden válaszban meg kell adni. Ha üres karakterláncra van beállítva; ez a fejléc nem fog szerepelni az átjáróválaszban.|
+|IsEnabled|Bool, az alapértelmezett érték hamis |Statikus| Engedélyezi/letiltja a HttpGateway-t. A HttpGateway alapértelmezés szerint le van tiltva. |
+|MaxEntityBodyMéret |Uint, alapértelmezett érték: 4194304 |Dinamikus|Megadja a törzs maximális méretét, amely egy http-kérelemtől elvárható. Az alapértelmezett érték 4 MB. A Httpgateway sikertelen lesz a kérés, ha ennek az értéknek > méretű. A minimális olvasási adattömb mérete 4096 bájt. Tehát ezt meg kell >= 4096. |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|Engedélyezve |Bool, az alapértelmezett érték false |Statikus|A ImageStoreService engedélyezett jelzője. Alapértelmezett: false |
-|MinReplicaSetSize | int, az alapértelmezett érték 3 |Statikus|A ImageStoreService MinReplicaSetSize. |
-|PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Statikus| A ImageStoreService PlacementConstraints. |
-|QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A ImageStoreService QuorumLossWaitDuration. |
-|ReplicaRestartWaitDuration | Az idő másodpercben, az alapértelmezett érték 60,0 \* 30 |Statikus|Másodpercek alatt meg kell adni a TimeSpan. A ImageStoreService ReplicaRestartWaitDuration. |
-|StandByReplicaKeepDuration | Az idő másodpercben, az alapértelmezett érték 3600,0 \* 2 |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A ImageStoreService StandByReplicaKeepDuration. |
-|TargetReplicaSetSize | Int, az alapértelmezett érték 7 |Statikus|A ImageStoreService TargetReplicaSetSize. |
+|Engedélyezve |Bool, az alapértelmezett érték hamis |Statikus|Az ImageStoreService engedélyezett jelzője. Alapértelmezett: false |
+|MinReplicaSetMéret | Int, az alapértelmezett érték 3 |Statikus|A MinReplicaSetSize for ImageStoreService. |
+|Elhelyezési kényszerek | karakterlánc, az alapértelmezett a "" |Statikus| Az Elhelyezéskényszerek az ImageStoreService számára. |
+|QuorumLossWaitDuration | Idő másodpercben, az alapértelmezett érték MaxValue |Statikus| Adja meg az időtartományt másodpercben. A QuorumLossWaitDuration for ImageStoreService. |
+|ReplicaRestartWaitDuration | Idő másodpercben, az alapértelmezett \* érték 60,0 30 |Statikus|Adja meg az időtartományt másodpercben. A ReplicaRestartWaitDuration for ImageStoreService. |
+|Készenléti replikálási időtartam | Idő másodpercben, az alapértelmezett érték \* 3600,0 2 |Statikus| Adja meg az időtartományt másodpercben. A StandByReplicaKeepDuration for ImageStoreService. |
+|CélReplicaSetMéret | Int, az alapértelmezett érték 7 |Statikus|Az ImageStoreService TargetReplicaSetSize szolgáltatása. |
 
-## <a name="ktllogger"></a>KtlLogger
+## <a name="ktllogger"></a>KtlLogger között
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AutomaticMemoryConfiguration |int, az alapértelmezett érték 1 |Dinamikus|Jelző, amely azt jelzi, hogy a memória beállításait automatikusan és dinamikusan kell-e konfigurálni. Ha a nulla értéket adja meg, a rendszer a memória konfigurációs beállításait közvetlenül használja, és a rendszerfeltételek alapján nem változik. Ha az egyiket, a rendszer automatikusan konfigurálja a memória beállításait, és a rendszerfeltételek alapján változhat. |
-|MaximumDestagingWriteOutstandingInKB | int, az alapértelmezett érték 0 |Dinamikus|Azon KB-os szám, amely lehetővé teszi, hogy a megosztott napló előre jelezze a dedikált naplót. A 0 értékkel jelezze a nem korlátot.
-|SharedLogId |karakterlánc, az alapértelmezett érték: "" |Statikus|A megosztott napló tárolójának egyedi GUID azonosítója. Használja a "" értéket, ha az alapértelmezett elérési utat használja a háló adatai gyökerében. |
-|SharedLogPath |karakterlánc, az alapértelmezett érték: "" |Statikus|A megosztott naplózási tároló helyének elérési útja és fájlneve. Használja a "" lehetőséget az alapértelmezett elérési út használatára a háló adatai gyökerében. |
-|SharedLogSizeInMB |Int, alapértelmezett érték 8192 |Statikus|A megosztott napló tárolójában lefoglalható MB-ban megadott szám. |
-|SharedLogThrottleLimitInPercentUsed|int, az alapértelmezett érték 0 | Statikus | A sávszélesség-szabályozást kiváltó megosztott napló használatának százalékos aránya. Az értéknek 0 és 100 között kell lennie. A 0 érték azt jelenti, hogy az alapértelmezett százalékos értéket használja. A 100 érték azt jelenti, hogy nincs szabályozás. 1 és 99 közötti érték határozza meg, hogy a naplózás hány százalékban fog történni. Ha például a megosztott napló 10 GB-os, és az értéke 90, akkor a szabályozás a NAPLÓZÁSI KÖTETNEK használata után fog történni. Az alapértelmezett érték használata ajánlott.|
-|WriteBufferMemoryPoolMaximumInKB | int, az alapértelmezett érték 0 |Dinamikus|A KB-ban megadott szám, amely lehetővé teszi az írási puffer memória-készletének növelését. A 0 értékkel jelezze a nem korlátot. |
-|WriteBufferMemoryPoolMinimumInKB |Int, alapértelmezett érték 8388608 |Dinamikus|Az írási pufferbeli memória-készlethez először lefoglalni kívánt KB-os szám. A 0 érték megadásával jelezheti, hogy az alapértelmezett korlátnak nem kell konzisztensnek lennie az alábbi SharedLogSizeInMB. |
+|AutomaticMemoryConfiguration (AutomaticMemoryConfiguration) |Int, az alapértelmezett érték 1 |Dinamikus|Jelző, amely azt jelzi, hogy a memóriabeállításokat automatikusan és dinamikusan kell-e konfigurálni. Ha a nulla, akkor a memória konfigurációs beállításait közvetlenül használják, és nem változnak a rendszer feltételek alapján. Ha az egyik, akkor a memória beállításai automatikusan konfigurálva vannak, és a rendszer feltételek szerint változhatnak. |
+|MaximumDestagingWriteOutstandingInKB | Int, az alapértelmezett érték 0 |Dinamikus|A megosztott napló nak a dedikált napló előtt előrelépni engedélyező KB-száma. A 0 használatával jelezze a nincs korlátot.
+|SharedLogId |karakterlánc, az alapértelmezett a "" |Statikus|A megosztott naplótároló egyedi guid azonosítója. Használja a "" értéket, ha a hálóadat-gyökér alapértelmezett elérési útját használja. |
+|SharedLogPath |karakterlánc, az alapértelmezett a "" |Statikus|A megosztott naplótároló elérési útja és fájlneve a helyhez. Használja a "" alapértelmezett elérési út a háló adatgyökér alatt. |
+|SharedLogSizeInMB |Int, alapértelmezett: 8192 |Statikus|A megosztott naplótárolóban lefoglalandó MB száma. |
+|SharedLogThrottleLimitInUsed|int, az alapértelmezett érték 0 | Statikus | A megosztott napló használatának százalékos aránya, amely szabályozást okoz. Az értéknek 0 és 100 között kell lennie. A 0 érték az alapértelmezett százalékértéket jelenti. A 100-as érték azt jelenti, hogy egyáltalán nincs szabályozás. Az 1 és 99 közötti érték a naplóhasználat azon százalékát adja meg, amely felett a szabályozás megtörténik; például ha a megosztott napló 10 GB-os, és az érték 90, akkor a szabályozás akkor következik be, amikor 9 GB-ot használ. Az alapértelmezett érték használata ajánlott.|
+|WriteBufferMemoryPoolMaximuminKB | Int, az alapértelmezett érték 0 |Dinamikus|Az írási puffermemória-készlet felnőéséhez lehetővé tenni. A 0 használatával jelezze a nincs korlátot. |
+|WriteBufferMemoryPoolMinimumInKB |Int, alapértelmezett: 8388608 |Dinamikus|Az írási puffermemória-készlethez eredetileg lefoglalandó KB-szám. A 0 használatával jelezheti, hogy az alapértelmezett értéknek konzisztensnek kell lennie az alábbi SharedLogSizeInMB-mal. |
 
 ## <a name="managedidentitytokenservice"></a>ManagedIdentityTokenService
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|IsEnabled|bool, az alapértelmezett érték FALSE|Statikus|A felügyelt identitási jogkivonat szolgáltatás jelenlétének és állapotának szabályozása a fürtben; ez az előfeltétel a Service Fabric alkalmazások felügyelt identitási funkciójának használatához.|
+|IsEnabled|az alapértelmezett érték HAMIS|Statikus|A felügyelt identitásjogkivonat-szolgáltatás jelenlétének és állapotának a fürtben való jelenlétének és állapotának szabályozása jelző,ez a Service Fabric-alkalmazások felügyelt identitásfunkcióinak használatának előfeltétele.|
 
 ## <a name="management"></a>Kezelés
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AutomaticUnprovisionInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromMinutes (5)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az alkalmazás típusának törléséhez engedélyezett törlési időköz az alkalmazás automatikus kitakarítása során.|
-|AzureStorageMaxConnections | Int, alapértelmezett érték 5000 |Dinamikus|Az Azure Storage-hoz való egyidejű kapcsolatok maximális száma. |
-|AzureStorageMaxWorkerThreads | int, az alapértelmezett érték 25 |Dinamikus|A feldolgozói szálak maximális száma párhuzamosan. |
-|AzureStorageOperationTimeout | Az idő másodpercben, az alapértelmezett érték 6000 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a xstore művelet befejezéséhez. |
-|CleanupApplicationPackageOnProvisionSuccess|bool, az alapértelmezett érték FALSE |Dinamikus|Engedélyezheti vagy letilthatja az alkalmazáscsomag automatikus törlését a sikeres üzembe helyezéshez. |
-|CleanupUnusedApplicationTypes|bool, az alapértelmezett érték FALSE |Dinamikus|Ez a konfiguráció, ha engedélyezve van, lehetővé teszi a nem használt alkalmazások típusának regisztrációját a legújabb három nem használt verzió kihagyása mellett, így a rendszerkép-tárolóban foglalt lemezterület kivágása is megtörténik. Az automatikus tisztítás az adott alkalmazás típusának sikeres kiépítését követően aktiválódik, és az összes alkalmazás típusának naponta egyszer rendszeresen fut. A kihagyható verziók száma a "MaxUnusedAppTypeVersionsToKeep" paraméter használatával konfigurálható. |
-|DisableChecksumValidation | Bool, az alapértelmezett érték false |Statikus| Ezzel a konfigurációval engedélyezheti vagy letilthatja az ellenőrzőösszeg-érvényesítést az alkalmazás üzembe helyezése során. |
-|DisableServerSideCopy | Bool, az alapértelmezett érték false |Statikus|Ezzel a konfigurációval engedélyezheti vagy letilthatja az alkalmazáscsomag kiszolgálóoldali példányát a Lemezképtárolóba az alkalmazás üzembe helyezése során. |
-|ImageCachingEnabled | Bool, az alapértelmezett érték TRUE (igaz) |Statikus|Ez a konfiguráció lehetővé teszi a gyorsítótárazás engedélyezését vagy letiltását. |
-|ImageStoreConnectionString |SecureString |Statikus|A Lemezképtárolóba gyökeréhez tartozó kapcsolódási karakterlánc. |
-|ImageStoreMinimumTransferBPS | Int, alapértelmezett érték 1024 |Dinamikus|A fürt és a Lemezképtárolóba közötti minimális adatátviteli sebesség. Ez az érték határozza meg az időtúllépést a külső Lemezképtárolóba elérésekor. Csak akkor módosítsa ezt az értéket, ha a fürt és a Lemezképtárolóba közötti késés magas, hogy több idő legyen a fürt külső Lemezképtárolóba való letöltésére. |
-|MaxUnusedAppTypeVersionsToKeep | int, az alapértelmezett érték 3 |Dinamikus|Ez a konfiguráció határozza meg a tisztításhoz kihagyható, nem használt alkalmazás-verziók számát. Ez a paraméter csak akkor alkalmazható, ha a CleanupUnusedApplicationTypes paraméter engedélyezve van. |
+|Automatikus anunprovisioninterval|TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(5)|Dinamikus|Adja meg az időtartományt másodpercben. Az automatikus alkalmazástípus-karbantartás során engedélyezett alkalmazástípus-törlési időköz.|
+|AzureStorageMaxConnections | Int, alapértelmezett érték: 5000 |Dinamikus|Az azure storage-hoz való egyidejű kapcsolatok maximális száma. |
+|AzureStorageMaxWorkerThreads | Int, az alapértelmezett érték 25 |Dinamikus|A munkaszálak maximális száma párhuzamosan. |
+|AzureStorageOperationTimeout | Idő másodpercben, az alapértelmezett érték 6000 |Dinamikus|Adja meg az időtartományt másodpercben. Az xstore művelet befejezésének időkitöltése. |
+|CleanupApplicationPackageOnProvisionSikeres|az alapértelmezett érték HAMIS |Dinamikus|Engedélyezi vagy letiltja az alkalmazáscsomag automatikus karbantartását a sikeres üzembe álláskor. |
+|KarbantartásNem használtalkalmazás-típusok|Bool, az alapértelmezett érték HAMIS |Dinamikus|Ez a konfiguráció, ha engedélyezve van, lehetővé teszi a nem használt alkalmazástípus-verziók automatikus regisztrációjának lebontását, kihagyva a legújabb három nem használt verziót, ezáltal csökkentve a lemezterület által elfoglalt lemezterületet. Az automatikus karbantartás az adott alkalmazástípus sikeres biztosításának végén aktiválódik, és az összes alkalmazástípushoz naponta egyszer rendszeresen fut. A kihagyandó nem használt verziók száma a "MaxUnusedAppTypeVersionsToKeep" paraméterrel konfigurálható. |
+|DisableChecksumValidation (Ellenőrzőösszeg érvényesítése) | Bool, az alapértelmezett érték hamis |Statikus| Ez a konfiguráció lehetővé teszi számunkra, hogy engedélyezze vagy tiltsa le az ellenőrzőösszeg-érvényesítést az alkalmazás kiépítése során. |
+|DisableServerSideCopy | Bool, az alapértelmezett érték hamis |Statikus|Ez a konfiguráció engedélyezi vagy letiltja az alkalmazáscsomag kiszolgálóoldali példányát az ImageStore-on az alkalmazás kiépítés során. |
+|KépcachingEnabled | Bool, az alapértelmezett igaz |Statikus|Ez a konfiguráció lehetővé teszi számunkra, hogy engedélyezze vagy tiltsa le a gyorsítótárazást. |
+|ImageStoreConnectionString |SecureString (Biztonságos karakterlánc) |Statikus|Kapcsolati karakterlánc az ImageStore gyökérgyökerezéséhez. |
+|ImageStoreMinimumTransfer BPS | Int, alapértelmezett érték: 1024 |Dinamikus|A fürt és az ImageStore közötti minimális átviteli sebesség. Ez az érték határozza meg az időtúlértéket a külső ImageStore elérésekor. Módosítsa ezt az értéket csak akkor, ha a fürt és az ImageStore közötti késés magas, így több idő áll a fürt számára a külső ImageStore-ból való letöltésre. |
+|MaxUnusedAppTypeVersionsToKeep | Int, az alapértelmezett érték 3 |Dinamikus|Ez a konfiguráció határozza meg a karbantartáshoz kihagyandó nem használt alkalmazástípus-verziók számát. Ez a paraméter csak akkor alkalmazható, ha a CleanupUnusedApplicationTypes paraméter engedélyezve van. |
 
 
-## <a name="metricactivitythresholds"></a>MetricActivityThresholds
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+## <a name="metricactivitythresholds"></a>MetricActivityThresholds (MetricActivityThresholds)
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyIntegerValueMap, alapértelmezés szerint nincs|Dinamikus|Meghatározza a metrikák MetricActivityThresholds készletét a fürtben. A kiegyenlítés akkor működik, ha a maxNodeLoad nagyobb, mint a MetricActivityThresholds. A Defrag-metrikák esetében meghatározza a terhelési mennyiségét, amely egyenlő vagy alacsonyabb, amelynek Service Fabric a csomópontot üresen kell tekinteni |
+|Tulajdonságcsoport|KeyIntegerValueMap, az alapértelmezett érték: Nincs|Dinamikus|Meghatározza a metricActivityThresholds készletét a fürt metrikáihoz. Kiegyensúlyozó fog működni, ha maxNodeLoad nagyobb, mint MetricActivityThresholds. A sikkaszt metrikák határozza meg a terhelés összegét egyenlő vagy alatt, amely Service Fabric figyelembe veszi a csomópont üres |
 
-## <a name="metricbalancingthresholds"></a>MetricBalancingThresholds
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+## <a name="metricbalancingthresholds"></a>Metrikus kiegyensúlyozási küszöbértékek
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, alapértelmezés szerint nincs|Dinamikus|Meghatározza a metrikák MetricBalancingThresholds készletét a fürtben. A kiegyenlítés akkor működik, ha a maxNodeLoad/minNodeLoad nagyobb, mint a MetricBalancingThresholds. A töredezettségmentesítés akkor működik, ha legalább egy FD-vagy UD-maxNodeLoad/minNodeLoad kisebb, mint a MetricBalancingThresholds. |
+|Tulajdonságcsoport|KeyDoubleValueMap, az alapértelmezett érték: Nincs|Dinamikus|A metricbalancingthresholds készletét határozza meg a fürt metrikáihoz. Kiegyensúlyozás akkor fog működni, ha maxNodeLoad/minNodeLoad nagyobb, mint MetricBalancingThresholds. Töredezettségmentesítés fog működni, ha maxNodeLoad/minNodeLoad legalább egy FD vagy UD kisebb, mint MetricBalancingThresholds. |
 
 ## <a name="metricloadstickinessforswap"></a>MetricLoadStickinessForSwap
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, alapértelmezés szerint nincs|Dinamikus|Meghatározza azt a terhelést, amely a replikával együtt tapad, és 0 (Betöltés nem tapad a replikához) és 1 (a replika-alapértelmezett Load Sticks) közötti értéket vesz igénybe. |
+|Tulajdonságcsoport|KeyDoubleValueMap, az alapértelmezett érték: Nincs|Dinamikus|Meghatározza a terhelés azon részét, amely a replikával együtt marad, amikor kicserélik, 0 (a terhelés nem tapad a replikához) és 1 (a replika betöltése - alapértelmezett) |
 
-## <a name="namingservice"></a>NamingService
+## <a name="namingservice"></a>NamingService (Elnevezésszolgáltatás)
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|GatewayServiceDescriptionCacheLimit |int, az alapértelmezett érték 0 |Statikus|A LRU szolgáltatás Description cache-gyorsítótárában fenntartott bejegyzések maximális száma az elnevezési átjárón (legfeljebb 0 értékre van állítva). |
-|MaxClientConnections |Int, alapértelmezett érték 1000 |Dinamikus|A maximálisan engedélyezett számú ügyfélkapcsolat az átjárón. |
-|MaxFileOperationTimeout |Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A file Store szolgáltatás műveletéhez engedélyezett maximális időkorlát. A nagyobb időtúllépést megadó kérések el lesznek utasítva. |
-|MaxIndexedEmptyPartitions |Int, alapértelmezett érték 1000 |Dinamikus|Azon üres partíciók maximális száma, amelyek indexelve maradnak az értesítési gyorsítótárban az ügyfelek újrakapcsolatának szinkronizálásához. A rendszer a számot meghaladó üres partíciókat eltávolítja az indexből a keresési verziók növekvő sorrendjében. Az ügyfelek újrakapcsolódása továbbra is képes szinkronizálni és fogadni a hiányzó üres partíciós frissítéseket; a szinkronizálási protokoll azonban drágább lesz. |
-|MaxMessageSize |Int, az alapértelmezett érték 4\*1024\*1024 |Statikus|Az ügyfél-csomópontok közötti kommunikáció maximális mérete az elnevezés használatakor. DOS-támadások enyhítése; az alapértelmezett érték a 4MB nál. |
-|MaxNamingServiceHealthReports | Int, az alapértelmezett érték 10 |Dinamikus|Az adattárolási szolgáltatás által jelentett lassú műveletek maximális száma egyszerre. Ha 0; minden lassú művelet elküldése. |
-|MaxOperationTimeout |Az idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az ügyfél műveleteihez engedélyezett maximális időkorlát. A nagyobb időtúllépést megadó kérések el lesznek utasítva. |
-|MaxOutstandingNotificationsPerClient |Int, alapértelmezett érték 1000 |Dinamikus|A függőben lévő értesítések maximális száma, mielőtt az átjáró kényszeríti az ügyfél regisztrálását. |
-|MinReplicaSetSize | int, az alapértelmezett érték 3 |Nem engedélyezett| A frissítés befejezéséhez szükséges elnevezési szolgáltatás-replikák minimális száma. Ha kevesebb replika van a rendszeren, a megbízhatósági rendszer megtagadja a elnevezési szolgáltatás-tároló frissítését, amíg a replikák vissza nem állnak. Ez az érték soha nem lehet nagyobb, mint a TargetReplicaSetSize. |
-|PartitionCount |int, az alapértelmezett érték 3 |Nem engedélyezett|A létrehozandó elnevezési szolgáltatás tároló partícióinak száma. Minden partíció rendelkezik egy olyan partíciós kulccsal, amely megfelel az indexének. tehát a partíció kulcsai [0; PartitionCount] létezik. A elnevezési szolgáltatás partíciók számának növelésével megnövelhető a elnevezési szolgáltatás által elvégezhető skála, amely csökkenti a biztonsági másolati készletben tárolt adatok átlagos mennyiségét. az erőforrások megnövekedett kihasználtságának díja (mivel a PartitionCount * ReplicaSetSize szolgáltatás replikáit fenn kell tartani).|
-|PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Nem engedélyezett| A elnevezési szolgáltatás elhelyezési megkötése. |
-|QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Nem engedélyezett| Másodpercek alatt meg kell adni a TimeSpan. Ha egy elnevezési szolgáltatás kvórum elvesztése válik elérhetővé; Ez az időzítő elindul. Az FM lejáratakor a rendszer a lefelé irányuló replikákat elveszettnek tekinti. és próbálja meg helyreállítani a kvórumot. Ez adatvesztéshez vezethet. |
-|RepairInterval | Az idő másodpercben, az alapértelmezett érték 5 |Statikus| Másodpercek alatt meg kell adni a TimeSpan. Az az intervallum, amelyben a hatóság tulajdonosának és nevének tulajdonosának neve inkonzisztencia-javítása megkezdődik. |
-|ReplicaRestartWaitDuration | Idő másodpercben, alapértelmezett érték (60,0 * 30)|Nem engedélyezett| Másodpercek alatt meg kell adni a TimeSpan. Ha egy elnevezési szolgáltatás replika leáll; Ez az időzítő elindul. Amikor lejár, az FM megkezdi a leállt replikák cseréjét (ez még nem veszi figyelembe az elveszetteket). |
-|ServiceDescriptionCacheLimit | int, az alapértelmezett érték 0 |Statikus| A LRU szolgáltatás Description cache-ben fenntartott bejegyzéseinek maximális száma az elnevezési tároló szolgáltatásban (legfeljebb 0 értékre van állítva). |
-|ServiceNotificationTimeout |Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A szolgáltatás értesítéseinek az ügyfélnek történő kézbesítéséhez használt időkorlát. |
-|StandByReplicaKeepDuration | Az idő másodpercben, az alapértelmezett érték 3600,0 * 2 |Nem engedélyezett| Másodpercek alatt meg kell adni a TimeSpan. Amikor egy elnevezési szolgáltatás replika vissza fog térni a leállási állapotból; lehetséges, hogy már lecserélték. Ez az időzítő azt határozza meg, hogy az FM mennyi ideig tart a készenléti replika számára az eldobás előtt. |
-|TargetReplicaSetSize |Int, az alapértelmezett érték 7 |Nem engedélyezett|A elnevezési szolgáltatás tároló egyes partícióinak replikáinak száma. A replikakészlet számának növelése növeli a elnevezési szolgáltatás tárolóban található információk megbízhatósági szintjét. a csomópontok meghibásodása miatt elveszik az információ elvesztésének változását; a Windows Fabric terhelésének és az elnevezési adatok frissítéseinek elvégzéséhez szükséges idő növelésének díja.|
+|GatewayServiceDescriptionCacheLimit |Int, az alapértelmezett érték 0 |Statikus|Az LRU szolgáltatásleírásának gyorsítótárában az elnevezési átjárón tárolt bejegyzések maximális száma (a nincs korlátozás esetén 0 értékre van állítva). |
+|MaxClientConnections |Int, az alapértelmezett érték 1000 |Dinamikus|Az ügyfélkapcsolatok maximálisan engedélyezett száma átjárónként. |
+|MaxFileOperationTimeout |Idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Adja meg az időtartományt másodpercben. A fájltároló szolgáltatás működéséhez engedélyezett maximális időtöltés. A nagyobb időkérést megmeghatározó kérelmeket a rendszer elutasítja. |
+|MaxIndexedEmptyPartitions |Int, az alapértelmezett érték 1000 |Dinamikus|Az újracsatlakozó ügyfelek szinkronizálásához az értesítési gyorsítótárban továbbra is indexelt üres partíciók maximális száma. Az ezen a szám on-én található üres partíciók egyre növekvő keresnek versionsorrendben törlődnek az indexből. Az ügyfelek újracsatlakoztatása továbbra is szinkronizálhatja és fogadhatja a kihagyott üres partíciófrissítéseket; de a szinkronizálási protokoll drágábbá válik. |
+|MaxMessageMéret |Int, alapértelmezett\*érték 4\*1024 1024 |Statikus|Az ügyfélcsomópont-kommunikáció maximális üzenetmérete az elnevezés használata során. DOS támadás enyhítése; az alapértelmezett érték 4 MB. |
+|MaxNamingServiceHealthReports | Int, az alapértelmezett érték 10 |Dinamikus|A tárolószolgáltatás elnevezési szolgáltatásának egy időben nem megfelelő állapotúnak jelentése. Ha 0; minden lassú művelet elküldésre kerül. |
+|MaxOperationTimeout |Idő másodpercben, az alapértelmezett érték 600 |Dinamikus|Adja meg az időtartományt másodpercben. Az ügyfélműveletek maximális időhatora. A nagyobb időkérést megmeghatározó kérelmeket a rendszer elutasítja. |
+|MaxOutstandingNotificationsPerClient |Int, az alapértelmezett érték 1000 |Dinamikus|Az ügyfélregisztráció tmegelőző regisztrációja előtt az átjáró által kényszerítetten lezárt függőben lévő értesítések maximális száma. |
+|MinReplicaSetMéret | Int, az alapértelmezett érték 3 |Nem engedélyezett| A frissítés végrehajtásához szükséges elnevezési szolgáltatás replikáinak minimális száma. Ha ennél kevesebb kópia van aktív a rendszerben, a megbízhatósági rendszer a kópiák visszaállításáig megtagadja az elnevezési szolgáltatástároló frissítéseit. Ez az érték soha nem lehet több, mint a TargetReplicaSetSize. |
+|PartitionCount |Int, az alapértelmezett érték 3 |Nem engedélyezett|Az elnevezési szolgáltatás tárolóján létrehozandó partíciók száma. Minden partíció rendelkezik egy partíciós kulcs, amely megfelel az index; így partíciós kulcsok [0; PartitionCount] létezik. Az elnevezési szolgáltatás partícióiszámának növelése növeli azt a skálát, amelyen az elnevezési szolgáltatás elvégezheti a biztonsági másolat replikákészletében lévő adatok átlagos mennyiségét; az erőforrások fokozott kihasználtságának költségén (mivel a PartitionCount*ReplicaSetSize szolgáltatás replikáit karban kell tartani).|
+|Elhelyezési kényszerek | karakterlánc, az alapértelmezett a "" |Nem engedélyezett| Elhelyezési megkötés az elnevezési szolgáltatáshoz. |
+|QuorumLossWaitDuration | Idő másodpercben, az alapértelmezett érték MaxValue |Nem engedélyezett| Adja meg az időtartományt másodpercben. Amikor egy elnevezési szolgáltatás kvórumvesztésbe kerül; ez az időzítő elindul. Amikor lejár az FM fogja tekinteni a lefelé replikák elveszett; és megpróbálja visszaszerezni a kvórumot. Nem mintha ez adatvesztést eredményezne. |
+|RepairInterval | Idő másodpercben, az alapértelmezett érték 5 |Statikus| Adja meg az időtartományt másodpercben. Időköz, amelyben a névadási inkonzisztencia javítása a hatóság tulajdonosa és a név tulajdonosa indul el. |
+|ReplicaRestartWaitDuration | Idő másodpercben, az alapértelmezett érték (60,0 * 30)|Nem engedélyezett| Adja meg az időtartományt másodpercben. Ha egy elnevezési szolgáltatás replika leáll; ez az időzítő elindul. Amikor lejár az FM kezd cserélni a replikák, amelyek nem (ez még nem tekinti őket elveszett). |
+|ServiceDescriptionCacheLimit | Int, az alapértelmezett érték 0 |Statikus| Az LRU szolgáltatás leírásának gyorsítótárában az Namingelt tároló szolgáltatásban tárolt bejegyzések maximális száma (nincs korlátozás esetén 0 értékre állítva). |
+|ServiceNotificationTimeout |Idő másodpercben, az alapértelmezett érték 30 |Dinamikus|Adja meg az időtartományt másodpercben. A szolgáltatásértesítések ügyfélnek történő kézbesítéseksorán használt időbeli meghosszabbítás. |
+|Készenléti replikálási időtartam | Idő másodpercben, az alapértelmezett érték 3600,0 * 2 |Nem engedélyezett| Adja meg az időtartományt másodpercben. Amikor egy elnevezési szolgáltatás replika visszaad egy lefelé állapotban; lehet, hogy már kicserélték. Ez az időzítő határozza meg, hogy az FM mennyi ideig tartja a készenléti replikát, mielőtt elveti azt. |
+|CélReplicaSetMéret |Int, az alapértelmezett érték 7 |Nem engedélyezett|Az elnevezési szolgáltatás tároló egyes partícióihoz betöltő replikakészletek száma. A replikakészletek számának növelése növeli az információk megbízhatósági szintjét az Elnevezési szolgáltatástárolóban; csökkenti azt a változást, hogy az információ csomóponthibák következtében elvesz; a Windows Fabric megnövekedett terhelésének és az elnevezési adatok frissítéséhez szükséges időnek a költsége.|
 
-## <a name="nodebufferpercentage"></a>NodeBufferPercentage
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+## <a name="nodebufferpercentage"></a>NodeBufferSzázalék
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, alapértelmezés szerint nincs|Dinamikus|Csomópont kapacitása százalék/metrika neve; pufferként használatos, hogy a feladatátvételi esethez egy csomóponton legyen egy szabad hely. |
+|Tulajdonságcsoport|KeyDoubleValueMap, az alapértelmezett érték: Nincs|Dinamikus|Csomópontkapacitás százaléka metrikanévenként; pufferként használják, hogy a feladatátvételi esethez egy csomóponton tartsanak szabad helyet. |
 
-## <a name="nodecapacities"></a>NodeCapacities
+## <a name="nodecapacities"></a>Csomópontkapacitások
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeCapacityCollectionMap |Statikus|Csomópont-kapacitások gyűjteménye különböző mérőszámokhoz. |
+|Tulajdonságcsoport |NodeCapacityCollectionMap |Statikus|Különböző metrikák csomópontkapacitásainak gyűjteménye. |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeFaultDomainIdCollection |Statikus|Ismerteti azokat a tartalék tartományokat, amelyek a csomóponthoz tartoznak. A tartalék tartomány egy URI-n keresztül van definiálva, amely leírja a csomópont helyét az adatközpontban.  A tartalék tartomány URI-ja az FD:/FD, majd egy URI-elérésiút-szegmens.|
-|UpgradeDomainId |karakterlánc, az alapértelmezett érték: "" |Statikus|A csomóponthoz tartozó frissítési tartományt ismerteti. |
+|Tulajdonságcsoport |NodeFaultDomainIdCollection |Statikus|Azokat a tartományokat ismerteti, amelyekhez egy csomópont tartozik. A tartalék tartomány egy URI-n keresztül van definiálva, amely leírja a csomópont helyét az adatközpontban.  A tartalék tartomány URI-i fd:/fd/ formátumúak, amelyet egy URI elérési útszegmens követ.|
+|UpgradeDomainId azonosító |karakterlánc, az alapértelmezett a "" |Statikus|Azt a frissítési tartományt írja le, amelyhez egy csomópont tartozik. |
 
-## <a name="nodeproperties"></a>NodeProperties
+## <a name="nodeproperties"></a>NodeProperties (NodeProperties)
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodePropertyCollectionMap |Statikus|Karakterlánc kulcs-érték párok gyűjteménye a csomópont tulajdonságaihoz. |
+|Tulajdonságcsoport |NodePropertyCollectionMap |Statikus|A csomóponttulajdonságok karakterlánckulcs-érték párjainak gyűjteménye. |
 
-## <a name="paas"></a>PaaS
+## <a name="paas"></a>Paas
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ClusterId |karakterlánc, az alapértelmezett érték: "" |Nem engedélyezett|A Fabric által a konfiguráció védelme érdekében használt X509-tanúsítványtároló. |
+|Fürtazonosító |karakterlánc, az alapértelmezett a "" |Nem engedélyezett|X509 tanúsítványtároló, amelyet a háló használ a konfiguráció védelmére. |
 
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|Teljesítményszámlálók |Sztring | Dinamikus |A gyűjteni kívánt teljesítményszámlálók vesszővel tagolt listája. |
-|IsEnabled |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus |A jelző jelzi, hogy engedélyezve van-e a teljesítményszámláló gyűjteménye a helyi csomóponton. |
-|MaxCounterBinaryFileSizeInMB |int, az alapértelmezett érték 1 | Dinamikus |A teljesítményszámláló bináris fájljainak maximális mérete (MB). |
-|NewCounterBinaryFileCreationIntervalInMinutes |Int, az alapértelmezett érték 10 | Dinamikus |Az új teljesítményszámláló bináris fájljának létrehozása utáni maximális időköz (másodpercben). |
-|SamplingIntervalInSeconds |Int, alapértelmezett érték 60 | Dinamikus |A gyűjtött teljesítményszámlálók mintavételi időköze. |
+|Számlálók |Sztring | Dinamikus |Vesszővel tagolt teljesítményszámlálók listája. |
+|IsEnabled |Bool, az alapértelmezett igaz | Dinamikus |A jelző azt jelzi, hogy engedélyezve van-e a teljesítményszámláló-gyűjtés a helyi csomóponton. |
+|MaxCounterBinaryFileSizeInMB |Int, az alapértelmezett érték 1 | Dinamikus |Maximális méret (MB-ban) minden teljesítményszámláló bináris fájljához. |
+|NewCounterBinaryFileCreationIntervalinMinutes |Int, az alapértelmezett érték 10 | Dinamikus |Az a maximális időköz (másodpercben), amely után új teljesítményszámláló bináris fájl jön létre. |
+|Mintavételi időközökszinszekundumban |Int, az alapértelmezett érték 60 | Dinamikus |Az összegyűjtött teljesítményszámlálók mintavételi időköze. |
 
-## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
+## <a name="placementandloadbalancing"></a>Elhelyezés és terheléskiegyensúlyozás
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AffinityConstraintPriority | int, az alapértelmezett érték 0 | Dinamikus|Meghatározza az affinitási megkötés prioritását: 0: Hard; 1: lágy; negatív: figyelmen kívül hagyás. |
-|ApplicationCapacityConstraintPriority | int, az alapértelmezett érték 0 | Dinamikus|Meghatározza a kapacitási megkötés prioritását: 0: nehéz; 1: lágy; negatív: figyelmen kívül hagyás. |
-|AutoDetectAvailableResources|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Ez a konfiguráció elindítja a rendelkezésre álló erőforrások automatikus észlelését a csomóponton (CPU és memória), ha ez a konfiguráció igaz értékre van állítva, a valós kapacitások beolvasása és a megfelelő, ha a felhasználó helytelen csomópont-kapacitást adott meg, vagy egyáltalán nem definiálta őket, ha a konfiguráció hamis értékre van állítva, akkor  olyan figyelmeztetés követése, amely szerint a felhasználó hibás csomópont-kapacitást adott meg; de nem fogjuk kijavítani őket; azt jelenti, hogy a felhasználó szeretné, hogy a csomópontok >ként legyenek meghatározva, mint a csomópont, vagy ha a kapacitás nincs meghatározva; a rendszer korlátlan kapacitást feltételez |
-|BalancingDelayAfterNewNode | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az új csomópont hozzáadása után ne kezdjen el kiegyenlíteni tevékenységeket ezen az időszakon belül. |
-|BalancingDelayAfterNodeDown | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az adott időszakon belül ne kezdjen el kiegyenlíteni tevékenységeket egy csomópont leállási eseménye után. |
-|CapacityConstraintPriority | int, az alapértelmezett érték 0 | Dinamikus|Meghatározza a kapacitási megkötés prioritását: 0: nehéz; 1: lágy; negatív: figyelmen kívül hagyás. |
-|ConsecutiveDroppedMovementsHealthReportLimit | int, az alapértelmezett érték 20 | Dinamikus|Meghatározza, hogy a rendszer hány alkalommal ResourceBalancer el a kiállított mozgásokat a diagnosztika végrehajtása előtt, és az állapottal kapcsolatos figyelmeztetések kibocsátása megtörténjen. Negatív: nincsenek kibocsátva figyelmeztetések ebben a feltételben. |
-|ConstraintFixPartialDelayAfterNewNode | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az új csomópont hozzáadása után a DDo nem oldja meg a FaultDomain és a UpgradeDomain korlátozás megsértését ezen az időtartamon belül. |
-|ConstraintFixPartialDelayAfterNodeDown | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Ne javítsa ki a FaultDomain és a UpgradeDomain korlátozás megsértését ezen az időtartamon belül egy csomópont-leállási esemény után. |
-|ConstraintViolationHealthReportLimit | Int, alapértelmezett érték 50 |Dinamikus| Meghatározza, hogy a rendszer hányszor megsértse a replikát a diagnosztika végrehajtása előtt, és az állapotadatok kibocsátása előtt ne legyenek kijavítva. |
-|DetailedConstraintViolationHealthReportLimit | Int, alapértelmezett érték 200 |Dinamikus| Meghatározza, hogy a rendszer hányszor megsértse a replikát a diagnosztika végrehajtása előtt, és részletes állapot-jelentéseket bocsát ki. |
-|DetailedDiagnosticsInfoListLimit | Int, az alapértelmezett érték 15 |Dinamikus| Meghatározza a diagnosztikai bejegyzések (részletes információkkal) számát a diagnosztika csonkítása előtt.|
-|DetailedNodeListLimit | Int, az alapértelmezett érték 15 |Dinamikus| Meghatározza, hogy hány csomópont/korlátozás szerepeljen a nem elhelyezni kívánt replika-jelentésekben a csonkítás előtt. |
-|DetailedPartitionListLimit | Int, az alapértelmezett érték 15 |Dinamikus| Meghatározza, hogy a rendszer a diagnosztikai bejegyzésben szereplő partíciók számát adja meg a diagnosztika előtti csonkítás előtt. |
-|DetailedVerboseHealthReportLimit | Int, alapértelmezett érték 200 | Dinamikus|Azt határozza meg, hogy a rendszer hányszor adja meg a nem helyezett replikát a részletes állapotadatok kibocsátása előtt. |
-|EnforceUserServiceMetricCapacities|bool, az alapértelmezett érték FALSE | Statikus |Lehetővé teszi a háló szolgáltatások védelmét. Minden felhasználói szolgáltatás egy feladatütemezés/CGROUP alatt található, és a megadott mennyiségű erőforrásra korlátozódik. Ennek statikusnak kell lennie (a Hálóbeli újraindítását igényli) a felhasználói feladatok objektumának létrehozásakor/eltávolításakor, valamint a rögzített korlátoknak a háló-gazdagép megnyitásakor végzett beállításának megfelelően. |
-|FaultDomainConstraintPriority | int, az alapértelmezett érték 0 |Dinamikus| Meghatározza a tartalék tartomány korlátozásának prioritását: 0: Hard; 1: lágy; negatív: figyelmen kívül hagyás. |
-|GlobalMovementThrottleCountingInterval | Az idő másodpercben, az alapértelmezett érték 600 |Statikus| Másodpercek alatt meg kell adni a TimeSpan. Adja meg az előző intervallum hosszát, amelynek nyomon követésére a tartományi replika-mozgások (a GlobalMovementThrottleThreshold együtt használatos). 0 értékre állítható, így figyelmen kívül hagyható a globális szabályozás. |
-|GlobalMovementThrottleThreshold | Uint, alapértelmezett érték 1000 |Dinamikus| A GlobalMovementThrottleCountingInterval által jelzett korábbi intervallumban az elosztási fázisban engedélyezett mozgások maximális száma. |
-|GlobalMovementThrottleThresholdForBalancing | Uint, az alapértelmezett érték 0 | Dinamikus|A GlobalMovementThrottleCountingInterval által jelzett korábbi időszakban a terheléselosztási fázisban engedélyezett mozgások maximális száma. a 0 érték nem korlátozza a korlátot. |
-|GlobalMovementThrottleThresholdForPlacement | Uint, az alapértelmezett érték 0 |Dinamikus| A GlobalMovementThrottleCountingInterval által jelzett korábbi intervallumban az elhelyezési fázisban engedélyezett mozgások maximális száma. 0 a korlátot jelzi.|
-|GlobalMovementThrottleThresholdPercentage|dupla, az alapértelmezett érték 0|Dinamikus|A GlobalMovementThrottleCountingInterval által jelzett korábbi intervallumban a terheléselosztási és elhelyezési fázisokban megengedett teljes mozgások maximális száma (a fürt replikáinak teljes száma százalékban kifejezve). a 0 érték nem korlátozza a korlátot. Ha ez és a GlobalMovementThrottleThreshold is meg van adva, ezt követően a rendszer több konzervatív korlátot használ.|
-|GlobalMovementThrottleThresholdPercentageForBalancing|dupla, az alapértelmezett érték 0|Dinamikus|A terheléselosztási fázisban engedélyezett mozgások maximális száma (a PLB replikáinak teljes száma százalékban kifejezve) a GlobalMovementThrottleCountingInterval által jelzett korábbi intervallumban. a 0 érték nem korlátozza a korlátot. Ha ez és a GlobalMovementThrottleThresholdForBalancing is meg van adva, ezt követően a rendszer több konzervatív korlátot használ.|
-|InBuildThrottlingAssociatedMetric | karakterlánc, az alapértelmezett érték: "" |Statikus| A szabályozáshoz társított metrika neve. |
-|InBuildThrottlingEnabled | Bool, az alapértelmezett érték false |Dinamikus| Döntse el, hogy engedélyezve van-e a beépített szabályozás. |
-|InBuildThrottlingGlobalMaxValue | int, az alapértelmezett érték 0 |Dinamikus|A Build-replikák maximális száma globálisan engedélyezett. |
-|InterruptBalancingForAllFailoverUnitUpdates | Bool, az alapértelmezett érték false | Dinamikus|Meghatározza, hogy a feladatátvételi egységek bármelyikének frissítése megszakítsa-e a gyors vagy lassú terheléselosztási futtatást. Ha a (Z: létrehozása/törlése megszakad, a rendszer megszakítja a megadott "hamis" kiegyenlítési futtatást. hiányzó replikákkal rendelkezik; módosította az elsődleges replika helyét, vagy megváltoztatta a replikák számát. A rendszer nem szakítja meg az egyensúlyi futtatást más esetekben – ha (Z: további replikákkal rendelkezik; módosította bármelyik replika jelölőjét; csak a partíciós verzió vagy bármely más eset módosítva. |
-|MinConstraintCheckInterval | Az idő másodpercben, az alapértelmezett érték 1 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt a minimális időtartamot, ameddig a két egymást követő megkötés-ellenőrzési kör előtt el kell telnie. |
-|MinLoadBalancingInterval | Az idő másodpercben, az alapértelmezett érték 5 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt a minimális időtartamot, amelynek el kell telnie két egymást követő kiegyenlítő kör előtt. |
-|MinPlacementInterval | Az idő másodpercben, az alapértelmezett érték 1 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt a minimális időtartamot, amelynek a két egymást követő elhelyezési forduló előtt el kell telnie. |
-|MoveExistingReplicaForPlacement | Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus|A beállítás, amely meghatározza, hogy a meglévő replika áthelyezhető-e az elhelyezés során. |
-|MovementPerPartitionThrottleCountingInterval | Az idő másodpercben, az alapértelmezett érték 600 |Statikus| Másodpercek alatt meg kell adni a TimeSpan. Adja meg az előző intervallum hosszát, amelynél nyomon követhető az egyes partíciók replikáinak mozgatása (a MovementPerPartitionThrottleThreshold együtt használva). |
-|MovementPerPartitionThrottleThreshold | Uint, alapértelmezett érték 50 |Dinamikus| Egy partíció esetében nem történik terheléselosztással kapcsolatos mozgás, ha az adott partíció replikáinak kiegyensúlyozásával kapcsolatos mozgások száma elérte vagy túllépte a MovementPerFailoverUnitThrottleThreshold a következő által jelzett időszakban: MovementPerPartitionThrottleCountingInterval. |
-|MoveParentToFixAffinityViolation | Bool, az alapértelmezett érték false |Dinamikus| Ez a beállítás határozza meg, hogy a szülő replikák áthelyezhetők-e az affinitási megkötések kijavítására.|
-|PartiallyPlaceServices | Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus| Meghatározza, hogy a fürt összes szolgáltatás-replikája "All vagy Nothing" értékűre kerüljön-e a számukra korlátozottan megfelelő csomópontok számára.|
-|PlaceChildWithoutParent | Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus|Ez a beállítás határozza meg, hogy a gyermek-szolgáltatás replikája hol helyezhető el, ha nincs fölérendelt replika. |
-|PlacementConstraintPriority | int, az alapértelmezett érték 0 | Dinamikus|Meghatározza az elhelyezési megkötés prioritását: 0: Hard; 1: lágy; negatív: figyelmen kívül hagyás. |
-|PlacementConstraintValidationCacheSize | Int, alapértelmezett érték 10000 |Dinamikus| Korlátozza az elhelyezési korlátozási kifejezések gyors ellenőrzéséhez és gyorsítótárazásához használt tábla méretét. |
-|PlacementSearchTimeout | Az idő másodpercben, az alapértelmezett érték 0,5 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Szolgáltatások elhelyezésekor; a találatok visszaadását megelőzően legfeljebb ennyi ideig kereshet. |
-|PLBRefreshGap | Az idő másodpercben, az alapértelmezett érték 1 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt a minimális időtartamot, ameddig a PLB újra frissítenie kell az állapotot. |
-|PreferredLocationConstraintPriority | Int, az alapértelmezett érték 2| Dinamikus|Meghatározza az előnyben részesített hely megkötésének prioritását: 0: Hard; 1: lágy; 2: optimalizálás; negatív: figyelmen kívül hagyás |
-|PreferUpgradedUDs|bool, az alapértelmezett érték FALSE|Dinamikus|Be-és kikapcsolja a logikát, amely a már frissített frissítési való áttérést részesíti előnyben. Az SF 7,0-től kezdődően a paraméter alapértelmezett értéke TRUE (hamis) értékre változik.|
-|PreventTransientOvercommit | Bool, az alapértelmezett érték false | Dinamikus|Meghatározza, hogy a rendszer azonnal PLB-e a kezdeményezett lépések által felszabadított erőforrásokra. Alapértelmezés szerint; A PLB kezdeményezheti a kilépést, és áthelyezheti azt ugyanazon a csomóponton, amely átmeneti túllépést hozhat létre. Ha a paraméter igaz értékre van állítva, a rendszer letiltja az ilyen típusú túllépéseket és az igény szerinti Defrag (aka placementWithMove) letiltását. |
-|ScaleoutCountConstraintPriority | int, az alapértelmezett érték 0 |Dinamikus| Meghatározza a horizontális felskálázás száma megkötésének prioritását: 0: Hard; 1: lágy; negatív: figyelmen kívül hagyás. |
-|SwapPrimaryThrottlingAssociatedMetric | karakterlánc, az alapértelmezett érték: ""|Statikus| A szabályozáshoz társított metrika neve. |
-|SwapPrimaryThrottlingEnabled | Bool, az alapértelmezett érték false|Dinamikus| Döntse el, hogy engedélyezve van-e a swap-primer szabályozás. |
-|SwapPrimaryThrottlingGlobalMaxValue | int, az alapértelmezett érték 0 |Dinamikus| A swap-elsődleges replikák maximális száma globálisan engedélyezett. |
-|TraceCRMReasons |Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus|Megadja, hogy nyomon követhető-e a CRM által kiadott mozgások a működési események csatornáján. |
-|UpgradeDomainConstraintPriority | int, az alapértelmezett érték 1| Dinamikus|Meghatározza a frissítési tartomány korlátozásának prioritását: 0: Hard; 1: lágy; negatív: figyelmen kívül hagyás. |
-|UseMoveCostReports | Bool, az alapértelmezett érték false | Dinamikus|Arra utasítja az LB-t, hogy figyelmen kívül hagyja a pontozási függvény Cost elemét; az így keletkező potenciálisan nagy számú lépés a jobb kiegyensúlyozott elhelyezés érdekében. |
-|UseSeparateSecondaryLoad | Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus|Ez a beállítás határozza meg, hogy eltérő másodlagos terhelést használ-e. |
-|ValidatePlacementConstraint | Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus| Megadja, hogy a szolgáltatás PlacementConstraint-kifejezése érvényesítve van-e a szolgáltatás ServiceDescription leírásban frissítésekor. |
-|ValidatePrimaryPlacementConstraintOnPromote| bool, az alapértelmezett érték TRUE (igaz) |Dinamikus|Megadja, hogy a rendszer kiértékeli-e a szolgáltatás PlacementConstraint-kifejezését a feladatátvétel elsődleges preferencia-értékeként. |
-|VerboseHealthReportLimit | int, az alapértelmezett érték 20 | Dinamikus|Azt határozza meg, hogy a replikák hányszor legyenek felhelyezve az állapotra vonatkozó figyelmeztetés megkezdése előtt (ha a részletes állapot jelentéskészítés engedélyezve van). |
-|NodeLoadsOperationalTracingEnabled | Bool, az alapértelmezett érték TRUE (igaz) |Dinamikus|Olyan konfiguráció, amely lehetővé teszi a csomópontok működési szerkezeti nyomkövetését az esemény-tárolóban. |
-|NodeLoadsOperationalTracingInterval | TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (20) | Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időköz, amellyel nyomon követhető a csomópontok minden egyes szolgáltatási tartományhoz tartozó Event Store-ba. |
+|AffinityConstraintPriority | Int, az alapértelmezett érték 0 | Dinamikus|Meghatározza az affinitási megkötés prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
+|ApplicationCapacityConstraintPriority | Int, az alapértelmezett érték 0 | Dinamikus|Meghatározza a kapacitásmegkötés prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
+|Automatikus annekt: Elérhető erőforrások|bool, az alapértelmezett érték IGAZ|Statikus|Ez a konfiguráció elindítja a rendelkezésre álló erőforrások automatikus észlelését a csomóponton (CPU és memória) Amikor ez a konfiguráció igaz - valódi kapacitásokat olvasunk és kijavítjuk őket, ha a felhasználó rossz csomópontkapacitásokat adott meg, vagy egyáltalán nem határozta meg őket Ha ez a konfiguráció hamis - nyomon követjük a figyelmeztetést, hogy a felhasználó rossz csomópontkapacitásokat adott meg; de nem fogjuk kijavítani őket; ami azt jelenti, hogy a felhasználó azt szeretné, hogy a kapacitások > legyenek, mint amivel a csomópont valóban rendelkezik, vagy ha a kapacitások nincsenek meghatározva; korlátlan kapacitást fog vállalni |
+|BalancingDelayAfterNewNode után | Idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Adja meg az időtartományt másodpercben. Ne kezdje el a kiegyensúlyozási tevékenységeket ezen az időszakon belül egy új csomópont hozzáadása után. |
+|BalancingDelayAfterNodeDown | Idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Adja meg az időtartományt másodpercben. Ne kezdje el a kiegyensúlyozó tevékenységeket ezen az időszakon belül egy csomópont lefelé történő esemény után. |
+|CapacityKonstraintPriority | Int, az alapértelmezett érték 0 | Dinamikus|Meghatározza a kapacitásmegkötés prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
+|ConsecutiveDroppedMovementsHealthReportLimit | Int, alapértelmezett érték 20 | Dinamikus|Azt határozza meg, hogy a ResourceBalancer által kiadott mozgások hány egymást követő alkalommal kerülnek el a diagnosztika elvégzése és az állapotra vonatkozó figyelmeztetések kiadása előtt. Negatív: Ez a feltétel alatt nincs enek figyelmeztetés. |
+|ConstraintFixPartialDelayAfterNewNode | Idő másodpercben, az alapértelmezett érték 120 |Dinamikus| Adja meg az időtartományt másodpercben. DNe javítsa ki a FaultDomain és a UpgradeDomain megszorítás idoszakát ebben az időszakban egy új csomópont hozzáadása után. |
+|ConstraintFixPartialDelayAfterNodeDown | Idő másodpercben, az alapértelmezett érték 120 |Dinamikus| Adja meg az időtartományt másodpercben. Ne javítsa ki a FaultDomain és a UpgradeDomain megszorítás idoszakában a csomópont lefelé történő eseménye után. |
+|Megszorítás:Az egészségjelentési határérték | Int, alapértelmezett érték 50 |Dinamikus| Azt határozza meg, hogy a megszorítást megsértő replika hányszor kell tartósan feloldani a diagnosztika és az állapotjelentések kibocsátása előtt. |
+|DetailedConstraintViolationHealthReportLimit | Int, az alapértelmezett érték 200 |Dinamikus| Azt határozza meg, hogy a megszorítást megsértő replika a diagnosztika elvégzése előtt és a részletes állapotjelentések kibocsátása előtt a megszorítást megkell oldani a tartósan nem rögzített állapotban. |
+|DetailedDiagnosticsInfoListLimit | Int, alapértelmezett érték 15 |Dinamikus| A diagnosztika előtti csonkolás előtt a megkötésenkénti diagnosztikai bejegyzések számát (részletes információkkal) határozza meg.|
+|DetailedNodeListLimit | Int, alapértelmezett érték 15 |Dinamikus| Azt határozza meg, hogy a korlátonként hány csomópontot kell megadni a csonkolás előtt az El nem helyezett replikajelentésekben. |
+|DetailedPartitionListLimit | Int, alapértelmezett érték 15 |Dinamikus| A diagnosztika csonkolása előtt felveendő megkötés diagnosztikai bejegyzésenkénti partícióinak számát határozza meg. |
+|DetailedVerboseHealthReportLimit | Int, az alapértelmezett érték 200 | Dinamikus|Azt határozza meg, hogy egy el nem helyezett kópiát a részletes állapotjelentések kibocsátása előtt hányszor kell tartósan elhelyezni. |
+|EnforceUserServiceMetriccapacityes|az alapértelmezett érték HAMIS | Statikus |Lehetővé teszi a hálószolgáltatások védelmét. Minden felhasználói szolgáltatás egy feladatobjektum/ccsoport alatt van, és meghatározott mennyiségű erőforrásra korlátozódik. Ennek statikusnak kell lennie (a FabricHost újraindítását igényli) a felhasználói feladatobjektum létrehozása/eltávolítása, valamint a Fabric Host megnyitása során végzett korlátok beállítása. |
+|FaultDomainConstraintPriority | Int, az alapértelmezett érték 0 |Dinamikus| Meghatározza a tartalék tartománymegkötés prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
+|GlobalMovementThrottleCountingInterval | Idő másodpercben, az alapértelmezett érték 600 |Statikus| Adja meg az időtartományt másodpercben. Adja meg annak az elmúlt időköznek a hosszát, amelyhez tartományreplikamozgásait nyomon kell követni (a GlobalMovementThrottleThreshold-szal együtt használva). 0-ra állítható, hogy teljesen figyelmen kívül hagyja a globális szabályozást. |
+|GlobalMovementThrottleKüszöb | Uint, az alapértelmezett érték 1000 |Dinamikus| A kiegyensúlyozási fázisban engedélyezett mozgások maximális száma a GlobalMovementThrottleCountingInterval által jelzett múltbeli intervallumban. |
+|GlobalMovementThrottleThresholdForBalancing | Uint, az alapértelmezett érték 0 | Dinamikus|A Kiegyensúlyozási fázisban engedélyezett mozgások maximális száma a GlobalMovementThrottleCountingInterval által jelzett múltbeli intervallumban. A 0 azt jelzi, hogy nincs korlátozás. |
+|GlobalMovementThrottleThresholdForPlacement | Uint, az alapértelmezett érték 0 |Dinamikus| Az Elhelyezési fázisban engedélyezett mozgások maximális száma a GlobalMovementThrottleCountingInterval.0 által jelzett múltbeli intervallumban nem jelent korlátot.|
+|GlobalMovementThrottleThresholdPercentage|dupla, az alapértelmezett érték 0|Dinamikus|A Kiegyensúlyozási és elhelyezési fázisokban engedélyezett összes mozgás maximális száma (a fürt összes replikájának százalékában kifejezve) a GlobalMovementThrottleCountingInterval által jelzett múltbeli intervallumban. A 0 azt jelzi, hogy nincs korlátozás. Ha mind ez, mind a GlobalMovementThrottleThreshold meg van adva; akkor konzervatívabb határértéket alkalmaznak.|
+|GlobalMovementThrottleThresholdPercentageForBalancing|dupla, az alapértelmezett érték 0|Dinamikus|A kiegyensúlyozási fázisban engedélyezett mozgások maximális száma (a PLB-ben lévő replikák teljes számának százalékában kifejezve) a GlobalMovementThrottleCountingInterval által jelzett múltbeli intervallumban. A 0 azt jelzi, hogy nincs korlátozás. Ha ez és a GlobalMovementThrottleThresholdForBalancing is meg van adva; akkor konzervatívabb határértéket alkalmaznak.|
+|InBuildThrottlingAssociatedMetric | karakterlánc, az alapértelmezett a "" |Statikus| A társított metrika neve a szabályozás. |
+|InBuildThrottlingEnabled | Bool, az alapértelmezett érték hamis |Dinamikus| Határozza meg, hogy a builden i szabályozás engedélyezve van-e. |
+|InBuildThrottlingGlobalMaxValue érték | Int, az alapértelmezett érték 0 |Dinamikus|A globálisan engedélyezett beépített replikák maximális száma. |
+|InterruptBalancingForAllFailoverUnitUpdates | Bool, az alapértelmezett érték hamis | Dinamikus|Azt határozza meg, hogy a feladatátvételi egység bármely típusú frissítése megszakítsa-e a gyors vagy lassú kiegyensúlyozási folyamatot. A megadott "hamis" kiegyensúlyozó futtatás megszakad, ha a FailoverUnit: jön létre/töröl; hiányzó replikákkal rendelkezik; módosított elsődleges replikahely vagy módosított kópiák száma. A kiegyensúlyozásfuttatása nem szakad meg más esetekben – ha a FailoverUnit: további replikákkal rendelkezik; módosította a replikajelzőt; megváltozott csak partíció s e-verzió, vagy bármely más esetben. |
+|MinConstraintCheckInterval | Idő másodpercben, az alapértelmezett érték 1 |Dinamikus| Adja meg az időtartományt másodpercben. Azt a minimális időtartamot határozza meg, amelynek két egymást követő megkötés-ellenőrzési kör előtt el kell telnie. |
+|MinLoadBalancingInterval | Idő másodpercben, az alapértelmezett érték 5 |Dinamikus| Adja meg az időtartományt másodpercben. Azt a minimális időtartamot határozza meg, amelynek két egymást követő kiegyensúlyozási kör előtt el kell telnie. |
+|MinPlacementInterval | Idő másodpercben, az alapértelmezett érték 1 |Dinamikus| Adja meg az időtartományt másodpercben. Azt a minimális időtartamot határozza meg, amelynek két egymást követő elhelyezési kör előtt el kell telnie. |
+|MoveExistingReplicaForPlacement | Bool, az alapértelmezett igaz |Dinamikus|Annak beállítása, hogy a meglévő kópiát helyezze-e át az elhelyezés során. |
+|MovementPerPartitionThrottleCountingInterval | Idő másodpercben, az alapértelmezett érték 600 |Statikus| Adja meg az időtartományt másodpercben. Adja meg annak az elmúlt időköznek a hosszát, amelyhez az egyes partíciók replikamozgásait nyomon kell követni (a MovementPerPartitionThrottleThreshold-szal együtt). |
+|MovementPerPartitionThrottleThreshold | Uint, az alapértelmezett érték 50 |Dinamikus| Nem történik kiegyensúlyozási kapcsolatos mozgás egy partícióesetében, ha a partíció replikáihoz tartozó kiegyenlítési kapcsolódó mozgások száma elérte vagy meghaladta a MovementPerFailoverUnitThrottleThreshold-ot az előző intervallumban, amelyet a partíció jelzett, MovementPerPartitionThrottleCountingInterval. |
+|MoveParentToFixAffinityViolation | Bool, az alapértelmezett érték hamis |Dinamikus| Annak beállítása, hogy a szülőkópiák áthelyezhetők-e az affinitási megkötések javításához.|
+|Részlegeshelyszolgáltatások | Bool, az alapértelmezett igaz |Dinamikus| Azt határozza meg, hogy a fürtben lévő összes szolgáltatásreplikája "mindent vagy semmit" kerül-e a megfelelő csomópontok ra.|
+|PlaceChildWithoutParent nélkül | Bool, az alapértelmezett igaz | Dinamikus|Annak beállítása, hogy meghatározza-e, hogy a gyermekszolgáltatás replika elhelyezhető-e, ha egyetlen szülőkópia sem működik. |
+|ElhelyezésConstraintPriority | Int, az alapértelmezett érték 0 | Dinamikus|Meghatározza az elhelyezési megkötés prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
+|ElhelyezésConstraintValidationCacheSize | Int, az alapértelmezett érték 10000 |Dinamikus| Korlátozza az Elhelyezési megkötési kifejezések gyors érvényesítéséhez és gyorsítótárazásához használt táblázat méretét. |
+|ElhelyezésSearchTimeout | Idő másodpercben, az alapértelmezett érték 0,5 |Dinamikus| Adja meg az időtartományt másodpercben. A szolgáltatások nyújtása során; legbénáknak kell keresnie, mielőtt visszatérne az eredményre. |
+|PLBRefreshGap között | Idő másodpercben, az alapértelmezett érték 1 |Dinamikus| Adja meg az időtartományt másodpercben. Azt a minimális időtartamot határozza meg, amelynek el kell telnie ahhoz, hogy a PLB újra felfrissüljön. |
+|PreferredLocationConstraintPriority | Int, az alapértelmezett érték 2| Dinamikus|Meghatározza az előnyben részesített helymegkötés prioritását: 0: Kemény; 1: Puha; 2: Optimalizálás; negatív: Figyelmen kívül hagyás |
+|PreferredPrimaryDomainsConstraintPriority| Int, az alapértelmezett érték 1 | Dinamikus| Az elsődleges elsődleges tartománymegkötés prioritását határozza meg: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás |
+|PreferUpgradedUD-ok|bool,az alapértelmezett értéke HAMIS|Dinamikus|Be- és kikapcsolja a logikát, amely inkább a már frissített UD-kra költözik. Az SF 7.0-s értékkel kezdődően a paraméter alapértelmezett értéke IGAZ értékről HAMIS értékre változik.|
+|PreventTransientOvercommit | Bool, az alapértelmezett érték hamis | Dinamikus|Meghatározza, hogy a PLB azonnal számítson azokra az erőforrásokra, amelyeket a kezdeményezett lépések felszabadítanak. Alapértelmezés szerint; A PLB kezdeményezheti az áthelyezést, és ugyanazon a csomóponton léphet be, amely átmeneti túlterhelést hozhat létre. Ha ezt a paramétert true-ra állítja, az megakadályozza az ilyen típusú túlvéglegesítéseket, és az igény szerinti sikkaszt (más néven placementWithMove) le lesz tiltva. |
+|ScaleoutCountConstraintPriority | Int, az alapértelmezett érték 0 |Dinamikus| Meghatározza a horizontális kihatotási számlálási megkötés prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
+|SubclusteringEnabled|Bool, az alapértelmezett érték HAMIS | Dinamikus |Nyugtáztalegység a kiegyensúlyozásszidsztaeltérés számításakor |
+|AlfürtözésReportingPolicy| Int, az alapértelmezett érték 1 |Dinamikus|Azt határozza meg, hogy az alfürtküldési állapotjelentések hogyan és mikor kerüljenek elküldésre: 0: Ne jelentsen; 1: Figyelmeztetés; 2: OK |
+|SwapPrimaryThrottlingAssociatedMetric | karakterlánc, az alapértelmezett a ""|Statikus| A társított metrika neve a szabályozás. |
+|SwapPrimaryThrottlingEnabled | Bool, az alapértelmezett érték hamis|Dinamikus| Határozza meg, hogy a swap-elsődleges szabályozás engedélyezve van-e. |
+|SwapPrimaryThrottlingGlobalMaxValue | Int, az alapértelmezett érték 0 |Dinamikus| A globálisan engedélyezett swap-elsődleges replikák maximális száma. |
+|TraceCRMReasons |Bool, az alapértelmezett igaz |Dinamikus|Itt adható meg, hogy nyomon kell-e követni a CRM által kibocsátott mozgások okait a működési eseménycsatornára. |
+|UpgradeDomainConstraintPriority | Int, az alapértelmezett érték 1| Dinamikus|Meghatározza a frissítési tartomány megkötésének prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
+|UseMoveCostReports | Bool, az alapértelmezett érték hamis | Dinamikus|Arra utasítja az LB-t, hogy hagyja figyelmen kívül a pontozási függvény költségelemét; potenciálisan nagy számú lépés a kiegyensúlyozottabb elhelyezés érdekében. |
+|UseSeparateSecondaryLoad | Bool, az alapértelmezett igaz | Dinamikus|Annak beállítása, hogy melyik határozza meg, hogy más másodlagos terhelést használ-e. |
+|UseSeparateSecondaryMoveCost|Bool, az alapértelmezett érték HAMIS | Dinamikus|Annak beállítása, hogy a PLB-nek más áthelyezési költséget kell-e használnia a másodlagos csomóponton, ha a UseSeparateSecondaryMoveCost ki van kapcsolva: - Az egyik csomópont másodlagos áthelyezési költsége túlterhelte az áthelyezési költséget (az összes többi csomóponton) Ha UseSeparateSecondaryMoveCost be van kapcsolva: - Jelentett áthelyezési költség másodlagos egy csomóponton lép érvénybe csak, hogy a másodlagos (nincs hatással a másodlagos más csomópontok) - Ha replika összeomlás történik - új replika jön létre az alapértelmezett áthelyezési költség a szolgáltatás szint - Ha PLB mozog a meglévő replika - mozog költség megy vele |
+|ValidatePlacementConstraint | Bool, az alapértelmezett igaz |Dinamikus| Itt adható meg, hogy a szolgáltatás Elhelyezésconstraint kifejezése érvényesítve legyen-e a szolgáltatás ServiceDescription frissítésekor. |
+|ValidatePrimaryPlacementConstraintOnPromote| Bool, az alapértelmezett érték IGAZ |Dinamikus|Itt adható meg, hogy a szolgáltatás Elhelyezésconstraint kifejezése ki legyen-e értékelve a feladatátvétel elsődleges beállítására. |
+|Részletes healthreportlimit | Int, alapértelmezett érték 20 | Dinamikus|Azt határozza meg, hogy egy kópiának hány alkalommal kell eltenned, mielőtt állapotfigyelmeztetést jelentenek érte (ha a részletes állapotjelentés engedélyezve van). |
+|NodeLoadsOperationalTracingEnabled | Bool, az alapértelmezett igaz |Dinamikus|Konfiguráció, amely lehetővé teszi a csomópont terhelése működési szerkezeti nyomkövetés az eseménytárolóban. |
+|NodeloadsOperationalTracingInterval | TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(20) | Dinamikus|Adja meg az időtartományt másodpercben. Az az időköz, amellyel a csomópont terhelések nyomon követése az egyes szolgáltatástartományok eseménytárolójára. |
 
-## <a name="reconfigurationagent"></a>ReconfigurationAgent
+## <a name="reconfigurationagent"></a>Újrakonfigurációügynök
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ApplicationUpgradeMaxReplicaCloseDuration | Az idő másodpercben, az alapértelmezett érték 900 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, ameddig a rendszer várakozik, mielőtt leállítja azokat a szolgáltatás-gazdagépeket, amelyek az alkalmazás frissítése során lezárult replikákkal rendelkeznek.|
-|FabricUpgradeMaxReplicaCloseDuration | Az idő másodpercben, az alapértelmezett érték 900 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, ameddig a rendszer várakozik, mielőtt leállítja azokat a szolgáltatás-gazdagépeket, amelyeken a háló frissítése közben lezárul a replikák. |
-|GracefulReplicaShutdownMaxDuration|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (120)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, ameddig a rendszer várni fogja, mielőtt leállítja azokat a gazdagépeket, amelyeken a replikák beragadva vannak. Ha ez az érték 0, a rendszer nem utasítja a replikákat a bezáráshoz.|
-|NodeDeactivationMaxReplicaCloseDuration | Az idő másodpercben, az alapértelmezett érték 900 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az az időtartam, ameddig a rendszer várakozik a csomópont inaktiválása során lezárt replikákkal rendelkező szolgáltatások leállítása előtt. |
-|PeriodicApiSlowTraceInterval | Az idő másodpercben, az alapértelmezett érték 5 perc |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A PeriodicApiSlowTraceInterval határozza meg, hogy az API-figyelő milyen időközönként fogja követni a lassú API-hívásokat. |
-|ReplicaChangeRoleFailureRestartThreshold|Int, az alapértelmezett érték 10|Dinamikus| Egész szám lehetőségre. Itt adhatja meg, hogy az elsődleges előléptetés során hány API-hiba legyen alkalmazva az automatikus kockázatcsökkentő művelet (replika-újraindítás) után. |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, alapértelmezett érték 2147483647|Dinamikus| Egész szám lehetőségre. Itt adhatja meg, hogy az elsődleges előléptetés során hány API-hiba után történjen a figyelmeztetési állapot jelentésének kiemelése.|
-|ServiceApiHealthDuration | Az idő másodpercben, az alapértelmezett érték 30 perc |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ServiceApiHealthDuration határozza meg, hogy mennyi ideig kell várni a Service API futtatására, mielőtt bejelentjük, hogy az állapota nem kifogástalan. |
-|ServiceReconfigurationApiHealthDuration | Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ServiceReconfigurationApiHealthDuration határozza meg, hogy mennyi ideig várjon a Service API futtatása a nem megfelelő állapot jelentése előtt. Ez a rendelkezésre állást befolyásoló API-hívásokra vonatkozik.|
+|ApplicationUpgradeMaxReplicaCloseDuration alkalmazás | Idő másodpercben, az alapértelmezett érték 900 |Dinamikus|Adja meg az időtartományt másodpercben. Az az időtartam, amelyre a rendszer várni fog az alkalmazásfrissítés során szorosan beragadt replikákkal működő szolgáltatásgazdaok megszüntetéséig.|
+|FabricUpgradeMaxReplicaCloseDuration | Idő másodpercben, az alapértelmezett érték 900 |Dinamikus| Adja meg az időtartományt másodpercben. Az időtartam, amelyre a rendszer várni fog a szolgáltatásgazdagépek, amelyek replikák, amelyek a háló frissítése során szorosan beragadt. |
+|GracefulReplicaShutdownMaxDuration|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus|Adja meg az időtartományt másodpercben. Az az időtartam, amelyre a rendszer várni fog a közeli replikákkal beragadt replikákkal rendelkező szolgáltatásgazdaok megszüntetéséig. Ha ez az érték 0-ra van állítva, a replikák bezárására nem lesz utasítás.|
+|NodedeactivationMaxReplicaCloseDuration | Idő másodpercben, az alapértelmezett érték 900 |Dinamikus|Adja meg az időtartományt másodpercben. Az az időtartam, amelyre a rendszer várni fog a csomópont-deaktiválás során szorosan beragadt replikákkal lévő szolgáltatásállomások megszüntetéséig. |
+|PeriodikusapiSlowTraceInterval | Idő másodpercben, az alapértelmezett érték 5 perc |Dinamikus| Adja meg az időtartományt másodpercben. PeriodicApiSlowTraceInterval határozza meg az időközt, amely en lassú API-hívások at kell nyomon követni az API-figyelő. |
+|ReplicaChangeRoleFailureRestartThreshold|int, az alapértelmezett érték 10|Dinamikus| Egész. Adja meg az API-hibák számát az elsődleges előléptetés során, amely után az automatikus kockázatcsökkentési művelet (replika újraindítása) lesz alkalmazva. |
+|ReplicaChangeRoleFailure(Jelentés)|int, alapértelmezett 2147483647|Dinamikus| Egész. Adja meg az API-hibák számát az elsődleges előléptetés során, amely után a figyelmeztető állapotjelentés meglesz.|
+|ServiceApiHealthDuration | Idő másodpercben, az alapértelmezett érték 30 perc |Dinamikus| Adja meg az időtartományt másodpercben. ServiceApiHealthDuration határozza meg, hogy mennyi ideig várjuk meg a szolgáltatás API-t futtatni, mielőtt azt jelenti, hogy nem kifogástalan állapotú. |
+|ServiceReconfigurationApiHealthDuration | Idő másodpercben, az alapértelmezett érték 30 |Dinamikus| Adja meg az időtartományt másodpercben. ServiceReconfigurationApiHealthDuration határozza meg, hogy mennyi ideig várjuk meg a szolgáltatás API futtatásához, mielőtt jelentést nem kifogástalan. Ez az API-hívások, amelyek hatással vannak a rendelkezésre állásra.|
 
 ## <a name="replication"></a>Replikáció
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|BatchAcknowledgementInterval|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromMilliseconds (15)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt az időtartamot, ameddig a replikátor a művelet fogadása után várakozik a visszaigazolás visszaküldése előtt. Az ebben az időszakban fogadott egyéb műveletekhez a rendszer visszaküldi a visszaigazolásokat egy üzenetben – > csökkenti a hálózati forgalmat, de potenciálisan csökkenti a replikátor átviteli sebességét.|
-|MaxCopyQueueSize|uint, alapértelmezett érték 1024|Statikus|Ez a maximális érték határozza meg a várólista kezdeti méretét, amely megőrzi a replikációs műveleteket. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie. Ha a futás közben a várólista erre a méretre nő, a rendszer az elsődleges és a másodlagos replikálók között szabályozza a műveletet.|
-|MaxPrimaryReplicationQueueMemorySize|Uint, az alapértelmezett érték 0|Statikus|Az elsődleges replikációs várólista maximális értéke bájtban megadva.|
-|MaxPrimaryReplicationQueueSize|uint, alapértelmezett érték 1024|Statikus|Az elsődleges replikációs várólistában található műveletek maximális száma. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie.|
-|MaxReplicationMessageSize|Uint, alapértelmezett érték 52428800|Statikus|A replikációs műveletek maximális mérete. Az alapértelmezett érték 50 MB.|
-|MaxSecondaryReplicationQueueMemorySize|Uint, az alapértelmezett érték 0|Statikus|A másodlagos replikálási várólista maximális értéke bájtban megadva.|
-|MaxSecondaryReplicationQueueSize|uint, alapértelmezett érték 2048|Statikus|A másodlagos replikálási várólistában található műveletek maximális száma. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie.|
-|QueueHealthMonitoringInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (30)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az érték határozza meg azt az időtartamot, amelyet a replikátor használ a replikációs műveletek várólistáján lévő összes figyelmeztetési/hiba állapottal kapcsolatos esemény figyelésére. A "0" érték letiltja az állapot figyelését |
-|QueueHealthWarningAtUsagePercent|uint, alapértelmezett érték 80|Statikus|Ez az érték határozza meg a replikációs várólista használatát (százalékban), amely után a figyelmeztetést a nagy üzenetsor-használatról küldjük. Ezt a QueueHealthMonitoringInterval türelmi intervalluma után tesszük. Ha a várólista használata a türelmi intervallumban a százalék alá esik|
-|ReplicatorAddress|karakterlánc, az alapértelmezett érték "localhost: 0"|Statikus|A végpont egy "IP: Port" karakterlánc formájában jelenik meg, amelyet az Windows Fabric-replikátor használ a más replikákkal való kapcsolat létesítéséhez a küldési/fogadási műveletek érdekében.|
-|ReplicatorListenAddress|karakterlánc, az alapértelmezett érték "localhost: 0"|Statikus|A végpont egy "IP: Port" karakterlánc formájában, amelyet a Windows Fabric replikátor használ a más replikák műveleteinek fogadására.|
-|ReplicatorPublishAddress|karakterlánc, az alapértelmezett érték "localhost: 0"|Statikus|A végpont egy "IP: Port" karakterlánc formájában, amelyet a Windows Fabric replikátor használ a műveletek más replikák számára történő elküldéséhez.|
-|RetryInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (5)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Egy művelet elvesztése vagy elutasítása esetén az időzítő meghatározza, hogy a replikátor milyen gyakran próbálkozzon újra a művelet elküldésével.|
+|BatchAcknowledgementInterval|TimeSpan, az alapértelmezett érték common::TimeSpan::FromMilliseconds(15)|Statikus|Adja meg az időtartományt másodpercben. Azt határozza meg, hogy a replikátor mennyi időt várjon a művelet fogadása után, mielőtt visszaküldené a nyugtázást. Az ebben az időszakban fogadott egyéb műveletek nyugtázása egyetlen üzenetben lesz visszaküldve, > csökkenti a hálózati forgalmat, de potenciálisan csökkenti a replikátor átviteli mertéjét.|
+|MaxCopyQueueMéret|uint, az alapértelmezett érték 1024|Statikus|Ez a maximális érték határozza meg a replikációs műveleteket fenntartó várólista kezdeti méretét. Ne feledje, hogy 2-es teljesítménynek kell lennie. Ha futásidőben a várólista ekkora méretre nő, a művelet az elsődleges és a másodlagos replikátorok között lesz szabályozva.|
+|MaxPrimaryReplicationQueueMemorySize|uint, az alapértelmezett érték 0|Statikus|Ez az elsődleges replikációs várólista maximális értéke bájtban.|
+|MaxPrimaryReplicationQueueMéret|uint, az alapértelmezett érték 1024|Statikus|Ez az elsődleges replikációs várólistában létező műveletek maximális száma. Ne feledje, hogy 2-es teljesítménynek kell lennie.|
+|MaxReplicationMessageSize|uint, alapértelmezett érték: 52428800|Statikus|A replikációs műveletek maximális üzenetmérete. Az alapértelmezett érték 50MB.|
+|MaxSecondaryReplicationQueueMemorySize|uint, az alapértelmezett érték 0|Statikus|Ez a másodlagos replikációs várólista maximális értéke bájtban.|
+|MaxSecondaryReplicationQueueSize|uint, alapértelmezett érték 2048|Statikus|Ez a másodlagos replikációs várólistában létező műveletek maximális száma. Ne feledje, hogy 2-es teljesítménynek kell lennie.|
+|QueueHealthMonitoringInterval|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(30)|Statikus|Adja meg az időtartományt másodpercben. Ez az érték határozza meg a Replikátor által a replikációs műveletvárólistákban lévő figyelmeztető/hiba állapotesemények figyelésére használt időszakot. A "0" érték letiltja az állapotfigyelést |
+|QueueHealthWarningatUsagePercent|uint, az alapértelmezett érték 80|Statikus|Ez az érték határozza meg a replikációs várólista-használatot (százalékban), amely után figyelmeztetést jelentünk a magas várólista-használatról. Ezt a QueueHealthMonitoringInterval türelmi időköz után tesszük. Ha a várólista-használat a türelmi intervallumban ez a százalék alá esik|
+|Replikátorcím|karakterlánc, az alapértelmezett érték "localhost:0"|Statikus|A végpont formájában egy karakterlánc -'IP:Port', amely a Windows Fabric Replikátor kapcsolatok létesítésére más replikák műveletek küldése/fogadása érdekében.|
+|ReplicatorListenAddress cím|karakterlánc, az alapértelmezett érték "localhost:0"|Statikus|A végpont formájában egy karakterlánc -'IP:Port', amely a Windows Fabric Replikátor más replikák műveletek fogadására.|
+|ReplikátorPublishAddress|karakterlánc, az alapértelmezett érték "localhost:0"|Statikus|A végpont formájában egy karakterlánc -'IP:Port', amely a Windows Fabric Replikátor műveletek küldésére más replikák.|
+|Újrapróbálkozási intervallum|TimeSpan, az alapértelmezett érték common::TimeSpan::FromSeconds(5)|Statikus|Adja meg az időtartományt másodpercben. Ha egy művelet elvész, vagy elutasítja ez az időzítő határozza meg, hogy milyen gyakran a replikátor újra küldi a műveletet.|
 
 ## <a name="resourcemonitorservice"></a>ResourceMonitorService
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|IsEnabled|bool, az alapértelmezett érték FALSE |Statikus|Azt szabályozza, hogy a szolgáltatás engedélyezve van-e a fürtön. |
+|IsEnabled|az alapértelmezett érték HAMIS |Statikus|Azt szabályozza, hogy a szolgáltatás engedélyezve van-e a fürtben. |
 
-## <a name="runas"></a>Futtató
+## <a name="runas"></a>Runas
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|RunAsAccountName |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók nevét jelzi. Erre csak a "DomainUser" vagy a "ManagedServiceAccount" típusú fiók esetében van szükség. Az érvényes értékek: "tartomány \ felhasználó" vagy "user@domain". |
-|RunAsAccountType|karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók típusát jelzi. Erre azért van szükség, mert a RunAs szakasz érvényes értékei a következők: "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
-|RunAsPassword|karakterlánc, az alapértelmezett érték: "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszava. Erre csak a "DomainUser" fióktípus esetében van szükség. |
+|Runasaccountname (Runasaccountname) |karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók nevét jelzi. Ez csak a "DomainUser" vagy a "ManagedServiceAccount" fióktípus esetén szükséges. Az érvényes értékek a következők:user@domain"tartomány\felhasználó" vagy " ". |
+|RunasAccountType (RunasAccountType)|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók típusát jelzi. Ez minden RunAs szakaszhoz szükséges: Az érvényes értékek a "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
+|RunasPassword|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók jelszavát jelzi. Ez csak a "DomainUser" fióktípusához szükséges. |
 
 ## <a name="runas_dca"></a>RunAs_DCA
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|RunAsAccountName |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók nevét jelzi. Erre csak a "DomainUser" vagy a "ManagedServiceAccount" típusú fiók esetében van szükség. Az érvényes értékek: "tartomány \ felhasználó" vagy "user@domain". |
-|RunAsAccountType|karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók típusát jelzi. Erre azért van szükség, mert a RunAs szakasz érvényes értékei a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
-|RunAsPassword|karakterlánc, az alapértelmezett érték: "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszava. Erre csak a "DomainUser" fióktípus esetében van szükség. |
+|Runasaccountname (Runasaccountname) |karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók nevét jelzi. Ez csak a "DomainUser" vagy a "ManagedServiceAccount" fióktípus esetén szükséges. Az érvényes értékek a következők:user@domain"tartomány\felhasználó" vagy " ". |
+|RunasAccountType (RunasAccountType)|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók típusát jelzi. Ez minden RunAs szakaszhoz szükséges: Az érvényes értékek a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
+|RunasPassword|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók jelszavát jelzi. Ez csak a "DomainUser" fióktípusához szükséges. |
 
 ## <a name="runas_fabric"></a>RunAs_Fabric
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|RunAsAccountName |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók nevét jelzi. Erre csak a "DomainUser" vagy a "ManagedServiceAccount" típusú fiók esetében van szükség. Az érvényes értékek: "tartomány \ felhasználó" vagy "user@domain". |
-|RunAsAccountType|karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók típusát jelzi. Erre azért van szükség, mert a RunAs szakasz érvényes értékei a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
-|RunAsPassword|karakterlánc, az alapértelmezett érték: "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszava. Erre csak a "DomainUser" fióktípus esetében van szükség. |
+|Runasaccountname (Runasaccountname) |karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók nevét jelzi. Ez csak a "DomainUser" vagy a "ManagedServiceAccount" fióktípus esetén szükséges. Az érvényes értékek a következők:user@domain"tartomány\felhasználó" vagy " ". |
+|RunasAccountType (RunasAccountType)|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók típusát jelzi. Ez minden RunAs szakaszhoz szükséges: Az érvényes értékek a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
+|RunasPassword|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók jelszavát jelzi. Ez csak a "DomainUser" fióktípusához szükséges. |
 
 ## <a name="runas_httpgateway"></a>RunAs_HttpGateway
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|RunAsAccountName |karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók nevét jelzi. Erre csak a "DomainUser" vagy a "ManagedServiceAccount" típusú fiók esetében van szükség. Az érvényes értékek: "tartomány \ felhasználó" vagy "user@domain". |
-|RunAsAccountType|karakterlánc, az alapértelmezett érték: "" |Dinamikus|A futtató fiók típusát jelzi. Erre azért van szükség, mert a RunAs szakasz érvényes értékei a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
-|RunAsPassword|karakterlánc, az alapértelmezett érték: "" |Dinamikus|Azt jelzi, hogy a futtató fiók jelszava. Erre csak a "DomainUser" fióktípus esetében van szükség. |
+|Runasaccountname (Runasaccountname) |karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók nevét jelzi. Ez csak a "DomainUser" vagy a "ManagedServiceAccount" fióktípus esetén szükséges. Az érvényes értékek a következők:user@domain"tartomány\felhasználó" vagy " ". |
+|RunasAccountType (RunasAccountType)|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók típusát jelzi. Ez minden RunAs szakaszhoz szükséges: Az érvényes értékek a következők: "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
+|RunasPassword|karakterlánc, az alapértelmezett a "" |Dinamikus|A RunAs fiók jelszavát jelzi. Ez csak a "DomainUser" fióktípusához szükséges. |
 
 ## <a name="security"></a>Biztonság
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE tanúsítvány-végpont formátuma, alapértelmezett Azure-beli kereskedelmi értéke, amely nem alapértelmezett környezetekhez van megadva, például Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
-|AADClientApplication|karakterlánc, az alapértelmezett érték: ""|Statikus|A natív ügyfélalkalmazás neve vagy azonosítója, amely a Fabric-ügyfeleket jelképezi |
-|AADClusterApplication|karakterlánc, az alapértelmezett érték: ""|Statikus|A fürtöt jelölő webes API-alkalmazás neve vagy azonosítója |
-|AADLoginEndpoint|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE bejelentkezési végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezethez megadva, például Azure Government "https:\//login.microsoftonline.us" |
-|AADTenantId|karakterlánc, az alapértelmezett érték: ""|Statikus|Bérlő azonosítója (GUID) |
-|AcceptExpiredPinnedClusterCertificate|bool, az alapértelmezett érték FALSE|Dinamikus|Jelző, amely azt jelzi, hogy az ujjlenyomattal deklarált lejárt fürtözött tanúsítványok csak a fürt tanúsítványainak esetében érvényesek-e. a fürt életben tartásához. |
-|AdminClientCertThumbprints|karakterlánc, az alapértelmezett érték: ""|Dinamikus|Az ügyfelek által a rendszergazdai szerepkörben használt tanúsítványok ujjlenyomatai megfelelnek. Vesszővel tagolt nevek listája. |
-|AADTokenEndpointFormat|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE jogkivonat-végpont, alapértelmezett Azure-beli kereskedelmi érték, amely nem alapértelmezett környezetekhez van megadva, például Azure Government "https:\//login.microsoftonline.us/{0}" |
-|AdminClientClaims|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A rendszergazdai ügyfelektől várt összes lehetséges jogcím; a ClientClaims megegyező formátum; Ez a lista belsőleg bekerül a ClientClaims; így nem kell ugyanazt a bejegyzést hozzáadnia a ClientClaims. |
-|AdminClientIdentities|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A Fabric-ügyfelek Windows-identitásai a rendszergazdai szerepkörben; a Kiemelt háló műveleteinek engedélyezésére szolgál. Vesszővel tagolt lista; Minden bejegyzés egy tartományi fiók neve vagy egy csoportnév. A kényelem érdekében a Fabric. exe fájlt futtató fiók automatikusan hozzá van rendelve a rendszergazdai szerepkörhöz; tehát a csoport ServiceFabricAdministrators. |
-|AppRunAsAccountGroupX509Folder|karakterlánc, az alapértelmezett érték a/Home/sfuser/sfusercerts |Statikus|Az a mappa, ahol a AppRunAsAccountGroup X509 tanúsítványai és titkos kulcsai találhatók |
-|CertificateExpirySafetyMargin|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromMinutes (43200)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. A tanúsítvány lejáratának biztonsági margója; a tanúsítvány állapotáról szóló jelentés állapota az OK értékről figyelmeztetésre változik, ha a lejárat ennél közelebb van. Az alapértelmezett érték 30 nap. |
-|CertificateHealthReportingInterval|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (3600 * 8)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. A tanúsítvány állapotának jelentéskészítési intervallumának megadása; alapértelmezett érték: 8 óra; 0-ra való beállítás letiltja a tanúsítványok állapotának jelentését |
-|ClientCertThumbprints|karakterlánc, az alapértelmezett érték: ""|Dinamikus|Az ügyfelek által a fürttel folytatott kommunikációhoz használt tanúsítványok ujjlenyomatai megfelelnek; a fürt ezt az engedélyt a bejövő kapcsolatok engedélyezésére használja. Vesszővel tagolt nevek listája. |
-|ClientClaimAuthEnabled|bool, az alapértelmezett érték FALSE|Statikus|Azt jelzi, hogy engedélyezve van-e a jogcím-alapú hitelesítés az ügyfeleken; a True érték beállítása implicit módon beállítja a ClientRoleEnabled. |
-|ClientClaims|karakterlánc, az alapértelmezett érték: ""|Dinamikus|Az ügyfelektől az átjáróhoz való csatlakozásra várt összes lehetséges jogcím. Ez egy "vagy" lista: ClaimsEntry \|\| ClaimsEntry \|\| ClaimsEntry... minden ClaimsEntry egy "és" lista: ClaimType = ClaimValue & & ClaimType = ClaimValue & & ClaimType = ClaimValue... |
-|ClientIdentities|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A FabricClient Windows-identitásai; az elnevezési átjáró ezt használja a bejövő kapcsolatok engedélyezéséhez. Vesszővel tagolt lista; Minden bejegyzés egy tartományi fiók neve vagy egy csoportnév. A kényelem érdekében a Fabric. exe fájlt futtató fiók automatikusan engedélyezve van; tehát a Group ServiceFabricAllowedUsers és a ServiceFabricAdministrators. |
-|ClientRoleEnabled|bool, az alapértelmezett érték FALSE|Statikus|Azt jelzi, hogy engedélyezve van-e az ügyfél szerepköre; Ha igaz értékre van állítva, az ügyfelek az identitásuk alapján rendelnek hozzá szerepköröket. V2 esetén; ennek engedélyezése azt jelenti, hogy az ügyfél nem a AdminClientCommonNames/AdminClientIdentities csak olvasási műveleteket hajt végre. |
-|ClusterCertThumbprints|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A fürthöz való csatlakozásra engedélyezett tanúsítványok ujjlenyomatai megfelelnek; vesszővel tagolt nevek listája |
-|ClusterCredentialType|karakterlánc, az alapértelmezett érték a "None"|Nem engedélyezett|A fürt biztonságossá tételéhez használandó biztonsági hitelesítő adatok típusát adja meg. Az érvényes értékek: "None/X509/Windows" |
-|ClusterIdentities|karakterlánc, az alapértelmezett érték: ""|Dinamikus|Fürtcsomópontok Windows-identitásai; a fürt tagságának engedélyezéséhez használatos. Vesszővel tagolt lista; Minden bejegyzés egy tartományi fiók neve vagy egy csoport neve |
-|ClusterSpn|karakterlánc, az alapértelmezett érték: ""|Nem engedélyezett|A fürt egyszerű neve; Ha a háló egyetlen tartományi felhasználóként fut (gMSA/tartományi felhasználói fiók). Ez a háló. exe bérlet-figyelők és-figyelők SPN-je: összevonási figyelők; belső replikációs figyelők; Runtime Service-figyelő és elnevezési átjáró figyelője. Ezt üresen kell hagyni, ha a háló gépi fiókként fut; Ebben az esetben az oldalsó számítási figyelő SPN-t a figyelő szállítási címe alapján kapcsolhatja össze. |
-|CrlCheckingFlag|uint, alapértelmezett érték a 0x40000000|Dinamikus|Alapértelmezett tanúsítványlánc érvényesítésének jelzője; az összetevő-specifikus jelző felülbírálható; például az összevonás/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY beállítás értékeként 0 letiltja a CRL-ellenőrzés teljes listáját a támogatott értékekről a dwFlags CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
-|CrlDisablePeriod|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromMinutes (15)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A CRL-ellenőrzés letiltása egy adott tanúsítvány esetében az offline hiba miatt. Ha a CRL offline hibája figyelmen kívül hagyható. |
-|CrlOfflineHealthReportTtl|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromMinutes (1440)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. |
-|DisableFirewallRuleForDomainProfile| bool, az alapértelmezett érték TRUE (igaz) |Statikus| Azt jelzi, hogy a tűzfalszabály nem engedélyezhető-e a tartományi profilhoz |
-|DisableFirewallRuleForPrivateProfile| bool, az alapértelmezett érték TRUE (igaz) |Statikus| Azt jelzi, hogy nincs-e engedélyezve a tűzfalszabály a magánhálózati profilhoz | 
-|DisableFirewallRuleForPublicProfile| bool, az alapértelmezett érték TRUE (igaz) | Statikus|Azt jelzi, hogy nincs-e engedélyezve a tűzfalszabály a nyilvános profilhoz |
-| EnforceLinuxMinTlsVersion | bool, az alapértelmezett érték FALSE | Statikus | Ha True értékre van állítva; csak a TLS 1.2-es és újabb verziója támogatott.  Ha hamis; a korábbi TLS-verziók támogatása. Csak a Linux rendszerre vonatkozik |
-|FabricHostSpn| karakterlánc, az alapértelmezett érték: "" |Statikus| A Hálóbeli egyszerű szolgáltatásnév neve; Ha a háló egyetlen tartományi felhasználóként (gMSA/tartományi felhasználói fiók) fut, és a Hálóbeli a számítógépfiók alatt fut. Ez a Hálóbeli IPC-figyelő SPN-je; Alapértelmezés szerint üresen kell hagyni, mivel a Hálóbeli a számítógépfiók alatt fut |
-|IgnoreCrlOfflineError|bool, az alapértelmezett érték FALSE|Dinamikus|Azt jelzi, hogy a CRL offline hibát figyelmen kívül hagy-e, amikor a kiszolgálóoldali hitelesíti a bejövő ügyféltanúsítványt |
-|IgnoreSvrCrlOfflineError|bool, az alapértelmezett érték TRUE (igaz)|Dinamikus|Azt jelzi, hogy a CRL offline hibát figyelmen kívül hagy-e, amikor az ügyféloldali ellenőrzi a bejövő kiszolgálói tanúsítványokat; az alapértelmezett érték TRUE (igaz). A visszavont kiszolgálói tanúsítványokkal való támadásoknak meg kell felelnie a DNS-nek; nehezebb, mint a visszavont Ügyféltanúsítványok. |
-|ServerAuthCredentialType|karakterlánc, az alapértelmezett érték a "None"|Statikus|A FabricClient és a fürt közötti kommunikáció biztonságossá tételéhez használandó biztonsági hitelesítő adatok típusát jelzi. Az érvényes értékek: "None/X509/Windows" |
-|ServerCertThumbprints|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A fürt által az ügyfelekkel való kommunikációhoz használt ujjlenyomatai megfelelnek az ügyfelek ezt használják a fürt hitelesítéséhez. Vesszővel tagolt nevek listája. |
-|SettingsX509StoreName| karakterlánc, az alapértelmezett érték a "MY"| Dinamikus|A Fabric által a konfiguráció védelme érdekében használt X509-tanúsítványtároló |
-|UseClusterCertForIpcServerTlsSecurity|bool, az alapértelmezett érték FALSE|Statikus|Azt határozza meg, hogy a fürt tanúsítványa használható-e az IPC-kiszolgáló TLS átviteli egységének védelméhez |
-|X509Folder|karakterlánc, az alapértelmezett érték a/var/lib/waagent|Statikus|Az a mappa, ahol a X509 tanúsítványok és titkos kulcsok találhatók |
-|TLS1_2_CipherList| sztring| Statikus|Ha nem üres sztringre van beállítva; felülbírálja a TLS 1.2 és az alatt támogatott Cipher-listát. Tekintse meg az "OpenSSL-Rejtjelek" dokumentációját a támogatott Rejtjelek listájának beolvasásához, valamint a következő, a TLS 1.2-es verzióra vonatkozó erős titkosítási lista formátumának listáját: "ECDHE-ECDSA-AES256-GCM-SHA384: ECDHE-ECDSA-AES128-GCM-SHA256: ECDHE-RSA-AES256-GCM-SHA384: ECDHE-RSA-AES-128-GCM-SHA256: ECDHE-ECDSA-AES256-CBC-SHA384: ECDHE-ECDSA-AES128-CBC-SHA256: ECDHE-RSA-AES256-CBC-SHA384: ECDHE-RSA-AES128-CBC-sha256 "csak Linux rendszerre vonatkozik. |
+|AADCertEndpointFormátum|karakterlánc, az alapértelmezett a ""|Statikus|AAD Cert Endpoint format, alapértelmezett Azure Commercial, nem alapértelmezett környezetben,\/például az Azure Government "https: /login.microsoftonline.us/ /login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
+|AADClientalkalmazás|karakterlánc, az alapértelmezett a ""|Statikus|Hálóügyfeleket képviselő natív ügyfélalkalmazás-név vagy azonosító |
+|AADClusteralkalmazás|karakterlánc, az alapértelmezett a ""|Statikus|A fürtöt jelölő webAPI-alkalmazás név vagy azonosító |
+|AADLoginEndpoint|karakterlánc, az alapértelmezett a ""|Statikus|AAD bejelentkezési végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezetben, például az Azure Government "https:\//login.microsoftonline.us" |
+|AADTenantId|karakterlánc, az alapértelmezett a ""|Statikus|Bérlőazonosító (GUID) |
+|AcceptExpiredPinnedClusterCertificate|az alapértelmezett érték HAMIS|Dinamikus|Az ujjlenyomatáltal deklarált lejárt fürttanúsítványok elfogadásának jelzője csak a fürttanúsítványokra vonatkozik; hogy életben tartsa a halmazt. |
+|AdminClientCertUjjlenyomatok|karakterlánc, az alapértelmezett a ""|Dinamikus|A rendszergazdai szerepkörben lévő ügyfelek által használt tanúsítványok ujjlenyomatai. Ez egy vesszővel tagolt névlista. |
+|AADTokenEndpointFormátum|karakterlánc, az alapértelmezett a ""|Statikus|AAD token végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezetben, például az Azure Government "https:\//login.microsoftonline.us/{0}" |
+|AdminClientJog|karakterlánc, az alapértelmezett a ""|Dinamikus|Az admin ügyfelektől elvárt összes lehetséges követelés; ugyanolyan formátumú, mint a ClientClaims; ez a lista belsőleg kerül hozzáadásra ClientClaims; így nem kell is hozzá ugyanazokat a bejegyzéseket ClientClaims. |
+|AdminClientIdentities|karakterlánc, az alapértelmezett a ""|Dinamikus|A hálózati szerepkörben lévő hálókliensek Windows-identitásai; privilegizált hálóműveletek engedélyezéséhez. Ez egy vesszővel tagolt lista; minden bejegyzés tartományfiók vagy csoportnév. A kényelem kedvéért; a fabric.exe programot futtató fiók automatikusan rendszergazdai szerepkörhöz lesz rendelve; így a ServiceFabricAdministrators csoport is. |
+|ApprunasaccountGroupX509mappa|karakterlánc, az alapértelmezett érték /home/sfuser/sfusercerts |Statikus|Az AppRunAsAccountGroup X509 tanúsítványokat és személyes kulcsokat tartalmazó mappa |
+|CertificateExpirySafetyMargin|TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(43200)|Statikus|Adja meg az időtartományt másodpercben. A tanúsítvány lejáratának biztonsági tartaléka; a tanúsítvány állapotjelentésének állapota OK-ról Figyelmeztetésre változik, ha a lejárat ennél közelebb van. Az alapértelmezett érték 30 nap. |
+|CertificateHealthReportingInterval tanúsítvány|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(3600 * 8)|Statikus|Adja meg az időtartományt másodpercben. A tanúsítvány állapotjelentésének időköze; alapértelmezés szerint 8 óra; 0-ra állítás letiltja a tanúsítvány állapotjelentését |
+|ClientCertUjjlenyomatok|karakterlánc, az alapértelmezett a ""|Dinamikus|Az ügyfelek által a fürttel való beszélgetéshez használt tanúsítványok ujjlenyomatai; a fürt ezt a bejövő kapcsolatot engedélyezi. Ez egy vesszővel tagolt névlista. |
+|ClientClaimAuthEnabled|az alapértelmezett érték HAMIS|Statikus|Azt jelzi, hogy a jogcímalapú hitelesítés engedélyezve van-e az ügyfeleken; a true implicit módon beállítja a ClientRoleEnabled beállítást. |
+|Ügyféljogcímek|karakterlánc, az alapértelmezett a ""|Dinamikus|Az ügyfelektől az átjáróhoz való csatlakozáshoz szükséges összes lehetséges jogcím. Ez egy "OR" lista: \| \| ClaimsEntry ClaimsEntry \| \| ClaimsEntry ... minden ClaimsEntry egy "ÉS" lista: ClaimType=ClaimValue && ClaimType=ClaimValue && ClaimType=ClaimValue ... |
+|Ügyfélidentitások|karakterlánc, az alapértelmezett a ""|Dinamikus|A FabricClient Windows-identitásai; az átjáró elnevezése ezt használja a bejövő kapcsolatok engedélyezéséhez. Ez egy vesszővel tagolt lista; minden bejegyzés tartományfiók vagy csoportnév. A kényelem kedvéért; a fabric.exe programot futtató fiók automatikusan engedélyezett; így a ServiceFabricAllowedUsers és a ServiceFabricAdministrators csoport. |
+|ClientRoleEnabled|az alapértelmezett érték HAMIS|Statikus|Azt jelzi, hogy az ügyfélszerepkör engedélyezve van-e; ha igaz értékre van állítva; az ügyfelek identitásuk alapján kapnak szerepköröket. A V2 esetében; ennek engedélyezése azt jelenti, hogy az AdminClientCommonNames/AdminClientIdentities nem szereplő ügyfél csak írásvédett műveleteket hajthat végre. |
+|ClusterCertUjjlenyomatok|karakterlánc, az alapértelmezett a ""|Dinamikus|A fürthöz való csatlakozásra engedélyezett tanúsítványok ujjlenyomatai; vesszővel tagolt névlista. |
+|ClusterCredentialType típus|karakterlánc, az alapértelmezett érték "Nincs"|Nem engedélyezett|A fürt védelméhez használandó biztonsági hitelesítő adatok típusát jelzi. Az érvényes értékek a következők: "Nincs/X509/Windows" |
+|Fürtidentitások|karakterlánc, az alapértelmezett a ""|Dinamikus|A fürtcsomópontok Windows-identitásai; fürttagság-engedélyezéshez. Ez egy vesszővel tagolt lista; minden bejegyzés egy tartományfiók vagy csoportnév |
+|ClusterSpn|karakterlánc, az alapértelmezett a ""|Nem engedélyezett|A fürt egyszerű szolgáltatásneve; ha a háló egyetlen tartományfelhasználóként fut (gMSA/tartományi felhasználói fiók). Ez az SPN a lízing figyelők és figyelők fabric.exe: összevonási figyelők; belső replikációfigyelők; futásidejű szolgáltatásfigyelő és az átjárófigyelő elnevezése. Ezt üresen kell hagyni, ha a háló gépfiókként fut; ebben az esetben az oldalszámítási figyelő SPN csatlakoztatása a figyelő átviteli címéről. |
+|CrlCheckingFlag|uint, az alapértelmezett érték: 0x40000000|Dinamikus|Alapértelmezett tanúsítványlánc-érvényesítési jelző; felülírhatják az alkatrészspecifikus zászlóval; pl. Összevonás/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY A 0-ra állítás letiltja a visszavont tanúsítványok listájának ellenőrzését A támogatott értékek teljes listáját a CertGetCertificateChain dwFlags dokumentálja:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
+|CrlDisablePeriod|TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(15)|Dinamikus|Adja meg az időtartományt másodpercben. A visszavont tanúsítványok listájának ellenőrzése mennyi ideig van letiltva egy adott tanúsítvány esetében kapcsolat nélküli hiba után; ha a visszavont tanúsítványok listájának offline hibáját figyelmen kívül lehet hagyni. |
+|CrlOfflineHealthReportTtl|TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(1440)|Dinamikus|Adja meg az időtartományt másodpercben. |
+|DisableFirewallRuleForDomainProfile| bool, az alapértelmezett érték IGAZ |Statikus| Azt jelzi, hogy a tűzfalszabályt nem kell-e engedélyezni a tartományprofilhoz. |
+|DisableFirewallRuleForPrivateProfile| bool, az alapértelmezett érték IGAZ |Statikus| Azt jelzi, hogy a tűzfalszabályt nem kell-e engedélyezni a privát profilhoz. | 
+|DisableFirewallRuleFor PublicProfile| bool, az alapértelmezett érték IGAZ | Statikus|Azt jelzi, hogy a tűzfalszabályt nem kell-e engedélyezni a nyilvános profilhoz. |
+| LinuxMinTlsVersion kényszerítése | az alapértelmezett érték HAMIS | Statikus | Ha igaz ra van állítva; csak a TLS 1.2+ verziója támogatott.  Ha hamis; korábbi TLS-verziókat. Csak Linuxra vonatkozik |
+| PrevalidationOnSecurityChanges kényszerítése | az alapértelmezett érték HAMIS| Dinamikus | A fürtfrissítés viselkedésének szabályozása a biztonsági beállítások változásainak észlelésekor. Ha a beállítás "true", a fürt frissítése megpróbálja biztosítani, hogy legalább egy tanúsítvány megfelel a bemutató szabályok bármelyikének képessé teszi a megfelelő érvényességi szabályt. Az ellenőrzés megtörténik, mielőtt az új beállítások bármely csomópontra vonatkozna, de csak a Fürtkezelő szolgáltatás elsődleges replikáját üzemeltető csomóponton fut a frissítés megkezdésekor. Az alapértelmezett érték jelenleg "false" értékre van állítva; a 7.1-es kiadással kezdődően a beállítás "true" lesz az új Azure Service Fabric-fürtöknél.|
+|FabricHostSpn között| karakterlánc, az alapértelmezett a "" |Statikus| FabricHost egyszerű szolgáltatásneve; ha a háló egyetlen tartományi felhasználóként (gMSA/tartományi felhasználói fiók) fut, és a FabricHost gépfiók alatt fut. Ez az IPC-figyelő SPN-je a FabricHost számára; amely alapértelmezés szerint üresen kell hagyni, mivel FabricHost fut gépfiók alatt |
+|IgnoreCrlOfflineError|az alapértelmezett érték HAMIS|Dinamikus|A visszavont tanúsítványok listájának offline hibáját figyelmen kívül hagyja-e, amikor a kiszolgálóoldali ellenőrzi a bejövő ügyféltanúsítványokat |
+|IgnoreSvrCrlOfflineError|bool, az alapértelmezett érték IGAZ|Dinamikus|A visszavont tanúsítványok listájának offline hibáját figyelmen kívül hagyja-e, amikor az ügyféloldal ellenőrzi a bejövő kiszolgálói tanúsítványokat; alapértelmezett érték szerint igaz. A visszavont kiszolgálói tanúsítványokkal elkövetett támadások a DNS kompromittálóságát igénylik; nehezebb, mint a visszavont ügyféltanúsítványok. |
+|ServerAuthCredentialType típus|karakterlánc, az alapértelmezett érték "Nincs"|Statikus|A FabricClient és a fürt közötti kommunikáció biztosításához használandó biztonsági hitelesítő adatok típusát jelzi. Az érvényes értékek a következők: "Nincs/X509/Windows" |
+|ServerCertUjjlenyomatok|karakterlánc, az alapértelmezett a ""|Dinamikus|A fürt által az ügyfelekkel való beszélgetésre használt kiszolgálói tanúsítványok ujjlenyomatai; az ügyfelek ezt használják a fürt hitelesítésére. Ez egy vesszővel tagolt névlista. |
+|SettingsX509StoreName| karakterlánc, az alapértelmezett érték "MY"| Dinamikus|X509 tanúsítványtároló, amelyet a háló használ a konfiguráció védelmére |
+|UseClusterCertForIpcServerTlsSecurity|az alapértelmezett érték HAMIS|Statikus|Fürttanúsítvány használata az IPC Server TLS átviteli egység védelméhez |
+|X509mappa|karakterlánc, az alapértelmezett : /var/lib/waagent|Statikus|Az X509-tanúsítványokat és személyes kulcsokat tartalmazó mappa |
+|TLS1_2_CipherList| sztring| Statikus|Ha nem üres karakterláncra van állítva; felülírja a TLS1.2 és az alatti támogatott titkosítási listát. Lásd a támogatott rejtjellista visszakeresésére szolgáló "openssl-ciphers" dokumentációt és a listaformátumot Példa a TLS1.2 erős titkosítási listájára: "ECDHE-ECDSA-AES256-GC M-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384: ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES12 8-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Csak Linuxra vonatkozik. |
 
-## <a name="securityadminclientx509names"></a>Biztonság/AdminClientX509Names
+## <a name="securityadminclientx509names"></a>Biztonsági/AdminClientX509Nevek
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus|Ez a "Name" és a "value" pár listája. Minden "név" a tulajdonos köznapi neve vagy DnsName, amely rendszergazdai X509 hitelesítve van. A "név" értéknél a "value" a kiállítói ujjlenyomatai megfelelnek tartozó tanúsítvány vesszővel elválasztott listája, ha nem üres, a rendszergazdai Ügyféltanúsítványok közvetlen kiállítójának szerepelnie kell a listán. |
+|Tulajdonságcsoport|X509NameMap, az alapértelmezett érték Nincs|Dinamikus|Ez a lista a "Név" és az "Érték" pár. Minden "név" tulajdonosi köznapi névvel vagy Az X509-tanúsítványok Dnsname-je rendszergazdai ügyfélműveletekhez engedélyezett. Egy adott "Név" esetében az "Érték" a kiállító rögzítéséhez szükséges tanúsítvány ujjlenyomatainak vesszővel történő külön listája, ha nem üres, a rendszergazdai ügyféltanúsítványok közvetlen kibocsátójának szerepelnie kell a listában. |
 
-## <a name="securityclientaccess"></a>Security/ClientAccess
+## <a name="securityclientaccess"></a>Biztonság/Ügyfélhozzáférés
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ActivateNode |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A csomópont aktiválásához szükséges biztonsági konfiguráció. |
-|CancelTestCommand |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Egy adott TestCommand megszakítása – ha az a járaton van. |
-|CodePackageControl |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A kódok újraindításához szükséges biztonsági konfiguráció. |
-|Létrehozás |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|Biztonsági konfiguráció az alkalmazások létrehozásához. |
-|CreateComposeDeployment|karakterlánc, az alapértelmezett érték a "rendszergazda"| Dinamikus|Létrehoz egy összeállítási központi telepítést, amelyet az összeállítási fájlok ismertetnek. |
-|CreateGatewayResource|karakterlánc, az alapértelmezett érték a "rendszergazda"| Dinamikus|Átjáró erőforrásának létrehozása |
-|CreateName |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|Biztonsági konfiguráció a névadási URI létrehozásához. |
-|CreateNetwork|karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|Létrehoz egy tároló hálózatot |
-|CreateService |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A szolgáltatás létrehozásának biztonsági beállításai. |
-|CreateServiceFromTemplate |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|Biztonsági konfiguráció a szolgáltatás létrehozásához sablonból. |
-|CreateVolume|karakterlánc, az alapértelmezett érték a "rendszergazda"|Dinamikus|Kötet létrehozása |
-|Deactivatenode művelet ( |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a csomópontok inaktiválásához. |
-|DeactivateNodesBatch |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció több csomópont inaktiválásához. |
-|Törlés |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A rendszerkép-tároló ügyfél-törlési műveletének biztonsági beállításai. |
-|Alkalmazástörlés |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az alkalmazás törlésének biztonsági beállításai. |
-|DeleteComposeDeployment|karakterlánc, az alapértelmezett érték a "rendszergazda"| Dinamikus|Az összeállítási központi telepítés törlése |
-|DeleteGatewayResource|karakterlánc, az alapértelmezett érték a "rendszergazda"| Dinamikus|Átjáró erőforrásának törlése |
-|DeleteName |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|Biztonsági konfiguráció az URI-azonosító törléséhez. |
-|DeleteNetwork|karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|Tároló hálózat törlése |
-|DeleteService |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|Biztonsági konfiguráció a szolgáltatás törléséhez. |
-|DeleteVolume|karakterlánc, az alapértelmezett érték a "rendszergazda"|Dinamikus|Töröl egy kötetet.| 
-|EnumerateProperties |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Biztonsági konfiguráció az elnevezési tulajdonság enumerálásához. |
-|EnumerateSubnames |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Az URI-enumerálások elnevezésének biztonsági konfigurációja. |
-|FileContent |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A rendszerkép-tároló ügyfél fájlátviteli szolgáltatásának biztonsági konfigurációja (a fürtön kívül). |
-|FileDownload |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a rendszerkép-tároló ügyféloldali fájljának letöltésének kezdeményezéséhez (a fürtön kívül). |
-|FinishInfrastructureTask |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az infrastrukturális feladatok befejezésének biztonsági beállításai. |
-|GetChaosReport | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| A káosz állapotának beolvasása egy adott időtartományon belül. |
-|GetClusterConfiguration | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Egy partíció GetClusterConfiguration okoz. |
-|GetClusterConfigurationUpgradeStatus | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Egy partíció GetClusterConfigurationUpgradeStatus okoz. |
-|GetFabricUpgradeStatus |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció a fürt frissítési állapotának lekérdezéséhez. |
-|GetFolderSize |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|A FileStoreService-mappa méretének lekérése biztonsági konfiguráció |
-|GetNodeDeactivationStatus |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció az inaktiválási állapot ellenőrzéséhez. |
-|GetNodeTransitionProgress | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció a csomópont-átváltási parancs előrehaladásának megkezdéséhez. |
-|GetPartitionDataLossProgress | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Beolvassa egy meghívás-adatvesztés API-hívásának állapotát. |
-|GetPartitionQuorumLossProgress | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Beolvassa az egy meghívás Kvórumának elvesztése API-hívás állapotát. |
-|GetPartitionRestartProgress | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Beolvassa az újraindítási partíció API-hívásának folyamatát. |
-|GetSecrets|karakterlánc, az alapértelmezett érték a "rendszergazda"|Dinamikus|Titkos értékek beolvasása |
-|GetServiceDescription |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció a hosszú lekérdezési szolgáltatás értesítéseihez és a szolgáltatás leírásának olvasásához. |
-|GetStagingLocation |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a rendszerkép-tároló ügyfél átmeneti helyének lekéréséhez. |
-|GetStoreLocation |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a rendszerkép-tárolóban lévő ügyfél-tároló helyének lekéréséhez. |
-|GetUpgradeOrchestrationServiceState|karakterlánc, az alapértelmezett érték a "rendszergazda"| Dinamikus|Egy partíción GetUpgradeOrchestrationServiceState indukál |
-|GetUpgradesPendingApproval |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Egy partíció GetUpgradesPendingApproval okoz. |
-|GetUpgradeStatus |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció az alkalmazás frissítési állapotának lekérdezéséhez. |
-|InternalList |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|Biztonsági konfiguráció a rendszerkép-tároló ügyfél-fájlok listázási műveletéhez (belső). |
-|InvokeContainerApi|karakterlánc, az alapértelmezett érték a "rendszergazda"|Dinamikus|Tároló API meghívása |
-|InvokeInfrastructureCommand |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az infrastruktúra-feladatok felügyeleti parancsainak biztonsági konfigurációja. |
-|InvokeInfrastructureQuery |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Az infrastruktúra-feladatok lekérdezésének biztonsági beállításai. |
-|Lista |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Biztonsági konfiguráció a rendszerkép-tárolói ügyfél-fájllista művelethez. |
-|MoveNextFabricUpgradeDomain |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a fürt frissítéseinek egy explicit frissítési tartománnyal való folytatásához. |
-|MoveNextUpgradeDomain |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció egy explicit frissítési tartománnyal folytatott alkalmazások frissítéseinek folytatásához. |
-|MoveReplicaControl |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|Replika áthelyezése. |
-|NameExists |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Az URI-azonosítók meglétét ellenőrző biztonsági konfiguráció. |
-|NodeControl |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A kezdéshez szükséges biztonsági konfiguráció; leállítása és a csomópontok újraindítása. |
-|NodeStateRemoved |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A jelentési csomópont állapotának biztonsági konfigurációja el lett távolítva. |
-|Ping |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Az ügyfél pingelésének biztonsági konfigurációja. |
-|PredeployPackageToNode |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Előtelepítési API. |
-|PrefixResolveService |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció a panasztételi szolgáltatás előtagjának feloldásához. |
-|PropertyReadBatch |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció az elnevezési tulajdonság olvasási műveleteihez. |
-|PropertyWriteBatch |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|Az elnevezési tulajdonság írási műveleteinek biztonsági beállításai. |
-|ProvisionApplicationType |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az alkalmazás típusú kiépítés biztonsági konfigurációja. |
-|ProvisionFabric |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció az MSI és/vagy a cluster manifest kiépítés esetén. |
-|Lekérdezés |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció lekérdezéseknél. |
-|RecoverPartition |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|A partíciók helyreállításának biztonsági beállításai. |
-|RecoverPartitions |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|A partíciók helyreállításának biztonsági beállításai. |
-|RecoverServicePartitions |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A szolgáltatási partíciók helyreállításának biztonsági beállításai. |
-|RecoverSystemPartitions |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a rendszerszolgáltatási partíciók helyreállításához. |
-|RemoveNodeDeactivations |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció az Inaktiválás több csomóponton történő visszafordításához. |
-|ReportFabricUpgradeHealth |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a fürt verziófrissítésének folytatásához a jelenlegi verziófrissítési folyamattal. |
-|ReportFault |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció jelentési hiba esetén. |
-|ReportHealth |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a jelentéskészítési állapothoz. |
-|ReportUpgradeHealth |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció az alkalmazások verziófrissítésének folytatásához a jelenlegi verziófrissítési folyamattal. |
-|ResetPartitionLoad |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció a (Z alaphelyzetbe állításához. |
-|ResolveNameOwner |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|A névhasználati URI tulajdonosának feloldásához szükséges biztonsági konfiguráció. |
-|ResolvePartition |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|A rendszerszolgáltatások feloldásának biztonsági beállításai. |
-|ResolveService |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Biztonsági konfiguráció a panasztételi szolgáltatás feloldásához. |
-|ResolveSystemService|karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó"|Dinamikus| Rendszerszolgáltatások feloldásának biztonsági beállításai |
-|RollbackApplicationUpgrade |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció az alkalmazások verziófrissítésének visszaállításához. |
-|RollbackFabricUpgrade |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a fürt frissítéseinek visszaállításához. |
-|ServiceNotifications |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| Az eseményvezérelt szolgáltatás értesítéseinek biztonsági beállításai. |
-|SetUpgradeOrchestrationServiceState|karakterlánc, az alapértelmezett érték a "rendszergazda"| Dinamikus|Egy partíción SetUpgradeOrchestrationServiceState indukál |
-|StartApprovedUpgrades |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Egy partíció StartApprovedUpgrades okoz. |
-|StartChaos |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Elindítja a káoszt – ha még nem indult el. |
-|StartClusterConfigurationUpgrade |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Egy partíció StartClusterConfigurationUpgrade okoz. |
-|StartInfrastructureTask |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|Az infrastruktúra-feladatok indításának biztonsági beállításai. |
-|StartNodeTransition |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Csomópont-átmenet indításának biztonsági beállításai. |
-|StartPartitionDataLoss |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Kiváltja az adatvesztést egy partíción. |
-|StartPartitionQuorumLoss |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Egy partíció Kvórumának elvesztését idézi elő. |
-|StartPartitionRestart |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Egyidejűleg újraindítja egy partíció egy részét vagy az összes replikáját. |
-|StopChaos |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Leállítja a káoszt – ha már elindult. |
-|ToggleVerboseServicePlacementHealthReporting | karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" |Dinamikus| A biztonsági konfiguráció a részletes ServicePlacement HealthReporting. |
-|UnprovisionApplicationType |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az alkalmazás típusának kiépítéséhez szükséges biztonsági konfiguráció. |
-|UnprovisionFabric |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az MSI-hez és/vagy a fürthöz tartozó jegyzékfájl biztonsági konfigurációja nem építhető ki. |
-|UnreliableTransportControl |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Nem megbízható átvitel a viselkedések hozzáadásához és eltávolításához. |
-|UpdateService |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus|A szolgáltatás frissítéseinek biztonsági konfigurációja. |
-|UpgradeApplication |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az alkalmazások frissítéseinek megkezdéséhez vagy megszakításához szükséges biztonsági konfiguráció. |
-|UpgradeComposeDeployment|karakterlánc, az alapértelmezett érték a "rendszergazda"| Dinamikus|Az összeállítás központi telepítésének frissítése |
-|UpgradeFabric |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| A fürt frissítéseinek indítására szolgáló biztonsági konfiguráció. |
-|Feltöltés |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|A rendszerkép-tároló ügyfél-feltöltési műveletének biztonsági konfigurációja. |
+|Aktiválásnode |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A csomópont aktiválásának biztonsági konfigurációja. |
+|A Testparancs megszakítása |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Egy adott TestCommand törlése - ha repülés közben van. |
+|CodePackageControl |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A kódcsomagok újraindításának biztonsági beállításai. |
+|CreateApplication alkalmazás |karakterlánc, az alapértelmezett "Admin" | Dinamikus|Az alkalmazások létrehozásához. |
+|LétrehozáscomposeDeployment|karakterlánc, az alapértelmezett "Admin"| Dinamikus|Írásfájlok által leírt írási központi telepítés létrehozása |
+|CreateGatewayResource|karakterlánc, az alapértelmezett "Admin"| Dinamikus|Átjáró-erőforrás létrehozása |
+|CreateName (Létrehozási név) |karakterlánc, az alapértelmezett "Admin" |Dinamikus|Az URI-k létrehozásának elnevezésére szolgáló biztonsági konfiguráció. |
+|CreateNetwork (Létrehozáshálózat)|karakterlánc, az alapértelmezett "Admin" |Dinamikus|Tárolóhálózat létrehozása |
+|CreateService (Szolgáltatás létrehozása) |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A szolgáltatás létrehozásához. |
+|CreateServiceFromTemplate |karakterlánc, az alapértelmezett "Admin" |Dinamikus|A szolgáltatás sablonból történő létrehozásának biztonsági konfigurációja. |
+|CreateVolume (Kötet létrehozása)|karakterlánc, az alapértelmezett "Admin"|Dinamikus|Kötet létrehozása |
+|DeactivateNode |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Biztonsági konfiguráció egy csomópont inaktiválásához. |
+|DeactivateNodesBatch |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Több csomópont inaktiválásának biztonsági konfigurációja. |
+|Törlés |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A lemezképtároló ügyfél törlési műveletének biztonsági beállításai. |
+|DeleteApplication alkalmazás |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az alkalmazás törlésének biztonsági konfigurációja. |
+|KompkompposeTelepítése|karakterlánc, az alapértelmezett "Admin"| Dinamikus|Törli az összeállítás központi telepítését |
+|DeleteGatewayResource|karakterlánc, az alapértelmezett "Admin"| Dinamikus|Átjáró-erőforrás törlése |
+|DeleteName (Törlésneve) |karakterlánc, az alapértelmezett "Admin" |Dinamikus|Az URI-törlés elnevezésének biztonsági konfigurációja. |
+|DeleteNetwork (Törléshálózat)|karakterlánc, az alapértelmezett "Admin" |Dinamikus|Tárolóhálózat törlése |
+|DeleteService szolgáltatás |karakterlánc, az alapértelmezett "Admin" |Dinamikus|A szolgáltatás törlésének biztonsági konfigurációja. |
+|DeleteVolume (Kötet törlése)|karakterlánc, az alapértelmezett "Admin"|Dinamikus|Kötet törlése.| 
+|EnumerálniTulajdonságok |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|Az elnevezési tulajdonság számbavételének biztonsági konfigurációja. |
+|SzámbasoroljaAlnevek |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Az URI-felsorolás elnevezésének biztonsági konfigurációja. |
+|Fájltartalom |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A lemezképtároló ügyfélfájl-átvitelének biztonsági konfigurációja (a fürtön kívül). |
+|Fájlletöltés |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A lemezképtároló ügyfélfájlletöltési kezdeményezésének biztonsági konfigurációja (a fürtön kívül). |
+|FinishInfrastructureTask |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Biztonsági konfiguráció az infrastrukturális feladatok befejezéséhez. |
+|GetChaosReport | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| A Káosz állapotának beolvasása egy adott időtartományon belül. |
+|GetClusterConfiguration | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|GetClusterConfiguration indukálja a partíciót. |
+|GetClusterConfigurationUpgradeStatus | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| A GetClusterConfigurationUpgradeStatus indukálja egy partíción. |
+|GetFabricUpgradeStatus |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| A fürt frissítési állapotának lekérdezésének biztonsági konfigurációja. |
+|GetFolderSize |karakterlánc, az alapértelmezett "Admin" |Dinamikus|A FileStoreService mappaméretének beszerzése biztonsági konfigurációja |
+|GetNodeDeactivationStatus |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Biztonsági konfiguráció az inaktiválási állapot ellenőrzéséhez. |
+|GetNodeTransitionProgress | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Biztonsági konfiguráció a csomópont-átmenet parancs előrehaladásának megszerzéséhez. |
+|GetPartitionDataLossProgress | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|Lekéri egy adatvesztés api-hívás meghívásának folyamatát. |
+|GetPartitionQuorumLossProgress | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Lekéri a kvórumveszteség api-hívás folyamatát. |
+|GetPartitionRestartProgress | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Lekéri az újraindítási partíció API-hívás folyamatát. |
+|GetTikók|karakterlánc, az alapértelmezett "Admin"|Dinamikus|Titkos értékek bekéselése |
+|GetServiceDescription |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Biztonsági konfiguráció a hosszú lekérdezési szolgáltatás értesítések és olvasási szolgáltatás leírása. |
+|GetStagingLocation (Átmeneti hely) |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A lemezképtároló ügyfél átmeneti helyének lekérésének biztonsági konfigurációja. |
+|GetStoreLocation |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A lemezképtárügyfél-tároló helyének lekérésének biztonsági beállításai. |
+|GetUpgradeOrchestrationServiceState|karakterlánc, az alapértelmezett "Admin"| Dinamikus|A GetUpgradeOrchestrationServiceState indukálja egy partíción |
+|GetUpgradesPendingApproval |karakterlánc, az alapértelmezett "Admin" |Dinamikus| GetUpgradesPendingApproval függvényt indukál egy partíción. |
+|GetUpgradeStatus |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Az alkalmazás frissítési állapotának lekérdezéséhez biztonságos konfiguráció. |
+|Belső lista |karakterlánc, az alapértelmezett "Admin" | Dinamikus|A lemezképtároló ügyfélfájllista-művelet (belső) biztonsági konfigurációja. |
+|InvokeContainerApi|karakterlánc,az alapértelmezett "Admin"|Dinamikus|Tároló API meghívása |
+|InvokeInfrastructureCommand parancs |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az infrastruktúra feladatkezelési parancsainak biztonsági konfigurációja. |
+|InvokeInfrastructureQuery |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|Biztonsági konfiguráció az infrastruktúra-feladatok lekérdezéséhez. |
+|Lista |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|A lemezképtároló ügyfélfájllistájának műveletének biztonsági beállításai. |
+|MoveNextFabricUpgradeDomain |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A fürtfrissítések explicit frissítési tartománnyal történő folytatásának biztonsági konfigurációja. |
+|MoveNextUpgradeDomain |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az alkalmazásfrissítések explicit frissítési tartománnyal történő folytatásának biztonsági konfigurációja. |
+|MoveReplicaControl |karakterlánc, az alapértelmezett "Admin" | Dinamikus|A replika áthelyezése. |
+|NameExists |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|Az URI-létezésellenőrzésének elnevezésére szolgáló biztonsági konfiguráció. |
+|NodeControl |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A kezdés biztonsági konfigurációja; megállás; és a csomópontok újraindítása. |
+|NodeStateRemoved |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A csomópont állapotának jelentéséhez eltávolított biztonsági konfiguráció. |
+|Ping |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Az ügyfélpingek biztonsági beállításai. |
+|PredeployPackageToNode |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Telepítés előtti api. |
+|ElőtagResolveService |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Biztonsági konfiguráció a panaszalapú szolgáltatáselőtag megoldásához. |
+|TulajdonságReadBatch |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| A tulajdonságolvasási műveletek elnevezésének biztonsági konfigurációja. |
+|TulajdonságWriteBatch |karakterlánc, az alapértelmezett "Admin" |Dinamikus|A tulajdonságírási műveletek elnevezésének biztonsági konfigurációi. |
+|ProvisionApplicationType |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az alkalmazástípus-kiépítés biztonsági konfigurációja. |
+|ProvisionFabric |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az MSI és/vagy a fürtjegyzék-kiépítés biztonsági konfigurációja. |
+|Lekérdezés |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| A lekérdezések biztonsági beállításai. |
+|RecoverPartition (Partíció helyreállítása) |karakterlánc, az alapértelmezett "Admin" | Dinamikus|A partíció helyreállításához szolgáló biztonsági konfiguráció. |
+|Partíciók helyreállítása |karakterlánc, az alapértelmezett "Admin" | Dinamikus|A partíciók helyreállítására szolgáló biztonsági konfiguráció. |
+|RecoverServicePartitions |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A szolgáltatáspartíciók helyreállításához szolgáló biztonsági konfiguráció. |
+|RecoverSystemPartitions |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A rendszerszolgáltatás-partíciók helyreállításához szolgáló biztonsági konfiguráció. |
+|RemoveNodeDeactivations |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Biztonsági konfiguráció a több csomópont inaktiválásának visszaállításához. |
+|ReportFabricUpgradeHealth |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A fürtfrissítések folytatásának biztonsági konfigurációja az aktuális frissítési folyamattal. |
+|Jelentéshiba |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A jelentési hiba biztonsági konfigurációja. |
+|JelentésEgészség |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az állapot jelentésének biztonsági konfigurációja. |
+|ReportUpgradeHealth |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az alkalmazásfrissítések folytatásának biztonsági konfigurációja az aktuális frissítési folyamattal. |
+|Partíció visszaállítása |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| A feladatátvevő egység terhelésvisszaállításának biztonsági konfigurációja. |
+|ResolveNameOwner (Névtulajdonos) |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|Az URI-tulajdonos névhasználati lehetőség feloldásának biztonsági konfigurációja. |
+|Partíció feloldása |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" | Dinamikus|A rendszerszolgáltatások feloldásának biztonsági beállításai. |
+|ResolveService (Megoldásszolgáltatás) |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Biztonsági konfiguráció a panaszalapú szolgáltatás megoldásához. |
+|ResolveSystemService|karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó"|Dinamikus| A rendszerszolgáltatások feloldásának biztonsági beállításai |
+|RollbackApplicationUpgrade |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az alkalmazásfrissítések visszaállításának biztonsági beállításai. |
+|RollbackFabricUpgrade |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A fürtfrissítések visszaállításának biztonsági beállításai. |
+|ServiceNotifications |karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Az eseményalapú szolgáltatásértesítések biztonsági beállításai. |
+|SetUpgradeOrchestrationServiceState|karakterlánc, az alapértelmezett "Admin"| Dinamikus|A SetUpgradeOrchestrationServiceState indukálja egy partíción |
+|StartApprovedUpgrades |karakterlánc, az alapértelmezett "Admin" |Dinamikus| StartApprovedUpgrades indukál egy partíción. |
+|StartChaos között |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Elindítja a Káoszt - ha még nincs elindítva. |
+|StartClusterConfigurationUpgrade |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Indítási fürtkonfigurációs frissítést indukál egy partíción. |
+|StartInfrastructureTask |karakterlánc, az alapértelmezett "Admin" | Dinamikus|Biztonsági konfiguráció az infrastrukturális feladatok indításához. |
+|StartNodeTransition (StartNodeTransition) |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A csomópont-átmenet indításának biztonsági konfigurációja. |
+|StartPartitionDataLoss |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Adatvesztést idéz elő egy partíción. |
+|StartPartitionQuorumLoss |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Kvórumvesztést idéz elő egy partíción. |
+|StartPartitionRestart |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Ezzel egyidejűleg újraindítja a partíció néhány vagy az összes replikáját. |
+|StopChaos között |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Leállítja a káoszt - ha már elindult. |
+|ToggleVerboseServicePlacementHealthReporting | karakterlánc, az alapértelmezett\|\|a "Rendszergazda felhasználó" |Dinamikus| Részletes ServicePlacement HealthReporting szolgáltatáselhelyezési állapotjelentés váltásának biztonsági konfigurációja. |
+|UnprovisionApplicationType |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az alkalmazástípus kioldásának biztonsági konfigurációja. |
+|UnprovisionFabric |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az MSI és/vagy a fürtjegyzék biztonsági konfigurációja megszüntetés. |
+|MegbízhatatlanTransportControl |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Megbízhatatlan Szállítás a viselkedések hozzáadásához és eltávolításához. |
+|UpdateService szolgáltatás |karakterlánc, az alapértelmezett "Admin" |Dinamikus|A szolgáltatásfrissítések biztonsági beállításai. |
+|UpgradeApplication alkalmazás |karakterlánc, az alapértelmezett "Admin" |Dinamikus| Az alkalmazásfrissítések indításához vagy megszakításához. |
+|UpgradeComposeTelepítése|karakterlánc, az alapértelmezett "Admin"| Dinamikus|Frissíti a komponálási központi telepítést |
+|UpgradeFabric |karakterlánc, az alapértelmezett "Admin" |Dinamikus| A fürtfrissítések indításának biztonsági konfigurációja. |
+|Feltöltés |karakterlánc, az alapértelmezett "Admin" | Dinamikus|A lemezképtároló ügyfél feltöltési műveletének biztonsági konfigurációja. |
 
-## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
+## <a name="securityclientcertificateissuerstores"></a>Biztonság/ClientCertificateIssuerStores
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|IssuerStoreKeyValueMap, alapértelmezés szerint nincs |Dinamikus|X509 kiállítói tanúsítványok tárolói az Ügyféltanúsítványok számára; Név = clientIssuerCN; Value = a tárolók vesszővel tagolt listája |
+|Tulajdonságcsoport|IssuerStoreKeyValueMap, az alapértelmezett érték Nincs |Dinamikus|X509 kiállítói tanúsítványtárolók az ügyféltanúsítványokhoz; Név = clientIssuerCN; Érték = vesszővel elválasztott üzletek listája |
 
-## <a name="securityclientx509names"></a>Security/ClientX509Names
+## <a name="securityclientx509names"></a>Biztonság/ClientX509Nevek
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus|Ez a "Name" és a "value" pár listája. Minden "név" a tulajdonos köznapi neve vagy DnsName, amely az X509 számára van engedélyezve. Az adott "név" értéknél a "value" a kiállítói ujjlenyomatai megfelelnek tartozó tanúsítvány vesszővel elválasztott listája, ha nem üres, az Ügyféltanúsítványok közvetlen kiállítójának szerepelnie kell a listán.|
+|Tulajdonságcsoport|X509NameMap, az alapértelmezett érték Nincs|Dinamikus|Ez a lista a "Név" és az "Érték" pár. Minden "név" tulajdonosi köznapi névvagy az ügyfélműveletekhez engedélyezett X509-tanúsítványok DnsName neve. Egy adott "Név" esetében az "Érték" a kiállító rögzítéséhez szükséges tanúsítvány ujjlenyomatainak vesszővel történő külön listája, ha nem üres, az ügyféltanúsítványok közvetlen kibocsátójának szerepelnie kell a listában.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Biztonság/ClusterCertificateIssuerStores
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|IssuerStoreKeyValueMap, alapértelmezés szerint nincs |Dinamikus|X509 kiállítói tanúsítványok tárolói; Név = clusterIssuerCN; Value = a tárolók vesszővel tagolt listája |
+|Tulajdonságcsoport|IssuerStoreKeyValueMap, az alapértelmezett érték Nincs |Dinamikus|X509 kiállítói tanúsítványtárolók a fürttanúsítványokhoz; Név = clusterIssuerCN; Érték = vesszővel elválasztott üzletek listája |
 
 ## <a name="securityclusterx509names"></a>Biztonság/ClusterX509Names
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus|Ez a "Name" és a "value" pár listája. Minden "név" a fürt műveleteihez jóváhagyott X509-tanúsítványok tulajdonos köznapi neve vagy DnsName. Az adott "név" értéknél a "value" a kiállítói ujjlenyomatai megfelelnek tartozó tanúsítványok vesszővel elválasztott listája, ha nem üres, a fürt tanúsítványainak közvetlen kiállítójának szerepelnie kell a listán.|
+|Tulajdonságcsoport|X509NameMap, az alapértelmezett érték Nincs|Dinamikus|Ez a lista a "Név" és az "Érték" pár. Minden "név" tulajdonosi köznapi névvagy A fürtműveletekhez engedélyezett X509-tanúsítványok DnsName-je. Egy adott "Név" esetében az érték a kiállító rögzítéséhez szükséges tanúsítvány ujjlenyomatainak vesszővel történő külön listája, ha nem üres, a fürttanúsítványok közvetlen kibocsátójának szerepelnie kell a listában.|
 
-## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
+## <a name="securityservercertificateissuerstores"></a>Biztonsági/ServerCertificateIssuerStores
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|IssuerStoreKeyValueMap, alapértelmezés szerint nincs |Dinamikus|X509 kiállítói tanúsítványok tárolói; Név = serverIssuerCN; Value = a tárolók vesszővel tagolt listája |
+|Tulajdonságcsoport|IssuerStoreKeyValueMap, az alapértelmezett érték Nincs |Dinamikus|Az X509 kiállítói tanúsítvány tárolói a kiszolgálói tanúsítványokhoz; Név = kiszolgálóIssuerCN; Érték = vesszővel elválasztott üzletek listája |
 
-## <a name="securityserverx509names"></a>Security/ServerX509Names
+## <a name="securityserverx509names"></a>Biztonsági/ServerX509-es nevek
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus|Ez a "Name" és a "value" pár listája. Az egyes "nevek" a X509-tanúsítványok tulajdonos köznapi neve vagy DnsName. Az adott "név" értéknél a "value" a kiállítói ujjlenyomatai megfelelnek tartozó tanúsítvány vesszővel elválasztott listája, ha nem üres, a kiszolgálói tanúsítványok közvetlen kiállítójának szerepelnie kell a listán.|
+|Tulajdonságcsoport|X509NameMap, az alapértelmezett érték Nincs|Dinamikus|Ez a lista a "Név" és az "Érték" pár. Minden "Név" tulajdonosi köznapi névvel vagy a kiszolgálói műveletekhez engedélyezett X509-tanúsítványok Dnsname-ével rendelkezik. Egy adott "Név" esetében az "Érték" a kiállító rögzítéséhez szükséges tanúsítvány ujjlenyomatainak vesszővel történő külön listája, ha nem üres, a kiszolgálói tanúsítványok közvetlen kibocsátójának szerepelnie kell a listában.|
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ContainerNetworkName|karakterlánc, az alapértelmezett érték: ""| Statikus |A hálózati név, amelyet a Container Network beállításakor kell használni.|
-|ContainerNetworkSetup|bool, az alapértelmezett érték a FALSE (Linux) és az alapértelmezett érték TRUE (Windows)| Statikus |Azt határozza meg, hogy a tároló hálózatot kell-e beállítani.|
-|FabricDataRoot |Sztring | Nem engedélyezett |Service Fabric az adatgyökérkönyvtárat. Az Azure alapértelmezett értéke d:\svcfab |
-|FabricLogRoot |Sztring | Nem engedélyezett |Service Fabric-napló gyökérkönyvtára. Itt vannak elhelyezve az SF-naplók és-Nyomkövetések. |
-|NodesToBeRemoved|karakterlánc, az alapértelmezett érték: ""| Dinamikus |Azok a csomópontok, amelyeket el kell távolítani a konfiguráció frissítésének részeként. (Csak önálló telepítés esetén)|
-|ServiceRunAsAccountName |Sztring | Nem engedélyezett |Annak a fióknak a neve, amelyben a Fabric Host szolgáltatás futtatására kerül sor. |
-|SkipContainerNetworkResetOnReboot|bool, az alapértelmezett érték FALSE|NotAllowed|Megadhatja, hogy kihagyja-e a Container Network újraindítását.|
-|SkipFirewallConfiguration |Bool, az alapértelmezett érték false | Nem engedélyezett |Megadja, hogy a tűzfal beállításait a rendszeren kell-e beállítani. Ez csak akkor érvényes, ha a Windows tűzfalat használja. Ha harmadik féltől származó tűzfalakat használ, akkor meg kell nyitnia a rendszer és a használni kívánt alkalmazások portját. |
+|ContainerNetworkName|karakterlánc, az alapértelmezett a ""| Statikus |A tárolóhálózat beállításakor használandó hálózati név.|
+|ContainerNetworkTelepítő|bool, az alapértelmezett FALSE (Linux) és az alapértelmezett IGAZ (Windows)| Statikus |Azt jelzi, hogy beállít-e tárolóhálózatot.|
+|FabricDataRoot |Sztring | Nem engedélyezett |Service Fabric adatgyökér könyvtár. Az Azure alapértelmezett beállítása: d:\svcfab |
+|FabricLogRoot |Sztring | Nem engedélyezett |A szolgáltatásháló naplójának gyökérkönyvtára. Ez az, ahol SF naplók és nyomkövetések kerülnek. |
+|NodesToBeRemoved|karakterlánc, az alapértelmezett a ""| Dinamikus |A konfigurációs frissítés részeként eltávolítandó csomópontok. (Csak önálló telepítésekhez)|
+|ServiceRunAsAccountName |Sztring | Nem engedélyezett |A fiók neve, amely alatt a fabric host szolgáltatás futtatásához. |
+|SkipContainerNetworkresetonreboot|az alapértelmezett érték HAMIS|Nem engedélyezett|Azt jelzi, hogy kihagyja-e a tárolóhálózat alaphelyzetbe állítását újraindításkor.|
+|SkipFirewallConfiguration (SkipFirewallConfiguration) |Bool, az alapértelmezett érték hamis | Nem engedélyezett |Itt adható meg, hogy a tűzfalbeállításokat a rendszernek kell-e beállítania. Ez csak akkor érvényes, ha windows tűzfalat használ. Ha harmadik féltől származó tűzfalakat használ, meg kell nyitnia a portokat a rendszer és az alkalmazások számára, hogy |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|Szolgáltatók |string (alapértelmezett érték: "DSTS") |Statikus|Az engedélyezni kívánt jogkivonat-ellenőrző szolgáltatók vesszővel tagolt listája (érvényes szolgáltatók a következők: DSTS; HRE). Jelenleg csak egy szolgáltató engedélyezhető bármikor. |
+|Szolgáltatók |karakterlánc, az alapértelmezett érték "DSTS" |Statikus|Vesszővel külön listát a token-ellenőrző szolgáltatók engedélyezéséhez (érvényes szolgáltatók: DSTS; AAD). Jelenleg csak egy szolgáltató engedélyezhető bármikor. |
 
-## <a name="traceetw"></a>Nyomkövetés/ETW
+## <a name="traceetw"></a>Nyom/Etw
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|Szint |Int, az alapértelmezett érték 4 | Dinamikus |A nyomkövetési ETW szintje 1, 2, 3, 4 értéket vehet igénybe. A támogatáshoz meg kell őriznie a nyomkövetési szintet 4 |
+|Szint |Int, az alapértelmezett érték 4 | Dinamikus |A nyomkövetési etw szint az 1, 2, 3, 4 értékeket veheti fel. Ahhoz, hogy támogatott legyen, a nyomkövetési szintet 4-en kell tartania |
 
-## <a name="transactionalreplicator"></a>TransactionalReplicator
+## <a name="transactionalreplicator"></a>TransactionalReplicator (tranzakciós sokszorosító)
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|BatchAcknowledgementInterval | Az idő másodpercben, az alapértelmezett érték 0,015 | Statikus | Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt az időtartamot, ameddig a replikátor a művelet fogadása után várakozik a visszaigazolás visszaküldése előtt. Az ebben az időszakban fogadott egyéb műveletekhez a rendszer visszaküldi a visszaigazolásokat egy üzenetben – > csökkenti a hálózati forgalmat, de potenciálisan csökkenti a replikátor átviteli sebességét. |
-|MaxCopyQueueSize |Uint, alapértelmezett érték 16384 | Statikus |Ez a maximális érték határozza meg a várólista kezdeti méretét, amely megőrzi a replikációs műveleteket. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie. Ha a futás közben a várólista erre a méretre nő, a rendszer az elsődleges és a másodlagos replikálók között szabályozza a műveletet. |
-|MaxPrimaryReplicationQueueMemorySize |Uint, az alapértelmezett érték 0 | Statikus |Az elsődleges replikációs várólista maximális értéke bájtban megadva. |
-|MaxPrimaryReplicationQueueSize |Uint, alapértelmezett érték 8192 | Statikus |Az elsődleges replikációs várólistában található műveletek maximális száma. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie. |
-|MaxReplicationMessageSize |Uint, alapértelmezett érték 52428800 | Statikus | A replikációs műveletek maximális mérete. Az alapértelmezett érték 50 MB. |
-|MaxSecondaryReplicationQueueMemorySize |Uint, az alapértelmezett érték 0 | Statikus |A másodlagos replikálási várólista maximális értéke bájtban megadva. |
-|MaxSecondaryReplicationQueueSize |Uint, alapértelmezett érték 16384 | Statikus |A másodlagos replikálási várólistában található műveletek maximális száma. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie. |
-|ReplicatorAddress |karakterlánc, az alapértelmezett érték "localhost: 0" | Statikus | A végpont egy "IP: Port" karakterlánc formájában jelenik meg, amelyet az Windows Fabric-replikátor használ a más replikákkal való kapcsolat létesítéséhez a küldési/fogadási műveletek érdekében. |
+|BatchAcknowledgementInterval | Idő másodpercben, az alapértelmezett érték 0,015 | Statikus | Adja meg az időtartományt másodpercben. Azt határozza meg, hogy a replikátor mennyi időt várjon a művelet fogadása után, mielőtt visszaküldené a nyugtázást. Az ebben az időszakban fogadott egyéb műveletek nyugtázása egyetlen üzenetben lesz visszaküldve, > csökkenti a hálózati forgalmat, de potenciálisan csökkenti a replikátor átviteli mertéjét. |
+|MaxCopyQueueMéret |Uint, alapértelmezett érték: 16384 | Statikus |Ez a maximális érték határozza meg a replikációs műveleteket fenntartó várólista kezdeti méretét. Ne feledje, hogy 2-es teljesítménynek kell lennie. Ha futásidőben a várólista ekkora méretre nő, a művelet az elsődleges és a másodlagos replikátorok között lesz szabályozva. |
+|MaxPrimaryReplicationQueueMemorySize |Uint, az alapértelmezett érték 0 | Statikus |Ez az elsődleges replikációs várólista maximális értéke bájtban. |
+|MaxPrimaryReplicationQueueMéret |Uint, alapértelmezett érték: 8192 | Statikus |Ez az elsődleges replikációs várólistában létező műveletek maximális száma. Ne feledje, hogy 2-es teljesítménynek kell lennie. |
+|MaxReplicationMessageSize |Uint, alapértelmezett érték: 52428800 | Statikus | A replikációs műveletek maximális üzenetmérete. Az alapértelmezett érték 50MB. |
+|MaxSecondaryReplicationQueueMemorySize |Uint, az alapértelmezett érték 0 | Statikus |Ez a másodlagos replikációs várólista maximális értéke bájtban. |
+|MaxSecondaryReplicationQueueSize |Uint, alapértelmezett érték: 16384 | Statikus |Ez a másodlagos replikációs várólistában létező műveletek maximális száma. Ne feledje, hogy 2-es teljesítménynek kell lennie. |
+|Replikátorcím |karakterlánc, az alapértelmezett érték "localhost:0" | Statikus | A végpont formájában egy karakterlánc -'IP:Port', amely a Windows Fabric Replikátor kapcsolatok létesítésére más replikák műveletek küldése/fogadása érdekében. |
 
 ## <a name="transport"></a>Átvitel
-| **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat** |**Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** |**Frissítési házirend** |**Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|ConnectionOpenTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a bejövő és a fogadó oldalon (beleértve a biztonsági egyeztetést biztonságos módban) a kapcsolatok beállításához |
-|FrameHeaderErrorCheckingEnabled|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Alapértelmezett beállítás a frame fejlécének hibaellenőrzés nem biztonságos módban; az összetevő-beállítás felülbírálja ezt a beállítást. |
-|MessageErrorCheckingEnabled|bool, az alapértelmezett érték FALSE|Statikus|Alapértelmezett beállítás az üzenet fejlécének és törzsének hibaellenőrzés nem biztonságos módban; az összetevő-beállítás felülbírálja ezt a beállítást. |
-|ResolveOption|karakterlánc, az alapértelmezett érték a "meghatározatlan"|Statikus|Meghatározza a teljes tartománynév feloldásának módját.  Az érvényes értékek: "meghatározatlan/IPv4/IPv6". |
-|SendTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (300)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Küldési időtúllépés a beragadt kapcsolat észleléséhez. A TCP-hibajelentések nem megbízhatók bizonyos környezetekben. Ezt a rendelkezésre álló hálózati sávszélesség és a kimenő adatforgalom mérete (\*MaxMessageSize\/\*SendQueueSizeLimit) alapján kell módosítani. |
+|ConnectionOpenTimeout|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(60)|Statikus|Adja meg az időtartományt másodpercben. A kapcsolat beállításának időtúlára mind a bejövő, mind az elfogadó oldalon (beleértve a biztonságos módban történő biztonsági egyeztetést is) |
+|FrameHeaderErrorCheckingEnabled|bool, az alapértelmezett érték IGAZ|Statikus|Alapértelmezett beállítás a nem biztonságos módban lévő keretfejlécen történő hibaellenőrzéshez; az összetevő-beállítás felülbírálja ezt. |
+|MessageErrorCheckingEnabled|bool,az alapértelmezett értéke HAMIS|Statikus|Alapértelmezett beállítás az üzenetfejlécés -törzs nem biztonságos módban történő hibaellenőrzéséhez; az összetevő-beállítás felülbírálja ezt. |
+|FeloldásOption|karakterlánc, az alapértelmezett "meghatározatlan"|Statikus|Meghatározza a teljes tartománynnn oldásának módját.  Az érvényes értékek a következők: "meghatározatlan/ipv4/ipv6". |
+|SendTimeout (Küldésidő-kiküldés|TimeSpan, az alapértelmezett érték Common::TimeSpan::FromSeconds(300)|Dinamikus|Adja meg az időtartományt másodpercben. Időtúllépés küldése a beragadt kapcsolat észlelésére. A TCP-hibajelentések bizonyos környezetekben nem megbízhatóak. Ezt szükség lehet a rendelkezésre álló hálózati sávszélesség és\*a\/\*kimenő adatok méretének megfelelően módosítani ( MaxMessageSize SendQueueSizeLimit). |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AutoupgradeEnabled | Bool, az alapértelmezett érték TRUE (igaz) |Statikus| Az automatikus lekérdezési és frissítési művelet egy cél-állapotú fájl alapján. |
-|AutoupgradeInstallEnabled|bool, az alapértelmezett érték FALSE|Statikus|A kód frissítési műveletének automatikus lekérdezése, üzembe helyezése és telepítése a cél-állapot fájl alapján.|
-|GoalStateExpirationReminderInDays|int, az alapértelmezett érték 30|Statikus|Megadja, hogy hány nap elteltével jelenjen meg a cél állapotának emlékeztetője.|
-|MinReplicaSetSize |int, az alapértelmezett érték 0 |Statikus |A UpgradeOrchestrationService MinReplicaSetSize.|
-|PlacementConstraints | karakterlánc, az alapértelmezett érték: "" |Statikus| A UpgradeOrchestrationService PlacementConstraints. |
-|QuorumLossWaitDuration | Az idő másodpercben, az alapértelmezett érték a MaxValue |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A UpgradeOrchestrationService QuorumLossWaitDuration. |
-|ReplicaRestartWaitDuration | Az idő másodpercben, az alapértelmezett érték 60 perc|Statikus| Másodpercek alatt meg kell adni a TimeSpan. A UpgradeOrchestrationService ReplicaRestartWaitDuration. |
-|StandByReplicaKeepDuration | Idő (másodperc), az alapértelmezett érték 60*24*7 perc |Statikus| Másodpercek alatt meg kell adni a TimeSpan. A UpgradeOrchestrationService StandByReplicaKeepDuration. |
-|TargetReplicaSetSize |int, az alapértelmezett érték 0 |Statikus |A UpgradeOrchestrationService TargetReplicaSetSize. |
-|UpgradeApprovalRequired | Bool, az alapértelmezett érték false | Statikus|A kód frissítésének beállításához rendszergazdai jóváhagyásra van szükség a továbblépés előtt. |
+|Automatikus frissítés | Bool, az alapértelmezett igaz |Statikus| Automatikus lekérdezési és frissítési művelet egy célállapot-fájl alapján. |
+|Automatikus frissítésTelepítés engedélyezve|Bool, az alapértelmezett érték HAMIS|Statikus|A célállapot-fájlon alapuló kódfrissítési művelet automatikus lekérdezése, kiépítése és telepítése.|
+|GoalStateExpirationReminderinDays|int, az alapértelmezett érték 30|Statikus|Beállítja, hogy hány nap után jelenjen meg a célállapot-emlékeztető.|
+|MinReplicaSetMéret |Int, az alapértelmezett érték 0 |Statikus |A MinReplicaSetSize for UpgradeOrchestrationService.|
+|Elhelyezési kényszerek | karakterlánc, az alapértelmezett a "" |Statikus| A UpgradeOrchestrationService elhelyezési kényszerei. |
+|QuorumLossWaitDuration | Idő másodpercben, az alapértelmezett érték MaxValue |Statikus| Adja meg az időtartományt másodpercben. A QuorumLossWaitDuration for UpgradeOrchestrationService. |
+|ReplicaRestartWaitDuration | Idő másodpercben, az alapértelmezett érték 60 perc|Statikus| Adja meg az időtartományt másodpercben. A ReplicaRestartWaitDuration for UpgradeOrchestrationService. |
+|Készenléti replikálási időtartam | Idő másodpercben, az alapértelmezett érték 60*24*7 perc |Statikus| Adja meg az időtartományt másodpercben. A StandByReplicaKeepDuration for UpgradeOrchestrationService. |
+|CélReplicaSetMéret |Int, az alapértelmezett érték 0 |Statikus |A TargetReplicaSetSize for UpgradeOrchestrationService. |
+|UpgradeApprovalSzükséges | Bool, az alapértelmezett érték hamis | Statikus|A kódfrissítés beállításához a folytatás előtt rendszergazdai jóváhagyásszükséges. |
 
 ## <a name="upgradeservice"></a>UpgradeService
 
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|BaseUrl | karakterlánc, az alapértelmezett érték: "" |Statikus|A UpgradeService BaseUrl. |
-|ClusterId | karakterlánc, az alapértelmezett érték: "" |Statikus|A UpgradeService ClusterId. |
-|CoordinatorType | string (alapértelmezett érték: "WUTest")|Nem engedélyezett|A UpgradeService CoordinatorType. |
-|MinReplicaSetSize | Int, az alapértelmezett érték 2 |Nem engedélyezett| A UpgradeService MinReplicaSetSize. |
-|OnlyBaseUpgrade | Bool, az alapértelmezett érték false |Dinamikus|A UpgradeService OnlyBaseUpgrade. |
-|PlacementConstraints |karakterlánc, az alapértelmezett érték: "" |Nem engedélyezett|A frissítési szolgáltatás PlacementConstraints. |
-|PollIntervalInSeconds|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60) |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az ARM-felügyeleti műveletek UpgradeService-lekérdezési időköze. |
-|TargetReplicaSetSize | int, az alapértelmezett érték 3 |Nem engedélyezett| A UpgradeService TargetReplicaSetSize. |
-|TestCabFolder | karakterlánc, az alapértelmezett érték: "" |Statikus| A UpgradeService TestCabFolder. |
-|X509FindType | karakterlánc, az alapértelmezett érték: ""|Dinamikus| A UpgradeService X509FindType. |
-|X509FindValue | karakterlánc, az alapértelmezett érték: "" |Dinamikus| A UpgradeService X509FindValue. |
-|X509SecondaryFindValue | karakterlánc, az alapértelmezett érték: "" |Dinamikus| X509SecondaryFindValue for UpgradeService. |
-|X509StoreLocation | karakterlánc, az alapértelmezett érték: "" |Dinamikus| A UpgradeService X509StoreLocation. |
-|X509StoreName | karakterlánc, az alapértelmezett érték a "My"|Dinamikus|A UpgradeService X509StoreName. |
+|BaseUrl | karakterlánc, az alapértelmezett a "" |Statikus|BaseUrl a UpgradeService számára. |
+|Fürtazonosító | karakterlánc, az alapértelmezett a "" |Statikus|Fürtazonosító az UpgradeService szolgáltatáshoz. |
+|CoordinatorType típus | karakterlánc, az alapértelmezett érték "WUTest"|Nem engedélyezett|A CoordinatorType for UpgradeService. |
+|MinReplicaSetMéret | Int, az alapértelmezett érték 2 |Nem engedélyezett| A MinReplicaSetSize for UpgradeService. |
+|OnlyBaseUpgrade (OnlyBaseUpgrade) | Bool, az alapértelmezett érték hamis |Dinamikus|OnlyBaseUpgrade a UpgradeService szolgáltatáshoz. |
+|Elhelyezési kényszerek |karakterlánc, az alapértelmezett a "" |Nem engedélyezett|A frissítési kényszerek elhelyezése. |
+|PollIntervalinszundum|Timespan, az alapértelmezett érték Common::TimeSpan::FromSeconds(60) |Dinamikus|Adja meg az időtartományt másodpercben. Az ARM-kezelési műveletek UpgradeService lekérdezése közötti időköz. |
+|CélReplicaSetMéret | Int, az alapértelmezett érték 3 |Nem engedélyezett| A TargetReplicaSetSize for UpgradeService. |
+|TestCabFolder mappa | karakterlánc, az alapértelmezett a "" |Statikus| TestCabFolder for UpgradeService. |
+|X509FindType | karakterlánc, az alapértelmezett a ""|Dinamikus| X509FindType for UpgradeService. |
+|X509FindValue | karakterlánc, az alapértelmezett a "" |Dinamikus| X509FindValue for UpgradeService. |
+|X509Másodlagosfindérték | karakterlánc, az alapértelmezett a "" |Dinamikus| X509SecondaryFindValue for UpgradeService. |
+|X509StoreLocation | karakterlánc, az alapértelmezett a "" |Dinamikus| X509StoreLocation for UpgradeService. |
+|X509StoreName | karakterlánc, az alapértelmezett érték "Saját"|Dinamikus|X509StoreName for UpgradeService. |
 
-## <a name="userservicemetriccapacities"></a>UserServiceMetricCapacities
-| **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
+## <a name="userservicemetriccapacities"></a>UserServiceMetricCapacityes
+| **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|PropertyGroup| UserServiceMetricCapacitiesMap, alapértelmezés szerint nincs | Statikus | A felhasználói szolgáltatások erőforrás-irányítási határértékeinek gyűjteményének statikusnak kell lennie, mivel az automatikus észlelési logikát érint |
+|Tulajdonságcsoport| UserServiceMetricCapacitiesMap, az alapértelmezett érték Nincs | Statikus | A felhasználói szolgáltatások erőforrás-irányítási korlátok gyűjteménye statikusnak kell lennie, mivel hatással van az automatikus észlelési logikára |
 
-## <a name="next-steps"></a>Következő lépések
-További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md) és [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
+## <a name="next-steps"></a>További lépések
+További információ: [Az Azure-fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md) és [az önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakörben található.

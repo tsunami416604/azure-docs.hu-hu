@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali címkészlet Azure Resource Manager – Azure
-description: A Windows rendszerű virtuális asztalban lévő gazdagépek létrehozása Azure Resource Manager sablonnal.
+title: Windows virtuális asztali gazdagépkészlete Azure Resource Manager – Azure
+description: Host készlet létrehozása a Windows virtuális asztalon egy Azure Resource Manager sablonnal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,68 +8,68 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f61319a1d2a5d5599a4745979f3c5abc0a713ac7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 9ce6440989cbf962c474de2a6c90db4c485bf4a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128136"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292330"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
 
-A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mindegyik gazdagép tartalmazhatja azt az alkalmazáscsoport-csoportot, amelyet a felhasználók a fizikai asztalon lévők használatával kezelhetnek.
+A gazdakészletek egy vagy több azonos virtuális gép gyűjteménye a Windows virtuális asztal bérlői környezetében. Minden gazdagépkészlet tartalmazhat egy alkalmazáscsoportot, amelyet a felhasználók ugyanúgy használhatnak, mint a fizikai asztalon.
 
-Ez a szakasz útmutatást nyújt a Windows rendszerű virtuális asztali bérlőhöz tartozó gazdagépek létrehozásához a Microsoft által biztosított Azure Resource Manager sablonnal. Ebből a cikkből megtudhatja, hogyan hozhat létre egy gazdagépet a Windows rendszerű virtuális asztalon, hogyan hozhat létre egy Azure-előfizetésben virtuális géppel rendelkező erőforráscsoportot, hogyan csatlakozhat ezekhez a virtuális gépekhez az AD-tartományhoz, és hogyan regisztrálhatja a virtuális gépeket a Windows
+Kövesse ezt a szakaszt az utasításokat, hogy hozzon létre egy gazdagépkészletet egy Windows virtuális asztal bérlőhöz a Microsoft által biztosított Azure Resource Manager sablonnal. Ez a cikk ismerteti, hogyan hozhat létre gazdagépkészletet a Windows virtuális asztalon, hogyan hozhat létre egy erőforráscsoportot virtuális gépekkel egy Azure-előfizetésben, hogyan csatlakozhat ezekhez a virtuális gépekhez az AD-tartományhoz, és regisztrálhatja a virtuális gépeket a Windows virtuális asztallal.
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Mire van szükség a Azure Resource Manager sablon futtatásához
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Mire van szükség az Azure Resource Manager sablon futtatásához?
 
-A Azure Resource Manager sablon futtatása előtt győződjön meg arról, hogy ismeri a következő dolgokat:
+Az Azure Resource Manager-sablon futtatása előtt győződjön meg arról, hogy ismeri a következő dolgokat:
 
-- A használni kívánt rendszerkép forrása. Ez az Azure-katalógusból vagy egyéni?
-- A tartományhoz való csatlakozáshoz szükséges hitelesítő adatok.
-- A Windows rendszerű virtuális asztali hitelesítő adatai.
+- A használni kívánt kép forrása. Az Azure Gallery-ből származik, vagy egyéni?
+- A tartomány hozhatja össze a hitelesítő adatokat.
+- A Windows virtuális asztal hitelesítő adatai.
 
-Amikor létrehoz egy Windows rendszerű virtuális asztali címkészletet a Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-katalógusból, egy felügyelt képből vagy egy nem felügyelt rendszerképből. A virtuálisgép-lemezképek létrehozásával kapcsolatos további információkért lásd: [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](../virtual-machines/windows/prepare-for-upload-vhd-image.md) , valamint [egy általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../virtual-machines/windows/capture-image-resource.md).
+Amikor létrehoz egy Windows virtuális asztal gazdakészletet az Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-galériából, egy felügyelt lemezképet vagy egy nem felügyelt lemezképet. Ha többet szeretne tudni a virtuálisgép-lemezképek létrehozásáról, [olvassa el a Windows VHD vagy VHDX feltöltésének előkészítése az Azure-ba](../virtual-machines/windows/prepare-for-upload-vhd-image.md) című témakört, és [hozzon létre egy általános virtuális gép felügyelt lemezképét az Azure-ban.](../virtual-machines/windows/capture-image-resource.md)
 
-## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Az új címkészlet kiépítés Azure Resource Manager sablonjának futtatása
+## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Az Azure Resource Manager sablon futtatása új gazdagépkészlet kiépítéséhez
 
-A kezdéshez nyissa meg [ezt a GitHub URL-címet](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool).
+A kezdéshez nyissa meg [ezt a GitHub URL-címet.](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool)
 
 ### <a name="deploy-the-template-to-azure"></a>A sablon üzembe helyezése az Azure-ban
 
-Ha vállalati előfizetésben végzi a üzembe helyezést, görgessen le, és válassza az **üzembe helyezés az Azure**-ban lehetőséget, majd ugorjon ki a megfelelő paramétereket a lemezkép forrása alapján.
+Ha nagyvállalati előfizetésben telepít, görgessen le, és válassza **a Telepítés az Azure-ba**lehetőséget, majd ugorjon előre, töltse ki a paramétereket a lemezképforrása alapján.
 
-Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi lépéseket az Azure-ba való üzembe helyezéshez:
+Ha felhőszolgáltatói előfizetésben telepít, az alábbi lépésekkel telepítheti az Azure-ba:
 
-1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
-2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
-3. Közvetlenül a "https://portal.azure.com/" után és a hashtag (#) előtt írja be a következőt: (@), amelyet a bérlői tartomány neve követ. Íme egy példa a használni kívánt formátumra: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
-4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
+1. Görgessen le, és kattintson a jobb gombbal **az Üzembe helyezés az Azure-ba**elemre, majd válassza a Hivatkozás **helyének másolása parancsot.**
+2. Nyisson meg egy szövegszerkesztőt, például a Jegyzettömböt, és illessze be oda a hivatkozást.
+3. Közvetlenülhttps://portal.azure.com/a " " után, és mielőtt a hashtag (#) beír egy at jelet (@), majd a bérlői tartomány nevét. Íme egy példa a használni kívánt `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`formátumra: .
+4. Jelentkezzen be az Azure Portalon rendszergazdai/közreműködői engedélyekkel rendelkező felhasználóként a Felhőszolgáltató-előfizetésbe.
 5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
 
-A forgatókönyvhöz szükséges paraméterekkel kapcsolatos útmutatásért tekintse meg a Windows rendszerű virtuális asztal [információs fájlját](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md). A readme mindig frissül a legújabb módosításokkal.
+A forgatókönyvhöz megírt paraméterekkel kapcsolatos útmutatásért tekintse meg a Windows virtuális asztal [hoz afájl ban található fájlt.](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md) A fontos hír mindig frissül a legújabb módosításokkal.
 
-## <a name="assign-users-to-the-desktop-application-group"></a>Felhasználók társítása az asztali alkalmazás csoportjához
+## <a name="assign-users-to-the-desktop-application-group"></a>Felhasználók hozzárendelése az asztali alkalmazáscsoporthoz
 
-Miután a GitHub Azure Resource Manager sablon befejeződik, rendeljen hozzá felhasználói hozzáférést, mielőtt megkezdené a teljes munkamenet-asztalok tesztelését a virtuális gépeken.
+A GitHub Azure Resource Manager-sablon befejezése után rendeljen hozzá felhasználói hozzáférést, mielőtt elkezdené a teljes munkamenet-asztalok tesztelését a virtuális gépeken.
 
-Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
+Először [töltse le és importálja a Windows Virtual Desktop PowerShell modult](/powershell/windows-virtual-desktop/overview/) a PowerShell-munkamenetben való használatra, ha még nem tette meg.
 
-Ha felhasználókat szeretne hozzárendelni az asztali alkalmazás csoportjához, nyisson meg egy PowerShell-ablakot, és futtassa ezt a parancsmagot a Windows rendszerű virtuális asztali környezetbe való bejelentkezéshez:
+Ha felhasználókat szeretne hozzárendelni az asztali alkalmazáscsoporthoz, nyisson meg egy PowerShell-ablakot, és futtassa ezt a parancsmalapot a Windows Virtuális asztal környezetbe való bejelentkezéshez:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Ezt követően adja hozzá a felhasználókat az asztali alkalmazás csoportjához a következő parancsmaggal:
+Ezután adja hozzá a felhasználókat az asztali alkalmazáscsoporthoz ezzel a parancsmaggal:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-A felhasználó UPN-nek meg kell egyeznie a felhasználó identitásával Azure Active Directoryban (például user1@contoso.com). Ha több felhasználót szeretne felvenni, minden felhasználóhoz futtatnia kell ezt a parancsmagot.
+A felhasználó upn egyeznie kell a felhasználó identitását az user1@contoso.comAzure Active Directoryban (például). Ha több felhasználót szeretne hozzáadni, ezt a parancsmackét minden felhasználószámára futtatnia kell.
 
-A lépések elvégzése után az asztali alkalmazás csoportba felvett felhasználók bejelentkezhetnek a Windows rendszerű virtuális asztalra a támogatott Távoli asztal ügyfelekkel, és megtekinthetik a munkamenet-asztal erőforrásait.
+Miután elvégezte ezeket a lépéseket, az asztali alkalmazáscsoportba felvett felhasználók bejelentkezhetnek a Windows virtuális asztalra a támogatott Távoli asztali ügyfelekkel, és megnézhetik a munkamenet asztalának erőforrását.
 
 >[!IMPORTANT]
->A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../security-center/security-center-just-in-time.md).
+>A Windows virtuális asztali környezet azure-beli védelméhez azt javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows virtuális asztal nem igényel nyitott bejövő port3389 a felhasználók számára, hogy hozzáférjenek a gazdakészlet virtuális gépek. Ha hibaelhárítási célból meg kell nyitnia a 3389-es portot, javasoljuk, hogy [just-in-time virtuális gép-hozzáférést használjon.](../security-center/security-center-just-in-time.md)

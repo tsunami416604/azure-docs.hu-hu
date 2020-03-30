@@ -1,128 +1,127 @@
 ---
-title: Használati irányítópult a kereskedelmi piactér elemzésében a partner Centerben
-description: Ismerje meg, hogyan érheti el az összes virtuális gép használati és mért számlázási metrikákat.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Használati irányítópult a Kereskedelmi piactér elemzésében a Partnerközpontban
+description: Ismerje meg, hogyan érheti el az összes virtuális gép kínál használat és forgalmi díjas számlázási metrikák.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: fb0e0e8f1a514ab7d21e97e1fb2aaed3ea39b088
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cd6614c1ccc51a2b25f115dccf0ee389075aa70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481073"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285129"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Használati irányítópult a kereskedelmi piactér elemzésében
+# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Használati irányítópult a Kereskedelmi Piactér elemzésében
 
-Ez a cikk a partner Center használati irányítópultján tartalmaz információkat. Ez az irányítópult megjeleníti az összes virtuális gép használati és mért számlázási metrikáit két külön lapon: a virtuális gépek használatát és a mért számlázási használatot.
+Ez a cikk a Partnerközpont Használati irányítópultjáról nyújt tájékoztatást. Ez az irányítópult két külön lapon jeleníti meg az összes virtuális gépajánlat-használatot és a forgalmi díjas számlázási metrikákat: virtuális gép használat és forgalmi díjas számlázási használat.
 
-A használati irányítópult eléréséhez nyissa meg az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópultot a kereskedelmi piactéren.
+A Használati irányítópult eléréséhez nyissa meg az **[Elemzés irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a Kereskedelmi piactér csoportban.
 
 >[!NOTE]
-> Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
+> Az elemzési terminológia részletes meghatározását a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.
 
 ## <a name="usage-dashboard"></a>Használat irányítópult
 
-A használati irányítópult az összes virtuális gép (VM) metrikáját jelöli, amely a használatot és a mért számlázási használatot biztosítja. Ezek két külön lapon találhatók: virtuális gépek használata és mért számlázás használata.
+A használati irányítópult az összes virtuális gép (VM) használatának és forgalmi díjas számlázási használatának metrikáit jelöli. Ezek két külön lapon találhatók: virtuális gép használata és forgalmi díjas számlázási használat.
 
-A VM-használat lapon a következő elemek grafikus ábrázolásai láthatók:
+A Virtuálisgép-használat lapon a következő elemek grafikus ábrázolásai találhatók:
 
 - [Használat összegzése](#usage-summary)
-- [Használat földrajz szerint](#usage-by-geography)
-- [Használat ajánlatok szerint](#usage-by-offers)
-- [Használati trend ajánlatok és SKU-i alapján](#usage-trend-by-offers-and-skus)
-- [Használat ajánlat típusa szerint](#usage-by-offer-type)
-- [Használat VM-méret szerint](#usage-by-vm-size)
-- [Használat értékesítési csatornák alapján](#usage-by-sales-channel)
+- [Felhasználás földrajzi hely szerint](#usage-by-geography)
+- [Az ajánlatok általi használat](#usage-by-offers)
+- [Használati trend ajánlatok és suk-ok szerint](#usage-trend-by-offers-and-skus)
+- [Használat ajánlattípus szerint](#usage-by-offer-type)
+- [Használat virtuális gép mérete szerint](#usage-by-vm-size)
+- [Felhasználás értékesítési csatorna szerint](#usage-by-sales-channel)
 - [Részletes használati adatok](#detailed-usage-data)
 
 > [!NOTE]
-> Az elemzési jelentések a Cloud Partner Portal (CPP) és a partner Centerben eltérő módon jelennek meg. A CPP-beli **értékesítői** elemzések egy Orders and használati lappal rendelkeznek, amely a használati és a nem használaton alapuló ajánlatok adatait jeleníti meg. A partner Centerben a használati metrikák külön lapon jelennek meg.
+> Az Analytics-jelentések eltérően jelennek meg a Cloud Partner Portal (CPP) és a Partner Center alkalmazásban. A CPP **eladói elemzési adatai** nak van egy megrendelése és használati lapja, amely mind a használatalapú, mind a nem használatalapú ajánlatok adatait jeleníti meg. A Partnerközpontban a használati mutatók egy külön oldalon jelennek meg.
 
 ### <a name="usage-summary"></a>Használati adatok összegzése
 
-A használat összegzése tábla az összes megvásárolt ajánlat ügyfél-használati idejét jeleníti meg.
+A használati összegzés tábla az összes megvásárolt ajánlat vevői használati óráit jeleníti meg.
 
-- A normalizált használati idő a virtuálisgép-magok számának ([virtuálisgép-magok száma] x [órányi nyers használat]) fiókban normalizált használati órákat határozza meg. A "SHAREDCORE" jelölésű virtuális gépek a 1/6 (vagy 0,1666) értéket használják [virtuálisgép-magok száma] szorzóként.
-- A nyers használati órák határozzák meg, hogy a virtuális gépek mennyi idő alatt futnak.
-- A százalékos érték a kiválasztott dátumtartomány felhasználási növekedési változását jelöli ([utolsó hónap használat – első hónap használata])/az első hónap használata).
-- A felfelé mutató zöld háromszögek növekedési változást jeleznek.
-- A piros háromszög lefelé mutat, az előző hónaphoz viszonyítva negatív növekedési változást jelez.
-- A Micro Bar gráfok havi értékeket képviselnek. Az egyes hónapok értékét a diagramon belüli oszlopok fölé húzva jelenítheti meg.
+- Normalizált használati órák meghatározása: a használati órák normalizált száma vm magok ([virtuálisgép-magok száma] x [óra nyers használat]). A "SHAREDCORE" néven kijelölt virtuális gépek 1/6 (vagy 0.1666) a [virtuálisgép-magok száma] szorzót használnak.
+- A nyers használati órák meghatározása az, hogy mennyi ideig futottak a virtuális gépek az órákban kifejezve.
+- A százalékos érték a kiválasztott dátumtartomány ([utolsó havi használat – első havi használat]) használati növekedési változását jelöli.
+- A felfelé mutató zöld háromszögek növekedésváltozást jeleznek.
+- A lefelé mutató piros háromszög negatív növekedési változást jelez az előző hónaphoz képest.
+- A mikrosávos grafikonok havi értékeket jelölnek. Az egyes hónapok értékét úgy jelenítheti meg, hogy a diagram oszlopai fölé viszi az egérmutatót.
 
-### <a name="usage-by-geography"></a>Használat földrajz szerint
+### <a name="usage-by-geography"></a>Felhasználás földrajzi hely szerint
 
-A **földrajzi hő normalizált használata** az ügyfél országa szerint leképezett használati időt jeleníti meg. Az ország színvariációja normalizált használati koncentrációt képvisel. A térképen a **Kezdőlap** gombra kattintva visszatérhet az eredeti nézethez.
+A földrajzi hőtérkép **szerinti normalizált használat** megjeleníti az ügyfélország szerint leképezett használati órákat. Az országszín-változás a normalizált használati koncentrációt jelöli. Térjen vissza az eredeti nézethez a **térképen** található otthoni gomb megnyomásával.
 
-### <a name="usage-by-offers"></a>Használat ajánlatok szerint
+### <a name="usage-by-offers"></a>Az ajánlatok általi használat
 
-- Az **ajánlatok által normalizált használat szerint** a tortadiagram a normalizált használati órák részletezését jeleníti meg az ajánlatok alapján a kiválasztott dátumtartomány szerint. Az 5 legfontosabb ajánlat a gráfban jelenik meg, a REST pedig az "Rest all" kategóriában van csoportosítva.
-- A oszlopdiagram a kiválasztott dátumtartomány hónapról hónapra eső növekedési trendjét ábrázolja. A hónap oszlopai az ajánlatokban szereplő használati órákat jelölik az adott hónap legmagasabb használati idejével. A diagram a másodlagos Y tengelyen ábrázolt százalékos növekedési arányt ábrázolja.
-- A diagram tetején található csúszka használatával görgessen jobbra az x tengely mentén, és/vagy az adott adatpontokra koncentrálhat.
+- Az **ajánlatok kördiagramszerinti normalizált használata** a normalizált használati órák ajánlat szerinti bontását jeleníti meg a kiválasztott dátumtartomány szerint. Az első 5 ajánlat grafikonon jelenik meg, míg a többi a "pihenés mind" kategóriába van csoportosítva.
+- A sávdiagram a kiválasztott dátumtartomány havi növekedési trendjét ábrázolja. A hónap oszlopok az adott hónap legmagasabb használati óráival rendelkező ajánlatok használati óráit jelölik. A vonaldiagram a másodlagos Y tengelyen ábrázolt növekedési százalékos trendet ábrázolja.
+- A diagram tetején lévő csúszkával jobbról balra görgethet az x tengely mentén, és/vagy fókuszálhat bizonyos adatpontokra.
 
-### <a name="usage-trend-by-offers-and-skus"></a>Használati trend ajánlatok és SKU-i alapján
+### <a name="usage-trend-by-offers-and-skus"></a>Használati trend ajánlatok és suk-ok szerint
 
-Ez a diagram az ajánlat kiválasztott SKU-pontjainak normalizált használatának tendenciáját jeleníti meg. Az ajánlat ranglistán a legmagasabb szintű 50-ajánlatok jelennek meg, és a használat óra szerint vannak rendezve. Az SKU Leaderboard a legfelső 50 SKU-t jeleníti meg a kiválasztott ajánlat legmagasabb kihasználtságával.
+Ez a diagram az ajánlat kiválasztott sk-jainak normalizált használatának trendjét jeleníti meg. Az ajánlat ranglistáján a legmagasabb 50 ajánlat jelenik meg a legmagasabb kihasználtsul, és használati órák szerint vannak rendezve. A Termékváltozat ranglistáján a kiválasztott ajánlathoz a legmagasabb 50 termékváltozat látható.
 
-### <a name="usage-by-offer-type"></a>Használat ajánlat típusa szerint
+### <a name="usage-by-offer-type"></a>Használat ajánlattípus szerint
 
-- Az **ajánlat típusa** tortadiagram használatával rendezi a használatot az ajánlat típusa szerint.
-- A legfontosabb ajánlatok a diagramon jelennek meg, a többi ajánlat pedig "Rest-ként" van csoportosítva.
-- A **trend** diagram a hónapról hónapra terjedő növekedési trendeket jeleníti meg. A hónap oszlop az adott hónapban leggyakrabban használt ajánlati típusok használatát jelöli.
+- Az **ajánlattípus kördiagram szerinti használat** az ajánlat típusának megfelelően rendezi a használatot.
+- A legnépszerűbb ajánlatok a táblázatban jelennek meg, a többi ajánlat pedig "Rest All" néven van csoportosítva.
+- A **trenddiagram** havi növekedési trendeket jelenít meg. A hónap oszlop az adott hónap ban a legnépszerűbb ajánlattípusok használatát jelöli.
 
-### <a name="usage-by-vm-size"></a>Használat VM-méret szerint
+### <a name="usage-by-vm-size"></a>Használat virtuális gép mérete szerint
 
-Ez a diagram a kiválasztott virtuálisgép-méretek (max. 5) használati trendjét mutatja az összes ajánlat/SKU esetében. Az oszlopdiagram a kiválasztott virtuálisgép-méretek használati órájával van halmozva.
+Ez a diagram az összes ajánlat/sk-ek kiválasztott virtuálisgép-méretek (max. 5) használati trendjét mutatja. Az oszlopdiagram a kiválasztott virtuálisgép-méretek használati óráival van halmozva.
 
-A ranglistán a legfontosabb 50-as virtuálisgép-méretek láthatók a legmagasabb használattal, és a használat óra szerint rendezve jelennek meg.
+A ranglistán a legnagyobb 50 virtuális gép mérete látható a legmagasabb kihasználtsulva, és használati órák szerint rendezve.
 
-### <a name="usage-by-sales-channel"></a>Használat értékesítési csatornák alapján
+### <a name="usage-by-sales-channel"></a>Felhasználás értékesítési csatorna szerint
 
-- A Sales Channel kördiagram általi használat az értékesítési csatorna alapján rendezi a használatot.
-- A legfontosabb értékesítési csatorna a legmagasabb szintű használattal jelenik meg a diagramon, a többi értékesítési csatorna pedig "Rest all"-ként van csoportosítva.
-- A hónap oszlop az adott hónapban a Top Sales Channel általi használatot jelöli.
-- A diagram funkciói megegyeznek a "használati ajánlatok" diagrammal
+- Az értékesítési csatorna kördiagramja szerint történő használat az értékesítési csatorna szerint rendezi a használatot
+- A legmagasabb használatú felső értékesítési csatorna jelenik meg a diagramon, és az értékesítési csatorna többi része "Összes pihenés" csoportba van csoportosítva.
+- A hónap oszlop az adott hónap legnépszerűbb értékesítési csatornája szerint történő felhasználást jelöli.
+- A diagram jellemzői megegyeznek a "Használat ajánlatok" diagramével
 
 ### <a name="detailed-usage-data"></a>Részletes használati adatok
 
-A **használat részletei tábla** a legnépszerűbb 1000-használati rekordok számozott listáját jeleníti meg a használat alapján rendezve.
+A **Használat részletei táblázat** a használat szerint rendezett 1000 legfontosabb használati rekord számozott listáját jeleníti meg.
 
 - A rács minden oszlopa rendezhető.
-- Az adatokat CSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
-- Ha a rekordok száma meghaladja a 1000-et, az adatok exportálása aszinkron módon történik egy letöltési oldalon, amely a következő 30 napra elérhető lesz.
-- A szűrők a **részletes használati adatokra** alkalmazhatók, hogy csak azokat az adatokat jelenítsék meg, amelyek érdeklik. Az adatok az ország, az értékesítési csatorna, a Piactéri licenc típusa, a használati típus, az ajánlat neve, az ajánlat típusa, az ingyenes próbaverziók, a piactér-előfizetés azonosítója, az ügyfél azonosítója és a vállalat neve szerint szűrhetők.
+- Az adatok csv-fájlba nyerhetők ki, ha a rekordok száma kevesebb, mint 1000.
+- Ha a rekordok száma több mint 1000, az exportálási adatok aszinkron módon kerülnek egy letöltési oldalra, amely a következő 30 napban lesz elérhető.
+- Szűrők et lehet alkalmazni a **részletes használati adatok megjelenítéséhez** csak az adatokat, hogy érdekli. Az adatok szűrhetők ország, értékesítési csatorna, piactéri licenctípus, használati típus, ajánlatnév, ajánlattípus, ingyenes próbaverziók, Piactér-előfizetés-azonosító, ügyfélazonosító és vállalatnév szerint.
 
 > [!NOTE]
-> Válassza ki a **használati típust** az oldal szűrőben a diagramok megjelenítéséhez a lapon a "normalizált nézet" vagy a "nyers nézet" nézetben. A diagramok alapértelmezett nézete a "normalizált nézet".
+> Válassza ki a **Használat típust** az oldalszűrőben, ha az oldalon lévő diagramokat "Normalizált nézetben" vagy "Nyers nézetben" szeretné megtekinteni. Ezeknek a diagramoknak az alapértelmezett nézete a "Normalizált nézet".
 
-A **használati oldal szűrői** az oldal szintjén lesznek alkalmazva. Több szűrőt is kiválaszthat a diagram megjelenítéséhez a megtekinteni kívánt feltételek és a "részletes használati adatok" rács/exportálás mezőben megjelenített adatok megjelenítéséhez. A szűrők a megrendelések oldal jobb felső sarkában kiválasztott adattartományra kinyert adattartományon lesznek alkalmazva.
+A **Használat oldalszűrők** alkalmazása az oldal szintjén. Több szűrőt is kijelölhet a diagram megjelenítéséhez a megtekinteni kívánt feltételekhez, valamint a "részletes használati adatok" rácsban/exportálásban megjeleníteni kívánt adatokat. A szűrők a rendelési lap jobb felső sarkában kiválasztott adattartományhoz kinyert adatokra vonatkoznak.
 
-- Az **ajánlat típusa** és az **ajánlat neve** csak a kiválasztott dátumtartomány esetében beszerzett ajánlatokra van felsorolva. A listában szereplő ajánlatok nevei megjelennek a listából kiválasztott ajánlati típusoknál.
-- Az alapértelmezett kijelölés az összes szűrési lehetőség esetében az "all" (a **használat típusának**kivételével). A **használat típusának** alapértelmezett kiválasztása normalizált használat. A diagramok nyers használatának megjelenítéséhez válassza a "nyers használat" lehetőséget.
-- Az alkalmazott szűrők megjelenítik a kiválasztott szűrési beállítások darabszámát. Az alkalmazott szűrők nem jelennek meg az alapértelmezett beállításokhoz.
-
-> [!NOTE]
-> A "részletes rendelési adat" rács, az oldal szűrők és az összes lehetséges beállítás részletes definíciója a [GYIK és a terminológiai](link needed) cikk adatszótár szakaszában van meghatározva.
-
-A **mért számlázási használat** lap olyan használati adatokat jelenít meg, amelyekben a használat mérése mérési dimenzió alapján történik. Jelenleg az SaaS-ajánlat típusa meghaladja a következőt:. A lapon láthatók a túlterhelési trendek grafikus ábrázolása a SaaS által mért számlázási használat esetében:
-
-- Túlhasználati **trend mérési dimenzió szerint**: az ajánlat kiválasztott mérési dimenziójához tartozó havi túlhasználati trendet jeleníti meg. Az X tengely a hónapot jelöli, és az Y tengely a használat mennyiségét jelöli. Az egyéni fogyasztásmérő mértékegysége az Y tengelyen is megjelenik.
-- Túlterhelési **trend SKU szerint**: a kiválasztott mérési dimenzió kihasználtsági mennyiségét adja meg SKU alapján. A megjelenő SKU az 5 legnagyobb SKU-t jelöli a kiválasztott ajánlat legmagasabb használati szintjével.
-- **Top 50-ügyfelek általi**túlterhelési Trend: az első 50-ajánlat a legmagasabb használati idővel jelenik meg a ***ranglistán*** , és az egyéni fogyasztásmérő legmagasabb használata alapján rangsorolva van. Válasszon ki egy ügyfelet a ranglistán a kiválasztott mérési dimenzió használati trendjeinak megtekintéséhez.
-- Legfelső **szintű ügyfelektől**származó túlterhelési Trend: a legfontosabb ügyfelek százalékos értékének (ek) a teljes használati értékhez való hozzájárulását mutatja be. A Top Customer percentilis az X tengely mentén jelenik meg, amelyet az ügyfél használati mennyisége határoz meg. Az Y tengely megjeleníti a használati mennyiséget. A részletek megjelenítéséhez vigye az egérmutatót a vonalak fölé a diagram mentén.
+- **Az ajánlattípusok** és **az ajánlatnevek** csak a kiválasztott dátumtartományban szerzett ajánlatokhoz tartoznak. A listában szereplő ajánlatnevek a listából kiválasztott ajánlattípusokhoz jelennek meg.
+- Az alapértelmezett beállítás az "Összes" beállítás minden szűrőbeállításhoz, kivéve a **Használati típust.** A Használati **típus** alapértelmezett kiválasztása a normalizált használat. Ha meg szeretné jeleníteni a nyers felhasználást a diagramokban, válassza a "nyers használat" lehetőséget.
+- Az alkalmazott szűrők a végrehajtott szűrőkijelölések számválasztásait jelenítik meg. Az alkalmazott szűrők nem jelennek meg az alapértelmezett beállításoknál.
 
 > [!NOTE]
-> A lap szűréséhez a használati adatok és az ezen a lapon található összes diagram meg van adva.
+> A "részletes rendelési adatok" rácsban, az oldalszűrőkben és az összes lehetséges kijelölésben szereplő mezők részletes definícióját a GYIK és a [terminológiai](link needed) cikk adatszótár szakasza határozza meg.
+
+A **Forgalmi díjas számlázási használat** lap az ajánlattípusok használati adatait mutatja be, ahol a használatot méterenkénti méretekkel mérik. SaaS ajánlat típusú túllépés jelenleg bemutatott. A lap a SaaS-forgalmi díjas számlázási használat túllépési trendek grafikus ábrázolásait mutatja be:
+
+- **Túllépési trend mérőméret szerint:** Az ajánlat kiválasztott mérőméretének havi túllépési trendjét jeleníti meg. Az X tengely a hónapot, az Y tengely pedig a használati mennyiséget jelöli. Az egyéni mérő mértékegysége az Y tengelyen is megjelenik.
+- **Túllépéstrend termékváltozatszerint:** A kiválasztott mérődimenzió használati mennyiségének trendjét jelöli termékváltozatok szerint. A megjelenített sin-ek a legelső 5 sk-t jelölik, és a kiválasztott ajánlathoz a legnagyobb mennyiségű használatot biztosítják.
+- **A Felső 50 ügyfél túlterhelési trendje:** A legmagasabb 50 ajánlat a legmagasabb használati órával a ***ranglistán*** jelenik meg, és az egyéni mérő legmagasabb használata alapján van rangsorolva. Válasszon ki egy vevőt a ranglistán a kiválasztott mérőméret használati trendjének megtekintéséhez.
+- **Túllépés trend felső ügyfelek**: Bemutatja a legnépszerűbb ügyfél percentilis (ek), amelyek hozzájárulnak a %, a teljes használat. A legfelső vevő percentilis etengely mentén jelenik meg, és a vevő használati mennyisége határozza meg. Az Y tengely megjeleníti a használati mennyiséget. A részleteket úgy jelenítheti meg, hogy a vonaldiagram mentén lévő pontokra mutat.
+
+> [!NOTE]
+> A használat részletei és az ezen az oldalon lévő összes diagram attól függően jelenik meg, amelyik mérőméretet választja az oldalszűrőhöz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
-- Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
-- További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).
-- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket, lásd [a kereskedelmi piactér elemzésének ügyfél-irányítópultját](./customer-dashboard.md).
-- Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./downloads-dashboard.md).
-- Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a [kereskedelmi piactér elemzésének minősítések és értékelések irányítópultját](./ratings-reviews.md)
-- A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekre, valamint az adatkifejezések átfogó szótárát lásd: [Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez](./faq-terminology.md).
+- A Partnerközpont kereskedelmi piactéren elérhető elemzési jelentéseinek áttekintését [a Partnerközpont Kereskedelmi piactér Analytics szolgáltatása című témakörben találja.](./analytics.md)
+- Az ajánlat marketplace-tevékenységét összegző összesített adatok grafikonjait, trendjeit és értékeit lásd: [Összefoglaló irányítópult a Kereskedelmi piactér elemzésében.](./summary-dashboard.md)
+- A megrendelésekgrafikus és letölthető formátumban című témakörben talál további információt a [Rendelések irányítópultja a Kereskedelmi piactér elemzésében.](./orders-dashboard.md)
+- Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket is, az [Ügyfél irányítópultja a Kereskedelmi piactér elemzésében](./customer-dashboard.md)című témakörben talál.
+- Az elmúlt 30 nap letöltési kérelmeinek listáját a [Letöltések irányítópultja a Kereskedelmi piactér elemzésében című témakörben található.](./downloads-dashboard.md)
+- Az Azure Marketplace-en és az AppSource-on az ajánlatokra vonatkozó ügyfél-visszajelzések összevont nézetét a [Kereskedelmi piactér elemzése minősítések és vélemények irányítópultja című témakörben tekintheti meg.](./ratings-reviews.md)
+- A Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekről és az adatkifejezések átfogó szótáráról a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.

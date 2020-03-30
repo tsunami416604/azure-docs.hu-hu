@@ -1,52 +1,55 @@
 ---
-title: Ügyfél által felügyelt kulcsok konfigurálása a használatávalC#
-description: Ez a cikk azt ismerteti, hogyan konfigurálható az ügyfelek által felügyelt kulcsok titkosítása az Azure Adatkezelőban tárolt adataihoz.
+title: 'Ügyfél által kezelt kulcsok konfigurálása C használatával #'
+description: Ez a cikk ismerteti, hogyan konfigurálhatja az ügyfél által felügyelt kulcsok titkosítását az adatok az Azure Data Explorerben.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 16c108790dd696e98a1264691254c9e99dac6cd3
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a00b0876c4a188b932032129ed5a394e94198930
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280602"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297947"
 ---
-# <a name="configure-customer-managed-keys-using-c"></a>Ügyfél által felügyelt kulcsok konfigurálása a használatávalC#
+# <a name="configure-customer-managed-keys-using-c"></a>Ügyfél által kezelt kulcsok konfigurálása C használatával #
 
 > [!div class="op_single_selector"]
-> * [C#](customer-managed-keys-csharp.md)
+> * [Portál](customer-managed-keys-portal.md)
+> * [C #](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager-sablon](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
 
-Ez a szakasz bemutatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsok titkosítását C# az Azure adatkezelő-ügyfél használatával. 
+## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása ügyfél által kezelt kulcsokkal
+
+Ez a szakasz bemutatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsok titkosítását az Azure Data Explorer C# ügyfél használatával. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Ha nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Ha nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition alkalmazást.](https://www.visualstudio.com/downloads/) Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-### <a name="install-c-nuget"></a>A C# NuGet telepítése
+### <a name="install-c-nuget"></a>C# NuGet telepítése
 
-* Telepítse az [Azure adatkezelő (Kusto) NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Telepítse az [Azure Data Explorer (Kusto) NuGet csomagot.](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
 
-* Telepítse a [Microsoft. IdentityModel. clients. ActiveDirectory NuGet-csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
+* Telepítse a [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) hitelesítésre.
 
 ### <a name="authentication"></a>Hitelesítés
 
-A cikkben szereplő példák futtatásához [hozzon létre egy Azure ad-alkalmazást és egy](/azure/active-directory/develop/howto-create-service-principal-portal) egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz. Szerepkör-hozzárendelést az előfizetés hatókörében adhat hozzá, és lekérheti a szükséges `Directory (tenant) ID`, `Application ID`és `Client Secret`.
+A jelen cikkben szereplő példák futtatásához [hozzon létre egy Azure AD-alkalmazást](/azure/active-directory/develop/howto-create-service-principal-portal) és egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz. A szerepkör-hozzárendelést hozzáadhatja az előfizetés `Directory (tenant) ID` `Application ID`hatóköréhez, és lekaphatja a szükséges , és `Client Secret`a.
 
 ### <a name="configure-cluster"></a>Fürt konfigurálása
 
-Alapértelmezés szerint az Azure Adatkezelő encryption a Microsoft által felügyelt kulcsokat használja. Konfigurálja az Azure Adatkezelő-fürtöt az ügyfél által felügyelt kulcsok használatára, és adja meg a fürthöz társítandó kulcsot.
+Alapértelmezés szerint az Azure Data Explorer titkosítás a Microsoft által felügyelt kulcsokat használja. Konfigurálja az Azure Data Explorer-fürtöt az ügyfél által kezelt kulcsok használatára, és adja meg a fürthöz társítandó kulcsot.
 
-1. Frissítse a fürtöt a következő kód használatával:
+1. Frissítse a fürtöt a következő kóddal:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -74,23 +77,23 @@ Alapértelmezés szerint az Azure Adatkezelő encryption a Microsoft által fel�
     await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
     ```
 
-1. A következő parancs futtatásával ellenőrizze, hogy a fürt frissítése sikeresen megtörtént-e:
+1. Futtassa a következő parancsot annak ellenőrzéséhez, hogy a fürt frissítése sikeresen megtörtént-e:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Ha az eredmény `ProvisioningState`t tartalmaz a `Succeeded` értékkel, akkor a fürt frissítése sikeresen megtörtént.
+    Ha az `ProvisioningState` eredmény `Succeeded` tartalmazza az értéket, majd a fürt frissítése sikeresen megtörtént.
 
-## <a name="update-the-key-version"></a>A kulcs verziójának frissítése
+## <a name="update-the-key-version"></a>A kulcsverzió frissítése
 
-A kulcsok új verziójának létrehozásakor frissítenie kell a fürtöt az új verzió használatára. Először hívja meg `Get-AzKeyVaultKey` a kulcs legújabb verziójának beszerzéséhez. Ezután frissítse a fürt kulcstartójának tulajdonságait úgy, hogy az a kulcs új verzióját használja, ahogy azt a [fürt konfigurálása](#configure-cluster)című rész mutatja.
+Amikor egy kulcs új verzióját hozza létre, frissítenie kell a fürtöt az új verzió használatához. Először `Get-AzKeyVaultKey` hívja a kulcs legújabb verzióját. Ezután frissítse a fürt key vault tulajdonságainak használatát a kulcs új verziójának használatához, ahogy az a [Fürt konfigurálása](#configure-cluster)című részben látható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure Adatkezelő-fürtök védelme az Azure-ban](security.md)
-* [Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz](managed-identities.md)
-* [A fürt biztonságossá tétele az Azure adatkezelő-Azure Portalban](manage-cluster-security.md) a titkosítás nyugalmi állapotban való engedélyezésével.
-* [Az ügyfél által felügyelt kulcsok konfigurálása a Azure Resource Manager sablon használatával](customer-managed-keys-resource-manager.md)
+* [Biztonságos Azure Data Explorer-fürtök az Azure-ban](security.md)
+* [Felügyelt identitások konfigurálása az Azure Data Explorer-fürthöz](managed-identities.md)
+* [Biztonságossá a fürt az Azure Data Explorer – Azure Portal](manage-cluster-security.md) in in-in titkosítás engedélyezésével.
+* [Ügyfél által kezelt kulcsok konfigurálása az Azure Resource Manager sablon használatával](customer-managed-keys-resource-manager.md)
 
 

@@ -1,58 +1,56 @@
 ---
-title: Kezdőlap létrehozása az Azure Marketplace-en | Azure
-description: Megtudhatja, hogyan hozhat létre kezdőlapot az Azure Marketplace-en és Microsoft AppSource az alkalmazások és szolgáltatások közzétevői számára.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: A céloldal létrehozása az Azure Piactéren | Azure
+description: Ismerje meg, hogyan hozhat létre céllapot az Azure Marketplace-en és a Microsoft AppSource-ban az alkalmazás- és szolgáltatásközzétevők számára.
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: cf7d15ba375faf7dfb38bf5f691799875f2dd6e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6959e7ba7fbf7d9afca84a803f8df588ac9149f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819810"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280592"
 ---
-# <a name="build-your-landing-page"></a>Kezdőlap létrehozása
+# <a name="build-your-landing-page"></a>A céloldal összeállítása
 
-A céges webhelyén található Kezdőlap egy, az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en az Ön igényeinek megfelelő generációs tevékenységekből származó átjáró.
+A vállalati webhely céloldala az igénygenerálási tevékenységektől az [Azure Marketplace-en](https://azuremarketplace.microsoft.com)található adatlapig vezető átjáró.
 
-Első lépésként azonosítsa a céljait. A megoldások esetében válassza ki a megcélzott ügyfelet és az ügyfél által végrehajtandó műveletet. A megoldás a következő műveleteket is magában foglalhatja:
-*   A megoldás tesztelése
-*   Megoldás letöltése
+Kezdje azzal, hogy meghatározza a céljait. A megoldásokhoz válassza ki a megcélzott ügyfelet és az ügyfél által végrehajtott műveletet. A megoldás a következő műveleteket foglalhatja magában:
+*   Tesztelje a megoldást
+*   Megoldást találni most
 
-A kezdőlapra több marketing taktikát is hivatkozhat. A következő marketing-taktikát használhatja: 
+A céloldalra több marketingtaktikára is hivatkozhat. A következő marketingtaktikát használhatja: 
 *   Események
-*   Webcastok
+*   Webszórás
 *   Közösségi média
 *   Tanulmányok
-*   Technikai betanítási tanfolyamok
+*   Műszaki képzések
 *   Sajtóközlemények
 
-Minél jobban megfelel az üzenetkezelésben, és a cselekvésre való felhívásban, annál könnyebben megtalálhatja a megoldását.
+Minél következetesebb az üzenetküldésben és a cselekvésre való felhívásban, annál könnyebben találhatják meg az ügyfelek a megoldást.
 
 ## <a name="recommendations"></a>Javaslatok
 
-Ha elkészült egy kampányválasz, hozza létre a kezdőlapot a piactéren. A következő táblázat ismerteti a kezdőlapok hatékonyságának maximalizálása érdekében felhasználható lehetőségeket: 
+Ha kész van a kampányterv, hozza létre céloldalát a Marketplace-en. Az alábbi táblázat bemutatja, hogyan segíthet a céloldal hatékonyságának maximalizálásában: 
 
-| Ajánlott eljárás | Elkerülése |
+| Ajánlott eljárás | Elkerülés |
 |:--- |:--- |
-| **Tájékoztassa a megoldással kapcsolatos vásárlói problémáról, valamint arról, hogyan használja az Azure-t, hogy megtörténjen** | Nem kommunikál a megoldás az Azure-ban való működésének módjaival. |
-| **Rövid, könnyen megjegyezhető URL-cím létrehozása** | Hosszú URL-címek használata. A hosszú URL-címek nem emlékezetes, és nehezen találhatók meg. |
-| **Adja hozzá a releváns vizuális tartalmakat, például a Customer ajánlólevél videóját vagy a megoldás architektúráját** | A túl sok szöveg használata esetén az ügyfelek figyelmen kívül hagyják a tartalmat, és abbahagyják a felfedezést.|
-| **Hozzon létre egy egyértelmű hívást a művelethez, hogy a látogatókat a piactér katalógusának oldalára irányítsa.** | Túl sok hivatkozás vagy művelet van az oldalon. |
-| **A művelet meghívása egy fejlécben vagy világosan körülhatárolt szakaszban** | A piactéren lévő listára mutató hivatkozások beágyazása egy szöveges bekezdésben. |
-| **Kutatás a legjobb kulcsszavakat és optimalizálja az oldalt a kereséshez** | Feltételezve, hogy a terméknév magasabb keresési rangsort generál. |
-| **Kulcsszavak használata a hirdetési kampányokból** | Ha számos különböző kulcsszót használ a webes tulajdonságok között, a hirdetési beruházásokat hígította. |
-| **A megfelelő terméknév és kulcsszavak elhelyezése a "fold felett"** | A felhasználók görgetésével megtekintheti a bemutatott terméket vagy megoldást. |
-| **A Brand képképekkel ellenőrizheti a megoldást a Microsoft branding irányelveinek, például az Azure Certified minősítésnek megfelelően** | A nem jóváhagyott Microsoft Brand-képek használata. |
+| **Közölje, hogy milyen ügyfélproblémát old meg a megoldás, és hogyan használja az Azure-t annak megvalósításához** | Nem kommunikál, hogyan működik a megoldás az Azure-ral. |
+| **Rövid, könnyen megjegyezhető URL létrehozása** | Hosszú URL-címek használata. A hosszú URL-ek nem emlékezetesek és nehéz megtalálni őket. |
+| **Releváns vizuális tartalom hozzáadása, például ügyfél-ajánlóvideó vagy megoldásarchitektúra hozzáadása** | Ha túl sok szöveget használ, az ügyfelek figyelmen kívül hagyják a tartalmat, és nem fedik fel a tartalmat.|
+| **Egyértelmű cselekvésre való felhívás létrehozása a Marketplace-katalógusoldal látogatóinak irányításához** | Túl sok hivatkozás vagy művelet van az oldalon. |
+| **Tegye cselekvésre való felhívását fejlécbe vagy egyértelműen elhafogalmazott szakaszba** | A hirdetésre mutató hivatkozások beágyazása a Piactérre egy szövegbekezdésbe. |
+| **Kutatás a legjobb kulcsszavakat, és optimalizálja az oldalt a keresés** | Feltételezve, hogy a termék neve magasabb keresési rangsort generál. |
+| **A hirdetési kampányok kulcsszavainak használata** | Használata sok különböző kulcsszavakat az egész webes tulajdonságok hígítja a hirdetési beruházások. |
+| **Tedd a releváns termékneveket és kulcsszavakat "a hajtás fölé"** | Görgetés a felhasználókkal, hogy megtekinthesd a bemutatandó terméket vagy megoldást. |
+| **A márkaképek használatával a megoldás támlási irányelveinek megfelelően, például az Azure Certified-nak megfelelően ellenőrizheti a megoldást** | A Microsoft nem jóváhagyott márkaképeinek használata. |
 
 ## <a name="next-steps"></a>További lépések
 
-*   További információ az Azure Certified jelvényről: [Microsoft Azure Certified irányelvek](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).
-*   A branding szolgáltatással kapcsolatos további forrásokat a [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral)című témakörben talál.
-*   További információ az embléma-szerkesztő eszközről: [logo Builder](https://logobuilder.partner.microsoft.com).
-*   Tekintse át [, hogyan működik a Microsoft Partner program](https://partner.microsoft.com/membership/how-it-works).
+*   Az Azure Certified jelvényről a [Microsoft Azure Certified irányelvei című](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines)témakörben talál további információt.
+*   A márkajelzéssel kapcsolatos további forrásokért lásd: [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral).
+*   A Logo Builder eszközről további információt az [Emblémakészítő](https://logobuilder.partner.microsoft.com)című témakörben talál.
+*   Tekintse át [a Microsoft Partner program működését.](https://partner.microsoft.com/membership/how-it-works)

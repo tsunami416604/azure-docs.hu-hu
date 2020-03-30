@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect - frissítés az AD FS-farm SSL-tanúsítvány |} A Microsoft Docs
-description: Ez a dokumentum ismerteti a lépéseket egy AD FS-farm SSL-tanúsítvány frissítése az Azure AD Connect használatával.
+title: Azure AD Connect – Az AD FS-farm TLS/SSL-tanúsítványának frissítése | Microsoft dokumentumok
+description: Ez a dokumentum részletezi az AD FS-farm TLS/SSL-tanúsítványának az Azure AD Connect használatával történő frissítésének lépéseit.
 services: active-directory
 manager: daveba
 editor: billmath
@@ -16,97 +16,97 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcdf75586de9621bd0e42cba6fa9c80e5d30817
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8cc768162d98402fe52b52b2826a9dbf2840a581
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595211"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331742"
 ---
-# <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Az Active Directory összevonási szolgáltatások (AD FS) farm SSL-tanúsítvány frissítése
+# <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory összevonási szolgáltatások (AD FS) farm TLS/SSL-tanúsítványának frissítése
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan használhatja az Azure AD Connect egy Active Directory összevonási szolgáltatások (AD FS) farm SSL-tanúsítvány frissítéséhez. Az Azure AD Connect eszköz használatával egyszerűen frissítheti az AD FS-farm SSL-tanúsítványát, még akkor is, ha a felhasználó bejelentkezési kiválasztott metódus nem AD FS.
+Ez a cikk azt ismerteti, hogy az Azure AD Connect használatával hogyan frissítheti az Active Directory összevonási szolgáltatások (AD FS) farmJának TLS/SSL-tanúsítványát. Az Azure AD Connect eszközzel egyszerűen frissítheti a TLS/SSL tanúsítványt az AD FS-farmhoz, még akkor is, ha a kiválasztott felhasználói bejelentkezési módszer nem AD FS.
 
-A teljes művelet frissítési SSL-tanúsítványt az AD FS-farm minden összevonási és webalkalmazás-proxykiszolgálóként (WAP) kiszolgálók három egyszerű lépésben végezheti el:
+Az AD FS farm TLS/SSL-tanúsítványának frissítése teljes műveletet az összes összevonási és webalkalmazás-proxy (WAP) kiszolgálón három egyszerű lépésben hajthatja végre:
 
-![Három lépésben](./media/how-to-connect-fed-ssl-update/threesteps.png)
+![Három lépés](./media/how-to-connect-fed-ssl-update/threesteps.png)
 
 
 >[!NOTE]
->Az AD FS által használt tanúsítványok kapcsolatos további információkért lásd: [AD FS által használt tanúsítványok ismertetése](https://technet.microsoft.com/library/cc730660.aspx).
+>Az AD FS által használt tanúsítványokról az [AD FS által használt tanúsítványok ismertetése című](https://technet.microsoft.com/library/cc730660.aspx)témakörben olvashat bővebben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **AD FS-Farm**: Győződjön meg arról, hogy az AD FS farm Windows Server 2012 R2-alapú vagy újabb.
-* **Azure AD Connect**: Győződjön meg arról, hogy az Azure AD Connect verziója 1.1.553.0 vagy újabb verziója. A feladat használni kívánt **frissítés AD FS SSL-tanúsítvány**.
+* **AD FS farm:** Győződjön meg arról, hogy az AD FS-farm Windows Server 2012 R2 vagy újabb rendszerű.
+* **Azure AD Connect:** Győződjön meg arról, hogy az Azure AD Connect verziója 1.1.553.0 vagy újabb. Az **AD FS SSL-tanúsítvány frissítése**című feladatot fogja használni.
 
-![SSL-feladat frissítése](./media/how-to-connect-fed-ssl-update/updatessltask.png)
+![TLS-feladat frissítése](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
-## <a name="step-1-provide-ad-fs-farm-information"></a>1\. lépés: Az AD FS-farm információinak megadása
+## <a name="step-1-provide-ad-fs-farm-information"></a>1. lépés: Az AD FS-farm adatainak biztosítása
 
-Az Azure AD Connect megkísérli automatikusan az AD FS-farm adatainak lekéréséhez:
-1. (Windows Server 2016 vagy újabb) az AD FS farm adatainak lekérdezésekor.
-2. Hivatkozik az adatokat a korábbi közvetítésekből származó, amelyet a rendszer helyben tárolja az Azure AD Connecttel.
+Az Azure AD Connect az AD FS-farmra vonatkozó információk automatikus beszerzésére törekszik:
+1. A farm adatainak lekérdezése az AD FS rendszerből (Windows Server 2016 vagy újabb).
+2. Az azure AD Connect helyileg tárolt információk hivatkozása.
 
-Módosíthatja a kiszolgálók hozzáadásával vagy eltávolításával a kiszolgálók az AD FS-farm aktuális konfigurációjának megfelelően megjelenő listáját. Amint a kiszolgáló információ áll rendelkezésre, az Azure AD Connect a kapcsolat és SSL-tanúsítvány aktuális állapotát jeleníti meg.
+A kiszolgálók hozzáadásával vagy eltávolításával módosíthatja a megjelenített kiszolgálók listáját, hogy azok tükrözzék az AD FS farm aktuális konfigurációját. Amint a kiszolgáló adatai megvannak adva, az Azure AD Connect megjeleníti a kapcsolatot és az aktuális TLS/SSL tanúsítvány állapotát.
 
 ![AD FS-kiszolgáló adatai](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
 
-Ha a lista tartalmazza a kiszolgáló, amely már nem az AD FS-farm része, kattintson a **eltávolítása** törölni a kiszolgálót az AD FS farmon, a kiszolgálók listájában.
+Ha a lista olyan kiszolgálót tartalmaz, amely már nem része az AD FS-farmnak, kattintson az **Eltávolítás** gombra, ha törölni szeretné a kiszolgálót az AD FS-farm kiszolgálóinak listájából.
 
-![A listában a kapcsolat nélküli kiszolgáló](./media/how-to-connect-fed-ssl-update/offlineserverlist.png)
+![Kapcsolat nélküli kiszolgáló a listában](./media/how-to-connect-fed-ssl-update/offlineserverlist.png)
 
 >[!NOTE]
-> Kiszolgáló eltávolítása a listából egy AD FS-farm, az Azure AD Connect-kiszolgálók helyi művelet, és frissíti az AD FS-farm, amely az Azure AD Connect helyben tárolja az adatait. Az Azure AD Connect nem módosítja a konfigurációt, az AD FS-ben a változás tükrözése érdekében.    
+> A kiszolgáló eltávolítása az Azure AD Connect egy AD FS-farm kiszolgálóinak listájából egy helyi művelet, és frissíti az Azure AD Connect által helyileg karbantartott AD FS-farm adatait. Az Azure AD Connect nem módosítja az AD FS konfigurációját, hogy tükrözze a változást.    
 
-## <a name="step-2-provide-a-new-ssl-certificate"></a>2\. lépés: Adjon meg egy új SSL-tanúsítvány
+## <a name="step-2-provide-a-new-tlsssl-certificate"></a>2. lépés: Új TLS/SSL tanúsítvány biztosítása
 
-Miután jóváhagyta az információ a farm AD FS-kiszolgálók, az Azure AD Connect új SSL-tanúsítványt kér. Adja meg a jelszóval védett PFX-tanúsítvány a telepítés folytatásához.
+Miután megerősítette az AD FS-farmkiszolgálókkal kapcsolatos információkat, az Azure AD Connect kéri az új TLS/SSL tanúsítványt. A telepítés folytatásához adjon meg egy jelszóval védett PFX-tanúsítványt.
 
-![SSL-tanúsítvány](./media/how-to-connect-fed-ssl-update/certificate.png)
+![TLS/SSL tanúsítvány](./media/how-to-connect-fed-ssl-update/certificate.png)
 
-Miután megadta a tanúsítványt, az Azure AD Connect végighalad egy sorozatát előfeltételek. Győződjön meg arról, hogy a tanúsítvány megfelelő-e az AD FS-farm számára a tanúsítványt:
+A tanúsítvány biztosítása után az Azure AD Connect egy sor előfeltételen megy keresztül. Ellenőrizze a tanúsítványt, hogy a tanúsítvány megfelelő-e az AD FS-farmhoz:
 
--   A tanúsítvány tulajdonos neve vagy a másodlagos tulajdonosnév vagy azonos az összevonási szolgáltatás neve, vagy helyettesítő tanúsítvány.
--   A tanúsítvány a több mint 30 napig érvényes.
--   Érvénytelen a tanúsítvány megbízhatósági láncában.
--   A tanúsítvány jelszóval védve.
+-   A tanúsítvány tulajdonosneve/másodlagos tulajdonosneve megegyezik az összevonási szolgáltatás nevével, vagy helyettesítő tanúsítvány.
+-   A tanúsítvány több mint 30 napig érvényes.
+-   A megbízható tanúsítvány lánca érvényes.
+-   A tanúsítvány jelszóval védett.
 
-## <a name="step-3-select-servers-for-the-update"></a>3\. lépés: A frissítés-kiszolgálók kiválasztása
+## <a name="step-3-select-servers-for-the-update"></a>3. lépés: A frissítés kiszolgálóinak kiválasztása
 
-A következő lépésben válassza ki a kiszolgálókat, az SSL-tanúsítvány frissítése rendelkeznie kell. Az offline kiszolgálók nem választható ki a frissítést.
+A következő lépésben válassza ki azokat a kiszolgálókat, amelyeknek frissíteniük kell a TLS/SSL tanúsítványt. Az offline kiszolgálók nem választhatók ki a frissítéshez.
 
-![Válassza ki a kiszolgálók frissítése](./media/how-to-connect-fed-ssl-update/selectservers.png)
+![A frissítandó kiszolgálók kiválasztása](./media/how-to-connect-fed-ssl-update/selectservers.png)
 
-Miután elvégezte a konfigurációt, az Azure AD Connect az üzenetet, amely azt jelzi, hogy a frissítés állapotát, és ellenőrizheti az AD FS bejelentkezési lehetőséget biztosít jeleníti meg.
+A konfiguráció befejezése után az Azure AD Connect megjeleníti az üzenetet, amely jelzi a frissítés állapotát, és lehetőséget biztosít az AD FS bejelentkezés ellenőrzésére.
 
 ![A konfigurálás befejeződött](./media/how-to-connect-fed-ssl-update/configurecomplete.png)   
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-* **Mit kell lennie a tanúsítvány tulajdonosának nevét az új AD FS SSL-tanúsítvány számára?**
+* **Mi legyen az új AD FS TLS/SSL tanúsítvány tulajdonosneve?**
 
-    Az Azure AD Connect ellenőrzi, hogy ha a tanúsítvány tulajdonos neve vagy másodlagos tulajdonosának neve tartalmazza az összevonási szolgáltatás neve. Például ha az összevonási szolgáltatás nevének pedig az fs.contoso.com, a tulajdonos neve vagy a másodlagos tulajdonosnév kell lennie: fs.contoso.com.  Helyettesítő karaktert tartalmazó tanúsítványok is használhatók.
+    Az Azure AD Connect ellenőrzi, hogy a tanúsítvány tulajdonosneve/másodlagos tulajdonosneve tartalmazza-e az összevonási szolgáltatás nevét. Ha például az összevonási szolgáltatás neve fs.contoso.com, a tulajdonos nevét/helyettes tulajdonosnevét fs.contoso.com kell.  Helyettesítő tanúsítványok is elfogadottak.
 
-* **Miért kérdezi meg az alkalmazás a hitelesítő adatokat újra a WAP-kiszolgáló oldalán?**
+* **Miért kell ismét hitelesítő adatokat kérnem a WAP-kiszolgáló lapján?**
 
-    Ha a hitelesítő adatokat ad meg az AD FS-kiszolgálók összekapcsolása a még nem rendelkezik a jogosultság a WAP-kiszolgálók kezelése, az Azure AD Connect az a WAP-kiszolgálókon rendszergazdai jogosultságokkal rendelkező hitelesítő adatokat kér.
+    Ha az AD FS-kiszolgálókhoz való csatlakozáshoz megadott hitelesítő adatok nem rendelkeznek a WAP-kiszolgálók kezeléséhez szükséges jogosultsággal, majd az Azure AD Connect olyan hitelesítő adatokat kér, amelyek rendszergazdai jogosultsággal rendelkeznek a WAP-kiszolgálókon.
 
-* **A kiszolgáló offline állapotúként jelenik meg. Mit tegyek?**
+* **A kiszolgáló offline állapotban jelenik meg. Mit kell tennem?**
 
-    Az Azure AD Connect bármely operaci nelze provést, ha a kiszolgáló nem érhető el. Ha a kiszolgáló az AD FS-farm része, majd ellenőrizze a kapcsolatot a kiszolgálóval. Miután megoldotta a problémát, nyomja le az frissítheti az állapotot, a varázsló a frissítés ikont. Ha a kiszolgáló nem része a farm korábban, de most már nem létezik, kattintson a **eltávolítása** való törléséhez a kiszolgálók listáját, hogy az Azure AD Connect kezeli. Kiszolgáló eltávolítása a listából az Azure AD Connect nem módosítható az AD FS konfigurációt magát. Ha az AD FS a Windows Server 2016 vagy újabb, illetve a kiszolgáló marad, a konfigurációs beállításokat használja, és a következő alkalommal újra megjelenik a feladat futtatása.
+    Az Azure AD Connect nem hajtvégre semmilyen műveletet, ha a kiszolgáló offline állapotban van. Ha a kiszolgáló az AD FS-farm része, ellenőrizze a kiszolgálóhoz való kapcsolódást. Miután megoldotta a problémát, nyomja meg a frissítés ikont a varázsló állapotának frissítéséhez. Ha a kiszolgáló korábban a farm része volt, de már nem létezik, kattintson az **Eltávolítás** gombra, ha törli az Azure AD Connect által karbantartott kiszolgálók listájáról. A kiszolgáló eltávolítása a listából az Azure AD Connect nem módosítja az AD FS konfigurációját. Ha Az AD FS-t Windows Server 2016-ban vagy újabb verzióban használja, a kiszolgáló a konfigurációs beállításokban marad, és a feladat következő futtatásakor ismét megjelenik.
 
-* **Frissíthetem a webfarm-kiszolgálók egy része az új SSL-tanúsítvány?**
+* **Frissíthetem a farmkiszolgálók egy részhalmazát az új TLS/SSL tanúsítvánnyal?**
 
-    Igen. A feladat mindig futtatható **SSL-tanúsítvány frissítése** újra a frissítés a többi kiszolgálón. Az a **kiszolgálók kijelölése az SSL-tanúsítvány frissítéséhez** lapon rendezheti a kiszolgálók listáját **SSL lejárati dátuma** is egyszerűen hozzáférhet a kiszolgálókat, amelyeket nem frissítenek még.
+    Igen. A többi kiszolgáló frissítéséhez bármikor futtathatja ismét az **SSL-tanúsítvány frissítése** feladatot. Az **SSL-tanúsítványfrissítési kiszolgálók kiválasztása** lapon rendezheti az **SSL lejárati dátumán** lévő kiszolgálók listáját, így könnyen elérheti a még nem frissített kiszolgálókat.
 
-* **Az előző futtatásból távolítva az a kiszolgáló, de továbbra is alatt látható, kapcsolat nélküli és a listán szereplő az AD FS-kiszolgálók lapon. Miért van a kapcsolat nélküli kiszolgáló továbbra is van, még akkor is, miután eltávolított?**
+* **Eltávolítottam a szervert az előző futtatásban, de még mindig offline állapotban jelenik meg, és az AD FS-kiszolgálók lapon szerepel. Miért van az offline kiszolgáló még mindig ott után is eltávolította?**
 
-    Kiszolgáló eltávolítása a listából az Azure AD Connect nem távolítható el a az AD FS konfigurációt. Az Azure AD Connect a farm minden információt az AD FS (Windows Server 2016-os vagy magasabb) hivatkozik. Ha a kiszolgáló továbbra is megtalálhatók az AD FS konfigurációt, azt vissza a listában megjelennek.  
+    A kiszolgáló eltávolítása a listából az Azure AD Connect nem távolítja el az AD FS konfigurációban. Az Azure AD Connect az AD FS (Windows Server 2016 vagy újabb) elemre hivatkozik a farmra vonatkozó információkért. Ha a kiszolgáló még mindig megtalálható az AD FS konfigurációban, akkor az visszakerül a listába.  
 
 ## <a name="next-steps"></a>További lépések
 
 - [Azure AD Connect és összevonás](how-to-connect-fed-whatis.md)
-- [Az Active Directory összevonási szolgáltatások kezelése és testreszabása az Azure AD Connecttel](how-to-connect-fed-management.md)
+- [Az Active Directory összevonási szolgáltatások kezelése és testreszabása az Azure AD Connect segítségével](how-to-connect-fed-management.md)
 

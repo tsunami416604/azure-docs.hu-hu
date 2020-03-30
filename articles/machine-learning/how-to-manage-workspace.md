@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning-munkaterületek létrehozása a portálon
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre, tekinthet meg és törölhet Azure Machine Learning munkaterületeket a Azure Portalban.
+description: Ismerje meg, hogyan hozhat létre, tekinthet meg és törölhet Azure Machine Learning-munkaterületeket az Azure Portalon.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,98 +10,99 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f31c5583671ed3441e1a3f0f53c8518e550080a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297067"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése az Azure Portalon
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben [**Azure Machine learning munkaterületeket**](concept-workspace.md) hoz létre, tekinthet meg és törölhet a [Azure Machine learning](overview-what-is-azure-ml.md)Azure Portal.  A portál a legegyszerűbb módszer a munkaterületek használatának megkezdésére, de az igények változásának vagy az automatizálási követelmények növelésének megkezdéséhez létrehozhat és törölhet munkaterületeket [a parancssori felület használatával](reference-azure-machine-learning-cli.md), [Python-kóddal](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) vagy [a vs Code bővítménnyel](tutorial-setup-vscode-extension.md).
+Ebben a cikkben azure [**Machine Learning-munkaterületeket**](concept-workspace.md) hozhat létre, tekinthet meg és törölhet az Azure Machine Learning hez létrehozott Azure [Portalon.](overview-what-is-azure-ml.md)  A portál a legegyszerűbb módja a munkaterületek használatának megkezdésének, de ahogy az igények változnak vagy az automatizálási követelmények növekednek, a [CLI használatával](reference-azure-machine-learning-cli.md), [Python kóddal](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) vagy [a VS Code kiterjesztéssel](tutorial-setup-vscode-extension.md)is létrehozhat és törölhet munkaterületeket.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Egy munkaterület létrehozásához szüksége van egy Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt elkezdené. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-előfizetés hitelesítő adatainak használatával. 
 
-1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
+1. Az Azure Portal bal felső sarkában válassza a **+ Erőforrás létrehozása**lehetőséget.
 
       ![Új erőforrás létrehozása](./media/how-to-manage-workspace/create-workspace.gif)
 
-1. A keresősáv használatával megkeresheti **Machine learning**.
+1. A keresősáv segítségével keresse meg a **Machine Learning et.**
 
-1. Válassza a **Machine learning**lehetőséget.
+1. Válassza a **Gépi tanulás lehetőséget.**
 
-1. A **Machine learning** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
+1. A **Machine Learning** ablaktáblán válassza a **Létrehozás** gombot a kezdéshez.
 
-1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
+1. Adja meg a következő információkat az új munkaterület konfigurálásához:
 
    Mező|Leírás 
    ---|---
-   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését. A munkaterület neve megkülönbözteti a kis-és nagybetűket.
-   Előfizetést |Válassza ki a használni kívánt Azure-előfizetést.
-   Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
-   Hely | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
-   Munkaterület kiadása | Válassza az **Alap** vagy a **vállalat**lehetőséget.  Ez a munkaterület-kiadás határozza meg azokat a szolgáltatásokat, amelyekhez hozzáférésre és díjszabásra van szüksége. További információ az [alapszintű és a nagyvállalati kiadási ajánlatokról](overview-what-is-azure-ml.md#sku). 
+   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában **docs-ws**. A neveknek egyedinek kell lenniük az erőforráscsoportban. Használjon könnyen visszahívható nevet, és különböztetse meg a mások által létrehozott munkaterületeket. A munkaterület neve nem i.
+   Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
+   Erőforráscsoport | Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport egy Azure-megoldás kapcsolódó erőforrásait tartalmazza. Ebben a példában **docs-aml**. 
+   Hely | Válassza ki a felhasználókhoz legközelebb eső helyet és a munkaterület létrehozásához szükséges adaterőforrásokat.
+   Munkaterületi kiadás | Válassza **az Alapszintű** vagy **a Vállalati lehetőséget.**  Ez a munkaterületi kiadás határozza meg azokat a funkciókat, amelyekhez hozzáféréssel és díjszabással rendelkezik. További információ az [alapszintű és nagyvállalati kiadásajánlatokról.](overview-what-is-azure-ml.md#sku) 
 
-    ![Munkaterület konfigurálása](./media/how-to-manage-workspace/select-edition.png)
+    ![A munkaterület konfigurálása](./media/how-to-manage-workspace/select-edition.png)
 
-1. Miután befejezte a munkaterület konfigurálását, válassza a **Létrehozás**lehetőséget. 
+1. Ha befejezte a munkaterület konfigurálását, válassza a **Véleményezés + Létrehozás**lehetőséget.
+2. Tekintse át a beállításokat, és hajtson végre további módosításokat vagy javításokat. Ha elégedett a beállításokkal, válassza a **Létrehozás gombot.**
 
    > [!Warning] 
-   > Több percet is igénybe vehet, hogy a munkaterületet a felhőben hozza létre.
+   > A munkaterület felhőbeli létrehozása több percig is eltarthat.
 
-   Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. 
+   Amikor a folyamat befejeződött, megjelenik egy sikeres telepítési üzenet. 
  
- 1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
+ 1. Az új munkaterület megtekintéséhez válassza az **Ugrás az erőforrásra**lehetőséget.
 
 ### <a name="download-a-configuration-file"></a>Konfigurációs fájl letöltése
 
 1. Ha [számítási példányt](tutorial-1st-experiment-sdk-setup.md#azure)fog létrehozni, hagyja ki ezt a lépést.
 
-1. Ha azt tervezi, hogy a munkaterületre hivatkozó helyi környezet programkódját használja, válassza a munkaterület **Áttekintés** szakaszában található **config. JSON letöltése** lehetőséget.  
+1. Ha olyan kódot kíván használni a helyi környezetben, amely erre a munkaterületre hivatkozik, válassza a **config.json letöltése lehetőséget** a munkaterület **Áttekintés szakaszában.**  
 
-   ![A config. JSON fájl letöltése](./media/how-to-manage-workspace/configure.png)
+   ![Config.json letöltése](./media/how-to-manage-workspace/configure.png)
    
-   Helyezze a fájlt a címtár-struktúrába a Python-szkriptekkel vagy a Jupyter notebookokkal. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban. Számítási példány létrehozásakor a rendszer hozzáadja ezt a fájlt a virtuális gép megfelelő könyvtárába.
+   Helyezze a fájlt a könyvtárstruktúrába a Python-parancsfájlokkal vagy a Jupyter-jegyzetfüzetekkel. Lehet ugyanabban a könyvtárban, egy *.azureml*nevű alkönyvtárban vagy szülőkönyvtárban. Amikor létrehoz egy számítási példányt, ez a fájl hozzáadódik a megfelelő könyvtárba a virtuális gép az Ön számára.
 
-## <a name="upgrade"></a>Frissítés a Enterprise Edition verzióra
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Frissítés az Enterprise edition verzióra
 
-A munkaterületet az alapszintű kiadásról a nagyvállalati kiadásra frissítheti, így kihasználhatja a fejlett funkciók előnyeit, például az alacsony kódú élményt és a fokozott biztonsági funkciókat.
+A munkaterületet Basic kiadásról Enterprise kiadásra frissítheti, hogy kihasználja a továbbfejlesztett funkciókat, például az alacsony kódú szolgáltatásokat és a továbbfejlesztett biztonsági funkciókat.
 
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com).
+1. Jelentkezzen be az [Azure Machine Learning stúdióba.](https://ml.azure.com)
 
 1. Válassza ki a frissíteni kívánt munkaterületet.
 
-1. Kattintson a lap jobb felső részén található **További információ** lehetőségre.
+1. Válassza a Lap jobb felső részén található **További információ** lehetőséget.
 
-   [munkaterület ![frissítése](./media/how-to-manage-workspace/upgrade.png)](./media/how-to-manage-workspace/upgrade.png#lightbox)
+   [![Munkaterület](./media/how-to-manage-workspace/upgrade.png) frissítése](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. Válassza a **frissítés** lehetőséget a megjelenő ablakban.
+1. A megjelenő ablakban válassza a **Frissítés** lehetőséget.
 
 
 > [!IMPORTANT]
-> Az Enterprise Edition-munkaterületeket nem lehet alapszintű kiadási munkaterületre visszaminősíteni. 
+> Az Enterprise edition munkaterület nem minősíthető alapszintű kiadási munkaterületre. 
 
-## <a name="view"></a>Munkaterület keresése
+## <a name="find-a-workspace"></a><a name="view"></a>Munkaterület keresése
 
-1. A felső Keresés mezőbe írja be a következőt: **Machine learning**.  
+1. A felső keresőmezőbe írja be a **Machine Learning (Gépi tanulás)** kifejezést.  
 
-1. Válassza a **Machine learning**lehetőséget.
+1. Válassza a **Gépi tanulás lehetőséget.**
 
-   ![Azure Machine Learning munkaterület keresése](./media/how-to-manage-workspace/find-workspaces.png)
+   ![Azure Machine Learning-munkaterület keresése](./media/how-to-manage-workspace/find-workspaces.png)
 
-1. Nézze át a találhatók munkaterületek listáját. Szűrhet előfizetés alapján, erőforráscsoportok és helyek.  
+1. Tekintse át a talált munkaterületek listáját. Szűrhet előfizetés, erőforráscsoportok és helyek alapján.  
 
-1. Válasszon ki egy munkaterületet a tulajdonságainak megjelenítéséhez.
+1. Jelöljön ki egy munkaterületet a tulajdonságainak megjelenítéséhez.
 
 ## <a name="delete-a-workspace"></a>Munkaterület törlése
 
-Használja a Törlés gombra, hogy törölni kívánja a munkaterület tetején.
+Használja a törölni kívánt munkaterület tetején található Törlés gombot.
 
   ![Törlés gomb](./media/how-to-manage-workspace/delete-workspace.png)
 
@@ -109,7 +110,7 @@ Használja a Törlés gombra, hogy törölni kívánja a munkaterület tetején.
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="resource-provider-errors"></a>Erőforrás-szolgáltatói hibák
 
@@ -118,17 +119,17 @@ Használja a Törlés gombra, hogy törölni kívánja a munkaterület tetején.
 ### <a name="moving-the-workspace"></a>A munkaterület áthelyezése
 
 > [!WARNING]
-> Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
+> Az Azure Machine Learning-munkaterület áthelyezése egy másik előfizetésre, vagy a tulajdonában lévő előfizetés áthelyezése egy új bérlőre, nem támogatott. Ez hibákat okozhat.
 
-### <a name="deleting-the-azure-container-registry"></a>A Azure Container Registry törlése
+### <a name="deleting-the-azure-container-registry"></a>Az Azure Container-beállításjegyzék törlése
 
-A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Registry (ACR) használ. Automatikusan létrehoz egy ACR-példányt, amikor először szüksége lesz rá.
+Az Azure Machine Learning-munkaterület bizonyos műveletekhez az Azure Container Registry (ACR) szolgáltatást használja. Automatikusan létrehoz egy ACR-példányt, amikor először szüksége van rá.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Kövesse a teljes hosszúságú oktatóanyagot, amelyből megtudhatja, hogyan hozhat létre, taníthat és helyezhet üzembe modelleket Azure Machine Learning használatával a munkaterületen.
+A teljes hosszúságú oktatóanyagból megtudhatja, hogyan hozhat létre, taníthat be és helyezhet üzembe modelleket az Azure Machine Learning használatával.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: modellek betanítása](tutorial-train-models-with-aml.md)
+> [Oktatóanyag: Vonatmodellek](tutorial-train-models-with-aml.md)

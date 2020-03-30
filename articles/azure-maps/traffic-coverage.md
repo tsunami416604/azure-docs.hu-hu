@@ -1,25 +1,25 @@
 ---
-title: Forgalom lefedettsége | Microsoft Azure térképek
-description: Ebben a cikkben megtudhatja, hogyan tekintheti meg Microsoft Azure Maps forgalom lefedettségét.
-author: farah-alyasari
-ms.author: v-faalya
+title: Forgalomlefedettség | Microsoft Azure Maps
+description: Ebben a cikkben a Microsoft Azure Maps forgalmi lefedettségéről olvashat.
+author: philmea
+ms.author: philmea
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333949"
 ---
-# <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
+# <a name="azure-maps-traffic-coverage"></a>Az Azure Maps forgalmi lefedettsége
 
-A Azure Maps a forgalom és az **incidensek**formájában biztosít **részletes forgalmi információkat** . Ezek az adathalmazok megjeleníthetők a térképeken, vagy olyan intelligensebb útvonalak előállítására használhatók, amelyek valós vezetési körülmények között számítanak.
+Az Azure Maps részletes forgalmi információkat nyújt forgalom **és** **incidensek**formájában. Ezek az adatok megjeleníthetők a térképeken, vagy felhasználhatók intelligensebb útvonalak létrehozására, amelyek figyelembe veszik a valós vezetési körülményeket.
 
-A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal minden országban vagy régióban. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
+A Térképek azonban nem rendelkezik azonos szintű információkkal és pontossággal minden ország ra és régióra vonatkozóan. Az alábbi táblázat arról nyújt tájékoztatást, hogy milyen típusú forgalmi információkat kérhet az egyes országoktól vagy régióktól: 
 
 ## <a name="americas"></a>Amerika
 
@@ -47,7 +47,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |India   |✓         |✓         |
 |Indonézia     |✓         |✓         |
 |Kazahsztán    |✓         |✓         |
-|Makaó KKT     |✓         |✓         |
+|Makaó (KKT)     |✓         |✓         |
 |Malajzia     |✓         |✓         |
 |Új-Zéland     |✓         |✓         |
 |Fülöp-szigetek  |✓         |✓         |
@@ -72,7 +72,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Dánia     |✓         |✓         |
 |Észtország     |         | ✓        |
 |Finnország     |✓         |✓         |
-|\+ Åland-szigetek      |✓         |✓         |
+|+Åland-szigetek      |✓         |✓         |
 |Franciaország     |✓         |✓         |
 |Monaco     |✓         |✓         |
 |Németország     |✓         |✓         |
@@ -93,7 +93,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Norvégia     |✓         |✓         |
 |Lengyelország     |✓         |✓         |
 |Portugália     |✓         |✓         |
-|\+ Azori-szigetek és Madeira     |✓         |✓         |
+|+Azori-szigetek és Madeira     |✓         |✓         |
 |Románia     |✓         |✓         |
 |Orosz Föderáció     |✓         |✓         |
 |San Marino    |✓         |✓         |
@@ -102,17 +102,17 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Szlovénia     |✓         |✓         |
 |Spanyolország     |✓         |✓         |
 |+Andorra     |✓         |✓         |
-|\+ Baleár-szigetek     |✓         |✓         |
-|\+ Kanári-szigetek     |✓         |✓         |
+|+Baleár-szigetek     |✓         |✓         |
+|+Kanári-szigetek     |✓         |✓         |
 |Svédország     |✓         |✓         |
 |Svájc     |✓         |✓        |
 |Törökország     |✓         |✓         |
 |Ukrajna     |✓         |✓         |
 |Egyesült Királyság     |✓         |✓         |
-|\+ Gibraltár     |✓         |✓         |
-|\+ Guernsey & Jersey     |✓         |✓         |
-|\+ Man-sziget     |✓         |✓         |
-|Vatikáni Városállam   |✓         |✓         |
+|+Gibraltár     |✓         |✓         |
+|+Guernsey & Jersey     |✓         |✓         |
+|+Man-szigetek     |✓         |✓         |
+|Vatikán   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
@@ -133,6 +133,6 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Dél-afrikai Köztársaság     |✓         |✓         |
 |Egyesült Arab Emírségek  |✓         |✓         |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Azure Maps forgalmi adatokkal kapcsolatos további információkért tekintse meg a [forgalmi](https://docs.microsoft.com/rest/api/maps/traffic) útmutató lapjait.
+Az Azure Maps forgalmi adatairól további információt a [Forgalmi](https://docs.microsoft.com/rest/api/maps/traffic) referencialapok című témakörben talál.

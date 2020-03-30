@@ -1,20 +1,19 @@
 ---
-title: A fiókok felügyeletének előfeltételei a Cloud Partner Portalon | Azure piactér
-description: Elavult CPP-cikk, rámutatott a PC-cikkre; "az Azure Marketplace-fiókok kezelésének előfeltételei a Cloud Partner Portal."
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: A fiókkezelő kontrájának előfeltételei a Felhőpartner-portálon | Azure Piactér
+description: Elavult CPP cikket, rámutatott, hogy PC cikket; "Az Azure Marketplace-fiókok kezelésének előfeltételei a Cloud Partner Portalon."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 1b6e7df904b6c564935a3f34ca2da12bed459c4f
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: b01c6fbf1d35c786338308debc1281fa943a6bf3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666460"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279895"
 ---
-# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>A Cloud Partner Portal fiókok kezelésének előfeltételei
+# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>A fiókok kezelésének előfeltételei a Felhőpartner-portálon
 
-Ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információ: [a kereskedelmi piactér fiókjának kezelése a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Ezt a funkciót átváltottuk a Microsoft [Partner Center portálra.](https://partner.microsoft.com/) További információt a [Kereskedelmi piactér-fiók kezelése a Partnerközpontban című témakörben talál.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)

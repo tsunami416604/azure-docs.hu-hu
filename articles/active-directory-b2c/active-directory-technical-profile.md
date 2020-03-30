@@ -1,45 +1,45 @@
 ---
-title: Azure AD-beli technikai profil definiálása egyéni házirendben
+title: Azure AD technikai profil definiálása egyéni szabályzatban
 titleSuffix: Azure AD B2C
-description: Azure Active Directory technikai profilt definiálhat egy egyéni házirendben Azure Active Directory B2Cban.
+description: Definiáljon egy Azure Active Directory technikai profilt egy egyéni szabályzatban az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79078855"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330388"
 ---
-# <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
+# <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory technikai profiljának definiálása az Azure Active Directory B2C egyéni szabályzatában
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a Azure Active Directory felhasználói felügyelethez. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti.
+Az Azure Active Directory B2C (Azure AD B2C) támogatja az Azure Active Directory felhasználói felügyeletét. Ez a cikk a műszaki profil sajátosságait ismerteti a szabványosprotokollt támogató jogcímszolgáltatóval való interakcióhoz.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol (Protokoll)
 
-A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell a protokollkezelő szerelvény `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`teljes nevét.
+A **Protokoll** elem **Name** attribútumát a `Proprietary`parancsra kell állítani. A **kezelő** attribútumnak tartalmaznia kell a protokollkezelő szerelvény `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`teljesen minősített nevét.
 
-A következő [Egyéni szabályzat](custom-policy-get-started.md#custom-policy-starter-pack) -előindítási csomag Azure ad technikai profiljai tartalmazzák a **HRE-közös** technikai profilt. Az Azure AD technikai profiljai nem határozzák meg a protokollt, mert a protokoll a **HRE-közös** technikai profilban van konfigurálva:
+[Az egyéni szabályzat kezdőcsomagját](custom-policy-get-started.md#custom-policy-starter-pack) követően az Azure AD technikai profiljai közé tartozik az **AAD-Common** technikai profil. Az Azure AD technikai profilok nem adja meg a protokollt, mert a protokoll az **AAD-common** technikai profilban van konfigurálva:
  
-- **HRE-UserReadUsingAlternativeSecurityId** és **HRE-UserReadUsingAlternativeSecurityId – nem sikerült** – keressen egy közösségi fiókot a címtárban.
-- **HRE-UserWriteUsingAlternativeSecurityId** – új közösségi fiók létrehozása.
-- **HRE-UserReadUsingEmailAddress** – helyi fiók megkeresése a címtárban.
-- **HRE-UserWriteUsingLogonEmail** – új helyi fiók létrehozása.
-- **HRE-UserWritePasswordUsingObjectId** – helyi fiók jelszavának frissítése.
-- **HRE-UserWriteProfileUsingObjectId** – helyi vagy közösségi fiók felhasználói profiljának frissítése.
-- **HRE-UserReadUsingObjectId** – helyi vagy közösségi fiók felhasználói profiljának beolvasása.
-- **HRE-UserWritePhoneNumberUsingObjectId** – helyi vagy közösségi fiók MFA-telefonszámának megírása
+- **AAD-UserReadUsingAlternativeSecurityId** és **AAD-UserReadUsingAlternativeSecurityId-NoError** - Keressen egy közösségi fiókot a címtárban.
+- **AAD-UserWriteUsingAlternativeSecurityId** - Hozzon létre egy új közösségi fiókot.
+- **AAD-UserReadUsingEmailAddress** - Helyi fiók kinézete a címtárban.
+- **AAD-UserWriteUsingLogonEmail** - Hozzon létre egy új helyi fiókot.
+- **AAD-UserWritePasswordUsingObjectId** - Helyi fiók jelszavának frissítése.
+- **AAD-UserWriteProfileUsingObjectId** - Helyi vagy közösségi fiók felhasználói profiljának frissítése.
+- **AAD-UserReadUsingObjectId** – Helyi vagy közösségi fiók felhasználói profiljának olvasása.
+- **AAD-UserWritePhoneNumberUsingObjectId** - Írja be egy helyi vagy közösségi fiók MFA telefonszámát
 
-A következő példa a **HRE-közös** technikai profilt mutatja be:
+A következő példa az **AAD-Common** technikai profilját mutatja be:
 
 ```XML
 <TechnicalProfile Id="AAD-Common">
@@ -56,29 +56,29 @@ A következő példa a **HRE-közös** technikai profilt mutatja be:
 </TechnicalProfile>
 ```
 
-## <a name="inputclaims"></a>Szabályzattípushoz
+## <a name="inputclaims"></a>InputClaims (InputClaims)
 
-A Szabályzattípushoz elem tartalmaz egy jogcímet, amely egy fiók keresésére szolgál a címtárban, vagy létrehozhat egy újat. A bemeneti jogcímek gyűjteményében pontosan egy InputClaim elemnek kell szerepelnie az összes Azure AD technikai profilhoz. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre.
+Az InputClaims elem egy jogcímet tartalmaz, amely a címtárban lévő fiók megkeresésére vagy egy új létrehozására szolgál. Az összes Azure AD-technikai profil bemeneti jogcímgyűjteményében pontosan egy InputClaim-elemnek kell lennie. Előfordulhat, hogy le kell képeznie a házirendben definiált jogcím nevét az Azure Active Directoryban definiált névhez.
 
-Meglévő felhasználói fiók olvasásához, frissítéséhez vagy törléséhez a bemeneti jogcímek egy olyan kulcs, amely egyedileg azonosítja a fiókot az Azure AD-címtárban. Például: **objectId**, **userPrincipalName**, **signInNames. emailAddress**, **signInNames. username**vagy **alternativeSecurityId**. 
+Egy meglévő felhasználói fiók olvasásához, frissítéséhez vagy törléséhez a bemeneti jogcím egy kulcs, amely egyedileg azonosítja a fiókot az Azure AD könyvtárban. Például **objectId**, **userPrincipalName**, **signInNames.emailAddress**, **signInNames.userName**vagy **alternativeSecurityId**. 
 
-Új felhasználói fiók létrehozásához a bemeneti jogcím olyan kulcs, amely egyedileg azonosít egy helyi vagy összevont fiókot. Például: helyi fiók: **signInNames. emailAddress**vagy **signInNames. username**. Összevont fiók esetén: a **alternativeSecurityId**.
+Új felhasználói fiók létrehozásához a bemeneti jogcím egy olyan kulcs, amely egyedileg azonosítja a helyi vagy összevont fiókot. Például helyi fiók: **signInNames.emailAddress**vagy **signInNames.userName**. Összevont fiók esetén: az **alternativeSecurityId**.
 
-A [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) elem olyan bemeneti jogcím-átalakítási elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosításához vagy újak létrehozásához használatosak.
+Az [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) elem tartalmazhat bemeneti jogcímek átalakítási elemeinek gyűjteményét, amelyek a bemeneti jogcím módosítására vagy új létrehozására szolgálnak.
 
-## <a name="outputclaims"></a>OutputClaims
+## <a name="outputclaims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem az Azure ad technikai profil által visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre. Olyan jogcímeket is tartalmazhat, amelyeket a Azure Active Directory nem ad vissza, ha a `DefaultValue` attribútumot állítja be.
+A **OutputClaims** elem az Azure AD technikai profil által visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy le kell képeznie a házirendben definiált jogcím nevét az Azure Active Directoryban definiált névhez. Az Azure Active Directory által vissza nem adott jogcímeket is `DefaultValue` megadhat, feltéve, hogy beállítja az attribútumot.
 
-A [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
+A [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
 
-Például a **HRE-UserWriteUsingLogonEmail** technikai profil egy helyi fiókot hoz létre, és a következő jogcímeket adja vissza:
+Például az **AAD-UserWriteUsingLogonEmail** technikai profil létrehoz egy helyi fiókot, és a következő jogcímeket adja vissza:
 
 - **objectId**, amely az új fiók azonosítója
-- **newUser**, amely azt jelzi, hogy a felhasználó új-e
-- **authenticationSource**, amely a `localAccountAuthentication` hitelesítését állítja be
-- **userPrincipalName**, az új fiók egyszerű felhasználóneve
-- **signInNames. emailAddress**, amely a fiók bejelentkezési neve, hasonlóan az **e-mail** bemeneti jogcímhez
+- **newUser**, amely azt jelzi, hogy a felhasználó új
+- **authenticationSource**, amely a hitelesítést`localAccountAuthentication`
+- **userPrincipalName**, amely az új fiók egyszerű felhasználóneve
+- **signInNames.emailAddress ,** amely a fiók bejelentkezési neve, hasonlóan az **e-mail** bemeneti jogcíméhez
 
 ```xml
 <OutputClaims>
@@ -90,11 +90,11 @@ Például a **HRE-UserWriteUsingLogonEmail** technikai profil egy helyi fiókot 
 </OutputClaims>
 ```
 
-## <a name="persistedclaims"></a>PersistedClaims
+## <a name="persistedclaims"></a>Tartós jogcímek
 
-A **PersistedClaims** elem tartalmazza az összes olyan értéket, amelyet az Azure ad a szabályzat és az Azure ad-attribútum neve [ClaimsSchema](claimsschema.md) szakaszában már definiált jogcím-típus közötti lehetséges leképezési információval kell megőrizni.
+A **PersistedClaims** elem tartalmazza az összes olyan értéket, amelyet az Azure AD-nek meg kell persistnia a szabályzat [ClaimsSchema](claimsschema.md) szakaszában már definiált jogcímtípus és az Azure AD attribútum neve között.
 
-A **HRE-UserWriteUsingLogonEmail** technikai profil, amely új helyi fiókot hoz létre, a következő jogcímeket tartja fenn:
+Az **AAD-UserWriteUsingLogonEmail** technikai profil, amely új helyi fiókot hoz létre, a következő jogcímek szerint marad fenn:
 
 ```XML
   <PersistedClaims>
@@ -110,20 +110,21 @@ A **HRE-UserWriteUsingLogonEmail** technikai profil, amely új helyi fiókot hoz
   </PersistedClaims>
 ```
 
-A jogcím neve az Azure AD attribútum neve, kivéve, ha meg van adva a **PartnerClaimType** attribútum, amely tartalmazza az Azure ad-attribútum nevét.
+A jogcím neve az Azure AD attribútum neve, kivéve, ha a **PartnerClaimType** attribútum meg van adva, amely tartalmazza az Azure AD attribútum nevét.
 
 ## <a name="requirements-of-an-operation"></a>A művelet követelményei
 
-- Az összes Azure AD technikai profilhoz pontosan egy **InputClaim** elemnek kell tartoznia a jogcím-táskában.
-- Ha a művelet `Write` vagy `DeleteClaims`, akkor azt is meg kell jelennie egy **PersistedClaims** elemben.
-- A **userPrincipalName** jogcím értékének `user@tenant.onmicrosoft.com`formátumúnak kell lennie.
-- A **DisplayName** jogcím megadása kötelező, és nem lehet üres karakterlánc.
+- Az összes Azure AD-technikai profilhoz pontosan egy **InputClaim-elemnek** kell lennie a jogcímtáskában.
+- A [felhasználói profil attribútumok cikk](user-profile-attributes.md) ismerteti a támogatott Azure AD B2C felhasználói profil attribútumok a bemeneti jogcímek, kimeneti jogcímek és a megőrzött jogcímek. 
+- Ha a `Write` művelet `DeleteClaims`vagy , akkor meg kell jelennie a **PersistedClaims** elemben is.
+- A **userPrincipalName** jogcím értékének a `user@tenant.onmicrosoft.com`formátumának .
+- A **displayName** jogcím kötelező, és nem lehet üres karakterlánc.
 
-## <a name="azure-ad-technical-provider-operations"></a>Azure AD technikai szolgáltatói műveletek
+## <a name="azure-ad-technical-provider-operations"></a>Az Azure AD technikai szolgáltatói műveletei
 
 ### <a name="read"></a>Olvasás
 
-Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A következő technikai profil egy felhasználói fiók adatait olvassa be a felhasználó objectId használatával:
+Az **Olvasás** művelet egyetlen felhasználói fiók adatait olvassa be. A következő technikai profil a felhasználó objectId azonosítóját használó felhasználói fiók adatait olvassa be:
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -153,7 +154,7 @@ Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A k�
 
 ### <a name="write"></a>Írás
 
-Az **írási** művelet egyetlen felhasználói fiókot hoz létre vagy frissít. A következő technikai profil új közösségi fiókot hoz létre:
+Az **Írás** művelet egyetlen felhasználói fiókot hoz létre vagy frissít. A következő technikai profil új közösségi fiókot hoz létre:
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -191,9 +192,9 @@ Az **írási** művelet egyetlen felhasználói fiókot hoz létre vagy frissít
 </TechnicalProfile>
 ```
 
-### <a name="deleteclaims"></a>DeleteClaims
+### <a name="deleteclaims"></a>Jogcímek törlése
 
-A **DeleteClaims** művelet törli az adatokat egy adott jogcímek listájáról. A következő technikai profil törli a jogcímeket:
+A **DeleteClaims** művelet törli az adatokat a megadott jogcímek listájáról. A következő technikai profil törli a jogcímeket:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -214,7 +215,7 @@ A **DeleteClaims** művelet törli az adatokat egy adott jogcímek listájáról
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a címtárból. A következő technikai profil törli a felhasználói fiókot a címtárból az egyszerű felhasználónév használatával:
+A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a címtárból. A következő technikai profil töröl egy felhasználói fiókot a címtárból az egyszerű felhasználónév használatával:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -229,7 +230,7 @@ A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a c
 </TechnicalProfile>
 ```
 
-A következő technikai profil töröl egy közösségi felhasználói fiókot a **alternativeSecurityId**használatával:
+A következő technikai profil törli a közösségi felhasználói fiókot **az alternativeSecurityId**használatával:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
@@ -247,28 +248,28 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read`, `Write`, `DeleteClaims`vagy `DeleteClaimsPrincipal`. |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false`. |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false`.|
-| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
-| ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Ha a technikai profilban egy jogcímet feloldót szeretne használni, állítsa be `true`ra. |
+| Művelet | Igen | A végrehajtandó művelet. Lehetséges `Read`értékek: `Write` `DeleteClaims`, `DeleteClaimsPrincipal`, , vagy . |
+| RaiseerrorifClaimsPrincipalDoesnotexist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges `true` értékek: `false`vagy . |
+| RaiseErrorIfclaimsPrincipalmár létezik | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges `true` értékek: `false`vagy .|
+| ApplicationObjectId alkalmazásobjektum-azonosító | Nem | A bővítményattribútumok alkalmazásobjektum-azonosítója. Érték: Egy alkalmazás ObjectId azonosítója. További információt az [Egyéni attribútumok használata egyéni profilszerkesztési házirendben című témakörben talál.](custom-policy-custom-attributes.md) |
+| ClientID | Nem | A bérlő harmadik félként való eléréséhez szolgáló ügyfélazonosító. További információ: [Egyéni attribútumok használata egyéni profilszerkesztési házirendben](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | Nem | Bemeneti és kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` `false`  vagy (alapértelmezett). Ha a technikai profilban jogcímfeloldót szeretne `true`használni, állítsa ezt a beállításra. |
 
-### <a name="error-messages"></a>Hibaüzenetek
+### <a name="ui-elements"></a>Felhasználói felület elemei
  
-A következő beállításokkal megadhatja a hiba esetén megjelenő hibaüzenetet. A metaadatokat az [önérvényesített](self-asserted-technical-profile.md) technikai profilban kell konfigurálni. A hibaüzenetek [honosítható](localization.md).
+A következő beállításokkal konfigurálhatja a hiba esetén megjelenő hibaüzenetet. A metaadatokat az önérvényesítő technikai profilban kell [konfigurálni.](self-asserted-technical-profile.md) A hibaüzenetek [honosíthatók](localization.md).
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
+| UserMessageIfclaimsPrincipalMárexists | Nem | Ha egy hiba van -ból lenni -ból lenni előad ( bemutat RaiseErrorIfClaimsPrincipalMárExists attribútum leírás), adja meg az üzenetet, hogy a felhasználó, ha a felhasználói objektum már létezik. |
+| UserMessageifClaimsPrincipalDoesnotExist | Nem | Ha egy hiba van -hoz lenni előad ( lát a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírás), adja meg az üzenetet, hogy a felhasználó számára, ha a felhasználói objektum nem létezik. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg az alábbi cikket, például az Azure AD technikai profiljának használatát:
+Tekintse meg a következő cikket, például az Azure AD technikai profiljának használatával:
 
-- [Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C](custom-policy-configure-user-input.md)
+- [Jogcímek hozzáadása és felhasználói bevitel testreszabása egyéni szabályzatok használatával az Azure Active Directory B2C-ben](custom-policy-configure-user-input.md)
 
 
 

@@ -1,127 +1,126 @@
 ---
-title: Power BI alkalmazás-ajánlat kirakati adatai | Azure piactér
-description: A kirakat részleteinek konfigurálása a Microsoft AppSource Marketplace-re vonatkozó Power BI alkalmazás-ajánlathoz.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: A Power BI alkalmazásajánlat kirakatrészletei | Azure Piactér
+description: A Microsoft AppSource Piactér Power BI-alkalmazásajánlatának kirakatrészletei mezőinek konfigurálása.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 309b2eb33c594b5233c547e3bf45a49aa3a25678
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817666"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281680"
 ---
-# <a name="power-bi-app-storefront-details-tab"></a>Power BI alkalmazás-kirakat részletei lap
+# <a name="power-bi-app-storefront-details-tab"></a>A Power BI alkalmazás kirakatrészletei lapja
 
-Az **új ajánlat** oldalon, a **kirakat részletei** lapon adja meg a potenciális ügyfelek marketing-, értékesítési és jogi információit. Ezen a lapon az Azure Marketplace által generált érdeklődők felügyeletét is beállíthatja. Ez a hosszú űrlap hat szakaszra oszlik: az **ajánlat részletei**, a **részletek listázása**, a **marketing**-összetevők, a **jogi**, az **ügyfélszolgálat**és az **érdeklődők kezelése**.  A mező feliratának végén található csillag (*) érték azt jelenti, hogy a mezőt kötelező megadni.
+Az **Új ajánlat** lapon a **Kirakat részletei** lapon marketing,értékesítési és jogi információkat adhat meg a leendő ügyfeleknek. Ezen a lapon az Azure Marketplace által létrehozott érdeklődők felügyeletét is beállíthatja. Ez a hosszú űrlap hat részből áll: **Ajánlat részletei**, **Listázás részletei**, Marketing **összetevők**, **Jogi**, **Ügyfélszolgálat**és **Érdeklődőkezelés**.  A mezőfelirat végén lévő csillag (*) azt jelenti, hogy a mező szükséges.
 
 
 ## <a name="offer-details-section"></a>Ajánlat részletei szakasz
 
-Az **ajánlat részletei** szakaszban adja meg a AppSource ajánlat általános adatait.
+Az **Ajánlat részletei** csoportban adja meg az AppSource-ajánlat általános adatait.
 
-![A kirakat részletei lap ajánlat részletei szakasza](./media/offer-details-section.png)
+![A Kirakat részletei lap Ajánlat részletei szakasza](./media/offer-details-section.png)
 
-A következő táblázat további információkat tartalmaz ezekről a mezőkről. A kötelező mezőket csillag (*) alapján vádoljuk.  
+Az alábbi táblázat további információt tartalmaz ezekről a mezőkről. A kötelező mezőket csillag (*) vádolja.  
 
 |   Mező               |   Leírás                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
-| **Ajánlat összegzése\***     | Az alkalmazás egy rövid célja, amely akár 100 karaktert is felhasználhat.                             |
-| **Ajánlat leírása\*** | Az alkalmazás leírása, amely legfeljebb 3 000 karaktert használ. Ez a mező támogatja az egyszerű HTML-formázást. |
+| **Ajánlat összegzése\***     | Az alkalmazás rövid célja, legfeljebb 100 karaktert használva.                             |
+| **Ajánlat leírása\*** | Az alkalmazás leírása, legfeljebb 3000 karakterhasználatával. Ez a mező támogatja az egyszerű HTML-formázást. |
 |   |    |
 
 
-## <a name="listing-details-section"></a>Listaelem részletei szakasz
+## <a name="listing-details-section"></a>A lista részletei szakasz
 
-A **tőzsdei részletek** szakasz az alkalmazás kontextusával kapcsolatos információkat gyűjti össze: iparágak, ahol jellemzően használatos, az alkalmazás kategóriája, a kompatibilis termékek és a kapcsolódó keresési feltételek.
+A **Hirdetés részletei** szakasz információkat gyűjt az alkalmazás környezetéről: azokról az iparágakról, ahol általában használják, az alkalmazáskategóriát, a kompatibilis termékeket és a kapcsolódó keresési kifejezéseket.
 
-![A kirakat részletei lap részletek szakasza](./media/listing-details-section.png)
+![A Kirakat részletei lap Részletek című szakaszának listázása](./media/listing-details-section.png)
 
-A szakasz mezőinek végrehajtásához használja a következő táblázatot.  A kötelező mezőket csillag (*) alapján vádoljuk.
+A szakasz mezőinek kitöltéséhez használja az alábbi táblázatot.  A kötelező mezőket csillag (*) vádolja.
  
 |   Mező                                  |   Leírás                                                        |
 | --------------                           | ---------------------                                                |
-| **Ágazatok**                           | Válassza ki azt az iparágat, amelyben az alkalmazás megfelel a legjobban. Ha az alkalmazás több iparághoz kapcsolódik, hagyja üresen ezt a mezőt.      |
-| **Kategóriák\***                           | Válassza ki az alkalmazáshoz kapcsolódó három kategóriát.     |
-| **Súgó hivatkozás az alkalmazáshoz\***               | Adjon meg egy olyan oldal URL-címét, amely online súgót nyújt az alkalmazásához.           |
-| **Az alkalmazás által használható termékek (max. 3)** | Válassza ki az **új** pluszjelet a szövegmező létrehozásához. A mezőbe írja be annak a terméknek a nevét, amelyhez az alkalmazás együttműködik. Legfeljebb három terméket listázhat.       |
-| **Keresési kulcsszavak (max. 3)**              | Legfeljebb három kulcsszót adjon meg, amelyet a felhasználók valószínűleg az AppSource-ben való keresésre fognak használni. Ha például az alkalmazás neve "saját e-mail-alkalmazás", a kulcsszavak lehetnek **e-mailek**, **levelezési**és **levelezési**alkalmazások. |
+| **Ágazatok**                           | Válassza ki azt az iparágat, ahol az alkalmazás a legjobban megfelel. Ha az alkalmazás több iparágra vonatkozik, hagyja üresen ezt a mezőt.      |
+| **Kategóriák\***                           | Legfeljebb három, az alkalmazáshoz kapcsolódó kategóriát választhat ki.     |
+| **Az alkalmazás súgóhivatkozása\***               | Adjon meg egy URL-címet egy olyan oldalhoz, amely online segítséget nyújt az alkalmazáshoz.           |
+| **Az alkalmazás által (max. 3)** | Szövegmező létrehozásához jelölje ki az **Új** pluszjel lehetőséget. A mezőbe írja be annak a terméknek a nevét, amelyen az alkalmazás együttműködik. Legfeljebb három terméket soroljon fel.       |
+| **Keresési kulcsszavak (max. 3)**              | Adjon meg legfeljebb három olyan kulcsszót, amelyet a felhasználók valószínűleg az alkalmazás AppSource-ban való kereséséhez használnak. Ha például az alkalmazást "E-mailező alkalmazásnak" nevezik, a kulcsszavak lehetnek **e-mailek,** **levelezés**és **levelezési alkalmazás.** |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>Marketing-összetevők szakasz
+## <a name="marketing-artifacts-section"></a>Marketingösszetevők szakasz
 
-A **marketing** -összetevők szakaszban töltse fel a branding és a marketing anyagokat, hogy megjelenjenek a AppSource.  Ez a szakasz négy alszakaszra oszlik: **logók**, **videók**, **dokumentumok**és **képernyőképek**. Az emblémák és a képernyőképek az egyetlen szükséges marketing-összetevők. A legjobb vásárlói fellebbezéshez azonban javasoljuk a videók és dokumentumok hozzáadását is.
+A **Marketingösszetevők** csoportban töltsön fel márkajelzési és marketinganyagokat az AppSource-on való megjelenítéshez.  Ez a rész négy alszakaszból áll: **Emblémák**, **Videók**, **Dokumentumok**és **Képernyőképek**. Az emblémák és a képernyőképek az egyetlen szükséges marketingösszetevők. De a legjobb ügyfél fellebbezés, javasoljuk, hozzá téve videók és dokumentumok is.
 
-![A kirakat részletei lap marketing-összetevők szakasza](./media/marketing-artifacts-section.png)
+![A Marketingösszetevők csoport a Kirakat részletei lapon](./media/marketing-artifacts-section.png)
 
-A szakasz mezőinek végrehajtásához használja a következő táblázatot. A kötelező mezőket csillag (*) alapján vádoljuk.
+A szakasz mezőinek kitöltéséhez használja az alábbi táblázatot. A kötelező mezőket csillag (*) vádolja.
  
 |    Mező                             |    Leírás                                                    |
 |   -----------                        |    -------------                                                  |
 | *Logók*                              |                                                                   |
-| **Ajánlat emblémája (PNG-formátum, 48x48)\***   | Feltöltheti az alkalmazás vagy az alkalmazás keresési eredményeinek áttekintésében megjelenítendő emblémát. A AppSource csak a PNG formátumot támogatja, 48 x 48 px felbontással.  |
-| **Ajánlat emblémája (PNG-formátum, 216x216)\*** | Töltse fel az alkalmazás részletek lapján megjelenítendő emblémát.  A AppSource csak a PNG formátumot támogatja, 216 x 216 px felbontással.  |
+| **Ajánlat embléma (png formátum, 48x48)\***   | Töltsön fel egy emblémát, amely megjelenik az alkalmazás áttekintésében vagy az alkalmazás keresési eredményei között. Az AppSource csak PNG formátumot támogat, 48 x 48 px felbontással.  |
+| **Ajánlat embléma (png formátum, 216x216)\*** | Töltsön fel egy emblémát az alkalmazás részletes oldalán való megjelenítéshez.  Az AppSource csak PNG formátumot támogat, 216 x 216 px felbontással.  |
 | *Videók*                             |                                                                   |
-| **Name (Név)**                             | Adja meg az alkalmazás nevét vagy címét.                                          |
-| **URL-cím**                              | Adja meg a YouTube-on vagy a Vimeo-on tárolt videó URL-címét.                              |
-| **Miniatűr**                        | Adja meg az alkalmazás miniatűr képét.  A AppSource csak a PNG formátumot támogatja, 1280 x 720 px felbontással.   |
-| *Dokumentumok*                          | Adjon meg legfeljebb három dokumentumot, hogy megjelenjen a AppSource, a **továbbiak** szakaszban.  |
-| **Name (Név)**                             | Adja meg egy támogató dokumentum nevét vagy címét.                              |
-| **Fájl**                             | Töltsön fel egy PDF-fájlt.                             |
+| **Név**                             | Adja meg az alkalmazás nevét vagy címét.                                          |
+| **Url**                              | Add meg a YouTube-on vagy a Vimeo-n tárolt videó URL-címét.                              |
+| **Miniatűr**                        | Adja meg az alkalmazás miniatűr képét.  Az AppSource csak PNG formátumot támogat, 1280 x 720 px felbontással.   |
+| *Dokumentumok*                          | Legfeljebb három dokumentumot adhat hozzá az **Learn more** AppSource-on megjelenítendő Dokumentumok cím alatt.  |
+| **Név**                             | Adja meg a bizonylat nevét vagy címét.                              |
+| **Fájl**                             | PDF-fájl feltöltése.                             |
 | *Képernyőképek\**                      | Legfeljebb öt képernyőképet adhat hozzá.                        |
-| **Name (Név)**                             | Adja meg a képernyőkép nevét vagy címét.                                       |
-| **Rendszerkép**                            | PNG-képernyőkép feltöltése. A felbontásának 1280 x 720 px-nek kell lennie.  | 
+| **Név**                             | Adja meg a képernyőkép nevét vagy címét.                                       |
+| **Kép**                            | Png-képernyőkép feltöltése. Felbontásának 1280 x 720 px-nek kell lennie.  | 
 |   |   |
 
-A [Cloud Partner Portalba](https://cloudpartner.azure.com) feltöltött emblémák *nem*:
+A Cloud Partner [Portalportálra](https://cloudpartner.azure.com) feltöltött emblémák *nem:*
 
-- Használjon átmenetet. Az embléma megjelenésének és működésének egyszerűnek kell lennie.
+- Használjon színátmenetet. A logó kinézetének laposnak kell lennie.
 - Adja meg a vállalat nevét, a márkanevet vagy más szöveget. 
-- Tekintse meg a kifeszített.
+- Nézd kinyújtott.
 
 ## <a name="legal-section"></a>Jogi szakasz
 
-A **jogi** szakaszban adja meg az egyes ajánlatokhoz szükséges két jogi dokumentumot: az Ön adatvédelmi szabályzatát és használati feltételeit.
+A **Jogi** szakaszban adja meg az egyes ajánlatokhoz szükséges két jogi dokumentumot: az adatvédelmi szabályzatot és a használati feltételeket.
 
-![A kirakat részletei lap jogi szakasza](./media/legal-section.png)
+![A Kirakat részletei lap Jogi szakasza](./media/legal-section.png)
 
-A szakasz mezőinek végrehajtásához használja a következő táblázatot:
+A szakasz mezőinek kitöltéséhez használja az alábbi táblázatot:
 
 |   Mező                |   Leírás                           |
 |------------------------|--------------------------------------   |
-| **Adatvédelmi szabályzat URL-címe\*** | A közzétett adatvédelmi szabályzat URL-címe       |
-| **Használati feltételek\***       | A használati szabályzat egyszerű szövegként vagy egyszerű HTML-ként formázva     |
+| **Adatvédelmi irányelvek URL-címe\*** | A közzétett adatvédelmi szabályzat URL-címe       |
+| **Használati feltételek\***       | Az Ön használati házirendje egyszerű szövegként vagy egyszerű HTML formátumban     |
 |  |  |
 
 
 ## <a name="customer-support-section"></a>Ügyfélszolgálati szakasz
 
-Az **ügyfélszolgálat** szakaszban adja meg az online ügyfélszolgálat oldal **támogatási URL-címét** .  Ezen a lapon több kapcsolattartási lehetőség is rendelkezésre áll, például a telefon, az e-mail és az élő csevegés. 
+Az **Ügyfélszolgálat** szakaszban adja meg az online ügyfélszolgálati oldal **támogatási URL-címét.**  Ezen az oldalon több kapcsolatfelvételi lehetőséget kell biztosítania, például telefont, e-mailt és élő csevegést. 
 
 
-## <a name="lead-management-section"></a>Érdeklődői felügyelet szakasz
+## <a name="lead-management-section"></a>Érdeklődőkezelés szakasz
 
-A **vezető felügyelet** szakaszban állítsa be a rendszerét, hogy összegyűjtse a AppSource által kínált ügyfél-érdeklődőket. Az érdeklődők tárolási beállításainak kiválasztásához használja a következő táblázatot:
+Az **Érdeklődőkezelés** szakaszban állítsa be a rendszert az AppSource által generált ügyfélérdeklődők összegyűjtésére. Az érdeklődők tárolási beállításainak kiválasztásához használja az alábbi táblázatot:
 
-|    Mező               |   Érdeklődő célhelye                               |
+|    Mező               |   Érdeklődő rendeltetése                               |
 |------------------------|--------------------------------------            |
-|  **NEz egy**              | Nem gyűjt érdeklődőket. Ez az alapértelmezett beállítás.  |
-| **Azure-Blob (elavult)** | Adja meg az [Azure Blob Storage-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) a tároló neve és a kapcsolatok karakterlánca alapján.  Ez a választás elavult. Használja helyette az **Azure Tablet** .  |
-| **Azure-tábla**        | Válassza az [Azure Table Storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) -t a kapcsolatok karakterláncának használatával.  |
-| **Dynamics CRM Online** | A [Dynamics 365](https://dynamics.microsoft.com/) -et URL-cím és hitelesítési hitelesítő adatok használatával határozza meg. |
-| **HTTPS-végpont**     | A HTTPS-végpontot JSON-adattartalom használatával adhatja meg.   |
-| **Marketo**            | [Marketo](https://www.marketo.com/) -példányt a kiszolgáló azonosítójának, a Munchkin azonosítójának és az űrlap-azonosítónak a használatával határozhat meg.   |
-| **Salesforce**         | [Salesforce](https://www.salesforce.com/) -azonosító használatával adhatja meg a kívánt objektumot. |
+|  **Nincs**              | Nem kell nyomokat gyűjteni. Ez az alapértelmezett beállítás.  |
+| **Azure Blob (elavult)** | Adja meg [az Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) segítségével egy tároló nevét és egy kapcsolati karakterláncot.  Ez a választás elavult. Használja **inkább az Azure Table-t.**  |
+| **Azure-táblázat**        | Adja meg [az Azure Table storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) egy kapcsolati karakterlánc használatával.  |
+| **Dynamics CRM Online** | Adja meg [a Dynamics 365-öt](https://dynamics.microsoft.com/) URL-cím és hitelesítési hitelesítő adatok használatával. |
+| **HTTPS-végpont**     | Adja meg a HTTPS-végpontot egy JSON-tartalom használatával.   |
+| **Marketo**            | Adjon meg egy [Marketo-példányt](https://www.marketo.com/) kiszolgálóazonosítóval, munchkin-azonosítóval és űrlapazonosítóval.   |
+| **Salesforce**         | Adja meg [a Salesforce-ot](https://www.salesforce.com/) egy objektumazonosító használatával. |
 |  |  |
 
-Az ajánlat közzététele után a rendszer érvényesíti az érdeklődői kapcsolatokat, és automatikusan elvégzi a tesztelési érdeklődőt a megadott célhelyre. Folyamatosan kezelheti az érdeklődőket, és azonnal frissítheti a beállításokat, hogy az megfeleljen a jelenlegi ügyfél-felügyeleti architektúrának.
+Az ajánlat közzététele után az érdeklődőkapcsolat érvényesítésre kerül, és a rendszer automatikusan elküldi a tesztérdeklődőt a megadott célhelyre. Folyamatosan kezelheti az érdeklődők adatait, és azonnal frissítse a beállításokat, hogy azok tükrözzék az aktuális ügyfélkezelési architektúrát.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A [névjegyek](./cpp-contacts-tab.md) lapon adja meg az ajánlat technikai és felhasználói támogatási erőforrásait.
+A [Névjegyalbum](./cpp-contacts-tab.md) lapon technikai és felhasználói támogatási erőforrásokat biztosíthat az ajánlathoz.

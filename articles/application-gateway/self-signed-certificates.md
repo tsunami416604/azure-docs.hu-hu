@@ -1,107 +1,107 @@
 ---
-title: Önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
+title: Önaláírt tanúsítvány létrehozása egyéni legfelső szintű hitelesítésszolgáltatóval
 titleSuffix: Azure Application Gateway
-description: Útmutató Azure Application Gateway önaláírt tanúsítvány létrehozásához egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
+description: Megtudhatja, hogy miként hozhat létre önaláírt Azure-tanúsítványt egyéni legfelső szintű hitelesítésszolgáltatóval
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0447e87fd8685188af8008995ba938092f2b87fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293601"
 ---
-# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
+# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű hitelesítésszolgáltatóval
 
-A Application Gateway v2 SKU bevezeti a megbízható legfelső szintű tanúsítványok használatát a háttér-kiszolgálók engedélyezéséhez. Ezzel eltávolítja a v1 SKU-ban szükséges hitelesítési tanúsítványokat. A *Főtanúsítvány* egy Base-64 kódolású X. 509 (. CER) a főtanúsítvány formázása a háttérbeli tanúsítvány-kiszolgálóról. Ez azonosítja a kiszolgálói tanúsítványt kiállító legfelső szintű hitelesítésszolgáltatót (CA), a kiszolgálói tanúsítványt pedig az SSL-kommunikációhoz.
+Az Application Gateway v2 termékváltozat bevezeti a megbízható főtanúsítványok használatát a háttérkiszolgálók engedélyezéséhez. Ezzel eltávolítja a v1 termékváltozatban szükséges hitelesítési tanúsítványokat. A *főtanúsítvány* egy Base-64 kódolású X.509(. CER) a háttértanúsítvány-kiszolgálóról származó gyökértanúsítvány formázása. Azonosítja a kiszolgálói tanúsítványt kiállító legfelső szintű hitelesítésszolgáltatót, majd a kiszolgálói tanúsítványt használja az SSL-kommunikációhoz.
 
-A Application Gateway alapértelmezés szerint megbízhatónak minősíti a webhely tanúsítványát, ha azt egy jól ismert HITELESÍTÉSSZOLGÁLTATÓ (például GoDaddy vagy DigiCert) írta alá. Ebben az esetben nem kell explicit módon feltöltenie a főtanúsítványt. További információ: [az SSL-lezárás áttekintése és a végpontok közötti ssl Application Gateway](ssl-overview.md)használatával. Ha azonban fejlesztési/tesztelési környezettel rendelkezik, és nem szeretne ellenőrzött HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványt vásárolni, létrehozhat egy saját egyéni HITELESÍTÉSSZOLGÁLTATÓT, és létrehozhat egy önaláírt tanúsítványt. 
+Az Application Gateway alapértelmezés szerint megbízik a webhely tanúsítványátban, ha azt egy jól ismert hitelesítésszolgáltató (például GoDaddy vagy DigiCert) írta alá. Ebben az esetben nem kell explicit módon feltöltenie a főtanúsítványt. További információt az [SSL-végződtetés áttekintése és az SSL és az Application Gateway végpontok között című témakörben talál.](ssl-overview.md) Ha azonban fejlesztői/tesztelési környezettel rendelkezik, és nem szeretne ellenőrzött hitelesítésszolgáltatói aláírt tanúsítványt vásárolni, létrehozhat ja saját egyéni hitelesítésszolgáltatóját, és létrehozhat vele egy önaláírt tanúsítványt. 
 
 > [!NOTE]
-> Az önaláírt tanúsítványok alapértelmezés szerint nem megbízhatók, és nehéz lehet fenntartani őket. Emellett elavult kivonatoló és titkosító csomagokat is használhatnak, amelyek esetleg nem erősek. A biztonság érdekében érdemes megvásárolnia egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt.
+> Az önaláírt tanúsítványok alapértelmezés szerint nem megbízhatók, és nehezen karbantarthatók. Emellett elavult kivonatoló és rejtjel-csomagokat is használhatnak, amelyek nem feltétlenül erősek. A nagyobb biztonság érdekében vásároljon egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebben a cikkben megtudhatja, hogyan:
 
 - Saját egyéni hitelesítésszolgáltató létrehozása
-- Egyéni HITELESÍTÉSSZOLGÁLTATÓ által aláírt önaláírt tanúsítvány létrehozása
-- Önaláírt főtanúsítvány feltöltése egy Application Gatewayba a háttér-kiszolgáló hitelesítéséhez
+- Az egyéni hitelesítésszolgáltató által aláírt önaláírt tanúsítvány létrehozása
+- Önaláírt főtanúsítvány feltöltése alkalmazásátjáróba a háttérkiszolgáló hitelesítéséhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **[OpenSSL](https://www.openssl.org/) Windows vagy Linux rendszerű számítógépen** 
+- **[OpenSSL](https://www.openssl.org/) Windows vagy Linux rendszert futtató számítógépen** 
 
-   Habár más eszközök is elérhetők a Tanúsítványkezelők számára, ez az oktatóanyag az OpenSSL-t használja. Számos Linux-disztribúcióval, például Ubuntuval rendelkező OpenSSL-csomagot talál.
-- **Egy webkiszolgáló**
+   Bár lehetnek más eszközök is a tanúsítványkezeléshez, ez az oktatóanyag openSSL-t használ. Megtalálható OpenSSL csomagban sok Linux disztribúciók, mint például az Ubuntu.
+- **Webszerver**
 
-   Például: Apache, IIS vagy NGINX a tanúsítványok teszteléséhez.
+   Például Apache, IIS vagy NGINX a tanúsítványok teszteléséhez.
 
-- **Egy Application Gateway v2 SKU**
+- **Alkalmazásátjáró 2-es termékváltozat**
    
-  Ha nem rendelkezik meglévő Application Gateway szolgáltatással, tekintse meg a következőt [: gyors webes forgalom az Azure Application Gateway-Azure Portal](quick-create-portal.md)használatával.
+  Ha nem rendelkezik meglévő alkalmazásátjáróval, olvassa el a rövid útmutató: Közvetlen webes forgalom az Azure Application Gateway - Azure Portal című [témakört.](quick-create-portal.md)
 
-## <a name="create-a-root-ca-certificate"></a>Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozása
+## <a name="create-a-root-ca-certificate"></a>Legfelső szintű hitelesítésszolgáltatói tanúsítvány létrehozása
 
-Hozza létre a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt az OpenSSL használatával.
+Hozza létre a legfelső szintű hitelesítésszolgáltatói tanúsítványt az OpenSSL segítségével.
 
-### <a name="create-the-root-key"></a>A legfelső szintű kulcs létrehozása
+### <a name="create-the-root-key"></a>A gyökérkulcs létrehozása
 
-1. Jelentkezzen be a számítógépre, ahol az OpenSSL telepítve van, és futtassa a következő parancsot. Ezzel létrehoz egy jelszóval védett kulcsot.
+1. Jelentkezzen be a számítógépre, ahol az OpenSSL telepítve van, és futtassa a következő parancsot. Ezzel jelszóval védett kulcsot hoz létre.
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
-1. A parancssorba írjon be egy erős jelszót. Például legalább kilenc karakter, nagybetűvel, kisbetű, szám és szimbólum használatával.
+1. A kérdésmezőbe írjon be egy erős jelszót. Például legalább kilenc karakter, nagybetűs, kisbetűs, számok és szimbólumok használatával.
 
-### <a name="create-a-root-certificate-and-self-sign-it"></a>Főtanúsítvány létrehozása és saját aláírása
+### <a name="create-a-root-certificate-and-self-sign-it"></a>Gyökértanúsítvány létrehozása és aláírása
 
-1. A CSR és a tanúsítvány létrehozásához használja a következő parancsokat.
+1. A következő parancsokkal hozza létre a csr-t és a tanúsítványt.
 
    ```
    openssl req -new -sha256 -key contoso.key -out contoso.csr
 
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
-   Az előző parancs létrehozza a főtanúsítványt. Ezt a kiszolgáló tanúsítványának aláírásához fogja használni.
+   Az előző parancsok létrehozzák a főtanúsítványt. Ezzel alá írhatja a kiszolgálói tanúsítványt.
 
-1. Ha a rendszer kéri, írja be a legfelső szintű kulcshoz tartozó jelszót, valamint az egyéni HITELESÍTÉSSZOLGÁLTATÓ szervezeti adatait, például az ország, az állapot, a szervezeti egység és a teljes tartománynevet (ez a kibocsátó tartománya).
+1. Amikor a rendszer kéri, írja be a gyökérkulcs jelszavát és az egyéni hitelesítésszolgáltató szervezeti adatait, például az ország, állam, szervezeti egység és a teljesen minősített tartománynév (ez a kibocsátó tartománya).
 
-   ![főtanúsítvány létrehozása](media/self-signed-certificates/root-cert.png)
+   ![legfelső szintű tanúsítvány létrehozása](media/self-signed-certificates/root-cert.png)
 
-## <a name="create-a-server-certificate"></a>Kiszolgálótanúsítvány létrehozása
+## <a name="create-a-server-certificate"></a>Kiszolgálói tanúsítvány létrehozása
 
-Ezután létre fog hozni egy kiszolgálói tanúsítványt az OpenSSL használatával.
+Ezután hozzon létre egy kiszolgálói tanúsítványt az OpenSSL használatával.
 
 ### <a name="create-the-certificates-key"></a>A tanúsítvány kulcsának létrehozása
 
-Használja a következő parancsot a kiszolgálói tanúsítvány kulcsának létrehozásához.
+A következő paranccsal hozza létre a kiszolgálói tanúsítvány kulcsát.
 
    ```
    openssl ecparam -out fabrikam.key -name prime256v1 -genkey
    ```
 
-### <a name="create-the-csr-certificate-signing-request"></a>A CSR létrehozása (tanúsítvány-aláírási kérelem)
+### <a name="create-the-csr-certificate-signing-request"></a>Az CSR létrehozása (tanúsítvány-aláírási kérelem)
 
-A CSR egy nyilvános kulcs, amelyet a rendszer a tanúsítvány igénylése során kap a HITELESÍTÉSSZOLGÁLTATÓ számára. A HITELESÍTÉSSZOLGÁLTATÓ kibocsátja a tanúsítványt az adott kérelemhez.
+Az csr egy nyilvános kulcs, amelytanúsítvány igénylésekor kap egy hitelesítésszolgáltatót. A hitelesítésszolgáltató kiadja az adott kérelemhez tartozó tanúsítványt.
 
 > [!NOTE]
-> A kiszolgálói tanúsítványhoz tartozó CN (köznapi név) nem lehet azonos a kiállító tartományával. Például ebben az esetben a kiállítóhoz tartozó CN `www.contoso.com`, a kiszolgálói tanúsítvány CN pedig `www.fabrikam.com`.
+> A kiszolgálói tanúsítvány KN-jének (köznapi neve) nem lehet más, mint a kibocsátó tartománya. Ebben az esetben például a kibocsátó KN-je, `www.contoso.com` és a kiszolgáló `www.fabrikam.com`tanúsítványának KN-je .
 
 
-1. A CSR létrehozásához használja a következő parancsot:
+1. Az CSR létrehozásához használja a következő parancsot:
 
    ```
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Ha a rendszer kéri, írja be a legfelső szintű kulcs jelszavát, valamint az egyéni HITELESÍTÉSSZOLGÁLTATÓ szervezeti adatait: ország, állam, szervezet, szervezeti egység, valamint a teljes tartománynév. Ez a webhely tartománya, és a kiállítótól eltérőnek kell lennie.
+1. Amikor a rendszer kéri, írja be a gyökérkulcs jelszavát és az egyéni hitelesítésszolgáltató szervezeti adatait: Ország, állam, szervezeti egység, szervezeti egység és a teljesen minősített tartománynév. Ez a domain a honlapon, és meg kell különböznie a kibocsátó.
 
-   ![Kiszolgálótanúsítvány](media/self-signed-certificates/server-cert.png)
+   ![Kiszolgálói tanúsítvány](media/self-signed-certificates/server-cert.png)
 
-### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>A tanúsítvány előállítása a CSR-sel és a kulccsal, és aláírás a HITELESÍTÉSSZOLGÁLTATÓ legfelső szintű kulcsával
+### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>A tanúsítvány létrehozása az CSR-rel és a kulccsal, és írja alá a hitelesítésszolgáltató gyökérkulcsával
 
 1. A tanúsítvány létrehozásához használja a következő parancsot:
 
@@ -110,7 +110,7 @@ A CSR egy nyilvános kulcs, amelyet a rendszer a tanúsítvány igénylése sor�
    ```
 ### <a name="verify-the-newly-created-certificate"></a>Az újonnan létrehozott tanúsítvány ellenőrzése
 
-1. A következő parancs használatával nyomtassa ki a CRT-fájl kimenetét, és ellenőrizze annak tartalmát:
+1. A CRT-fájl kimenetének nyomtatásához és tartalmának ellenőrzéséhez használja a következő parancsot:
 
    ```
    openssl x509 -in fabrikam.crt -text -noout
@@ -118,26 +118,26 @@ A CSR egy nyilvános kulcs, amelyet a rendszer a tanúsítvány igénylése sor�
 
    ![Tanúsítvány ellenőrzése](media/self-signed-certificates/verify-cert.png)
 
-1. Ellenőrizze a címtárban található fájlokat, és győződjön meg arról, hogy rendelkezik a következő fájlokkal:
+1. Ellenőrizze a könyvtárban lévő fájlokat, és győződjön meg arról, hogy a következő fájlokat kapta:
 
-   - contoso. CRT
-   - contoso. Key
-   - fabrikam. CRT
-   - fabrikam. Key
+   - contoso.crt
+   - contoso.key
+   - fabrikam.crt
+   - fabrikam.key
 
 ## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>A tanúsítvány konfigurálása a webkiszolgáló SSL-beállításaiban
 
-A webkiszolgálón konfigurálja az SSL-t a fabrikam. CRT és fabrikam. Key fájlok használatával. Ha a webkiszolgáló nem tud két fájlt készíteni, kombinálhatja őket egyetlen. PEM vagy. pfx fájllal az OpenSSL-parancsok használatával.
+A webkiszolgálón konfigurálja az SSL-t a fabrikam.crt és a fabrikam.key fájlokkal. Ha a webkiszolgáló nem tud két fájlt bevenni, az OpenSSL parancsokkal egyetlen .pem vagy .pfx fájlba egyesítheti őket.
 
 ### <a name="iis"></a>IIS
 
-A tanúsítvány importálásával és kiszolgálói tanúsítványként való feltöltésével kapcsolatos útmutatásért lásd [: útmutató: importált tanúsítványok telepítése egy webkiszolgálón a Windows server 2003-ben](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
+A tanúsítványok iIS-re történő importálásáról és kiszolgálói tanúsítványként való feltöltésével kapcsolatos tudnivalókat a [Következő témakörben találja: Importált tanúsítványok telepítése webkiszolgálóra Windows Server 2003 rendszerben.](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)
 
-Az SSL-kötési utasításokért lásd: az [SSL beállítása az IIS 7 rendszeren](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+Az SSL-kötési utasításokról az [SSL beállítása az IIS 7-en ( SSL beállítása) témakörben](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)talál.
 
 ### <a name="apache"></a>Apache
 
-Az alábbi konfiguráció egy [virtuális gép](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts) , amely az SSL-hez van konfigurálva az Apache-ban:
+A következő konfiguráció egy példa [az Apache-ban ssl-hez konfigurált virtuális gazdagép:](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts)
 
 ```
 <VirtualHost www.fabrikam:443>
@@ -151,21 +151,21 @@ Az alábbi konfiguráció egy [virtuális gép](https://cwiki.apache.org/conflue
 
 ### <a name="nginx"></a>NGINX
 
-A következő konfiguráció egy példa a [NGINX-kiszolgáló blokkolására](https://nginx.org/docs/http/configuring_https_servers.html) az SSL-konfigurációval:
+A következő konfiguráció egy példa [NGINX kiszolgálóblokk](https://nginx.org/docs/http/configuring_https_servers.html) SSL-konfigurációval:
 
 ![NGINX SSL-lel](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>A kiszolgáló elérése a konfiguráció ellenőrzéséhez
 
-1. Adja hozzá a főtanúsítványt a számítógép megbízható legfelső szintű tárolójához. Amikor hozzáfér a webhelyhez, győződjön meg arról, hogy a teljes tanúsítványlánc látható a böngészőben.
+1. Adja hozzá a főtanúsítványt a számítógép megbízható gyökértárolójához. A webhely elérésekor győződjön meg arról, hogy a teljes tanúsítványlánc látható a böngészőben.
 
    ![Megbízható főtanúsítványok](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Feltételezzük, hogy a DNS úgy lett konfigurálva, hogy a webkiszolgáló nevét (ebben a példában www.fabrikam.com) a webkiszolgáló IP-címére mutasson. Ha nem, akkor szerkesztheti a [hosts fájlt](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) a név feloldásához.
-1. Keresse meg a webhelyet, és kattintson a böngésző címsorába a Zárolás ikonra a hely és a tanúsítvány adatainak ellenőrzéséhez.
+   > Feltételezzük, hogy a DNS úgy lett beállítva, hogy a webkiszolgáló nevét (ebben a példában www.fabrikam.com) a webkiszolgáló IP-címére irányítsa. Ha nem, a név feloldásához szerkesztheti a [hosts fájlt.](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)
+1. Tallózással keresse meg a webhelyet, és kattintson a böngésző címmezőjének lakat ikonjára a webhely és a tanúsítvány adatainak ellenőrzéséhez.
 
-## <a name="verify-the-configuration-with-openssl"></a>A konfiguráció ellenőrzése az OpenSSL-vel
+## <a name="verify-the-configuration-with-openssl"></a>A konfiguráció ellenőrzése az OpenSSL segítségével
 
 Vagy használhatja az OpenSSL-t a tanúsítvány ellenőrzéséhez.
 
@@ -173,24 +173,24 @@ Vagy használhatja az OpenSSL-t a tanúsítvány ellenőrzéséhez.
 openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 ```
 
-![OpenSSL-tanúsítvány ellenőrzése](media/self-signed-certificates/openssl-verify.png)
+![OpenSSL tanúsítvány ellenőrzése](media/self-signed-certificates/openssl-verify.png)
 
-## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>A főtanúsítvány feltöltése Application Gateway HTTP-beállításaira
+## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>A főtanúsítvány feltöltése az Application Gateway HTTP-beállításaiba
 
-A tanúsítvány Application Gatewayba való feltöltéséhez exportálnia kell a. CRT-tanúsítványt egy. cer formátumba, Base-64 kódolással. Mivel a. CRT már tartalmazza a nyilvános kulcsot a Base-64 kódolású formátumban, egyszerűen nevezze át a fájlkiterjesztést a. CRT fájlból a. cer névre. 
+A tanúsítvány alkalmazásátjáróban való feltöltéséhez a .crt tanúsítványt .cer formátumba kell exportálnia Base-64 kódolással. Mivel a .crt már tartalmazza a nyilvános kulcsot a 64-es alapú kódolású formátumban, egyszerűen nevezze át a fájlkiterjesztést .crt-ről .cer-re. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
-A megbízható főtanúsítványnak a portálról való feltöltéséhez válassza ki a **http-beállításokat** , és válassza a **https** protokollt.
+A megbízható főtanúsítvány portálról való feltöltéséhez válassza a **HTTP-beállítások lehetőséget,** és válassza a **HTTPS protokollt.**
 
 ![Tanúsítvány hozzáadása a portál használatával](media/self-signed-certificates/portal-cert.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Vagy az Azure CLI vagy a Azure PowerShell használatával feltöltheti a főtanúsítványt. A következő kód egy Azure PowerShell minta.
+Vagy használhatja az Azure CLI vagy az Azure PowerShell a főtanúsítvány feltöltéséhez. A következő kód egy Azure PowerShell-minta.
 
 > [!NOTE]
-> Az alábbi minta egy megbízható főtanúsítványt hoz létre az Application gatewayhez, létrehoz egy új HTTP-beállítást, és új szabályt vesz fel, feltéve, hogy a háttér-készlet és a figyelő már létezik.
+> A következő minta hozzáad egy megbízható főtanúsítványt az alkalmazásátjáróhoz, létrehoz egy új HTTP-beállítást, és új szabályt ad hozzá, feltéve, hogy a háttérkészlet és a figyelő már létezik.
 
 ```azurepowershell
 ## Add the trusted root certificate to the Application Gateway
@@ -230,9 +230,9 @@ $probe = Get-AzApplicationGatewayProbeConfig `
   -Name testprobe `
   -ApplicationGateway $gw
 
-## Add the configuration to the HTTP Setting and don’t forget to set the “hostname” field
+## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server’s certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that SSL handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -262,14 +262,14 @@ Add-AzApplicationGatewayRequestRoutingRule `
 
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
-### <a name="verify-the-application-gateway-backend-health"></a>Az Application Gateway-háttér állapotának ellenőrzése
+### <a name="verify-the-application-gateway-backend-health"></a>Az alkalmazásátjáró háttérállapotának ellenőrzése
 
-1. Az Application Gateway **háttér-állapot** nézetére kattintva ellenőrizze, hogy a mintavétel kifogástalan-e.
-1.  Látnia kell, hogy a HTTPS-mintavétel állapota **kifogástalan** .
+1. Kattintson az alkalmazásátjáró **háttérállapot** nézetére, és ellenőrizze, hogy a mintavétel kifogástalan állapotú-e.
+1.    Látnia kell, hogy az állapot **kifogástalan** a HTTPS-mintavétel.
 
-    ![HTTPS-mintavétel](media/self-signed-certificates/https-probe.png)
+    ![HTTPS-szonda](media/self-signed-certificates/https-probe.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Application Gateway SSL\TLS kapcsolatban, tekintse meg az [SSL-lezárás áttekintése és a végpontok közötti SSL a Application Gateway](ssl-overview.md)használatával című cikket.
+Ha többet szeretne tudni az SSL\TLS alkalmazásátjáróban című témakörből: [Az SSL-végződés áttekintése és az SSL végpontok között ssl-e az Application Gateway alkalmazásátjáróval című témakörben.](ssl-overview.md)
 
