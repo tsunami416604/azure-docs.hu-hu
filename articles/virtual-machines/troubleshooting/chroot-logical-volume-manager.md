@@ -1,6 +1,6 @@
 ---
-title: Linux rendszerű virtuális gépek helyreállítása a kromát használatával, ahol az LVM (logikai kötet-kezelő) használatos – Azure-beli virtuális gépek
-description: Linux rendszerű virtuális gépek helyreállítása a LVMs-mel.
+title: Linuxos virtuális gépek helyreállítása chroot használatával, ahol LVM (Logikai kötetkezelő) használatos - Azure virtuális gépek
+description: Linuxos virtuális gépek helyreállítása lvm-ekkel.
 services: virtual-machines-linux
 documentationcenter: ''
 author: vilibert
@@ -15,68 +15,68 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684134"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Linux rendszerű virtuális gép hibaelhárítása, ha nincs hozzáférés az Azure soros konzolhoz, és a lemez elrendezése az LVM (logikai kötet kezelője) használatával történik.
+# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Linuxos virtuális gép hibaelhárítása, ha nincs hozzáférés az Azure soros konzoljához, és a lemezelrendezés LVM (Logikai kötetkezelő)
 
-Ez a hibaelhárítási útmutató olyan forgatókönyvek esetén hasznos, amikor a Linux rendszerű virtuális gép nem indul el, az SSH nem lehetséges, és a mögöttes fájlrendszer elrendezése az LVM (logikai kötet kezelője) beállítással van konfigurálva.
+Ez a hibaelhárítási útmutató előnyös olyan esetekben, amikor a Linux virtuális gép nem indul, ssh nem lehetséges, és az alapul szolgáló fájlrendszer elrendezése LVM (Logikai kötetkezelő) konfigurálva van.
 
 ## <a name="take-snapshot-of-the-failing-vm"></a>Pillanatkép készítése a hibás virtuális gépről
 
-Készítsen pillanatképet az érintett virtuális gépről. 
+Pillanatképet készíthet az érintett virtuális gépről. 
 
-A pillanatkép ezután csatolva lesz egy **mentési** virtuális géphez. A **Pillanatképek**elvégzéséhez kövesse az [alábbi utasításokat.](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal)
+A pillanatkép ezután egy **mentési** virtuális géphez lesz csatolva. Kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) található utasításokat a **pillanatkép**készítéséről.
 
 ## <a name="create-a-rescue-vm"></a>Mentési virtuális gép létrehozása
-Általában egy azonos vagy hasonló operációsrendszer-verzióval rendelkező mentési virtuális gép ajánlott. Az érintett virtuális gép azonos **régiójának** és **erőforráscsoportának** használata
+Általában egy mentési virtuális gép azonos vagy hasonló operációs rendszer verziója ajánlott. Használja az érintett virtuális gép ugyanazon **régióját** és **erőforráscsoportját**
 
-## <a name="connect-to-the-rescue-vm"></a>Kapcsolódás a mentési virtuális géphez
-Az SSH használatával kapcsolódhat a **mentési** virtuális géphez. Jogosultságszint-emelési jogosultságok és a felügyelővé válás
+## <a name="connect-to-the-rescue-vm"></a>Csatlakozás a mentési virtuális géphez
+Csatlakozzon ssh segítségével a **mentési** virtuális gép. Magasabb szintű jogosultságokat, és vált szuper felhasználó segítségével
 
 `sudo su -`
 
-## <a name="attach-the-disk"></a>A lemez csatolása
-Csatoljon egy lemezt a korábban készített pillanatképből származó **mentési** virtuális géphez.
+## <a name="attach-the-disk"></a>A lemez csatlakoztatása
+Csatlakoztasson egy lemezt a **mentési** virtuális géphez, amely a korábban készített pillanatképből készült.
 
-Azure Portal – > a **mentési** virtuális gép kiválasztása – > **lemezek** 
+Az Azure Portal -> válassza ki a **mentési** virtuális gép -> **lemezek** 
 
 ![Lemez létrehozása](./media/chroot-logical-volume-manager/create-disk-from-snap.png)
 
-Töltse fel a mezőket. Rendeljen egy nevet az új lemezhez, válassza ki ugyanazt az erőforráscsoportot, mint a pillanatkép, az érintett virtuális gép és a mentési virtuális gép.
+Feltöltsd a mezőket. Rendeljen nevet az új lemezhez, válassza ki ugyanazt az erőforráscsoportot, mint a pillanatkép, az érintett virtuális gép és a mentési virtuális gép.
 
-A **forrás típusa** **Pillanatkép** .
-A **forrás-pillanatkép** a korábban létrehozott **Pillanatkép** neve.
+A **forrás típusa** **Snapshot** .
+A **forrás pillanatkép** a korábban létrehozott **pillanatkép** neve.
 
-![2\. lemez létrehozása](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
+![2. lemez létrehozása](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
 
-Csatlakoztatási pont létrehozása a csatlakoztatott lemezhez.
+Hozzon létre egy csatlakoztatási pontot a csatlakoztatott lemezhez.
 
 `mkdir /rescue`
 
-Futtassa az **fdisk-l** parancsot a pillanatkép-lemez csatlakoztatásának ellenőrzéséhez, és az összes elérhető eszköz és partíció listázása
+Futtassa az **fdisk -l** parancsot a pillanatképlemez csatlakoztatásához, és sorolja fel az összes elérhető eszközt és partíciót
 
 `fdisk -l`
 
-A legtöbb esetben a csatolt pillanatkép-lemez a **/dev/SDC** két partíció **/dev/sdc1** és **/dev/sdc2** jelenik meg.
+A legtöbb esetben a csatolt pillanatkép-lemez **a /dev/sdc** könyvtárban két **partíciót /dev/sdc1** és **/dev/sdc2-t** jelenít meg.
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-A **\*** egy rendszerindító partíciót jelöl, mindkét partíciót csatlakoztatni kell.
+A **\*** rendszerindító partíciót jelöl, mindkét partíciót csatlakoztatni kell.
 
-A **lsblk** parancs futtatásával tekintse meg az érintett virtuális gép LVMs
+Futtassa az **lsblk parancsot** az érintett virtuális gép lvm-jeinek megtekintéséhez
 
 `lsblk`
 
 ![Lsblk futtatása](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
-Ellenőrizze, hogy megjelenik-e a LVMs az érintett virtuális gépről.
-Ha nem, az alábbi parancsokkal engedélyezheti őket, és újra futtathatja a **lsblk**.
-A folytatás előtt győződjön meg arról, hogy az LVMs a csatlakoztatott lemezről látható.
+Ellenőrizze, hogy az érintett virtuális gép lvm-jei megjelennek-e.
+Ha nem, használja az alábbi parancsokat, hogy engedélyezze őket, és futtassa újra **lsblk**.
+A folytatás előtt győződjön meg arról, hogy a csatlakoztatott lemezről származó lvm-ek láthatók legyenek.
 
 ```
 vgscan --mknodes
@@ -86,37 +86,37 @@ mount –a
 lsblk
 ```
 
-Keresse meg a/(root) partíciót tartalmazó logikai kötet csatlakoztatási útvonalát. A konfigurációs fájlok, például a/etc/default/grub
+Keresse meg a / (root) partíciót tartalmazó logikai kötet csatlakoztatásának elérési útját. Azt a konfigurációs fájlokat, mint a /etc/default/grub
 
-Ebben a példában a **rootvg-rootlv** előző **lsblk** parancs kimenetét a következő parancsban lehet használni , és a következő parancsban használható.
+Ebben a példában az előző **lsblk** parancs **rootvg-rootlv** kimenetének bevétele a megfelelő **gyökér** LV csatlakoztatása, és a következő parancsban használható.
 
-A következő parancs kimenete megmutatja, hogy milyen elérési utat kell csatlakoztatni a **gyökér** lv-hoz
+A következő parancs kimenete megmutatja a **gyökér** LV csatlakoztatási útvonalát
 
 `pvdisplay -m | grep -i rootlv`
 
-![Rootlv](./media/chroot-logical-volume-manager/locate-rootlv.png)
+![Gyökérlva](./media/chroot-logical-volume-manager/locate-rootlv.png)
 
-Az eszköz csatlakoztatása a címtár/Rescue
+Az eszköz csatlakoztatása a /mentési könyvtárba
 
 `mount /dev/rootvg/rootlv /rescue`
 
-A/Rescue/boot beállított **rendszerindítási jelzővel** rendelkező partíció csatlakoztatása
+A /rescue/boot kapcsolóval beállított **rendszerindító jelzővel** rendelkező partíció csatlakoztatása
 
 `
 mount /dev/sdc1 /rescue/boot
 `
 
-Ellenőrizze, hogy a csatlakoztatott lemez fájlrendszerei megfelelően vannak-e csatlakoztatva a **lsblk** parancs használatával.
+Ellenőrizze, hogy a csatlakoztatott lemez fájlrendszerei megfelelően vannak-e csatlakoztatva az **lsblk** paranccsal
 
 ![Lsblk futtatása](./media/chroot-logical-volume-manager/lsblk-output-1.png)
 
-vagy a **DF-th** parancs
+vagy a **df -Th** parancs
 
-![DF](./media/chroot-logical-volume-manager/df-output.png)
+![Df](./media/chroot-logical-volume-manager/df-output.png)
 
-## <a name="gaining-chroot-access"></a>A kromát elérésének megszerzése
+## <a name="gaining-chroot-access"></a>Chroot hozzáférés megszerzése
 
-A **kromát** hozzáférésének biztosítása, amely lehetővé teszi a különböző javítások elvégzését, az egyes Linux-disztribúciók esetében azonban kisebb eltérések is léteznek.
+Gain **chroot** hozzáférés, amely lehetővé teszi, hogy végre a különböző javítások, kisebb eltérések léteznek minden Linux disztribúció.
 
 ```
  cd /rescue
@@ -127,9 +127,9 @@ A **kromát** hozzáférésének biztosítása, amely lehetővé teszi a külön
  chroot /rescue
 ```
 
-Ha egy hiba tapasztalható, például:
+Ha olyan hibát észlel, mint például:
 
-**kromát: nem sikerült futtatni a (z) "/bin/bash" parancsot: nincs ilyen fájl vagy könyvtár.**
+**chroot: nem sikerült futtatni a parancsot "/bin/bash": Nincs ilyen fájl vagy könyvtár**
 
 kísérlet a **usr** logikai kötet csatlakoztatására
 
@@ -138,18 +138,18 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 `
 
 > [!TIP]
-> Ha egy **kromát** -környezetben hajtja végre a parancsokat, vegye figyelembe, hogy azok a csatlakoztatott operációsrendszer-lemezre futnak, nem a helyi **mentési** virtuális gépre. 
+> Parancsok végrehajtásakor a **chroot** környezetben, vegye figyelembe, hogy a csatlakoztatott operációsrendszer-lemez, és nem a helyi **mentési** virtuális gép. 
 
-A parancsok segítségével telepítheti, eltávolíthatja és frissítheti a szoftvereket. A virtuális gépek hibaelhárítása a hibák elhárítása érdekében.
+A parancsok segítségével szoftverek telepíthetők, távolíthatók el és frissíthetők. A hibák kijavítása érdekében hibaelhárítást okozhat a virtuális gépek.
 
 
-Hajtsa végre a lsblk parancsot, és a/Rescue most/és/Rescue/boot/boot ![a be](./media/chroot-logical-volume-manager/chrooted.png)
+Hajtsa végre az lsblk parancsot, és a /rescue is now / és /rescue/boot is /boot ![Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Javítások végrehajtása
 
-### <a name="example-1---configure-the-vm-to-boot-from-a-different-kernel"></a>1\. példa – a virtuális gép beállítása egy másik kernelből való rendszerindításra
+### <a name="example-1---configure-the-vm-to-boot-from-a-different-kernel"></a>1. példa - a virtuális gép konfigurálása egy másik rendszermagból történő rendszerindításhoz
 
-Gyakori eset, ha egy virtuális gépet egy korábbi kernelről indít el, mert az aktuálisan telepített kernel sérült, vagy a frissítés nem fejeződött be megfelelően.
+Gyakori forgatókönyv, hogy a virtuális gép egy korábbi rendszermagból való rendszerindításra kényszeríti, mivel az aktuálisan telepített kernel megsérülhetett, vagy a frissítés nem fejeződött be megfelelően.
 
 
 ```
@@ -166,58 +166,58 @@ grub2-editenv list
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-*walkthrough*
+*Forgatókönyv*
 
-A **grep** -parancs felsorolja azokat a kerneleket, amelyekkel a **grub. cfg** tisztában van.
-![kernelek](./media/chroot-logical-volume-manager/kernels.png)
+A **grep** parancs felsorolja azokat a magokat, amelyekről **a grub.cfg** tud.
+![Kernelek](./media/chroot-logical-volume-manager/kernels.png)
 
-**GRUB2 – a editenv listában** látható, hogy melyik kernel lesz betöltve a következő rendszerindítási ![kernel alapértelmezett](./media/chroot-logical-volume-manager/kernel-default.png)
+**Grub2-editenv lista** megjeleníti, hogy melyik ![kernel lesz betöltve a következő boot Kernel alapértelmezett](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**GRUB2 – az alapértelmezett** érték a másik kernel ![GRUB2-készletre való váltásra szolgál](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**Grub2-set-default-t** használnak, hogy ![módosítsa a másik kernel Grub2 set](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-**GRUB2 – a editenv** listában látható, hogy melyik kernel lesz betöltve a következő rendszerindításkor ![új kernel](./media/chroot-logical-volume-manager/kernel-new.png)
+**Grub2-editenv** lista megjeleníti, hogy melyik ![kernel lesz betöltve a következő boot Új kernel](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**GRUB2-mkconfig** újraépíti a grub. cfg fájlt a szükséges verziók használatával ![grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**grub2-mkconfig** újjáépíti grub.cfg a ![szükséges verziók Grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
-### <a name="example-2---upgrade-packages"></a>2\. példa – csomagok frissítése
+### <a name="example-2---upgrade-packages"></a>2. példa – frissítő csomagok
 
-A sikertelen kernel-frissítés a virtuális gép nem rendszerindítását teszi lehetővé.
-Az összes logikai kötet csatlakoztatása a csomagok eltávolításának vagy újratelepítésének engedélyezéséhez
+A sikertelen kernelfrissítés nem indítható a virtuális gép számára.
+Az összes logikai kötet csatlakoztatása a csomagok eltávolításához vagy újratelepítéséhez
 
-Futtassa a **LVS** parancsot annak ellenőrzéséhez, hogy mely **LVS** érhetők el a CSATLAKOZTATÁSHOZ, minden virtuális gép, amely át lett telepítve, vagy egy másik felhőalapú szolgáltatótól származik, változhat a konfigurációban.
+Futtassa az **lvs** parancsot annak ellenőrzéséhez, hogy mely **lvv-ek** érhetők el a csatlakoztatáshoz, minden virtuális gép, amely átlett telepítve, vagy egy másik felhőszolgáltatótól származik, konfigurációja eltérő lehet.
 
-Kilépés a **kromát** -környezetből a szükséges **lv** -vel
+Kilépés a **chroot** környezetcsatlakoztatása a szükséges **LV**
 
-![Extra szintű](./media/chroot-logical-volume-manager/advanced.png)
+![Speciális](./media/chroot-logical-volume-manager/advanced.png)
 
-Most futtassa ismét a **kromát** -környezetet
+Most ismét hozzáférhet a **chroot** környezethez a
 
 `chroot /rescue`
 
-Minden LVs csatlakoztatott partícióként kell látni
+Minden LV-nek csatlakoztatott partícióként láthatónak kell lennie
 
-![Extra szintű](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Speciális](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
-A telepített **kernel** lekérdezése
+A telepített **rendszermag lekérdezése**
 
-![Extra szintű](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Speciális](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 Ha szükséges, távolítsa el vagy frissítse a **kernel**
 ![Advanced](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
-### <a name="example-3---enable-serial-console"></a>3\. példa – soros konzol engedélyezése
-Ha a hozzáférés nem volt lehetséges az Azure soros konzolon, ellenőrizze a GRUB-konfigurációs paramétereket a linuxos virtuális gépen, és javítsa ki azokat. Részletes információkat [ebben a dokumentumban](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) találhat
+### <a name="example-3---enable-serial-console"></a>3. példa - soros konzol engedélyezése
+Ha a hozzáférés nem sikerült az Azure soros konzolhoz, ellenőrizze a Linux virtuális gép GRUB konfigurációs paramétereit, és javítsa ki azokat. Részletes információ ebben [a dokumentumban található.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)
 
-### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>4\. példa – kernel betöltése problémás LVM swap-kötettel
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>4. példa - kernelbetöltés problémás LVM swap kötettel
 
-Előfordulhat, hogy egy virtuális gép nem tud teljes rendszerindítást kezdeményezni, és beleesik a **Dracut** -parancssorba.
-A hiba további részleteit az Azure soros konzolról vagy a Azure Portal-> rendszerindítási diagnosztika – > soros napló
+Előfordulhat, hogy a virtuális gép nem indul el teljesen, és a **dracut** promptba kerül.
+A hiba további részletei az Azure soros konzoljáról vagy az Azure Portal -> rendszerindítási diagnosztika -> soros naplóból találhatók.
 
 
-A következőhöz hasonló hiba fordulhat elő:
+Ehhez hasonló hiba fordulhat elő:
 
 ```
 [  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
@@ -225,19 +225,19 @@ A következőhöz hasonló hiba fordulhat elő:
 Warning: /dev/VG/SwapVol does not exist
 ```
 
-Ebben a példában a grub. cfg úgy van konfigurálva, hogy betöltsön egy LV-t a **Rd. LVM. lv = VG/SwapVol** névvel, és a virtuális gép nem találja ezt. Ebben a sorban látható, hogyan töltődik be a kernel az LV SwapVol
+A grub.cfg ebben a példában úgy van beállítva, hogy töltsön be egy LV nevet **rd.lvm.lv=VG/SwapVol,** és a virtuális gép nem találja ezt. Ez a sor azt mutatja, hogy a rendszermag betöltése az LV SwapVol-ra hivatkozva
 
 ```
 [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
 [    0.000000] e820: BIOS-provided physical RAM map:
 ```
 
- Távolítsa el a jogsértő LV-t a/etc/default/grub-konfigurációból, és hozza létre újra a GRUB2. cfg fájlt
+ Távolítsa el a jogsértő LV-t az /etc/default/grub konfigurációból, és építse újra a grub2.cfg-t
 
 
-## <a name="exit-chroot-and-swap-the-os-disk"></a>Kilépés a kromátból és az operációsrendszer-lemez cseréje
+## <a name="exit-chroot-and-swap-the-os-disk"></a>Kilépés a chroot-ból és az operációs rendszer lemezének cseréje
 
-A probléma kijavítása után folytassa a leválasztást, és válassza le a lemezt a mentési virtuális gépről, hogy az az érintett VM operációsrendszer-lemezzel legyen felcserélve.
+A probléma javítása után folytassa a lemez leválasztását, és válassza le a lemezt a mentési virtuális gépről, lehetővé téve, hogy az érintett virtuálisgép-operációs rendszer lemezével felcserélőlegyen.
 
 ```
 exit
@@ -250,26 +250,26 @@ umount /rescue/boot
 umount /rescue
 ```
 
-Válassza le a lemezt a mentési virtuális gépről, és hajtson végre egy lapozófájlt.
+Válassza le a lemezt a mentési virtuális gépről, és hajtson végre egy lemezcsere.
 
-Válassza ki a virtuális gépet a portál **lemezek** közül, és válassza a **leválasztás**
-![lemez leválasztása](./media/chroot-logical-volume-manager/detach-disk.png) 
+Válassza ki a virtuális gép a **portállemezek** és válassza **leválasztás**
+![lemez](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-Mentse a módosításokat ![válassza a leválasztási](./media/chroot-logical-volume-manager/save-detach.png) 
+A módosítások ![mentése Mentés leválasztás](./media/chroot-logical-volume-manager/save-detach.png) 
 
-A lemez mostantól elérhetővé válik, amely lehetővé teszi, hogy a rendszer megcserélje az érintett virtuális gép eredeti operációsrendszer-lemezét.
+A lemez most elérhetővé válik, amely lehetővé teszi, hogy az érintett virtuális gép eredeti operációsrendszer-lemezével felcserélődjön.
 
-Navigáljon a Azure Portal a hibás virtuális géphez, és válassza a **lemezek** -> az **operációsrendszer-lemez felcserélése**
-![a lemez cseréje](./media/chroot-logical-volume-manager/swap-disk.png) 
+Navigálás az Azure Portalon a hibás virtuális géphez, és válassza **a Disks** -> **Swap OS Disk**
+![Swap lemez](./media/chroot-logical-volume-manager/swap-disk.png) 
 
-Hajtsa végre a mezőket a **kiválasztott lemez** az előző lépésben leválasztott pillanatkép-lemez. Az érintett virtuális gép virtuálisgép-nevét is meg kell adni, majd kattintson az **OK gombra** .
+Töltse ki a mezőket a **Lemez kiválasztása** a pillanatkép lemez csak leválasztott az előző lépésben. Az érintett virtuális gép virtuális gépének neve is szükséges, majd válassza az **OK gombot**
 
-![Új operációsrendszer-lemez](./media/chroot-logical-volume-manager/new-osdisk.png) 
+![Új operációs rendszer lemeze](./media/chroot-logical-volume-manager/new-osdisk.png) 
 
-Ha a virtuális gép futtatja a lemezes cserét, állítsa le, indítsa újra a virtuális gépet a lemezes swap művelet befejeződése után.
+Ha a virtuális gép fut a lemezcsere leállítja, indítsa újra a virtuális gépet, miután a lemezcsere művelet befejeződött.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ
 
  [Azure soros konzol]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)

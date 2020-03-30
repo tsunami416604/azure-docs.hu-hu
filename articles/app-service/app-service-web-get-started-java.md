@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Java-alkalmazás létrehozása Windows rendszeren'
-description: Percek alatt üzembe helyezheti az első Java-"Helló világ!" alkalmazás Azure App Service Windows rendszeren. A Mavenhez készült Azure Web App beépülő modul lehetővé teszi a Java-alkalmazások üzembe helyezését.
-keywords: Azure, app Service, Web App, Windows, Java, Maven, gyors útmutató
+title: 'Rövid útmutató: Java-alkalmazás létrehozása Windows rendszeren'
+description: Az első Java Hello World telepítése az Azure App Service-be a Windows rendszeren percek alatt. Az Azure Web App Plugin for Maven kényelmessé teszi a Java-alkalmazások telepítését.
+keywords: az azure, app service, web app, windows, java, maven, quickstart
 author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.devlang: Java
@@ -10,24 +10,24 @@ ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: ed477e3c1431048d60e4a696f59aa0593e1b3f1f
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79136329"
 ---
-# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Windows rendszeren
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Rövid útmutató: Java-alkalmazás létrehozása a Windows Azure App Service szolgáltatásában
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _linuxon_app Service való üzembe helyezéssel kapcsolatban lásd: [Java-Webalkalmazás létrehozása Linuxon](./containers/quickstart-java.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_lévő App Service szolgáltatásba való telepítésről a [Java webalkalmazás létrehozása Linux on](./containers/quickstart-java.md)című témakörben talál.
 >
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t a [Mavenhez készült Azure Web App beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java Web Archive-(War-) fájl telepítéséhez.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI-t](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) az [Azure Web App Plugin for Maven egy](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Java web archív (WAR) fájl üzembe helyezéséhez.
 
 > [!NOTE]
-> Ugyanezt a népszerű ide-ket is megteheti, például a IntelliJ és az Eclipse-et. Tekintse meg a hasonló dokumentumokat a [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) rövid útmutatóban vagy [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)gyors útmutatóban.
+> Ugyanez a dolog is lehet tenni a népszerű IDEs, mint az IntelliJ és eclipse. Tekintse meg hasonló dokumentumainkat az [Azure Toolkit for IntelliJ Quickstart](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) vagy [az Azure Toolkit for Eclipse quickstart menüben.](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)
 >
-![Azure App Service futó minta alkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Az Azure App Service-ben futó mintaalkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,7 +35,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 ## <a name="create-a-java-app"></a>Java-alkalmazás létrehozása
 
-Hajtsa végre a következő Maven-parancsot a Cloud Shell promptban egy új, `helloworld`nevű alkalmazás létrehozásához:
+A következő Maven parancs végrehajtása a Cloud Shell `helloworld`parancssorában egy új alkalmazás létrehozásához:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -43,13 +43,13 @@ mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -Darchetyp
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
-A Mavenből való üzembe helyezéshez használja a Cloud Shell kódszerkesztőjét a `pom.xml` könyvtár `helloworld` projektfájljának megnyitásához. 
+A Mavenből való üzembe helyezéshez használja a Cloud Shell kódszerkesztőjét a `helloworld` könyvtár `pom.xml` projektfájljának megnyitásához. 
 
 ```bash
 code pom.xml
 ```
 
-Ezután adja hozzá a következő bővítménydefiníciót a `<build>` fájl `pom.xml` részéhez.
+Ezután adja hozzá a következő bővítménydefiníciót a `pom.xml` fájl `<build>` részéhez.
 
 ```xml
 <plugins>
@@ -97,12 +97,12 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 
 | Helyőrző | Leírás |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Annak az előfizetésnek az egyedi azonosítója, amelyre telepíteni kívánja az alkalmazást. Az alapértelmezett előfizetés azonosítója a Cloud Shell vagy a parancssori felületről a `az account show` parancs használatával érhető el. Az összes elérhető előfizetéshez használja a `az account list` parancsot.|
-| `RESOURCEGROUP_NAME` | Az új erőforráscsoport neve, amelyben létre szeretné hozni az alkalmazást. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névvel, például *myResourceGroup*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
-| `WEBAPP_NAME` | Az alkalmazás neve az alkalmazás állomásneve része lesz az Azure-ban (WEBAPP_NAME. azurewebsites. net) való üzembe helyezéskor. Frissítse ezt az értéket az új App Service alkalmazás egyedi nevével, amely a Java-alkalmazást, például a *contosot*fogja üzemeltetni. |
-| `REGION` | Egy Azure-régió, ahol az alkalmazás üzemeltetve van, például *westus2*. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
+| `SUBSCRIPTION_ID` | Annak az előfizetésnek az egyedi azonosítója, amelybe telepíteni szeretné az alkalmazást. Az alapértelmezett előfizetés azonosítója megtalálható a Cloud Shell vagy `az account show` a CLI a parancs segítségével. Az összes elérhető előfizetéshez `az account list` használja a parancsot.|
+| `RESOURCEGROUP_NAME` | Annak az új erőforráscsoportnak a neve, amelyben az alkalmazást létre szeretné hozni. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport névvel, például *a myResourceGroup értékkel.* Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
+| `WEBAPP_NAME` | Az alkalmazás neve az Azure-ba (WEBAPP_NAME.azurewebsites.net) üzembe helyezve az alkalmazás állomásnevének része lesz. Frissítse ezt az értéket az új App Service alkalmazás egyedi nevével, amely a Java alkalmazást fogja üzemeltetni, például *contoso.* |
+| `REGION` | Egy Azure-régió, ahol az alkalmazás található, például *westus2.* A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
 
-## <a name="deploy-the-app"></a>Az alkalmazás központi telepítése
+## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
 Helyezze üzembe a Java-alkalmazást az Azure-ban az alábbi paranccsal:
 
@@ -112,27 +112,27 @@ mvn package azure-webapp:deploy
 
 Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a webböngészőjében a következő URL-cím használatával, például: `http://<webapp>.azurewebsites.net/`.
 
-![Azure App Service futó minta alkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Az Azure App Service-ben futó mintaalkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Gratulálunk!** Üzembe helyezte az első Java-alkalmazást, hogy App Service Windows rendszeren.
+**Gratulálok!** Az első Java-alkalmazást a Windows App Service szolgáltatásba telepítette.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Kapcsolódás az Azure SQL Database-hez a Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Csatlakozás Azure SQL-adatbázishoz a Java segítségével](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás a MySQL-hez készült Azure DB-hez a Javával](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+> [Csatlakozás az Azure DB for MySQL-hez a Java segítségével](/azure/mysql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás a PostgreSQL-hez készült Azure-ADATBÁZIShoz Java használatával](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
+> [Csatlakozás a PostgreSQL Azure DB-hez a Java segítségével](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
-> [Azure Java-fejlesztőknek – erőforrások](/java/azure/)
+> [Az Azure for Java fejlesztői erőforrások](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)
 
 > [!div class="nextstepaction"]
-> [További információ az Azure-hoz készült Maven beépülő modulokról](https://github.com/microsoft/azure-maven-plugins)
+> [További információ a Maven azure-beli beépülő modulokról](https://github.com/microsoft/azure-maven-plugins)

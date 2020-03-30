@@ -1,6 +1,6 @@
 ---
 title: 'A Databricks parancssori felület használata az Azure Cloud Shellből '
-description: Megtudhatja, hogyan használhatja a Databricks CLI-t a Azure Cloud Shellból a Azure Databricks műveletek végrehajtásához.
+description: Ismerje meg, hogyan használhatja az Azure Cloud Shell Databricks CLI-t az Azure Databricks-en végzett műveletek végrehajtásához.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -10,35 +10,35 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.openlocfilehash: efb0d3222bfd98b15502163979425d47fa459e07
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73605721"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>A Databricks parancssori felület használata az Azure Cloud Shellből
 
-Megtudhatja, hogyan használhatja a Databricks CLI-t a Azure Cloud Shell a Databricks-műveletek végrehajtásához.
+Ismerje meg, hogyan használhatja a Databricks CLI-t az Azure Cloud Shellből a Databricks-en végzett műveletek végrehajtásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Databricks munkaterület és fürt. Útmutatásért lásd: [Azure Databricks első lépései](quickstart-create-databricks-workspace-portal.md). 
+* Egy Azure Databricks munkaterület és fürt. További információt az [Azure Databricks – Első lépések](quickstart-create-databricks-workspace-portal.md). 
 
-* Hozzon létre egy személyes hozzáférési jogkivonatot a Databricks-ben. Útmutatásért lásd a [jogkivonat-kezelés](/azure/databricks/dev-tools/api/latest/authentication)című témakört.
+* Hozzon létre egy személyes hozzáférési jogkivonatot a Databricks-ben. További információt a [Token-kezelés .](/azure/databricks/dev-tools/api/latest/authentication)
 
-## <a name="use-the-azure-cloud-shell"></a>A Azure Cloud Shell használata
+## <a name="use-the-azure-cloud-shell"></a>Az Azure Cloud Shell használata
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
  
-2. Kattintson a jobb felső sarokban található **Cloud Shell** ikonra.
+2. A jobb felső sarokban kattintson a **Cloud Shell** ikonra.
 
-   ![Cloud Shell elindítása](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Az Azure Cloud Shell indítása")
+   ![A Cloud Shell elindítása](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Az Azure Cloud Shell indítása")
 
-3. Győződjön meg arról, hogy a Cloud Shell-környezet **bash** elemét választotta. A legördülő menüben a következő képernyőképen látható módon választhat.
+3. Győződjön meg arról, hogy a **Bash** lehetőséget választja a Cloud Shell környezetben. A legördülő menüből választhat, ahogy az az alábbi képernyőképen látható.
 
-   ![Bash kiválasztása a Cloud Shell-környezethez](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Bash kiválasztása") 
+   ![Válassza a Bash lehetőséget a Cloud Shell környezetben](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Bash kiválasztása") 
 
-4. Hozzon létre egy virtuális környezetet, amelyben telepítheti a Databricks CLI-t. Az alábbi kódrészletben létrehoz egy `databrickscli`nevű virtuális környezetet.
+4. Hozzon létre egy virtuális környezetet, amelyben telepítheti a Databricks CLI.Create a virtual environment in which you can install the Databricks CLI. Az alábbi kódrészletben hozzon létre `databrickscli`egy virtuális környezetet, amelynek neve .
 
        virtualenv -p /usr/bin/python2.7 databrickscli
 
@@ -46,40 +46,40 @@ Megtudhatja, hogyan használhatja a Databricks CLI-t a Azure Cloud Shell a Datab
 
        source databrickscli/bin/activate
 
-6. Telepítse a Databricks CLI-t.
+6. Telepítse a Databricks CLI.Install the Databricks CLI.
 
        pip install databricks-cli
 
-7. Állítsa be a hitelesítést a Databricks a létrehozott hozzáférési jogkivonat használatával, amely az előfeltételek részeként jelenik meg. Használja az alábbi parancsot:
+7. Állítsa be a databricks hitelesítést a hozzáférési jogkivonat használatával, amelyet létre kell hoznia, az előfeltételek részeként felsorolt használatával. Használja az alábbi parancsot:
 
        databricks configure --token
 
-    A következő kérdéseket fogja kapni:
+    A következő utasításokat fogja kapni:
 
-    * Először meg kell adnia a Databricks-gazdagépet. Adja meg az értéket a `https://eastus2.azuredatabricks.net`formátumban. Itt az **USA 2. keleti** régiója az az Azure-régió, ahol létrehozta Azure Databricks munkaterületét.
+    * Először a rendszer kéri, hogy adja meg a Databricks gazdagép. Adja meg az `https://eastus2.azuredatabricks.net`értéket a formátumban. Itt **az USA keleti régiója 2** az Azure-régió, ahol létrehozta az Azure Databricks munkaterületét.
 
-    * Ezután meg kell adnia egy jogkivonatot. Adja meg a korábban létrehozott jogkivonatot.
+    * Ezután a rendszer kéri, hogy adjon meg egy jogkivonatot. Adja meg a korábban létrehozott jogkivonatot.
 
-A lépések elvégzése után elkezdheti a Databricks CLI használatát Azure Cloud Shell.
+Miután elvégezte ezeket a lépéseket, megkezdheti a Databricks CLI használatát az Azure Cloud Shellből.
 
-## <a name="use-databricks-cli"></a>A Databricks CLI használata
+## <a name="use-databricks-cli"></a>Databricks CLI használata
 
-Most már elkezdheti használni a Databricks CLI-t. Például futtassa a következő parancsot a munkaterületen található összes Databricks-fürt listázásához.
+Most már elkezdheti használni a Databricks CLI.You can now start using the Databricks CLI. Futtassa például a következő parancsot a munkaterületösszes Databricks-fürtlistájának listázásához.
 
     databricks clusters list
 
-A következő parancs használatával is elérheti a Databricks fájlrendszert (DBFS).
+A databricks fájlrendszer (DBFS) eléréséhez a következő paranccsal is hozzáférhet.
 
     databricks fs ls
 
 
-A parancsokkal kapcsolatos teljes hivatkozásért lásd: [DATABRICKS CLI](/azure/databricks/dev-tools/databricks-cli).
+A parancsokra vonatkozó teljes körű hivatkozása: [Databricks CLI](/azure/databricks/dev-tools/databricks-cli).
 
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az Azure CLI-ről: az [Azure CLI áttekintése](../cloud-shell/overview.md)
-* Az Azure CLI-vel kapcsolatos parancsok listájának megtekintéséhez tekintse meg az [Azure CLI-referenciát](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
-* A Databricks parancssori felülettel kapcsolatos parancsok listájának megtekintéséhez lásd: [DATABRICKS CLI](/azure/databricks/dev-tools/databricks-cli)
+* Ha többet szeretne megtudni az Azure CLI-ről, olvassa el az [Azure CLI áttekintését](../cloud-shell/overview.md)
+* Az Azure CLI parancsainak listáját az [Azure CLI referencia](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
+* A Databricks CLI parancsainak listáját a [Databricks CLI](/azure/databricks/dev-tools/databricks-cli)
 
 

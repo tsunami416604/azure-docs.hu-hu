@@ -1,171 +1,171 @@
 ---
-title: A kapcsolatok karakterláncai az Azure Application Insightsban | Microsoft Docs
-description: A kapcsolódási karakterláncok használata.
+title: Kapcsolati karakterláncok az Azure Application Insightsban | Microsoft dokumentumok
+description: Kapcsolati karakterláncok használata.
 ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7b049c04913d3415074f46b9d90ec34be874a2da
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136706"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
 ## <a name="overview"></a>Áttekintés
 
-A kapcsolatok karakterláncai egyetlen konfigurációs beállítással biztosítják az alkalmazás-betekintési felhasználókat, így nincs szükség több proxybeállítások megadására. Az intranetes webkiszolgálók, a szuverén vagy a hibrid felhőalapú környezetek esetében igen hasznosak, akik az adataikat a figyelési szolgáltatásba küldik.
+A kapcsolati karakterláncok egyetlen konfigurációs beállítást biztosítanak az Application Insight-felhasználók számára, így nincs szükség több proxybeállításra. Rendkívül hasznos az intranetes webkiszolgálók, szuverén vagy hibrid felhőkörnyezetek számára, amelyek adatokat szeretnének küldeni a figyelési szolgáltatásnak.
 
-A kulcs érték párok egyszerű módszert biztosítanak a felhasználók számára az egyes Application Insights (AI) szolgáltatásokhoz/termékekhez tartozó előtag-utótagok definiálására.
+A kulcsérték-párok segítségével a felhasználók egyszerűen definiálhatja az egyes Application Insights(AI) szolgáltatások/termékek előtag-utótagkombinációját.
 
 > [!IMPORTANT]
-> Nem ajánlott a kapcsolatok karakterláncának és a kialakítási kulcsnak a beállítása. Abban az esetben, ha a felhasználó mindkettőt beállította, akkor a legutóbb beállított érték elsőbbséget élvez. 
+> Nem javasoljuk a kapcsolati karakterlánc és a instrumentation kulcs beállítását. Abban az esetben, ha a felhasználó mindkettőt beállítja, attól függően, hogy melyik volt utoljára beállítva, az lesz az elsőbbség. 
 
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése 
 
-Felhasználói forgatókönyvek, ahol a legnagyobb hatással van a következőre:
+Ügyfél-forgatókönyvek, ahol ezt a legnagyobb hatással képzeljük el:
 
-- Tűzfal-kivételek vagy proxy-átirányítások 
+- Tűzfalkivételek vagy proxyátirányítások 
 
-    Ha az intranetes webkiszolgáló figyelésére van szükség, a korábbi megoldásunk arra kérte az ügyfeleket, hogy egyéni szolgáltatási végpontokat adjanak hozzá a konfigurációhoz. További információ: [itt](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
-    A kapcsolódási karakterláncok jobb alternatívát nyújtanak, ha csökkenti ezt az erőfeszítést egyetlen beállításra. Az egyszerű előtag, az utótagok módosítása lehetővé teszi az összes végpont automatikus populációjának és átirányításának megfelelő szolgáltatásokat. 
+    Azokban az esetekben, ahol az intranetes webkiszolgáló figyelése szükséges, a korábbi megoldás arra kérte az ügyfeleket, hogy adja hozzá az egyes szolgáltatás végpontok a konfigurációhoz. További információ: [itt](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
+    A kapcsolati karakterláncok jobb alternatívát kínálnak, ha ezt az erőfeszítést egyetlen beállításra csökkentik. Egy egyszerű előtag, utótag módosítása lehetővé teszi az automatikus sokaság és átirányítása az összes végpontok a megfelelő szolgáltatásokhoz. 
 
-- Szuverén vagy hibrid felhőalapú környezetek
+- Szuverén vagy hibrid felhőkörnyezetek
 
-    A felhasználók egy meghatározott [Azure Government régióba](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)küldhetik az adatküldést.
-    A kapcsolódási karakterláncok lehetővé teszik a végponti beállítások megadását az intranetes kiszolgálókhoz vagy a hibrid felhő beállításaihoz. 
+    A felhasználók adatokat küldhetnek egy meghatározott [Azure Government-régióba.](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)
+    A kapcsolati karakterláncok lehetővé teszik az intranetes kiszolgálók vagy a hibrid felhőbeállítások végpontbeállításainak meghatározását. 
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-### <a name="finding-my-connection-string"></a>A saját kapcsolatok karakterláncának megkeresése?
+### <a name="finding-my-connection-string"></a>Megtalálta a kapcsolati karakterláncot?
 
-A Application Insights erőforrás áttekintés paneljén megjelenik a kapcsolatok karakterlánca.
+A kapcsolati karakterlánc jelenik meg az Application Insights-erőforrás áttekintése panelen.
 
-![a kapcsolatok karakterlánca az Áttekintés panelen](media/overview-dashboard/overview-connection-string.png)
+![kapcsolati karakterlánc az áttekintő panelen](media/overview-dashboard/overview-connection-string.png)
 
 ### <a name="schema"></a>Séma
 
 #### <a name="max-length"></a>Maximális hossz
 
-A kapcsolatok maximális hossza 4096 karakter.
+A kapcsolat maximális támogatott hossza 4096 karakter.
 
 #### <a name="key-value-pairs"></a>Kulcs-érték párok
 
-A kapcsolatok karakterlánca a kulcs-érték párokat tartalmazó, pontosvesszővel elválasztott beállítások listájából áll: `key1=value1;key2=value2;key3=value3`
+A kapcsolati karakterlánc a pontosvesszővel elválasztott kulcsérték-párokként ábrázolt beállítások listájából áll:`key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>Szintaxis
 
-- `InstrumentationKey` (pl.: 00000000-0000-0000-0000-000000000000) a kapcsolatok karakterlánca **kötelező** mező.
-- `Authorization` (pl.: rendszerállapotkulcsot) (ez a beállítás nem kötelező, mert ma már csak a rendszerállapotkulcsot-hitelesítést támogatja.)
-- `EndpointSuffix` (például: applicationinsights.azure.cn) a végpont utótagjának beállítása arra utasítja az SDK-t, hogy az Azure Cloud csatlakozni fog. Az SDK össze fogja állítani a végpont többi részét az egyes szolgáltatásokhoz.
+- `InstrumentationKey`(pl. 0000000-0000-0000-0000-0000000000000000000000000000000000000000000000000000000000000000000000000  A kapcsolati karakterlánc **kötelező** mező.
+- `Authorization`(pl. ikey) (Ez a beállítás nem kötelező, mert ma már csak az ikey-hitelesítést támogatjuk.)
+- `EndpointSuffix`(pl. applicationinsights.azure.cn) A végpontutótag beállítása utasítja az SDK-t, amelyhez az Azure-felhőhöz csatlakozni szeretne. Az SDK az egyes szolgáltatások végpontjának többi részét is összeállítja.
 - Explicit végpontok.
-  Bármely szolgáltatás explicit módon felülbírálható a kapcsolatok karakterláncában.
-   - `IngestionEndpoint` (pl.: https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint` (pl.: https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint` (pl.: https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint` (pl.: https://snapshot.applicationinsights.azure.com)
+  Bármely szolgáltatás explicit módon felülbírálható a kapcsolati karakterláncban.
+   - `IngestionEndpoint`(pl.https://dc.applicationinsights.azure.com)
+   - `LiveEndpoint`(pl.https://live.applicationinsights.azure.com)
+   - `ProfilerEndpoint`(pl.https://profiler.applicationinsights.azure.com)
+   - `SnapshotEndpoint`(pl.https://snapshot.applicationinsights.azure.com)
 
-#### <a name="endpoint-schema"></a>Végpont sémája
+#### <a name="endpoint-schema"></a>Végpontséma
 
 `<prefix>.<suffix>`
-- Előtag: a szolgáltatást definiálja. 
-- Utótag: a közös tartománynevet határozza meg.
+- Előtag: Egy szolgáltatást határoz meg. 
+- Utótag: A közös tartománynevet határozza meg.
 
 ##### <a name="valid-suffixes"></a>Érvényes utótagok
 
-Itt látható az érvényes utótagok listája 
+Itt az érvényes utótagok listája 
 - applicationinsights.azure.cn
 - applicationinsights.us
 
 
-Lásd még: https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+Lásd még:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
 ##### <a name="valid-prefixes"></a>Érvényes előtagok
 
-- [Telemetria](./app-insights-overview.md)betöltés: `dc`
-- [Élő metrikák](./live-stream.md): `live`
-- [Profiler](./profiler-overview.md): `profiler`
-- [Pillanatkép](./snapshot-debugger.md): `snapshot`
+- [Telemetriai betöltés:](./app-insights-overview.md)`dc`
+- [Élő mérőszámok:](./live-stream.md)`live`
+- [Profilozó](./profiler-overview.md):`profiler`
+- [Pillanatkép](./snapshot-debugger.md):`snapshot`
 
 
 
-## <a name="connection-string-examples"></a>Példák a kapcsolatok karakterláncára
+## <a name="connection-string-examples"></a>Példák a kapcsolati karakterláncra
 
 
-### <a name="minimal-valid-connection-string"></a>Minimális érvényes kapcsolatok karakterlánca
+### <a name="minimal-valid-connection-string"></a>Minimális érvényes kapcsolati karakterlánc
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;`
 
-Ebben a példában csak a kialakítási kulcs van beállítva.
+Ebben a példában csak a instrumentation kulcs van beállítva.
 
-- Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
-- Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
-- A regionális szolgáltatási URI-k az [SDK alapértelmezett értékein](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) alapulnak, és a nyilvános globális Azure-hoz csatlakoznak:
-   - Betöltés: https://dc.services.visualstudio.com/
-   - Élő metrikák: https://rt.services.visualstudio.com/
-   - Profiler: https://agent.azureserviceprofiler.net/
-   - Hibakereső: https://agent.azureserviceprofiler.net/  
+- Az engedélyezési séma alapértelmezés szerint "ikey" 
+- Műszerezési kulcs: 0000000-0000-0000-0000-0000000000000
+- A regionális szolgáltatás URI-i az [SDK alapértelmezett beállításain](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) alapulnak, és a nyilvános globális Azure-hoz csatlakoznak:
+   - Lenyelés:https://dc.services.visualstudio.com/
+   - Élő mutatók:https://rt.services.visualstudio.com/
+   - Profiler:https://agent.azureserviceprofiler.net/
+   - Hibakereső:https://agent.azureserviceprofiler.net/  
 
 
 
-### <a name="connection-string-with-endpoint-suffix"></a>Végponti utótaggal rendelkező kapcsolatok karakterlánca
+### <a name="connection-string-with-endpoint-suffix"></a>Csatlakozási karakterlánc végpontutótaggal
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;EndpointSuffix=ai.contoso.com;`
 
-Ebben a példában ez a kapcsolatot megadó karakterlánc megadja a végpont utótagját, és az SDK létrehozza a szolgáltatási végpontokat.
+Ebben a példában ez a kapcsolati karakterlánc adja meg a végpontutótagot, és az SDK szolgáltatásvégpontokat hoz létre.
 
-- Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
-- Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
-- A regionális szolgáltatási URI-k a megadott végponti utótagon alapulnak: 
-   - Betöltés: https://dc.ai.contoso.com
-   - Élő metrikák: https://live.ai.contoso.com
-   - Profiler: https://profiler.ai.contoso.com 
-   - Hibakereső: https://snapshot.ai.contoso.com   
+- Az engedélyezési séma alapértelmezés szerint "ikey" 
+- Műszerezési kulcs: 0000000-0000-0000-0000-0000000000000
+- A regionális szolgáltatási URI-k a megadott végpontutótagon alapulnak: 
+   - Lenyelés:https://dc.ai.contoso.com
+   - Élő mutatók:https://live.ai.contoso.com
+   - Profiler:https://profiler.ai.contoso.com 
+   - Hibakereső:https://snapshot.ai.contoso.com   
 
 
 
-### <a name="connection-string-with-explicit-endpoint-overrides"></a>Explicit végponti felülbírálásokkal rendelkező kapcsolatok karakterlánca 
+### <a name="connection-string-with-explicit-endpoint-overrides"></a>Kapcsolati karakterlánc explicit végpont-felülbírálásokkal 
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://custom.com:111/;LiveEndpoint=https://custom.com:222/;ProfilerEndpoint=https://custom.com:333/;SnapshotEndpoint=https://custom.com:444/;`
 
-Ebben a példában ez a hálózati karakterlánc explicit felülbírálásokat határoz meg minden szolgáltatáshoz. Az SDK a módosítás nélkül megadott pontos végpontokat fogja használni.
+Ebben a példában ez a kapcsolati karakterlánc minden szolgáltatás explicit felülbírálását határozza meg. Az SDK a módosítás nélkül megadott pontos végpontokat fogja használni.
 
-- Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
-- Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
+- Az engedélyezési séma alapértelmezés szerint "ikey" 
+- Műszerezési kulcs: 0000000-0000-0000-0000-0000000000000
 - A regionális szolgáltatási URI-k az explicit felülbírálási értékeken alapulnak: 
-   - Betöltés: https:\//custom.com:111/
-   - Élő metrikák: https:\//custom.com:222/
-   - Profiler: https:\//custom.com:333/ 
+   - Lenyelés: https:\//custom.com:111/
+   - Élő mutatók: https:\//custom.com:222/
+   - Profilozó: https:\//custom.com:333/ 
    - Hibakereső: https:\//custom.com:444/   
 
 
-## <a name="how-to-set-a-connection-string"></a>A kapcsolódási karakterlánc beállítása
+## <a name="how-to-set-a-connection-string"></a>Kapcsolati karakterlánc beállítása
 
-A következő SDK-verziók támogatják a kapcsolatok karakterláncait:
-- .NET és .NET Core v 2.12.0
-- Java v 2.5.1
-- JavaScript v 2.3.0
-- NodeJS v 1.5.0
-- Python v 1.0.0
+A kapcsolati karakterláncokat a következő SDK-verziók támogatják:
+- .NET és .NET Core v2.12.0
+- Java v2.5.1
+- Javascript verzió 2.3.0-s verzió
+- NodeJS 1.5.0-s v.-je
+- Python-1.0.0-s
 
-A kapcsolatok karakterláncát kód, környezeti változó vagy konfigurációs fájl alapján lehet beállítani.
+A kapcsolati karakterláncot kód-, környezeti változóban vagy konfigurációs fájlban állíthatja be.
 
 
 
 ### <a name="environment-variable"></a>Környezeti változó
 
-- Kapcsolatok karakterlánca: `APPLICATIONINSIGHTS_CONNECTION_STRING`
+- Kapcsolati karakterlánc:`APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>.Net SDK – példa
+### <a name="net-sdk-example"></a>Példa .Net SDK
 
-TelemetryConfiguration. ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemettryConfiguration.ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net explicit módon beállítva:
+.Net Explicit set:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.NET-konfigurációs fájl:
+.Net konfigurációs fájl:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -183,7 +183,7 @@ var configuration = new TelemetryConfiguration
 ```
 
 
-NetCore config. JSON: 
+NetCore config.json: 
 
 ```json
 {
@@ -194,15 +194,15 @@ NetCore config. JSON:
 ```
 
 
-### <a name="java-sdk-example"></a>Példa Java SDK-ra
+### <a name="java-sdk-example"></a>Példa Java SDK
 
 
-A Java explicit módon be van állítva:
+Java explicit módon beállítva:
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights.xml
+ApplicationInsights.xml fájl
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -210,9 +210,9 @@ ApplicationInsights.xml
 </ApplicationInsights>
 ```
 
-### <a name="javascript-sdk-example"></a>JavaScript SDK-példa
+### <a name="javascript-sdk-example"></a>Példa Javascript SDK
 
-Fontos: a JavaScript nem támogatja a környezeti változók használatát.
+Fontos: A Javascript nem támogatja a környezeti változók használatát.
 
 A kódrészlet használata:
 
@@ -227,7 +227,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 ```
 
 
-Manuális telepítés:
+Kézi beállítás:
 ```javascript
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>Példa Node SDK-ra
+### <a name="node-sdk-example"></a>Példa csomópont SDK-ra
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -247,11 +247,11 @@ appInsights.setup("InstrumentationKey=00000000-0000-0000-0000-000000000000;");
 appInsights.start();
 ```
 
-### <a name="python-sdk-example"></a>Python SDK – példa
+### <a name="python-sdk-example"></a>Python SDK példa
 
 Javasoljuk, hogy a felhasználók állítsa be a környezeti változót.
 
-A kapcsolódási karakterlánc explicit beállítása:
+A kapcsolati karakterlánc explicit beállítása:
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -262,11 +262,11 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépések futtatáskor:
 
-* [Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoport – IIS által üzemeltetett alkalmazások](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Az Azure virtuális gép és az Azure virtuálisgép-méretezési készlete IIS által üzemeltetett alkalmazások](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS-kiszolgáló](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 

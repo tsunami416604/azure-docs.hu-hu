@@ -1,5 +1,5 @@
 ---
-title: A tevékenység naplóinak hiányzó adathibáinak megoldása | Microsoft Docs
+title: Hiányzó adatok hibáinak elhárítása a tevékenységnaplókban | Microsoft dokumentumok
 description: Az Azure Active Directory-tevékenységnaplókból hiányzó adatok problémájára nyújt megoldást.
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014290"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Hibaelhárítás: Hiányzó adatok az Azure Active Directory-tevékenységnaplókban 
@@ -91,9 +91,9 @@ További információk: [Az Azure Active Directory jelentésmegőrzési háziren
 
 Az adatokat kétféleképpen őrizheti meg 30 napnál hosszabban. Az [Azure AD Reporting API-kkal](concept-reporting-api.md) az adatokat programozott módon kérheti le és tárolhatja egy adatbázisban. Másik megoldásként az auditnaplókat egy külső SIEM-rendszerbe, például a Splunk vagy a SumoLogic rendszerbe integrálhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure AD-jelentésmegőrzés](reference-reports-data-retention.md).
-* [Az Azure Active Directory jelentéskészítés késése](reference-reports-latencies.md).
+* [Az Azure Active Directory jelentéskészítési késései.](reference-reports-latencies.md)
 * [Jelentéskészítés az Azure Active Directoryban – gyakori kérdések](reports-faq.md).
 

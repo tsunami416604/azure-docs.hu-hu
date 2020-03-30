@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális gép operációsrendszer-meghajtójának kibontása az Azure-ban
-description: A Resource Manager-alapú üzemi modellben bontsa ki a virtuális gép operációsrendszer-meghajtójának méretét az Azure PowerShell használatával.
+title: Windows virtuális gép operációsrendszer-meghajtójának bővítése Azure-ban
+description: Az Erőforrás-kezelő telepítési modelljében az Azure Powershell használatával bővítheti egy virtuális gép operációsrendszer-meghajtójának méretét.
 services: virtual-machines-windows
 documentationcenter: ''
 author: kirpasingh
@@ -16,24 +16,24 @@ ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
 ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033501"
 ---
-# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának kibontása
+# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának bővítése
 
-Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rendszerkép [Azure piactéren](https://azure.microsoft.com/marketplace/)való üzembe helyezésével, az alapértelmezett operációsrendszer-meghajtó gyakran 127 GB (a lemezképek alapértelmezés szerint kisebb operációsrendszer-lemezzel rendelkeznek). Bár hozzáadhat adatlemezeket a virtuális géphez (ezeknek száma a választott termékváltozattól függ), és ajánlott ezekre a kiegészítő lemezekre telepíteni az alkalmazásokat és a processzorigényes számítási feladatokat, az ügyfeleknek gyakran bővíteniük kell az operációs rendszer meghajtóját bizonyos forgatókönyvek támogatásához, mint például a következők:
+Amikor egy erőforráscsoportban egy új virtuális gépet (VM) hoz létre egy lemezkép [azure Piactérről](https://azure.microsoft.com/marketplace/)való üzembe helyezésével, az alapértelmezett operációs rendszer meghajtója gyakran 127 GB (egyes lemezképek kisebb operációs rendszer lemezmérete alapértelmezés szerint). Bár hozzáadhat adatlemezeket a virtuális géphez (ezeknek száma a választott termékváltozattól függ), és ajánlott ezekre a kiegészítő lemezekre telepíteni az alkalmazásokat és a processzorigényes számítási feladatokat, az ügyfeleknek gyakran bővíteniük kell az operációs rendszer meghajtóját bizonyos forgatókönyvek támogatásához, mint például a következők:
 
 - Az operációs rendszer meghajtójára összetevőket telepítő, régebbi alkalmazások támogatása.
 - Nagyobb operációsrendszer-meghajtóval rendelkező fizikai számítógép vagy virtuális gép migrálása a helyszínről.
 
 
 > [!IMPORTANT]
-> Egy Azure-beli virtuális gép operációsrendszer-lemezének átméretezéséhez a virtuális gépet fel kell osztani.
+> Az Azure virtuális gép operációs rendszerlemezének átméretezése a virtuális gép felszabadítását igényli.
 >
-> A lemezek bővítése után [ki kell bővíteni a kötetet az operációs rendszeren belül](#expand-the-volume-within-the-os) , hogy kihasználhassa a nagyobb lemezt.
+> A lemezek kibontása után ki kell [bővítenie a kötetet az operációs rendszeren belül,](#expand-the-volume-within-the-os) hogy kihasználja a nagyobb lemez előnyeit.
 > 
 
 
@@ -44,7 +44,7 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
 
 Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be Microsoft Azure-fiókjába erőforrás-kezelési módban, és válassza ki az előfizetését az alábbiak szerint:
+1. Jelentkezzen be Microsoft Azure-fiókjába erőforrás-kezelési módban, és válassza ki az előfizetést az alábbiak szerint:
    
    ```powershell
    Connect-AzAccount
@@ -66,7 +66,7 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Szerezze be a felügyelt operációsrendszer-lemezre mutató hivatkozást. Állítsa be a felügyelt operációsrendszer-lemez méretét a kívánt értékre, és frissítse a lemezt a következőképpen:
+5. Hivatkozás beszerzése a felügyelt operációsrendszer-lemezre. Állítsa be a felügyelt operációsrendszer-lemez méretét a kívánt értékre, és frissítse a lemezt az alábbiak szerint:
    
    ```Powershell
    $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
@@ -74,7 +74,7 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
    Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
    ```   
    > [!WARNING]
-   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. Az operációsrendszer-lemezek esetében a maximálisan megengedett 2048 GB. (Lehetséges, hogy a VHD-blobot ezen a méreten túl szeretné kibontani, de az operációs rendszer csak az első 2048 GB területtel fog tudni működni.)
+   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. A maximálisan engedélyezett 2048 GB operációs rendszer lemezek. (Lehetőség van a virtuális merevlemez blobja ezen a méreten túlra is kiterjeszthető, de az operációs rendszer csak az első 2048 GB-os területtel fog tudni dolgozni.)
    > 
    > 
 6. A virtuális gép frissítése eltarthat néhány másodpercig. Miután a parancs végrehajtása befejeződött, indítsa újra a virtuális gépet a következő módon:
@@ -89,7 +89,7 @@ Készen is van. Csatlakozzon RDP-kapcsolaton keresztül a virtuális géphez, ny
 
 Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be Microsoft Azure-fiókjába erőforrás-kezelési módban, és válassza ki az előfizetését az alábbiak szerint:
+1. Jelentkezzen be Microsoft Azure-fiókjába erőforrás-kezelési módban, és válassza ki az előfizetést az alábbiak szerint:
    
    ```Powershell
    Connect-AzAccount
@@ -111,7 +111,7 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Állítsa a nem felügyelt operációsrendszer-lemez méretét a kívánt értékre, és frissítse a virtuális gépet a következőképpen:
+5. Állítsa be a nem felügyelt operációsrendszer-lemez méretét a kívánt értékre, és frissítse a virtuális gép méretét az alábbiak szerint:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -119,7 +119,7 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
    ```
    
    > [!WARNING]
-   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. Az operációsrendszer-lemezek esetében a maximálisan megengedett 2048 GB. (Lehetséges, hogy a VHD-blobot ezen a méreten túl szeretné kibontani, de az operációs rendszer csak az első 2048 GB területtel fog tudni működni.)
+   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. A maximálisan engedélyezett 2048 GB operációs rendszer lemezek. (Lehetőség van a virtuális merevlemez blobja ezen a méreten túlra is kiterjeszthető, de az operációs rendszer csak az első 2048 GB-os területtel fog tudni dolgozni.)
    > 
    > 
    
@@ -130,9 +130,9 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
    ```
 
 
-## <a name="scripts-for-os-disk"></a>OPERÁCIÓSRENDSZER-lemez parancsfájljai
+## <a name="scripts-for-os-disk"></a>Parancsfájlok operációsrendszer-lemezhez
 
-Alább látható a teljes parancsfájl a felügyelt és a nem felügyelt lemezekre vonatkozó referenciához:
+Az alábbiakban a felügyelt és nem felügyelt lemezek hivatkozási parancsfájlját olvashatja:
 
 
 **Felügyelt lemezek**
@@ -166,7 +166,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Adatlemezek átméretezése
 
-Ez a cikk elsősorban a virtuális gép operációsrendszer-lemezének kibővítésére összpontosít, de a szkript használható a virtuális géphez csatlakoztatott adatlemezek bővítésére is. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a `OSDisk` `StorageProfile` objektumát a `DataDisks` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
+Ez a cikk elsősorban a virtuális gép operációsrendszer-lemezének bővítésére összpontosít, de a parancsfájl a virtuális géphez csatlakoztatott adatlemezek bővítésére is használható. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a `StorageProfile``OSDisk` objektumát a `DataDisks` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
 
 **Felügyelt lemez**
 
@@ -184,7 +184,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-Hasonlóképpen a virtuális géphez csatolt egyéb adatlemezekre is hivatkozhat, ha a fentiekben látható indexet vagy a lemez **Name (név** ) tulajdonságát használja:
+Hasonlóképpen hivatkozhat a virtuális géphez csatolt más adatlemezekre is, akár a fenti index használatával, akár a lemez **Name** tulajdonságával:
 
 
 **Felügyelt lemez**
@@ -199,21 +199,21 @@ Hasonlóképpen a virtuális géphez csatolt egyéb adatlemezekre is hivatkozhat
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
 
-## <a name="expand-the-volume-within-the-os"></a>A kötet kibontása az operációs rendszeren belül
+## <a name="expand-the-volume-within-the-os"></a>A hangerő kibontása az operációs rendszeren belül
 
-Miután kibontotta a virtuális gép lemezét, be kell lépnie az operációs rendszerbe, és ki kell bontania a kötetet, hogy az kiterjedjen az új területre. A partíciók kibővítésének számos módja van. Ez a szakasz a virtuális gép RDP-kapcsolaton keresztüli csatlakoztatását ismerteti a partíció a **DiskPart**használatával történő kibontásához.
+Miután bővítette a lemezt a virtuális gép, be kell mennie az operációs rendszer, és bontsa ki a kötetet, hogy magában foglalja az új helyet. A partíciók bővítésének számos módja van. Ez a szakasz a virtuális gép RDP-kapcsolaton keresztüli csatlakoztatását ismerteti a partíció DiskPart használatával történő **kibontásához.**
 
-1. Nyisson meg egy RDP-kapcsolat a virtuális géppel.
+1. Nyisson meg egy RDP-kapcsolatot a virtuális géphez.
 
-2.  Nyisson meg egy parancssort, és írja be a **DiskPart**parancsot.
+2.  Nyisson meg egy parancssort, és írja be **a diskpart parancsot.**
 
-2.  A **DiskPart** parancssorba írja be a következőt: `list volume`. Jegyezze fel a kiterjeszteni kívánt kötetet.
+2.  A **DISKPART** parancssorba írja be a következőt: `list volume`. Jegyezze fel a kiterjeszteni kívánt mennyiséget.
 
-3.  A **DiskPart** parancssorba írja be a következőt: `select volume <volumenumber>`. Itt választhatja ki, hogy milyen kötetre kívánja kiterjeszteni a *kötetszám* , hanem az ugyanazon a lemezen lévő üres helyet.
+3.  A **DISKPART** parancssorba írja be a következőt: `select volume <volumenumber>`. Ezzel kiválasztja azt a *kötetkötetszámot,* amelyet ugyanazon a lemezen lévő összefüggő, üres területre szeretne kiterjeszteni.
 
-4.  A **DiskPart** parancssorba írja be a következőt: `extend [size=<size>]`. Ez kibővíti a kijelölt kötetet megabájtban (MB).
+4.  A **DISKPART** parancssorba írja be a következőt: `extend [size=<size>]`. Ez kiterjeszti a kijelölt *kötetet méret* szerint megabájtban (MB).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A [Azure Portal](attach-managed-disk-portal.md)használatával is csatolhat lemezeket.
+Lemezeket is csatolhat az [Azure Portal használatával.](attach-managed-disk-portal.md)

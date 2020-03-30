@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az adatbázisközi lekérdezések használatába
+title: Első lépések az adatbázisközi lekérdezésekkel
 description: rugalmas adatbázis-lekérdezés használata vertikálisan particionált adatbázisokkal
 services: sql-database
 ms.service: sql-database
@@ -12,29 +12,29 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823799"
 ---
-# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Ismerkedés az adatbázisok közötti lekérdezésekkel (vertikális particionálás) (előzetes verzió)
+# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Első lépések az adatbázisközi lekérdezésekkel (függőleges particionálás) (előzetes verzió)
 
-A rugalmas adatbázis-lekérdezés (előzetes verzió) Azure SQL Database lehetővé teszi, hogy olyan T-SQL-lekérdezéseket futtasson, amelyek több adatbázisra is kiterjednek egyetlen kapcsolódási pont használatával. Ez a cikk a [vertikálisan particionált adatbázisokra](sql-database-elastic-query-vertical-partitioning.md)vonatkozik.  
+Rugalmas adatbázis-lekérdezés (előzetes verzió) az Azure SQL Database lehetővé teszi, hogy több adatbázist egy kapcsolati pont használatával futó T-SQL-lekérdezések futtatásához. Ez a cikk [vertikálisan particionált adatbázisokra](sql-database-elastic-query-vertical-partitioning.md)vonatkozik.  
 
-Ha elkészült, megtudhatja, hogyan konfigurálhat és használhat egy Azure SQL Database a több kapcsolódó adatbázisra kiterjedő lekérdezések végrehajtásához.
+Ha elkészült, megtudhatja, hogyan konfigurálhatja és használhatja az Azure SQL-adatbázist több kapcsolódó adatbázisra kiterjedő lekérdezések végrehajtására.
 
-További információ a rugalmas adatbázis lekérdezési funkciójával kapcsolatban: [Azure SQL Database rugalmas adatbázis lekérdezésének áttekintése](sql-database-elastic-query-overview.md).
+A rugalmas adatbázis-lekérdezési funkcióról az [Azure SQL Database rugalmas adatbázis-lekérdezés – áttekintés című témakörben olvashat bővebben.](sql-database-elastic-query-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-MINDEN külső ADATFORRÁS-engedély megadása kötelező. Ez az engedély az ALTER DATABASE engedély részét képezi. Az alapul szolgáló adatforrásra való hivatkozáshoz minden külső ADATFORRÁS engedélyére van szükség.
+Módosítja a külső adatforrás-engedélyt. Ez az engedély az ALTER DATABASE engedély része. Alter Bármely külső adatforrás-engedély szükséges az alapul szolgáló adatforrásra való hivatkozáshoz.
 
-## <a name="create-the-sample-databases"></a>A minta-adatbázisok létrehozása
+## <a name="create-the-sample-databases"></a>Mintaadatbázisok létrehozása
 
-Első lépésként hozzon létre két adatbázist, **ügyfelet** és **rendelést**ugyanabban vagy a különböző SQL Database-kiszolgálókon.
+Először hozzon létre két adatbázist, **az Ügyfelek** és **a Rendelések**adatbázist, vagy azonos vagy különböző SQL Database-kiszolgálókon.
 
-Hajtsa végre a következő lekérdezéseket a **Orders** adatbázisban a **OrderInformation** tábla létrehozásához és a mintaadatok beviteléhez.
+Hajtsa végre a következő lekérdezéseket a **Rendelések** adatbázisban az **OrderInformation** tábla létrehozásához és a mintaadatok beviteléhez.
 
     CREATE TABLE [dbo].[OrderInformation](
         [OrderID] [int] NOT NULL,
@@ -46,7 +46,7 @@ Hajtsa végre a következő lekérdezéseket a **Orders** adatbázisban a **Orde
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 
-Ezután hajtsa végre a következő lekérdezést a **Customers** adatbázisban a **CustomerInformation** tábla létrehozásához és a mintaadatok beviteléhez.
+Most hajtsa végre a következő **lekérdezést** a Vevők adatbázisban a **CustomerInformation** tábla létrehozásához és a mintaadatok beviteléhez.
 
     CREATE TABLE [dbo].[CustomerInformation](
         [CustomerID] [int] NOT NULL,
@@ -60,22 +60,22 @@ Ezután hajtsa végre a következő lekérdezést a **Customers** adatbázisban 
 
 ## <a name="create-database-objects"></a>Adatbázis-objektumok létrehozása
 
-### <a name="database-scoped-master-key-and-credentials"></a>Adatbázis-hatókörű főkulcs és hitelesítő adatok
+### <a name="database-scoped-master-key-and-credentials"></a>Adatbázis hatókörrel tartozó főkulcsa és hitelesítő adatai
 
-1. Nyissa meg SQL Server Management Studio vagy SQL Server Data Tools a Visual Studióban.
-2. Kapcsolódjon az Orders adatbázishoz, és hajtsa végre a következő T-SQL-parancsokat:
+1. Nyissa meg az SQL Server Management Studio vagy az SQL Server Data Tools alkalmazást a Visual Studióban.
+2. Csatlakozzon a Rendelések adatbázishoz, és hajtsa végre a következő T-SQL parancsokat:
 
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';  
 
-    A "username" és a "password" értéknek kell lennie az ügyfelek adatbázisba való bejelentkezéshez használt felhasználónévnek és jelszónak.
-    A rugalmas lekérdezésekkel Azure Active Directory használatával történő hitelesítés jelenleg nem támogatott.
+    A "felhasználónév" és a "jelszó" az Ügyfelek adatbázisába való bejelentkezéshez használt felhasználónév és jelszó.
+    Az Azure Active Directory rugalmas lekérdezésekkel történő hitelesítése jelenleg nem támogatott.
 
 ### <a name="external-data-sources"></a>Külső adatforrások
 
-Külső adatforrás létrehozásához hajtsa végre a következő parancsot az Orders adatbázisban:
+Külső adatforrás létrehozásához hajtsa végre a következő parancsot a Rendelések adatbázisban:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
         (TYPE = RDBMS,
@@ -86,7 +86,7 @@ Külső adatforrás létrehozásához hajtsa végre a következő parancsot az O
 
 ### <a name="external-tables"></a>Külső táblák
 
-Hozzon létre egy külső táblát a orders (megrendelések) adatbázisban, amely megfelel a CustomerInformation tábla definíciójának:
+Hozzon létre egy külső táblát a Rendelések adatbázisban, amely megfelel a CustomerInformation tábla definíciójának:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
     ( [CustomerID] [int] NOT NULL,
@@ -95,9 +95,9 @@ Hozzon létre egy külső táblát a orders (megrendelések) adatbázisban, amel
     WITH
     ( DATA_SOURCE = MyElasticDBQueryDataSrc)
 
-## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Minta rugalmas adatbázis-lekérdezés végrehajtása T-SQL-lekérdezés
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Rugalmas adatbázis-minta végrehajtása T-SQL lekérdezés
 
-Miután meghatározta a külső adatforrást és a külső táblákat, mostantól a T-SQL használatával is lekérdezheti a külső táblákat. A lekérdezés végrehajtása a megrendelések adatbázisán:
+Miután definiálta a külső adatforrást és a külső táblákat, most már használhatja a T-SQL-t a külső táblák lekérdezéséhez. A lekérdezés végrehajtása a Rendelések adatbázisban:
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company
     FROM OrderInformation
@@ -106,14 +106,14 @@ Miután meghatározta a külső adatforrást és a külső táblákat, mostantó
 
 ## <a name="cost"></a>Költségek
 
-A rugalmas adatbázis lekérdezési funkciója jelenleg a Azure SQL Database költségeit tartalmazza.  
+Jelenleg a rugalmas adatbázis-lekérdezési funkció szerepel az Azure SQL-adatbázis költsége.  
 
-A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database).
+Az árképzésről az [SQL Database Díjszabása](https://azure.microsoft.com/pricing/details/sql-database)című témakörben talál.
 
 ## <a name="next-steps"></a>További lépések
 
-* A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](sql-database-elastic-query-overview.md).
-* A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](sql-database-elastic-query-vertical-partitioning.md)
-* A horizontális particionálással (skálázással) kapcsolatos oktatóanyagért lásd: az [első lépések a rugalmas lekérdezéssel a horizontális particionáláshoz](sql-database-elastic-query-getting-started.md).
-* A horizontálisan particionált információk szintaxisát és mintáit lásd: [vízszintesen particionált adatlekérdezés](sql-database-elastic-query-horizontal-partitioning.md)
-* Lásd: [sp\_\_távoli végrehajtása](https://msdn.microsoft.com/library/mt703714) egy tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készletet.
+* A rugalmas lekérdezés áttekintését a [Rugalmas lekérdezés áttekintése című témakörben találja.](sql-database-elastic-query-overview.md)
+* A vertikálisan particionált adatok szintaxisát és mintalekérdezéseit a [Vertikálisan particionált adatok lekérdezése) témakörben találja.](sql-database-elastic-query-vertical-partitioning.md)
+* Horizontális particionálási (horizontális) oktatóanyag: [A rugalmas lekérdezés horizontális particionálás (horizontális sáfálás) című témakörben található.](sql-database-elastic-query-getting-started.md)
+* A vízszintesen particionált adatok szintaxisát és mintalekérdezéseit [lásd: Horizontálisan particionált adatok lekérdezése)](sql-database-elastic-query-horizontal-partitioning.md)
+* [Lásd:\_ \_sp távoli végrehajtása](https://msdn.microsoft.com/library/mt703714) egy tárolt eljárás, amely végrehajtja a Transact-SQL utasításegyetlen távoli Azure SQL-adatbázis vagy egy horizontális particionálási séma szegmensként szolgáló adatbázisok készlete.

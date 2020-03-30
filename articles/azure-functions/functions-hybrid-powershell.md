@@ -1,25 +1,25 @@
 ---
 title: Távoli helyszíni erőforrások kezelése PowerShell-függvények használatával
-description: Megtudhatja, hogyan konfigurálhat Hibrid kapcsolatok a Azure Relayban egy PowerShell-függvény alkalmazás helyszíni erőforrásokhoz való összekapcsolásához, amelyet aztán a helyszíni erőforrás távoli kezelésére használhat.
+description: Megtudhatja, hogyan konfigurálhatja a hibrid kapcsolatok az Azure Relay-ben egy PowerShell-függvényalkalmazás helyszíni erőforrásokhoz való csatlakoztatásához, amelyek ezután a helyszíni erőforrás távoli kezelésére használhatók.
 author: eamono
 ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
 ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226937"
 ---
-# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hibrid környezetek kezelése a PowerShell-lel Azure Functions és App Service Hibrid kapcsolatok
+# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hibrid környezetek kezelése a PowerShell használatával az Azure Functionsben és az App Service hybrid kapcsolatokban
 
-A Azure App Service Hibrid kapcsolatok funkció lehetővé teszi a más hálózatokban lévő erőforrásokhoz való hozzáférést. Erről a képességről a [hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) dokumentációjában olvashat bővebben. Ez a cikk azt ismerteti, hogyan használhatja ezt a képességet a helyszíni kiszolgálókat célzó PowerShell-függvények futtatásához. Ezzel a kiszolgálóval a helyszíni környezet összes erőforrását egy Azure PowerShell függvényből lehet kezelni.
+Az Azure App Service Hybrid Connections szolgáltatás lehetővé teszi a hozzáférést a más hálózatokban lévő erőforrásokhoz. Erről a funkcióról a Hibrid kapcsolatok dokumentációjában olvashat [bővebben.](../app-service/app-service-hybrid-connections.md) Ez a cikk azt ismerteti, hogy miként használhatja ezt a funkciót a helyszíni kiszolgálót célzó PowerShell-függvények futtatásához. Ez a kiszolgáló ezután a helyszíni környezetben lévő összes erőforrás kezelésére használható egy Azure PowerShell-függvényből.
 
 
-## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Helyszíni kiszolgáló konfigurálása a PowerShell táveléréshez
+## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Helyszíni kiszolgáló konfigurálása a PowerShell-távszolgáltatás-alapú szolgáltatásokhoz
 
-A következő parancsfájl lehetővé teszi a PowerShell távelérését, és létrehoz egy új tűzfalszabály és egy WinRM HTTPS-figyelőt. Tesztelési célból önaláírt tanúsítványt használ a rendszer. Éles környezetben javasoljuk, hogy aláírt tanúsítványt használjon.
+A következő parancsfájl lehetővé teszi a PowerShell-távszolgáltatást, és létrehoz egy új tűzfalszabályt és egy WinRM https-figyelőt. Tesztelési célokra önaláírt tanúsítványt használ. Éles környezetben azt javasoljuk, hogy aláírt tanúsítványt használjon.
 
 ```powershell
 # For configuration of WinRM, see
@@ -46,97 +46,97 @@ $Cmd = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname=
 cmd.exe /C $Cmd
 ```
 
-## <a name="create-a-powershell-function-app-in-the-portal"></a>PowerShell-függvény alkalmazás létrehozása a portálon
+## <a name="create-a-powershell-function-app-in-the-portal"></a>PowerShell-függvényalkalmazás létrehozása a portálon
 
-A App Service Hibrid kapcsolatok funkció csak az alapszintű, a standard és az elkülönített díjszabási csomagokban érhető el. Ha a Function alkalmazást a PowerShell-lel hozza létre, hozzon létre vagy válasszon ki egyet az alábbi csomagok közül.
+Az App Service hibrid kapcsolatok szolgáltatás csak alapszintű, standard és elkülönített díjszabási csomagokban érhető el. Amikor létrehozza a függvényalkalmazást a PowerShell segítségével, hozzon létre vagy válasszon ki egy ilyen csomagok.
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali menüben, majd válassza a **Function app**elemet.
+1. Az [Azure Portalon](https://portal.azure.com)válassza a **+ Erőforrás létrehozása lehetőséget** a bal oldali menüben, majd válassza a Függvény alkalmazás **lehetőséget.**
 
-1. A **üzemeltetési terv**területen válassza a **app Service terv**lehetőséget, majd válassza a **app Service terv/hely**lehetőséget.
+1. Az **Üzemeltetési csomag**esetén válassza az App **Service-csomag**lehetőséget, majd az App **Service-csomag/hely lehetőséget.**
 
-1. Válassza az **új létrehozása**elemet, írja be a **app Servicei csomag** nevét, válasszon egy **helyet** az Ön közelében lévő [régióban](https://azure.microsoft.com/regions/) vagy a funkciókhoz hozzáférő egyéb szolgáltatások közelében, majd válassza az **árképzési szintet**.
+1. Válassza **az Új létrehozása**lehetőséget, írja be az App **Service-csomag** nevét, válasszon egy **helyet** egy önhöz közeli [régióban](https://azure.microsoft.com/regions/) vagy más szolgáltatások közelében, amelyekhez a funkciók hozzáférhetnek, majd válassza **a Tarifacsomag**lehetőséget.
 
-1. Válassza ki az S1 standard csomagot, majd kattintson az **alkalmaz**gombra.
+1. Válassza az S1 Standard csomagot, majd válassza **az Alkalmaz**lehetőséget.
 
-1. A terv létrehozásához kattintson **az OK gombra** , majd adja meg a fennmaradó **függvényalkalmazás** beállításokat a táblázatban megadott módon, közvetlenül a következő képernyőkép után:
+1. Válassza az **OK gombot** a terv létrehozásához, majd konfigurálja a **többi függvényalkalmazás-beállításokat** a táblázatban megadott a következő képernyőkép után:
 
-    ![PowerShell Core Function-alkalmazás](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
+    ![PowerShell Core függvényalkalmazás](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: `a-z`, `0-9` és `-`.  | 
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
-    | **Erőforráscsoport** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. Használhatja a javasolt értéket is. |
-    | **OS** | Előnyben részesített operációs rendszer | Válassza a Windows lehetőséget. |
-    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válassza a PowerShell mag lehetőséget. |
-    | **Tárolás** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A Storage-fiókok nevének 3 és 24 karakter közöttinek kell lennie, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat.
-    | **Application Insights** | Alapértelmezett | Létrehoz egy Application Insights erőforrást ugyanahhoz az *alkalmazáshoz* a legközelebbi támogatott régióban. A beállítás kibontásával módosíthatja az **új erőforrás nevét** , vagy kiválaszthat egy másik **helyet** az [Azure földrajz](https://azure.microsoft.com/global-infrastructure/geographies/) régiójában, ahol az adatait tárolni szeretné. |
+    | **Erőforráscsoport** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. A javasolt értéket is használhatja. |
+    | **OS** | Előnyben részesített operációs rendszer | Válassza a Windowst. |
+    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válassza a PowerShell Core lehetőséget. |
+    | **Tárterület** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfióknevek nek 3 és 24 karakter között kell lenniük, és csak számokat és kisbetűket tartalmazhatnak. Meglévő fiókot is használhat.
+    | **Application Insights** | Alapértelmezett | Létrehoz egy Application Insights-erőforrást ugyanazzal az *alkalmazásnévvel* a legközelebbi támogatott régióban. A beállítás kibontásával módosíthatja az **új erőforrás nevét,** vagy választhat egy másik **helyet** egy [Azure-földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) régióban, ahol tárolni szeretné az adatokat. |
 
-1. A Beállítások ellenőrzése után válassza a **Létrehozás**lehetőséget.
+1. A beállítások ellenőrzése után válassza a **Létrehozás gombot.**
 
-1. Válassza ki az **értesítés** ikont a portál jobb felső sarkában, és várja meg az "üzembe helyezés sikeres" üzenetet.
+1. Válassza az **Értesítés** ikont a portál jobb felső sarkában, és várja meg a "Sikeres telepítés" üzenetet.
 
-1. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget. Kiválaszthatja **a rögzítés az irányítópulton**lehetőséget is. A rögzítéssel egyszerűbbé válik a Function app-erőforráshoz való visszatérés az irányítópultról.
+1. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget. Kiválaszthatja **a Rögzítés az irányítópulton**lehetőséget is. A rögzítés megkönnyíti a függvényalkalmazás-erőforráshoz való visszatérést az irányítópultról.
 
-## <a name="create-a-hybrid-connection-for-the-function-app"></a>Hibrid kapcsolatok létrehozása a Function alkalmazáshoz
+## <a name="create-a-hybrid-connection-for-the-function-app"></a>Hibrid kapcsolat létrehozása a függvényalkalmazáshoz
 
-A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési szakasza alapján történik:
+A hibrid kapcsolatok a függvényalkalmazás hálózati szakaszából vannak konfigurálva:
 
-1. Válassza a **platform szolgáltatások** fület a Function alkalmazásban, majd válassza a **hálózatkezelés**lehetőséget. 
-   a platform hálózatkezelésének ![az alkalmazások áttekintése](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
-1. Válassza **a hibrid kapcsolatok végpontok konfigurálása**lehetőséget.
+1. Válassza a **Platform funkciók** lapját a függvényalkalmazásban, majd a **Hálózat lehetőséget.** 
+   ![Alkalmazás – áttekintés a platformhálózatokhoz](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. Válassza **a Hibrid kapcsolatok végpontjainak konfigurálása lehetőséget.**
    ![Hálózat](./media/functions-hybrid-powershell/select-network-feature.png)  
-1. Válassza a **hibrid kapcsolatok hozzáadása**lehetőséget.
-   ![hibrid kapcsolatok](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
-1. Adja meg a hibrid kapcsolatok adatait, amint az a következő képernyőképen látható. Lehetősége van arra, hogy a **végpont gazdagépének** beállításai megegyezzenek a helyszíni kiszolgáló állomásneve, hogy a kiszolgáló később is megjegyezze a távoli parancsok futtatásakor. A port megegyezik a kiszolgálón korábban definiált alapértelmezett Windows távfelügyeleti szolgáltatás portjával.
-  ![hibrid kapcsolatok hozzáadása](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
+1. Válassza **a Hibrid kapcsolat hozzáadása**lehetőséget.
+   ![Hibrid kapcsolat](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+1. Adja meg a hibrid kapcsolat adatait a következő képernyőkép után. Lehetősége van arra, hogy az **Endpoint Host** beállítás megfeleljen a helyszíni kiszolgáló állomásnevének, hogy később könnyebben megjegyezhető legyen a kiszolgáló, amikor távoli parancsokat futtat. A port megegyezik a kiszolgálón korábban definiált alapértelmezett Windows távfelügyeleti szolgáltatásporttal.
+  ![Hibrid kapcsolat hozzáadása](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
-    **Hibrid kapcsolatok neve**: ContosoHybridOnPremisesServer
+    **Hibrid kapcsolat neve**: ContosoHybridOnPremisesServer
     
-    **Végponti gazdagép**: finance1
+    **Végpontgazda**: finance1
     
-    **Végpont portja**: 5986
+    **Végpont port:** 5986
     
-    **Servicebus-névtér**: új létrehozása
+    **Servicebus névtér**: Új létrehozása
     
-    **Hely**: válasszon ki egy elérhető helyet
+    **Hely**: Válasszon egy elérhető helyet
     
     **Név**: contosopowershellhybrid
 
-5. A hibrid kapcsolatok létrehozásához kattintson **az OK gombra** .
+5. A hibrid kapcsolat létrehozásához válassza az **OK gombot.**
 
-## <a name="download-and-install-the-hybrid-connection"></a>A hibrid kapcsolatok letöltése és telepítése
+## <a name="download-and-install-the-hybrid-connection"></a>A hibrid kapcsolat letöltése és telepítése
 
-1. Válassza a **Csatlakozáskezelő letöltése** lehetőséget, hogy az. msi fájlt helyileg mentse a számítógépre.
-![a telepítő letöltése](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. Másolja az. msi fájlt a helyi számítógépről a helyszíni kiszolgálóra.
-1. Futtassa a hibridkapcsolat-kezelő telepítőjét a szolgáltatás a helyszíni kiszolgálón való telepítéséhez.
-![hibrid kapcsolatok telepítése](./media/functions-hybrid-powershell/hybrid-installation.png)  
-1. A portálon nyissa meg a hibrid kapcsolatokat, majd másolja az átjáró kapcsolódási karakterláncát a vágólapra.
-![a hibrid kapcsolatok karakterláncának másolása](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
-1. Nyissa meg a hibridkapcsolat-kezelő felhasználói felületet a helyszíni kiszolgálón.
-![a hibrid kapcsolatok felhasználói felületének megnyitása](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. Válassza az **ENTER manuálisan** gombot, és illessze be a kapcsolatok karakterláncát a vágólapról.
-![a kapcsolatok beillesztése](./media/functions-hybrid-powershell/enter-manual-connection.png)  
-1. Ha nem csatlakoztatottként jelenik meg, indítsa újra a hibridkapcsolat-kezelő a PowerShellből.
+1. A **Csatlakozáskezelő letöltése** lehetőséget választva helyileg szeretné menteni az .msi fájlt a számítógépre.
+![Telepítő letöltése](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
+1. Másolja az .msi fájlt a helyi számítógépről a helyszíni kiszolgálóra.
+1. Futtassa a hibrid csatlakozáskezelő telepítőjét a szolgáltatás helyszíni kiszolgálóra való telepítéséhez.
+![Hibrid kapcsolat telepítése](./media/functions-hybrid-powershell/hybrid-installation.png)  
+1. A portálról nyissa meg a hibrid kapcsolatot, majd másolja az átjáró kapcsolati karakterláncát a vágólapra.
+![Hibrid kapcsolati karakterlánc másolása](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+1. Nyissa meg a hibrid csatlakozáskezelő felhasználói felületét a helyszíni kiszolgálón.
+![Hibrid kapcsolat felhasználói felülete](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
+1. Jelölje ki a **Kézi bevitel** gombot, és illessze be a kapcsolati karakterláncot a vágólapról.
+![Kapcsolat beillesztése](./media/functions-hybrid-powershell/enter-manual-connection.png)  
+1. Indítsa újra a hibrid kapcsolatkezelőt a PowerShellből, ha nem jelenik meg csatlakoztatottként.
     ```powershell
     Restart-Service HybridConnectionManager
     ```
 
-## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Alkalmazás-beállítás létrehozása rendszergazdai fiók jelszavához
+## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Alkalmazásbeállítás létrehozása rendszergazdai fiók jelszavához
 
-1. Válassza a **platform szolgáltatások** fület a Function alkalmazásban.
-1. Az **általános beállítások**területen válassza a **Konfigurálás**lehetőséget.
-![a platform konfigurációjának kiválasztása](./media/functions-hybrid-powershell/select-configuration.png)  
-1. Az **új Alkalmazásbeállítás** kibontásával új beállítást hozhat létre a jelszóhoz.
-1. Nevezze el a beállítás _ContosoUserPassword_, és adja meg a jelszót.
-1. Válassza az **OK** , majd a mentés lehetőséget a jelszó tárolásához a Function alkalmazásban.
-![a jelszóhoz tartozó alkalmazás-beállítás hozzáadása](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. Válassza a **Platform funkciók** lapját a függvényalkalmazásban.
+1. Az **Általános beállítások csoportban**válassza a **Konfiguráció**lehetőséget.
+![Platform konfigurációjának kiválasztása](./media/functions-hybrid-powershell/select-configuration.png)  
+1. **Az Új alkalmazásbeállítás kibontásával** új beállítást hozhat létre a jelszóhoz.
+1. Nevezze el a _ContosoUserPassword_beállítást, és írja be a jelszót.
+1. Válassza **az OK gombot,** majd mentse a jelszót a függvényalkalmazásban.
+![Alkalmazásbeállítás hozzáadása a jelszóhoz](./media/functions-hybrid-powershell/add-appsetting-password.png)  
 
-## <a name="create-a-function-http-trigger-to-test"></a>Function http-trigger létrehozása teszteléshez
+## <a name="create-a-function-http-trigger-to-test"></a>Függvény létrehozása http trigger teszteléshez
 
-1. Hozzon létre egy új HTTP-trigger függvényt a Function alkalmazásból.
-![új HTTP-trigger létrehozása](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
+1. Hozzon létre egy új HTTP-eseményindító függvényt a függvényalkalmazásból.
+![Új HTTP-eseményindító létrehozása](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
 1. Cserélje le a PowerShell-kódot a sablonból a következő kódra:
 
     ```powershell
@@ -172,12 +172,12 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. A függvény teszteléséhez válassza a **Mentés** és **Futtatás** lehetőséget.
-![tesztelje a Function alkalmazást](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+3. A funkció teszteléséhez válassza a **Mentés** és **futtatás** lehetőséget.
+![A függvényalkalmazás tesztelése](./media/functions-hybrid-powershell/test-function-hybrid.png)  
 
-## <a name="managing-other-systems-on-premises"></a>Más rendszerek helyszíni kezelése
+## <a name="managing-other-systems-on-premises"></a>Egyéb rendszerek helyszíni kezelése
 
-A csatlakoztatott helyszíni kiszolgáló használatával kapcsolódhat a helyi környezetben lévő más kiszolgálókhoz és felügyeleti rendszerekhez. Így a PowerShell-függvények segítségével kezelheti az adatközpont-műveleteket az Azure-ban. A következő parancsfájl egy PowerShell-konfigurációs munkamenetet regisztrál, amely a megadott hitelesítő adatok alatt fut. A hitelesítő adatoknak a távoli kiszolgálók rendszergazdájának kell lenniük. Ezt a konfigurációt használhatja a helyi kiszolgálón vagy adatközpontban található többi végpont eléréséhez.
+A csatlakoztatott helyszíni kiszolgáló segítségével csatlakozhat más kiszolgálókhoz és felügyeleti rendszerekhez a helyi környezetben. Ez lehetővé teszi az adatközpont-műveletek kezelését az Azure-ból a PowerShell-függvények használatával. A következő parancsfájl regisztrál egy PowerShell-konfigurációs munkamenetet, amely a megadott hitelesítő adatok alatt fut. Ezeknek a hitelesítő adatoknak a távoli kiszolgálók rendszergazdájának kell lenniük. Ezután ezzel a konfigurációval a helyi kiszolgáló vagy adatközpont más végpontjaihoz is hozzáférhet.
 
 ```powershell
 # Input bindings are passed in via param block.
@@ -244,15 +244,15 @@ Invoke-Command -ComputerName $HybridEndpoint `
                -ConfigurationName $SessionName
 ```
 
-Cserélje le a parancsfájlban az alábbi változókat a környezet megfelelő értékeire:
+Cserélje le a parancsfájl ban szereplő alábbi változókat a környezetből származó megfelelő értékekre:
 * $HybridEndpoint
 * $RemoteServer
 
-Az előző két forgatókönyvben a Azure Functions és Hibrid kapcsolatok PowerShell használatával csatlakozhat a helyszíni környezetekhez, és kezelheti azokat. Javasoljuk, hogy ismerkedjen meg a [functions](./functions-reference-powershell.md) [hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) és PowerShell szolgáltatásával.
+Az előző két forgatókönyvben csatlakozhat és kezelheti a helyszíni környezeteket a PowerShell használatával az Azure Functions és a hibrid kapcsolatok használatával. Javasoljuk, hogy tudjon meg többet a [hibrid kapcsolatokról](../app-service/app-service-hybrid-connections.md) és [a PowerShell funkcióiról.](./functions-reference-powershell.md)
 
-Az Azure [Virtual Network](./functions-create-vnet.md) szolgáltatással a helyszíni környezethez is csatlakozhat Azure Functionson keresztül.
+Az Azure [virtuális hálózataival](./functions-create-vnet.md) is csatlakozhat a helyszíni környezethez az Azure Functions segítségével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [További információ a PowerShell-függvények használatáról](functions-reference-powershell.md)
+> [További információ a PowerShell-függvények használatával kapcsolatban](functions-reference-powershell.md)

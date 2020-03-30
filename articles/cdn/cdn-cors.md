@@ -1,6 +1,6 @@
 ---
-title: Azure CDN használata a CORS használatával | Microsoft Docs
-description: Ismerje meg, hogyan használhatja az Azure Content Delivery Network (CDN) szolgáltatást a több eredetű erőforrás-megosztás (CORS) használatával.
+title: Az Azure CDN használata cors-szal | Microsoft dokumentumok
+description: Ismerje meg, hogyan használhatja az Azure Content Delivery Network (CDN) a több származási erőforrás-megosztás (CORS).
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,91 +15,91 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74278114"
 ---
-# <a name="using-azure-cdn-with-cors"></a>Azure CDN használata a CORS
+# <a name="using-azure-cdn-with-cors"></a>Az Azure CDN használata cors-szal
 ## <a name="what-is-cors"></a>Mi az a CORS?
-A CORS (több eredetű erőforrás-megosztás) egy olyan HTTP-szolgáltatás, amely lehetővé teszi egy tartományon belül futó webalkalmazások elérését egy másik tartomány erőforrásaihoz. A helyek közötti parancsfájlok elleni támadások lehetőségének csökkentése érdekében minden modern webböngészővel [azonos eredetű](https://www.w3.org/Security/wiki/Same_Origin_Policy)biztonsági korlátozást valósíthat meg.  Ez megakadályozza, hogy egy weblap más tartományba tartozó API-kat hívjon fel.  A CORS lehetővé teszi, hogy egy forrás (a forrás tartomány) egy másik forrásban lévő API-kat hívjon fel.
+A CORS (Cross Origin Resource Sharing) egy HTTP-szolgáltatás, amely lehetővé teszi, hogy az egyik tartományban futó webalkalmazások hozzáférjenek egy másik tartomány erőforrásaihoz. Annak érdekében, hogy csökkentsék a lehetőségét a webhelyek közötti scripting támadások, minden modern böngészők végre egy biztonsági korlátozás néven [ismert azonos eredetű politika](https://www.w3.org/Security/wiki/Same_Origin_Policy).  Ez megakadályozza, hogy egy weblap api-kat hívjon egy másik tartományban.  A CORS biztonságos módot biztosít arra, hogy az egyik forrás (a forrástartomány) egy másik eredetű API-kat hívjon meg.
 
 ## <a name="how-it-works"></a>Működés
-Kétféle CORS-kérés, *egyszerű kérelem* és *összetett kérelem van.*
+Kétféle CORS-kérelem, *egyszerű kérelmek* és *összetett kérelmek.*
 
-### <a name="for-simple-requests"></a>Egyszerű kérelmek esetén:
+### <a name="for-simple-requests"></a>Egyszerű kérések esetén:
 
-1. A böngésző egy további **forrás** HTTP-kérelem fejlécével küldi el a CORS kérelmet. Ennek a fejlécnek az értéke a szülő lapot kiszolgáló forrás, amely a *protokoll,* a *tartomány* és a port kombinációjával van meghatározva *.*  Ha egy https-\://www.contoso.com származó oldal megpróbál hozzáférni egy felhasználói adatokhoz a fabrikam.com-forrásban, a rendszer a következő fabrikam.com küldi el:
+1. A böngésző egy további **Origin** HTTP-kérelemfejléccel küldi el a CORS-kérelmet. Ennek a fejlécnek az értéke az az eredet, amely a szülőlapot szolgálta, amely *protokoll,* *tartomány* és port kombinációjaként van *definiálva.*  Amikor egy https//www.contoso.com\:oldal megpróbál hozzáférni egy felhasználó adataihoz a fabrikam.com a forrásban, a rendszer a következő kérelemfejlécet küldi fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
-2. A kiszolgáló a következők bármelyikével válaszolhat:
+2. A kiszolgáló az alábbi válaszokkal válaszolhat:
 
-   * Egy **hozzáférés-vezérlési engedélyezési-származási** fejléc a válaszban, amely azt jelzi, hogy melyik hely engedélyezett. Például:
+   * **Access-Control-Allow-Origin** fejléc a válaszában, amely jelzi, hogy melyik származási hely engedélyezett. Példa:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * Egy HTTP-hibakód, például 403, ha a kiszolgáló nem engedélyezi az átszármazási kérést a forrás fejlécének ellenőrzése után.
+   * HTTP-hibakód, például 403, ha a kiszolgáló nem engedélyezi a kereszt-eredetű kérelmet az Origin fejléc ének ellenőrzése után
 
-   * **Hozzáférés-vezérlési-engedélyezési-származási** fejléc olyan helyettesítő karakterrel, amely lehetővé teszi az összes eredetét:
+   * **Access-Control-Allow-Origin** fejléc helyettesítő karakterrel, amely lehetővé teszi az összes eredetet:
 
      `Access-Control-Allow-Origin: *`
 
-### <a name="for-complex-requests"></a>Összetett kérelmek esetén:
+### <a name="for-complex-requests"></a>Összetett kérések esetén:
 
-Egy összetett kérelem egy CORS-kérelem, amelyben a böngészőnek el kell küldenie egy *elővizsgálati kérelmet* (azaz egy előzetes mintavételt) a tényleges CORS-kérelem elküldése előtt. Az elővizsgálati kérelem kéri a kiszolgáló engedélyét, ha az eredeti CORS-kérelem folytatható, és `OPTIONS` kérelem ugyanarra az URL-címre.
+Egy összetett kérelem egy CORS-kérelem, ahol a böngésző nek el kell küldenie egy *elővizsgálati kérelmet* (azaz egy előzetes mintavételt) a tényleges CORS-kérelem elküldése előtt. Az elővizsgálati kérelem engedélyt kér a kiszolgálótól, ha `OPTIONS` az eredeti CORS-kérelem folytatható, és ugyanarra az URL-címre irányuló kérés.
 
 > [!TIP]
-> A CORS és a gyakori buktatókkal kapcsolatos további részletekért tekintse meg a [CORS for REST API](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/)-k útmutatóját.
+> A CORS-folyamatokról és a gyakori buktatókról további információt a [REST API-k CORS-útmutatója](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/)című részében talál.
 >
 >
 
-## <a name="wildcard-or-single-origin-scenarios"></a>Helyettesítő karakteres vagy önálló eredetű forgatókönyvek
-A CORS on Azure CDN automatikusan fog működni további konfiguráció nélkül, ha a **hozzáférés-vezérlés-engedélyezési-Origin** fejléc helyettesítő karakter (*) vagy egyetlen forrás.  A CDN gyorsítótárazza az első választ, és az azt követő kérelmek ugyanazt a fejlécet fogják használni.
+## <a name="wildcard-or-single-origin-scenarios"></a>Helyettesítő karaktervagy egyeredetű forgatókönyvek
+Az Azure CDN CORS automatikusan fog működni további konfiguráció nélkül, ha az **Access-Control-Allow-Origin** fejléc helyettesítő (*) vagy egyetlen eredetre van állítva.  A CDN gyorsítótárazza az első választ, és az azt követő kérések ugyanazt a fejlécet fogják használni.
 
-Ha a CDN-kérelmeket már a CORS megelőzően beállították, akkor a tartalomnak a **hozzáférés-vezérlés – Allow-Origin** fejléctel való újratöltéséhez ki kell ürítenie a tartalmat a végpont tartalmában.
+Ha a CDN-re már megérkezett kérelmek, mielőtt a CORS az eredetre van állítva, a végponttartalom tartalmát meg kell tisztítania a tartalom újratöltéséhez az **Access-Control-Allow-Origin** fejléccel.
 
-## <a name="multiple-origin-scenarios"></a>Több eredetű forgatókönyv
-Ha engedélyezni szeretné, hogy egy adott lista a CORS számára engedélyezett legyen, a dolgok egy kicsit bonyolultabbak lesznek. A probléma akkor fordul elő, amikor a CDN gyorsítótárazza a **hozzáférés-vezérlés-engedélyezés-Origin** fejlécet az első CORS-forráshoz.  Ha egy másik CORS-forrás hajtja végre ezt a kérést, a CDN a gyorsítótárazott **hozzáférés-vezérlés-engedélyezési-Origin** fejlécet fogja kiszolgálni, amely nem egyezik.  Ezt többféleképpen is kijavítani.
+## <a name="multiple-origin-scenarios"></a>Több forrásforgatókönyv
+Ha engedélyeznie kell egy adott származási listát a CORS számára, a dolgok egy kicsit bonyolultabbak lesznek. A probléma akkor jelentkezik, amikor a CDN gyorsítótárazza az **Access-Control-Allow-Origin** fejlécet az első CORS-eredethez.  Ha egy másik CORS-eredet egy későbbi kérelmet küld, a CDN a gyorsítótárazott **Access-Control-Allow-Origin** fejlécet fogja kiszolgálni, amely nem egyezik.  Ezt többféleképpen is kijavíthatja.
 
-### <a name="azure-cdn-standard-profiles"></a>Szabványos profilok Azure CDN
-A Microsoft Azure CDN standard verziójában létrehozhat egy szabályt a [standard szabályok motorban](cdn-standard-rules-engine-reference.md) a kérelemben található **forrás** fejléc vizsgálatához. Ha érvényes a forrás, a szabály a **hozzáférés-vezérlés – engedélyezés – forrás** fejlécet fogja beállítani a kívánt értékkel. Ebben az esetben a rendszer figyelmen kívül hagyja a fájl forrás-kiszolgálójának **hozzáférés-vezérlés-engedélyezés-eredet** fejlécét, és a CDN-szabályok motorja teljes mértékben felügyeli az engedélyezett CORS-eredeteket.
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN szabványos profilok
+A Microsoft Azure CDN Standard szolgáltatásában létrehozhat egy szabályt a [Standard rules motorban](cdn-standard-rules-engine-reference.md) az **Origin** fejlécének ellenőrzéséhez a kérelemben. Ha érvényes eredetű, a szabály a kívánt értékkel állítja be az **Access-Control-Allow-Origin** fejlécet. Ebben az esetben a fájl eredeti kiszolgálójáról származó **Access-Control-Allow-Origin** fejlécet a rendszer figyelmen kívül hagyja, és a CDN szabálymotorja teljes mértékben kezeli az engedélyezett CORS-eredeteket.
 
-![Szabályok példa a Standard Rules Engine-re](./media/cdn-cors/cdn-standard-cors.png)
+![Szabályok példa szabványos szabálymotorral](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> További műveleteket is hozzáadhat a szabályhoz a további válaszok fejlécek, például a **hozzáférés-vezérlés-engedélyezés-metódusok**módosításához.
+> További válaszfejlécek, például **hozzáférés-vezérlés-engedélyezési módszerek**módosításához további műveleteket adhat a szabályhoz.
 > 
 
-A **Akamai Azure CDN standard**esetében az egyetlen olyan mechanizmus, amely lehetővé teszi, hogy a helyettesítő karakterek használata nélkül több kezdőpontot engedélyezzen a [lekérdezési karakterlánc gyorsítótárazásának](cdn-query-string.md)használata. Engedélyezze a CDN-végpont lekérdezési karakterlánc beállítását, majd használjon egy egyedi lekérdezési karakterláncot az egyes engedélyezett tartományokból érkező kérésekhez. Ennek eredményeképpen a CDN gyorsítótárazása külön objektumot ad meg minden egyes egyedi lekérdezési karakterlánchoz. Ez a megközelítés nem ideális, mivel ez a fájl több másolatát is eredményezi a CDN-gyorsítótárban.  
+Az **Azure CDN Standard a akamai**, az egyetlen mechanizmus, amely lehetővé teszi a több eredetű használata nélkül a helyettesítő karakter eredet használata [lekérdezési karakterlánc gyorsítótárazás](cdn-query-string.md). Engedélyezze a CDN-végpont lekérdezési karakterlánc-beállítását, majd használjon egyedi lekérdezési karakterláncot az egyes engedélyezett tartományokból érkező kérelmekhez. Ha így tesz, a CDN minden egyes egyedi lekérdezési karakterlánchoz külön objektumot gyorsítótáraz. Ez a megközelítés azonban nem ideális, mivel ugyanannak a fájlnak több példányát fogja eredményezni a CDN-en gyorsítótárazva.  
 
-### <a name="azure-cdn-premium-from-verizon"></a>Prémium szintű Azure CDN a Verizontól
-A Verizon Premium Rules Engine használatával [létre kell hoznia egy szabályt](cdn-rules-engine.md) a kérelemben szereplő **forrás** fejléc vizsgálatához.  Ha érvényes a forrás, a szabály az **Access-Control-Allow-Origin** fejlécet fogja beállítani a kérelemben megadott forrással.  Ha **a forrás fejlécben** megadott forrás nem engedélyezett, a szabálynak el kell hagynia a **hozzáférés-vezérlés-engedélyezés-eredet** fejlécet, ami miatt a böngésző elutasítja a kérést. 
+### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium a Verizontól
+A Verizon Premium szabálymotor használatával létre kell [hoznod egy szabályt,](cdn-rules-engine.md) hogy ellenőrizd az **Origin** fejlécét a kérésen.  Ha érvényes eredetű, a szabály a **hozzáférés-vezérlés-engedélyezés-engedélyezés-eredet** fejlécet állítja be a kérelemben megadott eredettel.  Ha az **Origin** fejlécben megadott origó nem engedélyezett, a szabálynak ki kell hagynia az **Access-Control-Allow-Origin** fejlécet, ami miatt a böngésző elutasítja a kérést. 
 
-Ezt kétféleképpen teheti meg a prémium szabályok motorral. Mindkét esetben a rendszer figyelmen kívül hagyja a fájl forráskiszolgáló **hozzáférés-vezérlés-engedélyezés-eredet** fejlécét, és a CDN-szabályok motorja teljes mértékben felügyeli az engedélyezett CORS-eredeteket.
+Ezt kétféleképpen is megteheti a Prémium szabályok motorjával. Mindkét esetben a fájl eredeti kiszolgálójáról származó **Access-Control-Allow-Origin** fejlécet a rendszer figyelmen kívül hagyja, és a CDN szabálymotorja teljes mértékben kezeli az engedélyezett CORS-eredeteket.
 
-#### <a name="one-regular-expression-with-all-valid-origins"></a>Egy reguláris kifejezés az összes érvényes eredetgel
-Ebben az esetben hozzon létre egy reguláris kifejezést, amely tartalmazza az összes engedélyezni kívánt eredetet: 
+#### <a name="one-regular-expression-with-all-valid-origins"></a>Egy reguláris kifejezés az összes érvényes eredettel
+Ebben az esetben olyan reguláris kifejezést hoz létre, amely tartalmazza az összes engedélyezni kívánt eredetet: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> A **Verizon Azure CDN Premium a Perl-** [kompatibilis reguláris kifejezéseket](https://pcre.org/) használja a reguláris kifejezések motorjának.  A reguláris kifejezéseket például az [101](https://regex101.com/) -as reguláris kifejezésekkel ellenőrizheti.  Vegye figyelembe, hogy a "/" karakter a reguláris kifejezésekben érvényes, ezért nem kell megszöknie, azonban az adott karakter kimaradása ajánlott eljárásnak minősül, és néhány regex-érvényesítő által várt.
+> **A Verizon Azure CDN Premium** [szolgáltatása perl-kompatibilis reguláris kifejezéseket](https://pcre.org/) használ a reguláris kifejezések motorjaként.  A reguláris kifejezés érvényesítéséhez használhatja a [Reguláris kifejezések 101-et](https://regex101.com/) hasonló eszközökkel.  Ne feledje, hogy a "/" karakter reguláris kifejezésekben érvényes, és nem kell elkerülni, azonban a karakter elől való menekülés ajánlott eljárásnak minősül, és néhány regex validator elvárja.
 > 
 > 
 
-Ha a reguláris kifejezés megfelel, a szabály a forrástól a kérést küldő forrásból származó **hozzáférés-vezérlési engedélyezési-származási** fejlécet (ha van) lecseréli.  További CORS-fejléceket is hozzáadhat, például a **hozzáférés-vezérlés-engedélyezési metódusokat**.
+Ha a reguláris kifejezés megegyezik, a szabály lecseréli az **originális hozzáférés-vezérlés-engedélyezés-engedélyezés-eredet** fejlécét a kérelmet küldő eredetre.  További CORS-fejléceket is hozzáadhat, például **access-control-allow-methods .You**can also add additional CORS headers, such as Access-Control-Allow-Methods .
 
-![Szabályok – példa reguláris kifejezéssel](./media/cdn-cors/cdn-cors-regex.png)
+![Példa szabályok reguláris kifejezésre](./media/cdn-cors/cdn-cors-regex.png)
 
-#### <a name="request-header-rule-for-each-origin"></a>Kérelem fejlécének szabálya az egyes forrásokhoz.
-A reguláris kifejezések helyett külön szabályt hozhat létre minden olyan forráshoz, amelyet engedélyezni szeretne a **kérelem fejlécének helyettesítő karakteres** [egyeztetési feltételének](/previous-versions/azure/mt757336(v=azure.100)#match-conditions)használatával. A reguláris kifejezési módszerhez hasonlóan a szabályok motorja is beállítja a CORS fejléceit. 
+#### <a name="request-header-rule-for-each-origin"></a>Kérelem fejlécszabály minden egyes forráshoz.
+A reguláris kifejezések helyett létrehozhat egy külön szabályt minden egyes forráshoz, amelyet engedélyezni szeretne a **Fejléc kérelem helyettesítő karakterének** [feltételével.](/previous-versions/azure/mt757336(v=azure.100)#match-conditions) A reguláris kifejezési módszerhez, a szabálymotor önmagában is beállítja a CORS-fejléceket. 
 
-![Szabályok – példa reguláris kifejezés nélkül](./media/cdn-cors/cdn-cors-no-regex.png)
+![Szabálypélda reguláris kifejezés nélkül](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> A fenti példában a helyettesítő karakter használata * megadja a szabályok motorjának a HTTP és a HTTPS egyeztetését.
+> A fenti példában a helyettesítő karakter használata * azt mondja a szabálymotornak, hogy megfeleljen a HTTP és a HTTPS egyezésének.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: Mi az OPC-tár – Azure | Microsoft Docs
-description: Ez a cikk az OPC-tároló áttekintését tartalmazza. Az OPC UA-alkalmazások számára a felhőben konfigurálhatja, regisztrálhatja és kezelheti a tanúsítványok életciklusát.
+title: Mi az OPC Vault - Azure | Microsoft dokumentumok
+description: Ez a cikk áttekintést nyújt az OPC Vault. Konfigurálhatja, regisztrálhatja és kezelheti az OPC UA-alkalmazások tanúsítványéletciklusát a felhőben.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -9,31 +9,31 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826203"
 ---
-# <a name="what-is-opc-vault"></a>Mi az az OPC Vault?
+# <a name="what-is-opc-vault"></a>Mi az OPC Vault?
 
-Az OPC-tár egy olyan szolgáltatás, amely a tanúsítványok életciklusát konfigurálhatja, regisztrálhatja és kezelheti a felhőben lévő OPC UA-kiszolgáló és ügyfélalkalmazások számára. Ez a cikk az OPC-tár egyszerű felhasználási eseteit ismerteti.
+Az OPC Vault egy mikroszolgáltatás, amely konfigurálhatja, regisztrálhatja és kezelheti az OPC UA-kiszolgáló és a felhőben lévő ügyfélalkalmazások tanúsítványéletciklusát. Ez a cikk ismerteti az OPC Vault egyszerű használati esetek.
 
 ## <a name="certificate-management"></a>Tanúsítványkezelés
 
-Egy gyártó vállalatnak például csatlakoznia kell az OPC UA-kiszolgáló számítógépéhez az újonnan létrehozott ügyfélalkalmazás számára. Ha a gyártó a kiszolgáló első hozzáférését végzi, az OPC UA-kiszolgáló alkalmazásban egy hibaüzenet jelenik meg, amely jelzi, hogy az ügyfélalkalmazás nem biztonságos. Ez a mechanizmus az OPC UA-kiszolgáló számítógépén található, hogy megakadályozza a jogosulatlan hozzáférések elérését, ami megakadályozza a gonosz hackelést az üzemi emeleten.
+Egy gyártó vállalatnak például csatlakoztatnia kell az OPC UA kiszolgálógépét az újonnan létrehozott ügyfélalkalmazáshoz. Amikor a gyártó a kiszolgálószámítógép kezdeti elérését teszi le, egy hibaüzenet jelenik meg azonnal az OPC UA kiszolgálóalkalmazásán, amely jelzi, hogy az ügyfélalkalmazás nem biztonságos. Ez a mechanizmus az OPC UA szervergépbe van építve, hogy megakadályozza az engedély nélküli alkalmazáshozzáférést, ami megakadályozza az ördögi hackelést az üzemben.
 
-## <a name="application-security-management"></a>Alkalmazások biztonságának kezelése
-Egy biztonsági szakember az OPC Vault-szolgáltatást használja az OPC UA-kiszolgáló bármely ügyfélalkalmazás általi kommunikációhoz való egyszerű engedélyezéséhez, mivel az OPC-tároló rendelkezik a tanúsítványok beállításjegyzékének, tárolásának és életciklus-kezelésének összes funkcióját. Az OPC UA-kiszolgáló most már biztonságosan csatlakozik, és képes kommunikálni az újonnan létrehozott ügyfélalkalmazás
+## <a name="application-security-management"></a>Alkalmazásbiztonsági kezelés
+A biztonsági szakember az OPC Vault mikroszolgáltatás segítségével egyszerűen engedélyezheti az OPC UA-kiszolgálószámára a kommunikációt bármely ügyfélalkalmazással, mivel az OPC Vault rendelkezik a tanúsítvány-beállításjegyzék, a tárolás és az életciklus-kezelés összes funkciójával. Most az OPC UA szerver biztonságosan csatlakozik, tud kommunikálni az újonnan épített ügyfélalkalmazás
 
-## <a name="the-complete-opc-vault-architecture"></a>Az OPC-tár teljes architektúrája
-Az alábbi ábra az OPC-tár architektúráját mutatja be.
+## <a name="the-complete-opc-vault-architecture"></a>A teljes OPC Vault architektúra
+Az alábbi ábra a teljes OPC Vault architektúrát mutatja be.
 
-![OPC-tár architektúrája](media/overview-opc-vault-architecture/opc-vault.png)
+![OPC Vault architektúra](media/overview-opc-vault-architecture/opc-vault.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az OPC-tárolót és annak felhasználási lehetőségeit, itt látható a következő lépés:
+Most, hogy megismerkedett az OPC Vault-kal és annak felhasználásával, itt van a javasolt következő lépés:
 
 > [!div class="nextstepaction"]
-> [OPC-tár architektúrája](overview-opc-vault-architecture.md)
+> [OPC Vault architektúra](overview-opc-vault-architecture.md)

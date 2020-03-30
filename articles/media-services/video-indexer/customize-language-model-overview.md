@@ -1,7 +1,7 @@
 ---
-title: Nyelvi modell testreszabása Video Indexer-Azure-ban
+title: Nyelvi modell testreszabása a Video Indexelőben – Azure
 titleSuffix: Azure Media Services
-description: Ez a cikk áttekintést nyújt a Video Indexer nyelvi modelljéről és testreszabásáról.
+description: Ez a cikk áttekintést nyújt arról, hogy mi a nyelvi modell a Video Indexer ben, és hogyan szabhatja testre.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,34 +11,34 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838320"
 ---
-# <a name="customize-a-language-model-with-video-indexer"></a>Nyelvi modell testreszabása Video Indexer
+# <a name="customize-a-language-model-with-video-indexer"></a>Nyelvi modell testreszabása a Video Indexelővel
 
-Video Indexer támogatja az automatikus beszédfelismerést a Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)való integráción keresztül. A nyelvi modellt testreszabhatja úgy, hogy feltölti az adaptációs szöveget, azaz azt a tartományt, amelynek a szókincsét szeretné a motorhoz igazítani. A modell betanítása után a rendszer az adaptációs szövegben szereplő új szavakat fogja felismerni, feltételezve az alapértelmezett kiejtést, és a nyelvi modell új, valószínű szavakat fog tanulni. Az egyéni nyelvi modellek angol, spanyol, francia, német, olasz, Kínai (egyszerűsített), Japán, Orosz, brazíliai portugál, hindi és koreai nyelveken támogatottak. 
+A Video Indexer támogatja az automatikus beszédfelismerést a Microsoft [Egyéni beszédszolgáltatással](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)való integráció révén. Testreszabhatja a nyelvi modellt adaptációs szöveg feltöltésével, nevezetesen azon tartományból származó szöveg feltöltésével, amelynek szókincséhez a motort szeretné alkalmazkodni. A modell betanítása után a program felismeri az adaptációs szövegben megjelenő új szavakat, feltéve, hogy az alapértelmezett kiejtés, és a Nyelvi modell új, valószínű szósorozatokat tanul meg. Az egyéni nyelvi modellek angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, orosz, brazil portugál, hindi és koreai nyelven támogatottak. 
 
-Vegyük például a "Kubernetes" (az Azure Kubernetes-szolgáltatás kontextusában) kifejezéseket. Mivel a szó új Video Indexer, "Közösségek" néven ismert. A modellt úgy kell betanítania, hogy felismerje a következőt: "Kubernetes". Más esetekben a szavak léteznek, de a nyelvi modell nem vár rá, hogy egy bizonyos kontextusban megjelenjenek. Például a "Container Service" nem egy kétszavas sorozat, amelyet a nem speciális nyelvi modell felismer a szavak adott csoportjaként.
+Vegyünk egy szót, amely nagyon specifikus, például a "Kubernetes" (az Azure Kubernetes szolgáltatás környezetében), példaként. Mivel a szó új a Video Indexer, ez elismerten "közösségek". Be kell tanítania a modellt, hogy "Kubernetes" néven ismerje el. Más esetekben a szavak léteznek, de a nyelvi modell nem számít arra, hogy egy bizonyos környezetben jelennek meg. A "tárolószolgáltatás" például nem egy kétszavas sorozat, amelyet egy nem specializált nyelvi modell meghatározott szóhalmazként ismerne fel.
 
-Lehetősége van a szavak kontextus nélküli feltöltésére egy szövegfájlban található listában. Ez részleges alkalmazkodásnak minősül. Azt is megteheti, hogy a jobb alkalmazkodás érdekében feltölti a tartalommal kapcsolatos dokumentációt vagy mondatokat.
+Lehetősége van arra, hogy szövegfájl listájába kontextus nélkül töltsön fel szavakat. Ez részleges alkalmazkodásnak minősül. Azt is megteheti, hogy szöveges dokumentációt vagy a tartalomhoz kapcsolódó mondatokat tölt fel a jobb alkalmazkodás érdekében.
 
-Az egyéni nyelvi modellek létrehozásához és szerkesztéséhez használhatja a Video Indexer API-kat vagy a webhelyet, a jelen témakör [következő lépések](#next-steps) szakaszának témakörök szakaszában leírtak szerint.
+A Video Indexer API-k vagy a webhely segítségével egyéni nyelvi modelleket hozhat létre és szerkeszthet, a témakör [Következő lépései](#next-steps) szakaszában ismertetett témakörökben leírtak szerint.
 
-## <a name="best-practices-for-custom-language-models"></a>Ajánlott eljárások egyéni nyelvi modellekhez
+## <a name="best-practices-for-custom-language-models"></a>Gyakorlati tanácsok egyéni nyelvi modellekhez
 
-Video Indexer a Word-kombinációk valószínűsége alapján tanul, így a legmegfelelőbb módon sajátíthatja el:
+Video Indexer tanul alapján valószínűségek szó kombinációk, így tanulni a legjobban:
 
-* Adjon meg elég valós példát a mondatok kimondása céljából.
-* Soronként csak egy mondatot helyezzen el. Ellenkező esetben a rendszer a mondatok közötti valószínűségeket fogja megtanulni.
-* Nem kell egy szót beírni mondatként, hogy növelje másokkal a szót, de a rendszer a legjobbat a teljes mondatok alapján tanulja meg.
-* Ha lehetséges, új szavakat vagy mozaikszavakat kell megadnia, egy teljes mondatban annyi példát kell használnia, hogy a lehető legtöbb kontextust biztosítson a rendszernek.
-* Próbáljon meg több adaptációs beállítást létrehozni, és nézze meg, hogyan működnek.
-* Ne ismételje meg többször a pontos mondatot. A bemenet további részeit is létrehozhatja.
-* Kerülje a nem gyakori szimbólumok (~, # @% &) elkerülését, mivel azok el lesznek vetve. A megjelenő mondatok is elvesznek.
-* Ne helyezze túl nagy mennyiségű bemenetet, például több százezer mondatot, mert ezzel a művelettel felhígította a növelés hatását.
+* Adj elég valós példát a mondatok, mert lenne beszélni.
+* Sonkánként csak egy mondatot tegyél, ne többet. Ellenkező esetben a rendszer megtanulja a valószínűségeket a mondatok között.
+* Ez rendben van, hogy egy szót, mint egy mondat, hogy növeljék a szót mások ellen, de a rendszer tanul a legjobban a teljes mondatokat.
+* Amikor új szavakat vagy rövidítéseket vezetbe be, ha lehetséges, adjon meg annyi példát a használatra egy teljes mondatban, hogy a lehető legtöbb kontextust adja a rendszernek.
+* Próbálja meg, hogy több alkalmazkodási lehetőségeket, és hogyan működnek az Ön számára.
+* Kerülje az ismétlődést pontosan ugyanazt a mondatot többször. Elfogultságot okozhat a bemenet többi részével szemben.
+* Kerülje a nem gyakori szimbólumok (~, @ @ % &) feladását, mivel azok elvesznek. A mondatokat, amelyekben megjelennek, szintén elvetik.
+* Kerülje a túl nagy bemenetek, például több százezer mondat elhelyezését, mert ez gyengíti a kiemelés hatását.
 
 ## <a name="next-steps"></a>További lépések
 

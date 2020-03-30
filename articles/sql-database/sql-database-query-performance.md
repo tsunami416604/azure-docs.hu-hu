@@ -1,6 +1,6 @@
 ---
 title: Lekérdezési terheléselemző
-description: A lekérdezés teljesítményének figyelése az Azure SQL Database-ben az önálló és a készletezett adatbázisokra vonatkozó legnagyobb CPU-fogyasztást és hosszan futó lekérdezéseket azonosítja.
+description: A lekérdezési teljesítményfigyelés azonosítja az egy- és készletalapú adatbázisok legtöbb processzor-fogyasztó és hosszú ideig futó lekérdezését az Azure SQL-adatbázisban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,241 +12,241 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: f5998fde6659715de4fcb533cb0f41a8939b1c48
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214061"
 ---
-# <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
+# <a name="query-performance-insight-for-azure-sql-database"></a>Lekérdezési teljesítmény insight az Azure SQL-adatbázishoz
 
-A Lekérdezési terheléselemző az önálló és a készletezett adatbázisok intelligens lekérdezési elemzését teszi lehetővé. Segít azonosítani a leggyakoribb erőforrás-felhasználást és a hosszú ideig futó lekérdezéseket a munkaterhelésben. Ezzel a megoldással megtalálhatja az optimalizálni kívánt lekérdezéseket, így javíthatja a számítási feladatok teljesítményét és hatékonyan használhatja a kifizetett erőforrást. A Lekérdezési terheléselemző segítségével kevesebb időt tölthet fel az adatbázis teljesítményének elhárítására azáltal, hogy a következőket biztosítja:
+A Query Performance Insight intelligens lekérdezéselemzést biztosít az egy- és készletezésű adatbázisokhoz. Segít azonosítani a legfontosabb erőforrás-igényes és hosszú ideig futó lekérdezések a számítási feladatokban. Ez segít megtalálni a lekérdezéseket, hogy optimalizálja az általános számítási feladatok teljesítményét, és hatékonyan használja az erőforrást, amely fizet. A Query Performance Insight segítségével kevesebb időt fordítaz adatbázis-teljesítmény hibaelhárítására a következők biztosításával:
 
-* Mélyebb betekintés az adatbázisok erőforrás-(DTU-) felhasználására
-* A legfontosabb adatbázis-lekérdezésekre vonatkozó részletek CPU, időtartam és végrehajtások száma alapján (lehetséges hangolási jelöltek a teljesítmény növeléséhez)
-* A lekérdezés részleteinek részletezése az erőforrás-használat lekérdezési szövegének és előzményeinek megtekintéséhez
-* Az [adatbázis-tanácsadók](sql-database-advisor.md) teljesítményre vonatkozó javaslatait bemutató jegyzetek
+* Mélyebb betekintést az adatbázisok erőforrás (DTU) felhasználás
+* Részletek a legnépszerűbb adatbázis-lekérdezések processzor, időtartam és végrehajtási szám (potenciális tuning jelöltek teljesítmény javítása)
+* A lekérdezés részleteinek részletezése, a lekérdezés szövegének és az erőforrás-kihasználtság előzményeinek megtekintése
+* Az adatbázis-tanácsadók teljesítményre vonatkozó [ajánlásait](sql-database-advisor.md) bemutató jegyzetek
 
 ![Lekérdezési terheléselemző](./media/sql-database-query-performance/opening-title.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Lekérdezési terheléselemző megköveteli, hogy a [lekérdezési tároló](https://msdn.microsoft.com/library/dn817826.aspx) aktív legyen az adatbázisban. Alapértelmezés szerint az összes Azure SQL-adatbázishoz automatikusan engedélyezve van. Ha a lekérdezési tároló nem fut, a Azure Portal kérni fogja, hogy engedélyezze.
+A Lekérdezési teljesítmény betekintésmegköveteli, hogy a [Lekérdezéstároló](https://msdn.microsoft.com/library/dn817826.aspx) aktív az adatbázisban. Alapértelmezés szerint az összes Azure SQL-adatbázishoz automatikusan engedélyezve van. Ha a Query Store nem fut, az Azure Portal on enable is.
 
 > [!NOTE]
-> Ha a "lekérdezési tároló nincs megfelelően konfigurálva ezen az adatbázisban" üzenet jelenik meg a portálon, tekintse meg [a lekérdezés-tároló konfigurációjának optimalizálása](#optimize-the-query-store-configuration)című témakört.
+> Ha a "Lekérdezési tároló nincs megfelelően konfigurálva ezen az adatbázison" üzenet jelenik meg a portálon, olvassa el [a Lekérdezéstároló konfigurációjának optimalizálása](#optimize-the-query-store-configuration)című témakört.
 
 ## <a name="permissions"></a>Engedélyek
 
-A következő [szerepköralapú hozzáférés-vezérlési](../role-based-access-control/overview.md) engedélyekre van szükség a lekérdezési terheléselemző használatához:
+A Query Performance Insight használatához a következő [szerepköralapú hozzáférés-vezérlési](../role-based-access-control/overview.md) engedélyekre van szükség:
 
-* **Olvasó**, **tulajdonos**, **közreműködő**, **SQL db közreműködő**vagy **SQL Server közreműködő** engedély szükséges a legfelső szintű erőforrás-felhasználású lekérdezések és diagramok megtekintéséhez.
-* A lekérdezés szövegének megtekintéséhez **tulajdonos**, **közreműködő**, **SQL-adatbázis közreműködői**vagy **SQL Server közreműködői** engedélyek szükségesek.
+* **A**leggyakoribb erőforrás-igényes lekérdezések és diagramok megtekintéséhez olvasó , **tulajdonos,** **közreműködő**, **SQL DB közreműködő**vagy **SQL Server Közreműködő** engedélyek szükségesek.
+* A lekérdezés szövegének megtekintéséhez **tulajdonosi**, **közreműködői**, **SQL DB közreműködői**vagy **SQL Server Közreműködő** igéi szükségesek.
 
 ## <a name="use-query-performance-insight"></a>A Lekérdezési terheléselemző használata
 
-A Lekérdezési terheléselemző könnyen használható:
+A Lekérdezési teljesítmény betekintés könnyen használható:
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és keresse meg a vizsgálni kívánt adatbázist.
-2. A bal oldali menüben nyissa meg az **intelligens teljesítmény** > **lekérdezési terheléselemző**.
+1. Nyissa meg az [Azure Portalon,](https://portal.azure.com/) és keresse meg a megvizsgálni kívánt adatbázist.
+2. A bal oldali menüben nyissa meg az **Intelligens teljesítménylekérdezés** > **teljesítménybelátását**.
   
-   ![Lekérdezési terheléselemző a menüben](./media/sql-database-query-performance/tile.png)
+   ![Lekérdezési teljesítménybetekintés a menüben](./media/sql-database-query-performance/tile.png)
 
-3. Az első lapon tekintse át a leggyakoribb erőforrás-felhasználású lekérdezések listáját.
-4. Válasszon ki egy egyéni lekérdezést a részleteinek megtekintéséhez.
-5. Nyissa meg az **intelligens teljesítmény** > a **teljesítménnyel kapcsolatos javaslatokat** , és ellenőrizze, hogy van-e elérhető teljesítményre vonatkozó javaslat. További információ a beépített teljesítménnyel kapcsolatos javaslatokról: [SQL Database Advisor](sql-database-advisor.md).
-6. A megfigyelt intervallum módosításához használjon csúszkákat vagy nagyítási ikonokat.
+3. Az első lapon tekintse át a legfontosabb erőforrás-igényes lekérdezések listáját.
+4. A részletek megtekintéséhez válasszon ki egy adott lekérdezést.
+5. Nyissa **meg az intelligens teljesítményteljesítményre** > vonatkozó**javaslatokat,** és ellenőrizze, hogy rendelkezésre állnak-e teljesítményre vonatkozó javaslatok. A beépített teljesítményjavaslatokról az [SQL Database Advisor](sql-database-advisor.md)című témakörben talál további információt.
+6. A megfigyelt időköz módosításához használjon csúszkákat vagy nagyítási ikonokat.
 
-   ![Teljesítmény-irányítópult](./media/sql-database-query-performance/performance.png)
+   ![Teljesítmény irányítópult](./media/sql-database-query-performance/performance.png)
 
 > [!NOTE]
-> Ahhoz SQL Database, hogy a lekérdezésben szereplő információk Lekérdezési terheléselemzőban legyenek megjelenítve, a Query Store-nak néhány órányi adatot kell rögzítenie. Ha az adatbázis nem rendelkezik tevékenységgel, vagy ha a lekérdezési tár egy adott időszakban nem volt aktív, a diagramok üresek lesznek, ha Lekérdezési terheléselemző megjeleníti az adott időtartományt. A lekérdezési tárolót bármikor engedélyezheti, ha a szolgáltatás nem fut. További információ: [ajánlott eljárások a lekérdezési tárolóval](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
+> Ahhoz, hogy az SQL Database megjelenítse az adatokat a Query Performance Insight, Query Store kell rögzíteni néhány órányi adatot. Ha az adatbázis nak nincs tevékenysége, vagy ha a Lekérdezéstároló nem volt aktív egy bizonyos időszakban, a diagramok üresek lesznek, amikor a Lekérdezési teljesítmény betekintés megjeleníti ezt az időtartományt. A Query Store-t bármikor engedélyezheti, ha nem fut. További információt a [Query Store gyakorlati tanácsok című témakörben talál.](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)
 >
 
-Az adatbázis-teljesítménnyel kapcsolatos ajánlásokat a Lekérdezési terheléselemző navigációs paneljén válassza a [javaslatok](sql-database-advisor.md) elemet.
+Az adatbázis teljesítményére vonatkozó javaslatokért válassza a [Javaslatok lehetőséget](sql-database-advisor.md) a Lekérdezés teljesítménybetekintése navigációs panelen.
 
-![A javaslatok lap](./media/sql-database-query-performance/ia.png)
+![A Javaslatok lap](./media/sql-database-query-performance/ia.png)
 
-## <a name="review-top-cpu-consuming-queries"></a>A PROCESSZORt használó leggyakoribb lekérdezések áttekintése
+## <a name="review-top-cpu-consuming-queries"></a>Tekintse át a legelső CPU-fogyasztó lekérdezéseket
 
-Alapértelmezés szerint a Lekérdezési terheléselemző megjeleníti az első öt CPU-fogyasztási lekérdezést, amikor először nyitja meg.
+Alapértelmezés szerint a Lekérdezés idomítása az első öt PROCESSZOR-fogyasztó lekérdezést jeleníti meg, amikor először megnyitja.
 
-1. Jelölje be vagy törölje azokat a lekérdezéseket, amelyekkel belefoglalhatja vagy kizárhatja őket a diagramból jelölőnégyzetek használatával.
+1. Jelölje be az egyes lekérdezéseket, vagy törölje a jelet a diagramból jelölőnégyzetekkel való felvételéhez vagy kizárásához.
 
-   A felső sorban az adatbázis összesített DTU százaléka látható. A sávok azt a CPU-százalékot mutatják, amelyet a kijelölt lekérdezések a kiválasztott intervallum során felhasználtak. Ha például a **múlt hét** van kiválasztva, az egyes sávok egyetlen napot jelölnek.
+   A felső sorban az adatbázis teljes DTU-százaléka látható. A sávok a kiválasztott lekérdezések által a kijelölt időköz alatt felhasznált processzorszázalékot mutatják. Ha például **az Elmúlt hét** van kiválasztva, minden sáv egyetlen napot jelöl.
 
    ![Leggyakoribb lekérdezések](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
-   > A megjelenített DTU-vonal az egyórás időszakokban a maximális fogyasztási értékre van összesítve. Ez azt jelenti, hogy csak a lekérdezés-végrehajtási statisztikákkal rendelkező, magas szintű összehasonlítást kell végrehajtani. Bizonyos esetekben előfordulhat, hogy a DTU kihasználtsága túl magas, mint a futtatott lekérdezésekhez képest, de ez nem feltétlenül igaz.
+   > A megjelenített DTU-sor egy órás időszakokban a maximális felhasználási értékre összesítve van. Ez azt jelentette, a magas szintű összehasonlítás csak a lekérdezés végrehajtási statisztikák. Bizonyos esetekben a DTU-kihasználtság túl magasnak tűnhet a végrehajtott lekérdezésekhez képest, de előfordulhat, hogy nem ez a helyzet.
    >
-   > Ha például egy lekérdezés csak néhány percre 100%-ra maxed, akkor a Lekérdezési terheléselemző DTU sor a teljes órányi felhasználást (100%) jeleníti meg (a maximális összesített érték következménye).
+   > Ha például egy lekérdezés csak néhány percig 100%-ra maxolt a DTU-t, a Lekérdezési teljesítményinsight DTU-sora a teljes felhasználási órát 100%-ként jeleníti meg (a maximális összesített érték következménye).
    >
-   > A finomabb összehasonlításhoz (legfeljebb egy percig) érdemes lehet egyéni DTU-kihasználtsági diagramot létrehozni:
+   > A finomabb összehasonlításhoz (akár egy percig) érdemes lehet egyéni DTU-kihasználtsági diagramot létrehozni:
    >
-   > 1. A Azure Portal válassza a **Azure SQL Database** > **figyelés**lehetőséget.
+   > 1. Az Azure Portalon válassza az **Azure SQL Database** > **Monitoring**lehetőséget.
    > 2. Válassza a **Metrika** lehetőséget.
-   > 3. Válassza a **+ diagram hozzáadása**elemet.
-   > 4. Válassza ki a DTU százalékos arányát a diagramon.
-   > 5. Emellett válassza az **elmúlt 24 óra** lehetőséget a bal felső menüben, és módosítsa egy percre.
+   > 3. Válassza **a +Diagram hozzáadása**lehetőséget.
+   > 4. Válassza ki a DTU százalékos arányt a diagramon.
+   > 5. Ezenkívül válassza a bal felső menü **Utolsó 24 órája** parancsát, és módosítsa egy percre.
    >
-   > A lekérdezés-végrehajtási diagram összehasonlításához használja az egyéni DTU diagramot a finomabb részletességgel.
+   > Használja az egyéni DTU-diagramot a részletek finomabb szintjével a lekérdezés-végrehajtási diagrammal való összehasonlításhoz.
 
-   Az alsó rács a látható lekérdezések összesített információit jeleníti meg:
+   Az alsó rács a látható lekérdezések összesített adatait jeleníti meg:
 
-   * A lekérdezés azonosítója, amely a lekérdezés egyedi azonosítója az adatbázisban.
-   * CPU/lekérdezés egy megfigyelhető intervallumban, amely az összesítési függvénytől függ.
-   * A lekérdezés időtartama, amely az összesítési függvénytől is függ.
-   * Egy adott lekérdezés végrehajtásának teljes száma.
+   * Lekérdezésazonosító, amely az adatbázisban lévő lekérdezés egyedi azonosítója.
+   * Lekérdezésenkénti processzor megfigyelhető időközben, amely az összesítési függvénytől függ.
+   * Lekérdezésenkénti időtartam, amely az összesítési függvénytől is függ.
+   * Egy adott lekérdezés hez tartozó végrehajtások teljes száma.
 
-2. Ha az adatai elavulttá válnak, kattintson a **frissítés** gombra.
+2. Ha az adatok elavulttá válnak, kattintson a **Frissítés** gombra.
 
-3. A csúszkák és a nagyítás gombokkal módosíthatja a megfigyelési időközt, és megvizsgálhatja a felhasználási tüskéket:
+3. A csúszkák és a nagyítási gombok segítségével módosíthatja a megfigyelési időközt, és megvizsgálhatja a fogyasztási csúcsokat:
 
    ![Csúszkák és nagyítási gombok az intervallum módosításához](./media/sql-database-query-performance/zoom.png)
 
-4. Kiválaszthatja az **Egyéni** fület is a nézet testreszabásához:
+4. Szükség esetén az **Egyéni** lapon testreszabhatja a nézetet:
 
-   * Metrika (CPU, időtartam, végrehajtás száma).
-   * Időtartam (az elmúlt 24 óra, az elmúlt hét vagy az elmúlt hónap).
+   * Metrika (CPU, időtartam, végrehajtási szám).
+   * Időintervallum (elmúlt 24 óra, elmúlt hét vagy az elmúlt hónap).
    * Lekérdezések száma.
    * Összesítési függvény.
   
    ![Egyéni lap](./media/sql-database-query-performance/custom-tab.png)
   
-5. Kattintson a **Go >** gombra a testreszabott nézet megjelenítéséhez.
+5. A testreszabott nézet megtekintéséhez kattintson **az Ugrás >** gombra.
 
    > [!IMPORTANT]
-   > Lekérdezési terheléselemző a választástól függően a legfontosabb 5-20-nél több lekérdezés jelenik meg. Az adatbázis több lekérdezést is futtathat a fent láthatók felett, és ezek a lekérdezések nem lesznek feltüntetve a diagramon.
+   > A lekérdezési teljesítménybetekintés a kijelöléstől függően az 5–20 legfontosabb felvevő lekérdezés megjelenítésére korlátozódik. Az adatbázis sokkal több lekérdezést is futtathat a megjelenített legnépszerűbbeken túl, és ezek a lekérdezések nem fognak szerepelni a diagramon.
    >
-   > Előfordulhat, hogy létezik egy adatbázis-munkaterhelés-típus, amelyben sok kisebb lekérdezés található, a fent láthatók szerint, gyakran futnak, és a DTU többségét használják. Ezek a lekérdezések nem jelennek meg a teljesítmény diagramon.
+   > Létezhet egy adatbázis-számítási feladat típusa, amelyben sok kisebb lekérdezések, túl a felső látható, gyakran futnak, és használja a dtu nagy részét. Ezek a lekérdezések nem jelennek meg a teljesítménydiagramon.
    >
-   > Előfordulhat például, hogy egy lekérdezés jelentős mennyiségű DTU használ egy ideig, bár a megfigyelt időszakon belüli teljes felhasználás kevesebb, mint a többi legfelső szintű lekérdezés. Ilyen esetben a lekérdezés Erőforrás-kihasználtsága nem jelenik meg a diagramon.
+   > Előfordulhat például, hogy egy lekérdezés egy ideig jelentős mennyiségű DTU-t vett fel, bár a megfigyelt időszakban a teljes felhasználása kisebb, mint a többi csúcsfogyasztó lekérdezés. Ebben az esetben a lekérdezés erőforrás-kihasználtsága nem jelenik meg a diagramon.
    >
-   > Ha meg kell értenie az Lekérdezési terheléselemző korlátain túli legfelső szintű lekérdezés-végrehajtást, érdemes lehet [Azure SQL Analyticst](../azure-monitor/insights/azure-sql.md) használni a speciális adatbázis-teljesítmény figyeléséhez és hibaelhárításához.
+   > Ha a Query Performance Insight korlátain túl is meg kell értenie a legfontosabb lekérdezés-végrehajtásokat, fontolja meg az [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) használatát az adatbázisok teljesítményének speciális figyeléséhez és hibaelhárításához.
    >
 
-## <a name="view-individual-query-details"></a>Egyéni lekérdezés részleteinek megtekintése
+## <a name="view-individual-query-details"></a>Az egyes lekérdezések részleteinek megtekintése
 
 A lekérdezés részleteinek megtekintése:
 
-1. Válassza ki bármelyik lekérdezést a leggyakoribb lekérdezések listájában.
+1. Jelöljön ki bármilyen lekérdezést a leggyakoribb lekérdezések listájában.
 
-    ![Leggyakoribb lekérdezések listája](./media/sql-database-query-performance/details.png)
+    ![A leggyakoribb lekérdezések listája](./media/sql-database-query-performance/details.png)
 
-   Megnyílik egy részletes nézet. Itt látható a CPU-használat, az időtartam és a végrehajtás száma az idő múlásával.
+   Megnyílik egy részletes nézet. A processzorfelhasználást, az időtartamot és a végrehajtási számot mutatja az idő múlásával.
 
-2. A részletekért válassza a diagram funkcióit.
+2. A részletekhez jelölje ki a diagram jellemzőit.
 
-   * A felső diagram egy olyan sort mutat be, amely a teljes adatbázis DTU százalékát tartalmazza. A sávok a kiválasztott lekérdezés által felhasznált CPU-százalékarányok.
+   * A felső diagram egy sort jelenít meg a teljes adatbázis DTU százalékával. A sávok a kijelölt lekérdezés által felhasznált PROCESSZOR-százalék.
    * A második diagram a kijelölt lekérdezés teljes időtartamát mutatja.
-   * Az alsó diagram a kijelölt lekérdezés végrehajtásának teljes számát jeleníti meg.
+   * Az alsó diagram a kijelölt lekérdezés által végzett végrehajtások teljes számát mutatja.
 
    ![Lekérdezés részletei](./media/sql-database-query-performance/query-details.png)
 
-3. Használhatja a csúszkákat, a nagyítási gombokat is használhatja, vagy a **Beállítások** lehetőség kiválasztásával testreszabhatja a lekérdezési adatmegjelenítés módját, vagy választhat másik időtartományt.
+3. Szükség esetén csúszkákat használhat, nagyítási gombokat használhat, vagy a **Beállítások** lehetőséget választva testreszabhatja a lekérdezési adatok megjelenítését, vagy másik időtartományt választhat.
 
    > [!IMPORTANT]
-   > A Lekérdezési terheléselemző nem rögzít DDL-lekérdezéseket. Bizonyos esetekben előfordulhat, hogy nem rögzíti az összes ad hoc lekérdezést.
+   > A Lekérdezési teljesítmény betekintése nem rögzít DDL-lekérdezéseket. Bizonyos esetekben előfordulhat, hogy nem rögzíti az összes ad hoc lekérdezést.
    >
 
-## <a name="review-top-queries-per-duration"></a>Leggyakoribb lekérdezések áttekintése időtartam szerint
+## <a name="review-top-queries-per-duration"></a>A leggyakoribb lekérdezések áttekintése időtartamonként
 
-A Lekérdezési terheléselemző két mérőszáma segíthet megtalálni a potenciális szűk keresztmetszeteket: időtartam és végrehajtások száma.
+A Lekérdezésteljesítmény-betekintés két mutatója segíthet megtalálni a potenciális szűk keresztmetszeteket: az időtartamot és a végrehajtási számokat.
 
-A hosszan futó lekérdezések a lehető legnagyobb potenciállal rendelkeznek az erőforrások hosszabb zárolásához, más felhasználók blokkolásához és a méretezhetőség korlátozásához. Ők is a legjobb választás az optimalizáláshoz.
+A hosszú ideig futó lekérdezések rendelkeznek a legnagyobb potenciállal az erőforrások hosszabb zárolására, más felhasználók letiltására és a méretezhetőség korlátozására. Ők a legjobb jelöltek az optimalizálásra.
 
 A hosszú ideig futó lekérdezések azonosítása:
 
-1. Nyissa meg Lekérdezési terheléselemző **Egyéni** lapját a kiválasztott adatbázishoz.
-2. Módosítsa a mérőszámok **időtartamát**.
+1. Nyissa **meg** az Egyéni lapot a Lekérdezési teljesítmény betekintésben a kijelölt adatbázishoz.
+2. Módosítsa a mutatókat **időtartamra.**
 3. Válassza ki a lekérdezések számát és a megfigyelési időközt.
 4. Válassza ki az összesítési függvényt:
 
-   * A **Sum** a teljes megfigyelési időszakra vonatkozó összes lekérdezés végrehajtási idejét hozzáadja.
-   * A **maximálisan megkeresi** azokat a lekérdezéseket, amelyekben a végrehajtási idő elérte a teljes megfigyelési időközt.
-   * Az **AVG** megkeresi az összes lekérdezés végrehajtásának átlagos végrehajtási időpontját, és megjeleníti a fenti átlagok legfontosabb értékeit.
+   * **Az Összeg** összeadja a lekérdezés végrehajtási idejét a teljes megfigyelési időközhöz.
+   * **Max** megkeresi azokat a lekérdezéseket, amelyekben a végrehajtási idő a teljes megfigyelési időközmaximális volt.
+   * **Az Átlagos** érték megkeresi az összes lekérdezés-végrehajtás átlagos végrehajtási idejét, és megmutatja az átlagok felső idejét.
 
    ![Lekérdezés időtartama](./media/sql-database-query-performance/top-duration.png)
 
-5. Kattintson a **Go >** gombra a testreszabott nézet megjelenítéséhez.
+5. A testreszabott nézet megtekintéséhez kattintson **az Ugrás >** gombra.
 
    > [!IMPORTANT]
-   > A lekérdezés nézet módosítása nem frissíti a DTU vonalat. Az DTU-vonal mindig az intervallum maximális felhasználási értékét jeleníti meg.
+   > A lekérdezési nézet módosítása nem frissíti a DTU-vonalat. A DTU-sor mindig az intervallum maximális felhasználási értékét mutatja.
    >
-   > Az adatbázis DTU-felhasználásának részletesebb megismeréséhez (legfeljebb egy percig) érdemes lehet egyéni diagramot létrehozni a Azure Portalban:
+   > Az adatbázis DTU-felhasználásának részletesebb (legfeljebb egy perces) megértéséhez fontolja meg egy egyéni diagram létrehozását az Azure Portalon:
    >
-   > 1. Válassza **Azure SQL Database** > **figyelés**lehetőséget.
+   > 1. Válassza az **Azure SQL-adatbázis** > **figyelése**lehetőséget.
    > 2. Válassza a **Metrika** lehetőséget.
-   > 3. Válassza a **+ diagram hozzáadása**elemet.
-   > 4. Válassza ki a DTU százalékos arányát a diagramon.
-   > 5. Emellett válassza az **elmúlt 24 óra** lehetőséget a bal felső menüben, és módosítsa egy percre.
+   > 3. Válassza **a +Diagram hozzáadása**lehetőséget.
+   > 4. Válassza ki a DTU százalékos arányt a diagramon.
+   > 5. Ezenkívül válassza a bal felső menü **Utolsó 24 órája** parancsát, és módosítsa egy percre.
    >
-   > Javasoljuk, hogy az egyéni DTU diagram használatával hasonlítsa össze a lekérdezési teljesítmény diagramot.
+   > Azt javasoljuk, hogy az egyéni DTU-diagramot használja a lekérdezésteljesítmény-diagrammal való összehasonlításhoz.
    >
 
-## <a name="review-top-queries-per-execution-count"></a>Leggyakoribb lekérdezések áttekintése végrehajtások száma alapján
+## <a name="review-top-queries-per-execution-count"></a>Tekintse át a leggyakoribb lekérdezéseket végrehajtási számonként
 
-Előfordulhat, hogy az adatbázist használó felhasználói alkalmazás lassú lesz, bár a végrehajtások nagy száma nem befolyásolja magát az adatbázist, és az erőforrások használata alacsony.
+Az adatbázist használó felhasználói alkalmazások lelassulhatnak, még akkor is, ha a végrehajtások nagy száma nem érinti magát az adatbázist, és az erőforrások használata alacsony.
 
-Bizonyos esetekben a magas szintű végrehajtások száma több hálózati menethez vezethet. A ciklikus kirándulások hatással vannak a teljesítményre. Ezek a hálózati késés és az alsóbb rétegbeli kiszolgáló késése alá esnek.
+Bizonyos esetekben a magas végrehajtási szám több hálózati oda-vissza utazáshoz vezethet. Az oda-vissza utak befolyásolják a teljesítményt. Hálózati késés és a kiszolgáló alsóbb rétegbeli késése van kitéve.
 
-Például számos adatvezérelt webhely minden felhasználói kérelem esetében jelentősen hozzáfér az adatbázishoz. Bár a kapcsolatok készletezése segít, az adatbázis-kiszolgáló megnövekedett hálózati forgalma és feldolgozási terhelése csökkentheti a teljesítményt. Általánosságban a ciklikus utakat minimálisra kell tartani.
+Például számos adatvezérelt webhely minden felhasználói kérelem hez nagy mértékben hozzáfér az adatbázishoz. Bár a kapcsolatkészletezés segít, a megnövekedett hálózati forgalom és az adatbázis-kiszolgáló feldolgozási terhelése lassíthatja a teljesítményt. Általában, tartsa oda-vissza a minimumra.
 
-A gyakran végrehajtott ("Csevegő") lekérdezések azonosítása:
+A gyakran végrehajtott ("beszédes") lekérdezések azonosítása:
 
-1. Nyissa meg Lekérdezési terheléselemző **Egyéni** lapját a kiválasztott adatbázishoz.
-2. Módosítsa a mérőszámokat a **végrehajtások számára**.
+1. Nyissa **meg** az Egyéni lapot a Lekérdezési teljesítmény betekintésben a kijelölt adatbázishoz.
+2. Módosítsa a mutatókat **a végrehajtási szám**.
 3. Válassza ki a lekérdezések számát és a megfigyelési időközt.
-4. Kattintson a **Go >** gombra a testreszabott nézet megjelenítéséhez.
+4. A testreszabott nézet megtekintéséhez kattintson **az Ugrás >** gombra.
 
-   ![Lekérdezési végrehajtások száma](./media/sql-database-query-performance/top-execution.png)
+   ![Lekérdezés-végrehajtási szám](./media/sql-database-query-performance/top-execution.png)
 
-## <a name="understand-performance-tuning-annotations"></a>A teljesítmény-finomhangolási megjegyzések ismertetése
+## <a name="understand-performance-tuning-annotations"></a>A teljesítményhangolási jegyzetek ismertetése
 
-A számítási feladatok Lekérdezési terheléselemzőban való megismerése során előfordulhat, hogy a diagram tetején függőleges vonallal rendelkező ikonokat észlel.
+A Lekérdezési teljesítmény betekintésben a munkaterhelés feltárása során előfordulhat, hogy a diagram tetején függőleges vonallal rendelkező ikonok jelennek meg.
 
-Ezek az ikonok megjegyzések. [SQL Database Advisor](sql-database-advisor.md)teljesítményre vonatkozó javaslatokat jelenítenek meg. Ha egy jegyzet fölé viszi a mutatót, összefoglaló információkat kaphat a teljesítménnyel kapcsolatos javaslatokról.
+Ezek az ikonok jegyzetek. Ezek azt mutatják, teljesítmény ajánlásokat [AZ SQL Database Advisor](sql-database-advisor.md). Ha egy jegyzet fölé viszi az egérmutatót, összesített információkat kaphat a teljesítményre vonatkozó javaslatokról.
 
-   ![Lekérdezési jegyzet](./media/sql-database-query-performance/annotation.png)
+   ![Lekérdezés jegyzetelése](./media/sql-database-query-performance/annotation.png)
 
-Ha többet szeretne megtudni, vagy alkalmazni kívánja az Advisor javaslatát, válassza az ikont a javasolt művelet részleteinek megnyitásához. Ha ez egy aktív javaslat, akkor azonnal alkalmazhatja a portálról.
+Ha többet szeretne megtudni, vagy alkalmazni szeretné a tanácsadó ajánlását, válassza az ikont az ajánlott művelet részleteinek megnyitásához. Ha ez egy aktív javaslat, akkor azt azonnal alkalmazhatja a portálról.
 
-   ![Lekérdezési Megjegyzés részletei](./media/sql-database-query-performance/annotation-details.png)
+   ![Jegyzet részleteinek lekérdezése](./media/sql-database-query-performance/annotation-details.png)
 
-Bizonyos esetekben a nagyítási szint miatt előfordulhat, hogy az egymáshoz közeledő jegyzetek egyetlen jegyzetbe vannak összecsukva. Lekérdezési terheléselemző ezt jelöli a csoport megjegyzése ikonként. A csoport megjegyzésének ikon kiválasztásakor megnyílik egy új panel, amely felsorolja a jegyzeteket.
+Bizonyos esetekben a nagyítási szint miatt lehetséges, hogy az egymáshoz közeli jegyzetek egyetlen jegyzetbe vannak összecsukva. A Lekérdezési teljesítmény insight ezt csoportjegyzet-ikonként jelöli. A csoportjegyzet ikonjának kiválasztásakor megnyílik egy új panel, amely felsorolja a jegyzeteket.
 
-A lekérdezések és a teljesítmény-hangolási műveletek korrelációja segíthet a számítási feladatok jobb megismerésében.
+A lekérdezések és a teljesítményhangolási műveletek korrelációja segíthet a számítási feladatok jobb megértésében.
 
-## <a name="optimize-the-query-store-configuration"></a>A lekérdezési tároló konfigurációjának optimalizálása
+## <a name="optimize-the-query-store-configuration"></a>A Lekérdezéstároló konfigurációjának optimalizálása
 
-A Lekérdezési terheléselemző használata során előfordulhat, hogy a következő lekérdezési tár hibaüzenetei jelenhetnek meg:
+A Query Performance Insight használata közben a következő Query Store hibaüzenetek jelenhetnek meg:
 
-* "A lekérdezési tároló nincs megfelelően konfigurálva ezen az adatbázison. További információért kattintson ide. "
-* "A lekérdezési tároló nincs megfelelően konfigurálva ezen az adatbázison. Kattintson ide a beállítások módosításához.
+* "A Lekérdezéstároló nincs megfelelően konfigurálva ezen az adatbázison. Kattintson ide, ha többet szeretne megtudni."
+* "A Lekérdezéstároló nincs megfelelően konfigurálva ezen az adatbázison. Kattintson ide a beállítások módosításához."
 
 Ezek az üzenetek általában akkor jelennek meg, ha a Query Store nem tud új adatokat gyűjteni.
 
-Az első eset akkor történik meg, ha a lekérdezési tár írásvédett állapotban van, és a paraméterek beállítása optimális. Ezt az adattár méretének növelésével vagy a lekérdezési tároló törlésével javíthatja. (Ha törli a lekérdezési tárolót, az összes korábban összegyűjtött telemetria el fog veszni.)
+Az első eset akkor történik, ha a Query Store írásvédett állapotban van, és a paraméterek optimálisan vannak beállítva. Ezt az adattár méretének növelésével vagy a Query Store törlésével javíthatja. (Ha törli a Query Store-t, az összes korábban összegyűjtött telemetriai adat elvész.)
 
-   ![Lekérdezési tár részletei](./media/sql-database-query-performance/qds-off.png)
+   ![Lekérdezési tároló részletei](./media/sql-database-query-performance/qds-off.png)
 
-A második eset akkor fordul elő, ha a lekérdezési tár nincs engedélyezve, vagy a paraméterek nincsenek optimálisan beállítva. Megváltoztathatja az adatmegőrzési és rögzítési házirendet, valamint engedélyezheti a lekérdezési tárolót is, ha a következő parancsokat futtatja [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal.
+A második eset akkor történik, ha a Lekérdezéstároló nincs engedélyezve, vagy a paraméterek nincsenek optimálisan beállítva. Módosíthatja az adatmegőrzési és rögzítési szabályzatot, és engedélyezheti a Query Store-t az [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy az Azure Portal következő parancsainak futtatásával.
 
-### <a name="recommended-retention-and-capture-policy"></a>Ajánlott megőrzési és rögzítési szabályzat
+### <a name="recommended-retention-and-capture-policy"></a>Ajánlott megőrzési és rögzítési házirend
 
-Az adatmegőrzési szabályzatoknak két típusa van:
+Az adatmegőrzési házirendeknek két típusa van:
 
-* **Méret-alapú**: Ha a házirend **automatikus**értékre van beállítva, akkor a rendszer automatikusan törli az adatmennyiséget, amikor a maximális méret elérte a szinteket.
-* **Időalapú**: alapértelmezés szerint ez a házirend 30 napra van állítva. Ha a lekérdezési tároló nem áll rendelkezésre, a 30 napnál régebbi lekérdezési adatokat fogja törölni.
+* **Méretalapú**: Ha a házirend **auto**értékre van állítva, automatikusan törli az adatokat, amikor eléri a maximális méretet.
+* **Időalapú**: Alapértelmezés szerint ez a házirend 30 napra van állítva. Ha a Query Store-ból elfogy a hely, 30 napnál régebbi lekérdezésadatokat töröl.
 
-Beállíthatja a rögzítési szabályzatot a következőre:
+A rögzítési házirendet a következőkre állíthatja:
 
-* **Összes**: a lekérdezési tároló rögzíti az összes lekérdezést.
-* **Automatikus**: a lekérdezési tároló figyelmen kívül hagyja a ritka lekérdezéseket és a nem jelentős fordítási és végrehajtási időtartamú lekérdezéseket. A végrehajtások száma, a fordítás időtartama és a futásidejű időtartam küszöbértékei belsőleg vannak meghatározva. Ez az alapértelmezett beállítás.
-* **Nincs**: a lekérdezési tároló leállítja az új lekérdezések rögzítését, de a már rögzített lekérdezésekhez tartozó futásidejű statisztikák továbbra is begyűjthetők.
+* **Mind**: A Lekérdezéstároló az összes lekérdezést rögzíti.
+* **Automatikus**: A Lekérdezéstároló figyelmen kívül hagyja a ritkán előforduló lekérdezéseket és lekérdezéseket, amelyek fordítási és végrehajtási időtartamúak. A végrehajtási szám, a fordítási időtartam és a futásidejű időtartam küszöbértékei belsőleg meghatározottak. Ez az alapértelmezett beállítás.
+* **Nincs**: A Query Store leállítja az új lekérdezések rögzítését, de a már rögzített lekérdezések futásidejű statisztikái továbbra is gyűjtésre kerülnek.
 
-Javasoljuk, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal az alábbi parancsok végrehajtásával állítsa be az összes szabályzatot **automatikusra** és a tisztítási házirendre. (`YourDB` cseréje az adatbázis nevére.)
+Azt javasoljuk, hogy az összes szabályzatot **auto** és a tisztítási szabályzat 30 napra állításával a következő parancsokat az [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy az Azure Portalon. (Cserélje `YourDB` le az adatbázis nevét.)
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -259,22 +259,22 @@ Javasoljuk, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-serve
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-Növelje a lekérdezési tároló méretét úgy, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal használatával csatlakozik egy adatbázishoz, és futtatja a következő lekérdezést. (`YourDB` cseréje az adatbázis nevére.)
+A Query Store méretének növelése az [SSMS-en](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy az Azure Portalon keresztül egy adatbázishoz való csatlakozással és a következő lekérdezés futtatásával. (Cserélje `YourDB` le az adatbázis nevét.)
 
 ```SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
 
-Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új lekérdezéseket. Ha a Query Store-nak azonnal működőképesnek kell lennie, dönthet úgy, hogy törli a lekérdezési tárolót úgy, hogy a következő lekérdezést futtatja a SSMS vagy a Azure Portal használatával. (`YourDB` cseréje az adatbázis nevére.)
+Ezeknek a beállításoknak a alkalmazása végül a Lekérdezési tárolót az új lekérdezések telemetriai adatait gyűjti. Ha azonnal működésbe kell hoznia a Query Store-t, tetszés szerint törölheti a Query Store-t a következő lekérdezés SSMS-en vagy az Azure Portalon keresztül történő futtatásával. (Cserélje `YourDB` le az adatbázis nevét.)
 
 > [!NOTE]
-> A következő lekérdezés futtatása törli a lekérdezési tárolóban korábban összegyűjtött figyelt telemetria.
+> A következő lekérdezés futtatása törli az összes korábban összegyűjtött figyelt telemetriai adatokat a Query Store.Running the following query will delete all previously collected monitored telemetry in Query Store.
 
 ```SQL
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Érdemes [Azure SQL Analyticst](../azure-monitor/insights/azure-sql.md) használni az önálló és készletezett adatbázisok, rugalmas készletek, felügyelt példányok és példány-adatbázisok nagy flottájának speciális teljesítményének figyelésére.
+Fontolja meg [az Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) használatát az egy- és készletalapú adatbázisok, rugalmas készletek, felügyelt példányok és példányadatbázisok nagy flottájának speciális teljesítményfigyeléséhez.

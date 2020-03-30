@@ -1,41 +1,41 @@
 ---
-title: Az Azure Kubernetes használata Azure Cosmos DB
-description: Megtudhatja, hogyan indít el egy Kubernetes-fürtöt az Azure-ban, amely Azure Cosmos DBt használ (előzetes verzió)
+title: Az Azure Kubernetes használata az Azure Cosmos DB-vel
+description: Megtudhatja, hogyan lehet egy Azure Cosmos DB-t használó Kubernetes-fürt indítása az Azure-ban (előzetes verzió)
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
 ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70093727"
 ---
-# <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Az Azure Kubernetes és a Azure Cosmos DB használata (előzetes verzió)
+# <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Az Azure Kubernetes használata az Azure Cosmos DB-vel (előzetes verzió)
 
-A Azure Cosmos DB etcd API-val a Azure Cosmos DB használhatja a háttérbeli tárolóként az Azure Kubernetes. Azure Cosmos DB megvalósítja a etcd huzal protokollt, amely lehetővé teszi, hogy a főcsomópont API-kiszolgálói a Azure Cosmos DB ugyanúgy használják, mint a helyileg telepített etcd. a Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Ha az Azure Cosmos etcd API-t használja a Kubernetes-tárolóhoz, a következő előnyöket kapja: 
+Az Azure Cosmos DB etcd API-ja lehetővé teszi, hogy az Azure Cosmos DB-t használja az Azure Kubernetes háttértárolójaként. Az Azure Cosmos DB megvalósítja az etcd wire protokollt, amely lehetővé teszi a fő csomópont API-kiszolgálói számára az Azure Cosmos DB használatát, ugyanúgy, mint egy helyileg telepített etcd. etcd API az Azure Cosmos DB jelenleg előzetes verzióban. Ha az Azure Cosmos etcd API-t használja a Kubernetes háttértárolójaként, a következő előnyöket kapja: 
 
-* Nincs szükség a etcd manuális konfigurálására és kezelésére.
-* A Cosmos által garantált etcd magas rendelkezésre állása (99,99% egyetlen régióban, 99,999% több régióban).
-* A etcd rugalmas skálázhatósága.
-* Az alapértelmezett & a vállalati használatra készen áll.
-* Piacvezető, átfogó SLA-kat.
+* Nem kell manuálisan beállítani és kezelni, stb.
+* Magas rendelkezésre állása etcd, garantált Cosmos (99,99% egyetlen régióban, 99,999% több régióban).
+* Az etcd rugalmas skálázhatósága.
+* Biztonságos, alapértelmezés szerint & vállalati használatra kész.
+* Iparágvezető, átfogó SLA-k.
 
-Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, [](etcd-api-introduction.md) tekintse meg az áttekintő cikket. Ez a cikk bemutatja, hogyan használható az [Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (ak-Engine) egy olyan Kubernetes-fürt rendszerindítására az Azure-ban, amely helyileg telepített és konfigurált etcd helyett [Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/) használ. 
+Ha többet szeretne megtudni az etcd API-ról az Azure Cosmos DB-ben, tekintse meg az [áttekintő](etcd-api-introduction.md) cikket. Ez a cikk bemutatja, hogyan használhatja az [Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) a kubernetes-fürt az Azure-ban, amely az [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) helyett a helyileg telepített és konfigurált etcd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)legújabb verzióját. Az Azure CLI-t az operációs rendszeréhez és a telepítéshez is letöltheti.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)legújabb verzióját. Letöltheti az Azure CLI-t az operációs rendszerére jellemzően, és telepítheti.
 
-1. Telepítse az Azure Kubernetes Engine [legújabb verzióját](https://github.com/Azure/aks-engine/releases) . A különböző operációs rendszerekre vonatkozó telepítési utasítások az [Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) oldalon érhetők el. Ehhez csupán a csatolt doc-hoz tartozó **Kabai motor telepítése** szakasz lépéseit kell megadnia. A letöltés után bontsa ki a zip-fájlt.
+1. Telepítse az Azure Kubernetes Engine [legújabb verzióját.](https://github.com/Azure/aks-engine/releases) A különböző operációs rendszerek telepítési utasításai az [Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) lapon érhetők el. Csak a csatolt dokumentum **AKS-motor telepítése** szakaszának lépéseire van szüksége. A letöltés után bontsa ki a zip fájlt.
 
-   Az Azure Kubernetes Engine (**AK-Engine**) Azure Resource Manager sablonokat hoz létre az Azure-beli Kubernetes-fürtökhöz. Az Kabai-motor bemenete a fürt definíciós fájlja, amely leírja a kívánt fürtöt, beleértve a Orchestrator, a szolgáltatásokat és az ügynököket. A bemeneti fájlok szerkezete hasonló az Azure Kubernetes Service nyilvános API-hoz.
+   Az Azure Kubernetes Engine (**aks-engine)** Azure Resource Manager-sablonokat hoz létre az Azure-fürtökhöz az Azure-ban. Az aks-engine bemenete egy fürtdefiníciós fájl, amely leírja a kívánt fürtöt, beleértve az orchestratort, a szolgáltatásokat és az ügynököket. A bemeneti fájlok szerkezete hasonló az Azure Kubernetes-szolgáltatás nyilvános API-jéhez.
 
-1. A Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Regisztráljon az előzetes verzió használatára a következő címen: https://aka.ms/cosmosetcdapi-signup. Az űrlap elküldése után az előfizetését az Azure Cosmos etcd API használatára fogja engedélyezni. 
+1. Az etcd API az Azure Cosmos DB jelenleg előzetes verzióban. Regisztráljon, hogy használhassa https://aka.ms/cosmosetcdapi-signupaz előnézeti verziót a következő helyen: . Miután elküldte az űrlapot, az előfizetés lesz az Azure Cosmos etcd API használatához. 
 
-## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>A fürt üzembe helyezése Azure Cosmos DB
+## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>A fürt üzembe helyezése az Azure Cosmos DB-vel
 
 1. Nyisson meg egy parancssori ablakot, és jelentkezzen be az Azure-ba a következő paranccsal:
 
@@ -43,23 +43,23 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, [](etcd-api-introd
    az login 
    ```
 
-1. Ha egynél több előfizetéssel rendelkezik, váltson arra az előfizetésre, amelyet a Azure Cosmos DB etcd API számára engedélyezett. A szükséges előfizetésre váltás a következő paranccsal végezhető el:
+1. Ha egynél több előfizetéssel rendelkezik, váltson át az Azure Cosmos DB-n stb. A következő paranccsal válthat a szükséges előfizetésre:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"
    ```
-1. Ezután hozzon létre egy új erőforráscsoportot, amelybe telepíteni fogja az Azure Kubernetes-fürt által igényelt erőforrásokat. Győződjön meg arról, hogy az erőforráscsoportot az "CentralUS" régióban hozza létre. Az erőforráscsoport nem kötelező az "CentralUS" régióban, azonban az Azure Cosmos etcd API jelenleg csak a "CentralUS" régióban helyezhető üzembe. Ezért érdemes a Kubernetes-fürtöt a Cosmos etcd-példánnyal együtt elhelyezni:
+1. Ezután hozzon létre egy új erőforráscsoportot, ahol üzembe helyezi az Azure Kubernetes-fürt által igényelt erőforrásokat. Győződjön meg arról, hogy hozza létre az erőforráscsoportot a "centralus" régióban. Nem kötelező, hogy az erőforráscsoport a "centralus" régióban legyen, azonban az Azure Cosmos etcd API jelenleg csak a "centralus" régióban telepíthető. Tehát a legjobb, ha a Kubernetes-fürt a Cosmos etcd példájával együtt helyezkedik el:
 
    ```azurecli-interactive
    az group create --name <Name> --location "centralus"
    ```
 
-1. Ezután hozzon létre egy egyszerű szolgáltatásnevet az Azure Kubernetes-fürt számára, hogy kommunikálni tudjon az azonos erőforráscsoport részét képező erőforrásokkal. Az Azure CLI, a PowerShell vagy a Azure Portal használatával létrehozhat egy egyszerű szolgáltatást, ebben a példában a CLI-t fogja létrehozni.
+1. Ezután hozzon létre egy egyszerű szolgáltatás az Azure Kubernetes-fürthöz, hogy kommunikáljon az ugyanazon erőforráscsoport részét játszó erőforrásokkal. Az Azure CLI, a PowerShell vagy az Azure Portal használatával egyszerű szolgáltatást hozhat létre ebben a példában a CLI-t, hogy létrehozza azt.
 
    ```azurecli-interactive
    az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<Your_Azure_subscription_ID>/resourceGroups/<Your_resource_group_name>"
    ```
-   Ez a parancs egy egyszerű szolgáltatásnév részleteit jeleníti meg, például:
+   Ez a parancs egy egyszerű szolgáltatás adatait adja ki, például:
    
    ```cmd
    Retrying role assignment creation: 1/36
@@ -72,15 +72,15 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, [](etcd-api-introd
    }
    ```
    
-   Jegyezze fel a **AppID** és a **jelszó** mezőt, mivel ezeket a paramétereket a következő lépésekben fogja használni. 
+   Jegyezze fel az **appAzonosítót** és a **jelszómezőket,** mivel ezeket a paramétereket a következő lépésekben fogja használni. 
 
-1. A parancssorban navigáljon ahhoz a mappához, ahol az Azure Kubernetes motor végrehajtható fájlja található. A parancssorban például a következő módon nyithatja meg a mappát:
+1. A parancssorból keresse meg azt a mappát, ahol az Azure Kubernetes Engine végrehajtható fájl található. A parancssorban például a következő módon navigálhat a mappába:
 
    ```cmd
    cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
-1. Nyisson meg egy tetszőleges szövegszerkesztőt, és Definiáljon egy Resource Manager-sablont, amely a Azure Cosmos DB etcd API-val telepíti az Azure Kubernetes-fürtöt. Másolja az alábbi JSON-definíciót a szövegszerkesztőbe, és mentse a `apiModel.json`fájlt a következőként:
+1. Nyisson meg egy ön által választott szövegszerkesztőt, és definiáljon egy Resource Manager-sablont, amely az Azure Cosmos DB-api-val telepíti az Azure Kubernetes-fürtöt. Másolja a szövegszerkesztőbe a következő JSON-definíciót, és mentse a fájlt a következőképpen: `apiModel.json`
 
    ```json
 
@@ -121,9 +121,9 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, [](etcd-api-introd
    }
    ```
 
-   A JSON-/fürt-definíciós fájlban a **"cosmosEtcd": true (igaz**) paramétert kell megjegyezni. Ez a paraméter a "masterProfile" tulajdonságban található, és azt jelzi, hogy a központi telepítés az Azure Cosmos etcd API-t használja a normál etcd helyett. 
+   A JSON/cluster definíciós fájlban a legfontosabb paraméter a **"cosmosEtcd": true**. Ez a paraméter a "masterProfile" tulajdonságok, és azt jelzi, hogy a központi telepítés használata az Azure Cosmos etcd API-t a rendszeres etcd helyett. 
 
-1. Telepítse a Azure Cosmos DBt használó Azure Kubernetes-fürtöt a következő paranccsal:
+1. Telepítse az Azure Kubernetes-fürtöt, amely az Azure Cosmos DB-t használja a következő paranccsal:
 
    ```cmd
    aks-engine deploy \
@@ -137,21 +137,21 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, [](etcd-api-introd
      --force-overwrite
    ```
 
-   Az Azure Kubernetes Engine egy olyan fürtcsomópont-definíciót használ, amely az Azure-Kubernetes kívánt formáját, méretét és konfigurációját ismerteti. Több szolgáltatás is engedélyezhető a fürt definícióján keresztül. Ebben a példában a következő paramétereket fogja használni:
+   Az Azure Kubernetes Engine egy fürtdefiníciót használ, amely felvázolja az Azure Kubernetes kívánt alakját, méretét és konfigurációját. Számos olyan szolgáltatás létezik, amely a fürtdefiníción keresztül engedélyezhető. Ebben a példában a következő paramétereket fogja használni:
 
-   * **előfizetés-azonosító:** Azure Cosmos DB etcd API-val rendelkező Azure-előfizetés azonosítója.
-   * **client-id:** Az egyszerű szolgáltatás appId. A `appId` vissza lett visszaadva a 4. lépésben megadott kimenetként.
-   * **Ügyfél – titok:** Az egyszerű szolgáltatásnév jelszava vagy véletlenszerűen generált jelszó. Ez az érték a 4. lépésben a "password" paraméterben kimenetként lett visszaadva. 
-   * **dnsPrefix:** Régió – egyedi DNS-név. Ez az érték az állomásnév részét képezi (például: myprod1, átmeneti).
-   * **helyen**  A hely, ahol a fürtöt telepíteni kell, a jelenleg csak a "CentralUS" támogatott.
+   * **előfizetés-azonosító:** Azure-előfizetés-azonosító, amely az Azure Cosmos DB etcd API engedélyezve van.
+   * **ügyfél-azonosító:** Az egyszerű szolgáltatás alkalmazásazonosítója. A `appId` 4.
+   * **Ügyféltitok:** Az egyszerű szolgáltatás jelszava vagy egy véletlenszerűen generált jelszó. Ezt az értéket a 4. 
+   * **dnsElőtag:** Régió-egyedi DNS-név. Ez az érték az állomásnév részét képezi (a példaértékek- myprod1, staging).
+   * **helyszín:**  Az a hely, ahová a fürtöt telepíteni kell, jelenleg csak a "centralus" támogatott.
 
    > [!Note]
-   > Az Azure Cosmos etcd API jelenleg csak a "CentralUS" régióban helyezhető üzembe. 
+   > Az Azure Cosmos etcd API jelenleg csak a "centralus" régióban telepíthető. 
  
-   * **api-model:** A sablonfájl teljesen minősített elérési útja.
-   * **kényszerített felülírás:** Ezzel a beállítással automatikusan felül lehet írni a kimeneti könyvtár meglévő fájljait.
+   * **api-modell:** A sablonfájl teljesen minősített elérési útja.
+   * **erő-felülírás:** Ezzel a beállítással automatikusan felülírhatja a kimeneti könyvtárban lévő meglévő fájlokat.
  
-   A következő parancs egy példaként szolgáló központi telepítést mutat be:
+   A következő parancs egy példa telepítést mutat be:
 
    ```cmd
    aks-engine deploy \
@@ -164,9 +164,9 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, [](etcd-api-introd
      --force-overwrite
    ```
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-A sablon üzembe helyezése több percet is igénybe vehet. Az üzembe helyezés sikeres befejeződése után a következő kimenet jelenik meg a parancsok parancssorában:
+A sablon központi telepítése több percet vesz igénybe. A telepítés sikeres befejezése után a parancssorban a következő kimenet jelenik meg:
 
 ```cmd
 WARN[0006] apimodel: missing masterProfile.dnsPrefix will use "aks-sg-test"
@@ -175,12 +175,12 @@ INFO[0025] Starting ARM Deployment (aks-sg-test-546247491). This will take some 
 INFO[0587] Finished ARM Deployment (aks-sg-test-546247491). Succeeded
 ```
 
-Az erőforráscsoport mostantól olyan erőforrásokat tartalmaz, mint a-Virtual Machine, az Azure Cosmos Account (etcd API), a Virtual Network, a rendelkezésre állási csoport és a Kubernetes-fürt által igényelt egyéb erőforrások. 
+Az erőforráscsoport most már olyan erőforrásokat tartalmaz, mint például a virtuális gép, az Azure Cosmos-fiók(etcd API), a virtuális hálózat, a rendelkezésre állási készlet és a Kubernetes-fürt által igényelt egyéb erőforrások. 
 
-Az Azure Cosmos-fiók neve megegyezik a megadott DNS-előtaggal, amely a k8s-vel van hozzáfűzve. Az Azure Cosmos-fiókját a rendszer automatikusan kiépíti egy **EtcdDB** nevű adatbázissal és egy **EtcdData**nevű tárolóval. A tároló tárolja a etcd kapcsolatos összes adatát. A tároló bizonyos számú kérési egységgel lett kiépítve, és a [számítási feladatok alapján méretezheti (növelheti/csökkentheti) az átviteli sebességet](scaling-throughput.md) . 
+Az Azure Cosmos-fiók neve megegyezik a megadott DNS-előtag k8s hozzáfűzve. Az Azure Cosmos-fiók automatikusan kilesz építve egy **EtcdDB** nevű adatbázissal és egy **EtcdData**nevű tárolóval. A tartály tárolja az összes etcd kapcsolódó adatokat. A tároló egy bizonyos számú kérelemegységgel van kiépítve, és a számítási feladatok alapján [skálázhatja (növelheti/csökkentheti) az átviteli értéket.](scaling-throughput.md) 
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [, hogyan dolgozhat az Azure Cosmos Database, tárolók és elemek](databases-containers-items.md) használatával
-* Útmutató a kiépített [átviteli sebességek optimalizálásához](optimize-cost-throughput.md)
+* Ismerje meg, hogyan [dolgozhat az Azure Cosmos-adatbázissal, -tárolókkal és -elemekkel](databases-containers-items.md)
+* További információ a [kiépített átviteli-átviteli költségek optimalizálásáról](optimize-cost-throughput.md)
 

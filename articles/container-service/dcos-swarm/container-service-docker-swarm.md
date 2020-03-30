@@ -1,6 +1,6 @@
 ---
-title: ELAVULT Azure Swarm-fürt kezelése a Docker API-val
-description: Tárolók üzembe helyezése Docker Swarm-fürtön Azure Container Service
+title: (ELAVULT) Az Azure Swarm-fürt kezelése a Docker API-val
+description: Tárolók üzembe helyezése Docker Swarm-fürtre az Azure Container Service szolgáltatásban
 services: container-service
 author: rgardler
 manager: madhana
@@ -10,13 +10,13 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136227"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>ELAVULT Tárolók kezelése a Docker Swarmmal
+# <a name="deprecated-container-management-with-docker-swarm"></a>(ELAVULT) Konténerkezelés a Docker Swarm segítségével
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -26,9 +26,9 @@ A Docker Swarm olyan környezetet biztosít, amelyben tárolóalapú számítás
 
 A dokumentumban szereplő gyakorlatok előfeltételei:
 
-[Swarm-fürt létrehozása az Azure Container Service-ben](container-service-deployment.md)
+[Swarm-fürt létrehozása az Azure tárolószolgáltatásban](container-service-deployment.md)
 
-[Csatlakozás a Swarm-fürthöz az Azure Container Service-ben](../container-service-connect.md)
+[Csatlakozás a Swarm-fürthöz az Azure tárolószolgáltatásban](../container-service-connect.md)
 
 ## <a name="deploy-a-new-container"></a>Új tároló üzembe helyezése
 Ha új tárolót szeretne létrehozni a Docker Swarmban, használja a `docker run` parancsot (ügyeljen arra, hogy a fenti előfeltételeknek megfelelően nyisson meg egy SSH-alagutat a főkiszolgálók felé). Az alábbi példa létrehoz egy tárolót a `yeasy/simple-web` lemezképből:
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Tároló üzembe helyezése a Docker Compose-zal
 A Docker Compose-zal automatizálhatja a több tároló telepítését és konfigurálását. Ehhez hozzon létre egy Secure Shell- (SSH-) alagutat, és állítsa be a DOCKER_HOST változót (lásd a feni előfeltételeket).
 
-Hozzon létre egy docker-compose.yml fájlt a helyi számítógépen. Ehhez használja a következő mintát:
+Hozzon létre egy docker-compose.yml fájlt a helyi számítógépen. Ehhez használja ezt a mintát:
 
 ```dockerfile
 web:
@@ -112,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 A `docker-compose ps` használatával természetesen megvizsgálhatja a csak a `compose.yml` fájlban megadott tárolókat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További információ a Docker Swarmról](https://docs.docker.com/swarm/)
 

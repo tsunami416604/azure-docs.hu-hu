@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560100"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
@@ -32,12 +32,12 @@ Ez az oktatóanyag a következő lépéseken vezet végig:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörbe](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatok elvégzéséhez:
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN előfizetői előnyeit,](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy ingyenes [fiókra.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+2. Kövesse a [rövid útmutató lépéseit: Az Azure Portal használatával hozzon létre egy Service Bus-témakört, és a témakörelőfizetéseit](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatok elvégzéséhez hajtsa végre:
     1. Hozzon létre egy Service Bus **névteret**.
-    2. A **kapcsolatok karakterláncának**beolvasása.
+    2. A **kapcsolati karakterlánc bekapcsolása**.
     3. Hozzon létre egy **témakört** a névtérben.
-    4. Hozzon létre **egy előfizetést** a témakörben a névtérben.
+    4. Hozzon létre **egy előfizetést** a témakörhöz a névtérben.
 3. [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
  
@@ -75,7 +75,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
     static ITopicClient topicClient;
     ``` 
 
-3. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra, amely aszinkron módon küld üzeneteket az SendMessagesAsync metódussal, amelyet a következő lépésben fog hozzáadni. 
+3. Cserélje `Main()` le a metódust a következő **aszinkron** `Main` metódusra, amely aszinkron módon küldi az üzeneteket a következő lépésben hozzáadni kívánt SendMessagesAsync metódussal. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -188,7 +188,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
 
 ## <a name="receive-messages-from-the-subscription"></a>Üzenet fogadása az előfizetéstől
 
-Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core Console-alkalmazást, és telepítse a **Microsoft. Azure. ServiceBus** NuGet-csomagot, hasonlóan az előző küldő alkalmazáshoz.
+Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core konzolalkalmazást, és telepítse a **Microsoft.Azure.ServiceBus** NuGet csomagot, hasonlóan az előző feladóalkalmazáshoz.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Kód írása az üzenetek előfizetéstől történő fogadásához
 
@@ -210,7 +210,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core Consol
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. A következő lépésben felvenni kívánt `RegisterOnMessageHandlerAndReceiveMessages()` metódust hívja meg. 
+3. Cserélje `Main()` le a metódust a következő **aszinkron** `Main` módszerre. Meghívja `RegisterOnMessageHandlerAndReceiveMessages()` a következő lépésben hozzáadni kívánt metódust. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -364,16 +364,16 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core Consol
         }
     }
     ```
-9. Futtassa a programot, majd ellenőrizze ismét a portálon. Figyelje meg, hogy a **Üzenetek száma** és a **Jelenlegi** értéke most **0**.
+9. Futtassa a programot, majd ellenőrizze ismét a portálon. Figyelje meg, hogy az **üzenetek száma** és **az aktuális** értékek most **0**.
    
     ![A témakör hossza][topic-message-receive]
 
 Gratulálunk! A .NET Standard kódtár használatával létrehozott egy üzenettémát és egy előfizetést, elküldött 10 üzenetet, és fogadta is azokat.
 
 > [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
+> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy csatlakozzanak a Service Bus névtér és felügyeli az üzenetkezelési entitások egyszerű módon. Az eszköz speciális funkciókat biztosít, például importálási/exportálási funkciókat, vagy a témakör, a várólisták, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelését. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg Service Bus [GitHub-adattárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
 

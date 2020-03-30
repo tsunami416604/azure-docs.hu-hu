@@ -1,6 +1,6 @@
 ---
-title: azcopy listája | Microsoft Docs
-description: Ez a cikk a azcopy List parancsra vonatkozó tudnivalókat tartalmazza.
+title: azcopy lista | Microsoft dokumentumok
+description: Ez a cikk az azcopy list parancs hivatkozási információit tartalmazza.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: f02c1afadf18a7d3170eb178696487464e4a0bd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034098"
 ---
 # <a name="azcopy-list"></a>azcopy list
@@ -21,18 +21,18 @@ Egy adott erőforrás entitásait sorolja fel.
 
 ## <a name="synopsis"></a>Áttekintés
 
-A jelenlegi kiadásban csak a blob-tárolók támogatottak.
+Csak blob tárolók támogatottak az aktuális kiadásban.
 
 ```azcopy
 azcopy list [containerURL] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
 
-- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
+- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
+- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
 
@@ -44,17 +44,17 @@ azcopy list [containerURL]
 
 |Beállítás|Leírás|
 |--|--|
-|-h,-– Súgó|Súgótartalom megjelenítése a List parancshoz.|
-|– géppel olvasható|A fájlok mérete bájtban.|
-|--Mega-egységek|Az 1000-as, nem 1024-as megrendelések egységeit jeleníti meg.|
-|--Futtatás – Tally|Megszámolja a fájlok teljes számát és méreteit.|
+|-h, --segítség|Súgótartalom megjelenítése a listaparancshoz.|
+|--gép által olvasható|A fájlméretek listázása bájtban.|
+|--mega-egységek|Az egységeket 1000-es rendelésben jeleníti meg, nem 1024-ben.|
+|--futás-tally|Megszámolja a fájlok teljes számát és méretét.|
 
-## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
-|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
+|--sapka-mbps uint32|Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.|
+|--kimenet-típusú karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg".|
 
 ## <a name="see-also"></a>Lásd még
 

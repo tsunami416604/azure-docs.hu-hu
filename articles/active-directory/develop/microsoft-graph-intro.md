@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph API | Microsoft Docs
-description: A Microsoft Graph API egy REST-alapú webes API, amely lehetővé teszi Microsoft Cloud szolgáltatás erőforrásainak elérését.
+title: Microsoft Graph API | Microsoft dokumentumok
+description: A Microsoft Graph API egy RESTful webes API, amely lehetővé teszi a Microsoft Cloud szolgáltatás erőforrásainak elérését.
 author: davidmu1
 services: active-directory
 manager: CelesteDG
@@ -12,49 +12,49 @@ ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
 ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136500"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-A Microsoft Graph API egy REST-alapú webes API, amely lehetővé teszi Microsoft Cloud szolgáltatás erőforrásainak elérését. Miután regisztrálta az alkalmazást, és beolvassa egy felhasználó vagy szolgáltatás hitelesítési jogkivonatait, megteheti a kéréseket a Microsoft Graph API-nak. További információ: [Microsoft Graph áttekintése](https://docs.microsoft.com/graph/overview).
+A Microsoft Graph API egy RESTful webes API, amely lehetővé teszi a Microsoft Cloud szolgáltatás erőforrásainak elérését. Miután regisztrálta az alkalmazást, és hitelesítési jogkivonatokat kért egy felhasználóhoz vagy szolgáltatáshoz, kéréseket tehet a Microsoft Graph API-hoz. További információt a Microsoft Graph áttekintése című [témakörben talál.](https://docs.microsoft.com/graph/overview)
 
-A Microsoft Graph REST API-kat és ügyféloldali kódtárakat tesz elérhetővé a következő Microsoft 365-szolgáltatásokban lévő adatok eléréséhez:
-- Office 365-szolgáltatások: ás, Excel, Microsoft Books, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner és SharePoint
-- Nagyvállalati mobilitási és biztonsági szolgáltatások: Advanced Threat Analytics, komplex veszélyforrások elleni védelem, Azure Active Directory, Identity Manager és Intune
-- Windows 10 Services: tevékenységek, eszközök, értesítések
+A Microsoft Graph elérhetővé teszi a REST API-kat és az ügyféltárakat a következő Microsoft 365-szolgáltatások adatainak eléréséhez:
+- Office 365-szolgáltatások: Delve, Excel, Microsoft Bookings, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner és SharePoint
+- Vállalati mobilitási és biztonsági szolgáltatások: Komplex fenyegetéselemzés, komplex veszélyforrások elleni védelem, Azure Active Directory, Identity Manager és Intune
+- Windows 10-szolgáltatások: tevékenységek, eszközök, értesítések
 - Dynamics 365 Business Central
 
 ## <a name="versions"></a>Verziók
 
-Microsoft Graph jelenleg két verziót támogat: v 1.0 és Beta. A v 1.0 verziója általánosan elérhető API-kat tartalmaz. Használja a 1.0-s verziót az összes éles alkalmazáshoz. A Beta a jelenleg előzetes verzióban elérhető API-kat tartalmazza. Mivel előfordulhat, hogy a bétaverzió API-jai nem módosítják a változásokat, javasoljuk, hogy a bétaverziót csak a fejlesztés alatt álló alkalmazások tesztelésére használja. Ne használjon béta API-kat az éles alkalmazásokban. További tudnivalókért tekintse [meg a verziószámozást, a támogatást és a változtatási szabályzatokat a Microsoft Graph](https://docs.microsoft.com/graph/versioning-and-support).
+A Microsoft Graph jelenleg két verziót támogat: az 1.0-s verziót és a bétaverziót. A v1.0-s verzió általánosan elérhető API-kat tartalmaz. Használja a v1.0-s verziót az összes éles alkalmazáshoz. A béta verzió az előzetes verzióban elérhető API-kat tartalmazza. Mivel előfordulhat, hogy a béta VERZIÓink ban törésmódosításokat vezetünk be, azt javasoljuk, hogy a bétaverziót csak a fejlesztés alatt lévő alkalmazások tesztelésére használja; ne használjon béta API-kat az éles alkalmazásokban. További információt a [Microsoft Graph verziószámozási, támogatási és módosítási szabályzatának megszegése című témakörben talál.](https://docs.microsoft.com/graph/versioning-and-support)
 
-A Beta API-k használatának megkezdéséhez lásd: [Microsoft Graph béta-végpont referenciája](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
+A béta API-k használatának megkezdéséhez olvassa el a [Microsoft Graph bétavégpont-hivatkozási témakörét](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
 
-A 1.0-s API-k használatának megkezdéséhez lásd a [Microsoft Graph REST API 1.0-s verziójának dokumentációját](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) .
+A v1.0 API-k használatának megkezdéséhez olvassa el a [Microsoft Graph REST API 1.0-s verziós hivatkozását.](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
 
 ## <a name="get-started"></a>Bevezetés
 
-Ha olyan erőforrást szeretne olvasni vagy írni, mint például egy felhasználó vagy egy e-mail-üzenet, a következőhöz hasonló kérelmet kell létrehoznia:
+Ha egy erőforrásból, például felhasználóról vagy e-mailüzenetből szeretne olvasni vagy írni, a következőhöz hasonló kérést kell létrehoznia:
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
-A kiépített kérelem elemeivel kapcsolatos további információkért lásd: [a Microsoft Graph API használata](https://docs.microsoft.com/graph/use-the-api)
+A létrevett kérelem elemeiről a Microsoft Graph API használata című témakörben talál további [információt.](https://docs.microsoft.com/graph/use-the-api)
 
-A gyors üzembe helyezési minták bemutatják, hogyan érheti el a Microsoft Graph API hatékonyságát. Azok a minták, amelyek egyetlen hitelesítéssel érhetők el két szolgáltatáshoz: Microsoft-fiók és az Outlook. Minden rövid útmutató hozzáfér Microsoft-fiók felhasználói profilokból származó adatokhoz, és megjeleníti az eseményeket a naptárból.
+A gyorsindítási minták segítségével megtudhatja, hogyan érheti el a Microsoft Graph API-t. Az elérhető minták két szolgáltatást érhetnek el egy hitelesítéssel: a Microsoft-fiókot és az Outlookot. Minden rövid útmutató a Microsoft-fiók felhasználóinak profiljaiból fér hozzá az információkhoz, és megjeleníti az eseményeket a naptárból.
 A rövid útmutatók négy lépést foglalnak magukban:
 - Válassza ki a platformot
-- Alkalmazás-azonosító (ügyfél-azonosító) beszerzése
+- Az alkalmazásazonosító (ügyfélazonosító) beszerezése
 - A minta összeállítása
-- Jelentkezzen be, és tekintse meg az eseményeket a naptárban
+- Bejelentkezés és események megtekintése a naptárban
 
-Ha elvégezte a gyors üzembe helyezést, már van egy alkalmazás, amely készen áll a futtatásra. További információ: Microsoft Graph rövid útmutató – [Gyakori kérdések](https://docs.microsoft.com/graph/quick-start-faq). A minták használatának megkezdéséhez lásd: [Microsoft Graph](https://developer.microsoft.com/graph/quick-start)rövid útmutató.
+A rövid útmutató befejezésekor egy használatra kész alkalmazással rendelkezik. További információt a [Microsoft Graph rövidútmutató – gyakori kérdések című témakörben talál.](https://docs.microsoft.com/graph/quick-start-faq) A minták első lépései a [Microsoft Graph rövid útmutatója című témakörben vannak.](https://developer.microsoft.com/graph/quick-start)
 
 ## <a name="tools"></a>Eszközök
 
-A Microsoft Graph Explorer egy webalapú eszköz, amellyel Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. Microsoft Graph Explorer a következő címen érhető el: `https://developer.microsoft.com/graph/graph-explorer`.
+A Microsoft Graph Explorer egy webalapú eszköz, amellyel a Microsoft Graph API-k használatával hozhat létre és tesztelhet kéréseket. A Microsoft Graph Explorer `https://developer.microsoft.com/graph/graph-explorer`a következő helyen érhető el: .
 
-A Poster olyan eszköz, amellyel a Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. A Poster a következő címen tölthető le: `https://www.getpostman.com/`. Ha a Poster-ben szeretné használni a Microsoft Grapht, használja a Microsoft Graph gyűjteményt a Poster szolgáltatásban. További információ: [Poster használata a Microsoft Graph API-val](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+A Postman egy olyan eszköz, amellyel a Microsoft Graph API-k használatával is létrehozhat és tesztelhet kéréseket. Letöltheti Postman a: `https://www.getpostman.com/`. A Microsoft Graph postán való használatához használja a Microsoft Graph gyűjteményt a Postman alkalmazásban. További információt a [Postman használata a Microsoft Graph API-val című témakörben talál.](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)

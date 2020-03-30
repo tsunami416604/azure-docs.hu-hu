@@ -1,6 +1,6 @@
 ---
-title: Azure Firewall üzembe helyezése Availability Zones a PowerShell használatával
-description: Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy Azure Firewallt a Availability Zones használatával a Azure PowerShell használatával.
+title: Az Azure tűzfal üzembe helyezése rendelkezésre állási zónákkal a PowerShell használatával
+description: Ebben a cikkben megtudhatja, hogyan telepíthet egy Azure-tűzfal rendelkezésre állási zónák az Azure PowerShell használatával.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,32 +8,32 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 33dcebf14f4d534962783a30ec94f7ff6529ae0d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74195927"
 ---
-# <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Azure Firewall üzembe helyezése Availability Zones használatával Azure PowerShell
+# <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Azure Firewall üzembe helyezése az Availability Zonesszal az Azure PowerShell használatával
 
-A Azure Firewall az üzembe helyezés során konfigurálható úgy, hogy a nagyobb rendelkezésre állás érdekében több Availability Zones is kiterjedhet.
+Az Azure Firewall konfigurálható a központi telepítés során, hogy több rendelkezésre állási zónára is kiterjedjen a nagyobb rendelkezésre állás érdekében.
 
-Ez a szolgáltatás a következő forgatókönyveket teszi lehetővé:
+Ez a szolgáltatás a következő eseteket teszi lehetővé:
 
-- A rendelkezésre állást 99,99%-os üzemidőre növelheti. További információ: Azure Firewall [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). Ha két vagy több Availability Zones van kiválasztva, a 99,99%-os rendelkezésre állási SLA-t ajánljuk.
-- A szolgáltatáshoz a 99,95%-os SLA-t használó szabványos szolgáltatási szabványnak megfelelően a Azure Firewallt is hozzárendelheti egy adott zónához.
+- A rendelkezésre állást 99,99%-ra növelheti. További információt az Azure firewall [szolgáltatásiszint-szerződésében (SLA) talál.](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/) A 99,99%-os rendelkezésre állási SLA két vagy több rendelkezésre állási zóna kiválasztásakor érhető el.
+- Az Azure Firewall-t is társíthatja egy adott zónához csak közelségi okokból, a 99.95%-os SLA szolgáltatás használatával.
 
-További információ a Azure Firewall Availability Zonesról: [Mi az Azure Firewall?](overview.md)
+Az Azure tűzfal rendelkezésre állási zónáiról a [Mi az Azure tűzfal?](overview.md)
 
-A következő Azure PowerShell példa azt szemlélteti, hogyan helyezhet üzembe egy Azure Firewall a Availability Zones használatával.
+A következő Azure PowerShell-példa bemutatja, hogyan telepítheti az Azure tűzfal rendelkezésre állási zónákkal.
 
-## <a name="create-a-firewall-with-availability-zones"></a>Tűzfal létrehozása Availability Zones
+## <a name="create-a-firewall-with-availability-zones"></a>Tűzfal létrehozása rendelkezésre állási zónákkal
 
-Ez a példa egy tűzfalat hoz létre az 1., 2. és 3. zónában.
+Ez a példa tűzfalat hoz létre az 1., 2.
 
-A standard nyilvános IP-cím létrehozásakor nincs megadva adott zóna. Ez alapértelmezés szerint létrehoz egy zóna-redundáns IP-címet. A standard nyilvános IP-címek bármelyik zónában, vagy egyetlen zónában konfigurálhatók.
+A szabványos nyilvános IP-cím létrehozásakor nincs megadva adott zóna. Ez alapértelmezés szerint zónaredundáns IP-címet hoz létre. A szabványos nyilvános IP-címek konfigurálhatók az összes zónában vagy egyetlen zónában.
 
-Fontos tudni, mert nem lehet tűzfal az 1. zónában és egy IP-cím a 2. zónában. Az 1. zónában és az IP-címen található tűzfal az összes zónában, illetve egy tűzfal és egy IP-cím is lehet ugyanabban a zónában a közelségi célokhoz.
+Fontos tudni, mert nem lehet tűzfal az 1-es zónában és ip-cím a 2-es zónában. De lehet tűzfal az 1.
 
 ```azurepowershell
 $rgName = "resourceGroupName"
@@ -58,6 +58,6 @@ New-AzFirewall `
   -Zone 1,2,3
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

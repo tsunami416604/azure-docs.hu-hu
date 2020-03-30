@@ -9,17 +9,17 @@ ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117143"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
-Ez az átjáró termékváltozatától függ. További információ a támogatott kapcsolatok számáról: [Az átjárók termékváltozatai](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+Ez attól függ, hogy az átjáró Termékváltozat. A támogatott kapcsolatok számáról további információt az [átjáró-számos kiszolgáló című témakörben talál.](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)
 
-### <a name="supportedclientos"></a>Milyen ügyfél operációs rendszereket használhatok pont–hely kapcsolatokhoz?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Milyen ügyfél operációs rendszereket használhatok pont–hely kapcsolatokhoz?
 
 A következő ügyféloldali operációs rendszerek támogatottak:
 
@@ -30,7 +30,7 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 * Windows Server 2012 R2 (csak 64 bites)
 * Windows Server 2016 (csak 64 bites)
 * Windows 10
-* Mac OS X 10.11-es verzió vagy újabb
+* Mac OS X 10.11-es vagy újabb verzió
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Lehetővé teszi-e a pont–hely kapcsolat a proxykon és tűzfalakon való áthaladást?
 
-Az Azure háromféle pont–hely típusú VPN-lehetőséget támogat:
+Az Azure háromféle pont-hely VPN-beállítást támogat:
 
-* Secure Socket Tunneling Protocol (SSTP). Az SSTP a Microsoft jogvédett, SSL-alapú megoldása, amely képes átjutni a tűzfalakon, mivel a legtöbb tűzfal nyitva hagyja az SSL által használt 443-as kimenő TCP-portot.
+* Secure Socket Tunneling Protocol (SSTP). Az SSTP a Microsoft saját fejlesztésű SSL-alapú megoldása, amely képes behatolni a tűzfalakba, mivel a legtöbb tűzfal megnyitja a 443 SSL által használt kimenő TCP-portot.
 
-* OpenVPN. Az OpenVPN egy SSL-alapú megoldás, amely képes átjutni a tűzfalakon, mivel a legtöbb tűzfal nyitva hagyja az SSL által használt 443-as kimenő TCP-portot.
+* Openvpn. OpenVPN egy SSL-alapú megoldás, amely képes áthatolni tűzfalak, mivel a legtöbb tűzfalak nyissa meg a kimenő TCP port, hogy 443 SSL használ.
 
-* IKEv2 VPN. Az IKEv2 VPN egy szabványalapú IPsec VPN-megoldás, amely az 500-as és 4500-as kimenő UDP-portokat, valamint a következő IP-protokollt használja: 50. A tűzfalak ezeket a portokat nem mindig nyitják meg, ezért elképzelhető, hogy az IKEv2 VPN nem képes átjutni egyes proxykon és tűzfalakon.
+* IKEv2 VPN. Az IKEv2 VPN egy szabványokon alapuló IPsec VPN-megoldás, amely az 500-as és 4500-as kimenő UDP-portokat és az IP protokollt nem használja. 50. A tűzfalak ezeket a portokat nem mindig nyitják meg, ezért elképzelhető, hogy az IKEv2 VPN nem képes átjutni egyes proxykon és tűzfalakon.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Ha újraindítok egy pont–hely kapcsolat használatára konfigurált ügyfélszámítógépet, a VPN automatikusan újracsatlakozik?
 
@@ -58,13 +58,13 @@ Az automatikus újrakapcsolódás és a DDNS jelenleg nem támogatott a pont–h
 
 Igen. A Resource Manager-alapú üzemi modell esetén az átjáróhoz RouteBased (útvonalalapú) VPN-típust kell használni. A klasszikus üzemi modellhez dinamikus átjáróra van szükség. A pont–hely kapcsolat nem támogatott a statikus útválasztású vagy PolicyBased (házirendalapú) VPN-átjárókhoz.
 
-### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Konfigurálhatok úgy egy pont–hely ügyfelet, hogy több virtuális hálózati átjáróhoz csatlakozzon egyszerre?
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Konfigurálhatok egy pont-hely ügyfél kiszolgáló ügyfél csatlakozni több virtuális hálózati átjárók ugyanabban az időben?
 
-A használt VPN-ügyfélszoftvertől függően több virtuális hálózati átjáróhoz is csatlakozhat, feltéve, hogy a csatlakoztatott virtuális hálózatok címtartományai nem ütköznek egymással vagy azzal a hálózattal, amelyről az ügyfél kapcsolódik.  Bár az Azure VPN-ügyfél számos VPN-kapcsolatot támogat, egy adott időpontban csak egy kapcsolat lehet aktív.
+A használt VPN-ügyfélszoftvertől függően több virtuális hálózati átjáróhoz is csatlakozhat, feltéve, hogy a csatlakoztatni kívánt virtuális hálózatok között nincs ütköző címter, vagy az ügyféllel csatlakozó hálózat.  Bár az Azure VPN-ügyfél számos VPN-kapcsolatot támogat, egy adott időpontban csak egy kapcsolat csatlakoztatható.
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Konfigurálhatok úgy egy pont–hely ügyfelet, hogy több virtuális hálózathoz csatlakozzon egyszerre?
 
-Igen, azok a virtuális hálózati átjáróra irányuló pont–hely kapcsolatok, amelyeket más virtuális hálózatokkal társviszonyban álló virtuális hálózaton helyeztek üzembe, más társviszonyban álló virtuális hálózatokhoz is hozzáférhetnek.  Ha a társviszonyban álló virtuális hálózatok a UseRemoteGateway / AllowGatewayTransit funkciót használják, a pont–hely ügyfél képes lesz csatlakozni a társviszonyban álló virtuális hálózatokhoz.  További információért tekintse meg [ezt](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) a cikket.
+Igen, a más virtuális hálózatokkal társviszonyba helyezett virtuális hálózatban telepített virtuális hálózati átjáróhoz való point-to-site kapcsolatok más társviszony-létesítési virtuális hálózatokhoz is hozzáférhetnek.  Feltéve, hogy a társviszony-létesített virtuális hálózatok a UseRemoteGateway / AllowGatewayTransit szolgáltatásokat használják, a pont-hely ügyfél képes lesz csatlakozni ezekhez a társviszony-létesített virtuális hálózatokhoz.  További információkért kérjük, olvassa el [ezt a](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) cikket.
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Milyen átviteli sebességre számíthatok a helyek közötti és a pont–hely kapcsolatok esetében?
 
@@ -72,11 +72,11 @@ Az átviteli sebesség fenntartása nehéz a VPN-alagutakban. Az IPsec és az SS
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Használhatok szoftveres VPN-ügyfelet az SSTP-t és/vagy IKEv2-t támogató pont–hely kapcsolatokhoz?
 
-Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pedig csak a Mac natív VPN-ügyfele használható. Az OpenVPN-ügyféllel azonban az összes platformon csatlakozhat az OpenVPN-protokollon keresztül. Tekintse át a támogatott ügyfél operációs rendszerek listáját.
+Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pedig csak a Mac natív VPN-ügyfele használható. Azonban az OpenVPN ügyfelet minden platformon használhatja az OpenVPN protokollon keresztül történő csatlakozáshoz. Tekintse át a támogatott ügyfél operációs rendszerek listáját.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Támogatja az Azure az IKEv2 VPN használatát Windows rendszeren?
 
-Az IKEv2 Windows 10 és Server 2016 rendszeren támogatott. Ahhoz azonban, hogy használni tudja az IKEv2-t, helyileg telepítenie kell a frissítéseket, és meg kell adnia a beállításkulcs értékét. A Windows 10 előtti operációsrendszer-verziók nem támogatottak, és csak SSTP-t vagy **OpenVPN® protokollt** tudnak használni.
+Az IKEv2 Windows 10 és Server 2016 rendszeren támogatott. Ahhoz azonban, hogy használni tudja az IKEv2-t, helyileg telepítenie kell a frissítéseket, és meg kell adnia a beállításkulcs értékét. A Windows 10 előtti operációs rendszer verziói nem támogatottak, és csak sstp vagy **OpenVPN® Protocol protokollt használhatják.**
 
 A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
@@ -86,7 +86,7 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
    |---|---|---|
    | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10, 1709-es verzió | 2018. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 1709-es verzió | 2018. március 22.March 22, 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Adja meg a beállításkulcs értékét. Hozza létre a „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload” REG_DWORD kulcsot a beállításjegyzékben, vagy állítsa az értékét 1-re.
@@ -103,9 +103,9 @@ Az Azure a Windows-, Mac- és Linux-eszközökhöz támogatja a P2S VPN-t.
 
 Igen, ezeknek az új funkcióknak a működését már üzemelő átjárókon is engedélyezni lehet, mégpedig a PowerShellen vagy az Azure Portalon keresztül, amennyiben a használt átjáró termékváltozata támogatja a RADIUS-t és/vagy az IKEv2-t. A VPN Gateway alapszintű termékváltozata például nem támogatja az IKEv2-t vagy a RADIUS-t.
 
-### <a name="removeconfig"></a>Hogyan távolíthatom el egy pont–hely kapcsolat konfigurációját?
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Hogyan távolíthatom el a P2S-kapcsolat konfigurációját?
 
-Egy pont–hely konfiguráció eltávolítható az Azure CLI és a PowerShell használatával, a következő parancsok segítségével:
+A P2S-konfiguráció az Azure CLI és a PowerShell használatával eltávolítható a következő parancsokkal:
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory jelentési késések | Microsoft Docs
-description: Ismerje meg, hogy mennyi ideig tart a jelentéskészítési események megjelenítése a Azure Portal
+title: Azure Active Directory jelentéskészítési késések | Microsoft dokumentumok
+description: Megtudhatja, hogy mennyi időbe telik, amíg az események jelentése megjelenik az Azure Portalon
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,46 +18,46 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007707"
 ---
-# <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory jelentési késések
+# <a name="azure-active-directory-reporting-latencies"></a>Az Azure Active Directory jelentéskészítés késése
 
-A késés az Azure Active Directory (Azure AD) jelentéskészítési adatainak a [Azure Portalban](https://portal.azure.com)való megjelenítéséhez szükséges idő. Ez a cikk a különböző típusú jelentések várható késését sorolja fel. 
+A késés az az idő, amerre az Azure Active Directory (Azure AD) jelentési adatai megjelennek az [Azure Portalon.](https://portal.azure.com) Ez a cikk a különböző típusú jelentések várható késését sorolja fel. 
 
 ## <a name="activity-reports"></a>Tevékenységjelentések
 
-Kétféle tevékenységi jelentés létezik:
+A tevékenységjelentéseknek két típusa van:
 
-- [Bejelentkezések](concept-sign-ins.md) – információkat biztosít a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról
-- [Naplók](concept-audit-logs.md) – rendszertevékenységi információkat biztosít a felhasználókról és csoportokról, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről
+- [Bejelentkezések](concept-sign-ins.md) – A felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatával kapcsolatos információk
+- [Naplónaplók](concept-audit-logs.md) – Rendszertevékenység-információkat tartalmaz a felhasználókról és csoportokról, a felügyelt alkalmazásokról és a címtártevékenységekről
 
-A következő táblázat a tevékenységi jelentések késési információit sorolja fel. 
+Az alábbi táblázat a tevékenységjelentések késési adatait sorolja fel. 
 
 > [!NOTE]
-> A **késés (95. percentilis)** a naplók 95%-ában jelentett időpontra utal, a **késés (esetek 99% percentilis)** pedig arra az időre utal, ameddig a naplók 99%-a jelenteni fog. 
+> **A késés (95. percentilis)** arra az időre utal, amerre a naplók 95%-a, a **késés (99 százalékos)** pedig arra az időre utal, amerre a naplók 99%-a jelentésre kerül. 
 >
 
-| Jelentés | Késés (95. percentilis) |Késés (esetek 99% percentilis)|
+| Jelentés | Késés (95. percentilis) |Késés (99. percentilis)|
 | :-- | --- | --- |
 | Naplók | 2 perc  | 5 perc  |
 | Bejelentkezések | 2 perc  | 5 perc |
 
-### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Milyen hamar láthatom a tevékenységek információit a prémium szintű licenc beszerzése után?
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Milyen hamar láthatom a tevékenységek adatait a prémium licenc megszerzése után?
 
-Ha már rendelkezik a tevékenységek adataival az ingyenes licenccel, akkor azonnal megtekintheti a frissítést. Ha nem rendelkezik az adataival, a rendszer egy vagy két napot is igénybe vesz, hogy az adatai megjelenjenek a jelentésekben a prémium szintű licencre való frissítés után.
+Ha már rendelkezik tevékenységi adatokkal az ingyenes licencével, akkor azonnal láthatja a frissítést. Ha nem rendelkezik adatokkal, akkor egy vagy két napba telik, amíg az adatok megjelennek a jelentésekben a prémium licencre való frissítés után.
 
 ## <a name="security-reports"></a>Biztonsági jelentések
 
-A biztonsági jelentések két típusa létezik:
+A biztonsági jelentéseknek két típusa van:
 
 - [Kockázatos bejelentkezések](concept-risky-sign-ins.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
 - [Kockázatosként megjelölt felhasználók](concept-user-at-risk.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
 
-A következő táblázat a biztonsági jelentések késési információit sorolja fel.
+Az alábbi táblázat a biztonsági jelentések késési adatait sorolja fel.
 
 | Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
@@ -66,9 +66,9 @@ A következő táblázat a biztonsági jelentések késési információit sorol
 
 ## <a name="risk-detections"></a>Kockázatészlelések
 
-Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy **kockázati észlelésnek**nevezett rekordban tárol.
+Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikát használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. Minden észlelt gyanús művelet et egy **kockázatészlelésnek**nevezett rekord tárol.
 
-A következő táblázat a kockázati észlelések késési információit sorolja fel.
+Az alábbi táblázat a kockázatészlelésk késési adatait sorolja fel.
 
 | Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
@@ -80,8 +80,8 @@ A következő táblázat a kockázati észlelések késési információit sorol
 | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |2 óra |4 óra |8 óra  |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure AD-jelentések – áttekintés](overview-reports.md)
+* [Az Azure AD-jelentések áttekintése](overview-reports.md)
 * [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)
-* [Azure Active Directory kockázati észlelések](concept-risk-events.md)
+* [Az Azure Active Directory kockázatészlelései](concept-risk-events.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect 1.4. xx. x és az eszközök megszűnésének ismertetése | Microsoft Docs
-description: Ez a dokumentum egy olyan problémát ismertet, amely a Azure AD Connect 1.4. xx. x verziójával felmerül.
+title: Az Azure AD Connect 1.4.xx.x és az eszközök eltűnésének ismertetése | Microsoft dokumentumok
+description: Ez a dokumentum az Azure AD Connect 1.4.xx.x verziójával kapcsolatos problémát ismerteti.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,38 +11,38 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176025"
 ---
-# <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Az Azure AD Connect 1.4. xx. x és az eszközön való megjelenés ismertetése
-A Azure AD Connect 1.4. xx. x verziójával néhány ügyfél láthatja, hogy a Windows-eszközeik némelyike vagy mindegyike eltűnik az Azure AD-ből. Ez nem okoz gondot, mivel az Azure AD nem használja fel az eszköz identitásait a feltételes hozzáférés engedélyezésekor. Ez a változás nem törli azokat a Windows-eszközöket, amelyek megfelelően regisztrálva lettek az Azure AD-ben hibrid Azure AD-csatlakozáshoz.
+# <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Az Azure AD Connect 1.4.xx.x és az eszközök eltűnésének ismertetése
+Az Azure AD Connect 1.4.xx.x verziójával egyes ügyfelek láthatják, hogy windowsos eszközeik egy része vagy egésze eltűnik az Azure AD-ből. Ez nem ad okot aggodalomra, mivel ezeket az eszközidentitásokat az Azure AD nem használja a feltételes hozzáférés engedélyezése során. Ez a módosítás nem törli azokat a Windows-eszközöket, amelyek megfelelően regisztráltak az Azure AD hibrid Azure AD-s csatlakozáshoz.
 
-Ha úgy látja, hogy az Azure AD-ban az eszközök objektumainak törlése meghaladja az Exportálás törlési küszöbértékét, javasoljuk, hogy az ügyfél engedélyezze a törlést. [Útmutató: a törlési folyamat engedélyezése, ha túllépik a törlési küszöbértéket](how-to-connect-sync-feature-prevent-accidental-deletes.md)
+Ha az Azure AD-ben az eszközobjektumok törlése meghaladja az exportálási törlési küszöbértéket, azt javasoljuk, hogy az ügyfél engedélyezze a törléseket. [Útmutató: engedélyezze a törlési folyamatot, ha túllépik a törlési küszöbértéket](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="background"></a>Háttér
-A hibrid Azure AD-hez regisztrált Windows-eszközök az Azure AD-ben, az eszköz objektumaiként jelennek meg. Ezeket az eszközöket feltételes hozzáféréshez használhatja. A Windows 10-es eszközök a felhőbe való szinkronizálása Azure AD Connect, a Down szintű Windows-eszközök közvetlen regisztrálása AD FS vagy zökkenőmentes egyszeri bejelentkezés használatával történik.
+A hibrid Azure AD-hez csatlakozott rendszerként regisztrált Windows-eszközök eszközobjektumként jelennek meg az Azure AD-ben. Ezek az eszközobjektumok feltételes hozzáféréshez használhatók. A Windows 10-es eszközök az Azure AD Connecten keresztül szinkronizálódnak a felhőbe, a lefelé irányuló szintű Windows-eszközök közvetlenül az AD FS vagy a zökkenőmentes egyszeri bejelentkezés használatával regisztrálhatók.
 
-## <a name="windows-10-devices"></a>Windows 10-es eszközök
-Azure AD Connect a felhőbe csak a hibrid Azure AD JOIN által konfigurált, meghatározott userCertificate attribútum értékkel rendelkező Windows 10-es eszközöket kell szinkronizálni. Azure AD Connect korábbi verzióiban ez a követelmény nem lett szigorúan kikényszerítve, ami az Azure AD-ben szükségtelen eszköz-objektumokat eredményezett. Az Azure AD-beli eszközök mindig "függő" állapotban maradnak, mivel ezek az eszközök nem lettek regisztrálva az Azure AD-ben. 
+## <a name="windows-10-devices"></a>Windows 10-eszközök
+Csak a Hibrid Azure AD Join által konfigurált adott userCertificate attribútumértékkel rendelkező Windows 10-es eszközöket kell szinkronizálnia a felhőbe az Azure AD Connect. Az Azure AD Connect korábbi verzióiban ezt a követelményt nem érvényesítették szigorúan, ami szükségtelen eszközobjektumokat eredményezaz Azure AD-ben. Az ilyen eszközök az Azure AD-ben mindig a "függőben" állapotban maradt, mert ezek az eszközök nem voltak célja, hogy regisztrálva legyenek az Azure AD-vel. 
 
-A Azure AD Connect ezen verziója csak a hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközök szinkronizálását hajtja végre. Az Azure AD JOIN-specifikus userCertificate nem rendelkező Windows 10-es eszközök el lesznek távolítva az Azure AD-ből.
+Az Azure AD Connect ezen verziója csak azokkal a Windows 10-es eszközökkel szinkronizálja a rendszert, amelyek megfelelően vannak konfigurálva hibrid Azure AD-csatlakozásra. Windows 10 device objects without the Azure AD join specific userCertificate will be removed from Azure AD.
 
-## <a name="down-level-windows-devices"></a>Régebbi verziójú Windows-eszközök
-Azure AD Connect soha ne legyenek szinkronizálva a [Windows rendszerű eszközök](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices). Az Azure AD-ben korábban szinkronizált eszközök már nem megfelelően lesznek törölve az Azure AD-ből. Ha Azure AD Connect a [régebbi Windows-eszközök](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)törlését kísérli meg, akkor az eszköz nem a [Microsoft Workplace JOIN által a nem Windows 10 rendszerű számítógépek MSI-hez](https://www.microsoft.com/download/details.aspx?id=53554) készült, és a többi Azure ad-szolgáltatás nem tudja használni.
+## <a name="down-level-windows-devices"></a>Lecsökkentő Windows-eszközök
+Az Azure AD Connect soha nem szinkronizálhat [lefelé érő Windows-eszközöket.](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices) Az Azure AD-ben korábban helytelenül szinkronizált eszközök most törlődnek az Azure AD-ből. Ha az Azure AD Connect lefelé [irányuló Windows-eszközök](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)törlését próbálja meg, akkor az eszköz nem az, amelyet a Microsoft Workplace Join nem [Windows 10-es számítógépekMSI számára](https://www.microsoft.com/download/details.aspx?id=53554) hozott létre, és nem használható fel más Azure AD-szolgáltatás.
 
-Előfordulhat, hogy néhány ügyfélnek újra kell látogatnia a [hibrid Azure Active Directory csatlakoztatásának megtervezése](../devices/hybrid-azuread-join-plan.md) a Windows-eszközök megfelelő regisztrálásához, és biztosítania kell, hogy az ilyen eszközök teljes mértékben részt vegyenek az eszköz alapú feltételes hozzáférésben. 
+Egyes ügyfelek előfordulhat, hogy újra [hogyan: Tervezze meg a hibrid Azure Active Directory-csatlakozás megvalósítása](../devices/hybrid-azuread-join-plan.md) a Windows-eszközök megfelelő regisztrálása, és győződjön meg arról, hogy az ilyen eszközök teljes mértékben részt vehetnek az eszköz-alapú feltételes hozzáférés. 
 
-## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Hogyan tudom ellenőrizni, hogy mely eszközök törlődnek ezzel a frissítéssel?
+## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Hogyan ellenőrizhetem, hogy mely eszközök törlődnek ezzel a frissítéssel?
 
-A következő PowerShell-parancsfájl használatával ellenőrizheti, hogy mely eszközök törlődnek: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+A törölt eszközök ellenőrzéséhez használhatja ezt a PowerShell-parancsfájlt:https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
-Ez a szkript jelentést készít a Active Directory számítógép-objektumokban tárolt tanúsítványokról, pontosabban a hibrid Azure AD JOIN szolgáltatás által kiállított tanúsítványokról.
-Ellenőrzi az AD-ben található számítógép-objektum UserCertificate tulajdonságában lévő tanúsítványokat, és minden nem lejárt tanúsítvány esetében ellenőrzi, hogy a tanúsítvány ki lett-e adva a hibrid Azure AD JOIN szolgáltatáshoz (azaz a tulajdonos neve megegyezik a CN = {ObjectGUID} értékkel).
-Mielőtt a Azure AD Connect az Azure AD-vel szinkronizálja azokat a számítógépeket, amelyek legalább egy érvényes tanúsítványt tartalmaznak, de Azure AD Connect 1,4-es verziótól kezdődően, a Szinkronizáló motor képes azonosítani a hibrid Azure AD JOIN-tanúsítványokat, és "cloudfilter" a számítógép-objektum szinkronizálása az Azure AD-be, kivéve, ha érvényes hibrid Azure AD JOIN-tanúsítvány van.
-Azok az Azure AD-eszközök, amelyek már szinkronizálva lettek az Active Directoryval, de nem rendelkeznek érvényes hibrid Azure AD JOIN tanúsítvánnyal, a Szinkronizáló motor törli a (CloudFiltered = TRUE) értéket.
+Ez a parancsfájl jelentést készít az Active Directory számítógép-objektumokban tárolt tanúsítványokról, különösen a hibrid Azure AD-illesztési szolgáltatás által kiadott tanúsítványokról.
+Ellenőrzi az AD-ben lévő számítógép-objektum UserCertificate tulajdonságában található tanúsítványokat, és minden egyes lejárt tanúsítvány esetében ellenőrzi, hogy a tanúsítványt a hibrid Azure AD-illesztési szolgáltatáshoz állították-e ki (azaz a tulajdonos neve megegyezik a CN={ObjectGUID} minősítéssel).
+Mielőtt az Azure AD Connect szinkronizálna az Azure AD bármely olyan számítógéppel, amely legalább egy érvényes tanúsítványt tartalmazott, de az Azure AD Connect 1.4-es verziójától kezdve, a szinkronizálási motor képes azonosítani a hibrid Azure AD illesztési tanúsítványokat, és "cloudfilter" a számítógép-objektum szinkronizálása az Azure AD, kivéve, ha van egy érvényes hibrid Azure AD-csatlakozási tanúsítvány.
+Az AD-vel már szinkronizált, de érvényes hibrid Azure AD-csatlakozási tanúsítvánnyal nem rendelkező Azure AD-eszközök törlődnek (CloudFiltered=TRUE) a szinkronizálási motor által.
 
 ## <a name="next-steps"></a>Következő lépések
-- [Azure AD Connect korábbi verziók](reference-connect-version-history.md)
+- [Az Azure AD Connect verzióelőzményei](reference-connect-version-history.md)

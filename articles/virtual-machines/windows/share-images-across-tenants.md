@@ -1,6 +1,6 @@
 ---
-title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között
-description: Megtudhatja, hogyan oszthat meg virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárakkal.
+title: Galériaképek megosztása az Azure-beli bérlők között
+description: Megtudhatja, hogyan oszthatja meg a virtuálisgép-lemezképeket az Azure-bérlők között a megosztott képgalériák használatával.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
 ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065519"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Galéria virtuálisgép-lemezképeinek megosztása az Azure-bérlők között
 
-A megosztott képtárak lehetővé teszik a képek megosztását a RBAC használatával. A RBAC segítségével megoszthatja a bérlőn belüli képeket, és akár a bérlőn kívüli személyeket is. További információ erről az egyszerű megosztási lehetőségről: a [gyűjtemény megosztása](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery).
+A megosztott képgalériák lehetővé teszik a képek megosztását az RBAC használatával. Az RBAC segítségével megoszthatja a lemezképeket a bérlőn belül, és még a bérlőn kívüli személyek számára is. Erről az egyszerű megosztási lehetőségről a [Galéria megosztása című témakörben](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)talál további információt.
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> A portálon nem lehet virtuális gépet üzembe helyezni egy másik Azure-bérlő lemezképéről. Ha a bérlők között megosztott rendszerképből szeretne virtuális gépet létrehozni, az [Azure CLI](../linux/share-images-across-tenants.md) -t vagy a PowerShellt kell használnia.
+> A portál nem használhatja a virtuális gép üzembe helyezéséhez egy lemezkép egy másik azure-bérlő. Virtuális gép létrehozása a bérlők között megosztott lemezképből, az [Azure CLI](../linux/share-images-across-tenants.md) vagy a Powershell kell használnia.
 
-## <a name="create-a-vm-using-powershell"></a>Virtuális gép létrehozása a PowerShell használatával
+## <a name="create-a-vm-using-powershell"></a>Virtuális gépek létrehozása a PowerShell-lel
 
-Jelentkezzen be mindkét bérlőbe az alkalmazás-azonosító, a titkos kulcs és a bérlő azonosítója használatával. 
+Jelentkezzen be mindkét bérlőaz alkalmazásazonosító, titkos és bérlőazonosító használatával. 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -42,7 +42,7 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-Hozza létre a virtuális gépet abban az erőforráscsoporthoz, amely jogosult az alkalmazás regisztrálására. Cserélje le az ebben a példában szereplő adatokat a saját adataira.
+Hozza létre a virtuális gép az erőforráscsoportban, amely rendelkezik az alkalmazás regisztrációjának engedéllyel. Cserélje le a példában szereplő információkat a sajátjára.
 
 
 
@@ -86,4 +86,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>További lépések
 
-A [Azure Portal](shared-images-portal.md)használatával közös rendszerkép-katalógusbeli erőforrásokat is létrehozhat.
+Megosztott képgaléria-erőforrásokat is létrehozhat az [Azure Portalon.](shared-images-portal.md)

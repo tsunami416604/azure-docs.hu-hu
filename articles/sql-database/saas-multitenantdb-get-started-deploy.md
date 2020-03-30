@@ -1,6 +1,6 @@
 ---
-title: Több-bérlős adatbázis SaaS-alkalmazás üzembe helyezése
-description: Üzembe helyezheti és felfedezheti a több-bérlős SaaS-alapú Wingtip-jegyeket, amelyek Azure SQL Database használatával mutatják be az SaaS-mintákat.
+title: Szilánkos több-bérlős adatbázis SaaS-alkalmazás üzembe helyezése
+description: Telepítse és fedezze fel a szilánkos Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás, amely bemutatja a SaaS-minták az Azure SQL Database használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,119 +12,119 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
 ms.openlocfilehash: 3277318e01362df8fc21ff7ca769aaeb8006abc6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827994"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Horizontálisan több-bérlős alkalmazás üzembe helyezése és megismerése
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Szilánkos több-bérlős alkalmazás üzembe helyezése és feltárása
 
-Ebben az oktatóanyagban egy Wingtip tickets nevű, több-bérlős SaaS-alkalmazást helyez üzembe és vizsgál. A Wingtip tickets alkalmazás az SaaS-forgatókönyvek megvalósítását megkönnyítő Azure SQL Database funkcióinak bemutatására szolgál.
+Ebben az oktatóanyagban üzembe helyezheti és felfedezheti a Wingtip Jegyek nevű több-bérlős SaaS-alkalmazást. A Wingtip Jegyek alkalmazás célja, hogy bemutassa az Azure SQL Database olyan funkcióit, amelyek egyszerűsítik az SaaS-forgatókönyvek megvalósítását.
 
-A Wingtip tickets alkalmazás ezen implementációja egy több-bérlős adatbázis-mintát használ. A horizontális skálázás a bérlő azonosítója. A bérlői adatok a bérlői azonosító értékeinek megfelelően oszlanak meg egy adott adatbázison. 
+A Wingtip Jegyek alkalmazás megvalósítása egy szilánkos több-bérlős adatbázis-mintát használ. A skálázás bérlői azonosító szerint történik. A bérlői adatok egy adott adatbázisba kerülnek a bérlői azonosító értékek szerint. 
 
-Ez az adatbázis-minta lehetővé teszi, hogy egy vagy több bérlőt tároljon az egyes szegmensekben vagy adatbázisokban. Optimalizálhatja a legalacsonyabb költségeket azzal, hogy az egyes adatbázisokat több bérlő is megosztja. Vagy optimalizálhatja az elkülönítést úgy, hogy az egyes adatbázisok csak egy bérlőt tárolnak. Az optimalizálási választás az egyes bérlők esetében egymástól függetlenül is elvégezhető. Ön dönthet úgy, hogy a bérlőt először tárolja, vagy később is megváltoztathatja. Az alkalmazás úgy van kialakítva, hogy megfelelően működjön.
+Ez az adatbázis-minta lehetővé teszi, hogy tárolja egy vagy több bérlő minden szegmensben vagy adatbázisban. A legalacsonyabb költségekre optimalizálhatja, ha az egyes adatbázisokat több bérlő osztja meg. Vagy optimalizálhatja az elkülönítést azáltal, hogy minden adatbázis tárolja csak egy bérlő. Az optimalizálási választás lehet egymástól függetlenül minden egyes bérlő. A választás lehet, amikor a bérlő először tárolja, vagy később meggondolhatja magát. Az alkalmazás célja, hogy jól működik mindkét irányban.
 
-## <a name="app-deploys-quickly"></a>Az alkalmazás üzembe helyezése gyorsan
+## <a name="app-deploys-quickly"></a>Az alkalmazás gyorsan telepíthető
 
-Az alkalmazás az Azure-felhőben fut, és Azure SQL Databaset használ. A következő üzembe helyezési szakasz a kék **üzembe helyezését ismerteti az Azure-** ban gomb. A gomb megnyomásakor az alkalmazás öt percen belül teljesen üzembe lesz helyezve az Azure-előfizetésben. Teljes hozzáféréssel rendelkezik az egyes alkalmazás-összetevőkkel való munkához.
+Az alkalmazás az Azure-felhőben fut, és az Azure SQL Database-t használja. A telepítési szakasz, amely a következő biztosítja a kék **üzembe helyezés az Azure-ba** gombot. Ha megnyomja a gombot, az alkalmazás öt percen belül teljes mértékben üzembe kerül az Azure-előfizetésben. Teljes hozzáférése van az egyes alkalmazás-összetevőkkel való munkához.
 
-Az alkalmazás három minta bérlőre vonatkozó adattal van üzembe helyezve. A bérlők együtt tárolódnak egy több-bérlős adatbázisban.
+Az alkalmazás három mintabérlő adataival van telepítve. A bérlők egy több-bérlős adatbázisban vannak tárolva.
 
-A és a C# PowerShell forráskódját bárki letöltheti a GitHub- [adattárból][link-github-wingtip-multitenantdb-55g]a Wingtip-jegyekhez.
+Bárki letöltheti a C# és a PowerShell forráskódot a Wingtip jegyekhez [a GitHub-tárházból.][link-github-wingtip-multitenantdb-55g]
 
-## <a name="learn-in-this-tutorial"></a>Az oktatóanyag megismerése
+## <a name="learn-in-this-tutorial"></a>További információ az oktatóanyagban
 
 > [!div class="checklist"]
-> - A Wingtip tickets SaaS-alkalmazás üzembe helyezése.
-> - Az alkalmazás forráskódjának és felügyeleti parancsfájljainak beszerzése.
-> - Az alkalmazást alkotó kiszolgálók és adatbázisok ismertetése.
-> - Hogyan vannak leképezve a bérlők az *adatkatalógushoz*.
+> - A Wingtip Tickets SaaS alkalmazás telepítése.
+> - Hol szerezhető be az alkalmazás forráskódja és a felügyeleti parancsfájlok?
+> - Az alkalmazást kiszolgálókés adatbázisok.
+> - Hogyan vannak leképezve a bérlők az adataikhoz a *katalógusban?*
 > - Új bérlő kiépítése.
 > - A bérlői tevékenység figyelése az alkalmazásban.
 
-Ezen kezdeti üzembe helyezésre épülő kapcsolódó oktatóanyagok sorozata is elérhető. Az oktatóanyagok számos SaaS-tervezési és-felügyeleti mintát mutatnak be. Ha az oktatóanyagokon keresztül dolgozik, javasoljuk, hogy a különböző SaaS-minták megvalósítási módjának megismeréséhez lépjen be a megadott parancsfájlokba.
+Egy sor kapcsolódó oktatóanyag áll rendelkezésre, amelyek erre a kezdeti üzembe helyezésre épülnek. Az oktatóanyagok a SaaS tervezési és kezelési mintáinak széles skáláját tárják fel. Amikor az oktatóanyagokon keresztül dolgozik, javasoljuk, hogy lépjen végig a megadott parancsfájlokon, hogy lássa, hogyan valósítják meg a különböző SaaS-mintákat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-- A legújabb Azure PowerShell telepítve van. Részletekért lásd: [a Azure PowerShell első lépései][link-azure-get-started-powershell-41q].
+- A legújabb Azure PowerShell telepítve van. További információt az [Azure PowerShell – első lépések.][link-azure-get-started-powershell-41q]
 
-## <a name="deploy-the-wingtip-tickets-app"></a>A Wingtip tickets alkalmazás üzembe helyezése
+## <a name="deploy-the-wingtip-tickets-app"></a>A Wingtip Tickets alkalmazás üzembe helyezése
 
-### <a name="plan-the-names"></a>A nevek megtervezése
+### <a name="plan-the-names"></a>Tervezze meg a neveket
 
-A szakasz lépéseiben olyan *felhasználói* értéket ad meg, amely az erőforrások nevének globálisan egyedivé tételét, valamint az alkalmazás központi telepítése által létrehozott összes erőforrást tartalmazó *erőforráscsoport* nevét tartalmazza. Egy *Ann Finley*nevű személy esetében a következőket javasoljuk:
-- *User:* **AF1**  *(a monogramjuk és egy számjegy. Ha Másodszor telepíti az alkalmazást, használjon más értéket (például af2).)*
-- *Erőforráscsoport:* **Wingtip-MT-AF1** *(Wingtip-MT) azt jelzi, hogy ez a több-bérlős, több-bérlős alkalmazás. a Felhasználónév hozzáfűzésével a AF1 összekapcsolja az erőforráscsoport nevét és a benne található erőforrások nevét.)*
+Ebben a szakaszban megadhat egy *felhasználói* értéket, amely biztosítja, hogy az erőforrásnevek globálisan egyediek legyenek, és egy nevet az *erőforráscsoportnak,* amely tartalmazza az alkalmazás központi telepítése által létrehozott összes erőforrást. *Ann Finley*nevű személy esetén a következőket javasoljuk:
+- *Felhasználó:* **af1**  *(A monogramjuk, plusz egy számjegy. Ha másodszor is telepíti az alkalmazást, használjon másik értéket (pl. af2).*
+- *Erőforráscsoport:* **wingtip-mt-af1** *(wingtip-mt azt jelzi, hogy ez a szilánkos több-bérlős alkalmazás. Az af1 felhasználónév hozzáfűzése korrelálja az erőforráscsoport nevét a benne lévő erőforrások nevével.)*
 
-Válassza ki a neveket, majd írja le őket. 
+Válasszák ki a nevüket, és írják le őket. 
 
 ### <a name="steps"></a>Lépések
 
-1. Kattintson a következő kék **üzembe helyezés az Azure-** ban gombra.
-   - Ekkor megnyílik a Azure Portal a Wingtip tickets SaaS telepítési sablonnal.
+1. Kattintson a következő kék **üzembe helyezés az Azure-ba** gombra.
+   - Megnyitja az Azure Portalon a Wingtip jegyek SaaS-telepítési sablon.
 
-     [![Az Azure-ban való üzembe helyezésre szolgáló gomb.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![Az Azure-ba való üzembe helyezés gombja.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
-1. Adja meg a központi telepítés szükséges paraméter-értékeit.
+1. Adja meg a központi telepítéshez szükséges paraméterértékeket.
 
     > [!IMPORTANT]
-    > Ebben a bemutatóban ne használjon már meglévő erőforráscsoportokat, kiszolgálókat vagy készleteket. Ehelyett válassza **az új erőforráscsoport létrehozása**lehetőséget. Ha végzett az alkalmazással, törölje a létrehozott erőforráscsoportot a kapcsolódó számlázások leállításához.
-    > Ne használja az alkalmazást vagy az általa létrehozott erőforrásokat éles környezetben. A hitelesítés bizonyos szempontjai és a kiszolgáló tűzfal beállításai szándékosan nem biztonságosak az alkalmazásban a bemutató elősegítése érdekében.
+    > Ehhez az bemutatóhoz ne használjon már meglévő erőforráscsoportokat, kiszolgálókat vagy készleteket. Ehelyett válassza **az Új erőforráscsoport létrehozása**lehetőséget. Ha végzett az alkalmazással, törölje a létrehozott erőforráscsoportot a kapcsolódó számlázások leállításához.
+    > Ne használja ezt az alkalmazást, vagy az általa létrehozott erőforrásokat éles környezetben. A hitelesítés egyes aspektusai és a kiszolgáló tűzfalbeállításai szándékosan nem biztonságosak az alkalmazásban, hogy megkönnyítsék a demonstrációt.
 
-    - **Erőforráscsoport** – válassza az **új létrehozása**lehetőséget, majd adja meg az erőforráscsoport **nevét** (kis-és nagybetűk megkülönböztetése).
-        - Válasszon ki egy **helyet** a legördülő listából.
-    - **Felhasználó** számára – javasoljuk, hogy válasszon egy rövid **felhasználói** értéket.
+    - Erőforráscsoport esetén – válassza **az Új létrehozása**lehetőséget, majd adja meg az erőforráscsoport **nevét** (a kis- és nagybetűk et. **Resource group**
+        - Válasszon **egy Helyet** a legördülő listából.
+    - **Felhasználó –** Javasoljuk, hogy válasszon egy rövid **felhasználói** értéket.
 
 1. **Az alkalmazás üzembe helyezése**.
 
-    - Kattintson ide a feltételek és kikötések elfogadásához.
+    - Kattintson ide, hogy elfogadja a feltételeket.
     - Kattintson a **Purchase** (Vásárlás) gombra.
 
-1. A telepítés állapotának figyeléséhez kattintson az **értesítések**elemre, amely a keresőmező jobb oldalán található harang ikon. A Wingtip alkalmazás üzembe helyezése körülbelül öt percet vesz igénybe.
+1. A telepítés állapotának figyeléséhez kattintson az **Értesítések**gombra, amely a keresőmező jobb oldalán található csengő ikon. A Wingtip alkalmazás üzembe helyezése körülbelül öt percet vesz igénybe.
 
    ![üzembe helyezés sikeres](media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
-## <a name="download-and-unblock-the-management-scripts"></a>A felügyeleti parancsfájlok letöltése és feloldása
+## <a name="download-and-unblock-the-management-scripts"></a>A felügyeleti parancsfájlok letöltése és tiltásának feloldása
 
-Az alkalmazás központi telepítése közben töltse le az alkalmazás forráskódját és a felügyeleti parancsfájlokat.
+Az alkalmazás telepítése közben töltse le az alkalmazás forráskódját és felügyeleti parancsfájljait.
 
 > [!NOTE]
-> A Windows letilthatja a végrehajtható tartalmat (parancsfájlokat, DLL-eket), ha a ZIP-fájlokat külső forrásból tölti le, és kinyeri. A parancsfájlok zip-fájlból való kibontásakor a következő lépésekkel oldja fel a. zip fájlt a kicsomagolás előtt. A. zip fájl blokkolásának feloldásával gondoskodhat arról, hogy a parancsfájlok futtatása engedélyezett legyen.
+> Előfordulhat, hogy a Windows blokkolja a végrehajtható tartalmakat (parancsfájlokat, DL-eket), ha a zip fájlokat külső forrásból tölti le és bontja ki. Amikor a parancsfájlokat zip fájlból nyeri ki, a kibontás előtt az alábbi lépésekkel oldja fel a .zip fájl blokkolását. A .zip fájl blokkolásának feloldásával biztosíthatja, hogy a parancsfájlok futhassanak.
 
-1. Keresse meg [a WingtipTicketsSaaS-MultiTenantDb GitHub-](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)tárházat.
-2. Kattintson a **klónozás vagy a letöltés**elemre.
-3. Kattintson a **zip letöltése** elemre, és mentse a fájlt.
-4. Kattintson a jobb gombbal a **WingtipTicketsSaaS-MultiTenantDb-Master. zip** fájlra, és válassza a **Tulajdonságok**lehetőséget.
-5. Az **általános** lapon válassza a **Tiltás feloldása**lehetőséget, majd kattintson az **alkalmaz**gombra.
+1. Tallózással keresse meg [a WingtipTicketsSaaS-MultiTenantDb GitHub tárházát.](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
+2. Kattintson **a Klónozás vagy letöltés gombra.**
+3. Kattintson **a ZIP letöltése** gombra, és mentse a fájlt.
+4. Kattintson a jobb gombbal a **WingtipTicketsSaaS-MultiTenantDb-master.zip** fájlra, és válassza **a Tulajdonságok parancsot.**
+5. Az **Általános** lapon válassza a **Tiltás feloldása**lehetőséget, majd kattintson az **Alkalmaz**gombra.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.
 
-A parancsfájlok a *..\\WingtipTicketsSaaS-MultiTenantDb-master\\learning-modulok\\* mappában találhatók.
+A parancsfájlok a *.. WingtipTicketsSaaS-MultiTenantDb-master\\Learning\\ Modules mappa. \\*
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>A központi telepítés konfigurációs fájljának frissítése
 
-A parancsfájlok futtatása előtt állítsa be az *erőforráscsoportot* és a *felhasználói* értékeket a **userconfig. psm1**. Állítsa be ezeket a változókat az üzembe helyezés során beállított értékekre.
+A parancsfájlok futtatása előtt állítsa be az *erőforráscsoportot* és a *felhasználói* értékeket a **UserConfig.psm1 fájlban.** Állítsa be ezeket a változókat a telepítés során beállított értékekre.
 
-1. Nyissa meg a...\\learning-modulokat\\*userconfig. psm1* a *PowerShell ISE*-ben.
-2. Frissítse a *ResourceGroupName* és a *nevet* az üzemelő példány megadott értékeivel (csak a 10. és a 11. sorban).
+1. Nyit... \\A\\*UserConfig.psm1* tanulási modulok a *PowerShell ISE-ben.*
+2. Frissítse *a ResourceGroupName* és *a Name értéket* a központi telepítés adott értékeivel (csak a 10. és 11. sorban).
 3. Mentse a módosításokat.
 
-Az ebben a fájlban beállított értékeket az összes parancsfájl használja, ezért fontos, hogy pontosak legyenek. Ha újratelepíti az alkalmazást, különböző értékeket kell választania a felhasználói és az erőforráscsoport számára. Ezután frissítse a UserConfig. psm1 fájlt az új értékekkel.
+Az ebben a fájlban beállított értékeket az összes parancsfájl használja, ezért fontos, hogy pontosak legyenek. Ha újratelepíti az alkalmazást, különböző értékeket kell választania a Felhasználó és az Erőforráscsoport számára. Ezután frissítse újra a UserConfig.psm1 fájlt az új értékekkel.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A Wingtip alkalmazásban a bérlők a helyszínek. A helyszín lehet a koncertterem, a sportcsarnok vagy bármely más, az eseményeket futtató hely. A helyszínek regisztrálva vannak a Wingtip ügyfélként, és minden egyes helyszínhez létrejön egy bérlői azonosító. Minden egyes helyszín felsorolja a közelgő eseményeit a Wingtip-ben, így a nyilvános jegyeket vásárolhat az eseményekhez.
+A Wingtip alkalmazásban a bérlők helyszínek. A helyszín lehet koncertterem, sportklub vagy bármely más, rendezvényeknek otthont adó helyszín. A helyszínek regisztrálnak a Wingtip-ben ügyfélként, és minden helyszínhez létrejön egy bérlői azonosító. Minden helyszín felsorolja a közelgő események Wingtip, így a nyilvánosság jegyeket vásárolni az eseményekre.
 
-Minden helyszín személyre szabott webalkalmazást kap az események listázásához és jegyek eladásához. Az egyes webalkalmazások függetlenek és elkülönítettek a többi bérlőtől. A Azure SQL Database belül az egyes bérlők összes adathalmaza egy több-bérlős, több-bérlős adatbázisban van tárolva, alapértelmezés szerint. Minden adat a bérlői azonosítóval van címkézve.
+Minden helyszín kap egy személyre szabott webalkalmazást, amely felsorolja az eseményeket és jegyeket értékesít. Minden webalkalmazás független és elkülönítve van a többi bérlőtől. Az Azure SQL Database-ben belül minden egyes bérlő adatait alapértelmezés szerint egy szilánkos több-bérlős adatbázis tárolja. Minden adat a bérlőazonosítóval van címkézve.
 
-A központi **esemény központ** weboldala felsorolja az adott üzemelő példányban található bérlők hivatkozásait. A következő lépésekkel megtapasztalhatja az **Event hub** weboldalát és egy egyéni webalkalmazást:
+A központi **Eseményközpont** weblapja az adott központi telepítés bérlőire mutató hivatkozások listáját tartalmazza. Az alábbi lépésekkel tapasztalhatja meg az **Eseményközpont** weblapját és egy adott webalkalmazást:
 
-1. Nyissa meg az **Events hubot** a böngészőben:
-   - http://events.wingtip-mt.&lt; User&gt;. trafficmanager.net &nbsp; *(cserélje le &lt;felhasználói&gt; a telepítés felhasználói értékére.)*
+1. Nyissa meg az **Eseményközpontot** a böngészőben:
+   - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; * &lt;(Cserélje le a felhasználót&gt; a központi telepítés felhasználói értékére.)*
 
      ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -134,137 +134,137 @@ A központi **esemény központ** weboldala felsorolja az adott üzemelő péld�
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-A bejövő kérések eloszlásának szabályozásához a Wingtip alkalmazás az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)-t használja. Az egyes bérlők eseményeinek lapja tartalmazza a bérlő nevét az URL-címében. Minden URL-cím tartalmazza az adott felhasználói értéket is. Az egyes URL-címek a következő lépések alapján engedelmeskednek a megjelenített formátumnak:
+A bejövő kérelmek elosztásának szabályozásához a Wingtip alkalmazás az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)t használja. Az egyes bérlők eseménylapja tartalmazza a bérlő nevét az URL-címében. Minden URL-cím tartalmazza az adott felhasználói értéket is. Minden URL a következő lépésekkel tartja be a megjelenített formátumot:
 
-- http://events.wingtip-mt.&lt; felhasználó&gt;. trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;felhasználó&gt;.trafficmanager.net/*fabrikamjazzclub*
 
-1. Az Events alkalmazás elemzi a bérlő nevét az URL-címről. A bérlő nevét az előző példában szereplő URL-cím *fabrikamjazzclub* .
-2. Az alkalmazás ezután elkészíti a bérlő nevét egy olyan kulcs létrehozásához, amellyel hozzáfér egy katalógushoz a szegmenses [hozzárendelések kezelése](sql-database-elastic-scale-shard-map-management.md)használatával.
-3. Az alkalmazás megkeresi a kulcsot a katalógusban, és beolvassa a bérlő adatbázisának megfelelő helyét.
-4. Az alkalmazás a Location info használatával megkeresi és hozzáfér a bérlő összes adatát tartalmazó adatbázishoz.
+1. Az események alkalmazás elemzi a bérlő nevét az URL-címből. A bérlő neve *fabrikamjazzclub* az előző példa URL-cím.
+2. Az alkalmazás ezután kiírja a bérlő nevét, hogy hozzon létre egy kulcsot a katalógus eléréséhez [a szegmenstérkép-kezelés használatával.](sql-database-elastic-scale-shard-map-management.md)
+3. Az alkalmazás megkeresi a kulcsot a katalógusban, és beszerzi a bérlő adatbázisának megfelelő helyét.
+4. Az alkalmazás a helyadatok segítségével megkeresi és elérheti azt az adatbázist, amely a bérlő összes adatát tartalmazza.
 
-### <a name="events-hub"></a>Events hub
+### <a name="events-hub"></a>Eseményközpont
 
-1. Az **Events hub** felsorolja a katalógusban regisztrált összes bérlőt és azok helyszíneit.
-2. Az **Events hub** kiterjesztett metaadatokat használ a katalógusban, hogy lekérje az egyes hozzárendelésekhez társított bérlő nevét az URL-címek létrehozásához.
+1. Az **Eseményközpont** felsorolja a katalógusban regisztrált összes bérlőt és azok helyszíneit.
+2. Az **Eseményközpont** kiterjesztett metaadatokat használ a katalógusban a bérlő nevének lekéréséhez az egyes leképezésekhez társítva az URL-címek létrehozásához.
 
-Éles környezetben általában létrehoz egy CNAME DNS-rekordot, amely a [vállalati internetes tartományt](../traffic-manager/traffic-manager-point-internet-domain.md) a Traffic Manager-profilra irányítja.
+Éles környezetben általában létrehoz egy CNAME DNS-rekordot, amely [a vállalat internetes tartományát](../traffic-manager/traffic-manager-point-internet-domain.md) a forgalomkezelő profilra irányítja.
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>A bérlői adatbázisok terhelésének megkezdése
 
-Most, hogy üzembe helyezte az alkalmazást, nézzük a munkát! A *demo-LoadGenerator PowerShell-* szkript elindítja az egyes bérlők számára futó számítási feladatokat. A sok SaaS-alkalmazás valós terhelése általában szórványos és kiszámíthatatlan. Az ilyen típusú terhelés szimulálása érdekében a generátor az összes bérlőre kiterjedő terhelést hoz létre. A terhelés véletlenszerű kitöréseket tartalmaz az egyes bérlők véletlenszerűen megjelenő időközönként. A terhelési minta megjelenése több percet vesz igénybe, így a generátor a terhelés monitorozása előtt legalább három-négy percig futtatható.
+Most, hogy az alkalmazás telepítve van, tegyük munkára! A *Demo-LoadGenerator* PowerShell parancsfájl elindítja az egyes bérlők számára futó számítási feladatokat. A valós terhelés sok SaaS-alkalmazások általában szórványos és kiszámíthatatlan. Az ilyen típusú terhelés szimulálásához a generátor az összes bérlő között elosztott terhelést hoz létre. A terhelés véletlenszerű sorozatokat tartalmaz minden egyes bérlővéletlenszerű időközönként előforduló. A terhelési minta megjelenése néhány percet vesz igénybe, ezért a legjobb, ha a generátor legalább három vagy négy percig működik, mielőtt figyeli a terhelést.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a...\\learning modules\\Utilities\\*demo-LoadGenerator. ps1* parancsfájlt.
+1. A *PowerShell ISE-ben*nyissa meg a ... \\Tanulási modulok\\\\Segédprogramok*Demo-LoadGenerator.ps1* script.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a terhelésgenerátor indításához (egyelőre nem módosítsa az alapértelmezett paraméterértékeket).
 
-A *demo-LoadGenerator. ps1* parancsfájl egy másik PowerShell-munkamenetet nyit meg, amelyen a Load Generator fut. A betöltési folyamat ebben a munkamenetben olyan előtéri feladatként fut, amely a háttérbeli terhelés-generálási feladatokat hívja meg, egyet az egyes bérlők számára.
+A *Demo-LoadGenerator.ps1* parancsfájl megnyit egy másik PowerShell-munkamenetet, ahol a terhelésgenerátor fut. A terhelésgenerátor ebben a munkamenetben egy előtér-feladatként fut, amely meghívja a háttérterhelés-generálási feladatokat, minden bérlőhöz egyet.
 
-Az előtérbeli feladat elindítása után a feladat-Meghívási állapotban marad. A feladat további háttérben futó feladatokat indít el minden olyan új bérlő esetében, amelyet később kiépítenek.
+Az előtér-feladat indítása után a feladatmeghívás imázsa továbbra is munkameghívási állapotban marad. A feladat további háttérfeladatokat indít el minden olyan új bérlő számára, amely később ki van építve.
 
 A PowerShell-munkamenet bezárása leállítja az összes feladatot.
 
-Előfordulhat, hogy újra kell indítania a Load Generator-munkamenetet, hogy más paramétereket használjon. Ha igen, zárjuk be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *demo-LoadGenerator. ps1*fájlját.
+Előfordulhat, hogy szeretné újraindítani a terhelésgenerátor munkamenet különböző paraméterértékek használatával. Ha igen, zárja be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *Demo-LoadGenerator.ps1 -t.*
 
-## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Új bérlő kiépítése a szilánkokra osztott adatbázisba
+## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Új bérlő kiépítése a szilánkos adatbázisba
 
-A kezdeti üzembe helyezés három minta bérlőt tartalmaz a *Tenants1* -adatbázisban. Hozzunk létre egy másik bérlőt, és figyeljük meg az üzembe helyezett alkalmazás hatásait. Ebben a lépésben egy kulcsot egy új bérlő létrehozásához kell megnyomnia:
+A kezdeti üzembe helyezés három mintabérlőt tartalmaz a *Tenants1* adatbázisban. Hozzon létre egy másik bérlőt, és figyelje meg az üzembe helyezett alkalmazásra gyakorolt hatásait. Ebben a lépésben egy billentyűt megnyom egy új bérlő létrehozásához:
 
-1. Nyissa meg a...\\learning-modulok\\a *POWERSHELL ISE*-ben\\*demo-ProvisionTenants. ps1* eszközt.
-2. A szkript futtatásához nyomja le az **F5** billentyűt (nem **F8**) (most hagyja meg az alapértelmezett értékeket).
+1. Nyit... \\Tanulási modulok\\kiépítése\\és katalógus*bemutató-provisiontenants.ps1* a *PowerShell ISE.*
+2. Nyomja **le az F5** (nem **F8**) billentyűt a parancsfájl futtatásához (hagyja meg az alapértelmezett értékeket egyelőre).
 
    > [!NOTE]
-   > A PowerShell-szkripteket csak az **F5** billentyű lenyomásával, az **F8** billentyű lenyomásával futtatva futtassa a parancsfájl kiválasztott részét. Az **F8** -as probléma az, hogy a *$PSScriptRoot* változó nincs kiértékelve. Ezt a változót számos parancsfájl igényli a mappák navigálása, más parancsfájlok meghívása vagy importálási modulok esetén.
+   > A PowerShell-parancsfájlokat csak az **F5** billentyű lenyomásával kell futtatnia, nem pedig az **F8** billentyű lenyomásával a parancsfájl kijelölt részének futtatásához. A probléma az **F8,** hogy a *$PSScriptRoot* változó nem értékeli ki. Erre a változóra számos parancsfájlnak szüksége van a mappákban való navigáláshoz, más parancsfájlok meghívásához vagy modulok importálásához.
 
-Az új Red Maple Racing-bérlő hozzá van adva a *Tenants1* -adatbázishoz, és regisztrálva van a katalógusban. Megnyílik az új bérlő jegy-értékesítési **eseményeinek** helye a böngészőben:
+Az új Red Maple Racing bérlő hozzáadódik a *Tenants1* adatbázishoz, és regisztrálva van a katalógusban. Az új bérlő jegyértékesítő **események** webhelye megnyílik a böngészőben:
 
 ![Új bérlő](./media/saas-multitenantdb-get-started-deploy/red-maple-racing.png)
 
-Frissítse az **Events hubot**, és az új bérlő most megjelenik a listában.
+Frissítse az **Eseményközpontot**, és az új bérlő megjelenik a listában.
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>Új bérlő kiépítése a saját adatbázisában
 
-A felosztott több-bérlős modell lehetővé teszi, hogy új bérlőt építsen ki egy olyan adatbázisba, amely más bérlőket tartalmaz, vagy egy saját adatbázisba. A saját adatbázisában elkülönített bérlő a következő előnyöket nyújtja:
+A szilánkos több-bérlős modell lehetővé teszi, hogy válassza ki, hogy egy új bérlő egy adatbázisba, amely más bérlők, vagy egy saját adatbázisba. A saját adatbázisában elkülönített bérlő a következő előnyöket élvezi:
 
-- A bérlői adatbázis teljesítménye úgy kezelhető, hogy nem kell más bérlők igényeihez kötni.
-- Ha szükséges, az adatbázist visszaállíthatja egy korábbi időpontra, mert más bérlők nem lesznek érintettek.
+- A bérlői adatbázis teljesítménye anélkül kezelhető, hogy más bérlők igényeinek megfelelően kompromisszumot kellene kötni.
+- Szükség esetén az adatbázis visszaállítható egy korábbi időpontra, mert más bérlők nem érintettek.
 
-Dönthet úgy, hogy ingyenes próbaverziós ügyfeleket vagy gazdaságbeli ügyfeleket helyez el több-bérlős adatbázisokba. Mindegyik prémium bérlőt saját dedikált adatbázisába helyezheti. Ha olyan sok adatbázist hoz létre, amely csak egy bérlőt tartalmaz, az erőforrások költségeinek optimalizálása érdekében a rugalmas készletekben együtt kezelheti őket.
+Dönthet úgy, hogy az ingyenes próbaverziós ügyfeleket vagy a gazdaságos ügyfeleket több-bérlős adatbázisokba helyezi. Minden prémium szintű bérlőt a saját dedikált adatbázisába helyezhet. Ha sok olyan adatbázist hoz létre, amelyek csak egy bérlőt tartalmaznak, az erőforrásköltségek optimalizálása érdekében együttesen kezelheti őket egy rugalmas készletben.
 
-Ezután kiépítünk egy másik bérlőt, ezúttal a saját adatbázisában:
+Ezután egy másik bérlőt építünk ki, ezúttal a saját adatbázisában:
 
-1. A...\\learning-modulok\\a\\*demo-ProvisionTenants. ps1*kiépítése és katalogizálása, a *$TenantName* módosítása **Salix salsa**, *$VenueType* a **Dance** és a *$Scenario* **2**.
+1. A... \\Tanulási modulok\\kiépítése\\és katalógus*Demo-ProvisionTenants.ps1*, módosítsa *$TenantName* **Salix Salsa**, *$VenueType* **táncolni,** és *$Scenario* **2**.
 
-2. A szkript ismételt futtatásához nyomja le az **F5** billentyűt.
-    - Ez az **F5** billentyű lenyomásával az új bérlőt külön adatbázisban kell kiépíteni. Az adatbázis és a bérlő regisztrálva van a katalógusban. Ezután megnyílik a böngésző a bérlő események lapjára.
+2. Nyomja le **az F5 billentyűt** a parancsfájl ismételt futtatásához.
+    - Ez **az F5** sajtó külön adatbázisban rendelkezéseket hoz az új bérlőről. Az adatbázis és a bérlő regisztrálva van a katalógusban. Ezután a böngésző megnyílik a bérlő Események lapjára.
 
-   ![Salix salsa-események lapja](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
+   ![Salix Salsa események oldal](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
 
-   - Görgessen a lap aljára. A szalagcímben megjelenik az adatbázis neve, amelyben a bérlői információk tárolódnak.
+   - Görgessen a lap aljára. Ott a szalagcímben láthatja az adatbázis nevét, amelyben a bérlői adatok tárolása.
 
-3. Frissítse az **Events hubot** , és a két új bérlő most megjelenik a listában.
+3. Frissítse az **Eseményközpontot,** és a két új bérlő megjelenik a listában.
 
-## <a name="explore-the-servers-and-tenant-databases"></a>A kiszolgálók és a bérlői adatbázisok megismerése
+## <a name="explore-the-servers-and-tenant-databases"></a>A kiszolgálók és a bérlői adatbázisok felfedezése
 
-Most nézzük meg az üzembe helyezett erőforrásokat:
+Most megnézzük a felhasznált erőforrások egy részét:
 
-1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg az erőforráscsoportok listáját. Nyissa meg az alkalmazás üzembe helyezésekor létrehozott erőforráscsoportot.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg az erőforráscsoportok listáját. Nyissa meg az alkalmazás telepítésekor létrehozott erőforráscsoportot.
 
    ![erőforráscsoport](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Kattintson a **Catalog-mt&lt;felhasználói&gt;-** kiszolgáló elemre. A katalógus-kiszolgáló két, *tenantcatalog* és *basetenantdb*nevű adatbázist tartalmaz. A *basetenantdb* -adatbázis egy üres sablon-adatbázis. A rendszer átmásolja egy új bérlői adatbázis létrehozására, akár több bérlőhöz, akár csak egy bérlőhöz használják.
+2. Kattintson **a&lt;katalógus-mt felhasználói&gt; ** kiszolgáló ra. A katalóguskiszolgáló két *tenantcatalog* és *basetenantdb*nevű adatbázist tartalmaz. A *basetenantdb* adatbázis egy üres sablonadatbázis. A rendszer másolja egy új bérlői adatbázis létrehozása, hogy használt sok bérlő, vagy csak egy bérlő.
 
    ![katalóguskiszolgáló elemre](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
-3. Térjen vissza az erőforráscsoporthoz, és válassza ki azt a *tenants1-MT* kiszolgálót, amely a bérlői adatbázisokat tárolja.
-    - A tenants1-adatbázis egy több-bérlős adatbázis, amelyben az eredeti három bérlőt, valamint az első hozzáadott bérlőt tárolja a rendszer. 50 DTU standard adatbázisként van konfigurálva.
-    - A **salixsalsa** -adatbázis csak a Salix Salsa Dance-helyszínt tárolja. Alapértelmezés szerint a 50 DTU Standard Edition-adatbázisként van konfigurálva.
+3. Lépjen vissza az erőforráscsoporthoz, és válassza ki a *bérlői adatbázisokat tartalmazó bérlő1 mt* kiszolgálót.
+    - A tenants1 adatbázis egy több-bérlős adatbázis, amelyben az eredeti három bérlő, valamint az első hozzáadott bérlő tárolják. 50 DTU standard adatbázisként van konfigurálva.
+    - A **salixsalsa** adatbázis tartja a Salix Salsa tánc helyszín, mint az egyetlen bérlő. Alapértelmezés szerint 50 DT-vel rendelkező standard kiadású adatbázisként van konfigurálva.
 
    ![bérlői kiszolgáló](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
 ## <a name="monitor-the-performance-of-the-database"></a>Az adatbázis teljesítményének figyelése
 
-Ha a Load Generator több percig is fut, elegendő telemetria áll rendelkezésre a Azure Portal beépített adatbázis-figyelési képességeinek megkereséséhez.
+Ha a terhelésgenerátor már néhány perce fut, elegendő telemetriai adatok érhetők el az Azure Portalba beépített adatbázis-figyelési képességek vizsgálatához.
 
-1. Keresse meg a **tenants1-mt&lt;felhasználói&gt;-** kiszolgálót, majd kattintson a **tenants1** elemre, és tekintse meg a négy Bérlővel rendelkező adatbázis erőforrás-felhasználását. Az egyes bérlők a Load generatortól származó, szórványosan nagy terhelést okoznak:
+1. Tallózással keresse meg a **bérlők1 mt&lt;felhasználói&gt; ** kiszolgálót, és kattintson a **bérlők1** elemre a négy bérlővel tartalmazó adatbázis erőforrás-kihasználtságának megtekintéséhez. Minden bérlő a terhelésgenerátor szórványos nagy terhelésének van kitéve:
 
-   ![tenants1 figyelése](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
+   ![bérlők figyelése1](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
-   A DTU-kihasználtsági diagram szépen szemlélteti, hogy a több-bérlős adatbázisok hogyan támogathatják előre nem kiszámítható számítási feladatokat számos bérlő között. Ebben az esetben a Load Generator nagyjából 30 DTU-t alkalmaz az egyes bérlők számára. Ez a terhelés egy 50 DTU-adatbázis 60%-os kihasználtságának felel meg. A 60%-ot meghaladó csúcsok az egyidejű több bérlőre alkalmazott terhelést eredményezik.
+   A DTU-kihasználtsági diagram szépen illusztrálja, hogy egy több-bérlős adatbázis támogathatja a kiszámíthatatlan számítási feladatok számos bérlő között. Ebben az esetben a terhelésgenerátor egy szórványos terhelést alkalmaz, amely körülbelül 30 DCO-k minden bérlő. Ez a terhelés egy 50 DTU-adatbázis 60%-os kihasználásának felel meg. A 60%-ot meghaladó csúcsok a terhelés egyidejű alkalmazásával történő terhelés eredménye.
 
-2. Keresse meg a **tenants1-mt&lt;felhasználói&gt;-** kiszolgálót, és kattintson a **salixsalsa** -adatbázisra. Megtekintheti az erőforrás-használatot ezen az adatbázison, amely csak egy bérlőt tartalmaz.
+2. Tallózással keresse meg a **bérlők1 mt&lt;felhasználói&gt; ** kiszolgálót, és kattintson a **salixsalsa** adatbázisra. Az erőforrás-kihasználtságot ezen az adatbázison láthatja, amely csak egy bérlőt tartalmaz.
 
-   ![salixsalsa-adatbázis](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
+   ![salixsalsa adatbázis](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 
-A Load Generator hasonló terhelést alkalmaz az egyes bérlők számára, függetlenül attól, hogy az egyes bérlők melyik adatbázissal rendelkeznek. A **salixsalsa** -adatbázis csak egy bérlője láthatja, hogy az adatbázis sokkal nagyobb terhelést tart fenn, mint az adatbázis több Bérlővel. 
+A terhelésgenerátor hasonló terhelést alkalmaz az egyes bérlőkre, függetlenül attól, hogy az egyes bérlők melyik adatbázisban vannak. Csak egy bérlő a **salixsalsa** adatbázisban, láthatja, hogy az adatbázis képes fenntartani egy sokkal nagyobb terhelést, mint az adatbázis több bérlővel. 
 
-### <a name="resource-allocations-vary-by-workload"></a>Az erőforrás-elosztások munkaterheléstől függően változnak
+### <a name="resource-allocations-vary-by-workload"></a>Az erőforrás-allokációk munkaterhelésenként változnak
 
-Előfordulhat, hogy egy több-bérlős adatbázisnak több erőforrásra van szüksége a jó teljesítményhez, mint az egyetlen bérlős adatbázis, de nem mindig. Az erőforrások optimális elosztása a rendszerbeli bérlők adott számítási feladatának jellemzőitől függ.
+Előfordulhat, hogy egy több-bérlős adatbázis több erőforrást igényel a jó teljesítmény hez, mint egy egy-bérlős adatbázis, de nem mindig. Az erőforrások optimális elosztása a rendszer bérlőinek adott számítási feladatok jellemzőitől függ.
 
-A Load Generator parancsfájl által generált munkaterhelések csak illusztrációs célokat szolgálnak.
+A terhelésgenerátor-parancsfájl által létrehozott számítási feladatok csak illusztrációs célokat szolgálnak.
 
 ## <a name="additional-resources"></a>További források
 
-- A több-bérlős SaaS-alkalmazásokkal kapcsolatos további információkért lásd: [tervezési minták a több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
+- A több-bérlős SaaS-alkalmazásokról a [több-bérlős SaaS-alkalmazások tervezési mintái című](saas-tenancy-app-design-patterns.md)témakörben olvashat.
 
-- A rugalmas készletekről további információt a következő témakörben talál:
+- A rugalmas medencékről az:
 
-  - [A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti](sql-database-elastic-pool.md)
-  - [Horizontális felskálázás az Azure SQL Database segítségével](sql-database-elastic-scale-introduction.md)
+  - [Több Azure SQL-adatbázis kezelése és méretezése rugalmas készletek használatával](sql-database-elastic-pool.md)
+  - [Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 
 > [!div class="checklist"]
-> - A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezése.
-> - Az alkalmazást használó kiszolgálók és adatbázisok.
-> - A bérlők az *adatkatalógussal*vannak leképezve.
-> - Új bérlők kiépítése egy több-bérlős adatbázisba és egy egybérlős adatbázisba.
-> - A készlet kihasználtságának megtekintése a bérlői tevékenységek figyeléséhez.
-> - Mintavételi erőforrások törlése a kapcsolódó számlázás leállításához.
+> - A Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás üzembe helyezése.
+> - Az alkalmazást kiszolgálókról és adatbázisokról.
+> - A bérlők le vannak képezve az adataikhoz a *katalógusban.*
+> - Új bérlők kiépítése egy több-bérlős adatbázisba és egy-bérlős adatbázisba.
+> - A készlet kihasználtságának megtekintése a bérlői tevékenység figyeléséhez.
+> - Mintaforrások törlése a kapcsolódó számlázás leállításához.
 
-Most próbálja ki a [létesítés és a katalógus oktatóanyagot](sql-database-saas-tutorial-provision-and-catalog.md).
+Most próbálja meg a [kiépítés és katalógus bemutató](sql-database-saas-tutorial-provision-and-catalog.md).
 
 
 <!--  Link references.
@@ -288,5 +288,5 @@ A [series of related tutorials] is available that build upon this initial deploy
 [image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
-[image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Az Azure-ba való üzembe helyezéshez használt gomb."
+[image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Az Azure-ba való üzembe helyezés gombja."
 

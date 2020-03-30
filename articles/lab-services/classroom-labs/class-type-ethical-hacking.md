@@ -1,6 +1,6 @@
 ---
-title: Etikai hackelési tesztkörnyezet beállítása Azure Lab Servicesokkal | Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be a labort a Azure Lab Services használatával az etikai hackerek tanításához.
+title: Etikus feltörési labor beállítása az Azure Lab Services szolgáltatással | Microsoft dokumentumok
+description: Ismerje meg, hogyan állíthat be egy labort az Azure Lab Services használatával az etikus hackelés tanításához.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,136 +14,136 @@ ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133182"
 ---
-# <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Tesztkörnyezet beállítása az etikai hackelési osztály tanításához 
-Ez a cikk bemutatja, hogyan állíthat be egy olyan osztályt, amely az etikai feltörések kriminalisztikai oldalára koncentrál. A behatolási teszt, amelyet az etikai hackelési Közösség használ, akkor következik be, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz a rosszindulatú támadó által kihasználható biztonsági rések bemutatására. 
+# <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Hozzon létre egy labort, hogy etikus hackelési osztályt tanítson 
+Ez a cikk bemutatja, hogyan kell létrehozni egy osztályt, amely elsősorban a törvényszéki oldalán etikai hacker. A behatolási tesztelés, amelyet az etikus feltörési közösség alkalmaz, akkor történik, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz, hogy bemutassa a rosszindulatú támadó által kihasználható biztonsági réseket. 
 
-Egy etikai hackelési osztályban a tanulók modern technikákat tanulnak a biztonsági rések elleni védelemhez. Minden tanuló egy olyan Windows Server Host virtuális gépet kap, amely két beágyazott virtuális géppel rendelkezik – egy [Metasploitable3](https://github.com/rapid7/metasploitable3) -lemezképpel rendelkező virtuális géppel és egy másik, [Kali Linux](https://www.kali.org/) -lemezképpel rendelkező géppel. A Metasploitable virtuális gép felhasználási célokra szolgál, és a Kali virtuális gép hozzáférést biztosít a kriminalisztikai feladatok végrehajtásához szükséges eszközökhöz.
+Egy etikus hackelési osztályban a diákok modern technikákat tanulhatnak a sebezhetőségek elleni védekezésre. Minden diák kap egy Windows Server-gazdavirtuális gépet, amely két beágyazott virtuális géppel rendelkezik – egy [metasploitable3](https://github.com/rapid7/metasploitable3) lemezképpel rendelkező virtuális gép, egy másik pedig [Kali Linux-lemezképpel](https://www.kali.org/) rendelkező gép. A metasploitable virtuális gép használható kihasználó célokra, és Kali virtuális gép hozzáférést biztosít a szükséges eszközöket a törvényszéki feladatok végrehajtásához.
 
-Ez a cikk két fő szakaszt tartalmaz. Az első szakasz ismerteti, hogyan hozhatja létre az osztályterem labort. A második szakasz ismerteti, hogyan hozhatja létre a sablon gépet, amelyen engedélyezve van a beágyazott virtualizálás, valamint a szükséges eszközök és lemezképek. Ebben az esetben a Metasploitable-lemezkép és a Kali Linux-lemezkép egy olyan gépen, amelyen engedélyezve van a Hyper-V a lemezképek üzemeltetéséhez.
+Ez a cikk két fő részből rendelkezik. Az első rész ismerteti, hogyan lehet létrehozni az osztályteremben laborban. A második szakasz ismerteti, hogyan lehet létrehozni a sablongép beágyazott virtualizáció engedélyezve van, és a szükséges eszközökkel és képekkel. Ebben az esetben egy metaploitable lemezkép és egy Kali Linux-lemezkép egy olyan gépen, amelyen a Hyper-V engedélyezve van a képek üzemeltetéséhez.
 
-## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
-A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
+## <a name="lab-configuration"></a>Labor konfigurációja
+A labor beállításához azure-előfizetésre van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené. Miután megkapja az Azure-előfizetést, létrehozhat egy új laborfiókot az Azure Lab Servicesben, vagy használhat egy meglévő fiókot. Tekintse meg a következő oktatóanyagot az új laborfiók [létrehozásáról: Bemutató a laborfiók beállításához](tutorial-setup-lab-account.md).
 
-[Ezt az oktatóanyagot](tutorial-setup-classroom-lab.md) követve hozzon létre egy új labort, majd alkalmazza a következő beállításokat:
+Az [oktatóanyag követéséhez](tutorial-setup-classroom-lab.md) hozzon létre egy új tesztkörnyezetet, majd alkalmazza a következő beállításokat:
 
-| Virtuális gép mérete | Image (Kép) |
+| Virtuális gép mérete | Kép |
 | -------------------- | ----- | 
-| Közepes (beágyazott virtualizálás) | Windows Server 2019 Datacenter |
+| Közepes (beágyazott virtualizáció) | Windows Server 2019 Datacenter |
 
-## <a name="template-machine"></a>Sablon számítógép 
+## <a name="template-machine"></a>Sablongép 
 
-A sablon létrehozása után indítsa el a gépet, és kapcsolódjon ahhoz, hogy elvégezze a következő három fő feladatot. 
+A sablongép létrehozása után indítsa el a gépet, és csatlakozzon hozzá a következő három fő feladat elvégzéséhez. 
  
-1. Állítsa be a gépet a beágyazott virtualizálás számára. Lehetővé teszi az összes megfelelő Windows-funkció (például a Hyper-V) használatát, és beállítja a Hyper-V-lemezképek hálózatkezelését, hogy képes legyen kommunikálni egymással és az internettel.
-2. A [Kali](https://www.kali.org/) Linux-rendszerkép beállítása. A Kali egy Linux-disztribúció, amely a behatolás tesztelésére és a biztonsági naplózásra szolgáló eszközöket tartalmaz.
-3. Állítsa be a Metasploitable-rendszerképet. Ebben a példában a rendszer a [Metasploitable3](https://github.com/rapid7/metasploitable3) rendszerképet fogja használni. Ez a rendszerkép szándékosan biztonsági réseket hoz létre.
+1. Állítsa be a gépet beágyazott virtualizációhoz. Lehetővé teszi az összes megfelelő Windows-funkciót, például a Hyper-V-t, és beállítja a Hyper-V-lemezképek hálózatát, hogy képesek legyenek kommunikálni egymással és az internettel.
+2. Állítsa be a [Kali](https://www.kali.org/) Linux-lemezképet. A Kali egy Linux disztribúció, amely a penetráció teszteléséhez és a biztonsági auditáláshoz szükséges eszközöket tartalmaz.
+3. Állítsa be a metaszploitable képet. Ebben a példában a [Metasploitable3](https://github.com/rapid7/metasploitable3) kép lesz használva. Ez a lemezkép szándékosan biztonsági rések et szeretne használni.
 
-A fent vázolt feladatokat automatizáló szkript a [labor Services etikai Hacking parancsfájljaiban](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking)érhető el.
+A szkript, amely automatizálja a fent vázolt feladatok elérhető [Lab Services Etikai Hacking Scripts](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking).
 
-### <a name="prepare-template-machine-for-nested-virtualization"></a>Sablon számítógépének előkészítése beágyazott virtualizálás esetén
-A [cikk](how-to-enable-nested-virtualization-template-vm.md) utasításait követve készítse elő a sablon virtuális gépet a beágyazott virtualizálás számára. 
+### <a name="prepare-template-machine-for-nested-virtualization"></a>Sablongép előkészítése beágyazott virtualizációhoz
+Ebben a [cikkben](how-to-enable-nested-virtualization-template-vm.md) található utasításokat követve készítse elő a sablon virtuális gép beágyazott virtualizáció. 
 
-### <a name="set-up-a-nested-virtual-machine-with-kali-linux-image"></a>Beágyazott virtuális gép beállítása a Kali Linux-lemezképpel
-A Kali egy Linux-disztribúció, amely a behatolás tesztelésére és a biztonsági naplózásra szolgáló eszközöket tartalmaz.
+### <a name="set-up-a-nested-virtual-machine-with-kali-linux-image"></a>Beágyazott virtuális gép beállítása Kali Linux-lemezképpel
+A Kali egy Linux disztribúció, amely a penetráció teszteléséhez és a biztonsági auditáláshoz szükséges eszközöket tartalmaz.
 
-1. Rendszerkép letöltése [https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/ról ](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/).  
-    1. Töltse le a következőt: **Kali Linux Hyper-v 64 bit** a Hyper-v-hez.
-    1. Bontsa ki a. 7z fájlt.  Ha még nem rendelkezik 7 zip-vel, töltse le a [https://www.7-zip.org/download.htmlból ](https://www.7-zip.org/download.html). Jegyezze meg a kibontott mappa helyét, mert később szüksége lesz rá.
-2. Nyissa meg a **Hyper-V kezelőjét** a felügyeleti eszközök közül.
-1. Válassza a **művelet**, majd a **virtuális gép importálása**lehetőséget. 
-1. A **virtuális gép importálása** varázsló **mappa megkeresése** lapján válassza ki a Kali Linux-rendszerképet tartalmazó kibontott mappa helyét.
+1. Kép letöltése a alkalmazásból. [https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)  
+    1. Töltse le a Kali Linux Hyper-V 64 Bit a Hyper-V.Download the **Kali Linux Hyper-V 64 Bit** for Hyper-V.
+    1. Bontsa ki a .7z fájlt.  Ha még nem rendelkezik 7 zip, [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html)töltse le a . Ne feledje a kibontott mappa helyét, mivel később szüksége lesz rá.
+2. Nyissa meg a **Hyper-V managert** a felügyeleti eszközökből.
+1. Válassza **a Művelet**lehetőséget, majd a Virtuális gép **importálása**lehetőséget. 
+1. A **Virtuális gép importálása** varázsló **Mappa felkutatása** lapján válassza ki a Kali Linux-lemezképet tartalmazó kibontott mappa helyét.
 
-    ![Mappa megkeresése párbeszédpanel](../media/class-type-ethical-hacking/locate-folder.png)
-1. A **virtuális gép kiválasztása** lapon válassza ki a Kali Linux-rendszerképet.  Ebben az esetben a rendszerkép a **Kali-Linux-2019,3-HyperV**.
+    ![Mappa megjelenítése párbeszédpanel](../media/class-type-ethical-hacking/locate-folder.png)
+1. A **Virtuális gép kiválasztása** lapon válassza ki a Kali Linux-lemezképet.  Ebben az esetben a kép **kali-linux-2019.3-hyperv**.
 
-    ![Kali-rendszerkép kiválasztása](../media/class-type-ethical-hacking/select-kali-image.png)
-1.  Az **importálási típus kiválasztása** lapon válassza **a virtuális gép másolása (új egyedi azonosító létrehozása)** lehetőséget.
+    ![Kali kép kijelölése](../media/class-type-ethical-hacking/select-kali-image.png)
+1.  A **Típus importálása lehetőséget lapon** válassza **a Virtuális gép másolása (új egyedi azonosító létrehozása)** lehetőséget.
 
-    ![Importálási típus kiválasztása](../media/class-type-ethical-hacking/choose-import-type.png)
-1. Fogadja el az alapértelmezett beállításokat a **virtuális gépek fájljainak kiválasztásához** , majd válassza a mappák lehetőséget a **virtuális merevlemezek lapjainak tárolásához** , majd kattintson a **tovább**gombra.
-1. A **hálózat összekapcsolása** lapon válassza a korábban létrehozott **LabServicesSwitch** a **beágyazott virtualizáció előkészítése a sablonban** című szakaszt, majd kattintson a **tovább**gombra.
+    ![Importálástípus kiválasztása](../media/class-type-ethical-hacking/choose-import-type.png)
+1. Fogadja el a **Virtuálisgép-fájlok mappák kiválasztása** és a Virtuális merevlemezek tárolására szolgáló mappák kiválasztása alapértelmezett **beállításait,** majd válassza a **Tovább**gombot.
+1. A **Hálózat csatlakoztatása** lapon válassza a cikk **Beágyazott virtualizációhoz** sablon előkészítése című szakaszában korábban létrehozott **LabServicesSwitch** lehetőséget, majd kattintson a **Tovább**gombra.
 
-    ![Hálózati kapcsolat lap](../media/class-type-ethical-hacking/connect-network.png)
-1. Válassza a **Befejezés** lehetőséget az **Összefoglalás** lapon. Várjon, amíg a másolás és az importálás művelet be nem fejeződik. A Kali Linux rendszerű virtuális gép mostantól elérhető lesz a Hyper-V-ben.
-1. A **Hyper-V kezelőjében**válassza a **művelet** -> **Indítás**lehetőséget, majd válassza a **művelet** -> **Kapcsolódás** lehetőséget a virtuális géphez való kapcsolódáshoz.  
-12. Az alapértelmezett Felhasználónév `root`, és a jelszó `toor`. 
+    ![Hálózati lap csatlakoztatása](../media/class-type-ethical-hacking/connect-network.png)
+1. Az **Összegzés** lapon válassza a **Befejezés** gombot. Várjon, amíg a másolási és importálási műveletek befejeződnek. A Kali Linux virtuális gép mostantól elérhető lesz a Hyper-V-ben.
+1. A **Hyper-V Manager programban**válassza a **Művelet** -> **indítása**lehetőséget, majd a **Művelet** -> **csatlakozni** lehetőséget választva csatlakozzon a virtuális géphez.  
+12. Az alapértelmezett felhasználónév, `root` és `toor`a jelszó . 
 
     > [!NOTE]
-    > Ha fel kell oldania a rendszerkép zárolását, nyomja le a CTRL billentyűt, és húzza felfelé az egeret.
+    > Ha fel kell oldania a kép zárolását, nyomja le a CTRL billentyűt, és húzza felfelé az egeret.
 
-## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Beágyazott virtuális gép beállítása Metasploitable-lemezképpel  
-A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált rendszerkép. Ezt a rendszerképet fogja használni a problémák teszteléséhez és kereséséhez. Az alábbi utasítások bemutatják, hogyan használható egy előre létrehozott Metasploitable-rendszerkép. Ha azonban a Metasploitable rendszerkép újabb verziójára van szükség, tekintse meg a következőt: [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3).
+## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Beágyazott virtuális gép beállítása metaploitable image-el  
+A Rapid7 metaszploitképes lemezkép egy szándékosan biztonsági résekkel konfigurált lemezkép. Ezt a képet fogja használni a problémák tesztelésére és keresésére. Az alábbi utasítások bemutatják, hogyan kell használni egy előre létrehozott metasploitable képet. Ha azonban a metasploitable kép újabb verziójára [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3)van szükség, lásd: .
 
-1. Navigáljon [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html). Töltse ki az űrlapot a rendszerkép letöltéséhez, és kattintson a **Submit (Küldés** ) gombra.
-1. Válassza a **Letöltés Metasploitable most** gombot.
-1. A zip-fájl letöltésekor bontsa ki a zip-fájlt, és jegyezze fel a helyet.
-1. Alakítsa át a kinyert VMDK-fájlt egy vhdx-fájlba, hogy a a Hyper-V használatával is használható legyen. Ehhez nyissa meg a PowerShellt rendszergazdai jogosultságokkal, és navigáljon arra a mappára, ahol a VMDK fájl található, és kövesse az alábbi utasításokat:
-    1. Töltse le a [Microsoft Virtual Machine Convertert](https://www.microsoft.com/download/details.aspx?id=42497), és amikor a rendszer kéri, futtassa mvmc_setup. msi fájlt.
-    1. Importálja a PowerShell modult.  A modul telepítési alapértelmezett helye: C:\Program Files\Microsoft Virtual Machine Converter \
+1. Keresse [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)meg a it. Töltse ki az űrlapot a kép letöltéséhez, és válassza a **Küldés** gombot.
+1. Válassza a **Metasploitable Now letöltése** gombot.
+1. A zip-fájl letöltésekor bontsa ki a zip fájlt, és jegyezze meg a helyet.
+1. Konvertálja a kibontott vmdk fájlt vhdx fájllá, hogy a Hyper-V-vel is használhassa. Ehhez nyissa meg a Rendszergazdai jogosultságokkal rendelkező PowerShellt, és keresse meg azt a mappát, amelyben a vmdk-fájl található, és kövesse az alábbi utasításokat:
+    1. Töltse le a [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497)programot , és amikor a rendszer kéri, futtassa a mvmc_setup.msi fájlt.
+    1. Importálja a PowerShell modult.  A modul telepítésének alapértelmezett helye a C:\Program Files\Microsoft Virtual Machine Converter\
 
         ```powershell
         Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
         ```
-    1. Alakítsa át a VMDK egy olyan VHD-fájlba, amelyet a Hyper-V használhat. A művelet több percet is igénybe vehet.
+    1. Konvertálja a vmdk egy vhd fájlt, amely a Hyper-V által használható. Ez a művelet több percet is igénybe vehet.
     
         ```powershell
         ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
         ```
-    1. Másolja az újonnan létrehozott metasploitable. vhdx C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\. 
+    1. Másolja az újonnan létrehozott metasploitable.vhdx fájlba a C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\.c.-be. 
 1. Hozzon létre egy új Hyper-V virtuális gépet.
-    1. Nyissa meg a **Hyper-V kezelőjét**.
-    1. Válassza a **művelet** -> **új** -> **virtuális gép**lehetőséget.
-    1. Az **új virtuális gép varázsló**alapismeretek **lapján kattintson a** **tovább**gombra.
-    1. A **név és hely megadása** lapon adja meg a **Metasploitable** nevet a **név**mezőben, majd kattintson a **Tovább gombra**.
+    1. Nyissa meg **a Hyper-V Manager t.**
+    1. Válassza **a Művelet** -> **új** -> **virtuális gép lehetőséget.**
+    1. Az Új virtuális gép **varázsló** **Kezdés előtti** lapján kattintson a **Tovább**gombra.
+    1. A **Név és hely megadása** lapon írja be a **Metasploitable parancsot** a **névhez,** és válassza a **Tovább**gombot.
 
-        ![Új virtuálisgép-rendszerkép varázsló](../media/class-type-ethical-hacking/new-vm-wizard-1.png)
-    1. A **generáció megadása** lapon fogadja el az alapértelmezett értékeket, majd kattintson a **tovább**gombra.
-    1. A **memória kiosztása** lapon adja meg a **512 MB** értéket az **indítási memória**számára, majd kattintson a **Tovább gombra**. 
+        ![Új virtuálisgép-lemezkép varázsló](../media/class-type-ethical-hacking/new-vm-wizard-1.png)
+    1. A **Létrehozás megadása** lapon fogadja el az alapértelmezett értékeket, és válassza a **Tovább**gombot.
+    1. A **Memória hozzárendelése** lapon írja be az **512 MB** értéket az **indítási memóriához,** és válassza a **Tovább**gombot. 
 
-        ![Memória kiosztása lap](../media/class-type-ethical-hacking/assign-memory-page.png)
-    1. A **hálózat konfigurálása** lapon hagyja a kapcsolatot **nem csatlakoztatottként**. A hálózati adaptert később kell beállítania.
-    1. A **virtuális merevlemez összekapcsolása** lapon válassza a **meglévő virtuális merevlemez használata**lehetőséget. Keresse meg az előző lépésben létrehozott **metasploitable. vhdx** fájl helyét, és kattintson a **tovább**gombra. 
+        ![Memórialap hozzárendelése](../media/class-type-ethical-hacking/assign-memory-page.png)
+    1. A **Hálózat konfigurálása** lapon hagyja a kapcsolatot **nem csatlakoztatottként.** A hálózati adaptert később kell beállítani.
+    1. A **Virtuális merevlemez csatlakoztatása** lapon válassza **a Meglévő virtuális merevlemez használata**lehetőséget. Tallózással keresse meg az előző lépésben létrehozott **metasploitable.vhdx** fájl helyét, és válassza a **Tovább**gombot. 
 
-        ![Virtuális hálózati lemez összekapcsolásának lapja](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
-    1. Az **új virtuális gép varázsló befejezése** lapon kattintson a **Befejezés gombra**.
-    1. A virtuális gép létrehozása után válassza ki azt a Hyper-V kezelőjében. Ne kapcsolja be még a gépet.  
-    1. Válassza a **művelet** -> **Beállítások**lehetőséget.
-    1. A **Metasploitable beállításai** párbeszédpanelen válassza a **hardver hozzáadása**elemet. 
-    1. Válassza az **örökölt hálózati adapter**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+        ![Virtuális hálózati lemez csatlakoztatása lap](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
+    1. Az **Új virtuális gép varázsló befejezése** lapon válassza a **Befejezés**gombot.
+    1. A virtuális gép létrehozása után válassza ki azt a Hyper-V Managerben. Még ne kapcsold be a gépet.  
+    1. Válassza **a Műveletbeállítások** -> **lehetőséget.**
+    1. A **Metasploitable beállításai** párbeszédpanelen válassza a **Hardver hozzáadása lehetőséget.** 
+    1. Válassza **az Örökölt hálózati adapter**lehetőséget, majd a **Hozzáadás**lehetőséget.
 
         ![Hálózati adapter lap](../media/class-type-ethical-hacking/network-adapter-page.png)
-    1. Az **örökölt hálózati adapter** lapon válassza a **LabServicesSwitch** lehetőséget a **virtuális kapcsoló** beállításnál, majd kattintson az **OK gombra**. A rendszer létrehozta a LabServicesSwitch a Hyper-V sablon-számítógépének előkészítésekor a **beágyazott virtualizációs sablon előkészítése sablonjában** .
+    1. Az **Örökölt hálózati adapter** lapon válassza a **LabServicesSwitch** lehetőséget a **Virtuális kapcsoló** beállításhoz, majd az **OK**gombra. A LabServicesSwitch a Hyper-V sablongépének előkészítésekor jött létre a **Beágyazott virtualizáláselőkészítése** szakaszban.
 
         ![Örökölt hálózati adapter lap](../media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. A Metasploitable-rendszerkép most már használatra kész. A **Hyper-V kezelőjében**válassza a **művelet** -> **Indítás**lehetőséget, majd válassza a **művelet** -> **Kapcsolódás** lehetőséget a virtuális géphez való kapcsolódáshoz.  Az alapértelmezett Felhasználónév a **msfadmin** , a jelszó pedig **msfadmin**. 
+    1. A metasploitable kép most már használatra kész. A **Hyper-V Manager programban**válassza a **Művelet** -> **indítása**lehetőséget, majd a **Művelet** -> **csatlakozni** lehetőséget választva csatlakozzon a virtuális géphez.  Az alapértelmezett felhasználónév **msfadmin,** a jelszó pedig **msfadmin**. 
 
 
-A sablon frissítve lett, és a rendszerképek szükségesek egy etikai hackelési bevezetési tesztelési osztályhoz, amely egy olyan eszközzel rendelkezik, amely a behatolási teszteket és egy másik, biztonsági réseket felderítő képet tartalmaz. A sablon képe mostantól közzétehető az osztályban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.
+A sablon most frissül, és a képek szükségesek egy etikai hacker penetráció tesztelés imázs, egy kép eszközökkel, hogy ezt a penetrációs vizsgálat és egy másik kép biztonsági réseket felfedezni. A sablonkép most már közzétehető az osztályban. A sablon közzétételéhez kattintson **a** közzététel gombra a sablon tesztkörnyezetben való közzétételéhez.
   
 
 ## <a name="cost"></a>Költségek  
-Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
+Ha meg szeretné becsülni a labor költségét, a következő példát használhatja: 
  
-Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 
+Egy 25 fős osztály esetében, akik 20 óra ütemezett óra időt és 10 óra kvótát kapnak a házi feladatra vagy a feladatokra, a labor ára a következő lenne: 
 
-25 tanuló * (20 + 10) óra * 55 labor egység * 0,01 USD/óra = 412,50 USD. 
+25 diák * (20 + 10) óra * 55 Labor egység * 0.01 USD / óra = 412.50 USD. 
 
-További információ a díjszabásról: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
+A díjszabásról az [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/)című témakörben talál további információt.
 
 ## <a name="conclusion"></a>Összegzés
-Ez a cikk végigvezeti a tesztkörnyezet etikai feltörési osztályhoz való létrehozásának lépésein. Ez magában foglalja a beágyazott virtualizálás beállításának lépéseit két virtuális gép létrehozásához a gazda virtuális gépen az áthatoló tesztelés érdekében.
+Ez a cikk végigment a lépéseket, hogy hozzon létre egy laboretikai hacker osztály. Ez magában foglalja a beágyazott virtualizáció beállításának lépéseit két virtuális gép létrehozásához a gazdagép virtuális gépén belül a behatoló teszteléshez.
 
 ## <a name="next-steps"></a>További lépések
-A következő lépések közösek a laborok beállításához:
+A következő lépések gyakoriak a tesztkörnyezet beállításában:
 
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kvóta beállítása](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Ütemterv beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [E-mail-regisztráció a tanulók számára](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [Ütemezés beállítása](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
+- [E-mail regisztrációs linkek a diákok](how-to-configure-student-usage.md#send-invitations-to-users). 
 

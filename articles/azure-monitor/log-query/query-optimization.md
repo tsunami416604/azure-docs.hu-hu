@@ -1,69 +1,71 @@
 ---
-title: Naplók optimalizálása Azure Monitorban
-description: Ajánlott eljárások a Azure Monitor naplózási lekérdezésének optimalizálásához.
+title: Naplólekérdezések optimalizálása az Azure Monitorban
+description: Gyakorlati tanácsok a naplólekérdezések optimalizálásához az Azure Monitorban.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 7316415a0f0c423a8a37477020a4ffd0ec044d73
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79369471"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480266"
 ---
-# <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
-Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
+# <a name="optimize-log-queries-in-azure-monitor"></a>Naplólekérdezések optimalizálása az Azure Monitorban
+Az Azure Monitor Logs [az Azure Data Explorer (ADX)](/azure/data-explorer/) segítségével tárolja a naplóadatokat, és lekérdezéseket futtat az adatok elemzéséhez. Létrehozza, kezeli és karbantartja az ADX-fürtöket, és optimalizálja őket a naplóelemzési munkaterheléshez. Amikor egy lekérdezést futtat, az optimalizálva lesz, és a munkaterületi adatokat tároló megfelelő ADX-fürthöz irányítja. Az Azure Monitor Naplók és az Azure Data Explorer számos automatikus lekérdezésoptimalizálási mechanizmust használ. Bár az automatikus optimalizálás jelentős lökést ad, bizonyos esetekben jelentősen javíthatja a lekérdezés teljesítményét. Ez a cikk ismerteti a teljesítményszempontjait és számos technikát a javításukhoz.
 
-A módszerek többsége gyakori az Azure-Adatkezelő és Azure Monitor naplókon futtatott lekérdezések esetében, bár számos egyedi Azure Monitor naplózási szempontot ismertetünk. További Azure Adatkezelő optimalizálási tippek: [lekérdezés – ajánlott eljárások](/azure/kusto/query/best-practices).
+A legtöbb technika gyakori a közvetlenül az Azure Data Explorer és az Azure Monitor naplók, bár számos egyedi Azure Monitor naplók szempontok, amelyek itt tárgyalt. Az Azure Data Explorer optimalizálási tippjeiről a [Lekérdezésajánlott eljárások](/azure/kusto/query/best-practices)című témakörben olvashat.
 
-Az optimalizált lekérdezések a következőket teszik:
+Az optimalizált lekérdezések:
 
-- A lekérdezés-végrehajtás teljes időtartamának csökkentése a gyorsabb futtatással.
-- Kisebb eséllyel szabályozható vagy elutasított.
+- Gyorsabban fut, és csökkenti a lekérdezés végrehajtásának teljes időtartamát.
+- Kisebb az esélye, hogy a fojtás vagy elutasított.
 
-Ügyeljen arra, hogy az ismétlődő és a burst használatra használt lekérdezések, például az irányítópultok, a riasztások, a Logic Apps és a Power BI. A nem hatékony lekérdezések hatása ezekben az esetekben jelentős.
+Különös figyelmet kell fordítania az ismétlődő és bursty használatra használt lekérdezésekre, például irányítópultokra, riasztásokra, Logic Apps és Power BI-ra. A hatástalan lekérdezés hatása ezekben az esetekben jelentős.
 
 ## <a name="query-performance-pane"></a>Lekérdezési teljesítmény ablaktábla
-Miután lefuttatott egy lekérdezést a Log Analyticsban, a lekérdezési eredmények fölötti lefelé mutató nyílra kattintva megtekintheti a lekérdezési teljesítmény panelt, amely a lekérdezés számos teljesítménymutatójának eredményét jeleníti meg. Ezeket a teljesítménymutatókat a következő szakaszban ismertetjük.
+Miután futtatott egy lekérdezést a Log Analytics szolgáltatásban, kattintson a lekérdezés eredményei feletti lefelé mutató nyílra a lekérdezés teljesítményablakának megtekintéséhez, amely a lekérdezés több teljesítménymutatójának eredményeit jeleníti meg. Ezeket a teljesítménymutatókat a következő szakasz ismerteti.
 
 ![Lekérdezési teljesítmény ablaktábla](media/query-optimization/query-performance-pane.png)
 
 
-## <a name="query-performance-indicators"></a>Lekérdezési teljesítménymutatók
+## <a name="query-performance-indicators"></a>Teljesítménymutatók lekérdezése
 
-A következő lekérdezési teljesítménymutatók érhetők el minden végrehajtott lekérdezéshez:
+A következő lekérdezési teljesítményjelzők érhetők el minden végrehajtott lekérdezéshez:
 
-- [Összes CPU](#total-cpu): teljes számítási művelet, amely a lekérdezés feldolgozására szolgál az összes számítási csomóponton. Ez a módszer a számítástechnikai, elemzési és beolvasási időt jelöli. 
+- [Teljes CPU:](#total-cpu)A lekérdezés feldolgozásához használt összes számítási folyamat az összes számítási csomóponton. A számítástechnikához, elemzéshez és adatbeolvasáshoz használt időt jelöli. 
 
-- [Feldolgozott lekérdezéshez használt adatmennyiség](#data-used-for-processed-query): a lekérdezés feldolgozásához elért összesített adatmennyiség. A cél tábla mérete, a használt időtartomány, az alkalmazott szűrők és a hivatkozott oszlopok száma befolyásolja.
+- [Feldolgozott lekérdezéshez használt adatok:](#data-used-for-processed-query)A lekérdezés feldolgozásához elért összes adat. Befolyásolja a céltábla méretét, a használt időtartamot, az alkalmazott szűrőket és a hivatkozott oszlopok számát.
 
-- A [feldolgozott lekérdezés időbeli](#time-span-of-the-processed-query)időtartama: a lekérdezés feldolgozásához használt legújabb és legrégebbi adatmennyiség közötti különbség. A lekérdezéshez megadott explicit időtartomány befolyásolja.
+- [A feldolgozott lekérdezés időtartama](#time-span-of-the-processed-query): A lekérdezés feldolgozásához elért legújabb és legrégebbi adatok közötti rés. A lekérdezéshez megadott explicit időtartomány befolyásolja.
 
-- A [feldolgozott adatmennyiség kora](#age-of-processed-data): a jelenlegi és a legrégebbi, a lekérdezés feldolgozásához elért adatmennyiség. Ez nagy mértékben befolyásolja az beolvasás hatékonyságát.
+- [Feldolgozott adatok kora](#age-of-processed-data): A lekérdezés feldolgozásához elérhető adatok és a legrégebbi adatok közötti szakadék. Nagymértékben befolyásolja az adatok lehívásának hatékonyságát.
 
-- [Munkaterületek száma](#number-of-workspaces): az implicit vagy explicit kijelölés miatt a lekérdezés feldolgozásakor hány munkaterület érhető el.
+- [Munkaterületek száma:](#number-of-workspaces)Az implicit vagy explicit kijelölés miatt a lekérdezés feldolgozása során elért munkaterületek száma.
 
-- [Régiók száma](#number-of-regions): a lekérdezés feldolgozásakor hány régió fér hozzá a munkaterületek implicit vagy explicit kiválasztása miatt. A többrégiós lekérdezések sokkal kevésbé hatékonyak, a teljesítménymutatók pedig részleges lefedettséget jelentenek.
+- [Régiók száma](#number-of-regions): Hány régió érhető el a lekérdezés feldolgozása során a munkaterületek implicit vagy explicit kiválasztása miatt. A több régióra kiterjedő lekérdezések sokkal kevésbé hatékonyak, és a teljesítménymutatók részleges lefedettséget mutatnak.
 
-- [Párhuzamosság](#parallelism): azt jelzi, hogy a rendszer milyen mértékben tudta végrehajtani ezt a lekérdezést több csomóponton. Csak a nagy CPU-fogyasztással rendelkező lekérdezésekre vonatkozik. Az adott függvények és operátorok használatának befolyásolására.
+- [Párhuzamosság](#parallelism): Azt jelzi, hogy a rendszer mennyire tudta végrehajtani ezt a lekérdezést több csomóponton. Csak a magas cpu-fogyasztással rendelkező lekérdezések esetén releváns. Adott funkciók és operátorok használata befolyásolja.
 
 
 ## <a name="total-cpu"></a>Teljes CPU
-A tényleges számítási CPU, amely a lekérdezés feldolgozására lett befektetve az összes lekérdezés-feldolgozó csomóponton. Mivel a legtöbb lekérdezés nagy számú csomóponton fut, ez általában sokkal nagyobb, mint a lekérdezés tényleges végrehajtásának időtartama. 
+A tényleges számítási CPU, amely a lekérdezés feldolgozásához az összes lekérdezésfeldolgozó csomópontok feldolgozása. Mivel a legtöbb lekérdezés nagy számú csomóponton kerül végrehajtásra, ez általában sokkal nagyobb lesz, mint a lekérdezés tényleges végrehajtásának időtartama. 
 
-A lekérdezés feldolgozási idejének elköltése:
-- Adatok beolvasása – a régi adatok lekérése több időt vesz igénybe, mint a legutóbbi adatok beolvasása.
-- Adatfeldolgozás – az adatgyűjtés logikája és kiértékelése. 
+A lekérdezés feldolgozási ideje a következő:
+- Adatbeolvasás – a régi adatok visszakeresése több időt fog igénybe vesz, mint a legutóbbi adatok visszakeresése.
+- Adatfeldolgozás – az adatok logikája és értékelése. 
 
-A lekérdezés-feldolgozási csomópontokon töltött idő kivételével további időt Azure Monitor naplók is töltenek: hitelesítse a felhasználót, és ellenőrizze, hogy engedélyezett-e az ilyen adathozzáférés, az adattár megkeresése, a lekérdezés elemzése és a lekérdezés feldolgozásának lefoglalása csomópontok. Ez az idő nem szerepel a lekérdezés teljes CPU-ideje alatt.
+A lekérdezésfeldolgozási csomópontokban töltött időn kívül az Azure Monitor naplók további időt fordítanak a következőkre: hitelesítsék a felhasználót, és ellenőrizzék, hogy jogosultak-e hozzáférni ezekhez az adatokhoz, megkeresni az adattárat, elemezni a lekérdezést, és lefoglalni a lekérdezésfeldolgozást Csomópontok. Ez az idő nem szerepel a lekérdezés teljes CPU-idő.
 
-A lekérdezési parancsok és függvények némelyike nehéz a CPU-használatban. Ez különösen igaz azokra a parancsokra, amelyek a JSON-t és az XML-t elemezik, vagy az összetett reguláris kifejezéseket Az ilyen elemzések [parse_json ()](/azure/kusto/query/parsejsonfunction) vagy [parse_xml ()](/azure/kusto/query/parse-xmlfunction) függvények vagy implicit módon történhetnek, amikor dinamikus oszlopokra hivatkoznak.
+### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>A rekordok korai szűrése a magas CPU-függvények használata előtt
 
-Ezek a függvények a feldolgozott sorok számának arányában használják a PROCESSZORt. A leghatékonyabb optimalizálás a lekérdezés korai szakaszában való hozzáadás, amely a CPU-igényes funkció végrehajtása előtt a lehető legtöbb rekordot képes kiszűrni.
+A lekérdezési parancsok és függvények némelyike nagy a CPU-felhasználásban. Ez különösen igaz a JSON és XML elemzése vagy összetett reguláris kifejezések kinyerése parancsaira. Az ilyen elemzés történhet explicit módon keresztül [parse_json()](/azure/kusto/query/parsejsonfunction) vagy [parse_xml()](/azure/kusto/query/parse-xmlfunction) függvények vagy implicit módon, amikor dinamikus oszlopokra hivatkozva.
 
-Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, de a második a leghatékonyabb, mint a [Where](/azure/kusto/query/whereoperator) feltétel, mielőtt az elemzés során kizárja a sok rekordot:
+Ezek a függvények a processzort az általuk feldolgozott sorok számával arányosan használják fel. A leghatékonyabb optimalizálás az, hogy adja hozzá, ahol a feltételek korai a lekérdezés, amely kiszűri a lehető legtöbb rekordot, mielőtt a CPU-igényes függvény végrehajtása.
+
+Például a következő lekérdezések pontosan ugyanazt az eredményt, de a második messze a leghatékonyabb, mint az, [ahol](/azure/kusto/query/whereoperator) állapot elemzése előtt kizárja sok rekordot:
 
 ```Kusto
 //less efficient
@@ -86,8 +88,10 @@ SecurityEvent
 | where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
 
-Azok a lekérdezések, amelyek [Where](/azure/kusto/query/whereoperator) záradékot tartalmaznak egy kiértékelt oszlopon, és nem az adathalmazban fizikailag szereplő oszlopok, elvesztik a hatékonyságot. A kiértékelt oszlopok szűrése megakadályozza a rendszeroptimalizálást, ha nagy adathalmazok vannak kezelve.
-Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, a második pedig hatékonyabb, mivel a [Where](/azure/kusto/query/whereoperator) feltétel a beépített oszlopra hivatkozik.
+### <a name="avoid-using-evaluated-where-clauses"></a>Kerülje az értékelt záradékok helyének használatát
+
+Az adatkészletben fizikailag jelen lévő oszlopok helyett a kiértékelt [oszlopban](/azure/kusto/query/whereoperator) lévő záradékokat tartalmazó lekérdezések hatékonysága megtörténik. A kiértékelt oszlopok szűrése megakadályozza a rendszer bizonyos optimalizálását nagy adathalmazok kezelése esetén.
+Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, de a második hatékonyabb, mivel a [feltétel](/azure/kusto/query/whereoperator) a beépített oszlopra hivatkozik.
 
 ```Kusto
 //less efficient
@@ -104,11 +108,13 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-Míg egyes aggregációs parancsok, például a [Max ()](/azure/kusto/query/max-aggfunction), a [Sum ()](/azure/kusto/query/sum-aggfunction), a [Count ()](/azure/kusto/query/count-aggfunction)és az [AVG ()](/azure/kusto/query/avg-aggfunction) az alacsony CPU-hatást okoznak a logikájuk miatt, más összetettebbek, és olyan becsléseket tartalmaznak, amelyek lehetővé teszik a hatékony végrehajtást. Például a [DCount ()](/azure/kusto/query/dcount-aggfunction) a HyperLogLog algoritmus használatával közelíti meg a nagy adathalmazok különböző számú adatát az egyes értékek tényleges számbavétele nélkül. a percentilis függvények hasonló közelítéseket végeznek a legközelebbi rangsorú percentilis algoritmus használatával. A parancsok közül több olyan választható paramétereket is tartalmaz, amelyek csökkentik a hatásukat. Például a [makeset ()](/azure/kusto/query/makeset-aggfunction) függvény nem kötelező paraméterrel határozhatja meg a maximálisan megengedett méretet, ami jelentősen befolyásolja a processzort és a memóriát.
+### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Hatékony összesítési parancsok és dimmentions használata összegzésben és illesztésben
 
-A [Csatlakozás](/azure/kusto/query/joinoperator?pivots=azuremonitor) és a parancsok [összefoglalása](/azure/kusto/query/summarizeoperator) magas CPU-kihasználtságot okozhat, ha nagy mennyiségű adathalmazt dolgoz fel. Az összetettségük közvetlenül kapcsolódik a lehetséges értékek számához, amelyet a rendszer az Összegzés vagy az illesztési attribútumokként használt oszlopok *(például az*összesítési `by`). A JOIN és az összefoglalás ismertetését és optimalizálását a dokumentációs cikkek és optimalizálási tippek című cikkben találja.
+Míg egyes aggregációs parancsok, mint [a max()](/azure/kusto/query/max-aggfunction), [sum()](/azure/kusto/query/sum-aggfunction), [count()](/azure/kusto/query/count-aggfunction)és [avg()](/azure/kusto/query/avg-aggfunction) alacsony CPU-hatást gyakorolnak a logikájuk miatt, mások összetettebbek, és heurisztikát és becsléseket tartalmaznak, amelyek lehetővé teszik a hatékony végrehajtást. A [dcount()](/azure/kusto/query/dcount-aggfunction) például a HyperLogLog algoritmust használja a nagy adathalmazok különböző számának szoros becslésére anélkül, hogy ténylegesen megszámolná az egyes értékeket; a percentilis függvények hasonló közelítéseket végeznek a legközelebbi rangpercentilis algoritmus használatával. A parancsok közül több nem kötelező paramétereket is tartalmaz, hogy csökkentse azok hatását. Például a [makeet()](/azure/kusto/query/makeset-aggfunction) függvény rendelkezik egy választható paraméterrel a maximális beállított méret meghatározásához, amely jelentősen befolyásolja a processzort és a memóriát.
 
-Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, mivel a **CounterPath** mindig egy-az-egyhez van leképezve a **CounterName** és a **ObjectName**. A második egy hatékonyabb, mivel az összesítési dimenzió kisebb:
+[A parancsok összeillesztése](/azure/kusto/query/joinoperator?pivots=azuremonitor) és [összegzése](/azure/kusto/query/summarizeoperator) nagy mennyiségű adat feldolgozása esetén magas processzorkihasználtságot okozhat. Összetettségük közvetlenül kapcsolódik a lehetséges értékek számához, a továbbiakban *számosság* `by` , az oszlopok, amelyek használják a in summarize vagy a join attribútumok. Az illesztés és az összegzés magyarázatát és optimalizálását a dokumentációs cikkekben és optimalizálási tippekben találja.
+
+A következő lekérdezések például pontosan ugyanazt az eredményt eredményezik, mivel a **CounterPath** mindig egy az egyhez lesz leképezve **a CounterName** és **az ObjectName objektumnévre.** A második hatékonyabb, mivel az összesítési dimenzió kisebb:
 
 ```Kusto
 //less efficient
@@ -123,9 +129,9 @@ Perf
 by CounterPath
 ```
 
-A CPU-használatot befolyásolhatja az olyan feltételek vagy kibővített oszlopok esetében is, amelyek intenzív számítástechnikai Igényűek. Minden olyan triviális karakterlánc-összehasonlítás, mint például az [EQUAL = =](/azure/kusto/query/datatypes-string-operators) és a [startswith](/azure/kusto/query/datatypes-string-operators) , nagyjából ugyanaz a CPU-hatás, míg a speciális szöveges találatok nagyobb hatással vannak. Pontosabban a [has](/azure/kusto/query/datatypes-string-operators) operátora hatékonyabb, hogy a [tartalmazza](/azure/kusto/query/datatypes-string-operators) az operátort. A karakterlánc-kezelési technikák miatt hatékonyabb a rövid sztringnél hosszabb karakterláncok megkeresése.
+A cpu-felhasználást befolyásolhatja az is, hogy hol vannak az intenzív számítást igénylő körülmények vagy kiterjesztett oszlopok. Minden triviális karakterlánc-összehasonlításnak, például [egyenlő ==](/azure/kusto/query/datatypes-string-operators) és [indításnak](/azure/kusto/query/datatypes-string-operators) nagyjából ugyanaz a CPU hatása, míg a speciális szövegegyezések nagyobb hatást fejtenek ki. Pontosabban, a [van](/azure/kusto/query/datatypes-string-operators) üzemeltető hatékonyabb, hogy a [tartalmaz](/azure/kusto/query/datatypes-string-operators) üzemeltető. A karakterlánc-kezelési technikák nak köszönhetően hatékonyabb négy karakternél hosszabb karakterláncokat keresni, mint a rövid karakterláncok.
 
-Az alábbi lekérdezések például a számítógép elnevezési házirendjétől függően hasonló eredményeket hoznak létre, a második pedig hatékonyabb:
+A következő lekérdezések például hasonló eredményeket hoznak, a számítógép-elnevezési házirendtől függően, de a második hatékonyabb:
 
 ```Kusto
 //less efficient – due to filter based on contains
@@ -148,17 +154,20 @@ Heartbeat
 ```
 
 > [!NOTE]
-> Ez a mutató csak a közvetlen fürtből származó CPU-t jeleníti meg. A többrégiós lekérdezésekben csak az egyik régiót jelöli. Több munkaterület lekérdezése esetén előfordulhat, hogy nem tartalmazza az összes munkaterületet.
+> Ez a mutató csak a közvetlen fürt processzorát mutatja be. A többrégiós lekérdezésben csak az egyik régiót képviselné. Előfordulhat, hogy a többmunkaterületet lekérdező lekérdezés nem tartalmazza az összes munkaterületet.
 
 
-## <a name="data-used-for-processed-query"></a>Feldolgozott lekérdezéshez használt adatértékek
+## <a name="data-used-for-processed-query"></a>Feldolgozott lekérdezéshez használt adatok
 
-A lekérdezés feldolgozásának kritikus tényezője a lekérdezett és a lekérdezések feldolgozásához használt adatmennyiség. Az Azure Adatkezelő agresszív optimalizációt használ, amely jelentősen csökkenti az adatmennyiséget más adatplatformokhoz képest. A lekérdezésben kritikus tényezők is vannak, amelyek befolyásolhatják a használt adatmennyiséget.
-Azure Monitor naplókban a **TimeGenerated** oszlop használható az adatindexeléshez. Ha a **TimeGenerated** értékeket úgy korlátozzák, hogy a lehető legkeskenyebbek legyenek, jelentős javulást eredményez a lekérdezési teljesítmény, mivel jelentősen korlátozza a feldolgozandó adatok mennyiségét.
+A lekérdezés feldolgozásának kritikus tényezője a lekérdezés feldolgozásához beolvasott és használt adatok mennyisége. Az Azure Data Explorer agresszív optimalizálást használ, amely jelentősen csökkenti az adatmennyiséget más adatplatformokhoz képest. A lekérdezésben mégis vannak olyan kritikus tényezők, amelyek hatással lehetnek a használt adatmennyiségre.
 
-Egy másik tényező, amely növeli a feldolgozott adatmennyiséget, nagy számú tábla használata. Ez általában akkor fordul elő, ha a rendszer `search *` és `union *` parancsokat használ. Ezek a parancsok kényszerítik a rendszertől a munkaterület összes táblájából származó adatok kiértékelését és vizsgálatát. Bizonyos esetekben előfordulhat, hogy több száz tábla található a munkaterületen. Próbálja meg a lehető legnagyobb mértékben elkerülni a "keresés *" vagy bármilyen keresés használatát anélkül, hogy egy adott táblára kellene azt használni.
+Az Azure Monitor naplók, a **TimeGenerated** oszlop az adatok indexelésének módjaként. Az **időgenerált** értékek nek a lehető legszűkebb tartományra való korlátozása jelentősen javítja a lekérdezési teljesítményt azáltal, hogy jelentősen korlátozza a feldolgozandó adatok mennyiségét.
 
-Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, de az utolsó a leghatékonyabb:
+### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Kerülje a keresési és szakszervezeti operátorok szükségtelen használatát
+
+Egy másik tényező, amely növeli az adatokat, amelyek a folyamat használata nagy számú táblák. Ez általában `search *` akkor `union *` fordul elő, ha parancsokat használnak. Ezek a parancsok arra kényszerítik a rendszert, hogy kiértékelje és bekéselje az adatokat a munkaterület összes táblájából. Bizonyos esetekben több száz tábla lehet a munkaterületen. Próbálja meg elkerülni, amennyire csak lehetséges a "keresés *", vagy bármilyen keresés nélkül hatóköre, hogy egy adott táblázatot.
+
+Például a következő lekérdezések pontosan ugyanazt az eredményt, de az utolsó messze a leghatékonyabb:
 
 ```Kusto
 // This version scans all tables though only Perf has this kind of data
@@ -178,9 +187,11 @@ Perf
 | summarize count(), avg(CounterValue)  by Computer
 ```
 
-Az adatmennyiség csökkentésének egy másik módja, [Ha](/azure/kusto/query/whereoperator) a lekérdezésben korai feltételek vannak. Az Azure Adatkezelő platform egy olyan gyorsítótárat tartalmaz, amely lehetővé teszi, hogy mely partíciók tartalmazzák az adott feltételhez kapcsolódó adatokat. Ha például egy lekérdezés `where EventID == 4624` tartalmaz, akkor a lekérdezés csak olyan csomópontokra terjeszthető, amelyek a megfelelő eseményekkel rendelkező partíciókat kezelik.
+### <a name="add-early-filters-to-the-query"></a>Korai szűrők hozzáadása a lekérdezéshez
 
-A következő példában a lekérdezések pontosan ugyanazt az eredményt eredményezik, a második pedig hatékonyabb:
+Egy másik módszer az adatmennyiség csökkentésére, hogy [a](/azure/kusto/query/whereoperator) lekérdezés korai szakaszában a feltételeket. Az Azure Data Explorer platform tartalmaz egy gyorsítótárat, amely lehetővé teszi, hogy tudja, mely partíciók tartalmaznak adatokat, amelyek relevánsak egy adott, ahol feltétel. Ha például egy `where EventID == 4624` lekérdezés tartalmazza, akkor a lekérdezést csak olyan csomópontoknak osztja el, amelyek egyező eseményekkel rendelkező partíciókat kezelnek.
+
+A következő példa lekérdezések pontosan ugyanazt az eredményt, de a második hatékonyabb:
 
 ```Kusto
 //less efficient
@@ -194,9 +205,11 @@ SecurityEvent
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
 
-Mivel az Azure Adatkezelő egy oszlopos adattár, minden oszlop lekérése független a többitől. A beolvasott oszlopok száma közvetlenül befolyásolja a teljes adatmennyiséget. Az eredmények [összesítésével](/azure/kusto/query/summarizeoperator) vagy az adott oszlopok [kivetítésével](/azure/kusto/query/projectoperator) csak a szükséges kimeneti oszlopokat kell tartalmaznia. Az Azure Adatkezelő számos optimalizálással rendelkezik, hogy csökkentse a beolvasott oszlopok számát. Ha úgy dönt, hogy nincs szükség oszlopra, például ha az [Összefoglaló](/azure/kusto/query/summarizeoperator) parancs nem hivatkozik rá, nem fogja lekérni.
+### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>A beolvasott oszlopok számának csökkentése
 
-Előfordulhat például, hogy a második lekérdezés háromszor feldolgozza az adatfeldolgozást, mivel nem egy oszlopot kell beolvasnia, hanem hármat:
+Mivel az Azure Data Explorer egy oszlopos adattár, minden oszlop lekérése független a többitől. A beolvasott oszlopok száma közvetlenül befolyásolja a teljes adatmennyiséget. Csak azokat az oszlopokat vegye fel a kimenetbe, amelyekre az eredmények [összegzéséhez](/azure/kusto/query/summarizeoperator) vagy az adott oszlopok [kivetítéséhez](/azure/kusto/query/projectoperator) szükség van. Az Azure Data Explorer számos optimalizálással rendelkezik a beolvasott oszlopok számának csökkentése érdekében. Ha azt állapítja meg, hogy nincs szükség egy oszlopra, például ha az [összegző](/azure/kusto/query/summarizeoperator) parancs nem hivatkozik rá, akkor nem fogja beolvasni.
+
+A második lekérdezés például háromszor több adatot dolgozhat fel, mivel nem egy oszlopot, hanem hármat kell lekérnie:
 
 ```Kusto
 //Less columns --> Less data
@@ -209,16 +222,18 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-span-of-the-processed-query"></a>A feldolgozott lekérdezés időbeli időtartama
+## <a name="time-span-of-the-processed-query"></a>A feldolgozott lekérdezés időtartama
 
-Azure Monitor naplókban lévő összes napló particionálva van a **TimeGenerated** oszlop szerint. Az elérni kívánt partíciók száma közvetlenül kapcsolódik az időtartományhoz. Az időtartomány csökkentése a leghatékonyabb megoldás a gyors lekérdezés-végrehajtás biztosításához.
+Az Azure Figyelő naplók összes naplója particionálva a **TimeGenerated** oszlop szerint. Az elért partíciók száma közvetlenül kapcsolódik az időtartamhoz. Az időtartomány csökkentése a leghatékonyabb módja a gyors lekérdezés végrehajtásának biztosításához.
 
-Az időtartomány beállítható az időtartomány-választóval a Log Analytics képernyőn a [lekérdezési hatókör és az időtartomány Azure Monitor log Analyticsban](scope.md#time-range)leírt módon. Ez az ajánlott módszer, mivel a kiválasztott időtartomány átadása a háttérnek a lekérdezés metaadatainak használatával történik. 
+Az időtartomány az Időtartomány-választóval állítható be a Log Analytics képernyőn, az [Azure Monitor Log Analytics naplótartományában](scope.md#time-range)leírtak szerint. Ez az ajánlott módszer, mivel a kiválasztott időtartomány a lekérdezés metaadatainak használatával kerül átadásra a háttérrendszernek. 
 
-Egy másik módszer, ha explicit módon belefoglalja a lekérdezés **TimeGenerated** a [Where](/azure/kusto/query/whereoperator) feltételt. Ezt a módszert kell használnia, mivel biztosítja, hogy az időtartam rögzített, még akkor is, ha a lekérdezés más felületről van használatban.
-Győződjön meg arról, hogy a lekérdezés minden részén van **TimeGenerated** szűrő. Ha egy lekérdezés allekérdezéseket tartalmaz a különböző táblákból vagy ugyanabból a táblából származó adatok beolvasására, akkor mindegyiknek saját, [Where](/azure/kusto/query/whereoperator) feltételt kell tartalmaznia.
+Egy másik módszer explicit módon szerepel [egy, ahol](/azure/kusto/query/whereoperator) feltétel **timegenerated** a lekérdezésben. Ezt a módszert kell használnia, mivel biztosítja, hogy az időtartam rögzített, még akkor is, ha a lekérdezést más felületről használja.
+Győződjön meg arról, hogy a lekérdezés minden része **rendelkezik TimeGenerated** szűrőkkel. Ha egy lekérdezés különböző táblákból vagy ugyanabból a táblából származó adatokat bekérő részlekérdezésekkel rendelkezik, mindegyiknek tartalmaznia kell a saját [where](/azure/kusto/query/whereoperator) feltételét.
 
-Például a következő lekérdezésben, míg a **perf** tábla csak az elmúlt napra lesz megvizsgálva, a **szívverési** tábla az összes előzményét megvizsgálja, ami akár két évig is tarthat:
+### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>Győződjön meg arról, hogy minden allekérdezés rendelkezik TimeGenerated szűrővel
+
+A következő lekérdezésben például, míg a **Perf** tábla csak az utolsó napra lesz beolvasva, a **Szívverés** tábla az összes előzményét megvizsgálja, ami akár két év is lehet:
 
 ```Kusto
 Perf
@@ -231,7 +246,7 @@ Perf
 ) on Computer
 ```
 
-Gyakori eset, ha az ilyen hiba akkor fordul elő, amikor a [arg_max ()](/azure/kusto/query/arg-max-aggfunction) a legutóbbi előfordulás megkeresésére szolgál. Például:
+Gyakori eset, amikor ilyen hiba fordul elő, amikor [arg_max()](/azure/kusto/query/arg-max-aggfunction) a legújabb előfordulás keresésére használják. Példa:
 
 ```Kusto
 Perf
@@ -245,7 +260,7 @@ by Computer
 ) on Computer
 ```
 
-Ez a belső lekérdezésben egy Időszűrő hozzáadásával egyszerűen kijavítható:
+Ez könnyen korrigálható időszűrő hozzáadásával a belső lekérdezésben:
 
 ```Kusto
 Perf
@@ -259,9 +274,9 @@ by Computer
 ) on Computer
 ```
 
-Egy másik példa erre a hibára, ha az időtartomány-szűrést csak az [Unió](/azure/kusto/query/unionoperator?pivots=azuremonitor) több táblázata után végezze el. Az Unió végrehajtásakor minden allekérdezés hatókörnek kell lennie. A [let](/azure/kusto/query/letstatement) utasítás használatával biztosíthatja a hatókör egységességét.
+Egy másik példa erre a hibára, amikor az időhatókör-szűrést közvetlenül egy több tábla [egyesítése](/azure/kusto/query/unionoperator?pivots=azuremonitor) után hajtja végre. Az egyesítés végrehajtásakor minden allekérdezést hatókörrel kell végezni. A [let](/azure/kusto/query/letstatement) utasítás használatával biztosíthatja a hatókör konzisztenciáját.
 
-Például a következő lekérdezés a *szívverés* és a *perf* tábla összes adatát megvizsgálja, nem csak az utolsó 1 nap:
+A következő lekérdezés például nem csak az elmúlt 1 napban, hanem a *Szívverés* és a *Perf* táblák összes adatát is megvizsgálja:
 
 ```Kusto
 Heartbeat 
@@ -273,7 +288,7 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
-Ezt a lekérdezést a következőképpen kell kijavítani:
+Ezt a lekérdezést a következőképpen kell rögzíteni:
 
 ```Kusto
 let MinTime = ago(1d);
@@ -287,67 +302,69 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
-A mérés mindig nagyobb, mint a megadott tényleges idő. Ha például a lekérdezés szűrője 7 nap, a rendszer 7,5 vagy 8,1 napot vizsgálhat. Ennek az az oka, hogy a rendszer a változó méretű adattömbökbe particionálja az adathalmazokat. Annak biztosítása érdekében, hogy a rendszer az összes releváns rekordot megvizsgálja, megvizsgálja a teljes partíciót, amely több óráig is eltarthat, és akár egy napnál is hosszabb időt is igénybe vehet.
+### <a name="time-span-measurement-limitations"></a>Az időtartam mérési korlátai
 
-Több eset is létezik, ha a rendszer nem tud pontos mérési értéket biztosítani az időtartományhoz. Ez a legtöbb esetben fordul elő, amikor a lekérdezés egy napnál rövidebb ideig vagy több-munkaterület lekérdezésekben van.
+A mérés mindig nagyobb, mint a ténylegesen megadott idő. Ha például a lekérdezés szűrője 7 nap, a rendszer 7,5 vagy 8,1 napot kaszthat. Ennek az az oka, hogy a rendszer változó méretű adattömbökre particionálja az adatokat. Annak biztosítása érdekében, hogy az összes releváns rekordot beolvassa, megvizsgálja a teljes partíciót, amely több órát, sőt több mint egy napot fedhet le.
+
+Számos olyan eset van, amikor a rendszer nem tudja pontosan mérni az időtartományt. Ez a legtöbb olyan esetben fordul elő, amikor a lekérdezés egy napnál rövidebb ideig tart, vagy több munkaterületi lekérdezésekben.
 
 
 > [!IMPORTANT]
-> Ez a kijelző csak a közvetlen fürtben feldolgozott adatfeldolgozást jeleníti meg. A többrégiós lekérdezésekben csak az egyik régiót jelöli. Több munkaterület lekérdezése esetén előfordulhat, hogy nem tartalmazza az összes munkaterületet.
+> Ez a mutató csak a közvetlen fürtben feldolgozott adatokat mutatja be. A többrégiós lekérdezésben csak az egyik régiót képviselné. Előfordulhat, hogy a többmunkaterületet lekérdező lekérdezés nem tartalmazza az összes munkaterületet.
 
-## <a name="age-of-processed-data"></a>Feldolgozott adatmennyiség kora
-Az Azure Adatkezelő számos tárolási szintet használ: memóriabeli, helyi SSD-lemezeket és sokkal lassabb Azure-blobokat. Minél újabb adatról van szó, annál nagyobb a valószínűsége, hogy egy nagyobb teljesítményű, kisebb késéssel rendelkező, a lekérdezés időtartamát és a PROCESSZORt is csökkenti. Az adatoktól eltérő esetben a rendszer gyorsítótárat is tartalmaz a metaadatokhoz. Minél régebbiek az adatok, annál kisebb a metaadatok a gyorsítótárban.
+## <a name="age-of-processed-data"></a>A feldolgozott adatok kora
+Az Azure Data Explorer számos tárolási szintet használ: a memóriában, a helyi SSD-lemezeket és a sokkal lassabb Azure Blobokat. Minél újabb az adatok, annál nagyobb az esélye, hogy egy kisebb késleltetéssel rendelkező, nagyobb teljesítményrétegben tárolja, csökkentve a lekérdezés időtartamát és a PROCESSZORt. Magán az adaton kívül a rendszer rendelkezik a metaadatok gyorsítótárával is. Minél régebbiek az adatok, annál kisebb az esélye annak, hogy a metaadatai a gyorsítótárban lesznek.
 
-Míg egyes lekérdezések a régi adatok használatát igénylik, vannak olyan esetek, amikor a régi adatokat tévesen használják. Ez akkor fordul elő, ha a lekérdezések végrehajtása nem biztosít időtartományt a meta-adatokban, és nem minden táblázat hivatkozása tartalmazza a **TimeGenerated** oszlop szűrőjét. Ezekben az esetekben a rendszer megvizsgálja az adott táblázatban tárolt összes adattípust. Ha az adatok megőrzése hosszú, akkor a hosszú időtartományokra, így az adatmegőrzési időszakot megelőzően lévő adatokra is vonatkozhat.
+Míg egyes lekérdezések régi adatok használatát igénylik, vannak olyan esetek, amikor a régi adatokat véletlenül használják. Ez akkor fordul elő, ha a lekérdezések végrehajtása időtartomány megadása nélkül történik a metaadatokban, és nem minden táblahivatkozás tartalmaz szűrőt a **TimeGenerated** oszlopban. Ezekben az esetekben a rendszer a táblában tárolt összes adatot beszkad. Ha az adatmegőrzés hosszú, akkor hosszú időtartományokat, és így az adatok, amelyek olyan régi, mint az adatmegőrzési időszak.
 
-Ilyen eset például a következő lehet:
+Az ilyen esetek lehetnek például:
 
-- A Log Analytics időtartományának beállítása nem korlátozott allekérdezéssel. Lásd a fenti példát.
-- Az API használata az időtartomány választható paramétereinek megadása nélkül.
-- Olyan ügyfél használata, amely nem kényszeríti az időtartományt, például az Power BI-összekötőt.
+- Nem állítja be az időtartományt a Log Analytics egy al-lekérdezés, amely nem korlátozott. Lásd a fenti példát.
+- Az API használata az időtartomány választható paraméterei nélkül.
+- Olyan ügyfél használata, amely nem kényszerít egy időtartományt, például a Power BI-összekötőt.
 
-Tekintse meg a példákat és a megjegyzéseket a áteresztő szakaszban, mivel ezek a jelen esetben is relevánsak.
+Tekintse meg a példákat és megjegyzéseket a pervious szakaszban, mivel ezek ebben az esetben is relevánsak.
 
 ## <a name="number-of-regions"></a>Régiók száma
-Több olyan helyzet is előfordulhat, amikor egyetlen lekérdezést hajthat végre különböző régiókban:
+Több olyan helyzet van, amikor egyetlen lekérdezés hajtható végre különböző régiókban:
 
-- Ha több munkaterület van explicit módon listázva, és különböző régiókban találhatók.
-- Ha egy erőforrás-hatókörű lekérdezés beolvassa az adatgyűjtést, és az adatai több munkaterületen vannak tárolva, amelyek különböző régiókban találhatók.
+- Ha több munkaterület explicit módon szerepel a listában, és különböző régiókban találhatók.
+- Amikor egy erőforrás-hatókörű lekérdezés adatokat hív be, és az adatokat több, különböző régiókban található munkaterületen tárolja.
 
-A régiók közötti lekérdezés végrehajtása megköveteli, hogy a rendszer szerializálást és átvitelt hajtson végre a közbenső adatok háttérbeli nagy adattömbökben, amelyek általában jóval nagyobbak a lekérdezés végső eredményeinél. Emellett korlátozza a rendszerek optimalizálási, heurisztikus és használati lehetőségeit is.
-Ha nincs valós ok az összes ilyen régió vizsgálatára, állítsa be úgy a hatókört, hogy kevesebb régióra kiterjedjen. Ha az erőforrás hatóköre kisebb, de még sok régiót használ, előfordulhat, hogy helytelen a konfiguráció. A naplókat és a diagnosztikai beállításokat például különböző régiókban lévő különböző munkaterületekre küldik, vagy több diagnosztikai beállítási konfiguráció is van. 
+Régióközi lekérdezés-végrehajtás megköveteli, hogy a rendszer szerializálja és továbbítsa a háttérrendszer ben a köztes adatok nagy adattömbjeit, amelyek általában sokkal nagyobbak, mint a lekérdezés végeredménye. Azt is korlátozza a rendszer képes elvégezni optimalizálás, heurisztika, és használja a gyorsítótárak.
+Ha nincs valódi ok a területek bevizsgálatára, módosítsa a hatókört úgy, hogy kevesebb régiót fedjen le. Ha az erőforrás-hatókör kis méretű, de továbbra is sok régióban használják, előfordulhat, hogy helytelen konfiguráció miatt. Például a naplónaplók és a diagnosztikai beállítások különböző régiók különböző munkaterületeire kerülnek, vagy több diagnosztikai beállítási konfiguráció van. 
 
 > [!IMPORTANT]
-> Ha egy lekérdezés több régióban fut, a processzor és az adatmérések nem lesznek pontosak, és csak az egyik régióban jelennek meg a mérések.
+> Ha egy lekérdezés több régióban fut, a processzor- és adatmérések nem lesznek pontosak, és csak az egyik régióban fogják képviselni a mérést.
 
 ## <a name="number-of-workspaces"></a>Munkaterületek száma
-A munkaterületek logikai tárolók, amelyek a naplók adatai elkülönítésére és felügyeletére szolgálnak. A háttérrendszer a kiválasztott régióban található fizikai fürtökön a munkaterület elhelyezéseit optimalizálja.
+A munkaterületek olyan logikai tárolók, amelyek a naplók adatainak elkülönítésére és felügyeletére szolgálnak. A háttérprogram optimalizálja a munkaterületi elhelyezéseket a kijelölt területen belüli fizikai fürtökön.
 
-Több munkaterület használata a következő eredményekből járhat: 
+Több munkaterület használata a következőkből eredhet: 
 
-- Ahol több munkaterület van kifejezetten felsorolva.
-- Ha egy erőforrás-hatókörű lekérdezés beolvassa az adatgyűjtést, és az adattárolás több munkaterületen történik.
+- Ahol több munkaterület explicit módon szerepel a listában.
+- Amikor egy erőforrás-hatókörű lekérdezés adatokat hív be, és az adatokat több munkaterületen tárolja.
  
-A lekérdezések régiók közötti és több fürtre kiterjedő végrehajtása megköveteli, hogy a rendszer szerializálja és átvigye a háttérbeli adatok nagy részét, amely általában jóval nagyobb a lekérdezés végső eredményeinél. Emellett korlátozza az optimalizálások, a heurisztikus műveletek és a gyorsítótárak kihasználásának rendszerképességét is.
+A lekérdezések régiók közötti és fürtközi végrehajtásához a rendszernek szerializálnia és kell átvinnie a háttérrendszerben a köztes adatok nagy adattömbjeit, amelyek általában sokkal nagyobbak, mint a lekérdezés végeredménye. Azt is korlátozza a rendszer képes elvégezni optimalizálás, heurisztikus és felhasználásával cache.
 
 > [!IMPORTANT]
-> Egyes többmunkaterületos helyzetekben a processzor-és adatmérések nem pontosak, és a mérések csak néhány munkaterületnek felelnek meg.
+> Egyes többmunkaterületi forgatókönyvek esetén a processzor- és adatmérések nem lesznek pontosak, és csak néhány munkaterületre fogják képviselni a mérést.
 
 ## <a name="parallelism"></a>Párhuzamosság
-Azure Monitor naplók az Azure Adatkezelő nagyméretű fürtjét használják a lekérdezések futtatásához, és ezek a fürtök mérettől függően változhatnak, akár több tucat számítási csomópontra is. A rendszer a munkaterület elhelyezési logikája és kapacitása alapján automatikusan méretezi a fürtöket.
+Az Azure Monitor Logs az Azure Data Explorer nagy fürtjeit használja a lekérdezések futtatásához, és ezek a fürtök skálázata változó, és potenciálisan akár több tucat számítási csomópontot is elérhet. A rendszer automatikusan méretezi a fürtöket a munkaterület elhelyezési logikája és kapacitása szerint.
 
-A lekérdezés hatékony végrehajtásához particionálni és terjeszteni kell a számítási csomópontokat a feldolgozáshoz szükséges adatok alapján. Vannak olyan helyzetek, amikor a rendszer nem tudja ezt hatékonyan végrehajtani. Ez hosszú időtartamot eredményezhet a lekérdezésben. 
+A lekérdezés hatékony végrehajtásához particionált és elosztott számítási csomópontok alapján a feldolgozáshoz szükséges adatokat. Vannak olyan helyzetek, amikor a rendszer ezt nem tudja hatékonyan megtenni. Ez a lekérdezés hosszú időtartamához vezethet. 
 
-A párhuzamosságot csökkentő lekérdezési viselkedések például a következők:
+A párhuzamosság csökkentésére alkalmas lekérdezési viselkedések a következők:
 
-- Szerializálási és ablakos függvények, például a [szerializálási operátor](/azure/kusto/query/serializeoperator), a [Next ()](/azure/kusto/query/nextfunction), a [Prev ()](/azure/kusto/query/prevfunction)és a [Row](/azure/kusto/query/rowcumsumfunction) függvények használata. Ezekben az esetekben a Time Series és a User Analytics functions is használható. A nem hatékony szerializálás akkor is előfordulhat, ha a következő operátorok nem a lekérdezés végén vannak használatban: [Range](/azure/kusto/query/rangeoperator), [sort](/azure/kusto/query/sortoperator), [Order](/azure/kusto/query/orderoperator), [Top](/azure/kusto/query/topoperator), [Top-ütős](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
--   A [DCount ()](/azure/kusto/query/dcount-aggfunction) aggregációs függvény használata azt kényszeríti, hogy a rendszeren a különböző értékek központi másolata legyen. Ha az adatok terjedelme magas, érdemes lehet a DCount függvényt a választható paraméterekkel csökkenteni a pontosság csökkentése érdekében.
--   Sok esetben a [JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) operátor csökkenti az általános párhuzamosságot. A teljesítménnyel kapcsolatos probléma megoldásakor vizsgálja meg a shuffle illesztést.
--   Az erőforrás-hatókörű lekérdezésekben a végrehajtás előtti RBAC-ellenőrzések olyan helyzetekben merülhetnek fel, amikor nagyon nagy számú RBAC-hozzárendelés van. Ez több ellenőrzéshez vezethet, ami alacsonyabb párhuzamosságot eredményezhet. Egy lekérdezés például egy olyan előfizetésen történik, ahol több ezer erőforrás van, és az egyes erőforrások számos szerepkör-hozzárendeléssel rendelkeznek az erőforrás szintjén, nem az előfizetéshez vagy az erőforráscsoporthoz.
--   Ha egy lekérdezés kis adattömböket dolgoz fel, a párhuzamossága alacsony lesz, mivel a rendszer nem fogja elosztani számos számítási csomópont között.
+- Szerializálási és ablakfunkciók, például a [szerializálási operátor,](/azure/kusto/query/serializeoperator) [next()](/azure/kusto/query/nextfunction), [prev()](/azure/kusto/query/prevfunction)és [sorfüggvények](/azure/kusto/query/rowcumsumfunction) használata. Az idősorozatok és a felhasználói elemzési funkciók néhány ilyen esetben használhatók. Nem hatékony szerializálás akkor is előfordulhat, ha a következő operátorokat nem használják a lekérdezés végén: [tartomány](/azure/kusto/query/rangeoperator), [rendezés](/azure/kusto/query/sortoperator), [sorrend](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
+-    A [dcount()](/azure/kusto/query/dcount-aggfunction) aggregációs függvény használata arra kényszeríti a rendszert, hogy a különböző értékeket központi másolattal készítsen. Ha az adatok skálája magas, fontolja meg a dcount függvény választható paramétereinek használatát a kisebb pontosság érdekében.
+-    Sok esetben az [illesztési](/azure/kusto/query/joinoperator?pivots=azuremonitor) operátor csökkenti az általános párhuzamosságokat. Vizsgálja meg a véletlen sorrendű illesztést alternatívaként, ha a teljesítmény problematikus.
+-    Az erőforrás-hatókör lekérdezések, a végrehajtás előtti RBAC-ellenőrzések idővel olyan helyzetekben, ahol nagyon nagy számú RBAC-hozzárendelések. Ez hosszabb ellenőrzésekhez vezethet, ami alacsonyabb párhuzamossághoz vezetne. Például egy lekérdezés végrehajtása egy olyan előfizetésen, ahol több ezer erőforrás van, és minden erőforrás nak sok szerepkör-hozzárendelése van az erőforrás szintjén, nem pedig az előfizetésen vagy az erőforráscsoporton.
+-    Ha egy lekérdezés kis adattömböket dolgoz fel, a párhuzamosság alacsony lesz, mivel a rendszer nem osztja el sok számítási csomópont között.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A Kusto lekérdezési nyelvét ismertető dokumentáció](/azure/kusto/query/).
+- [A Kusto lekérdezési nyelvreferencia-dokumentációja](/azure/kusto/query/).

@@ -1,6 +1,6 @@
 ---
-title: Fejlesztés a ASP.NET – Azure Signaler szolgáltatással
-description: Egy rövid útmutató, amely az Azure Signaler szolgáltatást használja egy ASP.NET-keretrendszerrel rendelkező chat-hely létrehozásához.
+title: Fejlesztés a ASP.NET - Azure SignalR szolgáltatás
+description: Rövid útmutató az Azure SignalR-szolgáltatás használatával egy csevegőszoba létrehozásához ASP.NET keretrendszerrel.
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
@@ -8,19 +8,19 @@ ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
 ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74158173"
 ---
-# <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása a ASP.NET és a Signaler szolgáltatással
+# <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: Csevegőszoba létrehozása ASP.NET és SignalR szolgáltatással
 
-Az Azure Signaler szolgáltatás a [ASP.NET Core 2,0-es jelzőn](https://docs.microsoft.com/aspnet/core/signalr/introduction)alapul, amely **nem** 100%-kompatibilis a ASP.net-jelzővel. Az Azure Signaler szolgáltatás a legújabb ASP.NET Core technológiák alapján újra implementálta a ASP.NET Signaler adatprotokollját. Ha az Azure Signaler szolgáltatást a ASP.NET-jelzőhöz használja, akkor egyes ASP.NET-jelző funkciók már nem támogatottak, például az Azure-szignáló nem küldi újra az üzeneteket, amikor az ügyfél újrakapcsolódik. Emellett a Forever frame Transport és a JSNOP támogatással nem támogatott. A ASP.NET-szignáló alkalmazás a Signaler szolgáltatással való működéséhez szükség van a Code Changes és a függő könyvtárak megfelelő verziójára. 
+Az Azure SignalR szolgáltatás [a SignalR for ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction)szolgáltatáson alapul, amely **nem** 100%-ban kompatibilis ASP.NET SignalR-rel. Az Azure SignalR szolgáltatás újra megvalósította ASP.NET SignalR adatprotokollt a legújabb ASP.NET Core technológiák alapján. Az Azure SignalR Service for ASP.NET SignalR használatakor a SignalR egyes ASP.NET a SignalR-funkciók már nem támogatottak, például az Azure SignalR nem játssza le újra az üzeneteket, amikor az ügyfél újracsatlakozik. Emellett a Forever Frame átvitel és a JSONP nem támogatott. A ASP.NET SignalR alkalmazás működéséhez szükség van a kódmódosításokra és a függő kódtárak megfelelő verziójára. 
 
-A ASP.NET-jelző és a ASP.NET Core-jelző közötti szolgáltatások összehasonlításának teljes listájáért tekintse meg a [verzió-különbségek dokumentációját](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) .
+A ASP.NET SignalR és ASP.NET Core SignalR szolgáltatásösszehasonlításának teljes listáját a [dokumentum verziókülönbségei](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) között olvassa el.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a ASP.NET és az Azure Signaler szolgáltatást egy hasonló [Chat Room-alkalmazáshoz](./signalr-quickstart-dotnet-core.md).
+Ebben a rövid útmutatóban megtudhatja, hogyan kezdheti el a ASP.NET és az Azure SignalR szolgáltatást egy hasonló [csevegőszoba-alkalmazáshoz.](./signalr-quickstart-dotnet-core.md)
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -28,7 +28,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a ASP.NET és az 
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
-* [ASP.NET-jelző 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
+* [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -36,9 +36,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjá
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-A ASP.NET-jelző alkalmazások nem támogatják a *kiszolgáló* nélküli üzemmódot. Mindig használja az alapértelmezett vagy a *klasszikus* *értéket* az Azure signaler szolgáltatás példányához.
+*A kiszolgáló nélküli* mód nem támogatott ASP.NET SignalR alkalmazásokban. Mindig az *Alapértelmezett* vagy *a Klasszikus* az Azure SignalR service-példány.
 
-Az ebben a rövid útmutatóban használt Azure-erőforrásokat is létrehozhatja [a signaler Service-parancsfájl létrehozásával](scripts/signalr-cli-create-service.md).
+Ebben a rövid útmutatóban használt Azure-erőforrásokat is létrehozhat [a SignalR-szolgáltatás parancsfájl létrehozása segítségével.](scripts/signalr-cli-create-service.md)
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -46,23 +46,23 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
 
 1. Nyisson meg egy git terminálablakot. Váltson át arra a mappára, ahová a mintaprojektet klónozni szeretné.
 
-1. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+1. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
-## <a name="configure-and-run-chat-room-web-app"></a>A chat room Web App konfigurálása és futtatása
+## <a name="configure-and-run-chat-room-web-app"></a>A Csevegőszoba webalkalmazás konfigurálása és futtatása
 
-1. Indítsa el a Visual studiót, és nyissa meg a megoldást a klónozott adattár *ASPNET-Samples/chat/* mappában.
+1. Indítsa el a Visual Studio alkalmazást, és nyissa meg a megoldást a klónozott tárház *aspnet-samples/ChatRoom/mappájában.*
 
-1. Keresse meg és válassza ki a létrehozott példányt a böngészőben, ahol a Azure Portal meg van nyitva.
+1. Abban a böngészőben, ahol az Azure Portal meg van nyitva, keresse meg és válassza ki a létrehozott példányt.
 
 1. Válassza a **Kulcsok** elemet a SignalR-szolgáltatáspéldány kapcsolati sztringjeinek megtekintéséhez.
 
 1. Válassza ki és másolja a vágólapra az elsődleges kapcsolati sztring értékét.
 
-1. Most állítsa be a kapcsolati karakterláncot a web. config fájlban.
+1. Most állítsa be a kapcsolati karakterláncot a web.config fájlban.
 
     ```xml
     <configuration>
@@ -73,7 +73,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
     </configuration>
     ```
 
-1. A *Startup.cs*-ben a `MapSignalR()`hívása helyett meg kell hívnia `MapAzureSignalR({your_applicationName})` és továbbítania kell a kapcsolati karakterláncot, hogy az alkalmazás kapcsolódjon a szolgáltatáshoz ahelyett, hogy saját maga is felhasználja a jelet. Cserélje le a `{YourApplicationName}`t az alkalmazás nevére. Ez a név egy egyedi név, amely megkülönbözteti ezt az alkalmazást a többi alkalmazástól. A `this.GetType().FullName`t értékként használhatja.
+1. A *Startup.cs*a `MapSignalR()`hívás helyett meg `MapAzureSignalR({your_applicationName})` kell hívnia és át kell adnia a kapcsolati karakterláncot, hogy az alkalmazás a SignalR üzemeltetése helyett a szolgáltatáshoz csatlakozzon. Cserélje `{YourApplicationName}` le az alkalmazás nevét. Ez a név egy egyedi név, amely megkülönbözteti ezt az alkalmazást a többi alkalmazástól. Értékként `this.GetType().FullName` is használható.
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -83,18 +83,18 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
     }
     ```
 
-    Ezen API-k használata előtt a Service SDK-ra is hivatkoznia kell. Az **eszközök megnyitása | NuGet csomagkezelő | Package Manager konzol** és futtatási parancs:
+    Ezen API-k használata előtt is hivatkoznia kell az SDK szolgáltatásra. Az **eszközök megnyitása | NuGet csomagkezelő | A Csomagkezelő konzol és** a futtatás parancs:
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
     ```
 
-    A változásokon kívül minden más változatlan marad, továbbra is használhatja a hub felületét, amellyel az üzleti logikát írhat.
+    Más, mint ezek a változások, minden más ugyanaz marad, akkor is használhatja a hub felület már ismeri az üzleti logika írásához.
 
     > [!NOTE]
-    > Az implementációban a végpontok `/signalr/negotiate` az Azure Signaler Service SDK általi egyeztetésre van kitéve. Speciális egyeztetési választ ad vissza, amikor az ügyfelek megpróbálnak csatlakozni a kapcsolati sztringben meghatározott szolgáltatási végponthoz, és átirányítják az ügyfeleket.
+    > A megvalósítás ban `/signalr/negotiate` egy végpont van elérhető az Azure SignalR Service SDK egyeztetésére. Speciális egyeztetési választ ad vissza, amikor az ügyfelek megpróbálnak csatlakozni, és átirányítani az ügyfeleket a kapcsolati karakterláncban meghatározott szolgáltatásvégpontra.
 
-1. A projekt hibakeresési módban való futtatásához nyomja le az **F5** billentyűt. Láthatja, hogy az alkalmazás helyileg fut. A szignáló futtatókörnyezetet az alkalmazás nem üzemelteti, hanem az Azure Signaler szolgáltatáshoz csatlakozik.
+1. Nyomja **le az F5** billentyűt a projekt hibakeresési módban való futtatásához. Láthatja, hogy az alkalmazás helyileg fut. Ahelyett, hogy egy SignalR-futásidejű alkalmazás maga üzemeltetésében, most csatlakozik az Azure SignalR szolgáltatáshoz.
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -107,16 +107,16 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
-A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** lehetőségre.
+A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
 
    
 ![Törlés](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforrást, és felhasználta azt egy ASP.NET-webalkalmazással. Következő lépésként megtudhatja, hogyan fejleszthet valós idejű alkalmazásokat az Azure Signaler szolgáltatással a ASP.NET Core használatával.
+Ebben a rövid útmutatóban létrehozott egy új Azure SignalR Service-erőforrást, és egy ASP.NET webalkalmazással használta. Ezután megtudhatja, hogyan fejleszthet valós idejű alkalmazásokat az Azure SignalR-szolgáltatás és a ASP.NET Core használatával.
 
 > [!div class="nextstepaction"]
-> [Azure Signaler szolgáltatás és ASP.NET Core](./signalr-quickstart-dotnet-core.md)
+> [Azure SignalR szolgáltatás ASP.NET Core-nal](./signalr-quickstart-dotnet-core.md)

@@ -1,6 +1,6 @@
 ---
 title: Rugalmas méretezés – gyakori kérdések
-description: Gyakori kérdések Azure SQL Database rugalmas Skálázásról.
+description: Gyakori kérdések az Azure SQL Database Elastic Scale.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,48 +12,48 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823638"
 ---
-# <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Rugalmas adatbázis-eszközök – gyakori kérdések (GYIK)
+# <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Rugalmas adatbázis-kezelőeszközök – gyakori kérdések
 
-## <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Ha egy vagy több-bérlős szegmens van, és nincs horizontális Felskálázási kulcs, hogyan tölthetők fel a séma adataihoz tartozó horizontális Felskálázási kulcs.
+## <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Ha egy-bérlős szegmensenként, és nincs szilánkok kulcs, hogyan feltölti a szilánkos kulcsot a séma info
 
-A séma-információs objektum csak egyesítési forgatókönyvek felosztására szolgál. Ha egy alkalmazás eredendően egybérlős, nincs szükség a felosztás egyesítése eszközre, így nincs szükség a séma-információs objektum feltöltésére.
+A sémainformációs objektum csak egyesítési forgatókönyvek felosztására szolgál. Ha egy alkalmazás eredendően egy-bérlős, akkor nem igényel a Split Merge eszközt, és így nincs szükség a sémainformációs objektum feltöltésére.
 
-## <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>Létrehoztam egy adatbázist, és már van egy szegmenses Map Manager, hogyan regisztrálhatom ezt az új adatbázist szegmensként
+## <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>Kidolgoztam egy adatbázist, és már van egy Shard Map Managerem, hogyan regisztrálhatom ezt az új adatbázist shardként
 
-[A rugalmas adatbázis ügyféloldali függvénytárának használatával kapcsolatban lásd: szegmens hozzáadása egy alkalmazáshoz](sql-database-elastic-scale-add-a-shard.md).
+Olvassa el a Szegmens [hozzáadása egy alkalmazáshoz a rugalmas adatbázis-ügyfélkódtár használatával című témakört.](sql-database-elastic-scale-add-a-shard.md)
 
-## <a name="how-much-do-elastic-database-tools-cost"></a>Mennyibe kerül a rugalmas adatbázis eszközeinek díja
+## <a name="how-much-do-elastic-database-tools-cost"></a>Mennyibe kerülnek a rugalmas adatbázis-eszközök
 
-A rugalmas adatbázis-ügyfél függvénytárának használata nem jár semmilyen költséggel. A költségek csak az olyan Azure SQL Database-adatbázisok esetében merülnek fel, amelyeket a szegmensekhez és a szegmenses Térkép kezelőjéhez használ, valamint a felosztott egyesítési eszköz számára kiépített webes és feldolgozói szerepköröket.
+A rugalmas adatbázis-ügyfélkódtár használata nem jár költségekkel. A költségek csak a szegmensek és a szegmensek leképezési kezelője, valamint a split merge eszközhöz kiépített webes/feldolgozói szerepkörök esetében merülnek fel.
 
-## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Miért nem működnek a hitelesítő adataim, amikor egy másik kiszolgálóról veszek fel egy szegmenst
+## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Miért nem működnek a hitelesítő adataim, ha egy másik kiszolgálóról hozok hozzá egy szilánkot?
 
-Ne használja a hitelesítő adatokat a "felhasználói azonosító =username@servername" formában, hanem egyszerűen használja a "felhasználói azonosító = Felhasználónév" értéket.  Győződjön meg arról is, hogy a "username" bejelentkezési engedélyekkel rendelkezik a szegmensen.
+Ne használjon hitelesítő adatokat "User ID=username@servername" formában, hanem egyszerűen használja a "User ID = username" kifejezést.  Is győződjön meg arról, hogy a "felhasználónév" bejelentkezési jogosultságokkal rendelkezik a shard.
 
-## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Létre kell hozni egy szegmenses Térkép-kezelőt, és fel kell tölteni a szegmenseket minden alkalommal, amikor elkezdem az alkalmazásaim
+## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Létre kell hoznom egy Shard Térképkezelőt, és minden alkalommal, amikor elkezdem az alkalmazásaimat, fel kell őket nagyítanom
 
-Nem – a [ShardMapManagerFactory. CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)egy egyszeri művelet, amely létrehozta a szegmenses Térkép-kezelőt.  Az alkalmazásnak a [ShardMapManagerFactory. TryGetSqlShardMapManager ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) hívást kell használnia az alkalmazás indítási ideje alatt.  Alkalmazás-tartományhoz csak egy ilyen hívásnak kell szerepelnie.
+Nem – a Shard Map Manager (például [ShardMapManagerFactory.CreateSqlShardMapManager)](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)létrehozása egyszeri művelet.  Az alkalmazásnak a [ShardMapManagerFactory.TryGetSqlShardMapManager()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) hívást kell használnia az alkalmazás indítási idején.  Alkalmazástartományonként csak egy ilyen hívás nak lehet meg.
 
-## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Kérdésem van a rugalmas adatbázis-eszközök használatával kapcsolatban, hogyan kaphatok választ
+## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Kérdéseim vannak a rugalmas adatbázis-eszközök használatával kapcsolatban, hogyan kaphatom meg a választ
 
-Kérjük, lépjen kapcsolatba velünk a [SQL Database fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+Kérjük, forduljon hozzánk az [SQL Database fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
 
-## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Ha horizontális Felskálázási kulccsal szerezem be az adatbázis-csatlakozást, továbbra is lekérheti az ugyanazon a szegmensen lévő többi horizontális Felskálázási kulcsra vonatkozó adatlekérdezést.  Ez a kialakítás
+## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Amikor egy szilánkos kulccsal kap egy adatbázis-kapcsolatot, továbbra is lekérdezhetem az adatokat más szilánkok ugyanazon a szegmensen.  Ez a tervezés
 
-A rugalmasan méretezhető API-k lehetővé teszik a megfelelő adatbázishoz való kapcsolódást a horizontális Felskálázási kulcshoz, de nem biztosítanak horizontális szűrést.  Adja hozzá a lekérdezés **Where** záradékát, hogy szükség esetén korlátozza a hatókört a megadott horizontális kulcsra.
+A rugalmas méretezési API-k kapcsolatot biztosít a megfelelő adatbázisa a horizontális kulcs, de nem biztosítanak horizontális kulcs szűrés.  Adja **hozzá** a WHERE-záradékokat a lekérdezéshez, hogy szükség esetén korlátozza a hatókört a megadott szilánkolási kulcsra.
 
-## <a name="can-i-use-a-different-sql-database-edition-for-each-shard-in-my-shard-set"></a>Használhatok egy másik SQL Database-kiadást a saját szegmensem egyes szegmensei esetében
+## <a name="can-i-use-a-different-sql-database-edition-for-each-shard-in-my-shard-set"></a>Használhatok más SQL Database kiadást a shard készletminden egyes szegmenséhez
 
-Igen, a szegmens egy önálló adatbázis, így az egyik szegmens lehet prémium kiadás, míg egy másik standard kiadás. Továbbá a szegmensek kiadása a szegmens élettartama során többször is fel-vagy leskálázást.
+Igen, a shard egy egyéni adatbázis, és így egy shard lehet egy prémium kiadás, míg egy másik standard kiadás. További, a shard kiadása skálázható fel-le többször a shard élettartama alatt.
 
-## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>A felosztott egyesítés eszköz kiépíti (vagy törli) az adatbázist egy megosztott vagy egyesítési művelet során
+## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Az egyesítési eszköz adatbázist létesít (vagy töröl) felosztási vagy egyesítési művelet során
 
-Nem. A **felosztási** műveletek esetében a célként megadott adatbázisnak léteznie kell a megfelelő sémával, és regisztrálni kell a szegmenses Térkép kezelőjével.  Az **egyesítési** műveletekhez törölnie kell a szegmenst a szegmens Térkép kezelőjéből, majd törölnie kell az adatbázist.
+Nem. **Felosztásos** műveletek esetén a céladatbázisnak a megfelelő sémával kell léteznie, és regisztrálnia kell a Shard Map Manager-szel.  **Egyesítési** műveletek hez törölnie kell a szegmenst a szegmens térképkezelőből, majd törölnie kell az adatbázist.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

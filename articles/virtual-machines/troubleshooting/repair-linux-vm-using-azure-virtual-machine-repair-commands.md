@@ -1,6 +1,6 @@
 ---
-title: Linux rendszerű virtuális gép javítása az Azure-beli virtuálisgép-javítási parancsok használatával | Microsoft Docs
-description: Ez a cikk részletesen ismerteti, hogyan használható az Azure-beli virtuális gépek javítási parancsai a lemez egy másik linuxos virtuális géphez való összekapcsolásához a hibák kijavításához, majd az eredeti virtuális gép újraépítéséhez.
+title: Linuxos virtuális gép javítása az Azure virtuálisgép-javítási parancsokkal | Microsoft dokumentumok
+description: Ez a cikk ismerteti, hogyan azure virtuálisgép-javítási parancsokat a lemez csatlakoztatásához egy másik Linux virtuális gép a hibák kijavítása, majd az eredeti virtuális gép újraépítése.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -15,66 +15,66 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73796207"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Linux rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
 
-Ha az Azure-beli linuxos virtuális gép (VM) rendszerindítási vagy lemezhiba miatt fordul elő, előfordulhat, hogy maga a lemezen is el kell végeznie a mérséklést. Gyakori példa egy sikertelen alkalmazás frissítése, amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan használható az Azure-beli virtuális gépek javítási parancsai a lemez egy másik linuxos virtuális géphez való összekapcsolásához a hibák kijavításához, majd az eredeti virtuális gép újraépítéséhez.
+Ha a Linux virtuális gép (VM) az Azure-ban egy rendszerindítási vagy lemezhiba, előfordulhat, hogy végre kell hajtania a megoldás a lemezen is. Egy gyakori példa lenne egy sikertelen alkalmazásfrissítés, amely megakadályozza, hogy a virtuális gép sikeresen eltudja indítani. Ez a cikk ismerteti, hogyan azure virtuálisgép-javítási parancsokat a lemez csatlakoztatásához egy másik Linux virtuális gép a hibák kijavítása, majd az eredeti virtuális gép újraépítése.
 
 > [!IMPORTANT]
-> A cikkben szereplő parancsfájlok csak a [Azure Resource Managert](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használó virtuális gépekre vonatkoznak.
+> A cikkben szereplő parancsfájlok csak az [Azure Resource Managert](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használó virtuális gépekre vonatkoznak.
 
-## <a name="repair-process-overview"></a>Javítási folyamat áttekintése
+## <a name="repair-process-overview"></a>Javítási folyamat – áttekintés
 
-Mostantól használhatja az Azure-beli virtuális gépek javítási parancsait egy virtuális gép operációsrendszer-lemezének módosításához, és már nem kell törölnie és újból létrehoznia a virtuális GÉPET.
+Most már használhatja az Azure virtuális gép javítási parancsait a virtuális gép operációsrendszer-lemezének módosításához, és már nem kell törölnie és újra létrehoznia a virtuális gépet.
 
-A virtuálisgép-probléma megoldásához kövesse az alábbi lépéseket:
-
-1. Az Azure Cloud Shell indítása
-2. Futtatás az Extension Add/Update
-3. Futtatás az VM Repair Create
-4. Enyhítő lépések végrehajtása
-5. Futtatás az VM Repair Restore
-
-További dokumentációt és útmutatást az [az VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)című témakörben talál.
-
-## <a name="repair-process-example"></a>Javítási folyamat – példa
+A virtuális gépekkel kapcsolatos probléma elhárításához kövesse az alábbi lépéseket:
 
 1. Az Azure Cloud Shell indítása
+2. Az bővítmény hozzáadása/frissítése futtatása
+3. Az vm javítás létrehozása
+4. Kockázatcsökkentési lépések végrehajtása
+5. Futtassa az vm javítás visszaállítása
 
-   Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. Az előtelepített és a fiókkal való használatra konfigurált általános Azure-eszközöket tartalmaz.
+További dokumentációt és utasításokat lásd [az az vm javítás](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair).
 
-   A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. A Cloud Shell egy külön böngésző lapon is megnyithatja, ha a [https://shell.azure.com](https://shell.azure.com).
+## <a name="repair-process-example"></a>Példa a javítási folyamatra
 
-   Válassza a **Másolás** elemet a kód blokkjának másolásához, majd illessze be a kódot a Cloud Shellba, majd a futtatásához válassza az **ENTER billentyűt** .
+1. Az Azure Cloud Shell indítása
 
-   Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.30-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ``az --version``. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+   Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. Ez magában foglalja a közös Azure-eszközök előre telepített és a fiókjával való használatra konfigurálva.
 
-2. Ha első alkalommal használja a `az vm repair` parancsokat, adja hozzá a virtuális gép javítási CLI-bővítményét.
+   A Cloud Shell megnyitásához válassza a **Próba** a kódblokk jobb felső sarkából. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com](https://shell.azure.com)is megnyithatja a segítségével.
+
+   Válassza a **Másolás** lehetőséget a kódblokkok másolásához, majd illessze be a kódot a Felhőrendszerhéjba, és válassza az **Enter** lehetőséget a kód futtatásához.
+
+   Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.30-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ``az --version``. Ha telepítenie vagy frissítenie kell az Azure CLI-t, olvassa el [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakört.
+
+2. Ha ez az első alkalom, `az vm repair` hogy használta a parancsokat, adja hozzá a vm-javítás CLI kiterjesztés.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Ha korábban már használta a `az vm repair` parancsokat, alkalmazza a virtuális gép javítási bővítményének frissítéseit.
+   Ha korábban már `az vm repair` használta a parancsokat, alkalmazza a frissítéseket a vm-javításbővítmény.
 
    ```azurecli-interactive
    az extension update -n vm-repair
    ```
 
-3. Futtassa az `az vm repair create` parancsot. Ez a parancs létrehozza az operációsrendszer-lemez másolatát a nem működőképes virtuális géphez, létrehoz egy javítási virtuális gépet, és csatlakoztatja a lemezt.
+3. Futtassa az `az vm repair create` parancsot. Ez a parancs létrehozza a nem működő virtuális gép operációsrendszer-lemezének másolatát, létrehoz egy javítási virtuális gép, és csatolja a lemezt.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Hajtsa végre a szükséges kockázatcsökkentő lépéseket a létrehozott javítási virtuális gépen, majd folytassa az 5. lépéssel.
+4. Hajtsa végre a szükséges kockázatcsökkentési lépéseket a létrehozott javítási virtuális gépen, majd folytassa az 5.
 
-5. Futtassa az `az vm repair restore` parancsot. Ez a parancs felcseréli a javított operációsrendszer-lemezt a virtuális gép eredeti operációsrendszer-lemezére.
+5. Futtassa az `az vm repair restore` parancsot. Ez a parancs felcseréli a javított operációsrendszer-lemezt a virtuális gép eredeti operációsrendszer-lemezével.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
@@ -82,7 +82,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Rendszerindítási diagnosztika ellenőrzése és engedélyezése
 
-A következő példa engedélyezi a diagnosztikai bővítményt a ``myVMDeployed`` nevű virtuális gépen a ``myResourceGroup``nevű erőforráscsoporthoz:
+A következő példa engedélyezi a diagnosztikai ``myVMDeployed`` bővítményt a ``myResourceGroup``névvel ellátott erőforráscsoportban megnevezett virtuális gépen:
 
 Azure CLI
 
@@ -92,6 +92,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [Az Azure-beli virtuális gép RDP-kapcsolatainak hibaelhárítását](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)ismertető témakört.
-* A virtuális GÉPEN futó alkalmazások elérésével kapcsolatos problémák: az [alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection).
-* További információ a Resource Manager használatáról: [Azure Resource Manager Overview (áttekintés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)).
+* Ha problémái vannak a virtuális géphez való csatlakozással, olvassa [el az RDP-kapcsolatok hibaelhárítása azure-beli virtuális géphez című témakört.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)
+* A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákról az [Azure-beli virtuális gépeken az alkalmazáscsatlakozási problémák elhárítása című témakörben nyújt](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)fel problémát.
+* Az Erőforrás-kezelő használatáról az Azure Resource Manager – áttekintés című témakörben olvashat [bővebben.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)

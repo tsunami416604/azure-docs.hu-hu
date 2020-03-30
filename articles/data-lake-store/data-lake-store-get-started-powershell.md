@@ -1,30 +1,30 @@
 ---
-title: Ismerkedés a Azure Data Lake Storage Gen1-PowerShell használatával | Microsoft Docs
-description: A Azure PowerShell használatával hozzon létre egy Azure Data Lake Storage Gen1 fiókot, és hajtson végre alapszintű műveleteket.
+title: Ismerkedés az Azure Data Lake Storage Gen1 használatával – PowerShell | Microsoft dokumentumok
+description: Azure PowerShell használatával azure Data Lake Storage Gen1-fiókot hozhat létre, és alapvető műveleteket hajthat végre.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837889"
 ---
-# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Ismerkedés a Azure Data Lake Storage Gen1 használatával Azure PowerShell
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Ismerkedés az Azure Data Lake Storage Gen1 használatával az Azure PowerShell használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
-> * [PowerShell](data-lake-store-get-started-powershell.md)
+> * [Powershell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 >
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Megtudhatja, hogyan hozhat létre Azure PowerShell egy Azure Data Lake Storage Gen1-fiók létrehozásához, és hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, az adatfájlok feltöltése és letöltése, a fiók törlése stb. További információ a Data Lake Storage Gen1ről: [Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md).
+Megtudhatja, hogy az Azure PowerShell használatával hogyan hozhat létre azure Data Lake Storage Gen1-fiókot, és hogyan hajthat végre olyan alapvető műveleteket, mint például mappák létrehozása, adatfájlok feltöltése és letöltése, fiók törlése stb. A Data Lake Storage Gen1 szolgáltatásról a [Data Lake Storage Gen1 áttekintése című](data-lake-store-overview.md)témakörben olvashat bővebben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,11 +35,11 @@ Megtudhatja, hogyan hozhat létre Azure PowerShell egy Azure Data Lake Storage G
 
 ## <a name="authentication"></a>Hitelesítés
 
-Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1, ahol a rendszer felszólítja az Azure-fiók hitelesítő adatainak megadására. A fiók és a fájlrendszer Data Lake Storage Gen1 hozzáférési szintjét a bejelentkezett felhasználó hozzáférési szintje szabályozza. Vannak azonban más megközelítések a hitelesítéshez Data Lake Storage Gen1, amelyek végfelhasználói hitelesítés vagy szolgáltatások közötti hitelesítés. Útmutatás a hitelesítéshez és további tudnivalók a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben.
+Ez a cikk egy egyszerűbb hitelesítési megközelítést használ a Data Lake Storage Gen1 használatával, ahol a rendszer kéri az Azure-fiók hitelesítő adatainak megadását. A Data Lake Storage Gen1 fiókhoz és a fájlrendszerhez való hozzáférési szintet ezután a bejelentkezett felhasználó hozzáférési szintje szabályozza. Vannak azonban más megközelítések a Data Lake Storage Gen1 hitelesítésére, amelyek a végfelhasználói hitelesítés vagy a szolgáltatás-szolgáltatás hitelesítés. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 fiók létrehozása
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
 
-1. Nyisson meg egy új Windows PowerShell-ablakot az asztalon. Adja meg a következő kódrészletet az Azure-fiókba való bejelentkezéshez, az előfizetés beállításához és a Data Lake Storage Gen1-szolgáltató regisztrálásához. Amikor a rendszer kéri, hogy jelentkezzen be, győződjön meg arról, hogy az egyik előfizetés-rendszergazda/tulajdonos:
+1. Nyisson meg egy új Windows PowerShell-ablakot az asztalon. Adja meg a következő kódrészletet az Azure-fiókjába való bejelentkezéshez, állítsa be az előfizetést, és regisztrálja a Data Lake Storage Gen1 szolgáltatót. Amikor a rendszer kéri a bejelentkezést, jelentkezzen be az előfizetés egyik rendszergazdájaként/tulajdonosaként:
 
     ```PowerShell
     # Log in to your Azure account
@@ -55,7 +55,7 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage 
     Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
     ```
 
-1. Egy Data Lake Storage Gen1 fiók egy Azure-erőforráscsoporthoz van társítva. Első lépésként hozzon létre egy erőforráscsoportot.
+1. A Data Lake Storage Gen1 fiók egy Azure-erőforráscsoport társított. Először hozzon létre egy erőforráscsoportot.
 
     ```PowerShell
     $resourceGroupName = "<your new resource group name>"
@@ -71,7 +71,7 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage 
     New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
     ```
 
-    ![Data Lake Storage Gen1 fiók létrehozása](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Data Lake Storage Gen1 fiók létrehozása")
+    ![Data Lake Storage Gen1-fiók létrehozása](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Data Lake Storage Gen1-fiók létrehozása")
 
 1. Ellenőrizze, hogy a fiók létrehozása sikeres volt-e.
 
@@ -81,9 +81,9 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage 
 
     A parancsmag kimeneti értéke **True** (Igaz) kell, hogy legyen.
 
-## <a name="create-directory-structures"></a>Címtár-struktúrák létrehozása
+## <a name="create-directory-structures"></a>Könyvtárstruktúrák létrehozása
 
-Az adatkezeléshez és az adattároláshoz a Data Lake Storage Gen1 fiókjában hozhat létre címtárakat.
+Könyvtárakat hozhat létre a Data Lake Storage Gen1 fiók ban az adatok kezeléséhez és tárolásához.
 
 1. Adjon meg egy gyökérkönyvtárat.
 
@@ -105,13 +105,13 @@ Az adatkezeléshez és az adattároláshoz a Data Lake Storage Gen1 fiókjában 
 
     A következő képernyőképen láthatóhoz hasonló kimenetnek kell megjelennie:
 
-    ![Könyvtár ellenőrzése](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "A könyvtár ellenőrzése")
+    ![A könyvtár ellenőrzése](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "A könyvtár ellenőrzése")
 
 ## <a name="upload-data"></a>Adatok feltöltése
 
-Az adatok feltölthetők közvetlenül a legfelső szintű Data Lake Storage Gen1ba, vagy a fiókon belül létrehozott könyvtárba. A jelen szakaszban szereplő kódrészletek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott könyvtárba (**mynewdirectory**).
+Az adatokat közvetlenül a gyökérszinten, vagy a fiókon belül létrehozott könyvtárba töltheti fel a Data Lake Storage Gen1-be. A jelen szakaszban szereplő kódrészletek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott könyvtárba (**mynewdirectory**).
 
-Ha feltölthető mintaadatokra van szüksége, használhatja az **Azure Data Lake Git-tárában** található [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata).
+Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata).
 
 ```PowerShell
 Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
@@ -119,7 +119,7 @@ Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
    -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 ```
 
-## <a name="rename-download-and-delete-data"></a>Az adatátnevezés, letöltése és törlése
+## <a name="rename-download-and-delete-data"></a>Adatok átnevezése, letöltése és törlése
 
 Fájlok átnevezéséhez használja a következő parancsot:
 
@@ -153,7 +153,7 @@ Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
 
 ## <a name="delete-your-account"></a>Fiók törlése
 
-A következő parancs használatával törölheti Data Lake Storage Gen1 fiókját.
+A következő paranccsal törölheti a Data Lake Storage Gen1 fiókját.
 
 ```PowerShell
 Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
@@ -163,8 +163,8 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Teljesítmény-finomhangolási útmutató a PowerShell és a Azure Data Lake Storage Gen1 használatával](data-lake-store-performance-tuning-powershell.md)
-* [Azure Data Lake Storage Gen1 használata big data követelményekhez](data-lake-store-data-scenarios.md)
+* [Teljesítményhangolási útmutató a PowerShell azure Data Lake Storage Gen1 használatával kapcsolatban](data-lake-store-performance-tuning-powershell.md)
+* [Az Azure Data Lake Storage Gen1 használata big data-követelményekhez](data-lake-store-data-scenarios.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
-* [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1 szolgáltatással](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata a Data Lake Storage Gen1 szolgáltatással](data-lake-store-hdinsight-hadoop-use-portal.md)

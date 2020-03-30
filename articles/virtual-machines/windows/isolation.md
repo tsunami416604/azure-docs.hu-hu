@@ -1,6 +1,6 @@
 ---
-title: Elkülönítés a Windows rendszerű virtuális gépek számára az Azure-ban
-description: Ismerje meg, hogyan működik a virtuális gép elkülönítése az Azure-ban.
+title: Windows-virtuális gépek elkülönítése az Azure-ban
+description: Ismerje meg a virtuális gép elkülönítése működik az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.openlocfilehash: 4d6c8bb2bc27c7202848229e749b62dd714e86fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74029883"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Virtuális gépek elkülönítése az Azure-ban
@@ -26,9 +26,9 @@ ms.locfileid: "74029883"
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation-migration.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A dedikált gazdagépeket [Azure PowerShell](dedicated-hosts-powershell.md), a [portál](dedicated-hosts-portal.md)és az [Azure CLI](../linux/dedicated-hosts-cli.md)használatával helyezheti üzembe. További információt a [dedikált gazdagépek](dedicated-hosts.md) áttekintése című témakörben talál.
+- Az [Azure PowerShell](dedicated-hosts-powershell.md), a [portál](dedicated-hosts-portal.md)és az [Azure CLI](../linux/dedicated-hosts-cli.md)használatával dedikált gazdatként helyezhet üzembe. További információt a [Dedikált állomások](dedicated-hosts.md) áttekintése című témakörben talál.
 
 
 

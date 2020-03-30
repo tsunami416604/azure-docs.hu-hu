@@ -1,6 +1,6 @@
 ---
-title: Kiszolgáló-rendszergazdák kezelése a Azure Analysis Servicesban | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan kezelhetők a kiszolgálók rendszergazdái egy Azure Analysis Services-kiszolgálón a Azure Portal, a PowerShell vagy a REST API-k használatával.
+title: Kiszolgálógazdák kezelése az Azure Analysis Services ben | Microsoft dokumentumok
+description: Ez a cikk ismerteti, hogyan kezelheti a kiszolgálói rendszergazdák egy Azure Analysis Services-kiszolgáló az Azure Portalon, a PowerShell vagy a REST API-k használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,51 +8,51 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572627"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 
-A kiszolgálói rendszergazdáknak érvényes felhasználói vagy biztonsági csoportnak kell lenniük a Azure Active Directoryban (Azure AD) ahhoz a bérlőhöz, amelyben a kiszolgáló található. A kiszolgálói rendszergazdák kezeléséhez **Analysis Services rendszergazdákat** használhat a Azure Portal, a SSMS, a PowerShellben vagy a REST API kiszolgálói tulajdonságaiban. 
+A kiszolgáló rendszergazdáinak érvényes felhasználónak vagy biztonsági csoportnak kell lenniük az Azure Active Directoryban (Azure AD) ahhoz a bérlőhöz, amelyben a kiszolgáló található. Az **Analysis Services-rendszergazdák** az Azure Portalon, a Kiszolgáló tulajdonságai az SSMS-ben, a PowerShellben vagy a REST API-ban a kiszolgáló rendszergazdáinak kezeléséhez használható. 
 
-A **biztonsági csoportoknak** e- [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsággal, amely `True`re van beállítva. Ha e-mail-cím alapján ad meg egy csoportot, használja a `obj:groupid@tenantid`.
+**A biztonsági csoportoknak** [levelezésre alkalmasnak](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük, ha a `MailEnabled` tulajdonság a értékre `True`van állítva. Csoport e-mail cím szerint `obj:groupid@tenantid`történő megadásakor használja a használatát.
 
-## <a name="to-add-server-administrators-by-using-azure-portal"></a>Kiszolgáló-rendszergazdák hozzáadása a Azure Portal használatával
+## <a name="to-add-server-administrators-by-using-azure-portal"></a>Kiszolgálói rendszergazdák hozzáadása az Azure Portal használatával
 
-1. A portálon, a-kiszolgálónál kattintson a **Analysis Services rendszergazdák**elemre.
-2. **\<servername > – Analysis Services rendszergazdák**területen kattintson a **Hozzáadás**gombra.
-3. A **kiszolgáló-rendszergazdák hozzáadása**lapon válassza ki az Azure ad-beli felhasználói fiókokat, vagy hívja meg a külső felhasználókat e-mail-cím alapján.
+1. A portálon a kiszolgálóhoz kattintson az **Analysis Services Admins**elemre.
+2. A ** \<kiszolgálónév> – Analysis Services Rendszergazdák ( Elemzési szolgáltatások rendszergazdái )** kattintson a **Hozzáadás**gombra.
+3. A **Kiszolgálógazdák hozzáadása csoportban**válassza ki a felhasználói fiókokat az Azure AD-ből, vagy e-mail-cím útján hívja meg a külső felhasználókat.
 
-    ![Kiszolgálói rendszergazdák a Azure Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)
+    ![Kiszolgálógazdák az Azure Portalon](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
-## <a name="to-add-server-administrators-by-using-ssms"></a>Kiszolgáló-rendszergazdák hozzáadása a SSMS használatával
+## <a name="to-add-server-administrators-by-using-ssms"></a>Kiszolgálói rendszergazdák hozzáadása az SSMS használatával
 
-1. Kattintson a jobb gombbal a kiszolgáló > **tulajdonságai**elemre.
-2. A **Analysis Server tulajdonságok**területen kattintson a **Biztonság**elemre.
-3. Kattintson a **Hozzáadás**gombra, majd adja meg az Azure ad-beli felhasználó vagy csoport e-mail-címét.
+1. Kattintson a jobb gombbal a kiszolgálóra > **Tulajdonságok parancsra.**
+2. Az **Analysis Server tulajdonságai**párbeszédpanelen kattintson a **Biztonság**gombra.
+3. Kattintson **a Hozzáadás**gombra, majd adja meg egy felhasználó vagy csoport e-mail címét az Azure AD-ben.
    
-    ![Kiszolgáló-rendszergazdák hozzáadása a SSMS-ben](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
+    ![Kiszolgálórendszergazdák hozzáadása az SSMS-ben](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Új kiszolgáló létrehozásakor a [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) parancsmag használatával adhatja meg a rendszergazda paramétert. <br>
-A [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) parancsmag használatával módosíthatja egy meglévő kiszolgáló rendszergazdai paraméterét.
+[A New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) parancsmag segítségével adja meg a Rendszergazda paramétert új kiszolgáló létrehozásakor. <br>
+A [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) parancsmag segítségével módosítsa egy meglévő kiszolgáló Rendszergazda paraméterét.
 
 ## <a name="rest-api"></a>REST API
 
-Új kiszolgáló létrehozásakor a [create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) paranccsal adhatja meg a asAdministrator tulajdonságot. <br>
-Egy meglévő kiszolgáló módosításakor a [frissítés](https://docs.microsoft.com/rest/api/analysisservices/servers/update) használatával adhatja meg a asAdministrator tulajdonságot. <br>
+A [Létrehozás segítségével](https://docs.microsoft.com/rest/api/analysisservices/servers/create) adja meg a rendszergazdai tulajdonságot új kiszolgáló létrehozásakor. <br>
+A [Frissítés segítségével](https://docs.microsoft.com/rest/api/analysisservices/servers/update) adja meg az asAdministrator tulajdonságot egy meglévő kiszolgáló módosításakor. <br>
 
 
 
 ## <a name="next-steps"></a>További lépések 
 
 [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)  
-[Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  
+[Adatbázis-szerepkörök és felhasználók kezelése](analysis-services-database-users.md)  
 [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)  
 

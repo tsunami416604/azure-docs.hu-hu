@@ -1,6 +1,6 @@
 ---
-title: Globálisan elosztott elemzéseket használó megoldások Azure Cosmos DBban.
-description: Ismerkedjen meg a Azure Cosmos DB globálisan elosztott elemzési funkciójával felépíthető megoldásokkal.
+title: Globálisan elosztott elemzéseket használó megoldások az Azure Cosmos DB-ben.
+description: Ismerje meg az Azure Cosmos DB globálisan elosztott elemzésekkel létrehozható megoldásokat.
 author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
@@ -8,79 +8,79 @@ ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73681754"
 ---
-# <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Globálisan elosztott elemzést használó megoldások Azure Cosmos DB
+# <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Globálisan elosztott elemzéseket használó megoldások az Azure Cosmos DB-ben
 
-Ez a cikk azokat a megoldásokat ismerteti, amelyek a Azure Cosmos DB globálisan elosztott elemzési funkciójával hozhatók felépítésre.
+Ez a cikk ismerteti a megoldásokat, amelyek az Azure Cosmos DB globálisan elosztott elemzéshasználatával hozhathatók fel.
 
-## <a name="retail-and-consumer-goods"></a>Kiskereskedelmi és fogyasztói termékek
+## <a name="retail-and-consumer-goods"></a>Kiskereskedelmi és fogyasztási cikkek
 
-A Azure Cosmos DB Spark-támogatásával valós idejű ajánlásokat és ajánlatokat biztosíthat. Segítheti az ügyfeleket abban, hogy a valós idejű személyre szabással és a termékkel kapcsolatos javaslatok alapján felfedezzék a szükséges elemeket.
+Az Azure Cosmos DB Spark-támogatásával valós idejű javaslatokat és ajánlatokat tehet. A valós idejű személyre szabással és termékajánlásokkal segíthet az ügyfeleknek felderíteni a szükséges elemeket.
 
-* A Apache Spark Runtime beépített Machine Learning támogatásával valós idejű ajánlásokat készíthet a termékkatalógusokban.
+* Az Apache Spark futásidejű beépített Machine Learning-támogatásával valós idejű javaslatokat hozhat létre a termékkatalógusokban.
 
-* A stream-adatforrások, az adatvásárlások és az ügyféladatok lehetőségre kattintva megadhatja az élettartamot megcélzó célként megadott javaslatokat.
+* Az elemzési adatok, a beszerzési adatok és az ügyféladatok bányászhatva olyan célzott javaslatokat, amelyek a élettartam értékét meghajtók.
 
-* A Azure Cosmos DB globális terjesztési funkciójának használatával a különböző régiókba tartozó termékek nagy mennyisége ezredmásodpercben elemezhető.
+* Az Azure Cosmos DB globális terjesztési funkcióját használva a régiók között elosztott nagy mennyiségű termékadat ezredmásodpercben elemezhető.
 
-* Gyorsan lekérheti a földrajzilag elosztott felhasználók és az adatelemzést. Az előléptetés átváltási arányának növeléséhez a megfelelő felhasználót a megfelelő időben kell kiszolgálni a megfelelő felhasználó számára.
+* Gyorsan betekintést nyerhet a földrajzilag elosztott felhasználók és adatok. A promóciós konverziós arányt úgy javíthatja, hogy a megfelelő hirdetésnek a megfelelő felhasználónak a megfelelő időben kell megadnia.
 
-* Kihasználhatja a beépített Spark streaming-képességet az élő adattartalom dúsításához, ha a statikus ügyféladatok használatával egyesíti azt. Így valós időben és az ügyfelek által megvalósított kontextusban teheti elérhetővé a személyre szabott és a célcsoportot mutató hirdetéseket.
+* A beépített Spark-streamelési képesség kihasználva gazdagíthatja az élő adatokat statikus ügyféladatokkal kombinálva. Így személyre szabottabb és célzottabb hirdetéseket jeleníthet meg valós időben és az ügyfelek által végzett kontextusban.
 
-Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a díjszabás és a promóciók optimalizálásához:
+Az alábbi képen bemutatjuk, hogyan használják az Azure Cosmos DB Spark támogatását az árak és promóciók optimalizálására:
 
-![Azure Cosmos DB Spark-támogatás a díjszabás és a promóció optimalizálásához](./media/analytics-solution-architectures/optimize-pricing-and-promotions.png)
+![Az Azure Cosmos DB Spark-támogatása az árak és a promóciók optimalizálásához](./media/analytics-solution-architectures/optimize-pricing-and-promotions.png)
 
 
-Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a valós idejű javaslatok motorjában:
+Az alábbi képen bemutatja, hogyan használja az Azure Cosmos DB Spark-támogatást a valós idejű ajánlási motorban:
 
-![Azure Cosmos DB Spark-támogatás a valós idejű ajánlási motorban](./media/analytics-solution-architectures/real-time-recommendation-engine.png)
+![Az Azure Cosmos DB Spark támogatása a valós idejű ajánlási motorban](./media/analytics-solution-architectures/real-time-recommendation-engine.png)
 
-## <a name="manufacturing-and-iot"></a>Gyártási és IoT
+## <a name="manufacturing-and-iot"></a>Gyártás és IoT
 
-Azure Cosmos DB beépített elemzési platformja lehetővé teszi, hogy a IoT-adatok valós idejű elemzését globális szinten több millió eszközről is engedélyezzék. Olyan modern innovációkat végezhet, mint például az időjárási minták, a prediktív elemzések és az energia-optimalizálások előrejelzése.
+Az Azure Cosmos DB beépített elemzési platformja lehetővé teszi az IoT-adatok valós idejű elemzését globális szinten több millió eszközről. Olyan modern újításokat hozhat, mint az időjárási minták előrejelzése, a prediktív elemzés és az energiaoptimalizálás.
 
-* Azure Cosmos DB használatával olyan adatokat is megadhat, mint például a valós idejű eszközök mérőszámai és az időjárási tényezők, majd az intelligens Grid Analytics alkalmazásával optimalizálhatja a kapcsolódó eszközök teljesítményét a mezőben. Az intelligens Grid Analytics a működési költségek szabályozásának kulcsa, a rács megbízhatóságának javítása és személyre szabott energiaellátási szolgáltatások biztosítása a fogyasztóknak.
+* Az Azure Cosmos DB használatával kibányászhatja az adatokat, például a valós idejű eszköz-metrikákat és az időjárási tényezőket, majd intelligens hálózati elemzéseket alkalmazhat a terepen csatlakoztatott eszközök teljesítményének optimalizálásához. Az intelligens hálózati elemzés kulcsfontosságú a működési költségek szabályozásához, a hálózat megbízhatóságának javításához és a személyre szabott energiaszolgáltatások fogyasztóknak való biztosításához.
 
-Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a IoT-eszközök metrikáinak olvasásához és az intelligens Grid Analytics alkalmazásához:
+Az alábbi képen bemutatja, hogyan használható az Azure Cosmos DB Spark-támogatása az IoT-eszközök metrikáinak olvasására és az intelligens hálózatok elemzésének alkalmazására:
 
-![Azure Cosmos DB Spark-támogatás a IoT-eszközök metrikáinak olvasásához](./media/analytics-solution-architectures/read-metrics-from-iot-devices.png)
+![Az Azure Cosmos DB Spark-támogatása az IoT-eszközök metrikáinak olvasásához](./media/analytics-solution-architectures/read-metrics-from-iot-devices.png)
 
 ## <a name="predictive-maintenance"></a>Prediktív karbantartás
 
-* Az olyan adategységek, mint például a kis fúrási tornyokban használt kompresszorok és a mélytengeri platformok fenntartása összetett törekvés. Ezek az eszközök a világ különböző részein találhatók, és petabájt hoznak. A Azure Cosmos DB használatával olyan teljes körű prediktív adatfolyamatot építhet ki, amely a Spark streaming használatával nagy mennyiségű érzékelő telemetria, tároló-alkatrészt és érzékelő-hozzárendelési adatfeldolgozást végez.
+* Fenntartása eszközök, mint például a kompresszorok, hogy használják a kis fúrótornyok a mélytengeri platformok egy összetett törekvés. Ezek az eszközök világszerte találhatók, és petabájtnyi adatot generálnak. Az Azure Cosmos DB használatával létrehozhat egy teljes körű prediktív adatfolyamatot, amely a Spark streamelést használja nagy mennyiségű érzékelőtelemetria feldolgozásához, az eszközrészek és az érzékelő-leképezési adatok tárolásához.
 
-* Gépi tanulási modelleket hozhat létre és helyezhet üzembe, amelyekkel előre jelezheti az eszközök meghibásodását, és a hiba bekövetkezése előtt kiállíthatja a karbantartási munkavégzési rendeléseket.
+* Gépi tanulási modelleket hozhat létre és helyezhet üzembe az eszközhibák előrejelzéséhez, mielőtt azok bekövetkeznének, és karbantartási munkarendeléseket adhat ki a hiba bekövetkezése előtt.
 
-Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támogatás a prediktív karbantartási rendszer létrehozásához:
+Az alábbi képen bemutatjuk, hogyan használja az Azure Cosmos DB Spark-támogatását egy prediktív karbantartási rendszer létrehozásához:
 
-![Azure Cosmos DB Spark-támogatás prediktív karbantartási rendszer létrehozásához](./media/analytics-solution-architectures/predictive-maintenance-system.png)
+![Az Azure Cosmos DB Spark-támogatása egy prediktív karbantartási rendszer létrehozásához](./media/analytics-solution-architectures/predictive-maintenance-system.png)
 
-Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támogatás a valós idejű járművek diagnosztikai rendszerének létrehozásához:
+Az alábbi képen bemutatjuk, hogyan használja az Azure Cosmos DB Spark-támogatását egy valós idejű járműdiagnosztikai rendszer létrehozásához:
 
-![Azure Cosmos DB Spark-támogatás a valós idejű járművek diagnosztikai rendszerének létrehozásához](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
+![Az Azure Cosmos DB Spark-támogatása egy valós idejű járműdiagnosztikai rendszer létrehozásához](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
 
 ## <a name="gaming"></a>Játékok
 
-* A beépített Spark-támogatással a Azure Cosmos DB percek alatt könnyedén hozhat létre, méretezheti és helyezhet üzembe fejlett elemzési és gépi tanulási modelleket, hogy a lehető legjobb játékélményt hozza létre.
+* A beépített Spark-támogatással az Azure Cosmos DB lehetővé teszi, hogy percek alatt egyszerűen elkészíthesse, méretezheti és üzembe helyezhesd a fejlett elemzési és gépi tanulási modelleket a lehető legjobb játékélmény érdekében.
 
-* A játékosok, a vásárlások és a viselkedési adatokat elemezheti a megfelelő személyre szabott ajánlatok létrehozásához, hogy magas konverziós arányt lehessen elérni.
+* Elemezheti a játékos-, vásárlási és viselkedési adatokat, hogy releváns, személyre szabott ajánlatokat hozzon létre a magas konverziós arányok elérése érdekében.
 
-* A Spark Machine learning segítségével elemzéseket készíthet a játék telemetria adatairól, és betekintést nyerhet. A lassú betöltési idő és a játékon belüli problémák diagnosztizálására és megelőzésére is lehetőség van.
+* A Spark gépi tanulás használatával elemezheti és betekintést nyerhet a játék telemetriai adataiba. Diagnosztizálhatja és megelőzheti a lassú betöltési időket és a játékon belüli problémákat.
 
-Az alábbi képen látható, hogyan használják a Azure Cosmos DB Spark-támogatását a Gaming Analyticsben:
+Az alábbi képen bemutatja, hogyan használja az Azure Cosmos DB Spark-támogatását a játékelemzésekben:
 
-![Azure Cosmos DB Spark-támogatás a Gaming Analyticsben](./media/analytics-solution-architectures/gaming-analytics.png)
+![Az Azure Cosmos DB Spark-támogatása a játékelemzésben](./media/analytics-solution-architectures/gaming-analytics.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Cosmos DB előnyeinek megismeréséhez tekintse meg az [áttekintést](introduction.md) ismertető cikket.
-* [Ismerkedés a MongoDB Azure Cosmos DB API-val](mongodb-introduction.md)
-* [Ismerkedjen meg a Azure Cosmos DB Cassandra API](cassandra-introduction.md)
-* [Ismerkedés a Azure Cosmos DB Gremlin API-val](graph-introduction.md)
-* [Ismerkedjen meg a Azure Cosmos DB Table API](table-introduction.md)
+* Az Azure Cosmos DB előnyeiről az [áttekintő](introduction.md) cikkben olvashat.
+* [Ismerkedés a MongoDB Azure Cosmos DB API-jával](mongodb-introduction.md)
+* [Ismerkedés az Azure Cosmos DB Cassandra API-val](cassandra-introduction.md)
+* [Ismerkedjen meg az Azure Cosmos DB Gremlin API-val!](graph-introduction.md)
+* [Ismerkedés az Azure Cosmos DB Table API-val](table-introduction.md)

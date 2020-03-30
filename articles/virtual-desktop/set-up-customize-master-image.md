@@ -1,6 +1,6 @@
 ---
-title: Fő VHD-rendszerkép előkészítése és testreszabása – Azure
-description: Windows rendszerű virtuális asztali rendszerképek előkészítése, testreszabása és feltöltése az Azure-ba.
+title: Fő Virtuális merevlemez-lemezkép előkészítése és testreszabása – Azure
+description: Windows virtuális asztal főlemezképének előkészítése, testreszabása és feltöltése az Azure-ba.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,41 +9,41 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 867b327ac25d51cd3955e622da9d8067ae6d9ae9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127726"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
-Ebből a cikkből megtudhatja, hogyan készítse elő a fő virtuális merevlemez (VHD) lemezképét az Azure-ba való feltöltéshez, beleértve a virtuális gépek (VM-EK) létrehozását és a szoftverek telepítését. Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
+Ebből a cikkből megtudhatja, hogyan készíthet elő egy fő virtuális merevlemez-lemez (VHD) lemezképet az Azure-ba való feltöltéshez, beleértve a virtuális gépek (VM-ek) létrehozását és a szoftverek telepítését. Ezek az utasítások a Windows virtuális asztal-specifikus konfiguráció, amely használható a szervezet meglévő folyamatok.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-A Windows 10 Enterprise multi-session szolgáltatás elérhető az Azure rendszerkép-katalógusában. A rendszerkép testreszabására két lehetőség áll rendelkezésre.
+A Windows 10 Enterprise többmunkamenetes munkamenet az Azure Képtárban érhető el. A kép testreszabására két lehetőség van.
 
-Az első lehetőség egy virtuális gép (VM) üzembe helyezése az Azure-ban a virtuális gépek [felügyelt rendszerképből való létrehozása](../virtual-machines/windows/create-vm-generalized-managed.md)című témakör útmutatásai alapján, majd a [szoftver előkészítése és telepítése](set-up-customize-master-image.md#software-preparation-and-installation)előtt ugorjon.
+Az első lehetőség egy virtuális gép (VM) kiépítése az Azure-ban a [Virtuális gép létrehozása felügyelt lemezképből](../virtual-machines/windows/create-vm-generalized-managed.md)című útmutató utasításait követve, majd ugorjon előre a Szoftver előkészítése és telepítése című [területre.](set-up-customize-master-image.md#software-preparation-and-installation)
 
-A második lehetőség a rendszerkép helyi létrehozása a rendszerkép letöltésével, egy Hyper-V virtuális gép üzembe helyezésével és az igényeinek megfelelő testreszabásával, amelyet a következő szakaszban talál.
+A második lehetőség az, hogy a lemezkép helyi létrehozásához a lemezkép letöltésével, egy Hyper-V virtuális gép kiépítésével és az igényeinek megfelelőtestreszabással, amelyet a következő szakaszban fedünk le.
 
-### <a name="local-image-creation"></a>Helyi rendszerkép létrehozása
+### <a name="local-image-creation"></a>Helyi kép létrehozása
 
-Miután letöltötte a rendszerképet egy helyi helyre, nyissa meg a **Hyper-V kezelőjét** , és hozzon létre egy virtuális gépet a másolt VHD-vel. Az alábbi utasítások egyszerűek, de részletesebb útmutatást talál a [virtuális gép Hyper-V-ben történő létrehozásához](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/).
+Miután letöltötte a lemezképet egy helyi helyre, nyissa meg a **Hyper-V Manager** t, és hozzon létre egy virtuális gép a virtuális merevlemezt másolt. A következő utasítások egy egyszerű verzió, de talál részletesebb utasításokat [Hozzon létre egy virtuális gép Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/).
 
-Virtuális gép létrehozása a másolt VHD-vel:
+Virtuális gép létrehozása a másolt virtuális merevlemezt:
 
-1. Nyissa meg az **új virtuális gép varázslót**.
+1. Nyissa meg az **Új virtuális gép varázslót**.
 
-2. A generáció megadása lapon válassza az **1. generáció**lehetőséget.
+2. A Létrehozás megadása lapon válassza az **1.**
 
-    ![Képernyőkép a létrehozási lap megadásáról. Az "1. generáció" beállítás van kiválasztva.](media/a41174fd41302a181e46385e1e701975.png)
+    ![Képernyőkép a Létrehozás megadása lapról. A "Generation 1" opció van kiválasztva.](media/a41174fd41302a181e46385e1e701975.png)
 
-3. Az ellenőrzőpont típusa területen tiltsa le az ellenőrzőpontokat a jelölőnégyzet bejelölésének törlésével.
+3. Az Ellenőrzőpont típusa csoportban tiltsa le az ellenőrzőpontokat a jelölőnégyzet bejelölésének kijelölésével.
 
-    ![Az ellenőrzőpontok lap ellenőrzőpont-típus szakaszának képernyőképe.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    ![Képernyőkép az Ellenőrzőpontok lap Ellenőrzőpont-típus szakaszáról.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
-Az ellenőrzőpontok letiltásához a PowerShellben a következő parancsmagot is futtathatja.
+A powershellben a következő parancsmag futtatásával is letilthatja az ellenőrzőpontokat.
 
 ```powershell
 Set-VM -Name <VMNAME> -CheckpointType Disabled
@@ -51,54 +51,54 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Rögzített lemez
 
-Ha meglévő virtuális merevlemezről hoz létre virtuális gépet, alapértelmezés szerint dinamikus lemezt hoz létre. A rögzített lemezre a **lemez szerkesztése...** lehetőség kiválasztásával módosítható, ahogy az alábbi képen is látható. Részletesebb útmutatásért lásd: [Windows VHD vagy VHDX előkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)-ba való feltöltéshez.
+Ha virtuális gép egy meglévő virtuális merevlemezről hoz létre, alapértelmezés szerint dinamikus lemezt hoz létre. A **Lemez szerkesztése lehetőség** kiválasztásával rögzített lemezre módosítható, ahogy az az alábbi képen látható. További részletes útmutatást a [Windows VHD vagy VHDX feltöltésének előkészítése az Azure-ba című témakörben talál.](../virtual-machines/windows/prepare-for-upload-vhd-image.md)
 
-![Képernyőkép a lemez szerkesztése lehetőségről.](media/35772414b5a0f81f06f54065561d1414.png)
+![Képernyőkép a Lemez szerkesztése beállításról.](media/35772414b5a0f81f06f54065561d1414.png)
 
-A következő PowerShell-parancsmag futtatásával is megváltoztathatja a lemezt egy rögzített lemezre.
+A következő PowerShell-parancsmag futtatásával is módosíthatja a lemezt rögzített lemezre.
 
 ```powershell
 Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
-## <a name="software-preparation-and-installation"></a>Szoftverek előkészítése és telepítése
+## <a name="software-preparation-and-installation"></a>Szoftver előkészítése és telepítése
 
-Ez a szakasz a FSLogix és a Windows Defender előkészítését és telepítését, valamint az alkalmazások és a rendszerkép beállításjegyzékének alapszintű konfigurációs beállításait ismerteti. 
+Ez a rész az FSLogix és a Windows Defender előkészítését és telepítését, valamint az alkalmazások és a lemezkép beállításjegyzékének néhány alapvető beállítási beállítását ismerteti. 
 
-Ha az Office 365 ProPlus és a OneDrive-et telepíti a virtuális gépre, lépjen az [Office telepítése fő VHD-lemezképre](install-office-on-wvd-master-image.md) , és kövesse az itt található utasításokat az alkalmazások telepítéséhez. Ha elkészült, térjen vissza ehhez a cikkhez.
+Ha az Office 365 ProPlust és a OneDrive-ot telepíti a virtuális gépére, nyissa meg [az Office telepítése fő virtuális merevlemez-lemezképre](install-office-on-wvd-master-image.md) című témakört, és kövesse az utasításokat az alkalmazások telepítéséhez. Miután végzett, térjen vissza ehhez a cikkhez.
 
-Ha a felhasználóknak hozzá kell férniük bizonyos LOB-alkalmazásokhoz, javasoljuk, hogy a szakasz utasításainak elvégzése után telepítse őket.
+Ha a felhasználóknak bizonyos üzletági alkalmazásokhoz kell hozzáférniük, javasoljuk, hogy telepítse őket a szakasz utasításainak elvégzése után.
 
-### <a name="set-up-user-profile-container-fslogix"></a>Felhasználói profil tárolójának (FSLogix) beállítása
+### <a name="set-up-user-profile-container-fslogix"></a>Felhasználói profiltároló beállítása (FSLogix)
 
-Ha a FSLogix-tárolót a rendszerkép részeként szeretné felvenni, kövesse a következő témakör utasításait: [create a profile Container for an Host Pool with a file share (fájlmegosztás használatával](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)). [Ezzel](/fslogix/configure-cloud-cache-tutorial/)a rövid útmutatóval ellenőrizheti a FSLogix tároló funkcióit.
+Ha az FSLogix-tárolót a lemezkép részeként szeretné használni, kövesse a [Profiltároló létrehozása fájlmegosztással](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)című útmutató utasításait. Ezzel a [rövid útmutatóval](/fslogix/configure-cloud-cache-tutorial/)tesztelheti az FSLogix tároló működését.
 
 ### <a name="configure-windows-defender"></a>A Windows Defender konfigurálása
 
-Ha a Windows Defender konfigurálva van a virtuális gépen, győződjön meg arról, hogy az úgy van beállítva, hogy ne ellenőrizze a VHD-és VHDX-fájlok teljes tartalmát a mellékletben.
+Ha a Windows Defender konfigurálva van a virtuális gépben, győződjön meg arról, hogy úgy van beállítva, hogy a melléklet során ne ellenőrizze a VHD és a VHDX-fájlok teljes tartalmát.
 
-Ez a konfiguráció csak a VHD-és a VHDX-fájlok vizsgálatát távolítja el a mellékletben, de nem befolyásolja a valós idejű vizsgálatokat.
+Ez a konfiguráció csak eltávolítja a VHD és VHDX fájlok beolvasását a melléklet során, de nem befolyásolja a valós idejű beolvasást.
 
-A Windows Defender Windows Serveren történő konfigurálásával kapcsolatos további információkért lásd: [Windows Defender víruskereső-kizárások konfigurálása Windows Serveren](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/).
+A Windows Defender Windows Server rendszeren való konfigurálásáról a [Windows Defender víruskizárások konfigurálása Windows Server rendszeren](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/)című témakörben talál további tudnivalókat.
 
-Ha többet szeretne megtudni arról, hogyan konfigurálhatja a Windows Defendert bizonyos fájlok vizsgálatból való kizárására, tekintse [meg a kizárások konfigurálása és ellenőrzése a fájlkiterjesztés és a mappa helye alapján](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/)című témakört.
+Ha többet szeretne tudni arról, hogy miként állíthatja be a Windows Defender programot bizonyos fájlok vizsgálatból való kizárására, olvassa el a [Kizárások konfigurálása és érvényesítése fájlkiterjesztés és mappahely alapján című témakört.](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/)
 
 ### <a name="disable-automatic-updates"></a>Automatikus frissítések letiltása
 
-Az automatikus frissítések letiltása helyi Csoportházirend használatával:
+Az automatikus frissítések letiltása a helyi csoportházirenden keresztül:
 
-1. Nyissa meg **Helyicsoportházirend-szerkesztő\\Felügyeleti sablonok\\Windows-összetevőket\\Windows Update**.
-2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le a Letiltva**értékre.
+1. Nyissa **meg a\\Helyi\\csoportházirend-szerkesztő felügyeleti sablonjait Windows-összetevők\\A Windows Update**.
+2. Kattintson a jobb gombbal **az Automatikus frissítés konfigurálása** elemre, és állítsa **letiltva**értékre.
 
-A parancssorban a következő parancsot is futtathatja az automatikus frissítések letiltásához.
+A következő parancsot parancssorban is futtathatja az Automatikus frissítések szolgáltatás letiltásához.
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
-### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Windows 10 rendszerű számítógépek indítási elrendezésének megadása (nem kötelező)
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>A Windows 10 rendszerű számítógépek startelrendezésének megadása (nem kötelező)
 
-Futtassa ezt a parancsot a Windows 10 rendszerű számítógépek indítási elrendezésének megadásához.
+A parancs futtatásával adja meg a Windows 10 rendszerű számítógépek start elrendezését.
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
@@ -106,62 +106,62 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 
 ### <a name="set-up-time-zone-redirection"></a>Időzóna-átirányítás beállítása
 
-Az időzóna átirányítása Csoportházirend szinten kényszeríthető, mivel a gazdagépen lévő összes virtuális gép ugyanahhoz a biztonsági csoporthoz tartozik.
+Az időzóna-átirányítás csoportházirend-szinten kényszeríthető, mivel az állomáskészlet ben lévő összes virtuális gép ugyanannak a biztonsági csoportnak a része.
 
-Időzónák átirányítása:
+Az időzónák átirányítása:
 
-1. A Active Directory-kiszolgálón nyissa meg a **csoportházirend-kezelő konzol**.
-2. Bontsa ki a tartományt és Csoportházirend objektumokat.
-3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend objektumra** , és válassza a **Szerkesztés**lehetőséget.
-4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **Számítógép konfigurációja** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **eszköz-és erőforrás-átirányítás**.
-5. Engedélyezze az **időzóna-átirányítás engedélyezése** beállítást.
+1. Az Active Directory-kiszolgálón nyissa meg a **Csoportházirend kezelése konzolt**.
+2. Bontsa ki a tartományt és a csoportházirend-objektumokat.
+3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend-objektumra,** és válassza a **Szerkesztés parancsot.**
+4. A **Csoportházirend kezelése szerkesztőben**keresse meg a **Számítógép-konfigurációs** > **házirendek** > **felügyeleti sablonok** > **A Windows-összetevők** > távoli asztali**szolgáltatások** > **távoli asztali munkamenetgazda-eszköz** > és**erőforrás-átirányítás című lapban.**
+5. Engedélyezze az **Időzóna átirányításának engedélyezése** beállítást.
 
-Ezt a parancsot a fő lemezképen is futtathatja az időzónák átirányításához:
+Ezt a parancsot a főlemezképen is futtathatja az időzónák átirányításához:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
-### <a name="disable-storage-sense"></a>Tárolási értelem letiltása
+### <a name="disable-storage-sense"></a>Tárolósegéd letiltása
 
-A Windows 10 Enterprise vagy a Windows 10 Enterprise multi-session hostt használó Windowsos virtuális asztali munkamenetgazda esetében ajánlott letiltani a tárterületet. Az alábbi képernyőképen látható beállítások menüben letilthatja **a tárolási**érzékelést:
+A Windows 10 Enterprise vagy a Windows 10 Enterprise többmunkamenetes munkamenetet használó Windows Virtual Desktop munkamenet-gazdagépek esetében javasoljuk a Tárolósegéd letiltását. A Tárolás segédet a Tárolás menüBen **letilthatja,** ahogy az az alábbi képernyőképen látható:
 
-![Képernyőfelvétel a beállítások területen a tárolási menüről. A "tárolási értelem" beállítás ki van kapcsolva.](media/storagesense.png)
+![Képernyőkép a Tárolás menü beállítások csoportban. A "Tárolási értelem" beállítás ki van kapcsolva.](media/storagesense.png)
 
-A beállítást a beállításjegyzékben a következő parancs futtatásával is módosíthatja:
+A beállításjegyzékben a következő parancs futtatásával is módosíthatja a beállítást:
 
 ```batch
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
-### <a name="include-additional-language-support"></a>További nyelvi támogatás
+### <a name="include-additional-language-support"></a>További nyelvi támogatás felvétele
 
-Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információkért tekintse át a következő cikkeket:
+Ez a cikk nem ismerteti a nyelvi és regionális támogatás konfigurálását. További információkért tekintse át a következő cikkeket:
 
 - [Nyelvek hozzáadása Windows-lemezképekhez](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
-- [Igény szerinti szolgáltatások](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
-- [Igény szerinti nyelvi és területi funkciók (Franciaország)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
+- [Igény szerinti funkciók](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [Igény szerinti nyelvi és régiói funkciók (FOD)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>Egyéb alkalmazások és beállításjegyzék-konfiguráció
 
-Ez a szakasz az alkalmazások és az operációs rendszer konfigurálását ismerteti. Az ebben a szakaszban található összes konfiguráció a parancssori és a regedit-eszközök által végrehajtható beállításjegyzék-bejegyzéseken keresztül történik.
+Ez a szakasz az alkalmazás és az operációs rendszer konfigurációját ismerteti. Ebben a szakaszban minden konfiguráció a parancssori és regedit eszközökkel végrehajtható rendszerleíró bejegyzéseken keresztül történik.
 
 >[!NOTE]
->A Csoportházirend objektumok (GPO-k) vagy a beállításjegyzék-importálások konfigurálásához ajánlott eljárásokat alkalmazhat. A rendszergazda bármelyik lehetőséget kiválaszthatja a szervezet követelményei alapján.
+>A csoportházirend-objektumok (GSO-k) vagy a rendszerleíró adatbázis importálásával a konfigurációban gyakorlati tanácsokat valósíthat meg. A rendszergazda a szervezet követelményei alapján választhat.
 
-A Windows 10 Enterprise multi-session telemetria-alapú adatvisszajelzési központ esetén futtassa ezt a parancsot:
+A visszajelzési központ telemetriai adatok gyűjtéséhez a Windows 10 Enterprise többmunkamenetes munkamenetén futtassa ezt a parancsot:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
-Futtassa a következő parancsot a Watson-összeomlások kijavításához:
+A Watson-összeomlások javításához futtassa a következő parancsot:
 
 ```batch
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
-Adja meg a következő parancsokat a Rendszerleíróadatbázis-szerkesztőben az 5k-feloldás támogatásának javításához. A párhuzamos verem engedélyezése előtt futtatnia kell a parancsokat.
+Írja be a következő parancsokat a rendszerleíró adatbázis szerkesztőjében az 5k felbontás támogatásának javításához. Az egymás melletti verem engedélyezése előtt futtatnia kell a parancsokat.
 
 ```batch
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
@@ -173,38 +173,38 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxYResolution /t REG_DWORD /d 2880 /f
 ```
 
-## <a name="prepare-the-image-for-upload-to-azure"></a>A rendszerkép előkészítése az Azure-ba való feltöltésre
+## <a name="prepare-the-image-for-upload-to-azure"></a>A kép előkészítése az Azure-ba való feltöltéshez
 
-Miután befejezte a konfigurálást, és telepítette az összes alkalmazást, kövesse a [Windows VHD vagy VHDX előkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) -ba való feltöltéséhez című témakör utasításait a rendszerkép előkészítéséhez.
+Miután befejezte a konfigurációt, és telepítette az összes alkalmazást, kövesse a [Windows vhd vagy VHDX előkészítése az Azure-ba a](../virtual-machines/windows/prepare-for-upload-vhd-image.md) lemezkép előkészítéséhez című, Windows VHD vagy VHDX alkalmazás előkészítése című útmutató utasításait.
 
-A rendszerkép feltöltésre való előkészítése után győződjön meg arról, hogy a virtuális gép ki van kapcsolva vagy fel van foglalva.
+A rendszerkép feltöltésre való előkészítése után győződjön meg arról, hogy a virtuális gép kikapcsolt vagy felszabadított állapotban marad.
 
-## <a name="upload-master-image-to-a-storage-account-in-azure"></a>Fő rendszerkép feltöltése egy Azure-beli Storage-fiókba
+## <a name="upload-master-image-to-a-storage-account-in-azure"></a>Fő lemezkép feltöltése tárfiókba az Azure-ban
 
-Ez a szakasz csak akkor érvényes, ha a fő lemezképet helyileg hozták létre.
+Ez a szakasz csak akkor érvényes, ha a főlemezkép helyileg lett létrehozva.
 
-Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezképet egy Azure Storage-fiókba. Ha még nem rendelkezik Azure Storage-fiókkal, akkor a [cikk](/azure/javascript/tutorial-vscode-static-website-node-03) utasításait követve hozzon létre egyet.
+A következő utasítások ismertetik, hogyan töltheti fel a fő lemezképet egy Azure-tárfiókba. Ha még nem rendelkezik Azure-tárfiókkal, kövesse az ebben a [cikkben](/azure/javascript/tutorial-vscode-static-website-node-03) található utasításokat, hogy hozzon létre egyet.
 
-1. Ha még nem tette meg, alakítsa át a virtuális gép rendszerképét (VHD). Ha nem alakítja át a képet Rögzítettre, nem tudja sikeresen létrehozni a rendszerképet.
+1. Konvertálja a virtuális gép képét (VHD) Rögzített, ha még nem tette meg. Ha nem konvertálja a képet Rögzített re, nem tudja sikeresen létrehozni a képet.
 
-2. Töltse fel a VHD-t egy blob-tárolóba a Storage-fiókjában. Gyorsan feltöltheti az [Storage Explorer eszközzel](https://azure.microsoft.com/features/storage-explorer/). Ha többet szeretne megtudni a Storage Explorer eszközről, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+2. Töltse fel a virtuális merevlemezt egy blobtárolóba a tárfiókban. A Storage Explorer eszközzel gyorsan feltöltheti a [fájlokat.](https://azure.microsoft.com/features/storage-explorer/) A Tárolókezelő eszközről a [cikkben olvashat bővebben.](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
 
-    ![A Microsoft Azure Storage Explorer eszköz keresési ablakának képernyőképe. A "feltöltés. vhd vagy vhdx fájlok blobként (ajánlott)" jelölőnégyzet be van jelölve.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    ![Képernyőkép a Microsoft Azure Storage Explorer eszköz keresési ablakáról. A ".vhd vagy vhdx fájlok feltöltése lapblobként (ajánlott)" jelölőnégyzet be van jelölve.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
-3. Ezután nyissa meg a böngészőben a Azure Portalt, és keressen rá a "képek" kifejezésre. A keresésnek a **rendszerkép létrehozása** lapra kell mutatnia, ahogy az alábbi képernyőképen is látható:
+3. Ezután nyissa meg az Azure Portalt a böngészőben, és keressen a "Képek" kifejezésre. A keresésnek a Kép létrehozása laphoz kell **vezetnie,** ahogy az a következő képernyőképen látható:
 
-    ![A Azure Portal rendszerkép létrehozása oldalának képernyőképe, amely a képen látható értékekkel lett kitöltve.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    ![Az Azure Portal Kép létrehozása lapjáról képernyőkép, amely a lemezkép példaértékeivel van kitöltve.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
-4. Miután létrehozta a rendszerképet, a következő képernyőképen láthatóhoz hasonló értesítést kell látnia:
+4. Miután létrehozta a képet, a következő képernyőképen láthatóhoz hasonló értesítést kell látnia:
 
-    ![A "rendszerkép létrehozása sikeres" értesítés képernyőképe.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    ![Képernyőkép a "sikeresen létrehozott kép" értesítésről.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy már rendelkezik rendszerképtel, létrehozhat vagy frissíthet gazdagép-készleteket. A gazdagép-készletek létrehozásával és frissítésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Most, hogy rendelkezik egy lemezképpel, létrehozhat vagy frissíthet gazdakészleteket. A gazdakészletek létrehozásáról és frissítéséről az alábbi cikkekben olvashat bővebben:
 
-- [Gazdagép létrehozása Azure Resource Manager sablonnal](create-host-pools-arm-template.md)
-- [Oktatóanyag: állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md)
-- [Gazdagép létrehozása a PowerShell-lel](create-host-pools-powershell.md)
-- [Profil tároló létrehozása a gazdagéphez fájlmegosztás használatával](create-host-pools-user-profile.md)
-- [A Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása](configure-host-pool-load-balancing.md)
+- [Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal](create-host-pools-arm-template.md)
+- [Oktatóanyag: Gazdagépkészlet létrehozása az Azure Piactérrel](create-host-pools-azure-marketplace.md)
+- [Gazdagépcsoport létrehozása a PowerShell-lel](create-host-pools-powershell.md)
+- [Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával](create-host-pools-user-profile.md)
+- [A Windows Virtual Desktop terheléselosztási módjának beállítása](configure-host-pool-load-balancing.md)

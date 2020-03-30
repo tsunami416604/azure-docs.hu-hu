@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault-Azure Key Vault virtuális hálózati szolgáltatásbeli végpontok | Microsoft Docs
-description: A Key Vault virtuális hálózati szolgáltatási végpontjának áttekintése
+title: Virtuális hálózati szolgáltatás végpontjai az Azure Key Vaulthoz – Azure Key Vault | Microsoft dokumentumok
+description: A Key Vault virtuális hálózati szolgáltatásvégpontjainak áttekintése
 services: key-vault
 author: amitbapat
 ms.author: ambapat
@@ -9,76 +9,76 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 47dc1a84fbc80925e5b65db8c03683f9f026271b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2d7ea5618f4c0e8b6d348ea6c34127492b3e1096
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194988"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457406"
 ---
-# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
+# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai az Azure Key Vaulthoz
 
-A Azure Key Vault Virtual Network szolgáltatásbeli végpontok lehetővé teszik, hogy korlátozza a hozzáférést egy adott virtuális hálózathoz. A végpontok azt is lehetővé teszik, hogy korlátozza a hozzáférést az IPv4 (Internet Protocol Version 4)-címtartományok listájához. A Key vaulthoz a forrásokon kívülről csatlakozó felhasználók hozzáférése megtagadva.
+Az Azure Key Vault virtuális hálózati szolgáltatásvégpontjai lehetővé teszik a hozzáférés korlátozását egy adott virtuális hálózathoz. A végpontok azt is lehetővé teszik, hogy korlátozza a hozzáférést az IPv4 (internet protokoll 4-es verzió) címtartományok listájához. A kulcstartóhoz ezeken a forrásokon kívülről csatlakozó felhasználók számára a rendszer megtagadja a hozzáférést.
 
-Erre a korlátozásra vonatkozóan van egy fontos kivétel. Ha egy felhasználó engedélyezte a megbízható Microsoft-szolgáltatások engedélyezését, a szolgáltatással létesített kapcsolatok a tűzfalon keresztül érhetők el. Ilyen szolgáltatások például az Office 365 Exchange Online, az Office 365 SharePoint Online, az Azure számítás, a Azure Resource Manager és a Azure Backup. Az ilyen felhasználóknak továbbra is érvényes Azure Active Directory jogkivonatot kell tartalmazniuk, és a kért művelet végrehajtásához engedélyekkel kell rendelkezniük (hozzáférési házirendként konfigurálva). További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
+Van egy fontos kivétel ez alól a korlátozás alól. Ha egy felhasználó engedélyezte a megbízható Microsoft-szolgáltatások engedélyezését, az ilyen szolgáltatásokból származó kapcsolatok átjutnak a tűzfalon. Ezek a szolgáltatások közé tartozik például az Office 365 Exchange Online, az Office 365 SharePoint Online, az Azure compute, az Azure Resource Manager és az Azure Backup. Ezeka felhasználók továbbra is be kell mutatniuk egy érvényes Azure Active Directory-jogkivonatot, és rendelkezniük kell engedélyekkel (hozzáférési szabályzatként konfigurálva) a kért művelet végrehajtásához. További információ: [Virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="usage-scenarios"></a>Használati forgatókönyvek
 
-A [Key Vault tűzfalak és virtuális hálózatok](key-vault-network-security.md) konfigurálásával megtagadhatja az adatforgalom elérését az összes hálózatról (beleértve az internetes forgalmat is), alapértelmezés szerint. Hozzáférést biztosíthat bizonyos Azure-beli virtuális hálózatokból és nyilvános internetes IP-címtartományok érkező adatforgalomhoz, így biztonságos hálózati határt hozhat létre az alkalmazásai számára.
+Beállíthatja, hogy [a Key Vault tűzfalak és a virtuális hálózatok](key-vault-network-security.md) alapértelmezés szerint megtagadják a hozzáférést az összes hálózatról (beleértve az internetes forgalmat is). Hozzáférést biztosíthat az adott Azure virtuális hálózatokból és nyilvános internetes IP-címtartományokból származó forgalomhoz, lehetővé téve, hogy biztonságos hálózati határt hozzon létre az alkalmazások számára.
 
 > [!NOTE]
-> Key Vault tűzfalak és virtuális hálózati szabályok csak Key Vault [adatsíkon](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) érvényesek. A tűzfalak és a virtuális hálózati szabályok nem érintik a vezérlési sík műveleteit (például a létrehozási, törlési és módosítási műveletek, a hozzáférési házirendek beállítása, a tűzfalak beállítása és a virtuális hálózati szabályok). Key Vault
+> A Key Vault tűzfalai és a virtuális hálózati szabályok csak a Key Vault [adatsíkjára](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) vonatkoznak. A Key Vault vezérlősíkműveleteit (például a műveletek létrehozása, törlése és módosítása, a hozzáférési házirendek beállítása, a tűzfalak és a virtuális hálózati szabályok) nem érintik a tűzfalak és a virtuális hálózati szabályok.
 
-Íme néhány példa a szolgáltatási végpontok használatára:
+Íme néhány példa a szolgáltatásvégpontok használatára:
 
-* A Key Vault használatával tárolja a titkosítási kulcsokat, az alkalmazási titkokat és a tanúsítványokat, és le szeretné tiltani a Key vaulthoz való hozzáférést a nyilvános internetről.
-* Le szeretné zárni a kulcstartóhoz való hozzáférést, hogy csak az alkalmazása vagy a kijelölt gazdagépek rövid listája csatlakozhasson a kulcstartóhoz.
-* Rendelkezik egy, az Azure-beli virtuális hálózaton futó alkalmazással, és ez a virtuális hálózat le van zárva az összes bejövő és kimenő forgalom esetében. Az alkalmazásnak továbbra is csatlakoznia kell Key Vaulthoz a titkok vagy tanúsítványok lekéréséhez, vagy titkosítási kulcsokat kell használnia.
+* A Key Vault segítségével tárolja a titkosítási kulcsokat, alkalmazástitkokat és tanúsítványokat, és le szeretné tiltani a hozzáférést a kulcstartóhoz a nyilvános internetről.
+* Azt szeretné, hogy a kulcstartóhoz való hozzáférés zárolása, hogy csak az alkalmazás, vagy egy rövid listát a kijelölt gazdagépek, csatlakozhat a key vault.
+* Van egy alkalmazás fut az Azure virtuális hálózatban, és ez a virtuális hálózat zárolva van az összes bejövő és kimenő forgalom. Az alkalmazásnak továbbra is csatlakoznia kell a Key Vaulthoz titkos kulcsok vagy tanúsítványok lekéréséhez, vagy kriptográfiai kulcsok használatához.
 
-## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>Key Vault tűzfalak és virtuális hálózatok konfigurálása
+## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>Key Vault-tűzfalak és virtuális hálózatok konfigurálása
 
-A következő lépések szükségesek a tűzfalak és a virtuális hálózatok konfigurálásához. Ezek a lépések a PowerShell, az Azure CLI vagy a Azure Portal használata esetén érvényesek.
+A tűzfalak és a virtuális hálózatok konfigurálásához szükséges lépések az alábbiakban találhatók. Ezek a lépések a PowerShell, az Azure CLI vagy az Azure Portal használatával.
 
-1. [Key Vault naplózás](key-vault-logging.md) engedélyezése a részletes hozzáférési naplók megtekintéséhez. Ez segít a diagnosztikaben, ha a tűzfalak és a virtuális hálózati szabályok megakadályozzák a hozzáférést a kulcstartóhoz. (Ez a lépés nem kötelező, de kifejezetten ajánlott.)
-2. A **Key Vault szolgáltatási végpontjának** engedélyezése célként megadott virtuális hálózatokhoz és alhálózatokhoz.
-3. Egy kulcstartóhoz tartozó tűzfalak és virtuális hálózati szabályok beállításával korlátozhatja a kulcstartóhoz való hozzáférést adott virtuális hálózatokból, alhálózatokból és IPv4-címtartományokből.
-4. Ha a kulcstartónak bármely megbízható Microsoft-szolgáltatás számára elérhetőnek kell lennie, engedélyezze a **megbízható Azure-szolgáltatások** Key Vaulthoz való kapcsolódásának lehetőségét.
+1. Engedélyezze [a Key Vault naplózását](key-vault-logging.md) a részletes hozzáférési naplók megtekintéséhez. Ez segít a diagnosztika, amikor a tűzfalak és a virtuális hálózati szabályok megakadályozzák a hozzáférést a key vault. (Ez a lépés nem kötelező, de erősen ajánlott.)
+2. A célvirtuális hálózatok és alhálózatok **szolgáltatásvégpontjainak** engedélyezése a kulcstárolóhoz.
+3. Állítson be tűzfalakat és virtuális hálózati szabályokat a kulcstartóhoz, hogy korlátozza a hozzáférést az adott kulcstartóhoz adott virtuális hálózatokról, alhálózatokról és IPv4-címtartományokból.
+4. Ha ezt a kulcstartót bármely megbízható Microsoft-szolgáltatás nak elérhetővé kell tennie, engedélyezze, hogy a **Trusted Azure Services** csatlakozzon a Key Vaulthoz.
 
-További információ: [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](key-vault-network-security.md).
+További információ: [Az Azure Key Vault tűzfalainak és virtuális hálózatainak konfigurálása.](key-vault-network-security.md)
 
 > [!IMPORTANT]
-> A tűzfalszabályok érvénybe léptetése után a felhasználók csak akkor hajthatják végre Key Vault [adatsík](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) -műveleteket, ha a kérésük engedélyezett virtuális hálózatokból vagy IPv4-címtartományok származnak. Ez a Azure Portal Key Vault elérésére is vonatkozik. Bár a felhasználók megkereshetik a kulcstartót a Azure Portalból, előfordulhat, hogy nem tudják listázni a kulcsokat, titkokat vagy tanúsítványokat, ha az ügyfélszámítógépük nem szerepel az engedélyezési listán. Ez hatással van a más Azure-szolgáltatások Key Vault választóra is. Előfordulhat, hogy a felhasználók megtekinthetik a kulcstárolók listáját, de nem listázják a kulcsokat, ha a tűzfalszabályok megakadályozzák az ügyfélszoftvert.
+> A tűzfalszabályok érvénybe lépése után a felhasználók csak akkor hajthatnak végre Key [Vault-adatsík-műveleteket,](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) ha a kéréseik engedélyezett virtuális hálózatokból vagy IPv4-címtartományokból származnak. Ez az Azure Portalról való key vault elérésére is vonatkozik. Bár a felhasználók az Azure Portalról is megkereshetik a kulcstartót, előfordulhat, hogy nem tudják felsorolni a kulcsokat, titkos kulcsokat vagy tanúsítványokat, ha az ügyfélgépük nem szerepel az engedélyezett listában. Ez hatással van a Key Vault-választó más Azure-szolgáltatások által. Előfordulhat, hogy a felhasználók láthatják a kulcstartók listáját, de a kulcsokat nem, ha a tűzfalszabályok megakadályozzák az ügyfélgépüket.
 
 
 > [!NOTE]
-> Vegye figyelembe a következő konfigurációs korlátozásokat:
+> Ne feledje, hogy a következő konfigurációs korlátozások:
 > * Legfeljebb 127 virtuális hálózati szabály és 127 IPv4-szabály engedélyezett. 
-> * A "/31" vagy "/32" előtagot használó kisméretű címtartományok nem támogatottak. Ehelyett konfigurálja ezeket a tartományokat az egyes IP-címek szabályainak használatával.
-> * Az IP-hálózati szabályok csak nyilvános IP-címek esetén engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az RFC 1918-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózatok közé tartoznak a következők: **10.** , **172.16-31**és **192,168.** 
-> * Jelenleg csak IPv4-címek támogatottak.
+> * A "/31" vagy "/32" előtagméretet használó kis címtartományok nem támogatottak. Ehelyett konfigurálja ezeket a tartományokat egyedi IP-címszabályok használatával.
+> * Az IP-hálózati szabályok csak nyilvános IP-címek esetén engedélyezettek. A magánhálózatok számára fenntartott (az 1918-as rfc-ben meghatározott) IP-címtartományok nem engedélyezettek az IP-szabályokban. A magánhálózatok **10.** **172.16-31** **192.168.** 
+> * Jelenleg csak az IPv4-címek támogatottak.
 
 ## <a name="trusted-services"></a>Megbízható szolgáltatások
 
-Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hozzáférhetnek a kulcstartóhoz, ha engedélyezve van a **megbízható szolgáltatások engedélyezése** beállítás.
+Az alábbiakban azokat a megbízható szolgáltatásokat listázhatja, amelyek hozzáférhetnek a kulcstartóhoz, ha a **Megbízható szolgáltatások engedélyezése** beállítás engedélyezve van.
 
 |Megbízható szolgáltatás|Támogatott használati forgatókönyvek|
 | --- | --- |
-|Azure Virtual Machines üzembe helyezési szolgáltatás|[Tanúsítványokat telepíthet az ügyfél által felügyelt Key Vault virtuális gépekre](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
-|Azure Resource Manager sablon központi telepítési szolgáltatása|[Biztonságos értékek továbbítása az üzembe helyezés során](../azure-resource-manager/templates/key-vault-parameter.md).|
-|Azure Disk Encryption mennyiségi titkosítási szolgáltatás|Hozzáférés engedélyezése a BitLocker-kulcshoz (Windows VM) vagy DM-jelszóhoz (Linux virtuális gép) és a kulcs titkosítási kulcsához a virtuális gépek telepítése során. Ez lehetővé teszi a [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).|
-|Azure Backup|A megfelelő kulcsok és titkok biztonsági mentésének és helyreállításának engedélyezése az Azure Virtual Machines Backup szolgáltatásban [Azure Backup](../backup/backup-introduction-to-azure-backup.md)használatával.|
-|Exchange Online & SharePoint Online-ban|Hozzáférés engedélyezése az Azure Storage Service Encryptionhoz az [ügyfél kulcsával](/microsoft-365/compliance/customer-key-overview).|
-|Azure Information Protection|A bérlői kulcs elérésének engedélyezése [Azure Information Protection számára.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
-|Azure App Service|[Azure webalkalmazás-tanúsítvány üzembe helyezése Key Vault használatával](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL Database|[Transzparens adattitkosítás a Azure SQL Database és az adattárház bring your own Key támogatásával](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
-|Azure Storage|[Storage Service encryption az ügyfél által felügyelt kulcsokat Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
-|Azure Data Lake Store|A [Azure Data Lake Storeban lévő adattitkosítás](../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|
-|Azure Databricks|[Gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás](../azure-databricks/what-is-azure-databricks.md)|
-|Azure API Management|[Egyéni tartomány tanúsítványainak központi telepítése Key Vault az MSI használatával](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
-|Azure Data Factory|[Adattároló hitelesítő adatainak beolvasása a Key Vault Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
-|Azure Event Hubs|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
-|Azure Service Bus|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
-
+|Az Azure virtuális gépek telepítési szolgáltatása|[Tanúsítványok üzembe helyezése virtuális gépekre az ügyfél által felügyelt Key Vaultból.](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)|
+|Az Azure Resource Manager sablontelepítési szolgáltatása|[Biztonságos értékek et ad át az üzembe helyezés során.](../azure-resource-manager/templates/key-vault-parameter.md)|
+|Az Azure Disk Encryption kötettitkosítási szolgáltatása|A bitlockerkulcshoz (Windows VM) vagy a DM-jelszóhoz (Linux virtuális gép) és a kulcstitkosítási kulcshoz való hozzáférés engedélyezése a virtuális gép üzembe helyezése során. Ez lehetővé teszi [az Azure Disk Encryption](../security/fundamentals/encryption-overview.md).|
+|Azure Backup|Az [Azure](../backup/backup-introduction-to-azure-backup.md)Backup segítségével engedélyezheti a biztonsági mentést és a megfelelő kulcsok és titkos kulcsok visszaállítását az Azure Virtuális gépek biztonsági mentése során.|
+|Exchange Online & SharePoint Online|Hozzáférés engedélyezése az ügyfélkulcshoz az Azure Storage Service Encryption [számára ügyfélkulccsal.](/microsoft-365/compliance/customer-key-overview)|
+|Azure Information Protection|Az Azure Information Protection bérlői kulcshoz való hozzáférés [engedélyezése.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
+|Azure App Service|[Telepítse az Azure Web App tanúsítványát a Key Vaulton keresztül.](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)|
+|Azure SQL Database|[Átlátszó adattitkosítás saját kulcstámogatással az Azure SQL Database és data warehouse számára.](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)|
+|Azure Storage|[Storage Service Encryption az ügyfél által felügyelt kulcsok használatával az Azure Key Vaultban.](../storage/common/storage-service-encryption-customer-managed-keys.md)|
+|Azure Data Lake Store|[Adatok titkosítása az Azure Data Lake Store-ban](../data-lake-store/data-lake-store-encryption.md) egy ügyfél által felügyelt kulccsal.|
+|Azure Databricks|[Gyors, egyszerű és együttműködő Apache Spark-alapú elemzési szolgáltatás](../azure-databricks/what-is-azure-databricks.md)|
+|Azure API Management|[Tanúsítványok telepítése egyéni tartományhoz a Key Vaultból az MSI használatával](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure Data Factory|[Adattároló hitelesítő adatainak beolvasása a Key Vaultban a Data Factory-ból](https://go.microsoft.com/fwlink/?linkid=2109491)|
+|Azure Event Hubs|[Hozzáférés engedélyezése a kulcstartóhoz az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
+|Azure Service Bus|[Hozzáférés engedélyezése a kulcstartóhoz az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
+|Azure Import/Export| [Ügyfél által felügyelt kulcsok használata az Azure Key Vaultban importálási/exportálási szolgáltatáshoz](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
 
 > [!NOTE]
 > Be kell állítania a megfelelő Key Vault hozzáférési szabályzatokat, hogy a megfelelő szolgáltatások hozzáférjenek a Key Vaulthoz.
@@ -86,4 +86,4 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 ## <a name="next-steps"></a>További lépések
 
 * [Kulcstartó védelme](key-vault-secure-your-key-vault.md)
-* [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](key-vault-network-security.md)
+* [Az Azure Key Vault tűzfalainak és virtuális hálózatainak konfigurálása](key-vault-network-security.md)

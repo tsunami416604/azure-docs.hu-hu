@@ -1,6 +1,6 @@
 ---
-title: Az Azure DPS-eszközök ügyféladatok-kérelmi funkciói
-description: A személyes Azure Device kiépítési szolgáltatásban (DPS) felügyelt eszközök esetében ez a cikk a személyes adatexportálás vagy-törlés rendszergazdáit mutatja be.
+title: Ügyféladat-kérési funkciók az Azure DPS-eszközökhöz
+description: Az Azure Device Provisioning Service (DPS) személyes en kezelt eszközök esetében ez a cikk bemutatja a rendszergazdáknak, hogyan exportálhatják vagy törölhetik a személyes adatokat.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/16/2018
@@ -8,60 +8,60 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890653"
 ---
-# <a name="summary-of-customer-data-request-features"></a>A vásárlói adatkérések funkcióinak összefoglalása
+# <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-igénylési funkciók összefoglalása
 
-Az Azure IoT Hub Device Provisioning Service olyan nagyvállalati ügyfeleknek szánt, REST API alapú felhőalapú szolgáltatás, amely lehetővé teszi, hogy az eszközök zökkenőmentes, automatizált, nulla szintű kiépíthető legyenek az Azure IoT Hubba az eszközön kezdődő és a felhővel végződő biztonsággal.
+Az Azure IoT Hub-eszközkiépítési szolgáltatás egy REST API-alapú felhőszolgáltatás, amely a vállalati ügyfeleket célozza meg, amely lehetővé teszi az eszközök zökkenőmentes, automatikus, érintés nélküli kiépítését az Azure IoT Hubba az eszközön kezdődő és a felhővel végződő biztonsággal.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-A bérlői rendszergazda a regisztrációs azonosítót és az eszköz AZONOSÍTÓját rendeli hozzá az egyes eszközökhöz. Ezekről az eszközökről származó adatok ezen azonosítók alapján jelennek meg. A Microsoft nem tart fenn információt, és nem fér hozzá olyan adatokhoz, amelyek lehetővé tennék ezeknek az eszközöknek a megfeleltetését egy adott személy számára.
+Az egyes eszközök höz egy bérlői rendszergazda rendel regisztrációs azonosítót és eszközazonosítót. Ezek az eszközökről származó és az ezekről az adatok ezekről az azonosítókról származnak. A Microsoft nem tart fenn adatokat, és nem fér hozzá olyan adatokhoz, amelyek lehetővé tennék ezen eszközök és az egyén közötti korrelációt.
 
-A Device kiépítési szolgáltatásban kezelt eszközök többsége nem személyes eszköz, például irodai termosztát vagy gyári robot. Előfordulhat azonban, hogy egyes eszközök személyes azonosításra alkalmasak, és saját belátásuk szerint fenntartják saját eszközeiket vagy leltározási követési módszereiket, amelyek az eszközöket az egyéni felhasználók számára használják. A Device kiépítési szolgáltatás az eszközökhöz kapcsolódó összes olyan adatmennyiséget kezeli és tárolja, mintha személyes adatként lenne.
+Az Eszközkiépítési szolgáltatásban kezelt eszközök közül sok nem személyes eszköz, például irodai termosztát vagy gyári robot. Az ügyfelek azonban úgy tekinthetik, hogy egyes eszközök személyazonosításra alkalmasak, és saját belátásuk szerint fenntarthatják saját eszköz- vagy készletkövetési módszereiket, amelyek az eszközöket egyénekhez kötik. Az Eszközkiépítési szolgáltatás úgy kezeli és tárolja az eszközökhöz társított összes adatot, mintha azok személyes adatok lennének.
 
-A bérlői rendszergazdák vagy a Azure Portal vagy a szolgáltatás REST API-jai segítségével teljesítik az adatkéréseket az eszköz-AZONOSÍTÓhoz vagy a regisztrációs AZONOSÍTÓhoz társított adatok exportálásával vagy törlésével.
+A bérlői rendszergazdák az Azure Portalon vagy a szolgáltatás REST API-iban is teljesíthetik az információkéréseket az eszközazonosítóhoz vagy regisztrációs azonosítóhoz társított adatok exportálásával vagy törlésével.
 
 > [!NOTE]
-> Az Azure IoT Hub eszköz kiépítési szolgáltatásán keresztül kiépített eszközökön további, az Azure IoT Hub szolgáltatásban tárolt információk találhatók. Az adott eszközre vonatkozó teljes kérelem elvégzéséhez tekintse meg az [Azure IoT hub dokumentációját](../iot-hub/iot-hub-customer-data-requests.md) .
+> Az Azure IoT Hubban az eszközkiépítési szolgáltatáson keresztül kiépített eszközök további adatokat tárolnak az Azure IoT Hub szolgáltatásban. Tekintse meg az [Azure IoT Hub referenciadokumentációját](../iot-hub/iot-hub-customer-data-requests.md) egy adott eszköz teljes igényének teljesítéséhez.
 
 ## <a name="deleting-customer-data"></a>Ügyféladatok törlése
 
-A Device kiépítési szolgáltatás a regisztrációkat és a regisztrációs rekordokat tárolja. A regisztrációk tartalmazzák a kiépíthető eszközökre vonatkozó információkat, a regisztrációs rekordok pedig azt mutatják be, hogy mely eszközökre van már lehetőség a kiépítési folyamat során.
+Az Eszközkiépítési szolgáltatás tárolja a regisztrációkat és a regisztrációs rekordokat. A regisztrációk olyan eszközökre vonatkozó információkat tartalmaznak, amelyek kiépíthetők, és a regisztrációs rekordok azt mutatják, hogy mely eszközök mentek már keresztül a kiépítési folyamaton.
 
-A bérlői rendszergazdák eltávolíthatják a regisztrációkat a Azure Portalból, és ezzel eltávolítja a hozzá tartozó regisztrációs rekordokat is.
+A bérlői rendszergazdák eltávolíthatják a regisztrációkat az Azure Portalról, és ez eltávolítja a kapcsolódó regisztrációs rekordokat is.
 
-További információ: [az eszközök regisztrálásának kezelése](how-to-manage-enrollments.md).
+További információt az [Eszközregisztrációk kezelése című témakörben talál.](how-to-manage-enrollments.md)
 
-A REST API-k használatával a beléptetésekhez és a regisztrációs rekordokhoz is végezhet törlési műveleteket:
+A regisztrációk és a regisztrációs rekordok törlésére is lehetőség van a REST API-k használatával:
 
-* Egyetlen eszköz regisztrációs adatainak törléséhez használhatja az [eszközök beléptetése – törlés](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment)lehetőséget.
-* Az eszközök egy csoportjára vonatkozó regisztrációs információk törléséhez használhatja az [eszköz beléptetési csoportjának törlését](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup).
-* A kiépített eszközökre vonatkozó információk törléséhez használhatja a regisztráció [állapotát – a regisztráció](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate)állapotának törlése lehetőséget.
+* Egyetlen eszköz regisztrációs adatainak törléséhez [használhatja az Eszközregisztráció – Törlés parancsot.](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment)
+* Az eszközök egy csoportjának regisztrációs adatainak törléséhez [használhatja az Eszközregisztrációs csoport - Törlés parancsot.](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup)
+* A kiépített eszközökkel kapcsolatos információk törléséhez [használhatja a Regisztrációs állapot - Regisztrációs állapot törlése lehetőséget.](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate)
 
-## <a name="exporting-customer-data"></a>Ügyféladatok exportálása
+## <a name="exporting-customer-data"></a>Vevői adatok exportálása
 
-A Device kiépítési szolgáltatás a regisztrációkat és a regisztrációs rekordokat tárolja. A regisztrációk tartalmazzák a kiépíthető eszközökre vonatkozó információkat, a regisztrációs rekordok pedig azt mutatják be, hogy mely eszközökre van már lehetőség a kiépítési folyamat során.
+Az Eszközkiépítési szolgáltatás tárolja a regisztrációkat és a regisztrációs rekordokat. A regisztrációk olyan eszközökre vonatkozó információkat tartalmaznak, amelyek kiépíthetők, és a regisztrációs rekordok azt mutatják, hogy mely eszközök mentek már keresztül a kiépítési folyamaton.
 
-A bérlői rendszergazdák a Azure Portal keresztül tekinthetik meg a regisztrációkat és a regisztrációs rekordokat, és a másolás és Beillesztés paranccsal exportálhatók.
+A bérlői rendszergazdák megtekinthetik a regisztrációkat és a regisztrációs rekordokat az Azure Portalon keresztül, és exportálhatják őket másolással és beillesztéssel.
 
-A regisztrációk kezelésével kapcsolatos további információkért lásd: [az eszközök regisztrálásának kezelése](how-to-manage-enrollments.md).
+A regisztrációk kezeléséről az [eszközregisztrációk kezelése](how-to-manage-enrollments.md)című témakörben talál további információt.
 
-A REST API-k használatával a beléptetésekhez és a regisztrációs rekordokhoz is végezhet exportálási műveleteket:
+A regisztrációk és a regisztrációs rekordok exportálási műveletei rest API-k használatával is végrehajthatók:
 
-* Egyetlen eszköz regisztrálási adatainak exportálásához használhatja az [eszközök beléptetése – lekérés](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment)lehetőséget.
-* Az eszközök egy csoportjára vonatkozó regisztrációs információk exportálásához használja az eszközök [beléptetése csoportot – Get](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup).
-* A már kiépített eszközökre vonatkozó információk exportálásához használhatja a [regisztráció állapotát – regisztrációs állapot beolvasása](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate).
+* Egyetlen eszköz regisztrációs adatainak exportálásához [használhatja az Eszközregisztráció – Beget parancsot.](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment)
+* Az eszközök egy csoportjának regisztrációs adatainak exportálásához [használhatja az Eszközregisztrációs csoport - Get parancsot.](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup)
+* A már kiépített eszközökkel kapcsolatos információk exportálásához [használhatja a Regisztrációs állapot - Regisztrációs állapot beszerezhető .](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate)
 
 > [!NOTE]
-> A Microsoft nagyvállalati szolgáltatásainak használatakor a Microsoft bizonyos adatokat hoz létre a rendszer által létrehozott naplók néven. Egyes eszközök kiépítési szolgáltatás rendszer által generált naplói nem érhetők el és nem exportálhatók a bérlői rendszergazdák számára. Ezek a naplók a szolgáltatáson belüli, illetve az egyes eszközökhöz kapcsolódó diagnosztikai adatokból származó ténybeli műveleteket alkotnak.
+> A Microsoft vállalati szolgáltatásainak használatakor a Microsoft létrehoz néhány információt, más néven a rendszer által létrehozott naplókat. Egyes eszközkiépítési szolgáltatás rendszer által létrehozott naplók nem érhetők el, vagy exportálható a bérlői rendszergazdák. Ezek a naplók a szolgáltatáson belül végzett tényszerű műveleteket és az egyes eszközökkel kapcsolatos diagnosztikai adatokat jelentik.
 
 ## <a name="links-to-additional-documentation"></a>További dokumentációra mutató hivatkozások
 
-A Device kiépítési szolgáltatás API-jai teljes dokumentációja a következő helyen található: [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps).
+Az eszközkiépítési szolgáltatás API-inak [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)teljes dokumentációja a helyen található.
 
-Az Azure IoT Hub [ügyfél-adatkérés funkciói](../iot-hub/iot-hub-customer-data-requests.md).
+Az Azure IoT Hub [ügyféladat-igénylési funkciói.](../iot-hub/iot-hub-customer-data-requests.md)

@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 1ab6243be39bf30bc060ed5745fbf600924743a9
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71839225"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
 | Gyorsítótár mérete |1,2 TB |
 | Adatbázisok |64 |
-| Csatlakoztatott ügyfelek maximális száma |40,000 |
-| Azure cache a Redis-replikák számára a magas rendelkezésre állás érdekében |1 |
-| A prémium szintű gyorsítótár fürtözési szegmensek |10 |
+| Csatlakoztatott ügyfelek maximális |40,000 |
+| Azure-gyorsítótár a Redis replikákhoz, magas rendelkezésre állás |1 |
+| Szegmensek prémium szintű gyorsítótárban fürtözéssel |10 |
 
-Az Azure Cache redis korlátozza, és minden tarifacsomag különböző méretek a következők. A díjszabási szintek és a hozzájuk tartozó méretek megtekintéséhez tekintse meg az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/).
+A Redis-korlátozásokhoz és -méretekhez tartozó Azure-gyorsítótár az egyes tarifacsomagok esetében eltérő. A tarifacsomagok és a hozzájuk kapcsolódó méretek megtekintéséhez tekintse meg az [Azure Cache for Redis díjszabás.](https://azure.microsoft.com/pricing/details/cache/)
 
-A Redis konfigurálása korlátok az Azure Cache-további információ: [kiszolgálókonfiguráció Redis alapértelmezett](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration).
+Az Azure Cache for Redis konfigurációs korlátairól az [Alapértelmezett Redis-kiszolgáló konfigurációja](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration)című témakörben olvashat bővebben.
 
-Konfigurálása és felügyelete Azure Cache Redis-példány a Microsoft végzi el, mert nem mindegyik Redis parancsok támogatottak Azure Cache-ben a Redis. További információkért lásd: [redis Cache a redis Azure Cache-ben nem támogatott parancsok](../articles/azure-cache-for-redis/cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis).
+Mivel az Azure Cache for Redis-példányok konfigurálását és kezelését a Microsoft végzi, nem minden Redis-parancs támogatott az Azure Cache for Redis. További információ: [Redis parancsok nem támogatott az Azure Cache for Redis.](../articles/azure-cache-for-redis/cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis)
 

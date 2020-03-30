@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73832056"
 ---
 ### <a name="record-names"></a>Rekordnevek
 
-Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljes* tartománynév (FQDN) tartalmazza a zóna nevét, a *relatív* név azonban nem. Például a zóna relatív rekordjának neve `www` `contoso.com` megadja a teljes rekord nevét `www.contoso.com`.
+Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljesen minősített* tartománynév (FQDN) tartalmazza a zónanevet, míg a *relatív* név nem. A zónában `www` `contoso.com` lévő relatív bejegyzésnév például megadja `www.contoso.com`a teljesen minősített rekord nevét.
 
-Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. Például a DNS-zónában `contoso.com`egy APEX-rekordhoz a teljes név is `contoso.com` (ezt néha egy *meztelen* tartománynak is nevezik).  Az egyezmény szerint a "\@" relatív név az APEX-rekordok ábrázolására szolgál.
+Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. A DNS-zónában `contoso.com`például egy csúcsrekordnak is `contoso.com` van teljesen minősített neve (ezt néha meztelen tartománynak is *nevezik).*  Megegyezés szerint a\@' ' relatív név a csúcsrekordok at jelöli.
 
 ### <a name="record-types"></a>Rekordtípusok
 
 Minden DNS-rekord rendelkezik névvel és típussal. A rekordok különféle típusokba vannak rendezve attól függően, hogy milyen adatokat tartalmaznak. A leggyakoribb típus az „A” rekord, amely egy nevet képez le egy IPv4-címhez. Egy másik gyakori típus, az „MX” rekord, egy nevet képez le egy levelezési kiszolgálóhoz.
 
-A Azure DNS az összes gyakori DNS-bejegyzéstípust támogatja: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV és TXT. Vegye figyelembe, hogy az [SPF-rekordok TXT-rekordok használatával vannak jelölve](../articles/dns/dns-zones-records.md#spf-records).
+Az Azure DNS minden gyakori DNS-rekordtípust támogat: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV és TXT. Vegye figyelembe, hogy az [SPF-rekordok TXT-rekordok használatával vannak jelölve](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Rekordhalmazok
 

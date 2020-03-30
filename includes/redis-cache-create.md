@@ -9,35 +9,35 @@ ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 3c064aa8e57a77b96161da06847f543816be1217
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73719113"
 ---
-1. Gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása**lehetőséget. 
+1. Gyorsítótár létrehozásához jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és válassza **az Erőforrás létrehozása lehetőséget.** 
    
-   ![Válassza az erőforrás létrehozása lehetőséget.](media/redis-cache-create/create-a-resource.png)
+   ![Erőforrás létrehozása lehetőséget.](media/redis-cache-create/create-a-resource.png)
    
-1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
+1. Az **Új** lapon válassza az **Adatbázisok** lehetőséget, majd válassza **az Azure Cache for Redis**lehetőséget.
    
-   ![Az Azure cache kiválasztása a Redis](media/redis-cache-create/redis-cache-new-cache-menu.png)
+   ![Válassza ki a Redis Azure-gyorsítótárát](media/redis-cache-create/redis-cache-new-cache-menu.png)
    
-1. Az **új Redis cache** lapon adja meg az új gyorsítótár beállításait.
+1. Az **Új Redis-gyorsítótár** lapon adja meg az új gyorsítótár beállításait.
    
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* *\<DNS-név lesz >. Redis. cache. Windows. net*. | 
-   | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
-   | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
-   | **Hely** | Legördülő menüből válassza ki a helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
-   | **Tarifacsomag** | Legördülő menüből válassza ki a [díjszabási szintet](https://azure.microsoft.com/pricing/details/cache/). |  A tarifacsomag határozza meg a gyorsítótár méretét, teljesítményét és elérhető funkcióit. További információ: [Azure cache for Redis – áttekintés](../articles/azure-cache-for-redis/cache-overview.md). |
+   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti karakterláncnak kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* * \<a>.redis.cache.windows.net .* | 
+   | **Előfizetés** | Legördülő menüből válassza ki az előfizetést. | Az előfizetés, amely alatt az új Azure-gyorsítótár redis példány létrehozása. | 
+   | **Erőforráscsoport** | Legördülő menü válasszon egy erőforráscsoportot, vagy válassza **az Új létrehozása** lehetőséget, és adjon meg egy új erőforráscsoport nevet. | Annak az erőforráscsoportnak a neve, amelyben a gyorsítótárat és más erőforrásokat létre lehet hozni. Ha az összes alkalmazáserőforrást egyetlen erőforráscsoportba helyezi, egyszerűen kezelheti vagy törölheti őket együtt. | 
+   | **Helyen** | Legördülő menüt, és válasszon ki egy helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a gyorsítótárat használó egyéb szolgáltatások közelében. |
+   | **Tarifacsomag** | Legördülő menüt, és válasszon egy [tarifacsomagot.](https://azure.microsoft.com/pricing/details/cache/) |  A tarifacsomag határozza meg a gyorsítótár méretét, teljesítményét és elérhető funkcióit. További információ: [Azure Cache for Redis Overview](../articles/azure-cache-for-redis/cache-overview.md). |
    
 1. Kattintson a **Létrehozás** gombra. 
    
-   ![Azure cache létrehozása a Redis](media/redis-cache-create/redis-cache-cache-create.png) 
+   ![Azure-gyorsítótár létrehozása a Redis számára](media/redis-cache-create/redis-cache-cache-create.png) 
    
-   Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra**mutat, a gyorsítótár készen áll a használatra.
+   Eltart egy ideig, amíg a gyorsítótár létrehoz. Az Azure Cache for Redis **áttekintése** lapon nyomon követheti a folyamatot. Ha **az állapot** **futóként**jelenik meg, a gyorsítótár készen áll a használatra.
    
-   ![Redis létrehozott Azure cache](media/redis-cache-create/redis-cache-cache-created.png)
+   ![Azure Cache for Redis létrehozva](media/redis-cache-create/redis-cache-cache-created.png)
 

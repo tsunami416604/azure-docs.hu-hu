@@ -1,6 +1,6 @@
 ---
-title: Azure-beli csatlakoztatott gépi ügynök parancssori felülete
-description: Az Azure Connected Machine Agent parancssori felületének dokumentációja
+title: Azure-beli csatlakoztatottgép-ügynök parancssori felülete
+description: Az Azure Connected Machine CLI-ügynök referenciadokumentációja
 author: bobbytreed
 manager: carmonm
 services: azure-arc
@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: robreed
 ms.openlocfilehash: d35c5e283f2e1e2f8afd431d83775167dc2a531a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73513197"
 ---
-# <a name="azure-connected-machine-agent-cli-interface"></a>Azure-beli csatlakoztatott gépi ügynök parancssori felülete
+# <a name="azure-connected-machine-agent-cli-interface"></a>Azure-beli csatlakoztatottgép-ügynök parancssori felülete
 
-A `Azcmagent` (Azure Connected Machine Agent) eszköz használatával konfigurálhatja és elháríthatja az Azure-hoz kapcsolódó nem Azure-beli gépeket.
+Az `Azcmagent` (Azure Connected Machine Agent) eszköz konfigurálására és az Azure-hoz való nem azure-alapú gépek kapcsolatának konfigurálására és hibaelhárítására szolgál.
 
-Maga az ügynök egy `himdsd` Linux rendszeren nevű démoni folyamat, és egy `himds` nevű Windows-szolgáltatás, amely Windows rendszeren található.
+Maga az ügynök egy Linuxon `himdsd` megnevezett démonfolyamat, és `himds` egy Windows-szolgáltatás a Windows rendszeren.
 
-Normál használat esetén `azcmagent connect` a gép és az Azure közötti kapcsolat létesítésére szolgál, és `azcmagent disconnect`, ha úgy dönt, hogy már nem kívánja használni a kapcsolatot. A többi parancs a hibaelhárításhoz és egyéb speciális esetekhez használható.
+Normál használat `azcmagent connect` esetén a gép és az Azure közötti `azcmagent disconnect` kapcsolat létrehozására szolgál, és ha úgy dönt, hogy már nem szeretné, hogy a kapcsolat. A többi parancs hibaelhárításra vagy más speciális esetekre van.
 
 ## <a name="options"></a>Beállítások
 
@@ -33,30 +33,30 @@ Normál használat esetén `azcmagent connect` a gép és az Azure közötti kap
 
 ## <a name="see-also"></a>LÁSD MÉG:
 
-* [azcmagent-csatlakozás](#azcmagent-connect) – a gép csatlakoztatása az Azure-hoz
-* [azcmagent leválasztása – leválasztja](#azcmagent-disconnect) ezt a gépet az Azure-ból
-* [azcmagent Újrakapcsolódás](#azcmagent-reconnect) – a gép újrakapcsolódása az Azure-hoz
-* [azcmagent show](#azcmagent-show) – lekérdezi a gép metaadatait és az ügynök állapotát. Ez elsősorban hibaelhárításhoz hasznos.
-* [azcmagent-verzió](#azcmagent-version) – a hibrid felügyeleti ügynök verziójának megjelenítése
+* [azcmagent connect](#azcmagent-connect) - Csatlakoztatja a gépet az Azure-hoz
+* [azcmagent kapcsolatbontása](#azcmagent-disconnect) – A gép leválasztása az Azure-ból
+* [azcmagent reconnect](#azcmagent-reconnect) - Újracsatlakoztatja a gépet az Azure-hoz
+* [azcmagent show](#azcmagent-show) - Gép metaadatainak és ügynökállapotának beírása. Ez elsősorban hibaelhárítási cél.
+* [azcmagent verzió](#azcmagent-version) - A hibrid felügyeleti ügynök verziójának megjelenítése
 
-## <a name="azcmagent-connect"></a>azcmagent-kapcsolat
+## <a name="azcmagent-connect"></a>azcmagent csatlakozás
 
-A gép csatlakoztatása az Azure-hoz
+Csatlakoztatja a gépet az Azure-hoz
 
 ### <a name="synopsis"></a>Áttekintés
 
-Létrehoz egy erőforrást az Azure-ban, amely ezt a gépet jelképezi.
+Létrehoz egy erőforrást az Azure-ban, amely ezt a gépet képviseli.
 
-Ez a megadott hitelesítési beállítások használatával hoz létre egy erőforrást a gépet jelképező Azure Resource Managerban. Az erőforrás a kért előfizetésben és erőforráscsoporthoz van, és a gép adatait a Location paraméter által megadott Azure-régióban tárolja a rendszer.
-Az alapértelmezett erőforrás neve a gép állomásneve, ha nincs felülbírálva.
+Ez a megadott hitelesítési beállításokat használja egy erőforrás létrehozásához az Azure Resource Manager ben, amely ezt a gépet képviseli. Az erőforrás a kért előfizetési és erőforráscsoportban található, és a gép adatait a helyparaméter által meghatározott Azure-régióban tárolja.
+Az alapértelmezett erőforrásnév a számítógép állomásneve, ha nem bírálják felül.
 
-Ezután a számítógép rendszerhez rendelt identitásához tartozó tanúsítvány letöltése és tárolása helyileg történik. Ha ez a lépés befejeződött, az **Azure Connected Machine metadata** szolgáltatás és a vendég konfigurációs ügynök megkezdi az Azure Cloud-val való szinkronizálást.
+A rendszer a számítógép rendszer-hozzárendelt identitásának megfelelő tanúsítványt ezután letölti és helyileg tárolja. Miután ez a lépés befejeződött az **Azure Connected Machine metaadat-szolgáltatás** és a vendég konfigurációs ügynök szinkronizálása az Azure-felhővel.
 
 Hitelesítési beállítások:
 
-* Hozzáférési jogkivonat `azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
-* Egyszerű szolgáltatás azonosítója és titkos `azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
-* Eszköz bejelentkezés (interaktív) `azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
+* Hozzáférési jogkivonat`azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
+* Szolgáltatás névazonosítója és titkos`azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
+* Eszközbejelentkezés (interaktív)`azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -80,25 +80,25 @@ azcmagent connect [flags]
       --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-disconnect"></a>azcmagent bontása
+## <a name="azcmagent-disconnect"></a>azcmagent kapcsolat bontása
 
-A gép leválasztása az Azure-ból
+Leválasztja a gépet az Azure-ról
 
 ### <a name="synopsis"></a>Áttekintés
 
-A kiszolgálót jelölő Azure-beli erőforrás törlése.
+Törli az erőforrást az Azure-ban, amely ezt a kiszolgálót képviseli.
 
-Ez a parancs a megadott hitelesítési beállításokat használja a gépet jelölő Azure Resource Manager erőforrás eltávolításához. Ezt követően az Azure-beli **csatlakoztatott számítógép metadata Service** és a vendég konfigurációs ügynök le lesz választva. Ez a parancs nem állítja le és nem távolítja el a szolgáltatásokat: távolítsa el a csomagot annak érdekében, hogy elvégezze.
+Ez a parancs a megadott hitelesítési beállításokat használja a gépet képviselő Azure Resource Manager erőforrás eltávolításához. Ezt követően az **Azure Connected Machine metaadat-szolgáltatás** és a vendég konfigurációs ügynök lesz leválasztva. Ez a parancs nem állítja le vagy távolítja el a szolgáltatásokat: távolítsa el a csomagot ennek érdekében.
 
-Ehhez a parancshoz magasabb jogosultságok szükségesek, mint az "Azure Connected Machine bevezetésének" szerepkör.
+Ez a parancs magasabb jogosultságokat igényel, mint az "Azure Connected Machine Onboarding" szerepkör.
 
-Ha egy gép le van választva, akkor a `azcmagent connect`használata nem `azcmagent reconnect`, ha új erőforrást szeretne létrehozni az Azure-ban.
+A számítógép leválasztása `azcmagent connect`után `azcmagent reconnect` használja a használatát, nem akkor, ha új erőforrást szeretne létrehozni az Azure-ban.
 
 Hitelesítési beállítások:
 
-* Hozzáférési jogkivonat `azcmagent disconnect --access-token <>`
-* Egyszerű szolgáltatás azonosítója és titkos `azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Interaktív eszköz bejelentkezési `azcmagent disconnect --tenant-id <>`
+* Hozzáférési jogkivonat`azcmagent disconnect --access-token <>`
+* Szolgáltatás névazonosítója és titkos`azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Interaktív eszköz bejelentkezés`azcmagent disconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -119,27 +119,27 @@ azcmagent disconnect [flags]
   -t, --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-reconnect"></a>azcmagent újracsatolása
+## <a name="azcmagent-reconnect"></a>azcmagent reconnect
 
-A gép újrakapcsolódása az Azure-hoz
+A számítógép újracsatlakoztatása az Azure-hoz
 
 ### <a name="synopsis"></a>Áttekintés
 
-A számítógép újrakapcsolódása érvénytelen hitelesítő adatokkal az Azure-ba.
+Csatlakoztassa újra a gépet érvénytelen hitelesítő adatokkal az Azure-hoz.
 
-Ha egy gépnek már van erőforrása az Azure-ban, de a hitelesítése nem lehetséges, akkor a parancs használatával újra csatlakozhat. Ez akkor lehetséges, ha egy gép ki lett kapcsolva elég sokáig ahhoz, hogy a tanúsítványa lejárjon (legalább 45 nap).
+Ha egy gép már rendelkezik egy erőforrást az Azure-ban, de nem tudja hitelesíteni, akkor újra csatlakoztatható ezzel a paranccsal. Ez akkor lehetséges, ha egy gép kikapcsolta elég hosszú ahhoz, hogy a tanúsítvány lejár (legalább 45 nap).
 
-Ha egy gép `azcmagent disconnect`kapcsolattal lett leválasztva, használja a `azcmagent connect` helyet.
+Ha a gép nem, `azcmagent disconnect` `azcmagent connect` használja helyette.
 
-Ez a parancs a megadott hitelesítési beállításokat használja a gépet jelképező Azure Resource Manager erőforrásnak megfelelő új hitelesítő adatok lekéréséhez.
+Ez a parancs a megadott hitelesítési beállításokat használja az Azure Resource Manager-erőforrásnak megfelelő új hitelesítő adatok lekéréséhez.
 
-Ehhez a parancshoz magasabb jogosultságok szükségesek, mint az Azure-beli **csatlakoztatott gép** bevezetési szerepköre.
+Ez a parancs magasabb jogosultságokat igényel, mint az **Azure Connected Machine bevezetési** szerepkör.
 
 Hitelesítési beállítások
 
-* Hozzáférési jogkivonat `azcmagent reconnect --access-token <>`
-* Egyszerű szolgáltatás azonosítója és titkos `azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Interaktív eszköz bejelentkezési `azcmagent reconnect --tenant-id <>`
+* Hozzáférési jogkivonat`azcmagent reconnect --access-token <>`
+* Szolgáltatás névazonosítója és titkos`azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Interaktív eszköz bejelentkezés`azcmagent reconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -161,13 +161,13 @@ azcmagent reconnect [flags]
       --tenant-id string                  tenant id
 ```
 
-## <a name="azcmagent-show"></a>azcmagent megjelenítése
+## <a name="azcmagent-show"></a>azcmagent show
 
-A számítógép metaadatainak és az ügynök állapotának beolvasása. Ez elsősorban hibaelhárításhoz hasznos.
+A gép metaadatainak és ügynöki állapotának leése. Ez elsősorban hibaelhárítási cél.
 
 ### <a name="synopsis"></a>Áttekintés
 
-A számítógép metaadatainak és az ügynök állapotának beolvasása. Ez elsősorban hibaelhárításhoz hasznos.
+A gép metaadatainak és ügynöki állapotának leése. Ez elsősorban hibaelhárítási cél.
 
 
 ### <a name="syntax"></a>Szintaxis
@@ -182,7 +182,7 @@ azcmagent show [flags]
   -h, --help   help for show
 ```
 
-## <a name="azcmagent-version"></a>azcmagent verziója
+## <a name="azcmagent-version"></a>azcmagent verzió
 
 A hibrid felügyeleti ügynök verziójának megjelenítése
 

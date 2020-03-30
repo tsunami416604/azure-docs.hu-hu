@@ -1,6 +1,6 @@
 ---
 title: Az Azure Firewall szabályfeldolgozási logikája
-description: Tudnivalók a Azure Firewall szabályok feldolgozásának logikáról
+description: További információ az Azure Firewall szabályfeldolgozási logikájáról
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: victorh
 ms.openlocfilehash: 74e58c316651a1604984ac14c70a3a65d46d6d9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73518202"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
 
-Azure Firewall rendelkezik NAT-szabályokkal, hálózati szabályokkal és alkalmazási szabályokkal. A szabályok feldolgozása a szabály típusa szerint történik.
+Az Azure Firewall rendelkezik NAT-szabályokkal, hálózati szabályokkal és alkalmazásszabályokkal. A szabályok feldolgozása a szabálytípusnak megfelelően.
 
 ## <a name="network-rules-and-applications-rules"></a>Hálózati szabályok és alkalmazások szabályai
 
-Először alkalmazza a hálózati szabályokat, majd az alkalmazás szabályait. A szabályok leállnak. Tehát ha a hálózati szabályok egyezést találnak, akkor a rendszer nem dolgozza fel az alkalmazás szabályait.  Ha egyik hálózati szabály sem érvényes, és ha a csomag protokollja HTTP/HTTPS, a csomag ezután az alkalmazásszabályok szerint is ki lesz értékelve. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az infrastruktúra-szabálygyűjtemény alapján. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
+Először a hálózati szabályokat, majd az alkalmazási szabályokat alkalmazza a rendszer. A szabályok megszűnnek. Tehát ha egyezést talál a hálózati szabályokban, akkor az alkalmazásszabályok feldolgozása nem történik meg.  Ha egyik hálózati szabály sem érvényes, és ha a csomag protokollja HTTP/HTTPS, a csomag ezután az alkalmazásszabályok szerint is ki lesz értékelve. Ha még mindig nem talál egyezést, akkor a csomag kiértékelése az infrastruktúraszabály-gyűjtemény alapján történik. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
 
 ## <a name="nat-rules"></a>NAT-szabályok
 
-A bejövő kapcsolat engedélyezhető a célként megadott hálózati címfordítás (DNAT) konfigurálásával az [oktatóanyag: a bejövő forgalom szűrése Azure Firewall DNAT a Azure Portal használatával](../firewall/tutorial-firewall-dnat.md). A rendszer először alkalmazza a DNAT-szabályokat. Ha talál egyezést, egy implicit megfelelő hálózati szabályt ad hozzá a lefordított forgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Ezekhez a kapcsolatokhoz nem alkalmazhatók alkalmazási szabályok.
+A bejövő kapcsolat az oktatóanyagban leírtak szerint a Célhálózati címfordítás (DNAT) konfigurálásával [engedélyezhető: Szűrje a bejövő forgalmat az Azure Firewall DNST szolgáltatással az Azure Portalon](../firewall/tutorial-firewall-dnat.md)keresztül. A DNST-szabályok at alkalmaznak először. Ha egyezést talál, a fordítást engedélyező implicit megfelelő hálózati szabály hozzáadódik. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Ezekre a kapcsolatokra nem vonatkozik alkalmazási szabályok.
 
 ## <a name="inherited-rules"></a>Örökölt szabályok
 
-A szülő házirendből örökölt hálózati szabályok gyűjteményeit mindig rangsorolja a rendszer az új szabályzat részeként definiált hálózati szabályok gyűjteményei felett. Ugyanez a logika vonatkozik az alkalmazási szabályok gyűjteményére is. A hálózati szabályok gyűjteményeit azonban a rendszer mindig feldolgozza az alkalmazási szabályok gyűjtése előtt, az örökléstől függetlenül.
+A szülőházirendből örökölt hálózati szabálygyűjtemények mindig elsőbbséget élveznek az új házirend részeként definiált hálózati szabálygyűjtemények felett. Ugyanez a logika vonatkozik az alkalmazásszabály-gyűjteményekre is. A hálózati szabálygyűjtemények feldolgozása azonban mindig az alkalmazásszabály-gyűjtemények előtt van feldolgozva, az öröklődéstől függetlenül.
 
-Alapértelmezés szerint a házirend örökli a szülő házirend fenyegetésének intelligencia üzemmódját. Ezt felülbírálhatja úgy, hogy a fenyegetési intelligencia módot egy másik értékre állítja be a házirend-beállítások lapon. Csak szigorúbb értékkel lehet felülbírálni. Ha például a szülői házirend *csak riasztásra*van beállítva, a helyi házirendet beállíthatja *riasztásra és megtagadásre*, de nem kapcsolhatja ki.
+Alapértelmezés szerint a szabályzat örökli a szülő házirend fenyegetésintelligencia-mód. Ezt felülbírálhatja, ha a fenyegetésfelderítési módot egy másik értékre állítja a házirend-beállítások lapon. Csak szigorúbb értékkel lehet felülbírálni. Ha például a szülőházirend *beállítása csak riasztás,* beállíthatja ezt a helyi házirendet *riasztásra és megtagadásra,* de nem kapcsolhatja ki.
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ a Azure Firewall Manager előzetes verziójáról](overview.md)
+- [További információ az Azure Firewall Manager előzetes verziójáról](overview.md)

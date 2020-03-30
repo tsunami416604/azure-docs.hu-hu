@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Gateway átirányítási áttekintése
-description: Ismerje meg az Azure Application Gateway átirányítási képességét, hogy átirányítsa az egyik figyelőre érkező forgalmat egy másik figyelőre vagy egy külső webhelyre.
+title: Átirányítás – áttekintés az Azure Application Gateway alkalmazásátjárójához
+description: Ismerje meg az átirányítási képesség az Azure Application Gateway átirányítási szolgáltatás átirányítása az egyik figyelő egy másik figyelő, vagy egy külső webhelyre kapott forgalmat.
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
@@ -8,39 +8,39 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 5943d8aad4d5dd0d981fae9b2325dd3fc75b31e8
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74129889"
 ---
-# <a name="application-gateway-redirect-overview"></a>Application Gateway átirányítási áttekintés
+# <a name="application-gateway-redirect-overview"></a>Alkalmazásátjáró átirányítás – áttekintés
 
-Az Application Gateway segítségével átirányíthatja a forgalmat.  Általános átirányítási mechanizmusa lehetővé teszi, hogy egy figyelő által fogadott forgalmat egy másik figyelőre vagy egy külső webhelyre lehessen átirányítani. Ez egyszerűsíti az alkalmazások konfigurációját, optimalizálja az erőforrás-használatot, és támogatja az új átirányítási forgatókönyveket, beleértve a globális és az elérésiút-alapú átirányítást.
+Az alkalmazásátjáró segítségével átirányíthatja a forgalmat.  Általános átirányítási mechanizmusa lehetővé teszi, hogy egy figyelő által fogadott forgalmat egy másik figyelőre vagy egy külső webhelyre lehessen átirányítani. Ez leegyszerűsíti az alkalmazáskonfigurációt, optimalizálja az erőforrás-használatot, és támogatja az új átirányítási forgatókönyveket, beleértve a globális és az útvonal-alapú átirányítást.
 
-Számos webalkalmazás esetében a gyakori átirányítási forgatókönyvek támogatják az automatikus HTTP-t a HTTPS-átirányítás számára, így biztosítva, hogy az alkalmazás és a felhasználók közötti kommunikáció egy titkosított útvonalon történjen. A múltban az ügyfelek olyan technikákat használták, mint például egy dedikált háttér-készlet létrehozása, amelynek a célja, hogy átirányítsa a HTTP-n keresztül fogadott kérelmeket a HTTPS-re. A Application Gateway átirányítási támogatásával egyszerűen elvégezhető, ha új átirányítási konfigurációt ad hozzá egy útválasztási szabályhoz, és egy másik figyelőt ad meg egy HTTPS protokollal, célként figyelőként.
+Számos webalkalmazás gyakori átirányítási forgatókönyve az automatikus HTTP-HTTPS átirányítás támogatása annak biztosítása érdekében, hogy az alkalmazás és a felhasználók közötti kommunikáció titkosított útvonalon történjen. A múltban az ügyfelek olyan technikákat alkalmaztak, mint például egy dedikált háttérkészlet létrehozása, amelynek egyetlen célja a HTTP-n kapott kérelmek átirányítása HTTPS-re. Az Alkalmazásátjáró átirányítási támogatásával ezt egyszerűen úgy érheti el, hogy új átirányítási konfigurációt ad hozzá egy útválasztási szabályhoz, és egy másik figyelőt ad meg HTTPS protokollal a célfigyelőként.
 
-A következő típusú átirányítási típusok támogatottak:
+A következő átirányítási típusok támogatottak:
 
-- 301 végleges átirányítás
-- 302 található
-- 303 további információ
-- 307 Temporary Redirect
+- 301 Állandó átirányítás
+- 302 talált
+- 303 Lásd: Egyéb
+- 307 Ideiglenes átirányítás
 
 Az Application Gateway átirányítási támogatása a következő funkciókat nyújtja:
 
 -  **Globális átirányítás**
 
-   Átirányítja az egyik figyelőről egy másik figyelőre az átjárón. Ez lehetővé teszi a HTTP–HTTPS átirányítást egy webhelyen.
-- **Elérésiút-alapú átirányítás**
+   Átirányítások egyik figyelőtől egy másik figyelő az átjárón. Ez lehetővé teszi a HTTP–HTTPS átirányítást egy webhelyen.
+- **Görbealapú átirányítás**
 
-   Ez a típusú átirányítás lehetővé teszi a HTTP-t a HTTPS-átirányítás csak egy adott hely területén, például egy bevásárlókosár terület, amelyet a/cart/* jelöl.
-- **Átirányítás külső helyre**
+   Ez a fajta átirányítás csak egy adott helyterületen engedélyezi a HTTP-t HTTPS-átirányításra, például a /cart/* által jelölt bevásárlókosár-területen.
+- **Átirányítás külső webhelyre**
 
-![Átirányítani](./media/redirect-overview/redirect.png)
+![Átirányítás](./media/redirect-overview/redirect.png)
 
-Ezzel a módosítással az ügyfeleknek létre kell hozniuk egy új átirányítási konfigurációs objektumot, amely meghatározza azt a célként figyelőt vagy külső helyet, amelyre az átirányítás szükség van. A konfigurációs elem olyan beállításokat is támogat, amelyek lehetővé teszik az URI elérési út és a lekérdezési karakterlánc hozzáfűzését az átirányított URL-címhez. Kiválaszthatja az átirányítás típusát is. A létrehozást követően ez az átirányítási konfiguráció egy új szabály segítségével csatlakozik a forrás-figyelőhöz. Alapszintű szabály használatakor az átirányítási konfiguráció a forrás-figyelőhöz van társítva, és globális átirányítás. Elérésiút-alapú szabály használatakor az átirányítási konfiguráció az URL-cím elérési útja alapján van meghatározva. Ezért csak a helyek adott elérési útjára vonatkozik.
+Ezzel a módosítással az ügyfeleknek létre kell hozniuk egy új átirányítási konfigurációs objektumot, amely megadja azt a célfigyelőt vagy külső helyet, amelyre az átirányítás szükséges. A konfigurációs elem azt is támogatja, hogy engedélyezze az URI-elérési út és a lekérdezési karakterlánc hozzáfűzését az átirányított URL-címhez. Az átirányítás típusát is megadhatja. Létrehozása után ez az átirányítási konfiguráció egy új szabály on keresztül csatlakozik a forrásfigyelőhöz. Alapszabály használataesetén az átirányítási konfiguráció egy forrásfigyelőhöz van társítva, és globális átirányítás. Elérési út alapú szabály használata esetén az átirányítási konfiguráció az URL-elérési út térképén lesz definiálva. Így csak a webhely adott elérési útterületén érvényes.
 
 ### <a name="next-steps"></a>További lépések
 
-[URL-átirányítás konfigurálása Application gatewayen](tutorial-url-redirect-powershell.md)
+[URL-átirányítás konfigurálása alkalmazásátjárón](tutorial-url-redirect-powershell.md)

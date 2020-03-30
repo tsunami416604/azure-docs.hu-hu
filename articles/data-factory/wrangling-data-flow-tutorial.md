@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a huzavona adatforgalmával Azure Data Factory
-description: Oktatóanyag az Azure Data Factory huzavona-adatfolyam használatával történő előkészítéséhez
+title: Az Azure Data Factory -ban az adatfolyam kibogozásának első lépései
+description: Az azure Data Factory ban a huzavona adatfolyam használatával történő adatok előkészítésének oktatóanyaga
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: gamal
@@ -8,53 +8,53 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: 8ae109045381dba77610dedc5bb95e233b213eee
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73682279"
 ---
-# <a name="prepare-data-with-wrangling-data-flow"></a>Az huzavona-adatfolyamokkal történő előkészítés
+# <a name="prepare-data-with-wrangling-data-flow"></a>Adatok előkészítése vonóadat-áramlással
 
-## <a name="create-a-wrangling-data-flow"></a>Huzavona-adatfolyam létrehozása
+## <a name="create-a-wrangling-data-flow"></a>Vonagló adatfolyam létrehozása
 
-A Azure Data Factory kétféleképpen hozhat létre huzavona-adatfolyamokat. Az egyik módszer, ha a plusz ikonra kattint, és kiválasztja az **adatfolyamot** a gyári erőforrások ablaktáblán.
+Az Azure Data Factoryban kétféleképpen hozhat létre egy huzavonaadat-folyamatot. Ennek egyik módja, ha a plusz ikonra kattint, és a gyári erőforrások ablaktáblában az **Adatfolyam** lehetőséget választja.
 
-![Huzavona](media/wrangling-data-flow/tutorial7.png)
+![Vonagló](media/wrangling-data-flow/tutorial7.png)
 
-A másik módszer a folyamat vászonjának tevékenységek ablaktábláján található. Nyissa meg az **áthelyezés és átalakítás** egyezést, és húzza az **adatfolyam** tevékenységet a vászonra.
+A másik módszer a folyamatvászon tevékenységablakában található. Nyissa meg az **Áthelyezés és átalakítás** harmonikát, és húzza az **Adatfolyam-tevékenységet** a vászonra.
 
-Mindkét módszernél a megnyíló oldal ablaktáblán válassza az **új adatfolyam létrehozása** elemet, és válassza a **huzavona-adatfolyam**lehetőséget. Kattintson az OK gombra.
+Mindkét módszerben a megnyíló oldalsó ablaktáblában jelölje be **az Új adatfolyam létrehozása lehetőséget,** és válassza **a Vonós adatfolyam**lehetőséget. Kattintson az OK gombra.
 
-![Huzavona](media/wrangling-data-flow/tutorial1.png)
+![Vonagló](media/wrangling-data-flow/tutorial1.png)
 
-## <a name="author-a-wrangling-data-flow"></a>Huzavona-adatfolyam készítése
+## <a name="author-a-wrangling-data-flow"></a>Csörlős adatfolyam készítése
 
-Adja hozzá a huzavona-adatfolyam **forrás-adatkészletét** . Válasszon egy meglévő adatkészletet, vagy hozzon létre egy újat. Kiválaszthat egy fogadó adatkészletet is. Kiválaszthat egy vagy több forrás adatkészletet, de egyszerre csak egy fogadót lehet engedélyezni. A fogadó adatkészlet kiválasztása nem kötelező, de legalább egy forrás adatkészletet kötelező megadni.
+**Forrás-adatkészlet** hozzáadása a vonós adatfolyamhoz. Választhat egy meglévő adatkészletet, vagy létrehozhat egy újat. Kijelölhet egy fogadó adatkészletet is. Egy vagy több forrásadatkészletet is kiválaszthat, de jelenleg csak egy fogadó engedélyezett. A fogadó adatkészlet kiválasztása nem kötelező, de legalább egy forrásadatkészlet szükséges.
 
 > [!NOTE]
-> Korlátozott előzetes verzió esetén csak a ADLS Gen 2 tagolt szöveg támogatott. 
+> Csak az ADLS Gen 2 tagolt szöveg támogatott a korlátozott előzetes verzióhoz. 
 
-![Huzavona](media/wrangling-data-flow/tutorial4.png)
+![Vonagló](media/wrangling-data-flow/tutorial4.png)
 
-Kattintson a **Létrehozás** elemre a Power Query online adategyesítés-szerkesztő megnyitásához.
+A Power Query Online mashup-szerkesztőjének megnyitásához kattintson a **Létrehozás** gombra.
 
-![Huzavona](media/wrangling-data-flow/tutorial5.png)
+![Vonagló](media/wrangling-data-flow/tutorial5.png)
 
-A huzavona-adatfolyamok létrehozása kód nélküli adatelőkészítéssel. Az elérhető függvények listáját lásd: [átalakítási függvények](wrangling-data-flow-functions.md)/
+A huzavona adatfolyama kódmentes adatelőkészítéssel készüljön el. Az elérhető függvények listáját az [átalakítási függvények című témakörben](wrangling-data-flow-functions.md)/
 
-![Huzavona](media/wrangling-data-flow/tutorial6.png)
+![Vonagló](media/wrangling-data-flow/tutorial6.png)
 
-## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Huzavona-adatfolyam futtatása és figyelése
+## <a name="running-and-monitoring-a-wrangling-data-flow"></a>A vonós adatfolyam futtatása és figyelése
 
-Egy huzavona-adatfolyam hibakeresési folyamatának végrehajtásához kattintson a folyamat vásznon a **hibakeresés** elemre. Miután közzétette az adatfolyamot, a **trigger most** végrehajtja az utolsó közzétett folyamat igény szerinti futtatását. Az huzavona-adatfolyamatok az összes meglévő Azure Data Factory eseményindítóval ütemezhetők.
+A csörlős adatfolyam folyamathiba-keresési futtatásának végrehajtásához kattintson a **Hibakeresés gombra** a folyamatvásznon. Az adatfolyam közzététele után **az Eseményindító most** végrehajtja az utolsó közzétett folyamat igény szerinti futtatását. A wrangling adatfolyamok ütemezhetők az összes meglévő Azure Data Factory eseményindítóval.
 
-![Huzavona](media/wrangling-data-flow/tutorial3.png)
+![Vonagló](media/wrangling-data-flow/tutorial3.png)
 
-Lépjen a **figyelés** lapra, és jelenítse meg az aktivált huzavona adatfolyam-tevékenységek kimenetét.
+A **Figyelő** lapon vizualizálhatja az aktivált vonódási adatfolyam-tevékenység futásának kimenetét.
 
-![Huzavona](media/wrangling-data-flow/tutorial2.png)
+![Vonagló](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [hozhat létre leképezési](tutorial-data-flow.md)adatfolyamot.
+További információ a [leképezési adatfolyam létrehozásáról.](tutorial-data-flow.md)

@@ -1,16 +1,16 @@
 ---
-title: Rövid útmutató – Azure Signaler szolgáltatás REST API
-description: Ismerje meg, hogyan használhatja a REST APIt az Azure Signaler szolgáltatással a következő mintákkal. REST API specifikáció részleteinek megkeresése.
+title: Gyorsútmutató – Azure SignalR Service REST API
+description: Ismerje meg, hogyan használhatja a REST API-t az Azure SignalR-szolgáltatással a mintákat követően. A REST API specifikációjának részletei.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157679"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
@@ -40,7 +40,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kód 
 
 1. Nyisson meg egy git terminálablakot. Váltson át arra a mappára, ahová a mintaprojektet klónozni szeretné.
 
-1. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+1. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
@@ -99,7 +99,7 @@ A `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` 
 
 ## <a name="usage"></a>Használat
 
-A kiszolgáló elindítása után az parancs használatával küldjön üzenetet:
+A kiszolgáló indítása után a paranccsal küldjön üzenetet:
 
 ```
 send user <User Id>
@@ -111,11 +111,11 @@ broadcast
 
 Több ügyfelet is indíthat különböző ügyfélnevekkel.
 
-## <a name="usage"> </a> Integráció külső szolgáltatásokkal
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Integráció külső szolgáltatásokkal
 
 Az Azure SignalR szolgáltatás lehetővé teszi, hogy külső szolgáltatásokat lehessen a rendszerbe integrálni.
 
-### <a name="definition-of-technical-specifications"></a>A műszaki specifikációk meghatározása
+### <a name="definition-of-technical-specifications"></a> A műszaki specifikációk meghatározása
 
 Az alábbi táblázat ismerteti a jelenleg támogatott REST API-k összes verzióját. Az egyes verziók definíciófájlját is megtalálja
 
@@ -130,9 +130,9 @@ API | `1.0-preview` | `1.0`
 --- | --- | ---
 [Szétküldés mindenkinek](#broadcast) | **&#x2713;** | **&#x2713;**
 [Szétküldés egy csoportnak](#broadcast-group) | **&#x2713;** | **&#x2713;**
-Szétküldés néhány csoportnak | **&#x2713;** Elavult | `N / A`
+Szétküldés néhány csoportnak | **&#x2713;** (elavult) | `N / A`
 [Küldés adott felhasználóknak](#send-user) | **&#x2713;** | **&#x2713;**
-Küldés néhány felhasználónak | **&#x2713;** Elavult | `N / A`
+Küldés néhány felhasználónak | **&#x2713;** (elavult) | `N / A`
 [Felhasználó hozzáadása egy csoporthoz](#add-user-to-group) | `N / A` | **&#x2713;**
 [Felhasználó eltávolítása egy csoportból](#remove-user-from-group) | `N / A` | **&#x2713;**
 
@@ -176,9 +176,9 @@ Verzió | API HTTP-metódus | Kérés URL-címe
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST APIt a Signaler szolgáltatásból az ügyfeleknek küldött valós idejű üzenetek szórására. Következő lépésként tájékozódjon arról, hogyan fejlesztheti és helyezheti üzembe a Azure Functionst a Signal Service-kötéssel, amely REST APIra épül.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST API-t a SignalR szolgáltatás valós idejű üzeneteinek az ügyfeleknek történő közvetítésére. Ezután további információ arról, hogyan fejlesztheti és telepítheti az Azure Functionst a REST API-ra épülő SignalR-szolgáltatáskötéssel.
 
 > [!div class="nextstepaction"]
-> [Azure Functions fejlesztése az Azure Signaler szolgáltatás kötéseinek használatával](signalr-quickstart-azure-functions-csharp.md)
+> [Azure-függvények fejlesztése az Azure SignalR-szolgáltatás kötései vel](signalr-quickstart-azure-functions-csharp.md)

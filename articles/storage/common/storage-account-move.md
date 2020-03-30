@@ -1,6 +1,6 @@
 ---
-title: Azure Storage-fiók áthelyezése másik régióba | Microsoft Docs
-description: Bemutatja, hogyan helyezhető át egy Azure Storage-fiók egy másik régióba.
+title: Azure Storage-fiók áthelyezése másik régióba | Microsoft dokumentumok
+description: Bemutatja, hogyan helyezhet át egy Azure Storage-fiókot egy másik régióba.
 services: storage
 author: normesta
 ms.service: storage
@@ -10,76 +10,76 @@ ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838709"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Storage-fiók áthelyezése másik régióba
 
-Egy Storage-fiók áthelyezéséhez hozzon létre egy másolatot a Storage-fiókról egy másik régióban. Ezután helyezze át az adatait a fiókba a AzCopy használatával vagy más választott eszközzel.
+Tárfiók áthelyezéséhez hozzon létre egy másolatot a tárfiókegy másik régióban. Ezután helyezze át az adatokat a fiókba az AzCopy vagy más választott eszköz használatával.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebben a cikkben megtudhatja, hogyan:
 
 > [!div class="checklist"]
 > 
 > * Sablon exportálása.
-> * Módosítsa a sablont úgy, hogy hozzáadja a célként megadott régiót és a Storage-fiók nevét.
-> * A sablon üzembe helyezésével hozza létre az új Storage-fiókot.
-> * Konfigurálja az új Storage-fiókot.
-> * Helyezze át az adatátvitelt az új Storage-fiókba.
-> * Törölje az erőforrásokat a forrás régióban.
+> * Módosítsa a sablont a célterület és a tárfiók nevének hozzáadásával.
+> * Telepítse a sablont az új tárfiók létrehozásához.
+> * Konfigurálja az új tárfiókot.
+> * Adatok áthelyezése az új tárfiókba.
+> * Törölje az erőforrásokat a forrásrégióban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy a fiók által használt szolgáltatások és szolgáltatások támogatottak a célként megadott régióban.
+- Győződjön meg arról, hogy a fiók által használt szolgáltatások és funkciók támogatottak a célrégióban.
 
-- Az előzetes verziójú funkciók esetében győződjön meg arról, hogy az előfizetése engedélyezett a célként megadott régióban.
+- Az előzetes verziójú funkciók hoz győződjön meg arról, hogy az előfizetés a célrégióban szerepel.
 
 <a id="prepare" />
 
 ## <a name="prepare"></a>Előkészítés
 
-Első lépésként exportálja, majd módosítsa a Resource Manager-sablont. 
+Első lépésekhez exportáljon, majd módosítsa az Erőforrás-kezelő sablonját. 
 
 ### <a name="export-a-template"></a>Sablon exportálása
 
-Ez a sablon a Storage-fiókot leíró beállításokat tartalmaz. 
+Ez a sablon a tárfiókot leíró beállításokat tartalmazza. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Sablon exportálása Azure Portal használatával:
+Sablon exportálása az Azure Portal használatával:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Storage-fiókját.
+2. Válassza az **Összes erőforrás lehetőséget,** majd válassza ki a tárfiókot.
 
-3. Válassza a > **beállítások** > **sablon exportálása**lehetőséget.
+3. Válassza > **Beállítások** > **exportálása sablont.**
 
-4. Válassza a **Letöltés** lehetőséget a **sablon exportálása** panelen.
+4. Válassza a **Letöltés gombot** az **Exportálás sablon** panelen.
 
-5. Keresse meg a portálról letöltött. zip fájlt, és bontsa ki a fájlt egy tetszőleges mappába.
+5. Keresse meg a portálról letöltött .zip fájlt, és csomagolja ki a fájlt egy ön által választott mappába.
 
-   Ez a zip-fájl tartalmazza azokat a. JSON fájlokat, amelyek tartalmazzák a sablont és a parancsfájlokat a sablon telepítéséhez.
+   Ez a zip fájl tartalmazza a sablont és a sablon t.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 Sablon exportálása a PowerShell használatával:
 
-1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
+1. Jelentkezzen be Azure-előfizetésébe a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
 
    ```azurepowershell-interactive
    Connect-AzAccount
    ```
-2. Ha az identitás egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetést az áthelyezni kívánt Storage-fiók előfizetésére.
+2. Ha az identitás egynél több előfizetéshez van társítva, állítsa be az aktív előfizetést az áthelyezni kívánt tárfiók előfizetésére.
 
    ```azurepowershell-interactive
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
    Set-AzContext $context
    ```
 
-3. Exportálja a forrásként szolgáló Storage-fiók sablonját. Ezek a parancsok egy JSON-sablont mentenek az aktuális könyvtárba.
+3. Exportálja a forrástárfiók sablonját. Ezek a parancsok egy jsonsablont mentenek az aktuális könyvtárba.
 
    ```azurepowershell-interactive
    $resource = Get-AzResource `
@@ -95,11 +95,11 @@ Sablon exportálása a PowerShell használatával:
 
 ### <a name="modify-the-template"></a>A sablon módosítása 
 
-Módosítsa a sablont úgy, hogy megváltoztatja a Storage-fiók nevét és a régióját.
+Módosítsa a sablont a tárfiók nevének és régiójának módosításával.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A sablon üzembe helyezése Azure Portal használatával:
+A sablon üzembe helyezése az Azure Portal használatával:
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.
 
@@ -113,9 +113,9 @@ A sablon üzembe helyezése Azure Portal használatával:
 
 5. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
 
-6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template. JSON** fájl betöltéséhez.
+6. Válassza **a Fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template.json** fájl betöltéséhez.
 
-7. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be `mytargetaccount`.
+7. A **template.json** fájlban nevezze el a céltárfiókot a tárfiók nevének alapértelmezett értékének beállításával. Ez a példa a tárfiók nevének alapértelmezett értékét állítja a értékre. `mytargetaccount`
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -137,13 +137,13 @@ A sablon üzembe helyezése Azure Portal használatával:
          "location": "centralus"
          }]          
     ```
-    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, az **USA középső** = **CentralUS**.
+    A régióhely-kódok beszerzéséhez olvassa el az Azure Locations ( Azure Locations ) ( Azure Locations ) ( Azure Locations ) ( Azure Locations ) [(A régió hely](https://azure.microsoft.com/global-infrastructure/locations/)  A régió kódja a terület neve szóközök nélkül, **az USA** = középső**központja**.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-A sablon üzembe helyezése a PowerShell használatával:
+A sablon központi telepítése a PowerShell használatával:
 
-1. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be `mytargetaccount`.
+1. A **template.json** fájlban nevezze el a céltárfiókot a tárfiók nevének alapértelmezett értékének beállításával. Ez a példa a tárfiók nevének alapértelmezett értékét állítja a értékre. `mytargetaccount`
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ A sablon üzembe helyezése a PowerShell használatával:
     },
     ``` 
 
-2. Szerkessze a **Location (hely** ) tulajdonságot a **template. JSON** fájlban a célként megadott régióban. Ez a példa a célként megadott régiót állítja be `eastus`.
+2. A **template.json** fájlban lévő **helytulajdonság** szerkesztése a célterületre. Ez a példa a `eastus`célrégiót állítja a értékre.
 
     ```json
     "resources": [{
@@ -167,7 +167,7 @@ A sablon üzembe helyezése a PowerShell használatával:
          }]          
     ```
 
-    A [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) parancs futtatásával lekérheti a régiókódokat.
+    A régiókódokat a [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) parancs futtatásával szerezheti be.
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -178,31 +178,31 @@ A sablon üzembe helyezése a PowerShell használatával:
 
 ## <a name="move"></a>Áthelyezés
 
-A sablon üzembe helyezésével hozzon létre egy új Storage-fiókot a célként megadott régióban. 
+Telepítse a sablont egy új tárfiók létrehozásához a célrégióban. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Mentse a **template. JSON** fájlt.
+1. Mentse a **template.json** fájlt.
 
-2. Adja meg vagy válassza ki a tulajdonságértékek értékét:
+2. Adja meg vagy jelölje ki a tulajdonságértékeket:
 
-- **Előfizetés**: válasszon ki egy Azure-előfizetést.
+- **Előfizetés**: Válasszon egy Azure-előfizetést.
 
 - **Erőforráscsoport**: Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
 
-- **Hely**: válasszon ki egy Azure-helyet.
+- **Hely**: Válasszon egy Azure-helyet.
 
-3. Jelölje **be az Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Vásárlás kiválasztása** gombra.
+3. Kattintson az **Elfogadom a fenti feltételeket** jelölőnégyzetre, majd kattintson a **Vásárlás kiválasztása** gombra.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-1. Szerezze be azt az előfizetés-azonosítót, amelyben a cél nyilvános IP-címet a [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)használatával szeretné telepíteni:
+1. Szerezze be azt az előfizetés-azonosítót, ahol a célnyilvános [IP-címet a Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)segítségével szeretné telepíteni:
 
    ```azurepowershell-interactive
    Get-AzSubscription
    ```
 
-2. A következő parancsok használatával telepítheti a sablont:
+2. A sablon üzembe helyezéséhez használja az alábbi parancsokat:
 
    ```azurepowershell-interactive
    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -213,70 +213,70 @@ A sablon üzembe helyezésével hozzon létre egy új Storage-fiókot a célkén
    ```
 ---
 
-### <a name="configure-the-new-storage-account"></a>Az új Storage-fiók konfigurálása
+### <a name="configure-the-new-storage-account"></a>Az új tárfiók konfigurálása
 
-Néhány funkció nem exportál sablonba, ezért hozzá kell adnia őket az új Storage-fiókhoz. 
+Egyes funkciók nem exportálják a sablont, így hozzá kell adnia őket az új tárfiókhoz. 
 
-A következő táblázat felsorolja ezeket a funkciókat, valamint útmutatást nyújt azok hozzáadásához az új Storage-fiókhoz.
+Az alábbi táblázat ezeket a funkciókat, valamint útmutatást nyújt az új tárfiókhoz való hozzáadásához.
 
 | Szolgáltatás    | Útmutatás    |
 |--------|-----------|
-| **Életciklus-kezelési szabályzatok** | [Azure Blob Storage-életciklus felügyelete](../blobs/storage-lifecycle-management-concepts.md) |
+| **Életciklus-kezelési irányelvek** | [Azure Blob Storage-életciklus felügyelete](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statikus webhelyek** | [Statikus webhely üzemeltetése az Azure Storage-ban](../blobs/storage-blob-static-website-how-to.md) |
 | **Esemény-előfizetések** | [Reagálás Blob Storage-eseményekre](../blobs/storage-blob-event-overview.md) |
-| **Riasztások** | [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../../azure-monitor/platform/alerts-activity-log.md) |
-| **Content Delivery Network (CDN)** | [Az egyéni tartományokkal rendelkező Blobok elérése a Azure CDN használatával HTTPS-kapcsolaton keresztül](../blobs/storage-https-custom-domain-cdn.md) |
+| **Riasztások** | [Tevékenységnapló-riasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával](../../azure-monitor/platform/alerts-activity-log.md) |
+| **Tartalomkézbesítési hálózat (CDN)** | [Az Azure CDN használata az egyéni tartományokkal HTTPS-kapcsolaton keresztüli blobok eléréséhez](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
-> Ha a forrásként szolgáló Storage-fiókhoz állít be egy CDN-t, csak módosítsa a meglévő CDN eredetét az új fiók elsődleges blob Service-végpontján (vagy az elsődleges statikus webhely végpontján). 
+> Ha cdn-t állít be a forrástárfiókhoz, csak módosítsa a meglévő CDN eredetét az új fiók elsődleges blobszolgáltatás-végpontjára (vagy az elsődleges statikus webhely végpontjára). 
 
-### <a name="move-data-to-the-new-storage-account"></a>Adatáthelyezés az új Storage-fiókba
+### <a name="move-data-to-the-new-storage-account"></a>Adatok áthelyezése az új tárfiókba
 
-Az alábbi módokon helyezheti át az adatait.
+Az alábbiakban az adatok áthelyezését is lehatja.
 
-: heavy_check_mark: **Azure Storage Explorer**
+:heavy_check_mark: **Azure Storage Explorer**
 
-  Könnyen használható, és kisebb adatkészletekhez is alkalmas. Másolja a tárolókat és a fájlmegosztást, majd illessze be őket a célként megadott fiókba.
+  Könnyen használható, és kis adatkészletek hez használható. Másolhatja a tárolókat és a fájlmegosztásokat, majd beillesztheti őket a célfiókba.
 
   Lásd: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/);
 
-: heavy_check_mark: **AzCopy**
+:heavy_check_mark: **AzCopy**
 
-  Ez az előnyben részesített megközelítés. Teljesítményre optimalizált.  Az egyik módszer, hogy gyorsabb, az Adatmásolás közvetlenül a Storage-kiszolgálók között történik, így a AzCopy nem használja a számítógép hálózati sávszélességét. Használjon AzCopy a parancssorban vagy egy egyéni parancsfájl részeként.
+  Ez az előnyben részesített megközelítés. Teljesítményre van optimalizálva.  Az egyik módja, hogy ez gyorsabb, hogy az adatok másolása közvetlenül a tárolókiszolgálók között, így az AzCopy nem használja a hálózati sávszélességet a számítógép. Használja az AzCopy programot a parancssorból vagy egy egyéni parancsfájl részeként.
 
-  Lásd: Ismerkedés [a AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+  Lásd: [Az AzCopy – Első lépések](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-: heavy_check_mark: **Azure Data Factory** 
+:heavy_check_mark: **Azure Data Factory** 
 
-  Ezt az eszközt csak akkor használja, ha olyan funkciókra van szüksége, amelyek nem támogatottak a AzCopy jelenlegi kiadásában. Például a AzCopy jelenlegi kiadásában a Blobok nem másolhatók olyan fiókok között, amelyek hierarchikus névtérrel rendelkeznek. Emellett a AzCopy nem őrzi meg a fájlok hozzáférés-vezérlési listáját vagy a fájl időbélyegét (például: létrehozás és módosítás időbélyegek). 
+  Ezt az eszközt csak akkor használja, ha olyan funkciókra van szüksége, amelyeket az AzCopy jelenlegi kiadása nem támogat. Az AzCopy jelenlegi kiadásában például nem másolhatja a blobokat a hierarchikus névtérrel rendelkező fiókok között. Az AzCopy nem őrzi meg a fájlhozzáférés-vezérlési listákat vagy a fájl időbélyegeit (például időbélyegzők létrehozása és módosítása). 
 
-  Tekintse meg az alábbi hivatkozásokat:
-  - [Adatok másolása az Azure Blob Storage-ba vagy onnan az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Adatok másolása Azure Data Lake Storage Gen2 a Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Adatok másolása az Azure File Storageba vagy az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Adatok másolása az Azure Table Storage-ba és onnan az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  Lásd az alábbi linkeket:
+  - [Adatok másolása az Azure Blob storage-ba vagy onnan az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [Adatok másolása az Azure Data Lake Storage Gen2 szolgáltatásba vagy onnan az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
+  - [Adatok másolása az Azure Data Storage szolgáltatásból vagy az Azure Data Storage szolgáltatásba az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
+  - [Adatok másolása az Azure Table storage-ba és onnan az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
 
 ---
 
-## <a name="discard-or-clean-up"></a>Elvetés vagy tisztítás
+## <a name="discard-or-clean-up"></a>Selejtezés vagy tisztítás
 
-Ha az üzembe helyezést követően el szeretné indítani a műveletet, törölheti a cél Storage-fiókot, és megismételheti a cikk [előkészítés](#prepare) és [Áthelyezés](#move) szakaszában ismertetett lépéseket.
+A telepítés után, ha szeretné újrakezdeni, törölheti a céltárfiókot, és ismételje meg a cikk [Előkészítés](#prepare) és [áthelyezés](#move) szakaszában ismertetett lépéseket.
 
-A módosítások elvégzéséhez és a Storage-fiók áthelyezésének befejezéséhez törölje a forrásként szolgáló Storage-fiókot.
+A módosítások véglegesítéséhez és a tárfiók áthelyezésének befejezéséhez törölje a forrástárfiókot.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Storage-fiók eltávolítása a Azure Portal használatával:
+Tárfiók eltávolítása az Azure Portal használatával:
 
-1. A Azure Portalban bontsa ki a bal oldalon található menüt a szolgáltatások menüjének megnyitásához, majd válassza a **Storage-fiókok** lehetőséget a Storage-fiókok listájának megjelenítéséhez.
+1. Az Azure Portalon bontsa ki a menüt a bal oldalon a szolgáltatások menüjének megnyitásához, és válassza **a Storage-fiókok** a tárfiókok listájának megjelenítéséhez.
 
-2. Keresse meg a törölni kívánt cél Storage-fiókot, és kattintson a jobb gombbal a lista jobb oldalán található **további** gombra ( **...** ).
+2. Keresse meg a törölni kívánt céltárfiókot, és kattintson a jobb gombbal a lista jobb oldalán található **Egyebek** gombra (**...**).
 
-3. Válassza a **Törlés**lehetőséget, és erősítse meg.
+3. Válassza **a Törlés**lehetőséget, és erősítse meg.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új Storage-fiókot is, használja a [Remove-AzStorageAccount](/powershell/module/az.resources/remove-azstorageaccount) parancsot:
+Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új tárfiókot is, használja az [Eltávolítás-AzStorageAccount](/powershell/module/az.resources/remove-azstorageaccount) parancsot:
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount
@@ -285,7 +285,7 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure Storage-fiókot helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
+Ebben az oktatóanyagban áthelyezett egy Azure storage-fiókot az egyik régióból a másikba, és megtisztította a forráserőforrásokat.  Ha többet szeretne tudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vészhelyreállításról:
 
 
 - [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

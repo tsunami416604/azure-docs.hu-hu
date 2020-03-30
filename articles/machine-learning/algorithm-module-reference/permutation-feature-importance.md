@@ -1,7 +1,7 @@
 ---
-title: 'A permutáció funkció fontossága: modul leírása'
+title: 'Permutációs szolgáltatás fontossága: Modul hivatkozása'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a permutáció funkció fontossági modulját Azure Machine Learningban, hogy kiszámítsa a funkció változóinak fontossági sorrendjét a betanított modell és a tesztelési adatkészlet alapján.
+description: Ismerje meg, hogyan használhatja a Permutációs szolgáltatás fontossági modult az Azure Machine Learningben a szolgáltatásváltozók permutációs funkciófontossági pontszámainak kiszámításához egy betanított modell és egy tesztadatkészlet esetén.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,64 +9,64 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920365"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456063"
 ---
 # <a name="permutation-feature-importance"></a>A permutáció funkció fontossága
 
-Ez a cikk azt ismerteti, hogyan használható a permutáció funkció fontossági modulja Azure Machine Learning Designerben (előzetes verzió), hogy számításba lehessen venni az adatkészlet szolgáltatásbeli fontossági pontszámait. Ezekkel a pontszámokkal meghatározhatja a modellben használandó legjobb szolgáltatásokat.
+Ez a cikk ismerteti, hogyan használhatja a Permutációs szolgáltatásfontosság modul az Azure Machine Learning designer (előzetes verzió), az adatkészlet szolgáltatásfontossági pontszámok kiszámításához. Ezeket a pontszámokat arra használhatja, hogy segítsen meghatározni a modellben a legjobb funkciókat.
 
-Ebben a modulban a szolgáltatások értékeit véletlenszerűen rendezi a rendszer, egyszerre egy oszlopot. A modell teljesítményének mérése előtt és után történik. A teljesítmény méréséhez kiválaszthatja a standard mérőszámok egyikét.
+Ebben a modulban a jellemzőértékek véletlenszerűen kerülnek véletlensorrendbe, oszloponként. A modell teljesítményét előtte és utána mérik. A teljesítmény méréséhez válasszon egyet a szabványos metrikák közül.
 
-A modul által visszaadott pontszám a betanított modell teljesítményének *változását* szemlélteti a permutáció után. A fontos funkciók általában érzékenyebbek a csoszogó folyamatra, így magasabb jelentőségű pontszámokat eredményeznek. 
+A modul által visszaadott pontszámok a betanított modell teljesítményének *változását* jelentik a permutáció után. A fontos funkciók általában érzékenyebbek a keverési folyamatra, így nagyobb fontossági pontszámokat eredményeznek. 
 
-Ez a cikk áttekintést nyújt a permutációs szolgáltatásról, annak elméleti alapjairól és alkalmazásairól a Machine learningben: [permutáció funkció fontossága](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Ez a cikk áttekintést nyújt a permutációs funkcióról, annak elméleti alapjairól és a gépi tanulásban alkalmazott [alkalmazásokról: Permutációs funkciófontosság](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
 
-## <a name="how-to-use-permutation-feature-importance"></a>A permutáció szolgáltatás fontosságának használata
+## <a name="how-to-use-permutation-feature-importance"></a>A Permutációs funkció fontosságának használata
 
-A szolgáltatási pontszámok létrehozása megköveteli, hogy már betanított modellel, valamint egy tesztelési adatkészlettel rendelkezzen.  
+A szolgáltatás pontszámok készletének létrehozásához egy már betanított modell, valamint egy teszt adatkészlet szükséges.  
 
-1.  Adja hozzá a permutáció funkció fontossági modulját a folyamathoz. Ezt a modult a **szolgáltatás kiválasztási** kategóriájában találja. 
+1.  Adja hozzá a Permutációs szolgáltatás fontossági modulját a folyamathoz. Ezt a modult a **Szolgáltatáskiválasztása** kategóriában találja. 
 
-2.  Csatlakoztasson egy betanított modellt a bal oldali bemenethez. A modellnek egy regressziós modellnek vagy egy besorolási modellnek kell lennie.  
+2.  Betanított modell csatlakoztatása a bal oldali bemenethez. A modellnek regressziós modellnek vagy besorolási modellnek kell lennie.  
 
-3.  A jobb oldali bemeneten csatlakoztasson egy adatkészletet. Lehetőleg válasszon egyet a modell tanításához használt adatkészlettől. Ez az adatkészlet a betanított modellen alapuló pontozásra szolgál. A modell kiértékelésére is használatos a funkció értékének megváltozása után.  
+3.  A megfelelő beviteli területen csatlakoztasson egy adatkészletet. Lehetőleg válasszon egyet, amely eltér a modell betanításához használt adatkészlettől. Ez az adatkészlet a betanított modell alapján történő pontozáshoz használatos. Azt is használják a modell kiértékelésére, miután a jellemzőértékek megváltoztak.  
 
-4.  **Véletlenszerű vetőmag**esetén adjon meg egy értéket, amelyet a rendszer a véletlenszerű vetőmagként használ. Ha 0 (alapértelmezett) értéket ad meg, a rendszer egy számot hoz létre a rendszeróra alapján.
+4.  A **Véletlenszerű vetőmag**esetében adja meg a randomizáláshoz használt értéket. Ha a 0 értéket adja meg (ez az alapértelmezett), a rendszeróra alapján szám jön létre.
 
-     A mag értéke nem kötelező, de meg kell adnia egy értéket, ha azt szeretné, hogy a reprodukálhatóság az adott folyamaton belül fut.  
+     A kezdőérték nem kötelező, de meg kell adnia egy értéket, ha reprodukálhatóságot szeretne ugyanazon folyamat futtatásai között.  
 
-5.  A **teljesítmény mérésére szolgáló metrika**esetében válassza ki azt a metrikát, amelyet a modell minőségének a permutáció utáni kiszámításához kell használni.  
+5.  A **metrika a teljesítmény méréséhez**válasszon ki egy metrikát, amelyet a modell minőségének permutáció utáni kiszámításakor kell használnia.  
 
-     A Azure Machine Learning Designer a következő mérőszámokat támogatja, attól függően, hogy egy besorolási vagy regressziós modellt értékel-e:  
+     Az Azure Machine Learning tervezője a következő metrikákat támogatja attól függően, hogy besorolási vagy regressziós modellt értékel-e:  
 
     -   **Classification** (Osztályozás)
 
-        Pontosság, pontosság, visszahívás  
+        Pontosság, Pontosság, Visszahívás  
 
-    -   **Regressziós**
+    -   **Regresszió**
 
-        Pontosság, visszahívás, átlagos abszolút hiba, legfelső szintű négyzetes hiba, relatív abszolút hiba, relatív négyzetes hiba, a meghatározás együtthatója  
+        Pontosság, Visszahívás, Átlagos abszolút hiba, Gyökátlagos négyzethiba, Relatív abszolút hiba, Relatív négyzethiba, Meghatározási együttható  
 
-     A kiértékelési mérőszámok részletes ismertetését és azok kiszámításának módját lásd: [modell kiértékelése](evaluate-model.md).  
+     Ezeknek a értékelési mutatóknak és számításuk módjának részletesebb leírását a Modell kiértékelése című témakörben tetszésben [tetszhet.](evaluate-model.md)  
 
-6.  A folyamat futtatása.  
+6.  Küldje el a folyamatot.  
 
-7.  A modul megjeleníti a szolgáltatások oszlopainak listáját, valamint a hozzájuk tartozó pontszámokat. A lista a pontszámok csökkenő sorrendjében van rangsorolva.  
+7.  A modul a jellemzőoszlopok listáját és a hozzájuk társított pontszámokat adja ki. A lista a pontszámok csökkenő sorrendjében van rangsorolva.  
 
 
 ##  <a name="technical-notes"></a>Technikai megjegyzések
 
-A permutáció funkció fontossága úgy működik, hogy véletlenszerűen megváltoztatja az egyes szolgáltatások oszlopainak értékeit, egyszerre egy oszlopot. Ezután kiértékeli a modellt. 
+A permutációs szolgáltatásfontosság úgy működik, hogy véletlenszerűen módosítja az egyes jellemzőoszlopok értékeit, egyszerre egy oszlopot. Ezután kiértékeli a modellt. 
 
-A modul által biztosított rangsorok gyakran eltérnek a [szűrésen alapuló funkció kiválasztásának](filter-based-feature-selection.md)lépéseitől. A szűrésen alapuló funkció kiválasztása a modell létrehozása *előtt* számítja ki a pontszámokat. 
+A modul által biztosított rangsorok gyakran eltérnek a [szűrőalapú szolgáltatásválasztásból](filter-based-feature-selection.md)kapott rangsoroktól. A szűrőalapú szolgáltatáskijelölés a modell létrehozása *előtt* kiszámítja a pontszámokat. 
 
-A különbség oka, hogy a permutáció funkció fontossága nem méri a szolgáltatás és a célérték közötti társítást. Ehelyett rögzíti, hogy az egyes szolgáltatások milyen mértékben befolyásolják a modell előrejelzéseit.
+A különbség oka az, hogy a permutációs funkció fontossági funkció nem méri a szolgáltatás és a célérték közötti társítást. Ehelyett azt rögzíti, hogy az egyes funkciók milyen hatással vannak a modell ből származó előrejelzésekre.
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

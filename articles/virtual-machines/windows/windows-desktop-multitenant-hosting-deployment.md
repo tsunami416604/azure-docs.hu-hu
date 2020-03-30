@@ -1,6 +1,6 @@
 ---
-title: Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal
-description: Ismerje meg, hogyan maximalizálhatja a Windows-frissítési garanciát a helyszíni licencek Azure-ba való bekapcsolásához
+title: A Windows 10 telepítése az Azure-ban több-bérlős üzemeltetési jogokkal
+description: Megtudhatja, hogy miként maximalizálhatja a Windows frissítési garanciával kapcsolatos előnyeit, hogy helyszíni licenceket hozhasson az Azure-ba
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing
@@ -14,39 +14,39 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101500"
 ---
-# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
-A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfeleink számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bekapcsolását Az Azure-on futó Windows 10 Virtual Machines a másik licenc kifizetése nélkül futtathatók. További információ: több- [bérlős üzemeltetés a Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
+# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>A Windows 10 telepítése az Azure-ban több-bérlős üzemeltetési jogokkal 
+A Windows 10 Enterprise E3/E5 rendszerrel felhasználónként i vagy Windows Virtual Desktop Access felhasználónkénti (felhasználói előfizetési licencek vagy bővítményfelhasználói-előfizetési licencek) rendelkező ügyfelek számára a Windows 10 több-bérlős üzemeltetési jogai lehetővé teszik, hogy windows 10-es licenceit a felhőbe hozza, és a Windows 10 virtuális gépeket az Azure-ban anélkül futtatja, hogy másik licencért fizetne. További információ: [Több-bérlős tárhely a Windows 10-hez.](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
 
 > [!NOTE]
-> Ebből a cikkből megtudhatja, hogyan valósítja meg a Windows 10 Pro asztali rendszerképek licencelési előnyeit az Azure Marketplace-en.
-> - Windows 7, 8,1, 10 Enterprise (x64) rendszerképek az Azure Marketplace-en MSDN-előfizetések esetén: [fejlesztői és tesztelési forgatókönyvek az Azure-beli Windows-ügyfélen](client-images.md)
-> - A Windows Server licencelési előnyeinek kihasználásához tekintse meg a [Windows Server rendszerképekhez készült Azure Hybrid use](hybrid-use-benefit-licensing.md)Benefits című témakört.
+> Ez a cikk bemutatja, hogy valósítsa meg a licencelési előnyt a Windows 10 Pro asztali rendszerképek az Azure Marketplace-en.
+> - Windows 7, 8.1, 10 Enterprise (x64) rendszerképek esetén az Azure Piactéren az MSDN-előfizetésekhez, tekintse meg [a Windows-ügyfél az Azure-ban a fejlesztési és tesztelési forgatókönyveket](client-images.md)
+> - A Windows Server licencelési előnyeiről az [Azure Hybrid Windows Server-lemezképekhez való használatának előnyeit](hybrid-use-benefit-licensing.md)olvassa el.
 >
 
-## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Windows 10 rendszerkép üzembe helyezése az Azure Marketplace-en 
-A PowerShell, a parancssori felület és a Azure Resource Manager sablon üzembe helyezése esetén a Windows 10-es rendszerkép a következő közzétevő neve, ajánlattal, SKU-val érhető el.
+## <a name="deploying-windows-10-image-from-azure-marketplace"></a>A Windows 10-lemezkép telepítése az Azure Piactérről 
+A Powershell, cli és az Azure Resource Manager sablon telepítések, a Windows 10-lemezkép megtalálható a következő közzétevőnév, ajánlat, sku.
 
-| OS  |      Közzétevő neve      |  Ajánlat | Termékváltozat |
+| Operációs rendszer  |      Közzétevő neve      |  Ajánlat | SKU |
 |:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3 – elterült  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10 rendszerben  | RS2-Pro   |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10 rendszerben  | RS2-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10 rendszerben  | RS3-Pro   |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10 rendszerben  | RS3-ProN  |
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 virtuális merevlemez feltöltése az Azure-ba
-Ha általánosított Windows 10 virtuális merevlemezt tölt fel, vegye figyelembe, hogy a Windows 10 alapértelmezés szerint nincs engedélyezve a beépített rendszergazdai fiókkal. A beépített rendszergazdai fiók engedélyezéséhez a következő parancsot adja meg az egyéni szkriptek bővítményének részeként.
+ha általános Windows 10 vhd-t tölt fel, kérjük, vegye figyelembe, hogy a Windows 10 alapértelmezés szerint nem rendelkezik beépített rendszergazdai fiókkal. A beépített rendszergazdai fiók engedélyezéséhez vegye fel a következő parancsot az egyéni parancsfájl-bővítménybe.
 
 ```powershell
 Net user <username> /active:yes
 ```
 
-A következő PowerShell-kódrészlet az összes rendszergazdai fiók aktívként való megjelölése, beleértve a beépített rendszergazdát is. Ez a példa akkor hasznos, ha a beépített rendszergazda felhasználóneve ismeretlen.
+A következő powershell-kódrészlet az összes rendszergazdai fiók aktívként való megjelölése, beleértve a beépített rendszergazdát is. Ez a példa akkor hasznos, ha a beépített rendszergazdai felhasználónév ismeretlen.
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)
@@ -56,12 +56,12 @@ if($adminAccount.Disabled)
 }
 ```
 További információk: 
-* [Virtuális merevlemez feltöltése az Azure-ba](upload-generalized-managed.md)
-* [Windows rendszerű virtuális merevlemez előkészítése az Azure-ba való feltöltésre](prepare-for-upload-vhd-image.md)
+* [A virtuális merevlemez feltöltése az Azure-ba](upload-generalized-managed.md)
+* [Windows VHD előkészítése az Azure-ba való feltöltéshez](prepare-for-upload-vhd-image.md)
 
 
-## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>A Windows 10 telepítése több-bérlős üzemeltetési jogosultságokkal
-Győződjön meg arról, hogy [telepítette és konfigurálta a legújabb Azure PowerShell](/powershell/azure/overview). Miután előkészítette a VHD-t, töltse fel a virtuális merevlemezt az Azure `Add-AzVhd` Storage-fiókjába az alábbi parancsmaggal:
+## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>A Windows 10 telepítése több-bérlős üzemeltetési jogokkal
+Győződjön meg arról, hogy [telepítette és konfigurálta a legújabb Azure PowerShellt.](/powershell/azure/overview) Miután elkészítette a virtuális merevlemezt, töltse fel a `Add-AzVhd` virtuális merevlemezt az Azure Storage-fiókba a parancsmag használatával az alábbiak szerint:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -69,7 +69,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Üzembe helyezés Azure Resource Manager sablon használatával** A Resource Manager-sablonokon belül egy további paraméter `licenseType` is megadható. További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md). Miután feltöltötte a VHD-t az Azure-ba, szerkessze a Resource Manager-sablont, hogy tartalmazza a licenc típusát a számítási szolgáltató részeként, és telepítse a sablont a szokásos módon:
+**Üzembe helyezés az Azure Resource Manager-sablon telepítésével** Az Erőforrás-kezelő sablonokon belül `licenseType` egy további paraméter is megadható. Az [Azure Resource Manager-sablonok szerzőiről olvashat bővebben.](../../resource-group-authoring-templates.md) Miután feltöltötte a virtuális merevlemezt az Azure-ba, szerkesztheti a Resource Manager-sablont, hogy az tartalmazza a licenctípust a számítási szolgáltató részeként, és telepítse a sablont a szokásos módon:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -78,18 +78,18 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**Üzembe helyezés a PowerShell** használatával A Windows Server rendszerű virtuális gép PowerShell használatával történő telepítésekor további paramétert `-LicenseType`is megadhat. Miután feltöltötte a VHD-t az Azure-ba, létrehoz `New-AzVM` egy virtuális gépet a használatával, és megadja a licencelés típusát a következő módon:
+**Üzembe helyezés a PowerShellen keresztül** A Windows Server virtuális gép PowerShellen keresztüli telepítésekor rendelkezik egy további paraméterrel. `-LicenseType` Miután feltöltötte a virtuális merevlemezt az Azure-ba, virtuális gépet hoz létre a licencelés im-je használatával, `New-AzVM` és a következőképpen adhatja meg a licencelés típusát:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
-## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Annak ellenőrzése, hogy a virtuális gép használja-e a licencelési kedvezményt
-Miután telepítette a virtuális gépet a PowerShell vagy a Resource Manager üzembe helyezési módszerével, ellenőrizze a licenc típusát `Get-AzVM` a következő módon:
+## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Ellenőrizze, hogy a virtuális gép használja-e a licencelési előnyt
+Miután üzembe helyezte a virtuális gépet a PowerShell vagy az Erőforrás-kezelő telepítési módszerén keresztül, ellenőrizze a licenctípusát az `Get-AzVM` alábbiak szerint:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
-A kimenet a következő példához hasonló a Windows 10-es megfelelő licenccel:
+A kimenet hasonló a következő példához a megfelelő licenctípussal rendelkező Windows 10 esetében:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -97,7 +97,7 @@ Location                 : westus
 LicenseType              : Windows_Client
 ```
 
-Ez a kimenet ellentétben áll a következő, Azure Hybrid Use Benefit licencelés nélkül üzembe helyezett virtuális géppel, például egy közvetlenül az Azure-katalógusból üzembe helyezett virtuális géppel:
+Ez a kimenet ellentétben áll az Azure Hybrid Use Benefit licencelés e nélkül üzembe helyezett következő virtuális gépekkel, például egy közvetlenül az Azure Gallery-ből telepített virtuális géptel:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -107,12 +107,12 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>További információ az Azure AD-hez való csatlakozásról
 >[!NOTE]
->Az Azure minden olyan Windowsos virtuális gépet kiépít, amely beépített rendszergazdai fiókkal rendelkezik, ezért nem használható a HRE való csatlakozáshoz. Például a *beállítások > a fiók > hozzáférés munkahelyi vagy iskolai > + Kapcsolódás* nem fog működni. Az Azure AD-hez való csatlakozáshoz második rendszergazdai fiókot kell létrehoznia és bejelentkeznie. Az Azure AD-t egy kiépítési csomaggal is konfigurálhatja, ha további információra van szüksége, használja a *következő lépések* szakaszt.
+>Az Azure minden beépített rendszergazdai fiókkal rendelkező Windows-virtuális gépet tartalmaz, amely nem használható az AAD-hez való csatlakozáshoz. Például *a Beállítások > a fiók > az Access Work vagy az Iskolai > +Connect* nem fog működni. Létre kell hoznia, és jelentkezzen be, mint egy második rendszergazdai fiók, hogy manuálisan csatlakozzon az Azure AD-hez. Az Azure AD-t is konfigurálhatja egy kiépítési csomag használatával, használja a hivatkozást a *Következő lépések* szakaszban, hogy további.
 >
 >
 
-## <a name="next-steps"></a>További lépések
-- További információ a [Windows 10 rendszerhez készült VDA konfigurálásáról](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
-- További információ a [Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx) készült több-bérlős üzemeltetésről
+## <a name="next-steps"></a>Következő lépések
+- További információ [a VDA windows 10-es konfigurálásáról](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
+- További információ [a Windows 10 többbérlős üzemeltetéséről](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
 
 
