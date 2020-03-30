@@ -1,33 +1,33 @@
 ---
-title: Térkép stílusának beállítása a Azure Maps Android SDK-val | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, Microsoft Azure térképek stílussal kapcsolatos funkciói az Android SDK-hoz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Térképstílus beállítása az Azure Maps Android SDK használatával| Microsoft Azure Maps
+description: Ebben a cikkben megismerheti az Android SDK Microsoft Azure Maps stílussal kapcsolatos funkcióit.
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 96564a89a2b64203eef913b0d8300f0dafa332c5
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334351"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Térkép stílusának beállítása a Azure Maps Android SDK-val
+# <a name="set-map-style-using-azure-maps-android-sdk"></a>Térképstílus beállítása az Azure Maps Android SDK használatával
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a leképezési stílusokat a Azure Maps Android SDK használatával. A Azure Maps hat különböző leképezési stílus közül választhat. A támogatott térképi stílusokkal kapcsolatos további információkért tekintse [meg a Azure Maps támogatott leképezési stílusait](./supported-map-styles.md).
+Ez a cikk két módon állíthatja be a térképstílusokat az Azure Maps Android SDK használatával. Az Azure Maps hat különböző térképstílus közül választhat. A támogatott térképstílusokról az [Azure Maps támogatott térképstílusok című témakörében](./supported-map-styles.md)talál további információt.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t egy Térkép betöltéséhez.
+A folyamat befejezéséhez ebben a cikkben telepítenie kell az [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) betölteni egy térképet.
 
 
-## <a name="set-map-style-in-the-layout"></a>Térkép stílusának beállítása az elrendezésben
+## <a name="set-map-style-in-the-layout"></a>Térképstílus beállítása az elrendezésben
 
-A tevékenység osztályának elrendezési fájljában megadhat egy térképi stílust. Szerkessze a **res > elrendezést > activity_main. xml fájlban**, így a következőképpen néz ki:
+A tevékenységosztály elrendezésfájljában térképstílust állíthat be. Az **activity_main.xml > > szerkesztése,** így az alábbielrendezésnek tűnik:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,15 +51,15 @@ A tevékenység osztályának elrendezési fájljában megadhat egy térképi st
 </FrameLayout>
 ```
 
-A fenti `mapcontrol_style` attribútum a leképezési stílust **grayscale_darkre**állítja. 
+A `mapcontrol_style` fenti attribútum a térképstílust **grayscale_dark**állítja. 
 
 <center>
 
-![Style-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![stílus-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
-## <a name="set-map-style-in-the-activity-class"></a>Térkép stílusának beállítása a tevékenység osztályban
+## <a name="set-map-style-in-the-activity-class"></a>Térképstílus beállítása a tevékenységosztályban
 
-A Térkép stílusa beállítható a tevékenység osztályban. Másolja a következő kódrészletet a `MainActivity.java` osztály **onCreate ()** metódusára. Ez a kód **satellite_road_labelsre**állítja be a leképezési stílust.
+A térképstílus beállítható a tevékenységosztályban. Másolja a következő kódrészletet az `MainActivity.java` osztály **onCreate()** metódusába. Ez a kód a térkép stílusát **satellite_road_labels**állítja.
 
 ```Java
 mapControl.onReady(map -> {
@@ -73,4 +73,4 @@ mapControl.onReady(map -> {
 
 <center>
 
-![Style-Satellite-Road-labels](./media/set-android-map-styles/satellite-road-labels.png)</center>
+![stílus-műholdas-road-címkék](./media/set-android-map-styles/satellite-road-labels.png)</center>

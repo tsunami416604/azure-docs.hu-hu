@@ -1,7 +1,7 @@
 ---
-title: Az eredmények a Active Directory használatával történő levágására szolgáló biztonsági szűrők
+title: Az eredmények az Active Directory használatával történő vágásához használt biztonsági szűrők
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search-tartalmak hozzáférés-vezérlése biztonsági szűrők és Azure Active Directory (HRE) identitások használatával.
+description: Hozzáférés-vezérlés az Azure Cognitive Search tartalom biztonsági szűrők és az Azure Active Directory (AAD) identitások használatával.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,61 +9,61 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794301"
 ---
-# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Az Azure Cognitive Search eredményeinek Active Directory identitások használatával történő kivágására szolgáló biztonsági szűrők
+# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Biztonsági szűrők az Azure Cognitive Search eredményeinek az Active Directory-identitások használatával történő vágásához
 
-Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (HRE) biztonsági identitások az Cognitive Search Azure-beli szűrőkkel együtt, hogy a keresési eredményeket a felhasználói csoporttagság alapján vágja le.
+Ez a cikk bemutatja, hogyan használhatja az Azure Active Directory (AAD) biztonsági identitások és szűrők az Azure Cognitive Search a keresési eredmények a felhasználói csoporttagság alapján.
 
 Ez a cikk a következő feladatokat mutatja be:
 > [!div class="checklist"]
-> - HRE-csoportok és-felhasználók létrehozása
-> - A felhasználó hozzárendelése a létrehozott csoporthoz
+> - AAD-csoportok és felhasználók létrehozása
+> - A felhasználó társítása a létrehozott csoporttal
 > - Az új csoportok gyorsítótárazása
 > - Dokumentumok indexelése társított csoportokkal
-> - Keresési kérelem kibocsátása csoportazonosító szűrővel
+> - Keresési kérelem kiadása csoportazonosítók szűrővel
 > 
 > [!NOTE]
-> A cikkben szereplő mintakód-kódrészletek beírása C#. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. 
+> A cikkben szereplő mintakódrészletek C#-ban vannak megírva. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Cognitive Searchban lévő indexnek rendelkeznie kell egy olyan [biztonsági mezővel](search-security-trimming-for-azure-search.md) , amely a dokumentum olvasási hozzáféréssel rendelkező csoport-identitások listáját tárolja. Ez a használati eset feltételezi, hogy egy-az-egyhez a biztonságos elemek (például az egyéni főiskolai alkalmazások) és egy biztonsági mező, amely meghatározza, hogy ki férhet hozzá az adott tételhez (a felvételi személyzethez).
+Az Azure Cognitive Search indexének rendelkeznie kell egy [biztonsági mezővel](search-security-trimming-for-azure-search.md) a dokumentumhoz olvasási hozzáféréssel rendelkező csoportidentitások listájának tárolásához. Ez a használati eset egy-az-egyhez megfelelést feltételez egy biztonságos cikk (például egy személy főiskolai jelentkezése) és egy biztonsági mező között, amely meghatározza, hogy ki férhet hozzá az adott tételhez (felvételi személyzet).
 
-A HRE-ben a felhasználók, csoportok és társítások létrehozásához a HRE rendszergazdai engedélyekkel kell rendelkeznie.
+Az AAD-rendszergazdai engedélyekkel kell rendelkeznie, amelyek a forgatókönyvben szükségesek a felhasználók, csoportok és társítások aAAD-ban való létrehozásához.
 
-Az alkalmazásnak a HRE-ben is regisztrálva kell lennie az alábbi eljárásban leírtak szerint.
+A jelentkezését regisztrálni kell az AAD-nél is, az alábbi eljárásnak megfelel.
 
-### <a name="register-your-application-with-aad"></a>Az alkalmazás regisztrálása a HRE
+### <a name="register-your-application-with-aad"></a>A jelentkezés regisztrálása az AAD-nál
 
-Ez a lépés integrálja az alkalmazást a HRE-mel, hogy elfogadja a felhasználói és csoportfiókok bejelentkezését. Ha Ön nem HRE-rendszergazda a szervezetben, lehetséges, hogy [létre kell hoznia egy új bérlőt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) az alábbi lépések végrehajtásához.
+Ez a lépés integrálja az alkalmazást az AAD-vel a felhasználói és csoportfiókok bejelentkezéseinek elfogadása céljából. Ha nem AAD-rendszergazda a szervezetben, előfordulhat, hogy létre kell [hoznia egy új bérlőt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) a következő lépések végrehajtásához.
 
-1. Nyissa meg az [**alkalmazás regisztrációs portálját**](https://apps.dev.microsoft.com) >  **konvergált alkalmazás** > **adjon hozzá egy alkalmazást**.
-2. Adja meg az alkalmazás nevét, majd kattintson a **Létrehozás**gombra. 
-3. Válassza ki az újonnan regisztrált alkalmazást a saját alkalmazások oldalon.
-4. Az alkalmazás regisztrációja lapon > **platformok** > **platform hozzáadása**területen válassza a **webes API**lehetőséget.
-5. Továbbra is az alkalmazás regisztrációja oldalon lépjen > **Microsoft Graph engedélyek** > **Hozzáadás**gombra.
-6. Az engedélyek kiválasztása területen adja hozzá a következő delegált engedélyeket, majd kattintson az **OK**gombra:
+1. Nyissa meg az [**Alkalmazásregisztrációs portál**](https://apps.dev.microsoft.com) >  **konvergens alkalmazás** > **alkalmazás hozzáadása**.
+2. Adja meg az alkalmazás nevét, majd kattintson a **Létrehozás gombra.** 
+3. Válassza ki az újonnan regisztrált alkalmazást a Saját alkalmazások lapon.
+4. Az alkalmazásregisztrációs lapon > **Platformok** > **platform hozzáadása**lapon válassza a Webes **API**lehetőséget.
+5. Még mindig az alkalmazás regisztrációs lapján nyissa meg > **Microsoft Graph engedélyek** > **hozzáadása című lapot.**
+6. Az Engedélyek kiválasztása csoportban adja hozzá a következő delegált engedélyeket, majd kattintson az **OK**gombra:
 
-   + **Directory. ReadWrite. All**
-   + **Group. ReadWrite. All**
-   + **User. ReadWrite. All**
+   + **Directory.ReadWrite.All**
+   + **Group.ReadWrite.All**
+   + **User.ReadWrite.All**
 
-A Microsoft Graph olyan API-t biztosít, amely lehetővé teszi a programozott hozzáférést a HRE egy REST APIon keresztül. Az útmutatóhoz tartozó mintakód a Microsoft Graph API-nak a csoportok, a felhasználók és a társítások létrehozásához szükséges engedélyeit használja. Az API-k a csoportok azonosítóinak gyorsítótárazására is használhatók a gyorsabb szűrés érdekében.
+A Microsoft Graph olyan API-t biztosít, amely lehetővé teszi az AAD programozott elérését egy REST API-n keresztül. A forgatókönyv kódmintája a Microsoft Graph API hívására vonatkozó engedélyeket használja csoportok, felhasználók és társítások létrehozásához. Az API-k is használják a csoportazonosítók gyorsítótárazására a gyorsabb szűrés érdekében.
 
 ## <a name="create-users-and-groups"></a>Felhasználók és csoportok létrehozása
 
-Ha a keresést egy létrehozott alkalmazáshoz adja hozzá, lehetséges, hogy már van felhasználói és csoportazonosító a HRE-ben. Ebben az esetben kihagyhatja a következő három lépést. 
+Ha egy létrehozott alkalmazáshoz ad hozzá keresést, előfordulhat, hogy meglévő felhasználói és csoportazonosítókkal rendelkezik az AAD-ben. Ebben az esetben kihagyhatja a következő három lépést. 
 
-Ha azonban nem rendelkezik meglévő felhasználókkal, a rendszerbiztonsági tag létrehozásához Microsoft Graph API-kat használhat. A következő kódrészletek bemutatják, hogyan hozhatja ki az azonosítókat, amelyek az Azure Cognitive Search index biztonsági mezőjének adatértékei lesznek. A feltételezett főiskolai felvételi alkalmazásban ez a bevezetések személyzetének biztonsági azonosítója lenne.
+Ha azonban nem rendelkezik meglévő felhasználókkal, a Microsoft Graph API-k segítségével létrehozhatja a rendszerbiztonsági tagokat. A következő kódrészletek bemutatják, hogyan hozhat létre azonosítókat, amelyek az Azure Cognitive Search index biztonsági mezőjének adatértékeivé válnak. A mi hipotetikus főiskolai felvételi kérelmet, ez lenne a biztonsági azonosítók felvételi személyzet.
 
-A felhasználók és a csoportok tagsága nagyon sok folyadék lehet, különösen a nagyméretű szervezeteknél. A felhasználók és csoportok identitásait felépítő programkódnak elég gyakran kell futnia ahhoz, hogy felvegye a változtatásokat a szervezeti tagságban. Hasonlóképpen, az Azure Cognitive Search indexéhez hasonló frissítési ütemtervre van szükség, hogy tükrözze az engedélyezett felhasználók és erőforrások aktuális állapotát.
+A felhasználói és csoporttagság nagyon gördülékeny lehet, különösen a nagy szervezeteknél. A felhasználói és csoportidentitásokat létrehozó kódnak elég gyakran kell futnia ahhoz, hogy felvegye a szervezeti tagság változásait. Hasonlóképpen az Azure Cognitive Search indexéhez is hasonló frissítési ütemezésre van szükség, hogy tükrözze az engedélyezett felhasználók és erőforrások aktuális állapotát.
 
-### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>1\. lépés: [HRE-csoport](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) létrehozása 
+### <a name="step-1-create-aad-group"></a>1. lépés: [AAD-csoport](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) létrehozása 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>2\. lépés: [HRE-felhasználó](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) létrehozása
+### <a name="step-2-create-aad-user"></a>2. lépés: [AAD-felhasználó](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) létrehozása
 ```csharp
 User user = new User()
 {
@@ -92,25 +92,25 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>3\. lépés: a felhasználó és a csoport hozzárendelése
+### <a name="step-3-associate-user-and-group"></a>3. lépés: Felhasználó és csoport társítása
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>4\. lépés: a csoportok azonosítóinak gyorsítótárazása
-Ha szeretné csökkenteni a hálózati késést, gyorsítótárba helyezheti a felhasználói csoport társításait, így a keresési kérelem kiadása után a rendszer visszaadja a csoportokat a gyorsítótárból, és egy oda-vissza menti a HRE. A [HRE batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) használatával egyetlen HTTP-kérést küldhet több felhasználóval, és felépítheti a gyorsítótárat.
+### <a name="step-4-cache-the-groups-identifiers"></a>4. lépés: A csoportazonosítók gyorsítótárazása
+A hálózati késés csökkentése érdekében gyorsítótárazni tudja a felhasználói csoporttársításokat, hogy a keresési kérelem kiadásakor a rendszer csoportokat küldjön vissza a gyorsítótárból, és mentsen egy oda-vissza utat az AAD-re. [Az AAD Batch API segítségével](https://developer.microsoft.com/graph/docs/concepts/json_batching) egyetlen Http-kérelmet küldhet több felhasználóval, és létrehozhatja a gyorsítótárat.
 
-A Microsoft Graph nagy mennyiségű kérelem kezelésére szolgál. Ha a rendszer több kérést is felvesz, Microsoft Graph a 429-as HTTP-állapotkód alapján meghiúsul a kérelem. További információ: [Microsoft Graph szabályozás](https://developer.microsoft.com/graph/docs/concepts/throttling).
+A Microsoft Graph nagy mennyiségű kérelem kezelésére szolgál. Ha túlnyomó számú kérelem történik, a Microsoft Graph a 429-es HTTP-állapotkóddal rendelkező kérést meghiúsítja. További információt a [Microsoft Graph szabályozása](https://developer.microsoft.com/graph/docs/concepts/throttling)című témakörben talál.
 
-## <a name="index-document-with-their-permitted-groups"></a>Dokumentum indexelése az engedélyezett csoportokkal
+## <a name="index-document-with-their-permitted-groups"></a>Bizonylat indexelése az engedélyezett csoportokkal
 
-Az Azure Cognitive Searchban végrehajtott lekérdezési műveletek Azure Cognitive Search-indexen keresztül hajthatók végre. Ebben a lépésben az indexelési művelet a kereshető adatmennyiséget egy indexbe importálja, beleértve a biztonsági szűrőként használt azonosítókat. 
+Az Azure Cognitive Search lekérdezési műveletei az Azure Cognitive Search indexen keresztül kerülnek végrehajtásra. Ebben a lépésben egy indexelő művelet importálja a kereshető adatokat egy indexbe, beleértve a biztonsági szűrőkként használt azonosítókat is. 
 
-Az Azure Cognitive Search nem hitelesíti a felhasználói identitásokat, illetve nem biztosít logikát annak meghatározásához, hogy egy felhasználó milyen tartalmat tekinthet meg. A biztonsági kivágás használati esete feltételezi, hogy Ön biztosítja a bizalmas dokumentum és a dokumentumhoz hozzáféréssel rendelkező csoportazonosító közötti társítást, és a rendszer érintetlenül importál egy keresési indexbe. 
+Az Azure Cognitive Search nem hitelesíti a felhasználói identitásokat, és nem biztosít logikát annak megállapításához, hogy a felhasználó melyik tartalom megtekintésére jogosult. A biztonsági vágás használati esete feltételezi, hogy ön adja meg a kapcsolatot egy bizalmas dokumentum és a dokumentumhoz hozzáféréssel rendelkező csoportazonosító között, amelyet sértetlenül importál egy keresési indexbe. 
 
-A feltételezett példában egy Azure Cognitive Search indexbe helyezett PUT-kérelem törzse magában foglalja a pályázó főiskolai tanulmányát vagy átiratát, valamint a csoport azonosítóját, amely jogosult a tartalom megtekintésére. 
+A hipotetikus példában a szervezet a PUT-kérelem egy Azure Cognitive Search index tartalmazná a kérelmező főiskolai esszé vagy átirata mellett a csoport azonosítója, amelynek engedélye van a tartalom megtekintéséhez. 
 
-A jelen útmutatóban a kódban használt általános példában az index művelet a következőképpen nézhet ki:
+A forgatókönyv kódmintájában használt általános példában az indexművelet a következőképpen nézhet ki:
 
 ```csharp
 var actions = new IndexAction<SecuredFiles>[]
@@ -132,13 +132,13 @@ _indexClient.Documents.Index(batch);
 
 ## <a name="issue-a-search-request"></a>Keresési kérelem kiadása
 
-A biztonsági kivágási célokra az index biztonsági mezőjében szereplő értékek a keresési eredményekben található dokumentumok belefoglalásához vagy kizárásához használt statikus értékek. Ha például a (z) "A11B22C33D44-E55F66G77-H88I99JKK" típusú felvételekhez tartozó csoportazonosító, az Azure Cognitive Search indexben lévő minden olyan dokumentum szerepel (vagy kizárva), amely a kérelmezőnek visszaadott keresési eredmények között szerepel.
+Biztonsági vágási célokra az index biztonsági mezőjében lévő értékek statikus értékek, amelyek a dokumentumok keresési eredményekben való felolására vagy kizárására szolgálnak. Ha például a felvételi csoport azonosítója "A11B22C33D44-E55F66G77-H88I99JKKK", az Azure Cognitive Search indexben lévő, a megadott azonosítóval rendelkező dokumentumok szerepelnek (vagy ki vannak zárva) a kérelmezőnek visszaküldött keresési eredményekben.
 
-A kérést kiállító felhasználó csoportjai alapján a keresési eredményekben visszaadott dokumentumok szűréséhez tekintse át a következő lépéseket.
+A keresési eredményekben visszaadott dokumentumok szűréséhez tekintse át a következő lépéseket a kérelmet kiállító felhasználó csoportjai alapján.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>1\. lépés: a felhasználó csoport-azonosítóinak beolvasása
+### <a name="step-1-retrieve-users-group-identifiers"></a>1. lépés: A felhasználó csoportazonosítóinak lekérése
 
-Ha a felhasználó csoportjai még nem lettek gyorsítótárazva, vagy a gyorsítótár lejárt, adja ki a [csoportok](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) kérését
+Ha a felhasználó csoportjai még nem voltak gyorsítótárazva, vagy a gyorsítótár lejárt, adja ki a [csoportok](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) kérését
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -164,9 +164,9 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>2\. lépés: a keresési kérelem összeállítása
+### <a name="step-2-compose-the-search-request"></a>2. lépés: A keresési kérelem összeállítása
 
-Feltéve, hogy a felhasználó csoportjának tagsága van, a keresési kérést a megfelelő szűrési értékekkel adhatja ki.
+Feltéve, hogy rendelkezik a felhasználó csoporttagságával, a keresési kérelmet a megfelelő szűrőértékekkel bocsáthatja ki.
 
 ```csharp
 string filter = String.Format("groupIds/any(p:search.in(p, '{0}'))", string.Join(",", groups.Select(g => g.ToString())));
@@ -178,16 +178,16 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>3\. lépés: az eredmények kezelése
+### <a name="step-3-handle-the-results"></a>3. lépés: Az eredmények kezelése
 
-A válasz magában foglalja a dokumentumok szűrt listáját, amely azokat a felhasználókat tartalmazza, amelyeknek a megtekintésére jogosult. A keresési eredmények oldalának létrehozási módjától függően előfordulhat, hogy a szűrt eredményhalmaz megjelenítéséhez vizuális kifejezéseket szeretne használni.
+A válasz a dokumentumok szűrt listáját tartalmazza, amely azokat tartalmazza, amelyek megtekintésére a felhasználó jogosult. Akeresési eredmények lapjának felépítésétől függően érdemes lehet vizuális jelzéseket is megadni a szűrt eredményhalmaznak megfelelően.
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben az útmutatóban megtanulta a HRE-bejelentkezések használatának folyamatait a dokumentumok Azure-beli Cognitive Search eredményekben való szűréséhez, a kérelemben megadott szűrőnek nem megfelelő dokumentumok eredményeinek a kivágásával.
+Ebben a forgatókönyvben megtanulta az AAD-bejelentkezések használatával a dokumentumok szűrésére az Azure Cognitive Search eredményeinek szűréséhez, és levágja a kérésben megadott szűrőnek nem megfelelő dokumentumok eredményeit.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-+ [Identitás-alapú hozzáférés-vezérlés az Azure Cognitive Search szűrők használatával](search-security-trimming-for-azure-search.md)
-+ [Szűrők az Azure Cognitive Search](search-filters.md)
-+ [Adatbiztonság és hozzáférés-vezérlés az Azure Cognitive Search Operations szolgáltatásban](search-security-overview.md)
++ [Identitásalapú hozzáférés-vezérlés az Azure Cognitive Search szűrőivel](search-security-trimming-for-azure-search.md)
++ [Szűrők az Azure Cognitive Search szolgáltatásban](search-filters.md)
++ [Adatbiztonság és hozzáférés-vezérlés az Azure Cognitive Search műveleteiben](search-security-overview.md)

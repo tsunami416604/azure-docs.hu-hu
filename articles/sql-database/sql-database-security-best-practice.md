@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77506227"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387648"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Forgatókönyv a gyakori biztonsági követelmények kezelésére az Azure SQL-adatbázissal
 
@@ -657,7 +657,7 @@ Az adatbázis-események nyomon követése segít megérteni az adatbázis-tevé
 **Bevált gyakorlatok:**
 
 - Ha az adatbázis-kiszolgálón konfigurálja az [SQL Database Auditing rendszert](sql-database-auditing.md) az események naplózására, a rendszer az adott kiszolgálón lévő összes meglévő és újonnan létrehozott adatbázist naplózza.
-- Alapértelmezés szerint a naplózási házirend tartalmazza az adatbázisokon végrehajtott összes műveletet (lekérdezéseket, tárolt eljárásokat és sikeres bejelentkezéseket), ami nagy mennyiségű naplózási naplót eredményezhet. A [PowerShell használatával a különböző típusú műveletek és műveletcsoportok naplózásának konfigurálása](sql-database-auditing.md#subheading-7)ajánlott. Ennek konfigurálása segít a naplózott műveletek számának szabályozásában, és minimálisra csökkenti az eseményvesztés kockázatát. Az egyéni naplózási konfiguráció lehetővé teszi az ügyfelek számára, hogy csak a szükséges naplózási adatokat rögzítsék.
+- Alapértelmezés szerint a naplózási házirend tartalmazza az adatbázisokon végrehajtott összes műveletet (lekérdezéseket, tárolt eljárásokat és sikeres bejelentkezéseket), ami nagy mennyiségű naplózási naplót eredményezhet. A [PowerShell használatával a különböző típusú műveletek és műveletcsoportok naplózásának konfigurálása](sql-database-auditing.md#manage-auditing)ajánlott. Ennek konfigurálása segít a naplózott műveletek számának szabályozásában, és minimálisra csökkenti az eseményvesztés kockázatát. Az egyéni naplózási konfiguráció lehetővé teszi az ügyfelek számára, hogy csak a szükséges naplózási adatokat rögzítsék.
 - A naplónaplók közvetlenül az [Azure Portalon](https://portal.azure.com/)vagy a konfigurált tárolási helyről használhatók fel. 
 
 

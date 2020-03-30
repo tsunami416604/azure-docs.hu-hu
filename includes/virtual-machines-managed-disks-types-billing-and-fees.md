@@ -9,27 +9,27 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 2303d36e93cecfca03894a8b0e55458c03b13d78
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73412974"
 ---
-**Kimenő**adatforgalom: a [kimenő](https://azure.microsoft.com/pricing/details/bandwidth/) adatforgalom (az Azure-adatközpontok által kiváltott adatok) a sávszélesség-használatért kell fizetnie.
+**Kimenő adatátvitelek:** [A kimenő adatátvitelek](https://azure.microsoft.com/pricing/details/bandwidth/) (az Azure-adatközpontokból kimenő adatok) sávszélesség-használat miatt számlázást vonnak maga után.
 
-**Tranzakciók**: a standard szintű felügyelt lemezeken végrehajtott tranzakciók száma. A standard SSD-k esetében minden I/O-művelet a 256 KiB-nál kisebb vagy azzal egyenlő, egyetlen I/O-műveletnek számít. A 256 KiB-nál nagyobb teljesítményű i/O-műveletek a 256 KiB-os méretnél több I/O-műveletnek számítanak. A standard HDD-k esetében minden egyes IO-művelet egyetlen tranzakciónak tekintendő, az I/O-mérettől függetlenül.
+**Tranzakciók**: A szabványos felügyelt lemezen végrehajtott tranzakciók számát számlázunk. Szabványos SSD-k esetén minden 256 KiB átviteli képesvagy azzal egyenlő I/O-művelet egyetlen I/O-műveletnek minősül. A 256 KiB-nél nagyobb I/O-műveletek több 256 KiB méretű I/O-nak számítanak. Standard HDD-k esetén minden I/O-művelet egyetlen tranzakciónak számít, függetlenül az I/O méretétől.
 
-A Managed Disks díjszabásáról, beleértve a tranzakciós költségeket is, tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
+A felügyelt lemezek díjszabásáról, beleértve a tranzakciós költségeket is, a [Felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks)című témakörben talál részletes információt.
 
-### <a name="ultra-disk-vm-reservation-fee"></a>Ultra Disk VM foglalási díja
+### <a name="ultra-disk-vm-reservation-fee"></a>Ultra lemezes virtuális gép foglalási díja
 
-Az Azure-beli virtuális gépek képesek jelezni, hogy kompatibilisek-e az ultra Disks szolgáltatással. Az ultra Disk-kompatibilis virtuális gépek dedikált sávszélesség-kapacitást foglalnak magukban a számítási virtuálisgép-példány és a blokk tárolási méretezési egység között a teljesítmény optimalizálása és a késés csökkentése érdekében. Ha ezt a képességet hozzáadja a virtuális géphez, a foglalási díjat csak akkor számítjuk fel, ha a virtuális gépen engedélyezte az ultra Disk képességet, anélkül, hogy az eszközhöz hozzá kellene csatlakoztatni. Ha Ultra lemez van csatlakoztatva az ultra Disk-kompatibilis virtuális géphez, ez a díj nem lesz alkalmazva. Ez a díj a virtuális gép által kiosztott vCPU. 
+Az Azure virtuális gépek képesek jelezni, ha azok kompatibilisek az ultralemezek. Az ultralemez-kompatibilis virtuális gép dedikált sávszélesség-kapacitást foglal le a számítási virtuálisgép-példány és a blokktároló méretezési egység között a teljesítmény optimalizálása és a késés csökkentése érdekében. Ez a funkció hozzáadása a virtuális gép hez egy foglalási díjat eredményez, amely csak akkor írható ki, ha engedélyezte az ultra lemez képesség a virtuális gép anélkül, hogy egy ultra lemezt csatlakoztatna hozzá. Ha egy ultra lemez csatlakozik az ultra lemez kompatibilis virtuális gép, ez a töltés nem lesz alkalmazva. Ez a díj a virtuális gépen kiosztott vCPU-nként történik. 
 
 > [!Note]
-> A [korlátozott alapszintű](../articles/virtual-machines/linux/constrained-vcpu.md)virtuálisgép-méretek esetében a foglalás díja a vCPU tényleges számától, és nem a korlátozott magoktól függ. A Standard_E32-8s_v3 esetében a foglalás díja a 32 mag alapján történik. 
+> A [korlátozott alapvető virtuális gép méretei](../articles/virtual-machines/linux/constrained-vcpu.md)esetén a foglalási díj a vCPU-k tényleges számán alapul, nem pedig a korlátozott magokon. A Standard_E32 8s_v3 esetén a foglalási díj 32 magon alapul. 
 
-Az ultra Disk díjszabásáról az [Azure Disks díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/managed-disks/) tájékozódhat.
+Tekintse meg az [Azure Disks díjszabási lap](https://azure.microsoft.com/pricing/details/managed-disks/) ultra lemez díjszabási részleteket.
 
-### <a name="azure-disk-reservation"></a>Azure-lemezek foglalása
+### <a name="azure-disk-reservation"></a>Azure-lemezfoglalás
 
-A lemezes foglalás az a lehetőség, hogy a lemezes tárterületet egy évig előre, kedvezményes áron vásárolja meg, ami csökkenti a teljes költségeket. A lemezes foglalások megvásárlásakor kiválaszthat egy adott lemezes SKU-t egy adott régióban, például a 10 P30 (1TiB) prémium SSD-ket az USA 2. keleti régiójában egy éves időszakra. A foglalási élmény a fenntartott virtuális gépek (VM) példányaihoz hasonló. A megtakarítások maximalizálása érdekében a virtuális gépek és a lemezek foglalása is megtehető. Az Azure-lemezek foglalása egyéves kötelezettségvállalási tervet biztosít a P30 (1TiB) prémium SSD-SKU-k számára a P80 (32 TiB) és az összes éles régióban. A fenntartott lemezek díjszabásával kapcsolatos további információkért lásd az [Azure Disks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/managed-disks/).
+A lemezfoglalás az a lehetőség, hogy egy éves lemezes tárhelyet vásároljon előre, kedvezményes áron, csökkentve a teljes költséget. Lemezfoglalás vásárlásakor egy adott lemeztermékváltozatot kell kiválasztania egy célrégióban, például 10 P30 (1TiB) prémium Szintű SSD-t az USA keleti régiójában 2 régióban egy éves időtartamra. A foglalási élmény hasonló a fenntartott virtuálisgép-példányokhoz. A virtuális gép- és lemezfoglalások összekötegelésével maximalizálhatja a megtakarításokat. Az Azure Disks Reservation egyéves kötelezettségvállalási tervet kínál a P30 (1TiB) és a P80 (32 TiB) között az összes éles régióban egyéves kötelezettségvállalási tervhez. A fenntartott lemezek díjszabásával kapcsolatos további információkért tekintse meg az [Azure Disks díjszabási lapját.](https://azure.microsoft.com/pricing/details/managed-disks/)

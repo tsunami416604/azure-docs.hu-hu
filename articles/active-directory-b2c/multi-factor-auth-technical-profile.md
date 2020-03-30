@@ -1,42 +1,46 @@
 ---
-title: Az Azure MFA technikai profiljai az egyéni házirendekben
+title: Azure MFA technikai profiljai egyéni szabályzatokban
 titleSuffix: Azure AD B2C
-description: Egyéni házirend-referenciák az Azure Multi-Factor Authentication (MFA) technikai profiljaihoz Azure AD B2Cban.
+description: Egyéni szabályzat-hivatkozás az Azure Többtényezős hitelesítés (MFA) technikai profilok az Azure AD B2C.Custom policy reference for Azure Multi-Factor Authentication (MFA) technical profiles in Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184281"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332807"
 ---
-# <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure MFA technikai profil definiálása egy Azure AD B2C egyéni szabályzatban
+# <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure MFA-technikai profil definiálása egy Azure AD B2C egyéni szabályzatban
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a telefonszámok Azure Multi-Factor Authentication (MFA) használatával történő ellenőrzéséhez. Ezzel a technikai profillal kód készíthető és küldhető egy telefonszámra, majd ellenőrizheti a kódot.
+Az Azure Active Directory B2C (Azure AD B2C) támogatja a telefonszám ellenőrzését az Azure többtényezős hitelesítés (MFA) használatával. Ezzel a technikai profillal kódot hozhat létre és küldhet egy telefonszámra, majd ellenőrizheti a kódot. Az Azure MFA technikai profil is visszaadhat egy hibaüzenetet.  Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott adatokat, mielőtt a felhasználói út folytatódik. Az érvényesítési technikai profil, egy hibaüzenet jelenik meg egy önérvényesítő oldalon.
 
-Az Azure MFA technikai profilja szintén hibaüzenetet adhat vissza. Az Azure MFA-nal való integrációt **érvényesítési technikai profil**segítségével alakíthatja ki. Az érvényesítési műszaki profil az Azure MFA szolgáltatást hívja meg. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
+Ez a technikai profil:
+
+- Nem biztosít felületet a felhasználóval való interakcióhoz. Ehelyett a felhasználói felületet [egy saját érvényesítésű](self-asserted-technical-profile.md) technikai profilból, vagy egy [megjelenítési vezérlőből](display-controls.md) [érvényesítési technikai profilként](validation-technical-profile.md)hívják meg.
+- Az Azure MFA-szolgáltatás használatával generál, és küldjön egy kódot egy telefonszámot, majd ellenőrzi a kódot.  
+- A telefonszámot sms-ben ellenőrzi.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol (Protokoll)
 
-A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell az Azure ad B2C által használt protokollkezelő-szerelvény teljesen minősített nevét:
+A **Protokoll** elem **Name** attribútumát a `Proprietary`parancsra kell állítani. A **kezelő** attribútumnak tartalmaznia kell az Azure AD B2C által használt protokollkezelő szerelvény teljesen minősített nevét:
 
 ```
 Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
-Az alábbi példa egy Azure MFA technikai profilt mutat be:
+A következő példa egy Azure MFA technikai profilt mutat be:
 
 ```XML
 <TechnicalProfile Id="AzureMfa-SendSms">
@@ -47,63 +51,63 @@ Az alábbi példa egy Azure MFA technikai profilt mutat be:
 
 ## <a name="send-sms"></a>SMS küldése
 
-Ennek a technikai profilnak az első módja egy kód létrehozása és elküldése. Ehhez a módhoz a következő beállítások konfigurálhatók.
+A technikai profil első módja egy kód létrehozása és elküldése. Ehhez a módhoz a következő beállítások konfigurálhatók.
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
-A **szabályzattípushoz** elem tartalmazza az Azure MFA számára küldendő jogcímek listáját. A jogcím nevét a MFA technikai profiljában definiált névre is leképezheti.
+Az **InputClaims** elem az Azure MFA-nak küldő jogcímek listáját tartalmazza. A jogcím nevét az MFA technikai profiljában meghatározott névhez is hozzárendelje.
 
-| ClaimReferenceId | Szükséges | Leírás |
+| Jogcímhivatkozásazonosítója | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | userPrincipalName | Igen | A telefonszámot birtokló felhasználó azonosítója. |
-| Telefonszám | Igen | Az SMS-kód küldésére szolgáló telefonszám. |
-| companyName | Nem |A vállalat neve az SMS-ben. Ha nincs megadva, a rendszer az alkalmazás nevét használja. |
-| területi beállítás | Nem | Az SMS területi beállítása. Ha nincs megadva, a rendszer a felhasználó böngésző területi beállítását használja. |
+| phoneNumber (telefonszám) | Igen | Az a telefonszám, amelyhez SMS-kódot kell küldeni. |
+| vállalatneve | Nem |A cég neve az SMS-ben. Ha nincs megadva, a készülék az alkalmazás nevét használja. |
+| locale | Nem | Az SMS területi beállítása. Ha nincs megadva, a felhasználó böngészőterületi beállítását használja a rendszer. |
 
-A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak az Azure MFA szolgáltatásba való küldés előtt.
+Az **InputClaimsTransformations** elem tartalmazhat **InputClaimsTransformation** elemek gyűjteményét, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak az Azure MFA-szolgáltatásnak való küldés előtt.
 
 ### <a name="output-claims"></a>Kimeneti jogcímek
 
-Az Azure MFA protokoll szolgáltatója nem ad vissza **OutputClaims**, így nem kell megadnia a kimeneti jogcímeket. Megadhat azonban olyan jogcímeket, amelyeket nem ad vissza az Azure MFA-identitás szolgáltatója, ha beállítja a `DefaultValue` attribútumot.
+Az Azure MFA protokoll szolgáltató nem ad vissza **kimeneti jogcímeket,** így nincs szükség kimeneti jogcímek megadása. Azonban az Azure MFA-identitásszolgáltató által nem visszaadott jogcímeket is megadhat, feltéve, hogy beállítja az `DefaultValue` attribútumot.
 
-A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
+A **OutputClaimsTransformations** elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
 
 ### <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | **OneWaySMS**kell lennie.  |
-| UserMessageIfInvalidFormat | Nem | Egyéni hibaüzenet, ha a megadott telefonszám nem érvényes telefonszám |
-| UserMessageIfCouldntSendSms | Nem | Egyéni hibaüzenet, ha a megadott telefonszám nem fogad SMS-t |
-| UserMessageIfServerError | Nem | Egyéni hibaüzenet, ha a kiszolgáló belső hibát észlelt |
+| Művelet | Igen | Kell **OneWaySMS**.  |
 
-### <a name="return-an-error-message"></a>Hibaüzenet küldése
+#### <a name="ui-elements"></a>Felhasználói felület elemei
 
-A [metaadatok](#metadata)című cikkben leírtak szerint testreszabhatja a felhasználó számára megjelenített hibaüzenetet különböző hibák esetén. Az üzeneteket továbbra is honosíthatja a területi beállítás előállításával. Például:
+Az sms-hiba küldésekor megjelenő hibaüzenetek konfigurálására a következő metaadatok használhatók. A metaadatokat az önérvényesítő technikai profilban kell [konfigurálni.](self-asserted-technical-profile.md) A hibaüzenetek [honosíthatók](localization-string-ids.md#azure-mfa-error-messages).
 
-```XML
-<Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
-```
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| UserMessageIfCouldntSendSms | Nem | Felhasználói hibaüzenet, ha a megadott telefonszám nem fogadja el az SMS-t. |
+| UserMessageIfInvalidFormat | Nem | Felhasználói hibaüzenet, ha a megadott telefonszám nem érvényes telefonszám. |
+| UserMessageIfServerError | Nem | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
+| UserMessageIfThrottled| Nem | Felhasználói hibaüzenet, ha egy kérést szabályoztak.|
 
 ### <a name="example-send-an-sms"></a>Példa: SMS küldése
 
-Az alábbi példa egy Azure MFA technikai profilt mutat be, amely egy kód SMS-ben történő küldésére szolgál.
+A következő példa egy Azure MFA technikai profilt mutat be, amely egy kód SMS-ben történő küldésére szolgál.
 
 ```XML
 <TechnicalProfile Id="AzureMfa-SendSms">
-    <DisplayName>Send Sms</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">OneWaySMS</Item>
-    </Metadata>
-    <InputClaimsTransformations>
-        <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
-        <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
-    </InputClaimsTransformations>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="userPrincipalName" />
-        <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
-    </InputClaims>
+  <DisplayName>Send Sms</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">OneWaySMS</Item>
+  </Metadata>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
+    <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="userPrincipalName" />
+    <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
@@ -113,43 +117,41 @@ A technikai profil második módja egy kód ellenőrzése. Ehhez a módhoz a kö
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
-A **szabályzattípushoz** elem tartalmazza az Azure MFA számára küldendő jogcímek listáját. A jogcím nevét a MFA technikai profiljában definiált névre is leképezheti.
+Az **InputClaims** elem az Azure MFA-nak küldő jogcímek listáját tartalmazza. A jogcím nevét az MFA technikai profiljában meghatározott névhez is hozzárendelje.
 
-| ClaimReferenceId | Szükséges | Leírás |
+| Jogcímhivatkozásazonosítója | Kötelező | Leírás |
 | --------- | -------- | ----------- | ----------- |
-| Telefonszám| Igen | Ugyanazt a telefonszámot használja, mint korábban a kód elküldéséhez. A rendszer a telefonos ellenőrzési munkamenetek megkeresésére is használatos. |
-| verificationCode  | Igen | A felhasználó által ellenőrizendő ellenőrző kód |
+| phoneNumber (telefonszám)| Igen | Ugyanaz a telefonszám, mint amit korábban a kód küldéséhez használtak. Azt is használják, hogy keresse meg a telefon ellenőrzési ülésén. |
+| verificationCode  | Igen | Az ellenőrizendő felhasználó által megadott ellenőrző kód |
 
-A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak az Azure MFA szolgáltatás meghívása előtt.
+Az **InputClaimsTransformations** elem tartalmazhat **InputClaimsTransformation** elemek gyűjteményét, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak az Azure MFA-szolgáltatás hívása előtt.
 
 ### <a name="output-claims"></a>Kimeneti jogcímek
 
-Az Azure MFA protokoll szolgáltatója nem ad vissza **OutputClaims**, így nem kell megadnia a kimeneti jogcímeket. Megadhat azonban olyan jogcímeket, amelyeket nem ad vissza az Azure MFA-identitás szolgáltatója, ha beállítja a `DefaultValue` attribútumot.
+Az Azure MFA protokoll szolgáltató nem ad vissza **kimeneti jogcímeket,** így nincs szükség kimeneti jogcímek megadása. Azonban az Azure MFA-identitásszolgáltató által nem visszaadott jogcímeket is megadhat, feltéve, hogy beállítja az `DefaultValue` attribútumot.
 
-A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
+A **OutputClaimsTransformations** elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
 
-## <a name="metadata"></a>Metaadatok
+### <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Művelet | Igen | **Ellenőrizni** kell |
-| UserMessageIfInvalidFormat | Nem | Egyéni hibaüzenet, ha a megadott telefonszám nem érvényes telefonszám |
-| UserMessageIfWrongCodeEntered | Nem | Egyéni hibaüzenet, ha az ellenőrzéshez megadott kód helytelen |
-| UserMessageIfMaxAllowedCodeRetryReached | Nem | Egyéni hibaüzenet, ha a felhasználó túl sokszor próbált meg ellenőrző kódot |
-| UserMessageIfThrottled | Nem | Egyéni hibaüzenet, ha a felhasználó szabályozva van |
-| UserMessageIfServerError | Nem | Egyéni hibaüzenet, ha a kiszolgáló belső hibát észlelt |
 
-### <a name="return-an-error-message"></a>Hibaüzenet küldése
+#### <a name="ui-elements"></a>Felhasználói felület elemei
 
-A [metaadatok](#metadata)című cikkben leírtak szerint testreszabhatja a felhasználó számára megjelenített hibaüzenetet különböző hibák esetén. Az üzeneteket továbbra is honosíthatja a területi beállítás előállításával. Például:
+A következő metaadatok segítségével konfigurálhatja a kódellenőrzési hiba esetén megjelenő hibaüzeneteket. A metaadatokat az önérvényesítő technikai profilban kell [konfigurálni.](self-asserted-technical-profile.md) A hibaüzenetek [honosíthatók](localization-string-ids.md#azure-mfa-error-messages).
 
-```XML
-<Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>
-```
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| UserMessageIfMaxAllowedCodeRetryReached| Nem | Felhasználói hibaüzenet, ha a felhasználó túl sokszor kísérelt meg ellenőrző kódot. |
+| UserMessageIfServerError | Nem | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
+| UserMessageIfThrottled| Nem | Felhasználói hibaüzenet, ha a kérelem szabályozott.|
+| UserMessageIfWrongCodeEntered| Nem| Felhasználói hibaüzenet, ha az ellenőrzésre megadott kód hibás.|
 
 ### <a name="example-verify-a-code"></a>Példa: kód ellenőrzése
 
-A következő példa egy Azure MFA technikai profilt mutat be, amely a kód ellenőrzéséhez használatos.
+A következő példa egy Azure MFA technikai profilt mutat be a kód ellenőrzéséhez.
 
 ```XML
 <TechnicalProfile Id="AzureMfa-VerifySms">

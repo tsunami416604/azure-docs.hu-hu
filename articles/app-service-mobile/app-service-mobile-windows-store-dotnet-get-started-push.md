@@ -1,17 +1,17 @@
 ---
-title: Leküldéses értesítések hozzáadása a UWP-alkalmazáshoz
-description: Megtudhatja, hogyan küldhet leküldéses értesítéseket a Univerzális Windows-platform (UWP) alkalmazásnak Azure App Service Mobile Apps és Azure Notification Hubs használatával.
+title: Leküldéses értesítések hozzáadása az UWP alkalmazáshoz
+description: Megtudhatja, hogy az Azure App Service Mobile Apps és az Azure Notification Hubs használatával hogyan küldhet leküldéses értesítéseket az univerzális Windows-platform (UWP) alkalmazásnak.
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 4438084a9471bf816b371b7e663856205f87f8ba
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f200e9649a00bfe890d46f86e62404f1a7e844f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461419"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366292"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Leküldéses értesítések hozzáadása a Windows-alkalmazáshoz
 
@@ -19,46 +19,46 @@ ms.locfileid: "77461419"
 
 ## <a name="overview"></a>Áttekintés
 
-Ebben az oktatóanyagban leküldéses értesítéseket ad hozzá a [Windows gyors üzembe helyezési](app-service-mobile-windows-store-dotnet-get-started.md) projekthez, hogy a rendszer minden egyes rekord beszúrásakor leküldéses értesítést küldjön az eszköznek.
+Ebben az oktatóanyagban leküldéses értesítéseket ad hozzá a [Windows gyorsindítási](app-service-mobile-windows-store-dotnet-get-started.md) projektjéhez, így a rendszer leküldéses értesítést küld az eszköznek minden alkalommal, amikor egy rekordot beszúr.
 
-Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja, szüksége lesz a leküldéses értesítési bővítmény csomagra. További információért lásd: [Az Azure-hoz készült .net backend Server SDK használata Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) .
+Ha nem használja a letöltött gyorsindítási kiszolgálóprojektet, szüksége lesz a leküldéses értesítésbővítmény csomagra. További [információ: A .NET háttérkiszolgáló SDK-ja az Azure Mobile Apps alkalmazáshoz](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) című témakörben található.
 
-## <a name="configure-hub"></a>Értesítési központ konfigurálása
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>Értesítési központ konfigurálása
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>Alkalmazás regisztrálása leküldéses értesítésekhez
 
-Be kell küldenie az alkalmazást a Microsoft Storeba, majd konfigurálnia kell a kiszolgálói projektet, hogy integrálható legyen a [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) szolgáltatással a leküldéses küldéshez.
+El kell küldenie az alkalmazást a Microsoft Store-ba, majd úgy kell konfigurálnia a kiszolgálóprojektet, hogy integrálódjon a [Windows leküldéses értesítési szolgáltatásokkal (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) a leküldéses küldéshez.
 
-1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a UWP alkalmazás-projektre, majd kattintson az **áruház** > az áruházbeli **alkalmazás hozzárendelése..** . elemre.
+1. A Visual Studio Solution Explorer programban kattintson a jobb gombbal az UWP alkalmazásprojektre, és kattintson az **Áruházbeli** > **alkalmazás és az áruház társítása parancsra...**.
 
-    ![Alkalmazás hozzárendelése Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+    ![Alkalmazás társítása a Microsoft Store-hoz](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. A varázslóban kattintson a **tovább**gombra, jelentkezzen be a Microsoft-fiókba, írja be az alkalmazás nevét a **foglaláshoz**, és kattintson a **tartalék**elemre.
-3. Az alkalmazás regisztrációjának sikeres létrehozása után jelölje ki az új alkalmazás nevét, kattintson a **tovább**, majd a **hozzárendelés**elemre. Ezzel hozzáadja a szükséges Microsoft Store regisztrációs adatokat az alkalmazás-jegyzékfájlhoz.
-4. Navigáljon az [alkalmazás regisztrációs portálra](https://apps.dev.microsoft.com/) , és jelentkezzen be a Microsoft-fiók. Kattintson az előző lépésben társított Windows áruházbeli alkalmazásra.
-5. A regisztráció lapon jegyezze fel az **alkalmazás titkai** és a **csomag biztonsági azonosítója**területen található értéket, amelyet a következő lépésben fog használni a Mobile apps-háttér konfigurálásához.
+2. A varázslóban kattintson a **Tovább**gombra, jelentkezzen be a Microsoft-fiókjával, írja be az alkalmazás nevét az **Új alkalmazás nevének lefoglalása**mezőbe, majd kattintson a **Foglalás**gombra.
+3. Az alkalmazásregisztráció sikeres létrehozása után jelölje ki az új alkalmazás nevét, kattintson a **Tovább**gombra, majd a **Társítás gombra.** Ez hozzáadja a szükséges Microsoft Store regisztrációs adatokat az alkalmazásjegyzékhez.
+4. Nyissa meg az [Alkalmazásregisztrációs portált,](https://apps.dev.microsoft.com/) és jelentkezzen be Microsoft-fiókjával. Kattintson az előző lépésben társított Windows Áruházbeli alkalmazásra.
+5. A regisztrációs lapon jegyezze fel az **alkalmazástitkos kulcsok** és a **csomag biztonsági azonosítója**alatti értéket, amelyet a következő mobilalkalmazás-háttérkapcsolat konfigurálásához fog használni.
 
-    ![Alkalmazás hozzárendelése Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+    ![Alkalmazás társítása a Microsoft Store-hoz](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
-   > A titkos ügyfélkulcs és a csomag biztonsági azonosítója fontos biztonsági hitelesítő adatok. Ezeket az értékeket ne ossza meg senkivel, és ne terjessze az alkalmazással. A Microsoft-fiók hitelesítésének konfigurálásához használja a Secret ( **alkalmazás) azonosítót** .
+   > A titkos ügyfélkulcs és a csomag biztonsági azonosítója fontos biztonsági hitelesítő adatok. Ezeket az értékeket ne ossza meg senkivel, és ne terjessze az alkalmazással. Az **alkalmazásazonosító** a microsoftos fiók hitelesítésének konfigurálásához használatos.
 
-[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) a UWP-alkalmazások leküldéses értesítésekhez való konfigurálására vonatkozó utasításokat is tartalmaz.
+[Az App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) utasításokat is tartalmaz az UWP-alkalmazások leküldéses értesítésekhez való konfigurálásához.
 
-## <a name="configure-the-backend-to-send-push-notifications"></a>A háttér konfigurálása leküldéses értesítések küldéséhez
+## <a name="configure-the-backend-to-send-push-notifications"></a>A háttérkapcsolat beállítása leküldéses értesítések küldésére
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>A kiszolgáló frissítése leküldéses értesítések küldéséhez
+## <a name="update-the-server-to-send-push-notifications"></a><a id="update-service"></a>A kiszolgáló frissítése leküldéses értesítések küldéséhez
 
-Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus&mdash;vagy a [.net-háttér](#dotnet) vagy a [Node. js-háttérnek](#nodejs).
+Az alábbi eljárást használja, amely&mdash;megfelel a háttérprojekt [Node.js backend](#nodejs)típusának [.](#dotnet)
 
-### <a name="dotnet"></a>.NET-háttérbeli projekt
+### <a name="net-backend-project"></a><a name="dotnet"></a>.NET háttérprojekt
 
-1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektre, majd kattintson a **NuGet-csomagok kezelése**elemre, keresse meg a Microsoft. Azure. NotificationHubs, majd kattintson a **telepítés**gombra. Ezzel telepíti a Notification Hubs ügyféloldali függvénytárat.
-2. Bontsa ki a **vezérlők**csomópontot, nyissa meg a TodoItemController.cs, és adja hozzá a következő using utasításokat:
+1. A Visual Studio jobb gombbal kattintson a kiszolgálóprojektre, és válassza **a NuGet csomagok kezelése menüpontmenüt,** keresse meg a Microsoft.Azure.NotificationHubs kifejezést, majd kattintson a **Telepítés parancsra.** Ezzel telepíti az értesítési központok ügyfélkönyvtárát.
+2. Bontsa ki **a Vezérlők csomópontot,** nyissa meg TodoItemController.cs, és adja hozzá a következőket a utasítások használatával:
 
     ```csharp
     using System.Collections.Generic;
@@ -66,7 +66,7 @@ Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus&md
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. A **PostTodoItem** metódusban adja hozzá a következő kódot a **InsertAsync**hívása után:
+3. A **PostTodoItem** metódusban adja hozzá a következő kódot az **InsertAsync**hívása után:
 
     ```csharp
     // Get the settings for the server project.
@@ -102,13 +102,13 @@ Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus&md
     }
     ```
 
-    Ez a kód azt jelzi, hogy az értesítési központ leküldéses értesítést küld az új elemek beszúrása után.
+    Ez a kód arra utasítja az értesítési központot, hogy küldjön leküldéses értesítést egy új elem beszúrása után.
 
-4. A kiszolgálói projekt ismételt közzététele.
+4. Tegye közzé újra a kiszolgálóprojektet.
 
-### <a name="nodejs"></a>Node. js háttérbeli projekt
-1. Állítsa be a háttér-projektet.
-2. Cserélje le a todoitem. js fájl meglévő kódját a következőre:
+### <a name="nodejs-backend-project"></a><a name="nodejs"></a>Node.js háttérprojekt
+1. Állítsa be a háttérprojektet.
+2. Cserélje le a todoitem.js fájlban lévő kódot a következőkre:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -152,21 +152,21 @@ Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus&md
     module.exports = table;
     ```
 
-    Ez egy WNS-bejelentési értesítést küld, amely tartalmazza az item. Text karakterláncot új teendő beszúrásakor.
+    Ez egy WNS bejelentési értesítést küld, amely az item.text fájlt tartalmazza, amikor új teendőt szúr be.
 
-3. Ha a helyi számítógépen szerkeszti a fájlt, tegye közzé újra a kiszolgálói projektet.
+3. Amikor a helyi számítógépen szerkeszti a fájlt, tegye közzé újra a kiszolgálóprojektet.
 
-## <a id="update-app"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
-Ezután az alkalmazásnak regisztrálnia kell a leküldéses értesítésekhez az indításkor. Ha már engedélyezte a hitelesítést, győződjön meg arról, hogy a felhasználó bejelentkezik, mielőtt megpróbál regisztrálni a leküldéses értesítésekre.
+## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
+Ezután az alkalmazásnak regisztrálnia kell a leküldéses értesítésekre az indításkor. Ha már engedélyezte a hitelesítést, győződjön meg arról, hogy a felhasználó bejelentkezik, mielőtt megpróbálna regisztrálni a leküldéses értesítésekre.
 
-1. Nyissa meg a **app.XAML.cs** projektfájlt, és adja hozzá a következő `using` utasításokat:
+1. Nyissa **meg** a App.xaml.cs projektfájlt, és adja hozzá a következő `using` állításokat:
 
     ```csharp
     using System.Threading.Tasks;
     using Windows.Networking.PushNotifications;
     ```
 
-2. Ugyanebben a fájlban adja hozzá a következő **initnotificationsasync metódusdefiníciót** metódus-definíciót az **app** osztályhoz:
+2. Ugyanebben a fájlban adja hozzá a következő **InitNotificationsAsync** metódusdefiníciót az **alkalmazásosztályhoz:**
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -180,9 +180,9 @@ Ezután az alkalmazásnak regisztrálnia kell a leküldéses értesítésekhez a
     }
     ```
 
-    Ez a kód lekéri az alkalmazás regisztrációban szereplő URI a WNS-ből, majd regisztrálja a regisztrációban szereplő URI a App Service Mobile alkalmazásban.
+    Ez a kód lekéri az alkalmazás ChannelURI-ját a WNS-ből, majd regisztrálja a ChannelURI-t az App Service Mobile App alkalmazással.
 
-3. A **app.XAML.cs** **OnLaunched** -eseménykezelő tetején adja hozzá az **aszinkron** módosítót a metódus-definícióhoz, és adja hozzá a következő hívást az új **initnotificationsasync metódusdefiníciót** metódushoz, ahogy az az alábbi példában is látható:
+3. A **App.xaml.cs** **OnLaunched** eseménykezelőjének tetején adja hozzá az **aszinkron** módosítót a metódusdefinícióhoz, és adja hozzá a következő hívást az új **InitNotificationsAsync** metódushoz, mint például a következő példában:
 
     ```csharp
     protected async override void OnLaunched(LaunchActivatedEventArgs e)
@@ -193,25 +193,25 @@ Ezután az alkalmazásnak regisztrálnia kell a leküldéses értesítésekhez a
     }
     ```
 
-    Ez garantálja, hogy a rövid élettartamú regisztrációban szereplő URI az alkalmazás minden indításakor regisztrálva van.
+    Ez garantálja, hogy a rövid életű ChannelURI regisztrálva van minden alkalommal, amikor az alkalmazás elindul.
 
-4. Hozza létre újra a UWP-alkalmazás projektjét. Az alkalmazás készen áll bejelentési értesítéseket fogadni.
+4. Építse újra az UWP-alkalmazásprojektet. Az alkalmazás készen áll bejelentési értesítéseket fogadni.
 
-## <a id="test"></a>Leküldéses értesítések tesztelése az alkalmazásban
+## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>Leküldéses értesítések tesztelése az alkalmazásban
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a id="more"></a>Következő lépések
+## <a name="next-steps"></a><a id="more"></a>További lépések
 
 További információ a leküldéses értesítésekről:
 
-* [Az Azure Mobile apps felügyelt ügyfelének használata](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) A sablonok rugalmasságot biztosítanak a platformok közötti leküldések és honosított leküldések küldéséhez. Útmutató a sablonok regisztrálásához.
-* [Leküldéses értesítésekkel kapcsolatos problémák diagnosztizálása](../notification-hubs/notification-hubs-push-notification-fixer.md) Számos oka lehet annak, hogy az értesítések miért kerülhetnek el vagy nem állnak le az eszközökön. Ez a témakör bemutatja, hogyan elemezheti és derítheti ki a leküldéses értesítések meghibásodásának okát.
+* [A felügyelt ügyfél használata az Azure Mobile Apps alkalmazásokhoz](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) A sablonok rugalmasságot biztosítanak a platformfüggetlen leküldések és a honosított leküldések küldéséhez. További információ a sablonok regisztrálásáról.
+* [Leküldéses értesítési problémák diagnosztizálása](../notification-hubs/notification-hubs-push-notification-fixer.md) Számos oka lehet annak, hogy az értesítések megszakadhatnak, vagy nem kerülnek az eszközökre. Ez a témakör bemutatja, hogyan elemezheti és találhatja ki a leküldéses értesítési hibák kiváltó okát.
 
-Tekintse át a következő oktatóanyagok egyikét:
+Fontolja meg a folytatást az alábbi oktatóanyagok egyikén:
 
 * [Hitelesítés hozzáadása alkalmazáshoz](app-service-mobile-windows-store-dotnet-get-started-users.md) Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
-* [Offline szinkronizálás engedélyezése az alkalmazáshoz](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile apps-háttér használatával. A kapcsolat nélküli szinkronizálás a mobilalkalmazást használó végfelhasználók számára lehetővé teszi &mdash;az adatok megtekintését, hozzáadását és módosítását&mdash; akkor is, ha nincs hálózati kapcsolat.
+* [Offline szinkronizálás engedélyezése az alkalmazáshoz](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) További információ arról, hogyan adhat hozzá offline támogatást az alkalmazáshoz mobilalkalmazás-háttérrendszer használatával. A kapcsolat nélküli szinkronizálás a mobilalkalmazást használó végfelhasználók számára lehetővé teszi &mdash;az adatok megtekintését, hozzáadását és módosítását&mdash; akkor is, ha nincs hálózati kapcsolat.
 
 <!-- Anchors. -->
 

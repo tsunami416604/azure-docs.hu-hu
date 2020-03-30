@@ -1,48 +1,48 @@
 ---
-title: Szűrés és előfeldolgozás az Azure Application Insights SDK-ban | Microsoft Docs
-description: Telemetria-processzorok és telemetria-inicializálók írása az SDK-hoz a telemetria a Application Insights portálra való elküldése előtt.
+title: Szűrés és előfeldolgozás az Azure Application Insights SDK-ban | Microsoft dokumentumok
+description: Telemetriai processzorok és telemetriai inicializálók az SDK-hoz szűrni vagy hozzáadni tulajdonságokat az adatokhoz, mielőtt a telemetriai adatok az Application Insights-portálra.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 9f4df83ed60ba94913702b9a32a298f0ac62f9f4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 53b6ecc51961feba35d571eab3115c8e7ccf9964
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276321"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366310"
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Telemetria szűrése és előfeldolgozása az Application Insights SDK-ban
+# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Telemetriai adatok szűrése és előfeldolgozása az Application Insights SDK-ban
 
-A Application Insights SDK beépülő moduljait úgy is megírhatja és konfigurálhatja, hogy a Application Insights szolgáltatásba való elküldése előtt testreszabja és feldolgozza a telemetria.
+Az Application Insights SDK beépülő moduljait megírhatja és konfigurálhatja, így testelemetriát tehet ünk és dolgozhat fel, mielőtt elküldené az Application Insights-szolgáltatásnak.
 
-* A [mintavétel](sampling.md) csökkenti a telemetria mennyiségét anélkül, hogy befolyásolná a statisztikát. Összekapcsolja a kapcsolódó adatpontokat, így a probléma diagnosztizálásakor navigáljon egymás között. A portálon a teljes számlálás megszorozza a mintavételezéssel.
-* A telemetria processzorokkal történő szűréssel kiszűrheti a telemetria az SDK-ban, mielőtt elküldi a kiszolgálónak. Csökkentheti például a telemetria mennyiségét a robotoktól érkező kérések kizárásával. A szűrés a mintavételnél nagyobb alapszintű megközelítés a forgalom csökkentése érdekében. Így hatékonyabban szabályozhatja a továbbított adatokat, de tisztában kell lennie azzal, hogy befolyásolja a statisztikáit – például ha kiszűri az összes sikeres kérelmet.
-* A telemetria inicializálók az alkalmazásból eljuttatott bármely telemetria [hozzáadhatnak vagy módosíthatnak tulajdonságokat](#add-properties) , beleértve a standard modulok telemetria is. Például hozzáadhat számított értékeket; vagy verziószámok, amelyek alapján szűrheti a portálon található adatok mennyiségét.
+* [Mintavételezés](sampling.md) csökkenti a telemetriai adatok mennyiségét anélkül, hogy befolyásolná a statisztikákat. A kapcsolódó adatpontokat összetartja, így a probléma diagnosztizálásakor navigálhat közöttük. A portálon az összes szám megszorozzuk a mintavételi kompenzáció.
+* Telemetriai processzorokkal való szűrés lehetővé teszi a telemetriai adatok kiszűrését az SDK-ban, mielőtt a kiszolgálóra küldenék. Például csökkentheti a telemetriai adatok mennyiségét a robotoktól érkező kérelmek kizárásával. A szűrés a forgalom csökkentésének alapvetőbb megközelítése, mint a mintavételezés. Lehetővé teszi, hogy jobban szabályozhatja a továbbított adatokat, de tisztában kell lennie azzal, hogy ez hatással van a statisztikáira - például ha kiszűri az összes sikeres kérést.
+* [Telemetriai initializerek hozzá, vagy módosíthatja a tulajdonságokat](#add-properties) az alkalmazásból küldött telemetriai adatok, beleértve a telemetriai adatokat a szabványos modulok. Hozzáadhat például számított értékeket; vagy verziószámok, amelyek alapján szűrni az adatokat a portálon.
 * [Az SDK API](../../azure-monitor/app/api-custom-events-metrics.md) egyéni események és metrikák küldésére szolgál.
 
 Előkészületek:
 
-* Telepítse a megfelelő SDK-t az alkalmazáshoz: [ASP.net](asp-net.md), [ASP.net Core](asp-net-core.md), [nem http/Worker for .net/.net Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) vagy [JavaScript](javascript.md)
+* Telepítse az alkalmazáshoz megfelelő SDK-t: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nem HTTP/Worker for .NET/.NET Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) vagy [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
 ## <a name="filtering"></a>Szűrés
 
-Ezzel a technikával közvetlenül szabályozhatja, hogy mit tartalmaz a telemetria stream, vagy ki van zárva. A szűréssel elvégezheti a telemetria-elemek küldését Application Insightsba. Ezt használhatja mintavételezéssel vagy külön is.
+Ez a módszer közvetlen vezérlést biztosít a telemetriai adatfolyamból való beágyazásvagy kizárás felett. A szűrés segítségével eldobhatja a telemetriai elemeket az Application Insightsnak való elküldésből. Használhatja együtt mintavételi, vagy külön-külön.
 
-A telemetria szűréséhez telemetria-processzort kell írnia, és regisztrálnia kell a `TelemetryConfiguration`. Az összes telemetria áthalad a processzoron, és eldöntheti, hogy eldobja-e a streamből, vagy megadja a lánc következő processzorának. Ebbe beletartozik a standard modulok telemetria, például a HTTP-kérelem gyűjtője és a függőségi gyűjtő, valamint a nyomon követett telemetria. Kiszűrheti például a robotoktól érkező kéréseket vagy a sikeres függőségi hívásokat telemetria is.
+A telemetriai adatok szűréséhez írjon egy telemetriai processzort, és regisztrálja azt a. `TelemetryConfiguration` Az összes telemetriai adatok megy keresztül a processzor, és választhat, hogy dobja el az adatfolyamból, vagy adja meg a lánc következő processzora. Ez magában foglalja a telemetriai adatokat a szabványos modulok, például a HTTP-kérelem gyűjtő és a függőség gyűjtője, és a telemetriai ön maga által nyomon követett. Kiszűrheti például a robotoktól érkező kérelmek telemetriáját, vagy a sikeres függőségi hívásokat.
 
 > [!WARNING]
-> Az SDK-ból a processzorokkal küldött telemetria szűrésével eldöntheti a portálon megjelenő statisztikákat, és megnehezíti a kapcsolódó elemek követését.
+> Az SDK-ból küldött telemetriai adatok processzorok használatával történő szűrése torzíthatja a portálon látható statisztikákat, és megnehezítheti a kapcsolódó elemek követését.
 >
-> Ehelyett érdemes [mintavételezést](../../azure-monitor/app/sampling.md)használni.
+> Ehelyett fontolja meg a [mintavételhasználatát.](../../azure-monitor/app/sampling.md)
 >
 >
 
-### <a name="create-a-telemetry-processor-c"></a>Telemetria processzor létrehozása (C#)
+### <a name="create-a-telemetry-processor-c"></a>Telemetriai processzor létrehozása (C#)
 
-1. Szűrő létrehozásához implementálja `ITelemetryProcessor`.
+1. Szűrő létrehozásához valósítsa meg a programot. `ITelemetryProcessor`
 
-    Figyelje meg, hogy a telemetria processzorok létrehozzák a feldolgozási láncot. Telemetria-processzor létrehozásakor a láncban a következő processzorra mutató hivatkozást kap. Ha egy telemetria adatpontot továbbítanak a folyamat metódusának, az a munkája után meghívja (vagy nem hívja meg) a lánc következő telemetria-processzorát.
+    Figyelje meg, hogy a telemetriai processzorok egy feldolgozási láncot hozlétre. Telemetriai processzor példányosításakor a lánc következő processzorára mutató hivatkozást kap. Amikor egy telemetriai adatpontot ad át a folyamat metódus, akkor a munkáját, és majd meghívja (vagy nem hívja) a lánc következő telemetriai processzora.
 
     ```csharp
     using Microsoft.ApplicationInsights.Channel;
@@ -79,7 +79,7 @@ A telemetria szűréséhez telemetria-processzort kell írnia, és regisztrálni
 
 2. Adja hozzá a processzort.
 
-**ASP.NET-alkalmazások** Szúrja be ezt a kódrészletet a ApplicationInsights. config fájlba:
+**alkalmazások ASP.NET** Szúrja be ezt a kódrészletet az ApplicationInsights.config fájlba:
 
 ```xml
 <TelemetryProcessors>
@@ -90,13 +90,13 @@ A telemetria szűréséhez telemetria-processzort kell írnia, és regisztrálni
 </TelemetryProcessors>
 ```
 
-Karakterlánc-értékeket adhat át a. config fájlból úgy, hogy nyilvános nevesített tulajdonságokat biztosít az osztályban.
+A .config fájlból karakterlánc-értékeket adhat át, ha nyilvános nevű tulajdonságokat ad meg az osztályban.
 
 > [!WARNING]
-> Ügyeljen arra, hogy a. config fájlban lévő típus neve és a hozzá tartozó tulajdonságok nevei megfeleljenek a kódban szereplő osztálynak és tulajdonságoknak. Ha a. config fájl nem létező típusra vagy tulajdonságra hivatkozik, előfordulhat, hogy az SDK beavatkozás nélkül nem tud telemetria küldeni.
+> Ügyeljen arra, hogy a .config fájlban szereplő típusnevet és tulajdonságneveket a kódban szereplő osztály- és tulajdonságnevekhez igazítsa. Ha a .config fájl nem létező típusra vagy tulajdonságra hivatkozik, előfordulhat, hogy az SDK csendben nem küld telemetriai adatokat.
 >
 
-Azt is megteheti **,** hogy a szűrőt a kódban inicializálja. Megfelelő inicializálási osztályban – például a `Global.asax.cs` AppStart – a processzor beillesztése a láncba:
+**Azt is megteheti,** hogy inicializálja a szűrőt a kódban. Egy megfelelő inicializációs osztályban - például AppStart in `Global.asax.cs` - helyezze be a processzort a láncba:
 
 ```csharp
 var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -108,14 +108,14 @@ builder.Use((next) => new AnotherProcessor(next));
 builder.Build();
 ```
 
-Az ezen pont után létrehozott TelemetryClients a processzorokat fogja használni.
+TelemetriaI-ügyfelek után létrehozott ezen a ponton fogja használni a processzorok.
 
-**ASP.NET Core/Worker Service-alkalmazások**
+**ASP.NET Core/ Worker Service alkalmazások**
 
 > [!NOTE]
-> `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használatával nem használható processzor hozzáadása ASP.NET Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja.
+> Processzor hozzáadása `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használata nem érvényes ASP.NET Core alkalmazások, vagy ha a Microsoft.ApplicationInsights.WorkerService SDK.
 
-Az [ASP.net Core](asp-net-core.md#adding-telemetry-processors) vagy [WorkerService](worker-service.md#adding-telemetry-processors)használatával írt alkalmazások esetében az új `TelemetryProcessor` hozzáadását a `AddApplicationInsightsTelemetryProcessor` bővítmény `IServiceCollection`használatával végezheti el az alább látható módon. Ezt a metódust a `Startup.cs` osztály `ConfigureServices` metódusa hívja meg.
+A core vagy ASP.NET [workerservice](worker-service.md#adding-telemetry-processors)használatával `TelemetryProcessor` írt alkalmazások `AddApplicationInsightsTelemetryProcessor` esetében `IServiceCollection` [az](asp-net-core.md#adding-telemetry-processors) új hozzáadása a bővítménymetódus használatával történik, az alábbiak szerint. Ez a módszer `ConfigureServices` az `Startup.cs` osztály metódusa.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -131,9 +131,9 @@ Az [ASP.net Core](asp-net-core.md#adding-telemetry-processors) vagy [WorkerServi
 
 ### <a name="example-filters"></a>Példa szűrők
 
-#### <a name="synthetic-requests"></a>Szintetikus kérelmek
+#### <a name="synthetic-requests"></a>Szintetikus kérések
 
-Kiszűri a botokat és a webes teszteket. Bár a Metrikaböngésző lehetővé teszi a szintetikus források kiszűrését, ez a beállítás csökkenti a forgalom és a betöltés méretét azáltal, hogy az SDK-ban szűri őket.
+Szűrje ki a botokat és a webes teszteket. Bár a Metrika-kezelő lehetőséget ad a szintetikus források kiszűrésére, ez a beállítás csökkenti a forgalmat és a betöltési méretet azáltal, hogy szűri őket az SDK-n.
 
 ```csharp
 public void Process(ITelemetry item)
@@ -147,7 +147,7 @@ public void Process(ITelemetry item)
 
 #### <a name="failed-authentication"></a>Sikertelen hitelesítés
 
-Kiszűri a kérelmeket "401" válasszal.
+A kérelmek kiszűrése "401" válaszsal.
 
 ```csharp
 public void Process(ITelemetry item)
@@ -166,12 +166,12 @@ public void Process(ITelemetry item)
 }
 ```
 
-#### <a name="filter-out-fast-remote-dependency-calls"></a>A gyors távoli függőségi hívások kiszűrése
+#### <a name="filter-out-fast-remote-dependency-calls"></a>Gyors távoli függőségi hívások kiszűrése
 
-Ha csak a lassú hívásokat szeretné diagnosztizálni, a gyors szűrést is kiszűrheti.
+Ha csak lassú hívásokat szeretne diagnosztizálni, szűrje ki a gyorshívásokat.
 
 > [!NOTE]
-> Ez rontja a portálon megjelenő statisztikát.
+> Ez megdönti a portálon látható statisztikákat.
 >
 >
 
@@ -190,15 +190,15 @@ public void Process(ITelemetry item)
 
 #### <a name="diagnose-dependency-issues"></a>Függőségi problémák diagnosztizálása
 
-[Ez a blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) leírja a függőségi problémák diagnosztizálására szolgáló projektet, ha automatikusan küldi el a rendszeres pingeléseket a függőségek számára.
+[Ez](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) a blog leírja a függőségi problémák diagnosztizálására irányuló projektet azáltal, hogy automatikusan rendszeres pingeket küld a függőségeknek.
 
 <a name="add-properties"></a>
 
-### <a name="javascript-web-applications"></a>JavaScript-alapú webalkalmazások
+### <a name="javascript-web-applications"></a>JavaScript-webalkalmazások
 
-**Szűrés a ITelemetryInitializer használatával**
+**Szűrés Az ITelemettryInitializer használatával**
 
-1. Hozzon létre egy telemetria inicializáló visszahívási függvényt. A visszahívási függvény `ITelemetryItem` paraméterként veszi igénybe a feldolgozás alatt álló eseményt. A visszahívási `false` visszaküldése a telemetria elem kiszűréséhez.  
+1. Telemetriai inicializáló visszahívási függvény létrehozása. A visszahívási `ITelemetryItem` függvény paraméterként, amely a feldolgozás alatt álló esemény. A `false` visszahívásból való visszatérés a telemetriai elem kiszűrendő.  
 
    ```JS
    var filteringFunction = (envelope) => {
@@ -210,7 +210,7 @@ public void Process(ITelemetry item)
    };
    ```
 
-2. Adja hozzá a telemetria inicializáló visszahívását:
+2. Adja hozzá a telemetriai inicializáló visszahívását:
 
    ```JS
    appInsights.addTelemetryInitializer(filteringFunction);
@@ -219,15 +219,15 @@ public void Process(ITelemetry item)
 ## <a name="addmodify-properties-itelemetryinitializer"></a>Tulajdonságok hozzáadása/módosítása: ITelemetryInitializer
 
 
-A telemetria inicializálók használatával gazdagíthatja a telemetria, és/vagy felülbírálhatja a szabványos telemetria-modulok által beállított telemetria-tulajdonságokat.
+Telemetriai inicializálók használatával további információkkal gazdagíthatja a telemetriai adatokat, és/vagy felülbírálhatja a szabványos telemetriai modulok által beállított telemetriai tulajdonságokat.
 
-A webes csomag Application Insights például a HTTP-kérelmekkel kapcsolatos telemetria gyűjt. Alapértelmezés szerint a > = 400 értékkel rendelkező kérelem sikertelenként van megjelölve. Ha azonban sikerrel szeretné kezelni a 400-et, megadhat egy telemetria inicializáló, amely beállítja a siker tulajdonságot.
+Például az Application Insights for Web csomag telemetriai adatokat gyűjt a HTTP-kérelmek. Alapértelmezés szerint a >= 400 válaszkóddal rendelkező kérelmek et sikertelennek jelzőknek tekinti. De ha azt szeretné, hogy a 400-at sikeresként kezelje, biztosíthat egy telemetriai inicializálót, amely beállítja a Success tulajdonságot.
 
-Ha telemetria inicializáló ad meg, akkor a rendszer akkor hívja meg, ha a Track * () metódusok bármelyikét meghívja. Ide tartoznak a standard telemetria-modulok által meghívott `Track()` metódusok. Az egyezmény szerint ezek a modulok nem állítanak be olyan tulajdonságot, amelyet már beállított egy inicializáló. A telemetria inicializálók a telemetria processzorok hívása előtt hívhatók. Így az inicializálók által végzett dúsítások láthatók a processzorok számára.
+Ha telemetriai inicializálót ad meg, akkor a neve akkor lesz, amikor a Track*() metódusok bármelyikét meghívják. Ez `Track()` magában foglalja a szabványos telemetriai modulok által megnevezett metódusokat. Megegyezés szerint ezek a modulok nem állítanak be olyan tulajdonságot, amelyet már beállított egy inicializáló. Telemetriai inicializálók hívják telemetriai processzorok hívása előtt. Tehát minden dúsítások által végzett inicializálók látható a processzorok.
 
-**Az inicializálás megadása**
+**A inicializáló meghatározása**
 
-*C#*
+*C #*
 
 ```csharp
 using System;
@@ -266,9 +266,9 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**ASP.NET alkalmazások: az inicializálás betöltése**
+**ASP.NET alkalmazások: A inicializáló betöltése**
 
-A ApplicationInsights. config fájlban:
+Az ApplicationInsights.config fájlban:
 
 ```xml
 <ApplicationInsights>
@@ -280,7 +280,7 @@ A ApplicationInsights. config fájlban:
 </ApplicationInsights>
 ```
 
-Azt is megteheti *,* hogy az inicializálást a kódban, például a Global.aspx.cs-ben hozza létre:
+*Másik lehetőségként* a kódban is létrehozhatja az inicializálót, például Global.aspx.cs:
 
 ```csharp
 protected void Application_Start()
@@ -290,14 +290,14 @@ protected void Application_Start()
 }
 ```
 
-[Tekintse meg ezt a mintát.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
+[A mintából még többet láthatsz.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-**ASP.NET Core/munkavégző szolgáltatás alkalmazásai: az inicializálás betöltése**
+**core/worker service alkalmazások ASP.NET: Töltse be az inicializálót**
 
 > [!NOTE]
-> Az inicializálás `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használatával történő hozzáadása nem érvényes ASP.NET Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja.
+> Initializer hozzáadása `ApplicationInsights.config` használatával `TelemetryConfiguration.Active` vagy használatával nem érvényes ASP.NET Core alkalmazások, vagy ha a Microsoft.ApplicationInsights.WorkerService SDK.
 
-Az [ASP.net Core](asp-net-core.md#adding-telemetryinitializers) vagy [WorkerService](worker-service.md#adding-telemetryinitializers)használatával írt alkalmazások esetén új `TelemetryInitializer` hozzáadása a függőségi injektálási tárolóhoz való hozzáadásával történik, az alábbi ábrán látható módon. Ez `Startup.ConfigureServices` metódusban történik.
+A core vagy [ASP.NET a](asp-net-core.md#adding-telemetryinitializers) [WorkerService](worker-service.md#adding-telemetryinitializers) `TelemetryInitializer` használatával írt alkalmazások esetében az új hozzáadása a függőségi injektálás tárolóhoz való hozzáadásával történik, az alábbiak szerint. Ez a `Startup.ConfigureServices` módszerrel történik.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -308,9 +308,9 @@ Az [ASP.net Core](asp-net-core.md#adding-telemetryinitializers) vagy [WorkerServ
 }
 ```
 
-### <a name="java-telemetry-initializers"></a>Java telemetria inicializálók
+### <a name="java-telemetry-initializers"></a>Java telemetriai inicializálók
 
-[Java SDK-dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
+[Java SDK dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
 
 ```Java
 public interface TelemetryInitializer
@@ -319,7 +319,7 @@ public interface TelemetryInitializer
 void initialize(Telemetry telemetry); }
 ```
 
-Ezután regisztrálja az egyéni inicializálást a applicationinsights. xml fájlban.
+Ezután regisztrálja az egyéni inicializálót az applicationinsights.xml fájlban.
 
 ```xml
 <Add type="mypackage.MyConfigurableContextInitializer">
@@ -327,10 +327,10 @@ Ezután regisztrálja az egyéni inicializálást a applicationinsights. xml fá
 </Add>
 ```
 
-### <a name="javascript-telemetry-initializers"></a>JavaScript telemetria inicializálók
-*JavaScript*
+### <a name="javascript-telemetry-initializers"></a>JavaScript telemetriai inicializálók
+*Javascript*
 
-Közvetlenül a portálról kapott inicializálási kód után szúrjon be egy telemetria-inicializálást:
+Telemetriai inicializáló beszúrása közvetlenül a portálról kapott inicializálási kód után:
 
 ```JS
 <script type="text/javascript">
@@ -371,13 +371,21 @@ Közvetlenül a portálról kapott inicializálási kód után szúrjon be egy t
 </script>
 ```
 
-A telemetryItem elérhető nem egyéni tulajdonságok összegzését lásd: [Application Insights export adatmodell](../../azure-monitor/app/export-data-model.md).
+A telemettryItem elemen elérhető nem egyéni tulajdonságok összegzését az [Application Insights exportadat-modell című témakörben](../../azure-monitor/app/export-data-model.md)talál.
 
-Annyi inicializáló adhat hozzá, amennyit csak szeretne, és ezeket a rendszer a hozzáadásuk sorrendjében hívja meg.
+Annyi inicializálót adhat hozzá, amennyit csak szeretne, és a hozzáadásuk sorrendjében hívják őket.
 
-### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python telemetria processzorok
+### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python telemetriai processzorok
 
-A OpenCensus Pythonban található telemetria-processzorok egyszerűen visszahívási függvények, amelyek az exportálás előtt dolgozzák fel a telemetria. A visszahívási függvénynek el kell fogadnia egy [boríték](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86) -adattípust paraméterként. Ha ki szeretné szűrni a telemetria exportálását, ellenőrizze, hogy a visszahívási függvény visszaadja-e `False`. [Itt](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)megtekintheti Azure monitor adattípusok sémáját a borítékokban.
+Telemetriai processzorok OpenCensus Python egyszerűen visszahívási függvények, amelyeket a telemetriai adatok feldolgozására, mielőtt azok exportálása. A visszahívási függvénynek paraméterként el kell fogadnia egy [boríték](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86) adattípusát. Ha ki szeretné szűrni a telemetriai adatokat az exportálásból, győződjön meg arról, hogy a visszahívási függvény visszaadja. `False` Az Azure Monitor adattípusaia a borítékokközött [itt](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)látható.
+
+> [!NOTE]
+> A `cloud_RoleName` módosításával az `ai.cloud.role` attribútum a `tags` mezőben.
+
+```python
+def callback_function(envelope):
+    envelope.tags['ai.cloud.role'] = 'new_role_name.py'
+```
 
 ```python
 # Example for log exporter
@@ -474,28 +482,28 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-Tetszőleges számú processzort hozzáadhat, és a rendszer a hozzájuk rendelt sorrendben hívja meg őket. Ha egy processzor kivételt jelez, az nem befolyásolja a következő processzorokat.
+Annyi processzort adhat hozzá, amennyit csak szeretne, és a hozzáadásuk sorrendjében hívják őket. Ha egy processzor kivételt tesz, az nem érinti a következő processzorokat.
 
-### <a name="example-telemetryinitializers"></a>Példa TelemetryInitializers
+### <a name="example-telemetryinitializers"></a>Példa Telemetriai Inicionizálók
 
 #### <a name="add-custom-property"></a>Egyéni tulajdonság hozzáadása
 
-A következő minta-inicializálás egy egyéni tulajdonságot hoz létre minden követett telemetria.
+A következő minta inicializáló hozzáad egy egyéni tulajdonságot minden nyomon követett telemetriai adatokhoz.
 
 ```csharp
 public void Initialize(ITelemetry item)
 {
   var itemProperties = item as ISupportProperties;
-  if(itemProperties != null && !itemProperties.ContainsKey("customProp"))
+  if(itemProperties != null && !itemProperties.Properties.ContainsKey("customProp"))
     {
         itemProperties.Properties["customProp"] = "customValue";
     }
 }
 ```
 
-#### <a name="add-cloud-role-name"></a>Felhőalapú szerepkör nevének hozzáadása
+#### <a name="add-cloud-role-name"></a>Felhőbeli szerepkör nevének hozzáadása
 
-A következő minta-inicializálás a Felhőbeli szerepkör nevét állítja be minden követett telemetria.
+A következő minta inicializáló beállítja a felhőszerepkör nevét minden nyomon követett telemetriai adatok.
 
 ```csharp
 public void Initialize(ITelemetry telemetry)
@@ -507,26 +515,26 @@ public void Initialize(ITelemetry telemetry)
 }
 ```
 
-## <a name="itelemetryprocessor-and-itelemetryinitializer"></a>ITelemetryProcessor és ITelemetryInitializer
+## <a name="itelemetryprocessor-and-itelemetryinitializer"></a>ITelemettryProcesszor és ITelemetryInitializer
 
-Mi a különbség a telemetria processzorok és a telemetria inicializálók között?
+Mi a különbség a telemetriai processzorok és a telemetriai inicializálók között?
 
-* Vannak átfedések a következő műveletek elvégzéséhez: mindkettő felhasználható a telemetria tulajdonságainak hozzáadására vagy módosítására, bár ezt a célt az inicializálók használata javasolt.
-* A TelemetryInitializers mindig a TelemetryProcessors előtt futnak.
-* A TelemetryInitializers többször is meghívható. Az egyezmény szerint nem állítanak be olyan tulajdonságot, amely már be van állítva.
-* A TelemetryProcessors lehetővé teszi a telemetria-elemek teljes cseréjét vagy elvetését.
-* Minden regisztrált TelemetryInitializers minden telemetria-tételhez meg kell hívni. A telemetria processzorok esetében az SDK garantálja az első telemetria-processzor hívását. Azt határozza meg, hogy a rendszer a többi processzort hívja-e meg, vagy sem, az előző telemetria processzorok határozzák meg.
-* A TelemetryInitializers használatával gazdagíthatja a telemetria a további tulajdonságokkal, vagy felülbírálhatja a meglévőket. A TelemetryProcessor használatával szűrheti ki a telemetria.
+* Vannak átfedések, hogy mit tehet velük: mindkettő használható telemetriai tulajdonságok hozzáadásához vagy módosításához, bár ajánlott inicializálók e célra.
+* Telemetriai initializers mindig fut telemettryprocesszorok előtt.
+* TelemetriaI initializers lehet nevezni többször. Megegyezés szerint nem állítanak be olyan tulajdonságot, amely már be van állítva.
+* TelemetriaI-feldolgozók lehetővé teszi, hogy teljesen cserélje ki vagy dobja el a telemetriai elem.
+* Minden regisztrált telemetriai initializerek garantáltan kell hívni minden telemetriai elem. Telemetriai processzorok, SDK garantálja a legelső telemetriai processzor hívása. Azt, hogy a többi processzort hívják-e meg vagy sem, az előző telemetriai processzorok döntik el.
+* Telemetriai initializers használatával további tulajdonságokkal gazdagíthatja a telemetriai adatokat, vagy felülbírálhatja a meglévőt. TelemettryProcessor segítségével kiszűrheti a telemetriai adatokat.
 
-## <a name="troubleshooting-applicationinsightsconfig"></a>A ApplicationInsights. config hibaelhárítása
+## <a name="troubleshooting-applicationinsightsconfig"></a>Az ApplicationInsights.config hibaelhárítása
 
-* Győződjön meg arról, hogy a teljes típus neve és a szerelvény neve helyes.
-* Győződjön meg arról, hogy a applicationinsights. config fájl a kimeneti könyvtárban található, és tartalmazza a legutóbbi módosításokat.
+* Ellenőrizze, hogy a teljesen minősített típusnév és kódösszeállítás neve helyes-e.
+* Ellenőrizze, hogy az applicationinsights.config fájl a kimeneti könyvtárban van-e, és tartalmazza-e a legutóbbi módosításokat.
 
-## <a name="reference-docs"></a>Dokumentációs dokumentumok
+## <a name="reference-docs"></a>Referenciadokumentumok
 
-* [API – Áttekintés](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET-hivatkozás](https://msdn.microsoft.com/library/dn817570.aspx)
+* [Az API áttekintése](../../azure-monitor/app/api-custom-events-metrics.md)
+* [ASP.NET hivatkozás](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>SDK-kód
 
@@ -534,7 +542,7 @@ Mi a különbség a telemetria processzorok és a telemetria inicializálók kö
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
-## <a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 * [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md)
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
-* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)
+* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)

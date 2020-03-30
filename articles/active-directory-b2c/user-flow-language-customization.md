@@ -1,6 +1,6 @@
 ---
-title: Nyelvi Testreszabás a Azure Active Directory B2Cban
-description: Ismerje meg a felhasználói folyamatok nyelvi élményének testreszabását.
+title: Nyelvi testreszabás az Azure Active Directory B2C-ben
+description: További információ a nyelvi élmény testreszabásáról a felhasználói folyamatokban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,78 +11,78 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78185760"
 ---
-# <a name="language-customization-in-azure-active-directory-b2c"></a>Nyelvi Testreszabás a Azure Active Directory B2Cban
+# <a name="language-customization-in-azure-active-directory-b2c"></a>Nyelvi testreszabás az Azure Active Directory B2C-ben
 
-A Azure Active Directory B2C (Azure AD B2C) nyelvi testreszabása lehetővé teszi, hogy a felhasználói folyamat különböző nyelveket biztosítson az ügyfelek igényeinek megfelelően. A Microsoft a [36 nyelvekhez](#supported-languages)biztosít fordításokat, de bármilyen nyelven saját fordításokat is megadhat. Ha a felhasználói élmény csak egyetlen nyelven érhető el, testreszabhatja a lapokon található bármely szöveget.
+Az Azure Active Directory B2C (Azure AD B2C) nyelvi testreszabása lehetővé teszi, hogy a felhasználói folyamat az ügyfelek igényeinek megfelelően alkalmazkodjon a különböző nyelvekhez. A Microsoft [36 nyelv](#supported-languages)fordítását biztosítja, de saját fordításokat is biztosíthat bármilyen nyelvhez. Még akkor is testreszabhatja az oldalakon lévő szövegeket, ha a felhasználói élmény csak egy nyelvre van megadva.
 
-## <a name="how-language-customization-works"></a>A nyelvi Testreszabás működése
+## <a name="how-language-customization-works"></a>A nyelvi testreszabás működése
 
-A nyelvi testreszabással kiválaszthatja, hogy a felhasználói folyamat mely nyelveken érhető el a alkalmazásban. A szolgáltatás engedélyezése után megadhatja a lekérdezési karakterlánc paraméterét `ui_locales`az alkalmazásból. Amikor behívja a Azure AD B2Ct, a rendszer lefordítja a lapot a jelzett területi beállításra. Ez a típusú konfiguráció lehetővé teszi a felhasználói folyamat nyelveinek teljes körű ellenőrzését, és figyelmen kívül hagyja az ügyfél böngészőjének nyelvi beállításait.
+A nyelvi testreszabással kiválaszthatja, hogy a felhasználói folyamat mely nyelveken érhető el. A szolgáltatás engedélyezése után megadhatja a `ui_locales`lekérdezési karakterlánc paramétert az alkalmazásból. Amikor az Azure AD B2C hívása, az oldal lefordítása a területi beállítás, amely a megadott. Ez a konfigurációtípus teljes körű irányítást biztosít a felhasználói folyamat nyelvei felett, és figyelmen kívül hagyja az ügyfél böngészőjének nyelvi beállításait.
 
-Előfordulhat, hogy nincs szüksége arra, hogy milyen nyelveken látja az ügyfelet. Ha nem ad meg `ui_locales` paramétert, az ügyfél felhasználói élményét a böngésző beállításai határozzák meg. Továbbra is szabályozhatja, hogy a felhasználói folyamat mely nyelveket fordítsa le, ha azt támogatott nyelvként adja hozzá. Ha egy ügyfél böngészője olyan nyelvet mutat be, amelyet nem szeretne támogatni, akkor a támogatott kultúrákban alapértelmezettként kiválasztott nyelv jelenik meg.
+Előfordulhat, hogy nincs szükség arra, hogy az ügyfél milyen nyelveket lásson. Ha nem ad `ui_locales` meg paramétert, az ügyfél élményét a böngésző beállításai határozzák meg. Továbbra is szabályozhatja, hogy a felhasználói folyamat mely nyelvekre legyen lefordítva, ha támogatja azt adja hozzá. Ha egy ügyfél böngészője olyan nyelvet jelenít meg, amelyet nem szeretne támogatni, akkor a támogatott kulturális környezetben alapértelmezettként kiválasztott nyelv jelenik meg.
 
-* **felhasználói felület – megadott nyelv**: a nyelvi Testreszabás engedélyezése után a rendszer lefordítja a felhasználói folyamatot az itt megadott nyelvre.
-* **Böngésző által kért nyelv**: ha nincs `ui_locales` paraméter megadva, a rendszer a felhasználói folyamatot a böngésző által kért nyelvre fordítja, *Ha a nyelv támogatott*.
-* **Házirend alapértelmezett nyelve**: Ha a böngésző nem ad meg nyelvet, vagy egy nem támogatott értéket ad meg, a felhasználói folyamat fordítása a felhasználói folyamat alapértelmezett nyelvére történik.
+* **ui-locales megadott nyelv**: A nyelvi testreszabás engedélyezése után a felhasználói folyamat az itt megadott nyelvre lesz lefordítva.
+* **Böngésző által kért nyelv:** Ha nem `ui_locales` adott meg paramétert, a rendszer lefordítja a felhasználói folyamatot a böngésző által kért nyelvre, ha a nyelv *támogatott.*
+* **Házirend alapértelmezett nyelve:** Ha a böngésző nem ad meg nyelvet, vagy nem támogatott nyelvet ad meg, a rendszer lefordítja a felhasználói folyamat alapértelmezett nyelvét.
 
 > [!NOTE]
-> Ha egyéni felhasználói attribútumokat használ, saját fordításokat kell megadnia. További információ: [a karakterláncok testreszabása](#customize-your-strings).
+> Ha egyéni felhasználói attribútumokat használ, saját fordításokat kell biztosítania. További információt a [Karakterláncok testreszabása című témakörben talál.](#customize-your-strings)
 
-## <a name="support-requested-languages-for-ui_locales"></a>A ui_locales kért nyelveinek támogatása
+## <a name="support-requested-languages-for-ui_locales"></a>Támogatás kért nyelvek ui_locales
 
-A nyelvi Testreszabás általánosan elérhetővé tétele előtt létrehozott szabályzatoknak először engedélyeznie kell ezt a funkciót. Az azt követően létrehozott házirendek és felhasználói folyamatok, hogy a nyelvi Testreszabás alapértelmezés szerint engedélyezve van.
+A nyelvi testreszabás általános elérhetősége előtt létrehozott házirendeknek először engedélyezniük kell ezt a szolgáltatást. Olyan házirendek és felhasználói folyamatok, amelyek alapértelmezés szerint a nyelvi testreszabás engedélyezése után jöttek létre.
 
 Ha engedélyezi a nyelvi testreszabást egy felhasználói folyamaton, a `ui_locales` paraméter hozzáadásával szabályozhatja a felhasználói folyamat nyelvét.
 
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet engedélyezni szeretne a fordítások számára.
-1. Válassza a **nyelvek**lehetőséget.
-1. Válassza a **nyelvi Testreszabás engedélyezése**lehetőséget.
+1. Az Azure AD B2C-bérlőben válassza a **Felhasználói folyamatok**lehetőséget.
+1. Kattintson arra a felhasználói folyamatra, amelyet engedélyezni szeretne a fordításokhoz.
+1. **Nyelvek**kiválasztása .
+1. Válassza **a Nyelvi testreszabás engedélyezése**lehetőséget.
 
-## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Válassza ki, hogy a felhasználói folyamat mely nyelveken legyen engedélyezve
+## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>A felhasználói folyamat mely nyelveinek kiválasztása engedélyezve van
 
-Lehetővé teszi a felhasználói folyamathoz tartozó nyelvek egy csoportjának lefordítását, ha a böngésző a `ui_locales` paraméter nélkül kéri.
+Engedélyezze, hogy a felhasználói folyamat nyelvkészletét lelehessen fordítani, `ui_locales` ha a böngésző a paraméter nélkül kéri.
 
-1. Győződjön meg arról, hogy a felhasználói folyamat rendelkezik a korábbi utasításokban engedélyezett nyelvi testreszabással.
-1. A felhasználói folyamat **nyelvek** lapján válassza ki a támogatni kívánt nyelvet.
-1. A Tulajdonságok ablaktáblán az **enabled** ( **Igen**) értékre vált.
-1. Válassza a **Mentés** lehetőséget a Tulajdonságok ablaktábla tetején.
+1. Győződjön meg arról, hogy a felhasználói folyamat korábbi utasításokból engedélyezve van a nyelvi testreszabás.
+1. A Felhasználói folyamat **Nyelvek lapján** válassza ki a támogatni kívánt nyelvet.
+1. A Tulajdonságok ablaktáblán módosítsa az **Engedélyezve értéket** **Igen**értékre.
+1. Válassza a **Mentés** gombot a tulajdonságok ablaktábla tetején.
 
 >[!NOTE]
->Ha nincs megadva `ui_locales` paraméter, a lap csak akkor lesz lefordítva az ügyfél böngésző nyelvére, ha engedélyezve van.
+>Ha `ui_locales` nincs megadva paraméter, a rendszer csak akkor fordítja le az oldalt az ügyfél böngészőnyelvére, ha az engedélyezve van.
 >
 
 ## <a name="customize-your-strings"></a>A karakterláncok testreszabása
 
-A nyelvi Testreszabás lehetővé teszi a felhasználói folyamat bármely karakterláncának testreszabását.
+A nyelvi testreszabás lehetővé teszi a felhasználói folyamat bármely karakterláncának testreszabását.
 
-1. Győződjön meg arról, hogy a felhasználói folyamat rendelkezik az előző utasításokban engedélyezett nyelvi testreszabással.
-1. A felhasználói folyamat **nyelvek** lapján válassza ki a testreszabni kívánt nyelvet.
-1. Az **oldal szintű erőforrások fájljai**területen válassza ki a szerkeszteni kívánt oldalt.
-1. Válassza az **Alapértelmezések letöltése** (vagy a **felülbírálások letöltése** lehetőséget, ha korábban már szerkesztette ezt a nyelvet).
+1. Győződjön meg arról, hogy a felhasználói folyamat nyelvi testreszabása engedélyezve van az előző utasításokból.
+1. A Felhasználói folyamat **Nyelvek** lapján válassza ki a testre szabni kívánt nyelvet.
+1. Az **Oldalszintű erőforrások fájljai csoportban**jelölje ki a szerkesztendő lapot.
+1. Válassza **az Alapértelmezett letöltések (vagy** a **Letöltés felülbírálások** lehetőséget, ha korábban már szerkesztette ezt a nyelvet).
 
-Ezek a lépések egy JSON-fájlt biztosítanak a karakterláncok szerkesztésének megkezdéséhez.
+Ezek a lépések olyan JSON-fájlt adnak, amelynek segítségével elkezdheti a karakterláncok szerkesztését.
 
-### <a name="change-any-string-on-the-page"></a>Az oldalon lévő bármelyik sztring módosítása
+### <a name="change-any-string-on-the-page"></a>A lap bármely karakterláncának módosítása
 
-1. Nyissa meg a JSON-szerkesztő korábbi utasításait letöltő JSON-fájlt.
-1. Keresse meg a módosítani kívánt elemet. Megkeresheti `StringId` a keresett karakterláncot, vagy megkeresheti a módosítani kívánt `Value` attribútumot.
-1. Frissítse a `Value` attribútumot, hogy mit szeretne megjeleníteni.
-1. Minden módosítani kívánt sztring esetében módosítsa `Override` `true`re.
-1. Mentse a fájlt, és töltse fel a módosításokat. (A feltöltési vezérlőt a JSON-fájl letöltésével megegyező helyen találja.)
+1. Nyissa meg a JSON-szerkesztőben a korábbi utasításokból letöltött JSON-fájlt.
+1. Keresse meg a módosítani kívánt elemet. Megtalálhatja `StringId` a keresett karakterláncot, vagy megkeresheti `Value` a módosítani kívánt attribútumot.
+1. Frissítse `Value` az attribútumot a kívánt módon.
+1. Minden módosítani kívánt karakterlánc esetében `Override` módosítsa `true`a .
+1. Mentse a fájlt, és töltse fel a módosításokat. (A feltöltési vezérlőt ugyanazon a helyen találhatja meg, ahol a JSON-fájlt töltötte le.)
 
 > [!IMPORTANT]
-> Ha felül kell bírálnia egy karakterláncot, ügyeljen arra, hogy a `Override` értéket `true`értékre állítsa be. Ha az érték nem változik, a rendszer figyelmen kívül hagyja a bejegyzést.
+> Ha felül kell írnia egy karakterláncot, `Override` ügyeljen `true`arra, hogy az értéket a értékre állítsa. Ha az érték nem változik, a bejegyzés figyelmen kívül lesz hagyva.
 
-### <a name="change-extension-attributes"></a>Bővítmény attribútumainak módosítása
+### <a name="change-extension-attributes"></a>Kiterjesztésattribútumok módosítása
 
-Ha módosítani szeretné egy egyéni felhasználói attribútumhoz tartozó karakterláncot, vagy az egyiket szeretné hozzáadni a JSON-hoz, a következő formátumban kell megadnia:
+Ha módosítani szeretné egy egyéni felhasználói attribútum karakterláncát, vagy hozzá szeretne adni egyet a JSON-hoz, az a következő formátumban történik:
 
 ```JSON
 {
@@ -98,13 +98,13 @@ Ha módosítani szeretné egy egyéni felhasználói attribútumhoz tartozó kar
 }
 ```
 
-Cserélje le a `<ExtensionAttribute>`t az egyéni felhasználói attribútum nevére.
+Cserélje `<ExtensionAttribute>` le az egyéni felhasználói attribútum nevére.
 
-Cserélje le a `<ExtensionAttributeValue>`t a megjelenítendő új sztringre.
+Cserélje `<ExtensionAttributeValue>` le a megjelenítendő új karakterláncra.
 
-### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Adja meg az értékek listáját a LocalizedCollections használatával
+### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Értékek listájának biztosítása a Honosított gyűjtemények használatával
 
-Ha meg szeretné adni a válaszok értékeinek listáját, létre kell hoznia egy `LocalizedCollections` attribútumot. a `LocalizedCollections` `Name` és `Value` pár tömbje. Az elemek sorrendje a megjelenő sorrendben jelenik meg. `LocalizedCollections`hozzáadásához használja a következő formátumot:
+Ha meg szeretné adni a válaszok értékeinek készletlistáját, `LocalizedCollections` létre kell hoznia egy attribútumot. `LocalizedCollections`egy tömb `Name` és `Value` pár. A cikkek rendelése a megjelenített sorrend lesz. A `LocalizedCollections`hozzáadáshoz használja a következő formátumot:
 
 ```JSON
 {
@@ -128,32 +128,32 @@ Ha meg szeretné adni a válaszok értékeinek listáját, létre kell hoznia eg
 }
 ```
 
-* `ElementId` az a felhasználói attribútum, amelynek a `LocalizedCollections` attribútuma a válasz.
-* `Name` a felhasználó számára megjelenített érték.
-* Ha ez a beállítás be van jelölve, a `Value` a rendszer a jogcímben adja vissza.
+* `ElementId`az a felhasználói attribútum, amelyre ez `LocalizedCollections` az attribútum választ ad.
+* `Name`a felhasználó számára megjelenített érték.
+* `Value`ez a beállítás kiválasztásakor a jogcímben visszaadott értéket adja vissza.
 
 ### <a name="upload-your-changes"></a>A módosítások feltöltése
 
-1. A JSON-fájl módosításainak befejezése után lépjen vissza a B2C-bérlőre.
-1. Válassza a **felhasználói folyamatok** lehetőséget, majd kattintson arra a felhasználói folyamatra, amelyet engedélyezni szeretne a fordítások számára.
-1. Válassza a **nyelvek**lehetőséget.
-1. Válassza ki a nyelvet, amelyet le szeretne fordítani.
-1. Válassza ki azt a lapot, amelyen a fordításokat meg szeretné adni.
-1. Válassza ki a mappa ikont, és válassza ki a feltölteni kívánt JSON-fájlt.
+1. Miután befejezte a JSON-fájl módosításait, lépjen vissza a B2C-bérlőhöz.
+1. Válassza a **Felhasználói folyamatok lehetőséget,** és kattintson a fordításokhoz engedélyezni kívánt felhasználói folyamatra.
+1. **Nyelvek**kiválasztása .
+1. Válassza ki azt a nyelvet, amelyre le szeretné fordítani.
+1. Válassza ki azt az oldalt, ahol fordításokat szeretne biztosítani.
+1. Jelölje ki a mappa ikonját, és jelölje ki a feltöltendő JSON-fájlt.
 
-A módosításokat a rendszer automatikusan menti a felhasználói folyamatba.
+A módosítások automatikusan mentésre kerülnek a felhasználói folyamatba.
 
-## <a name="customize-the-page-ui-by-using-language-customization"></a>Az oldal felhasználói felületének testreszabása a nyelvi Testreszabás használatával
+## <a name="customize-the-page-ui-by-using-language-customization"></a>A lap felhasználói felületének testreszabása a nyelvi testreszabás sal
 
-A HTML-tartalmak honosítása kétféleképpen lehetséges. Az egyik módszer a [nyelvi Testreszabás](user-flow-language-customization.md)bekapcsolása. A funkció engedélyezése lehetővé teszi Azure AD B2C számára az OpenID Connect paraméter (`ui-locales`) továbbítását a végponthoz. A tartalom-kiszolgáló ezzel a paraméterrel testreszabott, nyelvspecifikus HTML-lapokat adhat meg.
+A HTML-tartalom honosításának két módja van. Ennek egyik módja a [nyelvi testreszabás bekapcsolása.](user-flow-language-customization.md) A funkció engedélyezése lehetővé teszi, hogy az Azure AD `ui-locales`B2C továbbítsa az OpenID Connect paramétert a végpontra. A tartalomkiszolgáló ezzel a paraméterrel nyelvspecifikus, személyre szabott HTML-lapokat biztosíthat.
 
-Azt is megteheti, hogy a használt területi beállítás alapján más helyekről is lehívhatja a tartalmat. A CORS-kompatibilis végponton beállíthatja, hogy a mappa szerkezete bizonyos nyelvekhez biztosítson tartalmat. Ha a helyettesítő karaktert `{Culture:RFC5646}`használja, hívja meg a megfelelőt. Tegyük fel például, hogy ez az egyéni oldal URI-ja:
+Azt is megteheti, hogy a használt területi beállítás alapján különböző helyekről lekéri a tartalmat. A CORS-kompatibilis végponton beállíthat egy mappastruktúrát az adott nyelvek tartalmának tárolására. A megfelelőt fogja hívni, ha a `{Culture:RFC5646}`helyettesítő karakter értékét használja. Tegyük fel például, hogy ez az egyéni lap URI-ja:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
 
-A lapot `fr`is betöltheti. Amikor az oldal lekéri a HTML-és CSS-tartalmakat, a következőről indul:
+A lapot betöltheti a betöltésére. `fr` Amikor az oldal HTML- és CSS-tartalmat húz le, a következő ből származik:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
@@ -161,98 +161,98 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>Egyéni nyelvek hozzáadása
 
-Hozzáadhat olyan nyelveket is, amelyeket a Microsoft jelenleg nem biztosít fordításokat a szolgáltatáshoz. A felhasználói folyamat összes karakterláncához meg kell adnia a fordításokat. A nyelvi és területi beállítási kódok az ISO 639-1 szabványban foglalt értékekre korlátozódnak.
+Olyan nyelveket is hozzáadhat, amelyekhez a Microsoft jelenleg nem biztosít fordítást. Meg kell adnia a felhasználói folyamat összes karakterláncának fordításait. A nyelvi és területi kódok az ISO 639-1 szabványban meghatározottakra korlátozódnak.
 
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
-2. Kattintson arra a felhasználói folyamatra, amelyhez egyéni nyelveket kíván hozzáadni, majd kattintson a **nyelvek**elemre.
-3. Válassza az **Egyéni nyelv hozzáadása** lehetőséget az oldal tetején.
-4. A megnyíló környezet ablaktáblán azonosítsa, hogy egy érvényes területi beállítás megadásával melyik nyelvet használja a fordítások számára.
-5. Minden oldalon letöltheti az angol nyelvű felülbírálások készletét, és dolgozhat a fordításokon is.
-6. Miután elkészült a JSON-fájlokkal, feltöltheti őket az egyes lapokra.
-7. Válassza az **Engedélyezés**lehetőséget, és a felhasználói folyamat mostantól megjelenítheti a felhasználók számára a nyelvet.
+1. Az Azure AD B2C-bérlőben válassza a **Felhasználói folyamatok**lehetőséget.
+2. Kattintson arra a felhasználói folyamatra, amelyhez egyéni nyelveket szeretne hozzáadni, majd kattintson a **Nyelvek gombra.**
+3. A lap tetején válassza az **Egyéni nyelv hozzáadása** lehetőséget.
+4. A megnyíló környezet ablaktáblában azonosítsa, hogy melyik nyelvhez biztosít fordítást egy érvényes területi kód megadásával.
+5. Minden oldalhoz letöltheti az angol nyelvű felülírásokat, és dolgozhat a fordításokon.
+6. Miután végzett a JSON-fájlokkal, feltöltheti őket minden oldalra.
+7. Válassza **az Engedélyezés**lehetőséget, és a felhasználói folyamat most már megjelenítheti ezt a nyelvet a felhasználók számára.
 8. Mentse a nyelvet.
 
 >[!IMPORTANT]
->A Mentés előtt engedélyeznie kell az egyéni nyelveket, vagy fel kell töltenie a felülbírálásokat.
+>A mentés előtt engedélyeznie kell az egyéni nyelveket, vagy fel kell töltenie a felülírásokat.
 
 ## <a name="additional-information"></a>További információ
 
-### <a name="page-ui-customization-labels-as-overrides"></a>Oldal felhasználói felületének testreszabása feliratok felülbírálásként
+### <a name="page-ui-customization-labels-as-overrides"></a>A lap felhasználói felületének testreszabási címkéi felülbírálásként
 
-Ha engedélyezi a nyelvi testreszabást, az oldal felhasználói felületének testreszabását használó címkék korábbi szerkesztési adatai megmaradnak az angol (en) JSON-fájlban. A nyelvi testreszabási nyelvi erőforrások feltöltésével továbbra is módosíthatja a címkéket és más karakterláncokat.
+Ha engedélyezi a nyelvi testreszabást, a lap felhasználói felületének testreszabását használó címkék korábbi szerkesztései megmaradnak egy angol (hu) JSON-fájlban. A címkék és más karakterláncok módosítása a nyelvi testreszabási nyelvi erőforrások feltöltésével folytatódhat.
 
 ### <a name="up-to-date-translations"></a>Naprakész fordítások
 
-A Microsoft elkötelezte magát arra, hogy a legnaprakészebb fordításokat biztosítson a használathoz. A Microsoft folyamatosan fejleszti a fordításokat, és megfelel az Ön számára. A Microsoft azonosítja a hibákat és a globális terminológiában bekövetkező változásokat, és olyan frissítéseket tesz elérhetővé, amelyek zökkenőmentesen fognak működni a felhasználói folyamat során.
+A Microsoft elkötelezett amellett, hogy a legkorszerűbb fordításokat biztosítsa az Ön számára. A Microsoft folyamatosan fejleszti a fordításokat, és megtartja azokat az Ön számára. A Microsoft azonosítja a hibákat és a globális terminológia változásait, és olyan frissítéseket készít, amelyek zökkenőmentesen működnek a felhasználói folyamatban.
 
 ### <a name="support-for-right-to-left-languages"></a>Jobbról balra író nyelvek támogatása
 
-A Microsoft jelenleg nem nyújt támogatást a jobbról balra író nyelvekhez. Ezt az egyéni területi beállítások és a CSS használatával végezheti el a karakterláncok megjelenítésének megváltoztatásához. Ha erre a szolgáltatásra van szüksége, szavazzon rá az [Azure-visszajelzésre](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
+A Microsoft jelenleg nem támogatja a jobbról balra író nyelveket. Ezt egyéni területi beállításokkal és a CSS használatával teheti meg a karakterláncok megjelenítésének módosításához. Ha szüksége van erre a funkcióra, kérjük, szavazzon rá az [Azure Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
 
-### <a name="social-identity-provider-translations"></a>Közösségi identitás-szolgáltatói fordítások
+### <a name="social-identity-provider-translations"></a>Közösségi identitásszolgáltató fordításai
 
-A Microsoft biztosítja a `ui_locales` OIDC paramétert a közösségi bejelentkezésekhez. De egyes közösségi identitás-szolgáltatók, például a Facebook és a Google is, ne tartsák tiszteletben őket.
+A Microsoft `ui_locales` biztosítja az OIDC paramétert a közösségi bejelentkezések számára. De néhány közösségi identitásszolgáltatók, beleértve a Facebook és a Google, nem tartják tiszteletben őket.
 
-### <a name="browser-behavior"></a>Böngésző viselkedése
+### <a name="browser-behavior"></a>A böngésző viselkedése
 
-A Chrome és a Firefox is a beállított nyelvre irányuló kérelem. Ha ez egy támogatott nyelv, az alapértelmezés szerint megjelenik. A Microsoft Edge jelenleg nem kér nyelvet, és egyenesen az alapértelmezett nyelvre lép.
+A Chrome és a Firefox egyaránt kéri a beállított nyelvüket. Ha támogatott nyelvről van szó, akkor az alapértelmezett előtt jelenik meg. A Microsoft Edge jelenleg nem kér nyelvet, és egyenesen az alapértelmezett nyelvre megy.
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 
-A Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználói folyamat nyelveit Azure AD B2C biztosítjuk. A multi-Factor Authentication (MFA) értesítési nyelveit az [Azure MFA](../active-directory/authentication/concept-mfa-howitworks.md)nyújtja.
+Az Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználói folyamat nyelveit az Azure AD B2C biztosítja. A többtényezős hitelesítés (MFA) értesítési nyelveit az [Azure MFA](../active-directory/authentication/concept-mfa-howitworks.md)biztosítja.
 
 | Nyelv              | Nyelvkód | Felhasználói folyamatok         | MFA-értesítések  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| arab                | AR            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| bolgár             | BG            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Bengáli                | Mrd USD            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| katalán               | CA            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| cseh                 | CS            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| dán                | da            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| német                | de            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| görög                 | el            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Arab                | Ar            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Bolgár             | Bg            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Bangla                | Bn            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
+| Katalán               | Ca            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Cseh                 | Cs            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Dán                | Da            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Német                | de de            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Görög                 | el            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | Angol               | hu            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| spanyol               | es            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| észt              | et            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| baszk                | EU            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| finn               | Fi            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| francia                | fr            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| galíciai              | GL            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Spanyol               | Igen            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Észt              | et            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Baszk                | Eu            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Finn               | Fi            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Francia                | Fr            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Gallego              | Gl            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | gudzsaráti              | Gu            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| héber                | ő            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| hindi                 | szia            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| horvát              | HR            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| magyar             | hu            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| indonéz            | id            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| olasz               | Ez            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| japán              | Japán            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| kazak                | KK            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| kannada               | KN            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| koreai                | Ko            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| litván            | lt            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| lett               | lv            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| malajálam             | ml            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
+| Héber                | Ő            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Hindi                 | szia            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Horvát              | hr            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Magyar             | hu            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Indonéz            | id            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Olasz               | ez            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Japán              | ja (ja)            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Kazak                | Kk            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| kannada               | kn            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
+| Koreai                | Ko            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Litván            | Hadnagy            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Lett               | Lv            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| malajálam             | Ml            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
 | marathi               | Mr            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| maláj                 | ms            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Norvég bokmal      | NB            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| holland                 | nl            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| norvég             | nem            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| pandzsábi               | PA            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| lengyel                | pl            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Portugál – Brazília   | pt-br         | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Portugál – Portugália | PT-PT         | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| román              | ro            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Orosz               | ru            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| szlovák                | sk            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| szlovén             | SL            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Szerb – cirill betűs    | SR-cryl-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Szerb – latin betűs       | SR-Latn-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| svéd               | Sv            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| tamil                 | ta            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| telugu                | ttelepítése            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
-| thai                  | adik            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| török               | TR            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| ukrán             | uk            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| vietnami            | VI            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Egyszerűsített kínai  | zh-Hans       | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Kínai – hagyományos | zh-Hant       | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Maláj                 | Ms            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Norvég Bokmal      | Nb            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
+| Holland                 | Nl            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Norvég             | nem            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| pandzsábi               | Pa            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
+| Lengyel                | Pl            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Portugál - Brazília   | pt-br         | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Portugál - Portugália | pt-pt         | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Román              | Ro            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Orosz               | Ru            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Szlovák                | Sk            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Szlovén             | Sl            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Szerb - cirill    | sr-krio-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Szerb - Latin       | sr-latn-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Svéd               | Sv            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| tamil                 | Ta            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
+| telugu                | te            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
+| Thai                  | Th            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Török               | Tr            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Ukrán             | uk            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Vietnami            | Vi            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Kínai - Egyszerűsített  | zh-hans között       | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Kínai - Hagyományos | zh-hant között       | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |

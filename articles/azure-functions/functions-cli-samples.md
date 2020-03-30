@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
 ms.openlocfilehash: 365275d291244d3c08f856d2d919c7ee7d79161a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239643"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-minták
@@ -22,17 +22,17 @@ A következő táblázat az Azure Functions az Azure CLI-t használó Bash-szkri
 | Alkalmazás létrehozása | Leírás |
 |---|---|
 | [Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](scripts/functions-cli-create-serverless.md) | Létrehoz egy függvényalkalmazást egy használatalapú csomagban.  |
-| [Kiszolgáló nélküli Python-Function-alkalmazás létrehozása](scripts/functions-cli-create-serverless-python.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
-| [Function-alkalmazás létrehozása skálázható prémium csomaggal](scripts/functions-cli-create-premium-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
-| [Function-alkalmazás létrehozása dedikált (App Service) tervben](scripts/functions-cli-create-app-service-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
+| [Kiszolgáló nélküli Python-függvényalkalmazás létrehozása](scripts/functions-cli-create-serverless-python.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
+| [Függvényalkalmazás létrehozása méretezhető prémiumcsomagban](scripts/functions-cli-create-premium-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
+| [Függvényalkalmazás létrehozása dedikált (App Service-) csomagban](scripts/functions-cli-create-app-service-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
 
-| Integrálás | Leírás|
+| Integráció | Leírás|
 |---|---|
 | [Függvényalkalmazás létrehozása és csatlakoztatása egy tárfiókhoz](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Létrehoz egy függvényalkalmazást, és csatlakoztatja egy tárfiókhoz. |
 | [Függvényalkalmazás létrehozása és csatlakoztatása egy Azure Cosmos DB-adatbázishoz](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Létrehoz egy függvényalkalmazást, és csatlakoztatja egy Azure Cosmos DB-adatbázishoz. |
-| [Python-függvény alkalmazás létrehozása és Azure Files megosztás csatlakoztatása](scripts/functions-cli-mount-files-storage-linux.md) | Ha egy megosztást csatlakoztat a linuxos Function-alkalmazáshoz, használhatja a meglévő gépi tanulási modelleket és a függvények más adatait. | 
+| [Python-függvényalkalmazás létrehozása és Azure Files-megosztás csatlakoztatása](scripts/functions-cli-mount-files-storage-linux.md) | A Linux függvényalkalmazásmegosztás csatlakoztatásával kihasználhatja a meglévő gépi tanulási modelleket vagy a függvényekben lévő egyéb adatokat. | 
 
 | Folyamatos üzembe helyezés | Leírás|
 |---|---|
 | [Üzembe helyezés a GitHubból](scripts/functions-cli-create-function-app-github-continuous.md) | Létrehoz egy függvényalkalmazást, amely egy GitHub-adattárból lesz üzembe helyezve.  |
-| [Üzembe helyezés az Azure DevOpsból](scripts/functions-cli-create-function-app-vsts-continuous.md) | Azure DevOps-tárházból üzembe helyezett Function-alkalmazás létrehozása.  |
+| [Üzembe helyezés az Azure DevOpsból](scripts/functions-cli-create-function-app-vsts-continuous.md) | Hozzon létre egy függvényalkalmazást, amely egy Azure DevOps-tárházból telepít.  |

@@ -1,20 +1,20 @@
 ---
-title: Beépített szabályzat-definíciók listája
-description: A Azure Policy beépített szabályzat-definícióinak listázása. A kategóriák közé tartoznak a címkék, a szabályozások megfelelősége, a Key Vault, a Kubernetes, a vendég konfigurációja és még sok más.
+title: A beépített házirend-definíciók listája
+description: Listázza az Azure Policy beépített szabályzat-definícióit. A kategóriák közé tartoznak a címkék, a szabályozási megfelelőség, a Key Vault, a Kubernetes, a Vendégkonfiguráció és egyebek.
 ms.date: 02/15/2020
 ms.topic: sample
 ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239741"
 ---
-# <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzat-definíciók
+# <a name="azure-policy-built-in-policy-definitions"></a>Az Azure Policy beépített szabályzatdefiníciói
 
-Ez az oldal Azure Policy beépített szabályzat-definíciók indexe.
+Ez a lap az Azure Policy beépített szabályzatdefinícióinak indexe.
 
-Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára**való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a CTRL-<kbd>F</kbd> <kbd>billentyűkombinációval</kbd> használhatja a böngésző keresési funkcióját.
+Az Azure Portal szabályzatdefiníciójára mutató beépített hivatkozások neve. A **Forrás** oszlopban lévő hivatkozás segítségével tekintse meg a forrást az [Azure Policy GitHub-tárházban.](https://github.com/Azure/azure-policy) A beépített beépített rendszer **metaadatokban**a **kategóriatulajdonság** szerint van csoportosítva. Ha egy adott **kategóriára**szeretne ugrani, használja az oldal jobb oldalán található menüt. Ellenkező esetben a Ctrl<kbd>F</kbd> <kbd>billentyűvel</kbd>-használhatja a böngésző keresési funkcióját.
 
 [!INCLUDE [azure-policy-samples-policies-index](../../../../includes/azure-policy-samples-policies-index.md)]
 

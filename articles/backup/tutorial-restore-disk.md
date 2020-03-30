@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag – virtuális gép lemezének visszaállítása Azure Backup
+title: Oktatóanyag – Virtuálisgép-lemez visszaállítása az Azure Backup segítségével
 description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan hozhat létre és állíthat helyre egy virtuális gépet az Azure-ban a Backup és a Recovery Services használatával.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238733"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Lemez visszaállítása és helyreállított virtuális gép létrehozása az Azure-ban
 
-Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk a teljes virtuális gép parancssori felülettel való visszaállításának módját ismerteti. Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
+Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk a teljes virtuális gép parancssori felülettel való visszaállításának módját ismerteti. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 >
@@ -59,11 +59,11 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Virtuálisgép-lemez visszaállítása
 
 > [!IMPORTANT]
-> Erősen ajánlott az az CLI Version 2.0.74 vagy újabb használata a gyors visszaállítás összes előnyének beszerzéséhez, beleértve a felügyelt lemezek visszaállítását. A legjobb, ha a felhasználó mindig a legújabb verziót használja.
+> Nagyon ajánlott az Az CLI 2.0.74-es vagy újabb verziójának használata a gyors visszaállítás előnyeinek kihasználásához, beleértve a felügyelt lemezvisszaállítást is. A legjobb, ha a felhasználó mindig a legújabb verziót használja.
 
 ### <a name="managed-disk-restore"></a>Felügyelt lemez visszaállítása
 
-Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel rendelkezik, és ha a felügyelt lemezeket a helyreállítási pontról szeretné visszaállítani, először egy Azure Storage-fiókot kell megadnia. Ez a Storage-fiók a virtuálisgép-konfiguráció és a központi telepítési sablon tárolására szolgál, amelyet később a virtuális gép a visszaállított lemezekről való üzembe helyezéséhez használhat. Ezután megadhat egy célként megadott erőforráscsoportot is a felügyelt lemezek visszaállításához.
+Ha a biztonsági mentési virtuális gép felügyelt lemezekkel rendelkezik, és ha a szándék a felügyelt lemezek visszaállítása a helyreállítási pontról, először egy Azure storage-fiókot. Ez a tárfiók a virtuális gép konfigurációjának és a központi telepítési sablon tárolására szolgál, amely később a virtuális gép központi telepítéséhez használható a visszaállított lemezekről. Ezután egy célerőforráscsoportot is biztosít a felügyelt lemezek visszaállításához.
 
 1. A tárfiók létrehozásához használja az [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) parancsot. A tárfiók nevének globálisan egyedinek kell lennie, és csak kisbetűkből állhat. Cserélje le *mystorageaccount* kifejezést egy saját egyedi névre:
 
@@ -74,7 +74,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
         --sku Standard_LRS
     ```
 
-2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myrecoverypointname kifejezést* elemet az előző az [Backup recoverypoint List](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) parancs kimenetében beszerzett helyreállítási pont nevére. ***Adja meg azt a célként megadott erőforráscsoportot is, amelyhez a felügyelt lemezeket vissza kívánja állítani***.
+2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myRecoveryPointName-t* az előző biztonsági [mentéshelyreállítási helyreállításipont-lista](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) parancsának kimenetében kapott helyreállításipont nevére. ***Adja meg azt a célerőforrás-csoportot is, amelyre a felügyelt lemezek et visszaállítják.***
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,11 +88,11 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
     ```
 
 > [!WARNING]
-> Ha a cél-erőforráscsoport nincs megadva, a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ.
+> Ha a cél-erőforrás-csoport nem érhető el, majd a felügyelt lemezek visszalesznek állítva nem felügyelt lemezekként az adott tárfiókba. Ez jelentős következményekkel jár a visszaállítási idő, mivel a lemezek visszaállítása szükséges idő teljes mértékben függ az adott tárfiók.
 
 ### <a name="unmanaged-disks-restore"></a>Nem felügyelt lemezek visszaállítása
 
-Ha a biztonsági másolatban szereplő virtuális gép nem felügyelt lemezekkel rendelkezik, és ha a helyreállítási pontról szeretné visszaállítani a lemezeket, először egy Azure Storage-fiókot kell megadnia. Ez a Storage-fiók a virtuálisgép-konfiguráció és a központi telepítési sablon tárolására szolgál, amelyet később a virtuális gép a visszaállított lemezekről való üzembe helyezéséhez használhat. Alapértelmezés szerint a nem felügyelt lemezeket a rendszer visszaállítja az eredeti Storage-fiókokba. Ha a felhasználó egyetlen helyre szeretné visszaállítani az összes nem felügyelt lemezt, akkor a megadott Storage-fiók is használható átmeneti helyként a lemezek számára.
+Ha a biztonsági mentési virtuális gép nem felügyelt lemezekkel rendelkezik, és ha a szándék a lemezek visszaállítása a helyreállítási pontról, először egy Azure storage-fiókot. Ez a tárfiók a virtuális gép konfigurációjának és a központi telepítési sablon tárolására szolgál, amely később a virtuális gép központi telepítéséhez használható a visszaállított lemezekről. Alapértelmezés szerint a nem felügyelt lemezek visszaállnak az eredeti tárfiókokba. Ha a felhasználó egyetlen helyre kívánja visszaállítani az összes nem felügyelt lemezt, akkor az adott tárfiók is használható a lemezek átmeneti helyeként.
 
 A további lépésekben a visszaállított lemezzel létrehoz egy virtuális gépet.
 
@@ -117,7 +117,7 @@ A további lépésekben a visszaállított lemezzel létrehoz egy virtuális gé
         --rp-name myRecoveryPointName
     ```
 
-A fentiekben leírtaknak megfelelően a nem felügyelt lemezeket az eredeti Storage-fiókjába fogja visszaállítani. Ez biztosítja a legjobb visszaállítási teljesítményt. Ha azonban az összes nem felügyelt lemezt vissza kell állítani a megadott Storage-fiókra, akkor az alább látható módon használja a megfelelő jelzőt.
+Mint már említettük, a nem felügyelt lemezek visszaáll nak az eredeti tárfiókba. Ez biztosítja a legjobb visszaállítási teljesítményt. De ha az összes nem felügyelt lemezt vissza kell állítani az adott tárfiókba, akkor használja a megfelelő jelzőt az alábbi módon.
 
 ```azurecli-interactive
     az backup restore restore-disks \
@@ -151,15 +151,15 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Ha a *Status* visszaállítási feladatok jelentéseinek állapota *befejeződött*, a rendszer visszaállította a szükséges információkat (a virtuálisgép-konfigurációt és a központi telepítési sablont) a Storage-fiókra.
+Amikor a visszaállítási feladat jelentései *befejeződött,* a szükséges információkat (vm konfiguráció és a központi telepítési sablon) vissza lett állítva a tárfiókba. *Status*
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Virtuális gép létrehozása a visszaállított lemezről
 
-Utolsó lépésként hozzon létre egy virtuális gépet a visszaállított lemezekről. A virtuális gép létrehozásához a letöltött központi telepítési sablont használhatja a megadott Storage-fiókhoz.
+Az utolsó lépés az, hogy hozzon létre egy virtuális gép a visszaállított lemezekről. Használhatja a központi telepítési sablon ta- tárfiókba letöltött a virtuális gép létrehozásához.
 
-### <a name="fetch-the-job-details"></a>A feladatok részleteinek beolvasása
+### <a name="fetch-the-job-details"></a>A feladat részleteinek beolvasása
 
-Az eredő feladatok részletei megadják a sablon URI-JÁT, amely lekérdezhető és telepíthető. Az aktivált visszaállított feladattal kapcsolatos további részletekért használja a feladatok megjelenítése parancsot.
+Az eredményül bejön a feladat részletei a sablon URI-ját adják meg, amely lekérdezhető és üzembe helyezhető. A feladatmegjelenítések paranccsal további részleteket kaphat az aktivált visszaállított feladatról.
 
 ```azurecli-interactive
 az backup job show \
@@ -168,7 +168,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-A lekérdezés kimenete minden adatot megad, de csak a Storage-fiók tartalma érdekli. Az Azure CLI [lekérdezési funkciójának](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) használatával beolvashatók a kapcsolódó részletek
+A lekérdezés kimenete minden részletet megad, de csak a tárfiók tartalma érdekel minket. Az Azure CLI [lekérdezési képességével](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) letudjuk kérni a megfelelő részleteket
 
 ```azurecli-interactive
 az backup job show \
@@ -191,9 +191,9 @@ az backup job show \
 
 ### <a name="fetch-the-deployment-template"></a>A központi telepítési sablon beolvasása
 
-A sablon nem érhető el közvetlenül, mert az ügyfél Storage-fiókja és a megadott tároló alatt található. Ehhez a sablonhoz a teljes URL-címet (valamint egy ideiglenes SAS-tokent) kell elérni.
+A sablon nem érhető el közvetlenül, mivel az ügyfél tárfiók és az adott tároló alatt található. A sablon eléréséhez a teljes URL-címre van szükség (egy ideiglenes SAS-jogkivonattal együtt).
 
-Először bontsa ki a sablon blob URI-ját a feladatok részletei közül.
+Először bontsa ki a sablonblob Uri-t a feladat részleteiből
 
 ```azurecli-interactive
 az backup job show \
@@ -205,15 +205,15 @@ az backup job show \
 "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
 ```
 
-A sablon blob URI-ja ebben a formátumban lesz, és Kinyeri a sablon nevét.
+A sablon blob Uri lesz ebben a formátumban, és bontsa ki a sablon nevét
 
 ```https
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-Így a fenti példában szereplő sablon neve ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` lesz, és a tároló neve ```myVM-daa1931199fd4a22ae601f46d8812276```
+Így a sablon neve a fenti ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` példában lesz, és a tároló neve```myVM-daa1931199fd4a22ae601f46d8812276```
 
-Most szerezze be a tárolóhoz és a sablonhoz tartozó SAS-tokent az [itt](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) részletezett módon.
+Most kap a SAS token ehhez a tárolóhoz és sablonrészletes [itt](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment)
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

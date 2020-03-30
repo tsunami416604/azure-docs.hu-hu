@@ -1,163 +1,163 @@
 ---
-title: Azure Policy-bővítmény a Visual Studio Code-hoz
-description: Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy bővítményét Resource Manager-aliasok kereséséhez.
+title: Azure-szabályzat bővítmény a Visual Studio-kódhoz
+description: Megtudhatja, hogy miként keresheti meg az Azure Policy bővítményt a Visual Studio-kódhoz az Erőforrás-kezelő aliasai kikereséséhez.
 ms.date: 03/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264673"
 ---
-# <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
+# <a name="use-azure-policy-extension-for-visual-studio-code"></a>Az Azure Policy bővítmény használata a Visual Studio-kódhoz
 
-> A Azure Policy bővítmény **0.0.21** és újabb verziójára vonatkozik
+> Az Azure Policy bővítmény **0.0.21-es** és újabb verziójára vonatkozik
 
-Megtudhatja, hogyan kereshet [aliasokat](../concepts/definition-structure.md#aliases) , és hogyan tekintheti át az erőforrásokat és a házirendeket a Visual Studio Code Azure Policy bővítményének használatával. Először is leírjuk, hogyan kell telepíteni a Azure Policy bővítményt a Visual Studio Code-ban. Ezután megismerheti az aliasok keresésének módját.
+Megtudhatja, hogy miként használhatja az Azure Policy bővítményt a Visual Studio-kódhoz [aliasok](../concepts/definition-structure.md#aliases) felkeresése, valamint az erőforrások és szabályzatok áttekintéséhez. Először ismertetjük, hogyan telepítheti az Azure Policy bővítményt a Visual Studio-kódban. Aztán végigmegyünk, hogyan nézzünk utána az álneveknek.
 
-A Visual Studio Code-hoz készült Azure Policy-bővítmény a Visual Studio Code által támogatott összes platformra telepíthető. Ez a támogatás magában foglalja a Windows, a Linux és a macOS rendszer használatát.
+A Visual Studio-kód Azure Policy bővítménye minden olyan platformra telepíthető, amelyet a Visual Studio-kód támogat. Ez a támogatás magában foglalja a Windows, Linux és macOS operációs rendszert.
 
 > [!NOTE]
-> A következő, a Visual Studio Code-hoz készült Azure Policy-bővítményben megtekintett házirendek nem szinkronizálhatók az Azure-ba.
+> A Visual Studio-kód Azure Policy bővítményében megtekintett szabályzatok helyi módosításai nincsenek szinkronizálva az Azure-ral.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk lépéseinek végrehajtásához a következő elemek szükségesek:
+A cikkben ismertetett lépések végrehajtásához a következő elemek szükségesek:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-- [Visual Studio Code](https://code.visualstudio.com).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+- [Visual Studio kód](https://code.visualstudio.com).
 
-## <a name="install-azure-policy-extension"></a>Azure Policy bővítmény telepítése
+## <a name="install-azure-policy-extension"></a>Az Azure Policy bővítmény telepítése
 
-Az előfeltételek teljesítése után a következő lépésekkel telepítheti Azure Policy-bővítményt a Visual Studio Code-hoz:
+Miután teljesítette az előfeltételeket, az alábbi lépésekkel telepítheti a Visual Studio-kód Azure Policy bővítményét:
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-1. A menüsávban lépjen a > - **bővítmények** **megtekintése** elemre.
+1. A menüsorban nyissa meg a**Bővítmények** **megtekintése** > lapot.
 
-1. A keresőmezőbe írja be a **Azure Policy**kifejezést.
+1. A keresőmezőbe írja be az **Azure Policy (Azure Policy) kifejezést.**
 
-1. Válassza a **Azure Policy** elemet a keresési eredmények közül, majd válassza a **telepítés**lehetőséget.
+1. Válassza az **Azure Policy elemet** a keresési eredmények között, majd kattintson a Telepítés **gombra.**
 
-1. Szükség esetén válassza az **Újratöltés** lehetőséget.
+1. Szükség esetén válassza **az Újratöltés** lehetőséget.
 
 ## <a name="set-the-azure-environment"></a>Az Azure-környezet beállítása
 
-A nemzeti Felhőbeli felhasználók esetében kövesse az alábbi lépéseket az Azure-környezet első beállításához:
+Egy nemzeti felhőfelhasználó esetén kövesse az alábbi lépéseket az Azure-környezet beállításához először:
 
-1. Válassza a **File\Preferences\Settings**lehetőséget.
+1. Válassza **a Fájl\Beállítások\Beállítások lehetőséget.**
 
-1. Keressen rá a következő sztringre: _Azure: Cloud_
+1. Keresés a következő karakterláncon: _Azure: Cloud_
 
 1. Válassza ki a nemzet felhőjét a listából:
 
-   ![Alapértelmezett Azure Cloud Sign in beállítása a Visual Studio Code-hoz](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
+   ![Alapértelmezett Azure-felhőbeli bejelentkezés beállítása a Visual Studio-kódhoz](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
 
-## <a name="connect-to-an-azure-account"></a>Kapcsolódás Azure-fiókhoz
+## <a name="connect-to-an-azure-account"></a>Csatlakozás Azure-fiókhoz
 
-Az erőforrások és a keresési aliasok kiértékeléséhez csatlakoznia kell az Azure-fiókjához. Kövesse az alábbi lépéseket az Azure-hoz való kapcsolódáshoz a Visual Studio Code-ból:
+Az erőforrások és a keresése aliasok kiértékeléséhez csatlakoznia kell az Azure-fiókjához. A Visual Studio-kódból az alábbi lépésekkel csatlakozhat az Azure-hoz:
 
-1. Jelentkezzen be az Azure-ba a Azure Policy bővítményből vagy a parancssorból.
+1. Jelentkezzen be az Azure-ba az Azure-szabályzat bővítményből vagy a parancspalettából.
 
-   - Azure Policy bővítmény
+   - Azure-szabályzat bővítmény
 
-     A Azure Policy bővítményben válassza a **Bejelentkezés az Azure**-ba lehetőséget.
+     Az Azure Policy bővítményben válassza **a Bejelentkezés az Azure-ba**lehetőséget.
 
-     ![Azure Felhőbeli bejelentkezés a Visual Studio Code-hoz Azure Policy bővítményből](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
+     ![Az Azure-felhőbejelentkezés a Visual Studio-kódszolgáltatáshoz az Azure Policy bővítményből](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
 
-   - Parancs paletta
+   - Parancspaletta
 
-     A menüsávban válassza a > **parancs-paletta** **megjelenítése** lehetőséget, és írja be az **Azure: bejelentkezés**lehetőséget.
+     A menüsorban nyissa meg a**Parancspaletta** **megtekintése** > lapot, és írja be az **Azure: Bejelentkezés**.
 
-     ![Azure Felhőbeli bejelentkezés a Visual Studio Code-hoz a parancssorból](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
+     ![Az Azure-felhő bejelentkezés a Visual Studio-kódhoz a parancspalettáról](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
 
-1. Az Azure-ba való bejelentkezéshez kövesse a bejelentkezési utasításokat. A csatlakozás után az Azure-fiók neve megjelenik a Visual Studio Code ablak alján található állapotsorban.
+1. Kövesse a bejelentkezési utasításokat az Azure-ba való bejelentkezéshez. A csatlakozás után az Azure-fiók neve megjelenik a Visual Studio-kód ablak alján található állapotsoron.
 
-## <a name="select-subscriptions"></a>Keresés az előfizetések között
+## <a name="select-subscriptions"></a>Előfizetések kiválasztása
 
-Amikor először jelentkezik be, csak az alapértelmezett előfizetési erőforrásokat és házirendeket tölti be a Azure Policy bővítmény. Az erőforrások és házirendek megjelenítéséhez szükséges előfizetések hozzáadásához vagy eltávolításához kövesse az alábbi lépéseket:
+Amikor először jelentkezik be, csak az azure-szabályzat bővítmény csak az alapértelmezett előfizetési erőforrásokat és szabályzatokat tölti be. Ha előfizetéseket szeretne hozzáadni vagy eltávolítani az erőforrások és szabályzatok megjelenítéséből, kövesse az alábbi lépéseket:
 
-1. Indítsa el az előfizetés parancsot a parancssorból vagy az ablak láblécből.
+1. Indítsa el az előfizetési parancsot a Parancspalettáról vagy az ablaklábról.
 
-   - Parancs paletta: 
+   - Parancspaletta: 
 
-     A menüsávban válassza a > **parancs-paletta** **megjelenítése** elemet, és írja be az **Azure: Select Subscriptions (előfizetések) lehetőséget**.
+     A menüsorban nyissa meg a**Parancspaletta** **megtekintése** > lehetőséget, és írja be az **Azure: Előfizetések lehetőséget.**
 
-   - Ablak lábléce
+   - Ablakláb
 
-     A képernyő alján található ablak láblécében válassza ki az Azure-nak megfelelő szegmenst **: \<a fiókját\>** .
+     A képernyő alján lévő ablaklábon válassza ki az **Azure-nak megfelelő szegmenst: \<a fiókját.\>**
 
-1. A szűrő mező használatával gyorsan megkeresheti az előfizetéseket név szerint. Ezután a Azure Policy-bővítmény által megjelenített előfizetések beállításához jelölje be vagy távolítsa el az egyes előfizetések ellenőrzését. Ha végzett a megjelenítendő előfizetések hozzáadásával vagy eltávolításával, kattintson **az OK gombra**.
+1. A szűrőmező segítségével gyorsan megtalálhatja az előfizetéseket név szerint. Ezután ellenőrizze vagy távolítsa el az ellenőrzést az egyes előfizetések az Azure Policy bővítmény által megjelenített előfizetések beállításához. Amikor befejezte az előfizetések megjelenítését, kattintson az **OK gombra.**
 
 ## <a name="search-for-and-view-resources"></a>Erőforrások keresése és megtekintése
 
-A Azure Policy bővítmény a kiválasztott előfizetések erőforrás-szolgáltatója és az **erőforrások** ablaktáblán erőforráscsoport alapján listázza az erőforrásokat. A TreeView vezérlő a kiválasztott előfizetésben vagy az előfizetési szinten lévő erőforrások alábbi csoportosításait tartalmazza:
+Az Azure Policy bővítmény az erőforrásokat az erőforrás-szolgáltató és az **erőforrások** ablaktábla erőforráscsoport szerint sorolja fel a kiválasztott előfizetésekben. A treeview a következő erőforráscsoportokat tartalmazza a kiválasztott előfizetésen belül vagy az előfizetés szintjén:
 
 - **Erőforrás-szolgáltatók**
-  - Minden regisztrált erőforrás-szolgáltató erőforrásokkal és kapcsolódó alárendelt erőforrásokkal, amelyek szabályzat-aliasokkal rendelkeznek
+  - Minden regisztrált erőforrás-szolgáltató olyan erőforrásokkal és kapcsolódó gyermekerőforrásokkal rendelkezik, amelyek házirendaliasokkal rendelkeznek
 - **Erőforráscsoportok**
-  - Az erőforráscsoport összes erőforrása
+  - Az összes erőforrás az erőforráscsoport szerint, amelyben vannak
 
-Alapértelmezés szerint a bővítmény az "erőforrás-szolgáltató" részét a meglévő erőforrások és a házirend-aliasokkal rendelkező erőforrások alapján szűri. Módosítsa ezt a viselkedést a **beállítások** > **extensions** > **Azure Policy** , hogy minden erőforrás-szolgáltató szűrés nélkül megjelenjen.
+Alapértelmezés szerint a bővítmény szűri az "Erőforrás-szolgáltató" részt a meglévő erőforrások és erőforrások, amelyek házirend aliasok. Módosítsa ezt a viselkedést a **Beállítások** > **bővítmények** > **Azure-szabályzatban,** hogy az összes erőforrás-szolgáltatót szűrés nélkül láthassa.
 
-Az egyes előfizetésekben több száz vagy több ezer erőforrást használó ügyfelek kereshetnek keresési módot az erőforrásaik megkereséséhez. A Azure Policy bővítmény lehetővé teszi egy adott erőforrás keresését a következő lépésekkel:
+Az egyetlen előfizetésben több száz vagy több ezer erőforrással rendelkező ügyfelek kereshető módon kereshetik meg az erőforrásaikat. Az Azure Policy bővítmény lehetővé teszi egy adott erőforrás keresését a következő lépésekkel:
 
-1. Indítsa el a keresési felületet a Azure Policy-bővítményből vagy a parancssorból.
+1. Indítsa el a keresési felületet az Azure Policy bővítményből vagy a parancspalettából.
 
-   - Azure Policy bővítmény
+   - Azure-szabályzat bővítmény
 
-     Az Azure Policy-bővítményben vigye az egérmutatót az **erőforrások** panel fölé, válassza a három pontot, majd válassza az **erőforrások keresése**lehetőséget.
+     Az Azure Policy bővítményben mutasson az **Erőforrások** panelre, és válassza a három pontot, majd válassza az **Erőforrások keresése**lehetőséget.
 
-   - Parancs paletta:
+   - Parancspaletta:
 
-     A menüsávban válassza a > **parancs-paletta** **megjelenítése** elemet, és írja be az **erőforrások: erőforrások keresése**lehetőséget.
+     A menüsorban válassza a **Parancspaletta** **megtekintése** > lapot, és írja be az **Erőforrások: Keresés az erőforrások mezőbe.**
 
-1. Ha egynél több előfizetés van kiválasztva a megjelenítéshez, használja a szűrőt a keresendő előfizetés kiválasztásához.
+1. Ha egynél több előfizetés van kiválasztva a megjelenítéshez, a szűrő segítségével válassza ki, hogy melyik előfizetést szeretné keresni.
 
-1. A szűrő használatával kiválaszthatja, hogy melyik erőforráscsoport legyen a korábban kiválasztott előfizetés részét képező keresés.
+1. A szűrő segítségével válassza ki, hogy melyik erőforráscsoportot keresse meg, amely a korábban kiválasztott előfizetés részét képezi.
 
-1. A szűrő használatával kiválaszthatja, hogy melyik erőforrást szeretné megjeleníteni. A szűrő az erőforrás nevére és az erőforrás típusára is használható.
+1. A szűrő segítségével válassza ki, hogy melyik erőforrást szeretné megjeleníteni. A szűrő az erőforrás nevéhez és az erőforrástípushoz is működik.
 
-## <a name="discover-aliases-for-resource-properties"></a>Az erőforrás-tulajdonságok aliasának felderítése
+## <a name="discover-aliases-for-resource-properties"></a>Erőforrás-tulajdonságok aliasok felderítése
 
-Ha erőforrás van kiválasztva, akár a keresési felületen keresztül, akár a TreeView-ban való kiválasztásával, a Azure Policy bővítmény megnyitja az adott erőforrást jelképező JSON-fájlt, valamint az összes erőforrás-kezelő tulajdonság értékét.
+Ha egy erőforrás van kiválasztva, akár a keresési felületen keresztül, vagy kiválasztja azt a treeview, az Azure Policy bővítmény megnyitja az erőforrást képviselő JSON-fájlt, és az összes Erőforrás-kezelő tulajdonságértékeit.
 
-Ha egy erőforrás meg van nyitva, a Resource Manager-tulajdonságnév vagy-érték fölé húzva megjelenik a Azure Policy alias, ha van ilyen. Ebben a példában az erőforrás egy `Microsoft.Compute/virtualMachines` erőforrástípus, és a **Properties. storageProfile. imageReference. Offer** tulajdonságot a rendszer fölé viszi. Az egérmutató a megfelelő aliasokat jeleníti meg.
+Miután egy erőforrás meg van nyitva, a Resource Manager tulajdonság neve vagy értéke fölé mutató egérmutató megjeleníti az Azure Policy aliast, ha létezik ilyen. Ebben a példában az `Microsoft.Compute/virtualMachines` erőforrás egy erőforrástípus, és a **properties.storageProfile.imageReference.offer** tulajdonság fölé kerül. Az egérmutató az egyező aliasokat jeleníti meg.
 
-![Azure Policy bővítmény hover a Resource Manager-tulajdonság aliasát mutatja](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+![Az Azure Policy bővítmény rámutatása az Erőforrás-kezelő tulajdonságaliasát jeleníti meg](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
 
-## <a name="search-for-and-view-policies-and-assignments"></a>Szabályzatok és hozzárendelések keresése és megtekintése
+## <a name="search-for-and-view-policies-and-assignments"></a>Házirendek és hozzárendelések keresése és megtekintése
 
-A Azure Policy bővítmény a házirendek ablaktáblán megjelenítendő előfizetések számára a **szabályzatok** és a házirendek hozzárendelését jeleníti meg. Egy adott előfizetésben több száz vagy akár több ezer szabályzatot vagy hozzárendelést is használhatnak, így kereshetik meg a szabályzatokat vagy a hozzárendeléseket. A Azure Policy bővítmény lehetővé teszi egy adott házirend vagy hozzárendelés keresését a következő lépésekkel:
+Az Azure Policy bővítmény felsorolja a szabályzattípusok at és a szabályzat-hozzárendeléseket fanézetként a **Szabályzatok** ablaktáblában megjeleníthető előfizetésekhez. Azok az ügyfelek, akik több száz vagy több ezer szabályzattal vagy-hozzárendeléssel rendelkeznek egyetlen előfizetésben, kereshető módot részesíthetnek előnyben a szabályzataik vagy -hozzárendeléseik megkeresésére. Az Azure Policy bővítmény lehetővé teszi egy adott szabályzat vagy hozzárendelés keresését a következő lépésekkel:
 
-1. Indítsa el a keresési felületet a Azure Policy-bővítményből vagy a parancssorból.
+1. Indítsa el a keresési felületet az Azure Policy bővítményből vagy a parancspalettából.
 
-   - Azure Policy bővítmény
+   - Azure-szabályzat bővítmény
 
-     Az Azure Policy-bővítményben vigye a kurzort a **házirendek** panel fölé, válassza a három pontot, majd válassza a **keresési szabályzatok**lehetőséget.
+     Az Azure Policy bővítményben mutasson a **Szabályzat panelre,** és válassza ki a három pontot, majd válassza a **Keresési házirendek**lehetőséget.
 
-   - Parancs paletta:
+   - Parancspaletta:
 
-     A menüsávban válassza a > **parancs-paletta** **megjelenítése** lehetőséget, és adja meg a **szabályzatok: keresési házirendek**elemet.
+     A menüsorban válassza a **Parancspaletta** **megtekintése** > lapot, és írja be a **Házirendek: Keresési házirendek**című részt.
 
-1. Ha egynél több előfizetés van kiválasztva a megjelenítéshez, használja a szűrőt a keresendő előfizetés kiválasztásához.
+1. Ha egynél több előfizetés van kiválasztva a megjelenítéshez, a szűrő segítségével válassza ki, hogy melyik előfizetést szeretné keresni.
 
-1. A szűrő használatával kiválaszthatja, hogy melyik házirend-típust vagy hozzárendelést szeretné megkeresni a korábban kiválasztott előfizetés részeként.
+1. A szűrő segítségével kiválaszthatja, hogy melyik házirendtípust vagy -hozzárendelést szeretné keresni, amely a korábban kiválasztott előfizetés részét képezi.
 
-1. A szűrő használatával kiválaszthatja, hogy melyik házirendet vagy jelenjen meg. A szűrő a _DisplayName_ paraméterrel működik a házirend-definícióhoz vagy a házirend-hozzárendeléshez.
+1. A szűrő segítségével válassza ki, hogy melyik házirendet vagy megjeleníteni kívánt. A szűrő a házirend-definíció vagy a házirend-hozzárendelés _displayName-jéhez_ működik.
 
-Amikor kijelöl egy házirendet vagy hozzárendelést, legyen az a keresési felületen keresztül, vagy kiválasztja azt a TreeView vezérlőben, a Azure Policy bővítmény megnyitja a szabályzatot vagy hozzárendelést jelölő JSON-értéket, valamint az összes erőforrás-kezelő tulajdonság értékét. A bővítmény ellenőrizheti a megnyitott Azure Policy JSON-sémát.
+Amikor kiválaszt egy szabályzatot vagy hozzárendelést, akár a keresési felületen keresztül, akár a treeview-ban, az Azure Policy bővítmény megnyitja a JSON-t, amely a szabályzatot vagy hozzárendelést és annak erőforrás-kezelői tulajdonságértékeit képviseli. A bővítmény érvényesítheti a megnyitott Azure Policy JSON-sémát.
 
 ## <a name="sign-out"></a>Kijelentkezés
 
-A menüsávban válassza a > **parancs-paletta** **megjelenítése** elemet, majd írja be az **Azure: kijelentkezés**lehetőséget.
+A menüsorban nyissa meg a**Parancspaletta** **megtekintése** > lapot, és írja be az **Azure: Kijelentkezés**című lapot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
+- Tekintse át a példákat az [Azure Policy-mintákban.](../samples/index.md)
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
-- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](remediate-resources.md).
-- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).
+- Ismerje meg, hogyan hozhat [létre programozott házirendeket.](programmatically-create.md)
+- További információ a [nem megfelelő erőforrások kiújulásáról.](remediate-resources.md)
+- Tekintse át, hogy mi a felügyeleti csoport az [Erőforrások rendszerezése az Azure felügyeleti csoportokkal.](../../management-groups/overview.md)

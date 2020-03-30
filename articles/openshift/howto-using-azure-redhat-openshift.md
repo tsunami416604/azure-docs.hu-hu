@@ -1,47 +1,47 @@
 ---
-title: Azure Red Hat OpenShift 4,3-fürt létrehozása | Microsoft Docs
-description: Fürt létrehozása az Azure Red Hat OpenShift 4,3
+title: Hozzon létre egy Azure Red Hat OpenShift 4.3 fürt | Microsoft dokumentumok
+description: Fürt létrehozása az Azure Red Hat OpenShift 4.3-as ával
 author: lamek
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-keywords: ARO, openshift, az ARO, Red Hat, CLI
-ms.openlocfilehash: 23d7c950396c36925ce50d746195916292d360ad
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+keywords: aro, openshift, az aro, piros kalap, cli
+ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79201042"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349437"
 ---
-# <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4,3-fürt létrehozása, elérése és kezelése
+# <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4.3-as fürt létrehozása, elérése és kezelése
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy az Azure Red Hat OpenShift 4,3 jelenleg csak privát előzetes verzióban érhető el az USA keleti régiójában. A privát előzetes verzió elfogadása csak meghívóval történik. Ügyeljen arra, hogy regisztrálja az előfizetését a funkció engedélyezése előtt: [Azure Red Hat OpenShift Private Preview regisztráció](https://aka.ms/aro-preview-register)
+> Kérjük, vegye figyelembe, hogy az Azure Red Hat OpenShift 4.3 jelenleg csak privát előzetes verzióban érhető el az USA keleti részén. A privát előnézet elfogadása csak meghívással történik. Kérjük, regisztrálja az előfizetést, mielőtt megpróbálná engedélyezni ezt a funkciót: [Azure Red Hat OpenShift private preview registration](https://aka.ms/aro-preview-register)
 
 > [!NOTE]
-> Az előzetes verziójú funkciók önkiszolgálást biztosítanak, és a rendelkezésre álló és elérhető módon érhetők el, és nem tartoznak a szolgáltatói szerződéssel (SLA) és a korlátozott jótállással. A funkciók ezért nem használhatók éles környezetben.
+> Az előzetes verzió funkciói önkiszolgálóak, és a rendelkezésre álló mértékben érhetők el, és nem tartoznak a szolgáltatásiszint-szerződés (SLA) és a korlátozott jótállás hatálya alól. Ezért a funkciók nem éles használatra szántak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Red Hat OpenShift 4,3-fürt létrehozásához a következőkre lesz szüksége:
+Az Azure Red Hat OpenShift 4.3-as fürt létrehozásához a következőkre lesz szüksége:
 
-- Az Azure CLI verziója 2.0.72 vagy újabb
+- Az Azure CLI 2.0.72-es vagy újabb verziója
   
-- Az "az ARO" bővítmény
+- Az "az aro" kiterjesztés
 
-- Olyan virtuális hálózat, amely két üres alhálózatot tartalmaz, amelyek mindegyike nem rendelkezik csatolt hálózati biztonsági csoporttal.  A fürt ezekbe az alhálózatokra lesz telepítve.
+- Két üres alhálózatot tartalmazó virtuális hálózat, amelyekhez nincs hálózati biztonsági csoport csatlakoztatva.  A fürt ezekben az alhálózatokban lesz telepítve.
 
-- Egy HRE-alkalmazás (ügyfél-azonosító és titkos kulcs) és egyszerű szolgáltatásnév, illetve a `az aro create` megfelelő HRE-engedélyei a HRE-alkalmazások és-egyszerű szolgáltatások automatikus létrehozásához.
+- Fürt AAD-alkalmazás (ügyfélazonosító és titkos) és egyszerű szolgáltatás, `az aro create` vagy elegendő AAD-engedélyek egy AAD-alkalmazás és egyszerű szolgáltatás automatikus létrehozásához.
 
-- Az RP-szolgáltatásnév és a fürtszolgáltatási rendszerbiztonsági tag mindegyikének közreműködői szerepkörrel kell rendelkeznie a fürt virtuális hálózatán.  Ha a virtuális hálózaton a "felhasználói hozzáférés rendszergazdája" szerepkör található, akkor a `az aro create` automatikusan beállítja a szerepkör-hozzárendeléseket.
+- Az RP szolgáltatásnévés a fürtegyszerűszolgáltatás-tagnak a fürt virtuális hálózatán közreműködői szerepkört kell bevonnia.  Ha a virtuális hálózaton a "Felhasználói hozzáférés `az aro create` rendszergazdája" szerepkör van, automatikusan beállítja a szerepkör-hozzárendeléseket.
 
-### <a name="install-the-az-aro-extension"></a>Az "az ARO" bővítmény telepítése
-A `az aro` bővítmény lehetővé teszi, hogy közvetlenül a parancssorból az Azure CLI használatával hozza létre, elérje és törölje az Azure Red Hat OpenShift-fürtöket.
+### <a name="install-the-az-aro-extension"></a>Telepítse az "az aro" kiterjesztést
+A `az aro` bővítmény lehetővé teszi az Azure Red Hat OpenShift fürtök létrehozását, elérését és törlését közvetlenül a parancssorból az Azure CLI használatával.
 
 > [!Note] 
-> A `az aro` bővítmény jelenleg előzetes verzióban érhető el. Előfordulhat, hogy egy későbbi kiadásban módosítják vagy el lettek távolítva.
-> Ha a `az aro` bővítmény előzetes verziójára szeretne bejelentkezni, regisztrálnia kell a `Microsoft.RedHatOpenShift` erőforrás-szolgáltatót.
+> A `az aro` kiterjesztés aktuális előnézetben. Előfordulhat, hogy egy későbbi kiadásban megváltozik vagy eltávolodik.
+> A `az aro` bővítmény előzetes verziójának letiltásához `Microsoft.RedHatOpenShift` regisztrálnia kell az erőforrás-szolgáltatót.
 > 
 >    ```console
 >    az provider register -n Microsoft.RedHatOpenShift --wait
@@ -53,7 +53,7 @@ A `az aro` bővítmény lehetővé teszi, hogy közvetlenül a parancssorból az
    az login
    ```
 
-2. A `az aro` bővítmény telepítéséhez futtassa a következő parancsot:
+2. A bővítmény telepítéséhez `az aro` futtassa a következő parancsot:
 
    ```console
    az extension add -n aro --index https://az.aroapp.io/preview
@@ -71,7 +71,7 @@ A `az aro` bővítmény lehetővé teszi, hogy közvetlenül a parancssorból az
   
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Két üres alhálózatot tartalmazó virtuális hálózat létrehozása
 
-Kövesse az alábbi lépéseket egy olyan virtuális hálózat létrehozásához, amely két üres alhálózatot tartalmaz.
+Két üres alhálózatot tartalmazó virtuális hálózat létrehozásához kövesse az alábbi lépéseket.
 
 1. Állítsa be a következő változókat.
 
@@ -79,7 +79,15 @@ Kövesse az alábbi lépéseket egy olyan virtuális hálózat létrehozásához
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
+   PULL_SECRET="<optional-pull-secret>"
    ```
+   >[!NOTE]
+   > Az opcionális lekéréses titok lehetővé teszi, hogy a fürt hozzáférjen a Red Hat tárolójegyzékek és további tartalom eléréséhez.
+   >
+   > A lekéréses titok https://cloud.redhat.com/openshift/install/azure/installer-provisioned elérése a *Lekéréses titok másolása*gombra kattintva.
+   >
+   > Be kell jelentkeznie Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail címével, és el kell fogadnia a feltételeket.
+ 
 
 2. Hozzon létre egy erőforráscsoportot a fürthöz.
 
@@ -97,7 +105,7 @@ Kövesse az alábbi lépéseket egy olyan virtuális hálózat létrehozásához
      >/dev/null
    ```
 
-4. Adjon hozzá két üres alhálózatot a virtuális hálózathoz.
+4. Két üres alhálózat hozzáadása a virtuális hálózathoz.
 
    ```console
     for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
@@ -111,7 +119,7 @@ Kövesse az alábbi lépéseket egy olyan virtuális hálózat létrehozásához
    done
    ```
 
-5. Tiltsa le a hálózati házirendeket a magánhálózati kapcsolat szolgáltatáshoz a virtuális hálózaton és az alhálózatokon. Ez az a követelmény, hogy az ARO szolgáltatás elérje és felügyelje a fürtöt.
+5. Tiltsa le a privát kapcsolatszolgáltatás hálózati házirendjeit a virtuális hálózaton és az alhálózatokon. Ez a követelmény az ARO szolgáltatás számára a fürt eléréséhez és kezeléséhez.
 
    ```console
    az network vnet subnet update \
@@ -124,7 +132,7 @@ Kövesse az alábbi lépéseket egy olyan virtuális hálózat létrehozásához
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-Futtassa a következő parancsot egy fürt létrehozásához.
+Fürt létrehozásához futtassa a következő parancsot.
 
 ```console
 az aro create \
@@ -132,21 +140,22 @@ az aro create \
   -n "$CLUSTER" \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
-  --worker-subnet "$CLUSTER-worker"
+  --worker-subnet "$CLUSTER-worker" \
+  --pull-secret "$PULL_SECRET"
 ```
 
 >[!NOTE]
 > A fürt létrehozása általában körülbelül 35 percet vesz igénybe.
 
-## <a name="access-the-cluster-console"></a>A fürt konzoljának elérése
+## <a name="access-the-cluster-console"></a>A fürtkonzol elérése
 
-A fürt konzoljának URL-címét (az űrlap `https://console-openshift-console.apps.<random>.<location>.aroapp.io/`) az Azure Red Hat OpenShift 4,3 fürterőforrás alatt találja. A következő parancs futtatásával tekintheti meg az erőforrást:
+A fürtkonzol URL-címét (az `https://console-openshift-console.apps.<random>.<location>.aroapp.io/`űrlapról) az Azure Red Hat OpenShift 4.3 fürterőforrás alatt találja. Az erőforrás megtekintéséhez futtassa a következő parancsot:
 
 ```console
 az aro list -o table
 ```
 
-A `kubeadmin` felhasználó segítségével bejelentkezhet a fürtbe.  Futtassa a következő parancsot a `kubeadmin` felhasználó jelszavának megkereséséhez:
+A felhasználó segítségével jelentkezhet be a `kubeadmin` fürtbe.  A felhasználó jelszavának megkereséséhez `kubeadmin` futtassa a következő parancsot:
 
 ```dotnetcli
 az aro list-credentials -g "$RESOURCEGROUP" -n "$CLUSTER"
@@ -154,7 +163,7 @@ az aro list-credentials -g "$RESOURCEGROUP" -n "$CLUSTER"
 
 ## <a name="delete-a-cluster"></a>Fürt törlése
 
-Futtassa a következő parancsot a fürt törléséhez.
+Fürt törléséhez futtassa a következő parancsot.
 
 ```console
 az aro delete -g "$RESOURCEGROUP" -n "$CLUSTER"

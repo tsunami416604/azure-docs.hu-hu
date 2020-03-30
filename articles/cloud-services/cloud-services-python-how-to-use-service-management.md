@@ -1,6 +1,6 @@
 ---
-title: A Service Management API (Python) szolgáltatás használata – útmutató
-description: Ismerje meg, hogyan hajthat végre általános szolgáltatási felügyeleti feladatokat a Pythonból.
+title: A Service Management API (Python) használata – szolgáltatáskalauz használata
+description: Ismerje meg, hogyan végezhet programozott módon a Python gyakori szolgáltatáskezelési feladatait.
 services: cloud-services
 documentationcenter: python
 author: lmazuel
@@ -15,48 +15,48 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
 ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70141464"
 ---
-# <a name="use-service-management-from-python"></a>A Service Management használata a Pythonból
-Ez az útmutató bemutatja, hogyan hajthat végre általános szolgáltatás-felügyeleti feladatokat a Pythonból. A Pythonhoz készült [Azure SDK](https://github.com/Azure/azure-sdk-for-python) **ServiceManagementService** osztálya támogatja a programozott hozzáférést a [Azure Portalban][management-portal]elérhető szolgáltatás-felügyeleti funkciók nagy része számára. Ezt a funkciót használhatja a Cloud Services, az üzemelő példányok, az adatkezelési szolgáltatások és a virtuális gépek létrehozásához, frissítéséhez és törléséhez. Ez a funkció hasznos lehet olyan alkalmazások létrehozásához, amelyeknek programozott hozzáférésre van szükségük a Service Management szolgáltatáshoz.
+# <a name="use-service-management-from-python"></a>Szolgáltatáskezelés használata a Pythonból
+Ez az útmutató bemutatja, hogyan programozott módon hajthatja végre a Python gyakori szolgáltatáskezelési feladatait. Az [Azure SDK python-ban](https://github.com/Azure/azure-sdk-for-python) található **ServiceManagementService** osztály programozott hozzáférést biztosít az [Azure Portalon][management-portal]elérhető szolgáltatáskezelési funkciók nagy részéhez. Ezzel a funkcióval felhőszolgáltatásokat, központi telepítéseket, adatkezelési szolgáltatásokat és virtuális gépeket hozhat létre, frissíthet és törölhet. Ez a funkció hasznos lehet olyan alkalmazások készítéséhez, amelyek programozott hozzáférést igényelnek a szolgáltatáskezeléshez.
 
-## <a name="WhatIs"> </a>Mi a Service Management?
-Az Azure Service Management API programozott hozzáférést biztosít a [Azure Portal][management-portal]elérhető Service Management-funkciók nagy része számára. Használhatja a Pythonhoz készült Azure SDK-t a Cloud Services és a Storage-fiókok kezeléséhez.
+## <a name="what-is-service-management"></a><a name="WhatIs"> </a>Mi a szolgáltatáskezelés?
+Az Azure Service Management API programozott hozzáférést biztosít az [Azure Portalon][management-portal]keresztül elérhető szolgáltatáskezelési funkciók nagy részéhez. Az Azure SDK python-hoz a felhőszolgáltatások és a tárfiókok kezeléséhez.
 
-A Service Management API használatához [létre kell hoznia egy Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/).
+A Service Management API használatához létre kell [hoznia egy Azure-fiókot.](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="Concepts"> </a>Fogalmak
-A Pythonhoz készült Azure SDK becsomagolja a [Service Management API][svc-mgmt-rest-api], amely egy REST API. Minden API-művelet SSL protokollon keresztül történik, és az X. 509 v3 tanúsítványokkal kölcsönösen hitelesítve van. A kezelési szolgáltatás az Azure-ban futó szolgáltatáson belülről érhető el. Emellett közvetlenül az interneten keresztül is elérhető bármely olyan alkalmazásból, amely képes HTTPS-kéréseket küldeni és HTTPS-válaszokat fogadni.
+## <a name="concepts"></a><a name="Concepts"> </a>Fogalmak
+Az Azure SDK python-hoz burkolja a [Service Management API,][svc-mgmt-rest-api]amely egy REST API.The Azure SDK for Python wraps the Service Management API , which is a REST API. Minden API-művelet SSL-en keresztül történik, és az X.509 v3-as tanúsítványok használatával kölcsönösen hitelesítik őket. A felügyeleti szolgáltatás az Azure-ban futó szolgáltatásból érhető el. Azt is elérhető közvetlenül az interneten keresztül bármely alkalmazás, amely képes küldeni egy HTTPS-kérelmet, és https-választ kap.
 
-## <a name="Installation"> </a>Telepítés
-A cikkben ismertetett összes funkció elérhető a `azure-servicemanagement-legacy` csomagban, amelyet a pip használatával telepíthet. További információ a telepítésről (például ha még nem ismeri a Pythont) a [Python és az Azure SDK telepítése](/azure/python/python-sdk-azure-install)című témakörben talál további információt.
+## <a name="installation"></a><a name="Installation"> </a>Telepítés
+A cikkben ismertetett összes funkció `azure-servicemanagement-legacy` elérhető a csomagban, amelyet pip használatával telepíthet. A telepítésről további információt (például ha még nem is a Pythont szeretné megtudni) a [Python telepítése és az Azure SDK című](/azure/python/python-sdk-azure-install)témakörben talál.
 
-## <a name="Connect"> </a>Kapcsolódás a Service Managementhez
-A Service Management-végponthoz való kapcsolódáshoz szüksége lesz az Azure-előfizetés AZONOSÍTÓJÁRA és egy érvényes Felügyeleti tanúsítványra. Az előfizetés-azonosítót a [Azure Portal][management-portal]keresztül szerezheti be.
+## <a name="connect-to-service-management"></a><a name="Connect"> </a>Csatlakozás szolgáltatáskezeléshez
+A szolgáltatáskezelési végponthoz való csatlakozáshoz szüksége van az Azure-előfizetés-azonosítóra és egy érvényes felügyeleti tanúsítványra. Az előfizetés-azonosítót az [Azure Portalon][management-portal]keresztül szerezheti be.
 
 > [!NOTE]
-> Mostantól használhatja az OpenSSL-vel létrehozott tanúsítványokat a Windows rendszeren való futtatáskor. Python-2.7.4 vagy újabb verzió szükséges. Javasoljuk, hogy a. pfx helyett használja az OpenSSL-t, mert a. pfx-tanúsítványok támogatása valószínűleg a jövőben is megszűnik.
+> Windows rendszeren való futtatáskor most már használhatja az OpenSSL-lel létrehozott tanúsítványokat. Python 2.7.4-es vagy újabb szükséges. Javasoljuk, hogy a .pfx helyett használja az OpenSSL-t, mivel a .pfx tanúsítványok támogatása valószínűleg a jövőben megszűnik.
 >
 >
 
-### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Felügyeleti tanúsítványok Windows/Mac/Linux rendszeren (OpenSSL)
-A felügyeleti tanúsítvány létrehozásához az [OpenSSL](https://www.openssl.org/) -t használhatja. Létre kell hoznia két tanúsítványt, egyet a kiszolgálóhoz (egy `.cer` fájl), egyet pedig az ügyfélhez (egy `.pem` fájl). A fájl létrehozásához hajtsa végre a `.pem` következőt:
+### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Kezelési tanúsítványok Windows/Mac/Linux rendszeren (OpenSSL)
+Az [OpenSSL](https://www.openssl.org/) segítségével létrehozhatja a felügyeleti tanúsítványt. Létre kell hoznia két tanúsítványt, `.cer` egyet a kiszolgálóhoz (egy `.pem` fájlhoz) és egyet az ügyfélhez (egy fájlhoz). A `.pem` fájl létrehozásához hajtsa végre a következőt:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-A tanúsítvány létrehozásához hajtsa végre a `.cer` következőt:
+A `.cer` tanúsítvány létrehozásához hajtsa végre a következőt:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Az Azure-tanúsítványokkal kapcsolatos további információkért lásd: [Az Azure-beli tanúsítványok áttekintése Cloud Services](cloud-services-certs-create.md). Az OpenSSL paramétereinek teljes leírását a dokumentációjában [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html)találja.
+Az Azure-tanúsítványokról az Azure Cloud Services tanúsítványok – áttekintéscímű témakörben olvashat [bővebben.](cloud-services-certs-create.md) Az OpenSSL paramétereinek teljes leírását a [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html)dokumentációban találja: .
 
-A fájlok létrehozása után töltse fel a fájlt `.cer` az Azure-ba. A [Azure Portal][management-portal] **Beállítások** lapján válassza a **feltöltés**lehetőséget. Vegye figyelembe, hogy hová `.pem` mentette a fájlt.
+Miután létrehozta ezeket `.cer` a fájlokat, töltse fel a fájlt az Azure-ba. Az [Azure Portalon][management-portal]a **Beállítások** lapon válassza a **Feltöltés lehetőséget.** Megjegyzés: a `.pem` fájl mentési helye.
 
-Az előfizetés-azonosító beszerzése után hozzon létre egy tanúsítványt, `.cer` és töltse fel a fájlt az Azure-ba, és kapcsolódjon az Azure felügyeleti végponthoz. Kapcsolódjon az előfizetés-azonosító és a `.pem` **ServiceManagementService**fájl elérési útjának átadásával.
+Miután megszerezte az előfizetés-azonosítóját, hozzon `.cer` létre egy tanúsítványt, és töltse fel a fájlt az Azure-ba, csatlakozzon az Azure felügyeleti végponthoz. Az előfizetés-azonosító és a fájl `.pem` elérési útjának átadása a **ServiceManagementService szolgáltatásnak.**
 
     from azure import *
     from azure.servicemanagement import *
@@ -66,18 +66,18 @@ Az előfizetés-azonosító beszerzése után hozzon létre egy tanúsítványt,
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-Az előző példában `sms` egy **ServiceManagementService** objektum. Az **ServiceManagementService** osztály az Azure-szolgáltatások kezeléséhez használt elsődleges osztály.
+Az előző példában `sms` egy **ServiceManagementService** objektum. A **ServiceManagementService** osztály az Azure-szolgáltatások kezelésére használt elsődleges osztály.
 
 ### <a name="management-certificates-on-windows-makecert"></a>Felügyeleti tanúsítványok Windows rendszeren (MakeCert)
-A használatával `makecert.exe`önaláírt felügyeleti tanúsítványt hozhat létre a gépen. Nyisson meg egy **Visual Studio** -parancssort **rendszergazdaként** , és használja a következő parancsot, és cserélje le a *AzureCertificate* a használni kívánt tanúsítvány nevére:
+A használatával `makecert.exe`önaláírt felügyeleti tanúsítványt hozhat létre a számítógépen. Nyisson meg egy **Visual Studio parancssort** **rendszergazdaként,** és használja a következő parancsot, és cserélje le az *AzureCertificate tanúsítványnevét* a használni kívánt tanúsítványnevére:
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-A parancs létrehozza a `.cer` fájlt, és telepíti a **személyes** tanúsítványtárolóba. További információ: [Az Azure Cloud Services tanúsítványok áttekintése](cloud-services-certs-create.md).
+A parancs `.cer` létrehozza a fájlt, és telepíti a **Személyes** tanúsítványtárolóban. További információt az [Azure Cloud Services tanúsítványok – áttekintés című témakörben talál.](cloud-services-certs-create.md)
 
-A tanúsítvány létrehozása után töltse fel a `.cer` fájlt az Azure-ba. A [Azure Portal][management-portal] **Beállítások** lapján válassza a **feltöltés**lehetőséget.
+A tanúsítvány létrehozása után `.cer` töltse fel a fájlt az Azure-ba. Az [Azure Portalon][management-portal]a **Beállítások** lapon válassza a **Feltöltés lehetőséget.**
 
-Az előfizetés-azonosító beszerzése után hozzon létre egy tanúsítványt, `.cer` és töltse fel a fájlt az Azure-ba, és kapcsolódjon az Azure felügyeleti végponthoz. A kapcsolódáshoz adja át az előfizetés-azonosítót és a tanúsítvány helyét a **személyes** tanúsítványtárolóban a **ServiceManagementService** (újra, cserélje le a *AzureCertificate* nevet a tanúsítvány nevével).
+Miután megszerezte az előfizetés-azonosítóját, hozzon `.cer` létre egy tanúsítványt, és töltse fel a fájlt az Azure-ba, csatlakozzon az Azure felügyeleti végponthoz. Csatlakozzon az előfizetés-azonosító és a tanúsítvány helyét a **személyes** tanúsítványtárolóban a **ServiceManagementService** (ismét cserélje *le az AzureCertificate* a tanúsítvány nevét).
 
     from azure import *
     from azure.servicemanagement import *
@@ -87,10 +87,10 @@ Az előfizetés-azonosító beszerzése után hozzon létre egy tanúsítványt,
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-Az előző példában `sms` egy **ServiceManagementService** objektum. Az **ServiceManagementService** osztály az Azure-szolgáltatások kezeléséhez használt elsődleges osztály.
+Az előző példában `sms` egy **ServiceManagementService** objektum. A **ServiceManagementService** osztály az Azure-szolgáltatások kezelésére használt elsődleges osztály.
 
-## <a name="ListAvailableLocations"> </a>Elérhető helyszínek listázása
-A szolgáltatások üzemeltetéséhez elérhető helyszínek listázásához használja a **List\_Locations** metódust.
+## <a name="list-available-locations"></a><a name="ListAvailableLocations"> </a>Az elérhető helyek listázása
+A tárhelyszolgáltatások számára rendelkezésre álló helyek listázásához használja a **listahelyek\_** módszert.
 
     from azure import *
     from azure.servicemanagement import *
@@ -101,7 +101,7 @@ A szolgáltatások üzemeltetéséhez elérhető helyszínek listázásához has
     for location in result:
         print(location.name)
 
-Felhőalapú szolgáltatás vagy tárolási szolgáltatás létrehozásakor érvényes helyet kell megadnia. A **List\_Locations** metódus mindig az aktuálisan elérhető helyeinek naprakész listáját adja vissza. Ebben az írásban az elérhető helyszínek a következők:
+Amikor létrehoz egy felhőalapú szolgáltatást vagy tárolási szolgáltatást, meg kell adnia egy érvényes helyet. A **\_listahelyek** módszer mindig a jelenleg elérhető helyek naprakész listáját adja vissza. Mivel az írás, a rendelkezésre álló helyek a következők:
 
 * Nyugat-Európa
 * Észak-Európa
@@ -111,15 +111,15 @@ Felhőalapú szolgáltatás vagy tárolási szolgáltatás létrehozásakor érv
 * USA északi középső régiója
 * USA déli középső régiója
 * USA nyugati régiója
-* East US
+* USA keleti régiója
 * Kelet-Japán
 * Nyugat-Japán
 * Dél-Brazília
 * Kelet-Ausztrália
 * Délkelet-Ausztrália
 
-## <a name="CreateCloudService"> </a>Felhőalapú szolgáltatás létrehozása
-Amikor létrehoz egy alkalmazást, és futtatja az Azure-ban, a kód és a konfiguráció együtt egy Azure [Cloud Service][cloud service]néven is ismert. (A korábbi Azure-kiadásokban *üzemeltetett szolgáltatásként* ismert.) Az **\_üzemeltetett\_szolgáltatás létrehozása** módszert használhatja egy új üzemeltetett szolgáltatás létrehozásához. Hozza létre a szolgáltatást egy üzemeltetett szolgáltatás nevének megadásával (amely egyedinek kell lennie az Azure-ban), egy címkét (automatikusan kódolva Base64-re), egy leírást és egy helyet.
+## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>Felhőszolgáltatás létrehozása
+Amikor létrehoz egy alkalmazást, és futtatja azt az Azure-ban, a kódot és a konfigurációt együtt [azure-felhőszolgáltatásnak][cloud service]nevezzük. (A korábbi Azure-kiadásokban *üzemeltetett szolgáltatásként* ismert.) A **hosted\_service\_** metódus létrehozása új üzemeltetett szolgáltatás létrehozásához használhatja. Hozza létre a szolgáltatást egy üzemeltetett szolgáltatás név (amely egyedinek kell lennie az Azure-ban), egy címkét (automatikusan kódolt base64), egy leírást, és egy helyet.
 
     from azure import *
     from azure.servicemanagement import *
@@ -133,7 +133,7 @@ Amikor létrehoz egy alkalmazást, és futtatja az Azure-ban, a kód és a konfi
 
     sms.create_hosted_service(name, label, desc, location)
 
-Az előfizetéshez tartozó összes üzemeltetett szolgáltatást listázhatja az **\_üzemeltetett\_szolgáltatások listájának** használatával.
+Az előfizetéshez kapcsolódó összes üzemeltetett szolgáltatást a **lista\_üzemeltetett\_szolgáltatások** módszerével sorolhatja fel.
 
     result = sms.list_hosted_services()
 
@@ -143,7 +143,7 @@ Az előfizetéshez tartozó összes üzemeltetett szolgáltatást listázhatja a
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-Egy adott üzemeltetett szolgáltatással kapcsolatos információk lekéréséhez adja át az üzemeltetett szolgáltatás nevét az **üzemeltetett\_\_\_szolgáltatás tulajdonságainak** beolvasása metódusnak.
+Egy adott üzemeltetett szolgáltatással kapcsolatos információkért adja át a hosztolt szolgáltatás nevét a **get\_hosted\_service\_properties** metódusnak.
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -151,17 +151,17 @@ Egy adott üzemeltetett szolgáltatással kapcsolatos információk lekéréséh
     print('Management URL: ' + hosted_service.url)
     print('Location: ' + hosted_service.hosted_service_properties.location)
 
-A felhőalapú szolgáltatás létrehozása után telepítse a kódot a szolgáltatásba a **create\_Deployment** metódussal.
+Miután létrehozott egy felhőalapú szolgáltatást, telepítse a kódot a szolgáltatása a **létrehozási\_telepítési** módszerrel.
 
-## <a name="DeleteCloudService"> </a>Felhőalapú szolgáltatás törlése
-A felhőalapú szolgáltatások törléséhez továbbítsa a szolgáltatás nevét az üzemeltetett **\_szolgáltatás\_törlése** metódusnak.
+## <a name="delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>Felhőszolgáltatás törlése
+A felhőalapú szolgáltatás törléséhez adja át a szolgáltatás nevét a **törlés\_üzemeltetett\_szolgáltatás** metódusát.
 
     sms.delete_hosted_service('myhostedservice')
 
-A szolgáltatás törléséhez először törölni kell a szolgáltatás összes központi telepítését. További információ: [központi telepítés törlése](#DeleteDeployment).
+Egy szolgáltatás törlése előtt a szolgáltatás összes központi telepítését először törölni kell. További információt a Központi telepítés törlése című [témakörben talál.](#DeleteDeployment)
 
-## <a name="DeleteDeployment"> </a>Központi telepítés törlése
-A központi telepítés törléséhez használja az **\_üzembe helyezési** módszert. Az alábbi példa bemutatja, hogyan törölhet egy nevű `v1`központi telepítést:
+## <a name="delete-a-deployment"></a><a name="DeleteDeployment"> </a>Központi telepítés törlése
+Központi telepítés törléséhez használja a **törlési\_telepítési** módszert. A következő példa bemutatja, `v1`hogyan lehet törölni egy elnevezett központi telepítést:
 
     from azure import *
     from azure.servicemanagement import *
@@ -170,8 +170,8 @@ A központi telepítés törléséhez használja az **\_üzembe helyezési** mó
 
     sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"> </a>Tárolási szolgáltatás létrehozása
-A [Storage szolgáltatás](../storage/common/storage-create-storage-account.md) hozzáférést biztosít az Azure- [blobokhoz](../storage/blobs/storage-python-how-to-use-blob-storage.md),- [táblákhoz](../cosmos-db/table-storage-how-to-use-python.md)és- [várólistákhoz](../storage/queues/storage-python-how-to-use-queue-storage.md). A tárolási szolgáltatás létrehozásához szüksége lesz a szolgáltatás nevére (3 – 24 kisbetűs karakter és az Azure-on belül egyedi). Szükség van egy leírásra is, egy címkére (legfeljebb 100 karakter, automatikusan Base64-re kódolva) és egy helyre. Az alábbi példa bemutatja, hogyan hozhat létre tárolási szolgáltatást egy hely megadásával:
+## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>Tárolási szolgáltatás létrehozása
+A [storage szolgáltatás](../storage/common/storage-create-storage-account.md) hozzáférést biztosít az Azure-blobokhoz, [táblákhoz](../cosmos-db/table-storage-how-to-use-python.md)és [várólistákhoz.](../storage/queues/storage-python-how-to-use-queue-storage.md) [blobs](../storage/blobs/storage-python-how-to-use-blob-storage.md) Egy tárolási szolgáltatás létrehozásához szüksége van egy nevet a szolgáltatás (között 3 és 24 kisbetűs karakterek és egyedi az Azure-ban). Szüksége van továbbá egy leírásra, egy címkére (legfeljebb 100 karakterre, automatikusan base64-be kódolva) és egy helyre. A következő példa bemutatja, hogyan hozhat létre tárolási szolgáltatást egy hely megadásával:
 
     from azure import *
     from azure.servicemanagement import *
@@ -188,9 +188,9 @@ A [Storage szolgáltatás](../storage/common/storage-create-storage-account.md) 
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Az előző példában a **Storage\_\_-fiók létrehozása** művelet állapota lekérhető, ha átadja a Storage **\_\_-fiók létrehozása** a **Get\_művelet\_állapotának** módszere 
+Az előző példában a **create\_\_storage account** művelet állapota lehívható átadásával az eredmény által **visszaadott\_létrehozása tárfiók\_** a get **\_művelet\_állapot** metódusát. 
 
-A Storage-fiókokat és azok tulajdonságait listázhatja a **Storage\_\_-fiókok listázása** módszer használatával.
+A tárfiókokat és azok tulajdonságait a **listatárfiókok\_\_** módszerrel listázhatja.
 
     from azure import *
     from azure.servicemanagement import *
@@ -203,8 +203,8 @@ A Storage-fiókokat és azok tulajdonságait listázhatja a **Storage\_\_-fióko
         print('Location: ' + account.storage_service_properties.location)
         print('')
 
-## <a name="DeleteStorageService"> </a>Tárolási szolgáltatás törlése
-A tárolási szolgáltatás törléséhez adja át a tárolási szolgáltatás nevét a **\_Storage-\_fiók törlése** metódusnak. A tárolási szolgáltatás törlésekor a szolgáltatásban tárolt összes adathalmaz (Blobok, táblák és várólisták) törlődik.
+## <a name="delete-a-storage-service"></a><a name="DeleteStorageService"> </a>Tárolási szolgáltatás törlése
+Egy tárolási szolgáltatás törléséhez adja át a storage szolgáltatás nevét a **\_\_tárfiók törlése** módszer. A tárolószolgáltatás törlése törli a szolgáltatásban tárolt összes adatot (blobok, táblák és várólisták).
 
     from azure import *
     from azure.servicemanagement import *
@@ -213,8 +213,8 @@ A tárolási szolgáltatás törléséhez adja át a tárolási szolgáltatás n
 
     sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"> </a>Elérhető operációs rendszerek listázása
-A szolgáltatások üzemeltetéséhez elérhető operációs rendszerek listázásához használja az **\_operációs rendszerek listázása\_** módszert.
+## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>Az elérhető operációs rendszerek listája
+A tárhelyszolgáltatásokhoz rendelkezésre álló operációs rendszerek listázásához használja a **list\_operációs\_rendszerek** módszerét.
 
     from azure import *
     from azure.servicemanagement import *
@@ -228,7 +228,7 @@ A szolgáltatások üzemeltetéséhez elérhető operációs rendszerek listáz�
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-Azt is megteheti, **hogy\_az\_operációsrendszer\_-családok listázása** módszert használja, amely az operációs rendszereket család szerint csoportosítja.
+Másik lehetőségként használhatja az **operációs\_\_rendszer\_családok listájának** módszerét, amely az operációs rendszereket család szerint csoportosítja.
 
     result = sms.list_operating_system_families()
 
@@ -240,8 +240,8 @@ Azt is megteheti, **hogy\_az\_operációsrendszer\_-családok listázása** mód
                 print('Version: ' + os.version)
         print('')
 
-## <a name="CreateVMImage"> </a>Operációs rendszer rendszerképének létrehozása
-Az operációsrendszer-rendszerkép rendszerkép-tárházhoz való hozzáadásához használja az **operációsrendszer\_\_-rendszerkép hozzáadása** módszert.
+## <a name="create-an-operating-system-image"></a><a name="CreateVMImage"> </a>Operációs rendszerlemez létrehozása
+Ha operációsrendszer-lemezképet szeretne hozzáadni a lemezképtárhoz, használja az **os\_\_lemezkép hozzáadása** módszert.
 
     from azure import *
     from azure.servicemanagement import *
@@ -258,7 +258,7 @@ Az operációsrendszer-rendszerkép rendszerkép-tárházhoz való hozzáadásá
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Az elérhető operációsrendszer-lemezképek listázásához használja az **operációsrendszer\_\_** -lemezképek listázása módszert. Minden platform-lemezképet és felhasználói lemezképet tartalmaz.
+Az elérhető operációsrendszer-lemezképek listázásához használja a **list\_os\_images** metódust. Ez magában foglalja az összes platform képek és felhasználói képek.
 
     result = sms.list_os_images()
 
@@ -272,8 +272,8 @@ Az elérhető operációsrendszer-lemezképek listázásához használja az **op
         print('Media link: ' + image.media_link)
         print('')
 
-## <a name="DeleteVMImage"> </a>Operációs rendszer rendszerképének törlése
-Felhasználói rendszerkép törléséhez használja az **\_operációsrendszer-rendszerkép\_törlése** módszert.
+## <a name="delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>Operációs rendszerlemez törlése
+Felhasználói lemezkép törléséhez használja az **operációs rendszer\_\_képének törlését.**
 
     from azure import *
     from azure.servicemanagement import *
@@ -285,8 +285,8 @@ Felhasználói rendszerkép törléséhez használja az **\_operációsrendszer-
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>Virtuális gép létrehozása
-Virtuális gép létrehozásához először létre kell hoznia egy [felhőalapú szolgáltatást](#CreateCloudService). Ezután hozza létre a virtuális gép központi telepítését a **virtuális\_\_gép\_létrehozása** módszer használatával.
+## <a name="create-a-virtual-machine"></a><a name="CreateVM"> </a>Virtuális gép létrehozása
+Virtuális gép létrehozásához először létre kell hoznia egy [felhőszolgáltatást.](#CreateCloudService) Ezután hozza létre a virtuális gép központi telepítését a **virtuális\_\_gép\_telepítési módszerének létrehozásával.**
 
     from azure import *
     from azure.servicemanagement import *
@@ -323,8 +323,8 @@ Virtuális gép létrehozásához először létre kell hoznia egy [felhőalapú
         os_virtual_hard_disk=os_hd,
         role_size='Small')
 
-## <a name="DeleteVM"> </a>Virtuális gép törlése
-Egy virtuális gép törléséhez először törölje a központi telepítést az **üzembe helyezési módszer\_törlése** paranccsal.
+## <a name="delete-a-virtual-machine"></a><a name="DeleteVM"> </a>Virtuális gép törlése
+Virtuális gép törléséhez először törölje a központi telepítést a központi telepítési módszer **\_törlésével.**
 
     from azure import *
     from azure.servicemanagement import *
@@ -334,12 +334,12 @@ Egy virtuális gép törléséhez először törölje a központi telepítést a
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-A Cloud Service ezután törölhető az **\_üzemeltetett szolgáltatás törlése\_** módszer használatával.
+A felhőszolgáltatás ezután törölhető a **tárolt\_\_szolgáltatás törlése** metódus használatával.
 
     sms.delete_hosted_service(service_name='myvm')
 
-## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Virtuális gép létrehozása rögzített virtuálisgép-rendszerképből
-A virtuálisgép-lemezkép rögzítéséhez először meg kell hívnia a **\_Capture VM\_-lemezkép** módszert.
+## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Virtuális gép létrehozása rögzített virtuálisgép-lemezképből
+Virtuálisgép-lemezkép rögzítéséhez először hívja meg a **capture\_vm\_image** method.
 
     from azure import *
     from azure.servicemanagement import *
@@ -366,11 +366,11 @@ A virtuálisgép-lemezkép rögzítéséhez először meg kell hívnia a **\_Cap
             image
         )
 
-A lemezkép rögzítésének biztosításához használja a virtuálisgép- **\_\_lemezképek listázása** API-t. Győződjön meg arról, hogy a rendszerkép megjelenik az eredmények között.
+Győződjön meg arról, hogy sikeresen rögzítette a lemezképet, használja a **list a\_vm\_images** API-t. Ellenőrizze, hogy a kép megjelenik-e az eredmények között.
 
     images = sms.list_vm_images()
 
-Ha végül a virtuális gépet a rögzített lemezkép használatával szeretné létrehozni, használja a **\_virtuális\_gép\_központi telepítési** módszerét az előzőekben leírtak szerint, de ezúttal a vm_image_name adja meg helyette.
+A virtuális gép végleges létrehozásához a rögzített lemezkép használatával használja a **létrehozott\_virtuálisgép-telepítési\_\_** módszert a korábban, de ez az idő múlásával a vm_image_name helyett.
 
     from azure import *
     from azure.servicemanagement import *
@@ -395,14 +395,14 @@ Ha végül a virtuális gépet a rögzített lemezkép használatával szeretné
         role_size='Small',
         vm_image_name = image_name)
 
-A Linux rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Linux rendszerű virtuális gép rögzítése](../virtual-machines/linux/classic/capture-image-classic.md).
+Ha többet szeretne megtudni arról, hogyan rögzíthet egy Linux-virtuális gépet a klasszikus telepítési modellben, olvassa el a Linux virtuális gép rögzítése című [témakört.](../virtual-machines/linux/classic/capture-image-classic.md)
 
-A Windows rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép rögzítése](../virtual-machines/windows/classic/capture-image-classic.md).
+Ha többet szeretne tudni arról, hogyan rögzíthet egy Windows-virtuális gépet a klasszikus telepítési modellben, olvassa el a Windows virtuális gép rögzítése című [témakört.](../virtual-machines/windows/classic/capture-image-classic.md)
 
-## <a name="What's Next"></a>Következő lépések
-Most, hogy megismerte a Service Management alapjait, elérheti az [Azure PYTHON SDK](https://azure-sdk-for-python.readthedocs.org/) -hoz készült teljes API-dokumentációt, és a Python-alkalmazások felügyeletére szolgáló összetett feladatokat is könnyedén elvégezheti.
+## <a name="next-steps"></a><a name="What's Next"> </a>További lépések
+Most, hogy megtanulta a szolgáltatáskezelés alapjait, hozzáférhet az [Azure Python SDK teljes API-referenciadokumentációjához,](https://azure-sdk-for-python.readthedocs.org/) és összetett feladatokat hajthat végre a Python-alkalmazás egyszerű kezeléséhez.
 
-További információ: [Python fejlesztői központban](https://azure.microsoft.com/develop/python/).
+További információ: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/).
 
 [What is service management?]: #WhatIs
 [Concepts]: #Concepts
