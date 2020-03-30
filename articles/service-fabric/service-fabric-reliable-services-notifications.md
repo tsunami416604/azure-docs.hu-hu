@@ -1,47 +1,47 @@
 ---
-title: Értesítések Reliable Services
-description: A megbízható állapot-kezelő és a megbízható szótár Service Fabric Reliable Services értesítéseinek fogalmi dokumentációja
+title: Megbízható szolgáltatásokról szóló értesítések
+description: A Service Fabric megbízható szolgáltatásokértesítéseinek koncepcionális dokumentációja a Megbízható állapotkezelő és a Megbízható szótár számára
 author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639564"
 ---
-# <a name="reliable-services-notifications"></a>Értesítések Reliable Services
-Az értesítések lehetővé teszik, hogy az ügyfelek nyomon kövessék egy olyan objektum módosításait, amelyekre kíváncsiak. Két típusú objektum támogatja az értesítéseket: *megbízható State Manager* és *megbízható szótár*.
+# <a name="reliable-services-notifications"></a>Megbízható szolgáltatásokról szóló értesítések
+Az értesítések lehetővé teszik az ügyfelek számára, hogy nyomon kövessék az őket érdeklő objektumon végrehajtott módosításokat. Kétféle objektum támogatja az értesítéseket: *Megbízható állapotkezelő* és *megbízható szótár.*
 
 Az értesítések használatának gyakori okai a következők:
 
-* A replika állapotának kiépítése, például másodlagos indexek vagy összesített szűrt nézetek készítése. Ilyen például a megbízható szótárban található összes kulcs rendezett indexe.
+* Épület materializált nézetek, például a másodlagos indexek vagy a replika állapotának összesített szűrt nézetek. Egy példa a Megbízható szótár összes kulcsának rendezett indexe.
 * Figyelési adatok küldése, például az elmúlt órában hozzáadott felhasználók száma.
 
-Az értesítések a műveletek alkalmazásának részeként jelennek meg. Emiatt az értesítéseket a lehető leggyorsabban kell kezelni, és a szinkron események nem tartalmazhatnak költséges műveleteket.
+Az értesítések a műveletek alkalmazásának részeként aktiválódnak. Emiatt az értesítéseket a lehető leggyorsabban kell kezelni, és a szinkron események nem tartalmazhatnak költséges műveleteket.
 
-## <a name="reliable-state-manager-notifications"></a>Megbízható állapot-kezelő értesítései
-A megbízható State Manager a következő eseményekhez nyújt értesítéseket:
+## <a name="reliable-state-manager-notifications"></a>Megbízható állapotkezelői értesítések
+A Reliable State Manager a következő eseményekről biztosít értesítéseket:
 
 * Tranzakció
   * Véglegesítés
-* State Manager
+* Államkezelő
   * Újraépítés
   * Megbízható állapot hozzáadása
-  * Megbízható állapot eltávolítása
+  * A megbízható állapot eltávolítása
 
-A megbízható State Manager nyomon követi az aktuális fedélzeti tranzakciókat. A tranzakciós állapot egyetlen olyan változása, amely egy értesítés indítását eredményezi, a tranzakció véglegesítése folyamatban van.
+Megbízható állapotkezelő nyomon követi az aktuális bejövő tranzakciókat. A tranzakcióállapot egyetlen olyan változása, amely az értesítés ellövését okozza, az a véglegesített tranzakció.
 
-A megbízható State Manager megbízható állapotokat (például megbízható szótárt és megbízható üzenetsor) tartalmazó gyűjteményt tart fenn. Megbízható State Manager – értesítéseket küld a gyűjtemény változásairól: a rendszer megbízható állapotot ad hozzá vagy távolít el, vagy újraépíti a teljes gyűjteményt.
-A megbízható State Manager-gyűjteményt a rendszer három esetben újraépíti:
+Megbízható állapotkezelő megbízható állapotok, például a megbízható szótár és a megbízható várólista gyűjteményét tartja fenn. Megbízható Állapotkezelő tüzek értesítések, ha ez a gyűjtemény megváltozik: egy megbízható állapot hozzáadása vagy eltávolítása, vagy a teljes gyűjtemény újraépül.
+A Megbízható állapotkezelő gyűjtemény három esetben épül újjá:
 
-* Helyreállítás: a replika indításakor helyreállítja az előző állapotot a lemezről. A helyreállítás végén a **NotifyStateManagerChangedEventArgs** használatával olyan eseményt hoz létre, amely a helyreállított megbízható állapotok készletét tartalmazza.
-* Teljes másolás: ahhoz, hogy a replika csatlakozni tudja a konfigurációs készlethez, létre kell majd állítania. Előfordulhat, hogy ehhez a megbízható állapot-kezelő állapotának teljes másolatát kell használnia az elsődleges replikáról az üresjárati másodlagos replikára való alkalmazáshoz. A megbízható State Manager a másodlagos replikán a **NotifyStateManagerChangedEventArgs** használatával olyan eseményt hoz létre, amely az elsődleges replikából beszerzett megbízható állapotokat tartalmazza.
-* Visszaállítás: a vész-helyreállítási helyzetekben a replika állapota visszaállítható a **RestoreAsync**-n keresztüli biztonsági mentésből. Ilyen esetekben az elsődleges replika megbízható **NotifyStateManagerChangedEventArgs** használatával a rendszer olyan eseményt hoz létre, amely a biztonsági másolatból visszaállított megbízható állapotokat tartalmazza.
+* Helyreállítás: Amikor egy replika elindul, helyreállítja a korábbi állapotát a lemezről. A helyreállítás végén az **NotifyStateManagerChangedEventArgs** segítségével indít el egy olyan eseményt, amely a helyreállított megbízható állapotok készletét tartalmazza.
+* Teljes másolat: Mielőtt egy replika csatlakozhatna a konfigurációkészlethez, meg kell építeni. Néha ez megköveteli a reliable state manager állapotának teljes másolatát az elsődleges replika az alapjárati másodlagos replika kell alkalmazni. Megbízható állapotkezelő a másodlagos replika használja **NotifyStateManagerChangedEventArgs** a tűz egy eseményt, amely tartalmazza a megbízható állapotok, amelyek az elsődleges replika általbeszerzett.
+* Visszaállítás: Vész-helyreállítási forgatókönyvekben a replika állapota visszaállítható egy biztonsági másolatból **a RestoreAsync**segítségével. Ilyen esetekben az elsődleges replika Megbízható állapotkezelője az **NotifyStateManagerChangedEventArgs** használatával indít egy olyan eseményt, amely a biztonsági másolatból visszaállított megbízható állapotok készletét tartalmazza.
 
-A tranzakciós értesítések és/vagy az állapot-kezelő értesítéseinek regisztrálásához regisztrálnia kell a **TransactionChanged** -vagy **StateManagerChanged** -eseményekkel a megbízható állapot kezelőjében. Ezekkel az eseménykezelőkkal regisztrálhat egy közös helyet az állapot-nyilvántartó szolgáltatás konstruktora. Ha regisztrálja a konstruktort, nem fog kihagyni egy olyan értesítést, amelyet a **IReliableStateManager**élettartama során változás okoz.
+A tranzakciós értesítések és/vagy állapotkezelő értesítések regisztrálásához regisztrálnia kell a **TransactionChanged** vagy **statemanagerChanged** eseményeket a Reliable State Manager-en. Az eseménykezelőkkel való regisztráció gyakori helye az állapotalapú szolgáltatás konstruktora. Amikor regisztrál a konstruktoron, nem fog kihagyni egyetlen olyan értesítést sem, amelyet az **IReliableStateManager**élettartama során bekövetkező változás okoz.
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -52,14 +52,14 @@ public MyService(StatefulServiceContext context)
 }
 ```
 
-A **TransactionChanged** eseménykezelő a **NotifyTransactionChangedEventArgs** használatával adja meg az esemény részleteit. Ez tartalmazza a művelet típusát (például **NotifyTransactionChangedAction. commit**), amely meghatározza a változást. Emellett tartalmazza a Transaction tulajdonságot is, amely a módosult tranzakcióra mutató hivatkozást tartalmaz.
+A **TransactionChanged** eseménykezelő **notifytransactionchangedeventargs** segítségével adja meg az esemény részleteit. A művelettulajdonságot (például **NotifyTransactionChangedAction.Commit)** tartalmazza, amely a módosítás típusát adja meg. Tartalmazza a tranzakciótulajdonságot is, amely a módosított tranzakcióra mutató hivatkozást tartalmaz.
 
 > [!NOTE]
-> Napjainkban a **TransactionChanged** események csak akkor jönnek létre, ha a tranzakció véglegesítve van. A művelet ekkor a **NotifyTransactionChangedAction. commit**értékkel egyenlő. A jövőben azonban előfordulhat, hogy az események más típusú tranzakciós állapot-változásokra is felmerülhetnek. Javasoljuk, hogy ellenőrizze a műveletet, és csak akkor dolgozza fel az eseményt, ha az várható.
+> Ma **a TransactionChanged** események csak akkor kerülnek előzésre, ha a tranzakció véglegesítve van. A művelet ekkor megegyezik **az NotifyTransactionChangedAction.Commit**. De a jövőben események jelenhetnek meg más típusú tranzakcióállapot-változások esetén. Javasoljuk, hogy csak akkor ellenőrizze a műveletet, és csak akkor dolgozza fel az eseményt, ha az a várt.
 > 
 > 
 
-A következő példa egy **TransactionChanged** eseménykezelőt mutat be.
+Az alábbiakban egy példa **TransactionChanged** eseménykezelő.
 
 ```csharp
 private void OnTransactionChangedHandler(object sender, NotifyTransactionChangedEventArgs e)
@@ -74,14 +74,14 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 }
 ```
 
-A **StateManagerChanged** eseménykezelő a **NotifyStateManagerChangedEventArgs** használatával adja meg az esemény részleteit.
-A **NotifyStateManagerChangedEventArgs** két alosztálya van: a **NotifyStateManagerRebuildEventArgs** és a **NotifyStateManagerSingleEntityChangedEventArgs**.
-A **NotifyStateManagerChangedEventArgs** művelet tulajdonságát használja a **NotifyStateManagerChangedEventArgs** a megfelelő alosztályba való beküldéséhez:
+A **StateManagerChanged** eseménykezelő **az NotifyStateManagerChangedEventArgs** segítségével adja meg az esemény részleteit.
+**Az NotifyStateManagerChangedEventArgs** két alosztályt rendelkezik: **NotifyStateManagerRebuildEventArgs** és **NotifyStateManagerSingleEntityChangedEventArgs**.
+Az **NotifyStateManagerChangedEventArgs** művelettulajdonsággal a megfelelő alosztályra vetheti az **NotifyStateManagerChangedEventArgs tulajdonságot:**
 
-* **NotifyStateManagerChangedAction. Rebuild**: **NotifyStateManagerRebuildEventArgs**
-* **NotifyStateManagerChangedAction. Add** és **NotifyStateManagerChangedAction. remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
+* **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
+* **NotifyStateManagerChangedAction.Add** és **NotifyStateManagerChangedAction.Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
 
-A következő példa egy **StateManagerChanged** -értesítő kezelőt mutat be.
+Az alábbiakban egy példa **StateManagerChanged** értesítéskezelő.
 
 ```csharp
 public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChangedEventArgs e)
@@ -97,17 +97,17 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-## <a name="reliable-dictionary-notifications"></a>Megbízható szótárak értesítései
-A megbízható szótár a következő eseményekhez nyújt értesítéseket:
+## <a name="reliable-dictionary-notifications"></a>Megbízható szótári értesítések
+A Reliable Dictionary a következő eseményekről biztosít értesítéseket:
 
-* Újraépítés: akkor kell meghívni, amikor a **ReliableDictionary** helyreállítja az állapotát egy helyreállított vagy másolt helyi állapotból vagy biztonsági másolatból.
-* Clear (Törlés): hívás, ha a **ReliableDictionary** állapota törölve lett a **ClearAsync** metódussal.
-* Hozzáadás: hívás, ha egy elem hozzá lett adva a **ReliableDictionary**-hoz.
-* Frissítés: hívás, ha a **IReliableDictionary** egy eleme frissült.
-* Eltávolítás: hívás, ha a **IReliableDictionary** egy eleme törölve lett.
+* Újraépítés: Akkor hívható meg, ha a **ReliableDictionary** helyreállt az állapota egy helyreállított vagy másolt helyi állapotból vagy biztonsági másolatból.
+* Egyértelmű: Akkor hívható, ha a **ReliableDictionary** állapota törlődött a **ClearAsync** metóduson keresztül.
+* Hozzáadás: Akkor hívva, ha egy elem hozzá lett adva a **ReliableDictionary-hez.**
+* Frissítés: Meghívva, ha az **IReliableDictionary** egy eleme frissítve lett.
+* Eltávolítás: Akkor hívható, ha az **IReliableDictionary** egy elemét törölték.
 
-A megbízható szótári értesítések beszerzéséhez regisztrálnia kell a **DictionaryChanged** -eseménykezelőt a **IReliableDictionary**-on. Ezekkel az eseménykezelőkkal regisztrálhat egy közös helyet a **ReliableStateManager. StateManagerChanged** értesítés hozzáadásakor.
-Regisztráció, ha a **IReliableDictionary** hozzáadása a **IReliableStateManager** szolgáltatáshoz funkció biztosítja, hogy az értesítések ne legyenek kimaradva.
+A Megbízható szótár értesítések lehívásához regisztrálnia kell az **IReliableDictionary Dictionary** **Dictionary Dictionary Dictionary szótárszótár szótárszótárszótárszótárszótárszótár-kapcsolatán.** Az eseménykezelőkkel való regisztráció gyakori helye a **ReliableStateManager.StateManagerChanged** add notification.
+Az **IReliableDictionary** **iReliableStateManager-hez** való hozzáadásakor történő regisztráció biztosítja, hogy nem marad le egyetlen értesítésről sem.
 
 ```csharp
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
@@ -127,11 +127,11 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 ```
 
 > [!NOTE]
-> A **ProcessStateManagerSingleEntityNotification** az a minta módszer, amelyet az előző **OnStateManagerChangedHandler** példa hív meg.
+> **ProcessStateManagerSingleEntityNotification** az előző **OnStateManagerChangedHandler** példa által meghívott mintametódus.
 > 
 > 
 
-Az előző kód beállítja a **IReliableNotificationAsyncCallback** felületet, valamint a **DictionaryChanged**. Mivel a **NotifyDictionaryRebuildEventArgs** tartalmaz egy **IAsyncEnumerable** felületet – amelyet aszinkron módon kell enumerálni – az Újraépítés után az értesítéseket a **OnDictionaryChangedHandler**helyett **RebuildNotificationAsyncCallback** a rendszer.
+Az előző kód beállítja az **IReliableNotificationAsyncCallback** felületet a **DictionaryChanged**-el együtt. Mivel **az NotifyDictionaryRebuildEventArgs** egy **IAsyncEnumerable** felületet tartalmaz – amelyet aszinkron módon kell számba venni –, az újraépítési értesítések az **OnDictionaryChangedHandler**helyett **a RebuildNotificationAsyncCallback -, hanem a RebuildNotificationAsyncCallback** metóduson keresztül indulnak el.
 
 ```csharp
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
@@ -149,18 +149,18 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 ```
 
 > [!NOTE]
-> Az előző kódban az Újraépítés értesítésének feldolgozásának részeként először törlődik a karbantartott összesített állapot. Mivel a megbízható gyűjteményt új állapotba építették újra, az összes korábbi értesítés irreleváns.
+> Az előző kódban az újraépítési értesítés feldolgozásának részeként először a karbantartott összesített állapot törlődik. Mivel a megbízható gyűjtemény új állapottal épül újjá, minden korábbi értesítés lényegtelen.
 > 
 > 
 
-A **DictionaryChanged** eseménykezelő a **NotifyDictionaryChangedEventArgs** használatával adja meg az esemény részleteit.
-A **NotifyDictionaryChangedEventArgs** öt alosztálya van. Használja a **NotifyDictionaryChangedEventArgs** művelet tulajdonságát a **NotifyDictionaryChangedEventArgs** a megfelelő alosztályba való beküldéséhez:
+A **DictionaryChanged** eseménykezelő **az NotifyDictionaryChangedEventArgs** segítségével adja meg az esemény részleteit.
+**Az NotifyDictionaryChangedEventArgs** öt alosztályt rendelkezik. Az **NotifyDictionaryChangedEventArgs** művelettulajdonsággal a megfelelő alosztályra adja az **NotifyDictionaryChangedEventArgs tulajdonságot:**
 
-* **NotifyDictionaryChangedAction. Rebuild**: **NotifyDictionaryRebuildEventArgs**
-* **NotifyDictionaryChangedAction. Clear**: **NotifyDictionaryClearEventArgs**
-* **NotifyDictionaryChangedAction. Add**: **NotifyDictionaryItemAddedEventArgs**
-* **NotifyDictionaryChangedAction. Update**: **NotifyDictionaryItemUpdatedEventArgs**
-* **NotifyDictionaryChangedAction. remove**: **NotifyDictionaryItemRemovedEventArgs**
+* **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
+* **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**
+* **NotifyDictionaryChangedAction.Add**: **NotifyDictionaryItemAddedEventArgs**
+* **NotifyDictionaryChangedAction.Update**: **NotifyDictionaryItemUpdatedEventArgs**
+* **NotifyDictionaryChangedAction.Remove**: **NotifyDictionaryItemRemovedEventArgs**
 
 ```csharp
 public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEventArgs<TKey, TValue> e)
@@ -193,22 +193,22 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 }
 ```
 
-## <a name="recommendations"></a>Ajánlatok
-* A lehető leggyorsabban *fejezze be* az értesítési eseményeket.
-* *Ne hajtson végre költséges* műveleteket (például I/O-műveletek) a szinkron események részeként.
-* Az esemény feldolgozása *előtt tekintse* meg a művelet típusát. Később új tevékenységtípusok is hozzáadhatók.
+## <a name="recommendations"></a>Javaslatok
+* *Végezze el* a teljes értesítési eseményeket a lehető leggyorsabban.
+* *Ne* hajtson végre költséges műveleteket (például I/O-műveleteket) szinkron események részeként.
+* *Az* esemény feldolgozása előtt ellenőrizze a művelet típusát. A jövőben új művelettípusok adhatók hozzá.
 
-A következő szempontokat érdemes figyelembe venni:
+Íme néhány dolog, amit szem előtt kell tartania:
 
-* Az értesítések a művelet végrehajtásának részeként jelennek meg. Egy visszaállítási értesítés például a visszaállítási művelet utolsó lépése. A visszaállítás nem fejeződik be, amíg az értesítési esemény fel nem dolgozva.
-* Mivel az értesítések az alkalmazási műveletek részeként jelennek meg, az ügyfelek csak a helyileg véglegesített műveletekre vonatkozó értesítéseket látják. Mivel a műveletek csak a helyileg véglegesített (más szóval naplózott), esetleg nem vonhatók vissza a jövőben.
-* Az Ismétlési útvonalon minden alkalmazott művelethez egyetlen értesítés készül. Ez azt jelenti, hogy ha a T1 tranzakció tartalmazza a Create (X), a Delete (X) és a Create (x), egy értesítést fog kapni az X, az egyik a törléshez, egyet pedig a létrehozáshoz, ebben a sorrendben.
-* A több műveletet tartalmazó tranzakciók esetében a rendszer az elsődleges replikán a felhasználótól kapott sorrendben alkalmazza a műveleteket.
-* A hamis folyamat feldolgozásának részeként előfordulhat, hogy egyes műveletek visszavonhatók. A rendszer értesítést küld az ilyen visszavonási műveletekről, és Visszagörgeti a replika állapotát egy stabil pontra. A visszavonási értesítések egyik fontos különbsége az, hogy az ismétlődő kulcsokkal rendelkező események összesítve lesznek. Ha például a T1 tranzakciót visszavonja, egyetlen értesítést fog látni a törléshez (X).
+* Az értesítések egy művelet végrehajtásának részeként aktiválódnak. Például egy visszaállítási értesítés a visszaállítási művelet utolsó lépéseként aktiválódik. A visszaállítás nem fejeződik be, amíg az értesítési esemény feldolgozása meg nem történik.
+* Mivel az értesítések az alkalmazási műveletek részeként aktiválódnak, az ügyfelek csak a helyileg véglegesített műveletekértesítéseit látják. És mivel a műveletek garantáltan csak helyileg véglegesített (más szóval, naplózott), lehet, hogy a jövőben visszavonhatók vagy nem.
+* A redo elérési út, minden alkalmazott művelet egyetlen értesítés aktiválódik. Ez azt jelenti, hogy ha a T1 tranzakció tartalmazza a Create(X), Delete(X) és Create(X) tranzakciót, akkor egy értesítést kap az X létrehozásáról, egyet a törlésről, és egyet a létrehozáshoz, ebben a sorrendben.
+* A több műveletet tartalmazó tranzakciók esetén a műveletek abban a sorrendben kerülnek alkalmazásra, ahogyan az elsődleges replikán a felhasználótól érkeztek.
+* A hamis folyamat feldolgozásának részeként előfordulhat, hogy egyes műveletek et visszavonni. Az ilyen visszavonási műveletekről értesítések kerülnek elő, és a replika állapota visszaáll egy stabil pontra. A visszavonási értesítések egyik fontos különbsége, hogy az ismétlődő kulcsokkal rendelkező események összesítése történik. Ha például a T1 tranzakciót visszavonni, egyetlen értesítés jelenik meg a Delete(X) számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
-* [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
-* [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Megbízható szolgáltatások – gyorsindítás](service-fabric-reliable-services-quick-start.md)
+* [Megbízható szolgáltatások biztonsági mentése és visszaállítása (vészhelyreállítás)](service-fabric-reliable-services-backup-restore.md)
+* [Fejlesztői referencia a megbízható gyűjtemények](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

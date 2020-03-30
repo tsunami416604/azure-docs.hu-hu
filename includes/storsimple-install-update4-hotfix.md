@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179318"
 ---
 #### <a name="to-download-hotfixes"></a>Gyorsjavítások letöltése
 
 Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update katalógusból történő letöltéséhez.
 
-1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Indítsa el az [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)Internet Explorer t, és keresse meg a programot.
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
     ![Katalógus telepítése](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -26,20 +26,20 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
    
     ![Keresés a katalógusban](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. Kattintson a **Letöltés** gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. Kattintson a fájlokat, és töltse le a megadott hely és a mappa. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
-5. A fenti táblázatban felsorolt további gyorsjavításokra keresése (**4011841**), és töltse le a megfelelő fájlokat a bizonyos mappákra, az előző táblázatban felsorolt.
+4. Kattintson **a Letöltés gombra.** Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. Kattintson a letölteni kívánt fájlokra a megadott helyre és mappába. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
+5. Keressen további gyorsjavításokat a fenti táblázatban (**4011841**), és töltse le a megfelelő fájlokat az előző táblázatban felsorolt mappákba.
 
 > [!NOTE]
-> A gyorsjavítások mindkét vezérlő észleli a potenciális hibaüzenetek a társ vezérlőről elérhetőknek kell lenniük.
+> A gyorsjavításoknak mindkét vezérlőből elérhetőnek kell lenniük a társvezérlő esetleges hibaüzenetei észleléséhez.
 >
-> A gyorsjavításokat 3 különböző mappába kell másolni. Például az szoftver/Cis/MDS ügynök frissítésére lehet másolni az _FirstOrderUpdate_ mappában, minden más zavart nem okozó frissítést sikerült másolni a _SecondOrderUpdate_ mappát, és másolja a karbantartási módú frissítések _ThirdOrderUpdate_ mappát.
+> A gyorsjavításokat 3 különböző mappába kell másolni. Például az eszközszoftver/Cis/MDS ügynök frissítése másolható a _FirstOrderUpdate_ mappában, az összes többi nem zavaró frissítés a _SecondOrderUpdate_ mappába, a karbantartási mód frissítései pedig a _ThirdOrderUpdate_ mappába másolhatók.
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Normál módú gyorsjavítások telepítése és ellenőrzése
 
 A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa végre az alábbi lépéseket. Ha már telepítette ezeket a klasszikus Azure portál segítségével, folytassa a [karbantartási módú gyorsjavítások telepítésének és ellenőrzésének](#to-install-and-verify-maintenance-mode-hotfixes) lépésével.
 
 1. A gyorsjavítások telepítéséhez nyissa meg a Windows PowerShell felületét a StorSimple-eszköz soros konzoljában. Kövesse [a PuTTY a soros konzolhoz való csatlakozáshoz történő használatát](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console) ismertető részletes útmutatásokat. A parancssorban nyomja le az **Enter** billentyűt.
-2. Válassza ki az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Javasoljuk, hogy előbb a passzív vezérlőre telepítse a gyorsjavítást.
+2. Válassza az 1- es lehetőséget, **jelentkezzen be teljes hozzáféréssel.** Javasoljuk, hogy előbb a passzív vezérlőre telepítse a gyorsjavítást.
 3. A gyorsjavítás telepítéséhez írja be a következőt a parancssorba:
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -50,7 +50,7 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
    
     Amikor a rendszer kéri, adja meg a jelszót.
    
-    Alább látható egy példa az elsőrendű frissítések telepítésének kimenetére. Az első elsőrendű frissítés kell, hogy az adott fájlra mutasson.
+    Alább látható egy példa az elsőrendű frissítések telepítésének kimenetére. Az első rendelési frissítéshez az adott fájlra kell mutatnia.
    
         ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -104,10 +104,10 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
      Ha a verziószám nem változik a frissítés telepítését követően, ez azt jelzi, hogy a gyorsjavítás nem lett telepítve. Ha ezt látja, további segítségért forduljon a [Microsoft támogatási szolgálatához](../articles/storsimple/storsimple-contact-microsoft-support.md).
      
      > [!IMPORTANT]
-     > Újra kell indítania az aktív vezérlőt a `Restart-HcsController` parancsmag a következő frissítés alkalmazása előtt.
+     > A következő frissítés telepítése `Restart-HcsController` előtt újra kell indítania az aktív vezérlőt a parancsmagon keresztül.
      
-7. Ismételje meg a 3-5 letöltött Cis/MDS-ügynök telepítése a _FirstOrderUpdate_ mappát. 
-8. A másodrendű frissítések telepítéséhez hajtsa ismét végre a 3–5. lépést. **A másodrendű frissítések, egyszerre több frissítést is telepíthető egyszerűen futtassa a `Start-HcsHotfix cmdlet` mutató a mappát, ahol a másodrendű frissítések találhatók. A parancsmag az összes rendelkezésre álló frissítések végrehajtja a mappában.** Ha valamely frissítés már telepítve lett, a frissítési logika észleli ezt, és nem alkalmazza újra az adott frissítést. 
+7. Ismételje meg a 3-5. _FirstOrderUpdate_ 
+8. A másodrendű frissítések telepítéséhez hajtsa ismét végre a 3–5. lépést. **A második rendű frissítések esetében több frissítés `Start-HcsHotfix cmdlet` is telepíthető, ha csak futtatja a fájlt, és rámutat arra a mappára, ahol a második rendelési frissítések találhatók. A parancsmag végrehajtja a mappában elérhető összes frissítést.** Ha valamely frissítés már telepítve lett, a frissítési logika észleli ezt, és nem alkalmazza újra az adott frissítést. 
 
 Miután az összes gyorsjavítás telepítve lett, használja a `Get-HcsSystem` parancsmagot. A verziónak a következőknek kell lennie:
 
@@ -123,7 +123,7 @@ Vegye figyelembe, hogy amennyiben a lemezfirmware már naprakész, nem szükség
 
 A lemezfirmware-frissítések telepítéséhez kövesse az alábbi utasításokat.
 
-1. Helyezze az eszközt karbantartási módba. **Ügyeljen arra, hogy ne a Windows PowerShell távoli eljáráshívás segítségével csatlakozzon az eszközhöz a karbantartási módban. Ehelyett futtassa az alábbi parancsmagot az eszközvezérlőn, miközben az eszköz soros konzolján keresztül csatlakozik az eszközhöz.** Típus:
+1. Helyezze az eszközt karbantartási módba. **Vegye figyelembe, hogy ne használja a Windows PowerShell-távot, amikor karbantartási módban csatlakozik egy eszközhöz. Ehelyett futtassa ezt a parancsmamint az eszközvezérlőn, amikor az eszköz soros konzolján keresztül csatlakozik.** Típus:
    
     `Enter-HcsMaintenanceMode`
    
@@ -163,8 +163,8 @@ A lemezfirmware-frissítések telepítéséhez kövesse az alábbi utasításoka
         This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
-3. A telepítési folyamatot a `Get-HcsUpdateStatus` parancs használatával figyelheti. A frissítés akkor fejeződött be, ha a `RunInProgress` `False` értékre vált.
-4. Miután befejeződött a telepítés, a vezérlő, amelyre a karbantartási módú gyorsjavítás telepítve lett, újraindul. Jelentkezzen 1,. lehetőség a **jelentkezzen be a teljes hozzáféréssel**, és ellenőrizze a lemezfirmware verzióját. Típus:
+3. A telepítési folyamatot a `Get-HcsUpdateStatus` parancs használatával figyelheti. A frissítés akkor fejeződött be, ha a `RunInProgress``False` értékre vált.
+4. Miután befejeződött a telepítés, a vezérlő, amelyre a karbantartási módú gyorsjavítás telepítve lett, újraindul. Jelentkezzen be az **Log in with full access**1. Típus:
    
    `Get-HcsFirmwareVersion`
    

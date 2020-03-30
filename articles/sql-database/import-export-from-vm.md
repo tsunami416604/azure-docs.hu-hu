@@ -1,6 +1,6 @@
 ---
 title: SQL-adatbázis importálása vagy exportálása
-description: Azure SQL Database importálása vagy exportálása anélkül, hogy az Azure-szolgáltatások hozzáférjenek a kiszolgálóhoz.
+description: Importáljon vagy exportáljon egy Azure SQL-adatbázist anélkül, hogy az Azure-szolgáltatások hozzáférhetne a kiszolgálóhoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -12,32 +12,32 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 9f694f3f0ec740d0a4e8dc4e6bf8845c408802c8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75897844"
 ---
-# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL Database importálása vagy exportálása az Azure-szolgáltatások a kiszolgálóhoz való hozzáférésének engedélyezése nélkül
+# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL-adatbázis importálása vagy exportálása anélkül, hogy az Azure-szolgáltatások hozzáférhetnek a kiszolgálóhoz
 
-Ez a cikk bemutatja, hogyan importálhat vagy exportálhat egy Azure SQL Database-adatbázist, ha engedélyezi az Azure- *szolgáltatások* *kikapcsolását* az Azure SQL Serveren. A munkafolyamat egy Azure-beli virtuális gépet használ a SqlPackage futtatására az importálási vagy exportálási művelet végrehajtásához.
+Ez a cikk bemutatja, hogyan importálhat vagy exportálhat egy Azure SQL-adatbázist, ha az *Azure Services engedélyezése* ki van *állítva* az Azure SQL-kiszolgálón. A munkafolyamat egy Azure virtuális gép használatával futtatja az SqlPackage-t az importálási vagy exportálási művelet végrehajtásához.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-## <a name="create-the-azure-virtual-machine"></a>Az Azure-beli virtuális gép létrehozása
+## <a name="create-the-azure-virtual-machine"></a>Az Azure virtuális gép létrehozása
 
-Hozzon létre egy Azure-beli virtuális gépet az **üzembe helyezés az Azure-** ban gomb kiválasztásával.
+Hozzon létre egy Azure-beli virtuális gépet az **Azure-ba való üzembe helyezés** gomb kiválasztásával.
 
-Ez a sablon lehetővé teszi egy egyszerű Windowsos virtuális gép üzembe helyezését néhány különböző lehetőséggel a Windows-verzióhoz a legújabb javított verzió használatával. Ez egy a2 méretű virtuális gépet helyez üzembe az erőforráscsoport helyén, és a virtuális gép teljes tartománynevét adja vissza.
+Ez a sablon lehetővé teszi egy egyszerű Windows virtuális gép telepítését néhány különböző lehetőség gel a Windows verzióhoz, a legújabb javított verzió használatával. Ez telepíti az A2-es méretű virtuális gép az erőforráscsoport helyét, és adja vissza a virtuális gép teljesen minősített tartománynevét.
 <br><br>
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
     <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-További információkért lásd: [Windows rendszerű virtuális gép nagyon egyszerű üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows).
+További információt a Windows virtuális gépek egyszerű telepítése című [témakörben](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)talál.
 
 
 ## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
@@ -50,65 +50,65 @@ A következő lépések bemutatják, hogyan csatlakozhat a virtuális géphez t�
 
 2. Kattintson a **Csatlakozás** gombra.
 
-   A virtuális gép nyilvános IP-címét és portszámát tartalmazó RDP protokoll fájl (. rdp fájl) űrlap jelenik meg.
+   A távoli asztali protokollfájl (.rdp fájl) űrlapja megjelenik a virtuális gép nyilvános IP-címével és portszámával.
 
-   ![RDP-űrlap](./media/import-export-from-vm/rdp.png)  
+   ![RDP képernyő](./media/import-export-from-vm/rdp.png)  
 
-3. Válassza az **RDP-fájl letöltése**lehetőséget.
+3. Válassza **az RDP-fájl letöltése lehetőséget.**
 
    > [!NOTE]
    > Az SSH használatával is csatlakozhat a virtuális géphez.
 
-4. Zárjuk be a **Kapcsolódás virtuális géphez** űrlapot.
+4. Zárja be a **Csatlakozás a virtuális géphez** űrlapot.
 5. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz.
-6. Ha a rendszer kéri, válassza a **Csatlakozás**lehetőséget. Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12).
+6. Amikor a rendszer kéri, válassza a **Csatlakozás lehetőséget.** Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12).
 
-7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd kattintson **az OK gombra**.
+7. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd válassza az **OK gombot.**
 
-8. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza az **Igen** vagy a **Folytatás** lehetőséget a kapcsolódás folytatásához.
-
-
-
-## <a name="install-sqlpackage"></a>A SqlPackage telepítése
-
-[Töltse le és telepítse a SqlPackage legújabb verzióját](https://docs.microsoft.com/sql/tools/sqlpackage-download).
+8. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A kapcsolat folytatásához válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 
 
+## <a name="install-sqlpackage"></a>SqlPackage telepítése
 
-További információ: [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage).
+[Töltse le és telepítse az SqlPackage legújabb verzióját.](https://docs.microsoft.com/sql/tools/sqlpackage-download)
 
-## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Tűzfalszabály létrehozása a virtuális gép az adatbázishoz való hozzáférésének engedélyezéséhez
 
-Adja hozzá a virtuális gép nyilvános IP-címét a SQL Database kiszolgáló tűzfalához.
 
-Az alábbi lépéseket követve hozzon létre egy kiszolgálói szintű IP-tűzfalszabály a virtuális gép nyilvános IP-címéhez, és lehetővé teszi a kapcsolódást a virtuális gépről.
 
-1. Válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **servername.database.Windows.net**), és további konfigurálási lehetőségeket biztosít.
+További információt az [SqlPackage.exe című fájlban talál.](https://docs.microsoft.com/sql/tools/sqlpackage)
 
-2. Másolja ezt a teljes kiszolgálónevet, amelyet a kiszolgálóhoz és az adatbázisaihoz való csatlakozáskor használ.
+## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Tűzfalszabály létrehozása a virtuális gép adatbázishoz való hozzáférésének engedélyezéséhez
+
+Adja hozzá a virtuális gép nyilvános IP-címét az SQL Database server tűzfalához.
+
+A következő lépések hozzon létre egy kiszolgálószintű IP-tűzfal szabályt a virtuális gép nyilvános IP-címéhez, és lehetővé teszi a kapcsolatot a virtuális gépről.
+
+1. Válassza az **SQL-adatbázisok lehetőséget** a bal oldali menüből, majd válassza ki az **adatbázist** az SQL adatbázisok lapon. Megnyílik az adatbázis áttekintő lapja, amely a teljesen minősített kiszolgálónevét (például **servername.database.windows.net)** jeleníti meg, és további konfigurációs lehetőségeket biztosít.
+
+2. Másolja a teljesen minősített kiszolgálónevet a kiszolgálóhoz és annak adatbázisaihoz való csatlakozáshoz használva.
 
    ![kiszolgáló neve](./media/sql-database-get-started-portal/server-name.png)
 
-3. Válassza a **kiszolgáló tűzfal beállítása** lehetőséget az eszköztáron. Megnyílik az adatbázis-kiszolgáló **tűzfalbeállítások** lapja.
+3. Az eszköztáron válassza a **Kiszolgálótűzfal beállítása** lehetőséget. Megnyílik az adatbázis-kiszolgáló **tűzfalbeállításai** lap.
 
-   ![kiszolgálói szintű IP-tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png)
+   ![kiszolgálószintű IP-tűzfal szabály](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-4. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a virtuális gép nyilvános IP-címét egy új kiszolgálói szintű IP-tűzfalszabály eléréséhez. A kiszolgálói szintű IP-tűzfalszabály egyetlen IP-cím vagy egy IP-címtartomány 1433-as portját nyithatja meg.
+4. Válassza az **ügyfél IP hozzáadása** lehetőséget az eszköztáron, ha hozzá szeretné adni a virtuális gép nyilvános IP-címét egy új kiszolgálószintű IP-tűzfalszabályhoz. A kiszolgálószintű IP-tűzfalszabály egyetlen IP-címhez vagy IP-címtartományhoz is megnyithatja az 1433-as portot.
 
-5. Kattintson a **Mentés** gombra. A rendszer a virtuális gép nyilvános IP-címéhez létrehoz egy kiszolgálói szintű IP-szabályt, amely a SQL Database-kiszolgálón a 1433-es portot nyitja meg.
+5. Kattintson a **Mentés** gombra. A rendszer kiszolgálószintű IP-tűzfalszabályt hoz létre a virtuális gép 1433-as nyilvános IP-címhez az SQL Database-kiszolgálón.
 
-6. A **tűzfalbeállítások** oldalának lezárása.
+6. Zárja be a **Tűzfal beállításai** lapot.
 
 
 
-## <a name="export-a-database-using-sqlpackage"></a>Adatbázis exportálása a SqlPackage használatával
+## <a name="export-a-database-using-sqlpackage"></a>Adatbázis exportálása sqlpackage használatával
 
-Ha az SQL Database-adatbázist a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogrammal szeretné exportálni, tekintse meg a [paraméterek és tulajdonságok exportálása](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)című témakört. A SqlPackage segédprogram a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióit, illetve a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)legújabb verzióját is letölti.
+Sql-adatbázis exportálása az [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogrammal: [Paraméterek és tulajdonságok exportálása](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties). Az SqlPackage segédprogram az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és az SQL Server Data [Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióival, illetve az [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)legújabb verziójával is elérhető.
 
-A legtöbb éles környezetben a SqlPackage segédprogram használatát javasoljuk a méretezéshez és a teljesítményhez. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Javasoljuk, hogy az SqlPackage segédprogram ot használja a méretezéshez és a teljesítményhez a legtöbb éles környezetben. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Ez a példa azt szemlélteti, hogyan lehet exportálni egy adatbázist az SqlPackage. exe használatával Active Directory univerzális hitelesítéssel. Cserélje le a értéket a környezetre jellemző értékekre.
+Ez a példa bemutatja, hogyan exportálhat adatbázist az SqlPackage.exe használatával az Active Directory univerzális hitelesítéssel. Cserélje le a környezetére jellemző értékekre.
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"
@@ -117,55 +117,55 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 
 
-## <a name="import-a-database-using-sqlpackage"></a>Adatbázis importálása a SqlPackage használatával
+## <a name="import-a-database-using-sqlpackage"></a>Adatbázis importálása az SqlPackage használatával
 
-Ha SQL Server adatbázist szeretne importálni a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogrammal, tekintse meg a [paraméterek és tulajdonságok importálása](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)című témakört. A SqlPackage a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt). A [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)legújabb verzióját is letöltheti.
+Ha SQL Server adatbázist szeretne importálni az [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogrammal, olvassa el az importálási paraméterek és tulajdonságok című [témakört.](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties) Az SqlPackage rendelkezik a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és SQL Server Data Tools [rendszerrel.](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) Letöltheti az [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)legújabb verzióját is.
 
-A méretezés és a teljesítmény érdekében javasoljuk, hogy a SqlPackage a legtöbb éles környezetben használja a Azure Portal használata helyett. SQL Server Customer tanácsadó csapatának blogja `BACPAC` fájlok használatával történő áttelepítéssel kapcsolatban lásd: [áttelepítés SQL Serverról Azure SQL Database BACPAC-fájlok használatával](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+A méretezés és a teljesítmény érdekében azt javasoljuk, hogy az SqlPackage a legtöbb éles környezetben, nem pedig az Azure Portal használata. A fájlok áttelepítésével `BACPAC` kapcsolatos SQL Server Customer Advisory Team-blogról az SQL Server [rendszerről az Azure SQL Database-re bacpacfájlok használatával című](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)témakörben talál.
 
-A következő SqlPackage-utasítás importálja a **AdventureWorks2017** -adatbázist a helyi tárolóból egy Azure SQL Database-kiszolgálóra. Létrehoz egy **myMigratedDatabase** nevű új adatbázist egy **prémium** szintű szolgáltatási szinttel és egy **P6** szolgáltatás-célkitűzéssel. A környezetnek megfelelően módosítsa ezeket az értékeket.
+A következő SqlPackage parancs importálja az **AdventureWorks2017** adatbázist a helyi tárolóból egy Azure SQL Database-kiszolgálóra. Létrehoz egy új adatbázist **myMigratedDatabase** egy **prémium szolgáltatási** szint és egy **P6** szolgáltatási cél. Módosítsa ezeket az értékeket a környezetének megfelelően.
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=myMigratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2017.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> Ha egyetlen adatbázist kezelő SQL Database-kiszolgálóhoz szeretne csatlakozni egy vállalati tűzfal mögött, a tűzfalon meg kell nyitni a 1433-es portot. Felügyelt példányhoz való kapcsolódáshoz [pont – hely kapcsolat](sql-database-managed-instance-configure-p2s.md) vagy Express Route-kapcsolat szükséges.
+> Ha egyetlen adatbázist egy vállalati tűzfal mögül kezel egy SQL Database-kiszolgálóhoz, a tűzfalnak meg kell nyitnia az 1433-as portot. Felügyelt példányhoz való csatlakozáshoz [pont-hely kapcsolattal](sql-database-managed-instance-configure-p2s.md) vagy gyorsútvonal-kapcsolattal kell rendelkeznie.
 
-Ez a példa bemutatja, hogyan importálhat egy adatbázist az SqlPackage használatával Active Directory univerzális hitelesítéssel.
+Ez a példa bemutatja, hogyan importálhat adatbázist az SqlPackage használatával az Active Directory univerzális hitelesítéssel.
 
 ```cmd
 sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
+## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
-Az exportálási sebesség számos tényezőtől függ (például az adatalakzattól), így nem lehet előre jelezni, hogy milyen sebességgel kellene számolni. A SqlPackage jelentős időt vehet igénybe, különösen a nagyméretű adatbázisok esetében.
+Az exportálási sebesség számos tényező (például adatforma) miatt változik, így lehetetlen megjósolni, hogy milyen sebességre kell számítani. Az SqlPackage jelentős időt vehet igénybe, különösen a nagy adatbázisok esetében.
 
-A legjobb teljesítmény eléréséhez a következő stratégiákat lehet kipróbálni:
+A legjobb teljesítmény érdekében próbálkozzon a következő stratégiákkal:
 
-1. Győződjön meg arról, hogy az adatbázison nem fut más munkaterhelés. Hozzon létre egy másolatot az exportálás előtt lehet a legjobb megoldás, hogy más számítási feladatok ne fussanak.
-2. Növelje az adatbázis-szolgáltatási szint célkitűzését (SLO) az exportálási munkaterhelés jobb kezelése érdekében (elsődleges olvasási I/O). Ha az adatbázis jelenleg GP_Gen5_4, lehet, hogy egy üzletileg kritikus-szinten segítene az olvasási munkaterheléshez.
-3. Győződjön meg arról, hogy vannak fürtözött indexek, különösen a nagyméretű táblákhoz. 
-4. A virtuális gépeknek ugyanabban a régióban kell lenniük, mint az adatbázisnak a hálózati megkötések elkerülése érdekében.
-5. A virtuális gépeknek a blob Storage-ba való feltöltés előtt megfelelő méretű SSD-meghajtóval kell rendelkezniük a temp összetevők generálásához.
-6. A virtuális gépeknek megfelelő alapszintű és memória-konfigurációval kell rendelkezniük az adott adatbázishoz.
+1. Győződjön meg arról, hogy nincs más számítási feladat fut az adatbázisban. Hozzon létre egy másolatot exportálás előtt lehet a legjobb megoldás annak biztosítására, hogy más számítási feladatok nem futnak.
+2. Növelje az adatbázis-szolgáltatási szint célkitűzését (SLO) az exportálási munkaterhelés jobb kezelése érdekében (elsősorban az I/O olvasása). Ha az adatbázis jelenleg GP_Gen5_4, talán egy üzleti legkritikusabb szint segítene az olvasási számítási feladatok.
+3. Győződjön meg arról, hogy vannak fürtözött indexek, különösen a nagy táblák. 
+4. A virtuális gépeknek (VM-eknek) ugyanabban a régióban kell lenniük, mint az adatbázisnak a hálózati korlátok elkerülése érdekében.
+5. Virtuális gépek kell ssd megfelelő méretű ideiglenes összetevők létrehozása előtt blob storage.Vm kell SSD megfelelő méretű ideiglenes összetevők létrehozása előtt blob storage.
+6. A virtuális gépeknek megfelelő mag- és memóriakonfigurációval kell rendelkezniük az adott adatbázishoz.
 
-## <a name="store-the-imported-or-exported-bacpac-file"></a>Az importált vagy exportált tároló tárolása. BACPAC-fájl
+## <a name="store-the-imported-or-exported-bacpac-file"></a>Tárolja az importált vagy exportált . BACPAC-fájl
 
-A. A BACPAC-fájl tárolhatók az [Azure-blobokban](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)vagy [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction). 
+A. A BACPAC-fájl tárolható az [Azure Blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)vagy az [Azure Files alkalmazásban.](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) 
 
-A legjobb teljesítmény eléréséhez használja a Azure Files. A SqlPackage a fájlrendszerrel működik, hogy közvetlenül hozzáférhessen Azure Fileshoz.
+A legjobb teljesítmény elérése érdekében használja az Azure Files. Az SqlPackage a fájlrendszerrel működik, így közvetlenül hozzáférhet az Azure Files szolgáltatáshoz.
 
-A Cost csökkentése érdekében használja az Azure-blobokat, amelyek kisebbek, mint a prémium szintű Azure-fájlmegosztás. Azonban szükség van a másolására is [. BACPAC fájlt](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) a blob és a helyi fájlrendszer között az importálási vagy exportálási művelet előtt. Ennek eredményeképpen a folyamat hosszabb időt vesz igénybe.
+A költségek csökkentése érdekében használja az Azure Blobs, amely olcsóbb, mint egy prémium szintű Azure-fájlmegosztás. Ehhez azonban át kell másolnia a [. BACPAC-fájl](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) a blob és a helyi fájlrendszer között az importálási vagy exportálási művelet előtt. Ennek eredményeképpen a folyamat hosszabb időt vesz igénybe.
 
-A feltöltéshez vagy a letöltéshez. BACPAC-fájlok: az [adatok átvitele a AzCopy és a blob Storage](../storage/common/storage-use-azcopy-blobs.md)szolgáltatással, valamint az [adatok átvitele a AzCopy és a file Storage](../storage/common/storage-use-azcopy-files.md)szolgáltatással.
+A feltöltéshez vagy a letöltéshez. BACPAC-fájlok, lásd: [Adatok átvitele az AzCopy és Blob tárolóval,](../storage/common/storage-use-azcopy-blobs.md)valamint [Adatok átvitele az AzCopy segítségével és a fájltárolással.](../storage/common/storage-use-azcopy-files.md)
 
-A környezettől függően előfordulhat, hogy [konfigurálnia kell az Azure Storage-tűzfalakat és a virtuális hálózatokat](../storage/common/storage-network-security.md).
+A környezettől függően szükség lehet [az Azure Storage tűzfalainak és virtuális hálózatainak konfigurálására.](../storage/common/storage-network-security.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az importált SQL Databasehoz való kapcsolódással és lekérdezéssel kapcsolatos információkért lásd: gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használata a kapcsolódáshoz és az adatlekérdezéshez](sql-database-connect-query-ssms.md).
+- Az importált SQL-adatbázishoz való csatlakozásról és az adatok lekérdezéséről a [Rövid útmutató: Azure SQL Database: Az SQL Server Management Studio használata az adatok csatlakoztatásához és lekérdezéséhez](sql-database-connect-query-ssms.md)című témakörben olvashat.
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
-- A teljes SQL Server adatbázis-áttelepítési folyamatról, beleértve a teljesítménnyel kapcsolatos ajánlásokat is, tekintse meg a [SQL Server adatbázis áttelepítésének Azure SQL Database](sql-database-single-database-migrate.md).
-- A tárolási kulcsok és a közös hozzáférési aláírások biztonságos kezelésével és megosztásával kapcsolatos további információkért lásd: az [Azure Storage biztonsági útmutatója](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- A teljes SQL Server-adatbázis-áttelepítési folyamatról, beleértve a teljesítményjavaslatokat is, az [SQL Server adatbázis-áttelepítése az Azure SQL Database rendszerbe](sql-database-single-database-migrate.md)című témakörben található.
+- A tárolási kulcsok és a megosztott hozzáférési aláírások biztonságos kezeléséről és megosztásáról az [Azure Storage biztonsági útmutatójában olvashat.](https://docs.microsoft.com/azure/storage/common/storage-security-guide)

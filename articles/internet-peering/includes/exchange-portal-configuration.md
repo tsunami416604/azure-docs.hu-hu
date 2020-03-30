@@ -9,65 +9,65 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: cd51eca0ea4563e1b56f74677df0829669d9e177
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774496"
 ---
-1. A társítás **létrehozása** lap **konfiguráció** lapján töltse ki a mezőket az alább látható módon.
+1. A **Társviszony-létesítés létrehozása** lap **Konfiguráció** lapján töltse ki a mezőket az alábbi módon.
 
     > [!div class="mx-imgBorder"]
-    > ![peering Configuration – Exchange](../media/setup-exchange-conf-tab.png)
+    > ![Társviszony-létesítési konfiguráció - Exchange](../media/setup-exchange-conf-tab.png)
 
-    * A **társ**-kezelés típusa beállításnál válassza az *Exchange*lehetőséget.
-    * Válassza az SKU *alapszintű ingyenes*lehetőséget.
-    * Válassza ki azt a **Metro** -helyet, ahová be szeretné állítani a társítást.
+    * **Társviszony-létesítési típus esetén**válassza az *Exchange*lehetőséget.
+    * Válassza a **Termékváltozat** *alapszintű ingyenesként*lehetőséget.
+    * Válassza ki azt a **metro** helyet, ahol be szeretné állítani a társviszony-létesítést.
 
         > [!NOTE]
-        > Ha a kiválasztott **Metro** -helyen már rendelkezik a Microsofttal való kapcsolattal, és a portálon először használja a társítást ezen a helyen, akkor a meglévő társ-összevonási kapcsolatok az alább látható módon jelennek meg a társítási **kapcsolatok** szakaszban. A Microsoft automatikusan átalakítja ezeket az összekapcsolási kapcsolatokat az Azure-erőforrással, hogy az új kapcsolatokkal együtt kezelje őket egy helyen. További információ: [örökölt Exchange-társítás átalakítása Azure-erőforrásra a portál használatával](../howto-legacy-exchange-portal.md) .
+        > Ha már rendelkezik társviszony-létesítési kapcsolatokkal a Microsofttal a kiválasztott **metro** helyen, és első alkalommal használja a portált az adott helyen a társviszony-létesítés beállításához, akkor a meglévő társviszony-létesítési kapcsolatok az alábbi módon jelennek meg a **Társviszony-létesítési kapcsolatok** szakaszban. A Microsoft automatikusan konvertálja ezeket a társviszony-létesítési kapcsolatokat az Azure-erőforrásba, így egy helyen kezelheti őket az új kapcsolatokkal együtt. További információ: [Örökölt Exchange-társviszony-létesítés átalakítása azure-erőforrássá a portál használatával](../howto-legacy-exchange-portal.md) című témakörben talál.
         >
 
-1. A társítási **kapcsolatok**területen kattintson az **új létrehozása** elemre, és adjon hozzá egy sort minden új kapcsolathoz, amelyet be szeretne állítani.
+1. A **Társviszony-létesítési kapcsolatok csoportban**kattintson az **Új létrehozása** gombra, ha minden új kapcsolathoz hozzá szeretne adni egy vonalat.
 
-    * A kapcsolódási beállítások konfigurálásához/módosításához kattintson a sor Szerkesztés gombjára.
-
-        > [!div class="mx-imgBorder"]
-        > ![peering Configuration – Exchange Edit](../media/setup-exchange-conf-tab-edit.png)
-
-    * Egy sor törléséhez kattintson a következőre: **...** gombra > **delete**.
+    * A kapcsolatbeállítások konfigurálásához/módosításához kattintson a vonal szerkesztési gombjára.
 
         > [!div class="mx-imgBorder"]
-        > ![peering Configuration – Exchange Edit](../media/setup-exchange-conf-tab-delete.png)
+        > ![Társviszony-létesítési konfiguráció – Exchange-szerkesztés](../media/setup-exchange-conf-tab-edit.png)
 
-    * A kapcsolatok összes beállítását az alább látható módon kell megadnia.
+    * Ha törölni szeretne egy sort, kattintson a **...** gombra > **Törlés gombra.**
+
+        > [!div class="mx-imgBorder"]
+        > ![Társviszony-létesítési konfiguráció – Exchange-szerkesztés](../media/setup-exchange-conf-tab-delete.png)
+
+    * A kapcsolat összes beállítását meg kell adnia az alábbiak szerint.
 
          > [!div class="mx-imgBorder"]
-         > ![peering Configuration – Exchange-kapcsolatok](../media/setup-exchange-conf-tab-connection.png)
+         > ![Társviszony-létesítési konfiguráció – Exchange-kapcsolat](../media/setup-exchange-conf-tab-connection.png)
 
-        1. Válassza ki azt a társítási **létesítményt** , ahol a kapcsolatot be kell állítani.
-        1. Az IPv4- **cím** és az **IPv6-cím**mezőben adja meg az IPv4-és IPv6-címeket, amelyek a szomszéd parancs használatával konfigurálhatók a Microsoft-útválasztókon.
-        1. Adja meg azoknak az IPv4-és IPv6-ELŐTAGOKNAK a számát, amelyeket a meghirdetett **IPv4-címek** és a **meghirdetett IPv6-címek** maximális száma mezőben fog reklámozni.
-        1. A kapcsolódási beállítások mentéséhez kattintson **az OK** gombra.
+        1. Válassza ki azt a **társviszony-létesítési lehetőséget,** ahol a kapcsolatot be kell állítani.
+        1. Az **IPv4-cím** és az **IPv6-cím**mezőkben adja meg az IPv4-címet, illetve az IPv6-címet, amelyet a Microsoft-útválasztókban a szomszédos paranccsal konfigurálna.
+        1. Adja meg a hirdetni kívánt IPv4- és IPv6-előtagok számát a **Maximálishirdetett IPv4-címek,** illetve a **Hirdetett IPv6-címek maximális** száma mezőben.
+        1. A csatlakozási beállítások mentéséhez kattintson az **OK** gombra.
 
-1. Ismételje meg a fenti lépést további kapcsolatok hozzáadásához bármely olyan létesítményben, ahol a Microsoft a hálózattal együtt található a korábban kiválasztott **metrón** belül.
+1. Ismételje meg a fenti lépés, hogy adjunk további kapcsolatok at any létesítmény, ahol a Microsoft közös helyen található a hálózat, a **Metro** korábban kiválasztott.
 
-1. Az összes szükséges kapcsolat hozzáadását követően kattintson a **felülvizsgálat + létrehozás**gombra.
-
-    > [!div class="mx-imgBorder"]
-    > ![a társítási konfiguráció lap végleges](../media/setup-exchange-conf-tab-final.png)
-
-1. Figyelje meg, hogy a portál a beírt információk alapszintű érvényesítését futtatja. Ez a felső menüszalagon jelenik meg, a *végső ellenőrzés futtatásával..* .
+1. Hozzáadása után az összes szükséges kapcsolatokat, kattintson a **Review + create**.
 
     > [!div class="mx-imgBorder"]
-    > ![társ-ellenőrzés lap](../media/setup-direct-review-tab-validation.png)
+    > ![Társviszony-létesítési konfigurációs lap végleges](../media/setup-exchange-conf-tab-final.png)
 
-1. Miután bekapcsolta az *érvényesítést*, ellenőrizze az adatokat, és küldje el a kérést a **Létrehozás**gombra kattintva. Ha módosítania kell a kérelmét, kattintson az **előző** gombra, és ismételje meg a fenti lépéseket.
-
-    > [!div class="mx-imgBorder"]
-    > ![társ-beküldési](../media/setup-exchange-review-tab-submit.png)
-
-1. Miután elküldte a kérést, várja meg, amíg befejeződik az üzembe helyezés. Ha a telepítés sikertelen, forduljon a [Microsoft-partneri](mailto:peering@microsoft.com)kapcsolathoz. A sikeres üzembe helyezés az alábbi módon fog megjelenni.
+1. Figyelje meg, hogy a portál futtatja a megadott adatok alapvető érvényesítését. Ez egy szalagon jelenik meg a tetején, mint *futás végső érvényesítés...*.
 
     > [!div class="mx-imgBorder"]
-    > ![a sikeres társ-kezelés](../media/setup-direct-success.png)
+    > ![Társviszony-érvényesítés lap](../media/setup-direct-review-tab-validation.png)
+
+1. Miután az *Érvényesítés i d.* elemre vált, ellenőrizze az adatokat, és küldje el a kérelmet a **Létrehozás**gombra kattintva. Ha módosítania kell a kérését, kattintson az **Előző gombra,** és ismételje meg a fenti lépéseket.
+
+    > [!div class="mx-imgBorder"]
+    > ![Társviszony-létesítés iküldött](../media/setup-exchange-review-tab-submit.png)
+
+1. Miután elküldte a kérelmet, várja meg, amíg befejeződik a központi telepítés. Ha a telepítés sikertelen, forduljon [a Microsoft társviszony-létesítési](mailto:peering@microsoft.com). A sikeres telepítés az alábbiak szerint jelenik meg.
+
+    > [!div class="mx-imgBorder"]
+    > ![Társviszony-létesítési siker](../media/setup-direct-success.png)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure import/export eszköz használata | Microsoft Docs
-description: Megtudhatja, hogyan használhatja az importálási/exportálási eszközt az importálási feladatokhoz szükséges merevlemezek előkészítéséhez, az importálási feladatok kijavításához vagy az exportálási feladatok javításához.
+title: Az Azure importálási/exportálási eszközének használata | Microsoft dokumentumok
+description: Megtudhatja, hogy az Importálás/exportálás eszközzel hogyan készíthet idáig merevlemezeket egy importálási feladatra, hogyan javíthatja ki az importálási feladatot, illetve hogyan javíthatja ki az exportálási feladatot.
 author: twooley
 services: storage
 ms.service: storage
@@ -9,27 +9,27 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978463"
 ---
-# <a name="using-the-azure-importexport-tool"></a>Az Azure import/export eszköz használata
+# <a name="using-the-azure-importexport-tool"></a>Az Azure importálási/exportálási eszközének használata
 
-Az Azure import/export eszköz (WAImportExport. exe) az Azure import/export szolgáltatáshoz kapcsolódó feladatok létrehozására és kezelésére szolgál, lehetővé téve nagy mennyiségű adat átvitelét az Azure-Blob Storageba vagy onnan.
+Az Azure Import/Export Tool (WAImportExport.exe) segítségével az Azure import/export szolgáltatás hoz létre és kezel, így nagy mennyiségű adatot vihet át az Azure Blob Storage-ba vagy azAzure Blob Storage-ból.
 
-Ez a dokumentáció az Azure import/export eszköz legújabb verziójához készült. További információ a klasszikus üzemi modell használatáról: [Az Azure import/export eszköz v1 használata](storage-import-export-tool-how-to-v1.md).
+Ez a dokumentáció az Azure importálási/exportálási eszköz legújabb verziójához készült. A klasszikus telepítési modell használatáról az [Azure Import/Export Tool v1 című témakörben talál](storage-import-export-tool-how-to-v1.md)további információt.
 
-A következő cikkek bemutatják, hogyan végezheti el a következőket:  
+A következő cikkek bemutatják, hogyan kell:  
 
-- Telepítse és állítsa be az Azure import/export eszközt.
-- Készítse elő a merevlemezeket egy olyan feladatokhoz, amelyekkel az Azure Blob Storageba importálhatja a meghajtóit.
-- Tekintse át a feladatok állapotát a másolási naplófájlokkal.
-- Az importálási feladatok javítása.
-- Exportálási feladatok javítása.
-- Az Azure import/export eszköz hibáinak megoldása.
+- Telepítse és állítsa be az Azure importálási/exportálási eszközt.
+- Készítse elő a merevlemezeket egy olyan feladatra, ahol adatokat importál a meghajtókról az Azure Blob Storage-ba.
+- Tekintse át egy feladat állapotát a Naplófájlok másolásával.
+- Importfeladat javítása.
+- Exportálási feladat javítása.
+- Az Azure importálási/exportálási eszközének hibáit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A WAImportExport eszköz beállítása](storage-import-export-tool-setup.md)

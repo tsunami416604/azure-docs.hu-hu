@@ -1,6 +1,6 @@
 ---
-title: A csoportos adatelemzési folyamat projektjei előrehaladásának nyomon követése
-description: Hogyan követheti nyomon az adatelemzési projektek előrehaladását az adattudományi csoport kezelői, a Team-érdeklődők és a projekt-érdeklődők.
+title: A csapatadat-elemzési folyamat projektjeinek előrehaladásának nyomon követése
+description: Hogyan adatelemzési csoport menedzserek, csoport vezet, és a projekt-érdeklődők nyomon követheti az adatelemzési projekt előrehaladását.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,43 +11,43 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864196"
 ---
-# <a name="track-the-progress-of-data-science-projects"></a>Az adatelemzési projektek előrehaladásának nyomon követése
+# <a name="track-the-progress-of-data-science-projects"></a>Adatelemzési projektek előrehaladásának nyomon követése
 
-Az adatelemzési csoport kezelői, a Team-érdeklődők és a projekt-érdeklődők nyomon követhetik projektjeik előrehaladását.  A vezetők szeretnék tudni, hogy milyen munkát végeztek el, ki a munkát, és mi marad a munka.   Az elvárások kezelése a siker fontos eleme.
+Az adatelemzési csoport menedzserei, a csoportvezetők és a projektérdeklődők nyomon követhetik a projektjeik előrehaladását.  A vezetők tudni szeretnék, hogy milyen munkát végeztek, ki végezte a munkát, és mi a munka.   Az elvárások kezelése a siker fontos eleme.
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps-irányítópultok
 
-Ha Azure-DevOps használ, irányítópultokat hozhat létre az adott agilis projekthez társított tevékenységek és munkaelemek nyomon követéséhez. Az irányítópultokkal kapcsolatos további információkért lásd: [irányítópultok, jelentések és widgetek](/azure/devops/report/dashboards/).
+Ha Az Azure DevOps használatával, irányítópultok segítségével nyomon követheti az adott Agilis projekthez társított tevékenységeket és munkaelemeket. Az irányítópultokról további információt az [Irányítópultok, jelentések és widgetek című témakörben talál.](/azure/devops/report/dashboards/)
 
-Az irányítópultok és widgetek Azure DevOps való létrehozásával és testreszabásával kapcsolatos utasításokért tekintse meg a következő rövid útmutatókat:
+Az Azure DevOps irányítópultjainak és widgetjeinek létrehozásáról és testreszabásáról az alábbi rövid útmutatókban talál útmutatást:
 
 - [Irányítópultok hozzáadása és kezelése](/azure/devops/report/dashboards/dashboards)
-- [Widgetek hozzáadása az irányítópulthoz](/azure/devops/report/dashboards/add-widget-to-dashboard)
+- [Widgetek hozzáadása irányítópulthoz](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>Minta irányítópult
 
-Íme egy egyszerű példa az irányítópultra, amely egy agilis adatelemzési projekt Sprint-tevékenységeit követi nyomon, beleértve a társított adattárakhoz való véglegesítés számát is. 
+Íme egy egyszerű példa irányítópult, amely nyomon követi az Agilis adatelemzési projekt sprint tevékenységeit, beleértve a kapcsolódó adattáraknak való véglegesítések számát. 
 
-- A **Countdown (visszaszámlálás** ) csempén az aktuális sprintben maradó napok száma látható. 
+- A **visszaszámlálás** csempe mutatja, hogy hány nap marad az aktuális sprintben. 
 
-- A két **kódrészlet** az elmúlt hét nap során a két projekt adattárházában lévő véglegesítés számát mutatja. 
+- A két **kódcsempe** az elmúlt hét nap két projekttárban lévő véglegesítések számát mutatja. 
 
-- A **TDSP-projekt munkaelemei** az összes munkaelem és azok állapotának lekérdezési eredményeit jelenítik meg. 
+- **A TDSP Customer Project munkatételei** az összes munkaelemre vonatkozó lekérdezés eredményeit és azok állapotát jelenítik meg. 
 
-- Az **összesítő folyamatábra** (CFD) a lezárt és az aktív munkaelemek számát jeleníti meg.
+- A **göngyölt folyamatdiagram** (CFD) a lezárt és az aktív munkaelemek számát mutatja.
 
-- A **burndown diagramon** látható, hogy a munka még mindig a sprintben hátralévő idő után fejeződik be.
+- Az **égési diagram** azt mutatja, hogy a munka még mindig befejeződik a hátralévő idő vel szemben a sprintben.
 
-- A **burnup diagram** a Sprint teljes munkamennyiségéhez képest befejezett munkát mutat.
+- A **burnup diagram** mutatja befejezett munka képest teljes munka mennyisége a sprint.
 
 ![Irányítópult](./media/track-progress/dashboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[A csoportos adatelemzési folyamathoz](walkthroughs.md) tartozó útmutatók a folyamat lépéseinek bemutatására szolgáló útmutatókat listázza. A hivatkozott forgatókönyvek bemutatják, hogyan kezelheti a Felhőbeli és a helyszíni erőforrásokat intelligens alkalmazásokba. 
+[A csapatadat-elemzési folyamatot végrehajtó forgatókönyvek](walkthroughs.md) azokat a forgatókönyveket sorolja fel, amelyek bemutatják az összes folyamatlépést. A csatolt forgatókönyvek bemutatják, hogyan kezelheti a felhőbeli és a helyszíni erőforrásokat intelligens alkalmazásokká. 

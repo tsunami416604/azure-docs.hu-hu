@@ -9,23 +9,23 @@ ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: c8bf7f3a423b97f6cd84f0b575d00d60776c598c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75911930"
 ---
-Az Azure IoT Hub használatának megkezdéséhez és az összes kiterjesztett IoT-forgatókönyv megismeréséhez tekintse meg a következőket:
+Az Azure IoT Hub kalkulálásának és az összes kiterjesztett IoT-forgatókönyv nek a további megismeréséhez tekintse meg az alábbi témaköröket:
 
-- [Felhőalapú eszközök üzenetkezelésének kezelése az Azure IoT Hub bővítménnyel a Visual Studio Code-hoz](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+- [Felhőalapú eszközök üzenetkezelési kezelése az Azure IoT Hub-bővítményrel a Visual Studio-kódhoz](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
-- [Eszközök kezelése az Azure IoT Hub bővítménnyel a Visual Studio Code-hoz](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
+- [Eszközök kezelése az Azure IoT Hub-bővítménysel a Visual Studio-kódhoz](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
 
-- [Üzenet-útválasztás beállítása](../articles/iot-hub/tutorial-routing.md)
+- [Üzenetek útválasztásának beállítása](../articles/iot-hub/tutorial-routing.md)
 
 - [Az IoT Hub valós idejű érzékelői adatainak megjelenítése a Power BI használatával](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 
-- [Webalkalmazás használata az IoT hub valós idejű érzékelői adatainak megjelenítéséhez](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
+- [Webalkalmazás használata valós idejű érzékelőadatok megjelenítéséhez az IoT hubról](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
 
 - [Időjárás-előrejelzés az IoT Hub érzékelői adataival az Azure Machine Learningben](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
 

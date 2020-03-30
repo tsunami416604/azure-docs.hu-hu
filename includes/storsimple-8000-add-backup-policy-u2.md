@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179309"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>StorSimple biztonsági mentési házirend hozzáadása
@@ -23,7 +23,7 @@ ms.locfileid: "67179309"
    
    1. Az **Eszköz kiválasztása** mezőt a rendszer automatikusan kitölti a kiválasztott eszköz alapján.
    
-   2. Adjon egy 3–150 karakter hosszúságú nevet a biztonsági mentési **szabályzat neveként**. A szabályzat nem nevezhető át a létrehozása után.
+   2. Adjon meg egy 3 és 150 karakter közötti biztonsági **másolat nevét.** A szabályzat nem nevezhető át a létrehozása után.
        
    3. Ha köteteket szeretne hozzárendelni ehhez a biztonsági mentési szabályzathoz, válassza a **Kötetek hozzáadása** lehetőséget, majd a kötetek táblázatos listájában a jelölőnégyzet(ek)re kattintva rendeljen hozzá egy vagy több kötetet a biztonsági mentési szabályzathoz.
 
@@ -35,7 +35,7 @@ ms.locfileid: "67179309"
 
        1. A **Pillanatkép típusa** területen válassza a **Felhő** vagy a **Helyi** lehetőséget.
 
-       2. Határozza meg a biztonsági mentések gyakoriságát (adjon meg egy számot, majd válassza a **Nap** vagy **Hét** lehetőséget a legördülő listából).
+       2. Adja meg a biztonsági mentések gyakoriságát (adjon meg egy számot, majd válassza a **Legördülő** lista Napok vagy **Hetek** elemét.
 
        3. Adja meg a megőrzés ütemezését.
 

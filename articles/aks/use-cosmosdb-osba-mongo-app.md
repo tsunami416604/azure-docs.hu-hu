@@ -1,52 +1,52 @@
 ---
-title: Meglévő MongoDB-alkalmazás integrálása Azure Cosmos DB API-val a MongoDB és a nyílt Service Broker for Azure (OSBA) használatával
-description: Ebből a cikkből megtudhatja, hogyan integrálhat egy meglévő Java-és MongoDB-alkalmazást a MongoDB Azure Cosmos DB API-val az Azure-hoz készült nyílt Service Broker használatával (OSBA).
+title: Meglévő MongoDB-alkalmazás integrálása az Azure Cosmos DB API-val a MongoDB-hoz és az Open Service Broker for Azure (OSBA) szolgáltatáshoz
+description: Ebben a cikkben megtudhatja, hogyan integrálhat egy meglévő Java és MongoDB alkalmazást az Azure Cosmos DB API-val a MongoDB-hoz az Open Service Broker for Azure (OSBA) használatával.
 author: zr-msft
 ms.service: azure-dev-spaces
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
-keywords: Cosmos DB, nyílt Service Broker, nyílt Service Broker az Azure-hoz
+keywords: Cosmos DB, Open Service Broker, Open Service Broker for Azure
 ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247919"
 ---
-# <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Meglévő MongoDB-alkalmazás integrálása Azure Cosmos DB API-val a MongoDB és a nyílt Service Broker for Azure (OSBA) használatával
+# <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Meglévő MongoDB-alkalmazás integrálása az Azure Cosmos DB API-val a MongoDB-hoz és az Open Service Broker for Azure (OSBA) szolgáltatáshoz
 
-Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás. Emellett több NoSQL API-t is biztosít, többek között a MongoDB. A MongoDB-hez készült Cosmos DB API lehetővé teszi a meglévő MongoDB-alkalmazással való Cosmos DB használatát anélkül, hogy módosítani kellene az alkalmazás adatbázis-illesztőprogramjait vagy megvalósítását. Cosmos DB szolgáltatást az Azure Open Service Broker használatával is kiépítheti.
+Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás. Azt is előírja, vezetékes protokoll kompatibilitás több NoSQL API-k, beleértve a MongoDB. A Cosmos DB API mongoDB lehetővé teszi, hogy a Cosmos DB a meglévő MongoDB alkalmazás anélkül, hogy az alkalmazás adatbázis-illesztőprogramok vagy megvalósítása módosítása nélkül. Cosmos DB-szolgáltatást is üzembe helyezhet az Open Service Broker for Azure használatával.
 
-Ebben a cikkben egy meglévő Java-alkalmazást fog használni, amely egy MongoDB-adatbázist használ, és frissíti azt egy Cosmos DB-adatbázis használatára az Azure nyílt Service Broker használatával.
+Ebben a cikkben egy meglévő Java-alkalmazást, amely egy MongoDB-adatbázist használ, és frissíti azt egy Cosmos DB-adatbázis használatával az Open Service Broker for Azure használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folytatáshoz a következőket kell tennie:
+A folytatás előtt a következőket kell tennie:
     
-* Hozzon létre egy [Azure Kubernetes Service-fürtöt](kubernetes-walkthrough.md) .
-* [Nyissa meg a Service Broker az Azure-ban telepítve és konfigurálva az AK-fürtön](integrate-azure.md). 
-* Telepítse és konfigurálja `svcat` parancsok futtatására szolgáló [parancssori](https://svc-cat.io/docs/install/) felületet.
-* Meglévő [MongoDB](https://www.mongodb.com/) -adatbázissal rendelkezik. Előfordulhat például, hogy a MongoDB fut a [fejlesztői gépen](https://docs.mongodb.com/manual/administration/install-community/) vagy egy Azure-beli [virtuális](../virtual-machines/linux/install-mongodb.md)gépen.
-* A MongoDB-adatbázis, például a [Mongo-rendszerhéj](https://docs.mongodb.com/manual/mongo/)összekapcsolásának és lekérdezésének módja.
+* Egy [Azure Kubernetes-szolgáltatás fürtjének](kubernetes-walkthrough.md) létrehozása.
+* Telepítette [és konfigurálta az Open Service Broker for Azure szolgáltatást az AKS-fürtön.](integrate-azure.md) 
+* A [service catalog CLI](https://svc-cat.io/docs/install/) telepítése `svcat` és konfigurálása a parancsok futtatásához.
+* Van egy meglévő [MongoDB](https://www.mongodb.com/) adatbázis. Például előfordulhat, hogy a MongoDB a [fejlesztői gépen](https://docs.mongodb.com/manual/administration/install-community/) vagy egy [Azure-beli virtuális gépen](../virtual-machines/linux/install-mongodb.md)fut.
+* A MongoDB adatbázishoz, például a [mongo shellhez](https://docs.mongodb.com/manual/mongo/)való csatlakozás és lekérdezés módja.
 
 ## <a name="get-application-code"></a>Az alkalmazáskód letöltése
     
-Ebben a cikkben a [Spring Music Sample alkalmazásból Cloud Foundry](https://github.com/cloudfoundry-samples/spring-music) egy MongoDB-adatbázist használó alkalmazást mutat be.
+Ebben a cikkben a [Cloud Foundry tavaszi zenei mintaalkalmazásával](https://github.com/cloudfoundry-samples/spring-music) mutathatja be a MongoDB-adatbázist használó alkalmazást.
     
-Az alkalmazás klónozása a GitHubról, majd a címtárba való navigálása:
+Klónozza az alkalmazást a GitHubról, és navigáljon a könyvtárába:
     
 ```cmd
 git clone https://github.com/cloudfoundry-samples/spring-music
 cd spring-music
 ```
 
-## <a name="prepare-the-application-to-use-your-mongodb-database"></a>Az alkalmazás előkészítése a MongoDB-adatbázis használatára
+## <a name="prepare-the-application-to-use-your-mongodb-database"></a>Az alkalmazás előkészítése a MongoDB adatbázis használatára
 
-A Spring Music minta alkalmazás számos lehetőséget kínál az adatforrásokhoz. Ebben a cikkben egy meglévő MongoDB-adatbázis használatára konfigurálja. 
+A tavaszi zenei minta alkalmazás számos lehetőséget kínál az adatforrások számára. Ebben a cikkben úgy konfigurálhatja, hogy egy meglévő MongoDB-adatbázist használjon. 
 
-Adja hozzá a következő YAML a *src/Main/Resources/Application. YML*végéhez. Ez a Hozzáadás létrehoz egy *mongodb* nevű profilt, és BEÁLLÍTJA az URI és az adatbázis nevét. Cserélje le az URI-t a meglévő MongoDB-adatbázishoz tartozó kapcsolódási adatokra. A felhasználónevet és jelszót tartalmazó URI-azonosító hozzáadásával közvetlenül ehhez a fájlhoz **csak fejlesztési célú használatra van használatban** , és **soha nem adható hozzá a Version Control**szolgáltatáshoz.
+Adja hozzá a YAML követően a végén *src/main/resources/application.yml*. Ez a kiegészítés létrehoz egy *mongodb* nevű profilt, és konfigurálja az URI-t és az adatbázis nevét. Cserélje le az URI-t a meglévő MongoDB-adatbázishoz való kapcsolódási adatokkal. A felhasználónevet és jelszót tartalmazó URI hozzáadása közvetlenül ehhez a fájlhoz **csak fejlesztési célokra szolgál,** és **soha nem szabad hozzáadni a verziókövetéshez.**
 
 ```yaml
 ---
@@ -60,7 +60,7 @@ spring:
 
 
 
-Amikor elindítja az alkalmazást, és azt mondja el, hogy használja a *mongodb* -profilt, a mongodb-adatbázishoz csatlakozik, és az alkalmazás adatai tárolására használja.
+Amikor elindítja az alkalmazást, és azt mondja, hogy használja a *mongodb* profilt, csatlakozik a MongoDB adatbázishoz, és használja az alkalmazás adatainak tárolására.
 
 Az alkalmazás létrehozása:
 
@@ -73,19 +73,19 @@ BUILD SUCCESSFUL in 10s
 4 actionable tasks: 4 executed
 ```
 
-Indítsa el az alkalmazást, és mondja el, hogy használja a *mongodb* -profilt:
+Indítsa el az alkalmazást, és mondja meg neki, hogy használja a *mongodb* profilt:
 
 ```cmd
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Navigáljon `http://localhost:8080` a böngészőben.
+Keresse `http://localhost:8080` meg a böngészőben.
 
-![Spring Music-alkalmazás alapértelmezett adattal](media/music-app.png)
+![Spring Music alkalmazás alapértelmezett adatokkal](media/music-app.png)
 
-Figyelje meg, hogy az alkalmazás néhány [alapértelmezett adattal](https://github.com/cloudfoundry-samples/spring-music/blob/master/src/main/resources/albums.json)lett feltöltve. Egy pár meglévő album törlésével és néhány új létrehozásával dolgozhat a szolgáltatással.
+Figyelje meg, hogy az alkalmazás néhány [alapértelmezett adatot](https://github.com/cloudfoundry-samples/spring-music/blob/master/src/main/resources/albums.json)töltött fel. Lépjen kapcsolatba vele néhány meglévő album törlésével és néhány új album létrehozásával.
 
-Az alkalmazás a MongoDB-adatbázis használatával ellenőrizhető, hogy csatlakozik hozzá, és lekérdezi a *musicdb* -adatbázist:
+Ellenőrizheti, hogy az alkalmazás a MongoDB-adatbázist használja-e, ha csatlakozik hozzá, és lekérdezi a *musicdb* adatbázist:
 
 ```cmd
 mongo serverAddress:port/musicdb -u user -p password
@@ -98,12 +98,12 @@ db.album.find()
 ...
 ```
 
-Az előző példa a [Mongo-rendszerhéj](https://docs.mongodb.com/manual/mongo/) használatával csatlakozik a MongoDB-adatbázishoz, és lekérdezi azt. Azt is ellenőrizheti, hogy a módosítások megmaradnak-e az alkalmazás leállításával, újraindításával és a böngészőben való újbóli navigálással. Figyelje meg, hogy az elvégzett módosítások még mindig vannak.
+Az előző példa a [mongo rendszerhéj](https://docs.mongodb.com/manual/mongo/) segítségével csatlakozik a MongoDB adatbázishoz, és lekérdezi azt. Ellenőrizheti azt is, hogy a módosítások megmaradnak-e az alkalmazás leállításával, újraindításával és a böngészőben való visszanavigálással. Figyelje meg, hogy a módosítások még mindig ott vannak.
 
 
 ## <a name="create-a-cosmos-db-database"></a>Cosmos DB-adatbázis létrehozása
 
-Ha Cosmos DB adatbázist szeretne létrehozni az Azure-ban az Open Service Broker használatával, használja a `svcat provision` parancsot:
+Ha Cosmos DB-adatbázist szeretne létrehozni az `svcat provision` Azure-ban az Open Service Broker használatával, használja a következő parancsot:
 
 ```cmd
 svcat provision musicdb --class azure-cosmosdb-mongo-account --plan account  --params-json '{
@@ -115,9 +115,9 @@ svcat provision musicdb --class azure-cosmosdb-mongo-account --plan account  --p
 }'
 ```
 
-Az előző parancs egy Cosmos DB adatbázist helyez üzembe az Azure-ban a *eastus* régióban található erőforráscsoport- *MyResourceGroup* . A *resourceGroup*, a *hely*és az egyéb Azure-specifikus JSON-paraméterekkel kapcsolatos további információk a [Cosmos db modul dokumentációjában](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3)találhatók.
+Az előző parancs egy Cosmos DB-adatbázist foglal az Azure-ban az *eastus* régióban a *MyResourceGroup* erőforráscsoportban. Az *erőforráscsoportról*, *a helyről*és más Azure-specifikus JSON-paraméterekről a [Cosmos DB modul referenciadokumentációjában](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3)talál további információt.
 
-Annak ellenőrzéséhez, hogy az adatbázis befejeződött-e, használja a `svcat get instance` parancsot:
+Az adatbázis kiépítési befejezésének ellenőrzéséhez használja a `svcat get instance` következő parancsot:
 
 ```cmd
 $ svcat get instance musicdb
@@ -127,9 +127,9 @@ $ svcat get instance musicdb
   musicdb   default     azure-cosmosdb-mongo-account   account   Ready
 ```
 
-Az adatbázis készen áll, amikor a *kész* *állapotot*látja.
+Az adatbázis készen áll, amikor a *Készenlét* az *ÁLLAPOT*csoportban látható.
 
-Miután az adatbázis üzembe helyezése befejeződött, a metaadatokat egy [Kubernetes-titokhoz](https://kubernetes.io/docs/concepts/configuration/secret/)kell kötni. Más alkalmazások ezután hozzáférhetnek az adott adathoz, miután egy titkos kulcshoz kötötték. Ha egy titkos kulcshoz szeretné kötni az adatbázis metaadatait, használja a `svcat bind` parancsot:
+Miután az adatbázis kiépített, a metaadatokat egy [Kubernetes-titokhoz kell kötnie.](https://kubernetes.io/docs/concepts/configuration/secret/) Ezután más alkalmazások is hozzáférhetnek ezekhez az adatokhoz, miután titkos adathoz kötötték őket. Ha az adatbázis metaadatait titkos fájlhoz `svcat bind` szeretné kötni, használja a következő parancsot:
 
 ```cmd
 $ svcat bind musicdb
@@ -145,9 +145,9 @@ Parameters:
 ```
 
 
-## <a name="use-the-cosmos-db-database-with-your-application"></a>Az Cosmos DB adatbázis használata az alkalmazással
+## <a name="use-the-cosmos-db-database-with-your-application"></a>A Cosmos DB adatbázis használata az alkalmazással
 
-Ha az Cosmos DB adatbázist szeretné használni az alkalmazással, ismernie kell az URI-t, hogy csatlakozhasson hozzá. Ezen információk beszerzéséhez használja a `kubectl get secret` parancsot:
+A Cosmos DB-adatbázis használata az alkalmazással, ismernie kell az URI-hoz csatlakozni. Az információ leéséhez `kubectl get secret` használja a következő parancsot:
 
 ```cmd
 $ kubectl get secret musicdb -o=jsonpath='{.data.uri}' | base64 --decode
@@ -155,9 +155,9 @@ $ kubectl get secret musicdb -o=jsonpath='{.data.uri}' | base64 --decode
 mongodb://12345678-90ab-cdef-1234-567890abcdef:aaaabbbbccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvv@098765432-aaaa-bbbb-cccc-1234567890ab.documents.azure.com:10255/?ssl=true&replicaSet=globaldb
 ```
 
-Az előző parancs lekéri a titkos *musicdb* , és csak az URI-t jeleníti meg. A titkok Base64 formátumban vannak tárolva, így az előző parancs is dekódolja.
+Az előző parancs leveszi a musicdb titkos *kulcsot,* és csak az URI-t jeleníti meg. A titkos kulcsok base64 formátumban vannak tárolva, így az előző parancs is dekódolja azt.
 
-Használja az Cosmos DB adatbázis URI-JÁT, az *src/Main/Resources/Application. YML* frissítést a használatára:
+A Cosmos DB adatbázis URI-jának használatával frissítse *az src/main/resources/application.yml* fájlt a használatához:
 
 ```yaml
 ...
@@ -170,9 +170,9 @@ spring:
       database: musicdb
 ```
 
-Ha a felhasználónevet és jelszót tartalmazó URI-t frissíti, közvetlenül ehhez a fájlhoz **csak fejlesztési célú használatra van felhasználva** , és **soha nem adható hozzá a Version Control**szolgáltatáshoz.
+A felhasználónevet és jelszót tartalmazó URI frissítése közvetlenül ehhez a fájlhoz **csak fejlesztési célokra szolgál,** és **soha nem szabad hozzáadni a verziókövetéshez.**
 
-Építse újra az alkalmazást, és kezdje el használni az Cosmos DB-adatbázis használatát:
+Építse újra és indítsa el az alkalmazást a Cosmos DB-adatbázis használatának megkezdéséhez:
 
 ```cmd
 ./gradlew clean assemble
@@ -180,31 +180,31 @@ Ha a felhasználónevet és jelszót tartalmazó URI-t frissíti, közvetlenül 
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Figyelje meg, hogy az alkalmazás továbbra is a *mongodb* -profilt és egy olyan URI-t használ, amely a Cosmos db-adatbázishoz való kapcsolódáshoz a *mongodb://* - A [MongoDB Azure Cosmos db API](../cosmos-db/mongodb-introduction.md) biztosítja ezt a kompatibilitást. Lehetővé teszi, hogy az alkalmazás továbbra is működőképes legyen, mintha MongoDB-adatbázist használ, de valójában Cosmos DBt használ.
+Figyelje meg, hogy az alkalmazás továbbra is a *mongodb-profilt* és egy URI-t használ, amely *mongodb://* kezdődik a Cosmos DB-adatbázishoz való csatlakozáshoz. Az [Azure Cosmos DB API a MongoDB](../cosmos-db/mongodb-introduction.md) biztosítja ezt a kompatibilitást. Lehetővé teszi, hogy az alkalmazás továbbra is úgy működjön, mintha egy MongoDB adatbázist használna, de valójában cosmos DB-t használ.
 
-Navigáljon `http://localhost:8080` a böngészőben. Figyelje meg, hogy az alapértelmezett értékek vissza lettek állítva. Egy pár meglévő album törlésével és néhány új létrehozásával dolgozhat a szolgáltatással. Ellenőrizheti, hogy a módosítások megmaradnak-e az alkalmazás leállításával, újraindításával és a böngészőben való visszalépéssel. Figyelje meg, hogy az elvégzett módosítások még mindig vannak. A változtatások megmaradnak az Azure nyílt Service Broker használatával létrehozott Cosmos DB.
+Keresse `http://localhost:8080` meg a böngészőben. Figyelje meg, hogy az alapértelmezett adatok visszalettek állítva. Lépjen kapcsolatba vele néhány meglévő album törlésével és néhány új album létrehozásával. Ellenőrizheti, hogy a módosítások megmaradnak-e az alkalmazás leállításával, újraindításával és a böngészőben való visszanavigálással. Figyelje meg, hogy a módosítások még mindig ott vannak. A módosítások megmaradnak a Cosmos DB az Azure-hoz nyílt szolgáltatásközvetítő használatával létrehozott.
 
 
-## <a name="run-your-application-on-your-aks-cluster"></a>Az alkalmazás futtatása az AK-fürtön
+## <a name="run-your-application-on-your-aks-cluster"></a>Az alkalmazás futtatása Az AKS-fürtön
 
-Az [Azure dev Spaces](../dev-spaces/azure-dev-spaces.md) használatával üzembe helyezheti az alkalmazást az AK-fürtön. Az Azure dev Spaces lehetővé teszi összetevők, például Dockerfiles és Helm diagramok létrehozását, valamint alkalmazás üzembe helyezését és futtatását az AK-ban.
+[Az Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) segítségével telepítheti az alkalmazást az AKS-fürtre. Az Azure Dev Spaces segítségével összetevőket hozhat létre, például a Docker-fájlok és a Helm-diagramokat, és üzembe helyezhet és futtathat egy alkalmazást az AKS-ben.
 
-Az Azure dev-helyek engedélyezése az AK-fürtben:
+Az Azure dev spaces engedélyezése az AKS-fürtben:
 
 ```azurecli
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
 
-Az Azure dev Spaces Tool használatával készítse elő az alkalmazást az AK-ban való futtatásra:
+Az Azure Dev Spaces eszközhasználatával előkészítheti az alkalmazást az AKS-ben való futtatásra:
 
 ```cmd
 azds prep --public
 ```
 
-Ez a parancs számos összetevőt generál, például egy *diagramot/* mappát, amely a Helm diagram, a projekt gyökerében. Ez a parancs nem tud *Docker* létrehozni ehhez az adott projekthez, ezért létre kell hoznia azt.
+Ez a parancs számos műtárgyat hoz létre, beleértve a *diagramokat / mappát,* amely a Helm-diagram, a projekt gyökere. Ez a parancs nem tud *Docker-fájlt* létrehozni ehhez a projekthez, ezért létre kell hoznia.
 
-Hozzon létre egy fájlt a *Docker* nevű projekt gyökerében a következő tartalommal:
+Hozzon létre egy *dockerfile* nevű fájlt a projekt gyökerében ezzel a tartalommal:
 
 ```dockerfile
 FROM openjdk:8-jdk-alpine
@@ -214,7 +214,7 @@ COPY build/libs/spring-music-1.0.jar .
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=mongodb","-jar","/app/spring-music-1.0.jar"]
 ```
 
-Emellett frissítenie kell a *konfigurációkat. fejlessze. Build* tulajdonságot a *azds. YAML* *hamis*értékre:
+Ezenkívül frissítenie kell a *configurations.develop.build tulajdonságot* az *azds.yaml-ben* *hamis*:
 ```yaml
 ...
 configurations:
@@ -223,7 +223,7 @@ configurations:
       useGitIgnore: false
 ```
 
-Emellett frissítenie kell a *containerPort* attribútumot *8080* -re a *diagramok/Spring-Music/sablonok/üzembe helyezés. YAML*:
+Azt is meg kell frissíteni a *containerPort* attribútum *8080* *a térképek / tavaszi zene / sablonok / deployment.yaml*:
 
 ```yaml
 ...
@@ -242,7 +242,7 @@ spec:
               protocol: TCP
 ```
 
-Az alkalmazás üzembe helyezése az AK-ban:
+Az alkalmazás aKS-re való üzembe helyezése:
 
 ```cmd
 $ azds up
@@ -265,15 +265,15 @@ press Ctrl+C to detach
 ...
 ```
 
-Navigáljon a naplókban megjelenő URL-címhez. Az előző példában a *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/t* kellene használnia. 
+Keresse meg a naplókban megjelenő URL-címet. Az előző példában a *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* használatát kell használnia. 
 
-Ellenőrizze, hogy megjelenik-e az alkalmazás a módosítások mellett.
+Ellenőrizze, hogy látja-e az alkalmazást a módosításokkal együtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk azt ismerteti, hogyan lehet frissíteni egy meglévő alkalmazást a MongoDB használatával a MongoDB Cosmos DB API-ját használva. Ez a cikk azt is ismerteti, hogyan lehet Cosmos DB szolgáltatást kiépíteni az Azure-hoz készült nyílt Service Broker használatával, és hogy az alkalmazás üzembe helyezése az AK-ban az Azure dev Spaces
+Ez a cikk ismerteti, hogyan frissítheti a meglévő alkalmazások at mongoDB a Cosmos DB API a MongoDB használatával. Ez a cikk azt is ismerteti, hogyan lehet egy Cosmos DB szolgáltatás kiépítése az Open Service Broker for Azure használatával, és az alkalmazás üzembe helyezése az AKS-be az Azure Dev Spaces használatával.
 
-További információ a Cosmos DBről, az Azure-beli Open Service Broker és az Azure dev Spaces szolgáltatásról:
+A Cosmos DB,open service broker for Azure és az Azure Dev Spaces szolgáltatásról a következő témakörökben talál további információt:
 * [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)
-* [Azure-Service Broker megnyitása](https://osba.sh)
-* [Fejlesztés a fejlesztői Spaces-szel](../dev-spaces/azure-dev-spaces.md)
+* [Open Service Broker for Azure](https://osba.sh)
+* [Fejlesztés a Dev Spaces használatával](../dev-spaces/azure-dev-spaces.md)

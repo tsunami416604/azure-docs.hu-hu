@@ -1,7 +1,7 @@
 ---
-title: Exchange-társ létrehozása vagy módosítása a portál használatával
+title: Exchange-társviszony létesítése vagy módosítása a portál használatával
 titleSuffix: Azure
-description: Exchange-társ létrehozása vagy módosítása a portál használatával
+description: Exchange-társviszony létesítése vagy módosítása a portál használatával
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,51 +9,51 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2c186decf68d167ab2c5ab7696c2dfb51d77a071
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774574"
 ---
-# <a name="create-or-modify-an-exchange-peering-using-the-portal"></a>Exchange-társ létrehozása vagy módosítása a portál használatával
+# <a name="create-or-modify-an-exchange-peering-using-the-portal"></a>Exchange-társviszony létesítése vagy módosítása a portál használatával
 
-Ez a cikk azt ismerteti, hogyan hozható létre Microsoft Exchange-társ a portál használatával. Ez a cikk azt is bemutatja, hogyan ellenőrizhető az erőforrás állapota, hogyan frissíthető vagy törölhető és kiépíthető.
+Ez a cikk azt ismerteti, hogy miként hozhat létre Microsoft Exchange társviszony-létesítést a portál használatával. Ez a cikk azt is bemutatja, hogyan ellenőrizheti az erőforrás állapotát, frissítheti, illetve törölheti és megszüntetheti azt.
 
-Ha szeretné, a [PowerShell](howto-exchange-powershell.md)használatával is elvégezheti ezt az útmutatót.
+Ha szeretné, ezt az útmutatót a PowerShell használatával is [elvégezheti.](howto-exchange-powershell.md)
 
-## <a name="before-you-begin"></a>Előzetes teendők
-* A konfigurálás megkezdése előtt tekintse át az [Előfeltételek](prerequisites.md) és az [Exchange](walkthrough-exchange-all.md) -társítás áttekintése című témakört.
-* Ha már rendelkezik Exchange-partnerekkel a Microsofttal, amelyek nem az Azure-erőforrásokra vannak átalakítva, tekintse át az [örökölt Exchange-társítás átalakítása az Azure-erőforrásra a portál használatával](howto-legacy-exchange-portal.md) című témakört.
+## <a name="before-you-begin"></a>Előkészületek
+* A konfiguráció megkezdése előtt tekintse át [az Előfeltételek](prerequisites.md) és [az Exchange-társviszony-létesítési forgatókönyvet.](walkthrough-exchange-all.md)
+* Abban az esetben, ha már rendelkezik Exchange-társviszony-létesítéssel a Microsofttal, amely nem konvertálódik Azure-erőforrásokká, olvassa el [az Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá a portál használatával című részt.](howto-legacy-exchange-portal.md)
 
-## <a name="create-and-provision-an-exchange-peering"></a>Exchange-társ létrehozása és kiépítése
+## <a name="create-and-provision-an-exchange-peering"></a>Exchange-társviszony-létesítés létrehozása és kiépítése
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>Jelentkezzen be a portálra, és válassza ki az előfizetését
+### <a name="sign-in-to-portal-and-select-your-subscription"></a>Jelentkezzen be a portálra, és válassza ki az előfizetést
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name=create></a>Exchange-társ létrehozása
+### <a name="create-an-exchange-peering"></a><a name=create></a>Exchange-társviszony-létesítés létrehozása
 
-Hozzon létre egy új társ-létrehozási kérést a **társ** -erőforrás használatával.
+Új társviszony-létesítési kérelmet **társviszony-létesítési** erőforrás használatával hozhat létre.
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>Erőforrás elindítása és alapszintű beállítások konfigurálása
+#### <a name="launch-resource-and-configure-basic-settings"></a>Erőforrás indítása és az alapvető beállítások konfigurálása
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
 #### <a name="configure-connections-and-submit"></a>Kapcsolatok konfigurálása és küldés
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration.md)]
 
-### <a name=get></a>Exchange-társak ellenőrzése
+### <a name="verify-an-exchange-peering"></a><a name=get></a>Exchange-társviszony-létesítés ellenőrzése
 [!INCLUDE [peering-exchange-get-portal](./includes/exchange-portal-get.md)]
 
-## <a name="modify"></a>Exchange-társak módosítása
+## <a name="modify-an-exchange-peering"></a><a name="modify"></a>Exchange-társviszony-létesítés módosítása
 [!INCLUDE [peering-exchange-modify-portal](./includes/exchange-portal-modify.md)]
 
-## <a name="delete"></a>Exchange-társ kiépítése
+## <a name="deprovision-an-exchange-peering"></a><a name="delete"></a>Exchange-társviszony-létesítés megszüntetése
 [!INCLUDE [peering-exchange-delete-portal](./includes/delete.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Közvetlen társ létrehozása vagy módosítása a portál használatával](howto-direct-portal.md)
-* [Örökölt közvetlen társítás átalakítása Azure-erőforrásra a portál használatával](howto-legacy-direct-portal.md)
+* [Közvetlen társviszony létesítése vagy módosítása a portál használatával](howto-direct-portal.md)
+* [Örökölt közvetlen társviszony konvertálása Azure-erőforrássá a portál használatával](howto-legacy-direct-portal.md)
 
 ## <a name="additional-resources"></a>További források
 
-További információért látogasson el az internetes kereséssel kapcsolatos [Gyakori kérdések](faqs.md) oldalra.
+További információkért látogasson el [az internetes társviszony-létesítési GYIK-be](faqs.md)

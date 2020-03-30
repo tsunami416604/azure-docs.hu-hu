@@ -5,36 +5,39 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/10/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ac80262a39e410e1967cc964d04fa9b7d4879a4
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 757367e2b9773908b81ad35615a23b1b5c67aa3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312102"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80116942"
 ---
-### <a name="azure-regions-within-a-geopolitical-region"></a>Geopolitikai régión belüli Azure-régiók
+### <a name="azure-regions-within-a-geopolitical-region"></a>Az Azure régiói egy geopolitikai régióban
 
-A helyek közötti alapú VPN-kapcsolat és a virtuális WAN-architektúra a következő régiókban érhető el:
+A helyek közötti VPN-kapcsolat és a virtuális WAN-architektúra a következő régiókban érhető el:
 
 |Geopolitikai régió | Azure-régiók|
 |---|---|
+| Ausztrália kormányzati | Ausztrália középső régiója, Ausztrália 2. középső régiója |
+| Európa | Franciaország közép, Franciaország Dél, Németország Észak, Németország Nyugat-Közép, Észak-Európa, Norvégia Kelet, Svájc Észak, Svájc Nyugat, Nyugat-Európa, UK Nyugat, Egyesült Királyság Déli |
 | Észak-Amerika | USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |
-|Dél-Amerika |Dél-Brazília |
-| Európa | Közép-Franciaország, Dél-Franciaország, Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati régiója, az Egyesült Királyság déli régiója |
 | Ázsia | Kelet-Ázsia, Délkelet-Ázsia |
-| Japán  | Nyugat-Japán, Kelet-Japán |
-| Ausztrália | Délkelet-Ausztrália, Kelet-Ausztrália |
-| Ausztrália kormánya | Ausztrália középső régiója, Ausztrália 2. középső régiója |
 | India | Nyugat-India, Közép-India, Dél-India |
+| Japán  | Nyugat-Japán, Kelet-Japán |
+| Óceánia | Délkelet-Ausztrália, Kelet-Ausztrália |
+| Dél-afrikai Köztársaság | Dél-Afrika Észak, Dél-Afrika Nyugat |
+| Dél-Amerika |Dél-Brazília |
 | Dél-Korea | Dél-Korea középső régiója, Korea déli régiója |
-| Dél-afrikai Köztársaság | Dél-Afrika északi régiója, Dél-Afrika nyugati régiója |
+| EAE | Egyesült Arab Emírségek északi, Egyesült Arab Emírségek középső |
 
-### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Az Azure-régiók és az országos felhők geopolitikai határai
 
-A helyek közötti alapú VPN-kapcsolat és a virtuális WAN-architektúra a következő régiókban érhető el:
+
+### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Az Azure régiói és geopolitikai határai a nemzeti felhőkszámára
+
+A helyek közötti VPN-kapcsolat és a virtuális WAN-architektúra a következő régiókban érhető el:
 
 |Geopolitikai régió | Azure-régiók|
 |---|---|

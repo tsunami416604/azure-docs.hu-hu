@@ -9,13 +9,13 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178999"
 ---
-Ha a Resource Manager üzemi modellel dolgozik, módosíthatja az új átjáró SKU-k. Amikor a régi átjárók Termékváltozatainak módosítja az új Termékváltozatra, törölje a meglévő VPN-átjárót, és hozzon létre egy új VPN-átjárót.
+Ha az Erőforrás-kezelő központi telepítési modelljével dolgozik, átválthat az új átjáró-ska-kra. Ha örökölt átjáró termékváltozatról új termékváltozatra vált, törli a meglévő VPN-átjárót, és új VPN-átjárót hoz létre.
 
 Munkafolyamat:
 
@@ -29,7 +29,7 @@ Munkafolyamat:
 
 Szempontok:
 
-* Szeretné áthelyezni az új termékváltozatokra, a Resource Manager-alapú üzemi modellben a VPN-átjárót kell lennie.
-* Ha a klasszikus VPN-átjáró, továbbra is kell a régebbi örökölt termékváltozatok használata az adott átjáróra vonatkozó, átméretezheti, azonban az örökölt termékváltozatok között. Nem módosítható az új termékváltozatokra.
-* Kapcsolat állásidő lesz, amikor az új Termékváltozatra módosítja egy örökölt Termékváltozat.
-* Amikor új átjárók Termékváltozatainak módosítása, a VPN-átjáró nyilvános IP-cím változik. Ez akkor történik, még akkor is, ha az azonos nyilvános IP-címobjektumot, amelyet korábban használt adja meg.
+* Az új termékkiterjesztési környezetbe való áthelyezéshez a VPN-átjárónak az Erőforrás-kezelő telepítési modelljében kell lennie.
+* Ha klasszikus VPN-átjáróval rendelkezik, továbbra is a régebbi örökölt termékkészleteket kell használnia az adott átjáróhoz, azonban átméretezheti az örökölt termékalkalmazások között. Az új sk-k nem módosíthatók.
+* Lesz kapcsolat állásidő, amikor átvált egy örökölt termékváltozat egy új termékváltozat.
+* Amikor új átjáró termékváltozatra vált, a VPN-átjáró nyilvános IP-címe megváltozik. Ez akkor is megtörténik, ha ugyanazt a nyilvános IP-címobjektumot adja meg, amelyet korábban használt.

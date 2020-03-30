@@ -1,6 +1,6 @@
 ---
-title: IoT megoldás-gyorsítók – GYIK – Azure | Microsoft Docs
-description: Ez a cikk a IoT-megoldási gyorssegédekkel kapcsolatos gyakori kérdésekre ad választ. Ide tartoznak a GitHub-adattárakra mutató hivatkozások.
+title: IoT-megoldásgyorsítók – gyakori kérdések – Azure | Microsoft dokumentumok
+description: Ez a cikk választ ad az IoT-megoldásgyorsítókkal kapcsolatos gyakori kérdésekre. Ez magában foglalja a GitHub-adattárakra mutató hivatkozásokat.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,105 +9,105 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647713"
 ---
-# <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakori kérdések a IoT-megoldási gyorssegédekről
+# <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakran ismételt kérdések az IoT-megoldásgyorsítókról
 
-Lásd még: a [csatlakoztatott gyárra vonatkozó gyakori kérdések](iot-accelerators-faq-cf.md) és a [távoli FIGYELÉSRE vonatkozó gyakori kérdések](iot-accelerators-faq-rm-v2.md) .
+Lásd még: [A csatlakoztatott gyárspecifikus gyakori kérdések](iot-accelerators-faq-cf.md) és a távoli [figyelés-specifikus gyIK.](iot-accelerators-faq-rm-v2.md)
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Hol találom a megoldásgyorsító forráskódját?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Hol találom a megoldásgyorsítók forráskódját?
 
-A forráskód a következő GitHub-adattárakban tárolódik:
+A forráskód a következő GitHub-tárolókban tárolódik:
 
-* [Távoli figyelési megoldás gyorsítása (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Távoli figyelési megoldás gyorsítása (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Prediktív karbantartási megoldás gyorsítása](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [Csatlakoztatott gyári megoldás gyorsítása](https://github.com/Azure/azure-iot-connected-factory)
+* [Távfigyelési megoldásgyorsító (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Távfigyelési megoldásgyorsító (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Prediktív karbantartási megoldásgyorsító](https://github.com/Azure/azure-iot-predictive-maintenance)
+* [Csatlakoztatott gyári megoldásgyorsító](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Mely SDK-kat használhatom megoldásgyorsítókhoz való eszközkliensek fejlesztésére?
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Milyen SDK-k segítségével fejleszthetem ki az eszközügyfeleket a megoldásgyorsítókhoz?
 
-A [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub-adattárakban a különböző nyelvekre (C, .net, Java, Node. js, Python) mutató hivatkozásokat talál a IoT.
+A [Microsoft Azure IoT SDKS](https://github.com/Azure/azure-iot-sdks) GitHub-adattárakban megtalálhatja a különböző nyelvre (C, .NET, Java, Node.js, Python) IoT-eszköz SDK-kra mutató hivatkozásokat.
 
-Ha a fejlesztői készlet eszközt használja, a [IoT fejlesztői készlet SDK](https://github.com/Microsoft/devkit-sdk) GitHub-tárházban találhat erőforrásokat és mintákat.
+Ha a DevKit-eszközt használja, az [IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub-tárházban megtalálhatja az erőforrásokat és a mintákat.
 
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Elérhető-e az új Service-architektúra a három megoldási gyorssegédhez?
+### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Az új mikroszolgáltatások architektúrája mindhárom megoldásgyorsítóhoz elérhető?
 
-Jelenleg csak a távoli figyelési megoldás használja a Services architektúrát, mivel az a legszélesebb forgatókönyvet fedi le.
+Jelenleg csak a távoli figyelési megoldás használja a mikroszolgáltatások architektúráját, mivel a legszélesebb forgatókönyvet fedi le.
 
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Milyen előnyökkel jár az új, nyílt forráskódú Service-alapú architektúrák az új frissítésben?
+### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Milyen előnyökkel jár az új nyílt forráskódú mikroszolgáltatásokon alapuló architektúra az új frissítésben?
 
-Az elmúlt két évben a Felhőbeli architektúra nagy mértékben fejlődött. A szolgáltatások nagy léptékben és rugalmasan, a fejlesztési sebesség feláldozása nélkül váltak elérhetővé. Ez az építészeti minta számos Microsoft-szolgáltatásban használatos, nagy megbízhatósági és méretezhetőségi eredményekkel. A Microsoft ezeket a lépéseket a megoldás-gyorsítók között helyezi üzembe, így az ügyfelek hasznát vehetik.
+Az elmúlt két évben a felhőarchitektúra jelentősen fejlődött. Mikroszolgáltatások alakultak ki, mint egy nagy minta a skála és a rugalmasság elérése, a fejlesztési sebesség feláldozása nélkül. Ezt az architekturális mintát számos Microsoft-szolgáltatás használja belsőleg, nagy megbízhatósággal és méretezhetőségi eredményekkel. A Microsoft ezeket a tanulságokat a megoldásgyorsítókban helyezi át a gyakorlatba, hogy az ügyfelek élvezhessék azok előnyeit.
 
-### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Szolgáltatás-rendszergazda vagyok, és szeretném módosítani a címtár-hozzárendelést az előfizetésem és egy adott Azure AD-bérlő között. Hogyan elvégezte ezt a feladatot?
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Szolgáltatás-rendszergazda vagyok, és szeretném módosítani a címtár-hozzárendelést az előfizetésem és egy adott Azure AD-bérlő között. Hogyan fejezhetem be ezt a feladatot?
 
-Lásd: [meglévő előfizetés hozzáadása az Azure ad-címtárhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
+Lásd: [Meglévő előfizetés hozzáadása az Azure AD-címtárhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
 
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Meg szeretném változtatni a szolgáltatás-rendszergazdát vagy a társ-rendszergazdát, ha szervezeti fiókkal jelentkeznek be
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Szervezeti fiókkal bejelentkezve szolgáltatás-rendszergazdát vagy társadminisztrátort szeretnék módosítani
 
-[Ha szervezeti fiókkal jelentkezik be, tekintse meg a szolgáltatás-rendszergazda és a társ-rendszergazda módosításával foglalkozó](https://azure.microsoft.com/support/changing-service-admin-and-co-admin)cikket.
+Tekintse meg a [Szolgáltatásadminisztrátor és társrendszergazda módosítása szervezeti fiókkal bejelentkezve](https://azure.microsoft.com/support/changing-service-admin-and-co-admin)című támogatási cikket.
 
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Miért jelenik meg ez a hiba? "A fiók nem rendelkezik megfelelő engedélyekkel a megoldás létrehozásához. Érdeklődjön a fiók rendszergazdájánál, vagy próbáljon meg egy másik fiókot. "
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Miért jelenik meg ez a hiba? "Fiókja nem rendelkezik a megfelelő engedélyekkel a megoldás létrehozásához. Érdeklődjön a fiók rendszergazdájánanál, vagy próbálkozzon egy másik fiókkal."
 
-Tekintse meg az alábbi ábrát, amely útmutatást nyújt:
+Az alábbi ábrán útmutatást talál:
 
 ![Engedélyek folyamatábrája](media/iot-accelerators-faq/flowchart.png)
 
 > [!NOTE]
-> Ha továbbra is megjelenik a hiba, miután a rendszer ellenőrzi, hogy Ön az Azure AD-bérlő globális rendszergazdája, és az előfizetés egy közös rendszergazdája, akkor a fiók rendszergazdája távolítsa el a felhasználót, és rendelje újra a szükséges engedélyeket ebben a sorrendben. Először adja hozzá a felhasználót globális rendszergazdaként, majd adja hozzá a felhasználót az Azure-előfizetés közös rendszergazdájához. Ha a probléma továbbra is fennáll, forduljon a [súgó & támogatási szolgálatához](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> Ha továbbra is megjelenik a hiba érvényesítése után Ön az Azure AD-bérlő globális rendszergazdája és az előfizetés társrendszergazdája, a fiók rendszergazdájával távolítsa el a felhasználót, és rendelje hozzá újra a szükséges engedélyeket ebben a sorrendben. Először adja hozzá a felhasználót globális rendszergazdaként, majd adja hozzá a felhasználót az Azure-előfizetés társadminisztrátoraként. Ha a probléma továbbra is fennáll, forduljon [& súgóhoz.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 
-### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Miért jelenik meg ez a hibaüzenet, ha Azure-előfizetésem van? "Az előre konfigurált megoldások létrehozásához Azure-előfizetésre van szükség. Mindössze néhány perc alatt létrehozhat egy ingyenes próbaverziós fiókot. "
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Miért jelenik meg ez a hiba, ha Azure-előfizetésem van? "Egy Azure-előfizetés szükséges az előre konfigurált megoldások létrehozásához. Néhány perc alatt létrehozhat egy ingyenes próbafiókot."
 
-Ha biztos benne, hogy rendelkezik Azure-előfizetéssel, érvényesítse az előfizetés bérlői leképezését, és ellenőrizze, hogy a megfelelő bérlő van-e kiválasztva a legördülő menüben. Ha ellenőrizte a bérlő helyességét, kövesse az előző ábrát, és ellenőrizze az előfizetés és az Azure AD-bérlő hozzárendelését.
+Ha biztos benne, hogy rendelkezik egy Azure-előfizetéssel, ellenőrizze az előfizetés bérlői leképezését, és ellenőrizze, hogy a megfelelő bérlő van-e kiválasztva a legördülő menüben. Ha érvényesítette a bérlő helyes, kövesse az előző ábrát, és érvényesítse az előfizetés és az Azure AD-bérlő leképezése.
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Hol találhatok információt a távoli figyelési megoldás előző verziójáról?
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Hol találhatok információt a távfigyelési megoldás előző verziójáról?
 
-A távoli figyelési megoldáshoz tartozó gyorssegéd előző verzióját a IoT Suite távoli figyelési előre konfigurált megoldásnak hívták. Az archivált dokumentációt itt találja: [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+A távoli figyelési megoldásgyorsító korábbi verziója az IoT Suite távoli figyelési előre konfigurált megoldásnéven volt ismert. Az archivált dokumentációt [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)a következő helyen találja: a.
 
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Elérhető-e az új megoldás-gyorsító ugyanabban a földrajzi régióban, mint a meglévő megoldás?
+### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Az új megoldásgyorsító ugyanabban a földrajzi régióban érhető el, mint a meglévő megoldás?
 
-Igen, az új távoli figyelés ugyanabban a földrajzi régióban érhető el.
+Igen, az új távoli figyelés ugyanazokat a földrajzi régiókban érhető el.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Mi a különbség az erőforráscsoport törlése között a Azure Portalban, majd a azureiotsolutions.com a megoldás-gyorsító elemre kattintva?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Mi a különbség az Azure Portalon lévő erőforráscsoport törlése és a azureiotsolutions.com megoldásgyorsító törlésre való kattintása között?
 
-* Ha törli a megoldás-gyorsító a [azureiotsolutions.com](https://www.azureiotsolutions.com/)-ben, a megoldás-gyorsító létrehozásakor telepített összes erőforrást törli. Ha további erőforrásokat adott hozzá az erőforráscsoporthoz, ezek az erőforrások is törlődnek.
-* Ha törli az erőforráscsoportot a [Azure Portalban](https://portal.azure.com), csak az adott erőforráscsoport erőforrásait törli. Törölnie kell a megoldás-gyorssegédhez társított Azure Active Directory alkalmazást is.
+* Ha törli a megoldásgyorsítót [a azureiotsolutions.com,](https://www.azureiotsolutions.com/)akkor a megoldásgyorsító létrehozásakor üzembe helyezett összes erőforrást törli. Ha további erőforrásokat adott hozzá az erőforráscsoporthoz, ezek az erőforrások is törlődnek.
+* Ha törli az erőforráscsoportot az [Azure Portalon,](https://portal.azure.com)csak az adott erőforráscsoport ban lévő erőforrásokat törli. A megoldásgyorsítóhoz társított Azure Active Directory-alkalmazást is törölnie kell.
 
-### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Továbbra is használhatom meglévő befektetéseit az Azure IoT-megoldás-gyorsítók között?
+### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Továbbra is hasznosíthatom az Azure IoT-megoldásgyorsítókat?
 
-Igen. A ma már meglévő megoldások továbbra is működnek az Azure-előfizetésben, és a forráskód elérhető marad a GitHubban.
+Igen. A ma létező bármely megoldás továbbra is működik az Azure-előfizetésében, és a forráskód elérhető marad a GitHubon.
 
-### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Hány IoT Hub-példányt tudok kiépíteni egy előfizetésben?
+### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Hány IoT Hub-példányt építhetek ki egy előfizetésben?
 
-Alapértelmezés szerint [előfizetéssel 10 IoT hub-t](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits)lehet kiépíteni. A korlát növeléséhez létrehozhat egy [Azure-támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . Ennek eredményeképpen, mivel minden megoldás-gyorsító új IoT Hub hoz létre, egy adott előfizetésben legfeljebb 10 megoldási gyorssegédet tud kiépíteni.
+Alapértelmezés szerint [előfizetésenként 10 IoT-központot](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits)építhet ki. Létrehozhat egy [Azure támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a korlát növeléséhez. Ennek eredményeképpen minden megoldásgyorsító egy új IoT Hubot rendel, egy adott előfizetésben legfeljebb 10 megoldásgyorsítót tud kiépíteni.
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Hány Azure Cosmos DB-példányt tudok kiépíteni egy előfizetésben?
 
-50. Létrehozhat egy Azure- [támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a korlát növeléséhez, de alapértelmezés szerint csak 50 Cosmos db példányokat lehet kiépíteni előfizetésre.
+Ötven. Létrehozhat egy [Azure-támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a korlát növeléséhez, de alapértelmezés szerint csak 50 Cosmos DB-példányt építhet ki előfizetésenként.
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Hány ingyenes Bing Térképek API-t adhatok meg egy előfizetésben?
 
-Kettőt. Azure-előfizetésben csak két belső tranzakciós 1. szintű Bing Maps-t hozhat létre nagyvállalati csomagokhoz. A távoli figyelési megoldás alapértelmezés szerint a belső Transactions 1 csomaggal lett kiépítve. Ennek eredményeképpen legfeljebb két távoli figyelési megoldást állíthat be egy előfizetésben, módosítás nélkül.
+Kettőt. Azure-előfizetésben csak két belső tranzakció1-es szintű Bing Maps for Enterprise-csomag hozhat létre. A távoli figyelési megoldás alapértelmezés szerint ki van építve a Belső tranzakciók 1. Ennek eredményeképpen legfeljebb két távoli figyelési megoldás építhet ki egy előfizetésben módosítások nélkül.
 
-### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Létrehozhatok-e megoldás-gyorsító megoldást, ha Microsoft Azureem a DreamSpark?
+### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Létrehozhatok megoldásgyorsítót, ha rendelkezem a Microsoft Azure for DreamSpark szolgáltatással?
 
 > [!NOTE]
-> A DreamSpark Microsoft Azure már a diákoknak szóló Microsoft Imagine néven is ismert.
+> A Microsoft Azure for DreamSpark ma már Microsoft Imagine néven ismert diákok számára.
 
-Jelenleg nem hozható létre megoldás-gyorsító [Microsoft Azure a DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) -fiókhoz. Néhány perc alatt létrehozhat egy [ingyenes próbaverziós fiókot az Azure](https://azure.microsoft.com/free/) -hoz, amely lehetővé teszi megoldás-gyorsító létrehozását.
+Jelenleg nem hozhat létre megoldásgyorsítót [egy Microsoft Azure for DreamSpark-fiókkal.](https://azure.microsoft.com/pricing/member-offers/imagine/) Azonban néhány perc alatt létrehozhat egy [ingyenes próbafiókot az Azure-hoz,](https://azure.microsoft.com/free/) amely lehetővé teszi a megoldásgyorsító létrehozását.
 
-### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hogyan törölni egy Azure AD-bérlőt?
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hogyan törölhetek egy Azure AD-bérlőt?
 
-Az [Azure ad-bérlő törlésével](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)kapcsolatban lásd: Eric golpe 's blog post (útmutató).
+Tekintse meg Eric Golpe blogbejegyzését [az Azure AD-bérlő törléséről.](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A távoli figyelési megoldás gyorsító képességeinek megismerése](quickstart-remote-monitoring-deploy.md)
+* [A távfigyelési megoldásgyorsító képességeinek megismerése](quickstart-remote-monitoring-deploy.md)
 * [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
-* [Csatlakoztatott gyári megoldás-gyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
-* [IoT biztonság az alapoktól](/azure/iot-fundamentals/iot-security-ground-up)
+* [Csatlakoztatott gyári megoldásgyorsító telepítése](quickstart-connected-factory-deploy.md)
+* [IoT-biztonság létrehozása az alapoktól](/azure/iot-fundamentals/iot-security-ground-up)

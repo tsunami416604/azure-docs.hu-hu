@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 7316dba7559c4a50e94771d69ce03bac51c0f3c2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774535"
 ---
-Egy böngészőben navigáljon a [portálra](https://portal.azure.com/) , és jelentkezzen be az Azure-fiókjával.
+Böngészőből keresse meg a [portált,](https://portal.azure.com/) és jelentkezzen be az Azure-fiókjával.
 
-Ha több előfizetéssel rendelkezik, és át kell váltania az előfizetéseket:
+Ha több előfizetéssel rendelkezik, és előfizetést kell váltania:
 
-1. Kattintson a profil gombra, majd válassza a **könyvtár váltása**lehetőséget.
-
-    > [!div class="mx-imgBorder"]
-    > ![válassza a címtár váltása](../media/choose-subscription-2.png)
-
-1. Válassza ki a társításhoz használni kívánt előfizetést.
+1. Kattintson a profil gombra, majd válassza a **Címtár váltása**lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![válassza az előfizetés lehetőséget](../media/choose-subscription-3.png)
+    > ![Könyvtárváltás kiválasztása](../media/choose-subscription-2.png)
+
+1. Válassza ki azt az előfizetést, amelyet társviszony-létesítéshez szeretne használni.
+
+    > [!div class="mx-imgBorder"]
+    > ![Előfizetés kiválasztása](../media/choose-subscription-3.png)

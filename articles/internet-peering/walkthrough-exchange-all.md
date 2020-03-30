@@ -1,7 +1,7 @@
 ---
-title: Exchange-társítási útmutató
+title: Útmutató Exchange-társviszony létesítéséhez
 titleSuffix: Azure
-description: Exchange-társítási útmutató
+description: Útmutató Exchange-társviszony létesítéséhez
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,47 +9,47 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: bb761afa6d8953b441b6c9541c43b73031719494
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775172"
 ---
-# <a name="exchange-peering-walkthrough"></a>Exchange-társítási útmutató
+# <a name="exchange-peering-walkthrough"></a>Útmutató Exchange-társviszony létesítéséhez
 
-Ez a szakasz azokat a lépéseket ismerteti, amelyeket követnie kell az Exchange-társak beállításához és kezeléséhez.
+Ez a szakasz az Exchange-társviszony-létesítés beállításához és kezeléséhez követendő lépéseket ismerteti.
 
-## <a name="create-an-exchange-peering"></a>Exchange-társ létrehozása
+## <a name="create-an-exchange-peering"></a>Exchange-társviszony-létesítés létrehozása
 > [!div class="mx-imgBorder"]
-> ![Exchange-társi munkafolyamatok és a kapcsolatok állapota](./media/exchange-peering.png)
+> ![Exchange-társviszony-létesítési munkafolyamat és kapcsolatállapotok](./media/exchange-peering.png)
 
-Exchange-társítás létesítéséhez a következő lépéseket kell követni:
-1. Tekintse át a Microsoft- [partneri házirendet](https://peering.azurewebsites.net/peering) az Exchange-társítás követelményeinek megismeréséhez.
-1. A Microsoft peering Location és a peering Facility azonosítójának megkeresése a [PeeringDB](https://www.peeringdb.com/net/694) -ben
-1. A további részleteket az Exchange [-társítás létrehozása és módosítása a PowerShell használatával](howto-exchange-powershell.md) című cikk utasításait követve kérheti le az Exchange-társítást egy egyenrangú helyhez.
-1. Miután elküldte a kérést, a Microsoft áttekinti a kérést, és szükség esetén felveszi Önnel a kapcsolatot.
-1. A jóváhagyást követően a kapcsolatok állapota jóváhagyva értékre változik
-1. A BGP-munkamenet konfigurálása a végén és a Microsoft értesítése
-1. BGP-munkamenetet fogunk kiépíteni az összes házirend megtagadásával és a teljes körű ellenőrzéssel.
-1. Ha a művelet sikeres, értesítést kap arról, hogy a társ-összekapcsolási állapot aktív.
-1. A forgalom ezután az új társításon keresztül engedélyezett lesz.
+Az Exchange-társviszony-létesítés kiépítése érdekében a következő lépéseket kell követni:
+1. Tekintse át a Microsoft [társviszony-létesítési szabályzatát](https://peering.azurewebsites.net/peering) az Exchange-társviszony-létesítés követelményeinek megértéséhez.
+1. A Microsoft társviszony-létesítési helyének és társviszony-létesítési lehetőségének azonosítójának megkeresése a [Társviszony-létesítési formában](https://www.peeringdb.com/net/694)
+1. Kérjen Exchange-társviszony-létesítési egy társviszony-létesítési hely utasításával [létrehozása és módosítása exchange-társviszony-létesítés a PowerShell-cikk használatával](howto-exchange-powershell.md) további részletekért.
+1. A társtársi létesítési kérelem elküldése után a Microsoft áttekinti a kérést, és szükség esetén felveszi Önnel a kapcsolatot.
+1. A jóváhagyást követően a kapcsolat állapota jóváhagyottra változik
+1. BGP-munkamenet konfigurálása a végén, és értesítés a Microsoftról
+1. A BGP-munkamenetet DENY ALL házirenddel építjük ki, és végpontok között érvényesítjük.
+1. Ha sikeres, értesítést fog kapni arról, hogy a társviszony-létesítési kapcsolat állapota aktív.
+1. A forgalom ezután az új társviszony-létesítésen keresztül engedélyezett.
 
-Vegye figyelembe, hogy a kapcsolati állapotok nem tévesztendő össze a standard [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) munkamenet-állapotokkal.
+Ne feledje, hogy a kapcsolatállapotokat nem szabad összetéveszteni a szabványos BGP-munkamenet-állapotokkal. [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Örökölt Exchange-társ átalakítása az Azure-erőforrásra
-A következő lépéseket kell követnie egy örökölt Exchange-társítás Azure-erőforrásra való átalakításához:
-1. Kövesse az [örökölt Exchange-társítás átalakítása az Azure-erőforrásra](howto-legacy-exchange-powershell.md) című témakör utasításait.
-1. Az átalakítási kérelem elküldése után a Microsoft áttekinti a kérést, és szükség esetén felveszi Önnel a kapcsolatot.
-1. A jóváhagyást követően az Exchange-társat aktívként fogja látni a kapcsolatok állapotával.
+## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Örökölt Exchange-társviszony konvertálása Azure-erőforrássá
+Az örökölt Exchange-társviszony-létesítés Azure-erőforrássá alakításához a következő lépéseket kell követni:
+1. Kövesse az [örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá című útmutató utasításait.](howto-legacy-exchange-powershell.md)
+1. A konverziós kérelem elküldése után a Microsoft áttekinti a kérést, és szükség esetén felveszi Önnel a kapcsolatot.
+1. A jóváhagyást követően az Exchange-társviszony-létesítési kapcsolatállapottal aktív lesz.
 
-## <a name="deprovision-exchange-peering"></a>Exchange-társítás megszüntetése
-Az Exchange-társítás megszüntetéséhez forduljon a [Microsoft-partnerekhez](mailto:peering@microsoft.com) .
+## <a name="deprovision-exchange-peering"></a>Exchange-társviszony-létesítésen való megszüntetés
+Lépjen kapcsolatba [a Microsoft társviszony-létesítésével](mailto:peering@microsoft.com) az Exchange társviszony-létesítésnek megszüntetéséhez.
 
-Ha egy Exchange-társítás kiépítésre van beállítva, a kapcsolódási állapotot **PendingRemove** -ként fogja látni.
+Ha egy Exchange-társviszony-létesítés megszüntetésre van beállítva, a kapcsolat állapota **PendingRemove (Függőeltávolítás) lesz.**
 
 > [!NOTE]
-> Ha a PowerShell-parancsmag futtatásával törli az Exchange-társat a kapcsolódási állapot ProvisioningStarted vagy ProvisioningCompleted, a művelet sikertelen lesz.
+> Ha powershell-parancsmag futtatásával törli az Exchange-társviszony-létesítési állapot kiépítéselindult vagy provisioningCompleted a művelet sikertelen lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg a Microsofttal való összevonással kapcsolatos [előfeltételekkel](prerequisites.md).
+* Ismerje meg [a Microsofttal való társviszony-létesítés beállításának előfeltételeit.](prerequisites.md)

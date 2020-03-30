@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 27b09ea9cc7ce3cf2559304a26d0c04f3ea30b54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179071"
 ---
-Mellett az ügyfelek automatikusan csatlakozik az elsődleges másodpéldány, egy figyelő használható átirányítása a csak olvasható számítási feladatokat a másodlagos példány hozható létre. Ez a használati javíthatja a teljesítmény és a teljes megoldás méretezhetőségét. További információkért lásd: [használata ReadIntent útválasztás az Azure Always On rendelkezésre állási csoport figyelőjének](https://go.microsoft.com/fwlink/?LinkId=522515).
+Az ügyfelek elsődleges replikához való automatikus csatlakoztatása mellett a figyelő segítségével átirányíthatja az írásvédett számítási feladatokat a másodlagos adatokhoz. Ez a használat javíthatja a teljes megoldás teljesítményét és méretezhetőségét. További információ: [ReadIntent Routing használata az Azure Always On availability group listener](https://go.microsoft.com/fwlink/?LinkId=522515)című témakörben olvashat.
 
 > [!NOTE]
-> Hibaelhárítási tippek az Azure működtethet, lásd: [hibaelhárítás rendelkezésre állási csoport figyelője az Azure-ban](https://blogs.msdn.microsoft.com/alwaysonpro/2017/02/22/troubleshooting-internal-load-balancer-listener-connectivity-in-azure) az AlwaysOn támogatási csapatával a [blog](https://blogs.msdn.com/b/alwaysonpro/).
+> Az Azure-figyelők hibaelhárítási tippjeiről az AlwaysOn támogatási csapat blogjában található [Hibaelhárítási csoportfigyelő az Azure-ban](https://blogs.msdn.microsoft.com/alwaysonpro/2017/02/22/troubleshooting-internal-load-balancer-listener-connectivity-in-azure) című [témakörben](https://blogs.msdn.com/b/alwaysonpro/)olvashat.
 > 
 > 
 
-Az Azure-beli SQL Server használatával kapcsolatos további információkért lásd: [Azure virtuális gépeken futó SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Az SQL Server Azure-beli használatáról az [SQL Server azure-beli virtuális gépeken](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)című témakörben talál további információt.
 

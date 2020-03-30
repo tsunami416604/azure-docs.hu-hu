@@ -1,6 +1,6 @@
 ---
-title: Saját üzemeltetésű Azure API Management-átjáró üzembe helyezése a Docker-ben | Microsoft Docs
-description: Ismerje meg, hogyan helyezhet üzembe egy saját üzemeltetésű Azure API Management-átjárót a Docker-ben
+title: Saját üzemeltetésű Azure API Management átjáró üzembe helyezése a Dockerhez | Microsoft dokumentumok
+description: Ismerje meg, hogyan helyezhet üzembe saját üzemeltetésű Azure API Management átjárót a Dockerhez
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,58 +13,58 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768503"
 ---
-# <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
+# <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API-kezelés saját üzemeltetésű átjáró üzembe helyezése a Dockerben
 
-Ez a cikk a saját üzemeltetésű Azure API Management-átjárók Docker-környezetbe való üzembe helyezésének lépéseit ismerteti.
+Ez a cikk az önkiszolgáló Azure API Management átjáró docker-környezetbe való üzembe helyezésének lépéseit ismerteti.
 
 > [!NOTE]
-> A saját üzemeltetésű átjáró funkció előzetes verzióban érhető el. Az előzetes verzió ideje alatt a saját üzemeltetésű átjáró csak a fejlesztői és prémium szinteken érhető el, díjmentesen. A fejlesztői réteg egyetlen saját üzemeltetésű átjáróra korlátozódik.
+> A saját üzemeltetésű átjárófunkció előzetes verzióban érhető el. Az előzetes verzió során a saját üzemeltetésű átjáró csak a Fejlesztői és prémium szintű csomagokban érhető el további díj nélkül. A fejlesztői szint egyetlen saját üzemeltetésű átjáró-telepítésre korlátozódik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-- Hozzon létre egy Docker-környezetet. Az [asztali Docker](https://www.docker.com/products/docker-desktop) jó megoldás fejlesztési és értékelési célokra. A Docker-kiadásokról, azok szolgáltatásairól és a Docker-ről szóló átfogó dokumentációról a [Docker dokumentációjában](https://docs.docker.com) talál további információt.
-- [Átjáró-erőforrás kiépítése a API Management-példányban](api-management-howto-provision-self-hosted-gateway.md)
+- A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
+- Hozzon létre egy Docker-környezetet. [A Docker for Desktop](https://www.docker.com/products/docker-desktop) egy jó lehetőség fejlesztési és értékelési célokra. A [Docker dokumentációjában](https://docs.docker.com) tájékozódhat az összes Docker-kiadásról, azok funkcióiról és magáról a Dockerről szóló átfogó dokumentációról.
+- [Átjáró-erőforrás kiépítése az API Management-példányban](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
 > A saját üzemeltetésű átjáró x86-64 Linux-alapú Docker-tárolóként van csomagolva.
 
-## <a name="deploy-the-self-hosted-gateway-to-docker"></a>A saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
+## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Az önkiszolgáló átjáró üzembe helyezése a Docker-hez
 
-1. Válassza az **átjárók** lehetőséget a **Beállítások**területen.
-2. Válassza ki azt az átjáró-erőforrást, amelyet telepíteni kíván.
-3. Válassza a **telepítés**lehetőséget.
-4. Vegye figyelembe, hogy a **jogkivonat** szövegmezőben lévő új jogkivonat automatikusan lett létrehozva az alapértelmezett **lejárati** és **titkos kulcs** értékeinek használatával. Ha szükséges, módosítsa a vagy mindkettőt, és válassza a **Létrehozás** lehetőséget egy új jogkivonat létrehozásához.
-4. Győződjön meg arról, hogy a **Docker** ki van választva a **telepítési parancsfájlok**területen.
-5. A fájl letöltéséhez válassza az **env. conf** fájl hivatkozását a **környezet** mellett.
-6. A **Run (Futtatás** ) szövegmező jobb oldalán található **másolási** ikont választva mentse a Docker-parancsot a vágólapra.
-7. Illessze be a parancsot a terminál (vagy a parancs) ablakába. Szükség szerint módosítsa a port-hozzárendeléseket és a tároló nevét. Vegye figyelembe, hogy a parancs elvárja, hogy a letöltött környezeti fájl megtalálható legyen az aktuális könyvtárban.
+1. Válassza **az Átjárók lehetőséget** a Beállítások **csoportban.**
+2. Válassza ki a telepíteni kívánt átjáró-erőforrást.
+3. Válassza a **Központi telepítés**lehetőséget.
+4. Vegye figyelembe, hogy egy új jogkivonatot a **Jogkivonat** szövegmezőben automatikusan létrehozták az alapértelmezett **lejárati** és **titkos kulcs** értékek használatával. Szükség esetén módosítsa az egyiket vagy mindkettőt, és válassza a **Létrehozás** lehetőséget új jogkivonat létrehozásához.
+4. Győződjön meg arról, hogy a **Docker** ki van jelölve a **Központi telepítési parancsfájlok**csoportban.
+5. A fájl letöltéséhez válassza az **env.conf** fájlhivatkozást a **Környezet** mellett.
+6. Válassza a **Szövegfuttatás** párbeszédpanel jobb oldalán található Másolás **ikont,** ha a Docker parancsot vágólapra szeretné menteni.
+7. Illessze be a parancsot a terminál (vagy parancs) ablakba. Szükség szerint módosítsa a portleképezéseket és a tároló nevét. Ne feledje, hogy a parancs arra számít, hogy a letöltött környezeti fájl megjelenik az aktuális könyvtárban.
 ```
     docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
 ```
-8. Hajtsa végre a parancsot. A parancs arra utasítja a Docker-környezetet, hogy futtassa a tárolót a saját üzemeltetésű átjáró a Microsoft Container Registry letöltött rendszerképének használatával, valamint a tároló HTTP-(8080-) és HTTPS-(8081-) portjainak a gazdagépen lévő 80-és 443-portokra való leképezéséhez.
-9. Futtassa az alábbi parancsot az átjáró Pod futtatásának vizsgálatához:
+8. Hajtsa végre a parancsot. A parancs arra utasítja a Docker-környezetet, hogy futtassa a tárolót a Microsoft Container Registry rendszeréből letöltött saját üzemeltetésű átjáró rendszerképének használatával, és rendelje le a tároló HTTP -es (8080) és HTTPS (8081) portjait az állomás 80-as és 443-as portjaihoz.
+9. Futtassa az alábbi parancsot, és ellenőrizze, hogy fut-e az átjárópod:
 ```console
 docker ps
 CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
 895ef0ecf13b        mcr.microsoft.com/azure-api-management/gateway:beta   "/bin/sh -c 'dotnet …"   5 seconds ago       Up 3 seconds        0.0.0.0:80->8080/tcp, 0.0.0.0:443->8081/tcp   my-gateway
 ```
-10. Lépjen vissza a Azure Portalra, és ellenőrizze, hogy az imént telepített átjáró-csomópont a kifogástalan állapotot jelenti-e.
+10. Lépjen vissza az Azure Portalra, és ellenőrizze, hogy az imént üzembe helyezett átjárócsomópont kifogástalan állapotot jelent-e.
 
 ![átjáró állapota](media/api-management-howto-deploy-self-hosted-gateway-to-docker/status.png)
 
 > [!TIP]
-> A <code>console docker container logs <gateway-name></code> parancs használatával megtekintheti a saját üzemeltetésű átjáró naplójának pillanatképét.
+> A <code>console docker container logs <gateway-name></code> parancs segítségével megtekintheti a saját üzemeltetésű átjárónapló pillanatképét.
 >
-> <code>docker container logs --help</code> parancs használatával tekintheti meg az összes naplózási megtekintési beállítást.
+> A <code>docker container logs --help</code> parancs segítségével megtekintheti az összes naplómegtekintési beállítást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a saját üzemeltetésű átjáróról: az [Azure API Management saját üzemeltetésű átjárójának áttekintése](self-hosted-gateway-overview.md).
-* [Konfigurálja az egyéni tartománynevet a saját üzemeltetésű átjáróhoz](api-management-howto-configure-custom-domain-gateway.md).
+* Ha többet szeretne megtudni a saját üzemeltetésű átjáróról, olvassa el az [Azure API Management saját üzemeltetésű átjáró – áttekintés című témakört.](self-hosted-gateway-overview.md)
+* [Egyéni tartománynév konfigurálása a saját üzemeltetett átjáróhoz.](api-management-howto-configure-custom-domain-gateway.md)

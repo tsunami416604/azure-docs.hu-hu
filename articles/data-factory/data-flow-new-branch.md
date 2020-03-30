@@ -1,6 +1,6 @@
 ---
-title: Több ág a leképezési adatfolyamban
-description: Adatfolyamok replikálása a leképezési adatfolyamban több ág
+title: Több elágazás az adatfolyam leképezésében
+description: Adatfolyamok replikálása több elágazással rendelkező adatfolyamleképezésben
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: 71fb9f1ba9952be0e6b3910dd1079aa6d3c0482d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834516"
 ---
-# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Új ág létrehozása a leképezési adatfolyamban
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Új ág létrehozása az adatfolyam leképezésében
 
-Egy új ág hozzáadásával több művelet és átalakítás végezhető el ugyanazon adatfolyamon. Az új ág hozzáadása akkor lehet hasznos, ha ugyanazt a forrást szeretné használni több mosogatóhoz, vagy az önkiszolgáló adategyesítéshez.
+Adjon hozzá egy új ágat, amely több művelet- és átalakítást végez ugyanazon adatfolyamon. Új ág hozzáadása akkor hasznos, ha ugyanazt a forrást több fogadóhoz vagy önillesztéshez szeretné használni.
 
-Az átalakítási listáról más átalakításokhoz hasonló új ág is felvehető. Az **új ág** csak akkor érhető el műveletként, ha már van egy meglévő átalakítás, amely azt követi, hogy milyen átalakítást végez az elágazásban.
+Az átalakításlistából más átalakításokhoz hasonló új ágadható el. **Az új ág** csak akkor lesz elérhető műveletként, ha az elágazni kívánt átalakítást követően már létezik átalakítás.
 
 ![Új ág hozzáadása](media/data-flow/new-branch2.png "Új ág hozzáadása")
 
-Az alábbi példában az adatfolyam beolvassa a taxi-adatforgalmat. A napi és a szállító által összesített kimenet megadása kötelező. Ahelyett, hogy két különálló adatfolyamatot hozna létre ugyanabból a forrásból, új ágat adhat hozzá. Így az összesítések ugyanúgy hajthatók végre, mint az adatfolyamatok részeként. 
+Az alábbi példában az adatfolyam a taxiút adatait olvassa. A nap és a szállító szerint összesítve a kimenet szükséges. Ahelyett, hogy két különálló adatfolyamot hozna létre, amelyek ugyanabból a forrásból olvasnak, új ágadható el. Így mindkét összesítés ugyanazon adatfolyam részeként hajtható végre. 
 
 ![Új ág hozzáadása](media/data-flow/new-branch.png "Új ág hozzáadása")

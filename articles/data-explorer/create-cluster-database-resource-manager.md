@@ -1,6 +1,6 @@
 ---
-title: Azure Adatkezelő-fürt és-adatbázis létrehozása Azure Resource Manager sablon használatával
-description: Ismerje meg, hogyan hozhat létre Azure Adatkezelő-fürtöt és-adatbázist Azure Resource Manager sablon használatával
+title: Azure Data Explorer-fürt és-adatbázis létrehozása Azure Resource Manager-sablon használatával
+description: Ismerje meg, hogyan hozhat létre Azure Data Explorer-fürtöt és -adatbázist egy Azure Resource Manager-sablon használatával
 author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
@@ -8,31 +8,31 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: 56639d8a29ad8eac465845c8d354d04b31ba6093
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75911965"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása Azure Resource Manager sablon használatával
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Data Explorer-fürt és-adatbázis létrehozása Azure Resource Manager-sablon használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](create-cluster-database-portal.md)
-> * [Parancssori felület](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [parancssori felület](create-cluster-database-cli.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Azure Resource Manager-sablon](create-cluster-database-resource-manager.md)
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. 
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer használatához először egy fürtöt hozunk létre, majd egy vagy több adatbázist a fürtben. Ezután adatokat töltünk be az adatbázisba, hogy lekérdezéseket futtathassunk rajta. 
 
-Ebben a cikkben egy Azure Adatkezelő-fürtöt és-adatbázist hoz létre egy [Azure Resource Manager sablon](../azure-resource-manager/management/overview.md)használatával. A cikk bemutatja, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok készítése](/azure/azure-resource-manager/resource-group-authoring-templates). A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Kusto-erőforrástípusok](/azure/templates/microsoft.kusto/allversions).
+Ebben a cikkben egy Azure Data Explorer-fürtöt és -adatbázist hoz létre egy [Azure Resource Manager-sablon](../azure-resource-manager/management/overview.md)használatával. A cikk bemutatja, hogyan határozhatja meg, hogy mely erőforrások vannak telepítve, és hogyan határozhatja meg a központi telepítés végrehajtásakor megadott paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. A sablonok létrehozásáról az [Azure Resource Manager-sablonok szerzői című témakörben olvashat.](/azure/azure-resource-manager/resource-group-authoring-templates) A JSON szintaxisát és a sablonban használandó tulajdonságokat a [Microsoft.Kusto erőforrástípusok](/azure/templates/microsoft.kusto/allversions)című témakörben olvashatja.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
-## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>Azure Resource Manager sablon a fürt és az adatbázis létrehozásához
+## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>Azure Resource Manager-sablon fürt- és adatbázis-létrehozáshoz
 
-Ebben a cikkben egy meglévő rövid útmutató [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json) használ
+Ebben a cikkben egy [meglévő rövid útmutató sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json) használ
 
 ```json
 {
@@ -94,15 +94,15 @@ Ebben a cikkben egy meglévő rövid útmutató [sablont](https://raw.githubuser
 }
 ```
 
-További sablon-példákat az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/)talál.
+További sablonmintákat az [Azure gyorsútmutató-sablonok](https://azure.microsoft.com/resources/templates/)ban talál.
 
-## <a name="deploy-the-template-and-verify-template-deployment"></a>A sablon üzembe helyezése és a sablon központi telepítésének ellenőrzése
+## <a name="deploy-the-template-and-verify-template-deployment"></a>A sablon telepítése és a sablon telepítésének ellenőrzése
 
-A Azure Resource Manager sablont [a Azure Portal vagy a](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment) [PowerShell használatával](#use-powershell-to-deploy-the-template-and-verify-template-deployment)is telepítheti.
+Az Azure Resource Manager-sablont az [Azure Portalon](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment) vagy a [PowerShell használatával](#use-powershell-to-deploy-the-template-and-verify-template-deployment)telepítheti.
 
-### <a name="use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment"></a>A sablon üzembe helyezése és a sablonok központi telepítésének ellenőrzése a Azure Portal használatával
+### <a name="use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment"></a>Az Azure Portal használata a sablon üzembe helyezéséhez és a sablon üzembe helyezésének ellenőrzéséhez
 
-1. Fürt és adatbázis létrehozásához használja a következő gombot a telepítés elindításához. Kattintson a jobb gombbal, és válassza a **Megnyitás új ablakban**lehetőséget, így követheti a cikk további lépéseit.
+1. Fürt és adatbázis létrehozásához az alábbi gombbal indítsa el a központi telepítést. Kattintson a jobb gombbal, és válassza **a Megnyitás új ablakban**parancsot, így a cikk ben ismertetett további lépéseket követheti.
 
     [![Üzembe helyezés az Azure-ban](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
@@ -110,18 +110,18 @@ A Azure Resource Manager sablont [a Azure Portal vagy a](#use-the-azure-portal-t
 
     ![Üzembe helyezés az Azure-ban](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-    A [sablont a Azure Portal szerkesztheti és telepítheti](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
+    A [sablon t szerkesztheti és üzembe helyezheti az Azure Portalon](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
 
-1. Fejezze be az **alapok** és **Beállítások** szakaszt. Válassza ki az egyedi fürtöt és az adatbázis nevét.
-Az Azure Adatkezelő-fürt és-adatbázis létrehozása néhány percet vesz igénybe.
+1. **Basics** és **SETTINGS** szakaszok kiteljesedése. Válassza ki az egyedi fürt- és adatbázisneveket.
+Az Azure Data Explorer-fürt és -adatbázis létrehozása néhány percet vesz igénybe.
 
-1. Az üzembe helyezés ellenőrzéséhez nyissa meg az erőforráscsoportot a [Azure Portalban](https://portal.azure.com) , és keresse meg az új fürtöt és adatbázist. 
+1. A központi telepítés ellenőrzéséhez nyissa meg az erőforráscsoportot az [Azure Portalon](https://portal.azure.com) az új fürt és adatbázis megkereséséhez. 
 
-### <a name="use-powershell-to-deploy-the-template-and-verify-template-deployment"></a>A sablon üzembe helyezése és a sablon központi telepítésének ellenőrzése a PowerShell használatával
+### <a name="use-powershell-to-deploy-the-template-and-verify-template-deployment"></a>A powershell használata a sablon üzembe helyezéséhez és a sablon központi telepítésének ellenőrzéséhez
 
 #### <a name="deploy-the-template-using-powershell"></a>A sablon üzembe helyezése a PowerShell használatával
 
-1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget, majd kövesse az utasításokat az Azure Cloud shellbe való bejelentkezéshez.
+1. Válassza **a Próbálja ki** a következő kódblokkból, majd kövesse az utasításokat az Azure Cloud rendszerhéjba való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -136,13 +136,13 @@ Az Azure Adatkezelő-fürt és-adatbázis létrehozása néhány percet vesz ig�
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. A PowerShell-szkript másolásához válassza a **Másolás** lehetőséget.
-1. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés**lehetőséget.
-Az Azure Adatkezelő-fürt és-adatbázis létrehozása néhány percet vesz igénybe.
+1. Válassza **a Másolás lehetőséget** a PowerShell-parancsfájl másolásához.
+1. Kattintson a jobb gombbal a rendszerhéj-konzolra, és válassza **a Beillesztés parancsot.**
+Az Azure Data Explorer-fürt és -adatbázis létrehozása néhány percet vesz igénybe.
 
-#### <a name="verify-the-deployment-using-powershell"></a>A telepítés ellenőrzése a PowerShell használatával
+#### <a name="verify-the-deployment-using-powershell"></a>A központi telepítés ellenőrzése a PowerShell használatával
 
-A központi telepítés ellenőrzéséhez használja a következő Azure PowerShell parancsfájlt.  Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép). Az Azure Adatkezelő-erőforrások PowerShellben való kezelésével kapcsolatos további információkért olvassa el [az az. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). 
+A központi telepítés ellenőrzéséhez használja a következő Azure PowerShell-parancsfájlt.  Ha a Cloud Shell még nyitva van, nem kell másolni/futtatni az első sort (Read-Host). Az Azure Data Explorer-erőforrások PowerShellben való kezelésével kapcsolatos további információkért olvassa el [az Az.Kusto](/powershell/module/az.kusto/?view=azps-2.7.0)című. 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -157,6 +157,6 @@ Write-Host "Press [ENTER] to continue ..."
 
 [!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Az Azure Adatkezelő-fürt és-adatbázis betöltése](ingest-data-overview.md)
+[Adatok betöltése az Azure Data Explorer-fürtbe és -adatbázisba](ingest-data-overview.md)

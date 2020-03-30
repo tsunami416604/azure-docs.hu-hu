@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: bc156b8c18f46cccf6fc775b82f76383b8c43861
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66242143"
 ---
-Íme a támogatott tárfiókok és a tárolási típusokat a Data Box-eszköz listáját. Összes különböző típusú tárfiókok és a teljes képességek teljes listáját lásd: [a tárfiókok típusai](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
+Az alábbiakban a támogatott tárfiókok listáját és a Data Box-eszköz tárolási típusait tartalmazza. A tárfiókok különböző típusainak és teljes képességeinek teljes listáját [a Tárfiókok típusai (Típusok) témakörben](/azure/storage/common/storage-account-overview#types-of-storage-accounts)található.
 
-| **Storage-fiók / támogatott tárolási típusok** | **Blokkblob** |**Lapblob*** |**Az Azure files** |**Megjegyzések**|
+| **Tárfiók / Támogatott tártípusok** | **Blokkblob** |**Lapblob*** |**Azure-fájlok** |**Megjegyzések**|
 | --- | --- | -- | -- | -- |
-| Klasszikus Standard | I | I | I |
-| Általános célú v1 Standard  | I | I | I | Gyakori és ritka elérésű egyaránt támogatottak.|
-| Általános célú v1-támogatás  |  | I| | |
-| Általános célú v2 Standard  | I | I | I | Gyakori és ritka elérésű egyaránt támogatottak.|
-| General-purpose v2 Premium  |  |I | | |
-| A BLOB storage Standard |I | | |Gyakori és ritka elérésű egyaránt támogatottak. |
+| Klasszikus standard | I | I | I |
+| Általános célú v1 szabvány  | I | I | I | Mind a forró, mind a hűvös támogatott.|
+| Általános célú v1 Premium  |  | I| | |
+| Általános célú v2 szabvány  | I | I | I | Mind a forró, mind a hűvös támogatott.|
+| Általános célú v2 Premium  |  |I | | |
+| Blob storage szabvány |I | | |Mind a forró, mind a hűvös támogatott. |
 
-\* *– Lapblobok feltöltött adatok igazítva, például VHD-k, 512 bájt kell lennie.*
+\**- A lapblobokba feltöltött adatoknak 512 bájtnak kell lenniük, például virtuális gépekhez.*
 
 >[!NOTE]
-> Az Azure Data Lake Storage 2. generációs gyűjtések fiókok nem támogatottak.
+> Az Azure Data Lake Storage Gen2-fiókok nem támogatottak.

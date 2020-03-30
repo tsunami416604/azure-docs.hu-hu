@@ -1,6 +1,6 @@
 ---
-title: Az Azure Table Storage tervezése adatmódosításra | Microsoft Docs
-description: Tervezze meg az Azure Table Storage adatmódosítási táblázatait.
+title: Az Azure Table tároló tervezése az adatok módosításához | Microsoft dokumentumok
+description: Az Azure Table storage-ban az adatok módosításához táblákat tervezhet.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,43 +9,43 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75771546"
 ---
 # <a name="design-for-data-modification"></a>Tervezés adatmódosításhoz
-Ez a cikk a lapkák, frissítések és törlések optimalizálására vonatkozó tervezési szempontokat ismerteti. Bizonyos esetekben ki kell értékelnie a kiértékelést olyan formatervezési minták között, amelyek optimalizálják az adatmódosításra optimalizált kialakításokat, ugyanúgy, mint a viszonyítási adatbázisok tervezésekor (bár a tervezési kompromisszumok kezelésének módszerei eltérő a kapcsolódó adatbázisban). A tábla kialakítási mintái a Table service részletes tervezési mintáit ismertetik, és kiemelik ezeket a kompromisszumokat. A gyakorlatban azt tapasztalja, hogy számos, az entitások lekérdezésére optimalizált terv is jól működik az entitások módosításához.  
+Ez a cikk a beszúrások, frissítések és törlések optimalizálásával kapcsolatos tervezési szempontokra összpontosít. Bizonyos esetekben ki kell értékelnie a kompromisszumot a formatervezési minták között, amelyek optimalizálják az adatmódosításra optimalizáló tervek lekérdezését, ugyanúgy, mint a relációs adatbázisok tervezésénél (bár a tervezési kompromisszumok kezelésének technikái a relációs adatbázisban eltérő). A szakasz Táblázat tervezési minták ismerteti néhány részletes tervezési minták a table szolgáltatás, és kiemeli néhány ilyen kompromisszumokat. A gyakorlatban azt fogja találni, hogy sok entitások lekérdezésére optimalizált tervek is jól működnek az entitások módosítása.  
 
 ## <a name="optimize-the-performance-of-insert-update-and-delete-operations"></a>A beszúrási, frissítési és törlési műveletek teljesítményének optimalizálása
-Entitások frissítéséhez vagy törléséhez a **PartitionKey** és a **RowKey** értékeket kell tudnia azonosítani. Ebben a tekintetben az entitások módosítására választott **PartitionKey** és **RowKey** a hasonló feltételeket kell követnie, hogy támogassa a pontok lekérdezéseit, mert az entitásokat a lehető leghatékonyabb módon szeretné azonosítani. Nem érdemes nem hatékony partíciót vagy táblázatot keresni, hogy megkeresse az entitást, hogy felderítse a frissíteni vagy törölni kívánt **PartitionKey** és **RowKey** értékeket.  
+Entitás frissítéséhez vagy törléséhez képesnek kell lennie arra, hogy a **PartitionKey** és a **RowKey** értékek használatával azonosítsa azt. Ebben a tekintetben a **partitionkey** és **rowkey** az entitások módosítására hasonló feltételeket kell követnie a választott pontlekérdezések, mert szeretné azonosítani az entitásokat a lehető leghatékonyabban. Nem szeretné, hogy egy nem hatékony partíció vagy tábla vizsgálat megkeresni egy entitást annak érdekében, hogy felfedezzék a **PartitionKey** és **RowKey** értékeket kell frissíteni vagy törölni.  
 
-A következő minták a táblázat tervezési mintái című szakasza a teljesítmény vagy az INSERT, Update és DELETE műveletek optimalizálása érdekében:  
+A táblázat tervezési mintái című szakaszban a következő minták a teljesítmény vagy a beszúrási, frissítési és törlési műveletek optimalizálásával foglalkoznak:  
 
-* [Nagy mennyiségű törlési minta](table-storage-design-patterns.md#high-volume-delete-pattern) – engedélyezze a nagy mennyiségű entitás törlését úgy, hogy az összes entitást egyidejű törlésre tárolja a saját külön táblában. az entitásokat a tábla törlésével törölheti.  
-* [Adatsorozat-minta](table-storage-design-patterns.md#data-series-pattern) – a teljes adatsorozatok tárolása egyetlen entitásban, az Ön által végzett kérelmek számának csökkentése érdekében.  
-* [Széles entitások mintája](table-storage-design-patterns.md#wide-entities-pattern) – több fizikai entitást használhat a több mint 252 tulajdonságú logikai entitások tárolására.  
-* [Nagyméretű entitások mintája](table-storage-design-patterns.md#large-entities-pattern) – a blob Storage használata nagy tulajdonságértékek tárolására.  
+* [Nagy mennyiségű törlési minta](table-storage-design-patterns.md#high-volume-delete-pattern) – Nagy mennyiségű entitás törlésének engedélyezése az összes entitás egyidejű törlésével a saját külön táblájukban; az entitásokat a tábla törlésével törölheti.  
+* [Adatsor minta](table-storage-design-patterns.md#data-series-pattern) – A teljes adatsorokat egyetlen entitásban tárolja a kérések számának minimalizálása érdekében.  
+* [Széles entitások minta](table-storage-design-patterns.md#wide-entities-pattern) – több fizikai entitás használata 252-nél több tulajdonsággal rendelkező logikai entitások tárolásához.  
+* [Nagy entitások minta](table-storage-design-patterns.md#large-entities-pattern) – blob storage használatával nagy tulajdonságértékek tárolására.  
 
-## <a name="ensure-consistency-in-your-stored-entities"></a>Konzisztencia biztosítása a tárolt entitásokban
-A másik kulcsfontosságú tényező, amely hatással van az adatmódosítások optimalizálására kiválasztott kulcsokra, az Atomic Transactions használatával biztosítható a konzisztencia. A EGT csak akkor használhatók, ha ugyanazon a partíción tárolt entitásokon működnek.  
+## <a name="ensure-consistency-in-your-stored-entities"></a>A tárolt entitások konzisztenciájának biztosítása
+A másik kulcsfontosságú tényező, amely befolyásolja a választott kulcsok optimalizálása adatmódosítások, hogyan biztosíthatja a konzisztenciát atomi tranzakciók használatával. Egt-t csak az ugyanazon partíción tárolt entitásokon használhat.  
 
-A cikk [tábla kialakítási mintái](table-storage-design-patterns.md) a konzisztencia kezelése:  
+A cikkben a [Táblázat tervezési mintái](table-storage-design-patterns.md) a konzisztencia kezelésével foglalkoznak a következő minták:  
 
-* [Partíción belüli másodlagos index minta](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző **RowKey** -értékekkel (ugyanabban a partícióban) a gyors és hatékony keresési és alternatív rendezési sorrendek eltérő **RowKey** -értékek használatával történő engedélyezéséhez.  
-* [Partíciók közötti másodlagos index minta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző RowKey-értékekkel külön partíciókban vagy külön táblákban, hogy a gyors és hatékony keresési és alternatív rendezési sorrendet a különböző **RowKey** értékek használatával engedélyezze.  
-* [Végül konzisztens tranzakciós minta](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) – az Azure Queues használatával lehetővé válik a partíciós határok vagy a tárolási rendszerek határainak végül konzisztens viselkedésének engedélyezése.
-* [Entitások indexelése](table-storage-design-patterns.md#index-entities-pattern) – az indexelési entitások megtartása az entitások listáját visszaadó hatékony keresések engedélyezéséhez.  
-* [Denormalizálás mintája](table-storage-design-patterns.md#denormalization-pattern) – a kapcsolódó adategységeket egyetlen entitásban kombinálva lehetővé teszi az összes szükséges adat lekérését egyetlen pont lekérdezéssel.  
-* [Adatsorozat-minta](table-storage-design-patterns.md#data-series-pattern) – a teljes adatsorozatok tárolása egyetlen entitásban, az Ön által végzett kérelmek számának csökkentése érdekében.  
+* [Partíción belüli másodlagos indexminta](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – Tárolja az egyes entitások több példányát különböző **RowKey-értékek** használatával (ugyanabban a partícióban) a gyors és hatékony keresések és a különböző **RowKey-értékek** használatával történő rendezési sorrendek engedélyezéséhez.  
+* [Partíciók közötti másodlagos indexminta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – Tárolja az egyes entitások több példányát különböző RowKey-értékek használatával külön partíciókon vagy külön táblákban, hogy gyors és hatékony keresések és alternatív rendezési sorrendek különböző **RowKey-értékek** használatával.  
+* [Végül konzisztens tranzakciók minta](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) – Engedélyezése végül konzisztens viselkedés partícióhatárokon vagy a tárolási rendszer határait az Azure-várólisták használatával.
+* [Entitások indexelése –](table-storage-design-patterns.md#index-entities-pattern) Az indexentitások karbantartása az entitások listáját visszaadó hatékony keresések engedélyezéséhez.  
+* [Denormalizációs minta](table-storage-design-patterns.md#denormalization-pattern) – A kapcsolódó adatok egyesítése egyetlen entitásban, hogy egyetlen pontlekérdezéssel lehívhassa az összes szükséges adatot.  
+* [Adatsor minta](table-storage-design-patterns.md#data-series-pattern) – A teljes adatsorokat egyetlen entitásban tárolja a kérések számának minimalizálása érdekében.  
 
-További információ az Entity Transactions szolgáltatással kapcsolatban: [Entity Transactions (entitások csoportosítása](table-storage-design.md#entity-group-transactions)) szakasz.  
+Az entitáscsoport tranzakcióiról az [Entitáscsoport tranzakciói](table-storage-design.md#entity-group-transactions)című szakaszban talál információt.  
 
-## <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Győződjön meg arról, hogy a hatékony módosítások lehetővé teszik a tervezést a hatékony lekérdezésekhez
-Sok esetben a hatékony lekérdezések kialakítása a hatékony módosítások eredményét eredményezi, azonban mindig ki kell értékelnie, hogy ez a helyzet az adott forgatókönyv esetén. A cikk [tábla kialakítási mintáinak](table-storage-design-patterns.md) néhány mintája explicit módon értékeli ki az entitások lekérdezése és módosítása közötti kompromisszumokat, és mindig vegye figyelembe az egyes típusú műveletek számát.  
+## <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Győződjön meg róla, hogy a hatékony módosítások érdekében a tervezés megkönnyíti a hatékony lekérdezéseket
+Sok esetben a hatékony lekérdezési terv hatékony módosításokat eredményez, de mindig ki kell értékelnie, hogy ez a helyzet az adott forgatókönyv esetében. A cikkben szereplő [Táblatervezési minták](table-storage-design-patterns.md) néhány példa explicit módon értékeli ki az entitások lekérdezése és módosítása közötti kompromisszumokat, és mindig figyelembe kell vennie az egyes művelettípusok számát.  
 
-A cikk [tábla kialakítási mintái](table-storage-design-patterns.md) a következő mintákat ismertetik a hatékony lekérdezések tervezése és a hatékony adatmódosítás kialakítása között:  
+A cikkben a következő minták a [Tábla tervezési mintái](table-storage-design-patterns.md) a hatékony lekérdezések tervezése és a hatékony adatmódosítás tervezése közötti kompromisszumokat kezelik:  
 
-* [Összetett kulcs mintázata](table-storage-design-patterns.md#compound-key-pattern) – az összetett **RowKey** értékek használatával lehetővé teheti, hogy az ügyfél egyetlen pont lekérdezéssel keresse a kapcsolódó adatait.  
-* [Naplóbeli farok minta](table-storage-design-patterns.md#log-tail-pattern) – a partícióhoz legutóbb hozzáadott *n* entitások beolvasása egy **RowKey** értékkel, amely fordított dátum és idő sorrendbe rendezi.  
+* [Összetett kulcsminta](table-storage-design-patterns.md#compound-key-pattern) – Összetett **RowKey** értékek használatával engedélyezheti, hogy az ügyfél egypontos lekérdezéssel keresse meg a kapcsolódó adatokat.  
+* [Log tail minta](table-storage-design-patterns.md#log-tail-pattern) – A partícióhoz legutóbb hozzáadott *n* entitások lekérése **egy RowKey** érték használatával, amely fordított dátum- és idősorrendben rendezi.  

@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a mezőhöz
-description: A Azure Logic Apps segítségével automatizálhatja a fájlok létrehozásával és kezelésével kapcsolatos feladatokat és munkafolyamatokat
+title: Csatlakozás a dobozhoz
+description: Az Azure Logic Apps használatával fájlokat létrehozó és kezelő feladatok és munkafolyamatok automatizálása a Boxban
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666771"
 ---
-# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Fájlok létrehozása és kezelése a box-ban Azure Logic Apps használatával
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Fájlok létrehozása és kezelése a Box ban az Azure Logic Apps használatával
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet fájlokat a dobozban egy logikai alkalmazásban a Box Connector használatával. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják a feladatokat és a munkafolyamatokat a fájlok és egyéb műveletek kezeléséhez, például:
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet fájlokat a Box-ban egy logikai alkalmazáson belülről a Box-összekötővel. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják a fájlok és egyéb műveletek kezeléséhez szükséges feladatokat és munkafolyamatokat, például:
 
-* Hozza létre üzleti folyamatát a listából kapott adatok alapján.
+* A Boxtól kapott adatok alapján építheti ki üzleti folyamatait.
 
-* Automatizált feladatok és munkafolyamatok elindítása fájl létrehozásakor vagy frissítésekor.
+* Automatikus feladatok és munkafolyamat oka a fájl létrehozásakor vagy frissítésekor.
 
-* Futtasson egy fájlt átmásoló műveletet, vagy törölje a fájlt.
+* Futtasson egy fájlt másoló műveletet, vagy töröljön egy fájlt.
 
-  Ha ezek a műveletek választ kapnak, a kimenet más műveletekhez is elérhetővé válik. 
-  Ha például egy fájl módosítva van a box-ban, a fájlt e-mailben is elküldheti az Office 365 használatával.
+  Amikor ezek a műveletek választ kapnak, a kimenetet más műveletek számára is elérhetővé teszik. 
+  Ha például egy fájlt módosítanak a Box alkalmazásban, a fájlt elküldheti e-mailben az Office 365-tel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Box-fiók](https://www.box.com/home)
+* [A Box fiók](https://www.box.com/home)
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni a Box-fiókját. A logikai alkalmazás Box triggerrel való indításához [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség.
+* A logikai alkalmazás, ahol szeretné elérni a Box-fiók. A logikai alkalmazás Box eseményindítóval való indításához [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség.
 
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md).
+* Alapvető ismeretek [a logikai alkalmazások létrehozásához.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+Ha most kezdi a logikai alkalmazásokat, tekintse át [az Azure Logic Apps.](../logic-apps/logic-apps-overview.md)
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/box/).
+Az összekötő OpenAPI (korábbi nevén Swagger) fájljában leírtak szerint technikai részleteket, például eseményindítókat, műveleteket és korlátokat az [összekötő referenciaoldalán talál.](/connectors/box/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)

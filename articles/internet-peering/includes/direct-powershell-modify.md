@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774262"
 ---
-Ez a szakasz azt ismerteti, hogyan hajtható végre a következő módosítási műveletek a közvetlen társításhoz:
+Ez a szakasz azt ismerteti, hogy miként hajthatja végre a következő módosítási műveleteket a közvetlen társviszony-létesítéshez:
 
-* Közvetlen társas kapcsolatok hozzáadása
-* Közvetlen társas kapcsolatok eltávolítása
-* A sávszélesség frissítése vagy visszalépése az aktív kapcsolatokon.
-* IPv4/IPv6-munkamenet hozzáadása az aktív kapcsolatokhoz.
-* IPv4/IPv6-munkamenet eltávolítása az aktív kapcsolatokon.
+* Közvetlen társviszony-létesítési kapcsolatok hozzáadása
+* Közvetlen társviszony-létesítési kapcsolatok eltávolítása
+* Az aktív kapcsolatok sávszélességének frissítése vagy visszaminősítése.
+* IPv4/IPv6-munkamenet hozzáadása aktív kapcsolatokhoz.
+* Távolítsa el az IPv4/IPv6 munkamenetet az aktív kapcsolatokból.
 
-### <a name="add-direct-peering-connections"></a>Közvetlen társas kapcsolatok hozzáadása
+### <a name="add-direct-peering-connections"></a>Közvetlen társviszony-létesítési kapcsolatok hozzáadása
 
-Az alábbi példa azt ismerteti, hogyan lehet kapcsolatokat hozzáadni a meglévő közvetlen társításhoz
+Az alábbi példa bemutatja, hogyan adhat hozzá kapcsolatokat a meglévő közvetlen társviszony-létesítéshez
 
 ```powershell
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>Közvetlen társas kapcsolatok eltávolítása
+### <a name="remove-direct-peering-connections"></a>Közvetlen társviszony-létesítési kapcsolatok eltávolítása
 
-A kapcsolatok eltávolítása jelenleg nem támogatott a PowerShellben. Forduljon a [Microsoft-partnerekhez](mailto:peeringexperience@microsoft.com).
+A kapcsolat eltávolítása jelenleg nem támogatott a PowerShell. Lépjen kapcsolatba [a Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).
 
 <!--
 ```powershell
@@ -56,9 +56,9 @@ $directPeering | Update-AzPeering
 ```
 -->
 
-### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>A sávszélesség frissítése vagy visszalépése aktív kapcsolatokon
+### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>A sávszélesség frissítése vagy visszaminősítése aktív kapcsolatokon
 
-Az alábbi példa azt ismerteti, hogyan adhat hozzá 10Gbps a meglévő közvetlen kapcsolódáshoz.
+Az alábbi példa bemutatja, hogyan adhat hozzá 10 Gbps-t a meglévő közvetlen kapcsolathoz.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-munkamenet hozzáadása az aktív kapcsolatokhoz.
+### <a name="add-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-munkamenet hozzáadása aktív kapcsolatokhoz.
 
-Az alábbi példa azt ismerteti, hogyan adható hozzá IPv6-munkamenet egy meglévő közvetlen kapcsolathoz csak IPv4-munkamenettel. 
+Az alábbi példa bemutatja, hogyan lehet IPv6-munkamenetet hozzáadni egy meglévő közvetlen kapcsolathoz csak az IPv4-munkamenettel. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-munkamenet eltávolítása az aktív kapcsolatokon.
+### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Távolítsa el az IPv4/IPv6 munkamenetet az aktív kapcsolatokból.
 
-Egy IPv4/IPv6-munkamenet meglévő kapcsolatból való eltávolítása jelenleg nem támogatott a PowerShellben. Forduljon a [Microsoft-partnerekhez](mailto:peeringexperience@microsoft.com).
+A PowerShell jelenleg nem támogatja az IPv4/IPv6-munkamenet meglévő kapcsolatból való eltávolítását. Lépjen kapcsolatba [a Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).

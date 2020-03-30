@@ -1,7 +1,7 @@
 ---
-title: A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai
+title: Méretezhetőségi és teljesítménycélok a szabványos tárfiókokhoz
 titleSuffix: Azure Storage
-description: A standard szintű Storage-fiókok méretezhetőségi és teljesítménybeli céljainak megismerése.
+description: Ismerje meg a méretezhetőségi és teljesítménycélok at a normál tárfiókok.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,21 +10,21 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 817e11fdf70c8043d2eb860fe15cc0a7907c6656
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750643"
 ---
-# <a name="scalability-and-performance-targets-for-standard-storage-accounts"></a>A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai
+# <a name="scalability-and-performance-targets-for-standard-storage-accounts"></a>Méretezhetőségi és teljesítménycélok a szabványos tárfiókokhoz
 
 [!INCLUDE [storage-scalability-intro-include](../../../includes/storage-scalability-intro-include.md)]
 
-## <a name="scale-targets-for-standard-storage-accounts"></a>Célok méretezése standard Storage-fiókokhoz
+## <a name="scale-targets-for-standard-storage-accounts"></a>A szabványos tárfiókok céljainak méretezése
 
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-- [Az Azure Storage erőforrás-szolgáltató skálázhatósági céljai](../common/scalability-targets-resource-provider.md)
-- [Azure-előfizetési korlátok és kvóták](../../azure-resource-manager/management/azure-subscription-service-limits.md)
+- [Méretezhetőségi célok az Azure Storage-erőforrás-szolgáltatószámára](../common/scalability-targets-resource-provider.md)
+- [Az Azure előfizetési korlátai és kvótái](../../azure-resource-manager/management/azure-subscription-service-limits.md)

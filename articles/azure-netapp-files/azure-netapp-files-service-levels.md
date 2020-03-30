@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files szolgáltatási szintjei | Microsoft Docs
-description: A Azure NetApp Files szolgáltatási szintjeinek teljesítménybeli teljesítményét ismerteti.
+title: Az Azure NetApp-fájlok szolgáltatási szintjei | Microsoft dokumentumok
+description: Az Azure NetApp-fájlok szolgáltatási szintjeinek átviteli teljesítményének ismertetése.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,48 +15,48 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
 ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75832583"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Az Azure NetApp Files szolgáltatásszintjei
-A szolgáltatási szint a kapacitási készlet egyik attribútuma. A szolgáltatási szinteket a rendszer a kötethez hozzárendelt kvóta alapján határozza meg, és megkülönbözteti a kapacitások megengedett maximális átviteli sebességét.
+A szolgáltatásszintek egy kapacitáskészlet attribútumai. A szolgáltatásszinteket a kapacitáskészletben lévő kötet ek számára engedélyezett maximális átviteli teljesítmény határozza meg és különbözteti meg a kötethez rendelt kvóta alapján.
 
 ## <a name="supported-service-levels"></a>Támogatott szolgáltatási szintek
 
-A Azure NetApp Files három szolgáltatási szintet támogat: *Ultra*, *Premium*és *standard*. 
+Az Azure NetApp Files három szolgáltatási szintet támogat: *Ultra,* *Premium*és *Standard*. 
 
-* <a name="Ultra"></a>Ultra Storage
+* <a name="Ultra"></a>Ultra tároló
 
-    Az ultra Storage-szinten legfeljebb 128 MiB/s átviteli sebesség adható meg a hozzárendelt mennyiségi kvóta alapján 1 TiB-onként. 
+    Az Ultra tárolási szint legfeljebb 128 MiB/s átviteli kapacitást biztosít 1 TiB hozzárendelt kötetkvótánként. 
 
-* <a name="Premium"></a>Prémium szintű Storage
+* <a name="Premium"></a>Prémium szintű tárolás
 
-    A Premium Storage-szint legfeljebb 64 MiB/s átviteli sebességet biztosít a hozzárendelt mennyiségi kvóta alapján 1 TiB-onként. 
+    A prémium szintű tárolási szint legfeljebb 64 MiB/s átviteli kapacitást biztosít 1 TiB hozzárendelt kötetkvótánként. 
 
 * <a name="Standard"></a>Standard szintű Storage
 
-    A standard szintű tárolási szint legfeljebb 16 MiB/s adatátviteli sebességet biztosít a hozzárendelt mennyiségi kvóta alapján 1 TiB-onként.
+    A standard tárolási szint legfeljebb 16 MiB/s átviteli kapacitást biztosít 1 TiB hozzárendelt kötetkvótánként.
 
 ## <a name="throughput-limits"></a>Átviteli korlátok
 
-A kötetek átviteli sebességének korlátját a következő tényezők kombinációja határozza meg:
-* Azon kapacitási készlet szolgáltatási szintje, amelyhez a kötet tartozik
+A kötet átviteli korlátját a következő tényezők kombinációja határozza meg:
+* Annak a kapacitáskészletnek a szolgáltatási szintje, amelyhez a kötet tartozik
 * A kötethez rendelt kvóta  
 
-Ezt a koncepciót az alábbi ábra szemlélteti:
+Ezt a fogalmat az alábbi ábra szemlélteti:
 
 ![Szolgáltatási szint illusztrációja](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-A fenti 1. példában egy, a prémium szintű Storage-szinttel rendelkező, 2 TiB-t hozzárendelő kapacitási készletből származó kötethez 128 MiB/s (2 TiB * 64 MiB/s) átviteli korlát lesz hozzárendelve. Ez a forgatókönyv a kapacitási készlet méretétől vagy a tényleges mennyiségi felhasználástól függetlenül érvényes.
+A fenti 1. Ez a forgatókönyv a kapacitáskészlet méretétől vagy a tényleges kötetfelhasználástól függetlenül érvényes.
 
-A fenti 2. példában egy olyan kötetet, amely egy, a prémium szintű Storage-szinthez hozzárendelt, 100 GiB-as csomaggal rendelkező kapacitási készletből áll, 6,25 MiB/s (0,09765625 TiB * 64 MiB/s) átviteli korlátot kap. Ez a forgatókönyv a kapacitási készlet méretétől vagy a tényleges mennyiségi felhasználástól függetlenül érvényes.
+A fenti 2. Ez a forgatókönyv a kapacitáskészlet méretétől vagy a tényleges kötetfelhasználástól függetlenül érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A különböző szolgáltatási szintek árának [Azure NetApp Files díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/netapp/) talál.
-- A kapacitás felhasználásának számítási kapacitásának kiszámításához tekintse meg [Azure NetApp Files a Cost modelljét](azure-netapp-files-cost-model.md) 
+- Tekintse meg az [Azure NetApp Files díjszabási lapját](https://azure.microsoft.com/pricing/details/storage/netapp/) a különböző szolgáltatási szintek áráról
+- Lásd: [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md) a kapacitáskészlet kapacitásfelhasználásának kiszámításához 
 - [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
-- [Azure NetApp Files szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
+- Lásd [az Azure NetApp-fájlok szolgáltatásiszint-szerződését (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)

@@ -1,6 +1,6 @@
 ---
-title: Tárolási kivétel az Azure HDInsight-beli kapcsolatok alaphelyzetbe állítása után
-description: Tárolási kivétel az Azure HDInsight-beli kapcsolatok alaphelyzetbe állítása után
+title: Tárolási kivétel a kapcsolat alaphelyzetbe állítása után az Azure HDInsightban
+description: Tárolási kivétel a kapcsolat alaphelyzetbe állítása után az Azure HDInsightban
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,40 +8,40 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887223"
 ---
-# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Forgatókönyv: tárolási kivétel az Azure HDInsight-beli kapcsolatok visszaállítása után
+# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Eset: Tárolási kivétel a kapcsolat alaphelyzetbe állítása után az Azure HDInsightban
 
-Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Nem hozható létre új Apache HBase tábla.
+Nem lehet létrehozni az új Apache HBase táblát.
 
 ## <a name="cause"></a>Ok
 
-Egy tábla csonkítása során probléma merült fel a tárolási kapcsolatban. A tábla bejegyzése törölve lett a HBase metaadat-táblában. Egyetlen blob-fájl sem lett törölve.
+A táblacsonkolási folyamat során tárolási kapcsolati probléma merült fel. A táblabejegyzés törölve lett a HBase metaadattáblájában. Egy kivételével az összes blobfájl törölve lett.
 
-Annak ellenére, hogy a tárolóban nem található `/hbase/data/default/ThatTable` nevű mappa-blob. A WASB illesztőprogramja megtalálta a fenti blob-fájl létezését, és nem teszi lehetővé, hogy `/hbase/data/default/ThatTable` nevű blobot hozzon létre, mert azt feltételezi, hogy a szülő mappák is léteztek, így a tábla létrehozása sikertelen lesz.
+Bár nem volt mappa `/hbase/data/default/ThatTable` blob nevű ül a tárolóban. A WASB-illesztőprogram megtalálta a fenti blobfájl létezését, és nem `/hbase/data/default/ThatTable` engedélyezte a hívott blob létrehozását, mert feltételezte, hogy a szülőmappák léteznek, így a tábla létrehozása sikertelen lesz.
 
-## <a name="resolution"></a>Felbontás
+## <a name="resolution"></a>Megoldás:
 
-1. Az Apache Ambari felhasználói felületén indítsa újra az aktív HMaster. Ez lehetővé teszi, hogy a két készenléti HMaster az aktív legyen, és az új aktív HMaster újra betölti a metaadatok táblázatának adatait. Így nem fogja látni a `already-deleted` táblát a HMaster felhasználói felületén.
+1. Az Apache Ambari felhasználói felületéről indítsa újra az aktív HMaster programot. Ez lehetővé teszi, hogy a két készenléti HMaster közül az egyik legyen az aktív, és az új aktív HMaster újratölti a metaadat-tábla adatait. Így nem fogja `already-deleted` látni a táblázatot a HMaster felhasználói felületen.
 
-1. Az árva blob-fájlt a felhasználói felületi eszközökről (például a Cloud Explorerben) vagy a (z) `hdfs dfs -ls /xxxxxx/yyyyy`parancs futtatásáról találhatja meg. `hdfs dfs -rmr /xxxxx/yyyy` futtatásával törölje a blobot. Például: `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. Megtalálhatja az árva blob fájlt a felhasználói felület eszközeiből, például a Cloud Explorerből vagy a futó parancsból, mint például `hdfs dfs -ls /xxxxxx/yyyyy`. Futtassa `hdfs dfs -rmr /xxxxx/yyyy` a blob törléséhez. Például: `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
-Most létrehozhat egy azonos nevű új táblát a HBase-ben.
+Most már létrehozhat új táblát ugyanazzal a névvel a HBase-ben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
 
-* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
 
-* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.

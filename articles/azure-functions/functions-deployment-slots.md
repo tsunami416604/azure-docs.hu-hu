@@ -1,59 +1,59 @@
 ---
-title: Azure Functions üzembe helyezési pontok
-description: Ismerje meg, hogyan hozhat létre és használhat üzembe helyezési tárolóhelyeket Azure Functions
+title: Az Azure Functions központi telepítési bővítőhelyei
+description: Ismerje meg a telepítési tárolóhelyek létrehozását és használatát az Azure Functions segítségével
 author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769217"
 ---
-# <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
+# <a name="azure-functions-deployment-slots"></a>Az Azure Functions központi telepítési bővítőhelyei
 
-Azure Functions üzembe helyezési pontok lehetővé teszik, hogy a Function alkalmazás különböző példányokat futtasson "bővítőhelyek" néven. A tárolóhelyek egy nyilvánosan elérhető végponton keresztül kitett különböző környezetek. Az egyik alkalmazás példánya mindig az üzemi tárolóhelyre van leképezve, és igény szerint egy tárolóhelyhez rendelt példányok is felcserélhetők. Az Apps Service-csomag alatt futó Function apps több tárolóhelytel rendelkezhet, míg a használati terv csak egy tárolóhelyet engedélyez.
+Az Azure Functions központi telepítési tárolóhelyekkel lehetővé teszi, hogy a függvényalkalmazás különböző példányokat futtatjon "bővítőhelynek". A tárolóhelyek különböző környezetek nyilvánosan elérhető végponton keresztül elérhető. Egy alkalmazáspéldány mindig le van képezve az éles tárolóhelyre, és igény szerint cserélheti a tárolóhelyhez rendelt példányokat. Az Apps Service-csomag alatt futó függvényalkalmazások több bővítőhellyel rendelkezhetnek, míg a Felhasználási terv alatt csak egy tárolóhely engedélyezett.
 
-A következő, a függvények a tárolóhelyek cseréjével kapcsolatos hatásait mutatja be:
+A következők ben azt tükrözik, hogy a cserehelyek hogyan befolyásolják a funkciókat:
 
-- A forgalom átirányítása zökkenőmentes; a swap miatt a rendszer nem távolítja el a kérelmeket.
-- Ha egy függvény a swap során fut, a végrehajtás folytatódik, és az azt követő triggerek átirányítva lesznek a felcserélt alkalmazás-példányra.
+- A forgalom átirányítása zökkenőmentes; a csere miatt nem dobnak el kéréseket.
+- Ha egy függvény fut a csere közben, a végrehajtás folytatódik, és az azt követő eseményindítók a felcserélt alkalmazáspéldányhoz leszirányítva.
 
 > [!NOTE]
-> A Linux-használati csomag jelenleg nem érhető el.
+> A bővítőhelyek jelenleg nem érhetők el a Linux-felhasználási csomaghoz.
 
-## <a name="why-use-slots"></a>Miért érdemes tárolóhelyeket használni?
+## <a name="why-use-slots"></a>Miért érdemes résidőket használni?
 
-Számos előnnyel jár az üzembe helyezési pontok használata. A következő forgatókönyvek a bővítőhelyek gyakori felhasználási módjait ismertetik:
+A központi telepítési tárolóhelyek használatának számos előnye van. A következő forgatókönyvek a tárolóhelyek gyakori felhasználási céljait ismertetik:
 
-- Különböző **környezetek különböző célokra**: a különböző tárolóhelyek használata lehetővé teszi az alkalmazás-példányok megkülönböztetését, mielőtt az éles környezetbe vagy egy átmeneti tárolóhelyre cseréli őket.
-- **Előmelegítés**: a közvetlenül az éles környezetbe való üzembe helyezése lehetővé teszi az alkalmazás számára, hogy az élő működés előtt belépjen. Emellett a tárolóhelyek használata csökkenti a HTTP-triggert használó munkaterhelések késését. A példányokat a rendszer az üzembe helyezés előtt felmelegszik, ami csökkenti az újonnan üzembe helyezett függvények hideg indítását.
-- **Egyszerű tartalékok**: az éles használat után a korábban előkészített alkalmazáshoz tartozó tárolóhely már az előző éles alkalmazásban van. Ha az éles tárolóhelyre való váltás nem a várt módon történik, akkor a swap azonnal visszafordítható az "utolsó ismert jó példány" visszaszerzéséhez.
+- **Különböző környezetek különböző célokra:** A különböző bővítőhelyek használatával megkülönböztetheti az alkalmazáspéldányokat, mielőtt éles környezetre vagy átmeneti tárolóhelyre cserélne.
+- **Előmelegítés:** A közvetlenül éles környezetben való üzembe helyezés lehetővé teszi az alkalmazás felmelegedését, mielőtt éleskörnyezetbe menne. Emellett a tárolóhelyek használatával csökkenti a http-aktivált számítási feladatok késését. A példányok felmelegedése az üzembe helyezés előtt bemelegedik, ami csökkenti az újonnan üzembe helyezett függvények hidegindítását.
+- **Egyszerű tartalék:** A termeléssel való csere után a korábban előkészített alkalmazással rendelkező tárolóhely már rendelkezik az előző éles alkalmazással. Ha a változások a termelési tárolóhelyre cserélve nem a várt módon, azonnal visszafordíthatja a swapot, hogy visszakapja az "utolsó ismert jó példányt".
 
-## <a name="swap-operations"></a>Swap-műveletek
+## <a name="swap-operations"></a>Csereműveletek
 
-A csere során az egyik tárolóhely a forrás és a másik cél. A forrás tárolóhely az alkalmazás azon példányát alkalmazza, amely a cél tárolóhelyre van alkalmazva. A következő lépések gondoskodnak arról, hogy a cél tárolóhely ne tapasztaljon állásidőt a swap során:
+A csere során az egyik tárolóhely a forrás, a másik pedig a cél. A forrástároló hely rendelkezik a céltárolóra alkalmazott alkalmazás példányával. A következő lépések biztosítják, hogy a céltárolóhely nem tapasztal állásidőt a csere során:
 
-1. **Beállítások alkalmazása:** A cél tárolóhelyről származó beállításokat a rendszer a forrás tárolóhely összes példányára alkalmazza. Az éles környezet beállításait például az átmeneti példányra alkalmazza a rendszer. Az alkalmazott beállítások a következő kategóriákat tartalmazzák:
-    - A [tárolóhely-specifikus](#manage-settings) Alkalmazásbeállítások és a kapcsolatok karakterláncai (ha vannak ilyenek)
-    - [Folyamatos üzembe helyezési](../app-service/deploy-continuous-deployment.md) beállítások (ha engedélyezve vannak)
-    - [App Service hitelesítési](../app-service/overview-authentication-authorization.md) beállítások (ha engedélyezve vannak)
+1. **Beállítások alkalmazása:** A céltárolóhely beállításai a forrástároló összes példányára vonatkoznak. Például a termelési beállítások at az átmeneti példányra alkalmazza. Az alkalmazott beállítások a következő kategóriákat tartalmazzák:
+    - [Slot-specifikus](#manage-settings) alkalmazásbeállítások és kapcsolati karakterláncok (ha vannak ilyenek)
+    - [Folyamatos üzembe helyezési](../app-service/deploy-continuous-deployment.md) beállítások (ha engedélyezve van)
+    - [Az App Service hitelesítési](../app-service/overview-authentication-authorization.md) beállításai (ha engedélyezve van)
 
-1. **Várakozás az újraindításra és a rendelkezésre állásra:** A swap megvárja a forrás tárolóhely minden példányát, hogy elvégezze az újraindítást, és hogy elérhető legyen a kérésekhez. Ha valamelyik példány nem indul újra, a swap művelet visszaállítja a forrás tárolóhelyének összes módosítását, és leállítja a műveletet.
+1. **Várja meg az újraindításokat és a rendelkezésre állást:** A swap vár minden példány a forrás tárolóhely újraindítása, és a kérelmek elérhetővé. Ha valamelyik példány nem indul újra, a swap művelet visszaállítja a forrástárolóhely összes módosítását, és leállítja a műveletet.
 
-1. **Útválasztás frissítése:** Ha a forrás tárolóhelyén lévő összes példány sikeresen befejeződik, a két bővítőhely az útválasztási szabályok váltásával hajtja végre a cserét. Ezt a lépést követően a cél tárolóhely (például az éles tárolóhely) azt az alkalmazást alkalmazza, amely korábban a forrás tárolóhelyen van bemelegítve.
+1. **Útválasztási terv frissítése:** Ha a forrástárolón lévő összes példány sikeresen bemelegedett, a két bővítőhely az útválasztási szabályok közötti váltással befejezi a felcserélést. Ezt a lépést követően a céltárolóhely (például az éles tárolóhely) rendelkezik az alkalmazás, amely korábban felmelegedett a forrástárolóban.
 
-1. **Ismétlési művelet:** Most, hogy a forrás tárolóhelye korábban a cél tárolóhelyen lévő előzetes swap alkalmazást használja, végezze el ugyanezt a műveletet úgy, hogy az összes beállítást alkalmazza, majd újraindítja a példányokat a forrás tárolóhelyén.
+1. **Művelet ismétlése:** Most, hogy a forrástároló valameddig rendelkezik a csere előtti alkalmazással korábban a céltárolóban, hajtsa végre ugyanazt a műveletet az összes beállítás alkalmazásával, és újraindítja a forrástárolóhely példányait.
 
 Tartsa szem előtt az alábbi szempontokat:
 
-- A swap-művelet bármely pontján a felcserélt alkalmazások inicializálása a forrás tárolóhelyen történik. A cél tárolóhely online marad, amíg a forrás tárolóhelye elkészült, vagy a swap sikeres vagy sikertelen lesz.
+- A csereművelet bármely pontján a kicserélt alkalmazások inicializálása a forrástárolóhelyen történik. A céltároló online marad a forrástároló hely előkészítése közben, függetlenül attól, hogy a swap sikeres vagy sikertelen lesz.The target slot remains online while the source slot is being prepared, whether the swap succeeds or fails.
 
-- Ha egy átmeneti tárolóhelyet szeretne cserélni az üzemi tárolóhelyre, győződjön meg arról, hogy az éles tárolóhely *mindig* a cél tárolóhely. Így a swap művelet nem befolyásolja az üzemi alkalmazást.
+- Átmeneti tárolóhely az éles tárolóhellyel való csere, győződjön meg arról, hogy az éles tárolóhely *mindig* a céltároló. Ily módon a csereművelet nincs hatással az éles alkalmazás.
 
-- Az esemény-forrásokhoz és kötésekhez kapcsolódó beállításokat [üzembe helyezési tárolóhelyként](#manage-settings) kell konfigurálni, *mielőtt elkezdené a swap-eljárást*. Ha az idő előtt "Sticky"-ként jelöli meg őket, az események és a kimenetek a megfelelő példányra vannak irányítva.
+- A swap kezdeményezése előtt az eseményforrásokhoz és kötésekhez kapcsolódó beállításokat [telepítési helybeállításokként](#manage-settings) kell konfigurálni. *before you initiate a swap* Jelölés őket "ragadós" idő előtt biztosítja az események és kimenetek irányul a megfelelő példányt.
 
 ## <a name="manage-settings"></a>Beállítások kezelése
 
@@ -61,128 +61,128 @@ Tartsa szem előtt az alábbi szempontokat:
 
 ### <a name="create-a-deployment-setting"></a>Központi telepítési beállítás létrehozása
 
-Megadhatja a beállításokat központi telepítési beállításként, amely a "Sticky" értéket jelöli. Az alkalmazás-példány nem cseréli le a Sticky beállítást.
+A beállításokat telepítési beállításként jelölheti meg, ami "ragadóssá" teszi. A ragadós beállítás nem cseréli fel az alkalmazáspéldányt.
 
-Ha egy tárolóhelyen létrehoz egy központi telepítési beállítást, mindenképpen hozzon létre egy egyedi értéket a swap-ben részt vevő többi tárolóhelyen. Így a beállítások értéke nem változik, a beállítások nevei konzisztensek maradnak a tárolóhelyek között. Ez a név konzisztencia biztosítja, hogy a kód ne próbáljon meg hozzáférni egy olyan beállításhoz, amely egy tárolóhelyen van definiálva, de még nem.
+Ha egy központi telepítési beállítást hoz létre egy tárolóhelyen, győződjön meg arról, hogy ugyanazt a beállítást hozza létre egy egyedi értékkel a cserebármely más tárolóhelyen. Így, bár a beállítás értéke nem változik, a beállítás nevek konzisztensek maradnak a tárolóhelyek között. Ez a névkonzisztencia biztosítja, hogy a kód ne próbáljon meg hozzáférni egy olyan beállításhoz, amely az egyik tárolóhelyen van definiálva, de egy másikban nem.
 
-A központi telepítési beállítás létrehozásához kövesse az alábbi lépéseket:
+A telepítési beállítások létrehozásához kövesse az alábbi lépéseket:
 
-- A Function alkalmazásban navigáljon a *tárolóhelyekhez*
-- Kattintson a tárolóhely nevére
-- A *platform szolgáltatásai > általános beállítások*területen kattintson a **Konfigurálás** elemre.
-- Kattintson arra a beállításra, amelyet az aktuális tárolóhelyhez szeretne ragasztani
-- Kattintson az **üzembe helyezési tárolóhely beállítása** jelölőnégyzetre
-- Kattintson az **OK** gombra
-- Ha a beállítás panel eltűnik, kattintson a **Save (Mentés** ) gombra a módosítások megtartásához
+- Navigálás a *bővítőhelyek* re a függvényalkalmazásban
+- Kattintson a bővítőhely nevére
+- A *Platform jellemzők > általános beállítások csoportban*kattintson a **Konfiguráció** gombra
+- Kattintson a beállítás nevét szeretne ragaszkodni az aktuális slot
+- Kattintson a **Központi telepítéshely beállításjelölőnégyzetére**
+- Kattintson **az OK gombra**
+- Ha a panel beállítása eltűnik, kattintson a **Mentés** gombra a módosítások megtartásához
 
-![Üzembe helyezési pont beállítása](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
+![Központi telepítési bővítőhely beállítása](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
-Tárolóhelyek létrehozásakor a tárolóhelyek üresek. A [támogatott üzembe helyezési technológiák](./functions-deployment-technologies.md) bármelyikével üzembe helyezheti az alkalmazást egy tárolóhelyen.
+A bővítőhelyek üresek, amikor létrehoz egy helyet. A támogatott központi [telepítési technológiák](./functions-deployment-technologies.md) bármelyikével telepítheti az alkalmazást egy tárolóhelyre.
 
 ## <a name="scaling"></a>Méretezés
 
-Az összes tárolóhely az üzemi tárolóhelytel azonos számú feldolgozóra méretezhető.
+Minden bővítőhely a termelési tárolóhelyekkel megegyező számú dolgozóra méretezhető.
 
-- A használati csomagok esetében a tárolóhely a függvény alkalmazási skálájának megfelelően méretezhető.
-- App Service csomagok esetében az alkalmazás egy rögzített számú feldolgozóra méretezhető. A bővítőhelyek ugyanazon a számú feldolgozón futnak, mint az alkalmazási csomag.
+- A felhasználási tervek, a résidő skálázása a függvény alkalmazás méretezése.
+- Az App Service-csomagok esetében az alkalmazás rögzített számú dolgozóra méretezhető. A tárolóhelyek ugyanannyi dolgozón futnak, mint az alkalmazáscsomag.
 
-## <a name="add-a-slot"></a>Pont hozzáadása
+## <a name="add-a-slot"></a>Pont felvétele
 
-Hozzáadhat egy tárolóhelyet a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) -n keresztül, vagy a portálon keresztül is. A következő lépések bemutatják, hogyan hozhat létre egy új tárolóhelyet a portálon:
+Hozzáadhat egy bővítőhelyet a [CLI-n](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) vagy a portálon keresztül. A következő lépések bemutatják, hogyan hozhat létre új bővítőhelyet a portálon:
 
-1. Navigáljon a Function alkalmazáshoz, és kattintson a *bővítőhelyek*melletti **plusz jelre** .
+1. Keresse meg a függvényalkalmazást, és kattintson a **plusz jel** mellett *Slots*.
 
-    ![Azure Functions üzembe helyezési pont hozzáadása](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
+    ![Azure Functions telepítési helyének hozzáadása](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
 
-1. Írjon be egy nevet a szövegmezőbe, majd kattintson a **Létrehozás** gombra.
+1. Írjon be egy nevet a szövegmezőbe, és nyomja le a **Létrehozás** gombot.
 
-    ![Név Azure Functions üzembe helyezési pont](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
+    ![Név Az Azure Functions telepítési hely](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
 
-## <a name="swap-slots"></a>Tárolóhelyek cseréje
+## <a name="swap-slots"></a>Bővítőhelyek cseréje
 
-A tárolóhelyeket a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) -n keresztül vagy a portálon keresztül lehet cserélni. A következő lépések bemutatják, hogyan lehet felcserélni a tárolóhelyeket a portálon:
+A bővítőhelyeket a [CLI-n](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) vagy a portálon keresztül cserélheti. A következő lépések bemutatják, hogyan lehet résidőket cserélni a portálon:
 
-1. Navigáljon a Function alkalmazáshoz
-1. Kattintson a felcserélni kívánt forrás tárolóhely nevére
-1. Az *Áttekintés* lapon kattintson a **Csere** gombra ![swap Azure functions üzembe helyezési pontra](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Ellenőrizze a swap konfigurációs beállításait, majd kattintson a **swap** ![swap Azure functions üzembe helyezési pontra](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Navigálás a függvényalkalmazásra
+1. Kattintson a cserélni kívánt forrásbővítőhely nevére
+1. Az *Áttekintés* lapon kattintson az ![Azure Functions **felcserélése** telepítési hely ének felcserélése gombra.](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Ellenőrizze a csere konfigurációs beállításait, és kattintson a **Swap** ![Swap Azure Functions telepítési helyére.](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
-A művelet eltarthat egy kis ideig, amíg a rendszer végrehajtja a swap-műveletet.
+A művelet eltarthat egy ideig, amíg a csereművelet végrehajtása folyamatban van.
 
-## <a name="roll-back-a-swap"></a>Swap visszaállítása
+## <a name="roll-back-a-swap"></a>Csere visszaállítása
 
-Ha a swap hibát jelez, vagy egyszerűen vissza kívánja állítani a cserét, visszaállíthatja a kezdeti állapotot. Ha vissza szeretne térni az előre lecserélt állapotba, hajtson végre egy újabb cserét a swap megfordításához.
+Ha egy swap hibát eredményez, vagy egyszerűen csak vissza szeretné vonni a swapot, visszaállíthatja a kezdeti állapotot. Az előre cserélt állapotba való visszatéréshez tegyen egy másik swapot a swap visszafordításához.
 
-## <a name="remove-a-slot"></a>Tárolóhely eltávolítása
+## <a name="remove-a-slot"></a>Bővítőhely eltávolítása
 
-Egy tárolóhelyet a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) -n keresztül vagy a portálon lehet eltávolítani. A következő lépések bemutatják, hogyan távolíthat el egy tárolóhelyet a portálon:
+A bővítőhelyet eltávolíthatja a [CLI-n](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) vagy a portálon keresztül. A következő lépések bemutatják, hogyan távolíthatja el a tárolóhelyet a portálon:
 
-1. Navigáljon a Function app áttekintése oldalra
+1. Keresse meg a függvényalkalmazást – áttekintés
 
 1. Kattintson a **Törlés** gombra
 
-    ![Azure Functions üzembe helyezési pont hozzáadása](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
+    ![Azure Functions telepítési helyének hozzáadása](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
 
-## <a name="automate-slot-management"></a>A tárolóhelyek kezelésének automatizálása
+## <a name="automate-slot-management"></a>A bővítőhely-kezelés automatizálása
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)használatával automatizálhatja a következő műveleteket egy tárolóhelyen:
+Az [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)használatával automatizálhatja a következő műveleteket egy tárolóhelyhez:
 
-- [létrehozás](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [törlés](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [automatikus felcserélés](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [Létrehozása](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
+- [Töröl](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
+- [lista](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
+- [Swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [automatikus csere](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>Váltás másik App Service-csomagra
+## <a name="change-app-service-plan"></a>Az App Service-csomag módosítása
 
-Ha App Service csomag alatt futó Function alkalmazást használ, lehetősége van módosítani a tárolóhely alapjául szolgáló App Service tervet.
+Egy függvényalkalmazás, amely fut egy App Service-csomag alatt, lehetősége van arra, hogy módosítsa az alapul szolgáló App Service-csomag egy tárolóhely.
 
 > [!NOTE]
-> A tárolóhelyek App Service terve nem módosítható a használati tervben.
+> A felhasználási csomag alatt nem módosíthatja a tárolóhely App Service-csomagját.
 
-A tárolóhelyek App Service tervének módosításához kövesse az alábbi lépéseket:
+A következő lépésekkel módosíthatja a tárolóhely App Service-csomagját:
 
-1. Nyisson meg egy tárolóhelyet
+1. Navigálás egy tárolóhelyre
 
-1. A *platform-szolgáltatások*területen kattintson a **minden beállítás** elemre.
+1. A *Platform szolgáltatásai*csoportban kattintson a Minden beállítás **elemre.**
 
-    ![App Service-csomag módosítása](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
+    ![Alkalmazásszolgáltatási csomag módosítása](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
 
-1. Kattintson **app Service csomagra**
+1. Kattintson az **App Service-csomagra**
 
-1. Válasszon új App Service csomagot, vagy hozzon létre egy új csomagot
+1. Új App Service-csomag kiválasztása vagy új csomag létrehozása
 
-1. Kattintson az **OK** gombra
+1. Kattintson **az OK gombra**
 
-    ![App Service-csomag módosítása](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
+    ![Alkalmazásszolgáltatási csomag módosítása](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
 
 
 ## <a name="limitations"></a>Korlátozások
 
-Azure Functions üzembe helyezési pontok a következő korlátozásokkal rendelkeznek:
+Az Azure Functions központi telepítési bővítőhelyekkel a következő korlátozások vannak:
 
-- Az alkalmazás számára elérhető tárolóhelyek száma a csomagtól függ. A használati terv csak egy üzembe helyezési pont számára engedélyezett. További tárolóhelyek érhetők el a App Service csomag alatt futó alkalmazásokhoz.
-- A tárolóhelyek cseréje visszaállítja a kulcsokat olyan alkalmazások számára, amelyeken a `AzureWebJobsSecretStorageType` alkalmazás beállítása `files`.
-- A Linux-használati tervhez nem érhetők el tárolóhelyek.
+- Az alkalmazás számára elérhető tárolóhelyek száma a csomagtól függ. A felhasználási terv csak egy központi telepítési hely engedélyezett. További bővítőhelyek érhetők el az App Service-csomag alatt futó alkalmazások hoz létre.
+- A tárolóhely lecserélése visszaállítja a billentyűket azon alkalmazások esetében, amelyek `AzureWebJobsSecretStorageType` alkalmazásbeállítása megegyezik a beállítással. `files`
+- A bővítőhelyek nem érhetők el a Linux-felhasználási csomaghoz.
 
 ## <a name="support-levels"></a>Támogatási szintek
 
-Az üzembe helyezési pontok két szinten támogatottak:
+A telepítési helyek támogatásának két szintje van:
 
-- **Általánosan elérhető (GA)** : teljes mértékben támogatott és jóváhagyott éles használatra.
-- **Előzetes**verzió: még nem támogatott, de a jövőben várhatóan el kell érnie a ga-állapotot.
+- **Általános elérhetőség (GA)**: Teljes mértékben támogatott és termelési használatra jóváhagyott.
+- **Előzetes verzió:** Még nem támogatott, de várhatóan a jövőben eléri a GA-állapotot.
 
-| Operációs rendszer/üzemeltetési csomag           | Támogatási szint     |
+| OS/Hosting terv           | A támogatás szintje     |
 | ------------------------- | -------------------- |
 | Windows-felhasználás       | Általános elérhetőség |
-| Windows Premium           | Általános elérhetőség  |
+| Windows Prémium rendszer           | Általános elérhetőség  |
 | Dedikált Windows         | Általános elérhetőség |
-| Linux-felhasználás         | Nem támogatott          |
-| Linux Premium             | Általános elérhetőség  |
+| Linux-fogyasztás         | Nem támogatott          |
+| Linux Prémium             | Általános elérhetőség  |
 | Linux dedikált           | Általános elérhetőség |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Üzembe helyezési technológiák Azure Functions](./functions-deployment-technologies.md)
+- [Telepítési technológiák az Azure Functionsben](./functions-deployment-technologies.md)

@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások az Azure Service Fabric Security szolgáltatáshoz
-description: Ez a cikk az Azure Service Fabric biztonsággal kapcsolatos ajánlott eljárásokat ismerteti.
+title: Gyakorlati tanácsok az Azure Service Fabric biztonságához
+description: Ez a cikk az Azure Service Fabric biztonságával kapcsolatos gyakorlati tanácsok készletét tartalmazza.
 author: unifycloud
 ms.author: tomsh
 ms.service: security
@@ -8,176 +8,176 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75548819"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
-Az alkalmazások Azure-ban való üzembe helyezése gyors, egyszerű és költséghatékony. Mielőtt üzembe helyezné a Felhőbeli alkalmazást éles környezetben, tekintse át az alkalmazásban található biztonságos fürtök megvalósításához szükséges alapvető és ajánlott eljárások listáját.
+Egy alkalmazás üzembe helyezése az Azure-ban gyors, egyszerű és költséghatékony. Mielőtt üzembe helyezné a felhőalapú alkalmazást éles környezetben, tekintse át a biztonságos fürtök alkalmazásában való megvalósításához szükséges alapvető és ajánlott gyakorlati tanácsok listáját.
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a felhőalapú alkalmazások fejlesztésének és kezelésének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak.
 
-Minden ajánlott eljáráshoz a következőket magyarázza el:
+Minden egyes bevált gyakorlathoz elmagyarázzuk a következőket:
 
--   Az ajánlott eljárás.
--   Miért érdemes megvalósítani az ajánlott eljárásokat.
--   Mi történhet, ha nem alkalmazza az ajánlott eljárást.
--   Hogyan sajátíthatja el az ajánlott eljárások megvalósítását.
+-   Mi a legjobb gyakorlat.
+-   Miért kell végrehajtani a legjobb gyakorlatot.
+-   Mi történhet, ha nem valósítja meg a legjobb gyakorlatot?
+-   Hogyan lehet megtanulni, hogy hajtsák végre a legjobb gyakorlat.
 
-A következő Azure Service Fabric ajánlott biztonsági eljárásokat javasoljuk:
+Az Azure Service Fabric következő biztonsági gyakorlati tanácsait javasoljuk:
 
--   Biztonságos fürtök létrehozásához használja Azure Resource Manager sablonokat és a Service Fabric PowerShell-modult.
--   Használjon X. 509 tanúsítványokat.
--   Biztonsági házirendek konfigurálása.
--   A Reliable Actors biztonsági konfigurációjának implementálása.
--   Az SSL konfigurálása az Azure Service Fabrichoz.
--   Használja az Azure Service Fabric hálózati elkülönítést és biztonságot.
--   Azure Key Vault konfigurálása a biztonsághoz.
--   Felhasználók társítása szerepkörökhöz.
+-   Az Azure Resource Manager-sablonok és a Service Fabric PowerShell modul használatával biztonságos fürtöket hozhat létre.
+-   Használja az X.509 tanúsítványokat.
+-   Konfigurálja a biztonsági házirendeket.
+-   Valósítsa meg a Reliable Actors biztonsági konfiguráció.
+-   SSL konfigurálása az Azure Service Fabric.
+-   Használja a hálózati elkülönítést és biztonságot az Azure Service Fabric használatával.
+-   Konfigurálja az Azure Key Vault ot a biztonság érdekében.
+-   Felhasználók hozzárendelése szerepkörökhöz.
 
 
-## <a name="best-practices-for-securing-your-clusters"></a>Ajánlott eljárások a fürtök biztonságossá tételéhez
+## <a name="best-practices-for-securing-your-clusters"></a>Gyakorlati tanácsok a fürtök védelméhez
 
 Mindig használjon biztonságos fürtöt:
--   A fürt biztonságának megvalósítása tanúsítványok használatával.
--   Az ügyfél-hozzáférés (rendszergazda és csak olvasható) megadása Azure Active Directory (Azure AD) használatával.
+-   Fürtbiztonság megvalósítása tanúsítványok használatával.
+-   Ügyfél-hozzáférés biztosítása (rendszergazdai és csak olvasható) az Azure Active Directory (Azure AD) használatával.
 
 Automatikus központi telepítések használata:
--   Szkripteket használhat a titkok létrehozásához, üzembe helyezéséhez és átadásához.
--   Tárolja a titkokat a Azure Key Vaultban, és használja az Azure AD-t az összes többi ügyfél-hozzáféréshez.
--   Hitelesítés megkövetelése a titkos kulcsokhoz való emberi hozzáféréshez.
+-   Parancsfájlok használatával hozza létre, telepítse és forgassa át a titkos kulcsokat.
+-   Tárolja a titkos kulcsokat az Azure Key Vaultban, és használja az Azure AD-t az összes többi ügyfélhozzáféréshez.
+-   Hitelesítés szükséges a titkos kulcsokhoz való emberi hozzáféréshez.
 
-Emellett vegye figyelembe a következő konfigurációs beállításokat:
--   Hozzon létre peremhálózati hálózatokat (más néven vagy demilitarizált zónákat, DMZ és szűrt alhálózatokat) az Azure hálózati biztonsági csoportok (NSG) használatával.
--   A fürt virtuális gépei (VM-EK) és a fürt kezelése a Távoli asztali kapcsolat-t tartalmazó Jump Servers használatával.
+Ezenkívül vegye figyelembe a következő konfigurációs lehetőségeket:
+-   Az Azure Network Security Groups (NSG-k) használatával szegélyhálózatokat (más néven demilitarizált zónákat, DMZ-ket és szűrt alhálózatokat) hozhat létre.
+-   Érje el a fürt virtuális gépeit (VM-eket), vagy kezelje a fürtöt a Távoli asztali kapcsolattal rendelkező ugrókiszolgálók használatával.
 
-A fürtöket védeni kell, hogy megakadályozza a jogosulatlan felhasználók csatlakozását, különösen akkor, ha egy fürt éles üzemben fut. Bár lehetséges, hogy nem biztonságos fürtöt hoz létre, a névtelen felhasználók csatlakozhatnak a fürthöz, ha a fürt elérhetővé teszi a felügyeleti végpontokat a nyilvános internethez.
+A fürtöket biztonságosnak kell tekinteni, hogy illetéktelen felhasználók ne csatlakozzanak, különösen akkor, ha egy fürt éles környezetben fut. Bár lehetőség van egy nem biztonságos fürt létrehozására, névtelen felhasználók csatlakozhatnak a fürthöz, ha a fürt felügyeleti végpontokat ad a nyilvános internetnek.
 
-A fürt biztonságának különböző technológiákkal történő megvalósítására három [forgatókönyv](../../service-fabric/service-fabric-cluster-security.md) áll rendelkezésre:
+A fürtbiztonság különböző technológiák használatával történő megvalósítására három [forgatókönyv létezik:](../../service-fabric/service-fabric-cluster-security.md)
 
--   Csomópontok közötti biztonság: Ez a forgatókönyv biztosítja a virtuális gépek és a fürtben lévő számítógépek közötti kommunikációt. Ez a biztonsági mód biztosítja, hogy csak azok a számítógépek tárolhatnak alkalmazásokat és szolgáltatásokat a fürtben, amelyek jogosultak a fürthöz való csatlakozásra.
-Ebben az esetben az Azure-on futó fürtök vagy a Windows rendszeren futó önálló fürtök a Windows Server rendszerű számítógépek [tanúsítvány](../../service-fabric/service-fabric-windows-cluster-x509-security.md) -vagy [Windows-biztonsági](../../service-fabric/service-fabric-windows-cluster-windows-security.md) szolgáltatását használhatják.
--   Ügyfél és csomópont közötti biztonság: Ez a forgatókönyv a Service Fabric-ügyfél és a fürt egyes csomópontjai közötti kommunikációt biztosítja.
--   Szerepköralapú Access Control (RBAC): Ez a forgatókönyv különálló identitásokat (tanúsítványokat, Azure AD-t stb.) használ a fürthöz hozzáférő minden rendszergazda és felhasználói ügyfél szerepkörhöz. A szerepkör-identitásokat a fürt létrehozásakor kell megadnia.
+-   Csomópont-csomópont biztonság: Ez a forgatókönyv biztosítja a virtuális gépek és a fürt számítógépei közötti kommunikációt. Ez a biztonsági forma biztosítja, hogy csak a fürthöz való csatlakozásra jogosult számítógépek üzemeltethessenek alkalmazásokat és szolgáltatásokat a fürtben.
+Ebben a forgatókönyvben az Azure-on futó fürtök vagy a Windows rendszeren futó önálló fürtök használhatják a [tanúsítványok biztonságát](../../service-fabric/service-fabric-windows-cluster-x509-security.md) vagy a Windows Server-gépek Windows Server-alapú gépeken a Windows Server-alapú biztonsági [rendszert.](../../service-fabric/service-fabric-windows-cluster-windows-security.md)
+-   Ügyfél-csomópont biztonság: Ez a forgatókönyv biztosítja a kommunikációt a Service Fabric-ügyfél és a fürt egyes csomópontjai között.
+-   Szerepköralapú hozzáférés-vezérlés (RBAC): Ez a forgatókönyv külön identitásokat (tanúsítványok, Azure AD és így tovább) használ minden olyan rendszergazdai és felhasználói ügyfélszerepkörhöz, amely hozzáfér a fürthöz. A fürt létrehozásakor adja meg a szerepkör-identitásokat.
 
 >[!NOTE]
->**Biztonsági javaslat Azure-fürtökhöz:** Az Azure AD biztonsági szolgáltatásával hitelesítheti az ügyfeleket és a tanúsítványokat a csomópontok közötti biztonság érdekében.
+>**Az Azure-fürtök biztonsági javaslata:** Az Azure AD-biztonság használatával hitelesítheti az ügyfeleket és a tanúsítványokat a csomópontok biztonsága érdekében.
 
-Önálló Windows-fürt konfigurálásához tekintse meg az [önálló Windows-fürt beállításainak konfigurálása](../../service-fabric/service-fabric-cluster-manifest.md)című témakört.
+Önálló Windows-fürt konfigurálásához olvassa [el az Önálló Windows-fürt beállításainak konfigurálása című témakört.](../../service-fabric/service-fabric-cluster-manifest.md)
 
-Biztonságos fürt létrehozásához használja Azure Resource Manager sablonokat és a Service Fabric PowerShell-modult.
-A biztonságos Service Fabric fürt Azure Resource Manager sablonok használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd: [Service Fabric-fürt létrehozása](../../service-fabric/service-fabric-cluster-creation-via-arm.md).
+Az Azure Resource Manager-sablonok és a Service Fabric PowerShell modul használatával hozzon létre egy biztonságos fürtöt.
+A biztonságos Service Fabric-fürt Azure Resource Manager-sablonok használatával történő létrehozásáról a [Service Fabric-fürt létrehozása című](../../service-fabric/service-fabric-cluster-creation-via-arm.md)témakörben olvashat.
 
-Használja a Azure Resource Manager sablont:
--   A fürt testre szabásához használja a sablont a virtuális gép virtuális merevlemezek (VHD-k) felügyelt tárolójának konfigurálásához.
--   Az egyszerű konfiguráció felügyeletéhez és a naplózáshoz a sablon használatával hajtsa végre a módosításokat az erőforráscsoporthoz.
+Az Azure Resource Manager sablon használata:
+-   A fürt testreszabása a sablon használatával konfigurálja a virtuális gép virtuális merevlemezek (VHD-k) felügyelt tárolóját.
+-   Az erőforráscsoport módosításait a sablon használatával az egyszerű konfigurációkezelés és naplózás segítségével hajthatja végre.
 
-A fürt konfigurációjának kezelése kódként:
--   Legyen alapos az üzembe helyezési konfigurációk ellenőrzésekor.
+Kezelje a fürtkonfigurációt kódként:
+-   Legyen alapos a központi telepítési konfigurációk ellenőrzésekor.
 -   Ne használjon implicit parancsokat az erőforrások közvetlen módosításához.
 
-A [Service Fabric alkalmazás-életciklusának](../../service-fabric/service-fabric-application-lifecycle.md) számos aspektusa lehet automatizálható. A [Service Fabric PowerShell-modul](../../service-fabric/service-fabric-deploy-remove-applications.md#upload-the-application-package) automatizálja az Azure Service Fabric-alkalmazások üzembe helyezésének, frissítésének, eltávolításának és tesztelésének gyakori feladatait. Az alkalmazások felügyeletéhez felügyelt API-k és HTTP API-k is elérhetők.
+A Service [Fabric alkalmazás életciklusának](../../service-fabric/service-fabric-application-lifecycle.md) számos szempontja automatizálható. A [Service Fabric PowerShell modul](../../service-fabric/service-fabric-deploy-remove-applications.md#upload-the-application-package) automatizálja az Azure Service Fabric-alkalmazások üzembe helyezésével, frissítésével, eltávolításával és tesztelésével kapcsolatos gyakori feladatokat. Felügyelt API-k és HTTP API-k alkalmazáskezeléshez is rendelkezésre állnak.
 
-## <a name="use-x509-certificates"></a>X. 509 tanúsítványok használata
-A fürtöket az X. 509 tanúsítványok vagy a Windows Biztonság használatával mindig biztonságossá teheti. A biztonság csak a fürt létrehozási idején van konfigurálva. A fürt létrehozása után nem lehet bekapcsolni a biztonságot.
+## <a name="use-x509-certificates"></a>X.509-es tanúsítványok használata
+A fürtöket mindig x.509-es tanúsítványokkal vagy a Windows biztonságával biztosítsa. A biztonság csak a fürt létrehozásakor van konfigurálva. A fürt létrehozása után nem lehet bekapcsolni a biztonságot.
 
-A [fürt tanúsítványának](../../service-fabric/service-fabric-windows-cluster-x509-security.md)megadásához állítsa a **ClusterCredentialType** tulajdonság értékét X509 értékre. A külső kapcsolatokhoz tartozó kiszolgálói tanúsítvány megadásához állítsa a **ServerCredentialType** tulajdonságot X509 értékre.
+[Fürttanúsítvány](../../service-fabric/service-fabric-windows-cluster-x509-security.md)megadásához állítsa a **ClusterCredentialType** tulajdonság értékét X509-re. Külső kapcsolatok kiszolgálói tanúsítványának megadásához állítsa a **ServerCredentialType** tulajdonságot X509-re.
 
-Továbbá kövesse az alábbi eljárásokat:
--   Hozza létre a tanúsítványokat a termelési fürtökhöz a megfelelően konfigurált Windows Server Certificate Service használatával. A tanúsítványokat egy jóváhagyott hitelesítésszolgáltatótól (CA) is beszerezheti.
--   Soha ne használjon ideiglenes vagy tesztelési tanúsítványt az üzemi fürtökhöz, ha a tanúsítványt a MakeCert. exe vagy egy hasonló eszköz használatával hozták létre.
--   Önaláírt tanúsítványt használhat a tesztelési fürtökhöz, de az éles fürtök esetében nem.
+Ezen túlmenően kövesse az alábbi gyakorlatokat:
+-   Hozza létre az éles fürtök tanúsítványait egy megfelelően konfigurált Windows Server tanúsítványszolgáltatás használatával. A tanúsítványokat egy jóváhagyott hitelesítésszolgáltatótól is beszerezheti.
+-   Soha ne használjon ideiglenes vagy teszttanúsítványt éles fürtökhöz, ha a tanúsítványt a MakeCert.exe vagy egy hasonló eszköz segítségével hozták létre.
+-   Használjon önaláírt tanúsítványt tesztfürtökhöz, de éles fürtökhöz nem.
 
-Ha a fürt nem biztonságos, bárki csatlakozhat a fürthöz névtelenül, és felügyeleti műveleteket hajthat végre. Emiatt az X. 509 tanúsítványok vagy a Windows Biztonság használatával mindig biztonságos üzemi fürtöket használjon.
+Ha a fürt nem biztonságos, bárki névtelenül csatlakozhat a fürthöz, és felügyeleti műveleteket hajthat végre. Ezért mindig biztosítsa az éles fürtöket x.509-es tanúsítványok vagy Windows-biztonság használatával.
 
-Ha többet szeretne megtudni az X. 509 tanúsítványok használatáról, tekintse meg [a Service Fabric-fürt tanúsítványainak hozzáadása vagy eltávolítása](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)című témakört.
+Az X.509-tanúsítványok használatáról a [Service Fabric-fürt tanúsítványainak hozzáadása és eltávolítása.](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)
 
 ## <a name="configure-security-policies"></a>Biztonsági házirendek konfigurálása
-A Service Fabric az alkalmazások által használt erőforrásokat is biztonságossá teszi. Az erőforrásokat, például a fájlokat, a címtárakat és a tanúsítványokat a felhasználói fiókok alatt tárolja a rendszer az alkalmazás telepítésekor. Ez a funkció lehetővé teszi, hogy az alkalmazások biztonságosabbak legyenek egymástól, még egy megosztott tárolt környezetben is.
+A Service Fabric is biztosítja az alkalmazások által használt erőforrásokat. Az olyan erőforrások, mint a fájlok, könyvtárak és tanúsítványok az alkalmazás telepítésekor a felhasználói fiókok alatt tárolódnak. Ez a szolgáltatás biztonságosabbá teszi az alkalmazások futtatását egymástól, még egy megosztott üzemeltetett környezetben is.
 
--   Active Directory tartományi csoport vagy felhasználó használata: futtassa a szolgáltatást egy Active Directory felhasználói vagy csoportfiók hitelesítő adatai alatt. Ügyeljen arra, hogy a tartományon belül Active Directoryt használjon, és ne Azure Active Directory. A tartományhoz tartozó más erőforrásokhoz való hozzáférés, amelyek tartományi felhasználó vagy csoport használatával kaptak engedélyeket. Például olyan erőforrásokat, mint a fájlmegosztás.
+-   Active Directory tartományi csoport vagy felhasználó használata: Futtassa a szolgáltatást egy Active Directory-felhasználó vagy -csoport fiók hitelesítő adatai alatt. Ügyeljen arra, hogy az Active Directoryt a tartományon belül használja, és ne az Azure Active Directoryt. A tartomány más, engedéllyel rendelkező erőforrásainak elérése tartományi felhasználó vagy csoport használatával. Például erőforrások, például fájlmegosztások.
 
--   Biztonsági hozzáférési házirend kiosztása HTTP-és HTTPS-végpontokhoz: adja meg azt a **SecurityAccessPolicy** -tulajdonságot, **amely egy futtató házirendet** alkalmaz egy szolgáltatásra, ha a szolgáltatás jegyzékfájlja http-vel deklarálja a végponti erőforrásokat. A HTTP-végpontok számára lefoglalt portok megfelelő hozzáférés-vezérlésű listája a szolgáltatás által futtatott futtató felhasználói fiókhoz. Ha a házirend nincs beállítva, a http. sys nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal hibák jelentkezhetnek.
+-   Biztonsági hozzáférési házirend hozzárendelése HTTP- és HTTPS-végpontokhoz: Adja meg a **SecurityAccessPolicy** tulajdonságot, ha **RunAs-házirendet** szeretne alkalmazni egy szolgáltatásra, amikor a szolgáltatásjegyzék deklarálja a végponterőforrásait HTTP-vel. A HTTP-végpontokhoz rendelt portok megfelelően hozzáférés-vezérelt listák a szolgáltatás alatt futó RunAs felhasználói fiókhoz. Ha a házirend nincs beállítva, a http.sys nem fér hozzá a szolgáltatáshoz, és az ügyfél hívásaival hibákat kaphat.
 
-Ha meg szeretné tudni, hogyan használhatja a biztonsági házirendeket egy Service Fabric fürtben, tekintse meg az [alkalmazás biztonsági házirendjeinek konfigurálása](../../service-fabric/service-fabric-application-runas-security.md)című témakört.
+A biztonsági házirendek Service Fabric-fürtben való használatát az [Alkalmazás biztonsági házirendjeinek konfigurálása](../../service-fabric/service-fabric-application-runas-security.md)című témakörben olvashat.
 
-## <a name="implement-the-reliable-actors-security-configuration"></a>A Reliable Actors biztonsági konfigurációjának implementálása
-A Service Fabric Reliable Actors a színész kialakítási mintájának implementációja. A szoftveres tervezési mintákhoz hasonlóan az adott minta használatára vonatkozó döntés attól függ, hogy a szoftverrel kapcsolatos probléma megfelel-e a mintának.
+## <a name="implement-the-reliable-actors-security-configuration"></a>A Reliable Actors biztonsági konfigurációjának megvalósítása
+A Service Fabric megbízható szereplői az aktor tervezési minta megvalósítása. Mint minden szoftver tervezési minta, a döntés, hogy egy adott minta alapul, hogy egy szoftver probléma illeszkedik a minta.
 
-Általánosságban elmondható, hogy a Actor kialakítási mintája segítséget nyújt a következő szoftverekkel vagy biztonsági forgatókönyvekkel kapcsolatos megoldások modellezésében:
--   A problémás terület nagy számú (több ezer vagy több) kis, független és elszigetelt állapotú és logikai egységből áll.
--   Olyan egyszálas objektumokat használ, amelyek nem igényelnek jelentős interakciót a külső összetevőktől, többek között a lekérdezési állapotot a szereplők egy csoportján belül.
--   A színész példányai nem tudják előre nem látható késéssel letiltani a hívókat az I/O-műveletek kiadásával.
+Általában használja az aktor tervezési minta segítségével modell megoldások a következő szoftverproblémák vagy biztonsági forgatókönyvek:
+-   A problémás terület nagy számú (több ezer vagy több) kis, független és elszigetelt állapot- és logikai egységet foglal magában.
+-   Egyszálas objektumokkal dolgozik, amelyek nem igényelnek jelentős interakciót a külső összetevőktől, beleértve az állapot lekérdezését az egy szereplőkészlet között.
+-   Az aktorpéldányok nem tiltják le a hívókat előre nem látható késésekkel I/O-műveletek kibocsátásával.
 
-Service Fabric a szereplők a Reliable Actors alkalmazás-keretrendszerben valósulnak meg. Ez a keretrendszer a színész mintáján alapul, és [Service Fabric Reliable Servicesra](../../service-fabric/service-fabric-reliable-services-introduction.md)épül. Minden olyan megbízható Actors szolgáltatás, amelyet írsz, egy particionált, állapot-nyilvántartó megbízható szolgáltatás.
+A Service Fabric, a szereplők a Reliable Actors alkalmazáskeretrendszerben vannak megvalósítva. Ez a keretrendszer az aktor mintán alapul, és a [Service Fabric megbízható szolgáltatások](../../service-fabric/service-fabric-reliable-services-introduction.md)ra épül. Minden megbízható aktor szolgáltatás, amely írása egy particionált állapotalapú megbízható szolgáltatás.
 
-Minden szereplő egy Actor típusú példányként van definiálva, amely megegyezik azzal, ahogyan a .NET-objektum egy .NET-típusú példány. Például egy számológép funkcióit megvalósító **színészi típusnak** számos résztvevője lehet az adott típusból, amely a fürt különböző csomópontjain van elosztva. Az elosztott szereplők mindegyikét egyedileg, egy színész azonosítója jellemzi.
+Minden aktor egy aktortípus példányaként van definiálva, amely megegyezik azzal, ahogyan a .NET objektum egy .NET típusú példány. Például egy **aktortípus,** amely megvalósítja a kalkulátor funkcióit, számos ilyen típusú szereplővel rendelkezhet, amelyek a fürt különböző csomópontjain vannak elosztva. Az elosztott szereplők mindegyike egyedileg jellemzi az aktor azonosító.
 
-A [replikátor biztonsági beállításai](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) a replikálás során használt kommunikációs csatorna biztonságossá tételére szolgálnak. Ez a konfiguráció megakadályozza, hogy a szolgáltatások meglássák egymás replikációs forgalmát, és biztosítja, hogy a nagy rendelkezésre állású adatok biztonságosak legyenek. Alapértelmezés szerint a biztonsági konfiguráció üres szakasza megakadályozza a replikálás biztonságát.
-A replikátor-konfigurációk olyan replikátort állítanak be, amely felelős a szereplők állami szolgáltatói állapotának nagyfokú megbízhatóságának kialakításához.
+[A Replikátor biztonsági konfigurációi](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) a replikáció során használt kommunikációs csatorna védelmére szolgálnak. Ez a konfiguráció megakadályozza, hogy a szolgáltatások lássák egymás replikációs forgalmát, és biztosítja, hogy a magas rendelkezésre állású adatok biztonságosak legyenek. Alapértelmezés szerint egy üres biztonsági konfigurációs szakasz megakadályozza a replikáció biztonságát.
+A Replikátor-konfigurációk konfigurálják a replikátort, amely felelős az aktor állapotszolgáltató állapotának rendkívül megbízhatóvá tételéért.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>Az SSL konfigurálása az Azure Service Fabric
-A kiszolgálói hitelesítési folyamat [hitelesíti](../../service-fabric/service-fabric-cluster-creation-via-arm.md) a fürt felügyeleti végpontját egy felügyeleti ügyfélen. Ezt követően a felügyeleti ügyfél felismeri, hogy az a valódi fürtre mutat. Ez a tanúsítvány egy [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) -t is biztosít a https-kezelési API-hoz és a HTTPS-en keresztüli Service Fabric Explorerhoz.
-Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt kér a hitelesítésszolgáltatótól, a tanúsítvány tulajdonosának nevének meg kell egyeznie a fürthöz használt egyéni tartománynévvel.
+## <a name="configure-ssl-for-azure-service-fabric"></a>SSL konfigurálása az Azure Service Fabric számára
+A kiszolgálóhitelesítési folyamat [hitelesíti](../../service-fabric/service-fabric-cluster-creation-via-arm.md) a fürtkezelési végpontokat egy felügyeleti ügyfél számára. A felügyeleti ügyfél ezután felismeri, hogy a valódi fürthöz beszél. Ez a tanúsítvány egy [SSL-t](../../service-fabric/service-fabric-cluster-creation-via-arm.md) is biztosít a HTTPS-felügyeleti API-hoz és a Service Fabric Explorer HTTPS-en keresztüli kezeléséhez.
+Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie a fürthöz használt egyéni tartománynévvel.
 
-Az SSL az alkalmazáshoz való konfigurálásához először be kell szereznie egy olyan SSL-tanúsítványt, amelyet egy HITELESÍTÉSSZOLGÁLTATÓ írt alá. A HITELESÍTÉSSZOLGÁLTATÓ egy megbízható harmadik féltől származó tanúsítvány, amely SSL biztonsági célokat szolgál. Ha még nem rendelkezik SSL-tanúsítvánnyal, be kell szereznie egy olyan vállalattól, amely SSL-tanúsítványokat árul.
+Az SSL konfigurálásához először be kell szereznie egy hitelesítésszolgáltató által aláírt SSL-tanúsítványt. A hitelesítésszolgáltató megbízható harmadik fél, amely ssl-biztonsági célokra állít ki tanúsítványokat. Ha még nem rendelkezik SSL-tanúsítvánnyal, be kell szereznie egyet egy SSL-tanúsítványokat értékesítő vállalattól.
 
-A tanúsítványnak meg kell felelnie az alábbi követelményeknek az SSL-tanúsítványokhoz az Azure-ban:
--   A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
+A tanúsítványnak meg kell felelnie az Alábbi követelményeknek az SSL-tanúsítványokra vonatkozóan az Azure-ban:
+-   A tanúsítványnak titkos kulcsot kell tartalmaznia.
 
--   A tanúsítványt létre kell hozni a Key Exchange számára, és exportálni kell egy személyes információcsere (. pfx) fájlba.
+-   A tanúsítványt kulcscseréhez kell létrehozni, és személyes adatcserefájlba (.pfx) kell exportálni.
 
--   A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománynévvel.
+-   A tanúsítvány tulajdonosnevének meg kell egyeznie a felhőszolgáltatás eléréséhez használt tartománynévvel.
 
-    - Szerezze be a felhőalapú szolgáltatás eléréséhez használandó egyéni tartománynevet.
-    - Tanúsítvány kérése egy HITELESÍTÉSSZOLGÁLTATÓTÓL a szolgáltatás egyéni tartománynevének megfelelő tulajdonos nevével. Ha például az Egyéni tartománynév a __contoso__ **. com**, a hitelesítésszolgáltatótól származó tanúsítványnak a tulajdonos neve **. contoso.com** vagy a __www__ **. contoso.com**nevet kell tartalmaznia.
+    - Szerezzen be egy egyéni tartománynevet a felhőszolgáltatás eléréséhez.
+    - Kérjen tanúsítványt egy olyan tulajdonosnévvel rendelkező hitelesítésszolgáltatótól, amely megfelel a szolgáltatás egyéni tartománynevének. Ha például az egyéni tartománynév __contoso__**.com,** a hitelesítésszolgáltató tanúsítványának **tulajdonosnevének .contoso.com** vagy __www__**.contoso.com**.
 
     >[!NOTE]
-    >Nem szerezhet be SSL-tanúsítványt a __cloudapp__ **.net** -tartományhoz tartozó hitelesítésszolgáltatótól.
+    >A __cloudapp__**.net** tartomány hitelesítésszolgáltatójától nem szerezhet be SSL-tanúsítványt.
 
--   A tanúsítványnak legalább 2 048 bites titkosítást kell használnia.
+-   A tanúsítványnak legalább 2048 bites titkosítást kell használnia.
 
-A HTTP protokoll nem biztonságos, és a lehallgatási támadásokra is vonatkozik. A HTTP protokollon keresztül továbbított adatok egyszerű szövegként lesznek elküldve a webböngészőből a webkiszolgálóba vagy más végpontok között. A támadók elérhetik és megtekinthetik a HTTP-n keresztül elküldhető bizalmas adatokat, például a bankkártya adatait és a fiók bejelentkezéseit. Ha az adatokat HTTPS protokollon keresztül küldik vagy közzétesszük, az SSL gondoskodik arról, hogy a bizalmas adatok titkosítva legyenek és biztonságosak legyenek az elfogástól.
+A HTTP protokoll nem biztonságos, és lehallgatási támadásoknak van kitéve. A HTTP-n keresztül továbbított adatokat a webböngésző egyszerű szövegként küldi el a webkiszolgálónak vagy más végpontok között. A támadók elkaphatják és megtekinthetik a HTTP-n keresztül küldött bizalmas adatokat, például a hitelkártya adatait és a fiókbejelentkezéseket. Amikor az adatokat a böngészőn keresztül küldik vagy teszik közzé HTTPS-en keresztül, az SSL biztosítja, hogy a bizalmas adatok titkosítva legyenek és biztonságosak legyenek a lehallgatástól.
 
-További információ az SSL-tanúsítványok használatáról: [az SSL konfigurálása Azure-alkalmazásokhoz](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
+Az SSL-tanúsítványok használatáról az [SSL konfigurálása az Azure-alkalmazásokhoz](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)című témakörben olvashat bővebben.
 
-## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Hálózati elkülönítés és biztonság használata az Azure Service Fabric
-Hozzon létre egy 3 NodeType biztonságos fürtöt a [Azure Resource Manager sablon](../../azure-resource-manager/templates/template-syntax.md) használatával mintaként. A bejövő és a kimenő hálózati forgalom vezérlése a sablon és a hálózati biztonsági csoportok használatával.
+## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Hálózati elkülönítés és biztonság használata az Azure Service Fabric használatával
+Állítson be egy 3 csomópontos biztonságos fürtöt az [Azure Resource Manager sablon](../../azure-resource-manager/templates/template-syntax.md) mintaként való használatával. A sablon és a hálózati biztonsági csoportok segítségével szabályozhatja a bejövő és kimenő hálózati forgalmat.
 
-A sablon mindegyik virtuálisgép-méretezési csoporthoz tartozik egy NSG, amely a készleten belüli és kívüli forgalom vezérlésére szolgál. A szabályok alapértelmezés szerint úgy vannak konfigurálva, hogy engedélyezzék a rendszerszolgáltatásokhoz és a sablonban megadott alkalmazás-portokhoz szükséges összes forgalmat. Tekintse át ezeket a szabályokat, és végezze el az igényeinek megfelelő módosításokat, beleértve az alkalmazások új szabályainak hozzáadását.
+A sablon rendelkezik egy NSG minden a virtuális gép méretezési csoportok, és a készleten kívüli forgalom szabályozására szolgál. A szabályok alapértelmezés szerint úgy vannak beállítva, hogy a sablonban megadott rendszerszolgáltatásokhoz és alkalmazásportokhoz szükséges összes forgalmat engedélyezze. Tekintse át ezeket a szabályokat, és hajtsa végre az igényeinek megfelelő módosításokat, beleértve az alkalmazásokhoz új szabályok hozzáadását is.
 
-További információ: [általános hálózati forgatókönyvek az Azure Service Fabrichoz](../../service-fabric/service-fabric-patterns-networking.md).
+További információ: [Common networking scenarios for Azure Service Fabric.](../../service-fabric/service-fabric-patterns-networking.md)
 
-## <a name="set-up-azure-key-vault-for-security"></a>Biztonsági Azure Key Vault beállítása
-A Service Fabric tanúsítványokat használ a fürtök és alkalmazásai biztonságossá tételéhez a hitelesítés és a titkosítás biztosításához.
+## <a name="set-up-azure-key-vault-for-security"></a>Az Azure Key Vault beállítása a biztonság érdekében
+A Service Fabric tanúsítványokat használ a fürt és az alkalmazások védelméhez hitelesítés és titkosítás biztosítására.
 
-A Service Fabric X. 509 tanúsítványokat használ a fürt biztonságossá tételéhez és az alkalmazás biztonsági funkcióinak biztosításához. A Azure Key Vault segítségével kezelheti az Azure-beli Service Fabric-fürtök [tanúsítványait](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) . A fürtöket létrehozó Azure-erőforrás-szolgáltató lekéri a tanúsítványokat egy kulcstartóból. A szolgáltató ezután telepíti a tanúsítványokat a virtuális gépeken, amikor a fürt üzembe helyezése az Azure-ban történik.
+A Service Fabric X.509-es tanúsítványokat használ a fürt védelméhez és az alkalmazás biztonsági szolgáltatásainak biztosításához. Az Azure Key Vault használatával kezelheti a Service Fabric-fürtök [tanúsítványait](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) az Azure-ban. A fürtöket létrehozó Azure-erőforrás-szolgáltató lekéri a tanúsítványokat egy key vaultból. A szolgáltató ezután telepíti a tanúsítványokat a virtuális gépeken, amikor a fürt telepítve van az Azure-ban.
 
-[Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md), a Service Fabric fürt és a tanúsítványokat használó erőforrás-szolgáltató között van egy tanúsítvány kapcsolata. A fürt létrehozásakor a rendszer egy kulcstartóban tárolja a tanúsítvány kapcsolatával kapcsolatos információkat.
+Tanúsítványkapcsolat van az [Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md), a Service Fabric-fürt és a tanúsítványokat használó erőforrás-szolgáltató között. A fürt létrehozásakor a tanúsítványkapcsolattal kapcsolatos információk egy key vaultban tárolódnak.
 
-A Key Vault beállításának két alapvető lépése van:
-1. Hozzon létre egy erőforráscsoportot kifejezetten a kulcstartóhoz.
+A kulcstartó beállításának két alapvető lépése van:
+1. Hozzon létre egy erőforráscsoportot kifejezetten a key vaulthoz.
 
-    Javasoljuk, hogy a kulcstartót a saját erőforráscsoporthoz helyezze. Ez a művelet segít megelőzni a kulcsok és a titkos kódok elvesztését, ha más erőforráscsoportokat is eltávolít, például a tárterületet, a számítást vagy a fürtöt tartalmazó csoportot. A kulcstárolót tartalmazó erőforráscsoportot az azt használó fürttel azonos régióban kell lennie.
+    Azt javasoljuk, hogy helyezze a key vault saját erőforráscsoportba. Ez a művelet segít megakadályozni a kulcsok és a titkos kulcsok elvesztését, ha más erőforráscsoportokat távolít el, például a tárolást, a számítást vagy a fürtöt tartalmazó csoportot. A key vaultot tartalmazó erőforráscsoportnak ugyanabban a régióban kell lennie, mint az azt használó fürtnek.
 
-2. Hozzon létre egy Key vaultot az új erőforráscsoporthoz.
+2. Hozzon létre egy key vault az új erőforráscsoportban.
 
-    A Key vaultot engedélyezni kell a központi telepítéshez. A számítási erőforrás-szolgáltató ezután lekérheti a tanúsítványokat a tárolóból, és telepítheti őket a virtuálisgép-példányokon.
+    A key vault engedélyezni kell a központi telepítéshez. A számítási erőforrás-szolgáltató ezután lejuthat a tanúsítványokat a tárolóból, és telepítheti őket a virtuálisgép-példányokon.
 
-A Key Vault beállításával kapcsolatos további tudnivalókért tekintse meg a [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)című témakört.
+Ha többet szeretne tudni a key vault beállításáról, olvassa el [a Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
 
-## <a name="assign-users-to-roles"></a>Felhasználók társítása szerepkörökhöz
-Miután létrehozta az alkalmazásokat a fürt képviseletére, rendelje hozzá a felhasználókat a Service Fabric által támogatott szerepkörökhöz: csak olvasható és rendszergazda. Ezeket a szerepköröket a Azure Portal használatával rendelheti hozzá.
+## <a name="assign-users-to-roles"></a>Felhasználók hozzárendelése szerepkörökhöz
+Miután létrehozta a fürtet képviselő alkalmazásokat, rendelje hozzá a felhasználókat a Service Fabric által támogatott szerepkörökhöz: csak olvasható és rendszergazda. Ezeket a szerepköröket az Azure Portal használatával rendelheti hozzá.
 
 >[!NOTE]
-> A Service Fabric szerepköreinek használatáról további információt a [szerepköralapú Access Control Service Fabric-ügyfelek](../../service-fabric/service-fabric-cluster-security-roles.md)számára című témakörben talál.
+> A szerepkörök Service Fabric-ben való használatáról további információt a [Service Fabric-ügyfelek szerepköralapú hozzáférés-vezérlése című témakörben talál.](../../service-fabric/service-fabric-cluster-security-roles.md)
 
-Az Azure Service Fabric két hozzáférés-vezérlési típust támogat a Service Fabric- [fürthöz](../../service-fabric/service-fabric-cluster-creation-via-arm.md)csatlakozó ügyfelekhez: rendszergazda és felhasználó. A fürt rendszergazdája a hozzáférés-vezérlés használatával korlátozhatja a hozzáférést bizonyos fürtműveleteket a felhasználók különböző csoportjaihoz. A hozzáférés-vezérlés biztonságosabbá teszi a fürtöt.
+Az Azure Service Fabric két hozzáférés-vezérlési típust támogat a [Service Fabric-fürthöz](../../service-fabric/service-fabric-cluster-creation-via-arm.md)kapcsolódó ügyfelek számára: a rendszergazdát és a felhasználót. A fürtrendszergazdája a hozzáférés-vezérlés segítségével korlátozhatja a hozzáférést bizonyos fürtműveletekhez a felhasználók különböző csoportjai számára. A hozzáférés-vezérlés biztonságosabbá teszi a fürtöt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Service Fabric biztonsági ellenőrzőlista](service-fabric-checklist.md)
-- Állítsa be Service Fabric [fejlesztési környezetét](../../service-fabric/service-fabric-get-started.md).
-- További információ a [Service Fabric támogatási lehetőségeiről](../../service-fabric/service-fabric-support.md).
+- [A Service Fabric biztonsági ellenőrzőlistája](service-fabric-checklist.md)
+- Állítsa be a Service [Fabric-fejlesztői környezetet.](../../service-fabric/service-fabric-get-started.md)
+- További információ a [Service Fabric támogatási lehetőségeiről.](../../service-fabric/service-fabric-support.md)

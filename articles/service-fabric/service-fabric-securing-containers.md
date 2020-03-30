@@ -1,18 +1,18 @@
 ---
 title: Tanúsítványok importálása tárolóba
-description: Ismerkedjen meg a tanúsítványfájl Service Fabric Container Service-be történő importálásával.
+description: Ismerje meg most, hogy importálja a tanúsítványfájlokat egy Service Fabric tárolószolgáltatásba.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: da4babd8f9d1a25a8514d0c6f1526b43a9723854
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614111"
 ---
-# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Tanúsítványfájl importálása Service Fabricon futó tárolóba
+# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Tanúsítványfájl importálása a Service Fabric en futó tárolóba
 
-Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatásokat. A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). A tanúsítványt a fürt összes csomópontján lévő LocalMachine területen lévő tanúsítványtárolóba kell telepíteni. A tanúsítványnak megfelelő titkos kulcsnak elérhetőnek, elérhetőnek és Windows-exportálható kell lennie. A tanúsítvány információit az alkalmazás jegyzékfájljában, a `ContainerHostPolicies` címke alatt, az alábbi kódrészlet mutatja:
+A tárolószolgáltatások tanúsítvány megadásával biztosíthatók. A Service Fabric egy olyan mechanizmust biztosít a tárolón belüli szolgáltatások számára, amelyek egy Windows vagy Linux-fürt (5.7-es vagy újabb verzió) csomópontjaira telepített tanúsítványok eléréséhez érhetők el. A tanúsítványt a localmachine alatti tanúsítványtárolóban kell telepíteni a fürt összes csomópontján. A tanúsítványnak megfelelő személyes kulcsnak elérhetőnek, hozzáférhetőnek és - Windows rendszeren - exportálhatónak kell lennie. A tanúsítvány adatai az alkalmazás jegyzékfájljában a címke alatt jelennek meg, amint `ContainerHostPolicies` azt a következő kódrészlet mutatja:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -20,24 +20,24 @@ Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatá
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-Windows-fürtök esetén az alkalmazás indításakor a futtatókörnyezet minden hivatkozott tanúsítványt és a hozzá tartozó titkos kulcsot exportál egy PFX-fájlba, amelyet véletlenszerűen generált jelszóval kell védeni. A PFX-és jelszavas fájlok a tárolón belül elérhetők a következő környezeti változók használatával: 
+Windows-fürtök esetén az alkalmazás indításakor a futásidejű minden hivatkozott tanúsítványt és a hozzá tartozó személyes kulcsot egy PFX-fájlba exportál, véletlenszerűen generált jelszóval biztosítva. A PFX- és jelszófájlok a következő környezeti változók használatával érhetők el a tárolóban: 
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PFX
 * Certificates_ServicePackageName_CodePackageName_CertName_Password
 
-Linux-fürtök esetében a tanúsítványok (PEM) át lesznek másolva a X509StoreName által megadott tárolóból a tárolóba. A Linuxon a megfelelő környezeti változók a következők:
+Linux-fürtök esetén a tanúsítványok (PEM) az X509StoreName által megadott tárolóból kerülnek át a tárolóba. A megfelelő környezeti változók Linuxon a következők:
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
 
-Ha már rendelkezik a tanúsítványokkal a szükséges űrlapon, és a tárolón belül szeretné elérni azt, létrehozhat egy adatcsomagot az alkalmazáscsomag belül, és a következőket adhatja meg az alkalmazási jegyzékfájlban:
+Másik lehetőségként, ha már rendelkezik a szükséges formában a tanúsítványokkal, és szeretné elérni a tárolón belül, létrehozhat egy adatcsomagot az alkalmazáscsomagon belül, és megadhatja a következőket az alkalmazásjegyzéken belül:
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-A tároló szolgáltatás vagy folyamat feladata a tanúsítványfájl tárolóba való importálása. A tanúsítvány importálásához `setupentrypoint.sh` parancsfájlokat használhat, vagy egyéni kódot is végrehajthat a tároló folyamatán belül. Az alábbi mintakód a PFX C# -fájl importálásához használható:
+A tárolószolgáltatás vagy -folyamat felelős a tanúsítványfájlok tárolóba importálásáért. A tanúsítvány importálásához parancsfájlokat használhat, `setupentrypoint.sh` vagy egyéni kódot hajthat végre a tárolófolyamaton belül. Itt van a C# mintakód a PFX fájl importálásához:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
@@ -50,9 +50,9 @@ store.Open(OpenFlags.ReadWrite);
 store.Add(cert);
 store.Close();
 ```
-Ez a PFX-tanúsítvány használható az alkalmazás vagy szolgáltatás hitelesítésére vagy más szolgáltatásokkal való biztonságos kommunikációra. Alapértelmezés szerint a fájlok csak a rendszer ACLed. A szolgáltatás által igénybe veheti az ACL-t más fiókokba.
+Ez a PFX-tanúsítvány használható az alkalmazás vagy szolgáltatás hitelesítésére vagy más szolgáltatásokkal való biztonságos kommunikációra. Alapértelmezés szerint a fájlok csak a SYSTEM-hez vannak adva. ACL-t a szolgáltatás által megkövetelt más fiókokhoz is átveheti.
 
 Következő lépésként olvassa el a következő cikkeket:
 
-* [Windows-tároló üzembe helyezése Service Fabric Windows Server 2016 rendszeren](service-fabric-get-started-containers.md)
-* [Docker-tároló üzembe helyezése Linuxon Service Fabric](service-fabric-get-started-containers-linux.md)
+* [Windows-tároló központi telepítése a Service Fabric szolgáltatásba Windows Server 2016 rendszeren](service-fabric-get-started-containers.md)
+* [Docker-tároló üzembe helyezése linuxos Service Fabric-re](service-fabric-get-started-containers-linux.md)

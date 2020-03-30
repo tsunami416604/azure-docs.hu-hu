@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a HDFS a Azure Data Factory használatával
-description: Megtudhatja, hogyan másolhat adatok egy felhőből vagy helyszíni HDFS-forrásból a fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
+title: Adatok másolása a HDFS-ből az Azure Data Factory használatával
+description: Megtudhatja, hogyan másolhatja az adatokat egy felhőbeli vagy helyszíni HDFS-forrásból a támogatott fogadó adattárak egy Azure Data Factory-folyamat másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830428"
 ---
-# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása a HDFS a Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása a HDFS-ből az Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-hdfs-connector.md)
 > * [Aktuális verzió](connector-hdfs.md)
 
-Ez a cikk az adatok HDFS-kiszolgálóról történő másolását ismerteti. A Azure Data Factoryről a [bevezető cikkben](introduction.md)olvashat bővebben.
+Ez a cikk bemutatja, hogyan lehet adatokat másolni a HDFS-kiszolgálóról. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Ez a HDFS-összekötő a következő tevékenységek esetén támogatott:
+Ez a HDFS-csatlakozó a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Ez a HDFS-összekötő a következőket támogatja:
+Ez a HDFS-csatlakozó különösen a következőket támogatja:
 
 - Fájlok másolása **Windows** (Kerberos) vagy **Névtelen** hitelesítés használatával.
-- Fájlok másolása a **webhdfs** protokollal vagy **a beépített DistCp-** támogatással.
-- Fájlok másolása a-ként vagy a fájlok elemzése/létrehozása a [támogatott fájlformátumokkal és tömörítési kodekekkel](supported-file-formats-and-compression-codecs.md).
+- Fájlok másolása **webhdfs** protokoll vagy **beépített DistCp-támogatás** használatával.
+- Fájlok másolása a támogatott fájlformátumok és [tömörítési kodekek](supported-file-formats-and-compression-codecs.md)segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
-> Győződjön meg arról, hogy a Integration Runtime hozzáférhet az **összes** [név csomópont-kiszolgálóhoz]: [name Node port] és [adatcsomópont-kiszolgálók]: [adatcsomópont-port] a Hadoop-fürthöz. Az alapértelmezett [name Node port] a 50070, és az alapértelmezett [adatcsomópont-port] a 50075.
+> Győződjön meg arról, hogy az integrációs futásidő hozzáférhet a Hadoop-fürt **összes** [name node kiszolgálójához]:[névcsomópont-port] és a Hadoop-fürt [adatcsomópont-kiszolgálók] számára. Az alapértelmezett [névcsomópont-port] 50070, az alapértelmezett [adatcsomópont-port] pedig 50075.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek a HDFS-re vonatkozó Data Factory-entitások definiálására szolgálnak.
+A következő szakaszok a HdFS-re jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-A HDFS társított szolgáltatás a következő tulajdonságokat támogatja:
+A hdfs-hez csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Hdfs**. | Igen |
+| type | A típustulajdonságnak a következőre kell állítania: **Hdfs**. | Igen |
 | url |A HDFS URL-címe |Igen |
-| authenticationType | Az engedélyezett értékek: **Anonymous**vagy **Windows**. <br><br> Ha **Kerberos-hitelesítést** kíván használni a HDFS-összekötőhöz, tekintse meg [ezt a szakaszt](#use-kerberos-authentication-for-hdfs-connector) , és ennek megfelelően állítsa be a helyszíni környezetet. |Igen |
-| userName (Felhasználónév) |Felhasználónév a Windows-hitelesítéshez. Kerberos-hitelesítés esetén a `<username>@<domain>.com`megadása. |Igen (Windows-hitelesítéshez) |
-| jelszó |Jelszó a Windows-hitelesítéshez. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen (Windows-hitelesítéshez) |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| authenticationType | Az engedélyezett értékek a következők: **Névtelen**vagy **Windows**. <br><br> **Kerberos-hitelesítés** hdfs-összekötő használatához tekintse meg ezt a [szakaszt](#use-kerberos-authentication-for-hdfs-connector) a helyszíni környezet ennek megfelelő beállításához. |Igen |
+| userName (Felhasználónév) |Felhasználónév a Windows-hitelesítéshez. Kerberos-hitelesítésesetén `<username>@<domain>.com`adja meg a mezőt. |Igen (Windows-hitelesítéshez) |
+| jelszó |Jelszó a Windows-hitelesítéshez. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) |Igen (Windows-hitelesítéshez) |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 
-**Példa: Névtelen hitelesítés használata**
+**Példa: névtelen hitelesítés használata**
 
 ```json
 {
@@ -110,19 +110,19 @@ A HDFS társított szolgáltatás a következő tulajdonságokat támogatja:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. 
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek](concepts-datasets-linked-services.md) című cikkben olvashatja. 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-A következő tulajdonságok támogatottak a HDFS `location` beállítások területen a Format-alapú adatkészletben:
+A hdfs-ek a `location` következő tulajdonságokat támogatják a formátumalapú adatkészlet beállításai között:
 
-| Tulajdonság   | Leírás                                                  | Szükséges |
+| Tulajdonság   | Leírás                                                  | Kötelező |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Az adatkészlet `location` területén található Type tulajdonságot **HdfsLocation**értékre kell állítani. | Igen      |
-| folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | Nem       |
-| fileName   | A fájlnév a megadott folderPath alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | Nem       |
+| type       | Az adatkészlet `location` típustulajdonságát **HdfsLocation**beállításra kell állítani. | Igen      |
+| folderPath | A mappa elérési útja. Ha helyettesítő karaktert szeretne használni a mappa szűréséhez, hagyja ki ezt a beállítást, és adja meg a tevékenységforrás beállításaiban. | Nem       |
+| fileName   | A fájlnév a megadott mappaPath. Ha helyettesítő karaktert szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és adja meg a tevékenységforrás beállításaiban. | Nem       |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -150,29 +150,29 @@ A következő tulajdonságok támogatottak a HDFS `location` beállítások ter�
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a HDFS forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a HDFS-forrás által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="hdfs-as-source"></a>HDFS forrásként
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-A következő tulajdonságok támogatottak a `storeSettings` beállítások HDFS a Format-alapú másolási forrásban:
+A hdfs a formátumalapú `storeSettings` másolási forrás beállításai között a következő tulajdonságokat támogatja:
 
-| Tulajdonság                 | Leírás                                                  | Szükséges                                      |
+| Tulajdonság                 | Leírás                                                  | Kötelező                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | A `storeSettings` alatti Type tulajdonságot **HdfsReadSettings**értékre kell állítani. | Igen                                           |
-| rekurzív                | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**). | Nem                                            |
-| wildcardFolderPath       | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egyetlen karakternek felel meg); a `^` használatával elkerülheti, hogy a tényleges mappanév helyettesítő karakterrel vagy a menekülési karakterrel rendelkezik-e a belsejében. <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Nem                                            |
-| wildcardFileName         | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egyetlen karakternek felel meg); a `^` használatával elkerülheti, hogy a tényleges mappanév helyettesítő karakterrel vagy a menekülési karakterrel rendelkezik-e a belsejében.  További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Igen, ha `fileName` nincs megadva az adatkészletben |
-| modifiedDatetimeStart    | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a `modifiedDatetimeStart` és `modifiedDatetimeEnd`közötti időtartományon belül van. Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok értéke lehet NULL, ami azt jelenti, hogy nem lesz alkalmazva a file Attribute szűrő az adatkészletre.  Ha `modifiedDatetimeStart` rendelkezik datetime értékkel, de `modifiedDatetimeEnd` NULL értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` rendelkezik datetime értékkel, de `modifiedDatetimeStart` NULL értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték. | Nem                                            |
-| modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | Nem                                            |
-| distcpSettings | Tulajdonság a HDFS DistCp használatakor. | Nem |
-| resourceManagerEndpoint | A fonál Resource Manager-végpont | Igen, ha DistCp használ |
-| tempScriptPath | A temp DistCp parancs parancsfájljának tárolására szolgáló mappa elérési útja. A parancsfájlt Data Factory hozza létre, és a másolási feladatok befejezése után el lesz távolítva. | Igen, ha DistCp használ |
-| distcpOptions | A DistCp parancshoz megadott további beállítások. | Nem |
-| maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem                                            |
+| type                     | A típustulajdonságot `storeSettings` **hdfsReadSettings (HdfsReadSettings )** tulajdonságra kell állítani. | Igen                                           |
+| Rekurzív                | Azt jelzi, hogy az adatok olvasása rekurzív anameddig az almappákból vagy csak a megadott mappából történik. Ne feledje, hogy ha a rekurzív érték igaz, és a fogadó fájlalapú tároló, a program nem másolja vagy hozza létre az üres mappát vagy almappát a fogadóban. Az engedélyezett értékek **igazak** (alapértelmezettek) és **hamisak.** | Nem                                            |
+| helyettesítő mappaelérési út       | A forrásmappák szűréséhez helyettesítő karakterekkel ellátott mappaelérési út. <br>Az engedélyezett helyettesítő `*` karakterek a következők: `?` (nulla vagy több karakternek felel meg) és (nulla vagy egy karakternek felel meg); akkor `^` menekülhet, ha a mappa tényleges neve helyettesítő karaktert használ, vagy ha ez az escape karakter van benne. <br>További példák a [Mappa- és fájlszűrő-példákban](#folder-and-file-filter-examples)találhatók. | Nem                                            |
+| helyettesítő fájlneve         | A forrásfájlok szűréséhez helyettesítő karakterekkel rendelkező fájlnév a kívánt/helyettesítő folderFolderPath mappában. <br>Az engedélyezett helyettesítő `*` karakterek a következők: `?` (nulla vagy több karakternek felel meg) és (nulla vagy egy karakternek felel meg); akkor `^` menekülhet, ha a mappa tényleges neve helyettesítő karaktert használ, vagy ha ez az escape karakter van benne.  További példák a [Mappa- és fájlszűrő-példákban](#folder-and-file-filter-examples)találhatók. | Igen, `fileName` ha nincs megadva az adatkészletben |
+| modifiedDatetimeStart    | A fájlok szűrője az attribútum alapján: Utolsó módosítás. A fájlok akkor lesznek kiválasztva, ha az `modifiedDatetimeStart` `modifiedDatetimeEnd`utolsó módosítási idejük a és a közötti időtartományon belül van. Az idő az UTC időzónára a "2018-12-01T05:00:00Z" formátumban kerül alkalmazásra. <br> A tulajdonságok null értékűek lehetnek, ami azt jelenti, hogy az adatkészletre nem lesz fájlattribútum-szűrő alkalmazva.  Ha `modifiedDatetimeStart` datetime értékkel rendelkezik, de `modifiedDatetimeEnd` NULL, az azt jelenti, hogy azokat a fájlokat, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a datetime érték, ki lesznek jelölve.  Ha `modifiedDatetimeEnd` datetime értékkel rendelkezik, de `modifiedDatetimeStart` NULL, az azt jelenti, hogy azutolsó módosított attribútum kisebb, mint a datetime érték, ki lesznek jelölve. | Nem                                            |
+| modifiedDatetimeEnd      | Ugyanaz, mint fent.                                               | Nem                                            |
+| distcpBeállítások | Tulajdonságcsoport a HDFS DistCp használatakor. | Nem |
+| resourceManagerEndpoint | A Fonal erőforrás-kezelő végpontja | Igen, ha a DistCp |
+| tempScriptPath | Az ideiglenes DistCp parancsparancsfájl tárolására használt mappaelérési út. A parancsfájlt a Data Factory hozza létre, és a másolási feladat befejezése után törlődik. | Igen, ha a DistCp |
+| distcpOptions | A DistCp parancs további lehetőségei. | Nem |
+| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozó kapcsolatok száma. Csak akkor adja meg, ha korlátozni szeretné az egyidejű kapcsolatot az adattárhoz. | Nem                                            |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -216,92 +216,92 @@ A következő tulajdonságok támogatottak a `storeSettings` beállítások HDFS
 ]
 ```
 
-### <a name="folder-and-file-filter-examples"></a>Példák a mappák és a fájlok szűrésére
+### <a name="folder-and-file-filter-examples"></a>Példák mappa- és fájlszűrőre
 
-Ez a szakasz a mappa elérési útjának és fájlnevének a helyettesítő karakteres szűrőkkel való viselkedését írja le.
+Ez a szakasz a mappa elérési útjának és a helyettesítő szűrőkkel rendelkező fájlnévnek a viselkedését ismerteti.
 
-| folderPath | fileName             | rekurzív | A forrás mappa szerkezete és a szűrő eredménye (a **félkövérrel szedett** fájlok beolvasása) |
+| folderPath | fileName             | Rekurzív | A forrásmappa szerkezete és a szűrő eredménye (a **félkövérrel szedett** fájlok beolvasása) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
-| `Folder*`  | (üres, alapértelmezett használata) | false     | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**file1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**fájl2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `Folder*`  | (üres, alapértelmezett használata) | igaz      | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**file1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**fájl2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**fájl3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `Folder*`  | `*.csv`              | false     | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**file1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fájl3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| `Folder*`  | `*.csv`              | igaz      | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**file1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**fájl3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*`  | (üres, használja az alapértelmezettet) | hamis     | MappaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Fájl1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Fájl2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5.csv<br/>Egy másikFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl6.csv |
+| `Folder*`  | (üres, használja az alapértelmezettet) | igaz      | MappaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Fájl1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Fájl2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Fájl3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Fájl4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Fájl5.csv**<br/>Egy másikFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl6.csv |
+| `Folder*`  | `*.csv`              | hamis     | MappaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Fájl1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl5.csv<br/>Egy másikFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl6.csv |
+| `Folder*`  | `*.csv`              | igaz      | MappaA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Fájl1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Almappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Fájl3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Fájl5.csv**<br/>Egy másikFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl6.csv |
 
 ## <a name="use-distcp-to-copy-data-from-hdfs"></a>Adatok másolása a HDFS-ből a DistCp használatával
 
-A [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) egy Hadoop natív parancssori eszköz, amellyel elosztott másolatot készíthet egy Hadoop-fürtön. Distcp parancs futtatásakor először az összes másolandó fájlt listázza, több leképezési feladatot hoz létre a Hadoop-fürtben, és minden térképi feladat binárisan másolja a forrásról a fogadóba.
+[A DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) egy Hadoop natív parancssori eszköz, amely elosztott másolatot készít egy Hadoop-fürtben. A Distcp parancs futtatásakor először felsorolja az összes másolandó fájlt, több térképmunkát hoz létre a Hadoop-fürtbe, és minden egyes map feladat bináris másolatot készít a forrástól a fogadóig.
 
-A másolási tevékenység támogatása a DistCp használatával a fájlok másolása az Azure Blobba (beleértve a [szakaszos másolást](copy-activity-performance.md)) vagy a Azure Data Lake Store, amely esetben teljes mértékben kihasználhatja a fürt erejét a saját üzemeltetésű Integration Runtime futtatása helyett. Jobb másolási sebességet biztosít, különösen akkor, ha a fürt nagyon hatékony. A Azure Data Factory konfigurációján alapuló másolási tevékenység automatikusan létrehoz egy distcp-parancsot, elküldi a Hadoop-fürtnek, és figyeli a másolási állapotot.
+A DistCp használatával a DistCp használatával a fájlok másolása az Azure Blobba (beleértve [a szakaszos másolást](copy-activity-performance.md)is) vagy az Azure Data Lake Store-ba, amely esetben teljes mértékben kihasználhatja a fürt erejét, ahelyett, hogy az önkiszolgáló integrációs futtatókörnyezeten futna. Ez biztosítja a jobb másolási átviteli, különösen, ha a fürt nagyon erős. Az Azure Data Factory konfigurációja alapján a másolási tevékenység automatikusan létrehoz egy distcp parancsot, elküldi a Hadoop-fürtnek, és figyeli a másolás állapotát.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ha a DistCp-et szeretné használni a HDFS-ből az Azure-Blobba (beleértve a szakaszos másolást) vagy a Azure Data Lake Store, akkor győződjön meg arról, hogy a Hadoop-fürt megfelel az alábbi követelményeknek:
+Ha a DistCp használatával a HDFS-ből az Azure Blobba (beleértve a szakaszos másolást is) vagy az Azure Data Lake Store-ba való fájlok másolásához a DistCp használatával győződjön meg arról, hogy a Hadoop-fürt megfelel az alábbi követelményeknek:
 
-1. A MapReduce és a fonalas szolgáltatások engedélyezve vannak.
-2. A fonal verziója 2,5 vagy újabb.
-3. A HDFS-kiszolgáló integrálva van a célként megadott adattárral – Azure Blob vagy Azure Data Lake Store:
+1. A MapReduce és a Yarn szolgáltatások engedélyezve vannak.
+2. Fonal változat 2.5 vagy annál magasabb.
+3. A HDFS-kiszolgáló integrálva van a céladattárba – Az Azure Blob vagy az Azure Data Lake Store:
 
-    - Az Azure Blob-fájlrendszer natív módon támogatott a Hadoop 2,7 óta. Csak a jar elérési utat kell megadnia a Hadoop env-konfigurációban.
-    - Azure Data Lake Store fájlrendszer a Hadoop 3.0.0-alfa1-től kezdve van csomagolva. Ha a Hadoop-fürt alacsonyabb ennél a verziónál, manuálisan kell importálnia a ADLS kapcsolódó jar-csomagokat (Azure-datalake-Store. jar) a fürtbe [innen, és](https://hadoop.apache.org/releases.html)a jar elérési utat kell megadnia a Hadoop env konfigurációban.
+    - Az Azure Blob FileSystem natívan támogatott a Hadoop 2.7 óta. Csak meg kell adnia jar elérési útját a Hadoop env config.You only need to specify jar path in Hadoop env config.
+    - Az Azure Data Lake Store fájlrendszer a Hadoop 3.0.0-alpha1-től kezdve van csomagolva. Ha a Hadoop-fürt alacsonyabb, mint az adott verzió, manuálisan kell importálnia az ADLS-hez kapcsolódó jar csomagokat (azure-datalake-store.jar) a fürtbe [innen,](https://hadoop.apache.org/releases.html)és meg kell adnia a jar elérési útját a Hadoop env config-ban.
 
-4. Készítse elő a Temp mappát a HDFS-ben. Ez a temp mappa a DistCp-rendszerhéj parancsfájljának tárolására szolgál, így KB szintű helyet foglal le.
-5. Győződjön meg arról, hogy a HDFS társított szolgáltatásban megadott felhasználói fiók rendelkezik engedéllyel a () alkalmazás beküldéséhez a Fonalban; b) engedéllyel rendelkezik az almappa létrehozásához, a fájlok olvasásához/írásához a fenti Temp mappában.
+4. Ideiglenes mappa előkészítése a HDFS fájlban. Ez az ideiglenes mappa a DistCp rendszerhéj-parancsfájl tárolására szolgál, így kb-szintű helyet foglal el.
+5. Győződjön meg arról, hogy a HDFS csatolt szolgáltatásban megadott felhasználói fiók rendelkezik engedéllyel a) kérelem benyújtására fonalban; b) az engedélyt, hogy hozzon létre almappát, olvasási /írási fájlok at fenti temp mappát.
 
 ### <a name="configurations"></a>Konfigurációk
 
-Lásd: DistCp kapcsolódó konfigurációk és példák a [HDFS forrás](#hdfs-as-source) szakasza.
+Lásd: DistCp kapcsolódó konfigurációk és példák [a HDFS forrásszakaszban.](#hdfs-as-source)
 
-## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Kerberos-hitelesítés használata a HDFS-összekötőhöz
+## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Kerberos-hitelesítés használata A HDFS-összekötőhöz
 
-Két lehetőség áll rendelkezésre a helyszíni környezet beállítására úgy, hogy a Kerberos-hitelesítést használják a HDFS-összekötőben. Kiválaszthatja, hogy melyik illik jobban az esethez.
-* 1\. lehetőség: saját üzemeltetésű [Integration Runtime gép csatlakoztatása Kerberos-tartományban](#kerberos-join-realm)
-* 2\. lehetőség: [kölcsönös megbízhatóság engedélyezése a Windows és a Kerberos tartomány között](#kerberos-mutual-trust)
+Két lehetőség van a helyszíni környezet beállítására, hogy a Kerberos-hitelesítést használhassa a HDFS-összekötőben. Kiválaszthatja azt, aki jobban illik az ön esetéhez.
+* 1. lehetőség: [Csatlakozás az önkiszolgáló integrációs futásidejű géphez a Kerberos-birodalomban](#kerberos-join-realm)
+* 2. lehetőség: [A Windows-tartomány és a Kerberos tartomány közötti kölcsönös bizalom engedélyezése](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>1. lehetőség: saját üzemeltetésű Integration Runtime gép csatlakoztatása Kerberos-tartományban
+### <a name="option-1-join-self-hosted-integration-runtime-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>1. lehetőség: Csatlakozás az önkiszolgáló integrációs futásidejű géphez a Kerberos-birodalomban
 
 #### <a name="requirements"></a>Követelmények
 
-* A saját üzemeltetésű Integration Runtime számítógépnek csatlakoznia kell a Kerberos-tartományhoz, és nem csatlakozhat Windows-tartományhoz.
+* A saját üzemeltetésű integrációs futásidejű gépnek csatlakoznia kell a Kerberos tartományhoz, és nem tud csatlakozni egyetlen Windows-tartományhoz sem.
 
-#### <a name="how-to-configure"></a>Konfigurálás
+#### <a name="how-to-configure"></a>Hogyan kell beállítani
 
-**Önkiszolgáló Integration Runtime gépen:**
+**Saját üzemeltetésű integrációs futásidejű gépen:**
 
-1.  Futtassa a **Ksetup** segédprogramot a Kerberos KDC-kiszolgáló és-tartomány konfigurálásához.
+1.  Futtassa a **Ksetup** segédprogramot a Kerberos KDC-kiszolgáló és a birodalom konfigurálásához.
 
-    A gépet egy munkacsoport tagjaként kell konfigurálni, mert egy Kerberos-tartomány eltér a Windows-tartománytól. Ezt a Kerberos-tartomány beállításával és a KDC-kiszolgáló a következőképpen való hozzáadásával lehet megvalósítani. Szükség szerint cserélje le a *REALM.com* -t a saját megfelelő tartománynevére.
+    A számítógépet munkacsoport tagjaként kell konfigurálni, mivel a Kerberos tartomány eltér a Windows tartománytól. Ez a Kerberos-birodalom beállításával és a KDC-kiszolgáló hozzáadásával érhető el az alábbiak szerint. Cserélje *ki REALM.COM* a saját birodalmába, ha szükséges.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    **Indítsa újra** a gépet a 2 parancs végrehajtása után.
+    **A** 2 parancs végrehajtása után indítsa újra a számítógépet.
 
-2.  Ellenőrizze a konfigurációt a **Ksetup** paranccsal. A kimenetnek az alábbihoz hasonlónak kell lennie:
+2.  Ellenőrizze a konfigurációt a **Ksetup** paranccsal. A kimenetnek a következőnek kell lennie:
 
             C:> Ksetup
             default realm = REALM.COM (external)
             REALM.com:
                 kdc = <your_kdc_server_address>
 
-**Azure Data Factory:**
+**Az Azure Data Factoryban:**
 
-* Konfigurálja a HDFS-összekötőt a **Windows-hitelesítéssel** együtt a Kerberos egyszerű felhasználónevével és jelszavával a HDFS-adatforráshoz való csatlakozáshoz. A konfiguráció részleteinél keresse meg a [HDFS társított szolgáltatás tulajdonságai](#linked-service-properties) szakaszt.
+* Konfigurálja a HDFS-összekötőt **a Windows-hitelesítés** használatával a Kerberos egyszerű nevével és jelszavával együtt a HDFS adatforráshoz való csatlakozáshoz. Ellenőrizze [a HDFS csatolt szolgáltatás tulajdonságai](#linked-service-properties) szakaszt a konfigurációs részletekről.
 
-### <a name="kerberos-mutual-trust"></a>2. lehetőség: kölcsönös megbízhatóság engedélyezése a Windows és a Kerberos tartomány között
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>2. lehetőség: A Windows-tartomány és a Kerberos tartomány közötti kölcsönös bizalom engedélyezése
 
 #### <a name="requirements"></a>Követelmények
 
-*   A saját üzemeltetésű Integration Runtime számítógépnek csatlakoznia kell egy Windows-tartományhoz.
-*   Engedéllyel kell rendelkeznie a tartományvezérlő beállításainak frissítéséhez.
+*   A saját üzemeltetésű integrációs futásidejű gépnek csatlakoznia kell egy Windows-tartományhoz.
+*   A tartományvezérlő beállításainak frissítéséhez engedély szükséges.
 
-#### <a name="how-to-configure"></a>Konfigurálás
+#### <a name="how-to-configure"></a>Hogyan kell beállítani
 
 > [!NOTE]
-> Cserélje le a REALM.COM és a AD.COM-t a következő oktatóanyagban a saját megfelelő tartományára és tartományvezérlőre szükség szerint.
+> Cserélje le REALM.COM és AD.COM a következő oktatóanyagban a saját saját tartományára és tartományvezérlőjére, ha szükséges.
 
 **KDC-kiszolgálón:**
 
-1. Szerkessze a KDC konfigurációját a **krb5. conf** fájlban, hogy a KDC megbízzon a Windows-tartományon a következő konfigurációs sablonra hivatkozva. Alapértelmezés szerint a konfiguráció a következő helyen található: **/etc/krb5.conf állományt**.
+1. A KDC-konfiguráció szerkesztése a **krb5.conf** fájlban, hogy a KDC megbízzon a következő konfigurációs sablonra hivatkozó Windows-tartományban. Alapértelmezés szerint a konfiguráció az **/etc/krb5.conf**.
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -337,87 +337,87 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására ú
              REALM.COM = .
             }
 
-   A konfiguráció után **indítsa újra** a KDC szolgáltatást.
+   **A** konfigurálás után indítsa újra a KDC szolgáltatást.
 
-2. Készítse elő a **krbtgt/REALM. COM\@ad.com** nevű rendszerbiztonsági tag a KDC-kiszolgálón a következő paranccsal:
+2. Készítsen elő egy **\@krbtgt/REALM.COM AD.COM** nevű megbízót a KDC kiszolgálón a következő paranccsal:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. A **Hadoop. Security. auth_to_local** HDFS szolgáltatás konfigurációs fájljában adja hozzá a `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
+3. A **hadoop.security.auth_to_local** HDFS szolgáltatás `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`konfigurációs fájljában adja hozzá a t.
 
 **Tartományvezérlőn:**
 
-1.  A következő **Ksetup** parancsok futtatásával vegyen fel egy tartományi bejegyzést:
+1.  A következő **Ksetup-parancsok** futtatásával adjon hozzá egy béna bejegyzést:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Megbízhatósági kapcsolat létrehozása a Windows-tartományból a Kerberos tartományba. a [password] a fő **krbtgt/REALM. COM\@ad.com**tartozó jelszó.
+2.  Bizalmi kapcsolat létrehozása a Windows tartományból a Kerberos-tartományba. [jelszó] a jelszó a fő **\@krbtgt/REALM.COM AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  Válassza ki a Kerberosban használt titkosítási algoritmust.
+3.  Válassza ki a Kerberos-ban használt titkosítási algoritmust.
 
-    1. Lépjen a Kiszolgálókezelő > Csoportházirend felügyeleti > tartomány > Csoportházirend objektumok > alapértelmezett vagy aktív tartományi házirend elemre, és szerkessze a következőt:.
+    1. Nyissa meg a Kiszolgálókezelő > csoportházirend-kezelés > a tartomány> csoportházirend-objektumok at > alapértelmezett vagy az aktív tartományi házirendet, és szerkessze.
 
-    2. A **csoportházirend-felügyeleti szerkesztő** előugró ablakban válassza a számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > helyi házirendek > biztonsági beállítások, majd **a hálózati biztonság konfigurálása: a Kerberos számára engedélyezett titkosítási típusok konfigurálása**című részt.
+    2. A **Csoportházirend kezelése szerkesztő** előugró ablakban nyissa meg a Számítógép konfigurációs > házirendek > A Windows beállításai > a helyi házirendek > > a biztonsági beállítások ablakot, és konfigurálja a **Hálózati biztonságot: A Kerberos számára engedélyezett titkosítási típusok konfigurálása**.
 
-    3. Válassza ki a KDC-hoz való csatlakozáskor használni kívánt titkosítási algoritmust. Általában egyszerűen kiválaszthatja az összes beállítást.
+    3. Válassza ki a kdc-hez való csatlakozáskor használni kívánt titkosítási algoritmust. Általában egyszerűen kiválaszthatja az összes lehetőséget.
 
-        ![A Kerberos konfigurációjának titkosítási típusai](media/connector-hdfs/config-encryption-types-for-kerberos.png)
+        ![Konfigurációs titkosítási típusok a Kerberos hoz](media/connector-hdfs/config-encryption-types-for-kerberos.png)
 
-    4. A **Ksetup** parancs használatával megadhatja az adott tartományban használandó titkosítási algoritmust.
+    4. A **Ksetup** paranccsal adja meg az adott REALM-en használandó titkosítási algoritmust.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Hozzon létre egy leképezést a tartományi fiók és a Kerberos-tag között a Kerberos-rendszerbiztonsági tag Windows-tartományban való használatához.
+4.  Hozza létre a leképezést a tartományi fiók és a Kerberos egyszerű felhasználó között a Kerberos egyszerű felhasználó használata érdekében a Windows-tartományban.
 
-    1. Indítsa el a felügyeleti eszközöket > **Active Directory felhasználókat és számítógépeket**.
+    1. Indítsa el az **Active Directory – felhasználók és számítógépek beépülő modul**> felügyeleti eszközöket.
 
-    2. A speciális szolgáltatások konfigurálásához kattintson > **speciális szolgáltatások** **megtekintése** elemre.
+    2. A speciális szolgáltatások konfigurálása a**Speciális funkciók** **megtekintése** > gombra kattintva.
 
-    3. Keresse meg azt a fiókot, amelyhez leképezéseket szeretne létrehozni, majd kattintson a jobb gombbal a **név-hozzárendelések** megtekintéséhez > kattintson a **Kerberos-nevek** fülre.
+    3. Keresse meg azt a fiókot, amelyhez leképezéseket szeretne létrehozni, és kattintson a jobb gombbal a **Név-hozzárendelések** megtekintéséhez > a **Kerberos-nevek** fülre kattintva.
 
-    4. Adjon hozzá egy rendszerbiztonsági tag a tartományhoz.
+    4. Adjon hozzá egy megbízóakat a bazsúrából.
 
-        ![Térkép biztonsági identitása](media/connector-hdfs/map-security-identity.png)
+        ![Biztonsági identitás leképezése](media/connector-hdfs/map-security-identity.png)
 
-**Önkiszolgáló Integration Runtime gépen:**
+**Saját üzemeltetésű integrációs futásidejű gépen:**
 
-* A következő **Ksetup** parancsok futtatásával vegyen fel egy tartományi bejegyzést.
+* A következő **Ksetup-parancsok** futtatásával adjon hozzá egy béna bejegyzést.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-**Azure Data Factory:**
+**Az Azure Data Factoryban:**
 
-* Konfigurálja a HDFS-összekötőt a **Windows-hitelesítéssel** együtt a tartományi fiókkal vagy a Kerberos-rendszerbiztonsági tag használatával a HDFS-adatforráshoz való csatlakozáshoz. A konfiguráció részleteinél keresse meg a [HDFS társított szolgáltatás tulajdonságai](#linked-service-properties) szakaszt.
+* Konfigurálja a HDFS-összekötőt **a Windows-hitelesítés** használatával a tartományi fiókkal vagy a Kerberos Egyszerű Kerberos-fiókkal együtt a HDFS adatforráshoz való csatlakozáshoz. Ellenőrizze [a HDFS csatolt szolgáltatás tulajdonságai](#linked-service-properties) szakaszt a konfigurációs részletekről.
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
 ## <a name="legacy-models"></a>Örökölt modellek
 
 >[!NOTE]
->A következő modellek továbbra is támogatottak a visszamenőleges kompatibilitás érdekében. Azt javasoljuk, hogy használja a fenti szakaszban említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
+>A következő modellek továbbra is támogatottak, mint a visszamenőleges kompatibilitás. Javasoljuk, hogy a fenti szakaszokban említett új modellt használja, és az ADF szerzői felhasználói felülete áttért az új modell létrehozására.
 
-### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
+### <a name="legacy-dataset-model"></a>Örökölt adatkészletmodell
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **fájlmegosztás** |Igen |
-| folderPath | A mappa elérési útja. A helyettesítő karakteres szűrő támogatott, az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakternek felel meg); a `^` használatával elkerülheti, ha a tényleges fájlnév helyettesítő karakterrel vagy a menekülési karakterrel rendelkezik. <br/><br/>Példák: gyökérmappa/almappa/, további példák a [mappák és a fájlok szűrése példákban](#folder-and-file-filter-examples). |Igen |
-| fileName |  A fájl (ok) **neve vagy helyettesítő szűrője** a megadott "folderPath". Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes fájlra mutat. <br/><br/>A Filter (szűrő) esetében az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg).<br/>– 1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>A `^` használatával elkerülheti, hogy a tényleges mappanév helyettesítő karakterrel vagy a menekülési karakterrel rendelkezik-e a belsejében. |Nem |
-| modifiedDatetimeStart | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a `modifiedDatetimeStart` és `modifiedDatetimeEnd`közötti időtartományon belül van. Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br/><br/> Ügyeljen arra, hogy az adatáthelyezés általános teljesítményét a beállítás engedélyezésével befolyásolja, ha nagy mennyiségű fájlból szeretne szűrni a fájlmegosztást. <br/><br/> A tulajdonságok értéke NULL lehet, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha `modifiedDatetimeStart` rendelkezik datetime értékkel, de `modifiedDatetimeEnd` NULL értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` rendelkezik datetime értékkel, de `modifiedDatetimeStart` NULL értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték.| Nem |
-| modifiedDatetimeEnd | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a `modifiedDatetimeStart` és `modifiedDatetimeEnd`közötti időtartományon belül van. Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br/><br/> Ügyeljen arra, hogy az adatáthelyezés általános teljesítményét a beállítás engedélyezésével befolyásolja, ha nagy mennyiségű fájlból szeretne szűrni a fájlmegosztást. <br/><br/> A tulajdonságok értéke NULL lehet, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha `modifiedDatetimeStart` rendelkezik datetime értékkel, de `modifiedDatetimeEnd` NULL értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` rendelkezik datetime értékkel, de `modifiedDatetimeStart` NULL értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték.| Nem |
-| formátum | Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban.<br/><br/>Ha a fájlokat egy adott formátummal szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ork-formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és a [parketta formátuma](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) című rész. |Nem (csak bináris másolási forgatókönyv esetén) |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>A támogatott szintek a következők: **optimális** és **leggyorsabb**. |Nem |
+| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **FileShare** |Igen |
+| folderPath | A mappa elérési útja. A helyettesítő karakterek szűrője támogatott, `*` az engedélyezett helyettesítő karakterek `?` a következők: (nulla vagy több karakternek felel meg) és (nulla vagy egy karakternek felel meg); akkor `^` menekülhet, ha a tényleges fájlnévben helyettesítő karakter szerepel, vagy ez az escape karakter van benne. <br/><br/>Példák: rootfolder/subfolder/, további példák a [Mappa- és fájlszűrőben.](#folder-and-file-filter-examples) |Igen |
+| fileName |  A megadott "folderPath" alatt található fájl(ok) **neve vagy helyettesítő karaktere.** Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában lévő összes fájlra mutat. <br/><br/>Szűrő esetén az engedélyezett `*` helyettesítő karakterek a következők: `?` (nulla vagy több karakternek felel meg) és (nulla vagy egy karakternek felel meg).<br/>- 1. példa:`"fileName": "*.csv"`<br/>- 2. példa:`"fileName": "???20180427.txt"`<br/>Menekülésre használható, `^` ha a tényleges mappanévben helyettesítő karakter szerepel, vagy ez az escape karakter van benne. |Nem |
+| modifiedDatetimeStart | A fájlok szűrője az attribútum alapján: Utolsó módosítás. A fájlok akkor lesznek kiválasztva, ha az `modifiedDatetimeStart` `modifiedDatetimeEnd`utolsó módosítási idejük a és a közötti időtartományon belül van. Az idő az UTC időzónára a "2018-12-01T05:00:00Z" formátumban kerül alkalmazásra. <br/><br/> Ne feledje, hogy az adatok mozgásának általános teljesítményét befolyásolja, ha engedélyezi ezt a beállítást, ha nagy mennyiségű fájlból szeretne fájlszűrőt végezni. <br/><br/> A tulajdonságok null értékűek lehetnek, ami azt jelenti, hogy az adatkészletre nem lesz fájlattribútum-szűrő alkalmazva.  Ha `modifiedDatetimeStart` datetime értékkel rendelkezik, de `modifiedDatetimeEnd` NULL, az azt jelenti, hogy azokat a fájlokat, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a datetime érték, ki lesznek jelölve.  Ha `modifiedDatetimeEnd` datetime értékkel rendelkezik, de `modifiedDatetimeStart` NULL, az azt jelenti, hogy azutolsó módosított attribútum kisebb, mint a datetime érték, ki lesznek jelölve.| Nem |
+| modifiedDatetimeEnd | A fájlok szűrője az attribútum alapján: Utolsó módosítás. A fájlok akkor lesznek kiválasztva, ha az `modifiedDatetimeStart` `modifiedDatetimeEnd`utolsó módosítási idejük a és a közötti időtartományon belül van. Az idő az UTC időzónára a "2018-12-01T05:00:00Z" formátumban kerül alkalmazásra. <br/><br/> Ne feledje, hogy az adatok mozgásának általános teljesítményét befolyásolja, ha engedélyezi ezt a beállítást, ha nagy mennyiségű fájlból szeretne fájlszűrőt végezni. <br/><br/> A tulajdonságok null értékűek lehetnek, ami azt jelenti, hogy az adatkészletre nem lesz fájlattribútum-szűrő alkalmazva.  Ha `modifiedDatetimeStart` datetime értékkel rendelkezik, de `modifiedDatetimeEnd` NULL, az azt jelenti, hogy azokat a fájlokat, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a datetime érték, ki lesznek jelölve.  Ha `modifiedDatetimeEnd` datetime értékkel rendelkezik, de `modifiedDatetimeStart` NULL, az azt jelenti, hogy azutolsó módosított attribútum kisebb, mint a datetime érték, ki lesznek jelölve.| Nem |
+| Formátum | Ha a fájlokat fájlalapú tárolók között (bináris másolat) szeretné **másolni,** hagyja ki a formátum szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha adott formátumú fájlokat szeretne elemezni, a következő fájlformátum-típusok támogatottak: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa a formátum alatti **típustulajdonságot** ezen értékek egyikére. További információt a [Szövegformátum,](supported-file-formats-and-compression-codecs-legacy.md#text-format) [a Json formátum,](supported-file-formats-and-compression-codecs-legacy.md#json-format) [az Avro formátum,](supported-file-formats-and-compression-codecs-legacy.md#avro-format) [az Orc Formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és a [Parkettaformátum](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) című szakaszban talál. |Nem (csak bináris másolási forgatókönyv esetén) |
+| tömörítés | Adja meg az adatok tömörítésének típusát és szintjét. További információt a [Támogatott fájlformátumok és tömörítési kodekek című témakörben talál.](supported-file-formats-and-compression-codecs-legacy.md#compression-support)<br/>A támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek: **Optimális** és **leggyorsabb**. |Nem |
 
 >[!TIP]
->Egy mappa összes fájljának másolásához csak a **folderPath** kell megadni.<br>Egy adott névvel rendelkező egyetlen fájl másolásához adja meg a **folderPath** és a fájlnév nevű **fájlnevet** .<br>Ha egy mappában lévő fájlok egy részhalmazát szeretné másolni, akkor a **folderPath** és a **filename** paramétert a helyettesítő karakteres szűrővel.
+>A mappa összes fájljának másolásához adja meg a csak **mappaPath** parancsot.<br>Egyetlen fájl adott nevű másolásához adja meg a **folderPath** mappát tartalmazó részét, **a fájlnév** pedig a fájlnevet.<br>Ha egy mappába szeretné másolni a fájlok egy részét, adja meg a **folderPath** mapparészlel és **a fileName** helyettesítő karakterrel című elemét.
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -447,19 +447,19 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 }
 ```
 
-### <a name="legacy-copy-activity-source-model"></a>Örökölt másolási tevékenység forrásának modellje
+### <a name="legacy-copy-activity-source-model"></a>Örökölt másolási tevékenység forrásmodellje
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HdfsSource** |Igen |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az alárendelt mappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig a fájl alapú tároló, akkor a rendszer nem másolja/hozza létre az üres mappát/almappát a fogadóban.<br/>Az engedélyezett értékek: **true** (alapértelmezett), **false** | Nem |
-| distcpSettings | Tulajdonság a HDFS DistCp használatakor. | Nem |
-| resourceManagerEndpoint | A fonál Resource Manager-végpont | Igen, ha DistCp használ |
-| tempScriptPath | A temp DistCp parancs parancsfájljának tárolására szolgáló mappa elérési útja. A parancsfájlt Data Factory hozza létre, és a másolási feladatok befejezése után el lesz távolítva. | Igen, ha DistCp használ |
-| distcpOptions | A DistCp parancshoz megadott további beállítások. | Nem |
-| maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem |
+| type | A másolási tevékenység forrásának típustulajdonságát a következőre kell állítani: **HdfsSource** |Igen |
+| Rekurzív | Azt jelzi, hogy az adatok olvasása rekurzív an- vagy csak a megadott mappából történik. Megjegyzés: Ha a rekurzív érték igaz, a fogadó pedig fájlalapú tároló, az üres mappa/almappa nem lesz másolva/hozva a fogadóban.<br/>Az engedélyezett értékek a következők: **true** (alapértelmezett), **hamis** | Nem |
+| distcpBeállítások | Tulajdonságcsoport a HDFS DistCp használatakor. | Nem |
+| resourceManagerEndpoint | A Fonal erőforrás-kezelő végpontja | Igen, ha a DistCp |
+| tempScriptPath | Az ideiglenes DistCp parancsparancsfájl tárolására használt mappaelérési út. A parancsfájlt a Data Factory hozza létre, és a másolási feladat befejezése után törlődik. | Igen, ha a DistCp |
+| distcpOptions | A DistCp parancs további lehetőségei. | Nem |
+| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozó kapcsolatok száma. Csak akkor adja meg, ha korlátozni szeretné az egyidejű kapcsolatot az adattárhoz. | Nem |
 
-**Példa: HDFS forrás a másolási tevékenységben a DistCp használatával**
+**Példa: HDFS-forrás másolási tevékenységben a DistCp használatával**
 
 ```json
 "source": {
@@ -472,5 +472,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.

@@ -1,6 +1,6 @@
 ---
-title: A Google Firebase Cloud Messaging konfigurálása az Azure Notification Hubsban | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat egy Azure Notification hub-t a Google Firebase Cloud Messaging-beállításaival.
+title: A Google Firebase felhőalapú üzenetküldésének konfigurálása az Azure Értesítési központokban | Microsoft dokumentumok
+description: Ismerje meg, hogyan konfigurálhat azure-értesítési központot a Google Firebase Cloud Messaging beállításaival.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,29 +12,30 @@ ms.date: 03/25/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 803289476d4d8869f7828b2843a983ee0c86bfbd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 1adbce654bc5c057270df9a874911731a0135034
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212498"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127471"
 ---
-# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>A Google Firebase Cloud Messaging (FCM) beállításainak konfigurálása egy értesítési Központ számára a Azure Portal
-Ez a cikk bemutatja, hogyan konfigurálhatja a Google Firebase Cloud Messaging (FCM) beállításait egy Azure Notification hub számára a Azure Portal használatával.  
+# <a name="configure-google-firebase-settings-for-a-notification-hub-in-the-azure-portal"></a>A Google Firebase beállításainak konfigurálása értesítési központhoz az Azure Portalon
+
+Ez a cikk bemutatja, hogyan konfigurálhatja a Google Firebase Cloud Messaging (FCM) beállításait egy Azure-értesítési központ hoz az Azure Portalon.  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most. További információ: [Azure Notification hub létrehozása a Azure Portalban](create-notification-hub-portal.md). 
+Ha még nem hozott létre értesítési központot, hozzon létre egyet most. További információ: [Azure-értesítési központ létrehozása az Azure Portalon.](create-notification-hub-portal.md) 
 
-## <a name="configure-google-firebase-cloud-messaging-fcm"></a>A Google Firebase Cloud Messaging (FCM) konfigurálása
+## <a name="configure-google-firebase-cloud-messaging-fcm"></a>A Google Firebase felhőalapú üzenetküldésének (FCM) konfigurálása
 
-Az alábbi eljárás lépéseit követve konfigurálhatja az értesítési központ Google Firebase Cloud Messaging (FCM) beállításait: 
+Az alábbi eljárás a Google Firebase Cloud Messaging (FCM) értesítési központ beállításainak konfigurálásához szükséges lépéseket tartalmazza: 
 
-1. A Azure Portal az **értesítési központ** lapon válassza a **Google (GCM/FCM)** elemet a bal oldali menüben. 
-2. Illessze be a korábban mentett FCM-projekthez tartozó **API-kulcsot** . 
+1. Az Azure Portalon az **Értesítési központ** lapon válassza a **Google (GCM/FCM)** lehetőséget a bal oldali menüben. 
+2. Illessze be a korábban mentett FCM-projekt **API-kulcsát.** 
 3. Kattintson a **Mentés** gombra. 
 
-   ![Képernyőkép, amely bemutatja, hogyan konfigurálható Notification Hubs a Google FCM-hez](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Képernyőkép, amely bemutatja, hogyan kell beállítani az értesítési központokat a Google FCM-hez](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Notification Hubs és a Google Firebase Cloud Messaging használatával folytatott értesítések Android-eszközökre történő leküldésével kapcsolatos részletes útmutatásért lásd: [leküldéses értesítések az Android-eszközökre Notification Hubs és a Google FCM használatával](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Az Értesítések központ és a Google Firebase felhőalapú üzenetküldés használatával az Android-eszközökre történő értesítések leküldéses útmutatóját az Értesítési központok és a [Google FCM használatával](notification-hubs-android-push-notification-google-fcm-get-started.md)című témakörben találja.
 

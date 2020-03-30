@@ -1,26 +1,26 @@
 ---
 title: Egyéni erőforrás-gyorsítótár – referencia
-description: Egyéni erőforrás-gyorsítótár-referenciák az Azure egyéni erőforrás-szolgáltatói számára. Ez a cikk végigvezeti azon végpontok követelményein, amelyek a gyorsítótár egyéni erőforrásait implementálják.
+description: Egyéni erőforrás-gyorsítótár hivatkozás az Azure egyéni erőforrás-szolgáltatók. Ez a cikk a gyorsítótár egyéni erőforrásait megvalósító végpontok követelményeit ismerteti.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650382"
 ---
-# <a name="custom-resource-cache-reference"></a>Egyéni erőforrás-gyorsítótár referenciája
+# <a name="custom-resource-cache-reference"></a>Egyéni erőforrás-gyorsítótár – hivatkozás
 
-Ez a cikk végigvezeti azon végpontok követelményein, amelyek a gyorsítótár egyéni erőforrásait implementálják. Ha nem ismeri az Azure egyéni erőforrás-szolgáltatóit, tekintse [meg az egyéni erőforrás-szolgáltatók áttekintése](overview.md)című témakört.
+Ez a cikk a gyorsítótár egyéni erőforrásait megvalósító végpontok követelményeit ismerteti. Ha nem ismeri az Azure egyéni erőforrás-szolgáltatókat, olvassa [el az egyéni erőforrás-szolgáltatók áttekintését.](overview.md)
 
-## <a name="how-to-define-a-cache-resource-endpoint"></a>Gyorsítótár-erőforrás végpontjának definiálása
+## <a name="how-to-define-a-cache-resource-endpoint"></a>Gyorsítótár-erőforrás-végpont definiálása
 
-A proxy-erőforrások létrehozásához meg kell adni a **routingType** a "proxy, cache" értékre.
+Proxyerőforrás a **"Proxy,** Gyorsítótár" útválasztó típusának megadásával hozható létre.
 
-Példa egyéni erőforrás-szolgáltatóra:
+Példa egyéni erőforrás-szolgáltató:
 
 ```JSON
 {
@@ -40,17 +40,17 @@ Példa egyéni erőforrás-szolgáltatóra:
 }
 ```
 
-## <a name="building-proxy-resource-endpoint"></a>Proxy erőforrás-végpont kiépítése
+## <a name="building-proxy-resource-endpoint"></a>Épületproxy-erőforrás végpontja
 
-A "proxy, gyorsítótár" erőforrás- **végpontot** implementáló **végpontnak** az új API-ra vonatkozó kérést és választ kell kezelnie az Azure-ban. Ebben az esetben a **resourceType** új Azure Resource API-t hoz majd `PUT`hoz, `GET`hoz és `DELETE` a szifilisz egyetlen erőforráson való végrehajtásához, valamint `GET` az összes meglévő erőforrás lekéréséhez:
+Egy **végpont,** amely megvalósítja a "Proxy, gyorsítótár" **erőforrás-végpont** kell kezelnie a kérelmet és választ az új API-t az Azure-ban. Ebben az esetben a **resourceType** létrehoz egy `PUT`új `GET`Azure-erőforrás API-t a számára, `DELETE` `GET` és egyetlen erőforráson hajtja végre a CRUD-t, valamint az összes meglévő erőforrás t:
 
 > [!NOTE]
-> Az Azure API létrehozza a kérési metódusokat `PUT`, `GET`és `DELETE`, de a gyorsítótár- **végpontnak** csak a `PUT` és a `DELETE`kezelésére van szüksége.
-> Javasoljuk, hogy a **végpont** `GET`is implementálja.
+> Az Azure API létrehozza `PUT`a `GET`kérési módszereket , `DELETE`és , `DELETE`de a gyorsítótár **végpontjának** csak kezelnie `PUT` kell a és a.
+> Azt javasoljuk, **endpoint** hogy a `GET`végpont is megvalósítsa.
 
 ### <a name="create-a-custom-resource"></a>Egyéni erőforrás létrehozása
 
-Azure API bejövő kérelem:
+Azure API bejövő kérése:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-Ezt a kérést a rendszer a következő formában továbbítja a **végpontnak** :
+Ezt a kérést a következő formában továbbítja a **végpontra:**
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Hasonlóképpen a **végpont** válasza is vissza lesz továbbítva az ügyfélnek. A végpont válaszának vissza kell térnie:
+Hasonlóképpen a **végpontválasz** ezután visszakerül az ügyfélhez. A végpontválaszának a következőt kell visszaadnia:
 
-- Egy érvényes JSON-objektum dokumentuma. Az összes tömböt és karakterláncot egy felső objektum alá kell ágyazni.
-- Az `Content-Type` fejlécet "Application/JSON;" értékre kell beállítani. charset = UTF-8 ".
-- Az egyéni erőforrás-szolgáltató felülírja a kérelem `name`, `type`és `id` mezőjét.
-- Az egyéni erőforrás-szolgáltató csak a gyorsítótár-végpont `properties` objektumában lévő mezőket fogja visszaadni.
+- Érvényes JSON-objektumdokumentum. Minden tömböt és karakterláncot egy felső objektum alá kell ágyazni.
+- A `Content-Type` fejlécet "application/json; charset=utf-8".
+- Az egyéni erőforrás-szolgáltató `name`felülírja a , `type`és `id` a kérés mezőit.
+- Az egyéni erőforrás-szolgáltató csak `properties` a gyorsítótár végpontjának objektumalatti mezőket adja vissza.
 
-**Végpont** Válasz
+**Végpont** Válasz:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -107,9 +107,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-A rendszer automatikusan létrehozza a `name`, `id`és `type` mezőket az egyéni erőforrás-szolgáltató alapján.
+A `name` `id`, `type` és mezőket az egyéni erőforrás-szolgáltató automatikusan létrehozza az egyéni erőforráshoz.
 
-Azure egyéni erőforrás-szolgáltató válasza:
+Az Azure egyéni erőforrás-szolgáltatóválasza:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -130,7 +130,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="remove-a-custom-resource"></a>Egyéni erőforrás eltávolítása
 
-Azure API bejövő kérelem:
+Azure API bejövő kérése:
 
 ``` HTTP
 Delete https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Ezt a kérést a rendszer a következő formában továbbítja a **végpontnak** :
+Ezt a kérést a következő formában továbbítja a **végpontra:**
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,29 +146,29 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-Hasonlóképpen a **végpont** válasza is vissza lesz továbbítva az ügyfélnek. A végpont válaszának vissza kell térnie:
+Hasonlóképpen a **végpontválasz** ezután visszakerül az ügyfélhez. A végpontválaszának a következőt kell visszaadnia:
 
-- Egy érvényes JSON-objektum dokumentuma. Az összes tömböt és karakterláncot egy felső objektum alá kell ágyazni.
-- Az `Content-Type` fejlécet "Application/JSON;" értékre kell beállítani. charset = UTF-8 ".
-- Az Azure egyéni erőforrás-szolgáltató csak akkor távolítja el az elemet a gyorsítótárból, ha 200 szintű választ ad vissza. Akkor is, ha az erőforrás nem létezik, a **végpontnak** 204 értéket kell visszaadnia.
+- Érvényes JSON-objektumdokumentum. Minden tömböt és karakterláncot egy felső objektum alá kell ágyazni.
+- A `Content-Type` fejlécet "application/json; charset=utf-8".
+- Az Azure egyéni erőforrás-szolgáltató csak akkor távolítja el az elemet a gyorsítótárból, ha egy 200-szintű választ ad vissza. Még ha az erőforrás nem is létezik, a **végpontnak** 204-et kell visszaadnia.
 
-**Végpont** Válasz
-
-``` HTTP
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-```
-
-Azure egyéni erőforrás-szolgáltató válasza:
+**Végpont** Válasz:
 
 ``` HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
 
-### <a name="retrieve-a-custom-resource"></a>Egyéni erőforrás lekérése
+Az Azure egyéni erőforrás-szolgáltatóválasza:
 
-Azure API bejövő kérelem:
+``` HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+
+### <a name="retrieve-a-custom-resource"></a>Egyéni erőforrás beolvasása
+
+Azure API bejövő kérése:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -176,9 +176,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-A kérés **nem** lesz továbbítva a **végpontnak**.
+A kérés **nem** lesz továbbítva a **végpontra**.
 
-Azure egyéni erőforrás-szolgáltató válasza:
+Az Azure egyéni erőforrás-szolgáltatóválasza:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -197,9 +197,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="enumerate-all-custom-resources"></a>Az összes egyéni erőforrás enumerálása
+### <a name="enumerate-all-custom-resources"></a>Az összes egyéni erőforrás felsorolása
 
-Azure API bejövő kérelem:
+Azure API bejövő kérése:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources?api-version=2018-09-01-preview
@@ -207,9 +207,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-A rendszer **nem** továbbítja a kérést a **végpontnak**.
+Ez a kérés **nem** lesz továbbítva a **végpontra**.
 
-Azure egyéni erőforrás-szolgáltató válasza:
+Az Azure egyéni erőforrás-szolgáltatóválasza:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -232,10 +232,10 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatóinak áttekintése](overview.md)
-- [Rövid útmutató: Azure egyéni erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)
-- [Oktatóanyag: egyéni műveletek és erőforrások létrehozása az Azure-ban](./tutorial-get-started-with-custom-providers.md)
-- [Útmutató: egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
-- [Hivatkozás: egyéni erőforrás-proxy referenciája](proxy-resource-endpoint-reference.md)
+- [Rövid útmutató: Hozzon létre egyéni erőforrás-szolgáltatót, és telepítsen egyéni erőforrásokat](./create-custom-provider.md)
+- [Oktatóanyag: Egyéni műveletek és erőforrások létrehozása az Azure-ban](./tutorial-get-started-with-custom-providers.md)
+- [Útmutató: Egyéni műveletek hozzáadása az Azure REST API-hoz](./custom-providers-action-endpoint-how-to.md)
+- [Hivatkozás: Egyéni erőforrásproxy-hivatkozás](proxy-resource-endpoint-reference.md)

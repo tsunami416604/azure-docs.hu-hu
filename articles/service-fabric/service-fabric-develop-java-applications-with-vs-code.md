@@ -1,125 +1,125 @@
 ---
-title: Java-alkalmazások fejlesztése a Visual Studio Code-ban
-description: Ez a cikk bemutatja, hogyan hozhat létre, helyezhet üzembe és kereshet Java Service Fabric-alkalmazásokat a Visual Studio Code használatával.
+title: Java-alkalmazások fejlesztése visual studio kóddal
+description: Ez a cikk bemutatja, hogyan hozhat létre, telepíthet és debugolhatot készíthet java Service Fabric-alkalmazásokat a Visual Studio-kód használatával.
 author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610046"
 ---
-# <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Java Service Fabric-alkalmazások fejlesztése a Visual Studio Code-ban
+# <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Java Service Fabric-alkalmazások fejlesztése visual studio-kóddal
 
-A [vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) -hoz készült Service Fabric Reliable Services-bővítmény megkönnyíti a Java-Service Fabric alkalmazások Windows, Linux és MacOS operációs rendszereken való összeállítását.
+A [Service Fabric Reliable Services bővítmény vs kód](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) megkönnyíti a Java Service Fabric alkalmazások létrehozása Windows, Linux és macOS operációs rendszereken.
 
-Ez a cikk bemutatja, hogyan hozhat létre, helyezhet üzembe és kereshet Java Service Fabric-alkalmazásokat a Visual Studio Code használatával.
+Ez a cikk bemutatja, hogyan hozhat létre, üzembe helyezhet és debug egy Java Service Fabric-alkalmazást a Visual Studio-kód használatával.
 
 > [!IMPORTANT]
-> Service Fabric Java-alkalmazások fejleszthetők Windows rendszerű gépeken, de csak az Azure Linux-fürtökön helyezhetők üzembe. A Java-alkalmazások hibakeresése Windows rendszeren nem támogatott.
+> A Service Fabric Java-alkalmazások fejleszthetők Windows-gépeken, de csak Azure Linux-fürtökre telepíthetők. A Java-alkalmazások hibakeresését a Windows nem támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy már telepítette a vs Code-ot, a Service Fabric Reliable Services bővítményt a VS Code-hoz, valamint a fejlesztési környezethez szükséges függőségeket. További információ: [első lépések](./service-fabric-get-started-vs-code.md#prerequisites).
+Ez a cikk feltételezi, hogy már telepítette a VS-kódot, a Service Fabric reliable services bővítményt a VS-kódhoz, és a fejlesztői környezethez szükséges függőségeket. További információ: [Első lépések](./service-fabric-get-started-vs-code.md#prerequisites).
 
 ## <a name="download-the-sample"></a>A minta letöltése
-Ez a cikk a szavazási alkalmazást használja a Service Fabric Java-alkalmazás rövid útmutatójában a [GitHub-tárházban](https://github.com/Azure-Samples/service-fabric-java-quickstart). 
+Ez a cikk a szavazási alkalmazást használja a [Service Fabric Java-alkalmazás rövid útmutatójában a GitHub-tárházból.](https://github.com/Azure-Samples/service-fabric-java-quickstart) 
 
-Ha a tárházat a fejlesztői gépre szeretné klónozott, futtassa a következő parancsot egy terminál-ablakból (Windowsos parancssorablak):
+A tárház fejlesztői gépre történő klónozásához futtassa a következő parancsot egy terminálablakból (parancsablak a Windows rendszeren):
 
 ```sh
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 ```
 
-## <a name="open-the-application-in-vs-code"></a>Az alkalmazás megnyitása a VS Code-ban
+## <a name="open-the-application-in-vs-code"></a>Az alkalmazás megnyitása a VS-kódban
 
-Nyissa meg a VS Code-ot.  Kattintson az Intéző ikonra a **tevékenység sávján** , majd kattintson a **mappa megnyitása**lehetőségre, vagy kattintson a **Fájl > Megnyitás mappa**elemre. Keresse meg a *./Service-Fabric-Java-Quickstart/voting* könyvtárat abban a mappában, ahová a tárházat klónozotta, majd kattintson az **OK**gombra. A munkaterületnek az alábbi képernyőképen látható fájlokat kell tartalmaznia.
+Nyissa meg a VS-kódot.  Kattintson a **Tevékenységsáv** Intéző ikonjára, majd a **Mappa megnyitása**parancsra, vagy a **Fájl -> Mappa megnyitása parancsra.** Keresse meg a *./service-fabric-java-quickstart/Voting* könyvtárat abban a mappában, ahol klónozta a tárházat, majd kattintson az **OK**gombra. A munkaterületnek ugyanazokat a fájlokat kell tartalmaznia, amelyek az alábbi képernyőképen láthatók.
 
-![Java-szavazati alkalmazás a munkaterületen](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
+![Java szavazóalkalmazás a munkaterületen](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
 ## <a name="build-the-application"></a>Az alkalmazás létrehozása
 
-1. Nyomja meg a (CTRL + SHIFT + p) billentyűkombinációt a **Command paletta** vs Code-ban való megnyitásához.
-2. Keresse meg és válassza ki a **Service Fabric: build Application (alkalmazás létrehozása** ) parancsot. A rendszer a Build kimenetét az integrált terminálnak küldi el.
+1. Nyomja meg a (Ctrl + Shift + p) billentyűkombinációt a **Parancspaletta** VS-kódban való megnyitásához.
+2. Keresse meg és válassza ki a **Service Fabric: Build Application** parancsot. A buildkimenet az integrált terminálra kerül.
 
-   ![Alkalmazás létrehozása parancs a VS Code-ban](./media/service-fabric-develop-java-applications-with-vs-code/sf-build-application.png)
+   ![Alkalmazás készítési parancsa a VS-kódban](./media/service-fabric-develop-java-applications-with-vs-code/sf-build-application.png)
 
-## <a name="deploy-the-application-to-the-local-cluster"></a>Az alkalmazás központi telepítése a helyi fürtre
-Az alkalmazás létrehozása után üzembe helyezheti azt a helyi fürtön. 
+## <a name="deploy-the-application-to-the-local-cluster"></a>Az alkalmazás telepítése a helyi fürtre
+Miután elkészítette az alkalmazást, üzembe helyezheti azt a helyi fürtre. 
 
 > [!IMPORTANT]
-> A Java-alkalmazások helyi fürtön történő üzembe helyezése Windows rendszerű gépeken nem támogatott.
+> Windows-gépek en nem támogatott a Java-alkalmazások telepítése a helyi fürtre.
 
-1. A **parancs palettáján**válassza ki a **Service Fabric: Deploy Application (localhost) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
+1. A **parancspalettán**válassza ki a **Service Fabric: Deploy Application (Localhost) parancsot.** A telepítési folyamat kimenete az integrált terminálra kerül.
 
-   ![Alkalmazás üzembe helyezése parancs a VS Code-ban](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
+   ![Alkalmazásparancs telepítése a VS-kódban](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
-4. Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa meg Service Fabric Explorer: `http://localhost:19080/Explorer`. Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
+4. Amikor a központi telepítés befejeződött, indítson el `http://localhost:19080/Explorer`egy böngészőt, és nyissa meg a Service Fabric Explorert: . Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, ezért légy türelmes. 
 
-   ![Szavazási alkalmazás Service Fabric Explorer](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
+   ![Szavazási alkalmazás a Service Fabric Intézőben](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
 
-4. Miután ellenőrizte, hogy fut-e az alkalmazás, indítson el egy böngészőt, és nyissa meg a következő oldalt: `http://localhost:8080`. Ez az alkalmazás webes kezelőfelülete. Hozzáadhat elemeket, és kattintson rájuk a szavazáshoz.
+4. Miután meggyőződött arról, hogy az alkalmazás fut, indítson `http://localhost:8080`el egy böngészőt, és nyissa meg ezt a lapot: . Ez az alkalmazás webes előtér- kiszolgálója. Felveheti elemeket, és kattintson rájuk, hogy szavazzanak.
 
-   ![Szavazási alkalmazás a böngészőben](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
+   ![Szavazási alkalmazás böngészőben](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. Ha el szeretné távolítani az alkalmazást a fürtből, válassza a **Service Fabric: alkalmazás eltávolítása** parancsot a **parancssorból**. Az eltávolítási folyamat kimenetét az integrált terminálra küldi a rendszer. A Service Fabric Explorer segítségével ellenőrizheti, hogy az alkalmazás el lett-e távolítva a helyi fürtből.
+5. Ha el szeretné távolítani az alkalmazást a fürtből, válassza a **Service Fabric: Application remove command** parancsot a **parancspalettáról**. Az eltávolítási folyamat kimenete az integrált terminálra kerül. A Service Fabric Explorer segítségével ellenőrizheti, hogy az alkalmazást eltávolították-e a helyi fürtből.
 
 ## <a name="debug-the-application"></a>Az alkalmazás hibakeresése
-Ha a VS Code alkalmazásban hibakeresést végez, az alkalmazásnak helyi fürtön kell futnia. A töréspontok ezután hozzáadhatók a kódhoz.
+Alkalmazások vs kódban történő hibakeresésekénél az alkalmazásnak helyi fürtön kell futnia. Ezután töréspontokadhatók hozzá a kódhoz.
 
 > [!IMPORTANT]
-> A Java-alkalmazások hibakeresése Windows rendszerű gépeken nem támogatott.
+> Windows-gépeken a Java-alkalmazások hibakeresése nem támogatott.
 
-A VotingDataService és a szavazó alkalmazás hibakereséshez való előkészítéséhez végezze el a következő lépéseket:
+A VotingDataService és a Szavazás alkalmazás hibakeresésre való előkészítéséhez hajtsa végre az alábbi lépéseket:
 
-1. Frissítse a *szavazó/VotingApplication/VotingDataServicePkg/Code/BelépésiPont. sh* fájlt.
-Tegye megjegyzésbe a parancsot a 6. sorban (használja a "#" utasítást), és adja hozzá a következő parancsot a fájl aljához:
+1. Frissítse a *Voting/VotingApplication/VotingDataServicePkg/Code/entryPoint.sh* fájlt.
+Fűzzön hozzá megjegyzést a 6.
 
    ```
    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingDataService.jar
    ```
 
-2. Frissítse a *szavazás/VotingApplication/ApplicationManifest. XML* fájlt. Állítsa a **MinReplicaSetSize** és a **TargetReplicaSetSize** attribútumot "1" értékre a **StatefulService** elemben:
+2. Frissítse a *Voting/VotingApplication/ApplicationManifest.xml* fájlt. Állítsa a **MinReplicaSetSize** és a **TargetReplicaSetSize** attribútumokat "1"-re a **StatefulService** elemben:
    
    ```xml
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">
    ```
 
-3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **Java** elemet a legördülő menüből. Megnyílik a Launch. JSON fájl. 
+3. A **Hibakeresés** ikonra kattintva nyissa meg a hibakereső nézetet a VS-kódban. Kattintson a hibakereső nézet tetején lévő fogaskerék ikonra, és válassza a **Java** lehetőséget a legördülő környezet menüből. Megnyílik a launch.json fájl. 
 
-   ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
+   ![Hibakeresési ikon a VS code workspace-ben](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. A Launch. JSON fájlban állítsa be a port értékét a **Debug (csatolás)** nevű konfigurációban a **8001**értékre. Mentse a fájlt.
+3. A launch.json fájlban állítsa a **Debug (Csatolás)** nevű konfiguráció portértékét **8001-re.** Mentse a fájlt.
 
-   ![Hibakeresési konfiguráció a Launch. JSON fájlhoz](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
+   ![Hibakeresési konfiguráció a launch.json](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
-4. Telepítse az alkalmazást a helyi fürtre a **Service Fabric: Deploy Application (localhost)** parancs használatával. Ellenőrizze, hogy az alkalmazás fut-e Service Fabric Explorer. Az alkalmazás most már készen áll a hibakeresésre.
+4. Telepítse az alkalmazást a helyi fürtre a **Service Fabric: Deploy Application (Localhost)** paranccsal. Ellenőrizze, hogy az alkalmazás fut-e a Service Fabric Intézőben. Az alkalmazás készen áll a hibakeresésre.
 
-Töréspont beállításához hajtsa végre a következő lépéseket:
+Töréspont beállításához hajtsa végre az alábbi lépéseket:
 
-1. Az Explorerben nyissa meg a */voting/VotingDataService/src/statefulservice/VotingDataService.Java* fájlt. A kód első sorában állítson be egy töréspontot a `addItem` metódus `try` blokkjában (80. sor).
+1. Az Explorerben nyissa meg a */Voting/VotingDataService/src/statefulservice/VotingDataService.java* fájlt. Állítson be egy töréspontot a `try` metódus `addItem` (80. sor) blokkjában lévő kód első sorára.
    
-   ![Töréspont beállítása a szavazó adatszolgáltatásban](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
+   ![Töréspont beállítása a voting data service szolgáltatásban](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
 
    > [!IMPORTANT]
-   > Ügyeljen arra, hogy töréspontokat állítson be a kód végrehajtható sorain. Például a metódus deklarációjában beállított töréspontok, `try` utasítások vagy `catch` utasítások kimaradnak a hibakeresőtől.
-2. A hibakeresés megkezdéséhez kattintson a hibakeresés ikonra a **tevékenység sávján**, válassza a hibakeresés **(csatolás)** konfigurációt a hibakeresés menüben, majd kattintson a Futtatás gombra (zöld nyíl).
+   > Győződjön meg róla, hogy töréspontokat állított be a végrehajtható kódsorokon. A hibakereső például a `try` metódusdeklarációkra, utasításokra vagy `catch` utasításokra beállított töréspontokat nem veszi észre.
+2. A hibakeresés megkezdéséhez kattintson a Hibakeresés ikonra a **Tevékenységsávon**, válassza a **Hibakeresési (Csatolás)** konfigurációt a hibakeresési menüből, majd kattintson a futtatás gombra (zöld nyíl).
 
-   ![Hibakeresés (csatolás) konfigurálása](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
+   ![Hibakeresési (csatolási) konfiguráció](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 
-3. A böngészőben nyissa meg a `http://localhost:8080`. Írjon be egy új tételt a szövegmezőbe, majd kattintson a **+ Hozzáadás**gombra. A töréspontot meg kell érinteni. A VS Code tetején található hibakeresés eszköztár használatával folytathatja a végrehajtást, átadhatja a vonalakat, beléphet a metódusokra, vagy kiléphet az aktuális metódusból. 
+3. Egy böngészőben nyissa meg a következőt: `http://localhost:8080`. Írjon be egy új elemet a szövegmezőbe, és kattintson **a + Hozzáadás gombra.** A töréspontodnak el kell találnia. A VS-kód tetején található Debug eszköztár segítségével folytathatja a végrehajtást, átléphet a sorokon, módszerekbe léphet, vagy kiléphet az aktuális módszerből. 
    
    ![Találati töréspont](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
        
-4. A hibakeresési munkamenet befejezéséhez kattintson a VS Code felső részén található hibakeresés eszköztáron a dugó ikonra.
+4. A hibakeresési munkamenet befejezéséhez kattintson a VS-kód tetején lévő Debug eszköztár dugóikonjára.
    
-   ![Leválasztás a hibakeresőből](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
+   ![Kapcsolat bontása a hibakeresővel](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. A hibakeresés befejezésekor a **Service Fabric: Remove Application** paranccsal távolíthatja el a szavazati alkalmazást a helyi fürtből. 
+5. Miután befejezte a hibakeresést, használhatja a **Service Fabric: Application eltávolítása** parancsot a szavazási alkalmazás eltávolításához a helyi fürtből. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [fejleszthet C# és kereshet Service FABRIC alkalmazásokat a vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md)használatával.
+* Ismerje meg, hogyan [fejleszthet és debugolhat C# Service Fabric-alkalmazásokat a VS Code segítségével.](./service-fabric-develop-csharp-applications-with-vs-code.md)

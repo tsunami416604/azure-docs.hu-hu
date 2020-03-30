@@ -1,52 +1,52 @@
 ---
-title: Az Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik Azure-régióba az Azure Portal használatával
-description: Azure Resource Manager sablonnal áthelyezheti az Azure hálózati biztonsági csoportot az egyik Azure-régióból a másikba a Azure Portal használatával.
+title: Az Azure hálózati biztonsági csoportjának (NSG) áthelyezése egy másik Azure-régióba az Azure Portal használatával
+description: Az Azure Resource Manager-sablonnal áthelyezi az Azure hálózati biztonsági csoportját az egyik Azure-régióból a másikba az Azure Portal használatával.
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647186"
 ---
-# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Az Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik régióba a Azure Portal használatával
+# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Az Azure hálózati biztonsági csoportjának (NSG) áthelyezése egy másik régióba az Azure Portal használatával
 
-Különböző helyzetekben érdemes áthelyezni a meglévő NSG egyik régióból a másikba. Előfordulhat például, hogy létre szeretne hozni egy NSG ugyanazzal a konfigurációs és biztonsági szabályokkal a teszteléshez. Előfordulhat, hogy a vész-helyreállítási tervezés részeként egy NSG is át szeretne helyezni egy másik régióba.
+Vannak különböző forgatókönyvek, amelyekben szeretné áthelyezni a meglévő NSG-k egyik régióból a másikba. Előfordulhat például, hogy azonos konfigurációs és biztonsági szabályokkal rendelkező NSG-t szeretne létrehozni a teszteléshez. Előfordulhat, hogy egy NSG-t is át szeretne helyezni egy másik régióba a vész-helyreállítási tervezés részeként.
 
-Az Azure biztonsági csoportjai nem helyezhetők át egyik régióból a másikba. A NSG meglévő konfigurációs és biztonsági szabályainak exportálásához azonban Azure Resource Manager sablont is használhat.  Ezután egy másik régióban is elvégezheti az erőforrást, ha a NSG sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célhelynek, majd üzembe helyezi a sablont az új régióban.  A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című témakört.
+Az Azure biztonsági csoportok nem helyezhetők át egyik régióból a másikba. Azonban egy Azure Resource Manager sablon használatával exportálhatja az NSG meglévő konfigurációs és biztonsági szabályait.  Ezután egy másik régióban is elhelyezheti az erőforrást úgy, hogy az NSG-t egy sablonba exportálja, módosítja a paramétereket a célrégiónak megfelelően, majd telepíti a sablont az új régióba.  Az Erőforrás-kezelőről és a sablonokról további információt a [Rövid útmutató: Azure Resource Manager-sablonok létrehozása és üzembe helyezése az Azure Portal használatával című témakörben talál.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy az Azure-beli hálózati biztonsági csoport abban az Azure-régióban található, amelyről át kívánja helyezni.
+- Győződjön meg arról, hogy az Azure hálózati biztonsági csoport az Azure-régióban, ahonnan át szeretne helyezni.
 
-- Az Azure-beli hálózati biztonsági csoportok nem helyezhetők át régiók között.  Az új NSG hozzá kell rendelnie a cél régió erőforrásaihoz.
+- Az Azure hálózati biztonsági csoportok nem helyezhetők át a régiók között.  Az új NSG-t a célrégió erőforrásaihoz kell társítania.
 
-- NSG-konfiguráció exportálásához és sablon üzembe helyezéséhez egy másik régióban lévő NSG létrehozásához szüksége lesz a hálózati közreműködő szerepkörre vagy magasabbra.
+- NSG-konfiguráció exportálásához és egy sablon központi telepítéséhez nsg-t hozhat létre egy másik régióban, szüksége van a hálózati közreműködőszerepkörvagy magasabb.
 
-- Azonosítsa a forrás hálózatkezelési elrendezést és az összes éppen használt erőforrást. Ez az elrendezés tartalmaz, de nem korlátozódik a terheléselosztó, a nyilvános IP-címek és a virtuális hálózatok számára.
+- Azonosítsa a forráshálózati elrendezést és az összes jelenleg használt erőforrást. Ez az elrendezés tartalmazza, de nem korlátozódik a terheléselosztók, nyilvános IP-k és a virtuális hálózatok.
 
-- Győződjön meg arról, hogy az Azure-előfizetése lehetővé teszi, hogy NSG hozzon létre a használt célcsoportban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
+- Ellenőrizze, hogy az Azure-előfizetés lehetővé teszi-e, hogy nsg-ket hozzon létre a használt célrégióban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
 
-- Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a folyamat NSG hozzáadásának támogatásához.  Tekintse meg a következőt: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Győződjön meg arról, hogy az előfizetés elegendő erőforrással rendelkezik az NSG-k hozzáadásának támogatásához ehhez a folyamathoz.  Lásd: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
-## <a name="prepare-and-move"></a>Előkészítés és áthelyezés
-A következő lépések bemutatják, hogyan készítse elő a hálózati biztonsági csoportot a konfigurációs és biztonsági szabály számára egy Resource Manager-sablon használatával, majd helyezze át a NSG konfigurációs és biztonsági szabályait a célként megadott régióba a portál használatával.
+## <a name="prepare-and-move"></a>Felkészülés és mozgás
+A következő lépések bemutatják, hogyan készítheti elő a hálózati biztonsági csoportot a konfigurációs és biztonsági szabály áthelyezése egy Erőforrás-kezelő sablon használatával, és helyezze át az NSG konfigurációs és biztonsági szabályokat a célrégióba a portál használatával.
 
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>A sablon exportálása és üzembe helyezése a portálról
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) > **erőforráscsoportokba**.
-2. Keresse meg a forrás NSG tartalmazó erőforráscsoportot, és kattintson rá.
-3. Válassza a > **beállítások** > **sablon exportálása**lehetőséget.
-4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
-5. Kattintson a **sablon** > **Paraméterek szerkesztése** elemre a **Parameters. JSON** fájl megnyitásához az online szerkesztőben.
-6. A NSG-név paraméterének szerkesztéséhez módosítsa a **Value** tulajdonságot a **Paraméterek**alatt:
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **erőforráscsoportokba.**
+2. Keresse meg a forrásNSG-t tartalmazó erőforráscsoportot, és kattintson rá.
+3. Válassza > **Beállítások** > **exportálása sablont.**
+4. Válassza a **Telepítés lehetőséget** az **Exportálás sablon** panelen.
+5. Kattintson **a TEMPLATE** > **Paraméterek szerkesztése parancsra** a **parameters.json** fájl online szerkesztőben való megnyitásához.
+6. Az NSG-név paraméterének szerkesztéséhez módosítsa az **értéktulajdonságot** a **paraméterek**alatt:
 
     ```json
             {
@@ -60,13 +60,13 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
     ```
 
-7. Módosítsa a forrás NSG értékét a szerkesztőben a célként kiválasztott NSG. Győződjön meg arról, hogy a nevet idézőjelek közé adja.
+7. Módosítsa a forrás NSG értékét a szerkesztőben egy választott névre a cél NSG számára. Győződjön meg róla, hogy a nevet idézőjelek közé kell tetsznie.
 
-8.  Kattintson a **Mentés** gombra a szerkesztőben.
+8.  Kattintson a **Mentés** a szerkesztőben gombra.
 
-9.  Kattintson a **sablon** > **Sablon szerkesztése** elemre a Template **. JSON** fájl megnyitásához az online szerkesztőben.
+9.  Kattintson **a TEMPLATE** > **Szerkesztés sablon** ra a **template.json** fájl online szerkesztőben való megnyitásához.
 
-10. Ha módosítani szeretné a NSG-konfigurációt és a biztonsági szabályokat áthelyező célhelyet, módosítsa a **Location (hely** ) tulajdonságot az online szerkesztőben található **erőforrások** területen:
+10. Az NSG konfigurációs és biztonsági szabályainak áthelyezését célzó célrégió szerkesztéséhez módosítsa a **helytulajdonságot** az online szerkesztő **erőforrásai** alatt:
 
     ```json
             "resources": [
@@ -84,11 +84,11 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
     ```
 
-11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, az **USA középső** = **CentralUS**.
+11. A régióhely-kódok beszerzéséhez olvassa el az Azure Locations ( Azure Locations ) ( Azure Locations ) ( Azure Locations ) ( Azure Locations ) [(A régió hely](https://azure.microsoft.com/global-infrastructure/locations/)  A régió kódja a terület neve szóközök nélkül, **az USA** = középső**központja**.
 
-12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
+12. Ha úgy dönt, módosíthatja a sablon egyéb paramétereit is, és a követelményektől függően nem kötelező:
 
-    * **Biztonsági szabályok** – a **sablon. JSON** fájljának **securityRules** szakaszának szabályainak hozzáadásával vagy eltávolításával szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG:
+    * **Biztonsági szabályok** – A **template.json** fájl **securityRules** szakaszához adott vagy eltávolítható szabályokat szerkesztheti:
 
         ```json
            "resources": [
@@ -124,7 +124,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
         ```
 
-      A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez a **template. JSON** fájl végén található egyéni szabálytípuseket is szerkesztenie kell az alábbi példa formátumában:
+      A célNSG-ben lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez a **template.json** fájl végén található egyéni szabálytípusokat is az alábbi példa formátumában kell szerkesztenie:
 
       ```json
            {
@@ -151,31 +151,31 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
       ```
 
-13. Kattintson a **Save (Mentés** ) gombra az online szerkesztőben.
+13. Kattintson a **Mentés** gombra az online szerkesztőben.
 
-14. Az **alapismeretek** > az **előfizetés** lehetőségre kattintva válassza ki azt az előfizetést, ahol a cél NSG telepíteni fogja.
+14. Kattintson **a BASICS-előfizetés** > **Subscription** elemre annak az előfizetésnek a kiválasztásához, amelyben a cél NSG telepítve lesz.
 
-15. Kattintson az **alapismeretek** > **erőforráscsoport** elemre, és válassza ki azt az erőforráscsoportot, amelyben a célként megadott NSG telepíteni fogja.  Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél NSG.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő NSG forrásoldali erőforráscsoport.
+15. Kattintson **a BASICS** > **erőforráscsoport** válassza ki az erőforráscsoportot, ahol a cél NSG lesz telepítve.  Az **Új létrehozása gombra** kattintva új erőforráscsoportot hozhat létre a cél NSG számára.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő NSG forráserőforrás-csoportja.
 
-16. Az **alapvető beállítások** ellenőrzése > a **hely** azon célhelyre van BEÁLLÍTVA, ahol a NSG telepíteni kívánja.
+16. Ellenőrizze, hogy a **BASICS** > **hely** be van-e állítva arra a célhelyre, ahol az NSG telepítését szeretné.
 
-17. Ellenőrizze a **Beállítások** területen, hogy a név megegyezik-e a fenti Parameters Editorban megadott névvel.
+17. Ellenőrizze a **BEÁLLÍTÁSOK** csoportban, hogy a név megegyezik-e a fenti paraméterszerkesztőben megadott névvel.
 
-18. Jelölje be a jelölőnégyzetet a **feltételek és KIkötések**területen.
+18. Jelölje be a jelölőnégyzetet a **FELTÉTELEK ÉS FELTÉTELEK mezőben.**
 
-19. Kattintson a **vásárlás** gombra a célként megadott hálózati biztonsági csoport telepítéséhez.
+19. A **célhálózati** biztonsági csoport telepítéséhez kattintson a Vásárlás gombra.
 
 ## <a name="discard"></a>Elvetés
 
-Ha el szeretné vetni a cél NSG, törölje a cél NSG tartalmazó erőforráscsoportot.  Ehhez válassza ki az erőforráscsoportot az irányítópulton a portálon, és válassza a **Törlés** lehetőséget az Áttekintés oldal tetején.
+Ha el szeretné vetni a cél NSG-t, törölje a cél NSG-t tartalmazó erőforráscsoportot.  Ehhez jelölje ki az erőforráscsoportot az irányítópulton a portálon, és válassza a **Törlés** lehetőséget az áttekintő lap tetején.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-A módosítások végrehajtásához és a NSG áthelyezésének befejezéséhez törölje a forrás NSG vagy az erőforráscsoportot. Ehhez válassza ki a hálózati biztonsági csoportot vagy erőforráscsoportot az irányítópulton a portálon, és válassza a **Törlés** lehetőséget az egyes oldalak tetején.
+A módosítások véglegesítéséhez és az NSG áthelyezésének befejezéséhez törölje a forrás NSG-t vagy az erőforráscsoportot. Ehhez jelölje ki a hálózati biztonsági csoportot vagy erőforráscsoportot az irányítópultról a portálon, és válassza a **Törlés** lehetőséget az egyes lapok tetején.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure-beli hálózati biztonsági csoportot helyezett át az egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
+Ebben az oktatóanyagban áthelyezett egy Azure-hálózati biztonsági csoportot egyik régióból a másikba, és megtisztította a forráserőforrásokat.  Ha többet szeretne tudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vészhelyreállításról:
 
 
 - [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

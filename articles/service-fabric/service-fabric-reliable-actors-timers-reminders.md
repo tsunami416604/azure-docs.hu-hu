@@ -1,24 +1,24 @@
 ---
-title: Reliable Actors időzítők és emlékeztetők
-description: Az időzítők és emlékeztetők bevezetője Service Fabric Reliable Actorshoz, beleértve az egyes eszközök használatára vonatkozó útmutatást.
+title: Megbízható actors időzítők és emlékeztetők
+description: Bevezetés az időzítők és emlékeztetők a Service Fabric megbízható szereplők, beleértve az egyes használati útmutatót.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639615"
 ---
-# <a name="actor-timers-and-reminders"></a>Színészi időzítők és emlékeztetők
-A szereplők rendszeres munkát ütemezhetnek az időzítők vagy emlékeztetők regisztrálásával. Ez a cikk bemutatja, hogyan használhatók az időzítők és a emlékeztetők, valamint ismertetik a köztük lévő különbségeket.
+# <a name="actor-timers-and-reminders"></a>Aktor időzítők és emlékeztetők
+A szereplők ütemezhetik maguknak az időszakos munkát időzítők vagy emlékeztetők regisztrálásával. Ez a cikk bemutatja, hogyan kell használni az időzítők és emlékeztetők, és ismerteti a különbségeket közöttük.
 
-## <a name="actor-timers"></a>Színészi időzítők
-A színészi időzítők egy egyszerű burkolót biztosítanak egy .NET-vagy Java-időzítőhöz, így biztosítva, hogy a visszahívási módszerek tiszteletben tartsák a többtényezős futtatókörnyezet által biztosított párhuzamossági garanciákat.
+## <a name="actor-timers"></a>Aktor időzítői
+Az aktoridőzítők egy egyszerű burkolót biztosítanak egy .NET vagy Java időzítő körül, hogy a visszahívási módszerek tiszteletben tartsák a sorozatalapú egyidejűségi garanciákat, amelyeket az Actors futásidejű biztosít.
 
-A szereplők a `RegisterTimer`(C#) vagy a `registerTimer`(Java) és a `UnregisterTimer`C#() vagy a `unregisterTimer`(Java) metódusok használatával regisztrálhatják és törölheti az időzítők regisztrációját. Az alábbi példa az időzítő API-k használatát mutatja be. Az API-k nagyon hasonlóak a .NET-időzítőhöz vagy a Java-időzítőhöz. Ebben a példában, amikor az időzítő esedékes, a szereplők futtatókörnyezete meghívja a `MoveObject`(C#) vagy a `moveObject`(Java) metódust. A metódus garantált a turn-based Egyidejűség tiszteletben tartására. Ez azt jelenti, hogy ha a visszahívás nem fejeződik be, a rendszer nem hajtja végre a többi szereplő metódust vagy időzítő/emlékeztető visszahívást.
+A szereplők `RegisterTimer`használhatják a `registerTimer`(C#) `UnregisterTimer`vagy (Java) és (C#) vagy `unregisterTimer`(Java) metódusokat az alaposztályukon az időzítők regisztrálásához és regisztrációjának leiratkozásához. Az alábbi példa az időzítő API-k használatát mutatja be. Az API-k nagyon hasonlóak a .NET időzítőhöz vagy a Java időzítőhöz. Ebben a példában, amikor az időzítő esedékes, `MoveObject`az Actors futásidejű meghívja a (C#) vagy `moveObject`(Java) metódust. A módszer garantáltan tiszteletben tartja a turn-based egyidejűséget. Ez azt jelenti, hogy nincs más aktor metódusok vagy időzítő/emlékeztető visszahívások lesz folyamatban, amíg ez a visszahívás befejezi a végrehajtást.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -118,16 +118,16 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 }
 ```
 
-Az időzítő következő időszaka a visszahívás befejeződése után kezdődik. Ez azt jelenti, hogy az időzítő leáll a visszahívás végrehajtása közben, és a visszahívás befejeződése után elindul.
+Az időzítő következő időszaka a visszahívás végrehajtása után kezdődik. Ez azt jelenti, hogy az időzítő leáll a visszahívás végrehajtása közben, és a visszahívás befejezésekor indul el.
 
-A szereplők futtatókörnyezete a visszahívás befejeződése után menti a színész State managerének változásait. Ha az állapot mentésekor hiba történik, akkor a rendszer inaktiválja a Actor objektumot, és egy új példányt aktivál.
+Az Actors futásidejű menti a módosításokat az aktor state manager, amikor a visszahívás befejeződik. Ha hiba történik az állapot mentésekor, az aktorobjektum inaktívvá válik, és egy új példány aktiválódik.
 
-Minden időzítő leáll, ha a színész inaktiválva van a szemetet tartalmazó gyűjtemény részeként. Ezt követően nem hívhat meg időzítő-visszahívást. Emellett a szereplők futtatókörnyezete nem őrzi meg az Inaktiválás előtt futó időzítők adatait. Ez a színész a jövőben az újraaktiváláskor szükséges időzítők regisztrálására szolgál. További információkért lásd a [Actors Garbage gyűjtemény](service-fabric-reliable-actors-lifecycle.md)című szakaszát.
+Az összes időzítő leáll, ha az aktor a szemétgyűjtés részeként inaktiválva van. Ezután nem hívnak vissza időzítővisszahívásokat. Emellett az Actors futtatótime nem őriz meg semmilyen információt az inaktiválás előtt futó időzítőkről. Az aktor nak kell regisztrálnia az időzítőket, amelyekre szüksége van, amikor a jövőben újraaktiválják. További információt az [aktorszemétgyűjtésről](service-fabric-reliable-actors-lifecycle.md)szóló részben talál.
 
-## <a name="actor-reminders"></a>Színészi emlékeztetők
-Az emlékeztetők olyan mechanizmusok, amelyekkel az állandó visszahívás aktiválható egy adott színészen a megadott időpontokban. A funkcióik hasonlóak az időzítőhöz. Az időzítővel ellentétben azonban az emlékeztetők minden körülmények között aktiválva lesznek, amíg a színész kifejezetten törli a regisztrációt, vagy a szereplő explicit módon törölve lett. Az emlékeztetőket kifejezetten a színészek inaktiválásai és feladatátvétele váltja ki, mert a szereplők futtatókörnyezete továbbra is információt tartalmaz a színészi szolgáltató által használt emlékeztetőről. Vegye figyelembe, hogy az emlékeztetők megbízhatósága a színészi szolgáltató által biztosított állapot-megbízhatósági garanciákkal van kötve. Ez azt jelenti, hogy azoknál a szereplőknél, amelyek állapotának megőrzése nem értékre van állítva, a rendszer nem hajtja végre az emlékeztetőket a feladatátvétel után. 
+## <a name="actor-reminders"></a>Aktor emlékeztetők
+Az emlékeztetők egy olyan mechanizmust, amely elindítja az állandó visszahívások egy aktor megadott időpontokban. Működésük hasonló az időzítőkhöz. De az időzítőkkel ellentétben az emlékeztetők minden körülmények között aktiválódnak, amíg az aktor kifejezetten törli őket, vagy az aktor explicit módon törlődik. Pontosabban emlékeztetők aktiválódnak az aktor inaktiválásaés a feladatátvételek, mert az Actors futásidejű megőrzi az aktor emlékeztetők az aktor állapotszolgáltató használatával. Kérjük, vegye figyelembe, hogy az emlékeztetők megbízhatósága az aktor állami szolgáltató által nyújtott megbízhatósági garanciákhoz kötődik. Ez azt jelenti, hogy azok a szereplők, akiknek az állapotmegőrzése nincs, az emlékeztetők nem indulnak el a feladatátvétel után. 
 
-Emlékeztető regisztrálásához a színész meghívja az alaposztályon megadott `RegisterReminderAsync` metódust, ahogy az az alábbi példában is látható:
+Emlékeztető regisztrálásához az aktor meghívja az `RegisterReminderAsync` alaposztályban megadott metódust, ahogy az a következő példában látható:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -158,9 +158,9 @@ protected CompletableFuture onActivateAsync()
 }
 ```
 
-Ebben a példában a `"Pay cell phone bill"` az emlékeztető neve. Ez egy karakterlánc, amelyet a színész az emlékeztetők egyedi azonosítására használ. a `BitConverter.GetBytes(amountInDollars)`C#() Az emlékeztetőhöz társított környezet. A rendszer visszaküldi a szereplőnek az emlékeztető visszahívására, például `IRemindable.ReceiveReminderAsync`(C#) vagy `Remindable.receiveReminderAsync`(Java) argumentumként.
+Ebben a `"Pay cell phone bill"` példában az emlékeztető neve. Ez egy olyan karakterlánc, amelyet az aktor az emlékeztető egyedi azonosítására használ. `BitConverter.GetBytes(amountInDollars)`(C#) a felszólításhoz társított környezet. Az emlékeztető visszahívása, azaz `IRemindable.ReceiveReminderAsync`(C#) vagy `Remindable.receiveReminderAsync`(Java) argumentumként visszakerül az aktornak.
 
-Az emlékeztetőket használó résztvevőknek be kell vezetniük a `IRemindable` felületet, ahogy az alábbi példában is látható.
+Az emlékeztetőket használó szereplőknek végre kell hajtaniuk a `IRemindable` felületet, amint az az alábbi példában látható.
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -201,11 +201,11 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Emlékeztető indításakor a Reliable Actors futtatókörnyezet meghívja a `ReceiveReminderAsync`(C#) vagy a `receiveReminderAsync`(Java) metódust a színészen. Egy színész több emlékeztetőt is regisztrálhat, és a rendszer meghívjaC#a `ReceiveReminderAsync`() vagy a `receiveReminderAsync`(Java) metódust, ha bármelyik emlékeztetőt elindítják. A színész használhatja a `ReceiveReminderAsync`(C#) vagy a `receiveReminderAsync`(Java) metódusban átadott emlékeztető nevét, hogy kiderítse, melyik emlékeztetőt aktiválták.
+Emlékeztető aktiválásakor a Reliable Actors futásidejű `ReceiveReminderAsync`meghívja a `receiveReminderAsync`(C#) vagy (Java) metódust az aktoron. Egy aktor több emlékeztetőt is regisztrálhat, és a `ReceiveReminderAsync`(C#) vagy `receiveReminderAsync`a (Java) metódus meghívása, ha ezek közül bármelyik emlékeztetők aktiválódik. Az aktor használhatja az emlékeztető `ReceiveReminderAsync`nevét, amely `receiveReminderAsync`átlett a (C#) vagy (Java) metódus, hogy kitaláljuk, melyik emlékeztető aktiválódott.
 
-A Actors futtatókörnyezet a `ReceiveReminderAsync`(C#) vagy `receiveReminderAsync`(Java) hívás befejeződése után menti a szereplő állapotát. Ha az állapot mentésekor hiba történik, akkor a rendszer inaktiválja a Actor objektumot, és egy új példányt aktivál.
+Az Actors futásidejű menti az aktor állapotát, amikor a `ReceiveReminderAsync`(C#) vagy `receiveReminderAsync`(Java) hívás befejeződik. Ha hiba történik az állapot mentésekor, az aktorobjektum inaktívvá válik, és egy új példány aktiválódik.
 
-Egy emlékeztető regisztrációjának megszüntetéséhez a színész meghívja a `UnregisterReminderAsync`C#() vagy a `unregisterReminderAsync`(Java) metódust, ahogy az alábbi példákban is látható.
+Emlékeztető regisztrációjának megszüntetése érdekében `UnregisterReminderAsync`az aktor meghívja a (C#) vagy `unregisterReminderAsync`a (Java) metódust, ahogy az az alábbi példákban látható.
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
@@ -216,9 +216,9 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-Ahogy fent látható, a `UnregisterReminderAsync`(C#) vagy a `unregisterReminderAsync`(Java) metódus fogad egy `IActorReminder`C#() vagy `ActorReminder`(Java) felületet. A Actor alaposztálya egy `GetReminder`(C#) vagy `getReminder`(Java) metódust támogat, amely a `IActorReminder`(C#) vagy a `ActorReminder`(Java) felületének lekérésére használható a felszólítás nevének megadásával. Ez azért hasznos, mert a szereplőnek nem kell megtartania aC#`RegisterReminder`(C#) vagy `registerReminder`(Java) metódus hívása által visszaadott `IActorReminder`() vagy `ActorReminder`(Java) felületet.
+Amint fent `UnregisterReminderAsync`látható, a `unregisterReminderAsync`(C#) vagy `IActorReminder`(Java) metódus `ActorReminder`(C#) vagy (Java) felületet fogad el. Az aktor `GetReminder`alaposztály a `getReminder`(C#) vagy a (Java) metódust `ActorReminder`támogatja, amely a (C#) vagy (Java) `IActorReminder`felület lekéréséhez használható az emlékeztető nevének átadásával. Ez azért kényelmes, mert az aktornak nem kell megpersistnia `IActorReminder`a (C#) vagy `ActorReminder`(Java) felületet, amely a `RegisterReminder`(C#) vagy `registerReminder`a (Java) metódushívásból lett visszaadva.
 
 ## <a name="next-steps"></a>Következő lépések
-Ismerje meg a megbízható Actors eseményeket és újbóli belépés:
-* [Színészi események](service-fabric-reliable-actors-events.md)
-* [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+Tudjon meg többet a Megbízható színész eseményekről és a reentrancy-ről:
+* [Színész események](service-fabric-reliable-actors-events.md)
+* [Színész reentrancy](service-fabric-reliable-actors-reentrancy.md)

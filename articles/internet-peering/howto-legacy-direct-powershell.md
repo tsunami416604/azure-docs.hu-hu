@@ -1,7 +1,7 @@
 ---
-title: Örökölt közvetlen társítás átalakítása Azure-erőforrásra a PowerShell használatával
+title: Örökölt közvetlen társviszony-létesítés átalakítása Azure-erőforrásba a PowerShell használatával
 titleSuffix: Azure
-description: Örökölt közvetlen társítás átalakítása Azure-erőforrásra a PowerShell használatával
+description: Örökölt közvetlen társviszony-létesítés átalakítása Azure-erőforrásba a PowerShell használatával
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ba41f4ad8014ba3e85174b7c32e11394f0068643
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775016"
 ---
-# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>Örökölt közvetlen társítás átalakítása Azure-erőforrásra a PowerShell használatával
+# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>Örökölt közvetlen társviszony-létesítés átalakítása Azure-erőforrásba a PowerShell használatával
 
-Ez a cikk azt ismerteti, hogyan alakíthatja át a meglévő örökölt közvetlen társítást az Azure-erőforrásra PowerShell-parancsmagok használatával.
+Ez a cikk ismerteti, hogyan konvertálhatja a meglévő örökölt közvetlen társviszony-létesítés az Azure-erőforrás PowerShell-parancsmagok használatával.
 
-Ha szeretné, ezt az útmutatót a [portálon](howto-legacy-direct-portal.md)végezheti el.
+Ha szeretné, ezt az útmutatót a portál segítségével is [elvégezheti.](howto-legacy-direct-portal.md)
 
-## <a name="before-you-begin"></a>Előzetes teendők
-* A konfigurálás megkezdése előtt tekintse át az [Előfeltételek](prerequisites.md) és a közvetlen társítási [útmutató](walkthrough-direct-all.md) témakört.
+## <a name="before-you-begin"></a>Előkészületek
+* A konfiguráció megkezdése előtt tekintse át [az előfeltételeket](prerequisites.md) és [a közvetlen társviszony-létesítési forgatókönyvet.](walkthrough-direct-all.md)
 
-### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Örökölt közvetlen társítás átalakítása Azure-erőforrásra
+## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Örökölt közvetlen társviszony-létesítés átalakítása Azure-erőforrássá
 
-### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be Azure-fiókjába, és válassza ki az előfizetést
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name= get></a>Örökölt közvetlen társítások beolvasása átalakításhoz
-Alább látható egy példa arra, hogy örökölt közvetlen társat szerezzen a Seattle-alapú peering Location
+### <a name="get-legacy-direct-peering-for-conversion"></a><a name= get></a>Örökölt közvetlen társviszony-létesítés a konvertáláshoz
+Az alábbiakban egy példa, hogy örökölt Közvetlen társviszony-létesítés a Seattle peering helyen
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering `
@@ -41,7 +41,7 @@ $legacyPeering = Get-AzLegacyPeering `
 $legacyPeering
 ```
 
-Az alábbiakban egy példa erre a válaszra:
+Az alábbiakban egy példa válasz:
 ```powershell
 Name                       :
 Sku                        : Basic_Direct_Free
@@ -79,13 +79,13 @@ ProvisionedBandwidthInMbps : 20000
 ProvisioningState          : Succeeded
 ```
 
-### <a name="convert-legacy-direct-peering"></a>Örökölt közvetlen társak konvertálása
+### <a name="convert-legacy-direct-peering"></a>Örökölt közvetlen társviszony-létesítés konvertálása
 
 &nbsp;
 > [!IMPORTANT]
-> Vegye figyelembe, hogy az örökölt peering Azure-erőforrásra konvertálásakor a módosítások nem támogatottak. &nbsp;
+> Vegye figyelembe, hogy az örökölt társviszony-létesítés azure-erőforrássá konvertálásakor a módosítások nem támogatottak. &nbsp;
 
-Az alábbi parancs használatával alakítsa át az örökölt közvetlen társítást az Azure-erőforrásra:
+Az alábbi parancs használatával konvertálhatja az örökölt közvetlen társviszony-létesítést az Azure-erőforrássá:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -94,7 +94,7 @@ $legacyPeering[0] | New-AzPeering `
 
 ```
 
-Az alábbiakban egy példa erre a válaszra:
+Az alábbiakban egy példa válasz:
 
 ```powershell
 Name                 : SeattleDirectPeering
@@ -112,14 +112,14 @@ Tags                 : {}
 ```
 
 ## <a name="additional-resources"></a>További források
-Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
+Az összes paraméter részletes leírását a következő parancs futtatásával kaphatja meg:
 
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
 
-További információért látogasson el az internetes kereséssel kapcsolatos [Gyakori kérdések](faqs.md) oldalra.
+További információkért látogasson el [az internetes társviszony-létesítési GYIK-be](faqs.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Hozzon létre vagy módosítson egy közvetlen társat a PowerShell használatával](howto-direct-powershell.md).
+* [Közvetlen társviszony-létesítés létrehozása vagy módosítása a PowerShell használatával.](howto-direct-powershell.md)

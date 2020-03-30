@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179315"
 ---
-### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül a karbantartási módú frissítések telepítése
+### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Karbantartási módfrissítéseinek telepítése a StorSimple-hez letölthető Windows PowerShell segítségével
 
-StorSimple-eszköz karbantartási módú frissítések alkalmazza, ha az összes i/o-kérések fel van függesztve. Nem felejtő közvetlen elérésű memória (NVRAM) például szolgáltatások vagy a fürtözési szolgáltatás leáll. Mindkét vezérlő újraindítása, adja meg, vagy lépjen ki az ebben a módban. Ebben a módban való kilépéskor összes szolgáltatás folytatása, és kifogástalan állapotú. (Ez eltarthat néhány percig.)
+Ha karbantartási módfrissítéseket alkalmaz a StorSimple eszközre, az összes I/O-kérés szünetel. Az olyan szolgáltatások, mint a nem felejtő véletlen hozzáférésű memória (NVRAM) vagy a fürtözési szolgáltatás leállnak. Mindkét vezérlő újraindul, amikor belép vagy kilép ebből a módból. Amikor kilép ebből a módból, az összes szolgáltatás folytatódik, és kifogástalan állapotban van. (Ez eltarthat néhány percig.)
 
 > [!IMPORTANT]
-> * Mielőtt belép a karbantartási módot, győződjön meg arról, hogy mindkét eszközvezérlő kifogástalan állapotú, az Azure Portalon. Ha a vezérlő állapota nem kifogástalan, [forduljon a Microsoft támogatási](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) a következő lépésekhez.
-> * Karbantartási módban van, ha egy tartományvezérlő és a többi vezérlő először frissíteni szeretné.
+> * A karbantartási módba való belépés előtt ellenőrizze, hogy mindkét eszközvezérlő kifogástalan állapotú-e az Azure Portalon. Ha a kontroller nem kifogástalan, a következő lépésekért forduljon a [Microsoft támogatási szolgálatához.](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)
+> * Ha karbantartási módban van, először frissítenie kell az egyik vezérlőt, majd a másik vezérlőt.
 
-1. Használja a PuTTY a soros konzoljához való csatlakozáshoz. Kövesse [a PuTTY a soros konzolhoz való csatlakozáshoz történő használatát](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console) ismertető részletes útmutatásokat. A parancssorban nyomja le az **Enter** billentyűt. Válassza ki az 1. lehetőség, **jelentkezzen be a teljes hozzáféréssel**.
+1. A Soros konzolhoz való csatlakozáshoz használja a PuTTY-t. Kövesse [a PuTTY a soros konzolhoz való csatlakozáshoz történő használatát](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console) ismertető részletes útmutatásokat. A parancssorban nyomja le az **Enter** billentyűt. Válassza az **1.**
 
-2. A tartományvezérlő karbantartási módba helyezni, írja be:
+2. A vezérlő karbantartási üzemmódba való behelyezéséhez írja be a következőt:
     
     `Enter-HcsMaintenanceMode`
 
-    Mindkét vezérlő újraindul karbantartási módban.
+    Mindkét vezérlő újraindul karbantartási módba.
 
-3. A karbantartási módú frissítések telepítése. Típus:
+3. Telepítse a karbantartási mód frissítéseit. Típus:
 
     `Start-HcsUpdate`
 
-    Megerősítést kér. Miután meggyőződött a frissítéseket, a tartományvezérlővel, amely jelenleg hozzáférnek telepítik őket. A frissítések telepítése után újraindul a tartományvezérlő.
+    A rendszer megerősítést kér. Miután megerősítette a frissítéseket, azok azéppen elérhető vezérlőre települnek. A frissítések telepítése után a vezérlő újraindul.
 
-4. A frissítések állapotának figyelésére. Jelentkezzen be a partner-tartományvezérlő az aktuális vezérlő frissítése folyamatban van, és nem tudja feldolgozni a más parancsok. Típus:
+4. A frissítések állapotának figyelése. Jelentkezzen be a társvezérlőbe, miközben az aktuális vezérlő frissül, és nem tud más parancsokat feldolgozni. Típus:
 
     `Get-HcsUpdateStatus`
 
-    Ha a `RunInProgress` van `True`, a frissítés még folyamatban van. Ha `RunInProgress` van `False`, az azt jelzi, hogy a frissítés befejeződött.
+    Ha `RunInProgress` az, `True`a frissítés még folyamatban van. Ha `RunInProgress` `False`van, az azt jelzi, hogy a frissítés befejeződött.
 
-5. Miután a lemezfirmware-frissítések sikeres alkalmazását, és a frissített vezérlő újraindítása, ellenőrizze a lemezfirmware verzióját. Adja meg a frissített vezérlő:
+5. A lemez belső vezérlőprogramjának frissítései sikeres alkalmazása és a frissített vezérlő újraindítása után ellenőrizze a lemez belső vezérlőprogramjának verzióját. A frissített vezérlőn írja be a következőt:
 
     `Get-HcsFirmwareVersion`
    
-    A várt lemezfirmware-verzió a következők:  `XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
+    A lemez belső vezérlőprogramjának várt verziói a következők:`XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
 
-6. Lépjen ki a karbantartási módot. Írja be a következő parancsot mindkét eszközvezérlő esetében:
+6. Lépjen ki a karbantartási módból. Írja be a következő parancsot az egyes eszközvezérlőkhöz:
 
     `Exit-HcsMaintenanceMode`
 
     A vezérlők újraindulnak, miután kilépett a karbantartási módból.
 
-7. Lépjen vissza az Azure Portalra. A portálon nem jelenhet meg, hogy telepítette-e a karbantartási módú frissítések 24 órán keresztül.
+7. Lépjen vissza az Azure Portalra. Előfordulhat, hogy a portál nem jeleníti meg, hogy 24 órán keresztül telepítette a karbantartási mód frissítéseit.

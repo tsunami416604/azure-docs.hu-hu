@@ -10,16 +10,16 @@ ms.date: 05/23/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 55e57d12b6d632f19318f221a49668804724e865
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67659819"
 ---
-Az alábbi táblázat bemutatja, hogyan lehet ezt a kötést támogatása hozzáadva minden fejlesztési környezetben.
+Az alábbi táblázat bemutatja, hogyan adhat támogatást ehhez a kötéshez az egyes fejlesztői környezetekben.
 
-| Fejlesztési környezet               | A támogatás hozzáadása <br>Functions 1.x  |
+| Fejlesztési környezet               | Támogatás hozzáadása a <br>Functions 1.x  |
 |----------------------|----------------|
-|Helyi fejlesztés – C# osztálytár       | [A csomag telepítése](../articles/azure-functions/functions-bindings-register.md#vs) | 
-|Helyi fejlesztés – C# parancsfájl, JavaScript,F# |Automatikus         |
-|A fejlesztői portál|  Automatikus    |
+|Helyi fejlesztés - C# osztálykönyvtár       | [A csomag telepítése](../articles/azure-functions/functions-bindings-register.md#vs) | 
+|Helyi fejlesztés - C# script, JavaScript, F # |Automatikus         |
+|Portál fejlesztés|  Automatikus    |

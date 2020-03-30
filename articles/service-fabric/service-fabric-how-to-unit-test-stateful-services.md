@@ -1,43 +1,43 @@
 ---
-title: Egység-tesztek fejlesztése állapot-nyilvántartó szolgáltatásokhoz
-description: Ismerje meg az Azure-Service Fabric az állapot-nyilvántartó szolgáltatásokkal kapcsolatos egység-tesztelést, valamint a fejlesztés során figyelembe veendő speciális szempontokat.
+title: Egységvizsgálatok kidolgozása az állapotalapú szolgáltatásokhoz
+description: Ismerje meg az azure Service Fabric állapotalapú szolgáltatások egységtesztelését, valamint a fejlesztés során szem előtt tartandó speciális szempontokat.
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639836"
 ---
-# <a name="create-unit-tests-for-stateful-services"></a>Egységbeli tesztek létrehozása állapot-nyilvántartó szolgáltatásokhoz
-Az egység tesztelése Service Fabric állapot-nyilvántartó szolgáltatások felfedik azokat a gyakori hibákat, amelyeket a hagyományos alkalmazások vagy a tartományra vonatkozó egységek tesztelése nem feltétlenül okoz. Az állapot-nyilvántartó szolgáltatások esetében az egység-tesztek fejlesztése során néhány különleges szempontot figyelembe kell venni.
+# <a name="create-unit-tests-for-stateful-services"></a>Egységtesztek létrehozása állapotalapú szolgáltatásokhoz
+A Service Fabric állapotalapú szolgáltatásainak egységtesztelése olyan gyakori hibákat tár fel, amelyeket nem feltétlenül fog meg a hagyományos alkalmazás vagy a tartományspecifikus egységtesztelés. Az állapotalapú szolgáltatások egységtesztjeinek kidolgozása során van néhány speciális szempont, amelyet szem előtt kell tartani.
 
-1. Minden replika végrehajtja az alkalmazás kódját, de különböző kontextusban. Ha a szolgáltatás három replikát használ, a szolgáltatási kód három csomóponton, párhuzamosan, különböző kontextusban/szerepkörben lesz végrehajtva.
-2. Az állapot-nyilvántartó szolgáltatáson belül tárolt állapotnak konzisztensnek kell lennie az összes replika között. A State Manager és a megbízható gyűjtemények ezt az egységességet fogják biztosítani. A memóriában lévő állapotot azonban az alkalmazás kódjával kell felügyelni.
-3. Az egyes replikák a fürtön való futás közben bizonyos pontokon módosíthatják a szerepköröket. A másodlagos replika elsődleges lesz, abban az esetben, ha az elsődleges helyet futtató csomópont elérhetetlenné válik, vagy túlterhelt. Ez természetes viselkedést mutat Service Fabric ezért a szolgáltatásoknak meg kell tervezniük, hogy végül egy másik szerepkör alatt hajtsák végre a végrehajtást.
+1. Minden replika alkalmazáskódot hajt végre, de különböző környezetben. Ha a szolgáltatás három replikát használ, a szolgáltatáskód három csomóponton hajt végre párhuzamosan, különböző környezetben/szerepkörben.
+2. Az állapotalapú szolgáltatáson belül tárolt állapotnak konzisztensnek kell lennie az összes replikák között. Az állapotkezelő és a megbízható gyűjtemények biztosítják ezt a konzisztenciát a beépített. A memórián belüli állapotot azonban az alkalmazáskódnak kell kezelnie.
+3. Minden replika módosítja a szerepköröket egy bizonyos ponton, miközben fut a fürtön. A másodlagos replika lesz az elsődleges, abban az esetben, ha az elsődleges csomópont nem lesz elérhető vagy túlterhelt lesz. Ez a Service Fabric természetes viselkedése, ezért a szolgáltatásoknak meg kell tervezniük, hogy végül egy másik szerepkör alatt hajtsanak végre.
 
-Ez a cikk azt feltételezi, hogy az [egység tesztelési állapot-nyilvántartó szolgáltatásait Service Fabric](service-fabric-concepts-unit-testing.md) olvasta.
+Ez a cikk feltételezi, hogy [a Service Fabric állapotalapú szolgáltatások tesztelése](service-fabric-concepts-unit-testing.md) a szolgáltatásban olvasott.
 
-## <a name="the-servicefabricmocks-library"></a>A ServiceFabric. mocks könyvtár
-A 3.3.0 verziótól kezdve a [ServiceFabric. mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) olyan API-t biztosít, amely a replikák és az állapotadatok előkészítését is lehetővé teszi. Ezt a példákban fogjuk használni.
+## <a name="the-servicefabricmocks-library"></a>A ServiceFabric.Mocks könyvtár
+A 3.3.0-s verziótól a [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) api-t biztosít a replikák vezénylésének és az állapotkezelésnek a gedvezénylésének gúnyolódásához. Ezt fogja használni a példákban.
 
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*A ServiceFabric. mocks nem a Microsoft tulajdona vagy tartja karban. Ez azonban jelenleg a Microsoft által javasolt, az állapot-nyilvántartó szolgáltatások tesztelésére szolgáló könyvtár.*
+*A ServiceFabric.Mocks nem a Microsoft tulajdonában vagy karbantartottja. Ez azonban jelenleg a Microsoft által ajánlott könyvtár az állapotalapú szolgáltatások teszteléséhez.*
 
-## <a name="set-up-the-mock-orchestration-and-state"></a>Az alakzat előkészítésének és állapotának beállítása
-A tesztek elrendezési részének részeként létrejön egy modell-replika és egy állapotfigyelő. A replikakészlet ezután létrehozza a tesztelt szolgáltatás egy példányát az egyes replikák esetében. Emellett olyan életciklus-eseményeket is végrehajt, mint például a `OnChangeRole` és a `RunAsync`. Az ál-állapot kezelője gondoskodik arról, hogy az állami kezelőn végrehajtott összes művelet fusson, és a tényleges State Manager maradjon.
+## <a name="set-up-the-mock-orchestration-and-state"></a>A modell vezénylési és állapotbeállítása
+A teszt elrendezési részének részeként létrejön egy modell replikakészlet és állapotkezelő. A replikakészlet ezután saját létrehozása a vizsgált szolgáltatás minden replika. Emellett saját életciklus-eseményeket is `OnChangeRole` birtokol, például és `RunAsync`. A modell állapotkezelő biztosítja, hogy az állapotkezelő ellen végrehajtott műveletek et úgy futtassa és tartsa meg, ahogy azt a tényleges állapotkezelő tenné.
 
-1. Hozzon létre egy Service Factory-delegált, amely létrehozza a tesztelni kívánt szolgáltatást. Ennek hasonlónak vagy azonosnak kell lennie, mint a Service Factory visszahívása, általában a Service Fabric szolgáltatás vagy a színész `Program.cs` található. Ennek a következő aláírást kell követnie:
+1. Hozzon létre egy szolgáltatásgyári delegált, amely példányosítja a tesztelt szolgáltatást. Ennek hasonlónak vagy azonosnak kell lennie, mint `Program.cs` a service-gyár visszahívása általában megtalálható a Service Fabric szolgáltatás vagy aktor. Ennek a következő aláírást kell követnie:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
-2. Hozzon létre egy `MockReliableStateManager` osztály egy példányát. Ez az állapot-kezelővel folytatott összes interakciót kigúnyolja.
-3. Hozzon létre egy `MockStatefulServiceReplicaSet<TStatefulService>`-példányt, ahol `TStatefulService` a tesztelt szolgáltatás típusa. Ehhez létre kell hoznia a delegált a következő lépésben: #1 és a State Manager példánya #2
-4. Hozzon létre replikákat a kópiakészlet számára. A szerepkör (például elsődleges, ActiveSecondary, IdleSecondary) és a replika AZONOSÍTÓjának meghatározása
-   > Tartsa be a replika-azonosítókat! Ezeket a rendszer valószínűleg felhasználja a művelet során, és az adott egység tesztelésének egyes részeit.
+2. Hozzon létre `MockReliableStateManager` egy osztálypéldányt. Ez kigúnyolminden interakciót az államkezelővel.
+3. Hozzon létre `MockStatefulServiceReplicaSet<TStatefulService>` `TStatefulService` egy példányt, ahol a tesztelt szolgáltatás típusa. Ehhez a #1 lépésben létrehozott delegáltra és az #2-ben lett létrehozva az állapotkezelőre.
+4. Kópiák hozzáadása a kópiakészlethez. Adja meg a szerepkört (például Elsődleges, ActiveSecondary, IdleSecondary) és a replika azonosítóját
+   > Kapaszkodjanak a replikaazonosítók! Ezeket valószínűleg a cselekmény során fogják használni, és az egységteszt egyes részeit.
 
 ```csharp
 //service factory to instruct how to create the service instance
@@ -54,8 +54,8 @@ await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 2);
 await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 3);
 ```
 
-## <a name="execute-service-requests"></a>Szolgáltatási kérelmek végrehajtása
-A szolgáltatási kérelmek egy adott replikán hajthatók végre a kényelmi tulajdonságok és a keresések használatával.
+## <a name="execute-service-requests"></a>Szolgáltatáskérések végrehajtása
+A szolgáltatáskérések egy adott replikán hajthatók végre a kényelmi tulajdonságok és a megkeresések használatával.
 ```csharp
 const string stateName = "test";
 var payload = new Payload(StatePayload);
@@ -70,8 +70,8 @@ await replicaSet[2].ServiceInstance.InsertAsync(stateName, payload);
 await replicaSet.FirstActiveSecondary.InsertAsync(stateName, payload);
 ```
 
-## <a name="execute-a-service-move"></a>Szolgáltatás áthelyezésének végrehajtása
-Az ál-replika számos kényelmi módszert tesz elérhetővé a különböző típusú szolgáltatások elindításához.
+## <a name="execute-a-service-move"></a>Szolgáltatásáthelyezés végrehajtása
+A modell replikakészlet számos kényelmi módszert tesz elérhetővé a különböző típusú szolgáltatásáthelyezések aktiválásához.
 ```csharp
 //promote the first active secondary to primary
 replicaSet.PromoteNewReplicaToPrimaryAsync();
@@ -90,7 +90,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Végső összeállítás
-A következő teszt egy három csomópontos replikakészlet beállítását mutatja be, és azt ellenőrzi, hogy az adatok elérhetők-e egy másodlagos szerepkör változása után. Egy jellemző probléma, amely akkor fordulhat elő, ha a `InsertAsync` során hozzáadott adatmennyiséget a memóriában vagy egy megbízható gyűjteménybe mentik, `CommitAsync`futtatása nélkül. Mindkét esetben a másodlagos nem lesz szinkronban az elsődlegesvel. Ez a szolgáltatás áthelyezése után inkonzisztens válaszokat eredményezne.
+A következő teszt bemutatja egy három csomópontos replikakészlet beállítását, és ellenőrzi, hogy az adatok egy szerepkör-módosítás után másodlagosból érhetők-e el. Ez egy tipikus probléma, amelyet `InsertAsync` akkor kaphat el, ha a közben hozzáadott `CommitAsync`adatokat a memóriában lévő vagy egy megbízható gyűjteménybe mentették futás nélkül. Mindkét esetben a másodlagos lenne szinkronban az elsődleges. Ez a szolgáltatás áthelyezése után inkonzisztens válaszokhoz vezetne.
 
 ```csharp
 [TestMethod]
@@ -127,5 +127,5 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Ismerje meg, hogyan tesztelheti a [szolgáltatás és a szolgáltatás közötti kommunikációt](service-fabric-testability-scenarios-service-communication.md) , és hogyan [szimulálhatja a hibákat az irányított káosz használatával](service-fabric-controlled-chaos.md).
+## <a name="next-steps"></a>További lépések
+Ismerje meg, hogyan tesztelhet [szolgáltatás-szolgáltatás kommunikációt,](service-fabric-testability-scenarios-service-communication.md) és [szimulálhatja a hibákat ellenőrzött káosz használatával.](service-fabric-controlled-chaos.md)

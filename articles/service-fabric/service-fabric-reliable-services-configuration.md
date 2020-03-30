@@ -1,33 +1,33 @@
 ---
-title: Az Azure Service Fabric konfigurálása Reliable Services
-description: Tudnivalók az állapot-nyilvántartó Reliable Services Azure Service Fabric-alkalmazásokban való konfigurálásáról globálisan és egyetlen szolgáltatáshoz.
+title: Az Azure Service Fabric megbízható szolgáltatásainak konfigurálása
+description: Ismerje meg az állapotalapú megbízható szolgáltatások konfigurálását egy Azure Service Fabric-alkalmazásban globálisan és egyetlen szolgáltatáshoz.
 author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645514"
 ---
-# <a name="configure-stateful-reliable-services"></a>Állapot-nyilvántartó megbízható szolgáltatások konfigurálása
-A megbízható szolgáltatások két konfigurációs beállítással rendelkeznek. Az egyik készlet globális a fürt összes megbízható szolgáltatásához, míg a másik készlet egy adott megbízható szolgáltatásra jellemző.
+# <a name="configure-stateful-reliable-services"></a>Állapotalapú megbízható szolgáltatások konfigurálása
+A megbízható szolgáltatások hoz két konfigurációs beállításkészlet létezik. Az egyik készlet globális a fürt összes megbízható szolgáltatásához, míg a másik egy adott megbízható szolgáltatásra jellemző.
 
 ## <a name="global-configuration"></a>Globális konfiguráció
-A globális megbízható szolgáltatás konfigurációja a fürt jegyzékfájljában van megadva a KtlLogger szakaszban. Lehetővé teszi a megosztott napló helyének és méretének, valamint a naplózó által használt globális memória-korlátok konfigurálását. A fürt jegyzékfájlja egyetlen XML-fájl, amely a fürt összes csomópontjára és szolgáltatására vonatkozó beállításokat és konfigurációkat tartalmazza. A fájl neve általában ClusterManifest. xml. A fürthöz tartozó jegyzékfájlt a Get-ServiceFabricClusterManifest PowerShell-paranccsal tekintheti meg.
+A globális megbízható szolgáltatáskonfiguráció a fürt jegyzékfájljában van megadva a KtlLogger szakaszban. Ez lehetővé teszi a konfiguráció a megosztott napló helyét és méretét, valamint a globális memória korlátok által használt naplózó. A fürtjegyzék egyetlen XML-fájl, amely a fürt összes csomópontjára és szolgáltatására vonatkozó beállításokat és konfigurációkat tartalmazza. A fájl neve általában ClusterManifest.xml. A Get-ServiceFabricClusterManifest powershell paranccsal láthatja a fürt fürtjegyzékét.
 
-### <a name="configuration-names"></a>Konfigurációs nevek
+### <a name="configuration-names"></a>Konfigurációnevek
 | Név | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |Kilobájtban |8388608 |A naplózó írási puffer memória-készletéhez tartozó kernel módban foglalható KB-os minimális szám. Ez a memória-készlet az állapotadatok gyorsítótárazásához használatos a lemezre írás előtt. |
-| WriteBufferMemoryPoolMaximumInKB |Kilobájtban |Korlátlan |Az a maximális méret, ameddig a naplózó írási puffer memória-készlete növekedni tud. |
-| SharedLogId |GUID |"" |Meghatározza a fürtben lévő összes megbízható szolgáltatás által használt alapértelmezett megosztott naplófájl azonosítására szolgáló egyedi GUID azonosítót, amely nem adja meg a SharedLogId a szolgáltatási specifikus konfigurációban. Ha a SharedLogId meg van adva, akkor a SharedLogPath is meg kell adni. |
-| SharedLogPath |Teljes elérési út neve |"" |Megadja a teljes elérési utat, ahol a fürt minden olyan csomópontján lévő megbízható szolgáltatás által használt megosztott naplófájl, amely nem adja meg a SharedLogPath a szolgáltatási specifikus konfigurációban. Ha azonban a SharedLogPath meg van adva, akkor a SharedLogId is meg kell adni. |
-| SharedLogSizeInMB |Megabájtban |8192 |Megadja, hogy hány MB lemezterületet kell statikusan lefoglalni a megosztott napló számára. Az értéknek 2048 vagy nagyobbnak kell lennie. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobyte |8388608 |Minimális an- kb a kernel módban a naplózó írási puffermemória-készletéhez. Ez a memóriakészlet az állapotadatok lemezre írás előtti gyorsítótárazására szolgál. |
+| WriteBufferMemoryPoolMaximuminKB |Kilobyte |Korlátlan |Az a maximális méret, amelyre a naplózó írási puffermemória-készlete növekedhet. |
+| SharedLogId |GUID |"" |Egy egyedi GUID-ot ad meg, amelya fürt összes olyan csomópontján lévő összes megbízható szolgáltatás által használt alapértelmezett megosztott megosztott naplófájl azonosítására szolgál, amely nem adja meg a SharedLogId azonosítót a szolgáltatásspecifikus konfigurációban. Ha a SharedLogId meg van adva, akkor a SharedLogPath-ot is meg kell adni. |
+| SharedLogPath |Teljesen minősített elérési út neve |"" |Megadja azt a teljesen minősített elérési utat, ahol a fürt összes olyan csomópontján lévő összes megbízható szolgáltatás által használt megosztott naplófájl, amely nem adja meg a SharedLogPath-ot a szolgáltatásspecifikus konfigurációban. Ha azonban a SharedLogPath meg van adva, akkor a SharedLogId azonosítót is meg kell adni. |
+| SharedLogSizeInMB |Megabájt |8192 |Megadja a megosztott napló számára statikusan lefoglalandó LEMEZTERÜLET számát. Az értéknek legalább 2048-nak kell lennie. |
 
-Az Azure ARM-ban vagy a helyszíni JSON-sablonban az alábbi példa azt mutatja be, hogyan változtatható meg a megosztott tranzakciónapló, amelyet a rendszer az állapot-nyilvántartó szolgáltatások megbízható gyűjteményei számára hozott létre.
+Az Azure ARM vagy a helyszíni JSON-sablon, az alábbi példa bemutatja, hogyan módosíthatja a megosztott tranzakciós napló, amely jön létre, hogy az állapotalapú szolgáltatások megbízható gyűjtemények.
 
     "fabricSettings": [{
         "name": "KtlLogger",
@@ -37,8 +37,8 @@ Az Azure ARM-ban vagy a helyszíni JSON-sablonban az alábbi példa azt mutatja 
         }]
     }]
 
-### <a name="sample-local-developer-cluster-manifest-section"></a>Minta a helyi fejlesztői fürt jegyzékfájljának szakasza
-Ha ezt a helyi fejlesztési környezetben szeretné módosítani, szerkesztenie kell a helyi clustermanifest. xml fájlt.
+### <a name="sample-local-developer-cluster-manifest-section"></a>Példa a helyi fejlesztői fürt jegyzékfájlszakaszára
+Ha ezt a helyi fejlesztői környezetben szeretné módosítani, módosítania kell a helyi clustermanifest.xml fájlt.
 
 ```xml
    <Section Name="KtlLogger">
@@ -51,74 +51,74 @@ Ha ezt a helyi fejlesztési környezetben szeretné módosítani, szerkesztenie 
 ```
 
 ### <a name="remarks"></a>Megjegyzések
-A naplózó olyan globális készletet tartalmaz, amely a nem lapozható kernel-memóriából van lefoglalva, amely az állapotadatok gyorsítótárazásához szükséges összes megbízható szolgáltatás számára elérhető a megbízható szolgáltatás másodpéldányához társított dedikált naplóba való írás előtt. A készlet méretét a WriteBufferMemoryPoolMinimumInKB és a WriteBufferMemoryPoolMaximumInKB beállítások vezérlik. A WriteBufferMemoryPoolMinimumInKB megadja a memória-készlet kezdeti méretét, valamint azt a legkisebb méretet, ameddig a memória-készlet csökkenhet. A WriteBufferMemoryPoolMaximumInKB a legnagyobb méret, amellyel a memória-készlet növekedni lehet. Minden megnyitott megbízható szolgáltatás replikája növelheti a memória-készlet méretét a rendszer által meghatározott WriteBufferMemoryPoolMaximumInKB értékkel. Ha a rendelkezésre álló memória több memóriát is igénybe vesz, mint amennyi elérhető, a memóriára vonatkozó kérelmek késleltetve lesznek, amíg a memória elérhetővé válik. Ezért ha az írási pufferbeli memória készlete túl kicsi egy adott konfigurációhoz, akkor a teljesítmény romolhat.
+A naplózó rendelkezik egy globális memóriakészlet teljében nem lapozható kernel memória, amely elérhető az összes megbízható szolgáltatás egy csomóponton a gyorsítótárazás állapotadatok, mielőtt a dedikált napló társított megbízható szolgáltatás replika. A készlet méretét a WriteBufferMemoryPoolMinimumInKB és a WriteBufferMemoryPoolMaximumInKB beállítások szabályozzák. A WriteBufferMemoryPoolMinimumInKB a memóriakészlet kezdeti méretét és a memóriakészlet zsugorításának legalacsonyabb méretét is megadja. A WriteBufferMemoryPoolMaximumInKB az a legnagyobb méret, amelyre a memóriakészlet növekedhet. Minden megnyitott megbízható szolgáltatásreplika növelheti a memóriakészlet méretét a WriteBufferMemoryPoolMaximumInKB-ig meghatározott rendszerrel. Ha a rendelkezésre állónál nagyobb igény van a memóriakészletből származó memóriára, a memóriakérelmek a memória rendelkezésre állásáig késnek. Ezért ha az írási puffermemória-készlet túl kicsi egy adott konfigurációhoz, akkor a teljesítmény csökkenhet.
 
-A SharedLogId és a SharedLogPath beállításokat a rendszer mindig együtt használja a fürt összes csomópontjának alapértelmezett megosztott naplójának GUID azonosítójának és helyének definiálásához. Az alapértelmezett megosztott napló minden olyan megbízható szolgáltatáshoz használatos, amely nem határozza meg az adott szolgáltatáshoz tartozó Settings. xml fájlban megadott beállításokat. A legjobb teljesítmény érdekében a megosztott naplófájlokat olyan lemezekre kell helyezni, amelyek kizárólag a megosztott naplófájlhoz használatosak a versengés csökkentése érdekében.
+A SharedLogId és a SharedLogPath-beállítások mindig együtt vannak használva a fürt összes csomópontjának GUID azonosítójának és helyének meghatározásához. Az alapértelmezett megosztott napló minden olyan megbízható szolgáltatáshoz használatos, amely nem adja meg az adott szolgáltatás settings.xml fájljának beállításait. A legjobb teljesítmény érdekében a megosztott naplófájlokat olyan lemezekre kell helyezni, amelyeket kizárólag a megosztott naplófájlhoz használnak a versengés csökkentése érdekében.
 
-A SharedLogSizeInMB meghatározza, hogy a rendszer mennyi lemezterületet szabadítson fel az alapértelmezett megosztott bejelentkezéshez az összes csomóponton.  A SharedLogId és a SharedLogPath nem kell megadni a SharedLogSizeInMB megadása érdekében.
+A SharedLogSizeInMB azt a lemezterületet adja meg, amelyet az összes csomóponton az alapértelmezett megosztott naplószámára előre le kell foglalni.  A SharedLogId és a SharedLogPath paramétert nem kell megadni a SharedLogSizeInMB paraméter megadása érdekében.
 
-## <a name="service-specific-configuration"></a>Szolgáltatás-specifikus konfiguráció
-Az állapot-nyilvántartó Reliable Services alapértelmezett konfigurációit a konfigurációs csomag (konfiguráció) vagy a szolgáltatás implementálása (kód) használatával módosíthatja.
+## <a name="service-specific-configuration"></a>Szolgáltatásspecifikus konfiguráció
+Módosíthatja az állapotalapú Reliable Services alapértelmezett konfigurációit a konfigurációs csomag (Config) vagy a szolgáltatás implementációjának (kód) használatával.
 
-* **Konfiguráció – a** konfigurációs csomagon keresztül történő konfigurálás a Microsoft Visual Studio-csomag gyökerében létrehozott Settings. xml fájl módosításával valósítható meg.
-* A **programkódon** keresztüli konfigurálást úgy érheti el, hogy létrehoz egy ReliableStateManager egy ReliableStateManagerConfiguration objektum használatával a megfelelő beállításokkal.
+* **Config** - A konfiguráció a konfigurációs csomagon keresztül a Microsoft Visual Studio csomag gyökérfájljában az alkalmazás egyes szolgáltatásaihoz létrehozott Settings.xml fájl módosításával történik.
+* **Kód** - A kódon keresztüli konfiguráció egy ReliableStateManager használatával érhető el egy ReliableStateManagerConfiguration objektum használatával a megfelelő beállításokkal.
 
-Alapértelmezés szerint az Azure Service Fabric Runtime a Settings. xml fájlban keresi az előre definiált szakaszok nevét, és a konfigurációs értékeket használja az alapul szolgáló futtatókörnyezet-összetevők létrehozásakor.
+Alapértelmezés szerint az Azure Service Fabric futásidejű megkeresi az előre definiált szakaszneveket a Settings.xml fájlban, és felhasználja a konfigurációs értékeket az alapul szolgáló futásidejű összetevők létrehozása közben.
 
 > [!NOTE]
-> A Visual Studio-megoldásban létrehozott Settings. xml fájlban ne törölje a következő konfigurációk szakaszának nevét, ha **nem** tervezi a szolgáltatás programkódon keresztüli konfigurálását.
-> A konfigurációs csomag vagy a szakasz nevének átnevezéséhez meg kell változtatni a ReliableStateManager konfigurálásához szükséges programkódot.
+> **Ne** törölje a következő konfigurációk szakasznevét a Visual Studio-megoldásban létrehozott Settings.xml fájlban, kivéve, ha a szolgáltatást kódsegítségével kívánja konfigurálni.
+> A config csomag vagy szakasznevek átnevezéséhez kódmódosításra van szükség a ReliableStateManager konfigurálásakor.
 > 
 > 
 
 ### <a name="replicator-security-configuration"></a>Replikátor biztonsági konfigurációja
-A replikátor biztonsági beállításai a replikálás során használt kommunikációs csatorna biztonságossá tételére szolgálnak. Ez azt jelenti, hogy a szolgáltatások nem fogják látni egymás replikációs forgalmát, így biztosítva, hogy a kiemelten elérhető adatok is biztonságosak legyenek. Alapértelmezés szerint a biztonsági konfiguráció üres szakasza megakadályozza a replikálás biztonságát.
+A Replikátor biztonsági konfigurációi a replikáció során használt kommunikációs csatorna védelmére szolgálnak. Ez azt jelenti, hogy a szolgáltatások nem fogják látni egymás replikációs forgalmát, biztosítva, hogy a magas rendelkezésre állású adatok is biztonságosak legyenek. Alapértelmezés szerint egy üres biztonsági konfigurációs szakasz megakadályozza a replikáció biztonságát.
 
 > [!IMPORTANT]
-> Linux-csomópontokon a tanúsítványoknak PEM formátumúnak kell lenniük. Ha többet szeretne megtudni a Linux-tanúsítványok kereséséről és konfigurálásáról, tekintse meg [a tanúsítványok konfigurálása Linuxon](./service-fabric-configure-certificates-linux.md)című témakört. 
+> Linux-csomópontokon a tanúsítványoknak PEM-formátumúnak kell lenniük. A tanúsítványok Linuxhoz való megkereséséről és konfigurálásáról a [Tanúsítványok konfigurálása Linuxon](./service-fabric-configure-certificates-linux.md)című témakörben olvashat bővebben. 
 > 
 > 
 
-### <a name="default-section-name"></a>Alapértelmezett szakasz neve
-ReplicatorSecurityConfig
+### <a name="default-section-name"></a>Alapértelmezett szakasznév
+ReplikátorSecurityConfig
 
 > [!NOTE]
-> A szakasz nevének módosításához felülbírálja a replicatorSecuritySectionName paramétert a ReliableStateManagerConfiguration konstruktorban a szolgáltatáshoz tartozó ReliableStateManager létrehozásakor.
+> A szakasz névének módosításához felülbírálja a replikátorSecuritySectionName paramétert a ReliableStateManagerConfiguration konstruktorra, amikor létrehozza a ReliableStateManager szolgáltatást ehhez a szolgáltatáshoz.
 > 
 > 
 
 ### <a name="replicator-configuration"></a>Replikátor konfigurációja
-A replikátor-konfigurációk olyan replikátort állítanak be, amely felelős az állapot-nyilvántartó megbízható szolgáltatás állapotának nagyfokú megbízhatóságához azáltal, hogy helyileg replikálja és megőrzi az állapotot.
-Az alapértelmezett konfigurációt a Visual Studio-sablon hozza létre, és ennek elegendőnek kell lennie. Ez a szakasz a replikátor finomhangolásához elérhető további konfigurációkról beszél.
+Replikátor konfigurációk konfigurálja a replikátor, amely felelős azért, hogy az állapotalapú megbízható szolgáltatás állapota rendkívül megbízható replikálása és az állapot helyi szinten való megőrzése.
+Az alapértelmezett konfigurációt a Visual Studio sablon hozza létre, és elegendőnek kell lennie. Ez a szakasz a replikátor finomhangolására rendelkezésre álló további konfigurációkról szól.
 
-### <a name="default-section-name"></a>Alapértelmezett szakasz neve
-ReplicatorConfig
+### <a name="default-section-name"></a>Alapértelmezett szakasznév
+ReplikátorConfig
 
 > [!NOTE]
-> A szakasz nevének módosításához felülbírálja a replicatorSettingsSectionName paramétert a ReliableStateManagerConfiguration konstruktorban a szolgáltatáshoz tartozó ReliableStateManager létrehozásakor.
+> A szakasz névének módosításához felülbírálja a replikátorSettingsSectionName paramétert a ReliableStateManagerConfiguration konstruktorra, amikor létrehozza a ReliableStateManager szolgáltatást ehhez a szolgáltatáshoz.
 > 
 > 
 
-### <a name="configuration-names"></a>Konfigurációs nevek
+### <a name="configuration-names"></a>Konfigurációnevek
 | Név | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |másodperc |0,015 |Az az időszak, ameddig a másodlagos megvárja a műveletet a művelet fogadása után, mielőtt visszaküldi a nyugtát az elsődlegesnek. Az ezen az intervallumon belül feldolgozott műveletekhez küldendő összes más nyugtát egyetlen válaszként kell elküldeni. |
-| ReplicatorEndpoint |– |Nincs alapértelmezett – kötelező paraméter |Az az IP-cím és port, amelyet az elsődleges/másodlagos replikátor a replikakészlet más replikákkal való kommunikációhoz fog használni. Ennek a szolgáltatás jegyzékfájljában a TCP-erőforrás végpontra kell hivatkoznia. A szolgáltatási jegyzékfájlban található végponti erőforrások definiálásával kapcsolatos további információkért tekintse meg a [szolgáltatás jegyzékfájljának erőforrásai](service-fabric-service-manifest-resources.md) című témakört. |
-| MaxPrimaryReplicationQueueSize |Műveletek száma |8192 |Az elsődleges várólistában lévő műveletek maximális száma. Egy művelet akkor szabadítható fel, ha az elsődleges replikátor nyugtát kap az összes másodlagos replikáló közül. Ennek az értéknek nagyobbnak kell lennie, mint 64, és a 2 hatványa. |
-| MaxSecondaryReplicationQueueSize |Műveletek száma |16384 |A műveletek maximális száma a másodlagos várólistában. A művelet a kitartás után az állapotának nagyfokú rendelkezésre állása után szabadítható fel. Ennek az értéknek nagyobbnak kell lennie, mint 64, és a 2 hatványa. |
-| CheckpointThresholdInMB |MB |50 |A naplófájl azon területének mennyisége, amely után az állapot ellenőrzőpontra kerül. |
-| MaxRecordSizeInKB |KB |1024 |A replikációs rekord legnagyobb mérete, amelyet a replikátor írhat a naplóba. Ennek az értéknek a 4 és 16 közötti többszörösének kell lennie. |
-| MinLogSizeInMB |MB |0 (rendszer által meghatározott) |A tranzakciós napló minimális mérete A napló nem engedheti meg a kivágást a beállítás alatti méretre. a 0 érték azt jelzi, hogy a replikátor meg fogja határozni a minimális napló méretét. Ennek az értéknek a növelése növeli a részleges másolatok és a növekményes biztonsági mentések lehetőségét, mivel a rendszer lerövidíti a kapcsolódó naplófájlok számát. |
-| TruncationThresholdFactor |Factor |2 |Meghatározza, hogy a napló milyen méretben fog kiváltani. A csonkítás küszöbértékét a MinLogSizeInMB a TruncationThresholdFactor szorzata határozza meg. A TruncationThresholdFactor nagyobbnak kell lennie, mint 1. A MinLogSizeInMB * TruncationThresholdFactor kisebbnek kell lennie, mint a MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |Factor |4 |Meghatározza, hogy a napló milyen méretben fog megjelenni, a replika pedig szabályozás alatt áll. A szabályozás küszöbértékét (MB-ban) a következő határozza meg: Max ((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). A szabályozási küszöbértéknek (MB) nagyobbnak kell lennie, mint a csonkítás küszöbértéke (MB). A csonkítás küszöbértékének (MB) kisebbnek kell lennie, mint MaxStreamSizeInMB. |
-| MaxAccumulatedBackupLogSizeInMB |MB |800 |Egy adott biztonsági mentési naplóban található biztonsági mentési naplók maximális összesített mérete (MB). A növekményes biztonsági mentési kérelmek sikertelenek lesznek, ha a növekményes biztonsági mentés olyan biztonsági mentési naplót fog eredményezni, amely a felhalmozott biztonsági mentési naplókat okozta, mivel a megfelelő teljes biztonsági mentés nagyobb ennél a méretnél. Ilyen esetekben a felhasználónak teljes biztonsági mentést kell készítenie. |
-| SharedLogId |GUID |"" |Meghatározza a replikával használt megosztott naplófájl azonosításához használandó egyedi GUID azonosítót. A szolgáltatások általában nem használhatják ezt a beállítást. Ha azonban a SharedLogId meg van adva, akkor a SharedLogPath is meg kell adni. |
-| SharedLogPath |Teljes elérési út neve |"" |Meghatározza azt a teljes elérési utat, ahol a replika megosztott naplófájlja létrejön. A szolgáltatások általában nem használhatják ezt a beállítást. Ha azonban a SharedLogPath meg van adva, akkor a SharedLogId is meg kell adni. |
-| SlowApiMonitoringDuration |másodperc |300 |Beállítja a felügyelt API-hívások figyelési intervallumát. Példa: a felhasználó által megadott biztonsági mentési visszahívás funkció. Az intervallum letelte után a rendszer figyelmeztetési állapotjelentést küld a Health Managernek. |
-| LogTruncationIntervalSeconds |másodperc |0 |Konfigurálható időköz, amelyen a naplózási csonkítás minden replikán megkezdődik. A naplófájlok a naplózási méret helyett az idő függvényében is használhatók. Ez a beállítás kényszeríti a törölt bejegyzések törlését is a megbízható szótárban. Ezért használható a törölt elemek időben történő törlésének biztosítására. |
-| EnableStableReads |Logikai |Hamis |A stabil olvasások engedélyezése korlátozza a másodlagos replikákat, hogy olyan értékeket adjanak vissza, amelyek kvórum-nyugtázva. |
+| BatchAcknowledgementInterval |Másodperc |0.015 |Az az időszak, amely alatt a másodlagos replikátor vár egy művelet fogadása után, mielőtt visszaküldi a nyugtázást az elsődleges. Az ezen időtartamon belül feldolgozott műveletekhez küldendő minden egyéb nyugtázás egyetlen válaszként kerül elküldésre. |
+| ReplikátorVégpont |N/A |Nincs alapértelmezett-kötelező paraméter |IP-cím és port, amelyet az elsődleges/másodlagos replikátor a replikakészlet más replikátoraival való kommunikációhoz használ. Ennek egy TCP-erőforrás végpontra kell hivatkoznia a szolgáltatásjegyzékben. Tekintse meg [a szolgáltatás jegyzékfájl-erőforrások,](service-fabric-service-manifest-resources.md) ha többet szeretne megtudni a végponti erőforrások definiálása a szolgáltatás jegyzékfájlban. |
+| MaxPrimaryReplicationQueueMéret |Műveletek száma |8192 |Az elsődleges várólistában lévő műveletek maximális száma. Egy művelet felszabadítása után az elsődleges replikátor kap egy nyugtázást az összes másodlagos replikátorok. Ennek az értéknek 64-nél nagyobbnak és 2-es teljesítménynek kell lennie. |
+| MaxSecondaryReplicationQueueSize |Műveletek száma |16384 |A másodlagos várólistában lévő műveletek maximális száma. Egy művelet felszabadul, miután az állapotát magas rendelkezésre állásúvá tette a perzisztencia révén. Ennek az értéknek 64-nél nagyobbnak és 2-es teljesítménynek kell lennie. |
+| EllenőrzőpontThresholdInMB |MB |50 |Azon naplófájl-terület nagy része, amely után az állapot ellenőrzőpont. |
+| MaxRecordSizeInKB |KB |1024 |A replikátor által a naplóba beírt legnagyobb rekordméret. Ennek az értéknek 4 többszörösének és 16-nál nagyobbnak kell lennie. |
+| MinLogSizeInMB |MB |0 (rendszer határozza meg) |A tranzakciós napló minimális mérete. A napló nem csonkolható a beállítás alatti méretre. A 0 azt jelzi, hogy a replikátor határozza meg a minimális naplóméretet. Ennek az értéknek a növelésével csökken a részleges másolatok és a növekményes biztonsági mentések készítésének lehetősége, mivel a megfelelő naplórekordok csonkolásának esélye csökken. |
+| CsonkolásI Küszöbtényező |Tényező |2 |Azt határozza meg, hogy a napló milyen méretben aktiválódik a csonkolás. A csonkolási küszöbértéket a MinLogSizeInMB és a TruncationThresholdFactor szorzata határozza meg. A TruncationThresholdFactor értékének 1-nél nagyobbnak kell lennie. A MinLogSizeInMB * TruncationThresholdFactor értékének kisebbnek kell lennie, mint a MaxStreamSizeInMB. |
+| Szabályozási küszöbérték-tényező |Tényező |4 |Azt határozza meg, hogy a napló milyen méretű, a replika elkezdszabályozása. A sávszélesség-szabályozási küszöbértéket (MB-ban) a Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)határozza meg. A sávszélesség-szabályozási küszöbértéknek (MB-ban) nagyobbnak kell lennie, mint a csonkolási küszöbérték (MB-ban). A csonkolási küszöbértéknek (MB-ban) kisebbnek kell lennie, mint a MaxStreamSizeInMB. |
+| MaxAccumulatedBackupLogSizeInMB |MB |800 |A biztonsági mentési naplók maximális mérete (MB-ban) egy adott biztonságimentési naplóláncban. A növekményes biztonsági mentési kérelmek sikertelenek lesznek, ha a növekményes biztonsági mentés létrehoz egy biztonsági mentési naplót, amely a halmozott biztonsági mentési naplókat okozza, mivel a megfelelő teljes biztonsági mentés nagyobb lesz, mint ez a méret. Ilyen esetekben a felhasználónak teljes biztonsági másolatot kell készítenie. |
+| SharedLogId |GUID |"" |A kópiával használt megosztott naplófájl azonosítására szolgáló egyedi GUID-ot adja meg. A szolgáltatások általában nem használhatják ezt a beállítást. Ha azonban a SharedLogId meg van adva, akkor a SharedLogPath-ot is meg kell adni. |
+| SharedLogPath |Teljesen minősített elérési út neve |"" |Megadja azt a teljesen minősített elérési utat, ahová a kópiához megosztott naplófájl létrejön. A szolgáltatások általában nem használhatják ezt a beállítást. Ha azonban a SharedLogPath meg van adva, akkor a SharedLogId azonosítót is meg kell adni. |
+| SlowApiMonitoringDuration |Másodperc |300 |Beállítja a felügyelt API-hívások figyelési időközét. Példa: a felhasználó biztonsági visszahívási funkciót adott meg. Az időköz lejárta után a rendszer figyelmeztető állapotjelentést küld az állapotkezelőnek. |
+| LogTruncationIntervalSeconds |Másodperc |0 |Konfigurálható időköz, amelyen a naplócsonkolás minden kópián elindul. Arra szolgál, hogy a napló is csonkolt idő alapján, hanem csak napló mérete. Ez a beállítás a törölt bejegyzések megbízható szótárban való törlését is kényszeríti. Ezért a törölt elemek időben történő törlésének biztosítására használható. |
+| EnableStableReads (EnableStableReads) |Logikai |False (Hamis) |A stabil olvasásengedélyezése korlátozza a másodlagos replikákat a kvórum-kosztott értékekre. |
 
-### <a name="sample-configuration-via-code"></a>Minta konfiguráció kód használatával
+### <a name="sample-configuration-via-code"></a>Mintakonfiguráció kódon keresztül
 ```csharp
 class Program
 {
@@ -173,16 +173,16 @@ class MyStatefulService : StatefulService
 
 
 ### <a name="remarks"></a>Megjegyzések
-A BatchAcknowledgementInterval a replikációs késést vezérli. A (z) "0" érték a lehető legalacsonyabb késést eredményezi az átviteli sebességnél (mivel több nyugtázási üzenetet kell elküldeni és feldolgozni, ami kevesebb nyugtát tartalmaz).
-Minél nagyobb a BatchAcknowledgementInterval, annál nagyobb a replikálás teljes átviteli sebessége, a magasabb működési késés díja. Ez közvetlenül a tranzakciós véglegesítés késésével van lefordítva.
+A BatchAcknowledgementInterval szabályozza a replikáció késését. A "0" érték a lehető legalacsonyabb késést eredményez, az átviteli költség rovására (mivel több nyugtázási üzenetet kell küldeni és feldolgozni, amelyek mindegyike kevesebb nyugtázást tartalmaz).
+Minél nagyobb a BatchAcknowledgementInterval értéke, annál nagyobb a teljes replikációs átviteli érték, a nagyobb működési késés költségén. Ez közvetlenül fordítja a tranzakció véglegesítések késése.
 
-A CheckpointThresholdInMB értéke szabályozza azt a lemezterületet, amelyet a replikátor az állapotadatok tárolására használhat a replika dedikált naplófájljában. Ha az alapértelmezettnél nagyobb értéket ad meg, akkor gyorsabb újrakonfigurálási időt eredményezhet, amikor új replikát adnak hozzá a készlethez. Ennek oka a részleges állapot-átvitel, amely a naplóban lévő műveletek több előzményének rendelkezésre állása miatt zajlik. Ez egy összeomlás után is növelheti a replika helyreállítási idejét.
+A CheckpointThresholdInMB értéke azt a lemezterületet szabályozza, amelyet a replikátor a kópia dedikált naplófájljában tárolhat az állapotadatok tárolására. Ha ezt az alapértelmezettnél nagyobb értékre növeli, az gyorsabb újrakonfigurálási időt eredményezhet, amikor új kópiát ad hozzá a készlethez. Ez annak köszönhető, hogy a részleges állapotátvitel a naplóban több művelet előzményeinek rendelkezésre állása miatt történik. Ez potenciálisan növelheti a replika helyreállítási idejét egy összeomlás után.
 
-A MaxRecordSizeInKB beállítás határozza meg egy olyan rekord maximális méretét, amelyet a replikátor a naplófájlba tud írni. A legtöbb esetben az alapértelmezett 1024-KB-os rekord mérete optimális. Ha azonban a szolgáltatás nagyobb adatelemeket okoz az állapotadatok részévé tételéhez, akkor előfordulhat, hogy ezt az értéket növelni kell. A MaxRecordSizeInKB kisebb, mint 1024, mivel a kisebb rekordok csak a kisebb rekordokhoz szükséges területet használják. Várható, hogy ezt az értéket csak ritka esetekben kell módosítani.
+A MaxRecordSizeInKB beállítás a replikátor által a naplófájlba írható rekord maximális méretét határozza meg. A legtöbb esetben az alapértelmezett 1024 KB-os rekordméret optimális. Ha azonban a szolgáltatás nagyobb adatelemeket okoz az állapotadatok részének, akkor szükség lehet ennek az értéknek a növelésére. Kevés előnye van annak, hogy a MaxRecordSizeInKB kisebb, mint 1024, mivel a kisebb rekordok csak a kisebb rekordhoz szükséges helyet használják. Arra számítunk, hogy ezt az értéket csak ritka esetekben kell megváltoztatni.
 
-A SharedLogId és a SharedLogPath beállításait mindig együtt használja a rendszer, hogy a szolgáltatás a csomópont alapértelmezett megosztott naplójából külön megosztott naplót használjon. A legjobb hatékonyság érdekében a lehető legtöbb szolgáltatásnak ugyanazt a megosztott naplót kell megadnia. A megosztott naplófájlokat a kizárólag a megosztott naplófájlhoz használt lemezekre kell helyezni a fej mozgásának csökkentése érdekében. Várható, hogy ezt az értéket csak ritka esetekben kell módosítani.
+A SharedLogId és a SharedLogPath-beállítások mindig együtt vannak használva, hogy a szolgáltatás a csomópont alapértelmezett megosztott naplójától különálló megosztott naplót használjon. A hatékonyság érdekében a lehető legtöbb szolgáltatásnak meg kell adnia ugyanazt a megosztott naplót. A megosztott naplófájlokat olyan lemezekre kell helyezni, amelyek et kizárólag a megosztott naplófájlhoz használják a fejmozgással kapcsolatos versengés csökkentése érdekében. Arra számítunk, hogy ezt az értéket csak ritka esetekben kell megváltoztatni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric-alkalmazás hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md)
-* [Reliable Services fejlesztői referenciája](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+* [Fejlesztői referencia a megbízható szolgáltatásokhoz](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: eb4fb0e08564921556c0562e9fa7d670b76e860a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178876"
 ---
-Egyéni tulajdonságok gyűjteménye név-érték. Ez a gyűjtemény kiterjesztése egyéni a dimenziókkal rendelkező normál telemetriai szolgál. Például a telemetriai adatok vagy telemetria-cikk konkrét tulajdonságokat, például a sorszám előállított üzembe helyezési pont. 
+Egyéni tulajdonságok név-érték gyűjteménye. Ez a gyűjtemény a szabványos telemetriai adatok kiterjesztése az egyéni dimenziók. Ilyenek például a központi telepítési tárolóhely, amely telemetriai adatokat vagy telemetriai-cikk-specifikus tulajdonságot, például rendelési számot hozott létre. 
 
-Maximális kulcshossz: 150 maximális értékének hossza: 8192
+Maximális kulcshossz: 150 Maximális érték hossz: 8192
