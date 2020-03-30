@@ -1,5 +1,5 @@
 ---
-title: Adatmásolás Blob Storage a Azure Data Factory használatával
+title: Adatok másolása a Blob Storage szolgáltatásban az Azure Data Factory használatával
 description: Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage-beli helyről egy másik helyre történő másolásához.
 services: data-factory
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75440085"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Gyors útmutató: Azure-beli adatelőállító létrehozása a PowerShell használatával
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rövid útmutató: Hozzon létre egy Azure-adat-előállító t a PowerShell használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-powershell.md)
 
-Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő **átalakításának** útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md).
+Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az Azure Data Factory használatával az adatok **átalakításáról** az [Oktatóanyag: Adatok átalakítása a Spark használatával](transform-data-using-spark.md)című témakörben található.
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -37,7 +37,7 @@ Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-be
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
+Telepítse a legújabb Azure PowerShell-modulokat az [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps)című témakörutasításait követve.
 
 #### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
@@ -55,7 +55,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
     Get-AzSubscription
     ```
 
-4. Ha több előfizetés is tartozik a fiókjához, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
+4. Ha több előfizetés is tartozik a fiókjához, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId azonosítóját** az Azure-előfizetésazonosítójára:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
@@ -88,7 +88,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-4. Az adatok előállítójának létrehozásához futtassa az alábbi **set-AzDataFactoryV2** parancsmagot a $ResGrp változó hely és ResourceGroupName tulajdonságának használatával:
+4. Az adat-előállító létrehozásához futtassa a következő **Set-AzDataFactoryV2** parancsmagát a $ResGrp változó Hely és ResourceGroupName tulajdonságával:
 
     ```powershell
     $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
@@ -138,7 +138,7 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**.
+3. Futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot a csatolt szolgáltatás létrehozásához: **AzureStorageLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -160,7 +160,7 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
 A feladat részeként két adatkészletet hoz létre, az **InputDataset** és az **OutputDataset** adatkészletet. Ezek az adatkészletek **bináris**típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak.
 A bemeneti adatkészlet a bemeneti mappában lévő forrásadatokat jelenti. A bemeneti adatkészlet definíciójában adhatja meg a forrásadatokat tartalmazó blobtároló (**adftutorial**), mappa (**input**) és fájl (**emp.txt**) nevét.
 A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatkészlet definíciójában adhatja meg annak a blobtárolónak (**adftutorial**), mappának (**output**) és fájlnak a nevét, amelybe az adatok át lesznek másolva. 
-1. Hozzon létre egy **InputDataset. JSON** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal:
+1. Hozzon létre egy **InputDataset.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában, a következő tartalommal:
 
     ```json
     {
@@ -184,7 +184,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     }
     ```
 
-2. A következő adatkészlet létrehozásához futtassa a **set-AzDataFactoryV2Dataset** parancsmagot: **InputDataset**.
+2. Az adatkészlet létrehozásához: **InputDataset**, futtassa a **Set-AzDataFactoryV2Dataset** parancsmag.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -202,7 +202,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket. Hozzon létre egy **OutputDataset. JSON** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal:
+3. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket. Hozzon létre egy **OutputDataset.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában, a következő tartalommal:
 
     ```json
     {
@@ -225,7 +225,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     }
     ```
 
-4. A **set-AzDataFactoryV2Dataset** parancsmag futtatásával hozza létre az **adatkészletet**.
+4. Futtassa a **Set-AzDataFactoryV2Dataset** parancsmast az **OutDataset**létrehozásához.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -244,7 +244,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     ```
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-Ebben az eljárásban egy másolási tevékenységgel rendelkező folyamatot hoz létre, amely a bemeneti és a kimeneti adatkészleteket használja. A másolási tevékenység adatokat másol a bemeneti adatkészlet beállításaiban megadott fájlból a kimeneti adatkészlet beállításaiban megadott fájlba.  
+Ebben az eljárásban hozzon létre egy folyamatot egy másolási tevékenység, amely a bemeneti és kimeneti adatkészletek. A másolási tevékenység adatokat másol a bemeneti adatkészlet beállításaiban megadott fájlból a kimeneti adatkészlet beállításaiban megadott fájlba.  
 
 1. Hozzon létre egy **Adfv2QuickStartPipeline.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal.
 
@@ -300,7 +300,7 @@ Ebben az eljárásban egy másolási tevékenységgel rendelkező folyamatot hoz
     }
     ```
 
-2. A folyamat létrehozása: **Adfv2QuickStartPipeline**, futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
+2. A folyamat létrehozásához: **Adfv2QuickStartPipeline**, Futtassa a **Set-AzDataFactoryV2Pipeline** parancsmag.
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `
@@ -312,9 +312,9 @@ Ebben az eljárásban egy másolási tevékenységgel rendelkező folyamatot hoz
 
 ## <a name="create-a-pipeline-run"></a>Folyamat futásának létrehozása
 
-Ebben a lépésben létrehoz egy folyamat-futtatást.
+Ebben a lépésben hozzon létre egy folyamat futtatása.
 
-Futtassa a **rehív-AzDataFactoryV2Pipeline** parancsmagot egy folyamat futtatásának létrehozásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
+Futtassa az **Invoke-AzDataFactoryV2Pipeline** parancsmag egy folyamatfuttatás létrehozásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
   ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline `
@@ -438,6 +438,6 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

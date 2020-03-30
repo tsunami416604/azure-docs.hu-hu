@@ -1,6 +1,6 @@
 ---
-title: AVS-fiókok kezelése – Azure
-description: Tudnivalók az AVS-fiókok kezeléséről
+title: CloudSimple-fiókkezelés – Azure
+description: További információ a CloudSimple-fiókok kezeléséről
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f00ea9590dfa81703ec76b1e866c72f7ff41176a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025112"
 ---
 # <a name="account-management-overview"></a>A fiókkezelés áttekintése
 
-Az AVS szolgáltatás létrehozásakor létrejön egy fiók az AVS-ben. A fiók társítva van az Azure-előfizetéséhez, ahol a szolgáltatás található. Az előfizetéshez tartozó **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek az AVS-portálhoz. Az AVS szolgáltatáshoz társított Azure-előfizetés azonosítója és a bérlő azonosítója a [fiókok oldalon](account.md)található.
+Amikor létrehozza a CloudSimple szolgáltatást, létrehoz egy fiókot a CloudSimple-en.  A fiók az Azure-előfizetéshez van társítva, ahol a szolgáltatás található.  Az előfizetésben **tulajdonosi** és **közreműködői** szerepkörrel rendelkező összes felhasználó hozzáférhet a CloudSimple portálhoz.  Az Azure-előfizetés-azonosító és a CloudSimple szolgáltatáshoz társított bérlői azonosító a [Fiókok lapon](account.md)található.
 
-## <a name="additional-alert-emails"></a>További riasztási e-mailek
+## <a name="additional-alert-emails"></a>További figyelmeztető e-mailek
 
-A riasztások fogadásához az AVS-ben beállíthatja az e-mail-azonosítókat:
+A CloudSimple ben beállíthatja a levelezési azonosítókat, hogy értesítéseket kapjanak:
 
-* A szolgáltatással kapcsolatos
+* Az Ön szolgáltatásához kapcsolódóan
 * Automatikus feldolgozáshoz
 
-## <a name="avs-operator-access"></a>AVS-kezelő hozzáférése
+## <a name="cloudsimple-operator-access"></a>CloudSimple operátori hozzáférés
 
-Az AVS-portálhoz való hozzáférést a szolgáltatás műveleti személyzete számára szabályozhatja. A Service Operations munkatársai bejelentkezhetnek a portálra a támogatási jegy beküldésekor. A szolgáltatási műveletek kijavítja az összes jelentett problémát, és a naplókban elérhető műveleteket is.
+Szabályozhatja a hozzáférést a CloudSimple portál szolgáltatás üzemeltetési személyzet.  A szolgáltatási műveletek személyzete jelentkezzen be a portálra, amikor támogatási jegyet küld.  A szolgáltatási műveletek kijavítják a jelentett problémákat, és a végrehajtott műveletek elérhetők a naplókban.
 
 ## <a name="users"></a>Felhasználók
 
-Az előfizetéshez tartozó **tulajdonosi** és **közreműködő** szerepkörrel rendelkező felhasználók hozzáférhetnek az AVS-portálhoz. Amikor hozzáfér a portálhoz, a felhasználó az AVS-fiókban jön létre. Letilthatja a hozzáférést az AVS-portálhoz adott felhasználók számára a fiókok lapon.
+Minden olyan felhasználó, aki **tulajdonosi** és **közreműködői** szerepkört kap az előfizetésben, hozzáférhet a CloudSimple portálhoz.  Amikor belép a portálra, a felhasználó a CloudSimple-fiókban jön létre.  Letilthatja a hozzáférést a CloudSimple portál hoz az egyes felhasználók számára a Fiókok lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Fiók összegzésének megtekintése](account.md)
+* [Számla összegzésének megtekintése](account.md)
 * [Felhasználói lista megtekintése](users.md)

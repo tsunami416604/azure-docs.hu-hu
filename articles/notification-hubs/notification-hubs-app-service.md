@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs integráció a App Service Mobile Apps
-description: Ismerje meg, hogyan működik az Azure Notification Hubs Azure App Service Mobile Apps.
+title: Értesítési központok integrációja az App Service mobilalkalmazásaival
+description: Ismerje meg, hogyan működik együtt az Azure Értesítési központok az Azure App Service mobilalkalmazásaival.
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76264152"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps-integráció
@@ -45,4 +45,4 @@ A Mobile Apps-fejlesztők a következő munkafolyamatoknál használhatják a No
   - *Leküldés eszközre*: Az SDK-k a Mobile Apps telepítési azonosítót automatikusan GUID-ként használják a Notification Hubsban való regisztrációhoz, így a fejlesztőknek nem kell több szolgáltatásbeli GUID azonosítót fenntartaniuk.
 - **Telepítési modell**: A Mobile Apps a Notification Hubs legújabb leküldési modelljével mutatja be az eszközök leküldéses tulajdonságait egy JSON-telepítésben, amely egyszerűen használható, és igazodik a leküldéses értesítési szolgáltatásokhoz.
 - **Rugalmasság**: A fejlesztők mindig választhatják a Notification Hubs közvetlen használatát, még az integráció megvalósítása után is.
-- **Integrált élmény az [Azure Portalon](https://portal.azure.com)** : A leküldési funkció vizuálisan megjelenik a Mobile Appsban, és a fejlesztők könnyedén használhatják a kapcsolódó értesítési központtal a Mobile Appson keresztül.
+- **Integrált élmény az [Azure Portalon](https://portal.azure.com)**: A leküldési funkció vizuálisan megjelenik a Mobile Appsban, és a fejlesztők könnyedén használhatják a kapcsolódó értesítési központtal a Mobile Appson keresztül.

@@ -1,37 +1,37 @@
 ---
-title: SQL Server adatbázisok biztonsági mentése az Azure-ba
-description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését ismerteti. A cikk a SQL Server helyreállítást is ismerteti.
+title: SQL Server-adatbázisok biztonsági mentése az Azure-ba
+description: Ez a cikk bemutatja, hogyan lehet biztonsági másolatot az SQL Server az Azure-ba. A cikk az SQL Server helyreállítását is ismerteti.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79297476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408760"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
-A [Azure Backup](backup-overview.md) stream-alapú, speciális megoldást kínál az Azure-beli virtuális gépeken futó SQL Server biztonsági mentésére. Ez a megoldás a Azure Backup a nulla infrastruktúra biztonsági mentésével, a hosszú távú adatmegőrzéssel és a központi felügyelettel kapcsolatos előnyökkel illeszkedik. Emellett a következő előnyöket nyújtja kifejezetten a SQL Server számára:
+[Az Azure Backup](backup-overview.md) adatfolyam-alapú, speciális megoldást kínál az Azure virtuális gépeken futó SQL Server biztonsági mentéséhez. Ez a megoldás igazodik az Azure Backup nulla infrastruktúra biztonsági mentés, a hosszú távú megőrzés és a központi felügyelet előnyeihez. Emellett a következő előnyöket biztosítja kifejezetten az SQL Server számára:
 
-1. Az összes biztonsági mentési típust támogató, munkaterhelés-alapú biztonsági másolatok – teljes, különbözeti és napló
-2. 15 perces RPO (helyreállítási pont célkitűzés) gyakori naplók biztonsági másolatokkal
-3. Időponthoz képesti helyreállítás másodpercenként
-4. Egyedi adatbázis-szintű biztonsági mentés és visszaállítás
+1. Munkaterhelés-tudatos biztonsági mentések, amelyek támogatják az összes biztonsági mentési típust - teljes, különbözeti és napló
+2. 15 perces RPO (helyreállítási pont célja) gyakori naplóbiztonsági mentésekkel
+3. Időponthoz kötött helyreállítás egy másodpercig
+4. Egyéni adatbázisszintű biztonsági mentés és visszaállítás
 
-A jelenleg támogatott biztonsági mentési és visszaállítási forgatókönyvek megtekintéséhez tekintse meg a [támogatási mátrixot](backup-azure-sql-database.md#scenario-support).
+A ma támogatott biztonsági mentési és visszaállítási forgatókönyvek megtekintéséhez tekintse meg a [támogatási mátrixot.](sql-support-matrix.md#scenario-support)
 
-## <a name="backup-process"></a>Biztonsági mentési folyamat
+## <a name="backup-process"></a>A biztonsági mentés folyamata
 
-Ez a megoldás kihasználja az SQL natív API-kat az SQL-adatbázisok biztonsági mentésének elvégzéséhez.
+Ez a megoldás az SQL natív API-kat használja az SQL-adatbázisok biztonsági másolatainak készítéséhez.
 
-* Miután megadta a védelemmel ellátni kívánt SQL Server VMt, és lekérdezi azokat az adatbázisokban, Azure Backup a szolgáltatás a munkaterhelési biztonsági mentési bővítményt telepíti a virtuális gépen a `AzureBackupWindowsWorkload` bővítmény nevével.
-* Ez a bővítmény egy koordinátorból és egy SQL-beépülő modulból áll. Míg a koordinátor felelős a munkafolyamatok különböző műveletekhez, például a biztonsági mentés konfigurálásához, a biztonsági mentéshez és a visszaállításhoz, a beépülő modul felelős a tényleges adatforgalomért.
-* A virtuális gépen lévő adatbázisok felderítéséhez Azure Backup létrehozza a fiókot `NT SERVICE\AzureWLBackupPluginSvc`. Ez a fiók használható a biztonsági mentéshez és a visszaállításhoz, és SQL sysadmin engedélyekre van szükség. A `NT SERVICE\AzureWLBackupPluginSvc` fiók egy [virtuális szolgáltatásfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), ezért nem igényel jelszavas kezelést. Azure Backup kihasználja az adatbázis-felderítés/-lekérdezés `NT AUTHORITY\SYSTEM`-fiókját, így ennek a fióknak nyilvános bejelentkezésnek kell lennie az SQL-ben. Ha nem hozta létre a SQL Server VM az Azure piactéren, hibaüzenetet kaphat a **UserErrorSQLNoSysadminMembership**. Ha ez történik, [kövesse ezeket az utasításokat](#set-vm-permissions).
-* Miután elindította a védelem konfigurálását a kiválasztott adatbázisokon, a Backup szolgáltatás beállítja a koordinátort a biztonsági mentési ütemtervekkel és egyéb házirend-adatokkal, amelyeket a bővítmény a virtuális gépen helyileg gyorsítótáraz.
-* Az ütemezett időpontban a koordinátor kommunikál a beépülő modullal, és elindítja a biztonsági mentési adatok továbbítását az SQL Serverről a VDI használatával.  
-* A beépülő modul közvetlenül a Recovery Services-tárolóba küldi az adatokat, így nincs szükség átmeneti helyre. Az adattitkosítás és a Azure Backup szolgáltatás tárolja a Storage-fiókokban.
-* Az adatátvitel befejezésekor a koordinátor ellenőrzi a véglegesítést a biztonsági mentési szolgáltatással.
+* Miután megadta az SQL Server virtuális gép, amely védeni szeretné, és a lekérdezés az adatbázisok benne, az `AzureBackupWindowsWorkload` Azure Backup szolgáltatás telepíti a számítási feladatok biztonsági mentési bővítményt a virtuális gép a névbővítmény.
+* Ez a kiterjesztés egy koordinátorból és egy SQL beépülő modulból áll. Míg a koordinátor felelős a különböző műveletek, például a biztonsági mentés konfigurálása, a biztonsági mentés és a visszaállítás munkafolyamatainak elindításáért, a beépülő modul felelős a tényleges adatfolyamért.
+* Ahhoz, hogy ezen a virtuális gépen adatbázisokat `NT SERVICE\AzureWLBackupPluginSvc`deríthesse fel, az Azure Backup létrehozza a fiókot. Ez a fiók biztonsági mentésre és visszaállításra szolgál, és SQL sysadmin engedélyeket igényel. A `NT SERVICE\AzureWLBackupPluginSvc` fiók egy [virtuális szolgáltatás fiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), ezért nem igényel jelszókezelést. Az Azure Backup `NT AUTHORITY\SYSTEM` a fiókot használja az adatbázis felderítésére/lekérdezésére, ezért ennek a fióknak nyilvános bejelentkezésnek kell lennie az SQL-en. Ha nem az Azure Marketplace-ről hozták létre az SQL Server virtuális gépét, hibaüzenet jelenhet meg **UserErrorSQLNoSysadminMembership néven.** Ebben az esetben [kövesse az alábbi utasításokat](#set-vm-permissions).
+* Miután aktiválta a védelem konfigurálását a kiválasztott adatbázisokon, a biztonsági mentési szolgáltatás beállítja a koordinátort a biztonsági mentési ütemezésekkel és más házirend-részletekkel, amelyeket a bővítmény helyileg gyorsítótárazza a virtuális gépen.
+* Az ütemezett időpontban a koordinátor kommunikál a beépülő modullal, és elindítja a biztonsági mentési adatok streamelését az SQL-kiszolgálóról a VDI használatával.  
+* A bővítmény közvetlenül a helyreállítási szolgáltatások tárolóba küldi az adatokat, így nincs szükség átmeneti helyre. Az adatok titkosítása és tárolása az Azure Backup szolgáltatás tárfiókokban.
+* Amikor az adatátvitel befejeződött, a koordinátor megerősíti a véglegesítést a biztonsági mentési szolgáltatással.
 
   ![SQL biztonsági mentési architektúra](./media/backup-azure-sql-database/backup-sql-overview.png)
 
@@ -39,155 +39,81 @@ Ez a megoldás kihasználja az SQL natív API-kat az SQL-adatbázisok biztonság
 
 Mielőtt elkezdené, ellenőrizze az alábbiakat:
 
-1. Győződjön meg arról, hogy rendelkezik az Azure-ban futó SQL Server-példánnyal. [Gyorsan létrehozhat egy SQL Server példányt](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) a piactéren.
-2. Tekintse át a [szolgáltatás megfontolási](#feature-consideration-and-limitations) és [forgatókönyv-támogatását](#scenario-support).
-3. [Tekintse át](faq-backup-sql-server.md) a forgatókönyvre vonatkozó gyakori kérdéseket.
+1. Győződjön meg arról, hogy az Azure-ban fut egy SQL Server-példány. [Gyorsan létrehozhat egy SQL Server-példányt](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) a piactéren.
+2. Tekintse át a [szolgáltatás szempontjait](sql-support-matrix.md#feature-consideration-and-limitations) és a [forgatókönyvek támogatását.](sql-support-matrix.md#scenario-support)
+3. Tekintse át a forgatókönyvvel [kapcsolatos gyakori kérdéseket.](faq-backup-sql-server.md)
 
-## <a name="scenario-support"></a>Forgatókönyvek támogatása
+## <a name="set-vm-permissions"></a>Virtuálisgép-engedélyek beállítása
 
-**Támogatás** | **Részletek**
---- | ---
-**Támogatott központi telepítések** | Az SQL Marketplace Azure-beli virtuális gépek és a nem piactér (SQL Server manuálisan telepített) virtuális gépek támogatottak.
-**Támogatott térségek** | Dél-Ausztrália, Kelet-Ausztrália (AE), Ausztrália középső régiója (AC), Ausztrália középső régiója (AC) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS), Nyugat-India <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió <br> Észak-Németország, Középnyugat-Németország <br> Észak-Svájc, Nyugat-Svájc <br> Közép-Franciaország <br> Kelet-Kína, Kelet-Kína 2, Észak-Kína, Észak-Kína 2
-**Támogatott operációs rendszerek** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> A Linux jelenleg nem támogatott.
-**Támogatott SQL Server verziók** | SQL Server 2019, SQL Server 2017 a [termék életciklusának keresése lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS a [termék életciklusa lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
-**Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es vagy újabb verziója telepítve a virtuális gépen
+  Amikor felderítést futtat egy SQL Server kiszolgálón, az Azure Backup a következőket teszi:
 
-## <a name="feature-consideration-and-limitations"></a>Funkciókkal kapcsolatos szempontok és korlátozások
+* Hozzáadja az AzureBackupWindowsWorkload bővítményt.
+* Létrehoz egy NT SERVICE\AzureWLBackupPluginSvc fiókot a virtuális gépen lévő adatbázisok felderítéséhez. Ez a fiók biztonsági mentésre és visszaállításra szolgál, és SQL sysadmin engedélyeket igényel.
+* Felderíti a virtuális gépen futó adatbázisokat, az Azure Backup az NT AUTHORITY\SYSTEM fiókot használja. Ennek a fióknak nyilvános bejelentkezésnek kell lennie az SQL-en.
 
-* SQL Server biztonsági mentés konfigurálható a Azure Portal vagy a **PowerShellben**. Nem támogatjuk a CLI-t.
-* A megoldás mindkét típusú [üzembe helyezést](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) támogatja – Azure Resource Manager virtuális gépeket és klasszikus virtuális gépeket.
-* A SQL Server rendszert futtató virtuális gépek internetkapcsolatot igényelnek az Azure nyilvános IP-címeinek eléréséhez.
-* SQL Server **feladatátvevő fürt példánya (** nem támogatott).
-* A tükrözési adatbázisok és az adatbázis-Pillanatképek biztonsági mentésére és visszaállítására vonatkozó műveletek nem támogatottak.
-* Ha több biztonsági mentési megoldást használ a különálló SQL Server példány vagy az SQL always on rendelkezésre állási csoport biztonsági mentéséhez, a biztonsági mentés sikertelen lehet; ne tegye meg.
-* A rendelkezésre állási csoport két csomópontjának különálló, azonos vagy eltérő megoldásokkal történő biztonsági mentése a biztonsági mentés sikertelenségét is eredményezheti.
-* A Azure Backup csak a teljes és csak a csak **olvasható** adatbázisok teljes biztonsági mentési típusait támogatja
-* A nagy mennyiségű fájllal rendelkező adatbázisok védelme nem biztosítható. A támogatott fájlok maximális száma **~ 1000**.  
-* Egy tárolóban akár **2000** SQL Server adatbázisra is készíthet biztonsági mentést. Több tárolót is létrehozhat abban az esetben, ha nagyobb számú adatbázisra van szüksége.
-* A biztonsági mentést akár **50** adatbázisra is konfigurálhatja egy menet közben. Ez a korlátozás segít optimalizálni a biztonsági mentési terheléseket.
-* Az adatbázisok akár **2 TB** -os méretekben is támogatottak; a teljesítménnyel kapcsolatos problémáknál nagyobb méreteket eredményezhet.
-* Ahhoz, hogy a kiszolgálókon hány adatbázis védhető védelemmel, olyan tényezőket kell figyelembe vennie, mint például a sávszélesség, a virtuális gépek mérete, a biztonsági mentés gyakorisága, az adatbázis mérete stb. [töltse le](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás-Plannert, amely a virtuálisgép-erőforrások és a biztonsági mentési szabályzat alapján a kiszolgálón elérhető adatbázisok hozzávetőleges számát adja meg.
-* Rendelkezésre állási csoportok esetén a biztonsági mentések a különböző csomópontokból származnak, néhány tényező alapján. A rendelkezésre állási csoport biztonsági mentési viselkedését az alábbiakban összegzi.
+Ha nem az SQL Server virtuális gép az Azure Marketplace-en, vagy ha az SQL 2008 és 2008 R2, előfordulhat, hogy egy **UserErrorSQLNoSysadminMembership** hiba.
 
-### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Az Always On rendelkezésre állási csoportok esetén a működés biztonsági mentése
-
-Azt javasoljuk, hogy a biztonsági mentés az AG egyetlen csomópontján legyen konfigurálva. A biztonsági mentést mindig ugyanabban a régióban kell konfigurálni, mint az elsődleges csomópontot. Más szóval mindig szüksége lesz az elsődleges csomópontra abban a régióban, ahol a biztonsági mentést konfigurálja. Ha az AG összes csomópontja ugyanabban a régióban van, ahol a biztonsági mentés be van állítva, akkor nincs probléma.
-
-#### <a name="for-cross-region-ag"></a>Régiók közötti AG
-
-* A biztonsági mentéstől függetlenül a biztonsági mentések nem azon a csomópontokon történnek, amelyek nem ugyanabban a régióban találhatók, mint ahol a biztonsági mentés be van állítva. Ennek az az oka, hogy a régiók közötti biztonsági másolatok nem támogatottak. Ha csak két csomóponttal rendelkezik, és a másodlagos csomópont a másik régióban található; Ebben az esetben a biztonsági mentések továbbra is az elsődleges csomópontról történnek (kivéve, ha a biztonsági mentési beállítások "másodlagosak").
-* Ha egy feladatátvétel a biztonsági mentést tartalmazó régión kívül esik, a biztonsági mentések sikertelenek lesznek a feladatátvételi régió csomópontjain.
-
-A biztonsági mentési beállítások és a biztonsági másolatok típusaitól függően (teljes/különbözeti/napló/csak másolás) a biztonsági másolatok egy adott csomópontból (elsődleges/másodlagos) származnak.
-
-* **Biztonsági mentési beállítások: elsődleges**
-
-**Biztonsági mentés típusa** | **Node**
-    --- | ---
-    teljes | Elsődleges
-    Differenciál | Elsődleges
-    Napló |  Elsődleges
-    Csak másolás – teljes |  Elsődleges
-
-* **Biztonsági mentési beállítás: csak másodlagos**
-
-**Biztonsági mentés típusa** | **Node**
---- | ---
-teljes | Elsődleges
-Differenciál | Elsődleges
-Napló |  Másodlagos
-Csak másolás – teljes |  Másodlagos
-
-* **Biztonsági mentési beállítások: másodlagos**
-
-**Biztonsági mentés típusa** | **Node**
---- | ---
-teljes | Elsődleges
-Differenciál | Elsődleges
-Napló |  Másodlagos
-Csak másolás – teljes |  Másodlagos
-
-* **Nincs biztonsági mentési beállítás**
-
-**Biztonsági mentés típusa** | **Node**
---- | ---
-teljes | Elsődleges
-Differenciál | Elsődleges
-Napló |  Másodlagos
-Csak másolás – teljes |  Másodlagos
-
-## <a name="set-vm-permissions"></a>VM-engedélyek beállítása
-
-  Ha a felderítést SQL Serveron futtatja, a Azure Backup a következő műveleteket végzi el:
-
-* Hozzáadja a AzureBackupWindowsWorkload bővítményt.
-* Egy NT SERVICE\AzureWLBackupPluginSvc-fiókot hoz létre a virtuális gépen lévő adatbázisok felderítéséhez. Ez a fiók biztonsági mentésre és helyreállításra szolgál, és SQL sysadmin engedélyeket igényel.
-* Egy virtuális gépen futó adatbázisok felfedése, Azure Backup az NT AUTHORITY\SYSTEM fiókot használja. Ennek a fióknak nyilvános bejelentkezéssel kell rendelkeznie az SQL-ben.
-
-Ha nem hozta létre a SQL Server VM az Azure piactéren, vagy ha SQL 2008-es és 2008 R2-es verzióval rendelkezik, előfordulhat, hogy **UserErrorSQLNoSysadminMembership** hibaüzenetet kap.
-
-Ha a Windows 2008 R2 rendszeren futó **SQL 2008** és **2008 R2** esetén ad meg engedélyeket [, tekintse](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)meg a következőt:.
+A Windows 2008 R2 rendszeren futó **SQL 2008** és **2008 R2** esetén az engedélyek megadásához [lásd itt.](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)
 
 Az összes többi verzió esetében javítsa ki az engedélyeket a következő lépésekkel:
 
-  1. SQL Server sysadmin engedélyekkel rendelkező fiókkal jelentkezhet be SQL Server Management Studio (SSMS) szolgáltatásba. Ha speciális engedélyekre van szüksége, a Windows-hitelesítésnek működnie kell.
-  2. A SQL Server nyissa meg a **Biztonság/bejelentkezések** mappát.
+  1. Sql Server rendszergazdai engedélyekkel rendelkező fiókkal jelentkezzen be az SQL Server Management Studio (SSMS) szolgáltatásba. Ha nincs szüksége speciális engedélyekre, a Windows-hitelesítésnek működnie kell.
+  2. Az SQL Server en nyissa meg a **Security/Logins mappát.**
 
-      ![A fiókok megjelenítéséhez nyissa meg a biztonság/bejelentkezések mappát](./media/backup-azure-sql-database/security-login-list.png)
+      ![A fiókok megtekintéséhez nyissa meg a Biztonság/bejelentkezés mappát](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. Kattintson a jobb gombbal a **bejelentkezések** mappára, és válassza az **új bejelentkezés**lehetőséget. A **Bejelentkezés – új**területen válassza a **Keresés**lehetőséget.
+  3. Kattintson a jobb gombbal a **Bejelentkezések** mappára, és válassza **az Új bejelentkezés parancsot.** A **Bejelentkezés - Új**mezőben válassza a **Keresés**lehetőséget.
 
-      ![A bejelentkezés – új párbeszédpanelen válassza a keresés lehetőséget.](./media/backup-azure-sql-database/new-login-search.png)
+      ![A Bejelentkezés - Új párbeszédpanelen válassza a Keresés lehetőséget.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. A virtuális gép regisztrálása és az SQL-felderítési fázis során létrejött a Windows Virtual Service Account **NT SERVICE\AzureWLBackupPluginSvc** . Adja meg a fiók nevét az **adja meg a kijelölendő objektum nevét mezőben**látható módon. Válassza **a Névellenőrzés lehetőséget** a név feloldásához. Kattintson az **OK** gombra.
+  4. Az **NT SERVICE\AzureWLBackupPluginSvc** Windows virtuális szolgáltatásfiók a virtuális gép regisztrációs és SQL-felderítési fázisa során jött létre. Írja be a fiók nevét a **Válassza ki jelölendő objektum nevének megadása**című részben. A név feloldásához jelölje be a **Nevek ellenőrzése** jelölőnégyzetet. Kattintson az **OK** gombra.
 
-      ![Az ismeretlen szolgáltatásnév feloldásához válassza a Névellenőrzés lehetőséget](./media/backup-azure-sql-database/check-name.png)
+      ![Az ismeretlen szolgáltatásnév feloldásához jelölje be a Nevek ellenőrzése jelölőnégyzetet.](./media/backup-azure-sql-database/check-name.png)
 
-  5. A **kiszolgálói szerepkörök**területen ellenőrizze, hogy ki van-e választva a **sysadmin (rendszergazda** ) szerepkör. Kattintson az **OK** gombra. A szükséges engedélyeknek már léteznie kell.
+  5. A **Kiszolgálói szerepkörök**ben győződjön meg arról, hogy a **rendszergazdai** szerepkör ki van jelölve. Kattintson az **OK** gombra. A szükséges engedélyeknek most már létezniük kell.
 
-      ![Győződjön meg arról, hogy a sysadmin kiszolgálói szerepkör van kiválasztva](./media/backup-azure-sql-database/sysadmin-server-role.png)
+      ![Annak biztosítása, hogy a rendszergazdai kiszolgálói szerepkör ki legyen jelölve](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
-  6. Most társítsa az adatbázist a Recovery Services-tárolóhoz. A Azure Portal a **védett kiszolgálók** listában kattintson a jobb gombbal arra a kiszolgálóra, amely hibás állapotban van > az adatbázisok újbóli **felderítése**elemre.
+  6. Most társítsa az adatbázist a Recovery Services tárolóhoz. Az Azure Portalvédett **kiszolgálók** listájában kattintson a jobb gombbal a hibás állapotú kiszolgálóra, > **újra felfedezze a db-ket.**
 
-      ![Ellenőrizze, hogy a kiszolgáló rendelkezik-e megfelelő engedélyekkel](./media/backup-azure-sql-database/check-erroneous-server.png)
+      ![Annak ellenőrzése, hogy a kiszolgáló rendelkezik-e a megfelelő engedélyekkel](./media/backup-azure-sql-database/check-erroneous-server.png)
 
-  7. Az **értesítések** területén lévő előrehaladás ellenőrzéséhez. Ha a kiválasztott adatbázisok találhatók, megjelenik egy sikert jelző üzenet.
+  7. Ellenőrizze az előrehaladást az **Értesítések** területen. A kijelölt adatbázisok megmentése után egy sikeres üzenet jelenik meg.
 
-      ![Sikeres üzembe helyezési üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
+      ![A telepítés sikeressé tévő üzenete](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
 > [!NOTE]
-> Ha a SQL Server a SQL Server több példánya is telepítve van, akkor minden SQL-példányhoz rendszergazdai jogosultságot kell hozzáadnia az **NT Service\AzureWLBackupPluginSvc** -fiókhoz.
+> Ha az SQL Server több SQL Server-példányt telepített, akkor az **NT Service\AzureWLBackupPluginSvc** fiókrendszergazdai engedélyét kell hozzáadnia az összes SQL-példányhoz.
 
-### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>SQL sysadmin-engedélyek megadása az SQL 2008 és az SQL 2008 R2 rendszerhez
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>SQL sysadmin engedélyek megadása sql 2008-hoz és SQL 2008 R2-hez
 
-Adja hozzá az **NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc** -bejelentkezéseket az SQL Server-példányhoz:
+**NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc** bejelentkezések hozzáadása az SQL Server-példányhoz:
 
-1. Lépjen a SQL Server példányra az Object Explorerben.
-2. Lépjen a biztonság > bejelentkezések lehetőségre
-3. Kattintson a jobb gombbal a bejelentkezések elemre, majd kattintson az *új bejelentkezés...* lehetőségre.
+1. Nyissa meg az SQL Server-példányt az Objektumkezelőben.
+2. Keresse meg a Security -> Bejelentkezések
+3. Kattintson a jobb gombbal a Bejelentkezések és kattintson *az új bejelentkezés ...*
 
-    ![Új bejelentkezés a SSMS használatával](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+    ![Új bejelentkezés SSMS használatával](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
-4. Nyissa meg az általános lapot, és adja meg a bejelentkezési név **NT AUTHORITY\SYSTEM** .
+4. Lépjen az Általános lapra, és írja be az **NT AUTHORITY\SYSTEM nevet** bejelentkezési névként.
 
-    ![a SSMS bejelentkezési neve](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+    ![bejelentkezési név az SSMS-hez](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
-5. Lépjen a *kiszolgálói szerepkörök* elemre, és válassza ki a *nyilvános* és a *sysadmin* szerepkört.
+5. Nyissa meg a *Kiszolgálói szerepkörök et,* és válassza *a nyilvános* és *rendszergazdai szerepköröket.*
 
-    ![szerepkörök kiválasztása a SSMS-ben](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+    ![szerepkörök kiválasztása az SSMS-ben](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. Ugrás az *állapotra*. Engedély *megadása* az adatbázismotor és a bejelentkezés *engedélyezettként*való bekapcsolásához.
+6. Ugrás az *Állapot gombra.* *Adja meg* az adatbázis-motorhoz való csatlakozásés a bejelentkezés *engedélyezve való csatlakozásengedélyezését.*
 
-    ![Engedélyek megadása a SSMS-ben](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+    ![Engedélyek megadása az SSMS-ben](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. Kattintson az OK gombra.
-8. Ismételje meg ugyanezeket a lépéseket (1-7 fent) a SQL Server-példányhoz tartozó NT Service\AzureWLBackupPluginSvc-bejelentkezés hozzáadásához. Ha a bejelentkezés már létezik, győződjön meg róla, hogy a rendszergazda kiszolgálói szerepkörrel rendelkezik, és az állapota területen a jogosultsággal rendelkezik az adatbázismotor és a bejelentkezés engedélyezettként való bekapcsolásához.
-9. Az engedélyek megadása után a portálon **újra felfedezheti** a virtuális gépeket: tár **->** biztonsági mentési infrastruktúra **->** munkaterhelés az Azure VM-ben:
+8. Ismételje meg ugyanazokat a lépések sorozatát (1-7 felett) az NT Service\AzureWLBackupPluginSvc bejelentkezés hozzáadásához az SQL Server-példányhoz. Ha a bejelentkezés már létezik, győződjön meg arról, hogy rendelkezik a rendszergazdai kiszolgálói szerepkörrel, és az Állapot csoportban megadja az adatbázis-motorhoz való csatlakozás és a bejelentkezés engedélyezve való csatlakozásának engedélyezését.
+9. Az engedély megadása után újra felfedezheti a **->** **db-ket** a portálon: Vault biztonsági mentési infrastruktúra **->** számítási feladata az Azure virtuális gépben:
 
-    ![A Azure Portalban lévő adatbázisok újbóli felderítése](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+    ![DB-k újbóli felderítése az Azure Portalon](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
-Azt is megteheti, hogy a következő PowerShell-parancsok rendszergazdai módban történő futtatásával automatizálja az engedélyeket. A példány neve alapértelmezés szerint az MSSQLSERVER értékre van állítva. Módosítsa a példány neve argumentumot a parancsfájlban, ha szükséges:
+Azt is megteheti, hogy automatizálhatja az engedélyeket a következő PowerShell-parancsok futtatásával rendszergazdai módban. A példány neve alapértelmezés szerint MSSQLSERVER. Szükség esetén módosítsa a példány névargumentumát a parancsfájlban:
 
 ```powershell
 param(
@@ -224,6 +150,6 @@ catch
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tudnivalók SQL Server adatbázisok biztonsági](backup-sql-server-database-azure-vms.md) mentéséről.
-* [Tudnivalók a](restore-sql-database-azure-vm.md) SQL Server adatbázisok biztonsági másolatának visszaállításáról.
-* [Tudnivalók a](manage-monitor-sql-database-backup.md) SQL Server adatbázisok biztonsági másolatának kezeléséről.
+* További információ az SQL Server-adatbázisok biztonsági [mentéséről.](backup-sql-server-database-azure-vms.md)
+* [További információ az](restore-sql-database-azure-vm.md) SQL Server-adatbázisok biztonsági mentén történő visszaállításáról.
+* További információ az SQL Server-adatbázisok biztonsági mentén történt [kezeléséről.](manage-monitor-sql-database-backup.md)

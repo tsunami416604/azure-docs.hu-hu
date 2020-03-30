@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADSync szolgáltatás fiókja |} A Microsoft Docs'
-description: Ez a témakör ismerteti az ADSync szolgáltatás fiókja, és gyakorlati tanácsokat a fiókjával kapcsolatban.
+title: 'Azure AD Connect: ADSync szolgáltatásfiók | Microsoft dokumentumok'
+description: Ez a témakör az ADSync szolgáltatásfiókot ismerteti, és gyakorlati tanácsokat tartalmaz a fiókkal kapcsolatban.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,62 +16,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67478718"
 ---
-# <a name="adsync-service-account"></a>ADSync szolgáltatás fiókja
-Az Azure AD Connect telepít egy a helyszíni szolgáltatással, amelyre koordinálja a szinkronizálás az Active Directory és az Azure Active Directory között.  A Microsoft Azure AD Sync szinkronizálási szolgáltatás (ADSync) fut a kiszolgálón, a helyszíni környezetben.  A szolgáltatás hitelesítő adatai az Expressz telepítés esetén alapértelmezés szerint vannak beállítva, de egyénileg beállítható a szervezeti biztonsági követelmények teljesítéséhez.  Ezeket a hitelesítő adatokat nem használja a helyszíni erdők vagy Azure Active Directoryban való csatlakozáshoz.
+# <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
+Az Azure AD Connect egy helyszíni szolgáltatást telepít, amely vezényli az Active Directory és az Azure Active Directory közötti szinkronizálást.  A Microsoft Azure AD Sync szinkronizálási szolgáltatás (ADSync) a helyszíni környezetben egy kiszolgálón fut.  A szolgáltatás hitelesítő adatai alapértelmezés szerint az Express telepítésekben vannak beállítva, de a szervezeti biztonsági követelményeknek megfelelően testreszabhatók.  Ezek a hitelesítő adatok nem használják a helyszíni erdőkhöz vagy az Azure Active Directoryhoz való csatlakozáshoz.
 
-Kiválasztása az ADSync szolgáltatás fiók egy fontos tervezési döntés, az Azure AD Connect telepítése előtt.  Bármely próbálja meg a hitelesítő adatok módosítása után a telepítés indul el, hogy a szolgáltatás nem eredményez a szinkronizálási adatbázishoz való hozzáférés elvesztése, és a csatlakoztatott címtárak (az Azure és az AD DS) hitelesítése sikertelen.  Szinkronizálás nem fog előfordulni, amíg nem állítja vissza az eredeti hitelesítő.
+Az ADSync szolgáltatásfiók kiválasztása fontos tervezési döntés az Azure AD Connect telepítése előtt.  A hitelesítő adatok telepítés utáni módosítására tett minden kísérlet azt eredményezi, hogy a szolgáltatás nem indul el, elveszíti a hozzáférést a szinkronizálási adatbázishoz, és nem hitelesíti a csatlakoztatott könyvtárakat (Azure és AD DS).  Nem történik szinkronizálás, amíg az eredeti hitelesítő adatok vissza nem állnak.
 
-## <a name="the-default-adsync-service-account"></a>Az alapértelmezett ADSync szolgáltatás fiók
+## <a name="the-default-adsync-service-account"></a>Az alapértelmezett ADSync szolgáltatásfiók
 
-Ha futtatja azon a tagkiszolgálón, egy virtuális szolgáltatás fiókja (Szállítóspecifikus) környezetében fut, az AdSync szolgáltatást.  Termékkel kapcsolatos korlátozás miatt egyéni szolgáltatásfiókot a tartományvezérlőn telepítésekor jön létre.  Ha a fiók Express beállítások nem felel meg a szervezeti biztonsági követelmények, üzembe helyezése az Azure AD Connect a Testreszabás beállítás kiválasztásával.  Ezután válassza ki a szolgáltatás fiók lehetőséget, amely megfelel a szervezet követelményeinek.
+Ha tagkiszolgálón fut, az AdSync szolgáltatás egy virtuális szolgáltatásfiók (VSA) környezetében fut.  Termékkorlát miatt a rendszer egyéni szolgáltatásfiókot hoz létre, ha tartományvezérlőre telepíti.  Ha az Express settings szolgáltatásfiók nem felel meg a szervezeti biztonsági követelményeknek, telepítse az Azure AD Connectet a Testreszabás lehetőség kiválasztásával.  Ezután válassza ki a szolgáltatásfiók lehetőséget, amely megfelel a szervezet követelményeinek.
 
 >[!NOTE]
->Az alapértelmezett szolgáltatásfiók tartományvezérlőn telepítve van az űrlap Domain\AAD_InstallationIdentifier.  Ez a fiók jelszavát egy véletlenszerűen generált, és a helyreállítási és a jelszó Elforgatás jelentős kihívásokat jelent.  A Microsoft javasolja, hogy egy tartományvezérlőn vagy egy önálló vagy csoportos felügyelt szolgáltatásfiók kezdeti telepítése során a szolgáltatás fiók testreszabása (önállóan felügyelt szolgáltatásfiókot vagy csoportosan felügyelt szolgáltatásfiók)
+>A tartományvezérlőre telepített alapértelmezett szolgáltatásfiók a Tartomány\AAD_InstallationIdentifier.  A fiók jelszava véletlenszerűen jön létre, és jelentős kihívást jelent a helyreállítás és a jelszó elforgatása számára.  A Microsoft azt javasolja, hogy a szolgáltatásfiókot a tartományvezérlőn történő első telepítés során testre szabják önálló vagy csoport felügyelt szolgáltatásfiók (sMSA / gMSA) használatához.
 
-|Az Azure AD Connect helye|A szolgáltatásfiók létrehozása|
+|Az Azure AD Connect helye|Létrehozott szolgáltatásfiók|
 |-----|-----|
-|Tagkiszolgáló|NT SERVICE\ADSync|
-|Tartományvezérlő|Domain\AAD_74dc30c01e80 (see note)|
+|Tagkiszolgáló|Nt SZOLGÁLTATÁS\ADSync|
+|Tartományvezérlő|Tartomány\AAD_74dc30c01e80 (lásd a megjegyzést)|
 
-## <a name="custom-adsync-service-accounts"></a>Egyéni ADSync szolgáltatás fiókok
-A Microsoft javasolja az ADSync futó keretén belül egy virtuális szolgáltatásfiókot vagy egy különálló szolgáltatás, vagy csoportosan felügyelt szolgáltatásfiók.  A tartományi rendszergazda is lehetőség, hogy hozzon létre egy szolgáltatás-fiókot létrehozni, hogy az adott szervezeti biztonsági követelményeknek.   Testre szabhatja a telepítés során használt szolgáltatásfiók, válassza a Gyorsbeállítások oldalon testreszabás lehetőséget.   A következő lehetőségek közül választhat:
+## <a name="custom-adsync-service-accounts"></a>Egyéni ADSync szolgáltatásfiókok
+A Microsoft azt javasolja, hogy az ADSync szolgáltatást virtuális szolgáltatásfiók vagy önálló vagy csoportfelügyelt szolgáltatásfiók környezetében futassa.  A tartományi rendszergazda dönthet úgy is, hogy létrehoz egy szolgáltatási fiókot, amely megfelel az adott szervezeti biztonsági követelményeknek.   A telepítés során használt szolgáltatásfiók testreszabásához válassza az alábbi Gyorsbeállítások lap Testreszabás jelölőnégyzetét.   A következő beállítások érhetők el:
 
-- alapértelmezett fiók – az Azure AD Connect kiépíti a fent leírt szolgáltatásfiók
-- felügyelt szolgáltatásfiók – önálló vagy csoportos msa-t a rendszergazda által kiosztott
-- tartományi fiók – a rendszergazda által üzembe helyezett egy tartomány szolgáltatásfiók használata
+- alapértelmezett fiók – Az Azure AD Connect a fent leírt módon építi ki a szolgáltatási fiókot
+- kezelt szolgáltatásfiók – a rendszergazda által kiépített önálló vagy csoportos MSA-t használja
+- tartományi fiók – a rendszergazda által kiépített tartományszolgáltatás-fiók használata
 
 ![](media/concept-adsync-service-account/adsync1.png)
 
 ![](media/concept-adsync-service-account/adsync2.png)
 
-## <a name="diagnosing-adsync-service-account-changes"></a>Diagnosztizálás ADSync szolgáltatás fiókmódosítások
-Az ADSync szolgáltatás hitelesítő adatai követően a telepítés indul el, hogy a szolgáltatás nem eredményez a szinkronizálási adatbázishoz való hozzáférés elvesztése, és a módosítása való (az Azure és az AD DS) a csatlakoztatott címtárakkal való hitelesítése sikertelen volt.  Az ADSync új szolgáltatásfiók való hozzáférést adatbázis nem elegendő a probléma megoldásához. Szinkronizálás nem fog előfordulni, amíg nem állítja vissza az eredeti hitelesítő.
+## <a name="diagnosing-adsync-service-account-changes"></a>Az ADSync szolgáltatásfiók változásainak diagnosztizálása
+Az ADSync szolgáltatás hitelesítő adatainak módosítása a telepítés után azt eredményezi, hogy a szolgáltatás nem indul el, elveszíti a hozzáférést a szinkronizálási adatbázishoz, és nem hitelesíti a csatlakoztatott könyvtárakat (Azure és AD DS).  Az új ADSync szolgáltatásfiók hoz való adatbázis-hozzáférés megadása nem elegendő a probléma helyreállításához. Nem történik szinkronizálás, amíg az eredeti hitelesítő adatok vissza nem állnak.
 
-Az ADSync szolgáltatást fog kiadni az Eseménynapló-szolgáltatói hibaüzenet, ha nem tudja elindítani.  Az üzenet tartalmától függ attól függően, hogy a beépített adatbázissal (localdb) vagy a teljes funkciókészletű SQL az használatban van.  A következő példák az eseménynapló-bejegyzéseket, amelyek jelen lehet.
+Az ADSync szolgáltatás hibaszintű üzenetet küld az eseménynaplónak, ha nem tud elindulni.  Az üzenet tartalma attól függően változik, hogy a beépített adatbázis (localdb) vagy a teljes SQL használatban van-e.  Az alábbi példák példákat mutatjuk be az eseménynapló-bejegyzésekre, amelyek jelen lehetnek.
 
-### <a name="example-1"></a>1\. példa
+### <a name="example-1"></a>1. példa
 
-Az AdSync szolgáltatás titkosítási kulcsok nem található, és újból létrejött.  Szinkronizálási probléma kijavításáig nem történik.
+Az AdSync szolgáltatás titkosítási kulcsai nem találhatók, és újra létrehozták őket.  A probléma kijavításáig nem történik szinkronizálás.
 
-Ez a probléma a Microsoft Azure AD Sync hibaelhárítási titkosítási kulcsok elérhetetlenné válik, ha a AdSync szolgáltatás bejelentkezési hitelesítő adatok módosításakor.  Ha a hitelesítő adatok megváltoztak, a szolgáltatások alkalmazás használatával állítsa vissza a bejelentkezési fiókja az eredetileg megadott értékét (például) NT SERVICE\AdSync), és indítsa újra a szolgáltatást.  A művelettel visszaállítja a megfelelő műveletet az AdSync szolgáltatás azonnal.
+A probléma elhárításával kapcsolatos hiba elhárítása A Microsoft Azure AD Sync titkosítási kulcsai elérhetetlenné válnak, ha az AdSync szolgáltatás bejelentkezési hitelesítő adatai megváltoznak.  Ha a hitelesítő adatok megváltoztak, a Szolgáltatások alkalmazás segítségével módosítsa a Bejelentkezési fiókot az eredetileg beállított értékre (pl. NT SERVICE\AdSync) és indítsa újra a szolgáltatást.  Ez azonnal visszaállítja az AdSync szolgáltatás helyes működését.
 
-Tekintse át a következő [cikk](https://go.microsoft.com/fwlink/?linkid=2086764) találhat további információt.
+További információt a következő [cikkben](https://go.microsoft.com/fwlink/?linkid=2086764) talál.
 
-### <a name="example-2"></a>2\. példa
+### <a name="example-2"></a>2. példa
 
-A szolgáltatás nem tudta elindítani, mert nem sikerült létrehozni a helyi adatbázis (localdb) kapcsolatot.
+A szolgáltatás nem tudott elindulni, mert nem sikerült kapcsolatot létesíteni a helyi adatbázissal (localdb).
 
-Ez a probléma a Microsoft Azure AD Sync szolgáltatás hibaelhárítása elveszíti a hozzáféréssel a helyi adatbázis-szolgáltató, ha az AdSync szolgáltatás bejelentkezési hitelesítő adatok megváltoznak.  Ha a hitelesítő adatok megváltoztak a szolgáltatások alkalmazás használatával állítsa vissza a bejelentkezési fiókja az eredetileg megadott értékét (például) NT SERVICE\AdSync), és indítsa újra a szolgáltatást.  A művelettel visszaállítja a megfelelő műveletet az AdSync szolgáltatás azonnal.
+A probléma elhárításának elhárítása A Microsoft Azure AD Sync szolgáltatás elveszíti a helyi adatbázis-szolgáltató elérésére vonatkozó engedélyét, ha az AdSync szolgáltatás bejelentkezési hitelesítő adatai megváltoznak.  Ha a hitelesítő adatok megváltoztak, használja a Szolgáltatások alkalmazást, hogy módosítsa a Bejelentkezési fiókot az eredetileg beállított értékre (pl. NT SERVICE\AdSync) és indítsa újra a szolgáltatást.  Ez azonnal visszaállítja az AdSync szolgáltatás helyes működését.
 
-Tekintse át a következő [cikk](https://go.microsoft.com/fwlink/?linkid=2086764) találhat további információt.
+További információt a következő [cikkben](https://go.microsoft.com/fwlink/?linkid=2086764) talál.
 
-További részletek a szolgáltató által visszaadott hiba a következőket:
+További részletek A szolgáltató a következő hibainformációt adta vissza:
  
 
 ``` 

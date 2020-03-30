@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: bejelentkezés beállítása egyoldalas alkalmazáshoz (SPA)'
+title: 'Rövid útmutató: Bejelentkezés beállítása egyoldalas alkalmazáshoz (SPA)'
 titleSuffix: Azure AD B2C
-description: Ebben a rövid útmutatóban egy olyan minta egyoldalas alkalmazást futtathat, amely Azure Active Directory B2Ct használ a fiókok bejelentkezésének biztosításához.
+description: Ebben a rövid útmutatóban futtasson egy minta egyoldalas alkalmazást, amely az Azure Active Directory B2C használatával biztosítja a fiókbejelentkezést.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,26 +12,26 @@ ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a5d4319f47530a91bcceb9b2dba94c6aa8e4c388
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78183890"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rövid útmutató: Bejelentkezés beállítása egyoldalas alkalmazáshoz az Azure Active Directory B2C használatával
 
-A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vállalkozások és az ügyfelek védelmét a Felhőbeli identitások kezelésével. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon. Ebben a rövid útmutatóban egy egyoldalas alkalmazással és egy közösségi identitásszolgáltatóval fog bejelentkezni, és meghív egy, az Azure AD B2C által védett webes API-t.
+Az Azure Active Directory B2C (Azure AD B2C) felhőalapú identitáskezelést biztosít az alkalmazás, az üzleti és az ügyfelek védelme érdekében. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon. Ebben a rövid útmutatóban egy egyoldalas alkalmazással és egy közösségi identitásszolgáltatóval fog bejelentkezni, és meghív egy, az Azure AD B2C által védett webes API-t.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Visual Studio 2019](https://www.visualstudio.com/downloads/) a **ASP.net és a webes fejlesztési** számítási feladattal
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) a **ASP.NET és a webfejlesztési** munkaterhelés
 - [Node.js](https://nodejs.org/en/download/)
-- Facebook-, Google-vagy Microsoft-beli közösségi fiók
-- Mintakód a GitHubról: [Active-Directory-B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+- Közösségi fiók a Facebookról, a Google-tól vagy a Microsofttól
+- Kódminta a GitHubról: [active-directory-b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
 
-    [Letöltheti a zip-archívumot](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) vagy klónozást készíthet a tárházból:
+    [Letöltheti a zip archívumot,](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) vagy klónozhatja a tárolót:
 
     ```
     git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
@@ -59,15 +59,15 @@ A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vál
 
 1. A munkafolyamat indításához kattintson a **bejelentkezési** gombra.
 
-    ![Egy egyoldalas alkalmazás mintája a böngészőben megjelenítve](./media/quickstart-single-page-app/sample-app-spa.png)
+    ![Egyoldalas alkalmazásminta alkalmazás a böngészőben](./media/quickstart-single-page-app/sample-app-spa.png)
 
-    A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ebben a rövid útmutatóban a Facebook, a Google vagy a Microsoft által használt közösségi identitás-szolgáltatói fiókot használhatja.
+    A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ehhez a rövid útmutatóhoz használjon közösségi identitásszolgáltatói fiókot a Facebookról, a Google-ról vagy a Microsofttól.
 
-2. A Azure AD B2C egy Fabrikam nevű fiktív cég bejelentkezési oldalát jeleníti meg a minta webalkalmazáshoz. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
+2. Az Azure AD B2C egy fabrikam nevű fiktív cég bejelentkezési lapját mutatja be a mintawebalkalmazáshoz. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
 
-    ![Jelentkezzen be vagy regisztráljon az Identity Provider gombjait megjelenítő oldalra](./media/quickstart-single-page-app/sign-in-or-sign-up-spa.png)
+    ![Bejelentkezés vagy Bejelentkezés lap az identitásszolgáltató gombjaival](./media/quickstart-single-page-app/sign-in-or-sign-up-spa.png)
 
-    A hitelesítéshez (bejelentkezéshez) használja a közösségi fiók hitelesítő adatait, és engedélyezze az alkalmazásnak, hogy beolvassa az adatokat a közösségi fiókból. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését.
+    A közösségi fiók hitelesítő adataival hitelesíti (bejelentkezik), és engedélyezi az alkalmazásszámára, hogy adatokat olvasson be a közösségi fiókjából. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését.
 
 3. Fejezze be az identitásszolgáltató bejelentkezési folyamatát.
 
@@ -75,7 +75,7 @@ A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vál
 
 Kattintson a **webes API-t meghívó** gombra a megjelenítendő név JSON-objektumként való visszaadásához a webes API meghívásából.
 
-![Példa a webes API-választ megjelenítő böngészőben elérhető alkalmazásra](./media/quickstart-single-page-app/call-api-spa.png)
+![Mintaalkalmazás a böngészőben a webes API-választ megjelenítő](./media/quickstart-single-page-app/call-api-spa.png)
 
 Az egyoldalas mintaalkalmazás a védett webes API-erőforrás felé küldött kérésbe belefoglal egy hozzáférési jogkivonatot.
 
@@ -85,12 +85,12 @@ Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útm
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy mintául szolgáló egyoldalas alkalmazást használt a következőre:
+Ebben a rövid útmutatóban egy mintaegyoldalas alkalmazást használt a következőkre:
 
-* Bejelentkezés egyéni bejelentkezési oldallal
-* Jelentkezzen be egy közösségi identitás-szolgáltatóval
-* Azure AD B2C fiók létrehozása
-* Azure AD B2C által védett webes API meghívása
+* Bejelentkezés egyéni bejelentkezési lappal
+* Bejelentkezés közösségi identitásszolgáltatóval
+* Azure AD B2C-fiók létrehozása
+* Az Azure AD B2C által védett webes API hívása
 
 Most már hozzákezdhet saját Azure AD B2C-bérlőjének létrehozásához.
 

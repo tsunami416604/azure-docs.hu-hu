@@ -1,6 +1,6 @@
 ---
-title: A Azure Data Lake Storage Gen1 biztonságának áttekintése | Microsoft Docs
-description: Ismerje meg, hogyan Azure Data Lake Storage Gen1 a biztonságos big data áruház
+title: Az Azure Data Lake Storage Gen1 biztonságának áttekintése | Microsoft dokumentumok
+description: Ismerje meg, hogy az Azure Data Lake Storage Gen1 hogyan biztonságosabb big data tároló
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75974576"
 ---
-# <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság a Azure Data Lake Storage Gen1
-Számos vállalat kihasználja a big data Analytics for Business-elemzéseket, amelyek segítségével intelligens döntéseket hozhat. Egy szervezet összetett és szabályozott környezettel rendelkezik, amely egyre több különböző felhasználót tartalmaz. Létfontosságú, hogy a vállalat gondoskodjon arról, hogy a kritikus fontosságú üzleti adatok tárolása biztonságosabb legyen, az egyes felhasználók számára biztosított megfelelő hozzáférési szinttel. Azure Data Lake Storage Gen1 úgy lett kialakítva, hogy segítse a biztonsági követelmények teljesítését. Ebben a cikkben megismerheti a Data Lake Storage Gen1 biztonsági képességeit, beleértve a következőket:
+# <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság az Azure Data Lake Storage gen1-ben
+Számos vállalat kihasználja a big data-elemzés előnyeit az üzleti elemzések hez, hogy intelligens döntéseket hozhassanak. Egy szervezet összetett és szabályozott környezettel rendelkezhet, és egyre több különböző felhasználó vala. A vállalat számára létfontosságú, hogy a kritikus fontosságú üzleti adatok biztonságosabb anamtizálva, az egyes felhasználók számára biztosított megfelelő hozzáférési szinttel legyen ek. Az Azure Data Lake Storage Gen1 célja, hogy segítsen megfelelni ezeknek a biztonsági követelményeknek. Ebben a cikkben ismerje meg a Data Lake Storage Gen1 biztonsági képességeit, többek között a következőket:
 
 * Hitelesítés
 * Engedélyezés
@@ -28,88 +28,88 @@ Számos vállalat kihasználja a big data Analytics for Business-elemzéseket, a
 * Adatvédelem
 * Naplózás
 
-## <a name="authentication-and-identity-management"></a>Hitelesítés és Identitáskezelés
-A hitelesítés az a folyamat, amellyel a felhasználó identitása ellenőrizhető, ha a felhasználó a Data Lake Storage Gen1 vagy bármely olyan szolgáltatással kommunikál, amely kapcsolódik Data Lake Storage Gen1hoz. Az Identitáskezelés és a hitelesítés esetében Data Lake Storage Gen1 a [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), egy átfogó identitás-és hozzáférés-kezelési felhőalapú megoldást használ, amely leegyszerűsíti a felhasználók és csoportok felügyeletét.
+## <a name="authentication-and-identity-management"></a>Hitelesítés és identitáskezelés
+A hitelesítés az a folyamat, amelynek során a felhasználó identitását ellenőrzi, ha a felhasználó kommunikál a Data Lake Storage Gen1 vagy bármely szolgáltatás, amely csatlakozik a Data Lake Storage Gen1. Az identitáskezelés és -hitelesítés érdekében a Data Lake Storage Gen1 az [Azure Active Directoryt](../active-directory/fundamentals/active-directory-whatis.md)használja, amely egy átfogó identitás- és hozzáférés-kezelési felhőmegoldás, amely leegyszerűsíti a felhasználók és csoportok kezelését.
 
-Minden Azure-előfizetés társítható Azure Active Directory egy példányával. Csak a Azure Active Directory szolgáltatásban definiált felhasználók és szolgáltatások férhetnek hozzá a Data Lake Storage Gen1-fiókhoz a Azure Portal, parancssori eszközök vagy a szervezet által az Data Lake használatával létrehozott ügyfélalkalmazások használatával. Storage Gen1 SDK. A Azure Active Directory központi hozzáférés-vezérlési mechanizmusként való használatának fő előnyei a következők:
+Minden Azure-előfizetés társítható az Azure Active Directory egy példányához. Csak az Azure Active Directory szolgáltatásban definiált felhasználók és szolgáltatásidentitások férhetnek hozzá a Data Lake Storage Gen1 fiókhoz az Azure Portalon, a parancssori eszközökön vagy a szervezet által a Data Lake használatával építkező ügyfélalkalmazásokon keresztül. Tároló Gen1 SDK. Az Azure Active Directory központosított hozzáférés-vezérlési mechanizmusként való használatának fő előnyei a következők:
 
-* Egyszerűsített identitás-életciklus kezelése. Egy felhasználó vagy szolgáltatás (egyszerű szolgáltatásnév) identitása gyorsan létrehozható és gyorsan visszavonható, ha egyszerűen törli vagy letiltja a fiókot a címtárban.
-* Multi-Factor Authentication. A [többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md) további biztonsági réteget biztosít a felhasználói bejelentkezések és tranzakciók számára.
+* Egyszerűsített identitáséletciklus-kezelés. A felhasználó vagy a szolgáltatás (egyszerű szolgáltatásidentitás) identitása gyorsan létrehozható és visszavonható a fiók egyszerű törlésével vagy letiltásával a címtárban.
+* Többtényezős hitelesítés. [A többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md) további biztonsági réteget biztosít a felhasználói bejelentkezések és tranzakciók számára.
 * Hitelesítés bármely ügyféltől egy szabványos nyílt protokollon keresztül, például OAuth vagy OpenID.
-* Összevonás az Enterprise Directory Services és a Cloud Identity Providers szolgáltatással.
+* Összevonás vállalati címtárszolgáltatásokkal és felhőalapú identitásszolgáltatókkal.
 
-## <a name="authorization-and-access-control"></a>Engedélyezési és hozzáférés-vezérlés
-Miután Azure Active Directory hitelesíti a felhasználót, hogy a felhasználó hozzáférhessen a Data Lake Storage Gen1hoz, az engedélyezés szabályozza a Data Lake Storage Gen1 hozzáférési engedélyeit. A Data Lake Storage Gen1 a következő módon választja el a fiókkal kapcsolatos és az adathoz kapcsolódó tevékenységek engedélyezését:
+## <a name="authorization-and-access-control"></a>Engedélyezés és hozzáférés-vezérlés
+Miután az Azure Active Directory hitelesíti a felhasználót, hogy a felhasználó hozzáférhessen a Data Lake Storage Gen1-hez, az engedélyezés szabályozza a Data Lake Storage Gen1 hozzáférési engedélyeit. A Data Lake Storage Gen1 a következő módon választja el a fiókkal kapcsolatos és az adatokkal kapcsolatos tevékenységek engedélyezését:
 
-* Az Azure által biztosított [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a fiókok felügyeletéhez
-* Az áruházban tárolt adatok elérésére szolgáló POSIX ACL
+* Az Azure által [fiókkezeléshez biztosított szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC)
+* POSIX ACL az adatok eléréséhez az üzletben
 
-### <a name="rbac-for-account-management"></a>RBAC
-Alapértelmezés szerint négy alapszintű szerepkör van definiálva Data Lake Storage Gen1hoz. A szerepkörök a Azure Portal, a PowerShell-parancsmagok és a REST API-k használatával engedélyezhetik a különböző műveleteket egy Data Lake Storage Gen1 fiókon. A tulajdonos és a közreműködő szerepkör számos felügyeleti funkciót képes végrehajtani a fiókon. Az olvasó szerepkört hozzárendelheti azokhoz a felhasználókhoz, akik csak a fiókkezelés-adatbázisokat tekintik meg.
+### <a name="rbac-for-account-management"></a>RBAC a fiókkezeléshez
+Alapértelmezés szerint négy alapvető szerepkör van definiálva a Data Lake Storage Gen1-hez. A szerepkörök különböző műveleteket engedélyeznek egy Data Lake Storage Gen1-fiókon az Azure Portalon, a PowerShell-parancsmagokon és a REST API-kon keresztül. A tulajdonosi és közreműködői szerepkörök számos felügyeleti funkciót végezhetnek a fiókban. Az Olvasó szerepkört olyan felhasználókhoz rendelheti, akik csak a fiókkezelési adatokat tekintik meg.
 
-![RBAC szerepkörei](./media/data-lake-store-security-overview/rbac-roles.png "RBAC szerepkörei")
+![RBAC-szerepkörök](./media/data-lake-store-security-overview/rbac-roles.png "RBAC-szerepkörök")
 
-Vegye figyelembe, hogy bár a szerepkörök hozzá vannak rendelve a fiókok felügyeletéhez, egyes szerepkörök hatással vannak az adathozzáférésre. Az ACL-eket kell használnia a felhasználók által a fájlrendszeren végrehajtható műveletekhez való hozzáférés vezérléséhez. Az alábbi táblázat az alapértelmezett szerepkörökhöz tartozó felügyeleti jogosultságokat és adathozzáférési jogosultságokat tartalmazza.
+Vegye figyelembe, hogy bár a szerepkörök fiókkezeléshez vannak rendelve, egyes szerepkörök hatással vannak az adatokhoz való hozzáférésre. A fájlrendszeren végrehajtható műveletekhez való hozzáférés szabályozásához a hozzáférés szabályozásához a hozzáférés szabályozásához a hozzáférés szükséges. Az alábbi táblázat az alapértelmezett szerepkörök kezelési jogainak és adathozzáférési jogainak összegzését mutatja be.
 
-| Szerepkörök | Felügyeleti jogosultságok | Adathozzáférési jogosultságok | Magyarázat |
+| Szerepkörök | Kezelési jogok | Adatelérési jogok | Magyarázat |
 | --- | --- | --- | --- |
-| Nincs hozzárendelt szerepkör |None |Az ACL szabályozza |A felhasználó nem használhatja a Azure Portal vagy Azure PowerShell parancsmagot a Data Lake Storage Gen1 tallózásához. A felhasználó csak parancssori eszközöket tud használni. |
-| Tulajdonos |Mind |Mind |A tulajdonosi szerepkör a rendszergazda. Ez a szerepkör mindent tud kezelni, és teljes hozzáféréssel rendelkezik az összes adathoz. |
-| Olvasó |Csak olvasás |Az ACL szabályozza |Az olvasó szerepkör mindent megtekinthet a fiókok kezelésével kapcsolatban, például azt, hogy melyik felhasználóhoz van hozzárendelve a szerepkör. Az olvasó szerepkör nem végezhet módosításokat. |
-| Közreműködő |A Szerepkörök hozzáadása és eltávolítása kivételével |Az ACL szabályozza |A közreműködői szerepkör a fiókok bizonyos aspektusait képes kezelni, például a központi telepítéseket, valamint a riasztások létrehozását és kezelését. A közreműködő szerepkör nem tudja hozzáadni vagy eltávolítani a szerepköröket. |
-| Felhasználói hozzáférés rendszergazdája |Szerepkörök hozzáadása és eltávolítása |Az ACL szabályozza |A felhasználói hozzáférés rendszergazdai szerepköre kezelheti a felhasználói hozzáférést a fiókokhoz. |
+| Nincs hozzárendelve szerepkör |None |Az ACL által szabályozott |A felhasználó nem használhatja az Azure Portalon vagy az Azure PowerShell-parancsmagokkal a Data Lake Storage Gen1 tallózására. A felhasználó csak parancssori eszközöket használhat. |
+| Tulajdonos |Összes |Összes |A tulajdonos szerepkör egy rendszergazda. Ez a szerepkör mindent kezelhet, és teljes hozzáféréssel rendelkezik az adatokhoz. |
+| Olvasó |Csak olvasható |Az ACL által szabályozott |Az Olvasó szerepkör megtekintheti a fiókkezeléssel kapcsolatos mindent, például azt, hogy melyik felhasználó melyik szerepkörhöz van rendelve. Az Olvasó szerepkör nem hajt végre módosításokat. |
+| Közreműködő |Az összes, kivéve a szerepkörök hozzáadását és eltávolítását |Az ACL által szabályozott |A közreműködői szerepkör kezelheti a fiók bizonyos aspektusait, például a központi telepítéseket, valamint a riasztások létrehozását és kezelését. A közreműködői szerepkör nem tud szerepköröket hozzáadni vagy eltávolítani. |
+| Felhasználói hozzáférés rendszergazdája |Szerepkörök hozzáadása és eltávolítása |Az ACL által szabályozott |A Felhasználói hozzáférés rendszergazdája szerepkör kezelheti a fiókokhoz való felhasználói hozzáférést. |
 
-Útmutatásért lásd: [felhasználók vagy biztonsági csoportok társítása Data Lake Storage Gen1-fiókokhoz](data-lake-store-secure-data.md#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts).
+További információt a [Felhasználók vagy biztonsági csoportok hozzárendelése a Data Lake Storage Gen1 fiókokhoz (Felhasználók vagy biztonsági csoportok hozzárendelése 1. fiókhoz) témakörben talál.](data-lake-store-secure-data.md#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
 
-### <a name="using-acls-for-operations-on-file-systems"></a>ACL-ek használata a fájlrendszerek műveleteihez
-Data Lake Storage Gen1 hierarchikus fájlrendszer, például Hadoop elosztott fájlrendszer (HDFS), és támogatja a [POSIX ACL-eket](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Az olvasás (r), a Write (w) és a Execute (x) engedélyeket vezérli a tulajdonosi szerepkör, a tulajdonosok csoport, valamint más felhasználók és csoportok erőforrásaihoz. Data Lake Storage Gen1 az ACL-ek engedélyezhetők a gyökérkönyvtárban, az almappákban és az egyes fájlokban is. Az ACL-ek Data Lake Storage Gen1 környezetében való működésével kapcsolatos további információkért lásd: [Data Lake Storage Gen1 hozzáférés-vezérlése](data-lake-store-access-control.md).
+### <a name="using-acls-for-operations-on-file-systems"></a>AcL-k használata a fájlrendszereken végzett műveletekhez
+A Data Lake Storage Gen1 egy hierarchikus fájlrendszer, mint a Hadoop Distributed File System (HDFS), és támogatja [a POSIX ACL-eket.](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists) Szabályozza az olvasási (r), írási (w) és végrehajtási (x) engedélyeket a Tulajdonos szerepkör, a Tulajdonosok csoport, valamint más felhasználók és csoportok számára. A Data Lake Storage Gen1-ben az ACL-ek engedélyezhetők a gyökérmappában, az almappákban és az egyes fájlokon. Az ACL-ek működéséről a Data Lake Storage Gen1 környezetében további információt a [Hozzáférés-vezérlés a Data Lake Storage Gen1 programban című témakörben talál.](data-lake-store-access-control.md)
 
-Azt javasoljuk, hogy a [biztonsági csoportok](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)használatával több felhasználó hozzáférés-vezérlési listáit is definiálja. Vegyen fel felhasználókat egy biztonsági csoportba, majd rendelje hozzá egy fájlhoz vagy mappához tartozó ACL-eket az adott biztonsági csoporthoz. Ez akkor hasznos, ha a hozzárendelt engedélyeket szeretné megadni, mert a hozzárendelt engedélyekhez legfeljebb 28 bejegyzés van korlátozva. Ha további információt szeretne arról, hogyan védheti meg az Data Lake Storage Gen1 tárolt adatokat Azure Active Directory biztonsági csoportok használatával, tekintse meg [a felhasználók vagy biztonsági csoport társítása ACL-ként a Data Lake Storage Gen1 fájlrendszerhez](data-lake-store-secure-data.md#filepermissions)című témakört.
+Azt javasoljuk, hogy biztonsági [csoportok](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)használatával adjon meg több felhasználószámára ACL-okat. Felhasználók hozzáadása egy biztonsági csoporthoz, majd egy fájl vagy mappa ACL-jainak hozzárendelése az adott biztonsági csoporthoz. Ez akkor hasznos, ha hozzárendelt engedélyeket szeretne megadni, mivel a hozzárendelt engedélyekhez legfeljebb 28 bejegyzés lehet. A Data Lake Storage Gen1 szolgáltatásban tárolt adatok Azure Active Directory biztonsági csoportjainak használatával történő hatékonyabb védelméről a [Felhasználók vagy biztonsági csoportok hozzárendelése a CL-ként a Data Lake Storage Gen1 fájlrendszerhez](data-lake-store-secure-data.md#filepermissions)című témakörben talál további információt.
 
 ![Hozzáférési engedélyek listázása](./media/data-lake-store-security-overview/adl.acl.2.png "Hozzáférési engedélyek listázása")
 
 ## <a name="network-isolation"></a>Hálózati elkülönítés
-A Data Lake Storage Gen1 segítségével szabályozhatja az adattárhoz való hozzáférést a hálózati szinten. Tűzfalat hozhat létre, és meghatározhatja a megbízható ügyfelek IP-címtartományt. Az IP-címtartomány csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak Data Lake Storage Gen1hoz.
+A Data Lake Storage Gen1 segítségével hálózati szinten szabályozhatja az adattárhoz való hozzáférést. Tűzfalakat hozhat létre, és ip-címtartományt határozhat meg a megbízható ügyfelek számára. IP-címtartomány esetén csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak a Data Lake Storage Gen1-hez.
 
-![Tűzfalbeállítások és IP-hozzáférés](./media/data-lake-store-security-overview/firewall-ip-access.png "Tűzfalbeállítások és IP-cím")
+![Tűzfal-beállítások és IP-hozzáférés](./media/data-lake-store-security-overview/firewall-ip-access.png "Tűzfal beállításai és IP-címe")
 
 ## <a name="data-protection"></a>Adatvédelem
-Data Lake Storage Gen1 a teljes életciklusában védi az adatait. Az átvitt adatforgalomban a Data Lake Storage Gen1 az iparági szabványnak megfelelő Transport Layer Security (TLS 1,2) protokollt használja az adat hálózaton keresztüli biztonságossá tételéhez.
+A Data Lake Storage Gen1 az adatok teljes életciklusa során védelmet nyújt. Az átvitel alatt álló adatok esetében a Data Lake Storage Gen1 az iparági szabványnak megfelelő Transport Layer Security (TLS 1.2) protokollt használja a hálózaton keresztüli adatok védelmére.
 
-![Titkosítás Data Lake Storage Gen1](./media/data-lake-store-security-overview/adls-encryption.png "Titkosítás Data Lake Storage Gen1")
+![Titkosítás a Data Lake Storage Gen1-ben](./media/data-lake-store-security-overview/adls-encryption.png "Titkosítás a Data Lake Storage Gen1-ben")
 
-A Data Lake Storage Gen1 a fiókban tárolt adathalmazok titkosítását is biztosítja. Dönthet úgy, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélküli lehetőséget. Ha a titkosítást választja, a rendszer a Data Lake Storage Gen1 tárolt adatvédelmet az állandó adathordozón való tárolás előtt titkosítja. Ilyen esetben a Data Lake Storage Gen1 automatikusan titkosítja az adatok megtartását, és visszafejti azokat a lekérés előtt, így az adatokhoz hozzáférő ügyfél teljesen átlátható marad. Az ügyfél oldalán nincs szükség a kód módosítására az adattitkosításhoz/visszafejtéshez.
+A Data Lake Storage Gen1 titkosítást is biztosít a fiókban tárolt adatokhoz. Dönthet úgy, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélküli lehetőséget. Ha engedélyezi a titkosítást, a Data Lake Storage Gen1-ben tárolt adatok titkosítva vannak az állandó adathordozón való tárolás előtt. Ebben az esetben a Data Lake Storage Gen1 automatikusan titkosítja az adatokat a megpersistnivaló előtt, és visszafejti az adatokat a lekérés előtt, így teljesen átlátható az adatokhoz hozzáférő ügyfél számára. Az ügyféloldalon nincs szükség kódmódosításra az adatok titkosításához/visszafejtéséhez.
 
-A kulcskezelő szolgáltatásban a Data Lake Storage Gen1 két módot biztosít a fő titkosítási kulcsok (MEKs) kezelésére, amelyek a Data Lake Storage Gen1 tárolt adatok visszafejtéséhez szükségesek. Data Lake Storage Gen1 kezelheti a MEKs, vagy dönthet úgy, hogy megőrzi a MEKs tulajdonjogát a Azure Key Vault-fiók használatával. Data Lake Storage Gen1 fiók létrehozásakor megadhatja a kulcskezelő módot. További információ a titkosítással kapcsolatos konfiguráció megadásáról: [az Azure Data Lake Storage Gen1 használatának első lépései az Azure Portalon](data-lake-store-get-started-portal.md).
+A kulcskezeléshez a Data Lake Storage Gen1 két módot biztosít a fő titkosítási kulcsok (MEKs) kezelésére, amelyek a Data Lake Storage Gen1-ben tárolt adatok visszafejtéséhez szükségesek. A Data Lake Storage Gen1 kezelheti a MEK-ket, vagy dönthet úgy, hogy az Azure Key Vault-fiókjával megtartja a MEK-k tulajdonjogát. A Data Lake Storage Gen1 fiók létrehozásakor adja meg a kulcskezelés módját. A titkosítással kapcsolatos konfigurációk biztosításáról az [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával című témakörben](data-lake-store-get-started-portal.md)talál további információt.
 
 ## <a name="activity-and-diagnostic-logs"></a>Tevékenység és diagnosztikai naplók
-Tevékenység-vagy diagnosztikai naplókat használhat, attól függően, hogy a fiókokat a fiókok felügyeletével kapcsolatos tevékenységekhez vagy az adathoz kapcsolódó tevékenységekhez szeretné-e naplózni.
+Tevékenység- vagy diagnosztikai naplókat használhat attól függően, hogy fiókkezelési tevékenységekhez vagy adatokkal kapcsolatos tevékenységekhez keres-e naplókat.
 
-* A fiókkezelés szolgáltatással kapcsolatos tevékenységek Azure Resource Manager API-kat használnak, és a Azure Portal a tevékenység naplófájljain keresztül vannak felszínben.
-* Az adatokkal kapcsolatos tevékenységek a WebHDFS REST API-kat használják, és a Azure Portal a diagnosztikai naplókon keresztül.
+* A fiókkezeléssel kapcsolatos tevékenységek az Azure Resource Manager API-kat használják, és a tevékenységnaplókon keresztül kerülnek felszínre az Azure Portalon.
+* Az adatokkal kapcsolatos tevékenységek webHDFS REST API-kat használnak, és diagnosztikai naplókon keresztül kerülnek felszínre az Azure Portalon.
 
 ### <a name="activity-log"></a>Tevékenységnapló
-A szabályozásoknak való megfelelés érdekében a szervezetnek a fiókok felügyeleti tevékenységeinek megfelelő naplózási nyomvonalat kell megkövetelni, ha adott incidensekre van szüksége. A Data Lake Storage Gen1 beépített figyeléssel rendelkezik, és naplózza az összes Fiókkezelés tevékenységet.
+A szabályozásoknak való megfelelés érdekében a szervezet nek megfelelő naplózási nyomvonalat kell végeznie a számlakezelési tevékenységekről, ha meghatározott incidensekbe kell ásnia. A Data Lake Storage Gen1 beépített figyeléssel rendelkezik, és naplózza az összes fiókkezelési tevékenységet.
 
-A Fiókkezelés naplózása elemnél tekintse meg és válassza ki a naplózni kívánt oszlopokat. A tevékenység-naplókat az Azure Storage-ba is exportálhatja.
+A fiókkezelési naplózási naplók esetében tekintse meg és válassza ki a naplózni kívánt oszlopokat. A tevékenységnaplókat az Azure Storage-ba is exportálhatja.
 
 ![Tevékenységnapló](./media/data-lake-store-security-overview/activity-logs.png "Tevékenységnapló")
 
-További információ a tevékenységi naplók használatáról: tevékenységek [naplóinak megtekintése az erőforrásokon végzett műveletek naplózása érdekében](../azure-resource-manager/management/view-activity-logs.md).
+A tevékenységnaplók kal kapcsolatos munkáról az [Erőforrásokkal kapcsolatos műveletek naplózásához szükséges tevékenységnaplók megtekintése című](../azure-resource-manager/management/view-activity-logs.md)témakörben talál további információt.
 
 ### <a name="diagnostics-logs"></a>Diagnosztikai naplók
-Engedélyezheti az adathozzáférés naplózását és a diagnosztikai naplózást a Azure Portalban, és elküldheti a naplókat egy Azure Blob Storage-fiókba, egy Event hub-ba vagy egy Azure Monitor naplóba.
+Engedélyezheti az adatok eléréséhez naplózásés diagnosztikai naplózás az Azure Portalon, és küldje el a naplókat egy Azure Blob storage-fiók, egy eseményközpont vagy az Azure Monitor naplók.
 
 ![Diagnosztikai naplók](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnosztikai naplók")
 
-A diagnosztikai naplók Data Lake Storage Gen1val való használatáról további információt a [diagnosztikai naplók Data Lake Storage Gen1hoz való hozzáférésével](data-lake-store-diagnostic-logs.md)foglalkozó témakörben talál.
+A data lake storage gen1 diagnosztikai naplókkal való együttműködésről a [Data Lake Storage Gen1 diagnosztikai naplóinak elérése című témakörben talál](data-lake-store-diagnostic-logs.md)további információt.
 
 ## <a name="summary"></a>Összefoglalás
-A nagyvállalati ügyfelek egy biztonságos és könnyen használható adatelemzési felhőalapú platformot igényelnek. A Data Lake Storage Gen1 úgy lett kialakítva, hogy az Identitáskezelés és a hitelesítés révén segítse ezeket a követelményeket Azure Active Directory integráció, ACL-alapú hitelesítés, hálózati elkülönítés, adattitkosítás az átvitelben és a nyugalmi állapotban, valamint a naplózás.
+A nagyvállalati ügyfelek biztonságos és könnyen használható adatelemzési felhőplatformot igényelnek. A Data Lake Storage Gen1 célja, hogy az Azure Active Directory-integráció, az ACL-alapú engedélyezés, a hálózati elkülönítés, az átvitel és nyugalom alatt tárolt adattitkosítás, valamint a naplózás révén segítsen kezelni ezeket a követelményeket.
 
-Ha a Data Lake Storage Gen1 új funkcióit szeretné megtekinteni, küldje el nekünk visszajelzését a [Data Lake Storage Gen1 UserVoice fórumban](https://feedback.azure.com/forums/327234-data-lake).
+Ha új funkciókat szeretne látni a Data Lake Storage Gen1-ben, küldje el visszajelzését a [Data Lake Storage Gen1 UserVoice fórumon.](https://feedback.azure.com/forums/327234-data-lake)
 
-## <a name="see-also"></a>Lásd még:
-* [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
-* [Ismerkedés a Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+## <a name="see-also"></a>Lásd még
+* [Az Azure Data Lake storage gen1 áttekintése](data-lake-store-overview.md)
+* [Ismerkedés a Data Lake Storage Gen1 szolgáltatással](data-lake-store-get-started-portal.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

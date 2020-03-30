@@ -1,96 +1,96 @@
 ---
-title: Azure IoT Central-alkalmazás exportálása | Microsoft Docs
-description: Megoldás-kezelőként exportálni szeretném az alkalmazás sablonját, hogy újra lehessen használni.
+title: Azure IoT Central alkalmazás exportálása | Microsoft dokumentumok
+description: Megoldáskezelőként szeretnék exportálni egy alkalmazássablont, hogy újra felhasználhassam.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b5c8f7fd1c87ce279a8edd39aacb332b8aef28be
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023446"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157617"
 ---
 # <a name="export-your-application"></a>Az alkalmazás exportálása
 
 
 
-Ez a cikk azt ismerteti, hogyan lehet a megoldás-kezelőként exportálni egy IoT Central alkalmazást, hogy újra lehessen használni.
+Ez a cikk ismerteti, hogyan, a megoldás kezelője, az IoT Central-alkalmazás exportálásához, hogy képes legyen újra feldolgozni.
 
 Erre két lehetősége van:
 
-- Létrehozhat egy másolatot az alkalmazásról, ha csak egy másolatot kell készítenie az alkalmazásról.
-- Ha több példányt szeretne létrehozni, létrehozhat egy alkalmazás-sablont az alkalmazásból.
+- Létrehozhat egy másolatot az alkalmazásról, ha csak egy másolatot kell létrehoznia az alkalmazásról.
+- Ha több példányt kíván létrehozni, az alkalmazásból is létrehozhat alkalmazássablont.
 
 ## <a name="copy-your-application"></a>Az alkalmazás másolása
 
-Létrehozhat egy másolatot bármely alkalmazásról, levonva az eszköz példányait, az eszköz adatelőzményeit és a felhasználói adatmennyiségeket. A másolás egy standard díjszabási csomagot használ, amelyért díjat kell fizetnie. Az ingyenes díjszabási csomagot használó alkalmazások nem hozhatók létre egy alkalmazás másolásával.
+Bármely alkalmazásról létrehozhat másolatot, levonva belőle az eszközpéldányokat, az eszközadat-előzményeket és a felhasználói adatokat. A másolat egy szabványos díjszabási csomagot használ, amelyért fizetni fog. Nem hozhat létre olyan alkalmazást, amely az ingyenes díjszabási csomagot használja egy alkalmazás másolásával.
 
-Válassza a **Másolás**lehetőséget. A párbeszédpanelen adja meg az új alkalmazás részleteit. Ezután a **Másolás** gombra kattintva erősítse meg, hogy folytatni kívánja. Ha többet szeretne megtudni az űrlap mezőiről, tekintse meg az [alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatót.
+Válassza a **Másolás** lehetőséget. A párbeszédpanelen adja meg az új alkalmazás adatait. Ezután a **Másolás gombra** a folytatás megerősítéséhez kattintson a másolás gombra. Ha többet szeretne tudni az űrlap mezőiről, olvassa el az [Alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutató című témakört.
 
 ![Alkalmazásbeállítások lap](media/howto-use-app-templates/appcopy2.png)
 
-Az alkalmazás másolási műveletének sikerességét követően az új alkalmazásra kattintva megnyithatja a hivatkozást.
+Miután az alkalmazás másolási művelete sikeres volt, a hivatkozás használatával navigálhat az új alkalmazáshoz.
 
 ![Alkalmazásbeállítások lap](media/howto-use-app-templates/appcopy3a.png)
 
-Az alkalmazások másolása a szabályok és az e-mail művelet definícióját is másolja. Bizonyos műveletek, például a flow és a Logic Apps a szabály-AZONOSÍTÓn keresztül vannak társítva meghatározott szabályokhoz. Ha egy szabályt egy másik alkalmazásba másolnak, az a saját szabály AZONOSÍTÓját kapja meg. Ebben az esetben a felhasználóknak új műveletet kell létrehozniuk, majd hozzá kell rendelniük az új szabályt. Általánosságban is érdemes ellenőrizni a szabályokat és a műveleteket, hogy biztosan naprakészek legyenek az új alkalmazásban.
+Az alkalmazás másolása a szabályok és az e-mail művelet definícióját is másolja. Egyes műveletek, például a Flow és a Logic Apps, a szabályazonosítón keresztül meghatározott szabályokhoz vannak kötve. Ha egy szabályt egy másik alkalmazásba másol, saját szabályazonosítót kap. Ebben az esetben a felhasználóknak létre kell hozniuk egy új műveletet, majd hozzá kell rendelniük az új szabályt. Általánosságban elmondható, hogy érdemes ellenőrizni a szabályokat és műveleteket, hogy megbizonyosodjon arról, hogy azok naprakészek az új alkalmazásban.
 
 > [!WARNING]
-> Ha az irányítópult olyan csempéket tartalmaz, amelyek adott eszközökre vonatkozó információkat jelenítenek meg, akkor ezek a csempék **a kért erőforrást nem találhatók** az új alkalmazásban. Ezeket a csempéket újra kell konfigurálnia az új alkalmazás eszközeivel kapcsolatos információk megjelenítéséhez.
+> Ha egy irányítópult olyan csempéket tartalmaz, amelyek adott eszközökre vonatkozó információkat jelenítenek meg, akkor ezek a csempék **a Kért erőforrás nem találhatók** az új alkalmazásban. Újra kell konfigurálnia ezeket a csempéket, hogy az új alkalmazásban lévő eszközökre vonatkozó információkat jelenítsen meg.
 
-## <a name="create-an-application-template"></a>Alkalmazás sablonjának létrehozása
+## <a name="create-an-application-template"></a>Alkalmazássablon létrehozása
 
-Azure IoT Central-alkalmazás létrehozásakor választhat a beépített sablonok közül. Saját alkalmazásokat is létrehozhat meglévő IoT Central alkalmazásokból. Az új alkalmazások létrehozásakor saját alkalmazás-sablonjait is használhat.
+Amikor létrehoz egy Azure IoT Central-alkalmazást, beépített mintasablonok közül választhat. Saját alkalmazássablonokat is létrehozhat a meglévő IoT Central-alkalmazásokból. Ezután használhatja a saját alkalmazássablonokat, amikor új alkalmazásokat hoz létre.
 
-Alkalmazás-sablon létrehozásakor a következő elemeket tartalmazza a meglévő alkalmazásból:
+Alkalmazássablon létrehozásakor a következő elemeket tartalmazza a meglévő alkalmazásból:
 
-- Az alkalmazás alapértelmezett irányítópultja, beleértve az irányítópult elrendezését és az összes definiált csempét.
-- Eszközök sablonjai, beleértve a méréseket, a beállításokat, a tulajdonságokat, a parancsokat és az irányítópultot.
-- Szabályok. A rendszer minden szabály-definíciót tartalmaz. Az e-mail-műveletek kivételével azonban nem tartalmazza a műveleteket.
-- Eszközök készletei, beleértve a feltételeket és az irányítópultokat.
+- Az alapértelmezett alkalmazás-irányítópult, beleértve az irányítópult elrendezését és az összes definiált csempét.
+- Eszközsablonok, beleértve a méréseket, a beállításokat, a tulajdonságokat, a parancsokat és az irányítópultot.
+- Szabályok. Minden szabálydefiníció szerepel. Az e-mailes műveletek kivételével azonban a műveletek nem szerepelnek.
+- Eszközkészletek, beleértve azok feltételeit és irányítópultjait.
 
 > [!WARNING]
-> Ha az irányítópult olyan csempéket tartalmaz, amelyek adott eszközökre vonatkozó információkat jelenítenek meg, akkor ezek a csempék **a kért erőforrást nem találhatók** az új alkalmazásban. Ezeket a csempéket újra kell konfigurálnia az új alkalmazás eszközeivel kapcsolatos információk megjelenítéséhez.
+> Ha egy irányítópult olyan csempéket tartalmaz, amelyek adott eszközökre vonatkozó információkat jelenítenek meg, akkor ezek a csempék **a Kért erőforrás nem találhatók** az új alkalmazásban. Újra kell konfigurálnia ezeket a csempéket, hogy az új alkalmazásban lévő eszközökre vonatkozó információkat jelenítsen meg.
 
-Alkalmazás sablonjának létrehozásakor az nem tartalmazza a következő elemeket:
+Alkalmazássablon létrehozásakor az nem tartalmazza a következő elemeket:
 
 - Eszközök
 - Felhasználók
 - Feladatdefiníciók
 - Folyamatos adatexportálási definíciók
 
-Ezeket az elemeket manuálisan adja hozzá az alkalmazás sablonból létrehozott összes alkalmazáshoz.
+Adja hozzá ezeket az elemeket manuálisan az alkalmazássablonból létrehozott alkalmazásokhoz.
 
-Alkalmazás sablonjának létrehozása meglévő IoT Central alkalmazásból:
+Alkalmazássablon létrehozása meglévő IoT Central-alkalmazásból:
 
-1. Nyissa meg az alkalmazás **Adminisztráció** szakaszát.
-1. Válassza az **alkalmazás sablon exportálás**lehetőséget.
-1. Az **alkalmazás sablonjának exportálása** lapon adja meg a sablon nevét és leírását.
-1. Válassza az **Exportálás** gombot az alkalmazás sablonjának létrehozásához. Most már másolhatja a **megosztható hivatkozást** , amely lehetővé teszi, hogy valaki új alkalmazást hozzon létre a sablonból:
+1. Nyissa meg az **alkalmazás Adminisztráció** szakaszát.
+1. Válassza **az Alkalmazássablon exportálása**lehetőséget.
+1. Az **Alkalmazássablon exportálása** lapon adja meg a sablon nevét és leírását.
+1. Az alkalmazássablon létrehozásához kattintson az **Exportálás** gombra. Most már másolhatja a **megosztható hivatkozást,** amely lehetővé teszi, hogy valaki új alkalmazást hozzon létre a sablonból:
 
-![Alkalmazás sablonjának létrehozása](media/howto-use-app-templates/create-template.png)
+![Alkalmazássablon létrehozása](media/howto-use-app-templates/create-template.png)
 
-### <a name="use-an-application-template"></a>Alkalmazás sablonjának használata
+### <a name="use-an-application-template"></a>Alkalmazássablon használata
 
-Ha új IoT Central alkalmazást szeretne létrehozni egy alkalmazás-sablonnal, egy korábban létrehozott **megosztható hivatkozásra**van szüksége. Illessze be a **megosztható hivatkozást** a böngésző címsorába. Megjelenik az **alkalmazás létrehozása** lap a kiválasztott egyéni alkalmazás sablonnal:
+Ha alkalmazássablont szeretne használni egy új IoT Central alkalmazás létrehozásához, egy korábban létrehozott **megosztható hivatkozásra**van szükség. Illessze be a **megosztható hivatkozást** a böngésző címsorába. Az **Alkalmazás létrehozása** lap az egyéni alkalmazássablon kijelölésével jelenik meg:
 
 ![Alkalmazás létrehozása sablonból](media/howto-use-app-templates/create-app.png)
 
-Válassza ki a díjszabási tervet, és töltse ki a többi mezőt az űrlapon. Ezután a **Létrehozás** gombra kattintva hozzon létre egy új IoT Central alkalmazást az alkalmazás sablonból.
+Válassza ki az árképzési tervet, és töltse ki az űrlap többi mezőjét. Ezután válassza **a Létrehozás** lehetőséget egy új IoT Central alkalmazás létrehozásához az alkalmazássablonból.
 
-### <a name="manage-application-templates"></a>Alkalmazás-sablonok kezelése
+### <a name="manage-application-templates"></a>Alkalmazássablonok kezelése
 
-Az **alkalmazás sablonjának exportálása** lapon törölheti vagy frissítheti az alkalmazás sablonját.
+Az **Alkalmazássablon exportálása** lapon törölheti vagy frissítheti az alkalmazássablont.
 
-Ha töröl egy alkalmazást, már nem használhatja a korábban létrehozott megosztható hivatkozást új alkalmazások létrehozásához.
+Ha töröl egy alkalmazássablont, a továbbiakban nem használhatja a korábban létrehozott megosztható hivatkozást új alkalmazások létrehozásához.
 
-Az alkalmazás sablonjának frissítéséhez módosítsa a sablon nevét vagy leírását az **alkalmazás sablon exportálása** lapon. Ezután kattintson ismét az **Exportálás** gombra. Ez a művelet létrehoz egy új **megosztható hivatkozást** , és érvényteleníti az előző **megosztható hivatkozás** URL-címét.
+Az alkalmazássablon frissítéséhez módosítsa a sablon nevét vagy leírását az **Alkalmazássablon exportálása** lapon. Ezután ismét válassza az **Exportálás** gombot. Ez a művelet új **megosztható hivatkozást** hoz létre, és érvényteleníti a korábbi **megosztható hivatkozás** URL-címét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az alkalmazás sablonjainak használatát, a javasolt következő lépés a [IoT Central kezelésének megismerése a Azure Portal](howto-manage-iot-central-from-portal.md)
+Most, hogy megtanulta az alkalmazássablonok használatát, a javasolt következő lépés az [IoT Central kezelése az Azure Portalról](howto-manage-iot-central-from-portal.md)

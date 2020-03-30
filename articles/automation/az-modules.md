@@ -1,72 +1,72 @@
 ---
 title: Az modulok használata az Azure Automationben
-description: Ez a cikk az az modulok Azure Automation használatával történő használatát ismerteti
+description: Ez a cikk az Az modulok használatával nyújt tájékoztatást az Azure Automationben
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986104"
 ---
-# <a name="az-module-support-in-azure-automation"></a>Az modul támogatása Azure Automation
+# <a name="az-module-support-in-azure-automation"></a>Az Az modul támogatása az Azure Automationben
 
-Az Azure Automation lehetővé teszi az [Azure PowerShell az modul](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) használatát a runbookok. Az az modul nincs automatikusan importálva az új vagy meglévő Automation-fiókokban. Ez a cikk azt ismerteti, hogyan használható az az modulok Azure Automation használatával.
+Az Azure automation támogatja az [Azure Powershell Az modul](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) használatát a runbookokban. Az Az modul nem importálja automatikusan az új vagy meglévő Automation-fiókok. Ez a cikk ismerteti, hogyan használhatja az Az modulokat az Azure Automation használatával.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Számos dolgot figyelembe kell venni, ha az az modult használja Azure Automationban. A runbookok és modulokat az Automation-fiók magasabb szintű megoldásai is használhatják. A runbookok szerkesztése vagy a modulok frissítése potenciálisan problémákat okozhat a runbookok. Az új `Az` modulok importálása előtt gondosan tesztelje az összes runbookok és-megoldást egy külön Automation-fiókban. A modulok módosításai negatív hatással lehetnek a [Start/Stop](automation-solution-vm-management.md) megoldásra. Nem javasoljuk, hogy a modulokat és a runbookok olyan Automation-fiókokban változtassa meg, amelyek bármilyen megoldást tartalmaznak. Ez a viselkedés nem jellemző az az modulokra. Ezt a viselkedést figyelembe kell venni az Automation-fiók módosításainak bevezetésekor.
+Az Azure Automation ben az Az modul használatakor számos szempontot figyelembe kell venni. A Runbookokat és a modulokat az Automation-fiók magasabb szintű megoldásai is használhatják. A runbookok szerkesztése vagy a modulok frissítése problémákat okozhat a runbookokkal. Az új `Az` modulok importálása előtt gondosan tesztelje az összes runbookot és megoldást egy külön Automation-fiókban. A modulok bármilyen módosítása negatívan befolyásolhatja a [Start/Stop](automation-solution-vm-management.md) megoldást. Nem javasoljuk a modulok és runbookok módosítását az Automation-fiókokban, amelyek bármilyen megoldást tartalmaznak. Ez a viselkedés nem jellemző az Az modulokra. Ezt a viselkedést figyelembe kell venni az Automation-fiók bármilyen módosításának bevezetésekor.
 
-`Az` modulnak az Automation-fiókba való importálása nem importálja automatikusan a modult a runbookok által használt PowerShell-munkamenetbe. A modulok a következő helyzetekben importálhatók a PowerShell-munkamenetbe:
+Egy `Az` modul importálása az Automation-fiókban nem automatikusan importálja a modult a PowerShell-munkamenetben, amelyet a runbookok használnak. A modulok a következő esetekben lesznek importálva a PowerShell-munkamenetbe:
 
-* Ha egy modulból parancsmagot hív meg egy runbook
-* Ha egy runbook explicit módon importálja az `Import-Module` parancsmaggal
+* Ha egy modul parancsmagját runbookból hívja meg a parancsmag
+* Amikor egy runbook kifejezetten `Import-Module` importálja azt a parancsmaggal
 * Ha a modultól függően egy másik modult importál egy PowerShell-munkamenetbe
 
 > [!IMPORTANT]
-> Fontos, hogy az Automation-fiókban lévő runbookok csak `Az` vagy `AzureRM` modulokat importáljon a runbookok által használt PowerShell-munkamenetbe, és ne mindkettőt. Ha a `Az` a runbook `AzureRM` előtt lett importálva, a runbook befejeződik, de [a get_SerializationSettings metódusra hivatkozó hiba](troubleshoot/runbooks.md#get-serializationsettings) a feladatokhoz tartozó adatfolyamokban fog megjelenni, és előfordulhat, hogy a parancsmagok nem lettek megfelelően végrehajtva. Ha `AzureRM` importál, majd `Az` a runbook továbbra is befejeződik, de hibaüzenet jelenik meg, amely szerint a `Az` és a `AzureRM` nem importálhatók ugyanabban a munkamenetben, vagy nem használhatók ugyanabban a runbook.
+> Fontos, hogy győződjön meg arról, hogy `Az` a `AzureRM` runbookok egy Automation-fiókban vagy csak importálni vagy modulokat a PowerShell-munkamenetek által használt runbookok, és nem mindkettő. Ha `Az` a `AzureRM` runbookban korábban importálja, a runbook befejeződik, de [a get_SerializationSettings metódusra hivatkozó hiba](troubleshoot/runbooks.md#get-serializationsettings) megjelenik a feladatfolyamokban, és előfordulhat, hogy a parancsmagok végrehajtása nem megfelelően lett végrehajtva. Ha `AzureRM` importálja, `Az` majd a runbook továbbra is befejeződik, de megjelenik `Az` egy `AzureRM` hiba a feladat streamek, amely szerint mindkettő, és nem importálható ugyanabban a munkamenetben, vagy ugyanabban a runbookban használható.
 
-## <a name="migrating-to-az-modules"></a>Áttelepítés az az modulokba
+## <a name="migrating-to-az-modules"></a>Áttelepítés Az modulokra
 
-Javasoljuk, hogy tesztelje az áttelepítést a AzureRM-modulok helyett az az modulok használatára a test Automation-fiókban. Az Automation-fiók létrehozása után az alábbi lépéseket követve gondoskodhat arról, hogy az áttelepítés zökkenőmentesen haladjon át:
+Javasoljuk, hogy tesztelje az akta modulok használatára az Az modulok használatára az AzureRM-modulok helyett egy tesztautomatizálási fiókban. Az Automation-fiók létrehozása után a következő lépésekkel biztosíthatja az áttelepítés zökkenőmentes lebonyolítását:
 
-### <a name="stop-and-unschedule-all-runbook-that-uses-azurerm-modules"></a>Az összes AzureRM-modult használó runbook leállítása és visszaírása
+### <a name="stop-and-unschedule-all-runbook-that-uses-azurerm-modules"></a>Az AzureRM-modulokat használó összes runbook leállítása és ütemezésének leállítása
 
-Annak biztosítása érdekében, hogy ne futtasson `AzureRM`-parancsmagokat használó meglévő runbookok, állítsa le és ütemezze be a `AzureRM` modulokat használó összes runbookok. A következő példa futtatásával megtekintheti, hogy mely ütemtervek léteznek, és mely ütemterveket kell eltávolítani:
+Annak érdekében, hogy ne futtasson `AzureRM` olyan meglévő runbookokat, amelyek parancsmagokat `AzureRM` használnak, állítsa le és ne ütemezze le a modulokat használó összes runbookot. A következő példa futtatásával láthatja, hogy milyen ütemezések léteznek, és mely ütemezéseket kell eltávolítani:
 
   ```powershell-interactive
   Get-AzureRmAutomationSchedule -AutomationAccountName "<AutomationAccountName>" -ResourceGroupName "<ResourceGroupName>" | Remove-AzureRmAutomationSchedule -WhatIf
   ```
 
-Fontos áttekinteni az egyes ütemterveket, hogy a későbbiekben újra lehessen ütemezni a runbookok, ha szükséges.
+Fontos, hogy az egyes ütemezéseket külön-külön tekintse át, hogy szükség esetén a runbookok hoz a jövőben átütemezheti.
 
-### <a name="import-the-az-modules"></a>Az az modulok importálása
+### <a name="import-the-az-modules"></a>Az Az modulok importálása
 
-Csak az az runbookok szükséges modulok importálása. Ne importálja a kumulatív `Az` modult, mert az tartalmazza az összes importálandó `Az.*` modult. Ez az útmutató minden modul esetében azonos.
+Csak importálja az Az modulokat, amelyek szükségesek a runbookok. Ne importálja az `Az` összesítő modult, mivel `Az.*` tartalmazza az összes importálandó modult. Ez az útmutató minden modul esetében azonos.
 
-Az az [. accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) modul a többi `Az.*` modultól függ. Emiatt ezt a modult az Automation-fiókjába kell importálni az egyéb modulok importálása előtt.
+Az [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) modul a többi `Az.*` modul függősége. Ezért ezt a modult importálni kell az Automation-fiókba, mielőtt bármilyen más modult importálna.
 
-Az Automation-fiókból válassza a **modulok** elemet a **megosztott erőforrások**területen. Kattintson a **Tallózás** a katalógusban elemre a **tallózási** katalógus lap megnyitásához.  A keresősáv mezőben adja meg a modul nevét (például `Az.Accounts`). A PowerShell-modul lapon kattintson az **Importálás** elemre a modul Automation-fiókba való importálásához.
+Az Automation-fiókban válassza a **Modulok lehetőséget a** Megosztott erőforrások **csoportban.** Kattintson a **Galéria tallózása** gombra a **Galéria tallózása** lap megnyitásához.  A keresősávban adja meg a `Az.Accounts`modul nevét (például ). A PowerShell-modul lapon kattintson az **Importálás gombra** a modul automatizálási fiókba importálásához.
 
 ![Modulok importálása az Automation-fiókból](media/az-modules/import-module.png)
 
-Ezt az importálási folyamatot a [PowerShell-Galéria](https://www.powershellgallery.com) is elvégezheti, ha megkeresi a modult. Miután megtalálta a modult, jelölje ki, és a **Azure Automation** lapon kattintson a telepítés elemre **Azure Automation**.
+Ez az importálási folyamat a [PowerShell-galérián](https://www.powershellgallery.com) keresztül is elvégezhető a modul keresésével. Miután megtalálta a modult, jelölje ki, és az **Azure Automation** lapon kattintson az Üzembe helyezés az Azure **Automation behelyezése gombra.**
 
-![Modulok importálása közvetlenül a katalógusból](media/az-modules/import-gallery.png)
+![Modulok importálása közvetlenül a galériából](media/az-modules/import-gallery.png)
 
 ## <a name="test-your-runbooks"></a>A runbookok tesztelése
 
-Miután importálta a `Az` modulokat az Automation-fiókjába, most már megkezdheti a runbookok szerkesztését az az modul használatára. A parancsmagok többsége ugyanazzal a névvel rendelkezik, kivéve a `AzureRM` `Az`re módosult. Az ezt a folyamatot nem követő modulok listáját a [kivételek listájában](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)tekintheti meg.
+Miután `Az` a modulok importálása az Automation-fiókba, most már elkezdheti a runbookok szerkesztését az Az modul használatához. A parancsmagok többsége ugyanaz a neve, `AzureRM` kivéve, `Az`hogy a . Az okat nem követő modulok listáját [a kivételek listájában tetszés szerint.](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)
 
-A runbookok tesztelésének egyik módja, mielőtt módosítja a runbook az új parancsmagok használatára, a runbook elején a `Enable-AzureRMAlias -Scope Process` használatával. Ha hozzáadja ezt a runbook, a runbook módosítása nélkül is futtatható.
+Az egyik módja a runbookok tesztelése a runbook oka `Enable-AzureRMAlias -Scope Process` az új parancsmagok használata előtt a runbookok használata. Ha hozzáadja ezt a runbookhoz, a runbook módosítások nélkül futtatható.
 
-## <a name="after-migration-details"></a>Áttelepítési részletek
+## <a name="after-migration-details"></a>Áttelepítés után részletek
 
-Az áttelepítés befejezése után ne indítsa el a runbookok a fiók `AzureRM` moduljainak használatával. Azt is javasoljuk, hogy ne importáljon vagy frissítsen `AzureRM` modulokat ebben a fiókban. Ettől a pillanattól kezdve vegye figyelembe, hogy ez a fiók át lett telepítve a `Az`ba, és csak `Az` modulokkal működik. Új Automation-fiók létrehozásakor a rendszer továbbra is telepíti a meglévő `AzureRM` modulokat, és az oktatóanyag runbookok továbbra is `AzureRM` parancsmagokkal lesz létrehozva. Ezek a runbookok nem futtathatók.
+Az áttelepítés befejezése után ne indítsa el `AzureRM` a runbookok a fiók moduljainak használatát. Azt is javasoljuk, hogy ne `AzureRM` importáljon vagy frissítsen modulokat ezen a fiókon. Ettől a pillanattól kezdve vegye `Az`figyelembe, `Az` hogy ez a fiók átkerült a programba, és csak modulokkal működik. Amikor egy új Automation-fiók `AzureRM` jön létre, a meglévő modulok továbbra is telepítve `AzureRM` lesznek, és az oktatóanyag runbookok továbbra is parancsmagokkal lesznek létrehozva. Ezeket a runbookokat nem szabad futtatni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az az modulok használatáról, tekintse meg az [első lépések az modullal](/powershell/azure/get-started-azureps?view=azps-1.1.0)című témakört.
+Az Az modulok használatáról az [Az modul használatának első lépései](/powershell/azure/get-started-azureps?view=azps-1.1.0).

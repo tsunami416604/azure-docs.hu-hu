@@ -1,5 +1,5 @@
 ---
-title: Adatmásolás az Azure Adatok másolása eszköz használatával
+title: Adatok másolása az Azure Copy Data eszközzel
 description: Létrehozhat egy Azure-beli adat-előállítót, majd az Adatok másolása eszközzel másolhat adatokat egy Azure Blob Storage-beli helyről egy másik helyre.
 services: data-factory
 documentationcenter: ''
@@ -10,17 +10,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/20/2018
-ms.openlocfilehash: edf03b663383f10168ee5b78a3ad5f1a9fdac288
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/18/2020
+ms.openlocfilehash: 26169755fbe252a4be2626dae50d40c005c7c6db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440127"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80130927"
 ---
-# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
+# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Rövid útmutató: Adatok másolása az Adatok másolása eszközzel
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-copy-data-tool.md)
 
@@ -34,35 +34,31 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
-1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
+1. Nyissa meg az [Azure Portalt.](https://portal.azure.com) 
+1. Az Azure Portal menüben válassza az > **Erőforrás-elemzési** > **adatgyár** **létrehozása lehetőséget:**
 
-    ![Erőforrás létrehozása a Azure Portal menüből](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
-
-1. Válassza az **elemzés**lehetőséget, majd válassza a **Data Factory**lehetőséget.
-
-   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+    ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
  
-   Az Azure data factory nevének *globálisan egyedinek* kell lennie. Ha a következő hibaüzenetet kapja, módosítsa az adat-előállító nevét (például a **&lt;sajátneve&gt;ADFTutorialDataFactory** értékre), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure-adat-előállító nevének *globálisan egyedinek*kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például ** &lt;az Önnevét&gt;ADFTutorialDataFactory),** és próbálja meg újra létrehozni. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet, ha egy név nem érhető el](./media/doc-common-process/name-not-available-error.png)
 1. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
      
    - Kattintson a **Meglévő használata** elemre, majd válasszon egy meglévő erőforráscsoportot a listából. 
-   - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
+   - Válassza **az Új létrehozása**lehetőséget, és írja be egy erőforráscsoport nevét.   
          
    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. **Hely:** válassza ki az adat-előállító helyét.
 
-   Csak a Data Factory által támogatott helyek, valamint az Azure Data Factory-metaadatok tárolási helye jelennek meg a listában. A Data Factory által használt adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is futhatnak.
+   A listában csak a Data Factory által támogatott helyek és az Azure Data Factory-metaadatok tárolási helye jelenik meg. A kapcsolódó adattárak (például az Azure Storage és az Azure SQL Database) és a számítások (például az Azure HDInsight), hogy a Data Factory által használt futtatható más régiókban.
 
 1. Kattintson a **Létrehozás** gombra.
 
-1. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+1. A létrehozás befejezése után megjelenik a **Data Factory** oldal. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
    ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/doc-common-process/data-factory-home-page.png)
 
@@ -77,29 +73,31 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
    ![„Tulajdonságok” lap](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
 1. A **Forrásadattár** oldalon hajtsa végre az alábbi lépéseket:
 
-    a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre.
+    a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** gombra.
 
-    b. Válassza ki az **Azure Blob Storage** elemet a katalógusból, majd válassza a **Folytatás**lehetőséget.
+    b. Válassza ki a forráskapcsolathoz létrehozni kívánt csatolt szolgáltatástípust. Ebben az oktatóanyagban az **Azure Blob Storage-ot használjuk.** Jelölje ki a gyűjteményből, majd válassza a **Folytatás gombot.**
+    
+    ![Blob kiválasztása](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. Az **új társított szolgáltatás (Azure Blob Storage)** lapon adja meg a társított szolgáltatás nevét. Válassza ki a Storage-fiók **nevét a Storage-fiók neve** listából, a kapcsolatok tesztelése, majd a **Befejezés**lehetőséget. 
+    c. Az **új csatolt szolgáltatás (Azure Blob Storage)** lapon adja meg a csatolt szolgáltatás nevét. Válassza ki a tárfiókot a **Tárfiók** névlistájából, tesztelje a kapcsolatot, majd válassza a **Létrehozás lehetőséget.** 
 
-   ![Az Azure Blob Storage-fiók konfigurálása](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+    ![Az Azure Blob Storage-fiók konfigurálása](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
-    d. Válassza ki az újonnan létrehozott társított szolgáltatást forrásként, majd kattintson a **tovább**gombra.
+    d. Jelölje ki az újonnan létrehozott csatolt szolgáltatást forrásként, majd kattintson a **Tovább**gombra.
 
 
 1. **A bemeneti fájl vagy mappa kiválasztása** lapon kövesse az alábbi lépéseket:
 
-   a. A **Tallózás** gombra kattintva keresse meg a **adftutorial/input** mappát, válassza ki az **EMP. txt** fájlt, majd kattintson a **kiválasztás**elemre. 
+   a. A **Tallózás gombra** kattintva keresse meg az **adftutorial/input** mappát, jelölje ki az **emp.txt** fájlt, majd kattintson a **Választás gombra.** 
 
-   d. A **bináris másolás** jelölőnégyzet bejelölésével másolja a fájlt a **következőre**, majd kattintson a Tovább gombra. 
+   d. Jelölje be a **Bináris másolás** jelölőnégyzetet a fájl másként való másolásához, majd a **Tovább**gombra. 
 
    ![„A bemeneti fájl vagy mappa kiválasztása” lap](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
 
 
-1. A **cél adattár** lapon válassza ki a létrehozott **Azure Blob Storage** társított szolgáltatást, majd kattintson a **tovább**gombra. 
+1. A **Cél adattár** lapon válassza ki a létrehozott **Azure Blob Storage-kapcsolt** szolgáltatást, majd kattintson a **Tovább**gombra. 
 
-1. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a mappa elérési útjának **adftutorial/kimenetét** , majd kattintson a **tovább**gombra. 
+1. A **Kimeneti fájl vagy mappa kiválasztása** lapon adja meg az **adftutorial/output** parancsot a mappa elérési útjához, majd kattintson a **Tovább**gombra. 
 
    ![„A kimeneti fájl vagy mappa kiválasztása” lap](./media/quickstart-create-data-factory-copy-data-tool/configure-sink-path.png) 
 
@@ -111,15 +109,19 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
     ![„Üzembe helyezés kész” lap](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Az alkalmazás a **figyelő** lapra vált. Ezen a lapon látható a folyamat állapota. a lista frissítéséhez kattintson a **frissítés** gombra. 
-    
-1. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. A folyamathoz egyetlen **Másolás** típusú tevékenység tartozik. 
-    
-1. A másolási művelet részleteinek megtekintéséhez kattintson a **Műveletek** oszlop **Részletek** hivatkozására (szemüveg ikon). A tulajdonságokkal kapcsolatos részletekért tekintse meg a [másolási tevékenység áttekintését](copy-activity-overview.md).
+1. Az alkalmazás átvált a **Monitor** lapra. Ezen a lapon láthatja a folyamat **Refresh** állapotát. Kattintson a **FOLYAMAT NEVE** csoporthivatkozásra a tevékenységfuttatás részleteinek megtekintéséhez vagy a folyamat újbóli futtatásához. 
+   
+    ![Folyamat frissítése](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
+
+1. A Tevékenység futtatása lapon válassza a **Részletek** hivatkozást (szemüveg ikon) a **TEVÉKENYSÉG NEVE** oszlopban a másolási művelettel kapcsolatos további részletekért. A tulajdonságokkal kapcsolatos részletekért tekintse meg a [másolási tevékenység áttekintését](copy-activity-overview.md). 
+
+1. Ha vissza szeretne lépni a Folyamatfuttatások nézetbe, válassza az **ALL folyamat futtatása** hivatkozást a navigációs menüben. A nézet frissítéséhez válassza a **Frissítés** parancsot. 
 
 1. Ellenőrizze, hogy az **emp.txt** fájl az **adftutorial** tároló **output** mappájában jött-e létre. Ha a kimeneti mappa nem létezik, a Data Factory szolgáltatás automatikusan létrehozza azt. 
 
 1. A kapcsolódó szolgáltatások, adatkészletek és folyamatok szerkesztéséhez lépjen a bal oldali panelen a **Monitorozás** lap fölötti **Szerző** lapra. Annak megismeréséhez, hogy ezek hogyan szerkeszthetőek a Data Factory felhasználói felületén, olvassa el az [adat-előállító az Azure Portal használatával történő létrehozását](quickstart-create-data-factory-portal.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+    ![Szerző kiválasztása lap](./media/quickstart-create-data-factory-copy-data-tool/select-author.png)
+
+## <a name="next-steps"></a>További lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra az Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információért tekintse meg az [oktatóanyagokat](tutorial-copy-data-portal.md). 

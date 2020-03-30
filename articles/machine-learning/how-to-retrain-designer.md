@@ -1,7 +1,7 @@
 ---
-title: Modellek újratanítása Azure Machine Learning Designer használatával (előzetes verzió)
+title: Modellek újratanítása az Azure Machine Learning designer használatával (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan lehet a modelleket a Azure Machine Learning Designerben (előzetes verzió) közzétett folyamatokkal áttanítani.
+description: Megtudhatja, hogyan lehet újrabetanítása modellek közzétett folyamatok az Azure Machine Learning designer (előzetes verzió).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,116 +10,116 @@ ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
 ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368162"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása Azure Machine Learning designerrel (előzetes verzió)
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ebben a útmutatóban megismerheti, hogyan végezheti el a gépi tanulási modell újratanítását a Azure Machine Learning Designer használatával. Megtudhatja, hogyan használhatja a közzétett folyamatokat a gépi tanulási munkafolyamatok újraképzéshez való automatizálásához.
+Ebben az útmutató cikkben megtudhatja, hogyan használhatja az Azure Machine Learning-tervezőt egy gépi tanulási modell újratanításához. Ismerje meg, hogyan használhatja a közzétett folyamatokat a gépi tanulási munkafolyamatok automatizálására átképzéshez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Gépi tanulási modell betanítása.
-> * Hozzon létre egy folyamat paramétert.
-> * A betanítási folyamat közzététele.
+> * Hozzon létre egy folyamatparamétert.
+> * Tegye közzé a betanítási folyamatot.
 > * A modell újratanítása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
-* Azure Machine Learning munkaterület a vállalati SKU-val.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://aka.ms/AMLFree)
+* Egy Azure Machine Learning-munkaterület a vállalati termékváltozattal.
 
-Ez a cikk azt feltételezi, hogy alapvető ismeretekkel rendelkezik a folyamatok létrehozásához a tervezőben. A Designer bevezetéséhez fejezze be az [oktatóanyagot](tutorial-designer-automobile-price-train-score.md). 
+Ez a cikk feltételezi, hogy alapvető ismeretekkel rendelkezik a tervezőben lévő folyamatok létrehozásához. Egy irányított bevezetés a tervező, töltse ki a [tutorial](tutorial-designer-automobile-price-train-score.md). 
 
-### <a name="sample-pipeline"></a>Mintavételezési folyamat
+### <a name="sample-pipeline"></a>Mintafolyamat
 
-Az ebben a cikkben használt folyamat a [3. minta: bevétel előrejelzése](how-to-designer-sample-classification-predict-income.md)alapján megtalált, módosított verzió. A minta adatkészlet helyett az [adatimportálási](algorithm-module-reference/import-data.md) modult használja, hogy bemutassa, hogyan kell a modelleket saját adataival betanítani.
+A csővezeték használt ebben a cikkben egy módosított változata az egyik található [minta 3: Jövedelem előrejelzés](how-to-designer-sample-classification-predict-income.md). [Az Adatok importálása](algorithm-module-reference/import-data.md) modult használja a minta adatkészlet helyett, hogy megmutassa, hogyan taníthatja be a modellt a saját adatai használatával.
 
-![Képernyőfelvétel a módosított mintavételi folyamatról az Adatimportálási modul kiemelésével](./media/how-to-retrain-designer/modified-sample-pipeline.png)
+![Képernyőkép, amely en a módosított mintafolyamat látható az Adatok importálása modult kiemelő dobozzal](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
 ## <a name="train-a-machine-learning-model"></a>Gépi tanulási modell betanítása
 
-Modell újratanításához kezdeti modellre van szükség. Ebből a szakaszból megtudhatja, hogyan végezheti el a modell betanítását és a mentett modell elérését a tervező használatával.
+A modell újratanításához egy kezdeti modellre van szükség. Ebben a szakaszban megtudhatja, hogyan taníthatja be a modellt, és hogyan érheti el a mentett modellt a tervező használatával.
 
-1. Válassza az **adatimportálás** modult.
-1. A Tulajdonságok ablaktáblán válasszon egy adatforrást.
+1. Válassza az **Adatok importálása** modult.
+1. A tulajdonságok ablaktáblán adjon meg egy adatforrást.
 
-   ![Az Adatimportálási modul minta konfigurációját bemutató képernyőkép](./media/how-to-retrain-designer/import-data-settings.png)
+   ![Képernyőkép, amely az Adatok importálása modul mintakonfigurációját mutatja](./media/how-to-retrain-designer/import-data-settings.png)
 
-   Ebben a példában az adattárolót egy Azure- [adattár](how-to-access-data.md)tárolja. Ha még nem rendelkezik adattárral, létrehozhat egyet most az **új adattár**lehetőség kiválasztásával.
+   Ebben a példában az adatok egy [Azure-adattárban tárolódnak.](how-to-access-data.md) Ha még nem rendelkezik adattár, hozhat létre egyet most kiválasztásával **Új adattár**.
 
-1. Adja meg az adatai elérési útját. Kiválaszthatja az adattár tallózási **útvonalát** is. 
+1. Adja meg az adatok elérési útját. Az elérési **út tallózása** lehetőséget is választhatja az adattárba való tallózáshoz. 
 1. Válassza a **Futtatás** lehetőséget a vászon tetején.
     
    > [!NOTE]
-   > Ha már beállított egy alapértelmezett számítást ehhez a folyamat-tervezethez, a folyamat automatikusan elindul. Ellenkező esetben a beállítások panelen megjelenő utasításokat követve állíthatja be most.
+   > Ha már beállított egy alapértelmezett számítási folyamat tervezetét, a folyamat automatikusan fog futni. Ellenkező esetben a beállítások ablaktáblán megjelenő utasításokat követve most is beállíthat egyet.
 
 ### <a name="find-your-trained-model"></a>A betanított modell megkeresése
 
-A tervező az alapértelmezett Storage-fiókba menti az összes folyamat kimenetét, beleértve a betanított modelleket is. A betanított modellt közvetlenül a tervezőben is elérheti:
+A tervező menti az összes folyamat kimenetek, beleértve a betanított modellek, az alapértelmezett tárfiókba. A betanított modellt közvetlenül a tervezőben is elérheti:
 
-1. Várjon, amíg a folyamat befejeződik.
-1. Válassza ki a **Train Model** modult.
-1. A beállítások ablaktáblán válassza a **kimenetek + naplók**lehetőséget.
-1. Válassza ki a **kimenet megtekintése** ikont, és kövesse az előugró ablakban megjelenő utasításokat a betanított modell megkereséséhez.
+1. Várja meg, amíg a folyamat futása befejeződik.
+1. Válassza ki a **Vonatmodell** modult.
+1. A beállítások ablaktáblán válassza a **Kimenetek+naplók lehetőséget.**
+1. Válassza a **Kimenet megtekintése** ikont, és kövesse az előugró ablakban található utasításokat a betanított modell megkereséséhez.
 
-![A betanított modell letöltését bemutató képernyőkép](./media/how-to-retrain-designer/trained-model-view-output.png)
+![Képernyőkép, amely bemutatja a betanított modell letöltését](./media/how-to-retrain-designer/trained-model-view-output.png)
 
-## <a name="create-a-pipeline-parameter"></a>Folyamat paraméterének létrehozása
+## <a name="create-a-pipeline-parameter"></a>Folyamatparaméter létrehozása
 
-A folyamat paramétereinek hozzáadásával dinamikusan állíthatja be a változókat futásidőben. Ehhez a folyamathoz adjon hozzá egy paramétert a betanítási adat elérési útjához, hogy egy új adatkészleten át tudja képezni a modellt.
+A változók futásidőben dinamikusan beállított folyamatparamétereinek hozzáadásával. Ehhez a folyamathoz adjon hozzá egy paramétert a betanítási adatok elérési útjára, hogy újrataníthassa a modellt egy új adatkészleten.
 
-1. Válassza az **adatimportálás** modult.
-1. A beállítások ablaktáblán válassza az **elérési út** mező feletti ellipsziseket.
-1. Válassza **a Hozzáadás a folyamathoz paramétert**.
+1. Válassza az **Adatok importálása** modult.
+1. A beállítások ablaktáblán jelölje ki a **Görbe** mező feletti három pontot.
+1. Válassza **a Hozzáadás a folyamathoz paramétert.**
 1. Adja meg a paraméter nevét és az alapértelmezett értéket.
 
    > [!NOTE]
-   > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
+   > A folyamatparamétereket a folyamatvázlat címe melletti **Beállítások** fogaskerék ikonra kattintva vizsgálhatja meg és szerkesztheti. 
 
-![Képernyőkép, amely bemutatja, hogyan lehet létrehozni egy folyamat paramétert](media/how-to-retrain-designer/add-pipeline-parameter.png)
+![Képernyőkép, amely bemutatja a folyamatparaméter létrehozását](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 ## <a name="publish-a-training-pipeline"></a>Betanítási folyamat közzététele
 
-Amikor közzétesz egy folyamatot, egy folyamat-végpontot hoz létre. A folyamat végpontjai lehetővé teszik a folyamatok újrafelhasználását és kezelését az ismételhetőség és az automatizálás céljából. Ebben a példában beállította a folyamat átképzését.
+Folyamat közzétételekor létrehoz egy folyamatvégpontot. A folyamatvégpontok lehetővé teszik a folyamatok újrafelhasználását és kezelését az ismételhetőség és az automatizálás érdekében. Ebben a példában beállította a folyamatátképzés.
 
-1. Válassza a **Közzététel** a tervező vászon felett lehetőséget.
-1. Válasszon ki vagy hozzon létre egy folyamat-végpontot.
+1. Válassza a **Közzététel** lehetőséget a tervezői vászon felett.
+1. Jelöljön ki vagy hozzon létre egy folyamatvégpontot.
 
    > [!NOTE]
-   > Több folyamat is közzétehető egyetlen végponton. A végpont minden folyamata egy verziószámot kap, amelyet a folyamat végpontjának meghívásakor adhat meg.
+   > Egy végponton több folyamat is közzétehető. A végpont minden folyamata kap egy verziószámot, amelyet a folyamatvégpont hívásakor adhat meg.
 
 1. Kattintson a **Publish** (Közzététel) elemre.
 
 ## <a name="retrain-your-model"></a>A modell újratanítása
 
-Most, hogy már rendelkezik egy közzétett betanítási folyamattal, felhasználhatja a modell új adatkezeléssel való átképzéséhez. Elküldheti a futtatásokat egy folyamat végpontból a Azure Portalból, vagy programozott módon elküldheti őket.
+Most, hogy rendelkezik egy közzétett betanítási folyamattal, használhatja a modell újratanításához új adatok használatával. Az Azure Portalról elküldheti a folyamatvégpontról történő futtatásokat, vagy programozott módon elküldheti őket.
 
-### <a name="submit-runs-by-using-the-designer"></a>Futtatások beküldése a Designer használatával
+### <a name="submit-runs-by-using-the-designer"></a>Futtatások beküldése a tervező használatával
 
-A következő lépésekkel küldhet el egy folyamat-végpontot a tervezőből:
+A következő lépésekkel küldjön el egy folyamatvégpontot a tervezőtől:
 
-1. Lépjen a **végpontok** lapra.
-1. Válassza a **folyamat végpontjai** lapot.
-1. Válassza ki a folyamat végpontját.
-1. Válassza a **közzétett folyamatok** fület.
+1. Nyissa meg a **Végpontok** lapot.
+1. Válassza a **Folyamat végpontok** fülét.
+1. Válassza ki a folyamatvégpontot.
+1. Válassza a **Közzétett folyamatok** lapot.
 1. Válassza ki a futtatni kívánt folyamatot.
-1. Válassza a **Küldés**lehetőséget.
-1. A beállítás párbeszédpanelen megadhat egy új értéket a bemeneti adatok elérési útja értékhez. Ez az érték az új adatkészletre mutat.
+1. Válassza a **Küldés** lehetőséget.
+1. A beállítási párbeszédpanelen új értéket adhat meg a bemeneti adatok elérési útértékéhez. Ez az érték az új adatkészletre mutat.
 
-![Képernyőkép, amely bemutatja, hogyan állíthat be egy paraméteres folyamat futtatását a tervezőben](./media/how-to-retrain-designer/published-pipeline-run.png)
+![Képernyőkép, amely bemutatja, hogyan állítható be egy paraméterezett folyamat futtatása a tervezőben](./media/how-to-retrain-designer/published-pipeline-run.png)
 
-### <a name="submit-runs-by-using-code"></a>Futtatások küldése kód használatával
+### <a name="submit-runs-by-using-code"></a>Fut küldés kód használatával
 
-Az Áttekintés panelen megtalálhatja a közzétett folyamat REST-végpontját. A végpont meghívásával Újrataníthatja a közzétett folyamatot.
+A közzétett folyamat REST-végpontját az áttekintő panelen találhatja meg. A végpont hívásával újrabetaníthatja a közzétett folyamatot.
 
-A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonosi típusú hitelesítési fejlécre. További információ a munkaterület hitelesítésének beállításáról és a paraméteres REST-hívás létrehozásáról: [Azure Machine learning folyamat létrehozása a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
+REST-hívás hozásához OAuth 2.0-s bemutatóra szóló típusú hitelesítési fejlécre van szükség. A hitelesítés beállításáról a munkaterületre és a paraméterezett REST-hívás létrehozásáról a [Kötegelt pontozáshoz egy Azure Machine Learning-folyamat létrehozása](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A regressziós modell betanításához és üzembe helyezéséhez kövesse a [tervezői oktatóanyagot](tutorial-designer-automobile-price-train-score.md) .
+Kövesse a [tervező oktatóanyag](tutorial-designer-automobile-price-train-score.md) betanításához és üzembe helyezéséhez egy regressziós modell.

@@ -1,93 +1,93 @@
 ---
-title: Biztonsági funkciók a Felhőbeli munkaterhelések védelme érdekében
-description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
+title: Biztonsági funkciók a felhőbeli számítási feladatok védelméhez
+description: Ismerje meg, hogyan használhatja a biztonsági funkciókat az Azure Backup ban a biztonsági mentések biztonságosabbá tétele érdekében.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f89d9ab3ef373ecd9a7d15ef4ec9b2109750f8de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248072"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156072"
 ---
-# <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
+# <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Az Azure Backup ot használó felhőalapú számítási feladatok védelmére szolgáló biztonsági funkciók
 
-A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében.
+A biztonsági problémákkal kapcsolatos aggodalmak, például a rosszindulatú programok, a zsarolóprogramok és a behatolás oka egyre nő. Ezek a biztonsági kérdések költségesek lehetnek mind a pénz, mind az adatok tekintetében. Az ilyen támadások elleni védelem érdekében az Azure Backup most antól biztonsági funkciókat biztosít a biztonsági mentési adatok védelme érdekében még a törlés után is.
 
-Az egyik ilyen funkció a Soft delete. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő töröl egy virtuális gép biztonsági mentését (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig marad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár költséggel az ügyfélnek. Az Azure az adatok védelmének biztosítása érdekében a [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) használatával is titkosítja az összes biztonsági másolatban tárolt adatait.
+Az egyik ilyen funkció a lágy törlés. A helyreállítható törlés, még akkor is, ha egy rosszindulatú szereplő törli a virtuális gép biztonsági másolatát (vagy a biztonsági mentési adatok véletlenül törlődnek), a biztonsági mentési adatok további 14 napig megmaradnak, így a biztonsági mentési elem helyreállítása adatvesztés nélkül. A biztonsági mentési adatok "ideiglenes törlés" állapotban való további 14 napos megőrzése nem jár semmilyen költséggel az ügyfél számára. Az Azure is titkosítja az összes up-up adatok at in-tároló segítségével Storage Service Encryption az adatok további védelme [érdekében.](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
-Az Azure Virtual Machines szolgáltatásban általánosan elérhető a Soft delete Protection szolgáltatás.
+Az Azure virtuális gépek ideiglenes törléselleni védelme általánosan elérhető.
 
 >[!NOTE]
->Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és az Azure-beli virtuális gépekhez készült SAP HANA Soft delete már előzetes verzióban érhető el.<br>
->Az előzetes verzióra való feliratkozáshoz írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com
+>Az Azure Virtuális gépben az SQL-kiszolgáló előzetes törlése már előzetes verzióban érhető el az SAP HANA ideiglenes törlése az Azure virtuális gép számítási feladatában.<br>
+>Az előnézetre való feliratkozáshoz írjon nekünk aAskAzureBackupTeam@microsoft.com
 
 ## <a name="soft-delete"></a>Helyreállítható törlés
 
-### <a name="soft-delete-for-vms"></a>Soft Delete a virtuális gépekhez
+### <a name="soft-delete-for-vms"></a>Helyreállítható törlés a virtuális gépekhez
 
-A virtuális gépek Soft törlésével megvédheti a virtuális gépek biztonsági másolatait a nem kívánt törléstől. Még a biztonsági másolatok törlése után is megmaradnak a további 14 napig.
+A virtuális gépek helyreállítható törlése megvédi a virtuális gépek biztonsági másolatait a nem kívánt törléstől. A biztonsági mentések törlése után is további 14 napig helyreállítható törlési állapotban maradnak.
 
 > [!NOTE]
-> A helyreállítható törlés csak a törölt biztonsági mentési adatvédelmet védi. Ha egy virtuális gépet biztonsági mentés nélkül töröl, a helyreállítható funkció nem fogja megőrizni az adatvédelmet. A teljes rugalmasság biztosítása érdekében minden erőforrást Azure Backup védelemmel kell ellátni.
+> A helyreállítható törlés csak a törölt biztonsági mentési adatokat védi. Ha egy virtuális gép biztonsági mentés nélkül törlődik, a helyreállítható törlés funkció nem őrzi meg az adatokat. A teljes rugalmasság biztosítása érdekében az Azure Backup minden erőforrást védeni kell.
 >
 
 ### <a name="supported-regions"></a>Támogatott régiók
 
-A Soft delete jelenleg támogatott az USA nyugati középső régiójában, Kelet-Ázsia, Közép-Kanada, Kelet-Kanada, Közép-Franciaország, Dél-Brazília, Korea középső régiója, Dél-Korea, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Kelet-Ausztrália, Kelet-Ausztrália, Észak-Európa, USA nyugati régiója, Nyugat-RÉGIÓJA, USA középső régiója, Dél Kelet-Ázsia, az USA északi középső régiója, az USA déli középső régiója, Kelet-Japán, Nyugat-Japán, Dél-India, Közép-India, Nyugat-India, USA 2. keleti régiója, Észak-Svájc, Nyugat-Svájc és minden nemzeti régió.
+Soft delete jelenleg támogatott a Nyugat-Közép-USA, Kelet-Ázsia, Kanada Közép-, Kanada Kelet-, Franciaország Közép-, Franciaország Dél-, Korea Közép-, Korea Dél-, Uk South, UK West, Ausztrália Kelet-, Ausztrália Délkelet-, Észak-Európa, USA nyugati, USA nyugati régiója, USA középső, Dél- Kelet-Ázsia, USA északi középső régiója, USA déli középső régiója, Japán keleti, nyugat-japán, dél-, indiai közép-, indiai nyugati, USA keleti régiója 2, Svájc északi, nyugat- és valamennyi nemzeti régió.
 
-### <a name="soft-delete-for-vms-using-azure-portal"></a>Soft Delete a virtuális gépekhez Azure Portal használatával
+### <a name="soft-delete-for-vms-using-azure-portal"></a>Az Azure Portal használatával a virtuális gépek ideiglenes törlése
 
-1. Egy virtuális gép biztonsági mentési adatmennyiségének törléséhez le kell állítani a biztonsági mentést. A Azure Portal lépjen a Recovery Services-tárolóba, kattintson a jobb gombbal a biztonsági mentési elemre, és válassza a **biztonsági mentés leállítása**lehetőséget.
+1. A virtuális gép biztonsági mentési adatainak törléséhez a biztonsági mentést le kell állítani. Az Azure Portalon nyissa meg a helyreállítási szolgáltatások tárolóját, kattintson a jobb gombbal a biztonsági mentési elemre, és válassza a **Biztonsági mentés leállítása parancsot.**
 
-   ![Azure Portal biztonsági másolati elemek képernyőképe](./media/backup-azure-security-feature-cloud/backup-stopped.png)
+   ![Képernyőkép az Azure Portal biztonsági mentési elemeiről](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
-2. A következő ablakban lehetősége lesz törölni vagy megőrizni a biztonsági másolati adatait. Ha a biztonsági másolati elemek **törlése** és a **biztonsági mentés leállítása**lehetőséget választja, a virtuális gép biztonsági mentése nem lesz véglegesen törölve. Ehelyett a rendszer 14 napig őrzi meg a biztonsági mentési adatait a helyreállítható törölt állapotban. Ha a **biztonsági mentési adatok törlése** lehetőség van kiválasztva, a rendszer az e-mailek törlésére vonatkozó riasztást küldi el a felhasználó számára, hogy 14 nap maradjon a biztonsági mentési adatok megőrzéséhez. Emellett e-mailben értesítést küldünk a 12. napon arról, hogy a törölt adat feltámasztása még két nappal megmaradt. A törlés Elhalasztva marad a 15. napon, amikor végleges törlés történik, és a rendszer a végleges e-mail riasztást küldi el az adat végleges törléséről.
+2. A következő ablakban választhat, hogy törli vagy megőrzi a biztonsági mentési adatokat. Ha a **Biztonsági másolat törlése,** majd a Biztonsági mentés leállítása lehetőséget **választja,** a virtuális gép biztonsági mentése nem törlődik véglegesen. Ehelyett a biztonsági mentési adatok 14 napig törlődnek a helyreállíthatóan törölt állapotban. Ha **a Biztonsági másolat adatainak törlése** lehetőséget választja, a rendszer törlési e-mail értesítést küld a konfigurált e-mail-azonosítónak, amely tájékoztatja a felhasználót arról, hogy 14 nap van hátra a biztonsági mentési adatok kiterjesztett megőrzéséből. Emellett a 12. napon e-mailben értesítést küldünk arról, hogy még két nap van hátra a törölt adatok feltámasztására. A törlést elhalasztják a 15.
 
-   ![Képernyőkép a Azure Portalről, a biztonsági mentési képernyő leállítása](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
+   ![Képernyőkép az Azure Portalról, a Biztonsági másolat leállítása képernyőről](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
 
-3. A 14 nap során a Recovery Services-tárolóban a helyreállított virtuális gép megjelenik egy piros "Soft-Delete" ikon mellett.
+3. Ez alatt a 14 nap alatt a Recovery Services Vaultban a helyreállíthatóan törölt virtuális gép piros "helyreállítható törlés" ikonnal jelenik meg.
 
-   ![Képernyőkép a Azure Portalről, a virtuális gép a Soft delete állapotában](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
-
-   > [!NOTE]
-   > Ha a tárolóban nem találhatók meg a helyreállított biztonsági mentési elemek, a tár ekkor nem törölhető. A biztonsági mentési elemek végleges törlését követően próbálja meg a tár törlését, és nincs olyan elem, amely a tárolóban marad.
-
-4. A helyreállított virtuális gép visszaállításához először törölni kell a szolgáltatást. A törlés visszavonásához válassza a Soft-Deleted VM elemet, majd válassza a **Törlés**visszavonása lehetőséget.
-
-   ![Azure Portal képernyőkép a virtuális gép törléséről](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
-   Megjelenik egy ablak, amely figyelmeztetést jelenít meg, ha a törlés lehetőség van kiválasztva, a virtuális gép összes visszaállítási pontja törölve lesz, és a visszaállítási művelet elvégezhető. A virtuális gép "megőrzött adatmegőrzés" állapotban marad, a biztonsági mentések felfüggesztésével és a biztonsági mentési szabályzat hatályba lépésével megőrizve.
-
-   ![Azure Portal képernyőképe – virtuális gép törlésének megerősítése](./media/backup-azure-security-feature-cloud/undelete-vm.png)
-
-   Ezen a ponton a virtuális GÉPET a kiválasztott visszaállítási pontról a **virtuális gép visszaállítása** lehetőség kiválasztásával is visszaállíthatja.  
-
-   ![Képernyőkép a Azure Portalről, virtuális gép visszaállítása lehetőség](./media/backup-azure-security-feature-cloud/restore-vm.png)
+   ![Képernyőkép az Azure Portalról, a virtuális gép helyreállítható törlési állapotban](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > A rendszer csak akkor futtatja a szemét-gyűjtőt, amikor a felhasználó elvégezte a **biztonsági mentési művelet folytatását** .
+   > Ha a tárolóban vannak helyreállíthatóbiztonsági mentési elemek, a tároló nem törölhető abban az időben. Próbálkozzon a tároló törlésével, miután a biztonsági mentési elemek véglegesen törlődnek, és nincs elem a tárolóban maradt helyreállíthatóan törölt állapotban.
 
-5. A törlési folyamat befejezése után az állapot vissza fog térni a "biztonsági mentés leállítása az adatmegőrzéshez" értékre, majd a **biztonsági mentés folytatása**lehetőségre kattint. A **biztonsági mentés folytatása** művelet visszaadja az aktív állapotú biztonsági mentési elemet, amely a felhasználó által a biztonsági mentési és adatmegőrzési ütemtervet definiáló biztonsági mentési házirendhez van társítva.
+4. A helyreállítható virtuális gép visszaállításához először törölni kell. A törlés megszüntetéséhez válassza a helyreállítható virtuális gép kiválasztását, majd a **Törlés megszüntetése**lehetőséget.
 
-   ![Képernyőkép a Azure Portalről, biztonsági mentés folytatása lehetőség](./media/backup-azure-security-feature-cloud/resume-backup.png)
+   ![Képernyőkép az Azure Portalról, a Virtuális gép törlésének törlése](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
-Ez a folyamatábra a biztonsági mentési elemek különböző lépéseit és állapotát jeleníti meg, ha a Soft delete engedélyezve van:
+   Egy ablak jelenik meg, amely figyelmezteti, hogy ha a törlés visszatörlése van kiválasztva, a virtuális gép összes visszaállítási pontja törlődik, és elérhető a visszaállítási művelet végrehajtásához. A virtuális gép "stop protection with retain data" állapotban marad, a biztonsági mentések szüneteltetve és a biztonsági mentési adatok örökre megmaradnak, és nincs biztonsági mentési házirend hatékony.
 
-![A nem törölt biztonságimásolat-elemek életciklusa](./media/backup-azure-security-feature-cloud/lifecycle.png)
+   ![Képernyőkép az Azure Portalról, a Virtuális gép törlésének megerősítése](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
-További információkért lásd az alábbi [Gyakori kérdések](backup-azure-security-feature-cloud.md#frequently-asked-questions) szakaszt.
+   Ezen a ponton is visszaállíthatja a virtuális gép kiválasztásával **virtuális gép visszaállítása** a kiválasztott visszaállítási pont.  
 
-### <a name="soft-delete-for-vms-using-azure-powershell"></a>Soft Delete a virtuális gépekhez az Azure PowerShell-lel
+   ![Képernyőkép az Azure Portalról, a Virtuálisgép visszaállítása beállításról](./media/backup-azure-security-feature-cloud/restore-vm.png)
+
+   > [!NOTE]
+   > A szemétgyűjtő csak akkor fut és tisztítja meg a lejárt helyreállítási pontokat, ha a felhasználó végrehajtja a **Tartalék mentés folytatása** műveletet.
+
+5. A törlési folyamat törlése után az állapot visszatér a "Biztonsági mentés leállítása az adatok megőrzésével" üzenetbe, majd **választhatja a Biztonsági mentés folytatása**lehetőséget. A **Biztonsági mentés folytatása** művelet a biztonsági mentési elemet aktív állapotban hozza vissza, amely a biztonsági mentési és megőrzési ütemezéseket meghatározó felhasználó által kiválasztott biztonsági mentési házirendhez van társítva.
+
+   ![Képernyőkép az Azure Portalról, a Biztonsági mentés folytatása lehetőségről](./media/backup-azure-security-feature-cloud/resume-backup.png)
+
+Ez a folyamatábra a biztonsági másolat elemének különböző lépéseit és állapotait mutatja, ha a biztonsági másolat engedélyezése engedélyezve van:
+
+![A helyreállítható biztonsági másolat eleméletciklusa](./media/backup-azure-security-feature-cloud/lifecycle.png)
+
+További információt az alábbi [Gyakori kérdések](backup-azure-security-feature-cloud.md#frequently-asked-questions) című részben talál.
+
+### <a name="soft-delete-for-vms-using-azure-powershell"></a>Az Azure PowerShell használatával a virtuális gépek ideiglenes törlése
 
 > [!IMPORTANT]
-> Az az. Recoveryservices szolgáltatónál verzió, amely az Azure PS használatával történő Soft-delete használatát igényli, min 2.2.0. A legújabb verzió beszerzéséhez használja a ```Install-Module -Name Az.RecoveryServices -Force```.
+> Az Azure PS használatával a helyreállítható törléshez szükséges Az.RecoveryServices verzióm 2.2.0. Használja ```Install-Module -Name Az.RecoveryServices -Force``` a legújabb verzió beszerezhető.
 
-A Azure Portal fentiekben leírtaknak megfelelően a lépések sorrendjének megegyeznek az Azure PowerShell használatakor is.
+Az Azure Portalhoz a fentiekben ismertetett módon a lépések sorrendje is megegyezik az Azure PowerShell használata közben.
 
-#### <a name="delete-the-backup-item-using-azure-powershell"></a>A biztonsági mentési elemek törlése az Azure PowerShell használatával
+#### <a name="delete-the-backup-item-using-azure-powershell"></a>A biztonsági másolat elemének törlése az Azure PowerShell használatával
 
-Törölje a biztonsági mentési tételt a [disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS parancsmag használatával.
+Törölje a biztonsági mentési elemet az [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS parancsmag használatával.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -97,11 +97,11 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
-A biztonsági mentési elem "DeleteState" változása "NotDeleted" értékről "törlendőként" értékre változik. A biztonsági mentési adat 14 napig őrzi meg a rendszer. Ha vissza szeretné állítani a törlési műveletet, hajtsa végre a visszavonás – törlés műveletet.
+A biztonsági másolat elemének "DeleteState" fájlja "NotDeleted" -ről "ToBeDeleted" -re változik. A biztonsági mentési adatok 14 napig maradnak meg. Ha vissza szeretné állítani a törlési műveletet, akkor a visszavonás-törlést végre kell hajtani.
 
 #### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>A törlési művelet visszavonása az Azure PowerShell használatával
 
-Először olvassa be a megfelelő biztonsági mentést, amely a törlésre kész állapotú.
+Először olvassa be a megfelelő biztonsági másolat elemet, amely helyreállítható törlési állapotban van (azaz hamarosan törölni fog).
 
 ```powershell
 
@@ -114,7 +114,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-Ezután hajtsa végre a visszavonás-törlés műveletet a [Visszavonás-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS parancsmag használatával.
+Ezután hajtsa végre a visszavonás-törlésműveletet az [Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS parancsmag használatával.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -124,33 +124,33 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-A biztonsági mentési elemek "DeleteState" állapota "NotDeleted" lesz. A védelem azonban továbbra is leáll. A védelem újbóli engedélyezéséhez [folytatnia kell a biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) .
+A biztonsági másolat elemének "DeleteState" visszaáll "NotDeleted" állapotra. De a védelem még mindig levan állítva. [Folytassa a biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) a védelem újbóli engedélyezéséhez.
 
-### <a name="soft-delete-for-vms-using-rest-api"></a>Soft Delete a virtuális gépekhez REST API használatával
+### <a name="soft-delete-for-vms-using-rest-api"></a>Helyreállítható törlés a REST API-t használó virtuális gépekhez
 
-- Törölje a biztonsági másolatokat a REST API az [itt](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)említett módon.
-- Ha a felhasználó vissza kívánja vonni ezeket a törlési műveleteket, tekintse meg az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)említett lépéseket.
+- Törölje a biztonsági másolatokat a REST API használatával, ahogy [itt](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)említettük.
+- Ha a felhasználó vissza kívánja vonni ezeket a törlési műveleteket, olvassa el [az itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)említett lépéseket.
 
-## <a name="disabling-soft-delete"></a>A Soft delete letiltása
+## <a name="disabling-soft-delete"></a>A helyreállítható törlés letiltása
 
-A Soft delete alapértelmezés szerint engedélyezve van az újonnan létrehozott tárolókban a biztonsági mentési adatok véletlen vagy rosszindulatú törlésből való védelme érdekében.  A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és nem várja meg a törlés és az ismételt védelem (például egy tesztkörnyezetben) előtt, nem várhatja el a szükséges 14 napot. Csak a tár tulajdonosa tilthatja le ezt a funkciót. Ha letiltja ezt a funkciót, a védett elemek minden jövőbeli törlése azonnali eltávolítást eredményez, a visszaállítási lehetőség nélkül. A szolgáltatás letiltását megelőzően a Soft Deleted állapotban lévő biztonsági mentési adatmennyiséget a rendszer 14 napig változatlanul törli. Ha véglegesen törölni kívánja ezeket a fájlokat, törölnie kell a törlést, majd újra törölnie kell őket a végleges törléshez.
+A helyreállítható törlés alapértelmezés szerint engedélyezve van az újonnan létrehozott tárolókban, hogy megvédje a biztonsági mentési adatokat a véletlen vagy rosszindulatú törlésekkel szemben.  A szolgáltatás letiltása nem ajánlott. Az egyetlen olyan körülmény, amikor érdemes megfontolni a helyreállítható törlés letiltását, ha a védett elemeket egy új tárolóba szeretné átállítani, és nem tudja megvárni a törlés és az újbóli védelem előtti 14 napot (például tesztkörnyezetben).) Csak a tároló tulajdonosa letilthatja ezt a funkciót. Ha letiltja ezt a funkciót, a védett elemek minden jövőbeli törlése azonnali eltávolítást eredményez, anélkül, hogy vissza tudná állítani. A szolgáltatás letiltása előtt helyreállíthatóan törölt állapotban lévő biztonsági mentési adatok 14 napig helyreállíthatóan törölt állapotban maradnak. Ha szeretné véglegesen törölni ezeket azonnal, akkor meg kell törölni, és törölje őket újra, hogy véglegesen törlődik.
 
-### <a name="disabling-soft-delete-using-azure-portal"></a>A Soft delete letiltása a Azure Portal használatával
+### <a name="disabling-soft-delete-using-azure-portal"></a>A helyreállítható törlés letiltása az Azure Portal használatával
 
-A Soft delete letiltásához kövesse az alábbi lépéseket:
+A helyreállítható törlés letiltásához hajtsa végre az alábbi lépéseket:
 
-1. A Azure Portal nyissa meg a tárolót, majd lépjen a **beállítások** -> **Tulajdonságok**elemre.
-2. A Tulajdonságok ablaktáblán válassza a **biztonsági beállítások** -> **frissítés**lehetőséget.  
-3. A biztonsági beállítások ablaktábla **Soft delete**területén válassza a **Letiltás**lehetőséget.
+1. Az Azure Portalon nyissa meg a trezort, majd nyissa meg a **Beállítások** -> **tulajdonságai lehetőséget.**
+2. A tulajdonságok ablaktáblán válassza a **Biztonsági beállítások** -> **frissítése lehetőséget.**  
+3. A Biztonsági beállítások ablaktáblán a **Helyreállítható törlés**csoportban válassza **a Letiltás**lehetőséget.
 
-![Nem kötelező törlés letiltása](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+![A helyreállítható törlés letiltása](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
 
-### <a name="disabling-soft-delete-using-azure-powershell"></a>A Soft delete letiltása az Azure PowerShell használatával
+### <a name="disabling-soft-delete-using-azure-powershell"></a>A helyreállítható törlés letiltása az Azure PowerShell használatával
 
 > [!IMPORTANT]
-> Az az. Recoveryservices szolgáltatónál verzió, amely az Azure PS használatával történő Soft-delete használatát igényli, min 2.2.0. A legújabb verzió beszerzéséhez használja a ```Install-Module -Name Az.RecoveryServices -Force```.
+> Az Azure PS használatával a helyreállítható törléshez szükséges Az.RecoveryServices verzióm 2.2.0. Használja ```Install-Module -Name Az.RecoveryServices -Force``` a legújabb verzió beszerezhető.
 
-A letiltáshoz használja a [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS parancsmagot.
+A letiltáshoz használja a [Set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS parancsmamot.
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -163,46 +163,46 @@ EnhancedSecurityState  : Enabled
 SoftDeleteFeatureState : Disabled
 ```
 
-### <a name="disabling-soft-delete-using-rest-api"></a>A Soft delete letiltása a REST API használatával
+### <a name="disabling-soft-delete-using-rest-api"></a>A helyreállítható törlés letiltása a REST API használatával
 
-Ha REST API használatával szeretné letiltani a helyreállítható törlési funkciót, tekintse át az [itt](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)említett lépéseket.
+A REST API-val a helyreállítható törlésfunkció letiltásához olvassa el az [itt](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)említett lépéseket.
 
-## <a name="permanently-deleting-soft-deleted-backup-items"></a>A helyreállított törölt biztonsági másolati elemek végleges törlése
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>Helyreállíthatóan törölt biztonsági másolat elemeinek végleges törlése
 
-A szolgáltatás letiltását megelőzően a törölt állapotban lévő biztonsági mentési állapotok helyreállított állapotban maradnak. Ha véglegesen törölni kívánja ezeket a fájlokat, törölje a törlést, majd törölje őket a végleges törléshez.
+A helyreállíthatóan törölt állapotban lévő biztonsági mentési adatok a funkció letiltása előtt helyreállíthatóan törölt állapotban maradnak. Ha szeretné véglegesen törölni ezeket azonnal, majd törölje, és törölje őket újra, hogy véglegesen törlődik.
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
 Kövesse az alábbi lépéseket:
 
-1. A [Soft delete letiltásához](#disabling-soft-delete)kövesse a következő lépéseket:.
-2. A Azure Portal nyissa meg a tárolót, lépjen a **biztonsági másolatok elemre**, és válassza a Soft Deleted VM elemet.
+1. A [helyreállítható törlés letiltásához](#disabling-soft-delete)kövesse a lépéseket.
+2. Az Azure Portalon nyissa meg a tárolót, nyissa meg a **Biztonsági mentési elemek ,** és válassza ki a helyreállíthatóan törölt virtuális gép.
 
-   ![A törölt virtuális gép kiválasztása](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![Helyreállíthatóan törölt virtuális gép kiválasztása](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
-3. Válassza a **Törlés**visszavonása lehetőséget.
+3. Válassza a **Törlés megszüntetése**lehetőséget.
 
-   ![Törlés visszavonása](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+   ![Törlés törlése](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
-4. Ekkor megjelenik egy ablak. Válassza a **Törlés**visszavonása lehetőséget.
+4. Megjelenik egy ablak. Válassza **a Törlés megszüntetése**lehetőséget.
 
-   ![Törlés visszavonása](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Törlés megszüntetése kijelölése](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
-5. Válassza a **biztonsági mentési adattörlés** lehetőséget a biztonsági másolati adatbázis végleges törléséhez.
+5. A biztonsági másolat adatainak végleges törléséhez válassza a **Biztonsági másolat adatainak törlése** lehetőséget.
 
-   ![Válassza a biztonsági másolatok törlése lehetőséget.](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Biztonsági másolat adatainak törlése](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-6. Írja be a biztonsági mentési tétel nevét annak megerősítéséhez, hogy törölni kívánja a helyreállítási pontokat.
+6. Írja be a biztonsági másolat elemének nevét, és erősítse meg, hogy törölni szeretné a helyreállítási pontokat.
 
-   ![Írja be a biztonsági másolati tétel nevét](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Írja be a biztonsági másolat elemének nevét](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
-7. Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
+7. Az elem biztonsági mentési adatainak törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenet jelzi, hogy a biztonsági mentési adatok at törölték.
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor a rendszer a törölt állapotot fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
+Ha az elemeket a helyreállítható törlés letiltása előtt törölték, akkor azok helyreállíthatóan törölt állapotban lesznek. A törlésük azonnali törléséhez a törlési műveletet meg kell fordítani, majd újra végre kell hajtani.
 
-Azonosítsa a helyreállított állapotban lévő elemeket.
+Azonosítsa a helyreállíthatóan törölt elemeket.
 
 ```powershell
 
@@ -215,7 +215,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-Ezután visszafordíthatja a törlési műveletet, amelyet a rendszer a Soft delete engedélyezésekor végzett.
+Ezután fordítsa meg a törlési műveletet, amelyet a helyreállítható törlés engedélyezésekor hajtott végre.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -225,7 +225,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-Mivel a rendszer letiltotta a törlést, a törlési művelet a biztonsági másolatok azonnali eltávolítását fogja eredményezni.
+Mivel a helyreállítható törlés most le van tiltva, a törlési művelet a biztonsági mentési adatok azonnali eltávolítását eredményezi.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -237,36 +237,38 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="using-rest-api"></a>A REST API használata
 
-Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor a rendszer a törölt állapotot fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
+Ha az elemeket a helyreállítható törlés letiltása előtt törölték, akkor azok helyreállíthatóan törölt állapotban lesznek. A törlésük azonnali törléséhez a törlési műveletet meg kell fordítani, majd újra végre kell hajtani.
 
-1. Először vonja vissza a törlési műveleteket az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)leírt lépésekkel.
-2. Ezután tiltsa le a Soft-delete funkciót a REST API használatával az [itt](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)említett lépések végrehajtásával.
-3. Ezután törölje a biztonsági mentéseket a REST API az [itt](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)említett módon.
+1. Először vonja vissza a törlési műveleteket az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)említett lépésekkel.
+2. Ezután tiltsa le a soft-delete funkciót a REST API használatával az [itt](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)említett lépések segítségével.
+3. Ezután törölje a biztonsági másolatokat a REST API használatával, ahogy [itt](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)említettük .
 
 ## <a name="encryption"></a>Titkosítás
 
-### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Biztonsági mentési adatai titkosítása a Microsoft által felügyelt kulcsokkal
+Az összes biztonsági másolatot készít, ha a felhőben tárolva tárolja az Azure Storage titkosítást, amely segít a biztonsági és megfelelőségi kötelezettségek teljesítésében. Ezek az inaktív adatok 256 bites AES titkosítással vannak titkosítva, amely az egyik legerősebb blokktitkosítás, és fips 140-2 szabványnak megfelelő.
 
-A biztonsági mentési adatai automatikusan titkosítva vannak az Azure Storage encryption használatával. A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az adattitkosítás és az adattitkosítás a 256 bites AES-titkosítással történik, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás hasonló a Windows rendszeren a BitLocker-titkosításhoz.
+Az inaktív titkosítás mellett az átvitel alatt álló összes biztonsági mentési adat ÁTVITELE HTTPS-en keresztül történik. Mindig az Azure gerinchálózatán marad.
 
-Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel HTTPS-védelemmel történik. Ezek az adatközpontok az Azure gerinc hálózatán maradnak.
+További információ: [Azure Storage titkosítás a nyugalmi adatok.](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) Tekintse meg az [Azure Backup gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) a titkosítással kapcsolatos esetleges kérdések megválaszolása.
 
-További információ: az [Azure Storage titkosítása inaktív adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). A titkosítással kapcsolatban esetlegesen felmerülő kérdések megválaszolásához tekintse meg a [Azure Backup gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) című témakört.
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>A biztonsági mentési adatok titkosítása platformáltal kezelt kulcsok használatával
 
-### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
+Alapértelmezés szerint az összes adat platformáltal kezelt kulccsal van titkosítva. A titkosítás engedélyezéséhez nem kell semmilyen explicit műveletet végrehajtania a célból, és ez minden olyan számítási feladatra vonatkozik, amelyről a Recovery Services-tárolóba készül biztonsági másolatot.
 
-Az Azure Virtual Machines biztonsági mentése közben lehetősége van arra is, hogy a Azure Key Vaultban tárolt titkosítási kulcsokkal Titkosítsa a biztonsági mentési adatait a Recovery Services-tárolóban.
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági másolat adatainak titkosítása ügyfél által kezelt kulcsokkal
+
+Az Azure virtuális gépek biztonsági mentésekor most már titkosíthatja az adatokat az Ön tulajdonában lévő és felügyelt kulcsok használatával. Az Azure Backup lehetővé teszi, hogy az Azure Key Vaultban tárolt RSA-kulcsokat használja a biztonsági mentések titkosításához. A biztonsági mentések titkosításához használt titkosítási kulcs eltérhet a forráshoz használttól. Az adatok egy AES 256 alapú adattitkosítási kulccsal (DEK) védettek, amely viszont a kulcsokkal védett. Ez teljes ellenőrzést biztosít az adatok és a kulcsok felett. A titkosítás engedélyezéséhez szükséges, hogy a Recovery Services-tároló hozzáférést kapjon az Azure Key Vault titkosítási kulcsához. Szükség esetén letilthatja a kulcsot, vagy visszavonhatja a hozzáférést. Azonban engedélyeznie kell a titkosítást a kulcsok használatával, mielőtt megkísérli a tároló elemeinek védelmét.
 
 >[!NOTE]
->Ez a funkció jelenleg korai használatban van. Ha az ügyfél által felügyelt kulcsokkal szeretné titkosítani a biztonsági mentési adatait, töltse ki [ezt a kérdőívet](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) . Vegye figyelembe, hogy a funkció használatának lehetősége a Azure Backup szolgáltatás jóváhagyását képezi.
+>Ez a funkció jelenleg korlátozott annektál. Kérjük, töltse ki ezt AskAzureBackupTeam@microsoft.com a [felmérést,](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) és írjon nekünk, ha szeretné titkosítani a biztonsági mentési adatokat az ügyfél által kezelt kulcsok. Vegye figyelembe, hogy a funkció használatának lehetőségét az Azure Backup szolgáltatás jóváhagyása szükséges.
 
-### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Felügyelt lemezes virtuális gép biztonsági mentése az ügyfél által felügyelt kulcsok használatával
+### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Ügyfél által kezelt kulcsokkal titkosított felügyelt lemezes virtuális gépek biztonsági mentése
 
-Azure Backup lehetővé teszi az Azure-Virtual Machines biztonsági mentését, amely az ügyfél által felügyelt kulcsokkal titkosított lemezeket tartalmaz. További részletekért tekintse meg a [felügyelt lemezek titkosítása az ügyfél által felügyelt kulcsokkal](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)című témakört.
+Az Azure Backup lehetővé teszi az Azure-beli virtuális gépek biztonsági mentését is, amelyek a kulcsot a kiszolgálóoldali titkosításhoz használják. A lemezek titkosításához használt kulcs az Azure Key Vault ban tárolódik, és az Ön által kezelt. Az ügyfél által kezelt kulcsokat használó kiszolgálóoldali titkosítás eltér az Azure lemeztitkosítástól, mivel az ADE a BitLocker (Windows) és a DM-Crypt (Linux) titkosítást használja, az SSE titkosítja az adatokat a tárolószolgáltatásban, lehetővé téve az operációs rendszer vagy a a virtuális gépekhez. További részletekért olvassa el [a felügyelt lemezek titkosítását az ügyfél által felügyelt kulcsokkal.](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)
 
-### <a name="backup-of-encrypted-vms"></a>Titkosított virtuális gépek biztonsági mentése
+### <a name="backup-of-vms-encrypted-using-ade"></a>Az ADE használatával titkosított virtuális gépek biztonsági mentése
 
-A Azure Backup szolgáltatás használatával biztonsági mentést készíthet és visszaállíthat Windows vagy Linux rendszerű Azure-beli virtuális gépeket (VM-ket) titkosított lemezekkel. Útmutatásért lásd: a [titkosított virtuális gépek biztonsági mentése és visszaállítása Azure Backupokkal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+Az Azure Backup segítségével is biztonsági másolatot készíthet az Azure virtuális gépeiről, amelyek operációs rendszerüket vagy adatlemezeiket az Azure Disk Encryption használatával titkosítva használják. Az ADE a BitLocker for Windows virtuális gépek és a DM-Crypt for Linux virtuális gépek segítségével végzi a vendégtitkosítást. További információt a [Titkosított virtuális gépek biztonsági mentése és visszaállítása az Azure Backup segítségével.](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)
 
 ## <a name="private-endpoints"></a>Privát végpontok
 
@@ -274,56 +276,56 @@ A Azure Backup szolgáltatás használatával biztonsági mentést készíthet �
 
 ## <a name="other-security-features"></a>Egyéb biztonsági funkciók
 
-### <a name="protection-of-azure-backup-recovery-points"></a>Azure Backup helyreállítási pontok védelme
+### <a name="protection-of-azure-backup-recovery-points"></a>Az Azure Biztonsági mentés helyreállítási pontjainak védelme
 
-A Recovery Services-tárolók által használt Storage-fiókok el vannak különítve, és a felhasználók nem férhetnek hozzá semmilyen kártékony célra. A hozzáférés csak Azure Backup felügyeleti műveleteken, például a visszaállításon keresztül engedélyezett. Ezeket a kezelési műveleteket szerepköralapú Access Controlon (RBAC) keresztül vezérli a rendszer.
+A helyreállítási szolgáltatások tárolói által használt tárfiókok elkülönítve vannak, és a felhasználók rosszindulatú célokra nem férhetnek hozzá. A hozzáférés csak az Azure Backup felügyeleti műveletek, például a visszaállítás keresztül engedélyezett. Ezeket a felügyeleti műveleteket a szerepköralapú hozzáférés-vezérlés (RBAC) vezérli.
 
-További információ: [szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
+További információt a [Szerepköralapú hozzáférés-vezérlés használata az Azure Backup helyreállítási pontok kezeléséhez](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)című témakörben talál.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="for-soft-delete"></a>A Soft delete
+### <a name="for-soft-delete"></a>Ideiglenes törlés esetén
 
-#### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Engedélyezni kell a Soft-delete szolgáltatást minden tárolón?
+#### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Minden trezorban engedélyezni kell a helyreállítható törlés funkciót?
 
-Nem, alapértelmezés szerint a Recovery Services-tárolók számára van kiépítve és engedélyezve.
+Nem, alapértelmezés szerint az összes helyreállítási szolgáltatás tárolóihoz beépített és engedélyezett.
 
-#### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Megadhatom, hogy a törlési művelet befejezése után a rendszer hány napig őrizze meg az adataimat a törölt állapotban?
+#### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Konfigurálhatom, hogy az adataim hány napig lesznek helyreállíthatóan törölt állapotban a törlési művelet befejezése után?
 
-Nem, a törlési művelet után a rendszer 14 napig további megőrzési időt rögzített.
+Nem, a törlési művelet után 14 napos további megőrzési szintre van rögzítve.
 
-#### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Fizetnem kell a további 14 napos adatmegőrzési díjat?
+#### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Meg kell fizetnem a további 14 napos visszatartás költségeit?
 
-Nem, ez a 14 napos további megőrzés a Soft-delete funkció részeként díjmentes.
+Nem, ez a 14 napos további megőrzés ingyenes, a soft-delete funkció részeként.
 
-#### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Végezhetek visszaállítási műveletet, ha az adatok helyreállítható törlési állapotban vannak?
+#### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Végrehajthatok egy visszaállítási műveletet, ha az adataim helyreállítható törlési állapotban vannak?
 
-Nem, vissza kell állítania a nem törölt erőforrás törlését a visszaállításhoz. A törlési művelet visszaállítja az erőforrást a **stop Protection szolgáltatásba, és megőrzi az adatállapotot,** ahol bármikor visszaállíthatja azokat. Ebben az állapotban a szemetet gyűjtő szüneteltetve marad.
+Nem, a visszaállításhoz vissza kell törölnie a helyreállíthatóan törölt erőforrást. A törlés törlése művelet visszaállítja az erőforrást a **Stop védelembe, és megőrzi az adatok állapotát,** ahol bármikor visszaállítható. A szemétgyűjtő ebben az állapotban szünetel.
 
-#### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>A pillanatképek ugyanazt az életciklust követik, mint a tároló helyreállítási pontjai?
+#### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>A pillanatképek ugyanazt az életciklust követik, mint a helyreállítási pontok a tárolóban?
 
 Igen.
 
-#### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Hogyan indíthatom újra az ütemezett biztonsági mentéseket egy helyreállított erőforráshoz?
+#### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Hogyan aktiválhatom újra az ütemezett biztonsági mentéseket egy helyreállíthatóan törölt erőforráshoz?
 
-Törlés után a folytatási művelet ismét védi az erőforrást. A folytatási művelet társít egy biztonsági mentési szabályzatot az ütemezett biztonsági mentések a kiválasztott megőrzési időtartammal való elindításához. Emellett a szemetet gyűjtő is fut, amint a folytatási művelet befejeződik. Ha olyan helyreállítási pontról szeretne visszaállítást végezni, amelyik lejárt a lejárati dátumnál, azt javasoljuk, hogy a folytatási művelet elindítása előtt végezze el ezt a műveletet.
+A törlés, majd a folytatási művelet ismételt védelme tévő elemével ismét megvédheti az erőforrást. Folytatásművelet társít egy biztonsági mentési szabályzatot az ütemezett biztonsági mentések aktiválásához a kiválasztott megőrzési időszakkal. Is, a szemétgyűjtő fut, amint a folytatási művelet befejeződik. Ha olyan helyreállítási pontról szeretne visszaállítani, amely már túl van a lejárati dátumon, azt javasoljuk, hogy tegye meg a folytatási művelet végrehajtása előtt.
 
-#### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Törölhetem a tárolót, ha a tárolóban nem találhatók a törölt elemek?
+#### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Törölhetem a trezoromat, ha a tárolóban vannak helyreállíthatóan törölt elemek?
 
-Az Recovery Services-tár nem törölhető, ha a tárolóban található helyreállítható állapotú biztonsági másolati elemek vannak. A törölt elemek a törlési művelet után 14 nappal véglegesen törlődnek. Ha 14 napig nem tud megvárni, tiltsa le a helyreállítható [törlést](#disabling-soft-delete), törölje a nem törölt elemek törlését, majd törölje újra a véglegesen a törléshez. Miután meggyőződött róla, hogy nincsenek védett elemek, és nem találhatók a törölt elemek, a tároló törölhető.  
+A Recovery Services-tároló nem törölhető, ha a biztonsági mentési elemek helyreállítható állapotban vannak a tárolóban. A helyreállíthatóan törölt elemek véglegesen törlődnek 14 nappal a törlési művelet után. Ha nem tud várni 14 napot, akkor tiltsa le a [helyreállítható törlést,](#disabling-soft-delete)törölje a helyreállíthatóan törölt elemeket, és törölje őket újra a végleges törléshez. Miután meggyőződött arról, hogy nincsenek védett elemek és helyreállíthatóan törölt elemek, a tároló törölhető.  
 
-#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Törölhetem a 14 napnál régebbi adattörlési időszakot a törlés után?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Törölhetem az adatokat a törlés utáni 14 napos törlési időszaknál korábban?
 
-Nem. Nem kényszerítheti a nem törölt elemek törlését, ezeket a rendszer 14 nap elteltével automatikusan törli. Ez a biztonsági funkció lehetővé teszi az adatok véletlen vagy rosszindulatú törlésből való védelmét.  A virtuális gépen bármilyen más művelet végrehajtása előtt várjon 14 napot.  A helyreállított elemek nem lesznek felszámítva.  Ha az új tárolóra vonatkozó 14 napon belül a helyreállítható törlésre kijelölt virtuális gépeket újra kell védetté tenni, forduljon a Microsoft ügyfélszolgálatához.
+Nem. Nem kényszerítheti a helyreállíthatóan törölt elemek törlését, a rendszer 14 nap elteltével automatikusan törli őket. Ez a biztonsági funkció lehetővé teszi a biztonsági másolatok adatainak védelmét a véletlen vagy rosszindulatú törlésekkel szemben.  Várjon 14 napot, mielőtt bármilyen más műveletet hajt végre a virtuális számítógépen.  A helyreállíthatóan törölt elemek et felszámítják.  Ha 14 napon belül újra kell védenie a helyreállítható törlésre jelölt virtuális gépeket egy új tárolóba, forduljon a Microsoft támogatási szolgálatához.
 
-#### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Végrehajthatók a helyreállítható törlési műveletek a PowerShellben vagy a parancssori felületen?
+#### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>A powershellben vagy a CLI-ben elvégezhető a helyreállítható törlési műveletek?
 
-A helyreállítható törlési műveletek a [PowerShell](#soft-delete-for-vms-using-azure-powershell)használatával végezhetők el. A CLI jelenleg nem támogatott.
+A soft delete műveletek a [PowerShell](#soft-delete-for-vms-using-azure-powershell)használatával hajthatók végre. Jelenleg a CLI nem támogatott.
 
-#### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>A Soft delete támogatott más felhőalapú számítási feladatokhoz, például az Azure-beli virtuális gépeken SQL Server és az Azure-beli virtuális gépeken SAP HANA?
+#### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>A helyreállítható törlés más felhőbeli számítási feladatok, például az Azure-beli virtuális gépeksql Server és az Azure-beli SAP HANA esetében támogatott?
 
-Nem. Jelenleg az Azure Virtual Machines szolgáltatásban csak a Soft delete használata támogatott.
+Nem. Jelenleg a helyreállítható törlés csak az Azure virtuális gépek támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [Azure Backup biztonsági vezérlőinek](backup-security-controls.md).
+- Olvassa el [az Azure Backup biztonsági vezérlőinek olvasását.](backup-security-controls.md)

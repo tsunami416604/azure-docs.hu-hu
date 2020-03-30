@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Python-alkalmazás létrehozása – Azure cache a Redis-hez'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan Python-alkalmazást, amely Azure cache-t használ a Redis.
+title: 'Rövid útmutató: Python-alkalmazás létrehozása – Azure-gyorsítótár a Redis számára'
+description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Python-alkalmazást, amely az Azure Cache for Redis használatával.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -11,37 +11,37 @@ ms.custom:
 - seo-python-october2019
 ms.date: 11/05/2019
 ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75433474"
 ---
-# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Gyors útmutató: az Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rövid útmutató: Hozzon létre egy Python-alkalmazást, amely azure-gyorsítótárat használ a Redis-hez
 
-Ebben a cikkben egy Python-alkalmazásba foglalja bele az Azure cache-t a Redis-be, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
+Ebben a cikkben a Redis-gyorsítótárba építi be az Azure Cache for Redis alkalmazást, hogy hozzáférjen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Python 2 vagy 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-instance"></a>Azure cache létrehozása a Redis-példányhoz
+## <a name="create-an-azure-cache-for-redis-instance"></a>Azure-gyorsítótár létrehozása a Redis-példányhoz
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>A redis-py telepítése
 
-A [Redis-](https://github.com/andymccurdy/redis-py) a Redis egy Python-felület az Azure cache-hez. A *Redis-* a Python-csomagok eszközzel telepítheti a *pip*-et a parancssorból. 
+[Redis-py](https://github.com/andymccurdy/redis-py) egy Python-felület az Azure Cache for Redis. A Python-csomagok eszköz , *pip*, telepítse a *redis-py* csomagot a parancssorból. 
 
-A következő példa a Python 3 *pip3* használta a *Redis-* a Windows 10-es verzióra való telepítéséhez a rendszergazdai parancssorból.
+A következő példa *a Python 3-hoz készült pip3-ot* használta a *redis-py* telepítéséhez a Windows 10-re egy rendszergazdai parancssorból.
 
-![A Redis-a Python-felület telepítése az Azure cache-be a Redis-hez](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![Telepítse a redis-py Python felületet az Azure Cache for Redis-hez](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 ## <a name="read-and-write-to-the-cache"></a>Olvasás és írás a gyorsítótárban
 
-Futtassa a Pythont a parancssorból, és tesztelje a gyorsítótárat a következő kód használatával. Cserélje le a `<Your Host Name>` és a `<Your Access Key>` értéket a Redis-példány Azure-gyorsítótárának értékeire. Az állomásnév *\<DNS-név: >. Redis. cache. Windows. net*.
+Futtassa a Pythont a parancssorból, és tesztelje a gyorsítótárat a következő kód használatával. Cserélje `<Your Host Name>` `<Your Access Key>` le, és az azure-gyorsítótár a Redis-példány értékeit. Az állomásneve * \<>.redis.cache.windows.net típusú DNS-név.*
 
 ```python
 >>> import redis
@@ -54,11 +54,11 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Az Azure cache 3,0-es vagy újabb verziójának Redis az SSL-tanúsítvány ellenőrzését érvényesíti. a Redis Azure cache-hez való csatlakozáskor explicit módon be kell állítani a ssl_ca_certs. A RedHat Linux esetében ssl_ca_certs az */etc/PKI/TLS/certs/CA-Bundle.CRT* Certificate modulban találhatók.
+> Az Azure Cache for Redis 3.0-s vagy újabb verzió esetén az SSL-tanúsítvány ellenőrzése érvénybe lép. ssl_ca_certs explicit módon kell beállítani, amikor csatlakozik az Azure Cache for Redis. A RedHat Linux esetében a ssl_ca_certs az */etc/pki/tls/certs/ca-bundle.crt* tanúsítványmodulban találhatók.
 
-## <a name="create-a-python-sample-app"></a>Python-minta alkalmazás létrehozása
+## <a name="create-a-python-sample-app"></a>Python-mintaalkalmazás létrehozása
 
-Hozzon létre egy új szövegfájlt, adja hozzá a következő parancsfájlt, és mentse a fájlt *PythonApplication1.py*. Cserélje le a `<Your Host Name>` és a `<Your Access Key>` értéket a Redis-példány Azure-gyorsítótárának értékeire. Az állomásnév *\<DNS-név: >. Redis. cache. Windows. net*.
+Hozzon létre egy új szövegfájlt, adja hozzá a következő parancsfájlt, és mentse a fájlt *PythonApplication1.py*. Cserélje `<Your Host Name>` `<Your Access Key>` le, és az azure-gyorsítótár a Redis-példány értékeit. Az állomásneve * \<>.redis.cache.windows.net típusú DNS-név.*
 
 ```python
 import redis
@@ -84,28 +84,28 @@ for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
 
-*PythonApplication1.py* futtatása Python-val. Az eredmények a következő példához hasonlóan jelennek meg:
+*Futtassa PythonApplication1.py* pythonnal. A következő példához hasonló eredményeket kell látnia:
 
-![Python-szkript futtatása a gyorsítótár-hozzáférés teszteléséhez](./media/cache-python-get-started/cache-python-completed.png)
+![Python-parancsfájl futtatása a gyorsítótár-hozzáférés teszteléséhez](./media/cache-python-get-started/cache-python-completed.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha befejezte az Azure-erőforráscsoportot és az ebben a rövid útmutatóban létrehozott erőforrásokat, törölheti őket a díjak elkerülése érdekében.
+Ha befejezte az Azure erőforráscsoportot és az ebben a rövid útmutatóban létrehozott erőforrásokat, törölheti őket a költségek elkerülése érdekében.
 
 > [!IMPORTANT]
-> Egy erőforráscsoport törlése nem vonható vissza, és az erőforráscsoport és az ahhoz tartozó összes erőforrás véglegesen törölve lesz. Ha létrehozta az Azure cache-t a Redis-példányhoz egy meglévő erőforráscsoporthoz, amelyet meg szeretne őrizni, törölheti a gyorsítótár **Áttekintés** lapján található **Törlés** lehetőség kiválasztásával. 
+> Az erőforráscsoport törlése visszafordíthatatlan, és az erőforráscsoport és a benne lévő összes erőforrás véglegesen törlődik. Ha az Azure Cache for Redis-példányt egy megtartani kívánt meglévő erőforráscsoportban hozta létre, csak a gyorsítótárat törölheti a **Törlés** a gyorsítótár **áttekintése** lapon lehetőség kiválasztásával. 
 
-Az erőforráscsoport és az Azure-példány Redis Cacheának törlése:
+Az erőforráscsoport és annak Redis-gyorsítótára az Azure-példányhoz törlése:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok**elemet.
-1. A **szűrés név alapján** szövegmezőbe írja be annak az erőforráscsoportnak a nevét, amely tartalmazza a gyorsítótár-példányt, majd válassza ki a keresési eredmények közül. 
-1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet.
-1. Írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg és válassza ki **az Erőforráscsoportokat.**
+1. A **Név szerint szűrés** mezőbe írja be a gyorsítótár-példányt tartalmazó erőforráscsoport nevét, majd jelölje ki a keresési eredmények közül. 
+1. Az erőforráscsoport lapján válassza az **Erőforráscsoport törlése**lehetőséget.
+1. Írja be az erőforráscsoport nevét, majd válassza **a Törlés**lehetőséget.
    
-   ![Az Azure cache Redis tartozó erőforráscsoport törlése](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
+   ![Az erőforráscsoport törlése a Redis Azure-gyorsítótárához](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
+> [Hozzon létre egy egyszerű ASP.NET webalkalmazást, amely egy Azure-gyorsítótárat használ a Redis számára.](./cache-web-app-howto.md)
 

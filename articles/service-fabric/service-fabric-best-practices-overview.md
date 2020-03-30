@@ -1,53 +1,53 @@
 ---
-title: Az Azure Service Fabric alkalmazás és a fürt ajánlott eljárásai
-description: Ajánlott eljárások és kialakítási szempontok fürtök, alkalmazások és szolgáltatások Azure Service Fabric használatával történő kezeléséhez.
+title: Az Azure Service Fabric-alkalmazás és a fürt ajánlott eljárásai
+description: Ajánlott eljárások és tervezési szempontok a fürtök, alkalmazások és szolgáltatások Azure Service Fabric használatával történő kezeléséhez.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
 ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551777"
 ---
-# <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Az Azure Service Fabric alkalmazás és a fürt ajánlott eljárásai
+# <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Az Azure Service Fabric-alkalmazás és a fürt ajánlott eljárásai
 
-Ez a cikk az Azure Service Fabric-alkalmazások és-fürtök kezelésével kapcsolatos ajánlott eljárásokra mutató hivatkozásokat tartalmaz. Javasoljuk, hogy ezeket a gyakorlatokat az éles környezet megbízhatóságának optimalizálása érdekében implementálja. Az [Service Fabric-sablonok](https://github.com/Azure-Samples/service-fabric-cluster-templates) egyikével megkezdheti a termelési megoldás megtervezését, vagy frissítheti a meglévő sablont a gyakorlatok beépítéséhez.
+Ez a cikk az Azure Service Fabric-alkalmazások és fürtök kezelésével kapcsolatos gyakorlati tanácsokra mutató hivatkozásokat tartalmaz. Javasoljuk, hogy az éles környezet megbízhatóságának optimalizálása érdekében valósítsa meg ezeket a gyakorlatokat. Használja a [Service Fabric fürtsablonok](https://github.com/Azure-Samples/service-fabric-cluster-templates) egyikével az éles megoldás tervezésének megkezdéséhez, vagy frissítse a meglévő sablont, hogy beépítse ezeket a gyakorlatokat.
 
 ## <a name="security"></a>Biztonság
 
-* [Ajánlott biztonsági eljárások](service-fabric-best-practices-security.md)
+* [Gyakorlati tanácsok a biztonsággal kapcsolatosakban](service-fabric-best-practices-security.md)
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
-* [Ajánlott eljárások a hálózatkezeléshez](service-fabric-best-practices-networking.md)
+* [Gyakorlati tanácsok a hálózatépítéshez](service-fabric-best-practices-networking.md)
 
 ## <a name="compute-planning-and-scaling"></a>Számítási teljesítmény tervezése és méretezése
 
-* [Ajánlott eljárások a számítási skálázáshoz](service-fabric-best-practices-capacity-scaling.md)
-* [Számítási kapacitás megtervezése](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [A számítási méretezés ajánlott eljárásoka](service-fabric-best-practices-capacity-scaling.md)
+* [Számítási kapacitástervezés](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
 
 ## <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
-* [Ajánlott eljárások az infrastruktúra kódként való megvalósításához](service-fabric-best-practices-infrastructure-as-code.md)
+* [Az infrastruktúra kódként történő megvalósításának bevált gyakorlatai](service-fabric-best-practices-infrastructure-as-code.md)
 
-## <a name="monitoring-and-diagnostics"></a>Figyelés és diagnosztika
+## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
-* [Ajánlott eljárások a fürtök monitorozásához és diagnosztizálásához](service-fabric-best-practices-monitoring.md)
+* [Gyakorlati tanácsok a fürtfigyeléshez és -diagnosztikához](service-fabric-best-practices-monitoring.md)
 
 ## <a name="application-design"></a>Az alkalmazás kialakítása
 
-* [Ajánlott eljárások az alkalmazások kialakításához](service-fabric-best-practices-applications.md)
+* [Gyakorlati tanácsok az alkalmazástervezéshez](service-fabric-best-practices-applications.md)
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
-Az előző fejezetekben javasolt eljárások megvalósítása után győződjön meg arról, hogy az üzemi készültségi ellenőrzőlista összes ajánlott eljárása be van építve:
-* [Azure Service Fabric üzemi készültségi ellenőrzőlista](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+Az előző szakaszokban javasolt eljárások végrehajtása után győződjön meg arról, hogy az összes ajánlott gyakorlatot beépítette a termelési készenléti ellenőrzőlistába:
+* [Az Azure Service Fabric éles készültségi ellenőrzőlistája](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
-* Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
-* Hibaelhárítási Service Fabric: [útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Fürt létrehozása virtuális gépeken vagy Windows Server rendszert futtató számítógépeken: [Service Fabric-fürt létrehozása Windows Server rendszerhez](service-fabric-cluster-creation-for-windows-server.md)
+* Fürt létrehozása virtuális gépeken vagy Linuxot futtató számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
+* Szolgáltatásháló – [hibaelhárítási útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

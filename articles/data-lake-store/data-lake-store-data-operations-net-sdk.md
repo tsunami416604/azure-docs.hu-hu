@@ -1,19 +1,19 @@
 ---
-title: '.NET SDK: fájlrendszerbeli műveletek Azure Data Lake Storage Gen1'
-description: Használja a Azure Data Lake Storage Gen1 .NET SDK-t a fájlrendszerbeli műveletekhez Data Lake Storage Gen1 például mappák létrehozása stb.).
+title: '.NET SDK: Fájlrendszer-műveletek az Azure Data Lake Storage Gen1 szolgáltatáson'
+description: Használja az Azure Data Lake Storage Gen1 .NET SDK fájlrendszer műveletek Data Lake Storage Gen1, például mappák létrehozása, stb.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638901"
 ---
-# <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Fájlrendszer-műveletek Data Lake Storage Gen1 a .NET SDK használatával
+# <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Fájlrendszer-műveletek a Data Lake Storage Gen1 rendszeren a .NET SDK használatával
 
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
@@ -23,33 +23,33 @@ ms.locfileid: "75638901"
 >
 >
 
-Ebből a cikkből megtudhatja, hogyan hajthat végre fájlrendszer-műveleteket Data Lake Storage Gen1 a .NET SDK használatával. A fájlrendszeri műveletek közé tartozik a mappák létrehozása Data Lake Storage Gen1 fiókban, fájlok feltöltése, fájlok letöltése stb.
+Ebben a cikkben megtudhatja, hogyan hajthatja végre a fájlrendszer-műveleteket a Data Lake Storage Gen1-en a .NET SDK használatával. A fájlrendszer műveletei közé tartozik a mappák létrehozása a Data Lake Storage Gen1 fiókban, fájlok feltöltése, fájlok letöltése stb.
 
-A Data Lake Storage Gen1 a .NET SDK használatával történő Fiókkezelés-kezelési műveletekkel kapcsolatos útmutatásért lásd: [Fiókkezelés a Data Lake Storage Gen1 a .net SDK használatával](data-lake-store-get-started-net-sdk.md).
+A .NET SDK használatával a Data Lake Storage Gen1 fiókkezelési műveleteinek módjáról a [Data Lake Storage Gen1 fiókkezelési műveleteinek .NET SDK használatával című](data-lake-store-get-started-net-sdk.md)témakörben talál útmutatást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A **Visual Studio 2013-es vagy újabb**verzióját. A cikkben szereplő utasítások a Visual Studio 2019-et használják.
+* **Visual Studio 2013-as vagy újabb.** Az ebben a cikkben található utasítások a Visual Studio 2019-et használják.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure Data Lake Storage Gen1 fiók**. A fiókok létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépéseivel](data-lake-store-get-started-portal.md)foglalkozó témakört.
+* **Azure Data Lake Storage Gen1 fiók.** A fiók létrehozásáról az [Azure Data Lake Storage Gen1 című témakörben talál útmutatást.](data-lake-store-get-started-portal.md)
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 
 A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) elérhető kódminta végigvezeti a fájlok tárolóban való létrehozásának, a fájlok összetűzésének, a fájlok letöltésének és az egyes fájlok tárolóból való törlésének folyamatán. A cikk ezen szakasza a kód fő részeit mutatja be.
 
-1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
-1. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-1. A **projekt neve**mezőbe írja be `CreateADLApplication`, majd válassza a **Létrehozás**lehetőséget.
+1. A Visual Studio programban válassza a **Fájl** menü **Új**, majd **A Project**parancsot.
+1. Válassza **a Console App (.NET Framework)** lehetőséget, majd a **Tovább**gombot.
+1. A Project név `CreateADLApplication` **mezőbe**írja be a beírt lehetőséget, majd válassza a **Létrehozás lehetőséget.**
 1. Adja hozzá a NuGet-csomagokat a projekthez.
 
    1. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
-   1. Győződjön meg arról, hogy a **NuGet csomagkezelő** lapon a **csomag forrása** **nuget.org**értékre van állítva. Győződjön meg arról is, hogy az **előzetes verzió belefoglalása** jelölőnégyzet be van jelölve.
+   1. A **NuGet Csomagkezelő** lapon győződjön meg arról, hogy **a Csomag forrás** a **nuget.org.** Ellenőrizze azt is, hogy a **Kiadás előtti felvétel jelölőnégyzet** be van-e jelölve.
    1. Keresse meg és telepítse az alábbi NuGet-csomagokat:
 
-      * `Microsoft.Azure.DataLake.Store` – ez a cikk a v 1.0.0-t használja.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – ez a cikk a v 2.3.1-et használja.
+      * `Microsoft.Azure.DataLake.Store`- Ez a cikk a v1.0.0-t használja.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`- Ez a cikk a v2.3.1-et használja.
 
       Zárja be a **NuGet-csomagkezelőt**.
 
@@ -81,16 +81,16 @@ A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-s
     }
     ```
 
-A cikk hátralévő részeiben láthatja, hogyan használhatók az elérhető .NET-metódusok olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
+A cikk további szakaszaiban láthatja, hogyan használhatja a rendelkezésre álló .NET metódusokat olyan műveletek hez, mint a hitelesítés, a fájlfeltöltés stb.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
-* Az alkalmazás végfelhasználói hitelesítéséhez lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .net SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
-* Az alkalmazás szolgáltatások közötti hitelesítéséhez lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .net SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
+* Az alkalmazás végfelhasználói hitelesítése a [Végfelhasználói hitelesítés a Data Lake Storage Gen1 használatával .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md)című témakörben található.
+* Az alkalmazás szolgáltatás-szolgáltatás hitelesítése a [Szolgáltatás-szolgáltatás hitelesítés e-kiszolgáló s1](data-lake-store-service-to-service-authenticate-net-sdk.md)használatával a Data Lake Storage Gen1 használatával című témakörben található.
 
 ## <a name="create-client-object"></a>Ügyfélobjektum létrehozása
 
-A következő kódrészlet létrehozza a Data Lake Storage Gen1 filesystem Client objektumot, amely a szolgáltatásra vonatkozó kérelmek kibocsátására szolgál.
+A következő kódrészlet létrehozza a Data Lake Storage Gen1 fájlrendszer ügyfélobjektumot, amely a szolgáltatásnak érkező kérelmek kiadására szolgál.
 
 ```
 // Create client objects
@@ -99,7 +99,7 @@ AdlsClient client = AdlsClient.CreateClient(_adlsg1AccountName, adlCreds);
 
 ## <a name="create-a-file-and-directory"></a>Fájl és könyvtár létrehozása
 
-Adja hozzá a következő kódrészletet az alkalmazásához. Ez a kódrészlet egy nem létező fájlt és bármely szülő könyvtárat felhelyez.
+Adja hozzá a következő kódrészletet az alkalmazásához. Ez a kódrészlet hozzáad egy fájlt és minden olyan szülőkönyvtárat, amely nem létezik.
 
 ```
 // Create a file - automatically creates any parent directories that don't exist
@@ -117,7 +117,7 @@ using (var stream = client.CreateFile(fileName, IfExists.Overwrite))
 
 ## <a name="append-to-a-file"></a>Hozzáfűzés fájlhoz
 
-Az alábbi kódrészlet egy meglévő, Data Lake Storage Gen1-fiókban lévő fájlhoz fűzi az adathalmazt.
+A következő kódrészlet adatokat fűz egy meglévő fájlhoz a Data Lake Storage Gen1 fiókban.
 
 ```
 // Append to existing file
@@ -131,7 +131,7 @@ using (var stream = client.GetAppendStream(fileName))
 
 ## <a name="read-a-file"></a>Fájl beolvasása
 
-A következő kódrészlet beolvassa egy fájl tartalmát a Data Lake Storage Gen1ban.
+A következő kódrészlet beolvassa egy fájl tartalmát a Data Lake Storage Gen1-ben.
 
 ```
 //Read file contents
@@ -156,7 +156,7 @@ var directoryEntry = client.GetDirectoryEntry(fileName);
 PrintDirectoryEntry(directoryEntry);
 ```
 
-A `PrintDirectoryEntry` metódus definíciója a [githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
+A módszer `PrintDirectoryEntry` definíciója a [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
 
 ## <a name="rename-a-file"></a>Fájl átnevezése
 
@@ -170,7 +170,7 @@ client.Rename(fileName, destFilePath, true);
 
 ## <a name="enumerate-a-directory"></a>Könyvtárak enumerálása
 
-Az alábbi kódrészlet egy Data Lake Storage Gen1-fiókhoz tartozó címtárakat sorolja fel.
+A következő kódrészlet egy Data Lake Storage Gen1 fiók könyvtárait sorolja fel.
 
 ```
 // Enumerate directory
@@ -180,29 +180,29 @@ foreach (var entry in client.EnumerateDirectory("/Test"))
 }
 ```
 
-A `PrintDirectoryEntry` metódus definíciója a [githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
+A módszer `PrintDirectoryEntry` definíciója a [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
 
 ## <a name="delete-directories-recursively"></a>Könyvtárak rekurzív törlése
 
-A következő kódrészlet rekurzív módon töröl egy könyvtárat és annak alkönyvtárait.
+A következő kódrészlet rekurzívmódon töröl egy könyvtárat és annak minden alkönyvtárát.
 
 ```
 // Delete a directory and all its subdirectories and files
 client.DeleteRecursive("/Test");
 ```
 
-## <a name="samples"></a>Minták
+## <a name="samples"></a>Példák
 
-Íme néhány példa, amely bemutatja, hogyan használhatja a Data Lake Storage Gen1 filesystem SDK-t.
+Íme néhány minta, amely bemutatja a Data Lake Storage Gen1 fájlrendszer SDK használatát.
 
 * [Alapszintű minta a GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Speciális minta a GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [Fiókkezelés Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK-dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [A Data Lake Storage Gen1 számlakezelési műveletei a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
+* [Data Lake Storage Gen1 .NET SDK–hivatkozás](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

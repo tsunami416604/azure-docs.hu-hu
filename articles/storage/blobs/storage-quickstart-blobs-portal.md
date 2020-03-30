@@ -1,20 +1,20 @@
 ---
-title: Rövid útmutató – blob létrehozása a Azure Portal
+title: Rövid útmutató – Blob létrehozása az Azure Portalon
 titleSuffix: Azure Storage
 description: Ebben a rövid útmutatóban az Azure Portal használatával kezelheti az objektumtárat (blobtárat). Majd az Azure Portal segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241051"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061399"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával
 
@@ -29,10 +29,10 @@ Ez a rövid útmutató azt ismerteti, hogyan használható az [Azure Portal](htt
 Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy tárolót:
 
 1. Az Azure Portalon lépjen az új tárfiókjára.
-2. A Storage-fiók bal oldali menüjében görgessen a **blob Service** szakaszra, majd válassza a **tárolók**lehetőséget.
+2. A tárfiók bal oldali menüjében görgessen a **Blob szolgáltatás** szakaszhoz, majd válassza a **Tárolók**lehetőséget.
 3. Válassza a **+ Tároló** gombot.
-4. Adja meg az új tároló nevét. A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat. A tárolók és a blobok elnevezésével kapcsolatos további információkért tekintse meg a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával foglalkozó cikket](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
-5. Adja meg a tároló nyilvános hozzáférési szintjét. Az alapértelmezett szint: **Privát (nincs névtelen hozzáférés)** .
+4. Adja meg az új tároló nevét. A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat. A tároló- és blobnevekről további információt a [tárolók, blobok és metaadatok elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)című témakörben talál.
+5. Adja meg a tároló nyilvános hozzáférési szintjét. Az alapértelmezett szint: **Privát (nincs névtelen hozzáférés)**.
 6. A tároló létrehozásához válassza az **OK** gombot.
 
     ![A tárolók Azure Portalon történő létrehozását bemutató képernyőkép](media/storage-quickstart-blobs-portal/create-container.png)
@@ -45,13 +45,13 @@ Az Azure Portalon a következő lépések végrehajtásával tölthet fel egy bl
 
 1. Az Azure Portalon lépjen az előző szakaszban létrehozott tárolóhoz.
 2. Válassza ki a tárolót a benne lévő blobok listájának megtekintéséhez. Mivel ez a tároló új, még nem tartalmaz blobokat.
-3. Kattintson a **feltöltés** gombra a feltöltés panel megnyitásához.
-4. Tallózás a helyi fájlrendszerben a blokkos blobként feltöltendő fájl kereséséhez
+3. A **Feltöltés** gomb kiválasztásával nyissa meg a feltöltési panelt
+4. Böngésszen a helyi fájlrendszerben, hogy megtalálja a blokkblobként feltöltendő fájlt
      
     ![A blobok helyi meghajtóról történő feltöltését bemutató képernyőkép](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. A speciális szakasz kibontásával más beállításokat is meghatározhat, például a hitelesítési típust, a hozzáférési szintet vagy a virtuális mappa elérési útját.
-6. A feltöltés végrehajtásához kattintson a **feltöltés** gombra.
+5. Szükség esetén bontsa ki a speciális szakaszt más beállítások, például a hitelesítéstípusa, a hozzáférési szint vagy a virtuális mappa elérési útjának definiálásához.
+6. A **feltöltés** véglegesítéséhez válassza a Feltöltés gombot
 7. Ezzel a módszerrel tetszőleges számú blobot tölthet fel. Látni fogja, hogy az új blobok már fel vannak sorolva a tárolóban.
 
 ## <a name="download-a-block-blob"></a>Blokkblob letöltése
@@ -69,10 +69,10 @@ A tároló törlése:
 
 1. Az Azure Portalon lépjen a tárfiókban tárolóinak listájához.
 2. Válassza ki a törölni kívánt tárolót.
-3. Válassza a **Továbbiak** gombot ( **...** ), majd a **Törlés** elemet.
+3. Válassza a **Továbbiak** gombot (**...**), majd a **Törlés** elemet.
 4. Erősítse meg, hogy törölni kívánja a tárolót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között az Azure Portal használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 

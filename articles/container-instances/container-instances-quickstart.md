@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Docker-tároló üzembe helyezése tároló példányon – Azure CLI
-description: Ebben a rövid útmutatóban az Azure CLI használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
+title: Rövid útmutató – Docker-tároló üzembe helyezése a tárolópéldányra – Azure CLI
+description: Ebben a rövid útmutatóban az Azure CLI segítségével gyorsan üzembe helyezhet egy tárolóba helyezett webalkalmazást, amely egy elszigetelt Azure-tárolópéldányban fut
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom:
@@ -8,31 +8,31 @@ ms.custom:
 - seodec18
 - mvc
 ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78252187"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban az Azure CLI használatával
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rövid útmutató: Tárolópéldány üzembe helyezése az Azure-ban az Azure CLI használatával
 
-A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra.
+Azure Container Instances használatával kiszolgáló nélküli Docker-tárolók at Azure-ban az egyszerűség és a sebesség használatával. Egy alkalmazást igény szerint egy tárolópéldányra telepíthet, ha nincs szüksége egy teljes tárolóvezelési platformra, például az Azure Kubernetes-szolgáltatásra.
 
-Ebben a rövid útmutatóban az Azure CLI használatával telepít egy elkülönített Docker-tárolót, és az alkalmazását teljes tartománynévvel (FQDN) teszi elérhetővé. Néhány másodperccel az egyetlen központi telepítési parancs végrehajtása után megkeresheti a tárolóban futó alkalmazást:
+Ebben a rövid útmutatóban az Azure CLI használatával egy elkülönített Docker-tároló üzembe helyezéséhez, és az alkalmazás elérhetővé egy teljesen minősített tartománynév (FQDN) használatával. Néhány másodperccel egyetlen központi telepítési parancs végrehajtása után tallózhat a tárolóban futó alkalmazásközött:
 
-![Böngészőbe Azure Container Instances üzembe helyezett alkalmazás megtekintése][aci-app-browser]
+![Az Azure Container-példányokba telepített alkalmazás megtekintése a böngészőben][aci-app-browser]
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][azure-account] a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,][azure-account] mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha helyileg szeretné használni, a 2.0.55 vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha helyileg szeretné használni, a 2.0.55-ös vagy újabb verzió használata ajánlott. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure Container Instancest – mint minden Azure-erőforrást – egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
-Először hozzon létre egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen a következő az [Group Create][az-group-create] paranccsal:
+Először hozzon létre egy erőforráscsoportot *myResourceGroup* néven az *eastus* helyen az alábbi [az group create][az-group-create] paranccsal:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -40,17 +40,17 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Ha tároló-példányt szeretne létrehozni az Azure CLI-vel, adjon meg egy erőforráscsoport-nevet, egy tároló-példány nevét és a Docker-tároló rendszerképét az az [Container Create][az-container-create] paranccsal. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképet használja. Ez a rendszerkép egy statikus HTML-oldalt kiszolgáló, Node. js-ben írt kisméretű webalkalmazást csomagol.
+Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Egy tárolópéldány Azure CLI-vel való létrehozásához adjon meg egy erőforráscsoport-nevet, egy tárolópéldánynevet és egy Docker-tárolórendszerképet az [az container create][az-container-create] parancsban. Ebben a rövid útmutatóban `mcr.microsoft.com/azuredocs/aci-helloworld` a nyilvános lemezképet használja. Ez a kép egy node.js nyelven írt kis webalkalmazást csomagol, amely statikus HTML-oldalt szolgál ki.
 
-A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy a webalkalmazás nyilvánosan elérhető legyen.
+Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-névcímkével rendelkező tárolót telepít, hogy a webalkalmazás nyilvánosan elérhető.
 
-Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan `--dns-name-label` értéket állítson be, amely egyedi az Azure-régión belül, ahol létrehozta a példányt. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+A tárolópéldány indításához hajtson végre egy, az alábbihoz hasonló parancsot. Állítson `--dns-name-label` be egy olyan értéket, amely egyedi az Azure-régióban, ahol létrehozza a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Az az [Container show][az-container-show] paranccsal tekintse meg az állapotát:
+Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Az állapotát az [az container show][az-container-show] paranccsal ellenőrizheti:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -64,9 +64,9 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Ha a tároló `ProvisioningState` **sikeres**, nyissa meg a teljes tartománynevet a böngészőben. Ha az alábbihoz hasonló weboldal jelenik meg, gratulálunk! Sikeresen üzembe helyezett egy Docker-tárolóban futó alkalmazást az Azure-ban.
+Ha a tároló `ProvisioningState` **sikeres,** lépjen a teljes tartománynaa a böngészőben. Ha egy, az alábbihoz hasonló weboldal jelenik meg, gratulálunk! Sikeresen üzembe helyezett egy Docker-tárolóban futó alkalmazást az Azure-ban.
 
-![Böngészőbe Azure Container Instances üzembe helyezett alkalmazás megtekintése][aci-app-browser]
+![Az Azure Container-példányokba telepített alkalmazás megtekintése a böngészőben][aci-app-browser]
 
 Ha az alkalmazás nem indul el azonnal, lehet, hogy csak várnia kell pár másodpercet, amíg a DNS elvégzi a propagálást. Ezt követően próbálja ismét frissíteni a böngészőjét.
 
@@ -74,7 +74,7 @@ Ha az alkalmazás nem indul el azonnal, lehet, hogy csak várnia kell pár máso
 
 Amikor hibaelhárítást kell végrehajtania egy tárolón, vagy az abban futtatott alkalmazáson (vagy csak meg kell néznie a kimenetet), először tekintse meg a tárolópéldány naplóit.
 
-Kérje le a tároló példányainak naplóit az az [Container logs][az-container-logs] paranccsal:
+A tárolópéldány naplóit az [az container logs][az-container-logs] paranccsal hívhatja le:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -93,7 +93,7 @@ listening on port 80
 
 A naplók megtekintése mellett helyi standard kimeneti és hibastreameket csatolhat a tárolóhoz.
 
-Először hajtsa végre az az [Container Attach][az-container-attach] paranccsal, hogy csatolja a helyi konzolt a tároló kimeneti streamekhez:
+Először hajtsa végre az [az container attach][az-container-attach] parancsot, hogy a helyi konzolt a tároló kimeneti adatfolyamaihoz csatolja:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup --name mycontainer
@@ -120,7 +120,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a tárolóval, távolítsa el az az [Container delete][az-container-delete] parancs használatával:
+Miután végzett a tárolóval, az [az container delete][az-container-delete] parancs használatával távolíthatja el:
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -134,20 +134,20 @@ az container list --resource-group myResourceGroup --output table
 
 A **mycontainer** tárolónak nem szabad megjelennie a parancs kimenetében. Ha az erőforráscsoportban nincs másik tároló, akkor semmilyen kimenet nem jelenik meg.
 
-Ha végzett a *myResourceGroup* -erőforráscsoport és a benne található összes erőforrás együttesével, törölje az az [Group delete][az-group-delete] paranccsal:
+Ha végzett a *myResourceGroup* erőforráscsoporttal és az abban lévő erőforrásokkal, törölje le az [az group delete][az-group-delete] paranccsal:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerkép használatával. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy Azure-beli privát tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
+Ebben a rövid útmutatóban létrehozott egy Azure-tárolópéldányt egy nyilvános Microsoft-lemezkép használatával. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)
 
-Ha szeretné kipróbálni a tárolók futtatásának lehetőségeit az Azure-ban, tekintse meg az [Azure Kubernetes szolgáltatás (ak)][container-service] rövid útmutatóját.
+Az [Azure Kubernetes-szolgáltatás (AKS)][container-service] rövid útmutatói nak kipróbálásához tekintse meg a tárolók azure-beli vezénylési rendszerben való futtatásának lehetőségeit.
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png

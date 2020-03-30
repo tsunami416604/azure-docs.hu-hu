@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – használja az Azure CLI használatával hozzon létre egy Service Bus-üzenetsorba |} A Microsoft Docs
-description: Ez a rövid útmutatóban megismerheti, hogyan hozhat létre a Service Bus-üzenetsorba a az Azure CLI használatával. Ezt követően használhatja egy Java-mintaalkalmazás, üzenetek küldéséhez és üzenetek fogadása az üzenetsorból.
+title: Rövid útmutató – Az Azure CLI használatával hozzon létre egy Service Bus-várólistát | Microsoft dokumentumok
+description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Azure CLI-t egy Service Bus-várólista létrehozásához. Ezután egy Minta Java alkalmazást használ üzenetek küldéséhez és üzenetek fogadásához a várólistából.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66400266"
 ---
-# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Gyors útmutató: Az Azure CLI használatával hozzon létre egy Service Bus-üzenetsorba
-Ebben a rövid útmutató üzenetek küldése és fogadása Service Bus szolgáltatással az Azure CLI és a Service Bus-Java-kódtár használatával. Ha további technikai részletekre kíváncsi, olvassa el a mintakód fő elemeihez tartozó [magyarázatot](#understand-the-sample-code).
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rövid útmutató: Az Azure CLI használatával hozzon létre egy Service Bus-várólistát
+Ez a rövid útmutató ismerteti, hogyan küldhet és fogadhat üzeneteket a Service Bus az Azure CLI és a Service Bus Java-kódtár használatával. Ha további technikai részletekre kíváncsi, olvassa el a mintakód fő elemeihez tartozó [magyarázatot](#understand-the-sample-code).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot] [ free account] megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, a kezdés előtt létrehozhat egy [ingyenes fiókot.][free account]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-Ha használja a **Kipróbálom** gombra kattintva indítsa el a Cloud Shellt, jelentkezzen be Azure hitelesítő adataival. 
+Ha a **Try It** gombsegítségével elindítja a Cloud Shellt, jelentkezzen be az Azure-ba a hitelesítő adataival. 
 
-Ha a böngészőben, vagy közvetlenül, vagy az Azure Portalon, váltson át a Cloud Shellben elindította **Bash** Ha **PowerShell** a Cloud Shellben bal felső sarkában. 
+Ha közvetlenül vagy az Azure Portalon indította el a Cloud Shellt a webböngészőben, váltson **bashre,** ha a **PowerShell** a Felhőrendszerhéj bal felső sarkában jelenik meg. 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>Erőforrások létrehozása az Azure CLI használatával
-A Cloud Shellben a Bash parancssorból indítsa el az alábbi parancsokat a Service Bus-erőforrások kiépítéséhez. Ne felejtse el lecserélni az összes helyőrzőt a megfelelő értékre: A Java-sample program vár BasicQueue, így nem módosítani kell az üzenetsor neve. Érdemes másolási/beillesztési egyesével-parancsokat, hogy az értékek lecserélheti őket futtatása előtt. 
+A Cloud Shellben a Bash parancssorból indítsa el az alábbi parancsokat a Service Bus-erőforrások kiépítéséhez. Ügyeljen arra, hogy az összes helyőrzőt a megfelelő értékekre cserélje le: A Java mintaprogram a várandóslista nevét BasicQueue-nek számít, ezért ne módosítsa azt. Előfordulhat, hogy egyenként szeretné másolni/beilleszteni a parancsokat, hogy a futtatás előtt lecserélhesse az értékeket. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -57,7 +57,7 @@ Az utolsó parancs futtatása után másolja ki és illessze be a kapcsolati szt
 
 Miután létrehozta a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
 
-1. Klónozás a [Service Bus GitHub-adattár](https://github.com/Azure/azure-service-bus/) a számítógépen a következő parancsot:
+1. Klónozza a [Service Bus GitHub-tárházat](https://github.com/Azure/azure-service-bus/) a számítógépen a következő parancs kiadásával:
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
@@ -75,13 +75,13 @@ Miután létrehozta a névteret és az üzenetsort, valamint beszerezte a szüks
    mvn clean package -DskipTests
    ```
 
-1. Futtassa a programot, és cserélje le a kapcsolati karakterláncot a korábban kimásolt érték után a következő parancs kiadásával:
+1. A program futtatásához adja ki a következő parancsot, miután a kapcsolati karakterláncot lecserélte a korábban másolt értékre:
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-1. Figyelje meg 10 üzenet küldését az üzenetsorban. Az üzenetek rendezése nem garantált, de az üzeneteket küldi el, majd arra vonatkozik, és kapott, a hasznos adatok mellett látható:
+1. Figyelje meg 10 üzenet küldését az üzenetsorban. Az üzenetek sorrendje nem garantált, de láthatja az elküldött üzeneteket, majd nyugtázta és fogadja, valamint a hasznos adatokat:
 
     ```
     Message sending: Id = 0
@@ -187,7 +187,7 @@ Miután létrehozta a névteret és az üzenetsort, valamint beszerezte a szüks
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure Cloud shellben futtassa az alábbi paranccsal eltávolítható az erőforráscsoport, a névtér és az összes kapcsolódó erőforrás:
+Az Azure Cloud Shellben futtassa a következő parancsot az erőforráscsoport, a névtér és az összes kapcsolódó erőforrás eltávolításához:
 
 ```azurecli-interactive
 az group delete --resource-group myResourceGroup
@@ -197,9 +197,9 @@ az group delete --resource-group myResourceGroup
 
 Ez a szakasz a mintakód fő szakaszaival kapcsolatos további részleteket ismerteti. A GitHub-adattárban található kódot megkeresheti [itt](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
-### <a name="get-connection-string"></a>Kapcsolati sztring lekérése
+### <a name="get-connection-string"></a>Kapcsolati karakterlánc beszereznie
 
-A AlkalmazásFuttatása módszer beolvassa a kapcsolati karakterlánc értékét az argumentumok a programba. 
+A runApp metódus beolvassa a kapcsolati karakterlánc értékét az argumentumok ból a programba. 
 
 ```java
 public static void main(String[] args) {
@@ -368,11 +368,11 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 ```
 
 > [!NOTE]
-> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
+> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy csatlakozzanak a Service Bus névtér és felügyeli az üzenetkezelési entitások egyszerű módon. Az eszköz speciális funkciókat biztosít, például importálási/exportálási funkciókat, vagy a témakör, a várólisták, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelését. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Üzenetek küldése és fogadása, kódírás kapcsolatos további információkért folytassa szereplő oktatóanyagok a **üzenetek küldése és fogadása** szakaszban. 
+Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetek küldéséhez és fogadásához írt kódírásról, folytassa az **üzenetek küldése és fogadása** című szakaszoktatóival. 
 
 > [!div class="nextstepaction"]
 > [Üzenetek küldése és fogadása](service-bus-dotnet-get-started-with-queues.md)

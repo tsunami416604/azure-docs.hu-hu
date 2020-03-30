@@ -1,7 +1,7 @@
 ---
 title: Tárfiókok áttekintése
 titleSuffix: Azure Storage
-description: Megismerheti az Azure Storage-fiókok létrehozásának és használatának lehetőségeit.
+description: Az Azure Storage-fiók létrehozásának és használatának lehetőségei.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,17 +10,17 @@ ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371553"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
-Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, várólistákat, táblákat és lemezeket. A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP-vagy HTTPS-kapcsolaton keresztül. Az Azure Storage-fiókban tárolt adatai tartósak, a biztonságos és a nagy mértékben méretezhetők.
+Az Azure storage-fiók tartalmazza az összes Azure Storage-adatobjektumok: blobok, fájlok, várólisták, táblák és lemezek. A tárfiók egyedi névteret biztosít az Azure Storage-adatokhoz, amely a világ bármely pontjáról http- vagy HTTPS-en keresztül érhető el. Az Azure storage-fiókjában lévő adatok tartósak és magas rendelkezésre állásúak, biztonságosak és nagymértékben méretezhetők.
 
-Az Azure Storage-fiókok létrehozásával kapcsolatos további információkért lásd: [Storage-fiók létrehozása](storage-account-create.md).
+Az Azure-tárfiók létrehozásáról a [Tárfiók létrehozása című](storage-account-create.md)témakörben olvashat.
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
@@ -28,53 +28,53 @@ Az Azure Storage-fiókok létrehozásával kapcsolatos további információkér
 
 ### <a name="general-purpose-v2-accounts"></a>Általános célú v2-fiókok
 
-Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat. Az általános célú v2 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
+Általános célú v2-es tárfiókok támogatják a legújabb Azure Storage-funkciókat, és belefoglalják az általános célú v1- és Blob storage-fiókok összes funkcióját. Az általános célú v2-es fiókok az Azure Storage esetében a legalacsonyabb gigabájtonkénti kapacitásárakat, valamint az iparágban versenyképes tranzakciós árakat biztosítják. Az általános célú v2-es tárfiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
-- Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
-- Data Lake Gen2
+- Blobok (minden típus: Blokk, Hozzáfűzés, Oldal)
+- Adatok-tó Gen2
 - Fájlok
 - Lemezek
 - Üzenetsorok
 - Táblák
 
 > [!NOTE]
-> A Microsoft az általános célú v2 Storage-fiók használatát javasolja a legtöbb forgatókönyvhöz. Az általános célú v1-vagy blob Storage-fiókok egyszerűen, leállás nélkül frissíthetők egy általános célú v2-fiókra, anélkül, hogy adatmásolásra lenne szükség.
+> A Microsoft azt javasolja, hogy a legtöbb esetben egy általános célú v2-es tárfiókot használjon. Az általános célú v1- vagy Blob-tárfiókot egyszerűen frissítheti egy általános célú v2-fiókra állásidő nélkül, és adatok másolása nélkül.
 >
-> Az általános célú v2-fiókra való frissítéssel kapcsolatos további információkért lásd: [frissítés általános célú v2 Storage-fiókra](storage-account-upgrade.md).
+> Az általános célú v2-fiókra való frissítésről további információt a [Frissítés általános célú v2-es tárfiókra című témakörben talál.](storage-account-upgrade.md)
 
-Az általános célú v2 Storage-fiókok több hozzáférési szintet is kínálnak az adatok használati minták alapján történő tárolásához. További információ: [hozzáférési szintek a Blobok adatainak blokkolásához](#access-tiers-for-block-blob-data).
+Általános célú v2 tárfiókok kínálnak több hozzáférési réteget az adatok tárolására a használati minták alapján. További információ: [Access tiers for block blob data.](#access-tiers-for-block-blob-data)
 
 ### <a name="general-purpose-v1-accounts"></a>Általános célú v1-fiókok
 
-Az általános célú v1 Storage-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
+Az általános célú v1-es tárfiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkeznek a legújabb funkciókkal vagy a gigabájtonkénti legalacsonyabb díjszabással. Az általános célú v1-es tárfiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
-- Blobok (az összes típus)
+- Blobok (minden típus)
 - Fájlok
 - Lemezek
 - Üzenetsorok
 - Táblák
 
-A legtöbb esetben az általános célú v2-fiókokat kell használnia. Az alábbi forgatókönyvekhez használhatja az általános célú v1-fiókokat:
+A legtöbb esetben általános célú v2-fiókokat kell használnia. Az általános célú v1-fiókokat a következő esetekben használhatja:
 
-- Alkalmazásaihoz a klasszikus Azure-telepítési modell szükséges. Az általános célú v2-fiókok és a blob Storage-fiókok csak a Azure Resource Manager telepítési modellt támogatják.
+- Az alkalmazások megkövetelik az Azure klasszikus üzembe helyezési modell. Általános célú v2-fiókok és blob storage-fiókok csak az Azure Resource Manager telepítési modell t.
 
-- Az alkalmazások tranzakció-igényesek, vagy jelentős földrajzi replikációs sávszélességet használnak, de nem igényelnek nagy kapacitást. Ebben az esetben az általános célú v1 lehet a leggazdaságosabb választás.
+- Az alkalmazások tranzakcióigényesek, vagy jelentős georeplikációs sávszélességet használnak, de nem igényelnek nagy kapacitást. Ebben az esetben az általános célú v1 lehet a leggazdaságosabb választás.
 
-- A [Storage REST API Services](https://msdn.microsoft.com/library/azure/dd894041.aspx) olyan verzióját használja, amely a 2014-02-14-nál korábbi, vagy a 4. x-nél alacsonyabb verziószámú ügyféloldali kódtár. Az alkalmazás nem frissíthető.
+- A Storage Services [REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 2014-02-14-nél korábbi verzióját vagy 4.x-nél alacsonyabb verziójú ügyfélkódtárat használ. Nem frissítheti az alkalmazást.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-fiókok
 
-A BlockBlobStorage-fiók egy speciális Storage-fiók a prémium szintű teljesítmény szintjén a strukturálatlan objektumok adatai blokk Blobok vagy hozzáfűzési Blobok tárolására. Az általános célú v2-és BlobStorage-fiókokkal összehasonlítva a BlockBlobStorage-fiókok alacsony, konzisztens késést és magasabb tranzakciós sebességet biztosítanak.
+A BlockBlobStorage-fiók egy speciális tárfiók a prémium szintű teljesítményrétegstrukturálása strukturálatlan objektumadatok blokk blobok vagy hozzáfűző blobok tárolására. Az általános célú v2- és BlobStorage-fiókokhoz képest a BlockBlobStorage-fiókok alacsony, konzisztens konzisztens késést és magasabb tranzakciós díjakat biztosítanak.
 
-A BlockBlobStorage-fiókok jelenleg nem támogatják a leválasztást a gyakori, ritka elérésű vagy archív hozzáférési szintekre. Ez a típusú tárolási fiók nem támogatja a Blobok, táblák vagy várólisták oldalát.
+A BlockBlobStorage-fiókok jelenleg nem támogatják a gyakori elérésű, ritka elérésű vagy archív hozzáférési szintek rétegezését. Az ilyen típusú tárfiók nem támogatja a lapblobokat, táblákat vagy várólistákat.
 
 ### <a name="filestorage-accounts"></a>FileStorage-fiókok
 
-A FileStorage-fiók a prémium fájlmegosztás tárolására és létrehozására szolgáló speciális Storage-fiók. Ez a Storage-fióktípus támogatja a fájlokat, de nem blokkolja a blobokat, hozzáfűzi a blobokat, a blobokat, a táblákat és a várólistákat
+A FileStorage-fiók egy speciális tárfiók, amely prémium szintű fájlmegosztások tárolására és létrehozására szolgál. Ez a tárfiók-fajta támogatja a fájlokat, de nem blokkolja a blobokat, hozzáfűző blobokat, lapblobokat, táblázatokat vagy várólistákat.
 
-A FileStorage-fiókok egyedi teljesítmény-dedikált jellemzőket kínálnak, például a IOPS-kitörést. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás tárolási szintjei](../files/storage-files-planning.md#storage-tiers) című szakaszát.
+FileStorage fiókok kínálnak egyedi teljesítmény dedikált jellemzők, mint például az IOPS bursting. Ezekről a jellemzőkről a Fájlok tervezési [útmutatójának Fájlmegosztási tárolási rétegei](../files/storage-files-planning.md#storage-tiers) című részében talál további információt.
 
-## <a name="naming-storage-accounts"></a>Tárolási fiókok elnevezése
+## <a name="naming-storage-accounts"></a>Tárfiókok elnevezése
 
 Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
@@ -83,37 +83,37 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
 ## <a name="performance-tiers"></a>Teljesítményszintek
 
-A létrehozott Storage-fiók típusától függően választhat a standard és a prémium szintű teljesítményszint közül is.
+A létrehozott tárfiók típusától függően választhat a normál és a prémium szintű teljesítményszintek között.
 
 ### <a name="general-purpose-storage-accounts"></a>Általános célú tárfiókok
 
-Az általános célú Storage-fiókok a következő teljesítményszint-szintek bármelyikéhez konfigurálhatók:
+Az általános célú tárfiókok konfigurálhatók a következő teljesítményszintek egyikéhez:
 
-- Szabványos teljesítményszint Blobok, fájlok, táblák, várólisták és Azure-beli virtuális gépek lemezei tárolásához. A standard szintű Storage-fiókok méretezhetőségi céljaival kapcsolatos további információkért lásd [a standard szintű Storage-fiókok méretezhetőségi céljait](scalability-targets-standard-account.md)ismertető témakört.
-- Prémium szintű teljesítményszint a nem felügyelt virtuális gépek lemezeinek tárolásához. A Microsoft azt javasolja, hogy felügyelt lemezeket használjon az Azure Virtual Machines szolgáltatással nem felügyelt lemezek helyett. A prémium szintű teljesítményszint skálázhatósági céljaival kapcsolatos további információkért lásd: a [prémium lap blob Storage-fiókok méretezhetőségi célpontjai](../blobs/scalability-targets-premium-page-blobs.md).
+- Blobok, fájlok, táblák, várólisták és Azure virtuálisgép-lemezek tárolására szolgáló szabványos teljesítményszint. A szabványos tárfiókok méretezhetőségi céljairól a [szabványos tárfiókok méretezhetőségi céljai című témakörben](scalability-targets-standard-account.md)talál további információt.
+- Nem felügyelt virtuálisgép-lemezek tárolására szolgáló prémium szintű teljesítményszint. A Microsoft azt javasolja, hogy a felügyelt lemezeket azure-beli virtuális gépekkel használja a nem felügyelt lemezek helyett. A prémium szintű teljesítményszint méretezhetőségi céljairól további információt a [prémium szintű lapblobstorage-fiókok méretezhetőségi céljai című témakörben talál.](../blobs/scalability-targets-premium-page-blobs.md)
 
-### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage-tárfiókok
 
-A BlockBlobStorage Storage-fiókok prémium szintű teljesítményt biztosítanak a blokkos Blobok tárolásához és a Blobok hozzáfűzéséhez. További információ: [a prémium szintű blokk blob Storage-fiókok méretezhetőségi célpontjai](../blobs/scalability-targets-premium-block-blobs.md).
+A BlockBlobStorage-tárfiókok prémium szintű teljesítményszintet biztosítanak a blokkblobok és a hozzáfűző blobok tárolásához. További információ: [Méretezhetőségi célok a prémium szintű blokkblob-tárfiókok.](../blobs/scalability-targets-premium-block-blobs.md)
 
-### <a name="filestorage-storage-accounts"></a>FileStorage
+### <a name="filestorage-storage-accounts"></a>FileStorage-tárfiókok
 
-Az FileStorage Storage-fiókok prémium szintű teljesítményt biztosítanak az Azure-fájlmegosztás számára. További információ: [Azure Files skálázhatósági és teljesítménybeli célok](../files/storage-files-scale-targets.md).
+A FileStorage storage-fiókok prémium szintű teljesítményszintet biztosítanak az Azure-fájlmegosztásokszámára. További információ: [Azure Files méretezhetőség és teljesítménycélok.](../files/storage-files-scale-targets.md)
 
-## <a name="access-tiers-for-block-blob-data"></a>Hozzáférési szintek a blob-adatblokkok számára
+## <a name="access-tiers-for-block-blob-data"></a>Hozzáférési szintek a blokkblob-adatokhoz
 
-Az Azure Storage különböző lehetőségeket biztosít a Blobok adatok használati minták alapján történő eléréséhez. Az Azure Storage-ban az egyes hozzáférési szintek egy adott adattípusra vannak optimalizálva. Az igényeinek megfelelő hozzáférési réteg kiválasztásával a legtöbb költséghatékony módon tárolhatja a blokk blob-adatait.
+Az Azure Storage különböző lehetőségeket biztosít a blokkblob-adatok használati minták alapján történő eléréséhez. Az Azure Storage minden hozzáférési szintje az adathasználat egy adott mintájára van optimalizálva. Az igényeinek megfelelő hozzáférési szint kiválasztásával a blokkblob-adatokat a leginkább költséghatékony módon tárolhatja.
 
-Az elérhető hozzáférési szintek a következők:
+A rendelkezésre álló hozzáférési szintek a következők:
 
-- A **gyors** elérési szint. Ez a szintet a Storage-fiókban lévő objektumok gyakori elérésére optimalizáltuk. A gyors elérésű rétegben az adatok elérése a leghatékonyabb, a tárolási költségek pedig magasabbak. Alapértelmezés szerint a rendszer új Storage-fiókokat hoz létre a gyors elérésű rétegben.
-- A **lassú** elérési szint. Ez a csomag olyan nagy mennyiségű, ritkán használt és tárolt adatok tárolására van optimalizálva, amelyek legalább 30 napig vannak tárolva. Az adatok lassú elérésű szinten való tárolása költséghatékonyabb, de az adatokhoz való hozzáférés drágább lehet, mint a gyors elérésű rétegben lévő adatok elérése.
-- Az **archiválási** szint. Ez a szintet csak az egyes blokkos Blobok esetében érhető el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak tolerálni, és amelyek legalább 180 napig maradnak az archiválási szinten. Az archiválási szint az adatok tárolására leginkább költséghatékony megoldás. Azonban az adatokhoz való hozzáférés drágább, mint az adatokhoz való hozzáférés a gyors vagy a lassú elérésű szinteken.
+- A **gyakori elérésű** szint. Ez a szint a tárfiókban lévő objektumok gyakori elérésére van optimalizálva. A gyakori elérésű rétegben lévő adatok elérése a legköltséghatékonyabb, míg a tárolási költségek magasabbak. Az új tárfiókok alapértelmezés szerint a gyakori elérésű rétegben jönnek létre.
+- A **ritka elérésű** szint. Ez a szint nagy mennyiségű, ritkán használt és legalább 30 napig tárolt adatok tárolására van optimalizálva. Az adatok tárolása a ritka elérésű rétegben költséghatékonyabb, de az adatok elérése drágább lehet, mint a gyakori elérési szintben lévő adatok elérése.
+- Az **Archív** szint. Ez a szint csak az egyes blokkblobok érhető el. Az archív szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést is elviselnek, és legalább 180 napig az archív rétegben maradnak. Az archiválási szint az adatok tárolására legköltséghatékonyabb megoldás. Azonban az adatok elérése drágább, mint a gyakori vagy ritka elérésű szintekben lévő adatok elérése.
 
-Ha módosul az adatok használati mintája, akkor bármikor válthat a hozzáférési szintek között. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
+Ha az adatok használati mintázata megváltozik, bármikor válthat a hozzáférési szintek között. A hozzáférési szintekről további információt az [Azure Blob storage: gyakori elérésű, ritka elérésű és archív hozzáférési szintek című témakörben talál.](../blobs/storage-blob-storage-tiers.md)
 
 > [!IMPORTANT]
-> Egy meglévő Storage-fiók vagy blob hozzáférési rétegének módosítása további díjakat eredményezhet. További információt a [Storage-fiók számlázási szakasza](#storage-account-billing)tartalmaz.
+> Egy meglévő tárfiók vagy blob hozzáférési szintjének módosítása további díjakat vonhat maga után. További információt a [Tárfiók számlázása című szakaszban talál.](#storage-account-billing)
 
 ## <a name="redundancy"></a>Redundancia
 
@@ -121,62 +121,62 @@ Ha módosul az adatok használati mintája, akkor bármikor válthat a hozzáfé
 
 ## <a name="encryption"></a>Titkosítás
 
-A Storage-fiókban lévő összes adat titkosítva van a szolgáltatás oldalán. A titkosítással kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST-adatokhoz](storage-service-encryption.md).
+A tárfiókban lévő összes adat titkosítva van a szolgáltatási oldalon. A titkosítással kapcsolatos további információkért lásd: [Az Azure Storage Service Encryption az inaktív adatokat.](storage-service-encryption.md)
 
 ## <a name="storage-account-endpoints"></a>Tárfiókvégpontok
 
-A Storage-fiók egyedi névteret biztosít az Azure-ban az adataihoz. Az Azure Storage-ban tárolt összes objektumhoz tartozik egy olyan címe, amely tartalmazza az egyedi fióknevet. A fiók neve és az Azure Storage szolgáltatás végpontja a Storage-fiókhoz tartozó végpontokat képezi le.
+A tárfiók egyedi névteret biztosít az Azure-ban az adatokszámára. Az Azure Storage-ban tárolt minden objektum rendelkezik egy címmel, amely tartalmazza az Ön egyedi fióknevét. A fióknév és az Azure Storage-szolgáltatás végpontja kombinációja a tárfiók végpontjait képezi.
 
-Ha például az általános célú Storage-fiók neve *mystorageaccount*, akkor az adott fiókhoz tartozó alapértelmezett végpontok a következők:
+Ha például az általános célú tárfiók neve *mystorageaccount,* akkor a fiók alapértelmezett végpontjai a következők:
 
-- BLOB Storage: `https://*mystorageaccount*.blob.core.windows.net`
-- Table Storage: `https://*mystorageaccount*.table.core.windows.net`
-- Üzenetsor-tárolás: `https://*mystorageaccount*.queue.core.windows.net`
-- Azure Files: `https://*mystorageaccount*.file.core.windows.net`
-
-> [!NOTE]
-> A blob-és blob Storage-fiókok csak a Blob service végpontot teszik elérhetővé.
-
-Hozzon létre egy objektum elérésére szolgáló URL-címet egy Storage-fiókban úgy, hogy hozzáfűzi az objektum helyét a Storage-fiókban a végponthoz. Például egy blobcím formátuma lehet a következő: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
-
-A Storage-fiók a Blobok egyéni tartományának használatára is konfigurálható. További információ: [Egyéni tartománynév beállítása az Azure Storage-fiókhoz](../blobs/storage-custom-domain-name.md).  
-
-## <a name="control-access-to-account-data"></a>Fiókadatok hozzáférésének szabályozása
-
-Alapértelmezés szerint a fiókban tárolt adatok csak Ön, azaz a fiók tulajdonosa számára érhetőek el. Ön szabályozhatja, hogy ki férhet hozzá az adataihoz, és milyen engedélyekkel rendelkezik.
-
-Minden, a Storage-fiókra vonatkozó kérelmet engedélyezni kell. A szolgáltatás szintjén a kérelemnek tartalmaznia kell egy érvényes *engedélyezési* fejlécet. Pontosabban, ez a fejléc tartalmazza az összes olyan információt, amely ahhoz szükséges, hogy a szolgáltatás a végrehajtás előtt érvényesítse a kérést.
-
-A következő módszerek bármelyikével biztosíthat hozzáférést a Storage-fiókban található adathoz:
-
-- **Azure Active Directory:** Használjon Azure Active Directory (Azure AD) hitelesítő adatokat egy felhasználó, csoport vagy más identitás hitelesítéséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez. Ha az identitás hitelesítése sikeres, az Azure AD visszaadja az Azure Blob Storage-ba vagy a várólista-tárolóba való kérelem engedélyezéséhez használandó tokent. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
-- **Megosztott kulcs engedélyezése:** Használja a Storage-fiók hozzáférési kulcsát olyan kapcsolati karakterlánc létrehozásához, amelyet az alkalmazás a futásidőben használ az Azure Storage eléréséhez. A kapcsolódási karakterláncban szereplő értékek az Azure Storage-nak átadott *engedélyezési* fejléc összeállítására szolgálnak. További információ: az [Azure Storage-beli kapcsolatok karakterláncának konfigurálása](storage-configure-connection-string.md).
-- **Közös hozzáférési aláírás:** Ha nem az Azure AD-hitelesítést használja, közös hozzáférésű aláírással delegálhatja a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírások olyan tokenek, amelyek az URL-címen az Azure Storage-ba irányuló kérések engedélyezéséhez szükséges összes információt beágyazzák. Megadhatja a tárolási erőforrást, a megadott engedélyeket, valamint azt az időközt, ameddig az engedélyek érvényesek a közös hozzáférési aláírás részeként. További információ: [Shared Access Signatures (SAS) használata](storage-sas-overview.md).
+- Blob-tároló:`https://*mystorageaccount*.blob.core.windows.net`
+- Táblázat tárolása:`https://*mystorageaccount*.table.core.windows.net`
+- Várólista-tárolás:`https://*mystorageaccount*.queue.core.windows.net`
+- Azure-fájlok:`https://*mystorageaccount*.file.core.windows.net`
 
 > [!NOTE]
-> Az Azure AD-beli hitelesítő adatokkal rendelkező felhasználók vagy alkalmazások hitelesítése kiváló biztonságot és könnyű használatot biztosít más engedélyezési módokon. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban.
+> Blokk blob és blob storage-fiókok csak a Blob szolgáltatás végpontját teszi elérhetővé.
+
+A tárfiókban lévő objektum eléréséhez az URL-címet úgy hozlétre, hogy hozzáfűzi az objektum helyét a tárfiókban a végponthoz. Például egy blobcím formátuma lehet a következő: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+
+A tárfiókot is beállíthatja, hogy egyéni tartományt használjon a blobokhoz. További információ: [Egyéni tartománynév konfigurálása az Azure Storage-fiókhoz.](../blobs/storage-custom-domain-name.md)  
+
+## <a name="control-access-to-account-data"></a>A fiókadatokhoz való hozzáférés szabályozása
+
+Alapértelmezés szerint a fiókban tárolt adatok csak Ön, azaz a fiók tulajdonosa számára érhetőek el. Ön szabályozhatja, hogy ki férhet hozzá az adataihoz, és milyen engedélyekkel rendelkeznek.
+
+A tárfiókkal szemben imitációt minden kérést engedélyezni kell. A szolgáltatás szintjén a kérelemnek érvényes engedélyezési fejlécet kell *tartalmaznia.* Pontosabban ez a fejléc tartalmazza az összes szükséges információt a szolgáltatás érvényesítéséhez a kérelem végrehajtása előtt.
+
+A tárfiókban lévő adatokhoz az alábbi módszerek bármelyikével biztosíthatja a hozzáférést:
+
+- **Azure Active Directory:** Az Azure Active Directory (Azure AD) hitelesítő adataival hitelesítheti a felhasználót, csoportot vagy más identitást a blob- és várólista-adatokhoz való hozzáféréshez. Ha egy identitás hitelesítése sikeres, majd az Azure AD egy jogkivonatot ad vissza az Azure Blob storage vagy queue storage kérésének engedélyezéséhez. További információ: [Access to Azure Storage using Azure Active Directory](storage-auth-aad.md).
+- **Megosztott kulcs engedélyezése:** A tárfiók hozzáférési kulcshasználatával hozhat létre egy kapcsolati karakterláncot, amelyet az alkalmazás futásidőben használ az Azure Storage eléréséhez. A kapcsolati karakterlánc értékei az Azure Storage-nak átadott *engedélyezési* fejléc létrehozásához használatosak. További információt az [Azure Storage kapcsolati karakterláncai konfigurálása című témakörben talál.](storage-configure-connection-string.md)
+- **Megosztott hozzáférésű aláírás:** Ha nem azure AD-hitelesítést használ, használjon megosztott hozzáférés-aláírást a tárfiókban lévő erőforrásokhoz való hozzáférés delegálásához. A megosztott hozzáférésű jogosultságkód egy jogkivonat, amely magában foglalja az összes szükséges információt az Azure Storage-nak az URL-címen való engedélyezéséhez. Megadhatja a tárolási erőforrást, a megadott engedélyeket és azt az időtartamot, amely alatt az engedélyek a megosztott hozzáférésű aláírás részeként érvényesek. További információ: [A megosztott hozzáférésű aláírások (SAS) használata.](storage-sas-overview.md)
+
+> [!NOTE]
+> A felhasználók vagy alkalmazások hitelesítése az Azure AD hitelesítő adatokkal kiváló biztonságot és egyszerű használatot biztosít más engedélyezési eszközökkel szemben. Bár továbbra is használhatja a megosztott kulcs engedélyezése az alkalmazások, az Azure AD használatával megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a megosztott hozzáférésű aláírások (SAS) a tárfiókban lévő erőforrások részletes eléréséhez való hozzáférést, de az Azure AD hasonló képességeket kínál anélkül, hogy kezelnie kellene a SAS-jogkivonatokat, vagy aggódnia kellene a feltört SAS visszavonása miatt.
 >
-> A Microsoft az Azure AD-hitelesítés használatát javasolja az Azure Storage blob-és üzenetsor-alkalmazásaihoz, ha lehetséges.
+> A Microsoft azt javasolja, hogy az Azure Storage blob és a várólista-alkalmazások, ha lehetséges, azure AD-engedélyezés használata.
 
-## <a name="copying-data-into-a-storage-account"></a>Adatok másolása egy Storage-fiókba
+## <a name="copying-data-into-a-storage-account"></a>Adatok másolása tárfiókba
 
-A Microsoft segédprogramokat és könyvtárakat biztosít az adatok helyszíni tárolóeszközökből vagy külső felhőalapú tárolási szolgáltatóktól történő importálásához. Az Ön által használt megoldás az átvitt adatok mennyiségétől függ.
+A Microsoft segédprogramokat és tárakat biztosít az adatok helyszíni tárolóeszközökről vagy külső felhőalapú tárolószolgáltatókról történő importálásához. A használt megoldás az átvinni kívánt adatok mennyiségétől függ.
 
-Ha egy általános célú v1-vagy blob Storage-fiókból egy általános célú v2-fiókra frissít, az adatok automatikusan áttelepülnek. A Microsoft ezt az utat javasolja a fiók frissítéséhez. Ha azonban úgy dönt, hogy egy általános célú v1-fiók adatait egy blob Storage-fiókba helyezi át, akkor manuálisan kell áttelepítenie az adatait az alább ismertetett eszközök és kódtárak használatával.
+Ha általános célú v2-es fiókra frissít egy általános célú v1- vagy Blob-tárfiókból, a rendszer automatikusan áttelepíti az adatokat. A Microsoft ezt az utat javasolja a fiók frissítéséhez. Ha azonban úgy dönt, hogy az adatokat egy általános célú v1-fiókból egy Blob storage-fiókba helyez át, akkor manuálisan telepíti át az adatokat az alábbiakban ismertetett eszközök és tárak használatával.
 
 ### <a name="azcopy"></a>AzCopy
 
-Az AzCopy egy Windows parancssori segédprogram, amely az adatok az Azure Storage szolgáltatásba vagy onnan máshová való nagyteljesítményű másolására lett kifejlesztve. A AzCopy használatával egy meglévő általános célú Storage-fiókból másolhatja át az adatait egy blob Storage-fiókba, vagy feltölthet adatokkal a helyszíni tárolóeszközökből. További információt [az AzCopy parancssori segédprogrammal történő adatátvitelt](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
+Az AzCopy egy Windows parancssori segédprogram, amely az adatok az Azure Storage szolgáltatásba vagy onnan máshová való nagyteljesítményű másolására lett kifejlesztve. Az AzCopy segítségével adatokat másolhat egy Blob tárfiókba egy meglévő általános célú tárfiókból, vagy adatokat tölthet fel a helyszíni tárolóeszközökről. További információt [az AzCopy parancssori segédprogrammal történő adatátvitelt](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
 
 ### <a name="data-movement-library"></a>Adatátviteli könyvtár
 
-Az Azure Storage .NET-keretrendszerhez készült adatátviteli kódtára az AzCopyt működtető alapvető adatátviteli keretrendszeren alapul. A könyvtár az AzCopyhoz hasonló nagy teljesítményű, megbízható és könnyű adatátviteli műveletekhez készült. Az adatáthelyezési függvénytár segítségével natív módon kihasználhatja a AzCopy funkcióit. További információ: [Azure Storage adatátviteli függvénytár a .net-hez](https://github.com/Azure/azure-storage-net-data-movement)
+Az Azure Storage .NET-keretrendszerhez készült adatátviteli kódtára az AzCopyt működtető alapvető adatátviteli keretrendszeren alapul. A könyvtár az AzCopyhoz hasonló nagy teljesítményű, megbízható és könnyű adatátviteli műveletekhez készült. Az adatmozgatási tár segítségével natív módon kihasználhatja az AzCopy-funkciók előnyeit. További információ: [Azure Storage Data Movement Library for .](https://github.com/Azure/azure-storage-net-data-movement)
 
 ### <a name="rest-api-or-client-library"></a>REST API vagy ügyfélkódtár
 
-Létrehozhat egy egyéni alkalmazást, amellyel áttelepítheti az adatait egy általános célú v1 Storage-fiókból egy blob Storage-fiókba. Használja az egyik Azure-ügyfél kódtárat vagy az Azure Storage Services REST API. Az Azure Storage gazdag ügyfélkódtárakat biztosít több nyelvhez és platformhoz is, beleértve a következőket: .NET, Java, C++, Node.JS, PHP, Ruby és Python. Az ügyfélkódtárak olyan fejlett képességeket biztosítanak, mint az újrapróbálkozási logika, a naplózás vagy a párhuzamos feltöltések. Fejleszthet közvetlenül a REST API-n is, amely minden, HTTP-/HTTPS-kérelmek létrehozására alkalmas nyelven meghívható.
+Létrehozhat egy egyéni alkalmazást, amely áttelepíti az adatokat egy általános célú v1-es tárfiókból egy Blob storage-fiókba. Használja az Azure-ügyfélkódtárak vagy az Azure storage services REST API-t. Az Azure Storage gazdag ügyfélkódtárakat biztosít több nyelvhez és platformhoz is, beleértve a következőket: .NET, Java, C++, Node.JS, PHP, Ruby és Python. Az ügyfélkódtárak olyan fejlett képességeket biztosítanak, mint az újrapróbálkozási logika, a naplózás vagy a párhuzamos feltöltések. Fejleszthet közvetlenül a REST API-n is, amely minden, HTTP-/HTTPS-kérelmek létrehozására alkalmas nyelven meghívható.
 
-Az Azure Storage REST APIával kapcsolatos további információkért lásd: az [Azure Storage Services REST API referenciája](https://docs.microsoft.com/rest/api/storageservices/).
+Az Azure Storage REST API-ról az [Azure Storage Services REST API-val kapcsolatos referencia című témakörben talál további](https://docs.microsoft.com/rest/api/storageservices/)információt.
 
 > [!IMPORTANT]
 > Az ügyféloldali titkosítással titkosított blobok a titkosítással kapcsolatos metaadatokat a blobbal együtt tárolják. Ha ügyféloldali titkosítással titkosított blobot másol, ügyeljen arra, hogy a másolási művelet megőrizze a blob metaadatait, különös tekintettel a titkosítással kapcsolatos metaadatokra. Ha a blobokat a titkosítási metaadatok nélkül másolja, a blob tartalma nem kérhető le újból. További információt a titkosítással kapcsolatos metaadatokról [az Azure Storage ügyféloldali titkosítását](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
@@ -185,7 +185,7 @@ Az Azure Storage REST APIával kapcsolatos további információkért lásd: az 
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tárfiók létrehozása](storage-account-create.md)
 - [Blokkblob-tárfiók létrehozása](../blobs/storage-blob-create-account-block-blob.md)

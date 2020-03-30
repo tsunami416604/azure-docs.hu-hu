@@ -1,5 +1,5 @@
 ---
-title: Avere vFXT for Azure
+title: Azure-hoz készült Avere vFXT
 description: Bevezetés az Azure-hoz készült Avere vFXT, a HPC felhőalapú gyorsítótárazási rétegének használatába
 author: ekpgh
 ms.service: avere-vfxt
@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76153191"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Mi az Azure-hoz készült Avere vFXT?
@@ -19,13 +19,13 @@ Az Azure-hoz készült Avere vFXT egy adatigényes, nagy teljesítményű feldol
 
 Az Avere vFXT a következő gyakori számítási megoldásokat támogatja:
 
-* Hibrid felhőalapú architektúra – az Azure-hoz készült avere-vFXT egy hardveres tárolási rendszerrel is működhetnek, amely a felhőalapú számítástechnika előnyeit biztosítja a fájlok áthelyezése nélkül.
+* Hibrid felhőarchitektúra – Az Avere vFXT for Azure egy hardveres tárolórendszerrel is használható, amely a fájlok áthelyezése nélkül biztosítja a felhőalapú számítástechnika előnyeit.
 
-* A Cloud burst-avere vFXT for Azure segítségével egyetlen projektbe helyezheti át az adatait a felhőbe, vagy a teljes munkafolyamatot véglegesen átemelheti és áthelyezheti.
+* Felhőalapú adatcsere – Az Avere vFXT for Azure segítségével egyetlen projekt hez helyezheti át az adatokat a felhőbe, vagy "felemelheti és áthelyezheti" a teljes munkafolyamatot véglegesen.
 
 ![Blob Storage-hez és helyszíni adatközponthoz csatlakoztatott, Azure-előfizetésbeli Avere vFXT rendszer részleteit bemutató ábra](media/avere-vfxt-hybrid.png)
 
-Az Azure-hoz készült avere-vFXT az alábbi helyzetekben ajánlott:
+Az Avere vFXT for Azure az alábbi helyzetekre a legmegfelelőbb:
 
 * HPC számítási feladatok intenzív olvasási műveletei
 * Közös NFS protokollt használó alkalmazások
@@ -44,9 +44,9 @@ Multimédiás és szórakoztatóipari alkalmazásoknál az Avere vFXT-fürt hasz
 
 ### <a name="life-sciences"></a>Élettudományok
 
-A avere vFXT lehetővé teszi, hogy a kutatók másodlagos elemzési munkafolyamatokat futtassanak az Azure-ban, és a helyüktől függetlenül hozzáférhessenek a genomikai adatokhoz.
+Az Avere vFXT lehetővé teszi a kutatók számára, hogy másodlagos elemzési munkafolyamatokat futtassanak az Azure Compute-ban, és a földrajzi adatokhoz való hozzáférést a helyüktől függetlenül.
 
-A gyógyszeripari kutatásban a avere vFXT-fürtök felgyorsítják a kábítószer-felderítést azáltal, hogy a kutatók megjósolják a kábítószer-célzási interakciókat és elemzik a kutatási
+A gyógyszeripari kutatás, Avere vFXT klaszterek felgyorsíthatja a kábítószer-felfedezés azáltal, hogy segít a kutatók megjósolni a kábítószer-cél kölcsönhatások és elemzi a kutatási adatokat.
 
 ### <a name="financial-services-analytics"></a>Pénzügyi szolgáltatások elemzése
 
@@ -64,19 +64,19 @@ Az Avere vFXT-fürt igény szerint gyorsítótárazza a fájlokat. Az ismételt 
 * Kompatibilis az Azure-blobokkal
 * NFSv3 vagy SMB2 protokollt használ
 
-A avere vFXT for Azure a következő Azure-erőforrásokat használja:
+Az Avere vFXT for Azure a következő Azure-erőforrásokat használja:
 
 |Azure-összetevő|   |
 |----------|-----------|
 |Virtuális gépek|3 vagy több E32s_v3|
 |Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |
 |Tárfiók (nem kötelező) |v2|
-|Adatháttér-tároló (nem kötelező) | Egy üres LRS-blobtároló |
+|Adatháttér-tárolás (nem kötelező) | Egy üres LRS-blobtároló |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A cikkből megtudhatja, hogyan tervezhet és hozhat létre saját avere-vFXT az Azure üzembe helyezéséhez.
+Olvassa el ezeket a cikkeket, hogy tervezze meg és hozza létre saját Avere vFXT azure-telepítéshez.
 
-* [A System megtervezése](avere-vfxt-deploy-plan.md)
+* [Tervezze meg a rendszert](avere-vfxt-deploy-plan.md)
 * [Az üzembe helyezés áttekintése](avere-vfxt-deploy-overview.md)
 * [A vFXT-fürt létrehozása](avere-vfxt-deploy.md)

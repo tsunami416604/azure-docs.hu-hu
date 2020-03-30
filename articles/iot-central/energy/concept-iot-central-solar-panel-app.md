@@ -1,6 +1,6 @@
 ---
-title: Építészeti fogalmak az Azure IoT Centralban – energia | Microsoft Docs
-description: Ez a cikk bemutatja az Azure architektúrával kapcsolatos főbb fogalmakat IoT Central
+title: Architekturális fogalmak az Azure IoT Central - Energy - Microsoft dokumentumok
+description: Ez a cikk az Azure IoT Central architektúrájával kapcsolatos legfontosabb fogalmakat ismerteti
 author: op-ravi
 ms.author: omravi
 ms.date: 10/23/2019
@@ -9,38 +9,38 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 44171a08e69cfa058e0a9e75e3220fb996b7789d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77018006"
 ---
-# <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central – napelemes alkalmazások architektúrája
+# <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - napelemalkalmazás-architektúra
 
 
 
 
-Ez a cikk áttekintést nyújt a napelemes figyelési alkalmazás sablonjának architektúráról. Az alábbi ábra az Azure napelemes alkalmazásának általánosan használt architektúráját mutatja be IoT Central platform használatával.
+Ez a cikk áttekintést nyújt a napelem felügyeleti alkalmazás sablon architektúráról. Az alábbi ábrán egy általánosan használt architektúra napelem alkalmazás az Azure-ban az IoT Central platform használatával.
 
 > [!div class="mx-imgBorder"]
-> ![intelligens fogyasztásmérő architektúrája](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
+> ![intelligens mérő architektúra](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
 
 Az architektúra az alábbi összetevőkből áll. Nem minden alkalmazáshoz szükséges az itt felsorolt összes összetevő.
 
-## <a name="solar-panels-and-connectivity"></a>Napelemek és kapcsolatok 
+## <a name="solar-panels-and-connectivity"></a>Napelemek és csatlakozás 
 
-A napelemes panelek a megújuló energiaforrások egyik jelentős forrása. A napelemek típusától és beállítástól függően az átjárók vagy más köztes eszközök és a szabadalmaztatott rendszerek használatával is csatlakoztatható. Előfordulhat, hogy az eszközök csatlakoztatásához létre kell hoznia IoT Central Device Bridge eszközt, amely nem csatlakoztatható közvetlenül. A IoT Central Device Bridge egy nyílt forráskódú megoldás, és [itt](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)találja a teljes részleteket. 
+Napelemek az egyik jelentős megújuló energiaforrások. Attól függően, hogy a napelem típusát és beállítása, akkor csatlakoztassa akár átjárók vagy más köztes eszközök és saját rendszerek. Előfordulhat, hogy létre kell hoznia az IoT Central eszközhidat az eszközök csatlakoztatásához, amelyek nem csatlakoztathatók közvetlenül. Az IoT Central eszközhíd egy nyílt forráskódú megoldás, és a teljes részleteket [itt](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)találja. 
 
 
 
 ## <a name="iot-central-platform"></a>IoT Central platform
-Az Azure IoT Central egy olyan platform, amely leegyszerűsíti a IoT-megoldás felépítését, és segít csökkenteni a IoT-kezelés, a műveletek és a fejlesztés terheit és költségeit. A IoT Central használatával könnyedén csatlakoztathatók, figyelhetők és kezelhetők a eszközök internetes hálózata (IoT) eszközei a skálán. A napelemek IoT Centralhoz való csatlakoztatása után az alkalmazás-sablon beépített funkciókat használ, mint például az eszközök modelljei, parancsai és irányítópultok. Az alkalmazás sablonja a IoT Central tárolót is használja a meleg elérési utakhoz, például a közel valós idejű mérési adatok figyeléséhez, elemzéséhez, szabályaihoz és vizualizációhoz.
+Az Azure IoT Central egy olyan platform, amely leegyszerűsíti az IoT-megoldás fejlesztését, és segít csökkenteni az IoT-kezelés, a műveletek és a fejlesztés terheit és költségeit. Az IoT Central segítségével könnyedén csatlakozhat, figyelheti és kezelheti az eszközök internetes hálózatát (IoT) eszközeit. Miután csatlakoztatta a napelemeket az IoT Centralhoz, az alkalmazássablon beépített funkciókat használ, például eszközmodelleket, parancsokat és irányítópultokat. Az alkalmazássablon az IoT Central storage-ot is használja a meleg útvonal-forgatókönyvekhez, például a közel valós idejű mérőadatok figyeléséhez, elemzéséhez, szabályaihoz és vizualizációhoz.
 
 
-## <a name="extensibility-options-to-build-with-iot-central"></a>Bővíthetőségi lehetőségek a IoT Central létrehozásához
-A IoT Central platform két bővíthetőségi lehetőséget kínál: folyamatos adatexportálást (CDE) és API-kat. Az ügyfelek és a partnerek választhatnak ezek között a lehetőségek közül, hogy testre szabják az adott igényeknek megfelelő megoldásokat. Például az egyik partner konfigurálta az Azure Data Lake Storage (ADLS) CDE. A ADLS használják a hosszú távú adatmegőrzésre és más, a lassú elérésű útvonalak tárolási helyzetére, például a kötegelt feldolgozásra, a naplózásra és a jelentéskészítésre. 
+## <a name="extensibility-options-to-build-with-iot-central"></a>Az IoT Central segítségével létrehozandó bővíthetőségi lehetőségek
+Az IoT Central platform két bővíthetőségi lehetőséget biztosít: folyamatos adatexportálás (CDE) és API-k. Az ügyfelek és a partnerek választhatnak a lehetőségek közül, hogy egyedi igényeknek megfelelően szabják testre megoldásaikat. Például az egyik partnerünk konfigurálta a CDE-t az Azure Data Lake Storage (ADLS) segítségével. Az ADLS-t hosszú távú adatmegőrzési és más, a hideg út tárolási forgatókönyveihez használják, például kötegelt feldolgozáshoz, naplózáshoz és jelentéskészítési célokra. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Most, hogy megismerte az architektúrát, [hozzon létre ingyen a Solar panel alkalmazást](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)
+* Most, hogy már megtanulta az architektúrát, [hozzon létre napelem alkalmazást ingyen](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
+* Ha többet szeretne megtudni az IoT Centralról, olvassa el az [IoT Central áttekintése című témakört.](https://docs.microsoft.com/azure/iot-central/)

@@ -1,67 +1,75 @@
 ---
 title: Azure Automation-adatok kezelése
-description: Ez a cikk több témakört tartalmaz egy Azure Automation környezet kezeléséhez.  Jelenleg az adatok megőrzését és a Azure Automation Azure Automation vész-helyreállítás biztonsági mentését foglalja magában.
+description: Ez a cikk több témakört tartalmaz egy Azure Automation-környezet kezeléséhez.  Jelenleg tartalmazza az azure-automatizálási vész-helyreállítási rendszer adatmegőrzési és biztonsági mentését az Azure Automationben.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/16/2018
+ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: daa5bab7c8d4cbe98ffe9a8a8a4b66da029fef5c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 340fa19b6f9f07e192123900bc96b07bb016542f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421894"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132899"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
-Ez a cikk több témakört tartalmaz egy Azure Automation környezet kezeléséhez.
+
+Ez a cikk több témakört tartalmaz egy Azure Automation-környezet kezeléséhez.
 
 ## <a name="data-retention"></a>Adatmegőrzés
-Amikor Azure Automationban töröl egy erőforrást, a rendszer a naplózási célokra 90 napig őrzi meg a végleges eltávolítást.  Ebben az időszakban nem tekintheti meg és nem használhatja az erőforrást.  Ez a szabályzat a törölt Automation-fiókhoz tartozó erőforrásokra is vonatkozik.
 
-Azure Automation automatikusan törli és véglegesen eltávolítja a 90 napnál régebbi feladatokat.
+Amikor töröl egy erőforrást az Azure Automationben, az 30 napig megmarad naplózási célokra, mielőtt véglegesen eltávolítané. Ez idő alatt nem láthatja és nem használhatja az erőforrást. Ez a házirend a törölt automatizálási fiókhoz tartozó erőforrásokra is vonatkozik.
 
-A következő táblázat összefoglalja a különböző erőforrások adatmegőrzési szabályzatát.
+Az Azure Automation automatikusan törli és véglegesen eltávolítja a 30 napnál régebbi feladatokat.
+
+Az alábbi táblázat a különböző erőforrások adatmegőrzési szabályát foglalja össze.
 
 | Adatok | Szabályzat |
 |:--- |:--- |
-| Fiókok |Véglegesen eltávolított 90 nappal azután, hogy egy felhasználó törölte a fiókot. |
-| Objektumok |Véglegesen eltávolított 90 nappal azután, hogy az eszközt egy felhasználó törölte, vagy 90 nappal azután, hogy egy felhasználó törölte az adategységet. |
-| Modulok |Véglegesen eltávolított 90 nappal azután, hogy egy felhasználó törölte a modult, vagy 90 nappal azután, hogy egy felhasználó törölte a modult. |
-| Runbookok |Véglegesen eltávolított 90 nappal azután, hogy egy felhasználó törölte az erőforrást, vagy 90 nappal azután, hogy egy felhasználó törölte az erőforrást tartalmazó fiókot. |
-| Feladatok |Törölve és véglegesen eltávolítva 90 nappal az utolsó módosítás után. Ez a feladatok befejeződése után leáll, vagy fel van függesztve. |
-| Csomópont-konfigurációk/MOF-fájlok |A régi csomópont-konfigurációt a rendszer véglegesen eltávolítja 90 nappal azután, hogy új csomópont-konfiguráció jön létre. |
-| DSC-csomópontok |A rendszer véglegesen eltávolította 90 nappal azt követően, hogy a csomópontot nem regisztrálta az Automation-fiókból Azure Portal vagy a [Regisztráció törlése-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) parancsmag használatával a Windows PowerShellben. A csomópontokat a rendszer véglegesen eltávolítja 90 nappal azután is, hogy egy felhasználó törölte azt a fiókot, amely a csomópontot tárolja. |
-| Csomópont-jelentések |Véglegesen eltávolított 90 nappal azután, hogy új jelentés jön létre az adott csomóponthoz |
+| Fiókok |30 nappal a fiók felhasználó általi törlése után véglegesen eltávolítva. |
+| Objektumok |30 nappal az eszköz felhasználó általi törlése után, vagy 30 nappal azt követően, hogy a felhasználó törli az eszközt tartalmazó fiókot. |
+| Modulok |30 nappal azután, hogy a felhasználó törölte a modult, vagy 30 nappal azt követően, hogy a felhasználó törli a modult tartalmazó fiókot. |
+| Runbookok |30 nappal az erőforrás felhasználó általi törlése után, vagy 30 nappal azt követően, hogy a felhasználó törölte az erőforrást tartalmazó fiókot. |
+| Feladatok |Az utolsó módosítás után 30 nappal törölve és véglegesen eltávolítva. Ez a feladat befejezése, leállítása vagy felfüggesztése után történhet. |
+| Csomópontkonfigurációk/MOF-fájlok |A régi csomópontkonfiguráció véglegesen eltávolításra kerül 30 nappal az új csomópontkonfiguráció létrehozása után. |
+| DSC-csomópontok |30 nappal azután, hogy a csomópont nincs regisztrálva az Automation-fiókból az Azure Portal vagy az [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) parancsmag a Windows PowerShellben. A csomópontok at is véglegesen eltávolítja 30 nappal azt követően, hogy a felhasználó törli a csomópontot tartalmazó fiókot. |
+| Csomópontjelentések |90 nappal az adott csomópontra vonatkozó új jelentés létrehozása után 90 nappal véglegesen eltávolítva |
 
-Az adatmegőrzési szabályzat minden felhasználóra érvényes, és jelenleg nem szabható testre.
+Az adatmegőrzési szabály minden felhasználóra vonatkozik, és jelenleg nem szabható testre.
 
-Ha azonban hosszabb ideig kell megőriznie az adatok mennyiségét, a runbook-feladatok naplóit továbbíthatja Azure Monitor naplókba.  További információkért tekintse át [Azure Automation feladatának továbbítása Azure monitor naplókhoz](automation-manage-send-joblogs-log-analytics.md)című témakört.   
+Ha azonban hosszabb ideig kell megőriznie az adatokat, továbbíthatja a runbook-feladatnaplókat az Azure Monitor-naplókba. További információkért tekintse [át az Azure Automation-feladat adatainak továbbítását az Azure Monitor naplóiba.](automation-manage-send-joblogs-log-analytics.md)
 
 ## <a name="backing-up-azure-automation"></a>Az Azure Automation biztonsági mentése
-Ha Microsoft Azure-ben töröl egy Automation-fiókot, a rendszer törli a fiókban lévő összes objektumot, beleértve a runbookok, a modulokat, a konfigurációkat, a beállításokat, a feladatokat és az eszközöket. A fiók törlése után az objektumok nem állíthatók helyre.  A következő információk segítségével biztonsági másolatot készíthet az Automation-fiók tartalmáról a törlés előtt. 
+
+Ha töröl egy automatizálási fiókot a Microsoft Azure-ban, a fiók összes objektuma törlődik, beleértve a runbookokat, modulokat, konfigurációkat, beállításokat, feladatokat és eszközöket. Az objektumok a fiók törlése után nem állíthatók helyre.  Az alábbi információk segítségével biztonsági másolatot készíthet az automatizálási fiók tartalmáról a törlés előtt.
 
 ### <a name="runbooks"></a>Runbookok
-A runbookok a Windows PowerShell Azure Portal vagy a [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) parancsmagjának használatával exportálhatja parancsfájl-fájlokba.  Ezeket a parancsfájlokat egy másik Automation-fiókba importálhatja, amelyet a [Runbook létrehozása vagy importálása](/previous-versions/azure/dn643637(v=azure.100))című cikkben talál.
+
+A runbookok parancsfájlokba exportálhatók az Azure Portalon vagy a [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) parancsmagban a Windows PowerShellben. Ezek a parancsfájlok importálhatók egy másik automatizálási fiókba, ahogy azt a [Runbook létrehozása vagy importálása](/previous-versions/azure/dn643637(v=azure.100))című részben tárgyaljuk.
 
 ### <a name="integration-modules"></a>Integrációs modulok
-Azure Automationból nem exportálhatja az integrációs modulokat.  Gondoskodnia kell arról, hogy az Automation-fiókon kívül is elérhetők legyenek.
+
+Az Azure Automation integrációs moduljai nem exportálhatók. Győződjön meg arról, hogy az automatizálási fiókon kívül érhetők el.
 
 ### <a name="assets"></a>Objektumok
-Nem lehet exportálni az [eszközöket](/previous-versions/azure/dn939988(v=azure.100)) a Azure Automationból.  A Azure Portal használatával meg kell jegyeznie a változók, a hitelesítő adatok, a tanúsítványok, a kapcsolatok és az ütemtervek részleteit.  Ezután manuálisan kell létrehoznia azokat az eszközöket, amelyeket egy másik automatizálásba importált runbookok használ.
 
-Az Azure- [parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) segítségével lekérheti a nem titkosított eszközök részleteit, és megtakaríthatja őket későbbi használatra, vagy egy másik Automation-fiókban egyenértékű eszközöket hozhat létre.
+Az Azure Automationből nem exportálhat [eszközöket.](/previous-versions/azure/dn939988(v=azure.100))  Az Azure Portal használatával meg kell jegyeznie a változók, hitelesítő adatok, tanúsítványok, kapcsolatok és ütemezések részleteit.  Ezután manuálisan létre kell hoznia minden olyan eszközt, amelyet a runbookok használnak, és amelyeket egy másik automatizálásba importál.
 
-A titkosított változók vagy a hitelesítő adatok jelszava mezője nem kérhető le a parancsmagok használatával.  Ha nem ismeri ezeket az értékeket, a [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) és a [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) tevékenységek segítségével lekérheti őket egy runbook.
+[Az Azure-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) segítségével lekérheti a titkosítatlan eszközök részleteit, és vagy menti őket későbbi használatra, vagy hozzon létre egyenértékű eszközöket egy másik automatizálási fiókban.
 
-A tanúsítványok nem exportálhatók Azure Automationból.  Győződjön meg arról, hogy az Azure-on kívül minden tanúsítvány elérhető.
+A titkosított változók vagy a hitelesítő adatok jelszómezője parancsmagokkal nem olvasható be. Ha nem ismeri ezeket az értékeket, majd lekérheti őket egy runbooka [get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) és [get-automationpscredential](/previous-versions/azure/dn940015(v=azure.100)) tevékenységek használatával.
+
+Az Azure Automation tanúsítványai nem exportálhatók. Győződjön meg arról, hogy a tanúsítványok az Azure-on kívül érhetők el.
 
 ### <a name="dsc-configurations"></a>DSC-konfigurációk
-A konfigurációkat a Windows PowerShell Azure Portal vagy [export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) parancsmagjának használatával is exportálhatja parancsfájl-fájlokba. Ezeket a konfigurációkat egy másik Automation-fiókban is importálhatja és használhatja.
 
-## <a name="geo-replication-in-azure-automation"></a>Geo-replikálás Azure Automation
-A Geo-replikáció, a Azure Automation-fiókok standard tagja, biztonsági mentést készít a fiókadatok számára egy másik földrajzi régióhoz a redundancia érdekében. A fiók beállításakor kiválaszthat egy elsődleges régiót, majd a rendszer automatikusan hozzárendeli a másodlagos régiót. Az elsődleges régióból másolt másodlagos adatok adatvesztés esetén folyamatosan frissülnek.  
+A konfigurációkat parancsfájlfájlokba exportálhatja az Azure Portalon vagy az [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) parancsmagban a Windows PowerShellben. Ezek a konfigurációk importálhatók és használhatók egy másik automatizálási fiókban.
 
-A következő táblázat a rendelkezésre álló elsődleges és másodlagos régió párosításait mutatja be.
+## <a name="geo-replication-in-azure-automation"></a>Georeplikáció az Azure Automationben
+
+Az Azure Automation-fiókokban szokásos georeplikáció biztonsági másolatot ad a fiókadatokról egy másik földrajzi régióba a redundancia érdekében. A fiók beállításakor kiválaszthatja az elsődleges régiót, majd automatikusan hozzárendel egy másodlagos régiót. Az elsődleges régióból másolt másodlagos adatok adatvesztés esetén folyamatosan frissülnek.  
+
+Az alábbi táblázat a rendelkezésre álló elsődleges és másodlagos régiópárosításokat mutatja be.
 
 | Elsődleges | Másodlagos |
 | --- | --- |
@@ -71,6 +79,4 @@ A következő táblázat a rendelkezésre álló elsődleges és másodlagos ré
 | Délkelet-Ázsia |Kelet-Ázsia |
 | Kelet-Japán |Nyugat-Japán |
 
-Abban az esetben, ha az elsődleges régió adatainak elvesztése nem valószínű, a Microsoft megkísérli a helyreállítást. Ha az elsődleges adatait nem lehet helyreállítani, a rendszer a Geo-feladatátvételt hajtja végre, és az érintett ügyfeleket az előfizetésen keresztül kapja meg.
-
-
+Abban a valószínűtlen esetben, ha egy elsődleges régió adatai elvesznek, a Microsoft megpróbálja helyreállítani azokat. Ha az elsődleges adatok nem állíthatók helyre, majd a földrajzi feladatátvétel történik, és az érintett ügyfelek értesítést kapnak erről az előfizetésükön keresztül.

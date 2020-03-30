@@ -13,10 +13,10 @@ ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: acfa10ea506e063bf6b230386ca0722f1c959d18
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75442564"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Új Azure API Management-szolgáltatáspéldány létrehozása
@@ -27,34 +27,34 @@ Ez a gyors útmutató az új API Management-példányok Azure Portalon történ�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-![API Management-példány](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
+![API-felügyeleti példány](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
 ## <a name="create-a-new-service"></a>Új szolgáltatás létrehozása
 
-1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget. Kiválaszthatja az **erőforrás létrehozása** lehetőséget is az Azure **kezdőlapján** . 
+1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Az Azure **kezdőlapján** is **választhatja** az Erőforrás létrehozása lehetőséget. 
    
-   ![Válassza az erőforrás létrehozása lehetőséget.](./media/get-started-create-service-instance/00-CreateResource-01.png)
+   ![Erőforrás létrehozása lehetőséget.](./media/get-started-create-service-instance/00-CreateResource-01.png)
    
-1. Az **új** képernyőn válassza az **integráció** lehetőséget, majd válassza a **API Management**lehetőséget.
+1. Az **Új** képernyőn válassza az **Integráció** lehetőséget, majd válassza az **API Management**lehetőséget.
    
    ![Új Azure API Management-példány](./media/get-started-create-service-instance/00-CreateResource-02.png)
    
-1. A **API Management szolgáltatás** képernyőn adja meg a beállításokat.
+1. Az **API Management szolgáltatás** képernyőjén adja meg a beállításokat.
    
    ![új példány](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
    
    | Beállítás                 | Ajánlott érték                               | Leírás                                                                                                                                                                                                                                                                                                                         |
 |-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name (Név)**                | Az API Management szolgáltatás egyedi neve | A név később nem módosítható. A szolgáltatásnév alapján jön létre a *{név}.azure-api.net* formátumú alapértelmezett tartománynév. Ha egyéni tartománynevet kíván használni, tekintse meg az [Egyéni tartománynév konfigurálása](configure-custom-domain.md) témakört. <br/> A szolgáltatásnév a szolgáltatásra és a megfelelő Azure erőforrásra utal. |
+| **Név**                | Az API Management szolgáltatás egyedi neve | A név később nem módosítható. A szolgáltatásnév alapján jön létre a *{név}.azure-api.net* formátumú alapértelmezett tartománynév. Ha egyéni tartománynevet kíván használni, tekintse meg az [Egyéni tartománynév konfigurálása](configure-custom-domain.md) témakört. <br/> A szolgáltatásnév a szolgáltatásra és a megfelelő Azure erőforrásra utal. |
 | **Előfizetés**        | Az Ön előfizetése                             | Az új szolgáltatáspéldány létrehozásához használt előfizetés. Az Ön számára elérhető Azure-előfizetések közül választhat.                                                                                                                                                            |
-| **Erőforráscsoport**      | *apimResourceGroup*                           | Válasszon ki egy új vagy egy létező erőforrást. Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../azure-resource-manager/management/overview.md#resource-groups) talál.                                                                                                  |
-| **Hely**            | *USA nyugati régiója*                                    | Válassza ki az Önhöz legközelebbi földrajzi régiót. A legördülő listában csak az elérhető API Management szolgáltatási régiók jelennek meg.                                                                                                                                                                                                          |
+| **Erőforráscsoport**      | *apimResourceGroup*                           | Válasszon ki egy új vagy egy létező erőforrást. Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. Tudjon meg többet [itt](../azure-resource-manager/management/overview.md#resource-groups).                                                                                                  |
+| **Helyen**            | *USA nyugati régiója*                                    | Válassza ki az Önhöz legközelebbi földrajzi régiót. A legördülő listában csak az elérhető API Management szolgáltatási régiók jelennek meg.                                                                                                                                                                                                          |
 | **Szervezet neve**   | Az intézmény neve                 | Ezt a nevet sok helyen használja a rendszer, többek között a fejlesztői portál címében és az értesítő e-mailek küldőjeként.                                                                                                                                                                                                             |
-| **Rendszergazdai e-mail** | *rendszergazdai\@org.com*                               | Az itt megadott e-mail-címre érkezik majd az **API Management** által küldött összes értesítés.                                                                                                                                                                                                                                              |
+| **Rendszergazdai e-mail** | *admin\@org.com*                               | Az itt megadott e-mail-címre érkezik majd az **API Management** által küldött összes értesítés.                                                                                                                                                                                                                                              |
 | **Tarifacsomag**        | *Fejlesztői*                                   | Állítsa be a **Fejlesztői** szintet a szolgáltatás értékeléséhez. Ez a szint nem használható éles környezetben. További információt az API Management szintjeinek skálázásáról a [frissítés és skálázás](upgrade-and-scale.md) oldalon talál.                                                                                                                                    |
 
 3. Válassza a **Létrehozás** elemet.
@@ -68,21 +68,21 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 Ha már nincs rájuk szükség, eltávolíthatja az erőforráscsoportot és az összes kapcsolódó erőforrást az alábbi lépések végrehajtásával:
 
-1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportok**elemet. A **kezdőlapon** kiválaszthatja az **erőforráscsoportok** lehetőséget is. 
+1. Az Azure Portalon keressen meg és válasszon **erőforráscsoportokat.** A kezdőlapon **az Erőforráscsoportok** lehetőséget is **választhatja.** 
 
    ![Erőforráscsoportok navigációja](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
-1. Az **erőforráscsoportok** lapon válassza ki az erőforráscsoportot.
+1. Az **Erőforráscsoportok** lapon jelölje ki az erőforráscsoportot.
 
    ![Erőforráscsoportok navigációja](./media/get-started-create-service-instance/00-DeleteResource-02.png)
 
-1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet. 
+1. Az erőforráscsoport lapon válassza az **Erőforráscsoport törlése**lehetőséget. 
    
-1. Írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+1. Írja be az erőforráscsoport nevét, majd válassza a **Törlés gombot.**
 
    ![Erőforráscsoport törlése](./media/get-started-create-service-instance/00-DeleteResource-03.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az első API importálása és közzététele](import-and-publish.md)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/22/2019
 ms.author: tarcher
 ms.openlocfilehash: 3b2faa3fe095366e0868937220d464b76b1f070d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67179136"
 ---
 1. Hozzon létre egy `rg.yml` nevű fájlt a Cloud Shellben.
@@ -35,13 +35,13 @@ ms.locfileid: "67179136"
 
 1. Mentse a fájlt, és zárja be a szerkesztőt.
 
-1. A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+1. Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
    ```bash
    ansible-playbook rg.yml
    ```
 
-A forgatókönyv futtatása után a következő eredményeket hasonló kimenet jelenik meg:
+A forgatókönyv futtatása után a következő eredményekhez hasonló kimenet jelenik meg:
 
 ```output
 PLAY [localhost] *********************************************************************************

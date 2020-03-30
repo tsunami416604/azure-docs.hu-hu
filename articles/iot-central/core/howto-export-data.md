@@ -1,142 +1,142 @@
 ---
-title: Az Azure IoT Central-beli adatszolgáltatások exportálása | Microsoft Docs
-description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure-ba Event Hubsba, Azure Service Busba és az Azure-ba Blob Storage
+title: Az Azure IoT Central adatainak exportálása | Microsoft dokumentumok
+description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure Event Hubs, az Azure Service Bus és az Azure Blob Storage szolgáltatásba
 services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 01/30/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 0386897b6cecc27781626cfecd6f1f5f8a3752e4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 725c5acf961fffb1fd4cf9bc17e37a5940f871cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524383"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157908"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>IoT-adatexportálás a célhelyekre az Azure-ban
+# <a name="export-iot-data-to-destinations-in-azure"></a>IoT-adatok exportálása az Azure-beli célállomásokra
 
 *Ez a témakör a rendszergazdákra vonatkozik.*
 
-Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az Azure **Event Hubs**, **Azure Service Bus**vagy **Azure Blob Storage** -példányokban tárolt adatai exportálásához. Az adatok JSON formátumúak, és tartalmazhatják a telemetria, az eszköz adatait és az eszköz sablonjának adatait. Az exportált adatértékek használata:
+Ez a cikk bemutatja, hogyan használhatja az Azure IoT Central folyamatos adatexportálási szolgáltatását az **Azure Event Hubs,** **az Azure Service Bus**vagy az Azure Blob storage-példányokba történő exportálásához. **Azure Blob storage** Az adatok exportálása JSON formátumban történik, és tartalmazhatják a telemetriai adatokat, az eszközadatokat és az eszközsablon-információkat. Az exportált adatokat a következő célokra használja:
 
-- Meleg elérésű elemzések és elemzések. Ez a beállítás magában foglalja az egyéni szabályok beindítását a Azure Stream Analyticsban, az egyéni munkafolyamatok aktiválását a Azure Logic Appsban, vagy átadja a Azure Functions át.
-- A Microsoft Power BI-ban a ritka elérésű elemzések, például a Azure Machine Learning vagy a hosszú távú trendek elemzése során betanítási modellek.
+- Meleg út elemzési és elemzési adatok. Ez a beállítás magában foglalja az egyéni szabályok aktiválását az Azure Stream Analytics-ben, egyéni munkafolyamatok aktiválását az Azure Logic Apps-ben, vagy az Azure Functions átalakítását.
+- Hidegút-elemzések, például az Azure Machine Learning betanítási modelljei vagy a Microsoft Power BI hosszú távú trendelemzése.
 
 > [!Note]
-> Ha bekapcsolja a folyamatos adatexportálást, a rendszer csak az adott pillanattól kezdve kapja meg az adott adatot. Jelenleg nem lehet lekérni az adatgyűjtési időt, amikor a folyamatos adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a folyamatos adatexportálást.
+> Ha bekapcsolja a folyamatos adatexportálást, attól a pillanattól kezdve csak az adatokat kapja meg. Jelenleg az adatok nem olvashatók be egy olyan időpontban, amikor a folyamatos adatexportálás ki volt kapcsolva. Több előzményadat megőrzéséhez kapcsolja be a folyamatos adatexportálást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A IoT Central alkalmazásban rendszergazdának kell lennie, vagy az adatexportálási engedélyekkel kell rendelkeznie.
+Az IoT Central alkalmazás rendszergazdájának kell lennie, vagy adatexportálási engedélyekkel kell rendelkeznie.
 
-## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
+## <a name="set-up-export-destination"></a>Exportálási cél beállítása
 
-A folyamatos adatexportálás konfigurálása előtt az Exportálás céljának léteznie kell.
+A folyamatos adatexportálás konfigurálása előtt az exportcélnak léteznie kell.
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs névtér létrehozása
+### <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Ha nem rendelkezik meglévő Event Hubs-névtérrel az exportáláshoz, kövesse az alábbi lépéseket:
+Ha nem rendelkezik meglévő Event Hubs névtérrel, amelybe exportálhat, kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy [új Event Hubs névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.EventHub). További információt az [Azure Event Hubs dokumentációjában](../../event-hubs/event-hubs-create.md)olvashat.
+1. Hozzon létre egy [új Event Hubs névteret az Azure Portalon.](https://ms.portal.azure.com/#create/Microsoft.EventHub) További információ az [Azure Event Hubs-dokumentumokban.](../../event-hubs/event-hubs-create.md)
 
-2. Válasszon egy előfizetést. Az adatexportálás más előfizetésekre is elvégezhető, amelyek nem ugyanabban az előfizetésben találhatók, mint a IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
+2. Válasszon előfizetést. Adatokat exportálhat más előfizetések, amelyek nem ugyanabban az előfizetésben, mint az IoT Central alkalmazás. Ebben az esetben kapcsolati karakterlánc használatával csatlakozik.
 
-3. Hozzon létre egy Event hubot a Event Hubs névtérben. Nyissa meg a névteret, és a felül található **+ Event hub** elemet választva hozzon létre egy Event hub-példányt.
+3. Hozzon létre egy eseményközpontot az Event Hubs névterében. Lépjen a névtérbe, és válassza a **+ Event Hub** a tetején egy eseményközpont-példány létrehozásához.
 
-### <a name="create-service-bus-namespace"></a>Service Bus névtér létrehozása
+### <a name="create-service-bus-namespace"></a>Service Bus-névtér létrehozása
 
-Ha nem rendelkezik meglévő Service Bus-névtérrel az exportáláshoz, kövesse az alábbi lépéseket:
+Ha nincs meglévő Service Bus-névtér, amelybe exportálhatna, kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy [új Service Bus névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). [Azure Service Bus dokumentációban](../../service-bus-messaging/service-bus-create-namespace-portal.md)bővebben is olvashat.
-2. Válasszon egy előfizetést. Az adatexportálás más előfizetésekre is elvégezhető, amelyek nem ugyanabban az előfizetésben találhatók, mint a IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
+1. Hozzon létre egy [új Service Bus-névteret az Azure Portalon.](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) További információ az [Azure Service Bus-dokumentumokban](../../service-bus-messaging/service-bus-create-namespace-portal.md)található.
+2. Válasszon előfizetést. Adatokat exportálhat más előfizetések, amelyek nem ugyanabban az előfizetésben, mint az IoT Central alkalmazás. Ebben az esetben kapcsolati karakterlánc használatával csatlakozik.
 
-3. Nyissa meg a Service Bus névteret, és a felül található **+ üzenetsor** vagy **+ témakör** használatával hozzon létre egy üzenetsor vagy témakört az exportáláshoz.
+3. Nyissa meg a Service Bus névterét, és válassza a **+ Várólista** vagy **+ Témakör** lehetőséget a tetején, ha várólistát vagy témakört szeretne exportálni.
 
-Ha a Service Bus exportálás célhelyként választja, akkor a várólisták és a témakörök nem rendelkezhetnek a munkamenetek és az ismétlődő észlelések engedélyezésével. Ha ezek bármelyike engedélyezve van, néhány üzenet nem érkezik meg a várólistán vagy a témakörben.
+Ha a Service Bus-t választja exportálási célként, a várólistákban és témakörökben nem engedélyezve lehet a munkamenetek vagy a duplikáltelem-észlelés. Ha ezen beállítások bármelyike engedélyezve van, egyes üzenetek nem érkeznek meg a várólistába vagy a témakörbe.
 
 ### <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-Ha nem rendelkezik meglévő Azure Storage-fiókkal az exportáláshoz, kövesse az alábbi lépéseket:
+Ha nem rendelkezik meglévő Azure Storage-fiókkal, amelybe exportálhatja, kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](https://aka.ms/blobdocscreatestorageaccount) létrehozása vagy [Azure Data Lake Storage v2 Storage-fiókok](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Az adatexportálás csak a blokk blobokat támogató Storage-fiókokba tud írni. Az alábbi lista a Storage-fiókok ismert kompatibilis típusait sorolja fel: 
+1. Hozzon létre egy [új tárfiókot az Azure Portalon.](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) További információ az új [Azure Blob Storage-fiókok](https://aka.ms/blobdocscreatestorageaccount) vagy [az Azure Data Lake Storage v2 storage-fiókok](../../storage/blobs/data-lake-storage-quickstart-create-account.md)létrehozásáról. Az adatexportálás csak olyan tárfiókokba írhat adatokat, amelyek támogatják a blokkblobokat. Az alábbi lista az ismert kompatibilis típusú tárfiókokat tartalmazza: 
 
     |Teljesítményszint|Fiók típusa|
     |-|-|
-    |Standard|általános célú v2|
-    |Standard|általános célú v1|
+    |Standard|Általános célú V2|
+    |Standard|Általános célú V1|
     |Standard|Blob Storage|
-    |Premium|Blob Storage letiltása|
+    |Prémium|Blob-tároló blokkolása|
 
-2. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
+2. Hozzon létre egy tárolót a tárfiókban. Nyissa meg a tárfiókot. A **Blob Service csoportban**válassza **a Blobok tallózása**lehetőséget. Új tároló létrehozásához válassza a **+ Tároló** lehetőséget a tetején.
 
 ## <a name="set-up-continuous-data-export"></a>Folyamatos adatexportálás beállítása
 
-Most, hogy van egy célhelye az adatexportáláshoz, kövesse az alábbi lépéseket a folyamatos adatexportálás beállításához.
+Most, hogy rendelkezik az adatok exportálásához szükséges célállomással, kövesse az alábbi lépéseket a folyamatos adatexportálás beállításához.
 
-1. Jelentkezzen be IoT Central alkalmazásba.
+1. Jelentkezzen be az IoT Central alkalmazásba.
 
-2. A bal oldali panelen válassza az **adatexportálás**elemet.
+2. A bal oldali ablaktáblában válassza az **Adatexportálás**lehetőséget.
 
     > [!Note]
-    > Ha nem látja az adatexportálást a bal oldali ablaktáblán, akkor nincs engedélye az adatexportálás konfigurálására az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
+    > Ha a bal oldali ablaktáblában nem látható az Adatexportálás, akkor nincs engedélye az adatok exportálásának konfigurálásához az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
-3. Kattintson a jobb felső sarokban található **+ új** gombra. Válassza ki az **azure Event Hubs**, **Azure Service Bus**vagy az **Azure Blob Storage** egyikét az Exportálás céljaként. Az alkalmazáson keresztüli exportálások maximális száma öt.
+3. Válassza a **+ Új** gombot a jobb felső sarokban. Válasszon egyet az **Azure Event Hubs**, **az Azure Service Bus**vagy az Azure Blob **storage** közül az exportálás célhelyeként. Az exportok maximális száma kérelemenként öt.
 
     ![Új folyamatos adatexportálás létrehozása](media/howto-export-data/new-export-definition.png)
 
-4. A legördülő listában válassza ki a **Event Hubs névteret**, **Service Bus névteret**, a **Storage-fiók névterét**, vagy **adjon meg egy kapcsolatok karakterláncot**.
+4. A legördülő listában jelölje ki az **Event Hubs névteret**, **a Service Bus-névteret**, **a Tárfiók névterét**, vagy **adja meg a kapcsolati karakterláncot.**
 
-    - A IoT Central alkalmazással megegyező előfizetésben csak a Storage-fiókok, a Event Hubs névterek és a Service Bus névterek láthatók. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg az 5. lépést.
-    - Az ingyenes díjszabási csomag használatával létrehozott alkalmazások esetében az egyetlen módszer a folyamatos adatexportálás konfigurálására egy kapcsolódási karakterláncon keresztül. Az ingyenes díjszabási csomag alkalmazásai nem rendelkeznek társított Azure-előfizetéssel.
+    - Csak az IoT Central alkalmazással azonos előfizetésben láthatja a Storage-fiókokat, az Event Hubs-névtereket és a Service Bus-névtereket. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **a Kapcsolati karakterlánc megadása lehetőséget,** és olvassa el az 5.
+    - Az ingyenes díjszabási csomaggal létrehozott alkalmazások esetében a folyamatos adatexportálás konfigurálásának egyetlen módja egy kapcsolati karakterlánc. Az ingyenes díjcsomagban lévő alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
 
-    ![Új Event hub létrehozása](media/howto-export-data/export-event-hub.png)
+    ![Új eseményközpont létrehozása](media/howto-export-data/export-event-hub.png)
 
-5. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
-    - Event Hubs vagy Service Bus, lépjen a Azure Portal névtér elemére.
-        - A **Beállítások**területen válassza a **megosztott elérési szabályzatok** elemet.
-        - Válassza ki az alapértelmezett **RootManageSharedAccessKey** , vagy hozzon létre egy újat
-        - Az elsődleges vagy a másodlagos kapcsolatok karakterláncának másolása
-    - Storage-fiók, nyissa meg a Azure Portal Storage-fiókját:
-        - A **Beállítások**területen válassza a **hozzáférési kulcsok** elemet.
-        - Másolja a key1-vagy a key2-kapcsolatok karakterláncát
+5. (Nem kötelező) Ha **a Kapcsolati karakterlánc megadása**lehetőséget választotta, egy új mező jelenik meg a kapcsolati karakterlánc beillesztéséhez. A kapcsolati karakterlánc beszerezése a következőhöz:
+    - Event Hubs vagy Service Bus, nyissa meg a névteret az Azure Portalon.
+        - A **Beállítások csoportban**válassza a **Közös hozzáférési házirendek lehetőséget.**
+        - Válassza ki az alapértelmezett **RootManageSharedAccessKey-t,** vagy hozzon létre egy újat
+        - Az elsődleges vagy másodlagos kapcsolati karakterlánc másolása
+    - Tárfiók, nyissa meg a Storage-fiók az Azure Portalon:
+        - A **Beállítások csoportban**válassza az **Access-billentyűk lehetőséget.**
+        - A key1 kapcsolati karakterlánc vagy a key2 kapcsolati karakterlánc másolása
 
-6. Válassza ki az Event hub, a várólista, a témakör vagy a tároló elemet a legördülő listából.
+6. Válasszon egy eseményközpontot, várólistát, témakört vagy tárolót a legördülő listából.
 
-7. Az **exportálni**kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a**típust be értékre állítja.
+7. Az **Exportálandó adatok**csoportban válassza ki az exportálandó adattípusokat a típus **Be**beállításával.
 
-8. A folyamatos adatexportálás bekapcsolásához győződjön **meg**arról, hogy az **engedélyezve** van-e a váltógomb. Kattintson a **Mentés** gombra.
+8. A folyamatos adatexportálás bekapcsolásához győződjön meg arról, hogy az **Engedélyezve** váltás be van **kapcsolva.** Kattintson a **Mentés** gombra.
 
-9. Néhány perc elteltével az adatai megjelennek a kiválasztott célhelyen.
+9. Néhány perc múlva az adatok megjelennek a kiválasztott úti célban.
 
 ## <a name="export-contents-and-format"></a>Tartalom és formátum exportálása
 
-Az exportált telemetria-adatok teljes egészében tartalmazzák az eszköz által IoT Central küldött üzenetet, nem csak a telemetria értékeket. Az exportált eszközökhöz tartozó adatok az összes eszköz tulajdonságainak és metaadatainak változásait tartalmazzák, az exportált eszközök pedig az összes eszközosztály változásait tartalmazzák.
+Exportált telemetriai adatok tartalmazza a teljes üzenetet az eszközök küldött IoT Central, nem csak a telemetriai értékek magukat. Az exportált eszközök adatai az összes eszköz tulajdonságainak és metaadatainak változásait tartalmazzák, az exportált eszközsablonok pedig az összes eszközsablon módosításait.
 
-Event Hubs és Service Bus esetében az adatexportálás közel valós idejű. Az információk a Body (törzs) tulajdonságban találhatók, és JSON formátumúak (lásd alább példákat).
+Az Event Hubs és a Service Bus esetében az adatok exportálása közel valós időben történik. Az adatok a törzs tulajdonságában helyezkednek el, és JSON formátumban vannak (a példákat lásd alább).
 
-Blob Storage esetében percenként egyszer exportálja az adatmennyiséget, és minden olyan fájlt, amely a legutóbbi exportált fájl óta változást tartalmaz. Az exportált adatfájlok JSON formátumú három mappába kerülnek. A Storage-fiók alapértelmezett elérési útjai a következők:
+A Blob Storage esetében az adatok percenként egyszer exportálódnak, és minden fájl tartalmazza a legutóbbi exportált fájl óta végrehajtott módosítások kötegét. Az exportált adatok három mappába kerülnek JSON formátumban. A tárfiók alapértelmezett elérési útjai a következők:
 
-- Telemetria: _{Container}/{app-ID}/telemetry/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
-- Eszközök: _{Container}/{app-ID}/Devices/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
-- Eszközök sablonjai: _{Container}/{app-ID}/deviceTemplates/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
+- Telemetriai adatok: _{container}/{app-id}/telemetry/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+- Eszközök: _{container}/{app-id}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+- Eszközsablonok: _{container}/{app-id}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
-Az exportált fájlok tallózásával tallózhat a Azure Portalban, ha a fájlra navigál, és a **blob szerkesztése** lapot választja.
+Az Azure Portalon az exportált fájlok között tallózhat, ha a fájlra navigál, és a Blob szerkesztése lapot **választja.**
 
 
 ## <a name="telemetry"></a>Telemetria
 
-Event Hubs és Service Bus esetén a rendszer gyorsan exportál egy új üzenetet, miután IoT Central fogadja az üzenetet az eszközről, és minden exportált üzenet tartalmazza az eszköz JSON formátumban küldött teljes üzenetét.
+Az Event Hubs és a Service Bus esetében az új üzenet exportálása gyorsan történik, miután az IoT Central megkapja az üzenetet egy eszközről, és minden egyes exportált üzenet tartalmazza a törzs tulajdonságában JSON formátumban küldött teljes üzenetet.
 
-Blob Storage esetében az üzenetek kötegelt és percenkénti exportálása történik. Az exportált fájlok ugyanazt a formátumot használják, mint a blob Storage-ba [IoT hub üzenet-útválasztás](../../iot-hub/tutorial-routing.md) által exportált üzenet-fájlok. 
+A Blob Storage esetében az üzenetek kötegelése és exportálása percenként egyszer lesz. Az exportált fájlok ugyanazt a formátumot használják, mint az [IoT Hub üzenet-útválasztás](../../iot-hub/tutorial-routing.md) a blob storage által exportált üzenetfájlokat. 
 
 > [!NOTE]
-> Blob Storage esetén győződjön meg arról, hogy az eszközök `contentType: application/JSON` és `contentEncoding:utf-8` (vagy `utf-16``utf-32`) üzeneteket küldenek. Példaként tekintse meg a [IoT hub dokumentációját](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) .
+> A Blob Storage esetében győződjön meg `contentType: application/JSON` arról, hogy az eszközök olyan üzeneteket küldenek, amelyek rendelkeznek és `contentEncoding:utf-8` (vagy `utf-16`, `utf-32`) rendelkeznek. Tekintse meg az [IoT Hub dokumentációját](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) egy példa.
 
-A telemetria küldő eszközt az eszköz azonosítója jelöli (lásd a következő részeket). Az eszközök nevének beszerzéséhez exportálja az eszközöket, és korrelálja az egyes üzeneteket az **connectionDeviceId** , amely megfelel az eszköz **deviceId** -beli értékének.
+Az eszközt, amely elküldte a telemetriai képviseli az eszköz azonosítója (lásd a következő szakaszok). Az eszközök nevének leválasztásához exportálja az eszközadatokat, és korrelálja az egyes üzeneteket az eszközüzenet **deviceId** azonosítójának megfelelő **connectionDeviceId** használatával.
 
-Ez egy példa, amely egy Event hub-vagy Service Bus-üzenetsor vagy-témakörben érkezett.
+Ez egy példa üzenet egy eseményközpontban vagy a Service Bus várólistában vagy témakörben.
 
 ```json
 {
@@ -165,7 +165,7 @@ Ez egy példa, amely egy Event hub-vagy Service Bus-üzenetsor vagy-témakörben
 }
 ```
 
-Ez egy példa a blob Storage-ba exportált rekordra:
+Ez egy példa rekord exportált blob storage:
 
 ```json
 {
@@ -191,24 +191,24 @@ Ez egy példa a blob Storage-ba exportált rekordra:
 
 ## <a name="devices"></a>Eszközök
 
-A pillanatképben szereplő minden üzenet vagy rekord az eszköz és az eszköz és a felhő tulajdonságai egy vagy több módosítását jelöli az utolsó exportált üzenet óta. Az érintett műveletek közé tartoznak az alábbiak:
+A pillanatképben lévő minden egyes üzenet vagy rekord egy eszköz, valamint annak eszköz- és felhőtulajdonságainak egy vagy több módosítását jelöli a legutóbbi exportált üzenet óta. Az érintett műveletek közé tartoznak az alábbiak:
 
-- az eszköz `id` IoT Central
-- az eszköz `displayName`
-- Eszköz sablonjának azonosítója `instanceOf`
-- `simulated` jelző, igaz, ha az eszköz szimulált eszköz
-- `provisioned` jelző, igaz, ha az eszköz ki lett építve
-- `approved` jelző, igaz, ha az eszköz jóvá lett hagyva az adatküldéshez
-- Tulajdonságok értékei
-- `properties` az eszköz és a felhő tulajdonságai értékeit is beleértve
+- `id`a készülék et az IoT Central
+- `displayName`a készülék
+- Eszközsablon-azonosító`instanceOf`
+- `simulated`jelző, igaz, ha az eszköz szimulált eszköz
+- `provisioned`jelző, igaz, ha az eszköz ki van építve
+- `approved`jelző, igaz, ha az eszközt jóváhagyták az adatok küldésére
+- Tulajdonság értékek
+- `properties`beleértve az eszköz- és felhőtulajdonságok értékeit
 
-A törölt eszközök nincsenek exportálva. Jelenleg nincsenek mutatók a törölt eszközök exportált üzeneteiben.
+A törölt eszközök nem lesznek exportálva. Jelenleg a törölt eszközök exportált üzeneteiben nincsenek jelzők.
 
-Event Hubs és Service Bus esetén az eszköz adatait tartalmazó üzeneteket a rendszer közel valós időben küldi el az Event hub-nak vagy Service Bus üzenetsor vagy témakörnek, ahogy az IoT Central jelenik meg. 
+Az Event Hubs és a Service Bus esetében az eszközadatokat tartalmazó üzeneteket az eseményközpont vagy a Service Bus-várólista vagy témakör közel valós időben küldi el, ahogy az az IoT Centralban megjelenik. 
 
-Blob Storage esetében az utolsó írás óta minden változást tartalmazó új pillanatképet percenként egyszer exportálunk.
+A Blob Storage esetében egy új pillanatkép, amely tartalmazza az összes módosítást, mivel az utolsó írott exportált percenként egyszer.
 
-Ez egy példa az eszközök és tulajdonságok adatainak az Event hub-ban vagy a Service Bus-üzenetsor vagy-témakörben:
+Ez egy példaüzenet az eseményközpont vagy a Service Bus várólistájában vagy témakörében lévő eszközökről és tulajdonságokadatairól:
 
 ```json
 {
@@ -262,7 +262,7 @@ Ez egy példa az eszközök és tulajdonságok adatainak az Event hub-ban vagy a
 }
 ```
 
-Ez egy példa az eszközöket és a tulajdonságokat tartalmazó pillanatképre Blob Storage. Az exportált fájlok rekordokban egyetlen sort tartalmaznak.
+Ez egy példa pillanatkép, amely eszközöket és tulajdonságokat tartalmaz a Blob Storage-ban. Az exportált fájlok rekordonként egyetlen sort tartalmaznak.
 
 ```json
 {
@@ -303,23 +303,23 @@ Ez egy példa az eszközöket és a tulajdonságokat tartalmazó pillanatképre 
 }
 ```
 
-## <a name="device-templates"></a>Eszközök sablonjai
+## <a name="device-templates"></a>Eszközsablonok
 
-Minden üzenet-vagy pillanatkép-rekord egy közzétett sablon egy vagy több módosítását jelöli a legutóbbi exportált üzenet óta. Az egyes üzenetekben vagy rekordokban küldött információk a következők:
+Minden egyes üzenet- vagy pillanatképrekord egy vagy több módosított eszközsablont jelent a legutóbbi exportált üzenet óta. Az egyes üzenetekben vagy rekordokban küldött információk a következőket tartalmazzák:
 
-- `id`, amely megfelel az eszközön a fenti streamek `instanceOf`ének
-- az eszköz sablonjának `displayName`
-- Az eszköz `capabilityModel` beleértve annak `interfaces`ét, valamint a telemetria, a tulajdonságokat és a parancsok definícióit
-- `cloudProperties` definíciók
-- Felülbírálások és kezdeti értékek, a `capabilityModel`
+- `id`eszközsablont, amely `instanceOf` megfelel a fenti eszközfolyamnak
+- `displayName`az eszközsablon
+- Az `capabilityModel` eszköz, `interfaces`beleértve a , és a telemetriai, tulajdonságok és parancsok definíciók
+- `cloudProperties`Meghatározások
+- Felülírja és a kezdeti értékeket, a`capabilityModel`
 
-A törölt eszközöket a rendszer nem exportálja. Jelenleg nincsenek mutatók a törölt eszközök sablonjaihoz tartozó exportált üzenetekben.
+A törölt eszközsablonok at nem exportálja a program. Jelenleg a törölt eszközsablonok exportált üzeneteiben nincsenek jelzők.
 
-Event Hubs és Service Bus esetén az eszköz sablonjának adatait tartalmazó üzeneteket a rendszer közel valós időben küldi el az Event hub-nak vagy Service Bus üzenetsor vagy témakörnek, ahogy az IoT Central jelenik meg. 
+Az Event Hubs és a Service Bus esetében az eszközsablon-adatokat tartalmazó üzeneteket az eseményközpont vagy a Service Bus-várólista vagy témakör közel valós időben küldi el, ahogy az az IoT Centralban megjelenik. 
 
-Blob Storage esetében az utolsó írás óta minden változást tartalmazó új pillanatképet percenként egyszer exportálunk.
+A Blob Storage esetében egy új pillanatkép, amely tartalmazza az összes módosítást, mivel az utolsó írott exportált percenként egyszer.
 
-Ez egy példaként szolgáló üzenet az Event hub vagy a Service Bus üzenetsor vagy témakör eszköz sablonjainak adatait illetően:
+Ez egy példaüzenet az eszközsablonok adatairól az eseményközpontban vagy a Service Bus várólistájában vagy témakörében:
 
 ```json
 {
@@ -444,7 +444,7 @@ Ez egy példaként szolgáló üzenet az Event hub vagy a Service Bus üzenetsor
 }
 ```
 
-Ez egy példa az eszközöket és a tulajdonságokat tartalmazó pillanatképre Blob Storage. Az exportált fájlok rekordokban egyetlen sort tartalmaznak.
+Ez egy példa pillanatkép, amely eszközöket és tulajdonságokat tartalmaz a Blob Storage-ban. Az exportált fájlok rekordonként egyetlen sort tartalmaznak.
 
 ```json
 {
@@ -554,27 +554,27 @@ Ez egy példa az eszközöket és a tulajdonságokat tartalmazó pillanatképre 
       }
   }
 ```
-## <a name="data-format-change-notice"></a>Adatformátum-változási Megjegyzés
+## <a name="data-format-change-notice"></a>Adatformátum-módosítási értesítés
 
 > [!Note]
-> Ez a változás nem érinti a telemetria adatfolyam-adatformátumát. Csak az eszközök és az eszközökön tárolt adatfolyamok vannak hatással.
+> A telemetriai adatformátumot ez a módosítás nem befolyásolja. Ez csak az eszközöket és az eszközsablonokat érinti.
 
-Ha az előnézeti alkalmazásban már van egy meglévő adatexportálás az *eszközök* és az *eszköz sablonjainak* bekapcsolásával, az exportálást az **2020. június 30-ig**kell frissítenie. Ez az Azure Blob Storage, az Azure Event Hubs és a Azure Service Bus exportálására vonatkozik.
+Ha van egy meglévő adatexportálásazol az előzetes verziójú alkalmazásban, és az *Eszközök* és *eszköz sablonok* streamek be vannak kapcsolva, **2020.** Ez az Azure Blob Storage, az Azure Event Hubs és az Azure Service Bus exportálására vonatkozik.
 
-A 2020. február 3-án kezdődően az eszközökön és az eszközök sablonjain lévő összes új Exportálás a fent ismertetett adatformátummal fog rendelkezni. Az ezt megelőzően létrehozott összes exportálás a régi adatformátumban marad a 2020. június 30-ig, majd azt követően, hogy az Exportálás automatikusan átkerül az új adatformátumba. Az új adatformátum megegyezik a IoT Central nyilvános API-ban található [eszköz](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [eszköz tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [eszköz felhő tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) és [eszköz sablon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) objektumaival. 
+2020. február 3-tól minden új exportálás az Eszközök és Eszköz sablonokkal rendelkező alkalmazásokban a fent leírt adatformátummal fog rendelkezni. Az ezt megelőzően létrehozott összes export 2020. Az új adatformátum megegyezik az [eszköz](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [eszköz tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), eszköz [felhő tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) és eszköz [sablon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) objektumok az IoT Central nyilvános API-t. 
  
-Az **eszközök**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
-- az eszköz `@id` el lett távolítva, `deviceId` átnevezve a következőre: `id` 
-- `provisioned` jelző hozzáadása az eszköz kiépítési állapotának leírásához
-- `approved` jelző hozzáadása az eszköz jóváhagyási állapotának leírásához
-- `properties`, beleértve az eszköz és a felhő tulajdonságait, a nyilvános API-ban található entitásoknak felel meg
+**Az Eszközök**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
+- `@id`eszköz eltávolítása, `deviceId` átnevezése:`id` 
+- `provisioned`jelző tadunk hozzá az eszköz kiépítési állapotának leírásához
+- `approved`jelző tadunk hozzá az eszköz jóváhagyási állapotának leírásához
+- `properties`beleértve az eszköz- és felhőtulajdonságokat, megfelel a nyilvános API-ban lévő entitásoknak
 
-Az **eszközök sablonjai**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
+**Az Eszközsablonok**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
 
-- az eszköz sablonjának `@id` átnevezve `id`
-- az eszköz sablonjának `@type` átnevezve `types`re, és most egy tömb
+- `@id`eszközsablon átnevezése:`id`
+- `@type`az eszközsablon neve a `types`rendszerre van átnevezve, és most egy tömb
 
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Eszközök (a formátum a 2020. február 3. után elavult)
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Eszközök (2020. február 3-tól elavult formátum)
 ```json
 {
   "@id":"<id-value>",
@@ -619,7 +619,7 @@ Az **eszközök sablonjai**esetében a régi adatformátum és az új adatformá
 }
 ```
 
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Eszközök sablonjai (a formátum a 2020. február 3. után elavult)
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Eszközsablonok (a formátum 2020. február 3-tól elavult)
 ```json
 {
   "@id":"<template-id>",
@@ -751,9 +751,9 @@ Az **eszközök sablonjai**esetében a régi adatformátum és az új adatformá
   }
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy tudja, hogyan exportálhatja adatait az Azure Event Hubsba, Azure Service Busba és az Azure Blob Storageba, folytassa a következő lépéssel:
+Most, hogy már tudja, hogyan exportálhatja az adatokat az Azure Event Hubs, az Azure Service Bus és az Azure Blob Storage szolgáltatásba, folytassa a következő lépéssel:
 
 > [!div class="nextstepaction"]
-> [Webhookok létrehozása](./howto-create-webhooks.md)
+> [Hogyan hozzunk létre webhooks](./howto-create-webhooks.md)

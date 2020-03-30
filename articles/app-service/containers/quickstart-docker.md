@@ -1,88 +1,88 @@
 ---
-title: 'Gyors útmutató: egyéni Linux-tároló futtatása'
-description: Ismerkedjen meg a Linux-tárolókkal Azure App Service az első egyéni tároló üzembe helyezésével az Azure Container-jegyzékek használatával.
+title: 'Rövid útmutató: Egyéni Linux-tároló futtatása'
+description: Az Azure App Service Linux-tárolóinak üzembe helyezésével kezdheti az első egyéni tárolóüzembe helyezését az Azure Container Regista használatával.
 author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
 ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75422156"
 ---
-# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Egyéni Linux-tároló üzembe helyezése Azure App Service
+# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Egyéni Linux-tároló üzembe helyezése az Azure App Service szolgáltatásban
 
-A Linuxon futó App Service a Linuxon előre definiált alkalmazásokat biztosít, amelyek támogatják a .NET, a PHP, a Node. js és más nyelveket. Használhat egyéni Docker rendszerképet is, hogy a webalkalmazást egy, az Azure-ban nem meghatározott alkalmazáscsoportban futtassa. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy rendszerképet egy [Azure Container Registryból](/azure/container-registry) (ACR) a app Serviceba.
+Az App Service linuxos szolgáltatás a Linuxon előre definiált alkalmazáskötegeket biztosít olyan nyelvek támogatásával, mint a .NET, a PHP, a Node.js és mások. Használhat egyéni Docker rendszerképet is, hogy a webalkalmazást egy, az Azure-ban nem meghatározott alkalmazáscsoportban futtassa. Ez a rövid útmutató bemutatja, hogyan telepíthet egy lemezképet egy [Azure Container Registry](/azure/container-registry) (ACR) az App Service-ből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [Azure-fiók](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
-* [Docker](https://www.docker.com/community-edition)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* A [vs Code Azure app Service kiterjesztése](vscode:extension/ms-azuretools.vscode-azureappservice). Ezzel a bővítménnyel linuxos Web Apps hozhat létre, kezelhet és telepíthet az Azure platform szolgáltatásként (Péter).
-* A [vs Code Docker-bővítménye](vscode:extension/ms-azuretools.vscode-docker). Ezzel a bővítménnyel egyszerűsítheti a helyi Docker-rendszerképek és-parancsok kezelését, valamint az Azure-ba épített alkalmazás-lemezképek üzembe helyezését.
+* [Egy Azure-fiók](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
+* [Docker között](https://www.docker.com/community-edition)
+* [Visual Studio kód](https://code.visualstudio.com/)
+* Az [Azure App Service-bővítmény a VS-kódhoz.](vscode:extension/ms-azuretools.vscode-azureappservice) Ezzel a kiterjesztéssel linuxos webalkalmazásokat hozhat létre, kezelhet és helyezhet üzembe az Azure Platformszolgáltatáson (PaaS).
+* A [VS-kód Docker-bővítménye.](vscode:extension/ms-azuretools.vscode-docker) Ezzel a kiterjesztéssel egyszerűsítheti a helyi Docker-lemezképek és -parancsok felügyeletét, és üzembe helyezheti a beépített alkalmazásképeket az Azure-ba.
 
-## <a name="create-an-image"></a>Rendszerkép létrehozása
+## <a name="create-an-image"></a>Kép létrehozása
 
-A rövid útmutató elvégzéséhez szüksége lesz egy [Azure Container Registryban](/azure/container-registry)tárolt megfelelő webalkalmazás-rendszerképre. Kövesse a rövid útmutató [: Private Container Registry létrehozása a Azure Portal segítségével](/azure/container-registry/container-registry-get-started-portal), de az `hello-world` rendszerkép helyett használja a `mcr.microsoft.com/azuredocs/go` rendszerképet. A [minta Docker az Azure Samples-](https://github.com/Azure-Samples/go-docs-hello-world)tárházban található.
+A rövid útmutató végrehajtásához szüksége lesz egy megfelelő webalkalmazás-lemezképre, amelyet egy [Azure Container Registry](/azure/container-registry)tárol. Kövesse a [rövid útmutató utasításait: Hozzon létre egy privát tároló beállításjegyzéket az Azure Portalon,](/azure/container-registry/container-registry-get-started-portal)de használja a `mcr.microsoft.com/azuredocs/go` lemezképet a `hello-world` rendszerkép helyett. A referencia, a [minta Dockerfile található Azure Minták tártára.](https://github.com/Azure-Samples/go-docs-hello-world)
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy a **rendszergazda felhasználó** beállítással **engedélyezze** a tároló-beállításjegyzék létrehozását. Azt is megteheti, hogy a beállításjegyzék oldalának **hozzáférési kulcsok** szakasza is be van állítva a Azure Portal. Ez a beállítás App Service hozzáféréshez szükséges.
+> Ügyeljen arra, hogy a tároló beállításjegyzékének létrehozásakor állítsa be a **Rendszergazda felhasználó** **beállítást engedélyezésre.** Azt is beállíthatja, hogy az **Access-kulcsok** szakasza a beállításjegyzék-lap az Azure Portalon. Ez a beállítás az App Service-hozzáféréshez szükséges.
 
 ## <a name="sign-in"></a>Bejelentkezés
 
-Ezután indítsa el a VS Code-ot, és jelentkezzen be az Azure-fiókjába az App Service bővítmény használatával. Ehhez válassza ki az Azure-emblémát a tevékenység sávjában, navigáljon az **app Service** Explorerrel, majd válassza a **Bejelentkezés az Azure** -ba lehetőséget, és kövesse az utasításokat.
+Ezután indítsa el a VS-kódot, és jelentkezzen be az Azure-fiókjába az App Service-bővítmény használatával. Ehhez válassza ki az Azure-emblémát a tevékenységsávon, keresse meg az APP SERVICE-kezelőt, majd válassza **a Bejelentkezés az Azure-ba** lehetőséget, és kövesse az utasításokat. **APP SERVICE**
 
-![Bejelentkezés az Azure-ba](./media/quickstart-docker/sign-in.png)
+![bejelentkezés az Azure-ba](./media/quickstart-docker/sign-in.png)
 
 ## <a name="check-prerequisites"></a>Előfeltételek ellenőrzése
 
-Most megtekintheti, hogy az összes előfeltétel telepítve van-e, és megfelelően van-e konfigurálva.
+Most ellenőrizheti, hogy az összes előfeltétel telepítve van-e és megfelelően van-e konfigurálva.
 
-A VS Code-ban az Azure-beli e-mail-cím jelenik meg az állapotsorban és az előfizetés az **app Service** Explorerben.
+A VS-kódban az Azure-beli e-mail-címét az állapotsorban és az előfizetést az **APP SERVICE-kezelőben** kell látnia.
 
-Ezután ellenőrizze, hogy a Docker telepítve van-e és fut-e. A következő parancs megjeleníti a Docker-verziót, ha az fut.
+Ezután ellenőrizze, hogy telepítette-e és futtatta-e a Dockert. A következő parancs megjeleníti a Docker-verziót, ha fut.
 
 ```bash
 docker --version
 ```
 
-Végezetül ellenőrizze, hogy a Azure Container Registry csatlakoztatva van-e. Ehhez válassza ki a Docker-emblémát a tevékenység sávjában, majd navigáljon **a**beállításjegyzékek elemre.
+Végül győződjön meg arról, hogy az Azure Container Registry csatlakoztatva van. Ehhez jelölje ki a Docker emblémát a tevékenységsávon, majd keresse meg a **BEÁLLÍTÁSJEGYZÉK**et.
 
 ![Beállításjegyzékek](./media/quickstart-docker/registries.png)
 
-## <a name="deploy-the-image-to-azure-app-service"></a>A rendszerkép üzembe helyezése Azure App Service
+## <a name="deploy-the-image-to-azure-app-service"></a>A lemezkép üzembe helyezése az Azure App Service szolgáltatásban
 
-Most, hogy minden be van állítva, telepítheti a lemezképet [Azure app Service](https://azure.microsoft.com/services/app-service/) közvetlenül a Docker bővítmény Explorerrel.
+Most, hogy minden konfigurálva van, telepítheti a lemezképet az [Azure App Service-be](https://azure.microsoft.com/services/app-service/) közvetlenül a Docker-bővítmény-kezelőből.
 
-Keresse meg a rendszerképet **a** **Docker** Explorer beállításjegyzékek csomópontjában, és bontsa ki a címkék megjelenítéséhez. Kattintson a jobb gombbal a címkére, majd válassza a **lemezkép központi telepítése Azure app Service**lehetőséget.
+Keresse meg a lemezképet a **Regisztika-csomópont** alatt a **DOCKER** explorerben, és bontsa ki a címkék megjelenítéséhez. Kattintson a jobb gombbal egy címkére, és válassza **a Lemezkép telepítése az Azure App Service szolgáltatásba parancsot.**
 
-Itt az alábbi utasításokat követve választhatja ki az előfizetést, egy globálisan egyedi alkalmazás nevét, egy erőforráscsoportot és egy App Service tervet. Válassza a **B1 alapszintű** lehetőséget a díjszabási szinthez és a régióhoz.
+Itt kövesse az utasításokat egy előfizetés, egy globálisan egyedi alkalmazásnév, egy erőforráscsoport és egy App Service-csomag kiválasztásához. Válassza a **B1 Alapszintű** a tarifacsomag, és a régió.
 
-Az üzembe helyezés után az alkalmazás a következő címen érhető el: `http://<app name>.azurewebsites.net`.
+A telepítés után az `http://<app name>.azurewebsites.net`alkalmazás elérhető a.
 
-Az **erőforráscsoport** az alkalmazás összes erőforrásának elnevezett gyűjteménye az Azure-ban. Egy erőforráscsoport például tartalmazhat egy webhelyre, egy adatbázisra és egy Azure-függvényre mutató hivatkozást is.
+Az **erőforráscsoport** az alkalmazás összes erőforrásának elnevezett gyűjteménye az Azure-ban. Például egy erőforráscsoport tartalmazhat egy webhelyre, egy adatbázisra és egy Azure-függvényre mutató hivatkozást.
 
-A **app Service-csomag** határozza meg a webhely üzemeltetéséhez használt fizikai erőforrásokat. Ez a rövid útmutató egy **alapszintű** üzemeltetési csomagot használ a **Linux** -infrastruktúrán, ami azt jelenti, hogy a webhely más webhelyeken található Linux-gépen lesz tárolva. Ha az **alapszintű** csomaggal kezdődik, akkor a Azure Portal a vertikális felskálázáshoz használhatja, hogy a tiéd legyen a gépen futó egyetlen hely.
+Az **App Service-csomag** határozza meg a webhely üzemeltetéséhez használt fizikai erőforrásokat. Ez a rövid útmutató egy **alapszintű** üzemeltetési tervet használ Linux-infrastruktúrán, ami azt jelenti, hogy a webhely más webhelyek mellett egy Linux gépen lesz tárolva. **Linux** Ha az **alapszintű** csomaggal kezdi, az Azure Portal segítségével skálázhatja úgy, hogy a tiéd az egyetlen számítógépen futó hely.
 
-## <a name="browse-the-website"></a>Böngészés a webhelyen
+## <a name="browse-the-website"></a>Böngészés a honlapon
 
-A rendszer az üzembe helyezés során megnyílik a **kimeneti** panel, hogy jelezze a művelet állapotát. Ha a művelet befejeződik, keresse meg az App **Service** Explorerben létrehozott alkalmazást, kattintson rá a jobb gombbal, majd válassza a **Tallózás webhely** lehetőséget a webhely böngészőben való megnyitásához.
+A **kimeneti** panel az üzembe helyezés során megnyílik a művelet állapotának jelzésére. Amikor a művelet befejeződött, keresse meg a létrehozott alkalmazást az **APP SERVICE** intézőben, kattintson rá a jobb gombbal, majd válassza a **Webhely tallózása** parancsot a webhely böngészőben való megnyitásához.
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
+> [Belefutottam egy problémába.](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
+Gratulálunk, sikeresen befejezte ezt a rövid útmutatót!
 
 Ezután tekintse meg a többi Azure-bővítményt.
 
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Azure CLI-eszközök](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
-* [Eszközök Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+* [Az Azure Resource Manager eszközei](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
-Az [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) bővítmény csomag telepítésével vagy az összes beszerzésével.
+Vagy mindet beszerezheti az [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) bővítménycsomag telepítésével.

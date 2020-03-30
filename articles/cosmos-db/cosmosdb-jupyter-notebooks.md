@@ -1,65 +1,65 @@
 ---
-title: A beépített Jupyter notebookok támogatásának bemutatása Azure Cosmos DB (előzetes verzió)
-description: Megtudhatja, hogyan használhatja a Azure Cosmos DB beépített Jupyter notebook-támogatását a lekérdezések interaktív futtatásához.
+title: Bevezetés a beépített Jupyter notebookok támogatásaz Azure Cosmos DB (előzetes verzió)
+description: Megtudhatja, hogyan használhatja a beépített Jupyter notebookok támogatása az Azure Cosmos DB interaktív lekérdezések interaktív futtatásához.
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76760283"
 ---
-# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>A Azure Cosmos DB beépített Jupyter notebookok támogatása (előzetes verzió)
+# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Beépített Jupyter-jegyzetfüzetek támogatása az Azure Cosmos DB-ben (előzetes verzió)
 
-A Jupyter notebook egy nyílt forráskódú webes alkalmazás, amellyel élő kódokat, egyenleteket, vizualizációkat és narratív szövegeket tartalmazó dokumentumokat hozhat létre és oszthat meg. Azure Cosmos DB támogatja a beépített Jupyter jegyzetfüzeteket minden olyan API-hoz, mint például a Cassandra, a MongoDB, az SQL, a Gremlin és a table. Az összes Azure Cosmos DB API-k és adatmodellek beépített notebook-támogatása lehetővé teszi a lekérdezések interaktív futtatását. A Jupyter-jegyzetfüzetek az Azure Cosmos-fiókokon belül futnak, és lehetővé teszik a fejlesztők számára az adatok feltárását, az adatok tisztítását, az adatátalakítások, a numerikus szimulációk, a statisztikai modellezés, az adatvizualizáció és a gépi tanulás végrehajtását.
+A Jupyter notebook egy nyílt forráskódú webes alkalmazás, amely lehetővé teszi élő kódot, egyenleteket, vizualizációkat és narratív szöveget tartalmazó dokumentumok létrehozását és megosztását. Az Azure Cosmos DB támogatja a beépített Jupyter-jegyzetfüzeteket az összes API-hoz, például a Cassandra, a MongoDB, az SQL, a Gremlin és a Table. A beépített notebook támogatás az összes Azure Cosmos DB API-k és adatmodellek lehetővé teszi, hogy interaktívan lekérdezések futtatásához. A Jupyter-jegyzetfüzetek az Azure Cosmos-fiókokon belül futnak, és lehetővé teszik a fejlesztők számára az adatok feltárását, az adatok tisztítását, az adatátalakításokat, a numerikus szimulációkat, a statisztikai modellezést, az adatmegjelenítést és a gépi tanulást.
 
-![Jupyter notebook-vizualizációk Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
+![Jupyter-jegyzetfüzetek vizualizációi az Azure Cosmos DB-ben](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
-A Jupyter notebookok olyan mágikus funkciókat támogatnak, amelyek további parancsok támogatásával bővítik a kernel képességeit. A Cosmos Magic egy olyan parancs, amely kibővíti a Python kernel képességeit a Jupyter notebookon, így a Apache Sparkon kívül az Azure Cosmos SQL API-lekérdezéseket is futtathatja. A Python és az SQL API-lekérdezések könnyedén kombinálhatók a renderelési parancsokkal integrált, Rich vizualizációs kódtárak használatával történő lekérdezéséhez és megjelenítéséhez.
-Azure Portal natív módon integrálja a Jupyter notebook-élményt az Azure Cosmos-fiókokba az alábbi ábrán látható módon:
+A Jupyter notebookok támogatja a mágikus funkciókat, amelyek további parancsok támogatásával bővítik a kernel képességeit. A Cosmos magic egy olyan parancs, amely kiterjeszti a Python kernel képességeit a Jupyter-jegyzetfüzetben, így az Apache Spark mellett azure Cosmos SQL API-lekérdezéseket is futtathat. A Python- és SQL API-lekérdezéseket egyszerűen kombinálhatja az adatok lekérdezéséhez és megjelenítéséhez a renderelési parancsokkal integrált gazdag vizualizációs kódtárak használatával.
+Az Azure Portal natív módon integrálja a Jupyter-jegyzetfüzet-élményt az Azure Cosmos-fiókokba az alábbi képen látható módon:
 
-![A Jupyter notebookok támogatása Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
+![A Jupyter-jegyzetfüzetek támogatása az Azure Cosmos DB-ben](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
 
 ## <a name="benefits-of-jupyter-notebooks"></a>A Jupyter notebookok előnyei
 
-A Jupyter notebookok eredetileg a Pythonban, az R-ben írt adatelemzési alkalmazásokhoz lettek kifejlesztve. Azonban különböző módokon is használhatók különböző típusú projektekhez, például a következőkhöz:
+A Jupyter notebookokat eredetileg Python, R nyelven írt adattudományi alkalmazásokhoz fejlesztették ki. Ezek azonban különböző módokon használhatók különböző típusú projektekhez, mint például:
 
-* ***adatvizualizációk:** a Jupyter-jegyzetfüzetek lehetővé teszik, hogy egy megosztott jegyzetfüzet formájában jelenítse meg az adott adathalmazt, amely egy adatkészletet grafikus formában jelenít meg. A Jupyter notebook segítségével vizualizációkat hozhat létre, megoszthatja őket, és engedélyezheti a megosztott kód és az adathalmaz interaktív módosításait.
+* ***Adatvizualizációk:** A Jupyter-jegyzetfüzetek lehetővé teszik az adatok megjelenítését megosztott jegyzetfüzet formájában, amely bizonyos adatkészleteket grafikusként jelenít meg. A Jupyter-jegyzetfüzet lehetővé teszi vizualizációk szerkesztését, valamint a megosztott kód és adatkészlet interaktív módosításának engedélyezését.
 
-* **Kód megosztása:** Az olyan szolgáltatások, mint például a GitHub, a kódok megosztására szolgálnak, de nagyrészt nem interaktívak. A Jupyter notebookon megtekintheti a kódot, végrehajthatja és megjelenítheti az eredményeket közvetlenül a Azure Portal.
+* **Kódmegosztás:** Az olyan szolgáltatások, mint a GitHub, lekínálják a kódmegosztás módját, de nagyrészt nem interaktívak. A Jupyter-jegyzetfüzetek segítségével megtekintheti a kódot, végrehajthatja azt, és az eredményeket közvetlenül az Azure Portalon jelenítheti meg.
 
-* **Élő interakciók kóddal:** A Jupyter notebook kód dinamikus; szerkeszthető, és a növekményes futtatását valós időben végezheti el. A jegyzetfüzetek olyan felhasználói vezérlőket (például csúszkákat vagy szövegbeviteli mezőket) is beágyaznak, amelyek bemeneti forrásként használhatók kód, bemutatók vagy fogalmak igazolására (Pócsként).
+* **Élő interakciók kóddal:** A Jupyter notebook kódja dinamikus; szerkeszthető, és valós időben újra futtatható. A jegyzetfüzetek olyan felhasználói vezérlőket (pl. csúszkákat vagy szövegbeviteli mezőket) is beágyazhatnak, amelyek kód, bemutatók vagy a koncepciók igazolása (POC-k) bemeneti forrásaként használhatók.
 
-* **A kód mintáinak és az adatfeltárás eredményeinek dokumentálása:** Ha egy kódrészlettel rendelkezik, és szeretné elmagyarázni, hogyan működik a Azure Cosmos DBban, a valós idejű kimenettel együtt, akkor beágyazhatja azt egy Jupyter Notebookba. A kód teljes mértékben működőképes marad. A dokumentációval egyidejűleg is hozzáadhat interaktivitást.
+* **A kódminták dokumentációja és az adatfeltárás eredményei:** Ha rendelkezik egy kóddarabbal, és el szeretné magyarázni, hogyan működik az Azure Cosmos DB-ben, és az út során valós idejű kimenettel együtt beágyazza azt egy Jupyter-jegyzetfüzetbe. A kód továbbra is teljes mértékben működőképes marad. A dokumentációval együtt egyidejűleg is hozzáadhat interaktivitást.
 
-* **Cosmos Magic parancsok:** A Jupyter-jegyzetfüzetekben egyéni Magic-parancsokat használhat a Azure Cosmos DB számára, hogy egyszerűbb legyen az interaktív számítástechnika. Például a (z)%% SQL Magic, amely lehetővé teszi, hogy egy Cosmos-tárolót az SQL API használatával közvetlenül egy jegyzetfüzetben Kérdezzen le.
+* **Cosmos mágikus parancsok:** A Jupyter-jegyzetfüzetekben az Azure Cosmos DB egyéni mágikus parancsaival megkönnyítheti az interaktív számítástechnikát. Például a %%sql magic, amely lehetővé teszi, hogy lekérdezegy Cosmos-tároló t az SQL API használatával közvetlenül a jegyzetfüzetben.
 
-* **Minden egy helyen lévő környezetben:** A Jupyter-jegyzetfüzetek kód, Rich Text, images, videos, animáció, matematikai egyenletek, ábrázolások, térképek, interaktív számok, widgetek és grafikus felhasználói felületek egyetlen dokumentumba való egyesítésére használhatók.
+* **Minden egy helyen környezetben:** A Jupyter notebookok egyetlen dokumentumba egyesítik a kódot, a rich text-et, a képeket, a videókat, az animációkat, a matematikai egyenleteket, a telkeket, a térképeket, az interaktív ábrákat, a widgeteket és a grafikus felhasználói felületeket.
 
-## <a name="components-of-a-jupyter-notebook"></a>Jupyter-jegyzetfüzet összetevői
+## <a name="components-of-a-jupyter-notebook"></a>Jupyter notebook összetevői
 
-A Jupyter notebookok többféle típusú összetevőt tartalmazhatnak, amelyek mindegyike különálló blokkokban van csoportosítva:
+A Jupyter notebookok többféle összetevőt tartalmazhatnak, amelyek mindegyike különálló blokkokba rendezve:
 
-* **Szöveg és HTML:** A HTML létrehozásához a Markdown szintaxisában szereplő egyszerű szöveg vagy szöveg, amely bármikor beszúrható a dokumentumba. A CSS-stílus a beágyazott vagy a jegyzetfüzet létrehozásához használt sablonba is felvehető.
+* **Szöveg és HTML:** Az egyszerű szöveg vagy a html létrehozásához a markdown szintaxisban jegyzetekbe jegyzetelt szöveg bármikor beilleszthető a dokumentumba. CsS stílus is szerepela vonalon, vagy hozzá a sablon létrehozásához használt notebook.
 
-* **Kód és kimenet:** A Jupyter notebookok támogatják a Python-kódokat. A végrehajtott kód eredményei közvetlenül a kód blokkolása után jelennek meg, és a kódrészletek többször is végrehajthatók tetszőleges sorrendben.
+* **Kód és kimenet:** A Jupyter notebookok támogatják a Python-kódot. A végrehajtott kód eredményei közvetlenül a kódblokkok után jelennek meg, és a kódblokkok többször is végrehajthatók tetszőleges sorrendben.
 
-* **Vizualizációk:** Grafikus elemek és diagramok hozhatók létre a kódban, olyan modulok használatával, mint a Matplotlib, a Plot vagy a bokeh. A kimenethez hasonlóan ezek a vizualizációk a generált kód mellett jelennek meg.
+* **Vizualizációk:** Grafikák és diagramok generálhatók a kódból olyan modulok használatával, mint a Matplotlib, a Plotly vagy a Bokeh. A kimenethez hasonlóan ezek a vizualizációk az azokat létrehozó kód mellett szövegközien jelennek meg.
 
-* **Multimédia:** Mivel a Jupyter notebook a webes technológiára épül, a weblapokon támogatott összes multimédia-típust megjelenítheti. A jegyzetfüzetben HTML-elemekként is megadhatja őket, vagy programozott módon létrehozhatja őket a `IPython.display` modul használatával.
+* **Multimédia:** Mivel a Jupyter notebook a webes technológiára épül, képes megjeleníteni a weboldalon támogatott összes multimédiás típust. A jegyzetfüzetbe HTML-elemként is felveheti őket, vagy a `IPython.display` modul használatával programozott módon is létrehozhatja őket.
 
-* **Adatértékek:** Az Azure Cosmos-tárolóból származó adatok és a lekérdezések eredményei programozott módon importálhatók Jupyter notebookba. Például a jegyzetfüzetben szereplő kóddal, amely az Cosmos DB API-k vagy natívan beépített Apache Spark használatával kérdezi le az összes adatát.
+* **Adatok:** Az Azure Cosmos-tárolókból származó adatok és a lekérdezések eredményei programozott módon importálhatók egy Jupyter-jegyzetfüzetbe. Például a kód a jegyzetfüzetben az adatok lekérdezéséhez a Cosmos DB API-k vagy natívan beépített Apache Spark használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Azure Cosmos DB beépített Jupyter-jegyzetfüzetekkel kapcsolatos első lépéseiért tekintse meg a következő cikkeket:
+Az Azure Cosmos DB beépített Jupyter-jegyzetfüzeteinek első lépései az alábbi cikkekben:
 
 * [Jegyzetfüzetek engedélyezése Azure Cosmos-fiókban](enable-notebooks.md)
-* [Jegyzetfüzet-funkciók és-parancsok használata](use-notebook-features-and-commands.md)
+* [Jegyzetfüzet-szolgáltatások és -parancsok használata](use-notebook-features-and-commands.md)
 
 
 

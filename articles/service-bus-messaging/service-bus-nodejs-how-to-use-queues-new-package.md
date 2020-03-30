@@ -1,6 +1,6 @@
 ---
-title: Az Azure/Service-Bus-várólisták használata a Node. js-ben
-description: Megtudhatja, hogyan írhat NodeJS programot egy Service Bus üzenetsor üzeneteinek üzenetküldéséhez és fogadásához az új @azure/service-bus csomag használatával.
+title: Az azure/service-bus várólisták használata a Node.js webhelyen
+description: Megtudhatja, hogyan írhat Nodejs programot üzenetek küldéséhez és fogadásához @azure/service-bus egy Service Bus-várólistából az új csomag használatával.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -14,35 +14,35 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: c2e24e9dea2c8463294c85f04c9e4d7d2da17261
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78330651"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Gyors útmutató: Service Bus Queues használata Node. js-sel és az Azure/Service-Bus csomaggal
-Ebből az oktatóanyagból megtudhatja, hogyan írhat NodeJS programot az üzenetek küldésére és fogadására egy Service Bus-várólistáról az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag használatával. Ez a csomag a gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md) használja, míg a régebbi [Azure-sb-](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A mintákat JavaScript nyelven írták.
+# <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Rövid útmutató: A Service Bus-várólisták használata a Node.js és az azure/service-bus csomag használatával
+Ebben az oktatóanyagban megtudhatja, hogyan írhat nodejs programot üzenetek küldéséhez és [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) fogadásához egy Service Bus-várólistából az új csomag használatával. Ez a csomag a gyorsabb [AMQP 1.0 protokollt](service-bus-amqp-overview.md) használja, míg a régebbi [azure-sb](https://www.npmjs.com/package/azure-sb) csomag [a Service Bus REST futásidejű API-jait](/rest/api/servicebus/service-bus-runtime-rest)használta. A minták JavaScript nyelven íródnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket. Jegyezze fel a Service Bus példányának és a létrehozott várólista nevét. Ezeket az értékeket a mintákban fogjuk használni.
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [az MSDN előfizetői előnyeit,](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókra.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Ha nincs várólistája, amivel dolgozhatna, kövesse az Azure Portal használata című lépéseit [a Service Bus-várólista-cikk létrehozásához](service-bus-quickstart-portal.md) egy várólista létrehozásához. Jegyezze fel a Service Bus-példány kapcsolati karakterláncát és a létrehozott várólista nevét. Ezeket az értékeket fogjuk használni a mintákban.
 
 > [!NOTE]
-> - Ez az oktatóanyag olyan példákkal működik, amelyeket a [NodeJS](https://nodejs.org/)használatával másolhat és futtathat. A Node. js-alkalmazások létrehozásával kapcsolatos útmutatásért lásd: [Node. js-alkalmazás létrehozása és telepítése Azure-webhelyre](../app-service/app-service-web-get-started-nodejs.md)vagy [Node. js felhőalapú szolgáltatás a Windows PowerShell használatával](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
-> - Az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag még nem támogatja a várólisták létrehozását. Ha programozott módon szeretné létrehozni őket, használja a [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) csomagot.
+> - Ez az oktatóanyag olyan mintákkal működik, amelyeket [a Nodejs](https://nodejs.org/)használatával másolhat és futtathat. A Node.js alkalmazás létrehozásáról a [Node.js alkalmazás létrehozása és központi telepítése egy Azure-webhelyen](../app-service/app-service-web-get-started-nodejs.md)vagy [a Node.js felhőszolgáltatás ban a Windows PowerShell használatával](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)című témakörben talál.
+> - Az [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) új csomag még nem támogatja a várólisták létrehozását. Kérjük, [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) használja a csomagot, ha programozott módon szeretné létrehozni őket.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Csomag telepítése a Node Package Manager (NPM) használatával
-A Service Bus NPM-csomagjának telepítéséhez nyisson meg egy parancssort, amely az elérési útjában `npm` van, módosítsa a könyvtárat arra a mappára, ahol a mintákat használni szeretné, majd futtassa ezt a parancsot.
+A Service Bus npm csomagjának telepítéséhez `npm` nyisson meg egy parancssort, amely az útjában van, módosítsa a könyvtárat arra a mappára, ahol a mintákat szeretné, majd futtassa ezt a parancsot.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-A Service Bus üzenetsor használata a [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) osztály létrehozásával és a [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) osztály létrehozásával kezdődik. Ha már rendelkezik a várólista-ügyféllel, létrehozhat egy feladót, és használhatja a [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) vagy a [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metódust az üzenetek küldéséhez.
+A Service Bus-várólistával való interakció a [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) osztály példányosításával kezdődik, és a [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) osztály példányosításával. Miután rendelkezik a várólista-ügyféllel, létrehozhat egy feladót, és üzenetek küldésére vagy elküldésére használhatja a [küldési](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) vagy [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metódust.
 
-1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
-2. Hozzon létre egy `send.js` nevű fájlt, és illessze be az alábbi kódot. Ez a kód 10 üzenetet küld a várólistába.
+1. A kedvenc szerkesztő, például a [Visual Studio-kód megnyitása](https://code.visualstudio.com/)
+2. Hozzon létre `send.js` egy nevű fájlt, és illessze be az alábbi kódot. Ez a kód 10 üzenetet küld a várólistára.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -79,20 +79,20 @@ A Service Bus üzenetsor használata a [ServiceBusClient](https://docs.microsoft
       console.log("Error occurred: ", err);
     });
     ```
-3. Adja meg a kapcsolatok karakterláncát és a várólista nevét a fenti kódban.
-4. Ezután futtassa a parancsot egy parancssorban a fájl végrehajtásához `node send.js`.
+3. Írja be a kapcsolati karakterláncot és a várólista nevét a fenti kódba.
+4. Ezután futtassa a parancsot `node send.js` egy parancssorban a fájl végrehajtásához.
 
-Gratulálunk! Csak egy Service Bus üzenetsor számára küldött üzeneteket.
+Gratulálunk! Csak üzeneteket küldött egy Service Bus-várólistába.
 
-Az üzenetek olyan szabványos tulajdonságokkal rendelkeznek, mint a `label` és a `messageId`, amelyet a küldéskor beállíthat. Ha egyéni tulajdonságokat szeretne beállítani, használja a `userProperties`, amely egy JSON-objektum, amely az egyéni adatai kulcs-érték párokat képes tárolni.
+Az üzenetek nek `label` vannak `messageId` olyan szabványos tulajdonságai, mint például, amelyeket a küldéskor beállíthat. Ha egyéni tulajdonságokat szeretne beállítani, `userProperties`használja a , amely egy json objektum, amely képes az egyéni adatok kulcs-érték párjaitárolására.
 
-A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A várólistán lévő üzenetek száma nincs korlátozva, de a várólista által tárolt üzenetek teljes méretére vonatkozó korlát szerepel. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. További információ a kvótákkal kapcsolatban: [Service Bus kvóták](service-bus-quotas.md).
+A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. Nincs korlátozva a várólistában tartott üzenetek száma, de van egy korlát a várólistában lévő üzenetek teljes méretét. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. A kvótákról további információt a [Service Bus-kvóták című témakörben talál.](service-bus-quotas.md)
 
-## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
-A Service Bus üzenetsor használata a [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) osztály létrehozásával és a [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) osztály létrehozásával kezdődik. Ha már rendelkezik a várólista-ügyféllel, létrehozhat egy fogadót, és használhatja a [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) vagy a [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metódust is az üzenetek fogadásához.
+## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása várólistából
+A Service Bus-várólistával való interakció a [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) osztály példányosításával kezdődik, és a [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) osztály példányosításával. Miután rendelkezik a várólista-ügyféllel, létrehozhat egy fogadót, és [üzenetek fogadására vagy](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) registerMessageHandler metódusával fogadhatja a receiveMessage-et vagy a [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metódust.
 
-1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
-2. Hozzon létre egy `recieve.js` nevű fájlt, és illessze be az alábbi kódot. Ez a kód 10 üzenetet próbál fogadni a várólistából. A tényleges szám a várólistában lévő üzenetek számától és a hálózati késéstől függ.
+1. A kedvenc szerkesztő, például a [Visual Studio-kód megnyitása](https://code.visualstudio.com/)
+2. Hozzon létre `recieve.js` egy nevű fájlt, és illessze be az alábbi kódot. Ez a kód 10 üzenetet kísérel meg fogadni a várólistából. A tényleges enkapott szám a várólistában lévő üzenetek számától és a hálózati késéstől függ.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -120,19 +120,19 @@ A Service Bus üzenetsor használata a [ServiceBusClient](https://docs.microsoft
       console.log("Error occurred: ", err);
     });
     ```
-3. Adja meg a kapcsolatok karakterláncát és a várólista nevét a fenti kódban.
-4. Ezután futtassa a parancsot egy parancssorban a fájl végrehajtásához `node receiveMessages.js`.
+3. Írja be a kapcsolati karakterláncot és a várólista nevét a fenti kódba.
+4. Ezután futtassa a parancsot `node receiveMessages.js` egy parancssorban a fájl végrehajtásához.
 
-Gratulálunk! Egy Service Bus üzenetsor üzeneteit fogadta.
+Gratulálunk! Most kapott üzeneteket egy Service Bus-várólistából.
 
-A [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) metódus egy `ReceiveMode`, amely egy [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) és [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)értékű enumerálás. Ne feledje, hogy [rendezze az üzeneteket](message-transfers-locks-settlement.md#settling-receive-operations) , ha a `PeekLock` módot használja az üzenet `complete()`, `abandon()`, `defer()`vagy `deadletter()` metódusának használatával.
+A [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) metódus `ReceiveMode` egy olyan felsorítást vesz fel, amelynek [értékei ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) és [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Ne felejtse el [rendezni az üzeneteket,](message-transfers-locks-settlement.md#settling-receive-operations) ha `defer()`a `deadletter()` módot a `PeekLock` , `complete()` `abandon()`, vagy az üzenetben lévő módszerek bármelyikével használja.
 
 > [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
+> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy csatlakozzanak a Service Bus névtér és felügyeli az üzenetkezelési entitások egyszerű módon. Az eszköz speciális funkciókat biztosít, például importálási/exportálási funkciókat, vagy a témakör, a várólisták, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelését. 
 
-## <a name="next-steps"></a>Következő lépések
-További tudnivalókat az alábbi forrásokban talál.
-- [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Üzenetsorok, témakörök és előfizetések)
-- Egyéb NodeJS-minták kifizetése a [githubon Service Bus](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
+## <a name="next-steps"></a>További lépések
+További információ: a következő források.
+- [Várólisták, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)
+- Pénztár más [Nodejs-minták a Service Bus-hoz a GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/)
 

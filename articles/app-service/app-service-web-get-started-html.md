@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: statikus HTML-Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első HTML-"Helló világ!" alkalmazás Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
+title: 'Rövid útmutató: Statikus HTML-webalkalmazás létrehozása'
+description: Az első HTML Hello World üzembe helyezése percek alatt az Azure App Service-be. A Git használatával telepíti, amely az egyik módja az App Service üzembe helyezésének.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 1ec8944ea0b4cf44c05efe92d350ae0db66d338b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: e975708eddad9b9b4a07b49e1f753d604d77ff94
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247811"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047574"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alapszintű HTML + CSS-helyet a Azure App Service. Ezt a rövid útmutatót a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) végezzük el, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) használatával.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan telepíthet egy egyszerű HTML+CSS-webhelyet az Azure App Service szolgáltatásba. Ezt a rövid útmutatót a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview)fogja végrehajtani, de ezeket a parancsokat helyileg is futtathatja az [Azure CLI segítségével.](/cli/azure/install-azure-cli)
 
 ![Mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -84,13 +84,13 @@ Jegyezze fel a `resourceGroup` értékét. Szüksége lesz rá [az erőforrások
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-A böngészőben nyissa meg az alkalmazás URL-címét: `http://<app_name>.azurewebsites.net`.
+A böngészőben nyissa meg az `http://<app_name>.azurewebsites.net`alkalmazás URL-címét: .
 
 Az oldal Azure App Service webalkalmazásként fut.
 
 ![Mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-**Gratulálunk!** Elvégezte az első HTML-webapp üzembe helyezését az App Service-ben.
+**Gratulálok!** Elvégezte az első HTML-webapp üzembe helyezését az App Service-ben.
 
 ## <a name="update-and-redeploy-the-app"></a>Az alkalmazás frissítése és ismételt üzembe helyezése
 
@@ -112,11 +112,11 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás kezeléséhez keresse meg a [Azure Portal](https://portal.azure.com), és válassza a **app Services**lehetőséget. 
+A létrehozott webalkalmazás kezeléséhez az [Azure Portalon](https://portal.azure.com)keresse meg az **App Services**elemet, és válassza azt. 
 
-![Válassza ki a App Services a Azure Portal](./media/app-service-web-get-started-html/portal0.png)
+![Válassza ki az Alkalmazásszolgáltatásokat az Azure Portalon](./media/app-service-web-get-started-html/portal0.png)
 
-A **app Services** lapon válassza ki az Azure-alkalmazás nevét.
+Az **App Services** lapon válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-html/portal1.png)
 
@@ -136,7 +136,7 @@ az group delete --name appsvc_rg_Windows_westeurope
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

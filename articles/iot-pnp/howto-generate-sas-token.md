@@ -1,27 +1,27 @@
 ---
-title: Biztonsági jogkivonat előállítása a IoT való hozzáféréshez Plug and Play előzetes verziójú adattár | Microsoft Docs
-description: Létrehoz egy közös hozzáférési aláírási jogkivonatot, amelyet akkor használhat, amikor egy IoT Plug and Play előzetes verziójú modellhez való hozzáférést.
+title: Biztonsági jogkivonat létrehozása az IoT Plug and Play Preview adattár eléréséhez | Microsoft dokumentumok
+description: Hozzon létre egy megosztott hozzáférésű aláírás-jogkivonatot, amelyet az IoT Plug and Play Preview modelltártár programozott módon való elérésekor használhat.
 author: Philmea
 ms.author: philmea
 ms.date: 12/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 2530c5b3561ad90eac0556770a8a356cfaa6a52c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f008627317588467d731ccc03aec7738f58e46e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531287"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159200"
 ---
-# <a name="generate-sas-token"></a>SAS-token előállítása
+# <a name="generate-sas-token"></a>SAS-jogkivonat létrehozása
 
-Ez a útmutató azt mutatja be, hogyan lehet programozott módon előállítani egy közös hozzáférési aláírási (SAS-) tokent, amelyet a IoT Plug and Play a minta-adattár API-kkal való használatra.
+Ez az útmutató bemutatja, hogyan hozhat létre programozott módon egy megosztott hozzáférésű aláírási (SAS) jogkivonatot az IoT Plug and Play Preview modelltártárapi-khoz.
 
 ## <a name="python"></a>Python
 
-Az alábbi kódrészletből megtudhatja, hogyan hozhatja ki SAS-jogkivonatot a Python használatával:
+A következő kódrészlet bemutatja, hogyan hozhat létre SAS-jogkivonatot a Python használatával:
 
 ```python
 from base64 import b64decode, b64encode
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-Az alábbi kódrészletből megtudhatja, hogyan hozhatja ki SAS-tokent a C\#használatával:
+A következő kódrészlet bemutatja, hogyan hozhat létre\#SAS-jogkivonatot a C használatával:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -72,16 +72,16 @@ public static string generateSasToken(string hostName, string repoId, string key
 }
 ```
 
-## <a name="use-the-sas-token"></a>Az SAS-jogkivonat használata
+## <a name="use-the-sas-token"></a>A SAS-jogkivonat használata
 
-Az SAS-token létrehozása után a használatával HTTP POST-kérést is létrehozhat. Példa:
+SAS-jogkivonat létrehozása után http-posta-kérelem benyújtásához használhatja. Példa:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
 ```
 
-Ha SAS-tokent ad egy ügyfélnek, az ügyfél nem rendelkezik az erőforrás elsődleges kulcsával, és nem tudja visszafordítani a kivonatot a beszerzéséhez. Az SAS-token segítségével szabályozhatja, hogy az ügyfél mit tud elérni, és mennyi ideig. Ha módosítja a házirend elsődleges kulcsát, a rendszer a belőle létrehozott SAS-jogkivonatokat érvényteleníti.
+Ha egy ügyfél egy SAS-jogkivonatot, az ügyfél nem rendelkezik az erőforrás elsődleges kulcsa, és nem tudja visszavonni a kivonatot annak megszerzéséhez. A SAS-jogkivonat segítségével szabályozhatja, hogy az ügyfél mit érhet el, és mennyi ideig. Ha módosítja az elsődleges kulcsot a házirendben, az abból létrehozott SAS-jogkivonatok érvénytelenné válnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogy milyen biztonsági jogkivonatokat hoz létre a modell IoT Plug and Play előnézeti modellhez való hozzáféréshez, a következő lépés az, hogy további információra van szüksége a [IoT Plug and Play előzetes verziójú modellezés fejlesztői útmutatójában](concepts-developer-guide.md).
+Most, hogy megismerkedett az IoT Plug and Play Preview modelltárházak eléréséhez használt biztonsági jogkivonatok létrehozásáról, a javasolt következő lépés az [IoT Plug and Play Preview modellezési fejlesztői útmutatójának](concepts-developer-guide.md)további ismertetése.

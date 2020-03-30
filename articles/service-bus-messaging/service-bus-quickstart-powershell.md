@@ -1,6 +1,6 @@
 ---
-title: Service Bus üzenetsor létrehozásához használja a Azure PowerShell
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Service Bus üzenetsor létrehozásához Azure PowerShell. Ezt követően egy minta alkalmazással üzeneteket küldhet és fogadhat üzeneteket a várólistából.
+title: Service Bus-várólista létrehozása az Azure PowerShell használatával
+description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Azure PowerShellt a Service Bus-várólisták kreattálására. Ezután egy mintaalkalmazás segítségével üzeneteket küldhet a várólistába, és fogadhat üzeneteket a várólistából.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -11,13 +11,13 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75426935"
 ---
-# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozása a Azure PowerShell használatával
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Rövid útmutató: Az Azure PowerShell használatával hozzon létre egy Service Bus-várólistát
 Ebből a rövid útmutatóból megismerheti, hogyan küldhet és fogadhat üzeneteket egy Service Bus-üzenetsorból a PowerShell használatával egy üzenetküldési névtér és egy azon belüli üzenetsor létrehozásához, valamint az adott névtér hitelesítő adatainak lekéréséhez. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -29,11 +29,11 @@ Ebből a rövid útmutatóból megismerheti, hogyan küldhet és fogadhat üzene
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőket:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][] a virtuális gép létrehozásának megkezdése előtt. 
-- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studióval olyan mintát hozhat létre, amely üzeneteket küld egy várólistából, és üzenetet fogad. A példa a portálon létrehozott üzenetsor tesztelésére szolgál. 
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,][] mielőtt elkezdené. 
+- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studio segítségével olyan mintát hozhat létre, amely üzeneteket küld a várólistába, és üzeneteket fogad egy várólistából. A minta a portálon létrehozott várólista tesztelése. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása][]. Ha már ismeri a Azure Cloud Shell-t, használhatja azt anélkül, hogy Azure PowerShell telepítését a gépre. A Azure Cloud Shellről további részleteket a [Azure Cloud Shell áttekintése](../cloud-shell/overview.md) című témakörben talál.
+Ehhez a rövid útmutatóhoz az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása][]. Ha ismeri az Azure Cloud Shellt, használhatja anélkül, hogy az Azure PowerShellt telepítené a gépére. Az Azure Cloud Shell ről az [Azure Cloud Shell áttekintése című témakörben](../cloud-shell/overview.md) olvashat részletesen.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -128,7 +128,7 @@ Ez a szakasz a mintakód működésének további részleteit ismerteti.
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 
-A rendszer a kapcsolódási karakterláncot és a várólista nevét adja át a `Main()` metódusnak parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
+A kapcsolati karakterlánc és a `Main()` várólista neve parancssori argumentumként kerül áta disametódushoz. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
 
 ```csharp
 static void Main(string[] args)
@@ -165,7 +165,7 @@ A `Main()` metódus ezután elindítja a `MainAsync()` aszinkron üzenethurkot.
 
 ### <a name="message-loop"></a>Üzenethurok
 
-A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a fogadó `RegisterOnMessageHandlerAndReceiveMessages()`nevű üzenetkezelő kezelőt, és elküldi az üzenetek készletét:
+A MainAsync() metódus létrehoz egy várólista-ügyfelet a parancssori argumentumokkal, meghívja a fogadóüzenet-kezelőt, `RegisterOnMessageHandlerAndReceiveMessages()`és elküldi az üzenetek készletét:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -256,14 +256,14 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
+> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy csatlakozzanak a Service Bus névtér és felügyeli az üzenetkezelési entitások egyszerű módon. Az eszköz speciális funkciókat biztosít, például importálási/exportálási funkciókat, vagy a témakör, a várólisták, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelését. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetek küldésére és fogadására szolgáló kód írásához, folytassa az oktatóanyagokat a **küldési és fogadási üzenetek** szakaszban. 
+Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetek küldéséhez és fogadásához írt kódírásról, folytassa az **üzenetek küldése és fogadása** című szakaszoktatóival. 
 
 > [!div class="nextstepaction"]
 > [Üzenetek küldése és fogadása](service-bus-dotnet-get-started-with-queues.md)
 
-[ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ingyenes számla]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Az Azure PowerShell telepítése és konfigurálása]: /powershell/azure/install-Az-ps

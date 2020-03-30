@@ -1,6 +1,6 @@
 ---
-title: Eszköz vezérlése az Azure IoT Hub Gyorsindítás (Android) szolgáltatásból | Microsoft Docs
-description: Ebben a rövid útmutatóban két Java-mintaalkalmazást fog futtatni. Az egyik alkalmazás olyan szolgáltatásalkalmazás, amely távolról vezérelheti az Ön hubhoz csatlakoztatott eszközöket. A másik alkalmazás a központhoz csatlakoztatott fizikai vagy szimulált eszközön fut, amely távolról vezérelhető.
+title: Eszköz vezérlése az Azure IoT Hub rövid útmutatójából (Android) | Microsoft dokumentumok
+description: Ebben a rövid útmutatóban két Java-mintaalkalmazást fog futtatni. Az egyik alkalmazás egy olyan szolgáltatásalkalmazás, amely távolról vezérelheti a hubhoz csatlakoztatott eszközöket. A másik alkalmazás fut egy fizikai vagy szimulált eszköz csatlakozik a hubhoz, amely távolról vezérelhető.
 author: wesmc7777
 manager: philmea
 ms.service: iot-hub
@@ -11,37 +11,37 @@ ms.custom: mvc
 ms.date: 06/21/2019
 ms.author: wesmc
 ms.openlocfilehash: 5a912199869cb2cce690a3502345ec6f9ca43d22
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675669"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése (Android)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rövid útmutató: IoT-központhoz (Android) csatlakoztatott eszköz vezérlése
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-Ebben a rövid útmutatóban egy közvetlen módszert használ az Azure IoT Hubhoz csatlakoztatott szimulált eszköz vezérlésére. A IoT Hub egy olyan Azure-szolgáltatás, amely lehetővé teszi a IoT-eszközök Felhőbeli kezelését, és a felhőbe irányuló nagy mennyiségű eszköz telemetria történő tárolását és feldolgozását. A közvetlen metódusok használatával távolról módosíthatja az IoT Hubhoz csatlakoztatott eszköz működését. Ez a rövid útmutató két alkalmazást használ: egy szimulált eszköz alkalmazást, amely egy háttérbeli szolgáltatásalkalmazás és egy olyan szolgáltatásalkalmazás által kezdeményezett közvetlen metódusra reagál, amely meghívja az Android-eszközön a közvetlen módszert.
+Ebben a rövid útmutatóban egy közvetlen módszerrel vezérelheti az Azure IoT Hubhoz csatlakoztatott szimulált eszközt. Az IoT Hub egy Azure-szolgáltatás, amely lehetővé teszi az IoT-eszközök kezelését a felhőből, és nagy mennyiségű eszköztelemetriát a felhőbe való betöltésére tárolás vagy feldolgozás érdekében. A közvetlen metódusok használatával távolról módosíthatja az IoT Hubhoz csatlakoztatott eszköz működését. Ez a rövid útmutató két alkalmazást használ: egy szimulált eszközalkalmazást, amely válaszol egy háttérszolgáltatás-alkalmazásból és egy olyan szolgáltatásalkalmazásból, amely meghívja a közvetlen metódust az Android-eszközön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Android Studio az Android SDK 27](https://developer.android.com/studio/)használatával. További információ: [Install Android Studio](https://developer.android.com/studio/install).
+* [Android Studio Android SDK 27](https://developer.android.com/studio/). További információ: [Install Android Studio](https://developer.android.com/studio/install).
 
 * [Git](https://git-scm.com/download/).
 
-* Az [Azure IoT-mintákban (Java)](https://github.com/Azure-Samples/azure-iot-samples-java)található [Device SDK-minta Android-alkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample).
+* [Device SDK minta Android-alkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample), az [Azure IoT-minták (Java)](https://github.com/Azure-Samples/azure-iot-samples-java)része.
 
-* A [Service SDK minta Android-alkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample), amely az Azure IoT-mintákban (Java) található.
+* [Szolgáltatás SDK minta Android-alkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample), az Azure IoT-minták (Java) tartalmazza.
 
-* A 8883-es port megnyitható a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* A 8883-as port megnyílik a tűzfalon. A rövid útmutatóban szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT-bővítmény hozzáadása
 
-A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
+Futtassa a következő parancsot, és adja hozzá a Microsoft Azure IoT-bővítményt az Azure CLI-hez a Cloud Shell-példányhoz. Az IoT-bővítmény hozzáadja az IoT Hub, az IoT Edge és az IoT-eszközlétesítési szolgáltatás (DPS) adott parancsokat az Azure CLI-hez.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -51,21 +51,21 @@ az extension add --name azure-iot
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Ha befejezte az előző rövid útmutatót [: küldjön telemetria egy eszközről egy IoT hubhoz](quickstart-send-telemetry-android.md), kihagyhatja ezt a lépést, és használhatja a már létrehozott IoT hubot.
+Ha befejezte az előző [gyorsútmutatót: Telemetriai adatok küldése egy eszközről egy IoT-központba,](quickstart-send-telemetry-android.md)kihagyhatja ezt a lépést, és használhatja a már létrehozott IoT-központot.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Ha befejezte az előző rövid útmutatót [: küldjön telemetria egy eszközről egy IoT-hubhoz](quickstart-send-telemetry-android.md), kihagyhatja ezt a lépést, és használhatja ugyanazt az eszközt, amely az előző rövid útmutatóban regisztrálva van.
+Ha befejezte az előző [rövid útmutató: Telemetriai adatok küldése egy eszközről egy IoT hub,](quickstart-send-telemetry-android.md)kihagyhatja ezt a lépést, és használja ugyanazt az eszközt regisztrált az előző rövid útmutató.
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
-1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
+1. Futtassa a következő parancsot az Azure Cloud Shellben az eszközidentitás létrehozásához.
 
-   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName:** Cserélje le ezt a helyőrzőt az IoT hubhoz választott névvel.
 
-   **MyAndroidDevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **MyAndroidDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
+   **MyAndroidDevice**: Ez a regisztráló eszköz neve. Javasoljuk, hogy használja **a MyAndroidDevice-t az** ábrán látható módon. Ha más nevet választ az eszközhöz, akkor ezt a nevet is használnia kell a cikkben, és frissítenie kell az eszköz nevét a mintaalkalmazásokban, mielőtt futtatna őket.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -74,7 +74,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName:** Cserélje le ezt a helyőrzőt az IoT hubhoz kiválasztott névvel.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -91,9 +91,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="retrieve-the-service-connection-string"></a>A szolgáltatás kapcsolati sztringjének lekérése
 
-Szükség van egy _szolgáltatás-kapcsolati karakterláncra_ is, amely lehetővé teszi a háttér-szolgáltatási alkalmazások számára a IoT hub-hoz való kapcsolódást a metódusok végrehajtása és az üzenetek lekérése érdekében. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
+Emellett egy _szolgáltatás kapcsolati karakterláncra_ is szüksége van ahhoz, hogy a háttérszolgáltatás-alkalmazások a metódusok végrehajtásához és az üzenetek lekéréséhez csatlakozzanak az IoT hubhoz. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
 
-**YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+**YourIoTHubName:** Cserélje le ezt a helyőrzőt az IoT hubhoz választott névvel.
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -103,104 +103,104 @@ Jegyezze fel a szolgáltatáskapcsolati sztringet, amely a következőképpen n�
 
 `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-Ezt az értéket használni fogja a rövid útmutató későbbi részében. Ez a szolgáltatási kapcsolatok karakterlánca különbözik az előző lépésben feljegyzett eszköz-összekapcsolási karakterlánctól.
+Ezt az értéket használni fogja a rövid útmutató későbbi részében. Ez a szolgáltatáskapcsolati karakterlánc eltér az előző lépésben megjegyzett eszközkapcsolati karakterlánctól.
 
 ## <a name="listen-for-direct-method-calls"></a>Közvetlen metódusok hívásának figyelése
 
-A rövid útmutató mindkét mintája az Azure-IOT-Samples-Java adattár részét képezi a GitHubon. Az [Azure-IOT-Samples-Java](https://github.com/Azure-Samples/azure-iot-samples-java) adattár letöltése vagy klónozása.
+A rövid útmutató mindkét minta része az azure-iot-samples-java tárház a GitHubon. Töltse le vagy klónozza az [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) tárházat.
 
-Az eszköz SDK-minta alkalmazás futtatható fizikai Android-eszközön vagy Android-emulátoron is. A minta egy adott eszközhöz tartozó végponthoz csatlakozik az IoT hub-on, szimulált telemetria küld, és figyeli a hub Direct metódusának hívásait. Ebben a rövid útmutatóban a hubról érkező közvetlenmetódus-hívás arra utasítja az eszközt, hogy módosítsa a telemetriaküldések közötti időintervallumot. A szimulált eszköz visszaigazolást küld a hubhoz a közvetlen metódus végrehajtása után.
+Az eszköz SDK mintaalkalmazás futtatható fizikai Android-eszközön vagy Android-emulátoron. A minta csatlakozik egy eszköz-specifikus végpont az IoT hubon, szimulált telemetriai adatokat küld, és figyeli a közvetlen metódus hívásokat a hubról. Ebben a rövid útmutatóban a hubról érkező közvetlenmetódus-hívás arra utasítja az eszközt, hogy módosítsa a telemetriaküldések közötti időintervallumot. A szimulált eszköz a közvetlen metódus végrehajtása után nyugtát küld vissza a hubnak.
 
-1. Nyissa meg Android Studio a GitHub-minta Android-projektet. A projekt az [Azure-IOT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) adattár klónozott vagy letöltött példányának következő könyvtárában található.
+1. Nyissa meg a GitHub minta Android-projektet az Android Studio-ban. A projekt az [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) tárház klónozott vagy letöltött példányának következő könyvtárában található.
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
-2. A Android Studioban nyissa meg a *gradle. properties* karakterláncot, és cserélje le a **Device_Connection_String** helyőrzőt a korábban jegyzett eszköz-összekapcsolási sztringre.
+2. Az Android Studio alkalmazásban nyissa meg a *mintaprojekt gradle.properties* szolgáltatását, és cserélje le a **Device_Connection_String** helyőrzőt a korábban feljegyezni eszközkapcsolati karakterláncra.
 
     ```
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio kattintson a **fájl** > **szinkronizálás projekt Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
+3. Az Android Studio alkalmazásban kattintson a > **Fájlszinkronizálási projekt a Gradle-fájlokkal**elemre. **File** Ellenőrizze a build befejeződését.
 
    > [!NOTE]
-   > Ha a projekt szinkronizálása sikertelen, a következő okok egyike lehet:
+   > Ha a projekt szinkronizálása sikertelen, annak a következő okai lehetnek:
    >
-   > * A projektben hivatkozott Android Gradle beépülő modul és Gradle verziója elavult a Android Studio verziójára vonatkozóan. Kövesse [ezeket az utasításokat](https://developer.android.com/studio/releases/gradle-plugin) , és telepítse a beépülő modul és a Gradle megfelelő verzióit a telepítéshez.
-   > * Az Android SDK licencszerződése nincs aláírva. A létrehozási kimenetben szereplő utasítások alapján írja alá a licencszerződést, és töltse le az SDK-t.
+   > * A változat -ból Android Gradle dugó és Gradle hivatkozott -ban tervez van kikésett -ból időpont részére -a változat -ból Android Műterem. Kövesse [az alábbi utasításokat,](https://developer.android.com/studio/releases/gradle-plugin) hogy hivatkozzon, és telepítse a megfelelő verziókat a plugin és Gradle a telepítéshez.
+   > * Az Android SDK licencszerződése nincs aláírva. Kövesse a Build kimenet ben található utasításokat a licencszerződés aláírásához és az SDK letöltéséhez.
 
-4. A Build befejezése után kattintson a **Futtatás** gombra > **futtassa az "app"** parancsot. Beállíthatja, hogy az alkalmazás fizikai Android-eszközön vagy Android-emulátoron fusson. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
+4. Miután a build befejeződött, kattintson **a Run Run** > **'app'** gombra. Állítsa be az alkalmazást úgy, hogy fizikai Android-eszközön vagy Android-emulátoron fusson. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásáról az [Alkalmazás futtatása című](https://developer.android.com/training/basics/firstapp/running-app)témakörben talál további információt.
 
-5. Az alkalmazás betöltése után kattintson a **Start** gombra, hogy elindítsa a telemetria küldését a IoT hubba:
+5. Miután az alkalmazás betöltődik, kattintson a **Start** gombra a telemetriai adatok küldésének megkezdéséhez az IoT Hub:
 
-    ![Példa az ügyfél-eszköz Android-alkalmazás képernyőképére](media/quickstart-control-device-android/sample-screenshot.png)
+    ![Minta képernyőkép az ügyféleszköz android alkalmazásáról](media/quickstart-control-device-android/sample-screenshot.png)
 
-Ezt az alkalmazást fizikai eszközön vagy emulátoron kell futtatni, amikor a Service SDK-mintát futtatja, hogy a telemetria-intervallumot a Futtatás ideje alatt frissítse.
+Ezt az alkalmazást egy fizikai eszközön vagy emulátoron kell futnia, miközben végrehajtja a szolgáltatás SDK-mintáját a telemetriai időköz futásközbeni frissítéséhez.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
-Ebben a szakaszban a Azure Cloud Shellt a [IoT bővítménnyel](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) fogja használni az Android-eszköz által küldött üzenetek figyeléséhez.
+Ebben a szakaszban az Azure Cloud Shell az [IoT-bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) t fogja használni az Android-eszköz által küldött üzenetek figyelésére.
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 
-   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName:** Cserélje le ezt a helyőrzőt az IoT hubhoz kiválasztott névvel.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name {YourIoTHubName} --output table
     ```
 
-    Az alábbi képernyőfelvételen a kimenet látható, mivel az IoT hub az Android-eszköz által küldött telemetria fogadja:
+    A következő képernyőkép a kimenetet mutatja, ahogy az IoT hub megkapja az Android-eszköz által küldött telemetriai adatokat:
 
       ![Olvassa el az eszköz üzeneteit az Azure CLI használatával](media/quickstart-control-device-android/read-data.png)
 
-Alapértelmezés szerint a telemetria alkalmazás öt másodpercenként küld telemetria az Android-eszközről. A következő szakaszban egy közvetlen metódus hívásával frissítheti az Android IoT-eszköz telemetria-intervallumát.
+Alapértelmezés szerint a telemetriai alkalmazás öt másodpercenként telemetriai adatokat küld az Android-eszközről. A következő szakaszban egy közvetlen metódushívás az Android IoT-eszköz telemetriai időközének frissítéséhez fog használni.
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
-A szolgáltatásalkalmazás egy szolgáltatás-oldali végponthoz csatlakozik a IoT Hub. Az alkalmazás lehetővé teszi, hogy a közvetlen metódus hívásokat hajtson végre egy eszközön az IoT hub segítségével, és figyelje a nyugtákat.
+A szolgáltatásalkalmazás csatlakozik egy szolgáltatásoldali végpont hoz az IoT Hub. Az alkalmazás közvetlen metódushívásokat tesz egy eszközre az IoT hubon keresztül, és figyeli a nyugtákat.
 
-Az alkalmazást külön fizikai Android-eszközön vagy Android-emulátoron futtathatja.
+Futtassa ezt az alkalmazást egy külön fizikai Android-eszközön vagy Android emulátoron.
 
-Egy IoT Hub háttérrendszer-alkalmazás általában a felhőben fut, így könnyebben enyhíthető a bizalmas kapcsolódási karakterlánchoz kapcsolódó kockázatok, amelyek egy IoT Hub összes eszközét vezérlik. Ebben a példában csak bemutató célokra futtatjuk Android-alkalmazásként. A rövid útmutató más nyelvű verziói olyan példákat mutatnak be, amelyek szorosabban illeszkednek egy tipikus háttérbeli szolgáltatásalkalmazás-alkalmazáshoz.
+Az IoT Hub háttérszolgáltatás-alkalmazás általában a felhőben fut, ahol könnyebb en y a bizalmas kapcsolati karakterlánc, amely az IoT Hub összes eszközét vezérli. Ebben a példában csak demonstrációs célokra futtatjuk Android-alkalmazásként. A rövid útmutató más nyelvű verziói olyan példákat tartalmaznak, amelyek jobban illeszkednek egy tipikus háttérszolgáltatás-alkalmazáshoz.
 
-1. Nyissa meg a GitHub szolgáltatási minta Android-projektjét Android Studioban. A projekt az [Azure-IOT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) adattár klónozott vagy letöltött példányának következő könyvtárában található.
+1. Nyissa meg a GitHub-szolgáltatás minta Android-projektet az Android Studio-ban. A projekt az [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) tárház klónozott vagy letöltött példányának következő könyvtárában található.
 
         \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
 
-2. A Android Studioban nyissa meg a *gradle. properties tulajdonságot* a minta projekthez. Frissítse a **ConnectionString** és a **DeviceID** tulajdonságok értékeit a korábban feljegyzett szolgáltatási kapcsolati karakterlánccal és a regisztrált Android-eszköz azonosítójával.
+2. Az Android Studio alkalmazásban nyissa meg a *mintaprojekt gradle.properties.properties.in.* Frissítse a **ConnectionString** és **deviceId-tulajdonságok** értékeit a korábban feljegyzett szolgáltatáskapcsolati karakterlánccal és a regisztrált Android-eszközazonosítóval.
 
     ```
     ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 
-3. Android Studio kattintson a **fájl** > **szinkronizálás projekt Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
+3. Az Android Studio alkalmazásban kattintson a > **Fájlszinkronizálási projekt a Gradle-fájlokkal**elemre. **File** Ellenőrizze a build befejeződését.
 
    > [!NOTE]
-   > Ha a projekt szinkronizálása sikertelen, a következő okok egyike lehet:
+   > Ha a projekt szinkronizálása sikertelen, annak a következő okai lehetnek:
    >
-   > * A projektben hivatkozott Android Gradle beépülő modul és Gradle verziója elavult a Android Studio verziójára vonatkozóan. Kövesse [ezeket az utasításokat](https://developer.android.com/studio/releases/gradle-plugin) , és telepítse a beépülő modul és a Gradle megfelelő verzióit a telepítéshez.
-   > * Az Android SDK licencszerződése nincs aláírva. A létrehozási kimenetben szereplő utasítások alapján írja alá a licencszerződést, és töltse le az SDK-t.
+   > * A változat -ból Android Gradle dugó és Gradle hivatkozott -ban tervez van kikésett -ból időpont részére -a változat -ból Android Műterem. Kövesse [az alábbi utasításokat,](https://developer.android.com/studio/releases/gradle-plugin) hogy hivatkozzon, és telepítse a megfelelő verziókat a plugin és Gradle a telepítéshez.
+   > * Az Android SDK licencszerződése nincs aláírva. Kövesse a Build kimenet ben található utasításokat a licencszerződés aláírásához és az SDK letöltéséhez.
 
-4. A Build befejezése után kattintson a **Futtatás** gombra > **futtassa az "app"** parancsot. Az alkalmazás konfigurálása külön fizikai Android-eszközön vagy Android-emulátoron való futtatáshoz. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
+4. Miután a build befejeződött, kattintson **a Run Run** > **'app'** gombra. Állítsa be az alkalmazást úgy, hogy egy külön fizikai Android-eszközön vagy Android-emulátoron fusson. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásáról az [Alkalmazás futtatása című](https://developer.android.com/training/basics/firstapp/running-app)témakörben talál további információt.
 
-5. Az alkalmazás betöltése után frissítse az **üzenetküldési időköz** értékét a **1000** értékre, majd kattintson a **meghívás**gombra.
+5. Az alkalmazás betöltése után frissítse az **Üzenetküldési időköz beállítása** értéket **1000-re,** majd kattintson az **Invoke gombra.**
 
-    A th telemetria üzenetkezelési időköze ezredmásodpercben van. Az eszköz alapértelmezett telemetria-intervalluma 5 másodpercig van beállítva. Ez a módosítás frissíti az Android rendszerű IoT eszközt, hogy a telemetria másodpercenként elküldjék.
+    A telemetriai üzenetküldési időköz ezredmásodpercben van megadva. Az eszközminta alapértelmezett telemetriai időköze 5 másodpercre van beállítva. Ez a módosítás frissíti az Android IoT-eszközt, hogy a telemetriai adatok másodpercenként elküldve.
 
-    ![Telemetria intervallumának megadása](media/quickstart-control-device-android/enter-telemetry-interval.png)
+    ![Telemetriai időköz megadása](media/quickstart-control-device-android/enter-telemetry-interval.png)
 
-6. Az alkalmazás egy nyugtát kap, amely jelzi, hogy a metódus végrehajtása sikeres volt-e.
+6. Az alkalmazás nyugtát kap, amely jelzi, hogy a metódus sikeresen végrehajtott-e vagy sem.
 
-    ![Közvetlen metódus-visszaigazolás](media/quickstart-control-device-android/direct-method-ack.png)
+    ![Közvetlen metódus nyugtázása](media/quickstart-control-device-android/direct-method-ack.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban közvetlen metódust hívott egy eszközön egy háttérbeli alkalmazásból, és a közvetlen metódus hívására válaszolt egy szimulált eszköz alkalmazásban.
+Ebben a rövid útmutatóban közvetlen metódust hívott meg egy eszközön egy háttéralkalmazásból, és válaszolt a szimulált eszközalkalmazásban a közvetlen metódushívásra.
 
 Ha szeretné megtudni, hogy hogyan irányíthatók az eszközről felhőbe irányuló üzenetek különböző felhőbeli célokhoz, folytassa a következő oktatóanyaggal.
 

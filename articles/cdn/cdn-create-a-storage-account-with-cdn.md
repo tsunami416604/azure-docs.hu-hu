@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató – Azure Storage-fiók integrálása Azure CDN
+title: Rövid útmutató – Azure-tárfiók integrálása az Azure CDN-nel
 description: Az útmutató azt ismerteti, hogyan kézbesíthet nagy sávszélességű tartalmakat az Azure Content Delivery Network (CDN) segítségével az Azure Storage-ben lévő blobok gyorsítótárazása révén.
 services: cdn
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75386986"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rövid útmutató: Azure Storage-fiók integrálása az Azure CDN-nel
@@ -27,7 +27,7 @@ Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Netw
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-a-storage-account"></a>Create a storage account
@@ -55,9 +55,9 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
    
     Ez az érték lesz a gazdagépnév az URI-n belül, amellyel a rendszer az előfizetés blob-, üzenetsor- vagy táblaerőforrásainak címzéséhez használ. A Blob Storage-ban lévő tároló-erőforrások címzéséhez egy következő formátumú URI-t használjon:
    
-    http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;mycontainer&gt;*
+    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;samtároló&gt; *
 
-    ahol a *&lt;StorageAccountLabel&gt;* a **Név** mezőben megadott értéken alapul.
+    ahol * &lt;a&gt; StorageAccountLabel* a **Név** mezőben megadott értékre hivatkozik.
    
     > [!IMPORTANT]    
     > Az URL-címke alkotja a tárfiók URI-jának altartományát, és az összes Azure-beli üzemeltetett szolgáltatás között egyedinek kell lennie.
@@ -66,12 +66,12 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
     
 4. A többi beállításhoz használja a következő táblázatban megadott értékeket:
 
-    | Beállítás  | Value (Díj) |
+    | Beállítás  | Érték |
     | -------- | ----- |
     | **Üzemi modell** | Használja az alapértelmezett értéket. |
-    | **Fióktípus** | Használja az alapértelmezett értéket. |
-    | **Hely**    | Válassza az **USA középső régiója** értéket a legördülő listából. |
-    | **Replikáció** | Használja az alapértelmezett értéket. |
+    | **Számla fajta** | Használja az alapértelmezett értéket. |
+    | **Helyen**    | Válassza az **USA középső régiója** értéket a legördülő listából. |
+    | **Replikációs** | Használja az alapértelmezett értéket. |
     | **Teljesítmény** | Használja az alapértelmezett értéket. |
     | **Biztonságos átvitelre van szükség** | Használja az alapértelmezett értéket. |
     | **Előfizetés** | Válasszon egy Azure-előfizetést a legördülő listából. |
@@ -94,11 +94,11 @@ Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. 
     
 2. Új végpontot a következő táblázatban ismertetett információk megadásával hozhat létre:
 
-    | Beállítás  | Value (Díj) |
+    | Beállítás  | Érték |
     | -------- | ----- |
-    | **CDN-profil** | Válassza az **új létrehozása** elemet, és adja meg a profil nevét, például: *My-CDN-profile-123*. A névnek globálisan egyedinek kell lennie.  |
+    | **CDN-profil** | Válassza **az Új létrehozása lehetőséget,** és írja be a profil nevét, például *my-cdn-profile-123*. A névnek globálisan egyedinek kell lennie.  |
     | **Tarifacsomag** | Válassza a **Standard – Verizon** értéket a legördülő listából. |
-    | **CDN-végpont neve** | Adja meg a végpont állomásnevét, azaz *a My-Endpoint-123*. A névnek globálisan egyedinek kell lennie. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_ .azureedge.net tartományban. |
+    | **CDN-végpont neve** | Adja meg a végpont állomásnevét, azaz *my-endpoint-123*. A névnek globálisan egyedinek kell lennie. Ezzel a névvel érhető el a gyorsítótárazott erőforrások a _ &lt;tartományvégpont -végpontneve&gt;_.azureedge.net. |
     | **Forrás gazdaneve** | Alapértelmezés szerint egy új CDN-végpont a tárfiók eszköznevét használja forráskiszolgálóként. |
 
 3. Kattintson a **Létrehozás** gombra. A létrejött végpont megjelenik a végpontok listájában.
@@ -117,7 +117,7 @@ Ha korlátozott hozzáférést szeretne adni privát tárolókhoz, használhatja
 ## <a name="access-cdn-content"></a>Hozzáférés a CDN tartalmához
 A CDN-en lévő gyorsítótárazott tartalmakhoz való hozzáféréshez használja a CDN portálon megadott URL-címét. A gyorsítótárazott blobok címének formátuma a következő:
 
-http://<*VégpontNeve*\>.azureedge.net/<*sajátNyilvánosTároló*\>/<*BlobNeve*\>
+http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*blobName*\>
 
 > [!NOTE]
 > Miután engedélyezte a tárfiókhoz való hozzáférést az Azure CDN számára, az összes nyilvánosan elérhető objektum jogosult a CDN POP gyorsítótárazásra. Ha módosítja a CDN egyik gyorsítótárazott objektumát, az új tartalom nem lesz elérhető az Azure CDN-en keresztül, amíg az Azure CDN nem frissíti a tartalmát a gyorsítótárazott tartalom élettartamának lejártát követően.
@@ -125,7 +125,7 @@ http://<*VégpontNeve*\>.azureedge.net/<*sajátNyilvánosTároló*\>/<*BlobNeve*
 ## <a name="remove-content-from-azure-cdn"></a>Tartalmak eltávolítása az Azure CDN-ről
 Ha egy objektumot nem szeretne a továbbiakban gyorsítótárazni az Azure CDN-ben, hajtsa végre a következő műveletek valamelyikét:
 
-* Állítsa a tárolót privátra (nyilvános helyett). További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../storage/blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
+* Állítsa a tárolót privátra (nyilvános helyett). További információt a [Névtelen olvasási hozzáférés kezelése a tárolókhoz és blobokhoz című témakörben talál.](../storage/blobs/storage-manage-access-to-resources.md)
 * Tiltsa le vagy törölje a CDN-végpontot az Azure Portalon.
 * Módosítsa az üzemeltetett szolgáltatást, hogy ne válaszoljon az objektumra vonatkozó kérelmekre.
 
@@ -142,7 +142,7 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 
 3. A törlendő tárfiókot jelölje ki az irányítópulton, majd válassza ki a **Törlés** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához és engedélyezheti azon a HTTPS-t:
 
 > [!div class="nextstepaction"]

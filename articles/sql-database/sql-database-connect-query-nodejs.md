@@ -1,6 +1,6 @@
 ---
-title: Adatbázis lekérdezése a Node. js használatával
-description: A Node. js használata olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le.
+title: Adatbázis lekérdezése a Node.js fájlhasználatával
+description: Node.js használatával hozzon létre egy olyan programot, amely csatlakozik egy Azure SQL-adatbázishoz, és lekérdezi azt t-SQL utasítások használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,55 +12,55 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: c0da38a41bf613237ea3b164d70e4729a7284ca7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768600"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rövid útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
 
-Ebben a rövid útmutatóban a Node. js használatával csatlakozhat egy Azure SQL Database-adatbázishoz, és T-SQL-utasítások használatával kérdez le adatokat.
+Ebben a rövid útmutatóban a Node.js használatával csatlakozhat egy Azure SQL-adatbázishoz, és t-SQL-utasítások használatával adatoklekérdezéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy [Azure SQL Database-adatbázis](sql-database-single-database-get-started.md)
-- [Node. js](https://nodejs.org)-hez kapcsolódó szoftverek
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure SQL-adatbázis](sql-database-single-database-get-started.md)
+- [Node.js](https://nodejs.org)-kapcsolódó szoftver
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[Macos](#tab/macos)
 
-  Telepítse a Homebrew-t és a Node. js-t, majd telepítse az ODBC-illesztőt és a SQLCMD-t a **1,2** -es és **1,3** -as lépések használatával a [Node. js-alkalmazások létrehozása SQL Server](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)
+  Telepítse a Homebrew és a Node.js, majd az ODBC-illesztőprogramot és az SQLCMD-t az **1.2-** és **1.3-as** lépésekkel [a Node.js alkalmazások létrehozása macOS rendszeren az SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)című témakörben.
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Telepítse a Node. js-t, majd telepítse az ODBC-illesztőt és a SQLCMD-t a **1,2** -es és **1,3** -as lépések használatával a [Node. js-alkalmazások létrehozása SQL Server használatával Ubuntu rendszeren](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)
+  Telepítse a Node.js fájlrendszert, majd telepítse az ODBC illesztőprogramot és az SQLCMD-t az **1.2** és **1.3** lépésekkel a [Node.js alkalmazások létrehozása az SQL Server használatával ubuntuban](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  Telepítse a csokoládét és a Node. js-t, majd telepítse az ODBC-illesztőt és a SQLCMD-t a **1,2** -es és **1,3** -as lépések használatával a [Node. js-alkalmazások létrehozása a Windows SQL Server](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)
+  Telepítse a Chocolatey és a Node.js fájlrendszert, majd telepítse az ODBC illesztőprogramot és az SQLCMD-t az **1.2** és **1.3** lépésekkel a [Node.js alkalmazások létrehozása windowsos SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)című témakörben.
 
   ---
 
 > [!IMPORTANT]
-> A cikkben található parancsfájlok az **Adventure Works** -adatbázis használatára íródnak.
+> A cikkben szereplő parancsfájlok a **Kalandorbolt-adatbázis** használatára íródnak.
 
 > [!NOTE]
-> Dönthet úgy is, hogy egy Azure SQL felügyelt példányt használ.
+> Igény szerint választhat egy Azure SQL felügyelt példány használata.
 >
-> A létrehozásához és konfigurálásához használja az [Azure Portalt](sql-database-managed-instance-get-started.md), a [PowerShellt](scripts/sql-database-create-configure-managed-instance-powershell.md)vagy a [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)-t, majd a helyszíni vagy a [VM](sql-database-managed-instance-configure-vm.md) [-](sql-database-managed-instance-configure-p2s.md) kapcsolat beállítását.
+> Létrehozása és konfigurálása, használja az [Azure Portal](sql-database-managed-instance-get-started.md), [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)vagy [CLI,](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)majd állítsa be [a helyszínen](sql-database-managed-instance-configure-p2s.md) vagy [virtuális gép](sql-database-managed-instance-configure-vm.md) kapcsolat.
 >
-> Az betöltéssel kapcsolatban lásd: [visszaállítás a BACPAC](sql-database-import.md) az [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) -fájllal, vagy lásd: [a Wide World](sql-database-managed-instance-get-started-restore.md)importing-adatbázis visszaállítása.
+> Az adatok betöltéséhez olvassa el a [VISSZAÁLLÍTÁS a BACPAC fájllal](sql-database-import.md) című témakört a [Kalandorbolt](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) fájllal, vagy olvassa el [a Wide World Importers adatbázis visszaállítása című témakört.](sql-database-managed-instance-get-started-restore.md)
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
+## <a name="get-sql-server-connection-information"></a>SQL-kiszolgálókapcsolati adatok beszerezése
 
-Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
+Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információk beszerezése. A közelgő eljárásokhoz szüksége lesz a teljesen minősített kiszolgáló- vagy állomásnévre, az adatbázis nevére és bejelentkezési adataira.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-2. Nyissa meg az **SQL-adatbázisok** vagy az SQL- **felügyelt példányok** lapot.
+2. Nyissa meg az **SQL-adatbázisok** vagy az **SQL felügyelt példányok** lapot.
 
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont. 
+3. Az **Áttekintés** lapon tekintse át a **kiszolgáló neve** melletti teljesen minősített kiszolgálónevet egyetlen adatbázishoz, vagy a teljesen minősített kiszolgálónevet a felügyelt példány **gazdagépe** mellett. A kiszolgáló vagy az állomásnév másolásához mutasson rá, és válassza a **Másolás ikont.** 
 
 ## <a name="create-the-project"></a>A projekt létrehozása
 
@@ -71,11 +71,11 @@ Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyis
   npm install tedious
   ```
 
-## <a name="add-code-to-query-database"></a>Kód hozzáadása az adatbázis lekérdezéséhez
+## <a name="add-code-to-query-database"></a>Kód hozzáadása a lekérdezési adatbázishoz
 
-1. A kedvenc szövegszerkesztőben hozzon létre egy új, *sqltest. js*fájlt.
+1. A kedvenc szövegszerkesztő, hozzon létre egy új fájlt, *sqltest.js*.
 
-1. Cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgáló, az adatbázis, a felhasználó és a jelszó megfelelő értékeit.
+1. Cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgálónak, az adatbázisnak, a felhasználónak és a jelszónak megfelelő értékeket.
 
     ```js
     const { Connection, Request } = require("tedious");
@@ -136,7 +136,7 @@ Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyis
     ```
 
 > [!NOTE]
-> A Code példa az Azure SQL-hoz készült **AdventureWorksLT** mintaadatbázis használatával működik.
+> A példakód az **AdventureWorksLT** mintaadatbázist használja az Azure SQL-hez.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
@@ -146,14 +146,14 @@ Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyis
     node sqltest.js
     ```
 
-1. Ellenőrizze, hogy az első 20 sor vissza lett-e jelenítve, és az alkalmazás ablakának lezárása.
+1. Ellenőrizze, hogy a rendszer a 20 legfontosabb sort adja-e vissza, és zárja be az alkalmazásablakot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Microsoft Node.js illesztőprogram az SQL Serverhez](/sql/connect/node-js/node-js-driver-for-sql-server)
 
-- Kapcsolat és lekérdezés Windows/Linux/macOS rendszeren [.net Core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md)vagy [SSMS](sql-database-connect-query-ssms.md) (csak Windows rendszeren)
+- Csatlakozás és lekérdezés Windows/Linux/macOS rendszeren [Visual Studio Code](sql-database-connect-query-vscode.md) [.](sql-database-connect-query-dotnet-core.md) [SSMS](sql-database-connect-query-ssms.md)
 
-- [A .NET Core használatának első lépései Windows/Linux/macOS rendszeren a parancssor használatával](/dotnet/core/tutorials/using-with-xplat-cli)
+- [A .NET Core használatának első lépései Windows/Linux/macOS rendszeren a parancssorból](/dotnet/core/tutorials/using-with-xplat-cli)
 
-- Az első Azure SQL-adatbázis megtervezése [.net](sql-database-design-first-database-csharp.md) vagy [SSMS](sql-database-design-first-database.md) használatával
+- Az első Azure SQL-adatbázis tervezése [.NET](sql-database-design-first-database-csharp.md) vagy [SSMS](sql-database-design-first-database.md) használatával

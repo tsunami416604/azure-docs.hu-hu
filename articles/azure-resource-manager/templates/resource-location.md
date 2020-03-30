@@ -1,31 +1,31 @@
 ---
-title: Sablon erőforrásának helye
-description: Útmutató az erőforrás helyének megadásához egy Azure Resource Manager sablonban.
+title: Sablon erőforrás helye
+description: Ez a témakör azt ismerteti, hogy miként állítható be az erőforrás-hely egy Azure Resource Manager-sablonban.
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156429"
 ---
-# <a name="set-resource-location-in-resource-manager-template"></a>Erőforrás helyének beállítása a Resource Manager-sablonban
+# <a name="set-resource-location-in-arm-template"></a>Erőforrás helyének beállítása az ARM sablonban
 
-Sablon telepítésekor meg kell adnia egy helyet az egyes erőforrásokhoz. A helynek nem kell ugyanazon a helyen lennie, mint az erőforráscsoport helye.
+Az Azure Resource Manager (ARM) sablon telepítésekor meg kell adnia egy helyet minden erőforráshoz. A helynek nem kell megegyeznie az erőforráscsoport helyével.
 
-## <a name="get-available-locations"></a>Elérhető helyszínek beolvasása
+## <a name="get-available-locations"></a>Elérhető helyek beszerzése
 
-A különböző típusú erőforrástípusok különböző helyszíneken támogatottak. Az erőforrástípus támogatott helyeinek beszerzéséhez használja a Azure PowerShell vagy az Azure CLI-t.
+A különböző erőforrástípusok at különböző helyeken támogatják. Egy erőforrástípus támogatott helyeinek beszerezéséhez használja az Azure PowerShell vagy az Azure CLI használatát.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az provider show \
@@ -36,11 +36,11 @@ az provider show \
 
 ---
 
-## <a name="use-location-parameter"></a>Hely paraméterének használata
+## <a name="use-location-parameter"></a>Helyparaméter használata
 
-A sablon üzembe helyezése során a rugalmasság lehetővé tételéhez használjon egy paramétert az erőforrások helyének megadásához. Állítsa `resourceGroup().location`értékre a paraméter alapértelmezett értékét.
+A sablon üzembe helyezésekor a rugalmasság érdekében egy paraméter segítségével adja meg az erőforrások helyét. Állítsa a paraméter alapértelmezett `resourceGroup().location`értékét a értékre.
 
-A következő példa egy olyan Storage-fiókot mutat be, amely paraméterként megadott helyre van telepítve:
+A következő példa egy olyan tárfiókot mutat be, amely paraméterként megadott helyre van telepítve:
 
 ```json
 {
@@ -93,7 +93,7 @@ A következő példa egy olyan Storage-fiókot mutat be, amely paraméterként m
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A sablon függvények teljes listájáért lásd: [Azure Resource Manager template functions](template-functions.md).
-* További információ a sablonfájlokről: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).
+* A sablonfüggvények teljes listáját az [Azure Resource Manager sablonfüggvényei című témakörben olvashatja.](template-functions.md)
+* A sablonfájlokról további információt [az ARM-sablonok szerkezetének és szintaxisának megismerése című témakörben talál.](template-syntax.md)

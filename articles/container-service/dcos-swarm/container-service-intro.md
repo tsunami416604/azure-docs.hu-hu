@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Docker-tároló üzemeltetése az Azure-felhőben
+title: (ELAVULT) Docker-tárolóüzemeltetés az Azure-felhőben
 description: Az Azure Container Service lehetőséget biztosít arra, hogy egyszerűbben lehessen létrehozni, konfigurálni és kezelni a virtuális gépeknek egy olyan fürtjét, amely tárolóalapú alkalmazások futtatására lett konfigurálva.
 author: rgardler
 ms.service: container-service
@@ -8,13 +8,13 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f13e3b8c861d963c2e9e0b827ba00ee6fa70d31e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76277816"
 ---
-# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>ELAVULT Bevezetés a Docker-tárolók üzemeltetési megoldásaiba Azure Container Service 
+# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(ELAVULT) Bevezetés a Docker-tárolóüzemeltetési megoldásokba az Azure Container Service szolgáltatással 
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -27,7 +27,7 @@ Az Azure Container Service a Docker tárolóformátumot használja, így biztos�
 Az Azure Container Service használatával igénybe veheti az Azure nagyvállalati szintű funkcióit, miközben továbbra is fenntartja az alkalmazás-hordozhatóságot, beleértve a vezénylési rétegek hordozhatóságát is.
 
 ## <a name="using-azure-container-service"></a>Az Azure Container Service használata
-A Azure Container Service célja, hogy olyan nyílt forráskódú eszközökkel és technológiákkal lássa el a tároló üzemeltetési környezetét, amelyek manapság népszerűek a felhasználók körében. E célból a választott vezénylő (DC/OS, Docker Swarm vagy Kubernetes) számára elérhetővé tesszük a standard API-végpontokat. E végpontokkal bármely olyan szoftvert használhat, amely képes a végpontokkal folytatott kommunikációra. Például a Docker Swarm-végpont esetében választhatja a Docker parancssori felületének használatát. DC/OS esetében dönthet a DCOS parancssori felület, a Kubernetes esetében pedig a `kubectl` használata mellett.
+Célunk az Azure Container Service, hogy egy tároló üzemeltetési környezet segítségével nyílt forráskódú eszközök és technológiák, amelyek ma népszerűek a felhasználók körében. E célból a választott vezénylő (DC/OS, Docker Swarm vagy Kubernetes) számára elérhetővé tesszük a standard API-végpontokat. E végpontokkal bármely olyan szoftvert használhat, amely képes a végpontokkal folytatott kommunikációra. Például a Docker Swarm-végpont esetében választhatja a Docker parancssori felületének használatát. DC/OS esetében dönthet a DCOS parancssori felület, a Kubernetes esetében pedig a `kubectl` használata mellett.
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Egy Docker-fürt létrehozása az Azure Container Service használatával
 Az Azure Container Service használatához üzembe kell helyeznie egy Azure Container Service-fürtöt a portálon keresztül (keressen a piactéren az **Azure Container Service** kifejezésre), illetve egy Azure Resource Manager-sablon ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) vagy [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) esetén) vagy az [Azure CLI](container-service-create-acs-cluster-cli.md) segítségével. A megadott gyorsindítási sablonok módosíthatók további vagy speciális Azure-konfigurációk belefoglalásával. Több információ: [Azure tárolószolgáltatás-fürt üzembe helyezése](container-service-deployment.md).
@@ -43,7 +43,7 @@ A DC/OS egy olyan elosztott operációs rendszer, amely az Apache Mesos elosztot
 A DC/OS és az Apache Mesos lenyűgöző szolgáltatáskészletet tesz elérhetővé:
 
 * Bizonyított méretezhetőség
-* Hibatűrő elsődleges és formátumú másodlagos zónák a Apache ZooKeeper használatával
+* Hibatűrő replikált elsődleges és másodlagos segítségével Apache ZooKeeper
 * Docker formátumú tárolók támogatása
 * Feladatok közötti natív elkülönítés Linux-tárolókkal
 * Többforrású ütemezés (memória, processzor, lemez és portok)
@@ -56,11 +56,11 @@ Alapértelmezés szerint az Azure Container Service-en futó DC/OS tartalmazza a
 
 #### <a name="using-marathon"></a>A Marathon használata
 A Marathon egy egész fürtre kiterjedő inicializáló és vezérlő rendszer cgroupokban található szolgáltatások vagy – az Azure Container Service esetében – Docker formátumú tárolók számára. A Marathon egy olyan webes felhasználói felületet biztosít, ahonnan telepítheti az alkalmazásokat. Ezt a felületet egy, a következőhöz hasonló URL-címmel érheti el: `http://DNS_PREFIX.REGION.cloudapp.azure.com`,
-ahol mind a DNS\_PREFIX, mind a REGION az üzembe helyezéskor van meghatározva. A saját DNS-nevét is megadhatja. A Marathon webes felhasználói felülete segítségével futtatott tárolóhoz kapcsolódó további információért lásd a [Tárolókezelés a webes felhasználói felületen](container-service-mesos-marathon-ui.md) című cikket.
+ahol mind a DNS\_PREFIX, mind a REGION az üzembe helyezéskor van meghatározva. Saját DNS-nevet is megadhat. A Marathon webes felhasználói felülete segítségével futtatott tárolóhoz kapcsolódó további információért lásd a [Tárolókezelés a webes felhasználói felületen](container-service-mesos-marathon-ui.md) című cikket.
 
 ![A Marathon alkalmazáslistája](media/dcos/marathon-applications-list.png)
 
-REST API-kat is használhat a Marathonnal folytatott kommunikációhoz. Számos ügyfélkódtár létezik, amelyek elérhetők minden egyes eszköz számára. Különböző nyelveket ölelnek fel, és bármilyen nyelven használhatja a HTTP protokollt. Továbbá sok népszerű DevOps-eszköz is támogatja a Marathont. Ez maximális rugalmasságot biztosít a műveleti csapatnak, amikor egy Azure Container Service-fürttel dolgozik. A Marathon REST API-k segítségével futtatott tárolóhoz kapcsolódó további információért lásd a [Tárolókezelés a REST API használatával](container-service-mesos-marathon-rest.md) című cikket.
+REST API-kat is használhat a Marathonnal folytatott kommunikációhoz. Számos ügyfélkódtár létezik, amelyek elérhetők minden egyes eszköz számára. Ezek számos nyelvet lefednek - és a HTTP protokollt bármilyen nyelven használhatja. Továbbá sok népszerű DevOps-eszköz is támogatja a Marathont. Ez maximális rugalmasságot biztosít a műveleti csapatnak, amikor egy Azure Container Service-fürttel dolgozik. A Marathon REST API-k segítségével futtatott tárolóhoz kapcsolódó további információért lásd a [Tárolókezelés a REST API használatával](container-service-mesos-marathon-rest.md) című cikket.
 
 ### <a name="using-docker-swarm"></a>A Docker Swarm használata
 A Docker Swarm natív fürtszolgáltatást biztosít a Docker számára. Mivel a Docker Swarm a standard Docker API-t szolgálja ki, minden más eszköz, amely már kommunikál a Docker-démonnal használhatja a Swarmot ahhoz, hogy több gazdagépre transzparens módon végezzen átméretezést az Azure Container Service-ben.
@@ -101,6 +101,6 @@ Alkalmazások létrehozása az Azure Container Service (2016-os build) használa
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Container Service-fürt üzembe helyezése a [portál](container-service-deployment.md) vagy az [Azure CLI](container-service-create-acs-cluster-cli.md) segítségével.

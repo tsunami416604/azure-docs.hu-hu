@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Python-alkalmazás létrehozása Linux rendszeren – Azure App Service'
+title: 'Rövid útmutató: Python-alkalmazás létrehozása Linuxon – Azure App Service'
 description: Percek alatt üzembe helyezheti első Hello World Python-alkalmazását a Linuxon futó Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -11,63 +11,63 @@ ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 01a9132f-eaab-4c
 ms.openlocfilehash: 68dc36ce96737fe8395280c3a833e359084d2fee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78246855"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rövid útmutató: Python-alkalmazás létrehozása linuxos Azure App Service-ben
 
-Ebben a rövid útmutatóban egy Python-webalkalmazást helyez üzembe a [Linuxon](app-service-linux-intro.md), az Azure rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatásának app Service. A helyi [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli) a Mac, Linux vagy Windows rendszerű számítógépeken használható. Az Ön által konfigurált webalkalmazás ingyenes App Service szintet használ, így a cikk során nem jár költségekkel.
+Ebben a rövid útmutatóban egy Python-webalkalmazást telepít az [App Service Linuxon szolgáltatásra,](app-service-linux-intro.md)az Azure nagymértékben méretezhető, önjavító webhosting szolgáltatását. A helyi [Azure parancssori felületet (CLI)](/cli/azure/install-azure-cli) Mac, Linux vagy Windows rendszerű számítógépeken használja. A konfigurált webalkalmazás egy ingyenes App Service-réteget használ, így a cikk során nem jár költségek.
 
-Ha egy IDE-n keresztül szeretné telepíteni az alkalmazásokat, tekintse [meg a Python-alkalmazások üzembe helyezése a Visual Studio Code-ból való app Service](/azure/python/tutorial-deploy-app-service-on-linux-01)című témakört.
+Ha az alkalmazásokat egy IDE-n keresztül szeretné telepíteni, olvassa [el a Python-alkalmazások telepítése az App Service szolgáltatásba a Visual Studio-kódból ..](/azure/python/tutorial-deploy-app-service-on-linux-01)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (Python 3,6 is támogatott)
+- <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 is támogatott)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
 - <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Egy terminál ablakban futtassa a következő parancsot a minta alkalmazás helyi számítógépre történő klónozásához. 
+A terminálablakban futtassa a következő parancsot a mintaalkalmazás helyi számítógépre történő klónozásához. 
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-Ezután nyissa meg a mappát:
+Akkor menj abba a mappába:
 
 ```terminal
 cd python-docs-hello-world
 ```
 
-A tárház tartalmaz egy *Application.py* -fájlt, amely azt jelzi, app Service, hogy a kód tartalmaz egy lombik alkalmazást. További információ: [tároló indítási folyamata és testreszabása](how-to-configure-python.md).
+A tárház tartalmaz egy *application.py* fájlt, amely közli az App Service-rel, hogy a kód lombik alkalmazást tartalmaz. További információt a [Tároló indítási folyamata és testreszabása című témakörben talál.](how-to-configure-python.md)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Az Azure CLI számos kényelmes parancsot biztosít, amelyeket egy helyi terminálon használhat az Azure-erőforrások parancssorból való üzembe helyezéséhez és kezeléséhez. A parancsok használatával ugyanazokat a feladatokat végezheti el, mint a böngészőben Azure Portal. Parancsfájlokban CLI-parancsokat is használhat a felügyeleti folyamatok automatizálására.
+Az Azure CLI számos kényelmes parancsot biztosít, amelyeket egy helyi terminálról az Azure-erőforrások parancssorból történő kiépítéséhez és kezeléséhez használ. A parancsok segítségével ugyanazokat a feladatokat végezheti el, mint az Azure Portalon keresztül egy böngészőben. A parancsfájlokban CLI-parancsokat is használhat a felügyeleti folyamatok automatizálásához.
 
-Az Azure-parancsok Azure CLI-ben való futtatásához először be kell jelentkeznie az `az login` parancs használatával. Ez a parancs egy böngészőt nyit meg a hitelesítő adatok összegyűjtéséhez.
+Az Azure-parancsok futtatásához az Azure CLI, `az login` először be kell jelentkeznie a paranccsal. Ez a parancs megnyit egy böngészőt a hitelesítő adatok összegyűjtéséhez.
 
 ```azurecli
 az login
 ```
 
-## <a name="deploy-the-sample"></a>A minta üzembe helyezése
+## <a name="deploy-the-sample"></a>A minta telepítése
 
-A [`az webapp up`](/cli/azure/webapp#az-webapp-up) parancs létrehozza a webalkalmazást app Service és üzembe helyezi a kódot.
+A [`az webapp up`](/cli/azure/webapp#az-webapp-up) parancs létrehozza a webalkalmazást az App Service szolgáltatásban, és telepíti a kódot.
 
-A mintakódt tartalmazó *Python-docs-Hello-World* mappában futtassa a következő `az webapp up` parancsot. Cserélje le a `<app-name>`t egy globálisan egyedi alkalmazás nevére (*érvényes karakterek: `a-z`, `0-9`és `-`* ). Emellett cserélje le a `<location-name>`t egy olyan Azure-régióra, mint például a **CentralUS**, a **eastasia**, a **westeurope**, a **koreasouth**, a **brazilsouth**, a **centralindia**stb. (A [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancs futtatásával lekérheti az Azure-fiók számára engedélyezett régiók listáját.)
+A mintakódot tartalmazó *python-docs-hello-world* mappában `az webapp up` futtassa a következő parancsot. Cserélje `<app-name>` le egy globálisan egyedi alkalmazásnévre (*érvényes karakterek `a-z`, `0-9`és `-` *a ). Cserélje `<location-name>` le az Azure-régióra is, például **a centralusra,** **az eastasia-ra,** **a westeurope-ra,** **a koreasouth-ra,** **a brazilsouth-ra,** **a centralindia-ra**és így tovább. (A parancs futtatásával lekérheti az [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) Azure-fiókjához engedélyezett régiók listáját.)
 
 
 ```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
-A parancs végrehajtása néhány percet is igénybe vehet. Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
+Ez a parancs eltarthat néhány percig a futtatás befejezéséig. Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
 
 ```output
 The behavior of this command has been altered by the following extension: webapp
@@ -98,17 +98,17 @@ All done.
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-Tallózással keresse meg az üzembe helyezett alkalmazást a webböngészőjében a `http://<app-name>.azurewebsites.net`URL-címen.
+Tallózással keresse meg az üzembe `http://<app-name>.azurewebsites.net`helyezett alkalmazást a webböngészőben az URL-címen.
 
-A Python-mintakód egy beépített rendszerképpel futtatja App Service Linux-tárolóját.
+A Python-mintakód egy Linux-tárolót futtat az App Service-ben egy beépített rendszerkép használatával.
 
 ![Minta Python-alkalmazás futtatása az Azure-ban](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
-**Gratulálunk!** Telepítette a Python-alkalmazást a Linuxon való App Service.
+**Gratulálok!** Telepítette a Python-alkalmazást az App Service Linux-on.
 
-## <a name="run-the-sample-app-locally"></a>A minta alkalmazás helyi futtatása
+## <a name="run-the-sample-app-locally"></a>A mintaalkalmazás helyi futtatása
 
-A terminál ablakban használja az alábbi parancsokat (az operációs rendszernek megfelelően) a szükséges függőségek telepítéséhez és a beépített fejlesztői kiszolgáló elindításához. 
+A terminálablakban az alábbi parancsokkal (az operációs rendszernek megfelelően) telepítse a szükséges függőségeket, és indítsa el a beépített fejlesztői kiszolgálót. 
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
@@ -120,7 +120,7 @@ FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -142,93 +142,93 @@ flask run
 
 ---
 
-Nyisson meg egy webböngészőt, és nyissa meg a minta alkalmazást a következő címen: `http://localhost:5000/`. Az alkalmazás a következő üzenetet jeleníti meg: **"Helló világ!" alkalmazás!** .
+Nyisson meg egy webböngészőt, `http://localhost:5000/`és nyissa meg a mintaalkalmazást a helyen. Az alkalmazás megjeleníti az üzenetet **Hello World!**.
 
-![Egy minta Python-alkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
+![Python-mintaalkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
-A terminál ablakban nyomja le a **Ctrl**+**C** billentyűkombinációt a webkiszolgálóból való kilépéshez.
+A terminálablakban nyomja le a**Ctrl C** **billentyűt**+a webkiszolgálóból való kilépéshez.
 
 ## <a name="redeploy-updates"></a>Frissítések újratelepítése
 
-A kedvenc szerkesztőprogramban nyissa meg a *Application.py* , és módosítsa az utolsó sor `return` utasítását, hogy az megfeleljen a következő kódnak. A `print` utasítás itt található a következő szakaszban használt naplózási kimenet létrehozásához. 
+A kedvenc kódszerkesztőben nyissa meg `return` *application.py,* és módosítsa az utolsó sorban lévő utasítást úgy, hogy megfeleljen a következő kódnak. Az `print` utasítás itt található a következő szakaszban végzett naplózási kimenet létrehozásához. 
 
 ```python
 print("Handling request to home page.")
 return "Hello Azure!"
 ```
 
-Mentse a módosításokat, és zárja be a szerkesztőt. 
+Mentse a módosításokat, és lépjen ki a szerkesztőből. 
 
-Telepítse újra az alkalmazást az alábbi `az webapp up` parancs használatával, ugyanazzal a paranccsal, amelyet az alkalmazás első alkalommal történő üzembe helyezéséhez használt, a `<app-name>` és a `<location-name>` helyett a korábban használt nevekkel. 
+Telepítse újra az alkalmazást `az webapp up` a következő paranccsal, ugyanazt a parancsot `<app-name>` `<location-name>` használva, amelyet az alkalmazás első üzembe helyezéséhez használt, és a korábban használt neveket helyettesítve. 
 
 ```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
-Az üzembe helyezés befejezését követően váltson vissza a `http://<app-name>.azurewebsites.net` böngészőablakra, és frissítse az oldalt, amely a módosított üzenetet jeleníti meg:
+A telepítés befejezése után váltson vissza `http://<app-name>.azurewebsites.net` a megnyitott böngészőablakra, és frissítse a lapot, amelynek meg kell jelenítenie a módosított üzenetet:
 
-![Frissített minta Python-alkalmazás futtatása az Azure-ban](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
+![Frissített Python-mintaalkalmazás futtatása az Azure-ban](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
 > [!TIP]
-> A Visual Studio Code hatékony bővítményeket biztosít a Python és a Azure App Service számára, ami leegyszerűsíti a Python-webalkalmazások App Serviceba való üzembe helyezésének folyamatát. További információ: [Python-alkalmazások üzembe helyezése a Visual Studio Code-ból App Service](/azure/python/tutorial-deploy-app-service-on-linux-01).
+> A Visual Studio Code hatékony bővítményeket biztosít a Python és az Azure App Service számára, amelyek leegyszerűsítik a Python-webalkalmazások appservice-be való üzembe helyezésének folyamatát. További információ: [Python-alkalmazások telepítése az App Service szolgáltatásba a Visual Studio-kódból](/azure/python/tutorial-deploy-app-service-on-linux-01)című témakörben talál.
 
 ## <a name="stream-logs"></a>Naplók streamelése
 
-Elérheti az alkalmazáson belül létrehozott konzol naplóit, valamint azt a tárolót, amelyben a fut. A naplók a `print` utasítások használatával generált kimeneteket tartalmazzák.
+Az alkalmazáson belülről és a tárolóból létrehozott konzolnaplók at érheti el. A naplók tartalmazzák az `print` utasítások használatával létrehozott kimeneteket.
 
-Először kapcsolja be a tároló naplózását úgy, hogy futtatja a következő parancsot egy terminálon, és lecseréli `<app-name>` az alkalmazás nevére, és `<resource-group-name>` a használt `az webapp up` parancs kimenetében látható erőforráscsoport nevével (például "appsvc_rg_Linux_centralus"):
+Először kapcsolja be a tárolónaplózást úgy, `<app-name>` hogy a következő parancsot futtatja egy terminálon, és lecseréli az alkalmazás nevét és `<resource-group-name>` a használt `az webapp up` parancs kimenetében látható erőforráscsoport nevét (például "appsvc_rg_Linux_centralus"):
 
 ```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
-Miután bekapcsolta a tároló-naplózást, futtassa a következő parancsot a log stream megjelenítéséhez:
+A tárolónaplózás bekapcsolása után futtassa a következő parancsot a naplófolyam megjelenítéséhez:
 
 ```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
-Frissítse az alkalmazást a böngészőben a konzol naplófájljainak létrehozásához, amelyeknek az alábbi szöveghez hasonló vonalakat kell tartalmazniuk. Ha nem látja el azonnal a kimenetet, próbálkozzon újra 30 másodperc múlva.
+Frissítse az alkalmazást a böngészőben konzolnaplók létrehozásához, amelyeknek a következő szöveghez hasonló sorokat kell tartalmazniuk. Ha nem látja azonnal a kimenetet, próbálkozzon újra 30 másodperc en belül.
 
 ```output
 2019-10-23T12:40:03.815574424Z Handling request to home page.
 2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
 ```
 
-A naplófájlokat a böngészőben is ellenőrizheti `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
+A naplófájlokat a böngészőből `https://<app-name>.scm.azurewebsites.net/api/logs/docker`is megtekintheti a(.
 
-Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a következőt: `Ctrl`+`C`.
+Ha bármikor le szeretné állítani `Ctrl` + `C`a naplóstreamelést, írja be a következőt:
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> . Keresse meg és válassza ki a **app Services**.
+Nyissa meg az <a href="https://portal.azure.com" target="_blank">Azure Portalon</a> a létrehozott alkalmazás kezeléséhez. Keresse meg és válassza **az App Services**lehetőséget.
 
-![Navigáljon App Services a Azure Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
+![Navigálás az App Services szolgáltatásra az Azure Portalon](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 
 Válassza ki az Azure-alkalmazás nevét.
 
-![Navigáljon a Python-alkalmazáshoz App Services a Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
+![Keresse meg a Python-alkalmazást az App Servicesben az Azure Portalon](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
+Megjelenik az alkalmazás áttekintése lap. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 
-![A Python-alkalmazás kezelése a Azure Portal Áttekintés oldalán](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
+![A Python-alkalmazás kezelése az Azure Portal Áttekintés lapján](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
-A App Service menü különböző lapokat biztosít az alkalmazás konfigurálásához.
+Az App Service menü különböző oldalakat biztosít az alkalmazás konfigurálásához.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve például "appsvc_rg_Linux_CentralUS", a tartózkodási helytől függően. Ha az ingyenes F1-es csomagtól eltérő App Service SKU-t használ, ezek az erőforrások folyamatos költségekkel járnak.
+Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve a tartózkodási helytől függően "appsvc_rg_Linux_CentralUS" . Ha az ingyenes F1 szinttől eltérő App Service Termékváltozatot használ, ezek az erőforrások folyamatos költségekkel járnak.
 
-Ha nem szeretné, hogy a jövőben is szükség lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a következő parancs futtatásával, és cserélje le a `<resource-group-name>`t az `az webapp up` parancs kimenetében látható erőforráscsoporthoz, például: "appsvc_rg_Linux_centralus". A parancs végrehajtása egy percet is igénybe vehet.
+Ha a jövőben nem várható, hogy szükség lesz ezekre az erőforrásokra, `<resource-group-name>` törölje az erőforráscsoportot a `az webapp up` következő parancs futtatásával, és cserélje le a parancs kimenetében látható erőforráscsoportra, például "appsvc_rg_Linux_centralus". A parancs egy percig is eltarthat.
 
 ```azurecli
 az group delete -n <resource-group-name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
+> [Oktatóanyag: Python (Django) webalkalmazás a PostgreSQL-rel](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Python-alkalmazás konfigurálása](how-to-configure-python.md)

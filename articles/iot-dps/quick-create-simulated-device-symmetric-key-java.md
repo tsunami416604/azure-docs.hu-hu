@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – szimmetrikus kulcs használata szimulált eszköz Azure-IoT Hub való kiépítéséhez Java használatával
-description: Ebben a rövid útmutatóban a Java eszközoldali SDK-val létrehoz egy szimulált eszközt, amely szimmetrikus kulcsot használ az Azure IoT Hub Device Provisioning Service (DPS) használatával
+title: Gyorsútmutató – Szimmetrikus kulcs használata szimulált eszköz kiépítése az Azure IoT Hubba Java használatával
+description: Ebben a rövid útmutatóban a Java-eszköz SDK-t fogja használni egy szimulált eszköz létrehozásához, amely szimmetrikus kulcsot használ az Azure IoT Hub eszközkiépítési szolgáltatással (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/30/2020
@@ -10,17 +10,17 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76941401"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat eszközszimulátort a Windows rendszerű fejlesztői gépeken. Ezt a szimulált eszközt úgy konfigurálja, hogy szimmetrikus kulcs használatával hitelesítse az eszközt a kiépítési szolgáltatás (DPS) példányával, és hozzá legyen rendelve egy IoT hubhoz. A [Microsoft Azure IoT SDK-k Javához](https://github.com/Azure/azure-iot-sdk-java) készült mintakód az üzembe helyezést kezdeményező eszköz rendszerindítási sorrendjének szimulálására szolgál. Az eszköz felismerése a DPS szolgáltatási példánnyal való egyéni regisztráció és egy IoT hub számára történik.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat eszközszimulátort a Windows rendszerű fejlesztői gépeken. Ezt a szimulált eszközt úgy fogja konfigurálni, hogy egy szimmetrikus kulcsot használjon az eszközkiépítési szolgáltatás (DPS) példányával való hitelesítéshez, és egy IoT hubhoz legyen rendelve. A Rendszer a [Microsoft Azure IoT Java SDK-k](https://github.com/Azure/azure-iot-sdk-java) jától származó mintakódot használ a kiépítést kezdeményező eszköz rendszerindítási sorrendjének szimulálására. Az eszköz egy DPS-szolgáltatáspéldánysal való egyéni regisztráció alapján lesz felismerve, és egy IoT-központhoz rendelve.
 
-Bár ez a cikk azt mutatja be, hogy a kiépítés egyedi regisztrációval történt, beléptetési csoportokat is használhat. A regisztrációs csoportok használata néhány eltérést is igénybe vehet. Például egy származtatott eszköz kulcsát kell használnia az eszköz egyedi regisztrációs azonosítójával. Bár a szimmetrikus kulcsot használó regisztrációs csoportok nem csak örökölt eszközök esetében használhatóak, a [Szimmetrikus kulcsok használata örökölt eszközök kiépítéséhez](how-to-legacy-device-symm-key.md) című cikk példája jól szemlélteti a regisztrációs csoportok használatát. További információért lásd: [Csoportos beléptetés használata szimmetrikus kulcsú igazolásnál](concepts-symmetric-key-attestation.md#group-enrollments)
+Bár ez a cikk bemutatja az egyéni beléptetési kiépítést, használhatja a regisztrációs csoportokat. A regisztrációs csoportok használata kor van néhány különbség. Például egy származtatott eszközkulcsot kell használnia, amely egyedi regisztrációs azonosítóval van elhasználva az eszközhöz. Bár a szimmetrikus kulcsot használó regisztrációs csoportok nem csak örökölt eszközök esetében használhatóak, a [Szimmetrikus kulcsok használata örökölt eszközök kiépítéséhez](how-to-legacy-device-symm-key.md) című cikk példája jól szemlélteti a regisztrációs csoportok használatát. További információért lásd: [Csoportos beléptetés használata szimmetrikus kulcsú igazolásnál](concepts-symmetric-key-attestation.md#group-enrollments)
 
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. 
 
@@ -34,7 +34,7 @@ A cikk során egy Windows-alapú munkaállomást fogunk használni. Azonban az e
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Győződjön meg arról, hogy a [Java SE Development Kit 8](https://aka.ms/azure-jdks) vagy újabb verziója telepítve van a gépen.
+* Győződjön meg arról, hogy a [Java SE Development Kit 8](https://aka.ms/azure-jdks) vagy újabb készlet telepítve van a számítógépen.
 
 * Töltse le és telepítse a [Mavent](https://maven.apache.org/install.html).
 
@@ -51,52 +51,52 @@ A cikk során egy Windows-alapú munkaállomást fogunk használni. Azonban az e
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
-3. Navigáljon a root `azure-iot-sdk-java` könyvtárba, és hozza létre a projektet az összes szükséges csomag letöltéséhez.
+3. Keresse meg `azure-iot-sdk-java` a gyökérkönyvtárat, és építse fel a projektet az összes szükséges csomag letöltéséhez.
    
    ```cmd/sh
    cd azure-iot-sdk-java
    mvn install -DskipTests=true
    ```
 
-## <a name="create-a-device-enrollment"></a>Eszközök regisztrálásának létrehozása
+## <a name="create-a-device-enrollment"></a>Eszközregisztráció létrehozása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza a bal oldali menüben az **összes erőforrás** gombot, és nyissa meg az eszköz kiépítési szolgáltatásának (DPS) példányát.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)válassza a bal oldali menü **Minden erőforrás** gombját, és nyissa meg az Eszközkiépítési szolgáltatás (DPS) példányát.
 
-2. Válassza a **regisztrációk kezelése** fület, majd válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
+2. Válassza a **Regisztrációk kezelése** lapot, majd a lista tetején az **Egyéni beléptetés hozzáadása** gombot. 
 
-3. A **beléptetés hozzáadása** panelen adja meg a következő adatokat, majd kattintson a **Save (Mentés** ) gombra.
+3. A **Beiktatás hozzáadása** panelen adja meg az alábbi adatokat, és nyomja meg a **Mentés** gombot.
 
    - **Eljárás**: Identitásazonosító *eljárásnak* válassza a **Szimmetrikus kulcs** lehetőséget.
 
-   - **Kulcsok automatikus generálása**: jelölje be ezt a jelölőnégyzetet.
+   - **Billentyűk automatikus generálása**: Jelölje be ezt a jelölőnégyzetet.
 
-   - **Regisztrációs azonosító**: Adja meg a regisztráció azonosításra szolgáló Regisztrációs azonosítót. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például: **Symm-Key-Java-Device-007**.
+   - **Regisztrációs azonosító**: Adja meg a regisztráció azonosításra szolgáló Regisztrációs azonosítót. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például **symm-key-java-device-007**.
 
-   - **IoT Hub-eszközazonosító**: Adjon meg egy eszközazonosítót. Például: **Java-Device-007**.
+   - **IoT Hub-eszközazonosító**: Adjon meg egy eszközazonosítót. **Például, java-device-007**.
 
      ![Egyéni regisztráció hozzáadása szimmetrikus kulcsú igazoláshoz a Portalon](./media/quick-create-simulated-device-symm-key-java/create-individual-enrollment-java.png)
 
-4. Miután mentette a regisztrációt, a rendszer létrehozza az **elsődleges kulcsot** és a **másodlagos kulcsot** , és hozzáadja a beléptetési bejegyzéshez. A szimmetrikus kulcsú eszközök beléptetése az *Egyéni* *regisztrációk lap regisztrációs azonosító* oszlopában, a **Symm-Key-Java-Device-007** néven jelenik meg. 
+4. Miután mentette a regisztrációt, az **elsődleges kulcs** és a **másodlagos kulcs** jön létre, és hozzáadódik a regisztrációs bejegyzéshez. A szimmetrikus kulcseszköz-regisztráció **symm-key-java-device-007** néven jelenik meg az *Egyéni regisztrációk* lap *Regisztrációs azonosító* oszlopában. 
 
-    Nyissa meg a regisztrációt, és másolja ki a generált **Elsődleges kulcsot**. Ezt a kulcs értéket és a **regisztrációs azonosítót** később fogja használni, amikor frissíti az eszközhöz tartozó Java-kódot.
+    Nyissa meg a regisztrációt, és másolja ki a generált **Elsődleges kulcsot**. Ezt a kulcsértéket és a **regisztrációs azonosítót** később fogja használni, amikor frissíti az eszköz Java-kódját.
 
 
 
 <a id="firstbootsequence"></a>
 
-## <a name="simulate-device-boot-sequence"></a>Eszköz rendszerindítási sorrendjének szimulálása
+## <a name="simulate-device-boot-sequence"></a>Eszközrendszerindítási sorrend szimulálása
 
-Ebben a szakaszban frissíteni fogja az eszköz mintakód az eszköz rendszerindítási sorrendjének a DPS-példányba való küldéséhez. Ez a rendszerindítási folyamat azt eredményezi, hogy az eszköz felismeri, hitelesítve van, és hozzá van rendelve egy IoT hubhoz, amely a DPS-példánnyal van társítva.
+Ebben a szakaszban frissíteni fogja az eszköz mintakódját, hogy az eszköz rendszerindítási sorrendje elküldésre kerüljön a DPS-példányba. Ez a rendszerindítási sorozat hatására az eszköz fellesz ismert, hitelesítve lesz, és a DPS-példányhoz kapcsolódó IoT hubhoz lesz hozzárendelve.
 
-1. Az eszközök kiépítési szolgáltatásának menüjében válassza az **Áttekintés** lehetőséget, és jegyezze fel az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_.
+1. Az Eszközkiépítési szolgáltatás **menüben** válassza az Áttekintés lehetőséget, és jegyezze fel az _azonosító hatókörét_ és _a kiépítési szolgáltatás globális végpontját._
 
     ![Szolgáltatás adatai](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
-2. A Java-eszköz mintakód megnyitása szerkesztéshez. Az eszköz mintakód teljes elérési útja:
+2. Nyissa meg a Java-eszköz mintakódját szerkesztésre. Az eszköz mintakódjának teljes elérési útja a következő:
 
     `azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningSymmetricKeySampleSample.java`
 
-   - Adja hozzá a DPS-példány _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_ . Adja meg az elsődleges szimmetrikus kulcsot és az egyéni regisztrációhoz választott regisztrációs azonosítót is. Mentse a módosításokat. 
+   - Adja hozzá az _azonosító hatókörés_ _a kiépítési szolgáltatás globális végpontja_ a DPS-példány. Az elsődleges szimmetrikus kulcsot és az egyéni regisztrációhoz kiválasztott regisztrációs azonosítót is tartalmazza. Mentse a módosításokat. 
 
       ```java
         private static final String SCOPE_ID = "[Your scope ID here]";
@@ -105,13 +105,13 @@ Ebben a szakaszban frissíteni fogja az eszköz mintakód az eszköz rendszerind
         private static final String REGISTRATION_ID = "[Enter your Registration ID here]";
       ```
 
-3. Nyisson meg egy parancssort a létrehozáshoz. Navigáljon a Java SDK-tárház kiépítési minta projekt mappájához.
+3. Nyisson meg egy parancssort az építéshez. Keresse meg a kiépítési minta projekt mappáját a Java SDK-tárház.
 
     ```cmd/sh
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample
     ```
 
-4. Hozza létre a mintát, majd navigáljon a `target` mappához a létrehozott. jar fájl végrehajtásához.
+4. Készítse el a `target` mintát, majd keresse meg a mappát a létrehozott .jar fájl végrehajtásához.
 
     ```cmd/sh
     mvn clean install
@@ -132,7 +132,7 @@ Ebben a szakaszban frissíteni fogja az eszköz mintakód az eszköz rendszerind
       Message received! Response status: OK_EMPTY
     ```
 
-6. Az Azure Portalon lépjen a kiépítési szolgáltatáshoz csatolt IoT hubhoz, és nyissa meg a **Device Explorer** (Eszközkereső) panelt. Miután sikeresen kiépítte a szimulált szimmetrikus kulcsú eszközt a központba, az eszköz azonosítója megjelenik a **Device Explorer** panelen, az *állapota* pedig **engedélyezett**.  Előfordulhat, hogy a felső **frissítés** gombra kell kattintania, ha már megnyitotta a panelt a minta eszköz futtatása előtt. 
+6. Az Azure Portalon lépjen a kiépítési szolgáltatáshoz csatolt IoT hubhoz, és nyissa meg a **Device Explorer** (Eszközkereső) panelt. Miután sikeresen kiépítette a szimulált szimmetrikus kulcseszközt a hubra, az eszközazonosítója megjelenik az **Eszközkezelő** panelen, és a *STATUS is* **engedélyezve van.**  Előfordulhat, hogy meg kell **nyomnia** a frissítés gombot a tetején, ha már kinyitotta a panelt a mintaeszköz-alkalmazás futtatása előtt. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 
@@ -143,15 +143,15 @@ Ebben a szakaszban frissíteni fogja az eszköz mintakód az eszköz rendszerind
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldali mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
+Ha azt tervezi, hogy folytatja a munkát, és vizsgálja meg az eszköz ügyfél minta, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem tervezi a folytatást, az alábbi lépésekkel törölje az összes olyan erőforrást, amelyet ez a rövid útmutató hozott létre.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
-1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációinak kezelése** elemet, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
-1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközöket** a központhoz, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
+1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** t, majd válassza ki az Eszközkiépítési szolgáltatást. Nyissa **meg a szolgáltatás regisztrációinak kezelése** lehetőséget, majd válassza az Egyéni *REGISTRATION ID* **Delete** **regisztrációk** lapot. 
+1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** lehetőséget, majd válassza ki az IoT-központot. Nyissa meg a hub **IoT-eszközeit,** jelölje be a rövid útmutatóban regisztrált eszköz *ESZKÖZazonosítója* melletti jelölőnégyzetet, majd nyomja meg a **Törlés** gombot az ablaktábla tetején.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozta a szimulált eszközt a Windows rendszerű gépen, és kiépíti azt az IoT hub-ba a portálon található Azure-IoT Hub Device Provisioning Service szimmetrikus kulcs használatával. Az eszköz programozott módon történő regisztrálásának megismeréséhez folytassa az X. 509 eszközök programozott regisztrálására szolgáló rövid útmutatóval. 
+Ebben a rövid útmutatóban létrehozott egy szimulált eszközt a Windows-gépen, és kiépítette azt az IoT hubra szimmetrikus kulccsal az Azure IoT Hub-eszközkiépítési szolgáltatással a portálon. Ha meg szeretné tudni, hogyan regisztrálhatja az eszközt programozott módon, folytassa az X.509-es eszközök programozott regisztrációjának rövid útmutatójával. 
 
 > [!div class="nextstepaction"]
-> [Azure rövid útmutató – X. 509 eszközök regisztrálása az Azure-ba IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)
+> [Azure-gyorsútmutató – X.509-es eszközök regisztrálása az Azure IoT Hub-eszközkiépítési szolgáltatásra](quick-enroll-device-x509-java.md)

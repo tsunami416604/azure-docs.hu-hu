@@ -1,22 +1,22 @@
 ---
-title: Rövid útmutató – blob létrehozása a PowerShell-lel
+title: Gyorsútmutató – Blob létrehozása a PowerShell használatával
 titleSuffix: Azure Storage
 description: Ebben a rövid útmutatóban az Azure PowerShell használatával kezelheti az objektumtárat (blobtárat). Majd a PowerShell segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664252"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061400"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a PowerShell-lel
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Gyorsútmutató: Blobok feltöltése, letöltése és listázása a PowerShell használatával
 
 Az Azure PowerShell-modullal létrehozhat és kezelhet Azure-erőforrásokat. Az Azure-erőforrások létrehozása és kezelése végrehajtható a PowerShell-parancsból vagy szkriptekkel. Ez az útmutató a fájloknak a helyi lemez és az Azure Blob Storage közötti, a PowerShell-lel történő átvitelét ismerteti.
 
@@ -24,11 +24,11 @@ Az Azure PowerShell-modullal létrehozhat és kezelhet Azure-erőforrásokat. Az
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Storage eléréséhez Azure-előfizetésre lesz szüksége. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
+Az Azure Storage eléréséhez szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik előfizetéssel, akkor a kezdés előtt hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ehhez a rövid útmutatóhoz a Azure PowerShell modul az 0,7-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+Ehhez a rövid útmutatóhoz az Azure PowerShell-modul, az Az 0.7-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -47,9 +47,9 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. Az IaaS típusú virtuális gépek biztonsági mentéséhez használt VHD-fájlok lapblobok. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A blobtárolókban tárolt fájlok a legtöbb esetben blokkblobok. 
 
-Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, majd a blokkblob hivatkozását az adott tárolóban. A blob-hivatkozás után az adatok a [set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent)használatával tölthetők fel. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja azt, ha már igen.
+Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, majd a blokkblob hivatkozását az adott tárolóban. Miután rendelkezik a blob hivatkozással, adatokat tölthet fel a [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent)használatával. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja azt, ha már igen.
 
-Az alábbi példák az *Image001.jpg* és *Image002.png* képet töltik fel a helyi lemez *D:\\_TestImages* mappájából a létrehozott tárolóba.
+A következő példák feltölteni *Image001.jpg* és *Image002.png* a *D:\\_TestImages* mappát a helyi lemezen a létrehozott tárolóba.
 
 ```powershell
 # upload a file
@@ -69,7 +69,7 @@ Mielőtt továbblépne, töltsön fel annyi fájlt, amennyit csak szeretne.
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Szerezze be a tárolóban lévő Blobok listáját a [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob)használatával. A példában csak a feltöltött blobok neve látható.
+A [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob)használatával a tárolóban lévő blobok listájának beszereznie. A példában csak a feltöltött blobok neve látható.
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -77,9 +77,9 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>Blobok letöltése
 
-Töltse le a blobokat a helyi lemezre. Minden letölteni kívánt blob esetében állítsa be a [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) nevet, és hívja le a blobot.
+Töltse le a blobokat a helyi lemezre. Minden letölteni kívánt blobhoz állítsa be a nevet, és hívja meg a [Get-AzStorageBlobContent metódust](/powershell/module/az.storage/get-AzStorageblobcontent) a blob letöltéséhez.
 
-A példában a blobok a helyi lemez *D:\\_TestImages\Downloads* mappájába lesznek letöltve. 
+Ez a példa letölti a blobokat *D:\\_TestImages\Letöltések* a helyi lemezen. 
 
 ```powershell
 # download first blob
@@ -97,9 +97,9 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Adatátvitel az AzCopy használatával
 
-A AzCopy parancssori segédprogram nagy teljesítményű, parancsfájl-továbbítást biztosít az Azure Storage-hoz. A AzCopy használatával adatok vihetők át a blob Storage-ba és a Azure Filesba. A AzCopy legújabb verziójával kapcsolatos további információkért lásd: AzCopy v10, a [AzCopy első lépései](../common/storage-use-azcopy-v10.md). Az AzCopy v10 blob Storage-mel történő használatáról további információt az [adatok átvitele a AzCopy és a blob Storage](../common/storage-use-azcopy-blobs.md)szolgáltatással című témakörben talál.
+Az AzCopy parancssori segédprogram nagy teljesítményű, parancsfájlalapú adatátvitelt kínál az Azure Storage számára. Az AzCopy segítségével adatokat vihet át a Blob storage és az Azure Files. Az AzCopy legújabb verziójáról, az AzCopy programmal kapcsolatos további tudnivalókért olvassa el az AzCopy – Első lépések az [AzCopy programot című témakört.](../common/storage-use-azcopy-v10.md) Az AzCopy v10 blobtármal való használatáról az [Adatok átvitele az AzCopy és a Blob storage használatával (Átvitel az AzCopy és a Blob storage) témakörben](../common/storage-use-azcopy-blobs.md)olvashat.
 
-A következő példa a AzCopy-t használja egy helyi fájl blobba való feltöltéséhez. Ne felejtse el lecserélni a minták értékeit a saját értékeire:
+A következő példa az AzCopy segítségével feltölt egy helyi fájlt egy blobba. Ne felejtse el helyettesíteni a mintaértékeket a saját értékeivel:
 
 ```powershell
 azcopy login
@@ -114,7 +114,7 @@ Távolítsa el az összes létrehozott adategységet. Az adategységek eltávol�
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban fájlokat vitt át egy helyi lemez és az Azure Blob Storage között. Ha bővebb információra van szüksége a Blob Storage és a PowerShell használatával kapcsolatban, lépjen tovább az Azure PowerShell és az Azure Storage használatáról szóló oktatóanyagra.
 

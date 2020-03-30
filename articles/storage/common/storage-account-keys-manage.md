@@ -1,7 +1,7 @@
 ---
 title: A fiók hozzáférési kulcsainak kezelése
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan tekintheti meg, kezelheti és forgathatja el a Storage-fiók hozzáférési kulcsait.
+description: Ismerje meg, hogyan tekintheti meg, kezelheti és forgathatja a tárfiók hozzáférési kulcsait.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,51 +9,51 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
 ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75975788"
 ---
-# <a name="manage-storage-account-access-keys"></a>A Storage-fiók hozzáférési kulcsainak kezelése
+# <a name="manage-storage-account-access-keys"></a>Tárfiók hozzáférési kulcsainak kezelése
 
-A Storage-fiók létrehozásakor az Azure 2 512 bites Storage-fiókhoz tartozó hozzáférési kulcsokat hoz létre. Ezek a kulcsok a Storage-fiókban lévő adathozzáférés engedélyezésére használhatók a megosztott kulcsos hitelesítésen keresztül.
+Amikor létrehoz egy tárfiókot, az Azure két 512 bites tárfiók-hozzáférési kulcsot hoz létre. Ezek a kulcsok a tárfiókban lévő adatokhoz való hozzáférés engedélyezésére használhatók a megosztott kulcs engedélyezése révén.
 
-A Microsoft azt javasolja, hogy a Azure Key Vault segítségével kezelje a hozzáférési kulcsokat, és hogy rendszeresen elforgatja és újragenerálja a kulcsokat. A Azure Key Vault használata megkönnyíti a kulcsok elforgatását az alkalmazásokkal való megszakítás nélkül. Manuálisan is elforgathatja a kulcsokat.
+A Microsoft azt javasolja, hogy az Azure Key Vault használatával kezelje a hozzáférési kulcsokat, és rendszeresen forgassa el és forgassa újra a kulcsokat. Az Azure Key Vault használatával egyszerűen elforgathatja a kulcsokat az alkalmazások megszakítása nélkül. A billentyűket manuálisan is elforgathatja.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-access-keys-and-connection-string"></a>Hozzáférési kulcsok és kapcsolati karakterláncok megtekintése
+## <a name="view-access-keys-and-connection-string"></a>Hozzáférési kulcsok és kapcsolati karakterlánc megtekintése
 
 [!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
-## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>A Azure Key Vault használata a hozzáférési kulcsok kezeléséhez
+## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>A hozzáférési kulcsok kezelése az Azure Key Vault használatával
 
-A Microsoft azt javasolja, hogy a Azure Key Vault segítségével kezelje és forgassa el a hozzáférési kulcsokat. Az alkalmazás képes biztonságosan hozzáférni a kulcsaihoz Key Vaultban, így elkerülhető az alkalmazás kódjának tárolása. A kulcskezelő Key Vault használatáról a következő cikkekben talál további információt:
+A Microsoft azt javasolja, hogy az Azure Key Vault használatával kezelje és forgassa el a hozzáférési kulcsokat. Az alkalmazás biztonságosan hozzáférhet a kulcsaihoz a Key Vaultban, így elkerülheti azok tárolását az alkalmazáskóddal. A Key Vault kulcskezeléshez való használatáról az alábbi cikkekben talál további információt:
 
-- [A Storage-fiók kulcsainak kezelése a Azure Key Vault és a PowerShell használatával](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [A Storage-fiók kulcsainak kezelése a Azure Key Vault és az Azure CLI használatával](../../key-vault/key-vault-ovw-storage-keys.md)
+- [Tárfiók-kulcsok kezelése az Azure Key Vault és a PowerShell használatával](../../key-vault/key-vault-overview-storage-keys-powershell.md)
+- [Tárfiók-kulcsok kezelése az Azure Key Vault és az Azure CLI segítségével](../../key-vault/key-vault-ovw-storage-keys.md)
 
-## <a name="manually-rotate-access-keys"></a>Hozzáférési kulcsok manuális elforgatása
+## <a name="manually-rotate-access-keys"></a>Hozzáférési billentyűk manuális elforgatása
 
-A Microsoft azt javasolja, hogy rendszeres időközönként elforgatni a hozzáférési kulcsokat a Storage-fiók biztonságának megőrzése érdekében. Ha lehetséges, használja a Azure Key Vault a hozzáférési kulcsok kezeléséhez. Ha nem Key Vault használ, manuálisan kell elforgatnia a kulcsokat.
+A Microsoft azt javasolja, hogy rendszeresen forgassa el a hozzáférési kulcsokat a tárfiók biztonságának megőrzése érdekében. Ha lehetséges, használja az Azure Key Vault a hozzáférési kulcsok kezeléséhez. Ha nem használja a Key Vaultot, manuálisan kell elforgatnia a kulcsokat.
 
-Két hozzáférési kulcs van hozzárendelve, hogy el lehessen forgatni a kulcsokat. A két kulcs biztosítja, hogy az alkalmazás a folyamat során fenntartsa az Azure Storage-hoz való hozzáférést.
+Két hozzáférési kulcs van hozzárendelve, így elforgathatja a kulcsokat. Két kulcs biztosítja, hogy az alkalmazás a folyamat során is fenntartja az Azure Storage-hoz való hozzáférést.
 
 > [!WARNING]
-> A hozzáférési kulcsok újragenerálása hatással lehet bármely olyan alkalmazásra vagy Azure-szolgáltatásra, amely a Storage-fiók kulcsával függ. Minden olyan ügyfelet, amely a fiók kulcsát használja a Storage-fiók eléréséhez, frissíteni kell az új kulcs használatára, beleértve a Media Servicest, a felhőt, az asztali és a mobil alkalmazásokat, valamint az Azure Storage-hoz készült grafikus felhasználói felületi alkalmazásokat, például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+> A hozzáférési kulcsok újragenerálása hatással lehet minden olyan alkalmazásra vagy Azure-szolgáltatásra, amely a tárfiók kulcsától függ. Minden olyan ügyfelet, amely a fiókkulcsot használja a tárfiók eléréséhez, frissíteni kell az új kulcs használatához, beleértve a médiaszolgáltatásokat, a felhőalapú, asztali és mobilalkalmazásokat, valamint az Azure Storage grafikus felhasználói felületi alkalmazásait, például az [Azure Storage Explorert.](https://azure.microsoft.com/features/storage-explorer/)
 
-Kövesse ezt a folyamatot a Storage-fiók kulcsainak elforgatásához:
+Kövesse ezt a folyamatot a tárfiók kulcsainak elforgatásához:
 
-1. Frissítse a kapcsolódási karakterláncokat az alkalmazás kódjában a másodlagos kulcs használatához.
-2. Generálja újra a tárfiók elsődleges elérési kulcsát. A Azure Portal **hozzáférési kulcsok** paneljén kattintson a **Key1 újragenerálása**elemre, majd az **Igen** gombra kattintva erősítse meg, hogy új kulcsot szeretne generálni.
+1. Frissítse az alkalmazáskódban lévő kapcsolati karakterláncokat a másodlagos kulcs használatához.
+2. Generálja újra a tárfiók elsődleges elérési kulcsát. Az **Azure** Portalon az Access Keys panelen kattintson a **Kulcs újragenerálása1**, majd az **Igen** gombra annak megerősítéséhez, hogy új kulcsot szeretne létrehozni.
 3. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
 4. Hasonló módon generálja újra a másodlagos elérési kulcsot.
 
 > [!NOTE]
-> A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken és a 2. kulcsban az 1. kulcsot használja másokban, nem fogja tudni elforgatni a kulcsokat anélkül, hogy egy alkalmazás elveszíti a hozzáférést.
+> A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken az 1-es kulcsot, másokban a 2-es kulcsot használja, akkor nem tudja elforgatni a billentyűket anélkül, hogy néhány alkalmazás elveszítené a hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure Storage-fiók áttekintése](storage-account-overview.md)
+- [Azure storage-fiók – áttekintés](storage-account-overview.md)
 - [Tárfiók létrehozása](storage-account-create.md)

@@ -9,54 +9,54 @@ ms.date: 12/31/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: abbde0cb8137650faad563248c8fafe7dc0f469a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75564820"
 ---
-Azure IoT Edge egyik fő funkciója, hogy a felhőből üzembe helyezhet egy kódot a IoT Edge-eszközökön. **IoT Edge modulok** tárolóként megvalósított végrehajtható csomagok. Ebben a szakaszban egy előre összeállított modult helyezünk üzembe az [Azure Marketplace IoT Edge-modulok szakaszával](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) közvetlenül az azure-IoT hub.
+Az Azure IoT Edge egyik legfontosabb képessége, hogy képes kódot telepíteni az IoT Edge-eszközök a felhőből. **Az IoT Edge-modulok** tárolóként megvalósított végrehajtható csomagok. Ebben a szakaszban egy előre elkészített modult telepít [az Azure Piactér IoT Edge-modulok szakaszából](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) közvetlenül az Azure IoT Hubból.
 
-Az ebben a szakaszban üzembe helyezett modul szimulál egy érzékelőt, és a generált adatokat küldi el. Ez a modul hasznos kódrészlet, ha első lépések a IoT Edgehoz, mivel a szimulált adat a fejlesztéshez és a teszteléshez használható. Ha pontosan látni szeretné a modult, akkor megtekintheti a [szimulált hőmérséklet-érzékelő forráskódját](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs).
+Az ebben a szakaszban üzembe helyezett modul egy érzékelőt szimulál, és generált adatokat küld. Ez a modul egy hasznos kód, amikor az IoT Edge, mert a szimulált adatok fejlesztési és tesztelési használhatja. Ha azt szeretné, hogy pontosan mit csinál ez a modul, megtekintheti a [szimulált hőmérséklet-érzékelő forráskódját](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs).
 
-Az első modul Azure piactéren való üzembe helyezéséhez kövesse az alábbi lépéseket:
+Az első modul azure-piactérről történő üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az IoT-központot.
 
-1. A bal oldali ablaktábla menüjének **automatikus eszközkezelés**területén válassza a **IoT Edge**lehetőséget.
+1. A bal oldali ablaktábla **Automatikus eszközkezelés**területén válasszuk az **IoT Edge**lehetőséget.
 
-1. Kattintson a céleszköz eszközének AZONOSÍTÓJÁRA az eszközök listájából.
+1. Kattintson a céleszköz eszközazonosítójára az eszközök listájából.
 
-1. A felső sávon válassza a **modulok beállítása**lehetőséget.
+1. A felső sávon válassza a **Modulok beállítása**lehetőséget.
 
-1. A lap **IoT Edge modulok** szakaszában kattintson a **Hozzáadás**gombra.
+1. A lap **IoT Edge Modulok** szakaszában kattintson a **Hozzáadás**gombra.
 
-1. A legördülő menüben válassza a **piactér modul**elemet.
+1. A legördülő menüben válassza a **Piactérmodul lehetőséget.**
 
    ![Simulated Temperature Sensor az Azure Portal-keresésben](./media/iot-edge-deploy-module/search-for-temperature-sensor.png)
 
-1. A **IoT Edge modul Marketplace**-en keressen rá a "szimulált hőmérséklet-érzékelő" kifejezésre, és válassza ki a modult.
+1. Az **IoT Edge module marketplace-en**keressen a "Szimulált hőmérséklet-érzékelő" kifejezésre, és válassza ki azt a modult.
 
-1. Figyelje meg, hogy a SimulatedTemperatureSensor modul automatikusan ki van töltve. Az oktatóanyagokban ezen a lapon további modulokat adhat hozzá az üzembe helyezéshez. Ebben a rövid útmutatóban csak egy modult telepítsen. Nem szükségesek hitelesítő adatok, mert nyilvánosak.
+1. Figyelje meg, hogy a SimulatedTemperatureSensor modul automatikusan ki van töltve. Az oktatóanyagokban ezen a lapon további modulokat adhat hozzá a központi telepítéshez. Ehhez a rövid útmutatóhoz csak ezt az egy modult telepítse. Nincs szükség hitelesítő adatokra, mert nyilvános.
 
    ![Modulok beállítása az eszközön](./media/iot-edge-deploy-module/set-modules-on-device.png)
 
-   Válassza a **tovább lehetőséget: útvonalakat** a varázsló következő lépéséhez.
+   Válassza a **Tovább: Útvonalak lehetőséget** a varázsló következő lépéséhez.
 
-1. A varázsló **útvonalak** lapján megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve. A gyors üzembe helyezéshez az összes modul összes üzenetét szeretné IoT Hub (`$upstream`). Ha nincs automatikusan feltöltve, adja hozzá a következő kódot a **név** **értékéhez** `upstream`:
+1. A varázsló **Útvonalak** lapján megadhatja, hogy a modulok és az IoT Hub hogyan továbbítsa az üzeneteket. Az üzenetek név-érték párok használatával készülnek. A rövid útmutató, azt szeretné, hogy az összes üzenet`$upstream`az összes modult, hogy az IoT Hub ( ). Ha nincs automatikusan feltöltve, adja hozzá a következő kódot a **Név értékéhez:** `upstream` **Value**
 
    ```sql
     FROM /messages/* INTO $upstream
    ```
 
-   Válassza a **Next (tovább): felülvizsgálat + létrehozás** lehetőséget a varázsló következő lépésének folytatásához.
+   Válassza a **Tovább: Véleményezés + létrehozás** lehetőséget a varázsló következő lépéséhez.
 
-1. A varázsló **Áttekintés + létrehozás** lapján megtekintheti a IoT Edge eszközre telepített összes modult meghatározó JSON-fájlt. Figyelje meg, hogy a **SimulatedTemperatureSensor** modult tartalmazza, valamint két további, **edgeAgent** és **edgeHub**nevű rendszermodult. Ha végzett a megtekintéssel, válassza a **Létrehozás** lehetőséget.
+1. A **varázsló Véleményezés + létrehozás** lapján megtekintheti a JSON-fájlt, amely meghatározza az IoT Edge-eszközre üzembe helyezett összes modult. Figyelje meg, hogy a **SimulatedTemperatureSensor** modul is megtalálható, és két további rendszermodul, az **edgeAgent** és **az edgeHub.** Válassza a **Létrehozás lehetőséget,** ha végzett a véleményezésével.
 
-   Amikor egy új üzemelő példányt küld egy IoT Edge-eszközre, semmi sem kerül az eszközre. Ehelyett az eszköz rendszeresen lekérdezi az IoT Hubról az új utasításokat. Ha az eszköz egy frissített központi telepítési jegyzéket talál, az az új központi telepítés információit használja a modul rendszerképeinek a felhőből való lekéréséhez, majd elindítja a modulok helyi futtatását. Ez a folyamat néhány percet is igénybe vehet.
+   Amikor egy új üzemelő példányt küld egy IoT Edge-eszközre, semmi sem kerül az eszközre. Ehelyett az eszköz rendszeresen lekérdezi az IoT Hubról az új utasításokat. Ha az eszköz egy frissítettüzembe helyezési jegyzéket talál, felhasználja az új üzemelő példányra vonatkozó információt a modul lemezképeinek felhőből történő adatkiszolgálásához, majd elindítja a modulok helyi futtatását. Ez a folyamat eltarthat néhány percig.
 
-1. Miután létrehozta a modul központi telepítésének részleteit, a varázsló visszaadja az IoT hub **IoT Edge** lapjára. A részletek megtekintéséhez válassza ki az eszközt a IoT Edge-eszközök listájából.
+1. A modul üzembe helyezésének részleteinek létrehozása után a varázsló visszaadja az **IoT Edge-lap** az IoT hub. A részletek megtekintéséhez válassza ki az eszközt a IoT Edge-eszközök listájából.
 
-1. Az eszköz adatai lapon görgessen le a **modulok** lapra. Három modulnak kell szerepelnie: $edgeAgent, $edgeHub és SimulatedTemperatureSensor. Ha egy vagy több modul a központi telepítésben megadott módon van felsorolva, de az eszköz nem jelentett, akkor a IoT Edge eszköz továbbra is el lesz indítva. Várjon néhány percet, és válassza a **frissítés** lehetőséget az oldal tetején.
+1. Az eszköz részleteit tartalmazó lapon görgessen le a **Modulok** lapra. Három modult kell felsorolni: $edgeAgent, $edgeHub és SimulatedTemperatureSensor. Ha egy vagy több modul szerepel a központi telepítésben megadott, de az eszköz által nem jelentett, az IoT Edge-eszköz továbbra is elindítja őket. Várjon néhány percet, és válassza a **frissítés** lehetőséget a lap tetején.
 
-   ![SimulatedTemperatureSensor megtekintése az üzembe helyezett modulok listájában](./media/iot-edge-deploy-module/deployed-modules-marketplace.png)
+   ![A SimulatedTemperatureSensor megtekintése a telepített modulok listájában](./media/iot-edge-deploy-module/deployed-modules-marketplace.png)

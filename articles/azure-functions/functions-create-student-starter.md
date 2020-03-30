@@ -1,29 +1,29 @@
 ---
-title: Függvény létrehozása az Azure diákoknak kezdőknek
-description: Ismerje meg, hogyan hozhat létre Azure-függvényt egy Azure-beli Student Starter-előfizetés keretében
+title: Funkció létrehozása az Azure diákoknak kezdővel
+description: Ismerje meg, hogyan hozhat létre Azure-függvényt egy Azure for Student Starter-előfizetésből
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75921135"
 ---
-# <a name="create-a-function-using-azure-for-students-starter"></a>Függvény létrehozása az Azure diákoknak kezdőknek
+# <a name="create-a-function-using-azure-for-students-starter"></a>Funkció létrehozása az Azure diákoknak kezdővel
 
-Ebben az oktatóanyagban létrehozunk egy "Hello World" HTTP-függvényt egy Azure diákoknak kezdő előfizetéshez. Az előfizetéshez tartozó Azure Functions elérhetővé tételeit is megismerheti.
+Ebben az oktatóanyagban egy "hello world" HTTP-függvényt hozunk létre egy Azure for Students Starter-előfizetésben. Azt is végigvezetjük, hogy mi érhető el az Azure Functions ben ebben az előfizetési típusban.
 
-A Microsoft *Azure diákoknak kezdő* csomaggal a felhőben való fejlesztéshez szükséges Azure-termékeket ingyenesen elsajátíthatja. [Ebben az ajánlatban itt találhat további információt.](https://azure.microsoft.com/offers/ms-azr-0144p/)
+A Microsoft *Azure diákoknak kezdővel* kezdheti meg az Azure-termékeket, amelyeket a felhőben való fejlesztéshez ingyenesen kell fejlesztenie. [Az ajánlatról itt olvashat bővebben.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
-Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. [További információ a functions szolgáltatásról.](./functions-overview.md)
+Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. [A Funkciókról itt olvashat bővebben.](./functions-overview.md)
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
- Ebből a témakörből megtudhatja, hogyan használhatók a függvények a HTTP által aktivált "Hello World" függvény létrehozásához a Azure Portal.
+ Ebben a témakörben megtudhatja, hogyan használhatja a Functions egy HTTP-aktivált "hello world" függvény az Azure Portalon.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
@@ -33,9 +33,9 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen az Azur
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
+Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás lehetővé teszi a függvények logikai egységként történő csoportosítását az erőforrások egyszerűbb kezelése, üzembe helyezése, méretezése és megosztása érdekében.
 
-1. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombot. Ezután válassza a **számítási** > **függvényalkalmazás**lehetőséget.
+1. Válassza az **Erőforrás létrehozása** gomb található az Azure Portal bal felső sarkában. Ezután válassza **a Számítási** > **függvény alkalmazást**.
 
     ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -48,15 +48,15 @@ Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának
     | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: `a-z`, `0-9` és `-`.  | 
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. | 
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
-   | **[App Service csomag/hely](./functions-scale.md)** | Új | A üzemeltetési terv, amely azt szabályozza, hogy a Function alkalmazás mely régiót helyezi üzembe, és az erőforrások sűrűségét. Az ugyanarra a csomagra telepített több Function-alkalmazás mindegyike ugyanazzal az ingyenes példánnyal fog osztozni. Ez a Student Starter-terv korlátozása. [Itt részletesen ismertetjük](./functions-scale.md) a teljes üzemeltetési lehetőségeket.|
+   | **[App Service-csomag/hely](./functions-scale.md)** | Új | Az üzemeltetési terv, amely szabályozza, hogy a függvényalkalmazás milyen régióban van telepítve, és az erőforrások sűrűsége. Az ugyanabban a csomagban telepített több függvényalkalmazás ugyanazt az egyetlen szabad példányt fogja megosztani. Ez a Student Starter terv korlátozása. A teljes tárhely lehetőségek [itt ismertetik.](./functions-scale.md)|
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
-    |**[Application Insights](./functions-monitoring.md)**| Engedélyezve | Application Insights a függvény alkalmazás naplófájljainak tárolására és elemzésére szolgál. Alapértelmezés szerint engedélyezve van, ha olyan helyet választ, amely támogatja a Application Insights. Application Insights bármely függvényhez engedélyezhető, ha manuálisan kiválasztja a közeli régiót Application Insights üzembe helyezéséhez. Application Insights nélkül csak az élő adatfolyam-naplókat fogja tudni megtekinteni.
+    |**[Alkalmazáselemzési adatok](./functions-monitoring.md)**| Engedélyezve | Az Application Insights a függvényalkalmazás naplóinak tárolására és elemzésére szolgál. Alapértelmezés szerint engedélyezve van, ha olyan helyet választ, amely támogatja az Application Insights.It is enabled by default if you choose a location that supports Application Insights. Az Application Insights bármely funkcióhoz engedélyezhető, ha manuálisan kiválaszt egy közeli régiót az Application Insights üzembe helyezéséhez. Az Application Insights nélkül csak az élő streamelési naplók at tekintheti meg.
 
-3. Válassza a fenti **app Service terv/hely** lehetőséget egy másik hely kiválasztásához
+3. Válassza ki a fenti **App Service-csomag/Hely** lehetőséget egy másik hely kiválasztásához
 
-4. Válassza az **új létrehozása** lehetőséget, majd adjon meg egy egyedi nevet a tervnek.
+4. Válassza **az Új létrehozása lehetőséget,** majd adjon egyedi nevet a tervnek.
 
-5. Válassza ki az Önhöz legközelebb eső helyet. [Itt megtekintheti az Azure-régiók teljes térképét.](https://azure.microsoft.com/global-infrastructure/regions/) 
+5. Válassza ki az Önhöz legközelebb eső helyet. [Tekintse meg az Azure-régiók teljes térképét itt.](https://azure.microsoft.com/global-infrastructure/regions/) 
 
     <img src="./media/functions-create-student-starter/Create-ASP.png" width="800">
 
@@ -72,9 +72,9 @@ Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának
 
 Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
-## <a name="create-function"></a>HTTP által aktivált függvény létrehozása
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>HTTP által aktivált függvény létrehozása
 
-1. Bontsa ki az új függvényalkalmazást, majd kattintson a **Függvények** elem melletti **+** gombra, és válassza a **Portálba épített**, majd a **Folytatás** lehetőséget.
+1. Bontsa ki az új **+** függvényalkalmazást, majd kattintson a **Funkciók**gomb, válassza a **Portálon**lehetőséget, és válassza a **Folytatás**lehetőséget.
 
     ![Függvény rövid útmutatója – platform kiválasztása](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
@@ -108,29 +108,29 @@ Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="supported-features-in-azure-for-students-starter"></a>Az Azure diákoknak kezdőknek támogatott szolgáltatásai
+## <a name="supported-features-in-azure-for-students-starter"></a>Támogatott funkciók az Azure diákoknak kezdőben
 
-Az Azure diákoknak kezdőknek hozzáférése van a Azure Functions futtatókörnyezet legtöbb funkciójának nagy részéhez, és több, az alábbiakban felsorolt kulcsfontosságú korlátozással rendelkezik:
+Az Azure diákoknak kezdőként alkalmazásban hozzáférhet az Azure Functions futásidejű funkcióinak többségéhez, az alábbiakban felsorolt számos kulcsfontosságú korlátozással:
 
-* A HTTP-trigger az egyetlen támogatott trigger-típus.
-    * Minden bemenet és minden kimeneti kötés támogatott! [Itt tekintheti meg a teljes listát.](functions-triggers-bindings.md)
+* A HTTP-eseményindító az egyetlen támogatott eseményindító típus.
+    * Minden bemeneti és kimeneti kötés támogatott! [Lásd a teljes listát itt.](functions-triggers-bindings.md)
 * Támogatott nyelvek: 
-    * C#(.NET Core 2)
-    * JavaScript (node. js 8 & 10)
-    * F#(.NET Core 2)
-    * [A magasabb csomagokban támogatott nyelveket itt tekintheti meg](supported-languages.md)
+    * C# (.NET Core 2)
+    * JavaScript (Node.js 8 & 10)
+    * F# (.NET Core 2)
+    * [Lásd támogatott nyelvek magasabb tervek itt](supported-languages.md)
 * A Windows az egyetlen támogatott operációs rendszer.
-* A skála egy ingyenes, legfeljebb 60 percet futtató, napi szinten üzemelő [példányra](https://azure.microsoft.com/pricing/details/app-service/windows/) korlátozódik. A rendszer automatikusan 0 – 1 példányra serverlessly a HTTP-forgalom fogadása után, de még nem.
-* Csak a functions futtatókörnyezet [2. x vagy újabb verziója](functions-versions.md) támogatott.
-* Az összes fejlesztői szerszámozás támogatott szerkesztési és közzétételi függvények esetén. Ide tartozik a VS Code, a Visual Studio, az Azure CLI és a Azure Portal. Ha a portálon kívül bármilyen más eszközt szeretne használni, először létre kell hoznia egy alkalmazást a portálon, majd az alkalmazást központi telepítési célként kell kiválasztania az előnyben részesített eszközön.
+* A skálázás naponta legfeljebb 60 percig futó [ingyenes rétegpéldányra](https://azure.microsoft.com/pricing/details/app-service/windows/) korlátozódik. A HTTP-forgalom fogadásakor kiszolgáló nélküli skálázás0-ról 1 példányra lesz méretezve, de nem tovább.
+* Csak a Functions futásidejű [2.x-es és újabb](functions-versions.md) verziója támogatott.
+* Minden fejlesztői eszköz támogatott a szerkesztési és közzétételi funkciókhoz. Ez magában foglalja a VS-kód, a Visual Studio, az Azure CLI és az Azure Portal. Ha a portálon kívül mást szeretne használni, először létre kell hoznia egy alkalmazást a portálon, majd ki kell választania az alkalmazást központi telepítési célként a kívánt eszközben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Létrehozta a Function alkalmazást egy egyszerű HTTP-triggerrel rendelkező függvénnyel. Most már megismerheti a helyi eszközöket, a több nyelvet, a figyelést és az integrációt.
+Létrehozott egy függvényalkalmazást egy egyszerű HTTP-aktivált funkcióval! Most már felfedezheti a helyi eszközök, több nyelven, a monitoring, és az integrációk.
 
  * [Az első függvény létrehozása a Visual Studio használatával](./functions-create-your-first-function-visual-studio.md)
  * [Az első függvény létrehozása a Visual Studio Code használatával](./functions-create-first-function-vs-code.md)
- * [Azure Functions JavaScript fejlesztői útmutató](./functions-reference-node.md)
- * [Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz](./functions-scenario-database-table-cleanup.md)
- * [További információ a Azure FUNCTIONS http-kötésekről](./functions-bindings-http-webhook.md).
- * [A Azure Functions figyelése](./functions-monitoring.md)
+ * [Az Azure Functions JavaScript fejlesztői útmutatója](./functions-reference-node.md)
+ * [Azure Functions használata azure SQL-adatbázishoz való csatlakozáshoz](./functions-scenario-database-table-cleanup.md)
+ * [További információ az Azure Functions HTTP-kötéseiről.](./functions-bindings-http-webhook.md)
+ * [Az Azure-függvények figyelése](./functions-monitoring.md)

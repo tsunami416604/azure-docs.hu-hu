@@ -1,29 +1,33 @@
 ---
-title: A Node. js használata a Azure Database for PostgreSQL-egyetlen kiszolgálóhoz való kapcsolódáshoz
-description: Ez a rövid útmutató egy Node. js-kódrészletet tartalmaz, amellyel összekapcsolhatók és lekérhető Azure Database for PostgreSQL – egyetlen kiszolgálóról származó adatok lekérdezése.
+title: A Node.js fájl használata a PostgreSQL Azure Database for PostgreSQL - Single Server szolgáltatáshoz való csatlakozáshoz
+description: Ez a rövid útmutató egy Node.js kódmintát biztosít, amelyekkel adatokat csatlakoztathat az Azure Database for PostgreSQL – Single Server szolgáltatásból.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.custom:
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: ca3a8bb093e81404da638ff869e05b5a4626626e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774836"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80062262"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Node. js használatával kapcsolódhat és lekérdezheti Azure Database for PostgreSQL – egyetlen kiszolgáló
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: A Node.js használatával adatokat csatlakoztathat és kérdezhessen le az Azure Database for PostgreSQL - Single Server szolgáltatásban
 
-Ebben a rövid útmutatóban egy Node. js-alkalmazással csatlakozhat egy Azure Database for PostgreSQLhoz. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
+Ebben a rövid útmutatóban egy Azure Database for PostgreSQL-hez egy Node.js alkalmazás használatával csatlakozhat. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- A rövid útmutató befejezése [: hozzon létre egy Azure Database for PostgreSQL kiszolgálót a Azure Portal vagy a](quickstart-create-server-database-portal.md) rövid útmutatóban [: hozzon létre egy Azure Database for POSTGRESQL az Azure CLI használatával](quickstart-create-server-database-azure-cli.md).
+- A [rövid útmutató befejezése: Hozzon létre egy Azure Database for PostgreSQL-kiszolgálót az Azure Portalon](quickstart-create-server-database-portal.md) vagy a [Rövid útmutatóban: Hozzon létre egy Azure Database for PostgreSQL-t az Azure CLI használatával.](quickstart-create-server-database-azure-cli.md)
 
 - [Node.js](https://nodejs.org)
 
@@ -43,11 +47,11 @@ npm list
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a létrehozott kiszolgálót (például **mydemoserver**).
+1. Az [Azure Portalon](https://portal.azure.com/)keresse meg és válassza ki a létrehozott kiszolgálót (például **a mydemoservert).**
 
-1. A kiszolgáló **Áttekintés** paneljén jegyezze fel a **kiszolgáló nevét** és a **rendszergazdai felhasználónevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+1. A kiszolgáló **áttekintése** panelen jegyezze fel a **kiszolgáló nevét** és **a rendszergazdai felhasználónevet.** Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
 
-   ![Azure Database for PostgreSQL a kapcsolatok karakterlánca](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+   ![Azure Database for PostgreSQL kapcsolati karakterlánc](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>A JavaScript-kód futtatása a Node.js-ben
 A Node.js-t elindíthatja a Bash felületről, a Terminal eszközből vagy a Windows parancssorból a `node` parancs beírásával. Ezután a JavaScript-kód interaktív futtatásához másolja és illessze be azt a promptba. Másik megoldásként el is mentheti a JavaScript-kódot az adott szövegfájlba, majd a futtatáshoz végezze el a `node filename.js` indítását a paraméterként megadott fájlnévvel.
@@ -247,6 +251,6 @@ function queryDatabase() {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure-titkosítás áttekintése | Microsoft Docs
-description: Az Azure különböző titkosítási lehetőségeinek megismerése
+title: Azure titkosítás áttekintése | Microsoft dokumentumok
+description: További információ az Azure különböző titkosítási lehetőségeiről
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,197 +15,197 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5d8fd578c5539c83e37a232d8425ad8bdf22129b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243535"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125050"
 ---
-# <a name="azure-encryption-overview"></a>Az Azure encryption áttekintése
+# <a name="azure-encryption-overview"></a>Azure-titkosítás – áttekintés
 
-Ez a cikk áttekintést nyújt a titkosítás használatáról Microsoft Azureban. A titkosítás főbb területeit fedi le, beleértve a inaktív titkosítást, a repülés közbeni titkosítást és a Azure Key Vaultsal való kulcskezelő felügyeletet. Minden szakasz részletesebb információkra mutató hivatkozásokat tartalmaz.
+Ez a cikk áttekintést nyújt arról, hogyan használják a titkosítást a Microsoft Azure-ban. Ez magában foglalja a főbb titkosítási területeket, beleértve az inaktív titkosítást, a repülés közbeni titkosítást és a kulcskezelést az Azure Key Vault segítségével. Minden szakasz részletesebb információkra mutató hivatkozásokat tartalmaz.
 
-## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
+## <a name="encryption-of-data-at-rest"></a>Az inaktív adatok titkosítása
 
-A nyugalmi állapotban lévő adatok olyan információkat tartalmaznak, amelyek a fizikai adathordozón található állandó tárolóban találhatók, bármilyen digitális formátumban. Az adathordozó tartalmazhat mágneses vagy optikai adathordozón található fájlokat, archivált adatokat és az adatok biztonsági másolatait. Microsoft Azure különféle adattárolási megoldásokat kínál a különböző igények kielégítéséhez, többek között fájl-, lemez-, blob-és Table Storage-szolgáltatásokhoz. A Microsoft emellett titkosítást is biztosít [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos db](../../data-factory/introduction.md)és Azure Data Lake védelemmel.
+A nyugalmi állapotban lévő adatok olyan információkat tartalmaznak, amelyek a fizikai adathordozón, bármilyen digitális formátumban állandó tárolóban találhatók. Az adathordozó tartalmazhat mágneses vagy optikai adathordozón lévő fájlokat, archivált adatokat és adatbiztonsági mentéseket. A Microsoft Azure számos adattárolási megoldást kínál a különböző igényeknek megfelelően, beleértve a fájlokat, a lemezt, a blobot és a táblatárolást. A Microsoft titkosítást is biztosít az [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), az Azure [Cosmos DB](../../data-factory/introduction.md)és az Azure Data Lake védelme érdekében.
 
-Az inaktív adatok titkosítása a szolgáltatott szoftver (SaaS), a szolgáltatásként nyújtott platform (IaaS) és az infrastruktúra-szolgáltatás (Cloud models) között érhető el. Ez a cikk az Azure titkosítási beállításainak használatának megkönnyítésére szolgáló forrásokat összegzi és biztosítja.
+Az inaktív adatok titkosítása elérhető a szolgáltatások szolgáltatások szolgáltatásként (SaaS), platform szolgáltatásként (PaaS) és infrastruktúra szolgáltatásként (IaaS) felhőmodellek szolgáltatások hoz érhető el. Ez a cikk összegzi és erőforrásokat biztosít az Azure titkosítási beállításainak használatához.
 
-A REST-beli adatok Azure-ban való titkosításának részletes ismertetését lásd: [Azure-beli adatok titkosítása – Rest](encryption-atrest.md).
+Az inaktív adatok Azure-beli titkosításának részletesebb, az [Azure Data Encryption-at-In](encryption-atrest.md)című témakörében.
 
 ## <a name="azure-encryption-models"></a>Azure titkosítási modellek
 
-Az Azure különböző titkosítási modelleket támogat, beleértve a kiszolgálóoldali titkosítást, amely a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat használja Key Vault vagy az ügyfél által felügyelt kulcsokat az ügyfél által vezérelt hardveren. Az ügyféloldali titkosítással a helyszíni vagy egy másik biztonságos helyen kezelheti és tárolhatja a kulcsokat.
+Az Azure támogatja a különböző titkosítási modellek, beleértve a kiszolgálóoldali titkosítást használó szolgáltatás által felügyelt kulcsok, ügyfél által felügyelt kulcsok key vault, vagy az ügyfél által felügyelt kulcsok az ügyfél által vezérelt hardver. Az ügyféloldali titkosítással kezelheti és tárolhatja a kulcsokat a helyszínen vagy egy másik biztonságos helyen.
 
 ### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
 
 Az ügyféloldali titkosítás az Azure-on kívül történik. A következőket tartalmazza:
 
-- Az ügyfél adatközpontjában vagy szolgáltatásalkalmazás által futtatott alkalmazás által titkosított adatforgalom.
-- Az Azure által fogadott, már titkosított adatforgalom.
+- Az ügyfél adatközpontjában futó alkalmazás vagy egy szolgáltatásalkalmazás által titkosított adatok.
+- Az Azure által immár titkosított adatok.
 
-Az ügyféloldali titkosítással a felhőalapú szolgáltatók nem férnek hozzá a titkosítási kulcsokhoz, és nem tudják visszafejteni ezeket az adatfájlokat. A kulcsok teljes körű vezérlését megtarthatja.
+Az ügyféloldali titkosítással a felhőszolgáltatók nem férnek hozzá a titkosítási kulcsokhoz, és nem tudják visszafejteni ezeket az adatokat. Ön tartja fenn a kulcsok teljes irányítását.
 
 ### <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
 
-A három kiszolgálóoldali titkosítási modell különböző kulcskezelő jellemzőket kínál, amelyeket az igényei szerint választhat:
+A három kiszolgálóoldali titkosítási modell különböző kulcskezelési jellemzőket kínál, amelyek et az igényeinek megfelelően választhat:
 
-- **Szolgáltatás által felügyelt kulcsok**: az alacsony terhelésű felügyelet és kényelem kombinációját biztosítja.
+- **Szolgáltatás által felügyelt kulcsok**: A vezérlés és a kényelem kombinációját biztosítja az alacsony terheléssel.
 
-- **Ügyfél által felügyelt kulcsok**: lehetővé teszi a kulcsok vezérlését, beleértve a saját kulcsok használatát (BYOK), vagy újakat is létrehozhat.
+- **Ügyfél által felügyelt kulcsok**: Ön ellenőrzi a kulcsokat, beleértve a Bring Your Own Keys (BYOK) támogatást, vagy lehetővé teszi, hogy újakat hozzon létre.
 
-- **Szolgáltatás által felügyelt kulcsok az ügyfél által vezérelt hardverben**: lehetővé teszi, hogy a Microsoft vezérlőn kívül a védett adattárban lévő kulcsokat kezelje. Ezt a tulajdonságot a saját kulcs (HYOK) neve tárolja. Azonban a konfiguráció összetett, és a legtöbb Azure-szolgáltatás nem támogatja ezt a modellt.
+- **Szolgáltatás által felügyelt kulcsok az ügyfél által vezérelt hardverben:** Lehetővé teszi a kulcsok kezelését a saját tárházban, a Microsoft ellenőrzésén kívül. Ezt a jellemzőt a Host Your Own Key (HYOK) (HOST Your Own Key) (HOST Your Own Key) (HOST Your Own Key) (HOST Your Own Key) ( A konfiguráció azonban összetett, és a legtöbb Azure-szolgáltatás nem támogatja ezt a modellt.
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+### <a name="azure-disk-encryption"></a>Azure lemeztitkosítás
 
-A Windows-és Linux-alapú virtuális gépeket az [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)használatával biztosíthatja, amely a [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) Technology és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) segítségével védi az operációs rendszer lemezeit és adatlemezeit teljes kötet titkosítással.
+A Windows és Linux virtuális gépek az [Azure lemeztitkosítással](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)védhetik meg a [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) technológiát és a Linux [DM-Crypt technológiát](https://en.wikipedia.org/wiki/Dm-crypt) az operációs rendszer lemezei és az adatlemezek teljes kötettitkosítással történő védelmére.
 
-A titkosítási kulcsok és a titkos kódok védelme a [Azure Key Vault-előfizetésben](../../key-vault/key-vault-overview.md)történik. A Azure Backup szolgáltatás használatával biztonsági mentést készíthet és visszaállíthatja a titkosítási kulcs (KEK) konfigurációját használó titkosított virtuális gépeket (VM).
+A titkosítási kulcsokat és a titkos kulcsokat az [Azure Key Vault-előfizetés](../../key-vault/key-vault-overview.md)védi. Az Azure Backup szolgáltatás használatával biztonsági másolatot készíthet és visszaállíthat a kulcstitkosítási kulcs (KEK) konfigurációját használó titkosított virtuális gépekről (VM-ek).
 
-### <a name="azure-storage-service-encryption"></a>Azure-Storage Service Encryption
+### <a name="azure-storage-service-encryption"></a>Azure storage-szolgáltatás titkosítása
 
-Az Azure Blob Storage-ban tárolt adatok és az Azure-fájlmegosztás a kiszolgálóoldali és az ügyféloldali helyzetekben is titkosítható.
+Az Azure Blob storage és az Azure fájlmegosztások in-in tárolt adatok kiszolgálóoldali és ügyféloldali forgatókönyvekben is titkosíthatók.
 
-Az [Azure Storage Service encryption (SSE)](../../storage/common/storage-service-encryption.md) képes automatikusan titkosítani az adataikat a tárolás előtt, és a lekéréskor automatikusan visszafejti az adataikat. A folyamat teljes mértékben átlátható a felhasználók számára. A Storage Service Encryption 256 bites [Advanced Encryption Standard (AES) titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ, amely az egyik legerősebb blokk titkosítási algoritmus. Az AES transzparens módon kezeli a titkosítást, a visszafejtést és a kulcsok felügyeletét.
+[Az Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) automatikusan titkosítja az adatokat, mielőtt azok tárolása, és automatikusan visszafejti az adatokat, amikor beolvassa. A folyamat teljesen átlátható a felhasználók számára. A Storage Service Encryption 256 bites [Advanced Encryption Standard (AES) titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ, amely az egyik legerősebb blokktitkosítás. Az AES transzparens módon kezeli a titkosítást, a visszafejtést és a kulcskezelést.
 
-### <a name="client-side-encryption-of-azure-blobs"></a>Az Azure-Blobok ügyféloldali titkosítása
+### <a name="client-side-encryption-of-azure-blobs"></a>Az Azure-blobok ügyféloldali titkosítása
 
-Az Azure-Blobok ügyféloldali titkosítását többféleképpen is elvégezheti.
+Az Azure-blobok ügyféloldali titkosítását különböző módokon hajthathatja végre.
 
-Az Azure Storage ügyféloldali kódtára a .NET NuGet-csomaghoz az ügyfélalkalmazások adatait az Azure Storage-ba való feltöltés előtt titkosíthatja.
+Az Azure Storage Client Library for .NET NuGet csomag használatával titkosíthatja az adatokat az ügyfélalkalmazásokon belül, mielőtt feltöltené azokat az Azure storage-ba.
 
-Ha többet szeretne megtudni az Azure Storage ügyféloldali kódtára és a .NET NuGet-csomag letöltéséről, tekintse meg a következőt: [Windows Azure Storage 8.3.0](https://www.nuget.org/packages/WindowsAzure.Storage).
+Ha többet szeretne megtudni az Azure Storage Client Library for .NET NuGet csomagról, és letöltheti azAzure Storage Client Library for .NET NuGet csomagot, olvassa el a [Windows Azure Storage 8.3.0 című témakört.](https://www.nuget.org/packages/WindowsAzure.Storage)
 
-Ha Key Vault használatával ügyféloldali titkosítást használ, a rendszer az adatokat az Azure Storage ügyféloldali SDK-val létrehozott egyszeri szimmetrikus Content encryption Key (CEK) használatával titkosítja. A CEK titkosítási kulcs (KEK) használatával van titkosítva, amely szimmetrikus kulcs vagy aszimmetrikus kulcspár lehet. Kezelheti helyileg, vagy tárolhatja Key Vaultban. Ezt követően a rendszer feltölti a titkosított fájlokat az Azure Storage-ba.
+Ha ügyféloldali titkosítást használ a Key Vault használatával, az adatok egy egyszeri szimmetrikus tartalomtitkosítási kulcs (CEK) használatával titkosítva lesz, amelyet az Azure Storage-ügyfél SDK generál. A CEK kulcstitkosítási kulcs (KEK) használatával van titkosítva, amely lehet szimmetrikus kulcs vagy aszimmetrikus kulcspár. Kezelheti helyileg, vagy tárolhatja a Key Vaultban. A titkosított adatok at majd feltölti az Azure Storage.The encrypted data is then uploaded to Azure Storage.
 
-Ha többet szeretne megtudni az Key Vault-vel való ügyféloldali titkosításról és az útmutató útmutatásának megismeréséről, tekintse meg a következőt [: oktatóanyag: Blobok titkosítása és visszafejtése az Azure Storage-ban Key Vault használatával](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
+Ha többet szeretne tudni az ügyféloldali titkosításról a Key Vault használatával, és ismerkedjen meg az útmutatóval, olvassa el [az Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Storage-ban a Key Vault használatával.](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
-Végül az Azure Storage ügyféloldali kódtár használatával is elvégezheti az ügyféloldali titkosítást, mielőtt feltölti az Azure Storage-ba, és visszafejti az adatokra, amikor letölti az ügyfelet. Ez a függvénytár támogatja a Storage-fiókok kulcsának felügyeletéhez [Key Vault](https://azure.microsoft.com/services/key-vault/) integrációt is.
+Végül az Azure Storage Client Library for Java használatával is végrehajthatja az ügyféloldali titkosítást, mielőtt adatokat töltene fel az Azure Storage-ba, és visszafejtheti az adatokat, amikor letölti az ügyfélre. Ez a könyvtár is támogatja a [Key Vault](https://azure.microsoft.com/services/key-vault/) a tárfiók kulcskezelése integráció.
 
-### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Inaktív adatok titkosítása Azure SQL Database
+### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Inaktív adatok titkosítása az Azure SQL Database segítségével
 
-A [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) egy általános célú, az Azure-ban található, olyan struktúrákat támogató adatbázis-szolgáltatás, mint például a viszonyítási adat, a JSON, a térbeli és az XML. A SQL Database támogatja a kiszolgálóoldali titkosítást a transzparens adattitkosítás (TDE) szolgáltatással és az ügyféloldali titkosítással az Always Encrypted funkció használatával.
+[Az Azure SQL Database](../../sql-database/sql-database-technical-overview.md) egy általános célú relációs adatbázis-szolgáltatás az Azure-ban, amely támogatja a struktúrák, például a relációs adatok, JSON, térbeli és XML. Az SQL Database támogatja mind a kiszolgálóoldali titkosítást az Átlátszó adattitkosítás (TDE) szolgáltatáson keresztül, mind az ügyféloldali titkosítást a Mindig titkosított szolgáltatáson keresztül.
 
 #### <a name="transparent-data-encryption"></a>Transzparens adattitkosítás
 
-A [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) a [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../sql-database/sql-database-technical-overview.md)és [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) adatfájlok valós idejű titkosítására szolgál, amely az adatbázis-rendszerindító rekordban tárolódik a helyreállítás során rendelkezésre álló adatbázis-titkosítási kulcs (adattitkosítási kulcsot) használatával.
+[A TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) az [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [az Azure SQL Database](../../sql-database/sql-database-technical-overview.md)és az Azure SQL Data [Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) adatfájlok valós idejű titkosítására szolgál egy adatbázis-titkosítási kulcs (DEK) használatával, amely az adatbázis rendszerindítási rekordjában tárolódik a helyreállítás során rendelkezésre állásszempontjából.
 
-A TDE az AES és a Triple Encryption Standard (3DES) titkosítási algoritmusok használatával védi az adatfájlokat és a naplófájlokat. Az adatbázisfájl titkosítása az oldal szintjén történik. A titkosított adatbázisban lévő lapok titkosítva lesznek a lemezre írásuk előtt, és a memóriába való beolvasás során visszafejtésre kerülnek. A TDE mostantól alapértelmezés szerint engedélyezve van az újonnan létrehozott Azure SQL-adatbázisokon.
+A TDE az AES és a Triple Data Encryption Standard (3DES) titkosítási algoritmusokkal védi az adatokat és a naplófájlokat. Az adatbázisfájl titkosítása oldalszinten történik. A titkosított adatbázis lapjai a lemezre írás előtt titkosítva vannak, és visszafejtésükkor visszafejtik őket a memóriába. A TDE alapértelmezés szerint engedélyezve van az újonnan létrehozott Azure SQL-adatbázisokban.
 
-#### <a name="always-encrypted-feature"></a>Always Encrypted funkció
+#### <a name="always-encrypted-feature"></a>Mindig titkosított funkció
 
-Az Azure SQL [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkciójának használatával a Azure SQL Databaseban való tárolás előtt titkosíthatja az ügyféladatokat az ügyfélalkalmazások között. Emellett engedélyezheti a helyszíni adatbázis-felügyelet delegálását is harmadik feleknek, és megtarthatja a saját tagjai közötti elkülönítést, és megtekintheti azokat, akik kezelik, de nem férhetnek hozzá.
+Az Azure SQL [Mindig titkosított](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkciójával az azure-beli SQL-adatbázisban való tárolás előtt titkosíthatja az adatokat az ügyfélalkalmazásokon belül. Engedélyezheti a helyszíni adatbázis-felügyelet harmadik felekre delegálását is, és fenntarthatja az adatokat birtokló és megtekintő személyek és azok elkülönítését, akik kezelik azokat, de nem férhetnek hozzá.
 
-#### <a name="cell-level-or-column-level-encryption"></a>Cella szintű vagy oszlop szintű titkosítás
+#### <a name="cell-level-or-column-level-encryption"></a>Cella- vagy oszlopszintű titkosítás
 
-A Azure SQL Database segítségével a Transact-SQL használatával szimmetrikus titkosítást alkalmazhat egy adatoszlopra. Ennek a módszernek a neve a [cella szintű titkosítás vagy az oszlop szintű titkosítás (CLE)](/sql/relational-databases/security/encryption/encrypt-a-column-of-data), mert a segítségével meghatározott oszlopokat vagy akár meghatározott cellákat is titkosíthat különböző titkosítási kulcsokkal. Így részletesebb titkosítási képességet biztosít, mint a TDE, amely titkosítja az adatokat a lapokon.
+Az Azure SQL Database segítségével szimmetrikus titkosítást alkalmazhat egy adatoszlopra a Transact-SQL használatával. Ezt a módszert [cellszintű titkosításnak vagy oszlopszintű titkosításnak (CLE)](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)nevezik, mivel segítségével bizonyos oszlopokat vagy akár különböző titkosítási kulcsokkal rendelkező adatok at is titkosíthat. Ezzel részletesebb titkosítási képességet biztosít, mint a TDE, amely titkosítja az oldalakon lévő adatokat.
 
-A CLE olyan beépített funkciókkal rendelkezik, amelyekkel az adatok a szimmetrikus vagy aszimmetrikus kulcsok, a tanúsítvány nyilvános kulcsa vagy a 3DES használatával titkosított jelszó használatával titkosíthatók.
+A CLE beépített funkciókkal rendelkezik, amelyekkel szimmetrikus vagy aszimmetrikus kulcsokkal, egy tanúsítvány nyilvános kulcsával vagy 3DES-sel kapcsolatos jelszóval titkosíthatja az adatokat.
 
-### <a name="cosmos-db-database-encryption"></a>Adatbázis-titkosítás Cosmos DB
+### <a name="cosmos-db-database-encryption"></a>Cosmos DB adatbázis titkosítása
 
-[Azure Cosmos db](../../cosmos-db/database-encryption-at-rest.md) a Microsoft globálisan elosztott, többmodelles adatbázisa. A nem felejtő tárolóban (SSD-meghajtók) Cosmos DB tárolt felhasználói adatforgalom alapértelmezés szerint titkosítva van. Nincsenek be-és kikapcsolható vezérlők. Inaktív adatok titkosítását számos biztonsági technológia, többek között a biztonságos kulcs tárolása rendszerek, a titkosított hálózatokat és a titkosítási API-k segítségével van megvalósítva. A titkosítási kulcsokat a Microsoft felügyeli, és a Microsoft belső iránymutatásai szerint elforgatva.
+[Az Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) a Microsoft globálisan elosztott, többmodelles adatbázisa. A Cosmos DB nem felejtő tárolóban (ssd-meghajtókon) tárolt felhasználói adatok alapértelmezés szerint titkosítva vannak. Nincsenek be- és kikapcsolandó vezérlők. Az inaktív titkosítás számos biztonsági technológiával valósul meg, beleértve a biztonságos kulcstároló rendszereket, a titkosított hálózatokat és a kriptográfiai API-kat. A titkosítási kulcsokat a Microsoft kezeli, és a Microsoft belső irányelvei szerint elforgatják őket.
 
-### <a name="at-rest-encryption-in-data-lake"></a>REST-alapú titkosítás Data Lake
+### <a name="at-rest-encryption-in-data-lake"></a>Inaktív titkosítás a Data Lake-ben
 
-A [Azure Data Lake](../../data-lake-store/data-lake-store-encryption.md) a követelmények vagy séma formális meghatározása előtt egyetlen helyen gyűjtött, minden típusú adat vállalati szintű tárháza. Data Lake Store támogatja a "bekapcsolva" állapotú adatok transzparens titkosítását, amely a fiók létrehozásakor van beállítva. Alapértelmezés szerint a Azure Data Lake Store felügyeli a kulcsokat, de lehetősége van saját maga is kezelni őket.
+[Az Azure Data Lake](../../data-lake-store/data-lake-store-encryption.md) a követelmények vagy séma formális meghatározása előtt egy helyen gyűjtött összes adattípus vállalati szintű tárháza. A Data Lake Store támogatja az "alapértelmezés szerint" az inaktív adatok transzparens titkosítását, amely a fiók létrehozása során van beállítva. Alapértelmezés szerint az Azure Data Lake Store kezeli a kulcsokat az Ön számára, de lehetősége van saját maga által kezelni őket.
 
-Az adatok titkosítása és visszafejtése három típusú kulcsot használ: a Master encryption Key (MEK), az adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) és a Letiltás titkosítási kulcs (BEK). A MEK az állandó adathordozón tárolt ADATTITKOSÍTÁSI kulcsot titkosítására szolgál, a BEK pedig a ADATTITKOSÍTÁSI kulcsot és az adatblokkból származik. Ha saját kulcsokat kezel, akkor elforgathatja a MEK.
+Az adatok titkosításához és visszafejtéséhez három féle kulcs használatos: a fő titkosítási kulcs (MEK), az adattitkosítási kulcs (DEK) és a blokktitkosítási kulcs (BEK). A MEK az állandó adathordozón tárolt DEK titkosítására szolgál, és a BEK a DEK-ből és az adatblokkból származik. Ha ön kezelő saját kulcsok, tudod forog a MEK.
 
-## <a name="encryption-of-data-in-transit"></a>Az adatforgalom titkosítása
+## <a name="encryption-of-data-in-transit"></a>Az átvitel alatt álló adatok titkosítása
 
-Az Azure számos mechanizmust kínál az adatok magánjellegű tárolásához, ahogy az egyik helyről a másikra helyezi.
+Az Azure számos mechanizmust kínál az adatok bizalmas anamforitására, mivel azok egyik helyről a másikra mozognak.
 
-### <a name="tlsssl-encryption-in-azure"></a>TLS/SSL-titkosítás az Azure-ban
+### <a name="tlsssl-encryption-in-azure"></a>TLS/SSL titkosítás az Azure-ban
 
-A Microsoft a [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) protokollt használja az adatvédelemhez, amikor a Cloud Services és az ügyfelek között utazik. A Microsoft-adatközpontok egy TLS-kapcsolatot egyeztetnek az Azure-szolgáltatásokhoz csatlakozó ügyfélszámítógépekkel. A TLS erős hitelesítést, az üzenetek védelmét és integritását (az üzenetek illetéktelen módosításának, elfogásának és hamisításának észlelését), az együttműködési képességet, az algoritmus rugalmasságát, valamint a könnyű üzembe helyezést és használatot biztosít.
+A Microsoft a [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) protokollt használja az adatok védelmére, amikor azok a felhőszolgáltatások és az ügyfelek között haladnak. A Microsoft adatközpontjai egyeztetik a TLS-kapcsolatot az Azure-szolgáltatásokhoz kapcsolódó ügyfélrendszerekkel. A TLS erős hitelesítést, üzenet-adatvédelmet és integritást biztosít (lehetővé téve az üzenetek illetéktelen ítésének, lehallgatásának és hamisításának észlelését), az interoperabilitást, az algoritmusok rugalmasságát, valamint a könnyű telepítést és használatot.
 
-A [tökéletes továbbítási titoktartás](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) védi az ügyfelek és a Microsoft Cloud Services közötti kapcsolatokat egyedi kulcsok használatával. A kapcsolatok az RSA-alapú 2 048 bites titkosítási kulcs hosszait is használják. Ez a kombináció megnehezíti, hogy valaki elhallgassa és hozzáférjen az átvitt adatforgalomhoz.
+[A tökéletes továbbítási titkosság](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) egyedi kulcsokkal védi az ügyfelek ügyfélrendszerei és a Microsoft felhőszolgáltatásai közötti kapcsolatokat. A kapcsolatok RSA-alapú 2048 bites titkosítási kulcshosszokat is használnak. Ez a kombináció megnehezíti, hogy valaki elfogja és hozzáférjen az átmenő adatokhoz.
 
 ### <a name="azure-storage-transactions"></a>Azure Storage-tranzakciók
 
-Ha az Azure Storage-t a Azure Portal keresztül használja, az összes tranzakció HTTPS-kapcsolaton keresztül történik. A Storage REST API a HTTPS protokollon keresztül is használhatja az Azure Storage szolgáltatással való kommunikációhoz. A HTTPS használatát akkor kényszerítheti, ha a REST API-kat hívja a Storage-fiókokban lévő objektumok eléréséhez, így a Storage-fiókhoz szükséges biztonságos átvitelt engedélyezheti.
+Amikor az Azure Portalon keresztül kommunikál az Azure Storage-szal, minden tranzakció HTTPS-en keresztül történik. A Storage REST API HTTPS-en keresztül is használhatja az Azure Storage-szal való interakciót. A HTTPS használatával kényszerítheti, amikor meghívja a REST API-k at a tárfiókok ban lévő objektumok eléréséhez, ha engedélyezi a tárfiókhoz szükséges biztonságos átvitelt.
 
-Közös hozzáférésű aláírások ([sas](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)), amelyek az Azure Storage-objektumokhoz való hozzáférés delegálására használhatók, és azt is megadhatják, hogy csak a HTTPS protokollt lehessen használni a megosztott hozzáférési aláírások használatakor. Ez a megközelítés biztosítja, hogy bárki, aki SAS-tokenekkel rendelkező hivatkozásokat küld, a megfelelő protokollt használja.
+Megosztott hozzáférésű aláírások ([SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)), amely használható az Azure Storage-objektumokhoz való hozzáférés delegálásához, tartalmaz egy lehetőséget, amellyel megadhatja, hogy csak a HTTPS protokoll használható megosztott hozzáférésű aláírások használataesetén. Ez a megközelítés biztosítja, hogy bárki, aki sas-jogkivonatokkal küld kapcsolatokat, a megfelelő protokollt használja.
 
-Az [SMB 3,0](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption), amely a Azure Files megosztások elérésére szolgál, támogatja a titkosítást, és a windows Server 2012 R2, a Windows 8, a Windows 8,1 és a Windows 10 rendszerben érhető el. Lehetővé teszi a régiók közötti hozzáférést, és akár az asztalon is elérhetővé válik.
+[Az SMB 3.0,](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption)amely az Azure Files-megosztások eléréséhez használt, támogatja a titkosítást, és elérhető a Windows Server 2012 R2, A Windows 8, a Windows 8.1 és a Windows 10 rendszerben. Lehetővé teszi a régiók közötti hozzáférést, és még az asztalon is.
 
-Az ügyféloldali titkosítás az Azure Storage-példányba való elküldés előtt titkosítja az adatait, hogy az titkosítva legyen a hálózaton keresztül.
+Az ügyféloldali titkosítás titkosítja az adatokat, mielőtt az Okat az Azure Storage-példányba küldené, így titkosítva van, miközben a hálózaton keresztül utazik.
 
-### <a name="smb-encryption-over-azure-virtual-networks"></a>SMB-titkosítás Azure-beli virtuális hálózatokon keresztül 
+### <a name="smb-encryption-over-azure-virtual-networks"></a>SMB-titkosítás az Azure virtuális hálózatain keresztül 
 
-Ha Windows Server 2012 vagy újabb operációs rendszert futtató virtuális gépeken használ [SMB 3,0](https://support.microsoft.com/help/2709568/new-smb-3-0-features-in-the-windows-server-2012-file-server) -et, az adatátvitelt biztonságossá teheti az Azure-beli virtuális hálózatokon keresztül továbbított adatforgalom titkosításával. Az adattitkosítással megvédheti a hamisítást és a lehallgatás elleni támadásokat. A rendszergazdák engedélyezhetik az SMB-titkosítást a teljes kiszolgálón vagy csak adott megosztásokon.
+Az [SMB 3.0](https://support.microsoft.com/help/2709568/new-smb-3-0-features-in-the-windows-server-2012-file-server) használatával windows Server 2012 vagy újabb rendszert futtató virtuális gépeken biztonságossá teheti az adatátvitelt az Azure virtuális hálózatokon keresztül történő átvitel során használt adatok titkosításával. Az adatok titkosításával védelmet nyújt a hamisítás és a lehallgatás imitálása ellen. A rendszergazdák engedélyezhetik az SMB-titkosítást a teljes kiszolgálón, vagy csak bizonyos megosztásokat.
 
-Alapértelmezés szerint a megosztások vagy kiszolgálók SMB-titkosításának engedélyezése után csak az SMB 3,0-ügyfelek férhetnek hozzá a titkosított megosztásokhoz.
+Alapértelmezés szerint, miután az SMB-titkosítás be van kapcsolva egy megosztáson vagy kiszolgálón, csak az SMB 3.0-s ügyfelek férhetnek hozzá a titkosított megosztásokhoz.
 
 ## <a name="in-transit-encryption-in-vms"></a>Átvitel közbeni titkosítás a virtuális gépeken
 
-A (z), a rendszerből és a Windows rendszerű virtuális gépek közötti, a kapcsolat természetétől függően számos módon titkosítva vannak az adatok.
+A Windows rendszert futtató virtuális gépekre, azokból és gépek között átmenő adatok a kapcsolat jellegétől függően számos módon titkosítva vannak.
 
 ### <a name="rdp-sessions"></a>RDP-munkamenetek
 
-A virtuális géphez a [RDP protokoll (RDP)](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) használatával csatlakozhat, és bejelentkezhet egy Windows rendszerű ügyfélszámítógépről vagy egy telepített RDP-ügyféllel rendelkező Mac számítógépen. Az RDP-munkamenetekben a hálózaton keresztül áthaladó adatforgalom védelme a TLS protokollal lehetséges.
+A virtuális gépekhez a Távoli asztali [protokoll (RDP)](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) segítségével csatlakozhat és bejelentkezhet egy Windows ügyfélszámítógépről, vagy egy telepített RDP-ügyféllel rendelkező Mac ről. Az RDP-munkamenetekben a hálózaton keresztül átadott adatokat a TLS védheti.
 
-A Linux rendszerű virtuális gépekhez való kapcsolódáshoz Távoli asztal is használhatja az Azure-ban.
+A Távoli asztal használatával is csatlakozhat egy Linux virtuális géphez az Azure-ban.
 
-### <a name="secure-access-to-linux-vms-with-ssh"></a>Biztonságos hozzáférés Linux rendszerű virtuális gépekhez SSH-val
+### <a name="secure-access-to-linux-vms-with-ssh"></a>Biztonságos hozzáférés a Linux virtuális gépekhez SSH-val
 
-A Távoli felügyelet érdekében a [Secure Shell](../../virtual-machines/linux/ssh-from-windows.md) (SSH) használatával csatlakozhat az Azure-ban futó linuxos virtuális gépekhez. Az SSH egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Ez az alapértelmezett kapcsolati protokoll az Azure-ban üzemeltetett linuxos virtuális gépekhez. Ha SSH-kulcsokat használ a hitelesítéshez, nem kell bejelentkeznie a jelszavakba. Az SSH egy nyilvános/titkos kulcspárt (aszimmetrikus titkosítás) használ a hitelesítéshez.
+A távoli felügyelet hez a [Secure Shell](../../virtual-machines/linux/ssh-from-windows.md) (SSH) segítségével csatlakozhat az Azure-ban futó Linux-alapú virtuális gépekhez. Az SSH egy titkosított kapcsolatprotokoll, amely biztonságos bejelentkezést tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Ez az Azure-ban üzemeltetett Linux-virtuális gépek alapértelmezett kapcsolatprotokollja. SSH-kulcsok használatával a hitelesítés, nincs szükség a jelszavakat, hogy jelentkezzen be. Az SSH nyilvános/titkos kulcspárt (aszimmetrikus titkosítást) használ a hitelesítéshez.
 
 ## <a name="azure-vpn-encryption"></a>Azure VPN-titkosítás
 
-Kapcsolódhat az Azure-hoz egy olyan virtuális magánhálózati hálózaton keresztül, amely biztonságos alagutat hoz létre a hálózaton keresztül továbbított adatok védelmének védelme érdekében.
+Az Azure-hoz egy virtuális magánhálózaton keresztül csatlakozhat, amely biztonságos bújtategy biztonságos bújtatása a hálózaton keresztül küldött adatok adatvédelmének védelme érdekében.
 
-### <a name="azure-vpn-gateways"></a>Azure VPN Gateway-átjárók
+### <a name="azure-vpn-gateways"></a>Azure VPN-átjárók
 
-Az [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md) használatával titkosított forgalmat küldhet a virtuális hálózat és a helyszíni hely között egy nyilvános kapcsolaton keresztül, illetve a virtuális hálózatok közötti adatforgalmat is elküldheti.
+Az Azure [VPN-átjáró](../../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md) használatával titkosított forgalmat küldhet a virtuális hálózat és a helyszíni hely között nyilvános kapcsolaton keresztül, vagy küldhet forgalmat a virtuális hálózatok között.
 
-A helyek közötti VPN-ek az [IPSec protokollt](https://en.wikipedia.org/wiki/IPsec) használják a továbbítási titkosításhoz. Az Azure VPN-átjárók az alapértelmezett javaslatok készletét használják. Az Azure-beli VPN-átjárókat úgy konfigurálhatja, hogy egyéni IPsec/IKE-házirendet használjanak az egyes titkosítási algoritmusokkal és kulcsokkal, és nem az Azure alapértelmezett házirendjeit.
+A helyek közötti VPN-ek [IPsec-et](https://en.wikipedia.org/wiki/IPsec) használnak az átvitel titkosításához. Az Azure VPN-átjárók alapértelmezett javaslatokat használnak. Az Azure VPN-átjárók konfigurálhatja, hogy egy egyéni IPsec/IKE-szabályzat ot használjon adott kriptográfiai algoritmusokkal és kulcserősségekkel, nem pedig az Azure alapértelmezett házirend-készleteit.
 
-### <a name="point-to-site-vpns"></a>Pont – hely VPN-EK
+### <a name="point-to-site-vpns"></a>Pont–hely VPN-ek
 
-A pont – hely VPN-EK lehetővé teszik, hogy az egyes ügyfélszámítógépek hozzáférjenek egy Azure-beli virtuális hálózathoz. A VPN-alagút létrehozásához használja [a Secure Socket Tunneling Protocol (SSTP) protokollt](https://technet.microsoft.com/library/2007.06.cableguy.aspx) . Képes a tűzfalak bejárására (az alagút HTTPS-kapcsolatként jelenik meg). A pont – hely kapcsolathoz saját belső nyilvános kulcsokra épülő infrastruktúra (PKI) legfelső szintű hitelesítésszolgáltató (CA) használható.
+A pont-hely VPN-ek lehetővé teszik az egyes ügyfélszámítógépek számára az Azure virtuális hálózathoz való hozzáférést. [A Secure Socket Tunneling Protocol (SSTP)](https://technet.microsoft.com/library/2007.06.cableguy.aspx) a VPN-alagút létrehozásához használatos. Áttud haladni a tűzfalakon (az alagút HTTPS-kapcsolatként jelenik meg). A saját nyilvános kulcsú infrastruktúra (PKI) legfelső szintű hitelesítésszolgáltatóját használhatja a helyek közötti kapcsolathoz.
 
-A pont – hely VPN-kapcsolat egy virtuális hálózathoz konfigurálható a tanúsítvány-hitelesítéssel vagy a PowerShell-lel Azure Portal használatával.
+A virtuális hálózathoz az Azure Portal tanúsítványhitelesítéssel vagy a PowerShell használatával konfigurálhat egy pont-hely VPN-kapcsolatot.
 
-További információ a pont – hely VPN-kapcsolatokról az Azure Virtual Networks szolgáltatással kapcsolatban:
+Ha többet szeretne tudni az Azure virtuális hálózatokkal való pont-hely VPN-kapcsolatokról, olvassa el a következő témakört:
 
-[Pont – hely kapcsolat konfigurálása egy virtuális hálózathoz a hitelesítési hitelesítés használatával: Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
+[Pont-hely kapcsolat konfigurálása virtuális hálózattal hitelesítési hitelesítés használatával: Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
-[Pont – hely kapcsolat konfigurálása egy virtuális hálózathoz tanúsítványalapú hitelesítés használatával: PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+[A virtuális hálózattal való pont-hely kapcsolat konfigurálása tanúsítványhitelesítés használatával: PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-### <a name="site-to-site-vpns"></a>Helyek közötti VPN-EK 
+### <a name="site-to-site-vpns"></a>Helyek közötti VPN-ek 
 
-A helyek közötti VPN Gateway-kapcsolattal a helyszíni hálózatot egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül csatlakoztathatja egy Azure-beli virtuális hálózathoz. Az ilyen típusú kapcsolathoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy külső elérésű nyilvános IP-cím.
+A helyek közötti VPN-átjárókapcsolat segítségével csatlakoztathatja a helyszíni hálózatot egy Azure virtuális hálózathoz egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül. Az ilyen típusú kapcsolathoz olyan helyszíni VPN-eszközre van szükség, amelyhez külső nyilvános IP-cím van rendelve.
 
-A helyek közötti VPN-kapcsolat a Azure Portal, a PowerShell vagy az Azure CLI használatával konfigurálható egy virtuális hálózathoz.
+Az Azure Portal, a PowerShell vagy az Azure CLI használatával konfigurálhatja a helyek közötti VPN-kapcsolatot egy virtuális hálózathoz.
 
 További információkért lásd:
 
-[Helyek közötti kapcsolat létrehozása a Azure Portalban](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Helyek közötti kapcsolat létrehozása az Azure Portalon](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
 [Helyek közötti kapcsolat létrehozása a PowerShellben](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
-[Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a parancssori felület használatával](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+[Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a CLI használatával](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 
-## <a name="in-transit-encryption-in-data-lake"></a>Átvitel közbeni titkosítás a Data Lakeban
+## <a name="in-transit-encryption-in-data-lake"></a>Átvitel közbeni titkosítás a Data Lake-ben
 
-Az átvitt adatok (azaz a mozgásban lévő adatok) titkosítása is mindig a Data Lake Store-ban történik. Az adatok titkosítása az állandó adathordozón való tárolást megelőzően kívül az adatok a HTTPS protokollon keresztül is mindig az átvitel során lesznek biztosítva. A HTTPS az egyetlen olyan protokoll, amely támogatott a Data Lake Store REST-felületeihez.
+Az átvitt adatok (azaz a mozgásban lévő adatok) titkosítása is mindig a Data Lake Store-ban történik. Az adatok állandó adathordozón való tárolása előtti titkosítása mellett az adatok is mindig biztonságosak a HTTPS használatával történő átvitel során. A HTTPS az egyetlen olyan protokoll, amely támogatott a Data Lake Store REST-felületeihez.
 
-Ha többet szeretne megtudni az átvitt adattitkosításról Data Lakeban, tekintse meg az [adattitkosítás Data Lake Storeban](../../data-lake-store/data-lake-store-encryption.md)című témakört.
+Ha többet szeretne tudni a Data Lake-ben áthaladó adatok titkosításáról, olvassa el [az Adatok titkosítása a Data Lake Store áruházban.](../../data-lake-store/data-lake-store-encryption.md)
 
-## <a name="key-management-with-key-vault"></a>Kulcskezelő Key Vault
+## <a name="key-management-with-key-vault"></a>Kulcskezelés a Key Vault segítségével
 
-A kulcsok megfelelő védelme és kezelése nélkül a titkosítás használhatatlanná tehető. A Key Vault a Microsoft által ajánlott megoldás a Cloud Services által használt titkosítási kulcsok elérésének kezelésére és szabályozására. A kulcsok eléréséhez szükséges engedélyek a szolgáltatásokhoz vagy a felhasználókhoz Azure Active Directory fiókokon keresztül rendelhetők hozzá.
+A kulcsok megfelelő védelme és kezelése nélkül a titkosítás használhatatlanná válik. A Key Vault a Microsoft által ajánlott megoldás a felhőszolgáltatások által használt titkosítási kulcsokhoz való hozzáférés kezelésére és szabályozására. A hozzáférési kulcsokhoz való hozzáférési engedélyek hozzárendelhetők a szolgáltatásokhoz vagy a felhasználókhoz az Azure Active Directory-fiókokon keresztül.
 
-Key Vault feloldja a szervezeteknek a hardveres biztonsági modulok (HSM) és a kulcskezelő szoftverek konfigurálását, javítását és karbantartását. Key Vault használatakor a vezérlést is megtarthatja. A Microsoft soha nem látja a kulcsokat, és az alkalmazások nem rendelkeznek közvetlen hozzáféréssel. A HSM-ben is importálhat és létrehozhat kulcsokat.
+A Key Vault mentesíti a szervezeteket a hardveres biztonsági modulok (HSM- ek) és a kulcskezelő szoftverek konfigurálásának, javításának és karbantartásának szükségességétől. A Key Vault használatakor megtarthatja az irányítást. A Microsoft soha nem látja a kulcsokat, és az alkalmazások nem rendelkeznek közvetlen hozzáféréssel azokhoz. Kulcsokat is importálhat vagy létrehozhat a HSM-ekben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure biztonsági szolgáltatásainak áttekintése](get-started-overview.md)
-- [Az Azure hálózati biztonság áttekintése](network-overview.md)
-- [Az Azure Database biztonsági áttekintése](database-security-overview.md)
-- [Az Azure Virtual Machines biztonsági áttekintése](virtual-machines-overview.md)
-- [Adattitkosítás inaktív állapotban](encryption-atrest.md)
+- [Az Azure hálózati biztonságának áttekintése](network-overview.md)
+- [Az Azure-adatbázis biztonságának áttekintése](database-security-overview.md)
+- [Az Azure virtuális gépek biztonságának áttekintése](virtual-machines-overview.md)
+- [Adattitkosítás inaktív](encryption-atrest.md)
 - [Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások](data-encryption-best-practices.md)

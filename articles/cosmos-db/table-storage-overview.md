@@ -1,5 +1,5 @@
 ---
-title: Az Azure Table Storage áttekintése
+title: Az Azure Table storage áttekintése
 description: Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76770742"
 ---
 # <a name="azure-table-storage-overview"></a>Az Azure Table Storage áttekintése
@@ -26,14 +26,14 @@ A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint 
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
-* [Az Azure Cosmos DB Table API és az Azure Table Storage használatának első lépései a .NET SDK-val](table-storage-how-to-use-dotnet.md)
+* [Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába](table-storage-how-to-use-dotnet.md)
 
 * A Table Service elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
 
-    * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API – referencia](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API-hivatkozás](https://msdn.microsoft.com/library/azure/dd179355)

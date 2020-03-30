@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019281"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serverre 
@@ -25,24 +25,24 @@ Ez a dokumentum azt mutatja be, hogyan helyezhető át az Azure AD Connect-adatb
 ## <a name="about-this-scenario"></a>A forgatókönyv ismertetése
 Szeretnénk néhány információval kezdeni, amelyek erre a forgatókönyvre vonatkoznak.  Az Azure AD Connect 1.1.819.0-s verziója van telepítve egy önálló Windows Server 2016 tartományvezérlőn,  amely az adatbázishoz a beépített SQL Server 2012 Express Editiont használja.  Az adatbázis egy SQL Server 2017 kiszolgálóra lesz áthelyezve.
 
-![forgatókönyv architektúrája](media/how-to-connect-install-move-db/move1.png)
+![forgatókönyv-architektúra](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Az Azure AD Connect-adatbázis áthelyezése
 Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távoli SQL Serverre.
 
 1. Az Azure AD Connect-kiszolgálón lépjen a **Szolgáltatások** részhez, és állítsa le a **Microsoft Azure AD-szinkronizáló** szolgáltatást.
-2. Keresse meg a **%ProgramFiles%\Microsoft Azure ad Sync\Data** mappát, és másolja a **AdSync. MDF** és **ADSync_log. ldf** fájlokat a távoli SQL Serverba.
+2. Keresse meg a **%ProgramFiles%\Microsoft Azure AD Sync\Data mappát,** és másolja az **ADSync.mdf** és **ADSync_log.ldf** fájlokat a távoli SQL Server kiszolgálóra.
 3. Indítsa újra a **Microsoft Azure AD-szinkronizáló** szolgáltatást az Azure AD Connect-kiszolgálón.
 4. Az Azure AD Connect eltávolításához lépjen a következő helyre: Vezérlőpult – Programok – Programok és szolgáltatások.  Válassza ki a Microsoft Azure AD Connectet, és kattintson a fent található eltávolítási gombra.
 5. A távoli SQL Serveren nyissa meg az SQL Server Management Studio alkalmazást.
 6. Kattintson a jobb gombbal a Databases (Adatbázisok) elemre, majd válassza ki az Attach (Csatolás) lehetőséget.
 7. Az **Attach Databases** (Adatbázisok csatolása) képernyőn kattintson az **Add** (Hozzáadás) gombra, és keresse meg az ADSync.mdf fájlt.  Kattintson az **OK** gombra.
-   adatbázis ![csatolása](media/how-to-connect-install-move-db/move2.png)
+   ![adatbázis csatolása](media/how-to-connect-install-move-db/move2.png)
 
 8. Az adatbázis csatolása után lépjen vissza az Azure AD Connect-kiszolgálóhoz, és telepítse az Azure AD Connectet.
 9. Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.
    ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db1.png)
-10. Indítson új parancssort vagy PowerShell-munkamenetet. Navigáljon a mappa \<meghajtó > \program files\Microsoft Azure AD Connect. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
+10. Indítson új parancssort vagy PowerShell-munkamenetet. Keresse meg \<a mappameghajtót>\programfájlok\Microsoft Azure AD Connect. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db3.png)
@@ -64,13 +64,13 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db8.png)
  
  
-17. A **Ready to configure** (Konfigurálásra kész) képernyőn kattintson az **Install** (Telepítés) gombra.
+17. A **Konfigurálásra kész** képernyőn kattintson a **Telepítés gombra.**
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db9.png)
  
  
 18. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
 - [Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával](how-to-connect-install-existing-database.md)

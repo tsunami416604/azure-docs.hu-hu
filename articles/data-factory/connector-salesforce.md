@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a és a Salesforce
-description: Megtudhatja, hogyan másolhat adatokból a Salesforce-ből a támogatott fogadó adattárakba vagy a támogatott forrás-adattárakból a Salesforce egy másolási tevékenységgel egy adatfeldolgozó-folyamaton keresztül.
+title: Adatok másolása a Salesforce-ból és a Salesforce-ba
+description: Megtudhatja, hogy miként másolhat adatokat a Salesforce-ból a támogatott fogadó adattárakba vagy a támogatott forrásadat-tárolókból a Salesforce-ba egy adatfeldolgozó folyamat másolási tevékenységének használatával.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,75 +10,75 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: 89ce253806b4a39b393c74ea96ddc2523d338d84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 7d380f34f849eac835abbd295cd1e2d8c17daaef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926253"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153853"
 ---
-# <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a és a Salesforce Azure Data Factory használatával
+# <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a Salesforce-ból és a Salesforce-ba az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-salesforce-connector.md)
 > * [Aktuális verzió](connector-salesforce.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Salesforce történő másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolásához és a Salesforce.This article ismerteti, hogyan lehet az Azure Data Factory másolása tevékenység másolása adatok másolása a Salesforce.This article ismerteti, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása a Sales A [Másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Ez a Salesforce-összekötő a következő tevékenységek esetén támogatott:
+Ez a Salesforce összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
+A Salesforce-ból adatokat másolhat bármely támogatott fogadó adattárba. Bármely támogatott forrásadattárból adatokat másolhat a Salesforce-ba. Az adattárak listáját, amelyek által támogatott forrásként vagy fogadóként a Másolás tevékenység, lásd: A [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Az adatok a Salesforce bármely támogatott fogadó adattárba másolhatók. Az adatok másolása bármely támogatott forrás-adattárból Salesforce is elvégezhető. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+Ez a Salesforce összekötő különösen a következőket támogatja:
 
-Ez a Salesforce-összekötő a következőket támogatja:
+- Salesforce Developer, Professional, Enterprise vagy Unlimited kiadások.
+- Adatok másolása a Salesforce éles környezetéből, a sandboxból és az egyéni tartományból.
 
-- Salesforce fejlesztői, Professional, Enterprise vagy Unlimited kiadásokat.
-- Adatok másolása a és a rendszerből a Salesforce éles környezetbe, a homokozóba és az egyéni tartományba.
-
-Az Salesforce-összekötő a Salesforce REST/tömeges API-ra épül, és a [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) az adatok másolására és a [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) való másolására szolgál.
+A Salesforce összekötő a Salesforce REST/Bulk API-ra épül. Alapértelmezés szerint az összekötő [v45-ös](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) t használja az adatok másolásához a Salesforce-ból, és [a v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) segítségével másolja az adatokat a Salesforce-ba. Explicit módon beállíthatja az adatok írására/írására [ `apiVersion` ](#linked-service-properties) használt API-verziót is a csatolt szolgáltatásban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az API-engedélyt engedélyezni kell a Salesforce-ben. További információ: [API-hozzáférés engedélyezése a Salesforce-ben az engedélyek beállítása alapján](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
+Az API-engedélyeket engedélyezni kell a Salesforce-ban. További információ: [API-hozzáférés engedélyezése a Salesforce-ban engedélykészlet alapján](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 
-## <a name="salesforce-request-limits"></a>Salesforce kérelmek korlátai
+## <a name="salesforce-request-limits"></a>Salesforce-kérelem korlátai
 
-A Salesforce mind az API-kérelmek, mind az egyidejű API-kérelmek esetében korlátozza a korlátot. Vegye figyelembe a következő szempontokat:
+A Salesforce korlátozza az összes API-kérelmet és az egyidejű API-kérelmeket. Vegye figyelembe a következő szempontokat:
 
-- Ha az egyidejű kérelmek száma meghaladja a korlátot, a szabályozás bekövetkezik, és véletlenszerű hibák jelennek meg.
-- Ha a kérelmek száma meghaladja a korlátot, a Salesforce-fiók 24 óráig blokkolva lesz.
+- Ha az egyidejű kérelmek száma meghaladja a korlátot, szabályozás történik, és véletlenszerű hibákat lát.
+- Ha a kérelmek teljes száma meghaladja a korlátot, a Salesforce-fiók 24 órára le van tiltva.
 
-Előfordulhat, hogy mindkét esetben "REQUEST_LIMIT_EXCEEDED" hibaüzenetet is kap. További információkért tekintse meg a [Salesforce fejlesztői korlátainak](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)"API-kérelmek korlátai" című szakaszát.
+Mindkét esetben a "REQUEST_LIMIT_EXCEEDED" hibaüzenet jelenhet meg. További információt a [Salesforce fejlesztői korlátainak](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)"API-kérelemkorlátok" című szakaszában talál.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük a Salesforce-összekötőhöz tartozó Data Factory entitások definiálásához használt tulajdonságokat.
+A következő szakaszok a Salesforce-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-A Salesforce társított szolgáltatás a következő tulajdonságokat támogatja.
+A Salesforce csatolt szolgáltatás a következő tulajdonságokat támogatja.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A Type tulajdonságot **Salesforce**értékre kell beállítani. |Igen |
-| environmentUrl | Itt adhatja meg az Salesforce-példány URL-címét. <br> – Az alapértelmezett érték `"https://login.salesforce.com"`. <br> – Az adatok a homokozóból való másolásához válassza a `"https://test.salesforce.com"`lehetőséget. <br> – Az adatok egyéni tartományból történő másolásához írja be például a következőt: `"https://[domain].my.salesforce.com"`. |Nem |
+| type |A típustulajdonságot **Salesforce (Salesforce**) tulajdonságra kell állítani. |Igen |
+| environmentUrl | Adja meg a Salesforce-példány URL-címét. <br> - Az `"https://login.salesforce.com"`alapértelmezett érték. <br> - Adatok sandboxból történő másolásához adja meg a mezőt. `"https://test.salesforce.com"` <br> - Adatok másolásához egyéni tartományból, `"https://[domain].my.salesforce.com"`adja meg például . |Nem |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen |
-| jelszó |A felhasználói fiókhoz tartozó jelszó megadása.<br/><br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. A biztonsági jogkivonat alaphelyzetbe állításával és lekérésével kapcsolatos útmutatásért lásd: [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem, forrás, igen, ha a forráshoz társított szolgáltatás nem rendelkezik integrációs futtatókörnyezettel |
+| jelszó |Adja meg a felhasználói fiók jelszavát.<br/><br/>Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) |Igen |
+| securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatát. <br/><br/>A biztonsági jogkivonatokról általában a [Biztonság és az API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)című témakörben olvashat. A biztonsági jogkivonat csak akkor hagyható ki, ha hozzáadja az integrációs futásidő IP-címét a Salesforce [megbízható IP-címlistájához.](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) Az Azure IR használata esetén tekintse meg az [Azure-integrációs futásidejű IP-címeket.](azure-integration-runtime-ip-addresses.md)<br/><br/>A biztonsági jogkivonat bekérésével és alaphelyzetbe állításával kapcsolatos tudnivalókról [a Biztonsági jogkivonat beszerezése (Get a Security token) (Biztonsági jogkivonat be) és visszaállítása.](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) |Nem |
+| apiVersion | Adja meg a használni kívánt Salesforce REST/Bulk `48.0`API verziót, pl. . Alapértelmezés szerint az összekötő [v45-ös](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) t használja az adatok másolásához a Salesforce-ból, és [a v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) segítségével másolja az adatokat a Salesforce-ba. | Nem |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. | Nem a forráshoz, Igen a fogadóhoz, ha a forráscsatolt szolgáltatás nem rendelkezik integrációs futásidejűsel |
 
 >[!IMPORTANT]
->Amikor az Adatmásolást a Salesforce-be másolja, az alapértelmezett Azure Integration Runtime nem használható a másolás végrehajtásához. Más szóval, ha a forráshoz társított szolgáltatás nem rendelkezik megadott integrációs futtatókörnyezettel, explicit módon [hozzon létre egy Azure Integration Runtimet](create-azure-integration-runtime.md#create-azure-ir) a Salesforce-példány közelében. Társítsa a Salesforce társított szolgáltatást az alábbi példában látható módon.
+>Amikor adatokat másol a Salesforce-ba, az alapértelmezett Azure-integrációs futásidejű nem használható a másolás végrehajtására. Más szóval, ha a forráskapcsolt szolgáltatás nem rendelkezik egy megadott integrációs futásidejű, explicit módon [hozzon létre egy Azure-integrációs futásidejű](create-azure-integration-runtime.md#create-azure-ir) egy helyet a Salesforce-példány közelében. Társítsa a Salesforce csatolt szolgáltatást az alábbi példában.
 
-**Példa: hitelesítő adatok tárolása Data Factoryban**
+**Példa: Hitelesítő adatok tárolása a Data Factory-ban**
 
 ```json
 {
@@ -104,7 +104,7 @@ A Salesforce társított szolgáltatás a következő tulajdonságokat támogatj
 }
 ```
 
-**Példa: hitelesítő adatok tárolása Key Vaultban**
+**Példa: Hitelesítő adatok tárolása a Key Vaultban**
 
 ```json
 {
@@ -140,21 +140,21 @@ A Salesforce társított szolgáltatás a következő tulajdonságokat támogatj
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Salesforce adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek](concepts-datasets-linked-services.md) című cikkben olvashatja. Ez a szakasz a Salesforce adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Ha adatokat szeretne másolni a és a Salesforce, állítsa az adatkészlet Type (típus) tulajdonságát **SalesforceObject**értékre. A következő tulajdonságok támogatottak.
+Ha adatokat szeretne másolni a Salesforce-ból és a Salesforce programba, állítsa az adatkészlet típustulajdonságát **SalesforceObject (SalesforceObject ) tulajdonságra.** A következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot **SalesforceObject**értékre kell beállítani.  | Igen |
-| objectApiName | Az Salesforce-objektum neve, amelyből az adatok beolvashatók. | Nem, forrás, igen, fogadó |
+| type | A típustulajdonságot **SalesforceObject (Típusobjektum)** tulajdonságra kell állítani.  | Igen |
+| objectApiName | A Salesforce objektum neve, amelyből adatokat szeretne beolvasni. | Nem a forráshoz, Igen a mosogatóhoz |
 
 > [!IMPORTANT]
 > Az **API-név** "__c" része minden egyéni objektumhoz szükséges.
 
-![Data Factory Salesforce-kapcsolatok API-neve](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
+![Data Factory Salesforce kapcsolat API-neve](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -174,33 +174,33 @@ Ha adatokat szeretne másolni a és a Salesforce, állítsa az adatkészlet Type
 ```
 
 >[!NOTE]
->A visszamenőleges kompatibilitás érdekében: amikor adatokat másol a Salesforce-ből, ha az előző "RelationalTable" típusú adatkészletet használja, akkor az továbbra is működik, miközben megjelenik egy javaslat, amely az új "SalesforceObject" típusra vált.
+>A visszamenőleges kompatibilitás érdekében: Amikor adatokat másol a Salesforce-ból, ha az előző "RelationalTable" típusú adatkészletet használja, akkor folyamatosan működik, miközben megjelenik egy javaslat az új "SalesforceObject" típusra való váltáshoz.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát **RelationalTable**értékre kell állítani. | Igen |
-| tableName | A tábla neve a Salesforce. | Nem (ha a tevékenység forrásában a "Query" érték van megadva) |
+| type | Az adatkészlet típustulajdonságát **RelationalTable**tulajdonságra kell állítani. | Igen |
+| tableName | A tábla neve a Salesforce-ban. | Nem (ha a tevékenységforrásban meg van adva a "lekérdezés" ) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Salesforce forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a Salesforce forrás és fogadó által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="salesforce-as-a-source-type"></a>Salesforce
+### <a name="salesforce-as-a-source-type"></a>Salesforce forrástípusként
 
-Az adatok Salesforce való másolásához állítsa a forrás típusát a másolás tevékenység **SalesforceSource**értékére. A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
+Ha adatokat szeretne másolni a Salesforce-ból, állítsa a forrástípust a másolási tevékenységben a **SalesforceSource**mezőre. A következő tulajdonságokat a másolási tevékenység **forrása** szakasz támogatja.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát **SalesforceSource**értékre kell állítani. | Igen |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Használhatja a [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezést vagy az SQL-92 lekérdezést. További tippeket a [lekérdezési tippek](#query-tips) szakaszban talál. Ha a lekérdezés nincs megadva, a rendszer az adatkészlet "objectApiName" részében megadott Salesforce objektum összes adatát beolvassa. | Nem (ha meg van adva a "objectApiName" az adatkészletben) |
-| readBehavior | Azt jelzi, hogy le kell-e kérdezni a meglévő rekordokat, vagy az összes rekordot, beleértve a törölt fájlokat is. Ha nincs megadva, az alapértelmezett viselkedés a korábbi. <br>Engedélyezett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | Nem |
+| type | A másolási tevékenységforrás típustulajdonságát **SalesforceSource (SalesforceSource )** tulajdonságra kell állítani. | Igen |
+| lekérdezés |Az adatok olvasásához használja az egyéni lekérdezést. Használhatja [a Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezést vagy az SQL-92 lekérdezést. További tippek a [lekérdezési tippek](#query-tips) szakaszban. Ha a lekérdezés nincs megadva, az adatkészlet "objectApiName" tulajdonságában megadott Salesforce objektum összes adata beolvasásra kerül. | Nem (ha az adatkészletben az "objectApiName" van megadva) |
+| olvasásViselkedése | Azt jelzi, hogy le kell-e kérdezni a meglévő rekordokat, vagy le kell-e kérdezni az összes rekordot, beleértve a törölteket is. Ha nincs megadva, az alapértelmezett viselkedés az előbbi. <br>Engedélyezett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | Nem |
 
 > [!IMPORTANT]
 > Az **API-név** "__c" része minden egyéni objektumhoz szükséges.
 
-![Data Factory Salesforce-kapcsolatok API-Neveinak listája](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
+![Data Factory Salesforce kapcsolat API-név listája](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -233,21 +233,21 @@ Az adatok Salesforce való másolásához állítsa a forrás típusát a másol
 ```
 
 >[!NOTE]
->Visszamenőleges kompatibilitás esetén: Ha a Salesforce adatok másolása után az előző "RelationalSource" típusú másolatot használja, a forrás továbbra is működik, miközben megjelenik egy javaslat, amely az új "SalesforceSource" típusra vált.
+>A visszamenőleges kompatibilitás érdekében: Amikor adatokat másol a Salesforce-ból, ha a korábbi "RelationalSource" típusú példányt használja, a forrás tovább működik, miközben megjelenik egy javaslat az új "SalesforceSource" típusra való váltáshoz.
 
-### <a name="salesforce-as-a-sink-type"></a>Salesforce
+### <a name="salesforce-as-a-sink-type"></a>Salesforce mint mosogatótípus
 
-Az adatmásoláshoz a másolási tevékenységben állítsa be a Salesforce a **SalesforceSink**. A másolási tevékenység fogadója szakaszban a következő tulajdonságok támogatottak.
+Ha adatokat szeretne másolni a Salesforce-ba, állítsa a copy tevékenység fogadótípusát **a SalesforceSink**beállításra. A következő tulajdonságokat a másolási tevékenység **fogadó** szakasza támogatja.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadójának Type tulajdonságát **SalesforceSink**értékre kell állítani. | Igen |
-| writeBehavior | A művelet írási viselkedése.<br/>Az engedélyezett értékek: **Insert** és **Upsert**. | Nem (az alapértelmezett érték a Beszúrás) |
-| externalIdFieldName | A upsert művelet külső azonosító mezőjének neve. A megadott mezőt "külső azonosító mezőként" kell definiálni a Salesforce objektumban. A megfelelő bemeneti adatokban nem szerepelhet NULL érték. | Igen a "Upsert" |
-| writeBatchSize | Az egyes kötegekben Salesforce írt adatsorok száma. | Nem (az alapértelmezett érték 5 000) |
-| ignoreNullValues | Azt jelzi, hogy az írási művelet során a rendszer figyelmen kívül hagyja-e a bemeneti adatokból származó NULL értékeket.<br/>Az engedélyezett értékek értéke **igaz** és **hamis**.<br>- **true (igaz**): az upsert vagy a frissítési művelet végrehajtásakor a célobjektum nem módosul. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.<br/>- **hamis**: a upsert vagy frissítési művelet végrehajtásakor a célként megadott objektumban lévő ADATFRISSÍTÉS NULL értékűre. Szúrjon be egy NULL értéket a beszúrási művelet végrehajtásakor. | Nem (az alapértelmezett érték hamis) |
+| type | A másolási tevékenység fogadójának típustulajdonságát **SalesforceSink (SalesforceSink**) tulajdonságra kell állítani. | Igen |
+| writeBehavior (írási viselkedés) | A művelet írási viselkedése.<br/>Az engedélyezett értékek: **Insert** és **Upsert**. | Nem (az alapértelmezett beállítás beszúrása) |
+| externalIdFieldName | A upsert művelet külső azonosítómezőjének neve. A megadott mezőt "Külső azonosító mezőként" kell definiálni a Salesforce objektumban. Nem lehet NULL érték a megfelelő bemeneti adatokban. | Igen a "Upsert" |
+| writeBatchSize | Az egyes kötegekben a Salesforce-ba írt adatok sorszáma. | Nem (az alapértelmezett érték 5000) |
+| ignoreNullValues | Azt jelzi, hogy az írási művelet során figyelmen kívül kell-e hagyni a bemeneti adatok NULL értékeit.<br/>Az engedélyezett értékek **igazak** és **hamisak.**<br>- **Igaz**: A célobjektumban lévő adatok változatlanok maradnak, ha upsert vagy frissítési műveletet végez. Beszúrási művelet esetén szúrjon be egy definiált alapértelmezett értéket.<br/>- **Hamis**: Frissítse a célobjektum adatait NULL értékre upsert vagy frissítési művelet esetén. Null érték beszúrása beszúrási művelet esetén. | Nem (az alapértelmezett érték hamis) |
 
-**Példa: Salesforce-fogadó egy másolási tevékenységben**
+**Példa: A Salesforce elsüllyesztegy másolási tevékenységet**
 
 ```json
 "activities":[
@@ -282,70 +282,70 @@ Az adatmásoláshoz a másolási tevékenységben állítsa be a Salesforce a **
 ]
 ```
 
-## <a name="query-tips"></a>Lekérdezési tippek
+## <a name="query-tips"></a>Tippek lekérdezési tippek
 
-### <a name="retrieve-data-from-a-salesforce-report"></a>Adatok beolvasása egy Salesforce-jelentésből
+### <a name="retrieve-data-from-a-salesforce-report"></a>Adatok beolvasása Salesforce-jelentésből
 
-A Salesforce-jelentésekben lévő adatok lekéréséhez a lekérdezés `{call "<report name>"}`ként való megadásával adható meg. Például: `"query": "{call \"TestReport\"}"`.
+A Salesforce-jelentésekből adatokat úgy kérhet `{call "<report name>"}`be, hogy lekérdezést a . Például: `"query": "{call \"TestReport\"}"`.
 
-### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Törölt rekordok lekérése a Salesforce Lomtárból
+### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Törölt rekordok beolvasása a Salesforce Lomtárból
 
-Ha le szeretné kérdezni a Salesforce Lomtárában lévő nem törölt rekordokat, megadhatja `readBehavior` `queryAll`ként. 
+Ha a helyreállíthatóan törölt rekordokat a Salesforce `queryAll`Lomtárból szeretné lekérdezni, megadhatja a ( fájlként) adható `readBehavior` meg. 
 
-### <a name="difference-between-soql-and-sql-query-syntax"></a>A SOQL és az SQL-lekérdezési szintaxis közötti különbség
+### <a name="difference-between-soql-and-sql-query-syntax"></a>Az SOQL és az SQL lekérdezés szintaxisa közötti különbség
 
-Az adatok Salesforce való másolása során SOQL-lekérdezést vagy SQL-lekérdezést használhat. Vegye figyelembe, hogy ez a kettő eltérő szintaxissal és funkció-támogatással rendelkezik, ne keverje hozzá. Azt javasoljuk, hogy használja a SOQL-lekérdezést, amelyet a Salesforce natív módon támogat. A következő táblázat a fő különbségeket sorolja fel:
+Adatok másolásakor a Salesforce-ból SOQL vagy SQL lekérdezést használhat. Ne feledje, hogy ez a kettő különböző szintaxisés funkciók támogatása, ne keverjük össze. Javasoljuk, hogy használja a Salesforce által natívan támogatott SOQL lekérdezést. Az alábbi táblázat a főbb különbségeket sorolja fel:
 
-| Szintaxis | SOQL mód | SQL-mód |
+| Szintaxis | SOQL mód | SQL mód |
 |:--- |:--- |:--- |
-| Oszlop kijelölése | Fel kell sorolni a lekérdezésbe másolandó mezőket, például `SELECT field1, filed2 FROM objectname` | az oszlop kijelölése mellett `SELECT *` is támogatott. |
-| Idézőjelek | A beiktatott/objektumnév nem lehet idézőjelben. | A mező-vagy objektumnév idézőjelek lehetnek, például `SELECT "id" FROM "Account"` |
-| Dátum és idő formátuma |  Tekintse meg [a részleteket és](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) a példákat a következő szakaszban. | Tekintse meg [a részleteket és](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) a példákat a következő szakaszban. |
-| Logikai értékek | `False` és `True`jelöli, például `SELECT … WHERE IsDeleted=True`. | 0 vagy 1, például `SELECT … WHERE IsDeleted=1`. |
-| Oszlop átnevezése | Nem támogatott. | Támogatott, például: `SELECT a AS b FROM …`. |
-| Relationship | Támogatott, például `Account_vod__r.nvs_Country__c`. | Nem támogatott. |
+| Oszlopkijelölés | A lekérdezésben másolandó mezők et kell felsorolni, pl.`SELECT field1, filed2 FROM objectname` | `SELECT *`az oszlopkijelölés mellett támogatott. |
+| Idézőjelek | Az iktatott/objektumnevek nem idézhetők. | A mező-/objektumnevek et meg lehet adni, pl.`SELECT "id" FROM "Account"` |
+| Dátumidő formátum |  Lásd a részleteket [itt](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) és mintákat a következő részben. | Lásd a részleteket [itt](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) és mintákat a következő részben. |
+| Logikai értékek | Képviseli, `False` `True`és, pl. `SELECT … WHERE IsDeleted=True`. | 0 vagy 1 színben tüntetve, pl. `SELECT … WHERE IsDeleted=1` |
+| Oszlop átnevezése | Nem támogatott. | Támogatott, pl.: `SELECT a AS b FROM …`. |
+| Kapcsolat | Támogatott, pl. `Account_vod__r.nvs_Country__c`. | Nem támogatott. |
 
-### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Az adatlekérdezés a DateTime oszlop where záradékának használatával
+### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Adatok beolvasása a DateTime oszlop where záradékával
 
-Ha megadja a SOQL vagy az SQL-lekérdezést, ügyeljen a DateTime formátum különbségére. Példa:
+Az SOQL vagy SQL lekérdezés megadásakor figyeljen a DateTime formátumkülönbségre. Példa:
 
-* **SOQL minta**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL-minta**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+* **SOQL minta:**`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL-minta**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY hiba: csonkolt
+### <a name="error-of-malformed_querytruncated"></a>Hiba a MALFORMED_QUERY:Csonkolt
 
-Ha a "MALFORMED_QUERY: csonkolt" hibaüzenet jelenik meg, általában az az oka, hogy a JunctionIdList Type oszlopa van az adathalmazban, és a Salesforce korlátozást tartalmaz az ilyen típusú, nagy mennyiségű sort tartalmazó adatmennyiségre. A megoldáshoz próbálja meg kizárni a JunctionIdList oszlopot, vagy korlátozza a másolandó sorok számát (több másolási tevékenységre is particionálhat).
+Ha bejön hiba "MALFORMED_QUERY: Csonka", általában ez annak köszönhető, hogy van JunctionIdList típusú oszlop az adatok és a Salesforce korlátozza az ilyen adatok támogatása nagy számú sort. A mérséklés érdekében próbálja meg kizárni a JunctionIdList oszlopot, vagy korlátozni a másolni kívánt sorok számát (több másolási tevékenységfuttatásra is particionálhat).
 
-## <a name="data-type-mapping-for-salesforce"></a>Adattípusok leképezése Salesforce
+## <a name="data-type-mapping-for-salesforce"></a>Adattípus-hozzárendelés a Salesforce-hoz
 
-Az adatok Salesforce-ből való másolása során a rendszer a következő leképezéseket használja a Salesforce adattípusok között az ideiglenes adattípusok Data Factory. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
+Amikor adatokat másol a Salesforce-ból, a következő leképezések lesznek használatban a Salesforce adattípusoktól a Data Factory köztes adattípusokig. Ha többet szeretne tudni arról, hogy a másolási tevékenység hogyan rendeli le a forrássémát és az adattípust a fogadóhoz, olvassa el a [Séma- és adattípus-hozzárendelések című témakört.](copy-activity-schema-and-type-mapping.md)
 
-| Salesforce adattípusa | Data Factory időközi adattípus |
+| Salesforce adattípus | Adatgyár köztes adattípusa |
 |:--- |:--- |
 | Automatikus szám |Sztring |
 | Jelölőnégyzet |Logikai |
-| Currency (Deviza) |Decimális |
-| Dátum |Dátum és idő |
-| Dátum/idő |Dátum és idő |
-| E-mail cím |Sztring |
+| Currency (Pénznem) |Decimal |
+| Dátum |DateTime |
+| Dátum és idő |DateTime |
+| E-mail |Sztring |
 | Azonosító |Sztring |
-| Keresési kapcsolat |Sztring |
-| Többszörös kijelölési lista |Sztring |
-| Szám |Decimális |
-| Százalék |Decimális |
-| Telefonszám |Sztring |
+| Keresőkapcsolat |Sztring |
+| Többválasztós lista |Sztring |
+| Szám |Decimal |
+| Százalék |Decimal |
+| Telefon |Sztring |
 | Picklist |Sztring |
 | Szöveg |Sztring |
 | Szövegterület |Sztring |
 | Szövegterület (hosszú) |Sztring |
-| Szövegterület (Rich) |Sztring |
+| Szövegterület (gazdag) |Sztring |
 | Szöveg (titkosított) |Sztring |
 | URL-cím |Sztring |
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
 
-## <a name="next-steps"></a>Következő lépések
-A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A Data Factory másolási tevékenysége által forrásként és fogadóként támogatott adattárak listáját a Támogatott adattárak című témakörben [tetszését.](copy-activity-overview.md#supported-data-stores-and-formats)

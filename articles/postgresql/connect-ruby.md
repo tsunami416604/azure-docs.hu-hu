@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódjon a Ruby-Azure Database for PostgreSQL – egyetlen kiszolgálóval
-description: Ez a rövid útmutató egy Ruby-kódrészletet tartalmaz, amellyel összekapcsolhatók és beolvashatók az Azure Database for PostgreSQL-kiszolgálóról származó adatok.
+title: Kapcsolatfelvétel a Ruby - Azure Database for PostgreSQL -Single Server csomaggal
+description: Ez a rövid útmutató egy Ruby-kód mintát biztosít, amelynek segítségével adatokat csatlakoztathat és lekérdezhet az Azure Database for PostgreSQL – Single Server szolgáltatásból.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,14 +9,14 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74766905"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló: a Ruby használata a kapcsolódáshoz és az adatlekérdezéshez
-Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet egy [Ruby](https://www.ruby-lang.org)-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Bemutatjuk, hogy SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Ruby használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
+# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL – Single Server: A Ruby használata adatok csatlakoztatásához és lekérdezéséhez
+Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet egy [Ruby](https://www.ruby-lang.org)-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Ruby használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
@@ -25,19 +25,19 @@ A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforr
 
 A következőket is telepítenie kell:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
-- Ruby PG, a Rubyhoz tartozó PostgreSQL-modul
+- Ruby pg, a Ruby PostgreSQL modulja
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-ruby/1-connection-string.png)
 
 > [!NOTE]
-> Az Azure postgres username `@` szimbóluma URL-címként lett kódolva az összes kapcsolatban lévő karakterláncban `%40`ként. 
+> Az `@` Azure Postgres felhasználónévben lévő szimbólum url-cím kódolása az összes kapcsolati `%40` karakterlánchoz. 
 
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód segítségével csatlakozzon, és hozzon létre egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasítással adjon hozzá sorokat a táblához.
@@ -152,7 +152,7 @@ end
 
 
 ## <a name="delete-data"></a>Adat törlése
-Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **DELETE** SQL-utasítás segítségével. 
+A következő kód használatával csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. 
 
 A kód egy [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) objektumot használ a [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) konstruktorral a PostgreSQL-hez készült Azure Database-hez való kapcsolódáshoz. Ezután meghívja az [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) metódust az UPDATE parancs futtatásához. A kód a [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) osztály használatával ellenőrzi a hibákat. Végül pedig a [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
@@ -184,6 +184,6 @@ ensure
 end
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

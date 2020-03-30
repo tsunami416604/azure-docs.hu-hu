@@ -1,6 +1,6 @@
 ---
-title: ToString Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function ToString Azure Cosmos DB.
+title: ToString az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg az SQL rendszer funkció ToString az Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304259"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
- Egy skaláris kifejezés karakterláncként adja vissza. 
+ Skaláris kifejezés karakterlánc-ábrázolását adja vissza. 
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -25,16 +25,16 @@ ToString(<expr>)
   
 ## <a name="arguments"></a>Argumentumok
   
-*kifejezés*  
-   Bármely skaláris kifejezés.  
+*Kifejezés*  
+   Bármilyen skaláris kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezés adja vissza.  
+  Karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan viselkedik a `ToString` különböző típusokban.   
+  A következő példa `ToString` bemutatja, hogyan viselkedik a különböző típusok között.   
   
 ```sql
 SELECT 
@@ -48,16 +48,16 @@ SELECT
     ToString(undefined) AS str8
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"str1": "1", "str2": "Hello World", "str3": "NaN", "str4": "Infinity", "str5": "false", "str6": "0.1234", "str7": "false"}]  
 ```  
- Adja meg a következő bemenet:
+ A következő adatokkal:
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- Az alábbi példa azt szemlélteti, hogyan használhatók a `ToString` más karakterlánc-függvényekkel, például a `CONCAT`sal.   
+ A következő példa `ToString` bemutatja, hogyan használható `CONCAT`más karakterlánc-függvényekkel, például a.   
  
 ```sql
 SELECT 
@@ -65,7 +65,7 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
-Íme az eredményhalmaz.  
+Itt van az eredményhalmaz.  
   
 ```json
 [{"$1":"4lb" },
@@ -74,11 +74,11 @@ FROM p in c.Products
 {"$1":"8999mg" }]
 
 ```  
-A következő bemeneti megadott.
+A következő adatokkal.
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-Az alábbi példa azt szemlélteti, hogyan használhatók a `ToString` más karakterlánc-függvényekkel, például a `REPLACE`sal.   
+A következő példa `ToString` bemutatja, hogyan használható `REPLACE`más karakterlánc-függvényekkel, például a.   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -86,7 +86,7 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
-Íme az eredményhalmaz.  
+Itt van az eredményhalmaz.  
  ```json
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
@@ -97,10 +97,10 @@ JOIN n IN food.nutrients
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

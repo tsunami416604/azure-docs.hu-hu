@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón?
-description: Ismerje meg, hogy az Azure-webalkalmazások tűzfala az Azure bejárati ajtó szolgáltatásában Hogyan védi a webalkalmazásait a kártékony támadások ellen.
+title: Mi az Azure webalkalmazás tűzfal az Azure Bejárati ajtaján?
+description: Ismerje meg, hogy az Azure Bejárati ajtaján található Azure webalkalmazás-tűzfal hogyan védi a webalkalmazásokat a rosszindulatú támadásokkal szemben.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,123 +8,123 @@ ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
 ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77915639"
 ---
-# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón
+# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure webalkalmazás-tűzfal az Azure bejárati ajtaján
 
-Az Azure webalkalmazási tűzfal (WAF) az Azure-beli bejárati ajtón központosított védelmet biztosít a webalkalmazások számára. A WAF megvédi webszolgáltatásait a gyakori biztonsági rések és sebezhetőségek ellen. A szolgáltatás elérhetővé válik a felhasználók számára, és segít a megfelelőségi követelmények teljesítésében.
+Az Azure Web Application Firewall (WAF) az Azure Bejárati ajtaján központosított védelmet nyújt a webalkalmazások számára. A WAF megvédi a webes szolgáltatásokat a gyakori biztonsági rések és biztonsági rések ellen. A szolgáltatás magas rendelkezésre állású marad a felhasználók számára, és segít a megfelelőségi követelmények teljesítésében.
 
-A WAF globális és központosított megoldás. Üzembe helyezése az Azure-beli hálózati peremhálózati telephelyeken a világon. A WAF-kompatibilis webalkalmazások minden bejövő kérelmet megvizsgálnak a hálózat peremén. 
+A WAF on Front Door egy globális és központosított megoldás. Az Azure hálózati peremhálózati helyeken világszerte telepítve van. A WAF-kompatibilis webalkalmazások a Bejárati ajtó által a hálózat szélén küldött minden bejövő kérést megvizsgálnak. 
 
-A WAF megakadályozza, hogy a rosszindulatú támadások a támadási források közelébe lépjenek, mielőtt belépnek a virtuális hálózatba. A globális védelmet a teljesítmény feláldozása nélkül érheti el. A WAF szabályzat egyszerűen az előfizetésben lévő bejárati profilokra mutató hivatkozásokat tartalmaz. Az új szabályok percek alatt üzembe helyezhetők, így gyorsan reagálhat a veszélyforrások változására.
+A WAF megakadályozza a támadási forrásokhoz közeli rosszindulatú támadásokat, mielőtt azok belépnének a virtuális hálózatba. A teljesítmény feláldozása nélkül globális védelmet kap. A WAF-szabályzat könnyen hivatkozhat az előfizetés bármely Bejárati ajtajának profiljára. Az új szabályok perceken belül üzembe helyezhetők, így gyorsan reagálhat a fenyegetésminták módosítására.
 
-![Azure webalkalmazási tűzfal](../media/overview/wafoverview.png)
+![Az Azure webalkalmazás tűzfala](../media/overview/wafoverview.png)
 
-## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
+## <a name="waf-policy-and-rules"></a>WAF politika és szabályok
 
-Beállíthat egy WAF szabályzatot, és hozzárendelheti a szabályzatot egy vagy több előtér-előtérben a védelemhez. A WAF szabályzatok a biztonsági szabályok két típusát alkotják:
+Konfigurálhatja a WAF-házirendet, és ezt a házirendet egy vagy több bejárati ajtó előtéréhez társíthatja a védelem érdekében. A WAF-házirend kétféle biztonsági szabályból áll:
 
-- az ügyfél által létrehozott egyéni szabályok.
+- az ügyfél által készített egyéni szabályok.
 
-- felügyelt szabálykészlet, amely az Azure által felügyelt előre konfigurált szabályok gyűjteménye.
+- felügyelt szabálykészletek, amelyek az Azure által felügyelt előre konfigurált szabálykészlet gyűjteménye.
 
-Ha mindkettő létezik, az egyéni szabályok feldolgozása a felügyelt szabálykészlet szabályainak feldolgozása előtt történik meg. A szabályok egyeztetési feltételből, prioritásból és műveletből állnak. Támogatott tevékenységtípusok: Engedélyezés, LETILTÁS, napló és átirányítás. A felügyelt és az egyéni szabályok kombinálásával teljes mértékben testre szabott szabályzatot hozhat létre, amely megfelel az adott alkalmazás védelmi követelményeinek.
+Ha mindkettő jelen van, az egyéni szabályok feldolgozása a felügyelt szabálykészletben lévő szabályok feldolgozása előtt lesz. A szabály egyegyezési feltételből, prioritásból és műveletből áll. A támogatott művelettípusok a következők: ALLOW, BLOCK, LOG és REDIRECT. Létrehozhat egy teljesen testre szabott szabályzatot, amely megfelel az adott alkalmazásvédelmi követelményeknek a felügyelt és az egyéni szabályok kombinálásával.
 
-A szabályzaton belüli szabályok feldolgozása prioritási sorrendben történik. A Priority egy egyedi egész szám, amely meghatározza a feldolgozandó szabályok sorrendjét. A kisebb egész szám magasabb prioritást jelöl, és ezeket a szabályokat a rendszer a magasabb egész értékkel rendelkező szabályok előtt értékeli ki. A szabály egyeztetése után a szabályban definiált megfelelő művelet lesz alkalmazva a kérelemre. Az ilyen egyezés feldolgozását követően az alacsonyabb prioritású szabályok nem kerülnek feldolgozásra.
+A házirenden belüli szabályok feldolgozása prioritási sorrendben történik. A prioritás egy egyedi egész szám, amely meghatározza a feldolgozandó szabályok sorrendjét. A kisebb egész érték magasabb prioritást jelöl, és ezeket a szabályokat a rendszer a magasabb egész értékkel rendelkező szabályok előtt értékeli ki. Ha egy szabály egyeztetése van, a szabályban definiált megfelelő művelet lesz alkalmazva a kérelemre. Az ilyen egyezés feldolgozása után az alacsonyabb prioritású szabályok at nem dolgozzák fel tovább.
 
-Egy bejárati ajtó által szállított webalkalmazásnak egyszerre csak egy WAF szabályzata lehet társítva. Azonban a WAF szabályzatok nélkül is beállíthatja a bejárati ajtót. Ha van WAF-szabályzat, a rendszer replikálja az összes peremhálózati helyszínre, hogy biztosítsa az egységes biztonsági házirendeket az egész világon.
+A Bejárati ajtó által szállított webalkalmazáshoz egyszerre csak egy WAF-házirend tartozhat. Azonban lehet egy bejárati ajtó konfiguráció nélkül WAF-házirendek társítva. Ha egy WAF-szabályzat van jelen, a rendszer replikálja az összes peremhálózati helyünkre, hogy világszerte egységes biztonsági házirendeket biztosítson.
 
 ## <a name="waf-modes"></a>WAF módok
 
-A WAF házirend a következő két módban való futtatásra konfigurálható:
+A WAF-házirend beállítható úgy, hogy a következő két módban fusson:
 
-- **Észlelési mód:** Ha az észlelési módban fut, a WAF nem hajt végre más műveleteket, mint a figyelők, és naplózza a kérést és a megegyező WAF-szabályt a WAF-naplókba. Bekapcsolhatja a naplózási diagnosztikát a bejárati ajtóhoz. A portál használata esetén lépjen a **diagnosztika** szakaszra.
+- **Észlelési mód:** Észlelési módban a WAF nem tesz más műveletet, mint figyeli és naplózza a kérelmet és az egyező WAF-szabályt a WAF-naplókba. Bekapcsolhatja a naplózási diagnosztika a Bejárati ajtó. A portál használatakor nyissa meg a **Diagnosztika szakaszt.**
 
-- **Megelőzési mód:** Megelőzési módban a WAF a megadott műveletet hajtja végre, ha egy kérelem megfelel egy szabálynak. Ha talál egyezést, az alacsonyabb prioritású további szabályok kiértékelése nem történik meg. A rendszer a WAF-naplókban is naplózza a megfeleltetett kérelmeket.
+- **Megelőzési mód:** Megelőzési módban a WAF végrehajtja a megadott műveletet, ha egy kérelem megfelel egy szabálynak. Ha egyezést talál, a rendszer nem számít ki további alacsonyabb prioritású szabályokat. Az egyező kérelmek et is naplózza a WAF-naplók.
 
-## <a name="waf-actions"></a>WAF műveletek
+## <a name="waf-actions"></a>WAF-műveletek
 
-A WAF-ügyfelek az egyik műveletből választhatnak, ha egy kérelem megfelel egy szabály feltételeinek:
+A WAF-ügyfelek választhatnak, hogy az egyik műveletből futnak, ha egy kérelem megfelel egy szabály feltételeinek:
 
-- **Engedélyezés:**  A kérelem áthalad a WAF, és a rendszer továbbítja a háttérbe. Az alacsonyabb prioritású szabályok nem tudják blokkolni ezt a kérést.
-- **Letiltás:** A kérés le van tiltva, és a WAF választ küld az ügyfélnek, és nem továbbítja a kérést a háttér felé.
-- **Napló:**  A rendszer naplózza a kérelmet a WAF-naplókban, és a WAF folytatja az alacsonyabb prioritású szabályok kiértékelését.
-- **Átirányítás:** A WAF átirányítja a kérést a megadott URI-ra. A megadott URI egy házirendi szintű beállítás. A konfigurálást követően a rendszer az **átirányítási** műveletnek megfelelő összes kérelmet elküldi az adott URI-nak.
+- **Engedélyezés:**  A kérelem áthalad a WAF-on, és a háttérbe kerül. További alacsonyabb prioritású szabályok nem tilthatják le ezt a kérést.
+- **Blokk:** A kérelem le van tiltva, és a WAF választ küld az ügyfélnek anélkül, hogy a kérést a háttérrendszerbe továbbítana.
+- **Napló:**  A kérelem be van jelentkezve a WAF-naplókba, és a WAF folytatja az alacsonyabb prioritású szabályok kiértékelését.
+- **Átirányítás:** A WAF átirányítja a kérelmet a megadott URI-ba. A megadott URI egy házirendszintű beállítás. Konfigurálás után az **átirányítási** műveletnek megfelelő összes kérelmet elküldi a rendszer az adott URI-nak.
 
 ## <a name="waf-rules"></a>WAF-szabályok
 
-A WAF szabályzatok két különböző típusú biztonsági szabályt tartalmazhatnak – egyéni szabályokat, amelyeket az ügyfél és a felügyelt szabályrendszerek, valamint az Azure által felügyelt előre konfigurált szabályok határoznak meg.
+A WAF-szabályzat kétféle biztonsági szabályból állhat : egyéni szabályokból, amelyeket az ügyfél és a felügyelt szabálykészletek, az Azure által felügyelt, előre konfigurált szabálykészlet tartalmaz.
 
-### <a name="custom-authored-rules"></a>Egyéni létrehozott szabályok
+### <a name="custom-authored-rules"></a>Egyéni szerzői szabályok
 
-Az egyéni szabályokat a következőképpen állíthatja be: WAF
+A WAF egyéni szabályokat a következőképpen állíthatja be:
 
-- **IP-engedélyezési lista és blokkolási lista:** A webalkalmazásokhoz való hozzáférést az ügyfél IP-címei vagy az IP-címtartományok listája alapján szabályozhatja. Az IPv4-és IPv6-címek egyaránt támogatottak. A lista beállítható úgy, hogy blokkolja vagy engedélyezze ezeket a kéréseket, ahol a forrás IP-cím megegyezik a listában szereplő IP-címekkel.
+- **IP-engedélyezési lista és tiltólista:** A webalkalmazásokhoz való hozzáférést az ügyfél IP-címeinek vagy IP-címtartományainak listája alapján szabályozhatja. Mind az IPv4, mind az IPv6-címtípusok támogatottak. Ez a lista beállítható úgy, hogy letiltsa vagy engedélyezze azokat a kérelmeket, amelyeknél a forrás IP-címe megegyezik a listában szereplő IP-címekkel.
 
 - **Földrajzi alapú hozzáférés-vezérlés:** A webalkalmazásokhoz való hozzáférést az ügyfél IP-címéhez társított országkód alapján szabályozhatja.
 
-- **Http-paraméterek-alapú hozzáférés-vezérlés:** A karakterlánc-egyezések alapjául a HTTP/HTTPS-kérések paramétereinek alapszabályai érvényesek.  Például a lekérdezési karakterláncok, a POST argumentumok, a kérelem URI-ja, a kérelem fejléce és a kérelem törzse.
+- **HTTP-paramétereken alapuló hozzáférés-vezérlés:** A HTTP/HTTPS kérelem paramétereiben karakterlánc-egyezésekre alapzattal alapulhat.  Például lekérdezési karakterláncok, POST args, Request URI, Request Header és Request Body.
 
-- **Kérelem metódus-alapú hozzáférés-vezérlése:** A kérelem HTTP-kérelmi metódusán alapuló szabályok. Például: GET, PUT vagy HEAD.
+- **Módszeralapú hozzáférés-vezérlés kérése:** A kérelmek HTTP-kérelem metódusán alapuló szabályok. Például GET, PUT vagy HEAD.
 
-- **Méret megkötése:** Az alapszabályokat a kérelem adott részeinek hosszára alapozhatja, például a lekérdezési karakterláncot, az URI-t vagy a kérelem törzsét.
+- **Méretmegkötés:** A szabályok alapja a kérelmek bizonyos részeinek hosszát, például a lekérdezési karakterlánc, Uri vagy a kérelem törzse.
 
-- **Korlátozási szabályok:** A díjszabás-ellenőrzési szabály az ügyfél IP-címétől érkező rendellenes nagy forgalom korlátozása. Egy percen belül beállíthat egy küszöbértéket az ügyfél IP-címén engedélyezett webes kérelmek számára. Ez a szabály különbözik egy olyan IP-lista alapú engedélyezési/letiltási szabálytól, amely engedélyezi vagy letiltja az ügyfél IP-címéről érkező összes kérést. A díjszabási korlátok kombinálhatók további egyeztetési feltételekkel, például a HTTP (S) paraméterekkel, amelyek a részletes díjszabás-vezérléshez egyeznek.
+- **Sebességkorlátozó szabályok:** A díjszabályozási szabály az, hogy korlátozza a rendellenes nagy forgalmat bármely ügyfél IP-cím. Az ügyfél IP-címéről egy perces időtartam alatt engedélyezett webes kérelmek számának küszöbértékét konfigurálhatja. Ez a szabály különbözik az IP-lista alapú engedélyezési/letiltási egyéni szabálytól, amely lehetővé teszi az összes kérést, vagy letiltja az ügyfél IP-címének összes kérését. A sebességkorlátok kombinálhatók további egyezési feltételekkel, például a HTTP(S) paraméteregyezéssel a részletes sebességszabályozáshoz.
 
-### <a name="azure-managed-rule-sets"></a>Azure által felügyelt szabálykészlet
+### <a name="azure-managed-rule-sets"></a>Azure által felügyelt szabálykészletek
 
-Az Azure által felügyelt szabálykészlet egyszerű módszert kínál a védelem közös biztonsági fenyegetésekkel való üzembe helyezésére. Mivel az ilyen szabályrendszerek az Azure felügyeli, a szabályok az új támadási aláírások elleni védelemhez szükséges módon frissülnek. Az Azure által felügyelt alapértelmezett szabálykészlet a következő veszélyforrás-kategóriákra vonatkozó szabályokat tartalmazza:
+Az Azure által felügyelt szabálykészletek egyszerű módot biztosítanak a biztonsági fenyegetések közös készlete elleni védelem üzembe helyezésére. Mivel az ilyen szabályeket az Azure kezeli, a szabályok szükség szerint frissülnek az új támadásaláírások elleni védelem érdekében. Az Azure által felügyelt alapértelmezett szabálykészlet a következő fenyegetéskategóriákra vonatkozó szabályokat tartalmazza:
 
-- Helyek közötti parancsfájlok futtatása
-- Java-támadások
+- Webhelyek közötti, szkriptalapú támadás
+- Java támadások
 - Helyi fájl felvétele
-- PHP-injektálási támadások
+- PHP injekció támadások
 - Távoli parancs végrehajtása
-- Távoli fájl belefoglalása
+- Távolifájl-beszúrás
 - Munkamenet-rögzítés
 - SQL-injektálás elleni védelem
-- Protokoll-támadók
+- Protokolltámadók
 
-Az alapértelmezett szabálykészlet verziószáma akkor növekszik, amikor új támadási aláírásokat adnak hozzá a szabálykészlet számára.
-Az alapértelmezett szabálykészlet alapértelmezés szerint engedélyezve van a WAF házirendek észlelési módjában. Az alapértelmezett szabálykészlet egyes szabályait letilthatja vagy engedélyezheti az alkalmazásra vonatkozó követelmények teljesítéséhez. Szabályként beállíthat meghatározott műveleteket is (Engedélyezés/LETILTÁS/átirányítás/napló).
+Az alapértelmezett szabálykészlet verziószáma, amikor új támadási aláírásokat ad nak a szabálykészlethez.
+Az alapértelmezett szabálykészlet alapértelmezés szerint engedélyezve van észlelési módban a WAF-házirendekben. Az alapértelmezett szabálykészleten belül letilthatja vagy engedélyezheti az egyes szabályokat, hogy megfeleljenek az alkalmazáskövetelményeinek. Szabályonként meghatározott műveleteket is beállíthat (ALLOW/BLOCK/REDIRECT/LOG).
 
-Esetenként előfordulhat, hogy a WAF kiértékelése során bizonyos kérési attribútumokat ki kell hagyni. Gyakori példa Active Directory beszúrt tokenek használata a hitelesítéshez. Egy felügyelt szabály, szabálytípus vagy a teljes szabálykészlet kizárási listáját is konfigurálhatja.  
+Néha előfordulhat, hogy ki kell hagynia bizonyos kérésattribútumokat a WAF-kiértékelésből. Gyakori példa a hitelesítéshez használt Active Directory által beszúrt tokenek. Kizárási listát konfigurálhat egy felügyelt szabályhoz, szabálycsoporthoz vagy a teljes szabálykészlethez.  
 
-Az alapértelmezett művelet a LETILTÁS. Emellett az egyéni szabályok is konfigurálhatók ugyanabban a WAF-házirendben, ha meg szeretné kerülni az alapértelmezett szabálykészlet összes előre konfigurált szabályát.
+Az alapértelmezett művelet a BLOKK. Ezenkívül az egyéni szabályok konfigurálhatók ugyanabban a WAF-házirendben, ha meg szeretné kerülni az alapértelmezett szabálykészlet ben lévő előre konfigurált szabályok bármelyikét.
 
-Az egyéni szabályokat a rendszer mindig alkalmazza az alapértelmezett szabálykészlet szabályainak kiértékelése előtt. Ha egy kérelem megfelel egy egyéni szabálynak, a rendszer alkalmazza a vonatkozó szabály műveletét. A kérést a rendszer blokkolja vagy továbbítja a háttérnek. Más egyéni szabályok vagy az alapértelmezett szabálykészlet szabályai nem lesznek feldolgozva. Eltávolíthatja a WAF szabályzatok alapértelmezett szabályát is.
+Az egyéni szabályok mindig az alapértelmezett szabálykészlet szabályainak kiértékelése előtt kerülnek alkalmazásra. Ha egy kérelem megfelel egy egyéni szabálynak, a megfelelő szabályművelet lesz alkalmazva. A kérelem le van tiltva, vagy átjutott a háttér-ba. Más egyéni szabályok at vagy az alapértelmezett szabálykészlet ben lévő szabályokat nem dolgozza fel a rendszer. Az alapértelmezett szabálykészletet a WAF-házirendekből is eltávolíthatja.
 
-### <a name="bot-protection-rule-set-preview"></a>Robot Protection-szabály beállítása (előzetes verzió)
+### <a name="bot-protection-rule-set-preview"></a>Bot védelmi szabálykészlet (előzetes verzió)
 
-Engedélyezheti egy felügyelt robot védelmi szabály beállítását, hogy egyéni műveleteket hajtson végre az ismert bot-kategóriákból érkező kérések esetén. 
+Engedélyezheti a felügyelt robotvédelmi szabálykészletet, hogy egyéni műveleteket végrehajtson az ismert robotkategóriákból érkező kérelmeken. 
 
-Három bot-kategória támogatott: rossz, jó és ismeretlen. A robot-aláírásokat a WAF platform felügyeli és dinamikusan frissíti.
+Három támogatott botkategória van: Rossz, Jó és Ismeretlen. A robotaláírásokat a WAF platform kezeli és dinamikusan frissíti.
 
-A helytelen robotok közé tartoznak a rosszindulatú IP-címekről és robotoktól származó robotok, amelyek hamisítják identitását. A rosszindulatú IP-címek a Microsoft Threat Intelligence-hírcsatornából származnak, és óránként frissülnek. A [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.
+A hibás robotok közé tartoznak a rosszindulatú IP-címekről származó botok és a személyazonosságukat meghamisított robotok. A rosszindulatú IP-címek a Microsoft Threat Intelligence hírcsatornából származnak, és óránként frissülnek. [Az Intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft Fenyegetésintelligenciával rendelkezik, és több szolgáltatás, köztük az Azure Security Center is használja.
 
-A jó robotok közé tartoznak az ellenőrzött keresőmotorok. Az ismeretlen kategóriák közé tartoznak olyan további robot-csoportok is, amelyek botokként azonosítottak. Például: piac-elemző, hírcsatorna-beolvasási és adatgyűjtési ügynökök. 
+Jó botok közé érvényesített keresőmotorok. Ismeretlen kategóriák közé tartozik a további bot csoportok, amelyek azonosították magukat, mint a botok. Például a piaci analizátor, a takarmányleírók és az adatgyűjtési ügynökök. 
 
-Az ismeretlen robotok további ellenőrzés nélkül vannak kategorizálva a közzétett felhasználói ügynökökön keresztül. Egyéni műveleteket is beállíthat a különböző típusú robotok blokkolásához, engedélyezéséhez, naplózásához és átirányításához.
+Ismeretlen botok vannak besorolva közzétett felhasználói ügynökök további érvényesítés nélkül. Egyéni műveleteket állíthat be a különböző típusú robotok blokkolására, engedélyezésére, naplózására vagy átirányítására.
 
-![Robot Protection-szabály beállítása](../media/afds-overview/botprotect2.png)
+![Bot védelmi szabálykészlet](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> A robot Protection-szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és az előzetes verziójú szolgáltatói szerződéssel rendelkezik. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A robotvédelemi szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és előzetes szolgáltatásiszint-szerződéssel rendelkezik. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ha a bot Protection engedélyezve van, a rendszer a bot-szabályoknak megfelelő bejövő kérelmeket a FrontdoorWebApplicationFirewallLog naplóban naplózza. A WAF-naplókat egy Storage-fiókból, az Event hub-ból vagy a log Analyticsből is elérheti.
+Ha a robotvédelem engedélyezve van, a rendszer a FrontdoorWebApplicationFirewallLog naplózza a robotszabályoknak megfelelő bejövő kérelmeket. Waf-naplókat egy tárfiókból, eseményközpontból vagy naplóelemzésből érhet el.
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az összes WAF konfigurálhatja és telepítheti a Azure Portal, a REST API-k, a Azure Resource Manager sablonok és a Azure PowerShell használatával.
+Az Azure Portalon, a REST API-kon, az Azure Resource Manager-sablonokon és az Azure PowerShellen keresztül konfigurálhatja és telepítheti az összes WAF-szabálytípust.
 
 ## <a name="monitoring"></a>Figyelés
 
-A WAF figyelése a bejárati ajtón integrált Azure Monitor a riasztások nyomon követésére és a forgalmi trendek egyszerű figyelésére.
+A WAF frontajtós figyelése integrálva van az Azure Monitorszolgáltatással a riasztások nyomon követéséhez és a forgalmi trendek egyszerű figyeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg az Azure-beli [webalkalmazási tűzfalat Application Gateway](../ag/ag-overview.md)
+- Tudnivalók a [webalkalmazás-tűzfalról az Azure Application Gateway-en](../ag/ag-overview.md)
