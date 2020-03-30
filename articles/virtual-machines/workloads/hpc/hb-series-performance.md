@@ -1,6 +1,6 @@
 ---
-title: HB sorozatú virtuális gép mérete teljesítmény - Azure Virtual Machines |} A Microsoft Docs
-description: Ismerje meg a teljesítmény-ellenőrzési eredmények HB-sorozat virtuális gépeinek esetében az Azure-ban.
+title: HB sorozatú virtuális gépek mérete teljesítmény - Azure virtuális gépek | Microsoft dokumentumok
+description: Ismerje meg a HB sorozatú virtuálisgépek azure-beli teljesítménytesztelési eredményeit.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,62 +12,62 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 820aa1d04437a80f72e95fab71f5c8503c59822c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e064db5f67e6f8a7e82093bdae9fac7eaa4b6a55
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534201"
 ---
-# <a name="hb-series-virtual-machine-sizes"></a>HB sorozatú virtuális gépek méretei
+# <a name="hb-series-virtual-machine-sizes"></a>HB sorozatú virtuális gépméretek
 
-Több teljesítménytesztek HB-sorozat méretei időpontig futtatott. Az alábbiakban néhány, a Teljesítménytesztelés, az eredmények.
+A HB-sorozat okán számos teljesítménytesztet végeztek. A teljesítménytesztelés néhány eredményét az alábbiakban felsorasztja.
 
 
 | Számítási feladat                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| A STREAM háromrészes                                    | ~ 260 GB/s (32-33 GB/s CCX kiszolgálónként)  |
-| Nagy teljesítményű Linpack (HPL)                  | ~ 1000 GigaFLOPS (Rpeak), ~ 860 GigaFLOPS (Rmax) |
-| RDMA-késés és sávszélesség                        | 2.35usec, 96.5 Gb/s   |
-| A helyi NVMe SSD FIO                           | ~1.7 GB/s olvas, GB/s ír ~1.0      |  
-| A 4 IOR * Azure prémium szintű SSD (P30 által felügyelt lemezek RAID0) **  | ~ 725 MB/s olvas, ~ 780 MB/ír   |
+| STREAM Triád                                    | ~260 GB/s (32-33 GB/s/CCX)  |
+| Nagy teljesítményű Linpack (HPL)                  | ~1000 GigaFLOPS (Rpeak), ~860 GigaFLOPS (Rmax) |
+| RDMA késés & sávszélesség                        | 2.35usec, 96.5 Gb/s   |
+| FIO a helyi NVMe SSD-n                           | ~1,7 GB/s olvasás, ~1,0 GB/s írás      |  
+| IOR 4*-n * Azure Premium SSD (P30 felügyelt lemezek, RAID0)**  | ~725 MB/s olvasás, ~780 MB/írás   |
 
 
 
-## <a name="infiniband-send-latency"></a>InfiniBand küldési késleltetés
+## <a name="infiniband-send-latency"></a>Az InfiniBand késleltetésküldése
 Mellanox Perftest.
 
-```azure-cli
+```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
 
-|  #bytes         | #iterations     | t_min [mikroszekundumos]     | t_max[microsecond]     | t_typical [mikroszekundumos] | t_avg [mikroszekundumos]     | t_stdev [mikroszekundumos]   |
+|  #bytes         | #iterations     | t_min[mikroszekundum]     | t_max[mikroszekundum]     | t_typical[mikroszekundum] | t_avg[mikroszekundum]     | t_stdev[mikroszekundum]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 | 2               | 1000            | 2.35            | 12.63           | 2.38            | 2.42            | 0.33            |
 | 4               | 1000            | 2.35            | 18.53           | 2.38            | 2.4             | 0.21            |
-| 8               | 1000            | 2.36            | 6.06            | 2.39            | 2.41            | 0.22            |
+| 8               | 1000            | 2.36            | 6.06            | 2.39            | 2.41            | 0,22            |
 | 16              | 1000            | 2.36            | 6.05            | 2.39            | 2.41            | 0.21            |
-| 32              | 1000            | 2.37            | 18.93           | 2.4             | 2.42            | 0.25            |
+| 32              | 1000            | 2.37            | 18.93           | 2.4             | 2.42            | 0,25            |
 | 64              | 1000            | 2.39            | 17.98           | 2.43            | 2.45            | 0.18            |
 | 128             | 1000            | 2.44            | 19.4            | 2.76            | 2.65            | 0.29            |
-| 256             | 1000            | 3.06            | 18.31           | 3.1             | 3.12            | 0.27            |
-| 512             | 1000            | 3.15            | 7.89            | 3.2             | 3.23            | 0.31            |
-| 1024            | 1000            | 3.27            | 17.62           | 3.31            | 3.33            | 0.22            |
-| 2048            | 1000            | 3.48            | 7.94            | 3.52            | 3.55            | 0.26            |
+| 256             | 1000            | 3.06            | 18.31           | 3,1             | 3.12            | 0.27            |
+| 512             | 1000            | 3.15            | 7.89            | 3,2             | 3.23            | 0.31            |
+| 1024            | 1000            | 3.27            | 17.62           | 3.31            | 3,33            | 0,22            |
+| 2048            | 1000            | 3.48            | 7.94            | 3.52            | 3,55            | 0.26            |
 | 4096            | 1000            | 3.91            | 7.7             | 3.96            | 3.98            | 0.21            |
 
 
-## <a name="osu-mpi-latency-test"></a>OSU MPI-késés teszt
+## <a name="osu-mpi-latency-test"></a>OSU MPI késésteszt
 
-OSU MPI-késés teszteléséhez v5.4.3.
+OSU MPI késésteszt az 5.4.3-as sorozatban.
 
 ```azure-cli
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
 
-| #bytes  | Késés [mikroszekundumos] (MPICH 3.3 + CH4) | Késés [mikroszekundumos] (OpenMPI 4.0.0 verzióra.) | Késés [mikroszekundumos] (MVAPICH2 2.3.) | Latency [microsecond] (Intel MPI 2019) |
+| #bytes  | Késés [mikroszekundum] (MPICH 3.3 + CH4) | Késés [mikroszekundum] (OpenMPI 4.0.0) | Késés [mikroszekundum] (MVAPICH2 2.3) | Késleltetés [mikroszekundum] (Intel MPI 2019) |
 |------|----------|----------|----------|----------|
 | 2    | 2.44     | 2.52     | 2.84     | 2.76     |
 | 4    | 2.44     | 2.53     | 2.84     | 2.76     |
@@ -76,16 +76,16 @@ OSU MPI-késés teszteléséhez v5.4.3.
 | 32   | 2.62     | 2.69     | 2.89     | 2.78     |
 | 64   | 2.72     | 2.79     | 2.93     | 2.85     |
 | 128  | 2.76     | 2.88     | 3.06     | 2.91     |
-| 256  | 3.53     | 3.65     | 3.73     | 3.57     |
-| 512  | 3.68     | 3.78     | 3.81     | 3.70     |
-| 1024 | 3.86     | 3.97     | 3.95     | 3.93     |
+| 256  | 3,53     | 3,65     | 3.73     | 3.57     |
+| 512  | 3.68     | 3.78     | 3.81     | 3,70     |
+| 1024 | 3.86     | 3,97     | 3.95     | 3.93     |
 | 2048 | 4.12     | 4.5      | 4.24     | 4.22     |
 | 4096 | 4.79     | 5.28     | 6.33     | 4.91     |
 
 
 ## <a name="mpi-bandwidth"></a>MPI-sávszélesség
 
-OSU MPI sávszélesség v5.4.3 teszteléséhez.
+OSU MPI sávszélesség teszt v5.4.3.
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
@@ -94,7 +94,7 @@ OSU MPI sávszélesség v5.4.3 teszteléséhez.
 | #Size            | Sávszélesség (MB/s) | Sávszélesség (Gb/s) |
 |------------------|------------------|------------------|
 | 2                | 4.03             | 0.03             |
-| 4                | 8.2              | 0.07             |
+| 4                | 8.2              | 0,07             |
 | 8                | 16.15            | 0.13             |
 | 16               | 32.33            | 0.26             |
 | 32               | 64.36            | 0.51             |
@@ -119,7 +119,7 @@ OSU MPI sávszélesség v5.4.3 teszteléséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [nagy teljesítményű számítási](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) az Azure-ban.
+További információ a [nagy teljesítményű azure-beli számítástechnikáról.](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)
 
 
 

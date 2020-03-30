@@ -1,47 +1,47 @@
 ---
-title: Egyéni szabályzattal testreszabhatja az alkalmazás felhasználói felületét
+title: Az alkalmazás felhasználói felületének testreszabása egyéni szabályzattal
 titleSuffix: Azure AD B2C
-description: Útmutató felhasználói felület egyéni házirenddel történő testreszabásához Azure Active Directory B2C.
+description: Ismerje meg, hogyan szabhat testre egy felhasználói felületet egyéni szabályzathasználatával az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 87c3a3a904705b9fcb702c4745c4c80a4b447e69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245992"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476722"
 ---
-# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének testreszabása egyéni szabályzat használatával az Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A cikkben ismertetett lépések végrehajtásával létrehozhat egy regisztrációs és bejelentkezési egyéni szabályzatot a márkával és a megjelenéssel. A Azure Active Directory B2C (Azure AD B2C) használatával szinte teljes mértékben vezérelheti a felhasználók számára megjelenített HTML-és CSS-tartalmakat. Ha egyéni házirendet használ, a felhasználói felület testreszabását az XML-ben kell konfigurálnia ahelyett, hogy a Azure Portal vezérlőit kellene használnia.
+A cikkben leírt lépések végrehajtásával létrehoz egy regisztrációs és bejelentkezési egyéni szabályzatot a márkájával és megjelenésével. Az Azure Active Directory B2C (Azure AD B2C) segítségével szinte teljes mértékben szabályozhatja a felhasználók számára bemutatott HTML- és CSS-tartalmakat. Ha egyéni szabályzatot használ, a felhasználói felület testreszabását XML-ben konfigurálja az Azure Portalon lévő vezérlők használata helyett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című témakör lépéseit. A bejelentkezéshez és a helyi fiókokkal való bejelentkezéshez egyéni szabályzatot kell használnia.
+Hajtsa végre az Egyéni házirendek – Első lépések című [lépéseit.](custom-policy-get-started.md) Rendelkeznie kell egy működő egyéni szabályzat a regisztrációhoz és a helyi fiókkal való bejelentkezéshez.
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. A kiterjesztések fájljának módosítása
+## <a name="4-modify-the-extensions-file"></a>4. Módosítsa a kiterjesztések fájl
 
-A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
+A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és gyermekelemeit az alapfájlból a bővítményfájlba.
 
-1. Nyissa meg a szabályzat alapfájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Nyissa meg a házirend alapfájlját. <em> `SocialAndLocalAccounts/` </em>Például. Ez az alapfájl az egyéni házirend-kezdőcsomagegyik házirendfájlja, amelyet az egyéni házirendek használata című előfeltételben kellett volna [beszereznie.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)
 1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
-1. Nyissa meg a kiterjesztési fájlt. Például: *TrustFrameworkExtensions. XML*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
-1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
-1. Keresse meg a **ContentDefinition** elemet, amely a másolt XML-ben `Id="api.signuporsignin"` tartalmaz.
-1. Módosítsa a **tartalomdefinícióban** értékét a Storage-ba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+1. Nyissa meg a bővítményfájlt. Például *TrustFrameworkExtensions.xml*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
+1. Illessze be a **BuildingBlocks** elem gyermekként másolt **ContentDefinitions** elem teljes tartalmát.
+1. Keresse meg a másolt `Id="api.signuporsignin"` XML-ben található **ContentDefinition** elemet.
+1. Módosítsa a **LoadUri** értékét a tárolóba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
-    Az egyéni szabályzatnak a következő kódrészlethez hasonlóan kell kinéznie:
+    Az egyéni házirendnek a következő kódrészlethez kell hasonlítania:
 
     ```xml
     <BuildingBlocks>
@@ -58,32 +58,32 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
     </BuildingBlocks>
     ```
 
-1. Mentse a bővítmények fájlt.
+1. Mentse a kiterjesztésfájlt.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. A frissített egyéni szabályzat feltöltése és tesztelése
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Töltse fel és tesztelje a frissített egyéni házirendet
 
-### <a name="51-upload-the-custom-policy"></a>5,1 az egyéni szabályzat feltöltése
+### <a name="51-upload-the-custom-policy"></a>5.1 Az egyéni házirend feltöltése
 
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Keresse meg és válassza ki a **Azure ad B2C**.
-1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget.
-1. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
+1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja a bérlőt tartalmazó könyvtárat.
+1. Keresse meg és válassza az **Azure AD B2C**lehetőséget.
+1. A **Házirendek**csoportban válassza **az Identitáskezelési keretrendszert**.
+1. Válassza **az Egyéni házirend feltöltése lehetőséget.**
+1. Töltse fel a korábban módosított bővítményfájlt.
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5,2 az egyéni házirend tesztelése a **Futtatás most** használatával
+### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Az egyéni házirend tesztelése a **Futtatás most** használatával
 
-1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most**lehetőséget.
-1. Regisztrálnia kell egy e-mail-cím használatával.
+1. Válassza ki a feltöltött házirendet, majd válassza a **Futtatás most**lehetőséget.
+1. E-mail cím használatával regisztrálhat.
 
 [!INCLUDE [active-directory-b2c-html-templates](../../includes/active-directory-b2c-html-templates.md)]
 
-## <a name="configure-dynamic-custom-page-content-uri"></a>Dinamikus egyéni oldal tartalmi URI-ja konfigurálása
+## <a name="configure-dynamic-custom-page-content-uri"></a>Dinamikus egyéni laptartalom URI-jának konfigurálása
 
-Azure AD B2C egyéni szabályzatok használatával az URL-címen vagy egy lekérdezési karakterláncban is elküldheti a paramétereket. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. A paraméter lehet bármely [jogcím-feloldó](claim-resolver-overview.md), például az alkalmazás azonosítója, a nyelvi azonosító vagy az egyéni lekérdezési karakterlánc paraméter, például `campaignId`.
+Az Azure AD B2C egyéni szabályzatok használatával küldhet egy paramétert az URL-elérési úton, vagy egy lekérdezési karakterlánc. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. A paraméter bármilyen [jogcímfeloldó](claim-resolver-overview.md)lehet, például az alkalmazásazonosító, a nyelvazonosító `campaignId`vagy az egyéni lekérdezési karakterlánc paraméter, például .
 
 ### <a name="sending-query-string-parameters"></a>Lekérdezési karakterlánc paramétereinek küldése
 
-Lekérdezési karakterlánc paramétereinek küldéséhez a [függő entitás házirendjében](relyingparty.md)adjon hozzá egy `ContentDefinitionParameters` elemet az alább látható módon.
+A lekérdezési karakterlánc paramétereinek küldéséhez a függő `ContentDefinitionParameters` entitás [házirendjében](relyingparty.md)adjon hozzá egy elemet az alábbiak szerint.
 
 ```XML
 <RelyingParty>
@@ -99,7 +99,7 @@ Lekérdezési karakterlánc paramétereinek küldéséhez a [függő entitás h�
 </RelyingParty>
 ```
 
-A tartalom definíciójában módosítsa `LoadUri` értékét `https://<app_name>.azurewebsites.net/home/unified`re. Az egyéni házirend `ContentDefinition` a következő kódrészlethez hasonlóan kell kinéznie:
+A tartalomdefinícióban módosítsa a `LoadUri` `https://<app_name>.azurewebsites.net/home/unified`értékét. Az egyéni `ContentDefinition` házirendnek a következő kódrészlethez kell hasonlítania:
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -108,15 +108,15 @@ A tartalom definíciójában módosítsa `LoadUri` értékét `https://<app_name
 </ContentDefinition>
 ```
 
-Amikor Azure AD B2C betölti a lapot, meghívja a webkiszolgáló-végpontot:
+Amikor az Azure AD B2C betölti a lapot, a webkiszolgáló végpontját hívja:
 
 ```http
 https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f893d6d3-3b6d-480d-a330-1707bf80ebea
 ```
 
-### <a name="dynamic-page-content-uri"></a>Dinamikus oldal tartalmi URI-ja
+### <a name="dynamic-page-content-uri"></a>Dinamikus laptartalom URI
 
-A tartalom a használt paraméterek alapján különböző helyekről is kihúzható. A CORS-kompatibilis végponton állítsa be a mappa szerkezetét a tartalom tárolására. Például a következő struktúrában rendezheti a tartalmakat. Gyökérmappa */mappa/nyelv/a HTML-fájlok*. Az egyéni oldal URI-ja például az alábbihoz hasonló lehet:
+A tartalom a használt paraméterek alapján különböző helyekről is lehúzható. A CORS-kompatibilis végponton állítson be egy mappastruktúrát a tartalom tárolására. A tartalmat például a következő struktúrába rendezheti. *Gyökérmappa/ mappa nyelvenként / a html fájlokat*. Az egyéni oldal URI-ja például így nézhet ki:
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -125,7 +125,7 @@ A tartalom a használt paraméterek alapján különböző helyekről is kihúzh
 </ContentDefinition>
 ```
 
-Azure AD B2C elküldi a két betűs ISO-kódot a nyelvhez, `fr` franciául:
+Az Azure AD B2C a kétbetűs `fr` ISO-kódot küldi el a nyelvhez, a francia nyelvhez:
 
 ```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
@@ -133,4 +133,4 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a testreszabható felhasználói felületi elemekről: [útmutató a felhasználói folyamatokhoz használható felhasználói felület testreszabásához](customize-ui-overview.md).
+A testreszabható felhasználói felületi elemekről a [felhasználói felület felhasználói folyamatok testreszabására vonatkozó útmutatóban](customize-ui-overview.md)talál további információt.

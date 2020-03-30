@@ -1,28 +1,28 @@
 ---
-title: Adatok törlése az Azure Adatkezelő
-description: Ez a cikk az Azure Adatkezelő törlési forgatókönyveit ismerteti, beleértve a kiürítést, az eldobási egységeket és a megőrzési alapú törléseket.
+title: Adatok törlése az Azure Data Explorerből
+description: Ez a cikk ismerteti a törlési forgatókönyvek az Azure Data Explorer, beleértve a kiürítési, eldobási terjedelem és megőrzési alapú törlések.
 author: orspod
 ms.author: orspodek
 ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 681cfd71d2666630b192935d66ba32eaf16c92de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: dd0f8740d148a7817bcfe2fbad591ceeb1610d0f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79204613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501410"
 ---
-# <a name="delete-data-from-azure-data-explorer"></a>Adatok törlése az Azure Adatkezelő
+# <a name="delete-data-from-azure-data-explorer"></a>Adatok törlése az Azure Data Explorerből
 
-Az Azure Adatkezelő a jelen cikkben ismertetett különféle törlési forgatókönyveket támogatja. 
+Az Azure Data Explorer támogatja a jelen cikkben ismertetett különböző törlési forgatókönyveket. 
 
-## <a name="delete-data-using-the-retention-policy"></a>Adatok törlése az adatmegőrzési szabály használatával
+## <a name="delete-data-using-the-retention-policy"></a>Adatok törlése az adatmegőrzési házirend használatával
 
-Az Azure Adatkezelő automatikusan törli az [adatmegőrzési házirend](/azure/kusto/management/retentionpolicy)alapján tárolt adatokkal. Ez a módszer az adattörlés leghatékonyabb és problémamentes módja. Állítsa be az adatmegőrzési szabályt az adatbázis vagy a tábla szintjén.
+Az Azure Data Explorer automatikusan törli az adatokat az [adatmegőrzési szabályzat](/azure/kusto/management/retentionpolicy)alapján. Ez a módszer az adatok törlésének leghatékonyabb és leggondmentesebb módja. Állítsa be az adatmegőrzési szabályt az adatbázis vagy a tábla szintjén.
 
-Vegye fontolóra egy olyan adatbázist vagy táblázatot, amely 90 napos megőrzési időtartamra van beállítva. Ha csak 60 napos adatmennyiségre van szükség, törölje a régebbieket a következő módon:
+Fontolja meg egy 90 napos megőrzésre beállított adatbázist vagy táblát. Ha csak 60 nap adatra van szükség, törölje a régebbi adatokat az alábbiak szerint:
 
 ```kusto
 .alter-merge database <DatabaseName> policy retention softdelete = 60d
@@ -30,15 +30,15 @@ Vegye fontolóra egy olyan adatbázist vagy táblázatot, amely 90 napos megőrz
 .alter-merge table <TableName> policy retention softdelete = 60d
 ```
 
-## <a name="delete-data-by-dropping-extents"></a>Az adattörlési egységek törlése
+## <a name="delete-data-by-dropping-extents"></a>Adatok törlése a terjedelem eldobásával
 
-A [egység (adatszegmens)](/azure/kusto/management/extents-overview) az a belső struktúra, amelyben az adat tárolása történik. Minden egység akár több millió rekordot is képes tárolni. A mértékek egyenként, vagy a [drop mérték (ek) parancsok](/azure/kusto/management/extents-commands#drop-extents)használatával törölhetők. 
+[A terjedelem (adatszegmens)](/azure/kusto/management/extents-overview) az adatok tárolási helye szerinti belső struktúra. Minden egyes mérték több millió rekordot képes tárolni. A terjedelmek egyenként vagy csoportként törölhetők [a ledobási kiterjedés(ek) parancsaival.](/azure/kusto/management/extents-commands#drop-extents) 
 
 ### <a name="examples"></a>Példák
 
-Törölheti egy tábla összes sorát, vagy csak egy adott mértékét.
+Törölheti a tábla összes sorát, vagy csak egy adott mértékben.
 
-* Tábla összes sorának törlése:
+* A tábla összes sorának törlése:
 
     ```kusto
     .drop extents from TestTable
@@ -52,5 +52,5 @@ Törölheti egy tábla összes sorát, vagy csak egy adott mértékét.
 
 ## <a name="delete-individual-rows-using-purge"></a>Egyes sorok törlése a kiürítés használatával
 
-Az [adattörlést](/azure/kusto/management/data-purge) egyéni sorok törlésére is használhatja. A törlés nem azonnali, és jelentős rendszererőforrásokat igényel. Ezért csak a megfelelőségi forgatókönyvek esetében ajánlott.  
+[Az adatok törlése](/azure/kusto/concepts/data-purge) egyének sorainak törlésére használható. A törlés nem azonnali, és jelentős rendszererőforrásokat igényel. Mint ilyen, ez csak megfelelőségi forgatókönyvek ajánlott.  
 

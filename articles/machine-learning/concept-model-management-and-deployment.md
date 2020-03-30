@@ -1,7 +1,7 @@
 ---
 title: 'MLOps: ML-modell kezelése'
 titleSuffix: Azure Machine Learning
-description: 'További információ a Azure Machine Learning (MLOps) modellel történő kezeléséről. A modellek üzembe helyezése, kezelése és monitorozása folyamatosan fejleszthető. '
+description: 'Ismerje meg a modellkezelést az Azure Machine Learning (MLOps) használatával. A modellek üzembe helyezése, kezelése és figyelése folyamatos fejlesztésük érdekében. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,187 +9,196 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 02/21/2020
+ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 40e335ee0377c560b15a588269cbdb39cdebca82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096177"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477357"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Modellkezelés, -telepítés és figyelés az Azure Machine Learning segítségével
 
-Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learning a modellek életciklusának kezeléséhez. A Azure Machine Learning a Machine Learning Operations (MLOps) módszert használja. A MLOps javítja a gépi tanulási megoldások minőségét és egységességét. 
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure Machine Learning et a modellek életciklusának kezeléséhez. Az Azure Machine Learning egy Machine Learning-műveletek (MLOps) megközelítést használ. Az MLOps javítja a gépi tanulási megoldások minőségét és konzisztenciáját. 
 
 ## <a name="what-is-mlops"></a>Mi az az MLOps?
 
-A Machine Learning Operations (MLOps) a munkafolyamatok hatékonyságát növelő [DevOps](https://azure.microsoft.com/overview/what-is-devops/) alapelvek és eljárások alapján történik. Például: folyamatos integráció, kézbesítés és üzembe helyezés. A MLOps ezeket a rendszerbiztonsági lépéseket a gépi tanulási folyamatra alkalmazza, a következő céllal:
+A Machine Learning Operations (MLOps) [devops-alapelveken](https://azure.microsoft.com/overview/what-is-devops/) és eljárásokon alapul, amelyek növelik a munkafolyamatok hatékonyságát. Például folyamatos integráció, kézbesítés és üzembe helyezés. Az MLOps ezeket az elveket alkalmazza a gépi tanulási folyamatra, a következő céllal:
 
-* Gyorsabb kísérletezés és a modellek fejlesztése
-* Modellek gyorsabb üzembe helyezése éles környezetben
+* A modellek gyorsabb kísérletezése és fejlesztése
+* A modellek gyorsabb üzembe helyezése az éles környezetben
 * Minőségbiztosítás
 
-A Azure Machine Learning a következő MLOps képességeket biztosítja:
+Az Azure Machine Learning a következő MLOps-képességeket biztosítja:
 
-- **Reprodukálható ml-folyamatokat hozhat létre**. Machine Learning folyamatok lehetővé teszik az adatelőkészítési,-betanítási és-pontozási eljárások ismételhető és újrafelhasználható lépéseinek megadását.
-- **Újrafelhasználható szoftvereket hozhat létre** a modellek betanításához és üzembe helyezéséhez.
-- **Modellek regisztrálása, becsomagolása és üzembe helyezése bárhonnan**. A modell használatához szükséges metaadatokat is nyomon követheti.
-- **Rögzítse a végpontok közötti ml-életciklus irányítási szolgáltatásait**. A naplózott információk közé tartozhatnak a modellek közzétételi modelljei, a változtatások, valamint a modellek üzembe helyezése vagy használata az éles környezetben.
-- **Értesítés és riasztás a ml-életciklus eseményeiről**. Például a kísérlet befejezését, a modell regisztrációját, a modell üzembe helyezését és az adateltolódás észlelését.
-- **Ml-alkalmazások figyelése operatív és ml-vel kapcsolatos problémák esetén**. Hasonlítsa össze a modell bemeneteit a képzés és a következtetések között, Fedezze fel a modellre jellemző mérőszámokat, és figyelje a ML-infrastruktúráját.
-- **A végpontok közötti ml életciklus automatizálása Azure Machine learning és Azure-folyamatokkal**. A folyamatok használata lehetővé teszi a modellek gyakori frissítését, az új modellek tesztelését, valamint az új ML-modellek folyamatos kiépítését más alkalmazásokkal és szolgáltatásokkal együtt.
+- **Reprodukálható ML-folyamatok létrehozása**. A Machine Learning-folyamatok lehetővé teszik az adatelőkészítési, betanítási és pontozási folyamatok megismételhető és újrafelhasználható lépéseimeghatározását.
+- **Újrafelhasználható szoftverkörnyezeteket hozhat létre** a modellek betanításához és üzembe helyezéséhez.
+- **Regisztráljon, csomagolja és telepítse a modelleket bárhonnan.** A modell használatához szükséges társított metaadatokat is nyomon követheti.
+- **Rögzítse a végpontok**között életciklus irányítási adatait. A naplózott adatok közé tartozhat, hogy ki teszi közzé a modelleket, miért történt módosítások, és mikor telepítettek vagy használtak modelleket éles környezetben.
+- **Értesítés és riasztás az ml életciklusban lévő eseményekről.** Például a kísérlet befejezése, a modell regisztrációja, a modell üzembe helyezése és az adateltolódás észlelése.
+- **A pénzmosással kapcsolatos alkalmazások figyelése a működéssel és a pénzmosással kapcsolatos problémák miatt**. Modellbemenetek összehasonlítása a betanítás és a következtetés között, modellspecifikus metrikák feltárása, valamint figyelés és riasztások biztosítása a dél-ellenőrzési infrastruktúra.
+- **Automatizálja a végpontok között az ml-életciklust az Azure Machine Learning és az Azure Pipelines segítségével.** A folyamatok használatával gyakran frissítheti a modelleket, tesztelheti az új modelleket, és folyamatosan új rendszermeghatározási modelleket is kiállíthat a többi alkalmazás és szolgáltatás mellett.
 
 ## <a name="create-reproducible-ml-pipelines"></a>Reprodukálható ML-folyamatok létrehozása
 
-A modell betanítási folyamatában szereplő összes lépés összefűzéséhez használjon Azure Machine Learning ML-es folyamatokat.
+Az Azure Machine Learning ml-folyamatai segítségével összefűzheti a modell betanítási folyamatában részt vevő összes lépést.
 
-A ML-folyamatok az adatok előkészítésének lépéseit is tartalmazhatják, hogy hiperparaméter a hangolást a modell kiértékeléséhez. További információ: [ml folyamatok](concept-ml-pipelines.md).
+A rendszervíz-konfigurációs folyamat tartalmazhat lépéseket az adatelőkészítéstől a szolgáltatáskinyerésig a modell kiértékeléséig történő hiperparaméter-hangolásig. További információ: [ML-folyamatok](concept-ml-pipelines.md).
 
-Ha a [Designer](concept-designer.md) használatával hozza létre az ml-folyamatokat, akkor a tervező oldal jobb felső sarkában található **"..."** gombra kattintva bármikor kiválaszthatja a **klónozás**elemet. A folyamat klónozása lehetővé teszi, hogy a régi verziók elvesztése nélkül megismételje a folyamat kialakítását.  
+Ha a [Tervező](concept-designer.md) segítségével hozza létre a pénzmosási folyamatokat, bármikor kattinthat a Tervező lap jobb felső részén található **"..."** gombra, majd a **Klónozás parancsra**kattintva. A folyamat klónozása lehetővé teszi a csővezeték tervezésének iterate-je a régi verziók elvesztése nélkül.  
 
-## <a name="create-reusable-software-environments"></a>Újrafelhasználható szoftveres környezetek létrehozása
+## <a name="create-reusable-software-environments"></a>Újrafelhasználható szoftverkörnyezetek létrehozása
 
-Azure Machine Learning környezetek lehetővé teszik a projektek szoftveres függőségeinek nyomon követését és újbóli előállítását. A környezetek lehetővé teszik annak biztosítását, hogy a buildek reprodukálása manuálisan történjen a szoftveres konfigurációk nélkül.
+Az Azure Machine Learning-környezetek lehetővé teszik a projektek szoftverfüggőségének nyomon követését és reprodukálását azok fejlődésével. A környezetek lehetővé teszik annak biztosítását, hogy a buildek manuális szoftverkonfigurációk nélkül reprodukálhatók legyenek.
 
-A környezetek leírják a projektek pip-és Conda-függőségeit, és használhatók a modellek betanításához és üzembe helyezéséhez is. További információ: [Mik a Azure Machine learning környezetek](concept-environments.md).
+A környezetek leírják a projektek pip és Conda függőségeit, és a modellek betanításához és telepítéséhez is használhatók. További információ: [Mik azok az Azure Machine Learning-környezetek.](concept-environments.md)
 
-## <a name="register-package-and-deploy-models-from-anywhere"></a>Modellek regisztrálása, becsomagolása és üzembe helyezése bárhonnan
+## <a name="register-package-and-deploy-models-from-anywhere"></a>Modellek regisztrálása, csomagolása és üzembe helyezése bárhonnan
 
-### <a name="register-and-track-ml-models"></a>ML-modellek regisztrálása és nyomon követése
+### <a name="register-and-track-ml-models"></a>Ml-modellek regisztrálása és nyomon követése
 
-A modell regisztrációja lehetővé teszi, hogy a saját munkaterületén tárolja és megtekintse a modelljeit az Azure-felhőben. A modell beállításjegyzéke megkönnyíti a betanított modellek rendszerezését és nyomon követését.
-
-> [!TIP]
-> A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a Azure Machine Learning munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
-
-A regisztrált modelleket a név és a verziószám azonosítja. Ha egy modellt egy már létező néven regisztrál, a beállításjegyzék megnöveli annak verziószámát. A regisztráció során további metaadat-címkéket is megadhat. Ezeket a címkéket a rendszer a modell keresésekor használja. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
+A modellregisztráció lehetővé teszi a modellek tárolását és verziózását az Azure-felhőben, a munkaterületen. A modell beállításjegyzék megkönnyíti a betanított modellek rendszerezését és nyomon követését.
 
 > [!TIP]
-> A Azure Machine Learningon kívül betanított modelleket is regisztrálhat.
+> A regisztrált modell a modellt egy vagy több fájlt tartalmazó logikai tároló. Ha például egy modell, amely több fájlban van tárolva, regisztrálhatja őket egyetlen modellként az Azure Machine Learning-munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkaphatja a regisztrált összes fájlt.
 
-Aktív központi telepítésben használt regisztrált modell nem törölhető.
-További információkért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel)című szakaszt a modell regisztrálása szakaszban.
+A regisztrált modelleket a név és a verziószám azonosítja. Ha egy modellt egy már létező néven regisztrál, a beállításjegyzék megnöveli annak verziószámát. A regisztráció során további metaadat-címkék is megadhatók. Ezek a címkék ezután a modell keresésekor használatosak. Az Azure Machine Learning minden olyan modellt támogat, amely a Python 3.5.2-es vagy újabb verzióval tölthető be.
+
+> [!TIP]
+> Az Azure Machine Learningen kívül betanított modelleket is regisztrálhat.
+
+Egy aktív központi telepítésben használt regisztrált modell nem törölhető.
+További információt a Telepítési modellek regisztermodell szakaszában [talál.](how-to-deploy-and-where.md#registermodel)
+
+### <a name="profile-models"></a>Profilmodellek
+
+Az Azure Machine Learning segítségével megismerheti a modell üzembe helyezésekor létrejön szolgáltatás processzor- és memóriaigényeit. A profilkészítés teszteli a modellt futtató szolgáltatást, és olyan információkat ad vissza, mint a PROCESSZOR-használat, a memóriahasználat és a válaszkés. Azt is előírja, hogy a CPU és a memória ajánlása alapján az erőforrás-használat.
+További információt a [Telepítési modellek](how-to-deploy-and-where.md#profilemodel)profilkészítési szakaszában talál.
 
 ### <a name="package-and-debug-models"></a>Csomagok és hibakeresési modellek
 
-A modell éles környezetben történő üzembe helyezése előtt egy Docker-rendszerképbe van csomagolva. A legtöbb esetben a rendszerkép létrehozása a háttérben automatikusan megtörténik a telepítés során. Manuálisan is megadhatja a rendszerképet.
+Mielőtt üzembe helyezne egy modellt éles környezetben, egy Docker-rendszerképbe van csomagolva. A legtöbb esetben a lemezkép létrehozása automatikusan történik a háttérben a központi telepítés során. Manuálisan is megadhatja a képet.
 
-Ha a telepítés során problémákba ütközne, a hibaelhárításhoz és a hibakereséshez telepítheti a helyi fejlesztési környezetét.
+Ha problémákba ütközik a központi telepítés, telepítheti a helyi fejlesztési környezetben a hibaelhárítás és a hibakeresés.
 
-További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel) és [hibaelhárítása](how-to-troubleshoot-deployment.md).
+További információt a [Modellek telepítése](how-to-deploy-and-where.md#registermodel) és a központi [telepítések elhárítása című témakörben](how-to-troubleshoot-deployment.md)talál.
 
 ### <a name="convert-and-optimize-models"></a>Modellek konvertálása és optimalizálása
 
-A modell átalakítása a [neurális hálózati Exchange](https://onnx.ai) (ONNX) megnyitásával növelheti a teljesítményt. Átlagosan a ONNX-re való konvertálás a kétszeri teljesítmény növelését eredményezheti.
+A modell [Open Neural Network Exchange](https://onnx.ai) (ONNX) rendszerre történő konvertálása javíthatja a teljesítményt. Az ONNX-re való áttérés átlagosan 2-szeres teljesítménynövekedést eredményezhet.
 
-A Azure Machine Learningrel való ONNX kapcsolatos további információkért tekintse meg a [ml-modellek létrehozása és felgyorsítása](concept-onnx.md) című cikket.
+Az ONNX-ről az Azure Machine Learning használatával kapcsolatos további információkért tekintse meg az [ML-modellek létrehozása és felgyorsítása](concept-onnx.md) című cikket.
 
 ### <a name="use-models"></a>Modellek használata
 
-A betanított gépi tanulási modellek a felhőben vagy helyileg webszolgáltatásként vannak üzembe helyezve. A modelleket Azure IoT Edge-eszközökre is üzembe helyezheti. A központi telepítések CPU-, GPU-vagy mező-programozható Gate-tömböket (FPGA) használnak a következtetésekhez. Power BI modelleket is használhat.
+A betanított gépi tanulási modellek webszolgáltatásként vannak telepítve a felhőben vagy helyileg. Modelleket is üzembe helyezhet az Azure IoT Edge-eszközökre. A központi telepítések CPU-, GPU- vagy mezőprogramozható kaputömböket (FPGA) használnak a következtetéshez. A Power BI-ból származó modelleket is használhat.
 
-Ha webszolgáltatásként vagy IoT Edge eszközként használ modellt, a következő elemeket kell megadnia:
+Ha egy modellt webszolgáltatásként vagy IoT Edge-eszközként használ, a következő elemeket adja meg:
 
-* A szolgáltatásnak/eszköznek beküldött adatértékek kiértékeléséhez használt modell (ek).
-* Egy bejegyzési parancsfájl. Ez a szkript fogadja a kérelmeket, a modell (ek) et használja az adatpontszámok kiértékelésére és a válasz visszaküldésére.
-* Egy Azure Machine Learning környezet, amely leírja a modell (ek) és a bejegyzési parancsfájl által igényelt pip-és Conda-függőségeket.
-* A modell (ek) és a bejegyzési parancsfájl által igényelt további eszközök, például szöveg, adatok stb.
+* A szolgáltatásnak/eszköznek küldött adatok pontozására használt modell(ek).
+* Egy belépési szkript. Ez a parancsfájl elfogadja a kérelmeket, a modell(eke)t használja az adatok pontozására, és választ ad vissza.
+* Egy Azure Machine Learning-környezet, amely leírja a pip és conda függőségek által igényelt modell(ek) és a belépési parancsfájl.
+* A modell(ek) és a bejegyzési parancsfájl által megkövetelt további eszközök, például szöveg, adatok stb.
 
-Megadhatja a cél telepítési platform konfigurációját is. Például a virtuálisgép-család típusa, a rendelkezésre álló memória és a magok száma az Azure Kubernetes szolgáltatásban való üzembe helyezéskor.
+Azt is biztosítja a konfiguráció a cél üzembe helyezési platform. Például a virtuális gép család típusa, a rendelkezésre álló memória és a magok száma az Azure Kubernetes szolgáltatás üzembe helyezésekor.
 
-A rendszerkép létrehozásakor a Azure Machine Learning által igényelt összetevőket is hozzáadja a rendszer. Például a webszolgáltatás futtatásához és a IoT Edgehoz való interakcióhoz szükséges eszközök.
+A rendszerkép létrehozásakor az Azure Machine Learning által igényelt összetevők is hozzáadódnak. Például a webszolgáltatás futtatásához és az IoT Edge-hez szükséges eszközök.
 
 #### <a name="batch-scoring"></a>Batch-pontozás
-A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](how-to-use-parallel-run-step.md).
+A kötegelt pontozás t ml-folyamatokon keresztül támogatja. További információ: [Batch-előrejelzések a big data-adatokról.](how-to-use-parallel-run-step.md)
 
-#### <a name="real-time-web-services"></a>Valós idejű webszolgáltatások
+#### <a name="real-time-web-services"></a>Valós idejű webes szolgáltatások
 
-A **webszolgáltatások** modelljei a következő számítási célokkal használhatók:
+A modellek a **webszolgáltatások** ban a következő számítási célokat használhatja:
 
 * Azure Container Instance
 * Azure Kubernetes Service
 * Helyi fejlesztési környezet
 
-A modell webszolgáltatásként való üzembe helyezéséhez a következő elemeket kell megadnia:
+A modell webszolgáltatásként való üzembe helyezéséhez a következő elemeket kell biztosítania:
 
-* A modellek modellje vagy együttese.
-* A modell használatához szükséges függőségek. Például egy olyan parancsfájl, amely fogadja a kérelmeket, és meghívja a modellt, a Conda függőségeit stb.
-* Telepítési konfiguráció, amely leírja, hogyan és hol kell telepíteni a modellt.
+* A modell vagy együttese modellek.
+* A modell használatához szükséges függőségek. Például egy parancsfájl, amely elfogadja a kérelmeket, és meghívja a modellt, conda függőségeket stb.
+* Üzembe helyezési konfiguráció, amely leírja, hogyan és hol kell telepíteni a modellt.
 
-További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md).
+További információ: [Modellek telepítése.](how-to-deploy-and-where.md)
 
-#### <a name="iot-edge-devices"></a>Eszközök IoT Edge
+#### <a name="iot-edge-devices"></a>IoT Edge-eszközök
 
-A modelleket IoT eszközökkel **Azure IoT Edge modulokon**keresztül is használhatja. IoT Edge modulok üzembe helyezése egy hardvereszközön történik, amely lehetővé teszi a következtetések kiértékelését vagy a modellek pontozását az eszközön.
+Az **Azure IoT Edge-modulokon**keresztül iot-eszközökkel rendelkező modelleket is használhat. Az IoT Edge-modulok egy hardvereszközre vannak telepítve, amely lehetővé teszi a következtetések levonását vagy a modell pontozását az eszközön.
 
-További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md).
+További információ: [Modellek telepítése.](how-to-deploy-and-where.md)
 
 ### <a name="analytics"></a>Elemzés
 
-A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adatelemzéshez. További információ: [Azure Machine learning Integration in Power bi (előzetes verzió)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adatelemzéshez. További információ: [Azure Machine Learning integration in Power BI (előzetes verzió)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Rögzítse a végpontok közötti ML életciklus rögzítéséhez szükséges irányítási adatmennyiséget
+## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>A végpontok között a végpontok életciklusának rögzítéséhez szükséges cégirányítási adatok rögzítése
 
-Az Azure ML lehetővé teszi az összes ML-eszköz végpontok közötti naplózásának nyomon követését. Ezek:
+Az Azure ML lehetővé teszi az összes ml-es eszközösszes rendszer-ellenőrzési nyomvonal nyomon követését. Ezek a következők:
 
-- Az Azure ML a git szolgáltatással [integrálva](how-to-set-up-training-targets.md#gitintegration) követheti azokat az információkat, amelyeken a tárház/ág/a kód véglegesítve származik.
-- Az [Azure ml-adatkészletek](how-to-create-register-datasets.md) segítenek a nyomon követésben, a profilban és a verziószámozásban. 
-- Az Azure ML-futtatási előzményei a modellek betanításához használt kód, adatok és számítások pillanatképét tárolják.
-- Az Azure ML-modell beállításjegyzéke rögzíti a modellhez társított összes metaadatot (amely kitanítja azt, hogy hol van üzembe helyezve, ha a központi telepítése kifogástalan).
+- Az Azure ML [integrálja a Git-et,](how-to-set-up-training-targets.md#gitintegration) hogy nyomon követhesse, hogy melyik tárház / ág / véglegesítés i kód származik.
+- [Az Azure ML-adatkészletek](how-to-create-register-datasets.md) segítségével nyomon követheti, profil- és verzióadatokat. 
+- Az Azure ML-futtatási előzmények egy pillanatképet tárol a modell betanításához használt kódról, adatokról és számítási feladatokról.
+- Az Azure ML-modell beállításjegyzék rögzíti a modellhez társított összes metaadatot (melyik kísérlet betanítása, ahol üzembe helyezése alatt áll, ha a központi telepítések kifogástalanok).
 
-## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>A ML-életciklus eseményeinek értesítése, automatizálása és riasztása
-Az Azure ML kulcsfontosságú eseményeket tesz közzé az Azure EventGrid, amely a ML-életciklus eseményeinek értesítésére és automatizálására használható. További információkért tekintse meg [ezt a dokumentumot](how-to-use-event-grid.md).
+## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Értesítés, automatizálás és riasztás az ml-életciklus eseményeiről
+Az Azure ML közzéteszi a legfontosabb eseményeket az Azure EventGridben, amely a gépidő-életciklus eseményeinek értesítésére és automatizálására használható. További információkért tekintse meg [ezt a dokumentumot](how-to-use-event-grid.md).
 
 
-## <a name="monitor-for-operational--ml-issues"></a>Az Operational & ML-vel kapcsolatos problémák monitorozása
+## <a name="monitor-for-operational--ml-issues"></a>A pénzmosással kapcsolatos & működési problémák figyelése
 
-A figyelés lehetővé teszi, hogy megtudja, milyen adatok kerülnek a modellbe, valamint a visszaadott előrejelzések.
+Figyelés lehetővé teszi, hogy megértsék, milyen adatokat küld a modell, és az előrejelzések, hogy visszatér.
 
-Ez az információ segít megérteni a modell felhasználásának módját. A begyűjtött bemeneti adatok is hasznosak lehetnek a modell jövőbeli verzióinak betanításához.
+Ez az információ segít megérteni, hogyan használja a modellt. Az összegyűjtött bemeneti adatok is hasznos lehet a modell jövőbeli verzióinak betanítása.
 
-További információ: [a Model-adatok gyűjtésének engedélyezése](how-to-enable-data-collection.md).
+További információ: [A modelladatgyűjtés engedélyezése.](how-to-enable-data-collection.md)
 
-## <a name="retrain-your-model-on-new-data"></a>A modell újratanítása új adatértékekre
+## <a name="retrain-your-model-on-new-data"></a>A modell újratanítása új adatokra
 
-Gyakran érdemes frissíteni a modellt, vagy akár teljesen újra betanítani azt a semmiből, ahogy új információkat kap. Időnként az új adatfogadás a tartomány várt részét képezi. Más időpontokban, ahogy azt az [adathalmazok észlelése (előzetes verzió) az adatkészletek](how-to-monitor-datasets.md)esetében is tárgyalja, a modell teljesítménye csökkentheti az adott érzékelő, a természetes adatváltozások, például az idényjellegű hatások vagy a más funkciókhoz képest változó funkciók változásait. 
+Gyakran érdemes frissíteni a modellt, vagy akár újrabetanítását a semmiből, ahogy új információkat kap. Néha az új adatok fogadása a tartomány várható része. Máskor, ahogy azt az [adateltolódás (előzetes verzió) észlelése az adatkészleteken](how-to-monitor-datasets.md)című részében tárgyaljuk, a modell teljesítménye romolhat olyan dolgokkal szemben, mint egy adott érzékelő módosítása, a természetes adatok változásai, például a szezonális hatások, vagy a más funkciókhoz való viszonyulva változó funkciók. 
 
-Nincs univerzális válasz arra, hogy "Hogyan tudni, ha újra kell tanítani?" Az Azure ML-es esemény-és figyelési eszközei azonban az automatizáláshoz megfelelő kiindulási pontokat mutatnak. Ha úgy döntött, hogy újratanítást végez, a következőket kell tennie: 
+Nincs általános válasz a "Honnan tudom, ha kell átképezni?" de az Azure ML-esemény- és figyelési eszközök, amelyekről korábban tárgyaltak, jó kiindulópontot jelentenek az automatizáláshoz. Miután úgy döntött, hogy átképezi, akkor: 
 
-- Az adatai előfeldolgozása ismételhető, automatizált folyamat használatával
+- Az adatok előfeldolgozása megismételhető, automatizált folyamattal
 - Az új modell betanítása
-- Hasonlítsa össze az új modell kimeneteit a régi modellel
-- Előre definiált feltételek használata annak kiválasztásához, hogy a régi modellt kell-e cserélni 
+- Hasonlítsa össze az új modell kimeneteit a régi modell kimeneteivel
+- Előre definiált feltételek használatával eldöntheti, hogy lecseréli-e a régi modellt 
 
-A fenti lépések témája, hogy az átképzésnek automatizáltnak kell lennie, nem ad hoc. [Azure Machine learning folyamatok](concept-ml-pipelines.md) jó választ adnak az adatelőkészítéssel, a képzéssel, az ellenőrzéssel és az üzembe helyezéssel kapcsolatos munkafolyamatok létrehozásához. A [Azure Machine learning Designer (előzetes verzió) használatával olvassa be a modellek újratanítása](how-to-retrain-designer.md) című témakört, amelyből megtudhatja, hogyan illeszkedik a folyamatok és a Azure Machine learning Designer egy átképzési forgatókönyv 
+A fenti lépések egyik témája, hogy az átképzést automatizálni kell, nem pedig ad hoc jellegűnek. [Az Azure Machine Learning-folyamatok](concept-ml-pipelines.md) jó választ jelentenek az adatok előkészítésével, betanításával, ellenőrzésével és üzembe helyezésével kapcsolatos munkafolyamatok létrehozására. Olvassa [el a modellek újratanítását az Azure Machine Learning tervezőjével (előzetes verzió),](how-to-retrain-designer.md) hogy lássa, hogyan illeszkednek a folyamatok és az Azure Machine Learning-tervező egy átképzési forgatókönyvbe. 
 
-## <a name="automate-the-ml-lifecycle"></a>A ML életciklus automatizálása 
+## <a name="automate-the-ml-lifecycle"></a>Az ml-életciklus automatizálása 
 
-A GitHub és az Azure-folyamatok segítségével folyamatos integrációs folyamatot hozhat létre, amely egy modellt hajt. Egy tipikus forgatókönyv esetén, amikor egy adattudós ellenőrzi a projekt git-tárházában bekövetkező változást, az Azure-folyamat elkezdi a képzés futtatását. A Futtatás eredményei megtekinthetők a betanított modell teljesítmény-jellemzőinek megtekintéséhez. Létrehozhat egy olyan folyamatot is, amely webszolgáltatásként telepíti a modellt.
+A GitHub és az Azure-folyamatok segítségével hozhat létre egy folyamatos integrációs folyamatot, amely beiktat egy modellt. Egy tipikus forgatókönyv, amikor egy adattudós ellenőrzi a változás a Git-tárházban egy projekt, az Azure Pipeline elindítja a betanítási futtatás. A futtatás eredményeit ezután meg lehet vizsgálni, hogy a betanított modell teljesítményjellemzői. Létrehozhat egy folyamatot is, amely webszolgáltatásként telepíti a modellt.
 
-A [Azure Machine learning bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) megkönnyíti az Azure-folyamatokkal való munkát. A következő fejlesztéseket biztosítja az Azure-folyamatok számára:
+Az [Azure Machine Learning-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) megkönnyíti az Azure-folyamatok kal való munkát. A következő fejlesztéseket biztosítja az Azure-folyamatokhoz:
 
-* Engedélyezi a munkaterület kijelölését a szolgáltatás kapcsolatának meghatározásakor.
-* Lehetővé teszi, hogy a kiadási folyamatokat a betanítási folyamat során létrehozott betanított modellek aktiválja.
+* Szolgáltatáskapcsolat definiálásakor engedélyezi a munkaterület kiválasztását.
+* Lehetővé teszi, hogy a kiadási folyamatokat egy betanítási folyamatban létrehozott betanított modellek váltsák ki.
 
-További információ az Azure-folyamatok Azure Machine Learning használatával történő használatáról: [ml-modellek folyamatos integrációja és üzembe helyezése az Azure-folyamatokkal](/azure/devops/pipelines/targets/azure-machine-learning) és a [Azure Machine learning MLOps](https://aka.ms/mlops) adattárral.
+Az Azure Pipelines Azure Machine Learning használatával kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 
-A Azure Data Factory használatával olyan adatfeldolgozási folyamat is létrehozható, amely előkészíti az adatgyűjtést az oktatással való használatra. További információ: [adatfeldolgozási folyamat](how-to-cicd-data-ingestion.md).
+* [A ml-modellek folyamatos integrációja és üzembe helyezése az Azure Pipelines-szal](/azure/devops/pipelines/targets/azure-machine-learning) 
+* [Azure Machine Learning MLOps-tárház.](https://aka.ms/mlops)
+* [Azure Machine Learning MLOpsPython-tárház.](https://github.com/Microsoft/MLOpspython)
 
-## <a name="next-steps"></a>Következő lépések
+Az Azure Data Factory segítségével is létrehozhat egy adatbetöltési folyamatot, amely előkészíti az adatokat a betanítással való használatra. További információ: [Data beestiton pipeline](how-to-cicd-data-ingestion.md).
 
-További információ: a következő erőforrások olvasása és feltárása:
+## <a name="next-steps"></a>További lépések
 
-+ [Hogyan & a modellek üzembe helyezését](how-to-deploy-and-where.md) Azure Machine learning
+További információ a következő források elolvasásával és feltárásával:
 
-+ [Oktatóanyag: lemezkép-besorolási modell üzembe helyezése az ACI-ban](tutorial-deploy-models-with-aml.md).
++ [Hogyan &, hogy hol üzembe helyezheti a modelleket az](how-to-deploy-and-where.md) Azure Machine Learning segítségével?
 
-+ [A végpontok közötti MLOps-példák tárháza](https://github.com/microsoft/MLOps)
++ [Oktatóanyag: Lemezkép-besorolási modell üzembe helyezése az ACI-ben.](tutorial-deploy-models-with-aml.md)
 
-+ [CI/CD/ML modellek Azure-folyamatokkal](/azure/devops/pipelines/targets/azure-machine-learning)
++ [Végpontok között az MLOps-példák tártára](https://github.com/microsoft/MLOps)
 
-+ [Üzembe helyezett modellt](how-to-consume-web-service.md) használó ügyfelek létrehozása
++ [AZ Azure-folyamatokat is lemásó ML-modellek CI/CD-je](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ [Üzembe helyezett modellt használó](how-to-consume-web-service.md) ügyfelek létrehozása
 
 + [Gépi tanulás nagy léptékben](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
-+ [Azure AI-referenciák architektúrái & ajánlott eljárások rep](https://github.com/microsoft/AI)
++ [Az Azure AI referenciaarchitektúrái & ajánlott eljárások attetszője](https://github.com/microsoft/AI)

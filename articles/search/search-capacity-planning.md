@@ -1,7 +1,7 @@
 ---
-title: A kapacitás módosítása a lekérdezési és indexelési feladatokhoz
+title: A lekérdezési és indexelési számítási feladatok kapacitásának beállítása
 titleSuffix: Azure Cognitive Search
-description: A partíciós és a replika számítógép erőforrásainak módosítása az Azure Cognitive Searchban, ahol az egyes erőforrások számlázható keresési egységekben vannak.
+description: Állítsa be a partíciós és a replika számítógép-erőforrásokat az Azure Cognitive Search alkalmazásban, ahol minden erőforrás számlázható keresési egységekben van beárazva.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,130 +9,130 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462564"
 ---
-# <a name="adjust-capacity-in-azure-cognitive-search"></a>Kapacitás módosítása az Azure-ban Cognitive Search
+# <a name="adjust-capacity-in-azure-cognitive-search"></a>A kapacitás beállítása az Azure Cognitive Search ben
 
-A [keresési szolgáltatás](search-create-service-portal.md) üzembe helyezése és egy adott díjszabási szinten való zárolása előtt szánjon néhány percet a szolgáltatásban található replikák és partíciók szerepének megismerésére, valamint arról, hogy a szolgáltatás hogyan állítható be a tüskék és az erőforrások igénybe vételéhez.
+A [keresési szolgáltatás kiépítése](search-create-service-portal.md) és zárolása egy adott tarifacsomag, eltarthat néhány percig, hogy megértsék a replikák és partíciók szerepkörét a szolgáltatásban, és hogyan módosíthatja a szolgáltatást a kiugrások és az erőforrás-igény csökkenése.
 
-A kapacitás a [kiválasztott rétegek](search-sku-tier.md) függvénye (a szintek határozzák meg a hardver jellemzőit), valamint a tervezett munkaterhelésekhez szükséges replika és partíciós kombinációt. A szintjétől és a beállítás méretétől függően a kapacitás hozzáadása vagy csökkentése akár 15 perctől akár több óráig is eltarthat. 
+A kapacitás a [kiválasztott réteg](search-sku-tier.md) (a szintek határozzák meg a hardverjellemzőket), valamint a tervezett számítási feladatokhoz szükséges replika- és partíciókombináció függvénye. A szinttől és a korrekció méretétől függően a kapacitás hozzáadása vagy csökkentése 15 perctől több óráig is eltarthat. 
 
-A replikák és partíciók kiosztásának módosításakor javasoljuk, hogy használja a Azure Portal. A portál kényszeríti az olyan megengedett kombinációk korlátozásait, amelyek az adott szinten maximális korláton belül maradnak. Ha azonban parancsfájl-vagy programkód-alapú létesítési megközelítésre van szüksége, akkor a [Azure PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatív megoldás.
+Replikák és partíciók lefoglalásának módosításakor azt javasoljuk, hogy az Azure Portal használatával. A portál korlátozza a megengedhető kombinációk, amelyek a réteg maximális korlátjai alatt maradnak. Azonban ha egy parancsfájl-alapú vagy kódalapú kiépítési megközelítés, az [Azure PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatív megoldások.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminológia: replikák és partíciók
 
 |||
 |-|-|
-|*Partíciók* | Az írási és olvasási műveletekhez (például az indexek újraépítésekor vagy frissítésekor) index-tárolót és I/O-t biztosít. Mindegyik partíció rendelkezik a teljes index egy megosztásával. Ha három partíciót foglal le, az index a harmadikra van osztva. |
-|*Replikák* | A keresési szolgáltatás azon példányai, amelyek elsődlegesen a lekérdezési műveletek terheléselosztására szolgálnak. Minden replika egy index egy példánya. Ha három replikát oszt ki, akkor a lekérdezési kérések kiszolgálásához három példánya lesz elérhető.|
+|*Partíciók* | Indextárolót és I/O-t biztosít az olvasási/írási műveletekhez (például index újraépítésekor vagy frissítésénekor). Minden partíció rendelkezik egy-egy részesedéssel a teljes indexből. Ha három partíciót foglal le, az index harmadokra van osztva. |
+|*Replikák* | A keresési szolgáltatás példányai, amelyek elsősorban a terheléselosztási lekérdezési műveletekhez használatosak. Minden replika egy index egy példánya. Ha három replikát foglal le, a lekérdezési kérelmek kiszolgálásához rendelkezésre álló index három példánya lesz.|
 
-## <a name="when-to-add-nodes"></a>Mikor lehet csomópontokat hozzáadni
+## <a name="when-to-add-nodes"></a>Mikor kell csomópontokat hozzáadni?
 
-A szolgáltatás eredetileg egy partíciót és egy replikát tartalmazó minimális szintű erőforrásokat foglal le. 
+Kezdetben egy szolgáltatás egy partícióból és egy replikaból álló erőforrások minimális szintjét rendeli hozzá. 
 
-Egyetlen szolgáltatásnak elegendő erőforrással kell rendelkeznie az összes számítási feladat (indexelés és lekérdezések) kezeléséhez. Egyik munkaterhelés sem fut a háttérben. Az indexelést ütemezhet olyan időpontokra, amikor a lekérdezési kérések természetesen ritkábbak, de a szolgáltatás más módon nem rangsorolja az egyik feladatot. Emellett egy bizonyos mennyiségű redundancia is kisimítja a lekérdezési teljesítményt, ha a szolgáltatások vagy a csomópontok belsőleg frissülnek.
+Egyetlen szolgáltatásnak elegendő erőforrással kell rendelkeznie az összes számítási feladat (indexelés és lekérdezés) kezeléséhez. Egyik munkaterhelés sem fut a háttérben. Ütemezheti az indexelést az olyan időszakokra, amikor a lekérdezési kérelmek természetesen ritkábbak, de a szolgáltatás egyébként nem rangsorolja az egyik feladatot a másikkal szemben. Emellett egy bizonyos mennyiségű redundancia kiegyenlíti a lekérdezési teljesítményt, amikor a szolgáltatások vagy csomópontok belső frissítése.
 
-Általános szabályként a keresési alkalmazások általában több replikát igényelnek, mint a partíciók, különösen akkor, ha a szolgáltatási műveletek a lekérdezési munkaterhelések szempontjából elfogultak. A [magas rendelkezésre állásról](#HA) szóló szakasz ismerteti, hogy miért.
+Általános szabály, hogy a keresési alkalmazások általában több replikák, mint a partíciók, különösen akkor, ha a szolgáltatási műveletek elfogult a lekérdezési számítási feladatok. A [magas rendelkezésre állásról](#HA) szóló rész elmagyarázza, hogy miért.
 
-Több replika vagy partíció hozzáadásával növelheti a szolgáltatás futtatásának költségeit. Ügyeljen arra, hogy ellenőrizze a [díjszabási számológépet](https://azure.microsoft.com/pricing/calculator/) , és Ismerje meg a további csomópontok hozzáadásának számlázási következményeit. Az [alábbi diagram](#chart) segítséget nyújt az adott konfigurációhoz szükséges keresési egységek számának kereszthivatkozásához.
+További replikák vagy partíciók hozzáadása növeli a szolgáltatás futtatásának költségeit. Győződjön meg róla, hogy ellenőrizze a [díjkalkulátor,](https://azure.microsoft.com/pricing/calculator/) hogy megértsék a számlázási következményeit további csomópontok hozzáadása. Az [alábbi táblázat](#chart) segítségével összevetheti az adott konfigurációhoz szükséges keresési egységek számát.
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Replikák és partíciók lefoglalása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és válassza ki a keresési szolgáltatást.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com/) és válassza ki a keresési szolgáltatást.
 
-1. A **Beállítások**területen nyissa meg a **skálázás** lapot a replikák és partíciók módosításához. 
+1. A **Beállítások párbeszédpanelen**nyissa meg a **Méretezés** lapot a replikák és partíciók módosításához. 
 
-   Az alábbi képernyőfelvételen egy replikával és partícióval kiépített szabványos szolgáltatás látható. A lenti képlet azt jelzi, hogy hány keresési egység van használatban (1). Ha az egység ára $100 (nem valós díj), akkor a szolgáltatás futtatásának havi költsége átlagosan $100.
+   A következő képernyőképen egy szabványos szolgáltatás egy replika és partíció. Az alsó képlet azt jelzi, hogy hány keresési egységet használ (1). Ha az egységár 100 dollár (nem valós ár), a szolgáltatás futtatásának havi költsége átlagosan 100 usd lenne.
 
-   ![Az aktuális értékeket mutató méretezési oldal](media/search-capacity-planning/1-initial-values.png "Az aktuális értékeket mutató méretezési oldal")
+   ![Az aktuális értékeket megjelenítő oldal méretezése](media/search-capacity-planning/1-initial-values.png "Az aktuális értékeket megjelenítő oldal méretezése")
 
-1. A csúszka használatával növelheti vagy csökkentheti a partíciók számát. A lenti képlet azt jelzi, hogy hány keresési egységet használ a rendszer.
+1. A csúszkával növelheti vagy csökkentheti a partíciók számát. Az alsó képlet azt jelzi, hogy hány keresési egységet használ.
 
-   Ez a példa dupla kapacitást, két replikával és partícióval rendelkezik. Figyelje meg a keresési egységek darabszámát; most négy, mert a számlázási képlet a replikák szorozza a partíciókkal (2 x 2). A kapacitás megkettőzése több, mint megduplázza a szolgáltatás futtatásának költségeit. Ha a keresési egység díja $100 volt, az új havi számla mostantól $400 lesz.
+   Ez a példa megduplázza a kapacitást, két replikával és partícióval. Figyelje meg a keresési egységek számát; ez most négy, mert a számlázási képlet replikák szorozva partíciók (2 x 2). A kapacitás megduplázása több mint megduplázza a szolgáltatás futtatásának költségét. Ha a keresési egység költsége 100 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 Dollár ( 100 0
 
-   Az egyes szintek aktuális egységenkénti költségeiért látogasson el a [díjszabási oldalra](https://azure.microsoft.com/pricing/details/search/).
+   Az egyes szintek egységenkénti költségeiről a Díjszabás oldalon lehet [felkeresni.](https://azure.microsoft.com/pricing/details/search/)
 
    ![Replikák és partíciók hozzáadása](media/search-capacity-planning/2-add-2-each.png "Replikák és partíciók hozzáadása")
 
-1. Kattintson a **Save (Mentés** ) gombra a módosítások megerősítéséhez.
+1. A módosítások megerősítéséhez kattintson a **Mentés** gombra.
 
-   ![A skálázás és a számlázás változásainak megerősítése](media/search-capacity-planning/3-save-confirm.png "A skálázás és a számlázás változásainak megerősítése")
+   ![A méretezés és a számlázás módosításának megerősítése](media/search-capacity-planning/3-save-confirm.png "A méretezés és a számlázás módosításának megerősítése")
 
-   A kapacitás változásai több órát is igénybe vehetik. A folyamat elindítása után nem lehet megszakítani a műveletet, és nincs valós idejű figyelés a replika és a partíciók beállításaihoz. A következő üzenet azonban továbbra is látható, amíg megváltozik.
+   A kapacitás változásai több órát vesznek igénybe. A folyamat indítása után nem szakítható meg, és nincs valós idejű figyelés a replika- és partíciókorrekciókhoz. A következő üzenet azonban látható marad, amíg a módosítások folyamatban vannak.
 
-   ![Állapotjelző üzenet a portálon](media/search-capacity-planning/4-updating.png "Állapotjelző üzenet a portálon")
+   ![Állapotüzenet a portálon](media/search-capacity-planning/4-updating.png "Állapotüzenet a portálon")
 
 > [!NOTE]
-> A szolgáltatás üzembe helyezését követően nem lehet magasabb szintre frissíteni. Létre kell hoznia egy keresési szolgáltatást az új szinten, és újra kell töltenie az indexeket. A szolgáltatás kiépítési támogatásához tekintse meg az [Azure Cognitive Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) című témakört.
+> A szolgáltatás kiépítése után nem frissíthető magasabb szintre. Létre kell hoznia egy keresési szolgáltatást az új rétegen, és újra be kell töltenie az indexeket. A szolgáltatáskiépítéssel kapcsolatos segítségért tekintse [meg az Azure Cognitive Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) című témakört.
 >
-> Emellett a partíciókat és a replikákat a szolgáltatás kizárólag és belsőleg kezeli. A processzor affinitása nem áll rendelkezésre, vagy a számítási feladatok egy adott csomóponthoz rendelhetők hozzá.
+> Emellett a partíciókat és a replikákat kizárólag és belsőleg kezeli a szolgáltatás. Nincs fogalma a processzor affinitás, vagy hozzárendeli a számítási feladatok egy adott csomóponthoz.
 >
 
 <a id="chart"></a>
 
-## <a name="partition-and-replica-combinations"></a>Partíció-és replika-kombinációk
+## <a name="partition-and-replica-combinations"></a>Partíció- és replikakombinációk
 
-Az alapszintű szolgáltatásoknak pontosan egy partíciójuk és legfeljebb három replikájuk lehet, legfeljebb három SUs esetén. Az egyetlen állítható erőforrás replika. A lekérdezésekben a magas rendelkezésre állás érdekében legalább két replikára van szükség.
+Egy alapszintű szolgáltatás pontosan egy partíciót és legfeljebb három replikák, legfeljebb három SUs legfeljebb három SUs. Az egyetlen állítható erőforrás a replikák. Legalább két replikára van szükség a lekérdezések magas rendelkezésre állásához.
 
-A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU korlátnak megfelelő replikák és partíciók következő kombinációit vehetik igénybe. 
+Minden standard és tárolási optimalizált keresési szolgáltatások feltételezik a replikák és partíciók következő kombinációi, a 36-SU korláttól függ. 
 
 |   | **1 partíció** | **2 partíció** | **3 partíció** | **4 partíció** | **6 partíció** | **12 partíció** |
 | --- | --- | --- | --- | --- | --- | --- |
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
-| **2 replika** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
-| **3 replika** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
+| **2 kópia** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
+| **3 kópia** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
 | **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
-| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
+| **5 kópia** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
 | **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
-| **12 replika** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
+| **12 kópia** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
 
-Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).
+SUs, díjszabás és kapacitás részletesen ismerteti az Azure-webhely. További információ: [Árak részletei](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> A replikák és partíciók száma egyenletesen oszlik el a 12 (pontosabban, 1, 2, 3, 4, 6, 12). Ennek az az oka, hogy az Azure Cognitive Search az egyes indexeket 12 szegmensre osztja, így a partíciók között egyenlő arányban terjedhet. Ha például a szolgáltatás három partícióval rendelkezik, és létrehoz egy indexet, minden partíció az index négy szegmensét fogja tartalmazni. Az Azure Cognitive Search az indexek egy implementációs részletességgel rendelkeznek, amely a jövőbeli kiadásokban változhat. Bár a szám 12 ma, nem várható, hogy ez a szám mindig 12 lesz a jövőben.
+> A replikák és partíciók száma egyenletesen oszlik 12 (pontosabban, 1, 2, 3, 4, 6, 12). Ennek az az oka, hogy az Azure Cognitive Search előre felosztja az egyes indexeket 12 szegmensre, így egyenlő arányban osztható konként az összes partíció között. Például ha a szolgáltatás három partíciót tartalmaz, és létrehoz egy indexet, minden partíció négy szegmensek az index. Hogyan Azure Cognitive Search szilánkok egy index egy megvalósítási részletesen, változhat a jövőbeli kiadásokban. Bár a szám 12 ma, akkor nem várható, hogy ez a szám mindig 12 a jövőben.
 >
 
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-Mivel a méretezés egyszerűen és viszonylag gyorsan megoldható, általában azt javasoljuk, hogy először egy partíciót és egy vagy két replikát válasszon, majd a skálázási folyamat létrehozásakor. A lekérdezési feladatok elsődlegesen a replikákat futtatják. Ha nagyobb átviteli sebességre vagy magas rendelkezésre állásra van szüksége, valószínűleg további replikákat kell megadnia.
+Mivel a rendszer könnyen és viszonylag gyorsan skálázható, általában azt javasoljuk, hogy egy partícióval és egy vagy két replikával kezdje, majd a lekérdezési kötetek létrehozása kor. A lekérdezési munkaterhelések elsősorban replikákon futnak. Ha több átviteli vagy magas rendelkezésre állású, valószínűleg további replikákra lesz szüksége.
 
-A magas rendelkezésre állásra vonatkozó általános javaslatok a következők:
+A magas rendelkezésre állásra vonatkozó általános ajánlások a következők:
 
-* Két replika a csak olvasási terhelések magas rendelkezésre állásához (lekérdezések)
+* Két replikák magas rendelkezésre állású csak olvasható számítási feladatok (lekérdezések)
 
-* Három vagy több replika az olvasási/írási munkaterhelések magas rendelkezésre állásához (lekérdezések és az indexelés egyéni dokumentumok hozzáadása, frissítése vagy törlése)
+* Három vagy több kópia az olvasási/írási számítási feladatok magas rendelkezésre állásához (lekérdezések, valamint indexelés az egyes dokumentumok hozzáadásakor, frissítésekor vagy törléseként)
 
-Az Azure Cognitive Search szolgáltatói szerződések (SLA) a lekérdezési műveletekre és a dokumentumok hozzáadását, frissítését vagy törlését tartalmazó index-frissítésekre irányulnak.
+Az Azure Cognitive Search szolgáltatásiszint-szerződései (SLA) a lekérdezési műveletekre és a dokumentumok hozzáadásából, frissítéséből vagy törléséből álló indexfrissítésekre irányulnak.
 
-Az alapszintű csomag egy partíción és három replikán található. Ha azt szeretné, hogy a rugalmasság azonnal reagáljon az indexelési és a lekérdezési átviteli sebesség igény szerinti ingadozására, vegye figyelembe az egyik standard szintet is.  Ha úgy találja, hogy a tárolási követelmények sokkal gyorsabban növekednek, mint a lekérdezési átviteli sebesség, vegye figyelembe a tárterület optimalizált szintjeinek egyikét.
+Alapszintű felsők egy partíción és három replikák. Ha azt szeretné, hogy a rugalmasság azonnal reagáljon az indexelési és a lekérdezési átviteli igény ingadozásaira, fontolja meg a Standard szintek egyikét.  Ha úgy találja, hogy a tárolási követelmények sokkal gyorsabban növekednek, mint a lekérdezési átviteli, fontolja meg a Storage-optimalizált rétegek egyikét.
 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
 
-Jelenleg nincs beépített mechanizmus a vész-helyreállításhoz. Partíciók vagy replikák hozzáadása nem megfelelő stratégiát jelentene a vész-helyreállítási célkitűzések teljesítéséhez. A leggyakoribb módszer a redundancia a szolgáltatási szinten való hozzáadása egy másik régióban található második keresési szolgáltatás beállításával. Az indexek újraépítése során a rendelkezésre álláshoz hasonlóan az átirányítás vagy a feladatátvételi logikának a kódból kell származnia.
+Jelenleg nincs beépített mechanizmus a vész-helyreállítási. Partíciók vagy replikák hozzáadása nem megfelelő stratégia a vész-helyreállítási célok eléréséhez. A leggyakoribb módszer a redundancia hozzáadása a szolgáltatás szintjén egy második keresési szolgáltatás beállításával egy másik régióban. Az index újraépítése során rendelkezésre álláshoz, az átirányítási vagy feladatátvételi logikának a kódból kell származnia.
 
-## <a name="estimate-replicas"></a>Replikák becslése
+## <a name="estimate-replicas"></a>Kópiák becslése
 
-Üzemi szolgáltatás esetén három replikát kell kiosztania SLA-célokból. Ha lassú lekérdezési teljesítményt tapasztal, hozzáadhat replikákat, hogy az index további példányai online állapotba kerüljenek a nagyobb lekérdezési munkaterhelések támogatása és a kérelmek terheléselosztása a több replikán keresztül.
+Egy éles szolgáltatás, le kell foglalnia három replikák SLA célokra. Ha lassú lekérdezési teljesítményt tapasztal, replikákat adhat hozzá, hogy az index további példányai online állapotba kerülhessenek a nagyobb lekérdezési munkaterhelések támogatásához és a kérelmek több replikán keresztüli terhelésének terheléséhez.
 
-Nem biztosítunk útmutatást arra vonatkozóan, hogy hány replikára van szükség a lekérdezési terhelések fogadásához. A lekérdezési teljesítmény a lekérdezés és a versengő számítási feladatok összetettsége alapján változhat. Bár a replikák hozzáadása egyértelműen jobb teljesítményt eredményez, az eredmény nem feltétlenül lineáris: három replika hozzáadása nem garantálja a háromszoros átviteli sebességet.
+Nem adunk útmutatást, hogy hány replikák szükségesek a lekérdezési terhelések elhelyezésére. A lekérdezési teljesítmény a lekérdezés és a versengő számítási feladatok összetettségétől függ. Bár a replikák hozzáadása egyértelműen jobb teljesítményt eredményez, az eredmény nem szigorúan lineáris: három replikák hozzáadása nem garantálja a háromszoros átviteli.
 
-A megoldás QPS becslésével kapcsolatos útmutatásért lásd: [Méretezés a teljesítményhez](search-performance-optimization.md)és a [figyelési lekérdezések](search-monitor-queries.md)
+A megoldás QPS-ének becsléséhez a [Teljesítmény méretezése](search-performance-optimization.md)és [a Lekérdezésfigyelés című témakörben talál útmutatást.](search-monitor-queries.md)
 
 ## <a name="estimate-partitions"></a>Partíciók becslése
 
-A [kiválasztott](search-sku-tier.md) keret határozza meg a partíció méretét és sebességét, az egyes szintek pedig a különböző forgatókönyvekhez illeszkedő jellemzők körén vannak optimalizálva. Ha magasabb szintű szintet választ, előfordulhat, hogy kevesebb partícióra van szüksége, mint ha S1-et használ. Az egyik kérdés, amelyet saját irányított teszteléssel kell megválaszolnia, hogy egy nagyobb és drágább partíció jobb teljesítményt biztosít-e, mint két olcsóbb partíció az alacsonyabb szinten kiépített szolgáltatásokban.
+A [kiválasztott réteg](search-sku-tier.md) határozza meg a partíció méretét és sebességét, és minden réteg a különböző forgatókönyvekhez illeszkedő jellemzők köré van optimalizálva. Ha úgy dönt, egy magasabb szintű réteg, előfordulhat, hogy kevesebb partíciót, mint ha megy az S1. Az egyik kérdés, amit meg kell válaszolni a saját irányított tesztelés, hogy egy nagyobb és drágább partíció jobb teljesítményt eredményez, mint két olcsóbb partíciók egy alacsonyabb szinten kiosztott szolgáltatás.
 
-A közel valós idejű adatfrissítést igénylő alkalmazások kereséséhez a replikák több partícióra van szükségük. A partíciók hozzáadásával az írási/olvasási műveletek nagyobb számú számítási erőforráson keresztül terjednek ki. Emellett további lemezterületet biztosít a további indexek és dokumentumok tárolásához.
+A közel valós idejű adatfrissítést igénylő keresési alkalmazásoknak arányosan több partícióra van szükségük, mint a replikákra. Partíciók hozzáadása több számítási erőforrás olvasási/írási műveleteit osztja el. Emellett több lemezterületet biztosít a további indexek és dokumentumok tárolásához.
 
-A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat, hogy a partíciók növekményes növekedésének a replikák kisebb, de arányos növekedése szükséges. A lekérdezések és a lekérdezési kötetek összetettsége azt eredményezi, hogy milyen gyorsan történik a lekérdezés végrehajtása.
+A nagyobb indexek lekérdezése hosszabb időt vesz igénybe. Így előfordulhat, hogy a partíciók minden növekményes növekedése a replikák kisebb, de arányos növekedését igényli. A lekérdezések és a lekérdezési kötet összetettsége figyelembe veszi, hogy milyen gyorsan fordul meg a lekérdezés végrehajtása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Válasszon árképzési szintet az Azure Cognitive Search](search-sku-tier.md)
+> [Az Azure Cognitive Search díjszabási szintjének kiválasztása](search-sku-tier.md)

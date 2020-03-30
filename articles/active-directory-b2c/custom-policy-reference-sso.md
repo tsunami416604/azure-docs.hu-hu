@@ -1,7 +1,7 @@
 ---
-title: Egyszeri bejelentkezés munkamenet-kezelés egyéni szabályzatok használatával
+title: Egyszeri bejelentkezési munkamenet-kezelés egyéni házirendek használatával
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan kezelheti az egyszeri bejelentkezéses munkameneteket a Azure AD B2C egyéni házirendjeivel.
+description: Ismerje meg, hogyan kezelheti az SSO-munkameneteket az Azure AD B2C egyéni szabályzatai használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,48 +12,48 @@ ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246031"
 ---
-# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
+# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezési munkamenet ek kezelése az Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egyszeri bejelentkezés (SSO) munkamenet-kezelője Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a rendszergazda számára, hogy a felhasználó már hitelesített hitelesítése után vezérelje a felhasználókkal való interakciót. A rendszergazda például megadhatja, hogy megjelenjenek-e az identitás-szolgáltatók, vagy hogy meg kell-e adni a helyi fiók adatait. Ez a cikk a Azure AD B2C egyszeri bejelentkezéses beállításainak konfigurálását ismerteti.
+Egyszeri bejelentkezés (SSO) munkamenet-kezelés az Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a rendszergazda számára, hogy ellenőrizzék a felhasználóval való interakciót, miután a felhasználó már hitelesítette. A rendszergazda szabályozhatja például, hogy megjelenjen-e az identitásszolgáltatók kiválasztása, vagy hogy újra meg kell-e adni a helyi fiók adatait. Ez a cikk ismerteti, hogyan konfigurálhatja az SSO-beállítások at Azure AD B2C.
 
-Az egyszeri bejelentkezéses munkamenetek kezelése két részből áll. Az első a felhasználó interakcióit a Azure AD B2C és a másikkal együtt a külső felekkel, például a Facebooktal folytatott interakciókkal foglalkozik. Azure AD B2C nem bírál felül vagy mellőzi az SSO-munkameneteket, amelyeket külső felek is tárolhatnak. Ahelyett, hogy a külső fél felé irányuló, Azure AD B2C útvonalon áthaladó útvonalat "megjegyezték", a felhasználónak nem kell újrakérnie a felhasználót, hogy válassza ki a közösségi vagy vállalati identitás-szolgáltatót. A végső SSO-döntés a külső fél számára is fennáll.
+Az SSO munkamenet-kezelés két részből áll. Az első a felhasználó és az Azure AD B2C közvetlen interakcióival, a másik pedig a külső felekkel, például a Facebookkal folytatott interakciókkal foglalkozik. Az Azure AD B2C nem bírálja felül vagy nem kerüli meg a külső felek által megtartott SSO-munkameneteket. Inkább az Azure AD B2C-n keresztül a külső félhez való eljutáshoz vezető útvonal "megemlékezik", így nem kell újra kérni a felhasználót a közösségi vagy vállalati identitásszolgáltató kiválasztására. A végső SSO-döntés a külső félnél marad.
 
-Az egyszeri bejelentkezéses munkamenet-kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a lépéshez társított technikai profil lekérdezése `UseTechnicalProfileForSessionManagement`. Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
+Az SSO-munkamenet-kezelés ugyanazt a szemantikát használja, mint bármely más technikai profil az egyéni házirendekben. Vezénylési lépés végrehajtásakor a lépéshez társított technikai `UseTechnicalProfileForSessionManagement` profil lekérdezése egy hivatkozást. Ha van ilyen, a hivatkozott Egyszeri szolgáltató munkamenet-szolgáltatója ellenőrzi, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy vezénylési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben tárolt információk tárolására szolgál, ha egy SSO-munkamenet-szolgáltató meg van adva.
 
-Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
+Az Azure AD B2C számos használható SSO-munkamenet-szolgáltatót határozott meg:
 
 * NoopSSOSessionProvider
 * DefaultSSOSessionProvider
 * ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-Az egyszeri bejelentkezéses felügyeleti osztályok a technikai profil `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` eleme alapján vannak megadva.
+Az sso felügyeleti osztályok egy `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` technikai profil elemével vannak meghatározva.
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-A `InputClaims` elem üres vagy hiányzik.
+Az `InputClaims` elem üres vagy hiányzik.
 
-## <a name="persisted-claims"></a>Megőrzött jogcímek
+## <a name="persisted-claims"></a>Tartós követelések
 
-Azokat a jogcímeket, amelyeket vissza kell adni az alkalmazásnak, vagy a későbbi lépésekben az előfeltételeket kell használni, a munkamenetben kell tárolni, vagy a felhasználó profiljából kell kibővíteni a címtárban. A megőrzött jogcímek használata biztosítja, hogy a hitelesítési útvonalak ne legyenek sikertelenek a hiányzó jogcímek esetében. Ha jogcímeket szeretne felvenni a munkamenetbe, használja a technikai profil `<PersistedClaims>` elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához.
+A munkamenetben tárolni kell a munkamenetben, vagy ki kell egészíteni a felhasználó profiljából a címtárban olvasott jogcímeket, amelyeket vissza kell küldeni az alkalmazásnak, vagy a következő lépések előfeltételei által használva kell tárolni. A megőrzött jogcímek használata biztosítja, hogy a hitelesítési utak nem sikertelen a hiányzó jogcímek. Jogcímek hozzáadásához használja a `<PersistedClaims>` technikai profil elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a megőrzött jogcímek hozzáadódnak a jogcímcsomaghoz.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A `<OutputClaims>` a jogcímek munkamenetből való beolvasására szolgál.
+A `<OutputClaims>` jogcímek munkamenetből történő beolvasására szolgál.
 
 ## <a name="session-providers"></a>Munkamenet-szolgáltatók
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató használható egy adott technikai profil SSO-viselkedésének letiltására. A következő `SM-Noop` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack).
+Ahogy a neve diktálja, ez a szolgáltató nem csinál semmit. Ez a szolgáltató egy adott technikai profil sso viselkedésének letiltására használható. Az `SM-Noop` [egyéni házirend kezdőcsomagja](custom-policy-get-started.md#custom-policy-starter-pack)a következő technikai profilt tartalmazza.
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -64,7 +64,7 @@ Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató hasz
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet használni. Ez a szolgáltató általában a helyi fiókok kezeléséhez használt technikai profilban hivatkozik. A következő `SM-AAD` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack).
+Ez a szolgáltató jogcímek munkamenetben történő tárolására használható. Erre a szolgáltatóra általában egy helyi fiókok kezelésére használt technikai profil hivatkozik. Az `SM-AAD` [egyéni házirend kezdőcsomagja](custom-policy-get-started.md#custom-policy-starter-pack)a következő technikai profilt tartalmazza.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet has
 </TechnicalProfile>
 ```
 
-A következő `SM-MFA` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Ez a technikai profil a multi-Factor Authentication munkamenetet kezeli.
+Az `SM-MFA` [egyéni házirend kezdőcsomagja](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`a következő technikai profilt tartalmazza. Ez a technikai profil kezeli a többtényezős hitelesítési munkamenetet.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -101,7 +101,7 @@ A következő `SM-MFA` technikai profilt tartalmazza az [egyéni házirend-indí
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő letiltására szolgál. Általában egy külső identitás-szolgáltatóhoz, például a Facebookhoz konfigurált technikai profil hivatkozik rá. A következő `SM-SocialLogin` technikai profilt tartalmazza az [egyéni házirend-indító csomag](custom-policy-get-started.md#custom-policy-starter-pack).
+Ez a szolgáltató az "identitásszolgáltató kiválasztása" képernyő letiltására szolgál. Ez általában hivatkozik egy külső identitásszolgáltatóhoz konfigurált technikai profilban, például a Facebookon. Az `SM-SocialLogin` [egyéni házirend kezdőcsomagja](custom-policy-get-started.md#custom-policy-starter-pack)a következő technikai profilt tartalmazza.
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
@@ -120,11 +120,11 @@ Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő
 
 | Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
+| AlwaysFetchClaimsFromProvider | Nem | Jelenleg nem használt, figyelmen kívül hagyható. |
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, a `RegisterServiceProviders` `false`ra kell beállítani. Az [SAML technikai profil](saml-technical-profile.md)a következő `SM-Saml-idp` technikai profilt használja.
+Ez a szolgáltató az Azure AD B2C SAML-munkamenetek kezelésére szolgál egy függő entitás alkalmazás vagy egy összevont SAML identitásszolgáltató között. Ha az SSO-szolgáltatót saml identitásszolgáltató munkamenet tárolására használja, a `RegisterServiceProviders` beállításának a . `false` Az `SM-Saml-idp` [SAML technikai profilja](saml-technical-profile.md)a következő technikai profilt használja.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -136,9 +136,9 @@ Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a 
 </TechnicalProfile>
 ```
 
-Ha a B2C SAML-munkamenet tárolására szolgáltatót használ, a `RegisterServiceProviders` `true`ra kell beállítania. Az SAML-munkamenet kijelentkezéséhez szükség van a `SessionIndex`ra, és `NameID` a befejezéshez.
+Ha a szolgáltatót a B2C SAML munkamenet `RegisterServiceProviders` tárolására `true`használja, a kell állítania a . SAML munkamenet kijelentkezés szükséges a `SessionIndex` és `NameID` a teljes.
 
-Az [SAML-kiállító technikai profilja](saml-issuer-technical-profile.md) a következő `SM-Saml-idp` technikai profilt használja
+A `SM-Saml-idp` [saml kibocsátó technikai profilja](saml-issuer-technical-profile.md) a következő technikai profilt használja
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">
@@ -150,8 +150,8 @@ Az [SAML-kiállító technikai profilja](saml-issuer-technical-profile.md) a kö
 
 | Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
-| IncludeSessionIndex | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható.|
-| RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|
+| IncludeSessionIndex | Nem | Jelenleg nem használt, figyelmen kívül hagyható.|
+| Szolgáltatói regisztráció | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely nek jogcímeket adott ki. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|
 
 
 

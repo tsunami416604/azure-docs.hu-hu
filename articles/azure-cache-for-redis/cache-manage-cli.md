@@ -1,61 +1,61 @@
 ---
-title: Azure cache kezelése a Redis az Azure klasszikus CLI használatával
-description: Megtudhatja, hogyan telepítheti a klasszikus Azure CLI-t bármely platformra, hogyan használhatja azt az Azure-fiókhoz való kapcsolódáshoz, és hogyan hozhat létre és kezelhet Azure-gyorsítótárat a Redis a klasszikus CLI-ből.
+title: Az Azure Cache for Redis kezelése a klasszikus Azure CLI használatával
+description: Ismerje meg, hogyan telepítheti az Azure klasszikus CLI-t bármely platformon, hogyan használhatja az Azure-fiókhoz való csatlakozáshoz, és hogyan hozhat létre és kezelhet egy Azure-gyorsítótárat a Redis számára a klasszikus CLI-ből.
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277985"
 ---
-# <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure cache létrehozása és kezelése a Redis a klasszikus Azure CLI használatával
+# <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure Cache for Redis létrehozása és kezelése a klasszikus Azure CLI használatával
 > [!div class="op_single_selector"]
-> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
+> * [Powershell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure klasszikus parancssori felület](cache-manage-cli.md)
 >
 
-Az Azure-beli klasszikus CLI nagyszerű lehetőséget biztosít az Azure-infrastruktúra bármely platformról való kezelésére. Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az Azure cache-t a Redis-példányok számára a klasszikus Azure CLI használatával.
+Az Azure klasszikus CLI egy nagyszerű módja annak, hogy kezelje az Azure-infrastruktúra bármilyen platformról. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet az Azure Cache redis-példányok az Azure klasszikus CLI használatával.
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
-> A legújabb Azure CLI-parancsfájlokat az Azure [CLI Azure cache Redis-mintákhoz](cli-samples.md)című témakörben tekintheti meg.
+> A legújabb Azure CLI-mintaparancsfájlokat az [Azure CLI Azure-gyorsítótár redis mintákhoz című témakörben található.](cli-samples.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure cache Redis-példányok Azure-beli klasszikus CLI használatával történő létrehozásához és kezeléséhez az alábbi lépéseket kell végrehajtania.
+Az Azure Cache for Redis-példányok létrehozása és kezelése az Azure classic CLI használatával, a következő lépéseket kell végrehajtania.
 
-* Rendelkeznie kell egy Azure-fiókkal. Ha még nem rendelkezik ilyennel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
-* [Telepítse a klasszikus Azure CLI](../cli-install-nodejs.md)-t.
-* Az Azure CLI-telepítést személyes Azure-fiókkal, munkahelyi vagy iskolai Azure-fiókkal, valamint a `azure login` parancs használatával is bejelentkezhet a klasszikus CLI-vel.
-* A következő parancsok bármelyikének futtatása előtt váltson át a klasszikus CLI-t Resource Manager módba a `azure config mode arm` parancs futtatásával. További információ: az Azure-beli [klasszikus CLI használata Azure-erőforrások és-erőforráscsoportok kezeléséhez](../xplat-cli-azure-resource-manager.md).
+* Rendelkeznie kell egy Azure-fiókkal. Ha még nem rendelkezik ilyen, néhány pillanat alatt létrehozhat egy [ingyenes fiókot.](https://azure.microsoft.com/pricing/free-trial/)
+* [Telepítse az Azure klasszikus CLI.](../cli-install-nodejs.md)
+* Csatlakoztassa az Azure CLI-telepítést egy személyes Azure-fiókkal, vagy egy munkahelyi vagy iskolai `azure login` Azure-fiókkal, és jelentkezzen be a klasszikus CLI-ből a paranccsal.
+* Az alábbi parancsok futtatása előtt a `azure config mode arm` parancs futtatásával váltson a klasszikus CLI-t Erőforrás-kezelő módba. További információ: [Az Azure klasszikus CLI használata az Azure-erőforrások és erőforráscsoportok kezeléséhez.](../xplat-cli-azure-resource-manager.md)
 
-## <a name="azure-cache-for-redis-properties"></a>Az Azure Cache a Redis-tulajdonságok
-Az Redis-példányok Azure gyorsítótárának létrehozásakor és frissítésekor a következő tulajdonságok használatosak.
+## <a name="azure-cache-for-redis-properties"></a>Azure-gyorsítótár a Redis-tulajdonságokhoz
+A következő tulajdonságok at a Redis-példányok Azure Cache létrehozásakor és frissítésekor használatosak.
 
 | Tulajdonság | Kapcsoló | Leírás |
 | --- | --- | --- |
-| név |-n,--név |A Redis tartozó Azure cache neve. |
-| erőforráscsoport |-g, --resource-group |Az erőforráscsoport neve. |
-| location |-l,--hely |A gyorsítótár létrehozására szolgáló hely. |
-| size |-z,--size |Az Azure cache mérete a Redis számára. Érvényes értékek: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| sku |-x, --sku |Redis SKU. Az alábbiak egyike lehet: [Basic, standard, Premium] |
-| EnableNonSslPort |-e,--Enable-nem SSL-port |A Redis tartozó Azure cache EnableNonSslPort tulajdonsága. Adja hozzá ezt a jelzőt, ha engedélyezni szeretné a nem SSL-portot a gyorsítótárhoz |
-| Redis-konfiguráció |-c, --redis-configuration |Redis-konfiguráció. Itt adhatja meg a konfigurációs kulcsok és értékek JSON formátumú karakterláncát. Formátum: "{" ":" "," ":" "}" |
-| Redis-konfiguráció |-f, --redis-configuration-file |Redis-konfiguráció. Itt adhatja meg a konfigurációs kulcsokat és értékeket tartalmazó fájl elérési útját. A következő fájl formátuma: {"": "", "": ""} |
-| Szegmensek száma |-r,--szilánkok száma |Azoknak a szegmenseknek a száma, amelyeket egy prémium szintű fürt-gyorsítótárban kell létrehozni a fürtözéssel. |
-| Virtuális hálózat |-v, --virtual-network |A gyorsítótár egy VNET való üzemeltetése során a a virtuális hálózat pontos ARM-erőforrás-AZONOSÍTÓját adja meg a Redis tartozó Azure cache üzembe helyezéséhez. Példa formátum:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| kulcs típusa |-t,--Key-Type |A megújítani kívánt kulcs típusa. Érvényes értékek: [elsődleges, másodlagos] |
-| StaticIP |-p,--Static-IP \<statikus IP-\> |A gyorsítótár egy VNET való üzemeltetése esetén a gyorsítótárban egy egyedi IP-címet ad meg az alhálózatban. Ha nincs megadva, az egyiket az alhálózatból választjuk ki. |
-| Subnet |t,--alhálózat \<alhálózat\> |A gyorsítótár VNET való üzemeltetése esetén annak az alhálózatnak a nevét adja meg, amelyben a gyorsítótárat telepíteni szeretné. |
-| VirtualNetwork |-v,--Virtual-Network \<Virtual-Network\> |A gyorsítótár egy VNET való üzemeltetése során a a virtuális hálózat pontos ARM-erőforrás-AZONOSÍTÓját adja meg a Redis tartozó Azure cache üzembe helyezéséhez. Példa formátum:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| -előfizetés |-s,--előfizetés |Az előfizetés azonosítója. |
+| név |-n, --név |A Redis Azure-gyorsítótárának neve. |
+| erőforráscsoport |-g, --erőforrás-csoport |Az erőforráscsoport neve. |
+| location |-l, --hely |Gyorsítótár létrehozásának helye. |
+| size |-z, --méret |Az Azure-gyorsítótár a Redis mérete. Érvényes értékek: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| Sku |-x, --sku |Redis-termékváltozat. Az egyik nek: [Alap, Standard, Prémium] |
+| EnableNonSslPort |-e, --enable-non-ssl-port |A Redis Azure-gyorsítótár ának EnableNonSslPort tulajdonsága. Adja hozzá ezt a jelzőt, ha engedélyezni szeretné a nem SSL-portot a gyorsítótárhoz |
+| Redis konfiguráció |-c, --redis-konfiguráció |Redis konfiguráció. Itt adhatja meg a konfigurációs kulcsok és értékek JSON-formátumú karakterláncát. Formátum:"{"":"","":"":"}" |
+| Redis konfiguráció |-f, --redis-configuration-file |Redis konfiguráció. Itt adhatja meg a konfigurációs kulcsokat és értékeket tartalmazó fájl elérési útját. A fájlbejegyzés formátuma: {"":"","":"":"}} |
+| Szilánkok száma |-r, --shard-count |A fürtözéssel rendelkező prémium szintű fürtgyorsítótárban létrehozandó szegmensek száma. |
+| Virtual Network |-v, --virtuális hálózat |Amikor a gyorsítótárat egy virtuális hálózatban üzemelteti, megadja a virtuális hálózat pontos ARM erőforrás-azonosítóját az Azure-gyorsítótár redis üzembe helyezéséhez. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| kulcs típusa |-t, --kulcs-típus |A megújítandó kulcs típusa. Érvényes értékek: [Elsődleges, Másodlagos] |
+| Statikus IP |-p, --static-ip \<statikus-ip\> |Ha a gyorsítótárat egy virtuális hálózatban üzemelteti, egy egyedi IP-címet ad meg a gyorsítótár alhálózatában. Ha nincs megadva, az alhálózatból kiválasztanak egyet. |
+| Alhálózat |t, --alhálózat \<alhálózat\> |Amikor a gyorsítótárat egy virtuális hálózatban üzemelteti, megadja annak az alhálózatnak a nevét, amelyben a gyorsítótárat telepíteni szeretné. |
+| VirtualNetwork |-v, --virtuális \<hálózati virtuális hálózat\> |Amikor a gyorsítótárat egy virtuális hálózatban üzemelteti, megadja a virtuális hálózat pontos ARM erőforrás-azonosítóját az Azure-gyorsítótár redis üzembe helyezéséhez. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Előfizetés |-s, --előfizetés |Az előfizetés azonosítója. |
 
-## <a name="see-all-azure-cache-for-redis-commands"></a>A Redis-parancsok összes Azure-gyorsítótárának megtekintése
-Az Redis parancsok és a hozzájuk tartozó paraméterek összes Azure-gyorsítótárának megtekintéséhez használja a `azure rediscache -h` parancsot.
+## <a name="see-all-azure-cache-for-redis-commands"></a>Az összes Azure Cache for Redis parancs megtekintése
+Az összes Azure Cache redis parancsok és azok `azure rediscache -h` paramétereit, használja a parancsot.
 
     C:\>azure rediscache -h
     help:    Commands to manage your Azure Cache for Redis(s)
@@ -86,12 +86,12 @@ Az Redis parancsok és a hozzájuk tartozó paraméterek összes Azure-gyorsít�
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="create-an-azure-cache-for-redis"></a>A Redis Azure Cache létrehozása
-A következő paranccsal hozhat létre Azure cache-t a Redis számára:
+## <a name="create-an-azure-cache-for-redis"></a>Az Azure Cache for Redis létrehozása
+Azure-gyorsítótár létrehozásához a Redis számára, használja a következő parancsot:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 
-A paranccsal kapcsolatos további információkért futtassa a `azure rediscache create -h` parancsot.
+A parancsról további információt `azure rediscache create -h` a parancs futtatásához.
 
     C:\>azure rediscache create -h
     help:    Create an Azure Cache for Redis
@@ -119,12 +119,12 @@ A paranccsal kapcsolatos további információkért futtassa a `azure rediscache
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="delete-an-existing-azure-cache-for-redis"></a>Meglévő Azure cache törlése a Redis-hez
-Ha törölni szeretne egy Azure-gyorsítótárat a Redis, használja a következő parancsot:
+## <a name="delete-an-existing-azure-cache-for-redis"></a>Meglévő Azure-gyorsítótár törlése a Redis-hez
+A Redis Azure-gyorsítótárának törléséhez használja a következő parancsot:
 
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
 
-A paranccsal kapcsolatos további információkért futtassa a `azure rediscache delete -h` parancsot.
+A parancsról további információt `azure rediscache delete -h` a parancs futtatásához.
 
     C:\>azure rediscache delete -h
     help:    Delete an existing Azure Cache for Redis
@@ -142,12 +142,12 @@ A paranccsal kapcsolatos további információkért futtassa a `azure rediscache
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Az előfizetésen vagy az Redis belül található összes Azure cache listázása
-Az előfizetésben vagy az Redis lévő összes Azure cache listázásához használja az alábbi parancsot:
+## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Az összes Redis-alapú Azure-gyorsítótár listázása az előfizetésen vagy erőforráscsoporton belül
+Ha az előfizetésen vagy erőforráscsoporton belül szeretné felsorolni a Redis összes Azure-gyorsítótárát, használja a következő parancsot:
 
     azure rediscache list [options]
 
-A paranccsal kapcsolatos további információkért futtassa a `azure rediscache list -h` parancsot.
+A parancsról további információt `azure rediscache list -h` a parancs futtatásához.
 
     C:\>azure rediscache list -h
     help:    List all Azure Cache for Redis within your Subscription or Resource Group
@@ -164,12 +164,12 @@ A paranccsal kapcsolatos további információkért futtassa a `azure rediscache
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="show-properties-of-an-existing-azure-cache-for-redis"></a>Meglévő Azure cache tulajdonságainak megjelenítése a Redis
-A Redis meglévő Azure cache tulajdonságainak megjelenítéséhez használja a következő parancsot:
+## <a name="show-properties-of-an-existing-azure-cache-for-redis"></a>Meglévő Azure-gyorsítótár tulajdonságainak megjelenítése a Redis számára
+Egy meglévő Azure-gyorsítótár redis-i tulajdonságainak megjelenítéséhez használja a következő parancsot:
 
     azure rediscache show [--name <name> --resource-group <resource-group>]
 
-A paranccsal kapcsolatos további információkért futtassa a `azure rediscache show -h` parancsot.
+A parancsról további információt `azure rediscache show -h` a parancs futtatásához.
 
     C:\>azure rediscache show -h
     help:    Show properties of an existing Azure Cache for Redis
@@ -189,12 +189,12 @@ A paranccsal kapcsolatos további információkért futtassa a `azure rediscache
 
 <a name="scale"></a>
 
-## <a name="change-settings-of-an-existing-azure-cache-for-redis"></a>Meglévő Azure cache beállításainak módosítása a Redis
-A Redis meglévő Azure cache beállításainak módosításához használja a következő parancsot:
+## <a name="change-settings-of-an-existing-azure-cache-for-redis"></a>Meglévő Azure-gyorsítótár beállításainak módosítása a Redis számára
+Meglévő Azure-gyorsítótár redis-i beállításainak módosításához használja a következő parancsot:
 
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 
-A paranccsal kapcsolatos további információkért futtassa a `azure rediscache set -h` parancsot.
+A parancsról további információt `azure rediscache set -h` a parancs futtatásához.
 
     C:\>azure rediscache set -h
     help:    Change settings of an existing Azure Cache for Redis
@@ -214,14 +214,14 @@ A paranccsal kapcsolatos további információkért futtassa a `azure rediscache
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="renew-the-authentication-key-for-an-existing-azure-cache-for-redis"></a>Meglévő Azure cache hitelesítési kulcsának megújítása a Redis
-A Redis meglévő Azure cache hitelesítési kulcsának megújításához használja a következő parancsot:
+## <a name="renew-the-authentication-key-for-an-existing-azure-cache-for-redis"></a>Meglévő Azure-gyorsítótár redis-i gyorsítótárának hitelesítési kulcsának megújítása
+A Redis meglévő Azure-gyorsítótárának hitelesítési kulcsának megújításához használja a következő parancsot:
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
 
-A `key-type``Primary` vagy `Secondary` megadása.
+Adja `Primary` `Secondary` meg `key-type`vagy a.
 
-A paranccsal kapcsolatos további információkért futtassa a `azure rediscache renew-key -h` parancsot.
+A parancsról további információt `azure rediscache renew-key -h` a parancs futtatásához.
 
     C:\>azure rediscache renew-key -h
     help:    Renew the authentication key for an existing Azure Cache for Redis
@@ -240,12 +240,12 @@ A paranccsal kapcsolatos további információkért futtassa a `azure rediscache
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-primary-and-secondary-keys-of-an-existing-azure-cache-for-redis"></a>Meglévő Azure cache elsődleges és másodlagos kulcsainak listázása a Redis
-A Redis meglévő Azure cache elsődleges és másodlagos kulcsainak listázásához használja a következő parancsot:
+## <a name="list-primary-and-secondary-keys-of-an-existing-azure-cache-for-redis"></a>Meglévő Azure-gyorsítótár elsődleges és másodlagos kulcsainak listázása a Redis számára
+Egy meglévő Azure-gyorsítótár Redis-gyorsítótár elsődleges és másodlagos kulcsainak listázásához használja a következő parancsot:
 
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
 
-A paranccsal kapcsolatos további információkért futtassa a `azure rediscache list-keys -h` parancsot.
+A parancsról további információt `azure rediscache list-keys -h` a parancs futtatásához.
 
     C:\>azure rediscache list-keys -h
     help:    Lists Primary and Secondary key of an existing Azure Cache for Redis

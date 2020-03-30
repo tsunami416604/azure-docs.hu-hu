@@ -1,205 +1,205 @@
 ---
-title: Korlátozások – Azure Database for MySQL
-description: Ez a cikk ismerteti a korlátozások az Azure Database for MySQL-hez, például kapcsolat és a tárolási motort lehetőségek számát.
+title: Korlátozások – Azure-adatbázis a MySQL-hez
+description: Ez a cikk az Azure Database for MySQL korlátait ismerteti, például a kapcsolat és a tárolómotor beállításainak számát.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: 6954f306e0d0a346bd8f39776d987af99f7574dd
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.date: 3/18/2020
+ms.openlocfilehash: bc4694928eceed57692a0d4b0469543c1a8f9678
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299090"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532756"
 ---
-# <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL-hez korlátozásai
-A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai. Lásd még a MySQL-adatbázismotor esetében alkalmazandó [általános korlátozásokat](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) is.
+# <a name="limitations-in-azure-database-for-mysql"></a>A MySQL Azure-adatbázisának korlátai
+A következő szakaszok a kapacitást, a tárolómotor-támogatást, a jogosultság-támogatást, az adatkezelési utasítások támogatását és az adatbázis-szolgáltatás funkcionális korlátait ismertetik. Lásd még a MySQL adatbázis-motorra vonatkozó [általános korlátozásokat.](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)
 
-## <a name="server-parameters"></a>Kiszolgálói paraméterek
+## <a name="server-parameters"></a>Kiszolgálóparaméterek
 
-Számos népszerű kiszolgálói paraméter minimális és maximális értékét a díjszabási szint és a virtuális mag határozza meg. A korlátokat az alábbi táblázatokban találja.
+Több népszerű kiszolgálóparaméter minimális és maximális értékét a tarifacsomag és a virtuális magok határozzák meg. A korlátokat az alábbi táblázatokban talál.
 
 ### <a name="max_connections"></a>max_connections
 
-|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Árképzési szint**|**virtuális mag(k)**|**Alapértelmezett érték**|**Min érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Alapszintű|1|50|10|50|
-|Alapszintű|2|100|10|100|
-|Általános rendeltetés|2|300|10|600|
-|Általános rendeltetés|4|625|10|1250|
-|Általános rendeltetés|8|1250|10|2500|
-|Általános rendeltetés|16|2500|10|5000|
-|Általános rendeltetés|32|5000|10|10000|
-|Általános rendeltetés|64|10000|10|20000|
-|Memóriára optimalizált|2|600|10|800|
-|Memóriára optimalizált|4|1250|10|2500|
-|Memóriára optimalizált|8|2500|10|5000|
-|Memóriára optimalizált|16|5000|10|10000|
-|Memóriára optimalizált|32|10000|10|20000|
+|Basic|1|50|10|50|
+|Basic|2|100|10|100|
+|Általános célú|2|300|10|600|
+|Általános célú|4|625|10|1250|
+|Általános célú|8|1250|10|2500|
+|Általános célú|16|2500|10|5000|
+|Általános célú|32|5000|10|10000|
+|Általános célú|64|10000|10|20000|
+|Memóriaoptimalizált|2|600|10|800|
+|Memóriaoptimalizált|4|1250|10|2500|
+|Memóriaoptimalizált|8|2500|10|5000|
+|Memóriaoptimalizált|16|5000|10|10000|
+|Memóriaoptimalizált|32|10000|10|20000|
 
-Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
-> 1040 (08004). hiba: Túl sok kapcsolat
+Ha a kapcsolatok túllépik a korlátot, a következő hibaüzenet jelenhet meg:
+> 1040-es hiba (08004): Túl sok kapcsolat
 
 > [!IMPORTANT]
-> A legjobb megoldás érdekében javasoljuk, hogy használjon olyan kapcsolati Pooler, mint a ProxySQL, hogy hatékonyan kezelhesse a kapcsolatokat.
+> A legjobb élmény érdekében azt javasoljuk, hogy a kapcsolatok hatékony kezeléséhez használjon egy kapcsolatpoolert, például a ProxySQL-t.
 
-A MySQL-hez való új ügyfélkapcsolatok létrehozása időt vesz igénybe, a kapcsolatok pedig adatbázis-erőforrásokat foglalnak magukban, még akkor is, ha tétlenek. A legtöbb alkalmazás sok rövid életű kapcsolatot igényel, amely ezt a helyzetet összeképezi. Ennek eredményeképpen kevesebb erőforrás érhető el a tényleges munkaterheléshez, ami csökkenti a teljesítményt. Egy kapcsolati Pooler, amely csökkenti az üresjárati kapcsolatokat, és a meglévő kapcsolatokat újra felhasználva segít elkerülni ezt. A ProxySQL beállításával kapcsolatos további információkért látogasson el a [blogbejegyzésbe](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
+Új ügyfélkapcsolatok létrehozása a MySQL időt vesz igénybe, és miután létre, ezek a kapcsolatok foglalják el adatbázis-erőforrásokat, még akkor is, ha tétlen. A legtöbb alkalmazás sok rövid életű kapcsolatot kér, ami összetette ezt a helyzetet. Az eredmény kevesebb erőforrás áll rendelkezésre a tényleges munkaterheléshez, ami a teljesítmény csökkenéséhez vezet. Az alapjárati kapcsolatokat csökkentő és a meglévő kapcsolatokat újrafeltöltő kapcsolatgyűjtő segít elkerülni ezt. Ha többet szeretne megtudni a ProxySQL beállításáról, látogasson el [blogbejegyzésünkbe.](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)
 
-## <a name="query_cache_size"></a>query_cache_size
+### <a name="query_cache_size"></a>query_cache_size
 
-A lekérdezés gyorsítótára alapértelmezés szerint ki van kapcsolva. A lekérdezési gyorsítótár engedélyezéséhez konfigurálja a `query_cache_type` paramétert. 
+A lekérdezési gyorsítótár alapértelmezés szerint ki van kapcsolva. A lekérdezési gyorsítótár engedélyezéséhez konfigurálja a `query_cache_type` paramétert. 
 
-A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size) .
+Tekintse át a [MySQL dokumentációját,](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size) ha többet szeretne megtudni erről a paraméterről.
 
 > [!NOTE]
-> A lekérdezési gyorsítótár elavult a MySQL-5.7.20 telepítése, és el lett távolítva a MySQL 8,0-ben.
+> A lekérdezési gyorsítótár a MySQL 5.7.20-tól elavult, és a MySQL 8.0-ban eltávolították
 
-|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Árképzési szint**|**virtuális mag(k)**|**Alapértelmezett érték**|**Min érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Általános rendeltetés|2|0|0|16777216|
-|Általános rendeltetés|4|0|0|33554432|
-|Általános rendeltetés|8|0|0|67108864|
-|Általános rendeltetés|16|0|0|134217728|
-|Általános rendeltetés|32|0|0|134217728|
-|Általános rendeltetés|64|0|0|134217728|
-|Memóriára optimalizált|2|0|0|33554432|
-|Memóriára optimalizált|4|0|0|67108864|
-|Memóriára optimalizált|8|0|0|134217728|
-|Memóriára optimalizált|16|0|0|134217728|
-|Memóriára optimalizált|32|0|0|134217728|
+|Basic|1|Nem konfigurálható az alapszinten|N/A|N/A|
+|Basic|2|Nem konfigurálható az alapszinten|N/A|N/A|
+|Általános célú|2|0|0|16777216|
+|Általános célú|4|0|0|33554432|
+|Általános célú|8|0|0|67108864|
+|Általános célú|16|0|0|134217728|
+|Általános célú|32|0|0|134217728|
+|Általános célú|64|0|0|134217728|
+|Memóriaoptimalizált|2|0|0|33554432|
+|Memóriaoptimalizált|4|0|0|67108864|
+|Memóriaoptimalizált|8|0|0|134217728|
+|Memóriaoptimalizált|16|0|0|134217728|
+|Memóriaoptimalizált|32|0|0|134217728|
 
-## <a name="sort_buffer_size"></a>sort_buffer_size
+### <a name="sort_buffer_size"></a>sort_buffer_size
 
-A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) .
+Tekintse át a [MySQL dokumentációját,](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) ha többet szeretne megtudni erről a paraméterről.
 
-|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Árképzési szint**|**virtuális mag(k)**|**Alapértelmezett érték**|**Min érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Általános rendeltetés|2|524288|32768|4194304|
-|Általános rendeltetés|4|524288|32768|8388608|
-|Általános rendeltetés|8|524288|32768|16777216|
-|Általános rendeltetés|16|524288|32768|33554432|
-|Általános rendeltetés|32|524288|32768|33554432|
-|Általános rendeltetés|64|524288|32768|33554432|
-|Memóriára optimalizált|2|524288|32768|8388608|
-|Memóriára optimalizált|4|524288|32768|16777216|
-|Memóriára optimalizált|8|524288|32768|33554432|
-|Memóriára optimalizált|16|524288|32768|33554432|
-|Memóriára optimalizált|32|524288|32768|33554432|
+|Basic|1|Nem konfigurálható az alapszinten|N/A|N/A|
+|Basic|2|Nem konfigurálható az alapszinten|N/A|N/A|
+|Általános célú|2|524288|32768|4194304|
+|Általános célú|4|524288|32768|8388608|
+|Általános célú|8|524288|32768|16777216|
+|Általános célú|16|524288|32768|33554432|
+|Általános célú|32|524288|32768|33554432|
+|Általános célú|64|524288|32768|33554432|
+|Memóriaoptimalizált|2|524288|32768|8388608|
+|Memóriaoptimalizált|4|524288|32768|16777216|
+|Memóriaoptimalizált|8|524288|32768|33554432|
+|Memóriaoptimalizált|16|524288|32768|33554432|
+|Memóriaoptimalizált|32|524288|32768|33554432|
 
-## <a name="join_buffer_size"></a>join_buffer_size
+### <a name="join_buffer_size"></a>join_buffer_size
 
-A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size) .
+Tekintse át a [MySQL dokumentációját,](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size) ha többet szeretne megtudni erről a paraméterről.
 
-|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Árképzési szint**|**virtuális mag(k)**|**Alapértelmezett érték**|**Min érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Általános rendeltetés|2|262144|128|268435455|
-|Általános rendeltetés|4|262144|128|536870912|
-|Általános rendeltetés|8|262144|128|1073741824|
-|Általános rendeltetés|16|262144|128|2147483648|
-|Általános rendeltetés|32|262144|128|4294967295|
-|Általános rendeltetés|64|262144|128|4294967295|
-|Memóriára optimalizált|2|262144|128|536870912|
-|Memóriára optimalizált|4|262144|128|1073741824|
-|Memóriára optimalizált|8|262144|128|2147483648|
-|Memóriára optimalizált|16|262144|128|4294967295|
-|Memóriára optimalizált|32|262144|128|4294967295|
+|Basic|1|Nem konfigurálható az alapszinten|N/A|N/A|
+|Basic|2|Nem konfigurálható az alapszinten|N/A|N/A|
+|Általános célú|2|262144|128|268435455|
+|Általános célú|4|262144|128|536870912|
+|Általános célú|8|262144|128|1073741824|
+|Általános célú|16|262144|128|2147483648|
+|Általános célú|32|262144|128|4294967295|
+|Általános célú|64|262144|128|4294967295|
+|Memóriaoptimalizált|2|262144|128|536870912|
+|Memóriaoptimalizált|4|262144|128|1073741824|
+|Memóriaoptimalizált|8|262144|128|2147483648|
+|Memóriaoptimalizált|16|262144|128|4294967295|
+|Memóriaoptimalizált|32|262144|128|4294967295|
 
-## <a name="max_heap_table_size"></a>max_heap_table_size
+### <a name="max_heap_table_size"></a>max_heap_table_size
 
-A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size) .
+Tekintse át a [MySQL dokumentációját,](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size) ha többet szeretne megtudni erről a paraméterről.
 
-|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Árképzési szint**|**virtuális mag(k)**|**Alapértelmezett érték**|**Min érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Általános rendeltetés|2|16777216|16384|268435455|
-|Általános rendeltetés|4|16777216|16384|536870912|
-|Általános rendeltetés|8|16777216|16384|1073741824|
-|Általános rendeltetés|16|16777216|16384|2147483648|
-|Általános rendeltetés|32|16777216|16384|4294967295|
-|Általános rendeltetés|64|16777216|16384|4294967295|
-|Memóriára optimalizált|2|16777216|16384|536870912|
-|Memóriára optimalizált|4|16777216|16384|1073741824|
-|Memóriára optimalizált|8|16777216|16384|2147483648|
-|Memóriára optimalizált|16|16777216|16384|4294967295|
-|Memóriára optimalizált|32|16777216|16384|4294967295|
+|Basic|1|Nem konfigurálható az alapszinten|N/A|N/A|
+|Basic|2|Nem konfigurálható az alapszinten|N/A|N/A|
+|Általános célú|2|16777216|16384|268435455|
+|Általános célú|4|16777216|16384|536870912|
+|Általános célú|8|16777216|16384|1073741824|
+|Általános célú|16|16777216|16384|2147483648|
+|Általános célú|32|16777216|16384|4294967295|
+|Általános célú|64|16777216|16384|4294967295|
+|Memóriaoptimalizált|2|16777216|16384|536870912|
+|Memóriaoptimalizált|4|16777216|16384|1073741824|
+|Memóriaoptimalizált|8|16777216|16384|2147483648|
+|Memóriaoptimalizált|16|16777216|16384|4294967295|
+|Memóriaoptimalizált|32|16777216|16384|4294967295|
 
-## <a name="tmp_table_size"></a>tmp_table_size
+### <a name="tmp_table_size"></a>tmp_table_size
 
-A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size) .
+Tekintse át a [MySQL dokumentációját,](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size) ha többet szeretne megtudni erről a paraméterről.
 
-|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Árképzési szint**|**virtuális mag(k)**|**Alapértelmezett érték**|**Min érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
-|Általános rendeltetés|2|16777216|1024|67108864|
-|Általános rendeltetés|4|16777216|1024|134217728|
-|Általános rendeltetés|8|16777216|1024|268435456|
-|Általános rendeltetés|16|16777216|1024|536870912|
-|Általános rendeltetés|32|16777216|1024|1073741824|
-|Általános rendeltetés|64|16777216|1024|1073741824|
-|Memóriára optimalizált|2|16777216|1024|134217728|
-|Memóriára optimalizált|4|16777216|1024|268435456|
-|Memóriára optimalizált|8|16777216|1024|536870912|
-|Memóriára optimalizált|16|16777216|1024|1073741824|
-|Memóriára optimalizált|32|16777216|1024|1073741824|
+|Basic|1|Nem konfigurálható az alapszinten|N/A|N/A|
+|Basic|2|Nem konfigurálható az alapszinten|N/A|N/A|
+|Általános célú|2|16777216|1024|67108864|
+|Általános célú|4|16777216|1024|134217728|
+|Általános célú|8|16777216|1024|268435456|
+|Általános célú|16|16777216|1024|536870912|
+|Általános célú|32|16777216|1024|1073741824|
+|Általános célú|64|16777216|1024|1073741824|
+|Memóriaoptimalizált|2|16777216|1024|134217728|
+|Memóriaoptimalizált|4|16777216|1024|268435456|
+|Memóriaoptimalizált|8|16777216|1024|536870912|
+|Memóriaoptimalizált|16|16777216|1024|1073741824|
+|Memóriaoptimalizált|32|16777216|1024|1073741824|
 
-## <a name="storage-engine-support"></a>Storage engine-támogatás
+## <a name="storage-engine-support"></a>A tárolómotor támogatása
 
 ### <a name="supported"></a>Támogatott
-- [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
-- [MEMÓRIA](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
+- [Innodb](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
+- [Memória](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
 ### <a name="unsupported"></a>Nem támogatott
-- [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
-- [BLACKHOLE](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
+- [Myisam](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
+- [FEKETELYUK](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
 - [Archívum](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
-- [ÖSSZEVONT](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
+- [Összevont](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
-## <a name="privilege-support"></a>Jogosultság-támogatás
+## <a name="privilege-support"></a>Jogosultság támogatása
 
 ### <a name="unsupported"></a>Nem támogatott
-- Adatbázis-szerepkör: számos kiszolgálói paraméterek és beállítások véletlenül rontják a kiszolgáló teljesítményét vagy amelyet tagadni kell a Célrendszerben ACID tulajdonságait. Emiatt a szolgáltatás integritás és SLA-t, a termék szintjén fenntartására, ezt a szolgáltatást nem biztosít az adatbázis-szerepkör. Az alapértelmezett felhasználói fiók, amely jön létre egy új adatbázis-példány létrehozásakor, lehetővé teszi, hogy a felhasználó hajtani a legtöbb DDL és DML utasítást, a felügyelt adatbázis példányában. 
-- SZUPER jogosultság: a hasonló [Super jogosultság](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozott.
-- Leszűkítés: a létrehozáshoz és a korlátozásához Super jogosultságok szükségesek. Ha biztonsági másolat használatával importálja az adatimportálást, távolítsa el manuálisan a `CREATE DEFINER` parancsokat, vagy a mysqldump végrehajtásakor a `--skip-definer` parancs használatával.
+- DBA-szerepkör: Számos kiszolgálóparaméter és -beállítás véletlenül ronthatja a kiszolgáló teljesítményét, vagy elháríthatja a DBMS ACID-tulajdonságait. Ennek megfelelően a szolgáltatás integritásának és az SLA termékszinten való fenntartásához ez a szolgáltatás nem teszi elérhetővé a DBA szerepkört. Az alapértelmezett felhasználói fiók, amely egy új adatbázispéldány létrehozásakor jön létre, lehetővé teszi, hogy a felhasználó a kezelt adatbázispéldányban a DDL- és DML-utasítások nagy részét végrehajtsa. 
+- SUPER jogosultság: Hasonlóképpen [SUPER jogosultság](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozott.
+- DEFINER: Létrehozásához szuperjogosultságokat igényel, és korlátozott. Ha biztonsági másolat tal importál `CREATE DEFINER` adatokat, távolítsa `--skip-definer` el a parancsokat manuálisan vagy a paranccsal mysqldump végrehajtásakor.
 
-## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
+## <a name="data-manipulation-statement-support"></a>Adatkezelési nyilatkozat támogatása
 
 ### <a name="supported"></a>Támogatott
-- a `LOAD DATA INFILE` támogatott, de a `[LOCAL]` paramétert meg kell adni, és át kell irányítani egy UNC elérési útra (Azure Storage csatlakoztatva az SMB-n keresztül).
+- `LOAD DATA INFILE`támogatott, de `[LOCAL]` a paramétert meg kell adni, és egy UNC elérési útra kell irányítani (az Azure storage smb-n keresztül csatlakoztatva).
 
 ### <a name="unsupported"></a>Nem támogatott
 - `SELECT ... INTO OUTFILE`
 
-## <a name="functional-limitations"></a>Működési korlátai
+## <a name="functional-limitations"></a>Funkcionális korlátozások
 
-### <a name="scale-operations"></a>A skálázási műveletek
-- Dinamikus méretezés, és onnan az alapszintű tarifacsomagban is kapható jelenleg nem támogatott.
-- Kiszolgáló-tároló méretének csökkentése nem támogatott.
+### <a name="scale-operations"></a>Méretezési műveletek
+- Az alapszintű tarifacsomagok dinamikus skálázása jelenleg nem támogatott.
+- A kiszolgáló tárhelyének csökkentése nem támogatott.
 
-### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
-- Fő database engine verziói között az automatikus migrálási jelenleg nem támogatott. Ha a következő főverzióra szeretne frissíteni, hozzon létre egy [memóriaképet, és állítsa vissza](./concepts-migrate-dump-restore.md) egy olyan kiszolgálóra, amely az új motor verziójával lett létrehozva.
+### <a name="server-version-upgrades"></a>Kiszolgálóverzió-frissítések
+- A fő adatbázis-motorverziók közötti automatikus áttelepítés jelenleg nem támogatott. Ha a következő főverzióra szeretne frissíteni, fogjon egy [memóriaképet, és állítsa vissza](./concepts-migrate-dump-restore.md) egy olyan kiszolgálóra, amelyet az új motorverzióval hoztak létre.
 
 ### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
-- A PITR a funkció használatakor az ugyanezzel a konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.
-- Törölt kiszolgáló visszaállítása nem támogatott.
+- A PITR szolgáltatás használatakor az új kiszolgáló ugyanolyan konfigurációkkal jön létre, mint az a kiszolgáló, amelyen alapul.
+- A törölt kiszolgáló visszaállítása nem támogatott.
 
-### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
-- Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
+### <a name="vnet-service-endpoints"></a>VNet-szolgáltatásvégpontok
+- A Virtuálishálózat-szolgáltatás végpontjainak támogatása csak általános célú és memóriaoptimalizált kiszolgálókhoz érhető el.
 
-### <a name="storage-size"></a>Tárterület mérete
-- Tekintse meg [a díjszabási](concepts-pricing-tiers.md) szinten a tárterületre vonatkozó korlátozásokat.
+### <a name="storage-size"></a>Tárhely mérete
+- Kérjük, tekintse meg a [tarifacsomagok](concepts-pricing-tiers.md) a tárolási méret korlátok tarifacsomagonként.
 
-## <a name="current-known-issues"></a>Jelenlegi ismert problémák
-- MySQL server-példány a megfelelő verziója a kapcsolat létrejötte után jeleníti meg. A megfelelő kiszolgálópéldány-motor verziójának beszerzéséhez használja a `select version();` parancsot.
+## <a name="current-known-issues"></a>Aktuális ismert problémák
+- A MySQL kiszolgálópéldány a kapcsolat létrejötte után rossz kiszolgálóverziót jeleníti meg. A megfelelő kiszolgálópéldánymotor-verzió beszerezéséhez használja a `select version();` parancsot.
 
 ## <a name="next-steps"></a>További lépések
-- [Az egyes szolgáltatási szinteknél elérhető szolgáltatások](concepts-pricing-tiers.md)
-- [Támogatott MySQL-adatbázis-verziók](concepts-supported-versions.md)
+- [Mi érhető el az egyes szolgáltatási szinteken?](concepts-pricing-tiers.md)
+- [Támogatott MySQL adatbázis-verziók](concepts-supported-versions.md)

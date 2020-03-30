@@ -2,25 +2,25 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 01/10/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 469d87a828df19ca30260cada9dcea43859be9e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901603"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477255"
 ---
-Webszolgáltatás frissítéséhez használja a `update` metódust. Frissítheti a webszolgáltatást egy új modell, egy új bejegyzési parancsfájl vagy egy következtetési konfigurációban megadható új függőségek használatára. További információkért tekintse meg a [webszolgáltatások dokumentációját. frissítés](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
+Webszolgáltatás frissítéséhez használja `update` a módszert. Frissítheti a webszolgáltatást, hogy egy új modellt, egy új bejegyzésparancsfájlt vagy egy következtetési konfigurációban megadható új függőségeket használjon. További információt a [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)dokumentumában talál.
 
 > [!IMPORTANT]
-> A modell új verziójának létrehozásakor manuálisan kell frissítenie az összes használni kívánt szolgáltatást.
+> Amikor egy modell új verzióját hozza létre, manuálisan kell frissítenie a használni kívánt szolgáltatást.
 >
-> Az SDK-val nem lehet frissíteni a Azure Machine Learning Designer alkalmazásban közzétett webszolgáltatásokat.
+> Az SDK nem használható az Azure Machine Learning-tervezőáltal közzétett webszolgáltatás frissítéséhez.
 
 **Az SDK használata**
 
-A következő kód bemutatja, hogyan használható az SDK a webszolgáltatások modelljének, környezetének és bejegyzési parancsfájljának frissítéséhez:
+A következő kód bemutatja, hogyan lehet az SDK segítségével frissíteni a modell, a környezet és a bejegyzés parancsfájl egy webszolgáltatás:
 
 ```python
 from azureml.core import Environment
@@ -51,9 +51,9 @@ print(service.state)
 print(service.get_logs())
 ```
 
-**A parancssori felület használata**
+**A CLI használata**
 
-A webszolgáltatás a ML parancssori felület használatával is frissíthető. Az alábbi példa bemutatja egy új modell regisztrálását, majd egy webszolgáltatás frissítését az új modell használatára:
+A webszolgáltatást az ML CLI használatával is frissítheti. A következő példa bemutatja egy új modell regisztrálását, majd egy webszolgáltatás frissítését az új modell használatához:
 
 ```azurecli
 az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --output-metadata-file modelinfo.json
@@ -61,8 +61,8 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 ```
 
 > [!TIP]
-> Ebben a példában egy JSON-dokumentum segítségével továbbítja a modell adatait a regisztrációs parancsból az Update parancsba.
+> Ebben a példában egy JSON-dokumentum segítségével adja át a modell adatait a regisztrációs parancsból a frissítési parancsba.
 >
-> Ha a szolgáltatást új bejegyzési parancsfájl vagy környezet használatára szeretné frissíteni, hozzon létre egy [következtetési konfigurációs fájlt](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) , és adja meg a `ic` paraméterrel.
+> Ha frissíteni szeretné a szolgáltatást új bejegyzésparancsfájl vagy környezet használatára, hozzon `ic` létre egy [következtetéskonfigurációs fájlt,](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) és adja meg azt a paraméterrel.
 
-További információt az az [ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) dokumentációjában talál.
+További információt az [az ml szolgáltatásfrissítésdokumentációjában](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) talál.

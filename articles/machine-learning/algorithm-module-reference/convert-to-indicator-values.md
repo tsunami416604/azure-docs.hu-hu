@@ -1,7 +1,7 @@
 ---
-title: Váltás a kijelző értékeire
+title: Átalakítás mutatóértékekké
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning konvertálható értékeit tartalmazó modult olyan oszlopok konvertálásához, amelyek kategorikus értékeket tartalmaznak a bináris kijelző oszlopaiba.
+description: Ismerje meg, hogyan használhatja a Konvertálás indikátorértékekre modult az Azure Machine Learningben a kategorikus értékeket tartalmazó oszlopok bináris mutatóoszlopok sorozatává alakításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,112 +9,112 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: fc059eca3a01b5c6cde642af5ceb6a3822672def
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165539"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477663"
 ---
-# <a name="convert-to-indicator-values"></a>Váltás a kijelző értékeire
-Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
+# <a name="convert-to-indicator-values"></a>Átalakítás mutatóértékekké
+Ez a cikk az Azure Machine Learning-tervező modulját ismerteti.
 
-A Azure Machine Learning Designerben az **átalakítás jelző értékekkel** moduljának használatával alakítsa át a kategorikus értékeket tartalmazó oszlopokat egy bináris kijelző oszlopaiba.  
+Az Azure Machine Learning tervezőjének **Konvertálás indikátorérték-értékekre** moduljával a kategorikus értékeket tartalmazó oszlopokat bináris mutatóoszlopok sorozatává alakíthatja.  
 
-Ez a modul a mutatók értékeire való átalakításhoz használt átalakítás definícióját is megjeleníti. Ezt az átalakítást felhasználhatja más, azonos sémával rendelkező adatkészleteken az [átalakítási modul alkalmazása](apply-transformation.md) lehetőséggel.
+Ez a modul a mutatóértékekké konvertáláshoz használt transzformáció definícióját is kiadja. Ezt az átalakítást más, ugyanazzal a sémával rendelkező adatkészleteken is felhasználhatja az [Átalakítás alkalmazása](apply-transformation.md) modul használatával.
 
-## <a name="how-to-configure-convert-to-indicator-values"></a>A konverzió beállítása a kijelző értékeire
+## <a name="how-to-configure-convert-to-indicator-values"></a>A Konvertálás indikátorértékekké beállítás
 
-1.  Keresse meg az **átalakítás jelölő értékeit** , és húzza a folyamat piszkozatára. Ez a modul az **Adatátalakítási** kategóriában található.
+1.  Keresse meg a **Konvertálás mutatóértékekké lehetőséget,** és húzza a folyamatvázlatra. Ez a modul az **Adattranszformáció** kategóriában található.
     > [!NOTE]
-    > A [metaadatok szerkesztése](edit-metadata.md) modult a **Konvertálás Indiciator értékre** elemre kattintva megadhatja, hogy a cél oszlop (ok) kategorikusként legyen megjelölve.
+    > A [Metaadatok szerkesztése](edit-metadata.md) modult használhatja a **Konvertálás indiciator értékekké** modul előtt a céloszlop(ok) kategorikusként való megjelöléséhez.
 
-1. Kapcsolja össze a **Convert to Indicator Values** modult az átalakítani kívánt oszlopokat tartalmazó adatkészlethez. 
+1. Csatlakoztassa a **Konvertálás kijelzőértékekre** modult a konvertálni kívánt oszlopokat tartalmazó adatkészlethez. 
 
-1. Válassza az **oszlop szerkesztése** lehetőséget egy vagy több kategorikus oszlop kiválasztásához.
+1. Válassza **a Szerkesztés oszlopot** egy vagy több kategorikus oszlop kiválasztásához.
 
-1. Válassza a **kategorikus oszlopok felülírása** lehetőséget, ha **csak** az új logikai oszlopokat kívánja kiállítani. Alapértelmezés szerint ez a beállítás ki van kapcsolva.
+1. Jelölje be a **Kategorikus oszlopok felülírása** jelölőnégyzetet, ha **csak** az új logikai oszlopokat szeretné kiadni. Alapértelmezés szerint ez a beállítás ki van kapcsolva.
     
 
     > [!TIP]
-    >  Ha a felülírási lehetőséget választja, a forrás oszlop nem törlődik és nem módosul. Ehelyett az új oszlopok jönnek létre és jelennek meg a kimeneti adatkészletben, és a forrás oszlop elérhető marad a munkaterületen. Ha meg kell tekintenie az eredeti adatforrásokat, az [Oszlopok hozzáadása](add-columns.md) modul segítségével bármikor hozzáadhatja a forrás oszlopot a következőhöz:.
+    >  Ha a felülírás i beállítását választja, a forrásoszlop ténylegesen nem törlődik vagy módosul. Ehelyett az új oszlopok jönnek létre, és megjelennek a kimeneti adatkészletben, és a forrásoszlop elérhető marad a munkaterületen. Ha meg szeretné tekinteni az eredeti adatokat, az [Oszlopok hozzáadása](add-columns.md) modulsegítségével bármikor hozzáadhatja a forrásoszlopot.
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Tegyük fel, hogy van egy olyan pontszáma, amely azt jelzi, hogy egy kiszolgáló magas, közepes vagy alacsony meghibásodási valószínűséggel rendelkezik-e.  
+Tegyük fel, hogy van egy oszlopa, amely nek van egy olyan pontszáma, amely jelzi, hogy a kiszolgáló magas, közepes vagy alacsony hibavalószínűségű.T t you have a column in scores that indicate whether a server has a high, medium, or low sdak.  
 
-| Kiszolgáló azonosítója | Hiba pontszáma |
+| Kiszolgáló azonosítója | Hiba pontszám |
 | --------- | ------------- |
 | 10301     | Alacsony           |
 | 10302     | Közepes        |
-| 10303     | Magas          |
+| 10303     | Magasság          |
 
-Ha a **konverziót jelző értékekre**alkalmazza, a tervező átalakítja a címkék egyetlen oszlopát több, logikai értékeket tartalmazó oszlopba:  
+A **Konvertálás mutatóértékekké**alkalmazásával a tervező egyetlen címkeoszlopot alakít át logikai értékeket tartalmazó oszlopokká:  
 
-| Kiszolgáló azonosítója | Hiba pontszám – alacsony | Hiba pontszám – közepes | Hiba pontszám – magas |
+| Kiszolgáló azonosítója | Hiba pontszám - alacsony | Hiba pontszám - közepes | Hiba pontszám - Magas |
 | --------- | ------------------- | ---------------------- | -------------------- |
 | 10301     | 1                   | 0                      | 0                    |
 | 10302     | 0                   | 1                      | 0                    |
 | 10303     | 0                   | 0                      | 1                    |
 
-Az átalakítás működése:  
+Az átalakítás a következőképpen működik:  
 
--   A kockázatokat leíró **hiba pontszám** oszlopban csak három lehetséges érték létezik (magas, közepes és alacsony), és nincs hiányzó érték. Tehát pontosan három új oszlop jön létre.  
+-   A **kockázatot** leíró Hiba pontszám oszlopban csak három lehetséges érték van (Magas, Közepes és Alacsony), és nincsenek hiányzó értékek. Tehát pontosan három új oszlop jön létre.  
 
--   Az új jelző oszlopok a forrás oszlop fejlécei és értékei alapján vannak elnevezve, a következő mintával: *\<a forrás oszlop > – \<adatérték >* .  
+-   Az új jelzőoszlopok neve a forrásoszlop oszlopfejlécei és értékei alapján lesz elnevezve, a következő minta használatával: * \<forrásoszlop>- \<adatérték>*.  
 
--   Az egyes kiszolgálók csak egyetlen kockázati minősítéssel rendelkezhetnek, és az összes többi kijelző oszlopában 0 értéknek kell lennie.  
+-   Pontosan egy mutatóoszlopban kell lennie 1-nek, és 0-nak az összes többi jelzőoszlopban, mivel minden kiszolgálónak csak egy kockázati besorolása lehet.  
 
-Most már használhatja a három kijelző oszlopokat a Machine learning-modellek funkcióinak használatával.
+Most már használhatja a három jelző oszlopok, mint a gépi tanulási modell funkciók.
 
 A modul két kimenetet ad vissza:
 
-- **Results adatkészlet**: az átalakított kijelző értékeit tartalmazó adatkészlet. A tisztításra kijelölt oszlopok is áthaladnak.
-- A **kijelző értékeinek átalakítása**: a kijelzőre való átalakításra használt adatátalakítás, amely menthető a munkaterületre, és később is alkalmazható az új adatokra.
+- **Eredmények adatkészlet**: Átalakított kijelzőértékek oszlopokkal rendelkező adatkészlet. A tisztításra nem kiválasztott oszlopok is "áthaladnak".
+- **Inikátorértékek átalakítása**: A mutatóértékekké konvertáláshoz használt adatátalakítás, amely a munkaterületre menthető és később új adatokra alkalmazható.
 
-## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Mentett kijelző értékeit tartalmazó művelet alkalmazása új adatokra
+## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Mentett jelzőérték-művelet alkalmazása új adatokra
 
-Ha többször is meg kell ismételnie a kijelzők műveleteit, az adatmanipulációs lépéseket egy *átalakítással* mentheti, hogy ugyanazt az adatkészletet használja. Ez akkor hasznos, ha gyakran újra kell importálnia, majd törölnie kell az azonos sémával rendelkező információkat.
+Ha gyakran kell megismételnie a jelzőértékek műveleteket, az adatmanipulációs lépéseket *átalakításként* mentheti, hogy újra felhasználhassa azt ugyanazzal az adatkészlettel. Ez akkor hasznos, ha gyakran újra kell importálnia, majd meg kell tisztítania az azonos sémával rendelkező adatokat.
 
-1. Adja hozzá az [átalakítási modul alkalmazása](apply-transformation.md) a folyamathoz lehetőséget.
+1. Adja hozzá az [Átalakítás alkalmazása](apply-transformation.md) modult a folyamathoz.
 
-1. Adja hozzá a tisztítani kívánt adatkészletet, és kapcsolja össze az adatkészletet a jobb oldali bemeneti porthoz.
+1. Adja hozzá a tisztára szeretne menni, és csatlakoztassa az adatkészletet a jobb oldali bemeneti porthoz.
 
-1. Bontsa ki az **Adatátalakítási** csoportot a tervező bal oldali paneljén. Keresse meg a mentett átalakítást, és húzza a folyamatba.
+1. Bontsa ki az **Adattranszformáció** csoportot a tervező bal oldali ablaktáblájában. Keresse meg a mentett átalakítást, és húzza a folyamatba.
 
-1. Kapcsolja össze a mentett átalakítást az [alkalmazás átalakításának](apply-transformation.md)bal oldali bemeneti portjával.
+1. Csatlakoztassa a mentett átalakítást az [Átalakítás alkalmazása bal](apply-transformation.md)oldali bemeneti portjához.
 
-   Ha mentett transzformációt alkalmaz, nem választhatja ki, hogy mely oszlopok legyenek átalakítva. Ennek az az oka, hogy a transzformáció definiálva van, és automatikusan az eredeti műveletben megadott adattípusokra vonatkozik.
+   Mentett átalakítás alkalmazásakor nem választhatja ki az átalakítandó oszlopokat. Ennek az az oka, hogy az átalakítás definiálva van, és automatikusan vonatkozik az eredeti műveletben megadott adattípusokra.
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
  
 ## <a name="technical-notes"></a>Technikai megjegyzések  
 
-Ez a szakasz megvalósítási részleteket, tippeket és válaszokat tartalmaz a gyakori kérdésekre.
+Ez a szakasz a megvalósítás részleteit, tippjeit és a gyakran feltett kérdésekre adott válaszokat tartalmazza.
 
 ### <a name="usage-tips"></a>Használati tippek
 
--   Csak a kategorikusként megjelölt oszlopok alakíthatók át jelző oszlopokra. Ha a következő hibaüzenet jelenik meg, akkor valószínű, hogy az egyik kiválasztott oszlop nem kategorikus:  
+-   Csak a kategorikusként megjelölt oszlopok konvertálhatók jelzőoszlopokká. Ha a következő hiba jelenik meg, valószínű, hogy a kiválasztott oszlopok egyike nem kategorikus:  
 
-     0056-es hiba: a name \<nevű oszlop nem engedélyezett kategóriába tartozik, >.  
+     0056-os hiba: \<Oszlopnévvel ellátott oszlopnév> nem engedélyezett kategóriában van.  
 
-     Alapértelmezés szerint a legtöbb karakterlánc-oszlop karakterlánc-szolgáltatásként van kezelve, ezért explicit módon meg kell jelölnie azokat kategorikusként a [metaadatok szerkesztése](edit-metadata.md)lehetőség használatával.  
+     Alapértelmezés szerint a legtöbb karakterláncoszlop karakterlánc-szolgáltatásként lesz kezelve, ezért a [Metaadatok szerkesztése](edit-metadata.md)funkcióval explicit módon kategorikusként kell megjelölni őket.  
 
--   A mutatók oszlopaiba konvertálható oszlopok száma nincs korlátozva. Mivel azonban az értékek egyes oszlopai több kijelzőt is tartalmazhatnak, érdemes lehet csak néhány oszlopot konvertálni és áttekinteni.  
+-   Nincs korlátozva, hogy hány oszlopot konvertálhat jelzőoszlopokká. Mivel azonban az értékek minden oszlopa több mutatóoszlopot is eredményezhet, célszerű egyszerre csak néhány oszlopot konvertálni és áttekinteni.  
 
--   Ha az oszlop hiányzó értékeket tartalmaz, a rendszer külön jelző oszlopot hoz létre a hiányzó kategóriához, a következő névvel: *\<forrás oszlop > – hiányzó*  
+-   Ha az oszlop hiányzó értékeket tartalmaz, egy külön mutatóoszlop jön létre a hiányzó kategóriához, ezzel a névvel: * \<forrásoszlop>- Hiányzó*  
 
--   Ha a kijelző értékre konvertált oszlop számokat tartalmaz, akkor azokat kategorikusként kell megjelölni, mint bármely más szolgáltatás oszlopát. Miután ezt megtette, a rendszer diszkrét értékként kezeli a számokat. Ha például egy numerikus oszlop, amely 25 és 30 közötti értéket tartalmaz, egy új jelző oszlop jön létre minden egyes különálló értékhez:  
+-   Ha a mutatóértékekké konvertált oszlop számokat tartalmaz, azokat kategorikusként kell megjelölni, mint bármely más jellemzőoszlopot. Miután ezt megtette, a számokat a függvény különálló értékként kezeli. Ha például egy 25 és 30 közötti MPG-értékkel rendelkező numerikus oszlopot hoz létre, akkor minden különálló értékhez új jelzőoszlop jön létre:  
 
-    | Győződjön meg arról       | Highway mpg-25 | Highway mpg-26 | Highway mpg-27 | Highway mpg-28 | Highway mpg-29 | Highway mpg-30 |
+    | Gyártmány       | Autópálya mpg -25 | Autópálya mpg -26 | Autópálya mpg -27 | Autópálya mpg -28 | Autópálya mpg -29 | Autópálya mpg -30 |
     | ---------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- |
-    | Contoso-autók | 0               | 0               | 0               | 0               | 0               | 1               |
+    | Contoso autók | 0               | 0               | 0               | 0               | 0               | 1               |
 
-- Ha nem szeretné, hogy túl sok dimenzió legyen hozzáadva az adatkészlethez. Javasoljuk, hogy először tekintse meg az oszlopban szereplő értékek számát, és az adatok megfelelő kiosztását vagy kvantálását.  
+- Annak elkerülése érdekében, hogy túl sok dimenziót adjon az adatkészlethez. Javasoljuk, hogy először ellenőrizze az oszlopban lévő értékek számát, és megfelelően raktározhassa vagy kkkálja az adatokat.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

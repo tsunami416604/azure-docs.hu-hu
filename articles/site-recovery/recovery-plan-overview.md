@@ -1,97 +1,97 @@
 ---
-title: A Azure Site Recovery helyreállítási tervei
-description: A Azure Site Recovery helyreállítási terveinek megismerése.
+title: Helyreállítási tervek az Azure Site Recovery szolgáltatásban
+description: Ismerje meg a helyreállítási tervek et az Azure Site Recovery szolgáltatásban.
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257770"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
-Ez a cikk a [Azure site Recovery](site-recovery-overview.md)helyreállítási terveinek áttekintését tartalmazza.
+Ez a cikk áttekintést nyújt az Azure Site Recovery helyreállítási [terveiről.](site-recovery-overview.md)
 
-A helyreállítási terv a gépeket helyreállítási csoportokba gyűjti a feladatátvétel céljából. A helyreállítási terv segítséget nyújt egy rendszeres helyreállítási folyamat definiálásához, ha olyan kis független egységeket hoz létre, amelyek feladatátvételt hajtanak végre. Egy egység általában egy alkalmazást jelöl a környezetben.
+A helyreállítási terv feladatátvétel céljából helyreállítási csoportokba gyűjti a gépeket. A helyreállítási terv segít meghatározni a rendszeres helyreállítási folyamat, azáltal, hogy kis független egységek, amelyek feladatátvételt. Egy egység általában egy alkalmazást képvisel a környezetben.
 
-- A helyreállítási terv meghatározza a gépek feladatátvételét, valamint azt a sorozatot, amelyben a feladatátvétel után indulnak.
-- A helyreállítási tervek az Azure-ba történő feladatátvételhez használhatók, de nem használhatók az Azure-beli feladat-visszavételhez.
-- Akár 100 védett példány is hozzáadható egy helyreállítási tervhez.
-- A tervet testreszabhatja rendelés, utasítások és feladatok hozzáadásával.
-- A terv meghatározása után futtathatja a feladatátvételt.
-- A gépek több helyreállítási tervben is szerepelhetnek, amelyekben a következő tervek kihagyják a gép központi telepítését/indítását, ha korábban egy másik helyreállítási terv használatával telepítették.
+- A helyreállítási terv határozza meg, hogyan gépek feladatátvétel, és a sorrend, amelyben elindulnak a feladatátvétel után.
+- A helyreállítási tervek feladatátvételhez használatosak az Azure-ba, de nem használhatók az Azure-ból történő feladat-visszavételhez.
+- Egy helyreállítási tervhez legfeljebb 100 védett példány adható hozzá.
+- A tervet úgy szabhatja testre, hogy sorrendet, utasításokat és feladatokat ad hozzá.
+- A terv definiálása után feladatátvételt futtathat rajta.
+- A gépekre több helyreállítási tervben is hivatkozhat, amelyben a későbbi tervek kihagyják a gép üzembe helyezését/indítását, ha azt korábban egy másik helyreállítási terv vel telepítették.
 
 
 
 ### <a name="why-use-a-recovery-plan"></a>Miért érdemes helyreállítási tervet használni?
 
-Helyreállítási tervek használata a következőhöz:
+A helyreállítási tervek használatával:
 
-* Alkalmazás modellezése a függőségei köré.
-* A helyreállítási időre vonatkozó célkitűzés (RTO) csökkentése érdekében automatizálja a helyreállítási feladatokat.
-* Győződjön meg arról, hogy készen áll az áttelepítésre vagy a vész-helyreállításra, mivel az alkalmazások egy helyreállítási terv részét képezik.
-* Futtasson feladatátvételi teszteket a helyreállítási terveken, hogy a vész-helyreállítás vagy az áttelepítés a várt módon működjön.
+* Modellezz egy alkalmazást a függőségei köré.
+* A helyreállítási feladatok automatizálása a helyreállítási idő (RTO) csökkentése érdekében.
+* Ellenőrizze, hogy felkészült-e az áttelepítésre vagy a vészhelyreállításra, és győződjön meg arról, hogy az alkalmazások egy helyreállítási terv részét képezik.
+* Futtasson tesztfeladat-átvételeket a helyreállítási terveken, hogy biztosítsa a vészhelyreállítás vagy az áttelepítés várt működését.
 
 
-## <a name="model-apps"></a>Modell alkalmazások 
-Az alkalmazás-specifikus tulajdonságok rögzítéséhez létrehozhat egy helyreállítási csoportot. Tegyük fel például, hogy egy tipikus háromrészes alkalmazást alkalmazunk egy SQL Server-háttérrel, a köztes hálózattal és egy webes előtérben. A helyreállítási tervet általában úgy szabhatja testre, hogy az egyes rétegekbe tartozó gépek a feladatátvétel után megfelelő sorrendben induljon el.
+## <a name="model-apps"></a>Modellalkalmazások 
+Megtervezheti és létrehozhat egy helyreállítási csoportot az alkalmazásspecifikus tulajdonságok rögzítéséhez. Például vegyünk egy tipikus háromrétegű alkalmazás egy SQL-kiszolgáló háttér-, köztes és egy webes előtér. Általában testre szabhatja a helyreállítási tervet, hogy az egyes rétegekben lévő gépek a feladatátvétel után a megfelelő sorrendben indulhassanak.
 
-- Az SQL-háttérnek először el kell indulnia, a middleware következő, végül pedig a webes felület.
-- Ez az indítási sorrend biztosítja, hogy az alkalmazás az utolsó gép indításakor is működik.
-- Ez a sorrend biztosítja, hogy amikor a middleware elindul, és megpróbál csatlakozni a SQL Server szintjéhez, a SQL Server-szintet már futtatja. 
-- Ez a megrendelés azt is lehetővé teszi, hogy az előtér-kiszolgáló utoljára induljon el, így a végfelhasználók nem csatlakoznak az alkalmazás URL-címéhez az összes összetevő üzembe helyezése előtt, és az alkalmazás készen áll a kérelmek fogadására.
+- Az SQL háttérrendszer kell kezdeni az első, a middleware következő, és végül a webes előtér.
+- Ez a kezdési sorrend biztosítja, hogy az alkalmazás az utolsó gép indításakor is működik.
+- Ez a sorrend biztosítja, hogy amikor a köztes szoftver elindul, és megpróbál csatlakozni az SQL Server réteghez, az SQL Server szint már fut. 
+- Ez a sorrend azt is biztosítja, hogy az előtér-kiszolgáló utolsó indításakor, hogy a végfelhasználók ne csatlakozzanak az alkalmazás URL-címét, mielőtt az összes összetevő fut, és az alkalmazás készen áll a kérelmek fogadására.
 
-A rendelés létrehozásához vegyen fel csoportokat a helyreállítási csoportba, és vegyen fel gépeket a csoportokba.
-- A sorrend megadásakor a rendszer a sorrendet használja. A műveletek szükség szerint párhuzamosan futnak az alkalmazás-helyreállítási RTO javítására.
-- Az egyetlen csoportba tartozó gépek párhuzamosan hajtják végre a feladatátvételt.
-- A különböző csoportokban lévő gépek a csoportosítási sorrend szerint működnek, így a 2. csoportba tartozó gépek csak azt követően kezdik el a feladatátvételt, miután az 1. csoportban lévő összes gép felvette és elindult.
+A rendelés létrehozásához csoportokat kell hozzáadnia a helyreállítási csoporthoz, és gépeket kell hozzáadnia a csoportokhoz.
+- Ha a sorrend meg van adva, szekvenálást kell használni. A műveletek szükség szerint párhuzamosan futnak az alkalmazás-helyreállítási RTO javítása érdekében.
+- Az egy csoportban lévő gépek párhuzamosan adják át a feladatátvételt.
+- A különböző csoportokba delegált gépek csoportsorrendben, így a Group 2 gépek csak akkor indulnak el a feladatátvétel, ha az 1.
 
     ![Példa helyreállítási tervre](./media/recovery-plan-overview/rp.png)
 
-Ennek a testreszabásnak a helyén a következő történik, ha feladatátvételt futtat a helyreállítási tervben: 
+Ezzel a testreszabással a következőképpen történik, ha feladatátvételt futtat a helyreállítási terven: 
 
-1. A leállítási lépés megkísérli kikapcsolni a helyszíni gépeket. A kivétel a feladatátvételi teszt futtatása, amely esetben az elsődleges hely továbbra is fut. 
-2. A Leállítás elindítja a helyreállítási tervben szereplő összes gép párhuzamos feladatátvételét.
-3. A feladatátvétel replikált adattal készíti elő a virtuális gépek lemezeit.
-4. Az indítási csoportok sorrendben futnak, és elindítják a gépeket az egyes csoportokban. Először az 1. csoport fut, majd a 2. csoport, végül pedig a 3. csoport. Ha egy csoportban több gép is van, akkor az összes gép párhuzamosan indul el.
+1. A leállítási lépés megpróbálja kikapcsolni a helyszíni gépeket. A kivétel, ha fut egy teszt feladatátvétel, ebben az esetben az elsődleges hely továbbra is fut. 
+2. A leállítás elindítja a helyreállítási tervben lévő összes gép párhuzamos feladatátvételét.
+3. A feladatátvétel replikált adatok használatával készíti elő a virtuálisgép-lemezeket.
+4. Az indítási csoportok sorrendben futnak, és minden csoportban elindítják a gépeket. Először is, az 1-es csoport fut, aztán a 2-es csoport, végül a 3-as csoport. Ha egynél több gép van egy csoportban, akkor az összes gép párhuzamosan indul.
 
 
-## <a name="automate-tasks-in-recovery-plans"></a>Feladatok automatizálása a helyreállítási tervekben
+## <a name="automate-tasks-in-recovery-plans"></a>Feladatok automatizálása helyreállítási tervekben
 
-A nagyméretű alkalmazások helyreállítása összetett feladat lehet. A manuális lépések végrehajtásával a folyamat hibát észlelt, és előfordulhat, hogy a feladatátvételt futtató személy nem veszi figyelembe az alkalmazás összes bonyolult feltételét. A helyreállítási terv segítségével megadhatja a sorrendet, és automatizálhatja az egyes lépésekhez szükséges műveleteket, Azure Automation runbookok használatával végezheti el a feladatátvételt az Azure-ba vagy a parancsfájlokba. Olyan feladatokhoz, amelyek nem lehetnek automatizáltak, a manuális műveletekre vonatkozó szüneteltetéseket is beillesztheti helyreállítási tervbe. Több különböző típusú feladat is konfigurálható:
+A nagy alkalmazások helyreállítása összetett feladat lehet. A manuális lépések miatt a folyamat hibát jelezhet, és előfordulhat, hogy a feladatátvételt futtató személy nem ismeri az összes alkalmazásbonyolult állapotot. A helyreállítási terv használatával rendelést szabhat ki, és automatizálhatja az egyes lépésekhez szükséges műveleteket az Azure Automation runbookok használatával az Azure-ba vagy parancsfájlok ba történő feladatátvételhez. A nem automatikusan automatizált feladatok esetében a helyreállítási tervekbe beillesztheti a manuális műveletek szüneteltetését. Többféle feladatot is konfigurálhat:
 
-* **Feladatok az Azure virtuális gépen feladatátvétel után**: Ha feladatátvételt végez az Azure-ba, általában műveleteket kell végrehajtania, hogy a feladatátvételt követően csatlakozni lehessen a virtuális géphez. Például: 
-    * Hozzon létre egy nyilvános IP-címet az Azure-beli virtuális gépen.
-    * Rendeljen egy hálózati biztonsági csoportot az Azure-beli virtuális gép hálózati adapteréhez.
-    * Terheléselosztó hozzáadása egy rendelkezésre állási készlethez.
-* **Feladatok a virtuális gépen a feladatátvételt követően**: ezek a feladatok általában újrakonfigurálja a gépen futó alkalmazást, hogy az továbbra is megfelelően működjön az új környezetben. Például:
-    * Módosítsa az adatbázis-kapcsolatok karakterláncát a gépen belül.
+* **Feladatok az Azure virtuális gép feladatátvétel után: Ha feladatátvétel**után az Azure-ba, általában műveleteket kell végrehajtania, hogy a feladatátvétel után csatlakozhat a virtuális géphez. Példa: 
+    * Hozzon létre egy nyilvános IP-címet az Azure virtuális gép.
+    * Rendeljen hozzá egy hálózati biztonsági csoportot az Azure virtuális gép hálózati adapteréhez.
+    * Terheléselosztó hozzáadása egy rendelkezésre állási csoporthoz.
+* **Feladatok a virtuális gépen belül feladatátvétel után:** Ezek a feladatok általában újrakonfigurálja a számítógépen futó alkalmazást, hogy továbbra is megfelelően működjön az új környezetben. Példa:
+    * Módosítsa az adatbázis-kapcsolati karakterláncot a készüléken belül.
     * Módosítsa a webkiszolgáló konfigurációját vagy szabályait.
 
 
-### <a name="run-a-test-failover-on-recovery-plans"></a>Feladatátvételi teszt futtatása helyreállítási terveken
+### <a name="run-a-test-failover-on-recovery-plans"></a>Tesztfeladat-átvétel futtatása helyreállítási terveken
 
-Helyreállítási terv használatával feladatátvételi tesztet indíthat. Használja az alábbi ajánlott eljárásokat:
+A helyreállítási terv segítségével teszt feladatátvételt indíthat el. Használja az alábbi gyakorlati tanácsokat:
 
-- Teljes feladatátvétel futtatása előtt mindig végezzen feladatátvételi tesztet egy alkalmazáson. A feladatátvételi teszt segítségével ellenőrizheti, hogy az alkalmazás elérhető-e a helyreállítási helyen.
-- Ha úgy találja, hogy kihagyott valamit, aktiválja a tisztítást, majd futtassa újra a feladatátvételi tesztet. 
-- Futtasson többszöri feladatátvételi tesztet, amíg nem biztos benne, hogy az alkalmazás zökkenőmentesen működik.
-- Mivel az egyes alkalmazások egyediek, létre kell hoznia minden egyes alkalmazáshoz testre szabott helyreállítási terveket, és mindegyiknél futtasson feladatátvételi tesztet.
-- Az alkalmazások és a függőségeik gyakran változnak. A helyreállítási tervek naprakészen tartása érdekében minden negyedévben futtasson feladatátvételi tesztet minden egyes alkalmazáshoz.
+- A teljes feladatátvétel futtatása előtt mindig hajtson végre egy tesztfeladat-átvételt egy alkalmazásban. A tesztfeladat-átvételek segítségével ellenőrizheti, hogy az alkalmazás megjelenik-e a helyreállítási helyen.
+- Ha úgy találja, hogy kihagyott valamit, indítsa el a tisztítást, majd futtassa újra a teszt feladatátvételt. 
+- Futtasson egy teszt feladatátvételt többször, amíg biztos, hogy az alkalmazás zökkenőmentesen helyreáll.
+- Mivel minden alkalmazás egyedi, minden egyes alkalmazáshoz testre szabott helyreállítási terveket kell készítenie, és mindegyiken tesztfeladat-átvételt kell futtatnia.
+- Az alkalmazások és függőségeik gyakran változnak. Annak érdekében, hogy a helyreállítási tervek naprakészek legyenek, minden negyedévben futtasson egy tesztfeladat-átvételt.
 
-    ![Képernyőkép egy példa tesztelési helyreállítási tervről Site Recovery](./media/recovery-plan-overview/rptest.png)
+    ![Képernyőkép egy próbateszt-helyreállítási tervről a Site Recovery-ben](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-a-recovery-plan-video"></a>Helyreállítási terv Videójának megtekintése
+## <a name="watch-a-recovery-plan-video"></a>Helyreállítási tervről készült videó megtekintése
 
-Tekintse meg a kétrétegű WordPress-alkalmazás helyreállítási tervének egy kattintással elvégezhető feladatátvételét bemutató gyors példát tartalmazó videót.
+Tekintse meg a kétszintű WordPress-alkalmazás helyreállítási tervének kattintásra átvételi feladatátvételt bemutató rövid példavideót.
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzon létre](site-recovery-create-recovery-plans.md) egy helyreállítási tervet.
-- Feladatátvételek [futtatása](site-recovery-failover.md) . 
+- [Feladatátvételek futtatása.](site-recovery-failover.md) 

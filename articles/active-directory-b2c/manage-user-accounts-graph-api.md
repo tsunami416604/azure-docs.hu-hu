@@ -1,77 +1,99 @@
 ---
 title: Felhasználók kezelése a Microsoft Graph API-val
 titleSuffix: Azure AD B2C
-description: Egy Azure AD B2C bérlő felhasználóinak kezelése a Microsoft Graph API meghívásával és az alkalmazás identitásának használatával a folyamat automatizálása érdekében.
+description: A felhasználók kezelése egy Azure AD B2C-bérlőben a Microsoft Graph API hívásával és egy alkalmazásidentitás használatával a folyamat automatizálásához.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d65217a109a851275d3ba9205024f32bd182d4f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3bd166572cea23fbb710cd053c28f51e76ba534a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187316"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476671"
 ---
-# <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése Microsoft Graph
+# <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése a Microsoft Graph segítségével
 
-A Microsoft Graph lehetővé teszi, hogy a Microsoft Graph API-ban létrehozási, olvasási, frissítési és törlési módszerekkel kezelhesse a Azure AD B2C címtárban lévő felhasználói fiókokat. A meglévő felhasználói tárolókat áttelepítheti egy Azure AD B2C bérlőre, és más felhasználóifiók-kezelési műveleteket hajthat végre a Microsoft Graph API meghívásával.
+A Microsoft Graph lehetővé teszi, hogy az Azure AD B2C címtárban lévő felhasználói fiókok kezelése a Microsoft Graph API-ban hozzon létre, olvasd el, frissítse és törölje a metódusokat. Áttelepíthet egy meglévő felhasználói tárolót egy Azure AD B2C-bérlőre, és a Microsoft Graph API-val más felhasználói fiókkezelési műveleteket hajthat végre.
 
-Az alábbi szakaszokban megtekintheti Azure AD B2C felhasználói kezelésének főbb szempontjait a Microsoft Graph API-val. Az itt bemutatott Microsoft Graph API-műveletek, típusok és tulajdonságok a Microsoft Graph API-dokumentációban megjelenő részhalmaza.
+Az alábbi szakaszokban az Azure AD B2C felhasználói felügyelet a Microsoft Graph API-val a legfontosabb szempontok at mutatják be. Az itt bemutatott Microsoft Graph API-műveletek, -típusok és -tulajdonságok a Microsoft Graph API referenciadokumentációjában megjelenő műveletek egy részét képezik.
 
 ## <a name="register-a-management-application"></a>Felügyeleti alkalmazás regisztrálása
 
-Ahhoz, hogy az Ön által írt felhasználói felügyeleti alkalmazások vagy parancsfájlok kommunikálhatnak a Azure AD B2C-bérlő erőforrásaival, szüksége lesz egy alkalmazás-regisztrációra, amely erre engedélyt ad.
+Mielőtt bármely felhasználófelügyeleti alkalmazás vagy parancsfájl írása i a konkretincia az Azure AD B2C-bérlő, szüksége van egy alkalmazás regisztráció, amely megadja az engedélyeket erre.
 
-A kezelési alkalmazás által használható alkalmazás-regisztráció létrehozásához kövesse a jelen útmutató cikk lépéseit:
+Az útmutató cikk lépéseit követve hozzon létre egy alkalmazásregisztrációt, amelyet a felügyeleti alkalmazás használhat:
 
-[Azure AD B2C kezelése Microsoft Graph](microsoft-graph-get-started.md)
+[Az Azure AD B2C kezelése a Microsoft Graph segítségével](microsoft-graph-get-started.md)
 
-## <a name="user-management-microsoft-graph-operations"></a>Felhasználói felügyeleti Microsoft Graph műveletek
+## <a name="user-management-microsoft-graph-operations"></a>Felhasználókezelés Microsoft Graph-műveletek
 
-A következő felhasználói kezelési műveletek érhetők el a [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user)-ban:
+A [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user)a következő felhasználókezelési műveleteket használja:
 
-- [Felhasználók listájának beolvasása](https://docs.microsoft.com/graph/api/user-list)
+- [Felhasználók listájának beszereznie](https://docs.microsoft.com/graph/api/user-list)
 - [Felhasználó létrehozása](https://docs.microsoft.com/graph/api/user-post-users)
-- [Felhasználó beolvasása](https://docs.microsoft.com/graph/api/user-get)
+- [Felhasználó beszerezni](https://docs.microsoft.com/graph/api/user-get)
 - [Felhasználó frissítése](https://docs.microsoft.com/graph/api/user-update)
 - [Felhasználó törlése](https://docs.microsoft.com/graph/api/user-delete)
 
 ## <a name="user-properties"></a>Felhasználói tulajdonságok
 
-### <a name="display-name-property"></a>Megjelenítendő név tulajdonság
+### <a name="display-name-property"></a>Név tulajdonság megjelenítése
 
-A `displayName` a felhasználó Azure Portal felhasználói felügyeletében megjelenítendő név, a hozzáférési jogkivonat Azure AD B2C pedig visszaadja az alkalmazásnak. Ezt a tulajdonságot kötelező megadni.
+A `displayName` a felhasználó számára az Azure Portal felhasználói felügyeletében megjelenítendő név, és az Azure AD B2C hozzáférési jogkivonatban visszatér az alkalmazáshoz. Ez a tulajdonság kötelező.
 
-### <a name="identities-property"></a>Identitások tulajdonság
+### <a name="identities-property"></a>Identitások tulajdonsága
 
-Az alábbi identitás-típusokhoz lehet hozzárendelni egy felhasználói fiókot, amely lehet fogyasztó, partner vagy polgár:
+Az ügyfélfiók, amely lehet fogyasztó, partner vagy állampolgár, társítható az alábbi identitástípusokhoz:
 
-- **Helyi** identitás – a felhasználónevet és a jelszót a rendszer helyileg tárolja a Azure ad B2C könyvtárban. Gyakran hivatkozunk ezekre az identitásokra "helyi fiókokként".
-- **Összevont** identitás – más néven *közösségi* vagy *vállalati* fiók, a felhasználó identitását egy összevont identitás-szolgáltató kezeli, például Facebook, Microsoft, ADFS vagy Salesforce.
+- **Helyi** identitás – A felhasználónév és a jelszó helyileg az Azure AD B2C könyvtárban tárolódik. Gyakran hivatkozunk ezekre az identitásokra "helyi fiókokként".
+- **Összevont** identitás – *Közösségi* vagy *vállalati* fiókoknéven is ismert, a felhasználó identitását egy összevont identitásszolgáltató, például a Facebook, a Microsoft, az ADFS vagy a Salesforce kezeli.
 
-Az ügyfél fiókkal rendelkező felhasználók több identitással is bejelentkezhetnek. Ilyen például a Felhasználónév, az e-mail, az alkalmazott azonosítója, a kormányzati azonosító és egyebek. Egyetlen fiók több identitással is rendelkezhet, amelyek helyi és közösségi, ugyanazzal a jelszóval.
+Az ügyfélfiókkal rendelkező felhasználók több identitással is bejelentkezhetnek. Például felhasználónév, e-mail, alkalmazottazonosító, kormányzati azonosító és mások. Egy fiók több identitással is rendelkezhet, helyi és közösségi, ugyanazzal a jelszóval.
 
-A Microsoft Graph API-ban mind a helyi, mind az összevont identitások a User `identities` attribútumban tárolódnak, amely [objectIdentity][graph-objectIdentity]típusú. A `identities` gyűjtemény a felhasználói fiókba való bejelentkezéshez használt identitások készletét jelöli. Ez a gyűjtemény lehetővé teszi, hogy a felhasználó a hozzá tartozó identitásokkal jelentkezzen be a felhasználói fiókba.
+A Microsoft Graph API-ban mind a helyi, mind az `identities` összevont identitások a felhasználói attribútumban tárolódnak, amely [objectIdentity][graph-objectIdentity]típusú. A `identities` gyűjtemény a felhasználói fiókba való bejelentkezéshez használt identitások készletét jelöli. Ez a gyűjtemény lehetővé teszi a felhasználó számára, hogy a felhasználói fiókba a hozzá tartozó identitások bármelyikével jelentkezzen be.
 
 | Tulajdonság   | Típus |Leírás|
 |:---------------|:--------|:----------|
-|signInType|Karakterlánc| Megadja a felhasználói bejelentkezési típusokat a címtárban. Helyi fiók esetén: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName`vagy bármilyen más típusú. A közösségi fióknak `federated`értékre kell állítani.|
-|kibocsátó|Karakterlánc|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated`), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartományneve, például `contoso.onmicrosoft.com`. A közösségi identitás (ahol a **signInType** `federated`) értéke a kibocsátó neve, például `facebook.com`|
-|issuerAssignedId|Karakterlánc|A kiállító által a felhasználóhoz rendelt egyedi azonosítót határozza meg. A **kibocsátó** és a **issuerAssignedId** kombinációjának egyedinek kell lennie a bérlőn belül. Helyi fiók esetén, ha a **signInType** értéke `emailAddress` vagy `userName`, akkor a felhasználó bejelentkezési nevét jelöli.<br>Ha a **signInType** értéke: <ul><li>`emailAddress` (vagy `emailAddress`, például `emailAddress1`) **issuerAssignedId** érvényes e-mail-címnek kell lennie.</li><li>`userName` (vagy bármely más érték), a **issuerAssignedId** egy [e-mail-cím érvényes helyi részének](https://tools.ietf.org/html/rfc3696#section-3) kell lennie</li><li>`federated`, a **issuerAssignedId** az összevont fiók egyedi azonosítóját jelöli.</li></ul>|
+|jelInType|sztring| Megadja a címtárban lévő felhasználói bejelentkezési típusokat. Helyi fiók `emailAddress`esetén: `emailAddress2` `emailAddress3`, `userName` `emailAddress1`, , , , vagy bármely más típus. A közösségi fiókot `federated`a számára kell állítani.|
+|kiállító|sztring|Megadja az identitás kibocsátóját. Helyi fiókok esetén (ahol **a signInType** nem `federated`) ez a tulajdonság a `contoso.onmicrosoft.com`helyi B2C-bérlő alapértelmezett tartományneve, például . A közösségi identitás (ahol a `federated` **signInType** ) esetében az érték a kibocsátó neve, például`facebook.com`|
+|issuerAssignedId|sztring|Megadja a kibocsátó által a felhasználóhoz rendelt egyedi azonosítót. A **kibocsátó** és a **kibocsátóAssignedId** kombinációjának egyedinek kell lennie a bérlőn belül. Helyi fiók esetén, ha **a signInType** vagy `emailAddress` `userName`a , a felhasználó bejelentkezési nevét jelöli.<br>Ha **a signInType** beállítása: <ul><li>`emailAddress`(vagy `emailAddress` kezdődik, `emailAddress1`mint ) **issuerADazonosítóazonosítónak** érvényes e-mail címnek kell lennie</li><li>`userName`(vagy bármely más érték), **a issuerAssignedId-nek** [az e-mail cím](https://tools.ietf.org/html/rfc3696#section-3) érvényes helyi részének kell lennie</li><li>`federated`, **a issuerAssignedId** az összevont fiók egyedi azonosítóját jelöli</li></ul>|
 
-Az összevont identitások esetében az azonosítótól függően a **issuerAssignedId** egy adott felhasználó egyedi értéke egy alkalmazás-vagy fejlesztési fiókban. Konfigurálja a Azure AD B2C szabályzatot ugyanazzal az alkalmazás-AZONOSÍTÓval, amelyet korábban a közösségi szolgáltató vagy egy másik alkalmazás rendelt hozzá ugyanazon a fejlesztési fiókon belül.
+A következő **Identitások** tulajdonság, egy helyi fiók identitása bejelentkezési névvel, egy e-mail-cím bejelentkezési cím, és egy közösségi identitás. 
 
-### <a name="password-profile-property"></a>Password Profile tulajdonság
+ ```JSON
+ "identities": [
+     {
+       "signInType": "userName",
+       "issuer": "contoso.onmicrosoft.com",
+       "issuerAssignedId": "johnsmith"
+     },
+     {
+       "signInType": "emailAddress",
+       "issuer": "contoso.onmicrosoft.com",
+       "issuerAssignedId": "jsmith@yahoo.com"
+     },
+     {
+       "signInType": "federated",
+       "issuer": "facebook.com",
+       "issuerAssignedId": "5eecb0cd"
+     }
+   ]
+ ```
 
-Helyi identitás esetén a **passwordProfile** tulajdonság megadása kötelező, és tartalmazza a felhasználó jelszavát. A `forceChangePasswordNextSignIn` tulajdonságot a `false`értékre kell beállítani.
+Összevont identitások esetén az identitásszolgáltatótól függően a **issuerAssignedId** egy egyedi érték egy adott felhasználó számára alkalmazásonként vagy fejlesztési fiókonként. Konfigurálja az Azure AD B2C-szabályzatot ugyanazzal az alkalmazásazonosítóval, amelyet korábban a közösségi szolgáltató vagy egy másik alkalmazás rendelt hozzá ugyanazon a fejlesztési fiókon belül.
 
-Összevont (közösségi) identitás esetén a **passwordProfile** tulajdonság nem szükséges.
+### <a name="password-profile-property"></a>Jelszóprofil tulajdonsága
+
+Helyi identitás esetén a **passwordProfile** tulajdonság szükséges, és tartalmazza a felhasználó jelszavát. A `forceChangePasswordNextSignIn` tulajdonságnak `false`a beállítására kell, hogy legyen.
+
+Összevont (közösségi) identitás esetén a **passwordProfile** tulajdonság nem kötelező.
 
 ```JSON
 "passwordProfile" : {
@@ -82,9 +104,9 @@ Helyi identitás esetén a **passwordProfile** tulajdonság megadása kötelező
 
 ### <a name="password-policy-property"></a>Jelszóházirend tulajdonsága
 
-A Azure AD B2C jelszóházirend (helyi fiókok esetében) a Azure Active Directory [erős jelszó-erősségi](../active-directory/authentication/concept-sspr-policy.md) házirenden alapul. A Azure AD B2C regisztrációs vagy bejelentkezési és jelszó-visszaállítási szabályzatok ezt az erős jelszót igénylik, és nem járnak le a jelszavak.
+Az Azure AD B2C jelszóházirend (a helyi fiókok) az Azure Active Directory [erős jelszóerősség-házirend.](../active-directory/authentication/concept-sspr-policy.md) Az Azure AD B2C-regisztráció vagy bejelentkezési és jelszó-visszaállítási szabályzatok megkövetelik ezt az erős jelszóerősség, és nem jár le a jelszavakat.
 
-A felhasználói áttelepítési forgatókönyvek esetében, ha az áttelepíteni kívánt fiókok gyengébb jelszóval rendelkeznek, mint az Azure AD B2C által kényszerített [erős jelszó](../active-directory/authentication/concept-sspr-policy.md) , letilthatja a jelszó erős követelményét. Az alapértelmezett jelszóházirend módosításához állítsa a `passwordPolicies` tulajdonságot `DisableStrongPassword`re. A felhasználói kérelem létrehozása például a következőképpen módosítható:
+A felhasználói áttelepítési forgatókönyvek, ha a fiókok áttelepíteni kívánt gyengébb jelszó erőssége, mint az Azure AD B2C által kényszerített [erős jelszóerősséget,](../active-directory/authentication/concept-sspr-policy.md) letilthatja az erős jelszókövetelmény. Az alapértelmezett jelszóházirend módosításához `passwordPolicies` állítsa `DisableStrongPassword`a tulajdonságot a értékre. A felhasználói kérelem létrehozása például a következőképpen módosulhat:
 
 ```JSON
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
@@ -92,9 +114,9 @@ A felhasználói áttelepítési forgatókönyvek esetében, ha az áttelepíten
 
 ### <a name="extension-properties"></a>Bővítmény tulajdonságai
 
-Minden ügyfélre kiterjedő alkalmazás egyedi követelményekkel rendelkezik a gyűjtött adatokhoz. A Azure AD B2C bérlője a tulajdonságok területen tárolt beépített információkkal, például a megadott névvel, a vezetéknévvel, a várossal és az irányítószámmal rendelkezik. A Azure AD B2C használatával kiterjesztheti az egyes felhasználói fiókokban tárolt tulajdonságok készletét. Az egyéni attribútumok definiálásával kapcsolatos további információkért lásd: [Egyéni attribútumok (felhasználói folyamatok)](user-flow-custom-attributes.md) és [Egyéni attribútumok (egyéni házirendek)](custom-policy-custom-attributes.md).
+Minden ügyfél felé néző alkalmazás egyedi követelményeket támaszt az összegyűjtendő információkkal kapcsolatban. Az Azure AD B2C-bérlő egy beépített készlettel rendelkezik a tulajdonságokban, például a keresztnév, a vezetéknév, a város és az irányítószám között tárolt információk. Az Azure AD B2C segítségével kiterjesztheti az egyes ügyfélfiókokban tárolt tulajdonságok készletét. Az egyéni attribútumok meghatározásáról további információt [az egyéni attribútumok (felhasználói folyamatok)](user-flow-custom-attributes.md) és [az egyéni attribútumok (egyéni házirendek)](custom-policy-custom-attributes.md)című témakörben talál.
 
-Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai a Convention `extension_ApplicationObjectID_attributename`használatával vannak elnevezve. Például:
+A Microsoft Graph API támogatja a bővítményattribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API bővítményattribútumait a `extension_ApplicationObjectID_attributename`konvenció használatával nevezi el a program. Példa:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -102,42 +124,42 @@ Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felha
 
 ## <a name="code-sample"></a>Kódminta
 
-Ez a mintakód egy olyan .NET Core Console-alkalmazás, amely a [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) -val együttműködik a Microsoft Graph API-val. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
-[Letöltheti a minta archívumot](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [böngészheti a tárházat](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) a githubon, vagy megnyithatja az adattárat:
+Ez a kódminta egy .NET Core konzolalkalmazás, amely a [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) segítségével kommunikál a Microsoft Graph API-val. A kód bemutatja, hogyan hívja meg az API-t az Azure AD B2C-bérlőben lévő felhasználók programozott kezeléséhez.
+[Letöltheti a mintaarchívumot](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip), [böngészhet a](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) GitHubon lévő tárházban, vagy klónozhatja a tárházat:
 
 ```cmd
 git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
 ```
 
-A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a projektet:
+Miután megszerezte a kódmintát, konfigurálja a környezetéhez, majd építse létre a projektet:
 
-1. Nyissa meg a projektet a [Visual Studióban](https://visualstudio.microsoft.com) vagy a [Visual Studio Code](https://code.visualstudio.com)-ban.
-1. Nyissa meg a `src/appsettings.json` alkalmazást.
-1. A `appSettings` szakaszban cserélje le a `your-b2c-tenant` nevet a bérlő nevére, és `Application (client) ID` és `Client secret` a felügyeleti alkalmazás regisztrálásának értékeit (lásd a cikk [felügyeleti alkalmazás regisztrálása](#register-a-management-application) című szakaszát).
-1. Nyisson meg egy konzol ablakot a tárház helyi klónján belül, váltson át a `src` könyvtárba, majd hozza létre a projektet:
+1. Nyissa meg a projektet a [Visual Studio](https://visualstudio.microsoft.com) vagy a Visual Studio [Code programban.](https://code.visualstudio.com)
+1. Nyissa meg a következő fájlt: `src/appsettings.json`.
+1. A `appSettings` szakaszban `your-b2c-tenant` cserélje le a bérlő `Application (client) ID` nevét, és `Client secret` a felügyeleti alkalmazás regisztrációjának értékeit (lásd a jelen cikk [felügyeleti alkalmazás regisztrálása](#register-a-management-application) című szakaszát).
+1. Nyisson meg egy konzolablakot a tártár `src` helyi klónjában, váltson át a könyvtárba, majd építse fel a projektet:
     ```console
     cd src
     dotnet build
     ```
-1. Futtassa az alkalmazást az `dotnet` paranccsal:
+1. Futtassa az `dotnet` alkalmazást a következő paranccsal:
 
-```console
-dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
-```
+    ```console
+    dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
+    ```
 
-Az alkalmazás megjeleníti a végrehajtható parancsok listáját. Például az összes felhasználó beszerzése, egyetlen felhasználó beszerzése, egy felhasználó törlése, a felhasználó jelszavának frissítése és a tömeges importálás.
+Az alkalmazás megjeleníti a végrehajtható parancsok listáját. Például az összes felhasználó lekérni, egyetlen felhasználót beszerezni, törölni egy felhasználót, frissíteni a felhasználó jelszavát, és tömeges importálást.
 
-### <a name="code-discussion"></a>Kód-vitafórum
+### <a name="code-discussion"></a>Kódmegbeszélés
 
-A mintakód a [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)-t használja, amelynek célja, hogy leegyszerűsítse a Microsoft Graphhoz hozzáférő, magas színvonalú, hatékony és rugalmas alkalmazások kialakítását. Így nem kell közvetlenül az összes Microsoft Graph API-t létrehoznia.
+A mintakód a [Microsoft Graph SDK-t](https://docs.microsoft.com/graph/sdks/sdks-overview)használja, amelynek célja a Microsoft Graph-hoz hozzáférő kiváló minőségű, hatékony és rugalmas alkalmazások létrehozásának egyszerűsítése. Így nem kell, hogy a közvetlen az összes Microsoft Graph API-t.
 
-A Microsoft Graph API-nak benyújtott minden kérelemhez hozzáférési jogkivonat szükséges a hitelesítéshez. A megoldás a [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet csomag használatát teszi lehetővé, amely a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja a Microsoft Graph SDK-val való használatra.
+A Microsoft Graph API-ra irányuló kérelmek hitelesítéshez hozzáférési jogkivonatot igényelnek. A megoldás a [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet csomagot használja, amely a Microsoft Graph SDK-val való használatra a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja.
 
-A _program.cs_ fájl `RunAsync` metódusa:
+A `RunAsync` módszer a _Program.cs_ fájlban:
 
-1. Az Alkalmazásbeállítások beolvasása a _appSettings. JSON_ fájlból
-1. A [OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) folyamatát használva inicializálja a hitelesítési szolgáltatót. Az ügyfél hitelesítő adatainak megadása esetén az alkalmazás hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
-1. Beállítja a Microsoft Graph szolgáltatási ügyfelet az Auth szolgáltatóval:
+1. Alkalmazásbeállítások beolvasása az _appsettings.json_ fájlból
+1. Inicializálja az auth szolgáltató t [OAuth 2.0 ügyfél hitelesítő adatok támogatási](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) folyamat. Az ügyfél hitelesítő adatok támogatási folyamat, az alkalmazás képes-hoz kap egy hozzáférési jogkivonatot a Microsoft Graph API-t.
+1. Beállítja a Microsoft Graph szolgáltatásügyfelet az hitelesítésszolgáltatóval:
 
     ```csharp
     // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
@@ -155,7 +177,7 @@ A _program.cs_ fájl `RunAsync` metódusa:
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-A rendszer ezt követően a inicializált *GraphServiceClient* használja a _UserService.cs_ a felhasználói felügyeleti műveletek végrehajtásához. Például a bérlőben lévő felhasználói fiókok listájának beolvasása:
+Az inicializált *GraphServiceClient* ezután _UserService.cs_ a felhasználókezelési műveletek végrehajtásához. Például a bérlőfelhasználói fiókok listájának beszerzése:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)
@@ -180,11 +202,11 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Az Microsoft Graph SDK-kat használó API-hívások a](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph információk olvasását és írását, a `$select` a visszaadott tulajdonságok szabályozását, az egyéni lekérdezési paraméterek megadását, valamint a `$filter` és `$orderBy` lekérdezési paraméterek használatát ismertetik.
+[Az API-hívások kezdeményezése a Microsoft Graph SDK-k használatával](https://docs.microsoft.com/graph/sdks/create-requests) információkat `$select` tartalmaz arról, hogyan lehet adatokat olvasni `$filter` és `$orderBy` írni a Microsoft Graph-ból, hogyan szabályozhatja a visszaadott tulajdonságokat, egyéni lekérdezési paramétereket adhat meg, valamint a és a lekérdezési paramétereket.
 
 ## <a name="next-steps"></a>További lépések
 
-Azure AD B2C erőforrásokhoz támogatott Microsoft Graph API-műveletek teljes indexét itt tekintheti meg: [Azure ad B2C számára elérhető Microsoft Graph műveletek](microsoft-graph-operations.md).
+Az Azure AD B2C-erőforrásokhoz támogatott Microsoft Graph API-műveletek teljes indexét az [Azure AD B2C számára elérhető Microsoft Graph-műveletek](microsoft-graph-operations.md)ben találja.
 
 <!-- LINK -->
 

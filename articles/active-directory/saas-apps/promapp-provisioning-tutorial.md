@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a Promapp konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Promapp.
+title: 'Oktatóanyag: A Promapp konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az Azure Active Directoryt a felhasználói fiókok promappba való automatikus kiépítésére és kiépítésének kimerülésével.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,149 +16,149 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
 ms.openlocfilehash: 1a4a27846196e7eb134b834647b2a2d65672f385
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061007"
 ---
-# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Promapp konfigurálása
+# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Oktatóanyag: A Promapp konfigurálása automatikus felhasználói kiépítéshez
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Promapp és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Promapp.
+Ez az oktatóanyag célja, hogy bemutassa a Promapp és az Azure Active Directoryban (Azure AD) végrehajtandó lépéseket, hogy az Azure AD-t úgy konfigurálja, hogy automatikusan kiépítse és dekontizáljon felhasználókat és/vagy csoportokat a Promappba.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Azure AD-bérlő
+* Egy Azure AD-bérlő
 * [Promapp-bérlő](https://www.promapp.com/licensing/)
-* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Promapp-ben.
+* A Promapp rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
 
-## <a name="assigning-users-to-promapp"></a>Felhasználók kiosztása a Promapp
+## <a name="assigning-users-to-promapp"></a>Felhasználók hozzárendelése a Promapphoz
 
-Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
 
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Promapp való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Promapp az alábbi utasításokat követve:
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a Promapphoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Promapphoz az alábbi utasításokat követve:
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-promapp"></a>Fontos Tippek a felhasználók Promapp való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-promapp"></a>Fontos tippek a felhasználók Promapphoz való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Promapp-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Promapp az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor Promapp rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót a Promapphoz rendel, ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="setup-promapp-for-provisioning"></a>Promapp beállítása a kiépítés számára
+## <a name="setup-promapp-for-provisioning"></a>A Promapp beállítása a kiépítéshez
 
-1. Jelentkezzen be a [Promapp felügyeleti konzolra](https://freetrial.promapp.com/axelerate/Login.aspx). A Felhasználónév alatt navigáljon a **saját profilhoz**.
+1. Jelentkezzen be a [Promapp Admin konzolra.](https://freetrial.promapp.com/axelerate/Login.aspx) A felhasználónév alatt keresse meg a **Saját profil (Profil) nevet.**
 
     ![Promapp felügyeleti konzol](media/promapp-provisioning-tutorial/admin.png)
 
-2.  A **hozzáférési jogkivonatok** alatt kattintson a **create token (jogkivonat létrehozása** ) gombra.
+2.  A **Hozzáférési jogkivonatok csoportban** kattintson a **Jogkivonat létrehozása** gombra.
 
-    ![Promapp-SCIM hozzáadása](media/promapp-provisioning-tutorial/addtoken.png)
+    ![Promapp hozzáadása SCIM](media/promapp-provisioning-tutorial/addtoken.png)
 
-3.  Adjon meg bármilyen nevet a **Leírás** mezőben, és válassza a **scim** elemet a **hatókör** legördülő menüből. Kattintson a Save (Mentés) ikonra.
+3.  Adjon meg bármilyen nevet a **Leírás** mezőben, és válassza a **Hatókör legördülő menü** **Scim** parancsát. Kattintson a mentés ikonra.
 
-    ![Promapp hozzáadási neve](media/promapp-provisioning-tutorial/addname.png)
+    ![Promapp név hozzáadása](media/promapp-provisioning-tutorial/addname.png)
 
-4.  Másolja a hozzáférési jogkivonatot, és mentse el, mivel ez az egyetlen időpontra megtekinthető. Ez az érték a Promapp alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében jelenik meg a Azure Portal.
+4.  Másolja a hozzáférési jogkivonatot, és mentse, mivel ez lesz az egyetlen alkalom, amikor megtekintheti. Ezt az értéket a Promapp-alkalmazás Azure Portalon a Kiépítés lapján a Titkos jogkivonat mezőben adja meg.
 
-    ![Promapp-létrehozási jogkivonat](media/promapp-provisioning-tutorial/token.png)
+    ![Promapp token létrehozása](media/promapp-provisioning-tutorial/token.png)
 
-## <a name="add-promapp-from-the-gallery"></a>Promapp hozzáadása a gyűjteményből
+## <a name="add-promapp-from-the-gallery"></a>Promapp hozzáadása a galériából
 
-Az Azure AD-vel való automatikus Promapp konfigurálása előtt hozzá kell adnia a Promapp az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+Mielőtt konfigurálnia kell a Promappot az Azure AD-vel való automatikus felhasználói kiépítéshez, hozzá kell adnia a Promappot az Azure AD-alkalmazásgyűjteményből a felügyelt SaaS-alkalmazások listájához.
 
-**Ha Promapp szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
+**Ha hozzá szeretné adni a Promappot az Azure AD alkalmazásgyűjteményből, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Promapp**kifejezést, válassza az **Promapp** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Promapp**kifejezést, válassza a **Promapp** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Promapp az eredmények listájában](common/search-new-app.png)
+    ![Promapp az eredménylistában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-promapp"></a>Automatikus felhasználó-kiépítés beállítása a Promapp 
+## <a name="configuring-automatic-user-provisioning-to-promapp"></a>Automatikus felhasználói kiépítés konfigurálása a Promapp szolgáltatásba 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Promapp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a Promappban az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
 > [!TIP]
-> Dönthet úgy is, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a Promapp számára az [Promapp egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
+> Azt is választhatja, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Promappszámára a [Promapp Egyszeri bejelentkezési oktatóanyagutasításait](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial)követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
 
-### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Promapp az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>A Promapp automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Promapp**lehetőséget.
+2. Az alkalmazások listájában válassza a **Promapp**lehetőséget.
 
-    ![Az Promapp hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A Promapp hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://api.promapp.com/api/scim` a **bérlői URL-címben**. Adja meg a **scim-hitelesítési jogkivonat** értékét a **titkos tokenben**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Promapp. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Promapp-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **Rendszergazdai hitelesítő** adatok `https://api.promapp.com/api/scim` csoportban adja meg a **bérlői URL-címet.** Adja meg a **titkos jogkivonat**korábbi, beolvasott **SCIM hitelesítési token** értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD képes legyen csatlakozni a Promapphoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy promapp-fiókja rendelkezik rendszergazdai engedélyekkel, majd próbálkozzon újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Promapp**lehetőséget.
+8. A **Leképezések** csoportban válassza **az Azure Active Directory-felhasználók szinkronizálása a Promapp szolgáltatással**lehetőséget.
 
     ![Promapp felhasználói leképezések](media/promapp-provisioning-tutorial/usermappings.png)
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Promapp. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Promapp felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ről a Promappra szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kijelölt attribútumok a Promapp felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
     ![Promapp felhasználói attribútumai](media/promapp-provisioning-tutorial/userattributes.png)
 
-11. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-12. Az Azure AD-kiépítési szolgáltatás Promapp való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+12. Az Azure AD-kiépítési szolgáltatás engedélyezése a Promapp, módosítsa a **kiépítés állapota** **be a** **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
 
-13. Adja meg a Promapp kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+13. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni a Promappba a kívánt értékek kiválasztásával a **Beállítások** szakasz **hatókörében.**
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+14. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Promapp-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a Promappon végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
 

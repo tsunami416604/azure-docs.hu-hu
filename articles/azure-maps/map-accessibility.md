@@ -1,6 +1,6 @@
 ---
-title: Elérhető térképes alkalmazás létrehozása Azure Mapssal | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy alkalmazást Microsoft Azure Maps használatával kisegítő lehetőségekkel.
+title: Akadálymentes térképalkalmazás létrehozása az Azure Maps segítségével | Microsoft Azure Maps
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre olyan alkalmazást, amely kisegítő lehetőségeket kínál a Microsoft Azure Maps használatával.
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,81 +8,81 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672463"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473319"
 ---
 # <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
 
-Az internetes felhasználók 20%-ának kihasználása az elérhető webalkalmazásokhoz szükséges. Ezért fontos meggyőződni arról, hogy az alkalmazás úgy van kialakítva, hogy bármely felhasználó könnyen használhassa azt. Ahelyett, hogy a kisegítő lehetőségeket a teljes felhasználói élmény részeként kellene elvégeznie. Minél könnyebben elérhető az alkalmazás, annál több ember használhatja azt. 
+Az internethasználók több mint 20%-ának van szüksége hozzáférhető webes alkalmazásokra. Ezért fontos, hogy az alkalmazás úgy legyen megtervezve, hogy bármely felhasználó könnyen használhassa. Ahelyett, hogy a hozzáférhetőségre úgy gondolna, mint egy feladathalmazra, gondoljon rá az általános felhasználói élmény részeként. Minél könnyebben elérhető az alkalmazás, annál többen tudják használni. 
 
-Ha a gazdag interaktív tartalmakhoz, például a térképhez is tartozik, a következő gyakori kisegítő lehetőségek érhetők el:
-- Támogassa a képernyőolvasót olyan felhasználók számára, akik nehezen látják a webalkalmazást.
-- Több módszer is rendelkezésre áll a webalkalmazások, például az egér, a Touch és a billentyűzet használatával való interakcióhoz és navigáláshoz.
-- Ügyeljen arra, hogy a színek ne legyenek összekeverve, és ne legyenek megkülönböztetve egymástól. 
+Ha gazdag interaktív tartalomról, például térképről van szó, a kisegítő lehetőségeknéhány gyakori szempontja a következő:
+- Támogatja a képernyőolvasót azoknak a felhasználóknak, akiknek nehézséget okoz a webes alkalmazás.
+- Többféle módszerrel rendelkezik a webes alkalmazással való interakcióra és navigálásra, például az egérrel, az érintéssel és a billentyűzettel.
+- Győződjön meg arról, hogy a színkontraszt olyan, hogy a színek nem keverednek össze, és nehezen különböztethetők meg egymástól. 
 
-A Azure Maps web SDK a következő számos kisegítő lehetőséggel rendelkezik előre összeépítve:
-- A képernyőolvasók leírása a Térkép mozgatásakor és amikor a felhasználó egy vezérlőelemre vagy előugró ablakra fókuszál.
-- Egér, érintés és billentyűzet támogatása.
-- Elérhető színkontrasztos támogatás az úthálózati Térkép stílusaként.
+Az Azure Maps Web SDK előre elkészített számos kisegítő lehetőséget kínál, például:
+- A képernyőolvasó leírása, amikor a térkép mozog, és amikor a felhasználó egy vezérlőre vagy felugró ablakra összpontosít.
+- Az egér, az érintés és a billentyűzet támogatása.
+- Akadálymentes színkontraszt az útitérkép stílusában.
 
-Az összes Microsoft-termékre vonatkozó teljes körű hozzáférhetőségi részletek [itt](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)találhatók. Keressen rá a "Azure Maps web" kifejezésre, hogy megkeresse a Azure Maps web SDK-hoz tartozó dokumentumot. 
+A Microsoft összes termékének teljes hozzáférhetőségi megfelelőségi adatai [itt](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)találhatók. Keressen rá az "Azure Maps web" kifejezésre, és keresse meg a dokumentumot kifejezetten az Azure Maps Web SDK-hoz. 
 
 ## <a name="navigating-the-map"></a>Navigálás a térképen
 
-A Térkép több különböző módon nagyítható, megpárolt, elforgatható és felhelyezhető. A következő részletek a Térkép különböző módjaira mutatnak.
+A térkép nagyításának, pásztázásának, elforgatásának és felverésének számos különböző módja van. Az alábbi adatok a térképen való navigálás különböző módjait ismertetik.
 
-**A Térkép nagyítása**
+**A térkép nagyítása**
 
-- Egy egér használatával kattintson duplán a térképre egy szint nagyításához.
-- Egér használatával a térkép nagyításához görgessen a görgőre.
-- Érintőképernyőn keresztül a térképre koppintva két ujjal és csípjük össze a nagyítást, illetve az ujjak kinagyítását, illetve a nagyítást egymás mellett.
-- Egy érintőképernyő használatával dupla koppintással nagyíthatja a térképet egy szint nagyításához.
-- A térképre koncentrálva használja a pluszjelet (`+`) vagy az * egyenlőségjel (`=`) lehetőséget a nagyításhoz egy szinten.
-- A térképre koncentrálva a mínuszjelet, kötőjelet (`-`) vagy aláhúzást (`_`) használhatja egy szint kinagyításához.
-- A nagyítás vezérlőelemet egérrel, érintéssel vagy billentyűzettel vagy a kulcsok beírásával használhatja.
-- Nyomja le és tartsa nyomva a `Shift` gombot, és nyomja le a bal oldali egérgombot a térképen, és húzza a diagramot a térkép nagyításához.
+- Az egérrel, kattintson duplán a térképre, hogy nagyítsa ki egy szinten.
+- Az egérrel görgessen a keréknagyítsa a térképet.
+- Érintőképernyős érintőképernyővel érintse meg a térképet két ujjal, és csippentsen össze a nagyításhoz vagy az ujjak szétterítéséhez.
+- Érintőképernyő használatával koppintson duplán a térképre egy szint nagyításához.
+- Ha a térkép fókuszált,`+`használja a Plusz`=`jel ( ) vagy az Egyenlőjel ( ) egy szint nagyításához.
+- Ha a térkép fókuszált, használja a`-`Mínuszjelet,`_`a Kötőjelet ( ), vagy az Aláhúzást () egy szint kicsinyítéséhez.
+- A nagyításvezérlő egérrel történő használata, az érintéses vagy billentyűzetfül/beírás billentyűk használata.
+- Tartsa nyomva `Shift` a gombot, és nyomja le a bal egérgombot a térképen, és húzással rajzoljon ki egy területet a térkép nagyításához.
 
-**A Térkép pásztázása**
+**Pásztázás a térképen**
 
-- Egér használatával a térképen a bal egérgombot lenyomva tartva bármely irányt áthúzhat.
-- Érintse meg a térképet, és húzza a kívánt irányba.
-- A térképre koncentrálva a nyílbillentyűk használatával helyezheti át a térképet.
+- Egérrel nyomja le a bal egérgombot a térképen, és húzza bármilyen irányba.
+- Érintőképernyő használatával érintse meg a térképet, és húzza bármelyik irányba.
+- Ha a térkép fókuszált, a nyílbillentyűkkel mozgassa a térképet.
 
-**A Térkép elforgatása**
+**A térkép elforgatása**
 
-- Egér használatával nyomja le a lefelé a jobb gombbal a térképen, és húzza balra vagy jobbra. 
-- Érintse meg a Térkép két ujjal való használatát, és forgassa el.
-- A Térkép fókuszban használja a SHIFT billentyűt, a bal vagy a jobb nyílbillentyűket.
-- A forgatás vezérlőelem használata egérrel, érintéssel vagy billentyűzettel, illetve kulcsok bevitele.
+- Egérrel nyomja le a jobb egérgombbal a térképen, és húzza balra vagy jobbra. 
+- Érintőképernyő stapintása közben két ujjal megérintheti a térképet, és elforgathatja.
+- Ha a térkép fókuszált, használja a shift gombot és a bal vagy jobb nyílbillentyűket.
+- Az elforgatás vezérlő használata egérrel, érintéssel vagy billentyűzettel a gombok at.
 
-**A Térkép feldobása**
+**A térkép feldobása**
 
-- Az egér használatával nyomja le a legördülő menüben a jobb gombbal a térképen, és húzza felfelé vagy lefelé. 
-- Érintse meg a térképet két ujjal, és húzza őket egymáshoz.
-- A térképre koncentrálva a SHIFT billentyűt, valamint a fel vagy a le nyílbillentyűt használja. 
-- A Pitch vezérlő használata egérrel, érintéssel vagy billentyűzettel, illetve kulcsok bevitele.
+- Az egérrel nyomja le a jobb egérgombbal a térképen, és húzza felfelé vagy lefelé. 
+- Érintőképernyő stapintása segítségével érintse meg a térképet két ujjal, és húzza őket felfelé vagy lefelé.
+- Ha a térkép fókuszált, használja a shift gombot, valamint a fel vagy le nyílbillentyűket. 
+- A hangmagasság-vezérlő használata egérrel, érintéssel vagy billentyűzettel a billentyűk beírásakor.
 
-## <a name="change-the-map-style"></a>Térkép stílusának módosítása
+## <a name="change-the-map-style"></a>A térképstílus módosítása
 
-Nem minden fejlesztő szeretné, hogy az összes lehetséges Térkép stílusa elérhető legyen az alkalmazásában. Ha a fejlesztő a Térkép Style Picker vezérlőelemét jeleníti meg, akkor a felhasználó az egérrel, érintéssel vagy a TAB billentyűvel megváltoztathatja a Térkép stílusát, vagy megadhatja a kulcsot. A fejlesztő megadhatja, hogy mely térképi stílusokat szeretné elérhetővé tenni a Térkép stílusa választó vezérlőelemben. Emellett a fejlesztő programozott módon állíthatja be és módosíthatja a Térkép stílusát.
+Nem minden fejlesztő szeretné, hogy az összes lehetséges térképstílus elérhető legyen az alkalmazásában. Ha a fejlesztő megjeleníti a térkép stílusválasztó vezérlőjét, akkor a felhasználó módosíthatja a térkép stílusát az egérrel, egy érintéssel vagy a billentyűzettel a lap vagy az enter billentyű segítségével. A fejlesztő megadhatja, hogy mely térképstílusokat kívánja elérhetővé tenni a térképstílus-választó vezérlőben. Emellett a fejlesztő programozott módon beállíthatja és módosíthatja a térképstílusát.
 
-**Magas kontraszt használata**
+**Kontrasztos használata**
 
-- A Térkép vezérlőelem betöltését követően a ellenőrzi, hogy engedélyezve van-e a kontrasztos megjelenítés, és hogy a böngésző támogatja-e.
-- A Térkép vezérlőelem nem figyeli az eszköz kontrasztos üzemmódját. Ha az eszköz mód megváltozik, a Térkép nem fog megjelenni. Így a felhasználónak újra kell töltenie a térképet az oldal frissítésével.
-- Ha a rendszer nagy kontrasztot észlel, a Térkép stílusa automatikusan magas kontrasztra vált, és az összes beépített vezérlő nagy kontrasztú stílust fog használni. Például a ZoomControl, a PitchControl, a CompassControl, a StyleControl és az egyéb beépített vezérlők nagy kontrasztú stílust fognak használni.
-- Kétféle kontrasztos, világos és sötét. Ha a leképezési vezérlők a kontrasztos megjelenítést is észlelik, akkor a Térkép viselkedése ennek megfelelően módosul. Ha a fény, akkor a grayscale_light Térkép stílusa betöltődik. Ha a típus nem észlelhető vagy sötét, akkor a rendszer betölti a high_contrast_dark stílust.
-- Ha egyéni vezérlőket hoz létre, érdemes tudni, hogy a beépített vezérlők nagy kontrasztú stílust használnak-e. A fejlesztők hozzáadhatnak egy CSS-osztályt a Térkép-tárolóhoz a div-ben az ellenõrzéshez. A hozzáadott CSS-osztályok `high-contrast-dark` és `high-contrast-light`. A JavaScript használatának vizsgálatához használja a következőt:
+- A térképvezérlő betöltésekor ellenőrzi, hogy engedélyezve van-e a kontrasztos megjelenítés, és a böngésző támogatja-e.
+- A térképvezérlő nem figyeli a készülék nagy kontrasztú üzemmódját. Ha az eszköz mód megváltozik, a térkép nem fog. Így a felhasználónak újra kell töltenie a térképet az oldal frissítésével.
+- Ha kontrasztot észlel, a térképstílus automatikusan nagy kontrasztra vált, és az összes beépített vezérlő kontrasztos stílust használ. A ZoomControl, a PitchControl, a CompassControl, a StyleControl és más beépített vezérlők például kontrasztos stílust fognak használni.
+- Kétféle nagy kontrasztú, világos és sötét. Ha a térkép vezérlők észlelik a nagy kontraszt típusát, akkor a térkép viselkedése ennek megfelelően módosul. Ha világos, akkor a grayscale_light térképstílus betöltődik. Ha a típus nem észlelhető vagy sötét, akkor a high_contrast_dark stílus betöltődik.
+- Ha egyéni vezérlőket hoz létre, érdemes tudni, hogy a beépített vezérlők kontrasztos stílust használnak-e. A fejlesztők adhat egy css osztály a térképen konténer div ellenőrizni. A css osztályok, hogy `high-contrast-dark` lenne `high-contrast-light`hozzá, és . A JavaScript használatával történő ellenőrzéshez használja a következőket:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-dark")
 ```
 
-vagy használja a következőket:
+vagy, használja:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-light")
@@ -90,91 +90,91 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 ## <a name="keyboard-shortcuts"></a>Billentyűparancsok
 
-A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térkép használatát. Ezek a billentyűparancsok akkor működnek, ha a Térkép fókuszban van.
+A térkép számos beépített billentyűparancsmal rendelkezik, amelyek megkönnyítik a térkép használatát. Ezek a billentyűparancsok akkor működnek, ha a térkép fókuszban van.
 
-| Paraméter      | Műveletek                            |
+| Kulcs      | Műveletek                            |
 |----------|-----------------------------------|
-| `Tab` | Navigáljon a térképen a vezérlők és az előugró ablakok között. |
-| `ESC` | Mozgassa a fókuszt a Térkép bármely eleméről a legfelső szintű Térkép elemre. |
-| `Ctrl` + `Shift` + `D` | Képernyő-olvasó részletességi szintjének bekapcsolása.  |
-| Balra nyíl gomb | A Térkép pásztázása balra 100 képpont |
-| Jobb nyíl gomb | A Térkép jobb 100 képpontban való pásztázása |
-| Lefelé nyíl gomb | A Térkép pásztázása lefelé 100 képpont |
-| Felfelé nyíl gomb | A Térkép pásztázása 100 képpont |
-| `Shift` + felfelé mutató nyíl | A Térkép szurok növelésének mértéke 10 fokkal |
-| `Shift` + lefelé mutató nyíl | A térképi szurok csökkentése 10 fokkal |
-| `Shift` + jobb nyíl | A Térkép 15 fokos elforgatása jobbra |
-| `Shift` + balra nyíl | A Térkép 15 fokos elforgatása balra |
-| Pluszjel (`+`) vagy <sup>*</sup>egyenlőségjel (`=`) | Nagyítás |
-| Mínusz jel, kötőjel (`-`) vagy <sup>*</sup>aláhúzás (`_`) | Kicsinyítés | 
-| `Shift` + egérrel húzza a térképet a terület rajzolásához | Terület nagyítása |
+| `Tab` | Navigáljon a vezérlők és a felugró ablakok a térképen. |
+| `ESC` | A fókusz áthelyezése a térkép bármely eleméből a legfelső szintű térképelemre. |
+| `Ctrl` + `Shift` + `D` | A képernyőolvasó részletességi szintjének be- és be- és kiváltása.  |
+| Balra nyíl | Pásztázás a térképbal 100 pixel |
+| Jobbra nyíl | A térkép pásztázása jobbra 100 képpont |
+| Le nyílbillentyű | A térkép pásztázása 100 képponttal |
+| Fel felé mutató nyílbillentyű | A térkép pásztázása 100 képponttal |
+| `Shift`+ felfelé mutató nyíl | A térkép hangmagasságának növelése 10 fokkal |
+| `Shift`+ lefelé mutató nyíl | A térkép hangmagasságának csökkentése 10 fokkal |
+| `Shift`+ jobbra nyíl | A térkép elforgatása 15 fokkal az óramutató járásával megegyező irányban |
+| `Shift`+ balra nyíl | A térkép elforgatása 15 fokkal az óramutató járásával ellentétesen |
+| Pluszjel`+`( <sup>*</sup>) vagy`=`Egyenlőségjel ( ) | Nagyítás |
+| Mínuszjel, Kötőjel`-`( <sup>*</sup>),`_`vagy Aláhúzás ( ) | Kicsinyítés | 
+| `Shift`+ egér húzása a térképen, hogy dolgozzon terület | Terület nagyítása |
 
-<sup>*</sup> Ezek a billentyűparancsok általában ugyanazt a kulcsot használják a billentyűzeten. Ezek a parancsikonok a felhasználói élmény javításához lettek hozzáadva. Emellett nem számít, hogy a felhasználó használja-e a SHIFT billentyűt, vagy sem ezekhez a parancsikonokhoz.
+<sup>*</sup>Ezek a billentyűparancsok általában ugyanazt a billentyűt osztják a billentyűzeten. Ezek a billentyűparancsok a felhasználói élmény javítása érdekében kerültek hozzáadásra. Az sem számít, hogy a felhasználó használja-e a shift billentyűt, vagy sem ezekhez a billentyűparancsokhoz.
 
-## <a name="screen-reader-support"></a>Képernyőolvasó-támogatás
+## <a name="screen-reader-support"></a>A Képernyőolvasó támogatása
 
-A felhasználók a billentyűzettel is megkereshetik a térképet. Ha egy képernyőolvasó fut, a Térkép értesíti a felhasználót, hogy az állapota megváltozik. Például a felhasználók értesítést kapnak a Térkép változásairól, amikor a Térkép megpárol vagy kicsinyítve van. Alapértelmezés szerint a Térkép egyszerűsített leírásokat tartalmaz, amelyek kizárja a Térkép középpontjának nagyítási szintjét és koordinátáit. A felhasználók a leírások részletességi szintjét a billentyűzet rövid kivágási `Ctrl` + `Shift` + `D`használatával válthatják ki.
+A felhasználók a billentyűzet segítségével navigálhatnak a térképen. Ha a képernyőolvasó fut, a térkép értesíti a felhasználót az állapotának változásairól. Például a felhasználók értesítést kapnak a térkép változásairól, amikor a térképet pásztázott vagy nagyított. Alapértelmezés szerint a térkép egyszerűsített leírásokat biztosít, amelyek kizárják a térkép nagyítási szintjét és koordinátáit. A felhasználó a billentyűzet rövid vágásával `Ctrl`  +  `Shift`  +  `D`válthat a leírások részletességi szintjére.
 
-Az alaptérképre helyezett további információknak megfelelő szöveges információval kell rendelkezniük a képernyőolvasó felhasználói számára. Ha szükséges, ügyeljen arra, hogy az [elérhető Rich Internet-alkalmazásokat (ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/), az ALT és a title attribútumokat adja hozzá. 
+Az alaptérképen elhelyezett további információknak megfelelő szöveges információkkal kell rendelkezniük a képernyőolvasó-felhasználók számára. Ügyeljen arra, hogy adjunk [hozzáférhető rich internetes alkalmazások (ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/), alt, és a cím attribútumok, ahol szükséges. 
 
-## <a name="make-popups-keyboard-accessible"></a>Felugró ablakok billentyűzetének elérhetővé tétele
+## <a name="make-popups-keyboard-accessible"></a>Az előugró ablakok billentyűzetének akadálymentessé tétele
 
-Egy jelölőt vagy szimbólumot gyakran használnak a térképen egy hely ábrázolására. A hellyel kapcsolatos további információ általában egy előugró ablakban jelenik meg, amikor a felhasználó a jelölővel kommunikál. A legtöbb alkalmazásban az előugró ablakok akkor jelennek meg, amikor a felhasználó egy jelölőre kattint vagy koppint. Ha azonban a gombra kattint, koppintson a felhasználó egér és érintőképernyő használatára van szüksége. Jó megoldás, ha billentyűzet használatakor elérhetővé teszi a felugró ablakokat. Ez a funkció úgy érhető el, hogy létrehoz egy előugró ablakokat az egyes adatpontokhoz, és hozzáadja azt a térképhez. 
+A jelölőt vagy szimbólumot gyakran használják egy hely ábrázolására a térképen. A helyről szóló további információk általában egy felugró ablakban jelennek meg, amikor a felhasználó interakcióba lép a jelölővel. A legtöbb alkalmazásban előugró ablakok jelennek meg, amikor a felhasználó rákattint vagy koppint egy jelölőre. A kattintásra és koppintásra való kattintáshoz azonban a felhasználónak egér és érintőképernyő használatát igényli. Egy jó gyakorlat, hogy a felugró ablakok elérhetővé, ha a billentyűzet. Ez a funkció úgy érhető el, hogy létrehoz egy felugró ablakot az egyes adatpontokkal, és hozzáadja a térképhez. 
 
-A következő példa egy szimbólum réteget használ a Térkép érdeklődési pontjainak betöltésére, és felugró ablakokat helyez el a térképhez minden egyes hasznos ponthoz. Az egyes előugró ablakokra mutató hivatkozást az egyes adatpontok tulajdonságaiban tárolja a rendszer. Lekérhető egy jelölőre is, például ha egy jelölőre kattintanak. A térképre fókuszálva a TAB billentyű lenyomásával lehetővé válik, hogy a felhasználó átlépjen a térképen lévő összes előugró ablakon.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='Elérhető alkalmazás létrehozása' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg, hogy a toll <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>elérhetővé teszi-e</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alkalmazást a <a href='https://codepen.io'>CodePen</a>. </iframe>
+A következő példa egy szimbólumréteg segítségével tölti be a térképen az érdeklődési pontokat, és minden érdekes ponthoz hozzáad egy felugró ablakot a térképhez. Az egyes felugró ablakokra mutató hivatkozások az egyes adatpont-tulajdonságokban tárolódnak. Azt is belehet olvasni egy marker, például ha egy jelölő kattintott. Amikor a térképre összpontosít, a tab billentyű lenyomásával a felhasználó végigléphet a térkép minden felugró ablakán.
 
 <br/>
 
-## <a name="additional-accessibility-tips"></a>További kisegítő lehetőségek
+<iframe height='500' scrolling='no' title='Akadálymentes alkalmazás sábá' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd: A Toll <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>Elérhetőalkalmazás</a> létrehozása<a href='https://codepen.io/azuremaps'>@azuremaps</a>az Azure Maps által ( ) a CodePen webhelyen című <a href='https://codepen.io'>témakörben.</a> </iframe>
 
-Íme néhány további tipp, amelyekkel könnyebben elérhetővé teheti webes leképezési alkalmazását.
+<br/>
 
-- Ha sok interaktív pontot jelenít meg a térképen, érdemes lehet csökkenteni a zsúfoltságot és használni a fürtözést. 
-- Győződjön meg róla, hogy a szöveg/szimbólumok és a háttérszínek közötti színkontraszt arány 4.5:1 vagy több.
-- A képernyőolvasó (ARIA, ALT és title attribútumok) rövid, leíró és értelmes maradjon. Kerülje a szükségtelen zsargont és mozaikszavakat.
-- Próbálja meg optimalizálni a képernyőolvasónak küldött üzeneteket, hogy rövid, hasznos információkat nyújtson a felhasználó számára a kivonatoló művelethez. Ha például nagy gyakorisággal szeretné frissíteni a képernyőolvasót, például a Térkép áthelyezésekor, akkor a következő szempontokat kell figyelembe vennie:
-    - Várjon, amíg a Térkép befejezte a képernyőolvasó frissítését.
-    - A frissítések szabályozása néhány másodpercenként egyszer. 
-    - Az üzenetek összevonása logikai módon. 
-- Kerülje a színek használatát kizárólag az adatok továbbítására. Szöveg, ikonok vagy mintázatok használata a szín kiegészítéséhez vagy cseréjéhez. Néhány szempont:
-    - Ha buborék réteget használ az adatpontok közötti relatív érték megjelenítéséhez, érdemes megfontolnia az egyes buborékok sugarának méretezését, a buborék színezését vagy mindkettőt. 
-    - A különböző metrikák, például a háromszögek, a csillagok és a négyzetek különböző ikonjait tartalmazó szimbólum-réteget használjon. A szimbólum réteg az ikon méretének méretezését is támogatja. Egy szöveges címke is megjeleníthető.
-    - A sorokban lévő értékek megjelenítéséhez a vastagságot és a méretet is felhasználhatja. A kötőjel-tömb minta a sorok különböző kategóriáinak ábrázolására használható. A szimbólum réteg a vonal mentén átfedésben lévő ikonokkal együtt is használható. A nyíl ikon használata hasznos a vonal folyamatának vagy irányának megjelenítéséhez.
-    - A sokszögek adatainak megjelenítésekor a mintázat (például a sávok) a szín alternatívájaként is használható. 
-- Bizonyos vizualizációk, például a intenzitástérképei, a csempe rétegei és a képrétegek nem érhetők el a látássérültekkel rendelkező felhasználók számára. Néhány szempont:
-    - A képernyő-olvasó leírja, hogy a réteg hogyan jelenjen meg a térképhez való hozzáadáskor. Ha például egy időjárási radar csempe réteg jelenik meg, akkor a képernyőolvasón a "Weather radar-adatcsatorna látható a térképen."
-- Korlátozza az egérmutatót igénylő funkciók mennyiségét. Ezek a funkciók nem lesznek elérhetők azon felhasználók számára, akik billentyűzetet vagy érintőképernyős eszközt használnak az alkalmazással való kommunikációhoz. Vegye figyelembe, hogy az interaktív tartalmak, például a kattintható ikonok, hivatkozások és gombok láthatók.
-- Próbálja megnavigálni az alkalmazást a billentyűzet használatával. Győződjön meg arról, hogy a tabulátorok sorrendje logikai.
-- Ha billentyűparancsokat hoz létre, próbálja meg korlátozni két vagy kevesebb kulcsra. 
+## <a name="additional-accessibility-tips"></a>További kisegítő lehetőségekkel kapcsolatos tippek
 
-## <a name="next-steps"></a>Következő lépések
+Íme néhány további tipp, hogy a web-térképészeti alkalmazás könnyebben hozzáférhető.
 
-Ismerje meg a web SDK-modulok hozzáférhetőségét.
+- Ha sok interaktív pontadatot jelenít meg a térképen, fontolja meg a zsúfoltság csökkentését és a fürtözés használatát. 
+- A szöveg/szimbólumok és a háttérszínek közötti színkontraszt arány ának biztosítása 4,5:1 vagy több.
+- Tartsa a képernyőolvasó (ARIA, alt, és cím attribútumok) üzenetek rövid, leíró, és értelmes. Kerülje a felesleges zsargont és a betűszavakat.
+- Próbálja meg optimalizálni a képernyőolvasónak küldött üzeneteket, hogy a felhasználó számára könnyen megemészthető rövid, értelmes információkat biztosítson. Ha például a képernyőolvasót magas frekvencián szeretné frissíteni, például amikor a térkép mozog, érdemes lehet a következő pontokat ellátni:
+    - Várjon, amíg a térkép befejeződik a képernyőolvasó frissítéséhez.
+    - Néhány másodpercenként egyszer fojtsa meg a frissítéseket. 
+    - Az üzeneteket logikus módon kombinálhatja. 
+- Ne a szín legyen az információközlés egyetlen eszköze. A szín kiegészítéséhez vagy cseréjéhez használjon szöveget, ikonokat vagy mintázatot. Néhány szempont:
+    - Ha buborékréteget használ az adatpontok relatív értékének megjelenítésére, fontolja meg az egyes buborékok sugarának méretezését, a buborék vagy mindkettő színezését. 
+    - Érdemes lehet különböző képkategóriákhoz , például háromszögekhez, csillagokhoz és négyzetekhez különböző ikonokat használó szimbólumréteget használni. A szimbólumréteg támogatja az ikon méretének méretezését is. Szöveges címke is megjeleníthető.
+    - Vonaladatok megjelenítésekor a szélesség a súly vagy a méret jelzésére használható. A vonalsorok különböző kategóriáit ábrázoló szaggatott tömbminta használható. A szimbólumréteg egy vonallal kombinálva is használható az ikonok átfedéséhez a vonal mentén. A nyílikon használata a vonal folyatásának vagy irányának megjelenítéséhez hasznos.
+    - Sokszögadatok megjelenítésekor a szín alternatívájaként mintázat, például csíkok használhatók. 
+- Egyes vizualizációk, például a hőtérképek, a csemperétegek és a képrétegek nem érhetők el a látássérült felhasználók számára. Néhány szempont:
+    - A képernyőolvasó írja le, hogy a réteg mit jelenít meg, amikor hozzáadja a térképhez. Ha például megjelenik egy időjárási radarcsempe-réteg, akkor a képernyőolvasó mondja ki a "Időjárási radar adatok elvan takarja a térképen" parancsot.
+- Korlátozza az egérmutatót igénylő funkciók mennyiségét. Ezek a funkciók nem érhetők el azon felhasználók számára, akik billentyűzetet vagy érintőképernyős eszközt használnak az alkalmazás sal való interakcióra. Ne feledje, hogy még mindig jó gyakorlat, hogy az interaktív tartalmakhoz, például a kattintható ikonokhoz, hivatkozásokhoz és gombokhoz rámutathat egy rámutatási stílusra.
+- Próbáljon meg az alkalmazásban navigálni a billentyűzet használatával. Győződjön meg arról, hogy a lapok rendezése logikus.
+- Billentyűparancsok létrehozásakor próbálja meg két billentyűre vagy annál kevesebbre korlátozni. 
+
+## <a name="next-steps"></a>További lépések
+
+További információ a webes SDK-modulok kisegítő lehetőségeiről.
 
 > [!div class="nextstepaction"]
-> [Rajzeszközök kisegítő lehetőségei](drawing-tools-interactions-keyboard-shortcuts.md)
+> [A rajzeszközök kisegítő lehetőségei](drawing-tools-interactions-keyboard-shortcuts.md)
 
-Ismerkedjen meg az elérhető alkalmazások Microsoft Learnsal való fejlesztésével:
+További információ a microsoftos tanulási szolgáltatásakadálymentes alkalmazások fejlesztéséről:
 
 > [!div class="nextstepaction"]
-> [A kisegítő lehetőségek a digitális jelvények képzési tervében](https://ready.azurewebsites.net/learning/track/2940)
+> [Kisegítő lehetőségek a műveletben Digitális jelvény tanulási útvonala](https://ready.azurewebsites.net/learning/track/2940)
 
-Tekintse meg ezeket a hasznos kisegítő lehetőségeket biztosító eszközöket:
+Tekintse meg az alábbi hasznos kisegítő lehetőségeket szolgáló eszközöket:
 > [!div class="nextstepaction"]
 > [Akadálymentes alkalmazások fejlesztése](https://developer.microsoft.com/windows/accessible-apps)
 
 > [!div class="nextstepaction"]
-> [A WAI – ARIA áttekintése](https://www.w3.org/WAI/standards-guidelines/aria/)
+> [WAI-ARIA áttekintés](https://www.w3.org/WAI/standards-guidelines/aria/)
 
 > [!div class="nextstepaction"]
-> [Webes kisegítő kiértékelési eszköz (WAVE)](https://wave.webaim.org/)
+> [Webes akadálymentesítést értékelő eszköz (WAVE)](https://wave.webaim.org/)
 
 > [!div class="nextstepaction"]
-> [WebAim szín kontraszt-ellenőrzője](https://webaim.org/resources/contrastchecker/)
+> [WebAim színkontraszt-ellenőrző](https://webaim.org/resources/contrastchecker/)
 
 > [!div class="nextstepaction"]
-> [Nincs Coffee látási szimulátor](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)
+> [Nincs kávélátás-szimulátor](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)

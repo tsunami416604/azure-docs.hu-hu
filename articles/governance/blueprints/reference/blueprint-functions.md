@@ -1,46 +1,46 @@
 ---
-title: Az Azure BluePrints funkciói
-description: Ismerteti azokat a funkciókat, amelyek az Azure-tervrajzok és-hozzárendelések tervrajzi összetevőihez használhatók.
+title: Az Azure Blueprints függvényei
+description: Ismerteti a rendelkezésre álló funkciók at blueprint összetevők az Azure Blueprints definíciók és hozzárendelések.
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280676"
 ---
-# <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
+# <a name="functions-for-use-with-azure-blueprints"></a>Az Azure Blueprints-szel használható funkciók
 
-Az Azure-tervrajzok olyan funkciókat biztosítanak, amelyek a tervrajzok meghatározását dinamikusabban teszik lehetővé. Ezek a függvények tervezet-definíciókkal és tervrajz-összetevőkkel használhatók. A Resource Manager-sablonok összetevője támogatja a Resource Manager függvények teljes használatát, továbbá a terv paraméterén keresztül dinamikus érték beszerzését is lehetővé teszi.
+Az Azure Blueprints funkciókat biztosít, amelyek dinamikusabbá teszik a tervezetdefiníciót. Ezek a függvények tervdefiníciók és tervezetösszetevők használatával használhatók. A Resource Manager sablon műtermék támogatja a teljes körű erőforrás-kezelő ifüggvények mellett a dinamikus érték egy tervezet paraméteren keresztül.
 
-A következő függvények támogatottak:
+A következő funkciók támogatottak:
 
-- [leletek](#artifacts)
-- [concat](#concat)
-- [paraméterek](#parameters)
-- [resourceGroup](#resourcegroup)
-- [resourceGroups](#resourcegroups)
+- [Leletek](#artifacts)
+- [Concat](#concat)
+- [Paraméterek](#parameters)
+- [erőforrásCsoport](#resourcegroup)
+- [erőforráscsoportok](#resourcegroups)
 - [előfizetést](#subscription)
 
-## <a name="artifacts"></a>artifacts
+## <a name="artifacts"></a>Leletek
 
 `artifacts(artifactName)`
 
-Egy olyan objektumot ad vissza, amely az adott tervrajz-összetevők kimenetével van feltöltve.
+A tervezetösszetevő-összetevők kimenetével feltöltött tulajdonságok objektumát adja vissza.
 
 > [!NOTE]
-> A `artifacts()` függvény nem használható Resource Manager-sablonon belülről. A függvény csak a Blueprint definition JSON-ban vagy az összetevő JSON-ban használható, amikor a tervezetet Azure PowerShell vagy REST API a [tervrajzok](https://github.com/Azure/azure-blueprints/blob/master/README.md)részeként.
+> A `artifacts()` függvény nem használható az Erőforrás-kezelő sablonon belülről. A függvény csak a blueprint definition JSON vagy a műtermék JSON a tervezet kezelése során az Azure PowerShell vagy rest API-t a [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md)részeként.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| artifactName |Igen |sztring |Egy tervrajz-összetevő neve. |
+| műtermékneve |Igen |sztring |Egy tervrajz-lelet neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A kimeneti tulajdonságok egy objektuma. A **kimenetek** tulajdonságai függnek a hivatkozott tervi összetevő típusától. Az összes típus formátuma a következő:
+Kimeneti tulajdonságok objektuma. A **kimeneti** tulajdonságok a hivatkozott tervezetösszetevő típusától függenek. Minden típus a következő formátumot követi:
 
 ```json
 {
@@ -48,7 +48,7 @@ A kimeneti tulajdonságok egy objektuma. A **kimenetek** tulajdonságai függnek
 }
 ```
 
-#### <a name="policy-assignment-artifact"></a>Házirend-hozzárendelési összetevő
+#### <a name="policy-assignment-artifact"></a>Házirend-hozzárendelés im2-es terméke
 
 ```json
 {
@@ -60,11 +60,11 @@ A kimeneti tulajdonságok egy objektuma. A **kimenetek** tulajdonságai függnek
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Resource Manager-sablon összetevője
+#### <a name="resource-manager-template-artifact"></a>Erőforrás-kezelő sablonmű
 
-A visszaadott objektum **kimenet** tulajdonságai a Resource Manager-sablonban vannak definiálva, és a központi telepítés visszaadja őket.
+A visszaadott objektum **kimeneti** tulajdonságai az Erőforrás-kezelő sablonban vannak definiálva, és a központi telepítés adja vissza.
 
-#### <a name="role-assignment-artifact"></a>Szerepkör-hozzárendelési összetevő
+#### <a name="role-assignment-artifact"></a>Szerepkör-hozzárendelési műtermék
 
 ```json
 {
@@ -78,7 +78,7 @@ A visszaadott objektum **kimenet** tulajdonságai a Resource Manager-sablonban v
 
 ### <a name="example"></a>Példa
 
-Egy Resource Manager-sablon, amely a következő minta kimeneti tulajdonságot tartalmazó _MYTEMPLATEARTIFACT_ azonosítóval rendelkezik:
+Erőforrás-kezelő sablonmű az azonosító _sajító desåit tartalmazó myTemplateArtifact_ azonosítóval, amely a következő minta kimeneti tulajdonságot tartalmazza:
 
 ```json
 {
@@ -104,37 +104,37 @@ Egy Resource Manager-sablon, amely a következő minta kimeneti tulajdonságot t
 }
 ```
 
-Néhány példa az adatok a _myTemplateArtifact_ mintából való beolvasására:
+Néhány példa a _myTemplateArtifact_ mintából származó adatok beolvasására:
 
 | Kifejezés | Típus | Érték |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["első", "Second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Sztring | első |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | Sztring | "saját karakterlánc értéke" |
-|`[artifacts("myTemplateArtifact").outputs.myObject]` | Objektum | {"myproperty": "saját érték", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Sztring | "my value" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True (Igaz) |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["első", "második"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Sztring | "első" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | Sztring | "a karakterlánc-értékem" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Objektum | { "myproperty": "az én érték", "anotherProperty": igaz } |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Sztring | "az értékem" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logikai | True (Igaz) |
 
-## <a name="concat"></a>concat
+## <a name="concat"></a>Concat
 
 `concat(string1, string2, string3, ...)`
 
-Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakterláncot.
+Több karakterlánc-értéket egyesít, és az összefont karakterláncot adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| string1 |Igen |sztring |Az Összefűzés első értéke. |
-| További argumentumok |Nem |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
+| karakterlánc1 |Igen |sztring |Az összefűzés első értéke. |
+| további argumentumok |Nem |sztring |További értékek egymás után egymás után az összefűzéshez |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-Összefűzött értékek karakterlánca.
+Összefont értékek sorozata.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől, hogy csak karakterláncokkal működjön.
+Az Azure Blueprint függvény abban különbözik az Azure Resource Manager sablonfüggvénytől, hogy csak karakterláncokkal működik.
 
 ### <a name="example"></a>Példa
 
@@ -144,25 +144,25 @@ A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvényt�
 
 `parameters(parameterName)`
 
-Egy terv paramétereinek értékét adja vissza. A megadott paraméter nevét meg kell határozni a terv definíciójában vagy a tervrajz-összetevőkben.
+Egy tervezetparaméter-értéket ad eredményül. A megadott paraméternevet meg kell határozni a tervezet definíciójában vagy a tervezet összetevőiben.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
+| paraméternév |Igen |sztring |A visszaadandó paraméter neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A megadott terv vagy tervrajz-összetevő paraméterének értéke.
+A megadott tervrajz vagy tervezetösszetevő paraméter értéke.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől, hogy csak a terv paramétereivel működik.
+Az Azure Blueprint függvény abban különbözik az Azure Resource Manager sablonfüggvénytől, hogy csak tervezetparaméterekkel működik.
 
 ### <a name="example"></a>Példa
 
-Adja meg a _principalIds_ paramétert a terv definíciójában:
+_Paraméter-rendszerazonosítók definiálása_ a tervezet definíciójában:
 
 ```json
 {
@@ -184,7 +184,7 @@ Adja meg a _principalIds_ paramétert a terv definíciójában:
 }
 ```
 
-Ezután használja a _principalIds_ argumentumként `parameters()` egy tervrajz-összetevőben:
+Ezután használja _a principalIds-t_ egy tervrajz-műtárgy argumentumaként: `parameters()`
 
 ```json
 {
@@ -203,11 +203,11 @@ Ezután használja a _principalIds_ argumentumként `parameters()` egy tervrajz-
 
 `resourceGroup()`
 
-Az aktuális erőforráscsoport képviselő objektumot adja vissza.
+Az aktuális erőforráscsoportot reprezentativó objektumot adja vissza.
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A visszaadott objektum a következő formátumban kell megadni:
+A visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -218,13 +218,13 @@ A visszaadott objektum a következő formátumban kell megadni:
 
 ### <a name="remarks"></a>Megjegyzések
 
-A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől. Az `resourceGroup()` függvény nem használható előfizetési szintű összetevőben vagy a terv definíciójában. Csak olyan tervrajz-összetevőkben használható, amelyek egy erőforráscsoport-összetevő részét képezik.
+Az Azure Blueprint függvény eltér az Azure Resource Manager sablon függvény. A `resourceGroup()` függvény nem használható előfizetési szintű összetevővagy a tervezet definíciójában. Csak olyan tervrajzok összetevőiben használható, amelyek egy erőforráscsoport-összetevő részét képezik.
 
-A `resourceGroup()` függvény gyakori használata az erőforrásoknak az erőforráscsoport-összetevővel megegyező helyen történő létrehozása.
+A függvény gyakori `resourceGroup()` használata, hogy erőforrásokat hozzon létre ugyanazon a helyen, mint az erőforráscsoport-összetevő.
 
 ### <a name="example"></a>Példa
 
-Ha az erőforráscsoport helyét szeretné használni a terv definíciójában vagy a hozzárendelés során, akkor egy másik összetevő helyeként deklaráljon egy erőforráscsoport-helyőrző objektumot a terv definíciójában. Ebben a példában a _NetworkingPlaceholder_ az erőforráscsoport helyőrzőjának neve.
+Az erőforráscsoport helyének használatához, amelyet a tervezetdefinícióban vagy a hozzárendelés során egy másik összetevő helyeként állít be, deklaráljon egy erőforráscsoport helyőrző objektumát a tervezetdefinícióban. Ebben a példában _a NetworkingPlaceholder_ az erőforráscsoport helyőrzőjének neve.
 
 ```json
 {
@@ -240,7 +240,7 @@ Ha az erőforráscsoport helyét szeretné használni a terv definíciójában v
 }
 ```
 
-Ezután használja a `resourceGroup()` függvényt egy olyan tervrajz-összetevő kontextusában, amely egy erőforráscsoport-helyőrző objektumot céloz meg. Ebben a példában a sablon-összetevőt telepíti a rendszer a _NetworkingPlaceholder_ erőforráscsoporthoz, és megadja a _resourceLocation_ dinamikusan kitöltött paramétert a sablonhoz a _NetworkingPlaceholder_ erőforráscsoport helyével. A _NetworkingPlaceholder_ erőforráscsoport helye statikusan definiálva lett a terv definíciójában, vagy dinamikusan definiálva lett a hozzárendelés során. Mindkét esetben a sablon összetevő az információ paraméterként van megadva, és a használatával telepíti az erőforrásokat a megfelelő helyre.
+Ezután `resourceGroup()` használja a függvényt egy tervtervezet-összetevő környezetében, amely egy erőforráscsoport helyőrző objektumát célozza. Ebben a példában a sablon összetevő telepítve van a _NetworkingPlaceholder_ erőforráscsoportba, és biztosítja a _paraméter resourceLocation_ dinamikusan feltöltve a _NetworkingPlace erőforráscsoport_ helyét a sablonhoz. A _NetworkingPlaceholder_ erőforráscsoport helyét statikusan meghatározhatták a tervezetdefinícióban, vagy dinamikusan definiálták a hozzárendelés során. Mindkét esetben a sablon összetevő paraméterként szolgál, és az erőforrások megfelelő helyre történő üzembe helyezésére használja.
 
 ```json
 {
@@ -261,21 +261,21 @@ Ezután használja a `resourceGroup()` függvényt egy olyan tervrajz-összetev�
 }
 ```
 
-## <a name="resourcegroups"></a>resourceGroups
+## <a name="resourcegroups"></a>erőforráscsoportok
 
 `resourceGroups(placeholderName)`
 
-Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt jelképezi. A `resourceGroup()`tól eltérően, amely az összetevő környezetét igényli, ez a függvény egy adott erőforráscsoport-helyőrző tulajdonságainak beolvasására szolgál, ha az adott erőforráscsoport kontextusában nem.
+A megadott erőforráscsoport-összetevőt reprezentativó objektumot adja vissza. A `resourceGroup()`, amely a műtermék környezetét igényli, ez a függvény egy adott erőforráscsoport helyőrzőjének tulajdonságainak leéséhez használatos, ha nem az adott erőforráscsoport környezetében.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Igen |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
+| helyőrzőNeve |Igen |sztring |A visszaadandó erőforráscsoport-összetevő helyőrző neve. |
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A visszaadott objektum a következő formátumban kell megadni:
+A visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -286,7 +286,7 @@ A visszaadott objektum a következő formátumban kell megadni:
 
 ### <a name="example"></a>Példa
 
-Ha az erőforráscsoport helyét szeretné használni a terv definíciójában vagy a hozzárendelés során, akkor egy másik összetevő helyeként deklaráljon egy erőforráscsoport-helyőrző objektumot a terv definíciójában. Ebben a példában a _NetworkingPlaceholder_ az erőforráscsoport helyőrzőjának neve.
+Az erőforráscsoport helyének használatához, amelyet a tervezetdefinícióban vagy a hozzárendelés során egy másik összetevő helyeként állít be, deklaráljon egy erőforráscsoport helyőrző objektumát a tervezetdefinícióban. Ebben a példában _a NetworkingPlaceholder_ az erőforráscsoport helyőrzőjének neve.
 
 ```json
 {
@@ -302,7 +302,7 @@ Ha az erőforráscsoport helyét szeretné használni a terv definíciójában v
 }
 ```
 
-Ezután használja a `resourceGroups()` függvényt bármely tervrajzi összetevő környezetében, hogy az erőforráscsoport helyőrző objektumra hivatkozzon. Ebben a példában a sablon összetevőt a _NetworkingPlaceholder_ -erőforráscsoport kívül helyezi üzembe, és a _artifactLocation_ dinamikusan kitöltött paramétert ad a sablonhoz a _NetworkingPlaceholder_ erőforráscsoport helyével. A _NetworkingPlaceholder_ erőforráscsoport helye statikusan definiálva lett a terv definíciójában, vagy dinamikusan definiálva lett a hozzárendelés során. Mindkét esetben a sablon összetevő az információ paraméterként van megadva, és a használatával telepíti az erőforrásokat a megfelelő helyre.
+Ezután `resourceGroups()` használja a függvényt bármely tervezet összetevő környezetében az erőforráscsoport helyőrző objektumra való hivatkozás leszámításához. Ebben a példában a sablon összetevő a _NetworkingPlaceholder_ erőforráscsoporton kívül van telepítve, és a sablonhoz dinamikusan feltöltve biztosítja a _paraméterartifactLocation_ dinamikusan feltöltve a _NetworkingPlace erőforráscsoport_ helyével. A _NetworkingPlaceholder_ erőforráscsoport helyét statikusan meghatározhatták a tervezetdefinícióban, vagy dinamikusan definiálták a hozzárendelés során. Mindkét esetben a sablon összetevő paraméterként szolgál, és az erőforrások megfelelő helyre történő üzembe helyezésére használja.
 
 ```json
 {
@@ -327,11 +327,11 @@ Ezután használja a `resourceGroups()` függvényt bármely tervrajzi összetev
 
 `subscription()`
 
-Az aktuális terv-hozzárendelésre vonatkozó előfizetés részleteit adja vissza.
+Az aktuális tervezet-hozzárendelés előfizetésének részleteit adja vissza.
 
-### <a name="return-value"></a>Vrácená hodnota
+### <a name="return-value"></a>Visszatérítési érték
 
-A visszaadott objektum a következő formátumban kell megadni:
+A visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -344,7 +344,7 @@ A visszaadott objektum a következő formátumban kell megadni:
 
 ### <a name="example"></a>Példa
 
-Az előfizetés megjelenítendő neve és a `concat()` függvény használatával hozzon létre egy elnevezési konvenciót, amely a _resourcename_ paraméterként lett átadva.
+Használja az előfizetés megjelenítendő `concat()` nevét és a függvényt, hogy hozzon létre egy elnevezési konvenció tãing _erőforrásnév_ paraméterként a sablon műtermék.
 
 ```json
 {
@@ -365,11 +365,11 @@ Az előfizetés megjelenítendő neve és a `concat()` függvény használatáva
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
-- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
-- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
-- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
-- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).
+- További információ a [tervterv életciklusáról.](../concepts/lifecycle.md)
+- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](../concepts/parameters.md)használni.
+- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](../concepts/sequencing-order.md)
+- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](../concepts/resource-locking.md)
+- További információ a [meglévő hozzárendelések frissítéséhez.](../how-to/update-existing-assignments.md)
+- Az [általános hibaelhárítással](../troubleshoot/general.md)kapcsolatos tervtervezet ekhozzárendelése során fellépő problémák megoldása.

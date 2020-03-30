@@ -1,6 +1,6 @@
 ---
-title: Bináris formátum a Azure Data Factoryban
-description: Ez a témakör azt ismerteti, hogyan kezelhető a bináris formátum a Azure Data Factoryban.
+title: Bináris formátum az Azure Data Factoryban
+description: Ez a témakör ismerteti, hogyan kell kezelni a bináris formátum az Azure Data Factory.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,34 +10,34 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
 ms.openlocfilehash: 8ebb4f0d1a06a7bf29dc46cd696b6acfd2527095
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260695"
 ---
-# <a name="binary-format-in-azure-data-factory"></a>Bináris formátum a Azure Data Factoryban
+# <a name="binary-format-in-azure-data-factory"></a>Bináris formátum az Azure Data Factoryban
 
-Az alábbi összekötők támogatják a bináris formátumot: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).
+A bináris formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), Azure Data Lake [Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), File [System](connector-file-system.md), [FTP](connector-ftp.md), Google [Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)és [SFTP](connector-sftp.md).
 
-A bináris adatkészletet a [másolási tevékenység](copy-activity-overview.md), a [GetMetaData tevékenység](control-flow-get-metadata-activity.md)vagy a [Törlés tevékenység](delete-activity.md)használatával lehet használni. Ha bináris adatkészletet használ, az ADF nem elemzi a fájl tartalmát, de nem kezeli azt. 
+A bináris adatkészletet használhatja a [Másolás tevékenységben](copy-activity-overview.md), a [GetMetadata tevékenységben](control-flow-get-metadata-activity.md)vagy a [Törlés tevékenységben.](delete-activity.md) Bináris adatkészlet használata esetén az ADF nem elemzi a fájltartalmat, hanem úgy kezeli, ahogy van. 
 
 >[!NOTE]
->Ha bináris adatkészletet használ a másolási tevékenységben, csak bináris adatkészletből másolhatja a bináris adatkészletet.
+>Bináris adatkészlet másolási tevékenységben való használataesetén csak bináris adatkészletből másolhat bináris adatkészletet.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a bináris adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek](concepts-datasets-linked-services.md) című cikkben olvashatja. Ez a szakasz a bináris adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Az adatkészlet Type tulajdonságát **bináris**értékre kell beállítani. | Igen      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz a saját hely típusa és a `location`alatt támogatott tulajdonságok tartozik. **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
-| compression | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | Nem |
-| type | A bináris fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2**, a **gzip**, a **deflate**és a **ZipDeflate**. a fájl mentésekor használatos.<br>Vegye figyelembe, hogy ha másolási tevékenységet használ a ZipDeflate fájl (ok) kibontásához és a fájl alapú fogadó adattárba való íráshoz, a fájlok a következő mappába lesznek kibontva: `<path specified in dataset>/<folder named as source zip file>/`. | Nem       |
-| szint | A tömörítési arány. Akkor alkalmazza, ha az adatkészletet a másolási tevékenység fogadójában használják.<br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek**.<br>- **leggyorsabb:** a tömörítési műveletnek a lehető leggyorsabbnak kell lennie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **optimális**: a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör. | Nem       |
+| type             | Az adatkészlet típustulajdonságának Bináris tulajdonságra kell **állítania.** | Igen      |
+| location         | A fájl(ok) helybeállításai. Minden fájlalapú összekötő saját helytípussal és `location`támogatott tulajdonságokkal rendelkezik a csoportban. **További részletek az összekötő -> adatkészlet tulajdonságai szakaszban.** | Igen      |
+| tömörítés | Tulajdonságok csoportja a fájltömörítés konfigurálásához. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést/kicsomagolást szeretne végezni. | Nem |
+| type | A bináris fájlok olvasására/írására használt tömörítési kodek. <br>Megengedett **értékek: bzip2,** **gzip,** **deflate,** **ZipDeflate**. a fájl mentésekor.<br>Megjegyzés: Ha másolási tevékenységet használ a ZipDeflate fájl(ok) kibontásához és a fájlalapú `<path specified in dataset>/<folder named as source zip file>/`fogadó adattárba való íráshoz, a fájlok kibontása a következő mappába kerül: . | Nem       |
+| szint | A tömörítési arány. Alkalmazza, ha az adatkészlet et használja a Másolás tevékenység fogadó.<br>Az engedélyezett értékek **az Optimális** vagy **a Leggyorsabb**.<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban el kell végeznie, még akkor is, ha az eredményül kapott fájl nincs optimálisan tömörítve.<br>- **Optimális**: A tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet hosszabb időt vesz igénybe. További információt a [Tömörítési szint témakörben](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) talál. | Nem       |
 
-Az alábbi példa az Azure Blob Storage bináris adatkészletét mutatja be:
+Az alábbiakban egy példa a bináris adatkészlet az Azure Blob Storage:
 
 ```json
 {
@@ -64,31 +64,31 @@ Az alábbi példa az Azure Blob Storage bináris adatkészletét mutatja be:
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a bináris forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a bináris forrás és fogadó által támogatott tulajdonságok listáját tartalmazza.
 
 >[!NOTE]
->Ha bináris adatkészletet használ a másolási tevékenységben, csak bináris adatkészletből másolhatja a bináris adatkészletet.
+>Bináris adatkészlet másolási tevékenységben való használataesetén csak bináris adatkészletből másolhat bináris adatkészletet.
 
 ### <a name="binary-as-source"></a>Bináris forrásként
 
-A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdonságok támogatottak.
+A következő tulajdonságokat a másolási tevékenység *** \*forrása\* *** szakasz támogatja.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrásának Type tulajdonságát **BinarySource**értékre kell állítani. | Igen      |
-| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. Minden fájl alapú összekötő rendelkezik a saját támogatott olvasási beállításokkal a `storeSettings`alatt. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| type          | A másolási tevékenységforrás típustulajdonságának **BinarySource (BinarySource**) típusú tulajdonságát kell állítani. | Igen      |
+| storeSettings (tárolóbeállítások) | Tulajdonságok csoportja az adattárból történő adatok olvasásáról. Minden fájlalapú összekötő saját támogatott olvasási beállításokkal rendelkezik a területen. `storeSettings` **További részletek az összekötő cikkében -> a tevékenység tulajdonságainak másolása szakaszban.** | Nem       |
 
-### <a name="binary-as-sink"></a>Bináris fogadóként
+### <a name="binary-as-sink"></a>Bináris mint fogadó
 
-A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdonságok támogatottak.
+A következő tulajdonságokat a *** \*\* *** másolási tevékenység fogadó szakasza támogatja.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrásának Type tulajdonságát **BinarySink**értékre kell állítani. | Igen      |
-| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. Minden fájl alapú összekötő rendelkezik a saját támogatott írási beállításaival a `storeSettings`alatt. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| type          | A másolási tevékenységforrás típustulajdonságának **BinarySink (BinarySink ) (BinarySink**) típusú tulajdonságának kell lennie. | Igen      |
+| storeSettings (tárolóbeállítások) | Tulajdonságok csoportja az adatok adattárba való írásának módjáról. Minden fájlalapú összekötő saját támogatott írási beállításokkal rendelkezik a területen. `storeSettings` **További részletek az összekötő cikkében -> a tevékenység tulajdonságainak másolása szakaszban.** | Nem       |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Tevékenység másolása – áttekintés](copy-activity-overview.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)

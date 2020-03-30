@@ -1,29 +1,29 @@
 ---
-title: A szabályzat-hozzárendelési struktúra részletei
-description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
+title: A házirend-hozzárendelési struktúra részletei
+description: Ismerteti az Azure Policy által használt szabályzat-hozzárendelés-definíciót, amely a szabályzatdefiníciókat és -paramétereket kiértékelésre szolgáló erőforrásokkal kapcsolja össze.
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265297"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
-A szabályzat-hozzárendeléseket a Azure Policy használja annak meghatározásához, hogy mely erőforrások legyenek hozzárendelve házirendekhez vagy kezdeményezésekhez. A szabályzat-hozzárendelés meghatározhatja az adott erőforráscsoport paramétereinek értékeit a hozzárendelés időpontjában, így lehetőség van arra, hogy újrahasznosítsa azokat a házirend-definíciókat, amelyek a különböző megfelelőségi igényeknek megfelelő erőforrás-tulajdonságokat kezelik.
+A szabályzat-hozzárendeléseket az Azure Policy használja annak meghatározására, hogy mely erőforrások mely szabályzatokat vagy kezdeményezéseket rendelik hozzá. A házirend-hozzárendelés meghatározhatja az adott erőforráscsoport paramétereinek értékeit a hozzárendelés időpontjában, lehetővé téve a házirend-definíciók újbóli felhasználását, amelyek ugyanazokat az erőforrástulajdonságokat elégítik ki, és különböző megfelelőségi igényeket.
 
-A JSON használatával szabályzat-hozzárendelést hozhat létre. A szabályzat-hozzárendelés a következő elemeket tartalmazza:
+A JSON használatával házirend-hozzárendelést hozhat létre. A házirend-hozzárendelés a következő elemeket tartalmazza:
 
-- Megjelenített név
+- megjelenítendő név
 - leírás
 - metaadatok
 - kényszerítési mód
 - házirend-definíció
 - paraméterek
 
-Például a következő JSON egy szabályzat-hozzárendelést mutat be _DoNotEnforce_ módban dinamikus paraméterekkel:
+A következő JSON például egy házirend-hozzárendelést jelenít meg _DoNotEnforce_ módban dinamikus paraméterekkel:
 
 ```json
 {
@@ -47,34 +47,34 @@ Például a következő JSON egy szabályzat-hozzárendelést mutat be _DoNotEnf
 }
 ```
 
-Az összes Azure Policy minta [Azure Policy minta](../samples/index.md).
+Az Azure Policy-minták az [Azure Policy-mintákban](../samples/index.md)találhatók.
 
 ## <a name="display-name-and-description"></a>Megjelenítendő név és leírás
 
-A **DisplayName** és a **Leírás** használatával azonosíthatja a szabályzat-hozzárendelést, és megadhatja a környezetét az adott erőforrásokkal való használathoz. a **DisplayName** maximális hossza _128_ karakter, és a **Leírás** legfeljebb _512_ karakter hosszúságú lehet.
+A **displayName** és a **description** segítségével azonosíthatja a házirend-hozzárendelést, és kontextust biztosíthatja annak adott erőforráskészlettel való használatához. **A displayName** maximális hossza _128_ karakter, **a leírása** pedig _legfeljebb 512_ karakter.
 
 ## <a name="enforcement-mode"></a>Kényszerítési mód
 
-A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, hogy a házirend érvénybe léptetése vagy az [Azure-műveletnapló](../../../azure-monitor/platform/platform-logs-overview.md)bejegyzéseinek elindítása nélkül teszteljék a meglévő erőforrásokra vonatkozó szabályzatok eredményét. Ezt a forgatókönyvet általában "What If"-ként emlegetik, és a biztonságos üzembe helyezési gyakorlatokhoz igazodik. a **enforcementMode** eltér a [letiltott](./effects.md#disabled) effektustól, mivel ennek hatására az erőforrás-kiértékelés egyáltalán nem történik meg.
+A **enforcementMode** tulajdonság lehetővé teszi az ügyfelek számára, hogy teszteljék a szabályzat eredményét a meglévő erőforrásokon anélkül, hogy kezdeményeznék a szabályzateffektust, vagy bejegyzéseket kezdeményezne az [Azure-tevékenységnaplóban.](../../../azure-monitor/platform/platform-logs-overview.md) Ezt a forgatókönyvet általában "Mi lenne, ha" néven nevezik, és igazodik a biztonságos telepítési eljárásokhoz. **a enforcementMode** különbözik a [Letiltott](./effects.md#disabled) hatástól, mivel ez a hatás megakadályozza az erőforrások kiértékelését.
 
-Ennek a tulajdonságnak a következő értékei vannak:
+Ez a tulajdonság a következő értékeket tartalmaz:
 
-|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
+|Mód |JSON-érték |Típus |Kézi javítás |Tevékenységnapló-bejegyzés |Leírás |
 |-|-|-|-|-|-|
-|Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
-|Letiltva |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
+|Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend-hatás az erőforrás létrehozása vagy frissítése során lép érvénybe. |
+|Letiltva |DoNotEnforce |sztring |Igen |Nem | A házirend-hatás nem kényszeríti ki az erőforrás létrehozása vagy frissítése során. |
 
-Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definícióban, a rendszer az _alapértelmezett_ értéket használja. A [szervizelési feladatok](../how-to/remediate-resources.md) a [deployIfNotExists](./effects.md#deployifnotexists) házirendek esetében is elindíthatók, még akkor is, ha a **enforcementMode** beállítása _DoNotEnforce_.
+Ha **a rakateltmód** nincs megadva egy házirend- vagy kezdeményezésdefinícióban, a rendszer az _Alapértelmezett_ értéket használja. [A szervizelési feladatok](../how-to/remediate-resources.md) elindíthatók [az IfNotExists](./effects.md#deployifnotexists) házirendek esetében, még akkor is, ha a **enforcementMode** beállítás _DoNotEnforce_.
 
 ## <a name="policy-definition-id"></a>Házirend-definíció azonosítója
 
-Ebben a mezőben egy házirend-definíció vagy egy kezdeményezési definíció teljes elérési útjának kell szerepelnie.
-`policyDefinitionId` karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./definition-structure.md#initiatives) használjon.
+Ennek a mezőnek a házirend-definíció vagy a kezdeményezés definíciójának teljes elérési útjának kell lennie.
+`policyDefinitionId`karakterlánc, nem tömb. Javasoljuk, hogy ha több szabályzat gyakran vannak összerendelve, használjon [helyette egy kezdeményezést.](./definition-structure.md#initiatives)
 
 ## <a name="parameters"></a>Paraméterek
 
-A szabályzat-hozzárendelés ezen szegmense megadja a szabályzat- [definícióban vagy a kezdeményezési definícióban](./definition-structure.md#parameters)definiált paraméterek értékeit.
-Ez a kialakítás lehetővé teszi egy házirend vagy kezdeményezési definíció más erőforrásokkal való felhasználását, de különböző üzleti értékeket vagy eredményeket kereshet.
+A házirend-hozzárendelés ezen szegmense adja meg a [házirend-definícióban vagy kezdeményezésdefinícióban](./definition-structure.md#parameters)meghatározott paraméterek értékeit .
+Ez a kialakítás lehetővé teszi a különböző erőforrásokkal rendelkező házirend- vagy kezdeményezésdefiníciók újbóli felhasználását, de a különböző üzleti értékek vagy eredmények ellenőrzését.
 
 ```json
 "parameters": {
@@ -87,12 +87,12 @@ Ez a kialakítás lehetővé teszi egy házirend vagy kezdeményezési definíci
 }
 ```
 
-Ebben a példában a házirend-definícióban korábban definiált paraméterek `prefix` és `suffix`. Ez az adott házirend-hozzárendelési csoport a **depta** és a `suffix` – **LC**értékre `prefix`. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
+Ebben a példában a házirend-definícióban korábban meghatározott paraméterek a `prefix` és `suffix`a. Ez a konkrét `prefix` házirend-hozzárendelés `suffix` a **DeptA-ra** és a **-LC-re**van beállítva. Ugyanaz a házirend-definíció egy másik részleg paraméterkészletével újrafelhasználható, csökkentve a házirend-definíciók párhuzamosságát és összetettségét, miközben rugalmasságot biztosít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
-- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
-- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/get-compliance-data.md).
-- Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
-- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).
+- További információ a [házirend-definíciós struktúráról.](./definition-structure.md)
+- Ismerje meg, hogyan hozhat [létre programozott házirendeket.](../how-to/programmatically-create.md)
+- További információ a [megfelelőségi adatok beszedéséről.](../how-to/get-compliance-data.md)
+- További információ a [nem megfelelő erőforrások kiújulásáról.](../how-to/remediate-resources.md)
+- Tekintse át, hogy mi a felügyeleti csoport az [Erőforrások rendszerezése az Azure felügyeleti csoportokkal.](../../management-groups/overview.md)

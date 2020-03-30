@@ -1,5 +1,6 @@
 ---
-title: Azure Cloud Services szerepkör-séma | Microsoft Docs
+title: Azure Cloud Services szerepkörséma | Microsoft dokumentumok
+description: A szolgáltatáskonfigurációs fájl szerepkör-eleme határozza meg, hogy hány szerepkörpéldányt kell telepíteni az egyes szerepkörökhöz, konfigurációs értékekhez és tanúsítványujjlenyomatokhoz.
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -8,21 +9,21 @@ ms.topic: reference
 caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 0f0e79b462726b1aa6a953a4b8c92334d6b16492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449090"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528421"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Az Azure Cloud Services konfigurációjának szerepkör-sémája
+# <a name="azure-cloud-services-config-role-schema"></a>Az Azure Cloud Services konfigurációs szerepkörsémája
 
-A konfigurációs fájl `Role` eleme határozza meg a szolgáltatás egyes szerepköreihez telepítendő szerepkör-példányok számát, a konfigurációs beállítások értékeit, valamint a szerepkörhöz társított tanúsítványok ujjlenyomatai megfelelnek.
+A `Role` konfigurációs fájl eleme határozza meg a szerepkörpéldányok számát a szolgáltatás egyes szerepköreihez, a konfigurációs beállítások értékeit és a szerepkörhöz társított tanúsítványok ujjlenyomatait.
 
-További információ az Azure szolgáltatás konfigurációs sémájáról: [Cloud Service (klasszikus) konfigurációs séma](schema-cscfg-file.md). Az Azure szolgáltatás definíciós sémájával kapcsolatos további információkért lásd: [Cloud Service (klasszikus) definíciós séma](schema-csdef-file.md).
+Az Azure Service konfigurációs sémájáról további információt a [Felhőszolgáltatás (klasszikus) konfigurációs séma című témakörben talál.](schema-cscfg-file.md) Az Azure Service Definition Sémáról további információt a [Cloud Service (klasszikus) definíciós séma című témakörben talál.](schema-csdef-file.md)
 
-##  <a name="Role"></a>Szerepkör elem
-Az alábbi példa a `Role` elemet és annak alárendelt elemeit mutatja be.
+##  <a name="role-element"></a><a name="Role"></a>Szerepelem
+A következő példa `Role` az elemet és annak gyermekelemeit mutatja be.
 
 ```xml 
 <ServiceConfiguration>
@@ -38,20 +39,20 @@ Az alábbi példa a `Role` elemet és annak alárendelt elemeit mutatja be.
 </ServiceConfiguration>
 ```
 
-Az alábbi táblázat a `Role` elem attribútumait ismerteti.
+Az alábbi táblázat az `Role` elem attribútumait ismerteti.
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-| név   | Kötelező. Megadja a szerepkör nevét. A névnek meg kell egyeznie a szolgáltatás definíciós fájljában szereplő szerepkörhöz megadott névvel.|
-| vmName | Választható. Megadja a virtuális gép DNS-nevét. A névnek 10 karakternél rövidebbnek kell lennie.|
+| név   | Kötelező. Megadja a szerepkör nevét. A névnek meg kell egyeznie a szolgáltatásdefiníciós fájlban szereplő szerepkörhöz megadott névvel.|
+| vmName | Választható. Megadja a virtuális gép DNS-nevét. A névnek legkisebbnek kell lennie.|
 
-Az alábbi táblázat a `Role` elem alárendelt elemeit ismerteti.
+Az alábbi táblázat az `Role` elem gyermekelemeit ismerteti.
 
 | Elem | Leírás |
 | ------- | ----------- |
-| Példányok | Kötelező. A szerepkörhöz telepítendő példányok számát adja meg. A példányok számát a `count` attribútum egész számával határozzák meg.|
-| Beállítás   | Választható. Megadja a beállítás nevét és értékét egy szerepkörhöz tartozó beállítások gyűjteményében. A beállítás nevét a `name` attribútum karakterlánca határozza meg, a beállítás értékét pedig a `value` attribútum karakterlánca határozza meg.|
-| Tanúsítvány | Választható. A szerepkörhöz társítandó szolgáltatás tanúsítványának nevét, ujjlenyomatát és algoritmusát adja meg. A tanúsítvány nevét a `name` attribútum karakterlánca határozza meg. A tanúsítvány ujjlenyomatát olyan hexadecimális számokból álló karakterlánc határozza meg, amely nem tartalmaz szóközt a `thumbprint` attribútumhoz. A hexadecimális számoknak számjegyek és nagybetűs alfanumerikus karakterek használatával kell szerepelniük. A tanúsítvány-algoritmust a `thumbprintAlgorithm` attribútum karakterlánca határozza meg.|
+| példányszám | Kötelező. Megadja a szerepkörhöz telepítandó példányok számát. A példányok számát az `count` attribútum egész száma határozza meg.|
+| Beállítás   | Választható. Megadja a beállítás nevét és értékét egy szerepkör beállításainak gyűjteményében. A beállítás nevét az `name` attribútum karakterlánca határozza meg, a beállítási értéket `value` pedig az attribútum karakterlánca.|
+| Tanúsítvány | Választható. Megadja a szerepkörhöz társítandó szolgáltatástanúsítvány nevét, ujjlenyomatát és algoritmusát. A tanúsítvány nevét az `name` attribútum karakterlánca határozza meg. A tanúsítvány ujjlenyomatát hexadecimális számok sorozata határozza meg, `thumbprint` amelyek nem tartalmaznak szóközt az attribútumhoz. A hexadecimális számokat számjegyek és nagybetűs alfa karakterek használatával kell megjeleníteni. A tanúsítványalgoritmust az `thumbprintAlgorithm` attribútum karakterlánca határozza meg.|
 
 ## <a name="see-also"></a>Lásd még:
-[Cloud Service (klasszikus) konfigurációs séma](schema-cscfg-file.md)
+[Felhőszolgáltatás (klasszikus) konfigurációs séma](schema-cscfg-file.md)

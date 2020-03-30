@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése SAP HANAról Azure Data Factory használatával
-description: Útmutató az adatok SAP HANA Azure Data Factory használatával történő áthelyezéséhez.
+title: Adatok áthelyezése az SAP HANA-ból az Azure Data Factory használatával
+description: Ismerje meg, hogyan helyezheti át az adatokat az SAP HANA-ból az Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,96 +13,96 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265817"
 ---
-# <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Adatok áthelyezése SAP HANAról Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+# <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Adatok áthelyezése az SAP HANA-ból az Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-sap-hana-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-sap-hana.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az SAP HANA Connector v2-ben](../connector-sap-business-warehouse.md)című témakört.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [SAP HANA-összekötőt a V2-ben.](../connector-sap-business-warehouse.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban egy helyszíni SAP HANA adatainak áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok áthelyezése a helyszíni SAP HANA.This article explain how to use the Copy Activity in Azure Data Factory adatok áthelyezése a helyszíni SAP HANA.This article explain how to use the Copy Activity in Azure Data Factory from an-premises SAP HANA. Az [adatmozgatási tevékenységek](data-factory-data-movement-activities.md) cikkre épül, amely általános áttekintést nyújt az adatmozgásról a másolási tevékenységgel.
 
-A helyszíni SAP HANA adattárból bármely támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által mosogatóként támogatott adattárak listáját a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblázatban tekintheti meg. A adatfeldolgozó jelenleg csak az adatok áthelyezését támogatja egy SAP HANAról más adattárakba, de az adatok más adattárakból egy SAP HANAba való áthelyezésére nem.
+Adatokat másolhat egy helyszíni SAP HANA-adattárból bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját a [Támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblában láthatja. A Data Factory jelenleg csak az SAP HANA-ról más adattárolókba történő áthelyezést támogatja, de nem támogatja az adatok más adattárakból az SAP HANA-ba való áthelyezését.
 
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
-Ez az összekötő a SAP HANA adatbázis bármely verzióját támogatja. Támogatja a HANA-adatmodellek (például analitikai és számítási nézetek) és a sor/oszlop táblák adatainak másolását SQL-lekérdezések használatával.
+Ez az összekötő az SAP HANA-adatbázis bármely verzióját támogatja. Támogatja az adatok másolását hana információs modellek (például analitikus és számítási nézetek) és a Sor/oszlop táblák SQL-lekérdezések használatával.
 
-A SAP HANA-példányhoz való kapcsolódás engedélyezéséhez telepítse a következő összetevőket:
-- **Adatkezelés átjáró**: Data Factory a szolgáltatás támogatja a helyszíni adattárakhoz (beleértve a SAP HANA) való csatlakozást adatkezelés átjáró nevű összetevő használatával. Ha többet szeretne megtudni az átjáró beállításáról adatkezelés átjáróról, és részletes útmutatást talál a helyszíni [adattárak közötti adatáthelyezés a felhőalapú adattárba](data-factory-move-data-between-onprem-and-cloud.md) című cikkben olvashat. Az átjáróra akkor is szükség van, ha a SAP HANA egy Azure IaaS virtuális gépen (VM) üzemel. Az átjárót ugyanarra a virtuális gépre telepítheti, mint az adattár vagy egy másik virtuális gép, feltéve, hogy az átjáró csatlakozni tud az adatbázishoz.
-- **SAP HANA ODBC-illesztő** az átjáró számítógépén. Az SAP HANA ODBC-illesztőprogramot az [SAP Software Download Center](https://support.sap.com/swdc)webhelyről töltheti le. Keressen rá a **Windows-ügyfél kulcsszava SAP HANA**. 
+Az SAP HANA-példányhoz való csatlakozás engedélyezéséhez telepítse a következő összetevőket:
+- **Adatkezelési átjáró:** Data Factory szolgáltatás támogatja a helyszíni adattárakhoz (beleértve az SAP HANA-t is) az Adatkezelési átjáró nevű összetevő használatával való csatlakozást. Az Adatkezelési átjáróról és az átjáró beállításának lépésenkénti útmutatójáról az [Adatok áthelyezése a helyszíni adattár között a felhőbeli adattárba](data-factory-move-data-between-onprem-and-cloud.md) című cikk című témakörben olvashat. Átjáró akkor is szükség van, ha az SAP HANA üzemelteti az Azure IaaS virtuális gép (VM). Az átjáró t az adattárban lévő ugyanazon virtuális gépre vagy egy másik virtuális gépre telepítheti, amíg az átjáró csatlakozhat az adatbázishoz.
+- **SAP HANA ODBC illesztőprogram** az átjárógépen. Az SAP HANA ODBC-illesztőprogramot az [SAP Software Download Center központból](https://support.sap.com/swdc) töltheti le. Keresés az **SAP HANA CLIENT for Windows**kulcsszóval. 
 
-## <a name="getting-started"></a>Bevezetés
-Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni SAP HANA-adattárból származó adatokkal. 
+## <a name="getting-started"></a>Első lépések
+Létrehozhat egy folyamatot egy másolási tevékenységgel, amely különböző eszközök/API-k használatával áthelyezi az adatokat egy helyszíni SAP HANA-adattárból. 
 
-- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
-- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Olvassa el [az oktatóanyagot: Folyamat létrehozása a Másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakörben egy gyors útmutatót a folyamat másolása az adatok másolása varázslóval történő létrehozásához. 
+- A következő eszközökkel is létrehozhat egy folyamatot: **Visual Studio,** **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**és REST **API.** Lásd: [Tevékenység-oktatóanyag másolása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című témakörben részletes útmutatást talál egy másolási tevékenységgel rendelkező folyamat létrehozásához. 
 
-Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépéseket hajthatja végre egy olyan folyamat létrehozásához, amely adatokat helyezi át a forrásadattárból a fogadó adattárába:
 
-1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
-2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. 
-3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges. 
+1. **Összekapcsolt szolgáltatások** létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására.
+2. **Adatkészletek** létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására. 
+3. Hozzon létre egy **folyamatot** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, egy adatkészletet pedig kimenetként vesz fel. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  A helyszíni SAP HANAokból származó adatok másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében lásd a jelen cikk JSON- [példa: adatok másolása a SAP HANAról az Azure blobba](#json-example-copy-data-from-sap-hana-to-azure-blob) című szakaszát. 
+A varázsló használatakor a Data Factory entitásokhoz (csatolt szolgáltatások, adatkészletek és a folyamat) json-definíciók automatikusan létrejönnek. Eszközök/API-k használatakor (a .NET API kivételével) ezeket a Data Factory entitásokat a JSON formátum használatával definiálhatja.  A minta JSON-definíciók a Data Factory entitások, amelyek adatok másolására egy helyszíni SAP HANA, lásd: [JSON példa: Adatok másolása az SAP HANA az Azure Blob](#json-example-copy-data-from-sap-hana-to-azure-blob) szakasz ebben a cikkben. 
 
-A következő szakaszokban részletesen ismertetjük a SAP HANA adattárra jellemző Data Factory-entitások definiálásához használt JSON-tulajdonságokat:
+A következő szakaszok az SAP HANA-adattára jellemző Data Factory-entitások definiálására használt JSON-tulajdonságok részleteit ismertetik:
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-A következő táblázat a SAP HANA társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+Az alábbi táblázat az SAP HANA-hoz csatolt szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP HANA-példány található. Ha a kiszolgáló testreszabott portot használ, adja meg a `server:port`. | sztring | Igen
-authenticationType | A hitelesítés típusa. | karakterlánc. "Alapszintű" vagy "Windows" | Igen 
+kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP HANA-példány található. Ha a kiszolgáló testreszabott portot `server:port`használ, adja meg a megadását. | sztring | Igen
+authenticationType | A hitelesítés típusa. | Karakterlánc. "Alap" vagy "Windows" | Igen 
 felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
 jelszó | A felhasználó jelszava. | sztring | Igen
-gatewayName | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP HANA-példányhoz való kapcsolódáshoz. | sztring | Igen
-encryptedCredential | A titkosított hitelesítő adat karakterlánca. | sztring | Nem
+átjárónév | Az átjáró neve, amelyet a Data Factory szolgáltatásnak a helyszíni SAP HANA-példányhoz való csatlakozáshoz kell használnia. | sztring | Igen
+titkosított hitelesítő adatok | A titkosított hitelesítő adatok karakterlánca. | sztring | Nem
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
+Az adatkészletek definiálására szolgáló & tulajdonságok teljes listáját az [Adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben olvashat. A json-i adatkészletek például a struktúra, a rendelkezésre állás és a szabályzat hasonlóak az összes adatkészlettípushoz (Azure SQL, Azure blob, Azure table stb.).
 
-A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. Nincs olyan Type-specifikus tulajdonság, amely a **RelationalTable**típusú SAP HANA adatkészlet esetében nem támogatott. 
+A **typeProperties** szakasz az adatkészlet egyes típusainál eltérő, és tájékoztatást nyújt az adatok helyéről az adattárban. A **RelationalTable**típusú SAP HANA adatkészlethez nem támogatottak típusspecifikus tulajdonságok. 
 
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, a szabályzatok minden típusú tevékenységhez elérhetők.
+A tevékenységek definiálására rendelkezésre álló szakaszok & tulajdonságok teljes listáját a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben olvashat. Tulajdonságok, mint a név, leírás, bemeneti és kimeneti táblák, a házirendek érhetők el minden típusú tevékenységek.
 
-Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
+Mivel a tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusoktól függően változnak. Másolási tevékenység esetén a források és a fogadók típusától függően változnak.
 
-Ha a másolási tevékenységben szereplő forrás **RelationalSource** típusú (amely magában foglalja a SAP HANA), a következő tulajdonságok érhetők el a typeProperties szakaszban:
+Ha a másolási tevékenység forrása **RelationalSource** típusú (amely tartalmazza az SAP HANA-t is), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | SQL-lekérdezés. | Igen |
+| lekérdezés | Megadja az SAP HANA-példány ból adatokat olvasandó SQL-lekérdezést. | SQL-lekérdezés. | Igen |
 
-## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON-példa: adatok másolása SAP HANAból az Azure-Blobba
-Az alábbi minta JSON-definíciókat tartalmaz, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Ez a minta bemutatja, hogyan másolhat adatok egy helyszíni SAP HANAból egy Azure-Blob Storageba. Az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt mosogatók adatai azonban **közvetlenül** átmásolhatók a Azure Data Factoryban található másolási tevékenység használatával.  
+## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON-példa: Adatok másolása az SAP HANA-ból az Azure Blobba
+Az alábbi minta minta JSON-definíciókat tartalmaz, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy az Azure PowerShell használatával hozhat létre egy [folyamatot.](data-factory-copy-activity-tutorial-using-powershell.md) Ez a minta bemutatja, hogyan másolhatja az adatokat egy helyszíni SAP HANA egy Azure Blob Storage.This sample bemutatj how to copy data from an on-premises SAP HANA to an Azure Blob Storage. Azonban az adatok **közvetlenül** másolhatók az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt fogadók bármelyikére az Azure Data Factory másolási tevékenység használatával.  
 
 > [!IMPORTANT]
-> Ez a példa JSON-kódrészleteket biztosít. Nem tartalmaz részletes útmutatást az adatelőállító létrehozásához. Részletes útmutatásért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhőalapú cikkek között](data-factory-move-data-between-onprem-and-cloud.md) .
+> Ez a minta JSON-kódrészleteket biztosít. Nem tartalmazza az adat-előállító létrehozásának lépésenkénti útmutatóit. Tekintse meg [az adatok áthelyezését a helyszíni helyek és](data-factory-move-data-between-onprem-and-cloud.md) a felhőalapú cikk között, és részletes útmutatást talál.
 
-A minta a következő adatgyári entitásokat tartalmazhatja:
+A minta a következő adatfeldolgozó entitásokkal rendelkezik:
 
-1. [SapHana](#linked-service-properties)típusú társított szolgáltatás.
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
-3. [RelationalTable](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
-5. [RelationalSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
+1. [SapHana](#linked-service-properties)típusú összekapcsolt szolgáltatás.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
+3. [RelationalTable](#dataset-properties)típusú bemeneti [adatkészlet.](data-factory-create-datasets.md)
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet.](data-factory-create-datasets.md)
+5. [Relációsforrást](#copy-activity-properties) és [BlobSinket](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat.](data-factory-create-pipelines.md)
 
-A minta egy SAP HANA példány adatait másolja át egy Azure-blobba óránként. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
+A minta adatokat másol egy SAP HANA-példány egy Azure blob óránként. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszok ismertetik.
 
-Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a helyszíni [helyszínek és a felhő közötti adatáthelyezést](data-factory-move-data-between-onprem-and-cloud.md) ismertetik.
+Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a helyszíni helyek és a felhőalapú cikk [közötti átmozgatási](data-factory-move-data-between-onprem-and-cloud.md) adatokban találhatók.
 
-### <a name="sap-hana-linked-service"></a>Társított szolgáltatás SAP HANA
-Ez a társított szolgáltatás összekapcsolja SAP HANA példányát az adatelőállítóval. A Type tulajdonság értéke **SapHana**. A typeProperties szakasz a SAP HANA példányra vonatkozó kapcsolatok adatait tartalmazza.
+### <a name="sap-hana-linked-service"></a>SAP HANA csatolt szolgáltatás
+Ez a csatolt szolgáltatás az SAP HANA-példányt az adat-előállítóhoz kapcsolja. A típus tulajdonság **saphana**lesz állítva. A typeProperties szakasz az SAP HANA-példány kapcsolati adatait tartalmazza.
 
 ```json
 {
@@ -124,7 +124,7 @@ Ez a társított szolgáltatás összekapcsolja SAP HANA példányát az adatel�
 ```
 
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
-Ez a társított szolgáltatás összeköti az Azure Storage-fiókját az adatelőállítóval. A Type tulajdonság értéke **AzureStorage**. A typeProperties szakasz az Azure Storage-fiókhoz tartozó kapcsolatok adatait tartalmazza.
+Ez a kapcsolt szolgáltatás az Azure Storage-fiókot az adat-előállítóhoz kapcsolja. A típustulajdonság beállítása **AzureStorage**. A typeProperties szakasz az Azure Storage-fiók kapcsolatadatait tartalmazza.
 
 ```json
 {
@@ -138,13 +138,13 @@ Ez a társított szolgáltatás összeköti az Azure Storage-fiókját az adatel
 }
 ```
 
-### <a name="sap-hana-input-dataset"></a>Bemeneti adatkészlet SAP HANA
+### <a name="sap-hana-input-dataset"></a>SAP HANA bemeneti adatkészlet
 
-Ez az adatkészlet határozza meg a SAP HANA adatkészletet. A Data Factory adatkészlet típusát állítsa **RelationalTable**értékre. Jelenleg nem határoz meg egy SAP HANA adatkészlet típus-specifikus tulajdonságait. A másolási tevékenység definíciójában szereplő lekérdezés meghatározza, hogy milyen adatok olvashatók a SAP HANA-példányból. 
+Ez az adatkészlet határozza meg az SAP HANA adatkészletet. A Data Factory adatkészlet típusát RelationalTable beállításra **állítja.** Jelenleg nem ad meg semmilyen típus-specifikus tulajdonságokat egy SAP HANA adatkészlethez. A lekérdezés a tevékenység másolása definíció határozza meg, hogy milyen adatokat kell olvasni az SAP HANA-példány. 
 
-Ha a külső tulajdonságot True (igaz) értékre állítja, az a Data Factory szolgáltatás, amely a tábla kívül esik az adatgyárban, nem az adatelőállító tevékenysége.
+A külső tulajdonság true értékre állítása tájékoztatja a Data Factory szolgáltatást, hogy a tábla az adat-előállítón kívül található, és nem az adat-előállító tevékenység által előállított.
 
-A gyakoriság és az intervallum tulajdonságai határozzák meg az ütemtervet. Ebben az esetben az adatok beolvasása az SAP HANA-példányból óránként történik. 
+A gyakoriság és az intervallum tulajdonságai határozzák meg az ütemezést. Ebben az esetben az adatokat óránként olvassa be az SAP HANA-példány. 
 
 ```json
 {
@@ -163,7 +163,7 @@ A gyakoriság és az intervallum tulajdonságai határozzák meg az ütemtervet.
 ```
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob kimeneti adatkészlet
-Ez az adatkészlet határozza meg a kimeneti Azure Blob-adatkészletet. A Type tulajdonság értéke AzureBlob. A typeProperties szakasz a SAP HANA példányból másolt adatok tárolásának helyét adja meg. Az új blobba való írás minden órában történik (frekvencia: óra, intervallum: 1). A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési idő év, hónap, nap és óra részét használja.
+Ez az adatkészlet határozza meg a kimeneti Azure Blob adatkészletet. A típus tulajdonság az AzureBlob beállítással van beállítva. A typeProperties szakasz azt tartalmazza, hogy az SAP HANA-példányból másolt adatok hol tárolódnak. Az adatok óránként egy új blobba vannak írva (gyakoriság: óra, időköz: 1). A blob mappaelérési útja dinamikusan kiértékelve a feldolgozás alatt álló szelet kezdési időpontja alapján történik. A mappa elérési útja a kezdési időpont év-, hónap-, nap- és órarészeit használja.
 
 ```json
 {
@@ -222,9 +222,9 @@ Ez az adatkészlet határozza meg a kimeneti Azure Blob-adatkészletet. A Type t
 ```
 
 
-### <a name="pipeline-with-copy-activity"></a>Másolási tevékenységgel rendelkező folyamat
+### <a name="pipeline-with-copy-activity"></a>Folyamat másolási tevékenységgel
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** (SAP HANA forrás) értékre van **állítva, a fogadó típusa pedig** **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
+A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránként i. A folyamat JSON-definíciójában a **forrástípus** **RelationalSource** (SAP HANA forráshoz) értékre van állítva, **a fogadó** típusa pedig **BlobSink.** A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés kiválasztja a másolni kívánt adatokat az elmúlt órában.
 
 ```json
 {
@@ -273,47 +273,47 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kime
 ```
 
 
-### <a name="type-mapping-for-sap-hana"></a>SAP HANA leképezésének típusa
-Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikk ismerteti, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokra:
+### <a name="type-mapping-for-sap-hana"></a>Az SAP HANA típusleképezése
+Az [adatmozgatási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben említettek szerint a Másolás tevékenység automatikus típuskonverziót hajt végre a forrástípusokról a fogadótípusokra a következő kétlépéses megközelítéssel:
 
-1. Konvertálás natív forrásokból .NET-típusra
-2. Konvertálás .NET-típusról natív fogadó típusra
+1. Konvertálás natív forrástípusokból .NET-típussá
+2. Konvertálás .NET típusból natív fogadótípussá
 
-Az adatok SAP HANAból való áthelyezésekor a rendszer a következő leképezéseket használja SAP HANA típusokból .NET-típusokra.
+Az SAP HANA-ból történő adatok áthelyezésekek, a következő leképezések sap HANA-típusokból .NET-típusokba kerülnek.
 
-SAP HANA típusa | .NET-alapú típus
+SAP HANA típus | .NET alapú típus
 ------------- | ---------------
-TINYINT | Bájt
-SMALLINT | Int16
+Piciszt | Bájt
+SMALLINT között | Int16
 INT | Int32
-BIGINT | Int64
-REAL | Single
-DOUBLE | Single
-DECIMAL | tizedes tört
-BOOLEAN | Bájt
-VARCHAR | Sztring
-NVARCHAR | Sztring
-CLOB | Byte[]
-ALPHANUM | Sztring
-BLOB | Byte[]
+BIGINT között | Int64
+VALÓS SZÁM | Egyirányú
+Dupla | Egyirányú
+Decimális | Decimal
+Logikai | Bájt
+Varchar | Sztring
+NVARCHAR között | Sztring
+CLOB | Bájt[]
+ALFANUM | Sztring
+Blob | Bájt[]
 DATE | DateTime
-TIME | Időtartam
-TIMESTAMP | DateTime
-SECONDDATE | DateTime
+TIME | időtartam
+Időbélyeg | DateTime
+MÁSODIK DÁTUM | DateTime
 
 ## <a name="known-limitations"></a>Ismert korlátozások
-Az adatok SAP HANAból való másolása néhány ismert korlátozást mutat be:
+Az SAP HANA-ból származó adatok másolásakor néhány ismert korlátozás van:
 
-- A NVARCHAR karakterláncok maximális hossza 4000 Unicode karakter.
+- Az NVARCHAR sztringeket a rendszer legfeljebb 4000 Unicode karakter hosszúságúra csonkolja
 - A SMALLDECIMAL nem támogatott
 - A VARBINARY nem támogatott
-- Az érvényes dátumok 1899/12/30 és 9999/12/31 között vannak
+- Az érvényes dátumok 1899/12/30 és 9999/12/31 közöttiek
 
-## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
-A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Forrás leképezése oszlopokhoz
+Ha többet szeretne tudni arról, hogy a forrásadatkészlet oszlopait a fogadó adatkészlet oszlopaihoz szeretné-e leképezni, olvassa [el az Adatkészletoszlopok leképezése az Azure Data Factoryban című témakört.](data-factory-map-columns.md)
 
-## <a name="repeatable-read-from-relational-sources"></a>Megismételhető olvasás a rokon forrásokból
-Az adatok a kapcsolódó adattárakból való másolása során érdemes megismételni a nem kívánt eredmények elkerülését. Azure Data Factory a szeleteket manuálisan is újra futtathatja. Az újrapróbálkozási szabályzatot is konfigurálhatja egy adatkészlethez, hogy a rendszer hiba esetén újrafuttassa a szeleteket. Ha egy szeletet mindkét módon újrafuttat, meg kell győződnie arról, hogy a szeletek hányszor futnak. Lásd: [megismételhető olvasás a rokon forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
+## <a name="repeatable-read-from-relational-sources"></a>Relációs forrásokból ismételhető olvasmony
+Ha relációs adattárakból másolja az adatokat, tartsa szem előtt az ismételhetőséget a nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryban manuálisan futtathatja a szeletet. Az adatkészlet újrapróbálkozási házirendje is konfigurálható, így a szelet újrafut, ha hiba történik. Ha egy szeletet mindkét irányban újrafuttat, meg kell győződnie arról, hogy ugyanazokat az adatokat olvassa el, függetlenül attól, hogy hányszor fut egy szelet. Lásd [Ismétlődő olvasmony at relációs forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
-A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
+A [Tevékenység teljesítményének másolása & hangolási útmutatóban](data-factory-copy-activity-performance.md) megismerést talál az adatok (másolási tevékenység) azure Data Factory ban az adatmozgatás (másolási tevékenység) teljesítményét befolyásoló legfontosabb tényezőkről, valamint az optimalizálás különböző módjairól.

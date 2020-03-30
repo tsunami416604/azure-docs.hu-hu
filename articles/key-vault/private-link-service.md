@@ -1,91 +1,91 @@
 ---
-title: Integráció az Azure Private link Service szolgáltatással
-description: Ismerje meg, hogyan integrálható Azure Key Vault az Azure Private link Service használatával
+title: Integrálás az Azure Private Link szolgáltatással
+description: Ismerje meg, hogyan integrálható az Azure Key Vault az Azure Private Link szolgáltatással
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 6a5cc5bbdb56e308d79b8eb2c8db546184cedb39
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: c24be648e4ca1433c7c2af3d659bf4520a7a188c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080343"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79457287"
 ---
-# <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault integrálása az Azure Private-hivatkozással
+# <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault integrálása az Azure Private Linkkel
 
-Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Key Vault, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
+Az Azure Private Link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Key Vault, az Azure Storage és az Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-/partnerszolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
 
-Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
+Az Azure Private Endpoint egy olyan hálózati felület, amely privát és biztonságos kapcsolatot biztosít az Azure Private Link által működtetett szolgáltatással. A privát végpont egy privát IP-címet használ a virtuális hálózatból, hatékonyan hozza a szolgáltatást a virtuális hálózatba. A szolgáltatáshoz irányuló összes forgalom átirányítható a privát végponton keresztül, így nincs szükség átjárókra, NAT-eszközökre, ExpressRoute- vagy VPN-kapcsolatokra vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Csatlakozhat egy Azure-erőforrás egy példányához, így a legmagasabb szintű részletességet biztosíthatja a hozzáférés-vezérlésben.
 
-További információ: [Mi az az Azure Private link (előzetes verzió)?](../private-link/private-link-overview.md)
+További információ: [Mi az Azure Private Link?](../private-link/private-link-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Key Vault és az Azure Private link (előzetes verzió) integrálásához a következőkre lesz szüksége:
+Ha integrálni szeretne egy kulcstartót az Azure Private Linkkel, a következőkre lesz szüksége:
 
-- Key Vault.
-- Egy Azure-beli virtuális hálózat.
-- Egy alhálózat a virtuális hálózaton.
-- Tulajdonosi vagy közreműködői engedélyek a Key vaulthoz és a virtuális hálózathoz.
+- Egy kulcstartó.
+- Egy Azure virtuális hálózat.
+- A virtuális hálózat alhálózata.
+- Tulajdonosi vagy közreműködői engedélyek mind a key vault és a virtuális hálózat.
 
-A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a portál használatával kiválaszt egy régiót a privát végponthoz, akkor az automatikusan csak az adott régióban lévő virtuális hálózatokat fogja szűrni. A kulcstartó lehet egy másik régióban is.
+A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Amikor kiválaszt egy régiót a privát végponthoz a portál használatával, automatikusan csak az adott régióban lévő virtuális hálózatokat szűri. A kulcstartó lehet egy másik régióban.
 
-A privát végpont egy magánhálózati IP-címet használ a virtuális hálózaton.
+A privát végpont egy privát IP-címet használ a virtuális hálózatban.
 
-## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Magánhálózati kapcsolat létesítése Key Vault a Azure Portal használatával 
+## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Privát kapcsolat létrehozása a Key Vaultszolgáltatással az Azure Portalhasználatával 
 
-Először hozzon létre egy virtuális hálózatot a [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/quick-create-portal.md) című témakör lépéseit követve.
+Először hozzon létre egy virtuális hálózatot a Virtuális hálózat létrehozása az Azure Portal használatával című részben leírt lépések [végrehajtásával](../virtual-network/quick-create-portal.md)
 
-Ezután létrehozhat egy új kulcstartót, vagy létesíthet kapcsolatot egy meglévő kulcstartóval.
+Ezután létrehozhat egy új kulcstartót, vagy létrehozhat egy privát kapcsolat kapcsolatot egy meglévő kulcstartóval.
 
-### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Új kulcstartó létrehozása és magánhálózati kapcsolat létesítése
+### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Új kulcstartó létrehozása és privát kapcsolat létrehozása
 
-Új kulcstartó létrehozásához kövesse a [titkos kód beállítása és lekérése Azure Key Vault használatával](quick-create-portal.md) című témakör lépéseit a Azure Portal
+Új key Vault-ot hozhat létre a Set című csoportlépései és [az Azure Key Vault titkos adatainak beolvasása az Azure Portalon keresztül.](quick-create-portal.md)
 
-A Key Vault alapalapjainak konfigurálása után válassza a hálózatkezelés fület, és kövesse az alábbi lépéseket:
+A kulcstartó alapjainak konfigurálása után válassza a Hálózat lapot, és kövesse az alábbi lépéseket:
 
-1. Válassza a privát végpont (előnézet) választógombot a hálózatkezelés lapon.
-1. Privát végpont hozzáadásához kattintson a "+ Hozzáadás" gombra.
+1. A Hálózat lapon válassza a Privát végpont választógombot.
+1. Privát végpont hozzáadásához kattintson a "+ hozzáadás" gombra.
 
-    ![Image (Kép)](./media/private-link-service-1.png)
+    ![Kép](./media/private-link-service-1.png)
  
-1. A privát végpont létrehozása panel "location" mezőjében válassza ki azt a régiót, amelyben a virtuális hálózat található. 
-1. A "név" mezőben hozzon létre egy leíró nevet, amely lehetővé teszi a privát végpont azonosítását. 
-1. Válassza ki azt a virtuális hálózatot és alhálózatot, amelyhez a privát végpontot létre kívánja hozni a legördülő menüből. 
-1. Hagyja változatlanul az "integráció a saját DNS-zónával" beállítást.  
-1. Válassza az OK gombot.
+1. A Privát végpont létrehozása panel "Hely" mezőjében válassza ki azt a régiót, amelyben a virtuális hálózat található. 
+1. A "Név" mezőben hozzon létre egy leíró nevet, amely lehetővé teszi a személyes végpont azonosítását. 
+1. Válassza ki azt a virtuális hálózatot és alhálózatot, amelyben létre szeretné hozni ezt a privát végpontot a legördülő menüből. 
+1. Hagyja változatlanul a "Integrálás a privát zóna DNS-ével" lehetőséget.  
+1. Válassza az "Ok" lehetőséget.
 
-    ![Image (Kép)](./media/private-link-service-2.png)
+    ![Kép](./media/private-link-service-2.png)
  
-Ekkor megtekintheti a konfigurált privát végpontot. Most már lehetősége van a privát végpont törlésére és szerkesztésére. Válassza a "felülvizsgálat + létrehozás" gombot, és hozza létre a Key vaultot. A telepítés befejezéséhez 5-10 percet vesz igénybe. 
+Most már láthatja a konfigurált privát végpontot. Most már törölheti és szerkesztheti ezt a privát végpontot. Válassza a "Véleményezés + Létrehozás" gombot, és hozza létre a key vaultot. A telepítés 5-10 percet vesz igénybe. 
 
-### <a name="establish-a-private-link-connection-to-an-existing-key-vault"></a>Magánhálózati kapcsolat létesítése meglévő kulcstartóval
+### <a name="establish-a-private-link-connection-to-an-existing-key-vault"></a>Privát kapcsolat létrehozása meglévő kulcstartóval
 
-Ha már rendelkezik kulcstartóval, a következő lépések végrehajtásával hozhat létre privát kapcsolati kapcsolatot:
+Ha már rendelkezik key vault, hozhat létre egy privát kapcsolat kapcsolatot az alábbi lépésekkel:
 
 1. Jelentkezzen be az Azure portálra. 
-1. A keresősáv mezőbe írja be a "Key Vaults" kifejezést.
-1. Válassza ki a kulcstárolót a listából, amelyhez privát végpontot szeretne hozzáadni.
-1. Válassza a "hálózatkezelés" fület a beállítások alatt.
-1. Válassza ki a Private Endpoint Connections (előzetes verzió) fület az oldal tetején.
-1. Válassza ki a "+ Private Endpoint" gombot az oldal tetején.
+1. A keresősávba írja be a "key vaults" (kulcstartók) kifejezést.
+1. Válassza ki a key vault a listából, amelyhez hozzá szeretne adni egy privát végpontot.
+1. Válassza a "Hálózat" lapot a Beállítások csoportban
+1. A lap tetején a Magánjellegű végpontkapcsolatok fülének kijelölése
+1. A lap tetején válassza a "+ privát végpont" gombot.
 
-    ![rendszerkép](./media/private-link-service-3.png) ![rendszerkép](./media/private-link-service-4.png)
+    ![Kép](./media/private-link-service-3.png) ![](./media/private-link-service-4.png)
 
-A panel használatával bármely Azure-erőforráshoz létrehozhat egy privát végpontot. A legördülő menük segítségével kiválaszthat egy erőforrástípust, és kiválaszthat egy erőforrást a címtárban, vagy bármely Azure-erőforráshoz kapcsolódhat erőforrás-azonosító használatával. Hagyja változatlanul az "integráció a saját DNS-zónával" beállítást.  
+Dönthet úgy, hogy hozzon létre egy privát végpont ot bármely Azure-erőforrás ezzel a panel használatával. Használhatja a legördülő menük, hogy válasszon ki egy erőforrástípust, és válasszon ki egy erőforrást a címtárban, vagy csatlakozhat bármely Azure-erőforrás egy erőforrás-azonosító használatával. Hagyja változatlanul a "Integrálás a privát zóna DNS-ével" lehetőséget.  
 
-![rendszerkép](./media/private-link-service-3.png)
-![rendszerkép](./media/private-link-service-4.png)
+![Kép](./media/private-link-service-3.png)
+![](./media/private-link-service-4.png)
 
-## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Magánhálózati kapcsolat létesítése Key Vault a parancssori felület használatával
+## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Privát kapcsolat létrehozása a Key Vaulttal a CLI használatával
 
 ### <a name="login-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 ```console
 az login 
 ```
-### <a name="select-your-azure-subscription"></a>Azure-előfizetés kiválasztása 
+### <a name="select-your-azure-subscription"></a>Válassza ki Azure-előfizetését 
 ```console
 az account set --subscription {AZURE SUBSCRIPTION ID}
 ```
@@ -93,15 +93,19 @@ az account set --subscription {AZURE SUBSCRIPTION ID}
 ```console
 az group create -n {RG} -l {AZURE REGION}
 ```
-### <a name="register-microsoftkeyvault-as-a-provider"></a>A Microsoft. kulcstartó regisztrálása szolgáltatóként 
+### <a name="register-microsoftkeyvault-as-a-provider"></a>A Microsoft.KeyVault regisztrálása szolgáltatóként 
 ```console
 az provider register -n Microsoft.KeyVault
 ```
-### <a name="create-a-new-key-vault"></a>Új Key Vault létrehozása
+### <a name="create-a-new-key-vault"></a>Új kulcstartó létrehozása
 ```console
 az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
 ```
-### <a name="create-a-virtual-network"></a>Virtual Network létrehozása
+### <a name="turn-on-key-vault-firewall"></a>A Key Vault tűzfalának bekapcsolása
+```console
+az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION} --default-action deny
+```
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 ```console
 az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
 ```
@@ -109,15 +113,15 @@ az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZUR
 ```console
 az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
 ```
-### <a name="disable-virtual-network-policies"></a>Virtual Network házirendek letiltása 
+### <a name="disable-virtual-network-policies"></a>Virtuális hálózati házirendek letiltása 
 ```console
 az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
 ```
-### <a name="add-a-private-dns-zone"></a>saját DNS zóna hozzáadása 
+### <a name="add-a-private-dns-zone"></a>Privát DNS-zóna hozzáadása 
 ```console
 az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
 ```
-### <a name="link-private-dns-zone-to-virtual-network"></a>saját DNS zóna összekapcsolása Virtual Network 
+### <a name="link-private-dns-zone-to-virtual-network"></a>Privát DNS-zóna csatolása virtuális hálózathoz 
 ```console
 az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
 ```
@@ -125,7 +129,7 @@ az network private-dns link vnet create --resoruce-group {RG} --virtual-network 
 ```console
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
 ```
-### <a name="create-a-private-endpoint-manually-request-approval"></a>Privát végpont létrehozása (manuális kérelem jóváhagyása) 
+### <a name="create-a-private-endpoint-manually-request-approval"></a>Saját végpont létrehozása (manuális kérelem jóváhagyása) 
 ```console
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
 ```
@@ -133,61 +137,61 @@ az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME}
 ```console
 az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
 ```
-## <a name="manage-private-link-connection"></a>Privát kapcsolat kapcsolatának kezelése
+## <a name="manage-private-link-connection"></a>Privát kapcsolat kezelése
 
-Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az erőforrás, amelyhez privát végpontot hoz létre, akkor jóváhagyhatja a megfelelő engedélyekkel rendelkező kapcsolódási kérelmet. Ha egy másik címtárban található Azure-erőforráshoz csatlakozik, meg kell várnia, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolódási kérelmet.
+Privát végpont létrehozásakor a kapcsolatot jóvá kell hagyni. Ha az az erőforrás, amelyhez privát végpontot hoz létre, a címtárban található, jóváhagyhatja a csatlakozási kérelmet, feltéve, hogy rendelkezik a megfelelő engedélyekkel; ha egy másik címtárban csatlakozik egy Azure-erőforráshoz, meg kell várnia, amíg az erőforrás tulajdonosa jóváhagyja a csatlakozási kérelmet.
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatás-nyújtási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
+| A szolgáltatás műveletet biztosít | Szolgáltatás fogyasztói privát végpont állapota | Leírás |
 |--|--|--|
-| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
-| Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
-| Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
-| Eltávolítás | Leválasztva | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
+| None | Függőben | A kapcsolat manuálisan jön létre, és a Magánkapcsolat erőforrás tulajdonosának jóváhagyása vár. |
+| Jóváhagyás | Approved | A kapcsolat automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
+| Elutasítás | Elutasítva | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa elutasította. |
+| Eltávolítás | Elválasztott | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa eltávolította, a privát végpont informatívsá válik, és törlésre kell törölni. |
  
-###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Privát végponti kapcsolatok kezelése Key Vault a Azure Portal használatával 
+###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Privát végpontkapcsolat kezelése a Key Vaultszolgáltatással az Azure Portalhasználatával 
 
 1. Jelentkezzen be az Azure Portalra.
-1. A keresősáv mezőbe írja be a "Key Vaults" kifejezést.
+1. A keresősávba írja be a "key vaults" (kulcstartók) kifejezést.
 1. Válassza ki a kezelni kívánt kulcstartót.
-1. Válassza a "hálózatkezelés" fület.
-1. Ha van függőben lévő kapcsolat, a kiépítési állapotban "függőben" állapotú kapcsolat jelenik meg. 
-1. Válassza ki a jóváhagyni kívánt privát végpontot
-1. Kattintson a jóváhagyás gombra.
-1. Ha van olyan privát végponti kapcsolat, amelyet el szeretne utasítani, legyen az egy függőben lévő kérelem vagy létező kapcsolat, válassza ki a kapcsolatot, és kattintson az "elutasítás" gombra.
+1. Válassza a "Hálózat" lapot.
+1. Ha vannak függőben lévő kapcsolatok, a létesítési állapotban megjelenik a "Függőben" listában szereplő kapcsolat. 
+1. Válassza ki a jóváhagyni kívánt privát végpontot.
+1. Válassza ki a jóváhagyás gombot.
+1. Ha vannak olyan privát végpontkapcsolatok, amelyeket el szeretne utasítani, függetlenül attól, hogy függőben lévő kérelemről vagy meglévő kapcsolatról van-e szó, jelölje ki a kapcsolatot, és kattintson az "Elutasítás" gombra.
 
-    ![Image (Kép)](./media/private-link-service-7.png)
+    ![Kép](./media/private-link-service-7.png)
 
-##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Privát végponti kapcsolatok kezelése Key Vault az Azure CLI használatával
+##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Privát végpontkapcsolat kezelése a Key Vaulthoz az Azure CLI használatával
 
-### <a name="approve-a-private-link-connection-request"></a>Magánhálózati kapcsolati kérelem jóváhagyása
+### <a name="approve-a-private-link-connection-request"></a>Privát kapcsolati kapcsolatkérés jóváhagyása
 ```console
 az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
 ```
 
-### <a name="deny-a-private-link-connection-request"></a>Magánhálózati kapcsolatra vonatkozó kérelem elutasítása
+### <a name="deny-a-private-link-connection-request"></a>Privát kapcsolati kapcsolatkérés megtagadása
 ```console
 az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
 ```
 
-### <a name="delete-a-private-link-connection-request"></a>Magánhálózati kapcsolati kérelem törlése
+### <a name="delete-a-private-link-connection-request"></a>Privát kapcsolati kapcsolatkérelem törlése
 ```console
 az keyvault private-endpoint-connection delete --resource-group {RG} --vault-name {KEY VAULT NAME} --name {PRIVATE LINK CONNECTION NAME}
 ```
 
-## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a magánhálózati kapcsolat működik-e
+## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a privát kapcsolat kapcsolata működik-e
 
-Ellenőriznie kell, hogy a magánhálózati végpont erőforrásának ugyanazon alhálózatán belüli erőforrásai csatlakoznak-e a kulcstartóhoz egy magánhálózati IP-címen keresztül, és hogy rendelkeznek-e a megfelelő magánhálózati DNS-zónák integrálásával.
+Ellenőrizze, hogy a privát végponterőforrás ugyanazon alhálózatán belüli erőforrások privát IP-címen keresztül csatlakoznak-e a kulcstartóhoz, és hogy rendelkeznek-e a megfelelő privát DNS-zóna integrációval.
 
-Először hozzon létre egy virtuális gépet a [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/windows/quick-create-portal.md) című témakör lépéseit követve.
+Először hozzon létre egy virtuális gépet a Windows virtuális gép létrehozása az [Azure Portalon](../virtual-machines/windows/quick-create-portal.md) című csoportban leírt lépések végrehajtásával
 
-A "hálózatkezelés" lapon:
+A "Hálózat" lapon:
 
-1. Határozza meg a virtuális hálózatot és az alhálózatot. Létrehozhat egy új virtuális hálózatot, vagy kijelölhet egy meglévőt is. Ha egy meglévőt választ ki, győződjön meg arról, hogy a régió megfelel.
-1. Nyilvános IP-erőforrást kell megadni.
-1. A "NIC hálózati biztonsági csoport" területen válassza a "nincs" lehetőséget.
-1. A "terheléselosztás" területen válassza a "nem" lehetőséget.
+1. Adja meg a virtuális hálózatot és az alhálózatot. Létrehozhat egy új virtuális hálózatot, vagy kiválaszthat egy meglévőt. Ha egy meglévőt választ, győződjön meg arról, hogy a régió egyezik.If selecting an existing one, make sure the region matches.
+1. Adjon meg egy nyilvános IP-erőforrást.
+1. A "Hálózati adapter hálózati biztonsági csoportjában" válassza a "Nincs" lehetőséget.
+1. A "Terheléselosztás" területen válassza a "Nem" lehetőséget.
 
 Nyissa meg a parancssort, és futtassa a következő parancsot:
 
@@ -195,7 +199,7 @@ Nyissa meg a parancssort, és futtassa a következő parancsot:
 nslookup <your-key-vault-name>.vault.azure.net
 ```
 
-Ha a Key Vault IP-címének nyilvános végponton keresztüli feloldásához futtatja az NS lookup parancsot, a következőhöz hasonló eredményt fog látni:
+Ha az ns lookup parancsot futtatja a kulcstartó IP-címének nyilvános végponton való feloldásához, a következő höz hasonló eredmény jelenik meg:
 
 ```console
 c:\ >nslookup <your-key-vault-name>.vault.azure.net
@@ -206,7 +210,7 @@ Address:  (public IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
 ```
 
-Ha a Key Vault IP-címének feloldásához egy privát végponton futtatja az NS lookup parancsot, a következőhöz hasonló eredményt fog látni:
+Ha az ns lookup parancsot futtatja a kulcstartó IP-címének feloldásához egy privát végponton keresztül, a következő höz hasonló eredmény jelenik meg:
 
 ```console
 c:\ >nslookup your_vault_name.vault.azure.net
@@ -218,19 +222,19 @@ Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
 
-## <a name="limitations-and-design-considerations"></a>Korlátozások és kialakítási szempontok
+## <a name="limitations-and-design-considerations"></a>Korlátozások és tervezési szempontok
 
-**Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link (előzetes verzió) díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
+**Díjszabás:** A díjszabási információkért lásd: [Azure Private Link díjszabása.](https://azure.microsoft.com/pricing/details/private-link/)
 
-**Korlátozások**: a Azure Key Vault magánhálózati végpontja nyilvános előzetes verzióban érhető el. Ez a funkció az összes Azure-beli nyilvános régióban elérhető.
+**Korlátozások:** Az Azure Key Vault privát végpontja csak az Azure nyilvános régióiban érhető el.
 
-**Privát végpontok maximális száma Key Vault**: 64.
+**A privát végpontok maximális száma key vaultonként:** 64.
 
-**A privát végpontok által előfizetett kulcstartók maximális száma**: 64.
+**Előfizetésenként privát végponttal rendelkező kulcstartók maximális száma:** 64.
 
-További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
+További információkért lásd: [Azure Private Link szolgáltatás: Korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ az [Azure Private linkről (előzetes verzió)](../private-link/private-link-service-overview.md)
-- További információ a [Azure Key Vault](key-vault-overview.md)
+- További információ az [Azure Private Linkről](../private-link/private-link-service-overview.md)
+- További információ az [Azure Key Vaultról](key-vault-overview.md)

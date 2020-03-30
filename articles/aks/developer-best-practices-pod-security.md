@@ -1,50 +1,50 @@
 ---
-title: Ajánlott eljárások Developer - Pod biztonság az Azure Kubernetes-szolgáltatások (AKS)
-description: Ismerje meg, hogyan védheti meg az Azure Kubernetes Service (AKS) podok fejlesztői ajánlott eljárásai
+title: Fejlesztői gyakorlati tanácsok – Pod-biztonság az Azure Kubernetes-szolgáltatásokban (AKS)
+description: Ismerje meg a fejlesztői gyakorlati tanácsok, hogyan biztonságos podok az Azure Kubernetes szolgáltatás (AKS)
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ee41770f9993da381215f03ebf67aea3cc7dd9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475578"
 ---
-# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) pod biztonsági védelmének bevált gyakorlata
+# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) pod-biztonsággal kapcsolatos gyakorlati tanácsok
 
-Fejlesztés és alkalmazások futtatásához az Azure Kubernetes Service (AKS), a podok biztonságát kulcs veszi figyelembe. Az alkalmazásokat úgy kell megtervezni, hogy a lehető legkevesebb jogosultsággal rendelkezzenek. Felső részén szem előtt az ügyfeleknek titkos adatok biztonságos kezelése mellett. Nem szeretné, hogy a hitelesítő adatok, például az adatbázis-kapcsolati karakterláncok, kulcsok, titkos kódok és a külvilág számára elérhető tanúsítványok, ahol a támadók kihasználhatják ezeket a titkokat rosszindulatú célokra. Nem hozzáadhatja őket a kód, vagy a tárolólemezképek beágyazása őket. Ezt a módszert akkor hozzon létre egy kockázatát mérik a különböző és elforgatásának ezeket a hitelesítő adatokat, mint a tárolórendszerképeket építhető újra kell korlátozni.
+Az Azure Kubernetes-szolgáltatás (AKS) alkalmazások fejlesztése és futtatása során a podok biztonsága kulcsfontosságú szempont. Az alkalmazásokat a szükséges jogosultságok minimális számának elvére kell megtervezni. A személyes adatok biztonságának megőrzése az ügyfelek számára a legfontosabb. Nem szeretné, hogy a hitelesítő adatok, például az adatbázis-kapcsolati karakterláncok, kulcsok vagy titkos kulcsok és tanúsítványok elérhetők legyenek a külvilág számára, ahol a támadó rosszindulatú célokra kihasználhatja ezeket a titkokat. Ne adja hozzá őket a kódhoz, és ne ágyazza be őket a tárolórendszerképekbe. Ez a megközelítés kockázatot hozna létre az expozíció, és korlátozza a hitelesítő adatok elforgatásának lehetőségét, mivel a tárolórendszerképek et újra kell építeni.
 
-Ez az ajánlott eljárási cikk a hüvelyek az AK-ban való védelmére összpontosít. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az ajánlott eljárások cikk az AKS-ben a podok biztonságossá tétele. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Folyamatok és a szolgáltatások vagy a jogosultságok eszkalálását való hozzáférés korlátozására használja a pod biztonsági környezet
-> * Hitelesítés a többi Azure-erőforrások pod felügyelt identitások használatával
-> * Kérelem és lekérni egy digitális például az Azure Key Vault-tárolót a hitelesítő adatokat
+> * Pod biztonsági környezet használata a folyamatokhoz és szolgáltatásokhoz való hozzáférés vagy a jogosultságok eszkalációjának korlátozására
+> * Hitelesítés más Azure-erőforrásokkal pod által felügyelt identitások használatával
+> * Hitelesítő adatok kérése és lekérése egy digitális tárolóból, például az Azure Key Vaultból
 
-Emellett elolvashatja a [fürt biztonságával][best-practices-cluster-security] és a [tárolók rendszerképének kezelésével][best-practices-container-image-management]kapcsolatos ajánlott eljárásokat is.
+A [fürtbiztonsággal][best-practices-cluster-security] és a [tárolórendszerkép-kezeléssel][best-practices-container-image-management]kapcsolatos gyakorlati tanácsokat is elolvashatja.
 
-## <a name="secure-pod-access-to-resources"></a>Podok erőforrásokhoz való hozzáférés biztonságossá tétele
+## <a name="secure-pod-access-to-resources"></a>Biztonságos pod hozzáférés az erőforrásokhoz
 
-**Ajánlott eljárási útmutató** – egy másik felhasználóként vagy csoportként való futtatásra, valamint a mögöttes csomópont-folyamatok és-szolgáltatások elérésének korlátozására, a pod biztonsági környezet beállításainak megadása. Rendelje hozzá a legkevésbé szükséges jogosultságok száma.
+**Ajánlott eljárások –** Ha egy másik felhasználóként vagy csoportban szeretne futni, és korlátozza a hozzáférést az alapul szolgáló csomópontfolyamatokhoz és -szolgáltatásokhoz, adja meg a pod biztonsági környezetbeállításait. Rendelje hozzá a szükséges jogosultságok közül a legkevesebbet.
 
-Ahhoz, hogy az alkalmazások megfelelően fussanak, a hüvelyeket definiált felhasználóként vagy csoportként kell futtatni, és nem *root*-ként. A pod vagy a Container `securityContext` lehetővé teszi olyan beállítások megadását, mint például a *runAsUser* vagy a *fsGroup* , hogy a megfelelő engedélyeket tegyük fel. Csak rendelni a szükséges felhasználói vagy biztonságicsoport-engedélyeit, és ne használja a biztonsági környezet eszközeként tegyük fel, további engedélyeket. A *runAsUser*, a jogosultság-eszkaláció és az egyéb linuxos képességek beállításai csak Linux-csomópontokon és hüvelyeken érhetők el.
+Ahhoz, hogy az alkalmazások megfelelően fussanak, a podok nak meghatározott felhasználóként vagy csoportként kell futniuk, nem *pedig gyökérként.* A `securityContext` pod vagy tároló lehetővé teszi, hogy adja meg a beállításokat, például *runAsUser* vagy *fsGroup* a megfelelő engedélyeket. Csak rendelje hozzá a szükséges felhasználói vagy csoportengedélyeket, és ne használja a biztonsági környezetet további engedélyek átvállalására. A *runAsUser*, jogosultságeszkaláció, és más Linux-képességek beállításai csak Linux csomópontokon és podokon érhetők el.
 
-Futtatásakor nem legfelső szintű felhasználóként, tárolók nem köthető a rendszerjogosultságú portokat az 1024. Ebben a forgatókönyvben a Kubernetes-szolgáltatás segítségével álcázza a tény, hogy egy alkalmazás fut, egy adott portot.
+Ha nem legfelső szintű felhasználóként fut, a tárolók nem köthetők az 1024 alatti kiemelt portokhoz. Ebben a forgatókönyvben a Kubernetes-szolgáltatások segítségével leplezheti azt a tényt, hogy egy alkalmazás egy adott porton fut.
 
-A pod biztonsági környezet is megadhatja, további funkciókat, vagy a folyamatok és szolgáltatások eléréséhez szükséges engedélyekkel. A következő gyakori biztonsági környezet definíciókat adhatja meg:
+A pod biztonsági környezetben is definiálhat további képességek et vagy engedélyeket a folyamatok és szolgáltatások eléréséhez. A következő általános biztonsági környezetdefiníciók állíthatók be:
 
-* a **allowPrivilegeEscalation** határozza meg, hogy a pod lehet-e *root* jogosultságot feltételezni. Tervezze meg az alkalmazásait, hogy ezt a beállítást mindig *hamis*értékre állítsa.
-* A **Linux-funkciók** lehetővé teszik, hogy a pod hozzáférjen az alapul szolgáló csomópont-folyamatokhoz A hozzárendelés, ezek a képességek gondoskodunk. Rendelje hozzá a legkevésbé száma szükséges jogosultságokkal. További információ: Linux- [képességek][linux-capabilities].
-* A **SELinux labels** egy Linux kernel biztonsági modul, amely lehetővé teszi hozzáférési szabályzatok definiálását a szolgáltatások, a folyamatok és a fájlrendszer eléréséhez. Újbóli hozzárendelése a legkevésbé száma szükséges jogosultságokkal. További információ: [SELinux-beállítások a Kubernetes-ben][selinux-labels]
+* **az allowPrivilegeEscalation** határozza meg, hogy a pod átvehet-e *gyökérjogosultságokat.* Úgy tervezze meg az alkalmazásokat, hogy ez a beállítás mindig *hamis*beállításra van állítva.
+* **A Linux-képességek** lehetővé teszik, hogy a pod hozzáférést ad a csomópont folyamatok alapjául szolgáló folyamatok. Ügyeljen arra, hogy ezeket a képességeket hozzárendeli. Rendelje hozzá a szükséges jogosultságok közül a legkevesebbet. További információ: [Linux-képességek][linux-capabilities].
+* **Az SELinux-címkék** egy Linux kernel biztonsági modul, amely lehetővé teszi a szolgáltatások, folyamatok és fájlrendszer-hozzáférés hozzáférési szabályzatainak meghatározását. Ismét rendelje hozzá a szükséges jogosultságok legkevesebb számát. További információ: [SELinux-beállítások a Kubernetes-ben][selinux-labels]
 
-A következő példa pod YAML-jegyzékfájl állítja be a biztonsági környezet beállítások meghatározásához:
+A következő példa pod YAML manifest határozza meg a biztonsági környezet beállításait:
 
-* A pod a *1000* felhasználói azonosítóként fut, és az *2000* -es azonosítójú csoport tagja.
-* Nem lehet kibővíteni a jogosultságokat a `root` használatára
-* Lehetővé teszi, hogy a hálózati adapterek és a gazdagép valós idejű (hardver) óra Linux képességek
+* A pod *1000-es* azonosítós azonosítóként és a *2000-es* csoportazonosító részeként fut
+* Nem lehet elévítani a használatra való jogosultságokat`root`
+* Lehetővé teszi a Linux-képességek számára a hálózati interfészek és a gazdagép valós idejű (hardveres) órájának elérését
 
 ```yaml
 apiVersion: v1
@@ -63,52 +63,52 @@ spec:
         add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
-Milyen biztonsági környezet beállításokat kell meghatározni a fürt operátor működnek. Próbálja meg minimálisra csökkentése érdekében további engedélyekkel és hozzáférési a pod igényel az alkalmazások tervezéséhez. Nincsenek további biztonsági funkciókat korlátozni AppArmor és a seccompot (biztonságos computing), amely a fürt operátorok úgy implementálható. További információ: az [erőforrásokhoz való hozzáférés biztonságossá tétele][apparmor-seccomp].
+A fürtkezelővel együttműködve határozza meg, hogy milyen biztonsági környezetbeállításokra van szüksége. Próbálja meg megtervezni az alkalmazásokat a további engedélyek minimalizálása és a pod szükséges eléréséhez. Az AppArmor és a seccomp (secure computing) használatával további biztonsági funkciók kal korlátozhatók, amelyeket a fürtkezelők megvalósíthatnak. További információ: [Biztonságos tároló az erőforrásokhoz való hozzáférés.][apparmor-seccomp]
 
-## <a name="limit-credential-exposure"></a>Hitelesítő adatok felfedésével korlát
+## <a name="limit-credential-exposure"></a>Hitelesítő adatok expozíciójának korlátozása
 
-**Ajánlott eljárási útmutató** – ne adjon meg hitelesítő adatokat az alkalmazás kódjában. Az Azure-erőforrások felügyelt identitások használatával lehetővé teszik a pod kérelem hozzáférés az erőforrásokhoz. Egy digitális tároló tartalmazza, például az Azure Key Vaultban kell is használható, tárolására és beolvasására, a digitális kulcsokat és a hitelesítő adatokat. A hüvelyben felügyelt identitások kizárólag Linux-hüvelyekhez és csak a tárolók rendszerképeihez használhatók.
+**Ajánlott eljárások –** ne adja meg a hitelesítő adatokat az alkalmazáskódban. Felügyelt identitások azure-erőforrások segítségével a pod hozzáférést kérhet más erőforrásokhoz. A digitális trezor, például az Azure Key Vault, is kell használni a digitális kulcsok és hitelesítő adatok tárolására és lekérésére. Pod felügyelt identitások csak Linux-podok és tárolórendszerképek használatra készült.
 
-És a kockázatok hitelesítő adatok elérhetővé váljon az alkalmazás kódjában, kerülje a rögzített vagy megosztott hitelesítő adatokat használjanak. Hitelesítő adatokhoz vagy kulcsokhoz nem tartalmaz közvetlenül a kódba. Ezek a hitelesítő adatok érhetők el, ha az alkalmazásnak kell frissíteni, és áttelepült. Jobb módszer, hogy adjon a podok saját identitás- és hitelesíteni magukat, vagy automatikusan lekérni egy digitális tárolót a hitelesítő adatokat.
+Az alkalmazáskódban a hitelesítő adatok felfedésének kockázatának csökkentése érdekében kerülje a rögzített vagy megosztott hitelesítő adatok használatát. A hitelesítő adatokat vagy kulcsokat nem szabad közvetlenül a kódban megadni. Ha ezek a hitelesítő adatok elérhetővé, az alkalmazást frissíteni kell, és újratelepíteni kell. Egy jobb megközelítés az, hogy podok saját identitását és a módját, hogy hitelesítsék magukat, vagy automatikusan lekérni a hitelesítő adatokat egy digitális tárolóból.
 
-A következő [társított AK nyílt forráskódú projektek][aks-associated-projects] lehetővé teszik a hüvelyek automatikus hitelesítését, illetve a digitális tárolóban a hitelesítő adatok és kulcsok kérését:
+A következő [társított AKS nyílt forráskódú projektek][aks-associated-projects] lehetővé teszik a podok automatikus hitelesítését, vagy hitelesítő adatok és kulcsok kérése egy digitális tárolóból:
 
 * Felügyelt identitások az Azure-erőforrásokhoz, és
-* Az Azure Key Vault FlexVol illesztőprogram
+* Azure Key Vault FlexVol illesztőprogram
 
-Az Azure technikai támogatási szolgálata nem támogatja a társított AK nyílt forráskódú projektjeit. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Ezek a projektek éles használatra nem ajánlottak.
+Társított AKS nyílt forráskódú projektek nem támogatja az Azure technikai támogatás. Azért biztosítjuk őket, hogy visszajelzéseket és hibákat gyűjtsenek a közösségünktől. Ezek a projektek nem ajánlottak éles használatra.
 
-### <a name="use-pod-managed-identities"></a>Használat pod felügyelt identitások
+### <a name="use-pod-managed-identities"></a>Pod felügyelt identitások használata
 
-Az Azure-erőforrások felügyelt identitása lehetővé teszi, hogy a pod hitelesítse magát az azt támogató Azure-szolgáltatásokkal, például a Storage vagy az SQL használatával. A pod hozzá van rendelve egy Azure-identitás, amely lehetővé teszi, hogy azokat az Azure Active Directory hitelesítést és a digitális tokent kaphatnak. A digitális token megjeleníthetők az egyéb Azure-szolgáltatások, ellenőrizze, hogy jogosult-e a pod hozzáférhessen a szolgáltatáshoz, és végezze el a szükséges műveleteket. Ez a megközelítés azt jelenti, hogy nincs titkos kódok szükséges adatbázis-kapcsolati karakterláncok, például. A pod felügyelt identitás egyszerűsített munkafolyamatot az alábbi ábrán látható:
+Az Azure-erőforrások felügyelt identitása lehetővé teszi, hogy egy pod hitelesítse magát az azt támogató Azure-szolgáltatásokkal, például a Storage-ral vagy az SQL-vel szemben. A pod van rendelve egy Azure-identitás, amely lehetővé teszi számukra, hogy hitelesítse magát az Azure Active Directoryban, és kap egy digitális jogkivonatot. Ez a digitális jogkivonat más Azure-szolgáltatások számára is megjeleníthető, amelyek ellenőrzik, hogy a pod jogosult-e a szolgáltatás elérésére és a szükséges műveletek végrehajtására. Ez a megközelítés azt jelenti, hogy például az adatbázis-kapcsolati karakterláncok nem szükségesek titkos kulcsokat. A pod által felügyelt identitás egyszerűsített munkafolyamata az alábbi ábrán látható:
 
-![A pod egyszerűsített munkafolyamat felügyelt identitás az Azure-ban](media/developer-best-practices-pod-security/basic-pod-identity.png)
+![Egyszerűsített munkafolyamat az Azure podfelügyelt identitásához](media/developer-best-practices-pod-security/basic-pod-identity.png)
 
-Felügyelt identitással az alkalmazás kódja nem kell tartalmaznia egy szolgáltatáshoz, például az Azure Storage eléréséhez szükséges hitelesítő adatokat. Mivel minden egyes pod hitelesíti magát a saját identitással, így is naplózása és hozzáférés felülvizsgálata. Ha az alkalmazás kapcsolódik az Azure-szolgáltatásokat, használja a felügyelt identitásokból korlát hitelesítő adatok újrafelhasználása és kitettség.
+Felügyelt identitás, az alkalmazáskód nem kell megadnia a hitelesítő adatokat egy szolgáltatás, például az Azure Storage eléréséhez. Mivel minden pod saját identitással hitelesíti magát, így naplózhatja és megtekintheti a hozzáférést. Ha az alkalmazás más Azure-szolgáltatásokkal csatlakozik, felügyelt identitások használatával korlátozhatja a hitelesítő adatok újrafelhasználását és az expozíció kockázatát.
 
-A pod-identitásokkal kapcsolatos további információkért lásd: [AK-fürtök beállítása a pod felügyelt identitások és az alkalmazásai használatára][aad-pod-identity]
+A pod-identitásokról további információt az [AKS-fürt konfigurálása pod felügyelt identitások használatára és az alkalmazásokkal című][aad-pod-identity] témakörben talál.
 
-### <a name="use-azure-key-vault-with-flexvol"></a>Az Azure Key Vault használata FlexVol
+### <a name="use-azure-key-vault-with-flexvol"></a>Az Azure Key Vault használata a FlexVol segítségével
 
-Felügyelt pod identitások hitelesítése támogató Azure-szolgáltatások remekül működik. Saját szolgáltatások vagy alkalmazások felügyelt identitások az Azure-erőforrások anélkül hogy továbbra is hitelesítést végezni a hitelesítő adatokhoz vagy kulcsokhoz. Egy digitális tárolót ezen hitelesítő adatok tárolására használható.
+A felügyelt podidentitások nagyszerűen működnek az Azure-szolgáltatások támogatása érdekében. A saját szolgáltatások vagy alkalmazások felügyelt identitások nélkül az Azure-erőforrások, továbbra is hitelesítő adatok kal vagy kulcsok használatával hitelesíti. A digitális trezor tárolhatja ezeket a hitelesítő adatokat.
 
-Amikor az alkalmazásoknak a hitelesítő adatokat tudnak kommunikálni a digitális tárolóhoz, a legújabb hitelesítő adatok lekéréséhez, és kapcsolódjon a szükséges szolgáltatás. Az Azure Key Vault lehet a digitális tárban. A hitelesítő adatok lekérését az Azure Key Vault pod felügyelt identitások használatával egyszerűsített munkafolyamata az alábbi ábrán látható:
+Ha az alkalmazásoknak hitelesítő adatokra van szükségük, kommunikálnak a digitális tárolóval, lekérik a legújabb hitelesítő adatokat, majd csatlakoznak a szükséges szolgáltatáshoz. Az Azure Key Vault lehet ez a digitális tároló. Az egyszerűsített munkafolyamat a hitelesítő adatok beolvasása az Azure Key Vault pod felügyelt identitások pod felügyelt identitások látható az alábbi ábrán:
 
-![A hitelesítő adatokat beolvasni a Key Vault használata egy pod egyszerűsített munkafolyamat felügyelt identitás](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Egyszerűsített munkafolyamat a hitelesítő adatok key vaultból történő beolvasásához egy pod által felügyelt identitás használatával](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
 
-A Key Vault tárolja, és rendszeresen elforgatása a például hitelesítő adatokat, a tárfiók kulcsait vagy a tanúsítványok titkos kulcsok. Az Azure Key Vault integrálható egy FlexVolume használó egy AKS-fürtöt. A FlexVolume illesztőprogram lehetővé teszi, hogy a natív módon olvashatók be hitelesítő adatok a Key Vaultból és biztonságosan azokat csak a kérelmező pod az AKS-fürtöt. A Key Vault FlexVol illesztőprogram be az AKS-csomópontok üzembe helyezéséhez a fürt operátor működnek. A pod felügyelt identitás használatával Key Vault hozzáférés kérése és a hitelesítő adatokat a FlexVolume illesztőprogram keresztül kell lekérni.
+A Key Vault segítségével tárolja és rendszeresen elforgatja a titkos kulcsokat, például a hitelesítő adatokat, a tárfiók kulcsokat vagy a tanúsítványokat. Az Azure Key Vault integrálható egy AKS-fürt segítségével FlexVolume. A FlexVolume illesztőprogram lehetővé teszi, hogy az AKS-fürt natív módon lekérje a hitelesítő adatokat a Key Vaultból, és biztonságosan csak a kérelmező pod számára biztosítsa azokat. Együttműködve a fürt üzemeltetőjével a Key Vault FlexVol illesztőprogramjának az AKS-csomópontokra való üzembe helyezéséhez. Pod felügyelt identitás használatával hozzáférést kérhet a Key Vaulthoz, és lekérheti a szükséges hitelesítő adatokat a FlexVolume illesztőprogramon keresztül.
 
-A FlexVol-hez készült Azure Key Vault a Linux-hüvelyeken és-csomópontokon futó alkalmazásokkal és szolgáltatásokkal használható.
+Az Azure Key Vault és a FlexVol linuxos podokon és csomópontokon futó alkalmazások hoz való használatra készült.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk a podok biztonságossá összpontosít. Néhány ilyen területet végrehajtásához a következő cikkekben talál:
+Ez a cikk a podok védelmére összpontosított. Az alábbi témakörcikkekben az alábbi cikkekben valósíthatja meg a területeket:
 
-* [Felügyelt identitások használata Azure-erőforrásokhoz AK-val][aad-pod-identity]
-* [Azure Key Vault integrálása AK-val][aks-keyvault-flexvol]
+* [Felügyelt identitások használata az Azure-erőforrásokhoz az AKS-sel][aad-pod-identity]
+* [Az Azure Key Vault integrálása az AKS-sel][aks-keyvault-flexvol]
 
 <!-- EXTERNAL LINKS -->
-[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo-pod
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core

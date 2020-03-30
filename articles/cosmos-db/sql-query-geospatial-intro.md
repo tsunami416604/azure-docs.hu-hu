@@ -1,53 +1,53 @@
 ---
-title: Térinformatikai és GeoJSON helye Azure Cosmos DB
-description: Megtudhatja, hogyan hozhat létre térbeli objektumokat Azure Cosmos DB és az SQL API-val.
+title: Térinformatikai és geoJSON-helyadatok az Azure Cosmos DB-ben
+description: Ismerje meg, hogyan hozhat létre térbeli objektumokat az Azure Cosmos DB és az SQL API használatával.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367584"
 ---
-# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és GeoJSON helye Azure Cosmos DB
+# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és geoJSON-helyadatok az Azure Cosmos DB-ben
 
-Ez a cikk az Azure Cosmos DB a térinformatikai funkciókat bemutató. Jelenleg csak Azure Cosmos DB SQL API-fiókok támogatják a térinformatikai adatok tárolását és elérését. A térinformatikai indexelés dokumentációjának elolvasása után a következő kérdésekre kaphat választ:
+Ez a cikk az Azure Cosmos DB térinformatikai funkcióinak bemutatása. A térinformatikai adatok jelenleg tárolását és elérését csak az Azure Cosmos DB SQL API-fiókok támogatják. A térinformatikai indexelésről szóló dokumentáció elolvasása után a következő kérdésekre válaszolhat:
 
-* Hogyan térbeli adatok tárolása az Azure Cosmos DB?
-* Hogyan lekérdezheti az Azure Cosmos DB az SQL és a LINQ térinformatikai adatok?
-* Hogyan engedélyezése vagy letiltása az Azure Cosmos DB kifejezéséhez?
+* Hogyan tárolhatom a térbeli adatokat az Azure Cosmos DB-ben?
+* Hogyan kérdezhetem le a térinformatikai adatokat az Azure Cosmos DB-ben AZ SQL és a LINQ rendszerben?
+* Hogyan engedélyezhetem vagy tilthatja le a térbeli indexelést az Azure Cosmos DB-ben?
 
-## <a name="introduction-to-spatial-data"></a>Bevezetés a térbeli adatok
+## <a name="introduction-to-spatial-data"></a>A térbeli adatok bemutatása
 
-Térbeli adatok pozíció és objektumok terület alakja ismerteti. A legtöbb alkalmazásban ezek felel meg az objektumok a föld és a földrajzi adatok. Térbeli adatok segítségével egy személy, egy helyen a lényeges vagy a város vagy egy lake határait helyét jelölik. Gyakori alkalmazási helyzetek gyakran közelségi lekérdezések, például olyan, "minden kávézóban található a jelenlegi tartózkodási közel."
+A térbeli adatok az objektumok helyzetét és alakját írják le a térben. A legtöbb alkalmazásban ezek a Föld és a térinformatikai adatok objektumainak felelnek meg. A térbeli adatok egy személy, egy érdekes hely, egy város vagy egy tó határát ábrázolhatják. A gyakori használati esetek gyakran közelségi lekérdezésekkel járnak, például "az aktuális tartózkodási helyem közelében található összes kávézó megkeresése".
 
-A Azure Cosmos DB SQL API két térbeli adattípust támogat: a **geometria** adattípust és a **Földrajz** adattípust.
+Az Azure Cosmos DB SQL API-ja két térbeli adattípust támogat: a **geometriai adattípust** és a **földrajzi** adattípust.
 
-- A **geometria** típusa egy euklideszi (Flat) koordináta-rendszerbe tartozó adatoknak felel meg.
-- A **földrajzi** típus a kör alakú koordináta-rendszerbeli adathalmazokat jelöli.
+- A **geometriatípus** egy euklideszi (lapos) koordináta-rendszer adatait jelöli
+- A **földrajzi** típus egy földkörüli koordináta-rendszerben lévő adatokat jelöli.
 
 ## <a name="supported-data-types"></a>Támogatott adattípusok
 
-Azure Cosmos DB támogatja a [GeoJSON-specifikáció](https://tools.ietf.org/html/rfc7946)alapján megjelenített térinformatikai pont adatok indexelését és lekérdezését. GeoJSON datové struktury mindig érvényes JSON-objektumok, így azok is tárolhatók, és az Azure Cosmos DB által kibocsátott speciális eszközök és kódtárak nélkül megkérdezi.
+Az Azure Cosmos DB támogatja a [GeoJSON-specifikáció](https://tools.ietf.org/html/rfc7946)használatával képviselt térinformatikai pontadatok indexelését és lekérdezését. A GeoJSON-adatstruktúrák mindig érvényes JSON-objektumok, így az Azure Cosmos DB használatával speciális eszközök vagy kódtárak nélkül tárolhatók és kérdezhetők le.
 
-Azure Cosmos DB a következő térbeli adattípusokat támogatja:
+Az Azure Cosmos DB a következő térbeli adattípusokat támogatja:
 
 - Pont
-- LineString
+- Vonalsor-karakterlánc
 - Sokszög
-- MultiPolygon
+- MultiPoligon
 
-### <a name="points"></a>Pontok
+### <a name="points"></a>Pont
 
-Egy **pont** egyetlen helyet jelöl a térben. A térinformatikai adatok egy pont, amely egy címe pékséglánc áruházbeli, a teljes képernyős, egy autó vagy város lehet pontos helyét jelöli.  A GeoJSON (és az Azure Cosmos DB) használatával a koordináta pár vagy szélességi és hosszúsági egy pont jelzi.
+A **pont** egyetlen helyet jelöl a térben. A térinformatikai adatokban a pont a pontos helyet jelöli, amely lehet egy élelmiszerbolt, egy kioszk, egy autó vagy egy város utcacíme.  Egy pont a GeoJSON (és az Azure Cosmos DB) a koordinátapár vagy hosszúsági és szélességi.
 
-Íme egy példa JSON egy ponthoz:
+Íme egy példa JSON egy pontot:
 
-**Azure Cosmos DBi pontok**
+**Pontok az Azure Cosmos DB-ben**
 
 ```json
 {
@@ -56,9 +56,9 @@ Egy **pont** egyetlen helyet jelöl a térben. A térinformatikai adatok egy pon
 }
 ```
 
-A térbeli adattípusokat beágyazhatja egy Azure Cosmos DB-dokumentumba, ahogy az ebben a példában látható, hogy a felhasználói profil tartalmazza a helyadatok:
+A térbeli adattípusok beágyazhatók egy Azure Cosmos DB-dokumentumba, amint az a helyadatokat tartalmazó felhasználói profil ban látható:
 
-**Azure Cosmos DBban tárolt hellyel rendelkező profil használata**
+**A Profil használata az Azure Cosmos DB-ben tárolt helyekkel**
 
 ```json
 {
@@ -73,21 +73,21 @@ A térbeli adattípusokat beágyazhatja egy Azure Cosmos DB-dokumentumba, ahogy 
 }
 ```
 
-### <a name="points-in-a-geometry-coordinate-system"></a>Geometriai koordináta-rendszer pontjai
+### <a name="points-in-a-geometry-coordinate-system"></a>Pontok a geometriakoordináta-rendszerben
 
-A **geometria** adattípus esetében a GeoJSON-specifikáció meghatározza a vízszintes tengelyt és a második függőleges tengelyt.
+A **geometriai** adattípushoz a GeoJSON specifikáció határozza meg először a vízszintes tengelyt és a függőleges tengelyt a második.
 
-### <a name="points-in-a-geography-coordinate-system"></a>Földrajzi koordináták rendszerbeli pontok
+### <a name="points-in-a-geography-coordinate-system"></a>Pontok egy földrajzi koordináta-rendszerben
 
-A **földrajzi** adattípus esetében a GeoJSON-specifikáció meghatározza az első és a szélességi fok értéket. Például a többi leképezési alkalmazások, a szélességi és hosszúsági szögek és fok formájában jelennek meg. Hosszúsági értékeket mért vannak a szélességi és-180 fok és 180.0 fok közé, és szélességi értékek vannak az Egyenlítőtől mért-90.0 fok és 90.0 fok közé.
+A **földrajzi** adattípushoz a GeoJSON specifikáció az első és a második szélességi fokot határozza meg. Mint más térképészeti alkalmazások, hosszúsági és szélességi szögek és képviseli a fok. A hosszúsági értékeket a Prime Meridian-tól mérik, és -180 fok és 180,0 fok között vannak, a szélességi értékeket pedig az egyenlítőtől, és -90,0 fok és 90,0 fok között.
 
-Az Azure Cosmos DB értelmezi a koordináták a WGS-84. referenciarendszer egy határozzák meg. Koordináta referencia-rendszerekkel kapcsolatos további részletekért lásd az alábbi.
+Az Azure Cosmos DB a WGS-84 referenciarendszer szerint értelmezi a koordinátákat. A koordináta-referenciarendszerekkel kapcsolatos további részletekért lásd alább.
 
-### <a name="linestrings"></a>Linestring
+### <a name="linestrings"></a>LineStrings (Vonalsorok)
 
-A **linestring** két vagy több pontból álló sorozatot jelöl, és az azokat összekapcsolási szegmenseket. A térinformatikai adatok Linestring gyakran használják autópályák vagy folyókat ábrázolásához.
+**A lineStringek** két vagy több pontból álló sorozatot jelentenek a térben, valamint az azokat összekötő vonalszakaszokat. A térinformatikai adatokban a LineStrings-et gyakran használják autópályák vagy folyók ábrázolására.
 
-**Linestring a GeoJSON**
+**LineStrings a GeoJSON-ban**
 
 ```json
     "type":"LineString",
@@ -97,11 +97,11 @@ A **linestring** két vagy több pontból álló sorozatot jelöl, és az azokat
     ] ]
 ```
 
-### <a name="polygons"></a>Sokszögek
+### <a name="polygons"></a>Sokszög
 
-A **sokszög** a csatlakoztatott pontok határa, amelyek egy lezárt LineString alkotnak. Sokszög Lake például természetes kialakításokat vagy politikai, mint például a város és állam bíróságainak gyakran használják. Íme egy példa egy sokszögre a Azure Cosmos DBban:
+A **sokszög** a kapcsolódó pontok határa, amely zárt LineString-et képez. A sokszögeket gyakran használják természetes képződmények, például tavak vagy politikai joghatóságok, például városok és államok ábrázolására. Íme egy példa egy sokszögre az Azure Cosmos DB-ben:
 
-**Sokszögek a GeoJSON**
+**Sokszögek a GeoJSON-ban**
 
 ```json
 {
@@ -117,17 +117,17 @@ A **sokszög** a csatlakoztatott pontok határa, amelyek egy lezárt LineString 
 ```
 
 > [!NOTE]
-> A GeoJSON specifikációnak megköveteli, hogy érvényes sokszögek, a megadott utolsó koordináta pár legyen ugyanaz, mint az első zárt alakzatot hozhat létre.
+> A GeoJSON specifikáció megköveteli, hogy érvényes sokszögek esetén az utolsó megadott koordinátapár nak meg kell egyeznie az elsővel, hogy zárt alakzatot hozzon létre.
 >
-> Sokszög belül pontok óramutató járásával ellentétes irányban sorrendben kell adni. Egy megadott óramutató sorrendben sokszög benne a régió inverzét jelöli.
+> A sokszögen belüli pontokat az óramutató járásával ellentétes sorrendben kell megadni. Az óramutató járásával megegyező sorrendben megadott sokszög a benne lévő régió inverzét jelöli.
 >
 >
 
-### <a name="multipolygons"></a>Multipolygon
+### <a name="multipolygons"></a>MultiPoligonok
 
-A **Többsokszögű** tömb nulla vagy több sokszögből áll. A **Többsokszögű** oldalak nem lehetnek átfedésben a lapokkal, vagy nem lehetnek közös területek. Egy vagy több ponton is megjelenhetnek.
+A **MultiPolygon** nulla vagy több sokszögből álló tömb. **A MultiPolygons** nem fedheti át az oldalakat, és nem rendelkezhet közös területtel. Egy vagy több ponton is megérinthetnek.
 
-**Több sokszög a GeoJSON**
+**MultiPolikonok a GeoJSON-ban**
 
 ```json
 {
@@ -149,16 +149,16 @@ A **Többsokszögű** tömb nulla vagy több sokszögből áll. A **Többsokszö
 }
 ```
 
-## <a name="coordinate-reference-systems"></a>Koordináta referencia rendszerek
+## <a name="coordinate-reference-systems"></a>Koordináta-referenciarendszerek
 
-Mivel a föld alakja szabálytalan, a földrajzi térinformatikai adathalmazok koordinátái számos koordináta-hivatkozási rendszerben (CRS) jelennek meg, amelyek mindegyike saját hivatkozási kerettel és mértékegységgel rendelkezik. Ha például a "nemzeti rács-Britannia" hivatkozást a rendszer pontos-e az Egyesült Királyság, de nem azon kívül jelenik meg.
+Mivel a Föld alakja szabálytalan, a földrajzi térinformatikai adatok koordinátái számos koordináta-referenciarendszerben (CRS) jelennek meg, amelyek mindegyike saját referenciakerettel és mértékegységekkel rendelkezik. Például a "National Grid of Britain" egy referenciarendszer pontos az Egyesült Királyság, de nem azon kívül.
 
-A jelenleg használatban lévő legnépszerűbb CRS a [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)globális geodéziai rendszer. A GPS-eszközök és a sok leképezés-szolgáltatással, például a Google térkép alkalmazásban és a Bing térképek API-t használja a WGS-84. Azure Cosmos DB támogatja a földrajzi térinformatikai adatai indexelését és lekérdezését kizárólag a WGS-84 CRS használatával.
+A legnépszerűbb CRS használatban van ma a World Geodéziai Rendszer [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). A GPS-eszközök és számos térképezési szolgáltatás, köztük a Google Térkép és a Bing Maps API-k a WGS-84-et használják. Az Azure Cosmos DB csak a WGS-84 CRS használatával támogatja a földrajzi térinformatikai adatok indexelését és lekérdezését.
 
-## <a name="creating-documents-with-spatial-data"></a>Térbeli adatokat tartalmazó dokumentumok létrehozása
-Amikor GeoJSON értékeket tartalmazó dokumentumokat hoz létre, azok automatikusan indexelt térbeli indexszel rendelkező nevezhetnek, a tároló az indexelési házirendet. Ha egy Azure Cosmos DB SDK dinamikusan gépelt például a Python- vagy Node.js nyelven dolgozik, érvényes GeoJSON kell létrehoznia.
+## <a name="creating-documents-with-spatial-data"></a>Dokumentumok létrehozása téradatokkal
+GeoJSON-értékeket tartalmazó dokumentumokat hoz létre, azok automatikusan indexelésre kerülnek egy térbeli indexszel a tároló indexelési házirendjének megfelelően. Ha egy Azure Cosmos DB SDK-val dolgozik egy dinamikusan gépelt nyelven, például python vagy Node.js, létre kell hoznia érvényes GeoJSON.
 
-**Dokumentum létrehozása térinformatikai adattal a Node. js-ben**
+**Dokumentum létrehozása térinformatikai adatokkal a Node.js**
 
 ```javascript
 var userProfileDocument = {
@@ -174,9 +174,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Ha az SQL API-kkal dolgozik, a `Microsoft.Azure.Cosmos.Spatial` névtérben lévő `Point`, `LineString`, `Polygon`és `MultiPolygon` osztályok segítségével ágyazhatja be a hely adatait az alkalmazásobjektumok között. Ezeket az osztályokat segítségével egyszerűsítheti a szerializálási és a térbeli adatok deszerializálása GeoJSON be.
+Ha az SQL API-kkal dolgozik, a `Point` `LineString`, `Polygon`, `MultiPolygon` és a `Microsoft.Azure.Cosmos.Spatial` névtérben lévő osztályok segítségével helyadatokat ágyazhat be az alkalmazásobjektumokba. Ezek az osztályok segítenek egyszerűsíteni a térbeli adatok szerializálását és deszerializálását a GeoJSON-ba.
 
-**Dokumentum létrehozása térinformatikai adattal a .NET-ben**
+**Dokumentum létrehozása térinformatikai adatokkal a .NET-ben**
 
 ```csharp
 using Microsoft.Azure.Cosmos.Spatial;
@@ -199,12 +199,12 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További információ a Bing Maps helymeghatározáshoz [itt](https://msdn.microsoft.com/library/ff701713.aspx).
+Ha nem rendelkezik a szélességi és hosszúsági adatokkal, de rendelkezik a fizikai címekkel vagy a hely nevével, például várossal vagy országgal/régióval, a tényleges koordinátákat egy geokódolási szolgáltatás, például a Bing Maps REST-szolgáltatások használatával keresheti meg. A Bing Maps geokódolásáról itt olvashat [bővebben.](https://msdn.microsoft.com/library/ff701713.aspx)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan kezdheti el a földrajzi támogatásával az Azure Cosmos DB, ezután is:
+Most, hogy megtanulta, hogyan kezdheti el a térinformatikai támogatást az Azure Cosmos DB-ben, a következő ta-
 
-* További információ a [Azure Cosmos db lekérdezésről](sql-query-getting-started.md)
-* További információ a [térbeli adatainak a Azure Cosmos db való lekérdezéséről](sql-query-geospatial-query.md)
-* További információ a [térbeli információk indexeléséről Azure Cosmos db](sql-query-geospatial-index.md)
+* További információ az [Azure Cosmos DB-lekérdezésről](sql-query-getting-started.md)
+* További információ a [térbeli adatok lekérdezéséről az Azure Cosmos DB segítségével](sql-query-geospatial-query.md)
+* További információ az [Index térbeli adatokról az Azure Cosmos DB segítségével](sql-query-geospatial-index.md)

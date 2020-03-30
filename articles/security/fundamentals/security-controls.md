@@ -1,6 +1,6 @@
 ---
-title: Az Azure-szolgáltatások beépített biztonsági ellenőrző cikkeinek indexe
-description: Az Azure-szolgáltatásokhoz készült beépített biztonsági vezérlési cikkek indexe
+title: Beépített biztonsági vezérlők cikkeinek indexe az Azure-szolgáltatásokhoz
+description: Beépített biztonsági vezérlők cikkeinek indexe az Azure-szolgáltatásokhoz
 services: security
 documentationcenter: ''
 author: msmbaldwin
@@ -10,33 +10,31 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 777e0289818053b9029fd9f541714fbdb254dad4
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 59103f7a8841985f463e085b54d5c8461b797778
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476032"
 ---
-# <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Az Azure-szolgáltatásokhoz készült "beépített biztonsági vezérlők" cikkeinek indexe
+# <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Az Azure-szolgáltatások "Beépített biztonsági vezérlők" cikkeinek indexelése
 
-Ez az index a "beépített biztonsági vezérlők" cikkeire mutató hivatkozásokat tartalmaz. A biztonsági ellenőrzés olyan Azure-szolgáltatás minősége vagy funkciója, amely hozzájárul a szolgáltatás a biztonsági rések megelőzésére, észlelésére és reagálására.
+Ez az index a "Beépített biztonsági vezérlők" cikkekre mutató hivatkozásokat tartalmaz. A biztonsági ellenőrzés egy Azure-szolgáltatás minősége vagy szolgáltatása, amely hozzájárul a szolgáltatás biztonsági rések megelőzéséhez, észleléséhez és megválaszolásához.
 
-A beépített biztonsági vezérlési cikkek a következő szolgáltatásokhoz érhetők el:
+A beépített biztonsági vezérlő cikkek a következő szolgáltatásokhoz érhetők el:
 
 - [API Management](../../api-management/api-management-security-controls.md)
 - [Azure App Service](../../app-service/app-service-security-controls.md)
 - [Azure Resource Manager](../../azure-resource-manager/management/azure-resource-manager-security-controls.md)
 - [Azure Backup](../../backup/backup-security-controls.md)
-- [Azure Cosmos DB](../../cosmos-db/cosmos-db-security-controls.md)
 - [Azure Event Hubs](../../event-hubs/event-hubs-security-controls.md)
 - [Azure ExpressRoute](../../expressroute/expressroute-security-controls.md)
 - [Azure Load Balancer](../../load-balancer/load-balancer-security-controls.md)
-- [Üzenetküldés Azure Service Bus](../../service-bus-messaging/service-bus-messaging-security-controls.md)
-- [Azure Service Bus Relay](../../service-bus-relay/service-bus-relay-security-controls.md)
+- [Azure Service Bus üzenetküldés](../../service-bus-messaging/service-bus-messaging-security-controls.md)
+- [Azure szolgáltatásbusz-továbbító](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
 - [Azure SQL Database](../../sql-database/sql-database-security-controls.md)
-- [Azure Storage](../../storage/common/storage-security-controls.md)
-- [Azure-Virtual Machine Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
-- [Linux rendszerű virtuális gépek](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
-- [Windows rendszerű virtuális gépek](../../virtual-machines/windows/virtual-machines-windows-security-controls.md)
-- [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-security-controls.md)
+- [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
+- [Linux virtuális gépek](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
+- [Windows virtuális gépek](../../virtual-machines/windows/virtual-machines-windows-security-controls.md)
+- [Azure VPN-átjáró](../../vpn-gateway/vpn-gateway-security-controls.md)

@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése a Teradata a Azure Data Factory használatával
-description: Ismerkedjen meg a Data Factory szolgáltatás Teradata-összekötővel, amely lehetővé teszi az adatok áthelyezését a Teradata-adatbázisból
+title: Adatok áthelyezése a Teradata szolgáltatásból az Azure Data Factory használatával
+description: Információ a Teradata Connector szolgáltatásról, amely lehetővé teszi az adatok áthelyezését a Teradata adatbázisból
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,95 +13,95 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281196"
 ---
-# <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése a Teradata a Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+# <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése a Teradata szolgáltatásból az Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-onprem-teradata-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-teradata.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [Teradata-összekötőt a v2-ben](../connector-teradata.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a [Teradata-összekötő t a V2 alkalmazásban.](../connector-teradata.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok egy helyszíni Teradata-adatbázisból való áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok áthelyezése egy helyszíni Teradata adatbázisból. Az [adatmozgatási tevékenységek](data-factory-data-movement-activities.md) cikkre épül, amely általános áttekintést nyújt az adatmozgásról a másolási tevékenységgel.
 
-A helyszíni Teradata-adattárból bármely támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által mosogatóként támogatott adattárak listáját a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblázatban tekintheti meg. A Teradata-adattár jelenleg csak az adatok áthelyezését támogatja más adattárakba, de az adatok más adattárakból a Teradata-adattárba való áthelyezésére nem.
+A helyszíni Teradata-adattárból adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját a [Támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblában láthatja. A Data Factory jelenleg csak a Teradata-adattárakból más adattárolókba való adatáthelyezést támogatja, más adattárakból a Teradata-adattárolóba való átmozgatáshoz nem.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A (z) adatfeldolgozó támogatja a helyszíni Teradata-forrásokhoz való kapcsolódást a adatkezelés átjárón keresztül. Az átjáró beállításával adatkezelés kapcsolatos további információkért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) .
+Az adatgyár támogatja a helyszíni Teradata-forrásokhoz való csatlakozást az adatkezelési átjárón keresztül. Tekintse meg [az adatok áthelyezését a helyszíni helyek és a felhőalapú](data-factory-move-data-between-onprem-and-cloud.md) cikk között, és ismerje meg az Adatkezelési átjárót és az átjáró beállításának lépésenkénti útmutatóját.
 
-Az átjáróra akkor is szükség van, ha a Teradata egy Azure IaaS virtuális gépen fut. Az átjárót ugyanarra a IaaS virtuális gépre telepítheti, mint az adattár vagy egy másik virtuális gép, feltéve, hogy az átjáró csatlakozni tud az adatbázishoz.
+Átjáró szükséges akkor is, ha a Teradata egy Azure IaaS virtuális gép üzemelteti. Az átjáró t az adattárban lévő IaaS virtuális gépre vagy egy másik virtuális gépre telepítheti, feltéve, hogy az átjáró csatlakozhat az adatbázishoz.
 
 > [!NOTE]
-> A kapcsolat/átjáróval kapcsolatos problémák elhárításához kapcsolódó tippekért lásd: [átjárókkal kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
+> A kapcsolatokkal/átjáróval kapcsolatos problémák elhárításával kapcsolatos tippek az [átjáróval kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) című témakörben olvashat.
 
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
-Ahhoz, hogy adatkezelés átjáró csatlakozni tudjanak a Teradata-adatbázishoz, telepítenie kell a [.net-adatszolgáltatót a Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) 14-es vagy újabb verziójára a adatkezelés átjáróval megegyező rendszeren. A Teradata 12-es és újabb verziója támogatott.
+Ahhoz, hogy az Adatkezelési átjáró a Teradata-adatbázishoz kapcsolódjon, telepítenie kell a [.NET adatszolgáltatót a Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) 14-es vagy újabb verziójához ugyanarra a rendszerre, mint az adatkezelési átjáró. A Teradata 12-es és újabb verziója támogatott.
 
-## <a name="getting-started"></a>Bevezetés
-Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni Cassandra-adattárból származó adatokkal.
+## <a name="getting-started"></a>Első lépések
+Létrehozhat egy folyamatot egy másolási tevékenységgel, amely különböző eszközök/API-k használatával áthelyezi az adatokat egy helyszíni Cassandra-adattárból.
 
-- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
-- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Olvassa el [az oktatóanyagot: Folyamat létrehozása a Másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakörben egy gyors útmutatót a folyamat másolása az adatok másolása varázslóval történő létrehozásához.
+- A következő eszközökkel is létrehozhat egy folyamatot: **Visual Studio,** **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**és REST **API.** Lásd: [Tevékenység-oktatóanyag másolása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című témakörben részletes útmutatást talál egy másolási tevékenységgel rendelkező folyamat létrehozásához.
 
-Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépéseket hajthatja végre egy olyan folyamat létrehozásához, amely adatokat helyezi át a forrásadattárból a fogadó adattárába:
 
-1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
-2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához.
-3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges.
+1. **Összekapcsolt szolgáltatások** létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására.
+2. **Adatkészletek** létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására.
+3. Hozzon létre egy **folyamatot** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, egy adatkészletet pedig kimenetként vesz fel.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  A helyszíni Teradata-adattárakból származó adatok másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében lásd a jelen cikk [JSON-példa: adatok másolása a Teradata-ből az Azure blobba](#json-example-copy-data-from-teradata-to-azure-blob) című szakaszát.
+A varázsló használatakor a Data Factory entitásokhoz (csatolt szolgáltatások, adatkészletek és a folyamat) json-definíciók automatikusan létrejönnek. Eszközök/API-k használatakor (a .NET API kivételével) ezeket a Data Factory entitásokat a JSON formátum használatával definiálhatja.  A helyszíni Teradata-adattárból adatok másolására használt Data Factory-entitások JSON-definícióival rendelkező minta a [JSON-példa: Adatok másolása a Teradata-ból](#json-example-copy-data-from-teradata-to-azure-blob) az Azure Blob szakaszban ebben a cikkben.
 
-A következő szakaszokban részletesen ismertetjük a Teradata-adattárra jellemző Data Factory entitások definiálásához használt JSON-tulajdonságokat:
+A következő szakaszok a Teradata-adattára jellemző Data Factory-entitások definiálására használt JSON-tulajdonságok részleteit ismertetik:
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-A következő táblázat a Teradata társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+Az alábbi táblázat a Teradata-kapcsolt szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesTeradata** |Igen |
+| type |A típustulajdonságnak a következő re van állítva: **OnPremisesTeradata** |Igen |
 | kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
-| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
-| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
-| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni Teradata-adatbázishoz való kapcsolódáshoz. |Igen |
+| authenticationType |A Teradata adatbázishoz való csatlakozáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, Egyszerű és Windows. |Igen |
+| felhasználónév |Adja meg a felhasználónevet, ha alapfokú vagy Windows-hitelesítést használ. |Nem |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
+| átjárónév |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak a helyszíni Teradata-adatbázishoz való csatlakozáshoz kell használnia. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
+Az adatkészletek definiálására szolgáló & tulajdonságok teljes listáját az [Adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben olvashat. A json-i adatkészletek például a struktúra, a rendelkezésre állás és a szabályzat hasonlóak az összes adatkészlettípushoz (Azure SQL, Azure blob, Azure table stb.).
 
-A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. Jelenleg nem támogatottak a Teradata adatkészlet típusának tulajdonságai.
+A **typeProperties** szakasz az adatkészlet egyes típusainál eltérő, és tájékoztatást nyújt az adatok helyéről az adattárban. Jelenleg nincsenek a Teradata adatkészlet hez támogatott típustulajdonságok.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a házirendek minden típusú tevékenységhez elérhetők.
+A tevékenységek definiálására rendelkezésre álló szakaszok & tulajdonságok teljes listáját a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben olvashat. Az olyan tulajdonságok, mint a név, a leírás, a bemeneti és kimeneti táblák és a házirendek minden típusú tevékenységhez elérhetők.
 
-Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
+Mivel a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusoktól függően változnak. Másolási tevékenység esetén a források és a fogadók típusától függően változnak.
 
-Ha a forrás **RelationalSource** típusú (amely magában foglalja a Teradata), a **typeProperties** szakaszban a következő tulajdonságok érhetők el:
+Ha a forrás **RelationalSource** típusú (amely teradata-t is tartalmaz), a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from MyTable. |Igen |
+| lekérdezés |Az adatok olvasásához használja az egyéni lekérdezést. |SQL lekérdezési karakterlánc. Például: válassza a * lehetőséget a MyTable táblából. |Igen |
 
-### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: adatok másolása a Teradata-ből az Azure-Blobba
-Az alábbi példa olyan JSON-definíciókat tartalmaz, amelyeket a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre a folyamat létrehozásához. Bemutatják, hogyan másolhatók adatok a Teradata-ből az Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
+### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: Adatok másolása a Teradata-ból az Azure Blobba
+A következő példa minta JSON-definíciókat tartalmaz, amelyek segítségével létrehozhat egy folyamatot a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy az [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával. Ezek azt mutatják, hogyan másolhatja az adatokat a Teradata-ból az Azure Blob Storage-ba. Azonban az adatok átmásolhatók az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott fogadók bármelyikébe az Azure Data Factory másolási tevékenység használatával.
 
-A minta a következő adatgyári entitásokat tartalmazhatja:
+A minta a következő adatfeldolgozó entitásokkal rendelkezik:
 
-1. [OnPremisesTeradata](#linked-service-properties)típusú társított szolgáltatás.
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
-3. [RelationalTable](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
-5. A [RelationalSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
+1. [OnPremisesTeradata](#linked-service-properties)típusú csatolt szolgáltatás.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
+3. [RelationalTable](#dataset-properties)típusú bemeneti [adatkészlet.](data-factory-create-datasets.md)
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet.](data-factory-create-datasets.md)
+5. A [RelationalSource](#copy-activity-properties) és [a BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)programot használó másolási tevékenységet használó [folyamat.](data-factory-create-pipelines.md)
 
-A minta egy lekérdezési eredményből másolja az adatait a Teradata-adatbázisba óránként egy blobba. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
+A minta átmásolja az adatokat egy lekérdezés eredménye Teradata adatbázis egy blob óránként. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszok ismertetik.
 
-Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a helyszíni [helyszínek és a felhő közötti adatáthelyezést](data-factory-move-data-between-onprem-and-cloud.md) ismertetik.
+Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a helyszíni helyek és a felhőalapú cikk [közötti átmozgatási](data-factory-move-data-between-onprem-and-cloud.md) adatokban találhatók.
 
-**Teradata társított szolgáltatás:**
+**Teradata-kapcsolt szolgáltatás:**
 
 ```json
 {
@@ -119,7 +119,7 @@ Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a h
 }
 ```
 
-**Azure Blob Storage társított szolgáltatás:**
+**Azure Blob storage-hoz csatolt szolgáltatás:**
 
 ```json
 {
@@ -133,11 +133,11 @@ Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a h
 }
 ```
 
-**Teradata bemeneti adatkészlete:**
+**Teradata bemeneti adatkészlet:**
 
-A minta feltételezi, hogy létrehozott egy "Sajáttábla" táblát a Teradata-ben, és tartalmaz egy "Timestamp" nevű oszlopot az idősorozat-adatsorokhoz.
+A minta feltételezi, hogy létrehozott egy "MyTable" táblát a Teradata-ban, és tartalmaz egy "időbélyeg" nevű oszlopot az idősorozat-adatokhoz.
 
-A "külső" beállítása: igaz értékkel tájékoztatja a Data Factory szolgáltatást arról, hogy a tábla kívül esik az adatelőállítón, és nem az adatelőállító tevékenysége.
+A "külső" beállítás: a true tájékoztatja a Data Factory szolgáltatást arról, hogy a tábla az adat-előállítón kívül található, és nem az adat-előállító tevékenység által előállított.
 
 ```json
 {
@@ -164,9 +164,9 @@ A "külső" beállítása: igaz értékkel tájékoztatja a Data Factory szolgá
 }
 ```
 
-**Azure-Blob kimeneti adatkészlete:**
+**Azure Blob kimeneti adatkészlet:**
 
-A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1). A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési idő év, hónap, nap és óra részét használja.
+Az adatok óránként egy új blobba (gyakoriság: óra, időköz: 1) kerül beírásra. A blob mappaelérési útja dinamikusan kiértékelve a feldolgozás alatt álló szelet kezdési időpontja alapján történik. A mappa elérési útja a kezdési időpont év-, hónap-, nap- és órarészeit használja.
 
 ```json
 {
@@ -224,9 +224,9 @@ A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, i
     }
 }
 ```
-**Másolási tevékenységgel rendelkező folyamat:**
+**Folyamat másolási tevékenységgel:**
 
-A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
+A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és az óránkénti futtatásra van ütemezve. A folyamat JSON-definíciójában a **forrástípus** **RelationalSource** lesz állítva, **a fogadó** típusa pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés kiválasztja a másolni kívánt adatokat az elmúlt órában.
 
 ```json
 {
@@ -274,61 +274,61 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kime
     }
 }
 ```
-## <a name="type-mapping-for-teradata"></a>Típus leképezése Teradata
-Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikkben említettük, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokra:
+## <a name="type-mapping-for-teradata"></a>A Teradata típusleképezése
+Az [adatmozgatási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben említettek szerint a Másolás tevékenység automatikus típuskonverziót hajt végre a forrástípusokról a fogadótípusokra a következő kétlépéses megközelítéssel:
 
-1. Konvertálás natív forrásokból .NET-típusra
-2. Konvertálás .NET-típusról natív fogadó típusra
+1. Konvertálás natív forrástípusokból .NET-típussá
+2. Konvertálás .NET típusból natív fogadótípussá
 
-Az adatok Teradata való áthelyezésekor a rendszer a következő leképezéseket használja a Teradata típusról .NET-típusra.
+Amikor adatokat helyez át a Teradata-ba, a következő leképezéseket használja a rendszer a Teradata típusról a .NET típusra.
 
-| Teradata-adatbázis típusa | .NET-keretrendszer típusa |
+| Teradata-adatbázis típusa | .NET keretrendszer típusa |
 | --- | --- |
-| CHAR |Sztring |
-| Clob |Sztring |
-| Graphic |Sztring |
-| VarChar |Sztring |
-| VarGraphic |Sztring |
-| Blob |Byte[] |
-| Bájt |Byte[] |
-| VarByte |Byte[] |
-| BigInt |Int64 |
+| Char |Sztring |
+| Clob között |Sztring |
+| Grafikus |Sztring |
+| Varchar |Sztring |
+| Vargrafika |Sztring |
+| Blob |Bájt[] |
+| Bájt |Bájt[] |
+| VarByte között |Bájt[] |
+| BigInt között |Int64 |
 | ByteInt |Int16 |
-| tizedes tört |tizedes tört |
-| Dupla |Dupla |
+| Decimal |Decimal |
+| Double |Double |
 | Egész szám |Int32 |
-| Szám |Dupla |
-| SmallInt |Int16 |
+| Szám |Double |
+| SmallInt között |Int16 |
 | Dátum |DateTime |
-| Time |Időtartam |
-| Time With Time Zone |Sztring |
+| Time |időtartam |
+| Idő az időzónával |Sztring |
 | Időbélyeg |DateTime |
-| Timestamp With Time Zone |DateTimeOffset |
-| Interval Day |Időtartam |
-| Interval Day To Hour |Időtartam |
-| Interval Day To Minute |Időtartam |
-| Interval Day To Second |Időtartam |
-| Interval Hour |Időtartam |
-| Interval Hour To Minute |Időtartam |
-| Interval Hour To Second |Időtartam |
-| Interval Minute |Időtartam |
-| Interval Minute To Second |Időtartam |
-| Interval Second |Időtartam |
-| Interval Year |Sztring |
-| Interval Year To Month |Sztring |
-| Interval Month |Sztring |
-| Period(Date) |Sztring |
-| Időszak (idő) |Sztring |
-| Period(Time With Time Zone) |Sztring |
-| Időszak (timestamp) |Sztring |
-| Period(Timestamp With Time Zone) |Sztring |
+| Időbélyeg időzónával |DateTimeOffset (Dátumidő-eltolás) |
+| Intervallum napja |időtartam |
+| Időköz naptól óráig |időtartam |
+| Időköz naptól percig |időtartam |
+| Időköz naptól másodpercig |időtartam |
+| Időköz óra |időtartam |
+| Időköz percről percre |időtartam |
+| Időköz óra és másodperc között |időtartam |
+| Időköz perc |időtartam |
+| Időköz percről másodpercre |időtartam |
+| Második időköz |időtartam |
+| Intervallum éve |Sztring |
+| Intervallum évről hónapra |Sztring |
+| Intervallum hónap |Sztring |
+| Időszak(dátum) |Sztring |
+| Időszak(idő) |Sztring |
+| Időszak(idő idővel az időzónával) |Sztring |
+| Pont(Időbélyeg) |Sztring |
+| Pont(Időbélyeg időzónával) |Sztring |
 | Xml |Sztring |
 
-## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
-A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Forrás leképezése oszlopokhoz
+Ha többet szeretne tudni arról, hogy a forrásadatkészlet oszlopait a fogadó adatkészlet oszlopaihoz szeretné-e leképezni, olvassa [el az Adatkészletoszlopok leképezése az Azure Data Factoryban című témakört.](data-factory-map-columns.md)
 
-## <a name="repeatable-read-from-relational-sources"></a>Megismételhető olvasás a rokon forrásokból
-Az adatok a kapcsolódó adattárakból való másolása során érdemes megismételni a nem kívánt eredmények elkerülését. Azure Data Factory a szeleteket manuálisan is újra futtathatja. Az újrapróbálkozási szabályzatot is konfigurálhatja egy adatkészlethez, hogy a rendszer hiba esetén újrafuttassa a szeleteket. Ha egy szeletet mindkét módon újrafuttat, meg kell győződnie arról, hogy a szeletek hányszor futnak. Lásd: [megismételhető olvasás a rokon forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Relációs forrásokból ismételhető olvasmony
+Ha relációs adattárakból másolja az adatokat, tartsa szem előtt az ismételhetőséget a nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryban manuálisan futtathatja a szeletet. Az adatkészlet újrapróbálkozási házirendje is konfigurálható, így a szelet újrafut, ha hiba történik. Ha egy szeletet mindkét irányban újrafuttat, meg kell győződnie arról, hogy ugyanazokat az adatokat olvassa el, függetlenül attól, hogy hányszor fut egy szelet. Lásd: [Ismételhető olvasás relációs forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
-A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
+A [Tevékenység teljesítményének másolása & hangolási útmutatóban](data-factory-copy-activity-performance.md) megismerést talál az adatok (másolási tevékenység) azure Data Factory ban az adatmozgatás (másolási tevékenység) teljesítményét befolyásoló legfontosabb tényezőkről, valamint az optimalizálás különböző módjairól.
