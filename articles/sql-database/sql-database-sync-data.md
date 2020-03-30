@@ -12,233 +12,233 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
 ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74422528"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Adatok szinkronizálása több felhőbeli és helyszíni adatbázisban az SQL Data Sync segítségével
 
-Az SQL Data Sync egy szolgáltatás, amely az Azure SQL Database, amely lehetővé teszi az adatokat több SQL-adatbázisok és az SQL Server-példányok kiválasztása kétirányúan szinkronizálja.
+Az SQL Data Sync egy Azure SQL Database-re épülő szolgáltatás, amely lehetővé teszi a kiválasztott adatok kétirányú szinkronizálását több SQL-adatbázis és SQL Server-példány között.
 
 > [!IMPORTANT]
-> Az Azure SQL-adatszinkronizálás jelenleg nem támogatja Azure SQL Database felügyelt példányok használatát.
+> Az Azure SQL Data Sync jelenleg nem támogatja az Azure SQL Database felügyelt példánya.
 
-## <a name="when-to-use-data-sync"></a>Mikor érdemes használni az adatok szinkronizálása
+## <a name="when-to-use-data-sync"></a>Mikor kell használni az Adatszinkronizálást?
 
-Az adatszinkronizálás olyan esetekben hasznos, amikor az egyes Azure SQL-adatbázisokban vagy SQL Server-adatbázisokban frissíteni kell az adattárolást. Az alábbiakban a fő használati esetek Data Sync számára:
+Az adatszinkronizálás olyan esetekben hasznos, ahol az adatokat több Azure SQL-adatbázisban vagy SQL Server-adatbázisban kell frissíteni. Az adatszinkronizálás fő felhasználási esetei a következők:
 
-- **Hibrid adatszinkronizálás:** Az adatszinkronizálással megtarthatja a helyszíni adatbázisok és az Azure SQL-adatbázisok közötti szinkronizálást a hibrid alkalmazások engedélyezéséhez. Ez a képesség is konfigurálja, hogy a ügyfelek, akik használatát fontolgatja a felhőre, és szeretné helyezni néhány alkalmazását az Azure-ban.
-- **Elosztott alkalmazások:** Sok esetben előnyös a különböző számítási feladatok különböző adatbázisokban való elkülönítése. Például ha olyan nagy méretű éles adatbázist, de szükség erre az egy jelentésben vagy elemzési számítási feladatok futtatásához, hasznos ahhoz, hogy a további számítási második adatbázis. Ez a megközelítés minimálisra csökkenti a éles számítási feladatokra gyakorolt hatást. Használhatja a Data Syncet, hogy a két adatbázis szinkronizálva.
-- **Globálisan elosztott alkalmazások:** Számos vállalat számos régiót és akár több országot/régiót is kiterjedhet. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
+- **Hibrid adatszinkronizálás:** Az Adatszinkronizálás segítségével a helyszíni adatbázisok és az Azure SQL-adatbázisok között szinkronizálhatja az adatokat a hibrid alkalmazások engedélyezéséhez. Ez a funkció vonzó lehet az ügyfelek számára, akik fontolgatják, hogy a felhőbe költöznek, és szeretnék, hogy az alkalmazás egy részét az Azure-ban.
+- **Elosztott alkalmazások:** Sok esetben hasznos a különböző adatbázisok közötti különböző számítási feladatok elkülönítése. Például ha egy nagy éles adatbázis, de azt is meg kell futtatni a jelentéskészítési vagy elemzési számítási feladatok ezen adatok, hasznos, hogy egy második adatbázis a további számítási feladatokhoz. Ez a megközelítés minimálisra csökkenti az éles számítási feladatokra gyakorolt teljesítményhatást. Az Adatszinkronizálás segítségével a két adatbázis szinkronizálható marad.
+- **Globálisan elosztott alkalmazások:** Számos vállalkozás több régiót, sőt több országot/régiót is felölel. A hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy önhöz közeli régióban vannak. Az Adatszinkronizálás segítségével könnyedén szinkronizálhatja az adatbázisokat a világ különböző régióiban.
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Forgatókönyv | Néhány ajánlott megoldásokat |
+| Forgatókönyv | Néhány ajánlott megoldás |
 |----------|----------------------------|
-| Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](sql-database-automated-backups.md) |
-| Olvassa el a méretezési csoport | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](sql-database-read-scale-out.md) |
-| ETL (OLTP, OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) vagy [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migrálás a helyszíni SQL Serverről az Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Vészhelyreállítás | [Azure georedundáns biztonsági mentések](sql-database-automated-backups.md) |
+| Méretezés olvasása | [Írásvédett replikák használata írásvédett lekérdezési számítási feladatok betöltéséhez (előzetes verzió)](sql-database-read-scale-out.md) |
+| ETL (OLTP-tól OLAP-ig) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) vagy [SQL Server integrációs szolgáltatások](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| Áttelepítés a helyszíni SQL Server kiszolgálóról az Azure SQL Database szolgáltatásba | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
-## <a name="overview-of-sql-data-sync"></a>A SQL-adatszinkronizálás áttekintése
+## <a name="overview-of-sql-data-sync"></a>Az SQL-adatszinkronizálás áttekintése
 
-Data Sync szinkronizálási csoport fogalma köré alapul. Szinkronizálási csoport, a szinkronizálni kívánt adatbázisok egy csoportját.
+Az adatszinkronizálás a szinkronizálási csoport koncepciójára épül. A szinkronizálási csoport a szinkronizálni kívánt adatbázisok csoportja.
 
-Adatok szinkronizálása egy küllős topológia használatával adatok szinkronizálása. Megadhat egy adatbázis a szinkronizálási csoport, a központi adatbázis. Az adatbázisok a többi tag adatbázisok. Szinkronizálás csak a Hub és az egyes tagok között történik.
+A Data Sync egy hubot és egy küllős topológiát használ az adatok szinkronizálásához. A szinkronizálási csoport egyik adatbázisát Hub-adatbázisként definiálhatja. A többi adatbázis tagadatbázis. A szinkronizálás csak a központ és az egyes tagok között történik.
 
-- A **hub-adatbázisnak** Azure SQL Databasenak kell lennie.
-- A **tag-adatbázisok** lehetnek SQL-adatbázisok, helyszíni SQL Server adatbázisok vagy SQL Server példányok az Azure Virtual Machines szolgáltatásban.
-- A **szinkronizálási adatbázis** tartalmazza a metaadatokat és a naplót az adatok szinkronizálásához. A szinkronizálási adatbázisnak egy olyan Azure SQL Database kell lennie, amely ugyanabban a régióban található, mint a hub-adatbázis. A Sync-adatbázis létrehozása ügyfél és a vásárlói kezelésű.
+- A **Hub-adatbázisnak** Azure SQL-adatbázisnak kell lennie.
+- A **tagadatbázisok** lehetnek SQL-adatbázisok, helyszíni SQL Server-adatbázisok vagy SQL Server-példányok az Azure virtuális gépeken.
+- A **szinkronizálási adatbázis** tartalmazza a metaadatokat és az adatszinkronizálásnaplózást. A szinkronizálási adatbázisnak egy Azure SQL-adatbázisnak kell lennie, amely ugyanabban a régióban található, mint a Hub Database. A szinkronizálási adatbázis az ügyfél által létrehozott és az ügyfél tulajdonában van.
 
 > [!NOTE]
-> Ha helyszíni adatbázist használ tagként adatbázisként, [telepítenie és konfigurálnia kell egy helyi szinkronizáló ügynököt](sql-database-get-started-sql-data-sync.md#add-on-prem).
+> Ha a helyszíni adatbázist tagadatbázisként használja, [telepítenie és konfigurálnia kell egy helyi szinkronizálási ügynököt.](sql-database-get-started-sql-data-sync.md#add-on-prem)
 
 ![Adatok szinkronizálása adatbázisok között](media/sql-database-sync-data/sync-data-overview.png)
 
-Szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
+A szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 
-- A **szinkronizálási séma** leírja, hogy mely adatokat szinkronizálja a rendszer.
-- A **szinkronizálás iránya** lehet kétirányú, vagy csak egy irányba lehet flow. Vagyis a szinkronizálás iránya lehet a *tag*, a tag vagy a két *csomópont*is.
-- A szinkronizálási **időköz** leírja, hogy milyen gyakran történjen a szinkronizálás.
-- Az **ütközés-feloldási házirend** egy csoport szintű házirend, amely lehet *hub WINS* vagy *tag WINS*.
+- A **szinkronizálási séma** leírja, hogy mely adatok szinkronizálása folyamatban van.
+- A **Szinkronizálás iránya** lehet kétirányú, vagy csak egy irányban folyhat. Ez azt illeti, a Szinkronizálási irány lehet *Hub to Member*, vagy Tag a *Hub*, vagy mindkettő.
+- A **szinkronizálási időköz** azt ismerteti, hogy milyen gyakran történik szinkronizálás.
+- Az **ütközésfeloldási házirend** csoportszintű házirend, amely lehet *hub győzelem* vagy tag *nyer*.
 
 ## <a name="how-does-data-sync-work"></a>Hogyan működik az adatszinkronizálás?
 
-- **Az adatváltozások nyomon követése:** Az adatszinkronizálás nyomon követi a módosításokat INSERT, Update és DELETE eseményindítók használatával. A módosítások a felhasználói adatbázisban egy oldali táblában vannak rögzítve. Vegye figyelembe, hogy az BULK INSERT alapértelmezés szerint nem indít el tüzet. Ha FIRE_TRIGGERS nincs megadva, a beszúrási eseményindítók nem lesznek végrehajtva. Adja hozzá a FIRE_TRIGGERS lehetőség, hogy a Data Sync ezeket beillesztések nyomon követheti. 
-- **Az adatszinkronizálás:** Az adatszinkronizálást egy sugaras modellben tervezték. A Hub külön-külön szinkronizál minden tagja. A központi menü módosításokat a rendszer letölti a tag, és majd a tag program feltölti a hubhoz.
-- **Ütközések feloldása:** Az adatszinkronizálás két lehetőséget kínál az ütközés feloldására, a *hub WINS* vagy a *tag WINS*használatára.
-  - Ha a *hub WINS*lehetőséget választja, a hub módosításai mindig felülírják a tag módosításait.
-  - Ha a *tag WINS*lehetőséget választja, a tag módosításai felülírják a központban lévő módosításokat. Ha egynél több tagja van, a végső értéke attól függ, melyik tag először szinkronizálja.
+- **Az adatok változásainak nyomon követése:** Az Adatszinkronizálás a változásokat beszúrási, frissítési és törlési eseményindítók használatával követi nyomon. A módosításokat a rendszer a felhasználói adatbázis egy oldaltáblájában rögzíti. Ne feledje, hogy a BULK INSERT alapértelmezés szerint nem indítja el az eseményindítókat. Ha FIRE_TRIGGERS nincs megadva, nem hajtvégre beszúrási eseményindítókat. Adja hozzá a FIRE_TRIGGERS beállítást, hogy az Adatszinkronizálás nyomon követhesse ezeket a beszúrásokat. 
+- **Adatok szinkronizálása:** A Data Sync hub- és küllős modellben készült. A Hub külön-külön szinkronizálja az egyes tagokat. A Hub ról származó módosítások letöltődnek a tagba, majd a tag módosításai feltöltésre kerülnek a Hubba.
+- **Ütközések feloldása:** A Data Sync két lehetőséget kínál az ütközések feloldására, *a Hub nyer,* vagy *a tag nyer.*
+  - Ha a Hub wins lehetőséget *választja,* a hub változásai mindig felülírják a tag változásait.
+  - Ha a *Tag nyer*lehetőséget választja, a tag módosításai felülírják a hub változásait. Ha egynél több tag van, a végső érték attól függ, hogy melyik tag szinkronizálelőször.
 
-## <a name="compare-data-sync-with-transactional-replication"></a>Adatszinkronizálás összehasonlítása tranzakciós replikációval
+## <a name="compare-data-sync-with-transactional-replication"></a>Az adatszinkronizálás összehasonlítása a tranzakciós replikációval
 
 | | Adatszinkronizálás | Tranzakciós replikáció |
 |---|---|---|
-| Előnyök | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után |
-| Hátrányai | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | – Nem lehet közzétenni Azure SQL Database önálló adatbázisból vagy készletezett adatbázisból<br/>– Magas karbantartási díj |
+| Előnyök | - Aktív-aktív támogatás<br/>- Kétirányú között helyszíni és az Azure SQL Database | - Kisebb késleltetés<br/>- Tranzakciós konzisztencia<br/>- A meglévő topológia újrafelhasználása a migráció után |
+| Hátrányok | - 5 min vagy több késleltetés<br/>- Nincs tranzakciós konzisztencia<br/>- Nagyobb teljesítményhatás | - Nem lehet közzétenni az Azure SQL Database egyetlen adatbázisvagy készletbe helyezett adatbázis<br/>- Magas karbantartási költség |
 
-## <a name="get-started-with-sql-data-sync"></a>Ismerkedés az SQL Data Sync szolgáltatással
+## <a name="get-started-with-sql-data-sync"></a>Az SQL Data Sync – első lépések
 
-### <a name="set-up-data-sync-in-the-azure-portal"></a>Az Azure Portal Data Sync beállítása
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Adatszinkronizálás beállítása az Azure Portalon
 
 - [Az Azure SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
-- Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
+- Adatszinkronizálási ügynök – [Adatszinkronizálási ügynök az Azure SQL Data Sync szolgáltatáshoz](sql-database-data-sync-agent.md)
 
-### <a name="set-up-data-sync-with-powershell"></a>A PowerShell használatával a Data Sync beállítása
+### <a name="set-up-data-sync-with-powershell"></a>Adatszinkronizálás beállítása a PowerShell használatával
 
 - [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
 - [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
 
-### <a name="review-the-best-practices-for-data-sync"></a>Az adatok szinkronizálása az ajánlott eljárások áttekintése
+### <a name="review-the-best-practices-for-data-sync"></a>Az adatszinkronizálással kapcsolatos gyakorlati tanácsok áttekintése
 
 - [Ajánlott eljárások az Azure SQL Data Synchez](sql-database-best-practices-data-sync.md)
 
-### <a name="did-something-go-wrong"></a>Valami nem stimmel
+### <a name="did-something-go-wrong"></a>Valami rosszul sült el?
 
 - [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
-## <a name="consistency-and-performance"></a>Konzisztencia és a teljesítmény
+## <a name="consistency-and-performance"></a>Konzisztencia és teljesítmény
 
 ### <a name="eventual-consistency"></a>Végleges konzisztencia
 
-Mivel az adatszinkronizálás trigger-alapú, a tranzakciós konzisztencia nem garantált. A Microsoft garantálja, hogy az összes módosítást végül megtörténik, és az adatszinkronizálás nem okozza az adatvesztést.
+Mivel az adatszinkronizálás eseményindító-alapú, a tranzakciós konzisztencia nem garantált. A Microsoft garantálja, hogy az összes módosítás végül megtörténik, és hogy az adatszinkronizálás nem okoz adatvesztést.
 
-### <a name="performance-impact"></a>A teljesítményt
+### <a name="performance-impact"></a>Teljesítményre gyakorolt hatás
 
-Adatok szinkronizálása által beszúrása, frissítése és törlése eseményindítók változásainak követése. Ügyféloldali táblák létrehoz a felhasználói adatbázisban a change Tracking szolgáltatáshoz. E módosítás követési tevékenységek hatással vannak az adatbázisban munkaterhelés. A szolgáltatási szintben felmérése, és szükség esetén frissítse.
+Az Adatszinkronizálás beszúrási, frissítési és törlési eseményindítókat használ a változások nyomon követésére. Oldaltáblákat hoz létre a felhasználói adatbázisban a változások nyomon követéséhez. Ezek a változáskövetési tevékenységek hatással vannak az adatbázis munkaterhelésére. Mérje fel a szolgáltatási szintet, és szükség esetén frissítsen.
 
-Kiépítés és megszüntetés során a szinkronizálási csoport létrehozása, frissítése és törlése is befolyásolhatja az adatbázis teljesítményét.
+A szinkronizálási csoport létrehozása, frissítése és törlése során a kiépítés és a megszüntetés szintén hatással lehet az adatbázis teljesítményére.
 
-## <a name="sync-req-lim"></a>Követelmények és korlátozások
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a>Követelmények és korlátozások
 
 ### <a name="general-requirements"></a>Általános követelmények
 
-- Minden táblának elsődleges kulccsal kell rendelkeznie. Az összes sort az elsődleges kulcs értékét ne módosítsa. Ha módosítania kell egy elsődleges kulcs értékét, törölni a sort, és hozza létre újból az új elsődleges kulcs értéke.
+- Minden táblának rendelkeznie kell egy elsődleges kulccsal. Ne módosítsa az elsődleges kulcs értékét egyetlen sorban sem. Ha módosítania kell egy elsődleges kulcs értékét, törölje a sort, és hozza létre újra az új elsődleges kulcsértékkel.
 
 > [!IMPORTANT]
 > Egy meglévő elsődleges kulcs értékének módosítása a következő hibás viselkedést eredményezi:
-> - A központ és a tag közötti adatvesztés akkor is elvész, ha a szinkronizálás nem jelent problémát.
-> - A szinkronizálás sikertelen lehet, mert a követési tábla nem létező sort tartalmaz a forrástól az elsődleges kulcs módosítása miatt.
+> - A hub és a tag közötti adatok elveszhetnek, még akkor is, ha a szinkronizálás nem jelent problémát.
+> - A szinkronizálás sikertelen lehet, mert a követési tábla az elsődleges kulcs módosítása miatt nem létező sorból származik a forrásból.
 
 - Engedélyezni kell a pillanatkép-elkülönítést. További információ: [Pillanatkép-elkülönítés az SQL Serveren](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Általános korlátozások
 
-- Egy táblának nem lehet olyan azonosító oszlopa, amely nem az elsődleges kulcs.
-- Az elsődleges kulcs nem rendelkezhet a következő adattípusokkal: sql_variant, Binary, varbinary, képet, XML.
-- Legyen óvatos elsődleges kulcsaként, az alábbi adattípusok használatakor a támogatott pontosság csak a második, mert: idő, dátum és idő, datetime2, datetimeoffset.
-- Az objektumok (adatbázisok, táblák és oszlopok) nevei nem tartalmazhatják a nyomtatható karaktereket (.), a bal oldali szögletes zárójelet ([) vagy a jobb oldali szögletes zárójelet (]).
-- Azure Active Directory hitelesítés nem támogatott.
-- Az azonos nevű, de eltérő sémával rendelkező táblák (például dbo. Customers és Sales. Customers) nem támogatottak.
-- A felhasználó által definiált adattípusú oszlopok nem támogatottak
+- Egy tábla nem rendelkezhet olyan identitásoszloppal, amely nem az elsődleges kulcs.
+- Az elsődleges kulcs nem rendelkezhet a következő adattípusokkal: sql_variant, bináris, varbinary, image, xml.
+- Legyen elővigyázatos, ha a következő adattípusokat használja elsődleges kulcsként, mert a támogatott pontosság csak a második: idő, datetime, datetime2, datetimeoffset.
+- Az objektumok (adatbázisok, táblák és oszlopok) neve nem tartalmazhatja a nyomtatható karaktereket, pont (.), bal oldali szögletes zárójelet ([) vagy jobb oldali szögletes zárójelet (]).
+- Az Azure Active Directory-hitelesítés nem támogatott.
+- Az azonos nevű, de eltérő sémával rendelkező táblák (például dbo.customers és sales.customers) nem támogatottak.
+- A felhasználó által definiált adattípusokkal rendelkező oszlopok nem támogatottak
 
 #### <a name="unsupported-data-types"></a>Nem támogatott adattípusok
 
 - FileStream
-- AZ SQL ÉS CLR-BELI UDT
+- SQL/CLR UDT
 - XMLSchemaCollection (XML támogatott)
-- A kurzor RowVersion, Timestamp, Hierarchyid
+- Kurzor, Sorverzió, Időbélyeg, Hierarchyid
 
-#### <a name="unsupported-column-types"></a>Nem támogatott oszloptípus
+#### <a name="unsupported-column-types"></a>Nem támogatott oszloptípusok
 
-Adatok szinkronizálása nem tudják szinkronizálni a csak olvasható vagy rendszer által létrehozott oszlopok. Például:
+Az adatszinkronizálás nem szinkronizálható írásvédett vagy a rendszer által létrehozott oszlopokat. Példa:
 
 - Számított oszlopok.
-- A rendszer által létrehozott oszlopok időbeli verziózású táblák esetében.
+- Rendszer által létrehozott oszlopok a temporális táblákhoz.
 
-#### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás és az adatbázis-dimenziókra korlátozások
+#### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás- és adatbázisdimenziók korlátozásai
 
-| **Méretek**                                                  | **Korlát**              | **Áthidaló megoldás**              |
+| **Méretek**                                                  | **Korlát**              | **Workaround**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
-| Szinkronizálási csoportok maximális száma bármilyen adatbázis is tartozhat.       | 5                      |                             |
-| Egyetlen szinkronizálási csoport végpontok maximális száma              | 30                     |                             |
-| A helyszíni végpontokig egy szinkronizálási csoportban maximális számát. | 5                      | Több szinkronizálási csoport létrehozása |
-| Adatbázis-, tábla-, séma, és oszlop                       | név szerint 50 karakter hosszú lehet |                             |
-| A szinkronizálási csoport táblák                                          | 500                    | Több szinkronizálási csoport létrehozása |
-| Szinkronizálási csoport egyik táblájában az oszlopok                              | 1000                   |                             |
-| Egy tábla adatok sor mérete                                        | 24 Mb                  |                             |
+| Azon szinkronizálási csoportok maximális száma, amelyekhez egy adatbázis tartozhat.       | 5                      |                             |
+| Végpontok maximális száma egyetlen szinkronizálási csoportban              | 30                     |                             |
+| A helyszíni végpontok maximális száma egyetlen szinkronizálási csoportban. | 5                      | Több szinkronizálási csoport létrehozása |
+| Adatbázis-, tábla-, séma- és oszlopnevek                       | Névnként 50 karakter |                             |
+| Táblázatok szinkronizálási csoportban                                          | 500                    | Több szinkronizálási csoport létrehozása |
+| Oszlopok egy táblázatban egy szinkronizálási csoportban                              | 1000                   |                             |
+| Adatsor mérete egy táblában                                        | 24 Mb                  |                             |
 | Minimális szinkronizálási időköz                                           | 5 perc              |                             |
 
 > [!NOTE]
-> Lehet legfeljebb 30 végpontok egy szinkronizálási csoportban esetén csak egy szinkronizálási csoportot. Ha egynél több szinkronizálási csoport, a végpontok között az összes szinkronizálási csoportok száma nem lehet hosszabb 30. Ha egy adatbázis több szinkronizálási csoport tagja, több végpontot, nem pedig egy számít.
+> Egy szinkronizálási csoportban legfeljebb 30 végpont lehet, ha csak egy szinkronizálási csoport van. Ha egynél több szinkronizálási csoport van, a végpontok száma az összes szinkronizálási csoportban nem haladhatja meg a 30-at. Ha egy adatbázis több szinkronizálási csoporthoz tartozik, akkor több végpontnak számít, nem egynek.
 
-## <a name="faq-about-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos gyakori kérdések
+## <a name="faq-about-sql-data-sync"></a>Gyakori kérdések az SQL Data Sync-ről
 
-### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Mennyibe kerül a SQL-adatszinkronizálás szolgáltatás díja
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Mennyibe kerül az SQL Data Sync szolgáltatás?
 
-Magáért a SQL-adatszinkronizálás szolgáltatásért nem számítunk fel díjat. Azonban továbbra is gyűjthet adatátviteli díjakat a SQL Database-példányon belüli és kívüli adatáthelyezésért. További információ: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
+Az SQL Data Sync szolgáltatás értnem ingyenes. Azonban továbbra is gyűjt adatátviteli díjakat az SQL Database-példányban történő és az SQL Database-példányból történő adatátvitelért. További információ: [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/).
 
-### <a name="what-regions-support-data-sync"></a>Mely régiók támogatják az adatszinkronizálást
+### <a name="what-regions-support-data-sync"></a>Milyen régiók támogatják az adatszinkronizálást?
 
-Az SQL Data Sync minden régióban érhető el.
+Az SQL Data Sync minden régióban elérhető.
 
-### <a name="is-a-sql-database-account-required"></a>SQL Database fiók szükséges
+### <a name="is-a-sql-database-account-required"></a>Szükséges-e SQL Database-fiók
 
-Igen. Az Eseményközpont-adatbázis üzemeltetésére szolgáló SQL-adatbázis fiókkal kell rendelkeznie.
+Igen. A Hub-adatbázis üzemeltetéséhez SQL Database-fiókkal kell rendelkeznie.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Használhatok adatszinkronizálást SQL Server helyszíni adatbázisok közötti szinkronizálásra
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Használhatom az Adatszinkronizálást csak az SQL Server helyszíni adatbázisai közötti szinkronizálásra
 
-Közvetlenül nem. Szinkronizálhatja a helyszíni SQL Server-adatbázisok közötti közvetve, azonban a központi adatbázis létrehozásával az Azure-ban, és majd a helyszíni adatbázisok hozzáadása a szinkronizálási csoport.
+Nem közvetlenül. Az SQL Server helyszíni adatbázisai között közvetetten is szinkronizálhat, ha hub-adatbázist hoz létre az Azure-ban, majd hozzáadja a helyszíni adatbázisokat a szinkronizálási csoporthoz.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Használhatom az adatszinkronizálást a különböző előfizetésekhez tartozó SQL-adatbázisok közötti szinkronizáláshoz
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Használhatom az Adatszinkronizálást a különböző előfizetésekhez tartozó SQL-adatbázisok közötti szinkronizáláshoz
 
-Igen. Szinkronizálhatja különböző előfizetésekhez tartozó erőforráscsoportok tartozó SQL-adatbázisok között.
+Igen. Szinkronizálhatja a különböző előfizetések által birtokolt erőforráscsoportokhoz tartozó SQL-adatbázisok at.
 
-- Ha az előfizetés ugyanazt bérlőhöz tartozik, és Ön jogosult az összes előfizetés, konfigurálhatja a szinkronizálási csoport az Azure Portalon.
-- Ellenkező esetben rendelkezik, amelyek különböző előfizetésekhez tartoznak a szinkronizálási tagok hozzáadása a PowerShell használatával.
+- Ha az előfizetések ugyanahhoz a bérlőhöz tartoznak, és minden előfizetéshez engedéllyel rendelkezik, konfigurálhatja a szinkronizálási csoportot az Azure Portalon.
+- Ellenkező esetben a PowerShell használatával kell hozzáadnia a különböző előfizetésekhez tartozó szinkronizálási tagokat.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Használhatok adatszinkronizálást a különböző felhőkhöz tartozó SQL-adatbázisok (például az Azure Public Cloud és az Azure China 21Vianet) közötti szinkronizáláshoz
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Használhatom az Adatszinkronizálást a különböző felhőkhöz tartozó SQL-adatbázisok (például az Azure Public Cloud és az Azure China 21Vianet) közötti szinkronizáláshoz
 
-Igen. A különböző előfizetésekhez tartoznak, a szinkronizálási tagok hozzáadása a PowerShell használatával telepítette, szinkronizálhatja különböző felhőkben tartozó SQL-adatbázisok között.
+Igen. Szinkronizálhatja a különböző felhőkhöz tartozó SQL-adatbázisok között, a PowerShell használatával kell hozzáadnia a különböző előfizetésekhez tartozó szinkronizálási tagokat.
 
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Használhatom az adatszinkronizálást az éles adatbázisból származó adatok egy üres adatbázisba való kivetéséhez, majd szinkronizálni őket
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Használhatom a Data Sync-et a termelési adatbázisból származó adatok üres adatbázisba történő bemagzására, majd szinkronizálhatom őket
 
-Igen. A séma manuális létrehozása az új adatbázis az eredeti alkalmazott azt. Miután létrehozta a sémát, a táblák hozzáadása a szinkronizálási csoport másolja az adatokat, és legyen szinkronizálva.
+Igen. Hozza létre a sémát manuálisan az új adatbázisban az eredetiből történő parancsfájlálással. Miután létrehozta a sémát, adja hozzá a táblákat egy szinkronizálási csoporthoz az adatok másolásához és szinkronizálásához.
 
-### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Az adatbázisok biztonsági mentése és visszaállítása SQL-adatszinkronizálás használatával
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Az SQL Data Sync használatával kell biztonsági másolatot tartani és visszaállítani az adatbázisokat
 
-Nem javasoljuk, hogy a SQL-adatszinkronizálás használatával készítsen biztonsági másolatot az adatairól. Nem lehet biztonsági mentést készíteni és visszaállítani egy adott időpontra, mert SQL-adatszinkronizálás szinkronizálások nincsenek verziója. Emellett a SQL-adatszinkronizálás nem készít biztonsági mentést más SQL-objektumokról, például tárolt eljárásokról, és nem hajtja végre gyorsan a visszaállítási művelet megfelelőjét.
+Nem ajánlott az SQL Data Sync használata az adatok biztonsági másolatának létrehozásához. Nem lehet biztonsági másolatot és visszaállítást egy adott időpontban, mert az SQL Data Syncsyncizations nem verziószámozott. Továbbá az SQL Data Sync nem biztonsági másolatot más SQL-objektumok, például a tárolt eljárások, és nem teszi meg a megfelelő visszaállítási művelet gyorsan.
 
-Az egyik ajánlott biztonsági mentési módszer: [Azure SQL Database-adatbázis másolása](sql-database-copy.md).
+Az egyik ajánlott biztonsági mentési technikáról az [Azure SQL-adatbázis másolása](sql-database-copy.md)című témakörben található.
 
-### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Az adatszinkronizálás titkosított táblákat és oszlopokat képes szinkronizálni
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Szinkronizálhatja az adatok szinkronizálását a titkosított táblák és oszlopok
 
-- Ha egy adatbázis Always Encrypted használ, csak azokat a táblákat és oszlopokat szinkronizálhatja *, amelyek nincsenek titkosítva* . A titkosított oszlopokban nem lehet szinkronizálni, mert az adatszinkronizálás nem tudja visszafejteni az adatokat.
-- Ha egy oszlop oszlopszintű titkosítást (CLE) használ, szinkronizálhatja az oszlop, mindaddig, amíg a sor mérete kisebb, mint 24 Mb maximális méretét. Adatszinkronizálás kezeli a normál bináris adat titkosítja a kulcsot (CLE) oszlopban. Az egyéb szinkronizálási tagok található adatok visszafejtése, ugyanazt a tanúsítványt kell.
+- Ha egy adatbázis mindig titkosított, csak a *nem* titkosított táblákat és oszlopokat szinkronizálhatja. A titkosított oszlopok nem szinkronizálhatók, mert az adatszinkronizálás nem tudja visszafejteni az adatokat.
+- Ha egy oszlop oszlopszintű titkosítást (CLE) használ, szinkronizálhatja az oszlopot, feltéve, hogy a sormérete kisebb, mint a 24 Mb-os maximális méret. A Data Sync a kulcs (CLE) által titkosított oszlopot normál bináris adatként kezeli. A többi szinkronizálási tag adatainak visszafejtéséhez ugyanazzal a tanúsítvánnyal kell rendelkeznie.
 
-### <a name="is-collation-supported-in-sql-data-sync"></a>SQL-adatszinkronizálás támogatja a rendezést.
+### <a name="is-collation-supported-in-sql-data-sync"></a>A rendezés támogatott az SQL Data Sync-ben
 
-Igen. Az SQL Data Sync támogatja a rendezést a következő esetekben:
+Igen. Az SQL Data Sync a következő esetekben támogatja a rendezést:
 
-- Ha a kiválasztott szinkronizálási séma táblái még nem szerepelnek a központban vagy a tagok adatbázisaiban, akkor a szinkronizálási csoport telepítésekor a szolgáltatás automatikusan létrehozza a megfelelő táblákat és oszlopokat az üres célhely-adatbázisokban kiválasztott rendezési beállításokkal.
-- Ha a táblák szinkronizálható, már létezik a hub és a tag-adatbázisokban, az SQL Data Sync megköveteli, hogy az elsődleges kulcsoszlopot ugyanazt a rendezést hubot és a tag adatbázis sikeres üzembe helyezéséhez a szinkronizálási csoport között. Nem vonatkoznak rendezési korlátozások oszlopokon kívül az elsődleges kulcsoszlopot.
+- Ha a kijelölt szinkronizálási sématáblák még nincsenek a központi vagy tagadatbázisokban, akkor a szinkronizálási csoport telepítésekor a szolgáltatás automatikusan létrehozza a megfelelő táblákat és oszlopokat az üres céladatbázisokban kiválasztott rendezési beállításokkal.
+- Ha a szinkronizálandó táblák már léteznek a központi és a tagadatbázisokban is, az SQL Data Sync megköveteli, hogy az elsődleges kulcsoszlopai azonos egyeztetést alkalmazzanak a hub- és tagadatbázisok között a szinkronizálási csoport sikeres központi és tagi adatbázisainak üzembe helyezéséhez. Az elsődleges kulcsoszlopokon kívül az oszlopokra nincsenek rendezési korlátozások.
 
-### <a name="is-federation-supported-in-sql-data-sync"></a>Támogatott-e az összevonás SQL-adatszinkronizálás
+### <a name="is-federation-supported-in-sql-data-sync"></a>Az összevonás támogatott az SQL Data Sync-ben
 
-Összevonási Gyökéradatbázis az SQL Data Sync szolgáltatás bármilyen korlátozás nélkül használható. Az összevont adatbázis-végpont nem adható hozzá a SQL-adatszinkronizálás aktuális verziójához.
+Az összevonási gyökéradatbázis korlátozás nélkül használható az SQL Data Sync Service szolgáltatásban. Az összevont adatbázis végpontja nem adhat hozzá az SQL Data Sync aktuális verziójához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-### <a name="update-the-schema-of-a-synced-database"></a>A szinkronizált adatbázis sémájának frissítéséhez
+### <a name="update-the-schema-of-a-synced-database"></a>Szinkronizált adatbázis sémájának frissítése
 
-Rendelkezik egy szinkronizálási csoportban egy adatbázis sémájának frissítéséhez? A séma módosításai nem replikálódnak automatikusan. Az egyes megoldások a következő cikkekben talál:
+Frissíti egy adatbázis sémáját egy szinkronizálási csoportban? A sémamódosítások at a rendszer nem replikálja automatikusan. További megoldásokat az alábbi cikkekben talál:
 
-- [A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás](sql-database-update-sync-schema.md)
-- [Meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítése a PowerShell használatával](scripts/sql-database-sync-update-schema.md)
+- [Sémamódosítások replikációjának automatizálása az Azure SQL Data Sync szolgáltatásban](sql-database-update-sync-schema.md)
+- [PowerShell használata meglévő szinkronizálási csoport szinkronizálási sémájának frissítéséhez](scripts/sql-database-sync-update-schema.md)
 
-### <a name="monitor-and-troubleshoot"></a>Monitorozás és hibaelhárítás
+### <a name="monitor-and-troubleshoot"></a>Figyelés és hibaelhárítás
 
-A SQL-adatszinkronizálás a várt módon működik? Tevékenység figyelése és hibáinak elhárítása: az alábbi cikkeket:
+Az SQL Data Sync a várt módon halad? A tevékenységek figyeléséhez és a problémák elhárításához olvassa el az alábbi cikkeket:
 
-- [Az Azure-SQL-adatszinkronizálás figyelése Azure Monitor naplókkal](sql-database-sync-monitor-oms.md)
+- [Az Azure SQL-adatszinkronizálás figyelése az Azure Monitor-naplókkal](sql-database-sync-monitor-oms.md)
 - [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
-### <a name="learn-more-about-azure-sql-database"></a>Ismerkedés az Azure SQL Database szolgáltatással
+### <a name="learn-more-about-azure-sql-database"></a>További információ az Azure SQL Database-ről
 
-További információ az SQL Database a következő cikkekben talál:
+Az SQL Database alkalmazásról további információt az alábbi cikkekben talál:
 
 - [Az SQL Database áttekintése](sql-database-technical-overview.md)
 - [Az adatbázis életciklusának felügyelete](https://msdn.microsoft.com/library/jj907294.aspx)

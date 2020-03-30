@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: a vész-helyreállítás tervezése'
-description: Ez az oldal a vész-helyreállítási architektúrával kapcsolatos javaslatokat tartalmaz az Azure ExpressRoute használata során.
+title: 'Azure ExpressRoute: Tervezés vészhelyreállításhoz'
+description: Ez a lap az Azure ExpressRoute használata során a vész-helyreállításra vonatkozó architekturális javaslatokat tartalmaz.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,142 +8,142 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076704"
 ---
-# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Vészhelyzeti helyreállítás tervezése ExpressRoute-alapú privát partnerekkel
+# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Tervezés vészhelyreállításhoz az ExpressRoute privát társviszony-létesítésével
 
-A ExpressRoute magas rendelkezésre állású, hogy a szolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Más szóval, a Microsoft hálózaton belüli ExpressRoute útvonalon nem létezik egyetlen meghibásodási pont. A ExpressRoute áramkör rendelkezésre állásának maximalizálására szolgáló tervezési szempontokat lásd: [a magas rendelkezésre állás tervezése a ExpressRoute][HA].
+Az ExpressRoute magas rendelkezésre állásra van tervezve, hogy mobilszolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Más szóval a Microsoft-hálózaton belül nincs egyetlen meghibásodási pont az ExpressRoute elérési útban. Az ExpressRoute-áramkörök rendelkezésre állásának maximalizálásához szükséges tervezési szempontokért [lásd: Tervezés az ExpressRoute magas rendelkezésre állásának tervezése című témakörben.][HA]
 
-Azonban a Murphy népszerű példabeszédének betartása –*Ha bármi rosszat tud,* ez a cikk figyelembe veszi, hogy olyan megoldásokra koncentrálunk, amelyek túlmutatnak az egyetlen ExpressRoute áramkörrel kapcsolatos hibákon. Más szóval, ebben a cikkben megvizsgáljuk a hálózati architektúra szempontjait a robusztus háttérbeli hálózati kapcsolat kiépítéséhez a vész-helyreállításhoz a Geo-redundáns ExpressRoute-áramkörök használatával.
+Azonban figyelembe véve Murphy népszerű példabeszéd -*ha valami elromlathat, akkor*-- figyelembe kell venni, ebben a cikkben hadd összpontosítson megoldásokat, amelyek túlmutatnak hibák, hogy lehet kezelni egyetlen ExpressRoute áramkör. Más szóval ebben a cikkben nézzük meg a hálózati architektúra szempontok robusztus háttérhálózati kapcsolat létrehozása a vész-helyreállítási georedundáns ExpressRoute-áramkörök használatával.
 
-## <a name="need-for-redundant-connectivity-solution"></a>Redundáns csatlakozási megoldásra van szükség
+## <a name="need-for-redundant-connectivity-solution"></a>Redundáns kapcsolódási megoldás szükségessége
 
-Vannak olyan lehetőségek és példányok, ahol a teljes regionális szolgáltatás (a Microsoft, a hálózati szolgáltatók, az ügyfél vagy más felhőalapú szolgáltatók) csökkentett teljesítményű. Az ilyen regionális szolgáltatások hatásának alapvető oka a természetes szerencsétlenség. Ezért az üzletmenet folytonossága és a kritikus fontosságú alkalmazások esetében fontos, hogy megtervezze a vész-helyreállítási feladatait.   
+Vannak olyan lehetőségek és esetek, amikor egy teljes regionális szolgáltatás (legyen az microsoftos, hálózati szolgáltató, ügyfél vagy más felhőszolgáltató) leromlott. Az ilyen regionális szintű szolgáltatási hatás kiváltó oka a természeti csapás. Ezért az üzletmenet folytonossága és a kritikus fontosságú alkalmazások fontos, hogy tervezze meg a katasztrófa-helyreállítási.   
 
-Függetlenül attól, hogy az üzleti szempontból kritikus fontosságú alkalmazásokat egy Azure-régióban vagy a helyszínen, vagy bárhol máshol futtatja, egy másik Azure-régiót is használhat feladatátvételi helyként. A következő cikkek az alkalmazások és a előtér-hozzáférési perspektívák vész-helyreállítását tárgyalják:
+Függetlenül attól, hogy az Azure-régióban vagy a helyszínen vagy bárhol máshol futtatja-e a kritikus fontosságú alkalmazásokat, feladatátvételi helyként használhat egy másik Azure-régiót. A következő cikkek az alkalmazások és az előtér-hozzáférési perspektívák vészhelyreállítási tervével foglalkoznak:
 
-- [Nagyvállalati szintű vész-helyreállítás][Enterprise DR]
-- [SMB-vész-helyreállítás Azure Site Recovery][SMB DR]
+- [Nagyvállalati szintű vészhelyreállítás][Enterprise DR]
+- [SMB-vészhelyreállítás az Azure Site Recoveryvel][SMB DR]
 
-Ha a helyszíni hálózat és a Microsoft közötti ExpressRoute kapcsolatot a kritikus fontosságú műveletekhez használja, a vész-helyreállítási tervnek tartalmaznia kell a Geo-redundáns hálózati kapcsolatot is. 
+Ha a helyszíni hálózat és a Microsoft közötti ExpressRoute-kapcsolatra támaszkodik a kritikus fontosságú műveletekhez, a vész-helyreállítási tervnek georedundáns hálózati kapcsolatot is tartalmaznia kell. 
 
-## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Több ExpressRoute-áramkör használatának kihívásai
+## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Több ExpressRoute-kapcsolat használatának kihívásai
 
-Ha ugyanazokat a hálózatokat több kapcsolattal is összekapcsolja, a hálózatok közötti párhuzamos útvonalakat is be kell vezetnie. A párhuzamos elérésű útvonalak, ha nincsenek megfelelően összeállítva, aszimmetrikus útválasztáshoz vezethetnek. Ha a PATH-ban állapot-nyilvántartó entitások (például NAT, tűzfal) vannak, akkor az aszimmetrikus útválasztás blokkolhatja a forgalom áramlását.  A ExpressRoute privát társítási útvonala általában nem az állapot-nyilvántartó entitásokon, például a NAT-ban vagy a tűzfalakon keresztül nem fog megjelenni. Ezért a ExpressRoute-alapú privát kapcsolaton keresztüli aszimmetrikus útválasztás nem feltétlenül blokkolja a forgalom áramlását.
+Ha ugyanazt a hálózatkészletet több kapcsolathasználatával kapcsolja össze, párhuzamos elérési utakat vezet be a hálózatok között. A párhuzamos elérési utak nem megfelelően tervezve aszimmetrikus útválasztást eredményezhetnek. Ha állapotalapú entitások (például NAT, tűzfal) vannak az elérési úton, az aszimmetrikus útválasztás blokkolhatja a forgalmat.  Általában az ExpressRoute privát társviszony-létesítési útvonalon nem találkozik állapotalapú entitások, például a NAT vagy a tűzfalak. Ezért az ExpressRoute privát társviszony-létesítésén való aszimmetrikus útválasztás nem feltétlenül blokkolja a forgalmat.
  
-Azonban, ha terheléselosztást végez a földrajzilag redundáns párhuzamos elérési utak között, függetlenül attól, hogy van-e állapot-nyilvántartó entitása, vagy sem, akkor inkonzisztens hálózati teljesítményt tapasztalhat. Ebből a cikkből megtudhatja, hogyan lehet kezelni ezeket a kihívásokat.
+Ha azonban a georedundáns párhuzamos útvonalak közötti terheléselosztási forgalmat, függetlenül attól, hogy rendelkezik-e állapotalapú entitásokkal, inkonzisztens hálózati teljesítményt tapasztal. Ebben a cikkben beszéljük meg, hogyan lehet kezelni ezeket a kihívásokat.
 
-## <a name="small-to-medium-on-premises-network-considerations"></a>Kis-és közepes helyszíni hálózati megfontolások
+## <a name="small-to-medium-on-premises-network-considerations"></a>Kis és közepes helyszíni hálózati szempontok
 
-Tekintsük át a példában szereplő hálózatot a következő ábrán. A példában a Geo-redundáns ExpressRoute kapcsolat létrejön a contoso helyszíni helye és a contoso VNet egy Azure-régióban. A diagramon a Solid zöld vonal az előnyben részesített útvonalat jelzi (az 1. ExpressRoute keresztül), a pontozott érték pedig a készenléti útvonalat jelöli (a ExpressRoute 2 használatával).
+Vegyük figyelembe a példa hálózat illusztrált az alábbi ábrán. A példában georedundáns ExpressRoute-kapcsolat jön létre a Contoso helyszíni helye és a Contoso virtuális hálózata egy Azure-régióban között létrejön. A diagramon a folytonos zöld vonal az előnyben részesített útvonalat jelöli (expressroute 1-en keresztül), a pontozott pedig a készenléti útvonalat jelöli (expressroute 2-n keresztül).
 
 [![1]][1]
 
-A vész-helyreállítási ExpressRoute-kapcsolat tervezésekor a következőket kell figyelembe vennie:
+Amikor az ExpressRoute-kapcsolatot vész-helyreállítási célokra tervezi, figyelembe kell vennie a következőket:
 
-- a Geo-redundáns ExpressRoute áramkörök használata
-- különféle szolgáltatói hálózat (ok) használata különböző ExpressRoute áramkörhöz
-- a ExpressRoute áramkör megtervezése a [magas rendelkezésre állás][HA] érdekében
-- a különböző ExpressRoute-áramkör leállítása az ügyfél hálózatának különböző helyén
+- georedundáns ExpressRoute-áramkörök használata
+- különböző szolgáltatói hálózat(ok) használata különböző ExpressRoute-áramkörökhöz
+- az ExpressRoute-áramkörök tervezése [magas rendelkezésre állás érdekében][HA]
+- a különböző ExpressRoute-áramkör leválasztása az ügyfélhálózat különböző helyén
 
-Alapértelmezés szerint, ha az útvonalakat az összes ExpressRoute azonos módon hirdeti meg, az Azure az összes ExpressRoute-útvonalon terheléselosztást hajt végre a helyszíni, a ECMP-útválasztást használó útvonalon.
+Alapértelmezés szerint ha az útvonalakat azonos módon hirdeti az összes ExpressRoute-útvonalon, az Azure a helyszíni kötött forgalmat az összes ExpressRoute-útvonalon egyenlő költségű többelérési (ECMP) útválasztás használatával tölti be.
 
-Azonban a Geo-redundáns ExpressRoute áramkörök esetében figyelembe kell venni a különböző hálózati elérési utakat (különösen a hálózati késés esetében). Ahhoz, hogy a normál működés során konzisztens hálózati teljesítményt kapjon, érdemes inkább a minimális késést biztosító ExpressRoute-áramkört használni.
+A georedundáns ExpressRoute-áramkörök esetében azonban figyelembe kell vennünk a különböző hálózati teljesítményeket különböző hálózati elérési utakkal (különösen a hálózati késés hez). A normál működés során a konzisztensebb hálózati teljesítmény érdekében célszerű az ExpressRoute-áramkört, amely a minimális késést kínálja.
 
-Az Azure-t úgy befolyásolhatja, hogy egy ExpressRoute áramkört válasszon egy másikat a következő módszerek egyikének használatával (a hatékonyság sorrendjében látható):
+Az Azure-t az alábbi technikák egyikének használatával az egyik ExpressRoute-kapcsolat előnyben részesítésére is beállíthatja (a hatékonyság sorrendjében felsorolva):
 
-- az előnyben részesített ExpressRoute áramkörhöz képest további speciális útvonal hirdetése a többi ExpressRoute-áramkörhöz képest
-- a kapcsolat magasabb súlyozásának beállítása a virtuális hálózatot az előnyben részesített ExpressRoute-áramkörhöz összekötő kapcsolathoz
-- az útvonalak közzététele a kevésbé előnyben részesített ExpressRoute-áramkörön, az elérési úttal meghaladva
+- konkrétabb útvonal hirdetése az előnyben részesített ExpressRoute-áramkörön keresztül más ExpressRoute-áramkörökhöz képest
+- nagyobb kapcsolatsúly konfigurálása azon a kapcsolaton, amely a virtuális hálózatot az előnyben részesített ExpressRoute-áramkörhöz kapcsolja
+- az útvonalak hirdetése a kevésbé preferált ExpressRoute-áramkörön hosszabb AS elérési úttal (AS Path prepend)
 
 ### <a name="more-specific-route"></a>Konkrétabb útvonal
 
-A következő ábra a ExpressRoute útvonal kijelölésének befolyásolását mutatja be, pontosabb útválasztási hirdetmény használatával. Az illusztrált példában a contoso helyszíni/24 IP-tartománya két/25 címtartományként van meghirdetve az előnyben részesített útvonalon (1. ExpressRoute) és/24 a készenléti úton (ExpressRoute 2) keresztül.
+Az alábbi ábra az ExpressRoute-útvonal kiválasztásának befolyásolását mutatja be konkrétabb útvonalhirdetés sel. Az illusztrált példában a Contoso helyszíni /24 IP-tartománya két /25 címtartományként van meghirdetve az előnyben részesített útvonalon (ExpressRoute 1) keresztül, és /24-ként a készenléti útvonalon (ExpressRoute 2) keresztül.
 
 [![2]][2]
 
-Mivel a/25 pontosabb, a/24-höz képest az Azure a 10.1.11.0/24 felé irányuló forgalmat a normál állapotú ExpressRoute 1 értékkel küldi el. Ha a ExpressRoute 1 kapcsolata is meghalad, akkor a VNet csak a 10.1.11.0/24 útvonal hirdetményét fogja látni, csak a ExpressRoute 2 használatával. Ezért a készenléti áramkör a meghibásodási állapotban is használatos.
+Mivel a /25 pontosabb, a /24-hez képest, az Azure a 10.1.11.0/24-es expresszroute 1-en keresztül normál állapotba kerülő forgalmat küld. Ha az ExpressRoute 1 mindkét kapcsolata megszakad, akkor a virtuális hálózat csak az ExpressRoute 2-n keresztül látja a 10.1.11.0/24 útvonalhirdetést; ezért a készenléti áramkört ebben a hibaállapotban használja.
 
-### <a name="connection-weight"></a>Kapcsolatok súlyozása
+### <a name="connection-weight"></a>A kapcsolat súlya
 
-Az alábbi képernyőképen az ExpressRoute-kapcsolatok súlyozásának konfigurálását mutatjuk be Azure Portalon keresztül.
+Az alábbi képernyőkép bemutatja az ExpressRoute-kapcsolat súlyát az Azure Portalon keresztül.
 
 [![3]][3]
 
-A következő ábra a ExpressRoute útvonal kijelölésének a kapcsolatok súlyozásával való befolyásolását szemlélteti. Az alapértelmezett kapcsolatok súlya 0. Az alábbi példában az 1. ExpressRoute-hez való kapcsolatok súlya 100-ként van konfigurálva. Ha egy VNet egynél több ExpressRoute áramkörön keresztül meghirdetett útvonal-előtagot kap, a VNet előnyben részesíti a legnagyobb súllyal való kapcsolatot.
+Az alábbi ábra az ExpressRoute-útvonal kiválasztásának a kapcsolat súlyával történő befolyásolását mutatja be. A kapcsolat alapértelmezett vastagsága 0. Az alábbi példában az ExpressRoute 1 kapcsolatának súlya 100-ként van konfigurálva. Ha egy virtuális hálózat egynél több ExpressRoute-kapcsolaton keresztül hirdetett útvonal-előtagot kap, a virtuális hálózat a legnagyobb súllyal rendelkező kapcsolatot részesíti előnyben.
 
 [![4]][4]
 
-Ha a ExpressRoute 1 kapcsolata is meghalad, akkor a VNet csak a 10.1.11.0/24 útvonal hirdetményét fogja látni, csak a ExpressRoute 2 használatával. Ezért a készenléti áramkör a meghibásodási állapotban is használatos.
+Ha az ExpressRoute 1 mindkét kapcsolata megszakad, akkor a virtuális hálózat csak az ExpressRoute 2-n keresztül látja a 10.1.11.0/24 útvonalhirdetést; ezért a készenléti áramkört ebben a hibaállapotban használja.
 
-### <a name="as-path-prepend"></a>Elérési út
+### <a name="as-path-prepend"></a>AS elérési út
 
-A következő ábra a ExpressRoute útvonal kijelölésének az AS Path előtaggal való használatának befolyásolását szemlélteti. A diagramon az útvonal-hirdetmény a ExpressRoute 1 értéknél a eBGP alapértelmezett viselkedését jelzi. Az útvonalon a 2. ExpressRoute-on keresztüli útválasztási hirdetményben a helyszíni hálózat ASN-je az útvonalon is előtagértéke. Ha ugyanazt az útvonalat több ExpressRoute-áramkör is fogadja, a eBGP Route kiválasztási folyamata során a VNet a legrövidebb elérési úttal rendelkező útvonalat részesíti előnyben. 
+Az alábbi ábra az ExpressRoute-útvonal kiválasztásának befolyásoló, AS elérési út-előkészületet. A diagramon az ExpressRoute 1-en keresztüli útvonalhirdetés az eBGP alapértelmezett viselkedését jelzi. Az ExpressRoute 2-en keresztüli útvonalhirdetésen a helyszíni hálózat ASN-je is előkészül az útvonal AS elérési útján. Ha ugyanazt az útvonalat több ExpressRoute-körön keresztül is érkezik, az eBGP-útvonal kiválasztási folyamata szerint a virtuális hálózat a legrövidebb AS-útvonallal rendelkező útvonalat részesíti előnyben. 
 
 [![5]][5]
 
-Ha a ExpressRoute 1 kapcsolata is meghalad, akkor a VNet csak a ExpressRoute 2 használatával fog megjelenni a 10.1.11.0/24 útvonal hirdetménye. Ennek következtében a hosszabb elérési út nem lesz releváns. Ezért a készenléti áramkört ebben a meghibásodási állapotban fogjuk használni.
+Ha az ExpressRoute 1 mindkét kapcsolata megszakad, akkor a virtuális hálózat csak az ExpressRoute 2-n keresztül látja a 10.1.11.0/24 útvonalhirdetést. Következésképpen a hosszabb AS-út lényegtelenné válna. Ezért a készenléti áramkör t használja ebben a hiba állapotban.
 
-Ha az Azure-t a különböző módszerek egyikével szeretné használni, akkor a helyszíni hálózatnak is előnyt kell biztosítania az Azure-beli kötött forgalomra vonatkozó ExpressRoute útvonalon, hogy elkerülje az aszimmetrikus folyamatokat. A helyi hálózat általában úgy van felhasználva, hogy a helyszíni hálózatot a többi ExpressRoute-áramkör előnyére használja. A helyi preferencia egy belső BGP-(iBGP-) metrika. A BGP útvonal a legmagasabb helyi preferencia értékkel van előnyben részesíteni.
+Bármely technikával, ha befolyásolja az Azure-t, hogy az ExpressRoute egyikét részesítse előnyben másokkal szemben, azt is biztosítania kell, hogy a helyszíni hálózat is ugyanazt az ExpressRoute-elérési utat részesítse előnyben az Azure-hoz kötött forgalom számára az aszimmetrikus folyamatok elkerülése érdekében. A helyi preferencia-érték általában a helyszíni hálózat befolyásolására szolgál, hogy egy ExpressRoute-áramkört részesítsen előnyben a többivel szemben. A helyi preferencia egy belső BGP (iBGP) metrika. A legmagasabb helyi preferencia-értékkel rendelkező BGP-útvonal at részesíti előnyben.
 
 > [!IMPORTANT]
-> Ha bizonyos ExpressRoute-áramköröket készenléti állapotként használ, aktívan kell kezelnie azokat, és rendszeresen tesztelni kell a feladatátvételi műveletet. 
+> Bizonyos ExpressRoute-áramkörök készenléti állapotban való használataesetén aktívan kell kezelnie őket, és rendszeres időközönként tesztelnie kell a feladatátvételi műveletet. 
 > 
 
-## <a name="large-distributed-enterprise-network"></a>Nagyméretű elosztott vállalati hálózat
+## <a name="large-distributed-enterprise-network"></a>Nagy méretű elosztott vállalati hálózat
 
-Ha nagyméretű elosztott vállalati hálózattal rendelkezik, valószínűleg több ExpressRoute-áramkört használ. Ebből a szakaszból megtudhatja, hogyan tervezheti meg a vész-helyreállítást az aktív-aktív ExpressRoute-áramkörökkel anélkül, hogy további készenléti áramköröket kellene használnia. 
+Ha nagy elosztott vállalati hálózattal rendelkezik, valószínűleg több ExpressRoute-kapcsolattal is rendelkezik. Ebben a szakaszban tekintse meg, hogyan tervezhet vész-helyreállítási az aktív-aktív ExpressRoute-áramkörök használatával, további készenléti áramkörök nélkül. 
 
-Tekintsük át a következő ábrán látható példát. A példában a contoso két helyszíni hellyel rendelkezik két különböző Azure-régióban két különböző Azure-régióban, két különböző, egymástól eltérő helyen található ExpressRoute-IaaS. 
+Vegyük figyelembe az alábbi ábrán bemutatott példát. A példában a Contoso két helyszíni helyet rendelkezik két Contoso IaaS-üzembe helyezéshez két különböző Azure-régióban ExpressRoute-kapcsolati kapcsolati kapcsolati kapcsolati helyeken keresztül két különböző társviszony-létesítési helyen. 
 
 [![6]][6]
 
-A vész-helyreállítási felépítésének módja hatással van arra, hogy a régiók közötti (terület1/region2-location2/location1-) forgalom hogyan legyen átirányítva. Vegyünk két különböző katasztrófa-architektúrát, amely eltérő módon irányítja a régiók közötti forgalmat.
+Hogyan tervezzük a vész-helyreállítási hatással van arra, hogy a határokon átnyúló regionális helyközi (region1/region2 a location2/location1) forgalom van irányítva. Vegyünk két különböző katasztrófa-architektúrák, amelyek útvonalak útvonalai régió-helyforgalmát eltérően.
 
-### <a name="scenario-1"></a>1\. forgatókönyv
+### <a name="scenario-1"></a>1. példa
 
-Az első forgatókönyvben tervezze meg a vész-helyreállítást úgy, hogy az Azure-régió és a helyszíni hálózat közötti összes forgalom stabil állapotban legyen a helyi ExpressRoute áramkörön. Ha a helyi ExpressRoute áramkör meghibásodik, a rendszer a távoli ExpressRoute áramkört használja az Azure és a helyszíni hálózat közötti összes adatforgalomhoz.
+Az első forgatókönyvben tervezzünk vészhelyreállítást úgy, hogy az Azure-régió és a helyszíni hálózat közötti összes forgalom a helyi ExpressRoute-kapcsolaton keresztül az állandó állapotban folyjon. Ha a helyi ExpressRoute-kapcsolatcsoport meghibásodik, majd a távoli ExpressRoute-kapcsolatcsoport az Azure és a helyszíni hálózat közötti összes forgalomhoz használatos.
 
-Az 1. forgatókönyv az alábbi ábrán látható. A diagramon a zöld vonalak a VNet1 és a helyszíni hálózatok közötti forgalom elérési útját jelölik. A kék vonalak a VNet2 és a helyszíni hálózatok közötti forgalom elérési útját jelölik. A folytonos vonalak azt jelzik, hogy a kívánt elérési út állandósult állapotban van, a szaggatott vonalak pedig a megfelelő ExpressRoute-áramkör meghibásodása esetén az állandó állapotú forgalmat bonyolító forgalom elérési útját jelzik. 
+Az 1. A diagramon a zöld vonalak a Virtuálishálózatok 1 és a helyszíni hálózatok közötti forgalom útvonalait jelölik. A kék vonalak a Virtuálishálózat2 és a helyszíni hálózatok közötti forgalom útvonalait jelzik. A folytonos vonalak jelzik a kívánt útvonalat az állandósult állapotban, a szaggatott vonalak pedig a forgalmi útvonalat a megfelelő ExpressRoute-kapcsolat meghibásodásában, amely állandósult forgalmat hordoz. 
 
 [![7]][7]
 
-Az virtuális hálózatok befolyásolhatja a forgatókönyvet a kapcsolódási súlyozás használatával, hogy a helyszíni hálózatra irányuló hálózati forgalomhoz való kapcsolódást inkább a helyi ExpressRoute lehessen használni. A megoldás befejezéséhez biztosítania kell a szimmetrikus fordított forgalom áramlását. A iBGP-munkamenetben helyi beállításokat használhat a BGP-útválasztók között (amelyeken a ExpressRoute-áramkörök a helyszíni oldalon vannak lezárva) a ExpressRoute-áramkör előnyben részesítése érdekében. A megoldást az alábbi ábra szemlélteti. 
+A forgatókönyv a kapcsolat súlyának használatával befolyásolhatja a virtuális hálózatok, hogy inkább a kapcsolatot a helyi peering hely ExpressRoute a helyszíni hálózati kötött forgalom. A megoldás befejezéséhez szimmetrikus fordított forgalom áramlását kell biztosítania. A BGP-útválasztók közötti iBGP-munkamenetben (amelyen az ExpressRoute-áramkörök a helyszíni oldalon vannak leállítva) helyi preferenciával egy ExpressRoute-áramkört részesíthet előnyben. Az alábbi ábrán a megoldás látható. 
 
 [![8]][8]
 
-### <a name="scenario-2"></a>2\. forgatókönyv
+### <a name="scenario-2"></a>2. példa
 
-A 2. forgatókönyv a következő ábrán látható. A diagramon a zöld vonalak a VNet1 és a helyszíni hálózatok közötti forgalom elérési útját jelölik. A kék vonalak a VNet2 és a helyszíni hálózatok közötti forgalom elérési útját jelölik. A stabil állapot (a diagram folytonos sorai) esetében a virtuális hálózatok és a helyszíni helyszínek közötti forgalom a legtöbb esetben a Microsoft gerincen keresztül zajlik, és a helyszíni telephelyek közötti kapcsolaton keresztül zajlik csak a meghibásodási állapotban (a egy ExpressRoute diagramja).
+A 2. A diagramon a zöld vonalak a Virtuálishálózatok 1 és a helyszíni hálózatok közötti forgalom útvonalait jelölik. A kék vonalak a Virtuálishálózat2 és a helyszíni hálózatok közötti forgalom útvonalait jelzik. Az állandósult állapotban (szilárdvonalak a diagramon) a virtuális hálózatok és a helyszíni helyek közötti forgalom nagy részt a Microsoft gerincén keresztül áramlik, és a helyszíni helyek közötti összeköttetésen keresztül csak a hiba állapotban (pontozott vonalak egy ExpressRoute ábrája).
 
 [![9]][9]
 
-A megoldást az alábbi ábra szemlélteti. Ahogy az ábrán látható, a forgatókönyvet a VNet útvonal kiválasztásának befolyásolására szolgáló, pontosabb útvonal (1. lehetőség) vagy az elérési út (2. lehetőség) használatával is elvégezheti. Az Azure-beli kötött forgalomra vonatkozó helyszíni hálózati útvonalak kiválasztásának befolyásolásához a helyszíni hely közötti összekapcsolást kevésbé előnyösebb módon kell konfigurálni. Howe az összekapcsolási hivatkozást az előnyben részesített konfigurációtól függően a helyszíni hálózaton használt útválasztási protokolltól függ. A iBGP vagy a metrika helyi beállításait a IGP (OSPF vagy a) használatával használhatja.
+Az alábbi ábrán a megoldás látható. Amint azt szemléltetik, a forgatókönyvet egy adottabb útvonal (1. lehetőség) vagy AS-elérési út (2. lehetőség) használatával tervezheti meg a virtuális hálózat útvonalának kiválasztásához. A helyszíni hálózati útvonal kiválasztásának befolyásolásához az Azure-hoz kötött forgalomhoz kevésbé előnyösnek kell konfigurálnia a helyszíni hely közötti kapcsolatot. Howe konfigurálja az összekapcsolási kapcsolat, mint előnyös függ az útválasztási protokoll t a helyszíni hálózaton. Használhatja a helyi preferencia iBGP vagy metrika IGP (OSPF vagy IS-IS).
 
 [![10]][10]
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben azt beszéltünk, hogyan lehet megtervezni egy ExpressRoute-áramkör magánhálózati kapcsolatának vész-helyreállítását. A következő cikkek az alkalmazások és a előtér-hozzáférési perspektívák vész-helyreállítását tárgyalják:
+Ebben a cikkben azt tárgyalta, hogyan tervezhet egy ExpressRoute-kapcsolati kapcsolatot egy ExpressRoute-kapcsolati kapcsolat vészhelyreállítása érdekében. A következő cikkek az alkalmazások és az előtér-hozzáférési perspektívák vészhelyreállítási tervével foglalkoznak:
 
-- [Nagyvállalati szintű vész-helyreállítás][Enterprise DR]
-- [SMB-vész-helyreállítás Azure Site Recovery][SMB DR]
+- [Nagyvállalati szintű vészhelyreállítás][Enterprise DR]
+- [SMB-vészhelyreállítás az Azure Site Recoveryvel][SMB DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "kis-és közepes méretű helyszíni hálózati megfontolások"
-[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "az elérési út kiválasztásának befolyásolása konkrétabb útvonalak használatával"
-[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.pnga "kapcsolatok súlyozásának beállítása Azure Portal használatával"
-[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "az elérési út kiválasztásának befolyásolása a kapcsolatok súlyozásával"
-[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "befolyásoló útvonal kiválasztása az as Path" előtaggal
-[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "nagyméretű elosztott helyszíni hálózati megfontolás"
-[7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png. "forgatókönyv 1"
-[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "aktív-aktív ExpressRoute-áramköri megoldás 1"
-[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png. "forgatókönyv 2"
+[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "kis és közepes méretű helyszíni hálózati szempontok"
+[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "az útvonalválasztás befolyásolása konkrétabb útvonalak használatával"
+[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "a kapcsolat súlyának konfigurálása az Azure Portalon keresztül"
+[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "az útvonal kiválasztásának befolyásolása a kapcsolat súlyával"
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "az útvonal kiválasztásának befolyásolása az AS görbe előkészületével"
+[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "nagy, elosztott helyszíni hálózati szempont"
+[7.]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "forgatókönyv"
+[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "aktív-aktív ExpressRoute áramköri megoldás 1"
+[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png "2. forgatókönyv"
 [10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "aktív-aktív ExpressRoute-áramköri megoldás 2"
 
 <!--Link References-->

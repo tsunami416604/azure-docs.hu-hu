@@ -1,28 +1,28 @@
 ---
-title: Bejövő kérelmek nyomon követése az Azure Application Insights a OpenCensus Pythonban | Microsoft Docs
-description: A Python-alkalmazások OpenCensus Python-n keresztüli hívásának figyelése.
+title: Bejövő kérelmek nyomon követése az Azure Application Insights ban az OpenCensus Python nal | Microsoft dokumentumok
+description: Figyelheti a Python-alkalmazások hívásait az OpenCensus Python on keresztül.
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669947"
 ---
-# <a name="track-incoming-requests-with-opencensus-python"></a>A beérkező kérelmek nyomon követése a OpenCensus Pythonban
+# <a name="track-incoming-requests-with-opencensus-python"></a>A bejövő kérelmek nyomon követése az OpenCensus Python nal
 
-A beérkező kérések adatai a OpenCensus Python és annak különböző integrációi használatával gyűjthetők össze. A webalkalmazásoknak továbbított beérkező kérések adatai nyomon követése `django`, `flask` és `pyramid`népszerű webes keretrendszerekre épül. Ezt követően a rendszer a Azure Monitor `requests` telemetria Application Insights küldi el az adatait.
+A bejövő kérelem adatok at opencensus Python és a különböző integrációk használatával gyűjtik. Nyomon követheti a népszerű webes keretrendszerekre épülő webes `django` `flask` alkalmazásoknak küldött bejövő kérelemadatokat, és `pyramid`. Az adatokat ezután telemetriaként `requests` az Application Insights az Azure Monitor alatt elküldi.
 
-Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)-val alakíthatja ki.
+Először a Python-alkalmazást a legújabb [OpenCensus Python SDK-val](../../azure-monitor/app/opencensus-python.md)instrumental.
 
-## <a name="tracking-django-applications"></a>Django-alkalmazások nyomon követése
+## <a name="tracking-django-applications"></a>Django alkalmazások nyomon követése
 
-1. Töltse le és telepítse a `opencensus-ext-django`t a [PyPI](https://pypi.org/project/opencensus-ext-django/) -ből, és tegye az alkalmazást az `django` middleware-vel. A rendszer a `django` alkalmazásnak küldött bejövő kérelmeket fogja követni.
+1. Töltse le `opencensus-ext-django` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-django/) és hangszerelje az alkalmazást a `django` köztes szoftverrel. Az `django` alkalmazásnak küldött bejövő kérelmeket a rendszer nyomon követi.
 
-2. `opencensus.ext.django.middleware.OpencensusMiddleware` belefoglalása az `settings.py`-fájlba `MIDDLEWARE`alatt.
+2. Szerepeljen `opencensus.ext.django.middleware.OpencensusMiddleware` `settings.py` a `MIDDLEWARE`fájlban a területen.
 
     ```python
     MIDDLEWARE = (
@@ -32,7 +32,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
     )
     ```
 
-3. Győződjön meg arról, hogy a AzureExporter megfelelően van konfigurálva a `settings.py` `OPENCENSUS`alatt.
+3. Győződjön meg arról, `settings.py` hogy `OPENCENSUS`az AzureExporter megfelelően van konfigurálva az alatta.
 
     ```python
     OPENCENSUS = {
@@ -45,7 +45,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
     }
     ```
 
-4. `settings.py` URL-címeket is hozzáadhat `BLACKLIST_PATHS` azon kérelmekhez, amelyeket nem kíván nyomon követni.
+4. A nem nyomon követni `settings.py` `BLACKLIST_PATHS` kívánt kérésekhez url-eket is hozzáadhat.
 
     ```python
     OPENCENSUS = {
@@ -59,9 +59,9 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
     }
     ```
 
-## <a name="tracking-flask-applications"></a>A lombik alkalmazásainak nyomon követése
+## <a name="tracking-flask-applications"></a>Lombikok nyomon követése
 
-1. Töltse le és telepítse a `opencensus-ext-flask`t a [PyPI](https://pypi.org/project/opencensus-ext-flask/) -ből, és tegye az alkalmazást az `flask` middleware-vel. A rendszer a `flask` alkalmazásnak küldött bejövő kérelmeket fogja követni.
+1. Töltse le `opencensus-ext-flask` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-flask/) és hangszerelje az alkalmazást a `flask` köztes szoftverrel. Az `flask` alkalmazásnak küldött bejövő kérelmeket a rendszer nyomon követi.
 
     ```python
     
@@ -86,7 +86,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
     
     ```
 
-2. Közvetlenül a kódban konfigurálhatja a `flask` middleware-t. A nyomon követni nem kívánt URL-címektől érkező kérések hozzáadásához vegye fel őket a `BLACKLIST_PATHS`.
+2. A köztes `flask` szoftvert közvetlenül a kódban állíthatja be. Az olyan URL-ektől érkező kérések esetén, `BLACKLIST_PATHS`amelyeket nem kíván nyomon követni, adja hozzá őket a hoz.
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -100,9 +100,9 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
     }
     ```
 
-## <a name="tracking-pyramid-applications"></a>Piramis-alkalmazások nyomon követése
+## <a name="tracking-pyramid-applications"></a>Piramis alkalmazások nyomon követése
 
-1. Töltse le és telepítse a `opencensus-ext-django`t a [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) -ből, és az alkalmazást az `pyramid` Tween-vel. A rendszer a `pyramid` alkalmazásnak küldött bejövő kérelmeket fogja követni.
+1. Töltse le `opencensus-ext-django` és telepítse a [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) és a műszer az alkalmazás a `pyramid` tween. Az `pyramid` alkalmazásnak küldött bejövő kérelmeket a rendszer nyomon követi.
 
     ```python
     def main(global_config, **settings):
@@ -112,7 +112,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. Közvetlenül a kódban is konfigurálhatja a `pyramid` Tween-t. A nyomon követni nem kívánt URL-címektől érkező kérések hozzáadásához vegye fel őket a `BLACKLIST_PATHS`.
+2. Beállíthatja a `pyramid` tween közvetlenül a kódot. Az olyan URL-ektől érkező kérések esetén, `BLACKLIST_PATHS`amelyeket nem kíván nyomon követni, adja hozzá őket a hoz.
 
     ```python
     settings = {
@@ -129,10 +129,10 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
     config = Configurator(settings=settings)
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
-* [Tranzakció-diagnosztika](../../azure-monitor/app/transaction-diagnostics.md)
+* [Keresés](../../azure-monitor/app/diagnostic-search.md)
+* [Napló (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
+* [Tranzakció diagnosztikája](../../azure-monitor/app/transaction-diagnostics.md)

@@ -9,13 +9,13 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74260760"
 ---
-A sablon értesítéseinek küldésekor csak a tulajdonságok készletét kell megadnia. Ebben az esetben a tulajdonságok halmaza tartalmazza a jelenlegi Hírek honosított verzióját.
+Amikor sablonértesítéseket küld, csak egy sor tulajdonságot kell megadnia. Ebben az esetben a tulajdonságok készlete tartalmazza az aktuális hírek honosított verzióját.
 
 ```json
 {
@@ -25,9 +25,9 @@ A sablon értesítéseinek küldésekor csak a tulajdonságok készletét kell m
 }
 ```
 
-### <a name="send-notifications-using-a-c-console-app"></a>Értesítések küldése egy C# konzolos alkalmazás használatával
+### <a name="send-notifications-using-a-c-console-app"></a>Értesítések küldése C# konzolalkalmazással
 
-Ez a szakasz bemutatja, hogyan küldhet értesítéseket egy konzol alkalmazással. A kód a Windows áruházban és az iOS-eszközökön is közvetíti az értesítéseket. Módosítsa a `SendTemplateNotificationAsync` metódust a korábban létrehozott konzolalkalmazásban az alábbi kóddal:
+Ez a szakasz bemutatja, hogyan küldhet értesítéseket egy konzolalkalmazás használatával. A kód mind a Windows Áruház, mind az iOS rendszereszközeire küldi az értesítéseket. Módosítsa a `SendTemplateNotificationAsync` metódust a korábban létrehozott konzolalkalmazásban az alábbi kóddal:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -66,11 +66,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-A SendTemplateNotificationAsync metódus az **összes** eszközre honosított híreket biztosít a platformtól függetlenül. Az értesítési központ létrehozza és biztosítja a megfelelő natív adattartalmat az adott címkére feliratkozott összes eszközre.
+A SendTemplateNotificationAsync metódus a lokalizált hírdarabot **az összes** eszközére kézbesíti, függetlenül a platformtól. Az értesítési központ létrehozza és biztosítja a megfelelő natív hasznos adat az összes eszköz előfizetett egy adott címkét.
 
-### <a name="sending-notification-with-mobile-services"></a>Értesítés küldése Mobile Services
+### <a name="sending-notification-with-mobile-services"></a>Értesítés küldése a mobilszolgáltatásokkal
 
-A Mobile Services schedulerben használja a következő parancsfájlt:
+A Mobilszolgáltatások ütemezőjében használja a következő parancsfájlt:
 
 ```csharp
 var azure = require('azure');

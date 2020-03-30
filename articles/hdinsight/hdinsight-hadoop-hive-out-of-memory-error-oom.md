@@ -1,7 +1,7 @@
 ---
-title: Memóriabeli hiba elhárítása az Azure HDInsight
-description: A HDInsight-ben észlelt memória-hiba elhárítása. Az ügyfél forgatókönyve több nagyméretű tábla lekérdezése.
-keywords: kevés a memória, a bácsi, a kaptár beállításai
+title: Hive-memória-hiba javítása az Azure HDInsightban
+description: Javítsa ki a Hive memóriazavarát a HDInsightban. Az ügyfél forgatókönyve egy lekérdezés sok nagy táblában.
+keywords: memóriazavar, OOM, Hive-beállítások
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
 ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687767"
 ---
-# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive memóriájában észlelt hiba elhárítása
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Apache Hive memóriaből való kijavítása az Azure HDInsightban
 
-Megtudhatja, hogyan lehet kijavítani egy Apache Hive memóriából (bácsi) származó hibát a nagyméretű táblák feldolgozásakor a struktúra memória-beállításainak konfigurálásával.
+Ismerje meg, hogyan javíthatja ki az Apache Hive memória (OOM) hibáját nagy táblák feldolgozásakor a Hive-memória beállításainak konfigurálásával.
 
-## <a name="run-apache-hive-query-against-large-tables"></a>Apache Hive lekérdezés futtatása nagyméretű táblákon
+## <a name="run-apache-hive-query-against-large-tables"></a>Apache Hive-lekérdezés futtatása nagy táblákon
 
-Az ügyfél egy struktúra-lekérdezést futtatott:
+Egy ügyfél hive-lekérdezést futtatott:
 
 ```sql
 SELECT
@@ -44,16 +44,16 @@ where (T1.KEY1 = T2.KEY1….
 
 A lekérdezés néhány árnyalata:
 
-* A T1 egy nagy méretű tábla (TÁBLA1) aliasa, amely sok karakterlánc típusú oszloppal rendelkezik.
-* A többi tábla nem túl nagy, de sok oszlopot tartalmaz.
-* Minden táblázat csatlakozik egymáshoz, és bizonyos esetekben több oszlop szerepel a TÁBLA1 és másokban.
+* A T1 egy tábla, a TABLE1 aliasa, amely sok STRING oszloptípussal rendelkezik.
+* Más táblák nem olyan nagyok, de sok oszloppal rendelkeznek.
+* Minden tábla csatlakozik egymáshoz, egyes esetekben több oszlopot TABLE1 és mások.
 
-A kaptár lekérdezése 26 percet vett igénybe egy 24 csomópontos a3 HDInsight-fürtön. Az ügyfél a következő figyelmeztető üzeneteket észlelte:
+A Hive-lekérdezés 26 percet vett igénybe egy 24 csomópontos A3 HDInsight-fürtön. Az ügyfél a következő figyelmeztető üzeneteket vette észre:
 
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-Az Apache TEZ-végrehajtó motor használatával. Ugyanez a lekérdezés 15 percig futott, és a következő hibaüzenetet dobta:
+Az Apache Tez végrehajtási motor használatával. Ugyanaz a lekérdezés 15 percig futott, majd a következő hibát dobta:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -79,15 +79,15 @@ Az Apache TEZ-végrehajtó motor használatával. Ugyanez a lekérdezés 15 perc
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
 
-A hiba akkor is fennáll, ha nagyobb virtuális gépet használ (például D12).
+A hiba egy nagyobb virtuális gép (például D12) használata esetén is megmarad.
 
-## <a name="debug-the-out-of-memory-error"></a>A memórián kívüli hiba hibakeresése
+## <a name="debug-the-out-of-memory-error"></a>Hibakeresés a memórián kívüli hiba
 
-Támogatási és mérnöki csapatunk közösen talált egy olyan problémát, amely miatt a memóriával kapcsolatos hiba az [Apache JIRA ismertetett ismert hibát](https://issues.apache.org/jira/browse/HIVE-8306)észlelt:
+Támogató és mérnöki csapataink együtt találták meg az egyik problémát, amely a memórián kívüli hibát okozta, az [Apache JIRA-ban leírt ismert probléma](https://issues.apache.org/jira/browse/HIVE-8306)volt:
 
-"Ha a kaptár. Auto. convert. JOIN. noconditionaltask = true, akkor ellenőrizze az noconditionaltask. size értéket, és ha a térképhez való csatlakozáshoz használt táblázatok mérete kisebb, mint noconditionaltask figyelembe véve a különböző szórótábla-megvalósítások által bevezetett terhelést, ha a bemeneti méretek összege kisebb, mint a kis margós lekérdezések noconditionaltask mérete. "
+"Amikor a hive.auto.convert.join.join.noconditionaltask = igaz, ellenőrizzük a noconditionaltask.size-ot, és ha a táblázatméretek összege a térképillesztésben kisebb, mint a noconditionaltask.size, a terv térképillesztést hoz létre, a probléma ezzel az, hogy a számítás nem veszi figyelembe véve a különböző HashTable implementáció által bevezetett többletterhelést, ha a bemeneti méretek összege kisebb, mint egy kis különbözeti lekérdezés ekvivam által iratt költség, és az OOM-ot érinti."
 
-A Hive-site. xml fájl **kaptár. Auto. convert. JOIN. noconditionaltask** értéke **true (igaz**):
+A **hive.auto.convert.join.noconditionaltask** a hive-site.xml fájlban **true**értékre lett állítva:
 
 ```xml
 <property>
@@ -101,22 +101,22 @@ A Hive-site. xml fájl **kaptár. Auto. convert. JOIN. noconditionaltask** ért�
 </property>
 ```
 
-Valószínű, hogy a csatlakoztatási folyamat miatt a Java-tárterület kifogyott a memóriában. Ahogy az a HDInsight-ben, a [Hadoop fonal-memóriájának beállításai](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)című blogbejegyzésben leírtak szerint, a TEZ-végrehajtó motor használatakor a ténylegesen felhasznált halom terület a TEZ-tárolóhoz tartozik. Tekintse meg a TEZ tároló memóriáját ismertető következő képet.
+Valószínű, hogy a térképcsatlakozás okozta a Java Heap Space memóriahibát. Amint azt a blogbejegyzést [Hadoop fonal memória beállításait HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), amikor Tez végrehajtási motor takarja a halomterület használt ténylegesen tartozik a Tez konténer. Tekintse meg az alábbi képet, amely leírja a Tez tároló memóriáját.
 
-![Tez-tároló memória diagramja: a hiba a memóriában](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Tez tárolómemória-diagram: A hive memóriahibával](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Ahogy a blogbejegyzés is sugallja, a következő két memória-beállítás határozza meg a halom tárolójának memóriáját: **kaptár. TEZ. Container. size** és **kaptár. TEZ. Java. eldönti**. Tapasztalataink szerint a memórián kívüli kivétel nem azt jelenti, hogy a tároló mérete túl kicsi. Ez azt jelenti, hogy a Java halom mérete (kaptár. TEZ. Java. döntve) túl kicsi. Tehát amikor megjelenik a memória, megpróbálkozhat a **kaptár. TEZ. Java.** kiemeléssel. Szükség esetén előfordulhat, hogy a **kaptár. TEZ. Container. size**értékre kell emelkednie. A **Java.** kikapcsolási beállításnak a **container. size**80%-ának kell lennie.
+Ahogy a blogbejegyzés is sugallja, a következő két memóriabeállítás határozza meg a halommemória tárolómemóriáját: **hive.tez.container.size** és **hive.tez.java.opts**. Tapasztalataink szerint a memórián kívüli kivétel nem jelenti azt, hogy a tároló mérete túl kicsi. Ez azt jelenti, hogy a Java halomméret (hive.tez.java.opts) túl kicsi. Tehát, ha látod, elfogyott a memória, akkor próbálja meg növelni **hive.tez.java.opts**. Szükség esetén előfordulhat, hogy növelnie kell **a hive.tez.container.size .** A **java.opts** beállítás nak körülbelül 80% -nak kell lennie a **container.size.d.-nek.**
 
 > [!NOTE]  
-> A **kaptár. TEZ. Java. döntő** beállításnak mindig kisebbnek kell lennie, mint a **kaptár. TEZ. Container. size**.
+> A **hive.tez.java.opts** beállításnak mindig kisebbnek kell lennie, mint **a hive.tez.container.size**.
 
-Mivel a D12-gép 28 GB memóriával rendelkezik, úgy döntöttünk, hogy 10 GB-nyi (10240 MB) méretű tárolót használ, és az 80%-ot a Javához rendeli.
+Mivel a D12-es gép 28 GB memóriával rendelkezik, úgy döntöttünk, hogy 10 GB (10240 MB) méretű tárolót használunk, és 80%-ot rendelünk a java.opts fájlhoz:
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m
 
-Az új beállításokkal a lekérdezés 10 percen belül sikeresen futott.
+Az új beállításokkal a lekérdezés sikeresen futott 10 perc alatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A bácsi-hiba beszerzése nem feltétlenül jelenti azt, hogy a tároló mérete túl kicsi. Ehelyett konfigurálnia kell a memória beállításait úgy, hogy a halom mérete megnövekszik, és a tárolói memória méretének legalább 80%-a. A kaptár-lekérdezések optimalizálásával kapcsolatban lásd: [Apache Hive lekérdezések optimalizálása a HDInsight Apache Hadoophoz](hdinsight-hadoop-optimize-hive-query.md).
+OOM-hiba beszerzése nem feltétlenül jelenti azt, hogy a tároló mérete túl kicsi. Ehelyett úgy kell konfigurálnia a memóriabeállításokat, hogy a halommemória mérete növekedjön, és a tárolómemória méretének legalább 80%-a legyen. A Hive-lekérdezések optimalizálása az [Apache Hadoop optimalizálása a HDInsightban az Apache Hadoop-lekérdezések optimalizálása.](hdinsight-hadoop-optimize-hive-query.md)

@@ -1,6 +1,6 @@
 ---
-title: IoT Hub adatkapcsolatok létrehozása az Azure Adatkezelőhoz Azure Resource Manager sablon használatával
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre IoT Hub adatkapcsolódást az Azure Adatkezelőhoz Azure Resource Manager sablon használatával.
+title: IoT Hub-adatkapcsolat létrehozása az Azure Data Explorer számára az Azure Resource Manager-sablon használatával
+description: Ebben a cikkben megtudhatja, hogyan hozhat létre IoT Hub-adatkapcsolatot az Azure Data Explorer az Azure Resource Manager-sablon használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,32 +8,32 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: 42b9f34802b8e6344f9008bf26a8bcc9f554adfb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669219"
 ---
-# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>IoT Hub adatkapcsolatok létrehozása az Azure Adatkezelőhoz Azure Resource Manager sablon használatával
+# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>IoT Hub-adatkapcsolat létrehozása az Azure Data Explorer számára az Azure Resource Manager-sablon használatával
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-iot-hub.md)
-> * [C#](data-connection-iot-hub-csharp.md)
+> * [Portál](ingest-data-iot-hub.md)
+> * [C #](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-iot-hub-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést (az adatok betöltését) Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja. Ebben a cikkben az Azure-Adatkezelő IoT Hub adatkapcsolatainak létrehozását Azure Resource Manager sablon használatával hozza létre.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer az Event Hubs, az IoT Hubs és a blobtárolókba írt blobok betöltését (adatbetöltését) kínálja. Ebben a cikkben hozzon létre egy IoT Hub-adatkapcsolatot az Azure Data Explorer az Azure Resource Manager sablon használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * [Fürt és adatbázis](create-cluster-database-portal.md) létrehozása
-* [Tábla és oszlop megfeleltetésének](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer) létrehozása
-* Hozzon létre [egy IoT hub megosztott hozzáférési házirenddel konfigurálva](ingest-data-iot-hub.md#create-an-iot-hub).
+* [Táblázat és oszlopleképezés](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer) létrehozása
+* Hozzon létre [egy IoT Hub ot megosztott hozzáférési házirend-konfigurált.](ingest-data-iot-hub.md#create-an-iot-hub)
 
-## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>Az IOT hub adatkapcsolatainak hozzáadásához Azure Resource Manager sablon
+## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>Azure Resource Manager-sablon az Iot Hub-adatkapcsolat hozzáadásához
 
-Az alábbi példa egy Azure Resource Manager sablont mutat be IoT Hub adatkapcsolatok hozzáadásához.  A [sablont a Azure Portal szerkesztheti és telepítheti](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
+A következő példa egy Azure Resource Manager-sablont mutat be az IoT Hub-adatkapcsolat hozzáadásához.  A [sablon t szerkesztheti és üzembe helyezheti az Azure Portalon](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
 
 ```json
 {

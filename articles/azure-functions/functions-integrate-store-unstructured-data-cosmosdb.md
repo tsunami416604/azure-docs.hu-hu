@@ -1,14 +1,14 @@
 ---
-title: Strukturálatlan adatok tárolása Azure Cosmos DB és függvények használatával
+title: Strukturálatlan adatok tárolása az Azure Cosmos DB és functions használatával
 description: Strukturálatlan adatok tárolása az Azure Functions és a Cosmos DB használatával
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74230548"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Strukturálatlan adatok tárolása az Azure Functions és az Azure Cosmos DB használatával
@@ -65,7 +65,7 @@ A kimeneti kötés létrehozásához rendelkeznie kell egy SQL API-t használó 
 
 Cserélje le a meglévő függvénykódot a következő kódra a kiválasztott nyelven:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Cserélje le a meglévő C#-függvényt a következő kódra:
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Cserélje le a meglévő JavaScript-függvényt a következő kódra:
 
@@ -158,7 +158,7 @@ Sikeresen hozzáadott egy kötést a HTTP-triggerhez, hogy strukturálatlan adat
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Cosmos DB-adatbázisokhoz végzett kötésről további információt az [Azure Functions Cosmos DB-kötéseket](functions-bindings-cosmosdb.md) ismertető cikk tartalmaz.
 

@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: ee8beaf3368f0efc05f1a1d679398a733002bf17
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593973"
 ---
-### <a name="add-grafana-secret"></a>Titkos Grafana hozzáadása
+### <a name="add-grafana-secret"></a>Grafana secret hozzáadása
 
-Cserélje le a `REPLACE_WITH_YOUR_SECURE_PASSWORD` tokent a jelszavára, és futtassa a következő parancsokat:
+Cserélje `REPLACE_WITH_YOUR_SECURE_PASSWORD` le a tokent a jelszavára, és futtassa a következő parancsokat:
 
 ```powershell
 $GRAFANA_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("grafana"))
@@ -31,9 +31,9 @@ data:
   passphrase: $GRAFANA_PASSPHRASE" | kubectl apply -f -
 ```
 
-### <a name="add-kiali-secret"></a>Titkos Kiali hozzáadása
+### <a name="add-kiali-secret"></a>Kiali Secret hozzáadása
 
-Cserélje le a `REPLACE_WITH_YOUR_SECURE_PASSWORD` tokent a jelszavára, és futtassa a következő parancsokat:
+Cserélje `REPLACE_WITH_YOUR_SECURE_PASSWORD` le a tokent a jelszavára, és futtassa a következő parancsokat:
 
 ```powershell
 $KIALI_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("kiali"))

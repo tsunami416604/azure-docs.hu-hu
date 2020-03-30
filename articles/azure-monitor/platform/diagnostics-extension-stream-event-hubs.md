@@ -1,49 +1,49 @@
 ---
-title: Adatok küldése a Windows Azure Diagnostics bővítményből az Azure-Event Hubs
-description: A diagnosztikai bővítmény konfigurálása a Azure Monitorban az Azure Event hub-ba való adatküldéshez, így az Azure-on kívüli helyszínekre is továbbíthatja.
+title: Adatok küldése a Windows Azure diagnosztikai bővítményéből az Azure Event Hubs-ba
+description: Konfigurálja a diagnosztikai bővítményt az Azure Monitorban, hogy adatokat küldjön az Azure Event Hubnak, így továbbíthatja azokat az Azure-on kívüli helyekre.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672531"
 ---
-# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Adatok küldése a Windows Azure Diagnostics bővítményből az Azure-Event Hubs
-Az Azure Diagnostics bővítmény olyan Azure Monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk azt ismerteti, hogyan lehet adatok küldését a Windows Azure diagnosztikai bővítménnyel (WAD) az [azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/) , így az Azure-on kívüli helyekre is továbbíthatja őket.
+# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Adatok küldése a Windows Azure diagnosztikai bővítményéből az Azure Event Hubs-ba
+Az Azure diagnostics bővítmény az Azure Monitor egy ügynöke, amely a vendég operációs rendszerből és az Azure virtuális gépek és más számítási erőforrások munkaterheléseiből gyűjtfigyelési adatokat. Ez a cikk bemutatja, hogyan küldhet adatokat a Windows Azure diagnosztikai bővítményből (WAD) az Azure Event Hubs-ba, hogy továbbíthassa az [Azure-on](https://azure.microsoft.com/services/event-hubs/) kívüli helyekre.
 
-## <a name="supported-data"></a>Támogatott adatértékek
+## <a name="supported-data"></a>Támogatott adatok
 
-A Event Hubs elküldhető vendég operációs rendszerből gyűjtött adatok az alábbiakat tartalmazzák. A WAD által gyűjtött egyéb adatforrások, például az IIS-naplók és az összeomlási memóriaképek nem küldhetők el Event Hubsba.
+A vendég operációs rendszerből gyűjtött adatok, amelyek az Event Hubs-ba küldhetők, a következőket tartalmazzák. A WAD által gyűjtött egyéb adatforrások, például az IIS-naplók és az összeomlási memóriaképek nem küldhetők az Eseményközpontokba.
 
 * A Windows esemény-nyomkövetés (ETW) eseményei
 * Teljesítményszámlálók
-* Windows-eseménynaplók, beleértve az alkalmazások naplóit a Windows eseménynaplóban
+* Windows eseménynaplók, beleértve az alkalmazásnaplókat a Windows eseménynaplójában
 * Azure Diagnostics-infrastruktúranaplók
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Windows Diagnostics bővítmény 1,6 vagy újabb. A támogatott erőforrások esetében lásd: [Azure Diagnostics bővítmény konfigurációs sémájának verziói és előzményei](diagnostics-extension-versions.md) a korábbi verziók és a [Azure Diagnostics bővítmények áttekintésében](diagnostics-extension-overview.md) .
-* Event Hubs névtérnek mindig kiépítve kell lennie. A részletekért tekintse meg [a Event Hubs első lépéseit](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) ismertető témakört.
+* A Windows 1.6-os vagy újabb verzióinak diagnosztikai bővítménye. Tekintse meg [az Azure Diagnostics bővítmény konfigurációs séma verziók és előzmények](diagnostics-extension-versions.md) egy verzióelőzmények és az Azure [Diagnostics bővítmény áttekintése](diagnostics-extension-overview.md) a támogatott erőforrások.
+* Az Event Hubs névteret mindig ki kell építeni. További részletek az [Event Hubs – Első lépések.](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 
 ## <a name="configuration-schema"></a>Konfigurációs séma
-Lásd: a [Windows Azure Diagnostics bővítmény (wad) telepítése és konfigurálása](diagnostics-extension-windows-install.md) különböző beállításokhoz a diagnosztikai bővítmény engedélyezéséhez és konfigurálásához, valamint [Azure Diagnostics konfigurációs séma](diagnostics-extension-schema-windows.md) a konfigurációs séma hivatkozásához. A cikk további része leírja, hogyan használhatja ezt a konfigurációt az adatoknak az Event hub-ba való küldéséhez. 
+A konfigurációs séma referenciaként a Diagnosztikai bővítmény és az [Azure Diagnosztika konfigurációs séma](diagnostics-extension-schema-windows.md) engedélyezésére és konfigurálására szolgáló különböző lehetőségeket a [Windows Azure diagnosztikai bővítmény (WAD)](diagnostics-extension-windows-install.md) telepítése és konfigurálása című témakörben található. A cikk további cikk ismerteti, hogyan használhatja ezt a konfigurációt adatok küldése egy eseményközpontba. 
 
-Azure Diagnostics mindig naplókat és mérőszámokat küld egy Azure Storage-fiókba. Beállíthat egy vagy több olyan *adattárolót* , amely az adatküldést további helyszínekre küldi. Minden fogadó a nyilvános konfiguráció [SinksConfig elemében](diagnostics-extension-schema-windows.md#sinksconfig-element) van definiálva, bizalmas információkkal a privát konfigurációban. Az Event hubok esetében ez a konfiguráció az alábbi táblázatban szereplő értékeket használja.
+Az Azure Diagnostics mindig naplókat és metrikákat küld egy Azure Storage-fiókba. Konfigurálhat egy vagy több *adatgyűjtőt,* amelyek további helyekre küldenek adatokat. Minden fogadó a [sinksconfig eleme](diagnostics-extension-schema-windows.md#sinksconfig-element) a nyilvános konfiguráció bizalmas információkat a privát konfigurációban. Az eseményközpontok ezen konfigurációja az alábbi táblázatértékeit használja.
 
 | Tulajdonság | Leírás |
 |:---|:---|
-| Name (Név) | A fogadó leíró neve. A konfigurációban a fogadóba küldendő adatforrások megadására szolgál. |
-| URL-cím  | Az Event hub URL-címe a következő formában: \<Event-hubok-Namespace\>. servicebus.windows.net/\<Event-hub-Name\>.          |
-| SharedAccessKeyName | Olyan megosztott hozzáférési szabályzat neve, amely legalább a **küldő** szolgáltatóval rendelkezik. |
-| SharedAccessKey     | Az Event hub közös hozzáférési házirendjéből származó elsődleges vagy másodlagos kulcs. |
+| Név | A mosogató leíró neve. A konfigurációban azt használja, hogy mely adatforrásokat küldje el a fogadóba. |
+| URL-cím  | Az eseményközpont url-címe \<az eseményközpont\>-névtér\<.servicebus.windows.net/ esemény-hub-neve\>formájában.          |
+| SharedAccessKeyName (SharedAccessKeyName) | Legalább **küldési** jogosultsággal rendelkező eseményközpont megosztott hozzáférési házirendjének neve. |
+| SharedAccessKey     | Elsődleges vagy másodlagos kulcs az eseményközpont megosztott hozzáférési szabályzatából. |
 
-A következő példa a nyilvános és a privát konfigurációkat mutatja be. Ez egy minimális konfiguráció egyetlen teljesítményszámláló és Eseménynapló használatával, amely bemutatja, hogyan konfigurálhatja és használhatja az Event hub-adatfogadót. Összetettebb példáért tekintse meg [Azure Diagnostics konfigurációs sémát](diagnostics-extension-schema-windows.md) .
+Példa nyilvános és privát konfigurációk alább láthatók. Ez egy minimális konfiguráció egyetlen teljesítményszámlálóval és eseménynaplóval, amely bemutatja az eseményközpont-adatgyűjtő konfigurálását és használatát. Tekintse meg [az Azure Diagnostics konfigurációs séma](diagnostics-extension-schema-windows.md) egy összetettebb példa.
 
 ### <a name="public-configuration"></a>Nyilvános konfiguráció
 
@@ -107,7 +107,7 @@ A következő példa a nyilvános és a privát konfigurációkat mutatja be. Ez
 
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
-Az adatfogadóba való adatküldéshez meg kell adnia a **mosogatók** attribútumot az adatforrás csomópontjain. A **mosogatók** attribútum helye határozza meg a hozzárendelés hatókörét. A következő példában a **mosogatók** attribútum a **PerformanceCounters** csomóponthoz van definiálva, amely az összes alárendelt teljesítményszámláló továbbítását fogja eredményezni az Event hub számára.
+Ha adatokat szeretne küldeni egy adatgyűjtőbe, megadhatja az adatforrás csomópontjának **fogadóattribútumát.** A **sinks** attribútum helye határozza meg a hozzárendelés hatókörét. A következő példában a **sinks** attribútum a **PerformanceCounters** csomóponthoz van definiálva, amely az összes gyermekteljesítmény-számlálót az eseményközpontba küldi.
 
 ```JSON
 "PerformanceCounters": {
@@ -131,7 +131,7 @@ Az adatfogadóba való adatküldéshez meg kell adnia a **mosogatók** attribút
 ```
 
 
-A következő példában a **mosogatók** attribútumot közvetlenül a három számlálóra alkalmazza a rendszer, ami csak azokat a teljesítményszámlálókat fogja elküldeni, amelyek az Event hub-ba lesznek küldve. 
+A következő példában a **sinks** attribútum közvetlenül három számlálóra lesz alkalmazva, amelyek csak azokat a teljesítményszámlálókat küldik az eseményközpontba. 
 
 ```JSON
 "PerformanceCounters": {
@@ -164,19 +164,19 @@ A következő példában a **mosogatók** attribútumot közvetlenül a három s
 }
 ```
 
-## <a name="validating-configuration"></a>Konfiguráció ellenőrzése
-A különböző módszerekkel ellenőrizheti, hogy az adatküldés folyamatban van-e az Event hub számára. a nem egyszerű módszer az Azure-Event Hubs Azure-beli [blob Storage vagy Azure Data Lake Storage-ban](../../event-hubs/event-hubs-capture-overview.md)Event Hubs rögzítésének használata. 
+## <a name="validating-configuration"></a>A konfiguráció ellenőrzése
+Számos módszerrel ellenőrizheti, hogy az adatok küldése az eseményközpontba történik.You can use a variety of methods to validate that data is sent to the event hub. Ne egyszerű módszer az Event Hubs rögzítése az [Azure Blob Storage vagy az Azure Data Lake Storage Azure Event Hubs-on keresztüli rögzítési eseményekben leírtak szerint.](../../event-hubs/event-hubs-capture-overview.md) 
 
 
-## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs mosogatók hibáinak megoldása
+## <a name="troubleshoot-event-hubs-sinks"></a>Az Eseményközpontok fogadóinak hibaelhárítása
 
-- Tekintse meg az Azure Storage Table **WADDiagnosticInfrastructureLogsTable** , amely naplókat és hibákat tartalmaz a Azure Diagnostics. Az egyik lehetőség egy olyan eszköz használata, mint például a [Azure Storage Explorer](https://www.storageexplorer.com) az ehhez a Storage-fiókhoz való kapcsolódáshoz, a táblázat megtekintése és az időbélyegzőhöz tartozó lekérdezés hozzáadása az elmúlt 24 órában. Az eszközzel exportálhat egy. csv-fájlt, és megnyithatja azt egy alkalmazásban, például a Microsoft Excelben. Az Excel megkönnyíti a hívó kártyás karakterláncok, például a **EventHubs**keresését a jelentett hibák megtekintéséhez.  
+- Tekintse meg az Azure Storage-tábla **WADDiagnosticInfrastructureLogsTable,** amely tartalmazza a naplókat és hibákat az Azure Diagnostics is. Az egyik lehetőség az, hogy egy eszköz, például az [Azure Storage Explorer](https://www.storageexplorer.com) használatával csatlakozik ehhez a tárfiókhoz, tekintse meg ezt a táblát, és adjon hozzá egy lekérdezést a TimeStamp az elmúlt 24 órában. Az eszközzel .csv fájlt exportálhat, és megnyithatja egy alkalmazásban, például a Microsoft Excelprogramban. Az Excel megkönnyíti a hívókártya-karakterláncok, például **az EventHubs**keresését, hogy lássa, milyen hiba történt.  
 
-- Győződjön meg arról, hogy az Event hub sikeresen kiépítve. A konfiguráció **PrivateConfig** szakaszában szereplő összes kapcsolatbiztonsági információnak meg kell egyeznie az erőforrásnak a portálon látható értékeivel. Győződjön meg arról, hogy a portálon van definiálva SAS-szabályzat (a példában a*SendRule* ), és hogy a *küldési* engedély meg van adva.  
+- Ellenőrizze, hogy az eseményközpont sikeresen ki van-e építve. A konfiguráció **PrivateConfig** szakaszában található összes kapcsolatinformációnak meg kell egyeznie az erőforrás nak a portálon látható értékeivel. Győződjön meg arról, hogy van egy SAS-házirend definiálva (*SendRule* a példában) a portálon, és hogy *a Küldés* engedély meg van adva.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Event Hubs – áttekintés](../../event-hubs/event-hubs-about.md)
+* [Eseményközpontok – áttekintés](../../event-hubs/event-hubs-about.md)
 * [Eseményközpont létrehozása](../../event-hubs/event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](../../event-hubs/event-hubs-faq.md)
 

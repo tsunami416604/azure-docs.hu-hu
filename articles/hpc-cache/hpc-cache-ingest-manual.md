@@ -1,43 +1,43 @@
 ---
-title: Azure HPC cache-adatfeldolgozás – manuális másolás
-description: A CP-parancsok használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
+title: Az Azure HPC cache adatok betöltése – manuális másolás
+description: Cp-parancsok használata adatok áthelyezése blobtároló-tárolóba az Azure HPC-gyorsítótárban
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168482"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC cache-adatfeldolgozás – manuális másolási módszer
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Az Azure HPC cache adatok betöltése – manuális másolási módszer
 
-Ez a cikk részletes útmutatást nyújt az adatok blob Storage-tárolóba történő manuális másolásához az Azure HPC cache használatával. Több szálon futó párhuzamos műveleteket használ a másolás sebességének optimalizálása érdekében.
+Ez a cikk részletes útmutatást ad az adatok manuális másolásához egy Blob storage-tárolóba az Azure HPC-gyorsítótárral való használatra. Ez használ többszálú párhuzamos műveleteket, hogy optimalizálja a másolási sebességet.
 
-Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan helyezi át az adatátvitelt a blob Storage-ba, olvassa el az [Azure Blob Storage](hpc-cache-ingest.md)-ba
+Ha többet szeretne megtudni az adatok Blob storage-ba való áthelyezéséről az Azure HPC-gyorsítótárszámára, olvassa el [az Adatok áthelyezése az Azure Blob storage-ba .](hpc-cache-ingest.md)
 
-## <a name="simple-copy-example"></a>Egyszerű másolási példa
+## <a name="simple-copy-example"></a>Példa egyszerű másolásra
 
-Manuálisan is létrehozhat többszálas másolatot egy ügyfélen, ha több másolási parancsot futtat egyszerre a háttérben a fájlok vagy elérési utak előre definiált készletei között.
+Az ügyfélen manuálisan is létrehozhat többszálas másolatot, ha egyszerre több másolási parancsot futtat a háttérben előre meghatározott fájl- vagy elérésiutakkal szemben.
 
-A Linux/UNIX ``cp`` parancs a tulajdonosi és a mtime metaadatok megőrzéséhez ``-p`` argumentumot tartalmazza. Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyféltől a célhely fájlrendszerig a metaadatok módosítására irányuló fájlrendszer-hívások számát.)
+A Linux/UNIX ``cp`` parancs ``-p`` tartalmazza a tulajdonjog és a mtime metaadatok megőrzésére vonatkozó argumentumot. Ezt az argumentumot az alábbi parancsokhoz nem lehet hozzáadni. (Az argumentum hozzáadása növeli az ügyfél által a célfájlrendszerbe metaadatok módosítása céljából küldött fájlrendszer-hívások számát.)
 
-Ez az egyszerű példa két fájlt másol át párhuzamosan:
+Ez az egyszerű példa két fájlt másol párhuzamosan:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-A parancs kiadása után a `jobs` parancs azt mutatja, hogy két szál fut.
+A parancs kiadása után `jobs` a parancs azt mutatja, hogy két szál fut.
 
-## <a name="copy-data-with-predictable-file-names"></a>Az Adatmásolás Kiszámítható fájlnevekkel
+## <a name="copy-data-with-predictable-file-names"></a>Adatok másolása kiszámítható fájlnevekkel
 
-Ha a fájlnevek előre jelezhető, használhat kifejezéseket párhuzamos másolási szálak létrehozására. 
+Ha a fájlnevek kiszámíthatóak, a kifejezések segítségével párhuzamos másolási szálakat hozhat létre. 
 
-Ha például a könyvtár 1000-es fájlokat tartalmaz, amelyek `0001` egymás után sorszámozással `1000`, a következő kifejezésekkel hozhat létre 10 párhuzamos szálat, amelyek az egyes 100-fájlok másolására szolgálnak:
+Ha például a könyvtár 1000 olyan fájlt tartalmaz, `1000`amelyek számozása egymás után történik a rendszerhez `0001` képest, a következő kifejezések segítségével tíz párhuzamos szálat hozhat létre, amelyek mindegyike 100 fájlt másol:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -52,11 +52,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-## <a name="copy-data-with-unstructured-file-names"></a>Adatmásolás strukturálatlan fájlnevekkel
+## <a name="copy-data-with-unstructured-file-names"></a>Adatok másolása strukturálatlan fájlnevekkel
 
-Ha a fájl elnevezési szerkezete nem kiszámítható, a fájlokat a címtár neve alapján csoportosíthatja. 
+Ha a fájlelnevezési struktúra nem kiszámítható, a fájlokat könyvtárnevek szerint csoportosíthatja. 
 
-Ez a példa az ``cp`` parancsok futtatásához használható teljes címtárakat gyűjti a háttérben feladatként:
+Ez a példa teljes könyvtárakat ``cp`` gyűjt, amelyeket háttérfeladatként futtatandó parancsoknak küld:
 
 ```bash
 /root
@@ -68,7 +68,7 @@ Ez a példa az ``cp`` parancsok futtatásához használható teljes címtárakat
 |-/dir1d
 ```
 
-A fájlok gyűjtése után párhuzamos másolási parancsok futtatásával rekurzív módon másolhatja az alkönyvtárakat és azok tartalmát:
+A fájlok összegyűjtését követően párhuzamos másolási parancsokat futtathat az alkönyvtárak és azok teljes tartalmának rekurzív másolásához:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -79,11 +79,11 @@ cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
-## <a name="when-to-add-mount-points"></a>Csatlakoztatási pontok hozzáadása
+## <a name="when-to-add-mount-points"></a>Mikor kell csatlakoztatni pontokat hozzáadni?
 
-Ha már van elég párhuzamos szála egy adott célfájl-rendszer csatlakoztatási pontján, akkor a több szál hozzáadására szolgáló pont nem ad nagyobb átviteli sebességet. (Az adatátviteli sebességet a rendszer a megadott adattípustól függően a fájl/másodperc vagy a bájt/másodperc értékben méri.) Vagy ami még rosszabb, az átviteli sebesség romlása időnként okozhatja a teljesítményt.  
+Miután elegendő párhuzamos szál megy egy cél fájlrendszer csatlakoztatási pont, lesz egy pont, ahol több szál hozzáadása nem ad nagyobb átviteli. (Az átviteli forgalma t az adatok típusától függően fájlok/másodperc vagy bájt/másodperc ben mérik.) Vagy ami még rosszabb, a túl-threading néha okozhat átviteli terhelés romlása.  
 
-Ha ez történik, az ügyféloldali csatlakoztatási pontokat hozzáadhatja más Azure HPC gyorsítótár-csatlakoztatási címekhez ugyanazzal a távoli fájlrendszer-csatlakozási útvonallal:
+Ha ez történik, ügyféloldali csatlakoztatási pontokat adhat hozzá más Azure HPC cache-csatlakoztatási címekhez, ugyanazzal a távoli fájlrendszer-csatlakoztatási útvonallal:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -92,9 +92,9 @@ Ha ez történik, az ügyféloldali csatlakoztatási pontokat hozzáadhatja más
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Az ügyféloldali csatlakoztatási pontok hozzáadásával további másolási parancsokat is kikapcsolhat a további `/mnt/destination[1-3]` csatlakoztatási pontokhoz, így további párhuzamosságot lehet elérni.  
+Az ügyféloldali csatlakoztatási pontok hozzáadásával további másolási parancsokat is elágazhat a további `/mnt/destination[1-3]` csatlakoztatási pontokhoz, további párhuzamosság érhető el.  
 
-Ha például a fájlok nagyon nagy méretűek, a másolási parancsokat definiálhatja a különböző elérési utak használatára, és a másolást végző ügyféltől párhuzamosan több parancsot is küldhet.
+Ha például a fájlok nagyon nagyok, megadhatja a másolási parancsokat, hogy különböző célútvonalakat használjon, és további parancsokat küldjön ki párhuzamosan a másolatot végző ügyféllel.
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -108,11 +108,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-A fenti példában mindhárom cél csatlakoztatási pontra az ügyfél fájlmásolási folyamata irányul.
+A fenti példában mindhárom célcsatlakoztatási pontot az ügyfélfájl másolási folyamatai célozzák meg.
 
-## <a name="when-to-add-clients"></a>Mikor kell ügyfeleket felvenni
+## <a name="when-to-add-clients"></a>Mikor kell ügyfeleket hozzáadni?
 
-Végül, ha elérte az ügyfél képességeit, további másolási szálak vagy további csatlakoztatási pontok hozzáadása nem eredményez további fájlokat/mp-t vagy bájt/mp-t. Ebben az esetben egy másik ügyfelet is telepíthet ugyanazon a csatlakoztatási ponttal, amely a fájlmásolás folyamatainak saját készletét fogja futtatni. 
+Végül, ha elérte az ügyfél képességeit, további másolási szálak vagy további csatlakoztatási pontok hozzáadása nem eredményez további fájlokat/mp vagy bájt/sec növekedést. Ebben az esetben telepíthet egy másik ügyfelet ugyanazzal a csatlakoztatási ponttal, amely a saját fájlmásolási folyamatok készletét fogja futtatni. 
 
 Példa:
 
@@ -134,11 +134,11 @@ Client4: cp -R /mnt/source/dir2/dir2d /mnt/destination/dir2/ &
 Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 ```
 
-## <a name="create-file-manifests"></a>Fájl-jegyzékfájlok létrehozása
+## <a name="create-file-manifests"></a>Fájljegyzékek létrehozása
 
-Miután megértette a fenti megközelítéseket (több másolási szál, célként több célhely, ügyfél, hálózaton keresztül elérhető forrásfájl-rendszer), vegye figyelembe ezt a javaslatot: fájl-jegyzékfájlok létrehozása, majd a másolattal való használata több ügyfélen belüli parancsok.
+A fenti megközelítések (célonként több másolási szál, ügyfélenként több cél, hálózatonként több ügyfél) megismerése után fontolja meg ezt a javaslatot: Fájljegyzékek létrehozása, majd másolással való használata parancsokat több ügyfélen keresztül.
 
-Ez a forgatókönyv a UNIX ``find`` parancs használatával hozza létre a fájlok vagy könyvtárak jegyzékét:
+Ebben az esetben ``find`` a UNIX paranccsal fájlok vagy könyvtárak jegyzékfájljait hozza létre:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -153,9 +153,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Az eredmény átirányítása fájlba: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Az eredmény átirányítása fájlba:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Ezután megismételheti a jegyzékfájlt, ha BASH-parancsokat használ a fájlok számlálásához és az alkönyvtárak méretének meghatározásához:
+Ezután végighaladhat a jegyzékfájlon, bash parancsokkal megszámolhatja a fájlokat, és meghatározhatja az alkönyvtárak méretét:
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
@@ -194,34 +194,34 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Végül meg kell adnia a tényleges fájlmásolás-parancsokat az ügyfeleknek.  
+Végül meg kell készítenie a tényleges fájlmásolási parancsokat az ügyfeleknek.  
 
-Ha négy ügyféllel rendelkezik, használja a következő parancsot:
+Ha négy ügyféllel rendelkezik, használja ezt a parancsot:
 
 ```bash
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-Ha öt ügyfele van, használja az alábbihoz hasonlót:
+Ha öt ügyfele van, használja a következőt:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-És hat.... Kikövetkeztetés igény szerint.
+És hatért... Szükség szerint extrapolálja.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-*N* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési út neve megegyezik a `find` parancs kimenetének részeként kapott négy szinttel. 
+*N* eredményül kapott fájlokat kap, egyet-egyet minden N-ügyfélhez, amely rendelkezik a *N* `find` parancs kimenetének részeként kapott négyszintű könyvtárak elérési útneveivel. 
 
-Az egyes fájlok használatával hozza létre a másolási parancsot:
+A másolási parancs létrehozásához használja az egyes fájlokat:
 
 ```bash
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-A fentiekben *N* fájl jelenik meg, amelyek mindegyike soronként egy másolási paranccsal fut, amely bash-parancsfájlként is futtatható az ügyfélen. 
+A fenti kapsz *N* fájlokat, mindegyik egy másolat parancsot soronként, hogy lehet futtatni, mint egy BASH script az ügyfélen. 
 
-A cél a parancsfájlok több szálának párhuzamos futtatása egyszerre több ügyfélen egyidejűleg.
+A cél az, hogy több szálat futtatjon ezekből a parancsfájlokból egyidejűleg egy ügyfélenként párhuzamosan több ügyfélen.

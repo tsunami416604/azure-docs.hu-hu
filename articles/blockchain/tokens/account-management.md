@@ -1,36 +1,36 @@
 ---
-title: Azure Blockchain tokenek – Fiókkezelés
-description: Az Azure Blockchain-tokenek Fiókkezelés használatával csoportokat hozhat létre, és Blockchain-fiókokat csatolhat a Blockchain-műveletekhez való hozzáférés szabályozásához.
+title: Azure Blockchain tokenek fiókkezelése
+description: Az Azure Blockchain Tokens fiókkezelés használatával csoportokat hozhat létre, és összekapcsolhatja a blokklánc-fiókokat a blokklánc-műveletekhez való hozzáférés szabályozásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9931ef59e613501ba6feaedf3ac5d4721f0df752
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74326101"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain tokenek – Fiókkezelés
+# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain tokenek fiókkezelése
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-A blockchain-megoldások esetében előfordulhat, hogy a felhasználók eltérő szintű hozzáférést igényelnek az Azure Blockchain tokens szolgáltatással létrehozott jogkivonatokhoz. A legtöbb blockchain forgatókönyvben a főkönyvben meglévő különböző blockchain-fiókokat kell terveznie és telepítenie. Emellett a résztvevők közötti hozzáférés kezelése is szükséges. Az Azure Blockchain-tokenek Fiókkezelés használatával csoportokat hozhat létre, és Blockchain-fiókokat csatolhat a Blockchain-műveletekhez való hozzáférés szabályozásához.
+A blockchain-megoldás, a felhasználók különböző szintű hozzáférést igényelhetnek az Azure Blockchain tokenek szolgáltatással létrehozott jogkivonatokhoz. A legtöbb blokklánc-forgatókönyvben meg kell terveznie és telepítenie kell a főkönyvben található különböző blokklánc-fiókokat. A résztvevők közötti hozzáférést is kezelnie kell.Az Azure Blockchain Tokens fiókkezelés használatával csoportokat hozhat létre, és összekapcsolhatja a blokklánc-fiókokat a blokklánc-műveletekhez való hozzáférés szabályozásához.
 
 ## <a name="blockchain-networks"></a>Blockchain hálózatok
 
-Az Azure Blockchain-tokenek lehetővé teszik a jogkivonatok üzembe helyezését és kezelését Blockchain-hálózatokon keresztül. Egyetlen blockchain vagy több blockchain-főkönyvet is összekapcsolhat a szolgáltatással.
+Az Azure Blockchain tokenek lehetővé teszi a tokenek üzembe helyezését és kezelését a blokklánc-hálózatok egy készletén keresztül. Egyetlen blokklánc-főkönyvet vagy több blokklánc-főkönyvet csatlakoztathat a szolgáltatáshoz.
 
 ## <a name="accounts"></a>Fiókok
 
-Az Azure Blockchain-tokenekhez kapcsolódó blockchain-hálózatok esetében a szolgáltatás létrehozza és kezeli a fiók titkos kulcs párokat, és elvégzi a tranzakciók aláírását és küldését. Az Azure Blockchain-tokenek identitás-hozzárendelést is biztosítanak a főkönyvben lévő nyilvános kulcsú identitású fiókok egyeztetéséhez.
+Az Azure Blockchain tokenekhez kapcsolódó blockchain hálózatok esetében a szolgáltatás létrehozza és kezeli a privát-nyilvános kulcspárokat, és tranzakcióaláírást és -küldést hajt végre. Az Azure Blockchain tokenek is biztosít identitásleképezés, hogy megfeleljen a fiókok a nyilvános kulcs identitás a főkönyvben.
 
 ## <a name="groups"></a>Csoportok
 
-A csoportok segítségével nagy mennyiségű blockchain-fiókot kezelhet a csatlakoztatott hálózatokon. Nyomon követheti és naplózhatja, hogy mely alkalmazások és felhasználók tudják használni a fiókokat az Azure Blockchain tokens API-kon keresztül. Például csoportosíthat olyan fiókokat, amelyek különböző üzletági vagy különböző szerepköröket képviselnek, és blockchain jogkivonatokhoz férnek hozzá.
+A csoportok lehetővé teszik nagyszámú blokklánc-fiók kezelését a csatlakoztatott hálózatokon keresztül. Nyomon követheti és naplózhatja, hogy a címtárban lévő mely alkalmazások és felhasználók használhatják a fiókokat az Azure Blockchain tokenek API-kon keresztül. Csoportosíthatja például a fiókok készletét, amelyek különböző üzletágakat vagy különböző szerepköröket és a blokklánc-jogkivonatokhoz való hozzáférést képviselnek.
 
-A csoportokat társíthatja egy Azure Active Directory felhasználóhoz vagy egyszerű szolgáltatáshoz, és ez a rendszerbiztonsági tag jogosult a csoport és a hozzá tartozó fiókok hozzáférésére.  
+Egy csoportot is társíthat egy Azure Active Directory-felhasználóhoz vagy egyszerű szolgáltatáshoz, és ez a rendszernévi engedélyeket a csoporthoz és a kapcsolódó fiókokhoz.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az elérhető [Azure Blockchain-jogkivonat-sablonokról](templates.md).
+További információ az elérhető [Azure Blockchain tokenek sablonjairól.](templates.md)

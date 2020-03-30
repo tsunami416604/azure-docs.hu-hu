@@ -1,7 +1,7 @@
 ---
-title: OData-hivatkozás kiválasztása
+title: OData hivatkozás kiválasztása
 titleSuffix: Azure Cognitive Search
-description: Szintaxis és nyelvi hivatkozás az Azure Cognitive Search lekérdezések keresési eredményeiben visszaadott mezők explicit kiválasztásához.
+description: Szintaxis és nyelvi hivatkozás az Azure Cognitive Search-lekérdezések keresési eredményeiben visszaadandó mezők explicit kiválasztásához.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113104"
 ---
-# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select szintaxis az Azure-ban Cognitive Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select szintaxis az Azure Cognitive Search-ben
 
- A [OData **$Select** paraméter](query-odata-filter-orderby-syntax.md) használatával kiválaszthatja, hogy mely mezők szerepeljenek az Azure Cognitive Search keresési eredményei között. Ez a cikk részletesen ismerteti **$Select** szintaxisát. A keresési eredmények megjelenítésével kapcsolatos további általános információkért lásd: a keresési eredmények **$Select** használata [Az Azure-ban Cognitive Search](search-pagination-page-layout.md).
+ Az [OData **$select** paraméter](query-odata-filter-orderby-syntax.md) segítségével kiválaszthatja, hogy mely mezőket szeretné felvenni a keresési eredmények be, az Azure Cognitive Search. Ez a cikk részletesen ismerteti a **$select** szintaxisát. A **$select** keresési eredmények megjelenítésekor idáig további általános tudnivalókat talál a Keresési eredmények használata az Azure Cognitive Search alkalmazásban című [témakörben.](search-pagination-page-layout.md)
 
 ## <a name="syntax"></a>Szintaxis
 
-A **$Select** paraméter határozza meg, hogy az egyes dokumentumok mely mezői lesznek visszaadva a lekérdezési eredményhalmaz alapján. A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a **$Select** paraméter nyelvtanát határozza meg:
+A **$select** paraméter határozza meg, hogy az egyes dokumentumok mely mezőit adja vissza a lekérdezés eredményhalmaza. A következő EBNF ([Extended Backus-Naur Form)](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)határozza meg a **$select** paraméter nyelvtanát:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,30 +42,30 @@ select_expression ::= '*' | field_path(',' field_path)*
 field_path ::= identifier('/'identifier)*
 ```
 
-Az interaktív szintaxis diagram is elérhető:
+Interaktív szintaktikai diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [Az Azure Cognitive Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [OData-szintaktikai diagram az Azure Cognitive Search szolgáltatáshoz](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
+> Lásd: [OData kifejezés szintaxis referencia az Azure Cognitive Search](search-query-odata-syntax-reference.md) a teljes EBNF.
 
-A **$Select** paraméter két formában jön:
+A **$select** paraméter két formában jelentkezik:
 
-1. Egyetlen csillag (`*`), amely azt jelzi, hogy az összes beolvasható mezőt vissza kell adni, vagy
-1. A mezők elérési útjának vesszővel tagolt listája, amely azonosítja a visszaadott mezőket.
+1. Egy csillag`*`( ), amely azt jelzi, hogy az összes visszakereshető mezőt vissza kell küldeni, vagy
+1. A mezőelérési utak vesszővel tagolt listája, amely meghatározza, hogy mely mezőket kell visszaadni.
 
-A második űrlap használatakor csak lekérhető mezőket adhat meg a listában.
+A második űrlap használatakor csak a listában adhatja meg a visszakereshető mezőket.
 
-Ha az almezők explicit módon való megadása nélkül listáz egy összetett mezőt, az összes beolvasható almező belekerül a lekérdezési eredményhalmazba. Tegyük fel például, hogy az index egy `Address` mezővel rendelkezik, amely `Street`, `City`és `Country` almezőket tartalmaz. Ha **$select**`Address`t ad meg, a lekérdezés eredménye mindhárom almezőt tartalmazni fogja.
+Ha egy összetett mezőt az almezők kifejezett megadása nélkül sorolunk fel, akkor a lekérdezés eredményhalmaza minden beolvasható almező szerepelni fog. Tegyük fel például, `Address` hogy `Street` `City`az `Country` indexben van egy mező a , és almezőkkel, amelyek mindegyike visszakereshető. Ha a `Address` **$select**adja meg, a lekérdezés eredménye mindhárom almezőt tartalmazza.
 
 ## <a name="examples"></a>Példák
 
-Adja meg az eredmények `HotelId`, `HotelName`és `Rating` legfelső szintű mezőit, valamint `Address``City` almezőjét:
+A `HotelId`, `HotelName`és `Rating` legfelső szintű mezők felvétele az eredményekbe, valamint az `City` `Address`almező:
 
     $select=HotelId, HotelName, Rating, Address/City
 
-Egy példa eredménye a következőképpen néz ki:
+Egy példa eredménye így nézhet ki:
 
 ```json
 {
@@ -78,11 +78,11 @@ Egy példa eredménye a következőképpen néz ki:
 }
 ```
 
-Adja meg az eredmények `HotelName` legfelső szintű mezőjét, valamint a `Address`összes almezőjét, valamint a `Rooms` gyűjtemény egyes objektumainak `Type` és `BaseRate` almezőit:
+A `HotelName` legfelső szintű mező felvétele az eredményekbe, valamint `Address`a gyűjteményben az `Type` egyes objektumok és `BaseRate` almezők összes almezőjét: `Rooms`
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
-Egy példa eredménye a következőképpen néz ki:
+Egy példa eredménye így nézhet ki:
 
 ```json
 {
@@ -110,7 +110,7 @@ Egy példa eredménye a következőképpen néz ki:
 
 ## <a name="next-steps"></a>További lépések  
 
-- [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
-- [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
-- [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok &#40;keresése az Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [A keresési eredmények működése az Azure Cognitive Search szolgáltatásban](search-pagination-page-layout.md)
+- [Az Azure Cognitive Search OData-kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
+- [Az Azure Cognitive Search OData-kifejezés szintaxisának hivatkozása](search-query-odata-syntax-reference.md)
+- [Az Azure Cognitive Search REST API-&#41;&#40;dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

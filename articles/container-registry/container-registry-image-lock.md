@@ -1,46 +1,46 @@
 ---
 title: Rendszerképek zárolása
-description: Adja meg a tárolók rendszerképének vagy tárházának attribútumait, hogy ne lehessen törölni vagy felülírni az Azure Container registryben.
+description: Állítsa be a tárolórendszerkép vagy tárház attribútumait, így nem törölhető vagy felülírható egy Azure-tároló beállításjegyzékében.
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659696"
 ---
-# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tároló rendszerképének zárolása egy Azure Container registryben
+# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tárolórendszerkép zárolása egy Azure-tároló beállításjegyzékében
 
-Az Azure Container registryben zárolhatja a rendszerkép verzióját vagy a tárházat, így nem törölhető és nem frissíthető. Egy rendszerkép vagy egy tárház zárolásához frissítse az attribútumait az Azure CLI-parancs az [ACR repository Update][az-acr-repository-update]paranccsal. 
+Egy Azure-tároló beállításjegyzékben zárolhat egy lemezkép-verziót vagy egy tárházat, hogy ne lehessen törölni vagy frissíteni. Egy lemezkép vagy tárház zárolásához frissítse attribútumait az Azure CLI command [az acr repository frissítésével.][az-acr-repository-update] 
 
-Ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.0.55 vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Ez a cikk megköveteli, hogy futtassa az Azure CLI az Azure Cloud Shell vagy helyileg (2.0.55-ös vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 > [!IMPORTANT]
-> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portal, vagy `az lock` parancs az Azure CLI-ben. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/management/lock-resources.md)érdekében.
+> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a `az lock` Beállítások > **zárolások** az Azure Portalon, vagy parancsokat az Azure CLI. A rendszerleíró adatbázis-erőforrások zárolása nem akadályozza meg az adattárakban lévő adatok létrehozását, frissítését vagy törlését. A rendszerleíró adatbázis zárolása csak a felügyeleti műveletekre van hatással, például a replikációk hozzáadására vagy törlésére, illetve magára a beállításjegyzékre. További információ az [Erőforrások zárolása a váratlan változások megelőzése érdekében.](../azure-resource-manager/management/lock-resources.md)
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Alapértelmezés szerint a Azure Container Registryban lévő címkézett képek *változhatnak*, ezért a megfelelő engedélyekkel többször is frissítheti és leküldheti a rendszerképet ugyanazzal a címkével egy beállításjegyzékbe. A tároló lemezképeit szükség szerint is [törölheti](container-registry-delete.md) . Ez a viselkedés akkor hasznos, ha képeket fejleszt, és a beállításjegyzéknek meg kell őriznie a méretet.
+Alapértelmezés szerint egy címkézett lemezkép az Azure Container Registry *módosítható,* így a megfelelő engedélyekkel többször frissítheti, és leküldéses egy lemezképet ugyanazzal a címkével egy beállításjegyzékbe. A tárolórendszerképek szükség szerint is [törölhetők.](container-registry-delete.md) Ez a viselkedés akkor hasznos, ha képeket fejleszt, és meg kell őriznie a rendszerleíró adatbázis méretét.
 
-Ha azonban éles környezetben helyez üzembe egy tároló-lemezképet, előfordulhat *, hogy egy* nem módosítható tároló-lemezképre van szüksége. Egy nem módosítható rendszerkép az egyik, hogy véletlenül nem lehet törölni vagy felülírni.
+Azonban, ha éles környezetben telepít egy tárolórendszerképet, előfordulhat, hogy egy *nem módosítható* tárolórendszerképre van szüksége. A nem módosítható kép olyan kép, amelyet nem lehet véletlenül törölni vagy felülírni.
 
-A beállításjegyzékben található rendszerképek [címkézéséhez](container-registry-image-tag-version.md) és a lemezképek verziószámozásához szükséges stratégiákat itt tekintheti meg.
+Tekintse meg [a címkézésre és a verziószámozásra vonatkozó javaslatokat](container-registry-image-tag-version.md) a beállításjegyzékben lévő címke- és verziórendszerképek címkézésére és verziószámozására.
 
-A tárház attribútumainak beállításához használja az az [ACR adattár Update][az-acr-repository-update] parancsot, így a következőket teheti:
+Az [az acr repository update][az-acr-repository-update] parancs segítségével állítsa be a tárház attribútumait, így:
 
-* Rendszerkép verziójának vagy teljes tárházának zárolása
+* Lemezkép-verzió vagy teljes tárház zárolása
 
-* Rendszerkép-verzió vagy-tárház védetté tétele törlésből, de frissítések engedélyezése
+* A lemezkép-verzió vagy -tárház védelme a törléssel szemben, de frissítések engedélyezése
 
-* Olvasási (lekéréses) műveletek megakadályozása egy rendszerkép vagy egy teljes tárház esetében
+* Olvasási (lekéréses) műveletek megakadályozása lemezkép-verzión vagy teljes tárházon
 
-Példákat a következő részekben talál. 
+A példákat az alábbi szakaszokban talál. 
 
-## <a name="lock-an-image-or-repository"></a>Rendszerkép vagy adattár zárolása 
+## <a name="lock-an-image-or-repository"></a>Kép vagy tárház zárolása 
 
-### <a name="show-the-current-repository-attributes"></a>Az aktuális tárház attribútumainak megjelenítése
-A tárház aktuális attribútumainak megtekintéséhez futtassa a következőt az [ACR adattár show][az-acr-repository-show] paranccsal:
+### <a name="show-the-current-repository-attributes"></a>Az aktuális tárházattribútumok megjelenítése
+A tárház aktuális attribútumainak megtekintéséhez futtassa a következő [az acr repository show][az-acr-repository-show] parancsot:
 
 ```azurecli
 az acr repository show \
@@ -48,8 +48,8 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="show-the-current-image-attributes"></a>Az aktuális képattribútum megjelenítése
-A címkék aktuális attribútumainak megtekintéséhez futtassa a következőt az [ACR adattár show][az-acr-repository-show] paranccsal:
+### <a name="show-the-current-image-attributes"></a>Az aktuális képjellemzők megjelenítése
+A címke aktuális attribútumainak megtekintéséhez futtassa a következő [az acr repository show][az-acr-repository-show] parancsot:
 
 ```azurecli
 az acr repository show \
@@ -57,9 +57,9 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="lock-an-image-by-tag"></a>Rendszerkép zárolása címke alapján
+### <a name="lock-an-image-by-tag"></a>Kép zárolása címke szerint
 
-A *myrepo/MyImage: címke* rendszerképének zárolásához a *myregistry*-ben futtassa a következőt az [ACR adattár Update][az-acr-repository-update] paranccsal:
+A *myrepo/myimage:tag* image zárolásához a *myregistry*alkalmazásban futtassa a következő [az acr repository update][az-acr-repository-update] parancsot:
 
 ```azurecli
 az acr repository update \
@@ -67,9 +67,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-an-image-by-manifest-digest"></a>Rendszerkép zárolása manifest Digest használatával
+### <a name="lock-an-image-by-manifest-digest"></a>Kép zárolása jegyzékfájl kivonatolója szerint
 
-A manifest Digest által azonosított *myrepo-vagy MyImage* -rendszerkép zárolásához (SHA-256 kivonat, amely `sha256:...`néven szerepel) futtassa a következő parancsot. (Egy vagy több képcímkéhez társított jegyzékfájl megkereséséhez futtassa az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancsot.)
+A manifest digest (SHA-256 hash, ) néven `sha256:...`ábrázolt *myrepo/myimage* kép zárolásához futtassa a következő parancsot. (Egy vagy több képcímkéhez társított jegyzékfájl kivonatának megkereséséhez futtassa az [az acr repository show-manifests parancsot.)][az-acr-repository-show-manifests]
 
 ```azurecli
 az acr repository update \
@@ -77,9 +77,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-a-repository"></a>Adattár zárolása
+### <a name="lock-a-repository"></a>Tárház zárolása
 
-A *myrepo/MyImage* adattár és a benne található összes rendszerkép zárolásához futtassa a következő parancsot:
+A *myrepo/myimage* tárház és a benne lévő összes kép zárolásához futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -87,11 +87,11 @@ az acr repository update \
     --write-enabled false
 ```
 
-## <a name="protect-an-image-or-repository-from-deletion"></a>Rendszerkép vagy adattár törlése a törlésből
+## <a name="protect-an-image-or-repository-from-deletion"></a>Kép vagy tárház védelme a törléstől
 
-### <a name="protect-an-image-from-deletion"></a>Rendszerkép elleni védelem törlése
+### <a name="protect-an-image-from-deletion"></a>Kép védelme a törléstől
 
-A következő parancs futtatásával engedélyezheti a *myrepo/MyImage: a címke* rendszerképének frissítését, de nem törölheti:
+A *myrepo/myimage:tag* image frissítésének, de törlésének engedélyezéséhez futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -99,9 +99,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-### <a name="protect-a-repository-from-deletion"></a>Adattár elleni védelem törlése
+### <a name="protect-a-repository-from-deletion"></a>Tárház védelme a törléssel szemben
 
-A következő parancs beállítja a *myrepo/MyImage* tárházat, így nem törölhető. Az egyes lemezképek továbbra is frissíthetők vagy törölhetők.
+A következő parancs úgy állítja be a *myrepo/myimage* repository-t, hogy ne lehessen törölni. Az egyes képek továbbra is frissíthetők vagy törölhetők.
 
 ```azurecli
 az acr repository update \
@@ -109,9 +109,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-## <a name="prevent-read-operations-on-an-image-or-repository"></a>Olvasási műveletek megakadályozása egy képen vagy adattáron
+## <a name="prevent-read-operations-on-an-image-or-repository"></a>Lemezképvagy adattár olvasási műveleteinek megakadályozása
 
-A következő parancs futtatásával megakadályozhatja az olvasási (lekéréses) műveleteket a *myrepo/MyImage: tag* rendszerképén:
+A *myrepo/myimage:tag* image olvasási (lekéréses) műveleteinek megakadályozásához futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -119,7 +119,7 @@ az acr repository update \
     --read-enabled false
 ```
 
-A következő parancs futtatásával megakadályozhatja, hogy az olvasási műveletek a *myrepo/MyImage* adattár összes lemezképén fussanak:
+A *myrepo/myimage* tárházban lévő összes lemezképen az olvasási műveletek megakadályozásához futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -127,9 +127,9 @@ az acr repository update \
     --read-enabled false
 ```
 
-## <a name="unlock-an-image-or-repository"></a>Rendszerkép vagy adattár zárolásának feloldása
+## <a name="unlock-an-image-or-repository"></a>Kép vagy tárház zárolásának feloldása
 
-A következő parancs futtatásával állíthatja vissza a *myrepo/MyImage: címke* rendszerképének alapértelmezett viselkedését, hogy törölhető és frissítve legyen:
+A *myrepo/myimage:tag* kép alapértelmezett viselkedésének visszaállításához, hogy az törölhető és frissíthető legyen, futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -137,7 +137,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-A *myrepo/MyImage* adattár és az összes rendszerkép alapértelmezett viselkedésének visszaállításához, hogy azok törölhetők és frissíthetők legyenek, futtassa a következő parancsot:
+A *myrepo/myimage* tárház és az összes kép alapértelmezett viselkedésének visszaállításához, hogy azok törölhetők és frissíthetők legyenek, futtassa a következő parancsot:
 
 ```azurecli
 az acr repository update \
@@ -145,13 +145,13 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan használhatja az az [ACR adattár Update][az-acr-repository-update] parancsot az adattárban található képverziók törlésének vagy frissítésének megakadályozására. További attribútumok beállításához tekintse meg az az [ACR adattár Update][az-acr-repository-update] Command Reference című témakört.
+Ebben a cikkben az [az acr repository update][az-acr-repository-update] parancs használatával megakadályozhatja a lemezkép-verziók törlését vagy frissítését egy tárházban. További attribútumok beállításához tekintse meg az [az acr repository update][az-acr-repository-update] parancs hivatkozását.
 
-A rendszerkép-verzióhoz vagy-tárházhoz beállított attribútumok megtekintéséhez használja az az [ACR repository show][az-acr-repository-show] parancsot.
+A lemezkép-verzióhoz vagy -tárházhoz beállított attribútumok megtekintéséhez használja az [az acr repository show][az-acr-repository-show] parancsot.
 
-A törlési műveletekkel kapcsolatos részletekért lásd: [tárolók rendszerképének törlése Azure Container Registry][container-registry-delete].
+A törlési műveletekről a [Tárolórendszerképek törlése az Azure Container Registry alkalmazásban (Delete container images in Azure Container Registry) (Tárolórendszerképek törlése az Azure Container Registry alkalmazásban) (Tárolórendszerképek törlése) (Tárolórendszerképek törlése) (Tárolórendszer][container-registry-delete]
 
 <!-- LINKS - Internal -->
 [az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update

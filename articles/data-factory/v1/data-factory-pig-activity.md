@@ -1,6 +1,6 @@
 ---
-title: Adatátalakítás a Pig tevékenységgel Azure Data Factory
-description: Megtudhatja, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatgyárban a Pig-parancsfájlok igény szerinti vagy saját HDInsight-fürtön való futtatásához.
+title: Adatok átalakítása a Pig-tevékenység használatával az Azure Data Factoryban
+description: Megtudhatja, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatgyárban a Pig-parancsfájlok igény szerinti/saját HDInsight-fürtön való futtatásához.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703195"
 ---
-# <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatátalakítás a Pig tevékenységgel Azure Data Factory
+# <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatok átalakítása a Pig-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
-> * [Struktúra tevékenysége](data-factory-hive-activity.md) 
-> * [Pig-tevékenység](data-factory-pig-activity.md)
+> * [Hive-tevékenység](data-factory-hive-activity.md) 
+> * [Sertés tevékenység](data-factory-pig-activity.md)
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
-> * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
-> * [Spark-tevékenység](data-factory-spark.md)
+> * [Hadoop streaming tevékenység](data-factory-hadoop-streaming-activity.md)
+> * [Szikratevékenység](data-factory-spark.md)
 > * [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
@@ -33,13 +33,13 @@ ms.locfileid: "74703195"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory-szolgáltatás aktuális verzióját használja, tekintse meg az [adatátalakítás Data Factory a Pig tevékenységgel](../transform-data-using-hadoop-pig.md)című témakört.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [adatok átalakítása a Data Factory Pig-tevékenységhasználatával című témakört.](../transform-data-using-hadoop-pig.md)
 
 
-A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pipelines.md) során a Pig-lekérdezéseket a [saját](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürtön hajtja végre. Ez a cikk az Adatátalakítási [tevékenységekről](data-factory-data-transformation-activities.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.
+A Data [Factory-folyamat](data-factory-create-pipelines.md) HDInsight Pig-tevékenysége saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre [a](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) [Pig-lekérdezéseket.](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Ez a cikk az [adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről.
 
 > [!NOTE] 
-> Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) . 
+> Ha most jön az Azure Data Factory, olvassa el [az Azure Data Factory bevezetés](data-factory-introduction.md) című, és nem az oktatóanyag: [Készítse el az első adatfolyamat](data-factory-build-your-first-pipeline.md) a cikk elolvasása előtt. 
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -82,22 +82,22 @@ A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pi
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | név |A tevékenység neve |Igen |
-| leírás |A tevékenység által használt szöveg leírása |Nem |
+| leírás |A tevékenységet leíró szöveg |Nem |
 | type |HDinsightPig |Igen |
-| bemenetek |A Pig tevékenység által felhasznált egy vagy több bemenet |Nem |
-| kimenetek |A Pig tevékenység által előállított egy vagy több kimenet |Igen |
-| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Igen |
-| szkriptet. |Adja meg a Pig-szkriptet beágyazottként |Nem |
-| scriptPath |Tárolja a Pig-szkriptet egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem |
-| meghatározza |Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz |Nem |
+| Bemenetek |A Pig tevékenység által felhasznált egy vagy több bemenet |Nem |
+| Kimenetek |A Pig tevékenység által előállított egy vagy több kimenet |Igen |
+| linkedServiceName |Hivatkozás a Data Factory ban csatolt szolgáltatásként regisztrált HDInsight-fürtre |Igen |
+| szkriptet. |A Pig parancsfájl szövegközi megadása |Nem |
+| scriptPath |A Pig-parancsfájlt egy Azure blob-tárolóban tárolja, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév nem imitáta a kis- és nagybetűk között. |Nem |
+| Meghatározza |Paraméterek megadása kulcs-/értékpárokként a Pig parancsfájlon belüli hivatkozáshoz |Nem |
 
 ## <a name="example"></a>Példa
-Vegyünk például egy példa a game logs analyticsre, ahol a játékosok által a vállalat által elindított játékokkal töltött időt szeretné azonosítani.
+Vegyünk egy példát a játéknaplók elemzésére, ahol meg szeretné határozni a vállalat által indított játékokat játszó játékosok által eltöltött időt.
 
-A következő példa egy vesszővel (,) tagolt fájlt mutat be. A következő mezőket tartalmazza – ProfileID, SessionStart, időtartam, SrcIPAddress és szakasz.
+A következő minta játék napló egy vesszővel (,) elválasztott fájl. A következő mezőket tartalmazza : ProfileID, SessionStart, Duration, SrcIPAddress és GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -107,7 +107,7 @@ A következő példa egy vesszővel (,) tagolt fájlt mutat be. A következő me
 .....
 ```
 
-Az adatfeldolgozásra szolgáló **Pig-szkript** :
+A **Pig szkript** az adatok feldolgozásához:
 
 ```
 PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -119,18 +119,18 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-A Pig szkript Data Factory folyamaton való végrehajtásához hajtsa végre a következő lépéseket:
+Ha ezt a Pig-parancsfájlt egy Data Factory-folyamatban szeretné végrehajtani, hajtsa végre az alábbi lépéseket:
 
-1. Hozzon létre egy társított szolgáltatást a [saját HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) regisztrálásához vagy [igény szerinti HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)konfigurálásához. Hívjuk ezt a társított szolgáltatás **HDInsightLinkedService**.
-2. Hozzon létre egy [társított szolgáltatást](data-factory-azure-blob-connector.md) a kapcsolat konfigurálásához az Azure Blob Storage-hoz, amely az adattárolót üzemelteti. Hívjuk ezt a társított szolgáltatás **StorageLinkedService**.
-3. A bemeneti és a kimeneti adatokra mutató [adatkészletek](data-factory-create-datasets.md) létrehozása. Hívjuk a bemeneti adatkészlet **PigSampleIn** és a kimeneti adatkészlet **PigSampleOut**.
-4. Másolja a Pig-lekérdezést egy olyan fájlba, amelyet az Azure Blob Storage a #2 lépésben konfigurált. Ha az adatok tárolására szolgáló Azure Storage nem azonos a lekérdezési fájllal, hozzon létre egy külön Azure Storage-beli társított szolgáltatást. Tekintse át a társított szolgáltatást a tevékenység konfigurációjában. A **scriptPath** használatával adja meg a Pig-parancsfájl és a **scriptlinkedservice szolgáltatás**elérési útját. 
+1. Hozzon létre egy összekapcsolt szolgáltatást [saját HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) regisztrálásához vagy az igény szerinti [HDInsight számítási fürt konfigurálásához.](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Nevezzük ezt a linkelt szolgáltatást **HDInsightLinkedService**.
+2. Hozzon létre egy [összekapcsolt szolgáltatást](data-factory-azure-blob-connector.md) az adatokat tároló Azure Blob storage-hoz való csatlakozás konfigurálásához. Nevezzük ezt a linked szolgáltatás **StorageLinkedService**.
+3. Hozzon létre [adatkészleteket,](data-factory-create-datasets.md) amelyek a bemeneti és a kimeneti adatokra mutatnak. Hívjuk meg a **bemeneti adatkészletet PigSampleIn** és a kimeneti **adatkészletPigSampleOut**.
+4. Másolja a Pig lekérdezést egy fájlba, amelyet az Azure Blob Storage #2 lépésben konfigurált. Ha az adatokat tároló Azure-tároló eltér a lekérdezési fájlt tárolótól, hozzon létre egy külön Azure Storage-kapcsolt szolgáltatást. Tekintse meg a csatolt szolgáltatást a tevékenységkonfigurációban. A **scriptPath** segítségével adja meg a sertés parancsfájl és a **scriptLinkedService**elérési útját. 
    
    > [!NOTE]
-   > A Pig szkriptet a tevékenység definíciójában is megadhatja a **script** tulajdonság használatával. Ez a megközelítés azonban nem ajánlott, mivel a parancsfájlban szereplő összes speciális karakternek el kell menekülnie, és hibakeresési problémákhoz vezethet. Az ajánlott eljárás a #4 lépés végrehajtása.
+   > A Pig parancsfájlt a tevékenységdefinícióban is megadhatja a **parancsfájltulajdonság** használatával. Azonban nem javasoljuk ezt a megközelítést, mivel a parancsfájl összes speciális karakterét meg kell kerülni, és hibakeresési problémákat okozhat. A legjobb gyakorlat a #4 lépés ének követése.
    >
    >
-5. Hozza létre a folyamatot a HDInsightPig tevékenységgel. Ez a tevékenység a HDInsight-fürtön futó Pig-szkript futtatásával dolgozza fel a bemeneti adatokat.
+5. Hozza létre a folyamatot a HDInsightPig tevékenységgel. Ez a tevékenység a bemeneti adatokat a PIG parancsfájl HDInsight-fürtön futtatásával dolgozza fel.
 
     ```JSON
     {
@@ -164,15 +164,15 @@ A Pig szkript Data Factory folyamaton való végrehajtásához hajtsa végre a k
       }
     }
     ```
-6. A folyamat üzembe helyezése. Részletekért lásd: [folyamatok létrehozása](data-factory-create-pipelines.md) című cikk. 
-7. A folyamat figyelése a adatfeldolgozó-figyelési és-felügyeleti nézetek használatával. Részletekért lásd: [Data Factory folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md) .
+6. Telepítse a folyamatot. A részleteket a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. 
+7. Figyelje a folyamatot az adat-előállító figyelési és felügyeleti nézetek használatával. A data [factory folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md) című cikkben a részletekről olvashat.
 
-## <a name="specifying-parameters-for-a-pig-script"></a>A Pig-szkript paramétereinek megadása
-Vegye figyelembe a következő példát: a rendszer naponta betölti a játék naplóit az Azure Blob Storageba, és egy, a dátum és idő alapján particionált mappában tárolja. Parametrizálja a Pig-szkriptet, és a bemeneti mappa helyét dinamikusan át kell adni a futtatókörnyezet során, és a kimenetet is a dátummal és idővel kell elkészíteni.
+## <a name="specifying-parameters-for-a-pig-script"></a>Pig parancsfájl paramétereinek megadása
+Vegye figyelembe a következő példát: a játéknaplók naponta kerülnek az Azure Blob Storage-ba, és a dátum és az idő alapján particionált mappában tárolódnak. Szeretné paraméterezni a Pig parancsfájlt, és a bemeneti mappa helyét dinamikusan átadni futásidőben, és a dátumot és az időt particionált kimenetet is létre kívánja adni.
 
-A paraméteres Pig-parancsfájl használatához tegye a következőket:
+A paraméterezett Pig parancsfájl használatához tegye a következőket:
 
-* Határozza meg a paramétereket a **definiálva**.
+* Adja meg a paramétereket **a definíciókban.**
 
     ```JSON
     {
@@ -210,7 +210,7 @@ A paraméteres Pig-parancsfájl használatához tegye a következőket:
       }
     }
     ```
-* A Pig-szkriptben a következő példában látható módon tekintse át a paramétereket a " **$parameterName**" használatával:
+* A Pig Scriptben tekintse meg a **"$parameterName**" paramétereit a következő példában látható módon:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -220,8 +220,8 @@ A paraméteres Pig-parancsfájl használatához tegye a következőket:
     ```
 
 ## <a name="see-also"></a>Lásd még:
-* [Struktúra tevékenysége](data-factory-hive-activity.md)
+* [Hive-tevékenység](data-factory-hive-activity.md)
 * [MapReduce tevékenység](data-factory-map-reduce.md)
-* [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
+* [Hadoop streaming tevékenység](data-factory-hadoop-streaming-activity.md)
 * [Spark-programok meghívása](data-factory-spark.md)
 * [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

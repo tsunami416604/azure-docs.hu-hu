@@ -1,6 +1,6 @@
 ---
-title: A log-riasztások webhook-műveletei az Azure-riasztásokban
-description: Ez a cikk azt ismerteti, hogyan lehet napló-riasztási szabályt létrehozni a Log Analytics munkaterületen, vagy Application Insights, hogy a riasztás hogyan küldjön le adatokat HTTP-webhookként, valamint a különböző testreszabási lehetőségek részleteit.
+title: Webhook-műveletek az Azure-riasztások naplózási riasztásaihoz
+description: Ez a cikk ismerteti, hogyan hozhat létre egy naplóriasztási szabályt a Log Analytics munkaterület vagy az Application Insights használatával, hogyan küldi le a riasztás az adatokat HTTP-webhookként, és a lehetséges különböző testreszabások részleteit.
 author: yanivlavi
 ms.author: yalavi
 services: monitoring
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77667703"
 ---
-# <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályaihoz kapcsolódó webhook-műveletek
-Ha egy [naplóbeli riasztást hoz létre az Azure-ban](alerts-log.md), akkor beállíthatja, hogy a [műveleti csoportok használatával](action-groups.md) egy vagy több műveletet végezzen. Ez a cikk az elérhető különböző webhook-műveleteket ismerteti, és bemutatja, hogyan konfigurálhat egyéni JSON-alapú webhookot.
+# <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a naplóriasztási szabályokhoz
+Amikor egy [naplóriasztást hoz létre az Azure-ban,](alerts-log.md)lehetősége van [konfigurálására műveletcsoportok használatával](action-groups.md) egy vagy több művelet végrehajtásához. Ez a cikk ismerteti a különböző webhook-műveletek, amelyek rendelkezésre állnak, és bemutatja, hogyan kell beállítani egy egyéni JSON-alapú webhook.
 
 > [!NOTE]
-> Használhatja a [gyakori riasztási sémát](https://aka.ms/commonAlertSchemaDocs) is a webhook-integrációhoz. Az általános riasztási séma lehetővé teszi, hogy a Azure Monitor összes riasztási szolgáltatásában egyetlen bővíthető és egységesített riasztási adattartalmat lehessen használni. vegye figyelembe, hogy a Common Alert séma nem felel meg a naplók egyéni JSON-beállításának. A rendszer elhalasztja a riasztási séma általános adattartalmát, ha a riasztási szabály szintjén végzett testreszabástól függetlenül van kiválasztva. [Ismerje meg a riasztási séma általános definícióit.](https://aka.ms/commonAlertSchemaDefinitions)
+> A webhook-integrációk hoz is használhatja a [közös riasztási sémát.](https://aka.ms/commonAlertSchemaDocs) A közös riasztási séma biztosítja azt az előnyt, hogy egyetlen bővíthető és egységes riasztási hasznos adat az Azure Monitor összes riasztási szolgáltatásában. Elhalasztja a közös riasztási séma hasznos adatát, ha ez van kiválasztva, függetlenül attól, hogy milyen testreszabást végezhetett a riasztási szabály szintjén. [Ismerje meg a gyakori riasztási sémadefiníciók.](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhook-műveletek
 
-A webhook-műveletekkel egyetlen HTTP POST-kérelemmel hívhat meg egy külső folyamatot. A hívott szolgáltatásnak támogatnia kell a webhookokat, és meg kell határoznia, hogyan használja a kapott adattartalmat.
+A webhook-műveletekkel egyetlen HTTP POST-kérelemen keresztül meghívhat egy külső folyamatot. A hívott szolgáltatásnak támogatnia kell a webhookokat, és meg kell határoznia, hogyan használhatja a kapott hasznos adatokat.
 
-A webhook-műveletekhez a következő táblázatban szereplő tulajdonságok szükségesek.
+A Webhook-műveletekhez az alábbi táblázatban szereplő tulajdonságokra van szükség.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | **Webhook URL-címe** |A webhook URL-címe. |
-| **Egyéni JSON-adattartalom** |A webhooktal küldendő egyéni adattartalom, ha ezt a beállítást a riasztás létrehozásakor választja ki a rendszer. További információ: a [naplózási riasztások kezelése](alerts-log.md).|
+| **Egyéni JSON hasznos adat** |Az egyéni hasznos küldés a webhook, ha ezt a beállítást választják a riasztás létrehozása során. További információt a [Naplóriasztások kezelése című témakörben talál.](alerts-log.md)|
 
 > [!NOTE]
-> A **log** -riasztáshoz tartozó webhookhoz tartozó **Egyéni JSON-adattartalom belefoglalása** a webhookhoz lehetőség mellett megjelenik a minta webhook adattartalma a megadott testreszabáshoz. Nem tartalmaz tényleges adatokat, de a naplózási riasztásokhoz használt JSON-sémára jellemző. 
+> A **View Webhook** gomb mellett az **egyéni JSON hasznos adat** a webhook beállítás a naplóriasztás megjeleníti a minta webhook hasznos adat a megadott testreszabási. Nem tartalmaz tényleges adatokat, de a naplóriasztásokhoz használt JSON-sémát reprezentálja. 
 
-A webhookok egy URL-címet és egy JSON-ban formázott hasznos adatot tartalmaznak, amelyet a külső szolgáltatásnak küldenek. Alapértelmezés szerint a hasznos adatok tartalmazzák az alábbi táblázatban szereplő értékeket. Dönthet úgy, hogy lecseréli ezt a hasznos adatot egy saját egyéni felhasználóval. Ebben az esetben használja az egyes paraméterekhez tartozó táblázatban szereplő változókat, hogy az egyéni adattartalomban szereplő értékeket is tartalmazzák.
+A webhookok tartalmaznak egy URL-címet és egy JSON-ban formázott hasznos adatot, amelyet a külső szolgáltatásnak küldött adatok tartalmaznak. Alapértelmezés szerint a hasznos adat az alábbi táblázatban szereplő értékeket tartalmazza. Dönthet úgy, hogy ezt a hasznos terhet egy saját egyénire cseréli le. Ebben az esetben használja a változók a táblázatban az egyes paraméterek et az egyéni hasznos adat tartalmazza az értéküket.
 
 
 | Paraméter | Változó | Leírás |
 |:--- |:--- |:--- |
-| *AlertRuleName* |#alertrulename |A riasztási szabály neve. |
-| *Súlyosság* |#severity |A kilőtt napló riasztásának súlyossági értéke. |
-| *AlertThresholdOperator* |#thresholdoperator |A riasztási szabály küszöbértékének operátora, amely nagyobb vagy kisebb, mint. |
-| *AlertThresholdValue* |#thresholdvalue |A riasztási szabály küszöbértéke. |
-| *LinkToSearchResults* |#linktosearchresults |Az Analytics-portálra mutató hivatkozás, amely a riasztást létrehozó lekérdezés rekordjait adja vissza. |
-| *ResultCount* |#searchresultcount |A keresési eredményekben szereplő rekordok száma. |
-| *Keresési időköz befejezési időpontja* |#searchintervalendtimeutc |A lekérdezés befejezési időpontja UTC szerint, hh/nn/éééé óó: PP: SS AM/du formátumban. |
-| *Keresési időköz* |#searchinterval |A riasztási szabály időablaka, a HH: PP: mm formátumban. |
-| *Keresési időköz kezdő időpont* |#searchintervalstarttimeutc |A lekérdezés kezdési időpontja UTC formátumban, hh/nn/éééé óó: PP: SS AM/du formátumban. 
-| *SearchQuery* |#searchquery |A riasztási szabály által használt napló keresési lekérdezése. |
-| *SearchResults* |"IncludeSearchResults": igaz|A lekérdezés által visszaadott, JSON-táblázatként visszaadott rekordok, amelyek az első 1 000-rekordra korlátozódnak, ha a "IncludeSearchResults": true (igaz) értéket adja hozzá egy egyéni JSON webhook-definícióban legfelső szintű tulajdonságként. |
-| *Riasztás típusa*| #alerttype | A [metrika mértékének](alerts-unified-log.md#metric-measurement-alert-rules) vagy az [eredmények számának](alerts-unified-log.md#number-of-results-alert-rules)megfelelően konfigurált log riasztási szabály típusa.|
-| *Munkaterület azonosítója* |#workspaceid |A Log Analytics munkaterület azonosítója. |
-| *Alkalmazás azonosítója* |#applicationid |A Application Insights alkalmazás azonosítója. |
+| *AlertRuleName (Figyelmeztetési szabály neve)* |#alertrulename |A riasztási szabály neve. |
+| *Súlyosság* |#severity |Az elsült naplóriasztás súlyossága beállítva. |
+| *AlertThresholdOperator* |#thresholdoperator |Küszöbérték operátora a riasztási szabály, amely akkora, mint a kisebb, mint. |
+| *AlertThresholdValue érték* |#thresholdvalue |A riasztási szabály küszöbértéke. |
+| *LinkToSearchResults* |#linktosearchresults |Hivatkozás az Analytics-portálra, amely a riasztást létrehozó lekérdezés rekordjait adja vissza. |
+| *Eredményszáma* |#searchresultcount |A keresési eredményekben lévő rekordok száma. |
+| *Keresési időköz befejezési ideje* |#searchintervalendtimeutc |A lekérdezés befejezési ideje UTC-ben, mm/dd/éééé HH:mm:sS AM/PM formátummal. |
+| *Keresési időköz* |#searchinterval |A figyelmeztetési szabály időablaka HH:mm:ss formátummal. |
+| *Keresési időköz kezdési ideje* |#searchintervalstarttimeutc |A lekérdezés kezdési időpontja UTC-ben, mm/dd/éééé HH:mm:sS AM/PM formátummal. 
+| *SearchQuery* |#searchquery |A riasztási szabály által használt keresési lekérdezés naplózása. |
+| *Keresési eredmények* |"IncludeSearchResults": true|A lekérdezés által JSON-táblaként visszaadott rekordok, az első 1000 rekordra korlátozva, ha az "IncludeSearchResults": true egy egyéni JSON webhook-definícióban kerül hozzáadásra legfelső szintű tulajdonságként. |
+| *Riasztás típusa*| #alerttype | A [metrikus mérésként](alerts-unified-log.md#metric-measurement-alert-rules) vagy [az eredmények számaként](alerts-unified-log.md#number-of-results-alert-rules)konfigurált naplóriasztási szabály típusa.|
+| *Munkaterületazonosító* |#workspaceid |A Log Analytics-munkaterület azonosítója. |
+| *Alkalmazásazonosító* |#applicationid |Az Application Insights-alkalmazás azonosítója. |
 | *Előfizetés azonosítója* |#subscriptionid |A használt Azure-előfizetés azonosítója. 
 
 > [!NOTE]
-> A *LinkToSearchResults* átadja a paramétereket, például a *SearchQuery*, a *keresési időközt*és a *keresési intervallum befejezési idejét* a Azure Portal URL-címében az elemzési szakaszban való megtekintéshez. A Azure Portal egy körülbelül 2 000 karakterből álló URI-mérethatárt tartalmaz. A portál *nem* nyitja meg a riasztásokban megadott hivatkozásokat, ha a paraméterek értéke túllépi a korlátot. Manuálisan is beírhatja a részleteket az eredmények megtekintéséhez az elemzési portálon. A [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) vagy a [log Analytics REST API](/rest/api/loganalytics/) használatával programozott módon is beolvashatja az eredményeket. 
+> *A LinkToSearchResults* olyan paramétereket ad át, mint a *SearchQuery*, *a Search Interval StartTime*és a *Search Interval End idő* az Azure Portal URL-címében az Analytics szakaszban való megtekintéshez. Az Azure Portal uri-mérethatára körülbelül 2000 karakter. A portál *nem* nyitja meg a riasztásokban megadott hivatkozásokat, ha a paraméterértékek meghaladják a korlátot. Az eredmények megtekintéséhez manuálisan is beviheti az eredményeket az Analytics-portálon. Vagy használhatja az [Application Insights Analytics REST API-t](https://dev.applicationinsights.io/documentation/Using-the-API) vagy a Log Analytics REST [API-t](/rest/api/loganalytics/) az eredmények programozott lekéréséhez. 
 
-Például megadhatja a következő egyéni adattartalmat, amely egyetlen, *szöveg*nevű paramétert tartalmaz. A szolgáltatás, amelyhez ez a webhook meghívja ezt a paramétert várja.
+Megadhatja például a következő egyéni hasznos tartalmat, amely egyetlen *szöveg*nevű paramétert tartalmaz. A webhook által meghívni kívánt szolgáltatás ezt a paramétert várja.
 
 ```json
 
@@ -66,25 +66,25 @@ Például megadhatja a következő egyéni adattartalmat, amely egyetlen, *szöv
         "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
     }
 ```
-Ez a példa a következőhöz hasonló adatokat oldja fel a webhooknak való elküldésekor:
+Ez a példa a hasznos teher a következőhöz hasonló módon oldható meg, amikor a webhook-ra küldi:
 
 ```json
     {
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
-Mivel az egyéni webhookok összes változóját meg kell adni egy JSON-házban, például a "#searchinterval", az eredményül kapott webhook a különböző házakon belüli változó adatkereteket is tartalmaz, például "00:05:00".
+Mivel az egyéni webhook összes változóját meg kell adni egy JSON-házon belül, például a "#searchinterval", az eredő webhook változó adatokkal is rendelkezik a házakon belül, például "00:05:00".
 
-A keresési eredmények egyéni adattartalomba való felvételéhez győződjön meg arról, hogy a **IncludeSearchResults** a JSON-adattartalomban legfelső szintű tulajdonságként van beállítva. 
+Ha a keresési eredményeket egyéni hasznos adatba szeretné foglalni, győződjön meg arról, hogy az **IncludeSearchResults** a JSON-tartalom legfelső szintű tulajdonságaként van beállítva. 
 
-## <a name="sample-payloads"></a>Minta hasznos adatok
-Ez a szakasz a naplókhoz tartozó webhookok mintavételi hasznos adatait mutatja be. A minta hasznos adatokat tartalmaz példákat, ha a hasznos adatok standard és egyéni.
+## <a name="sample-payloads"></a>Minta rakományok
+Ez a szakasz a naplóriasztások webhookjainak mintahasznos terhelését jeleníti meg. A minta hasznos adatok példákat tartalmaznak, amikor a hasznos teher szabványos, és ha az egyéni.
 
-### <a name="standard-webhook-for-log-alerts"></a>Szabványos webhook a naplózási riasztásokhoz 
-Mindkét példa egy olyan dummy-adattartalommal rendelkezik, amely csak két oszloppal és két sorral rendelkezik.
+### <a name="standard-webhook-for-log-alerts"></a>Szabványos webhook a naplóriasztásokhoz 
+Mindkét példa rendelkezik egy dummy hasznos adat csak két oszlop és két sor.
 
-#### <a name="log-alert-for-log-analytics"></a>Log Analytics naplózási riasztása
-A következő minta-adattartalom szabványos webhook-művelethez használható *Egyéni JSON-beállítás nélkül* , amelyet a rendszer a log Analyticson alapuló riasztásokhoz használ:
+#### <a name="log-alert-for-log-analytics"></a>Naplóriasztás a Log Analytics szolgáltatáshoz
+A következő minta hasznos adat egy szabványos webhook-művelethez, amely a Log Analytics szolgáltatáson alapuló riasztásokhoz használható *egyéni JSON-beállítás nélkül* érhető el:
 
 ```json
 {
@@ -123,11 +123,11 @@ A következő minta-adattartalom szabványos webhook-művelethez használható *
  ```
 
 > [!NOTE]
-> A "súlyosság" mező értéke változhat, ha [átváltotta az API](alerts-log-api-switch.md) -t a log Analytics naplózási értesítéseire.
+> A "Súlyosság" mező értéke változhat, ha a Log Analytics naplóriasztásokra [vonatkozó API-preferenciáját módosította.](alerts-log-api-switch.md)
 
 
-#### <a name="log-alert-for-application-insights"></a>Application Insights naplózási riasztása
-A következő minta-adattartalom egy *Egyéni JSON-beállítás nélküli* szabványos webhookhoz használható, ha Application Insights alapján naplózási riasztásokat használ:
+#### <a name="log-alert-for-application-insights"></a>Naplózási riasztás az Application Insights számára
+A következő minta hasznos adat egy szabványos webhook *egyéni JSON-beállítás nélkül,* ha az Application Insights alapján naplóriasztásokhoz használja:
     
 ```json
 {
@@ -168,8 +168,8 @@ A következő minta-adattartalom egy *Egyéni JSON-beállítás nélküli* szabv
 }
 ```
 
-#### <a name="log-alert-with-custom-json-payload"></a>Riasztás egyéni JSON-adattartalommal
-Ha például olyan egyéni adattartalmat szeretne létrehozni, amely csak a riasztás nevét és a keresési eredményeket tartalmazza, a következőt használhatja: 
+#### <a name="log-alert-with-custom-json-payload"></a>Naplóriasztás egyéni JSON-tartalommal
+Ha például olyan egyéni hasznos tartalmat szeretne létrehozni, amely csak a riasztás nevét és a keresési eredményeket tartalmazza, a következőket használhatja: 
 
 ```json
     {
@@ -178,7 +178,7 @@ Ha például olyan egyéni adattartalmat szeretne létrehozni, amely csak a rias
     }
 ```
 
-A következő minta hasznos adatokat tartalmaz egy egyéni webhook-művelethez a naplózási riasztásokhoz:
+A következő minta hasznos adat egy egyéni webhook-művelet hez minden naplóriasztáshoz:
     
 ```json
     {
@@ -204,10 +204,10 @@ A következő minta hasznos adatokat tartalmaz egy egyéni webhook-művelethez a
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
-- Tudnivalók a [riasztásokról az Azure-riasztásokban](alerts-unified-log.md).
-- Ismerje meg, hogyan [kezelheti a naplózási riasztásokat az Azure-ban](alerts-log.md).
-- Műveleti csoportok létrehozása és kezelése [Az Azure-ban](action-groups.md).
-- További információ a [Application Insightsról](../../azure-monitor/app/analytics.md).
-- További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md). 
+## <a name="next-steps"></a>További lépések
+- Ismerje meg [a naplóriasztásokat az Azure-riasztásokban.](alerts-unified-log.md)
+- Ismerje meg, hogyan kezelheti a [naplóriasztásokat az Azure-ban.](alerts-log.md)
+- Műveletcsoportok létrehozása és kezelése [az Azure-ban.](action-groups.md)
+- További információ az [Application Insights](../../azure-monitor/app/analytics.md)ról.
+- További információ a [naplólekérdezésekről.](../log-query/log-query-overview.md) 
 

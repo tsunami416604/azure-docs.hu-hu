@@ -1,27 +1,27 @@
 ---
-title: Függvények letiltása a Azure Functionsban
-description: Megtudhatja, hogyan tilthatja le és engedélyezheti a függvényeket a Azure Functionsban.
+title: A függvények letiltása az Azure Functionsben
+description: Ismerje meg, hogyan tilthatja le és engedélyezheti a függvényeket az Azure Functionsben.
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77116143"
 ---
-# <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
+# <a name="how-to-disable-functions-in-azure-functions"></a>A függvények letiltása az Azure Functionsben
 
-Ez a cikk azt ismerteti, hogyan lehet letiltani egy függvényt a Azure Functionsban. A függvények *letiltásához* azt jelenti, hogy a futtatókörnyezet figyelmen kívül hagyja a függvényhez definiált automatikus triggert. Ezzel megakadályozhatja, hogy egy adott függvény a teljes Function app leállítása nélkül fusson.
+Ez a cikk bemutatja, hogyan tilthatja le a függvényeket az Azure Functionsben. Egy függvény *letiltása* azt jelenti, hogy a futásidejű figyelmen kívül hagyja a függvényhez definiált automatikus eseményindítót. Ez lehetővé teszi, hogy megakadályozza egy adott függvény futtatását a teljes függvényalkalmazás leállítása nélkül.
 
-A függvények letiltásának ajánlott módja a következő formátumú alkalmazás-beállítás használata: `AzureWebJobs.<FUNCTION_NAME>.Disabled`. Az Alkalmazásbeállítások számos módon hozhatók létre és módosíthatók, például az [Azure CLI](/cli/azure/) használatával és a függvény **kezelés** lapjának [Azure Portal](https://portal.azure.com). 
+A függvények letiltásának ajánlott módja a formátumban `AzureWebJobs.<FUNCTION_NAME>.Disabled`lévő alkalmazásbeállítás használata. Ezt az alkalmazásbeállítást számos módon hozhatja létre és módosíthatja, többek között az [Azure CLI](/cli/azure/) használatával és az [Azure Portalon](https://portal.azure.com)a függvény **Kezelés** lapján. 
 
 > [!NOTE]  
-> Ha letilt egy HTTP által aktivált függvényt a jelen cikkben ismertetett módszerekkel, a végpont továbbra is elérhető, ha a helyi számítógépen fut.  
+> Ha a jelen cikkben ismertetett módszerekkel letilt egy HTTP-aktivált függvényt, a végpont továbbra is elérhető lehet a helyi számítógépen való futtatáskor.  
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Az Azure CLI-ben a [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal hozhatja létre és módosíthatja az alkalmazás beállításait. A következő parancs letilt egy `QueueTrigger` nevű függvényt egy `AzureWebJobs.QueueTrigger.Disabled` nevű alkalmazás-beállítás létrehozásával `true`re. 
+Az Azure CLI-ben [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) a paranccsal hozza létre és módosítsa az alkalmazásbeállítást. A következő parancs letiltja a nevű `QueueTrigger` `AzureWebJobs.QueueTrigger.Disabled` függvényt `true`egy alkalmazásbeállítás létrehozásával, amely a -ra állítja be. 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -29,7 +29,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
-A függvény újbóli engedélyezéséhez futtassa újra ugyanazt a parancsot `false`értékkel.
+A függvény újbóli engedélyezéséhez futtassa újra `false`ugyanazt a parancsot .
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -39,17 +39,17 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>A portál használata
 
-Használhatja a Function **állapot** kapcsolót is a függvény **kezelés** lapján. A kapcsoló a `AzureWebJobs.<FUNCTION_NAME>.Disabled` alkalmazás beállításainak létrehozásával és törlésével működik.
+A függvény **Kezelés** lapján is használhatja a **Függvényállapot** kapcsolót. A kapcsoló az `AzureWebJobs.<FUNCTION_NAME>.Disabled` alkalmazásbeállítás létrehozásával és törlésével működik.
 
-![Függvény állapotának kapcsolója](media/disable-function/function-state-switch.png)
+![Függvényállapot-kapcsoló](media/disable-function/function-state-switch.png)
 
 ## <a name="other-methods"></a>Egyéb módszerek
 
-Míg az alkalmazás-beállítási módszer minden nyelvhez és az összes futásidejű verzióhoz ajánlott, számos más módon is letilthatja a függvényeket. Ezeket a metódusokat, amelyek nyelvtől és futtatókörnyezettől függően változnak, a visszamenőleges kompatibilitás érdekében tartanak fenn. 
+Bár az alkalmazásbeállítási módszer minden nyelvhez és az összes futásidejű verzióhoz ajánlott, a függvények letiltása számos más módon is elérhető. Ezek a módszerek, amelyek nyelvtől és futásidejű verziótól függően változnak, a visszamenőleges kompatibilitás érdekében megmaradnak. 
 
-### <a name="c-class-libraries"></a>C#osztály kódtárai
+### <a name="c-class-libraries"></a>C# osztálykönyvtárak
 
-A Class Library függvényben a `Disable` attribútummal is megakadályozhatja a függvény aktiválását. Az attribútumot konstruktor paraméter nélkül is használhatja, ahogy az az alábbi példában is látható:
+Az osztálytár-függvényekben az `Disable` attribútum segítségével megakadályozhatja a függvény aktiválását. Az attribútumkonstruktor paraméter nélkül is használható, ahogy az a következő példában látható:
 
 ```csharp
 public static class QueueFunctions
@@ -65,7 +65,7 @@ public static class QueueFunctions
 }
 ```
 
-A konstruktor paraméter nélküli attribútumhoz újra kell fordítania a projektet, és újra kell telepítenie a projekt letiltott állapotának módosításához. Az attribútum használatának rugalmasabb módja, ha egy olyan konstruktor paramétert tartalmaz, amely egy logikai alkalmazás beállítására hivatkozik, ahogy az alábbi példában is látható:
+A konstruktorparaméter nélküli attribútum megköveteli a projekt újrafordítását és újratelepítését a függvény letiltott állapotának módosításához. Az attribútum használatának rugalmasabb módja egy logikai alkalmazásbeállításra hivatkozó konstruktorparaméter felvétele, ahogy az a következő példában látható:
 
 ```csharp
 public static class QueueFunctions
@@ -81,18 +81,18 @@ public static class QueueFunctions
 }
 ```
 
-Ezzel a módszerrel engedélyezheti és letilthatja a függvényt úgy, hogy az újrafordítás vagy az újbóli telepítés nélkül megváltoztatja az alkalmazás beállítását. Az Alkalmazásbeállítások módosítása a Function alkalmazás újraindítását eredményezi, így a letiltott állapot változása azonnal felismerhető.
+Ezzel a módszerrel engedélyezheti és letilthatja a funkciót az alkalmazásbeállítás módosításával, újrafordítás vagy újratelepítés nélkül. Egy alkalmazásbeállítás módosítása a függvényalkalmazás újraindítását eredményezi, így a rendszer azonnal felismeri a letiltott állapotváltozást.
 
 > [!IMPORTANT]
-> A `Disabled` attribútum a Class Library-függvények letiltásának egyetlen módja. A Class Library függvényhez tartozó generált *function. JSON* fájlt nem közvetlenül kell szerkeszteni. Ha szerkeszti ezt a fájlt, a `disabled` tulajdonsággal megjelenő bármit nem fog befolyásolni.
+> Az `Disabled` attribútum az egyetlen módja az osztálykönyvtár-függvények letiltásának. Az osztálytár-függvényhez létrehozott *function.json* fájl nem szerkeszthető közvetlenül. Ha módosítja a fájlt, bármit `disabled` is tesz a tulajdonsággal, annak nincs hatása.
 >
-> Ugyanez vonatkozik a **Function állapot** kapcsolóra a **kezelés** lapon, mivel a *function. JSON* fájl módosításával működik.
+> Ugyanez vonatkozik a **Kezelés** lap **Függvény állapot** kapcsolójára is, mivel a *function.json* fájl módosításával működik.
 >
-> Azt is vegye figyelembe, hogy a portálon előfordulhat, hogy a funkció le van tiltva, ha nem.
+> Vegye figyelembe azt is, hogy a portál jelezheti, hogy a függvény le van tiltva, ha nem.
 
-### <a name="functions-1x---scripting-languages"></a>Függvények 1. x – parancsfájlkezelési nyelvek
+### <a name="functions-1x---scripting-languages"></a>Funkciók 1.x - script nyelvek
 
-Az 1. x verzióban a *function. JSON* fájl `disabled` tulajdonságát is használhatja, hogy a futtatókörnyezet ne indítson el egy függvényt. Ez a metódus csak a parancsfájlok és a JavaScript C# programozási nyelveken működik. A `disabled` tulajdonság beállítható úgy, hogy `true` vagy egy alkalmazás-beállítás neve:
+Az 1.x-es verzióban `disabled` a *function.json* fájl tulajdonságával is megmondhatja a futásidőnek, hogy ne indítson el egy függvényt. Ez a módszer csak parancsfájlnyelvek, például C# parancsfájl és JavaScript esetén működik. A `disabled` tulajdonság beállítható `true` egy alkalmazásbeállítás nevére vagy nevére:
 
 ```json
 {
@@ -117,12 +117,12 @@ vagy
     "disabled": "IS_DISABLED"
 ```
 
-A második példában a függvény le van tiltva, ha van egy IS_DISABLED nevű alkalmazás-beállítás, és `true` vagy 1 értékre van beállítva.
+A második példában a függvény le van tiltva, ha van `true` egy IS_DISABLED nevű alkalmazásbeállítás, amely 1-re van állítva.
 
-Szerkesztheti a fájlt a Azure Portal, vagy használhatja a Function **állapot** kapcsolót a függvény **felügyelet** lapján. A portál kapcsoló a *function. JSON* fájl módosításával működik.
+Szerkesztheti a fájlt az Azure Portalon, vagy használhatja a függvény **kezelés** lapján a **Függvényállapot-kapcsolót.** A portálkapcsoló a *function.json* fájl módosításával működik.
 
-![Függvény állapotának kapcsolója](media/disable-function/function-state-switch.png)
+![Függvényállapot-kapcsoló](media/disable-function/function-state-switch.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk az automatikus eseményindítók letiltását ismerteti. További információ az eseményindítókkal kapcsolatban: [triggerek és kötések](functions-triggers-bindings.md).
+Ez a cikk az automatikus eseményindítók letiltásáról szól. Az eseményindítókról az [Eseményindítók és kötések](functions-triggers-bindings.md)című témakörben talál további információt.

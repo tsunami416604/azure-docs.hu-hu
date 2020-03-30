@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli SAP HANA SAP HANA telepítése (nagyméretű példányok) | Microsoft Docs
-description: SAP HANA telepítése Azure-beli SAP HANA (nagyméretű példányok esetén).
+title: Telepítse az SAP HANA-t az SAP HANA-ra az Azure-on (nagy példányok) | Microsoft dokumentumok
+description: Hogyan telepítsük az SAP HANA-t egy SAP HANA-ra az Azure-ban (nagy példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -14,206 +14,206 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617098"
 ---
-# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
+# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Az SAP HANA (nagy példányok) telepítése és konfigurálása az Azure-ban
 
-A cikk elolvasása előtt megismerheti a [Hana nagyméretű példányainak általános kifejezéseit](hana-know-terms.md) és a [Hana nagyméretű példányainak SKU](hana-available-skus.md)-t.
+A cikk elolvasása előtt ismerkedjen meg a [HANA nagypéldányokkal kapcsolatos gyakori kifejezésekkel](hana-know-terms.md) és a [HANA nagy példányok skus-aival.](hana-available-skus.md)
 
-A SAP HANA telepítése az Ön felelőssége. Az Azure-beli virtuális hálózatok és a HANA nagyméretű példány-egység (ek) közötti kapcsolat létrehozása után megkezdheti az új SAP HANA telepítését az Azure-beli (nagyméretű példányok) kiszolgálón. 
+Az SAP HANA telepítése az Ön felelőssége. Az Azure virtuális hálózatai és a HANA nagy példányok közötti kapcsolat létrehozása után megkezdheti egy új SAP HANA telepítését az Azure (Large Instances) kiszolgálón. 
 
 > [!Note]
-> SAP-házirend esetén a SAP HANA telepítését olyan személynek kell végrehajtania, aki megfelelt a Certified SAP Technology Associate vizsgának, SAP HANA a telepítési tanúsítási vizsgának, vagy egy SAP-tanúsítvánnyal rendelkező rendszerintegrátor (SI).
+> SAP-házirend szerint az SAP HANA telepítését olyan személynek kell elvégeznie, aki megfelelt a Certified SAP Technology Associate vizsgán, az SAP HANA telepítési minősítő vizsgán, vagy aki SAP-tanúsítvánnyal rendelkező rendszerintegrátor (SI).
 
-Ha a HANA 2,0 telepítését tervezi, tekintse meg az [SAP-támogatás megjegyzés #2235581-SAP HANA: a támogatott operációs rendszerek](https://launchpad.support.sap.com/#/notes/2235581/E) című témakört, és győződjön meg arról, hogy az operációs rendszer támogatja a telepíteni kívánt SAP HANA kiadást. A HANA 2,0 támogatott operációs rendszere szigorúbb, mint a HANA 1,0 támogatott operációs rendszere. Azt is ellenőriznie kell, hogy az érintett operációs rendszer kiadása támogatott-e a közzétett [listán](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)szereplő adott HLI egységnél. Kattintson a egységre a teljes részletek megjelenítéséhez az adott egység támogatott operációsrendszer-listájával. 
+Ha a HANA 2.0 telepítését tervezi, olvassa el [az SAP támogatási megjegyzése #2235581 - SAP HANA: Támogatott operációs rendszerek](https://launchpad.support.sap.com/#/notes/2235581/E) győződjön meg arról, hogy az operációs rendszer támogatja az SAP HANA-kiadás, amely et telepít. A HANA 2.0 támogatott operációs rendszer e-nél szigorúbb, mint a HANA 1.0 támogatott operációs rendszer. Azt is ellenőriznie kell, hogy az Ön számára érdekelt operációs rendszer kiadása támogatottként szerepel-e az adott HLI egység számára ezen a közzétett [listán.](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) Kattintson az egységre, hogy a teljes részleteket a támogatott operációs rendszer listáját, hogy az egység. 
 
-A HANA telepítésének megkezdése előtt ellenőrizze az alábbiakat:
-- [HLI egység (ek)](#validate-the-hana-large-instance-units)
+A HANA-telepítés megkezdése előtt ellenőrizze a következőket:
+- [HLI egység(ek)](#validate-the-hana-large-instance-units)
 - [Operációs rendszer konfigurációja](#operating-system)
 - [Hálózati konfiguráció](#networking)
 - [Tároló konfigurálása](#storage)
 
 
-## <a name="validate-the-hana-large-instance-units"></a>A HANA nagyméretű példány-egység (ek) ellenőrzése
+## <a name="validate-the-hana-large-instance-units"></a>A HANA nagypéldány-egység(ek) ellenőrzése
 
-Miután megkapta a HANA nagyméretű példányának egységét a Microsofttól, ellenőrizze a következő beállításokat, és szükség szerint módosítsa azt.
+Miután megkapta a HANA nagypéldány-egységet a Microsofttól, ellenőrizze a következő beállításokat, és szükség szerint módosítsa.
 
-Az **első lépés** a HANA nagyméretű példányának megérkezése és a példányok elérésének és kapcsolatának létrehozása után a Azure Portal, hogy a példány (ok) megjelenik-e a megfelelő SKU-k és operációs rendszer használatával. Olvassa el az [Azure HANA nagyméretű példányok vezérlését Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal) az ellenőrzések végrehajtásához szükséges lépésekhez.
+Az **első lépés** a HANA nagy példány fogadása és a példányok hozásához való hozzáférés és kapcsolat létrehozása után, hogy ellenőrizze az Azure Portalon, hogy a példány(ok) jelennek-e meg a megfelelő SK-k és operációs rendszer. Olvassa el [az Azure HANA nagypéldányok vezérlését](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal) az Azure Portalon keresztül az ellenőrzések végrehajtásához szükséges lépésekhez.
 
-A **második lépés** a HANA nagyméretű példányának megérkezése és a példányok elérésének és kapcsolatának létrehozása után a példány operációs rendszerének regisztrálása az operációs rendszer szolgáltatójával. Ez a lépés tartalmazza a SUSE Linux operációs rendszernek az Azure-beli virtuális gépen üzembe helyezett SUSE SMT-példányban való regisztrálását. 
+A **második lépés** a HANA nagy példány fogadása után, és hozzon létre hozzáférést és kapcsolatot a példányok, regisztrálni a példány operációs rendszer az operációs rendszer az operációs rendszer szolgáltatójának. Ez a lépés magában foglalja a SUSE Linux operációs rendszer regisztrálását a SUSE SMT egy olyan példányában, amely az Azure-ban egy virtuális gépben van telepítve. 
 
-A HANA nagyméretű példány egysége csatlakozhat ehhez az SMT-példányhoz. (További információ: az [SMT-kiszolgáló beállítása SUSE Linux](hana-setup-smt.md)rendszerhez). Azt is megteheti, hogy a Red Hat operációs rendszernek regisztrálnia kell a Red Hat előfizetés-kezelővel, amelyhez csatlakoznia kell. További információkért tekintse [meg a mi SAP HANA az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című témakörben található megjegyzéseket. 
+A HANA nagy példány egység csatlakozhat ehhez az SMT-példányhoz. (További információ: [SMT-kiszolgáló beállítása SUSE Linux hoz).](hana-setup-smt.md) Másik lehetőségként a Red Hat operációs rendszer regisztrálva kell lennie a Red Hat Előfizetés-kezelő, hogy meg kell csatlakozni. További információkért tekintse meg a megjegyzések [mi az SAP HANA az Azure-ban (nagy példányok)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Ez a lépés az operációs rendszer javításához szükséges, amely az ügyfél feladata. A SUSE-es [verzióban](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)keresse meg az SMT telepítéséhez és konfigurálásához szükséges dokumentációt ezen az oldalon.
+Ez a lépés szükséges az operációs rendszer javításához, amely az ügyfél felelőssége. A SUSE esetében keresse meg az SMT telepítésével és konfigurálásával kapcsolatos dokumentációt ezen az oldalon az [SMT telepítéséről.](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)
 
-A **harmadik lépés** az adott operációsrendszer-kiadás/-verzió új javításának és javításának keresése. Ellenőrizze, hogy a HANA nagyméretű példányának javítási szintje a legújabb állapotban van-e. Előfordulhatnak olyan esetek, amikor a legújabb javítások nem szerepelnek benne. A HANA nagyméretű példányok egységének átvétele után meg kell vizsgálni, hogy szükséges-e a javítások alkalmazása.
+A **harmadik lépés** az, hogy ellenőrizze az új javítások és javítások az adott operációs rendszer release / version. Ellenőrizze, hogy a HANA nagy példány javítási szintje a legújabb állapotban van-e. Előfordulhatnak olyan esetek, amikor a legújabb javítások nem szerepelnek. A HANA nagypéldány-egység átvétele után kötelező ellenőrizni, hogy a javításokat kell-e alkalmazni.
 
-A **negyedik lépés** a SAP HANA telepítésére és konfigurálására vonatkozó SAP-megjegyzések megkeresése az adott operációsrendszer-kiadáson/verzión. Az egyes telepítési forgatókönyvekre vonatkozó javaslatok vagy SAP-megjegyzések vagy konfigurációk módosítása miatt a Microsoft nem mindig képes tökéletesen beállítani a HANA nagyméretű példányok egységét. 
+A **negyedik lépés** az, hogy nézd meg a megfelelő SAP-jegyzetek telepítéséhez és konfigurálásához SAP HANA az adott operációs rendszer kiadása/verziója. Az EGYES telepítési forgatókönyvektől függő SAP-megjegyzések vagy konfigurációk módosításai miatt a Microsoft nem mindig tudja tökéletesen konfigurálni a HANA nagypéldány-egységét. 
 
-Ezért az ügyfélnek kell elolvasnia az SAP HANAhoz kapcsolódó SAP-megjegyzéseket a Linux-kiadás pontos kiadása érdekében. Ellenőrizze az operációs rendszer kiadása/verziója konfigurációját is, és ha még nem tette meg, alkalmazza a konfigurációs beállításokat.
+Ezért az Ügyfél számára kötelező elolvasni az SAP HANA-hoz kapcsolódó SAP-megjegyzéseket a pontos Linux-kiadáshoz. Ellenőrizze az operációs rendszer kiadásának/verziójának konfigurációit is, és alkalmazza a konfigurációs beállításokat, ha még nem tette meg.
 
-Pontosan vizsgálja meg a következő paramétereket, és végül a következőhöz igazodva:
+Pontosabban ellenőrizze a következő paramétereket, és végül igazodjon:
 
-- net. Core. rmem_max = 16777216
-- net. Core. wmem_max = 16777216
+- net.core.rmem_max = 16777216
+- net.core.wmem_max = 16777216
 - net.core.rmem_default = 16777216
 - net.core.wmem_default = 16777216
 - net.core.optmem_max = 16777216
 - net.ipv4.tcp_rmem = 65536 16777216 16777216
-- net. IPv4. tcp_wmem = 65536 16777216 16777216
+- net.ipv4.tcp_wmem = 65536 16777216 16777216
 
-A SLES12 SP1 és a RHEL 7,2 verziótól kezdődően ezeket a paramétereket be kell állítani egy konfigurációs fájlban a/etc/sysctl.d könyvtárban. Például létre kell hozni egy 91-NetApp-HANA. conf nevű konfigurációs fájlt. A régebbi SLES és RHEL kiadások esetében ezeket a paramétereket a/etc/sysctl. conf fájlban kell megadni.
+Az SLES12 SP1 és RHEL 7.2 fájltól kezdve ezeket a paramétereket az /etc/sysctl.d könyvtár konfigurációs fájljában kell beállítani. Például létre kell hozni egy 91-NetApp-HANA.conf nevű konfigurációs fájlt. A régebbi SLES és RHEL kiadások esetén ezeket a paramétereket a/etc/sysctl.conf fájlban kell beállítani.
 
-A RHEL 6,3-től kezdődően az összes RHEL-kiadás esetében vegye figyelembe a következőket: 
-- A sunrpc. tcp_slot_table_entries = 128 paramétert a/etc/modprobe. d/sunrpc-local. conf fájlban kell megadni. Ha a fájl nem létezik, először létre kell hoznia a bejegyzést a következő bejegyzés hozzáadásával: 
-    - beállítások sunrpc tcp_max_slot_table_entries = 128
+Az RHEL 6.3-as sal kezdődő rhel 6.3-as kiadások esetében tartsa szem előtt a következőket: 
+- A sunrpc.tcp_slot_table_entries = 128 paramétert be kell állítani az in/etc/modprobe.d/sunrpc-local.conf fájlba. Ha a fájl nem létezik, először a következő bejegyzést kell hozzáadnia: 
+    - lehetőségek sunrpc tcp_max_slot_table_entries=128
 
-Az **ötödik lépés** a HANA nagyméretű példány-egység rendszeridejének ellenõrzése. A példányok rendszer-időzónával vannak telepítve. Ez az időzóna annak az Azure-régiónak a helyét jelöli, amelyben a HANA nagyméretű példányának bélyegzője található. Módosíthatja a saját példányok rendszeridejét vagy időzónáját. 
+Az **ötödik lépés** a HANA nagypéldány-egység rendszeridejének ellenőrzése. A példányok rendszeridőzónával vannak telepítve. Ez az időzóna az Azure-régió helyét jelöli, amelyben a HANA nagy példány bélyegzője található. Módosíthatja a saját példányainak rendszeridejét vagy időzónáját. 
 
-Ha több példányt rendel a bérlőhöz, akkor módosítania kell az újonnan leszállított példányok időzónáját. A Microsoft nem tekinti át az átadást követő példányokkal beállított időzónát. Így előfordulhat, hogy az újonnan üzembe helyezett példányok nem állíthatók be ugyanabban az időzónában, mint a módosította. A felhasználó feladata, hogy szükség esetén módosítsa az átadott példány (ok) időzónáját. 
+Ha több példányt rendel a bérlőbe, módosítania kell az újonnan szállított példányok időzónáját. A Microsoft nem rendelkezik betekintést a rendszer időzónáját beállított a példányok átadása után. Így előfordulhat, hogy az újonnan telepített példányok nincsenek beállítva ugyanabban az időzónában, mint amelyet módosított. Az Ön felelőssége, mint ügyfél, hogy szükség esetén igazítsa az átadott példány(ok) időzónáját. 
 
-A **hatodik lépés** az etc/hosts szolgáltatás megkeresése. Ahogy a pengék átadása megtörténik, különböző IP-címekkel rendelkeznek, amelyek különböző célokra vannak hozzárendelve. Keresse meg az etc/hosts fájlt. Ha az egységeket egy meglévő bérlőhöz adja hozzá, nem várható, hogy az újonnan telepített rendszerek etc/gazdagépei megfelelően vannak karbantartva a korábban továbbított rendszerek IP-címeivel. Az ügyfél feladata, hogy az újonnan üzembe helyezett példányok kommunikálhatnak és feloldják a bérlőn korábban üzembe helyezett egységek nevét. 
+A **hatodik lépés** az, hogy ellenőrizze, stb / házigazdák. Ahogy a kések átadásra kerülnek, különböző IP-címekkel rendelkeznek, amelyek különböző célokra vannak hozzárendelve. Ellenőrizze az etc/hosts fájlt. Amikor egységek et adnak hozzá egy meglévő bérlőhöz, ne számítson arra, hogy az újonnan üzembe helyezett rendszerek etc/hosts megfelelően karbantartható a korábban leszállított rendszerek IP-címével. Az Ön felelőssége, mint ügyfél, hogy megbizonyosodjon arról, hogy egy újonnan üzembe helyezett példány kölcsönhatásba léphet, és feloldja a nevét, hogy az egységek, amelyek korábban üzembe helyezett a bérlőben. 
 
 
 ## <a name="operating-system"></a>Operációs rendszer
 
-A továbbított operációsrendszer-rendszerkép swap-területe 2 GB-ra van beállítva az [SAP-támogatási megjegyzés #1999997 – gyakori kérdések: SAP HANA memória](https://launchpad.support.sap.com/#/notes/1999997/E). Ha más beállítást szeretne használni, saját magának kell megadnia.
+A leszállított operációsrendszer-lemezkép csereterülete 2 GB az [SAP támogatási megjegyzésének #1999997 - GYIK: SAP HANA memória](https://launchpad.support.sap.com/#/notes/1999997/E)szerint. Vevőként, ha más beállítást szeretne, saját magának kell beállítania.
 
-Az [SAP-alkalmazások SUSE Linux Enterprise Server 12 SP1](https://www.suse.com/products/sles-for-sap/download/) az Azure-ban (nagyméretű példányok) SAP HANA telepített Linux-disztribúció. Ez az adott terjesztés SAP-specifikus képességeket biztosít "kívülről" (beleértve az SAP on SLES hatékony futtatására szolgáló előre beállított paramétereket is).
+[SUSE Linux Enterprise Server 12 SP1 SAP-alkalmazások](https://www.suse.com/products/sles-for-sap/download/) a Linux, amely telepítve van az SAP HANA az Azure-ban (nagy példányok). Ez a bizonyos disztribúció sap-specifikus képességeket biztosít "a dobozból" (beleértve az SAP SLES-en való hatékony futtatásához beállított paramétereket).
 
-Tekintse meg a SUSE webhelyén és az [SAP-on SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) -ben elérhető [Resource Library/White Papers](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) (az sap közösségi hálózata SAP HANA) SLES (beleértve a magas rendelkezésre ÁLLÁSt, az SAP-műveletekre vonatkozó biztonsági korlátozásokat és egyebeket).
+Tekintse meg [a Forráskönyvtár/tanulmányok a](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) SUSE-webhelyen és az [SAP-suse-on](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) az SAP közösségi hálózaton (SCN) az SAP HANA SLES-en történő üzembe helyezéséhez kapcsolódó számos hasznos erőforrást (beleértve a magas rendelkezésre állás ú, az SAP-műveletekre jellemző biztonsági edzésbeállítását stb.).
 
-A következő további és hasznos SAP a SUSE-hez kapcsolódó hivatkozásokat tartalmaz:
+A következőkben további és hasznos SAP a SUSE-hoz kapcsolódó linkeken:
 
-- [SAP HANA SUSE Linux-helyen](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Ajánlott eljárások az SAP: sorba helyezni Replication – SAP NetWeaver a SUSE Linux Enterprise 12 rendszeren](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
-- [ClamSAP – SLES vírusvédelem az SAP-hez](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (beleértve az SLES 12 for SAP-alkalmazásokat)
+- [SAP HANA a SUSE Linux webhelyen](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
+- [Gyakorlati tanácsok az SAP-hoz: Várólistára helyezett replikáció – SAP NetWeaver a SUSE Linux Enterprise 12 rendszeren](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [ClamSAP – SLES vírusvédelem SAP (beleértve](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) az SLES 12 SAP alkalmazások)
 
-A következő SAP-támogatási megjegyzések a 12. SLES SAP HANA megvalósítására alkalmazhatók:
+Az sap hana sles 12-es gépen történő megvalósításához az SAP támogatási megjegyzések a következők:
 
-- [SAP-támogatás Megjegyzés #1944799 – SAP HANA irányelvek a SLES operációs rendszer telepítéséhez](http://service.sap.com/sap/support/notes/1944799)
-- [SAP-támogatás Megjegyzés #2205917 – SAP HANA DB ajánlott operációsrendszer-beállítások az SLES 12 for SAP-alkalmazásokhoz](https://launchpad.support.sap.com/#/notes/2205917/E)
-- [SAP-támogatás Megjegyzés #1984787 – SUSE Linux Enterprise Server 12: telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787)
-- [SAP-támogatás Megjegyzés #171356 – SAP-szoftverek Linux rendszeren: általános információk](https://launchpad.support.sap.com/#/notes/1984787)
-- [SAP-támogatás Megjegyzés #1391070 – Linux UUID-megoldások](https://launchpad.support.sap.com/#/notes/1391070)
+- [SAP támogatási megjegyzés #1944799 – SAP HANA irányelvek az SLES operációs rendszer telepítéséhez](http://service.sap.com/sap/support/notes/1944799)
+- [SAP támogatási megjegyzés #2205917 – Az SAP HANA DB ajánlott operációs rendszer beállításai az SLES 12-hez az SAP-alkalmazásokhoz](https://launchpad.support.sap.com/#/notes/2205917/E)
+- [SAP támogatási megjegyzés #1984787 – SUSE Linux Enterprise Server 12: telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP támogatási megjegyzés #171356 - SAP szoftver Linuxon: Általános információk](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP támogatási megjegyzés #1391070 – Linux UUID megoldások](https://launchpad.support.sap.com/#/notes/1391070)
 
-A [SAP HANA Red Hat Enterprise Linux](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) egy másik ajánlat, amellyel a SAP HANA a HANA nagyméretű példányain futtathatja. A 7,2-es és a 7,3-es RHEL-kiadások elérhetők és támogatottak. 
+[Red Hat Enterprise Linux SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) egy másik ajánlat az SAP HANA hana hana hana hana hana nagy példányokon futtatásához. Az RHEL 7.2 és 7.3 kiadásai elérhetők és támogatottak. 
 
-A következő további hasznos SAP on Red Hat kapcsolódó hivatkozásokat tartalmaz:
-- [A Red Hat Linux-webhelyen SAP HANA](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
+Az alábbiakban további hasznos SAP a Red Hat kapcsolódó linkek:
+- [SAP HANA a Red Hat Linux oldalon](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
 
-A következő SAP-támogatási megjegyzések a Red Hat SAP HANA megvalósítására alkalmazhatók:
+A következőkben az SAP támogatási megjegyzések, amelyek az SAP HANA red hat on végrehajtásához alkalmazhatók:
 
-- [SAP-támogatás Megjegyzés #2009879-SAP HANA Red Hat Enterprise Linux (RHEL) operációs rendszerre vonatkozó irányelvek](https://launchpad.support.sap.com/#/notes/2009879/E)
-- [SAP-támogatás Megjegyzés #2292690-SAP HANA DB: ajánlott operációsrendszer-beállítások a RHEL 7 rendszerhez](https://launchpad.support.sap.com/#/notes/2292690)
-- [SAP-támogatás Megjegyzés #1391070 – Linux UUID-megoldások](https://launchpad.support.sap.com/#/notes/1391070)
-- [SAP-támogatás Megjegyzés #2228351-Linux: SAP HANA az SPS 11 110 (vagy újabb) verziója a RHEL 6 vagy a SLES 11 rendszeren](https://launchpad.support.sap.com/#/notes/2228351)
-- [SAP-támogatás Megjegyzés #2397039 – gyakori kérdések: SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039)
-- [SAP-támogatás Megjegyzés #2002167-Red Hat Enterprise Linux 7. x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/2002167)
+- [SAP támogatási megjegyzés #2009879 - SAP HANA irányelvek a Red Hat Enterprise Linux (RHEL) operációs rendszerhez](https://launchpad.support.sap.com/#/notes/2009879/E)
+- [SAP támogatási megjegyzés #2292690 - SAP HANA DB: Ajánlott operációsrendszer-beállítások az RHEL 7-hez](https://launchpad.support.sap.com/#/notes/2292690)
+- [SAP támogatási megjegyzés #1391070 – Linux UUID megoldások](https://launchpad.support.sap.com/#/notes/1391070)
+- [SAP támogatási megjegyzés #2228351 - Linux: SAP HANA Database SPS 11 11 (vagy újabb) rhel 6 vagy Sles 11 rendszeren](https://launchpad.support.sap.com/#/notes/2228351)
+- [SAP támogatási megjegyzés #2397039 - GYIK: SAP az RHEL-en](https://launchpad.support.sap.com/#/notes/2397039)
+- [SAP támogatási megjegyzés #2002167 - Red Hat Enterprise Linux 7.x: Telepítés és frissítés](https://launchpad.support.sap.com/#/notes/2002167)
 
-### <a name="time-synchronization"></a>Idő szinkronizálása
+### <a name="time-synchronization"></a>Időszinkronizálás
 
-Az SAP NetWeaver architektúrára épülő SAP-alkalmazások érzékenyek az SAP-rendszer részét képező különböző összetevők időbeli eltérésére. Az SAP ABAP rövid memóriaképei a ZDATE\_nagy\_idő\_DIFF valószínűleg ismerősek. Ennek az az oka, hogy ezek a rövid memóriaképek akkor jelennek meg, ha a különböző kiszolgálók vagy virtuális gépek rendszerideje túl távol sodródik egymástól.
+Az SAP NetWeaver architektúrára épülő SAP-alkalmazások érzékenyek az SAP-rendszert alkotó különböző összetevők időkülönbségére. Sap ABAP rövid dumps a hiba\_\_címe\_ZDATE NAGY IDŐ DIFF valószínűleg ismerős. Ennek az az oka, hogy ezek a rövid memóriaképek akkor jelennek meg, amikor a különböző kiszolgálók vagy virtuális gépek rendszerideje túl messze van egymástól.
 
-SAP HANA az Azure-ban (nagyméretű példányok) az Azure-ban végzett időszinkronizálás nem vonatkozik a nagyméretű példányokban lévő számítási egységekre. Ez a szinkronizálás nem alkalmazható natív Azure-beli virtuális gépeken futó SAP-alkalmazások futtatására, mert az Azure biztosítja, hogy a rendszer időben szinkronizálva legyen. 
+Az Sap HANA az Azure-ban (nagy példányok) időszinkronizálás, amely az Azure-ban végzett nem vonatkozik a számítási egységek a nagy példány bélyegek. Ez a szinkronizálás nem alkalmazható sap-alkalmazások natív Azure-beli virtuális gépeken való futtatásához, mivel az Azure biztosítja, hogy a rendszer ideje megfelelően szinkronizálva legyen. 
 
-Ennek eredményeképpen be kell állítania egy külön időkiszolgálót, amelyet az Azure-beli virtuális gépeken futó SAP-alkalmazások és a HANA nagyméretű példányokon futó SAP HANA adatbázis-példányok használhatnak. A nagyméretű példányokban tárolt tárolási infrastruktúra időközben szinkronizálva van az NTP-kiszolgálókkal.
+Ennek eredményeképpen be kell állítania egy külön időkiszolgálót, amelyet az Azure virtuális gépeken és a HANA nagy példányokon futó SAP HANA-adatbázispéldányok on futó SAP-alkalmazáskiszolgálók használhatnak. A nagypéldány-bélyegzők tárolóinfrastruktúrája időszinkronizált az NTP-kiszolgálókkal.
 
 
 ## <a name="networking"></a>Hálózat
-Feltételezzük, hogy követte az Azure-beli virtuális hálózatok megtervezésének és a virtuális hálózatok a HANA nagyméretű példányokhoz való csatlakoztatásának javaslatait, az alábbi dokumentumokban leírtak szerint:
+Feltételezzük, hogy követte az Azure virtuális hálózatok tervezésére és a virtuális hálózatok nak a HANA nagy példányokhoz való csatlakoztatására vonatkozó javaslatokat, a következő dokumentumokban leírtak szerint:
 
-- [SAP HANA (nagyméretű példány) áttekintése és architektúrája az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure-ban](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (nagy példány) áttekintése és architektúrája az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [SAP HANA (nagy példányok) infrastruktúrája és kapcsolata az Azure-ban](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Néhány részletet érdemes megemlíteni az önálló egységek hálózatkezelésével kapcsolatban. Minden HANA nagyméretű példány-egység két vagy három IP-címmel rendelkezik, amelyek két vagy három NIC-porthoz vannak rendelve. Három IP-cím használatos a HANA kibővíthető konfigurációkban és a HANA rendszer replikációs forgatókönyvében. Az egység hálózati adapteréhez rendelt egyik IP-cím kívül esik a kiszolgáló IP-készletéből, amely [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)szerepel.
+Van néhány említésre méltó részlet az egyes egységek hálózatba való kihálózatával kapcsolatban. Minden HANA nagy példány egység két vagy három IP-címeket, amelyek két vagy három hálózati adapter portok van hozzárendelve. Három IP-cím hana horizontális felskálázási konfigurációk és a HANA rendszer replikációs forgatókönyv. Az egység hálózati adapteréhez rendelt IP-címek egyike az [SAP HANA (Nagy példányok) áttekintésében és architektúrájában az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)ismertetett kiszolgálóI IP-készleten kívüli.
 
-Az architektúra Ethernet-adataival kapcsolatos további információkért tekintse meg a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md).
+Az architektúra Ethernet-részleteiről a [HLI által támogatott forgatókönyvekben](hana-supported-scenario.md)talál további információt.
 
-## <a name="storage"></a>Tárterület
+## <a name="storage"></a>Storage
 
-Az Azure-beli SAP HANA (nagyméretű példányok) tárolási elrendezését az Azure-`service management` az SAP által ajánlott irányelvek segítségével konfigurálja SAP HANA. Ezek az irányelvek dokumentálva vannak a [SAP HANA Storage-követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) című tanulmányban. 
+Az SAP HANA tárolási elrendezését az Azure-ban (nagy példányok) az SAP HANA konfigurálja az Azure-ban `service management` az SAP ajánlott irányelvein keresztül. Ezeket az irányelveket az [SAP HANA tárolási követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) tanulmány dokumentálja. 
 
-A különböző HANA nagyméretű példányokkal rendelkező különféle kötetek durva méretei a [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)vannak dokumentálva.
+A különböző kötetek durva méretei a különböző HANA nagy példányok sku-k dokumentálva sap [HANA (nagy példányok) áttekintése és architektúrája az Azure-ban.](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-A tárolási kötetek elnevezési konvenciói az alábbi táblázatban láthatók:
+A tárolókötetek elnevezési konvencióit az alábbi táblázat tartalmazza:
 
-| Tárterület-használat | Csatlakoztatás neve | Kötet neve | 
+| Tárolási használat | Csatlakoztatás neve | Kötet neve | 
 | --- | --- | ---|
-| HANA-adathalmazok | /hana/data/SID/mnt0000\<m > | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA-napló | /hana/log/SID/mnt0000\<m > | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
-| HANA-napló biztonsági mentése | /hana/log/backups | Storage IP:/hana_log_backups_SID_mnt00001_tenant_vol |
-| HANA megosztott | /hana/shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
-| usr/SAP | /usr/sap/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
+| HANA-adatok | /hana/data/SID/mnt0000\<m> | Tárolási IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA-napló | /hana/log/SID/mnt0000\<m> | Tárolási IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA napló biztonsági mentése | /hana/log/backups | Tárolási IP:/hana_log_backups_SID_mnt00001_tenant_vol |
+| HANA megosztva | /hana/shared/SID | Tárolási IP:/hana_shared_SID_mnt00001_tenant_vol/megosztott |
+| usr/sap | /usr/sap/SID | Tárolási IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
-A *SID* a HANA-példány rendszer-azonosítója. 
+*SID* a HANA-példány rendszerazonosítója. 
 
-Bérlő telepítésekor a *bérlő* a műveletek belső enumerálása.
+*Bérlő* egy belső felsorolása műveletek üzembe helyezésekor egy bérlő.
 
-A HANA usr/SAP ugyanazon a köteten osztozik. A csatolási nómenklatúrája tartalmazza a HANA-példányok rendszerazonosítóját, valamint a csatlakoztatási számot. A Felskálázási központi telepítések esetében csak egy csatlakoztatás van, például mnt00001. A kibővített üzemelő példányok esetében a több csatlakoztatási pont jelenik meg, mint a feldolgozók és a főcsomópontok. 
+HANA usr/sap ugyanazt a kötetet. A csatlakoztatási pontok nómenklatúrája tartalmazza a HANA-példányok rendszerazonosítóját, valamint a csatlakoztatási számot. A felskálázási telepítésekben csak egy csatlakoztatás van, például az mnt00001. A horizontális felskálázási központi telepítések, másrészt, annyi csatlakoztatások, mint afeldolgozó és a fő csomópontok. 
 
-A kibővíthető környezetek, az adat-, a napló-és a biztonsági mentési kötetek a kibővített konfiguráció minden csomópontja számára meg vannak osztva és csatolva vannak. Több SAP-példányt tartalmazó konfigurációk esetén a rendszer egy másik készletet hoz létre, és a HANA nagyméretű példány-egységhez csatolja a köteteket. A forgatókönyv tárolási elrendezésével kapcsolatos részletekért lásd: [HLI által támogatott forgatókönyvek](hana-supported-scenario.md).
+Kibővített környezetekben az adatok, a napló és a napló biztonsági mentési kötetei meg vannak osztva, és a kibővített konfigurációban minden csomóponthoz kapcsolódnak. Több SAP-példány konfigurációk esetén egy másik kötetkészlet jön létre, és a HANA nagy példány egységhez csatlakozik. A forgatókönyv tárolási elrendezésének részleteit a [HLI által támogatott forgatókönyvek című témakörben találja.](hana-supported-scenario.md)
 
-Ha egy HANA nagyméretű példány egységét tekinti át, akkor tisztában lesz azzal, hogy az egységek nagyvonalú lemezterületet biztosítanak a HANA/az adatmennyiséghez, valamint hogy van egy kötet HANA/log/Backup. A HANA/az adatmennyiség olyan nagy, hogy a tárolási Pillanatképek azt ajánljuk Önnek, hogy az ügyfél ugyanazt a lemezt használja. Minél több tárolási pillanatkép van végrehajtva, annál több helyet használ a pillanatképek a hozzárendelt tárolási köteteken. 
+Ha megnézi a HANA nagy példány egység, rájössz, hogy az egységek jönnek a hana/data nagyvonalú lemezkötettel, és hogy van egy kötet HANA/log/backup. Az ok, hogy mi történt a HANA/adatok olyan nagy, hogy a tárolási pillanatképek kínálunk Önnek, mint egy ügyfél használja ugyanazt a lemezkötetet. Minél több tárolási pillanatképet hajt végre, annál több helyet használnak fel a hozzárendelt tárolókötetek pillanatképei. 
 
-A HANA/log/Backup kötet nem lehet az adatbázis biztonsági másolatainak kötete. Ez a méret a HANA-tranzakciónapló biztonsági mentései biztonsági mentési kötetként használható. További információ: [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban. 
+A HANA/log/backup kötet nem lehet az adatbázis biztonsági másolatainak kötete. A HANA tranzakciónapló biztonsági másolatainak biztonsági másolataként használható. További információ: [SAP HANA (Large Instances) magas rendelkezésre állású és vész-helyreállítási az Azure-ban.](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
-A megadott tárterületen kívül 1 TB-os növekményekben is vásárolhat további tárolókapacitást. Ezt a további tárhelyet új kötetekként lehet hozzáadni a HANA nagyméretű példányaihoz.
+A rendelkezésre álló tárhelymellett további tárolókapacitást is vásárolhat 1 TB-os lépésekben. Ez a további tároló új kötetekként adható ke- és hana nagy példány.
 
-Az Azure `service management`SAP HANA való bevezetése során az ügyfél egy felhasználói azonosítót (UID) és csoportazonosító (GID) határoz meg a sidadm-felhasználó és a sapsys csoport számára (például: 1 000 500). A SAP HANA rendszer telepítése során ugyanezeket az értékeket kell használnia. Mivel több HANA-példányt szeretne üzembe helyezni egy egységen, több kötetet kap (egy készletet az egyes példányokhoz). Ennek eredményeképpen a telepítéskor meg kell határoznia a következőket:
+Az SAP HANA Azure-beli `service management`bevezetés során az ügyfél megadja a sidadm-felhasználó és a sapsys csoport felhasználói azonosítóját (UID) és csoportazonosítót (GID) (például: 1000 500). Az SAP HANA rendszer telepítése során ugyanazokat az értékeket kell használnia. Mivel több HANA-példányt szeretne telepíteni egy egységre, több kötetkészletet kap (minden példányhoz egy készletet). Ennek eredményeképpen a telepítés időpontjában meg kell határoznia:
 
-- A különböző HANA-példányok SID-azonosítója (sidadm származik).
-- A különböző HANA-példányok memóriájának mérete. A memória mérete/példánya határozza meg a kötetek méretét az egyes kötetek készletében.
+- A különböző HANA-példányok SID-je (a sidadm származik belőle).
+- A különböző HANA-példányok memóriamérete. A példányonkénti memóriaméret határozza meg az egyes kötetek köteteinek méretét.
 
-A tárolási szolgáltató javaslatai alapján a következő csatlakoztatási beállítások vannak konfigurálva az összes csatlakoztatott kötethez (kivéve a rendszerindító LUN-t):
+A tárolószolgáltató ajánlásai alapján a következő csatlakoztatási beállítások vannak konfigurálva az összes csatlakoztatott kötethez (a rendszerindító lun kivételével):
 
-- NFS RW, vers = 4, Hard, Timeo = 600, rsize = 1048576, wsize = 1048576, intr, noatime, Lock 0 0
+- nfs rw, vers=4, hard, timeo=600, rsize=1048576, wsize=1048576, intr, noatime, lock 0 0
 
-Ezek a csatlakoztatási pontok az/etc/fstab-ben vannak konfigurálva, ahogy az alábbi ábrán is látható:
+Ezek a csatlakoztatási pontok az /etc/fstab kapcsolóban vannak konfigurálva, ahogy az a következő ábrákon látható:
 
-![csatlakoztatott kötetek fstab a HANA nagyméretű példány egységében](./media/hana-installation/image1_fstab.PNG)
+![fstab a csatlakoztatott kötetek hana nagy példány egység](./media/hana-installation/image1_fstab.PNG)
 
-A DF-h parancs kimenete a S72m HANA nagyméretű példány egységében a következőképpen néz ki:
+A df -h parancs kimenete egy S72m HANA nagy példány egységen így néz ki:
 
-![csatlakoztatott kötetek fstab a HANA nagyméretű példány egységében](./media/hana-installation/image2_df_output.PNG)
+![fstab a csatlakoztatott kötetek hana nagy példány egység](./media/hana-installation/image2_df_output.PNG)
 
 
-A nagyméretű példányokban lévő tároló vezérlő és csomópontjai szinkronizálva vannak az NTP-kiszolgálókkal. Ha az Azure-ban (nagyméretű példányok) és az Azure-beli virtuális gépeken lévő SAP HANA az NTP-kiszolgálóval szinkronizálja, nem szabad jelentős időbeli eltolódást végezni az infrastruktúra és a számítási egységek között az Azure-ban vagy nagyméretű példányokban.
+A tárolóvezérlő és a nagy példány bélyegzőinek csomópontjai szinkronizálódnak az NTP-kiszolgálókkal. Ha szinkronizálja az SAP HANA az Azure-ban (nagy példányok) egységek és az Azure-beli virtuális gépek egy NTP-kiszolgáló, nem kell jelentős időeltolódás az infrastruktúra és a számítási egységek az Azure-ban vagy a nagy példány bélyegzések között.
 
-Az alábbi SAP HANA konfigurációs paraméterek megadásával optimalizálhatja SAP HANA az alatta lévő tárterületre:
+Az SAP HANA optimalizálásához az alatta használt tárolóra állítsa be a következő SAP HANA konfigurációs paramétereket:
 
 - max_parallel_io_requests 128
-- async_read_submit bekapcsolva
-- async_write_submit_active on
-- összes async_write_submit_blocks
+- async_read_submit
+- async_write_submit_active
+- async_write_submit_blocks összes
  
-A SAP HANA 1,0 verziójú SPS12-ig ezek a paraméterek a SAP HANA-adatbázis telepítése során állíthatók be, az [SAP HANA-adatbázis SAP-megjegyzés #2267798 – konfiguráció](https://launchpad.support.sap.com/#/notes/2267798)szakaszában leírtak szerint.
+Az SAP HANA 1.0-s verziók sps12-ig, ezek a paraméterek az SAP HANA adatbázis telepítése során állíthatók be, az [SAP #2267798 - Az SAP HANA adatbázis konfigurációja](https://launchpad.support.sap.com/#/notes/2267798)című részében leírtak szerint.
 
-A paramétereket a SAP HANA adatbázis telepítése után is konfigurálhatja a hdbparam keretrendszer használatával. 
+A paramétereket az SAP HANA adatbázis telepítése után is konfigurálhatja a hdbparam keretrendszer használatával. 
 
-A HANA nagyméretű példányaiban használt tárterület fájlméret-korlátozást tartalmaz. A [méretre vonatkozó korlátozás 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) /fájl. Az EXT3 fájlrendszerbeli korlátozásokkal ellentétben a HANA nem ismeri implicit módon a HANA Large instances Storage által kényszerített tárolási korlátozást. Ennek eredményeképpen a HANA nem hoz létre automatikusan új adatfájlt, ha a 16TB elérte a fájlméretet. Mivel a HANA a 16 TB-nál nagyobb mennyiségű fájlt próbál növelni, a HANA hibát jelez, és az index-kiszolgáló összeomlik a végén.
+A HANA nagy példányokban használt tároló fájlméret-korlátozással rendelkezik. A méretkorlátozás fájlonként [16 TB.](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) Az EXT3 fájlrendszerek fájlméret-korlátozásaival ellentétben a HANA nem ismeri hallgatólagosan a HANA nagy példányok tároló által kikényszerített tárolási korlátozást. Ennek eredményeképpen a HANA nem hoz létre automatikusan új adatfájlt, amikor eléri a 16 TB-os fájlméretkorlátot. Ahana megpróbálja növelni a fájlt túl 16 TB, HANA hibákat jelent, és az index szerver összeomlik a végén.
 
 > [!IMPORTANT]
-> Annak megakadályozása érdekében, hogy a HANA a HANA nagyméretű példányok tárterületének 16 TB-os fájlméret-korlátján kívüli adatfájlokat próbáljon növelni, a következő paramétereket kell beállítania a SAP HANA Global. ini konfigurációs fájlban.
+> Annak megakadályozása érdekében, hogy a HANA megpróbálja növelni az adatfájlokat a HANA nagypéldány-tároló 16 TB-os fájlméret-korláton túl, be kell állítania a következő paramétereket az SAP HANA global.ini konfigurációs fájlban
 > 
-> - datavolume_striping=true
+> - datavolume_striping=igaz
 > - datavolume_striping_size_gb = 15000
-> - Lásd még: SAP-Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-> - Vegye figyelembe az SAP-Megjegyzés [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - Lásd még: [SAP-#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Vegye figyelembe az [SAP-#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
-A SAP HANA 2,0 esetében a hdbparam-keretrendszer elavult. Ennek eredményeképpen a paramétereket SQL-parancsok használatával kell beállítani. További információ [: SAP-megjegyzés #2399079: a Hdbparam megszüntetése a HANA 2-ban](https://launchpad.support.sap.com/#/notes/2399079).
+Az SAP HANA 2.0-s, a hdbparam keretrendszer elavult. Ennek eredményeképpen a paramétereket SQL-parancsokkal kell beállítani. További információ: [SAP note #2399079: A hdbparam megszüntetése a HANA 2-ben](https://launchpad.support.sap.com/#/notes/2399079).
 
-Tekintse át a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md) az architektúra tárolási elrendezésének megismeréséhez.
+Tekintse meg a [HLI által támogatott forgatókönyveket,](hana-supported-scenario.md) ha többet szeretne megtudni az architektúra tárolási elrendezéséről.
 
 
-**Következő lépések**
+**További lépések**
 
-- Tekintse [meg a HANA telepítését a HLI-on](hana-example-installation.md)
+- Lásd: [HANA telepítés HLI](hana-example-installation.md)
 
 
 

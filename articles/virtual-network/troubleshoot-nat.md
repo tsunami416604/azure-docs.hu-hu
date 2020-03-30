@@ -1,7 +1,7 @@
 ---
-title: Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
+title: Az Azure virtuális hálózati nat-kapcsolatának hibái
 titleSuffix: Azure Virtual Network
-description: Virtual Network NAT problémáinak elhárítása.
+description: A virtuális hálózati hálózati hálózati módszerrel kapcsolatos problémák elhárítása.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,161 +12,170 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 43e6853fd5e7583883f79e70c8dbcd558f137834
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4a273801290a0a5833ebd83983a8b6b0ad856b45
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79202161"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79408484"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure virtuális hálózati nat-kapcsolatának hibái
 
-Ez a cikk segítséget nyújt a rendszergazdáknak a kapcsolódási problémák diagnosztizálásában és megoldásában Virtual Network NAT használatakor.
+Ez a cikk segít a rendszergazdáknak diagnosztizálni és megoldani a csatlakozási problémákat a virtuális hálózati hálózati címzet használatakor.
 
 ## <a name="problems"></a>Problémák
 
-* [SNAT-kimerülés](#snat-exhaustion)
-* [Az ICMP-pingelés sikertelen](#icmp-ping-is-failing)
-* [Csatlakozási hibák](#connectivity-failures)
-* [IPv6-együttélés](#ipv6-coexistence)
+* [SNAT kimerültség](#snat-exhaustion)
+* [Az ICMP pingelése sikertelen](#icmp-ping-is-failing)
+* [Kapcsolódási hibák](#connectivity-failures)
+* [IPv6 együttélés](#ipv6-coexistence)
 
-A problémák megoldásához kövesse az alábbi szakasz lépéseit.
+A problémák megoldásához kövesse az alábbi szakaszlépéseit.
 
 ## <a name="resolution"></a>Megoldás:
 
-### <a name="snat-exhaustion"></a>SNAT-kimerülés
+### <a name="snat-exhaustion"></a>SNAT kimerültség
 
-Egyetlen [NAT Gateway-erőforrás](nat-gateway-resource.md) 64 000 akár 1 000 000 egyidejű folyamatra is képes.  Minden IP-cím 64 000 SNAT-portot biztosít a rendelkezésre álló leltárhoz. A NAT-átjáró erőforrásain legfeljebb 16 IP-címet használhat.  A SNAT mechanizmus részletes ismertetését [itt](nat-gateway-resource.md#source-network-address-translation) találja.
+Egyetlen [NAT átjáró erőforrás](nat-gateway-resource.md) 64 000-től 1 millió egyidejű folyamatig támogatja.  Minden IP-cím 64 000 SNAT-portot biztosít a rendelkezésre álló készlethez. NAT-átjáró-erőforrásonként legfeljebb 16 IP-címet használhat.  A SNAT mechanizmus [itt](nat-gateway-resource.md#source-network-address-translation) részletesebben ismertetjük.
 
-A SNAT-kimerülés kiváltó oka gyakran a kimenő kapcsolat létesítésének és kezelésének egy ellenes mintája.  Alaposan olvassa át ezt a szakaszt.
+Az SNAT-kimerültség kiváltó oka gyakran a kimenő kapcsolat létrehozásának és kezelésének antimintája.  Alaposan olvassa át ezt a szakaszt.
 
 #### <a name="steps"></a>Lépések
 
-1. Vizsgálja meg, hogy az alkalmazás hogyan hozza létre a kimenő kapcsolatokat (például a kód felülvizsgálatát vagy a csomagok rögzítését). 
-2. Állapítsa meg, hogy a tevékenység várható viselkedés-e, vagy hogy az alkalmazás nem működik-e.  Az eredmények alátámasztására a Azure Monitor [mérőszámait](nat-metrics.md) használhatja. A SNAT-kapcsolatok metrikájának "sikertelen" kategóriáját használja.
-3. Értékelje ki, hogy a megfelelő mintákat követi-e.
-4. Annak kiértékelése, hogy a SNAT-portok kimerülését csökkenteni kell-e a NAT-átjáró erőforrásához rendelt további IP-címekkel.
+1. Vizsgálja meg, hogy az alkalmazás hogyan hoz létre kimenő kapcsolatot (például kódellenőrzés vagy csomagrögzítés). 
+2. Határozza meg, hogy ez a tevékenység várható viselkedés-e, vagy hogy az alkalmazás helytelenül viselkedik-e.  Az Azure Monitor [metrikák használatával](nat-metrics.md) támaszthatja alá a megállapításokat. Használja a "Sikertelen" kategóriát az SNAT-kapcsolatok metrikához.
+3. Értékelje, hogy követi-e a megfelelő mintákat.
+4. Értékelje ki, hogy az SNAT-port kimerülése mérsékelni kell-e a NAT-átjáró-erőforráshoz rendelt további IP-címekkel.
 
 #### <a name="design-patterns"></a>Tervezési minták
 
-Mindig használja ki a kapcsolatok újrafelhasználását és a kapcsolatok készletezését, amikor csak lehetséges.  Ezek a minták elkerülik az erőforrás-kimerülési problémákat, és kiszámítható viselkedést eredményeznek. A mintákhoz tartozó primitívek számos fejlesztői könyvtárban és keretrendszerben találhatók.
+Amikor csak lehetséges, mindig használja ki a kapcsolat újrafelhasználását és a csatlakoztatáskészletezését.  Ezek a minták elkerülik az erőforrások kimerülési problémáit, és kiszámítható viselkedést eredményeznek. Ezeknek a mintáknak a primitívjei számos fejlesztői könyvtárban és keretrendszerben találhatók.
 
-_**Megoldás:**_ Megfelelő minták használata
+_**Megoldás:**_ Használja a megfelelő mintákat és ajánlott eljárásokat
 
-- A hosszú ideig futó műveletek esetében érdemes [aszinkron lekérdezési mintákat](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) felvenni a kapcsolatok erőforrásainak más műveletekhez való felszabadítására.
-- A hosszú élettartamú folyamatokban (például az újrafelhasznált TCP-kapcsolatok esetében) a TCP-Keepalives vagy az Keepalives kell használnia, hogy elkerülje a köztes rendszerek időtúllépését.
-- A kecses [újrapróbálkozási mintákat](https://docs.microsoft.com/azure/architecture/patterns/retry) az átmeneti hibák vagy a meghibásodások helyreállítása során el kell kerülni az agresszív újrapróbálkozások/törések elkerülése érdekében.
-Egy új TCP-kapcsolat létrehozása minden HTTP-művelethez (más néven "Atomic connections") egy anti-minta.  Az Atomic Connections szolgáltatás megakadályozza, hogy az alkalmazás a jól méretezhető és a hulladék erőforrásokat is kihasználja.  Mindig több műveletet kell ugyanabba a hálózatba csatlakoztatni.  Az alkalmazás a tranzakciós sebességet és az erőforrások költségét is kihasználja.  Ha az alkalmazás Transport Layer encryption (például TLS) protokollt használ, az új kapcsolatok feldolgozásának jelentős díja van.  Tekintse át az [Azure Cloud design-mintákat](https://docs.microsoft.com/azure/architecture/patterns/) az ajánlott eljárások további mintáinak megtekintéséhez.
+- Az atomi kérelmek (kapcsolatonként egy kérelem) nem megfelelő tervezési választás. Az ilyen anti-pattern korlátozza a skálát, csökkenti a teljesítményt és csökkenti a megbízhatóságot. Ehelyett használja fel újra a HTTP/S-kapcsolatokat a kapcsolatok és a kapcsolódó SNAT-portok számának csökkentése érdekében. Az alkalmazás léptéke a csökkentett kézfogások, a terhelésés és a kriptográfiai működési költségek miatt javul ni fog a TLS használatakor.
+- A DNS számos egyéni folyamatot vezethet be a hangerőn, ha az ügyfél nem gyorsítótárazja a DNS-feloldók eredményét. Használja a gyorsítótárazást.
+- UDP-folyamatok (például DNS-keresések) snat-portokat foglalnak le az alapjárati időtúltöltés idejére. Minél hosszabb az tétlen időtúljárat, annál nagyobb a nyomás az SNAT-portokra. Használjon rövid tétlen időoutot (például 4 percet).
+- A kapcsolatkötet kialakításához használjon kapcsolatkészleteket.
+- Soha ne hagyjon el csendesen egy TCP-folyamatot, és ne hagyatkozzon a TCP időzítőkre a folyamat megtisztításához. Így a köztes rendszerekben és végpontokon lefoglalt állapot marad, és a portok nem érhetők el más kapcsolatok hoz. Ez alkalmazáshibákat és SNAT-kimerültséget okozhat. 
+- A TCP-vel kapcsolatos időzítőértékeket nem szabad megváltoztatni a hatás szakértői ismerete nélkül. Bár a TCP helyreáll, az alkalmazás teljesítményét negatívan befolyásolhatja, ha a kapcsolat végpontjai nem egyeznek az elvárásokkal. A vágy, hogy változtatni időzítő általában annak a jele, egy mögöttes tervezési probléma. Tekintse át a következő ajánlásokat.
 
-#### <a name="possible-mitigations"></a>Lehetséges enyhítések
+Gyakran alkalommal SNAT kimerültség is felerősíthető más anti-minták a mögöttes alkalmazás. Tekintse át ezeket a további mintákat és gyakorlati tanácsokat a szolgáltatás méretének és megbízhatóságának javítása érdekében.
 
-_**Megoldás:**_ A kimenő kapcsolatok méretezése az alábbiak szerint történik:
+- Fontolja meg a szinkron [lekérdezési minták](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) hosszú ideig futó műveletek számára, hogy más műveletek kapcsolati erőforrásait szabadítsa fel.
+- A hosszú élettartamú folyamatoknak (például az újrafelhasznált TCP-kapcsolatoknak) tcp keepalives vagy alkalmazásréteg-megtartási élettartamot kell használniuk a köztes rendszerek időtúllépésének elkerülése érdekében. Az alapjárati időtúltöltés növelése végső megoldás, és előfordulhat, hogy nem oldja meg a kiváltó okot. A hosszú időmeghosszabbítás alacsony sebességhibákat okozhat, amikor lejár az idő-túlóra, és késleltetést és szükségtelen hibákat vezethet be.
+- Kecses [újrapróbálkozási mintákat](https://docs.microsoft.com/azure/architecture/patterns/retry) kell használni, hogy elkerüljék az agresszív újrapróbálkozások/bursts átmeneti hiba vagy hiba helyreállítása során.
+Új TCP-kapcsolat létrehozása minden HTTP-művelethez (más néven "atomi kapcsolatok") egy anti-minta.  Az atomi kapcsolatok megakadályozzák, hogy az alkalmazás jól skálázható és erőforrások at pazarolja.  Mindig több műveletet kell ugyanabba a kapcsolatba mártasz.  Az alkalmazás a tranzakció sebességének és az erőforrásköltségeknek kedvez.  Ha az alkalmazás átviteli réteg titkosítást (például TLS) használ, jelentős költség jár az új kapcsolatok feldolgozásához.  Tekintse át az [Azure Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns/) további ajánlott eljárásminták.
+
+#### <a name="additional-possible-mitigations"></a>További lehetséges megoldások
+
+_**Megoldás:**_ A kimenő kapcsolatokat az alábbiak szerint kell felskálázni:
 
 | Forgatókönyv | Bizonyíték |Kezelés |
 |---|---|---|
-| A SNAT-portok és a SNAT-portok kimerülése a magas kihasználtságú időszakok során tapasztalható. | A (z) Azure Monitor SNAT-kapcsolatok [metrikájának](nat-metrics.md) "sikertelen" kategóriája az idő és a magas csatlakozási kötet esetében átmeneti vagy állandó hibákat mutat be.  | Állapítsa meg, hogy adhat-e további nyilvános IP-cím erőforrásokat vagy nyilvános IP-előtag-erőforrásokat. Ez a Hozzáadás legfeljebb 16 IP-címet tesz lehetővé a NAT-átjáró számára. Ez a Hozzáadás további leltárt nyújt a rendelkezésre álló SNAT-portok (64 000/IP-címek) számára, és lehetővé teszi a forgatókönyv további skálázását.|
-| Már 16 IP-címet adott meg, és továbbra is SNAT a portok kimerülése. | További IP-cím hozzáadására tett kísérlet sikertelen. Az IP-címek teljes száma a nyilvános IP-címek erőforrásaiból vagy a nyilvános IP-előtag erőforrásaiból összesen meghaladja a 16 értéket. | Terjessze az alkalmazási környezetet több alhálózatra, és adjon meg egy NAT Gateway-erőforrást az egyes alhálózatokhoz.  A tervezési minta (ok) újraértékelése az előző [útmutatás](#design-patterns)alapján optimalizálható. |
+| A SNAT-portok és az SNAT-portok kimerülése versengést tapasztal a magas használatú időszakokban. | Az Azure Monitor SNAT-kapcsolatok [metrikája](nat-metrics.md) "Sikertelen" kategória átmeneti vagy állandó hibákat és nagy kapcsolati hangerőt jelenít meg.  | Határozza meg, hogy hozzáadhat-e további nyilvános IP-cím-erőforrásokat vagy nyilvános IP-előtag-erőforrásokat. Ez a kiegészítés összesen legfeljebb 16 IP-címet tesz lehetővé a NAT-átjáróhoz. Ez a kiegészítés több készletet biztosít a rendelkezésre álló SNAT-portokhoz (IP-címenként 64 000), és lehetővé teszi a forgatókönyv további méretezését.|
+| Már 16 IP-címet adott meg, és még mindig fennáll az SNAT-port kimerülése. | A további IP-cím hozzáadására tett kísérlet sikertelen. A nyilvános IP-címerőforrásokból vagy nyilvános IP-előtag-erőforrásokból származó IP-címek száma meghaladja az összes encikó 16-ot. | Ossza el az alkalmazáskörnyezetet több alhálózat között, és biztosítson egy NAT-átjáró-erőforrást minden alhálózathoz.  Értékelje újra a tervezési mintázat(oka)t, hogy az előző útmutatás alapján [optimalizáljon.](#design-patterns) |
 
 >[!NOTE]
->Fontos megérteni, hogy miért történik a SNAT kimerültség. Győződjön meg arról, hogy a megfelelő mintákat használja a méretezhető és megbízható forgatókönyvekhez.  Ha további SNAT-portokat ad hozzá egy forgatókönyvhöz anélkül, hogy meg kellene ismernie a kereslet okát, az utolsó megoldásnak kell lennie. Ha nem érti, hogy a forgatókönyv miért alkalmazza a nyomást a SNAT, további SNAT-portok hozzáadásával a leltárhoz további IP-címek hozzáadásával a rendszer csak az alkalmazás skálázási hibáját fogja késleltetni.  Előfordulhat, hogy más eredménytelenség és anti-mintázatok maszkolására is van lehetőség.
+>Fontos megérteni, hogy miért snat kimerültség fordul elő. Győződjön meg arról, hogy a megfelelő mintákat használja a méretezhető és megbízható forgatókönyvekhez.  Ha további SNAT-portokat ad hozzá egy forgatókönyvhöz anélkül, hogy megértenék az igény okát, az a legvégső megoldásnak kell lennie. Ha nem érti, hogy a forgatókönyv miért gyakorol nyomást az SNAT-portkészletre, ha további IP-címek hozzáadásával további SNAT-portokat ad hozzá a készlethez, az csak késlelteti az alkalmazás méretezésével azonos kimerülési hibát.  Lehet, hogy elfedi más hatékonysági és anti-minták.
 
-### <a name="icmp-ping-is-failing"></a>Az ICMP-pingelés sikertelen
+### <a name="icmp-ping-is-failing"></a>Az ICMP pingelése sikertelen
 
-[Virtual Network NAT](nat-overview.md) támogatja az IPv4 UDP-és TCP-protokollokat. Az ICMP nem támogatott, és a várt sikertelen lesz.  
+[A virtuális hálózati hálózati címzés](nat-overview.md) támogatja az IPv4 UDP és TCP protokollokat. IcMP nem támogatott, és várhatóan nem sikerül.  
 
-_**Megoldás:**_ Ehelyett használjon TCP-kapcsolati teszteket (például "TCP ping") és az UDP-specifikus alkalmazás-réteg teszteket a végpontok közötti kapcsolat ellenőrzéséhez.
+_**Megoldás:**_ Ehelyett használja a TCP-kapcsolati teszteket (például "TCP ping") és az UDP-specifikus alkalmazásréteg-teszteket a végpontok közötti kapcsolat érvényesítéséhez.
 
-A következő táblázat kiindulási pontot használhat, amellyel a tesztek elindítására szolgáló eszközök használhatók.
+Az alábbi táblázat egy kiindulási pontot használható, amelyhez a tesztek indításához használt eszközök használhatók.
 
-| Operációs rendszer | Általános TCP-kapcsolatok tesztelése | TCP-alkalmazás rétegének tesztelése | UDP |
+| Operációs rendszer | Általános TCP-kapcsolatteszt | TCP alkalmazásréteg-vizsgálat | UDP |
 |---|---|---|---|
-| Linux | NC (általános kapcsolatok tesztelése) | Curl (TCP-alkalmazás rétegének tesztelése) | alkalmazás-specifikus |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [-meghívás – Webkérés](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazás-specifikus |
+| Linux | nc (általános csatlakozási teszt) | göndör (TCP alkalmazási réteg teszt) | alkalmazásspecifikus |
+| Windows | [Psping között](https://docs.microsoft.com/sysinternals/downloads/psping) | [PowerShell-meghívás-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazásspecifikus |
 
-### <a name="connectivity-failures"></a>Csatlakozási hibák
+### <a name="connectivity-failures"></a>Kapcsolódási hibák
 
-[Virtual Network NAT](nat-overview.md) kapcsolódási problémáit számos különböző probléma okozhatja:
+Connectivity issues with [Virtual Network NAT](nat-overview.md) can be caused by several different issues:
 
-* a NAT-átjáró átmeneti vagy tartós [SNAT-kimerülése](#snat-exhaustion) ,
+* a NAT átjáró átmeneti vagy tartós [SNAT-kimerülése,](#snat-exhaustion)
 * átmeneti hibák az Azure-infrastruktúrában, 
-* átmeneti hibák az Azure és a nyilvános internetes cél közötti útvonalon, 
-* átmeneti vagy állandó hibák a nyilvános internetes célhelyen.
+* átmeneti hibák az Azure és a nyilvános internetes célállomás közötti útvonalon, 
+* átmeneti vagy tartós hibák a nyilvános internetes célhelyen.
 
-A következőhöz hasonló eszközök használhatók az érvényesítéshez: Az [ICMP ping nem támogatott](#icmp-ping-is-failing).
+Az alábbihoz hasonló eszközöket használhat az érvényesítési kapcsolathoz. [Az ICMP pingje nem támogatott.](#icmp-ping-is-failing)
 
-| Operációs rendszer | Általános TCP-kapcsolatok tesztelése | TCP-alkalmazás rétegének tesztelése | UDP |
+| Operációs rendszer | Általános TCP-kapcsolatteszt | TCP alkalmazásréteg-vizsgálat | UDP |
 |---|---|---|---|
-| Linux | NC (általános kapcsolatok tesztelése) | Curl (TCP-alkalmazás rétegének tesztelése) | alkalmazás-specifikus |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [-meghívás – Webkérés](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazás-specifikus |
+| Linux | nc (általános csatlakozási teszt) | göndör (TCP alkalmazási réteg teszt) | alkalmazásspecifikus |
+| Windows | [Psping között](https://docs.microsoft.com/sysinternals/downloads/psping) | [PowerShell-meghívás-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazásspecifikus |
 
-#### <a name="snat-exhaustion"></a>SNAT-kimerülés
+#### <a name="snat-exhaustion"></a>SNAT kimerültség
 
-Tekintse át a jelen cikk [SNAT-kimerültség](#snat-exhaustion) című szakaszát.
+Tekintse át a [SNAT-kimerültségről](#snat-exhaustion) szóló részt ebben a cikkben.
 
 #### <a name="azure-infrastructure"></a>Azure-infrastruktúra
 
-Az Azure figyeli és nagy gonddal kezeli az infrastruktúrát. Átmeneti hibák léphetnek fel, ezért nincs garancia arra, hogy az átvitelek veszteségmentesek.  Használjon olyan kialakítási mintákat, amelyek lehetővé teszik a a TCP-alkalmazások SYN-újraküldését. A kapcsolat időtúllépése elég nagy a TCP SYN újraküldésének engedélyezéséhez, hogy csökkentse az elveszett SYN-csomagok által okozott átmeneti hatásokat.
+Az Azure nagy gonddal figyeli és üzemelteti infrastruktúráját. Átmeneti hibák fordulhatnak elő, nincs garancia arra, hogy az átvitelek veszteségmentesek.  Használjon olyan tervezési mintákat, amelyek lehetővé teszik a SYN újraküldését a TCP-alkalmazásokhoz. Használja a kapcsolat időtúlárait, amelyek elég nagyok ahhoz, hogy lehetővé tegyék a TCP SYN újraközvetítést az elveszett SYN-csomagok által okozott átmeneti hatások csökkentése érdekében.
 
-_**Megoldás**_
+_**Megoldás:**_
 
-* SNAT- [kimerültség](#snat-exhaustion)keresése.
-* A SYN-újraküldési viselkedést vezérlő TCP-verem konfigurációs paramétere RTO ([újraküldési időkorlát](https://tools.ietf.org/html/rfc793)). A RTO értéke állítható, de általában 1 másodperc vagy magasabb értékre van beállítva az exponenciális visszalépéshez.  Ha az alkalmazás kapcsolati időkorlátja túl rövid (például 1 másodperc), akkor előfordulhat, hogy a rendszer szórványos kapcsolati időtúllépéseket lát.  Növelje meg az alkalmazás-kapcsolatok időtúllépését.
-* Ha továbbra is megfigyelheti az alapértelmezett alkalmazás-viselkedéssel kapcsolatos váratlan időtúllépéseket, további hibaelhárításhoz nyisson meg egy támogatási esetet.
+* Ellenőrizze a [SNAT kimerültség](#snat-exhaustion).
+* A SYN újraadási viselkedését szabályozó TCP-verem konfigurációs paraméterét RTO[(Újraküldési idő-out) nevezik.](https://tools.ietf.org/html/rfc793) Az RTO-érték állítható, de alapértelmezés szerint általában 1 másodperc vagy magasabb, exponenciális visszalépéssel.  Ha az alkalmazás kapcsolati időtúl-túl rövid (például 1 másodperc), előfordulhat, hogy szórványos kapcsolat időtúlórák.  Növelje az alkalmazáskapcsolat időtúllépését.
+* Ha hosszabb, nem várt időkitöltéseket észlel az alapértelmezett alkalmazásviselkedéssel, nyisson meg egy támogatási esetet a további hibaelhárításhoz.
 
-Nem javasoljuk, hogy mesterségesen csökkentse a TCP-kapcsolat időtúllépését, vagy hangolja a RTO paramétert.
+Nem javasoljuk a TCP-kapcsolat időtúllépésének mesterséges csökkentését vagy az RTO-paraméter finomhangolását.
 
-#### <a name="public-internet-transit"></a>nyilvános internetes tranzit
+#### <a name="public-internet-transit"></a>Tömegközlekedés
 
-Az átmeneti hibák esélyei a cél és a több köztes rendszerek hosszabb elérési útjával növekednek. Várható, hogy az átmeneti hibák növelhetik az Azure- [infrastruktúra](#azure-infrastructure)gyakoriságát. 
+Az átmeneti hibák esélye nő a célhoz vezető hosszabb úttal és több köztes rendszerrel. Az átmeneti hibák várhatóan növekedhetnek az [Azure-infrastruktúrán](#azure-infrastructure)keresztül. 
 
-Kövesse az [Azure-infrastruktúra](#azure-infrastructure) előző szakaszának utasításait.
+Kövesse ugyanazt az útmutatást, mint az előző [Azure-infrastruktúra](#azure-infrastructure) szakasz.
 
-#### <a name="internet-endpoint"></a>Internetes végpont
+#### <a name="internet-endpoint"></a>Internet-végpont
 
-Az előző fejezetek azon internetes végponttal együtt érvényesek, amellyel a kommunikáció létrejött. A kapcsolódás sikerességét befolyásoló egyéb tényezők:
+Az előző szakaszok érvényesek, valamint az internet-végpont, amely a kommunikáció jön létre. Egyéb tényezők, amelyek hatással lehetnek a kapcsolat sikerére:
 
-* a forgalom kezelése a célhely oldalon, beleértve a következőket is
-- Az API-arány korlátozása a cél oldal alapján
-- Térfogatmérő DDoS-enyhítés vagy Transport Layer Traffic Shaping
-* tűzfal vagy más összetevők a célhelyen 
+* forgalomirányítás a rendeltetési oldalon, beleértve a
+- A céloldal által előírt API-sebességkorlátozás
+- Volumetrikus DDoS mérséklések vagy szállítási réteg forgalom alakításában
+* tűzfal vagy más összetevő a célhelyen 
 
-Általában a csomagok rögzítése a forráson és a célhelyen (ha van ilyen) szükséges ahhoz, hogy eldöntse, mi zajlik.
+Általában csomag rögzítése a forrásnál, és a cél (ha rendelkezésre áll) szükséges meghatározni, hogy mi történik.
 
-_**Megoldás**_
+_**Megoldás:**_
 
-* SNAT- [kimerültség](#snat-exhaustion)keresése. 
-* Ellenőrizze, hogy az adott régióban vagy máshol található végponthoz való csatlakozást szeretné-e összehasonlítani.  
-* Ha nagy mennyiségű vagy tranzakciós sebességű tesztelést hoz létre, vizsgálja meg, hogy a sebesség csökkentése csökkenti-e a hibák előfordulását.
-* Ha a módosítási arány hatással van a hibák arányára, ellenőrizze, hogy elérte-e az API-díjszabási korlátokat vagy más korlátozásokat a célhelyen.
-* Ha a vizsgálat nem meggyőző, a további hibaelhárításhoz nyisson meg egy támogatási esetet.
+* Ellenőrizze a [SNAT kimerültség](#snat-exhaustion). 
+* Összehasonlításképpen ellenőrizze a végponthoz való kapcsolódást ugyanabban a régióban vagy máshol.  
+* Ha nagy volumenű vagy tranzakciós díjú tesztelést hoz létre, vizsgálja meg, hogy a sebesség csökkentése csökkenti-e a hibák előfordulását.
+* Ha a sebesség módosítása hatással van a hibák arányára, ellenőrizze, hogy elérte-e az API-sebességkorlátokat vagy a céloldalon lévő egyéb korlátozásokat.
+* Ha a vizsgálat nem meggyőző, nyisson meg egy támogatási esetet további hibaelhárításcéljából.
 
-#### <a name="tcp-resets-received"></a>A fogadott TCP-visszaállítások
+#### <a name="tcp-resets-received"></a>Fogadott TCP-alaphelyzetbe állítás
 
-A NAT-átjáró TCP-alaphelyzetbe állítja a forrás virtuális gépet olyan forgalom esetén, amely nem ismerhető fel folyamatban.
+A NAT-átjáró tcp-visszaállításokat hoz létre a forrás virtuális gépen a folyamatban lévőként fel nem ismert forgalom hoz létre.
 
-Ennek egyik lehetséges oka, hogy a TCP-kapcsolatok üresjárati időtúllépés miatt megszakadt.  Az üresjárati időkorlátot 4 perctől akár 120 percre is beállíthatja.
+Ennek egyik lehetséges oka, hogy a TCP-kapcsolat tétlen időtúllépés miatt megszakadt.  Az tétlen időout 4 perctől 120 percig állítható.
 
-A TCP-alaphelyzetek nem jönnek létre a NAT-átjáró erőforrásainak nyilvános oldalán. A cél oldalon a TCP-alaphelyzeteket a forrás virtuális gép hozza létre, nem pedig a NAT-átjáró erőforrását.
+A TCP-alapbeállítások nem a NAT-átjáró erőforrások nyilvános oldalán jönnek létre. A céloldalon a TCP-alaphelyzetbe állítást a forrásvirtuális gép hozza létre, nem a NAT átjáró erőforrás.
 
-_**Megoldás**_
+_**Megoldás:**_
 
-* Tekintse át a [tervezési mintákra](#design-patterns) vonatkozó javaslatokat.  
-* Ha szükséges, nyisson meg egy támogatási esetet a további hibaelhárításhoz.
+* Tekintse át [a tervezési mintákra](#design-patterns) vonatkozó ajánlásokat.  
+* Szükség esetén nyisson meg egy támogatási esetet további hibaelhárításcéljából.
 
-### <a name="ipv6-coexistence"></a>IPv6-együttélés
+### <a name="ipv6-coexistence"></a>IPv6 együttélés
 
-[Virtual Network NAT](nat-overview.md) támogatja az IPv4 UDP-és TCP-protokollokat, és az [IPv6-előtaggal rendelkező alhálózat központi telepítése nem támogatott](nat-overview.md#limitations).
+[A virtuális hálózati hálózati címcím](nat-overview.md) támogatja az IPv4 UDP- és TCP protokollokat, és [az IPv6-előtaggal rendelkező alhálózaton történő](nat-overview.md#limitations)telepítés nem támogatott.
 
-_**Megoldás:**_ NAT-átjáró üzembe helyezése IPv6-előtag nélküli alhálózaton.
+_**Megoldás:**_ NAT-átjáró telepítése iPv6-előtag nélküli alhálózaton.
 
-[Virtual Network NAT-UserVoice](https://aka.ms/natuservoice)keresztül további képességeket is jelezhet.
+A [virtual network nat uservoice](https://aka.ms/natuservoice)-on keresztül jelezheti a további képességek iránti érdeklődést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
-* Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)
-* Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).
-* [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
+* További információ a [virtuális hálózati hálózati hálózati kapcsolatról](nat-overview.md)
+* Ismerje meg ab Fry out [NAT átjáró erőforrás](nat-gateway-resource.md)
+* Ismerje meg [a NAT-átjáró-erőforrások metrikáit és riasztásait.](nat-metrics.md)
+* [Mondja el, mit kell építeni a következő virtuális hálózati NAT a UserVoice](https://aka.ms/natuservoice).
 

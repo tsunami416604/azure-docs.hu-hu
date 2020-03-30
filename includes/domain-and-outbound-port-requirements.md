@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
 ms.openlocfilehash: 6af6795fefb41f1d8f2b56e0aa1fb367fc18cee2
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74559304"
 ---
 | Tartománynevek                  | Kimenő portok | Leírás                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | A saját üzemeltetésű integrációs modul számára szükséges a Azure Data Factory adatátviteli szolgáltatásaihoz való csatlakozáshoz. |
-| `*.frontend.clouddatahub.net` | 443            | A saját üzemeltetésű integrációs modul számára szükséges a Data Factory szolgáltatáshoz való csatlakozáshoz. |
-| `download.microsoft.com`    | 443            | A frissítések letöltéséhez a saját üzemeltetésű Integration Runtime szükséges. Ha letiltotta az automatikus frissítést, akkor kihagyhatja a tartomány konfigurálását. |
-| `*.core.windows.net`          | 443            | A saját üzemeltetésű integrációs modul használja az Azure Storage-fiókhoz való csatlakozásra az [előkészített másolási](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy) szolgáltatás használatakor. |
-| `*.database.windows.net`      | 1433           | Csak akkor szükséges, ha a vagy a rendszerből másol Azure SQL Database vagy Azure SQL Data Warehouse, és nem kötelező. Az előkészített másolási szolgáltatással az 1433-as port megnyitása nélkül másolhatja az Adatmásolást SQL Databaseba vagy SQL Data Warehouseba. |
-| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | Csak akkor szükséges, ha a vagy a rendszerből másol Azure Data Lake Store és opcionálisan. |
+| `*.servicebus.windows.net`    | 443            | Az Azure Data Factory adatmozgatási szolgáltatásaihoz való csatlakozáshoz az önkiszolgáló integrációs futásidő szükséges. |
+| `*.frontend.clouddatahub.net` | 443            | A Data Factory szolgáltatáshoz való csatlakozáshoz a saját üzemeltetésű integrációs futásidő szükséges. |
+| `download.microsoft.com`    | 443            | A frissítések letöltéséhez a saját üzemeltetésű integrációs futásidő szükséges. Ha letiltotta az automatikus frissítést, kihagyhatja a tartomány konfigurálását. |
+| `*.core.windows.net`          | 443            | A saját üzemeltetésű integrációs futásidejű az Azure storage-fiókhoz való csatlakozáshoz a [szakaszos másolási](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy) funkció használatakor használható. |
+| `*.database.windows.net`      | 1433           | Csak akkor szükséges, ha az Azure SQL Database vagy az Azure SQL Data Warehouse másolni, és nem kötelező egyébként. A szakaszos másolás funkcióval adatokat másolhat az SQL Database vagy az SQL Data Warehouse rendszerbe az 1433-as port megnyitása nélkül. |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | Csak akkor szükséges, ha az Azure Data Lake Store-ból vagy az Azure Data Lake Store-ba másol, és más külön ben nem kötelező. |

@@ -1,214 +1,214 @@
 ---
-title: Privát hivatkozás – Azure Portal – Azure Database for MySQL
-description: Megtudhatja, hogyan konfigurálhatja a Azure Database for MySQLhoz tartozó magánhálózati hivatkozást Azure Portal
+title: Privát hivatkozás – Azure-portál – Azure-adatbázis a MySQL-hez
+description: Megtudhatja, hogy miként konfigurálhatja a mySQL-alapú Azure Database privát hivatkozását az Azure Portalról
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371919"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Azure Database for MySQL privát hivatkozás létrehozása és kezelése a portál használatával
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Privát kapcsolat létrehozása és kezelése a MySQL-hez készült Azure-adatbázishoz a Portál használatával
 
-A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális gépet egy Azure-Virtual Networkban és egy Azure-beli privát végponttal rendelkező Azure Database for MySQL-kiszolgálón a Azure Portal használatával.
+A privát végpont az Azure-beli privát kapcsolat alapvető építőköve. Lehetővé teszi, hogy az Azure-erőforrások, például a virtuális gépek (VM-ek) privát módon kommunikáljanak a privát kapcsolaterőforrásaival. Ebben a cikkben megtudhatja, hogyan használhatja az Azure Portalon egy virtuális gépet egy Azure virtuális hálózatban és egy Azure Database for MySQL-kiszolgálóegy Azure-beli privát végpont használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 > [!NOTE]
-> Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for MySQL támogatja a általános célú és a memória optimalizált díjszabási szintjeit.
+> Ez a funkció minden Olyan Azure-régióban elérhető, ahol az Azure Database for MySQL támogatja az általános célú és a memóriaoptimalizált tarifacsomagokat.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
 ## <a name="create-an-azure-vm"></a>Azure-beli virtuális gép létrehozása
 
-Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot, amely a privát kapcsolati erőforráshoz (az Azure-ban MySQL-kiszolgálóhoz) való hozzáféréshez használt virtuális GÉPET üzemelteti.
+Ebben a szakaszban virtuális hálózatot és az alhálózatot hoz létre a Private Link erőforrás (az Azure-beli MySQL-kiszolgáló) eléréséhez használt virtuális gép üzemeltetéséhez.
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
-Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, amely a privát kapcsolati erőforrás eléréséhez használt virtuális gépet üzemelteti.
+Ebben a szakaszban egy virtuális hálózatot és az alhálózatot hoz létre a private link erőforrás eléréséhez használt virtuális gép üzemeltetéséhez.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
-2. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+1. A képernyő bal felső részén válassza az **Erőforrás** > **létrehozása hálózati** > **virtuális hálózat**lehetőséget.
+2. A **Virtuális hálózat létrehozása**mezőbe írja be vagy jelölje ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
-    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetést | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
+    | Név | Írja be *a MyVirtualNetwork*. |
+    | Címtér | Írja be *a 10.1.0.0/16*értéket . |
+    | Előfizetés | Válassza ki előfizetését.|
+    | Erőforráscsoport | Válassza **az Új létrehozása**lehetőséget, írja be a *myResourceGroup parancsot,* majd kattintson **az OK gombra.** |
     | Hely | Válassza a **Nyugat-Európa** régiót.|
-    | Alhálózat – név | Adja meg a *mySubnet*. |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
+    | Alhálózat - név | Adja meg *a mySubnet*. |
+    | Alhálózat – címtartomány | Írja be *a 10.1.0.0/24*értéket . |
     |||
-3. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás**lehetőséget.
+3. Hagyja a többit alapértelmezettként, és válassza a **Létrehozás lehetőséget.**
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **számítási** > **virtuális gép**lehetőséget.
+1. Az Azure Portal képernyőjének bal felső részén válassza az > **Erőforrás-számítási** > **virtuális gép** **létrehozása**lehetőséget.
 
-2. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+2. A **Virtuális gép létrehozása - Alapjai**csoportban adja meg vagy jelölje ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | **PROJEKT RÉSZLETEI** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | **A PROJEKT RÉSZLETEI** | |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
-    | **PÉLDÁNY RÉSZLETEI** |  |
-    | Virtuális gép neve | Adja meg a *myVm*. |
+    | **PÉLDÁNY részletei** |  |
+    | Virtuális gép neve | Adja meg *a myVm*- |
     | Régió | Válassza a **Nyugat-Európa** régiót. |
-    | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Image (Kép) | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
-    | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
+    | Rendelkezésre állási beállítások | Hagyja meg az alapértelmezett **Nincs szükség infrastruktúra-redundanciára**. |
+    | Kép | Válassza a **Windows Server 2019 Datacenter lehetőséget.** |
+    | Méret | Hagyja meg az alapértelmezett **Standard DS1 v2 -t.** |
     | **RENDSZERGAZDAI FIÓK** |  |
-    | Felhasználónév | Adja meg a választott felhasználónevet. |
+    | Felhasználónév | Adja meg az Ön által választott felhasználónevet. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Jelszó megerősítése | Adja meg újra a jelszót. |
-    | **BEJÖVŐ PORTOK SZABÁLYAI** |  |
-    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **nincs**értéket. |
-    | **PÉNZ MEGTAKARÍTÁSA** |  |
-    | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
+    | Jelszó megerősítése | Írja be újra a jelszót. |
+    | **BEJÖVŐ PORTSZABÁLYOK** |  |
+    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **Nincs**. |
+    | **TAKARÍTSON MEG PÉNZT** |  |
+    | Már van Windows-licence? | Hagyja meg az alapértelmezett **Nem értéket.** |
     |||
 
-1. Válassza a **Tovább: lemezek**lehetőséget.
+1. Válassza a **Tovább: Lemezek**lehetőséget.
 
-1. A **virtuális gép létrehozása – lemezek**területen hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: hálózatkezelés**lehetőséget.
+1. A **Virtuális gép létrehozása – Lemezek**csoportban hagyja meg az alapértelmezett beállításokat, és válassza a **Tovább: Hálózat lehetőséget.**
 
-1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
+1. A **Virtuális gép létrehozása - Hálózat csoportban**válassza ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
-    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)** .|
-    | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
-    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
-    | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget.|
+    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)**.|
+    | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-ip**. |
+    | Nyilvános bejövő portok | Válassza **a Kijelölt portok engedélyezése**lehetőséget. |
+    | Bejövő portok kiválasztása | Válassza a **HTTP** és **az RDP**lehetőséget.|
     |||
 
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A véleményezés + **létrehozás** lap, ahol az Azure érvényesíti a konfigurációt.
 
-1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+1. Amikor megjelenik az **Érvényesítési átadott** üzenet, válassza a **Létrehozás gombot.**
 
 ## <a name="create-an-azure-database-for-mysql"></a>Azure Database for MySQL létrehozása
 
-Ebben a szakaszban egy Azure Database for MySQL-kiszolgálót fog létrehozni az Azure-ban. 
+Ebben a szakaszban létre fog hozni egy Azure-adatbázist a MySQL-kiszolgálóhoz az Azure-ban. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **adatbázisok** > **Azure Database for MySQL**lehetőséget.
+1. Az Azure Portal képernyőjének bal felső részén válassza az Erőforrás-adatbázisok > **Databases** > **létrehozása Azure-adatbázis**létrehozása a MySQL számára **lehetőséget.**
 
-1. A **Azure Database for MySQL** adja meg a következő információkat:
+1. Az **Azure Database for MySQL a** következő információkat adja meg:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Kiszolgáló adatai** |  |
-    |Kiszolgálónév  | Adja meg a *myServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
-    | Rendszergazdai Felhasználónév| Adja meg a választott rendszergazda nevét. |
+    |Kiszolgálónév  | Adja meg *a myServer kiszolgálót*. Ha ez a név foglalt, hozzon létre egy egyedi nevet.|
+    | Rendszergazdai felhasználónév| Adja meg a választott rendszergazdai nevet. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
-    | Hely | Válassza ki azt az Azure-régiót, ahol a MySQL-kiszolgálót szeretné tárolni. |
-    |Verzió  | Válassza ki a szükséges MySQL-kiszolgáló adatbázis-verzióját.|
-    | Számítás és tárolás| Válassza ki a kiszolgálón a munkaterhelés alapján szükséges díjszabási szintet. |
+    | Hely | Válassza ki azt az Azure-régiót, ahol szeretné, hogy a MySQL-kiszolgáló található. |
+    |Verzió  | Válassza ki a MySQL-kiszolgáló szükséges adatbázisverzióját.|
+    | Számítás + Tárolás| Válassza ki a kiszolgálóhoz a munkaterhelés alapján szükséges tarifacsomagot. |
     |||
  
-7. Kattintson az **OK** gombra. 
-8. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
-9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás**lehetőséget. 
-10. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a létrehozás lehetőséget. 
+7. Válassza **az OK gombot.** 
+8. Válassza az **Áttekintés + létrehozás** lehetőséget. A véleményezés + **létrehozás** lap, ahol az Azure érvényesíti a konfigurációt. 
+9. Amikor megjelenik az Érvényesítési átadott üzenet, válassza a **Létrehozás gombot.** 
+10. Amikor megjelenik az Érvényesítési átadott üzenet, válassza a Létrehozás gombot. 
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 
-Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adnia egy privát végpontot. 
+Ebben a szakaszban létrehoz egy MySQL-kiszolgálót, és hozzáadhat hozzá egy privát végpontot. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **privát hivatkozás**lehetőséget.
+1. Az Azure Portal képernyőjének bal felső részén válassza az Erőforrás > létrehozása**hálózati** > **magánkapcsolat** **lehetőséget.**
 
-2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
+2. A **Privát kapcsolati központban – Áttekintés**, a **szolgáltatáshoz való privát kapcsolat létrehozásának**lehetőségénválassza a **Start**lehetőséget.
 
-    ![Privát hivatkozás áttekintése](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    ![Privát hivatkozás – áttekintés](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. A **privát végpont létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+1. A **Saját végpont létrehozása - Alapjai**mezőbe írja be vagy jelölje ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
-    | **Példány részletei** |  |
-    | Name (Név) | Adja meg a *myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
+    | **Példány adatai** |  |
+    | Név | Adja meg *a myPrivateEndpoint*. Ha ez a név foglalt, hozzon létre egy egyedi nevet. |
     |Régió|Válassza a **Nyugat-Európa** régiót.|
     |||
 
-5. Válassza a **Tovább: erőforrás**elemet.
-6. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
+5. Válassza a **Tovább: Erőforrás**lehetőséget.
+6. A **Saját végpont - Erőforrás létrehozása**mezőbe írja be vagy jelölje ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget.|
-    | Előfizetést| Válassza ki előfizetését. |
-    | Erőforrás típusa | Válassza a **Microsoft. DBforMySQL/kiszolgálók**lehetőséget. |
+    |Kapcsolati módszer  | Válassza ki a csatlakozás egy Azure-erőforrás a címtárban.|
+    | Előfizetés| Válassza ki előfizetését. |
+    | Erőforrás típusa | Válassza a **Microsoft.DBforMySQL/servers lehetőséget.** |
     | Erőforrás |*MyServer* kiválasztása|
-    |Cél alerőforrása |*Portra beállított mysqlserver* kiválasztása|
+    |Cél alerőforrás |*MysqlServer* kiválasztása|
     |||
-7. Válassza a **Tovább: konfigurálás**lehetőséget.
-8. A **privát végpont létrehozása – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
+7. Válassza a **Tovább lehetőséget: Konfiguráció**.
+8. A **Saját végpont létrehozása - Konfiguráció**csoportban adja meg vagy jelölje ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    |**HÁLÓZATI**| |
+    |**Hálózati**| |
     | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
-    |**MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**||
-    |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
-    |saját DNS zóna |Válassza az *(új) privatelink. mysql. database. Azure. com* elemet |
+    | Alhálózat | Válassza a *mySubnet*lehetőséget . |
+    |**PRIVÁT DNS-INTEGRÁCIÓ**||
+    |Integrálás privát DNS-zónával |Válassza az **Igen** lehetőséget. |
+    |Privát DNS-zóna |Válassza ki *az (Új)privatelink.mysql.database.azure.com elemet* |
     |||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
-2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A véleményezés + **létrehozás** lap, ahol az Azure érvényesíti a konfigurációt. 
+2. Amikor megjelenik az **Érvényesítési átadott** üzenet, válassza a **Létrehozás gombot.** 
 
-    ![Saját hivatkozás létrehozva](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
+    ![Privát hivatkozás létrehozva](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
 
     > [!NOTE] 
-    > Az ügyfél DNS-beállításában lévő teljes tartománynév nem oldható fel a magánhálózati IP-címekre konfigurálva. Az [itt](../dns/dns-operations-recordsets-portal.md)látható módon konfigurálnia kell egy DNS-zónát a beállított FQDN-hez.
+    > Az ügyfél DNS-beállításában lévő teljes tartományna nem oldódik fel a beállított privát IP-címre. Be kell állítania egy DNS-zónát a konfigurált teljes tartománynna számára az [itt](../dns/dns-operations-recordsets-portal.md)látható módon.
 
-## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Kapcsolódás virtuális géphez Távoli asztal (RDP) használatával
+## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Csatlakozás virtuális géphez távoli asztallal (RDP)
 
 
-A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről: 
+Miután létrehozta **myVm**, csatlakozzon hozzá az internetről az alábbiak szerint: 
 
-1. A portál keresési sávján adja meg a *myVm*.
+1. A portál keresősávjában írja be a *myVm*.
 
-1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
+1. Kattintson a **Csatlakozás** gombra. A **Csatlakozás** gomb kiválasztása után megnyílik **a Csatlakozás a virtuális géphez.**
 
-1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza **az RDP-fájl letöltése lehetőséget.** Az Azure létrehoz egy Remote Desktop Protocol (*.rdp*) fájlt, és letölti azt a számítógépre.
 
-1. Nyissa meg a *letöltött. rdp* fájlt.
+1. Nyissa meg a *downloaded.rdp* fájlt.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** kell kiválasztania > **eltérő fiókot használjon**.
+        > Előfordulhat, hogy **további lehetőségek közül** > **választhat: Másik fiók használatával**adja meg a virtuális gép létrehozásakor megadott hitelesítő adatokat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza **az OK gombot.**
 
-1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
+1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha tanúsítványfigyelmeztetést kap, válassza az **Igen** vagy **a Folytatás**lehetőséget.
 
-1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.
+1. Miután megjelenik a virtuális gép asztala, minimalizálja azt, hogy visszatérjen a helyi asztalra.
 
 ## <a name="access-the-mysql-server-privately-from-the-vm"></a>A MySQL-kiszolgáló elérése a virtuális gépről
 
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
+1. A *myVM*távoli asztalán nyissa meg a PowerShellt.
 
-2. Adja meg a `nslookup  myServer.privatelink.mysql.database.azure.com`. 
+2. Írja `nslookup  myServer.privatelink.mysql.database.azure.com`be a be. 
 
-    Ehhez hasonló üzenet jelenik meg:
+    A következőhöz hasonló üzenetet fog kapni:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -217,34 +217,34 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     Address:  10.1.3.4
     ```
 
-3. Tesztelje a MySQL-kiszolgáló magánhálózati kapcsolati kapcsolatát bármely elérhető ügyfél használatával. Az alábbi példában a [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használatával végeztem el a műveletet.
+3. Tesztelje a MySQL-kiszolgáló privát kapcsolatát bármely elérhető ügyfél használatával. Az alábbi példában a [MySQL Workbench-et](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használtam a művelethez.
 
-4. Az **új kapcsolatok**területen adja meg vagy válassza ki az alábbi adatokat:
+4. Az **Új kapcsolat ban**adja meg vagy jelölje ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Kiszolgáló típusa| Válassza a **MySQL**lehetőséget.|
-    | Kiszolgálónév| *MyServer.privatelink.mysql.database.Azure.com* kiválasztása |
-    | Felhasználónév | Adja meg a felhasználónevet username@servername, amelyet a MySQL-kiszolgáló létrehozásakor adott meg. |
-    |Jelszó |Adja meg a MySQL-kiszolgáló létrehozásakor megadott jelszót. |
-    |SSL|Válassza a **kötelező**lehetőséget.|
+    | Kiszolgálónév| *myServer.privatelink.mysql.database.azure.com* |
+    | Felhasználónév | Adja meg username@servername a felhasználónevet úgy, ahogy az a MySQL-kiszolgáló létrehozása során biztosított. |
+    |Jelszó |Adja meg a MySQL-kiszolgáló létrehozása során megadott jelszót. |
+    |SSL|Válassza a **Kötelező**lehetőséget.|
     ||
 
-5. Válassza a kapcsolat lehetőséget.
+5. Kattintson a Csatlakozás gombra.
 
-6. A bal oldali menüben lévő adatbázisok tallózása.
+6. Tallózzon az adatbázisok között a bal oldali menüből.
 
-7. Opcionálisan Információk létrehozása vagy lekérdezése a MySQL-kiszolgálóról.
+7. (Opcionálisan) Adatok létrehozása vagy lekérdezése a MySQL-kiszolgálóról.
 
-8. A távoli asztali kapcsolat bezárásával myVm.
+8. Zárja be a távoli asztali kapcsolatot a myVm-mel.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha végzett a magánhálózati végpont, a MySQL-kiszolgáló és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást:
+Ha elkészült a privát végpont, a MySQL-kiszolgáló és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást:
 
-1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza ki a *myResourceGroup* a keresési eredmények közül.
+1. Írja be a *myResourceGroup* kifejezést a portál tetején lévő **Keresőmezőbe,** és válassza a *myResourceGroup* elemet a keresési eredmények közül.
 2. Válassza az **Erőforráscsoport törlése** elemet.
-3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
+3. Írja be a myResourceGroup értéket **az ERŐFORRÁSCSOPORT NEVÉNEK BEÍRÁSához,** és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MySQLt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MySQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Ebben az útmutatóban virtuális gépet hozott létre egy virtuális hálózaton, egy Azure-adatbázist a MySQL-hez, és egy privát végpontot a privát hozzáféréshez. Ön csatlakozott egy virtuális gép az internetről, és biztonságosan kommunikált a MySQL szerver segítségével Private Link. A privát végpontokról a [Mi az Azure privát végpontja.](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)

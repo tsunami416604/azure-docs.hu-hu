@@ -5,54 +5,54 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74085247"
 ---
-A Microsoft Azure Cloud Service-szolgáltatással kapcsolatos problémák diagnosztizálásához a szolgáltatás naplófájljait a virtuális gépeken kell összegyűjtenie, amikor a probléma felmerül. Igény szerint használhatja a AzureLogCollector bővítményt a naplók egy vagy több virtuális gépről (a webes szerepkörökből és a feldolgozói szerepkörökből) történő egyszeri gyűjtéséhez, és átviheti az összegyűjtött fájlokat egy Azure Storage-fiókba – mindezt anélkül, hogy távolról be kellene jelentkeznie a szolgáltatásba a virtuális gépekről.
+A Microsoft Azure felhőszolgáltatással kapcsolatos problémák diagnosztizálásához a szolgáltatás naplófájljait a problémák bekövetkezése esetén össze kell gyűjteni a virtuális gépeken. Az AzureLogCollector bővítmény igény szerinti használatával egy vagy több felhőszolgáltatás-virtuális gépről (webes szerepkörökből és feldolgozói szerepkörökből) származó naplók egyszeri gyűjtését, valamint az összegyűjtött fájlokat egy Azure-tárfiókba viheti át – mindezt anélkül, hogy távolról bejelentkezne bármelyikbe a virtuális gépek.
 
 > [!NOTE]
-> A naplózott információk többségének leírása a következő helyen található: https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
+> A legtöbb naplózott információ leírása megtalálható ahttps://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
-A gyűjtött fájlok típusaitól függően két mód van a gyűjtésre.
+A gyűjtendő fájlok típusától két féle gyűjtemény függ.
 
-* Az **Azure Guest Agent csak naplókat (GA)** használ. Ez a gyűjteményi mód tartalmazza az Azure Guest Agent és más Azure-összetevőkhöz kapcsolódó összes naplót.
-* **Minden napló (teljes)** . Ez a gyűjteményi mód a GA módban található összes fájlt és a következőket gyűjti:
+* **Csak az Azure vendégügynök naplói (GA)**. Ez a gyűjtési mód tartalmazza az Azure vendégügynökeivel és más Azure-összetevőkkel kapcsolatos összes naplót.
+* **Minden naplók (Teljes)**. Ez a gyűjtési mód az összes fájlt GA módban, valamint:
   
-  * a rendszerek és alkalmazások eseménynaplói
-  * HTTP-hibák naplói
+  * rendszer- és alkalmazáseseménynaplók
+  * HTTP-hibanaplók
   * IIS-naplók
   * Telepítési naplók
   * egyéb rendszernaplók
 
-A gyűjtési módokban további adatgyűjtési mappák is megadhatók a következő struktúra gyűjteményének használatával:
+Mindkét gyűjtési módban további adatgyűjtési mappák adhatók meg a következő struktúra gyűjteményével:
 
-* **Name (név**): a gyűjtemény neve, amelyet a zip-fájlban található almappa neve használ az összegyűjtött fájlokkal.
-* **Hely**: az a virtuális gépen lévő mappa elérési útja, ahol a gyűjteni kívánt fájlok találhatók.
-* **SearchPattern**: a gyűjtött fájlok neveinek mintája. Az alapértelmezett érték a "\*"
-* **Rekurzív**: Ha a gyűjteni kívánt fájlok rekurzívan találhatók a megadott helyen.
+* **Név**: A gyűjtemény neve, amelyet a zip fájlban lévő almappa neveként használnak az összegyűjtött fájlokkal.
+* **Hely**: A virtuális gép azon mappájának elérési útja, ahol az összegyűjtendő fájlok találhatók.
+* **SearchPattern**: Az összegyűjtendő fájlok nevének mintája. Az alapértelmezett\*érték " "
+* **Rekurzív:** ha az összegyűjtendő fájlok rekurzív módon a megadott helyen találhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-* Rendelkeznie kell egy Storage-fiókkal a bővítmény számára a létrehozott zip-fájlok mentéséhez.
-* Azure PowerShell. A telepítési utasításokért lásd: [install Azure PowerShell](/powershell/azure/install-az-ps)].
+* A létrehozott zip-fájlok mentéséhez rendelkezik egy tárfiókkal a kiterjesztéshez.
+* Azure PowerShell. A telepítési útmutatót az [Azure PowerShell telepítése](/powershell/azure/install-az-ps)] című témakörben találja.
 
 ## <a name="add-the-extension"></a>A bővítmény hozzáadása
-A AzureLogCollector bővítmény hozzáadásához használhatja [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) parancsmagokat vagy a [Service Management REST API-kat](https://msdn.microsoft.com/library/ee460799.aspx) .
+[A Microsoft Azure PowerShell-parancsmagokkal](https://msdn.microsoft.com/library/dn495240.aspx) vagy a Service Management REST [API-k használatával](https://msdn.microsoft.com/library/ee460799.aspx) hozzáadhatja az AzureLogCollector bővítményt.
 
-Cloud Services esetében a **set-AzureServiceExtension**meglévő Azure PowerShell-parancsmag használatával engedélyezhető a bővítmény a Cloud Service szerepkör példányain. A bővítmény ezen a parancsmagon keresztül történő engedélyezésekor a rendszer a kiválasztott szerepkörök kiválasztott szerepkörű példányain indítja el a napló-gyűjteményt.
+A Cloud Services esetében a meglévő Azure Powershell-parancsmag, a **Set-AzureServiceExtension**használható a bővítmény engedélyezéséhez a Cloud Service szerepkörpéldányokon. Minden alkalommal, amikor ez a bővítmény ezen a parancsmagon keresztül engedélyezve van, a naplógyűjtés a kijelölt szerepkörök kijelölt szerepkörpéldányain aktiválódik.
 
-Virtual Machines esetében a **set-AzureVMExtension**meglévő Azure PowerShell-parancsmag használatával engedélyezheti a bővítményt a Virtual Machinesn. Minden alkalommal, amikor a bővítmény engedélyezve van a parancsmagokon keresztül, a rendszer minden egyes példányon elindítja a naplózási gyűjteményt.
+Virtuális gépek, a meglévő Azure Powershell-parancsmag, **Set-AzureVMExtension,** a bővítmény virtuális gépeken való engedélyezéséhez használható. Minden alkalommal, amikor ez a bővítmény engedélyezve van a parancsmagok, naplógyűjtés minden példányban aktiválódik.
 
-Belsőleg ez a bővítmény a JSON-alapú PublicConfiguration és PrivateConfiguration használja. A következő egy példa JSON-minta a nyilvános és a privát konfigurációhoz.
+Belsőleg ez a bővítmény a JSON-alapú PublicConfiguration és PrivateConfiguration. A következő egy minta JSON elrendezése nyilvános és privát konfigurációhoz.
 
-### <a name="publicconfiguration"></a>PublicConfiguration
+### <a name="publicconfiguration"></a>Nyilvános konfiguráció
 
 ```json
 {
@@ -77,7 +77,7 @@ Belsőleg ez a bővítmény a JSON-alapú PublicConfiguration és PrivateConfigu
 }
 ```
 
-### <a name="privateconfiguration"></a>PrivateConfiguration
+### <a name="privateconfiguration"></a>Privát konfiguráció
 
 ```json
 {
@@ -86,15 +86,15 @@ Belsőleg ez a bővítmény a JSON-alapú PublicConfiguration és PrivateConfigu
 ```
 
 > [!NOTE]
-> Ehhez a bővítményhez nem szükséges **privateConfiguration**. A **– PrivateConfiguration** argumentumhoz csak üres struktúrát adhat meg.
+> Ennek a bővítménynek nincs szüksége **privateConfiguration**. Csak adjon meg egy üres struktúrát a **-PrivateConfiguration** argumentumhoz.
 > 
 > 
 
-A következő két lépés egyikével adhatja hozzá a AzureLogCollector egy felhőalapú szolgáltatás vagy egy virtuális gép egy vagy több példányához, amely elindítja a gyűjteményeket az egyes virtuális gépeken, és elküldi az összegyűjtött fájlokat a megadott Azure-fiókba.
+Az alábbi két lépés egyikét követve hozzáadhatja az AzureLogCollector-t egy felhőszolgáltatás vagy a kiválasztott szerepkörök virtuális gépének egy vagy több példányához, amely elindítja az egyes virtuális gépek gyűjteményeit az összegyűjtött fájlok futtatásához és az Azure-fiókba megadott elküldéséhez.
 
-## <a name="adding-as-a-service-extension"></a>Hozzáadás szolgáltatás-bővítményként
-1. Azure PowerShell az előfizetéséhez való kapcsolódáshoz kövesse az utasításokat.
-2. Adja meg a szolgáltatás nevét, a tárolóhelyet, a szerepköröket és a szerepkör-példányokat, amelyekhez hozzá kívánja adni a AzureLogCollector bővítményt, és engedélyezze azt.
+## <a name="adding-as-a-service-extension"></a>Hozzáadás szolgáltatásbővítményként
+1. Kövesse az utasításokat az Azure PowerShell előfizetéshez való csatlakoztatásához.
+2. Adja meg a szolgáltatás nevét, a tárolóhelyet, a szerepköröket és a szerepkörpéldányokat, amelyekhez hozzá szeretné adni, és engedélyezze az AzureLogCollector bővítményt.
 
    ```powershell
    #Specify your cloud service name
@@ -113,7 +113,7 @@ A következő két lépés egyikével adhatja hozzá a AzureLogCollector egy fel
    $mode = "GA"
    ```
 
-3. Itt adhatja meg azt a további adatmappát, amelybe a rendszer összegyűjti a fájlokat (ez a lépés nem kötelező).
+3. Adja meg azt a további adatmappát, amelyhez a rendszer fájlokat gyűjt (ez a lépés nem kötelező).
 
    ```powershell
    #add one location
@@ -129,23 +129,23 @@ A következő két lépés egyikével adhatja hozzá a AzureLogCollector egy fel
    ```
 
    > [!NOTE]
-   > A jogkivonat-`%roleroot%` segítségével megadhatja a szerepkör gyökerét, mivel nem rögzített meghajtót használ.
+   > A token `%roleroot%` segítségével megadhatja a szerepkör gyökérmeghajtóját, mivel nem használ rögzített meghajtót.
    > 
    > 
-4. Adja meg az Azure Storage-fiók nevét és kulcsát, ahová az összegyűjtött fájlok fel lesznek töltve.
+4. Adja meg az Azure storage-fiók nevét és kulcs, amelyhez az összegyűjtött fájlokat a rendszer feltölti.
 
    ```powershell
    $StorageAccountName = 'YourStorageAccountName'
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Hívja meg a SetAzureServiceLogCollector. ps1 (a cikk végén találhatót) az alábbiak szerint, hogy engedélyezze a AzureLogCollector-bővítményt a felhőalapú szolgáltatásokhoz. A végrehajtás befejeződése után megkeresheti a feltöltött fájlt a `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Hívja meg a SetAzureServiceLogCollector.ps1(a cikk végén található) az alábbiak szerint, hogy az AzureLogCollector bővítmény egy felhőszolgáltatás. Miután a végrehajtás befejeződött, megtalálhatja a feltöltött fájlt a`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
    ```
 
-A következő a parancsfájlnak átadott paraméterek definíciója. (Ezt az alábbi táblázat is másolja.)
+A parancsfájlnak átadott paraméterek definíciója a következő. (Ez az alábbiakban is másolódik.)
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -177,14 +177,14 @@ param (
 )
 ```
 
-* **Szolgáltatásnév**: a felhőalapú szolgáltatás neve.
-* **Szerepkörök**: szerepkörök listája, például "webrole1 webes" vagy "WorkerRole1".
-* **Példányok**: a szerepkör-példányok neve, vesszővel elválasztva – használja a helyettesítő karakterláncot ("*") az összes szerepkör-példányhoz.
-* **Tárolóhely**: tárolóhely neve. "Éles" vagy "előkészítés".
-* **Mode**: gyűjtemény mód. "Teljes" vagy "GA".
-* **StorageAccountName**: az összegyűjtött adatok tárolására szolgáló Azure Storage-fiók neve.
-* **StorageAccountKey**: az Azure Storage-fiók kulcsának neve.
-* **AdditionalDataLocationList**: a következő struktúra listája:
+* **Szolgáltatásnév**: A felhőszolgáltatás neve.
+* **Szerepkörök**: Szerepkörök listája, például "WebRole1" vagy "WorkerRole1".
+* **Példányok**: A vesszővel elválasztott szerepkörpéldányok nevének listája - használja a helyettesítő karakterláncot ("*") az összes szerepkörpéldányhoz.
+* **Slot**: Slot neve. "Termelés" vagy "Átmeneti".
+* **Mód**: Gyűjtési mód. "Teljes" vagy "GA".
+* **StorageAccountName**: Az összegyűjtött adatok tárolására szolgáló Azure-tárfiók neve.
+* **StorageAccountKey**: Az Azure storage-fiók kulcsának neve.
+* **AdditionalDataLocationList**: A következő struktúra listája:
 
   ```powershell
   {
@@ -196,9 +196,9 @@ param (
   ```
 
 ## <a name="adding-as-a-vm-extension"></a>Hozzáadás virtuálisgép-bővítményként
-Azure PowerShell az előfizetéséhez való kapcsolódáshoz kövesse az utasításokat.
+Kövesse az utasításokat az Azure PowerShell előfizetéshez való csatlakoztatásához.
 
-1. Adja meg a szolgáltatás nevét, a virtuális gépet és a gyűjtemény módját.
+1. Adja meg a szolgáltatás nevét, a virtuális gép és a gyűjtési mód.
 
    ```powershell
    #Specify your cloud service name
@@ -224,16 +224,16 @@ Azure PowerShell az előfizetéséhez való kapcsolódáshoz kövesse az utasít
         #more locations can be added....
    ```
   
-2. Adja meg az Azure Storage-fiók nevét és kulcsát, ahová az összegyűjtött fájlok fel lesznek töltve.
+2. Adja meg az Azure storage-fiók nevét és kulcs, amelyhez az összegyűjtött fájlokat a rendszer feltölti.
 
    ```powershell
    $StorageAccountName = 'YourStorageAccountName'
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Hívja meg a SetAzureVMLogCollector. ps1 (a cikk végén találhatót) az alábbiak szerint, hogy engedélyezze a AzureLogCollector-bővítményt a felhőalapú szolgáltatásokhoz. A végrehajtás befejeződése után megkeresheti a feltöltött fájlt a `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Hívja meg a SetAzureVMLogCollector.ps1 (a cikk végén található) az alábbiak szerint, hogy az AzureLogCollector bővítmény egy felhőszolgáltatás. Miután a végrehajtás befejeződött, megtalálhatja a feltöltött fájlt a`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
-A következő a parancsfájlnak átadott paraméterek definíciója. (Ezt az alábbi táblázat is másolja.)
+A parancsfájlnak átadott paraméterek definíciója a következő. (Ez az alábbiakban is másolódik.)
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -259,12 +259,12 @@ param (
 )
 ```
 
-* **Szolgáltatásnév**: a felhőalapú szolgáltatás neve.
-* **VMName**: a virtuális gép neve.
-* **Mode**: gyűjtemény mód. "Teljes" vagy "GA".
-* **StorageAccountName**: az összegyűjtött adatok tárolására szolgáló Azure Storage-fiók neve.
-* **StorageAccountKey**: az Azure Storage-fiók kulcsának neve.
-* **AdditionalDataLocationList**: a következő struktúra listája:
+* **Szolgáltatásnév**: A felhőszolgáltatás neve.
+* **VMName**: A virtuális gép neve.
+* **Mód**: Gyűjtési mód. "Teljes" vagy "GA".
+* **StorageAccountName**: Az összegyűjtött adatok tárolására szolgáló Azure-tárfiók neve.
+* **StorageAccountKey**: Az Azure storage-fiók kulcsának neve.
+* **AdditionalDataLocationList**: A következő struktúra listája:
 
   ```
   {
@@ -275,7 +275,7 @@ param (
   }
   ```
 
-## <a name="extention-powershell-script-files"></a>Kiterjesztési PowerShell-parancsfájlok fájljai
+## <a name="extention-powershell-script-files"></a>Terjedelem: PowerShell-parancsfájlok
 ### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector.ps1
 
 ```powershell
@@ -526,6 +526,6 @@ else
 }
 ```
 
-## <a name="next-steps"></a>További lépések
-Most már megvizsgálhatja vagy átmásolhatja a naplókat egy egyszerű helyről.
+## <a name="next-steps"></a>Következő lépések
+Most már megvizsgálja, vagy másolja a naplókat egy egyszerű helyről.
 

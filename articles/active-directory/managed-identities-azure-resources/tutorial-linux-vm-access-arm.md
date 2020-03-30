@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató`:` felügyelt identitás használata a Azure Resource Manager eléréséhez – Azure AD
+title: Rövid`:` útmutató Felügyelt identitás használata az Azure Resource Manager eléréséhez – Azure AD
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ee10a73579e8533cd14ecfeeebab44e726ba16b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74326322"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Hozzáférés az Azure Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
@@ -44,7 +44,7 @@ Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáf
 2. Válassza ki a korábban létrehozott **erőforráscsoportot**.
 3. Lépjen a bal oldali panelen a **Hozzáférés-vezérlés (IAM)** hivatkozáshoz.
 4. A **Hozzáadás** elemre kattintva rendeljen hozzá egy új szerepkört a virtuális géphez. A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket.
-5. A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a **Virtuális gép** értéket.
+5. A következő legördülő menüben rendeljen hozzáférést a **virtuális gép erőforráshoz.** **Assign access to**
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben. Az **Erőforráscsoport** esetében válassza a **Minden erőforráscsoport** lehetőséget.
 7. Végül a **Kiválasztás** mezőben válassza ki a linuxos VM-et a legördülő menüben, majd kattintson a **Mentés** gombra.
 
@@ -55,17 +55,17 @@ Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáf
 A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
 
 1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra.  
-2. **Csatlakozzon** a virtuális géphez a választott SSH-ügyféllel. 
-3. A terminál ablakban `curl`használatával tegyen fel egy kérést az Azure-erőforrások végpontjának helyi felügyelt identitására, hogy hozzáférési jogkivonatot kapjon Azure Resource Managerhoz.  
+2. **Csatlakozzon** a virtuális géphez az Ön által választott SSH-ügyféllel. 
+3. A terminálablakban `curl`a használatával, a , kérést a helyi felügyelt identitások az Azure-erőforrások végpont hoz egy hozzáférési jogkivonatot az Azure Resource Manager.  
  
-    A hozzáférési jogkivonat `curl`-kérelme alább látható.  
+    A `curl` hozzáférési jogkivonat ra vonatkozó kérelem az alábbiakban található.  
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel.  A Resource Manager erőforrás-azonosítója esetén a záró perjelet is meg kell adnia az URI-n. 
+    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel.Az Azure Resource Manager erőforrás-azonosítójának használatakor a záró perjelet is szerepeltetni kell az URI-ban. 
     
     A válasz tartalmazza az Azure Resource Manager eléréséhez szükséges hozzáférési jogkivonatot. 
     
@@ -81,7 +81,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
     "token_type":"Bearer"} 
     ```
     
-    A jogkivonat segítségével elérheti az Azure Resource Managert, például hogy elolvassa annak az erőforráscsoportnak a részleteit, amelyhez korábban engedélyezte hozzáférést ennek a virtuális gépnek. Cserélje le \<előfizetés-azonosító\>, \<ERŐFORRÁSCSOPORT\>, és \<hozzáférési JOGKIVONAT\> a korábban létrehozott értékekre. 
+    A jogkivonat segítségével elérheti az Azure Resource Managert, például hogy elolvassa annak az erőforráscsoportnak a részleteit, amelyhez korábban engedélyezte hozzáférést ennek a virtuális gépnek.Cserélje le a \<SUBSCRIPTION ID\>, a \<RESOURCE GROUP\> és az \<ACCESS TOKEN\> változók értékeit a korábban létrehozottakra. 
     
     > [!NOTE]
     > Az URL-cím megkülönbözteti a kis-és nagybetűket, ezért pontosan ugyanúgy adja meg, mint ahogy az erőforráscsoportot elnevezte, illetve ügyeljen a „resourceGroup” sztringben a nagy G betű használatára is.  
@@ -95,10 +95,10 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan használható a rendszer által hozzárendelt felügyelt identitás az Azure Resource Manager API-hoz való hozzáféréshez.  További információ az Azure Resource Managerről:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
->[felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése Azure PowerShell használatával](how-to-manage-ua-identity-powershell.md)
+>[Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése az Azure PowerShell használatával](how-to-manage-ua-identity-powershell.md)

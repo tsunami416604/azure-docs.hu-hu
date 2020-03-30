@@ -1,6 +1,6 @@
 ---
-title: azcopy feladatok eltávolítása | Microsoft Docs
-description: Ez a cikk a azcopy feladatok eltávolítására szolgáló paranccsal kapcsolatos tudnivalókat tartalmaz.
+title: azcopy munkahelyek eltávolítása | Microsoft dokumentumok
+description: Ez a cikk az azcopy-feladatok eltávolítási parancsának referenciainformációit tartalmazza.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,29 +9,29 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034159"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
-Távolítsa el a megadott AZONOSÍTÓJÚ feladathoz társított összes fájlt.
+Távolítsa el az adott feladatazonosítóhoz társított összes fájlt.
 
 > [!NOTE] 
-> Testreszabhatja azt a helyet, ahol a rendszer menti a napló-és a megtervezési fájlokat. További információért tekintse meg a [azcopy env](storage-ref-azcopy-env.md) parancsot.
+> Testreszabhatja a napló- és tervfájlok mentési helyét. További információért tekintse meg az [azcopy env](storage-ref-azcopy-env.md) parancsot.
 
 ```
 azcopy jobs remove [jobID] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
 
-- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
+- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
+- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
 
@@ -41,14 +41,14 @@ azcopy jobs remove [jobID] [flags]
 
 ## <a name="options"></a>Beállítások
 
-**-h,-– Súgó**                Súgó az eltávolításhoz.
+**-h, --segítség**                Segítség az eltávolításhoz.
 
-## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
 
-**--Cap-Mbps UInt32**      Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
+**--sapka-mbps uint32**      Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.
 
-**--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text")
+**--output-type** string A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg". (alapértelmezett "szöveg")
 
 ## <a name="see-also"></a>Lásd még
 
-- [azcopy-feladatok](storage-ref-azcopy-jobs.md)
+- [azcopy jobs](storage-ref-azcopy-jobs.md)

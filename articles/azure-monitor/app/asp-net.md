@@ -1,36 +1,36 @@
 ---
 title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application Insights segítségével | Microsoft Docs
-description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
+description: Konfigurálja a teljesítményt, az elérhetőséget és a felhasználói viselkedéselemző eszközöket a ASP.NET webhelyéhez, amelyet a helyszínen vagy az Azure-ban üzemeltet.
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665918"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
 Ez az eljárás beállítja, hogy az ASP.NET webapp telemetriát küldjön az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatásnak. Az eljárás a saját helyszíni IIS-kiszolgálón vagy a felhőben futtatott ASP.NET-alkalmazásokon használható. Diagramokat és hatékony lekérdezési nyelvet biztosít, amelyek révén jobban megismerheti az alkalmazás működését, és hogy a felhasználók minként használják, valamint automatikus riasztásokat kaphat a meghibásodásokkal és a teljesítményproblémákkal kapcsolatban. Számos fejlesztő már így is rendkívül hasznosnak tartja ezeket a funkciókat, azonban a telemetria szükség esetén bővíthető és testre is szabható.
 
-A telepítés mindössze néhány kattintással végrehajtható a Visual Studióban. A szolgáltatás díjmentesen is használható, ha a telemetria mennyiségét korlátozza. Ez a funkció lehetővé teszi a kísérletezést és hibakeresést, illetve a nem sok felhasználóval rendelkező helyek figyelését. Ha úgy dönt, hogy belevág, és az éles webhelyét is figyelni fogja, a későbbiekben könnyen emelhető a korlát.
+A telepítés mindössze néhány kattintással végrehajtható a Visual Studióban. A szolgáltatás díjmentesen is használható, ha a telemetria mennyiségét korlátozza. Ez a funkció lehetővé teszi a kísérletezést és a hibakeresést, illetve a nem sok felhasználóval rendelkező webhelyek figyelését. Ha úgy dönt, hogy belevág, és az éles webhelyét is figyelni fogja, a későbbiekben könnyen emelhető a korlát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha hozzá kívánja adni az Application Insights megoldást ASP.NET-webhelyéhez, tegye a következőket:
 
-- Telepítse a [Windowshoz készült Visual Studio 2019](https://www.visualstudio.com/downloads/) alkalmazást a következő számítási feladatokkal:
-    - ASP.NET és webes fejlesztés (ne törölje a választható összetevőket)
+- Telepítse [a Windows Visual Studio 2019](https://www.visualstudio.com/downloads/) alkalmazást az alábbi munkaterhelésekkel:
+    - ASP.NET és webfejlesztés (Ne törölje a választható összetevők jelölőnégyzetét)
     - Azure-fejlesztés
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
 
-## <a name="ide"></a> 1. lépés: Az Application Insights SDK hozzáadása
+## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a> 1. lépés: Az Application Insights SDK hozzáadása
 
 > [!IMPORTANT]
-> Az ebben a példában szereplő Képernyőképek a Visual Studio 2017 15.9.9 és újabb verzióján alapulnak. A Application Insights hozzáadásának élménye a Visual Studio és a ASP.NET-sablon típusának különböző verzióiban is változhat. Előfordulhat, hogy a régebbi verziók helyettesítő szöveggel rendelkeznek, például "configure Application Insights".
+> Ebben a példában a képernyőképek a Visual Studio 2017 15.9.9-es és újabb verzióján alapulnak. Az Application Insights hozzáadásának élménye a Visual Studio különböző verzióiban, valamint ASP.NET sablontípusától eltérő. A régebbi verziók alternatív szöveggel rendelkezhetnek, például "Application Insights konfigurálása".
 
-Kattintson a jobb gombbal a webalkalmazás nevére a Megoldáskezelő, majd válassza a > **hozzáadása** lehetőséget **Application Insights telemetria**
+Kattintson a jobb gombbal a webalkalmazás nevére a Megoldáskezelőben, és válassza az**Application Insights telemetria** **hozzáadása** > parancsot.
 
 ![A Solution Explorer (Megoldáskezelő) képernyőképe, a kiemelt Configure Application Insights (Application Insights konfigurálása) elemmel](./media/asp-net/add-telemetry-new.png)
 
@@ -40,7 +40,7 @@ Kattintson a jobb gombbal a webalkalmazás nevére a Megoldáskezelő, majd vál
 
 Az Application Insights konfigurációs képernyőjén:
 
-Válassza az első **lépések**lehetőséget.
+Válassza **az Első lépések lehetőséget.**
 
 ![Képernyőkép az alkalmazásregisztrációs szakaszról az Application Insights oldalon](./media/asp-net/00004-start-free.png)
 
@@ -50,25 +50,25 @@ Ha szeretné beállítani az erőforráscsoportot vagy az adatok tárolásának 
 
 ![Képernyőkép az alkalmazásregisztrációs szakaszról az Application Insights oldalon](./media/asp-net/00005-register-ed.png)
 
- Válassza a **projekt** > **NuGet-csomagok kezelése** > **csomag forrása: nuget.org** > ellenőrizze, hogy rendelkezik-e az Application Insights SDK legújabb stabil kiadásával.
+ Válassza a **Project** > **Manage NuGet Packages** > **Package source: nuget.org** > Ellenőrizze, hogy rendelkezik-e az Application Insights SDK legújabb stabil kiadásával.
 
  A telemetria az [Azure Portalra](https://portal.azure.com) lesz küldve a hibakeresés során és az alkalmazás közzététele után is.
 > [!NOTE]
 > Ha a hibakeresés során nem szeretne telemetriát küldeni a portálra, adja hozzá az Application Insights SDK-t az alkalmazáshoz, de ne konfiguráljon erőforrást a portálon. A telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](../../azure-monitor/app/monitor-performance-live-website-now.md).
 
-## <a name="run"></a> 2. lépés: Az alkalmazás futtatása
+## <a name="step-2-run-your-app"></a><a name="run"></a> 2. lépés: Az alkalmazás futtatása
 Futtassa az alkalmazást az F5 billentyűvel. Nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.
 
 A Visual Studióban láthatja a naplózott események számát.
 
 ![A Visual Studio képernyőképe. Megjelenik az Application Insights gomb a hibakeresés alatt.](./media/asp-net/00006-Events.png)
 
-## <a name="step-3-see-your-telemetry"></a>3\. lépés: A telemetria megtekintése
+## <a name="step-3-see-your-telemetry"></a>3. lépés: A telemetria megtekintése
 A telemetriát a Visual Studióban vagy az Application Insights webportálon tekintheti meg. A telemetria keresése a Visual Studióban segíti az alkalmazás hibakeresését. A teljesítményt és a használatot a webes portálon figyelheti, amikor a rendszer élesben működik. 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Telemetria megtekintése a Visual Studióban
 
-A Visual Studióban az Application Insights-adatok megtekintéséhez tegye a következőket.  Válassza a **Solution Explorer** > **Connected Services** (Csatlakoztatott szolgáltatások) lehetőséget > kattintson a jobb gombbal az **Application Insights** elemre, majd kattintson a **Search Live Telemetry** (Élő telemetria keresése) gombra.
+A Visual Studióban az Application Insights-adatok megtekintéséhez tegye a következőket.  Válassza **a Megoldáskezelő** > **csatlakoztatott szolgáltatások** > jobb gombbal az Application **Insights**elemre, majd kattintson az **Élő telemetria keresése parancsra.**
 
 A Visual Studio Application Insights keresőablakában az alkalmazásából származó adatok között látni fogja az alkalmazás kiszolgálói oldalán létrejött telemetriai adatokat. Kísérletezzen a szűrőkkel, és kattintson valamely eseményre további részletek megtekintéséhez.
 
@@ -92,19 +92,19 @@ A portál az alkalmazásából származó telemetriai adatok nézetével nyílik
 
 A portálon az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
 
-## <a name="step-4-publish-your-app"></a>4\. lépés: Az alkalmazás közzététele
+## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
 Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
-A telemetria a Application Insights portálon épül fel, ahol nyomon követheti a metrikákat, és megkeresheti a telemetria. A hatékony [Kusto lekérdezési nyelvet](/azure/kusto/query/) használhatja a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához is.
+A telemetriai adatok az Application Insights portálon halmozódnak fel, ahol figyelheti a metrikákat, és kereshet a telemetriai adatokközött. Használhatja a hatékony [Kusto lekérdezési nyelvet](/azure/kusto/query/) a használat és a teljesítmény elemzéséhez, vagy adott események megkereséséhez.
 
-Folytathatja a telemetria elemzését a [Visual Studióban](../../azure-monitor/app/visual-studio.md) olyan eszközökkel, mint például a diagnosztikai keresés és a [trendek](../../azure-monitor/app/visual-studio-trends.md).
+A [Visual Studio](../../azure-monitor/app/visual-studio.md)alkalmazásban is elemezheti a telemetriai adatokat olyan eszközökkel, mint a diagnosztikai keresés és [a trendek.](../../azure-monitor/app/visual-studio-trends.md)
 
 > [!NOTE]
 > Ha az alkalmazása elég telemetriát küld a [szabályozási korlát](../../azure-monitor/app/pricing.md#limits-summary) eléréséhez, az automatikus [mintavételezés](../../azure-monitor/app/sampling.md) bekapcsol. A mintavételezés csökkenti az alkalmazásból küldött telemetria mennyiségét, míg a korrelatív adatokat diagnosztikai célból megőrzi.
 >
 >
 
-## <a name="land"></a>Készen is van.
+## <a name="youre-all-set"></a><a name="land"></a>Készen is van.
 
 Gratulálunk! Telepítette az Application Insights csomagot az alkalmazásba, és konfigurálta, hogy telemetriát küldjön az Application Insights szolgáltatásba az Azure-ban.
 
@@ -112,15 +112,15 @@ Az alkalmazás telemetriáját fogadó Azure-erőforrást egy *kialakítási kul
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>Frissítés a jövőbeli SDK-verziókra
-Ha frissíteni szeretne egy [új SDK-kiadásra](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), nyissa meg a **NuGet-csomagkezelőt**, és szűréssel keresse meg a telepített csomagokat. Jelölje ki a **Microsoft.ApplicationInsights.Web** lehetőséget, és válassza a **Frissítés** elemet.
+Ha frissíteni szeretne egy [új SDK-kiadásra](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), nyissa meg a **NuGet-csomagkezelőt**, és szűréssel keresse meg a telepített csomagokat. Válassza a **Microsoft.ApplicationInsights.Web**lehetőséget, majd a **Frissítés**lehetőséget.
 
 Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt. Ezután egyesítse a módosításait az új verzióval.
 
 ## <a name="video"></a>Videó
 
-* Külső lépésenkénti videó arról, hogyan [konfigurálható a Application Insights egy .net-alkalmazásból a semmiből](https://www.youtube.com/watch?v=blnGAVgMAfA).
+* Az [Application Insights .NET alkalmazással való konfigurálásáról](https://www.youtube.com/watch?v=blnGAVgMAfA)szóló, részletes videó a semmiből származó .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További témaköröket is elolvashat, ha a következők érdeklik:
 
@@ -131,7 +131,7 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 
 * **[Böngésző és oldalbetöltési adatok](../../azure-monitor/app/javascript.md)** – Kódrészlet beszúrása a weboldalakra.
 * **[Részletesebb függőség- és kivételfigyelés](../../azure-monitor/app/monitor-performance-live-website-now.md)** – Állapotfigyelő telepítése a kiszolgálón.
-* **[Kódoljon egyéni eseményeket](../../azure-monitor/app/api-custom-events-metrics.md)** a felhasználói műveletek számlálásához, időzítéséhez és méréséhez.
+* **[Egyéni események kódolása](../../azure-monitor/app/api-custom-events-metrics.md)** a felhasználói műveletek számlálásához, idejéhez vagy méréséhez.
 * **[Naplóadatok lekérése](../../azure-monitor/app/asp-net-trace-logs.md)** – Naplóadatok összevetése a telemetriával.
 
 ### <a name="analysis"></a>Elemzés
@@ -143,8 +143,8 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
 * [Intelligens diagnosztika](../../azure-monitor/app/proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
-* [Metrikai riasztások](../../azure-monitor/app/alerts.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
+* [Metrikariasztások:](../../azure-monitor/app/alerts.md)Állítson be riasztásokat, amelyek figyelmeztetik, ha egy metrika átlép egy küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
 
-### <a name="automation"></a>Automatizálás
+### <a name="automation"></a>Automation
 
 * [Application Insights-erőforrások létrehozásának automatizálása](../../azure-monitor/app/powershell.md)

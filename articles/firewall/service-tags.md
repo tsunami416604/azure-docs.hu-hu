@@ -1,5 +1,5 @@
 ---
-title: A Azure Firewall Service-címkék áttekintése
+title: Az Azure Firewall szolgáltatáscímkéinek áttekintése
 description: A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége.
 services: firewall
 author: vhorne
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168689"
 ---
-# <a name="azure-firewall-service-tags"></a>Azure Firewall szolgáltatás címkéi
+# <a name="azure-firewall-service-tags"></a>Az Azure Tűzfal szolgáltatáscímkéi
 
 A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatáscímkéket, és nem határozhatja meg, hogy melyik IP-címeket jelöljék az egyes címkék. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
 
-Azure Firewall szolgáltatás címkéi a hálózati szabályok célhely mezőjében használhatók. Azokat meghatározott IP-címek helyett használhatja.
+Az Azure Firewall szolgáltatáscímkék a hálózati szabályok célmezőjében használhatók. Ezeket használhatja az adott IP-címek helyett.
 
-## <a name="supported-service-tags"></a>Támogatott szolgáltatási Címkék
+## <a name="supported-service-tags"></a>Támogatott szolgáltatáscímkék
 
-Az Azure tűzfal hálózati szabályaiban használható szolgáltatási címkék listáját a [biztonsági csoportok](../virtual-network/security-overview.md#service-tags) részben tekintheti meg.
+Az Azure tűzfalhálózati szabályokban használható szolgáltatáscímkék listáját a [Biztonsági csoportok](../virtual-network/security-overview.md#service-tags) tekintse meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Azure Firewall szabályokról: [Azure Firewall szabály-feldolgozási logika](rule-processing.md).
+Az Azure Tűzfal-szabályokról az [Azure Firewall szabályfeldolgozási logikája.](rule-processing.md)

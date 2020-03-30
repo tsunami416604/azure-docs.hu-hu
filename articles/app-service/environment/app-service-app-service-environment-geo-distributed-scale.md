@@ -1,6 +1,6 @@
 ---
-title: Földrajzilag elosztott skála
-description: Megtudhatja, hogyan méretezheti horizontálisan az alkalmazásokat Traffic Manager és App Service környezetekkel való geo-terjesztéssel.
+title: Földrajzi elosztott skála
+description: Ismerje meg, hogyan skálázható horizontálisan az alkalmazások földrajzi terjesztéssel a Traffic Manager és az App Service-környezetek használatával.
 author: stefsch
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
@@ -8,60 +8,60 @@ ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688817"
 ---
-# <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzilag elosztott méretezés App Service Environment-környezetekkel
+# <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzi alapú méretezés App Service-környezetekkel
 ## <a name="overview"></a>Áttekintés
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A nagyon nagy léptéket igénylő alkalmazási forgatókönyvek meghaladják az alkalmazás egyetlen központi telepítéséhez elérhető számítási erőforrások kapacitását.  A szavazati alkalmazások, a sportesemények és a televíziós szórakoztatás eseményei a rendkívül nagy léptéket igénylő forgatókönyvekre mutatnak. A nagy léptékű követelmények az alkalmazások horizontális felskálázásával hajthatók végre, több alkalmazás üzembe helyezése egyetlen régióban, valamint régiók között, a szélsőséges terhelési követelmények kezelése érdekében.
+Alkalmazási forgatókönyvek, amelyek nagyon nagy léptékű meghaladhatja a számítási erőforrás-kapacitás érhető el egy alkalmazás egyetlen központi telepítéséhez elérhető.  A szavazási alkalmazások, a sportesemények és a televíziós szórakoztató események mind olyan forgatókönyvek példái, amelyek rendkívül nagy léptékűek. A nagy léptékű követelmények az alkalmazások horizontális skálázásával teljesíthetők, és egy adott régióban, valamint a régiók között több alkalmazásközponti telepítés is lehetővé teszi a szélsőséges terhelési igények kezelését.
 
-App Service környezetek ideális platform horizontális felskálázáshoz.  Ha olyan App Service Environment konfiguráció van kiválasztva, amely támogatja az ismert kérelmek arányát, a fejlesztők további App Service környezeteket helyezhetnek üzembe "cookie-vágó" módon a kívánt maximális terhelési kapacitás eléréséhez.
+Az App Service-környezetek ideális platformot jelentenek a horizontális horizontális horizontális kiskálázáshoz.  Miután kiválasztott egy App Service-környezet konfigurációját, amely támogatja az ismert kérelmek arányát, a fejlesztők további App Service-környezeteket telepíthetnek "cookie cutter" módon a kívánt maximális terhelési kapacitás elérése érdekében.
 
-Tegyük fel például, hogy egy App Service Environment konfiguráción futó alkalmazást teszteltek a másodpercenkénti 20000 kérelmek kezelésére (RPS).  Ha a kívánt maximális terhelés 100 000 RPS, akkor öt (5) App Service környezet hozható létre és konfigurálható annak biztosítása érdekében, hogy az alkalmazás kezelni tudja a maximális tervezett terhelést.
+Tegyük fel például, hogy egy App Service-környezet konfigurációján futó alkalmazást teszteltek 20K kérelmek másodpercenkénti (RPS) kezelésére.  Ha a kívánt maximális terhelési kapacitás 100K RPS, akkor öt (5) App Service-környezetek hozhatók létre és konfigurálhatók annak biztosítására, hogy az alkalmazás képes kezelni a maximális kivetített terhelést.
 
-Mivel az ügyfelek általában egyéni (vagy Vanity) tartománnyal férnek hozzá az alkalmazásokhoz, a fejlesztőknek az összes App Service Environment-példányon el kell osztaniuk az alkalmazásra vonatkozó kérelmeket.  Ennek az az előnye, hogy az egyéni tartományt az [Azure Traffic Manager-profil][AzureTrafficManagerProfile]használatával oldja fel.  A Traffic Manager profil úgy konfigurálható, hogy az összes egyéni App Service környezetben mutasson.  A Traffic Manager automatikusan kezeli az ügyfelek elosztását az összes App Service környezetben az Traffic Manager profil terheléselosztási beállításai alapján.  Ez a módszer attól függetlenül működik, hogy az összes App Service környezet egyetlen Azure-régióban van-e telepítve, vagy világszerte több Azure-régión belül van-e telepítve.
+Mivel az ügyfelek általában egyéni (vagy hiú) tartomány használatával férnek hozzá az alkalmazásokhoz, a fejlesztőknek szükségük van egy módra az alkalmazáskérelmek elosztásához az Összes App Service-környezet példányban.  Ennek nagyszerű módja az egyéni tartomány feloldása [egy Azure Traffic Manager-profil][AzureTrafficManagerProfile]használatával.  A Traffic Manager-profil beállítható úgy, hogy az egyes alkalmazásszolgáltatási környezetekben mutasson.  A Traffic Manager automatikusan kezeli az ügyfelek elosztását az összes App Service-környezetben a Traffic Manager-profil terheléselosztási beállításai alapján.  Ez a megközelítés attól függetlenül működik, hogy az összes App Service-környezet egyetlen Azure-régióban van-e telepítve, vagy világszerte több Azure-régióban.
 
-Emellett mivel az ügyfelek a hiúság tartományon keresztül érik el az alkalmazásokat, az ügyfelek nem ismerik az alkalmazást futtató App Service környezetek számát.  Ennek eredményeképpen a fejlesztők gyorsan és egyszerűen hozzáadhatnak és eltávolíthatnak App Service környezeteket a megfigyelt forgalmi terhelés alapján.
+Továbbá, mivel az ügyfelek a hiúsági tartományon keresztül férnek hozzá az alkalmazásokhoz, az ügyfelek nincsenek tisztában az alkalmazást futtató App Service-környezetek számával.  Ennek eredményeképpen a fejlesztők gyorsan és egyszerűen hozzáadhatják és eltávolíthatják az App Service-környezeteket a megfigyelt forgalmi terhelés alapján.
 
-Az alábbi elméleti ábrán egy adott régión belül három App Service környezetben horizontálisan skálázható alkalmazás látható.
+Az alábbi koncepcionális diagram egy alkalmazást ábrázol, amely vízszintesen horizontálisan három App Service-környezetre skálázva egy adott régión belül.
 
-![Fogalmi architektúra][ConceptualArchitecture] 
+![Koncepcionális architektúra][ConceptualArchitecture] 
 
-A témakör további részében ismertetjük a több App Service környezet használatával elosztott topológia beállításának lépéseit.
+A témakör további lépései a mintaalkalmazás több App Service-környezethasználatával történő beállításával kapcsolatos lépéseken.
 
 ## <a name="planning-the-topology"></a>A topológia megtervezése
-Mielőtt kiépít egy elosztott alkalmazás-lábnyomot, a rendszer segít néhány adat megkezdése előtt.
+Az elosztott alkalmazáslábnyom kiépítése előtt segít, ha néhány adatinformáció előre meglesz.
 
-* **Egyéni tartomány az alkalmazáshoz:**  Mi az az Egyéni tartománynév, amelyet az ügyfelek használni fognak az alkalmazás eléréséhez?  A minta alkalmazás esetében az Egyéni tartománynév `www.scalableasedemo.com`
-* **Traffic Manager tartomány:**  [Azure Traffic Manager-profil][AzureTrafficManagerProfile]létrehozásakor ki kell választani a tartománynevet.  Ezt a nevet a rendszer a *trafficmanager.net* utótaggal kombinálva regisztrálja Traffic Manager által felügyelt tartományi bejegyzést.  A minta alkalmazás esetében a választott név a *skálázható – a bemutató*.  Ennek eredményeképpen a Traffic Manager által felügyelt teljes tartománynév *Scalable-ASE-demo.trafficmanager.net*.
-* **Az alkalmazás helyigényének méretezésére szolgáló stratégia:**  Az alkalmazási lábnyom több App Service környezetbe kerül elosztásra egyetlen régióban?  Több régió?  Mindkét megközelítés kombinációja és megfeleltetése?  A döntésnek azon elvárások alapján kell megjelennie, amelyekkel az ügyfelek forgalmát, valamint azt, hogy az alkalmazás milyen mértékben képes a háttér-infrastruktúra támogatására.  Például egy 100%-os állapot nélküli alkalmazás esetében az alkalmazások nagy mértékben méretezhetők az Azure-régiók több App Service környezetének kombinációjával, és a több Azure-régióban üzembe helyezett App Service környezetek szorzatával.  A 15 és a nyilvános Azure-régiók közül választhatnak, így az ügyfelek valóban globális platformot építhetnek ki az alkalmazások számára.  A cikkben használt minta alkalmazáshoz három App Service környezet lett létrehozva egyetlen Azure-régióban (USA déli középső régiója).
-* **A app Service környezetek elnevezési konvenciója:**  Minden App Service Environment egyedi nevet igényel.  Egy vagy két App Service környezeten túl hasznos elnevezési konvenció az egyes App Service Environmentok azonosításához.  A minta alkalmazáshoz egyszerű elnevezési konvenció volt használatban.  A három App Service környezet neve *fe1ase*, *fe2ase*és *fe3ase*.
-* **Az alkalmazások elnevezési konvenciója:**  Mivel az alkalmazás több példánya is telepítve lesz, a központilag telepített alkalmazás minden példányához nevet kell megadni.  App Service környezetek egyik kevéssé ismert funkciója, hogy ugyanazt az alkalmazást több App Service környezetben is használhatja.  Mivel minden App Service Environment egyedi tartományi utótaggal rendelkezik, a fejlesztők úgy dönthetnek, hogy az egyes környezetekben ugyanazt az alkalmazást használják újra.  Előfordulhat például, hogy egy fejlesztőnek a következőképpen kell megneveznie az alkalmazásokat: *MyApp.Foo1.p.azurewebsites.net*, *MyApp.Foo2.p.azurewebsites.net*, *MyApp.Foo3.p.azurewebsites.net*stb.  A minta alkalmazás esetében, bár minden alkalmazás példánya egyedi névvel is rendelkezik.  Az *webfrontend1*, a *webfrontend2*és a *webfrontend3*használt alkalmazás-példányok nevei.
+* **Egyéni tartomány az alkalmazáshoz:**  Mi az az egyéni tartománynév, amelyet az ügyfelek az alkalmazás eléréséhez használnak?  A mintaalkalmazás esetében az egyéni tartománynév`www.scalableasedemo.com`
+* **Traffic Manager tartomány:**  [Az Azure Traffic Manager-profil][AzureTrafficManagerProfile]létrehozásakor tartománynevet kell választani.  Ez a név a *trafficmanager.net* utótaggal kombinálva regisztrálegy, a Traffic Manager által kezelt tartománybejegyzést.  A mintaalkalmazás esetében a választott név *méretezhető-ase-demo.*  Ennek eredményeképpen a Traffic Manager által kezelt teljes tartománynév *scalable-ase-demo.trafficmanager.net*.
+* **Stratégia az alkalmazás lábnyomának méretezésére:**  Az alkalmazás alapigénye egy adott régióban több App Service-környezetközött lesz elosztva?  Több régió?  A mix-and-match mindkét megközelítés?  A döntésnek az ügyfélforgalom származási helyével kapcsolatos elvárásokon kell alapulnia, valamint azon, hogy az alkalmazás támogató háttérinfrastruktúrájának többi része mennyire méretezhető.  Egy 100%-ban állapotmentes alkalmazással például egy alkalmazás nagy mértékben skálázható az Azure-régiónként több App Service-környezet kombinációjával, megszorozva a több Azure-régióban telepített App Service-környezetekkel.  A több mint 15 nyilvános Azure-régióval az ügyfelek valóban létrehozhatnak egy világméretű, nagy léptékű alkalmazáslábnyomot.  A cikkhez használt mintaalkalmazáshoz három App Service-környezet jött létre egyetlen Azure-régióban (USA déli középső régiójában).
+* **Az App Service-környezetek elnevezési konvenciója:**  Minden App Service-környezethez egyedi név szükséges.  Egy vagy két App Service-környezeten túl hasznos, ha rendelkezik egy elnevezési konvencióval az egyes App Service-környezetek azonosításához.  A mintaalkalmazáshoz egy egyszerű elnevezési konvenciót használt.  A három App Service-környezet *neve: fe1ase*, *fe2ase*és *fe3ase*.
+* **Az alkalmazások elnevezési konvenciója:**  Mivel az alkalmazás több példánya lesz telepítve, a telepített alkalmazás minden egyes példányához név szükséges.  Az App Service-környezetek egyik kevéssé ismert, de nagyon kényelmes funkciója, hogy ugyanaz az alkalmazásnév több App Service-környezetben is használható.  Mivel minden Egyes App Service-környezet egyedi tartományutótaggal rendelkezik, a fejlesztők dönthetnek úgy, hogy minden környezetben újra ugyanazt az alkalmazásnevet használják.  Például egy fejlesztő a következő képpen nevezheti el az alkalmazásokat: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*stb.  A mintaalkalmazáshoz, bár minden alkalmazáspéldánynak egyedi neve is van.  A használt alkalmazáspéldánynevek a *következők: webfrontend1*, *webfrontend2*és *webfrontend3*.
 
-## <a name="setting-up-the-traffic-manager-profile"></a>A Traffic Manager profil beállítása
-Ha egy alkalmazás több példánya is telepítve van több App Service környezetbe, az egyes alkalmazás-példányok regisztrálva lehetnek a Traffic Managerban.  A minta alkalmazáshoz Traffic Manager profil szükséges ahhoz, hogy a *Scalable-ASE-demo.trafficmanager.net* az ügyfeleket a következő telepített alkalmazás-példányok bármelyikéhez tudja irányítani:
+## <a name="setting-up-the-traffic-manager-profile"></a>A Traffic Manager-profil beállítása
+Ha egy alkalmazás több példányát több App Service-környezetben telepíti, az egyes alkalmazáspéldányok regisztrálhatók a Traffic Manager.  A mintaalkalmazáshoz egy Traffic Manager-profilra van szükség *scalable-ase-demo.trafficmanager.net,* amely az ügyfeleket az alábbi telepített alkalmazáspéldányok bármelyikére irányíthatja:
 
-* **webfrontend1.fe1ase.p.azurewebsites.net:**  Az első App Service Environment üzembe helyezett minta alkalmazás példánya.
-* **webfrontend2.fe2ase.p.azurewebsites.net:**  A második App Service Environment üzembe helyezett minta alkalmazás példánya.
-* **webfrontend3.fe3ase.p.azurewebsites.net:**  A harmadik App Service Environment üzembe helyezett minta alkalmazás példánya.
+* **webfrontend1.fe1ase.p.azurewebsites.net:**  Az első App Service-környezetben telepített mintaalkalmazás példánya.
+* **webfrontend2.fe2ase.p.azurewebsites.net:**  A mintaalkalmazás egy példánya a második App Service-környezetben üzembe helyezve.
+* **webfrontend3.fe3ase.p.azurewebsites.net:**  A mintaalkalmazás példánya a harmadik App Service-környezetben üzembe helyezve.
 
-Több Azure App Service-végpont regisztrálásának legegyszerűbb módja, amely **ugyanabban** az Azure-régióban fut, a Powershell- [Azure Resource Manager Traffic Manager támogatással][ARMTrafficManager].  
+A [powershell-i Azure Resource Manager Traffic Manager-támogatással][ARMTrafficManager]a legegyszerűbben több Azure App Service-végpont regisztrálásának legegyszerűbb módja, amelyek **mindegyike ugyanabban** az Azure-régióban fut.  
 
-Első lépésként létre kell hoznia egy Azure Traffic Manager-profilt.  Az alábbi kód azt mutatja be, hogyan jött létre a profil a minta alkalmazáshoz:
+Az első lépés egy Azure Traffic Manager-profil létrehozása.  Az alábbi kód bemutatja, hogyan jött létre a profil a mintaalkalmazáshoz:
 
     $profile = New-AzureTrafficManagerProfile –Name scalableasedemo -ResourceGroupName yourRGNameHere -TrafficRoutingMethod Weighted -RelativeDnsName scalable-ase-demo -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 
-Figyelje meg, hogyan lett beállítva a *RelativeDnsName* paraméter skálázható-beadási *-bemutatóra*.  Így jön létre a *Scalable-ASE-demo.trafficmanager.net* tartománynév, és társítva van egy Traffic Manager profilhoz.
+Figyelje meg, hogyan lett a *RelativeDnsName* paraméter *méretezhető-ase-demo értékre*lett állítva.  Így jön létre a scalable-ase-demo.trafficmanager.net *tartománynév,* és hogyan társítva van egy Traffic Manager-profilhoz.
 
-A *TrafficRoutingMethod* paraméter határozza meg a terheléselosztási házirendet, Traffic Manager a segítségével határozza meg, hogy a rendszer hogyan terjessze az ügyfelek terhelését az összes rendelkezésre álló végponton.  Ebben a példában a *súlyozott* metódus lett kiválasztva.  Ez azt eredményezi, hogy az ügyfelek kérései a regisztrált alkalmazási végpontok között oszlanak meg az egyes végpontokhoz társított relatív súlyok alapján. 
+A *TrafficRoutingMethod* paraméter határozza meg a terheléselosztási házirend Traffic Manager fogja használni, hogyan kell elosztani az ügyfél terhelésaz összes rendelkezésre álló végpontok között.  Ebben a példában a *Súlyozott* módszer lett kiválasztva.  Ez azt eredményezi, hogy az ügyfélkérelmek az egyes végpontokhoz társított relatív súlyok alapján elosztva jelennek meg az összes regisztrált alkalmazásvégpontközött. 
 
-A létrehozott profillal a rendszer minden egyes alkalmazás-példányt natív Azure-végpontként ad hozzá a profilhoz.  Az alábbi kód beolvassa az egyes előtér-webalkalmazásokra mutató hivatkozást, majd az egyes alkalmazásokat Traffic Manager végpontként adja hozzá a *targetresourceid azonosítója* paraméterrel.
+A profil létrehozása, minden egyes alkalmazáspéldány hozzáadódik a profilnatív Azure-végpontként.  Az alábbi kód lekéri az egyes előtér-webalkalmazásokra mutató hivatkozást, majd a *TargetResourceId* paraméteren keresztül hozzáadja az egyes alkalmazásokat Traffic Manager-végpontként.
 
     $webapp1 = Get-AzWebApp -Name webfrontend1
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
@@ -74,42 +74,42 @@ A létrehozott profillal a rendszer minden egyes alkalmazás-példányt natív A
 
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
 
-Figyelje meg, hogy az egyes alkalmazás-példányok esetében van *-e AzureTrafficManagerEndpointConfig-* hívás.  Az egyes PowerShell-parancsok *targetresourceid azonosítója* paramétere a három telepített alkalmazás egyik példányára hivatkozik.  A Traffic Manager profil a profilban regisztrált mindhárom végpont terhelését fogja osztani.
+Figyelje meg, hogyan van egy hívás *az Add-AzureTrafficManagerEndpointConfig* minden egyes alkalmazáspéldányhoz.  A *TargetResourceId* paraméter minden Powershell-parancsban a három telepített alkalmazáspéldány egyikére hivatkozik.  A Traffic Manager-profil a terhelést a profilban regisztrált mindhárom végpontra osztja el.
 
-Mindhárom végpont ugyanazt az értéket (10) használja a *súlyozási* paraméterhez.  Ez azt eredményezi, hogy Traffic Manager az ügyfelek kérelmeit az összes három alkalmazás-példány között viszonylag egyenletesen terjeszti. 
+Mindhárom végpont ugyanazt az értéket (10) használja a *Súly* paraméterhez.  Ennek eredményeként a Traffic Manager viszonylag egyenletesen osztja el az ügyfélkérelmeket mindhárom alkalmazáspéldányközött. 
 
-## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Az alkalmazás egyéni tartományának mutatása a Traffic Manager tartományban
-Az utolsó lépés ahhoz szükséges, hogy az alkalmazás egyéni tartományát a Traffic Manager tartományban mutasson.  A minta alkalmazás esetében ez azt jelenti, hogy a `scalable-ase-demo.trafficmanager.net``www.scalableasedemo.com` mutat.  Ezt a lépést az egyéni tartományt felügyelő tartományregisztráló használatával kell végrehajtani.  
+## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Az alkalmazás egyéni tartományának rámutatása a Forgalomkezelő tartományban
+Az utolsó szükséges lépés az, hogy pont az egyéni tartomány az alkalmazás a Traffic Manager tartományban.  A mintaalkalmazás esetében `www.scalableasedemo.com` `scalable-ase-demo.trafficmanager.net`ez azt jelenti, hogy a-ra mutat.  Ezt a lépést az egyéni tartományt kezelő tartományregisztrálóval kell elvégezni.  
 
-A regisztrátor tartományi felügyeleti eszközeinek használatával létre kell hoznia egy CNAME rekordot, amely az Traffic Manager tartományban lévő egyéni tartományt mutat.  Az alábbi képen látható egy példa arra, hogy a CNAME konfiguráció hogyan néz ki:
+A regisztráló tartománykezelő eszközeivel létre kell hozni egy CNAME rekordokat, amelyek az egyéni tartományt a Forgalomkezelő tartományban rögzítik.  Az alábbi képen egy példa látható arra, hogy hogyan néz ki ez a CNAME konfiguráció:
 
 ![CNAME egyéni tartományhoz][CNAMEforCustomDomain] 
 
-Bár ez a témakör nem foglalkozik, ne feledje, hogy minden egyes alkalmazás-példánynak rendelkeznie kell az egyéni tartománnyal is.  Ellenkező esetben, ha egy kérelem egy alkalmazás-példányra vonatkozik, és az alkalmazás nem rendelkezik az alkalmazásban regisztrált egyéni tartománnyal, a kérelem sikertelen lesz.  
+Bár ez a témakör nem foglalkozik, ne feledje, hogy minden egyes alkalmazáspéldánynak az egyéni tartomány regisztrálásához is rendelkeznie kell.  Ellenkező esetben, ha egy kérelem egy alkalmazáspéldányhoz érkezik, és az alkalmazás nem rendelkezik az egyéni tartomány regisztrálva az alkalmazással, a kérés sikertelen lesz.  
 
-Ebben a példában az egyéni tartomány `www.scalableasedemo.com`, és minden alkalmazás-példányhoz hozzá van rendelve egy egyéni tartomány.
+Ebben a példában `www.scalableasedemo.com`az egyéni tartomány , és minden alkalmazáspéldányhoz tartozik az egyéni tartomány.
 
 ![Egyéni tartomány][CustomDomain] 
 
-Az egyéni tartományok Azure App Service alkalmazásokkal való regisztrálásának bekapcsolásához tekintse meg a következő cikket az [Egyéni tartományok regisztrálásáról][RegisterCustomDomain].
+Az egyéni tartományok Azure App Service-alkalmazásokkal való regisztrálásának újrabedugnia az [egyéni tartományok regisztrálásáról][RegisterCustomDomain]szóló alábbi cikkben olvashat.
 
 ## <a name="trying-out-the-distributed-topology"></a>Az elosztott topológia kipróbálása
-A Traffic Manager és a DNS-konfiguráció végeredménye az, hogy a `www.scalableasedemo.com`-kérelmek a következő műveletsorral fognak folyni:
+A Traffic Manager és a DNS-konfiguráció `www.scalableasedemo.com` végeredménye az, hogy a kérelmek a következő sorrendben haladnak:
 
-1. Egy böngésző vagy eszköz DNS-keresést végez a `www.scalableasedemo.com`
-2. A tartományregisztrálónál lévő CNAME bejegyzés a DNS-címkeresés átirányítását okozza az Azure Traffic Manager.
-3. A rendszer DNS-keresést végez az Azure Traffic Manager DNS-kiszolgálók egyikének *Scalable-ASE-demo.trafficmanager.net* .
-4. A terheléselosztási házirend (a Traffic Manager profil létrehozásakor korábban használt *TrafficRoutingMethod* paraméter) alapján Traffic Manager kiválasztja az egyik konfigurált végpontot, és a VÉGPONT teljes tartománynevét visszaadja a böngészőnek vagy az eszköznek.
-5. Mivel a végpont teljes tartományneve egy App Service Environment futó alkalmazás-példány URL-címe, a böngésző vagy az eszköz kérni fogja a Microsoft Azure DNS-kiszolgálót, hogy oldja fel a teljes tartománynevet az IP-címre. 
-6. A böngésző vagy az eszköz elküldi a HTTP/S kérelmet az IP-címnek.  
-7. A kérelem a App Service-környezetek egyikén futó alkalmazás-példányok egyikén fog megérkezni.
+1. A böngésző vagy eszköz DNS-keresőt`www.scalableasedemo.com`
+2. A tartományregisztráló CNAME bejegyzése hatására a DNS-keresése átlesz irányítva az Azure Traffic Managerbe.
+3. A DNS-keresése az *Azure* Traffic Manager egyik DNS-kiszolgálója scalable-ase-demo.trafficmanager.net.
+4. A terheléselosztási házirend (a TrafficManager-profil létrehozásakor korábban használt *TrafficRoutingMethod* paraméter) alapján a Traffic Manager kiválasztja a konfigurált végpontok egyikét, és visszaadja a végpont teljes tartományszámát a böngészőnek vagy az eszköznek.
+5. Mivel a végpont teljes tartományneve egy App Service-környezetben futó alkalmazáspéldány URL-címe, a böngésző vagy az eszköz megfogja kérni a Microsoft Azure DNS-kiszolgálót, hogy oldja fel a teljes tartománynnát egy IP-címre. 
+6. A böngésző vagy az eszköz elküldi a HTTP/S-kérelmet az IP-címre.  
+7. A kérelem az egyik app-példányhoz érkezik, amely az App Service-környezetek egyikén fut.
 
-Az alábbi kép egy DNS-keresést mutat be a minta alkalmazás egyéni tartománya számára, amely a három minta App Service környezet egyikén futó alkalmazás-példányra való feloldást eredményezett (ebben az esetben a három App Service környezet második része):
+Az alábbi konzolkép egy DNS-keresőt jelenít meg a mintaalkalmazás egyéni tartományához, amely sikeresen feloldva egy alkalmazáspéldányra, amely a három minta App Service-környezet (ebben az esetben a három App Service-környezet közül a második):
 
-![DNS-keresés][DNSLookup] 
+![DNS-keresése][DNSLookup] 
 
-## <a name="additional-links-and-information"></a>További hivatkozások és információk
-A PowerShell-Azure Resource Manager dokumentációja [Traffic Manager-támogatás][ARMTrafficManager].  
+## <a name="additional-links-and-information"></a>További linkek és információk
+Dokumentáció a Powershell [Azure Resource Manager Traffic Manager támogatás.][ARMTrafficManager]  
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: A fenyegetések észlelése az Azure Sentinelben a "Hunting livestream" használatával | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan használható a Hunting livestream az Azure Sentinelben az adatnyomon követéshez.
+title: Használja a vadászat Livestream az Azure Sentinel fenyegetések észlelése | Microsoft dokumentumok
+description: Ez a cikk ismerteti, hogyan használhatja a vadászat livestream az Azure Sentinel az adatok nyomon követéséhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,100 +16,100 @@ ms.workload: na
 ms.date: 12/06/2019
 ms.author: yelevin
 ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582126"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>A fenyegetések észlelése az Azure Sentinelben
+# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Az Azure Sentinel ben a vadászat élő közvetítésével észlelheti a fenyegetéseket
 
 > [!IMPORTANT]
-> A livestream in Azure Sentinel szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, és fokozatosan zajlik a bérlők számára.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Sentinel élő közvetítésének levadászása jelenleg nyilvános előzetes verzióban érhető el, és fokozatosan jelenik meg a bérlők számára.
+> Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 
-A Hunting livestream használatával interaktív munkameneteket hozhat létre, amelyek lehetővé teszik az újonnan létrehozott lekérdezések tesztelését az események bekövetkezésekor, értesítéseket kaphat a munkamenetekről, ha egyezést talál, és szükség esetén elindítja a vizsgálatokat. Gyorsan létrehozhat egy livestream-munkamenetet bármilyen Log Analytics lekérdezés használatával.
+A vadászatélő közvetítéssel interaktív munkameneteket hozhat létre, amelyek lehetővé teszik az újonnan létrehozott lekérdezések események bekövetkezéseként történő tesztelését, az egyezést követő munkamenetek értesítéseinek lefolytatását, és szükség esetén vizsgálatok indítását. A Log Analytics-lekérdezések használatával gyorsan létrehozhat élőközvetítési munkamenetet.
 
-- **Újonnan létrehozott lekérdezések tesztelése események bekövetkezésekor**
+- **Újonnan létrehozott lekérdezések tesztelése események bekövetkeztekor**
     
-    A lekérdezéseket tesztelheti és módosíthatja úgy, hogy ne legyenek ütközések az eseményekre aktívan alkalmazott szabályokkal. Miután megerősítette, hogy ezek az új lekérdezések a várt módon működnek, egyszerűen előléptetheti őket az egyéni riasztási szabályokba egy olyan lehetőség kiválasztásával, amely egy riasztáshoz emeli a munkamenetet.
+    A lekérdezéseket az eseményekre aktívan alkalmazott aktuális szabályok ütközése nélkül tesztelheti és módosíthatja. Miután meggyőződött arról, hogy ezek az új lekérdezések a várt módon működnek, egyszerűen előléptetheti őket egyéni riasztási szabályokká egy olyan beállítás kiválasztásával, amely a munkamenetet riasztásra emeli.
 
-- **Értesítést kaphat, ha fenyegetések történnek**
+- **Értesítés a fenyegetések bekövetkezéséről**
     
-    Összehasonlíthatja a veszélyforrások adatcsatornáit az összesített naplózási adatokat, és értesítést kaphat, ha egyezés történik. A veszélyforrások adatcsatornái folyamatos adatstreamek, amelyek potenciális vagy aktuális fenyegetésekkel kapcsolatosak, így előfordulhat, hogy az értesítés potenciális fenyegetést jelez a szervezet számára. Hozzon létre egy livestream-munkamenetet egyéni riasztási szabály helyett, ha értesítést szeretne kapni egy esetleges probléma alól anélkül, hogy egy egyéni riasztási szabályt kellene fenntartania.
+    Összehasonlíthatja a fenyegetés adatcsatornáit az összesített naplóadatokkal, és értesítést kaphat egyezés ről. A fenyegetési adatcsatornák olyan folyamatos adatfolyamok, amelyek potenciális vagy aktuális fenyegetésekhez kapcsolódnak, így az értesítés potenciális fenyegetést jelezhet a szervezet számára. Hozzon létre egy élőközvetítési munkamenetet egyéni riasztási szabály helyett, ha értesítést szeretne kapni egy lehetséges problémáról anélkül, hogy az egyéni riasztási szabály fenntartásának általános költségei lennének.
 
 - **Vizsgálatok indítása**
     
-    Ha van olyan aktív vizsgálat, amely magában foglal egy eszközt, például egy gazdagépet vagy egy felhasználót, megtekintheti az adott eszközön előforduló konkrét (vagy bármely) tevékenységet a naplóban. Értesítést kaphat a tevékenység bekövetkezésekor.
+    Ha van egy aktív vizsgálat, amely magában foglalja az eszköz, például egy gazdagép vagy felhasználó, megtekintheti az adott tevékenység (vagy bármely) tevékenység a naplóadatok, ahogy az adott eszköz. Értesítést kaphat, ha ez a tevékenység bekövetkezik.
 
 
-## <a name="create-a-livestream-session"></a>Livestream-munkamenet létrehozása
+## <a name="create-a-livestream-session"></a>Élőközvetítési munkamenet létrehozása
 
-Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésből, vagy akár teljesen is létrehozhatja a munkamenetet.
+Élő közvetítési munkamenetet létrehozhat egy meglévő vadászlekérdezésből, vagy létrehozhatja a munkamenetet a semmiből.
 
-1. A Azure Portal navigáljon a **Sentinel** > **veszélyforrások kezelése** > **vadászathoz**.
+1. Az Azure Portalon keresse meg a **Sentinel** > **fenyegetéskezelési** > **vadászat .**
 
-2. Livestream-munkamenet létrehozása egy vadászati lekérdezésből:
+2. Élőközvetítéses munkamenet létrehozása vadászati lekérdezésből:
     
-    1. A **lekérdezések** lapon keresse meg a használni kívánt vadászati lekérdezést.
-    2. Kattintson a jobb gombbal a lekérdezésre, és válassza a **Hozzáadás a livestream-hoz**lehetőséget. Például:
-    
-    > [!div class="mx-imgBorder"]
-    > ![livestream-munkamenet létrehozása az Azure Sentinel vadászati lekérdezésből](./media/livestream/livestream-from-query.png)
-
-3. Livestream-munkamenet létrehozása a semmiből: 
-    
-    1. A **livestream** lap kiválasztása
-    2. Válassza **az Ugrás a livestream-hoz**lehetőséget.
-    
-4. A **livestream** panelen:
-    
-    - Ha egy lekérdezésből indította el a livestream-t, tekintse át a lekérdezést, és végezze el a kívánt módosításokat.
-    - Ha elindította a livestream-t a semmiből, hozza létre a lekérdezést. 
-
-5. Válassza a **Lejátszás** elemet a parancssorból.
-    
-    A parancssáv alatti állapotsor jelzi, hogy a livestream-munkamenet fut vagy szüneteltetve van. A következő példában a munkamenet fut:
+    1. A **Lekérdezések** lapon keresse meg a használni hozandó vadászati lekérdezést.
+    2. Kattintson a jobb gombbal a lekérdezésre, és válassza **a Hozzáadás az élő közvetítéshez parancsot.** Példa:
     
     > [!div class="mx-imgBorder"]
-    > ![livestream-munkamenet létrehozása az Azure Sentinel-vadászattal](./media/livestream/livestream-session.png)
+    > ![Livestream munkamenet létrehozása az Azure Sentinel vadászati lekérdezésből](./media/livestream/livestream-from-query.png)
 
-6. Válassza a **Mentés** elemet a parancssorból.
+3. Élőközvetítéses munkamenet létrehozása teljesen újjától kezdve: 
     
-    Ha nem választja a **szüneteltetés**lehetőséget, a munkamenet addig fut, amíg ki nem jelentkezik a Azure Portalból.
+    1. Az Élő közvetítés lap **kijelölése**
+    2. Válassza **az Ugrás az élő közvetítéshez**lehetőséget.
+    
+4. Az **Élő közvetítés** ablaktáblán:
+    
+    - Ha lekérdezésből indította el az élő közvetítést, tekintse át a lekérdezést, és hajtsa végre a végrehajtani kívánt módosításokat.
+    - Ha teljesen újonnan indította el az élő közvetítést, hozza létre a lekérdezést. 
 
-## <a name="view-your-livestream-sessions"></a>A livestream-munkamenetek megtekintése
-
-1. A Azure Portal navigáljon a **Sentinel** > **veszélyforrások kezelése** > **Hunting** > **livestream** lapon.
-
-2. Válassza ki a megtekinteni vagy szerkeszteni kívánt livestream-munkamenetet. Például:
+5. Válassza a **parancssáv Lejátszás** parancsát.
+    
+    A parancssáv alatti állapotsor azt jelzi, hogy az élőfolyam-munkamenet fut vagy szünetel. A következő példában a munkamenet fut:
     
     > [!div class="mx-imgBorder"]
-    > ![livestream-munkamenet létrehozása az Azure Sentinel vadászati lekérdezésből](./media/livestream/livestream-tab.png)
+    > ![élőközvetítéses munkamenet létrehozása az Azure Sentinel vadászatából](./media/livestream/livestream-session.png)
+
+6. Válassza a **Parancssáv Mentés parancsát.**
     
-    Ekkor megnyílik a kiválasztott livestream-munkamenet a lejátszás, a szüneteltetés, a Szerkesztés és így tovább.
+    Ha nem **választja a Szünet lehetőséget,** a munkamenet addig folytatódik, amíg ki nem jelentkezik az Azure Portalról.
 
-## <a name="receive-notifications-when-new-events-occur"></a>Értesítések fogadása új események bekövetkezésekor
+## <a name="view-your-livestream-sessions"></a>Az élőközvetítéses munkamenetek megtekintése
 
-Mivel az új eseményekhez tartozó livestream-értesítések Azure Portal értesítéseket használnak, a Azure Portal használatakor ezek az értesítések jelennek meg. Például:
+1. Az Azure Portalon keresse meg a **Sentinel** > **fenyegetéskezelés** > **vadászatélő** > **közvetítése** lapot.
 
-![Azure Portal értesítés a livestream-ról](./media/livestream/notification.png)
+2. Jelölje ki a megtekinteni vagy szerkesztni kívánt élőfolyam-munkamenetet. Példa:
+    
+    > [!div class="mx-imgBorder"]
+    > ![élőközvetítéses munkamenet létrehozása az Azure Sentinel vadászati lekérdezéséből](./media/livestream/livestream-tab.png)
+    
+    Megnyílik a kiválasztott élőközvetítési munkamenet lejátszása, szüneteltetése, szerkesztése és így tovább.
 
-Válassza ki az értesítést a **livestream** panel megnyitásához.
+## <a name="receive-notifications-when-new-events-occur"></a>Értesítések fogadása új események ről
+
+Mivel az új események élőközvetítési értesítései az Azure Portal-értesítéseket használják, ezeket az értesítéseket az Azure Portal használatakor láthatja. Példa:
+
+![Az Azure Portal értesítése az élő közvetítéshez](./media/livestream/notification.png)
+
+Válassza ki az értesítést az **Élőáram** ablaktábla megnyitásához.
  
-## <a name="elevate-a-livestream-session-to-an-alert"></a>A livestream-munkamenetek megemelése egy riasztáshoz
+## <a name="elevate-a-livestream-session-to-an-alert"></a>Élőközvetítési munkamenet riasztásra való felfelé ítése
 
-A livestream-munkamenet egy új riasztáshoz való előléptetéséhez válassza a **jogosultságszint emelése riasztásra** lehetőséget a megfelelő livestream-munkamenetben a parancssáv:
+Az élő közvetítésmunkamenetet új riasztássá léptetheti, ha az Elevate lehetőséget választja a megfelelő élőközvetítési munkamenet parancssávjáról **való riasztáshoz:**
 
 > [!div class="mx-imgBorder"]
-> ![a livestream-munkamenetek megemelése riasztási](./media/livestream/elevate-to-alert.png)
+> ![Az élőközvetítésmunkamenet figyelmeztetésre való felfelé ítése](./media/livestream/elevate-to-alert.png)
 
-Ez a művelet megnyitja a szabály létrehozása varázslót, amely előre fel van töltve a livestream-munkamenethez társított lekérdezéssel.
+Ez a művelet megnyitja a szabálykészítő varázslót, amely előre ki van töltve az élőközvetítési munkamenethez társított lekérdezéssel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan használhatja a Hunting livestream-t az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ebben a cikkben megtanulta, hogyan használhatja a vadászat élő közvetítés az Azure Sentinel. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
 
-- [Proaktív vadászat a fenyegetések ellen](hunting.md)
-- [Automatikus vadászati kampányok futtatása jegyzetfüzetek használatával](notebooks.md)
+- [Proaktív vadászat a fenyegetésekre](hunting.md)
+- [Automatikus vadászati kampányok jegyzetfüzetei használata](notebooks.md)

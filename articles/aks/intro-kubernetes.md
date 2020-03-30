@@ -6,21 +6,21 @@ ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
 ms.openlocfilehash: f78b65169899107bcd4626bbed65bd4fddd8af43
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77595450"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Az Azure Kubernetes Service (AKS) használatával egyszerűen helyezhetők üzembe a felügyelt Kubernetes-fürtök az Azure-ban. Az AKS egyszerűsíti a Kubernetes kezelését és csökkenti annak működési munkaterhelését azáltal, hogy a felelősség nagy részét az Azure-ra helyezi át. Üzemeltetett Kubernetes-szolgáltatásként az Azure olyan fontos műveleteket bonyolít le, mint az állapotmonitorozás és a karbantartás. A Kubernetes fő csomópontokat az Azure felügyeli. Ön csak az ügynökcsomópontokat felügyeli és tartja karban. Felügyelt Kubernetes-szolgáltatásként az AKS ingyenes, és csak a fürtjei ügynökcsomópontjaiért kell fizetnie, a fő csomópontokért nem.
 
-Létrehozhat AKS-fürtöket a Microsoft Azure Portalon az Azure CLI-vel, vagy sablonalapú üzembehelyezési lehetőségekkel, például Resource Manager-sablonokkal és Terraformmal. Egy AKS-fürt üzembe helyezésekor a rendszer elvégzi Ön helyett a Kubernetes fő és összes más csomópontjának üzembe helyezését és konfigurálását. Az olyan további funkciók, mint a speciális hálózatkezelés, az Azure Active Directory-integráció és a monitorozás szintén konfigurálhatók az üzembehelyezési folyamat során. A Windows Server-tárolók támogatása jelenleg előzetes verzióban érhető el az AK-ban.
+Létrehozhat AKS-fürtöket a Microsoft Azure Portalon az Azure CLI-vel, vagy sablonalapú üzembehelyezési lehetőségekkel, például Resource Manager-sablonokkal és Terraformmal. Egy AKS-fürt üzembe helyezésekor a rendszer elvégzi Ön helyett a Kubernetes fő és összes más csomópontjának üzembe helyezését és konfigurálását. Az olyan további funkciók, mint a speciális hálózatkezelés, az Azure Active Directory-integráció és a monitorozás szintén konfigurálhatók az üzembehelyezési folyamat során. A Windows Server-tárolók támogatása jelenleg előzetes verzióban érhető el az AKS-ben.
 
-A Kubernetes alapjaival kapcsolatos további információkért lásd: [Kubernetes alapfogalmak az AK][concepts-clusters-workloads]-hoz.
+A Kubernetes alapjairól a [Kubernetes alapfogalmai az AKS-hez című témakörben][concepts-clusters-workloads]talál további információt.
 
-Első lépésként végezze el az AK gyors üzembe helyezését [a Azure Portal][aks-portal] vagy [Az Azure CLI-vel][aks-cli].
+Az első lépésekhez végezze el az AKS rövid útmutatójában leírtakat a [Microsoft Azure Portalon][aks-portal] vagy az [Azure CLI használatával][aks-cli].
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
@@ -30,67 +30,67 @@ A továbbfejlesztett biztonság és felügyelet érdekében az AKS lehetővé te
 
 ### <a name="identity-and-security-management"></a>Identitás és biztonsági felügyelet
 
-A fürt erőforrásaihoz való hozzáférés korlátozásához az AK támogatja a [Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC)][kubernetes-rbac]. Az RBAC lehetővé teszi a Kubernetes-erőforrások és -névterek hozzáférésének és az ezen erőforrásokhoz tartozó engedélyek felügyeletét. Az AKS-fürtöket az Azure Active Directoryval való integrációhoz is konfigurálhatja. Az Azure AD-integrációval a Kubernetes-hozzáférést a meglévő identitás és csoporttagság alapján lehet konfigurálni. Meglévő Azure AD-felhasználói és -csoportjai kaphatnak hozzáférést az AKS-erőforrásokhoz, amelyeket egy integrált bejelentkezési felületen keresztül érhetnek el.
+Az AKS támogatja a [szerepköralapú hozzáférés-vezérlést (RBAC)][kubernetes-rbac], amellyel korlátozhatja a fürt erőforrásaihoz való hozzáférést. Az RBAC lehetővé teszi a Kubernetes-erőforrások és -névterek hozzáférésének és az ezen erőforrásokhoz tartozó engedélyek felügyeletét. Az AKS-fürtöket az Azure Active Directoryval való integrációhoz is konfigurálhatja. Az Azure AD-integrációval a Kubernetes-hozzáférést a meglévő identitás és csoporttagság alapján lehet konfigurálni. Meglévő Azure AD-felhasználói és -csoportjai kaphatnak hozzáférést az AKS-erőforrásokhoz, amelyeket egy integrált bejelentkezési felületen keresztül érhetnek el.
 
-Az identitással kapcsolatos további információkért lásd: [hozzáférési és identitási beállítások az AK][concepts-identity]-hoz.
+Az identitással kapcsolatos további információkért lásd: [Hozzáférés és identitásbeállításai az AKS-hez.][concepts-identity]
 
-Az AK-fürtök biztonságossá tételéhez lásd: [Azure Active Directory integrálása az AK-val][aks-aad].
+Az AKS-fürtök biztonságossá tételéhez tekintse meg [Az Azure Active Directory és az AKS integrációja][aks-aad] című cikket.
 
 ### <a name="integrated-logging-and-monitoring"></a>Integrált naplózás és monitorozás
 
-Az AKS-fürtök és az üzembe helyezett alkalmazások teljesítményének megismeréséhez a tárolóállapothoz használt Azure Monitor memória- és processzorhasználati mérőszámokat gyűjt a tárolókból, csomópontokból és vezérlőkből. A tároló naplói elérhetők, és [áttekintheti a Kubernetes fő naplóit][aks-master-logs]is. A rendszer egy Log Analytics-munkaterületen tárolja monitorozási adatokat, amelyek a Microsoft Azure Portalon, az Azure CLI-n vagy a REST-végponton keresztül érhetők el.
+Az AKS-fürtök és az üzembe helyezett alkalmazások teljesítményének megismeréséhez a tárolóállapothoz használt Azure Monitor memória- és processzorhasználati mérőszámokat gyűjt a tárolókból, csomópontokból és vezérlőkből. Rendelkezésre állnak a tárolók naplói is, így [a Kubernetes fő csomópontok naplóinak áttekintésére][aks-master-logs] is van lehetőség. A rendszer egy Log Analytics-munkaterületen tárolja monitorozási adatokat, amelyek a Microsoft Azure Portalon, az Azure CLI-n vagy a REST-végponton keresztül érhetők el.
 
-További információ: az [Azure Kubernetes Service Container Health figyelése][container-health].
+További információ: [Az Azure Kubernetes Service tárolóállapot-monitorozása][container-health].
 
 ## <a name="clusters-and-nodes"></a>Fürtök és csomópontok
 
-Az AKS-csomópontok Azure-beli virtuális gépeken futnak. Csatlakoztathat tárterületet csomópontokhoz és podokhoz, frissíthet fürtkomponenseket, és használhat GPU-kat. Az AK támogatja a több csomópontot futtató Kubernetes-fürtöket a vegyes operációs rendszerek és a Windows Server-tárolók (jelenleg előzetes verzióban) támogatásához. A Linux-csomópontok testreszabott Ubuntu operációsrendszer-rendszerképet futtatnak, és a Windows Server-csomópontok testreszabott Windows Server 2019 operációsrendszer-rendszerképet futtatnak.
+Az AKS-csomópontok Azure-beli virtuális gépeken futnak. Csatlakoztathat tárterületet csomópontokhoz és podokhoz, frissíthet fürtkomponenseket, és használhat GPU-kat. Az AKS támogatja azokat a Kubernetes-fürtöket, amelyek több csomópontkészletet futtatnak a vegyes operációs rendszerek és a Windows Server-tárolók (jelenleg előzetes verzióban). A Linux-csomópontok testreszabott Ubuntu operációs rendszerlemezt futtatnak, a Windows Server-csomópontok pedig egy testreszabott Windows Server 2019 operációs rendszerlemezt.
 
 ### <a name="cluster-node-and-pod-scaling"></a>Fürtcsomópont- és podméretezés
 
 Az erőforrások változtatása iránti igények miatt a szolgáltatását futtató fürtcsomópontok és podok száma automatikusan skálázhatók felfelé vagy lefelé. Egyaránt használhatja a podok automatikus vízszintes skálázását és a fürt automatikus skálázását. Ezzel a megközelítéssel az AKS-fürtök a képesek automatikusan alkalmazkodni az igényekhez, és csak a szükséges erőforrásokat használják.
 
-További információ: [Azure Kubernetes Service (ak) fürt méretezése][aks-scale].
+További információ: [Azure Kubernetes Service- (AKS-) fürtök méretezése][aks-scale].
 
 ### <a name="cluster-node-upgrades"></a>Fürtcsomópont-frissítés
 
 Az Azure Kubernetes Service számos Kubernetes-verziót kínál. Amint elérhetővé válik egy új verzió az AKS-ben, az Azure Portal vagy az Azure CLI használatával azonnal frissítheti fürtjét. A frissítési folyamat során a csomópontok megfelelően el vannak szigetelve és ki vannak ürítve, hogy minimális hatással legyenek a futó alkalmazásokra.
 
-További információ az életciklus-verziókról: [támogatott Kubernetes-verziók az AK-ban][aks-supported versions]. A frissítésével kapcsolatos további információkért lásd: [Azure Kubernetes Service (ak) fürt frissítése][aks-upgrade].
+A verziók életciklusáról további tudnivalókat [Az AKS-ben támogatott Kubernetes verziók][aks-supported versions] című cikkben talál. A frissítés lépéseit [Az Azure Kubernetes Service- (AKS-) fürtök frissítése][aks-upgrade] című cikk ismerteti.
 
 ### <a name="gpu-enabled-nodes"></a>GPU-kompatibilis csomópontok
 
 Az AKS támogatja a GPU-kompatibilis csomópontkészletek létrehozását. Az Azure jelenlegi kínálatában egy vagy több GPU-val kompatibilis virtuális gépek érhetők el. A GPU-kompatibilis virtuális gépeket a nagy számítási és grafikai igényű, valamint vizualizációs számítási feladatok elvégzésére tervezték.
 
-További információ: a [GPU használata az AK-on][aks-gpu].
+További információ: [GPU-k használata az AKS-en][aks-gpu].
 
 ### <a name="storage-volume-support"></a>Tárolókötetek támogatása
 
 Az alkalmazás számítási feladatának támogatásához csatlakoztathat tárköteteket az állandó adatok tárolásához. Statikus és dinamikus kötetek egyaránt használhatók. Annak függvényében, hogy hány csatlakoztatott podnak kell a tárterületen osztoznia, használhat Azure Disks-alapú tárterületet egyszeres podhozzáférés esetén, vagy Azure Files-alapú tárterületet több egyidejű podhozzáférés esetén.
 
-További információ: [tárolási lehetőségek az AK-ban lévő alkalmazásokhoz][concepts-storage].
+További információt az [AKS-ben lévő alkalmazások tárolási lehetőségei című témakörben talál.][concepts-storage]
 
-A dinamikus állandó kötetek használatának első lépései az [Azure-lemezek][azure-disk] vagy a [Azure Files][azure-files]használatával.
+Ismerkedés az Azure [Disks][azure-disk] vagy az [Azure Files][azure-files]dinamikus állandó köteteivel.
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuális hálózatok és bejövő forgalom
 
 Az AKS-fürtök egy már meglévő virtuális hálózaton is üzembe helyezhetők. Ebben a konfigurációban a rendszer a fürtben található összes podhoz hozzárendel egy IP-címet a virtuális hálózatban, így azok közvetlenül kommunikálhatnak a fürtben található más podokkal és a virtuális hálózat egyéb csomópontjaival. A podok a virtuális társhálózaton belül más szolgáltatásokhoz is csatlakozhatnak, illetve az ExpressRoute és a helyek közötti (S2S) VPN-kapcsolat segítségével helyszíni hálózatokhoz is.
 
-További információ: az [AK-beli alkalmazások hálózati fogalmai][aks-networking].
+További információt az [AKS-ben található alkalmazások hálózati fogalmai című témakörben talál.][aks-networking]
 
-A bejövő forgalom forgalmának megkezdéséhez lásd: [http-alkalmazás útválasztása][aks-http-routing].
+A bejövő forgalom megismeréséhez tekintse meg a [HTTP-alkalmazásútválasztás][aks-http-routing] című cikket.
 
 ### <a name="ingress-with-http-application-routing"></a>Bejövő forgalom HTTP-alkalmazásútválasztással
 
 A HTTP-alkalmazásútválasztási bővítménynek köszönhetően egyszerűen hozzáférhet az AKS-fürtjére telepített alkalmazásokhoz. Ha engedélyezve van, a HTTP-alkalmazásútválasztási megoldás egy bejövőforgalom-vezérlőt konfigurál az AKS-fürtjén. Az alkalmazások telepítése során a nyilvánosan hozzáférhető DNS-neveket a rendszer automatikusan konfigurálja. A HTTP-alkalmazásútválasztás meghatároz egy DNS-zónát, és integrálja az AKS-fürttel. Ezután a Kubernetes bejövő forgalmának erőforrásai a szokásos módon üzembe helyezhetők.
 
-A bejövő forgalom forgalmának megkezdéséhez lásd: [http-alkalmazás útválasztása][aks-http-routing].
+A bejövő forgalom megismeréséhez tekintse meg a [HTTP-alkalmazásútválasztás][aks-http-routing] című cikket.
 
 ## <a name="development-tooling-integration"></a>Fejlesztési eszközök integrációja
 
 A Kubernetes fejlesztői és felügyeleti eszközök széles választékát kínálja. Ezek közé tartozik például a Helm, a Draft és a Visual Studio Code-hoz készült Kubernetes-bővítmény. Ezek az eszközök problémamentesen működnek az AKS-szolgáltatással.
 
-Emellett az Azure Dev Spaces gyors, iteratív Kubernetes-fejlesztési élményt biztosít a csapatok számára. Minimális konfigurálással futtathat tárolókat és végezhet rajtuk hibakeresést közvetlenül az AKS-ben. Első lépésként tekintse meg az [Azure dev Spaces][azure-dev-spaces]című témakört.
+Emellett az Azure Dev Spaces gyors, iteratív Kubernetes-fejlesztési élményt biztosít a csapatok számára. Minimális konfigurálással futtathat tárolókat és végezhet rajtuk hibakeresést közvetlenül az AKS-ben. Ismerkedés az [Azure Dev Spaces][azure-dev-spaces] használatával.
 
 Az Azure DevOps Project egy egyszerű megoldást kínál a már létező kódoknak és Git-adattáraknak az Azure-ba való áthelyezéséhez. A DevOps Project olyan Azure-erőforrásokat hoz létre automatikusan, mint az AKS, amely egy, a CI-hez való buildelési folyamatot tartalmazó kiadási folyamat az Azure DevOps Servicesben, továbbá beállít egy kiadási folyamatot a CD-hez, majd létrehoz egy Azure Application Insights-erőforrást a monitorozáshoz.
 
@@ -100,7 +100,7 @@ További információ: [Azure DevOps Project][azure-devops].
 
 Az AKS támogatja a Docker rendszerképformátumát. Integrálhatja az AKS-szolgáltatást az Azure Container Registryvel (ACR-rel) a Docker-rendszerképek privát tárolásához.
 
-Privát rendszerkép-tároló létrehozásához lásd: [Azure Container Registry][acr-docs].
+Privát rendszerképtárolók létrehozásával kapcsolatban lásd: [Azure Container Registry][acr-docs].
 
 ## <a name="kubernetes-certification"></a>Kubernetes-tanúsítvány
 
@@ -108,14 +108,14 @@ Az Azure Kubernetes Service (AKS) CNCF-tanúsítvánnyal rendelkezik, mivel megf
 
 ## <a name="regulatory-compliance"></a>Előírásoknak való megfelelés
 
-Az Azure Kubernetes Service (AKS) az SOC, az ISO, a PCI DSS és a HIPAA szabványnak is megfelel. További információ: [az Microsoft Azure megfelelőségének áttekintése][compliance-doc].
+Az Azure Kubernetes Service (AKS) az SOC, az ISO, a PCI DSS és a HIPAA szabványnak is megfelel. További információt [a Microsoft Azure megfelelőségének áttekintése][compliance-doc]című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS üzembe helyezéséről és felügyeletéről.
 
 > [!div class="nextstepaction"]
-> [AK-gyors útmutató][aks-cli]
+> [AKS – rövid útmutató][aks-cli]
 
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine

@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Egyszerű szolgáltatásnév az Azure Kubernetes-fürthöz
+title: (ELAVULT) Egyszerű szolgáltatás az Azure Kubernetes-fürthöz
 description: Kubernetes-fürthöz tartozó Azure Active Directory egyszerű szolgáltatás létrehozása és felügyelete az Azure Container Service-ben
 author: iainfoulds
 ms.service: container-service
@@ -8,20 +8,20 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371120"
 ---
-# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>ELAVULT Azure AD egyszerű szolgáltatás beállítása Kubernetes-fürthöz a Container Service-ben
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(ELAVULT) Azure AD egyszerű szolgáltatásnév beállítása egy Kubernetes-fürthöz a Container Service-ben
 
 > [!TIP]
-> Az Azure Kubernetes Service-t használó cikk frissített verziója: [egyszerű szolgáltatások az Azure Kubernetes szolgáltatással (ak)](../../aks/kubernetes-service-principal.md).
+> Az Azure Kubernetes szolgáltatást használó cikk frissített verziójáról az [Azure Kubernetes-szolgáltatással (AKS) rendelkező szolgáltatástagok](../../aks/kubernetes-service-principal.md)című témakörben olvashat.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-Az Azure Container Service-ben a Kubernetes számára szükséges egy [Azure Active Directory egyszerű szolgáltatás](../../active-directory/develop/app-objects-and-service-principals.md) az Azure API-kkal való kommunikációhoz. Az egyszerű szolgáltatással dinamikusan kezelhet olyan erőforrásokat, mint a [felhasználó által meghatározott útvonalak](../../virtual-network/virtual-networks-udr-overview.md) és a [4. rétegű Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
+Az Azure Container Service-ben a Kubernetes számára szükséges egy [Azure Active Directory egyszerű szolgáltatás](../../active-directory/develop/app-objects-and-service-principals.md) az Azure API-kkal való kommunikációhoz. Az egyszerű szolgáltatásra az erőforrások, például [a felhasználó által definiált útvonalak](../../virtual-network/virtual-networks-udr-overview.md) és a Layer 4 Azure Load [Balancer](../../load-balancer/load-balancer-overview.md)dinamikus kezeléséhez van szükség.
 
 
 Ebben a cikkben különböző lehetőségeket talál arra, hogyan állíthat be egy egyszerű szolgáltatást a Kubernetes-fürthöz. Ha például telepítette és beállította az [Azure CLI-t](/cli/azure/install-az-cli2)-t, akkor futtathatja a [`az acs create`](/cli/azure/acs) parancsot a Kubernetes-fürt és az egyszerű szolgáltatás egyidejű létrehozásához.
@@ -33,15 +33,15 @@ Meglévő Azure AD egyszerű szolgáltatást is használhat, amely megfelel az a
 
 * **Hatókör**: Erőforráscsoport
 
-* **Szerepkör**: Közreműködő
+* **Szerep**: Közreműködő
 
-* **Titkos ügyfélkulcs**: Egy jelszónak kell lennie. Jelenleg nem használhat egyszerű szolgáltatás beállítást tanúsítvány hitelesítéshez.
+* **Ügyféltitok**: Jelszónak kell lennie. Jelenleg nem használhat egyszerű szolgáltatás beállítást tanúsítvány hitelesítéshez.
 
 > [!IMPORTANT]
 > Egyszerű szolgáltatás létrehozásához rendelkeznie kell engedélyekkel alkalmazások regisztrációjához az Azure AD bérlőben és alkalmazások szerepkörhöz rendeléséhez az előfizetésben. [Ellenőrizze a portálon](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions), hogy rendelkezik-e a szükséges engedélyekkel.
 >
 
-## <a name="option-1-create-a-service-principal-in-azure-ad"></a>1\. lehetőség: Egyszerű szolgáltatás létrehozása az Azure AD-ban
+## <a name="option-1-create-a-service-principal-in-azure-ad"></a>1. lehetőség: Egyszerű szolgáltatás létrehozása az Azure AD-ban
 
 Az Azure-ban többféle módszerrel is létrehozható Azure AD egyszerű szolgáltatás a Kubernetes-fürt üzembe helyezése előtt.
 
@@ -61,7 +61,7 @@ A kimenet a következőkhöz hasonló (itt kivonatosan látható):
 
 ![Egyszerű szolgáltatás létrehozása](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-A fürt üzembe helyezéséhez használt egyszerű szolgáltatás paraméterek, az **ügyfél-azonosító** (`appId`) és a **titkos ügyfélkulcs** (`password`), ki vannak emelve.
+Kiemeltaz **ügyfélazonosító** (`appId`) és az`password` **ügyféltitkos adat** ( ), amelyet a fürt központi telepítéséhez alapvető paraméterként használ.
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>Egyszerű szolgáltatás megadása a Kubernetes-fürt létrehozásakor
@@ -76,9 +76,9 @@ Ezeket a paramétereket a Kubernetes-fürt üzembe helyezésekor adhatja meg az 
 
 Az alábbi példában az Azure CLI-vel adjuk át a paramétereket. Ez a példa a [Kubernetes gyorsindítási sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) használja.
 
-1. A paraméterfájl-sablont [ a GitHubról ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)töltheti le`azuredeploy.parameters.json`.
+1. A paraméterfájl-sablont `azuredeploy.parameters.json` a GitHubról [töltheti le](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json).
 
-2. Az egyszerű szolgáltatás megadásához adja meg a `servicePrincipalClientId` és a `servicePrincipalClientSecret` értékét a fájlban. (A saját értékeit is meg kell adnia a `dnsNamePrefix` és az `sshRSAPublicKey` esetében. Az utóbbi az SSH nyilvános kulcsa a fürt eléréséhez.) Mentse a fájlt.
+2. Az egyszerű szolgáltatás megadásához adja meg a `servicePrincipalClientId` és a `servicePrincipalClientSecret` értékét a fájlban. (A saját értékeit is meg kell adnia a `dnsNamePrefix` és az `sshRSAPublicKey` esetében. Ez utóbbi az SSH nyilvános kulcs a fürt eléréséhez.) Mentse a fájlt.
 
     ![Az egyszerű szolgáltatás paramétereinek továbbítása](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -95,9 +95,9 @@ Az alábbi példában az Azure CLI-vel adjuk át a paramétereket. Ez a példa a
     ```
 
 
-## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>2\. lehetőség: Egyszerű szolgáltatás létrehozása a fürt az `az acs create` paranccsal való létrehozásakor
+## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>2. lehetőség: Egyszerű szolgáltatás létrehozása a fürt az `az acs create` paranccsal való létrehozásakor
 
-Ha az [`az acs create`](/cli/azure/acs#az-acs-create) paranccsal hozza létre a Kubernetes-fürtöt, lehetősége van automatikusan létrehozni egy egyszerű szolgáltatást.
+Ha a [`az acs create`](/cli/azure/acs#az-acs-create) Kubernetes-fürt létrehozásához futtatja a parancsot, akkor automatikusan létrehozhat egy egyszerű szolgáltatásszolgáltatást.
 
 Hasonlóan mint más Kubernetes-fürt létrehozási lehetőségek esetében, az `az acs create` futtatásakor megadhatja egy meglévő egyszerű szolgáltatás paramétereit. Ha azonban kihagyja ezeket a paramétereket, az Azure CLI létrehoz egyet automatikusan a Container Service szolgáltatással való használatra. Ez az üzembe helyezés során transzparens módon történik.
 
@@ -133,7 +133,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 Az egyszerű szolgáltatásokban használt hitelesítő adatok a létrehozásuktól számítva 1 évig érvényesek, kivéve, ha megad egy egyéni érvényességi időkeretet a `--years` paraméter segítségével. Ha a hitelesítő adatok érvényessége lejár, előfordulhat hogy a fürtcsomópontok **NotReady** állapotba lépnek.
 
-Az egyszerű szolgáltatás lejárati idejének ellenőrzéséhez hajtsa végre az [az ad app show](/cli/azure/ad/app#az-ad-app-show) parancsot a `--debug` paraméterrel, és keresse a `endDate``passwordCredentials` értékét a kimenet aljához közel:
+Az egyszerű szolgáltatás lejárati idejének ellenőrzéséhez hajtsa végre az [az ad app show](/cli/azure/ad/app#az-ad-app-show) parancsot a `--debug` paraméterrel, és keresse a `passwordCredentials``endDate` értékét a kimenet aljához közel:
 
 ```azurecli
 az ad app show --id <appId> --debug
@@ -166,7 +166,7 @@ Kimenet:
 
 Ezután frissítse az `/etc/kubernetes/azure.json` fájlt az új hitelesítő adatokkal minden fürtcsomóponton, és indítsa újra a csomópontokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés a Kubernetes-szel](container-service-kubernetes-walkthrough.md) a tárolószolgáltatás-fürtben.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery figyelése Azure Monitor naplókkal
-description: Megtudhatja, hogyan figyelheti a Azure Site Recoveryt Azure Monitor-naplókkal (Log Analytics)
+title: Az Azure site recovery figyelése az Azure Figyelő naplóival
+description: Ismerje meg, hogyan figyelheti az Azure Site Recovery szolgáltatást az Azure Figyelőnaplók (Log Analytics) segítségével
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,83 +8,83 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133417"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
-Ez a cikk bemutatja, hogyan figyelheti az Azure [site Recovery](site-recovery-overview.md)által replikált gépeket [Azure Monitor naplók](../azure-monitor/platform/data-platform-logs.md)és [log Analytics](../azure-monitor/log-query/log-query-overview.md)használatával.
+Ez a cikk azt ismerteti, hogy miként figyelheti az Azure [Site Recovery](site-recovery-overview.md)által replikált gépeket az Azure [Monitor naplók](../azure-monitor/platform/data-platform-logs.md)és a Log [Analytics](../azure-monitor/log-query/log-query-overview.md)használatával.
 
-Azure Monitor naplók olyan naplózási adatplatformot biztosítanak, amely tevékenység-és diagnosztikai naplókat, valamint más figyelési adatokat gyűjt. Azure Monitor naplókon belül a rendszer Log Analytics használatával naplózza és teszteli a napló lekérdezéseit, és interaktív módon elemezheti a naplózási adatforrásokat. Megjelenítheti és lekérdezheti a napló eredményeit, és konfigurálhatja a riasztásokat, hogy műveleteket hajtson végre a figyelt adatmennyiség alapján.
+Az Azure Monitor Naplók egy naplóadat-platformot biztosít, amely összegyűjti a tevékenység- és diagnosztikai naplókat, valamint más figyelési adatokat. Az Azure Monitor naplók, a Log Analytics segítségével naplólekérdezések írása és tesztelése, valamint a naplóadatok interaktív elemzéséhez. Megjelenítheti és lekérdezheti a napló eredményeit, és beállíthatja a riasztásokat a figyelt adatokon alapuló műveletek hez.
 
-Site Recovery a naplók segítségével Azure Monitorheti a következő műveleteket:
+A Site Recovery esetében az Azure Monitor naplók segítségével az alábbi műveleteket teheti:
 
-- **A site Recovery állapotának és állapotának figyelése**. Megfigyelheti például a replikálás állapotát, a feladatátvételi teszt állapotát, a Site Recovery eseményeket, a helyreállítási pontok célkitűzéseit (RPO) a védett gépekhez, valamint a lemez/adatváltozások arányát.
-- **Riasztások beállítása site Recoveryhoz**. Beállíthat például riasztásokat a gép állapotára, a feladatátvételi teszt állapotára vagy Site Recovery a feladatok állapotára.
+- **A hely helyreállításának állapotának és állapotának figyelése**. Figyelheti például a replikáció állapotát, a feladatátvétel állapotát, a Hely-helyreállítási eseményeket, a védett gépek helyreállításipont-célkitűzéseit (RPM) és a lemez-/adatváltozási sebességet.
+- **Riasztások beállítása a Site Recovery rendszerhez.** Beállíthatja például a gép állapotára, a teszt feladatátvételi állapotára vagy a Site Recovery feladat állapotára vonatkozó riasztásokat.
 
-Az **Azure-** ban az Azure-ba való replikáláshoz és a **VMWare virtuális gép/fizikai kiszolgáló Azure** -ba történő replikálásához az Azure monitor-naplók használata támogatott site Recovery használatával.
+Az Azure Monitor naplók használata a Site Recovery támogatja az **Azure-azure-replikáció,** és **a VMware VM/fizikai kiszolgáló az Azure replikáció.**
 
 > [!NOTE]
-> A VMware és a fizikai gépek esetében a forgalom adatnaplóinak és a feltöltési sebesség naplófájljainak beszerzéséhez telepítenie kell egy Microsoft monitoring agentet a Process Serveren. Ez az ügynök elküldi a replikáló gépek naplóit a munkaterületre. Ez a funkció csak a 9,30 mobilitási ügynök verziójában érhető el.
+> A lemorzsolódási adatnaplók és a Virtuálisgép-szoftverek és a fizikai gépek feltöltési sebességnaplóinak lekérnie kell egy Microsoft figyelési ügynököt a process serveren. Ez az ügynök elküldi a replikálógépek naplóit a munkaterületre. Ez a funkció csak 9.30-as mobilitási ügynökverziótól kezdve érhető el.
 
 ## <a name="before-you-start"></a>Előkészületek
 
 A következőkre lesz szüksége:
 
-- Legalább egy gép védve van egy Recovery Services-tárolóban.
-- Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/log-query/get-started-portal.md).
+- Legalább egy számítógép védett a Recovery Services tárolójában.
+- A Log Analytics munkaterület a Site Recovery naplók tárolására. További információ a munkaterület [beállításáról.](../azure-monitor/learn/quick-create-workspace.md)
+- A Log Analytics naplólekérdezéseinek írása, futtatása és elemzése alapvető ismerete. [További információ](../azure-monitor/log-query/get-started-portal.md).
 
-Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
+Javasoljuk, hogy a kezdés előtt tekintse át a [gyakori figyelési kérdéseket.](monitoring-common-questions.md)
 
-## <a name="configure-site-recovery-to-send-logs"></a>Site Recovery konfigurálása naplók küldéséhez
+## <a name="configure-site-recovery-to-send-logs"></a>A Site Recovery konfigurálása naplók küldésére
 
-1. A tárolóban kattintson a **diagnosztikai beállítások** > **diagnosztikai beállítás hozzáadása**elemre.
+1. A tárolóban kattintson a **Diagnosztikai beállítások** > **Diagnosztikai beállítás hozzáadása parancsra.**
 
     ![Diagnosztikai naplózás kiválasztása](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. A **diagnosztikai beállítások**területen adjon meg egy nevet, és jelölje be a **Küldés log Analyticsre**jelölőnégyzetet.
-3. Válassza ki a Azure Monitor naplók előfizetését és a Log Analytics munkaterületet.
-4. Válassza a **Azure Diagnostics** lehetőséget a váltásban.
-5. A naplók listából válassza ki az összes naplót a **AzureSiteRecovery**előtaggal. Ezután kattintson az **OK** gombra.
+2. A **Diagnosztikai beállítások párbeszédpanelen**adja meg a nevet, és jelölje be a **Küldés a Log Analytics szolgáltatásba**jelölőnégyzetet.
+3. Válassza ki az Azure Monitor Naplók előfizetést és a Log Analytics munkaterületet.
+4. Válassza ki az **Azure Diagnosztika** a kapcsolóban.
+5. A naplólistából válassza ki az **AzureSiteRecovery**előtaggal rendelkező összes naplót. Ezt követően kattintson az **OK** gombra.
 
     ![Munkaterület kiválasztása](./media/monitoring-log-analytics/select-workspace.png)
 
-A Site Recovery naplók megkezdik a hírcsatornát a kiválasztott munkaterületen lévő táblába (**AzureDiagnostics**).
+A site recovery naplók elkezd betáplálni egy táblába (**AzureDiagnostics**) a kiválasztott munkaterületen.
 
-## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>A Microsoft monitoring Agent konfigurálása a Process Serveren a forgalom és a feltöltési arány naplóinak küldéséhez
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>A Microsoft felügyeleti ügynök konfigurálása a process serveren lemorzsolódási és feltöltési sebességnaplók küldésére
 
-Az adatváltozási arány adatait és a forrás adatfeltöltési sebességét a helyszíni VMware/fizikai gépekre vonatkozó információk alapján rögzítheti. Ennek engedélyezéséhez szükség van egy Microsoft monitoring Agent telepítésére a Process Serveren.
+Rögzítheti az adatforgalom-adatokat és a forrásadatok feltöltési arányára vonatkozó információkat a VMware/fizikai gépekhez a helyszínen. Ennek engedélyezéséhez a Folyamatkiszolgálóra telepíteni kell egy Microsoft figyelési ügynököt.
 
-1. Lépjen a Log Analytics munkaterületre, és kattintson a **Speciális beállítások**elemre.
-2. Kattintson a **csatlakoztatott források** lapra, és válassza a **Windows-kiszolgálók**lehetőséget.
-3. Töltse le a Windows-ügynököt (64 bites) a Process Serveren. 
-4. [A munkaterület-azonosító és-kulcs beszerzése](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
-5. [Az ügynök konfigurálása a TLS 1,2 használatára](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. Az [ügynök telepítésének befejezéséhez](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) adja meg a beszerzett munkaterület azonosítóját és kulcsát.
-7. A telepítés befejezése után lépjen Log Analytics munkaterületre, és kattintson a **Speciális beállítások**elemre. Nyissa meg az **adat** lapot, és kattintson a **Windows-teljesítményszámlálók**elemre. 
-8. A **"+"** gombra kattintva adja hozzá a következő két számlálót a mintavételi időköz 300 másodpercben:
+1. Nyissa meg a Log Analytics munkaterületet, és kattintson a **Speciális beállítások gombra.**
+2. Kattintson a **Csatlakoztatott források lapra,** és válassza ki a **Windows-kiszolgálók lehetőséget.**
+3. Töltse le a Windows Agentet (64 bites) a folyamatkiszolgálóra. 
+4. [A munkaterület-azonosító és a kulcs beszerzése](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Ügynök konfigurálása a TLS 1.2 használatára](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. A beszerzett munkaterület-azonosító és kulcs megadásával [végezze el az ügynök telepítését.](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)
+7. A telepítés befejezése után nyissa meg a Log Analytics munkaterületet, és kattintson a **Speciális beállítások gombra.** Nyissa meg az **Adatok** lapot, és kattintson a **Windows teljesítményszámlálói ra.** 
+8. Kattintson a **'+'** gombra a következő két számláló hozzáadásához 300 másodperces mintavételi időközzel:
 
         ASRAnalytics(*)\SourceVmChurnRate 
         ASRAnalytics(*)\SourceVmThrpRate 
 
-Az adatforgalom és a feltöltési arány adatok bekerülnek a munkaterületre.
+A lemorzsolódási és feltöltési sebesség adatai megkezdik a munkaterületre való betáplálást.
 
 
 ## <a name="query-the-logs---examples"></a>A naplók lekérdezése – példák
 
-Az adatok naplókból való lekéréséhez a [Kusto lekérdezési nyelvvel](../azure-monitor/log-query/get-started-queries.md)írt napló lekérdezéseket kell használnia. Ez a szakasz néhány példát mutat be Site Recovery figyeléshez használható gyakori lekérdezésekre.
+A naplókból a [Kusto lekérdezési nyelvvel](../azure-monitor/log-query/get-started-queries.md)írt naplólekérdezésekkel lehet adatokat beolvasni. Ez a szakasz néhány példát mutat be a site recovery figyeléséhez használható gyakori lekérdezésekre.
 
 > [!NOTE]
-> Néhány példa a **replicationProviderName_s** beállítása **A2A**értékre. Ezzel lekéri az Azure-beli virtuális gépeket, amelyek egy másodlagos Azure-régióba replikálódnak Site Recovery használatával. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2**-be, ha az Azure-ba replikált helyszíni VMWare virtuális gépeket vagy fizikai kiszolgálókat szeretné lekérni site Recovery használatával.
+> Néhány példa az **A2A** **replicationProviderName_s.** Ez lekéri az Azure virtuális gépek, amelyek replikálódnak egy másodlagos Azure-régióban a Site Recovery használatával. Ezekben a példákban lecserélheti **az A2A-t** **az InMageAzureV2-re,** ha a helyszíni VMware virtuális gépeket vagy az Azure-ba a Site Recovery használatával replikált fizikai kiszolgálókat szeretne beolvasni.
 
 
 ### <a name="query-replication-health"></a>Replikáció állapotának lekérdezése
 
-Ez a lekérdezés egy tortadiagramot ábrázol az összes védett Azure-beli virtuális gép aktuális replikációs állapotára vonatkozóan, három állapotra bontva: normál, figyelmeztetés vagy kritikus.
+Ez a lekérdezés egy kördiagramot hoz az összes védett Azure-beli virtuális gép aktuális replikációs állapotához, három állapotra bontva: Normál, Figyelmeztetés vagy Kritikus.
 
 ```
 AzureDiagnostics  
@@ -95,9 +95,9 @@ AzureDiagnostics 
 | summarize count() by replicationHealth_s  
 | render piechart   
 ```
-### <a name="query-mobility-service-version"></a>A mobilitási szolgáltatás verziójának lekérése
+### <a name="query-mobility-service-version"></a>Lekérdezési mobilitási szolgáltatás verziója
 
-Ez a lekérdezés egy tortadiagramot ábrázol a Site Recoveryval replikált Azure-beli virtuális gépekhez, a futó mobilitási ügynök verziószáma szerint lebontva.
+Ez a lekérdezés a Site Recovery szolgáltatással replikált Azure-beli virtuális gépek kördiagramját keresi, a futó mobilitási ügynök verziója szerinti bontásban.
 
 ```
 AzureDiagnostics  
@@ -109,9 +109,9 @@ AzureDiagnostics 
 | render piechart 
 ```
 
-### <a name="query-rpo-time"></a>Lekérdezési RPO ideje
+### <a name="query-rpo-time"></a>LekérdezésI RPO idő
 
-Ez a lekérdezés egy Site Recovery által replikált Azure-beli virtuális gépek oszlopdiagram diagramját ábrázolja, a helyreállítási időkorlát (RPO) szerinti bontásban: kevesebb, mint 15 perc, 15-30 perc és 30 perc között.
+Ez a lekérdezés a Site Recovery szolgáltatással replikált Azure-beli virtuális gépek sávdiagramját ábrázolja helyreállításipont (RPO) szerinti bontásban: Kevesebb, mint 15 perc, 15–30 perc, több mint 30 perc.
 
 ```
 AzureDiagnostics 
@@ -125,11 +125,11 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![RPO lekérdezése](./media/monitoring-log-analytics/example1.png)
+![Lekérdezés RPO](./media/monitoring-log-analytics/example1.png)
 
-### <a name="query-site-recovery-jobs"></a>Site Recovery feladatok lekérdezése
+### <a name="query-site-recovery-jobs"></a>Hely-helyreállítási feladatok lekérdezése
 
-Ez a lekérdezés lekérdezi az összes Site Recovery feladatot (az összes vész-helyreállítási forgatókönyv esetében), amely az elmúlt 72 órában aktiválódik, valamint a befejezési állapotukat.
+Ez a lekérdezés lekéri az összes Site Recovery feladatok (az összes vész-helyreállítási forgatókönyvek), az elmúlt 72 órában, és azok befejezésének állapotát.
 
 ```
 AzureDiagnostics  
@@ -138,9 +138,9 @@ AzureDiagnostics 
 | project JobName = OperationName , VaultName = Resource , TargetName = affectedResourceName_s, State = ResultType  
 ```
 
-### <a name="query-site-recovery-events"></a>Site Recovery események lekérdezése
+### <a name="query-site-recovery-events"></a>Lekérdezési hely helyreállítási eseményei
 
-A lekérdezés lekérdezi az elmúlt 72 órában kiváltott összes Site Recovery eseményt (az összes vész-helyreállítási forgatókönyv esetében), valamint azok súlyosságát. 
+Ez a lekérdezés lekéri az összes site recovery események (az összes vész-helyreállítási forgatókönyvek) az elmúlt 72 órában, azok súlyosságával együtt. 
 
 ```
 AzureDiagnostics   
@@ -149,9 +149,9 @@ AzureDiagnostics  
 | project AffectedObject=affectedResourceName_s , VaultName = Resource, Description_s = healthErrors_s , Severity = Level  
 ```
 
-### <a name="query-test-failover-state-pie-chart"></a>Lekérdezési teszt feladatátvételi állapota (tortadiagram)
+### <a name="query-test-failover-state-pie-chart"></a>Lekérdezési teszt feladatátvételi állapota (kördiagram)
 
-Ez a lekérdezés egy tortadiagramot ábrázol a Site Recovery-vel replikált Azure-beli virtuális gépek feladatátvételi állapotának teszteléséhez.
+Ez a lekérdezés egy kördiagramot hoz a Site Recovery-vel replikált Azure-beli virtuális gépek tesztfeladat-átvételi állapotához.
 
 ```
 AzureDiagnostics  
@@ -166,7 +166,7 @@ AzureDiagnostics 
 
 ### <a name="query-test-failover-state-table"></a>Lekérdezési teszt feladatátvételi állapota (tábla)
 
-Ez a lekérdezés a Site Recovery-val replikált Azure-beli virtuális gépek feladatátvételi állapotának tesztelésére szolgáló táblázatot ábrázolja.
+Ez a lekérdezés egy táblát keres a Site Recovery-vel replikált Azure-beli virtuális gépek tesztfeladat-átvételi állapotához.
 
 ```
 AzureDiagnostics   
@@ -177,9 +177,9 @@ AzureDiagnostics  
 | project VirtualMachine = name_s , VaultName = Resource , TestFailoverStatus = failoverHealth_s 
 ```
 
-### <a name="query-machine-rpo"></a>Számítógép RPO lekérdezése
+### <a name="query-machine-rpo"></a>Lekérdezési gép RPO
 
-Ez a lekérdezés egy trend Graphot ábrázol, amely nyomon követi egy adott Azure-beli virtuális gép (ContosoVM123) RPO az elmúlt 72 órában.
+Ez a lekérdezés egy trenddiagramot hoz, amely egy adott Azure-beli virtuális gép (ContosoVM123) RPO-ját követi nyomon az elmúlt 72 órában.
 
 ```
 AzureDiagnostics   
@@ -190,11 +190,11 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Számítógép RPO lekérdezése](./media/monitoring-log-analytics/example2.png)
+![Lekérdezési gép RPO](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Azure-beli virtuális gép adatváltozási arányának és feltöltési sebességének lekérdezése
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Lekérdezési adatok változási sebessége (lemorzsolódás) és feltöltési arány egy Azure virtuális gép
 
-Ez a lekérdezés egy adott Azure-beli virtuális gép (ContosoVM123) egy trend gráfját ábrázolja, amely az adatváltozási sebességet (írási bájtok másodpercenként) és az adatfeltöltési arányt jelöli. 
+Ez a lekérdezés egy adott Azure-gép (ContosoVM123) trenddiagramját ábrázolja, amely az adatváltozási sebességet (Másodpercenként írása) és az adatfeltöltési arányt jelöli. 
 
 ```
 AzureDiagnostics   
@@ -207,14 +207,14 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Adatváltozások lekérdezése](./media/monitoring-log-analytics/example3.png)
+![Lekérdezési adatok módosítása](./media/monitoring-log-analytics/example3.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Egy VMware-vagy fizikai gép lekérdezési adatváltozási sebessége és feltöltési aránya
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Lekérdezési adatok változási sebessége (lemorzsolódás) és feltöltési arány egy VMware vagy fizikai gép
 
 > [!Note]
-> Győződjön meg arról, hogy a folyamat-kiszolgálón beállította a figyelési ügynököt a naplók lekéréséhez. Tekintse át [a figyelési ügynök konfigurálásának lépéseit](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
+> Győződjön meg arról, hogy a folyamatkiszolgálón beállította a figyelési ügynököt a naplók lekéréséhez. A [figyelési ügynök konfigurálásához](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)olvassa el a lépéseket.
 
-Ez a lekérdezés egy trend Graphot ábrázol a replikált elemek **9r7sfh9qlru**, **amely az** adatváltozási sebességet (írási bájt/s) és az adatfeltöltési sebességet jelöli. A lemez neve a Recovery Services-tárolóban található replikált elem **lemezek** paneljén található. A lekérdezésben használni kívánt példánynév a gép DNS-neve, majd az _ és a lemez neve, ahogy az ebben a példában látható.
+Ez a lekérdezés egy **win-9r7sfh9qlru**replikált elem egy adott **lemezlemezének** trenddiagramját ábrázolja, amely az adatváltozási sebességet (Másodpercenként írása) és az adatfeltöltési arányt jelöli. A lemez nevét a **replikált** elem lemezpaneljén található a helyreállítási szolgáltatások tárolójában. A lekérdezésben használandó példánynév a számítógép DNS-neve, amelyet a _ és a lemezneve követ, mint ebben a példában.
 
 ```
 Perf
@@ -224,11 +224,11 @@ Perf
 | project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
 | render timechart
 ```
-A Process Server 5 percenként leküldi ezeket az adatLog Analytics munkaterületre. Ezek az adatpontok a számított 5 perces átlagot jelölik.
+A Process Server 5 percenként leküldéses az adatokat a Log Analytics munkaterületre. Ezek az adatpontok az 5 percig számított átlagot jelölik.
 
-### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Vész-helyreállítási összefoglalás lekérdezése (Azure-ról Azure-ra)
+### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Vész-helyreállítási összefoglaló lekérdezése (Azure az Azure-ba)
 
-Ez a lekérdezés a másodlagos Azure-régióba replikált Azure-beli virtuális gépek összegző táblázatát ábrázolja.  Megjeleníti a virtuális gépek nevét, replikálási és védelmi állapotát, a RPO, a feladatátvételi teszt állapotát, a mobilitási ügynök verzióját, az esetleges aktív replikációs hibákat és a forrás helyét.
+Ez a lekérdezés egy másodlagos Azure-régióba replikált Azure-beli virtuális gépek összefoglaló tábláját ábrázolja.  Ez azt mutatja, virtuális gép nevét, replikációs és védelmi állapotát, RPO, teszt feladatátvételi állapot, mobilitási ügynök verziója, az aktív replikációs hibák, és a forrás helyét.
 
 ```
 AzureDiagnostics 
@@ -238,9 +238,9 @@ AzureDiagnostics 
 | project VirtualMachine = name_s , Vault = Resource , ReplicationHealth = replicationHealth_s, Status = protectionState_s, RPO_in_seconds = rpoInSeconds_d, TestFailoverStatus = failoverHealth_s, AgentVersion = agentVersion_s, ReplicationError = replicationHealthErrors_s, SourceLocation = primaryFabricName_s 
 ```
 
-### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Vész-helyreállítási összefoglalás lekérdezése (VMware/fizikai kiszolgálók)
+### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Vész-helyreállítási összefoglaló lekérdezése (VMware/fizikai kiszolgálók)
 
-Ez a lekérdezés az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók összegző táblázatát ábrázolja.  Megjeleníti a gép nevét, a replikálási és a védelmi állapotot, a RPO, a feladatátvételi teszt állapotát, a mobilitási ügynök verzióját, az összes aktív replikálási hibát és a megfelelő Process Servert.
+Ez a lekérdezés az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók összefoglaló tábláját ábrázolja.  Megmutatja a számítógép nevét, a replikációt és a védelmi állapotot, az RPO-t, a teszt feladatátvételi állapotát, a mobilitási ügynök verzióját, az aktív replikációs hibákat és a megfelelő folyamatkiszolgálót.
 
 ```
 AzureDiagnostics  
@@ -252,14 +252,14 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Riasztások beállítása – példák
 
-Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) információ a naplózási riasztások beállításáról. 
+Site Recovery riasztások az Azure Monitor adatai alapján állíthatja be. [További információ](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) a naplóriasztások beállításáról. 
 
 > [!NOTE]
-> Néhány példa a **replicationProviderName_s** beállítása **A2A**értékre. Ez riasztásokat állít be a másodlagos Azure-régióba replikált Azure-beli virtuális gépekről. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2** -be, ha riasztásokat szeretne beállítani a helyszíni VMWare virtuális gépekhez vagy az Azure-ba replikált fizikai kiszolgálókhoz.
+> Néhány példa az **A2A** **replicationProviderName_s.** Ez riasztásokat állít be az Azure-beli virtuális gépekhez, amelyek egy másodlagos Azure-régióba replikálódnak. Ezekben a példákban lecserélheti **az A2A-t** **az InMageAzureV2-re,** ha riasztásokat szeretne beállítani a helyszíni VMware virtuális gépekhez vagy az Azure-ba replikált fizikai kiszolgálókhoz.
 
 ### <a name="multiple-machines-in-a-critical-state"></a>Több gép kritikus állapotban
 
-Riasztást állíthat be, ha több mint 20 replikált Azure-beli virtuális gép kritikus állapotba kerül.
+Állítson be egy riasztást, ha több mint 20 replikált Azure-beli virtuális gép kritikus állapotba kerül.
 
 ```
 AzureDiagnostics   
@@ -269,11 +269,11 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count() 
 ```
-A riasztáshoz állítsa 20 értékre a **küszöbértéket** .
+A riasztáshoz állítsa **a Küszöbérték értéket** 20-ra.
 
-### <a name="single-machine-in-a-critical-state"></a>Egy gép kritikus állapotban van
+### <a name="single-machine-in-a-critical-state"></a>Egyetlen gép kritikus állapotban
 
-Riasztást állíthat be, ha egy adott replikált Azure-beli virtuális gép kritikus állapotba kerül.
+Állítson be egy riasztást, ha egy adott replikált Azure-virtuális gép kritikus állapotba kerül.
 
 ```
 AzureDiagnostics   
@@ -284,11 +284,11 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-A riasztáshoz állítsa a **küszöbérték értékét** 1-re.
+A riasztáshoz állítsa **a Küszöbérték értéket** 1-re.
 
-### <a name="multiple-machines-exceed-rpo"></a>Több gép meghaladja a RPO
+### <a name="multiple-machines-exceed-rpo"></a>Több gép meghaladja az RPO-t
 
-Riasztást állíthat be, ha több mint 20 Azure-beli virtuális gép RPO meghaladja a 30 percet.
+Állítson be egy riasztást, ha az RPO több mint 20 Azure-beli virtuális gép meghaladja a 30 percet.
 ```
 AzureDiagnostics   
 | where replicationProviderName_s == "A2A"   
@@ -298,11 +298,11 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-A riasztáshoz állítsa 20 értékre a **küszöbértéket** .
+A riasztáshoz állítsa **a Küszöbérték értéket** 20-ra.
 
-### <a name="single-machine-exceeds-rpo"></a>Egy gép meghaladja a RPO
+### <a name="single-machine-exceeds-rpo"></a>Egyetlen gép meghaladja az RPO-t
 
-Riasztás, ha egyetlen Azure-beli virtuális gép RPO hossza meghaladja a 30 percet.
+Állítson be egy riasztást, ha az RPO egyetlen Azure-beli virtuális gép 30 percet meghaladó.
 
 ```
 AzureDiagnostics   
@@ -314,11 +314,11 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-A riasztáshoz állítsa a **küszöbérték értékét** 1-re.
+A riasztáshoz állítsa **a Küszöbérték értéket** 1-re.
 
-### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Több gép feladatátvételi tesztje meghaladja a 90 napot
+### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Több gép feladatátvételének tesztelése meghaladja a 90 napot
 
-Riasztást állíthat be, ha az utolsó sikeres feladatátvételi teszt több mint 90 nap volt, több mint 20 virtuális gép esetén. 
+Állítson be egy riasztást, ha az utolsó sikeres teszt feladatátvétel több mint 90 nap volt, több mint 20 virtuális gép. 
 
 ```
 AzureDiagnostics  
@@ -329,11 +329,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-A riasztáshoz állítsa 20 értékre a **küszöbértéket** .
+A riasztáshoz állítsa **a Küszöbérték értéket** 20-ra.
 
-### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Feladatátvételi teszt egyetlen gépen meghaladja a 90 napot
+### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Az egygépes feladatátvétel tesztelése meghaladja a 90 napot
 
-Riasztást állíthat be, ha egy adott virtuális gép utolsó sikeres feladatátvételi tesztje több mint 90 nappal ezelőtt volt.
+Állítson be egy riasztást, ha egy adott virtuális gép utolsó sikeres sikeres sikeres feladatátvétele több mint 90 nappal ezelőtt volt.
 ```
 AzureDiagnostics  
 | where replicationProviderName_s == "A2A"   
@@ -344,11 +344,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-A riasztáshoz állítsa a **küszöbérték értékét** 1-re.
+A riasztáshoz állítsa **a Küszöbérték értéket** 1-re.
 
-### <a name="site-recovery-job-fails"></a>Site Recovery a feladatok sikertelenek
+### <a name="site-recovery-job-fails"></a>A hely-helyreállítási feladat sikertelen
 
-Riasztást állíthat be, ha egy Site Recovery-feladathoz (ebben az esetben az újravédelemi feladathoz) az elmúlt nap során Site Recovery forgatókönyvek meghiúsulnak. 
+Állítson be egy riasztást, ha egy hely-helyreállítási feladat (ebben az esetben a visszavédelmi feladat) sikertelen minden hely-helyreállítási forgatókönyv esetén, az utolsó nap során. 
 ```
 AzureDiagnostics   
 | where Category == "AzureSiteRecoveryJobs"   
@@ -357,8 +357,8 @@ AzureDiagnostics  
 | summarize count()  
 ```
 
-A riasztáshoz állítsa 1 **értékre a küszöbértéket** , az utolsó **nap során pedig** az 1440 percet.
+A riasztás, állítsa **küszöbérték értéke** 1, **és időszak** 1440 perc, az utolsó nap hibáinak ellenőrzéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-[További információ a](site-recovery-monitor-and-troubleshoot.md) beépített site Recovery figyelésről.
+További információ a beépített webhely-helyreállítási [figyelésről.](site-recovery-monitor-and-troubleshoot.md)

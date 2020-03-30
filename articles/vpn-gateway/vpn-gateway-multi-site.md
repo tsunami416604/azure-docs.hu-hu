@@ -1,6 +1,6 @@
 ---
-title: 'VNet összekötése több webhelyhez a VPN Gateway: klasszikus használatával'
-description: Egy VPN Gateway használatával több helyi helyszíni helyet is összekapcsolhat egy klasszikus virtuális hálózathoz.
+title: 'Virtuális hálózat csatlakoztatása több webhelyhez VPN-átjáró használatával: Klasszikus'
+description: Több helyi helyszíni hely csatlakoztatása egy klasszikus virtuális hálózathoz VPN-átjáró használatával.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
@@ -9,74 +9,74 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: yushwang
 ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198095"
 ---
-# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Helyek közötti kapcsolat hozzáadása egy VNet meglévő VPN Gateway-kapcsolattal (klasszikus)
+# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Helyek közötti kapcsolat hozzáadása meglévő VPN-átjárókapcsolattal rendelkező virtuális hálózathoz (klasszikus)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure-portál](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 >
 >
 
-Ez a cikk végigvezeti a PowerShell használatával, hogy helyek közötti (S2S) kapcsolatokat adjon hozzá egy meglévő kapcsolattal rendelkező VPN-átjáróhoz. Ezt a kapcsolattípust gyakran "többhelyes" konfigurációnak nevezzük. A cikkben ismertetett lépések a klasszikus üzembe helyezési modellel létrehozott virtuális hálózatokra érvényesek (más néven a Service Management). Ezek a lépések nem vonatkoznak a ExpressRoute vagy a helyek közötti egyidejű kapcsolati konfigurációkra.
+Ez a cikk bemutatja, hogy a PowerShell használatával webhelyről webhelyre (S2S) kapcsolatokat adhat hozzá egy meglévő kapcsolattal rendelkező VPN-átjáróhoz. Ezt a típusú kapcsolatot gyakran nevezik "többhelyes" konfigurációnak. A cikkben ismertetett lépések a klasszikus üzembe helyezési modell (más néven Szolgáltatáskezelés) használatával létrehozott virtuális hálózatokra vonatkoznak. Ezek a lépések nem vonatkoznak az ExpressRoute/A helyek közötti kapcsolati konfigurációkra.
 
 ### <a name="deployment-models-and-methods"></a>Üzemi modellek és módszerek
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Ezt a táblázatot úgy frissítjük, ahogy új cikkek és további eszközök válnak elérhetővé ehhez a konfigurációhoz. Ha egy cikk elérhetővé válik, közvetlenül a táblából csatoljuk.
+Frissítjük ezt a táblázatot, amint új cikkek és további eszközök válnak elérhetővé ehhez a konfigurációhoz. Amikor egy cikk elérhető, közvetlenül erre a táblára hivatkozunk.
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
-## <a name="about-connecting"></a>Csatlakozás a csatlakoztatásról
+## <a name="about-connecting"></a>Csatlakozás –
 
-Több helyszíni helyet is összekapcsolhat egyetlen virtuális hálózattal. Ez különösen vonzó a hibrid felhőalapú megoldások létrehozásához. A többhelyes kapcsolat Azure-beli virtuális hálózati átjáróhoz való létrehozása hasonló a helyek közötti kapcsolatok létrehozásához. Valójában használhat meglévő Azure VPN Gateway-átjárót is, ha az átjáró dinamikus (Route-alapú).
+Több helyszíni hely is csatlakoztatható egyetlen virtuális hálózathoz. Ez különösen vonzó hibrid felhőalapú megoldások készítéséhez. Többhelyes kapcsolat létrehozása az Azure virtuális hálózati átjáróhoz hasonló más helyek közötti kapcsolatok létrehozásához. Valójában használhatja a meglévő Azure VPN-átjáró, mindaddig, amíg az átjáró dinamikus (útvonal-alapú).
 
-Ha már rendelkezik egy statikus átjáróval, amely a virtuális hálózathoz csatlakozik, a virtuális hálózat újraépítésének szükségessége nélkül is beállíthatja a dinamikus átjáró típusát. Az útválasztási típus módosítása előtt győződjön meg arról, hogy a helyszíni VPN-átjáró támogatja az Útválasztás-alapú VPN-konfigurációkat.
+Ha már rendelkezik statikus átjáróval a virtuális hálózathoz, módosíthatja az átjáró típusát dinamikusra anélkül, hogy újra kellene építenie a virtuális hálózatot a többhelyhez való hozzáférés érdekében. Az útválasztási típus módosítása előtt győződjön meg arról, hogy a helyszíni VPN-átjáró támogatja az útvonalalapú VPN-konfigurációkat.
 
-![többhelyes diagram](./media/vpn-gateway-multi-site/multisite.png "több hely")
+![többhelyes diagram](./media/vpn-gateway-multi-site/multisite.png "többtelephelyes")
 
 ## <a name="points-to-consider"></a>Megfontolandó szempontok
 
-**A portálon nem fogja tudni módosítani a virtuális hálózatot.** A portál használata helyett módosítania kell a hálózati konfigurációs fájlt. Ha módosításokat hajt végre a portálon, a rendszer felülírja a virtuális hálózat többhelyes hivatkozásának beállításait.
+**A portál nem fogja tudni használni a virtuális hálózat módosításait.** A portál használata helyett módosítania kell a hálózati konfigurációs fájlt. Ha módosításokat hajt végre a portálon, azok felülírják a virtuális hálózat többwebhelyre vonatkozó referenciabeállításait.
 
-A többhelyes eljárás befejezése után érdemes a hálózati konfigurációs fájl használatát használni. Ha azonban több ember dolgozik a hálózati konfigurációban, meg kell győződnie arról, hogy mindenki ismeri ezt a korlátozást. Ez nem jelenti azt, hogy egyáltalán nem használhatja a portált. Minden más számára felhasználható, kivéve az adott virtuális hálózat konfigurációjának módosításait.
+A többhelyes eljárás befejezésekor nyugodtan használja a hálózati konfigurációs fájlt. Ha azonban többen dolgoznak a hálózati konfiguráción, gondoskodnia kell arról, hogy mindenki tudjon erről a korlátozásról. Ez nem jelenti azt, hogy egyáltalán nem használhatja a portált. Használhatja minden mást, kivéve, hogy a konfigurációs módosításokat az adott virtuális hálózat.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A konfigurálás megkezdése előtt ellenőrizze, hogy rendelkezik-e a következőkkel:
+A konfiguráció megkezdése előtt ellenőrizze, hogy rendelkezik-e a következőkkel:
 
-* Kompatibilis VPN-hardver az egyes helyszíni helyekhez. Tekintse át a [Virtual Network kapcsolat VPN-eszközeit](vpn-gateway-about-vpn-devices.md) annak ellenőrzéséhez, hogy a használni kívánt eszköz a kompatibilis-e.
-* Az egyes VPN-eszközök kifelé irányuló, nyilvános IPv4 IP-címei. Az IP-cím nem helyezhető el NAT mögött. Ez a követelmény.
-* Valaki, aki jártas a VPN-hardver konfigurálásában. A VPN-eszköz konfigurálásának és a munkát végző személynek is alapos ismeretekkel kell rendelkeznie.
+* Kompatibilis VPN-hardver ek minden helyszíni helyhez. [A virtuális hálózati kapcsolat VPN-eszközei című kérdésben](vpn-gateway-about-vpn-devices.md) ellenőrizze, hogy a használni kívánt eszköz kompatibilis-e.
+* Külsőleg néző nyilvános IPv4-IP-cím minden EGYES VPN-eszközhöz. Az IP-cím nem található nat mögött. Ez a követelmény.
+* Valaki, aki jártas a VPN-hardver konfigurálása. Meg kell, hogy egy erős megértése, hogyan kell beállítani a VPN-eszköz, vagy dolgozni valakivel, aki nem.
 * A virtuális hálózathoz használni kívánt IP-címtartományok (ha még nem hozott létre egyet).
-* Az egyes helyi hálózati helyek IP-címtartományok, amelyekhez csatlakozni fog. Győződjön meg arról, hogy az összes olyan helyi hálózati telephely IP-címtartományok, amelyhez csatlakozni szeretne, nem fedik át egymást. Ellenkező esetben a portál vagy a REST API el fogja utasítani a feltöltött konfigurációt.<br>Ha például két olyan helyi hálózati hellyel rendelkezik, amelyek egyaránt tartalmazzák a 10.2.3.0/24 IP-címtartományt, és egy 10.2.3.3 rendelkező csomaggal rendelkezik, az Azure nem tudja, hogy melyik helyen szeretné elküldeni a csomagot, mivel a címtartományok átfedésben vannak. Az útválasztási problémák megelőzése érdekében az Azure nem teszi lehetővé, hogy olyan konfigurációs fájlt töltsön fel, amely átfedésben lévő tartományokkal rendelkezik.
+* Az IP-címtartományok minden olyan helyi hálózati helyhez, amelyhez csatlakozni fog. Meg kell győződnie arról, hogy a csatlakoztatni kívánt helyi hálózati helyek IP-címtartományai nem fedik át egymást. Ellenkező esetben a portál vagy a REST API elutasítja a feltöltött konfigurációt.<br>Ha például két helyi hálózati hellyel rendelkezik, amelyek mindegyike tartalmazza a 10.2.3.0/24 IP-címtartományt, és rendelkezik egy 10.2.3.3 célcímmel rendelkező csomaggal, az Azure nem tudja, melyik helyre szeretné elküldeni a csomagot, mert a címtartományok átfedésben vannak. Az útválasztási problémák megelőzése érdekében az Azure nem teszi lehetővé az egymást átfedő tartományokkal rendelkező konfigurációs fájl feltöltését.
 
-### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
 
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-## <a name="1-create-a-site-to-site-vpn"></a>1. helyek közötti VPN létrehozása
-Ha már van egy helyek közötti VPN dinamikus útválasztási átjáróval, nagyszerű! Folytathatja [a virtuális hálózat konfigurációs beállításainak exportálását](#export). Ha nem, tegye a következőket:
+## <a name="1-create-a-site-to-site-vpn"></a>1. Helyek közötti VPN létrehozása
+Ha már rendelkezik egy hely-to-site VPN dinamikus útválasztási átjáró, nagy! A virtuális [hálózat konfigurációs beállításainak exportálása](#export)című segédprogramot továbbviheti. Ha nem, tegye a következőket:
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Ha már rendelkezik helyek közötti virtuális hálózattal, de statikus (házirend-alapú) útválasztási átjáróval rendelkezik:
-1. Módosítsa az átjáró típusát a dinamikus útválasztásra. A többhelyes VPN-hez dinamikus (más néven Route-alapú) útválasztási átjáró szükséges. Az átjáró típusának módosításához először törölnie kell a meglévő átjárót, majd létre kell hoznia egy újat.
-2. Konfigurálja az új átjárót, és hozza létre a VPN-alagutat. Útmutatásért lásd: [az SKU és a VPN típusának megadása](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Győződjön meg arról, hogy az útválasztási típust "dinamikus"-ként adja meg.
+1. Módosítsa az átjáró típusát dinamikus útválasztásra. A többhelyes VPN-hez dinamikus (más néven útvonalalapú) útválasztási átjáró szükséges. Az átjáró típusának módosításához először törölnie kell a meglévő átjárót, majd létre kell hoznia egy újat.
+2. Konfigurálja az új átjárót, és hozza létre a VPN-alagutat. További utasítások: A [Termékváltozat és a VPN típusának megadása](vpn-gateway-howto-site-to-site-classic-portal.md#sku)című témakörben talál. Győződjön meg arról, hogy a Műveletterv típust "Dinamikus" néven adja meg.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Ha nem rendelkezik helyek közötti virtuális hálózattal:
-1. Hozza létre a helyek közötti virtuális hálózatot a következő utasítások használatával: [hozzon létre egy Virtual Network helyek közötti VPN-kapcsolattal](vpn-gateway-site-to-site-create.md).  
-2. Konfigurálja a dinamikus útválasztási átjárót a következő utasítások használatával: [VPN Gateway konfigurálása](vpn-gateway-configure-vpn-gateway-mp.md). Ügyeljen arra, hogy a **dinamikus útválasztást** válassza az átjáró típusaként.
+1. Hozza létre a helyek közötti virtuális hálózatot az alábbi utasítások használatával: [Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal.](vpn-gateway-site-to-site-create.md)  
+2. Dinamikus útválasztási átjáró konfigurálása a következő utasítások kal: [VPN-átjáró konfigurálása](vpn-gateway-configure-vpn-gateway-mp.md). Ügyeljen arra, hogy **dinamikus útválasztást** válasszon az átjáró típusához.
 
-## <a name="export"></a>2. a hálózati konfigurációs fájl exportálása
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. A hálózati konfigurációs fájl exportálása
 
-Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
+Nyissa meg emelt szintű jogosultságokkal rendelkező PowerShell-konzolját. A szolgáltatáskezelésre való váltáshoz használja ezt a parancsot:
 
 ```powershell
 azure config mode asm
@@ -88,14 +88,14 @@ Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
 Add-AzureAccount
 ```
 
-Exportálja az Azure hálózati konfigurációs fájlját a következő parancs futtatásával. Ha szükséges, módosíthatja a fájl helyét egy másik helyre való exportáláshoz.
+Exportálja az Azure hálózati konfigurációs fájlját a következő parancs futtatásával. Szükség esetén módosíthatja a fájl helyét, hogy egy másik helyre exportálja.
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
 ## <a name="3-open-the-network-configuration-file"></a>3. Nyissa meg a hálózati konfigurációs fájlt
-Nyissa meg az utolsó lépésben letöltött hálózati konfigurációs fájlt. Bármilyen hasonló XML-szerkesztőt használhat. A fájlnak a következőhöz hasonlóan kell kinéznie:
+Nyissa meg az utolsó lépésben letöltött hálózati konfigurációs fájlt. Használjon bármilyen XML-szerkesztőt, amit szeret. A fájlnak a következőhöz hasonlóan kell kinéznie:
 
         <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -144,8 +144,8 @@ Nyissa meg az utolsó lépésben letöltött hálózati konfigurációs fájlt. 
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-## <a name="4-add-multiple-site-references"></a>4. több hely hivatkozásainak hozzáadása
-Ha hely-hivatkozási adatokat ad hozzá vagy távolít el, a konfigurációs módosításokat a ConnectionsToLocalNetwork/LocalNetworkSiteRef kell módosítania. Egy új helyi hely hivatkozásának hozzáadása elindítja az Azure-t egy új alagút létrehozásához. Az alábbi példában a hálózati konfiguráció egyhelyes kapcsolathoz van. Ha befejezte a módosításokat, mentse a fájlt.
+## <a name="4-add-multiple-site-references"></a>4. Több webhelyhivatkozás hozzáadása
+A helyhivatkozási adatok hozzáadásakor vagy eltávolításakor a ConnectionsToLocalNetwork/LocalNetworkSiteRef konfigurációs módosításokat hajt végre. Egy új helyi hely hivatkozás iaktiválja az Azure-t egy új alagút létrehozásához. Az alábbi példában a hálózati konfiguráció egyhelyes kapcsolatra szól. Mentse a fájlt, miután befejezte a módosításokat.
 
 ```xml
   <Gateway>
@@ -155,7 +155,7 @@ Ha hely-hivatkozási adatokat ad hozzá vagy távolít el, a konfigurációs mó
   </Gateway>
 ```
 
-További helykapcsolatok hozzáadásához (többhelyes konfiguráció létrehozása) egyszerűen vegyen fel további "LocalNetworkSiteRef" sorokat az alábbi példában látható módon:
+További helyhivatkozások hozzáadásához (többhelyes konfiguráció létrehozásához) egyszerűen adjon hozzá további "LocalNetworkSiteRef" sorokat, amint az az alábbi példában látható:
 
 ```xml
   <Gateway>
@@ -166,29 +166,29 @@ További helykapcsolatok hozzáadásához (többhelyes konfiguráció létrehoz�
   </Gateway>
 ```
 
-## <a name="5-import-the-network-configuration-file"></a>5. a hálózati konfigurációs fájl importálása
-Importálja a hálózati konfigurációs fájlt. Ha ezt a fájlt a módosításokkal együtt importálja, az új alagutak lesznek hozzáadva. Az alagutak a korábban létrehozott dinamikus átjárót fogják használni. A fájl importálásához használhatja a PowerShellt.
+## <a name="5-import-the-network-configuration-file"></a>5. A hálózati konfigurációs fájl importálása
+Importálja a hálózati konfigurációs fájlt. Amikor importálja ezt a fájlt a módosításokkal, az új alagutak hozzáadódnak. Az alagutak a korábban létrehozott dinamikus átjárót fogják használni. A PowerShell segítségével importálhatja a fájlt.
 
-## <a name="6-download-keys"></a>6. kulcsok letöltése
-Az új alagutak hozzáadása után a "Get-AzureVNetGatewayKey" PowerShell-parancsmag használatával lekérheti az egyes alagutakhoz tartozó IPsec/IKE előmegosztott kulcsokat.
+## <a name="6-download-keys"></a>6. Letöltési kulcsok
+Az új alagutak hozzáadása után használja a PowerShell "Get-AzureVNetGatewayKey" parancsmagját az IPsec/IKE minden alagúthoz előre megosztott kulcsok lekérni.
 
-Például:
+Példa:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 ```
 
-Ha szeretné, az előmegosztott kulcsok *beszerzéséhez használja az Virtual Network átjáró megosztott kulcsának Beolvasása* REST API is.
+Ha szeretné, *használhatja* a Virtuális hálózati átjáró megosztott kulcs REST API-t is az előre megosztott kulcsok lehívásához.
 
-## <a name="7-verify-your-connections"></a>7. a kapcsolatok ellenőrzése
-Győződjön meg arról, hogy a többhelyes alagút állapota. Az egyes alagutak kulcsainak letöltése után ellenőrizze a kapcsolatokat. A "Get-AzureVnetConnection" paranccsal lekérheti a virtuális hálózati alagutak listáját, ahogy az alábbi példában is látható. A VNet1 a VNet neve.
+## <a name="7-verify-your-connections"></a>7. Ellenőrizze kapcsolatait
+Ellenőrizze a többhelyes alagút állapotát. Az egyes alagutak kulcsainak letöltése után ellenőriznie kell a kapcsolatokat. Használja a "Get-AzureVnetConnection" a virtuális hálózati alagutak listájának leéséhez, amint az az alábbi példában látható. VNet1 a virtuális hálózat neve.
 
 ```powershell
 Get-AzureVnetConnection -VNetName VNET1
 ```
 
-Példa vissza:
+Példa visszatérésre:
 
 ```
     ConnectivityState         : Connected
@@ -216,6 +216,6 @@ Példa vissza:
     OperationStatus           : Succeeded
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a VPN-átjárókkal kapcsolatban: [Tudnivalók a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
+A VPN-átjárókról a [VPN-átjárók – ismertető](vpn-gateway-about-vpngateways.md)további tudnivalókat olvashat.

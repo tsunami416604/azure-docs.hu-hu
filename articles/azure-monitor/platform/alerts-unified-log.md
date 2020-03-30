@@ -1,112 +1,112 @@
 ---
-title: Riasztások naplózása Azure Monitor
-description: E-mailek, értesítések, a webhelyek URL-címei (webhookok) vagy automatizálás, ha az Ön által megadott analitikai lekérdezési feltételek teljesülnek az Azure-riasztásokhoz.
+title: Riasztások naplózása az Azure Monitorban
+description: E-mailek, értesítések, hívás webhelyek URL-címek (webhookok) vagy automatizálás, ha a megadott analitikus lekérdezési feltételek teljesülnek az Azure Alerts.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665221"
 ---
-# <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
+# <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása az Azure Monitorban
 
-Ez a cikk részletesen ismerteti a naplózási riasztásokat az [Azure-riasztásokban](../../azure-monitor/platform/alerts-overview.md) támogatott riasztási típusok közül, és lehetővé teszi a felhasználók számára, hogy riasztások alapján használják az Azure elemzési platformját.
+Ez a cikk a naplóriasztások részleteit tartalmazza az [Azure-riasztások](../../azure-monitor/platform/alerts-overview.md) ban támogatott riasztások egyik típusa, és lehetővé teszi a felhasználók számára, hogy az Azure elemzési platformját használják a riasztás alapjaként.
 
-A naplózási riasztás a [Azure monitor naplókhoz](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insightshoz](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)létrehozott naplóbeli keresési szabályokból áll. További információ a használatáról: [log-riasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
+A naplóriasztás az [Azure Monitor-naplókhoz](../../azure-monitor/learn/tutorial-viewdata.md) vagy az [Application Insightshoz](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)létrehozott naplókeresési szabályokból áll. Ha többet szeretne megtudni a használatáról, olvassa el a [naplóriasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
-> A [Azure monitor naplók](../../azure-monitor/learn/tutorial-viewdata.md) népszerű naplózási adatai mostantól a Azure monitor metrika platformján is elérhetők. Részletek nézetben a [naplók metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md)
+> Az Azure [Monitor-naplók](../../azure-monitor/learn/tutorial-viewdata.md) népszerű naplóadatai már az Azure Monitor metrikaplatformján is elérhetők. A részletekért nézet, [Metrika riasztás naplók](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
-## <a name="log-search-alert-rule---definition-and-types"></a>Napló keresési riasztási szabálya – definíció és típusok
+## <a name="log-search-alert-rule---definition-and-types"></a>Keresési riasztási szabály naplózása – definíció és típusok
 
-Az Azure Alerts naplókeresési szabályokat hoz létre megadott naplólekérdezések rendszeres időközönként való automatikus futtatására.  Ha a naplólekérdezés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan futtathat egy vagy több műveletet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md) használatával. A naplózási riasztások létrehozásához, módosításához és frissítéséhez szükség lehet az [Azure monitoring közreműködői](../../azure-monitor/platform/roles-permissions-security.md) szerepkörre. a hozzáférés & lekérdezés végrehajtási jogosultsága a riasztási szabályban vagy a riasztási lekérdezésben lévő elemzési cél (ok) hoz. Ha a felhasználó nem rendelkezik hozzáféréssel a riasztási szabály vagy a riasztási lekérdezés összes analitikai céljához, akkor a szabály létrehozása meghiúsulhat, vagy a napló riasztási szabálya részleges eredménnyel lesz végrehajtva.
+Az Azure Alerts naplókeresési szabályokat hoz létre megadott naplólekérdezések rendszeres időközönként való automatikus futtatására.  Ha a naplólekérdezés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan futtathat egy vagy több műveletet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md) használatával. A naplóriasztások létrehozásához, módosításához és frissítéséhez [azure-figyelési közreműködői](../../azure-monitor/platform/roles-permissions-security.md) szerepkörre lehet szükség; hozzáférési & lekérdezés végrehajtási jogai az elemzési cél(ok) riasztási szabály vagy riasztási lekérdezés. Abban az esetben, ha a felhasználó létrehozása nem fér hozzá az összes elemzési cél(ok) a riasztási szabály vagy riasztási lekérdezés - a szabály létrehozása sikertelen lehet, vagy a napló riasztási szabály végrehajtása részleges eredményekkel.
 
-A naplók keresési szabályait a következő részletek határozzák meg:
+A naplókeresési szabályokat a következő adatok határozzák meg:
 
-- **Napló lekérdezése**  A riasztási szabály által kiváltott minden alkalommal futó lekérdezés.  A lekérdezés által visszaadott rekordok alapján megállapítható, hogy egy riasztás aktiválva van-e. Az elemzési lekérdezés lehet egy adott Log Analytics munkaterülethez vagy Application Insights alkalmazáshoz, és akár több Log Analytics is terjedhet, [és Application Insights erőforrásokhoz](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , valamint az összes erőforrásra vonatkozó lekérdezési jogosultsággal rendelkezik. 
+- **Naplólekérdezés**.  A riasztási szabály kiváltódásakor minden alkalommal lefutó lekérdezés.  A lekérdezés által visszaadott rekordok segítségével megállapítható, hogy a riasztást el kell-e indítani. Az Analytics-lekérdezés lehet egy adott Log Analytics-munkaterülethez vagy Application Insights-alkalmazáshoz, és akár [több Log Analytics- és Application Insights-erőforrásra](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) is kiterjedhet, feltéve, hogy a felhasználó rendelkezik hozzáféréssel, valamint lekérdezési jogokkal az összes erőforráshoz. 
     > [!IMPORTANT]
-    > a Application Insights-és naplózási riasztások [több erőforrással történő lekérdezési](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) támogatása a [scheduledQueryRules API-val konfigurált log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) esetén.
+    > [erőforrásközi lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) támogatása az Application Insights naplóriasztásaiban és a log analytics-riasztások naplóriasztásaiban, amelyek csak [az scheduledQueryRules API-val konfigurálva vannak.](../../azure-monitor/platform/alerts-log-api-switch.md)
 
-    Bizonyos analitikai parancsok és kombinációk nem kompatibilisek a naplóbeli riasztásokban való használattal; További részletekért tekintse meg [a riasztási lekérdezéseket Azure monitorban](../../azure-monitor/platform/alerts-log-query.md).
+    Egyes analitikus parancsok és kombinációk nem kompatibilisek a naplóriasztásokban való használattal; további részletekért tekintse meg, [naplózza a riasztási lekérdezéseket az Azure Monitorban.](../../azure-monitor/platform/alerts-log-query.md)
 
-- **Időtartam.**  Megadja a lekérdezés időtartományát. A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre. Az időtartam korlátozza a naplózási lekérdezéshez beolvasott adatvesztést, és megkerüli a naplózási lekérdezésben használt idő (például a ago) utasításait. <br>*Ha például az időszak 60 percre van állítva, és a lekérdezés a 1:15 ÓRAKOR fut, csak a 12:15 PM és 1:15 PM között létrehozott rekordokat adja vissza a rendszer a napló lekérdezésének végrehajtásához. Most, hogy a napló lekérdezése a (z) (7D) időpontot használja, a napló lekérdezése csak a 12:15 PM és a 1:15 PM közötti adatértékre lesz futtatva, mintha az csak az elmúlt 60 percben található. És nem a log lekérdezésben megadott hét napig.*
+- **Időszak**.  Megadja a lekérdezés időtartományát. A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre. Az időtartam korlátozza a naplólekérdezéshez beolvasott adatokat a visszaélések megelőzése érdekében, és megkerüli a naplólekérdezésben használt bármely alkalommal (például ezelőtt) használt parancsokat. <br>*Ha például az időtartam 60 percre van állítva, és a lekérdezés 1:15-kor fut, a naplólekérdezés végrehajtásához csak a 12:15 és 13:15 között létrehozott rekordok at adja vissza a rendszer. Most, ha a naplólekérdezés az időparancsot használja, mint korábban (7d), a naplólekérdezés csak 12:15 és 13:15 között fut - mintha az adatok csak az elmúlt 60 percben léteznének. És nem a naplólekérdezésben megadott hét napos adatokra.*
 
-- **Gyakoriság**.  Megadja, hogy a lekérdezés milyen gyakran fusson. 5 perc és 24 óra közötti érték lehet. Az időtartamnál kisebbnek vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az időszak, akkor a kockázati rekordok kimaradnak.<br>*Vegyünk például egy 30 perces időszakot és egy 60 perces gyakoriságot.  Ha a lekérdezés a 1:00-es verzióban fut, akkor a a 12:30 és a 1:00 PM közötti rekordokat adja vissza.  A lekérdezés következő futtatása a 2:00, ha az 1:30 és 2:00 közötti rekordokat adja vissza.  A 1:00 és 1:30 között létrehozott rekordok soha nem lesznek kiértékelve.*
+- **Gyakoriság**.  Itt adható meg, hogy milyen gyakran fusson a lekérdezés. Lehet bármilyen érték között 5 perc és 24 óra. Egyenlőnek vagy kisebbnek kell lennie az időtartamnál.  Ha az érték nagyobb, mint az időszak, akkor azt kockáztatja, hogy a rekordok kimaradnak.<br>*Vegyünk például egy 30 perces és 60 perces gyakorisági időtartamot.  Ha a lekérdezés 1:00-kor fut, 12:30 és 13:00 óra között ad vissza rekordokat.  A lekérdezés következő futtatása 2:00, amikor 1:30 és 2:00 között ad vissza rekordokat.  Az 1:00 és 1:30 között létrehozott rekordok at soha nem lesz kiértékelve.*
 
-- **Küszöbérték**.  A rendszer kiértékeli a napló keresésének eredményét, és megállapítja, hogy létre kell-e hozni egy riasztást.  A küszöbérték különbözik a naplók keresési riasztási szabályainak különböző típusaitól.
+- **Küszöbértéket**.  A naplókeresés eredményeit a rendszer kiértékeli annak meghatározásához, hogy létre kell-e hozni egy riasztást.  A küszöbérték eltér a különböző típusú naplókeresési riasztási szabályok.
 
-A naplóbeli keresési szabályok [Azure monitor naplók](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)esetén lehetnek. Az alábbi szakaszokban részletesen ismertetjük ezeket a típusokat.
+Naplókeresési szabályok legyenek az [Azure Monitor naplók](../../azure-monitor/learn/tutorial-viewdata.md) vagy Application [Insights,](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)két típusa lehet. Az alábbi szakaszok részletesen ismertetik ezeket a típusokat.
 
-- **[Az eredmények száma](#number-of-results-alert-rules)** . Egyszeres riasztás jön létre, ha a naplóbeli keresés által visszaadott rekordok száma meghaladja a megadott számot.
-- **[Metrika mértékegysége](#metric-measurement-alert-rules)** .  A napló keresési eredményeiben a megadott küszöbértéket meghaladó értékekkel létrehozott riasztás.
+- **[Az eredmények száma](#number-of-results-alert-rules)**. Egyetlen riasztás jön létre, ha a naplókeresés által visszaadott számrekordok száma meghaladja a megadott számot.
+- **[Metrikus mérés](#metric-measurement-alert-rules)**.  A naplókeresés eredményei között a megadott küszöbértéket meghaladó értékekkel rendelkező minden objektumhoz létrehozott riasztás.
 
-A riasztási szabályok típusai közötti különbségek a következők.
+A riasztási szabálytípusok közötti különbségek a következők.
 
-- *Az eredmények* riasztási szabályainak száma mindig egyetlen riasztást hoz létre, míg a *metrika mértékének* riasztási szabálya riasztást hoz létre minden olyan objektumhoz, amely meghaladja a küszöbértéket.
-- Az eredmények riasztási szabályainak száma riasztást hoz létre *,* ha a küszöbértéket egy alkalommal túllépik. A *metrika mértékének* riasztási szabályai riasztást hozhatnak létre, ha a küszöbérték túllépi az adott időintervallumban megadott számú időt.
+- *Eredmények száma riasztási* szabályok mindig egyetlen riasztást hoz létre, míg *a metrikamérési* riasztási szabály riasztást hoz létre minden olyan objektumhoz, amely meghaladja a küszöbértéket.
+- *Eredmények száma* riasztási szabályok riasztást hoz létre, ha a küszöbértéket egyetlen alkalommal túllépi. *Metrikamérési* riasztási szabályok riasztást hozhat létre, ha a küszöbértéket egy adott időintervallumban bizonyos számú alkalommal túllépik.
 
-### <a name="number-of-results-alert-rules"></a>Eredmények riasztási szabályainak száma
+### <a name="number-of-results-alert-rules"></a>Eredmények száma riasztási szabályok
 
-Az eredmények riasztási szabályainak **száma** egyetlen riasztást hoz létre, ha a keresési lekérdezés által visszaadott rekordok száma meghaladja a megadott küszöbértéket. Ez a típusú riasztási szabály ideális az olyan események, mint például a Windows-eseménynaplók, a syslog, a WebApp-válaszok és az egyéni naplók használata esetén.  Előfordulhat, hogy létre kell hoznia egy riasztást, ha egy adott hiba esemény jön létre, vagy ha egy adott időszakon belül több hiba jön létre.
+**Eredmények száma** riasztási szabályok hozzon létre egy riasztást, ha a keresési lekérdezés által visszaadott rekordok száma meghaladja a megadott küszöbértéket. Az ilyen típusú riasztási szabály ideális olyan eseményekkel való használatra, mint a Windows eseménynaplók, a Syslog, a WebApp Response és az egyéni naplók.  Előfordulhat, hogy egy adott hibaesemény létrehozásakor vagy egy adott időszakon belül több hibaesemény létrehozásakor szeretne riasztást létrehozni.
 
-**Küszöbérték**: az eredmények riasztási szabályainak küszöbértéke nagyobb vagy kisebb, mint egy adott érték.  Ha a naplóbeli keresés által visszaadott rekordok száma megegyezik ezzel a feltétellel, akkor létrejön egy riasztás.
+**Küszöbérték:** Az eredmények száma riasztási szabályok küszöbértéke nagyobb vagy kisebb, mint egy adott érték.  Ha a naplókeresés által visszaadott rekordok száma megfelel ennek a feltételnek, akkor a rendszer riasztást hoz létre.
 
-Ha egyetlen eseményről szeretne riasztást kapni, állítsa az eredmények számát 0-nál nagyobb értékre, és keresse meg a lekérdezés legutóbbi futtatása óta létrehozott egyetlen esemény előfordulását. Előfordulhat, hogy egyes alkalmazások egy alkalmankénti hibát naplóznak, amely nem feltétlenül eredményez riasztást.  Előfordulhat például, hogy az alkalmazás megpróbálkozik a hiba eseményt létrehozó folyamattal, majd a következő alkalommal sikeres lesz.  Ebben az esetben előfordulhat, hogy nem szeretné létrehozni a riasztást, kivéve, ha egy adott időszakon belül több esemény jön létre.  
+Ha egyetlen eseményre szeretne riasztást adni, állítsa az eredmények számát 0-nál nagyobbra, és ellenőrizze, hogy a lekérdezés legutóbbi futtatása óta létrehozott egyetlen esemény előfordulása történt-e. Egyes alkalmazások olyan alkalmi hibákat naplózhatnak, amelyek nem feltétlenül riasztást adnak ki.  Előfordulhat például, hogy az alkalmazás újra próbálkozik a hibaeseményt létrehozó folyamattal, majd a következő alkalommal sikeres lesz.  Ebben az esetben előfordulhat, hogy nem szeretné létrehozni a riasztást, kivéve, ha egy adott időszakon belül több esemény jön létre.  
 
-Bizonyos esetekben érdemes lehet riasztást létrehozni egy esemény hiányában.  Egy folyamat például naplózhatja a rendszeres eseményeket, hogy jelezze, hogy megfelelően működik-e.  Ha egy adott időszakon belül nem naplózza ezeket az eseményeket, a rendszer riasztást hoz létre.  Ebben az esetben a küszöbértéket 1-nél **kisebb**értékre kell állítani.
+Bizonyos esetekben esemény hiányában érdemes lehet riasztást létrehozni.  Egy folyamat például naplózhatja a rendszeres eseményeket, jelezve, hogy megfelelően működik.  Ha nem naplózza az egyik ilyen eseményt egy adott időszakon belül, akkor riasztást kell létrehozni.  Ebben az esetben a küszöbértéket **1-nél kisebbre**kell állítania.
 
-#### <a name="example-of-number-of-records-type-log-alert"></a>Példa a rekordok típusára – napló típusú riasztás
+#### <a name="example-of-number-of-records-type-log-alert"></a>Példa a Rekordok száma típusú naplóriasztásra
 
-Vegyünk egy olyan forgatókönyvet, amelyben tudni szeretné, hogy a webalapú alkalmazás az 500-as kóddal (azaz) belső kiszolgálóhiba esetén választ ad a felhasználóknak. Hozzon létre egy riasztási szabályt a következő részletekkel:  
+Fontolja meg egy olyan forgatókönyv, amelyben szeretné tudni, hogy a web-alapú alkalmazás ad választ a felhasználók kód 500 (azaz) belső kiszolgálóhiba. Hozzon létre egy riasztási szabályt a következő adatokkal:  
 
-- **Lekérdezés:** kérelmek | where resultCode = = "500"<br>
-- **Időtartam:** 30 perc<br>
-- **Riasztás gyakorisága:** öt perc<br>
+- **Lekérdezés:** kérések | ahol resultCode == "500"<br>
+- **Időszak:** 30 perc<br>
+- **Riasztási gyakoriság:** öt perc<br>
 - **Küszöbérték:** Nagyobb, mint 0<br>
 
-Ezt követően a riasztás 5 percenként futtatja a lekérdezést, és 30 percnyi adattal keresi azokat a rekordokat, amelyeknél az eredmény kódja 500 volt. Ha még egy ilyen rekord is található, a riasztást küld, és elindítja a konfigurált műveletet.
+Ezután a riasztás 5 percenként futtatja a lekérdezést, 30 perces adatokkal - minden olyan rekordot keres, ahol az eredménykód 500 volt. Ha még egy ilyen rekord található, elindítja a riasztást, és elindítja a konfigurált műveletet.
 
-### <a name="metric-measurement-alert-rules"></a>Metrika mértékének riasztási szabályai
+### <a name="metric-measurement-alert-rules"></a>Metrikamérési riasztási szabályok
 
-A **metrika mértékének** riasztási szabályai riasztást hoznak létre egy lekérdezés minden objektumához egy olyan értékkel, amely meghaladja a megadott küszöbértéket és a megadott kiváltó feltételt. Az eredmények riasztási szabályainak **számától** eltérően a **metrika mértékének** riasztási szabályai működnek, ha az elemzési eredmények idősorozatot biztosítanak. A következő eltérések az eredmények riasztási szabályainak **száma** alapján különböznek.
+**Metrikamérési** riasztási szabályok riasztást hoznak létre a lekérdezés minden olyan objektumához, amelynek értéke meghaladja a megadott küszöbértéket és a megadott eseményindító feltételt. Az **eredmények riasztási szabályainak számával** ellentétben **a metrikamérési riasztási** szabályok akkor működnek, ha az elemzési eredmény idősorozatot biztosít. A következő különböző eltérésekkel rendelkeznek **az eredmények száma riasztási** szabályoktól.
 
-- **Összesítő függvény**: meghatározza a végrehajtott számítást, és potenciálisan egy numerikus mezőt az összesítéshez.  Például a **Count ()** függvény a lekérdezésben lévő rekordok számát adja vissza, az **AVG (kártyabirtokos számlájának megterhelését)** a kártyabirtokos számlájának megterhelését mező átlagát adja vissza az intervallumban. A lekérdezésben szereplő összesítő függvény neve/neve: AggregatedValue, és meg kell adnia egy numerikus értéket. 
+- **Összesítő függvény**: Meghatározza a végrehajtott számítást, és potenciálisan egy számmezőösszesítést.  A **count()** például a lekérdezésrekordjainak számát adja eredményül, az **átlag(CounterValue)** pedig a CounterValue mező átlagát adja vissza az intervallumban. A lekérdezés összesítő függvényét meg kell nevezni/meghívni: AggregatedValue, és numerikus értéket kell megadni. 
 
-- **Csoport mező**: a mező minden példányához létrejön egy összesített értéket tartalmazó rekord, és mindegyikhez riasztást lehet létrehozni.  Ha például riasztást szeretne készíteni az egyes számítógépekhez, akkor azt a **számítógép**fogja használni. Ha a riasztási lekérdezésben több csoportosítási mező van megadva, a felhasználó megadhatja, hogy melyik mezőt kell használni az eredmények rendezéséhez az **összesítő on** (metricColumn) paraméter használatával.
-
-    > [!NOTE]
-    > Az *aggregált on* (metricColumn) beállítás a metrikák mértékének naplózási riasztásai a Application Insights és a naplózási riasztások esetében a [scheduledQueryRules API használatával konfigurált log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) esetén.
-
-- **Intervallum**: az az időtartam, ameddig az adatokat összesíti.  Ha például **öt percet**adott meg, a rendszer egy rekordot hoz létre a csoport mező minden egyes példányához, amely a riasztáshoz megadott időszakban 5 perces időközönként összesítve lesz.
+- **Csoportmező:** A mező minden egyes példányához egy összesített értékkel rendelkező rekord jön létre, és mindegyikhez riasztás hozható létre.  Ha például minden számítógéphez szeretne riasztást létrehozni, akkor a Számítógép segítségével használja a **használatát.** Abban az esetben, ha több csoportmező van megadva a riasztási lekérdezésben, a felhasználó megadhatja, hogy melyik mező használható az eredmények rendezéséhez az **Összesítő on** (metricColumn) paraméter használatával
 
     > [!NOTE]
-    > Az intervallum meghatározásához a bin függvényt kell használni a lekérdezésben. Mivel a bin () nem egyenlő időintervallumokat eredményezhet – a riasztás automatikusan átalakítja a bin-parancsot, hogy a megfelelő idő elteltével bin_at parancsot, hogy az eredményeket egy rögzített ponttal biztosítsa. A naplózási riasztás metrikájának típusa úgy van kialakítva, hogy olyan lekérdezésekkel működjön, amelyek legfeljebb három bin () paranccsal működnek.
+    > *Az Összesítés on* (metricColumn) beállítás az Application Insights metrikamérési típusú naplóriasztásaihoz és a log analytics-riasztások naplóriasztásaihoz érhető el, amelyek csak [az ütemezettQueryRules API-val konfigurálva érhetők el.](../../azure-monitor/platform/alerts-log-api-switch.md)
+
+- **Intervallum**: Az adatok összesítésének időintervallumát határozza meg.  Ha például öt **percet**adott meg, a csoportmező minden egyes példányához létrejön egy rekord, amely a riasztáshoz megadott időtartam alatt 5 perces időközönként összesítve lesz.
+
+    > [!NOTE]
+    > Az intervallum megadásához a raktárhely függvényt kell használni a lekérdezésben. Mivel a bin() egyenlőtlen időintervallumokat eredményezhet - a riasztás automatikusan átalakítja a bin parancsot bin_at parancsra a megfelelő idővel futásidőben, hogy biztosítsa a rögzített ponttal rendelkező eredményeket. A naplóriasztás metrikamérési típusa a legfeljebb három példányt kió bin() parancsú lekérdezésekkel való együttműködésre szolgál.
     
-- **Küszöbérték**: a metrika mértékének riasztási szabályainak küszöbértékét egy összesített érték és számos megsértés határozza meg.  Ha a naplóbeli keresés bármely adatpontja meghaladja ezt az értéket, a rendszer megszegésnek tekinti.  Ha az eredményekben lévő bármelyik objektum megszegése meghaladja a megadott értéket, akkor a rendszer riasztást hoz létre az adott objektumra vonatkozóan.
+- **Küszöbérték:** A metrikamérési riasztási szabályok küszöbértékét egy összesített érték és számos megsértése határozza meg.  Ha a naplókeresés bármely adatpontja meghaladja ezt az értéket, akkor az szabályszegésnek minősül.  Ha az eredményekben lévő objektumok megsértése meghaladja a megadott értéket, akkor riasztás jön létre az adott objektumhoz.
 
-Az *összesítő on* vagy a *metricColumn* beállítás helytelen konfigurációja riasztási szabályokat okozhat a gyújtáskihagyás. További információ: hibaelhárítás, [Ha a metrika mértékének riasztási szabálya helytelen](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect).
+*Az Összesítő* be vagy *a metricColumn* beállítás helytelen konfigurálása riasztási szabályok gyújtáskimaradását okozhatja. További információt a Hibaelhárítás című témakörben talál, [ha a metrikamérési riasztási szabály helytelen.](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect)
 
-#### <a name="example-of-metric-measurement-type-log-alert"></a>Példa a metrikai mérési típus naplójának riasztására
+#### <a name="example-of-metric-measurement-type-log-alert"></a>Példa a Metrikamérési típusú napló riasztására
 
-Vegye fontolóra azt a helyzetet, amikor riasztást szeretne kapni, ha bármely számítógép 30 percen belül meghaladta a 90%-os processzor-kihasználtságot.  Hozzon létre egy riasztási szabályt a következő részletekkel:  
+Fontolja meg egy olyan forgatókönyv, amelyben szeretne riasztást, ha bármely számítógép túllépte a processzor kihasználtsága 90%-os háromszor 30 perc alatt.  Hozzon létre egy riasztási szabályt a következő adatokkal:  
 
-- **Lekérdezés:** Perf | where ObjectName = = "processzor" és CounterName = = "% Processor Time" | AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) összesítése raktárhely alapján (TimeGenerated, 5m), számítógép<br>
-- **Időtartam:** 30 perc<br>
-- **Riasztás gyakorisága:** öt perc<br>
-- **Riasztási logika – feltétel & küszöbérték:** Nagyobb, mint 90<br>
-- **Csoport mezője (aggregált):** Számítógép
-- **Riasztás elindítása a következő alapján:** 2. nagyobb teljes szabálysértések<br>
+- **Lekérdezés:** Perf | ahol ObjectName == "Processzor" és CounterName == "% processzoridő" | aggregatedValue = átlag(CounterValue) összegzése raktárhely(TimeGenerated, 5m), Számítógép szerint<br>
+- **Időszak:** 30 perc<br>
+- **Riasztási gyakoriság:** öt perc<br>
+- **Riasztási logika – feltétel & küszöbérték:** 90-nél nagyobb<br>
+- **Csoportmező (összesített):** Számítógép
+- **Riasztás aktiválása a következők alapján:** Összes jogsértés Nagyobb, mint 2<br>
 
-A lekérdezés 5 perces időközönként létrehoz egy átlagos értéket az egyes számítógépekhez.  A lekérdezés 5 percenként fut az elmúlt 30 percben gyűjtött adatok esetében. Mivel a kiválasztott csoportos mező (aggregált) oszlopos számítógép – a AggregatedValue a "számítógép" különböző értékeire van felosztva, az egyes számítógépek átlagos processzor-kihasználtsága pedig 5 perces időtartamra van meghatározva.  A lekérdezési eredmény (mondjuk) három számítógép esetén a következő lesz:.
+A lekérdezés 5 perces időközönként hozlétre egy átlagos értéket az egyes számítógépekhez.  Ez a lekérdezés 5 percenként futna az előző 30 percben gyűjtött adatokhoz. Mivel a kiválasztott csoportmező (Összesített) oszlopos "Számítógép" – az AggregatedValue a "Számítógép" különböző értékeire van felosztva, és az egyes számítógépek átlagos processzorkihasználtságát 5 perces időtárolóra határozzák meg.  Minta lekérdezés eredménye (mondjuk) három számítógép, lenne az alábbiak szerint.
 
 
-|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|Időgenerálva [UTC] |Computer  |Összesített érték  |
 |---------|---------|---------|
 |20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
 |20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
@@ -116,58 +116,58 @@ A lekérdezés 5 perces időközönként létrehoz egy átlagos értéket az egy
 |20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
 |20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
 
-Ha a lekérdezés eredményét szeretné ábrázolni, a következőnek kell megjelennie:.
+Ha a lekérdezés eredményét ki kell rajzolni, akkor a következőképpen jelenik meg.
 
-![Példa lekérdezés eredményeire](media/alerts-unified-log/metrics-measurement-sample-graph.png)
+![Lekérdezések eredményeinek mintája](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-Ebben a példában a három számítógép esetében 5 percből álló raktárhelyeken láthatjuk az átlagos processzor kihasználtságát 5 percen belül kiszámítva. A 90-es küszöbértéket csak egyszer Srv01 meg a 1:25-es raktárhelyen. Ezzel szemben a srv02 meghaladja az 90 küszöbértéket 1:10, 1:15 és 1:25 raktárhelyeken; míg a srv03 meghaladja a 90 küszöbértéket, 1:10, 1:15, 1:20 és 1:30.
-Mivel a riasztás úgy van beállítva, hogy a teljes szabálysértések alapján aktiválja az aktiválást, láthatjuk, hogy a srv02 és a srv03 csak a feltételeket elégíti ki. Ezért a rendszer külön riasztásokat hoz létre a srv02 és a srv03, mivel a több időrekeszben kétszer megszegték a 90%-os küszöbértéket.  Ha a következő *alapuló trigger-riasztást a rendszer* a *folyamatos szabálysértésekhez* konfigurálta, akkor a riasztás **csak** a srv03 miatt lett kiváltva, mivel a küszöbértéket a 1:10 és 1:20 közötti három egymást követő időszakra vonatkozóan megsértette. És **nem** a srv02 esetében, mivel megsértette a küszöbértéket két egymást követő, 1:10 és 1:15 közötti időszakra.
+Ebben a példában azt látjuk, a tárolók 5 mins mind a három számítógép - átlagos processzorkihasználtság számított 5 mins. Küszöb 90 megsértisék srv01 csak egyszer 1:25 bin. Ehhez képest az srv02 1:10, 1:15 és 1:25 rekeszeknél meghaladja a 90-es küszöbértéket; míg az srv03 1:10, 1:15, 1:20 és 1:30 órakor meghaladja a 90-es küszöbértéket.
+Mivel a riasztás úgy van beállítva, hogy a teljes szabályszegések alapján aktiválódik, több mint kettő, azt látjuk, hogy srv02 és srv03 csak a feltételeknek felel meg. Ezért külön riasztásokjönnek létre az srv02 és az srv03 esetében, mivel kétszer érték el a 90%-os küszöbértéket több időtárolókban.  Ha az *Eseményindító riasztás alapján:* paraméter helyett **only** *konfigurálva folyamatos megsértése beállítás,* majd egy riasztást csak srv03, mivel átlépte a küszöbértéket három egymást követő idő tárolók 1:10-1:20. És **nem** srv02, mivel átlépte a küszöbértéket két egymást követő idő ládák 1:10-1:15.
 
-## <a name="log-search-alert-rule---firing-and-state"></a>Napló keresési riasztási szabálya – égetés és állapot
+## <a name="log-search-alert-rule---firing-and-state"></a>Keresési riasztási szabály naplózása – kilövés és állapot
 
-A naplózási keresési riasztási szabályok csak a lekérdezésben felépített logikán működnek. A riasztási rendszer nem rendelkezik más környezettel a rendszer, a szándék, vagy a lekérdezés által vélelmezett kiváltó ok állapotával. Ilyenkor a naplózási riasztások állapota kevésbé. A feltételek "igaz" vagy "hamis" értékkel vannak kiértékelve minden alkalommal, amikor futtatják őket.  A riasztás minden alkalommal aktiválódik, amikor a riasztási feltétel kiértékelése "igaz", függetlenül attól, hogy a rendszer korábban elindította.    
+A naplókeresési riasztási szabályok csak a lekérdezésbe beépített logikán működnek. A riasztási rendszer nem rendelkezik a rendszer állapotának, a szándéknak vagy a lekérdezés által sugallt kiváltó oknak más környezetével. Mint ilyen, a naplóriasztásokat állapotnélkülinek nevezzük. A feltételek minden futtatáskor "TRUE" vagy "FALSE" értékűek.  A riasztás minden alkalommal aktiválódik, amikor a riasztási feltétel kiértékelése "TRUE", függetlenül attól, hogy korábban aktiválódik.    
 
-Lássuk ezt a viselkedést működés közben egy gyakorlati példával. Tegyük fel, hogy van egy *contoso-log-riasztás*nevű log riasztási szabály, amely a következő példában látható módon van konfigurálva: a [log-riasztások száma](#example-of-number-of-records-type-log-alert). A feltétel egy egyéni riasztási lekérdezés, amelynek célja, hogy a naplókban megkeresse a 500-es eredmény kódját. Ha a naplókban még egy 500-es eredmény-kód található, a riasztás feltétele igaz. 
+Lássuk ezt a viselkedést akcióban egy gyakorlati példával. Tegyük fel, hogy van egy *Contoso-Log-Alert*nevű naplóriasztási szabályunk, amely az [Eredmények típusa naplóriasztásban megadott példában](#example-of-number-of-records-type-log-alert)látható módon van konfigurálva. A feltétel egy egyéni riasztási lekérdezés, amelyet úgy terveztek, hogy 500 eredménykódot keressen a naplókban. Ha még egy 500 találatkód található a naplókban, a riasztás állapota igaz. 
 
-Az Azure riasztási rendszer az alábbi időközönként ellenőrzi a *contoso-log-riasztás*feltételeit.
+Az alábbi időközönként az Azure riasztási rendszer kiértékeli a *Contoso-Log-Alert feltételét.*
 
 
-| Time    | Naplóbeli keresési lekérdezés által visszaadott rekordok száma | Naplózási feltétel evalution | Eredmény 
+| Time    | A naplókeresési lekérdezés által visszaadott rekordok száma | Naplófeltétel-értékelés | Eredmény 
 | ------- | ----------| ----------| ------- 
-| 1:05 PM | 0 rekord | 0 nem > 0, így hamis |  A riasztás nem tűz. Nincs hívott művelet.
-| 1:10 PM | 2 rekord | 2 > 0 igaz  | Riasztási tüzek és műveleti csoportok hívása. Riasztási állapot aktív.
-| 1:15 PM | 5 rekord | 5 > 0 igaz  | Riasztási tüzek és műveleti csoportok hívása. Riasztási állapot aktív.
-| 1:20 PM | 0 rekord | 0 nem > 0, így hamis |  A riasztás nem tűz. Nincs hívott művelet. A riasztás állapota aktív marad.
+| 13:05 | 0 rekord | 0 nem > 0 olyan HAMIS |  A riadó nem lő. Nincs hívott művelet.
+| 13:10 | 2 rekord | 2 > 0 így IGAZ  | Riasztási tüzek és akciócsoportok hívják. Riasztási állapot AKTÍV.
+| 13:15 | 5 rekord | 5 > 0 így IGAZ  | Riasztási tüzek és akciócsoportok hívják. Riasztási állapot AKTÍV.
+| 13:20 | 0 rekord | 0 nem > 0 olyan HAMIS |  A riadó nem lő. Nincs hívott művelet. A riasztási állapot aktív állapotban maradt.
 
 Az előző eset használata példaként:
 
-A 1:15 PM Azure-riasztások nem tudják megállapítani, hogy a 1:10-kor észlelt mögöttes problémák fennmaradnak-e, és ha a rekordok nettó új hibák vagy a régebbi hibák megismétlése 1:10 órakor történik. A felhasználó által megadott lekérdezés esetleg nem veszi figyelembe a korábbi rekordokat, és a rendszer nem tudja. Az Azure-riasztások rendszere figyelmezteti az err-re, és a riasztást és a kapcsolódó műveleteket 1:15 ÓRAKOR újra elindítják. 
+1:15-kor az Azure-riasztások nem tudják megállapítani, hogy az 1:10-kor látott mögöttes problémák megmaradnak-e, és hogy a rekordok nettó új hibák vagy régebbi hibák ismétlődései-e 1:10-kor. A felhasználó által biztosított lekérdezés lehet, hogy nem veszi figyelembe a korábbi rekordokat, és a rendszer nem tudja. Az Azure riasztási rendszer úgy van kialakítva, hogy az óvatosság oldalán tévedjen, és 1:15-kor újra elindítja a riasztást és a kapcsolódó műveleteket. 
 
-1:20 ÓRAKOR, ha nulla rekordokat észleltek a 500-es eredmény kódjával, az Azure-riasztások nem biztosak abban, hogy a 500-as verzióban a 1:10-es és a 1:15 PM-ből származó találati kód megoldódott Nem tudja, hogy az 500-es hiba miatti hibák ugyanezen okból történnek-e. Ezért a *contoso-log-Alert* nem módosul az Azure riasztási irányítópulton **megoldottra** , és/vagy az értesítéseket a rendszer nem küldi el a riasztás feloldása érdekében. Csak Ön, aki megérti az elemzési lekérdezésbe ágyazott logika pontos feltételeit vagy okát, [a riasztást szükség szerint lezártként jelölheti](alerts-managing-alert-states.md) meg.
+1:20-kor, amikor nulla rekordok láthatók 500 találatkóddal, az Azure-riasztások nem lehetnek biztosak abban, hogy az 500 eredménykód oka 1:10-kor és 13:15-kor megoldva van.At 1:20 PM when zero records are seen with 500 result code, Azure alerts can't be certain that the cause of 500 result code seen at 1:10 pm and 1:15 PM is now solved. Nem tudja, hogy az 500-as hibaproblémák ugyanezen okok miatt újra megtörténnek-e. Ezért *a Contoso-Log-Alert* nem változik az Azure Alert irányítópultján **feloldott** állapotra, és/vagy nem küld értesítéseket a riasztás feloldása miatt. Csak ön, aki megérti a pontos feltételét vagy okát a logika beágyazott analytics lekérdezés, [megjelölheti a riasztást lezárt,](alerts-managing-alert-states.md) ha szükséges.
 
-## <a name="pricing-and-billing-of-log-alerts"></a>A naplózási riasztások díjszabása és számlázása
+## <a name="pricing-and-billing-of-log-alerts"></a>A naplóértesítések ára és számlázása
 
-A naplózási riasztásokra vonatkozó díjszabás a [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/) oldalán található. Az Azure-számlákban a naplózási riasztások típusa `microsoft.insights/scheduledqueryrules` a következővel:
+A naplóriasztásokra vonatkozó díjszabás az [Azure Monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/) oldalán található. Az Azure-számlákban a naplóriasztások `microsoft.insights/scheduledqueryrules` típusként jelennek meg:
 
-- Riasztások naplózása Application Insights megjelenített riasztások pontos neve mellett az erőforráscsoport és a riasztás tulajdonságaival együtt
-- Riasztások naplózása Log Analytics megjelenített riasztások pontos neve, az erőforráscsoport és a riasztás tulajdonságaival együtt. a [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) -val való létrehozáskor
+- Riasztások naplózása az Application Insights-on, amely pontos riasztási névvel, valamint erőforráscsoport- és riasztási tulajdonságokkal jelenik meg
+- A log analytics riasztásai pontos riasztási névvel, valamint erőforráscsoport- és riasztási tulajdonságokkal jelennek meg a naplóban; [ütemezésiQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) használatával történő létrehozáskor
 
-Az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) riasztási műveleteket és ütemterveket tartalmaz log Analytics mentett keresés részeként, és nem a megfelelő [Azure-erőforrásokat](../../azure-resource-manager/management/overview.md). Ezért az Azure-ban való számlázáshoz az Azure Portal Log Analytics használatával létrehozott, az [új API](../../azure-monitor/platform/alerts-log-api-switch.md) -ra való áttérés vagy az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) -Hidden pszeudo riasztási `microsoft.insights/scheduledqueryrules` szabályok segítségével történő számlázást kell engedélyezni az ilyen elavult naplózási riasztásokhoz. Az `microsoft.insights/scheduledqueryrules` számlázására létrehozott rejtett pszeudo-szabályok az erőforráscsoport és a riasztás tulajdonságaival együtt `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`ként jelennek meg.
+Az [örökölt Log Analytics API](../../azure-monitor/platform/api-alerts.md) riasztási műveleteket és ütemezéseket a Log Analytics mentett keresés részeként, és nem megfelelő Azure [Resources.](../../azure-resource-manager/management/overview.md) Ezért az Azure Portal használatával a Log Analytics számára létrehozott ilyen örökölt naplóriasztások számlázásának engedélyezése [új API-ra](../../azure-monitor/platform/alerts-log-api-switch.md) `microsoft.insights/scheduledqueryrules` való áttérés **vagy** a régi Log Analytics [API-n](../../azure-monitor/platform/api-alerts.md) keresztül – rejtett pszeudoriasztási szabályok jönnek létre az Azure-beli számlázáshoz. A rejtett pszeudo `microsoft.insights/scheduledqueryrules` riasztási `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` szabályok a számlázáshoz az erőforráscsoport és a riasztási tulajdonságok együtt látható módon létrehozott.
 
 > [!NOTE]
-> Ha az érvénytelen karakterek, például a `<, >, %, &, \, ?, /` szerepelnek, a rendszer a rejtett pszeudo-szabály nevében lecseréli a `_`ra, és így az Azure-számlán is szerepel.
+> Ha érvénytelen karakterek, `<, >, %, &, \, ?, /` például jelen vannak, `_` a rendszer lecseréli őket a rejtett pszeudo riasztási szabály nevében, és így az Azure-számlán is.
 
-Ha el szeretné távolítani a riasztási szabályok számlázásához létrehozott rejtett scheduleQueryRules-erőforrásokat az [örökölt log Analytics API](api-alerts.md)-val, a felhasználó a következők bármelyikét végezheti el:
+A [riasztási](api-alerts.md)szabályok számlázásához létrehozott rejtett scheduleQueryRules erőforrások eltávolításához a felhasználó az alábbi célokra is elkészítheti az alábbi hibákat:
 
-- Bármelyik felhasználó [átválthatja a riasztási szabályok API-beállításait a log Analytics munkaterületen](../../azure-monitor/platform/alerts-log-api-switch.md) , és a riasztási szabályok elvesztésével vagy a figyelés Azure Resource Manager megfelelő [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)-val való áthelyezésével. Így nincs szükség a kiszámlázható pszeudo-riasztási szabályok elvégzésére.
-- Ha a felhasználó nem szeretné váltani az API-beállításokat, a felhasználónak **törölnie** kell az eredeti és a riasztási műveletet az [örökölt log Analytics API](api-alerts.md) -val vagy a törléssel [Azure Portal az eredeti napló riasztási szabálya](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) alapján.
+- Bármelyik felhasználó [válthat API-preferenciát a Log Analytics-munkaterület riasztási szabályaihoz,](../../azure-monitor/platform/alerts-log-api-switch.md) és a riasztási szabályok elvesztése nélkül, vagy figyelheti az Azure Resource Manager-nek megfelelő [scheduledQueryRules API-ra](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)való áttérést. Ezáltal kiküszöböli a pszeudo rejtett riasztási szabályok számlázási szükségességét.
+- Vagy ha a felhasználó nem szeretne váltani az API-preferencia között, a felhasználónak törölnie kell az eredeti ütemezést, és riasztási műveletet kell **végrehajtania** az [örökölt Log Analytics API használatával,](api-alerts.md) vagy törölnie kell az Azure [Portalon az eredeti naplóriasztási szabályt](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
 
-A riasztási szabályok a [régi log Analytics API](api-alerts.md)-val való számlázásához létrehozott rejtett scheduleQueryRules-erőforrások mellett a Put művelethez hasonló módosítási műveletek sikertelenek lesznek. Mivel a `microsoft.insights/scheduledqueryrules` típusú pszeudo-szabályok a [régi log Analytics API](api-alerts.md)használatával létrehozott riasztási szabályok számlázására szolgálnak. A riasztási szabályok módosítását [örökölt log Analytics API](api-alerts.md) -val kell elvégezni (vagy) [a felhasználó átválthatja a riasztási szabályok API-BEÁLLÍTÁSAIT](../../azure-monitor/platform/alerts-log-api-switch.md) a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) használatára.
+Emellett a rejtett scheduleQueryRules erőforrások hoz létre a riasztási szabályok számlázása a [régi Log Analytics API-t,](api-alerts.md)minden módosítási művelet, mint a PUT sikertelen lesz. Mivel `microsoft.insights/scheduledqueryrules` a típus pszeudoszabályok számlázása céljából a riasztási szabályok segítségével létrehozott örökölt Log Analytics API.As the type pseudo rules are for billing the alert rules created using [legacy Log Analytics API.](api-alerts.md) A riasztási szabályok módosítását [az örökölt Log Analytics API](api-alerts.md) használatával (vagy) a felhasználó [átválthat az API-beállításokat a riasztási szabályokhoz az](../../azure-monitor/platform/alerts-log-api-switch.md) [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) használatához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](../../azure-monitor/platform/alerts-log.md)-ban.
-* Ismerkedjen meg [a webhookokkal a log-riasztásokban az Azure-ban](alerts-log-webhook.md).
-* Ismerje meg az [Azure-riasztásokat](../../azure-monitor/platform/alerts-overview.md).
-* További információ a [Application Insightsról](../../azure-monitor/app/analytics.md).
-* További információ a [log Analyticsról](../../azure-monitor/log-query/log-query-overview.md).
+* Ismerje [meg, hogyan hozhat létre naplóriasztásokat az Azure-ban.](../../azure-monitor/platform/alerts-log.md)
+* Ismerje meg [a webhookokat az Azure-beli naplóriasztásokban.](alerts-log-webhook.md)
+* További információ [az Azure-riasztásokról.](../../azure-monitor/platform/alerts-overview.md)
+* További információ az [Application Insights](../../azure-monitor/app/analytics.md)ról.
+* További információ a [Log Analytics szolgáltatásról.](../../azure-monitor/log-query/log-query-overview.md)

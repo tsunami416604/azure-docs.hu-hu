@@ -1,34 +1,34 @@
 ---
 title: Visszatérési érték használata egy Azure-függvényből
-description: További információ a Azure Functions visszatérési értékeinek kezeléséről
+description: Ismerje meg az Azure Functions visszatérési értékeinek kezelését
 author: craigshoemaker
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74480569"
 ---
-# <a name="using-the-azure-function-return-value"></a>Az Azure Function Return értékének használata
+# <a name="using-the-azure-function-return-value"></a>Az Azure Függvény visszatérési értékének használata
 
-Ez a cikk azt ismerteti, hogyan működnek a visszatérési értékek egy függvényen belül.
+Ez a cikk bemutatja, hogyan működnek a visszatérési értékek egy függvényen belül.
 
-A visszatérési értékkel rendelkező nyelveken a függvény [kimeneti kötését](./functions-triggers-bindings.md#binding-direction) a visszatérési értékhez kötheti:
+A visszatérési értékkel rendelkező nyelveken a [függvénykimeneti kötést](./functions-triggers-bindings.md#binding-direction) a visszatérési értékhez kötheti:
 
-* Egy C# osztály-függvénytárban alkalmazza a kimeneti kötési attribútumot a metódus visszatérési értékére.
-* A javában alkalmazza a kimeneti kötési jegyzetet a Function metódusra.
-* Más nyelveken a *function. JSON* fájl `name` tulajdonságát állítsa `$return`.
+* Egy C# osztálytárban alkalmazza a kimeneti kötés attribútumot a metódus visszatérési értékére.
+* Java-ban alkalmazza a kimeneti kötési jegyzetet a függvénymetódusra.
+* Más nyelveken állítsa `name` a tulajdonságot a `$return` *function.json-ban* .
 
-Ha több kimeneti kötés is van, akkor a visszatérési értéket csak az egyikre használja.
+Ha több kimeneti kötés van, csak az egyikhez használja a visszatérési értéket.
 
-A C# és C# a parancsfájlban az adatok kimeneti kötésbe való küldésének alternatív módjai `out` paraméterek és [gyűjtő objektumok](functions-reference-csharp.md#writing-multiple-output-values).
+A C# és A C# parancsfájlban az adatok `out` kimeneti kötésre küldésének alternatív módjai a paraméterek és [a gyűjtőobjektumok.](functions-reference-csharp.md#writing-multiple-output-values)
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Az alábbi C# kód egy kimeneti kötés visszatérési értékét használja, amelyet egy aszinkron példa követ:
+A következőket a C# kód, amely egy kimeneti kötés visszatérési értékét használja, majd egy aszinkron példa:
 
 ```cs
 [FunctionName("QueueTrigger")]
@@ -52,9 +52,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A output kötésa a *function.json* fájlban:
 
 ```json
 {
@@ -65,7 +65,7 @@ Itt látható a *function. JSON* fájlban található kimeneti kötés:
 }
 ```
 
-Itt látható a C# szkript kódja, amelyet egy aszinkron példa követ:
+Itt a C# parancsfájlkód, amelyet egy aszinkron példa követ:
 
 ```cs
 public static string Run(WorkItem input, ILogger log)
@@ -85,9 +85,9 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
+# <a name="f"></a>[F #](#tab/fsharp)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A output kötésa a *function.json* fájlban:
 
 ```json
 {
@@ -98,7 +98,7 @@ Itt látható a *function. JSON* fájlban található kimeneti kötés:
 }
 ```
 
-Íme a F# kódot:
+Itt az F# kód:
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
@@ -107,9 +107,9 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A output kötésa a *function.json* fájlban:
 
 ```json
 {
@@ -120,7 +120,7 @@ Itt látható a *function. JSON* fájlban található kimeneti kötés:
 }
 ```
 
-A JavaScriptben a visszatérési érték a `context.done`második paramétere:
+JavaScript ben a visszatérési érték a `context.done`következő második paraméterbe kerül:
 
 ```javascript
 module.exports = function (context, input) {
@@ -130,9 +130,9 @@ module.exports = function (context, input) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A output kötésa a *function.json* fájlban:
 
 ```json
 {
@@ -142,7 +142,7 @@ Itt látható a *function. JSON* fájlban található kimeneti kötés:
     "path": "output-container/{id}"
 }
 ```
-Itt látható a Python-kód:
+Itt a Python kód:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:
@@ -153,9 +153,9 @@ def main(input: azure.functions.InputStream) -> str:
     })
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-A következő Java-kód egy kimeneti kötés visszatérési értékét használja:
+Az alábbiakban a kimeneti kötés hez visszaadott értéket használó Java-kódot használja:
 
 ```java
 @FunctionName("QueueTrigger")
@@ -173,7 +173,7 @@ public static String run(
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure Functions kötési hibák kezelése](./functions-bindings-errors.md)
+> [Az Azure Functions kötési hibáinak kezelése](./functions-bindings-errors.md)

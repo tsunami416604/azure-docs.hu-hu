@@ -1,71 +1,71 @@
 ---
-title: Adatok megtekintése és elemzése az Azure Log Analyticsban | Microsoft Docs
-description: Log Analytics naplóbeli keresés felhasználói számára való segítségnyújtás Azure Monitor naplózási lekérdezési élményhez.
+title: Adatok megtekintése és elemzése az Azure Log Analytics szolgáltatásban | Microsoft dokumentumok
+description: Segítség a Log Analytics-napló keresés felhasználóinak az Azure Monitor naplólekérdezési élményéhez.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
 ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670134"
 ---
-# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Áttérés Log Analytics naplóbeli keresésről Azure Monitor naplókra
-A naplóbeli keresés a Log Analytics nemrég váltotta fel a Azure Monitor naplók elemzésére szolgáló új felhasználói élményt. A naplóbeli keresés oldal jelenleg továbbra is elérhető a **naplók (klasszikus)** menüpontban a Azure Portal **log Analytics munkaterületek** lapján, de 2019. február 15-én el lesz távolítva. Ez a cikk a két funkció közötti különbségeket ismerteti, amelyek segítenek a naplók közötti keresésben való áttérésben. 
+# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Áttérés a Log Analytics-naplókeresésről az Azure Monitor-naplókra
+A Log Analytics naplókeresését a közelmúltban egy új felület váltotta fel az Azure Monitor-naplók elemzéséhez. A naplókeresési lap jelenleg továbbra is elérhető az Azure Portal **Log Analytics munkaterületeinek Naplók** **(klasszikus)** menüelemén keresztül, de 2019. Ez a cikk ismerteti a két élmény közötti különbségeket, amelyek segítenek a naplókeresésről való áttérésben. 
 
 ## <a name="filter-results-of-a-query"></a>Lekérdezés eredményeinek szűrése
-A naplóbeli keresés során a rendszer a szűrők listáját jeleníti meg a keresési eredmények kézbesítése során. Válasszon ki egy szűrőt, és kattintson az **alkalmaz** gombra a lekérdezés a kiválasztott szűrővel való futtatásához.
+A Naplókeresés ben a szűrők listája jelenik meg a keresési eredmények kézbesítése során. Jelöljön ki egy szűrőt, és kattintson az **Alkalmaz** gombra a lekérdezés kijelölt szűrővel való futtatásához.
 
-![Napló keresési szűrője](media/log-search-transition/filter-log-search.png)
+![Naplókeresési szűrő](media/log-search-transition/filter-log-search.png)
 
-A szűrők megjelenítéséhez Azure Monitor naplókban válassza a *szűrő (előzetes verzió)* lehetőséget. Kattintson a szűrő ikonra a hozzáadási szűrők megjelenítéséhez. Jelöljön ki egy szűrőt, és kattintson az **alkalmazás & Futtatás** gombra a lekérdezés a kiválasztott szűrővel való futtatásához.
+Az Azure Monitor naplóiban válassza *a Szűrő (előzetes verzió)* lehetőséget a szűrők megjelenítéséhez. Kattintson a szűrő ikonra a hozzáadásszűrők megjelenítéséhez. Jelöljön ki egy szűrőt, és kattintson **& Futtatás gombra** a lekérdezés kijelölt szűrővel való futtatásához.
 
-![Naplók szűrője](media/log-search-transition/filter-logs.png)
+![Naplók szűrő](media/log-search-transition/filter-logs.png)
 
 ## <a name="extract-custom-fields"></a>Egyéni mezők kinyerése 
-A naplóbeli keresés során kinyerheti az [egyéni mezőket](../platform/custom-fields.md) a listanézet alapján, ahol a mező menüje tartalmazza a művelet _kibontása mezőket a táblából_.
+A Naplókeresés párbeszédpanelen [egyéni mezőket](../platform/custom-fields.md) nyerhet ki a Lista nézetből, ahol a mező menüje tartalmazza a _művelet kinyerése mezőket_a táblából .
 
-![Naplóbeli keresés kinyerésének mezői](media/log-search-transition/extract-fields-log-search.png)
+![Naplókeresési kibontó mezők](media/log-search-transition/extract-fields-log-search.png)
 
-Azure Monitor naplókból kinyerheti az egyéni mezőket a tábla nézetből. Egy rekord kibontásához kattintson a bal oldali nyílra, majd kattintson a három pontra a _mezők kinyerése_ művelet eléréséhez.
+Az Azure Monitor naplóiban kibonthatja az egyéni mezőket a táblanézetből. Bontsa ki a rekordot a bal oldali nyílra kattintva, majd kattintson a három pontra a _Mezők kibontása_ művelet eléréséhez.
 
-![Naplók kinyerési mezői](media/log-search-transition/extract-fields-logs.png)
+![Naplók kibontási mezői](media/log-search-transition/extract-fields-logs.png)
 
-## <a name="functions-and-computer-groups"></a>Függvények és számítógépcsoportok
-Ha a keresését szeretné menteni a naplóban, válassza a **mentett keresések** és **Hozzáadás** lehetőséget a név, kategória és lekérdezés szövegének megadásához. Hozzon létre egy [számítógépcsoportot](../platform/computer-groups.md) egy függvény alias hozzáadásával.
+## <a name="functions-and-computer-groups"></a>Funkciók és számítógépcsoportok
+Ha menteni szeretne egy keresést a Naplókeresés ben, válassza a **Mentett keresések** és **a Hozzáadás** lehetőséget a név, kategória és lekérdezés szövegének megadásához. [Számítógépcsoport](../platform/computer-groups.md) létrehozása függvényalias hozzáadásával.
 
-![Naplóbeli Keresés mentése](media/log-search-transition/save-search-log-search.png)
+![Naplókeresés mentése](media/log-search-transition/save-search-log-search.png)
 
-Ha az aktuális lekérdezést Azure Monitor naplókba szeretné menteni, válassza a **Mentés**lehetőséget. Módosítsa a **Mentés másként** _funkciót_ , és adjon meg egy **függvény aliast** a [függvény](functions.md)létrehozásához. Válassza a _lekérdezés mentése számítógépcsoportként_ lehetőséget a [számítógépcsoport](../platform/computer-groups.md)függvény aliasának használatához.
+Ha menteni szeretné az aktuális lekérdezést az Azure Monitor naplóiba, válassza a **Mentés lehetőséget.** Módosítsa a **Mentés függvényként** _lehetőséget,_ és adjon **meg függvényaliast** [a függvény](functions.md)létrehozásához. Jelölje _be a Lekérdezés mentése számítógépcsoportként_ jelölőnégyzetet a [számítógépcsoport](../platform/computer-groups.md)függvényaliasának használatához.
 
-![Napló lekérdezésének mentése](media/log-search-transition/save-query-logs.png)
+![Naplólekérdezés mentése](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Mentett lekérdezések
-A naplóbeli keresés során a mentett lekérdezések a művelet sáv **mentett keresések**menüpontján keresztül érhetők el. A Azure Monitor-naplókban a lekérdezés- [kezelőből](../log-query/get-started-portal.md#save-queries)férhet hozzá a mentett lekérdezésekhez.
+A Naplókeresés ben a mentett lekérdezések a **műveletsáv Mentett keresések**elemén keresztül érhetők el. Az Azure Monitor naplóiban a [Query Explorer](../log-query/get-started-portal.md#save-queries)mentett lekérdezéseit érheti el.
 
-![Lekérdezési tallózó](media/log-search-transition/query-explorer.png)
+![Lekérdezéskezelő](media/log-search-transition/query-explorer.png)
 
-## <a name="drill-down-on-summarized-rows"></a>Részletezés az összegzett sorokon
-A naplók keresése elemre kattintva egy összegzett lekérdezés sorára kattintva elindíthat egy másik lekérdezést, amely felsorolja az adott sorban található részletes rekordokat.
+## <a name="drill-down-on-summarized-rows"></a>Részletezés az összesített sorokon
+A Naplókeresés ben az összesített lekérdezés egy sorára kattintva elindíthat egy másik lekérdezést, amely részletes rekordokat sorol fel a sorban.
 
-![Naplóbeli keresés részletezése](media/log-search-transition/drilldown-search.png)
+![Naplókeresés részletezése](media/log-search-transition/drilldown-search.png)
 
-Azure Monitor naplókban módosítania kell a lekérdezést a rekordok visszaküldéséhez. Bontsa ki az eredmények egyik sorát, és kattintson az érték melletti **+ra** a lekérdezéshez való hozzáadáshoz. Ezután adja ki az **Összefoglalás** parancsot, és futtassa újra a lekérdezést.
+Az Azure Monitor naplóiban módosítania kell a lekérdezést, hogy adja vissza ezeket a rekordokat. Bontsa ki az eredmények egyik **+** sorát, és kattintson a következő értékre a lekérdezéshez való hozzáadásához. Ezután fűzze hozzá az **összegző parancsot,** és futtassa újra a lekérdezést.
 
-![Naplók lebontása Azure Monitor](media/log-search-transition/drilldown-logs.png)
+![Az Azure Monitor naplózza a részletezést](media/log-search-transition/drilldown-logs.png)
 
-## <a name="take-action"></a>Művelet elvégzése
-A naplók keresése lehetőségre kattintva [elindíthat egy runbook](take-action.md) egy keresési eredményből a **művelet elvégzése**lehetőség kiválasztásával.
+## <a name="take-action"></a>Művelet megtemitetése
+A Naplókeresés ben a Művelet **művelet**lehetőségkiválasztásával indíthatja el a [runbookot](take-action.md) egy keresési eredményből.
 
-![Művelet elvégzése](media/log-search-transition/take-action-log-search.png)
+![Művelet megtemitetése](media/log-search-transition/take-action-log-search.png)
 
-Azure Monitor naplókban [hozzon létre egy riasztást a napló lekérdezésből](../platform/alerts-log.md). Egy műveleti csoport konfigurálása egy vagy több olyan művelettel, amely a riasztásra adott válaszként fog futni.
+Az Azure Monitor naplóiban [hozzon létre egy riasztást a naplólekérdezésből.](../platform/alerts-log.md) Konfiguráljon egy műveletcsoportot egy vagy több művelettel, amely a riasztásra válaszul fog futni.
 
-![Műveleti csoport](media/log-search-transition/action-group.png)
+![Műveletcsoport](media/log-search-transition/action-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ az új [Azure monitor naplókról](get-started-portal.md).
+- További információ az [Azure Monitor új naplóinak élményéről.](get-started-portal.md)
